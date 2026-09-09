@@ -1,0 +1,464 @@
+{
+  "schema_version": 1,
+  "tag": "hotel-review-remaining-20260909",
+  "verified_at": "2026-09-08T21:49:48.733660+00:00",
+  "status": "passed",
+  "final_acceptance": true,
+  "verification_mode": "independent_local_stdlib_full_rows_actual_outcomes_public_and_sql",
+  "production_access_by_verifier": false,
+  "network_calls": 0,
+  "database_connections": 0,
+  "baseline_semantic_sha256": "c938d83913645ac6a7651eca0e705621b33b40bb235905392c54917492bdb03d",
+  "manifest_semantic_sha256": "4cf173a235dafd7af540d18387e9e00dda5f91dd87a6bc606d5cbe11f6a38bd9",
+  "rows": {
+    "catalog_rows": 420,
+    "all_60_products_unchanged": true,
+    "original_295_approved_unchanged": true,
+    "configs_full_rows_unchanged": true,
+    "immutable_identity_and_prices_unchanged": true,
+    "untouched_rows": 399,
+    "manifest_entries": 27,
+    "unique_receipts": 27,
+    "apply_final_hashes_match": true,
+    "replay_same_receipts_and_hashes": true,
+    "dry_run_exact_and_no_write_receipts": true,
+    "actual_outcomes": {
+      "approved": 21,
+      "hold": 6
+    },
+    "guard_fallbacks": {
+      "service_link_unavailable": 3
+    },
+    "approved_option_ids": [
+      "050877e8-6f0d-4ee1-81b6-2bcd9d21ebc7",
+      "12371d73-601e-4351-b472-1c0fc68be7ad",
+      "1eb77c39-ad06-4348-8a81-b6937bd1de5d",
+      "2156ce3c-3c4c-4822-a307-098bf4e2c06d",
+      "305f394d-7963-4d03-af74-406ff496a7cf",
+      "469f672a-4230-43e1-95c7-75cfc759a3ee",
+      "47832850-bc24-42f7-a0c2-5abf24dd8200",
+      "494e0fb1-0812-4914-82b8-829cedbdf1c0",
+      "4e1ee548-4abd-47ec-b971-9ec2a700e1b9",
+      "64ee9069-11b6-410f-9143-c48f5ff6155b",
+      "6ddd5137-9ffe-4649-b6d5-cb33389b3cf8",
+      "709186f5-c0bf-413b-ac21-d9a8ac6121a0",
+      "823126b6-3621-43fb-8a9f-40a5568bb3f9",
+      "83554f6b-a045-4a89-ab61-27f077e42d58",
+      "a6c60862-2199-486d-bc3c-5b77e4decf12",
+      "b6194681-cb1c-4421-8418-cb09781046f8",
+      "bb5f25c1-ca5c-4a58-99d4-f03b52625004",
+      "bc4916c6-8db8-4aab-b1c3-4e82f6edbe34",
+      "ce3c41de-25a7-494e-a8e7-681b40d61b71",
+      "dfb3fe0e-7026-4a86-af7f-ea56c967353d",
+      "f8391277-3692-4ba2-9b29-89794931e864"
+    ],
+    "filled_null_slot_ids": [
+      "050877e8-6f0d-4ee1-81b6-2bcd9d21ebc7",
+      "12371d73-601e-4351-b472-1c0fc68be7ad",
+      "1eb77c39-ad06-4348-8a81-b6937bd1de5d",
+      "2156ce3c-3c4c-4822-a307-098bf4e2c06d",
+      "305f394d-7963-4d03-af74-406ff496a7cf",
+      "469f672a-4230-43e1-95c7-75cfc759a3ee",
+      "47832850-bc24-42f7-a0c2-5abf24dd8200",
+      "494e0fb1-0812-4914-82b8-829cedbdf1c0",
+      "4e1ee548-4abd-47ec-b971-9ec2a700e1b9",
+      "64ee9069-11b6-410f-9143-c48f5ff6155b",
+      "6ddd5137-9ffe-4649-b6d5-cb33389b3cf8",
+      "709186f5-c0bf-413b-ac21-d9a8ac6121a0",
+      "823126b6-3621-43fb-8a9f-40a5568bb3f9",
+      "83554f6b-a045-4a89-ab61-27f077e42d58",
+      "a6c60862-2199-486d-bc3c-5b77e4decf12",
+      "b6194681-cb1c-4421-8418-cb09781046f8",
+      "bb5f25c1-ca5c-4a58-99d4-f03b52625004",
+      "bc4916c6-8db8-4aab-b1c3-4e82f6edbe34",
+      "ce3c41de-25a7-494e-a8e7-681b40d61b71",
+      "dfb3fe0e-7026-4a86-af7f-ea56c967353d",
+      "f8391277-3692-4ba2-9b29-89794931e864"
+    ],
+    "expected_scope_rows": [
+      {
+        "kind": "option",
+        "id": "00307d02-975e-4b2f-8843-df7000cd7c50",
+        "before_status": "pending",
+        "before_version": 1,
+        "after_status": "pending",
+        "after_version": 1,
+        "outcome": "hold"
+      },
+      {
+        "kind": "option",
+        "id": "050877e8-6f0d-4ee1-81b6-2bcd9d21ebc7",
+        "before_status": "pending",
+        "before_version": 1,
+        "after_status": "approved",
+        "after_version": 3,
+        "outcome": "approved"
+      },
+      {
+        "kind": "option",
+        "id": "12371d73-601e-4351-b472-1c0fc68be7ad",
+        "before_status": "pending",
+        "before_version": 1,
+        "after_status": "approved",
+        "after_version": 3,
+        "outcome": "approved"
+      },
+      {
+        "kind": "option",
+        "id": "1eb77c39-ad06-4348-8a81-b6937bd1de5d",
+        "before_status": "pending",
+        "before_version": 1,
+        "after_status": "approved",
+        "after_version": 3,
+        "outcome": "approved"
+      },
+      {
+        "kind": "option",
+        "id": "2156ce3c-3c4c-4822-a307-098bf4e2c06d",
+        "before_status": "pending",
+        "before_version": 1,
+        "after_status": "approved",
+        "after_version": 3,
+        "outcome": "approved"
+      },
+      {
+        "kind": "option",
+        "id": "2c41cd84-0813-42cf-8a54-003bc6f0cff4",
+        "before_status": "pending",
+        "before_version": 1,
+        "after_status": "pending",
+        "after_version": 1,
+        "outcome": "hold"
+      },
+      {
+        "kind": "option",
+        "id": "305f394d-7963-4d03-af74-406ff496a7cf",
+        "before_status": "pending",
+        "before_version": 1,
+        "after_status": "approved",
+        "after_version": 3,
+        "outcome": "approved"
+      },
+      {
+        "kind": "option",
+        "id": "469f672a-4230-43e1-95c7-75cfc759a3ee",
+        "before_status": "pending",
+        "before_version": 1,
+        "after_status": "approved",
+        "after_version": 3,
+        "outcome": "approved"
+      },
+      {
+        "kind": "option",
+        "id": "47832850-bc24-42f7-a0c2-5abf24dd8200",
+        "before_status": "pending",
+        "before_version": 1,
+        "after_status": "approved",
+        "after_version": 3,
+        "outcome": "approved"
+      },
+      {
+        "kind": "option",
+        "id": "494e0fb1-0812-4914-82b8-829cedbdf1c0",
+        "before_status": "pending",
+        "before_version": 1,
+        "after_status": "approved",
+        "after_version": 3,
+        "outcome": "approved"
+      },
+      {
+        "kind": "option",
+        "id": "4e1ee548-4abd-47ec-b971-9ec2a700e1b9",
+        "before_status": "pending",
+        "before_version": 1,
+        "after_status": "approved",
+        "after_version": 3,
+        "outcome": "approved"
+      },
+      {
+        "kind": "option",
+        "id": "64ee9069-11b6-410f-9143-c48f5ff6155b",
+        "before_status": "pending",
+        "before_version": 1,
+        "after_status": "approved",
+        "after_version": 3,
+        "outcome": "approved"
+      },
+      {
+        "kind": "option",
+        "id": "6ddd5137-9ffe-4649-b6d5-cb33389b3cf8",
+        "before_status": "pending",
+        "before_version": 1,
+        "after_status": "approved",
+        "after_version": 3,
+        "outcome": "approved"
+      },
+      {
+        "kind": "option",
+        "id": "709186f5-c0bf-413b-ac21-d9a8ac6121a0",
+        "before_status": "pending",
+        "before_version": 1,
+        "after_status": "approved",
+        "after_version": 3,
+        "outcome": "approved"
+      },
+      {
+        "kind": "option",
+        "id": "823126b6-3621-43fb-8a9f-40a5568bb3f9",
+        "before_status": "pending",
+        "before_version": 1,
+        "after_status": "approved",
+        "after_version": 3,
+        "outcome": "approved"
+      },
+      {
+        "kind": "option",
+        "id": "83554f6b-a045-4a89-ab61-27f077e42d58",
+        "before_status": "pending",
+        "before_version": 1,
+        "after_status": "approved",
+        "after_version": 3,
+        "outcome": "approved"
+      },
+      {
+        "kind": "option",
+        "id": "a6c60862-2199-486d-bc3c-5b77e4decf12",
+        "before_status": "pending",
+        "before_version": 1,
+        "after_status": "approved",
+        "after_version": 3,
+        "outcome": "approved"
+      },
+      {
+        "kind": "option",
+        "id": "b6194681-cb1c-4421-8418-cb09781046f8",
+        "before_status": "pending",
+        "before_version": 1,
+        "after_status": "approved",
+        "after_version": 3,
+        "outcome": "approved"
+      },
+      {
+        "kind": "option",
+        "id": "bb5f25c1-ca5c-4a58-99d4-f03b52625004",
+        "before_status": "pending",
+        "before_version": 1,
+        "after_status": "approved",
+        "after_version": 3,
+        "outcome": "approved"
+      },
+      {
+        "kind": "option",
+        "id": "bc4916c6-8db8-4aab-b1c3-4e82f6edbe34",
+        "before_status": "pending",
+        "before_version": 1,
+        "after_status": "approved",
+        "after_version": 3,
+        "outcome": "approved"
+      },
+      {
+        "kind": "option",
+        "id": "ce3c41de-25a7-494e-a8e7-681b40d61b71",
+        "before_status": "pending",
+        "before_version": 1,
+        "after_status": "approved",
+        "after_version": 3,
+        "outcome": "approved"
+      },
+      {
+        "kind": "option",
+        "id": "d55df51d-b401-468a-8149-bec50508b4c2",
+        "before_status": "pending",
+        "before_version": 1,
+        "after_status": "pending",
+        "after_version": 1,
+        "outcome": "hold"
+      },
+      {
+        "kind": "option",
+        "id": "dfb3fe0e-7026-4a86-af7f-ea56c967353d",
+        "before_status": "pending",
+        "before_version": 1,
+        "after_status": "approved",
+        "after_version": 3,
+        "outcome": "approved"
+      },
+      {
+        "kind": "option",
+        "id": "f8391277-3692-4ba2-9b29-89794931e864",
+        "before_status": "pending",
+        "before_version": 1,
+        "after_status": "approved",
+        "after_version": 3,
+        "outcome": "approved"
+      },
+      {
+        "kind": "product",
+        "id": "50f2d47d-24fe-4b07-85a2-3e1c7671e452",
+        "before_status": "pending",
+        "before_version": 1,
+        "after_status": "pending",
+        "after_version": 1,
+        "outcome": "hold"
+      },
+      {
+        "kind": "product",
+        "id": "758907f4-4870-421e-bf6c-6243cdcc30c4",
+        "before_status": "pending",
+        "before_version": 1,
+        "after_status": "pending",
+        "after_version": 1,
+        "outcome": "hold"
+      },
+      {
+        "kind": "product",
+        "id": "a124dc1e-7f75-44ff-b12d-080da031b3b9",
+        "before_status": "pending",
+        "before_version": 1,
+        "after_status": "pending",
+        "after_version": 1,
+        "outcome": "hold"
+      }
+    ],
+    "expected_normal_audit_additions": {
+      "travel_services.hotel_option_edit": 21,
+      "travel_services.hotel_option_review": 21,
+      "travel_services.product_edit": 0,
+      "travel_services.product_review": 0
+    },
+    "expected_sql_receipt_outcomes": [
+      {
+        "kind": "option",
+        "requested_decision": "approve",
+        "outcome": "approved",
+        "guard_code": "(none)",
+        "rows": 21
+      },
+      {
+        "kind": "option",
+        "requested_decision": "approve",
+        "outcome": "hold",
+        "guard_code": "service_link_unavailable",
+        "rows": 3
+      },
+      {
+        "kind": "product",
+        "requested_decision": "hold",
+        "outcome": "hold",
+        "guard_code": "(none)",
+        "rows": 3
+      }
+    ],
+    "changed_field_counts": {
+      "checked_at": 21,
+      "discovery_status": 21,
+      "evidence_url": 21,
+      "health_status": 21,
+      "identity_note": 21,
+      "status": 21,
+      "updated_at": 21,
+      "url": 21,
+      "verified_at": 21,
+      "version": 21
+    },
+    "final_status_counts": {
+      "option:approved": 276,
+      "option:pending": 84,
+      "product:approved": 40,
+      "product:pending": 20
+    }
+  },
+  "public": {
+    "before": {
+      "matrix_requests": 30,
+      "products": 40,
+      "options": 183,
+      "all_locales_exact": true,
+      "held_options_and_parents_hidden": true,
+      "source_credits_preserved": true,
+      "prices_unknown_and_quotes_disabled": true
+    },
+    "after": {
+      "matrix_requests": 30,
+      "products": 40,
+      "options": 192,
+      "all_locales_exact": true,
+      "held_options_and_parents_hidden": true,
+      "source_credits_preserved": true,
+      "prices_unknown_and_quotes_disabled": true
+    },
+    "after-replay": {
+      "matrix_requests": 30,
+      "products": 40,
+      "options": 192,
+      "all_locales_exact": true,
+      "held_options_and_parents_hidden": true,
+      "source_credits_preserved": true,
+      "prices_unknown_and_quotes_disabled": true
+    },
+    "delta": {
+      "original_hotels_retained": 40,
+      "original_options_retained": 183,
+      "new_public_option_ids": [
+        "2156ce3c-3c4c-4822-a307-098bf4e2c06d",
+        "305f394d-7963-4d03-af74-406ff496a7cf",
+        "469f672a-4230-43e1-95c7-75cfc759a3ee",
+        "494e0fb1-0812-4914-82b8-829cedbdf1c0",
+        "64ee9069-11b6-410f-9143-c48f5ff6155b",
+        "a6c60862-2199-486d-bc3c-5b77e4decf12",
+        "b6194681-cb1c-4421-8418-cb09781046f8",
+        "bc4916c6-8db8-4aab-b1c3-4e82f6edbe34",
+        "f8391277-3692-4ba2-9b29-89794931e864"
+      ],
+      "new_public_options": 9,
+      "new_approved_options_hidden_by_pending_parent": [
+        "050877e8-6f0d-4ee1-81b6-2bcd9d21ebc7",
+        "12371d73-601e-4351-b472-1c0fc68be7ad",
+        "1eb77c39-ad06-4348-8a81-b6937bd1de5d",
+        "47832850-bc24-42f7-a0c2-5abf24dd8200",
+        "4e1ee548-4abd-47ec-b971-9ec2a700e1b9",
+        "6ddd5137-9ffe-4649-b6d5-cb33389b3cf8",
+        "709186f5-c0bf-413b-ac21-d9a8ac6121a0",
+        "823126b6-3621-43fb-8a9f-40a5568bb3f9",
+        "83554f6b-a045-4a89-ab61-27f077e42d58",
+        "bb5f25c1-ca5c-4a58-99d4-f03b52625004",
+        "ce3c41de-25a7-494e-a8e7-681b40d61b71",
+        "dfb3fe0e-7026-4a86-af7f-ea56c967353d"
+      ]
+    },
+    "replay_unchanged": true
+  },
+  "independent_sql": {
+    "receipt_count": 27,
+    "receipt_outcomes_match_stdout": true,
+    "normal_audit_additions": {
+      "travel_services.hotel_option_edit": 21,
+      "travel_services.hotel_option_review": 21,
+      "travel_services.product_edit": 0,
+      "travel_services.product_review": 0
+    },
+    "normal_audit_actor_and_target_provenance": true,
+    "per_target_versions_and_hold_hashes_match": true,
+    "prior_receipts_and_all_historical_audits_unchanged": true,
+    "settings_brands_offers_clicks_unchanged": true,
+    "replay_zero_additions_and_all_nonclock_hashes_unchanged": true
+  },
+  "missing_final_acceptance_evidence": [],
+  "missing_optional_artifacts": [],
+  "input_file_sha256": {
+    "apply.ndjson": "95cf7c44052fd18ca53509eb02b59e4e2072de67b673ff7f028acecdd2382eec",
+    "before.json": "bb71358eb2c9bc797b55d808939d0374aacd2b04a263a92609b8cc4f98dc6c60",
+    "dry-run.ndjson": "c25728a969c08c5ce9c937ed88da8187214fddd6f9baea344452c8d527c11718",
+    "final-snapshot.json": "d04dec0d1c7fd884104744307d3744af95ab4de0a33a6da02700090a36c1a510",
+    "independent-after-replay.txt": "920ba9e6071de041c6bfa7879503469fe03f3653631d8c57886fb4e88de2dfa8",
+    "independent-after.txt": "82daaad59d42b7b1a2a12e98288de690c471ced33eb78fc13d6efacdf8d14c99",
+    "independent-before.txt": "3ebe8dcac65558304a8d717b19d9acac7bfb774df06a0bb8a65a3a72bfdd2c80",
+    "manifest.json": "0924c315ee74cf344aa5dfe65949922750d88cd747d87ab8033153e70f5e45ba",
+    "public-after-replay.json": "0256a94cfc032366e906cf62995fbeb566cbd38781f7d85400b20466be0cd490",
+    "public-after.json": "0213f36d281149963500c02b62fb662a6e9c2b66999155ce54e94acb25b7a278",
+    "public-before.json": "6d2b47b34ac7fba3b2240170724291d0791fbd1346335121cf89d301448cf7a2",
+    "replay.ndjson": "94986723eae7139c05ab667abf479b301c26e3e9080e77af6d46d6835db3f676",
+    "verify.json": "12b3c4ea006c6ed191c0f934111a7dfafd56a423b106fa7aabbed9db5b9b1dc5"
+  },
+  "limitations": "Verifies retained evidence, not unrecorded production activity; no live DB test."
+}

@@ -1,0 +1,1584 @@
+{
+  "schema_version": 1,
+  "checked_on_utc": "2026-09-08",
+  "city": "SEL",
+  "scope": "Five pending hotel product identities and all 53 pending Seoul booking options from the supplied production snapshot; 7 already-approved options excluded.",
+  "method_notice": "Read-only research. Built-in IAB unavailable in subagent CUA. No successful UI verification; all browser_verified values are false. Parent performs independent IAB and normal review endpoints. No production writes or paid API requests.",
+  "limitations": [
+    "matched is identity evidence only, not an approval instruction or browser override.",
+    "No map coordinates, photos, reviews, descriptions, prices, or availability copied into catalog.",
+    "Do not derive durable coordinates from Google/Naver content. Existing Seoul municipal OA-16044/K O G L Type 1 provenance remains separate and unmodified.",
+    "No URL and no readable content are unresolved, not proof that a hotel is closed or a provider does not sell it.",
+    "Do not replay old hotel-platforms pending packages over newly reviewed production rows; use exact versions/full snapshot lock."
+  ],
+  "summary": {
+    "pending_options": 53,
+    "found_urls_attempted": 45,
+    "matched_identity": 16,
+    "hold": 37,
+    "missing_exact_url": 8,
+    "browser_verified": 0
+  },
+  "products": [
+    {
+      "product_id": "e94492db-9582-4457-b47f-4b44f3112fbb",
+      "source_key": "editorial:seoul:grand-intercontinental-seoul-parnas",
+      "version": 1,
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "expected_identity": {
+        "name": "InterContinental Grand Seoul Parnas",
+        "address": "521 Teheran-ro, Gangnam-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "official_source_url": "https://www.ihg.com/intercontinental/hotels/us/en/seoul/seoha/hoteldetail",
+      "naver_candidate_url": "https://map.naver.com/p/entry/place/11583199",
+      "naver_lead_source_url": "https://hotel-iu.tistory.com/5742",
+      "naver_candidate_verified": false,
+      "reason": "Naver exact hotel name/address must be independently checked in built-in browser before setting map_verified or approving. Exclude Grand Kitchen restaurant 34584853 and former COEX property."
+    },
+    {
+      "product_id": "98c3b936-3470-45b3-b0dc-50353830f2df",
+      "source_key": "editorial:seoul:l7-gangnam",
+      "version": 1,
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "expected_identity": {
+        "name": "L7 GANGNAM by LOTTE HOTELS",
+        "address": "415 Teheran-ro, Gangnam-gu, Seoul",
+        "official_mode": "primary_search_index_4_months",
+        "supplemental_source_url": "https://access.visitkorea.or.kr/acm/detail.do?cotId=0a7f946c-7425-40f4-910d-7f3f80aa4733"
+      },
+      "official_source_url": "https://www.lottehotel.com/prerendered/gangnam-l7/en/about/information/index.html",
+      "naver_candidate_url": "https://naver.me/xxaXE0Qx",
+      "naver_lead_source_url": "https://ang-0.tistory.com/9",
+      "naver_candidate_verified": false,
+      "reason": "Naver exact hotel name/address must be independently checked in built-in browser before setting map_verified or approving. Short URL unresolved. Exclude Floating restaurant 1002390145."
+    },
+    {
+      "product_id": "0f922904-6306-42ad-900e-bbb2402f4deb",
+      "source_key": "editorial:seoul:park-hyatt-seoul",
+      "version": 1,
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "expected_identity": {
+        "name": "Park Hyatt Seoul",
+        "address": "606 Teheran-ro, Gangnam-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "official_source_url": "https://www.hyatt.com/park-hyatt/en-US/selph-park-hyatt-seoul/hotel-info",
+      "naver_candidate_url": "https://map.naver.com/p/entry/place/11728211",
+      "naver_lead_source_url": "https://hotel-iu.tistory.com/1661?category=1089468",
+      "naver_candidate_verified": false,
+      "reason": "Naver exact hotel name/address must be independently checked in built-in browser before setting map_verified or approving. Hotel only; no restaurant identity."
+    },
+    {
+      "product_id": "145e7bbb-df82-4bf9-8290-f5be7f9161a9",
+      "source_key": "editorial:seoul:solaria-myeongdong",
+      "version": 1,
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "expected_identity": {
+        "name": "Solaria Nishitetsu Hotel Seoul Myeongdong",
+        "address": "27 Myeongdong 8-gil, Jung-gu, Seoul",
+        "official_mode": "primary_search_index_2_days",
+        "supplemental_source_url": "https://solaria-seoul.nnr-h.com/stay/upper-triple"
+      },
+      "official_source_url": "https://solaria-seoul.nnr-h.com/",
+      "naver_candidate_url": "https://naver.me/Gxk1VxW5",
+      "naver_lead_source_url": "https://kasioda.com/guide/myeondong-hotel/",
+      "naver_candidate_verified": false,
+      "reason": "Naver exact hotel name/address must be independently checked in built-in browser before setting map_verified or approving. Short URL unresolved. Match Myeongdong 8-gil 27; do not use previous article section's different hotel address."
+    },
+    {
+      "product_id": "90cc1cf8-30bd-4498-be0c-56f8fd9f5ee6",
+      "source_key": "editorial:seoul:westin-josun-seoul",
+      "version": 1,
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "expected_identity": {
+        "name": "The Westin Josun Seoul",
+        "address": "106 Sogong-ro, Jung-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "official_source_url": "https://www.marriott.com/en-us/hotels/selwi-the-westin-josun-seoul/overview/",
+      "naver_candidate_url": "https://map.naver.com/p/entry/place/11583198",
+      "naver_lead_source_url": "https://hotel-iu.tistory.com/5864",
+      "naver_candidate_verified": false,
+      "reason": "Naver exact hotel name/address must be independently checked in built-in browser before setting map_verified or approving. Exclude Westin Seoul Parnas (Gangnam) and in-hotel restaurant Aria 11714851 / Sushi Jo 18689714."
+    }
+  ],
+  "options": [
+    {
+      "option_id": "a40752ba-b5bc-498a-9700-dc42b9799a02",
+      "product_id": "3d531f0f-1a58-4bd7-9311-22125f489742",
+      "source_key": "editorial:seoul:four-points-josun-myeongdong",
+      "provider": "agoda",
+      "version": 1,
+      "url": "https://www.agoda.com/four-points-by-sheraton-seoul-myeongdong/hotel/seoul-kr.html",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.marriott.com/en-us/hotels/selfd-four-points-josun-seoul-myeongdong/overview/",
+      "expected_identity": {
+        "name": "Four Points by Sheraton Josun, Seoul Myeongdong",
+        "address": "36 Samil-daero 10-gil, Jung-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "web_primary_open",
+      "reason": "本輪精準 URL direct open 僅回傳空白 input，無可讀飯店名稱／門牌。維持 pending；待內建瀏覽器實際核對，不以 URL slug 當身分證據。",
+      "evidence_source_urls": [
+        "https://www.agoda.com/four-points-by-sheraton-seoul-myeongdong/hotel/seoul-kr.html",
+        "https://www.marriott.com/en-us/hotels/selfd-four-points-josun-seoul-myeongdong/overview/"
+      ],
+      "reason_code": "landing_blank"
+    },
+    {
+      "option_id": "0b5fdf65-ddc1-4f09-aeb5-b217e99eaee1",
+      "product_id": "3d531f0f-1a58-4bd7-9311-22125f489742",
+      "source_key": "editorial:seoul:four-points-josun-myeongdong",
+      "provider": "booking",
+      "version": 1,
+      "url": "https://www.booking.com/hotel/kr/four-points-by-sheraton-seoul-myeongdong.html",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.marriott.com/en-us/hotels/selfd-four-points-josun-seoul-myeongdong/overview/",
+      "expected_identity": {
+        "name": "Four Points by Sheraton Josun, Seoul Myeongdong",
+        "address": "36 Samil-daero 10-gil, Jung-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "web_primary_open",
+      "reason": "本輪精準 URL direct open 要求 JavaScript／robot 驗證，未取得飯店本文。維持 pending；不繞過驗證，不因已知同館資料而宣稱此入口已核實。",
+      "evidence_source_urls": [
+        "https://www.booking.com/hotel/kr/four-points-by-sheraton-seoul-myeongdong.html",
+        "https://www.marriott.com/en-us/hotels/selfd-four-points-josun-seoul-myeongdong/overview/"
+      ],
+      "reason_code": "robot_js_required"
+    },
+    {
+      "option_id": "f99f1717-b792-4c1c-ae4b-362e5f27677e",
+      "product_id": "3d531f0f-1a58-4bd7-9311-22125f489742",
+      "source_key": "editorial:seoul:four-points-josun-myeongdong",
+      "provider": "expedia",
+      "version": 1,
+      "url": "https://www.expedia.com/Seoul-Hotels-Four-Points-By-Sheraton-Seoul.h59029424.Hotel-Information",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "matched",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.marriott.com/en-us/hotels/selfd-four-points-josun-seoul-myeongdong/overview/",
+      "expected_identity": {
+        "name": "Four Points by Sheraton Josun, Seoul Myeongdong",
+        "address": "36 Samil-daero 10-gil, Jung-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": "Four Points by Sheraton Josun, Seoul Myeongdong",
+      "observed_street": "36 Samil-daero 10-gil, Jung-gu, Seoul",
+      "method": "web_primary_open_and_find",
+      "reason": "平台／官網本館名稱與街道門牌交叉相符；僅身分證據 matched，並非已核准。browser_verified=false，仍須正常 DNS／HTTPS／重導向安全與版本檢查；無日期搜尋、報價、空房或分潤驗證。",
+      "evidence_source_urls": [
+        "https://www.expedia.com/Seoul-Hotels-Four-Points-By-Sheraton-Seoul.h59029424.Hotel-Information",
+        "https://www.marriott.com/en-us/hotels/selfd-four-points-josun-seoul-myeongdong/overview/"
+      ],
+      "reason_code": "identity_matched_no_browser_override"
+    },
+    {
+      "option_id": "b68d4d8c-7647-4001-9883-b4df9e7c6d40",
+      "product_id": "3d531f0f-1a58-4bd7-9311-22125f489742",
+      "source_key": "editorial:seoul:four-points-josun-myeongdong",
+      "provider": "official",
+      "version": 1,
+      "url": "https://www.marriott.com/en-us/hotels/selfd-four-points-josun-seoul-myeongdong/overview/",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "matched",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.marriott.com/en-us/hotels/selfd-four-points-josun-seoul-myeongdong/overview/",
+      "expected_identity": {
+        "name": "Four Points by Sheraton Josun, Seoul Myeongdong",
+        "address": "36 Samil-daero 10-gil, Jung-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": "Four Points by Sheraton Josun, Seoul Myeongdong",
+      "observed_street": "36 Samil-daero 10-gil, Jung-gu, Seoul",
+      "method": "web_primary_open_and_find",
+      "reason": "平台／官網本館名稱與街道門牌交叉相符；僅身分證據 matched，並非已核准。browser_verified=false，仍須正常 DNS／HTTPS／重導向安全與版本檢查；無日期搜尋、報價、空房或分潤驗證。",
+      "evidence_source_urls": [
+        "https://www.marriott.com/en-us/hotels/selfd-four-points-josun-seoul-myeongdong/overview/"
+      ],
+      "reason_code": "identity_matched_no_browser_override"
+    },
+    {
+      "option_id": "08f0183c-6d74-493d-8402-9a0eb4d76243",
+      "product_id": "3d531f0f-1a58-4bd7-9311-22125f489742",
+      "source_key": "editorial:seoul:four-points-josun-myeongdong",
+      "provider": "rakuten",
+      "version": 1,
+      "url": null,
+      "discovery_status": "unconfirmed",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.marriott.com/en-us/hotels/selfd-four-points-josun-seoul-myeongdong/overview/",
+      "expected_identity": {
+        "name": "Four Points by Sheraton Josun, Seoul Myeongdong",
+        "address": "36 Samil-daero 10-gil, Jung-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "snapshot_missing_exact_identity",
+      "reason": "沒有已確認可用的國際站精準 URL；保留 unconfirmed，不推論為 not_found、不猜 ID／網址。",
+      "evidence_source_urls": [],
+      "reason_code": "missing_exact_identity"
+    },
+    {
+      "option_id": "481be31b-86ce-4068-b464-0087353c21ff",
+      "product_id": "e94492db-9582-4457-b47f-4b44f3112fbb",
+      "source_key": "editorial:seoul:grand-intercontinental-seoul-parnas",
+      "provider": "agoda",
+      "version": 1,
+      "url": "https://www.agoda.com/grand-intercontinental-seoul-parnas/hotel/seoul-kr.html",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.ihg.com/intercontinental/hotels/us/en/seoul/seoha/hoteldetail",
+      "expected_identity": {
+        "name": "InterContinental Grand Seoul Parnas",
+        "address": "521 Teheran-ro, Gangnam-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "web_primary_open",
+      "reason": "本輪精準 URL direct open 僅回傳空白 input，無可讀飯店名稱／門牌。維持 pending；待內建瀏覽器實際核對，不以 URL slug 當身分證據。",
+      "evidence_source_urls": [
+        "https://www.agoda.com/grand-intercontinental-seoul-parnas/hotel/seoul-kr.html",
+        "https://www.ihg.com/intercontinental/hotels/us/en/seoul/seoha/hoteldetail"
+      ],
+      "reason_code": "landing_blank"
+    },
+    {
+      "option_id": "325269df-e6e3-47e1-91e3-c4ae08f8453c",
+      "product_id": "e94492db-9582-4457-b47f-4b44f3112fbb",
+      "source_key": "editorial:seoul:grand-intercontinental-seoul-parnas",
+      "provider": "booking",
+      "version": 1,
+      "url": "https://www.booking.com/hotel/kr/grand-intercontinental-seoul.en-gb.html",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.ihg.com/intercontinental/hotels/us/en/seoul/seoha/hoteldetail",
+      "expected_identity": {
+        "name": "InterContinental Grand Seoul Parnas",
+        "address": "521 Teheran-ro, Gangnam-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "web_primary_open",
+      "reason": "本輪精準 URL direct open 要求 JavaScript／robot 驗證，未取得飯店本文。維持 pending；不繞過驗證，不因已知同館資料而宣稱此入口已核實。",
+      "evidence_source_urls": [
+        "https://www.booking.com/hotel/kr/grand-intercontinental-seoul.en-gb.html",
+        "https://www.ihg.com/intercontinental/hotels/us/en/seoul/seoha/hoteldetail"
+      ],
+      "reason_code": "robot_js_required"
+    },
+    {
+      "option_id": "5c926f67-f6ba-4d9d-9501-5f3bc037a68d",
+      "product_id": "e94492db-9582-4457-b47f-4b44f3112fbb",
+      "source_key": "editorial:seoul:grand-intercontinental-seoul-parnas",
+      "provider": "expedia",
+      "version": 1,
+      "url": "https://www.expedia.com/Seoul-Hotels-Grand-InterContinental-Seoul-Parnas.h22529.Hotel-Information",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "matched",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.ihg.com/intercontinental/hotels/us/en/seoul/seoha/hoteldetail",
+      "expected_identity": {
+        "name": "InterContinental Grand Seoul Parnas",
+        "address": "521 Teheran-ro, Gangnam-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": "Grand InterContinental Seoul Parnas by IHG",
+      "observed_street": "521 Teheran-ro, Gangnam-gu, Seoul",
+      "method": "web_primary_open_title_plus_primary_search_index_address",
+      "reason": "平台／官網本館名稱與街道門牌交叉相符；僅身分證據 matched，並非已核准。browser_verified=false，仍須正常 DNS／HTTPS／重導向安全與版本檢查；無日期搜尋、報價、空房或分潤驗證。 本輪 open 可取得飯店頁標題；門牌以同一精準網址、標示今日抓取的 primary 搜尋索引核對，find/open 後續段落失敗，不宣稱直接本文核對成功。 平台郵遞區號採舊格式；街道門牌及分館相同，不複製或更新郵遞區號。",
+      "evidence_source_urls": [
+        "https://www.expedia.com/Seoul-Hotels-Grand-InterContinental-Seoul-Parnas.h22529.Hotel-Information",
+        "https://www.ihg.com/intercontinental/hotels/us/en/seoul/seoha/hoteldetail"
+      ],
+      "reason_code": "identity_matched_no_browser_override"
+    },
+    {
+      "option_id": "ea3b7303-f0c0-4677-b38a-37431d3a8d7b",
+      "product_id": "e94492db-9582-4457-b47f-4b44f3112fbb",
+      "source_key": "editorial:seoul:grand-intercontinental-seoul-parnas",
+      "provider": "official",
+      "version": 1,
+      "url": "https://www.ihg.com/intercontinental/hotels/us/en/seoul/seoha/hoteldetail",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "matched",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.ihg.com/intercontinental/hotels/us/en/seoul/seoha/hoteldetail",
+      "expected_identity": {
+        "name": "InterContinental Grand Seoul Parnas",
+        "address": "521 Teheran-ro, Gangnam-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": "InterContinental Grand Seoul Parnas",
+      "observed_street": "521 Teheran-ro, Gangnam-gu, Seoul",
+      "method": "web_primary_open_and_find",
+      "reason": "平台／官網本館名稱與街道門牌交叉相符；僅身分證據 matched，並非已核准。browser_verified=false，仍須正常 DNS／HTTPS／重導向安全與版本檢查；無日期搜尋、報價、空房或分潤驗證。",
+      "evidence_source_urls": [
+        "https://www.ihg.com/intercontinental/hotels/us/en/seoul/seoha/hoteldetail"
+      ],
+      "reason_code": "identity_matched_no_browser_override"
+    },
+    {
+      "option_id": "9ff42733-c0b7-4978-94c8-5c43b49ac625",
+      "product_id": "e94492db-9582-4457-b47f-4b44f3112fbb",
+      "source_key": "editorial:seoul:grand-intercontinental-seoul-parnas",
+      "provider": "rakuten",
+      "version": 1,
+      "url": null,
+      "discovery_status": "unconfirmed",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.ihg.com/intercontinental/hotels/us/en/seoul/seoha/hoteldetail",
+      "expected_identity": {
+        "name": "InterContinental Grand Seoul Parnas",
+        "address": "521 Teheran-ro, Gangnam-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "snapshot_missing_exact_identity",
+      "reason": "沒有已確認可用的國際站精準 URL；保留 unconfirmed，不推論為 not_found、不猜 ID／網址。",
+      "evidence_source_urls": [],
+      "reason_code": "missing_exact_identity"
+    },
+    {
+      "option_id": "3808a373-0fe9-4054-8c26-9aff87cb979a",
+      "product_id": "e94492db-9582-4457-b47f-4b44f3112fbb",
+      "source_key": "editorial:seoul:grand-intercontinental-seoul-parnas",
+      "provider": "trip_com",
+      "version": 1,
+      "url": "https://www.trip.com/hotels/seoul-hotel-detail-1517243/intercontinental-grand-seoul-parnas-by-ihg/",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "matched",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.ihg.com/intercontinental/hotels/us/en/seoul/seoha/hoteldetail",
+      "expected_identity": {
+        "name": "InterContinental Grand Seoul Parnas",
+        "address": "521 Teheran-ro, Gangnam-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": "InterContinental GRAND SEOUL PARNAS by IHG",
+      "observed_street": "521 Teheran-ro, Gangnam-gu, Seoul",
+      "method": "web_primary_open_and_find",
+      "reason": "平台／官網本館名稱與街道門牌交叉相符；僅身分證據 matched，並非已核准。browser_verified=false，仍須正常 DNS／HTTPS／重導向安全與版本檢查；無日期搜尋、報價、空房或分潤驗證。",
+      "evidence_source_urls": [
+        "https://www.trip.com/hotels/seoul-hotel-detail-1517243/intercontinental-grand-seoul-parnas-by-ihg/",
+        "https://www.ihg.com/intercontinental/hotels/us/en/seoul/seoha/hoteldetail"
+      ],
+      "reason_code": "identity_matched_no_browser_override"
+    },
+    {
+      "option_id": "93d7012c-2dd4-4a15-af28-b60d91348825",
+      "product_id": "98c3b936-3470-45b3-b0dc-50353830f2df",
+      "source_key": "editorial:seoul:l7-gangnam",
+      "provider": "agoda",
+      "version": 1,
+      "url": "https://www.agoda.com/l7-gangnam-by-lotte/hotel/seoul-kr.html",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.lottehotel.com/prerendered/gangnam-l7/en/about/information/index.html",
+      "expected_identity": {
+        "name": "L7 GANGNAM by LOTTE HOTELS",
+        "address": "415 Teheran-ro, Gangnam-gu, Seoul",
+        "official_mode": "primary_search_index_4_months",
+        "supplemental_source_url": "https://access.visitkorea.or.kr/acm/detail.do?cotId=0a7f946c-7425-40f4-910d-7f3f80aa4733"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "web_primary_open",
+      "reason": "本輪精準 URL direct open 僅回傳空白 input，無可讀飯店名稱／門牌。維持 pending；待內建瀏覽器實際核對，不以 URL slug 當身分證據。",
+      "evidence_source_urls": [
+        "https://www.agoda.com/l7-gangnam-by-lotte/hotel/seoul-kr.html",
+        "https://www.lottehotel.com/prerendered/gangnam-l7/en/about/information/index.html"
+      ],
+      "reason_code": "landing_blank"
+    },
+    {
+      "option_id": "4c7a6720-54d0-47ad-a9a3-3b14af04b8f3",
+      "product_id": "98c3b936-3470-45b3-b0dc-50353830f2df",
+      "source_key": "editorial:seoul:l7-gangnam",
+      "provider": "booking",
+      "version": 1,
+      "url": "https://www.booking.com/hotel/kr/l7-gangnam.html",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.lottehotel.com/prerendered/gangnam-l7/en/about/information/index.html",
+      "expected_identity": {
+        "name": "L7 GANGNAM by LOTTE HOTELS",
+        "address": "415 Teheran-ro, Gangnam-gu, Seoul",
+        "official_mode": "primary_search_index_4_months",
+        "supplemental_source_url": "https://access.visitkorea.or.kr/acm/detail.do?cotId=0a7f946c-7425-40f4-910d-7f3f80aa4733"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "web_primary_open",
+      "reason": "本輪精準 URL direct open 要求 JavaScript／robot 驗證，未取得飯店本文。維持 pending；不繞過驗證，不因已知同館資料而宣稱此入口已核實。",
+      "evidence_source_urls": [
+        "https://www.booking.com/hotel/kr/l7-gangnam.html",
+        "https://www.lottehotel.com/prerendered/gangnam-l7/en/about/information/index.html"
+      ],
+      "reason_code": "robot_js_required"
+    },
+    {
+      "option_id": "22a1645e-4fb3-4eae-a91b-6c6a01b87cd2",
+      "product_id": "98c3b936-3470-45b3-b0dc-50353830f2df",
+      "source_key": "editorial:seoul:l7-gangnam",
+      "provider": "expedia",
+      "version": 1,
+      "url": "https://www.expedia.com/Seoul-Hotels-L7-Gangnam-By-LOTTE.h21476755.Hotel-Information",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "matched",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.lottehotel.com/prerendered/gangnam-l7/en/about/information/index.html",
+      "expected_identity": {
+        "name": "L7 GANGNAM by LOTTE HOTELS",
+        "address": "415 Teheran-ro, Gangnam-gu, Seoul",
+        "official_mode": "primary_search_index_4_months",
+        "supplemental_source_url": "https://access.visitkorea.or.kr/acm/detail.do?cotId=0a7f946c-7425-40f4-910d-7f3f80aa4733"
+      },
+      "observed_name": "L7 GANGNAM by LOTTE HOTELS",
+      "observed_street": "415 Teheran-ro, Gangnam-gu, Seoul",
+      "method": "web_primary_open_and_find",
+      "reason": "平台／官網本館名稱與街道門牌交叉相符；僅身分證據 matched，並非已核准。browser_verified=false，仍須正常 DNS／HTTPS／重導向安全與版本檢查；無日期搜尋、報價、空房或分潤驗證。 官網門牌為 primary 搜尋索引；官網 direct open 受阻或無本文，來源新鮮度如 expected_identity 所記。",
+      "evidence_source_urls": [
+        "https://www.expedia.com/Seoul-Hotels-L7-Gangnam-By-LOTTE.h21476755.Hotel-Information",
+        "https://www.lottehotel.com/prerendered/gangnam-l7/en/about/information/index.html"
+      ],
+      "reason_code": "identity_matched_no_browser_override"
+    },
+    {
+      "option_id": "facc53e1-9162-4b82-8a4a-35582d69af3e",
+      "product_id": "98c3b936-3470-45b3-b0dc-50353830f2df",
+      "source_key": "editorial:seoul:l7-gangnam",
+      "provider": "official",
+      "version": 1,
+      "url": "https://www.lottehotel.com/prerendered/gangnam-l7/en/about/information/index.html",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.lottehotel.com/prerendered/gangnam-l7/en/about/information/index.html",
+      "expected_identity": {
+        "name": "L7 GANGNAM by LOTTE HOTELS",
+        "address": "415 Teheran-ro, Gangnam-gu, Seoul",
+        "official_mode": "primary_search_index_4_months",
+        "supplemental_source_url": "https://access.visitkorea.or.kr/acm/detail.do?cotId=0a7f946c-7425-40f4-910d-7f3f80aa4733"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "web_primary_open_blocked_plus_primary_search_index",
+      "reason": "本輪 exact 官網 direct open 顯示 Pardon Our Interruption；primary 搜尋索引可匹配本館名稱／门牌，但不是當前落地頁成功證據，維持 pending。勿取 LOTTE 集團頁尾 30 Eulji-ro 當分館地址。",
+      "evidence_source_urls": [
+        "https://www.lottehotel.com/prerendered/gangnam-l7/en/about/information/index.html"
+      ],
+      "reason_code": "anti_bot_interruption"
+    },
+    {
+      "option_id": "a5ec8292-a714-45e6-8360-09914bb787a6",
+      "product_id": "98c3b936-3470-45b3-b0dc-50353830f2df",
+      "source_key": "editorial:seoul:l7-gangnam",
+      "provider": "rakuten",
+      "version": 1,
+      "url": null,
+      "discovery_status": "unconfirmed",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.lottehotel.com/prerendered/gangnam-l7/en/about/information/index.html",
+      "expected_identity": {
+        "name": "L7 GANGNAM by LOTTE HOTELS",
+        "address": "415 Teheran-ro, Gangnam-gu, Seoul",
+        "official_mode": "primary_search_index_4_months",
+        "supplemental_source_url": "https://access.visitkorea.or.kr/acm/detail.do?cotId=0a7f946c-7425-40f4-910d-7f3f80aa4733"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "snapshot_missing_exact_identity",
+      "reason": "沒有已確認可用的國際站精準 URL；保留 unconfirmed，不推論為 not_found、不猜 ID／網址。",
+      "evidence_source_urls": [],
+      "reason_code": "missing_exact_identity"
+    },
+    {
+      "option_id": "41fba9ac-0423-495d-be06-ec943031d84f",
+      "product_id": "98c3b936-3470-45b3-b0dc-50353830f2df",
+      "source_key": "editorial:seoul:l7-gangnam",
+      "provider": "trip_com",
+      "version": 1,
+      "url": "https://ca.trip.com/hotels/seoul-hotel-detail-29407997/l7-gangnam-by-lotte-hotels/",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "matched",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.lottehotel.com/prerendered/gangnam-l7/en/about/information/index.html",
+      "expected_identity": {
+        "name": "L7 GANGNAM by LOTTE HOTELS",
+        "address": "415 Teheran-ro, Gangnam-gu, Seoul",
+        "official_mode": "primary_search_index_4_months",
+        "supplemental_source_url": "https://access.visitkorea.or.kr/acm/detail.do?cotId=0a7f946c-7425-40f4-910d-7f3f80aa4733"
+      },
+      "observed_name": "L7 GANGNAM by LOTTE HOTELS",
+      "observed_street": "415 Teheran-ro, Gangnam-gu, Seoul",
+      "method": "web_primary_open_and_find",
+      "reason": "平台／官網本館名稱與街道門牌交叉相符；僅身分證據 matched，並非已核准。browser_verified=false，仍須正常 DNS／HTTPS／重導向安全與版本檢查；無日期搜尋、報價、空房或分潤驗證。 官網門牌為 primary 搜尋索引；官網 direct open 受阻或無本文，來源新鮮度如 expected_identity 所記。",
+      "evidence_source_urls": [
+        "https://ca.trip.com/hotels/seoul-hotel-detail-29407997/l7-gangnam-by-lotte-hotels/",
+        "https://www.lottehotel.com/prerendered/gangnam-l7/en/about/information/index.html"
+      ],
+      "reason_code": "identity_matched_no_browser_override"
+    },
+    {
+      "option_id": "9c020165-3328-4e31-af2b-90dbef98afef",
+      "product_id": "ef29cc9a-331d-4e8f-9fd0-ea30cdcecc5d",
+      "source_key": "editorial:seoul:l7-hongdae",
+      "provider": "agoda",
+      "version": 1,
+      "url": "https://www.agoda.com/l7-hongdae-by-lotte/hotel/seoul-kr.html",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.lottehotel.com/prerendered/hongdae-l7/ja/about/faq/index.html",
+      "expected_identity": {
+        "name": "L7 HONGDAE by LOTTE HOTELS",
+        "address": "141 Yanghwa-ro, Mapo-gu, Seoul",
+        "official_mode": "primary_search_index_4_months"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "web_primary_open",
+      "reason": "本輪精準 URL direct open 僅回傳空白 input，無可讀飯店名稱／門牌。維持 pending；待內建瀏覽器實際核對，不以 URL slug 當身分證據。",
+      "evidence_source_urls": [
+        "https://www.agoda.com/l7-hongdae-by-lotte/hotel/seoul-kr.html",
+        "https://www.lottehotel.com/prerendered/hongdae-l7/ja/about/faq/index.html"
+      ],
+      "reason_code": "landing_blank"
+    },
+    {
+      "option_id": "cdfbf190-becf-4103-a74a-3b107ebbccb4",
+      "product_id": "ef29cc9a-331d-4e8f-9fd0-ea30cdcecc5d",
+      "source_key": "editorial:seoul:l7-hongdae",
+      "provider": "booking",
+      "version": 1,
+      "url": "https://www.booking.com/hotel/kr/l7-hongdae.html",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.lottehotel.com/prerendered/hongdae-l7/ja/about/faq/index.html",
+      "expected_identity": {
+        "name": "L7 HONGDAE by LOTTE HOTELS",
+        "address": "141 Yanghwa-ro, Mapo-gu, Seoul",
+        "official_mode": "primary_search_index_4_months"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "web_primary_open",
+      "reason": "本輪精準 URL direct open 要求 JavaScript／robot 驗證，未取得飯店本文。維持 pending；不繞過驗證，不因已知同館資料而宣稱此入口已核實。",
+      "evidence_source_urls": [
+        "https://www.booking.com/hotel/kr/l7-hongdae.html",
+        "https://www.lottehotel.com/prerendered/hongdae-l7/ja/about/faq/index.html"
+      ],
+      "reason_code": "robot_js_required"
+    },
+    {
+      "option_id": "94b16b18-a2ac-44bd-9a20-dffcd47afa88",
+      "product_id": "ef29cc9a-331d-4e8f-9fd0-ea30cdcecc5d",
+      "source_key": "editorial:seoul:l7-hongdae",
+      "provider": "expedia",
+      "version": 1,
+      "url": "https://www.expedia.com/Seoul-Hotels-L7-Hongdae-By-LOTTE.h22318672.Hotel-Information",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "matched",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.lottehotel.com/prerendered/hongdae-l7/ja/about/faq/index.html",
+      "expected_identity": {
+        "name": "L7 HONGDAE by LOTTE HOTELS",
+        "address": "141 Yanghwa-ro, Mapo-gu, Seoul",
+        "official_mode": "primary_search_index_4_months"
+      },
+      "observed_name": "L7 HONGDAE by LOTTE HOTELS",
+      "observed_street": "141 Yanghwa-ro, Mapo-gu, Seoul",
+      "method": "web_primary_open_title_plus_primary_search_index_address",
+      "reason": "平台／官網本館名稱與街道門牌交叉相符；僅身分證據 matched，並非已核准。browser_verified=false，仍須正常 DNS／HTTPS／重導向安全與版本檢查；無日期搜尋、報價、空房或分潤驗證。 本輪 open 可取得飯店頁標題；門牌以同一精準網址、標示今日抓取的 primary 搜尋索引核對，find/open 後續段落失敗，不宣稱直接本文核對成功。 官網門牌為 primary 搜尋索引；官網 direct open 受阻或無本文，來源新鮮度如 expected_identity 所記。",
+      "evidence_source_urls": [
+        "https://www.expedia.com/Seoul-Hotels-L7-Hongdae-By-LOTTE.h22318672.Hotel-Information",
+        "https://www.lottehotel.com/prerendered/hongdae-l7/ja/about/faq/index.html"
+      ],
+      "reason_code": "identity_matched_no_browser_override"
+    },
+    {
+      "option_id": "f80f116e-6c0f-4956-843d-a359161c2c86",
+      "product_id": "ef29cc9a-331d-4e8f-9fd0-ea30cdcecc5d",
+      "source_key": "editorial:seoul:l7-hongdae",
+      "provider": "official",
+      "version": 1,
+      "url": "https://www.lottehotel.com/prerendered/hongdae-l7/ja/about/faq/index.html",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.lottehotel.com/prerendered/hongdae-l7/ja/about/faq/index.html",
+      "expected_identity": {
+        "name": "L7 HONGDAE by LOTTE HOTELS",
+        "address": "141 Yanghwa-ro, Mapo-gu, Seoul",
+        "official_mode": "primary_search_index_4_months"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "web_primary_open_blocked_plus_primary_search_index",
+      "reason": "本輪 exact 官網 direct open 顯示 Pardon Our Interruption；primary 搜尋索引可匹配本館名稱／门牌，但不是當前落地頁成功證據，維持 pending。勿取 LOTTE 集團頁尾 30 Eulji-ro 當分館地址。",
+      "evidence_source_urls": [
+        "https://www.lottehotel.com/prerendered/hongdae-l7/ja/about/faq/index.html"
+      ],
+      "reason_code": "anti_bot_interruption"
+    },
+    {
+      "option_id": "911e0a24-6dd1-4432-adbd-debfbbb77c52",
+      "product_id": "ef29cc9a-331d-4e8f-9fd0-ea30cdcecc5d",
+      "source_key": "editorial:seoul:l7-hongdae",
+      "provider": "rakuten",
+      "version": 1,
+      "url": null,
+      "discovery_status": "unconfirmed",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.lottehotel.com/prerendered/hongdae-l7/ja/about/faq/index.html",
+      "expected_identity": {
+        "name": "L7 HONGDAE by LOTTE HOTELS",
+        "address": "141 Yanghwa-ro, Mapo-gu, Seoul",
+        "official_mode": "primary_search_index_4_months"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "snapshot_missing_exact_identity",
+      "reason": "沒有已確認可用的國際站精準 URL；保留 unconfirmed，不推論為 not_found、不猜 ID／網址。",
+      "evidence_source_urls": [],
+      "reason_code": "missing_exact_identity"
+    },
+    {
+      "option_id": "90b7a1de-f2e1-4390-afe9-b90784758bea",
+      "product_id": "c70a6326-4302-4394-afb4-ff7a018272a5",
+      "source_key": "editorial:seoul:l7-myeongdong",
+      "provider": "agoda",
+      "version": 1,
+      "url": "https://www.agoda.com/l7-myeongdong-by-lotte/hotel/seoul-kr.html",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.lottehotel.com/prerendered/myeongdong-l7/zh/about/location/index.html",
+      "expected_identity": {
+        "name": "L7 MYEONGDONG by LOTTE HOTELS",
+        "address": "137 Toegye-ro, Jung-gu, Seoul",
+        "official_mode": "primary_search_index_4_months"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "web_primary_open",
+      "reason": "本輪精準 URL direct open 僅回傳空白 input，無可讀飯店名稱／門牌。維持 pending；待內建瀏覽器實際核對，不以 URL slug 當身分證據。",
+      "evidence_source_urls": [
+        "https://www.agoda.com/l7-myeongdong-by-lotte/hotel/seoul-kr.html",
+        "https://www.lottehotel.com/prerendered/myeongdong-l7/zh/about/location/index.html"
+      ],
+      "reason_code": "landing_blank"
+    },
+    {
+      "option_id": "6d7b7332-e87a-4e25-b405-184d9b4d8293",
+      "product_id": "c70a6326-4302-4394-afb4-ff7a018272a5",
+      "source_key": "editorial:seoul:l7-myeongdong",
+      "provider": "booking",
+      "version": 1,
+      "url": "https://www.booking.com/hotel/kr/l7-myeongdong-by-lotte.html",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.lottehotel.com/prerendered/myeongdong-l7/zh/about/location/index.html",
+      "expected_identity": {
+        "name": "L7 MYEONGDONG by LOTTE HOTELS",
+        "address": "137 Toegye-ro, Jung-gu, Seoul",
+        "official_mode": "primary_search_index_4_months"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "web_primary_open",
+      "reason": "本輪精準 URL direct open 要求 JavaScript／robot 驗證，未取得飯店本文。維持 pending；不繞過驗證，不因已知同館資料而宣稱此入口已核實。",
+      "evidence_source_urls": [
+        "https://www.booking.com/hotel/kr/l7-myeongdong-by-lotte.html",
+        "https://www.lottehotel.com/prerendered/myeongdong-l7/zh/about/location/index.html"
+      ],
+      "reason_code": "robot_js_required"
+    },
+    {
+      "option_id": "de780f6f-b863-490a-98f2-4b481da601dd",
+      "product_id": "c70a6326-4302-4394-afb4-ff7a018272a5",
+      "source_key": "editorial:seoul:l7-myeongdong",
+      "provider": "expedia",
+      "version": 1,
+      "url": "https://www.expedia.com/Seoul-Hotels-L7-Myeongdong-By-LOTTE.h12511672.Hotel-Information",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "matched",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.lottehotel.com/prerendered/myeongdong-l7/zh/about/location/index.html",
+      "expected_identity": {
+        "name": "L7 MYEONGDONG by LOTTE HOTELS",
+        "address": "137 Toegye-ro, Jung-gu, Seoul",
+        "official_mode": "primary_search_index_4_months"
+      },
+      "observed_name": "L7 MYEONGDONG by LOTTE HOTELS",
+      "observed_street": "137 Toegye-ro, Jung-gu, Seoul",
+      "method": "web_primary_open_and_find",
+      "reason": "平台／官網本館名稱與街道門牌交叉相符；僅身分證據 matched，並非已核准。browser_verified=false，仍須正常 DNS／HTTPS／重導向安全與版本檢查；無日期搜尋、報價、空房或分潤驗證。 官網門牌為 primary 搜尋索引；官網 direct open 受阻或無本文，來源新鮮度如 expected_identity 所記。",
+      "evidence_source_urls": [
+        "https://www.expedia.com/Seoul-Hotels-L7-Myeongdong-By-LOTTE.h12511672.Hotel-Information",
+        "https://www.lottehotel.com/prerendered/myeongdong-l7/zh/about/location/index.html"
+      ],
+      "reason_code": "identity_matched_no_browser_override"
+    },
+    {
+      "option_id": "0b8d8e3e-36a3-4c0b-80fd-d23f527ad345",
+      "product_id": "c70a6326-4302-4394-afb4-ff7a018272a5",
+      "source_key": "editorial:seoul:l7-myeongdong",
+      "provider": "official",
+      "version": 1,
+      "url": "https://www.lottehotel.com/prerendered/myeongdong-l7/zh/about/location/index.html",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.lottehotel.com/prerendered/myeongdong-l7/zh/about/location/index.html",
+      "expected_identity": {
+        "name": "L7 MYEONGDONG by LOTTE HOTELS",
+        "address": "137 Toegye-ro, Jung-gu, Seoul",
+        "official_mode": "primary_search_index_4_months"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "web_primary_open_blocked_plus_primary_search_index",
+      "reason": "本輪 exact 官網 direct open 顯示 Pardon Our Interruption；primary 搜尋索引可匹配本館名稱／门牌，但不是當前落地頁成功證據，維持 pending。勿取 LOTTE 集團頁尾 30 Eulji-ro 當分館地址。",
+      "evidence_source_urls": [
+        "https://www.lottehotel.com/prerendered/myeongdong-l7/zh/about/location/index.html"
+      ],
+      "reason_code": "anti_bot_interruption"
+    },
+    {
+      "option_id": "be895634-8120-42ad-8424-9f39d1cc59df",
+      "product_id": "c70a6326-4302-4394-afb4-ff7a018272a5",
+      "source_key": "editorial:seoul:l7-myeongdong",
+      "provider": "rakuten",
+      "version": 1,
+      "url": null,
+      "discovery_status": "unconfirmed",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.lottehotel.com/prerendered/myeongdong-l7/zh/about/location/index.html",
+      "expected_identity": {
+        "name": "L7 MYEONGDONG by LOTTE HOTELS",
+        "address": "137 Toegye-ro, Jung-gu, Seoul",
+        "official_mode": "primary_search_index_4_months"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "snapshot_missing_exact_identity",
+      "reason": "沒有已確認可用的國際站精準 URL；保留 unconfirmed，不推論為 not_found、不猜 ID／網址。",
+      "evidence_source_urls": [],
+      "reason_code": "missing_exact_identity"
+    },
+    {
+      "option_id": "2e3ad995-c4ff-44f2-9e1b-59a59d3e93a2",
+      "product_id": "287f69b8-95f4-4e05-817a-e13b4d5310b4",
+      "source_key": "editorial:seoul:mercure-hongdae",
+      "provider": "agoda",
+      "version": 1,
+      "url": "https://www.agoda.com/mercure-ambassador-seoul-hongdae/hotel/seoul-kr.html",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://all.accor.com/hotel/B696/index.en.shtml",
+      "expected_identity": {
+        "name": "Mercure Ambassador Seoul Hongdae",
+        "address": "144 Yanghwa-ro, Mapo-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "web_primary_open",
+      "reason": "本輪精準 URL direct open 僅回傳空白 input，無可讀飯店名稱／門牌。維持 pending；待內建瀏覽器實際核對，不以 URL slug 當身分證據。",
+      "evidence_source_urls": [
+        "https://www.agoda.com/mercure-ambassador-seoul-hongdae/hotel/seoul-kr.html",
+        "https://all.accor.com/hotel/B696/index.en.shtml"
+      ],
+      "reason_code": "landing_blank"
+    },
+    {
+      "option_id": "0340e85e-42c7-45f7-91f8-178de9597fd5",
+      "product_id": "287f69b8-95f4-4e05-817a-e13b4d5310b4",
+      "source_key": "editorial:seoul:mercure-hongdae",
+      "provider": "booking",
+      "version": 1,
+      "url": "https://www.booking.com/hotel/kr/mercure-ambassador-seoul-hongdae.html",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://all.accor.com/hotel/B696/index.en.shtml",
+      "expected_identity": {
+        "name": "Mercure Ambassador Seoul Hongdae",
+        "address": "144 Yanghwa-ro, Mapo-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "web_primary_open",
+      "reason": "本輪精準 URL direct open 要求 JavaScript／robot 驗證，未取得飯店本文。維持 pending；不繞過驗證，不因已知同館資料而宣稱此入口已核實。",
+      "evidence_source_urls": [
+        "https://www.booking.com/hotel/kr/mercure-ambassador-seoul-hongdae.html",
+        "https://all.accor.com/hotel/B696/index.en.shtml"
+      ],
+      "reason_code": "robot_js_required"
+    },
+    {
+      "option_id": "a5be3edd-5fa6-40fe-87ff-21942f8c11db",
+      "product_id": "287f69b8-95f4-4e05-817a-e13b4d5310b4",
+      "source_key": "editorial:seoul:mercure-hongdae",
+      "provider": "expedia",
+      "version": 1,
+      "url": "https://www.expedia.com/Seoul-Hotels-Mercure-Ambassador-Seoul-Hongdae.h121278293.Hotel-Information",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://all.accor.com/hotel/B696/index.en.shtml",
+      "expected_identity": {
+        "name": "Mercure Ambassador Seoul Hongdae",
+        "address": "144 Yanghwa-ro, Mapo-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "web_primary_open",
+      "reason": "本輪精準 URL direct open 及補查未取得可驗證的落地頁，工具回傳 Internal Error；不是 404／下架證據，維持 pending。 Expedia 香港站相同 property ID 的 primary 搜尋索引顯示本館及 144 Yanghwa-ro，但不代替現有 .com 入口的實際驗證。",
+      "evidence_source_urls": [
+        "https://www.expedia.com/Seoul-Hotels-Mercure-Ambassador-Seoul-Hongdae.h121278293.Hotel-Information",
+        "https://all.accor.com/hotel/B696/index.en.shtml"
+      ],
+      "reason_code": "landing_read_failed",
+      "supplemental_candidate_url": "https://www.expedia.com.hk/en/Seoul-Hotels-Mercure-Ambassador-Seoul-Hongdae.h121278293.Hotel-Information"
+    },
+    {
+      "option_id": "406e1594-5de0-4a01-965b-0fd7cbb29caa",
+      "product_id": "287f69b8-95f4-4e05-817a-e13b4d5310b4",
+      "source_key": "editorial:seoul:mercure-hongdae",
+      "provider": "rakuten",
+      "version": 2,
+      "url": "https://travel.rakuten.com/hkg/zh-hk/hotel_info_item/cnt_south_korea/sub_seoul/cty_mapo_district/dst_mapogu/34123457217428/",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://all.accor.com/hotel/B696/index.en.shtml",
+      "expected_identity": {
+        "name": "Mercure Ambassador Seoul Hongdae",
+        "address": "144 Yanghwa-ro, Mapo-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": "Mercure Ambassador Seoul Hongdae",
+      "observed_street": null,
+      "method": "web_primary_open",
+      "reason": "精準頁面標題符合本館，但本文未取得可核對的完整街道門牌；後续 find／定位本文失敗。僅 title 不足以核准，维持 pending。",
+      "evidence_source_urls": [
+        "https://travel.rakuten.com/hkg/zh-hk/hotel_info_item/cnt_south_korea/sub_seoul/cty_mapo_district/dst_mapogu/34123457217428/",
+        "https://all.accor.com/hotel/B696/index.en.shtml"
+      ],
+      "reason_code": "title_without_street"
+    },
+    {
+      "option_id": "661cdc12-9cb7-4c1e-99af-a2a28bb5232f",
+      "product_id": "0f922904-6306-42ad-900e-bbb2402f4deb",
+      "source_key": "editorial:seoul:park-hyatt-seoul",
+      "provider": "agoda",
+      "version": 1,
+      "url": "https://www.agoda.com/park-hyatt-seoul-hotel/hotel/seoul-kr.html",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.hyatt.com/park-hyatt/en-US/selph-park-hyatt-seoul/hotel-info",
+      "expected_identity": {
+        "name": "Park Hyatt Seoul",
+        "address": "606 Teheran-ro, Gangnam-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "web_primary_open",
+      "reason": "本輪精準 URL direct open 僅回傳空白 input，無可讀飯店名稱／門牌。維持 pending；待內建瀏覽器實際核對，不以 URL slug 當身分證據。",
+      "evidence_source_urls": [
+        "https://www.agoda.com/park-hyatt-seoul-hotel/hotel/seoul-kr.html",
+        "https://www.hyatt.com/park-hyatt/en-US/selph-park-hyatt-seoul/hotel-info"
+      ],
+      "reason_code": "landing_blank"
+    },
+    {
+      "option_id": "45416cf8-bac4-4b30-83dd-f450ad7773ff",
+      "product_id": "0f922904-6306-42ad-900e-bbb2402f4deb",
+      "source_key": "editorial:seoul:park-hyatt-seoul",
+      "provider": "booking",
+      "version": 1,
+      "url": "https://www.booking.com/hotel/kr/park-hyatt-seoul.html",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.hyatt.com/park-hyatt/en-US/selph-park-hyatt-seoul/hotel-info",
+      "expected_identity": {
+        "name": "Park Hyatt Seoul",
+        "address": "606 Teheran-ro, Gangnam-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "web_primary_open",
+      "reason": "本輪精準 URL direct open 要求 JavaScript／robot 驗證，未取得飯店本文。維持 pending；不繞過驗證，不因已知同館資料而宣稱此入口已核實。",
+      "evidence_source_urls": [
+        "https://www.booking.com/hotel/kr/park-hyatt-seoul.html",
+        "https://www.hyatt.com/park-hyatt/en-US/selph-park-hyatt-seoul/hotel-info"
+      ],
+      "reason_code": "robot_js_required"
+    },
+    {
+      "option_id": "e3d07ec6-fea5-4cd3-9bde-d6edc830f00a",
+      "product_id": "0f922904-6306-42ad-900e-bbb2402f4deb",
+      "source_key": "editorial:seoul:park-hyatt-seoul",
+      "provider": "expedia",
+      "version": 1,
+      "url": "https://www.expedia.com/Seoul-Hotels-Park-Hyatt-Seoul.h1200015.Hotel-Information",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "matched",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.hyatt.com/park-hyatt/en-US/selph-park-hyatt-seoul/hotel-info",
+      "expected_identity": {
+        "name": "Park Hyatt Seoul",
+        "address": "606 Teheran-ro, Gangnam-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": "Park Hyatt Seoul",
+      "observed_street": "606 Teheran-ro, Gangnam-gu, Seoul",
+      "method": "web_primary_open_and_find",
+      "reason": "平台／官網本館名稱與街道門牌交叉相符；僅身分證據 matched，並非已核准。browser_verified=false，仍須正常 DNS／HTTPS／重導向安全與版本檢查；無日期搜尋、報價、空房或分潤驗證。 平台郵遞區號採舊格式；街道門牌及分館相同，不複製或更新郵遞區號。",
+      "evidence_source_urls": [
+        "https://www.expedia.com/Seoul-Hotels-Park-Hyatt-Seoul.h1200015.Hotel-Information",
+        "https://www.hyatt.com/park-hyatt/en-US/selph-park-hyatt-seoul/hotel-info"
+      ],
+      "reason_code": "identity_matched_no_browser_override"
+    },
+    {
+      "option_id": "8c736856-6c85-4bf1-806b-cce55e6e97f8",
+      "product_id": "0f922904-6306-42ad-900e-bbb2402f4deb",
+      "source_key": "editorial:seoul:park-hyatt-seoul",
+      "provider": "official",
+      "version": 1,
+      "url": "https://www.hyatt.com/park-hyatt/en-US/selph-park-hyatt-seoul/hotel-info",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "matched",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.hyatt.com/park-hyatt/en-US/selph-park-hyatt-seoul/hotel-info",
+      "expected_identity": {
+        "name": "Park Hyatt Seoul",
+        "address": "606 Teheran-ro, Gangnam-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": "Park Hyatt Seoul",
+      "observed_street": "606 Teheran-ro, Gangnam-gu, Seoul",
+      "method": "web_primary_open_and_find",
+      "reason": "平台／官網本館名稱與街道門牌交叉相符；僅身分證據 matched，並非已核准。browser_verified=false，仍須正常 DNS／HTTPS／重導向安全與版本檢查；無日期搜尋、報價、空房或分潤驗證。",
+      "evidence_source_urls": [
+        "https://www.hyatt.com/park-hyatt/en-US/selph-park-hyatt-seoul/hotel-info"
+      ],
+      "reason_code": "identity_matched_no_browser_override"
+    },
+    {
+      "option_id": "67c82463-cb0c-4ce8-b53c-3f11a7cffad3",
+      "product_id": "0f922904-6306-42ad-900e-bbb2402f4deb",
+      "source_key": "editorial:seoul:park-hyatt-seoul",
+      "provider": "rakuten",
+      "version": 1,
+      "url": null,
+      "discovery_status": "unconfirmed",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.hyatt.com/park-hyatt/en-US/selph-park-hyatt-seoul/hotel-info",
+      "expected_identity": {
+        "name": "Park Hyatt Seoul",
+        "address": "606 Teheran-ro, Gangnam-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "snapshot_missing_exact_identity",
+      "reason": "沒有已確認可用的國際站精準 URL；保留 unconfirmed，不推論為 not_found、不猜 ID／網址。",
+      "evidence_source_urls": [],
+      "reason_code": "missing_exact_identity"
+    },
+    {
+      "option_id": "9e5078c4-1283-43b3-b236-d721e01bbe36",
+      "product_id": "0f922904-6306-42ad-900e-bbb2402f4deb",
+      "source_key": "editorial:seoul:park-hyatt-seoul",
+      "provider": "trip_com",
+      "version": 1,
+      "url": "https://www.trip.com/hotels/seoul-hotel-detail-991995/park-hyatt-seoul/",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "matched",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.hyatt.com/park-hyatt/en-US/selph-park-hyatt-seoul/hotel-info",
+      "expected_identity": {
+        "name": "Park Hyatt Seoul",
+        "address": "606 Teheran-ro, Gangnam-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": "Park Hyatt Seoul",
+      "observed_street": "606 Teheran-ro, Gangnam-gu, Seoul",
+      "method": "web_primary_open_and_find",
+      "reason": "平台／官網本館名稱與街道門牌交叉相符；僅身分證據 matched，並非已核准。browser_verified=false，仍須正常 DNS／HTTPS／重導向安全與版本檢查；無日期搜尋、報價、空房或分潤驗證。",
+      "evidence_source_urls": [
+        "https://www.trip.com/hotels/seoul-hotel-detail-991995/park-hyatt-seoul/",
+        "https://www.hyatt.com/park-hyatt/en-US/selph-park-hyatt-seoul/hotel-info"
+      ],
+      "reason_code": "identity_matched_no_browser_override"
+    },
+    {
+      "option_id": "d677d8f6-a084-4219-b590-cc42f98158c6",
+      "product_id": "e5a8c571-961a-4dea-b36f-43624c85db82",
+      "source_key": "editorial:seoul:ryse-autograph-collection",
+      "provider": "agoda",
+      "version": 1,
+      "url": "https://www.agoda.com/ryse-autograph-collection_2/hotel/seoul-kr.html",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.rysehotel.co.kr/contact/",
+      "expected_identity": {
+        "name": "RYSE, Autograph Collection",
+        "address": "130 Yanghwa-ro, Mapo-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "web_primary_open",
+      "reason": "本輪精準 URL direct open 僅回傳空白 input，無可讀飯店名稱／門牌。維持 pending；待內建瀏覽器實際核對，不以 URL slug 當身分證據。",
+      "evidence_source_urls": [
+        "https://www.agoda.com/ryse-autograph-collection_2/hotel/seoul-kr.html",
+        "https://www.rysehotel.co.kr/contact/"
+      ],
+      "reason_code": "landing_blank"
+    },
+    {
+      "option_id": "ce37fe1a-e52f-4177-8efb-59790fe662e8",
+      "product_id": "e5a8c571-961a-4dea-b36f-43624c85db82",
+      "source_key": "editorial:seoul:ryse-autograph-collection",
+      "provider": "booking",
+      "version": 1,
+      "url": "https://www.booking.com/hotel/kr/ryse-autograph-collection-korea.html",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.rysehotel.co.kr/contact/",
+      "expected_identity": {
+        "name": "RYSE, Autograph Collection",
+        "address": "130 Yanghwa-ro, Mapo-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "web_primary_open",
+      "reason": "本輪精準 URL direct open 要求 JavaScript／robot 驗證，未取得飯店本文。維持 pending；不繞過驗證，不因已知同館資料而宣稱此入口已核實。",
+      "evidence_source_urls": [
+        "https://www.booking.com/hotel/kr/ryse-autograph-collection-korea.html",
+        "https://www.rysehotel.co.kr/contact/"
+      ],
+      "reason_code": "robot_js_required"
+    },
+    {
+      "option_id": "58ba0ac4-2fb7-4b87-bbf6-472c0df03bad",
+      "product_id": "e5a8c571-961a-4dea-b36f-43624c85db82",
+      "source_key": "editorial:seoul:ryse-autograph-collection",
+      "provider": "expedia",
+      "version": 1,
+      "url": "https://www.expedia.com/Seoul-Hotels-RYSE.h2455064.Hotel-Information",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.rysehotel.co.kr/contact/",
+      "expected_identity": {
+        "name": "RYSE, Autograph Collection",
+        "address": "130 Yanghwa-ro, Mapo-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "web_primary_open",
+      "reason": "本輪精準 URL direct open 及補查未取得可驗證的落地頁，工具回傳 Internal Error；不是 404／下架證據，維持 pending。 primary 索引的同 ID、?=Tab0 版本显示 130 Yanghwa-ro；不自行改写当前 URL、不冒稱當前無 query URL 已可讀。",
+      "evidence_source_urls": [
+        "https://www.expedia.com/Seoul-Hotels-RYSE.h2455064.Hotel-Information",
+        "https://www.rysehotel.co.kr/contact/"
+      ],
+      "reason_code": "landing_read_failed",
+      "supplemental_candidate_url": "https://www.expedia.com/Seoul-Hotels-RYSE.h2455064.Hotel-Information?=Tab0"
+    },
+    {
+      "option_id": "692c3ff2-8f47-40a7-b57e-e39ae0661d47",
+      "product_id": "e5a8c571-961a-4dea-b36f-43624c85db82",
+      "source_key": "editorial:seoul:ryse-autograph-collection",
+      "provider": "rakuten",
+      "version": 2,
+      "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_south_korea/sub_seoul/cty_mapo_district/dst_mapogu/34123457159873/",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.rysehotel.co.kr/contact/",
+      "expected_identity": {
+        "name": "RYSE, Autograph Collection",
+        "address": "130 Yanghwa-ro, Mapo-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": "RYSE, Autograph Collection",
+      "observed_street": null,
+      "method": "web_primary_open",
+      "reason": "精準頁面標題符合本館，但本文未取得可核對的完整街道門牌；後续 find／定位本文失敗。僅 title 不足以核准，维持 pending。 Rakuten 工具標示資料為去年抓取，不宣稱新鮮頁面驗證。",
+      "evidence_source_urls": [
+        "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_south_korea/sub_seoul/cty_mapo_district/dst_mapogu/34123457159873/",
+        "https://www.rysehotel.co.kr/contact/"
+      ],
+      "reason_code": "title_without_street"
+    },
+    {
+      "option_id": "51fc28c7-db15-4cc3-aaec-67be3261b968",
+      "product_id": "145e7bbb-df82-4bf9-8290-f5be7f9161a9",
+      "source_key": "editorial:seoul:solaria-myeongdong",
+      "provider": "agoda",
+      "version": 1,
+      "url": "https://www.agoda.com/solaria-nishitetsu-hotel-seoul-myeongdong/hotel/seoul-kr.html",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://solaria-seoul.nnr-h.com/",
+      "expected_identity": {
+        "name": "Solaria Nishitetsu Hotel Seoul Myeongdong",
+        "address": "27 Myeongdong 8-gil, Jung-gu, Seoul",
+        "official_mode": "primary_search_index_2_days",
+        "supplemental_source_url": "https://solaria-seoul.nnr-h.com/stay/upper-triple"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "web_primary_open",
+      "reason": "本輪精準 URL direct open 僅回傳空白 input，無可讀飯店名稱／門牌。維持 pending；待內建瀏覽器實際核對，不以 URL slug 當身分證據。",
+      "evidence_source_urls": [
+        "https://www.agoda.com/solaria-nishitetsu-hotel-seoul-myeongdong/hotel/seoul-kr.html",
+        "https://solaria-seoul.nnr-h.com/"
+      ],
+      "reason_code": "landing_blank"
+    },
+    {
+      "option_id": "c75606de-1030-4474-bd61-36ce08782962",
+      "product_id": "145e7bbb-df82-4bf9-8290-f5be7f9161a9",
+      "source_key": "editorial:seoul:solaria-myeongdong",
+      "provider": "booking",
+      "version": 1,
+      "url": "https://www.booking.com/hotel/kr/solaria-nishitetsu-seoul.html",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://solaria-seoul.nnr-h.com/",
+      "expected_identity": {
+        "name": "Solaria Nishitetsu Hotel Seoul Myeongdong",
+        "address": "27 Myeongdong 8-gil, Jung-gu, Seoul",
+        "official_mode": "primary_search_index_2_days",
+        "supplemental_source_url": "https://solaria-seoul.nnr-h.com/stay/upper-triple"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "web_primary_open",
+      "reason": "本輪精準 URL direct open 要求 JavaScript／robot 驗證，未取得飯店本文。維持 pending；不繞過驗證，不因已知同館資料而宣稱此入口已核實。",
+      "evidence_source_urls": [
+        "https://www.booking.com/hotel/kr/solaria-nishitetsu-seoul.html",
+        "https://solaria-seoul.nnr-h.com/"
+      ],
+      "reason_code": "robot_js_required"
+    },
+    {
+      "option_id": "d1e4951c-6fa9-41e8-8a1b-beaa4a7eb0c5",
+      "product_id": "145e7bbb-df82-4bf9-8290-f5be7f9161a9",
+      "source_key": "editorial:seoul:solaria-myeongdong",
+      "provider": "expedia",
+      "version": 1,
+      "url": "https://www.expedia.com/Seoul-Hotels-Solaria-Nishitetsu-Hotel-Seoul-Myeongdong.h9761216.Hotel-Information",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "matched",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://solaria-seoul.nnr-h.com/",
+      "expected_identity": {
+        "name": "Solaria Nishitetsu Hotel Seoul Myeongdong",
+        "address": "27 Myeongdong 8-gil, Jung-gu, Seoul",
+        "official_mode": "primary_search_index_2_days",
+        "supplemental_source_url": "https://solaria-seoul.nnr-h.com/stay/upper-triple"
+      },
+      "observed_name": "Solaria Nishitetsu Hotel Seoul Myeongdong",
+      "observed_street": "27 Myeongdong 8-gil, Jung-gu, Seoul",
+      "method": "web_primary_open_and_find",
+      "reason": "平台／官網本館名稱與街道門牌交叉相符；僅身分證據 matched，並非已核准。browser_verified=false，仍須正常 DNS／HTTPS／重導向安全與版本檢查；無日期搜尋、報價、空房或分潤驗證。 官網門牌為 primary 搜尋索引；官網 direct open 受阻或無本文，來源新鮮度如 expected_identity 所記。",
+      "evidence_source_urls": [
+        "https://www.expedia.com/Seoul-Hotels-Solaria-Nishitetsu-Hotel-Seoul-Myeongdong.h9761216.Hotel-Information",
+        "https://solaria-seoul.nnr-h.com/"
+      ],
+      "reason_code": "identity_matched_no_browser_override"
+    },
+    {
+      "option_id": "b78336ce-4066-443e-978f-caa5a90c5028",
+      "product_id": "145e7bbb-df82-4bf9-8290-f5be7f9161a9",
+      "source_key": "editorial:seoul:solaria-myeongdong",
+      "provider": "official",
+      "version": 1,
+      "url": "https://solaria-seoul.nnr-h.com/",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://solaria-seoul.nnr-h.com/",
+      "expected_identity": {
+        "name": "Solaria Nishitetsu Hotel Seoul Myeongdong",
+        "address": "27 Myeongdong 8-gil, Jung-gu, Seoul",
+        "official_mode": "primary_search_index_2_days",
+        "supplemental_source_url": "https://solaria-seoul.nnr-h.com/stay/upper-triple"
+      },
+      "observed_name": "Solaria Nishitetsu Hotel Seoul Myeongdong",
+      "observed_street": null,
+      "method": "web_primary_open",
+      "reason": "精準頁面標題符合本館，但本文未取得可核對的完整街道門牌；後续 find／定位本文失敗。僅 title 不足以核准，维持 pending。",
+      "evidence_source_urls": [
+        "https://solaria-seoul.nnr-h.com/"
+      ],
+      "reason_code": "title_without_street"
+    },
+    {
+      "option_id": "1b42c2de-969e-43bf-9dc2-25c824d938d6",
+      "product_id": "145e7bbb-df82-4bf9-8290-f5be7f9161a9",
+      "source_key": "editorial:seoul:solaria-myeongdong",
+      "provider": "rakuten",
+      "version": 1,
+      "url": null,
+      "discovery_status": "unconfirmed",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://solaria-seoul.nnr-h.com/",
+      "expected_identity": {
+        "name": "Solaria Nishitetsu Hotel Seoul Myeongdong",
+        "address": "27 Myeongdong 8-gil, Jung-gu, Seoul",
+        "official_mode": "primary_search_index_2_days",
+        "supplemental_source_url": "https://solaria-seoul.nnr-h.com/stay/upper-triple"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "snapshot_missing_exact_identity",
+      "reason": "沒有已確認可用的國際站精準 URL；保留 unconfirmed，不推論為 not_found、不猜 ID／網址。",
+      "evidence_source_urls": [],
+      "reason_code": "missing_exact_identity"
+    },
+    {
+      "option_id": "fadcb9a0-278b-485d-ba9c-969b6d37ffae",
+      "product_id": "145e7bbb-df82-4bf9-8290-f5be7f9161a9",
+      "source_key": "editorial:seoul:solaria-myeongdong",
+      "provider": "trip_com",
+      "version": 1,
+      "url": "https://www.trip.com/hotels/seoul-hotel-detail-2848471/hotel/",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://solaria-seoul.nnr-h.com/",
+      "expected_identity": {
+        "name": "Solaria Nishitetsu Hotel Seoul Myeongdong",
+        "address": "27 Myeongdong 8-gil, Jung-gu, Seoul",
+        "official_mode": "primary_search_index_2_days",
+        "supplemental_source_url": "https://solaria-seoul.nnr-h.com/stay/upper-triple"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "web_primary_open",
+      "reason": "本輪精準 URL direct open 及補查未取得可驗證的落地頁，工具回傳 Internal Error；不是 404／下架證據，維持 pending。",
+      "evidence_source_urls": [
+        "https://www.trip.com/hotels/seoul-hotel-detail-2848471/hotel/",
+        "https://solaria-seoul.nnr-h.com/"
+      ],
+      "reason_code": "landing_read_failed"
+    },
+    {
+      "option_id": "43721237-040b-47e2-b6ed-446dd4030df0",
+      "product_id": "90cc1cf8-30bd-4498-be0c-56f8fd9f5ee6",
+      "source_key": "editorial:seoul:westin-josun-seoul",
+      "provider": "agoda",
+      "version": 1,
+      "url": "https://www.agoda.com/the-westin-chosun-seoul/hotel/seoul-kr.html",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.marriott.com/en-us/hotels/selwi-the-westin-josun-seoul/overview/",
+      "expected_identity": {
+        "name": "The Westin Josun Seoul",
+        "address": "106 Sogong-ro, Jung-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "web_primary_open",
+      "reason": "本輪精準 URL direct open 僅回傳空白 input，無可讀飯店名稱／門牌。維持 pending；待內建瀏覽器實際核對，不以 URL slug 當身分證據。",
+      "evidence_source_urls": [
+        "https://www.agoda.com/the-westin-chosun-seoul/hotel/seoul-kr.html",
+        "https://www.marriott.com/en-us/hotels/selwi-the-westin-josun-seoul/overview/"
+      ],
+      "reason_code": "landing_blank"
+    },
+    {
+      "option_id": "4684d23b-a65b-409c-934f-1ca66bfd78bb",
+      "product_id": "90cc1cf8-30bd-4498-be0c-56f8fd9f5ee6",
+      "source_key": "editorial:seoul:westin-josun-seoul",
+      "provider": "booking",
+      "version": 1,
+      "url": "https://www.booking.com/hotel/kr/westin-chosun-seoul.html",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.marriott.com/en-us/hotels/selwi-the-westin-josun-seoul/overview/",
+      "expected_identity": {
+        "name": "The Westin Josun Seoul",
+        "address": "106 Sogong-ro, Jung-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "web_primary_open",
+      "reason": "本輪精準 URL direct open 要求 JavaScript／robot 驗證，未取得飯店本文。維持 pending；不繞過驗證，不因已知同館資料而宣稱此入口已核實。",
+      "evidence_source_urls": [
+        "https://www.booking.com/hotel/kr/westin-chosun-seoul.html",
+        "https://www.marriott.com/en-us/hotels/selwi-the-westin-josun-seoul/overview/"
+      ],
+      "reason_code": "robot_js_required"
+    },
+    {
+      "option_id": "4adab3dc-8cd4-4998-ba0c-f88152b2242a",
+      "product_id": "90cc1cf8-30bd-4498-be0c-56f8fd9f5ee6",
+      "source_key": "editorial:seoul:westin-josun-seoul",
+      "provider": "expedia",
+      "version": 1,
+      "url": "https://www.expedia.com/Seoul-Hotels-The-Westin-Josun-Seoul.h24908.Hotel-Information",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "matched",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.marriott.com/en-us/hotels/selwi-the-westin-josun-seoul/overview/",
+      "expected_identity": {
+        "name": "The Westin Josun Seoul",
+        "address": "106 Sogong-ro, Jung-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": "The Westin Josun Seoul",
+      "observed_street": "106 Sogong-ro, Jung-gu, Seoul",
+      "method": "web_primary_open_and_find",
+      "reason": "平台／官網本館名稱與街道門牌交叉相符；僅身分證據 matched，並非已核准。browser_verified=false，仍須正常 DNS／HTTPS／重導向安全與版本檢查；無日期搜尋、報價、空房或分潤驗證。 平台郵遞區號採舊格式；街道門牌及分館相同，不複製或更新郵遞區號。",
+      "evidence_source_urls": [
+        "https://www.expedia.com/Seoul-Hotels-The-Westin-Josun-Seoul.h24908.Hotel-Information",
+        "https://www.marriott.com/en-us/hotels/selwi-the-westin-josun-seoul/overview/"
+      ],
+      "reason_code": "identity_matched_no_browser_override"
+    },
+    {
+      "option_id": "ea7626cd-3640-4e07-bdf8-0d6e19dc1b60",
+      "product_id": "90cc1cf8-30bd-4498-be0c-56f8fd9f5ee6",
+      "source_key": "editorial:seoul:westin-josun-seoul",
+      "provider": "official",
+      "version": 1,
+      "url": "https://www.marriott.com/en-us/hotels/selwi-the-westin-josun-seoul/overview/",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "matched",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.marriott.com/en-us/hotels/selwi-the-westin-josun-seoul/overview/",
+      "expected_identity": {
+        "name": "The Westin Josun Seoul",
+        "address": "106 Sogong-ro, Jung-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": "The Westin Josun Seoul",
+      "observed_street": "106 Sogong-ro, Jung-gu, Seoul",
+      "method": "web_primary_open_and_find",
+      "reason": "平台／官網本館名稱與街道門牌交叉相符；僅身分證據 matched，並非已核准。browser_verified=false，仍須正常 DNS／HTTPS／重導向安全與版本檢查；無日期搜尋、報價、空房或分潤驗證。",
+      "evidence_source_urls": [
+        "https://www.marriott.com/en-us/hotels/selwi-the-westin-josun-seoul/overview/"
+      ],
+      "reason_code": "identity_matched_no_browser_override"
+    },
+    {
+      "option_id": "e7a7e8f4-fb78-43e6-abf1-7d53ce62ef5b",
+      "product_id": "90cc1cf8-30bd-4498-be0c-56f8fd9f5ee6",
+      "source_key": "editorial:seoul:westin-josun-seoul",
+      "provider": "rakuten",
+      "version": 1,
+      "url": null,
+      "discovery_status": "unconfirmed",
+      "baseline_status": "pending",
+      "decision": "hold",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.marriott.com/en-us/hotels/selwi-the-westin-josun-seoul/overview/",
+      "expected_identity": {
+        "name": "The Westin Josun Seoul",
+        "address": "106 Sogong-ro, Jung-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": null,
+      "observed_street": null,
+      "method": "snapshot_missing_exact_identity",
+      "reason": "沒有已確認可用的國際站精準 URL；保留 unconfirmed，不推論為 not_found、不猜 ID／網址。",
+      "evidence_source_urls": [],
+      "reason_code": "missing_exact_identity"
+    },
+    {
+      "option_id": "7dc9e9eb-a3e5-4172-a8aa-b98c1fd104a8",
+      "product_id": "90cc1cf8-30bd-4498-be0c-56f8fd9f5ee6",
+      "source_key": "editorial:seoul:westin-josun-seoul",
+      "provider": "trip_com",
+      "version": 1,
+      "url": "https://www.trip.com/hotels/seoul-hotel-detail-988507/the-westin-chosun-hotel-seoul/",
+      "discovery_status": "found",
+      "baseline_status": "pending",
+      "decision": "matched",
+      "browser_verified": false,
+      "checked_on_utc": "2026-09-08",
+      "official_source_url": "https://www.marriott.com/en-us/hotels/selwi-the-westin-josun-seoul/overview/",
+      "expected_identity": {
+        "name": "The Westin Josun Seoul",
+        "address": "106 Sogong-ro, Jung-gu, Seoul",
+        "official_mode": "primary_live_text"
+      },
+      "observed_name": "The Westin Josun Seoul",
+      "observed_street": "106 Sogong-ro, Jung-gu, Seoul",
+      "method": "web_primary_open_and_find",
+      "reason": "平台／官網本館名稱與街道門牌交叉相符；僅身分證據 matched，並非已核准。browser_verified=false，仍須正常 DNS／HTTPS／重導向安全與版本檢查；無日期搜尋、報價、空房或分潤驗證。",
+      "evidence_source_urls": [
+        "https://www.trip.com/hotels/seoul-hotel-detail-988507/the-westin-chosun-hotel-seoul/",
+        "https://www.marriott.com/en-us/hotels/selwi-the-westin-josun-seoul/overview/"
+      ],
+      "reason_code": "identity_matched_no_browser_override"
+    }
+  ]
+}

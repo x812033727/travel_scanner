@@ -1,0 +1,2956 @@
+{
+  "schema_version": 1,
+  "phase": "before_apply",
+  "started_at": "2026-09-08T16:00:11.086347+00:00",
+  "completed_at": "2026-09-08T16:00:16.244763+00:00",
+  "method": "anonymous_public_GET_only",
+  "matrix_requests": 30,
+  "preflight_requests": 1,
+  "total_http_gets_in_this_check": 31,
+  "credentials_sent": false,
+  "quote_calls": 0,
+  "clickout_calls": 0,
+  "mutating_api_calls": 0,
+  "database_connections": 0,
+  "locale_header_note": "X-Travel-Locale is the effective application header; Accept-Language was sent with the same locale, and no locale cookie was sent.",
+  "source_credit_expected_fields": [
+    "changes",
+    "license_name",
+    "license_url",
+    "publisher",
+    "title",
+    "url"
+  ],
+  "baseline_file": "docs/hotel-review-all-20260908/checks-before.json",
+  "baseline_pending_product_ids_checked": 30,
+  "baseline_pending_option_ids_checked": 260,
+  "summary": {
+    "http_200": 30,
+    "all_checks_pass": true,
+    "unique_public_products": 30,
+    "by_city": {
+      "tokyo": {
+        "enabled_values": [
+          true
+        ],
+        "counts_by_locale": {
+          "en": 10,
+          "ja": 10,
+          "ko": 10,
+          "zh-TW": 10,
+          "zh-CN": 10
+        }
+      },
+      "osaka": {
+        "enabled_values": [
+          true
+        ],
+        "counts_by_locale": {
+          "en": 5,
+          "ja": 5,
+          "ko": 5,
+          "zh-TW": 5,
+          "zh-CN": 5
+        }
+      },
+      "kyoto": {
+        "enabled_values": [
+          true
+        ],
+        "counts_by_locale": {
+          "en": 0,
+          "ja": 0,
+          "ko": 0,
+          "zh-TW": 0,
+          "zh-CN": 0
+        }
+      },
+      "seoul": {
+        "enabled_values": [
+          true
+        ],
+        "counts_by_locale": {
+          "en": 5,
+          "ja": 5,
+          "ko": 5,
+          "zh-TW": 5,
+          "zh-CN": 5
+        }
+      },
+      "busan": {
+        "enabled_values": [
+          true
+        ],
+        "counts_by_locale": {
+          "en": 0,
+          "ja": 0,
+          "ko": 0,
+          "zh-TW": 0,
+          "zh-CN": 0
+        }
+      },
+      "taipei": {
+        "enabled_values": [
+          true
+        ],
+        "counts_by_locale": {
+          "en": 10,
+          "ja": 10,
+          "ko": 10,
+          "zh-TW": 10,
+          "zh-CN": 10
+        }
+      }
+    },
+    "pending_products_exposed": 0,
+    "pending_options_exposed": 0,
+    "closed_cities": [],
+    "enabled_cities_with_zero_public_hotels": [
+      "kyoto",
+      "busan"
+    ],
+    "price_fields": "reference_price, currency and price_checked_at are null for every returned hotel"
+  },
+  "checks": [
+    {
+      "destination_id": "tokyo",
+      "locale": "en",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=tokyo&type=hotel",
+      "checked_at": "2026-09-08T16:00:11.099610+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 10,
+      "reported_total": 10,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [
+        "fdf201c6-8838-41bd-a9ef-5bdd8f69ad24",
+        "6dde791e-5b13-450f-b743-0e66411af7da",
+        "b1afc011-53e2-4cab-b277-1ad8ffbc0af9",
+        "85bf59b8-1c01-4b0d-aa7b-138129b615b2",
+        "b79582da-592f-4a33-aa22-6457cf815094",
+        "ca55d588-a5dd-4dd9-9c84-72c5e687c48f",
+        "70eec2a6-582f-4c9d-9414-0eec588e85fd",
+        "2263bc8e-be0a-4163-b2ad-6f3a7c049983",
+        "6431e10f-dde0-471d-ab5f-0dfbefcda2f6",
+        "87ac9f12-2b00-48b1-897e-bf66c5aeb616"
+      ],
+      "booking_option_ids": [
+        "3d48221c-b5a4-4800-a076-02cf10a364a3",
+        "3678bebc-9166-4830-b846-c707f940c8e9",
+        "0fd5478c-78a3-4cfb-be12-1c3808c21ebc",
+        "09f6e61b-ff11-4907-9fbc-1d97462fd663",
+        "bf0203d2-ae5c-4085-8ab1-2be98047fd75",
+        "12a4900e-2624-4932-a785-0ffa45dcdb02",
+        "3266382c-cadf-4df4-954a-5b6735cd952c",
+        "377a5b5f-df98-422c-8138-9103783e2db9",
+        "2af4cdf3-c4b4-5cc0-a6c3-14069d54e9bb",
+        "0ab5ef69-1983-4bd3-a3f5-4244222bcda6",
+        "94208dea-57d0-5426-a1be-e2931ce5f181",
+        "6cf28949-c58b-4088-994c-880014a00c89",
+        "78e00bad-b47c-5fba-ad7f-42fed82e4749",
+        "1715489e-3d34-4009-bf03-3e464c00e6d5",
+        "2447ca52-01ed-5edf-9b12-1eca6450c7ab",
+        "e7c85c8a-07e5-49dd-8b21-420ebcbad47a",
+        "27eb102d-cb4c-50b6-9976-57a87cfb0d1d",
+        "56327f30-feb0-4992-8fad-d91798b960c6",
+        "279c9958-acf4-5ae4-aa38-df383a7c7ca3",
+        "935bbce0-f79f-425b-be5d-9365039e02c9"
+      ],
+      "all_checks_pass": true,
+      "issues": []
+    },
+    {
+      "destination_id": "tokyo",
+      "locale": "ja",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=tokyo&type=hotel",
+      "checked_at": "2026-09-08T16:00:11.101042+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 10,
+      "reported_total": 10,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [
+        "fdf201c6-8838-41bd-a9ef-5bdd8f69ad24",
+        "6dde791e-5b13-450f-b743-0e66411af7da",
+        "b1afc011-53e2-4cab-b277-1ad8ffbc0af9",
+        "85bf59b8-1c01-4b0d-aa7b-138129b615b2",
+        "b79582da-592f-4a33-aa22-6457cf815094",
+        "ca55d588-a5dd-4dd9-9c84-72c5e687c48f",
+        "70eec2a6-582f-4c9d-9414-0eec588e85fd",
+        "2263bc8e-be0a-4163-b2ad-6f3a7c049983",
+        "6431e10f-dde0-471d-ab5f-0dfbefcda2f6",
+        "87ac9f12-2b00-48b1-897e-bf66c5aeb616"
+      ],
+      "booking_option_ids": [
+        "3d48221c-b5a4-4800-a076-02cf10a364a3",
+        "3678bebc-9166-4830-b846-c707f940c8e9",
+        "0fd5478c-78a3-4cfb-be12-1c3808c21ebc",
+        "09f6e61b-ff11-4907-9fbc-1d97462fd663",
+        "bf0203d2-ae5c-4085-8ab1-2be98047fd75",
+        "12a4900e-2624-4932-a785-0ffa45dcdb02",
+        "3266382c-cadf-4df4-954a-5b6735cd952c",
+        "377a5b5f-df98-422c-8138-9103783e2db9",
+        "2af4cdf3-c4b4-5cc0-a6c3-14069d54e9bb",
+        "0ab5ef69-1983-4bd3-a3f5-4244222bcda6",
+        "94208dea-57d0-5426-a1be-e2931ce5f181",
+        "6cf28949-c58b-4088-994c-880014a00c89",
+        "78e00bad-b47c-5fba-ad7f-42fed82e4749",
+        "1715489e-3d34-4009-bf03-3e464c00e6d5",
+        "2447ca52-01ed-5edf-9b12-1eca6450c7ab",
+        "e7c85c8a-07e5-49dd-8b21-420ebcbad47a",
+        "27eb102d-cb4c-50b6-9976-57a87cfb0d1d",
+        "56327f30-feb0-4992-8fad-d91798b960c6",
+        "279c9958-acf4-5ae4-aa38-df383a7c7ca3",
+        "935bbce0-f79f-425b-be5d-9365039e02c9"
+      ],
+      "all_checks_pass": true,
+      "issues": []
+    },
+    {
+      "destination_id": "tokyo",
+      "locale": "ko",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=tokyo&type=hotel",
+      "checked_at": "2026-09-08T16:00:11.101871+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 10,
+      "reported_total": 10,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [
+        "fdf201c6-8838-41bd-a9ef-5bdd8f69ad24",
+        "6dde791e-5b13-450f-b743-0e66411af7da",
+        "b1afc011-53e2-4cab-b277-1ad8ffbc0af9",
+        "85bf59b8-1c01-4b0d-aa7b-138129b615b2",
+        "b79582da-592f-4a33-aa22-6457cf815094",
+        "ca55d588-a5dd-4dd9-9c84-72c5e687c48f",
+        "70eec2a6-582f-4c9d-9414-0eec588e85fd",
+        "2263bc8e-be0a-4163-b2ad-6f3a7c049983",
+        "6431e10f-dde0-471d-ab5f-0dfbefcda2f6",
+        "87ac9f12-2b00-48b1-897e-bf66c5aeb616"
+      ],
+      "booking_option_ids": [
+        "3d48221c-b5a4-4800-a076-02cf10a364a3",
+        "3678bebc-9166-4830-b846-c707f940c8e9",
+        "0fd5478c-78a3-4cfb-be12-1c3808c21ebc",
+        "09f6e61b-ff11-4907-9fbc-1d97462fd663",
+        "bf0203d2-ae5c-4085-8ab1-2be98047fd75",
+        "12a4900e-2624-4932-a785-0ffa45dcdb02",
+        "3266382c-cadf-4df4-954a-5b6735cd952c",
+        "377a5b5f-df98-422c-8138-9103783e2db9",
+        "2af4cdf3-c4b4-5cc0-a6c3-14069d54e9bb",
+        "0ab5ef69-1983-4bd3-a3f5-4244222bcda6",
+        "94208dea-57d0-5426-a1be-e2931ce5f181",
+        "6cf28949-c58b-4088-994c-880014a00c89",
+        "78e00bad-b47c-5fba-ad7f-42fed82e4749",
+        "1715489e-3d34-4009-bf03-3e464c00e6d5",
+        "2447ca52-01ed-5edf-9b12-1eca6450c7ab",
+        "e7c85c8a-07e5-49dd-8b21-420ebcbad47a",
+        "27eb102d-cb4c-50b6-9976-57a87cfb0d1d",
+        "56327f30-feb0-4992-8fad-d91798b960c6",
+        "279c9958-acf4-5ae4-aa38-df383a7c7ca3",
+        "935bbce0-f79f-425b-be5d-9365039e02c9"
+      ],
+      "all_checks_pass": true,
+      "issues": []
+    },
+    {
+      "destination_id": "tokyo",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=tokyo&type=hotel",
+      "checked_at": "2026-09-08T16:00:12.310956+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 10,
+      "reported_total": 10,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [
+        "fdf201c6-8838-41bd-a9ef-5bdd8f69ad24",
+        "6dde791e-5b13-450f-b743-0e66411af7da",
+        "b1afc011-53e2-4cab-b277-1ad8ffbc0af9",
+        "85bf59b8-1c01-4b0d-aa7b-138129b615b2",
+        "b79582da-592f-4a33-aa22-6457cf815094",
+        "ca55d588-a5dd-4dd9-9c84-72c5e687c48f",
+        "70eec2a6-582f-4c9d-9414-0eec588e85fd",
+        "2263bc8e-be0a-4163-b2ad-6f3a7c049983",
+        "6431e10f-dde0-471d-ab5f-0dfbefcda2f6",
+        "87ac9f12-2b00-48b1-897e-bf66c5aeb616"
+      ],
+      "booking_option_ids": [
+        "3d48221c-b5a4-4800-a076-02cf10a364a3",
+        "3678bebc-9166-4830-b846-c707f940c8e9",
+        "0fd5478c-78a3-4cfb-be12-1c3808c21ebc",
+        "09f6e61b-ff11-4907-9fbc-1d97462fd663",
+        "bf0203d2-ae5c-4085-8ab1-2be98047fd75",
+        "12a4900e-2624-4932-a785-0ffa45dcdb02",
+        "3266382c-cadf-4df4-954a-5b6735cd952c",
+        "377a5b5f-df98-422c-8138-9103783e2db9",
+        "2af4cdf3-c4b4-5cc0-a6c3-14069d54e9bb",
+        "0ab5ef69-1983-4bd3-a3f5-4244222bcda6",
+        "94208dea-57d0-5426-a1be-e2931ce5f181",
+        "6cf28949-c58b-4088-994c-880014a00c89",
+        "78e00bad-b47c-5fba-ad7f-42fed82e4749",
+        "1715489e-3d34-4009-bf03-3e464c00e6d5",
+        "2447ca52-01ed-5edf-9b12-1eca6450c7ab",
+        "e7c85c8a-07e5-49dd-8b21-420ebcbad47a",
+        "27eb102d-cb4c-50b6-9976-57a87cfb0d1d",
+        "56327f30-feb0-4992-8fad-d91798b960c6",
+        "279c9958-acf4-5ae4-aa38-df383a7c7ca3",
+        "935bbce0-f79f-425b-be5d-9365039e02c9"
+      ],
+      "all_checks_pass": true,
+      "issues": []
+    },
+    {
+      "destination_id": "tokyo",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=tokyo&type=hotel",
+      "checked_at": "2026-09-08T16:00:12.313960+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 10,
+      "reported_total": 10,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [
+        "fdf201c6-8838-41bd-a9ef-5bdd8f69ad24",
+        "6dde791e-5b13-450f-b743-0e66411af7da",
+        "b1afc011-53e2-4cab-b277-1ad8ffbc0af9",
+        "85bf59b8-1c01-4b0d-aa7b-138129b615b2",
+        "b79582da-592f-4a33-aa22-6457cf815094",
+        "ca55d588-a5dd-4dd9-9c84-72c5e687c48f",
+        "70eec2a6-582f-4c9d-9414-0eec588e85fd",
+        "2263bc8e-be0a-4163-b2ad-6f3a7c049983",
+        "6431e10f-dde0-471d-ab5f-0dfbefcda2f6",
+        "87ac9f12-2b00-48b1-897e-bf66c5aeb616"
+      ],
+      "booking_option_ids": [
+        "3d48221c-b5a4-4800-a076-02cf10a364a3",
+        "3678bebc-9166-4830-b846-c707f940c8e9",
+        "0fd5478c-78a3-4cfb-be12-1c3808c21ebc",
+        "09f6e61b-ff11-4907-9fbc-1d97462fd663",
+        "bf0203d2-ae5c-4085-8ab1-2be98047fd75",
+        "12a4900e-2624-4932-a785-0ffa45dcdb02",
+        "3266382c-cadf-4df4-954a-5b6735cd952c",
+        "377a5b5f-df98-422c-8138-9103783e2db9",
+        "2af4cdf3-c4b4-5cc0-a6c3-14069d54e9bb",
+        "0ab5ef69-1983-4bd3-a3f5-4244222bcda6",
+        "94208dea-57d0-5426-a1be-e2931ce5f181",
+        "6cf28949-c58b-4088-994c-880014a00c89",
+        "78e00bad-b47c-5fba-ad7f-42fed82e4749",
+        "1715489e-3d34-4009-bf03-3e464c00e6d5",
+        "2447ca52-01ed-5edf-9b12-1eca6450c7ab",
+        "e7c85c8a-07e5-49dd-8b21-420ebcbad47a",
+        "27eb102d-cb4c-50b6-9976-57a87cfb0d1d",
+        "56327f30-feb0-4992-8fad-d91798b960c6",
+        "279c9958-acf4-5ae4-aa38-df383a7c7ca3",
+        "935bbce0-f79f-425b-be5d-9365039e02c9"
+      ],
+      "all_checks_pass": true,
+      "issues": []
+    },
+    {
+      "destination_id": "osaka",
+      "locale": "en",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=osaka&type=hotel",
+      "checked_at": "2026-09-08T16:00:12.322349+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 5,
+      "reported_total": 5,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [
+        "32e00e1e-5976-46dd-90f2-bda4c44c1b2c",
+        "f4dc5d28-5de4-4e81-b79f-f8471f1e4863",
+        "29a7720d-11c2-46ae-abe2-001cd69ac301",
+        "3a08719d-5a3a-4a87-8df4-f81da9a16c0c",
+        "ee355d59-44c5-478d-a3eb-2c9053febe24"
+      ],
+      "booking_option_ids": [
+        "8726d3be-4304-4abd-9c2c-1ff8736f8fe7",
+        "a8f294f3-a944-4bd4-a34b-ab0ef59fe59e",
+        "a93430c5-36ad-4023-ab80-f674d0325e56",
+        "3c16bfa9-a0a4-4609-8ef2-127563d46ab5",
+        "3afd61bc-e374-46f9-9f87-c4cf49569fa4",
+        "f16574e7-801b-4a2e-8495-5981655b7ff6",
+        "3ba7e8b5-6667-43aa-ad73-23e40c05d121",
+        "69d8b040-e631-46e9-aeb0-00b04367d898",
+        "37077846-829f-4afc-bfe2-01c94acc6ac1",
+        "02673f9c-4e1c-4aca-9a87-9da1cfcd9f1c",
+        "1acd2432-987d-4a9b-ba97-33a8e435e892",
+        "037243cc-e506-4ec7-a8d1-43abb828f21f",
+        "648c4341-b60e-4780-a463-6733de26a8ba",
+        "dd3d94bf-67d1-4679-a092-06d676a1f21e",
+        "68d500d9-94f7-45b5-8c05-da04b475bf57",
+        "463f2c0a-12e5-46e8-b3d1-6e1c81c8bfb2"
+      ],
+      "all_checks_pass": true,
+      "issues": []
+    },
+    {
+      "destination_id": "osaka",
+      "locale": "ja",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=osaka&type=hotel",
+      "checked_at": "2026-09-08T16:00:12.772072+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 5,
+      "reported_total": 5,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [
+        "32e00e1e-5976-46dd-90f2-bda4c44c1b2c",
+        "f4dc5d28-5de4-4e81-b79f-f8471f1e4863",
+        "29a7720d-11c2-46ae-abe2-001cd69ac301",
+        "3a08719d-5a3a-4a87-8df4-f81da9a16c0c",
+        "ee355d59-44c5-478d-a3eb-2c9053febe24"
+      ],
+      "booking_option_ids": [
+        "8726d3be-4304-4abd-9c2c-1ff8736f8fe7",
+        "a8f294f3-a944-4bd4-a34b-ab0ef59fe59e",
+        "a93430c5-36ad-4023-ab80-f674d0325e56",
+        "3c16bfa9-a0a4-4609-8ef2-127563d46ab5",
+        "3afd61bc-e374-46f9-9f87-c4cf49569fa4",
+        "f16574e7-801b-4a2e-8495-5981655b7ff6",
+        "3ba7e8b5-6667-43aa-ad73-23e40c05d121",
+        "69d8b040-e631-46e9-aeb0-00b04367d898",
+        "37077846-829f-4afc-bfe2-01c94acc6ac1",
+        "02673f9c-4e1c-4aca-9a87-9da1cfcd9f1c",
+        "1acd2432-987d-4a9b-ba97-33a8e435e892",
+        "037243cc-e506-4ec7-a8d1-43abb828f21f",
+        "648c4341-b60e-4780-a463-6733de26a8ba",
+        "dd3d94bf-67d1-4679-a092-06d676a1f21e",
+        "68d500d9-94f7-45b5-8c05-da04b475bf57",
+        "463f2c0a-12e5-46e8-b3d1-6e1c81c8bfb2"
+      ],
+      "all_checks_pass": true,
+      "issues": []
+    },
+    {
+      "destination_id": "osaka",
+      "locale": "ko",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=osaka&type=hotel",
+      "checked_at": "2026-09-08T16:00:12.861625+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 5,
+      "reported_total": 5,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [
+        "32e00e1e-5976-46dd-90f2-bda4c44c1b2c",
+        "f4dc5d28-5de4-4e81-b79f-f8471f1e4863",
+        "29a7720d-11c2-46ae-abe2-001cd69ac301",
+        "3a08719d-5a3a-4a87-8df4-f81da9a16c0c",
+        "ee355d59-44c5-478d-a3eb-2c9053febe24"
+      ],
+      "booking_option_ids": [
+        "8726d3be-4304-4abd-9c2c-1ff8736f8fe7",
+        "a8f294f3-a944-4bd4-a34b-ab0ef59fe59e",
+        "a93430c5-36ad-4023-ab80-f674d0325e56",
+        "3c16bfa9-a0a4-4609-8ef2-127563d46ab5",
+        "3afd61bc-e374-46f9-9f87-c4cf49569fa4",
+        "f16574e7-801b-4a2e-8495-5981655b7ff6",
+        "3ba7e8b5-6667-43aa-ad73-23e40c05d121",
+        "69d8b040-e631-46e9-aeb0-00b04367d898",
+        "37077846-829f-4afc-bfe2-01c94acc6ac1",
+        "02673f9c-4e1c-4aca-9a87-9da1cfcd9f1c",
+        "1acd2432-987d-4a9b-ba97-33a8e435e892",
+        "037243cc-e506-4ec7-a8d1-43abb828f21f",
+        "648c4341-b60e-4780-a463-6733de26a8ba",
+        "dd3d94bf-67d1-4679-a092-06d676a1f21e",
+        "68d500d9-94f7-45b5-8c05-da04b475bf57",
+        "463f2c0a-12e5-46e8-b3d1-6e1c81c8bfb2"
+      ],
+      "all_checks_pass": true,
+      "issues": []
+    },
+    {
+      "destination_id": "osaka",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=osaka&type=hotel",
+      "checked_at": "2026-09-08T16:00:12.882842+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 5,
+      "reported_total": 5,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [
+        "32e00e1e-5976-46dd-90f2-bda4c44c1b2c",
+        "f4dc5d28-5de4-4e81-b79f-f8471f1e4863",
+        "29a7720d-11c2-46ae-abe2-001cd69ac301",
+        "3a08719d-5a3a-4a87-8df4-f81da9a16c0c",
+        "ee355d59-44c5-478d-a3eb-2c9053febe24"
+      ],
+      "booking_option_ids": [
+        "8726d3be-4304-4abd-9c2c-1ff8736f8fe7",
+        "a8f294f3-a944-4bd4-a34b-ab0ef59fe59e",
+        "a93430c5-36ad-4023-ab80-f674d0325e56",
+        "3c16bfa9-a0a4-4609-8ef2-127563d46ab5",
+        "3afd61bc-e374-46f9-9f87-c4cf49569fa4",
+        "f16574e7-801b-4a2e-8495-5981655b7ff6",
+        "3ba7e8b5-6667-43aa-ad73-23e40c05d121",
+        "69d8b040-e631-46e9-aeb0-00b04367d898",
+        "37077846-829f-4afc-bfe2-01c94acc6ac1",
+        "02673f9c-4e1c-4aca-9a87-9da1cfcd9f1c",
+        "1acd2432-987d-4a9b-ba97-33a8e435e892",
+        "037243cc-e506-4ec7-a8d1-43abb828f21f",
+        "648c4341-b60e-4780-a463-6733de26a8ba",
+        "dd3d94bf-67d1-4679-a092-06d676a1f21e",
+        "68d500d9-94f7-45b5-8c05-da04b475bf57",
+        "463f2c0a-12e5-46e8-b3d1-6e1c81c8bfb2"
+      ],
+      "all_checks_pass": true,
+      "issues": []
+    },
+    {
+      "destination_id": "osaka",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=osaka&type=hotel",
+      "checked_at": "2026-09-08T16:00:13.186181+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 5,
+      "reported_total": 5,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [
+        "32e00e1e-5976-46dd-90f2-bda4c44c1b2c",
+        "f4dc5d28-5de4-4e81-b79f-f8471f1e4863",
+        "29a7720d-11c2-46ae-abe2-001cd69ac301",
+        "3a08719d-5a3a-4a87-8df4-f81da9a16c0c",
+        "ee355d59-44c5-478d-a3eb-2c9053febe24"
+      ],
+      "booking_option_ids": [
+        "8726d3be-4304-4abd-9c2c-1ff8736f8fe7",
+        "a8f294f3-a944-4bd4-a34b-ab0ef59fe59e",
+        "a93430c5-36ad-4023-ab80-f674d0325e56",
+        "3c16bfa9-a0a4-4609-8ef2-127563d46ab5",
+        "3afd61bc-e374-46f9-9f87-c4cf49569fa4",
+        "f16574e7-801b-4a2e-8495-5981655b7ff6",
+        "3ba7e8b5-6667-43aa-ad73-23e40c05d121",
+        "69d8b040-e631-46e9-aeb0-00b04367d898",
+        "37077846-829f-4afc-bfe2-01c94acc6ac1",
+        "02673f9c-4e1c-4aca-9a87-9da1cfcd9f1c",
+        "1acd2432-987d-4a9b-ba97-33a8e435e892",
+        "037243cc-e506-4ec7-a8d1-43abb828f21f",
+        "648c4341-b60e-4780-a463-6733de26a8ba",
+        "dd3d94bf-67d1-4679-a092-06d676a1f21e",
+        "68d500d9-94f7-45b5-8c05-da04b475bf57",
+        "463f2c0a-12e5-46e8-b3d1-6e1c81c8bfb2"
+      ],
+      "all_checks_pass": true,
+      "issues": []
+    },
+    {
+      "destination_id": "kyoto",
+      "locale": "en",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=kyoto&type=hotel",
+      "checked_at": "2026-09-08T16:00:13.267955+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 0,
+      "reported_total": 0,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [],
+      "booking_option_ids": [],
+      "all_checks_pass": true,
+      "issues": []
+    },
+    {
+      "destination_id": "kyoto",
+      "locale": "ja",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=kyoto&type=hotel",
+      "checked_at": "2026-09-08T16:00:13.296843+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 0,
+      "reported_total": 0,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [],
+      "booking_option_ids": [],
+      "all_checks_pass": true,
+      "issues": []
+    },
+    {
+      "destination_id": "kyoto",
+      "locale": "ko",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=kyoto&type=hotel",
+      "checked_at": "2026-09-08T16:00:13.598590+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 0,
+      "reported_total": 0,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [],
+      "booking_option_ids": [],
+      "all_checks_pass": true,
+      "issues": []
+    },
+    {
+      "destination_id": "kyoto",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=kyoto&type=hotel",
+      "checked_at": "2026-09-08T16:00:13.620098+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 0,
+      "reported_total": 0,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [],
+      "booking_option_ids": [],
+      "all_checks_pass": true,
+      "issues": []
+    },
+    {
+      "destination_id": "kyoto",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=kyoto&type=hotel",
+      "checked_at": "2026-09-08T16:00:13.658773+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 0,
+      "reported_total": 0,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [],
+      "booking_option_ids": [],
+      "all_checks_pass": true,
+      "issues": []
+    },
+    {
+      "destination_id": "seoul",
+      "locale": "en",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=seoul&type=hotel",
+      "checked_at": "2026-09-08T16:00:13.977657+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 5,
+      "reported_total": 5,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [
+        "c70a6326-4302-4394-afb4-ff7a018272a5",
+        "3d531f0f-1a58-4bd7-9311-22125f489742",
+        "287f69b8-95f4-4e05-817a-e13b4d5310b4",
+        "ef29cc9a-331d-4e8f-9fd0-ea30cdcecc5d",
+        "e5a8c571-961a-4dea-b36f-43624c85db82"
+      ],
+      "booking_option_ids": [
+        "d9c27b3b-b4b0-4147-b35d-b99a2b263ae9",
+        "cef042b9-5f49-4199-ac83-3f8f28e4f918",
+        "9f57d1ce-ed2a-4b28-8b00-a62a2cc9c224",
+        "6982de70-7703-4e3a-82cd-1b40e26dda97",
+        "b2eee839-6ba2-42a1-8dad-c74b6244f7a6",
+        "68411f9a-fc8b-4132-b5fb-6f0221f711fa",
+        "98c4d502-9301-4c8c-8c89-90819af6b2c9"
+      ],
+      "all_checks_pass": true,
+      "issues": []
+    },
+    {
+      "destination_id": "seoul",
+      "locale": "ja",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=seoul&type=hotel",
+      "checked_at": "2026-09-08T16:00:14.019769+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 5,
+      "reported_total": 5,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [
+        "c70a6326-4302-4394-afb4-ff7a018272a5",
+        "3d531f0f-1a58-4bd7-9311-22125f489742",
+        "287f69b8-95f4-4e05-817a-e13b4d5310b4",
+        "ef29cc9a-331d-4e8f-9fd0-ea30cdcecc5d",
+        "e5a8c571-961a-4dea-b36f-43624c85db82"
+      ],
+      "booking_option_ids": [
+        "d9c27b3b-b4b0-4147-b35d-b99a2b263ae9",
+        "cef042b9-5f49-4199-ac83-3f8f28e4f918",
+        "9f57d1ce-ed2a-4b28-8b00-a62a2cc9c224",
+        "6982de70-7703-4e3a-82cd-1b40e26dda97",
+        "b2eee839-6ba2-42a1-8dad-c74b6244f7a6",
+        "68411f9a-fc8b-4132-b5fb-6f0221f711fa",
+        "98c4d502-9301-4c8c-8c89-90819af6b2c9"
+      ],
+      "all_checks_pass": true,
+      "issues": []
+    },
+    {
+      "destination_id": "seoul",
+      "locale": "ko",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=seoul&type=hotel",
+      "checked_at": "2026-09-08T16:00:14.042400+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 5,
+      "reported_total": 5,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [
+        "c70a6326-4302-4394-afb4-ff7a018272a5",
+        "3d531f0f-1a58-4bd7-9311-22125f489742",
+        "287f69b8-95f4-4e05-817a-e13b4d5310b4",
+        "ef29cc9a-331d-4e8f-9fd0-ea30cdcecc5d",
+        "e5a8c571-961a-4dea-b36f-43624c85db82"
+      ],
+      "booking_option_ids": [
+        "d9c27b3b-b4b0-4147-b35d-b99a2b263ae9",
+        "cef042b9-5f49-4199-ac83-3f8f28e4f918",
+        "9f57d1ce-ed2a-4b28-8b00-a62a2cc9c224",
+        "6982de70-7703-4e3a-82cd-1b40e26dda97",
+        "b2eee839-6ba2-42a1-8dad-c74b6244f7a6",
+        "68411f9a-fc8b-4132-b5fb-6f0221f711fa",
+        "98c4d502-9301-4c8c-8c89-90819af6b2c9"
+      ],
+      "all_checks_pass": true,
+      "issues": []
+    },
+    {
+      "destination_id": "seoul",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=seoul&type=hotel",
+      "checked_at": "2026-09-08T16:00:14.422787+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 5,
+      "reported_total": 5,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [
+        "c70a6326-4302-4394-afb4-ff7a018272a5",
+        "3d531f0f-1a58-4bd7-9311-22125f489742",
+        "287f69b8-95f4-4e05-817a-e13b4d5310b4",
+        "ef29cc9a-331d-4e8f-9fd0-ea30cdcecc5d",
+        "e5a8c571-961a-4dea-b36f-43624c85db82"
+      ],
+      "booking_option_ids": [
+        "d9c27b3b-b4b0-4147-b35d-b99a2b263ae9",
+        "cef042b9-5f49-4199-ac83-3f8f28e4f918",
+        "9f57d1ce-ed2a-4b28-8b00-a62a2cc9c224",
+        "6982de70-7703-4e3a-82cd-1b40e26dda97",
+        "b2eee839-6ba2-42a1-8dad-c74b6244f7a6",
+        "68411f9a-fc8b-4132-b5fb-6f0221f711fa",
+        "98c4d502-9301-4c8c-8c89-90819af6b2c9"
+      ],
+      "all_checks_pass": true,
+      "issues": []
+    },
+    {
+      "destination_id": "seoul",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=seoul&type=hotel",
+      "checked_at": "2026-09-08T16:00:14.447398+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 5,
+      "reported_total": 5,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [
+        "c70a6326-4302-4394-afb4-ff7a018272a5",
+        "3d531f0f-1a58-4bd7-9311-22125f489742",
+        "287f69b8-95f4-4e05-817a-e13b4d5310b4",
+        "ef29cc9a-331d-4e8f-9fd0-ea30cdcecc5d",
+        "e5a8c571-961a-4dea-b36f-43624c85db82"
+      ],
+      "booking_option_ids": [
+        "d9c27b3b-b4b0-4147-b35d-b99a2b263ae9",
+        "cef042b9-5f49-4199-ac83-3f8f28e4f918",
+        "9f57d1ce-ed2a-4b28-8b00-a62a2cc9c224",
+        "6982de70-7703-4e3a-82cd-1b40e26dda97",
+        "b2eee839-6ba2-42a1-8dad-c74b6244f7a6",
+        "68411f9a-fc8b-4132-b5fb-6f0221f711fa",
+        "98c4d502-9301-4c8c-8c89-90819af6b2c9"
+      ],
+      "all_checks_pass": true,
+      "issues": []
+    },
+    {
+      "destination_id": "busan",
+      "locale": "en",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=busan&type=hotel",
+      "checked_at": "2026-09-08T16:00:14.467176+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 0,
+      "reported_total": 0,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [],
+      "booking_option_ids": [],
+      "all_checks_pass": true,
+      "issues": []
+    },
+    {
+      "destination_id": "busan",
+      "locale": "ja",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=busan&type=hotel",
+      "checked_at": "2026-09-08T16:00:14.849347+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 0,
+      "reported_total": 0,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [],
+      "booking_option_ids": [],
+      "all_checks_pass": true,
+      "issues": []
+    },
+    {
+      "destination_id": "busan",
+      "locale": "ko",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=busan&type=hotel",
+      "checked_at": "2026-09-08T16:00:14.856409+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 0,
+      "reported_total": 0,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [],
+      "booking_option_ids": [],
+      "all_checks_pass": true,
+      "issues": []
+    },
+    {
+      "destination_id": "busan",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=busan&type=hotel",
+      "checked_at": "2026-09-08T16:00:14.864642+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 0,
+      "reported_total": 0,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [],
+      "booking_option_ids": [],
+      "all_checks_pass": true,
+      "issues": []
+    },
+    {
+      "destination_id": "busan",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=busan&type=hotel",
+      "checked_at": "2026-09-08T16:00:15.215496+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 0,
+      "reported_total": 0,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [],
+      "booking_option_ids": [],
+      "all_checks_pass": true,
+      "issues": []
+    },
+    {
+      "destination_id": "taipei",
+      "locale": "en",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=taipei&type=hotel",
+      "checked_at": "2026-09-08T16:00:15.248490+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 10,
+      "reported_total": 10,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [
+        "fc4ab21a-29df-41c3-acd7-961d3a8fbdd2",
+        "911db160-e332-41c6-95f6-3fa89d9a711d",
+        "940ceac6-8726-4be9-b00f-f5809dbc0f0b",
+        "89873ccf-5a45-467d-b2c9-dd32c2b6a0df",
+        "ad6930f9-64e2-4298-b90f-ad24fae50060",
+        "68646c86-2aed-4bd6-a453-29450ab50d6c",
+        "535688c6-4370-4550-9a66-d35c4f907eef",
+        "f73ce087-d361-4f74-8bac-45ed71d5c1ce",
+        "177996ee-887e-48b8-9ade-240e47675438",
+        "c934905c-8857-4dfc-963e-9d19e13cd16e"
+      ],
+      "booking_option_ids": [
+        "d47ec0f3-d6fd-4124-9a59-ef4efdff6980",
+        "994d3ce1-1ed1-474e-9349-f6197ce5aafa",
+        "0cdc165e-5b3b-405c-b549-0e5f01ef5fd6",
+        "2712c97b-ad7a-44e4-a8ec-b6ec94d4c5ae",
+        "cc0d8398-1d6a-4f10-89de-448c7694ce20",
+        "1bc2ccde-a724-4077-a7cd-9121959ba655",
+        "b0c20080-76ad-4b1b-9a4d-657654387ecd",
+        "3c15c159-2e53-4a78-846b-de63d06dfa0c",
+        "c9f5a980-3e11-4624-8117-2686f528a6b0",
+        "edc6dcfc-7b6a-4c91-b988-738cf943a40b",
+        "29656832-a29f-465c-aaf8-cae4c339613a",
+        "8d5f3a67-29be-4c54-8095-3f9ce514fed7",
+        "fe51f041-3f5e-433f-a87c-a2b4708d6f37",
+        "a789b1c7-46c7-42a2-916d-099bad5f18de",
+        "2d142178-60cb-404c-8bae-63aa938dbf74",
+        "3b4e7e4c-a99d-4788-95e3-bcab65b339b6",
+        "4057e9ce-b353-437a-b2c8-3097222c8fb4",
+        "31b17c88-f69b-4671-8b5a-68c99dd9bf62",
+        "fd09af44-8571-44ea-a34e-5f6b3c4be9f6",
+        "18ca5278-acf4-41db-967f-8cea1b247a71",
+        "14fa1772-1050-41d1-b40d-87eb004bd254",
+        "837e69b7-aa5e-477f-b380-90b315d179fd",
+        "32947818-bbb6-4bad-beac-18465e8fb0b4",
+        "2997aa94-f717-469e-90e8-91e6238375c4",
+        "e2ce0d9d-687f-43eb-b0d6-b1774f58f474",
+        "c6f9ae48-0fae-451b-a930-f43feddac5d7",
+        "180844c8-c83e-4aa3-90a5-7a6d17f358a2",
+        "3027e80b-fc5d-4bc5-97fd-9f21e6f3cdcd",
+        "f3ed1561-3046-4647-8c90-0ab634d5c7e2",
+        "03d141b8-18bb-4eb8-b04f-60b82c47a25d"
+      ],
+      "all_checks_pass": true,
+      "issues": []
+    },
+    {
+      "destination_id": "taipei",
+      "locale": "ja",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=taipei&type=hotel",
+      "checked_at": "2026-09-08T16:00:15.251580+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 10,
+      "reported_total": 10,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [
+        "fc4ab21a-29df-41c3-acd7-961d3a8fbdd2",
+        "911db160-e332-41c6-95f6-3fa89d9a711d",
+        "940ceac6-8726-4be9-b00f-f5809dbc0f0b",
+        "89873ccf-5a45-467d-b2c9-dd32c2b6a0df",
+        "ad6930f9-64e2-4298-b90f-ad24fae50060",
+        "68646c86-2aed-4bd6-a453-29450ab50d6c",
+        "535688c6-4370-4550-9a66-d35c4f907eef",
+        "f73ce087-d361-4f74-8bac-45ed71d5c1ce",
+        "177996ee-887e-48b8-9ade-240e47675438",
+        "c934905c-8857-4dfc-963e-9d19e13cd16e"
+      ],
+      "booking_option_ids": [
+        "d47ec0f3-d6fd-4124-9a59-ef4efdff6980",
+        "994d3ce1-1ed1-474e-9349-f6197ce5aafa",
+        "0cdc165e-5b3b-405c-b549-0e5f01ef5fd6",
+        "2712c97b-ad7a-44e4-a8ec-b6ec94d4c5ae",
+        "cc0d8398-1d6a-4f10-89de-448c7694ce20",
+        "1bc2ccde-a724-4077-a7cd-9121959ba655",
+        "b0c20080-76ad-4b1b-9a4d-657654387ecd",
+        "3c15c159-2e53-4a78-846b-de63d06dfa0c",
+        "c9f5a980-3e11-4624-8117-2686f528a6b0",
+        "edc6dcfc-7b6a-4c91-b988-738cf943a40b",
+        "29656832-a29f-465c-aaf8-cae4c339613a",
+        "8d5f3a67-29be-4c54-8095-3f9ce514fed7",
+        "fe51f041-3f5e-433f-a87c-a2b4708d6f37",
+        "a789b1c7-46c7-42a2-916d-099bad5f18de",
+        "2d142178-60cb-404c-8bae-63aa938dbf74",
+        "3b4e7e4c-a99d-4788-95e3-bcab65b339b6",
+        "4057e9ce-b353-437a-b2c8-3097222c8fb4",
+        "31b17c88-f69b-4671-8b5a-68c99dd9bf62",
+        "fd09af44-8571-44ea-a34e-5f6b3c4be9f6",
+        "18ca5278-acf4-41db-967f-8cea1b247a71",
+        "14fa1772-1050-41d1-b40d-87eb004bd254",
+        "837e69b7-aa5e-477f-b380-90b315d179fd",
+        "32947818-bbb6-4bad-beac-18465e8fb0b4",
+        "2997aa94-f717-469e-90e8-91e6238375c4",
+        "e2ce0d9d-687f-43eb-b0d6-b1774f58f474",
+        "c6f9ae48-0fae-451b-a930-f43feddac5d7",
+        "180844c8-c83e-4aa3-90a5-7a6d17f358a2",
+        "3027e80b-fc5d-4bc5-97fd-9f21e6f3cdcd",
+        "f3ed1561-3046-4647-8c90-0ab634d5c7e2",
+        "03d141b8-18bb-4eb8-b04f-60b82c47a25d"
+      ],
+      "all_checks_pass": true,
+      "issues": []
+    },
+    {
+      "destination_id": "taipei",
+      "locale": "ko",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=taipei&type=hotel",
+      "checked_at": "2026-09-08T16:00:15.591432+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 10,
+      "reported_total": 10,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [
+        "fc4ab21a-29df-41c3-acd7-961d3a8fbdd2",
+        "911db160-e332-41c6-95f6-3fa89d9a711d",
+        "940ceac6-8726-4be9-b00f-f5809dbc0f0b",
+        "89873ccf-5a45-467d-b2c9-dd32c2b6a0df",
+        "ad6930f9-64e2-4298-b90f-ad24fae50060",
+        "68646c86-2aed-4bd6-a453-29450ab50d6c",
+        "535688c6-4370-4550-9a66-d35c4f907eef",
+        "f73ce087-d361-4f74-8bac-45ed71d5c1ce",
+        "177996ee-887e-48b8-9ade-240e47675438",
+        "c934905c-8857-4dfc-963e-9d19e13cd16e"
+      ],
+      "booking_option_ids": [
+        "d47ec0f3-d6fd-4124-9a59-ef4efdff6980",
+        "994d3ce1-1ed1-474e-9349-f6197ce5aafa",
+        "0cdc165e-5b3b-405c-b549-0e5f01ef5fd6",
+        "2712c97b-ad7a-44e4-a8ec-b6ec94d4c5ae",
+        "cc0d8398-1d6a-4f10-89de-448c7694ce20",
+        "1bc2ccde-a724-4077-a7cd-9121959ba655",
+        "b0c20080-76ad-4b1b-9a4d-657654387ecd",
+        "3c15c159-2e53-4a78-846b-de63d06dfa0c",
+        "c9f5a980-3e11-4624-8117-2686f528a6b0",
+        "edc6dcfc-7b6a-4c91-b988-738cf943a40b",
+        "29656832-a29f-465c-aaf8-cae4c339613a",
+        "8d5f3a67-29be-4c54-8095-3f9ce514fed7",
+        "fe51f041-3f5e-433f-a87c-a2b4708d6f37",
+        "a789b1c7-46c7-42a2-916d-099bad5f18de",
+        "2d142178-60cb-404c-8bae-63aa938dbf74",
+        "3b4e7e4c-a99d-4788-95e3-bcab65b339b6",
+        "4057e9ce-b353-437a-b2c8-3097222c8fb4",
+        "31b17c88-f69b-4671-8b5a-68c99dd9bf62",
+        "fd09af44-8571-44ea-a34e-5f6b3c4be9f6",
+        "18ca5278-acf4-41db-967f-8cea1b247a71",
+        "14fa1772-1050-41d1-b40d-87eb004bd254",
+        "837e69b7-aa5e-477f-b380-90b315d179fd",
+        "32947818-bbb6-4bad-beac-18465e8fb0b4",
+        "2997aa94-f717-469e-90e8-91e6238375c4",
+        "e2ce0d9d-687f-43eb-b0d6-b1774f58f474",
+        "c6f9ae48-0fae-451b-a930-f43feddac5d7",
+        "180844c8-c83e-4aa3-90a5-7a6d17f358a2",
+        "3027e80b-fc5d-4bc5-97fd-9f21e6f3cdcd",
+        "f3ed1561-3046-4647-8c90-0ab634d5c7e2",
+        "03d141b8-18bb-4eb8-b04f-60b82c47a25d"
+      ],
+      "all_checks_pass": true,
+      "issues": []
+    },
+    {
+      "destination_id": "taipei",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=taipei&type=hotel",
+      "checked_at": "2026-09-08T16:00:15.749995+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 10,
+      "reported_total": 10,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [
+        "fc4ab21a-29df-41c3-acd7-961d3a8fbdd2",
+        "911db160-e332-41c6-95f6-3fa89d9a711d",
+        "940ceac6-8726-4be9-b00f-f5809dbc0f0b",
+        "89873ccf-5a45-467d-b2c9-dd32c2b6a0df",
+        "ad6930f9-64e2-4298-b90f-ad24fae50060",
+        "68646c86-2aed-4bd6-a453-29450ab50d6c",
+        "535688c6-4370-4550-9a66-d35c4f907eef",
+        "f73ce087-d361-4f74-8bac-45ed71d5c1ce",
+        "177996ee-887e-48b8-9ade-240e47675438",
+        "c934905c-8857-4dfc-963e-9d19e13cd16e"
+      ],
+      "booking_option_ids": [
+        "d47ec0f3-d6fd-4124-9a59-ef4efdff6980",
+        "994d3ce1-1ed1-474e-9349-f6197ce5aafa",
+        "0cdc165e-5b3b-405c-b549-0e5f01ef5fd6",
+        "2712c97b-ad7a-44e4-a8ec-b6ec94d4c5ae",
+        "cc0d8398-1d6a-4f10-89de-448c7694ce20",
+        "1bc2ccde-a724-4077-a7cd-9121959ba655",
+        "b0c20080-76ad-4b1b-9a4d-657654387ecd",
+        "3c15c159-2e53-4a78-846b-de63d06dfa0c",
+        "c9f5a980-3e11-4624-8117-2686f528a6b0",
+        "edc6dcfc-7b6a-4c91-b988-738cf943a40b",
+        "29656832-a29f-465c-aaf8-cae4c339613a",
+        "8d5f3a67-29be-4c54-8095-3f9ce514fed7",
+        "fe51f041-3f5e-433f-a87c-a2b4708d6f37",
+        "a789b1c7-46c7-42a2-916d-099bad5f18de",
+        "2d142178-60cb-404c-8bae-63aa938dbf74",
+        "3b4e7e4c-a99d-4788-95e3-bcab65b339b6",
+        "4057e9ce-b353-437a-b2c8-3097222c8fb4",
+        "31b17c88-f69b-4671-8b5a-68c99dd9bf62",
+        "fd09af44-8571-44ea-a34e-5f6b3c4be9f6",
+        "18ca5278-acf4-41db-967f-8cea1b247a71",
+        "14fa1772-1050-41d1-b40d-87eb004bd254",
+        "837e69b7-aa5e-477f-b380-90b315d179fd",
+        "32947818-bbb6-4bad-beac-18465e8fb0b4",
+        "2997aa94-f717-469e-90e8-91e6238375c4",
+        "e2ce0d9d-687f-43eb-b0d6-b1774f58f474",
+        "c6f9ae48-0fae-451b-a930-f43feddac5d7",
+        "180844c8-c83e-4aa3-90a5-7a6d17f358a2",
+        "3027e80b-fc5d-4bc5-97fd-9f21e6f3cdcd",
+        "f3ed1561-3046-4647-8c90-0ab634d5c7e2",
+        "03d141b8-18bb-4eb8-b04f-60b82c47a25d"
+      ],
+      "all_checks_pass": true,
+      "issues": []
+    },
+    {
+      "destination_id": "taipei",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=taipei&type=hotel",
+      "checked_at": "2026-09-08T16:00:15.760023+00:00",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "item_count": 10,
+      "reported_total": 10,
+      "response_keys": [
+        "areas",
+        "destination_id",
+        "enabled",
+        "enabled_kinds",
+        "items",
+        "price_mode",
+        "ranking",
+        "total"
+      ],
+      "item_ids": [
+        "fc4ab21a-29df-41c3-acd7-961d3a8fbdd2",
+        "911db160-e332-41c6-95f6-3fa89d9a711d",
+        "940ceac6-8726-4be9-b00f-f5809dbc0f0b",
+        "89873ccf-5a45-467d-b2c9-dd32c2b6a0df",
+        "ad6930f9-64e2-4298-b90f-ad24fae50060",
+        "68646c86-2aed-4bd6-a453-29450ab50d6c",
+        "535688c6-4370-4550-9a66-d35c4f907eef",
+        "f73ce087-d361-4f74-8bac-45ed71d5c1ce",
+        "177996ee-887e-48b8-9ade-240e47675438",
+        "c934905c-8857-4dfc-963e-9d19e13cd16e"
+      ],
+      "booking_option_ids": [
+        "d47ec0f3-d6fd-4124-9a59-ef4efdff6980",
+        "994d3ce1-1ed1-474e-9349-f6197ce5aafa",
+        "0cdc165e-5b3b-405c-b549-0e5f01ef5fd6",
+        "2712c97b-ad7a-44e4-a8ec-b6ec94d4c5ae",
+        "cc0d8398-1d6a-4f10-89de-448c7694ce20",
+        "1bc2ccde-a724-4077-a7cd-9121959ba655",
+        "b0c20080-76ad-4b1b-9a4d-657654387ecd",
+        "3c15c159-2e53-4a78-846b-de63d06dfa0c",
+        "c9f5a980-3e11-4624-8117-2686f528a6b0",
+        "edc6dcfc-7b6a-4c91-b988-738cf943a40b",
+        "29656832-a29f-465c-aaf8-cae4c339613a",
+        "8d5f3a67-29be-4c54-8095-3f9ce514fed7",
+        "fe51f041-3f5e-433f-a87c-a2b4708d6f37",
+        "a789b1c7-46c7-42a2-916d-099bad5f18de",
+        "2d142178-60cb-404c-8bae-63aa938dbf74",
+        "3b4e7e4c-a99d-4788-95e3-bcab65b339b6",
+        "4057e9ce-b353-437a-b2c8-3097222c8fb4",
+        "31b17c88-f69b-4671-8b5a-68c99dd9bf62",
+        "fd09af44-8571-44ea-a34e-5f6b3c4be9f6",
+        "18ca5278-acf4-41db-967f-8cea1b247a71",
+        "14fa1772-1050-41d1-b40d-87eb004bd254",
+        "837e69b7-aa5e-477f-b380-90b315d179fd",
+        "32947818-bbb6-4bad-beac-18465e8fb0b4",
+        "2997aa94-f717-469e-90e8-91e6238375c4",
+        "e2ce0d9d-687f-43eb-b0d6-b1774f58f474",
+        "c6f9ae48-0fae-451b-a930-f43feddac5d7",
+        "180844c8-c83e-4aa3-90a5-7a6d17f358a2",
+        "3027e80b-fc5d-4bc5-97fd-9f21e6f3cdcd",
+        "f3ed1561-3046-4647-8c90-0ab634d5c7e2",
+        "03d141b8-18bb-4eb8-b04f-60b82c47a25d"
+      ],
+      "all_checks_pass": true,
+      "issues": []
+    }
+  ],
+  "public_products": [
+    {
+      "id": "fdf201c6-8838-41bd-a9ef-5bdd8f69ad24",
+      "destination_id": "tokyo",
+      "source_url": "https://www.tokyostationhotel.jp/access/",
+      "source_credits": [
+        {
+          "title": "宿泊施設等の施設情報ポータルサイト「だれでも東京」宿泊施設",
+          "publisher": "東京都デジタルサービス局",
+          "url": "https://www.opendata.metro.tokyo.lg.jp/digitalservice/130001_Daredemo_Tokyo_accommodation.csv",
+          "license_name": "CC BY 4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/deed.ja",
+          "changes": "Mokaair 摘錄名稱與座標，整理住宿區域，依官網更新名稱並補充平台身份；座標保持來源數值，不代表東京都推薦。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "3d48221c-b5a4-4800-a076-02cf10a364a3",
+          "provider": "official",
+          "name": null,
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "3678bebc-9166-4830-b846-c707f940c8e9",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "東京ステーションホテル",
+        "ja": "東京ステーションホテル",
+        "ko": "東京ステーションホテル",
+        "zh-TW": "東京ステーションホテル",
+        "zh-CN": "東京ステーションホテル"
+      }
+    },
+    {
+      "id": "6dde791e-5b13-450f-b743-0e66411af7da",
+      "destination_id": "tokyo",
+      "source_url": "https://www.ryumeikan-tokyo.jp/access/",
+      "source_credits": [
+        {
+          "title": "宿泊施設等の施設情報ポータルサイト「だれでも東京」宿泊施設",
+          "publisher": "東京都デジタルサービス局",
+          "url": "https://www.opendata.metro.tokyo.lg.jp/digitalservice/130001_Daredemo_Tokyo_accommodation.csv",
+          "license_name": "CC BY 4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/deed.ja",
+          "changes": "Mokaair 摘錄名稱與座標，整理住宿區域，依官網更新名稱並補充平台身份；座標保持來源數值，不代表東京都推薦。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "0fd5478c-78a3-4cfb-be12-1c3808c21ebc",
+          "provider": "official",
+          "name": null,
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "09f6e61b-ff11-4907-9fbc-1d97462fd663",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "ホテル龍名館東京",
+        "ja": "ホテル龍名館東京",
+        "ko": "ホテル龍名館東京",
+        "zh-TW": "ホテル龍名館東京",
+        "zh-CN": "ホテル龍名館東京"
+      }
+    },
+    {
+      "id": "b1afc011-53e2-4cab-b277-1ad8ffbc0af9",
+      "destination_id": "tokyo",
+      "source_url": "https://www.gardenhotels.co.jp/kyobashi/access/",
+      "source_credits": [
+        {
+          "title": "宿泊施設等の施設情報ポータルサイト「だれでも東京」宿泊施設",
+          "publisher": "東京都デジタルサービス局",
+          "url": "https://www.opendata.metro.tokyo.lg.jp/digitalservice/130001_Daredemo_Tokyo_accommodation.csv",
+          "license_name": "CC BY 4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/deed.ja",
+          "changes": "Mokaair 摘錄名稱與座標，整理住宿區域，依官網更新名稱並補充平台身份；座標保持來源數值，不代表東京都推薦。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "bf0203d2-ae5c-4085-8ab1-2be98047fd75",
+          "provider": "official",
+          "name": null,
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "12a4900e-2624-4932-a785-0ffa45dcdb02",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "三井ガーデンホテル京橋",
+        "ja": "三井ガーデンホテル京橋",
+        "ko": "三井ガーデンホテル京橋",
+        "zh-TW": "三井ガーデンホテル京橋",
+        "zh-CN": "三井ガーデンホテル京橋"
+      }
+    },
+    {
+      "id": "85bf59b8-1c01-4b0d-aa7b-138129b615b2",
+      "destination_id": "tokyo",
+      "source_url": "https://www.gardenhotels.co.jp/millennium-tokyo/access/",
+      "source_credits": [
+        {
+          "title": "宿泊施設等の施設情報ポータルサイト「だれでも東京」宿泊施設",
+          "publisher": "東京都デジタルサービス局",
+          "url": "https://www.opendata.metro.tokyo.lg.jp/digitalservice/130001_Daredemo_Tokyo_accommodation.csv",
+          "license_name": "CC BY 4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/deed.ja",
+          "changes": "Mokaair 摘錄名稱與座標，整理住宿區域，依官網更新名稱並補充平台身份；座標保持來源數值，不代表東京都推薦。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "3266382c-cadf-4df4-954a-5b6735cd952c",
+          "provider": "official",
+          "name": null,
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "377a5b5f-df98-422c-8138-9103783e2db9",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "ミレニアム 三井ガーデンホテル 東京",
+        "ja": "ミレニアム 三井ガーデンホテル 東京",
+        "ko": "ミレニアム 三井ガーデンホテル 東京",
+        "zh-TW": "ミレニアム 三井ガーデンホテル 東京",
+        "zh-CN": "ミレニアム 三井ガーデンホテル 東京"
+      }
+    },
+    {
+      "id": "b79582da-592f-4a33-aa22-6457cf815094",
+      "destination_id": "tokyo",
+      "source_url": "https://www.hennnahotel.com/asakusa-tawaramachi/",
+      "source_credits": [
+        {
+          "title": "宿泊施設等の施設情報ポータルサイト「だれでも東京」宿泊施設",
+          "publisher": "東京都デジタルサービス局",
+          "url": "https://www.opendata.metro.tokyo.lg.jp/digitalservice/130001_Daredemo_Tokyo_accommodation.csv",
+          "license_name": "CC BY 4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/deed.ja",
+          "changes": "Mokaair 摘錄名稱與座標，整理住宿區域，依官網更新名稱並補充平台身份；座標保持來源數值，不代表東京都推薦。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "2af4cdf3-c4b4-5cc0-a6c3-14069d54e9bb",
+          "provider": "official",
+          "name": null,
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "0ab5ef69-1983-4bd3-a3f5-4244222bcda6",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "変なホテルプレミア東京 浅草田原町",
+        "ja": "変なホテルプレミア東京 浅草田原町",
+        "ko": "変なホテルプレミア東京 浅草田原町",
+        "zh-TW": "変なホテルプレミア東京 浅草田原町",
+        "zh-CN": "変なホテルプレミア東京 浅草田原町"
+      }
+    },
+    {
+      "id": "ca55d588-a5dd-4dd9-9c84-72c5e687c48f",
+      "destination_id": "tokyo",
+      "source_url": "https://gracery.com/asakusa/",
+      "source_credits": [
+        {
+          "title": "宿泊施設等の施設情報ポータルサイト「だれでも東京」宿泊施設",
+          "publisher": "東京都デジタルサービス局",
+          "url": "https://www.opendata.metro.tokyo.lg.jp/digitalservice/130001_Daredemo_Tokyo_accommodation.csv",
+          "license_name": "CC BY 4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/deed.ja",
+          "changes": "Mokaair 摘錄名稱與座標，整理住宿區域，依官網更新名稱並補充平台身份；座標保持來源數值，不代表東京都推薦。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "94208dea-57d0-5426-a1be-e2931ce5f181",
+          "provider": "official",
+          "name": null,
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "6cf28949-c58b-4088-994c-880014a00c89",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "Hotel Gracery Asakusa",
+        "ja": "ホテルグレイスリー浅草",
+        "ko": "ホテルグレイスリー浅草",
+        "zh-TW": "ホテルグレイスリー浅草",
+        "zh-CN": "ホテルグレイスリー浅草"
+      }
+    },
+    {
+      "id": "70eec2a6-582f-4c9d-9414-0eec588e85fd",
+      "destination_id": "tokyo",
+      "source_url": "https://www.gate-hotel.jp/asakusa-kaminarimon/access.html",
+      "source_credits": [
+        {
+          "title": "宿泊施設等の施設情報ポータルサイト「だれでも東京」宿泊施設",
+          "publisher": "東京都デジタルサービス局",
+          "url": "https://www.opendata.metro.tokyo.lg.jp/digitalservice/130001_Daredemo_Tokyo_accommodation.csv",
+          "license_name": "CC BY 4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/deed.ja",
+          "changes": "Mokaair 摘錄名稱與座標，整理住宿區域，依官網更新名稱並補充平台身份；座標保持來源數值，不代表東京都推薦。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "78e00bad-b47c-5fba-ad7f-42fed82e4749",
+          "provider": "official",
+          "name": null,
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "1715489e-3d34-4009-bf03-3e464c00e6d5",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "THE GATE HOTEL KAMINARIMON by HULIC",
+        "ja": "ザ・ゲートホテル雷門 by HULIC",
+        "ko": "ザ・ゲートホテル雷門 by HULIC",
+        "zh-TW": "ザ・ゲートホテル雷門 by HULIC",
+        "zh-CN": "ザ・ゲートホテル雷門 by HULIC"
+      }
+    },
+    {
+      "id": "2263bc8e-be0a-4163-b2ad-6f3a7c049983",
+      "destination_id": "tokyo",
+      "source_url": "https://gracery.com/shinjuku/access/",
+      "source_credits": [
+        {
+          "title": "宿泊施設等の施設情報ポータルサイト「だれでも東京」宿泊施設",
+          "publisher": "東京都デジタルサービス局",
+          "url": "https://www.opendata.metro.tokyo.lg.jp/digitalservice/130001_Daredemo_Tokyo_accommodation.csv",
+          "license_name": "CC BY 4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/deed.ja",
+          "changes": "Mokaair 摘錄名稱與座標，整理住宿區域，依官網更新名稱並補充平台身份；座標保持來源數值，不代表東京都推薦。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "2447ca52-01ed-5edf-9b12-1eca6450c7ab",
+          "provider": "official",
+          "name": null,
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "e7c85c8a-07e5-49dd-8b21-420ebcbad47a",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "Hotel Gracery Shinjuku",
+        "ja": "ホテルグレイスリー新宿",
+        "ko": "ホテルグレイスリー新宿",
+        "zh-TW": "ホテルグレイスリー新宿",
+        "zh-CN": "ホテルグレイスリー新宿"
+      }
+    },
+    {
+      "id": "6431e10f-dde0-471d-ab5f-0dfbefcda2f6",
+      "destination_id": "tokyo",
+      "source_url": "https://www.jrk-hotels.co.jp/Shinjuku/",
+      "source_credits": [
+        {
+          "title": "宿泊施設等の施設情報ポータルサイト「だれでも東京」宿泊施設",
+          "publisher": "東京都デジタルサービス局",
+          "url": "https://www.opendata.metro.tokyo.lg.jp/digitalservice/130001_Daredemo_Tokyo_accommodation.csv",
+          "license_name": "CC BY 4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/deed.ja",
+          "changes": "Mokaair 摘錄名稱與座標，整理住宿區域，依官網更新名稱並補充平台身份；座標保持來源數值，不代表東京都推薦。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "27eb102d-cb4c-50b6-9976-57a87cfb0d1d",
+          "provider": "official",
+          "name": null,
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "56327f30-feb0-4992-8fad-d91798b960c6",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "JR九州ホテル ブラッサム新宿",
+        "ja": "JR九州ホテル ブラッサム新宿",
+        "ko": "JR九州ホテル ブラッサム新宿",
+        "zh-TW": "JR九州ホテル ブラッサム新宿",
+        "zh-CN": "JR九州ホテル ブラッサム新宿"
+      }
+    },
+    {
+      "id": "87ac9f12-2b00-48b1-897e-bf66c5aeb616",
+      "destination_id": "tokyo",
+      "source_url": "https://www.keioplaza.co.jp/access/",
+      "source_credits": [
+        {
+          "title": "宿泊施設等の施設情報ポータルサイト「だれでも東京」宿泊施設",
+          "publisher": "東京都デジタルサービス局",
+          "url": "https://www.opendata.metro.tokyo.lg.jp/digitalservice/130001_Daredemo_Tokyo_accommodation.csv",
+          "license_name": "CC BY 4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/deed.ja",
+          "changes": "Mokaair 摘錄名稱與座標，整理住宿區域，依官網更新名稱並補充平台身份；座標保持來源數值，不代表東京都推薦。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "279c9958-acf4-5ae4-aa38-df383a7c7ca3",
+          "provider": "official",
+          "name": null,
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "935bbce0-f79f-425b-be5d-9365039e02c9",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "Keio Plaza Hotel Tokyo",
+        "ja": "京王プラザホテル",
+        "ko": "京王プラザホテル",
+        "zh-TW": "京王プラザホテル",
+        "zh-CN": "京王プラザホテル"
+      }
+    },
+    {
+      "id": "32e00e1e-5976-46dd-90f2-bda4c44c1b2c",
+      "destination_id": "osaka",
+      "source_url": "https://www.intergatehotels.jp/osaka-umeda/facility/",
+      "source_credits": [
+        {
+          "title": "大阪市 旅館業施設・特区民泊施設一覧（2026年5月31日現在）",
+          "publisher": "大阪市健康局生活衛生部生活衛生課",
+          "url": "https://www.city.osaka.lg.jp/kenko/cmsfiles/contents/0000382/382418/20260531ketsugo.csv",
+          "license_name": "CC BY 4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/deed.ja",
+          "changes": "Mokaair 摘錄飯店名稱及座標並整理區域。原始 CSV 的「緯度、經度」欄位實際依序為東經、北緯，已依合法範圍及大阪位置修正欄位對應，數值未改寫。資料說明：https://www.city.osaka.lg.jp/kenko/page/0000382418.html；不代表大阪市推薦。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "8726d3be-4304-4abd-9c2c-1ff8736f8fe7",
+          "provider": "official",
+          "name": null,
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "a8f294f3-a944-4bd4-a34b-ab0ef59fe59e",
+          "provider": "booking",
+          "name": "Booking.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "a93430c5-36ad-4023-ab80-f674d0325e56",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "3c16bfa9-a0a4-4609-8ef2-127563d46ab5",
+          "provider": "agoda",
+          "name": "Agoda",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "ホテルインターゲート大阪 梅田",
+        "ja": "ホテルインターゲート大阪 梅田",
+        "ko": "ホテルインターゲート大阪 梅田",
+        "zh-TW": "ホテルインターゲート大阪 梅田",
+        "zh-CN": "ホテルインターゲート大阪 梅田"
+      }
+    },
+    {
+      "id": "f4dc5d28-5de4-4e81-b79f-f8471f1e4863",
+      "destination_id": "osaka",
+      "source_url": "https://www.hankyu-hotel.com/hotel/respire/osaka/access",
+      "source_credits": [
+        {
+          "title": "大阪市 旅館業施設・特区民泊施設一覧（2026年5月31日現在）",
+          "publisher": "大阪市健康局生活衛生部生活衛生課",
+          "url": "https://www.city.osaka.lg.jp/kenko/cmsfiles/contents/0000382/382418/20260531ketsugo.csv",
+          "license_name": "CC BY 4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/deed.ja",
+          "changes": "Mokaair 摘錄飯店名稱及座標並整理區域。原始 CSV 的「緯度、經度」欄位實際依序為東經、北緯，已依合法範圍及大阪位置修正欄位對應，數值未改寫。資料說明：https://www.city.osaka.lg.jp/kenko/page/0000382418.html；不代表大阪市推薦。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "3afd61bc-e374-46f9-9f87-c4cf49569fa4",
+          "provider": "official",
+          "name": null,
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "f16574e7-801b-4a2e-8495-5981655b7ff6",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "ホテル阪急レスパイア大阪",
+        "ja": "ホテル阪急レスパイア大阪",
+        "ko": "ホテル阪急レスパイア大阪",
+        "zh-TW": "ホテル阪急レスパイア大阪",
+        "zh-CN": "ホテル阪急レスパイア大阪"
+      }
+    },
+    {
+      "id": "29a7720d-11c2-46ae-abe2-001cd69ac301",
+      "destination_id": "osaka",
+      "source_url": "https://www.hotelvischio-osaka.jp/access/",
+      "source_credits": [
+        {
+          "title": "大阪市 旅館業施設・特区民泊施設一覧（2026年5月31日現在）",
+          "publisher": "大阪市健康局生活衛生部生活衛生課",
+          "url": "https://www.city.osaka.lg.jp/kenko/cmsfiles/contents/0000382/382418/20260531ketsugo.csv",
+          "license_name": "CC BY 4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/deed.ja",
+          "changes": "Mokaair 摘錄飯店名稱及座標並整理區域。原始 CSV 的「緯度、經度」欄位實際依序為東經、北緯，已依合法範圍及大阪位置修正欄位對應，數值未改寫。資料說明：https://www.city.osaka.lg.jp/kenko/page/0000382418.html；不代表大阪市推薦。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "3ba7e8b5-6667-43aa-ad73-23e40c05d121",
+          "provider": "official",
+          "name": null,
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "69d8b040-e631-46e9-aeb0-00b04367d898",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "ホテルヴィスキオ大阪",
+        "ja": "ホテルヴィスキオ大阪",
+        "ko": "ホテルヴィスキオ大阪",
+        "zh-TW": "ホテルヴィスキオ大阪",
+        "zh-CN": "ホテルヴィスキオ大阪"
+      }
+    },
+    {
+      "id": "3a08719d-5a3a-4a87-8df4-f81da9a16c0c",
+      "destination_id": "osaka",
+      "source_url": "https://www.newotani.co.jp/osaka/access/",
+      "source_credits": [
+        {
+          "title": "大阪市 旅館業施設・特区民泊施設一覧（2026年5月31日現在）",
+          "publisher": "大阪市健康局生活衛生部生活衛生課",
+          "url": "https://www.city.osaka.lg.jp/kenko/cmsfiles/contents/0000382/382418/20260531ketsugo.csv",
+          "license_name": "CC BY 4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/deed.ja",
+          "changes": "Mokaair 摘錄飯店名稱及座標並整理區域。原始 CSV 的「緯度、經度」欄位實際依序為東經、北緯，已依合法範圍及大阪位置修正欄位對應，數值未改寫。資料說明：https://www.city.osaka.lg.jp/kenko/page/0000382418.html；不代表大阪市推薦。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "37077846-829f-4afc-bfe2-01c94acc6ac1",
+          "provider": "official",
+          "name": null,
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "02673f9c-4e1c-4aca-9a87-9da1cfcd9f1c",
+          "provider": "booking",
+          "name": "Booking.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "1acd2432-987d-4a9b-ba97-33a8e435e892",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "037243cc-e506-4ec7-a8d1-43abb828f21f",
+          "provider": "agoda",
+          "name": "Agoda",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "ホテルニューオータニ大阪",
+        "ja": "ホテルニューオータニ大阪",
+        "ko": "ホテルニューオータニ大阪",
+        "zh-TW": "ホテルニューオータニ大阪",
+        "zh-CN": "ホテルニューオータニ大阪"
+      }
+    },
+    {
+      "id": "ee355d59-44c5-478d-a3eb-2c9053febe24",
+      "destination_id": "osaka",
+      "source_url": "https://gracery.com/namba/access/",
+      "source_credits": [
+        {
+          "title": "大阪市 旅館業施設・特区民泊施設一覧（2026年5月31日現在）",
+          "publisher": "大阪市健康局生活衛生部生活衛生課",
+          "url": "https://www.city.osaka.lg.jp/kenko/cmsfiles/contents/0000382/382418/20260531ketsugo.csv",
+          "license_name": "CC BY 4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/deed.ja",
+          "changes": "Mokaair 摘錄飯店名稱及座標並整理區域。原始 CSV 的「緯度、經度」欄位實際依序為東經、北緯，已依合法範圍及大阪位置修正欄位對應，數值未改寫。資料說明：https://www.city.osaka.lg.jp/kenko/page/0000382418.html；不代表大阪市推薦。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "648c4341-b60e-4780-a463-6733de26a8ba",
+          "provider": "official",
+          "name": null,
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "dd3d94bf-67d1-4679-a092-06d676a1f21e",
+          "provider": "booking",
+          "name": "Booking.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "68d500d9-94f7-45b5-8c05-da04b475bf57",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "463f2c0a-12e5-46e8-b3d1-6e1c81c8bfb2",
+          "provider": "agoda",
+          "name": "Agoda",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "ホテルグレイスリー大阪なんば",
+        "ja": "ホテルグレイスリー大阪なんば",
+        "ko": "ホテルグレイスリー大阪なんば",
+        "zh-TW": "ホテルグレイスリー大阪なんば",
+        "zh-CN": "ホテルグレイスリー大阪なんば"
+      }
+    },
+    {
+      "id": "c70a6326-4302-4394-afb4-ff7a018272a5",
+      "destination_id": "seoul",
+      "source_url": "https://www.lottehotel.com/prerendered/myeongdong-l7/zh/about/location/index.html",
+      "source_credits": [
+        {
+          "title": "서울시 숙박업 인허가 정보",
+          "publisher": "서울특별시 시민건강국 보건의료정책과",
+          "url": "https://data.seoul.go.kr/dataList/OA-16044/S/1/datasetView.do",
+          "license_name": "KOGL Type 1 (공공누리 제1유형)",
+          "license_url": "https://www.kogl.or.kr/info/licenseType1.do",
+          "changes": "Mokaair 摘錄首爾市 2026 年資料（許可紀錄 3010000-201-2016-00002）之名稱、地址及座標；依來源標示 EPSG:5174 轉為 WGS84，取小數七位，整理住宿區域並以官網核對飯店身份。不代表首爾市推薦；未搬用地圖或訂房平台座標、照片、評分與評論。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "d9c27b3b-b4b0-4147-b35d-b99a2b263ae9",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "L7 MYEONGDONG by LOTTE HOTELS",
+        "ja": "L7 MYEONGDONG by LOTTE HOTELS",
+        "ko": "L7 MYEONGDONG by LOTTE HOTELS",
+        "zh-TW": "L7 MYEONGDONG by LOTTE HOTELS",
+        "zh-CN": "L7 MYEONGDONG by LOTTE HOTELS"
+      }
+    },
+    {
+      "id": "3d531f0f-1a58-4bd7-9311-22125f489742",
+      "destination_id": "seoul",
+      "source_url": "https://www.marriott.com/en-us/hotels/selfd-four-points-josun-seoul-myeongdong/overview/",
+      "source_credits": [
+        {
+          "title": "서울시 숙박업 인허가 정보",
+          "publisher": "서울특별시 시민건강국 보건의료정책과",
+          "url": "https://data.seoul.go.kr/dataList/OA-16044/S/1/datasetView.do",
+          "license_name": "KOGL Type 1 (공공누리 제1유형)",
+          "license_url": "https://www.kogl.or.kr/info/licenseType1.do",
+          "changes": "Mokaair 摘錄首爾市 2026 年資料（許可紀錄 3010000-201-2020-00005）之名稱、地址及座標；依來源標示 EPSG:5174 轉為 WGS84，取小數七位，整理住宿區域並以官網核對飯店身份。不代表首爾市推薦；未搬用地圖或訂房平台座標、照片、評分與評論。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "cef042b9-5f49-4199-ac83-3f8f28e4f918",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "Four Points by Sheraton Josun, Seoul Myeongdong",
+        "ja": "Four Points by Sheraton Josun, Seoul Myeongdong",
+        "ko": "Four Points by Sheraton Josun, Seoul Myeongdong",
+        "zh-TW": "Four Points by Sheraton Josun, Seoul Myeongdong",
+        "zh-CN": "Four Points by Sheraton Josun, Seoul Myeongdong"
+      }
+    },
+    {
+      "id": "287f69b8-95f4-4e05-817a-e13b4d5310b4",
+      "destination_id": "seoul",
+      "source_url": "https://all.accor.com/hotel/B696/index.en.shtml",
+      "source_credits": [
+        {
+          "title": "서울시 숙박업 인허가 정보",
+          "publisher": "서울특별시 시민건강국 보건의료정책과",
+          "url": "https://data.seoul.go.kr/dataList/OA-16044/S/1/datasetView.do",
+          "license_name": "KOGL Type 1 (공공누리 제1유형)",
+          "license_url": "https://www.kogl.or.kr/info/licenseType1.do",
+          "changes": "Mokaair 摘錄首爾市 2026 年資料（許可紀錄 3130000-201-2020-00002）之名稱、地址及座標；依來源標示 EPSG:5174 轉為 WGS84，取小數七位，整理住宿區域並以官網核對飯店身份。不代表首爾市推薦；未搬用地圖或訂房平台座標、照片、評分與評論。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "9f57d1ce-ed2a-4b28-8b00-a62a2cc9c224",
+          "provider": "official",
+          "name": null,
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "6982de70-7703-4e3a-82cd-1b40e26dda97",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "Mercure Ambassador Seoul Hongdae",
+        "ja": "머큐어 앰배서더 서울 홍대",
+        "ko": "머큐어 앰배서더 서울 홍대",
+        "zh-TW": "머큐어 앰배서더 서울 홍대",
+        "zh-CN": "머큐어 앰배서더 서울 홍대"
+      }
+    },
+    {
+      "id": "ef29cc9a-331d-4e8f-9fd0-ea30cdcecc5d",
+      "destination_id": "seoul",
+      "source_url": "https://www.lottehotel.com/prerendered/hongdae-l7/ja/about/faq/index.html",
+      "source_credits": [
+        {
+          "title": "서울시 숙박업 인허가 정보",
+          "publisher": "서울특별시 시민건강국 보건의료정책과",
+          "url": "https://data.seoul.go.kr/dataList/OA-16044/S/1/datasetView.do",
+          "license_name": "KOGL Type 1 (공공누리 제1유형)",
+          "license_url": "https://www.kogl.or.kr/info/licenseType1.do",
+          "changes": "Mokaair 摘錄首爾市 2026 年資料（許可紀錄 3130000-201-2018-00001）之名稱、地址及座標；依來源標示 EPSG:5174 轉為 WGS84，取小數七位，整理住宿區域並以官網核對飯店身份。不代表首爾市推薦；未搬用地圖或訂房平台座標、照片、評分與評論。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "b2eee839-6ba2-42a1-8dad-c74b6244f7a6",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "L7 HONGDAE by LOTTE HOTELS",
+        "ja": "L7 HONGDAE by LOTTE HOTELS",
+        "ko": "L7 HONGDAE by LOTTE HOTELS",
+        "zh-TW": "L7 HONGDAE by LOTTE HOTELS",
+        "zh-CN": "L7 HONGDAE by LOTTE HOTELS"
+      }
+    },
+    {
+      "id": "e5a8c571-961a-4dea-b36f-43624c85db82",
+      "destination_id": "seoul",
+      "source_url": "https://www.rysehotel.co.kr/contact/",
+      "source_credits": [
+        {
+          "title": "서울시 숙박업 인허가 정보",
+          "publisher": "서울특별시 시민건강국 보건의료정책과",
+          "url": "https://data.seoul.go.kr/dataList/OA-16044/S/1/datasetView.do",
+          "license_name": "KOGL Type 1 (공공누리 제1유형)",
+          "license_url": "https://www.kogl.or.kr/info/licenseType1.do",
+          "changes": "Mokaair 摘錄首爾市 2026 年資料（許可紀錄 3130000-201-2018-00005）之名稱、地址及座標；依來源標示 EPSG:5174 轉為 WGS84，取小數七位，整理住宿區域並以官網核對飯店身份。不代表首爾市推薦；未搬用地圖或訂房平台座標、照片、評分與評論。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "68411f9a-fc8b-4132-b5fb-6f0221f711fa",
+          "provider": "official",
+          "name": null,
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "98c4d502-9301-4c8c-8c89-90819af6b2c9",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "RYSE, Autograph Collection",
+        "ja": "RYSE, Autograph Collection",
+        "ko": "RYSE, Autograph Collection",
+        "zh-TW": "RYSE, Autograph Collection",
+        "zh-CN": "RYSE, Autograph Collection"
+      }
+    },
+    {
+      "id": "fc4ab21a-29df-41c3-acd7-961d3a8fbdd2",
+      "destination_id": "taipei",
+      "source_url": "https://www.hyatt.com/grand-hyatt/zh-HK/taigh-grand-hyatt-taipei/hotel-info",
+      "source_credits": [
+        {
+          "title": "旅館民宿－觀光資訊資料庫",
+          "publisher": "交通部觀光署",
+          "url": "https://media.taiwan.net.tw/XMLReleaseAll_public/v2.0/Zh_tw/Hotel-json.zip",
+          "license_name": "政府資料開放授權條款-第1版",
+          "license_url": "https://data.gov.tw/license",
+          "changes": "2026-09-07 摘錄政府公開旅宿名單 Hotel_A15010000H_007354 的名稱及位置數值，依官網更新名稱並整理住宿區域；未摘錄房價、評論或圖片。資料集與授權：https://data.gov.tw/dataset/7780；不代表政府推薦。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "d47ec0f3-d6fd-4124-9a59-ef4efdff6980",
+          "provider": "booking",
+          "name": "Booking.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "994d3ce1-1ed1-474e-9349-f6197ce5aafa",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "台北君悅酒店",
+        "ja": "台北君悅酒店",
+        "ko": "台北君悅酒店",
+        "zh-TW": "台北君悅酒店",
+        "zh-CN": "台北君悅酒店"
+      }
+    },
+    {
+      "id": "911db160-e332-41c6-95f6-3fa89d9a711d",
+      "destination_id": "taipei",
+      "source_url": "https://www.humblehousehotels.com/zh-tw/websev?cat=contact",
+      "source_credits": [
+        {
+          "title": "旅館民宿－觀光資訊資料庫",
+          "publisher": "交通部觀光署",
+          "url": "https://media.taiwan.net.tw/XMLReleaseAll_public/v2.0/Zh_tw/Hotel-json.zip",
+          "license_name": "政府資料開放授權條款-第1版",
+          "license_url": "https://data.gov.tw/license",
+          "changes": "2026-09-07 摘錄政府公開旅宿名單 Hotel_A15010000H_004943 的名稱及位置數值，依官網更新名稱並整理住宿區域；未摘錄房價、評論或圖片。資料集與授權：https://data.gov.tw/dataset/7780；不代表政府推薦。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "0cdc165e-5b3b-405c-b549-0e5f01ef5fd6",
+          "provider": "official",
+          "name": null,
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "2712c97b-ad7a-44e4-a8ec-b6ec94d4c5ae",
+          "provider": "booking",
+          "name": "Booking.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "cc0d8398-1d6a-4f10-89de-448c7694ce20",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "台北艾麗酒店",
+        "ja": "台北艾麗酒店",
+        "ko": "台北艾麗酒店",
+        "zh-TW": "台北艾麗酒店",
+        "zh-CN": "台北艾麗酒店"
+      }
+    },
+    {
+      "id": "940ceac6-8726-4be9-b00f-f5809dbc0f0b",
+      "destination_id": "taipei",
+      "source_url": "https://www.marriott.com/en-us/hotels/tpewh-w-taipei/overview/",
+      "source_credits": [
+        {
+          "title": "旅館民宿－觀光資訊資料庫",
+          "publisher": "交通部觀光署",
+          "url": "https://media.taiwan.net.tw/XMLReleaseAll_public/v2.0/Zh_tw/Hotel-json.zip",
+          "license_name": "政府資料開放授權條款-第1版",
+          "license_url": "https://data.gov.tw/license",
+          "changes": "2026-09-07 摘錄政府公開旅宿名單 Hotel_A15010000H_007253 的名稱及位置數值，依官網更新名稱並整理住宿區域；未摘錄房價、評論或圖片。資料集與授權：https://data.gov.tw/dataset/7780；不代表政府推薦。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "1bc2ccde-a724-4077-a7cd-9121959ba655",
+          "provider": "official",
+          "name": null,
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "b0c20080-76ad-4b1b-9a4d-657654387ecd",
+          "provider": "booking",
+          "name": "Booking.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "3c15c159-2e53-4a78-846b-de63d06dfa0c",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "台北W飯店",
+        "ja": "台北W飯店",
+        "ko": "台北W飯店",
+        "zh-TW": "台北W飯店",
+        "zh-CN": "台北W飯店"
+      }
+    },
+    {
+      "id": "89873ccf-5a45-467d-b2c9-dd32c2b6a0df",
+      "destination_id": "taipei",
+      "source_url": "https://www.cosmos-hotel.com.tw/%E9%A3%AF%E5%BA%97%E4%BD%8D%E7%BD%AE/",
+      "source_credits": [
+        {
+          "title": "旅館民宿－觀光資訊資料庫",
+          "publisher": "交通部觀光署",
+          "url": "https://media.taiwan.net.tw/XMLReleaseAll_public/v2.0/Zh_tw/Hotel-json.zip",
+          "license_name": "政府資料開放授權條款-第1版",
+          "license_url": "https://data.gov.tw/license",
+          "changes": "2026-09-07 摘錄政府公開旅宿名單 Hotel_A15010000H_003552 的名稱及位置數值，依官網更新名稱並整理住宿區域；未摘錄房價、評論或圖片。資料集與授權：https://data.gov.tw/dataset/7780；不代表政府推薦。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "c9f5a980-3e11-4624-8117-2686f528a6b0",
+          "provider": "official",
+          "name": null,
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "edc6dcfc-7b6a-4c91-b988-738cf943a40b",
+          "provider": "booking",
+          "name": "Booking.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "29656832-a29f-465c-aaf8-cae4c339613a",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "8d5f3a67-29be-4c54-8095-3f9ce514fed7",
+          "provider": "rakuten",
+          "name": "Rakuten Travel",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "台北天成大飯店",
+        "ja": "台北天成大飯店",
+        "ko": "台北天成大飯店",
+        "zh-TW": "台北天成大飯店",
+        "zh-CN": "台北天成大飯店"
+      }
+    },
+    {
+      "id": "ad6930f9-64e2-4298-b90f-ad24fae50060",
+      "destination_id": "taipei",
+      "source_url": "https://taipei.caesarpark.com.tw/about/traffic_information/",
+      "source_credits": [
+        {
+          "title": "旅館民宿－觀光資訊資料庫",
+          "publisher": "交通部觀光署",
+          "url": "https://media.taiwan.net.tw/XMLReleaseAll_public/v2.0/Zh_tw/Hotel-json.zip",
+          "license_name": "政府資料開放授權條款-第1版",
+          "license_url": "https://data.gov.tw/license",
+          "changes": "2026-09-07 摘錄政府公開旅宿名單 Hotel_A15010000H_010571 的名稱及位置數值，依官網更新名稱並整理住宿區域；未摘錄房價、評論或圖片。資料集與授權：https://data.gov.tw/dataset/7780；不代表政府推薦。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "fe51f041-3f5e-433f-a87c-a2b4708d6f37",
+          "provider": "official",
+          "name": null,
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "a789b1c7-46c7-42a2-916d-099bad5f18de",
+          "provider": "booking",
+          "name": "Booking.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "2d142178-60cb-404c-8bae-63aa938dbf74",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "台北凱撒大飯店",
+        "ja": "台北凱撒大飯店",
+        "ko": "台北凱撒大飯店",
+        "zh-TW": "台北凱撒大飯店",
+        "zh-CN": "台北凱撒大飯店"
+      }
+    },
+    {
+      "id": "68646c86-2aed-4bd6-a453-29450ab50d6c",
+      "destination_id": "taipei",
+      "source_url": "https://www.palaisdechinehotel.com/pdc_tw/pages/35/0/195",
+      "source_credits": [
+        {
+          "title": "旅館民宿－觀光資訊資料庫",
+          "publisher": "交通部觀光署",
+          "url": "https://media.taiwan.net.tw/XMLReleaseAll_public/v2.0/Zh_tw/Hotel-json.zip",
+          "license_name": "政府資料開放授權條款-第1版",
+          "license_url": "https://data.gov.tw/license",
+          "changes": "2026-09-07 摘錄政府公開旅宿名單 Hotel_A15010000H_001187 的名稱及位置數值，依官網更新名稱並整理住宿區域；未摘錄房價、評論或圖片。資料集與授權：https://data.gov.tw/dataset/7780；不代表政府推薦。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "3b4e7e4c-a99d-4788-95e3-bcab65b339b6",
+          "provider": "official",
+          "name": null,
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "4057e9ce-b353-437a-b2c8-3097222c8fb4",
+          "provider": "booking",
+          "name": "Booking.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "31b17c88-f69b-4671-8b5a-68c99dd9bf62",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "君品酒店",
+        "ja": "君品酒店",
+        "ko": "君品酒店",
+        "zh-TW": "君品酒店",
+        "zh-CN": "君品酒店"
+      }
+    },
+    {
+      "id": "535688c6-4370-4550-9a66-d35c4f907eef",
+      "destination_id": "taipei",
+      "source_url": "https://c3.cityinn.com.tw/tw/location-t/",
+      "source_credits": [
+        {
+          "title": "旅館民宿－觀光資訊資料庫",
+          "publisher": "交通部觀光署",
+          "url": "https://media.taiwan.net.tw/XMLReleaseAll_public/v2.0/Zh_tw/Hotel-json.zip",
+          "license_name": "政府資料開放授權條款-第1版",
+          "license_url": "https://data.gov.tw/license",
+          "changes": "2026-09-07 摘錄政府公開旅宿名單 Hotel_A15010000H_017029 的名稱及位置數值，依官網更新名稱並整理住宿區域；未摘錄房價、評論或圖片。資料集與授權：https://data.gov.tw/dataset/7780；不代表政府推薦。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "fd09af44-8571-44ea-a34e-5f6b3c4be9f6",
+          "provider": "official",
+          "name": null,
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "18ca5278-acf4-41db-967f-8cea1b247a71",
+          "provider": "booking",
+          "name": "Booking.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "14fa1772-1050-41d1-b40d-87eb004bd254",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "新驛旅店 台北車站三館",
+        "ja": "新驛旅店 台北車站三館",
+        "ko": "新驛旅店 台北車站三館",
+        "zh-TW": "新驛旅店 台北車站三館",
+        "zh-CN": "新驛旅店 台北車站三館"
+      }
+    },
+    {
+      "id": "f73ce087-d361-4f74-8bac-45ed71d5c1ce",
+      "destination_id": "taipei",
+      "source_url": "https://www.westgatehotel.com.tw/location/",
+      "source_credits": [
+        {
+          "title": "旅館民宿－觀光資訊資料庫",
+          "publisher": "交通部觀光署",
+          "url": "https://media.taiwan.net.tw/XMLReleaseAll_public/v2.0/Zh_tw/Hotel-json.zip",
+          "license_name": "政府資料開放授權條款-第1版",
+          "license_url": "https://data.gov.tw/license",
+          "changes": "2026-09-07 摘錄政府公開旅宿名單 Hotel_A15010000H_005422 的名稱及位置數值，依官網更新名稱並整理住宿區域；未摘錄房價、評論或圖片。資料集與授權：https://data.gov.tw/dataset/7780；不代表政府推薦。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "837e69b7-aa5e-477f-b380-90b315d179fd",
+          "provider": "official",
+          "name": null,
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "32947818-bbb6-4bad-beac-18465e8fb0b4",
+          "provider": "booking",
+          "name": "Booking.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "2997aa94-f717-469e-90e8-91e6238375c4",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "WESTGATE Hotel 永安棧",
+        "ja": "WESTGATE Hotel 永安棧",
+        "ko": "WESTGATE Hotel 永安棧",
+        "zh-TW": "WESTGATE Hotel 永安棧",
+        "zh-CN": "WESTGATE Hotel 永安棧"
+      }
+    },
+    {
+      "id": "177996ee-887e-48b8-9ade-240e47675438",
+      "destination_id": "taipei",
+      "source_url": "https://solaria-taipei.nnr-h.com/",
+      "source_credits": [
+        {
+          "title": "旅館民宿－觀光資訊資料庫",
+          "publisher": "交通部觀光署",
+          "url": "https://media.taiwan.net.tw/XMLReleaseAll_public/v2.0/Zh_tw/Hotel-json.zip",
+          "license_name": "政府資料開放授權條款-第1版",
+          "license_url": "https://data.gov.tw/license",
+          "changes": "2026-09-07 摘錄政府公開旅宿名單 Hotel_A15010000H_033655 的名稱及位置數值，依官網更新名稱並整理住宿區域；未摘錄房價、評論或圖片。資料集與授權：https://data.gov.tw/dataset/7780；不代表政府推薦。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "e2ce0d9d-687f-43eb-b0d6-b1774f58f474",
+          "provider": "official",
+          "name": null,
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "c6f9ae48-0fae-451b-a930-f43feddac5d7",
+          "provider": "booking",
+          "name": "Booking.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "180844c8-c83e-4aa3-90a5-7a6d17f358a2",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "索拉利亞西鐵飯店台北西門",
+        "ja": "索拉利亞西鐵飯店台北西門",
+        "ko": "索拉利亞西鐵飯店台北西門",
+        "zh-TW": "索拉利亞西鐵飯店台北西門",
+        "zh-CN": "索拉利亞西鐵飯店台北西門"
+      }
+    },
+    {
+      "id": "c934905c-8857-4dfc-963e-9d19e13cd16e",
+      "destination_id": "taipei",
+      "source_url": "https://www.amba-hotels.com/ximending/picture/files/amba-TAIPEI-XIMENDING-event-venues-capacity-square-feet.pdf",
+      "source_credits": [
+        {
+          "title": "旅館民宿－觀光資訊資料庫",
+          "publisher": "交通部觀光署",
+          "url": "https://media.taiwan.net.tw/XMLReleaseAll_public/v2.0/Zh_tw/Hotel-json.zip",
+          "license_name": "政府資料開放授權條款-第1版",
+          "license_url": "https://data.gov.tw/license",
+          "changes": "2026-09-07 摘錄政府公開旅宿名單 Hotel_A15010000H_002465 的名稱及位置數值，依官網更新名稱並整理住宿區域；未摘錄房價、評論或圖片。資料集與授權：https://data.gov.tw/dataset/7780；不代表政府推薦。"
+        }
+      ],
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "booking_options": [
+        {
+          "id": "3027e80b-fc5d-4bc5-97fd-9f21e6f3cdcd",
+          "provider": "official",
+          "name": null,
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "f3ed1561-3046-4647-8c90-0ab634d5c7e2",
+          "provider": "booking",
+          "name": "Booking.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        },
+        {
+          "id": "03d141b8-18bb-4eb8-b04f-60b82c47a25d",
+          "provider": "trip_com",
+          "name": "Trip.com",
+          "mode": "direct",
+          "quote_status": "not_configured"
+        }
+      ],
+      "titles_by_locale": {
+        "en": "台北西門町意舍酒店",
+        "ja": "台北西門町意舍酒店",
+        "ko": "台北西門町意舍酒店",
+        "zh-TW": "台北西門町意舍酒店",
+        "zh-CN": "台北西門町意舍酒店"
+      }
+    }
+  ],
+  "interpretation": "Empty enabled cities are not called closed. enabled=false is reported as disabled in this public catalog. Product title fallbacks are checked against stored names, not presented as complete translations. No claim of live room prices or availability.",
+  "source_credit_validation_scope": "Exact six-field schema, nonempty string values, public HTTPS source/license URLs and equality to the pre-apply baseline. This is not a new legal opinion for all source datasets."
+}

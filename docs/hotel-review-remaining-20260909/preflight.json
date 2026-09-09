@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-08T21:39:43Z",
+  "baseline_semantic_sha256": "c938d83913645ac6a7651eca0e705621b33b40bb235905392c54917492bdb03d",
+  "ready": {
+    "status": "ready",
+    "database": "ok",
+    "redis": "ok",
+    "schema": "0063_destination_offers"
+  },
+  "code_check": "All seven live admin/auth/model/network/hotel option source hashes match this local worktree; no application deployment or service restart.",
+  "source_sha256": {
+    "app/travel_services/admin.py": "2dea2c158b2fbfca2a5d564601ab0b4eda6cd563a0facb2a80a3b38782f6d92e",
+    "app/travel_services/network.py": "8b50bfc1b6bba2354e9dab6d6ec8309abd0a7a061322189acde365e04c3e2ca5",
+    "app/travel_services/service.py": "35a42e226f766ac66a6183b2dd6f7fd871337833dd8bdb8b56e4e009559fca36",
+    "app/travel_services/schemas.py": "0f5b2c09cacaaeb77f33d9b65411f66288b0c34676995c35631fdc16fad0fb84",
+    "app/travel_services/hotel_options.py": "1ccf431acecf0fd5a0538546eb74c540ac9587931a189adc57b08f159e1eb926",
+    "app/auth/service.py": "1d8c50d2651344eea2c35089a087137bc2014dc9d7c31a1806e70552cb2d47a4",
+    "app/models.py": "42067dd9e785f918cbdf19779e6c35a2ceff75830d79b1f06d6271d73294219d"
+  },
+  "backup": {
+    "path": "/root/mokaair-hotel-remaining-20260909-QO1lu1QM/pre-remaining.dump",
+    "size_bytes": 13109408,
+    "sha256": "b0ef66c82bc36facd8b6268bca160f2a914410080212edc935c35540b4ed96f5",
+    "mode": "600",
+    "parent_mode": "700",
+    "index_lines": 917,
+    "pg_restore_list_success": true,
+    "full_restore_tested": false,
+    "existing_backups_preserved": true
+  }
+}

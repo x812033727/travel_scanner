@@ -1,0 +1,258 @@
+[
+  {
+    "id": "70a97881-68e3-435c-8658-bf23ccd24048",
+    "name": "Yung Kee Restaurant",
+    "place_id": "ChIJ5wqYM3sABDQReBZuul1u-KU",
+    "expected_hash": "ab69028e4ed0318824287fc361af1ee8fa57dab8fff77bdc8f61bf493fe2212c",
+    "reason": "官方 Restaurant JSON-LD 的名稱與威靈頓街地址相符；內建瀏覽器核對既有精準地圖為同一家，不是 Yung's Bistro。",
+    "map_checked": true,
+    "publish": true,
+    "payload": {
+      "address": "32-40 Wellington Street, Central, Hong Kong",
+      "sources": [
+        {
+          "source_type": "merchant_official",
+          "source_scope": "merchant_website",
+          "source_title": "Yung Kee Restaurant 官方首頁與 Restaurant JSON-LD",
+          "source_url": "https://yungkee.com.hk/en/home/",
+          "claims": [
+            "display_name",
+            "address",
+            "official_website",
+            "coordinates"
+          ]
+        }
+      ],
+      "official_website_url": "https://yungkee.com.hk/en/home/",
+      "latitude": 22.2819,
+      "longitude": 114.1553,
+      "coordinate_source_type": "merchant_official",
+      "coordinate_source_url": "https://yungkee.com.hk/en/home/"
+    }
+  },
+  {
+    "id": "daada54b-92dd-4866-9310-3c5c2437c051",
+    "name": "Chef Hung Taiwanese Beef Noodles Jianbei Flagship Store",
+    "place_id": "ChIJD-6a5F-pQjQRJlbYSInTPlQ",
+    "expected_hash": "4728eb3a5d75a1ec2d62d27ea774c5feebcbd9aa1706a1ed80c154d7ad140c65",
+    "reason": "官方 LINE 與政府 CSV 的建北門市名稱、地址一致；既有精準地圖同店。採政府 CSV 原有座標，不採 Google 座標。",
+    "map_checked": true,
+    "publish": true,
+    "payload": {
+      "address": "臺北市中山區建國北路二段72號",
+      "sources": [
+        {
+          "source_type": "merchant_official",
+          "source_scope": "merchant_website",
+          "source_title": "洪師父官方 LINE｜建北門市",
+          "source_url": "https://page.line.me/ikz5554k",
+          "claims": [
+            "display_name",
+            "address",
+            "official_website"
+          ]
+        },
+        {
+          "source_type": "official_tourism",
+          "source_scope": "merchant_listing",
+          "source_title": "臺北市政府產業局商業處｜2026 友善店家清冊｜OGDL-1.0",
+          "source_url": "https://data.taipei/api/frontstage/tpeod/dataset/resource.download?rid=5a5b36e0-f870-4b7f-8378-c91ac5f57941",
+          "claims": [
+            "display_name",
+            "address",
+            "coordinates"
+          ]
+        }
+      ],
+      "official_website_url": "https://page.line.me/ikz5554k",
+      "latitude": 25.054943,
+      "longitude": 121.536473,
+      "coordinate_source_type": "official_tourism",
+      "coordinate_source_url": "https://data.taipei/api/frontstage/tpeod/dataset/resource.download?rid=5a5b36e0-f870-4b7f-8378-c91ac5f57941"
+    }
+  },
+  {
+    "id": "83ee9b26-82f0-4686-8986-cadb000da775",
+    "name": "Liang Pin Beef Noodles",
+    "place_id": "ChIJDe201QypQjQRKrLbgksaElA",
+    "expected_hash": "bf774094ba7b312cf0069458b5e3671d45d92127c706a6cbb034e842de74e178",
+    "reason": "政府友善店家 CSV 指定良品牛肉麵記錄與既有精準地圖一致；不混用林果良品。採政府原有座標，不推論寵物友善。",
+    "map_checked": true,
+    "publish": true,
+    "payload": {
+      "address": "臺北市中正區開封街一段10號",
+      "sources": [
+        {
+          "source_type": "official_tourism",
+          "source_scope": "merchant_listing",
+          "source_title": "臺北市政府產業局商業處｜2026 友善店家清冊｜OGDL-1.0",
+          "source_url": "https://data.taipei/api/frontstage/tpeod/dataset/resource.download?rid=5a5b36e0-f870-4b7f-8378-c91ac5f57941",
+          "claims": [
+            "display_name",
+            "address",
+            "coordinates"
+          ]
+        }
+      ],
+      "latitude": 25.045914,
+      "longitude": 121.513928,
+      "coordinate_source_type": "official_tourism",
+      "coordinate_source_url": "https://data.taipei/api/frontstage/tpeod/dataset/resource.download?rid=5a5b36e0-f870-4b7f-8378-c91ac5f57941"
+    }
+  },
+  {
+    "id": "9feea103-829e-4a7f-adb9-cec522bff3cc",
+    "name": "Sun Way Japanese Cuisine",
+    "place_id": "ChIJjRzzCaipQjQRzNo88d0xnbo",
+    "expected_hash": "8c714d85a3f81a085fdf5901bc5161d6943d37e3c0a2edaec70c8fc5c6ad8e05",
+    "reason": "政府店家改造 CSV 第4項為三味食堂，官方中英名與既有精準地圖同店；採政府 Latitude/Longitude，不採 Google 座標。",
+    "map_checked": true,
+    "publish": true,
+    "payload": {
+      "address": "臺北市萬華區貴陽街2段116號",
+      "sources": [
+        {
+          "source_type": "official_tourism",
+          "source_scope": "merchant_listing",
+          "source_title": "臺北市政府產業局商業處｜2026 店家改造資料第4項｜OGDL-1.0",
+          "source_url": "https://data.taipei/api/frontstage/tpeod/dataset/resource.download?rid=af4a3527-e6c6-4c43-a127-6f1f4c893582",
+          "claims": [
+            "display_name",
+            "address",
+            "coordinates"
+          ]
+        }
+      ],
+      "latitude": 25.039895,
+      "longitude": 121.502716,
+      "coordinate_source_type": "official_tourism",
+      "coordinate_source_url": "https://data.taipei/api/frontstage/tpeod/dataset/resource.download?rid=af4a3527-e6c6-4c43-a127-6f1f4c893582"
+    }
+  },
+  {
+    "id": "c56f4794-885e-4138-a442-d3196b69e9a8",
+    "name": "Ho Hung Kee (1946) Congee & Noodle Shop",
+    "place_id": "ChIJ-2pGxlYABDQRvNCrDm656xI",
+    "expected_hash": "05f747be0e69101adb11ffe2075cdb86c85cf2ebdafd810337be1ac6d570b1e3",
+    "reason": "內建瀏覽器確認官方分店正文及既有地圖為希慎廣場何洪記；官方頁的地圖嵌入不作永久座標。仍待獨立座標來源，保持不公開。",
+    "map_checked": true,
+    "publish": false,
+    "payload": {
+      "address": "銅鑼灣軒尼詩道500號希慎廣場12樓1204-1205號舖",
+      "sources": [
+        {
+          "source_type": "merchant_official",
+          "source_scope": "merchant_website",
+          "source_title": "正斗集團｜何洪記希慎廣場分店",
+          "source_url": "https://tasty.com.hk/en/location/%E5%B8%8C%E6%85%8E%E5%BB%A3%E5%A0%B4-hysan-place/",
+          "claims": [
+            "display_name",
+            "address",
+            "official_website"
+          ]
+        }
+      ],
+      "official_website_url": "https://tasty.com.hk/en/location/%E5%B8%8C%E6%85%8E%E5%BB%A3%E5%A0%B4-hysan-place/"
+    }
+  },
+  {
+    "id": "9034a7dc-d91e-4e99-a606-716a7d7f6e89",
+    "name": "Ju Xing Home",
+    "place_id": "ChIJ3zz6ArYABDQRGZQn6ZFd3I8",
+    "expected_hash": "b9854276f3fbae84f833b18409be3f471dfbb50539db4a1465410857b2d69b28",
+    "reason": "旅發局指定店家正文確認砵蘭街418號聚興家，補上直接店家來源；未取得永久座標，不發布，也不新增米其林主張。",
+    "map_checked": true,
+    "publish": false,
+    "payload": {
+      "address": "418 Portland Street, Mong Kok, Kowloon",
+      "sources": [
+        {
+          "source_type": "official_tourism",
+          "source_scope": "merchant_listing",
+          "source_title": "香港旅遊發展局｜Ju Xing Home 指定店家頁",
+          "source_url": "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-ju-xing-home.html",
+          "claims": [
+            "display_name",
+            "address"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "23d0b22b-d98e-45b3-bb7e-42306120f7a1",
+    "name": "Sing Heung Yuen",
+    "place_id": "ChIJN6xaf3wABDQRd0iCgMPj9jg",
+    "expected_hash": "8b724aaa56addd9a9f275464d8fae8675965c52316bb9bfe6e7d8c02a6f6328f",
+    "reason": "旅發局指定店家正文確認美輪街2號勝香園及餐飲業態；仍待永久座標，不發布。",
+    "map_checked": true,
+    "publish": false,
+    "payload": {
+      "address": "G/F, 2 Mei Lun Street, Central, Hong Kong Island",
+      "sources": [
+        {
+          "source_type": "official_tourism",
+          "source_scope": "merchant_listing",
+          "source_title": "香港旅遊發展局｜Sing Heung Yuen 指定店家頁",
+          "source_url": "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-sing-heung-yuen.html",
+          "claims": [
+            "display_name",
+            "address"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "8b244f82-abe6-4662-bf75-0e94cba6e66d",
+    "name": "Soup Curry Suage Plus",
+    "place_id": "ChIJv0HGVIQpC18Rc2m8zsIZwJE",
+    "expected_hash": "83b995650dd8f061b3c92f13e1938edb4c18138a5a664a19e4c8054c095e56b6",
+    "reason": "官網指定 Suage+ 二樓分店，旁邊 Suage2 是不同店，不合併；缺永久座標，不發布。",
+    "map_checked": true,
+    "publish": false,
+    "payload": {
+      "address": "北海道札幌市中央区南4条西5丁目都志松ビル2F",
+      "sources": [
+        {
+          "source_type": "merchant_official",
+          "source_scope": "merchant_website",
+          "source_title": "Suage 官方｜Suage+ 都志松ビル2F",
+          "source_url": "https://suage.mom/stores/suage-plus/",
+          "claims": [
+            "display_name",
+            "address",
+            "official_website"
+          ]
+        }
+      ],
+      "official_website_url": "https://suage.mom/stores/suage-plus/"
+    }
+  },
+  {
+    "id": "28248e3a-3ed9-4464-84fd-b48136070557",
+    "name": "Shin Yeh Taiwanese Cuisine Original Store",
+    "place_id": "ChIJbamMQUWpQjQRiFWnBTPPj_Y",
+    "expected_hash": "1987fb0670af64f2d293bc308f7315eab21450d2064bade47fe9d060d370f2a1",
+    "reason": "官網指定創始店地址與2026年訂位公告；不混用南西、忠孝等分店，缺永久座標，不發布。",
+    "map_checked": true,
+    "publish": false,
+    "payload": {
+      "address": "臺北市中山區雙城街34-1號",
+      "sources": [
+        {
+          "source_type": "merchant_official",
+          "source_scope": "merchant_website",
+          "source_title": "欣葉國際餐飲集團｜台菜創始店",
+          "source_url": "https://www.shinyeh.com.tw/content/zh/brand/Store.aspx?BrandId=1&Id=1",
+          "claims": [
+            "display_name",
+            "address",
+            "official_website"
+          ]
+        }
+      ],
+      "official_website_url": "https://www.shinyeh.com.tw/content/zh/brand/Store.aspx?BrandId=1&Id=1"
+    }
+  }
+]

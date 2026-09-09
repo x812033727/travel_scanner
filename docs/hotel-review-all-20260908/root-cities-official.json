@@ -1,0 +1,561 @@
+{
+  "schema_version": 1,
+  "task_id": "2026-09-08-hotel-review-all-20260908",
+  "review_date": "2026-09-08",
+  "scope": "Official address support for the root agent's Tokyo, Osaka and Taipei platform identity review",
+  "production_mutations": false,
+  "source_snapshot": "docs/hotel-review-all-20260908/products-before.json",
+  "counts": {
+    "hotels": 30,
+    "full_address_verified": 26,
+    "unresolved_address": 4
+  },
+  "caveats": [
+    "All addresses were read from operator-owned pages, not from Google, OTA coordinates, or nearby parking addresses.",
+    "This file does not modify existing product approvals, maps or coordinates.",
+    "Browser verification is solely the root agent's separate IAB work; all browser_verified fields here remain false.",
+    "Current_read_availability describes public page readability, not sellable inventory or all-date hotel operation."
+  ],
+  "hotels": [
+    {
+      "key": "editorial:osaka:gracery-osaka-namba",
+      "product_id": "ee355d59-44c5-478d-a3eb-2c9053febe24",
+      "snapshot_title": "ホテルグレイスリー大阪なんば",
+      "snapshot_status": "approved",
+      "official_name": "ホテルグレイスリー大阪なんば",
+      "address": "〒556-0016 大阪府大阪市浪速区元町1丁目4番4号",
+      "source_url": "https://gracery.com/namba/access/",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "readable_name_and_full_street_address",
+      "full_address_verified": true,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "none_observed_in_bounded_official_page_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "Official hotel page identifies this specific property's name and premises address."
+    },
+    {
+      "key": "editorial:osaka:granvia-osaka",
+      "product_id": "6b6f2564-93f4-4aff-aa97-bfe34d456cad",
+      "snapshot_title": "ホテルグランヴィア大阪",
+      "snapshot_status": "pending",
+      "official_name": "ホテルグランヴィア大阪",
+      "address": "530-0001 3-1-1 Umeda, Kita-ku, Osaka City",
+      "source_url": "https://jrwest-hotels.jp/en/granvia-osaka/access/",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "readable_name_and_full_street_address",
+      "full_address_verified": true,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "none_observed_in_bounded_official_page_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "Use the hotel address; the same page also lists nearby parking. Front desk is on floor 19."
+    },
+    {
+      "key": "editorial:osaka:hankyu-respire-osaka",
+      "product_id": "f4dc5d28-5de4-4e81-b79f-f8471f1e4863",
+      "snapshot_title": "ホテル阪急レスパイア大阪",
+      "snapshot_status": "approved",
+      "official_name": "ホテル阪急レスパイア大阪",
+      "address": "〒530-0011 大阪府大阪市北区大深町1番1号",
+      "source_url": "https://www.hankyu-hotel.com/hotel/respire/osaka/access",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "readable_name_and_full_street_address",
+      "full_address_verified": true,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "none_observed_in_bounded_official_page_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "Official hotel page identifies this specific property's name and premises address."
+    },
+    {
+      "key": "editorial:osaka:intergate-osaka-umeda",
+      "product_id": "32e00e1e-5976-46dd-90f2-bda4c44c1b2c",
+      "snapshot_title": "ホテルインターゲート大阪 梅田",
+      "snapshot_status": "approved",
+      "official_name": "ホテルインターゲート大阪 梅田",
+      "address": "〒530-0001 大阪府大阪市北区梅田2-5-2",
+      "source_url": "https://www.intergatehotels.jp/osaka-umeda/facility/",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "readable_name_and_full_street_address",
+      "full_address_verified": true,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "none_observed_in_bounded_official_page_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "Use hotel address 2-5-2, not the separate BREEZE Tower parking address 2-4-9 elsewhere on the page."
+    },
+    {
+      "key": "editorial:osaka:monterey-lasoeur-osaka",
+      "product_id": "a725fc3d-60bc-4f4b-9ca5-00a87ee6af6a",
+      "snapshot_title": "ホテルモントレ ラ・スール大阪",
+      "snapshot_status": "pending",
+      "official_name": "ホテルモントレ ラ・スール大阪",
+      "address": "〒540-0001 大阪府大阪市中央区城見2丁目2番22号",
+      "source_url": "https://www.hotelmonterey.co.jp/lasoeur_osaka/access/",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "readable_name_and_full_street_address",
+      "full_address_verified": true,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "none_observed_in_bounded_official_page_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "Official hotel page identifies this specific property's name and premises address."
+    },
+    {
+      "key": "editorial:osaka:new-otani-osaka",
+      "product_id": "3a08719d-5a3a-4a87-8df4-f81da9a16c0c",
+      "snapshot_title": "ホテルニューオータニ大阪",
+      "snapshot_status": "approved",
+      "official_name": "ホテルニューオータニ大阪",
+      "address": "〒540-8578 大阪市中央区城見1-4-1",
+      "source_url": "https://www.newotani.co.jp/osaka/access/",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "readable_name_and_full_street_address",
+      "full_address_verified": true,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "none_observed_in_bounded_official_page_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "Official hotel page identifies this specific property's name and premises address."
+    },
+    {
+      "key": "editorial:osaka:royal-classic-osaka",
+      "product_id": "c74448b6-1fa7-426e-b5af-17b7d0953382",
+      "snapshot_title": "ホテルロイヤルクラシック大阪",
+      "snapshot_status": "pending",
+      "official_name": "ホテルロイヤルクラシック大阪",
+      "address": "〒542-0076 大阪府大阪市中央区難波4-3-3",
+      "source_url": "https://www.hotel-royalclassic.jp/access",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "readable_name_and_full_street_address",
+      "full_address_verified": true,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "none_observed_in_bounded_official_page_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "Official hotel page identifies this specific property's name and premises address."
+    },
+    {
+      "key": "editorial:osaka:sotetsu-grand-fresa-osaka-namba",
+      "product_id": "a5336bb9-321b-40a0-9d87-cf9d1e6d9d9b",
+      "snapshot_title": "相鉄グランドフレッサ 大阪なんば",
+      "snapshot_status": "pending",
+      "official_name": "相鉄グランドフレッサ 大阪なんば",
+      "address": "〒542-0073 大阪府大阪市中央区日本橋1-1-13",
+      "source_url": "https://sotetsu-hotels.com/grand-fresa/namba/access/",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "readable_name_and_full_street_address",
+      "full_address_verified": true,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "none_observed_in_bounded_official_page_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "Official hotel page identifies this specific property's name and premises address."
+    },
+    {
+      "key": "editorial:osaka:swissotel-nankai-osaka",
+      "product_id": "352d2cf2-2a1b-48a4-ad94-3bfaa1a88303",
+      "snapshot_title": "スイスホテル南海大阪",
+      "snapshot_status": "pending",
+      "official_name": null,
+      "address": null,
+      "source_url": "https://www.swissotel.com/hotels/nankai-osaka/pdf/swissotel-nankai-osaka-fact-sheet-v2/",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "fetch_timeout",
+      "full_address_verified": false,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "not_assessable_from_this_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "Exact stored official fact-sheet URL timed out twice; no address read. A fetch failure is not evidence of hotel closure."
+    },
+    {
+      "key": "editorial:osaka:vischio-osaka",
+      "product_id": "29a7720d-11c2-46ae-abe2-001cd69ac301",
+      "snapshot_title": "ホテルヴィスキオ大阪",
+      "snapshot_status": "approved",
+      "official_name": "ホテルヴィスキオ大阪",
+      "address": "〒530-0012 大阪市北区芝田2丁目4番10号",
+      "source_url": "https://www.hotelvischio-osaka.jp/access/",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "readable_name_and_full_street_address",
+      "full_address_verified": true,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "none_observed_in_bounded_official_page_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "Official hotel page identifies this specific property's name and premises address."
+    },
+    {
+      "key": "editorial:taipei:amba-ximending",
+      "product_id": "c934905c-8857-4dfc-963e-9d19e13cd16e",
+      "snapshot_title": "台北西門町意舍酒店",
+      "snapshot_status": "approved",
+      "official_name": null,
+      "address": null,
+      "source_url": "https://www.amba-hotels.com/ximending/picture/files/amba-TAIPEI-XIMENDING-event-venues-capacity-square-feet.pdf",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "http_403_forbidden",
+      "full_address_verified": false,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "not_assessable_from_this_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "Exact stored official PDF returned HTTP 403; no address read. Did not bypass access restriction."
+    },
+    {
+      "key": "editorial:taipei:caesar-park-taipei",
+      "product_id": "ad6930f9-64e2-4298-b90f-ad24fae50060",
+      "snapshot_title": "台北凱撒大飯店",
+      "snapshot_status": "approved",
+      "official_name": "台北凱撒大飯店",
+      "address": "100 台北市中正區忠孝西路一段38號",
+      "source_url": "https://taipei.caesarpark.com.tw/about/traffic_information/",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "readable_name_and_full_street_address",
+      "full_address_verified": true,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "none_observed_in_bounded_official_page_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "Use the hotel's footer address 38. Most of the traffic page lists third-party parking addresses (50, 47, 66 etc.); these are not the hotel premises."
+    },
+    {
+      "key": "editorial:taipei:cityinn-station-iii",
+      "product_id": "535688c6-4370-4550-9a66-d35c4f907eef",
+      "snapshot_title": "新驛旅店 台北車站三館",
+      "snapshot_status": "approved",
+      "official_name": "新驛旅店 台北車站三館",
+      "address": null,
+      "source_url": "https://c3.cityinn.com.tw/tw/location-t/",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "body_readable_but_no_street_number",
+      "full_address_verified": false,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "not_assessable_from_this_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "Page heading names Taipei Station Branch III, but transit prose says Branch II and supplies no street number. Do not use that prose to infer the Branch III address."
+    },
+    {
+      "key": "editorial:taipei:cosmos-taipei",
+      "product_id": "89873ccf-5a45-467d-b2c9-dd32c2b6a0df",
+      "snapshot_title": "台北天成大飯店",
+      "snapshot_status": "approved",
+      "official_name": "台北天成大飯店",
+      "address": "台北市中正區忠孝西路一段43號",
+      "source_url": "https://www.cosmos-hotel.com.tw/%E9%A3%AF%E5%BA%97%E4%BD%8D%E7%BD%AE/",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "readable_name_and_full_street_address",
+      "full_address_verified": true,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "none_observed_in_bounded_official_page_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "Official hotel page identifies this specific property's name and premises address."
+    },
+    {
+      "key": "editorial:taipei:grand-hyatt-taipei",
+      "product_id": "fc4ab21a-29df-41c3-acd7-961d3a8fbdd2",
+      "snapshot_title": "台北君悅酒店",
+      "snapshot_status": "approved",
+      "official_name": "台北君悅酒店",
+      "address": "松壽路2號, 台北110061, 台灣",
+      "source_url": "https://www.hyatt.com/grand-hyatt/zh-HK/taigh-grand-hyatt-taipei/hotel-info",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "readable_name_and_full_street_address",
+      "full_address_verified": true,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "none_observed_in_bounded_official_page_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "Official hotel page identifies this specific property's name and premises address."
+    },
+    {
+      "key": "editorial:taipei:humble-house-taipei",
+      "product_id": "911db160-e332-41c6-95f6-3fa89d9a711d",
+      "snapshot_title": "台北艾麗酒店",
+      "snapshot_status": "approved",
+      "official_name": "台北艾麗 希爾頓格芮精選酒店",
+      "address": "110 台北市信義區松高路18號",
+      "source_url": "https://www.humblehousehotels.com/zh-tw/websev?cat=contact",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "readable_name_and_full_street_address",
+      "full_address_verified": true,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "none_observed_in_bounded_official_page_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "Current official title includes Hilton Curio Collection affiliation; the premises address remains Songgao Road 18."
+    },
+    {
+      "key": "editorial:taipei:palais-de-chine",
+      "product_id": "68646c86-2aed-4bd6-a453-29450ab50d6c",
+      "snapshot_title": "君品酒店",
+      "snapshot_status": "approved",
+      "official_name": "君品酒店",
+      "address": "103 台北市大同區承德路一段3號",
+      "source_url": "https://www.palaisdechinehotel.com/pdc_tw/pages/35/0/195",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "readable_name_and_full_street_address",
+      "full_address_verified": true,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "none_observed_in_bounded_official_page_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "Official hotel page identifies this specific property's name and premises address."
+    },
+    {
+      "key": "editorial:taipei:solaria-nishitetsu-ximen",
+      "product_id": "177996ee-887e-48b8-9ade-240e47675438",
+      "snapshot_title": "索拉利亞西鐵飯店台北西門",
+      "snapshot_status": "approved",
+      "official_name": "索拉利亞西鐵飯店台北西門",
+      "address": null,
+      "source_url": "https://solaria-taipei.nnr-h.com/",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "title_only_empty_body",
+      "full_address_verified": false,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "not_assessable_from_this_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "Official page title identifies Solaria Nishitetsu Hotel Taipei Ximen; reader returned zero body lines. No complete address verified."
+    },
+    {
+      "key": "editorial:taipei:w-taipei",
+      "product_id": "940ceac6-8726-4be9-b00f-f5809dbc0f0b",
+      "snapshot_title": "台北W飯店",
+      "snapshot_status": "approved",
+      "official_name": "W Taipei",
+      "address": "10 Zhongxiao East Road Sec. 5, Xinyi District, Taipei, Taiwan",
+      "source_url": "https://www.marriott.com/en-us/hotels/tpewh-w-taipei/overview/",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "readable_name_and_full_street_address",
+      "full_address_verified": true,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "none_observed_in_bounded_official_page_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "Official hotel page identifies this specific property's name and premises address."
+    },
+    {
+      "key": "editorial:taipei:westgate",
+      "product_id": "f73ce087-d361-4f74-8bac-45ed71d5c1ce",
+      "snapshot_title": "WESTGATE Hotel 永安棧",
+      "snapshot_status": "approved",
+      "official_name": "WESTGATE Hotel 永安棧",
+      "address": "台北市萬華區中華路一段150號",
+      "source_url": "https://www.westgatehotel.com.tw/location/",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "readable_name_and_full_street_address",
+      "full_address_verified": true,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "none_observed_in_bounded_official_page_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "Official hotel page identifies this specific property's name and premises address."
+    },
+    {
+      "key": "editorial:tokyo:gate-hotel-kaminarimon",
+      "product_id": "70eec2a6-582f-4c9d-9414-0eec588e85fd",
+      "snapshot_title": "ザ・ゲートホテル雷門 by HULIC",
+      "snapshot_status": "approved",
+      "official_name": "ザ・ゲートホテル雷門 by HULIC",
+      "address": "〒111-0034 東京都台東区雷門2-16-11",
+      "source_url": "https://www.gate-hotel.jp/asakusa-kaminarimon/access.html",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "readable_name_and_full_street_address",
+      "full_address_verified": true,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "none_observed_in_bounded_official_page_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "First fetch timed out; retry returned the complete address."
+    },
+    {
+      "key": "editorial:tokyo:gracery-asakusa",
+      "product_id": "ca55d588-a5dd-4dd9-9c84-72c5e687c48f",
+      "snapshot_title": "ホテルグレイスリー浅草",
+      "snapshot_status": "approved",
+      "official_name": "ホテルグレイスリー浅草",
+      "address": "〒111-0034 東京都台東区雷門2丁目10番2号",
+      "source_url": "https://gracery.com/asakusa/",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "readable_name_and_full_street_address",
+      "full_address_verified": true,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "none_observed_in_bounded_official_page_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "Full address from hotel overview. September 2026 notices concern reservation-system maintenance, not a hotel-wide closure."
+    },
+    {
+      "key": "editorial:tokyo:gracery-shinjuku",
+      "product_id": "2263bc8e-be0a-4163-b2ad-6f3a7c049983",
+      "snapshot_title": "ホテルグレイスリー新宿",
+      "snapshot_status": "approved",
+      "official_name": "ホテルグレイスリー新宿",
+      "address": "〒160-8466 東京都新宿区歌舞伎町1-19-1",
+      "source_url": "https://gracery.com/shinjuku/access/",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "readable_name_and_full_street_address",
+      "full_address_verified": true,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "none_observed_in_bounded_official_page_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "Official hotel page identifies this specific property's name and premises address."
+    },
+    {
+      "key": "editorial:tokyo:henn-na-premier-tawaramachi",
+      "product_id": "b79582da-592f-4a33-aa22-6457cf815094",
+      "snapshot_title": "変なホテルプレミア東京 浅草田原町",
+      "snapshot_status": "approved",
+      "official_name": "変なホテルプレミア東京 浅草田原町",
+      "address": "〒111-0042 東京都台東区寿3丁目19-8",
+      "source_url": "https://www.hennnahotel.com/asakusa-tawaramachi/",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "readable_name_and_full_street_address",
+      "full_address_verified": true,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "none_observed_in_bounded_official_page_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "Official hotel page identifies this specific property's name and premises address."
+    },
+    {
+      "key": "editorial:tokyo:jr-kyushu-blossom-shinjuku",
+      "product_id": "6431e10f-dde0-471d-ab5f-0dfbefcda2f6",
+      "snapshot_title": "JR九州ホテル ブラッサム新宿",
+      "snapshot_status": "approved",
+      "official_name": "JR九州ホテル ブラッサム新宿",
+      "address": "〒151-0053 東京都渋谷区代々木2丁目6-2",
+      "source_url": "https://www.jrk-hotels.co.jp/Shinjuku/",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "readable_name_and_full_street_address",
+      "full_address_verified": true,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "none_observed_in_bounded_official_page_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "Official hotel page identifies this specific property's name and premises address."
+    },
+    {
+      "key": "editorial:tokyo:keio-plaza-tokyo",
+      "product_id": "87ac9f12-2b00-48b1-897e-bf66c5aeb616",
+      "snapshot_title": "京王プラザホテル",
+      "snapshot_status": "approved",
+      "official_name": "京王プラザホテル",
+      "address": "東京都新宿区西新宿2-2-1",
+      "source_url": "https://www.keioplaza.co.jp/access/",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "readable_name_and_full_street_address",
+      "full_address_verified": true,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "none_observed_in_bounded_official_page_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "Official hotel page identifies this specific property's name and premises address."
+    },
+    {
+      "key": "editorial:tokyo:millennium-mitsui-garden-tokyo",
+      "product_id": "85bf59b8-1c01-4b0d-aa7b-138129b615b2",
+      "snapshot_title": "ミレニアム 三井ガーデンホテル 東京",
+      "snapshot_status": "approved",
+      "official_name": "ミレニアム 三井ガーデンホテル 東京",
+      "address": "〒104-0061 東京都中央区銀座5-11-1",
+      "source_url": "https://www.gardenhotels.co.jp/millennium-tokyo/access/",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "readable_name_and_full_street_address",
+      "full_address_verified": true,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "none_observed_in_bounded_official_page_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "Official hotel page identifies this specific property's name and premises address."
+    },
+    {
+      "key": "editorial:tokyo:mitsui-garden-kyobashi",
+      "product_id": "b1afc011-53e2-4cab-b277-1ad8ffbc0af9",
+      "snapshot_title": "三井ガーデンホテル京橋",
+      "snapshot_status": "approved",
+      "official_name": "三井ガーデンホテル京橋",
+      "address": "〒104-0031 東京都中央区京橋1-3-6",
+      "source_url": "https://www.gardenhotels.co.jp/kyobashi/access/",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "readable_name_and_full_street_address",
+      "full_address_verified": true,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "none_observed_in_bounded_official_page_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "Official hotel page identifies this specific property's name and premises address."
+    },
+    {
+      "key": "editorial:tokyo:ryumeikan-tokyo",
+      "product_id": "6dde791e-5b13-450f-b743-0e66411af7da",
+      "snapshot_title": "ホテル龍名館東京",
+      "snapshot_status": "approved",
+      "official_name": "ホテル龍名館東京",
+      "address": "〒103-0028 東京都中央区八重洲1-3-22",
+      "source_url": "https://www.ryumeikan-tokyo.jp/access/",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "readable_name_and_full_street_address",
+      "full_address_verified": true,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "none_observed_in_bounded_official_page_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "Official hotel page identifies this specific property's name and premises address."
+    },
+    {
+      "key": "editorial:tokyo:tokyo-station-hotel",
+      "product_id": "fdf201c6-8838-41bd-a9ef-5bdd8f69ad24",
+      "snapshot_title": "東京ステーションホテル",
+      "snapshot_status": "approved",
+      "official_name": "東京ステーションホテル",
+      "address": "〒100-0005 東京都千代田区丸の内1-9-1",
+      "source_url": "https://www.tokyostationhotel.jp/access/",
+      "method": "Read-only web reader open of the exact products-before.json official source_url; no map data or production writes",
+      "current_read_availability": "readable_name_and_full_street_address",
+      "full_address_verified": true,
+      "browser_verified": false,
+      "closure_warning": {
+        "status": "none_observed_in_bounded_official_page_read",
+        "note": "This is an address cross-check, not a comprehensive future closure search; do not infer all-date availability from a readable website."
+      },
+      "notes": "Official hotel page identifies this specific property's name and premises address."
+    }
+  ]
+}

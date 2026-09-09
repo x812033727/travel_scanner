@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "tag": "hotel-review-platforms-20260909",
+  "baseline_semantic_sha256": "7b86b02a40dfe00946f1df45d8e201e3dc59bf49066469c30dbfcc60f5628e49",
+  "manifest_file_sha256": "39b81265da878c2ab252357650e976160b120b0fc329ffa6c7c305931d931fe0",
+  "manifest_semantic_sha256": "0ac83abdcf4d61caecc235e785d4734346a2bfa596afa4f5be883c79753537fa",
+  "operator_sha256": "1773a0fd4cd945998f12202ec3d7615d17ebd818bd2829ab8a33c75e65c980bf",
+  "immutable_core_sha256": "28f8bdfe73a9b2fbbb954d14b8fc44373cecf0c353135de34ea995a35a4cb503",
+  "sql_sha256": "39935809df2b563853a42d7499584eaa72f29ca76fda6e4f43808e774c60aa86",
+  "runtime_at_review": {
+    "revision": "b675f5d34a353eddfb789a953968c3c6d45eac4a",
+    "health": {"status": "ok"},
+    "ready": {"status": "ready", "database": "ok", "redis": "ok", "schema": "0063_destination_offers"},
+    "note": "Point-in-time review evidence. Another authorized task began preparing a later deployment only after this batch released both locks; no later deployment state is claimed here."
+  },
+  "source_check": "All seven live service/admin/auth/model/network hashes matched local unchanged application files before apply.",
+  "source_sha256": {
+    "app/travel_services/admin.py": "2dea2c158b2fbfca2a5d564601ab0b4eda6cd563a0facb2a80a3b38782f6d92e",
+    "app/travel_services/network.py": "8b50bfc1b6bba2354e9dab6d6ec8309abd0a7a061322189acde365e04c3e2ca5",
+    "app/travel_services/service.py": "35a42e226f766ac66a6183b2dd6f7fd871337833dd8bdb8b56e4e009559fca36",
+    "app/travel_services/schemas.py": "0f5b2c09cacaaeb77f33d9b65411f66288b0c34676995c35631fdc16fad0fb84",
+    "app/travel_services/hotel_options.py": "1ccf431acecf0fd5a0538546eb74c540ac9587931a189adc57b08f159e1eb926",
+    "app/auth/service.py": "1d8c50d2651344eea2c35089a087137bc2014dc9d7c31a1806e70552cb2d47a4",
+    "app/models.py": "42067dd9e785f918cbdf19779e6c35a2ceff75830d79b1f06d6271d73294219d"
+  },
+  "backup": {
+    "path": "/root/mokaair-hotel-platforms-20260909-v0Z8Bjzu/backup-before.dump",
+    "size_bytes": 13221370,
+    "sha256": "3c8d9f14ea17223c2db48cfc390e2b66ee3e7874ea30806c6b84117c09b55390",
+    "mode": "600",
+    "parent_mode": "700",
+    "pg_restore_list_success": true,
+    "index_size_bytes": 68667,
+    "index_sha256": "7ebf67d442ababa829223807e8b07daf57c84a39924444a4c3ffd09ec7c1c5f5",
+    "full_restore_tested": false,
+    "existing_backups_preserved": true,
+    "backup_downloaded_to_repository": false
+  },
+  "diagnostics": {
+    "executed_source_sha256": "d6b377dc2e2070c4b5e2e8a9a26b3a7c300377398f92ff079d3d07a3e9d2ef04",
+    "normal_guard_unchanged": true,
+    "healthy": 9,
+    "unconfirmed": 12,
+    "unsafe": 0,
+    "unavailable": 0,
+    "note": "All 12 unconfirmed results are Expedia. Actual IAB name/full-address evidence supported the existing browser-verification route; no unsafe/unavailable result was overridden."
+  },
+  "not_performed": [
+    "application_deployment", "service_restart", "migration", "paid_provider_call",
+    "gemini_call", "quota_increase", "quote", "date_or_room_selection", "booking",
+    "affiliate_clickout", "affiliate_authorization", "secret_export", "github_push_or_pr"
+  ]
+}

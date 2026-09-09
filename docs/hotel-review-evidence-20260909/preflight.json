@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "tag": "hotel-review-evidence-20260909",
+  "baseline_semantic_sha256": "342aee9610db65e78626d950efef368919a7d8e4cfcf55d06a32b64e26c5adee",
+  "manifest_file_sha256": "2a0b4c880d948c237822aba74194138d963977296f9fdd9abc0b1f41e1794d9e",
+  "manifest_semantic_sha256": "c39dbbacf10c193de385a2a22930d6fcf4af6c36cea6c28e2b7a5d3bc07a3887",
+  "operator_sha256": "81bd9d621e6d04afedb8c913a495c349b9bff72643607fc237559812678ac574",
+  "immutable_core_sha256": "28f8bdfe73a9b2fbbb954d14b8fc44373cecf0c353135de34ea995a35a4cb503",
+  "sql_sha256": "c29969e80361e6d303dd51a3ef24b75eede4bea1da978ebd9560bf2f5feb958e",
+  "runtime_at_review": {
+    "revision": "f752ce43ac8e0ae77346d1fce809b223fedd17b6",
+    "health": {
+      "status": "ok"
+    },
+    "ready": {
+      "status": "ready",
+      "database": "ok",
+      "redis": "ok",
+      "schema": "0064_klook_affiliate_channels"
+    },
+    "note": "Current release checked before this evidence batch. This batch did not deploy or edit application files."
+  },
+  "source_check": "Seven exact current application hashes checked at every operator import; current normal edit/review/auth/URL rules retained. Schema column metadata re-read before independent SQL; full brand fingerprint includes new channel column.",
+  "backup": {
+    "path": "/root/mokaair-hotel-evidence-20260909-FbmevgwP/backup-before.dump",
+    "size_bytes": 13644025,
+    "sha256": "fb52a997476aadb43ba44c0da770df4f1b543521fa8c6f9a6b267feec24a792f",
+    "mode": "600",
+    "parent_mode": "700",
+    "pg_restore_list_success": true,
+    "index_size_bytes": 68675,
+    "index_sha256": "8c68fd7e6cac2e34d54b00df292bf0bd13ff8d8cc2c0faf986c078d63db57387",
+    "full_restore_tested": false,
+    "existing_backups_preserved": true,
+    "backup_downloaded_to_repository": false
+  },
+  "diagnostics": {
+    "executed_source_sha256": "008e1672dff12cd1f2444c51e8bf32f9362e4dd65edda0f78ff14b5e17170077",
+    "normal_guard_unchanged": true,
+    "healthy": 2,
+    "unconfirmed": 16,
+    "unsafe": 0,
+    "unavailable": 0,
+    "read_timeout": 7,
+    "note": "Agoda healthy 2; Expedia unconfirmed 9; Rakuten global ReadTimeout 7. Actual IAB identity evidence supports existing review policy, not a healthy-network claim. Initial standalone diagnostic stopped at ReadTimeout before saving a result or making any mutation; diagnostic-only classification was aligned with the unchanged normal admin exception handling and rerun. No unsafe/unavailable result was overridden."
+  },
+  "excluded_evidence": {
+    "domestic_rakuten_pages": 7,
+    "reason": "Actual IAB identities, but normal schema rejects travel.rakuten.co.jp. Preserved as research only. Separately discovered actual travel.rakuten.com property URLs were independently opened in IAB; no host rewriting/ID guessing or allowlist changes."
+  },
+  "temporary_files": {
+    "note": "Protected host evidence directory 700 and outputs 600. Container chown unavailable under current capabilities; only nonsecret temporary operator/manifest source made readable (644) to existing app UID. No security capabilities, secrets, environment or services changed."
+  },
+  "concurrent_setting_comparison": {
+    "report": "provider-config-concurrency.json",
+    "executed_source_sha256": "60a8cee9aaf7275f0026275523dddb666717a9358e9924a139e4970cf1e14e61",
+    "note": "Read-only pinned backup/current comparison. Repository helper subsequently formatted and switched equivalent timezone.utc to UTC; original remote executed source retained. Strict settings-invariant failure was preserved. Only layout config/updated_at changed, with matching alerts_enabled audit before first hotel mutation. No settings restored or written."
+  },
+  "not_performed": [
+    "application_deployment",
+    "service_restart",
+    "migration",
+    "paid_provider_call",
+    "gemini_call",
+    "quota_increase",
+    "quote",
+    "date_or_room_selection",
+    "booking",
+    "affiliate_clickout",
+    "affiliate_authorization",
+    "secret_export",
+    "github_push_or_pr"
+  ]
+}

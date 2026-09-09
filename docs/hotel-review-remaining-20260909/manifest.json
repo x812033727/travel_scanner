@@ -1,0 +1,565 @@
+{
+  "schema_version": 1,
+  "tag": "hotel-review-remaining-20260909",
+  "baseline_hash": "c938d83913645ac6a7651eca0e705621b33b40bb235905392c54917492bdb03d",
+  "decisions": [
+    {
+      "kind": "option",
+      "id": "00307d02-975e-4b2f-8843-df7000cd7c50",
+      "version": 1,
+      "before_hash": "5c58741036a5b4506718b8ebb10515135d14c51a42f3365f35a621cad2681b2d",
+      "decision": "approve",
+      "reason": "Root inspected the exact agoda hotel page in the built-in browser: 新羅舒泰飯店-釜山海雲台 (Shilla Stay Busan Haeundae); 46, Haeun-daero 570beon-gil, Haeundae-gu, 海雲台區, 釜山, 韓國, 48093. Name and street match the separately documented official identity. Fill only this original null URL/evidence slot through normal edit then review; keep property_id null and do not activate quotes or approve the parent hotel. Normal unsafe/unavailable/duplicate guards still apply.",
+      "new_evidence": "Actual new root IAB observation 2026-09-08T21:35:20Z recorded in iab-option-observations.json for 00307d02-975e-4b2f-8843-df7000cd7c50: 新羅舒泰飯店-釜山海雲台 (Shilla Stay Busan Haeundae); 46, Haeun-daero 570beon-gil, Haeundae-gu, 海雲台區, 釜山, 韓國, 48093. This exact page was readable at its recorded URL. Prior official proof is explicitly dated in identity_note; no claim of fresh official IAB, matching postal codes, prices or booking availability.",
+      "source_urls": [
+        "https://www.agoda.com/en-us/shilla-stay-haeundae/hotel/busan-kr.html",
+        "https://www.shillahotels.com/ko/shillastay/haeundae/facilities/index.do"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T21:35:20Z",
+      "browser_verified": true,
+      "identity_note": "New IAB read 2026-09-08T21:35:20Z: 新羅舒泰飯店-釜山海雲台 (Shilla Stay Busan Haeundae); displayed address: 46, Haeun-daero 570beon-gil, Haeundae-gu, 海雲台區, 釜山, 韓國, 48093. Prior official option e8603a34-3bcc-4262-be1e-19533c94899f approved 2026-09-08 16:07:31.773822+00:00, retained in before.json: 2026-09-08 primary evidence matched Shilla Stay Haeundae, 부산광역시 해운대구 해운대로570번길 46. Method=web_direct_official_page; official identity status=name_and_full_address_match. Safety check healthy; browser_verified=false. Parent map review remains separate. This is prior evidence, not a fresh official-page/IAB read. Same hotel name/street identity; postal forms retained as displayed, not asserted equal.",
+      "option_patch": {
+        "url": "https://www.agoda.com/en-us/shilla-stay-haeundae/hotel/busan-kr.html",
+        "evidence_url": "https://www.agoda.com/en-us/shilla-stay-haeundae/hotel/busan-kr.html"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "050877e8-6f0d-4ee1-81b6-2bcd9d21ebc7",
+      "version": 1,
+      "before_hash": "dd06b5307552e4660330e7d663b8a766e2fa6b07e72c51b2d1e56501e6d93a39",
+      "decision": "approve",
+      "reason": "Root inspected the exact expedia hotel page in the built-in browser: Paradise Hotel Busan; 296, Haeundaehaebyeon-ro, Haeundae-gu, Busan, Busan, 612-010. Name and street match the separately documented official identity. Fill only this original null URL/evidence slot through normal edit then review; keep property_id null and do not activate quotes or approve the parent hotel. Normal unsafe/unavailable/duplicate guards still apply.",
+      "new_evidence": "Actual new root IAB observation 2026-09-08T21:32:22Z recorded in iab-option-observations.json for 050877e8-6f0d-4ee1-81b6-2bcd9d21ebc7: Paradise Hotel Busan; 296, Haeundaehaebyeon-ro, Haeundae-gu, Busan, Busan, 612-010. This exact page was readable at its recorded URL. Prior official proof is explicitly dated in identity_note; no claim of fresh official IAB, matching postal codes, prices or booking availability.",
+      "source_urls": [
+        "https://www.expedia.com/Busan-Hotels-Paradise-Hotel-Busan.h793876.Hotel-Information",
+        "https://www.busanparadisehotel.co.kr/front/"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T21:32:22Z",
+      "browser_verified": true,
+      "identity_note": "New IAB read 2026-09-08T21:32:22Z: Paradise Hotel Busan; displayed address: 296, Haeundaehaebyeon-ro, Haeundae-gu, Busan, Busan, 612-010. Prior official option 95b9862e-7f7e-4f82-b37a-35e36618d687 approved 2026-09-08 16:06:46.978168+00:00, retained in before.json: 2026-09-08 primary evidence matched Paradise Hotel Busan, 296, Haeundaehaebyeon-ro, Haeundae-gu, Busan. Method=web_direct_official_page; official identity status=name_and_full_address_match. Safety check healthy; browser_verified=false. Parent map review remains separate. This is prior evidence, not a fresh official-page/IAB read. Same hotel name/street identity; postal forms retained as displayed, not asserted equal.",
+      "option_patch": {
+        "url": "https://www.expedia.com/Busan-Hotels-Paradise-Hotel-Busan.h793876.Hotel-Information",
+        "evidence_url": "https://www.expedia.com/Busan-Hotels-Paradise-Hotel-Busan.h793876.Hotel-Information"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "12371d73-601e-4351-b472-1c0fc68be7ad",
+      "version": 1,
+      "before_hash": "1bb87acb2547510980a0cabc700f5510de1ed4d5bceb060bba0b44b5305427d0",
+      "decision": "approve",
+      "reason": "Root inspected the exact expedia hotel page in the built-in browser: Lotte Hotel Busan; 772, Gaya-daero, Busanjin-gu, Busan, Busan, 614-030. Name and street match the separately documented official identity. Fill only this original null URL/evidence slot through normal edit then review; keep property_id null and do not activate quotes or approve the parent hotel. Normal unsafe/unavailable/duplicate guards still apply.",
+      "new_evidence": "Actual new root IAB observation 2026-09-08T21:33:37Z recorded in iab-option-observations.json for 12371d73-601e-4351-b472-1c0fc68be7ad: Lotte Hotel Busan; 772, Gaya-daero, Busanjin-gu, Busan, Busan, 614-030. This exact page was readable at its recorded URL. Prior official proof is explicitly dated in identity_note; no claim of fresh official IAB, matching postal codes, prices or booking availability.",
+      "source_urls": [
+        "https://www.expedia.com/Busan-Hotels-Lotte-Hotel-Busan.h199832.Hotel-Information",
+        "https://www.lottehotel.com/prerendered/busan-hotel/en/about/location/index.html"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T21:33:37Z",
+      "browser_verified": true,
+      "identity_note": "New IAB read 2026-09-08T21:33:37Z: Lotte Hotel Busan; displayed address: 772, Gaya-daero, Busanjin-gu, Busan, Busan, 614-030. Prior official option 1f942ff0-4d9a-45ca-ae78-9f5dd12ae455 approved 2026-09-08 16:49:08.632398+00:00, retained in before.json: Built-in-browser same-property match: LOTTE HOTEL BUSAN. Observed address/postal form: 772 Gaya-daero, Busanjin-gu, Busan. Address retained as displayed; no undisplayed lot number inferred. This is prior evidence, not a fresh official-page/IAB read. Same hotel name/street identity; postal forms retained as displayed, not asserted equal.",
+      "option_patch": {
+        "url": "https://www.expedia.com/Busan-Hotels-Lotte-Hotel-Busan.h199832.Hotel-Information",
+        "evidence_url": "https://www.expedia.com/Busan-Hotels-Lotte-Hotel-Busan.h199832.Hotel-Information"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "1eb77c39-ad06-4348-8a81-b6937bd1de5d",
+      "version": 1,
+      "before_hash": "cb9c58adc41f422be889272ed38a96599bec5cae3f09d96e6cbfcffd15b825d4",
+      "decision": "approve",
+      "reason": "Root inspected the exact agoda hotel page in the built-in browser: 阿爾班飯店 (Arban Hotel); 32 Jungang-daero 691 beon-gil, 西面, 釜山, 韓國, 614-030. Name and street match the separately documented official identity. Fill only this original null URL/evidence slot through normal edit then review; keep property_id null and do not activate quotes or approve the parent hotel. Normal unsafe/unavailable/duplicate guards still apply.",
+      "new_evidence": "Actual new root IAB observation 2026-09-08T21:36:11Z recorded in iab-option-observations.json for 1eb77c39-ad06-4348-8a81-b6937bd1de5d: 阿爾班飯店 (Arban Hotel); 32 Jungang-daero 691 beon-gil, 西面, 釜山, 韓國, 614-030. This exact page was readable at its recorded URL. Prior official proof is explicitly dated in identity_note; no claim of fresh official IAB, matching postal codes, prices or booking availability.",
+      "source_urls": [
+        "https://www.agoda.com/arban-hotel/hotel/busan-kr.html",
+        "https://www.arbanhotel.com/LOCATION"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T21:36:11Z",
+      "browser_verified": true,
+      "identity_note": "New IAB read 2026-09-08T21:36:11Z: 阿爾班飯店 (Arban Hotel); displayed address: 32 Jungang-daero 691 beon-gil, 西面, 釜山, 韓國, 614-030. Prior official option f41083d2-b516-472c-bd51-0277849ca79c approved 2026-09-08 16:50:36.925894+00:00, retained in before.json: Built-in-browser same-property match: ARBAN HOTEL. Observed address/postal form: 32 Jungang-daero 691beon-gil, Busanjin-gu, Busan (서면 아르반호텔, not Arban City). Address retained as displayed; no undisplayed lot number inferred. This is prior evidence, not a fresh official-page/IAB read. Same hotel name/street identity; postal forms retained as displayed, not asserted equal.",
+      "option_patch": {
+        "url": "https://www.agoda.com/arban-hotel/hotel/busan-kr.html",
+        "evidence_url": "https://www.agoda.com/arban-hotel/hotel/busan-kr.html"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "2156ce3c-3c4c-4822-a307-098bf4e2c06d",
+      "version": 1,
+      "before_hash": "1cc9479f90ff0e701e849fe996f8bf5116fa26846ff64fc8b49c6bc39975447c",
+      "decision": "approve",
+      "reason": "Root inspected the exact expedia hotel page in the built-in browser: The Tokyo Station Hotel; 1-9-1 Marunouchi, Chiyoda-ku, Tokyo, Tokyo-to, 100-0005. Name and street match the separately documented official identity. Fill only this original null URL/evidence slot through normal edit then review; keep property_id null and do not activate quotes or approve the parent hotel. Normal unsafe/unavailable/duplicate guards still apply.",
+      "new_evidence": "Actual new root IAB observation 2026-09-08T21:31:36Z recorded in iab-option-observations.json for 2156ce3c-3c4c-4822-a307-098bf4e2c06d: The Tokyo Station Hotel; 1-9-1 Marunouchi, Chiyoda-ku, Tokyo, Tokyo-to, 100-0005. This exact page was readable at its recorded URL. Prior official proof is explicitly dated in identity_note; no claim of fresh official IAB, matching postal codes, prices or booking availability.",
+      "source_urls": [
+        "https://www.expedia.com/Tokyo-Hotels-The-Tokyo-Station-Hotel.h428366.Hotel-Information",
+        "https://www.tokyostationhotel.jp/access/"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T21:31:36Z",
+      "browser_verified": true,
+      "identity_note": "New IAB read 2026-09-08T21:31:36Z: The Tokyo Station Hotel; displayed address: 1-9-1 Marunouchi, Chiyoda-ku, Tokyo, Tokyo-to, 100-0005. Prior official primary-web evidence (2026-09-08; hotel-review-all-20260908/root-cities-official.json): 東京ステーションホテル; 〒100-0005 東京都千代田区丸の内1-9-1. Not re-read as fresh official evidence in this batch. Same hotel name/street identity; postal forms retained as displayed, not asserted equal.",
+      "option_patch": {
+        "url": "https://www.expedia.com/Tokyo-Hotels-The-Tokyo-Station-Hotel.h428366.Hotel-Information",
+        "evidence_url": "https://www.expedia.com/Tokyo-Hotels-The-Tokyo-Station-Hotel.h428366.Hotel-Information"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "2c41cd84-0813-42cf-8a54-003bc6f0cff4",
+      "version": 1,
+      "before_hash": "4f20257f0de198a3cdda37341391509b64cf8c4d0f1d95ce90d8c5d6221cdcff",
+      "decision": "approve",
+      "reason": "Root inspected the exact agoda hotel page in the built-in browser: 百樂達斯釜山酒店 (Paradise Hotel Busan); 296 Haeundaehaebyeon-ro. Haeundae-gu, 海雲台區, 釜山, 韓國, 48099. Name and street match the separately documented official identity. Fill only this original null URL/evidence slot through normal edit then review; keep property_id null and do not activate quotes or approve the parent hotel. Normal unsafe/unavailable/duplicate guards still apply.",
+      "new_evidence": "Actual new root IAB observation 2026-09-08T21:35:20Z recorded in iab-option-observations.json for 2c41cd84-0813-42cf-8a54-003bc6f0cff4: 百樂達斯釜山酒店 (Paradise Hotel Busan); 296 Haeundaehaebyeon-ro. Haeundae-gu, 海雲台區, 釜山, 韓國, 48099. This exact page was readable at its recorded URL. Prior official proof is explicitly dated in identity_note; no claim of fresh official IAB, matching postal codes, prices or booking availability.",
+      "source_urls": [
+        "https://www.agoda.com/en-us/paradise-hotel-busan/hotel/busan-kr.html",
+        "https://www.busanparadisehotel.co.kr/front/"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T21:35:20Z",
+      "browser_verified": true,
+      "identity_note": "New IAB read 2026-09-08T21:35:20Z: 百樂達斯釜山酒店 (Paradise Hotel Busan); displayed address: 296 Haeundaehaebyeon-ro. Haeundae-gu, 海雲台區, 釜山, 韓國, 48099. Prior official option 95b9862e-7f7e-4f82-b37a-35e36618d687 approved 2026-09-08 16:06:46.978168+00:00, retained in before.json: 2026-09-08 primary evidence matched Paradise Hotel Busan, 296, Haeundaehaebyeon-ro, Haeundae-gu, Busan. Method=web_direct_official_page; official identity status=name_and_full_address_match. Safety check healthy; browser_verified=false. Parent map review remains separate. This is prior evidence, not a fresh official-page/IAB read. Same hotel name/street identity; postal forms retained as displayed, not asserted equal.",
+      "option_patch": {
+        "url": "https://www.agoda.com/en-us/paradise-hotel-busan/hotel/busan-kr.html",
+        "evidence_url": "https://www.agoda.com/en-us/paradise-hotel-busan/hotel/busan-kr.html"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "305f394d-7963-4d03-af74-406ff496a7cf",
+      "version": 1,
+      "before_hash": "5d709257890744247473330980691048f4cb8e7e36cdf83b4cfaca9c52cf3915",
+      "decision": "approve",
+      "reason": "Root inspected the exact rakuten hotel page in the built-in browser: Hotel Ryumeikan Tokyo; 1-3-22 Yaesu, Chuo-ku, Tokyo, 103-0028, Japan. Name and street match the separately documented official identity. Fill only this original null URL/evidence slot through normal edit then review; keep property_id null and do not activate quotes or approve the parent hotel. Normal unsafe/unavailable/duplicate guards still apply.",
+      "new_evidence": "Actual new root IAB observation 2026-09-08T21:37:30Z recorded in iab-option-observations.json for 305f394d-7963-4d03-af74-406ff496a7cf: Hotel Ryumeikan Tokyo; 1-3-22 Yaesu, Chuo-ku, Tokyo, 103-0028, Japan. This exact page was readable at its recorded URL. Prior official proof is explicitly dated in identity_note; no claim of fresh official IAB, matching postal codes, prices or booking availability.",
+      "source_urls": [
+        "https://travel.rakuten.com/usa/en-us/hotel_info_item/10123456794929",
+        "https://www.ryumeikan-tokyo.jp/access/"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T21:37:30Z",
+      "browser_verified": true,
+      "identity_note": "New IAB read 2026-09-08T21:37:30Z: Hotel Ryumeikan Tokyo; displayed address: 1-3-22 Yaesu, Chuo-ku, Tokyo, 103-0028, Japan. Official primary-web identity read 2026-09-08T21:28:40+00:00 in tokyo-platform-leads.json: ホテル龍名館東京; 〒103-0028 東京都中央区八重洲1-3-22. This official read was not an IAB inspection. Same hotel name/street identity; postal forms retained as displayed, not asserted equal.",
+      "option_patch": {
+        "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/10123456794929",
+        "evidence_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/10123456794929"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "469f672a-4230-43e1-95c7-75cfc759a3ee",
+      "version": 1,
+      "before_hash": "1bc75bc1448b5b4038ef989e95a2bb0fe24c32aefdb94ef8d8cb1ac5eae3e980",
+      "decision": "approve",
+      "reason": "Root inspected the exact expedia hotel page in the built-in browser: The Gate Hotel Kaminarimon by Hulic; 2-16-11 Kaminarimon, Taito-ku, Tokyo, Tokyo-to, 111-0034. Name and street match the separately documented official identity. Fill only this original null URL/evidence slot through normal edit then review; keep property_id null and do not activate quotes or approve the parent hotel. Normal unsafe/unavailable/duplicate guards still apply.",
+      "new_evidence": "Actual new root IAB observation 2026-09-08T21:31:36Z recorded in iab-option-observations.json for 469f672a-4230-43e1-95c7-75cfc759a3ee: The Gate Hotel Kaminarimon by Hulic; 2-16-11 Kaminarimon, Taito-ku, Tokyo, Tokyo-to, 111-0034. This exact page was readable at its recorded URL. Prior official proof is explicitly dated in identity_note; no claim of fresh official IAB, matching postal codes, prices or booking availability.",
+      "source_urls": [
+        "https://www.expedia.com/Tokyo-Hotels-The-Gate-Hotel-Asakusa-Kaminarimon-By-Hulic.h5002072.Hotel-Information",
+        "https://www.gate-hotel.jp/asakusa-kaminarimon/access.html"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T21:31:36Z",
+      "browser_verified": true,
+      "identity_note": "New IAB read 2026-09-08T21:31:36Z: The Gate Hotel Kaminarimon by Hulic; displayed address: 2-16-11 Kaminarimon, Taito-ku, Tokyo, Tokyo-to, 111-0034. Official primary-web identity read 2026-09-08T21:28:40+00:00 in tokyo-platform-leads.json: ザ・ゲートホテル雷門 by HULIC; 〒111-0034 東京都台東区雷門2-16-11. This official read was not an IAB inspection. Same hotel name/street identity; postal forms retained as displayed, not asserted equal.",
+      "option_patch": {
+        "url": "https://www.expedia.com/Tokyo-Hotels-The-Gate-Hotel-Asakusa-Kaminarimon-By-Hulic.h5002072.Hotel-Information",
+        "evidence_url": "https://www.expedia.com/Tokyo-Hotels-The-Gate-Hotel-Asakusa-Kaminarimon-By-Hulic.h5002072.Hotel-Information"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "47832850-bc24-42f7-a0c2-5abf24dd8200",
+      "version": 1,
+      "before_hash": "fb947d108791a4cc7715f74544e8f0a70921a4f8b5bf31cf00266725b4db8f25",
+      "decision": "approve",
+      "reason": "Root inspected the exact expedia hotel page in the built-in browser: L7 HAEUNDAE by LOTTE HOTELS; 55 Haeun-daero 570beon-gil, Haeundae-gu, Busan, 48094. Name and street match the separately documented official identity. Fill only this original null URL/evidence slot through normal edit then review; keep property_id null and do not activate quotes or approve the parent hotel. Normal unsafe/unavailable/duplicate guards still apply.",
+      "new_evidence": "Actual new root IAB observation 2026-09-08T21:32:51Z recorded in iab-option-observations.json for 47832850-bc24-42f7-a0c2-5abf24dd8200: L7 HAEUNDAE by LOTTE HOTELS; 55 Haeun-daero 570beon-gil, Haeundae-gu, Busan, 48094. This exact page was readable at its recorded URL. Prior official proof is explicitly dated in identity_note; no claim of fresh official IAB, matching postal codes, prices or booking availability.",
+      "source_urls": [
+        "https://www.expedia.com/Busan-Hotels-L7-HAEUNDAE-By-LOTTE.h103196381.Hotel-Information",
+        "https://www.lottehotel.com/prerendered/haeundae-l7/en/facilities/luggage-locker/index.html"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T21:32:51Z",
+      "browser_verified": true,
+      "identity_note": "New IAB read 2026-09-08T21:32:51Z: L7 HAEUNDAE by LOTTE HOTELS; displayed address: 55 Haeun-daero 570beon-gil, Haeundae-gu, Busan, 48094. Prior official option 03df0967-cada-44aa-9c56-d644ea48716e approved 2026-09-08 16:49:07.632442+00:00, retained in before.json: Built-in-browser same-property match: L7 HAEUNDAE by LOTTE HOTELS. Observed address/postal form: 55 Haeun-daero 570beon-gil, Haeundae-gu, Busan. Address retained as displayed; no undisplayed lot number inferred. This is prior evidence, not a fresh official-page/IAB read. Same hotel name/street identity; postal forms retained as displayed, not asserted equal.",
+      "option_patch": {
+        "url": "https://www.expedia.com/Busan-Hotels-L7-HAEUNDAE-By-LOTTE.h103196381.Hotel-Information",
+        "evidence_url": "https://www.expedia.com/Busan-Hotels-L7-HAEUNDAE-By-LOTTE.h103196381.Hotel-Information"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "494e0fb1-0812-4914-82b8-829cedbdf1c0",
+      "version": 1,
+      "before_hash": "663ad90b66075d422ba9cf9611c803a389658dbe3ed6e75909d3d93ed5de3d68",
+      "decision": "approve",
+      "reason": "Root inspected the exact agoda hotel page in the built-in browser: 더 게이트 호텔 가미나리몬 바이 훌릭 (The Gate Hotel Kaminarimon by Hulic); 2-16-11 Kaminarimon, Taito-Ku, 아사쿠사, 도쿄 / 동경, 일본, 111-0034. Name and street match the separately documented official identity. Fill only this original null URL/evidence slot through normal edit then review; keep property_id null and do not activate quotes or approve the parent hotel. Normal unsafe/unavailable/duplicate guards still apply.",
+      "new_evidence": "Actual new root IAB observation 2026-09-08T21:36:48Z recorded in iab-option-observations.json for 494e0fb1-0812-4914-82b8-829cedbdf1c0: 더 게이트 호텔 가미나리몬 바이 훌릭 (The Gate Hotel Kaminarimon by Hulic); 2-16-11 Kaminarimon, Taito-Ku, 아사쿠사, 도쿄 / 동경, 일본, 111-0034. This exact page was readable at its recorded URL. Prior official proof is explicitly dated in identity_note; no claim of fresh official IAB, matching postal codes, prices or booking availability.",
+      "source_urls": [
+        "https://www.agoda.com/ko-kr/the-gate-hotel-asakusa-kaminarimon-by-hulic/hotel/tokyo-jp.html",
+        "https://www.gate-hotel.jp/asakusa-kaminarimon/access.html"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T21:36:48Z",
+      "browser_verified": true,
+      "identity_note": "New IAB read 2026-09-08T21:36:48Z: 더 게이트 호텔 가미나리몬 바이 훌릭 (The Gate Hotel Kaminarimon by Hulic); displayed address: 2-16-11 Kaminarimon, Taito-Ku, 아사쿠사, 도쿄 / 동경, 일본, 111-0034. Official primary-web identity read 2026-09-08T21:28:40+00:00 in tokyo-platform-leads.json: ザ・ゲートホテル雷門 by HULIC; 〒111-0034 東京都台東区雷門2-16-11. This official read was not an IAB inspection. Same hotel name/street identity; postal forms retained as displayed, not asserted equal.",
+      "option_patch": {
+        "url": "https://www.agoda.com/ko-kr/the-gate-hotel-asakusa-kaminarimon-by-hulic/hotel/tokyo-jp.html",
+        "evidence_url": "https://www.agoda.com/ko-kr/the-gate-hotel-asakusa-kaminarimon-by-hulic/hotel/tokyo-jp.html"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "4e1ee548-4abd-47ec-b971-9ec2a700e1b9",
+      "version": 1,
+      "before_hash": "1d7d9ef03072037a05880677267c1901b5b266047fde95d7f5824019b3aa3064",
+      "decision": "approve",
+      "reason": "Root inspected the exact expedia hotel page in the built-in browser: Park Hyatt Busan; 51, Marine city 1-ro, Haeundae-gu, Busan, Busan, 612824. Name and street match the separately documented official identity. Fill only this original null URL/evidence slot through normal edit then review; keep property_id null and do not activate quotes or approve the parent hotel. Normal unsafe/unavailable/duplicate guards still apply.",
+      "new_evidence": "Actual new root IAB observation 2026-09-08T21:32:22Z recorded in iab-option-observations.json for 4e1ee548-4abd-47ec-b971-9ec2a700e1b9: Park Hyatt Busan; 51, Marine city 1-ro, Haeundae-gu, Busan, Busan, 612824. This exact page was readable at its recorded URL. Prior official proof is explicitly dated in identity_note; no claim of fresh official IAB, matching postal codes, prices or booking availability.",
+      "source_urls": [
+        "https://www.expedia.com/Busan-Hotels-Park-Hyatt-Busan.h5801054.Hotel-Information",
+        "https://www.hyatt.com/park-hyatt/en-US/busph-park-hyatt-busan/lumi-spa-and-fitness"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T21:32:22Z",
+      "browser_verified": true,
+      "identity_note": "New IAB read 2026-09-08T21:32:22Z: Park Hyatt Busan; displayed address: 51, Marine city 1-ro, Haeundae-gu, Busan, Busan, 612824. Supplementary official primary-web read 2026-09-08T21:23:09Z in kyoto-map-leads.json: Park Hyatt Busan; 51, Marine City 1-ro, Haeundae-gu, Busan 48120, South Korea. Not a fresh IAB read or approval of the separate official URL slot. Same hotel name/street identity; postal forms retained as displayed, not asserted equal.",
+      "option_patch": {
+        "url": "https://www.expedia.com/Busan-Hotels-Park-Hyatt-Busan.h5801054.Hotel-Information",
+        "evidence_url": "https://www.expedia.com/Busan-Hotels-Park-Hyatt-Busan.h5801054.Hotel-Information"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "64ee9069-11b6-410f-9143-c48f5ff6155b",
+      "version": 1,
+      "before_hash": "7babf9661c0d42c3c399e4b0bec93f616a1cca82573be5b12ee695d80a88325c",
+      "decision": "approve",
+      "reason": "Root inspected the exact expedia hotel page in the built-in browser: Hotel Gracery Asakusa; 2-10-2 Kaminarimon, Taito, Tokyo, Tokyo, 111-0034. Name and street match the separately documented official identity. Fill only this original null URL/evidence slot through normal edit then review; keep property_id null and do not activate quotes or approve the parent hotel. Normal unsafe/unavailable/duplicate guards still apply.",
+      "new_evidence": "Actual new root IAB observation 2026-09-08T21:31:36Z recorded in iab-option-observations.json for 64ee9069-11b6-410f-9143-c48f5ff6155b: Hotel Gracery Asakusa; 2-10-2 Kaminarimon, Taito, Tokyo, Tokyo, 111-0034. This exact page was readable at its recorded URL. Prior official proof is explicitly dated in identity_note; no claim of fresh official IAB, matching postal codes, prices or booking availability.",
+      "source_urls": [
+        "https://www.expedia.com/Tokyo-Hotels-HOTEL-GRACERY-ASAKUSA.h22793900.Hotel-Information",
+        "https://gracery.com/asakusa/"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T21:31:36Z",
+      "browser_verified": true,
+      "identity_note": "New IAB read 2026-09-08T21:31:36Z: Hotel Gracery Asakusa; displayed address: 2-10-2 Kaminarimon, Taito, Tokyo, Tokyo, 111-0034. Prior official primary-web evidence (2026-09-08; hotel-review-all-20260908/root-cities-official.json): ホテルグレイスリー浅草; 〒111-0034 東京都台東区雷門2丁目10番2号. Not re-read as fresh official evidence in this batch. Same hotel name/street identity; postal forms retained as displayed, not asserted equal.",
+      "option_patch": {
+        "url": "https://www.expedia.com/Tokyo-Hotels-HOTEL-GRACERY-ASAKUSA.h22793900.Hotel-Information",
+        "evidence_url": "https://www.expedia.com/Tokyo-Hotels-HOTEL-GRACERY-ASAKUSA.h22793900.Hotel-Information"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "6ddd5137-9ffe-4649-b6d5-cb33389b3cf8",
+      "version": 1,
+      "before_hash": "7ba281b5a85afb231c793384235b044595adbf883968739817310ef185741c59",
+      "decision": "approve",
+      "reason": "Root inspected the exact expedia hotel page in the built-in browser: Stanford Hotel Busan; 53, Gudeok-ro, Jung-gu, Busan, 48983. Name and street match the separately documented official identity. Fill only this original null URL/evidence slot through normal edit then review; keep property_id null and do not activate quotes or approve the parent hotel. Normal unsafe/unavailable/duplicate guards still apply.",
+      "new_evidence": "Actual new root IAB observation 2026-09-08T21:34:36Z recorded in iab-option-observations.json for 6ddd5137-9ffe-4649-b6d5-cb33389b3cf8: Stanford Hotel Busan; 53, Gudeok-ro, Jung-gu, Busan, 48983. This exact page was readable at its recorded URL. Prior official proof is explicitly dated in identity_note; no claim of fresh official IAB, matching postal codes, prices or booking availability.",
+      "source_urls": [
+        "https://www.expedia.com/Busan-Hotels-Stanford-Inn-Busan.h18687289.Hotel-Information",
+        "https://stanford-hotel.com/busan/en"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T21:34:36Z",
+      "browser_verified": true,
+      "identity_note": "New IAB read 2026-09-08T21:34:36Z: Stanford Hotel Busan; displayed address: 53, Gudeok-ro, Jung-gu, Busan, 48983. Prior official option 54c431e4-5578-411d-82a2-9e40923361b8 approved 2026-09-08 16:49:42.693538+00:00, retained in before.json: Built-in-browser same-property match: Stanford Hotel Busan. Observed address/postal form: 53 Gudeok-ro, Jung-gu, Busan. Address retained as displayed; no undisplayed lot number inferred. This is prior evidence, not a fresh official-page/IAB read. Same hotel name/street identity; postal forms retained as displayed, not asserted equal.",
+      "option_patch": {
+        "url": "https://www.expedia.com/Busan-Hotels-Stanford-Inn-Busan.h18687289.Hotel-Information",
+        "evidence_url": "https://www.expedia.com/Busan-Hotels-Stanford-Inn-Busan.h18687289.Hotel-Information"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "709186f5-c0bf-413b-ac21-d9a8ac6121a0",
+      "version": 1,
+      "before_hash": "e8820317a994ce533e9c5ccb1c1547be22b42f51128d71a9fa7e28f8ff35c4e8",
+      "decision": "approve",
+      "reason": "Root inspected the exact expedia hotel page in the built-in browser: Shilla Stay Busan Haeundae; 46, Haeun-daero 570beon-gil, Haeundae-gu, Busan, 48093. Name and street match the separately documented official identity. Fill only this original null URL/evidence slot through normal edit then review; keep property_id null and do not activate quotes or approve the parent hotel. Normal unsafe/unavailable/duplicate guards still apply.",
+      "new_evidence": "Actual new root IAB observation 2026-09-08T21:32:51Z recorded in iab-option-observations.json for 709186f5-c0bf-413b-ac21-d9a8ac6121a0: Shilla Stay Busan Haeundae; 46, Haeun-daero 570beon-gil, Haeundae-gu, Busan, 48093. This exact page was readable at its recorded URL. Prior official proof is explicitly dated in identity_note; no claim of fresh official IAB, matching postal codes, prices or booking availability.",
+      "source_urls": [
+        "https://www.expedia.com/Busan-Hotels-Shilla-Stay-Haeundae.h17726652.Hotel-Information",
+        "https://www.shillahotels.com/ko/shillastay/haeundae/facilities/index.do"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T21:32:51Z",
+      "browser_verified": true,
+      "identity_note": "New IAB read 2026-09-08T21:32:51Z: Shilla Stay Busan Haeundae; displayed address: 46, Haeun-daero 570beon-gil, Haeundae-gu, Busan, 48093. Prior official option e8603a34-3bcc-4262-be1e-19533c94899f approved 2026-09-08 16:07:31.773822+00:00, retained in before.json: 2026-09-08 primary evidence matched Shilla Stay Haeundae, 부산광역시 해운대구 해운대로570번길 46. Method=web_direct_official_page; official identity status=name_and_full_address_match. Safety check healthy; browser_verified=false. Parent map review remains separate. This is prior evidence, not a fresh official-page/IAB read. Same hotel name/street identity; postal forms retained as displayed, not asserted equal.",
+      "option_patch": {
+        "url": "https://www.expedia.com/Busan-Hotels-Shilla-Stay-Haeundae.h17726652.Hotel-Information",
+        "evidence_url": "https://www.expedia.com/Busan-Hotels-Shilla-Stay-Haeundae.h17726652.Hotel-Information"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "823126b6-3621-43fb-8a9f-40a5568bb3f9",
+      "version": 1,
+      "before_hash": "674d35eb2bf6743847be9a3279cba8b404ebe4cd85eeba12f585121a7dc78f39",
+      "decision": "approve",
+      "reason": "Root inspected the exact expedia hotel page in the built-in browser: Toyoko Inn Busan Seo-myeon; 39, Seojeon-ro, Busanjin-gu, Busan, Busan, 47247. Name and street match the separately documented official identity. Fill only this original null URL/evidence slot through normal edit then review; keep property_id null and do not activate quotes or approve the parent hotel. Normal unsafe/unavailable/duplicate guards still apply.",
+      "new_evidence": "Actual new root IAB observation 2026-09-08T21:31:36Z recorded in iab-option-observations.json for 823126b6-3621-43fb-8a9f-40a5568bb3f9: Toyoko Inn Busan Seo-myeon; 39, Seojeon-ro, Busanjin-gu, Busan, Busan, 47247. This exact page was readable at its recorded URL. Prior official proof is explicitly dated in identity_note; no claim of fresh official IAB, matching postal codes, prices or booking availability.",
+      "source_urls": [
+        "https://www.expedia.com/Busan-Hotels-Toyoko-Inn-Busan-Seo-Myeon.h4160482.Hotel-Information",
+        "https://www.toyoko-inn.com/eng/search/detail/00221/"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T21:31:36Z",
+      "browser_verified": true,
+      "identity_note": "New IAB read 2026-09-08T21:31:36Z: Toyoko Inn Busan Seo-myeon; displayed address: 39, Seojeon-ro, Busanjin-gu, Busan, Busan, 47247. Prior official option 78b718b2-ea44-47cf-adeb-8c10feee6ff4 approved 2026-09-08 16:06:34.419453+00:00, retained in before.json: 2026-09-08 primary evidence matched Toyoko Inn Busan Seomyeon, 39, Seojeon-ro, Busanjin-gu, Busan. Method=web_direct_official_page; official identity status=name_and_full_address_match. Safety check healthy; browser_verified=false. Parent map review remains separate. This is prior evidence, not a fresh official-page/IAB read. Same hotel name/street identity; postal forms retained as displayed, not asserted equal.",
+      "option_patch": {
+        "url": "https://www.expedia.com/Busan-Hotels-Toyoko-Inn-Busan-Seo-Myeon.h4160482.Hotel-Information",
+        "evidence_url": "https://www.expedia.com/Busan-Hotels-Toyoko-Inn-Busan-Seo-Myeon.h4160482.Hotel-Information"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "83554f6b-a045-4a89-ab61-27f077e42d58",
+      "version": 1,
+      "before_hash": "49951911abece19a410d76d2d84bedac463afde4e782582edd55c7a87d3fb9f6",
+      "decision": "approve",
+      "reason": "Root inspected the exact expedia hotel page in the built-in browser: Grand Josun Busan; 292, Haeundaehaebyeon-ro, Busan, 48099. Name and street match the separately documented official identity. Fill only this original null URL/evidence slot through normal edit then review; keep property_id null and do not activate quotes or approve the parent hotel. Normal unsafe/unavailable/duplicate guards still apply.",
+      "new_evidence": "Actual new root IAB observation 2026-09-08T21:31:36Z recorded in iab-option-observations.json for 83554f6b-a045-4a89-ab61-27f077e42d58: Grand Josun Busan; 292, Haeundaehaebyeon-ro, Busan, 48099. This exact page was readable at its recorded URL. Prior official proof is explicitly dated in identity_note; no claim of fresh official IAB, matching postal codes, prices or booking availability.",
+      "source_urls": [
+        "https://www.expedia.com/Busan-Hotels-Grand-Josun-Busan.h54509722.Hotel-Information",
+        "https://gjb.josunhotel.com/main.do?locale=en"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T21:31:36Z",
+      "browser_verified": true,
+      "identity_note": "New IAB read 2026-09-08T21:31:36Z: Grand Josun Busan; displayed address: 292, Haeundaehaebyeon-ro, Busan, 48099. Prior official option 97063551-145a-4836-bd07-f61ac2720c39 approved 2026-09-08 16:06:48.583331+00:00, retained in before.json: 2026-09-08 primary evidence matched GRAND JOSUN BUSAN, 292, Haeundaehaebyeon-ro, Haeundae-gu, Busan. Method=web_direct_official_page; official identity status=name_and_full_address_match. Safety check healthy; browser_verified=false. Parent map review remains separate. This is prior evidence, not a fresh official-page/IAB read. Same hotel name/street identity; postal forms retained as displayed, not asserted equal.",
+      "option_patch": {
+        "url": "https://www.expedia.com/Busan-Hotels-Grand-Josun-Busan.h54509722.Hotel-Information",
+        "evidence_url": "https://www.expedia.com/Busan-Hotels-Grand-Josun-Busan.h54509722.Hotel-Information"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "a6c60862-2199-486d-bc3c-5b77e4decf12",
+      "version": 1,
+      "before_hash": "67e2b8dcb837ae7af3715aa8a89af64b69508223071ea94d5f397c45cd4c4c91",
+      "decision": "approve",
+      "reason": "Root inspected the exact expedia hotel page in the built-in browser: Hotel Ryumeikan Tokyo; 1-3-22 Yaesu, Chuo, Tokyo, Tokyo, 103-0028. Name and street match the separately documented official identity. Fill only this original null URL/evidence slot through normal edit then review; keep property_id null and do not activate quotes or approve the parent hotel. Normal unsafe/unavailable/duplicate guards still apply.",
+      "new_evidence": "Actual new root IAB observation 2026-09-08T21:31:36Z recorded in iab-option-observations.json for a6c60862-2199-486d-bc3c-5b77e4decf12: Hotel Ryumeikan Tokyo; 1-3-22 Yaesu, Chuo, Tokyo, Tokyo, 103-0028. This exact page was readable at its recorded URL. Prior official proof is explicitly dated in identity_note; no claim of fresh official IAB, matching postal codes, prices or booking availability.",
+      "source_urls": [
+        "https://www.expedia.com/Tokyo-Hotels-Hotel-Ryumeikan-Tokyo.h2978783.Hotel-Information",
+        "https://www.ryumeikan-tokyo.jp/access/"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T21:31:36Z",
+      "browser_verified": true,
+      "identity_note": "New IAB read 2026-09-08T21:31:36Z: Hotel Ryumeikan Tokyo; displayed address: 1-3-22 Yaesu, Chuo, Tokyo, Tokyo, 103-0028. Official primary-web identity read 2026-09-08T21:28:40+00:00 in tokyo-platform-leads.json: ホテル龍名館東京; 〒103-0028 東京都中央区八重洲1-3-22. This official read was not an IAB inspection. Same hotel name/street identity; postal forms retained as displayed, not asserted equal.",
+      "option_patch": {
+        "url": "https://www.expedia.com/Tokyo-Hotels-Hotel-Ryumeikan-Tokyo.h2978783.Hotel-Information",
+        "evidence_url": "https://www.expedia.com/Tokyo-Hotels-Hotel-Ryumeikan-Tokyo.h2978783.Hotel-Information"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "b6194681-cb1c-4421-8418-cb09781046f8",
+      "version": 1,
+      "before_hash": "eb720839c76046429d9f815079de3273104fe4d1d4278250fac33d91824ad530",
+      "decision": "approve",
+      "reason": "Root inspected the exact expedia hotel page in the built-in browser: Mitsui Garden Hotel Kyobashi Tokyo Station; 1-3-6 Kyobashi, Chuo-ku, Tokyo, 104-0031. Name and street match the separately documented official identity. Fill only this original null URL/evidence slot through normal edit then review; keep property_id null and do not activate quotes or approve the parent hotel. Normal unsafe/unavailable/duplicate guards still apply.",
+      "new_evidence": "Actual new root IAB observation 2026-09-08T21:31:36Z recorded in iab-option-observations.json for b6194681-cb1c-4421-8418-cb09781046f8: Mitsui Garden Hotel Kyobashi Tokyo Station; 1-3-6 Kyobashi, Chuo-ku, Tokyo, 104-0031. This exact page was readable at its recorded URL. Prior official proof is explicitly dated in identity_note; no claim of fresh official IAB, matching postal codes, prices or booking availability.",
+      "source_urls": [
+        "https://www.expedia.com/Tokyo-Hotels-Mitsui-Garden-Hotel-Kyobashi.h15056984.Hotel-Information",
+        "https://www.gardenhotels.co.jp/kyobashi/access/"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T21:31:36Z",
+      "browser_verified": true,
+      "identity_note": "New IAB read 2026-09-08T21:31:36Z: Mitsui Garden Hotel Kyobashi Tokyo Station; displayed address: 1-3-6 Kyobashi, Chuo-ku, Tokyo, 104-0031. Official primary-web identity read 2026-09-08T21:28:40+00:00 in tokyo-platform-leads.json: 三井ガーデンホテル京橋; 〒104-0031 東京都中央区京橋1-3-6. This official read was not an IAB inspection. Same hotel name/street identity; postal forms retained as displayed, not asserted equal.",
+      "option_patch": {
+        "url": "https://www.expedia.com/Tokyo-Hotels-Mitsui-Garden-Hotel-Kyobashi.h15056984.Hotel-Information",
+        "evidence_url": "https://www.expedia.com/Tokyo-Hotels-Mitsui-Garden-Hotel-Kyobashi.h15056984.Hotel-Information"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "bb5f25c1-ca5c-4a58-99d4-f03b52625004",
+      "version": 1,
+      "before_hash": "b4dd6f7188e5bf25475f5300a1aaf24ef36745d89616080c5187396af1608f93",
+      "decision": "approve",
+      "reason": "Root inspected the exact agoda hotel page in the built-in browser: 釜山樂天飯店 (Lotte Hotel Busan); 772, Gaya-daero,Busanjin-gu, 西面, 釜山, 韓國, 47285. Name and street match the separately documented official identity. Fill only this original null URL/evidence slot through normal edit then review; keep property_id null and do not activate quotes or approve the parent hotel. Normal unsafe/unavailable/duplicate guards still apply.",
+      "new_evidence": "Actual new root IAB observation 2026-09-08T21:36:48Z recorded in iab-option-observations.json for bb5f25c1-ca5c-4a58-99d4-f03b52625004: 釜山樂天飯店 (Lotte Hotel Busan); 772, Gaya-daero,Busanjin-gu, 西面, 釜山, 韓國, 47285. This exact page was readable at its recorded URL. Prior official proof is explicitly dated in identity_note; no claim of fresh official IAB, matching postal codes, prices or booking availability.",
+      "source_urls": [
+        "https://www.agoda.com/lotte-hotel-busan/hotel/busan-kr.html",
+        "https://www.lottehotel.com/prerendered/busan-hotel/en/about/location/index.html"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T21:36:48Z",
+      "browser_verified": true,
+      "identity_note": "New IAB read 2026-09-08T21:36:48Z: 釜山樂天飯店 (Lotte Hotel Busan); displayed address: 772, Gaya-daero,Busanjin-gu, 西面, 釜山, 韓國, 47285. Prior official option 1f942ff0-4d9a-45ca-ae78-9f5dd12ae455 approved 2026-09-08 16:49:08.632398+00:00, retained in before.json: Built-in-browser same-property match: LOTTE HOTEL BUSAN. Observed address/postal form: 772 Gaya-daero, Busanjin-gu, Busan. Address retained as displayed; no undisplayed lot number inferred. This is prior evidence, not a fresh official-page/IAB read. Same hotel name/street identity; postal forms retained as displayed, not asserted equal.",
+      "option_patch": {
+        "url": "https://www.agoda.com/lotte-hotel-busan/hotel/busan-kr.html",
+        "evidence_url": "https://www.agoda.com/lotte-hotel-busan/hotel/busan-kr.html"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "bc4916c6-8db8-4aab-b1c3-4e82f6edbe34",
+      "version": 1,
+      "before_hash": "747600dde86b7dd2102b43075a1621398332817fe2257448b7ff360bca53ad1e",
+      "decision": "approve",
+      "reason": "Root inspected the exact agoda hotel page in the built-in browser: 千禧 三井花園飯店 東京 / 銀座 (Millennium Mitsui Garden Hotel Tokyo / Ginza); 5-11-1 Ginza, Chuo-Ku, 銀座, 東京, 日本, 104-0061. Name and street match the separately documented official identity. Fill only this original null URL/evidence slot through normal edit then review; keep property_id null and do not activate quotes or approve the parent hotel. Normal unsafe/unavailable/duplicate guards still apply.",
+      "new_evidence": "Actual new root IAB observation 2026-09-08T21:37:30Z recorded in iab-option-observations.json for bc4916c6-8db8-4aab-b1c3-4e82f6edbe34: 千禧 三井花園飯店 東京 / 銀座 (Millennium Mitsui Garden Hotel Tokyo / Ginza); 5-11-1 Ginza, Chuo-Ku, 銀座, 東京, 日本, 104-0061. This exact page was readable at its recorded URL. Prior official proof is explicitly dated in identity_note; no claim of fresh official IAB, matching postal codes, prices or booking availability.",
+      "source_urls": [
+        "https://www.agoda.com/millennium-mitsui-garden-hotel-tokyo/hotel/tokyo-jp.html",
+        "https://www.gardenhotels.co.jp/millennium-tokyo/access/"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T21:37:30Z",
+      "browser_verified": true,
+      "identity_note": "New IAB read 2026-09-08T21:37:30Z: 千禧 三井花園飯店 東京 / 銀座 (Millennium Mitsui Garden Hotel Tokyo / Ginza); displayed address: 5-11-1 Ginza, Chuo-Ku, 銀座, 東京, 日本, 104-0061. Official primary-web identity read 2026-09-08T21:28:40+00:00 in tokyo-platform-leads.json: ミレニアム 三井ガーデンホテル 東京; 〒104-0061 東京都中央区銀座5-11-1. This official read was not an IAB inspection. Same hotel name/street identity; postal forms retained as displayed, not asserted equal.",
+      "option_patch": {
+        "url": "https://www.agoda.com/millennium-mitsui-garden-hotel-tokyo/hotel/tokyo-jp.html",
+        "evidence_url": "https://www.agoda.com/millennium-mitsui-garden-hotel-tokyo/hotel/tokyo-jp.html"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "ce3c41de-25a7-494e-a8e7-681b40d61b71",
+      "version": 1,
+      "before_hash": "14faade63c6746ba4e293cba3f1b824c9c7ce2ccf7be85bb316e4e92abe3d007",
+      "decision": "approve",
+      "reason": "Root inspected the exact agoda hotel page in the built-in browser: 樂天L7海雲台飯店 - 由樂天飯店管理 (L7 HAEUNDAE by LOTTE HOTELS); 55, Haeun-daero 570beon-gil, Haeundae-gu, Busan, Republic of Korea, 海雲台區, 釜山, 韓國, 48094. Name and street match the separately documented official identity. Fill only this original null URL/evidence slot through normal edit then review; keep property_id null and do not activate quotes or approve the parent hotel. Normal unsafe/unavailable/duplicate guards still apply.",
+      "new_evidence": "Actual new root IAB observation 2026-09-08T21:36:11Z recorded in iab-option-observations.json for ce3c41de-25a7-494e-a8e7-681b40d61b71: 樂天L7海雲台飯店 - 由樂天飯店管理 (L7 HAEUNDAE by LOTTE HOTELS); 55, Haeun-daero 570beon-gil, Haeundae-gu, Busan, Republic of Korea, 海雲台區, 釜山, 韓國, 48094. This exact page was readable at its recorded URL. Prior official proof is explicitly dated in identity_note; no claim of fresh official IAB, matching postal codes, prices or booking availability.",
+      "source_urls": [
+        "https://www.agoda.com/l7-haeundae/hotel/busan-kr.html",
+        "https://www.lottehotel.com/prerendered/haeundae-l7/en/facilities/luggage-locker/index.html"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T21:36:11Z",
+      "browser_verified": true,
+      "identity_note": "New IAB read 2026-09-08T21:36:11Z: 樂天L7海雲台飯店 - 由樂天飯店管理 (L7 HAEUNDAE by LOTTE HOTELS); displayed address: 55, Haeun-daero 570beon-gil, Haeundae-gu, Busan, Republic of Korea, 海雲台區, 釜山, 韓國, 48094. Prior official option 03df0967-cada-44aa-9c56-d644ea48716e approved 2026-09-08 16:49:07.632442+00:00, retained in before.json: Built-in-browser same-property match: L7 HAEUNDAE by LOTTE HOTELS. Observed address/postal form: 55 Haeun-daero 570beon-gil, Haeundae-gu, Busan. Address retained as displayed; no undisplayed lot number inferred. This is prior evidence, not a fresh official-page/IAB read. Same hotel name/street identity; postal forms retained as displayed, not asserted equal.",
+      "option_patch": {
+        "url": "https://www.agoda.com/l7-haeundae/hotel/busan-kr.html",
+        "evidence_url": "https://www.agoda.com/l7-haeundae/hotel/busan-kr.html"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "d55df51d-b401-468a-8149-bec50508b4c2",
+      "version": 1,
+      "before_hash": "f2b2bf01a6274d334cb9381c91f24d7670cf6970e2db41c29de74280e903ab6f",
+      "decision": "approve",
+      "reason": "Root inspected the exact agoda hotel page in the built-in browser: 東橫INN - 釜山西面 (Toyoko Inn Busan Seomyeon); 39, Seojeon-ro, Busanjin-gu, 西面, 釜山, 韓國, 47247. Name and street match the separately documented official identity. Fill only this original null URL/evidence slot through normal edit then review; keep property_id null and do not activate quotes or approve the parent hotel. Normal unsafe/unavailable/duplicate guards still apply.",
+      "new_evidence": "Actual new root IAB observation 2026-09-08T21:34:36Z recorded in iab-option-observations.json for d55df51d-b401-468a-8149-bec50508b4c2: 東橫INN - 釜山西面 (Toyoko Inn Busan Seomyeon); 39, Seojeon-ro, Busanjin-gu, 西面, 釜山, 韓國, 47247. This exact page was readable at its recorded URL. Prior official proof is explicitly dated in identity_note; no claim of fresh official IAB, matching postal codes, prices or booking availability.",
+      "source_urls": [
+        "https://www.agoda.com/en-us/toyoko-inn-busan-seomyeon_4/hotel/busan-kr.html",
+        "https://www.toyoko-inn.com/eng/search/detail/00221/"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T21:34:36Z",
+      "browser_verified": true,
+      "identity_note": "New IAB read 2026-09-08T21:34:36Z: 東橫INN - 釜山西面 (Toyoko Inn Busan Seomyeon); displayed address: 39, Seojeon-ro, Busanjin-gu, 西面, 釜山, 韓國, 47247. Prior official option 78b718b2-ea44-47cf-adeb-8c10feee6ff4 approved 2026-09-08 16:06:34.419453+00:00, retained in before.json: 2026-09-08 primary evidence matched Toyoko Inn Busan Seomyeon, 39, Seojeon-ro, Busanjin-gu, Busan. Method=web_direct_official_page; official identity status=name_and_full_address_match. Safety check healthy; browser_verified=false. Parent map review remains separate. This is prior evidence, not a fresh official-page/IAB read. Same hotel name/street identity; postal forms retained as displayed, not asserted equal.",
+      "option_patch": {
+        "url": "https://www.agoda.com/en-us/toyoko-inn-busan-seomyeon_4/hotel/busan-kr.html",
+        "evidence_url": "https://www.agoda.com/en-us/toyoko-inn-busan-seomyeon_4/hotel/busan-kr.html"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "dfb3fe0e-7026-4a86-af7f-ea56c967353d",
+      "version": 1,
+      "before_hash": "426049afa466af73af8c8b1f70c89bd6b5b9728d00fce61331aff6adcc000afa",
+      "decision": "approve",
+      "reason": "Root inspected the exact expedia hotel page in the built-in browser: Arban Hotel; 32, Jungang-daero 691beon-gil, Busanjin-gu, Busan, 47287. Name and street match the separately documented official identity. Fill only this original null URL/evidence slot through normal edit then review; keep property_id null and do not activate quotes or approve the parent hotel. Normal unsafe/unavailable/duplicate guards still apply.",
+      "new_evidence": "Actual new root IAB observation 2026-09-08T21:33:37Z recorded in iab-option-observations.json for dfb3fe0e-7026-4a86-af7f-ea56c967353d: Arban Hotel; 32, Jungang-daero 691beon-gil, Busanjin-gu, Busan, 47287. This exact page was readable at its recorded URL. Prior official proof is explicitly dated in identity_note; no claim of fresh official IAB, matching postal codes, prices or booking availability.",
+      "source_urls": [
+        "https://www.expedia.com/Busan-Hotels-Arban-Hotel.h13103209.Hotel-Information",
+        "https://www.arbanhotel.com/LOCATION"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T21:33:37Z",
+      "browser_verified": true,
+      "identity_note": "New IAB read 2026-09-08T21:33:37Z: Arban Hotel; displayed address: 32, Jungang-daero 691beon-gil, Busanjin-gu, Busan, 47287. Prior official option f41083d2-b516-472c-bd51-0277849ca79c approved 2026-09-08 16:50:36.925894+00:00, retained in before.json: Built-in-browser same-property match: ARBAN HOTEL. Observed address/postal form: 32 Jungang-daero 691beon-gil, Busanjin-gu, Busan (서면 아르반호텔, not Arban City). Address retained as displayed; no undisplayed lot number inferred. This is prior evidence, not a fresh official-page/IAB read. Same hotel name/street identity; postal forms retained as displayed, not asserted equal.",
+      "option_patch": {
+        "url": "https://www.expedia.com/Busan-Hotels-Arban-Hotel.h13103209.Hotel-Information",
+        "evidence_url": "https://www.expedia.com/Busan-Hotels-Arban-Hotel.h13103209.Hotel-Information"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "f8391277-3692-4ba2-9b29-89794931e864",
+      "version": 1,
+      "before_hash": "cca9889e08421e8db9397a7d2d6fe637aab33f6ceb5654a6dbda427399b9046c",
+      "decision": "approve",
+      "reason": "Root inspected the exact expedia hotel page in the built-in browser: Millennium Mitsui Garden Hotel Tokyo/Ginza; 5-11-1 Ginza, Chuo-ku, Tokyo, Tokyo-to, 104-0061. Name and street match the separately documented official identity. Fill only this original null URL/evidence slot through normal edit then review; keep property_id null and do not activate quotes or approve the parent hotel. Normal unsafe/unavailable/duplicate guards still apply.",
+      "new_evidence": "Actual new root IAB observation 2026-09-08T21:31:36Z recorded in iab-option-observations.json for f8391277-3692-4ba2-9b29-89794931e864: Millennium Mitsui Garden Hotel Tokyo/Ginza; 5-11-1 Ginza, Chuo-ku, Tokyo, Tokyo-to, 104-0061. This exact page was readable at its recorded URL. Prior official proof is explicitly dated in identity_note; no claim of fresh official IAB, matching postal codes, prices or booking availability.",
+      "source_urls": [
+        "https://www.expedia.com/Tokyo-Hotels-Millennium-Mitsui-Garden-Hotel-Tokyo.h8378795.Hotel-Information",
+        "https://www.gardenhotels.co.jp/millennium-tokyo/access/"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T21:31:36Z",
+      "browser_verified": true,
+      "identity_note": "New IAB read 2026-09-08T21:31:36Z: Millennium Mitsui Garden Hotel Tokyo/Ginza; displayed address: 5-11-1 Ginza, Chuo-ku, Tokyo, Tokyo-to, 104-0061. Official primary-web identity read 2026-09-08T21:28:40+00:00 in tokyo-platform-leads.json: ミレニアム 三井ガーデンホテル 東京; 〒104-0061 東京都中央区銀座5-11-1. This official read was not an IAB inspection. Same hotel name/street identity; postal forms retained as displayed, not asserted equal.",
+      "option_patch": {
+        "url": "https://www.expedia.com/Tokyo-Hotels-Millennium-Mitsui-Garden-Hotel-Tokyo.h8378795.Hotel-Information",
+        "evidence_url": "https://www.expedia.com/Tokyo-Hotels-Millennium-Mitsui-Garden-Hotel-Tokyo.h8378795.Hotel-Information"
+      }
+    },
+    {
+      "kind": "product",
+      "id": "50f2d47d-24fe-4b07-85a2-3e1c7671e452",
+      "version": 1,
+      "before_hash": "39eaef5356258ef4f6e615f3ea5653424193ecdb24b0d1eaca5d7ac8320b515e",
+      "decision": "hold",
+      "reason": "This batch's actual IAB observation (2026-09-08T21:18:03.737914Z/2026-09-08T21:25:30Z) opened the official short map link and read The Westin Miyako Kyoto; 京都市東山区粟田口華頂町 / Keage Sanjo, Higashiyama-ku (displayed mixed postal form). Still no directly observed Google Place ID; the official finder had no input/result. Record compiled at 2026-09-08T21:41:43Z, not a new browser read at that time. Prior independent CC0 coordinate evidence cannot replace exact map identity. Leave every product field unchanged; no facts, coordinates or inferred ID are applied.",
+      "new_evidence": "New root IAB official short-link inspection this batch: 2026-09-08T21:18:03.737914Z/2026-09-08T21:25:30Z; The Westin Miyako Kyoto; 京都市東山区粟田口華頂町 / Keage Sanjo, Higashiyama-ku (displayed mixed postal form). Evidence record compiled 2026-09-08T21:41:43Z. Map was readable but literal Place ID remained absent, so publication remains held. No CID conversion or Google coordinates retained.",
+      "source_urls": [
+        "https://www.miyakohotels.ne.jp/westinkyoto/access/",
+        "https://goo.gl/maps/5fRTfQm7QBCMXHXd6",
+        "https://geo-devrel-javascript-samples.web.app/samples/places-placeid-finder/app/dist/",
+        "https://www.wikidata.org/wiki/Special:EntityData/Q11288502.json?revision=2434981201"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T21:41:43Z",
+      "browser_verified": false
+    },
+    {
+      "kind": "product",
+      "id": "758907f4-4870-421e-bf6c-6243cdcc30c4",
+      "version": 1,
+      "before_hash": "76072f2a225edaf3492cdfa036b187231e9e9a71c271b068c31e983a33d4529f",
+      "decision": "hold",
+      "reason": "This batch's actual IAB observation (2026-09-08T21:18:03.737914Z/2026-09-08T21:25:30Z) opened the official short map link and read 都ホテル 京都八条; 京都府京都市南区西九条院町17. Still no directly observed Google Place ID; the official finder had no input/result. Record compiled at 2026-09-08T21:41:43Z, not a new browser read at that time. Prior independent CC0 coordinate evidence cannot replace exact map identity. Leave every product field unchanged; no facts, coordinates or inferred ID are applied.",
+      "new_evidence": "New root IAB official short-link inspection this batch: 2026-09-08T21:18:03.737914Z/2026-09-08T21:25:30Z; 都ホテル 京都八条; 京都府京都市南区西九条院町17. Evidence record compiled 2026-09-08T21:41:43Z. Map was readable but literal Place ID remained absent, so publication remains held. No CID conversion or Google coordinates retained.",
+      "source_urls": [
+        "https://www.miyakohotels.ne.jp/kyoto-hachijo/access/",
+        "https://goo.gl/maps/qhUevXCFTF8DGQWW6",
+        "https://geo-devrel-javascript-samples.web.app/samples/places-placeid-finder/app/dist/",
+        "https://www.wikidata.org/wiki/Special:EntityData/Q11501050.json?revision=2448125393"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T21:41:43Z",
+      "browser_verified": false
+    },
+    {
+      "kind": "product",
+      "id": "a124dc1e-7f75-44ff-b12d-080da031b3b9",
+      "version": 1,
+      "before_hash": "3ea44e9b008f2fa3da93ec4a8dfcfed0695b08a35904a35e4754b28114a3d030",
+      "decision": "hold",
+      "reason": "This batch's actual IAB observation (2026-09-08T21:18:03.737914Z/2026-09-08T21:25:30Z) opened the official short map link and read Hotel Granvia Kyoto / ホテルグランヴィア京都; JR Kyoto Station Central Entrance, Shimogyo Ward, Kyoto, 600-8216. Still no directly observed Google Place ID; the official finder had no input/result. Record compiled at 2026-09-08T21:41:43Z, not a new browser read at that time. Prior independent CC0 coordinate evidence cannot replace exact map identity. Leave every product field unchanged; no facts, coordinates or inferred ID are applied.",
+      "new_evidence": "New root IAB official short-link inspection this batch: 2026-09-08T21:18:03.737914Z/2026-09-08T21:25:30Z; Hotel Granvia Kyoto / ホテルグランヴィア京都; JR Kyoto Station Central Entrance, Shimogyo Ward, Kyoto, 600-8216. Evidence record compiled 2026-09-08T21:41:43Z. Map was readable but literal Place ID remained absent, so publication remains held. No CID conversion or Google coordinates retained.",
+      "source_urls": [
+        "https://jrwest-hotels.jp/granvia-kyoto/access/",
+        "https://maps.app.goo.gl/X6cAwykBxMdygEDA8",
+        "https://geo-devrel-javascript-samples.web.app/samples/places-placeid-finder/app/dist/",
+        "https://www.wikidata.org/wiki/Special:EntityData/Q11337862.json?revision=2438233506"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T21:41:43Z",
+      "browser_verified": false
+    }
+  ]
+}

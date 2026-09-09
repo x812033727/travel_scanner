@@ -1,13 +1,13 @@
 ---
 id: 2026-09-09-pr343-account-safety-integration
 title: Integrate PR 343 account safety with current main
-status: review
+status: done
 priority: P1
 area: api
 owner: codex-account-safety
 claimed_at: 2026-09-09T06:12:27Z
 created_at: 2026-09-09T06:12:26Z
-completed_at:
+completed_at: 2026-09-09T06:45:30Z
 branch: codex/pr343-merge-ready-20260909
 depends_on: []
 scope:
@@ -29,13 +29,13 @@ with the newer discovery, collections and account-erasure behavior.
 
 - [x] Preserve User-before-Token locking and stale-state checks without regressing current account cleanup.
 - [x] Keep current main's post-place, saved-item and discovery cleanup behavior and private data boundaries.
-- [ ] Pass focused account tests and current-head PostgreSQL/full CI before guarded merge.
-- [ ] Confirm the authorized merge and post-merge CI; do not activate or deploy services.
+- [x] Pass focused account tests and current-head PostgreSQL/full CI before guarded merge.
+- [x] Confirm the authorized merge and post-merge CI; do not activate or deploy services.
 
 ## Steps
 
 - [x] Normally merge current main into the original PR head and inspect the final delta.
-- [ ] Validate the existing concurrency regressions, refresh draft/PR evidence, and merge only the verified head.
+- [x] Validate the existing concurrency regressions, refresh draft/PR evidence, and merge only the verified head.
 
 ## How to verify
 
@@ -74,3 +74,26 @@ unnecessary foreign-key insert conflicts. The only jobs.py delta from current ma
 is populate_existing after locking the User; all newer cleanup paths are retained.
 Fifteen focused task-tool tests and diff checks also passed. Current-head CI is
 still pending and the draft is not ready to merge until those checks succeed.
+
+## Completed delivery: 2026-09-09
+
+The checkpoint above is historical. Fixed head
+73dd2c21331412de61134ce553ed7eeefaa3c957 passed all 12 checks, was marked ready,
+then squash-merged with the exact-head guard at 2026-09-09T06:30:03Z as
+d3426c86ba185326268fdcbb52825a8cfcd1438c. GitHub merged state and main ancestry
+were verified; head and merged commit have the same complete tree.
+
+Merged-main API passed 2,386 tests (12 skipped), schema four, Web 1,232,
+tools 27 and isolated desktop/mobile UI 282; Ruff, mypy 278, i18n and task
+checks passed. Planner 34319338603 and Discovery 34319338634 also passed.
+CI 34319338706 initially failed only a community GET with read ECONNRESET
+after email verification, before the pet scenario's assertions. The two
+pre-merge full-stack runs on the identical tree passed. One failed-job-only
+rerun at the same SHA passed (attempt 2). Preserve attempt 1: this verifies
+the revision, not a fix for the intermittent connection reset. Follow-up is
+documented separately in PR #365. There was no deployment, paid-provider call,
+production connection, review replay, quota change or community activation.
+
+Only this narrow integration task is complete; broader community acceptance
+and the CI network investigation remain open. This completion record is
+carried in the separate evidence handoff; no additional runtime change is made.

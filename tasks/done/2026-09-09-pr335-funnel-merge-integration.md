@@ -1,13 +1,13 @@
 ---
 id: 2026-09-09-pr335-funnel-merge-integration
 title: Prepare PR 335 funnel integration against current main
-status: review
+status: done
 priority: P1
 area: api
 owner: codex-pr335-delivery
 claimed_at: 2026-09-09T06:33:36Z
 created_at: 2026-09-09T06:13:49Z
-completed_at:
+completed_at: 2026-09-09T06:49:21Z
 branch: codex/pr335-merge-ready-20260909
 depends_on: []
 scope:
@@ -27,7 +27,7 @@ merged and tested head without reopening the completed observe-the-funnel task.
 ## Definition of done
 
 - [x] Current main behavior and historical completed task state are preserved.
-- [ ] Only successful flight attachment emits the expected enum-only event, while
+- [x] Only successful flight attachment emits the expected enum-only event, while
   invalid requests, stale versions and rolled-back writes add no persisted event.
 - [x] Relevant regression, Ruff, mypy and task checks pass with explicit local gaps.
 - [x] Deliver a clean local head for root's fresh remote CI and guarded merge.
@@ -38,7 +38,7 @@ merged and tested head without reopening the completed observe-the-funnel task.
   `a899437aaf2f60c7affe2e944d49d62216537c90`; create a narrow integration claim.
 - [x] Normally merge current main and resolve only relevant overlaps.
 - [x] Independently inspect transaction, privacy and repeat-request semantics.
-- [ ] Validate and hand back; root owns push, final CI and merge after #343.
+- [x] Validate and hand back; root owns push, final CI and merge after #343.
 
 ## How to verify
 
@@ -107,3 +107,24 @@ The existing `tasks/done/2026-09-07-observe-the-funnel.md` remains completed.
 - Released the task for parent handoff; PostgreSQL/Redis transaction assertions
   still require fresh fixed-head CI. No push, remote mutation, merge or deployment
   was performed by this subtask.
+
+## Completed verified PR delivery
+
+Root delivered fixed head 63a15c2e792cc32654da40923184787b2c2c9bb3 after all
+12 checks passed, including the real PostgreSQL flight/event transaction tests.
+PR #335 was squash-merged with the exact-head guard at 2026-09-09T06:48:09Z as
+98f8067b3664a956e44d0b6e9f372b27a22775e6. GitHub merged state and main ancestry
+were verified. No reviewer threads were unresolved and no check was bypassed.
+
+The same-head PR CI passed on its first attempt. Push CI 34319631682 initially
+failed a mobile community test while reading GET /community/me after email
+verification; it had not reached the mail-recovery scenario. API, Web and the
+other checks passed. One failed-job-only rerun at the same SHA passed; preserve
+the first attempt as an intermittent connection-reset observation, not a
+runtime fix. The separate CI investigation remains open in PR #365.
+
+At this merge checkpoint, merged-main CI 34320730596, Planner 34320730585 and
+Discovery 34320730564 have started and root is following their results separately.
+This closes the narrow integration/verified-merge task, not an operational
+deployment or the independent CI reliability investigation. No production data,
+review operation, paid-provider call, feature activation or deployment occurred.

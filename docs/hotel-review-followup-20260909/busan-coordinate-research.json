@@ -1,0 +1,540 @@
+{
+  "task": "hotel-review-followup-20260909 / independent Busan durable-coordinate source research",
+  "checked_at": "2026-09-08T16:30:27Z",
+  "local_date": "2026-09-09",
+  "timezone": "Asia/Taipei",
+  "scope": {
+    "destination_id": "busan",
+    "products": 10,
+    "baseline_path": "docs/hotel-review-followup-20260909/before.json",
+    "baseline_captured_at": "2026-09-08 16:20:20.550803+00:00",
+    "baseline_sha256": "2925f360698fe40956128ba032cb4b774feb4df27e48cd089ca15ba1aa59f356"
+  },
+  "summary": {
+    "official_routes_limit": 10,
+    "official_routes_visited": 10,
+    "coordinate_records_obtained": 0,
+    "coordinate_reprojections_performed": 0,
+    "coordinate_approval_recommendations": 0,
+    "keep_pending_recommendations": 10,
+    "new_plausible_source": "National lodging permit CSV catalog 15044968, explicitly EPSG:5174 with unrestricted dataset permission",
+    "blocking_condition": "Actual linked source-file entry returns HTTP 403 Forbidden, also confirmed by parent in built-in browser. Catalog metadata cannot substitute for the raw matched hotel record."
+  },
+  "safety": {
+    "production_reads": false,
+    "production_writes": false,
+    "browser_control": false,
+    "chrome_used": false,
+    "keyed_api_calls": 0,
+    "account_creation": false,
+    "quota_changes": false,
+    "paid_provider_calls": 0,
+    "google_naver_ota_coordinates_used": false,
+    "previously_excluded_sources_retried": false,
+    "external_writes": false,
+    "clarification": "Public metadata search/lookup uses observed POST read endpoints only; no application state, authentication, bookmark, ratings, download counters or production endpoints were changed. Local evidence files only."
+  },
+  "routes": [
+    {
+      "number": 1,
+      "url": "https://www.data.go.kr/data/15044968/fileData.do",
+      "method": "GET",
+      "purpose": "National lodging permit dataset, source CRS and reuse permission",
+      "result": "readable",
+      "facts": {
+        "dataset_id": "15044968",
+        "publisher": "행정안전부",
+        "dataset_title": "행정안전부_문화_숙박업",
+        "displayed_dataset_date": "20251127",
+        "metadata_modified_at": "2026-02-10",
+        "declared_crs": "EPSG:5174",
+        "license_label": "이용허락범위 제한 없음",
+        "cost": "free",
+        "update_note": "Daily, current to two days before publication",
+        "download_url": "https://file.localdata.go.kr/file/lodgings/info"
+      }
+    },
+    {
+      "number": 2,
+      "url": "https://file.localdata.go.kr/file/lodgings/info",
+      "method": "GET",
+      "purpose": "Official linked lodging source-file entry",
+      "result": "blocked",
+      "http_status": 403,
+      "notes": "web reader could not open; one ordinary PowerShell GET returned Forbidden. Parent independently confirmed Forbidden in the built-in browser after reading the official catalog. No Referer spoofing, alternate legacy endpoint, session bypass or authentication attempted."
+    },
+    {
+      "number": 3,
+      "url": "https://www.data.go.kr/data/15025544/fileData.do",
+      "method": "GET",
+      "purpose": "Busanjin district lodging dataset candidate",
+      "result": "web_reader_unavailable",
+      "notes": "No contents from this route used; later official Busan catalog read-only metadata establishes its identity, but not coordinate values."
+    },
+    {
+      "number": 4,
+      "url": "https://www.data.go.kr/catalog/15044968/fileData.json",
+      "method": "GET",
+      "purpose": "Machine-readable dataset-specific license and CRS corroboration",
+      "result": "readable",
+      "http_status": 200,
+      "selected_metadata": {
+        "source_url": "https://www.data.go.kr/data/15044968/fileData.do",
+        "license": "이용허락범위 제한 없음",
+        "name": "행정안전부_문화_숙박업",
+        "content_text_sha256": "7a989fc2fecedc41fa2f9f9ef827bf54411854644a17c6aea08f473b6f7e3ace",
+        "before_sha256": "2925f360698fe40956128ba032cb4b774feb4df27e48cd089ca15ba1aa59f356",
+        "creator": "행정안전부",
+        "alternateName": "행정안전부_문화_숙박업_20251127",
+        "dateModified": "2026-02-10",
+        "description_has_source_crs": true,
+        "http_status": 200
+      }
+    },
+    {
+      "number": 5,
+      "url": "https://www.data.go.kr/ugs/selectPortalPolicyView.do",
+      "method": "GET",
+      "purpose": "Policy linked by the dataset license label",
+      "result": "readable",
+      "notes": "Published public data is available without a separate application; third-party rights still require permission. KOGL1 permits commercial use and derivative works with attribution. The selected dataset itself is labeled unrestricted, not specifically KOGL1; do not relabel its grant as KOGL1."
+    },
+    {
+      "number": 6,
+      "url": "https://data.busan.go.kr/",
+      "final_url": "https://data.busan.go.kr/bdip/",
+      "method": "GET",
+      "purpose": "Find municipal public-data catalog",
+      "result": "readable"
+    },
+    {
+      "number": 7,
+      "url": "https://www.data.go.kr/data/15155657/standard.do?recommendDataYn=Y",
+      "method": "GET",
+      "purpose": "National standard lodging dataset alternate official entry",
+      "result": "readable_same_blocked_source",
+      "notes": "Confirms nationwide municipal permit collection, EPSG:5174 and unrestricted label, but links the same file.localdata.go.kr/file/lodgings/info entry; not an independently obtained file."
+    },
+    {
+      "number": 8,
+      "url": "https://data.busan.go.kr/bdip/opendata/dataSet.do",
+      "method": "GET",
+      "purpose": "Municipal public catalog and observed read-only search protocol",
+      "result": "readable",
+      "notes": "Catalog itself offers district and national permit categories. HTML inspected only to identify its public metadata/search endpoints; no login, bookmark, rating, download-counter or other mutating methods invoked."
+    },
+    {
+      "number": 9,
+      "url": "https://data.busan.go.kr/bdip/srh/getPublicDataListSearch.do",
+      "method": "POST (read-only public metadata search)",
+      "purpose": "Bounded complete lodging-keyword catalog search",
+      "result": "readable",
+      "request": {
+        "searchSort": "",
+        "dataTy": "",
+        "brmnCd": "",
+        "insttCd": "",
+        "offset": [
+          0,
+          12,
+          24
+        ],
+        "pagelength": 12,
+        "listOrderCd": "",
+        "searchType": "ftmix",
+        "kwd": "숙박업",
+        "qryType": "and"
+      },
+      "total_results": 36,
+      "notes": "First page was repeated after an overlong tool output; retained only selected public metadata. No source records, unrelated business rows, embeddings or internal indexing fields retained in this report. Search results are not source-file coordinate evidence."
+    },
+    {
+      "number": 10,
+      "url": "https://data.busan.go.kr/bdip/opendata/selectDataSet.do",
+      "method": "POST (read-only public metadata lookup)",
+      "purpose": "Inspect candidate municipal dataset 15025544",
+      "result": "readable",
+      "request": {
+        "publicdatapk": "15025544"
+      },
+      "facts": {
+        "publisher": "부산광역시 부산진구",
+        "title": "부산광역시 부산진구 숙박업현황",
+        "modified_at": "2026-06-18",
+        "available_formats": [
+          "FILE",
+          "SHEET"
+        ],
+        "map_available": false
+      },
+      "notes": "Description lists industry, report date, venue name and road/lot addresses. It does not supply any individual hotel coordinate or source CRS; raw file not obtained. Do not infer that a field absent from the description is certainly absent from the raw file."
+    }
+  ],
+  "municipal_catalog_candidates": [
+    {
+      "dataset_id": "3075790",
+      "title": "부산광역시 해운대구_숙박업현황",
+      "publisher": "부산광역시 해운대구",
+      "modified_at": "20260616",
+      "source_route": 9,
+      "advertised_fields": [
+        "row number",
+        "business name",
+        "road address",
+        "telephone",
+        "room count"
+      ],
+      "license_from_actual_file": null,
+      "individual_hotel_rows_obtained": false,
+      "coordinates_obtained": false,
+      "assessment": "The official catalog is a plausible identity-data lead, but no actual licensed hotel coordinate record was obtained within the bounded route budget. Advertised fields alone do not establish absence of coordinates in the raw file."
+    },
+    {
+      "dataset_id": "15025674",
+      "title": "부산광역시 부산진구 관광숙박업현황",
+      "publisher": "부산광역시 부산진구",
+      "modified_at": "20260116",
+      "source_route": 9,
+      "advertised_fields": [
+        "industry",
+        "lodging category",
+        "business name",
+        "address"
+      ],
+      "license_from_actual_file": null,
+      "individual_hotel_rows_obtained": false,
+      "coordinates_obtained": false,
+      "assessment": "The official catalog is a plausible identity-data lead, but no actual licensed hotel coordinate record was obtained within the bounded route budget. Advertised fields alone do not establish absence of coordinates in the raw file."
+    },
+    {
+      "dataset_id": "3069341",
+      "title": "부산광역시 중구_공중위생업소현황",
+      "publisher": "부산광역시 중구",
+      "modified_at": "20260122",
+      "source_route": 9,
+      "advertised_fields": [
+        "industry",
+        "business name",
+        "address",
+        "telephone"
+      ],
+      "license_from_actual_file": null,
+      "individual_hotel_rows_obtained": false,
+      "coordinates_obtained": false,
+      "assessment": "The official catalog is a plausible identity-data lead, but no actual licensed hotel coordinate record was obtained within the bounded route budget. Advertised fields alone do not establish absence of coordinates in the raw file."
+    },
+    {
+      "dataset_id": "15025544",
+      "title": "부산광역시 부산진구 숙박업현황",
+      "publisher": "부산광역시 부산진구",
+      "modified_at": "20260618",
+      "source_route": 9,
+      "advertised_fields": [
+        "industry",
+        "report date",
+        "business name",
+        "road address",
+        "lot address"
+      ],
+      "license_from_actual_file": null,
+      "individual_hotel_rows_obtained": false,
+      "coordinates_obtained": false,
+      "assessment": "The official catalog is a plausible identity-data lead, but no actual licensed hotel coordinate record was obtained within the bounded route budget. Advertised fields alone do not establish absence of coordinates in the raw file."
+    }
+  ],
+  "license_assessment": {
+    "selected_dataset_label": "이용허락범위 제한 없음",
+    "translated_label": "No restrictions on scope of use",
+    "dataset_permission_confirmed": true,
+    "raw_record_permission_and_identity_bound": false,
+    "not_a_claim": "Not a KOGL1 label, not a blanket grant for every government website, not a grant for OTA/Naver/Google or prior restricted KTO JSON-LD."
+  },
+  "reprojection": {
+    "status": "not_performed_missing_input",
+    "source_crs_confirmed_for_national_dataset": "EPSG:5174",
+    "target_crs": "EPSG:4326",
+    "required_inputs": [
+      "actual official downloadable record",
+      "exact hotel name and full official address match",
+      "active permit status and unique permit identity",
+      "published X/Y values",
+      "source-file content hash and retrieval time",
+      "dataset-specific permission"
+    ],
+    "planned_method": "Transformer.from_crs('EPSG:5174', 'EPSG:4326', always_xy=True), transform(x, y, errcheck=True); record pyproj/PROJ version and transformation pipeline. Never infer inputs from map view or address.",
+    "caveat": "No numeric X/Y or WGS84 results are reported. Even a future valid administrative permit point must not be described as a surveyed entrance point or have accuracy inferred merely from output decimal precision."
+  },
+  "products": [
+    {
+      "product_id": "1be1bb97-fbc4-4d9b-b2b9-3744ee473953",
+      "version": 1,
+      "title": "Hotel Foret Premier Nampo",
+      "korean_name": "호텔포레 프리미어 남포",
+      "source_key": "editorial:busan:foret-premier-nampo",
+      "baseline_status": "pending",
+      "official_identity_url": "https://www.hotelforetpremier.com/view/index.do?SS_SVC_LANG_CODE=KOR",
+      "baseline_coordinate_fields": {
+        "latitude": null,
+        "longitude": null,
+        "coordinate_source_url": null
+      },
+      "decision": "keep_pending",
+      "reason_code": "official_durable_coordinate_record_unavailable",
+      "reason": "No matched official source-file record with reusable X/Y coordinates was obtained. License/CRS metadata and even a separately verified Naver identity are not sufficient to manufacture durable coordinate values.",
+      "coordinate_evidence": {
+        "permit_id": null,
+        "source_x": null,
+        "source_y": null,
+        "wgs84_latitude": null,
+        "wgs84_longitude": null,
+        "source_file_sha256": null,
+        "reprojected": false
+      },
+      "map_identity_review": "Parent handles exact Naver identity; not reviewed or asserted by this coordinate-only subtask."
+    },
+    {
+      "product_id": "1e9c0de8-e648-44c0-a4c4-0fb175893d7e",
+      "version": 1,
+      "title": "GRAND JOSUN BUSAN",
+      "korean_name": "그랜드 조선 부산",
+      "source_key": "editorial:busan:grand-josun-busan",
+      "baseline_status": "pending",
+      "official_identity_url": "https://gjb.josunhotel.com/main.do?locale=en",
+      "baseline_coordinate_fields": {
+        "latitude": null,
+        "longitude": null,
+        "coordinate_source_url": null
+      },
+      "decision": "keep_pending",
+      "reason_code": "official_durable_coordinate_record_unavailable",
+      "reason": "No matched official source-file record with reusable X/Y coordinates was obtained. License/CRS metadata and even a separately verified Naver identity are not sufficient to manufacture durable coordinate values.",
+      "coordinate_evidence": {
+        "permit_id": null,
+        "source_x": null,
+        "source_y": null,
+        "wgs84_latitude": null,
+        "wgs84_longitude": null,
+        "source_file_sha256": null,
+        "reprojected": false
+      },
+      "map_identity_review": "Parent handles exact Naver identity; not reviewed or asserted by this coordinate-only subtask."
+    },
+    {
+      "product_id": "4938181e-0007-4143-aa0c-4b5ed44f4f8b",
+      "version": 1,
+      "title": "Toyoko Inn Busan Seomyeon",
+      "korean_name": null,
+      "source_key": "editorial:busan:toyoko-inn-seomyeon",
+      "baseline_status": "pending",
+      "official_identity_url": "https://www.toyoko-inn.com/eng/search/detail/00221/",
+      "baseline_coordinate_fields": {
+        "latitude": null,
+        "longitude": null,
+        "coordinate_source_url": null
+      },
+      "decision": "keep_pending",
+      "reason_code": "official_durable_coordinate_record_unavailable",
+      "reason": "No matched official source-file record with reusable X/Y coordinates was obtained. License/CRS metadata and even a separately verified Naver identity are not sufficient to manufacture durable coordinate values.",
+      "coordinate_evidence": {
+        "permit_id": null,
+        "source_x": null,
+        "source_y": null,
+        "wgs84_latitude": null,
+        "wgs84_longitude": null,
+        "source_file_sha256": null,
+        "reprojected": false
+      },
+      "map_identity_review": "Parent handles exact Naver identity; not reviewed or asserted by this coordinate-only subtask."
+    },
+    {
+      "product_id": "58d5fd90-1c15-4ff9-b1f7-63c1b3d08494",
+      "version": 1,
+      "title": "Park Hyatt Busan",
+      "korean_name": "파크 하얏트 부산",
+      "source_key": "editorial:busan:park-hyatt-busan",
+      "baseline_status": "pending",
+      "official_identity_url": "https://www.hyatt.com/park-hyatt/en-US/busph-park-hyatt-busan/parking-and-transportation",
+      "baseline_coordinate_fields": {
+        "latitude": null,
+        "longitude": null,
+        "coordinate_source_url": null
+      },
+      "decision": "keep_pending",
+      "reason_code": "official_durable_coordinate_record_unavailable",
+      "reason": "No matched official source-file record with reusable X/Y coordinates was obtained. License/CRS metadata and even a separately verified Naver identity are not sufficient to manufacture durable coordinate values.",
+      "coordinate_evidence": {
+        "permit_id": null,
+        "source_x": null,
+        "source_y": null,
+        "wgs84_latitude": null,
+        "wgs84_longitude": null,
+        "source_file_sha256": null,
+        "reprojected": false
+      },
+      "map_identity_review": "Parent handles exact Naver identity; not reviewed or asserted by this coordinate-only subtask."
+    },
+    {
+      "product_id": "6e824f93-a049-4a32-9df4-fe17dc4d3974",
+      "version": 1,
+      "title": "Paradise Hotel Busan",
+      "korean_name": null,
+      "source_key": "editorial:busan:paradise-busan",
+      "baseline_status": "pending",
+      "official_identity_url": "https://www.busanparadisehotel.co.kr/front/",
+      "baseline_coordinate_fields": {
+        "latitude": null,
+        "longitude": null,
+        "coordinate_source_url": null
+      },
+      "decision": "keep_pending",
+      "reason_code": "official_durable_coordinate_record_unavailable",
+      "reason": "No matched official source-file record with reusable X/Y coordinates was obtained. License/CRS metadata and even a separately verified Naver identity are not sufficient to manufacture durable coordinate values.",
+      "coordinate_evidence": {
+        "permit_id": null,
+        "source_x": null,
+        "source_y": null,
+        "wgs84_latitude": null,
+        "wgs84_longitude": null,
+        "source_file_sha256": null,
+        "reprojected": false
+      },
+      "map_identity_review": "Parent handles exact Naver identity; not reviewed or asserted by this coordinate-only subtask."
+    },
+    {
+      "product_id": "71374dce-0786-413b-aafd-b63c7d9a3786",
+      "version": 1,
+      "title": "Shilla Stay Haeundae",
+      "korean_name": "신라스테이 해운대",
+      "source_key": "editorial:busan:shilla-stay-haeundae",
+      "baseline_status": "pending",
+      "official_identity_url": "https://www.shillahotels.com/ko/shillastay/haeundae/facilities/index.do",
+      "baseline_coordinate_fields": {
+        "latitude": null,
+        "longitude": null,
+        "coordinate_source_url": null
+      },
+      "decision": "keep_pending",
+      "reason_code": "official_durable_coordinate_record_unavailable",
+      "reason": "No matched official source-file record with reusable X/Y coordinates was obtained. License/CRS metadata and even a separately verified Naver identity are not sufficient to manufacture durable coordinate values.",
+      "coordinate_evidence": {
+        "permit_id": null,
+        "source_x": null,
+        "source_y": null,
+        "wgs84_latitude": null,
+        "wgs84_longitude": null,
+        "source_file_sha256": null,
+        "reprojected": false
+      },
+      "map_identity_review": "Parent handles exact Naver identity; not reviewed or asserted by this coordinate-only subtask."
+    },
+    {
+      "product_id": "7ee4a065-04fa-4b46-a436-b84ff48528ca",
+      "version": 1,
+      "title": "L7 HAEUNDAE by LOTTE HOTELS",
+      "korean_name": null,
+      "source_key": "editorial:busan:l7-haeundae",
+      "baseline_status": "pending",
+      "official_identity_url": "https://www.lottehotel.com/prerendered/haeundae-l7/en/facilities/luggage-locker/index.html",
+      "baseline_coordinate_fields": {
+        "latitude": null,
+        "longitude": null,
+        "coordinate_source_url": null
+      },
+      "decision": "keep_pending",
+      "reason_code": "official_durable_coordinate_record_unavailable",
+      "reason": "No matched official source-file record with reusable X/Y coordinates was obtained. License/CRS metadata and even a separately verified Naver identity are not sufficient to manufacture durable coordinate values.",
+      "coordinate_evidence": {
+        "permit_id": null,
+        "source_x": null,
+        "source_y": null,
+        "wgs84_latitude": null,
+        "wgs84_longitude": null,
+        "source_file_sha256": null,
+        "reprojected": false
+      },
+      "map_identity_review": "Parent handles exact Naver identity; not reviewed or asserted by this coordinate-only subtask."
+    },
+    {
+      "product_id": "c1a9d2e5-52ef-418c-aa6b-8a1e9ac1e51f",
+      "version": 1,
+      "title": "ARBAN HOTEL",
+      "korean_name": "아르반호텔",
+      "source_key": "editorial:busan:arban",
+      "baseline_status": "pending",
+      "official_identity_url": "https://www.arbanhotel.com/LOCATION",
+      "baseline_coordinate_fields": {
+        "latitude": null,
+        "longitude": null,
+        "coordinate_source_url": null
+      },
+      "decision": "keep_pending",
+      "reason_code": "official_durable_coordinate_record_unavailable",
+      "reason": "No matched official source-file record with reusable X/Y coordinates was obtained. License/CRS metadata and even a separately verified Naver identity are not sufficient to manufacture durable coordinate values.",
+      "coordinate_evidence": {
+        "permit_id": null,
+        "source_x": null,
+        "source_y": null,
+        "wgs84_latitude": null,
+        "wgs84_longitude": null,
+        "source_file_sha256": null,
+        "reprojected": false
+      },
+      "map_identity_review": "Parent handles exact Naver identity; not reviewed or asserted by this coordinate-only subtask."
+    },
+    {
+      "product_id": "cd720a2b-1db8-4970-9c8f-ddffd505f963",
+      "version": 1,
+      "title": "LOTTE HOTEL BUSAN",
+      "korean_name": null,
+      "source_key": "editorial:busan:lotte-busan",
+      "baseline_status": "pending",
+      "official_identity_url": "https://www.lottehotel.com/prerendered/busan-hotel/en/about/location/index.html",
+      "baseline_coordinate_fields": {
+        "latitude": null,
+        "longitude": null,
+        "coordinate_source_url": null
+      },
+      "decision": "keep_pending",
+      "reason_code": "official_durable_coordinate_record_unavailable",
+      "reason": "No matched official source-file record with reusable X/Y coordinates was obtained. License/CRS metadata and even a separately verified Naver identity are not sufficient to manufacture durable coordinate values.",
+      "coordinate_evidence": {
+        "permit_id": null,
+        "source_x": null,
+        "source_y": null,
+        "wgs84_latitude": null,
+        "wgs84_longitude": null,
+        "source_file_sha256": null,
+        "reprojected": false
+      },
+      "map_identity_review": "Parent handles exact Naver identity; not reviewed or asserted by this coordinate-only subtask."
+    },
+    {
+      "product_id": "e4334b4e-be69-4a48-8d8b-57186d9244c1",
+      "version": 1,
+      "title": "Stanford Hotel Busan",
+      "korean_name": null,
+      "source_key": "editorial:busan:stanford-busan",
+      "baseline_status": "pending",
+      "official_identity_url": "https://stanford-hotel.com/busan/en",
+      "baseline_coordinate_fields": {
+        "latitude": null,
+        "longitude": null,
+        "coordinate_source_url": null
+      },
+      "decision": "keep_pending",
+      "reason_code": "official_durable_coordinate_record_unavailable",
+      "reason": "No matched official source-file record with reusable X/Y coordinates was obtained. License/CRS metadata and even a separately verified Naver identity are not sufficient to manufacture durable coordinate values.",
+      "coordinate_evidence": {
+        "permit_id": null,
+        "source_x": null,
+        "source_y": null,
+        "wgs84_latitude": null,
+        "wgs84_longitude": null,
+        "source_file_sha256": null,
+        "reprojected": false
+      },
+      "map_identity_review": "Parent handles exact Naver identity; not reviewed or asserted by this coordinate-only subtask."
+    }
+  ],
+  "next_allowed_step": "If the official source-file entry becomes accessible through its normal public flow, obtain only the exact current hotel permit records and reproduce projection with source hash and license. Otherwise keep all 10 products pending. This report does not authorize bypass, keyed API use, registration, quota changes or publication."
+}

@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**18 open · 0 in progress · 2 blocked · 9 in review · 177 done**
+**20 open · 0 in progress · 2 blocked · 7 in review · 190 done**
 
 ## Ready to claim
 
@@ -16,6 +16,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [Hotel platform options and quote readiness](open/2026-09-07-hotel-platform-options-and-quote-readiness.md) | api | `apps/api/tests/test_hotel_content_package.py`<br>`docs/hotel-platforms` |
 | P1 | [Revalidate community read resets against production-build CI](open/2026-09-08-community-ci-read-retry.md) | web | `apps/web/e2e/community.spec.ts` |
 | P1 | [Complete live Travelpayouts brand and destination offer verification](open/2026-09-08-travelpayouts-live-destination-activation.md) | ops | `docs/travel-services.md` |
+| P1 | [Continue evidence-backed remaining hotspot candidate review](open/2026-09-08-continue-evidence-backed-remaining-hotspot-candidate.md) | ops | `docs/hotspot-review-next-batch.md`<br>`ops/hotspot_review_next_batch.py`<br>`ops/hotspot_review_next_batch.json` |
 | P2 | [防 jsonb 運算子的測試只守住 3 張表，實際有 42 張](open/2026-09-07-jsonb-3-42.md) | api | `apps/api/tests/test_migration_sql_dialect.py` |
 | P2 | [30 筆新購物店家還沒 place enrichment，所以加不進行程](open/2026-09-07-enrich-new-shopping-place-ids.md) | api | `ops/notes/hotspot-place-enrichment.md` |
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
@@ -39,9 +40,7 @@ _Nothing here._
 | [Editorial discovery and unified collection frontend](open/2026-09-09-frontend-flow-discovery-web.md) | codex-discovery-flow-web | `codex/frontend-explore-flow` |
 | [Frontend flow navigation planning handoff and acceptance](open/2026-09-09-frontend-flow-integration.md) | codex-frontend-flow | `codex/frontend-explore-flow` |
 | [Route apply state regression and semantic itinerary tones](open/2026-09-09-planner-route-tones.md) | codex | `codex/planner-route-tones` |
-| [Integrate PR 343 account safety with current main](open/2026-09-09-pr343-account-safety-integration.md) | codex-account-safety | `codex/pr343-merge-ready-20260909` |
-| [Prepare PR 335 funnel integration against current main](open/2026-09-09-pr335-funnel-merge-integration.md) | codex-pr335-delivery | `codex/pr335-merge-ready-20260909` |
-| [Integrate PR 365 historical deployment and open verification notes](open/2026-09-09-pr365-docs-integration.md) | codex-pr365-docs | `codex/pr365-docs-ready-20260909` |
+| [Archive completed catalog and hotel review evidence](open/2026-09-09-review-evidence-archive.md) | codex-review-archive | `codex/review-evidence-archive-20260909` |
 
 ## Waiting
 
@@ -53,19 +52,20 @@ _Nothing here._
 | P1 | [Contextual travel services and affiliate catalog](open/2026-09-07-contextual-travel-services.md) | active work in the same scope |
 | P1 | [Mokaair community foundation and account safety](open/2026-09-07-mokaair-community-foundation.md) | active work in the same scope |
 | P1 | [Mokaair community responsive web and five-language experience](open/2026-09-07-mokaair-community-web.md) | active work in the same scope |
+| P1 | [Prevent Google coordinates being labelled durable by merchant review](open/2026-09-08-prevent-google-coordinates-being-labelled-durable.md) | active work in the same scope |
 | P2 | [Community read metric duplicate observed alongside smoke ECONNRESET](open/2026-09-07-community-read-metric-concurrency.md) | active work in the same scope |
 | P3 | [建立旅程時就問出發機場，不要等到查機票才問](open/2026-09-06-ask-origin-airport-at-trip-creation.md) | active work in the same scope |
 | P3 | [行程裡新增一餐：四個 trip-selections 端點接受 mode: replace_meal\|append](open/2026-09-07-add-a-meal-to-a-day.md) | active work in the same scope |
 
 ## Recently finished
 
+- 2026-09-09 [Integrate PR 365 historical deployment and open verification notes](done/2026-09-09-pr365-docs-integration.md)
+- 2026-09-09 [Prepare PR 335 funnel integration against current main](done/2026-09-09-pr335-funnel-merge-integration.md)
+- 2026-09-09 [Integrate PR 343 account safety with current main](done/2026-09-09-pr343-account-safety-integration.md)
 - 2026-09-09 [Calm daily timeline and safe explicit planner editing](done/2026-09-09-planner-calm-editing.md)
 - 2026-09-09 [Community curated video invitations and collection references](done/2026-09-08-travel-discovery-community.md)
 - 2026-09-09 [Travel discovery integration navigation safety and acceptance](done/2026-09-08-travel-discovery-integration.md)
 - 2026-09-09 [Travel discovery search feed and explicit preferences API](done/2026-09-08-travel-discovery-api.md)
 - 2026-09-09 [Travel discovery homepage search collections and media experience](done/2026-09-08-travel-discovery-web.md)
+- 2026-09-09 [Hotel evidence continuation after deployment](done/2026-09-09-hotel-evidence-continuation.md)
 - 2026-09-09 [Premium app-style itinerary planning flow](done/2026-09-08-planner-premium-app.md)
-- 2026-09-08 [Fix weather and itinerary intent panel contrast in dark mode](done/2026-09-08-planner-weather-dark-contrast.md)
-- 2026-09-08 [Fix nearby itinerary discovery across cities and reset insertion pagination](done/2026-09-08-planner-nearby-followup.md)
-- 2026-09-08 [Stay22 Maps lodging pilot](done/2026-09-08-stay22-maps-lodging-pilot.md)
-- 2026-09-08 [Klook affiliate frontend channels and contextual discovery](done/2026-09-08-klook-affiliate-web.md)

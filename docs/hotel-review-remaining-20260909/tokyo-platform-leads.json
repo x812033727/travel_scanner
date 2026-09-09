@@ -1,0 +1,510 @@
+{
+  "schema_version": 1,
+  "scope": "Tokyo remaining platform URL discovery; evidence leads only",
+  "source_snapshot": "docs/hotel-review-remaining-20260909/before.json",
+  "snapshot_captured_at": "2026-09-08 21:18:03.737914+00:00",
+  "evidence_completed_at": "2026-09-08T21:28:40+00:00",
+  "search_budget": 10,
+  "search_queries_executed": 10,
+  "production_mutations": false,
+  "paid_api_calls": 0,
+  "browser_verified": false,
+  "counts": {
+    "options": 10,
+    "exact_property_url_observed": 7,
+    "current_name_and_full_address_match": 4,
+    "indexed_match_current_open_blank": 2,
+    "current_name_only": 1,
+    "no_exact_property_url_observed": 3
+  },
+  "guardrails": [
+    "Only ten assigned platform queries were performed: four Agoda, two Rakuten, four Expedia. No extra query was used for empty results.",
+    "All selected URLs and listed alternatives were actually delivered by search or opened; no hostname conversion, hotel slug guessing or ID inference was used.",
+    "No quote/date search, booking CTA, booking clickout, login, Google Places API or production API was submitted.",
+    "A readable identity page is not proof of sellable inventory, rates, future operating dates or browser verification. Incidental rate and review content was not retained.",
+    "This artifact is not an approval manifest. All rows remain hold pending root's independent IAB review and operational guards.",
+    "Fresh official reads cover Gate, Ryumeikan, Millennium and Kyobashi. Other official address fields are explicitly prior evidence, not claimed freshly read here."
+  ],
+  "searches": [
+    {
+      "ordinal": 1,
+      "option_id": "494e0fb1-0812-4914-82b8-829cedbdf1c0",
+      "query": "site:agoda.com \"The Gate Hotel Asakusa Kaminarimon\" \"hotel\" \"2-16-11\"",
+      "domains": [
+        "agoda.com"
+      ],
+      "outcome": "indexed_identity_only_current_open_blank"
+    },
+    {
+      "ordinal": 2,
+      "option_id": "7c0adcfd-3f12-47f4-ac34-9cccd9b940d4",
+      "query": "site:agoda.com \"Hotel Gracery Asakusa\" \"hotel/tokyo\"",
+      "domains": [
+        "agoda.com"
+      ],
+      "outcome": "no_exact_property_url_observed_in_bounded_search"
+    },
+    {
+      "ordinal": 3,
+      "option_id": "bc4916c6-8db8-4aab-b1c3-4e82f6edbe34",
+      "query": "site:agoda.com \"Millennium Mitsui Garden Hotel Tokyo\" \"hotel/tokyo\"",
+      "domains": [
+        "agoda.com"
+      ],
+      "outcome": "indexed_identity_only_current_open_blank"
+    },
+    {
+      "ordinal": 4,
+      "option_id": "e5da18b7-0b5e-4e1d-8c38-d76d8b795ac8",
+      "query": "site:agoda.com \"Henn na Hotel\" \"Asakusa Tawaramachi\" \"hotel/tokyo\"",
+      "domains": [
+        "agoda.com"
+      ],
+      "outcome": "no_exact_property_url_observed_in_bounded_search"
+    },
+    {
+      "ordinal": 5,
+      "option_id": "305f394d-7963-4d03-af74-406ff496a7cf",
+      "query": "site:travel.rakuten.com \"Hotel Ryumeikan Tokyo\" hotel_info",
+      "domains": [
+        "travel.rakuten.com"
+      ],
+      "outcome": "current_name_readable_full_address_missing"
+    },
+    {
+      "ordinal": 6,
+      "option_id": "d5af74c6-0456-4f3b-8e44-52781e7f6abe",
+      "query": "site:travel.rakuten.com \"Keio Plaza Hotel Tokyo\" hotel_info",
+      "domains": [
+        "travel.rakuten.com"
+      ],
+      "outcome": "no_exact_property_url_observed_in_bounded_search"
+    },
+    {
+      "ordinal": 7,
+      "option_id": "469f672a-4230-43e1-95c7-75cfc759a3ee",
+      "query": "site:expedia.com \"The Gate Hotel Asakusa Kaminarimon\" Hotel-Information",
+      "domains": [
+        "expedia.com"
+      ],
+      "outcome": "current_primary_name_and_full_address_match"
+    },
+    {
+      "ordinal": 8,
+      "option_id": "a6c60862-2199-486d-bc3c-5b77e4decf12",
+      "query": "site:expedia.com \"Hotel Ryumeikan Tokyo\" Hotel-Information",
+      "domains": [
+        "expedia.com"
+      ],
+      "outcome": "current_primary_name_and_full_address_match"
+    },
+    {
+      "ordinal": 9,
+      "option_id": "f8391277-3692-4ba2-9b29-89794931e864",
+      "query": "site:expedia.com \"Millennium Mitsui Garden Hotel Tokyo\" Hotel-Information",
+      "domains": [
+        "expedia.com"
+      ],
+      "outcome": "current_primary_name_and_full_address_match"
+    },
+    {
+      "ordinal": 10,
+      "option_id": "b6194681-cb1c-4421-8418-cb09781046f8",
+      "query": "site:expedia.com \"Mitsui Garden Hotel Kyobashi\" Hotel-Information",
+      "domains": [
+        "expedia.com"
+      ],
+      "outcome": "current_primary_name_and_full_address_match"
+    }
+  ],
+  "options": [
+    {
+      "option_id": "494e0fb1-0812-4914-82b8-829cedbdf1c0",
+      "product_id": "70eec2a6-582f-4c9d-9414-0eec588e85fd",
+      "key": "editorial:tokyo:gate-hotel-kaminarimon",
+      "provider": "agoda",
+      "expected_version": 1,
+      "expected_status": "pending",
+      "expected_discovery_status": "unconfirmed",
+      "expected_url": null,
+      "snapshot_title": "ザ・ゲートホテル雷門 by HULIC",
+      "observed_url": "https://www.agoda.com/the-gate-hotel-asakusa-kaminarimon-by-hulic/hotel/tokyo-jp.html?cid=1640564",
+      "observed_alternative_urls": [
+        "https://www.agoda.com/ko-kr/the-gate-hotel-asakusa-kaminarimon-by-hulic/hotel/tokyo-jp.html"
+      ],
+      "observed_context_only_urls": [],
+      "url_origin": "observed_primary_domain_search_result",
+      "platform_name": "The Gate Hotel Kaminarimon by Hulic",
+      "platform_address_from_search": "2-16-11 Kaminarimon, Taito-Ku, Asakusa, Tokyo, Japan, 111-0034",
+      "platform_address_from_current_open": null,
+      "current_read_availability": "indexed_identity_only_current_open_blank",
+      "current_reader_total_lines": 2,
+      "current_reader_address_line": null,
+      "official_identity": {
+        "name": "ザ・ゲートホテル雷門 by HULIC",
+        "address": "〒111-0034 東京都台東区雷門2-16-11",
+        "source_url": "https://www.gate-hotel.jp/asakusa-kaminarimon/access.html",
+        "freshly_read_this_task": true,
+        "prior_evidence_file": null
+      },
+      "checked_at": "2026-09-08T21:28:40+00:00",
+      "browser_verified": false,
+      "decision": "hold",
+      "next_step": "root_iab_exact_property_name_and_full_address_check",
+      "reason": "Search returned exact Agoda property title and street number matching the operator. Opening the observed URL returned only two lines without usable property content. Indexed evidence is not a successful current browser review. The affiliate query was observed, not invented; a query-free Korean URL was also observed, but no hostname/slug/query normalization was asserted as independently verified.",
+      "source_urls": [
+        "https://www.agoda.com/the-gate-hotel-asakusa-kaminarimon-by-hulic/hotel/tokyo-jp.html?cid=1640564",
+        "https://www.gate-hotel.jp/asakusa-kaminarimon/access.html"
+      ]
+    },
+    {
+      "option_id": "7c0adcfd-3f12-47f4-ac34-9cccd9b940d4",
+      "product_id": "ca55d588-a5dd-4dd9-9c84-72c5e687c48f",
+      "key": "editorial:tokyo:gracery-asakusa",
+      "provider": "agoda",
+      "expected_version": 1,
+      "expected_status": "pending",
+      "expected_discovery_status": "unconfirmed",
+      "expected_url": null,
+      "snapshot_title": "ホテルグレイスリー浅草",
+      "observed_url": null,
+      "observed_alternative_urls": [],
+      "observed_context_only_urls": [],
+      "url_origin": "none_observed",
+      "platform_name": null,
+      "platform_address_from_search": null,
+      "platform_address_from_current_open": null,
+      "current_read_availability": "no_exact_property_url_observed_in_bounded_search",
+      "current_reader_total_lines": null,
+      "current_reader_address_line": null,
+      "official_identity": {
+        "name": "ホテルグレイスリー浅草",
+        "address": "〒111-0034 東京都台東区雷門2丁目10番2号",
+        "source_url": "https://gracery.com/asakusa/",
+        "freshly_read_this_task": false,
+        "prior_evidence_file": "docs/hotel-review-all-20260908/root-cities-official.json"
+      },
+      "checked_at": "2026-09-08T21:28:40+00:00",
+      "browser_verified": false,
+      "decision": "hold",
+      "next_step": "retain_unconfirmed_and_no_url_until_exact_identity_evidence",
+      "reason": "The single assigned query did not return an exact Hotel Gracery Asakusa property URL in the delivered search result set. No slug or hotel ID was guessed. This is a bounded discovery gap, not proof that Agoda has no listing.",
+      "source_urls": [
+        "https://gracery.com/asakusa/"
+      ]
+    },
+    {
+      "option_id": "bc4916c6-8db8-4aab-b1c3-4e82f6edbe34",
+      "product_id": "85bf59b8-1c01-4b0d-aa7b-138129b615b2",
+      "key": "editorial:tokyo:millennium-mitsui-garden-tokyo",
+      "provider": "agoda",
+      "expected_version": 1,
+      "expected_status": "pending",
+      "expected_discovery_status": "unconfirmed",
+      "expected_url": null,
+      "snapshot_title": "ミレニアム 三井ガーデンホテル 東京",
+      "observed_url": "https://www.agoda.com/millennium-mitsui-garden-hotel-tokyo/hotel/tokyo-jp.html",
+      "observed_alternative_urls": [
+        "https://www.agoda.com/millennium-mitsui-garden-hotel-tokyo-h9071298/hotel/tokyo-jp.html"
+      ],
+      "observed_context_only_urls": [],
+      "url_origin": "observed_primary_domain_search_result",
+      "platform_name": "Millennium Mitsui Garden Hotel Tokyo / Ginza",
+      "platform_address_from_search": "5-11-1 Ginza, Chuo-Ku, Ginza, Tokyo, Japan, 104-0061",
+      "platform_address_from_current_open": null,
+      "current_read_availability": "indexed_identity_only_current_open_blank",
+      "current_reader_total_lines": 1,
+      "current_reader_address_line": null,
+      "official_identity": {
+        "name": "ミレニアム 三井ガーデンホテル 東京",
+        "address": "〒104-0061 東京都中央区銀座5-11-1",
+        "source_url": "https://www.gardenhotels.co.jp/millennium-tokyo/access/",
+        "freshly_read_this_task": true,
+        "prior_evidence_file": null
+      },
+      "checked_at": "2026-09-08T21:28:40+00:00",
+      "browser_verified": false,
+      "decision": "hold",
+      "next_step": "root_iab_exact_property_name_and_full_address_check",
+      "reason": "Search returned the exact property title and full street address matching the operator. The selected exact URL opened as a one-line blank result. An alternate h9071298 listing appeared in the same results but was not adopted or merged; root must verify the selected property page in IAB.",
+      "source_urls": [
+        "https://www.agoda.com/millennium-mitsui-garden-hotel-tokyo/hotel/tokyo-jp.html",
+        "https://www.gardenhotels.co.jp/millennium-tokyo/access/"
+      ]
+    },
+    {
+      "option_id": "e5da18b7-0b5e-4e1d-8c38-d76d8b795ac8",
+      "product_id": "b79582da-592f-4a33-aa22-6457cf815094",
+      "key": "editorial:tokyo:henn-na-premier-tawaramachi",
+      "provider": "agoda",
+      "expected_version": 1,
+      "expected_status": "pending",
+      "expected_discovery_status": "unconfirmed",
+      "expected_url": null,
+      "snapshot_title": "変なホテルプレミア東京 浅草田原町",
+      "observed_url": null,
+      "observed_alternative_urls": [],
+      "observed_context_only_urls": [
+        "https://www.agoda.com/travel-guides/japan/tokyo/the-best-hotels-in-tokyo-a-guide-to-top-rated-accommodations/",
+        "https://www.agoda.com/travel-guides/japan/tokyo/tokyo-awaits-agodas-top-hotel-choices-for-a-memorable-visit/"
+      ],
+      "url_origin": "none_observed",
+      "platform_name": null,
+      "platform_address_from_search": null,
+      "platform_address_from_current_open": null,
+      "current_read_availability": "no_exact_property_url_observed_in_bounded_search",
+      "current_reader_total_lines": null,
+      "current_reader_address_line": null,
+      "official_identity": {
+        "name": "変なホテルプレミア東京 浅草田原町",
+        "address": "〒111-0042 東京都台東区寿3丁目19-8",
+        "source_url": "https://www.hennnahotel.com/asakusa-tawaramachi/",
+        "freshly_read_this_task": false,
+        "prior_evidence_file": "docs/hotel-review-all-20260908/root-cities-official.json"
+      },
+      "checked_at": "2026-09-08T21:28:40+00:00",
+      "browser_verified": false,
+      "decision": "hold",
+      "next_step": "retain_unconfirmed_and_no_url_until_exact_identity_evidence",
+      "reason": "Only Agoda travel-guide articles mentioning Henn na Hotel Tokyo Asakusa Tawaramachi were delivered. Opening the observed guide returned three lines and no readable exact-property hyperlink. No booking CTA, dates or clickout was followed. A guide mention does not establish a usable exact hotel URL, and does not prove no listing exists.",
+      "source_urls": [
+        "https://www.hennnahotel.com/asakusa-tawaramachi/",
+        "https://www.agoda.com/travel-guides/japan/tokyo/the-best-hotels-in-tokyo-a-guide-to-top-rated-accommodations/",
+        "https://www.agoda.com/travel-guides/japan/tokyo/tokyo-awaits-agodas-top-hotel-choices-for-a-memorable-visit/"
+      ]
+    },
+    {
+      "option_id": "305f394d-7963-4d03-af74-406ff496a7cf",
+      "product_id": "6dde791e-5b13-450f-b743-0e66411af7da",
+      "key": "editorial:tokyo:ryumeikan-tokyo",
+      "provider": "rakuten",
+      "expected_version": 1,
+      "expected_status": "pending",
+      "expected_discovery_status": "unconfirmed",
+      "expected_url": null,
+      "snapshot_title": "ホテル龍名館東京",
+      "observed_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/10123456794929",
+      "observed_alternative_urls": [],
+      "observed_context_only_urls": [],
+      "url_origin": "observed_primary_domain_search_result",
+      "platform_name": "Hotel Ryumeikan Tokyo",
+      "platform_address_from_search": null,
+      "platform_address_from_current_open": null,
+      "current_read_availability": "current_name_readable_full_address_missing",
+      "current_reader_total_lines": 96,
+      "current_reader_address_line": null,
+      "official_identity": {
+        "name": "ホテル龍名館東京",
+        "address": "〒103-0028 東京都中央区八重洲1-3-22",
+        "source_url": "https://www.ryumeikan-tokyo.jp/access/",
+        "freshly_read_this_task": true,
+        "prior_evidence_file": null
+      },
+      "checked_at": "2026-09-08T21:28:40+00:00",
+      "browser_verified": false,
+      "decision": "hold",
+      "next_step": "root_iab_exact_property_name_and_full_address_check",
+      "reason": "Observed exact Rakuten hotel_info_item URL opens with Hotel Ryumeikan Tokyo, Chuo Ward and Tokyo Station Yaesu North Exit access description. No full street number is returned and find(Address) has no match. Do not substitute the operator's known address for a platform address that was not read; IAB full-address evidence remains required.",
+      "source_urls": [
+        "https://travel.rakuten.com/usa/en-us/hotel_info_item/10123456794929",
+        "https://www.ryumeikan-tokyo.jp/access/"
+      ]
+    },
+    {
+      "option_id": "d5af74c6-0456-4f3b-8e44-52781e7f6abe",
+      "product_id": "87ac9f12-2b00-48b1-897e-bf66c5aeb616",
+      "key": "editorial:tokyo:keio-plaza-tokyo",
+      "provider": "rakuten",
+      "expected_version": 1,
+      "expected_status": "pending",
+      "expected_discovery_status": "unconfirmed",
+      "expected_url": null,
+      "snapshot_title": "京王プラザホテル",
+      "observed_url": null,
+      "observed_alternative_urls": [],
+      "observed_context_only_urls": [],
+      "url_origin": "none_observed",
+      "platform_name": null,
+      "platform_address_from_search": null,
+      "platform_address_from_current_open": null,
+      "current_read_availability": "no_exact_property_url_observed_in_bounded_search",
+      "current_reader_total_lines": null,
+      "current_reader_address_line": null,
+      "official_identity": {
+        "name": "京王プラザホテル",
+        "address": "東京都新宿区西新宿2-2-1",
+        "source_url": "https://www.keioplaza.co.jp/access/",
+        "freshly_read_this_task": false,
+        "prior_evidence_file": "docs/hotel-review-all-20260908/root-cities-official.json"
+      },
+      "checked_at": "2026-09-08T21:28:40+00:00",
+      "browser_verified": false,
+      "decision": "hold",
+      "next_step": "retain_unconfirmed_and_no_url_until_exact_identity_evidence",
+      "reason": "The single assigned Rakuten query did not deliver an exact Keio Plaza Hotel Tokyo property URL. No numerical hotel ID was inferred from other platforms or sibling properties. This is not provider_not_found evidence.",
+      "source_urls": [
+        "https://www.keioplaza.co.jp/access/"
+      ]
+    },
+    {
+      "option_id": "469f672a-4230-43e1-95c7-75cfc759a3ee",
+      "product_id": "70eec2a6-582f-4c9d-9414-0eec588e85fd",
+      "key": "editorial:tokyo:gate-hotel-kaminarimon",
+      "provider": "expedia",
+      "expected_version": 1,
+      "expected_status": "pending",
+      "expected_discovery_status": "unconfirmed",
+      "expected_url": null,
+      "snapshot_title": "ザ・ゲートホテル雷門 by HULIC",
+      "observed_url": "https://www.expedia.com/Tokyo-Hotels-The-Gate-Hotel-Asakusa-Kaminarimon-By-Hulic.h5002072.Hotel-Information",
+      "observed_alternative_urls": [],
+      "observed_context_only_urls": [],
+      "url_origin": "observed_primary_domain_search_result",
+      "platform_name": "The Gate Hotel Kaminarimon by Hulic",
+      "platform_address_from_search": "2-16-11 Kaminarimon, Taito-ku, Tokyo, Tokyo-to, 111-0034",
+      "platform_address_from_current_open": "2-16-11 Kaminarimon, Taito-ku, Tokyo, Tokyo-to, 111-0034",
+      "current_read_availability": "current_primary_name_and_full_address_match",
+      "current_reader_total_lines": 2010,
+      "current_reader_address_line": 1195,
+      "official_identity": {
+        "name": "ザ・ゲートホテル雷門 by HULIC",
+        "address": "〒111-0034 東京都台東区雷門2-16-11",
+        "source_url": "https://www.gate-hotel.jp/asakusa-kaminarimon/access.html",
+        "freshly_read_this_task": true,
+        "prior_evidence_file": null
+      },
+      "checked_at": "2026-09-08T21:28:40+00:00",
+      "browser_verified": false,
+      "decision": "hold",
+      "next_step": "root_iab_exact_property_name_and_full_address_check",
+      "reason": "This exact expedia.com URL was directly observed in primary-domain search and then successfully opened. It is not a guessed expedia.com.tw host conversion. Current property heading and 2-16-11 street address match the freshly read official access page; IAB remains root-owned.",
+      "source_urls": [
+        "https://www.expedia.com/Tokyo-Hotels-The-Gate-Hotel-Asakusa-Kaminarimon-By-Hulic.h5002072.Hotel-Information",
+        "https://www.gate-hotel.jp/asakusa-kaminarimon/access.html"
+      ]
+    },
+    {
+      "option_id": "a6c60862-2199-486d-bc3c-5b77e4decf12",
+      "product_id": "6dde791e-5b13-450f-b743-0e66411af7da",
+      "key": "editorial:tokyo:ryumeikan-tokyo",
+      "provider": "expedia",
+      "expected_version": 1,
+      "expected_status": "pending",
+      "expected_discovery_status": "unconfirmed",
+      "expected_url": null,
+      "snapshot_title": "ホテル龍名館東京",
+      "observed_url": "https://www.expedia.com/Tokyo-Hotels-Hotel-Ryumeikan-Tokyo.h2978783.Hotel-Information?equalTargetTab=tab-0",
+      "observed_alternative_urls": [
+        "https://www.expedia.com/Tokyo-Hotels-Hotel-Ryumeikan-Tokyo.h2978783.Hotel-Information?equalTargetTab=tab-1"
+      ],
+      "observed_context_only_urls": [],
+      "url_origin": "observed_primary_domain_search_result",
+      "platform_name": "Hotel Ryumeikan Tokyo",
+      "platform_address_from_search": "1-3-22 Yaesu, Chuo, Tokyo, Tokyo, 103-0028",
+      "platform_address_from_current_open": "1-3-22 Yaesu, Chuo, Tokyo, Tokyo, 103-0028",
+      "current_read_availability": "current_primary_name_and_full_address_match",
+      "current_reader_total_lines": 1586,
+      "current_reader_address_line": 787,
+      "official_identity": {
+        "name": "ホテル龍名館東京",
+        "address": "〒103-0028 東京都中央区八重洲1-3-22",
+        "source_url": "https://www.ryumeikan-tokyo.jp/access/",
+        "freshly_read_this_task": true,
+        "prior_evidence_file": null
+      },
+      "checked_at": "2026-09-08T21:28:40+00:00",
+      "browser_verified": false,
+      "decision": "hold",
+      "next_step": "root_iab_exact_property_name_and_full_address_check",
+      "reason": "The exact expedia.com URL including equalTargetTab=tab-0 was observed and opened, with matching hotel name and Yaesu 1-3-22 street address. The query-free canonical form was not independently observed or asserted. Distinguishes this hotel from Hotel Ryumeikan Ochanomizu Honten. IAB remains root-owned.",
+      "source_urls": [
+        "https://www.expedia.com/Tokyo-Hotels-Hotel-Ryumeikan-Tokyo.h2978783.Hotel-Information?equalTargetTab=tab-0",
+        "https://www.ryumeikan-tokyo.jp/access/"
+      ]
+    },
+    {
+      "option_id": "f8391277-3692-4ba2-9b29-89794931e864",
+      "product_id": "85bf59b8-1c01-4b0d-aa7b-138129b615b2",
+      "key": "editorial:tokyo:millennium-mitsui-garden-tokyo",
+      "provider": "expedia",
+      "expected_version": 1,
+      "expected_status": "pending",
+      "expected_discovery_status": "unconfirmed",
+      "expected_url": null,
+      "snapshot_title": "ミレニアム 三井ガーデンホテル 東京",
+      "observed_url": "https://www.expedia.com/Tokyo-Hotels-Millennium-Mitsui-Garden-Hotel-Tokyo.h8378795.Hotel-Information",
+      "observed_alternative_urls": [],
+      "observed_context_only_urls": [],
+      "url_origin": "observed_primary_domain_search_result",
+      "platform_name": "Millennium Mitsui Garden Hotel Tokyo/Ginza",
+      "platform_address_from_search": "5-11-1 Ginza, Chuo-ku, Tokyo, Tokyo-to, 104-0061",
+      "platform_address_from_current_open": "5-11-1 Ginza, Chuo-ku, Tokyo, Tokyo-to, 104-0061",
+      "current_read_availability": "current_primary_name_and_full_address_match",
+      "current_reader_total_lines": 1589,
+      "current_reader_address_line": 815,
+      "official_identity": {
+        "name": "ミレニアム 三井ガーデンホテル 東京",
+        "address": "〒104-0061 東京都中央区銀座5-11-1",
+        "source_url": "https://www.gardenhotels.co.jp/millennium-tokyo/access/",
+        "freshly_read_this_task": true,
+        "prior_evidence_file": null
+      },
+      "checked_at": "2026-09-08T21:28:40+00:00",
+      "browser_verified": false,
+      "decision": "hold",
+      "next_step": "root_iab_exact_property_name_and_full_address_check",
+      "reason": "Exact observed expedia.com property URL opens with the Millennium title and Ginza 5-11-1, matching the freshly read operator address. Nearby Mitsui Garden Ginza Gochome and Ginza Premier recommendations are other properties and were not used. IAB remains root-owned.",
+      "source_urls": [
+        "https://www.expedia.com/Tokyo-Hotels-Millennium-Mitsui-Garden-Hotel-Tokyo.h8378795.Hotel-Information",
+        "https://www.gardenhotels.co.jp/millennium-tokyo/access/"
+      ]
+    },
+    {
+      "option_id": "b6194681-cb1c-4421-8418-cb09781046f8",
+      "product_id": "b1afc011-53e2-4cab-b277-1ad8ffbc0af9",
+      "key": "editorial:tokyo:mitsui-garden-kyobashi",
+      "provider": "expedia",
+      "expected_version": 1,
+      "expected_status": "pending",
+      "expected_discovery_status": "unconfirmed",
+      "expected_url": null,
+      "snapshot_title": "三井ガーデンホテル京橋",
+      "observed_url": "https://www.expedia.com/Tokyo-Hotels-Mitsui-Garden-Hotel-Kyobashi.h15056984.Hotel-Information",
+      "observed_alternative_urls": [],
+      "observed_context_only_urls": [],
+      "url_origin": "observed_primary_domain_search_result",
+      "platform_name": "Mitsui Garden Hotel Kyobashi Tokyo Station",
+      "platform_address_from_search": "1-3-6 Kyobashi, Chuo-ku, Tokyo, 104-0031",
+      "platform_address_from_current_open": "1-3-6 Kyobashi, Chuo-ku, Tokyo, 104-0031",
+      "current_read_availability": "current_primary_name_and_full_address_match",
+      "current_reader_total_lines": 1689,
+      "current_reader_address_line": 907,
+      "official_identity": {
+        "name": "三井ガーデンホテル京橋",
+        "address": "〒104-0031 東京都中央区京橋1-3-6",
+        "source_url": "https://www.gardenhotels.co.jp/kyobashi/access/",
+        "freshly_read_this_task": true,
+        "prior_evidence_file": null
+      },
+      "checked_at": "2026-09-08T21:28:40+00:00",
+      "browser_verified": false,
+      "decision": "hold",
+      "next_step": "root_iab_exact_property_name_and_full_address_check",
+      "reason": "Exact observed expedia.com property URL opens with a Tokyo Station suffix on the Kyobashi hotel title; the full Kyobashi 1-3-6 address matches the freshly read operator access page. It was not confused with remm Tokyo Kyobashi or the separate Tokyo Station Hotel. IAB remains root-owned.",
+      "source_urls": [
+        "https://www.expedia.com/Tokyo-Hotels-Mitsui-Garden-Hotel-Kyobashi.h15056984.Hotel-Information",
+        "https://www.gardenhotels.co.jp/kyobashi/access/"
+      ]
+    }
+  ],
+  "root_owned_not_researched": [
+    {
+      "option_id": "2156ce3c-3c4c-4822-a307-098bf4e2c06d",
+      "reason": "Tokyo Station Hotel Expedia discovery and IAB review owned by root; no extra search used."
+    },
+    {
+      "option_id": "64ee9069-11b6-410f-9143-c48f5ff6155b",
+      "reason": "Hotel Gracery Asakusa Expedia discovery and IAB review owned by root; no extra search used."
+    }
+  ]
+}

@@ -1,0 +1,410 @@
+{
+  "schema_version": 1,
+  "tag": "hotel-review-followup-20260909",
+  "review_completed_at": "2026-09-08T16:28:01Z",
+  "baseline_captured_at": "2026-09-08 16:20:20.550803+00:00",
+  "method": "read_only_live_Wikidata_JSON_and_primary_web",
+  "browser_verified": false,
+  "production_access": false,
+  "license": {
+    "name": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "policy_url": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+    "policy_review": "The current Wikidata licensing page makes main-namespace structured data available under CC0. The CC0 deed permits commercial reuse without permission and does not warrant accuracy or imply endorsement. No Wikipedia article prose, hotel photography, ratings, prices or OTA coordinates are reused.",
+    "checked_at": "2026-09-08T16:28:01Z"
+  },
+  "operator_helper": "ops/hotel_review_followup_20260909.py:coordinate_patch / coordinate_evidence (pure helpers only; no CLI or database operations invoked)",
+  "coordinate_semantics": "Three explicitly identified, Earth-globe representative hotel points. Numeric precision is the statement precision and is not a measured positional accuracy guarantee. These are not surveyed entrances; exact Google identity still requires root's independent IAB observation before product approval.",
+  "scope_exclusions": [
+    "The six OSM-derived Kyoto candidates are not admitted by this allowlist; no OSM points or way centers are imported.",
+    "Hyatt Regency Kyoto remains on hold because of the announced 2027-05-09 closure without an operating-date guard.",
+    "Alternative Skyscanner P625 claims in each Wikidata item are explicitly excluded.",
+    "Existing municipality name/address source credits must remain byte-semantically intact before the one canonical coordinate credit is appended."
+  ],
+  "products": [
+    {
+      "id": "50f2d47d-24fe-4b07-85a2-3e1c7671e452",
+      "source_key": "editorial:kyoto:westin-miyako-kyoto",
+      "version": 1,
+      "before_hash": "39eaef5356258ef4f6e615f3ea5653424193ecdb24b0d1eaca5d7ac8320b515e",
+      "allowed": {
+        "source_key": "editorial:kyoto:westin-miyako-kyoto",
+        "qid": "Q11288502",
+        "revision": 2434981201,
+        "claim_id": "Q11288502$5AB1D2CD-AE18-4CED-892C-97B7269B056A",
+        "latitude": 35.00886111,
+        "longitude": 135.78794444,
+        "row_hash": "39eaef5356258ef4f6e615f3ea5653424193ecdb24b0d1eaca5d7ac8320b515e"
+      },
+      "coordinate_patch": {
+        "latitude": 35.00886111,
+        "longitude": 135.78794444,
+        "coordinate_source_url": "https://www.wikidata.org/wiki/Special:EntityData/Q11288502.json?revision=2434981201",
+        "source_credits": [
+          {
+            "title": "旅館業法に基づく許可施設及び施設外玄関帳場一覧（令和８年７月末時点）",
+            "publisher": "京都市 保健福祉局 医療衛生推進室 医療衛生センター",
+            "url": "https://data.city.kyoto.lg.jp/dataset/00039/",
+            "license_name": "CC BY 4.0",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/deed.ja",
+            "changes": "Mokaair 摘錄京都市 2026 年 7 月底許可清單中的飯店名稱與地址，依官網核對身份並整理住宿區域。原始資料不含座標，未自行猜測或搬用地圖／訂房平台座標、照片、評分、評論及價格；不代表京都市推薦。"
+          },
+          {
+            "title": "Wikidata Q11288502 P625 representative hotel point",
+            "publisher": "Wikidata contributors",
+            "url": "https://www.wikidata.org/wiki/Special:EntityData/Q11288502.json?revision=2434981201",
+            "license_name": "CC0-1.0",
+            "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+            "changes": "Selected P625 claim Q11288502$5AB1D2CD-AE18-4CED-892C-97B7269B056A, revision 2434981201; P143 imported from Japanese Wikipedia (Q177837). Alternative P248 Skyscanner (Q1319169) claims excluded. Representative hotel point, not a surveyed entrance; original municipal name/address credit retained."
+          }
+        ]
+      },
+      "coordinate_evidence": {
+        "url": "https://www.wikidata.org/wiki/Special:EntityData/Q11288502.json?revision=2434981201",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "non_google": true,
+        "checked_at": "2026-09-08T16:22:30.9668155Z",
+        "qid": "Q11288502",
+        "claim_id": "Q11288502$5AB1D2CD-AE18-4CED-892C-97B7269B056A",
+        "revision": 2434981201,
+        "reference": "P143:Q177837"
+      },
+      "entity_current_fetched_at": "2026-09-08T16:21:55.7166461Z",
+      "entity_modified_at": "2025-11-28T06:07:58Z",
+      "selected_claim": {
+        "mainsnak": {
+          "snaktype": "value",
+          "property": "P625",
+          "hash": "bf7683053fad0edef48663427d0ba3440516d9c1",
+          "datavalue": {
+            "value": {
+              "latitude": 35.00886111,
+              "longitude": 135.78794444,
+              "altitude": null,
+              "precision": 0.000001,
+              "globe": "http://www.wikidata.org/entity/Q2"
+            },
+            "type": "globecoordinate"
+          },
+          "datatype": "globe-coordinate"
+        },
+        "type": "statement",
+        "id": "Q11288502$5AB1D2CD-AE18-4CED-892C-97B7269B056A",
+        "rank": "normal",
+        "references": [
+          {
+            "hash": "a29a646602abf65105ed0f39a44231c962ece9ee",
+            "snaks": {
+              "P143": [
+                {
+                  "snaktype": "value",
+                  "property": "P143",
+                  "hash": "c6f1777471211df31724ac60175786f3872c83e9",
+                  "datavalue": {
+                    "value": {
+                      "entity-type": "item",
+                      "numeric-id": 177837,
+                      "id": "Q177837"
+                    },
+                    "type": "wikibase-entityid"
+                  },
+                  "datatype": "wikibase-item"
+                }
+              ]
+            },
+            "snaks-order": [
+              "P143"
+            ]
+          }
+        ]
+      },
+      "excluded_claim_ids": [
+        "Q11288502$4431154F-92A2-41BB-BA4B-13F38C41173F"
+      ],
+      "revision_url_verification": {
+        "url": "https://www.wikidata.org/wiki/Special:EntityData/Q11288502.json?revision=2434981201",
+        "http_status": 200,
+        "requested_revision": 2434981201,
+        "returned_lastrevid": 2434981201,
+        "checked_at": "2026-09-08T16:22:30.9668155Z",
+        "historical_control": {
+          "qid": "Q11288502",
+          "history_source": "https://www.wikidata.org/w/api.php?action=query&format=json&prop=revisions&rvprop=ids%7Ctimestamp&rvlimit=2&titles=Q11288502",
+          "historical_url": "https://www.wikidata.org/wiki/Special:EntityData/Q11288502.json?revision=2434981186",
+          "requested_historical_revision": 2434981186,
+          "returned_historical_revision": 2434981186,
+          "current_revision": 2434981201,
+          "checked_at": "2026-09-08T16:24:06.7744140Z"
+        }
+      },
+      "official_identity": {
+        "name": "ウェスティン都ホテル京都",
+        "address": "〒605-0052 京都市東山区粟田口華頂町1(三条けあげ)",
+        "source_url": "https://www.miyakohotels.ne.jp/westinkyoto/access/",
+        "official_product_url": "https://www.marriott.com/en-us/hotels/ukywi-the-westin-miyako-kyoto/overview/",
+        "full_address_observed": true,
+        "note": "The operator's Japanese access page supplies number 1 and the same hotel name. Marriott's current property page only supplies Keage, Sanjo, Higashiyama-ku, Kyoto 605-0052, so it is not by itself evidence for the full street numeral. Marriott currently describes September 2026 hotel services; no property-wide closure was observed on these reviewed pages.",
+        "method": "primary_web",
+        "browser_verified": false,
+        "checked_at": "2026-09-08T16:28:01Z"
+      },
+      "approval_readiness": "Coordinate provenance and official identity supported; do not publish solely on this evidence. Root must supply exact same-hotel Google Place ID evidence and the normal product guard must pass."
+    },
+    {
+      "id": "758907f4-4870-421e-bf6c-6243cdcc30c4",
+      "source_key": "editorial:kyoto:miyako-kyoto-hachijo",
+      "version": 1,
+      "before_hash": "76072f2a225edaf3492cdfa036b187231e9e9a71c271b068c31e983a33d4529f",
+      "allowed": {
+        "source_key": "editorial:kyoto:miyako-kyoto-hachijo",
+        "qid": "Q11501050",
+        "revision": 2448125393,
+        "claim_id": "Q11501050$8D1DC5F3-9C1D-4CFB-97B1-0C1823A16F38",
+        "latitude": 34.983778,
+        "longitude": 135.755917,
+        "row_hash": "76072f2a225edaf3492cdfa036b187231e9e9a71c271b068c31e983a33d4529f"
+      },
+      "coordinate_patch": {
+        "latitude": 34.983778,
+        "longitude": 135.755917,
+        "coordinate_source_url": "https://www.wikidata.org/wiki/Special:EntityData/Q11501050.json?revision=2448125393",
+        "source_credits": [
+          {
+            "title": "旅館業法に基づく許可施設及び施設外玄関帳場一覧（令和８年７月末時点）",
+            "publisher": "京都市 保健福祉局 医療衛生推進室 医療衛生センター",
+            "url": "https://data.city.kyoto.lg.jp/dataset/00039/",
+            "license_name": "CC BY 4.0",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/deed.ja",
+            "changes": "Mokaair 摘錄京都市 2026 年 7 月底許可清單中的飯店名稱與地址，依官網核對身份並整理住宿區域。原始資料不含座標，未自行猜測或搬用地圖／訂房平台座標、照片、評分、評論及價格；不代表京都市推薦。"
+          },
+          {
+            "title": "Wikidata Q11501050 P625 representative hotel point",
+            "publisher": "Wikidata contributors",
+            "url": "https://www.wikidata.org/wiki/Special:EntityData/Q11501050.json?revision=2448125393",
+            "license_name": "CC0-1.0",
+            "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+            "changes": "Selected P625 claim Q11501050$8D1DC5F3-9C1D-4CFB-97B1-0C1823A16F38, revision 2448125393; P143 imported from Japanese Wikipedia (Q177837). Alternative P248 Skyscanner (Q1319169) claims excluded. Representative hotel point, not a surveyed entrance; original municipal name/address credit retained."
+          }
+        ]
+      },
+      "coordinate_evidence": {
+        "url": "https://www.wikidata.org/wiki/Special:EntityData/Q11501050.json?revision=2448125393",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "non_google": true,
+        "checked_at": "2026-09-08T16:22:28.9449009Z",
+        "qid": "Q11501050",
+        "claim_id": "Q11501050$8D1DC5F3-9C1D-4CFB-97B1-0C1823A16F38",
+        "revision": 2448125393,
+        "reference": "P143:Q177837"
+      },
+      "entity_current_fetched_at": "2026-09-08T16:21:55.1259715Z",
+      "entity_modified_at": "2025-12-28T09:48:38Z",
+      "selected_claim": {
+        "mainsnak": {
+          "snaktype": "value",
+          "property": "P625",
+          "hash": "4e055824d41934fab9270a820245ff5540eb074b",
+          "datavalue": {
+            "value": {
+              "latitude": 34.983778,
+              "longitude": 135.755917,
+              "altitude": null,
+              "precision": 0.000001,
+              "globe": "http://www.wikidata.org/entity/Q2"
+            },
+            "type": "globecoordinate"
+          },
+          "datatype": "globe-coordinate"
+        },
+        "type": "statement",
+        "id": "Q11501050$8D1DC5F3-9C1D-4CFB-97B1-0C1823A16F38",
+        "rank": "normal",
+        "references": [
+          {
+            "hash": "a29a646602abf65105ed0f39a44231c962ece9ee",
+            "snaks": {
+              "P143": [
+                {
+                  "snaktype": "value",
+                  "property": "P143",
+                  "hash": "c6f1777471211df31724ac60175786f3872c83e9",
+                  "datavalue": {
+                    "value": {
+                      "entity-type": "item",
+                      "numeric-id": 177837,
+                      "id": "Q177837"
+                    },
+                    "type": "wikibase-entityid"
+                  },
+                  "datatype": "wikibase-item"
+                }
+              ]
+            },
+            "snaks-order": [
+              "P143"
+            ]
+          }
+        ]
+      },
+      "excluded_claim_ids": [
+        "Q11501050$8C777605-DEDC-4D3D-B2D4-02CBA9282F1F"
+      ],
+      "revision_url_verification": {
+        "url": "https://www.wikidata.org/wiki/Special:EntityData/Q11501050.json?revision=2448125393",
+        "http_status": 200,
+        "requested_revision": 2448125393,
+        "returned_lastrevid": 2448125393,
+        "checked_at": "2026-09-08T16:22:28.9449009Z",
+        "historical_control": {
+          "qid": "Q11501050",
+          "history_source": "https://www.wikidata.org/w/api.php?action=query&format=json&prop=revisions&rvprop=ids%7Ctimestamp&rvlimit=2&titles=Q11501050",
+          "historical_url": "https://www.wikidata.org/wiki/Special:EntityData/Q11501050.json?revision=2439080928",
+          "requested_historical_revision": 2439080928,
+          "returned_historical_revision": 2439080928,
+          "current_revision": 2448125393,
+          "checked_at": "2026-09-08T16:24:05.6794694Z"
+        }
+      },
+      "official_identity": {
+        "name": "都ホテル 京都八条",
+        "address": "〒601-8412 京都市南区西九条院町17（京都駅八条口）",
+        "source_url": "https://www.miyakohotels.ne.jp/kyoto-hachijo/",
+        "official_product_url": "https://www.miyakohotels.ne.jp/kyoto-hachijo/",
+        "full_address_observed": true,
+        "note": "The property footer explicitly supplies Nishikujo Inmachi 17. Current hotel and accommodation navigation are available. Do not confuse with Miyako City Kintetsu Kyoto Station.",
+        "method": "primary_web",
+        "browser_verified": false,
+        "checked_at": "2026-09-08T16:28:01Z"
+      },
+      "approval_readiness": "Coordinate provenance and official identity supported; do not publish solely on this evidence. Root must supply exact same-hotel Google Place ID evidence and the normal product guard must pass."
+    },
+    {
+      "id": "a124dc1e-7f75-44ff-b12d-080da031b3b9",
+      "source_key": "editorial:kyoto:granvia-kyoto",
+      "version": 1,
+      "before_hash": "3ea44e9b008f2fa3da93ec4a8dfcfed0695b08a35904a35e4754b28114a3d030",
+      "allowed": {
+        "source_key": "editorial:kyoto:granvia-kyoto",
+        "qid": "Q11337862",
+        "revision": 2438233506,
+        "claim_id": "Q11337862$EA2347C0-11BE-480F-BCEE-FF40DBFD38C0",
+        "latitude": 34.985861,
+        "longitude": 135.760222,
+        "row_hash": "3ea44e9b008f2fa3da93ec4a8dfcfed0695b08a35904a35e4754b28114a3d030"
+      },
+      "coordinate_patch": {
+        "latitude": 34.985861,
+        "longitude": 135.760222,
+        "coordinate_source_url": "https://www.wikidata.org/wiki/Special:EntityData/Q11337862.json?revision=2438233506",
+        "source_credits": [
+          {
+            "title": "旅館業法に基づく許可施設及び施設外玄関帳場一覧（令和８年７月末時点）",
+            "publisher": "京都市 保健福祉局 医療衛生推進室 医療衛生センター",
+            "url": "https://data.city.kyoto.lg.jp/dataset/00039/",
+            "license_name": "CC BY 4.0",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/deed.ja",
+            "changes": "Mokaair 摘錄京都市 2026 年 7 月底許可清單中的飯店名稱與地址，依官網核對身份並整理住宿區域。原始資料不含座標，未自行猜測或搬用地圖／訂房平台座標、照片、評分、評論及價格；不代表京都市推薦。"
+          },
+          {
+            "title": "Wikidata Q11337862 P625 representative hotel point",
+            "publisher": "Wikidata contributors",
+            "url": "https://www.wikidata.org/wiki/Special:EntityData/Q11337862.json?revision=2438233506",
+            "license_name": "CC0-1.0",
+            "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+            "changes": "Selected P625 claim Q11337862$EA2347C0-11BE-480F-BCEE-FF40DBFD38C0, revision 2438233506; P143 imported from Japanese Wikipedia (Q177837). Alternative P248 Skyscanner (Q1319169) claims excluded. Representative hotel point, not a surveyed entrance; original municipal name/address credit retained."
+          }
+        ]
+      },
+      "coordinate_evidence": {
+        "url": "https://www.wikidata.org/wiki/Special:EntityData/Q11337862.json?revision=2438233506",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "non_google": true,
+        "checked_at": "2026-09-08T16:22:28.1688334Z",
+        "qid": "Q11337862",
+        "claim_id": "Q11337862$EA2347C0-11BE-480F-BCEE-FF40DBFD38C0",
+        "revision": 2438233506,
+        "reference": "P143:Q177837"
+      },
+      "entity_current_fetched_at": "2026-09-08T16:21:53.9279934Z",
+      "entity_modified_at": "2025-12-05T05:51:33Z",
+      "selected_claim": {
+        "mainsnak": {
+          "snaktype": "value",
+          "property": "P625",
+          "hash": "c5ae00a5f789c2eb98c7a134483ba5853d713aa1",
+          "datavalue": {
+            "value": {
+              "latitude": 34.985861,
+              "longitude": 135.760222,
+              "altitude": null,
+              "precision": 0.000001,
+              "globe": "http://www.wikidata.org/entity/Q2"
+            },
+            "type": "globecoordinate"
+          },
+          "datatype": "globe-coordinate"
+        },
+        "type": "statement",
+        "id": "Q11337862$EA2347C0-11BE-480F-BCEE-FF40DBFD38C0",
+        "rank": "normal",
+        "references": [
+          {
+            "hash": "a29a646602abf65105ed0f39a44231c962ece9ee",
+            "snaks": {
+              "P143": [
+                {
+                  "snaktype": "value",
+                  "property": "P143",
+                  "hash": "c6f1777471211df31724ac60175786f3872c83e9",
+                  "datavalue": {
+                    "value": {
+                      "entity-type": "item",
+                      "numeric-id": 177837,
+                      "id": "Q177837"
+                    },
+                    "type": "wikibase-entityid"
+                  },
+                  "datatype": "wikibase-item"
+                }
+              ]
+            },
+            "snaks-order": [
+              "P143"
+            ]
+          }
+        ]
+      },
+      "excluded_claim_ids": [
+        "Q11337862$98C5E5A9-2B5C-4CF8-AB0F-45B4F73F49BE"
+      ],
+      "revision_url_verification": {
+        "url": "https://www.wikidata.org/wiki/Special:EntityData/Q11337862.json?revision=2438233506",
+        "http_status": 200,
+        "requested_revision": 2438233506,
+        "returned_lastrevid": 2438233506,
+        "checked_at": "2026-09-08T16:22:28.1688334Z",
+        "historical_control": {
+          "qid": "Q11337862",
+          "history_source": "https://www.wikidata.org/w/api.php?action=query&format=json&prop=revisions&rvprop=ids%7Ctimestamp&rvlimit=2&titles=Q11337862",
+          "historical_url": "https://www.wikidata.org/wiki/Special:EntityData/Q11337862.json?revision=2438233495",
+          "requested_historical_revision": 2438233495,
+          "returned_historical_revision": 2438233495,
+          "current_revision": 2438233506,
+          "checked_at": "2026-09-08T16:24:04.5493597Z"
+        }
+      },
+      "official_identity": {
+        "name": "ホテルグランヴィア京都",
+        "address": "〒600-8216 京都府京都市下京区烏丸通塩小路下ル JR京都駅中央口",
+        "source_url": "https://jrwest-hotels.jp/granvia-kyoto/access/",
+        "official_product_url": "https://jrwest-hotels.jp/en/granvia-kyoto/",
+        "full_address_observed": true,
+        "note": "The official access page identifies the hotel inside Kyoto Station at the central entrance. It does not state street number 901; do not invent that numeral. This is an official postal description, not a surveyed entrance. Current access and hotel news pages are available.",
+        "method": "primary_web",
+        "browser_verified": false,
+        "checked_at": "2026-09-08T16:28:01Z"
+      },
+      "approval_readiness": "Coordinate provenance and official identity supported; do not publish solely on this evidence. Root must supply exact same-hotel Google Place ID evidence and the normal product guard must pass."
+    }
+  ]
+}

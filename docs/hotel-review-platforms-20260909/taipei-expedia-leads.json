@@ -1,0 +1,478 @@
+{
+  "schema_version": 1,
+  "tag": "hotel-review-platforms-20260909",
+  "city": "taipei",
+  "scope": "11 pending empty Expedia/Agoda slots; source discovery only",
+  "baseline_reference": {
+    "path": "docs/hotel-review-redirects-20260909/post-replay-snapshot.json",
+    "captured_at": "2026-09-08 23:26:31.177948+00:00",
+    "file_sha256": "6a0b89b6439796345d25e4b31c84d0bfe943050bdb4788ef7b164a9d8a33b75a",
+    "not_a_new_production_snapshot": true
+  },
+  "research_completed_at": "2026-09-08T23:43:02Z",
+  "summary": {
+    "slots_considered": 11,
+    "exact_property_url_candidates": 10,
+    "expedia_readable_full_identity": 5,
+    "agoda_indexed_candidates_direct_shell": 5,
+    "agoda_partial_street": 1,
+    "missing_property_url": 1,
+    "browser_verified": 0,
+    "approved": 0,
+    "production_writes": 0,
+    "paid_api_calls": 0,
+    "quote_requests": 0,
+    "booking_or_clickout_actions": 0
+  },
+  "collection_note": "Only identity names, street addresses, exact source URLs and limitations are retained. Incidental prices/reviews/photos in search output were not extracted as catalog data. Search-index crawl recency is not live availability or a current closure check.",
+  "entries": [
+    {
+      "option_id": "159bc0b2-5bc7-481e-ba8f-b79bd121e76a",
+      "product_id": "ad6930f9-64e2-4298-b90f-ad24fae50060",
+      "provider": "expedia",
+      "source_key": "editorial:taipei:caesar-park-taipei",
+      "baseline_version": 1,
+      "baseline_status": "pending",
+      "baseline_url": null,
+      "source_discovery_decision": "candidate_name_and_full_street_supported",
+      "browser_verified": false,
+      "method": "primary_web_open_and_find",
+      "observed_url": "https://www.expedia.com/Taipei-Hotels-Caesar-Park-Taipei.h22542.Hotel-Information?equalTargetTab=tab-3",
+      "candidate_url": "https://www.expedia.com/Taipei-Hotels-Caesar-Park-Taipei.h22542.Hotel-Information",
+      "hotel_name": "Caesar Park Hotel Taipei",
+      "address_as_observed": "38 Chung Hsiao West Road Section 1, Zhongzheng, Taipei, 100",
+      "full_street_address_supported": true,
+      "source_url": "https://www.expedia.com/Taipei-Hotels-Caesar-Park-Taipei.h22542.Hotel-Information?equalTargetTab=tab-3",
+      "observation_window": {
+        "started_at": "2026-09-08T23:38:03Z",
+        "completed_at": "2026-09-08T23:41:09Z",
+        "precision": "Research window, not an exact per-page sampling timestamp."
+      },
+      "direct_readability": "Property document name and full street readable at source_url; query-free candidate opened.",
+      "official_identity_reference": {
+        "option_id": "fe51f041-3f5e-433f-a87c-a2b4708d6f37",
+        "status_in_snapshot": "approved",
+        "verified_at": "2026-09-08 06:01:53.037066+00:00",
+        "source_url": "https://taipei.caesarpark.com.tw/about/traffic_information/",
+        "address": "台北市中正區忠孝西路一段38號",
+        "fresh_read": false
+      },
+      "limitations": [
+        "Source discovery only; browser_verified=false. Root must directly inspect the exact final IAB URL, hotel identity and full street address before any approval.",
+        "Previously approved official identity is retained historical evidence from the prior snapshot; the hotel official page was not re-read in this research window.",
+        "No current server-side health assessment or normal review guard has run here. This research does not establish quote, availability, pricing, affiliate or checkout authority.",
+        "The query-free candidate was normalized by removing only equalTargetTab/rfrr non-identity parameters from the observed property URL, then actually opened. The full street was read from the original parameterized source; a later find on the query-free response did not expose the street, so root must recheck it. Hotel path, host and embedded ID are unchanged."
+      ]
+    },
+    {
+      "option_id": "2025853a-e016-4b35-b9c1-f44b03c4a0d7",
+      "product_id": "89873ccf-5a45-467d-b2c9-dd32c2b6a0df",
+      "provider": "expedia",
+      "source_key": "editorial:taipei:cosmos-taipei",
+      "baseline_version": 1,
+      "baseline_status": "pending",
+      "baseline_url": null,
+      "source_discovery_decision": "candidate_name_and_full_street_supported",
+      "browser_verified": false,
+      "method": "primary_web_open_and_find",
+      "observed_url": "https://www.expedia.com/Taipei-Hotels-Cosmos-Hotel-Taipei.h4140748.Hotel-Information?rfrr=HOT.HIS.question.link.click",
+      "candidate_url": "https://www.expedia.com/Taipei-Hotels-Cosmos-Hotel-Taipei.h4140748.Hotel-Information",
+      "hotel_name": "Cosmos Hotel Taipei",
+      "address_as_observed": "No.43, Sec. 1, Zhongxiao W. Rd., Taipei, 100",
+      "full_street_address_supported": true,
+      "source_url": "https://www.expedia.com/Taipei-Hotels-Cosmos-Hotel-Taipei.h4140748.Hotel-Information?rfrr=HOT.HIS.question.link.click",
+      "observation_window": {
+        "started_at": "2026-09-08T23:38:03Z",
+        "completed_at": "2026-09-08T23:41:09Z",
+        "precision": "Research window, not an exact per-page sampling timestamp."
+      },
+      "direct_readability": "Property document name and full street readable at source_url; query-free candidate opened.",
+      "official_identity_reference": {
+        "option_id": "c9f5a980-3e11-4624-8117-2686f528a6b0",
+        "status_in_snapshot": "approved",
+        "verified_at": "2026-09-08 06:01:52.757942+00:00",
+        "source_url": "https://www.cosmos-hotel.com.tw/%E9%A3%AF%E5%BA%97%E4%BD%8D%E7%BD%AE/",
+        "address": "台北市中正區忠孝西路一段43號",
+        "fresh_read": false
+      },
+      "limitations": [
+        "Source discovery only; browser_verified=false. Root must directly inspect the exact final IAB URL, hotel identity and full street address before any approval.",
+        "Previously approved official identity is retained historical evidence from the prior snapshot; the hotel official page was not re-read in this research window.",
+        "No current server-side health assessment or normal review guard has run here. This research does not establish quote, availability, pricing, affiliate or checkout authority.",
+        "The query-free candidate was normalized by removing only equalTargetTab/rfrr non-identity parameters from the observed property URL, then actually opened. The full street was read from the original parameterized source; a later find on the query-free response did not expose the street, so root must recheck it. Hotel path, host and embedded ID are unchanged."
+      ]
+    },
+    {
+      "option_id": "2279dc5a-7f1f-41b2-ad31-6326ebb24bd9",
+      "product_id": "c934905c-8857-4dfc-963e-9d19e13cd16e",
+      "provider": "expedia",
+      "source_key": "editorial:taipei:amba-ximending",
+      "baseline_version": 1,
+      "baseline_status": "pending",
+      "baseline_url": null,
+      "source_discovery_decision": "candidate_name_and_full_street_supported",
+      "browser_verified": false,
+      "method": "primary_web_open_and_find",
+      "observed_url": "https://www.expedia.com/Taipei-Hotels-Amba-TAIPEI-XIMENDING.h4895638.Hotel-Information?equalTargetTab=tab-3",
+      "candidate_url": "https://www.expedia.com/Taipei-Hotels-Amba-TAIPEI-XIMENDING.h4895638.Hotel-Information",
+      "hotel_name": "amba TAIPEI XIMENDING",
+      "address_as_observed": "77 Wuchang Street, Section 2, Taipei, 108",
+      "full_street_address_supported": true,
+      "source_url": "https://www.expedia.com/Taipei-Hotels-Amba-TAIPEI-XIMENDING.h4895638.Hotel-Information?equalTargetTab=tab-3",
+      "observation_window": {
+        "started_at": "2026-09-08T23:38:03Z",
+        "completed_at": "2026-09-08T23:41:09Z",
+        "precision": "Research window, not an exact per-page sampling timestamp."
+      },
+      "direct_readability": "Property document name and full street readable at source_url; query-free candidate opened.",
+      "official_identity_reference": {
+        "option_id": "3027e80b-fc5d-4bc5-97fd-9f21e6f3cdcd",
+        "status_in_snapshot": "approved",
+        "verified_at": "2026-09-08 06:00:18.483656+00:00",
+        "source_url": "https://www.amba-hotels.com/ximending/picture/files/amba-TAIPEI-XIMENDING-event-venues-capacity-square-feet.pdf",
+        "address": "台北市萬華區武昌街二段77號",
+        "fresh_read": false
+      },
+      "limitations": [
+        "Source discovery only; browser_verified=false. Root must directly inspect the exact final IAB URL, hotel identity and full street address before any approval.",
+        "Previously approved official identity is retained historical evidence from the prior snapshot; the hotel official page was not re-read in this research window.",
+        "No current server-side health assessment or normal review guard has run here. This research does not establish quote, availability, pricing, affiliate or checkout authority.",
+        "The query-free candidate was normalized by removing only equalTargetTab/rfrr non-identity parameters from the observed property URL, then actually opened. The full street was read from the original parameterized source; a later find on the query-free response did not expose the street, so root must recheck it. Hotel path, host and embedded ID are unchanged."
+      ]
+    },
+    {
+      "option_id": "4d2c8a10-e5d1-4334-8bd4-6f4e05c3dbe8",
+      "product_id": "535688c6-4370-4550-9a66-d35c4f907eef",
+      "provider": "expedia",
+      "source_key": "editorial:taipei:cityinn-station-iii",
+      "baseline_version": 1,
+      "baseline_status": "pending",
+      "baseline_url": null,
+      "source_discovery_decision": "candidate_name_and_full_street_supported",
+      "browser_verified": false,
+      "method": "primary_web_open_and_find",
+      "observed_url": "https://www.expedia.com/Taipei-Hotels-CityInn-Hotel-Taipei-Station-Branch-III.h4690897.Hotel-Information",
+      "candidate_url": "https://www.expedia.com/Taipei-Hotels-CityInn-Hotel-Taipei-Station-Branch-III.h4690897.Hotel-Information",
+      "hotel_name": "CityInn Hotel Taipei Station Branch III",
+      "address_as_observed": "No.77, Chang an W. Rd., Taipei, 103",
+      "full_street_address_supported": true,
+      "source_url": "https://www.expedia.com/Taipei-Hotels-CityInn-Hotel-Taipei-Station-Branch-III.h4690897.Hotel-Information",
+      "observation_window": {
+        "started_at": "2026-09-08T23:38:03Z",
+        "completed_at": "2026-09-08T23:41:09Z",
+        "precision": "Research window, not an exact per-page sampling timestamp."
+      },
+      "direct_readability": "Property document name and full street readable at source_url; query-free candidate opened.",
+      "official_identity_reference": {
+        "option_id": "fd09af44-8571-44ea-a34e-5f6b3c4be9f6",
+        "status_in_snapshot": "approved",
+        "verified_at": "2026-09-08 06:00:17.520578+00:00",
+        "source_url": "https://c3.cityinn.com.tw/tw/location-t/",
+        "address": "台北市大同區長安西路77號",
+        "fresh_read": false
+      },
+      "limitations": [
+        "Source discovery only; browser_verified=false. Root must directly inspect the exact final IAB URL, hotel identity and full street address before any approval.",
+        "Previously approved official identity is retained historical evidence from the prior snapshot; the hotel official page was not re-read in this research window.",
+        "No current server-side health assessment or normal review guard has run here. This research does not establish quote, availability, pricing, affiliate or checkout authority."
+      ]
+    },
+    {
+      "option_id": "4ed42b59-20e6-4426-8bd4-941ed18e932b",
+      "product_id": "ad6930f9-64e2-4298-b90f-ad24fae50060",
+      "provider": "agoda",
+      "source_key": "editorial:taipei:caesar-park-taipei",
+      "baseline_version": 1,
+      "baseline_status": "pending",
+      "baseline_url": null,
+      "source_discovery_decision": "candidate_requires_rendered_identity_check",
+      "browser_verified": false,
+      "method": "primary_ota_search_document",
+      "observed_url": "https://www.agoda.com/caesar-park-hotel-taipei_6/hotel/taipei-tw.html",
+      "candidate_url": "https://www.agoda.com/caesar-park-hotel-taipei_6/hotel/taipei-tw.html",
+      "hotel_name": "Caesar Park Hotel",
+      "address_as_observed": "No. 38 Chung Hsiao West Road, Section 1, Taipei Main Station, Taipei, Taiwan, 10041",
+      "full_street_address_supported": true,
+      "source_url": "https://www.agoda.com/caesar-park-hotel-taipei_6/hotel/taipei-tw.html",
+      "observation_window": {
+        "started_at": "2026-09-08T23:38:03Z",
+        "completed_at": "2026-09-08T23:41:09Z",
+        "precision": "Research window, not an exact per-page sampling timestamp."
+      },
+      "direct_readability": "input_shell_only",
+      "official_identity_reference": {
+        "option_id": "fe51f041-3f5e-433f-a87c-a2b4708d6f37",
+        "status_in_snapshot": "approved",
+        "verified_at": "2026-09-08 06:01:53.037066+00:00",
+        "source_url": "https://taipei.caesarpark.com.tw/about/traffic_information/",
+        "address": "台北市中正區忠孝西路一段38號",
+        "fresh_read": false
+      },
+      "limitations": [
+        "Source discovery only; browser_verified=false. Root must directly inspect the exact final IAB URL, hotel identity and full street address before any approval.",
+        "Previously approved official identity is retained historical evidence from the prior snapshot; the hotel official page was not re-read in this research window.",
+        "No current server-side health assessment or normal review guard has run here. This research does not establish quote, availability, pricing, affiliate or checkout authority.",
+        "Direct web open returned only a one-line [Input] [Input] shell. Name/address below came from the primary Agoda indexed document, not a newly readable rendered property page."
+      ]
+    },
+    {
+      "option_id": "853b4a8c-35fd-4585-9ed7-29a8ed1a1e55",
+      "product_id": "68646c86-2aed-4bd6-a453-29450ab50d6c",
+      "provider": "expedia",
+      "source_key": "editorial:taipei:palais-de-chine",
+      "baseline_version": 1,
+      "baseline_status": "pending",
+      "baseline_url": null,
+      "source_discovery_decision": "candidate_name_and_full_street_supported",
+      "browser_verified": false,
+      "method": "primary_web_open_and_find",
+      "observed_url": "https://www.expedia.com/Taipei-Hotels-Palais-De-Chine-Hotel.h3749100.Hotel-Information",
+      "candidate_url": "https://www.expedia.com/Taipei-Hotels-Palais-De-Chine-Hotel.h3749100.Hotel-Information",
+      "hotel_name": "Palais de Chine Hotel",
+      "address_as_observed": "No 3 Sec 1 Chengde Road, Taipei, 103",
+      "full_street_address_supported": true,
+      "source_url": "https://www.expedia.com/Taipei-Hotels-Palais-De-Chine-Hotel.h3749100.Hotel-Information",
+      "observation_window": {
+        "started_at": "2026-09-08T23:38:03Z",
+        "completed_at": "2026-09-08T23:41:09Z",
+        "precision": "Research window, not an exact per-page sampling timestamp."
+      },
+      "direct_readability": "Property document name and full street readable at source_url; query-free candidate opened.",
+      "official_identity_reference": {
+        "option_id": "3b4e7e4c-a99d-4788-95e3-bcab65b339b6",
+        "status_in_snapshot": "approved",
+        "verified_at": "2026-09-08 06:00:02.399145+00:00",
+        "source_url": "https://www.palaisdechinehotel.com/pdc_tw/pages/35/0/195",
+        "address": "台北市大同區承德路一段3號",
+        "fresh_read": false
+      },
+      "limitations": [
+        "Source discovery only; browser_verified=false. Root must directly inspect the exact final IAB URL, hotel identity and full street address before any approval.",
+        "Previously approved official identity is retained historical evidence from the prior snapshot; the hotel official page was not re-read in this research window.",
+        "No current server-side health assessment or normal review guard has run here. This research does not establish quote, availability, pricing, affiliate or checkout authority."
+      ]
+    },
+    {
+      "option_id": "b4a2e4da-e250-4892-b159-a7066d2c6c6a",
+      "product_id": "c934905c-8857-4dfc-963e-9d19e13cd16e",
+      "provider": "agoda",
+      "source_key": "editorial:taipei:amba-ximending",
+      "baseline_version": 1,
+      "baseline_status": "pending",
+      "baseline_url": null,
+      "source_discovery_decision": "candidate_requires_rendered_identity_check",
+      "browser_verified": false,
+      "method": "primary_ota_search_document",
+      "observed_url": "https://www.agoda.com/amba-taipei-ximending/hotel/taipei-tw.html",
+      "candidate_url": "https://www.agoda.com/amba-taipei-ximending/hotel/taipei-tw.html",
+      "hotel_name": "amba Taipei Ximending",
+      "address_as_observed": "No.77, Sec. 2, Wuchang St.,, Ximending, Taipei, Taiwan, 10843",
+      "full_street_address_supported": true,
+      "source_url": "https://www.agoda.com/amba-taipei-ximending/hotel/taipei-tw.html",
+      "observation_window": {
+        "started_at": "2026-09-08T23:38:03Z",
+        "completed_at": "2026-09-08T23:41:09Z",
+        "precision": "Research window, not an exact per-page sampling timestamp."
+      },
+      "direct_readability": "input_shell_only",
+      "official_identity_reference": {
+        "option_id": "3027e80b-fc5d-4bc5-97fd-9f21e6f3cdcd",
+        "status_in_snapshot": "approved",
+        "verified_at": "2026-09-08 06:00:18.483656+00:00",
+        "source_url": "https://www.amba-hotels.com/ximending/picture/files/amba-TAIPEI-XIMENDING-event-venues-capacity-square-feet.pdf",
+        "address": "台北市萬華區武昌街二段77號",
+        "fresh_read": false
+      },
+      "limitations": [
+        "Source discovery only; browser_verified=false. Root must directly inspect the exact final IAB URL, hotel identity and full street address before any approval.",
+        "Previously approved official identity is retained historical evidence from the prior snapshot; the hotel official page was not re-read in this research window.",
+        "No current server-side health assessment or normal review guard has run here. This research does not establish quote, availability, pricing, affiliate or checkout authority.",
+        "Direct web open returned only a one-line [Input] [Input] shell. Name/address below came from the primary Agoda indexed document, not a newly readable rendered property page."
+      ]
+    },
+    {
+      "option_id": "cfa7e834-e904-45da-9d4a-a90bbfcb0945",
+      "product_id": "535688c6-4370-4550-9a66-d35c4f907eef",
+      "provider": "agoda",
+      "source_key": "editorial:taipei:cityinn-station-iii",
+      "baseline_version": 1,
+      "baseline_status": "pending",
+      "baseline_url": null,
+      "source_discovery_decision": "candidate_requires_rendered_identity_check",
+      "browser_verified": false,
+      "method": "primary_ota_search_document",
+      "observed_url": "https://www.agoda.com/cityinn-hotel-taipei-station-branch-iii/hotel/taipei-tw.html",
+      "candidate_url": "https://www.agoda.com/cityinn-hotel-taipei-station-branch-iii/hotel/taipei-tw.html",
+      "hotel_name": "CityInn Hotel Taipei Station Branch III",
+      "address_as_observed": "No. 77, Chang-an Rd, Taipei Main Station, Taipei, Taiwan, 103",
+      "full_street_address_supported": false,
+      "source_url": "https://www.agoda.com/cityinn-hotel-taipei-station-branch-iii/hotel/taipei-tw.html",
+      "observation_window": {
+        "started_at": "2026-09-08T23:38:03Z",
+        "completed_at": "2026-09-08T23:41:09Z",
+        "precision": "Research window, not an exact per-page sampling timestamp."
+      },
+      "direct_readability": "input_shell_only",
+      "official_identity_reference": {
+        "option_id": "fd09af44-8571-44ea-a34e-5f6b3c4be9f6",
+        "status_in_snapshot": "approved",
+        "verified_at": "2026-09-08 06:00:17.520578+00:00",
+        "source_url": "https://c3.cityinn.com.tw/tw/location-t/",
+        "address": "台北市大同區長安西路77號",
+        "fresh_read": false
+      },
+      "limitations": [
+        "Source discovery only; browser_verified=false. Root must directly inspect the exact final IAB URL, hotel identity and full street address before any approval.",
+        "Previously approved official identity is retained historical evidence from the prior snapshot; the hotel official page was not re-read in this research window.",
+        "No current server-side health assessment or normal review guard has run here. This research does not establish quote, availability, pricing, affiliate or checkout authority.",
+        "Direct web open returned only a one-line [Input] [Input] shell. Name/address below came from the primary Agoda indexed document, not a newly readable rendered property page.",
+        "Agoda indexed English street omits the West direction shown by the official identity. Treat the full street-address match as unconfirmed until IAB exposes the complete address; do not silently add West."
+      ]
+    },
+    {
+      "option_id": "ec0b9313-17c7-454c-801d-4e77f9bb0556",
+      "product_id": "89873ccf-5a45-467d-b2c9-dd32c2b6a0df",
+      "provider": "agoda",
+      "source_key": "editorial:taipei:cosmos-taipei",
+      "baseline_version": 1,
+      "baseline_status": "pending",
+      "baseline_url": null,
+      "source_discovery_decision": "candidate_requires_rendered_identity_check",
+      "browser_verified": false,
+      "method": "primary_ota_search_document",
+      "observed_url": "https://www.agoda.com/cosmos-hotel-taipei/hotel/taipei-tw.html",
+      "candidate_url": "https://www.agoda.com/cosmos-hotel-taipei/hotel/taipei-tw.html",
+      "hotel_name": "Cosmos Hotel Taipei Main Station",
+      "address_as_observed": "43 Sec. 1, Chung-Hsiao W. Road, Taipei Main Station, Taipei, Taiwan, 10041",
+      "full_street_address_supported": true,
+      "source_url": "https://www.agoda.com/cosmos-hotel-taipei/hotel/taipei-tw.html",
+      "observation_window": {
+        "started_at": "2026-09-08T23:38:03Z",
+        "completed_at": "2026-09-08T23:41:09Z",
+        "precision": "Research window, not an exact per-page sampling timestamp."
+      },
+      "direct_readability": "input_shell_only",
+      "official_identity_reference": {
+        "option_id": "c9f5a980-3e11-4624-8117-2686f528a6b0",
+        "status_in_snapshot": "approved",
+        "verified_at": "2026-09-08 06:01:52.757942+00:00",
+        "source_url": "https://www.cosmos-hotel.com.tw/%E9%A3%AF%E5%BA%97%E4%BD%8D%E7%BD%AE/",
+        "address": "台北市中正區忠孝西路一段43號",
+        "fresh_read": false
+      },
+      "limitations": [
+        "Source discovery only; browser_verified=false. Root must directly inspect the exact final IAB URL, hotel identity and full street address before any approval.",
+        "Previously approved official identity is retained historical evidence from the prior snapshot; the hotel official page was not re-read in this research window.",
+        "No current server-side health assessment or normal review guard has run here. This research does not establish quote, availability, pricing, affiliate or checkout authority.",
+        "Direct web open returned only a one-line [Input] [Input] shell. Name/address below came from the primary Agoda indexed document, not a newly readable rendered property page."
+      ]
+    },
+    {
+      "option_id": "efef0014-bb15-46cc-a8c3-5ab5c5de9dd9",
+      "product_id": "68646c86-2aed-4bd6-a453-29450ab50d6c",
+      "provider": "agoda",
+      "source_key": "editorial:taipei:palais-de-chine",
+      "baseline_version": 1,
+      "baseline_status": "pending",
+      "baseline_url": null,
+      "source_discovery_decision": "candidate_requires_rendered_identity_check",
+      "browser_verified": false,
+      "method": "primary_ota_search_document",
+      "observed_url": "https://www.agoda.com/en-ca/palais-de-chine-hotel/hotel/taipei-tw.html",
+      "candidate_url": "https://www.agoda.com/en-ca/palais-de-chine-hotel/hotel/taipei-tw.html",
+      "hotel_name": "Palais de Chine Hotel",
+      "address_as_observed": "No. 3, Section 1, Chengde Road, Taipei Main Station, Taipei, Taiwan, 10351",
+      "full_street_address_supported": true,
+      "source_url": "https://www.agoda.com/en-ca/palais-de-chine-hotel/hotel/taipei-tw.html",
+      "observation_window": {
+        "started_at": "2026-09-08T23:38:03Z",
+        "completed_at": "2026-09-08T23:41:09Z",
+        "precision": "Research window, not an exact per-page sampling timestamp."
+      },
+      "direct_readability": "input_shell_only",
+      "official_identity_reference": {
+        "option_id": "3b4e7e4c-a99d-4788-95e3-bcab65b339b6",
+        "status_in_snapshot": "approved",
+        "verified_at": "2026-09-08 06:00:02.399145+00:00",
+        "source_url": "https://www.palaisdechinehotel.com/pdc_tw/pages/35/0/195",
+        "address": "台北市大同區承德路一段3號",
+        "fresh_read": false
+      },
+      "limitations": [
+        "Source discovery only; browser_verified=false. Root must directly inspect the exact final IAB URL, hotel identity and full street address before any approval.",
+        "Previously approved official identity is retained historical evidence from the prior snapshot; the hotel official page was not re-read in this research window.",
+        "No current server-side health assessment or normal review guard has run here. This research does not establish quote, availability, pricing, affiliate or checkout authority.",
+        "Direct web open returned only a one-line [Input] [Input] shell. Name/address below came from the primary Agoda indexed document, not a newly readable rendered property page."
+      ]
+    },
+    {
+      "option_id": "f4f26da8-cfa0-42c0-b2a3-01bf6d34bc4d",
+      "product_id": "f73ce087-d361-4f74-8bac-45ed71d5c1ce",
+      "provider": "agoda",
+      "source_key": "editorial:taipei:westgate",
+      "baseline_version": 1,
+      "baseline_status": "pending",
+      "baseline_url": null,
+      "source_discovery_decision": "hold_exact_property_url_missing",
+      "browser_verified": false,
+      "method": "primary_ota_search_document",
+      "observed_url": "https://www.agoda.com/en-us/westgate-hotel/reviews/taipei-tw.html",
+      "candidate_url": null,
+      "hotel_name": "WESTGATE Hotel",
+      "address_as_observed": "No.150, Sec. 1, Zhonghua Rd, Ximending, Taipei, Taiwan, 10843",
+      "full_street_address_supported": true,
+      "source_url": "https://www.agoda.com/en-us/westgate-hotel/reviews/taipei-tw.html",
+      "observation_window": {
+        "started_at": "2026-09-08T23:38:03Z",
+        "completed_at": "2026-09-08T23:41:09Z",
+        "precision": "Research window, not an exact per-page sampling timestamp."
+      },
+      "direct_readability": "timeout",
+      "official_identity_reference": {
+        "option_id": "837e69b7-aa5e-477f-b380-90b315d179fd",
+        "status_in_snapshot": "approved",
+        "verified_at": "2026-09-08 06:41:47.424748+00:00",
+        "source_url": "https://www.westgatehotel.com.tw/location/",
+        "address": "台北市萬華區中華路一段150號",
+        "fresh_read": false
+      },
+      "limitations": [
+        "Source discovery only; browser_verified=false. Root must directly inspect the exact final IAB URL, hotel identity and full street address before any approval.",
+        "Previously approved official identity is retained historical evidence from the prior snapshot; the hotel official page was not re-read in this research window.",
+        "No current server-side health assessment or normal review guard has run here. This research does not establish quote, availability, pricing, affiliate or checkout authority.",
+        "Only the matching Agoda review-page URL was observed. Direct open timed out. No exact Taipei property-page URL was found in this bounded pass; do not transform /reviews/ to /hotel/ or substitute another city."
+      ]
+    }
+  ],
+  "additional_candidate_observations": [
+    {
+      "option_id": "cfa7e834-e904-45da-9d4a-a90bbfcb0945",
+      "observed_url": "https://www.agoda.com/en-ca/cityinn-hotel-taipei-station-3-h33765072/hotel/taipei-tw.html",
+      "hotel_name": "Cityinn Hotel Taipei Station 3",
+      "address_as_observed": "No.77, Changan West Rd, Taipei, Taiwan, Taipei Main Station, Taipei, Taiwan",
+      "method": "primary_ota_search_document",
+      "recorded_at": "2026-09-08T23:43:02Z",
+      "browser_verified": false,
+      "direct_open_attempted": false,
+      "limitations": "Alternate exact property URL observed in Agoda search-index result, not derived. Unlike the primary III URL it includes West in its indexed address. Root may inspect it directly in IAB; no approval, quote property ID or map identity is established. The primary III address was separately re-confirmed as No. 77, Chang-an Rd without a West direction."
+    }
+  ],
+  "rejected_or_nonselected_observations": [
+    {
+      "url": "https://www.agoda.com/cosmos-hotel-taipei-main-station/hotel/fuzhou-cn.html",
+      "reason": "Wrong destination Fuzhou URL; matching hotel words are insufficient."
+    },
+    {
+      "url": "https://www.agoda.com/en-za/palais-de-chine-hotel-h86177295/hotel/fuzhou-cn.html",
+      "reason": "Address text is mixed with Fuzhou/China and the destination slug is wrong; not a Taipei property identity."
+    },
+    {
+      "url": "https://www.agoda.com/en-ca/the-westgate-hotel_3/hotel/san-diego-ca-us.html",
+      "reason": "Different Westgate in San Diego; name similarity is not an identity match."
+    },
+    {
+      "url": "https://www.agoda.com/westgate-hotel/hotel/veliko-tarnovo-bg.html",
+      "reason": "Different Westgate in Bulgaria; not Taipei."
+    }
+  ]
+}

@@ -1,14 +1,14 @@
 ---
 id: 2026-09-09-pr365-docs-integration
 title: Integrate PR 365 historical deployment and open verification notes
-status: review
+status: done
 priority: P2
 area: docs
-owner: codex-pr365-docs
-claimed_at: 2026-09-09T06:20:37Z
+owner: codex-review-archive
+claimed_at: 2026-09-09T07:37:00Z
 created_at: 2026-09-09T06:20:36Z
-completed_at:
-branch: codex/pr365-docs-ready-20260909
+completed_at: 2026-09-09T07:37:01Z
+branch: codex/review-evidence-archive-20260909
 depends_on: []
 scope:
   - tasks/open/2026-09-08-community-ci-read-retry.md
@@ -116,3 +116,24 @@ local handoff and does not perform them.
 Final-base validation: complete tools tests 27/27 passed, task/BOARD validation
 passed for 206 files, and whitespace/diff checks passed. The same unrelated
 stale-claim/overlap warnings remain; no scope takeover or runtime fix is implied.
+
+## Authorized merge and ownership handoff
+
+On 2026-09-09 the user explicitly accepted merging #365 and #376 while leaving
+#377 out of scope. Root rechecked live main, exact head, all 12 successful checks,
+clean mergeability and the absence of unresolved review threads. #365 was
+squash-merged with the exact-head guard at 2026-09-09T07:34:43Z as
+3d88373caf5c6aab99399867112ed9944b30684c from
+7054a1d9bcb779a836a18a2245fe0255640515ea. Both commits have tree
+c8f3cdcdec245d2ff75a9216135777bbec949d10, and the remote main ref and ancestry
+were independently verified.
+
+Original owner codex-pr365-docs explicitly handed the completion-record/status
+scope to root for inclusion in #376. Only this narrow documentation-integration
+task is closed. The community CI investigation and live Travelpayouts verification
+tasks remain open; no operational criterion is completed by this merge.
+
+At this checkpoint, merged-main CI 34324567669, Planner 34324567728 and Discovery
+34324567664 are running and are followed separately by root. No post-merge pass
+is claimed before they finish. No deployment, provider activation, production
+connection, review replay or quota change was performed.

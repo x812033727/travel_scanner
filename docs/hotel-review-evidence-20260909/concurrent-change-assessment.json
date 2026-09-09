@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "tag": "hotel-review-evidence-20260909",
+  "status": "qualified",
+  "final_acceptance": false,
+  "hotel_checks_passed": true,
+  "assessed_at": "2026-09-09T01:11:02Z",
+  "method": "Independent local-only evaluation of original three-phase SQL, full-row snapshots, receipts, public captures and sanitized backup comparison; original validators and evidence were not modified.",
+  "network_calls": 0,
+  "database_connections": 0,
+  "production_writes": 0,
+  "baseline_hash": "342aee9610db65e78626d950efef368919a7d8e4cfcf55d06a32b64e26c5adee",
+  "manifest_semantic_sha256": "c39dbbacf10c193de385a2a22930d6fcf4af6c36cea6c28e2b7a5d3bc07a3887",
+  "manifest_file_sha256": "2a0b4c880d948c237822aba74194138d963977296f9fdd9abc0b1f41e1794d9e",
+  "strict_verification": {
+    "status": "failed",
+    "final_acceptance": false,
+    "error_type": "ValueError",
+    "message": "Protected SQL full rows changed",
+    "reproduced_using_unmodified_verify_function": true,
+    "failure_artifact": "strict-verification-failure.json",
+    "exception_not_suppressed_or_reclassified_as_pass": true
+  },
+  "rows": {
+    "scope_count": 19,
+    "approved": 19,
+    "approved_products": 1,
+    "approved_options": 18,
+    "holds": 0,
+    "normal_version_increment": 2,
+    "original_340_approved_unchanged": true,
+    "untouched_rows": 401,
+    "full_replay_420_rows_unchanged": true,
+    "travel_service_configs_unchanged": true,
+    "exact_westin_coordinate_map_and_original_credit_binding": true,
+    "approved_option_property_ids_remain_null": true
+  },
+  "sql_hotel_checks": {
+    "status": "passed",
+    "all_three_captures_read_only_repeatable_read_and_rollback": true,
+    "all_three_authority_snapshots_match": true,
+    "scope_immutable_hashes_unchanged": 19,
+    "new_receipts": 19,
+    "normal_edits": 19,
+    "normal_reviews": 19,
+    "normal_actions_exact_scope_and_authenticated_root": true,
+    "receipt_actor_root_entry_before_after_hashes_and_versions_bound": true,
+    "per_entry_normal_edit_review_receipt_pairing_valid": true,
+    "original_408_receipts_unchanged": true,
+    "historical_audits_unchanged": 9929,
+    "unchanged_protected_groups_before_to_after": 11,
+    "unchanged_protected_groups_after_to_replay": 13,
+    "replay_zero_extra_receipts_or_normal_audits": true,
+    "method_note": "The unmodified independent_check completed all three phases of authority, inventory, row-transition, receipt, normal-audit and entry checks before rejecting the protected-group comparison. This assessment separately checked the subsequent immutable-field, authority, time-order and replay equalities without bypassing that rejection.",
+    "replay_identical_sections": [
+      "protected_groups", "scope_rows", "receipts", "normal_audits",
+      "entry_checks", "receipt_totals", "inventory", "expected"
+    ]
+  },
+  "public": {
+    "status": "passed",
+    "method": "Original public_check called unchanged on the three original anonymous public API captures; not a browser UI assertion.",
+    "requests": 90,
+    "http_200": 90,
+    "no_store_responses": 90,
+    "products_before": 40,
+    "products_after": 41,
+    "option_counts": {"before": 212, "after": 227, "after-replay": 227},
+    "existing_212_options_and_all_public_fields_unchanged": true,
+    "new_options_exactly_successful_with_approved_parent": true,
+    "pending_products_and_pending_parent_options_not_public": true,
+    "source_credit_and_locale_title_allowlists_verified": true,
+    "reference_prices_remain_null": true,
+    "quote_calls": 0,
+    "clickout_calls": 0,
+    "replay_body_unchanged": true,
+    "after_city_counts_each_of_five_locales": {
+      "tokyo": {"products": 10, "options": 59},
+      "osaka": {"products": 10, "options": 60},
+      "kyoto": {"products": 1, "options": 6},
+      "seoul": {"products": 10, "options": 50},
+      "busan": {"products": 0, "options": 0},
+      "taipei": {"products": 10, "options": 52}
+    }
+  },
+  "protected_group_comparison": {
+    "unchanged_all_three_phases": [
+      {"name": "affiliate_clicks_hotel", "count": 0, "rows_md5": "d41d8cd98f00b204e9800998ecf8427e"},
+      {"name": "all_historical_audits", "count": 9929, "rows_md5": "91c1e4fb8790c0d84c71dd328a75961f"},
+      {"name": "baseline_approved", "count": 340, "rows_md5": "02a3bc62ebd571fa4fc475fafddfb3e4"},
+      {"name": "brands_all", "count": 4, "rows_md5": "09c3762e4feac576482acdeaf7d48d11"},
+      {"name": "destination_hotel_offers", "count": 0, "rows_md5": "d41d8cd98f00b204e9800998ecf8427e"},
+      {"name": "hotel_booking_clicks_all", "count": 0, "rows_md5": "d41d8cd98f00b204e9800998ecf8427e"},
+      {"name": "hotel_offers", "count": 0, "rows_md5": "d41d8cd98f00b204e9800998ecf8427e"},
+      {"name": "non_scope_hotel_options", "count": 342, "rows_md5": "08d2ababcf598379d25bf3662ba5a9e7"},
+      {"name": "non_scope_hotel_products", "count": 59, "rows_md5": "ccd82aa4246b4f7a3079e908523ea340"},
+      {"name": "old_hotel_receipts_408", "count": 408, "rows_md5": "b327e4c4e2e10c2deea065b63112c1cf"},
+      {"name": "travel_service_config", "count": 1, "rows_md5": "c5c287f8356ca627d0e399d43e654d9a"}
+    ],
+    "changed_before_to_after": [
+      {
+        "name": "provider_configs_full", "count_all_phases": 15,
+        "before_md5": "6640f52de79e1121ec21c9c55f20abeb",
+        "after_md5": "2a1d12ab9eb31553dfb84c6d2c919438",
+        "after_replay_md5": "2a1d12ab9eb31553dfb84c6d2c919438"
+      },
+      {
+        "name": "provider_configs_stable", "count_all_phases": 15,
+        "before_md5": "a903f1956b37b7bb952c7c02bc77b2bf",
+        "after_md5": "1952e010107f0b07037582280426198e",
+        "after_replay_md5": "1952e010107f0b07037582280426198e"
+      }
+    ],
+    "stable_group_is_not_only_timestamp_drift": true,
+    "stable_group_excluded_fields": [
+      "created_at", "updated_at", "last_tested_at", "last_test_status", "last_test_message"
+    ]
+  },
+  "concurrent_change_diagnosis": {
+    "status": "supported_by_sanitized_read_only_backup_comparison_and_matching_audit",
+    "evidence_artifact": "provider-config-concurrency.json",
+    "comparison_implementation": "compare_provider_backup.py",
+    "executed_comparison_implementation_sha256": "60a8cee9aaf7275f0026275523dddb666717a9358e9924a139e4970cf1e14e61",
+    "local_comparison_source_note": "The separately pinned local source was subsequently formatted and uses the equivalent datetime.UTC alias. It was read again; the remote executed source hash above remains recorded separately and was not rewritten.",
+    "backup_sha256": "fb52a997476aadb43ba44c0da770df4f1b543521fa8c6f9a6b267feec24a792f",
+    "provider_rows": 15,
+    "unchanged_full_provider_rows": 14,
+    "changed_provider": "layout",
+    "changed_row_fields": ["config", "updated_at"],
+    "changed_config_fields": ["alerts_enabled"],
+    "layout_before_normalized_sha256": "077ba4198de700671f6c6de302347a2e6e5454ca30d83537eed6b7a38db9a8da",
+    "layout_current_normalized_sha256": "157c0517ba8d0964f456af0cfae73f69495dd3202d5d79c9209a727554f0247b",
+    "layout_updated_at": "2026-09-09T00:59:41.715125+00:00",
+    "audit": {
+      "action": "layout_settings_updated", "target": "layout",
+      "created_at": "2026-09-09T00:59:41.725952+00:00",
+      "config_fields": ["alerts_enabled"],
+      "actor_present": true,
+      "actor_matches_hotel_root": true
+    },
+    "attribution_note": "The matching audit belongs to the same administrator as the hotel root. Evidence supports a separate concurrent layout-settings request, not a claim that another person made it. The layout change predates the first normal hotel mutation audit. No setting was restored or written by this assessment.",
+    "timestamp_normalization_only_in_comparison_memory": true,
+    "raw_settings_and_secret_values_not_emitted": true,
+    "limitation": "This independent assessor reviewed the sanitized, SHA-pinned backup/current comparison and its implementation, not the remote raw backup. Its normalized per-row SHA256 representation is distinct from the three SQL captures' aggregate PostgreSQL MD5 representation; they are not claimed to be interchangeable or a proof of globally quiescent settings."
+  },
+  "timeline_utc": {
+    "sql_before": "2026-09-09T00:58:27.876322+00:00",
+    "layout_settings_audit": "2026-09-09T00:59:41.725952+00:00",
+    "first_hotel_normal_audit": "2026-09-09T01:00:29.290800+00:00",
+    "last_hotel_normal_audit": "2026-09-09T01:01:29.872211+00:00",
+    "sql_after": "2026-09-09T01:02:38.135318+00:00",
+    "sql_after_replay": "2026-09-09T01:04:00.719270+00:00",
+    "provider_comparison": "2026-09-09T01:09:11.534270+00:00"
+  },
+  "qualified_acceptance_boundary": {
+    "hotel_results_supported": true,
+    "all_protected_state_unchanged": false,
+    "all_checks_pass": false,
+    "allowed_use": "Report only the independently verified 19 hotel outcomes, remaining pending inventory, public API result and zero-change replay, alongside this explicit concurrent-settings qualification.",
+    "required_preservation": "Keep strict-verification-failure.json, the original verifier, all three original SQL/public snapshots and the pinned manifest unchanged. Do not generate a strict passed report or rewrite a baseline to hide the layout change.",
+    "not_authorized": "No blanket provider-config exemption, no future drift exemption, no claim that all deployment checks passed, and no rollback of the concurrent layout setting.",
+    "downstream_guard": "Require status=qualified, final_acceptance=false, hotel_checks_passed=true and exact input file hashes. A remaining-items report must retain the strict failure and this qualification; these fields are not a substitute for strict final acceptance."
+  },
+  "input_file_sha256": {
+    "before.json": "8b436723edaac7e69b37734da80754b6f6953605f0f6eb6ddcff8e387c39b522",
+    "manifest.json": "2a0b4c880d948c237822aba74194138d963977296f9fdd9abc0b1f41e1794d9e",
+    "dry-run.ndjson": "7f8f96af17ee51e652ed6c8f52a1718b56c6580120ba02782196808b84341cee",
+    "apply.ndjson": "938e86263d87221c5d806e8f44cbf6bb16dc742e35d6387f09fa84ff59f48283",
+    "replay.ndjson": "d6216fd0accb00117726a082395558319c66b2b53f48a0c2b0ea4523beb52339",
+    "final-snapshot.json": "0e8adddea6643cf079766f0f6be41d67e1c0d33446d8ec517d7229bb00585956",
+    "post-replay-snapshot.json": "85ed99b0643bec9532921b5cc53a4f71d1f155669f00652b6ea1506e10dda890",
+    "verify_results.py": "9edd359e03253bb954cade913d0c6f1be28aaab828c3cf7ab184af2baf0b745d",
+    "independent_verify.sql": "c29969e80361e6d303dd51a3ef24b75eede4bea1da978ebd9560bf2f5feb958e",
+    "westin-coordinate-evidence.json": "e061688910823641123af88a8230da121e2dc5af6749e35815df044de3b95c40",
+    "independent-before.json": "d25e2bd0397ba5797498eb351b27cab6b0fa7d128eb2fe9533f9aeb232d83447",
+    "independent-after.json": "5fc62d41f1419701db034b813c78afd501835e6ffdaa71ca9e74f766dd664f39",
+    "independent-after-replay.json": "d01d6ddd45f447264de1843180122e7652acc6542c50fb4e9e057b6a769425b5",
+    "public-before.json": "fd1f44f7210a490352e9459644f803007b50d173ef3b6f82659cc0e031c014e7",
+    "public-after.json": "9a86ebdac9d733b6871a4dce262c5061028b5d4e9951d3ec71ac2859e14d7cf7",
+    "public-after-replay.json": "ff84b723c663529e463ec75260fcf6c3e7605b316b9e1ad753134b0eb192d43e",
+    "provider-config-concurrency.json": "d0fe380cd7a3fca56f71ba18956a6dd02f9ededdf0f0ececbf8136e694072e2a",
+    "compare_provider_backup.py": "e650cbdf5e5719fe1fac51fa5027b475eed7d1e95a588416ea0a08cd15069620",
+    "strict-verification-failure.json": "6440a5dbadf2aea95499651154a1642a9f2fcd16839821e0c583c215e5a435a9"
+  }
+}

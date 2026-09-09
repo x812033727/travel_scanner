@@ -1,0 +1,128 @@
+BEGIN
+SET
+ section  | phase  |          captured_at          | isolation_level | read_only |          baseline_at          |                          baseline_hash                           
+----------+--------+-------------------------------+-----------------+-----------+-------------------------------+------------------------------------------------------------------
+ snapshot | before | 2026-09-08 21:43:44.260272+00 | repeatable read | on        | 2026-09-08 21:18:03.737914+00 | c938d83913645ac6a7651eca0e705621b33b40bb235905392c54917492bdb03d
+(1 row)
+
+     section      | hotel_products | hotel_options | approved_products | approved_options | expected_hotel_products | expected_hotel_options | expected_approved_products | expected_approved_options 
+------------------+----------------+---------------+-------------------+------------------+-------------------------+------------------------+----------------------------+---------------------------
+ inventory_totals |             60 |           360 |                40 |              255 |                      60 |                    360 |                         40 |                       255
+(1 row)
+
+    section     |  city  |  status  | rows |             rows_md5             
+----------------+--------+----------+------+----------------------------------
+ hotel_products | busan  | pending  |   10 | 8dbe90d77ab89152f8a08ad0bfb8913e
+ hotel_products | kyoto  | pending  |   10 | fbd1b8627bf0914a694ed8eaade04fc0
+ hotel_products | osaka  | approved |   10 | 0e13f0c2d9368ce6b220213a36f14f46
+ hotel_products | seoul  | approved |   10 | d6eb236b58920f2864aca9b9d94a5696
+ hotel_products | taipei | approved |   10 | f94d48ec75a475fe4bcf76d3aafc370a
+ hotel_products | tokyo  | approved |   10 | 1e9ba2986cb8fbbe40ae25014e136edd
+(6 rows)
+
+    section    |  city  | provider |  status  | discovery_status | rows |             rows_md5             
+---------------+--------+----------+----------+------------------+------+----------------------------------
+ hotel_options | busan  | agoda    | pending  | unconfirmed      |   10 | 50e81da9abc81f7c8995277aa3c6a9f0
+ hotel_options | busan  | booking  | approved | found            |   10 | 25e13b4f9832b35d7384083099cb8a12
+ hotel_options | busan  | expedia  | pending  | unconfirmed      |   10 | 44360d60cd95e86ac9c41612daecb89a
+ hotel_options | busan  | official | approved | found            |    9 | 4c0c6d11ceffa90bb845f3cb5933f6b0
+ hotel_options | busan  | official | pending  | found            |    1 | fb93889772c74b293cd08b8611872012
+ hotel_options | busan  | rakuten  | pending  | unconfirmed      |   10 | 33ec55c4c6069fd5964897bd9759ace4
+ hotel_options | busan  | trip_com | approved | found            |    9 | 7a64adbd0de5ee18eeb9619f83a8d7b6
+ hotel_options | busan  | trip_com | pending  | found            |    1 | dd518aa2e9f3ce6268aa83c50d586d35
+ hotel_options | kyoto  | agoda    | approved | found            |    8 | 01c7bad244f1b1e5f4e264b37dae090f
+ hotel_options | kyoto  | agoda    | pending  | found            |    2 | 6a91b1b7e4fb258b5e6f59f88b14eceb
+ hotel_options | kyoto  | booking  | approved | found            |    9 | 83af410383d397bab2b1f6677ddbf902
+ hotel_options | kyoto  | booking  | pending  | found            |    1 | 2f271ad7a39ca6696b5fcbbf51af2f31
+ hotel_options | kyoto  | expedia  | pending  | unconfirmed      |   10 | 5bb3a0fc758c6c3fed752bfb07e96190
+ hotel_options | kyoto  | official | approved | found            |    9 | 4c05348d42ad76ad7fbc15093b9a8e92
+ hotel_options | kyoto  | official | pending  | found            |    1 | 9c34fdcba6719b6d8bd519267302b6f7
+ hotel_options | kyoto  | rakuten  | approved | found            |    9 | 48966b9a28465a3dc5d2de7c6acf8e0a
+ hotel_options | kyoto  | rakuten  | pending  | found            |    1 | 255e5608931ab77a54b1f8a87ee6ba6a
+ hotel_options | kyoto  | trip_com | approved | found            |    9 | fa77807337f2dfe454b5fdd3743d001e
+ hotel_options | kyoto  | trip_com | pending  | found            |    1 | c3611ec6e46b521d2a615137e51a354f
+ hotel_options | osaka  | agoda    | approved | found            |    8 | fc6cc98d91dd99ab93ac82ac39607321
+ hotel_options | osaka  | agoda    | pending  | unconfirmed      |    2 | daf327a3f70da3e18ee2bb8da6ab6f3c
+ hotel_options | osaka  | booking  | approved | found            |   10 | b231e5e3766acea375919491d22c23cc
+ hotel_options | osaka  | expedia  | approved | found            |    3 | 841c588e2f41a7dff49f9d5a160ad5b0
+ hotel_options | osaka  | expedia  | pending  | unconfirmed      |    7 | 64eaecf3be5184cde86f58e7da755a7a
+ hotel_options | osaka  | official | approved | found            |   10 | 05391a48dd46c29aa2812c896c919a76
+ hotel_options | osaka  | rakuten  | approved | found            |    3 | 00ebbc0c32bf7a3f4ab421e6ee055979
+ hotel_options | osaka  | rakuten  | pending  | unconfirmed      |    7 | 4b78f5844c79ba2c0cd79ad2922c8231
+ hotel_options | osaka  | trip_com | approved | found            |   10 | fefa070e645290ce3d64bc4fb97cba57
+ hotel_options | seoul  | agoda    | approved | found            |   10 | 926efbc5a4a144c352dc1b32d90944d3
+ hotel_options | seoul  | booking  | approved | found            |   10 | 703fd5c8ef7ab7a4341949e2ff3877a3
+ hotel_options | seoul  | expedia  | approved | found            |   10 | 4c1f5dbae9a08c006d33258e0b2931bc
+ hotel_options | seoul  | official | approved | found            |    9 | 86604adc46425a1ab6847639fa9a87e1
+ hotel_options | seoul  | official | pending  | found            |    1 | 2e9746ba3233b727766d408fd8ec1943
+ hotel_options | seoul  | rakuten  | approved | found            |    2 | b04e56c0ac82f0c293a373eefae5fea4
+ hotel_options | seoul  | rakuten  | pending  | unconfirmed      |    8 | 9ff02d19b41e2bc2f3b85f204d71f827
+ hotel_options | seoul  | trip_com | approved | found            |    9 | c491eec9300b5f2733c3dff95975d36f
+ hotel_options | seoul  | trip_com | pending  | found            |    1 | 66419609769a7e4f7b62f7815f2adaa1
+ hotel_options | taipei | agoda    | approved | found            |    4 | 6b5ac2b9283d6f5081c347757200a76a
+ hotel_options | taipei | agoda    | pending  | unconfirmed      |    6 | 3a02b117ea5ab5d9e86df5a116d707f3
+ hotel_options | taipei | booking  | approved | found            |   10 | 1b3d1f8ba75982c8599620527eff41e8
+ hotel_options | taipei | expedia  | approved | found            |    5 | 7dd978c7a57b9f0eef7793807ed2d4a0
+ hotel_options | taipei | expedia  | pending  | unconfirmed      |    5 | 5897b7c63e1802c347bcb137d4e9bb6b
+ hotel_options | taipei | official | approved | found            |    9 | 7731239c670b8ac505f7600b14ead683
+ hotel_options | taipei | official | pending  | found            |    1 | 6b698cebefb96a521ddd94006543290b
+ hotel_options | taipei | rakuten  | approved | found            |    3 | 02340ec967b5a226fb323f823a7a2154
+ hotel_options | taipei | rakuten  | pending  | unconfirmed      |    7 | 92f0dadfd3ca147451323cd10a19dbf5
+ hotel_options | taipei | trip_com | approved | found            |   10 | 1022108e0dce9e9a75badaa7183dc43d
+ hotel_options | tokyo  | agoda    | approved | found            |    6 | 9854cf66dc994e7f0fa2d32b97f8bcba
+ hotel_options | tokyo  | agoda    | pending  | unconfirmed      |    4 | c7d398a15537a3ca66419bd703f100ad
+ hotel_options | tokyo  | booking  | approved | found            |   10 | a517af25553c3f308e0a070593f3b3c0
+ hotel_options | tokyo  | expedia  | approved | found            |    4 | 9bae22ed71b77e77bfd601b26888b44a
+ hotel_options | tokyo  | expedia  | pending  | unconfirmed      |    6 | ab5647e63b46121e151e63259e19657d
+ hotel_options | tokyo  | official | approved | found            |   10 | 93de9d05769d09ba0adc3d2b3f2e1fc3
+ hotel_options | tokyo  | rakuten  | approved | found            |    8 | ca719cd1ba8b67eef587c63984b807d7
+ hotel_options | tokyo  | rakuten  | pending  | unconfirmed      |    2 | 7ef48b66431945fade4d67c374201265
+ hotel_options | tokyo  | trip_com | approved | found            |   10 | eef94c05b3d4e3e0c7d42fdfeb03d421
+(56 rows)
+
+     section      |            bucket            | rows | expected_rows | count_matches |             rows_md5             
+------------------+------------------------------+------+---------------+---------------+----------------------------------
+ protected_groups | all_hotel_products_unchanged |   60 |            60 | t             | 064d321e8517be1bc22543bda321cc78
+ protected_groups | all_non_hotel_options        |    0 |               |               | d41d8cd98f00b204e9800998ecf8427e
+ protected_groups | all_non_hotel_products       |    0 |               |               | d41d8cd98f00b204e9800998ecf8427e
+ protected_groups | all_non_scope_hotel_options  |  336 |           336 | t             | a4e5d060204ad9dcc52e57b6647d716b
+ protected_groups | initial_approved_options_255 |  255 |           255 | t             | 601ef960d9333a3dc03edd69b51b4767
+ protected_groups | initial_approved_products_40 |   40 |            40 | t             | f93c8b540d3ab3edd636094178065384
+(6 rows)
+
+        section         |  kind   |                  id                  | status  | version |             row_md5              | receipt_outcome 
+------------------------+---------+--------------------------------------+---------+---------+----------------------------------+-----------------
+ scope_row_fingerprints | option  | 00307d02-975e-4b2f-8843-df7000cd7c50 | pending |       1 | 890d01368f24620203a25d6871b90ee8 | 
+ scope_row_fingerprints | option  | 050877e8-6f0d-4ee1-81b6-2bcd9d21ebc7 | pending |       1 | 237d5736b8980e3ac550981c67e59523 | 
+ scope_row_fingerprints | option  | 12371d73-601e-4351-b472-1c0fc68be7ad | pending |       1 | 06c0a2160e918220926badb688277584 | 
+ scope_row_fingerprints | option  | 1eb77c39-ad06-4348-8a81-b6937bd1de5d | pending |       1 | f039fedab8e94dc15e0e85b45ecf99de | 
+ scope_row_fingerprints | option  | 2156ce3c-3c4c-4822-a307-098bf4e2c06d | pending |       1 | 7e93e2a14245639052253c85cf8fc686 | 
+ scope_row_fingerprints | option  | 2c41cd84-0813-42cf-8a54-003bc6f0cff4 | pending |       1 | 1800405eb24ab9338b2263a607967910 | 
+ scope_row_fingerprints | option  | 305f394d-7963-4d03-af74-406ff496a7cf | pending |       1 | e3f83939677bcf670b8885f511121b35 | 
+ scope_row_fingerprints | option  | 469f672a-4230-43e1-95c7-75cfc759a3ee | pending |       1 | 026867e7433dc336ea0ca3ea2c513594 | 
+ scope_row_fingerprints | option  | 47832850-bc24-42f7-a0c2-5abf24dd8200 | pending |       1 | 31b9e10e01b3eda90ce39bebedb9de36 | 
+ scope_row_fingerprints | option  | 494e0fb1-0812-4914-82b8-829cedbdf1c0 | pending |       1 | 722e729bdc5e1dfba6ba5d607f7cc9b1 | 
+ scope_row_fingerprints | option  | 4e1ee548-4abd-47ec-b971-9ec2a700e1b9 | pending |       1 | 1bd659826f30c8733ab2e4b13d1e75e6 | 
+ scope_row_fingerprints | option  | 64ee9069-11b6-410f-9143-c48f5ff6155b | pending |       1 | a69fd2cd009650716607349aa5cf843d | 
+ scope_row_fingerprints | option  | 6ddd5137-9ffe-4649-b6d5-cb33389b3cf8 | pending |       1 | d7cdefb39569fcc2436e864cb9877407 | 
+ scope_row_fingerprints | option  | 709186f5-c0bf-413b-ac21-d9a8ac6121a0 | pending |       1 | 89be8e1a6ebdb63fa7a6747950c50c5b | 
+ scope_row_fingerprints | option  | 823126b6-3621-43fb-8a9f-40a5568bb3f9 | pending |       1 | 773e61be0079f05823f28a3cb4da3df3 | 
+ scope_row_fingerprints | option  | 83554f6b-a045-4a89-ab61-27f077e42d58 | pending |       1 | c110560a6e4208d59091691102bd2986 | 
+ scope_row_fingerprints | option  | a6c60862-2199-486d-bc3c-5b77e4decf12 | pending |       1 | 5141029f82862baed4e5314725125a31 | 
+ scope_row_fingerprints | option  | b6194681-cb1c-4421-8418-cb09781046f8 | pending |       1 | 2b4b978ec28477ee72d88d57eaf0b703 | 
+ scope_row_fingerprints | option  | bb5f25c1-ca5c-4a58-99d4-f03b52625004 | pending |       1 | 47e179e225dba691690608847a24c356 | 
+ scope_row_fingerprints | option  | bc4916c6-8db8-4aab-b1c3-4e82f6edbe34 | pending |       1 | a5cd79ad5ab83787d13a635650e0657d | 
+ scope_row_fingerprints | option  | ce3c41de-25a7-494e-a8e7-681b40d61b71 | pending |       1 | f3c33a3e83d89f8c18383c15897540e7 | 
+ scope_row_fingerprints | option  | d55df51d-b401-468a-8149-bec50508b4c2 | pending |       1 | a3e87602150248f89a3dc1df21def168 | 
+ scope_row_fingerprints | option  | dfb3fe0e-7026-4a86-af7f-ea56c967353d | pending |       1 | de450dd9d2e394dba8bbe04a54fbf775 | 
+ scope_row_fingerprints | option  | f8391277-3692-4ba2-9b29-89794931e864 | pending |       1 | e634c3dbac76681f14553eaecc3f5ffb | 
+ scope_row_fingerprints | product | 50f2d47d-24fe-4b07-85a2-3e1c7671e452 | pending |       1 | 76f2e074df8a465f59378708e17ac63e | 
+ scope_row_fingerprints | product | 758907f4-4870-421e-bf6c-6243cdcc30c4 | pending |       1 | 5ba749ed0f338e375e0c205bdc44be70 | 
+ scope_row_fingerprints | product | a124dc1e-7f75-44ff-b12d-080da031b3b9 | pending |       1 | b2a39abb1344653741c79d65d884a924 | 
+(27 rows)
+
+        section        | matching_roots | review_pending_roots | active_actors | authenticated_request_audits 
+-----------------------+----------------+----------------------+---------------+------------------------------
+ root_actor_provenance |              1 |                    1 |             1 |                            1
+(1 row)
+
