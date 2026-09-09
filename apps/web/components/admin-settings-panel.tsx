@@ -650,7 +650,7 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
   const copy = adminSettingsCopy(useLocale());
   const budgetCopy = adminCatalogBudgetCopy(useLocale());
   const affiliateCopy = klookAffiliateCopy(useLocale());
-  const { sessionIdentity } = useHeaderSession();
+  const { sessionIdentity, status: sessionStatus } = useHeaderSession();
   const { dateTime } = useFormatters();
   const router = useRouter();
   const manage = useAdminActionGuard("settings.manage");
@@ -663,6 +663,7 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
   const discardOnLeave = useRef(false);
   const snapshotEpoch = useRef(0);
   const [snapshot, setSnapshot] = useState<Snapshot>();
+  const [snapshotSession, setSnapshotSession] = useState<{ identity: object | null }>();
   const [drafts, setDrafts] = useState<Record<string, Draft>>({});
   const [loadError, setLoadError] = useState<LoadFailure>();
   const [busyProvider, setBusyProvider] = useState<string>();
@@ -679,6 +680,7 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
     const retained = sessionIdentity ? routeDrafts.get(sessionIdentity)?.get(scope) : undefined;
     if (sessionIdentity) routeDrafts.get(sessionIdentity)?.delete(scope);
     setSnapshot(result);
+    setSnapshotSession({ identity: sessionIdentity });
     setDrafts((current) => {
       const fresh = makeDrafts(result);
       for (const [name, draft] of Object.entries({ ...retained, ...(sameSession ? current : {}) })) {
@@ -883,7 +885,11 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
     {loadError.kind !== "unreachable" && loadError.requestId && <p className="mt-2 text-xs">{t("settingsPanel.loadErrorRequestId", { id: loadError.requestId })}</p>}
     {loadError.kind !== "permission" && <button type="button" onClick={retryLoad} className="mt-3 inline-flex items-center gap-1.5 rounded-lg border border-red-200 bg-white px-3 py-2 text-sm font-semibold"><RefreshCw size={14} />{t("settingsPanel.loadErrorRetry")}</button>}
   </div>;
-  if (!snapshot) return <p className="mt-8 flex items-center gap-2 text-[var(--muted)]"><LoaderCircle className="animate-spin" size={18} />{t("settingsPanel.loading")}</p>;
+  // The initial settings read can finish before /auth/me. Do not expose an
+  // editable, unbound draft that the next session-owned read must discard.
+  // A session switch likewise waits for that session's own snapshot; we never
+  // transfer the previous account's drafts to make the form appear ready.
+  if (!snapshot || sessionStatus === "loading" || snapshotSession?.identity !== sessionIdentity) return <p role="status" className="mt-8 flex items-center gap-2 text-[var(--muted)]"><LoaderCircle className="animate-spin" size={18} />{t("settingsPanel.loading")}</p>;
 
   const visibleProviders = snapshot.providers.filter((provider) => {
     if (isDomainSettingsScope(scope)) return settingsOwner(provider.provider, "enabled") === scope

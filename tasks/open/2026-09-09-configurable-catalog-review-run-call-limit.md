@@ -1,11 +1,11 @@
 ---
 id: 2026-09-09-configurable-catalog-review-run-call-limit
 title: Configurable catalog review run call limit
-status: review
+status: in-progress
 priority: P1
 area: api
 owner: codex-catalog-call-limit
-claimed_at: 2026-09-09T12:12:50Z
+claimed_at: 2026-09-09T15:54:14Z
 created_at: 2026-09-09T12:11:48Z
 completed_at:
 branch: codex/catalog-review-call-limit

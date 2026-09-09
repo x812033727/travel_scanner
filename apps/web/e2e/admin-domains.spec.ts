@@ -218,7 +218,12 @@ for (const theme of ["light", "dark"] as const) {
     await expect(input).toHaveValue("80");
     await expect(input).toHaveAttribute("min", "1");
     await expect(input).toHaveAttribute("max", "1000");
+    // The editor appears only after its snapshot belongs to the settled login.
+    // Verify readiness once, then edit once; a later reset must fail the test.
+    await expect(input).toBeEnabled();
     await input.fill("160");
+    await expect(input).toHaveValue("160");
+    await expect(page.getByRole("button", { name: "儲存設定", exact: true })).toBeEnabled();
     await page.getByRole("button", { name: "儲存設定", exact: true }).click();
     await expect.poll(() => writes.length).toBe(1);
     expect(writes[0]).toEqual({ path: "/admin/provider-settings/gemini_guides", body: { config: { catalog_review_max_calls: 160 }, secrets: {}, expected_updated_at: "2026-09-09T08:00:00Z" } });
