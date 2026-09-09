@@ -62,12 +62,17 @@ describe("route mode panel", () => {
     expect(container.querySelector(".route-panel-detail")).toBeNull();
   });
 
-  it.each(["failed", "unavailable", "pending"])("does not label a %s saved route as applied or display its placeholder zero minutes", (status) => {
+  it.each(["failed", "unavailable", "pending"])("does not label a %s saved route as applied or display its placeholder zero minutes", async (status) => {
     vi.stubGlobal("fetch", vi.fn(async () => ok({ google_maps_javascript_enabled: false })));
-    const { container } = render(<RouteModePanel trip={trip} items={items} fromItemId="from" toItemId="to" initialSegment={{ ...initialSegment, status, duration_minutes: 0 }} onApplied={vi.fn()} onError={vi.fn()} />);
+    let container!: HTMLElement;
+    await act(async () => {
+      ({ container } = render(<RouteModePanel trip={trip} items={items} fromItemId="from" toItemId="to" initialSegment={{ ...initialSegment, status, duration_minutes: 0 }} onApplied={vi.fn()} onError={vi.fn()} />));
+    });
     expect(container.querySelector("[data-route-state='unavailable']")).toBeTruthy();
     expect(screen.queryByRole("button", { name: "目前已套用" })).toBeNull();
-    expect(screen.queryByText("0 分鐘")).toBeNull();
+    expect(container.querySelector(".route-apply-selection")?.textContent).not.toContain("0 分鐘");
+    expect(container.querySelector(".route-panel-modes")?.textContent).not.toContain("0 分鐘");
+    expect(container.querySelector(".route-panel-detail")).toBeNull();
     expect((screen.getByRole("button", { name: "查詢交通方案" }) as HTMLButtonElement).disabled).toBe(false);
   });
 
@@ -94,6 +99,74 @@ describe("route mode panel", () => {
     expect(screen.getByRole("button", { name: /大眾運輸 · 24 分鐘/ })).toBeTruthy();
     expect((screen.getByRole("button", { name: "重試" }) as HTMLButtonElement).disabled).toBe(false);
     expect(screen.queryByRole("button", { name: "目前已套用" })).toBeNull();
+  });
+
+  it("retains a provider route with a fixed-time conflict for explicit review and apply", async () => {
+    const conflicting = { ...initialSegment, status: "conflict", warnings: ["固定預約可能遲到 12 分鐘"] };
+    const applyBodies: Array<Record<string, unknown>> = [];
+    const onApplied = vi.fn();
+    vi.stubGlobal("fetch", vi.fn(async (url: string, init?: RequestInit) => {
+      if (url.endsWith("/runtime/public-config")) return ok({ google_maps_javascript_enabled: false });
+      if (url.endsWith("/routes/apply")) {
+        applyBodies.push(JSON.parse(String(init?.body)));
+        return ok({ ...trip, version: 4, route_segments: [conflicting] });
+      }
+      return ok({ preview_id: "conflicting-provider", expires_at: "2100-01-01T00:00:00Z", segment: conflicting, schedule_impact: {
+        affected_items: [],
+        conflicts: [{ item_id: "to", title: "淺草預約", late_minutes: 12, suggestions: ["提早出發"] }],
+      } });
+    }));
+    const { container } = render(<RouteModePanel trip={trip} items={items} fromItemId="from" toItemId="to" onApplied={onApplied} onError={vi.fn()} />);
+    fireEvent.click(screen.getByRole("button", { name: "查詢交通方案" }));
+    const applyButton = await screen.findByRole("button", { name: "套用此路線" });
+    expect(container.querySelector("[data-route-state='preview']")).toBeTruthy();
+    expect(screen.getByText("可能遲到 12 分鐘")).toBeTruthy();
+    expect(screen.getByText("固定預約可能遲到 12 分鐘")).toBeTruthy();
+    expect((applyButton as HTMLButtonElement).disabled).toBe(false);
+    expect(applyBodies).toHaveLength(0);
+    fireEvent.click(applyButton);
+    await waitFor(() => expect(onApplied).toHaveBeenCalledOnce());
+    expect(applyBodies[0]).toMatchObject({ source: "provider", preview_id: "conflicting-provider" });
+  });
+
+  it.each([
+    { provider: "google_routes", state: "applied", label: "已套用路線，請留意預約衝突" },
+    { provider: "manual", state: "manual", label: "已套用手動時間，未經地圖服務確認" },
+  ])("preserves saved $provider conflict timing and its warning", async ({ provider, state, label }) => {
+    vi.stubGlobal("fetch", vi.fn(async () => ok({ google_maps_javascript_enabled: false })));
+    let container!: HTMLElement;
+    await act(async () => {
+      ({ container } = render(<RouteModePanel trip={trip} items={items} fromItemId="from" toItemId="to" initialSegment={{ ...initialSegment, provider, status: "conflict", warnings: ["固定預約可能遲到 12 分鐘"] }} onApplied={vi.fn()} onError={vi.fn()} />));
+    });
+    expect(container.querySelector(`[data-route-state='${state}']`)).toBeTruthy();
+    expect(screen.getByRole("status").textContent).toContain(label);
+    expect(screen.getByText("固定預約可能遲到 12 分鐘")).toBeTruthy();
+    expect((screen.getByRole("button", { name: "目前已套用" }) as HTMLButtonElement).disabled).toBe(true);
+    expect(screen.queryByRole("button", { name: "套用此路線" })).toBeNull();
+  });
+
+  it.each([
+    { provider: "estimate", schedule_mode: "scheduled" as const },
+    { provider: "google_routes", schedule_mode: "estimate" as typeof initialSegment.schedule_mode },
+  ])("does not treat a conflicted estimate as confirmed provider timing ($provider/$schedule_mode)", async ({ provider, schedule_mode }) => {
+    const estimatedConflict = { ...initialSegment, provider, schedule_mode, status: "conflict", warnings: ["固定預約可能遲到 12 分鐘"] };
+    const applyBodies: Array<unknown> = [];
+    vi.stubGlobal("fetch", vi.fn(async (url: string, init?: RequestInit) => {
+      if (url.endsWith("/runtime/public-config")) return ok({ google_maps_javascript_enabled: false });
+      if (url.endsWith("/routes/apply")) applyBodies.push(init?.body);
+      return ok({ preview_id: "estimated-conflict", expires_at: "2100-01-01T00:00:00Z", segment: estimatedConflict, schedule_impact: { affected_items: [], conflicts: [] } });
+    }));
+    let container!: HTMLElement;
+    await act(async () => {
+      ({ container } = render(<RouteModePanel trip={trip} items={items} fromItemId="from" toItemId="to" initialSegment={estimatedConflict} onApplied={vi.fn()} onError={vi.fn()} />));
+    });
+    expect(container.querySelector("[data-route-state='estimated']")).toBeTruthy();
+    expect(screen.getByRole("status").textContent).toContain("估算移動時間");
+    expect(screen.getByText("固定預約可能遲到 12 分鐘")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "目前已套用" })).toBeNull();
+    await act(async () => { fireEvent.click(screen.getByRole("button", { name: "查詢交通方案" })); });
+    expect(screen.queryByRole("button", { name: "套用此路線" })).toBeNull();
+    expect(applyBodies).toHaveLength(0);
   });
   it("keeps initial mode, tab and buffer choices local until an explicit query", async () => {
     const requests: Array<Record<string, unknown>> = [];

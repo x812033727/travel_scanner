@@ -55,7 +55,7 @@ describe("system itinerary card", () => {
       locale="zh-TW" busy={false} onEdit={vi.fn()} />);
     expect(screen.getByRole("article")).toHaveAttribute("data-stop-tone", systemRole === "hotel_start" ? "hotel" : systemRole);
     expect(screen.getByText(systemRole === "hotel_start"
-      ? "設定一次後，會建立每天的出發與返回路線" : "設定並確認地點後，才能計算完整路線")).toBeVisible();
+      ? "設定並確認住宿地點後，可查詢每天的出發與返回路線" : "設定並確認地點後，才能計算完整路線")).toBeVisible();
     expect(screen.getByRole("button", { name: systemRole === "hotel_start" ? "設定主要飯店" : "選擇餐廳" })).toBeEnabled();
   });
 

@@ -82,8 +82,22 @@ function hasUsableDuration(segment?: RouteSegment) {
     && ["resolved", "complete", "manual", "estimated", "stale", "conflict"].includes(segment.status));
 }
 
+function isEstimatedTiming(segment?: RouteSegment) {
+  return Boolean(segment && (segment.status === "estimated" || segment.provider === "estimate"
+    || String(segment.schedule_mode) === "estimate"));
+}
+
+function isManualTiming(segment?: RouteSegment) {
+  return Boolean(segment && !isEstimatedTiming(segment)
+    && (segment.provider === "manual" || segment.status === "manual"));
+}
+
 function hasVerifiedTiming(segment?: RouteSegment) {
-  return Boolean(segment && hasUsableDuration(segment) && ["resolved", "complete"].includes(segment.status));
+  // A schedule conflict describes a late fixed reservation, not invalid routing
+  // data. The backend preserves the source when projecting that status.
+  return Boolean(segment && hasUsableDuration(segment) && segment.provider.trim()
+    && !isManualTiming(segment) && !isEstimatedTiming(segment)
+    && ["resolved", "complete", "conflict"].includes(segment.status));
 }
 
 function previewOptions(preview?: ProviderRoutePreview): RouteOptionPreview[] {
@@ -291,16 +305,16 @@ export function RouteModePanel({
   const savedExpired = Boolean(initialMatches && initialSegment?.provider !== "manual"
     && initialSegment?.expires_at && previewExpired(initialSegment.expires_at));
   const isApplied = Boolean(initialMatches && hasUsableDuration(initialSegment)
-    && (hasVerifiedTiming(initialSegment) || initialSegment?.status === "manual")
+    && (hasVerifiedTiming(initialSegment) || (isManualTiming(initialSegment) && initialSegment?.status !== "stale"))
     && !savedExpired && !preview);
   const unresolvedItems = [fromItem, toItem].filter((item): item is TripItem => Boolean(item && !hasRoutePoint(item)))
     .map((item) => ({ item_id: item.id, title: item.title, reason: t("placePending") }));
   const settingsOutdated = !preview && (Boolean(initialSegment && !initialMatches) || Object.keys(previews).length > 0);
   const routeState = loadingMode ? "loading" : localError ? "error" : unresolvedItems.length ? "missing"
     : selectedExpired ? "expired" : canApplyPreview ? "preview" : externalNavigation ? "external"
-      : isApplied ? (initialSegment?.status === "manual" ? "manual" : "applied")
+      : isApplied ? (isManualTiming(initialSegment) ? "manual" : "applied")
         : initialMatches && (initialSegment?.status === "stale" || savedExpired) ? "stale"
-          : activeSegment?.status === "estimated" ? "estimated"
+          : isEstimatedTiming(activeSegment) ? "estimated"
             : preview || (initialMatches && initialSegment) ? "unavailable" : settingsOutdated ? "changed" : "idle";
 
   async function previewMode(nextMode: TravelMode, nextBuffer = buffer) {
@@ -413,7 +427,7 @@ export function RouteModePanel({
   const navigationUrl = externalNavigation?.web_url || activeSegment?.maps_url || directionsUrl;
   const stateLabel = routeState === "preview" ? t("previewReady") : routeState === "expired" ? t("previewExpired")
     : routeState === "stale" ? t("staleRoute") : routeState === "manual" ? t("manualApplied")
-      : routeState === "estimated" ? t("estimatedTiming") : routeState === "applied" ? t("applied")
+      : routeState === "estimated" ? t("estimatedTiming") : routeState === "applied" ? t(initialSegment?.status === "conflict" ? "appliedConflict" : "applied")
         : routeState === "external" ? t("externalNavigation") : routeState === "loading" ? t("fetching")
           : routeState === "error" || routeState === "unavailable" ? t("temporarilyUnavailable")
             : routeState === "missing" ? t("placePending") : routeState === "changed" ? timelineCopy.outdated : undefined;
