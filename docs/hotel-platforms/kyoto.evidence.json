@@ -1,0 +1,811 @@
+{
+  "dataset_url": "https://data.city.kyoto.lg.jp/dataset/00039/",
+  "resource_url": "https://data.city.kyoto.lg.jp/resource/?id=21412",
+  "dataset_title": "旅館業法に基づく許可施設及び施設外玄関帳場一覧（令和８年７月末時点）",
+  "publisher": "京都市 保健福祉局 医療衛生推進室 医療衛生センター",
+  "license_name": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/deed.ja",
+  "source_updated_at": "2026-08-19",
+  "extracted_on": "2026-09-08",
+  "catalog_status": "pending_research_not_approved",
+  "coordinate_status": "missing_source_dataset_has_no_coordinates",
+  "extraction": "Selected accommodation name/address/category/permit date only from Japanese ward sheets. No operators, personal names, complete spreadsheet, OTA descriptions, images, prices, ratings or reviews retained. The permit list contains no latitude/longitude columns; no geocoding or paid Places request performed.",
+  "hotels": [
+    {
+      "source_key": "editorial:kyoto:granvia-kyoto",
+      "permit_sheet": "下京区",
+      "permit_name": "ホテルグランヴィア京都",
+      "permit_address": "京都市下京区烏丸通塩小路下る東塩小路町９０１番地",
+      "permit_category": "旅館・ホテル",
+      "permitted_on": "H09.08.29",
+      "official_identity_url": "https://jrwest-hotels.jp/en/granvia-kyoto/",
+      "coordinate_status": "not_available",
+      "map_status": "not_checked",
+      "official_name_note": null,
+      "platform_research": [
+        {
+          "provider": "booking",
+          "searched_on": "2026-09-08",
+          "query": "Hotel Granvia Kyoto",
+          "searched_domains": [
+            "booking.com"
+          ],
+          "candidate_url": "https://www.booking.com/hotel/jp/granvia-kyoto-kyoto.html",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "trip_com",
+          "searched_on": "2026-09-08",
+          "query": "Hotel Granvia Kyoto",
+          "searched_domains": [
+            "trip.com"
+          ],
+          "candidate_url": "https://www.trip.com/hotels/kyoto-hotel-detail-993497/hotel-granvia-kyoto/",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "agoda",
+          "searched_on": "2026-09-08",
+          "query": "Hotel Granvia Kyoto",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "candidate_url": "https://www.agoda.com/hotel-granvia-kyoto/hotel/kyoto-jp.html",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "expedia",
+          "searched_on": "2026-09-08",
+          "query": "Hotel Granvia Kyoto",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "candidate_url": null,
+          "status": "unconfirmed",
+          "note": "2026-09-08 已將此平台納入飯店名稱搜尋；精準飯店落地頁／門牌尚待核實，不代表未販售。未核實 URL 僅留在研究證據，不作公開入口。"
+        },
+        {
+          "provider": "rakuten",
+          "searched_on": "2026-09-08",
+          "query": "site.travel.rakuten.com \"Hotel Granvia Kyoto\"",
+          "searched_domains": [
+            "travel.rakuten.com"
+          ],
+          "candidate_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_kyoto/cty_kyoto_city/10123456796201",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 找到 Rakuten Travel 國際站 Hotel Granvia Kyoto 京都飯店專頁；ID 僅取自實際 URL。已觀察名稱與京都城市，完整門牌及現行落地身份仍待審，不保存價格、評分、評論、照片或推算地圖／平台 ID。",
+          "document_freshness": "10 months ago"
+        }
+      ],
+      "review_blockers": [
+        "licensed_coordinates_missing",
+        "exact_google_place_id_missing",
+        "independent_product_and_option_review"
+      ]
+    },
+    {
+      "source_key": "editorial:kyoto:vischio-kyoto",
+      "permit_sheet": "南区",
+      "permit_name": "ホテルヴィスキオ京都　ｂｙ　ＧＲＡＮＶＩＡ",
+      "permit_address": "京都市南区東九条上殿田町４４番地１（東敷地）",
+      "permit_category": "旅館・ホテル",
+      "permitted_on": "R01.05.17",
+      "official_identity_url": "https://www.hotelvischio-kyoto.jp/access/",
+      "coordinate_status": "not_available",
+      "map_status": "not_checked",
+      "official_name_note": null,
+      "platform_research": [
+        {
+          "provider": "booking",
+          "searched_on": "2026-09-08",
+          "query": "Hotel Vischio Kyoto",
+          "searched_domains": [
+            "booking.com"
+          ],
+          "candidate_url": "https://www.booking.com/hotel/jp/hoteruvuisukiojing-du.html",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "trip_com",
+          "searched_on": "2026-09-08",
+          "query": "Hotel Vischio Kyoto",
+          "searched_domains": [
+            "trip.com"
+          ],
+          "candidate_url": "https://www.trip.com/hotels/kyoto-hotel-detail-25098068/hotel-vischio-kyoto-by-granvia/",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "agoda",
+          "searched_on": "2026-09-08",
+          "query": "Hotel Vischio Kyoto",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "candidate_url": "https://www.agoda.com/hotel-vischio-kyoto-by-granvia/hotel/kyoto-jp.html",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "expedia",
+          "searched_on": "2026-09-08",
+          "query": "Hotel Vischio Kyoto",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "candidate_url": null,
+          "status": "unconfirmed",
+          "note": "2026-09-08 已將此平台納入飯店名稱搜尋；精準飯店落地頁／門牌尚待核實，不代表未販售。未核實 URL 僅留在研究證據，不作公開入口。"
+        },
+        {
+          "provider": "rakuten",
+          "searched_on": "2026-09-08",
+          "query": "site.travel.rakuten.com \"Hotel Vischio Kyoto\"",
+          "searched_domains": [
+            "travel.rakuten.com"
+          ],
+          "candidate_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_kyoto/cty_kyoto_city/10123456864974",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 找到 Rakuten Travel 國際站 Hotel Vischio Kyoto by GRANVIA 京都飯店專頁；ID 僅取自實際 URL。已觀察名稱與京都城市，完整門牌及現行落地身份仍待審，不保存價格、評分、評論、照片或推算地圖／平台 ID。",
+          "document_freshness": "last week"
+        }
+      ],
+      "review_blockers": [
+        "licensed_coordinates_missing",
+        "exact_google_place_id_missing",
+        "independent_product_and_option_review"
+      ]
+    },
+    {
+      "source_key": "editorial:kyoto:daiwa-roynet-terrace-hachijo",
+      "permit_sheet": "南区",
+      "permit_name": "ダイワロイネットホテル京都テラス八条PREMIER",
+      "permit_address": "京都市南区東九条東山王町１４番地１",
+      "permit_category": "旅館・ホテル",
+      "permitted_on": "R01.07.23",
+      "official_identity_url": "https://www.daiwaroynet.jp/en/kyoto-terrace/",
+      "coordinate_status": "not_available",
+      "map_status": "not_checked",
+      "official_name_note": null,
+      "platform_research": [
+        {
+          "provider": "booking",
+          "searched_on": "2026-09-08",
+          "query": "Daiwa Roynet Kyoto Terrace Hachijo",
+          "searched_domains": [
+            "booking.com"
+          ],
+          "candidate_url": "https://www.booking.com/hotel/jp/daiwa-roynet-kyoto-station.html",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "trip_com",
+          "searched_on": "2026-09-08",
+          "query": "Daiwa Roynet Kyoto Terrace Hachijo",
+          "searched_domains": [
+            "trip.com"
+          ],
+          "candidate_url": "https://www.trip.com/hotels/kyoto-hotel-detail-33528530/daiwa-roynet-hotel-kyoto-terrace-hachijo-premier/",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "agoda",
+          "searched_on": "2026-09-08",
+          "query": "Daiwa Roynet Kyoto Terrace Hachijo",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "candidate_url": "https://www.agoda.com/en-us/daiwa-roynet-hotel-kyoto-terrace-hachijohigashiguchi/hotel/kyoto-jp.html",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "expedia",
+          "searched_on": "2026-09-08",
+          "query": "Daiwa Roynet Kyoto Terrace Hachijo",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "candidate_url": null,
+          "status": "unconfirmed",
+          "note": "2026-09-08 已將此平台納入飯店名稱搜尋；精準飯店落地頁／門牌尚待核實，不代表未販售。未核實 URL 僅留在研究證據，不作公開入口。"
+        },
+        {
+          "provider": "rakuten",
+          "searched_on": "2026-09-08",
+          "query": "site.travel.rakuten.com \"Daiwa Roynet\" \"Terrace\"",
+          "searched_domains": [
+            "travel.rakuten.com"
+          ],
+          "candidate_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_kyoto/cty_kyoto_city/10123456860018/",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 找到 Rakuten Travel 國際站 Daiwa Roynet Hotel Kyoto Terrace Hachijo PREMIER 京都飯店專頁；ID 僅取自實際 URL。已觀察名稱與京都城市，完整門牌及現行落地身份仍待審，不保存價格、評分、評論、照片或推算地圖／平台 ID。",
+          "document_freshness": "8 months ago"
+        }
+      ],
+      "review_blockers": [
+        "licensed_coordinates_missing",
+        "exact_google_place_id_missing",
+        "independent_product_and_option_review"
+      ]
+    },
+    {
+      "source_key": "editorial:kyoto:miyako-kyoto-hachijo",
+      "permit_sheet": "南区",
+      "permit_name": "都ホテル 京都八条",
+      "permit_address": "京都市南区西九条院町１７番地",
+      "permit_category": "旅館・ホテル",
+      "permitted_on": "H17.03.31",
+      "official_identity_url": "https://www.miyakohotels.ne.jp/kyoto-hachijo/",
+      "coordinate_status": "not_available",
+      "map_status": "not_checked",
+      "official_name_note": null,
+      "platform_research": [
+        {
+          "provider": "booking",
+          "searched_on": "2026-09-08",
+          "query": "Miyako Hotel Kyoto Hachijo",
+          "searched_domains": [
+            "booking.com"
+          ],
+          "candidate_url": "https://www.booking.com/hotel/jp/new-miyako.en-gb.html",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "trip_com",
+          "searched_on": "2026-09-08",
+          "query": "Miyako Hotel Kyoto Hachijo",
+          "searched_domains": [
+            "trip.com"
+          ],
+          "candidate_url": "https://www.trip.com/hotels/otokuni-district-hotel-detail-737157/miyako-hotel-kyoto-hachijo/",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "agoda",
+          "searched_on": "2026-09-08",
+          "query": "Miyako Hotel Kyoto Hachijo",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "candidate_url": "https://www.agoda.com/new-miyako-hotel/hotel/hatasho-cho-jp.html",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "expedia",
+          "searched_on": "2026-09-08",
+          "query": "Miyako Hotel Kyoto Hachijo",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "candidate_url": null,
+          "status": "unconfirmed",
+          "note": "2026-09-08 已將此平台納入飯店名稱搜尋；精準飯店落地頁／門牌尚待核實，不代表未販售。未核實 URL 僅留在研究證據，不作公開入口。"
+        },
+        {
+          "provider": "rakuten",
+          "searched_on": "2026-09-08",
+          "query": "site.travel.rakuten.com \"Miyako Hotel Kyoto Hachijo\"",
+          "searched_domains": [
+            "travel.rakuten.com"
+          ],
+          "candidate_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_kyoto/cty_kyoto_city/10123456795701",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 找到 Rakuten Travel 國際站 Miyako Hotel Kyoto Hachijo 京都飯店專頁；ID 僅取自實際 URL。已觀察名稱與京都城市，完整門牌及現行落地身份仍待審，不保存價格、評分、評論、照片或推算地圖／平台 ID。",
+          "document_freshness": "2 months ago"
+        }
+      ],
+      "review_blockers": [
+        "licensed_coordinates_missing",
+        "exact_google_place_id_missing",
+        "independent_product_and_option_review"
+      ]
+    },
+    {
+      "source_key": "editorial:kyoto:cross-kyoto",
+      "permit_sheet": "中京区",
+      "permit_name": "クロスホテル京都",
+      "permit_address": "京都市中京区河原町通三条下る大黒町７１番地１",
+      "permit_category": "旅館・ホテル",
+      "permitted_on": "H30.09.04",
+      "official_identity_url": "https://cross-kyoto.orixhotelsandresorts.com/experience_cat/access/",
+      "coordinate_status": "not_available",
+      "map_status": "not_checked",
+      "official_name_note": null,
+      "platform_research": [
+        {
+          "provider": "booking",
+          "searched_on": "2026-09-08",
+          "query": "Cross Hotel Kyoto",
+          "searched_domains": [
+            "booking.com"
+          ],
+          "candidate_url": "https://www.booking.com/hotel/jp/cross-hotel-kyoto.html",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "trip_com",
+          "searched_on": "2026-09-08",
+          "query": "Cross Hotel Kyoto",
+          "searched_domains": [
+            "trip.com"
+          ],
+          "candidate_url": "https://www.trip.com/hotels/kyoto-hotel-detail-21869296/cross-hotel-kyoto/",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "agoda",
+          "searched_on": "2026-09-08",
+          "query": "Cross Hotel Kyoto",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "candidate_url": "https://www.agoda.com/cross-hotel-kyoto/hotel/kyoto-jp.html",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "expedia",
+          "searched_on": "2026-09-08",
+          "query": "Cross Hotel Kyoto",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "candidate_url": null,
+          "status": "unconfirmed",
+          "note": "2026-09-08 已將此平台納入飯店名稱搜尋；精準飯店落地頁／門牌尚待核實，不代表未販售。未核實 URL 僅留在研究證據，不作公開入口。"
+        },
+        {
+          "provider": "rakuten",
+          "searched_on": "2026-09-08",
+          "query": "site.travel.rakuten.com \"Cross Hotel Kyoto\"",
+          "searched_domains": [
+            "travel.rakuten.com"
+          ],
+          "candidate_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_kyoto/cty_kyoto_city/10123456795968",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 找到 Rakuten Travel 國際站 Cross Hotel Kyoto 京都飯店專頁；ID 僅取自實際 URL。已觀察名稱與京都城市，完整門牌及現行落地身份仍待審，不保存價格、評分、評論、照片或推算地圖／平台 ID。",
+          "document_freshness": "today"
+        }
+      ],
+      "review_blockers": [
+        "licensed_coordinates_missing",
+        "exact_google_place_id_missing",
+        "independent_product_and_option_review"
+      ]
+    },
+    {
+      "source_key": "editorial:kyoto:royal-park-kyoto-sanjo",
+      "permit_sheet": "中京区",
+      "permit_name": "ザ ロイヤルパークホテル 京都三条",
+      "permit_address": "京都市中京区中島町７４，７６　恵比須町４４１－１，４４１－２，４４２ー２",
+      "permit_category": "旅館・ホテル",
+      "permitted_on": "H23.09.28",
+      "official_identity_url": "https://www.royalparkhotels.co.jp/en/the/kyotosanjo/about/contact/index.html",
+      "coordinate_status": "not_available",
+      "map_status": "not_checked",
+      "official_name_note": null,
+      "platform_research": [
+        {
+          "provider": "booking",
+          "searched_on": "2026-09-08",
+          "query": "The Royal Park Hotel Kyoto Sanjo",
+          "searched_domains": [
+            "booking.com"
+          ],
+          "candidate_url": "https://www.booking.com/hotel/jp/kyoto-royal-park.html",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "trip_com",
+          "searched_on": "2026-09-08",
+          "query": "The Royal Park Hotel Kyoto Sanjo",
+          "searched_domains": [
+            "trip.com"
+          ],
+          "candidate_url": "https://www.trip.com/hotels/kyoto-hotel-detail-704891/the-royal-park-hotel-kyoto-sanjo/",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "agoda",
+          "searched_on": "2026-09-08",
+          "query": "The Royal Park Hotel Kyoto Sanjo",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "candidate_url": "https://www.agoda.com/the-royal-park-hotel-kyoto-sanjo/hotel/kyoto-jp.html",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "expedia",
+          "searched_on": "2026-09-08",
+          "query": "The Royal Park Hotel Kyoto Sanjo",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "candidate_url": null,
+          "status": "unconfirmed",
+          "note": "2026-09-08 已將此平台納入飯店名稱搜尋；精準飯店落地頁／門牌尚待核實，不代表未販售。未核實 URL 僅留在研究證據，不作公開入口。"
+        },
+        {
+          "provider": "rakuten",
+          "searched_on": "2026-09-08",
+          "query": "site.expedia.com \"The Royal Park Hotel Kyoto Sanjo\" \"Hotel-Information\"",
+          "discovery_note": "This cross-domain result appeared in the recorded Expedia-targeted query; the returned Rakuten primary page was then opened. It was not a separate Rakuten-domain search.",
+          "searched_domains": [
+            "expedia.com"
+          ],
+          "candidate_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/10123456796386",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 找到 Rakuten Travel 國際站 The Royal Park Hotel Kyoto Sanjo 京都飯店專頁，ID 取自實際 URL；完整門牌及即時落地身份未核實，仍待審，不保存房價、評論、照片或依名稱推算 ID。"
+        }
+      ],
+      "review_blockers": [
+        "licensed_coordinates_missing",
+        "exact_google_place_id_missing",
+        "independent_product_and_option_review"
+      ]
+    },
+    {
+      "source_key": "editorial:kyoto:mitsui-garden-kyoto-shijo",
+      "permit_sheet": "下京区",
+      "permit_name": "三井ガーデンホテル京都四条",
+      "permit_address": "京都市下京区西洞院通四条下る妙伝寺町707-1",
+      "permit_category": "旅館・ホテル",
+      "permitted_on": "H09.09.25",
+      "official_identity_url": "https://www.gardenhotels.co.jp/kyoto-shijo/eng/access/",
+      "coordinate_status": "not_available",
+      "map_status": "not_checked",
+      "official_name_note": null,
+      "platform_research": [
+        {
+          "provider": "booking",
+          "searched_on": "2026-09-08",
+          "query": "Mitsui Garden Hotel Kyoto Shijo",
+          "searched_domains": [
+            "booking.com"
+          ],
+          "candidate_url": "https://www.booking.com/hotel/jp/mitsui-garden-kyoto-shijo.en-gb.html",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "trip_com",
+          "searched_on": "2026-09-08",
+          "query": "Mitsui Garden Hotel Kyoto Shijo",
+          "searched_domains": [
+            "trip.com"
+          ],
+          "candidate_url": "https://www.trip.com/hotels/kyoto-hotel-detail-1437724/mitsui-garden-hotel-kyoto-shijo/",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "agoda",
+          "searched_on": "2026-09-08",
+          "query": "Mitsui Garden Hotel Kyoto Shijo",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "candidate_url": "https://www.agoda.com/mitsui-garden-hotel-kyoto-shijo/hotel/kyoto-jp.html",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "expedia",
+          "searched_on": "2026-09-08",
+          "query": "Mitsui Garden Hotel Kyoto Shijo",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "candidate_url": null,
+          "status": "unconfirmed",
+          "note": "2026-09-08 已將此平台納入飯店名稱搜尋；精準飯店落地頁／門牌尚待核實，不代表未販售。未核實 URL 僅留在研究證據，不作公開入口。"
+        },
+        {
+          "provider": "rakuten",
+          "searched_on": "2026-09-08",
+          "query": "site.travel.rakuten.com \"Mitsui Garden Hotel Kyoto Shijo\"",
+          "searched_domains": [
+            "travel.rakuten.com"
+          ],
+          "candidate_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_kyoto/cty_kyoto_city/10123456863505",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 找到 Rakuten Travel 國際站 Mitsui Garden Hotel Kyoto Shijo 京都飯店專頁，ID 取自實際 URL；完整門牌及即時落地身份未核實，仍待審，不保存房價、評論、照片或依名稱推算 ID。"
+        }
+      ],
+      "review_blockers": [
+        "licensed_coordinates_missing",
+        "exact_google_place_id_missing",
+        "independent_product_and_option_review"
+      ]
+    },
+    {
+      "source_key": "editorial:kyoto:hyatt-regency-kyoto",
+      "permit_sheet": "東山区",
+      "permit_name": "ハイアットリージェンシー京都",
+      "permit_address": "京都市東山区三十三間堂廻リ６４４番地２",
+      "permit_category": "旅館・ホテル",
+      "permitted_on": "H18.03.10",
+      "official_identity_url": "https://www.hyatt.com/hyatt-regency/en-US/kyoto-hyatt-regency-kyoto/hotel-info",
+      "coordinate_status": "not_available",
+      "map_status": "not_checked",
+      "official_name_note": null,
+      "platform_research": [
+        {
+          "provider": "booking",
+          "searched_on": "2026-09-08",
+          "query": "Hyatt Regency Kyoto",
+          "searched_domains": [
+            "booking.com"
+          ],
+          "candidate_url": "https://www.booking.com/hotel/jp/hyatt-regency-kyoto.en-gb.html",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "trip_com",
+          "searched_on": "2026-09-08",
+          "query": "Hyatt Regency Kyoto",
+          "searched_domains": [
+            "trip.com"
+          ],
+          "candidate_url": "https://us.trip.com/hotels/kyoto-hotel-detail-737133/hyatt-regency-kyoto/",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "agoda",
+          "searched_on": "2026-09-08",
+          "query": "Hyatt Regency Kyoto",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "candidate_url": "https://www.agoda.com/hyatt-regency-kyoto-hotel/hotel/kyoto-jp.html",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "expedia",
+          "searched_on": "2026-09-08",
+          "query": "Hyatt Regency Kyoto",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "candidate_url": null,
+          "status": "unconfirmed",
+          "note": "2026-09-08 已將此平台納入飯店名稱搜尋；精準飯店落地頁／門牌尚待核實，不代表未販售。未核實 URL 僅留在研究證據，不作公開入口。"
+        },
+        {
+          "provider": "rakuten",
+          "searched_on": "2026-09-08",
+          "query": "site.travel.rakuten.com \"Hyatt Regency Kyoto\"",
+          "searched_domains": [
+            "travel.rakuten.com"
+          ],
+          "candidate_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_kyoto/cty_kyoto_city/10123456795882",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 找到 Rakuten Travel 國際站 Hyatt Regency Kyoto 京都飯店專頁，ID 取自實際 URL；完整門牌及即時落地身份未核實，仍待審，不保存房價、評論、照片或依名稱推算 ID。官方已公告於 2027-05-09 結束營業；尚無營業日期限制，暫不核准導購。公告：https://orix-realestate.co.jp/news/pdf/press_20260409.pdf"
+        }
+      ],
+      "review_blockers": [
+        "licensed_coordinates_missing",
+        "exact_google_place_id_missing",
+        "independent_product_and_option_review",
+        "future_closure_date_guard_missing"
+      ],
+      "operating_notice": {
+        "status": "future_closure_announced",
+        "ends_on": "2027-05-09",
+        "announced_on": "2026-04-09",
+        "source_url": "https://orix-realestate.co.jp/news/pdf/press_20260409.pdf",
+        "publisher": "オリックス不動産株式会社",
+        "review_hold": true,
+        "reason": "Current catalog has no operating-date restriction; retain all booking options and product pending until date-aware safety or a replacement is reviewed. This is not a claim that the hotel is already closed."
+      }
+    },
+    {
+      "source_key": "editorial:kyoto:celestine-kyoto-gion",
+      "permit_sheet": "東山区",
+      "permit_name": "ホテル　ザ　セレスティン京都園",
+      "permit_address": "京都市東山区大和大路通四条下る四丁目小松町５７２番地２",
+      "permit_category": "旅館・ホテル",
+      "permitted_on": "H29.09.05",
+      "official_identity_url": "https://www.celestinehotels.jp/en/kyoto-gion/access/?wovn=en",
+      "coordinate_status": "not_available",
+      "map_status": "not_checked",
+      "official_name_note": "許可清單含外字；標題採用官網已確認英文名稱，不捏造日文替代字。",
+      "platform_research": [
+        {
+          "provider": "booking",
+          "searched_on": "2026-09-08",
+          "query": "Hotel The Celestine Kyoto Gion",
+          "searched_domains": [
+            "booking.com"
+          ],
+          "candidate_url": "https://www.booking.com/hotel/jp/the-celestine-kyoto-gion.html",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "trip_com",
+          "searched_on": "2026-09-08",
+          "query": "Hotel The Celestine Kyoto Gion",
+          "searched_domains": [
+            "trip.com"
+          ],
+          "candidate_url": "https://www.trip.com/hotels/kyoto-hotel-detail-7045649/hotel/",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "agoda",
+          "searched_on": "2026-09-08",
+          "query": "Hotel The Celestine Kyoto Gion",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "candidate_url": "https://www.agoda.com/hotel-the-celestine-kyoto-gion/hotel/kyoto-jp.html",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "expedia",
+          "searched_on": "2026-09-08",
+          "query": "Hotel The Celestine Kyoto Gion",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "candidate_url": null,
+          "status": "unconfirmed",
+          "note": "2026-09-08 已將此平台納入飯店名稱搜尋；精準飯店落地頁／門牌尚待核實，不代表未販售。未核實 URL 僅留在研究證據，不作公開入口。"
+        },
+        {
+          "provider": "rakuten",
+          "searched_on": "2026-09-08",
+          "query": "site.travel.rakuten.com \"Celestine Kyoto Gion\"",
+          "searched_domains": [
+            "travel.rakuten.com"
+          ],
+          "candidate_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_kyoto/cty_kyoto_city/10123456795210",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 找到 Rakuten Travel 國際站 Hotel The Celestine Kyoto Gion 京都飯店專頁，ID 取自實際 URL；完整門牌及即時落地身份未核實，仍待審，不保存房價、評論、照片或依名稱推算 ID。"
+        }
+      ],
+      "review_blockers": [
+        "licensed_coordinates_missing",
+        "exact_google_place_id_missing",
+        "independent_product_and_option_review"
+      ]
+    },
+    {
+      "source_key": "editorial:kyoto:westin-miyako-kyoto",
+      "permit_sheet": "東山区",
+      "permit_name": "ウェスティン都ホテル京都",
+      "permit_address": "京都市東山区粟田口華頂町壱番地",
+      "permit_category": "旅館・ホテル",
+      "permitted_on": "H17.03.31",
+      "official_identity_url": "https://www.marriott.com/en-us/hotels/ukywi-the-westin-miyako-kyoto/overview/",
+      "coordinate_status": "not_available",
+      "map_status": "not_checked",
+      "official_name_note": null,
+      "platform_research": [
+        {
+          "provider": "booking",
+          "searched_on": "2026-09-08",
+          "query": "The Westin Miyako Kyoto",
+          "searched_domains": [
+            "booking.com"
+          ],
+          "candidate_url": "https://www.booking.com/hotel/jp/the-westin-miyako-kyoto.html",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "trip_com",
+          "searched_on": "2026-09-08",
+          "query": "The Westin Miyako Kyoto",
+          "searched_domains": [
+            "trip.com"
+          ],
+          "candidate_url": "https://www.trip.com/hotels/kyoto-hotel-detail-993500/the-westin-miyako-kyoto/",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "agoda",
+          "searched_on": "2026-09-08",
+          "query": "The Westin Miyako Kyoto",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "candidate_url": "https://www.agoda.com/the-westin-miyako-kyoto_4/hotel/kyoto-jp.html",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 已發現飯店專頁，飯店名稱及街道／區域與官方身份交叉核對；部分頁面沒有完整門牌或瀏覽器尚未複核，不能視為審核通過。平台 ID 僅取自實際頁面 URL，未由 Place ID 推算。不摘錄價格、照片或評論。"
+        },
+        {
+          "provider": "expedia",
+          "searched_on": "2026-09-08",
+          "query": "The Westin Miyako Kyoto",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "candidate_url": null,
+          "status": "unconfirmed",
+          "note": "2026-09-08 已將此平台納入飯店名稱搜尋；精準飯店落地頁／門牌尚待核實，不代表未販售。未核實 URL 僅留在研究證據，不作公開入口。"
+        },
+        {
+          "provider": "rakuten",
+          "searched_on": "2026-09-08",
+          "query": "site.travel.rakuten.com \"Westin Miyako Kyoto\"",
+          "searched_domains": [
+            "travel.rakuten.com"
+          ],
+          "candidate_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_kyoto/cty_kyoto_city/10123456795704",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 找到 Rakuten Travel 國際站 The Westin Miyako Kyoto 京都飯店專頁，ID 取自實際 URL；完整門牌及即時落地身份未核實，仍待審，不保存房價、評論、照片或依名稱推算 ID。"
+        }
+      ],
+      "review_blockers": [
+        "licensed_coordinates_missing",
+        "exact_google_place_id_missing",
+        "independent_product_and_option_review"
+      ]
+    }
+  ]
+}

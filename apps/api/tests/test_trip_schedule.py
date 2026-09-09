@@ -16,12 +16,14 @@ from app.trips.router import (
     _planner_availability,
     apply_flight_anchor_details,
     localize_itinerary_time,
+    route_point,
 )
 from app.trips.schedule import (
     SYSTEM_ROLES,
     active_route_rows,
     apply_schedule_defaults,
     ensure_system_slots,
+    is_optional_system_item,
     route_pair_count,
     sync_primary_lodging,
 )
@@ -99,34 +101,134 @@ def test_system_slots_are_idempotent_and_skipped_meals_leave_route_graph() -> No
     assert len(session.added) == 10
     assert ensure_system_slots(session, target, rows) is False  # type: ignore[arg-type]
     assert {
-        row.system_role
-        for row in rows
-        if row.day_date == date(2026, 11, 10) and row.system_role
+        row.system_role for row in rows if row.day_date == date(2026, 11, 10) and row.system_role
     } == {"outbound_flight", "hotel_start", "lunch", "dinner", "hotel_end"}
     assert {
-        row.system_role
-        for row in rows
-        if row.day_date == date(2026, 11, 11) and row.system_role
+        row.system_role for row in rows if row.day_date == date(2026, 11, 11) and row.system_role
     } == {"hotel_start", "lunch", "dinner", "hotel_end", "return_flight"}
     assert len([row for row in rows if row.system_role in SYSTEM_ROLES]) == 10
 
     first_day_route = active_route_rows(rows, date(2026, 11, 10))
-    assert first_day_route == [activity]
+    # The named legacy lodging is meaningful even without coordinates: keep its
+    # projected anchors as barriers instead of pretending it has not been chosen.
+    assert [row.system_role for row in first_day_route] == ["hotel_start", None, "hotel_end"]
+    assert activity in first_day_route
     assert legacy_hotel not in first_day_route
-    assert not any(row.system_role for row in first_day_route)
     original_pairs = route_pair_count(rows)
     lunch = next(
-        row
-        for row in rows
-        if row.day_date == date(2026, 11, 10) and row.system_role == "lunch"
+        row for row in rows if row.day_date == date(2026, 11, 10) and row.system_role == "lunch"
     )
     assert lunch.title == "午餐尚未安排"
     assert lunch.data["meal_selection_source"] == "unset"
     lunch.is_skipped = True
     without_lunch = active_route_rows(rows, date(2026, 11, 10))
     assert lunch not in without_lunch
-    assert without_lunch == [activity]
+    assert without_lunch == first_day_route
     assert route_pair_count(rows) == original_pairs
+
+
+@pytest.mark.parametrize("role", ["lunch", "dinner", "hotel_start", "hotel_end"])
+@pytest.mark.parametrize(
+    "selection",
+    [
+        {"location_name": "My chosen place"},
+        {"provider_place_id": "chosen-place"},
+        {"data": {"meal_selection_source": "user"}},
+        {"latitude": Decimal("35.7")},
+    ],
+)
+def test_meaningful_unlocated_system_slots_are_route_barriers(
+    role: str, selection: dict[str, object]
+) -> None:
+    target = trip()
+    rows = [
+        TripPlanItem(
+            id=uuid4(),
+            trip_plan_id=target.id,
+            day_date=target.start_date,
+            position=index,
+            item_type="activity",
+            title=f"Stop {index}",
+            latitude=Decimal("35.7"),
+            longitude=Decimal("139.7"),
+            locked=False,
+            fixed_time=False,
+            is_skipped=False,
+            is_estimated=False,
+            data={},
+        )
+        for index in (0, 2)
+    ]
+    barrier = TripPlanItem(
+        id=uuid4(),
+        trip_plan_id=target.id,
+        day_date=target.start_date,
+        position=1,
+        item_type="meal",
+        title="Chosen stop",
+        system_role=role,
+        locked=True,
+        fixed_time=True,
+        is_skipped=False,
+        is_estimated=False,
+        data={},
+    )
+    for key, value in selection.items():
+        setattr(barrier, key, value)
+    assert not is_optional_system_item(barrier)
+    selected = active_route_rows([rows[0], barrier, rows[1]], target.start_date)
+    assert selected == [rows[0], barrier, rows[1]]
+    assert (rows[0], rows[1]) not in list(zip(selected, selected[1:], strict=False))
+    assert barrier.locked is True
+    assert barrier.fixed_time is True
+    barrier.is_skipped = True
+    assert active_route_rows([rows[0], barrier, rows[1]]) == rows
+
+
+def test_empty_system_slots_do_not_enter_route_graph_or_mutate_defaults() -> None:
+    target = trip()
+    rows: list[TripPlanItem] = []
+    ensure_system_slots(AddOnlySession(), target, rows)  # type: ignore[arg-type]
+    before = [(row.id, row.start_time, row.end_time, row.locked, dict(row.data)) for row in rows]
+    assert active_route_rows(rows) == []
+    assert route_pair_count(rows) == 0
+    assert before == [(row.id, row.start_time, row.end_time, row.locked, row.data) for row in rows]
+
+
+@pytest.mark.parametrize(
+    ("latitude", "longitude"),
+    [(None, "0"), ("0", None), ("NaN", "0"), ("Infinity", "0"), ("91", "0"), ("0", "-181")],
+)
+def test_invalid_legacy_coordinates_are_unroutable_barriers(
+    latitude: str | None, longitude: str | None
+) -> None:
+    item = TripPlanItem(
+        id=uuid4(),
+        item_type="activity",
+        title="Legacy location",
+        latitude=Decimal(latitude) if latitude is not None else None,
+        longitude=Decimal(longitude) if longitude is not None else None,
+        locked=True,
+        fixed_time=True,
+        is_skipped=False,
+        data={},
+    )
+    assert route_point(item) is None
+    assert active_route_rows([item]) == [item]
+
+
+def test_zero_coordinates_remain_valid() -> None:
+    item = TripPlanItem(
+        id=uuid4(),
+        item_type="activity",
+        title="Zero",
+        latitude=Decimal(0),
+        longitude=Decimal(0),
+        data={},
+    )
+    point = route_point(item)
+    assert point is not None
+    assert point.latitude == 0 and point.longitude == 0
 
 
 def test_ai_refresh_clears_catalog_meal_placeholders_without_touching_user_choice() -> None:

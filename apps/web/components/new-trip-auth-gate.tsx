@@ -23,7 +23,7 @@ async function savedTripLimit(): Promise<TripLimit | undefined> {
   return trips.length >= limit ? { count: trips.length, limit } : undefined;
 }
 
-export function NewTripAuthGate() {
+export function NewTripAuthGate({ resumePlanning = false }: { resumePlanning?: boolean }) {
   const t = useTranslations("newTrip.gate");
   const [state, setState] = useState<AuthState>("checking");
   const [tripLimit, setTripLimit] = useState<TripLimit>();
@@ -45,16 +45,16 @@ export function NewTripAuthGate() {
   }, []);
 
   if (state === "checking") {
-    return <div role="status" className="rounded-[2rem] border border-[var(--line)] bg-white p-8 text-[var(--muted)]">{t("checking")}</div>;
+    return <div role="status" className="rounded-[2rem] border border-[var(--line)] bg-[var(--surface)] p-8 text-[var(--muted)]">{t("checking")}</div>;
   }
   if (state === "signed_out") {
-    return <section className="mx-auto max-w-xl rounded-[2rem] border border-[var(--line)] bg-white p-8 text-center shadow-[var(--shadow-lg)]">
+    return <section className="mx-auto max-w-xl rounded-[2rem] border border-[var(--line)] bg-[var(--surface)] p-8 text-center shadow-[var(--shadow-lg)]">
       <LogIn className="mx-auto text-[var(--teal)]" size={36} />
       <h1 className="mt-4 text-3xl font-bold">{t("signInTitle")}</h1>
       <p className="mt-3 leading-7 text-[var(--muted)]">{t("signInBody")}</p>
       {/* Every other sign-in entry carries `next`; without it the member lands on the
           home page after signing in and has to find this page again. */}
-      <Link href={loginPath("/trips/new")} className="mt-6 inline-flex rounded-xl bg-[var(--teal)] px-6 py-3 font-semibold text-white">{t("signIn")}</Link>
+      <Link href={loginPath(`/trips/new${resumePlanning ? "?resume_plan=1" : ""}`)} className="mt-6 inline-flex min-h-11 rounded-xl bg-[var(--teal)] px-6 py-3 font-semibold text-white">{t("signIn")}</Link>
     </section>;
   }
   if (state === "unavailable") {
@@ -65,12 +65,12 @@ export function NewTripAuthGate() {
     </section>;
   }
   if (state === "limit_reached" && tripLimit) {
-    return <section className="mx-auto max-w-xl rounded-[2rem] border border-[var(--line)] bg-white p-8 text-center shadow-[var(--shadow-lg)]">
+    return <section className="mx-auto max-w-xl rounded-[2rem] border border-[var(--line)] bg-[var(--surface)] p-8 text-center shadow-[var(--shadow-lg)]">
       <Route className="mx-auto text-[var(--teal)]" size={36} />
       <h1 className="mt-4 text-3xl font-bold">{t("limitTitle")}</h1>
       <p className="mt-3 leading-7 text-[var(--muted)]">{t("limitBody", { count: tripLimit.count, limit: tripLimit.limit })}</p>
       <Link href="/trips" className="mt-6 inline-flex rounded-xl bg-[var(--teal)] px-6 py-3 font-semibold text-white">{t("manageTrips")}</Link>
     </section>;
   }
-  return <NewTripForm />;
+  return <NewTripForm resumePlanning={resumePlanning} />;
 }

@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from urllib.parse import urlsplit
 
+from app.affiliates.schemas import AffiliateModule
 from app.travel_services.schemas import safe_url
 
 
@@ -10,10 +11,23 @@ class Brand:
     hosts: tuple[str, ...]
     kinds: tuple[str, ...]
     api_supported: bool = True
+    modules: tuple[AffiliateModule, ...] = ()
+
+    @property
+    def supported_modules(self) -> tuple[AffiliateModule, ...]:
+        if self.modules:
+            return self.modules
+        mapping: dict[str, AffiliateModule] = {
+            "hotel": "hotel",
+            "transfer": "transport",
+            "tour": "activities",
+            "esim": "connectivity",
+        }
+        return tuple(dict.fromkeys(mapping[kind] for kind in self.kinds))
 
 
 BRANDS = {
-    "klook": Brand("Klook", ("klook.com",), ("hotel", "transfer", "tour")),
+    "klook": Brand("Klook", ("klook.com",), ("hotel", "transfer", "tour", "esim")),
     "kkday": Brand("KKday", ("kkday.com",), ("hotel", "transfer", "tour")),
     "airalo": Brand("Airalo", ("airalo.com",), ("esim",)),
     "saily": Brand("Saily", ("saily.com",), ("esim",)),
@@ -32,6 +46,9 @@ BRANDS = {
     "viator": Brand("Viator", ("viator.com",), ("tour", "transfer")),
     "getyourguide": Brand("GetYourGuide", ("getyourguide.com",), ("tour", "transfer")),
     "rakuten": Brand("Rakuten Travel", ("travel.rakuten.com",), ("hotel",)),
+    # Travelpayouts excludes Kiwi.com from Partner Links API conversion. A reviewed
+    # static link remains supported; API eligibility is separate from enrollment.
+    "kiwi": Brand("Kiwi.com", ("kiwi.com",), (), False, modules=("flight",)),
 }
 
 
@@ -53,3 +70,11 @@ def affiliate_target(value: str) -> str:
     ):
         raise ValueError("Verified Travelpayouts redirect required")
     return value
+
+
+def affiliate_click_target(code: str, value: str) -> str:
+    """Accept a Travelpayouts redirect or its final allowlisted brand URL."""
+    try:
+        return affiliate_target(value)
+    except ValueError:
+        return brand_target(code, value)

@@ -1,8 +1,11 @@
 "use client";
 
 import { Fragment, useCallback, useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { useSearchParams } from "next/navigation";
 import { api } from "@/lib/api";
+import { Link } from "@/i18n/navigation";
+import { adminCatalogCopy, hotspotIdentityHref, hotspotIdentityListHref } from "@/lib/admin-catalog-copy";
 import { HOTSPOT_CATEGORY_CODES, isHotspotCategoryCode } from "@/lib/hotspot-categories";
 import { safeExternalHref } from "@/lib/navigation";
 import { naverMapSearchUrl } from "@/lib/naver-map";
@@ -127,12 +130,22 @@ type MapCandidate = {
   };
 };
 
-export function AdminHotspotsPanel() {
+export function AdminHotspotsPanel({
+  initialStatus = "pending", locationEditing = "inline", initialHotspotId,
+  initialMissingLocation = false,
+}: {
+  initialStatus?: string;
+  locationEditing?: "inline" | "link";
+  initialHotspotId?: string;
+  initialMissingLocation?: boolean;
+}) {
+  const copy = adminCatalogCopy(useLocale());
+  const search = useSearchParams();
   const t = useTranslations("hotspots");
   const tHotspotAdmin = useTranslations("hotspotAdmin");
   const ta = useTranslations("admin");
   const [data, setData] = useState<Response | null>(null);
-  const [status, setStatus] = useState("pending");
+  const [status, setStatus] = useState(initialStatus);
   const [city, setCity] = useState("");
   const [destinationId, setDestinationId] = useState("");
   const [role, setRole] = useState("");
@@ -163,6 +176,8 @@ export function AdminHotspotsPanel() {
   const load = useCallback(async () => {
     setLoading(true);
     const params = new URLSearchParams({ limit: String(PAGE_SIZE), page: String(page) });
+    if (initialHotspotId) params.set("hotspot_id", initialHotspotId);
+    if (initialMissingLocation) params.set("missing_location", "true");
     if (status) params.set("status", status);
     if (city) params.set("city_code", city);
     if (destinationId) params.set("destination_id", destinationId);
@@ -181,7 +196,7 @@ export function AdminHotspotsPanel() {
     } finally {
       setLoading(false);
     }
-  }, [category, city, country, destinationId, origin, page, parentId, role, status]);
+  }, [category, city, country, destinationId, initialHotspotId, initialMissingLocation, origin, page, parentId, role, status]);
 
   useEffect(() => {
     const timer = window.setTimeout(() => void load(), 0);
@@ -386,6 +401,10 @@ export function AdminHotspotsPanel() {
 
   return (
     <section className="mt-8">
+      {(initialHotspotId || initialMissingLocation) && <div className="mb-3 flex flex-wrap items-center gap-3 text-sm">
+        <p role="status" className="text-[var(--muted)]">{initialHotspotId ? copy.filteredLocation : copy.missingLocation}</p>
+        <Link href={hotspotIdentityListHref(search)} className="inline-flex min-h-11 items-center rounded-xl border border-[var(--line)] px-3 font-semibold text-[var(--teal)] focus-visible:outline-2 focus-visible:outline-[var(--teal)]">{copy.showAllLocations}</Link>
+      </div>}
       <FilterDisclosure
         label={ta("hotspotsPanel.filtersLabel")}
         summary={filterSummary}
@@ -914,16 +933,19 @@ export function AdminHotspotsPanel() {
                               <span className="block text-xs text-[var(--muted)]">
                                 {item.coordinate_source_type || ta("hotspotsPanel.coordinateSourceMissing")}
                               </span>
-                              <button
+                              {locationEditing === "link" ? <Link
+                                href={hotspotIdentityHref(item.id)}
+                                className="mt-2 inline-flex min-h-11 items-center rounded-xl border border-sky-700 px-3 font-semibold text-sky-900"
+                              >{copy.identityEditor}</Link> : <button
                                 type="button"
                                 onClick={() => {
                                   setLocationDraft({ ...item });
                                   setMapCandidate(null);
                                 }}
-                                className="mt-2 min-h-10 rounded-xl border border-sky-700 px-3 font-semibold text-sky-900"
+                                className="mt-2 min-h-11 rounded-xl border border-sky-700 px-3 font-semibold text-sky-900"
                               >
                                 {ta("hotspotsPanel.editLocation")}
-                              </button>
+                              </button>}
                             </td>
                             <td className="p-3">
                               {item.source_urls.map((url, index) => (

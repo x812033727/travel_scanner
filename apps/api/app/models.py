@@ -331,12 +331,21 @@ class HotelBookingClick(Base):
 class TravelServiceBrand(Timestamped, Base):
     __tablename__ = "travel_service_brands"
     __table_args__ = (
-        UniqueConstraint("project_id", "code", name="uq_service_brand_project"),
+        UniqueConstraint("channel", "project_id", "code", name="uq_service_brand_channel_project"),
+        CheckConstraint(
+            "channel IN ('travelpayouts','klook_direct')", name="ck_service_brand_channel"
+        ),
+        CheckConstraint(
+            "channel != 'klook_direct' OR code = 'klook'", name="ck_service_brand_direct_klook"
+        ),
         CheckConstraint(
             "approval IN ('unknown','pending','approved','rejected')", name="ck_brand_approval"
         ),
     )
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    channel: Mapped[str] = mapped_column(
+        String(24), default="travelpayouts", server_default="travelpayouts"
+    )
     project_id: Mapped[str] = mapped_column(String(32), index=True)
     code: Mapped[str] = mapped_column(String(64))
     approval: Mapped[str] = mapped_column(String(16), default="unknown")
@@ -366,6 +375,39 @@ class TravelServiceOffer(Timestamped, Base):
     static_url: Mapped[str | None] = mapped_column(String(2048), nullable=True)
     verification_context: Mapped[str | None] = mapped_column(String(64), nullable=True)
     scope: Mapped[str] = mapped_column(String(16), default="product")
+    status: Mapped[str] = mapped_column(String(16), default="pending", index=True)
+    version: Mapped[int] = mapped_column(Integer, default=1)
+    verified_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    expires_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
+class DestinationAffiliateOffer(Timestamped, Base):
+    __tablename__ = "destination_affiliate_offers"
+    __table_args__ = (
+        UniqueConstraint(
+            "brand_id",
+            "destination_id",
+            "module",
+            name="uq_destination_affiliate_offer",
+        ),
+        CheckConstraint(
+            "module IN ('flight','hotel','activities','transport','connectivity')",
+            name="ck_destination_affiliate_module",
+        ),
+        CheckConstraint(
+            "status IN ('pending','approved','disabled')",
+            name="ck_destination_affiliate_status",
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    brand_id: Mapped[UUID] = mapped_column(
+        ForeignKey("travel_service_brands.id", ondelete="CASCADE"), index=True
+    )
+    destination_id: Mapped[str] = mapped_column(String(64), index=True)
+    module: Mapped[str] = mapped_column(String(32), index=True)
+    target_url: Mapped[str] = mapped_column(String(2048))
+    static_url: Mapped[str | None] = mapped_column(String(2048), nullable=True)
+    verification_context: Mapped[str | None] = mapped_column(String(64), nullable=True)
     status: Mapped[str] = mapped_column(String(16), default="pending", index=True)
     version: Mapped[int] = mapped_column(Integer, default=1)
     verified_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
@@ -1085,6 +1127,64 @@ class FoodMerchant(Timestamped, Base):
         ForeignKey("food_areas.id", ondelete="SET NULL"), nullable=True, index=True
     )
     area_source: Mapped[str | None] = mapped_column(String(16), nullable=True)
+
+
+class FoodMerchantPlatformLink(Timestamped, Base):
+    """A manually reviewed, merchant-specific page on a reservation platform."""
+
+    __tablename__ = "food_merchant_platform_links"
+    __table_args__ = (
+        UniqueConstraint("merchant_id", "provider", name="uq_food_merchant_platform_provider"),
+        UniqueConstraint("provider", "canonical_url", name="uq_food_merchant_platform_url"),
+        CheckConstraint(
+            "status IN ('verified', 'not_found', 'ambiguous', 'disabled')",
+            name="ck_food_merchant_platform_status",
+        ),
+        CheckConstraint(
+            "status != 'verified' OR canonical_url IS NOT NULL",
+            name="ck_food_merchant_platform_verified_url",
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    merchant_id: Mapped[UUID] = mapped_column(
+        ForeignKey("food_merchants.id", ondelete="CASCADE"), index=True
+    )
+    provider: Mapped[str] = mapped_column(String(32), index=True)
+    canonical_url: Mapped[str | None] = mapped_column(String(2048), nullable=True)
+    localized_urls_json: Mapped[dict[str, str]] = mapped_column(JSON, default=dict)
+    status: Mapped[str] = mapped_column(String(16), index=True)
+    checked_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    checked_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True
+    )
+    review_note: Mapped[str | None] = mapped_column(String(1000), nullable=True)
+
+
+class FoodMerchantStyle(Timestamped, Base):
+    """Editorial style labels, independent of cuisine and merchant publication."""
+
+    __tablename__ = "food_merchant_styles"
+    __table_args__ = (
+        UniqueConstraint("merchant_id", "style", name="uq_food_merchant_style"),
+        CheckConstraint("style IN ('instagrammable', 'artsy')", name="ck_merchant_style"),
+        CheckConstraint(
+            "status IN ('pending', 'approved', 'rejected')", name="ck_merchant_style_status"
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    merchant_id: Mapped[UUID] = mapped_column(
+        ForeignKey("food_merchants.id", ondelete="CASCADE"), index=True
+    )
+    style: Mapped[str] = mapped_column(String(24))
+    status: Mapped[str] = mapped_column(String(16), default="pending")
+    evidence_url: Mapped[str] = mapped_column(String(2048))
+    evidence_title: Mapped[str] = mapped_column(String(255))
+    rationale: Mapped[str] = mapped_column(String(1000))
+    checked_on: Mapped[date] = mapped_column(Date)
+    reviewed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    reviewed_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
 
 
 class FoodMerchantFood(Base):

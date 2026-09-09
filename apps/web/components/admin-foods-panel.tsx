@@ -96,12 +96,12 @@ function completeLocalizations(food: AdminFood): AdminFood {
   };
 }
 
-export function AdminFoodsPanel() {
+export function AdminFoodsPanel({ initialStatus = "" }: { initialStatus?: string }) {
   const t = useTranslations("foodAdmin");
   const [data, setData] = useState<Response | null>(null);
   const [country, setCountry] = useState("");
   const [destination, setDestination] = useState("");
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState(initialStatus);
   const [kind, setKind] = useState("");
   const [query, setQuery] = useState("");
   const [page, setPage] = useState(1);

@@ -429,15 +429,47 @@ export function displayTripStatus(
   return trip.start_date <= day && day <= trip.end_date ? "travelling" : stored;
 }
 
+export function hasRoutePoint(item: Pick<TripItem, "latitude" | "longitude">) {
+  return typeof item.latitude === "number" && Number.isFinite(item.latitude)
+    && item.latitude >= -90 && item.latitude <= 90
+    && typeof item.longitude === "number" && Number.isFinite(item.longitude)
+    && item.longitude >= -180 && item.longitude <= 180;
+}
+
+/** A chosen place without coordinates is a barrier, not an empty optional slot. */
+export function isOptionalSystemItem(item: TripItem) {
+  if (!item.system_role) return false;
+  if (item.is_skipped) return true;
+  if (isFlightAnchor(item)) {
+    const info = item.data.flight_info;
+    return !(info && typeof info === "object" && Object.values(info).some(Boolean))
+      && (!item.data.flight_selection_source || item.data.flight_selection_source === "unset");
+  }
+  if (!["hotel_start", "hotel_end", "lunch", "dinner"].includes(item.system_role)) return false;
+  return !hasRoutePoint(item)
+    && item.latitude == null && item.longitude == null
+    && !item.location_name?.trim() && !item.provider_place_id
+    && (!item.data.meal_selection_source || item.data.meal_selection_source === "unset");
+}
+
 export function isActiveRouteItem(item: TripItem) {
-  const systemLocationReady = item.latitude != null && item.longitude != null;
   return !item.is_skipped
     && !isFlightAnchor(item)
     && !isLogisticsItem(item)
-    && (!["hotel_start", "hotel_end", "lunch", "dinner"].includes(item.system_role || "") || systemLocationReady);
+    && !isOptionalSystemItem(item);
 }
 
-export type ChainedStart = { start: string; estimated: boolean };
+export type TimelineStatus = "ready" | "estimated" | "pending" | "stale";
+export type ChainedStart = { start: string; estimated: boolean; status?: TimelineStatus };
+export type DayTimelineEdge = {
+  from: TripItem;
+  to: TripItem;
+  travelMode: TravelMode;
+  segment?: RouteSegment;
+  status: TimelineStatus;
+  blocker?: TripItem;
+  estimatedMinutes?: number;
+};
 
 const EARTH_RADIUS_KM = 6371;
 
@@ -446,15 +478,15 @@ export function distanceKm(
   from: Pick<TripItem, "latitude" | "longitude">,
   to: Pick<TripItem, "latitude" | "longitude">,
 ): number | undefined {
-  if (from.latitude == null || from.longitude == null || to.latitude == null || to.longitude == null) {
+  if (!hasRoutePoint(from) || !hasRoutePoint(to)) {
     return undefined;
   }
   const toRadians = (degrees: number) => (degrees * Math.PI) / 180;
-  const deltaLatitude = toRadians(to.latitude - from.latitude);
-  const deltaLongitude = toRadians(to.longitude - from.longitude);
+  const deltaLatitude = toRadians(to.latitude! - from.latitude!);
+  const deltaLongitude = toRadians(to.longitude! - from.longitude!);
   const halfChord = Math.sin(deltaLatitude / 2) ** 2
-    + Math.cos(toRadians(from.latitude)) * Math.cos(toRadians(to.latitude)) * Math.sin(deltaLongitude / 2) ** 2;
-  return 2 * EARTH_RADIUS_KM * Math.asin(Math.sqrt(halfChord));
+    + Math.cos(toRadians(from.latitude!)) * Math.cos(toRadians(to.latitude!)) * Math.sin(deltaLongitude / 2) ** 2;
+  return 2 * EARTH_RADIUS_KM * Math.asin(Math.sqrt(Math.min(1, halfChord)));
 }
 
 /**
@@ -529,57 +561,91 @@ function writeMoment(ms: number, wallClock: boolean) {
   return `${local.getFullYear()}-${pad(local.getMonth() + 1)}-${pad(local.getDate())}T${pad(local.getHours())}:${pad(local.getMinutes())}`;
 }
 
-/**
- * Walk a day in display order and work out when each chained item can start.
- *
- * A routed segment gives the real `ready_time`; without one we still show the member
- * a running total — previous item's end, a distance-based travel estimate when both
- * stops have coordinates, plus the day's transfer buffer — flagged as an estimate so
- * it reads differently from a computed route.
- */
-export function projectChainedStarts(
+function segmentStatus(segment: RouteSegment): TimelineStatus {
+  if (segment.status === "stale" || (segment.provider !== "manual" && segment.expires_at
+    && Date.parse(segment.expires_at) <= Date.now())) return "stale";
+  if (segment.provider === "estimate" || ["estimated", "failed", "unavailable"].includes(segment.status)) return "estimated";
+  return "ready";
+}
+
+function itemDurationMinutes(row: TripItem) {
+  if (row.duration_minutes != null) return row.duration_minutes;
+  const start = readMoment(row.start_time), end = readMoment(row.end_time);
+  return start && end ? Math.max(0, (end.ms - start.ms) / 60_000) : 60;
+}
+
+/** One immutable view of the day: optional slots never create edges or consume time. */
+export function deriveDayTimeline(
   rows: TripItem[],
   segments: RouteSegment[],
-  bufferMinutes: number,
-  travelMode: TravelMode = "transit",
-): Map<string, ChainedStart> {
-  const arrivals = new Map(segments.map((segment) => [segment.to_item_id, segment]));
-  const projected = new Map<string, ChainedStart>();
-  let cursor: { ms: number; wallClock: boolean; from: TripItem } | undefined;
+  options: { bufferMinutes?: number; travelMode?: TravelMode } = {},
+) {
+  const bufferMinutes = options.bufferMinutes ?? 10;
+  const travelMode = options.travelMode ?? "transit";
+  const ordered = groupTripItems(rows).flatMap(([, dayRows]) => dayRows);
+  const optionalRows = ordered.filter(isOptionalSystemItem);
+  const displayRows = ordered.filter((row) => !isLogisticsItem(row) && !isOptionalSystemItem(row));
+  const routeRows = ordered.filter(isActiveRouteItem);
+  const byPair = new Map(segments.map((segment) => [pairKey(segment.from_item_id, segment.to_item_id), segment]));
+  const edges: DayTimelineEdge[] = [];
+  const edgesByFromId = new Map<string, DayTimelineEdge>();
+  const starts = new Map<string, ChainedStart>();
 
-  for (const row of rows) {
-    if (row.is_skipped) continue;
-    const anchored = row.fixed_time ? readMoment(row.start_time) : undefined;
-    const segment = anchored ? undefined : arrivals.get(row.id);
-    let chained: { ms: number; wallClock: boolean } | undefined;
-    if (anchored) {
-      chained = anchored;
-    } else if (cursor) {
-      // Chain by duration from the projected end of the previous stop, the way the
-      // server projects a day. A segment that survived an edit upstream still has the
-      // absolute times it was computed with, so those cannot anchor the chain.
-      const travelMinutes = segment
-        ? segment.duration_minutes + (segment.buffer_minutes ?? bufferMinutes)
-        : (estimateLegMinutes(cursor.from, row, travelMode) || 0) + bufferMinutes;
-      chained = { ms: cursor.ms + travelMinutes * 60_000, wallClock: cursor.wallClock };
-    } else {
-      chained = readMoment(segment?.ready_time) || readMoment(row.start_time);
-    }
-    if (!chained) {
-      cursor = undefined;
-      continue;
-    }
-    if (!row.fixed_time) {
-      projected.set(row.id, {
+  for (const [, dayRows] of groupTripItems(routeRows)) {
+    let cursor: { ms: number; wallClock: boolean; status: TimelineStatus } | undefined;
+    for (let index = 0; index < dayRows.length; index += 1) {
+      const row = dayRows[index], previous = dayRows[index - 1];
+      let edge: DayTimelineEdge | undefined;
+      if (previous) {
+        const blocker = [previous, row].find((item) => !hasRoutePoint(item));
+        const saved = blocker ? undefined : byPair.get(pairKey(previous.id, row.id));
+        const segment = saved && !["failed", "unavailable"].includes(saved.status)
+          && Number.isFinite(saved.duration_minutes) && saved.duration_minutes > 0 ? saved : undefined;
+        const estimatedMinutes = blocker ? undefined : estimateLegMinutes(previous, row, travelMode);
+        edge = { from: previous, to: row, travelMode: segment?.travel_mode || travelMode, segment, blocker, estimatedMinutes,
+          status: blocker ? "pending" : segment ? segmentStatus(segment) : "estimated" };
+        edges.push(edge);
+        edgesByFromId.set(previous.id, edge);
+      }
+      const anchored = row.fixed_time ? readMoment(row.start_time) : undefined;
+      let chained: typeof cursor;
+      if (cursor && edge && edge.status !== "pending") {
+        const minutes = edge.segment?.duration_minutes ?? edge.estimatedMinutes;
+        if (minutes != null && Number.isFinite(minutes) && minutes >= 0) {
+          const status = cursor.status === "stale" || edge.status === "stale" ? "stale"
+            : cursor.status !== "ready" || edge.status !== "ready" ? "estimated" : "ready";
+          chained = { ms: cursor.ms + (minutes + (edge.segment?.buffer_minutes ?? bufferMinutes)) * 60_000,
+            wallClock: cursor.wallClock, status };
+        }
+      }
+      if (anchored) {
+        // Preserve the appointment, while propagating actual lateness downstream.
+        if (!chained || chained.ms <= anchored.ms) chained = { ...anchored, status: "ready" };
+      } else if (index === 0) {
+        const start = readMoment(row.start_time);
+        if (start) chained = { ...start, status: "estimated" };
+      }
+      if (!chained) {
+        cursor = undefined;
+        continue;
+      }
+      if (!row.fixed_time) starts.set(row.id, {
         start: writeMoment(chained.ms, chained.wallClock),
-        estimated: !segment,
+        estimated: chained.status !== "ready", status: chained.status,
       });
+      cursor = { ...chained, ms: chained.ms + itemDurationMinutes(row) * 60_000 };
     }
-    cursor = {
-      ms: chained.ms + (row.duration_minutes || 0) * 60_000,
-      wallClock: chained.wallClock,
-      from: row,
-    };
   }
-  return projected;
+  return { rows: displayRows, optionalRows, routeRows, edges, edgesByFromId, starts,
+    unresolvedItems: routeRows.filter((row) => !hasRoutePoint(row)),
+    arrangementCount: routeRows.filter((row) => !row.system_role?.startsWith("hotel_")).length,
+    durationMinutes: routeRows.reduce((total, row) => total + itemDurationMinutes(row), 0),
+  };
+}
+
+/** Backwards-compatible projection, using the same graph as the timeline. */
+export function projectChainedStarts(
+  rows: TripItem[], segments: RouteSegment[], bufferMinutes: number, travelMode: TravelMode = "transit",
+): Map<string, ChainedStart> {
+  return deriveDayTimeline(rows, segments, { bufferMinutes, travelMode }).starts;
 }

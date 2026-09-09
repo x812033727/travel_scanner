@@ -8,6 +8,8 @@ type JsonScalar = str | int | float | bool
 
 
 class ProviderSettingsUpdate(BaseModel):
+    # Omitted by legacy clients; explicit null means no database row existed.
+    expected_updated_at: datetime | None = None
     enabled: bool | None = None
     config: dict[str, JsonScalar | None] = Field(default_factory=dict)
     secrets: dict[str, str | None] = Field(default_factory=dict)

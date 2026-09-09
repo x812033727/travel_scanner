@@ -1,0 +1,490 @@
+{
+  "reviewed_on": "2026-09-08",
+  "scope": "Kyoto station-area and Kawaramachi five-hotel platform continuation",
+  "merge": {
+    "pr": 353,
+    "reviewed_head": "252a2d8bde8be0c6e3e62939378e23155a77be7a",
+    "commit": "6db0f51a127246beb82d30d3eef4a0624a649e50",
+    "merged_at": "2026-09-08T04:05:33Z"
+  },
+  "browser": {
+    "status": "unavailable",
+    "error": "Timed out after 10000ms waiting for CDP command Emulation.setFocusEmulationEnabled.",
+    "attempts": 2,
+    "rule": "Fresh inventory then one reconnect; same failure, stop. No map observations or approval."
+  },
+  "runtime": {
+    "image": "travel-scanner-api:aaa33f008c82c56e5c541dede8205097102193e1",
+    "schema": "0062_merchant_platform_links",
+    "backup": "/root/travel_scanner_pre_hotel_candidates_20260908T041040Z.dump",
+    "backup_bytes": 7090398,
+    "deployed": false,
+    "config_changed": false,
+    "preflight_fingerprint": "adc6db5cc7270269a2b637a3a97029d9ca4222f8ff922b0b8bb1f180791b95c6",
+    "untouched_fingerprint": "717290d01cd5cc81c66c11005e07c9ff5d7ec86da448bcb33ba75f59bf3b201c"
+  },
+  "hotels": [
+    {
+      "source_key": "editorial:kyoto:granvia-kyoto",
+      "official_name": "ホテルグランヴィア京都",
+      "official_address": "京都府京都市下京区烏丸通塩小路下ル JR京都駅中央口",
+      "official_identity_url": "https://jrwest-hotels.jp/en/granvia-kyoto/",
+      "product_status": "pending",
+      "map_review_status": "not_checked",
+      "platform_reviews": [
+        {
+          "provider": "official",
+          "url": "https://jrwest-hotels.jp/en/granvia-kyoto/",
+          "discovery_status": "found",
+          "status": "approved",
+          "health": "healthy",
+          "browser_verified": false,
+          "identity_evidence_url": "https://jrwest-hotels.jp/en/granvia-kyoto/",
+          "matched_name": "ホテルグランヴィア京都",
+          "matched_address": "京都府京都市下京区烏丸通塩小路下ル JR京都駅中央口",
+          "document_checked_on": "2026-09-08",
+          "identity_note": "Trip lists JR Kyoto Station Central Entrance, not house number 901. Official station identity and licensed permit address are corroborated; no missing Trip street number invented.",
+          "option_id": "44d41899-9bb9-499f-a5d1-7a4676a2e499",
+          "version": 2,
+          "reviewed_on": "2026-09-08"
+        },
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/jp/granvia-kyoto-kyoto.html",
+          "discovery_status": "found",
+          "status": "pending",
+          "health": "unchecked",
+          "browser_verified": false,
+          "reason": "No new independent landing review; keep prior pending state."
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://www.trip.com/hotels/kyoto-hotel-detail-993497/hotel-granvia-kyoto/",
+          "discovery_status": "found",
+          "status": "approved",
+          "health": "healthy",
+          "browser_verified": false,
+          "identity_evidence_url": "https://jrwest-hotels.jp/en/granvia-kyoto/",
+          "matched_name": "Hotel Granvia Kyoto",
+          "matched_address": "JR京都駅 Central Entrance, Shimogyo Ward, Kyoto 600-8216",
+          "document_checked_on": "2026-09-08",
+          "identity_note": "Trip lists JR Kyoto Station Central Entrance, not house number 901. Official station identity and licensed permit address are corroborated; no missing Trip street number invented.",
+          "option_id": "b3c9743c-774b-485b-aa01-61024e0d32c6",
+          "version": 2,
+          "reviewed_on": "2026-09-08"
+        },
+        {
+          "provider": "agoda",
+          "url": "https://www.agoda.com/hotel-granvia-kyoto/hotel/kyoto-jp.html",
+          "discovery_status": "found",
+          "status": "pending",
+          "health": "unchecked",
+          "browser_verified": false,
+          "reason": "No new independent landing review; keep prior pending state."
+        },
+        {
+          "provider": "expedia",
+          "discovery_status": "unconfirmed",
+          "status": "pending",
+          "health": "unchecked",
+          "browser_verified": false,
+          "reason": "No new independent landing review; keep prior pending state."
+        },
+        {
+          "provider": "rakuten",
+          "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_kyoto/cty_kyoto_city/10123456796201",
+          "discovery_status": "found",
+          "status": "pending",
+          "health": "unchecked",
+          "browser_verified": false,
+          "reason": "Observed property name and Kyoto City; complete street/current landing identity unresolved. Indexed freshness is not current inventory or approval.",
+          "new_candidate": true,
+          "property_id": "10123456796201",
+          "query": "site.travel.rakuten.com \"Hotel Granvia Kyoto\"",
+          "document_freshness": "10 months ago",
+          "option_id": "d5c927bb-4d10-4941-96cb-bf7689f59db2",
+          "version": 2
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:kyoto:vischio-kyoto",
+      "official_name": "ホテルヴィスキオ京都 by GRANVIA",
+      "official_address": "京都市南区東九条上殿田町44-1",
+      "official_identity_url": "https://www.hotelvischio-kyoto.jp/access/",
+      "product_status": "pending",
+      "map_review_status": "not_checked",
+      "platform_reviews": [
+        {
+          "provider": "official",
+          "url": "https://www.hotelvischio-kyoto.jp/access/",
+          "discovery_status": "found",
+          "status": "approved",
+          "health": "healthy",
+          "browser_verified": false,
+          "identity_evidence_url": "https://www.hotelvischio-kyoto.jp/access/",
+          "matched_name": "ホテルヴィスキオ京都 by GRANVIA",
+          "matched_address": "京都市南区東九条上殿田町44-1",
+          "document_checked_on": "2026-09-08",
+          "option_id": "76646f09-1235-4c63-a5e2-3baeba09fd7c",
+          "version": 2,
+          "reviewed_on": "2026-09-08"
+        },
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/jp/hoteruvuisukiojing-du.html",
+          "discovery_status": "found",
+          "status": "pending",
+          "health": "unchecked",
+          "browser_verified": false,
+          "reason": "No new independent landing review; keep prior pending state."
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://www.trip.com/hotels/kyoto-hotel-detail-25098068/hotel-vischio-kyoto-by-granvia/",
+          "discovery_status": "found",
+          "status": "approved",
+          "health": "healthy",
+          "browser_verified": false,
+          "identity_evidence_url": "https://www.hotelvischio-kyoto.jp/access/",
+          "matched_name": "Hotel Vischio Kyoto by GRANVIA",
+          "matched_address": "44-1 Kamitonoda-cho, Higashikujo, Minami Ward, Kyoto 601-8002",
+          "document_checked_on": "2026-09-08",
+          "option_id": "9c6a9603-2acc-470a-b0bb-5ceb1b525548",
+          "version": 2,
+          "reviewed_on": "2026-09-08"
+        },
+        {
+          "provider": "agoda",
+          "url": "https://www.agoda.com/hotel-vischio-kyoto-by-granvia/hotel/kyoto-jp.html",
+          "discovery_status": "found",
+          "status": "pending",
+          "health": "unchecked",
+          "browser_verified": false,
+          "reason": "No new independent landing review; keep prior pending state."
+        },
+        {
+          "provider": "expedia",
+          "discovery_status": "unconfirmed",
+          "status": "pending",
+          "health": "unchecked",
+          "browser_verified": false,
+          "reason": "No new independent landing review; keep prior pending state."
+        },
+        {
+          "provider": "rakuten",
+          "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_kyoto/cty_kyoto_city/10123456864974",
+          "discovery_status": "found",
+          "status": "pending",
+          "health": "unchecked",
+          "browser_verified": false,
+          "reason": "Observed property name and Kyoto City; complete street/current landing identity unresolved. Indexed freshness is not current inventory or approval.",
+          "new_candidate": true,
+          "property_id": "10123456864974",
+          "query": "site.travel.rakuten.com \"Hotel Vischio Kyoto\"",
+          "document_freshness": "last week",
+          "option_id": "55a8962a-805f-4b6f-9f14-43c15089f869",
+          "version": 2
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:kyoto:daiwa-roynet-terrace-hachijo",
+      "official_name": "ダイワロイネットホテル京都テラス八条PREMIER",
+      "official_address": "14-1 Higashikujo Higashisanno-cho, Minami-ku, Kyoto 601-8004",
+      "official_identity_url": "https://www.daiwaroynet.jp/en/kyoto-terrace/",
+      "product_status": "pending",
+      "map_review_status": "not_checked",
+      "platform_reviews": [
+        {
+          "provider": "official",
+          "url": "https://www.daiwaroynet.jp/en/kyoto-terrace/",
+          "discovery_status": "found",
+          "status": "approved",
+          "health": "healthy",
+          "browser_verified": false,
+          "identity_evidence_url": "https://www.daiwaroynet.jp/en/kyoto-terrace/",
+          "matched_name": "ダイワロイネットホテル京都テラス八条PREMIER",
+          "matched_address": "14-1 Higashikujo Higashisanno-cho, Minami-ku, Kyoto 601-8004",
+          "document_checked_on": "2026-09-08",
+          "option_id": "13054029-6360-4277-8450-7600d6024703",
+          "version": 2,
+          "reviewed_on": "2026-09-08"
+        },
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/jp/daiwa-roynet-kyoto-station.html",
+          "discovery_status": "found",
+          "status": "pending",
+          "health": "unchecked",
+          "browser_verified": false,
+          "reason": "No new independent landing review; keep prior pending state."
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://www.trip.com/hotels/kyoto-hotel-detail-33528530/daiwa-roynet-hotel-kyoto-terrace-hachijo-premier/",
+          "discovery_status": "found",
+          "status": "approved",
+          "health": "healthy",
+          "browser_verified": false,
+          "identity_evidence_url": "https://www.daiwaroynet.jp/en/kyoto-terrace/",
+          "matched_name": "Daiwa Roynet Hotel Kyoto Terrace Hachijo PREMIER",
+          "matched_address": "14-1 Higashikujo Higashisannocho, Minami Ward, Kyoto 601-8004",
+          "document_checked_on": "2026-09-08",
+          "option_id": "a28b052e-ca1d-4420-83f2-4b8e237049cd",
+          "version": 2,
+          "reviewed_on": "2026-09-08"
+        },
+        {
+          "provider": "agoda",
+          "url": "https://www.agoda.com/en-us/daiwa-roynet-hotel-kyoto-terrace-hachijohigashiguchi/hotel/kyoto-jp.html",
+          "discovery_status": "found",
+          "status": "pending",
+          "health": "unchecked",
+          "browser_verified": false,
+          "reason": "No new independent landing review; keep prior pending state."
+        },
+        {
+          "provider": "expedia",
+          "discovery_status": "unconfirmed",
+          "status": "pending",
+          "health": "unchecked",
+          "browser_verified": false,
+          "reason": "No new independent landing review; keep prior pending state."
+        },
+        {
+          "provider": "rakuten",
+          "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_kyoto/cty_kyoto_city/10123456860018/",
+          "discovery_status": "found",
+          "status": "pending",
+          "health": "unchecked",
+          "browser_verified": false,
+          "reason": "Observed property name and Kyoto City; complete street/current landing identity unresolved. Indexed freshness is not current inventory or approval.",
+          "new_candidate": true,
+          "property_id": "10123456860018",
+          "query": "site.travel.rakuten.com \"Daiwa Roynet\" \"Terrace\"",
+          "document_freshness": "8 months ago",
+          "option_id": "f448cf9a-fe52-499b-81c8-7114f014cf11",
+          "version": 2
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:kyoto:miyako-kyoto-hachijo",
+      "official_name": "都ホテル 京都八条",
+      "official_address": "京都市南区西九条院町17",
+      "official_identity_url": "https://www.miyakohotels.ne.jp/kyoto-hachijo/",
+      "product_status": "pending",
+      "map_review_status": "not_checked",
+      "platform_reviews": [
+        {
+          "provider": "official",
+          "url": "https://www.miyakohotels.ne.jp/kyoto-hachijo/",
+          "discovery_status": "found",
+          "status": "approved",
+          "health": "healthy",
+          "browser_verified": false,
+          "identity_evidence_url": "https://www.miyakohotels.ne.jp/kyoto-hachijo/",
+          "matched_name": "都ホテル 京都八条",
+          "matched_address": "京都市南区西九条院町17",
+          "document_checked_on": "2026-09-08",
+          "supporting_official_url": "https://ja.kyoto.travel/tourism/single-hotel01.php?category_id=13&tourism_id=2265",
+          "identity_note": "Stored Trip URL has an Otokuni-district path but its current property page shows Kyoto, correct name and Nishikujo Inmachi 17. Preserve observed URL/ID; no guessed canonical rewrite.",
+          "option_id": "644bd3d2-12ba-4ee7-9061-2ee0fbd629a6",
+          "version": 2,
+          "reviewed_on": "2026-09-08"
+        },
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/jp/new-miyako.en-gb.html",
+          "discovery_status": "found",
+          "status": "pending",
+          "health": "unchecked",
+          "browser_verified": false,
+          "reason": "No new independent landing review; keep prior pending state."
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://www.trip.com/hotels/otokuni-district-hotel-detail-737157/miyako-hotel-kyoto-hachijo/",
+          "discovery_status": "found",
+          "status": "approved",
+          "health": "healthy",
+          "browser_verified": false,
+          "identity_evidence_url": "https://www.miyakohotels.ne.jp/kyoto-hachijo/",
+          "matched_name": "Miyako Hotel Kyoto Hachijo",
+          "matched_address": "17 Nishikujo Inmachi, Minami Ward, Kyoto 601-8412",
+          "document_checked_on": "2026-09-08",
+          "supporting_official_url": "https://ja.kyoto.travel/tourism/single-hotel01.php?category_id=13&tourism_id=2265",
+          "identity_note": "Stored Trip URL has an Otokuni-district path but its current property page shows Kyoto, correct name and Nishikujo Inmachi 17. Preserve observed URL/ID; no guessed canonical rewrite.",
+          "option_id": "d5dddc98-3941-493c-85a9-3b63855628cc",
+          "version": 2,
+          "reviewed_on": "2026-09-08"
+        },
+        {
+          "provider": "agoda",
+          "url": "https://www.agoda.com/new-miyako-hotel/hotel/hatasho-cho-jp.html",
+          "discovery_status": "found",
+          "status": "pending",
+          "health": "unchecked",
+          "browser_verified": false,
+          "reason": "No new independent landing review; keep prior pending state."
+        },
+        {
+          "provider": "expedia",
+          "discovery_status": "unconfirmed",
+          "status": "pending",
+          "health": "unchecked",
+          "browser_verified": false,
+          "reason": "No new independent landing review; keep prior pending state."
+        },
+        {
+          "provider": "rakuten",
+          "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_kyoto/cty_kyoto_city/10123456795701",
+          "discovery_status": "found",
+          "status": "pending",
+          "health": "unchecked",
+          "browser_verified": false,
+          "reason": "Observed property name and Kyoto City; complete street/current landing identity unresolved. Indexed freshness is not current inventory or approval.",
+          "new_candidate": true,
+          "property_id": "10123456795701",
+          "query": "site.travel.rakuten.com \"Miyako Hotel Kyoto Hachijo\"",
+          "document_freshness": "2 months ago",
+          "option_id": "e4b7fedd-848d-4972-9660-6b02364dd5ae",
+          "version": 2
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:kyoto:cross-kyoto",
+      "official_name": "クロスホテル京都",
+      "official_address": "京都市中京区河原町通三条下る大黒町71-1",
+      "official_identity_url": "https://cross-kyoto.orixhotelsandresorts.com/experience_cat/access/",
+      "product_status": "pending",
+      "map_review_status": "not_checked",
+      "platform_reviews": [
+        {
+          "provider": "official",
+          "url": "https://cross-kyoto.orixhotelsandresorts.com/experience_cat/access/",
+          "discovery_status": "found",
+          "status": "approved",
+          "health": "healthy",
+          "browser_verified": false,
+          "identity_evidence_url": "https://cross-kyoto.orixhotelsandresorts.com/experience_cat/access/",
+          "matched_name": "クロスホテル京都",
+          "matched_address": "京都市中京区河原町通三条下る大黒町71-1",
+          "document_checked_on": "2026-09-08",
+          "option_id": "d269ceff-0dcd-43bf-915c-c2f033c26a5e",
+          "version": 2,
+          "reviewed_on": "2026-09-08"
+        },
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/jp/cross-hotel-kyoto.html",
+          "discovery_status": "found",
+          "status": "pending",
+          "health": "unchecked",
+          "browser_verified": false,
+          "reason": "No new independent landing review; keep prior pending state."
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://www.trip.com/hotels/kyoto-hotel-detail-21869296/cross-hotel-kyoto/",
+          "discovery_status": "found",
+          "status": "approved",
+          "health": "healthy",
+          "browser_verified": false,
+          "identity_evidence_url": "https://cross-kyoto.orixhotelsandresorts.com/experience_cat/access/",
+          "matched_name": "Cross Hotel Kyoto",
+          "matched_address": "71-1 Daikokucho, Kawaramachi-dori, Sanjo-sagaru, Nakagyo-ku, Kyoto 604-8031",
+          "document_checked_on": "2026-09-08",
+          "option_id": "a4d22691-5824-449d-995f-579fda742a0e",
+          "version": 2,
+          "reviewed_on": "2026-09-08"
+        },
+        {
+          "provider": "agoda",
+          "url": "https://www.agoda.com/cross-hotel-kyoto/hotel/kyoto-jp.html",
+          "discovery_status": "found",
+          "status": "pending",
+          "health": "unchecked",
+          "browser_verified": false,
+          "reason": "No new independent landing review; keep prior pending state."
+        },
+        {
+          "provider": "expedia",
+          "discovery_status": "unconfirmed",
+          "status": "pending",
+          "health": "unchecked",
+          "browser_verified": false,
+          "reason": "No new independent landing review; keep prior pending state."
+        },
+        {
+          "provider": "rakuten",
+          "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_kyoto/cty_kyoto_city/10123456795968",
+          "discovery_status": "found",
+          "status": "pending",
+          "health": "unchecked",
+          "browser_verified": false,
+          "reason": "Observed property name and Kyoto City; complete street/current landing identity unresolved. Indexed freshness is not current inventory or approval.",
+          "new_candidate": true,
+          "property_id": "10123456795968",
+          "query": "site.travel.rakuten.com \"Cross Hotel Kyoto\"",
+          "document_freshness": "today",
+          "option_id": "467a0157-2d62-4355-8513-904c1242ee16",
+          "version": 2
+        }
+      ]
+    }
+  ],
+  "excluded": [
+    {
+      "source_key": "editorial:kyoto:daiwa-roynet-terrace-hachijo",
+      "url": "https://www.booking.com/hotel/jp/daiwa-roynet-kyoto-hachijyoguchi.html",
+      "reason": "Different Daiwa Roynet Kyoto-Hachijoguchi at Higashikujo Kitakarasuma-cho 9-2; not Terrace Hachijo PREMIER at Higashisanno-cho 14-1. Do not substitute."
+    }
+  ],
+  "unresolved_research": [
+    {
+      "source_key": "editorial:kyoto:daiwa-roynet-terrace-hachijo",
+      "provider": "booking",
+      "url": "https://www.booking.com/hotel/jp/daiwa-roynet-kyoto-station.html",
+      "status": "unconfirmed",
+      "reason": "Stored page produced only three lines with no readable hotel identity; this does not prove a mismatch, failure or non-listing. Kept original pending option."
+    },
+    {
+      "source_key": "editorial:kyoto:vischio-kyoto",
+      "provider": "expedia",
+      "evidence_url": "https://www.expedia.com/Fushimi-Castle-Hotels.0-l6078300-0.Travel-Guide-Filter-Hotels",
+      "query": "site.expedia.com \"Hotel Vischio Kyoto\" \"Hotel-Information\"",
+      "status": "unconfirmed",
+      "reason": "Region result contains a malformed hotel hyperlink with a space before .h30990875. No independently verified property page; do not fabricate a corrected URL or save the region page as a hotel link."
+    }
+  ],
+  "production": {
+    "products_total": 60,
+    "products_approved": 17,
+    "products_pending": 43,
+    "options_total": 360,
+    "options_approved": 58,
+    "options_pending": 302,
+    "new_hotel_identities": 0,
+    "new_location_approvals": 0,
+    "new_candidate_urls": 5,
+    "new_platform_approvals": 10,
+    "review_attempts": 10,
+    "review_failures": 0,
+    "new_audit_records": 15,
+    "all_product_facts_preserved": true,
+    "untouched_options": 345,
+    "config_changed": false,
+    "config_version": 5,
+    "complete_cities": 0,
+    "five_locale_public_hotels": {
+      "tokyo": 10,
+      "osaka": 2,
+      "kyoto": 0
+    },
+    "generated_clicks": 0,
+    "provider_api_calls": 0
+  }
+}

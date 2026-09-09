@@ -1,9 +1,11 @@
 "use client";
 
-import { CirclePause, CirclePlay, DatabaseZap, MapPinned, RefreshCw, Search, UtensilsCrossed } from "lucide-react";
+import { DatabaseZap, MapPinned, RefreshCw, Search, UtensilsCrossed } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { api } from "@/lib/api";
+import { Link } from "@/i18n/navigation";
+import { adminCatalogCopy } from "@/lib/admin-catalog-copy";
 
 type ScanStatus = "not_started" | "queued" | "running" | "quota_paused" | "partial" | "completed" | "failed";
 type CoverageItem = {
@@ -34,6 +36,7 @@ type CoverageResponse = {
 export function AdminRestaurantScansPanel() {
   const t = useTranslations("restaurants");
   const locale = useLocale();
+  const copy = adminCatalogCopy(locale);
   const [data, setData] = useState<CoverageResponse | null>(null);
   const [query, setQuery] = useState("");
   const [status, setStatus] = useState<ScanStatus | "">("");
@@ -87,28 +90,10 @@ export function AdminRestaurantScansPanel() {
     }
   }
 
-  async function toggleAutomation() {
-    if (!data) return;
-    setLoading(true);
-    setMessage("");
-    try {
-      const result = await api<{ enabled: boolean; message: string }>("/admin/hotspots/restaurants/automation", {
-        method: "PATCH",
-        body: JSON.stringify({ enabled: !data.automation_enabled }),
-      });
-      setMessage(result.message);
-      await load(true);
-    } catch (reason) {
-      setMessage((reason as Error).message);
-    } finally {
-      setLoading(false);
-    }
-  }
-
   return <section className="mt-10 border-t border-[var(--line)] pt-8">
     <div className="flex flex-wrap items-end justify-between gap-4">
       <div><p className="flex items-center gap-2 text-sm font-bold text-[var(--coral)]"><UtensilsCrossed size={17} />{t("admin.eyebrow")}</p><h2 className="mt-2 text-2xl font-bold">{t("admin.title")}</h2><p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("admin.description")}</p></div>
-      <div className="flex flex-wrap gap-2"><button type="button" disabled={loading} onClick={() => void toggleAutomation()} className={`inline-flex min-h-11 items-center gap-2 rounded-xl border px-4 text-sm font-semibold ${data?.automation_enabled ? "border-amber-300 bg-amber-50 text-amber-900" : "border-emerald-300 bg-emerald-50 text-emerald-900"}`}>{data?.automation_enabled ? <CirclePause size={16} /> : <CirclePlay size={16} />}{t(data?.automation_enabled ? "admin.pauseAutomation" : "admin.resumeAutomation")}</button><button type="button" disabled={loading || !data?.automation_enabled} onClick={() => void scan({ all_missing: true })} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-[var(--ink)] px-4 text-sm font-semibold text-white disabled:opacity-50"><DatabaseZap size={16} />{t("admin.scanMissing")}</button><button type="button" onClick={() => void load()} aria-label={t("admin.refresh")} className="grid h-11 w-11 place-items-center rounded-xl border border-[var(--line)] bg-white"><RefreshCw size={17} className={loading ? "animate-spin" : ""} /></button></div>
+      <div className="flex flex-wrap gap-2"><div className="rounded-xl border border-[var(--line)] px-4 py-2 text-sm"><p role="status" className="font-semibold">{!data ? copy.automationUnknown : data.automation_enabled ? copy.automationEnabled : copy.automationDisabled}</p><Link href="/admin/foods?tab=settings&provider=google_maps&field=restaurant_scan_enabled" className="inline-flex min-h-11 items-center font-semibold text-[var(--teal)] underline">{copy.automationSettings}</Link></div><button type="button" disabled={loading || !data?.automation_enabled} onClick={() => void scan({ all_missing: true })} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-[var(--ink)] px-4 text-sm font-semibold text-white disabled:opacity-50"><DatabaseZap size={16} />{t("admin.scanMissing")}</button><button type="button" onClick={() => void load()} aria-label={t("admin.refresh")} className="grid h-11 w-11 place-items-center rounded-xl border border-[var(--line)] bg-white"><RefreshCw size={17} className={loading ? "animate-spin" : ""} /></button></div>
     </div>
     <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-4">{data && (["aggregate", "nearby", "details"] as const).map((operation) => {
       const usage = data.usage.operations[operation];

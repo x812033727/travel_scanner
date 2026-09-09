@@ -1,0 +1,187 @@
+/* Fixed role colors are deliberately independent of the planner's accent theme. */
+.hotel {
+  --stop-bg: #edf5ff;
+  --stop-raised: #dceaff;
+  --stop-ink: #183d68;
+  --stop-muted: #395a7c;
+  --stop-accent: #2969a8;
+  --stop-border: #9bbde1;
+}
+
+.lunch {
+  --stop-bg: #fff5e2;
+  --stop-raised: #ffe7b5;
+  --stop-ink: #603c0b;
+  --stop-muted: #70501f;
+  --stop-accent: #9a5b0a;
+  --stop-border: #d8b57b;
+}
+
+.dinner {
+  --stop-bg: #f5efff;
+  --stop-raised: #e9dcfc;
+  --stop-ink: #4d286d;
+  --stop-muted: #66417f;
+  --stop-accent: #8150ab;
+  --stop-border: #bea3d7;
+}
+
+:global(:root[data-theme="dark"]) .hotel {
+  --stop-bg: #1b304b;
+  --stop-raised: #284665;
+  --stop-ink: #e2eeff;
+  --stop-muted: #b7cde8;
+  --stop-accent: #8fc4ff;
+  --stop-border: #51779e;
+}
+
+:global(:root[data-theme="dark"]) .lunch {
+  --stop-bg: #3c2d18;
+  --stop-raised: #554020;
+  --stop-ink: #fff0cd;
+  --stop-muted: #e8c991;
+  --stop-accent: #ffc366;
+  --stop-border: #9b7745;
+}
+
+:global(:root[data-theme="dark"]) .dinner {
+  --stop-bg: #332541;
+  --stop-raised: #49325f;
+  --stop-ink: #f3e7ff;
+  --stop-muted: #d7bdeb;
+  --stop-accent: #cda1f5;
+  --stop-border: #85609f;
+}
+
+.tone.card,
+.tone.summary,
+.tone.entry {
+  --ink: var(--stop-ink);
+  --muted: var(--stop-muted);
+  --line: var(--stop-border);
+  background: var(--stop-bg);
+  border-color: var(--stop-border);
+  border-inline-start: 4px solid var(--stop-accent);
+  color: var(--stop-ink);
+}
+
+.tone.summary {
+  border-style: solid;
+}
+
+.tone.summary > summary {
+  min-height: 56px;
+  color: var(--stop-muted);
+  padding: 0.75rem 0.875rem;
+}
+
+.tone.summary > summary strong,
+.tone.entry strong {
+  color: var(--stop-ink);
+  overflow-wrap: anywhere;
+}
+
+.tone.summary > summary strong {
+  margin-block-start: 0.3rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.tone.summary > summary > svg:first-child,
+.tone.entry > svg:first-child {
+  color: var(--stop-accent);
+  flex-shrink: 0;
+}
+
+.tone.entry {
+  min-height: 44px;
+}
+
+.tone.marker,
+.tone.badge {
+  background: var(--stop-raised);
+  border: 1px solid var(--stop-border);
+  color: var(--stop-ink);
+}
+
+.tone.marker {
+  box-shadow: 0 0 0 3px var(--stop-bg);
+}
+
+.tone.badge {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.tone.card :global(.planner-system-icon) {
+  color: var(--stop-accent);
+  background: var(--stop-raised);
+}
+
+.tone.card .roleLabel,
+.tone.summary .roleLabel {
+  color: var(--stop-ink);
+}
+
+.tone.card :global(.planner-system-primary),
+.tone.card :global(.planner-system-action) {
+  min-height: 44px;
+  border: 1px solid var(--stop-border);
+  background: var(--stop-raised);
+  color: var(--stop-ink);
+}
+
+/* This beats the legacy dark action rule without changing global planner styles. */
+:global(:root[data-theme="dark"]) .tone.card :global(.planner-system-primary),
+:global(:root[data-theme="dark"]) .tone.card :global(.planner-system-action) {
+  background: var(--stop-raised);
+  color: var(--stop-ink);
+}
+
+.tone.card :global(.planner-system-primary):focus-visible,
+.tone.card :global(.planner-system-action):focus-visible,
+.tone.summary > summary:focus-visible,
+.tone.entry:focus-visible {
+  outline: 3px solid var(--stop-accent);
+  outline-offset: 3px;
+}
+
+.tone .status {
+  color: var(--stop-muted);
+}
+
+.tone .statusBadge {
+  border: 1px solid var(--stop-border);
+  border-radius: 999px;
+  background: var(--stop-raised);
+  color: var(--stop-ink);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* Skipping dims the surface, not the text or the role accent. */
+.tone.skipped {
+  --stop-bg: #f0f3f6;
+  --stop-raised: #e1e6ed;
+  --stop-ink: #344252;
+  --stop-muted: #4d5c6d;
+  --stop-border: #aab8c8;
+  box-shadow: none;
+}
+
+:global(:root[data-theme="dark"]) .tone.skipped {
+  --stop-bg: #252d38;
+  --stop-raised: #354151;
+  --stop-ink: #e4ebf4;
+  --stop-muted: #becbdc;
+  --stop-border: #66788e;
+}
+
+.tone.skipped .roleLabel,
+.tone.skipped > summary > svg:first-child {
+  color: var(--stop-accent);
+}

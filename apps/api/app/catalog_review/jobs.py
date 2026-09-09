@@ -28,6 +28,7 @@ from app.catalog_review.repository import (
     trusted_hosts,
 )
 from app.catalog_review.schemas import CatalogKind, EvidenceSource, ReviewCandidate
+from app.catalog_review.scope import SCOPE_KINDS, request_scope, scope_counts
 from app.config import Settings, get_settings
 from app.db import SessionFactory, engine
 from app.destinations.catalog import DESTINATIONS
@@ -67,7 +68,8 @@ def _count(value: Any, default: int = 0) -> int:
 
 
 def _targets(request: dict[str, Any]) -> dict[str, int]:
-    raw = request.get("requested_counts", TARGET_COUNTS)
+    scope = request_scope(request)
+    raw = request.get("requested_counts", scope_counts(scope))
     if (
         not isinstance(raw, dict)
         or set(raw) != set(TARGET_COUNTS)
@@ -78,6 +80,8 @@ def _targets(request: dict[str, Any]) -> dict[str, int]:
         or not 1 <= sum(raw.values()) <= 100
     ):
         raise ValueError("Invalid discovery target counts")
+    if any(value and kind not in SCOPE_KINDS[scope] for kind, value in raw.items()):
+        raise ValueError("Discovery target is outside the run scope")
     return cast(dict[str, int], raw)
 
 
@@ -245,6 +249,7 @@ async def _review_items(
                     .where(
                         CatalogReviewItem.run_id == run_id,
                         CatalogReviewItem.phase == phase,
+                        CatalogReviewItem.kind.in_(SCOPE_KINDS[request_scope(run.request_json)]),
                         CatalogReviewItem.status.in_(("pending", "error")),
                     )
                     .order_by(CatalogReviewItem.id)
@@ -355,7 +360,9 @@ async def _discovery_context(
 
     avoid: set[str] = set()
     food_slugs: dict[UUID, str] = {}
-    for entity_kind, model in ENTITY_TYPES.items():
+    context_kinds = (kind, "food") if kind == "merchant" else (kind,)
+    for entity_kind in context_kinds:
+        model = ENTITY_TYPES[entity_kind]
         rows: list[Any] = list((await session.scalars(select(model))).all())
         for row in rows:
             destination_id = getattr(row, "destination_id", None)
@@ -369,7 +376,12 @@ async def _discovery_context(
                 food_slugs[row.id] = row.slug
     foods: dict[str, list[str]] = {}
     food_destinations: dict[UUID, set[str]] = {}
-    for link in (await session.scalars(select(FoodDestination))).all():
+    links = (
+        (await session.scalars(select(FoodDestination))).all()
+        if kind in {"food", "merchant"}
+        else []
+    )
+    for link in links:
         food_destinations.setdefault(link.food_id, set()).add(link.destination_id)
         if link.food_id in food_slugs:
             foods.setdefault(link.destination_id, []).append(food_slugs[link.food_id])
@@ -429,7 +441,7 @@ async def _discover_items(
         await session.commit()
     if consecutive_failures >= MAX_CONSECUTIVE_PROVIDER_FAILURES:
         raise ProviderCircuitOpen()
-    for kind in TARGET_COUNTS:
+    for kind in SCOPE_KINDS[request_scope(run.request_json)]:
         while True:
             async with SessionFactory() as session:
                 run = await _locked_run(session, run_id, token)
@@ -444,15 +456,13 @@ async def _discover_items(
                 run.phase = "discover_new"
                 destinations, avoid = await _discovery_context(
                     session,
-                    cast(CatalogKind, kind),
+                    kind,
                     destination_offset=rounds * DISCOVERY_DESTINATION_BATCH_SIZE,
                 )
                 await session.commit()
             error: Exception | None = None
             try:
-                batch = await provider.discover(
-                    cast(CatalogKind, kind), min(5, target - created), destinations, avoid
-                )
+                batch = await provider.discover(kind, min(5, target - created), destinations, avoid)
                 consecutive_failures = 0
             except (BudgetStopped, LeaseLost):
                 raise
@@ -522,6 +532,7 @@ async def _finish(
             await session.scalars(
                 select(CatalogReviewItem).where(
                     CatalogReviewItem.run_id == run_id,
+                    CatalogReviewItem.kind.in_(SCOPE_KINDS[request_scope(run.request_json)]),
                 )
             )
         ).all()

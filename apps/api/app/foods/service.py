@@ -19,7 +19,10 @@ from app.foods.area_catalog import ALL_AREA_SEEDS
 from app.foods.catalog import COUNTRY_NAMES, FOOD_SEEDS
 from app.foods.category_catalog import CATEGORY_SEEDS
 from app.foods.merchant_catalog import MERCHANT_DIRECT_SOURCE_SEEDS, MERCHANT_SEEDS
+from app.foods.platform_link_catalog import PLATFORM_LINK_AUDIT_SEEDS
+from app.foods.platform_links import serialize_reservation_link
 from app.foods.publication import merchant_is_publishable, publishable_merchant_filters
+from app.foods.styles import STYLE_NAMES, style_filter
 from app.hotspots.maps import build_map_links, has_exact_map_identity
 from app.i18n import Locale
 from app.localized_names import (
@@ -38,7 +41,9 @@ from app.models import (
     FoodMerchant,
     FoodMerchantCategory,
     FoodMerchantFood,
+    FoodMerchantPlatformLink,
     FoodMerchantSource,
+    FoodMerchantStyle,
     HotspotLocalization,
     TravelFood,
     TravelHotspot,
@@ -481,6 +486,31 @@ async def seed_food_catalog(session: AsyncSession) -> int:
                 merchant.official_website_url = direct_source_seed.official_website_url
                 merchant.official_website_verified_at = datetime.now(UTC)
 
+    await session.flush()
+    merchants_by_slug = {
+        row.slug: row for row in (await session.scalars(select(FoodMerchant))).all()
+    }
+    existing_platform_links = {
+        (row.merchant_id, row.provider)
+        for row in (await session.scalars(select(FoodMerchantPlatformLink))).all()
+    }
+    checked_at = datetime(2026, 9, 8, tzinfo=UTC)
+    for audit in PLATFORM_LINK_AUDIT_SEEDS:
+        merchant = merchants_by_slug.get(audit.merchant_slug)
+        if merchant is None or (merchant.id, audit.provider) in existing_platform_links:
+            continue
+        session.add(
+            FoodMerchantPlatformLink(
+                merchant_id=merchant.id,
+                provider=audit.provider,
+                canonical_url=audit.canonical_url,
+                localized_urls_json=dict(audit.localized_urls),
+                status=audit.status,
+                checked_at=checked_at,
+                review_note=audit.review_note,
+            )
+        )
+
     food_areas = list(
         (
             await session.scalars(
@@ -626,6 +656,9 @@ async def _serialize_foods(
         )
     ).all()
     merchant_ids = {merchant.id for _, merchant in merchant_rows}
+    platform_links_by_merchant = await _public_platform_links(
+        session, merchant_ids, locale
+    )
     areas_by_merchant, categories_by_merchant = await _merchant_taxonomy(
         session, merchant_ids, locale
     )
@@ -687,6 +720,9 @@ async def _serialize_foods(
                 "local_name": merchant.local_name,
                 "names": names,
                 "destination_id": merchant.destination_id,
+                "destination_name": localized_city_name(profile, cast(Locale, locale))
+                if profile
+                else merchant.destination_id,
                 "address": merchant.address,
                 "latitude": float(merchant.latitude) if merchant.latitude is not None else None,
                 "longitude": float(merchant.longitude) if merchant.longitude is not None else None,
@@ -709,6 +745,7 @@ async def _serialize_foods(
                     naver_map_url=merchant.naver_map_url,
                     map_match_status=merchant.map_match_status,
                 ),
+                "reservation_links": platform_links_by_merchant.get(merchant.id, []),
                 "verified_at": merchant.verified_at.isoformat()
                 if merchant.verified_at is not None
                 else None,
@@ -968,6 +1005,31 @@ async def _serialize_merchant_cards(
     if not merchants:
         return []
     merchant_ids = {merchant.id for merchant in merchants}
+    platform_links_by_merchant = await _public_platform_links(
+        session, merchant_ids, locale
+    )
+    styles_by_merchant: dict[UUID, list[dict[str, str]]] = defaultdict(list)
+    for style_row in (
+        await session.scalars(
+            select(FoodMerchantStyle)
+            .where(
+                FoodMerchantStyle.merchant_id.in_(merchant_ids),
+                FoodMerchantStyle.status == "approved",
+            )
+            .order_by(FoodMerchantStyle.style)
+        )
+    ).all():
+        styles_by_merchant[style_row.merchant_id].append(
+            {
+                "slug": style_row.style,
+                "name": STYLE_NAMES[style_row.style].get(
+                    locale, STYLE_NAMES[style_row.style]["en"]
+                ),
+                "evidence_url": style_row.evidence_url,
+                "evidence_title": style_row.evidence_title,
+                "checked_on": style_row.checked_on.isoformat(),
+            }
+        )
     areas_by_merchant, categories_by_merchant = await _merchant_taxonomy(
         session, merchant_ids, locale
     )
@@ -1040,6 +1102,7 @@ async def _serialize_merchant_cards(
                 "country_code": merchant.country_code,
                 "area": areas_by_merchant.get(merchant.id),
                 "categories": categories_by_merchant.get(merchant.id, []),
+                "styles": styles_by_merchant.get(merchant.id, []),
                 "signature_dishes": dishes_by_merchant.get(merchant.id, []),
                 "address": merchant.address,
                 "latitude": float(merchant.latitude) if merchant.latitude is not None else None,
@@ -1063,6 +1126,7 @@ async def _serialize_merchant_cards(
                     naver_map_url=merchant.naver_map_url,
                     map_match_status=merchant.map_match_status,
                 ),
+                "reservation_links": platform_links_by_merchant.get(merchant.id, []),
                 "verified_at": merchant.verified_at.isoformat()
                 if merchant.verified_at is not None
                 else None,
@@ -1070,6 +1134,39 @@ async def _serialize_merchant_cards(
             }
         )
     return cards
+
+
+async def _public_platform_links(
+    session: AsyncSession,
+    merchant_ids: set[UUID],
+    locale: str,
+) -> dict[UUID, list[dict[str, str]]]:
+    links_by_merchant: dict[UUID, list[dict[str, str]]] = defaultdict(list)
+    if not merchant_ids:
+        return links_by_merchant
+    rows = (
+        await session.scalars(
+            select(FoodMerchantPlatformLink).where(
+                FoodMerchantPlatformLink.merchant_id.in_(merchant_ids),
+                FoodMerchantPlatformLink.status == "verified",
+            )
+        )
+    ).all()
+    countries = {
+        row.id: row.country_code
+        for row in (
+            await session.scalars(select(FoodMerchant).where(FoodMerchant.id.in_(merchant_ids)))
+        ).all()
+    }
+    for row in rows:
+        link = serialize_reservation_link(
+            row,
+            country_code=countries[row.merchant_id],
+            locale=locale,
+        )
+        if link is not None:
+            links_by_merchant[row.merchant_id].append(link)
+    return links_by_merchant
 
 
 async def _resolve_area(session: AsyncSession, area_slug: str) -> FoodArea:
@@ -1148,6 +1245,7 @@ async def merchant_categories(
     destination_id: str | None = None,
     area_slug: str | None = None,
     q: str | None = None,
+    style: str | None = None,
 ) -> dict[str, Any]:
     """Every active category with the number of publishable merchants in scope.
 
@@ -1164,7 +1262,7 @@ async def merchant_categories(
         destination_id=destination_id,
         area_id=area_id,
         unassigned=area_slug == "other",
-        extra=[search] if search is not None else [],
+        extra=[item for item in (search, style_filter(style)) if item is not None],
     )
     categories = (
         await session.scalars(
@@ -1193,6 +1291,7 @@ async def _merchant_facets(
     area_slug: str | None = None,
     category_slug: str | None = None,
     q: str | None = None,
+    style: str | None = None,
 ) -> dict[str, Any]:
     """Area and category counts for one city.
 
@@ -1203,7 +1302,7 @@ async def _merchant_facets(
 
     search = _search_filter(q)
     category = _category_filter(category_slug)
-    area_extra = [item for item in (search, category) if item is not None]
+    area_extra = [item for item in (search, category, style_filter(style)) if item is not None]
     area_rows = (
         await session.execute(
             select(FoodMerchant.area_id, func.count(FoodMerchant.id))
@@ -1236,6 +1335,7 @@ async def _merchant_facets(
                 destination_id=destination_id,
                 area_slug=area_slug,
                 q=q,
+                style=style,
             )
         )["items"],
     }
@@ -1250,6 +1350,7 @@ async def list_merchants(
     destination_id: str | None = None,
     area_slug: str | None = None,
     category_slug: str | None = None,
+    style: str | None = None,
     q: str | None = None,
     cursor: str | None = None,
     limit: int = 20,
@@ -1266,6 +1367,21 @@ async def list_merchants(
     filters.extend(
         item for item in (_category_filter(category_slug), _search_filter(q)) if item is not None
     )
+    # Style facets keep all the other active filters, excluding only themselves.
+    style_counts = {
+        slug: int(count)
+        for slug, count in (
+            await session.execute(
+                select(FoodMerchantStyle.style, func.count(FoodMerchantStyle.id))
+                .join(FoodMerchant, FoodMerchant.id == FoodMerchantStyle.merchant_id)
+                .where(*filters, FoodMerchantStyle.status == "approved")
+                .group_by(FoodMerchantStyle.style)
+            )
+        ).all()
+    }
+    selected_style = style_filter(style)
+    if selected_style is not None:
+        filters.append(selected_style)
     total = int(await session.scalar(select(func.count(FoodMerchant.id)).where(*filters)) or 0)
     offset = _decode_cursor(cursor)
     merchants = list(
@@ -1292,13 +1408,24 @@ async def list_merchants(
             area_slug=area_slug,
             category_slug=category_slug,
             q=q,
+            style=style,
         )
     else:
         facets = {
             "areas": [],
             "unassigned_area_count": 0,
-            "categories": (await merchant_categories(session, locale=locale, q=q))["items"],
+            "categories": (await merchant_categories(session, locale=locale, q=q, style=style))[
+                "items"
+            ],
         }
+    facets["styles"] = [
+        {
+            "slug": slug,
+            "name": names.get(locale, names["en"]),
+            "merchant_count": style_counts.get(slug, 0),
+        }
+        for slug, names in STYLE_NAMES.items()
+    ]
     next_offset = offset + len(merchants)
     return {
         "total": total,

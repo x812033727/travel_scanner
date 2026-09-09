@@ -89,8 +89,26 @@ def project_day_schedule(
     for previous, following in zip(rows, rows[1:], strict=False):
         segment = by_pair.get((previous.id, following.id))
         if segment is None or projected_end is None:
-            projected_start = following.start_time
-            projected_end = item_end(following, projected_start)
+            # An unknown leg makes the downstream chain pending. A flexible
+            # stored time is not evidence of arrival; only a fixed appointment
+            # can establish a new anchor without inventing travel through a gap.
+            if segment is not None:
+                # Route duration can still be known even when its departure is
+                # not. Keep the selected leg for persistence without claiming
+                # that old absolute times are a valid schedule projection.
+                projected_segments.append(
+                    segment.model_copy(
+                        update={
+                            "departure_time": None,
+                            "arrival_time": None,
+                            "ready_time": None,
+                        }
+                    )
+                )
+            projected_start = following.start_time if following.fixed_time else None
+            projected_end = (
+                item_end(following, projected_start) if projected_start is not None else None
+            )
             continue
         departure = projected_end
         arrival = departure + timedelta(minutes=segment.duration_minutes)
@@ -112,9 +130,7 @@ def project_day_schedule(
                 segment_warnings.append(f"固定預約可能遲到 {late_minutes} 分鐘")
         else:
             old_start = following.start_time
-            delta = (
-                round((next_start - old_start).total_seconds() / 60) if old_start else 0
-            )
+            delta = round((next_start - old_start).total_seconds() / 60) if old_start else 0
             if old_start != next_start:
                 changes.append(
                     RouteItemChange(
@@ -390,9 +406,7 @@ async def persist_projected_segments(
             day_date=day_date,
             is_override=pair in (override_pairs or set()),
             expires_at=(
-                None
-                if segment.provider == "manual"
-                else segment.expires_at or default_expires_at
+                None if segment.provider == "manual" else segment.expires_at or default_expires_at
             ),
             manual_note=(manual_notes or {}).get(pair),
         )

@@ -4,6 +4,7 @@ import {
   BusFront,
   CarFront,
   Check,
+  ChevronDown,
   Clock3,
   ExternalLink,
   Footprints,
@@ -11,14 +12,19 @@ import {
   MapPin,
   Navigation,
   RefreshCw,
+  SlidersHorizontal,
   TriangleAlert,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { useEffect, useId, useRef, useState, type KeyboardEvent } from "react";
+import { dayTimelineCopy } from "@/components/planner/day-timeline-copy";
+import { plannerOverlayCopy } from "@/components/planner/overlay-copy";
+import styles from "@/components/planner/route-panel.module.css";
 import { RouteMap } from "@/components/route-map";
 import { RouteSegmentCard } from "@/components/route-segment-card";
 import { api, ApiError } from "@/lib/api";
 import { safeExternalHref } from "@/lib/navigation";
+import { hasRoutePoint } from "@/lib/trip-types";
 import type {
   RouteScheduleImpact,
   RouteSegment,
@@ -66,9 +72,38 @@ function isProviderPreview(value?: RoutePreview): value is ProviderRoutePreview 
   return Boolean(value && value.kind !== "external_only" && value.segment);
 }
 
+function previewExpired(expiresAt: string) {
+  const expiry = Date.parse(expiresAt);
+  return !Number.isFinite(expiry) || expiry <= Date.now();
+}
+
+function hasUsableDuration(segment?: RouteSegment) {
+  return Boolean(segment && Number.isFinite(segment.duration_minutes) && segment.duration_minutes >= 0
+    && ["resolved", "complete", "manual", "estimated", "stale", "conflict"].includes(segment.status));
+}
+
+function isEstimatedTiming(segment?: RouteSegment) {
+  return Boolean(segment && (segment.status === "estimated" || segment.provider === "estimate"
+    || String(segment.schedule_mode) === "estimate"));
+}
+
+function isManualTiming(segment?: RouteSegment) {
+  return Boolean(segment && !isEstimatedTiming(segment)
+    && (segment.provider === "manual" || segment.status === "manual"));
+}
+
+function hasVerifiedTiming(segment?: RouteSegment) {
+  // A schedule conflict describes a late fixed reservation, not invalid routing
+  // data. The backend preserves the source when projecting that status.
+  return Boolean(segment && hasUsableDuration(segment) && segment.provider.trim()
+    && !isManualTiming(segment) && !isEstimatedTiming(segment)
+    && ["resolved", "complete", "conflict"].includes(segment.status));
+}
+
 function previewOptions(preview?: ProviderRoutePreview): RouteOptionPreview[] {
   if (!preview) return [];
-  if (preview.options?.length) return preview.options;
+  if (preview.options?.length) return preview.options.filter((option) => hasVerifiedTiming(option.segment));
+  if (!hasVerifiedTiming(preview.segment)) return [];
   return [{
     preview_id: preview.preview_id,
     rank: preview.segment.route_option_rank || 1,
@@ -147,22 +182,15 @@ function scheduleDeltaLabel(t: Translator, deltaMinutes: number) {
   return t("sameTime");
 }
 
-function formatRouteTime(value: string | null | undefined, timezone?: string) {
+function formatRouteTime(value: string | null | undefined, locale: string, timezone?: string) {
   if (!value) return undefined;
-  return new Intl.DateTimeFormat("zh-TW", {
+  return new Intl.DateTimeFormat(locale, {
     hour: "2-digit",
     minute: "2-digit",
     hour12: false,
     timeZone: timezone || "UTC",
   }).format(new Date(value));
 }
-
-type UnresolvedItem = { item_id: string; title: string; reason: string };
-type LocationResolveResponse = {
-  trip: Trip;
-  matched_items: Array<{ item_id: string; title: string }>;
-  unresolved_items: UnresolvedItem[];
-};
 
 const modes: Array<{ value: TravelMode; labelKey: string; icon: typeof BusFront }> = [
   { value: "transit", labelKey: "modeTransit", icon: BusFront },
@@ -171,75 +199,129 @@ const modes: Array<{ value: TravelMode; labelKey: string; icon: typeof BusFront 
 ];
 const bufferOptions = [0, 5, 10, 15, 30];
 
+function nextKeyboardIndex(event: KeyboardEvent, index: number, count: number) {
+  if (!count) return undefined;
+  if (event.key === "Home") return 0;
+  if (event.key === "End") return count - 1;
+  if (event.key === "ArrowRight" || event.key === "ArrowDown") return (index + 1) % count;
+  if (event.key === "ArrowLeft" || event.key === "ArrowUp") return (index + count - 1) % count;
+  return undefined;
+}
+
 export function RouteModePanel({
   trip,
   items,
   fromItemId,
   toItemId,
   initialSegment,
+  initialTravelMode,
+  initialBufferMinutes,
   onApplied,
-  onResolved,
   onEditItem,
   onError,
+  onBusy,
 }: {
   trip: Trip;
   items: TripItem[];
   fromItemId: string;
   toItemId: string;
   initialSegment?: RouteSegment;
+  initialTravelMode?: TravelMode;
+  initialBufferMinutes?: number;
   onApplied: (trip: Trip) => void;
   onResolved?: (trip: Trip) => void;
   onEditItem?: (itemId: string) => void;
   onError: (message: string) => void;
+  onBusy?: (busy: boolean) => void;
 }) {
   const t = useTranslations("trips.route");
+  const locale = useLocale();
+  const copy = plannerOverlayCopy(locale);
+  const timelineCopy = dayTimelineCopy(locale);
+  const panelId = useId();
   const modeLabel = (value: TravelMode) => t(modes.find((item) => item.value === value)?.labelKey || "modeTransit");
   const fromItem = items.find((item) => item.id === fromItemId);
   const toItem = items.find((item) => item.id === toItemId);
   const daySetting = trip.routing?.day_settings.find(
     (setting) => setting.day_date === fromItem?.day_date,
   );
-  const initialMode = initialSegment?.travel_mode
+  const initialMode = initialTravelMode || initialSegment?.travel_mode
     || daySetting?.default_travel_mode
     || "transit";
   const [mode, setMode] = useState<TravelMode>(initialMode);
   const [buffer, setBuffer] = useState(
-    initialSegment?.buffer_minutes ?? daySetting?.default_buffer_minutes ?? 10,
+    initialBufferMinutes ?? initialSegment?.buffer_minutes ?? daySetting?.default_buffer_minutes ?? 10,
   );
-  const [previews, setPreviews] = useState<Partial<Record<TravelMode, RoutePreview>>>({});
-  const [selectedOptions, setSelectedOptions] = useState<Partial<Record<TravelMode, number>>>({});
+  const [previews, setPreviews] = useState<Record<string, RoutePreview>>({});
+  const [selectedOptions, setSelectedOptions] = useState<Record<string, number>>({});
   const [loadingMode, setLoadingMode] = useState<TravelMode>();
-  const [resolvingLocations, setResolvingLocations] = useState(false);
-  const [unresolvedItems, setUnresolvedItems] = useState<UnresolvedItem[]>([]);
   const [applying, setApplying] = useState(false);
   const [manualOpen, setManualOpen] = useState(false);
+  const [advancedOpen, setAdvancedOpen] = useState(false);
+  const advancedRef = useRef<HTMLDetailsElement>(null);
+  const manualInputRef = useRef<HTMLInputElement>(null);
   const [manualMinutes, setManualMinutes] = useState("20");
   const [localError, setLocalError] = useState<string>();
-  const autoStarted = useRef(false);
-  const preview = previews[mode];
+  const [, refreshExpiry] = useState(0);
+  const busyRef = useRef(false);
+  const mountedRef = useRef(false);
+  const requestKey = JSON.stringify([trip.id, trip.version, fromItemId, toItemId, mode, buffer, trip.route_preference]);
+  const requestKeyRef = useRef(requestKey);
+  useEffect(() => { requestKeyRef.current = requestKey; }, [requestKey]);
+  useEffect(() => { mountedRef.current = true; return () => { mountedRef.current = false; }; }, []);
+  useEffect(() => {
+    if (manualOpen) manualInputRef.current?.focus({ preventScroll: true });
+  }, [manualOpen]);
+  function openManual() {
+    setAdvancedOpen(true);
+    setManualOpen(true);
+  }
+  const preview = previews[requestKey];
   const providerPreview = isProviderPreview(preview) ? preview : undefined;
   const options = previewOptions(providerPreview);
   const selectedOptionIndex = Math.min(
-    selectedOptions[mode] || 0,
+    selectedOptions[requestKey] || 0,
     Math.max(0, options.length - 1),
   );
   const selectedOption = options[selectedOptionIndex];
+  const expiresAt = selectedOption?.expires_at || (initialSegment?.provider !== "manual" ? initialSegment?.expires_at : undefined);
+  useEffect(() => {
+    if (!expiresAt) return;
+    const remaining = Date.parse(expiresAt) - Date.now();
+    if (!Number.isFinite(remaining) || remaining <= 0) return;
+    const timer = window.setTimeout(() => refreshExpiry((value) => value + 1), Math.min(remaining + 1, 2_147_483_647));
+    return () => window.clearTimeout(timer);
+  }, [expiresAt]);
+  const selectedExpired = Boolean(selectedOption && previewExpired(selectedOption.expires_at));
+  const canApplyPreview = Boolean(selectedOption && hasVerifiedTiming(selectedOption.segment) && !selectedExpired && !localError);
   const externalNavigation = preview?.kind === "external_only" ? preview.external_navigation : undefined;
   const externalIsNaver = externalNavigation?.provider === "naver_maps";
-  const activeSegment = selectedOption?.segment
-    || (initialSegment?.travel_mode === mode ? initialSegment : undefined);
+  const initialMatches = initialSegment?.travel_mode === mode
+    && (initialSegment.buffer_minutes ?? 10) === buffer
+    && initialSegment.from_item_id === fromItemId && initialSegment.to_item_id === toItemId;
+  const activeSegment = hasUsableDuration(selectedOption?.segment) ? selectedOption?.segment
+    : initialMatches && hasUsableDuration(initialSegment) ? initialSegment : undefined;
   const activeImpact = selectedOption?.schedule_impact;
-  const isApplied = Boolean(initialSegment && initialSegment.travel_mode === mode && !preview);
-  const missingItemIds = useMemo(
-    () => [fromItem, toItem]
-      .filter((item) => item && (item.latitude == null || item.longitude == null))
-      .map((item) => item?.id)
-      .filter((id): id is string => Boolean(id)),
-    [fromItem, toItem],
-  );
+  const savedExpired = Boolean(initialMatches && initialSegment?.provider !== "manual"
+    && initialSegment?.expires_at && previewExpired(initialSegment.expires_at));
+  const isApplied = Boolean(initialMatches && hasUsableDuration(initialSegment)
+    && (hasVerifiedTiming(initialSegment) || (isManualTiming(initialSegment) && initialSegment?.status !== "stale"))
+    && !savedExpired && !preview);
+  const unresolvedItems = [fromItem, toItem].filter((item): item is TripItem => Boolean(item && !hasRoutePoint(item)))
+    .map((item) => ({ item_id: item.id, title: item.title, reason: t("placePending") }));
+  const settingsOutdated = !preview && (Boolean(initialSegment && !initialMatches) || Object.keys(previews).length > 0);
+  const routeState = loadingMode ? "loading" : localError ? "error" : unresolvedItems.length ? "missing"
+    : selectedExpired ? "expired" : canApplyPreview ? "preview" : externalNavigation ? "external"
+      : isApplied ? (isManualTiming(initialSegment) ? "manual" : "applied")
+        : initialMatches && (initialSegment?.status === "stale" || savedExpired) ? "stale"
+          : isEstimatedTiming(activeSegment) ? "estimated"
+            : preview || (initialMatches && initialSegment) ? "unavailable" : settingsOutdated ? "changed" : "idle";
 
-  const previewMode = useCallback(async (nextMode: TravelMode, nextBuffer = buffer) => {
-    setMode(nextMode);
+  async function previewMode(nextMode: TravelMode, nextBuffer = buffer) {
+    if (busyRef.current || !fromItem || !toItem || unresolvedItems.length) return;
+    busyRef.current = true;
+    onBusy?.(true);
+    const identity = requestKey;
     setLoadingMode(nextMode);
     setLocalError(undefined);
     try {
@@ -256,58 +338,25 @@ export function RouteModePanel({
           max_options: 3,
         }),
       });
-      setPreviews((current) => ({ ...current, [nextMode]: value }));
-      setSelectedOptions((current) => ({ ...current, [nextMode]: 0 }));
+      if (!mountedRef.current || requestKeyRef.current !== identity) return;
+      setPreviews((current) => ({ ...current, [identity]: value }));
+      setSelectedOptions((current) => ({ ...current, [identity]: 0 }));
     } catch (reason) {
-      setLocalError(requestError(t, reason, t("modeUnavailable")));
+      if (mountedRef.current && requestKeyRef.current === identity) setLocalError(requestError(t, reason, t("modeUnavailable")));
     } finally {
-      setLoadingMode(undefined);
+      busyRef.current = false;
+      onBusy?.(false);
+      if (mountedRef.current) setLoadingMode(undefined);
     }
-  }, [buffer, fromItemId, toItemId, t, trip.id, trip.route_preference, trip.version]);
-
-  useEffect(() => {
-    if (autoStarted.current || initialSegment) return;
-    autoStarted.current = true;
-    async function prepareDefaultRoute() {
-      if (missingItemIds.length) {
-        setResolvingLocations(true);
-        setLocalError(undefined);
-        try {
-          const result = await api<LocationResolveResponse>(
-            `/trips/${trip.id}/locations/resolve`,
-            {
-              method: "POST",
-              headers: { "Idempotency-Key": crypto.randomUUID() },
-              body: JSON.stringify({ version: trip.version, item_ids: missingItemIds }),
-            },
-          );
-          setUnresolvedItems(result.unresolved_items);
-          if (result.matched_items.length) {
-            onResolved?.(result.trip);
-          }
-        } catch (reason) {
-          setLocalError(requestError(t, reason, t("matchFailed")));
-        } finally {
-          setResolvingLocations(false);
-        }
-        return;
-      }
-      await previewMode(initialMode);
-    }
-    void prepareDefaultRoute();
-  }, [
-    initialMode,
-    initialSegment,
-    missingItemIds,
-    onResolved,
-    previewMode,
-    t,
-    trip.id,
-    trip.version,
-  ]);
+  }
 
   async function applyPreview() {
-    if (!selectedOption) return;
+    if (!selectedOption || busyRef.current) return;
+    if (previewExpired(selectedOption.expires_at)) { setLocalError(t("previewExpired")); return; }
+    if (!hasVerifiedTiming(selectedOption.segment)) { setLocalError(t("temporarilyUnavailable")); return; }
+    busyRef.current = true;
+    onBusy?.(true);
+    const identity = requestKey;
     setApplying(true);
     setLocalError(undefined);
     try {
@@ -323,22 +372,27 @@ export function RouteModePanel({
           inherit_day_default: inherits,
         }),
       });
-      onApplied(updated);
+      if (mountedRef.current && requestKeyRef.current === identity) onApplied(updated);
     } catch (reason) {
       const message = requestError(t, reason, t("applyFailed"));
-      setLocalError(message);
-      onError(message);
+      if (mountedRef.current && requestKeyRef.current === identity) { setLocalError(message); onError(message); }
     } finally {
-      setApplying(false);
+      busyRef.current = false;
+      onBusy?.(false);
+      if (mountedRef.current) setApplying(false);
     }
   }
 
   async function applyManual() {
+    if (busyRef.current) return;
     const duration = Number(manualMinutes);
     if (!Number.isInteger(duration) || duration < 1 || duration > 1440) {
       setLocalError(t("manualRange"));
       return;
     }
+    busyRef.current = true;
+    onBusy?.(true);
+    const identity = requestKey;
     setApplying(true);
     try {
       const updated = await api<Trip>(`/trips/${trip.id}/routes/apply`, {
@@ -355,13 +409,14 @@ export function RouteModePanel({
           note: t("manualNote"),
         }),
       });
-      onApplied(updated);
+      if (mountedRef.current && requestKeyRef.current === identity) onApplied(updated);
     } catch (reason) {
       const message = requestError(t, reason, t("manualSaveFailed"));
-      setLocalError(message);
-      onError(message);
+      if (mountedRef.current && requestKeyRef.current === identity) { setLocalError(message); onError(message); }
     } finally {
-      setApplying(false);
+      busyRef.current = false;
+      onBusy?.(false);
+      if (mountedRef.current) setApplying(false);
     }
   }
 
@@ -370,55 +425,40 @@ export function RouteModePanel({
     : undefined;
 
   const navigationUrl = externalNavigation?.web_url || activeSegment?.maps_url || directionsUrl;
-  const routeSummary = activeSegment
-    ? t("durationMinutes", { minutes: activeSegment.duration_minutes })
-    : externalNavigation
-      ? t("externalNavigation")
-      : resolvingLocations || loadingMode === mode
-        ? t("fetching")
-        : unresolvedItems.length
-          ? t("placePending")
-          : localError
-            ? t("temporarilyUnavailable")
-            : t("noRouteYet");
+  const stateLabel = routeState === "preview" ? t("previewReady") : routeState === "expired" ? t("previewExpired")
+    : routeState === "stale" ? t("staleRoute") : routeState === "manual" ? t("manualApplied")
+      : routeState === "estimated" ? t("estimatedTiming") : routeState === "applied" ? t(initialSegment?.status === "conflict" ? "appliedConflict" : "applied")
+        : routeState === "external" ? t("externalNavigation") : routeState === "loading" ? t("fetching")
+          : routeState === "error" || routeState === "unavailable" ? t("temporarilyUnavailable")
+            : routeState === "missing" ? t("placePending") : routeState === "changed" ? timelineCopy.outdated : undefined;
 
-  return <div className="route-panel-layout">
-    <div className="route-panel-map min-w-0">
-      <RouteMap
-        items={items}
-        segment={activeSegment}
-        segments={options.map((option) => option.segment)}
-        selectedSegmentIndex={selectedOptionIndex}
-        onSelectSegment={(index) => setSelectedOptions((current) => ({ ...current, [mode]: index }))}
-        fromItemId={fromItemId}
-        toItemId={toItemId}
-        travelMode={mode}
-        variant="drawer"
-        countryCode={trip.destination_country_code}
-        externalOnly={Boolean(externalNavigation)}
-      />
-    </div>
-
-    <section className="route-panel-modes" aria-label={t("endpointsLabel")}>
+  return <div className={styles.container}><div className={`route-panel-layout ${styles.layout}`} data-route-state={routeState}>
+    <div className={styles.primaryColumn}>
+    <section className={`route-panel-modes ${styles.modes}`} aria-label={t("endpointsLabel")}>
       <div className="route-endpoints">
         <div className="route-endpoint"><span aria-hidden="true">1</span><p><small>{t("from")}</small><strong>{fromItem?.title || fromItem?.location_name || t("originPending")}</strong></p></div>
         <div className="route-endpoint"><span aria-hidden="true">2</span><p><small>{t("to")}</small><strong>{toItem?.title || toItem?.location_name || t("destinationPending")}</strong></p></div>
       </div>
       <div className="route-mode-toolbar">
-        <div className="route-mode-tabs" role="tablist" aria-label={t("chooseMode")}>{modes.map(({ value, labelKey, icon: Icon }) => <button key={value} type="button" role="tab" aria-selected={mode === value} onClick={() => { if (previews[value] || initialSegment?.travel_mode === value) setMode(value); else void previewMode(value); }} className={`route-mode-tab ${mode === value ? "route-mode-tab-active" : ""}`}><Icon size={18} />{t(labelKey)}{loadingMode === value && <Loader2 size={14} className="animate-spin" />}</button>)}</div>
-        {navigationUrl && <a href={safeExternalHref(navigationUrl)} target="_blank" rel="noreferrer" className="route-navigation-link" aria-label={t("navigateFromTo", { from: fromItem?.title || t("startFallback"), to: toItem?.title || t("endFallback") })}><Navigation size={16} /><span>{t("navigate")}</span></a>}
+        <div className="route-mode-tabs" role="tablist" aria-label={t("chooseMode")}>{modes.map(({ value, labelKey, icon: Icon }, index) => <button key={value} id={`${panelId}-${value}`} type="button" role="tab" aria-selected={mode === value} aria-controls={`${panelId}-options`} tabIndex={mode === value ? 0 : -1} disabled={applying || Boolean(loadingMode)} onKeyDown={(event) => {
+          const next = nextKeyboardIndex(event, index, modes.length);
+          if (next === undefined) return;
+          event.preventDefault();
+          event.currentTarget.parentElement?.querySelectorAll<HTMLButtonElement>("[role='tab']")[next]?.focus({ preventScroll: true });
+        }} onClick={() => { setMode(value); setLocalError(undefined); }} className={`route-mode-tab ${mode === value ? "route-mode-tab-active" : ""}`}><Icon size={18} />{t(labelKey)}{loadingMode === value && <Loader2 size={14} className="animate-spin" />}</button>)}</div>
+        {navigationUrl && <a href={safeExternalHref(navigationUrl)} target="_blank" rel="noopener noreferrer" className="route-navigation-link" aria-label={t("navigateFromTo", { from: fromItem?.title || t("startFallback"), to: toItem?.title || t("endFallback") })}><Navigation size={16} /><span>{t("navigate")}</span></a>}
       </div>
-      <div className="route-selection-summary"><strong>{routeSummary}</strong><span>{activeSegment?.schedule_mode === "preview" ? t("nearTerm") : activeSegment?.schedule_mode === "live" ? t("liveRoute") : t("scheduled")}</span></div>
+      <div className={styles.feedback}>
+        {stateLabel && <p role="status" className={styles.state}><strong>{stateLabel}</strong>{activeSegment && ["preview", "applied"].includes(routeState) && <span>{activeSegment.schedule_mode === "preview" ? t("nearTerm") : activeSegment.schedule_mode === "live" ? t("liveRoute") : t("scheduled")}</span>}</p>}
+        {routeState === "idle" && <p className={styles.hint} data-route-instruction="idle">{t("queryHint")}</p>}
+        {(isApplied || canApplyPreview || externalNavigation || routeState === "estimated") && <button type="button" onClick={() => void previewMode(mode)} disabled={applying || Boolean(loadingMode) || unresolvedItems.length > 0} className={styles.requery}><RefreshCw size={15} />{timelineCopy.requery}</button>}
+      </div>
     </section>
 
-    <div className="route-panel-controls space-y-4">
-      <section className="route-buffer-control"><div><p className="font-semibold">{t("transferBuffer")}</p><p className="mt-1 text-xs text-[var(--muted)]">{t("transferBufferHint")}</p></div><select aria-label={t("bufferSelectLabel")} value={buffer} onChange={(event) => { const value = Number(event.target.value); setBuffer(value); void previewMode(mode, value); }} className="min-h-11 rounded-xl border border-[var(--line)] bg-white px-3 text-sm font-semibold">{bufferOptions.map((value) => <option key={value} value={value}>{t("bufferMinutesOption", { minutes: value })}</option>)}</select></section>
+    <div id={`${panelId}-options`} className={`route-panel-controls space-y-4 ${styles.controls}`} role="tabpanel" aria-labelledby={`${panelId}-${mode}`}>
 
-      {resolvingLocations && <div className="route-preview-skeleton compact" aria-live="polite"><Loader2 size={22} className="animate-spin text-[var(--teal)]" /><strong>{t("resolvingPlaces")}</strong><span>{t("resolvingHint")}</span></div>}
       {unresolvedItems.length > 0 && <section className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><p className="flex items-center gap-2 font-semibold"><MapPin size={18} />{t("missingPlaces")}</p>{unresolvedItems.map((item) => <div key={item.item_id} className="mt-3 flex items-center justify-between gap-3 rounded-xl bg-white/70 p-3"><span className="min-w-0"><strong className="block truncate">{item.title}</strong><span className="mt-0.5 block text-xs">{item.reason}</span></span><button type="button" onClick={() => onEditItem?.(item.item_id)} className="min-h-11 shrink-0 rounded-xl border border-amber-300 px-3 font-bold">{t("fixPlace")}</button></div>)}</section>}
-      {localError && <div role="alert" className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><p className="flex items-start gap-2 font-semibold"><TriangleAlert size={18} className="mt-0.5 shrink-0" />{localError}</p><div className="mt-3 flex flex-wrap gap-2"><button type="button" onClick={() => void previewMode(mode)} className="flex min-h-11 items-center gap-2 rounded-xl border border-amber-300 bg-white px-3 font-bold"><RefreshCw size={15} />{t("retry")}</button><button type="button" onClick={() => setManualOpen(true)} className="min-h-11 rounded-xl px-3 font-bold text-[var(--teal)]">{t("manualTime")}</button>{directionsUrl && <a href={safeExternalHref(directionsUrl)} target="_blank" rel="noreferrer" className="flex min-h-11 items-center gap-2 rounded-xl px-3 font-bold text-[var(--teal)]">{t("googleMaps")}<ExternalLink size={15} /></a>}</div></div>}
-      {loadingMode === mode && !activeSegment && <div className="route-preview-skeleton compact" aria-live="polite"><Loader2 size={22} className="animate-spin text-[var(--teal)]" /><strong>{t("fetchingMode", { mode: modeLabel(mode) })}</strong><span>{t("onlySelectedMode")}</span></div>}
-      {!resolvingLocations && !loadingMode && !activeSegment && !externalNavigation && !localError && !unresolvedItems.length && <div className="route-empty-state"><MapPin size={20} /><div><strong>{t("noRouteYet")}</strong><p>{t("applyBlocked")}</p></div></div>}
+      {localError && <div role="alert" className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><p className="flex items-start gap-2 font-semibold"><TriangleAlert size={18} className="mt-0.5 shrink-0" />{localError}</p><div className="mt-3 flex flex-wrap gap-2"><button type="button" onClick={openManual} className="min-h-11 rounded-xl px-3 font-bold text-[var(--teal)]">{t("manualTime")}</button>{directionsUrl && <a href={safeExternalHref(directionsUrl)} target="_blank" rel="noopener noreferrer" className="flex min-h-11 items-center gap-2 rounded-xl px-3 font-bold text-[var(--teal)]">{t("googleMaps")}<ExternalLink size={15} /></a>}</div></div>}
 
       {options.length > 0 && <section aria-label={t("optionsLabel")}>
         <div className="mb-2 flex items-end justify-between gap-3"><div><h3 className="font-bold">{t("chooseRoute")}</h3><p className="mt-1 text-xs text-[var(--muted)]">{t("chooseRouteHint")}</p></div><span className="shrink-0 text-xs font-semibold text-[var(--muted)]">{t("optionsCount", { count: options.length })}</span></div>
@@ -426,8 +466,8 @@ export function RouteModePanel({
           {options.map((option, index) => {
             const details = routeOptionDetails(option.segment);
             const selected = index === selectedOptionIndex;
-            const departure = formatRouteTime(option.segment.departure_time, trip.timezone);
-            const arrival = formatRouteTime(option.segment.arrival_time, trip.timezone);
+            const departure = formatRouteTime(option.segment.departure_time, locale, trip.timezone);
+            const arrival = formatRouteTime(option.segment.arrival_time, locale, trip.timezone);
             const fare = option.segment.fare != null
               ? `${option.segment.currency || ""} ${option.segment.fare}`.trim()
               : undefined;
@@ -436,7 +476,15 @@ export function RouteModePanel({
               type="button"
               role="option"
               aria-selected={selected}
-              onClick={() => setSelectedOptions((current) => ({ ...current, [mode]: index }))}
+              tabIndex={selected ? 0 : -1}
+              onKeyDown={(event) => {
+                const next = nextKeyboardIndex(event, index, options.length);
+                if (next === undefined) return;
+                event.preventDefault();
+                setSelectedOptions((current) => ({ ...current, [requestKey]: next }));
+                event.currentTarget.parentElement?.querySelectorAll<HTMLButtonElement>("[role='option']")[next]?.focus({ preventScroll: true });
+              }}
+              onClick={() => setSelectedOptions((current) => ({ ...current, [requestKey]: index }))}
               className={`route-option-card ${selected ? "route-option-card-selected" : ""}`}
             >
               <span className="flex items-center justify-between gap-3"><strong>{t("optionNumber", { index: index + 1 })}</strong>{index === 0 && <span className="route-option-recommended">{t("recommended")}</span>}</span>
@@ -448,15 +496,40 @@ export function RouteModePanel({
         </div>
       </section>}
 
-      {externalNavigation && <section className={`rounded-2xl border p-4 text-sm ${externalIsNaver ? "border-[#b8e7ca] bg-[#eefaf2] text-[#075c31]" : "border-sky-200 bg-sky-50 text-sky-950"}`} aria-label={t("externalAria", { provider: externalNavigation.label })}><p className="flex items-center gap-2 font-bold"><ExternalLink size={18} />{t("switchToProvider", { provider: externalNavigation.label })}</p><p className="mt-2 leading-6">{externalNavigation.reason}</p><p className={`mt-2 text-xs leading-5 ${externalIsNaver ? "text-[#397354]" : "text-sky-800"}`}>{t("externalNote")}</p><div className="mt-3 flex flex-wrap gap-2"><a href={safeExternalHref(externalNavigation.web_url)} target="_blank" rel="noreferrer" className={`flex min-h-11 items-center gap-2 rounded-xl px-4 font-bold text-white ${externalIsNaver ? "bg-[#03c75a]" : "bg-sky-700"}`}>{t("planWithProvider", { provider: externalNavigation.label })}<ExternalLink size={15} /></a>{externalIsNaver && externalNavigation.app_url !== externalNavigation.web_url && <a href={safeExternalHref(externalNavigation.app_url, ["nmap:", "https:"])} className="flex min-h-11 items-center gap-2 rounded-xl border border-[#7fd5a3] bg-white px-4 font-bold">{t("openNaverApp")}</a>}<button type="button" onClick={() => setManualOpen(true)} className="min-h-11 rounded-xl px-3 font-bold">{t("manualEntry")}</button></div></section>}
+      {externalNavigation && <section className={`rounded-2xl border p-4 text-sm ${externalIsNaver ? "border-[#b8e7ca] bg-[#eefaf2] text-[#075c31]" : "border-sky-200 bg-sky-50 text-sky-950"}`} aria-label={t("externalAria", { provider: externalNavigation.label })}><p className="flex items-center gap-2 font-bold"><ExternalLink size={18} />{t("switchToProvider", { provider: externalNavigation.label })}</p><p className="mt-2 leading-6">{externalNavigation.reason}</p><p className={`mt-2 text-xs leading-5 ${externalIsNaver ? "text-[#397354]" : "text-sky-800"}`}>{t("externalNote")}</p><div className="mt-3 flex flex-wrap gap-2"><a href={safeExternalHref(externalNavigation.web_url)} target="_blank" rel="noopener noreferrer" className={`flex min-h-11 items-center gap-2 rounded-xl px-4 font-bold text-white ${externalIsNaver ? "bg-[#03c75a]" : "bg-sky-700"}`}>{t("planWithProvider", { provider: externalNavigation.label })}<ExternalLink size={15} /></a>{externalIsNaver && externalNavigation.app_url !== externalNavigation.web_url && <a href={safeExternalHref(externalNavigation.app_url, ["nmap:", "https:"])} className="flex min-h-11 items-center gap-2 rounded-xl border border-[#7fd5a3] bg-white px-4 font-bold">{t("openNaverApp")}</a>}<button type="button" onClick={openManual} className="min-h-11 rounded-xl px-3 font-bold">{t("manualEntry")}</button></div></section>}
 
       {activeImpact && (activeImpact.affected_items.length > 0 || activeImpact.conflicts.length > 0) && <section className="route-impact-card"><div className="flex items-center gap-2"><Clock3 size={18} /><h3 className="font-bold">{t("impactTitle")}</h3></div>{activeImpact.affected_items.slice(0, 4).map((item) => <p key={item.item_id} className="mt-2 flex justify-between gap-3 text-sm"><span className="truncate">{item.title}</span><strong className={`route-impact-value shrink-0 ${item.delta_minutes < 0 ? "route-impact-earlier" : item.delta_minutes > 0 ? "route-impact-later" : ""}`}>{scheduleDeltaLabel(t, item.delta_minutes)}</strong></p>)}{activeImpact.conflicts.map((conflict) => <div key={conflict.item_id} className="mt-3 rounded-xl bg-red-50 p-3 text-sm text-red-900"><strong>{t("conflictLate", { minutes: conflict.late_minutes })}</strong><p className="mt-1">{t("conflictKeeps", { title: conflict.title })}</p><p className="mt-1 text-xs">{t("suggestionsLabel", { list: conflict.suggestions.join(t("listSeparator")) })}</p></div>)}</section>}
 
-      {manualOpen && <section className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4"><h3 className="font-bold">{t("manualTitle")}</h3><p className="mt-1 text-xs leading-5 text-[var(--muted)]">{t("manualHint")}</p><label className="mt-3 block text-sm font-semibold">{t("manualMinutesLabel")}<input type="number" min="1" max="1440" value={manualMinutes} onChange={(event) => setManualMinutes(event.target.value)} className="mt-2 min-h-11 w-full rounded-xl border border-[var(--line)] bg-white px-3" /></label><button type="button" onClick={() => void applyManual()} disabled={applying} className="mt-3 flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[var(--teal)] font-bold text-white disabled:opacity-45">{applying ? <Loader2 size={17} className="animate-spin" /> : <Check size={17} />}{t("applyManual")}</button></section>}
+      <details ref={advancedRef} open={advancedOpen} onToggle={(event) => setAdvancedOpen(event.currentTarget.open)} className="route-advanced-settings rounded-2xl border border-[var(--line)] bg-[var(--surface)]">
+        <summary className="flex min-h-14 cursor-pointer list-none items-center gap-3 px-4 py-3"><SlidersHorizontal size={18} className="shrink-0 text-[var(--muted)]" /><span className="min-w-0 flex-1"><strong className="block text-sm">{copy.advanced}</strong><span className="mt-1 block text-xs text-[var(--muted)]">{copy.advancedHint}</span></span><ChevronDown size={17} className={`shrink-0 transition ${advancedOpen ? "rotate-180" : ""}`} /></summary>
+        <div hidden={!advancedOpen} className="space-y-4 border-t border-[var(--line)] p-4">
+          <section className="route-buffer-control"><div><p className="font-semibold">{t("transferBuffer")}</p><p className="mt-1 text-xs text-[var(--muted)]">{t("transferBufferHint")}</p></div><select aria-label={t("bufferSelectLabel")} value={buffer} disabled={applying || Boolean(loadingMode)} onChange={(event) => { setBuffer(Number(event.target.value)); setLocalError(undefined); }} className="min-h-11 rounded-xl border border-[var(--line)] bg-[var(--surface)] px-3 text-sm font-semibold">{bufferOptions.map((value) => <option key={value} value={value}>{t("bufferMinutesOption", { minutes: value })}</option>)}</select></section>
+          {!manualOpen && <button type="button" onClick={openManual} className="min-h-11 rounded-xl px-3 text-sm font-bold text-[var(--teal)]">{t("manualEntry")}</button>}
+          {manualOpen && <section className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4"><div className="flex items-center justify-between gap-3"><h3 className="font-bold">{t("manualTitle")}</h3><button type="button" disabled={applying} onClick={() => { setManualOpen(false); advancedRef.current?.querySelector("summary")?.focus({ preventScroll: true }); }} className="min-h-11 text-xs font-semibold text-[var(--muted)]">{copy.closeManual}</button></div><p className="mt-1 text-xs leading-5 text-[var(--muted)]">{t("manualHint")}</p><label className="mt-3 block text-sm font-semibold">{t("manualMinutesLabel")}<input ref={manualInputRef} type="number" min="1" max="1440" value={manualMinutes} onChange={(event) => setManualMinutes(event.target.value)} className="mt-2 min-h-11 w-full rounded-xl border border-[var(--line)] bg-[var(--surface)] px-3" /></label><button type="button" onClick={() => void applyManual()} disabled={applying} className="mt-3 flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[var(--teal)] font-bold text-white disabled:opacity-45">{applying ? <Loader2 size={17} className="animate-spin" /> : <Check size={17} />}{t("applyManual")}</button></section>}
+        </div>
+      </details>
+    </div>
     </div>
 
-    <div className="route-panel-detail min-w-0">{activeSegment && <RouteSegmentCard segment={activeSegment} selected defaultExpanded timezone={trip.timezone} />}</div>
+    <div className={styles.secondaryColumn}>
+      <div className={`route-panel-map min-w-0 ${styles.map}`}>
+        <RouteMap
+          items={items}
+          segment={activeSegment}
+          segments={options.map((option) => option.segment)}
+          selectedSegmentIndex={selectedOptionIndex}
+          onSelectSegment={(index) => setSelectedOptions((current) => ({ ...current, [requestKey]: index }))}
+          fromItemId={fromItemId}
+          toItemId={toItemId}
+          travelMode={mode}
+          variant="drawer"
+          countryCode={trip.destination_country_code}
+          externalOnly={Boolean(externalNavigation)}
+        />
+      </div>
+      {activeSegment && <section className={`route-panel-detail min-w-0 ${styles.detail}`} aria-label={copy.routeDetails}><h3 className="mb-1 text-sm font-bold">{copy.routeDetails}</h3><p className="mb-3 text-xs text-[var(--muted)]">{copy.routeDetailsHint}</p><RouteSegmentCard key={selectedOption?.preview_id || `${mode}-applied`} segment={activeSegment} selected timezone={trip.timezone} /></section>}
+    </div>
 
-    <div className="route-apply-bar"><div className="route-apply-selection min-w-0"><span className="block text-xs text-[var(--muted)]">{t("currentChoice")}</span><strong className="block">{modeLabel(mode)}{activeSegment ? `${options.length ? ` · ${t("optionNumber", { index: selectedOptionIndex + 1 })}` : ""} · ${t("durationMinutes", { minutes: activeSegment.duration_minutes })}` : externalNavigation ? ` · ${t("externalNavigation")}` : ` · ${t("notFetched")}`}</strong></div><button type="button" aria-label={selectedOption ? t("applyThisRoute") : undefined} onClick={() => selectedOption ? void applyPreview() : void previewMode(mode)} disabled={applying || Boolean(loadingMode) || resolvingLocations || unresolvedItems.length > 0 || isApplied || Boolean(externalNavigation)} className="route-apply-button flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-5 font-bold text-white disabled:opacity-45">{applying ? <Loader2 size={17} className="animate-spin" /> : isApplied ? <Check size={17} /> : null}{isApplied ? t("applied") : selectedOption ? <><span className="route-apply-label-long">{t("applyThisRoute")}</span><span className="route-apply-label-short">{t("applyShort")}</span></> : externalNavigation ? t("externalCannotApply") : loadingMode ? t("fetchingShort") : t("fetchRoute")}</button></div>
-  </div>;
+    <div className={`route-apply-bar ${styles.applyBar}`}><div className="route-apply-selection min-w-0"><span className="block text-xs text-[var(--muted)]">{t("currentChoice")}</span><strong className="block">{modeLabel(mode)}{activeSegment ? `${options.length ? ` · ${t("optionNumber", { index: selectedOptionIndex + 1 })}` : ""} · ${t("durationMinutes", { minutes: activeSegment.duration_minutes })}` : ""}</strong></div><button type="button" aria-label={canApplyPreview ? t("applyThisRoute") : undefined} onClick={() => canApplyPreview ? void applyPreview() : void previewMode(mode)} disabled={applying || Boolean(loadingMode) || unresolvedItems.length > 0 || !fromItem || !toItem || (isApplied && !localError) || Boolean(externalNavigation)} className="route-apply-button flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-5 font-bold text-white disabled:opacity-45">{applying || loadingMode ? <Loader2 size={17} className="animate-spin" /> : isApplied && !localError ? <Check size={17} /> : null}{localError ? t("retry") : loadingMode ? t("fetchingShort") : isApplied ? t("applied") : canApplyPreview ? <><span className="route-apply-label-long">{t("applyThisRoute")}</span><span className="route-apply-label-short">{t("applyShort")}</span></> : externalNavigation ? t("externalCannotApply") : selectedExpired || routeState === "stale" ? timelineCopy.requery : timelineCopy.query}</button></div>
+  </div></div>;
 }

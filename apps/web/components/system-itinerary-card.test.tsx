@@ -1,7 +1,9 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom/vitest";
+import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import type { TripItem } from "@/lib/trip-types";
 import { SystemItineraryCard } from "./system-itinerary-card";
+import { stopToneStyles } from "./planner/stop-tone";
 
 const lunch: TripItem = {
   id: "lunch",
@@ -21,8 +23,42 @@ const lunch: TripItem = {
   longitude: 139.76,
   data: {},
 };
+const hotel: TripItem = { ...lunch, id: "hotel", item_type: "hotel", system_role: "hotel_start", title: "東京飯店" };
 
 describe("system itinerary card", () => {
+  it.each([
+    ["hotel_start", "hotel"], ["hotel_end", "hotel"], ["lunch", "lunch"], ["dinner", "dinner"],
+  ] as const)("uses the %s role instead of the title or time to color a %s stop", (systemRole, tone) => {
+    render(<SystemItineraryCard item={{ ...lunch, system_role: systemRole, title: "Dinner named place" }}
+      locale="zh-TW" busy={false} onEdit={vi.fn()} />);
+    const card = screen.getByRole("article");
+    expect(card).toHaveAttribute("data-stop-tone", tone);
+    expect(card).toHaveClass(stopToneStyles[tone], stopToneStyles.card);
+    expect(card).not.toHaveClass("planner-meal-card", "planner-hotel-card");
+  });
+
+  it("keeps a skipped dinner identifiable without rendering it as a confirmed place", () => {
+    render(<SystemItineraryCard item={{ ...lunch, system_role: "dinner", is_skipped: true, latitude: null, longitude: null }}
+      locale="zh-TW" busy={false} onEdit={vi.fn()} onSkip={vi.fn()} />);
+    const card = screen.getByRole("article");
+    expect(card).toHaveAttribute("data-stop-tone", "dinner");
+    expect(card).toHaveAttribute("data-stop-skipped", "true");
+    expect(card).toHaveClass(stopToneStyles.skipped);
+    expect(screen.getByText("晚餐")).toBeVisible();
+    expect(screen.getByText("已跳過")).toBeVisible();
+    expect(screen.getByRole("button", { name: "恢復" })).toBeEnabled();
+    expect(screen.queryByText("設定並確認地點後，才能計算完整路線")).not.toBeInTheDocument();
+  });
+
+  it.each(["hotel_start", "lunch", "dinner"] as const)("retains the %s tone while an unset location still needs confirmation", (systemRole) => {
+    render(<SystemItineraryCard item={{ ...lunch, system_role: systemRole, latitude: null, longitude: null, data: { needs_place_confirmation: true } }}
+      locale="zh-TW" busy={false} onEdit={vi.fn()} />);
+    expect(screen.getByRole("article")).toHaveAttribute("data-stop-tone", systemRole === "hotel_start" ? "hotel" : systemRole);
+    expect(screen.getByText(systemRole === "hotel_start"
+      ? "設定並確認住宿地點後，可查詢每天的出發與返回路線" : "設定並確認地點後，才能計算完整路線")).toBeVisible();
+    expect(screen.getByRole("button", { name: systemRole === "hotel_start" ? "設定主要飯店" : "選擇餐廳" })).toBeEnabled();
+  });
+
   it("shows fixed meal details and exposes explicit edit and skip actions", () => {
     const edit = vi.fn();
     const skip = vi.fn();
@@ -106,4 +142,85 @@ describe("system itinerary card", () => {
     fireEvent.click(screen.getByRole("button", { name: "恢復" }));
     expect(restore).toHaveBeenCalledOnce();
   }, 10_000);
+
+  it("preserves legacy blur and Enter departure saves unless explicitly opted in", () => {
+    const onDepartureTimeChange = vi.fn();
+    render(<SystemItineraryCard item={hotel} locale="zh-TW" busy={false} onEdit={vi.fn()} departureTime="09:00" onDepartureTimeChange={onDepartureTimeChange} />);
+    const input = screen.getByLabelText("每天從飯店出發的時間");
+    fireEvent.change(input, { target: { value: "10:00" } });
+    expect(onDepartureTimeChange).not.toHaveBeenCalled();
+    fireEvent.blur(input);
+    expect(onDepartureTimeChange).toHaveBeenCalledWith("10:00");
+    expect(screen.queryByRole("button", { name: "儲存" })).not.toBeInTheDocument();
+    input.focus();
+    fireEvent.change(input, { target: { value: "11:00" } });
+    fireEvent.keyDown(input, { key: "Enter" });
+    expect(onDepartureTimeChange).toHaveBeenLastCalledWith("11:00");
+  });
+
+  it("never writes an explicit departure draft on blur or Enter, and Cancel resets it", () => {
+    const onDepartureTimeChange = vi.fn(), onDepartureDirtyChange = vi.fn();
+    render(<SystemItineraryCard item={hotel} locale="zh-TW" busy={false} onEdit={vi.fn()} departureTime="09:00" explicitDepartureSave onDepartureTimeChange={onDepartureTimeChange} onDepartureDirtyChange={onDepartureDirtyChange} />);
+    const input = screen.getByLabelText("每天從飯店出發的時間");
+    fireEvent.change(input, { target: { value: "10:00" } });
+    fireEvent.blur(input); fireEvent.keyDown(input, { key: "Enter" });
+    expect(onDepartureTimeChange).not.toHaveBeenCalled();
+    expect(onDepartureDirtyChange).toHaveBeenLastCalledWith(true);
+    fireEvent.click(screen.getByRole("button", { name: "取消" }));
+    expect(input).toHaveValue("09:00");
+    expect(onDepartureDirtyChange).toHaveBeenLastCalledWith(false);
+    expect(onDepartureTimeChange).not.toHaveBeenCalled();
+  });
+
+  it.each(["false", "reject"] as const)("keeps a departure draft after %s, and a successful retry clears dirty state", async (failure) => {
+    const onDepartureTimeChange = vi.fn<() => Promise<boolean | void>>();
+    if (failure === "false") onDepartureTimeChange.mockResolvedValueOnce(false);
+    else onDepartureTimeChange.mockRejectedValueOnce(new Error("Not saved"));
+    onDepartureTimeChange.mockResolvedValueOnce(true);
+    const onDepartureDirtyChange = vi.fn();
+    const props = { item: hotel, locale: "zh-TW", busy: false, onEdit: vi.fn(), departureTime: "09:00", explicitDepartureSave: true, onDepartureTimeChange, onDepartureDirtyChange };
+    const view = render(<SystemItineraryCard {...props} />);
+    fireEvent.change(screen.getByLabelText("每天從飯店出發的時間"), { target: { value: "10:00" } });
+    view.rerender(<SystemItineraryCard {...props} departureTime="08:00" />);
+    expect(screen.getByLabelText("每天從飯店出發的時間")).toHaveValue("10:00");
+    fireEvent.click(screen.getByRole("button", { name: "儲存" }));
+    expect(await screen.findByRole("alert")).toHaveTextContent("內容已保留");
+    expect(screen.getByLabelText("每天從飯店出發的時間")).toHaveValue("10:00");
+    expect(onDepartureDirtyChange).toHaveBeenLastCalledWith(true);
+    fireEvent.click(screen.getByRole("button", { name: "儲存" }));
+    await waitFor(() => expect(onDepartureDirtyChange).toHaveBeenLastCalledWith(false));
+    expect(onDepartureTimeChange.mock.calls).toEqual([["10:00"], ["10:00"]]);
+    expect(screen.getByLabelText("每天從飯店出發的時間")).toHaveValue("10:00");
+  });
+
+  it("blocks repeated explicit saves and reports busy until the callback settles", async () => {
+    let finish!: (result: boolean) => void;
+    const onDepartureTimeChange = vi.fn(() => new Promise<boolean>((resolve) => { finish = resolve; }));
+    const onDepartureBusyChange = vi.fn();
+    render(<SystemItineraryCard item={hotel} locale="zh-TW" busy={false} onEdit={vi.fn()} departureTime="09:00" explicitDepartureSave onDepartureTimeChange={onDepartureTimeChange} onDepartureBusyChange={onDepartureBusyChange} />);
+    fireEvent.change(screen.getByLabelText("每天從飯店出發的時間"), { target: { value: "10:00" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存" }));
+    fireEvent.click(screen.getByRole("button", { name: "儲存" }));
+    expect(onDepartureTimeChange).toHaveBeenCalledOnce();
+    expect(onDepartureBusyChange).toHaveBeenLastCalledWith(true);
+    expect(screen.getByRole("button", { name: "取消" })).toBeDisabled();
+    expect(screen.getByLabelText("每天從飯店出發的時間")).toBeDisabled();
+    await act(async () => { finish(true); });
+    expect(onDepartureBusyChange).toHaveBeenLastCalledWith(false);
+    expect(screen.getByRole("status")).toHaveTextContent("已儲存");
+  });
+
+  it("disables Save for an empty departure and ignores late callbacks after the card unmounts", async () => {
+    let finish!: () => void;
+    const onDepartureTimeChange = vi.fn(() => new Promise<void>((resolve) => { finish = resolve; }));
+    const onDepartureDirtyChange = vi.fn();
+    const view = render(<SystemItineraryCard item={hotel} locale="zh-TW" busy={false} onEdit={vi.fn()} departureTime="09:00" explicitDepartureSave onDepartureTimeChange={onDepartureTimeChange} onDepartureDirtyChange={onDepartureDirtyChange} />);
+    fireEvent.change(screen.getByLabelText("每天從飯店出發的時間"), { target: { value: "" } });
+    expect(screen.getByRole("button", { name: "儲存" })).toBeDisabled();
+    fireEvent.change(screen.getByLabelText("每天從飯店出發的時間"), { target: { value: "10:00" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存" }));
+    view.unmount(); onDepartureDirtyChange.mockClear();
+    await act(async () => { finish(); });
+    expect(onDepartureDirtyChange).not.toHaveBeenCalled();
+  });
 });

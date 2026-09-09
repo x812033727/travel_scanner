@@ -15,7 +15,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
-from app.affiliates.service import TravelpayoutsLinkClient
+from app.affiliates.service import TravelpayoutsLinkClient as TravelpayoutsLinkClient
 from app.auth.service import CurrentUser
 from app.db import get_session
 from app.hotspots.maps import build_map_links
@@ -32,8 +32,8 @@ from app.models import (
     TripPlanItem,
     TripServiceSelection,
 )
+from app.travel_services.channels import channel_for, resolve_offer_target
 from app.travel_services.hotel_quotes import HotelQuoteRequest, search_quotes
-from app.travel_services.registry import affiliate_target
 from app.travel_services.schemas import CITIES, Facts, Kind, SelectInput, SelectionStatus
 from app.travel_services.service import (
     catalog_config,
@@ -554,16 +554,12 @@ async def booking_option_clickout(
         brand = await session.get(TravelServiceBrand, offer.brand_id)
         assert brand is not None
         try:
-            target = affiliate_target(
-                offer.static_url
-                or await TravelpayoutsLinkClient(get_redis(), settings).create(
-                    direct,
-                    sub_id,
-                    cache_context=(
-                        f"hotel:{option.id}:{option.version}:{brand.id}:{brand.version}:"
-                        f"{offer.id}:{offer.version}:{locale}"
-                    ),
-                )
+            target = await resolve_offer_target(
+                offer, brand, settings, get_redis(), sub_id,
+                cache_context=(
+                    f"hotel:{option.id}:{option.version}:{brand.id}:{brand.version}:"
+                    f"{offer.id}:{offer.version}:{locale}"
+                ),
             )
             mode = "affiliate"
         except (ConnectionError, ValueError, httpx.HTTPError, TimeoutError):
@@ -571,10 +567,11 @@ async def booking_option_clickout(
     if mode == "direct" and not config.direct_hotel_links_enabled:
         raise fail("service_link_unavailable", 503)
     if mode == "affiliate":
+        assert brand is not None
         session.add(
             AffiliateClick(
                 user_id=None,
-                partner="travelpayouts",
+                partner="klook" if channel_for(brand) == "klook_direct" else "travelpayouts",
                 brand=option.provider,
                 service_type="hotel",
                 placement=placement,
@@ -673,18 +670,16 @@ async def offer_clickout(
         raise fail("service_unavailable", 404)
     sub_id = f"svc_{product.kind}_{product.destination_id}_{locale}_{placement}"
     try:
-        target = offer.static_url or await TravelpayoutsLinkClient(get_redis(), settings).create(
-            offer.target_url,
-            sub_id,
+        target = await resolve_offer_target(
+            offer, brand, settings, get_redis(), sub_id,
             cache_context=f"{brand.id}:{brand.version}:{offer.id}:{offer.version}:{locale}",
         )
-        target = affiliate_target(target)
     except (ConnectionError, ValueError) as exc:
         raise fail("service_link_unavailable", 503) from exc
     session.add(
         AffiliateClick(
             user_id=None,
-            partner="travelpayouts",
+            partner="klook" if channel_for(brand) == "klook_direct" else "travelpayouts",
             brand=brand.code,
             service_type=product.kind,
             placement=placement,

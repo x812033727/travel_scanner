@@ -215,7 +215,13 @@ async def test_community_migrations_fresh_and_existing_database(
         engine = create_async_engine("sqlite+aiosqlite://")
     modules = [
         runpy.run_path(str(Path(__file__).parents[1] / "migrations" / "versions" / name))
-        for name in ["0058_community.py", "0059_pet_friendly.py", "0060_community_places.py"]
+        for name in [
+            "0058_community.py",
+            "0059_pet_friendly.py",
+            "0060_community_places.py",
+            "0066_discovery_community.py",
+            "0067_collection_inbox.py",
+        ]
     ]
     monkeypatch.setattr(context, "is_offline_mode", lambda: False)
 

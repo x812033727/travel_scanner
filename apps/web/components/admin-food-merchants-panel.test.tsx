@@ -40,6 +40,18 @@ const merchant = {
       is_current: true,
     },
   ],
+  platform_link: {
+    id: "platform-1",
+    provider: "openrice",
+    provider_label: "OpenRice",
+    canonical_url: "https://www.openrice.com/en/hongkong/p-yat-lok-restaurant-p23206360",
+    localized_urls: {},
+    status: "verified",
+    checked_at: "2026-09-08T00:00:00Z",
+    checked_by_user_id: null,
+    review_note: "Exact merchant page",
+  },
+  expected_platform: { provider: "openrice", label: "OpenRice" },
 };
 
 const names = { "zh-TW": "中環／上環", "zh-CN": "中环／上环", en: "Central / Sheung Wan", ja: "セントラル・上環", ko: "센트럴·셩완" };
@@ -95,6 +107,29 @@ function taxonomyResponse(url: string): Response | null {
 }
 
 describe("AdminFoodMerchantsPanel", () => {
+  it.each(["", "pending"])("sends the requested review filter %s for searches and explicit reloads", async (initialStatus) => {
+    const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      const stub = taxonomyResponse(String(input));
+      if (stub) return stub;
+      if (init?.method === "POST") return new Response(JSON.stringify({ updated: 1 }));
+      return new Response(JSON.stringify({ items: [merchant], total: 1, page: 1, pages: 1 }));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminFoodMerchantsPanel initialStatus={initialStatus} />);
+    await screen.findByText(merchant.name);
+    const listingCalls = () => fetchMock.mock.calls.filter(([url]) => String(url).includes("/merchants?"));
+    expect(new URL(String(listingCalls()[0][0]), "https://test.local").searchParams.get("status")).toBe(initialStatus || null);
+    fireEvent.change(screen.getByRole("textbox", { name: "店家搜尋" }), { target: { value: "燒鵝" } });
+    await waitFor(() => expect(listingCalls().some(([url]) => new URL(String(url), "https://test.local").searchParams.get("q") === "燒鵝")).toBe(true));
+    expect(listingCalls().every(([url]) => new URL(String(url), "https://test.local").searchParams.get("status") === (initialStatus || null))).toBe(true);
+    fireEvent.click(screen.getByRole("checkbox", { name: `選取 ${merchant.name}` }));
+    fireEvent.click(screen.getByRole("button", { name: /批次停用/ }));
+    await waitFor(() => expect(listingCalls().length).toBeGreaterThanOrEqual(3));
+    expect(new URL(String(listingCalls().at(-1)![0]), "https://test.local").searchParams.get("status")).toBe(initialStatus || null);
+    fireEvent.change(screen.getByRole("combobox", { name: "審核狀態" }), { target: { value: "approved" } });
+    await waitFor(() => expect(new URL(String(listingCalls().at(-1)![0]), "https://test.local").searchParams.get("status")).toBe("approved"));
+  });
+
   it("shows unavailable auto matching and saves permanent coordinates", async () => {
     vi.stubGlobal(
       "fetch",
@@ -142,6 +177,8 @@ describe("AdminFoodMerchantsPanel", () => {
     expect(await screen.findByText("Yat Lok Restaurant")).toBeTruthy();
     fireEvent.click(screen.getByRole("button", { name: "編輯地點與來源" }));
     const editor = screen.getByRole("dialog");
+    expect(within(editor).getByText("旅客訂位平台")).toBeTruthy();
+    expect(within(editor).getByDisplayValue("OpenRice")).toBeTruthy();
     const areaSelect = within(editor).getByLabelText("區域");
     await waitFor(() => expect(areaSelect.querySelectorAll("option").length).toBe(2));
     fireEvent.change(areaSelect, { target: { value: "hong-kong-central-sheung-wan" } });

@@ -8,7 +8,7 @@ from contextlib import asynccontextmanager
 from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
 from unittest.mock import AsyncMock
-from uuid import uuid4
+from uuid import UUID, uuid4
 
 import fakeredis.aioredis
 import pytest
@@ -18,6 +18,7 @@ from httpx import ASGITransport, AsyncClient
 from sqlalchemy import func, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.affiliates import router as affiliate_router
 from app.auth.service import current_user
 from app.config import Settings
 from app.db import engine, get_session
@@ -94,10 +95,14 @@ async def client(session, actor, monkeypatch):
         google_routes_api_key=None,
     )
     redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
-    for module in (router, admin):
+    for module in (router, admin, affiliate_router):
         monkeypatch.setattr(module, "load_runtime_settings", AsyncMock(return_value=settings))
         monkeypatch.setattr(module, "get_redis", lambda: redis)
     monkeypatch.setattr(router, "enforce_named_rate_limit", AsyncMock())
+    monkeypatch.setattr(affiliate_router, "enforce_named_rate_limit", AsyncMock())
+    # Unified saved writes reuse the collection policy. Isolate its limiter too:
+    # the process-global Redis pool may belong to a previous test module's loop.
+    monkeypatch.setattr("app.community.policy.enforce_named_rate_limit", AsyncMock())
     monkeypatch.setattr("app.trips.router.get_redis", lambda: redis)
     monkeypatch.setattr("app.trips.router.load_runtime_settings", AsyncMock(return_value=settings))
     # Hotel mutation reuses the real routing/serialization path with paid routing disabled.
@@ -105,6 +110,7 @@ async def client(session, actor, monkeypatch):
     application.add_exception_handler(AppError, app_error_handler)
     application.include_router(router.router)
     application.include_router(admin.router)
+    application.include_router(affiliate_router.router)
     application.include_router(saved_router)
     application.dependency_overrides[get_session] = lambda: session
     application.dependency_overrides[current_user] = lambda: actor
@@ -115,7 +121,7 @@ async def client(session, actor, monkeypatch):
     config.data = {
         "public_enabled": True,
         "enabled_kinds": list(KINDS),
-        "enabled_destinations": list(CITIES),
+        "enabled_destinations": [*CITIES, "taichung"],
         "airalo_feed_enabled": False,
     }
     await session.commit()
@@ -190,6 +196,65 @@ async def offer(session, item):
     session.add(row)
     await session.flush()
     return row, brand
+
+
+async def test_destination_offer_admin_public_and_clickout(
+    client, session, actor, monkeypatch
+):
+    now = datetime.now(UTC)
+    brand = TravelServiceBrand(
+        id=uuid4(),
+        project_id="123",
+        code="klook",
+        enabled=True,
+        approval="approved",
+        verified_at=now,
+    )
+    session.add(brand)
+    await session.commit()
+    created = await client.post(
+        "/admin/travel-services/destination-offers",
+        json={
+            "brand_id": str(brand.id),
+            "destination_id": "taichung",
+            "module": "activities",
+            "target_url": "https://www.klook.com/city/152-taichung/",
+        },
+    )
+    assert created.status_code == 201
+    pending = created.json()
+    assert pending["status"] == "pending"
+    monkeypatch.setattr(
+        "app.travel_services.admin.TravelpayoutsLinkClient.create",
+        AsyncMock(return_value="https://klook.tp.st/fixture"),
+    )
+    monkeypatch.setattr("app.travel_services.admin.verify_link", AsyncMock(return_value=True))
+    reviewed = await client.post(
+        f"/admin/travel-services/destination-offers/{pending['id']}/review",
+        json={"version": pending["version"], "status": "approved"},
+    )
+    assert reviewed.status_code == 200
+    public = await client.get(
+        "/affiliates/destination-offers",
+        params={"destination_id": "taichung", "module": "activities"},
+        headers={"x-travel-locale": "en"},
+    )
+    assert public.status_code == 200
+    assert public.json()["options"][0]["display_name"] == "Klook"
+    assert "target_url" not in public.text
+    monkeypatch.setattr(
+        "app.affiliates.router.TravelpayoutsLinkClient.create",
+        AsyncMock(return_value="https://klook.tp.st/fixture"),
+    )
+    clickout_path = public.json()["options"][0]["clickout_url"].removeprefix(
+        "/api/travel"
+    )
+    clickout = await client.post(clickout_path)
+    assert clickout.status_code == 303
+    click = await session.scalar(
+        select(AffiliateClick).where(AffiliateClick.offer_id == UUID(pending["id"]))
+    )
+    assert click and click.brand == "klook" and click.destination_id == "taichung"
 
 
 async def option_fixture(session, client, monkeypatch):

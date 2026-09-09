@@ -18,7 +18,7 @@ import httpx
 from cryptography.fernet import Fernet, InvalidToken
 from pydantic import ValidationError
 from redis.asyncio import Redis
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.schemas import (
@@ -414,7 +414,10 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
     "klook": ProviderDefinition(
         "Klook Affiliate",
         "活動、票券與交通合作連結；API 或 data feed 需由 Klook 個別核准。",
-        ("klook_affiliate_url_template", "klook_allowed_hosts", "klook_api_base_url"),
+        (
+            "klook_affiliate_id", "klook_affiliate_url_template",
+            "klook_allowed_hosts", "klook_api_base_url",
+        ),
         ("klook_api_key",),
         "klook_enabled",
     ),
@@ -1378,6 +1381,28 @@ def _validate_provider_values(
     return merged
 
 
+async def _locked_provider_config(session: AsyncSession, provider: str) -> ProviderConfig | None:
+    # A row lock alone cannot serialize two first writes when no row exists yet.
+    # The stable transaction-scoped key also coordinates connection-test creates.
+    lock_key = int.from_bytes(
+        hashlib.sha256(f"provider-settings:{provider}".encode()).digest()[:8], signed=True
+    )
+    await session.execute(select(func.pg_advisory_xact_lock(lock_key)))
+    return cast(
+        ProviderConfig | None,
+        await session.scalar(
+            select(ProviderConfig)
+            .where(ProviderConfig.provider == provider)
+            .with_for_update()
+            .execution_options(populate_existing=True)
+        ),
+    )
+
+
+def _settings_timestamp(value: datetime) -> datetime:
+    return value.replace(tzinfo=UTC) if value.tzinfo is None else value.astimezone(UTC)
+
+
 async def update_provider_settings(
     session: AsyncSession,
     provider: str,
@@ -1387,7 +1412,19 @@ async def update_provider_settings(
 ) -> ProviderSettingsSnapshot:
     if provider not in PROVIDER_DEFINITIONS:
         raise AppError(404, "provider_setting_not_found", "找不到這個供應商設定")
-    row = await session.scalar(select(ProviderConfig).where(ProviderConfig.provider == provider))
+    row = await _locked_provider_config(session, provider)
+    if "expected_updated_at" in payload.model_fields_set:
+        actual = _settings_timestamp(row.updated_at) if row is not None else None
+        expected = (
+            _settings_timestamp(payload.expected_updated_at)
+            if payload.expected_updated_at is not None
+            else None
+        )
+        if actual != expected:
+            await session.rollback()
+            raise AppError(
+                409, "provider_setting_conflict", "設定已被其他管理員更新，請重新載入後再儲存"
+            )
     if row is None:
         row = ProviderConfig(
             provider=provider,
@@ -1405,6 +1442,12 @@ async def update_provider_settings(
     elif payload.enabled is not None:
         row.enabled = payload.enabled
     row.updated_by_user_id = actor.id
+    now = datetime.now(UTC)
+    row.updated_at = (
+        max(now, _settings_timestamp(row.updated_at) + timedelta(microseconds=1))
+        if row.updated_at
+        else now
+    )
     row.last_test_status = None
     row.last_test_message = None
     audit_metadata: dict[str, object] = {
@@ -1896,6 +1939,10 @@ async def _test_provider(
         from app.affiliates.registry import PARTNERS_BY_CODE
         from app.affiliates.service import AffiliateContext, resolve_partner_target
 
+        if provider == "klook" and not settings.klook_affiliate_url_template:
+            if not settings.klook_enabled or not settings.klook_affiliate_id:
+                raise ConnectionError("請啟用並設定 Klook Affiliate AID")
+            return "Klook AID 設定格式已確認；商品連結需另行審核，未驗證價格 API 授權"
         partner = PARTNERS_BY_CODE[affiliate_codes[provider]]
         module = partner.modules[0]
         await resolve_partner_target(
@@ -1935,7 +1982,7 @@ async def test_provider_connection(
 ) -> ProviderTestResult:
     if provider not in PROVIDER_DEFINITIONS:
         raise AppError(404, "provider_setting_not_found", "找不到這個供應商設定")
-    row = await session.scalar(select(ProviderConfig).where(ProviderConfig.provider == provider))
+    row = await _locked_provider_config(session, provider)
     if row is None:
         row = ProviderConfig(
             provider=provider,

@@ -17,6 +17,7 @@ const mock = vi.hoisted(() => ({
   session:{status:"authenticated",user:{id:"member",email:"private@example.test",is_admin:true}},
 }));
 vi.mock("@/lib/api",async(importOriginal)=>({...await importOriginal<typeof import("@/lib/api")>(),api:mock.api}));
+vi.mock("@/lib/discovery",async(importOriginal)=>({...await importOriginal<typeof import("@/lib/discovery")>(),useDiscoveryStatus:()=>({enabled:false,loading:false})}));
 vi.mock("@/components/header-session",()=>({useHeaderSession:()=>mock.session}));
 vi.mock("./provider",()=>({useCommunity:()=>({...mock.state,me:{profile:mock.profile,verified:mock.state.verified,restricted:mock.state.restricted,notification_preferences:{}},loading:false,error:null,unread:0,refresh:vi.fn(),refreshFlags:mock.refreshFlags})}));
 beforeEach(()=>{
@@ -93,7 +94,7 @@ describe("community availability and accessible controls",()=>{
   fireEvent.change(screen.getByRole("combobox"),{target:{value:"rules"}});
   expect(change).toHaveBeenCalledTimes(2);
  });
- it("uses community mobile destinations and hides publish when paused",()=>{
+ it("keeps legacy community mobile destinations with discovery off and hides publish when paused",()=>{
   const view=render(<AppBottomNav/>);
   expect(screen.getAllByRole("link").map((link)=>link.getAttribute("href"))).toEqual(["/","/community","/community/new","/community/messages","/my"]);
   mock.state.flags.posting_enabled=false;view.rerender(<AppBottomNav/>);

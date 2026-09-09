@@ -5,14 +5,15 @@ import secrets
 from collections.abc import Mapping
 from datetime import UTC, date, datetime, time, timedelta
 from decimal import Decimal
-from typing import Annotated, Any, Literal, cast
+from typing import Annotated, Any, Literal, cast, get_args
 from urllib.parse import urlparse
 from uuid import UUID, uuid4, uuid5
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 import httpx
 from fastapi import APIRouter, Depends, Header, Query
-from pydantic import BaseModel, Field, model_validator
+from fastapi.exceptions import RequestValidationError
+from pydantic import BaseModel, Field, ValidationError, model_validator
 from sqlalchemy import delete, func, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -56,6 +57,7 @@ from app.models import (
     TripRouteSegment,
     TripShare,
     UsageReservation,
+    User,
 )
 from app.optimization.engine import TripOptimizer, TripPlanResult
 from app.places.google import GoogleTravelService
@@ -84,6 +86,7 @@ from app.trips.flight_anchor import (
 )
 from app.trips.hours import is_open_at, opens_within_day
 from app.trips.itinerary import ItineraryItem
+from app.trips.place_options import list_place_options, resolve_catalog_selection
 from app.trips.pricing import (
     lodging_from_offer,
     offer_price_snapshot,
@@ -140,6 +143,7 @@ from app.trips.schedule import (
     canonicalize_positions,
     clear_flight_anchor,
     ensure_system_slots,
+    insert_scheduled_rows,
     merge_reoptimized_lodging,
     primary_lodging,
     route_pair_count,
@@ -152,6 +156,7 @@ from app.trips.search_criteria import (
     load_trip_search_json,
     localized_issue_detail,
 )
+from app.trips.stay_areas import trip_settings_source
 from app.usage.service import (
     COMMON_LIMITS,
     USAGE_OPERATIONS,
@@ -247,7 +252,7 @@ def cover_image_host_allowed(url: str) -> bool:
 
 
 class TripMetadataPatchRequest(BaseModel):
-    """`PATCH /trips/{id}` — rename a trip, or move its day grid.
+    """`PATCH /trips/{id}` — edit metadata/settings or move the day grid.
 
     `shift_days` moves the whole trip and keeps its length; `start_date` /
     `end_date` set an absolute range (missing side keeps its current value)
@@ -267,6 +272,10 @@ class TripMetadataPatchRequest(BaseModel):
     # Home airport, so a flight search can start from the trip. Blank trips are
     # created without one today; the search page asks and writes it back here.
     origin_airport: str | None = Field(default=None, min_length=3, max_length=3)
+    # Validate after merging with saved values: validating a partial object on
+    # its own would introduce defaults and miss cross-field constraints.
+    travelers: dict[str, Any] | None = None
+    preferences: dict[str, Any] | None = None
     start_date: date | None = None
     end_date: date | None = None
     shift_days: int | None = Field(default=None, ge=-MAX_SHIFT_DAYS, le=MAX_SHIFT_DAYS)
@@ -274,6 +283,12 @@ class TripMetadataPatchRequest(BaseModel):
 
     @model_validator(mode="after")
     def validate_patch(self) -> "TripMetadataPatchRequest":
+        for key, schema in (("travelers", Travelers), ("preferences", SearchPreferences)):
+            if key in self.model_fields_set:
+                values = getattr(self, key)
+                if values is None:
+                    raise ValueError(f"{key} must be an object")
+                _trip_setting_fields(values, schema, reject_unknown=True)
         if self.name is not None:
             self.name = self.name.strip()
             if not self.name:
@@ -295,6 +310,144 @@ class TripMetadataPatchRequest(BaseModel):
         if not self.model_fields_set - {"version", "confirm_removed_days"}:
             raise ValueError("nothing to update")
         return self
+
+
+def _trip_setting_fields(
+    values: Mapping[str, Any], schema: type[BaseModel], *, reject_unknown: bool = False
+) -> dict[str, Any]:
+    """Validate known fields without discarding forward-compatible stored keys."""
+    if reject_unknown and values.keys() - schema.model_fields.keys():
+        raise ValueError("unsupported trip preference field")
+    result = {key: value for key, value in values.items() if key in schema.model_fields}
+    for key, value in result.items():
+        annotation = schema.model_fields[key].annotation
+        nested = next(
+            (
+                candidate
+                for candidate in (annotation, *get_args(annotation))
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel)
+            ),
+            None,
+        )
+        if nested is not None and isinstance(value, Mapping):
+            result[key] = _trip_setting_fields(value, nested, reject_unknown=reject_unknown)
+    return result
+
+
+def _merge_trip_setting_values(
+    current: Mapping[str, Any], changes: Mapping[str, Any]
+) -> dict[str, Any]:
+    result = dict(current)
+    for key, value in changes.items():
+        previous = current.get(key)
+        result[key] = (
+            _merge_trip_setting_values(previous, value)
+            if isinstance(previous, Mapping) and isinstance(value, Mapping)
+            else value
+        )
+    return result
+
+
+def _updated_trip_settings(
+    current: Mapping[str, Any], changes: dict[str, Any], schema: type[BaseModel], field: str
+) -> tuple[dict[str, Any], set[str]]:
+    if not changes:
+        return dict(current), set()
+    merged = _merge_trip_setting_values(current, changes)
+    try:
+        validated = schema.model_validate(_trip_setting_fields(merged, schema)).model_dump(
+            mode="json"
+        )
+    except ValidationError as exc:
+        raise RequestValidationError(
+            [
+                {**error, "loc": ("body", field, *error["loc"])}
+                for error in exc.errors(include_context=False)
+            ]
+        ) from exc
+    try:
+        previous = schema.model_validate(_trip_setting_fields(current, schema)).model_dump(
+            mode="json"
+        )
+    except ValidationError:
+        previous = dict(current)
+    changed = {key for key, value in validated.items() if previous.get(key) != value}
+    return (
+        _merge_trip_setting_values(merged, validated) if changed else dict(current),
+        changed,
+    )
+
+
+def _invalidate_trip_setting_quotes(
+    data: dict[str, Any], *, hotel: bool, flight: bool, has_quoted_total: bool
+) -> dict[str, Any]:
+    """Keep selected places and booked flight details; remove mismatched quotes."""
+    result = {**data, "prices_checked": False, "prices_stale": has_quoted_total}
+    result.pop("reoptimized_at", None)
+    lodging = result.get("primary_lodging")
+    if hotel and isinstance(lodging, dict):
+        result["primary_lodging"] = {
+            key: value for key, value in lodging.items() if key != "price_snapshot"
+        }
+    # Legacy rows may be materialized by serialization. Clear only their quote,
+    # leaving the legacy itinerary and its manual/locked entries intact.
+    if isinstance(result.get("itinerary"), list):
+        result["itinerary"] = [
+            {
+                **day,
+                "items": [
+                    {
+                        **item,
+                        "data": {
+                            key: value
+                            for key, value in item.get("data", {}).items()
+                            if key != "price_snapshot"
+                        },
+                    }
+                    if _trip_item_quote_affected(item, hotel=hotel, flight=flight)
+                    and isinstance(item.get("data"), dict)
+                    else item
+                    for item in day.get("items", [])
+                ],
+            }
+            for day in result["itinerary"]
+        ]
+    return result
+
+
+def _trip_item_quote_affected(item: Mapping[str, Any], *, hotel: bool, flight: bool) -> bool:
+    return bool(
+        (
+            hotel
+            and (
+                item.get("item_type") == "hotel"
+                or item.get("system_role") in {"hotel_start", "hotel_end"}
+            )
+        )
+        or (
+            flight
+            and (
+                item.get("item_type") == "flight" or item.get("system_role") in FLIGHT_SYSTEM_ROLES
+            )
+        )
+    )
+
+
+async def _clear_trip_setting_quote_snapshots(
+    session: AsyncSession, trip_id: UUID, *, hotel: bool, flight: bool
+) -> None:
+    if not hotel and not flight:
+        return
+    for item in await load_items(session, trip_id):
+        if (
+            _trip_item_quote_affected(
+                {"item_type": item.item_type, "system_role": item.system_role},
+                hotel=hotel,
+                flight=flight,
+            )
+            and "price_snapshot" in item.data
+        ):
+            item.data = {key: value for key, value in item.data.items() if key != "price_snapshot"}
 
 
 def destination_timezone(destination: str) -> str:
@@ -662,6 +815,12 @@ def apply_item_request(
         else:
             names.pop(field)
     record.names_json = names
+    if (record.data or {}).get("catalog_selection") != item.data.get("catalog_selection"):
+        # A different/manual location must not inherit the previous catalogue
+        # location's durable-coordinate provenance. A validated selection below
+        # installs its own canonical provenance after applying this request.
+        record.coordinate_source_type = None
+        record.coordinate_source_url = None
     record.item_type = item.item_type
     record.offer_id = item.offer_id
     record.day_date = item.day_date
@@ -1601,7 +1760,9 @@ async def reproject_saved_times(
             saved,
             points,
             cast(TravelMode, setting.default_travel_mode if setting else "transit"),
-            buffer_minutes=setting.default_buffer_minutes if setting else 0,
+            buffer_minutes=(
+                setting.default_buffer_minutes if setting else DEFAULT_BUFFER_MINUTES
+            ),
         )
         for row in day_rows:
             if row.fixed_time or row.id not in projection.item_times:
@@ -1616,11 +1777,16 @@ async def reproject_saved_times(
 def route_point(item: TripPlanItem) -> RoutePoint | None:
     if item.latitude is None or item.longitude is None:
         return None
+    latitude, longitude = float(item.latitude), float(item.longitude)
+    # Legacy stored coordinates can predate request validation. NaN and infinity
+    # also fail these bounds, so malformed points remain explicit route barriers.
+    if not (-90 <= latitude <= 90 and -180 <= longitude <= 180):
+        return None
     return RoutePoint(
         item_id=item.id,
         name=item.location_name or item.title or item.item_type,
-        latitude=float(item.latitude),
-        longitude=float(item.longitude),
+        latitude=latitude,
+        longitude=longitude,
         provider_place_id=item.provider_place_id,
         place_provider=infer_place_provider(item.location_source, item.data),
     )
@@ -1907,7 +2073,8 @@ def search_query_for_trip(request_json: Mapping[str, Any], trip: TripPlan) -> Se
     dates per leg and cannot be shifted from two endpoints, so a date change there
     is still refused rather than guessed at.
     """
-    query = SearchCreate.model_validate(request_json)
+    request_json = trip_settings_source(trip, request_json)
+    query = SearchCreate.model_validate(request_json, extra="ignore")
     if trip.start_date is None:
         return query
     moved = query.departure_date != trip.start_date or (
@@ -1924,7 +2091,7 @@ def search_query_for_trip(request_json: Mapping[str, Any], trip: TripPlan) -> Se
         else request_json.get("return_date"),
     }
     try:
-        return SearchCreate.model_validate({**request_json, **update})
+        return SearchCreate.model_validate({**request_json, **update}, extra="ignore")
     except ValueError as exc:
         raise DATES_DIVERGED from exc
 
@@ -2048,16 +2215,18 @@ async def save_trip(
 ) -> dict[str, Any]:
     redis = get_redis()
     request_key = _trip_create_request_key(user.id, idempotency_key) if idempotency_key else None
+    request_hash = _trip_create_payload_hash(payload)
     if request_key:
-        replay_id = await redis.get(request_key)
-        if replay_id:
-            existing = await session.scalar(
-                select(TripPlan).where(
-                    TripPlan.id == UUID(str(replay_id)), TripPlan.user_id == user.id
-                )
-            )
-            if existing is not None:
-                return await serialize_trip(session, existing)
+        # Serialize creation for this account. The transaction-held row lock also
+        # closes the gap between committing the trip and populating Redis.
+        await session.execute(select(User.id).where(User.id == user.id).with_for_update())
+        existing = await _trip_create_replay(session, user.id, request_key, request_hash)
+        if existing is not None:
+            return await serialize_trip(session, existing)
+    creation_request = (
+        {"key_digest": request_key.rsplit(":", 1)[-1], "request_hash": request_hash}
+        if request_key else None
+    )
     count = await session.scalar(
         select(func.count()).select_from(TripPlan).where(TripPlan.user_id == user.id)
     )
@@ -2120,6 +2289,7 @@ async def save_trip(
             total_price=Decimal(0),
             currency="TWD",
             data={
+                **({"creation_request": creation_request} if creation_request else {}),
                 "source": "blank",
                 "creation_mode": payload.planning_mode,
                 "destination_city": destination,
@@ -2178,7 +2348,11 @@ async def save_trip(
         await session.commit()
         await session.refresh(trip)
         if request_key:
-            await redis.set(request_key, str(trip.id), ex=TRIP_CREATE_REPLAY_TTL_SECONDS)
+            await redis.set(
+                request_key,
+                json.dumps({"trip_id": str(trip.id), "request_hash": request_hash}),
+                ex=TRIP_CREATE_REPLAY_TTL_SECONDS,
+            )
         result = await serialize_trip(session, trip)
         if routing_status == "queued":
             try:
@@ -2262,7 +2436,10 @@ async def save_trip(
         name=payload.name,
         mode=plan["mode"],
         total_price=Decimal(str(plan["total_cost"]["total_cost"])),
-        data={**plan, **shared_keys},
+        data={
+            **plan, **shared_keys,
+            **({"creation_request": creation_request} if creation_request else {}),
+        },
         version=1,
         destination_name=first_item_data.get("destination_city"),
         start_date=next(
@@ -2305,7 +2482,11 @@ async def save_trip(
     await session.commit()
     await session.refresh(trip)
     if request_key:
-        await redis.set(request_key, str(trip.id), ex=TRIP_CREATE_REPLAY_TTL_SECONDS)
+        await redis.set(
+            request_key,
+            json.dumps({"trip_id": str(trip.id), "request_hash": request_hash}),
+            ex=TRIP_CREATE_REPLAY_TTL_SECONDS,
+        )
     return await serialize_trip(session, trip)
 
 
@@ -2321,6 +2502,20 @@ async def list_trips(user: CurrentUser, session: Session) -> list[dict[str, Any]
         ).all()
     )
     return [await serialize_trip(session, trip, include_items=False) for trip in trips]
+
+
+def _option_destination_id(trip: TripPlan) -> str | None:
+    # Older trips store a localized city name; newer snapshots may already have
+    # a catalog identity. Resolve both without copying destination alias tables
+    # into each localized picker or exposing the private trip snapshot.
+    data = trip.data if isinstance(trip.data, dict) else {}
+    for value in (data.get("destination_id"), trip.destination_name, data.get("destination_city")):
+        if not isinstance(value, str) or not value.strip():
+            continue
+        destination = destination_for_code(value.strip()) or match_destination(value.strip())
+        if destination:
+            return destination.id
+    return None
 
 
 @router.get("/options")
@@ -2351,6 +2546,7 @@ async def trip_options(user: CurrentUser, session: Session) -> dict[str, object]
                 "start_date": trip.start_date,
                 "end_date": trip.end_date,
                 "destination_name": trip.destination_name,
+                "destination_id": _option_destination_id(trip),
             }
             for trip in dated
         ],
@@ -2663,9 +2859,11 @@ async def update_trip_metadata(
     user: CurrentUser,
     session: Session,
 ) -> dict[str, Any]:
-    """Rename a trip, change its lifecycle status, or move its day grid.
+    """Edit trip metadata and planning settings, or move its day grid.
 
-    A metadata-only change touches nothing but the trip row. A date change
+    Settings merge with saved values, without replacing the itinerary or
+    triggering planning/routing. Changed quote inputs clear affected snapshots
+    while retaining the selected lodging and flight details. A date change
     runs as one transaction that wins the version compare-and-swap first,
     then moves every day-keyed row two-phase (items and per-day route
     settings), re-homes the two flight anchors, clears bookings whose
@@ -2676,6 +2874,8 @@ async def update_trip_metadata(
     discard itself instead of writing rows against the old dates.
     """
     trip = await owned_trip(session, user.id, trip_id)
+    if trip.version != payload.version:
+        raise AppError(409, "trip_version_conflict", "旅程已被更新，請重新載入後再操作")
     target = resolve_target_range(
         old_start=trip.start_date,
         old_end=trip.end_date,
@@ -2713,6 +2913,57 @@ async def update_trip_metadata(
     if "origin_airport" in payload.model_fields_set:
         data_values["origin_airport"] = payload.origin_airport
 
+    settings_changed: dict[str, set[str]] = {}
+    search_data = (
+        await load_trip_search_json(session, trip)
+        if payload.travelers is not None or payload.preferences is not None
+        else None
+    )
+    for key, schema in (("travelers", Travelers), ("preferences", SearchPreferences)):
+        changes = getattr(payload, key)
+        if changes is None:
+            continue
+        stored = trip.data.get(key)
+        baseline = (search_data or {}).get(key)
+        current = _merge_trip_setting_values(
+            baseline if isinstance(baseline, dict) else {},
+            stored if isinstance(stored, dict) else {},
+        )
+        updated, changed = _updated_trip_settings(current, changes, schema, key)
+        if changed:
+            data_values[key] = updated
+            settings_changed[key] = changed
+    if settings_changed:
+        previous_overrides = trip.data.get("search_settings_overrides", [])
+        data_values["search_settings_overrides"] = sorted(
+            {key for key in previous_overrides if key in {"travelers", "preferences"}}
+            | settings_changed.keys()
+        )
+    travelers_changed = settings_changed.get("travelers", set())
+    preferences_changed = settings_changed.get("preferences", set())
+    flight_quotes_changed = bool(
+        travelers_changed - {"rooms"}
+        or preferences_changed
+        & {"avoid_red_eye", "pet_companion", "budget_twd", "optimization_mode"}
+    )
+    hotel_quotes_changed = bool(
+        travelers_changed
+        or preferences_changed
+        - {"avoid_red_eye", "pace", "interests", "shop_themes", "extension_destination_ids"}
+    )
+    scalar_values = {
+        key: value for key, value in scalar_values.items() if getattr(trip, key) != value
+    }
+    data_values = {key: value for key, value in data_values.items() if trip.data.get(key) != value}
+    next_data = {**trip.data, **data_values}
+    if hotel_quotes_changed or flight_quotes_changed:
+        next_data = _invalidate_trip_setting_quotes(
+            next_data,
+            hotel=hotel_quotes_changed,
+            flight=flight_quotes_changed,
+            has_quoted_total=price_status(trip) != "none",
+        )
+
     if target is None and not scalar_values and not data_values:
         # The requested dates are the ones the trip already has. Report the
         # current state instead of bumping the version, which would only 409
@@ -2732,13 +2983,16 @@ async def update_trip_metadata(
             .values(
                 version=TripPlan.version + 1,
                 **scalar_values,
-                **({"data": {**trip.data, **data_values}} if data_values else {}),
+                **({"data": next_data} if data_values else {}),
             )
             .returning(TripPlan.version)
         )
         if next_version is None:
             await session.rollback()
             raise AppError(409, "trip_version_conflict", "旅程已被更新，請重新載入後再操作")
+        await _clear_trip_setting_quote_snapshots(
+            session, trip.id, hotel=hotel_quotes_changed, flight=flight_quotes_changed
+        )
         await session.commit()
         await session.refresh(trip)
         return await serialize_trip(session, trip)
@@ -2778,7 +3032,10 @@ async def update_trip_metadata(
         segments=segments,
         plan=plan,
     )
-    trip.data = {**reschedule_trip_data(trip.data, rows), **data_values}
+    trip.data = reschedule_trip_data(next_data, rows)
+    await _clear_trip_setting_quote_snapshots(
+        session, trip.id, hotel=hotel_quotes_changed, flight=flight_quotes_changed
+    )
     await session.commit()
     # After the deletes above, an empty segment table is exactly the state in
     # which serialize_trip falls back to this cache — clear it or the API
@@ -2868,6 +3125,37 @@ async def get_trip_weather(
     return weather.model_copy(update={"warnings": list(dict.fromkeys(warnings))})
 
 
+@router.get("/{trip_id}/place-options")
+async def trip_place_options(
+    trip_id: UUID,
+    user: CurrentUser,
+    session: Session,
+    source: Literal["discover", "favorites", "nearby"] = "discover",
+    q: Annotated[str, Query(max_length=150)] = "",
+    kind: Literal["all", "hotspot", "merchant"] = "all",
+    latitude: Annotated[float | None, Query(ge=-90, le=90)] = None,
+    longitude: Annotated[float | None, Query(ge=-180, le=180)] = None,
+    next_latitude: Annotated[float | None, Query(ge=-90, le=90)] = None,
+    next_longitude: Annotated[float | None, Query(ge=-180, le=180)] = None,
+    radius_km: Annotated[int, Query(ge=3, le=10)] = 3,
+    all_cities: bool = False,
+    offset: Annotated[int, Query(ge=0, le=10000)] = 0,
+    limit: Annotated[int, Query(ge=1, le=24)] = 12,
+) -> dict[str, Any]:
+    trip = await owned_trip(session, user.id, trip_id)
+    if radius_km not in {3, 10} or (latitude is None) != (longitude is None) or (
+        (next_latitude is None) != (next_longitude is None)
+    ):
+        raise AppError(422, "invalid_place_bias", "經緯度需成對提供")
+    return await list_place_options(
+        session, trip, locale=active_locale(), source=source, q=q, kind=kind,
+        origin=(latitude, longitude) if latitude is not None and longitude is not None else None,
+        following=(next_latitude, next_longitude)
+        if next_latitude is not None and next_longitude is not None else None,
+        radius_km=radius_km, all_cities=all_cities, offset=offset, limit=limit,
+    )
+
+
 @router.put("/{trip_id}/itinerary")
 async def update_itinerary(
     trip_id: UUID,
@@ -2920,6 +3208,20 @@ async def update_itinerary(
         for item in incoming_items
     ):
         raise AppError(422, "itinerary_date_out_of_range", "行程項目日期超出旅程範圍")
+    catalog_items: dict[int, dict[str, Any]] = {}
+    for index, item in enumerate(incoming_items):
+        existing = existing_by_id.get(item.id) if item.id is not None else None
+        selection = item.data.get("catalog_selection")
+        if selection and (
+            existing is None or selection != (existing.data or {}).get("catalog_selection")
+        ):
+            if existing is not None and existing.system_role is not None and (
+                existing.system_role not in {"lunch", "dinner"}
+            ):
+                raise AppError(422, "system_itinerary_item_immutable", "此系統卡不可更換景點")
+            catalog_items[index] = await resolve_catalog_selection(
+                session, selection, active_locale()
+            )
     next_data = {
         **trip.data,
         "edited": True,
@@ -2962,7 +3264,15 @@ async def update_itinerary(
     route_impact_ids: set[UUID] = set(removed_ids)
     next_rows: list[TripPlanItem] = []
     new_route_rows: list[TripPlanItem] = []
-    for item in incoming_items:
+    for index, item in enumerate(incoming_items):
+        catalog_item = catalog_items.get(index)
+        if catalog_item:
+            item = item.model_copy(update={
+                "latitude": catalog_item["latitude"], "longitude": catalog_item["longitude"],
+                "provider_place_id": catalog_item["provider_place_id"],
+                "location_source": catalog_item["location_source"], "is_estimated": False,
+                "data": {**item.data, **catalog_item["data"]},
+            })
         row = existing_by_id.get(item.id) if item.id is not None else None
         if row is None:
             row = item_record(trip.id, item)
@@ -2971,7 +3281,6 @@ async def update_itinerary(
         else:
             before = (
                 row.day_date,
-                row.position,
                 row.start_time,
                 row.end_time,
                 row.latitude,
@@ -2983,7 +3292,6 @@ async def update_itinerary(
             )
             if row.system_role is not None:
                 protected: dict[str, Any] = {
-                    "position": row.position,
                     "locked": True,
                     "fixed_time": row.system_role
                     in {
@@ -3020,7 +3328,6 @@ async def update_itinerary(
                 item = item.model_copy(update=protected)
             after = (
                 item.day_date,
-                item.position,
                 item.start_time,
                 item.end_time,
                 Decimal(str(item.latitude)) if item.latitude is not None else None,
@@ -3033,6 +3340,13 @@ async def update_itinerary(
             if before != after:
                 route_impact_ids.add(row.id)
             apply_item_request(row, item)
+        if catalog_item:
+            row.names_json = {
+                key: value for key, value in catalog_item["names"].items()
+                if getattr(item, key, None) == catalog_item[key]
+            }
+            row.coordinate_source_type = catalog_item["data"]["coordinate_source_type"]
+            row.coordinate_source_url = catalog_item["data"]["coordinate_source_url"]
         next_rows.append(row)
 
     canonicalize_positions(next_rows)
@@ -3336,6 +3650,57 @@ def _trip_create_request_key(user_id: UUID, idempotency_key: str) -> str:
     return f"trip:create-request:{user_id}:{digest}"
 
 
+def _trip_create_payload_hash(payload: SaveTripRequest) -> str:
+    return hashlib.sha256(json.dumps(
+        payload.model_dump(mode="json"), ensure_ascii=False, sort_keys=True,
+        separators=(",", ":"),
+    ).encode()).hexdigest()
+
+
+async def _trip_create_replay(
+    session: AsyncSession, user_id: UUID, request_key: str, request_hash: str,
+) -> TripPlan | None:
+    # The durable record is part of the original commit, so a lost HTTP response
+    # or a Redis write failure can never turn a retry into a second trip.
+    existing: TripPlan | None = await session.scalar(select(TripPlan).where(
+        TripPlan.user_id == user_id,
+        TripPlan.data["creation_request"]["key_digest"].as_string()
+        == request_key.rsplit(":", 1)[-1],
+    ))
+    if existing is not None:
+        if existing.data["creation_request"].get("request_hash") != request_hash:
+            raise AppError(
+                409, "trip_create_payload_conflict", "這次建立的內容已改變，請先確認我的旅程。",
+            )
+        return existing
+    cached = await get_redis().get(request_key)
+    if not cached:
+        return None
+    try:
+        record = json.loads(str(cached))
+        if not isinstance(record, dict) or not isinstance(record.get("request_hash"), str):
+            raise ValueError("legacy or invalid creation record")
+        if record["request_hash"] != request_hash:
+            raise AppError(
+                409, "trip_create_payload_conflict", "這次建立的內容已改變，請先確認我的旅程。",
+            )
+        trip_id = UUID(record["trip_id"])
+    except (ValueError, TypeError, KeyError) as error:
+        # A UUID-only legacy record cannot prove what was submitted. Do not
+        # silently discard edited fields or create a replacement trip.
+        raise AppError(
+            409, "trip_create_recovery_required", "無法安全重送這次建立，請先到我的旅程確認。",
+        ) from error
+    existing = await session.scalar(select(TripPlan).where(
+        TripPlan.id == trip_id, TripPlan.user_id == user_id,
+    ))
+    if existing is None:
+        raise AppError(
+            409, "trip_create_recovery_required", "原旅程已不可用，請先到我的旅程確認。",
+        )
+    return existing
+
+
 def _candidate_signatures(
     candidates: list[AIPlannerCandidate], selected_keys: set[str]
 ) -> dict[str, str]:
@@ -3429,7 +3794,7 @@ async def _build_ai_planning(
         target_date=target_date,
     )
     travelers = Travelers.model_validate(trip.data.get("travelers", {}))
-    preferences = SearchPreferences.model_validate(trip.data.get("preferences", {}))
+    preferences = SearchPreferences.model_validate(trip.data.get("preferences", {}), extra="ignore")
     candidates = await _load_trip_candidates(
         session,
         trip,
@@ -3650,7 +4015,9 @@ async def generate_trip_itinerary(
             target_date=target_date,
         )
         travelers = Travelers.model_validate(trip.data.get("travelers", {}))
-        preferences = SearchPreferences.model_validate(trip.data.get("preferences", {}))
+        preferences = SearchPreferences.model_validate(
+            trip.data.get("preferences", {}), extra="ignore"
+        )
         settings = await load_runtime_settings(session)
         candidates = await _load_trip_candidates(
             session,
@@ -3701,6 +4068,7 @@ async def generate_trip_itinerary(
         for record in generated_records:
             session.add(record)
         all_rows = [*plan.preserved, *kept_rows, *generated_records]
+        insert_scheduled_rows(all_rows, generated_records)
         canonicalize_positions(all_rows)
         planning_data = {
             **planning.planning.model_dump(mode="json"),
@@ -3840,7 +4208,7 @@ async def apply_trip_itinerary_preview(
         scope=scope,
         day_date=target_date,
     )
-    preferences = SearchPreferences.model_validate(trip.data.get("preferences", {}))
+    preferences = SearchPreferences.model_validate(trip.data.get("preferences", {}), extra="ignore")
     candidates = await _load_trip_candidates(
         session,
         trip,
@@ -3901,6 +4269,7 @@ async def apply_trip_itinerary_preview(
         session.add_all(generated_records)
         await _retire_used_inbox_rows(session, trip.id, generated_records)
         all_rows = [*plan.preserved, *kept_rows, *generated_records]
+        insert_scheduled_rows(all_rows, generated_records)
         canonicalize_positions(all_rows)
         settings = await load_runtime_settings(session)
         routing_defaults = RoutingOptions.model_validate(trip.data.get("routing_defaults") or {})

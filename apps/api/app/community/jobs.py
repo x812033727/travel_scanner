@@ -127,6 +127,11 @@ async def erase_account(session: AsyncSession, user_id: UUID) -> None:
     )
     if user is None or user.deleted_at is None:
         return
+    from app.community.invitations import erase_creator_invitation
+    from app.discovery.preferences import erase_preferences
+
+    await erase_creator_invitation(session, user_id)
+    await erase_preferences(session, user_id)
     media = (await session.scalars(select(Media).where(Media.owner_id == user_id))).all()
     if media:
         client, bucket = storage(), get_settings().community_s3_bucket
@@ -189,6 +194,7 @@ async def erase_account(session: AsyncSession, user_id: UUID) -> None:
             place_ids=[],
             place_refs=[],
             media_ids=[],
+            video_refs=[],
             itinerary=None,
             allow_fork=False,
         )
@@ -232,6 +238,7 @@ async def erase_account(session: AsyncSession, user_id: UUID) -> None:
         "food_merchant_favorites",
         "hotspot_favorites",
         "restaurant_favorites",
+        "travel_service_favorites",
     ):
         table = Base.metadata.tables[name]
         await session.execute(delete(table).where(table.c.user_id == user_id))

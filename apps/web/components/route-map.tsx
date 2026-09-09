@@ -1,7 +1,7 @@
 "use client";
 
 import { Map, MapPin, TriangleAlert } from "lucide-react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Script from "next/script";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { api } from "@/lib/api";
@@ -80,6 +80,7 @@ export function RouteMap({
   externalOnly?: boolean;
 }) {
   const locale = useLocale();
+  const t = useTranslations("trips.route");
   const isKorea = countryCode?.toUpperCase() === "KR";
   const mapElement = useRef<HTMLDivElement>(null);
   const googleMap = useRef<GoogleMapInstance | null>(null);
@@ -132,7 +133,7 @@ export function RouteMap({
     [routeOptions],
   );
   const showSchematic = hasCoordinates
-    && (externalOnly || optionCoordinates.every((coordinates) => coordinates.length === 0));
+    && (externalOnly || (optionCoordinates[selectedIndex]?.length || 0) < 2);
 
   const clearOverlays = useCallback(() => {
     for (const overlay of overlays.current) overlay.setMap(null);
@@ -230,7 +231,7 @@ export function RouteMap({
       { latitude: destination.latitude as number, longitude: destination.longitude as number },
     ];
     optionCoordinates.forEach((coordinates, index) => {
-      if (!coordinates.length) return;
+      if (coordinates.length < 2) return;
       visiblePoints.push(...coordinates);
       const selected = index === selectedIndex;
       const line = new maps.Polyline({
@@ -287,7 +288,7 @@ export function RouteMap({
     bounds.extend(originPoint);
     bounds.extend(destinationPoint);
     optionCoordinates.forEach((coordinates, index) => {
-      if (!coordinates.length) return;
+      if (coordinates.length < 2) return;
       coordinates.forEach((point) => bounds.extend({ lat: point.latitude, lng: point.longitude }));
       const selected = index === selectedIndex;
       const line = new maps.Polyline({
@@ -329,22 +330,24 @@ export function RouteMap({
 
   const mapSource = useNaver ? "NAVER Maps" : useGoogle ? "Google Maps" : undefined;
   const emptyTitle = !hasCoordinates
-    ? "補齊兩端地點後顯示地圖"
+    ? t("mapMissingPlaces")
     : mapFailed
-      ? "地圖載入失敗"
+      ? t("mapLoadFailed")
       : !isKorea && Boolean(config.google_maps_browser_key) && !javascriptAllowed
-        ? "瀏覽器地圖已安全停用"
-        : "瀏覽器地圖服務尚未啟用";
+        ? t("mapSafelyDisabled")
+        : t("mapNotEnabled");
+  const originName = origin?.title || t("startFallback");
+  const destinationName = destination?.title || t("endFallback");
 
   return <section className={`route-map-card route-map-${variant}`}>
     {useNaver && <Script id="naver-maps-js" src={`https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${encodeURIComponent(config.naver_maps_browser_client_id || "")}`} strategy="afterInteractive" onReady={() => setSdkReady(true)} onError={() => setMapFailure("load")} />}
-    <div className="flex items-center justify-between border-b border-[var(--line)] px-5 py-3.5"><div className="min-w-0"><p className="text-xs font-semibold tracking-[.14em] text-[var(--teal)]">ROUTE MAP{mapSource ? ` · ${mapSource}` : ""}</p><h2 className="mt-1 truncate font-bold">{selectedSegment ? `方案 ${selectedIndex + 1} · 約 ${selectedSegment.duration_minutes} 分鐘` : `${origin?.title || "起點"} → ${destination?.title || "終點"}`}</h2></div><Map size={20} className="shrink-0 text-[var(--teal)]" /></div>
+    <div className="flex items-center justify-between border-b border-[var(--line)] px-5 py-3.5"><div className="min-w-0"><p className="text-xs font-semibold tracking-[.14em] text-[var(--teal)]">{t("mapTitle")}{mapSource ? ` · ${mapSource}` : ""}</p><h2 className="mt-1 truncate font-bold">{selectedSegment ? t("mapOptionSummary", { index: selectedIndex + 1, minutes: selectedSegment.duration_minutes }) : `${originName} → ${destinationName}`}</h2></div><Map size={20} className="shrink-0 text-[var(--teal)]" /></div>
     <div className="route-map-frame overflow-hidden">
       {mapSource && hasCoordinates && !mapFailed
-        ? <div ref={mapElement} role="img" aria-label={`${origin?.title || "起點"}到${destination?.title || "終點"}的${mapSource}路線地圖`} className="absolute inset-0 h-full w-full" />
-        : <div className="route-map-empty absolute inset-0 grid place-items-center p-6 text-center"><div>{mapFailed ? <TriangleAlert size={28} className="mx-auto text-amber-700" /> : <MapPin size={28} className="mx-auto text-[var(--teal)]" />}<p className="mt-3 font-semibold">{emptyTitle}</p><p className="mx-auto mt-2 max-w-xs text-sm leading-6 text-[var(--muted)]">{!hasCoordinates ? "請先替起點與終點選擇正式地點。" : mapFailure === "authorization" ? "Google Maps 尚未允許目前網站網域，請先使用下方精準導航連結。" : mapFailure === "load" ? "地圖服務暫時載入失敗，請先使用下方精準導航連結。" : isKorea ? "請在管理設定啟用 NAVER Dynamic Map。" : Boolean(config.google_maps_browser_key) ? "請由管理員確認 Maps JavaScript API 與正式網域限制後，再開啟安全閘門；仍可使用下方精準導航。" : "請先在管理設定填入瀏覽器地圖 Key，並完成 Maps JavaScript API 與正式網域限制。"}</p></div></div>}
-      {mapSource && hasCoordinates && showSchematic && !mapFailed && <div className="route-map-schematic-notice" role="status">示意連線，非實際路線</div>}
+        ? <div ref={mapElement} role="img" aria-label={t("mapAria", { from: originName, to: destinationName, provider: mapSource })} className="absolute inset-0 h-full w-full" />
+        : <div className="route-map-empty absolute inset-0 grid place-items-center p-6 text-center"><div>{mapFailed ? <TriangleAlert size={28} className="mx-auto text-amber-700" /> : <MapPin size={28} className="mx-auto text-[var(--teal)]" />}<p className="mt-3 font-semibold">{emptyTitle}</p><p className="mx-auto mt-2 max-w-xs text-sm leading-6 text-[var(--muted)]">{!hasCoordinates ? t("mapMissingHint") : mapFailure === "authorization" ? t("mapAuthorizationHint") : mapFailure === "load" ? t("mapLoadHint") : isKorea ? t("mapNaverHint") : Boolean(config.google_maps_browser_key) ? t("mapSafetyHint") : t("mapKeyHint")}</p></div></div>}
+      {mapSource && hasCoordinates && showSchematic && !mapFailed && <div className="route-map-schematic-notice" role="status">{t("mapSchematic")}</div>}
     </div>
-    <div className="border-t border-[var(--line)] px-5 py-3 text-xs text-[var(--muted)]">{selectedSegment ? `${selectedSegment.schedule_mode === "preview" ? "預覽班次" : selectedSegment.schedule_mode === "live" ? "目前路線" : "指定日期班次"} · ${selectedSegment.attribution}` : `${mapSource || "地圖"}只顯示起終點；取得 Provider 路線後才可套用時間`}</div>
+    <div className="border-t border-[var(--line)] px-5 py-3 text-xs text-[var(--muted)]">{showSchematic ? t("mapEndpointsOnly") : selectedSegment ? `${selectedSegment.provider === "manual" ? t("manualTiming") : selectedSegment.status === "estimated" || selectedSegment.provider === "estimate" || String(selectedSegment.schedule_mode) === "estimate" ? t("estimatedTiming") : selectedSegment.schedule_mode === "preview" ? t("nearTerm") : selectedSegment.schedule_mode === "live" ? t("liveRoute") : t("scheduled")} · ${selectedSegment.attribution}` : t("mapEndpointsOnly")}</div>
   </section>;
 }

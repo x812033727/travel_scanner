@@ -1,4 +1,4 @@
-from datetime import UTC, date, datetime, timedelta
+from datetime import UTC, date, datetime, timedelta, tzinfo
 from decimal import Decimal
 from unittest.mock import AsyncMock
 from uuid import uuid4
@@ -8,6 +8,7 @@ import pytest
 from pydantic import ValidationError
 
 from app.models import HotelBookingOption, TravelServiceProduct
+from app.travel_services import hotel_quotes
 from app.travel_services.hotel_options import ready_option
 from app.travel_services.hotel_quotes import (
     ADAPTERS,
@@ -19,7 +20,7 @@ from app.travel_services.hotel_quotes import (
 )
 from app.travel_services.schemas import CatalogConfig, HotelOptionInput, HotelQuotePolicy
 
-NOW = datetime.now(UTC)
+NOW = datetime(2026, 11, 1, 12, tzinfo=UTC)
 QUERY = HotelQuoteRequest(
     check_in=date(2026, 11, 11),
     check_out=date(2026, 11, 13),
@@ -27,6 +28,18 @@ QUERY = HotelQuoteRequest(
     currency="TWD",
     booker_country="TW",
 )
+
+
+@pytest.fixture(autouse=True)
+def frozen_quote_clock(monkeypatch: pytest.MonkeyPatch) -> None:
+    # Collection can precede this module's tests by more than the two-minute TTL.
+    # Keep quote generation and the service's validity/quota clocks consistent.
+    class FrozenDateTime(datetime):
+        @classmethod
+        def now(cls, tz: tzinfo | None = None) -> datetime:
+            return NOW.astimezone(tz) if tz is not None else NOW.replace(tzinfo=None)
+
+    monkeypatch.setattr(hotel_quotes, "datetime", FrozenDateTime)
 
 
 def rate(provider="booking", **overrides):
@@ -164,6 +177,30 @@ async def test_without_adapter_or_permission_never_calls_provider(monkeypatch):
     adapter.search.assert_not_called()
     assert await redis.dbsize() == 0
     await redis.aclose()
+
+
+@pytest.mark.parametrize("expires_after,expected", [(-1, "no_availability"), (120, "available")])
+async def test_search_quote_validity_uses_fixed_clock(monkeypatch, expires_after, expected):
+    redis = fakeredis.aioredis.FakeRedis()
+    adapter = AsyncMock()
+    adapter.search.return_value = [rate(expires_at=NOW + timedelta(seconds=expires_after))]
+    monkeypatch.setitem(ADAPTERS, "booking", adapter)
+    policy = HotelQuotePolicy(
+        enabled=True,
+        comparison_allowed=True,
+        terms_url="https://official.example.com/terms",
+        daily_limit=1,
+    )
+    try:
+        assert hotel_quotes.datetime.now(UTC) == NOW
+        result = await search_quotes(
+            hotel(), QUERY, "ja", config(hotel_quote_policies={"booking": policy}), redis
+        )
+        assert result["status"] == expected
+        assert len(result["quotes"]) == int(expires_after > 0)
+        adapter.search.assert_awaited_once()
+    finally:
+        await redis.aclose()
 
 
 async def test_partial_failure_quota_and_identity_isolation(monkeypatch):

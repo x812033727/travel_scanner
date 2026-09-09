@@ -3,6 +3,7 @@
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { ApiError, api } from "@/lib/api";
+import { adminReviewCopy, type CatalogReviewScope } from "@/lib/admin-review-copy";
 import { safeExternalHref } from "@/lib/navigation";
 
 type Kind = "hotspot" | "food" | "merchant";
@@ -10,6 +11,7 @@ type Action = "approve" | "reject" | "keep_pending";
 type Mode = "review_pending" | "discover_new";
 type Run = {
   id: string;
+  scope?: CatalogReviewScope;
   version: number;
   mode: Mode;
   status: "queued" | "running" | "completed" | "partial" | "failed" | "cancelled";
@@ -43,6 +45,7 @@ type Item = {
   error_code?: string | null;
 };
 type Overview = {
+  active_run?: { id: string; scope: CatalogReviewScope; status: string } | null;
   configured: boolean;
   model: string;
   daily_call_limit: number;
@@ -54,10 +57,9 @@ type Overview = {
 };
 type ItemPage = { items: Item[]; total: number; page: number; page_size: number; has_more: boolean };
 type Outcome = { id: string; action: string; status: "applied" | "skipped"; reason: string };
-type Confirmation = { runId: string; version: number; action: Action; items: Item[]; key: string };
+type Confirmation = { runId: string; scope: CatalogReviewScope; version: number; action: Action; items: Item[]; key: string };
 
 const ROOT = "/admin/catalog-review";
-const REQUESTED_COUNTS = { hotspot: 40, food: 20, merchant: 40 };
 const ACTIONS: Action[] = ["approve", "reject", "keep_pending"];
 const KINDS: Kind[] = ["hotspot", "food", "merchant"];
 const COUNT_KEYS = ["total", "assessed", "approved", "rejected", "needs_review", "created", "duplicates", "failed", "applied"] as const;
@@ -66,15 +68,28 @@ const buttonClass = `${buttonBase} bg-white`;
 const primaryClass = `${buttonBase} bg-[var(--teal)] text-white`;
 const isRunning = (run: Run | null) => run?.status === "queued" || run?.status === "running";
 
+function scopedUrl(path: string, scope?: CatalogReviewScope) {
+  return scope ? `${path}${path.includes("?") ? "&" : "?"}scope=${scope}` : path;
+}
+
 function eligible(item: Item, action: Action) {
   return item.status === "assessed" && !item.applied_action
     && (item.allowed_actions ?? []).includes(action)
     && (action !== "approve" || (item.gaps ?? []).length === 0);
 }
 
-export function AdminCatalogReviewPanel() {
+type PanelProps = { scope?: Exclude<CatalogReviewScope, "all"> };
+
+export function AdminCatalogReviewPanel({ scope }: PanelProps = {}) {
+  // Scope changes must discard confirmations, selected rows and pending requests.
+  return <CatalogReviewContent key={scope ?? "history"} scope={scope} />;
+}
+
+function CatalogReviewContent({ scope }: PanelProps) {
   const t = useTranslations("catalogReview");
   const locale = useLocale();
+  const copy = adminReviewCopy(locale);
+  const overviewUrl = scopedUrl(ROOT, scope);
   const [overview, setOverview] = useState<Overview | null>(null);
   const [runId, setRunId] = useState<string | null>(null);
   const [run, setRun] = useState<Run | null>(null);
@@ -102,23 +117,24 @@ export function AdminCatalogReviewPanel() {
 
   useEffect(() => {
     const controller = new AbortController();
-    void api<Overview>(ROOT, { signal: controller.signal })
+    void api<Overview>(overviewUrl, { signal: controller.signal })
       .then((next) => {
         if (controller.signal.aborted) return;
         setOverview(next);
-        setRunId((current) => current ?? next.runs?.[0]?.id ?? null);
+        setRunId((current) => current ?? (next.runs?.some((item) => item.id === next.active_run?.id)
+          ? next.active_run!.id : next.runs?.[0]?.id) ?? null);
       })
       .catch((reason: Error) => { if (!controller.signal.aborted) setError(reason.message); })
       .finally(() => { if (!controller.signal.aborted) setLoading(false); });
     return () => controller.abort();
-  }, [refresh]);
+  }, [refresh, overviewUrl]);
 
   useEffect(() => {
     if (!runId) return;
     const controller = new AbortController();
     void Promise.all([
-      api<Run>(`${ROOT}/runs/${runId}`, { signal: controller.signal }),
-      api<ItemPage>(`${ROOT}/runs/${runId}/items?page=${page}&page_size=30`, { signal: controller.signal }),
+      api<Run>(scopedUrl(`${ROOT}/runs/${runId}`, scope), { signal: controller.signal }),
+      api<ItemPage>(scopedUrl(`${ROOT}/runs/${runId}/items?page=${page}&page_size=30`, scope), { signal: controller.signal }),
     ]).then(([next, items]) => {
       if (controller.signal.aborted) return;
       setRun(next);
@@ -128,7 +144,7 @@ export function AdminCatalogReviewPanel() {
       if (!controller.signal.aborted) setError(reason.message);
     }).finally(() => { if (!controller.signal.aborted) setItemsLoading(false); });
     return () => controller.abort();
-  }, [runId, page, refresh]);
+  }, [runId, page, refresh, scope]);
 
   useEffect(() => {
     if (!runId || !active || busy || confirmation || itemsLoading) return;
@@ -137,14 +153,14 @@ export function AdminCatalogReviewPanel() {
     const poll = async () => {
       try {
         // Schedule only after the previous request completes, including slow responses.
-        const next = await api<Run>(`${ROOT}/runs/${runId}`, { signal: controller.signal });
+        const next = await api<Run>(scopedUrl(`${ROOT}/runs/${runId}`, scope), { signal: controller.signal });
         if (controller.signal.aborted) return;
-        const items = await api<ItemPage>(`${ROOT}/runs/${runId}/items?page=${page}&page_size=30`, { signal: controller.signal });
+        const items = await api<ItemPage>(scopedUrl(`${ROOT}/runs/${runId}/items?page=${page}&page_size=30`, scope), { signal: controller.signal });
         if (controller.signal.aborted) return;
         let nextOverview: Overview | null = null;
         if (!isRunning(next)) {
           try {
-            nextOverview = await api<Overview>(ROOT, { signal: controller.signal });
+            nextOverview = await api<Overview>(overviewUrl, { signal: controller.signal });
           } catch (reason) {
             if (controller.signal.aborted) return;
             // Preserve the final assessment even if capabilities cannot be refreshed.
@@ -169,7 +185,7 @@ export function AdminCatalogReviewPanel() {
     };
     timer = setTimeout(poll, 3_000);
     return () => { controller.abort(); clearTimeout(timer); };
-  }, [runId, page, active, busy, confirmation, itemsLoading, action]);
+  }, [runId, page, active, busy, confirmation, itemsLoading, action, scope, overviewUrl]);
 
   useEffect(() => {
     if (confirmation) confirmRef.current?.focus();
@@ -182,14 +198,16 @@ export function AdminCatalogReviewPanel() {
       ? history.map((item) => item.id === run.id ? run : item)
       : [run, ...history]
     : history;
-  const priorReview = run?.mode === "review_pending" && run.review_complete
-    ? run : runs.find((item) => item.mode === "review_pending" && item.review_complete);
+  const priorReview = runs.find((item) => item.mode === "review_pending" && item.review_complete && item.scope === scope);
   const items = data?.items ?? [];
   const eligibleItems = items.filter((item) => eligible(item, action));
   const selectedItems = eligibleItems.filter((item) => selected.has(item.id));
-  const canApply = Boolean(run && !active && !itemsLoading);
-  const canReview = Boolean(overview?.configured && overview.can_start_review);
-  const canDiscover = Boolean(overview?.configured && overview.can_start_discovery && priorReview);
+  const canApply = Boolean(run && (!scope || run.scope === scope) && !active && !itemsLoading);
+  const canReview = Boolean(scope && overview?.configured && overview.can_start_review);
+  const canDiscover = Boolean(scope && overview?.configured && overview.can_start_discovery && priorReview);
+  const requestedCounts = scope === "hotspots" ? { hotspot: 40, food: 0, merchant: 0 } : { hotspot: 0, food: 20, merchant: 40 };
+  const targetCount = scope === "hotspots" ? 40 : 60;
+  const visibleKinds: Kind[] = scope === "hotspots" ? ["hotspot"] : scope === "foods" ? ["food", "merchant"] : KINDS;
   const label = (group: string, value: string) => t.has(`${group}.${value}`) ? t(`${group}.${value}`) : value;
   const knownError = (code?: string | null) => code && t.has(`errors.${code}`) ? t(`errors.${code}`) : null;
   const itemReason = (item: Item) => item.status === "error"
@@ -221,11 +239,12 @@ export function AdminCatalogReviewPanel() {
   }
 
   async function start(mode: Mode) {
+    if (!scope) return;
     if (mode === "review_pending" ? !canReview : !canDiscover) return;
     const controller = beginMutation();
     if (!controller) return;
     const payload = {
-      mode, requested_counts: REQUESTED_COUNTS, max_calls: 80,
+      mode, scope, requested_counts: requestedCounts, max_calls: 80,
       ...(mode === "discover_new" ? { prior_review_run_id: priorReview!.id } : {}),
     };
     const signature = JSON.stringify(payload);
@@ -244,11 +263,11 @@ export function AdminCatalogReviewPanel() {
   }
 
   async function resume() {
-    if (!run?.can_resume) return;
+    if (!run?.can_resume || (scope && run.scope !== scope)) return;
     const controller = beginMutation();
     if (!controller) return;
     try {
-      const next = await api<Run>(`${ROOT}/runs/${run.id}/resume`, { method: "POST", signal: controller.signal });
+      const next = await api<Run>(scopedUrl(`${ROOT}/runs/${run.id}/resume`, run.scope ?? "all"), { method: "POST", signal: controller.signal });
       if (controller.signal.aborted) return;
       setRun(next); refreshView();
     } catch (reason) {
@@ -267,7 +286,7 @@ export function AdminCatalogReviewPanel() {
     const controller = beginMutation();
     if (!controller) return;
     try {
-      const result = await api<{ run: Run; outcomes: Outcome[]; updated: number }>(`${ROOT}/runs/${confirmation.runId}/apply`, {
+      const result = await api<{ run: Run; outcomes: Outcome[]; updated: number }>(scopedUrl(`${ROOT}/runs/${confirmation.runId}/apply`, confirmation.scope), {
         method: "POST", signal: controller.signal,
         headers: { "Idempotency-Key": confirmation.key },
         body: JSON.stringify({ item_ids: confirmation.items.map((item) => item.id), action: confirmation.action, expected_version: confirmation.version }),
@@ -291,32 +310,35 @@ export function AdminCatalogReviewPanel() {
       {error && !confirmation && <p role="alert" className="rounded-2xl bg-red-50 p-4 text-sm text-red-900">{error}</p>}
       {reconnecting && <p role="status" className="rounded-2xl bg-amber-50 p-4 text-sm text-amber-900">{t("reconnecting")}</p>}
       {loading && <p role="status">{t("loading")}</p>}
-      <section aria-label={t("workflow")} className="grid gap-4 lg:grid-cols-2">
+      {!scope && <p className="rounded-2xl bg-[var(--paper)] p-4 text-sm">{copy.historyOnly}</p>}
+      {scope && <section aria-label={t("workflow")} className="grid gap-4 lg:grid-cols-2">
         <article className="rounded-3xl border border-[var(--line)] bg-white p-5">
           <p className="text-xs font-bold text-[var(--teal)]">{t("step", { number: 1 })}</p>
           <h2 className="mt-2 text-xl font-bold">{t("reviewTitle")}</h2>
           <p className="mt-2 text-sm text-[var(--muted)]">{t("reviewDescription")}</p>
-          <dl className="my-4 grid grid-cols-3 gap-2 text-sm">{KINDS.map((kind) => <div key={kind}><dt className="text-[var(--muted)]">{t(`kinds.${kind}`)}</dt><dd className="mt-1 text-xl font-bold">{overview?.pending_counts?.[kind] ?? "—"}</dd></div>)}</dl>
+          <dl className="my-4 grid grid-cols-3 gap-2 text-sm">{visibleKinds.map((kind) => <div key={kind}><dt className="text-[var(--muted)]">{t(`kinds.${kind}`)}</dt><dd className="mt-1 text-xl font-bold">{overview?.pending_counts?.[kind] ?? "—"}</dd></div>)}</dl>
           <button type="button" disabled={busy || loading || !canReview} onClick={() => void start("review_pending")} className={primaryClass}>{t("startReview")}</button>
         </article>
         <article className="rounded-3xl border border-[var(--line)] bg-white p-5">
           <p className="text-xs font-bold text-[var(--teal)]">{t("step", { number: 2 })}</p>
-          <h2 className="mt-2 text-xl font-bold">{t("discoveryTitle")}</h2>
+          <h2 className="mt-2 text-xl font-bold">{copy.discovery.replace("{count}", String(targetCount))}</h2>
           <p className="mt-2 text-sm text-[var(--muted)]">{t("discoveryDescription")}</p>
-          <p className="my-4 text-sm font-semibold">{t("requestedCounts")}</p>
-          <button type="button" disabled={busy || loading || !canDiscover} onClick={() => void start("discover_new")} className={primaryClass}>{t("startDiscovery")}</button>
+          <p className="my-4 text-sm font-semibold">{scope === "hotspots" ? copy.hotspotCounts : copy.foodCounts}</p>
+          <button type="button" disabled={busy || loading || !canDiscover} onClick={() => void start("discover_new")} className={primaryClass}>{copy.startDiscovery.replace("{count}", String(targetCount))}</button>
           {!priorReview && <p className="mt-3 text-xs text-[var(--muted)]">{t("reviewFirst")}</p>}
         </article>
-      </section>
+      </section>}
       <section aria-label={t("availability")} className="rounded-2xl bg-[var(--paper)] p-4 text-sm">
         <p>{t("provider", { model: overview?.model || "—" })}</p>
         <p className="mt-1 text-[var(--muted)]">{t("callLimits", { daily: overview?.daily_call_limit ?? "—", run: 80 })}</p>
+        <p className="mt-1 text-[var(--muted)]">{copy.sharedQuota}</p>
+        {scope && overview?.active_run && overview.active_run.scope !== scope && <p role="status" className="mt-2 text-[var(--ink)]">{copy.activeElsewhere.replace("{scope}", copy.scopes[overview.active_run.scope])} <a href={`/${locale}/admin/catalog-review`} className="inline-flex min-h-11 items-center underline">{copy.openHistory}</a></p>}
         {overview && !overview.configured && <p className="mt-2 text-amber-800">{t("notConfigured")}</p>}
         {(overview?.blocking_reasons ?? []).length > 0 && <ul className="mt-2 list-disc pl-5 text-amber-800">{overview!.blocking_reasons.map((reason, index) => <li key={index}>{knownError(reason) ?? reason}</li>)}</ul>}
       </section>
       <section className="rounded-3xl border border-[var(--line)] bg-white p-5">
         <div className="flex flex-wrap items-center justify-between gap-3"><h2 className="text-xl font-bold">{t("history")}</h2><button type="button" disabled={busy || itemsLoading} onClick={refreshView} className={buttonClass}>{t("refresh")}</button></div>
-        {runs.length > 0 ? <select aria-label={t("selectRun")} value={runId ?? ""} disabled={busy} onChange={(event) => selectRun(event.target.value)} className="mt-4 min-h-11 w-full rounded-xl border border-[var(--line)] bg-white px-3">{runs.map((item) => <option key={item.id} value={item.id}>{dateLabel(item.created_at)} · {label("modes", item.mode)} · {label("runStatus", item.status)}</option>)}</select> : <p className="mt-3 text-sm text-[var(--muted)]">{t("noRuns")}</p>}
+        {runs.length > 0 ? <select aria-label={t("selectRun")} value={runId ?? ""} disabled={busy} onChange={(event) => selectRun(event.target.value)} className="mt-4 min-h-11 w-full rounded-xl border border-[var(--line)] bg-white px-3">{runs.map((item) => <option key={item.id} value={item.id}>{dateLabel(item.created_at)} · {copy.scopes[item.scope ?? "all"]} · {label("modes", item.mode)} · {label("runStatus", item.status)}</option>)}</select> : <p className="mt-3 text-sm text-[var(--muted)]">{t("noRuns")}</p>}
         {run && <div className="mt-5 border-t border-[var(--line)] pt-5">
           <div className="flex flex-wrap items-center justify-between gap-3"><p className="font-bold">{label("modes", run.mode)} · <span role="status">{label("runStatus", run.status)}</span></p>{run.can_resume && <button type="button" disabled={busy} onClick={() => void resume()} className={buttonClass}>{t("resume")}</button>}</div>
           <p className="mt-2 text-sm text-[var(--muted)]">{t("provider", { model: run.model })} · {label("phases", run.phase)}</p>
@@ -333,7 +355,7 @@ export function AdminCatalogReviewPanel() {
           <label className="text-sm font-semibold">{t("batchAction")}<select value={action} disabled={busy || Boolean(confirmation)} onChange={(event) => { setAction(event.target.value as Action); setSelected(new Set()); }} className="ml-2 min-h-11 rounded-xl border border-[var(--line)] bg-white px-3">{ACTIONS.map((value) => <option key={value} value={value}>{t(`actions.${value}`)}</option>)}</select></label>
           <button type="button" disabled={busy || !canApply || !eligibleItems.length} onClick={() => setSelected(new Set(eligibleItems.map((item) => item.id)))} className={buttonClass}>{t("selectPage", { count: eligibleItems.length })}</button>
           <button type="button" disabled={busy || !selected.size} onClick={() => setSelected(new Set())} className={buttonClass}>{t("clearSelection")}</button>
-          <button ref={previewRef} type="button" disabled={busy || !canApply || !selectedItems.length} onClick={() => { if (run && canApply) setConfirmation({ runId: run.id, version: run.version, action, items: selectedItems, key: crypto.randomUUID() }); }} className={primaryClass}>{t("previewAction", { count: selectedItems.length })}</button>
+          <button ref={previewRef} type="button" disabled={busy || !canApply || !selectedItems.length} onClick={() => { if (run && canApply) setConfirmation({ runId: run.id, scope: run.scope ?? "all", version: run.version, action, items: selectedItems, key: crypto.randomUUID() }); }} className={primaryClass}>{t("previewAction", { count: selectedItems.length })}</button>
         </div>
         {itemsLoading && <p role="status" className="text-sm">{t("loading")}</p>}
         <table className="block w-full rounded-2xl border border-[var(--line)] bg-white text-left text-sm lg:table">

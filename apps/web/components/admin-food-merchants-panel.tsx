@@ -3,7 +3,10 @@
 import { useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { api } from "@/lib/api";
+import { MERCHANT_STYLES } from "@/lib/foods";
+import { AdminMerchantStyles } from "./admin-merchant-styles";
 import { naverMapSearchUrl } from "@/lib/naver-map";
+import { safeExternalHref } from "@/lib/navigation";
 import {
   LocalizedNameFields,
   completeNames,
@@ -31,6 +34,19 @@ type MerchantSource = {
   distinction: string | null;
   is_current: boolean;
   last_verified_at?: string;
+};
+type PlatformStatus = "verified" | "not_found" | "ambiguous" | "disabled";
+type MerchantPlatformLink = {
+  id?: string;
+  provider: string;
+  provider_label: string;
+  canonical_url: string | null;
+  localized_urls: Partial<Record<"zh-TW" | "zh-CN" | "en" | "ja" | "ko", string>>;
+  status: PlatformStatus;
+  checked_at?: string;
+  checked_by_user_id?: string | null;
+  review_note: string | null;
+  country_mismatch?: boolean;
 };
 
 type Merchant = {
@@ -63,6 +79,8 @@ type Merchant = {
   categories: { id: string; slug: string; name: string; is_primary: boolean; source: string }[];
   foods: { id: string; slug: string; name: string }[];
   sources: MerchantSource[];
+  platform_link: MerchantPlatformLink | null;
+  expected_platform: { provider: string; label: string };
 };
 
 export type MerchantTaxonomyFilter = "missing_area" | "missing_category";
@@ -94,6 +112,16 @@ type BatchCandidateResult = {
   merchant: Merchant;
   response: MapCandidateResponse | null;
   error?: string;
+};
+
+const RESERVATION_PLATFORMS: Record<string, { provider: string; label: string }> = {
+  JP: { provider: "tablecheck", label: "TableCheck" },
+  KR: { provider: "catchtable_global", label: "Catchtable Global" },
+  TW: { provider: "eztable", label: "EZTABLE" },
+  SG: { provider: "chope", label: "Chope" },
+  HK: { provider: "openrice", label: "OpenRice" },
+  TH: { provider: "hungry_hub", label: "Hungry Hub" },
+  VN: { provider: "pasgo", label: "PasGo" },
 };
 
 function nullableNumber(value: string): number | null {
@@ -168,6 +196,8 @@ function blankMerchant(): Merchant {
         is_current: true,
       },
     ],
+    platform_link: null,
+    expected_platform: { provider: "", label: "" },
   };
 }
 
@@ -181,11 +211,17 @@ function orderedCategorySlugs(merchant: Merchant): string[] {
 
 export function AdminFoodMerchantsPanel({
   initialTaxonomy = "",
+  initialStatus = "",
 }: {
   initialTaxonomy?: MerchantTaxonomyFilter | "";
+  initialStatus?: string;
 } = {}) {
   const t = useTranslations("foodAdmin");
   const ta = useTranslations("admin");
+  const ts = useTranslations("foods.styles");
+  const [filterStyle, setFilterStyle] = useState("");
+  const [reviewStatus, setReviewStatus] = useState(initialStatus);
+  const [styleStatus, setStyleStatus] = useState("pending");
   const [cities, setCities] = useState<FoodCity[]>([]);
   const [categories, setCategories] = useState<AdminCategory[]>([]);
   const [filterArea, setFilterArea] = useState("");
@@ -198,8 +234,11 @@ export function AdminFoodMerchantsPanel({
   const [destination, setDestination] = useState("");
   const [mapStatus, setMapStatus] = useState("");
   const [officialData, setOfficialData] = useState("");
+  const [platform, setPlatform] = useState("");
+  const [platformStatus, setPlatformStatus] = useState("");
+  const [countryCode, setCountryCode] = useState("");
   const [query, setQuery] = useState("");
-  const filterSignature = [destination, filterArea, filterCategory, mapStatus, officialData, query, taxonomy].join("|");
+  const filterSignature = [destination, countryCode, filterArea, filterCategory, filterStyle, styleStatus, reviewStatus, mapStatus, officialData, platform, platformStatus, query, taxonomy].join("|");
   // The page number is only meaningful for the filters it was chosen under:
   // narrowing the list while on page 3 must not fetch page 3 of the new,
   // shorter result, so a changed filter silently reads as page 1.
@@ -226,11 +265,16 @@ export function AdminFoodMerchantsPanel({
 
   const load = useCallback(async () => {
     const params = new URLSearchParams({ limit: String(PAGE_SIZE), page: String(page) });
+    if (reviewStatus) params.set("status", reviewStatus);
     if (destination.trim()) params.set("destination_id", destination.trim());
+    if (countryCode) params.set("country_code", countryCode);
     if (mapStatus) params.set("map_status", mapStatus);
     if (officialData) params.set("official_data", officialData);
+    if (platform) params.set("platform", platform);
+    if (platformStatus) params.set("platform_status", platformStatus);
     if (filterArea) params.set("area_slug", filterArea);
     if (filterCategory) params.set("category", filterCategory);
+    if (filterStyle) { params.set("style", filterStyle); params.set("style_status", styleStatus); }
     if (taxonomy) params.set("taxonomy", taxonomy);
     if (query.trim()) params.set("q", query.trim());
     try {
@@ -240,17 +284,22 @@ export function AdminFoodMerchantsPanel({
     } catch (reason) {
       setMessage((reason as Error).message);
     }
-  }, [destination, filterArea, filterCategory, mapStatus, officialData, query, taxonomy, page]);
+  }, [destination, countryCode, filterArea, filterCategory, filterStyle, styleStatus, reviewStatus, mapStatus, officialData, platform, platformStatus, query, taxonomy, page]);
 
   useEffect(() => {
     const params = new URLSearchParams({ limit: String(PAGE_SIZE), page: String(page) });
+    if (reviewStatus) params.set("status", reviewStatus);
     if (destination.trim()) params.set("destination_id", destination.trim());
+    if (countryCode) params.set("country_code", countryCode);
     if (mapStatus) params.set("map_status", mapStatus);
     if (officialData) params.set("official_data", officialData);
+    if (platform) params.set("platform", platform);
+    if (platformStatus) params.set("platform_status", platformStatus);
     if (filterArea) params.set("area_slug", filterArea);
     if (filterCategory) params.set("category", filterCategory);
     if (taxonomy) params.set("taxonomy", taxonomy);
     if (query.trim()) params.set("q", query.trim());
+    if (filterStyle) { params.set("style", filterStyle); params.set("style_status", styleStatus); }
     void api<MerchantResponse>(`/admin/foods/merchants?${params}`)
       .then((response) => {
         setData(normalise(response));
@@ -258,7 +307,7 @@ export function AdminFoodMerchantsPanel({
         setBatchCandidates([]);
       })
       .catch((reason: Error) => setMessage(reason.message));
-  }, [destination, filterArea, filterCategory, mapStatus, officialData, query, taxonomy, page]);
+  }, [destination, countryCode, filterArea, filterCategory, filterStyle, styleStatus, reviewStatus, mapStatus, officialData, platform, platformStatus, query, taxonomy, page]);
 
   useEffect(() => {
     loadCities()
@@ -490,7 +539,7 @@ export function AdminFoodMerchantsPanel({
     setLoading(true);
     setSaveError("");
     try {
-      await api(editing.id ? `/admin/foods/merchants/${editing.id}` : "/admin/foods/merchants", {
+      const savedMerchant = await api<Merchant>(editing.id ? `/admin/foods/merchants/${editing.id}` : "/admin/foods/merchants", {
         method: editing.id ? "PATCH" : "POST",
         body: JSON.stringify({
           ...(editing.id ? {} : { slug: editing.slug }),
@@ -532,6 +581,18 @@ export function AdminFoodMerchantsPanel({
             : {}),
         }),
       });
+      if (editing.platform_link) {
+        await api(`/admin/foods/merchants/${savedMerchant.id}/platform-link`, {
+          method: "PUT",
+          body: JSON.stringify({
+            provider: editing.platform_link.provider,
+            status: editing.platform_link.status,
+            canonical_url: editing.platform_link.canonical_url,
+            localized_urls: editing.platform_link.localized_urls,
+            review_note: editing.platform_link.review_note,
+          }),
+        });
+      }
       setMessage(editing.id ? ta("foodMerchantsPanel.locationSaved") : t("merchants.created"));
       setEditing(null);
       setCandidate(null);
@@ -616,6 +677,20 @@ export function AdminFoodMerchantsPanel({
             {ta("foodMerchantsPanel.description")}
           </p>
         </div>
+        <select aria-label={t("reviewStatus")} value={reviewStatus} onChange={(event) => setReviewStatus(event.target.value)}
+          className="min-h-11 rounded-xl border px-3">
+          <option value="">{t("allStatuses")}</option>
+          {(["pending", "approved", "rejected", "disabled"] as const).map((value) => <option key={value} value={value}>{t(`statuses.${value}`)}</option>)}
+        </select>
+        <select aria-label={ts("label")} value={filterStyle} onChange={(event) => setFilterStyle(event.target.value)}
+          className="min-h-11 rounded-xl border px-3">
+          <option value="">{ts("all")}</option>
+          {MERCHANT_STYLES.map((style) => <option key={style} value={style}>{ts(style)}</option>)}
+        </select>
+        {filterStyle && <select aria-label={ts("status")} value={styleStatus} onChange={(event) => setStyleStatus(event.target.value)}
+          className="min-h-11 rounded-xl border px-3">
+          {(["pending", "approved", "rejected"] as const).map((status) => <option key={status} value={status}>{ts(status)}</option>)}
+        </select>}
         <input
           aria-label={ta("foodMerchantsPanel.searchLabel")}
           value={query}
@@ -637,6 +712,17 @@ export function AdminFoodMerchantsPanel({
             <option key={city.id} value={city.id}>
               {city.name}
             </option>
+          ))}
+        </select>
+        <select
+          aria-label={ta("foodMerchantsPanel.countryFilter")}
+          value={countryCode}
+          onChange={(event) => setCountryCode(event.target.value)}
+          className="h-11 rounded-xl border px-3"
+        >
+          <option value="">{ta("foodMerchantsPanel.countryAll")}</option>
+          {Object.entries(RESERVATION_PLATFORMS).map(([code, item]) => (
+            <option key={code} value={code}>{code} · {item.label}</option>
           ))}
         </select>
         <select
@@ -697,6 +783,30 @@ export function AdminFoodMerchantsPanel({
           <option value="">{ta("foodMerchantsPanel.officialAll")}</option>
           <option value="filled">{ta("foodMerchantsPanel.officialFilled")}</option>
           <option value="missing">{ta("foodMerchantsPanel.officialMissing")}</option>
+        </select>
+        <select
+          aria-label={ta("foodMerchantsPanel.platformFilter")}
+          value={platform}
+          onChange={(event) => setPlatform(event.target.value)}
+          className="h-11 rounded-xl border px-3"
+        >
+          <option value="">{ta("foodMerchantsPanel.platformAll")}</option>
+          {Object.values(RESERVATION_PLATFORMS).map((item) => (
+            <option key={item.provider} value={item.provider}>{item.label}</option>
+          ))}
+        </select>
+        <select
+          aria-label={ta("foodMerchantsPanel.platformStatusFilter")}
+          value={platformStatus}
+          onChange={(event) => setPlatformStatus(event.target.value)}
+          className="h-11 rounded-xl border px-3"
+        >
+          <option value="">{ta("foodMerchantsPanel.platformStatusAll")}</option>
+          <option value="unreviewed">{ta("foodMerchantsPanel.platformUnreviewed")}</option>
+          <option value="verified">{ta("foodMerchantsPanel.platformVerified")}</option>
+          <option value="not_found">{ta("foodMerchantsPanel.platformNotFound")}</option>
+          <option value="ambiguous">{ta("foodMerchantsPanel.platformAmbiguous")}</option>
+          <option value="disabled">{ta("foodMerchantsPanel.platformDisabled")}</option>
         </select>
         <button
           type="button"
@@ -873,6 +983,11 @@ export function AdminFoodMerchantsPanel({
                     <span className="block text-xs text-[var(--muted)]">
                       {ta("foodMerchantsPanel.sourcesLine", { direct: directSources, context: merchant.sources.length - directSources })}
                     </span>
+                    <span className="mt-1 block text-xs font-semibold text-[var(--teal)]">
+                      {merchant.platform_link
+                        ? `${merchant.platform_link.provider_label} · ${ta(`foodMerchantsPanel.platformStatus.${merchant.platform_link.status}`)}`
+                        : ta("foodMerchantsPanel.platformUnreviewed")}
+                    </span>
                   </td>
                   <td className="p-3">
                     {merchant.review_status}
@@ -940,6 +1055,8 @@ export function AdminFoodMerchantsPanel({
                 {ta("foodMerchantsPanel.close")}
               </button>
             </div>
+            {editing.id ? <AdminMerchantStyles key={editing.id} merchantId={editing.id} />
+              : <p className="mt-4 text-sm text-[var(--muted)]">{ts("createFirst")}</p>}
             <div className="mt-5 grid gap-4 md:grid-cols-2">
               <label className="text-sm font-semibold">
                 {ta("foodMerchantsPanel.name")}
@@ -996,6 +1113,10 @@ export function AdminFoodMerchantsPanel({
                       country_code: city?.country_code ?? editing.country_code,
                       area: null,
                       foods: countryChanged ? [] : editing.foods,
+                      platform_link: countryChanged ? null : editing.platform_link,
+                      expected_platform: countryChanged && city
+                        ? RESERVATION_PLATFORMS[city.country_code]
+                        : editing.expected_platform,
                     });
                   }}
                   className="mt-1 h-11 w-full rounded-xl border px-3"
@@ -1257,6 +1378,120 @@ export function AdminFoodMerchantsPanel({
                   </label>
                 ))}
               </div>
+            </fieldset>
+            <fieldset className="mt-5 rounded-2xl border border-[var(--teal)] bg-[var(--teal-soft)] p-4">
+              <legend className="px-1 font-bold">{ta("foodMerchantsPanel.platformEditorTitle")}</legend>
+              <p className="text-xs leading-5 text-[var(--muted)]">
+                {ta("foodMerchantsPanel.platformEditorHelp")}
+              </p>
+              {!editing.platform_link ? (
+                <button
+                  type="button"
+                  disabled={!RESERVATION_PLATFORMS[editing.country_code]}
+                  onClick={() => {
+                    const expected = RESERVATION_PLATFORMS[editing.country_code];
+                    if (!expected) return;
+                    setEditing({
+                      ...editing,
+                      expected_platform: expected,
+                      platform_link: {
+                        provider: expected.provider,
+                        provider_label: expected.label,
+                        canonical_url: null,
+                        localized_urls: {},
+                        status: "not_found",
+                        review_note: null,
+                      },
+                    });
+                  }}
+                  className="mt-3 min-h-11 rounded-xl border border-[var(--teal)] bg-white px-4 font-semibold text-[var(--teal)] disabled:opacity-40"
+                >
+                  {ta("foodMerchantsPanel.platformStartReview", {
+                    provider: RESERVATION_PLATFORMS[editing.country_code]?.label ?? "—",
+                  })}
+                </button>
+              ) : (
+                <div className="mt-3 grid gap-3 md:grid-cols-2">
+                  {editing.platform_link.country_mismatch && (
+                    <p role="alert" className="rounded-xl bg-red-50 p-3 text-sm font-semibold text-red-800 md:col-span-2">
+                      {ta("foodMerchantsPanel.platformCountryMismatch")}
+                    </p>
+                  )}
+                  <label className="text-sm font-semibold">
+                    {ta("foodMerchantsPanel.platformProvider")}
+                    <input readOnly value={editing.platform_link.provider_label} className="mt-1 h-11 w-full rounded-xl border bg-white px-3" />
+                  </label>
+                  <label className="text-sm font-semibold">
+                    {ta("foodMerchantsPanel.platformReviewStatus")}
+                    <select
+                      value={editing.platform_link.status}
+                      onChange={(event) => setEditing({
+                        ...editing,
+                        platform_link: { ...editing.platform_link!, status: event.target.value as PlatformStatus },
+                      })}
+                      className="mt-1 h-11 w-full rounded-xl border bg-white px-3"
+                    >
+                      <option value="verified">{ta("foodMerchantsPanel.platformVerified")}</option>
+                      <option value="not_found">{ta("foodMerchantsPanel.platformNotFound")}</option>
+                      <option value="ambiguous">{ta("foodMerchantsPanel.platformAmbiguous")}</option>
+                      <option value="disabled">{ta("foodMerchantsPanel.platformDisabled")}</option>
+                    </select>
+                  </label>
+                  <label className="text-sm font-semibold md:col-span-2">
+                    {ta("foodMerchantsPanel.platformCanonicalUrl")}
+                    <span className="mt-1 flex gap-2">
+                      <input
+                        value={editing.platform_link.canonical_url ?? ""}
+                        onChange={(event) => setEditing({
+                          ...editing,
+                          platform_link: { ...editing.platform_link!, canonical_url: event.target.value || null },
+                        })}
+                        placeholder="https://"
+                        className="h-11 min-w-0 flex-1 rounded-xl border bg-white px-3"
+                      />
+                      {safeExternalHref(editing.platform_link.canonical_url) && (
+                        <a href={safeExternalHref(editing.platform_link.canonical_url)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center rounded-xl border bg-white px-3 font-semibold">
+                          {ta("foodMerchantsPanel.platformOpenCheck")}
+                        </a>
+                      )}
+                    </span>
+                  </label>
+                  {(["zh-TW", "zh-CN", "en", "ja", "ko"] as const).map((locale) => (
+                    <label key={locale} className="text-xs font-semibold">
+                      {ta("foodMerchantsPanel.platformLocalizedUrl", { locale })}
+                      <input
+                        value={editing.platform_link?.localized_urls[locale] ?? ""}
+                        onChange={(event) => setEditing({
+                          ...editing,
+                          platform_link: {
+                            ...editing.platform_link!,
+                            localized_urls: {
+                              ...editing.platform_link!.localized_urls,
+                              [locale]: event.target.value,
+                            },
+                          },
+                        })}
+                        placeholder="https://"
+                        className="mt-1 h-11 w-full rounded-xl border bg-white px-3"
+                      />
+                    </label>
+                  ))}
+                  <label className="text-sm font-semibold md:col-span-2">
+                    {ta("foodMerchantsPanel.platformReviewNote")}
+                    <textarea
+                      value={editing.platform_link.review_note ?? ""}
+                      onChange={(event) => setEditing({
+                        ...editing,
+                        platform_link: { ...editing.platform_link!, review_note: event.target.value || null },
+                      })}
+                      className="mt-1 min-h-24 w-full rounded-xl border bg-white p-3"
+                    />
+                  </label>
+                  <p className="text-xs text-[var(--muted)] md:col-span-2">
+                    {ta("foodMerchantsPanel.platformIndividualOnly")}
+                  </p>
+                </div>
+              )}
             </fieldset>
             <section className="mt-5 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4">
               <div className="flex flex-wrap items-start justify-between gap-3">

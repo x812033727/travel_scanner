@@ -1,4 +1,11 @@
 export type MapLink = { provider: string; label: string; url: string; primary: boolean };
+export type ReservationLink = {
+  provider: string;
+  label: string;
+  url: string;
+  verified_at: string;
+  language_code: string;
+};
 /** Five site locales plus the original-script text; `name` is already the one for the UI locale. */
 export type LocalizedNameMap = Partial<Record<"en" | "ja" | "ko" | "zh-TW" | "zh-CN", string>> & {
   original?: string;
@@ -21,6 +28,11 @@ export type FoodCitiesResponse = { total_merchants: number; countries: FoodCount
 
 export type FoodAreaRef = { id: string; slug: string; name: string; local_name: string | null };
 export type FoodCategoryRef = { slug: string; name: string; is_primary: boolean };
+export const MERCHANT_STYLES = ["instagrammable", "artsy"] as const;
+export type MerchantStyle = (typeof MERCHANT_STYLES)[number];
+export type MerchantStyleView = {
+  slug: MerchantStyle; name: string; evidence_url: string; evidence_title: string; checked_on: string;
+};
 export type FacetArea = FoodAreaRef & { merchant_count: number };
 export type FacetCategory = { slug: string; name: string; merchant_count: number };
 export type SignatureDish = {
@@ -53,6 +65,7 @@ export type FoodMerchant = {
   country_code: string;
   area: FoodAreaRef | null;
   categories: FoodCategoryRef[];
+  styles?: MerchantStyleView[];
   signature_dishes: SignatureDish[];
   address: string | null;
   latitude: number | null;
@@ -60,6 +73,7 @@ export type FoodMerchant = {
   coordinate_source: { type: string | null; url: string | null; verified_at: string | null };
   official_website_url: string | null;
   map_links: MapLink[];
+  reservation_links?: ReservationLink[];
   verified_at: string | null;
   sources: MerchantSource[];
 };
@@ -67,6 +81,7 @@ export type MerchantFacets = {
   areas: FacetArea[];
   unassigned_area_count: number;
   categories: FacetCategory[];
+  styles?: FacetCategory[];
 };
 export type FoodMerchantsResponse = {
   total: number;
@@ -103,10 +118,12 @@ export type RecommendedMerchant = {
   local_name: string;
   names?: LocalizedNameMap;
   destination_id: string;
+  destination_name: string;
   address: string | null;
   latitude: number | null;
   longitude: number | null;
   map_links: MapLink[];
+  reservation_links?: ReservationLink[];
   verified_at: string | null;
   area?: FoodAreaRef | null;
   categories?: FoodCategoryRef[];
@@ -141,6 +158,7 @@ export type FoodBrowserFilters = {
   destinationId: string;
   area: string;
   category: string;
+  style?: string;
   query: string;
 };
 
@@ -159,6 +177,7 @@ export function readFoodBrowserFilters(search: string): FoodBrowserFilters {
     destinationId: (params.get("destination_id") ?? "").trim(),
     area: (params.get("area") ?? "").trim(),
     category: (params.get("category") ?? "").trim(),
+    ...(params.has("style") ? { style: (params.get("style") ?? "").trim() } : {}),
     query: (params.get("q") ?? "").trim(),
   };
 }
@@ -168,6 +187,7 @@ export function foodBrowserSearch(filters: FoodBrowserFilters): string {
   if (filters.destinationId) params.set("destination_id", filters.destinationId);
   if (filters.area) params.set("area", filters.area);
   if (filters.category) params.set("category", filters.category);
+  if (filters.style) params.set("style", filters.style);
   if (filters.query) params.set("q", filters.query);
   return params.toString();
 }
@@ -184,7 +204,7 @@ export function merchantsQuery(
 }
 
 export function activeFilterCount(filters: FoodBrowserFilters): number {
-  return [filters.destinationId, filters.area, filters.category, filters.query].filter(Boolean)
+  return [filters.destinationId, filters.area, filters.category, filters.style, filters.query].filter(Boolean)
     .length;
 }
 

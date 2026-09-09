@@ -4,6 +4,8 @@ import { ArrowLeft, ArrowRight, BedDouble, Check, CircleAlert, ExternalLink, Loa
 import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { hotelNightlyPrice, hotelStarRating, type HotelOfferView } from "@/components/hotel-offer-card";
+import { Stay22MapPanel } from "@/components/stay22-map-panel";
+import type { Stay22MapContext } from "@/lib/stay22";
 import { api, formatCurrency } from "@/lib/api";
 import { activeLocale } from "@/lib/locale-format";
 
@@ -27,6 +29,7 @@ export type StayAreasResponse = {
   version: number;
   destination_name?: string | null;
   city_code?: string | null;
+  map_context?: Stay22MapContext | null;
   status: "recommended" | "low_evidence" | "no_evidence" | "unsupported";
   pricing: { available: boolean; provider?: string | null; mode?: string | null; message?: string | null };
   current_lodging_area_code?: string | null;
@@ -277,9 +280,12 @@ export function StayAreaFlow({ tripId, busy, onSelectHotel, onManualLodging, cat
   }
 
   const reasonLabel = (reason: string) => (KNOWN_REASONS.has(reason) ? t(`area.reason.${reason}`) : null);
+  const mapArea = selected || areas?.areas.find((area) => !area.is_day_trip);
+  const stayMap = <Stay22MapPanel key={tripId} context={areas?.map_context} area={mapArea} onManualLodging={onManualLodging} />;
 
   if (!selected) {
     return <div className="space-y-4">
+      {stayMap}
       {catalog?.()}
       {areasError && <Notice tone="warn"><span className="flex-1">{areasError}</span><button type="button" onClick={retryAreas} className="shrink-0 font-bold underline">{t("retry")}</button></Notice>}
       {!areas && !areasError && <div aria-busy="true" className="space-y-3"><div className="h-24 animate-pulse rounded-2xl bg-[var(--paper)]" /><div className="h-24 animate-pulse rounded-2xl bg-[var(--paper)]" /><p className="text-center text-sm text-[var(--muted)]">{t("loadingAreas")}</p></div>}
@@ -345,6 +351,7 @@ export function StayAreaFlow({ tripId, busy, onSelectHotel, onManualLodging, cat
       {hotels?.travelers && <p className="mt-1 text-xs text-[var(--muted)]">{t("compare.summary", { nights: hotels.nights, adults: hotels.travelers.adults, rooms: hotels.travelers.rooms })}{validity ? ` · ${validity}` : ""}</p>}
     </header>
     {flash && <Notice tone="teal">{flash}</Notice>}
+    {stayMap}
     {catalog?.(selected.code)}
     {loadingHotels && <div aria-busy="true" className="space-y-3"><div className="h-28 animate-pulse rounded-2xl bg-[var(--paper)]" /><div className="h-28 animate-pulse rounded-2xl bg-[var(--paper)]" /><p className="text-center text-sm text-[var(--muted)]">{t("compare.loading")}</p></div>}
     {hotelsError && <Notice tone="warn"><span className="flex-1">{hotelsError}</span><button type="button" onClick={() => void loadHotels(selected, true)} className="shrink-0 font-bold underline">{t("retry")}</button></Notice>}

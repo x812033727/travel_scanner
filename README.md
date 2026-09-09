@@ -4,6 +4,13 @@ Mokaair is a mock-first, API-first travel comparison MVP. It combines
 flights, hotels, activities, and transportation into complete trip plans and
 explains the trade-off between the cheapest, balanced, and comfortable choices.
 
+## Merchant styles
+
+Merchant discovery also supports independent **photogenic / arts & culture** style filters.
+Administrators add source-backed style reviews under `/admin/foods`; approving a label never
+bypasses the existing merchant/location publication gates. See [merchant styles](docs/merchant-styles.md)
+for migration `0061`, the reviewed five-shop candidate batch, and the explicit dry-run/import workflow.
+
 ## Community and pet-friendly travel (private rollout)
 
 The opt-in community adds five-language public profiles, moderated photo posts,

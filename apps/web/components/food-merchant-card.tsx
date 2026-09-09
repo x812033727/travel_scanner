@@ -1,6 +1,6 @@
 "use client";
 
-import { Award, ExternalLink, Globe, ListFilter, MapPin } from "lucide-react";
+import { Award, CalendarCheck, ExternalLink, Globe, ListFilter, MapPin } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { TravelCardActions } from "@/components/travel-card-actions";
 import { primaryMapLink, type FoodMerchant } from "@/lib/foods";
@@ -20,15 +20,21 @@ export function FoodMerchantCard({
   merchant,
   onSelectArea,
   onSelectCategory,
+  onSelectStyle,
 }: {
   merchant: FoodMerchant;
   onSelectArea?: (slug: string) => void;
   onSelectCategory?: (slug: string) => void;
+  onSelectStyle?: (slug: string) => void;
 }) {
   const t = useTranslations("foods");
   const locale = useLocale();
   const map = primaryMapLink(merchant.map_links);
   const mapHref = map ? safeExternalHref(map.url) : undefined;
+  // Keep cards usable while an older cached/BFF response without the additive
+  // field is still in flight during a rolling deployment.
+  const reservation = merchant.reservation_links?.[0];
+  const reservationHref = reservation ? safeExternalHref(reservation.url) : undefined;
   const websiteHref = safeExternalHref(merchant.official_website_url);
   const primaryCategory = merchant.categories.find((item) => item.is_primary) ?? merchant.categories[0];
   const distinction = merchant.sources
@@ -90,6 +96,24 @@ export function FoodMerchantCard({
           ))}
         </div>
       )}
+      {(merchant.styles?.length ?? 0) > 0 && (
+        <div className="mt-3 flex flex-wrap gap-2" aria-label={t("styles.label")}>
+          {merchant.styles?.map((style) => (
+            <span key={style.slug} className="inline-flex items-center gap-2">
+              <button type="button" onClick={() => onSelectStyle?.(style.slug)}
+                aria-label={t("onlyShow", { label: style.name })}
+                className="app-filter-chip">{style.name}</button>
+              {safeExternalHref(style.evidence_url) && (
+                <a href={safeExternalHref(style.evidence_url)} target="_blank" rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center text-xs underline"
+                  aria-label={t("styles.evidenceFor", { name: style.name })}>
+                  {t("styles.checked", { date: style.checked_on })}
+                </a>
+              )}
+            </span>
+          ))}
+        </div>
+      )}
       {merchant.signature_dishes.length > 0 && (
         <div className="mt-4">
           <p className="text-xs font-semibold text-[var(--muted)]">{t("signatureDishes")}</p>
@@ -116,13 +140,29 @@ export function FoodMerchantCard({
             href={mapHref}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`${map.label}: ${merchant.name}`}
+            aria-label={t("navigateTo", { name: merchant.name, provider: map.label })}
             className="flex min-h-11 items-center gap-2 rounded-2xl bg-[var(--paper)] px-3 py-2 text-sm font-semibold text-[var(--teal)] underline-offset-4 hover:underline"
           >
             <MapPin size={15} />
-            <span className="mr-auto">{map.label}</span>
+            <span className="mr-auto">{t("navigate")}</span>
             <ExternalLink size={13} />
           </a>
+        )}
+        {reservation && reservationHref && (
+          <a
+            href={reservationHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t("reserveAt", { name: merchant.name, provider: reservation.label })}
+            className="flex min-h-11 items-center gap-2 rounded-2xl bg-[var(--teal)] px-3 py-2 text-sm font-semibold text-white"
+          >
+            <CalendarCheck size={15} />
+            <span className="mr-auto">{t("viewOrReserve", { provider: reservation.label })}</span>
+            <ExternalLink size={13} />
+          </a>
+        )}
+        {reservation?.language_code === "vi" && reservationHref && (
+          <p className="px-1 text-xs text-[var(--muted)]">{t("externalLanguage.vi")}</p>
         )}
         {websiteHref && (
           <a

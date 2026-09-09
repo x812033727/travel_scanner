@@ -46,6 +46,7 @@ from app.destinations.catalog import destination_for_id
 from app.foods.category_catalog import CATEGORY_SEEDS_BY_SLUG, SLUG_PATTERN
 from app.foods.merchant_catalog import MERCHANT_SEEDS
 from app.foods.service import destination_country_code
+from app.foods.styles import StyleEvidence
 from app.i18n import LOCALES
 from app.localized_names import is_latin_script, original_locale_for
 from app.models import (
@@ -55,6 +56,7 @@ from app.models import (
     FoodMerchant,
     FoodMerchantCategory,
     FoodMerchantSource,
+    FoodMerchantStyle,
 )
 
 DEFAULT_FILE = Path(__file__).resolve().parent / "data" / "trend_merchants.json"
@@ -85,7 +87,7 @@ class TrendImportError(ValueError):
 class TrendMerchant:
     slug: str
     destination_id: str
-    district_key: str
+    district_key: str | None
     name: str
     english_name: str | None
     local_name: str
@@ -96,10 +98,11 @@ class TrendMerchant:
     source_kind: str
     note: str | None = None
     confidence: str | None = None
+    styles: tuple[StyleEvidence, ...] = ()
 
     @property
-    def area_slug(self) -> str:
-        return f"{self.destination_id}-{self.district_key}"
+    def area_slug(self) -> str | None:
+        return f"{self.destination_id}-{self.district_key}" if self.district_key else None
 
     @property
     def source_scope(self) -> str:
@@ -170,8 +173,8 @@ def parse_merchant(raw: Mapping[str, Any], *, row: int) -> TrendMerchant:
     destination_id = _text(raw, "destination", row=row) or ""
     if destination_for_id(destination_id) is None:
         raise TrendImportError(f"row {row}: unknown destination {destination_id!r}")
-    district_key = _text(raw, "district_key", row=row) or ""
-    if not SLUG_PATTERN.match(district_key):
+    district_key = _text(raw, "district_key", row=row, required=False)
+    if district_key is not None and not SLUG_PATTERN.match(district_key):
         raise TrendImportError(
             f"row {row}: district_key {district_key!r} must be lowercase kebab-case"
         )
@@ -205,6 +208,12 @@ def parse_merchant(raw: Mapping[str, Any], *, row: int) -> TrendMerchant:
     unknown = [slug for slug in categories if slug not in CATEGORY_SEEDS_BY_SLUG]
     if unknown:
         raise TrendImportError(f"row {row}: unknown categories {unknown}")
+    raw_styles = raw.get("styles", [])
+    if not isinstance(raw_styles, list) or len(raw_styles) > 2:
+        raise TrendImportError(f"row {row}: styles must be a list of at most two reviews")
+    styles = tuple(StyleEvidence.model_validate(item) for item in raw_styles)
+    if len({item.style for item in styles}) != len(styles):
+        raise TrendImportError(f"row {row}: duplicate style")
     return TrendMerchant(
         slug=slug,
         destination_id=destination_id,
@@ -219,6 +228,7 @@ def parse_merchant(raw: Mapping[str, Any], *, row: int) -> TrendMerchant:
         source_kind=source_kind,
         note=_text(raw, "note", row=row, required=False),
         confidence=_text(raw, "confidence", row=row, required=False),
+        styles=styles,
     )
 
 
@@ -358,10 +368,11 @@ async def backfill_english_names(
 async def _create(
     session: AsyncSession,
     merchant: TrendMerchant,
-    area: FoodArea,
+    area: FoodArea | None,
     categories: Mapping[str, FoodCategory],
 ) -> FoodMerchant:
-    country_code = destination_country_code(merchant.destination_id) or area.country_code
+    country_code = destination_country_code(merchant.destination_id)
+    assert country_code is not None
     row = FoodMerchant(
         slug=merchant.slug,
         destination_id=merchant.destination_id,
@@ -377,7 +388,7 @@ async def _create(
         is_active=False,
         verified_at=None,
         display_order=MERCHANT_DISPLAY_ORDER,
-        area_id=area.id,
+        area_id=area.id if area else None,
         area_source="admin",
     )
     session.add(row)
@@ -420,7 +431,7 @@ async def persist_trend_merchants(
     A dry run reads the same tables and produces the same report with ``would_create``
     in place of ``created``, so the operator sees exactly what ``--apply`` will do.
     """
-    area_slugs = {merchant.area_slug for merchant in merchants}
+    area_slugs = {merchant.area_slug for merchant in merchants if merchant.area_slug}
     areas = {
         row.slug: row
         for row in (
@@ -443,13 +454,23 @@ async def persist_trend_merchants(
     outcomes: Counter[str] = Counter()
     rows: list[dict[str, Any]] = []
     created = 0
+    proposed_styles: list[dict[str, str]] = []
     for merchant in merchants:
         detail: str | None = None
+        row = None
         if merchant.slug in by_slug:
             outcome = "skipped_existing_slug"
+            existing_row = by_slug[merchant.slug]
+            # A colliding slug is not permission to classify a different branch.
+            if (
+                existing_row.destination_id,
+                existing_row.local_name.casefold(),
+            ) == merchant.identity:
+                row = existing_row
         elif merchant.identity in by_identity:
             outcome, detail = "skipped_same_name", by_identity[merchant.identity].slug
-        elif merchant.area_slug not in areas:
+            row = by_identity[merchant.identity]
+        elif merchant.area_slug and merchant.area_slug not in areas:
             outcome, detail = "missing_area", merchant.area_slug
         elif any(slug not in categories for slug in merchant.category_slugs):
             outcome = "missing_category"
@@ -458,12 +479,51 @@ async def persist_trend_merchants(
             outcome = "created" if apply else "would_create"
             created += 1
             if apply:
-                row = await _create(session, merchant, areas[merchant.area_slug], categories)
+                row = await _create(
+                    session, merchant, areas.get(merchant.area_slug or ""), categories
+                )
                 by_slug[merchant.slug] = row
                 by_identity[merchant.identity] = row
+        if row is not None or outcome == "would_create":
+            existing_styles = (
+                set(
+                    (
+                        await session.scalars(
+                            select(FoodMerchantStyle.style).where(
+                                FoodMerchantStyle.merchant_id == row.id
+                            )
+                        )
+                    ).all()
+                )
+                if row is not None
+                else set()
+            )
+            for evidence in merchant.styles:
+                if evidence.style in existing_styles:
+                    continue  # Never overwrite pending edits, approvals or rejection tombstones.
+                proposed_styles.append({"slug": merchant.slug, "style": evidence.style})
+                if apply and row is not None:
+                    session.add(
+                        FoodMerchantStyle(
+                            merchant_id=row.id, status="pending", **evidence.model_dump()
+                        )
+                    )
         outcomes[outcome] += 1
         rows.append({"slug": merchant.slug, "outcome": outcome, "detail": detail})
     if apply:
+        if proposed_styles:
+            session.add(
+                AdminAuditLog(
+                    actor_user_id=None,
+                    action="food_merchant_styles_proposed",
+                    target=f"food_merchant_styles:{len(proposed_styles)}",
+                    metadata_json={
+                        "source": AUDIT_SOURCE,
+                        "file": source_file,
+                        "items": proposed_styles,
+                    },
+                )
+            )
         if created:
             session.add(
                 AdminAuditLog(
@@ -480,6 +540,7 @@ async def persist_trend_merchants(
         "created": created,
         "outcomes": dict(sorted(outcomes.items())),
         "rows": rows,
+        "proposed_styles": proposed_styles,
     }
 
 

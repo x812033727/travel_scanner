@@ -9,6 +9,8 @@ from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
+from app.affiliates.schemas import AffiliateChannel, AffiliateModule
+from app.destinations.catalog import DESTINATIONS
 from app.i18n import Locale
 
 Kind = Literal["hotel", "transfer", "tour", "esim"]
@@ -23,6 +25,8 @@ CITIES = {
     "busan": ("KR", "PUS", (35.1796, 129.0756), ("PUS",)),
     "taipei": ("TW", "TPE", (25.0330, 121.5654), ("TPE", "TSA")),
 }
+PUBLIC_DESTINATION_IDS = frozenset(destination.id for destination in DESTINATIONS)
+SERVICE_DESTINATION_IDS = PUBLIC_DESTINATION_IDS | frozenset(CITIES)
 
 
 def safe_url(value: str) -> str:
@@ -318,12 +322,72 @@ class OfferInput(StrictModel):
         return value
 
 
-class ReviewInput(StrictModel):
+class DestinationOfferInput(StrictModel):
+    brand_id: UUID
+    destination_id: str
+    module: AffiliateModule
+    target_url: str
+    static_url: str | None = None
+    expires_at: datetime | None = None
+
+    @field_validator("destination_id")
+    @classmethod
+    def destination(cls, value: str) -> str:
+        from app.destinations.catalog import destination_for_id
+
+        normalized = value.casefold()
+        if not destination_for_id(normalized):
+            raise ValueError("Unsupported destination")
+        return normalized
+
+    @field_validator("target_url")
+    @classmethod
+    def target(cls, value: str) -> str:
+        return untracked_url(value)
+
+    @field_validator("static_url")
+    @classmethod
+    def static(cls, value: str | None) -> str | None:
+        return safe_url(value) if value else None
+
+    @field_validator("expires_at")
+    @classmethod
+    def aware(cls, value: datetime | None) -> datetime | None:
+        if value and value.tzinfo is None:
+            raise ValueError("Timezone required")
+        return value
+
+
+class DestinationOfferVersion(StrictModel):
+    id: UUID
     version: int = Field(ge=1)
+
+
+class DestinationOfferBatchReview(StrictModel):
+    offers: list[DestinationOfferVersion] = Field(min_length=1, max_length=50)
     status: Status
 
 
+class ReviewInput(StrictModel):
+    version: int = Field(ge=1)
+    status: Status
+    browser_verified: bool = False
+    evidence_url: str | None = None
+
+    @field_validator("evidence_url")
+    @classmethod
+    def evidence(cls, value: str | None) -> str | None:
+        return safe_url(value) if value else None
+
+    @model_validator(mode="after")
+    def attestation(self) -> Self:
+        if self.browser_verified and not self.evidence_url:
+            raise ValueError("Browser verification requires exact destination evidence")
+        return self
+
+
 class BrandInput(StrictModel):
+    channel: AffiliateChannel = "travelpayouts"
     code: str
     approval: Literal["unknown", "pending", "approved", "rejected"]
     enabled: bool = False
@@ -333,10 +397,19 @@ class BrandInput(StrictModel):
     @field_validator("evidence_url")
     @classmethod
     def evidence(cls, value: str) -> str:
-        value = safe_url(value)
-        if urlsplit(value).hostname != "app.travelpayouts.com":
+        return safe_url(value)
+
+    @model_validator(mode="after")
+    def enrollment(self) -> Self:
+        if self.channel == "klook_direct":
+            if (
+                self.code != "klook"
+                or urlsplit(self.evidence_url).hostname != "affiliate.klook.com"
+            ):
+                raise ValueError("Official Klook enrollment evidence required")
+        elif urlsplit(self.evidence_url).hostname != "app.travelpayouts.com":
             raise ValueError("Travelpayouts project evidence required")
-        return value
+        return self
 
 
 class HotelQuotePolicy(StrictModel):
@@ -376,13 +449,27 @@ class CatalogConfig(StrictModel):
     @field_validator("enabled_destinations")
     @classmethod
     def destinations(cls, value: list[str]) -> list[str]:
-        if any(city not in CITIES for city in value):
+        if any(city not in SERVICE_DESTINATION_IDS for city in value):
             raise ValueError("Unsupported destination")
         return list(dict.fromkeys(value))
 
 
 class ConfigInput(CatalogConfig):
     version: int = Field(ge=0)
+
+
+class HotelConfigPatch(StrictModel):
+    version: int = Field(ge=0)
+    hotel_enabled: bool | None = None
+    direct_hotel_links_enabled: bool | None = None
+    hotel_quote_policies: dict[HotelProvider, HotelQuotePolicy] | None = None
+
+    @model_validator(mode="after")
+    def nonempty(self) -> Self:
+        fields = self.model_fields_set - {"version"}
+        if not fields or any(getattr(self, field) is None for field in fields):
+            raise ValueError("At least one non-null hotel setting is required")
+        return self
 
 
 class SelectInput(StrictModel):

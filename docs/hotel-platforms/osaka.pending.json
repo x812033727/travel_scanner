@@ -53,8 +53,10 @@
       },
       {
         "provider": "agoda",
-        "discovery_status": "unconfirmed",
-        "identity_note": "尚待完成此平台的落地頁及身份複核；不等於平台沒有販售。"
+        "discovery_status": "found",
+        "identity_note": "2026-09-08 Agoda 搜尋文件名稱 Hotel Vischio Osaka 與門牌 2 Chome-4-10 Shibata 對照官網相符；直接文件無法讀取身份，Chrome 連線逾時，僅新增候選 URL 並保留待審。不保存房價、評分、評論或照片。",
+        "url": "https://www.agoda.com/hotel-vischio-osaka-by-granvia/hotel/osaka-jp.html",
+        "evidence_url": "https://www.hotelvischio-osaka.jp/access/"
       },
       {
         "provider": "expedia",
@@ -122,8 +124,10 @@
       },
       {
         "provider": "agoda",
-        "discovery_status": "unconfirmed",
-        "identity_note": "尚待完成此平台的落地頁及身份複核；不等於平台沒有販售。"
+        "discovery_status": "found",
+        "identity_note": "2026-09-08 Agoda 搜尋文件名稱 Hotel Hankyu Respire Osaka 與門牌 Ofukacho 1-1 對照官網相符；直接文件無法讀取身份，Chrome 連線逾時，僅新增候選 URL 並保留待審。不保存房價、評分、評論或照片。",
+        "url": "https://www.agoda.com/hotel-hankyu-respire-osaka/hotel/osaka-jp.html",
+        "evidence_url": "https://www.hankyu-hotel.com/hotel/respire/osaka/access"
       },
       {
         "provider": "expedia",
@@ -191,18 +195,26 @@
       },
       {
         "provider": "agoda",
-        "discovery_status": "unconfirmed",
-        "identity_note": "尚待完成此平台的落地頁及身份複核；不等於平台沒有販售。"
+        "discovery_status": "found",
+        "identity_note": "2026-09-08 Agoda 搜尋文件名稱 Hotel Intergate Osaka Umeda 與門牌 2 Chome-5-2 Umeda 對照官網相符；直接文件無法讀取身份，Chrome 連線逾時，僅新增候選 URL 並保留待審。不保存房價、評分、評論或照片。",
+        "url": "https://www.agoda.com/hotel-intergate-osaka-umeda/hotel/osaka-jp.html",
+        "evidence_url": "https://www.intergatehotels.jp/osaka-umeda/facility/"
       },
       {
         "provider": "expedia",
-        "discovery_status": "unconfirmed",
-        "identity_note": "尚待完成此平台的落地頁及身份複核；不等於平台沒有販售。"
+        "discovery_status": "found",
+        "identity_note": "2026-09-08 Expedia 直接文件（當日爬取）的 Hotel Intergate Osaka Umeda 與完整地址 2-5-2 Umeda, Kita, Osaka, Osaka, 530-0001 對照官網相符。網址與 ID 60867496 均為實際觀察值；僅新增候選並保留待審，未做瀏覽器或健康審核。",
+        "url": "https://www.expedia.com/Osaka-Hotels-Hotel-Intergate-Osaka-Umeda.h60867496.Hotel-Information",
+        "property_id": "60867496",
+        "evidence_url": "https://www.intergatehotels.jp/osaka-umeda/facility/"
       },
       {
         "provider": "rakuten",
-        "discovery_status": "unconfirmed",
-        "identity_note": "尚待完成此平台的落地頁及身份複核；不等於平台沒有販售。"
+        "discovery_status": "found",
+        "identity_note": "2026-09-08 實際找到 Rakuten 國際站 Hotel Intergate Osaka Umeda 大阪專頁及 ID 10123456845989（文件標示上週爬取）。僅有名稱／城市層級證據，完整街道地址未知；ID 加門牌搜尋無結果，保留待審。未由日本站 ID 或其他平台推算網址，未做瀏覽器或健康審核。",
+        "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456845989/",
+        "property_id": "10123456845989",
+        "evidence_url": "https://www.intergatehotels.jp/osaka-umeda/facility/"
       }
     ]
   },
@@ -329,18 +341,26 @@
       },
       {
         "provider": "agoda",
-        "discovery_status": "unconfirmed",
-        "identity_note": "尚待完成此平台的落地頁及身份複核；不等於平台沒有販售。"
+        "discovery_status": "found",
+        "identity_note": "2026-09-08 Agoda 搜尋文件名稱 Hotel New Otani Osaka 與門牌 1 Chome-4-1 Shiromi 對照官網相符；直接文件無法讀取身份，Chrome 連線逾時，僅新增候選 URL 並保留待審。不保存房價、評分、評論或照片。",
+        "url": "https://www.agoda.com/hotel-new-otani-osaka/hotel/osaka-jp.html",
+        "evidence_url": "https://www.newotani.co.jp/osaka/access/"
       },
       {
         "provider": "expedia",
-        "discovery_status": "unconfirmed",
-        "identity_note": "尚待完成此平台的落地頁及身份複核；不等於平台沒有販售。"
+        "discovery_status": "found",
+        "identity_note": "2026-09-08 Expedia 索引文件（兩日前爬取）的 Hotel New Otani Osaka 與完整地址 1-4-1 Shiromi Chuo-ku, Osaka, Osaka-fu, 540-8578 對照官網相符。直接開啟有飯店文件，但後續地址擷取內部錯誤，門牌證據僅來自索引。實際觀察網址與 ID 178548 保留待審，未做瀏覽器或健康審核。",
+        "url": "https://www.expedia.com/Osaka-Hotels-Hotel-New-Otani-Osaka.h178548.Hotel-Information",
+        "property_id": "178548",
+        "evidence_url": "https://www.newotani.co.jp/osaka/access/"
       },
       {
         "provider": "rakuten",
-        "discovery_status": "unconfirmed",
-        "identity_note": "尚待完成此平台的落地頁及身份複核；不等於平台沒有販售。"
+        "discovery_status": "found",
+        "identity_note": "2026-09-08 實際找到 Rakuten 國際站 Hotel New Otani Osaka、Osaka City, Osaka, Japan 及 ID 10123456794714（文件標示上月爬取）。完整街道地址未知；ID 加門牌搜尋無結果，後續文件讀取逾時，保留待審。未由日本站 ID 或其他平台推算網址，未做瀏覽器或健康審核。",
+        "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456794714/",
+        "property_id": "10123456794714",
+        "evidence_url": "https://www.newotani.co.jp/osaka/access/"
       }
     ]
   },
@@ -398,8 +418,10 @@
       },
       {
         "provider": "agoda",
-        "discovery_status": "unconfirmed",
-        "identity_note": "尚待完成此平台的落地頁及身份複核；不等於平台沒有販售。"
+        "discovery_status": "found",
+        "identity_note": "2026-09-08 Agoda 搜尋文件的飯店名稱 Hotel Monterey La Soeur Osaka 及門牌 2 Chome-2-22 Shiromi 對照官網；直接文件無法讀取身份，僅新增候選 URL 並保留待審，不保存房價、評論、評分、照片或猜測平台 ID。",
+        "url": "https://www.agoda.com/hotel-monterey-la-soeur-osaka/hotel/osaka-jp.html",
+        "evidence_url": "https://www.hotelmonterey.co.jp/lasoeur_osaka/access/"
       },
       {
         "provider": "expedia",
@@ -467,8 +489,10 @@
       },
       {
         "provider": "agoda",
-        "discovery_status": "unconfirmed",
-        "identity_note": "尚待完成此平台的落地頁及身份複核；不等於平台沒有販售。"
+        "discovery_status": "found",
+        "identity_note": "2026-09-08 Agoda 搜尋文件的飯店名稱 Hotel Royal Classic Osaka 及門牌 4 Chome-3-3 Nanba 對照官網；直接文件無法讀取身份，僅新增候選 URL 並保留待審，不保存房價、評論、評分、照片或猜測平台 ID。",
+        "url": "https://www.agoda.com/hotel-royal-classic-osaka_2/hotel/osaka-jp.html",
+        "evidence_url": "https://www.hotel-royalclassic.jp/access"
       },
       {
         "provider": "expedia",
@@ -605,8 +629,10 @@
       },
       {
         "provider": "agoda",
-        "discovery_status": "unconfirmed",
-        "identity_note": "尚待完成此平台的落地頁及身份複核；不等於平台沒有販售。"
+        "discovery_status": "found",
+        "identity_note": "2026-09-08 Agoda 搜尋文件的飯店名稱 Sotetsu Grand Fresa Osaka-Namba 及門牌 1 Chome-1-13 Nipponbashi 對照官網；直接文件無法讀取身份，僅新增候選 URL 並保留待審，不保存房價、評論、評分、照片或猜測平台 ID。URL 保留搜尋所得的舊名稱 slug，尚須確認目前飯店落地身份，不改寫網址。",
+        "url": "https://www.agoda.com/osaka-nanba-washington-plaza-hotel/hotel/osaka-jp.html",
+        "evidence_url": "https://sotetsu-hotels.com/grand-fresa/namba/access/"
       },
       {
         "provider": "expedia",
@@ -674,18 +700,26 @@
       },
       {
         "provider": "agoda",
-        "discovery_status": "unconfirmed",
-        "identity_note": "尚待完成此平台的落地頁及身份複核；不等於平台沒有販售。"
+        "discovery_status": "found",
+        "identity_note": "2026-09-08 Agoda 搜尋文件的飯店名稱 Hotel Gracery Osaka Namba 及門牌 1 Chome-4-4 Motomachi 對照官網；直接文件無法讀取身份，僅新增候選 URL 並保留待審，不保存房價、評論、評分、照片或猜測平台 ID。",
+        "url": "https://www.agoda.com/hotel-gracery-osaka-namba/hotel/osaka-jp.html",
+        "evidence_url": "https://gracery.com/namba/access/"
       },
       {
         "provider": "expedia",
-        "discovery_status": "unconfirmed",
-        "identity_note": "尚待完成此平台的落地頁及身份複核；不等於平台沒有販售。"
+        "discovery_status": "found",
+        "identity_note": "2026-09-08 Expedia 直接文件（當日爬取）的 HOTEL GRACERY Osaka Namba 與完整地址 1-4-4 Motomachi, Naniwa-ku, Osaka, Osaka, 556-0016 對照官網相符。網址與 ID 32815570 均為實際觀察值；僅新增候選並保留待審，未做瀏覽器或健康審核。",
+        "url": "https://www.expedia.com/Osaka-Hotels-HOTEL-GRACERY-Osaka-Namba.h32815570.Hotel-Information",
+        "property_id": "32815570",
+        "evidence_url": "https://gracery.com/namba/access/"
       },
       {
         "provider": "rakuten",
-        "discovery_status": "unconfirmed",
-        "identity_note": "尚待完成此平台的落地頁及身份複核；不等於平台沒有販售。"
+        "discovery_status": "found",
+        "identity_note": "2026-09-08 實際找到 Rakuten 國際站 Hotel Gracery Osaka Namba、Osaka City, Osaka, Japan 及 ID 10123456874117（首次文件標示兩週前爬取，後續讀取標示當日）。完整街道地址未知；ID 加門牌搜尋無結果，保留待審。未由日本站 ID 或其他平台推算網址，未做瀏覽器或健康審核。",
+        "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456874117/",
+        "property_id": "10123456874117",
+        "evidence_url": "https://gracery.com/namba/access/"
       }
     ]
   }

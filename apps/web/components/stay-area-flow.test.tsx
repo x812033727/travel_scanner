@@ -95,6 +95,36 @@ afterEach(() => {
 });
 
 describe("stay area flow", () => {
+  it("loads the external map without first calling hotel search or mutating the trip", async () => {
+    const fetchMock = stubFetch(byPath({ areas: { ...areas, pricing: { available: false }, map_context: {
+      destination_id: "tokyo", country_code: "JP", city_code: "NRT", check_in: "2099-11-10", check_out: "2099-11-15", travelers: { adults: 2, children: 1, rooms: 1 }, currency: "TWD",
+    } } }));
+    const onSelect = vi.fn();
+    render(<StayAreaFlow tripId={tripId} busy={false} onSelectHotel={onSelect} onManualLodging={vi.fn()} />);
+    const load = await screen.findByRole("button", { name: "同意並載入 Stay22 地圖" });
+    expect(document.querySelector("iframe")).toBeNull();
+    const before = fetchMock.mock.calls.length;
+    fireEvent.click(load);
+    expect(document.querySelector("iframe")?.src).toContain("lat=35.71000");
+    expect(fetchMock.mock.calls).toHaveLength(before);
+    expect(fetchMock.mock.calls.some(([url]) => String(url).includes("/hotels"))).toBe(false);
+    expect(onSelect).not.toHaveBeenCalled();
+    expect(screen.getByRole("button", { name: "手動輸入飯店" })).toBeTruthy();
+  });
+
+  it("changes map center only after area selection and requires fresh consent", async () => {
+    stubFetch(byPath({ areas: { ...areas, map_context: {
+      destination_id: "tokyo", country_code: "JP", city_code: "NRT", check_in: "2099-11-10", check_out: "2099-11-15", travelers: { adults: 2, children: 0, rooms: 1 },
+    } } }));
+    render(<StayAreaFlow tripId={tripId} busy={false} onSelectHotel={vi.fn()} onManualLodging={vi.fn()} />);
+    fireEvent.click(await screen.findByRole("button", { name: "同意並載入 Stay22 地圖" }));
+    fireEvent.click(screen.getAllByRole("button", { name: /看這區的飯店/ })[1]);
+    expect(document.querySelector("iframe")).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "同意並載入 Stay22 地圖" }));
+    expect(document.querySelector("iframe")?.src).toContain("lng=139.70000");
+    await screen.findByText("淺草河畔飯店");
+  });
+
   it("lists recommended areas, then prices the chosen area with owner-ordered partner links", async () => {
     const fetchMock = stubFetch(byPath());
     const onSelectHotel = vi.fn().mockResolvedValue("ok");

@@ -12,6 +12,7 @@ import { useCommunity } from "./provider";
 import { RelatedPlaces } from "./places";
 import { Button, CommunityImage, Dialog, Empty, ErrorNotice, fieldClass, panelClass } from "./ui";
 import { useResource } from "./use-resource";
+import { DiscoveryVideoPlayer } from "@/components/discovery/video";
 
 export function TranslateText({ kind, id, original, sourceLocale }: { kind: "post" | "comment"; id: string; original: string; sourceLocale: string }) {
   const locale = useLocale();
@@ -67,25 +68,27 @@ export function ReportButton({ kind, target, messageIds = [] }: { kind: "post" |
   </form></Dialog>}</>;
 }
 
-export function CollectButton({ kind, target }: { kind: "post" | "pet_place"; target: string }) {
+export function CollectButton({ kind, target, discovery = false, initialOpen = false }: { kind: "post" | "pet_place" | "hotspot" | "food" | "merchant" | "guide" | "hotel"; target: string; discovery?: boolean; initialOpen?: boolean }) {
   const t = useTranslations("community");
   const { me } = useCommunity();
-  const [open, setOpen] = useState(false);
+  const { user } = useHeaderSession();
+  const [open, setOpen] = useState(initialOpen);
+  const prefix = discovery ? "/discovery" : "/community";
   const [selected, setSelected] = useState("");
   const [name, setName] = useState("");
   const [busy, setBusy] = useState(false);
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState<unknown>();
-  const collections = useResource<Page<{ id: string; name: string }>>(open ? "/community/collections" : null);
+  const collections = useResource<Page<{ id: string; name: string }>>(open ? `${prefix}/collections` : null);
   async function submit(e: FormEvent) {
     e.preventDefault(); setBusy(true); setError(undefined);
     try {
       let id = selected;
-      if (!id) id = (await api<{ id: string }>("/community/collections", { method: "POST", body: JSON.stringify({ name }) })).id;
-      await api(`/community/collections/${id}/items`, { method: "PUT", body: JSON.stringify({ kind, target }) }); setSaved(true); setOpen(false);
+      if (!id) { id = (await api<{ id: string }>(`${prefix}/collections`, { method: "POST", body: JSON.stringify({ name }) })).id; setSelected(id); }
+      await api(`${prefix}/collections/${id}/items`, { method: discovery ? "POST" : "PUT", body: JSON.stringify(discovery ? { kind, id: target } : { kind, target }) }); setSaved(true); setOpen(false);
     } catch (value) { setError(value); } finally { setBusy(false); }
   }
-  return <><Button secondary disabled={!me?.profile} onClick={() => setOpen(true)}>{saved ? t("saved") : t("addToCollection")}</Button>{open && <Dialog title={t("collections")} onClose={() => setOpen(false)}><form onSubmit={submit} className="space-y-4"><p>{t("privateCollections")}</p>
+  return <><Button secondary disabled={discovery ? !user : !me?.profile} onClick={() => setOpen(true)}>{saved ? t("saved") : t("addToCollection")}</Button>{open && <Dialog title={t("collections")} onClose={() => setOpen(false)}><form onSubmit={submit} className="space-y-4"><p>{t("privateCollections")}</p>
     <label className="block font-semibold">{t("collection")}<select className={fieldClass} value={selected} onChange={(e) => setSelected(e.target.value)}><option value="">{t("newCollection")}</option>{collections.data?.items.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
     {!selected && <label className="block font-semibold">{t("name")}<input required maxLength={80} value={name} onChange={(e) => setName(e.target.value)} className={fieldClass} /></label>}
     <ErrorNotice error={error || collections.error} /><Button type="submit" disabled={busy || Boolean(collections.error)}>{t("save")}</Button>
@@ -123,6 +126,7 @@ export function PostDetails({ id }: { id: string }) {
     <header className="space-y-3"><p className="text-sm font-semibold text-[var(--teal)]">{post.destination}{post.featured && ` · ${t("officialSelection")}`}</p><h1 className="text-3xl font-bold md:text-4xl">{post.title}</h1><Link href={`/community/profiles/${post.author.handle}`} className="font-semibold underline">{post.author.display_name}</Link></header>
     <div className="grid gap-4 sm:grid-cols-2">{post.media.map((image) => <CommunityImage key={image.id} id={image.id} alt={image.alt || post.title} />)}</div>
     <TranslateText kind="post" id={post.id} original={post.body} sourceLocale={post.locale} />
+    {post.video_refs?.map((video) => <DiscoveryVideoPlayer key={video.video_id} video={video} />)}
     <div className="flex flex-wrap gap-2">{post.topics.map((topic) => <span key={topic} className="rounded-full bg-[var(--paper)] px-3 py-1 text-sm">#{topic}</span>)}</div>
     <RelatedPlaces places={post.places || []} />
     <div className="flex flex-wrap gap-3"><Button secondary disabled={busy || !me?.profile} onClick={() => void react("like")}>{post.liked ? t("unlike") : t("like")} · {post.likes}</Button><Button secondary disabled={busy || !me?.profile} onClick={() => void react("save")}>{post.saved ? t("unsave") : t("savePost")} · {post.saves}</Button><CollectButton kind="post" target={id} /><ReportButton kind="post" target={id} />
