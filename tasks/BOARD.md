@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**18 open · 0 in progress · 2 blocked · 1 in review · 158 done**
+**18 open · 1 in progress · 2 blocked · 1 in review · 158 done**
 
 ## Ready to claim
 
@@ -27,7 +27,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-_Nothing here._
+| Task | Owner | Claimed (UTC) | Branch |
+| --- | --- | --- | --- |
+| [Integrate PR 365 historical deployment and open verification notes](open/2026-09-09-pr365-docs-integration.md) | codex-pr365-docs | 2026-09-09T06:20:37Z | `codex/pr365-docs-ready-20260909` |
 
 ## In review
 
