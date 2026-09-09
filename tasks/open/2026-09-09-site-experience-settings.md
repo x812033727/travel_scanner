@@ -1,7 +1,7 @@
 ---
 id: 2026-09-09-site-experience-settings
 title: Mokaair site experience palettes and managed information pages
-status: in-progress
+status: blocked
 priority: P1
 area: web
 owner: codex-site-experience
@@ -24,6 +24,11 @@ scope:
   - apps/api/tests/test_database_admin.py
   - apps/api/tests/support/e2e_deploy_agent.py
   - apps/web/app/[locale]/layout.tsx
+  - apps/web/app/(stay22-public)/[locale]/layout.tsx
+  - apps/web/app/(stay22-public)/[locale]/layout.test.tsx
+  - apps/web/components/travel-services/stay22-public-hotels.tsx
+  - apps/web/components/travel-services/stay22-public-hotels.test.tsx
+  - apps/web/e2e/stay22-script.spec.ts
   - apps/web/app/[locale]/metadata.test.ts
   - apps/web/app/[locale]/page.test.tsx
   - apps/web/app/[locale]/pricing/page.test.tsx
@@ -118,7 +123,7 @@ scope:
 
 ## Why
 
-Implement the approved Mokaair frontend, six palettes and managed information pages plan. Preserve the original dirty checkout; work from origin/main 95122362 in an isolated worktree. Policies remain unpublished drafts; no merge or deployment is authorized.
+Implement the approved Mokaair frontend, six palettes and managed information pages plan. Preserve the original dirty checkout; work from origin/main 95122362 in an isolated worktree. Policies remain unpublished drafts. The user authorized PR #380 merge on 2026-09-09 after the incomplete manual acceptance was disclosed; deployment and policy publication remain unauthorized.
 
 ## Definition of done
 
@@ -126,7 +131,7 @@ Implement the approved Mokaair frontend, six palettes and managed information pa
 - [x] Language is reachable at the top, six palettes share state, existing planner palettes remain selectable.
 - [x] Four five-language information documents support draft, preview, CAS, audited publication and revision restoration.
 - [ ] Safe frontend close/back/focus flows have regression coverage and desktop/mobile browser evidence.
-- [x] Relevant local checks and full CI pass; PR remains unmerged.
+- [x] Relevant local checks and full CI pass; revalidate any base-branch reconciliation before the authorized merge.
 
 ## Steps
 
@@ -148,4 +153,6 @@ Initial verification: API focused 86 passed / 18 skipped (PostgreSQL-only cases 
 
 Draft PR: https://github.com/x812033727/travel_scanner/pull/380. Follow-up evidence and exact remaining manual acceptance are recorded in docs/site-experience.md. CI-discovered strict types, managed-metadata/root-provider fixtures and admin registry navigation have been corrected. At that earlier checkpoint, current-head CI and approved-preview manual browser verification were both still open; the final code verification follows below.
 
-Code revision 470d16d6 is now fully green: API 2,805 passed / 15 skipped; Web units 1,445 passed; browser UI 376 passed / 4 skipped; migrations, Ruff, mypy, i18n, TypeScript, lint, build, containers, full-stack, planner and discovery workflows passed. Native multi-entry Back and the admin topbar overlap are fixed and verified. Twelve final-code palette screenshots were inspected. Latest main d9ef8fcd is incorporated without changing its hotel fixes. Only the approved-preview built-in-browser manual acceptance remains open; policy publication, PR merge and deployment are still not authorized.
+Code revision 470d16d6 and the documentation-only head 552637d7 are fully green: API 2,805 passed / 15 skipped; Web units 1,445 passed; browser UI 376 passed / 4 skipped; migrations, Ruff, mypy, i18n, TypeScript, lint, build, containers, full-stack, planner and discovery workflows passed. Native multi-entry Back and the admin topbar overlap are fixed and verified. Twelve final-code palette screenshots were inspected. Main d9ef8fcd was incorporated without changing its hotel fixes.
+
+Merge follow-up (2026-09-09): the user explicitly authorized merging PR #380. Reconcile main 73f893a2 (#383) by retaining both browser test lists and regenerating the task board; rerun CI on the combined head before a SHA-guarded merge. This task stays blocked only on the outstanding built-in-browser manual acceptance: an approved isolated preview URL is still needed after local preview startup was rejected by execution policy. No alternative launcher, deployment, policy publication or production mutation is authorized by this merge request. Automatic browser evidence is not a substitute for that manual checklist.

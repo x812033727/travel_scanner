@@ -91,6 +91,59 @@ async def public_config(session: Session) -> dict[str, Any]:
     return config.model_dump(exclude={"airalo_feed_enabled", "hotel_quote_policies", "stay22"})
 
 
+@router.get("/travel-services/stay22-script-config")
+async def public_stay22_script_config(
+    session: Session, request: Request, response: Response
+) -> dict[str, Any]:
+    from app.travel_services.stay22_script import script_config
+
+    response.headers["Cache-Control"] = "no-store"
+    response.headers["Referrer-Policy"] = "no-referrer"
+    config, _ = await catalog_config(session)
+    return script_config(
+        config,
+        tracking_allowed=request.headers.get("dnt") != "1"
+        and request.headers.get("sec-gpc") != "1",
+    )
+
+
+@router.get("/travel-services/{product_id}/stay22-script-options")
+async def public_stay22_script_options(
+    product_id: UUID,
+    session: Session,
+    request: Request,
+    response: Response,
+    locale: RequestLocale,
+) -> dict[str, Any]:
+    from app.travel_services.stay22_script import script_config, script_options
+
+    response.headers["Cache-Control"] = "no-store"
+    response.headers["Referrer-Policy"] = "no-referrer"
+    await enforce_named_rate_limit(
+        "stay22-script-options",
+        request.headers.get("x-travel-client-ip")
+        or (request.client.host if request.client else "unknown"),
+        limit=60,
+        window_seconds=60,
+    )
+    config, _ = await catalog_config(session)
+    if not script_config(
+        config,
+        tracking_allowed=request.headers.get("dnt") != "1"
+        and request.headers.get("sec-gpc") != "1",
+    )["enabled"]:
+        raise fail("service_unavailable", 404)
+    product = await session.get(TravelServiceProduct, product_id)
+    if not (
+        product
+        and product.kind == "hotel"
+        and product.status == "approved"
+        and product_enabled(config, product)
+    ):
+        raise fail("service_unavailable", 404)
+    return await script_options(product, config, datetime.now(UTC), locale=locale)
+
+
 @router.get("/travel-services")
 async def public_services(
     session: Session,

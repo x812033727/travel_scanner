@@ -4,7 +4,7 @@
 
 This release adds three palette families (mocha, lagoon and forest), each in light and dark mode, moves language controls to top headers, expands all reviewed card topics and separates reading sources into articles and videos. Empty introductions and coordinate-only fact sections render nothing. Data, moderation gates, provider costs and API identifiers are unchanged.
 
-The original dirty checkout remains untouched. The feature branch starts at main `95122362` and incorporates main `d9ef8fcd`, preserving the intervening Stay22 integration and first-click/retry fixes. This change does not merge this PR, deploy, publish a policy, collect personal data or submit a paid provider request as part of verification.
+The original dirty checkout remains untouched. The feature branch starts at main `95122362` and incorporates main `73f893a2`, preserving the intervening Stay22 integration, isolated public document and first-click/retry fixes. The user authorized merging PR #380 on 2026-09-09 after the remaining manual acceptance was disclosed. This authorization does not deploy, publish a policy, collect personal data or submit a paid provider request as part of verification.
 
 ## Information-page workflow
 
@@ -42,7 +42,8 @@ Local checks and built-in browser observations are recorded in the task/PR when 
 
 - Validated code revision: `470d16d6dea750f1643e7745f94652d6c47daa99`. [Full CI](https://github.com/x812033727/travel_scanner/actions/runs/34357389559) and the planner/discovery workflows passed: 2,805 API cases (15 skipped), 1,445 Web unit cases and 376 isolated browser cases (4 skipped), with Ruff, mypy, fresh/upgrade PostgreSQL migrations, TypeScript, lint, i18n, production builds, containers and full-stack workflows. Subsequent documentation-only commits do not change this implementation; current-head checks are linked from the PR.
 - The native same-document Back regression is resolved: both accept/cancel cases pass on desktop and Pixel 7, including the chosen destination and retained draft assertions. The eight-width topbar checks also pass. All twelve final palette screenshots were visually inspected. [Final-code automated screenshots](https://github.com/x812033727/travel_scanner/actions/runs/34357389559/artifacts/10106686351) are synthetic CI captures, not built-in-browser manual evidence.
-- **Only manual acceptance remains open:** an approved isolated preview is needed for the built-in-browser checks below. Policies remain unpublished, and the PR remains a draft without merge or deployment.
+- **Manual acceptance remains open:** an approved isolated preview is needed for the built-in-browser checks below. Policies remain unpublished. The subsequent explicit merge request authorizes reconciling current main, rerunning CI and merging the verified head; it does not complete this manual checklist or authorize deployment.
+- Merge preparation incorporates main `73f893a2` (#383), retaining both browser test lists and regenerating the task board. Its isolated public hotel document also receives a privacy-safe top language entry and explicit semantic primary foreground. Existing global semantic CSS already protected the button contrast; no failed rendered-contrast claim is made. Current-head CI and merge evidence are tracked on PR #380 rather than inferred from the earlier counts above.
 
 Earlier checkpoints are retained below for traceability; their subsequently fixed failures are not current open regressions:
 
