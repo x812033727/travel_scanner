@@ -749,7 +749,7 @@ test("airline fare lab asks a visitor to sign in before showing charge buttons",
   }));
   await page.goto("/zh-TW/labs/airlines");
   await expect(page.getByRole("heading", { name: "登入後查詢 · 消耗 1 次" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "登入" })).toHaveAttribute("href", "/zh-TW/login?next=%2Flabs%2Fairlines");
+  await expect(page.getByRole("link", { name: "登入", exact: true })).toHaveAttribute("href", "/zh-TW/login?next=%2Flabs%2Fairlines");
   await expect(page.getByRole("button", { name: /搜尋公開票價/ })).toHaveCount(0);
 });
 
