@@ -63,6 +63,10 @@ EVENT_NAMES = (
     "usage_charged",
     "usage_insufficient",
     "login_resumed",
+    "discovery_search",
+    "discovery_empty",
+    "content_saved",
+    "post_published",
 )
 COUNTED_EVENT_NAMES = tuple(name for name in EVENT_NAMES if name != "page_view")
 # What the admin funnel walks. Every step after the first is counted as the sessions

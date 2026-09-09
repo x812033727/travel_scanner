@@ -2,7 +2,7 @@ from functools import lru_cache
 from typing import Literal
 from urllib.parse import urlparse
 
-from pydantic import Field
+from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -93,6 +93,7 @@ class Settings(BaseSettings):
     settings_encryption_key: str | None = None
     admin_emails: str = ""
     community_enabled: bool = False
+    discovery_enabled: bool = False
     community_s3_endpoint: str | None = None
     community_s3_public_endpoint: str | None = None
     community_s3_region: str = "us-east-1"
@@ -235,10 +236,17 @@ class Settings(BaseSettings):
     kkday_api_base_url: str | None = None
     kkday_api_key: str | None = None
     klook_enabled: bool = False
+    klook_affiliate_id: str | None = Field(default=None, pattern=r"^[1-9][0-9]{0,19}$")
     klook_affiliate_url_template: str | None = None
     klook_allowed_hosts: str = "klook.com,www.klook.com"
     klook_api_base_url: str | None = None
     klook_api_key: str | None = None
+
+    @field_validator("klook_affiliate_id", mode="before")
+    @classmethod
+    def empty_klook_aid(cls, value: object) -> object:
+        return None if value == "" else value
+
     airalo_enabled: bool = False
     airalo_affiliate_url_template: str | None = None
     airalo_allowed_hosts: str = "airalo.com,www.airalo.com"

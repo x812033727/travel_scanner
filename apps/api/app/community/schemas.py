@@ -70,6 +70,11 @@ class PlaceInput(Input):
     id: UUID
 
 
+class VideoReferenceInput(Input):
+    provider: Literal["youtube"] = "youtube"
+    video_id: str = Field(pattern=r"^[A-Za-z0-9_-]{11}$", min_length=11, max_length=11)
+
+
 class PostInput(Input):
     version: int | None = Field(default=None, ge=1)
     title: str = Field(default="", max_length=160)
@@ -81,6 +86,7 @@ class PostInput(Input):
     place_ids: list[UUID] = Field(default_factory=list, max_length=20)
     places: list[PlaceInput] | None = Field(default=None, max_length=20)
     media_ids: list[UUID] = Field(default_factory=list, max_length=10)
+    video_refs: list[VideoReferenceInput] = Field(default_factory=list, max_length=5)
     # None deliberately removes the public itinerary on save. The editor includes
     # a saved snapshot unless the author explicitly selects another source trip.
     source_trip_id: UUID | None = None
@@ -91,6 +97,8 @@ class PostInput(Input):
     def one_place_contract(self) -> PostInput:
         if self.places is not None and self.place_ids:
             raise ValueError("use places or legacy place_ids, not both")
+        if len({ref.video_id for ref in self.video_refs}) != len(self.video_refs):
+            raise ValueError("duplicate video reference")
         return self
 
     @field_validator("topics")
@@ -116,8 +124,22 @@ class CollectionInput(Input):
 
 
 class CollectionItemInput(Input):
-    kind: Literal["post", "pet_place", "hotspot", "merchant", "restaurant", "food"]
+    kind: Literal[
+        "post", "pet_place", "hotspot", "merchant", "restaurant", "food", "guide", "hotel"
+    ]
     target: str = Field(min_length=1, max_length=160)
+
+    @model_validator(mode="after")
+    def canonical_discovery_target(self) -> CollectionItemInput:
+        if self.kind in {"guide", "hotel"}:
+            self.target = str(UUID(self.target))
+        return self
+
+
+class CreatorInvitationInput(Input):
+    version: int = Field(ge=0)
+    invited: bool
+    reason: str = Field(min_length=3, max_length=1000)
 
 
 class ForkInput(Input):

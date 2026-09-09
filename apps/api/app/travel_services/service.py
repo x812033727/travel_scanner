@@ -24,7 +24,14 @@ from app.models import (
 )
 from app.problems import AppError
 from app.restaurants.editorial import validate_editorial_url
-from app.travel_services.registry import BRANDS, affiliate_target, brand_target
+from app.travel_services.channels import (
+    channel_context,
+    channel_for,
+    channel_project,
+    klook_product_target,
+    validate_offer_target,
+)
+from app.travel_services.registry import BRANDS, affiliate_target
 from app.travel_services.schemas import CITIES, KINDS, CatalogConfig, Facts, HotelLink, ProductInput
 from app.trips.stay_areas import evidence_items, extension_destination_ids, score_stay_areas
 
@@ -132,19 +139,23 @@ def fresh_price(facts: Facts, now: datetime) -> bool:
 
 
 def ready_brand(brand: TravelServiceBrand, settings: Settings, now: datetime) -> bool:
+    channel = channel_for(brand)
     return bool(
         brand.code in BRANDS
-        and brand.project_id == settings.travelpayouts_project_id
+        and brand.project_id == channel_project(settings, channel)
         and brand.enabled
         and brand.approval == "approved"
         and brand.verified_at
         and now - timedelta(days=30) <= brand.verified_at <= now
-        and settings.travelpayouts_enabled
+        and (
+            channel == "travelpayouts" and settings.travelpayouts_enabled
+            or channel == "klook_direct" and brand.code == "klook" and settings.klook_enabled
+        )
     )
 
 
-def link_context(settings: Settings) -> str:
-    return fingerprint([settings.travelpayouts_project_id, settings.travelpayouts_marker])
+def link_context(settings: Settings, channel: str = "travelpayouts") -> str:
+    return channel_context(settings, channel)
 
 
 def ready_offer(
@@ -165,7 +176,11 @@ def ready_offer(
     ):
         return False
     try:
-        brand_target(brand.code, offer.target_url)
+        validate_offer_target(brand, offer.target_url, offer.static_url)
+        if channel_for(brand) == "klook_direct":
+            if offer.scope == "product":
+                klook_product_target(offer.target_url, product.kind)
+            return offer.verification_context == link_context(settings, "klook_direct")
         if offer.static_url:
             affiliate_target(offer.static_url)
             return bool(
@@ -195,11 +210,13 @@ def ready_destination_offer(
         and (not offer.expires_at or offer.expires_at > now)
         and ready_brand(brand, settings, now)
         and offer.module in BRANDS[brand.code].supported_modules
-        and offer.verification_context == link_context(settings)
+        and offer.verification_context == link_context(settings, channel_for(brand))
     ):
         return False
     try:
-        brand_target(brand.code, offer.target_url)
+        validate_offer_target(brand, offer.target_url, offer.static_url)
+        if channel_for(brand) == "klook_direct":
+            return True
         if offer.static_url:
             affiliate_target(offer.static_url)
             return bool(settings.travelpayouts_marker)

@@ -1,6 +1,10 @@
-import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { AdminSettingsPanel } from "./admin-settings-panel";
+import { klookAffiliateCopy } from "@/lib/klook-affiliate-copy";
+
+const sessionIdentity = vi.hoisted(() => ({ user: null as { id: string; email: string; preferred_currency?: string } | null, key: undefined as object | undefined }));
+vi.mock("@/components/header-session", () => ({ useHeaderSession: () => ({ user: sessionIdentity.user, sessionIdentity: sessionIdentity.key ?? sessionIdentity.user }) }));
 
 const snapshot = {
   encryption_source: "SETTINGS_ENCRYPTION_KEY",
@@ -397,9 +401,268 @@ function savedBody(fetchMock: ReturnType<typeof vi.fn>) {
   return JSON.parse(String(request.body));
 }
 
-afterEach(() => vi.unstubAllGlobals());
+afterEach(() => { vi.unstubAllGlobals(); vi.restoreAllMocks(); sessionIdentity.user = null; sessionIdentity.key = undefined; });
 
 describe("AdminSettingsPanel", () => {
+  it("saves a direct Klook affiliate ID as text without requiring or calling a pricing API", async () => {
+    const data = { ...snapshot, providers: [{ provider: "klook", label: "Klook", description: "Affiliate links", enabled: true,
+      configured: true, status: "ready", status_message: "Affiliate links ready", config: { klook_affiliate_id: "12345" },
+      config_sources: { klook_affiliate_id: "database" }, secrets: { klook_api_key: { configured: false, source: "none" } }, updated_at: null }] };
+    const fetchMock = vi.fn().mockImplementation(async () => new Response(JSON.stringify(data), { status: 200 }));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminSettingsPanel provider="klook" field="klook_affiliate_id" />);
+    const field = await screen.findByLabelText(/^Klook Affiliate ID/);
+    expect(screen.getByText(klookAffiliateCopy("zh-TW").noApi)).toBeTruthy();
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    fireEvent.change(field, { target: { value: "67890" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存設定" }));
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    expect(String(fetchMock.mock.calls[1][0])).toContain("/admin/provider-settings/klook");
+    expect(JSON.parse(String(fetchMock.mock.calls[1][1].body))).toEqual({ config: { klook_affiliate_id: "67890" }, secrets: {}, expected_updated_at: null });
+    expect(fetchMock.mock.calls.some(([url]) => String(url).includes("test-connection") || String(url).includes("hotel-quotes"))).toBe(false);
+  });
+  it("keeps active and retained drafts when currency/profile updates replace the user object", async () => {
+    sessionIdentity.key = {};
+    sessionIdentity.user = { id: "profile-admin", email: "admin@example.com", preferred_currency: "TWD" };
+    const fetchMock = stubAiFetch(snapshot);
+    const first = render(<AdminSettingsPanel />);
+    fireEvent.change(await screen.findByLabelText("伺服器 API Key"), { target: { value: "same-login-key" } });
+    fireEvent.change(screen.getByLabelText(/^路線快取秒數/), { target: { value: "1200" } });
+    sessionIdentity.user = { ...sessionIdentity.user, preferred_currency: "USD" };
+    first.rerender(<AdminSettingsPanel />);
+    expect((screen.getByLabelText("伺服器 API Key") as HTMLInputElement).value).toBe("same-login-key");
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    first.unmount();
+    sessionIdentity.user = { ...sessionIdentity.user, email: "updated@example.com" };
+    render(<AdminSettingsPanel />);
+    expect((await screen.findByLabelText("伺服器 API Key") as HTMLInputElement).value).toBe("same-login-key");
+    expect((screen.getByLabelText(/^路線快取秒數/) as HTMLInputElement).value).toBe("1200");
+  });
+
+  it("does not resurrect discarded secret drafts when a late usage refresh completes", async () => {
+    sessionIdentity.user = { id: "discard-race-admin", email: "admin@example.com" };
+    vi.spyOn(window, "confirm").mockReturnValue(true);
+    let finishRefresh!: (response: Response) => void;
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(new Response(JSON.stringify(snapshot), { status: 200 }))
+      .mockImplementationOnce(() => new Promise<Response>((resolve) => { finishRefresh = resolve; }))
+      .mockResolvedValueOnce(new Response(JSON.stringify(snapshot), { status: 200 }));
+    vi.stubGlobal("fetch", fetchMock);
+    const first = render(<AdminSettingsPanel />);
+    fireEvent.change(await screen.findByLabelText("伺服器 API Key"), { target: { value: "discard-this-key" } });
+    fireEvent.click(screen.getByRole("button", { name: "重新整理用量" }));
+    window.dispatchEvent(new CustomEvent("admin:before-navigate", { cancelable: true, detail: { url: "/admin/foods" } }));
+    await act(async () => { finishRefresh(new Response(JSON.stringify(snapshot), { status: 200 })); });
+    first.unmount();
+    render(<AdminSettingsPanel />);
+    expect((await screen.findByLabelText("伺服器 API Key") as HTMLInputElement).value).toBe("");
+  });
+
+  it("ignores a stale usage snapshot arriving after a successful save", async () => {
+    const newer = { ...snapshot, providers: snapshot.providers.map((item) => item.provider === "google_maps" ? { ...item, updated_at: "2026-09-08T02:00:00Z", config: { ...item.config, route_cache_ttl_seconds: 1200 } } : item) };
+    let finishRefresh!: (response: Response) => void;
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(new Response(JSON.stringify(snapshot), { status: 200 }))
+      .mockImplementationOnce(() => new Promise<Response>((resolve) => { finishRefresh = resolve; }))
+      .mockResolvedValueOnce(new Response(JSON.stringify(newer), { status: 200 }));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminSettingsPanel />);
+    fireEvent.change(await screen.findByLabelText(/^路線快取秒數/), { target: { value: "1200" } });
+    fireEvent.click(screen.getByRole("button", { name: "重新整理用量" }));
+    fireEvent.click(screen.getByRole("button", { name: "儲存設定" }));
+    await screen.findByText("Google Maps 設定已加密儲存並立即套用。");
+    await act(async () => { finishRefresh(new Response(JSON.stringify(snapshot), { status: 200 })); });
+    expect((screen.getByLabelText(/^路線快取秒數/) as HTMLInputElement).value).toBe("1200");
+    expect((screen.getByRole("button", { name: "儲存設定" }) as HTMLButtonElement).disabled).toBe(true);
+  });
+
+  it("restores Back/Forward drafts in memory with their original version and never persists secrets", async () => {
+    sessionIdentity.user = { id: "back-forward-admin", email: "admin@example.com" };
+    const storage = vi.spyOn(Storage.prototype, "setItem");
+    const initial = { ...snapshot, providers: snapshot.providers.map((item) => ({ ...item, updated_at: "2026-09-08T00:00:00Z" })) };
+    const newer = { ...initial, providers: initial.providers.map((item) => ({ ...item, updated_at: "2026-09-08T02:00:00Z" })) };
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(new Response(JSON.stringify(initial), { status: 200 }))
+      .mockResolvedValueOnce(new Response(JSON.stringify(newer), { status: 200 }))
+      .mockResolvedValueOnce(new Response(JSON.stringify(newer), { status: 200 }));
+    vi.stubGlobal("fetch", fetchMock);
+    const first = render(<AdminSettingsPanel />);
+    fireEvent.change(await screen.findByLabelText(/^路線快取秒數/), { target: { value: "1200" } });
+    fireEvent.change(screen.getByLabelText("伺服器 API Key"), { target: { value: "memory-only-key" } });
+    window.dispatchEvent(new PopStateEvent("popstate"));
+    first.unmount();
+    render(<AdminSettingsPanel />);
+    expect((await screen.findByLabelText(/^路線快取秒數/) as HTMLInputElement).value).toBe("1200");
+    expect((screen.getByLabelText("伺服器 API Key") as HTMLInputElement).value).toBe("memory-only-key");
+    expect(storage.mock.calls.some((call) => String(call).includes("memory-only-key"))).toBe(false);
+    fireEvent.click(screen.getByRole("button", { name: "儲存設定" }));
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(3));
+    expect(JSON.parse(String((fetchMock.mock.calls[2][1] as RequestInit).body)).expected_updated_at).toBe("2026-09-08T00:00:00Z");
+  });
+
+  it.each(["new-login", "confirmed-discard"])("does not restore secret drafts after %s", async (reason) => {
+    sessionIdentity.user = { id: "same-account", email: "admin@example.com" };
+    const confirm = vi.spyOn(window, "confirm").mockReturnValue(true);
+    stubAiFetch(snapshot);
+    const first = render(<AdminSettingsPanel />);
+    fireEvent.change(await screen.findByLabelText("伺服器 API Key"), { target: { value: "do-not-restore" } });
+    if (reason === "confirmed-discard") {
+      window.dispatchEvent(new CustomEvent("admin:before-navigate", { cancelable: true, detail: { url: "/admin/foods" } }));
+      expect(confirm).toHaveBeenCalledTimes(1);
+    }
+    first.unmount();
+    if (reason === "new-login") sessionIdentity.user = { id: "same-account", email: "admin@example.com" };
+    render(<AdminSettingsPanel />);
+    expect((await screen.findByLabelText("伺服器 API Key") as HTMLInputElement).value).toBe("");
+    expect((screen.getByRole("button", { name: "儲存設定" }) as HTMLButtonElement).disabled).toBe(true);
+  });
+
+  it("edits only food-owned fields and links shared credentials without a paid call", async () => {
+    const foodSnapshot = {
+      ...snapshot,
+      providers: [{ ...snapshot.providers[0], updated_at: "2026-09-08T00:00:00Z", config: {
+        ...snapshot.providers[0].config, restaurant_scan_enabled: true, restaurant_aggregate_monthly_budget: 4000,
+      } }],
+    };
+    const fetchMock = stubAiFetch(foodSnapshot);
+    render(<AdminSettingsPanel scope="foods" />);
+    const budget = await screen.findByLabelText(/^餐廳 Aggregate 每月安全上限/);
+    expect(screen.queryByLabelText(/^路線快取秒數/)).toBeNull();
+    expect(screen.queryByLabelText("伺服器 API Key")).toBeNull();
+    expect(screen.queryByRole("button", { name: "測試連線" })).toBeNull();
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(document.querySelector('[data-settings-field="google_maps_api_key"] a')?.getAttribute("href")).toBe("/admin/settings?provider=google_maps&field=google_maps_api_key");
+    fireEvent.change(budget, { target: { value: "3500" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存設定" }));
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    expect(savedBody(fetchMock)).toEqual({ config: { restaurant_aggregate_monthly_budget: 3500 }, secrets: {}, expected_updated_at: "2026-09-08T00:00:00Z" });
+  });
+
+  it("does not duplicate editable hotspot fields on the shared provider page", async () => {
+    stubAiFetch(aiSnapshot);
+    render(<AdminSettingsPanel provider="ai_guide_search" field="hotspot_guide_ai_default_provider" />);
+    const heading = await screen.findByRole("heading", { name: "AI 景點介紹搜尋" });
+    const section = heading.closest("section")!;
+    expect(within(section).queryByLabelText(/^景點 AI 搜尋預設供應商/)).toBeNull();
+    expect(within(section).queryByLabelText("啟用")).toBeNull();
+    expect(within(section).queryByRole("button", { name: "儲存設定" })).toBeNull();
+    const link = section.querySelector('[data-settings-field="hotspot_guide_ai_default_provider"] a');
+    expect(link?.getAttribute("href")).toBe("/admin/hotspots?tab=settings&provider=ai_guide_search&field=hotspot_guide_ai_default_provider");
+    await waitFor(() => expect(document.activeElement).toBe(link));
+  });
+
+  it("saving one card preserves other drafts and their original version tokens", async () => {
+    const initial = { ...snapshot, providers: snapshot.providers.map((item) => ({ ...item, updated_at: "2026-09-08T00:00:00Z" })) };
+    const updated = { ...initial, providers: initial.providers.map((item) => ({ ...item, updated_at: "2026-09-08T01:00:00Z", config: item.provider === "youtube_guides" ? { ...item.config, hotspot_guide_youtube_daily_search_budget: 70 } : item.config })) };
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(new Response(JSON.stringify(initial), { status: 200 }))
+      .mockResolvedValueOnce(new Response(JSON.stringify(updated), { status: 200 }))
+      .mockResolvedValueOnce(new Response(JSON.stringify(updated), { status: 200 }));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminSettingsPanel />);
+    fireEvent.change(await screen.findByLabelText(/^路線快取秒數/), { target: { value: "1200" } });
+    fireEvent.change(screen.getByLabelText("伺服器 API Key"), { target: { value: "pending-key" } });
+    fireEvent.click(screen.getByRole("tab", { name: /景點內容/ }));
+    fireEvent.change(screen.getByLabelText(/^每日自動搜尋上限/), { target: { value: "70" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存設定" }));
+    await screen.findByText("YouTube 景點介紹 設定已加密儲存並立即套用。");
+    fireEvent.click(screen.getByRole("tab", { name: /地圖與路線/ }));
+    expect((screen.getByLabelText(/^路線快取秒數/) as HTMLInputElement).value).toBe("1200");
+    expect((screen.getByLabelText("伺服器 API Key") as HTMLInputElement).value).toBe("pending-key");
+    fireEvent.click(screen.getByRole("button", { name: "儲存設定" }));
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(3));
+    expect(JSON.parse(String((fetchMock.mock.calls[2][1] as RequestInit).body))).toEqual({ config: { route_cache_ttl_seconds: 1200 }, secrets: { google_maps_api_key: "pending-key" }, expected_updated_at: "2026-09-08T00:00:00Z" });
+  });
+
+  it("refreshing usage or explicitly testing another provider preserves drafts", async () => {
+    const initial = { ...snapshot, providers: snapshot.providers.map((item) => ({ ...item, updated_at: "2026-09-08T00:00:00Z" })) };
+    const newer = { ...initial, providers: initial.providers.map((item) => ({ ...item, updated_at: "2026-09-08T02:00:00Z" })) };
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(new Response(JSON.stringify(initial), { status: 200 }))
+      .mockResolvedValueOnce(new Response(JSON.stringify(newer), { status: 200 }))
+      .mockResolvedValueOnce(new Response(JSON.stringify({ status: "success", message: "Test OK", latency_ms: 5 }), { status: 200 }))
+      .mockResolvedValueOnce(new Response(JSON.stringify(newer), { status: 200 }))
+      .mockResolvedValueOnce(new Response(JSON.stringify(newer), { status: 200 }));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminSettingsPanel />);
+    fireEvent.change(await screen.findByLabelText(/^路線快取秒數/), { target: { value: "1200" } });
+    expect((screen.getByRole("button", { name: "測試連線" }) as HTMLButtonElement).disabled).toBe(true);
+    fireEvent.click(within(screen.getByLabelText("Google Maps 本月用量")).getByRole("button", { name: "重新整理用量" }));
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    fireEvent.click(screen.getByRole("tab", { name: /景點內容/ }));
+    fireEvent.click(screen.getByRole("button", { name: "測試連線" }));
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(4));
+    fireEvent.click(screen.getByRole("tab", { name: /地圖與路線/ }));
+    expect((screen.getByLabelText(/^路線快取秒數/) as HTMLInputElement).value).toBe("1200");
+    await waitFor(() => expect((screen.getByRole("button", { name: "儲存設定" }) as HTMLButtonElement).disabled).toBe(false));
+    fireEvent.click(screen.getByRole("button", { name: "儲存設定" }));
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(5));
+    expect(JSON.parse(String((fetchMock.mock.calls[4][1] as RequestInit).body)).expected_updated_at).toBe("2026-09-08T00:00:00Z");
+  });
+
+  it("retains drafts on 409 and reloads only the conflicting card after confirmation", async () => {
+    const newer = { ...snapshot, providers: snapshot.providers.map((item) => ({ ...item, updated_at: "2026-09-08T02:00:00Z", config: item.provider === "google_maps" ? { ...item.config, route_cache_ttl_seconds: 1500 } : item.config })) };
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(new Response(JSON.stringify(snapshot), { status: 200 }))
+      .mockResolvedValueOnce(new Response(JSON.stringify({ code: "provider_setting_conflict", detail: "Conflict" }), { status: 409 }))
+      .mockResolvedValueOnce(new Response(JSON.stringify(newer), { status: 200 }));
+    vi.stubGlobal("fetch", fetchMock);
+    const confirm = vi.spyOn(window, "confirm").mockReturnValue(false);
+    render(<AdminSettingsPanel />);
+    fireEvent.change(await screen.findByLabelText(/^路線快取秒數/), { target: { value: "1200" } });
+    fireEvent.click(screen.getByRole("tab", { name: /景點內容/ }));
+    fireEvent.change(screen.getByLabelText(/^每日自動搜尋上限/), { target: { value: "60" } });
+    fireEvent.click(screen.getByRole("tab", { name: /地圖與路線/ }));
+    fireEvent.click(screen.getByRole("button", { name: "儲存設定" }));
+    expect((await screen.findByRole("alert")).textContent).toContain("你的草稿仍保留");
+    expect((screen.getByLabelText(/^路線快取秒數/) as HTMLInputElement).value).toBe("1200");
+    await waitFor(() => expect((screen.getByRole("button", { name: "重新載入這張卡片" }) as HTMLButtonElement).disabled).toBe(false));
+    fireEvent.click(screen.getByRole("button", { name: "重新載入這張卡片" }));
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    confirm.mockReturnValue(true);
+    fireEvent.click(screen.getByRole("button", { name: "重新載入這張卡片" }));
+    await waitFor(() => expect((screen.getByLabelText(/^路線快取秒數/) as HTMLInputElement).value).toBe("1500"));
+    fireEvent.click(screen.getByRole("tab", { name: /景點內容/ }));
+    expect((screen.getByLabelText(/^每日自動搜尋上限/) as HTMLInputElement).value).toBe("60");
+  });
+
+  it("guards leaving the settings pathname but allows retained settings tabs", async () => {
+    const oldPath = window.location.pathname + window.location.search;
+    window.history.replaceState({}, "", "/zh-TW/admin/hotspots?tab=settings");
+    const confirm = vi.spyOn(window, "confirm").mockReturnValue(false);
+    stubAiFetch(aiSnapshot);
+    const { unmount } = render(<AdminSettingsPanel scope="hotspots" />);
+    try {
+      const section = (await screen.findByRole("heading", { name: "AI 景點介紹搜尋" })).closest("section")!;
+      fireEvent.change(within(section).getByLabelText(/^景點 AI 搜尋預設供應商/), { target: { value: "openai" } });
+      const staying = new CustomEvent("admin:before-navigate", { cancelable: true, detail: { url: "/zh-TW/admin/hotspots?tab=catalog" } });
+      expect(window.dispatchEvent(staying)).toBe(true);
+      expect(confirm).not.toHaveBeenCalled();
+      const leaving = new CustomEvent("admin:before-navigate", { cancelable: true, detail: { url: "/zh-TW/admin/foods?tab=settings" } });
+      expect(window.dispatchEvent(leaving)).toBe(false);
+      const unload = new Event("beforeunload", { cancelable: true });
+      expect(window.dispatchEvent(unload)).toBe(false);
+      const link = section.querySelector('a[href^="/admin/settings"]');
+      // This card has no secrets itself. A dependency link also leaves the page.
+      const shared = link || screen.getAllByRole("link", { name: "共用供應商設定" })[0];
+      expect(fireEvent.click(shared)).toBe(false);
+      expect(confirm).toHaveBeenCalledTimes(2);
+    } finally { unmount(); window.history.replaceState({}, "", oldPath); }
+  });
+
+  it("updates the selected provider and focuses the field when deep-link props change", async () => {
+    stubAiFetch(snapshot);
+    const { rerender } = render(<AdminSettingsPanel provider="google_maps" field="google_maps_api_key" />);
+    const key = await screen.findByLabelText("伺服器 API Key");
+    await waitFor(() => expect(document.activeElement).toBe(key));
+    fireEvent.change(key, { target: { value: "unsaved" } });
+    rerender(<AdminSettingsPanel provider="youtube_guides" field="hotspot_guide_youtube_daily_search_budget" />);
+    const budget = await screen.findByLabelText(/^每日自動搜尋上限/);
+    await waitFor(() => expect(document.activeElement).toBe(budget));
+    fireEvent.click(screen.getByRole("tab", { name: /地圖與路線/ }));
+    expect((screen.getByLabelText("伺服器 API Key") as HTMLInputElement).value).toBe("unsaved");
+  });
+
   it("groups providers by category and preserves unsaved drafts across tabs", async () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue(
       new Response(JSON.stringify(providerTabsSnapshot), { status: 200 }),
@@ -498,8 +761,10 @@ describe("AdminSettingsPanel", () => {
 
     const trips = await screen.findByRole("switch", { name: /我的旅行/ });
     const pricing = screen.getByRole("switch", { name: /方案與次數包/ });
-    expect(screen.getAllByRole("switch")).toHaveLength(6);
-    expect(screen.getAllByText("環境預設")).toHaveLength(6);
+    expect(screen.getAllByRole("switch")).toHaveLength(5);
+    expect(screen.getAllByText("環境預設")).toHaveLength(5);
+    expect(screen.queryByRole("switch", { name: /熱門景點/ })).toBeNull();
+    expect(document.querySelector('[data-settings-field="hotspots_enabled"] a')?.getAttribute("href")).toBe("/admin/hotspots?tab=settings&provider=layout&field=hotspots_enabled");
     expect(screen.queryByRole("button", { name: "測試連線" })).toBeNull();
     expect(screen.queryByLabelText("啟用")).toBeNull();
     fireEvent.click(trips);
@@ -904,7 +1169,7 @@ describe("AdminSettingsPanel", () => {
       .mockResolvedValueOnce(new Response(JSON.stringify(bookingSnapshot), { status: 200 }))
       .mockResolvedValueOnce(new Response(JSON.stringify(bookingSnapshot), { status: 200 }));
     vi.stubGlobal("fetch", fetchMock);
-    render(<AdminSettingsPanel />);
+    render(<AdminSettingsPanel scope="hotels" />);
 
     const heading = await screen.findByRole("heading", { name: "Booking.com Demand API" });
     const section = heading.closest("section");
@@ -916,9 +1181,8 @@ describe("AdminSettingsPanel", () => {
     fireEvent.change(within(section!).getByLabelText(/^Demand API Affiliate ID/), {
       target: { value: "affiliate-456" },
     });
-    fireEvent.change(within(section!).getByLabelText("Demand API Bearer Token"), {
-      target: { value: "new-booking-token" },
-    });
+    expect(within(section!).queryByLabelText("Demand API Bearer Token")).toBeNull();
+    expect(document.querySelector('[data-settings-field="booking_demand_api_token"] a')?.getAttribute("href")).toBe("/admin/settings?provider=booking_demand&field=booking_demand_api_token");
     fireEvent.click(within(section!).getByRole("button", { name: "儲存設定" }));
 
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
@@ -927,7 +1191,8 @@ describe("AdminSettingsPanel", () => {
     expect(body.enabled).toBe(true);
     expect(body.config.booking_demand_env).toBe("production");
     expect(body.config.booking_demand_affiliate_id).toBe("affiliate-456");
-    expect(body.secrets.booking_demand_api_token).toBe("new-booking-token");
+    expect(body.secrets).toEqual({});
+    expect(body.config).toEqual({ booking_demand_env: "production", booking_demand_affiliate_id: "affiliate-456" });
   });
 
   it("groups the four AI cards under AI services and hides the enable switch on the vendor card", async () => {
@@ -975,7 +1240,7 @@ describe("AdminSettingsPanel", () => {
 
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
     const body = savedBody(fetchMock);
-    expect(body.enabled).toBe(true);
+    expect(body.enabled).toBeUndefined();
     expect(body.config).toEqual({ openai_api_base_url: "https://api.openai.com/v2" });
     expect(body.secrets).toEqual({ anthropic_api_key: "sk-ant-new" });
     expect((await screen.findByRole("status")).textContent).toContain("AI 供應商與金鑰 設定已加密儲存並立即套用。");
@@ -1000,7 +1265,7 @@ describe("AdminSettingsPanel", () => {
     expect(within(section).queryAllByLabelText(/^(OpenAI|Claude|MiniMax|Gemini) 模型/)).toHaveLength(0);
   });
 
-  it("sends the chosen catalog model and keeps hidden vendor models in the payload", async () => {
+  it("sends only the chosen model changes and leaves hidden vendor models untouched", async () => {
     const fetchMock = stubAiFetch(aiSnapshot);
     render(<AdminSettingsPanel />);
 
@@ -1013,8 +1278,8 @@ describe("AdminSettingsPanel", () => {
     const body = savedBody(fetchMock);
     expect(body.config.ai_planner_mode).toBe("openai");
     expect(body.config.openai_model).toBe("openai-model-b");
-    expect(body.config.anthropic_model).toBe("claude-model-a");
-    expect(body.config.minimax_model).toBe("minimax-model-a");
+    expect(body.config.anthropic_model).toBeUndefined();
+    expect(body.config.minimax_model).toBeUndefined();
   });
 
   it("reveals a text input for a custom model id and sends the typed value", async () => {
@@ -1049,17 +1314,15 @@ describe("AdminSettingsPanel", () => {
     const section = await openAiCard("AI 行程規劃");
     expect((within(section).getByLabelText(/^OpenAI 模型/) as HTMLSelectElement).value).toBe("__custom__");
     expect((within(section).getByLabelText("自訂模型 ID：OpenAI 模型") as HTMLInputElement).value).toBe("openai-model-legacy");
-    fireEvent.click(within(section).getByRole("button", { name: "儲存設定" }));
-
-    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
-    expect(savedBody(fetchMock).config.openai_model).toBe("openai-model-legacy");
+    expect((within(section).getByRole("button", { name: "儲存設定" }) as HTMLButtonElement).disabled).toBe(true);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
   it("lets guide search inherit or override the planner model per vendor", async () => {
     const fetchMock = stubAiFetch(aiSnapshot);
-    render(<AdminSettingsPanel />);
+    render(<AdminSettingsPanel scope="hotspots" />);
 
-    const section = await openAiCard("AI 景點介紹搜尋");
+    const section = (await screen.findByRole("heading", { name: "AI 景點介紹搜尋" })).closest("section")!;
     const minimax = within(section).getByLabelText(/^MiniMax 模型/) as HTMLSelectElement;
     expect(Array.from(minimax.options).map((option) => option.textContent)).toEqual(["沿用行程規劃的模型", "MiniMax Model A", "自訂…"]);
     expect(minimax.value).toBe("");
@@ -1074,15 +1337,15 @@ describe("AdminSettingsPanel", () => {
     const body = savedBody(fetchMock);
     expect(body.config.hotspot_guide_ai_default_provider).toBe("openai");
     expect(body.config.hotspot_guide_ai_openai_model).toBe("openai-model-b");
-    expect(body.config.hotspot_guide_ai_minimax_model).toBeNull();
-    expect(body.config.hotspot_guide_ai_anthropic_model).toBeNull();
+    expect(body.config.hotspot_guide_ai_minimax_model).toBeUndefined();
+    expect(body.config.hotspot_guide_ai_anthropic_model).toBeUndefined();
   });
 
   it("lets the introduction writer inherit the guide search model or take its own", async () => {
     const fetchMock = stubAiFetch(aiSnapshot);
-    render(<AdminSettingsPanel />);
+    render(<AdminSettingsPanel scope="hotspots" />);
 
-    const section = await openAiCard("AI 景點介紹撰寫");
+    const section = (await screen.findByRole("heading", { name: "AI 景點介紹撰寫" })).closest("section")!;
     const minimax = within(section).getByLabelText(/^MiniMax 模型/) as HTMLSelectElement;
     // Blank means the guide search's model, not the planner's: introductions run through
     // the guide search adapters, and the empty option has to say which one it inherits.
@@ -1099,7 +1362,7 @@ describe("AdminSettingsPanel", () => {
     const body = savedBody(fetchMock);
     expect(body.config.hotspot_intro_ai_default_provider).toBe("gemini");
     expect(body.config.hotspot_intro_ai_gemini_model).toBe("gemini-model-a");
-    expect(body.config.hotspot_intro_ai_minimax_model).toBeNull();
+    expect(body.config.hotspot_intro_ai_minimax_model).toBeUndefined();
   });
 
   it("lets the planner pin Gemini and sends its model through the shared vendor key", async () => {
@@ -1116,14 +1379,14 @@ describe("AdminSettingsPanel", () => {
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
     const body = savedBody(fetchMock);
     expect(body.config.ai_planner_mode).toBe("gemini");
-    expect(body.config.gemini_model).toBe("gemini-model-a");
+    expect(body.config.gemini_model).toBeUndefined();
   });
 
   it("lets guide search default to Gemini with its own optional model", async () => {
     const fetchMock = stubAiFetch(aiSnapshot);
-    render(<AdminSettingsPanel />);
+    render(<AdminSettingsPanel scope="hotspots" />);
 
-    const section = await openAiCard("AI 景點介紹搜尋");
+    const section = (await screen.findByRole("heading", { name: "AI 景點介紹搜尋" })).closest("section")!;
     fireEvent.change(within(section).getByLabelText(/^景點 AI 搜尋預設供應商/), { target: { value: "gemini" } });
     expect(within(section).queryByLabelText(/^MiniMax 模型/)).toBeNull();
     const gemini = within(section).getByLabelText(/^Gemini 模型/) as HTMLSelectElement;
@@ -1134,7 +1397,7 @@ describe("AdminSettingsPanel", () => {
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
     const body = savedBody(fetchMock);
     expect(body.config.hotspot_guide_ai_default_provider).toBe("gemini");
-    expect(body.config.hotspot_guide_ai_gemini_model).toBeNull();
+    expect(body.config.hotspot_guide_ai_gemini_model).toBeUndefined();
   });
 
   it("renders the Gemini model as a catalog dropdown with the option note", async () => {

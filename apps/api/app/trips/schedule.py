@@ -129,18 +129,29 @@ def is_logistics_item(item: TripPlanItem) -> bool:
     )
 
 
-def is_active_route_item(item: TripPlanItem) -> bool:
-    location_ready = (
-        getattr(item, "latitude", None) is not None and getattr(item, "longitude", None) is not None
+def is_optional_system_item(item: TripPlanItem) -> bool:
+    """Empty generated slots are optional; a selected but unlocated stop is a barrier.
+
+    Keep partial coordinates and member-entered place names in the graph so routing
+    cannot silently bridge across them. This is a projection, not a stored-item edit.
+    """
+    if item.system_role not in DAILY_SYSTEM_ROLES:
+        return False
+    return (
+        getattr(item, "latitude", None) is None
+        and getattr(item, "longitude", None) is None
+        and not (item.location_name or "").strip()
+        and not item.provider_place_id
+        and item.data.get("meal_selection_source") in (None, "", "unset")
     )
+
+
+def is_active_route_item(item: TripPlanItem) -> bool:
     return (
         not item.is_skipped
         and item.system_role not in FLIGHT_SYSTEM_ROLES
         and not is_logistics_item(item)
-        and (
-            item.system_role not in {"hotel_start", "hotel_end", "lunch", "dinner"}
-            or location_ready
-        )
+        and not is_optional_system_item(item)
     )
 
 
@@ -465,7 +476,8 @@ def canonicalize_positions(rows: list[TripPlanItem]) -> bool:
         # Only system meals have a prescribed relative order. Ordinary fixed-time
         # stops remain where the traveller put them and report lateness separately.
         meal_indexes = [
-            index for index, item in enumerate(route_rows)
+            index
+            for index, item in enumerate(route_rows)
             if item.system_role in {"lunch", "dinner"}
         ]
         meals = sorted(
@@ -488,9 +500,7 @@ def canonicalize_positions(rows: list[TripPlanItem]) -> bool:
     return changed
 
 
-def insert_scheduled_rows(
-    rows: list[TripPlanItem], additions: list[TripPlanItem]
-) -> None:
+def insert_scheduled_rows(rows: list[TripPlanItem], additions: list[TripPlanItem]) -> None:
     """Place newly generated anchors/stops without re-sorting existing stops."""
     added_ids = {row.id for row in additions}
     for day_value in {row.day_date for row in additions}:
@@ -500,13 +510,12 @@ def insert_scheduled_rows(
         )
         for item in sorted(
             (row for row in additions if row.day_date == day_value),
-            key=lambda row: (
-                row.start_time or datetime.max.replace(tzinfo=UTC), row.position
-            ),
+            key=lambda row: (row.start_time or datetime.max.replace(tzinfo=UTC), row.position),
         ):
             at = next(
                 (
-                    index for index, other in enumerate(ordered)
+                    index
+                    for index, other in enumerate(ordered)
                     if other.system_role not in {"outbound_flight", "hotel_start"}
                     and (
                         other.system_role in {"hotel_end", "return_flight"}

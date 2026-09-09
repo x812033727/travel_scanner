@@ -4,8 +4,100 @@ import ja from "../messages/ja/travelServices.json" with { type: "json" };
 import ko from "../messages/ko/travelServices.json" with { type: "json" };
 import tw from "../messages/zh-TW/travelServices.json" with { type: "json" };
 import cn from "../messages/zh-CN/travelServices.json" with { type: "json" };
+import { klookAffiliateCopy } from "../lib/klook-affiliate-copy";
 
 const catalogs = { en, ja, ko, "zh-TW": tw, "zh-CN": cn };
+
+for (const [locale, copy] of Object.entries(catalogs)) {
+  test(`${locale} Klook direct hotel booking stays separate from destination discovery`, async ({ page, context }) => {
+    await mock(context, false, false, true);
+    const modules: string[] = [];
+    const priceRequests: string[] = [];
+    page.on("request", (request) => {
+      if (request.url().includes("hotel-quotes")) priceRequests.push(request.url());
+    });
+    await context.route("**/api/travel/travel-services?**", (route) => route.fulfill({
+      json: { ...results, items: [{ ...items[0], offers: [], booking_options: [
+        { id: "klook-option", provider: "klook", name: "Klook", mode: "affiliate", quote_status: "not_configured" },
+        { id: "booking-option", provider: "booking", name: "Booking.com", mode: "direct", quote_status: "not_configured" },
+      ] }] },
+    }));
+    await context.route("**/api/travel/affiliates/destination-offers?**", (route) => {
+      const serviceModule = new URL(route.request().url()).searchParams.get("module") || "";
+      modules.push(serviceModule);
+      return route.fulfill({ json: {
+        destination_id: "tokyo", module: serviceModule, disclosure: copy.disclosure,
+        options: [{ id: `klook-${serviceModule}`, brand: "klook", display_name: "Klook", cta: `Klook ${serviceModule}`, clickout_url: `/api/travel/affiliates/destination-offers/klook-${serviceModule}/clickout` }],
+      } });
+    });
+    await page.goto(`/${locale}/destinations/tokyo/services?type=hotel`);
+    const discovery = page.getByRole("region", { name: new RegExp(klookAffiliateCopy(locale).discover) });
+    await expect(discovery).toBeVisible();
+    await expect(discovery.getByText(klookAffiliateCopy(locale).discoveryHint)).toBeVisible();
+    expect(modules).toEqual(["hotel"]);
+    await page.getByRole("button", { name: copy.platforms }).click();
+    const panel = page.getByRole("dialog", { name: items[0].title });
+    const klook = panel.getByRole("button", { name: /Klook/ });
+    await expect(klook).toHaveCount(1);
+    await expect(panel.getByRole("button", { name: /Booking.com/ })).toHaveCount(1);
+    await expect(panel.getByText(copy.quoteNotConfigured)).toBeVisible();
+    await expect(panel.locator('input[type="date"]')).toHaveCount(0);
+    await expect(klook.locator("..")).toHaveAttribute("action", /booking-options\/klook-option\/clickout/);
+    await expect(klook.locator("..")).toHaveAttribute("method", "post");
+    await expect(klook.locator("..")).toHaveAttribute("rel", "noopener noreferrer");
+    const box = await klook.boundingBox();
+    expect(box?.height).toBeGreaterThanOrEqual(44);
+    const popupWait = context.waitForEvent("page");
+    await klook.click();
+    const popup = await popupWait;
+    await expect(popup).toHaveTitle("Fixture partner page");
+    expect(await popup.evaluate(() => window.opener === null)).toBe(true);
+    await popup.close();
+    await page.keyboard.press("Escape");
+    await expect(panel).toHaveCount(0);
+    await expect(page.getByRole("button", { name: copy.platforms })).toBeFocused();
+    expect(priceRequests).toEqual([]);
+  });
+
+  test(`${locale} Klook discovery follows day tour transfer and connectivity filters`, async ({ page, context }) => {
+    await mock(context);
+    const requests: string[] = [];
+    await context.route("**/api/travel/travel-services?**", (route) => route.fulfill({ json: { ...results, items: [] } }));
+    await context.route("**/api/travel/affiliates/destination-offers?**", (route) => {
+      const serviceModule = new URL(route.request().url()).searchParams.get("module") || "";
+      requests.push(serviceModule);
+      return route.fulfill({ json: {
+        destination_id: "tokyo", module: serviceModule, disclosure: copy.disclosure,
+        options: [{ id: `klook-${serviceModule}`, brand: "klook", display_name: "Klook", cta: `Klook ${serviceModule}`, clickout_url: `/api/travel/affiliates/destination-offers/klook-${serviceModule}/clickout` }],
+      } });
+    });
+    await page.goto(`/${locale}/destinations/tokyo/services?type=tour`);
+    const discovery = page.getByRole("region", { name: new RegExp(klookAffiliateCopy(locale).discover) });
+    await expect(discovery.getByRole("button", { name: /Klook activities/ })).toBeVisible();
+    expect(requests).toEqual(["activities"]);
+    for (const [kind, serviceModule] of [["transfer", "transport"], ["esim", "connectivity"]] as const) {
+      await page.getByRole("button", { name: copy[kind], exact: true }).click();
+      await expect(discovery.getByRole("button", { name: new RegExp(`Klook ${serviceModule}`) })).toBeVisible();
+      await expect(discovery.getByRole("button")).toHaveCount(1);
+      await expect(page).toHaveURL(new RegExp(`type=${kind}`));
+    }
+    expect(requests).toEqual(["activities", "transport", "connectivity"]);
+    for (const theme of ["light", "dark"]) {
+      await page.evaluate((value) => document.documentElement.setAttribute("data-theme", value), theme);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
+      expect((await discovery.getByRole("button").boundingBox())?.height).toBeGreaterThanOrEqual(44);
+    }
+    if (locale === "zh-TW") await page.screenshot({ path: `test-results/klook-discovery-${test.info().project.name}.png`, fullPage: true });
+    // Filters intentionally replace the current history entry. Verify persistence
+    // and back navigation between pages without inventing a filter-history stack.
+    await page.reload();
+    await expect(discovery.getByRole("button", { name: /Klook connectivity/ })).toBeVisible();
+    await page.goto(`/${locale}/destinations/tokyo/services?type=tour`);
+    await expect(discovery.getByRole("button", { name: /Klook activities/ })).toBeVisible();
+    await page.goBack();
+    await expect(discovery.getByRole("button", { name: /Klook connectivity/ })).toBeVisible();
+  });
+}
 const config = {
   public_enabled: true,
   enabled_destinations: ["tokyo"],
@@ -177,6 +269,11 @@ async function mock(
     ) {
       await route.continue();
       return;
+    } else {
+      // Deferred planner tools mount alongside services. Unmodelled endpoints
+      // are unavailable, not successful responses with an invalid empty schema.
+      status = 404;
+      body = { code: "fixture_not_found", detail: "Outside this service fixture" };
     }
     await route.fulfill({
       status,
@@ -393,6 +490,8 @@ for (const width of [320, 390, 1280]) {
     await mock(context, true, false, true);
     await page.setViewportSize({width, height:860});
     await page.goto("/en/trips/fixture-trip");
+    await page.getByRole("button", { name: "Open trip tools", exact: true }).click();
+    await page.getByRole("button", { name: /^Travel essentials/ }).click();
     await page.getByRole("button", {name:en.hotel, exact:true}).click();
     const parent = page.getByRole("dialog",{name:en.hotel, exact:true});
     const opener = parent.getByRole("button",{name:en.platforms}).first();
@@ -410,6 +509,8 @@ for (const width of [320, 390, 1280]) {
     await expect(parent).toBeVisible();
     await page.goBack();
     await expect(parent).toHaveCount(0);
+    expect(await page.evaluate(()=>document.body.style.overflow)).toBe("hidden");
+    await page.getByRole("dialog", { name: "Trip tools", exact: true }).getByRole("button", { name: "Close", exact: true }).click();
     expect(await page.evaluate(()=>document.body.style.overflow)).not.toBe("hidden");
   });
   test(`${width}px shared planner sheet locks scroll, traps focus and handles back`, async ({
@@ -419,6 +520,8 @@ for (const width of [320, 390, 1280]) {
     await mock(context, true);
     await page.setViewportSize({ width, height: 860 });
     await page.goto("/en/trips/fixture-trip");
+    await page.getByRole("button", { name: "Open trip tools", exact: true }).click();
+    await page.getByRole("button", { name: /^Travel essentials/ }).click();
     const trigger = page.getByRole("button", { name: en.hotel, exact: true });
     await expect(trigger).toBeEnabled();
     await trigger.click();
@@ -441,6 +544,14 @@ for (const width of [320, 390, 1280]) {
     await page.goBack();
     await expect(dialog).toHaveCount(0);
     await expect(trigger).toBeFocused();
+    expect(await page.evaluate(() => document.body.style.overflow)).toBe("hidden");
+    await trigger.click();
+    await expect(dialog).toBeVisible();
+    await page.keyboard.press("Escape");
+    await expect(dialog).toHaveCount(0);
+    await expect(page.getByRole("dialog", { name: "Trip tools", exact: true })).toBeVisible();
+    await expect(trigger).toBeFocused();
+    await page.getByRole("dialog", { name: "Trip tools", exact: true }).getByRole("button", { name: "Close", exact: true }).click();
     expect(await page.evaluate(() => document.body.style.overflow)).not.toBe(
       "hidden",
     );

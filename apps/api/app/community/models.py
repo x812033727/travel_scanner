@@ -48,6 +48,19 @@ class Profile(Timestamped, Base):
     notification_preferences: Mapped[dict[str, bool]] = mapped_column(JSON, default=dict)
 
 
+class CreatorInvitation(Timestamped, Base):
+    __tablename__ = "community_creator_invitations"
+    __table_args__ = (CheckConstraint("version >= 1", name="ck_creator_invitation_version"),)
+    user_id: Mapped[UUID] = mapped_column(
+        ForeignKey("users.id", ondelete="CASCADE"), primary_key=True
+    )
+    invited: Mapped[bool] = mapped_column(Boolean, default=False)
+    version: Mapped[int] = mapped_column(default=1)
+    granted_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
+
+
 class Post(Timestamped, Base):
     __tablename__ = "community_posts"
     __table_args__ = (
@@ -85,6 +98,9 @@ class PostRevision(Base):
         JSON, default=list, server_default="[]"
     )
     media_ids: Mapped[list[str]] = mapped_column(JSON, default=list)
+    video_refs: Mapped[list[dict[str, str]]] = mapped_column(
+        JSON, default=list, server_default="[]"
+    )
     # This is an allowlisted snapshot, never a dump of TripPlan.data.
     itinerary: Mapped[dict[str, Any] | None] = mapped_column(JSON, nullable=True)
     allow_fork: Mapped[bool] = mapped_column(Boolean, default=False)

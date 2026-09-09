@@ -65,7 +65,7 @@ AFFILIATE_PARTNERS: tuple[AffiliatePartner, ...] = (
     AffiliatePartner(
         "klook",
         "Klook",
-        ("activities", "transport"),
+        ("hotel", "activities", "transport", "connectivity"),
         "klook_enabled",
         "klook_affiliate_url_template",
         "klook_allowed_hosts",
@@ -103,6 +103,9 @@ def partner_configured(partner: AffiliatePartner, settings: Settings) -> bool:
     if not str(getattr(settings, partner.allowed_hosts_field) or "").strip():
         return False
     template = getattr(settings, partner.template_field)
+    if partner.code == "klook":
+        # Reviewed catalog offers need an AID, not a generic discovery template or API key.
+        return bool(settings.klook_affiliate_id)
     if template:
         if partner.code == "booking":
             return bool(settings.booking_affiliate_id)

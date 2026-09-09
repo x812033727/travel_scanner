@@ -1,5 +1,5 @@
 import logging
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from typing import Any
 
 import fakeredis.aioredis
@@ -26,6 +26,7 @@ from app.admin.service import (
 )
 from app.auth.service import current_user
 from app.config import Settings
+from app.db import get_session
 from app.main import app
 from app.models import AdminAuditLog, ProviderConfig, User
 from app.problems import AppError
@@ -60,18 +61,130 @@ class RegistrationSession:
 
 
 class UpdateSession:
-    def __init__(self) -> None:
+    def __init__(self, row: ProviderConfig | None = None) -> None:
+        self.row = row
         self.added: list[object] = []
         self.committed = False
+        self.rolled_back = False
+        self.statements: list[str] = []
 
-    async def scalar(self, _statement: object) -> None:
-        return None
+    async def scalar(self, statement: object) -> ProviderConfig | None:
+        self.statements.append(str(statement))
+        return self.row
+
+    async def execute(self, statement: object) -> None:
+        self.statements.append(str(statement))
 
     def add(self, value: object) -> None:
         self.added.append(value)
 
     async def commit(self) -> None:
         self.committed = True
+
+    async def rollback(self) -> None:
+        self.rolled_back = True
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("existing", [False, True])
+@pytest.mark.parametrize("guarded", [False, True])
+async def test_setting_update_version_and_legacy_partial_merge(
+    monkeypatch: pytest.MonkeyPatch,
+    existing: bool,
+    guarded: bool,
+) -> None:
+    timestamp = datetime(2026, 9, 1, tzinfo=UTC)
+    row = (
+        ProviderConfig(
+            provider="google_maps",
+            enabled=True,
+            updated_at=timestamp,
+            config={"weather_cache_ttl_seconds": 3600},
+            secret_config_encrypted=encrypt_secrets({"google_maps_api_key": "retained-key"}),
+        )
+        if existing
+        else None
+    )
+    session = UpdateSession(row)
+    actor = User(id=admin_service.uuid4(), email="version@example.com", password_hash="unused")
+
+    async def snapshot(*_args: object) -> object:
+        return object()
+
+    monkeypatch.setattr(admin_service, "settings_snapshot", snapshot)
+    payload_data: dict[str, Any] = {"config": {"route_cache_ttl_seconds": 1200}}
+    if guarded:
+        # Offsets compare as the same instant, not as raw strings.
+        payload_data["expected_updated_at"] = "2026-09-01T08:00:00+08:00" if existing else None
+    await update_provider_settings(
+        session,
+        "google_maps",
+        ProviderSettingsUpdate.model_validate(payload_data),
+        actor,
+        object(),
+    )  # type: ignore[arg-type]
+    saved = row or next(value for value in session.added if isinstance(value, ProviderConfig))
+    assert isinstance(saved, ProviderConfig)
+    assert saved.config["route_cache_ttl_seconds"] == 1200
+    assert saved.updated_at > timestamp
+    if existing:
+        assert saved.config["weather_cache_ttl_seconds"] == 3600
+        assert (
+            decrypt_secrets(saved.secret_config_encrypted)["google_maps_api_key"] == "retained-key"
+        )
+    assert "pg_advisory_xact_lock" in session.statements[0]
+    assert "FOR UPDATE" in session.statements[1]
+    assert session.committed and not session.rolled_back
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("expected", [None, "2026-09-01T00:00:00Z"])
+async def test_api_settings_version_conflict_has_409_without_writes(expected: str | None) -> None:
+    row = ProviderConfig(
+        provider="google_maps",
+        enabled=True,
+        config={"route_cache_ttl_seconds": 900},
+        updated_at=datetime(2026, 9, 2, tzinfo=UTC),
+        secret_config_encrypted=encrypt_secrets({"google_maps_api_key": "never-expose"}),
+    )
+    session = UpdateSession(row)
+    actor = User(id=admin_service.uuid4(), email="conflict@example.com", is_admin=True)
+    previous_overrides = app.dependency_overrides.copy()
+    app.dependency_overrides[current_user] = lambda: actor
+    app.dependency_overrides[get_session] = lambda: session
+    try:
+        async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+            result = await client.put(
+                "/api/v1/admin/provider-settings/google_maps",
+                json={
+                    "expected_updated_at": expected,
+                    "config": {"route_cache_ttl_seconds": 1200},
+                    "secrets": {"google_maps_api_key": "discarded-new-secret"},
+                },
+            )
+    finally:
+        app.dependency_overrides.clear()
+        app.dependency_overrides.update(previous_overrides)
+    assert result.status_code == 409
+    assert result.json()["code"] == "provider_setting_conflict"
+    assert "never-expose" not in result.text and "discarded-new-secret" not in result.text
+    assert row.config == {"route_cache_ttl_seconds": 900}
+    assert decrypt_secrets(row.secret_config_encrypted) == {"google_maps_api_key": "never-expose"}
+    assert session.rolled_back and not session.committed and not session.added
+
+
+def test_settings_expected_timestamp_is_optional_but_explicit_null_is_a_guard() -> None:
+    assert "expected_updated_at" not in ProviderSettingsUpdate().model_fields_set
+    assert (
+        "expected_updated_at" in ProviderSettingsUpdate(expected_updated_at=None).model_fields_set
+    )
+    timestamp = datetime(2026, 9, 1, tzinfo=UTC)
+    offset = ProviderSettingsUpdate.model_validate({
+        "expected_updated_at": "2026-09-01T08:00:00+08:00",
+    })
+    assert offset.expected_updated_at == timestamp
+    assert admin_service._settings_timestamp(timestamp.replace(tzinfo=None)) == timestamp
+    assert admin_service._settings_timestamp(timestamp + timedelta(microseconds=1)) > timestamp
 
 
 def test_provider_secrets_are_encrypted_and_round_trip() -> None:
@@ -653,9 +766,7 @@ async def test_snapshot_exposes_model_catalog_options() -> None:
         "minimax_model",
         "gemini_model",
     }
-    assert "gemini-3.8-flash" in [
-        option.value for option in planner.field_options["gemini_model"]
-    ]
+    assert "gemini-3.8-flash" in [option.value for option in planner.field_options["gemini_model"]]
     assert Settings().openai_model in [
         option.value for option in planner.field_options["openai_model"]
     ]

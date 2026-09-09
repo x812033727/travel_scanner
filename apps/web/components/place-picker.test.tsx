@@ -188,4 +188,108 @@ describe("PlacePicker", () => {
     });
     expect(screen.queryByRole("option")).toBeNull();
   });
+
+  it("consumes only the first Escape, leaving the containing editor open while dismissing suggestions", async () => {
+    const parentEscape = vi.fn();
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(JSON.stringify([
+      { provider: "google_places", place_id: "one", name: "東京站" },
+    ]))));
+    render(<div onKeyDown={(event) => { if (event.key === "Escape") parentEscape(); }}>
+      <PlacePicker value="東京" confirmed={false} onTextChange={vi.fn()} onSelect={vi.fn()} />
+    </div>);
+    await act(async () => { await vi.advanceTimersByTimeAsync(320); });
+    fireEvent.keyDown(screen.getByRole("combobox"), { key: "Escape" });
+    expect(parentEscape).not.toHaveBeenCalled();
+    expect(screen.queryByRole("listbox")).toBeNull();
+    fireEvent.keyDown(screen.getByRole("combobox"), { key: "Escape" });
+    expect(parentEscape).toHaveBeenCalledOnce();
+  });
+
+  it("restarts the same query when refocused after cancelling before debounce", async () => {
+    const fetchMock = vi.fn().mockResolvedValue(new Response(JSON.stringify([
+      { provider: "google_places", place_id: "one", name: "東京站" },
+    ])));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<PlacePicker value="東京" confirmed={false} onTextChange={vi.fn()} onSelect={vi.fn()} />);
+    fireEvent.keyDown(screen.getByRole("combobox"), { key: "Escape" });
+    await act(async () => { await vi.advanceTimersByTimeAsync(320); });
+    expect(fetchMock).not.toHaveBeenCalled();
+    fireEvent.focus(screen.getByRole("combobox"));
+    await act(async () => { await vi.advanceTimersByTimeAsync(320); });
+    expect(screen.getByRole("option", { name: /東京站/ })).toBeTruthy();
+    expect(fetchMock).toHaveBeenCalledOnce();
+  });
+
+  it.each(["unmount", "owner", "query", "escape"] as const)("aborts details and ignores late success after %s", async (change) => {
+    let complete!: (response: Response) => void;
+    const onSelect = vi.fn();
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(new Response(JSON.stringify([{ provider: "google_places", place_id: "one", name: "東京站" }])))
+      .mockImplementationOnce(() => new Promise<Response>((resolve) => { complete = resolve; }));
+    vi.stubGlobal("fetch", fetchMock);
+    const props = { value: "東京", confirmed: false, selectionContextKey: "item-a", onTextChange: vi.fn(), onSelect };
+    const view = render(<PlacePicker {...props} />);
+    await act(async () => { await vi.advanceTimersByTimeAsync(320); });
+    fireEvent.click(screen.getByRole("option", { name: /東京站/ }));
+    const signal = fetchMock.mock.calls[1][1].signal as AbortSignal;
+    expect(signal.aborted).toBe(false);
+    if (change === "unmount") view.unmount();
+    if (change === "owner") view.rerender(<PlacePicker {...props} selectionContextKey="item-b" />);
+    if (change === "query") view.rerender(<PlacePicker {...props} value="大阪" />);
+    if (change === "escape") fireEvent.keyDown(screen.getByRole("combobox"), { key: "Escape" });
+    expect(signal.aborted).toBe(true);
+    await act(async () => {
+      complete(new Response(JSON.stringify({ provider: "google_places", place_id: "one", name: "東京站", latitude: 35.6, longitude: 139.7 })));
+    });
+    expect(onSelect).not.toHaveBeenCalled();
+    expect(screen.queryByRole("alert")).toBeNull();
+  });
+
+  it("ignores an earlier detail response when the reader chooses another result", async () => {
+    let first!: (response: Response) => void;
+    const onSelect = vi.fn();
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(new Response(JSON.stringify([
+        { provider: "google_places", place_id: "one", name: "東京站" },
+        { provider: "google_places", place_id: "two", name: "東京塔" },
+      ])))
+      .mockImplementationOnce(() => new Promise<Response>((resolve) => { first = resolve; }))
+      .mockResolvedValueOnce(new Response(JSON.stringify({ provider: "google_places", place_id: "two", name: "東京塔" })));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<PlacePicker value="東京" confirmed={false} onTextChange={vi.fn()} onSelect={onSelect} />);
+    await act(async () => { await vi.advanceTimersByTimeAsync(320); });
+    fireEvent.click(screen.getByRole("option", { name: /東京站/ }));
+    await act(async () => { fireEvent.click(screen.getByRole("option", { name: /東京塔/ })); });
+    await act(async () => { first(new Response(JSON.stringify({ provider: "google_places", place_id: "one", name: "東京站" }))); });
+    expect(fetchMock.mock.calls[1][1].signal.aborted).toBe(true);
+    expect(onSelect).toHaveBeenCalledOnce();
+    expect(onSelect).toHaveBeenCalledWith(expect.objectContaining({ place_id: "two" }));
+  });
+
+  it("ignores late autocomplete and detail failures after their owner changes", async () => {
+    let oldSearch!: (response: Response) => void;
+    let failDetails!: (reason: Error) => void;
+    const onSelect = vi.fn();
+    const fetchMock = vi.fn()
+      .mockImplementationOnce(() => new Promise<Response>((resolve) => { oldSearch = resolve; }))
+      .mockResolvedValueOnce(new Response(JSON.stringify([{ provider: "google_places", place_id: "current", name: "大阪站" }])))
+      .mockImplementationOnce(() => new Promise<Response>((_resolve, reject) => { failDetails = reject; }));
+    vi.stubGlobal("fetch", fetchMock);
+    const props = { value: "東京", confirmed: false, onTextChange: vi.fn(), onSelect };
+    const view = render(<PlacePicker {...props} />);
+    await act(async () => { await vi.advanceTimersByTimeAsync(320); });
+    view.rerender(<PlacePicker {...props} value="大阪" />);
+    expect(fetchMock.mock.calls[0][1].signal.aborted).toBe(true);
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(320);
+      oldSearch(new Response(JSON.stringify([{ provider: "google_places", place_id: "old", name: "東京站" }])));
+    });
+    expect(screen.queryByRole("option", { name: /東京站/ })).toBeNull();
+    fireEvent.click(screen.getByRole("option", { name: /大阪站/ }));
+    view.rerender(<PlacePicker {...props} value="大阪" selectionContextKey="another-day" />);
+    await act(async () => { failDetails(new Error("Old failed response")); });
+    expect(fetchMock.mock.calls[2][1].signal.aborted).toBe(true);
+    expect(screen.queryByRole("alert")).toBeNull();
+    expect(onSelect).not.toHaveBeenCalled();
+  });
 });

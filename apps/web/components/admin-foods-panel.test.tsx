@@ -40,6 +40,16 @@ const listing = {
 };
 
 describe("AdminFoodsPanel", () => {
+  it.each(["", "pending"])("sends the requested catalog/review status %s", async (initialStatus) => {
+    const fetchMock = vi.fn<(input: RequestInfo | URL, init?: RequestInit) => Promise<Response>>(
+      async () => new Response(JSON.stringify(listing)),
+    );
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminFoodsPanel initialStatus={initialStatus} />);
+    await screen.findByText("韓式拌飯");
+    expect(new URL(String(fetchMock.mock.calls[0][0]), "https://test.local").searchParams.get("status")).toBe(initialStatus || null);
+  });
+
   it("lists reviewed content and performs an audited batch action", async () => {
     const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
       if (init?.method === "POST") {

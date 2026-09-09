@@ -12,6 +12,7 @@ from app.community.models import Fork, Media, Post, PostRevision, Profile, React
 from app.community.places import canonical_refs, public_places
 from app.community.policy import digest, fail, member, metric, public_profile, visible_profile
 from app.community.schemas import ForkInput, PlaceInput, PostInput
+from app.community.videos import public_video_refs
 from app.localized_names import item_names, sanitize_localized_names
 from app.models import TripPlan, TripPlanItem, User
 
@@ -25,6 +26,7 @@ async def owned_post(session: AsyncSession, user: User, identifier: UUID) -> Pos
             Post.state != "deleted",
         )
         .with_for_update()
+        .execution_options(populate_existing=True)
     )
     if post is None:
         raise fail("community_not_found", 404)
@@ -34,7 +36,9 @@ async def owned_post(session: AsyncSession, user: User, identifier: UUID) -> Pos
 async def published_post(
     session: AsyncSession, identifier: UUID, viewer: User | None
 ) -> tuple[Post, PostRevision, Profile]:
-    post = await session.get(Post, identifier)
+    post = await session.scalar(
+        select(Post).where(Post.id == identifier).execution_options(populate_existing=True)
+    )
     if post is None or post.state != "published" or post.published_revision_id is None:
         raise fail("community_not_found", 404)
     profile = await visible_profile(session, post.author_id, viewer)
@@ -147,12 +151,44 @@ async def new_revision(
         place_ids=[ref["id"] for ref in places if ref["kind"] == "pet_place"],
         place_refs=places,
         media_ids=[str(value) for value in payload.media_ids],
+        video_refs=[ref.model_dump() for ref in payload.video_refs],
         itinerary=itinerary,
         allow_fork=payload.allow_fork and itinerary is not None,
     )
     session.add(revision)
     await session.flush()
     return revision
+
+
+async def public_media_refs(
+    session: AsyncSession, revision: PostRevision
+) -> list[dict[str, Any]]:
+    """Project ordered metadata only from a caller-authorized revision.
+
+    This does not grant image access: the media endpoint reauthorizes every
+    short-lived URL. Never expose storage keys or signed URLs in this projection.
+    """
+    if not revision.media_ids:
+        return []
+    images = (
+        await session.scalars(
+            select(Media).where(
+                Media.id.in_([UUID(value) for value in revision.media_ids]),
+                Media.deleted_at.is_(None),
+            )
+        )
+    ).all()
+    by_id = {str(image.id): image for image in images}
+    return [
+        {
+            "id": value,
+            "alt": by_id[value].alt,
+            "width": by_id[value].width,
+            "height": by_id[value].height,
+        }
+        for value in revision.media_ids
+        if value in by_id
+    ]
 
 
 async def serialize_post(
@@ -190,21 +226,6 @@ async def serialize_post(
         if viewer
         else set()
     )
-    images = (
-        list(
-            (
-                await session.scalars(
-                    select(Media).where(
-                        Media.id.in_([UUID(value) for value in revision.media_ids]),
-                        Media.deleted_at.is_(None),
-                    )
-                )
-            ).all()
-        )
-        if revision.media_ids
-        else []
-    )
-    by_id = {str(image.id): image for image in images}
     places = await public_places(
         session,
         revision.place_refs or [{"kind": "pet_place", "id": value} for value in revision.place_ids],
@@ -221,16 +242,8 @@ async def serialize_post(
         "topics": revision.topics,
         "place_ids": [place["id"] for place in places if place["kind"] == "pet_place"],
         "places": places,
-        "media": [
-            {
-                "id": value,
-                "alt": by_id[value].alt,
-                "width": by_id[value].width,
-                "height": by_id[value].height,
-            }
-            for value in revision.media_ids
-            if value in by_id
-        ],
+        "video_refs": await public_video_refs(session, revision.video_refs or []),
+        "media": await public_media_refs(session, revision),
         "itinerary": revision.itinerary,
         "allow_fork": revision.allow_fork,
         "published_at": post.published_at,

@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { AdminDashboard } from "./admin-dashboard";
 import { AdminFoodAreasPanel } from "./admin-food-taxonomy-panel";
@@ -20,11 +20,16 @@ describe("admin panels against a partial payload", () => {
     expect(() => render(<AdminDashboard />)).not.toThrow();
 
     await waitFor(() => expect(vi.mocked(fetch)).toHaveBeenCalled());
-    // The page still renders; before the guard React unmounted the whole subtree.
-    expect((await screen.findAllByText(/待審|營運|摘要|載入/)).length).toBeGreaterThan(0);
+    // Each domain remains usable and missing counts are unknown, not false zeros.
+    for (const [name, target] of [["景點", "hotspots"], ["美食", "foods"], ["飯店", "hotels"]]) {
+      const section = (await screen.findByRole("heading", { name })).closest("section")!;
+      expect(within(section).getByRole("link", { name: "進入管理" }).getAttribute("href")).toBe(`/admin/${target}`);
+      expect(within(section).getAllByText("—").length).toBeGreaterThan(0);
+      expect(within(section).queryByText("0")).toBeNull();
+    }
   });
 
-  it("counts every pending content type and links each review queue", async () => {
+  it("retains every pending content count and its domain-specific review queue", async () => {
     vi.stubGlobal(
       "fetch",
       vi.fn(async () => ({
@@ -39,6 +44,7 @@ describe("admin panels against a partial payload", () => {
             foods_pending: 13,
             merchants_pending: 245,
             guides_pending: 427,
+            hotels_pending: 7,
           },
           quick_actions: [
             { id: "review_hotspots", href: "/admin/hotspots", count_key: "hotspots_pending" },
@@ -52,13 +58,17 @@ describe("admin panels against a partial payload", () => {
 
     render(<AdminDashboard />);
 
-    expect(await screen.findByText("809")).not.toBeNull();
-    expect(screen.getByRole("link", { name: /審核料理目錄13/ }).getAttribute("href")).toBe(
-      "/admin/foods#dishes",
-    );
-    expect(screen.getByRole("link", { name: /審核景點介紹427/ }).getAttribute("href")).toBe(
-      "/admin/hotspots#guides",
-    );
+    for (const [name, count, href] of [
+      ["景點待審", "124", "/admin/hotspots?tab=review&section=manual"],
+      ["料理待審", "13", "/admin/foods?tab=review&section=dishes"],
+      ["店家待審", "245", "/admin/foods?tab=review&section=merchants"],
+      ["文章待審", "427", "/admin/hotspots?tab=content&section=guides"],
+      ["飯店待審", "7", "/admin/hotels?tab=review&section=products"],
+    ]) {
+      const link = await screen.findByRole("link", { name: new RegExp(`${name}\\s*${count}$`) });
+      expect(link.getAttribute("href")).toBe(href);
+      expect(within(link).getByText(count)).toBeTruthy();
+    }
   });
 
   it("keeps the taxonomy panel on screen when items are missing", async () => {
@@ -67,6 +77,10 @@ describe("admin panels against a partial payload", () => {
     expect(() => render(<AdminFoodAreasPanel />)).not.toThrow();
 
     await waitFor(() => expect(vi.mocked(fetch)).toHaveBeenCalled());
+    expect(await screen.findByRole("heading", { name: "區域（商圈）" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "新增區域" })).toBeTruthy();
+    expect(within(screen.getByRole("table")).getAllByRole("columnheader")).toHaveLength(7);
+    expect(screen.getByRole("table").querySelector("tbody")?.children).toHaveLength(0);
     expect(screen.queryByText(/Cannot read properties/)).toBeNull();
   });
 });
