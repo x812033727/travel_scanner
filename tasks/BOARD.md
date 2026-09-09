@@ -32,7 +32,7 @@ _Nothing here._
 
 | Task | Owner | Branch |
 | --- | --- | --- |
-| [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | codex | `codex/merchant-style-batch-07` |
+| [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | codex | `codex/merchant-style-batch-08` |
 | [Calm daily timeline and safe explicit planner editing](open/2026-09-09-planner-calm-editing.md) | codex-planner-calm | `codex/planner-calm-editing` |
 
 ## Waiting
