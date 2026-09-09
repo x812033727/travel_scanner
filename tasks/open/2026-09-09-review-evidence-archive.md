@@ -1,7 +1,7 @@
 ---
 id: 2026-09-09-review-evidence-archive
 title: Archive completed catalog and hotel review evidence
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: codex-review-archive
@@ -52,7 +52,7 @@ handoff, without implying a new review, production import or application release
 - [x] Preserve the three completed source groups and their dates, hashes, qualified failures and remaining work.
 - [x] Exclude the fourth still-active, dirty resolution worktree and avoid importing unrelated source changes.
 - [x] Complete a public-repository secret/privacy/scope review before any upload.
-- [ ] Pass offline artifact tests, task checks and current-head CI, then create a clearly scoped evidence PR.
+- [ ] Create a clearly scoped evidence PR and pass offline artifact tests, task checks and current-head CI.
 
 ## Steps
 
@@ -107,3 +107,13 @@ still active and dirty and is intentionally excluded.
 - Root will update to the final integration main before opening the evidence PR.
   New-head CI remains required. This checkpoint is not production revalidation,
   a new deployment, or approval to merge the newly created archival PR.
+
+## Final source integration
+
+Normally integrated final main 98f8067b3664a956e44d0b6e9f372b27a22775e6 after
+the authorized #343 and #335 merges. Only the generated board conflicted.
+The same root owner also closes those two narrow integration tasks here using
+their actual verified-merge evidence; those metadata records are separate from
+the unchanged original review artifacts. No application behavior, CI configuration
+or old review evidence is edited by this archival PR. Keep the new PR unmerged
+pending the user's separate review of this large, historical evidence handoff.
