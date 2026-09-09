@@ -8,6 +8,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictInt, model_validator
 from sqlalchemy import func, select, text
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.catalog_review.budget import DEFAULT_MAX_CALLS, MAX_CONFIGURED_CALLS, run_call_limit
 from app.catalog_review.errors import ERROR_CODES
 from app.catalog_review.repository import (
     ENTITY_TYPES,
@@ -42,7 +43,7 @@ class StartRequest(BaseModel):
     scope: CatalogScope = "all"
     prior_review_run_id: UUID | None = None
     requested_counts: dict[str, StrictInt] = Field(default_factory=lambda: dict(COUNTS))
-    max_calls: int = Field(default=80, ge=1, le=80)
+    max_calls: StrictInt = Field(default=DEFAULT_MAX_CALLS, ge=1, le=MAX_CONFIGURED_CALLS)
 
     @model_validator(mode="after")
     def validate_counts(self) -> StartRequest:
@@ -63,6 +64,12 @@ class StartRequest(BaseModel):
         ):
             raise ValueError("新增目標不可包含審核範圍以外的類型")
         return self
+
+
+class ResumeRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    expected_version: StrictInt = Field(ge=1)
+    max_calls: StrictInt = Field(ge=1, le=MAX_CONFIGURED_CALLS)
 
 
 class ApplyRequest(BaseModel):
@@ -193,7 +200,24 @@ def snapshot_review_complete(items: list[CatalogReviewItem]) -> bool:
     )
 
 
-async def run_view(session: AsyncSession, run: CatalogReviewRun) -> dict[str, Any]:
+def resumable_state(run: CatalogReviewRun, status: str) -> bool:
+    """Stopped work or an orphan is recoverable, but a live worker never is."""
+    now = datetime.now(UTC)
+    return (
+        status in {"partial", "failed"}
+        or (run.status in ACTIVE and run.lease_until is not None and utc(run.lease_until) < now)
+        or (
+            run.status == "queued"
+            and run.lease_until is None
+            and run.updated_at is not None
+            and utc(run.updated_at) < now - timedelta(minutes=5)
+        )
+    )
+
+
+async def run_view(
+    session: AsyncSession, run: CatalogReviewRun, settings: Settings | None = None
+) -> dict[str, Any]:
     scope = request_scope(run.request_json)
     items = await run_items(session, run.id, scope=scope)
     created = (run.result_json or {}).get("created_counts", {})
@@ -210,6 +234,13 @@ async def run_view(session: AsyncSession, run: CatalogReviewRun) -> dict[str, An
         "phase": run.phase,
         "status": status,
         "model": run.model,
+        "max_calls": run_call_limit(run.request_json),
+        "can_extend_budget": (
+            settings is not None
+            and resumable_state(run, status)
+            and settings.catalog_review_max_calls
+            > max(run_call_limit(run.request_json), int(usage.get("calls", 0)))
+        ),
         "requested_counts": (run.request_json or {}).get("requested_counts", scope_counts(scope)),
         "counts": {
             "total": len(items),
@@ -243,21 +274,8 @@ async def run_view(session: AsyncSession, run: CatalogReviewRun) -> dict[str, An
         "completed_at": run.completed_at,
         "review_complete": review_complete,
         "can_resume": (
-            (
-                status in {"partial", "failed"}
-                or (
-                    run.status in ACTIVE
-                    and run.lease_until is not None
-                    and utc(run.lease_until) < datetime.now(UTC)
-                )
-                or (
-                    run.status == "queued"
-                    and run.lease_until is None
-                    and run.updated_at is not None
-                    and utc(run.updated_at) < datetime.now(UTC) - timedelta(minutes=5)
-                )
-            )
-            and int(usage.get("calls", 0)) < int(run.request_json.get("max_calls", 80))
+            resumable_state(run, status)
+            and int(usage.get("calls", 0)) < run_call_limit(run.request_json)
         ),
     }
 
@@ -301,7 +319,7 @@ async def overview(
             await session.scalars(history.order_by(CatalogReviewRun.created_at.desc()).limit(20))
         ).all()
     )
-    views = [await run_view(session, row) for row in rows]
+    views = [await run_view(session, row, settings) for row in rows]
     active_run = await session.scalar(
         select(CatalogReviewRun).where(CatalogReviewRun.status.in_(ACTIVE)).limit(1)
     )
@@ -310,7 +328,7 @@ async def overview(
         and (scope is None or request_scope(active_run.request_json) == scope)
         and all(row.id != active_run.id for row in rows)
     ):
-        views.insert(0, await run_view(session, active_run))
+        views.insert(0, await run_view(session, active_run, settings))
     configured = bool(settings.hotspot_guide_gemini_api_key)
     can_discover = any(
         view["mode"] == "review_pending"
@@ -335,6 +353,7 @@ async def overview(
         else None,
         "model": settings.hotspot_guide_gemini_model,
         "daily_call_limit": settings.hotspot_guide_gemini_daily_search_budget,
+        "run_call_limit": settings.catalog_review_max_calls,
         "pending_counts": pending,
         "can_start_review": configured and active_run is None,
         "can_start_discovery": configured and active_run is None and can_discover,
@@ -358,6 +377,9 @@ async def create_run(
 ) -> tuple[CatalogReviewRun, bool]:
     await _serialize_starts(session)
     request_json = payload.model_dump(mode="json")
+    request_json["max_calls_source"] = (
+        "explicit" if "max_calls" in payload.model_fields_set else "configured_default"
+    )
     digest = fingerprint(request_json)
     existing = await session.scalar(
         select(CatalogReviewRun).where(
@@ -366,17 +388,37 @@ async def create_run(
         )
     )
     if existing is not None:
-        legacy_request = {key: value for key, value in request_json.items() if key != "scope"}
-        legacy_retry = (
-            payload.scope == "all"
-            and "scope" not in (existing.request_json or {})
-            and existing.request_hash == fingerprint(legacy_request)
+        legacy_request = {
+            key: value for key, value in request_json.items() if key != "max_calls_source"
+        }
+        legacy_retry = "max_calls_source" not in (existing.request_json or {}) and (
+            existing.request_hash == fingerprint(legacy_request)
+            or (
+                payload.scope == "all"
+                and "scope" not in (existing.request_json or {})
+                and existing.request_hash
+                == fingerprint(
+                    {key: value for key, value in legacy_request.items() if key != "scope"}
+                )
+            )
         )
         if existing.request_hash != digest and not legacy_retry:
             raise AppError(409, "idempotency_conflict", "相同冪等鍵不能建立不同的審核工作")
         return existing, False
     if not settings.hotspot_guide_gemini_api_key:
         raise AppError(422, "gemini_not_configured", "請先在後台設定 Gemini API Key")
+    maximum = (
+        payload.max_calls
+        if "max_calls" in payload.model_fields_set
+        else settings.catalog_review_max_calls
+    )
+    if maximum > settings.catalog_review_max_calls:
+        raise AppError(
+            422, "validation_error", "本批呼叫上限超過目前後台設定，請重新整理"
+        )
+    # Hash the submitted request, not the mutable setting. Retrying an uncertain
+    # start returns the original run even if the default was changed meanwhile.
+    request_json["max_calls"] = maximum
     if await session.scalar(
         select(CatalogReviewRun.id).where(CatalogReviewRun.status.in_(ACTIVE)).limit(1)
     ):
@@ -428,7 +470,7 @@ async def create_run(
                 "scope": payload.scope,
                 "requested_counts": payload.requested_counts,
                 "model": run.model,
-                "max_calls": payload.max_calls,
+                "max_calls": maximum,
             },
         )
     )
@@ -437,11 +479,34 @@ async def create_run(
 
 
 async def prepare_resume(
-    session: AsyncSession, run_id: UUID, actor_id: UUID, *, scope: CatalogScope | None = None
+    session: AsyncSession,
+    run_id: UUID,
+    actor_id: UUID,
+    *,
+    scope: CatalogScope | None = None,
+    payload: ResumeRequest | None = None,
+    settings: Settings | None = None,
 ) -> CatalogReviewRun:
     await _serialize_starts(session)
     run = await get_run(session, run_id, lock=True, scope=scope)
-    if not (await run_view(session, run))["can_resume"]:
+    view = await run_view(session, run, settings)
+    previous_limit = run_call_limit(run.request_json)
+    if payload is not None:
+        if payload.expected_version != run.version:
+            raise AppError(409, "catalog_version_conflict", "工作狀態已改變，請重新讀取審核預覽")
+        if settings is None or payload.max_calls > settings.catalog_review_max_calls:
+            raise AppError(
+                422, "validation_error", "本批呼叫上限超過目前後台設定，請重新整理"
+            )
+        if payload.max_calls <= max(previous_limit, int((run.usage_json or {}).get("calls", 0))):
+            raise AppError(
+                422, "catalog_run_not_resumable", "新上限必須高於原上限與累計用量"
+            )
+        if not resumable_state(run, view["status"]):
+            raise AppError(
+                409, "catalog_run_not_resumable", "只能明確提高已停止或失聯工作的呼叫上限"
+            )
+    elif not view["can_resume"]:
         raise AppError(409, "catalog_run_not_resumable", "目前工作不能續跑，或已達單次工作呼叫上限")
     if await session.scalar(
         select(CatalogReviewRun.id)
@@ -449,6 +514,8 @@ async def prepare_resume(
         .limit(1)
     ):
         raise AppError(409, "catalog_run_in_progress", "已有其他目錄審核執行中")
+    if payload is not None:
+        run.request_json = {**(run.request_json or {}), "max_calls": payload.max_calls}
     retried_items = 0
     legacy_missing_items = 0
     stale_items = 0
@@ -489,6 +556,9 @@ async def prepare_resume(
                 "retried_items": retried_items,
                 "legacy_missing_items": legacy_missing_items,
                 "stale_items": stale_items,
+                "previous_max_calls": previous_limit,
+                "max_calls": run_call_limit(run.request_json),
+                "calls": int((run.usage_json or {}).get("calls", 0)),
             },
         )
     )

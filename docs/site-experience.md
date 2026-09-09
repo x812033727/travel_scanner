@@ -4,7 +4,7 @@
 
 This release adds three palette families (mocha, lagoon and forest), each in light and dark mode, moves language controls to top headers, expands all reviewed card topics and separates reading sources into articles and videos. Empty introductions and coordinate-only fact sections render nothing. Data, moderation gates, provider costs and API identifiers are unchanged.
 
-The original dirty checkout remains untouched. The feature branch starts at main `95122362` and incorporates main `73f893a2`, preserving the intervening Stay22 integration, isolated public document and first-click/retry fixes. The user authorized merging PR #380 on 2026-09-09 after the remaining manual acceptance was disclosed. This authorization does not deploy, publish a policy, collect personal data or submit a paid provider request as part of verification.
+The original dirty checkout remains untouched. The feature branch starts at main `95122362` and incorporates main `584dd438`, preserving the intervening Stay22 integration, isolated public document, first-click/retry fixes and configurable catalog-review call limits. The user authorized merging PR #380 on 2026-09-09 after the remaining manual acceptance was disclosed. This authorization does not deploy, publish a policy, collect personal data or submit a paid provider request as part of verification.
 
 ## Information-page workflow
 
@@ -44,6 +44,7 @@ Local checks and built-in browser observations are recorded in the task/PR when 
 - The native same-document Back regression is resolved: both accept/cancel cases pass on desktop and Pixel 7, including the chosen destination and retained draft assertions. The eight-width topbar checks also pass. All twelve final palette screenshots were visually inspected. [Final-code automated screenshots](https://github.com/x812033727/travel_scanner/actions/runs/34357389559/artifacts/10106686351) are synthetic CI captures, not built-in-browser manual evidence.
 - **Manual acceptance remains open:** an approved isolated preview is needed for the built-in-browser checks below. Policies remain unpublished. The subsequent explicit merge request authorizes reconciling current main, rerunning CI and merging the verified head; it does not complete this manual checklist or authorize deployment.
 - Merge preparation incorporates main `73f893a2` (#383), retaining both browser test lists and regenerating the task board. Its isolated public hotel document also receives a privacy-safe top language entry and explicit semantic primary foreground. Existing global semantic CSS already protected the button contrast; no failed rendered-contrast claim is made. Current-head CI and merge evidence are tracked on PR #380 rather than inferred from the earlier counts above.
+- Integrated head `660b55b1` passed all push/PR checks: API 2,847 passed / 15 skipped; Web 1,496 passed; browser UI 410 passed / 4 skipped. Main then advanced to `584dd438` (#381); this second reconciliation has no application-code conflicts and only regenerates the conflicting task board. The combined head must pass current CI before merging.
 
 Earlier checkpoints are retained below for traceability; their subsequently fixed failures are not current open regressions:
 
