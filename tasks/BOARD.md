@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**16 open · 0 in progress · 2 blocked · 2 in review · 176 done**
+**16 open · 1 in progress · 2 blocked · 2 in review · 176 done**
 
 ## Ready to claim
 
@@ -26,7 +26,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-_Nothing here._
+| Task | Owner | Claimed (UTC) | Branch |
+| --- | --- | --- | --- |
+| [Prepare PR 335 funnel integration against current main](open/2026-09-09-pr335-funnel-merge-integration.md) | codex-pr335-merge-ready | 2026-09-09T06:13:49Z | `codex/pr335-merge-ready-20260909` |
 
 ## In review
 
