@@ -5,7 +5,7 @@ status: review
 priority: P1
 area: web
 owner: codex-discovery-flow-web
-claimed_at: 2026-09-09T04:13:40Z
+claimed_at: 2026-09-09T04:37:19Z
 created_at: 2026-09-09T03:06:52Z
 completed_at:
 branch: codex/frontend-explore-flow
@@ -21,6 +21,7 @@ scope:
   - apps/web/lib/frontend-flow-copy.ts
   - apps/web/e2e/discovery.spec.ts
   - apps/web/e2e/discovery-full-stack.spec.ts
+  - apps/web/e2e/navigation.spec.ts
   - apps/web/components/discovery-navigation.test.tsx
   - apps/web/components/community/community.test.tsx
   - apps/web/components/account-saved-items.test.tsx
@@ -71,4 +72,5 @@ Root runs `npm run typecheck:web`, production build and desktop/Pixel 7 Playwrig
 - `npm run typecheck:web` passed; scoped ESLint passed with zero warnings. Root owns the pending production build and browser evidence; E2E source assertions were updated but are not claimed as executed here.
 - Post-commit contract audit: unavailable legacy `pet_place` rows can now be explicitly deleted through the owner-bound opaque cleanup endpoint. Unsupported kinds remain excluded from new saves; focused frontend-flow rerun passed 9 tests including the tombstone cleanup regression.
 - CI legacy UI compatibility repair: four additionally claimed test files passed 30/30 focused Vitest cases and scoped ESLint with zero warnings. New navigation labels/My-space publishing and posting-paused behavior are covered, while resolved-discovery-off homepage/community navigation and legacy menu Escape/focus checks remain intact. Account removal still asserts its exact DELETE path plus AbortSignal.
+- CI run 34310599758 isolated browser suite passed 277/282; all five failures came from the old navigation helper skipping the menu during discovery loading. The newly claimed navigation spec now explicitly mocks discovery off and waits for the mobile menu at actual viewport widths below 1024px, with every language, theme and persistence assertion retained. Scoped ESLint passed with zero warnings; Playwright `--list` successfully enumerated 70 desktop/Pixel 7 cases. Browser execution of this repair remains pending in the root rerun; no production or runtime fixture changed.
 - No source changes outside claimed scope, no source commits or production mutations performed by this agent.

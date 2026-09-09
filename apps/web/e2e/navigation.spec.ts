@@ -113,12 +113,16 @@ test("itinerary drag handle works with pointer input and keyboard move keeps foc
  * word next to it; on a wide screen they are in the header itself.
  */
 async function openDisplayPreferences(page: Page) {
+  if (await page.evaluate(() => window.matchMedia("(min-width: 1024px)").matches)) return;
   const menu = page.getByRole("button", { name: "Open navigation menu" });
-  if (await menu.isVisible()) await menu.click();
+  // The mobile menu appears after the discovery flag resolves during hydration.
+  await expect(menu).toBeVisible();
+  await menu.click();
 }
 
 test.beforeEach(async ({ page }) => {
   await pretendSignedIn(page);
+  await page.route("**/api/travel/discovery/status", (route) => route.fulfill({ json: { enabled: false } }));
   await page.route("**/api/travel/auth/me", (route) => route.fulfill({
     status: 200,
     contentType: "application/json",
