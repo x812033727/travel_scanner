@@ -10,13 +10,11 @@ export type DateRange = { start: string; end: string };
 
 const keyDeltas = new Map<string, number>([["ArrowLeft", -1], ["ArrowRight", 1], ["ArrowUp", -7], ["ArrowDown", 7]]);
 
-// Selected days use --teal-fill rather than --teal: the dark-theme remap in
-// globals.css only matches the bare `bg-[var(--teal)]` token, and --teal is a
-// light colour in dark mode where white text would vanish.
-// The holiday dot sits under the number, and turns white on a selected day where the teal
-// one would vanish into the fill.
-const holidayDot = "relative after:absolute after:bottom-1 after:hidden after:h-1 after:w-1 after:rounded-full after:bg-[var(--teal)] after:content-[''] data-[holiday=true]:after:block data-[range=edge]:after:bg-white";
-const cellClass = "grid h-11 w-full place-items-center rounded-xl text-sm font-medium tabular-nums outline-none transition hover:bg-[var(--paper)] focus-visible:ring-4 focus-visible:ring-[var(--teal-soft)] aria-disabled:cursor-not-allowed aria-disabled:opacity-40 aria-disabled:hover:bg-transparent aria-[current=date]:font-bold aria-[current=date]:text-[var(--teal-dark)] data-[range=edge]:bg-[var(--teal-fill)] data-[range=edge]:font-semibold data-[range=edge]:text-white data-[range=inside]:bg-[var(--teal-soft)] data-[range=inside]:text-[var(--teal-dark)] data-[range=preview]:bg-[var(--teal-soft)]";
+// Data variants are not matched by the bare utility compatibility selectors.
+// Pair selected-day fills with their semantic foreground for both the number and
+// holiday dot: dark palettes have light fills, while custom planners retain dark fills.
+const holidayDot = "relative after:absolute after:bottom-1 after:hidden after:h-1 after:w-1 after:rounded-full after:bg-[var(--teal)] after:content-[''] data-[holiday=true]:after:block data-[range=edge]:after:bg-[var(--primary-text)]";
+const cellClass = "grid h-11 w-full place-items-center rounded-xl text-sm font-medium tabular-nums outline-none transition hover:bg-[var(--paper)] focus-visible:ring-4 focus-visible:ring-[var(--teal-soft)] aria-disabled:cursor-not-allowed aria-disabled:opacity-40 aria-disabled:hover:bg-transparent aria-[current=date]:font-bold aria-[current=date]:text-[var(--teal-dark)] data-[range=edge]:bg-[var(--teal-fill)] data-[range=edge]:font-semibold data-[range=edge]:text-[var(--primary-text)] data-[range=inside]:bg-[var(--teal-soft)] data-[range=inside]:text-[var(--teal-dark)] data-[range=preview]:bg-[var(--teal-soft)]";
 
 export function DateRangePicker({ start, end, today, maxDays, countries = holidayCountries, onChange }: DateRange & {
   today: string;

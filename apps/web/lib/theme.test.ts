@@ -72,6 +72,15 @@ function contrast(a: string, b: string) {
   const values = [luminance(a), luminance(b)];
   return (Math.max(...values) + 0.05) / (Math.min(...values) + 0.05);
 }
+function mixHex(a: string, b: string, weight: number) {
+  const parts = (hex: string) => hex.match(/\w\w/g)!.map((part) => parseInt(part, 16));
+  const first = parts(a), second = parts(b);
+  return first.map((channel, index) => Math.round(channel * weight + second[index] * (1 - weight)).toString(16).padStart(2, "0")).join("");
+}
+function cssBlock(selector: string) {
+  expect(css).toContain(selector);
+  return css.slice(css.indexOf(selector)).split("}")[0];
+}
 describe("approved palette CSS", () => {
   it.each(expectedTokens)("ships exact accessible %s / %s tokens", (palette, theme, values) => {
     const selector = `.palette-preview[data-preview-palette="${palette}"][data-preview-theme="${theme}"]`;
@@ -86,10 +95,49 @@ describe("approved palette CSS", () => {
       expect(contrast(surface, focus)).toBeGreaterThanOrEqual(3);
     }
     expect(contrast(primary, primaryText)).toBeGreaterThanOrEqual(4.5);
+    const hover = mixHex(primary, theme === "dark" ? "ffffff" : "000000", .92);
+    // Flight hero copy spans the paired-fill gradient, including both endpoints.
+    for (let step = 0; step <= 10; step++) {
+      expect(contrast(mixHex(primary, hover, step / 10), primaryText)).toBeGreaterThanOrEqual(4.5);
+    }
   });
   it("keeps brand colours independent and planner customisations out of site mode", () => {
     expect(css).toContain(".mokaair-wordmark-air {\n  color: var(--brand-air);");
     expect(css).not.toContain(':root[data-theme="dark"] .planner-app-shell[data-planner-theme] {');
     expect(css).toContain('--primary-text: var(--palette-primary-text)');
+  });
+
+  it("maps the legacy dark utility to its paired fill and foreground without descendant rules", () => {
+    expect(cssBlock(':where([class~="bg-[var(--teal-dark)]"]) {')).toContain("background-color: var(--teal-fill-hover) !important;");
+    const foreground = css.split("}").find((rule) => rule.includes('[class~="text-white"]') && rule.includes("color: var(--primary-text)"));
+    expect(foreground).toContain('[class~="bg-[var(--teal-dark)]"]');
+    expect(foreground).not.toContain(" *");
+  });
+
+  it("uses the accessible control border for the theme and language selectors in both states", () => {
+    expect(cssBlock(".theme-switcher {")).toContain("border: 1px solid var(--control-border);");
+    expect(cssBlock(".theme-switcher:hover {")).toContain("border-color: var(--control-border);");
+    expect(cssBlock(".theme-switcher:focus-within {")).toContain("outline: 3px solid var(--focus);");
+  });
+
+  it("pairs flight hero, selected dates, holiday dots and hotspot hints explicitly", () => {
+    const source = (file: string) => readFileSync(`${import.meta.dirname}/../components/${file}`, "utf8");
+    const hero = cssBlock(".flight-status-hero {");
+    expect(hero).toContain("linear-gradient(135deg, var(--teal-fill-hover), var(--teal-fill))");
+    expect(hero).toContain("color: var(--primary-text);");
+    const flightHero = source("flight-status-search.tsx").split('className="flight-status-hero')[1]?.split("</section>")[0];
+    expect(flightHero).toBeDefined();
+    expect(flightHero).not.toContain("text-white");
+    const calendar = source("date-range-picker.tsx");
+    expect(calendar).toContain("data-[range=edge]:text-[var(--primary-text)]");
+    expect(calendar).toContain("data-[range=edge]:after:bg-[var(--primary-text)]");
+    expect(calendar).not.toContain("data-[range=edge]:text-white");
+    expect(calendar).not.toContain("data-[range=edge]:after:bg-white");
+    const hotspotHints = source("hotspot-explorer.tsx").split("\n").filter((line) => line.includes('bg-[var(--teal)]') && line.includes("openDetails(item)"));
+    expect(hotspotHints).toHaveLength(2);
+    hotspotHints.forEach((line) => {
+      expect(line).toContain("text-[var(--primary-text)]");
+      expect(line).not.toMatch(/text-white\/\d+/);
+    });
   });
 });

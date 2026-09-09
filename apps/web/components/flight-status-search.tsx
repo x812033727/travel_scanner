@@ -155,10 +155,10 @@ export function FlightStatusSearch() {
       {trips("statusFromTrip")}
       <Link href={`/trips/${tripId}`} className="underline">{trips("backToTrip")}</Link>
     </p>}
-    <section className="rounded-[2rem] bg-gradient-to-br from-[var(--teal-dark)] to-[var(--teal)] p-6 text-white md:p-10">
-      <p className="text-sm font-semibold text-white/75">FLIGHTAWARE 航班動態</p>
+    <section className="flight-status-hero rounded-[2rem] p-6 md:p-10">
+      <p className="text-sm font-semibold">FLIGHTAWARE 航班動態</p>
       <h1 className="mt-2 text-3xl font-bold md:text-5xl">查航班狀態、延誤與登機門</h1>
-      <p className="mt-3 max-w-2xl text-white/80">兩天內顯示即時動態；更遠日期只標示班表核對。票價請回旅遊搜尋比較。</p>
+      <p className="mt-3 max-w-2xl">兩天內顯示即時動態；更遠日期只標示班表核對。票價請回旅遊搜尋比較。</p>
     </section>
     <form onSubmit={submit} className="relative -mt-5 mx-3 rounded-3xl border border-[var(--line)] bg-white p-5 shadow-[var(--shadow-lg)] md:mx-8 md:p-7">
       <div className="mb-5 flex gap-2" role="tablist"><button type="button" onClick={() => setMode("ident")} className={`rounded-full px-4 py-2 text-sm font-semibold ${mode === "ident" ? "bg-[var(--teal)] text-white" : "bg-[var(--paper)]"}`}>依班號</button><button type="button" onClick={() => setMode("route")} className={`rounded-full px-4 py-2 text-sm font-semibold ${mode === "route" ? "bg-[var(--teal)] text-white" : "bg-[var(--paper)]"}`}>依航線</button></div>
