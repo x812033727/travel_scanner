@@ -1,7 +1,7 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { ApiError } from "@/lib/api";
-import { AccountList } from "./account-list";
+import { AccountList, TripActions } from "./account-list";
 
 const apiMock = vi.fn();
 vi.mock("@/lib/api", async () => {
@@ -25,6 +25,14 @@ function stub(routes: Record<string, Handler>) {
 }
 
 describe("AccountList", () => {
+  it("closes trip actions on Escape, outside click and selection without deleting on dismissal", () => {
+    const remove = vi.fn(); render(<><TripActions label="More" deleteLabel="Delete trip" onDelete={remove} /><button>Outside</button></>);
+    const summary = screen.getByLabelText("More");
+    const details = summary.closest("details")!;
+    fireEvent.click(summary); fireEvent.keyDown(summary, { key: "Escape" }); expect(details.open).toBe(false); expect(document.activeElement).toBe(summary);
+    fireEvent.click(summary); fireEvent.pointerDown(screen.getByRole("button", { name: "Outside" })); expect(details.open).toBe(false); expect(remove).not.toHaveBeenCalled();
+    fireEvent.click(summary); fireEvent.click(screen.getByRole("button", { name: "Delete trip" })); expect(details.open).toBe(false); expect(remove).toHaveBeenCalledOnce();
+  });
   // Braces matter: a hook that returns the mock would have it called as a cleanup function.
   beforeEach(() => {
     apiMock.mockReset();

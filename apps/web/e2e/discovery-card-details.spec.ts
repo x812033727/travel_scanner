@@ -165,12 +165,8 @@ for (const locale of locales) {
       await expect(article.locator("img")).toHaveCount(0);
       await expect(article.getByText(first, { exact: true })).toHaveCount(1);
       await expect(article.getByText(second, { exact: true })).toBeVisible();
-      await expect(article.getByText(third, { exact: true })).toHaveCount(0);
-      const more = article.getByText("+1", { exact: true });
-      await expect(more).toHaveAttribute("aria-hidden", "true");
-      const remaining = article.getByTitle(`${c.topic}: ${third}`, { exact: true });
-      await expect(remaining).toContainText("+1");
-      await expect(remaining.getByText(`${c.topic}: ${third}`, { exact: true })).toHaveClass(/\bsr-only\b/);
+      await expect(article.getByText(third, { exact: true })).toBeVisible();
+      await expect(article.getByText("+1", { exact: true })).toHaveCount(0);
       await expect.poll(() => article.getByText(first, { exact: true }).evaluate((node) => {
         const range = document.createRange(); range.selectNodeContents(node);
         return new Set(Array.from(range.getClientRects()).map((rect) => Math.round(rect.top))).size;

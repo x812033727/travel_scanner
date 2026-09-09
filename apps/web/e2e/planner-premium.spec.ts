@@ -62,6 +62,33 @@ test("itinerary first, category tools and one accessible contextual sheet", asyn
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390);
 });
 
+test("mobile planner protects dirty Browser Back and follows the site palette without provider writes", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  // Every unstubbed browser request is rejected locally; this never exercises paid providers.
+  await page.route("**/api/travel/**", (route) => route.fulfill({ status: 503, json: { detail: "isolated closure fixture" } }));
+  const state = await workspace(page);
+  await expect(page.locator("main[data-planner-theme]")).toHaveAttribute("data-planner-theme", "site");
+  await expect(page.locator(".premium-trip-header").getByRole("combobox", { name: "語言" })).toBeVisible();
+  const card = page.locator('[data-stop-id="asakusa"]');
+  await card.getByLabel("淺草散步 的更多操作").click();
+  await card.getByRole("button", { name: "編輯 淺草散步", exact: true }).click();
+  const editor = page.getByRole("dialog", { name: "編輯安排", exact: true });
+  await editor.getByLabel("安排名稱", { exact: true }).fill("保留我的草稿");
+  await expect.poll(() => page.evaluate(() => Boolean(history.state?.mokaairNavigationGuard))).toBe(true);
+  await page.evaluate(() => history.back());
+  const confirmation = page.getByRole("dialog", { name: "保留這次修改嗎？" });
+  await confirmation.getByRole("button", { name: "繼續編輯", exact: true }).click();
+  await expect(editor.getByLabel("安排名稱", { exact: true })).toHaveValue("保留我的草稿");
+  await expect(page).toHaveURL(/\/zh-TW\/trips\/intuitive-trip$/);
+  expect(state.writes).toEqual([]);
+  await page.keyboard.press("Escape");
+  await confirmation.getByRole("button", { name: "捨棄修改", exact: true }).click();
+  await expect(editor).toBeHidden();
+  await expect(page.locator(".planner-app-shell")).toBeVisible();
+  expect(state.writes).toEqual([]);
+  await expect.poll(() => page.evaluate(() => document.body.style.position)).toBe("");
+});
+
 test("continuous additions, card actions and cross-day movement preserve manual stops", async ({ page }) => {
   const state = await workspace(page);
   await page.getByRole("button", { name: "排序行程", exact: true }).click();

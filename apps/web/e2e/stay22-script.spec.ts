@@ -10,6 +10,7 @@ import { klookAffiliateCopy } from "../lib/klook-affiliate-copy";
 import { siteFeatureKeys } from "../lib/site-features";
 import { stay22ScriptCopy } from "../lib/stay22-script-copy";
 import { STAY22_SCRIPT_URL } from "../lib/stay22-script";
+import { localeLabels, locales } from "../i18n/routing";
 
 const canonical = "https://mokaair.com";
 const publicPath = "/zh-TW/destinations/tokyo/services";
@@ -183,6 +184,68 @@ async function sheet(page: Page) {
   await expect(dialog).toBeVisible();
   return { opener, dialog };
 }
+
+test("public top language links use clean native destinations without account requests", async ({ page, context, site }) => {
+  await context.addCookies([{ name: "travel_access", value: "synthetic-private-session", url: canonical, httpOnly: true, secure: true }]);
+  await page.goto(`${canonical}${publicPath}#private-note`);
+  const language = page.getByRole("banner").getByRole("navigation", { name: "語言", exact: true });
+  await expect(language).toBeVisible();
+  await expect(language.getByRole("link")).toHaveCount(5);
+  for (const locale of locales) {
+    const link = language.getByRole("link", { name: localeLabels[locale], exact: true });
+    await expect(link).toHaveAttribute("href", `/${locale}/destinations/tokyo/services`);
+    await expect(link).toBeVisible();
+    expect((await link.boundingBox())!.height).toBeGreaterThanOrEqual(44);
+  }
+  expect(site.sdkLoads).toEqual([]);
+  await page.evaluate(() => { (window as MockWindow).__publicDocumentMarker = "old-language-document"; });
+  await language.getByRole("link", { name: "English", exact: true }).click();
+  await expect(page).toHaveURL(`${canonical}/en/destinations/tokyo/services`);
+  await expect(page.getByRole("heading", { name: stay22ScriptCopy("en").title, exact: true })).toBeVisible();
+  await expect(page.getByRole("navigation", { name: "Language", exact: true }).getByRole("link", { name: "English", exact: true })).toHaveAttribute("aria-current", "page");
+  expect(await page.evaluate(() => (window as MockWindow).__publicDocumentMarker)).toBeUndefined();
+  expect(site.api.some((call) => /\/auth\/|\/saved-items|\/trips/.test(call.path))).toBe(false);
+  expect(site.api.every((call) => call.method === "GET" && !call.cookie && !call.authorization)).toBe(true);
+  expect(site.blocked).toEqual([]);
+  expect(site.errors).toEqual([]);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
+});
+
+test("isolated public hotel controls keep stored dark palettes and semantic button contrast", async ({ page, context, site }) => {
+  await context.addInitScript(() => {
+    if (location.origin === "https://mokaair.com") {
+      localStorage.setItem("mokaair-theme", "dark");
+      if (!localStorage.getItem("mokaair-palette")) localStorage.setItem("mokaair-palette", "mocha");
+    }
+  });
+  await page.goto(`${canonical}${publicPath}`);
+  for (const [palette, foreground] of [["mocha", "rgb(17, 44, 41)"], ["lagoon", "rgb(8, 45, 64)"], ["forest", "rgb(27, 52, 31)"]]) {
+    if (palette !== "mocha") {
+      await page.evaluate((value) => localStorage.setItem("mokaair-palette", value), palette);
+      await page.reload();
+    }
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+    await expect(page.locator("html")).toHaveAttribute("data-palette", palette);
+    const opener = page.getByRole("button", { name: copy.open, exact: true });
+    await expect(opener).toBeVisible();
+    await expect(opener).toHaveCSS("color", foreground);
+    const ratio = await opener.evaluate((element) => {
+      const style = getComputedStyle(element);
+      const luminance = (color: string) => {
+        const channels = color.match(/[\d.]+/g)?.map(Number);
+        if (!channels || channels.length !== 3) throw new Error(`Expected opaque RGB colour, got ${color}`);
+        return channels.map((channel) => { const value = channel / 255; return value <= .04045 ? value / 12.92 : ((value + .055) / 1.055) ** 2.4; })
+          .reduce((sum, channel, index) => sum + channel * [.2126, .7152, .0722][index], 0);
+      };
+      const values = [luminance(style.color), luminance(style.backgroundColor)];
+      return (Math.max(...values) + .05) / (Math.min(...values) + .05);
+    });
+    expect(ratio, `${palette} public hotel button`).toBeGreaterThanOrEqual(4.5);
+  }
+  expect(site.api.some((call) => /\/auth\/|\/saved-items|\/trips/.test(call.path))).toBe(false);
+  expect(site.blocked).toEqual([]);
+  expect(site.errors).toEqual([]);
+});
 
 test("public Script rewrites dynamically opened original links without Allez double-wrapping", async ({ page, context, site }) => {
   await context.addCookies([{ name: "travel_access", value: "synthetic-private-session", url: canonical, httpOnly: true, secure: true }]);

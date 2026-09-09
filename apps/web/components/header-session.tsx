@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { isLocale } from "@/i18n/routing";
 import { ApiError, api } from "@/lib/api";
+import { requestNavigation } from "@/lib/navigation-guard";
 
 /**
  * What `/auth/me` answers. Every field the page needs lives here rather than in each
@@ -58,6 +59,8 @@ export function HeaderSessionProvider({
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const query = searchParams?.toString() || "";
+  const latestRoute = useRef({ pathname, query });
   const locale = useLocale();
   const loadedLocale = useRef<string | undefined>(undefined);
   const requestId = useRef(0);
@@ -75,6 +78,10 @@ export function HeaderSessionProvider({
   }, []);
 
   useEffect(() => {
+    latestRoute.current = { pathname, query };
+  }, [pathname, query]);
+
+  useEffect(() => {
     if (!hasSession) return;
     if (loadedLocale.current === locale) return;
     loadedLocale.current = locale;
@@ -90,22 +97,27 @@ export function HeaderSessionProvider({
         try {
           pickedLocale = window.sessionStorage.getItem("travel-locale-picked") === "1";
         } catch { /* storage can be blocked */ }
+        const preferredLocale = currentUser.preferred_locale;
         if (
-          isLocale(currentUser.preferred_locale) &&
-          currentUser.preferred_locale !== locale &&
+          isLocale(preferredLocale) &&
+          preferredLocale !== locale &&
           // A locale the visitor picked this session wins over the stored
           // preference: the PATCH may still be in flight, and snapping back
           // to the old language right after they switched reads as a bug.
           !pickedLocale
         ) {
-          document.cookie = `travel_locale=${currentUser.preferred_locale}; path=/; max-age=31536000; samesite=lax`;
-          // usePathname carries no query or fragment; dropping them here used
-          // to strip ?destination_id=... from deep links during the redirect.
-          const query = searchParams?.toString() || "";
-          router.replace(
-            `${pathname}${query ? `?${query}` : ""}${window.location.hash}`,
-            { locale: currentUser.preferred_locale },
-          );
+          requestNavigation(() => {
+            // A deferred confirmation must not revive a signed-out session's preference.
+            if (requestId.current !== currentRequest) return;
+            document.cookie = `travel_locale=${preferredLocale}; path=/; max-age=31536000; samesite=lax`;
+            // Auth and leave approval can arrive after a same-locale SPA navigation.
+            // Preserve the current route, query and fragment instead of the request's route.
+            const { pathname, query } = latestRoute.current;
+            router.replace(
+              `${pathname}${query ? `?${query}` : ""}${window.location.hash}`,
+              { locale: preferredLocale },
+            );
+          });
         }
       })
       .catch((reason) => {

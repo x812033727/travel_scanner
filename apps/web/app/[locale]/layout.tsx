@@ -8,6 +8,7 @@ import { AppBottomNav } from "@/components/app-bottom-nav";
 import { HeaderSessionProvider } from "@/components/header-session";
 import { SavedItemsProvider } from "@/components/saved-items-provider";
 import { SiteFooter } from "@/components/site-footer";
+import { ThemeProvider } from "@/components/theme-provider";
 import { SiteVisibilityProvider } from "@/components/site-visibility-provider";
 import { UsageCatalogProvider } from "@/components/usage-catalog-provider";
 import { CommunityProvider } from "@/components/community/provider";
@@ -16,6 +17,7 @@ import { AnalyticsProvider } from "@/components/analytics-provider";
 import { TravelpayoutsDrive } from "@/components/travelpayouts-drive";
 import { routing } from "@/i18n/routing";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
+import { NAVIGATION_HISTORY_BOOTSTRAP_SCRIPT } from "@/lib/navigation-history";
 import { TEXT_SIZE_BOOTSTRAP_SCRIPT } from "@/lib/text-size";
 import { THEME_BOOTSTRAP_SCRIPT } from "@/lib/theme";
 import { isTravelpayoutsDriveOrigin } from "@/lib/travelpayouts-drive";
@@ -76,7 +78,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   // used to find that out by sending a request that could only come back 401, on every
   // page a signed-out reader opened.
   const hasSession = jar.has("travel_access");
-  // Set by proxy.ts so the inline theme bootstrap can satisfy the nonce-based CSP.
+  // Set by proxy.ts so the static inline bootstraps satisfy the nonce-based CSP.
   const nonce = requestHeaders.get("x-nonce") ?? undefined;
   return (
     <html lang={locale} data-theme-preference="system" suppressHydrationWarning>
@@ -86,10 +88,12 @@ export default async function LocaleLayout({ children, params }: Props) {
             the largest text size watched the page paint at 16px and then jump to 20px
             (measured: the hero moved 30px down on a throttled phone). Parser-blocking
             in the head is the whole point of a bootstrap. */}
-        <script nonce={nonce} dangerouslySetInnerHTML={{ __html: `${THEME_BOOTSTRAP_SCRIPT};${TEXT_SIZE_BOOTSTRAP_SCRIPT}` }} />
+        {/* History dispatch must also be registered before the router hydrates. */}
+        <script nonce={nonce} dangerouslySetInnerHTML={{ __html: `${NAVIGATION_HISTORY_BOOTSTRAP_SCRIPT};${THEME_BOOTSTRAP_SCRIPT};${TEXT_SIZE_BOOTSTRAP_SCRIPT}` }} />
       </head>
       <body>
         <NextIntlClientProvider messages={messages}>
+          <ThemeProvider>
           <SiteVisibilityProvider state={siteVisibility}>
             <UsageCatalogProvider state={usageCatalog}>
               <AnalyticsProvider>
@@ -116,6 +120,7 @@ export default async function LocaleLayout({ children, params }: Props) {
               </AnalyticsProvider>
             </UsageCatalogProvider>
           </SiteVisibilityProvider>
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>

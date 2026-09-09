@@ -5,7 +5,7 @@ import {
   Database, Hotel, KeyRound, Languages, LayoutDashboard, Menu, PanelLeftClose,
   PanelLeftOpen, PawPrint, Rocket, Settings2, ShieldCheck, Soup, UsersRound, X,
 } from "lucide-react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useAdminOperations } from "@/components/admin-operations-provider";
 import { useHeaderSession } from "@/components/header-session";
@@ -62,6 +62,7 @@ function useDrawerFocus(open: boolean, container: React.RefObject<HTMLElement | 
 export function AdminNav({ current }: { current?: string } = {}) {
   const locale = useLocale();
   const copy = adminOperationsCopy(locale);
+  const sitePagesTitle = useTranslations("admin.sitePages")("title");
   const pathname = usePathname();
   const operations = useAdminOperations();
   const { user } = useHeaderSession();
@@ -89,7 +90,7 @@ export function AdminNav({ current }: { current?: string } = {}) {
     try { window.localStorage.setItem("admin-sidebar-collapsed", next ? "1" : "0"); } catch { /* storage may be blocked */ }
   }
 
-  const label = (item: AdminNavigationItem) => item.label || copy.nav[item.key] || item.key;
+  const label = (item: AdminNavigationItem) => item.key === "sitePages" ? sitePagesTitle : item.label || copy.nav[item.key] || item.key;
   const term = query.trim().toLocaleLowerCase(locale);
   const filtered = links.filter((item) => !term || label(item).toLocaleLowerCase(locale).includes(term));
   const activeFor = (href: string) => href === "/admin" ? activePath === href : activePath.startsWith(href);

@@ -63,13 +63,30 @@ function ExplorerContent({ home }: { home: boolean }) {
     {preferences && user && <DiscoveryPreferenceEditor key={user.id} onClose={() => setPreferences(false)} onSaved={() => { setPreferences(false); setRevision((n) => n + 1); }} />}
   </main>;
 }
-function DiscoverySearch({ initial, onSearch }: { initial: string; onSearch: (value: string) => void }) {
+export function DiscoverySearch({ initial, onSearch }: { initial: string; onSearch: (value: string) => void }) {
   const c = getDiscoveryCopy(useLocale()); const [text, setText] = useState(initial); const [debounced, setDebounced] = useState(""); const [show, setShow] = useState(false); const id = useId();
+  const box = useRef<HTMLDivElement>(null);
+  const input = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    const dismiss = (event: PointerEvent) => { if (event.target instanceof Node && !box.current?.contains(event.target)) setShow(false); };
+    document.addEventListener("pointerdown", dismiss);
+    return () => document.removeEventListener("pointerdown", dismiss);
+  }, []);
   useEffect(() => { const timer = setTimeout(() => setDebounced(text.trim()), 250); return () => clearTimeout(timer); }, [text]);
   const suggestions = useDiscoveryResource<{ query: string; items: Array<{ label: string; query: string }> }>(show && debounced.length >= 2 ? `/discovery/suggestions?q=${encodeURIComponent(debounced)}` : null);
+  const visible = Boolean(show && suggestions.data?.query === debounced && suggestions.data.items?.length);
   function submit(event: FormEvent) { event.preventDefault(); setShow(false); onSearch(text.trim()); }
-  return <div><form role="search" onSubmit={submit} className={styles.search}><label className="sr-only" htmlFor={id}>{c.searchLabel}</label><input id={id} type="search" maxLength={160} value={text} onFocus={() => setShow(true)} onChange={(event) => { setText(event.target.value); setShow(true); }} onKeyDown={(event) => { if (event.key === "Escape") setShow(false); }} placeholder={c.placeholder} /><Button type="submit" aria-label={c.search}><Search size={18} aria-hidden /></Button></form>
-    {show && suggestions.data?.query === debounced && suggestions.data.items?.length > 0 && <div className="mt-2 rounded-xl border border-[var(--line)] bg-[var(--surface)] p-2"><p className="px-2 text-xs text-[var(--muted)]">{c.suggestions}</p><ul>{suggestions.data.items.map((item) => <li key={item.query}><button type="button" onClick={() => { setText(item.query); setShow(false); onSearch(item.query); }} className="min-h-11 w-full rounded-lg px-3 text-left text-sm focus-visible:outline focus-visible:outline-2">{item.label}</button></li>)}</ul></div>}
+  return <div ref={box} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setShow(false); }} onKeyDown={(event) => {
+    if (event.nativeEvent.isComposing) return;
+    if (event.key === "Escape" && show && (visible || suggestions.loading)) { event.preventDefault(); event.stopPropagation(); input.current?.focus(); setShow(false); }
+    if (visible && ["ArrowDown", "ArrowUp"].includes(event.key)) {
+      const options = Array.from(box.current?.querySelectorAll<HTMLButtonElement>("[data-search-suggestion]") || []);
+      const index = options.indexOf(document.activeElement as HTMLButtonElement);
+      const next = event.key === "ArrowDown" ? (index + 1) % options.length : (index <= 0 ? options.length - 1 : index - 1);
+      event.preventDefault(); options[next]?.focus();
+    }
+  }}><form role="search" onSubmit={submit} className={styles.search}><label className="sr-only" htmlFor={id}>{c.searchLabel}</label><input ref={input} id={id} type="search" maxLength={160} value={text} aria-controls={visible ? `${id}-suggestions` : undefined} onFocus={() => setShow(true)} onChange={(event) => { setText(event.target.value); setShow(true); }} placeholder={c.placeholder} /><Button type="submit" aria-label={c.search}><Search size={18} aria-hidden /></Button></form>
+    {visible && <div className="mt-2 rounded-xl border border-[var(--line)] bg-[var(--surface)] p-2"><p className="px-2 text-xs text-[var(--muted)]">{c.suggestions}</p><ul id={`${id}-suggestions`} aria-label={c.suggestions}>{suggestions.data!.items.map((item) => <li key={item.query}><button data-search-suggestion type="button" onClick={() => { setText(item.query); setShow(false); onSearch(item.query); }} className="min-h-11 w-full rounded-lg px-3 text-left text-sm focus-visible:outline focus-visible:outline-2">{item.label}</button></li>)}</ul></div>}
   </div>;
 }
 type PageState = { cursor: string | null; previous: DiscoveryItem[] };

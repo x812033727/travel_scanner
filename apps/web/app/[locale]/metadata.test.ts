@@ -1,6 +1,14 @@
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
+import { siteInformationMetadata } from "@/components/site-information-page";
+
+vi.mock("@/components/site-information-page", () => ({
+  SiteInformationPage: () => null,
+  siteInformationMetadata: vi.fn(async (slug: string, locale: string) => ({
+    title: `Published ${slug} (${locale})`, description: `Published summary ${slug} (${locale})`,
+  })),
+}));
 
 /**
  * Nine of thirteen public pages once shared one <title> and one meta description, in every
@@ -23,6 +31,11 @@ const NOT_PUBLIC = new Set(["admin", "line", "out", "share-target"]);
 // never in `routes` because the walk only descends into subdirectories, but its keys are what
 // every other page must not reuse.
 const SITE_WIDE = ["title", "description"] as const;
+const MANAGED_PAGES = ["privacy", "terms", "about", "contact"] as const;
+const managedPageLoaders = {
+  privacy: () => import("./privacy/page"), terms: () => import("./terms/page"),
+  about: () => import("./about/page"), contact: () => import("./contact/page"),
+};
 
 function publicPages(): string[] {
   const found: string[] = [];
@@ -55,7 +68,20 @@ function catalog(locale: string): Record<string, string> {
 }
 
 describe("public page metadata", () => {
-  const routes = publicPages();
+  // Managed documents use the published title/summary, not editable general UI text.
+  // Keep the static-key checks for every other public route; exercise their exact
+  // slug/locale delegation below. Publication and failure behavior have renderer tests.
+  const routes = publicPages().filter((route) => !MANAGED_PAGES.some((slug) => slug === route));
+
+  it.each(MANAGED_PAGES)("%s delegates metadata to its own published document in all five locales", async (slug) => {
+    expect(publicPages()).toContain(slug);
+    const page = await managedPageLoaders[slug]();
+    for (const locale of LOCALES) {
+      const metadata = await page.generateMetadata({ params: Promise.resolve({ locale }) });
+      expect(siteInformationMetadata).toHaveBeenLastCalledWith(slug, locale);
+      expect(metadata).toEqual({ title: `Published ${slug} (${locale})`, description: `Published summary ${slug} (${locale})` });
+    }
+  });
 
   it("finds the public pages", () => {
     // A guard on the guard: if the walk stops matching the app directory this whole file

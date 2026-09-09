@@ -7,6 +7,7 @@ import { useState } from "react";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { localeCookieName, localeLabels, locales, type Locale } from "@/i18n/routing";
 import { api, ApiError } from "@/lib/api";
+import { requestNavigation } from "@/lib/navigation-guard";
 
 export function LanguageSwitcher({ compact = false, showHelp = false }: { compact?: boolean; showHelp?: boolean }) {
   const locale = useLocale() as Locale;
@@ -17,8 +18,12 @@ export function LanguageSwitcher({ compact = false, showHelp = false }: { compac
   const account = useTranslations("account");
   const [syncFailed, setSyncFailed] = useState(false);
 
-  async function changeLocale(nextLocale: Locale) {
+  function changeLocale(nextLocale: Locale) {
     if (nextLocale === locale) return;
+    requestNavigation(() => { void applyLocale(nextLocale); });
+  }
+
+  async function applyLocale(nextLocale: Locale) {
     setSyncFailed(false);
     try {
       // Tells HeaderSessionProvider not to bounce the page back to the stored
@@ -27,7 +32,7 @@ export function LanguageSwitcher({ compact = false, showHelp = false }: { compac
     } catch { /* storage can be blocked */ }
     document.cookie = `${localeCookieName}=${encodeURIComponent(nextLocale)}; Max-Age=31536000; Path=/; SameSite=Lax`;
     const query = searchParams.toString();
-    router.replace(`${pathname}${query ? `?${query}` : ""}`, { locale: nextLocale });
+    router.replace(`${pathname}${query ? `?${query}` : ""}${window.location.hash}`, { locale: nextLocale });
     try {
       await api("/auth/me", { method: "PATCH", body: JSON.stringify({ preferred_locale: nextLocale }) });
     } catch (error) {

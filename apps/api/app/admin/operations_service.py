@@ -108,6 +108,10 @@ NAVIGATION_REGISTRY: tuple[AdminNavigationItem, ...] = (
         capability="settings.read",
     ),
     AdminNavigationItem(
+        id="site_pages", group="operations", href="/admin/site-pages", label_key="sitePages",
+        capability="settings.read",
+    ),
+    AdminNavigationItem(
         id="system_settings", group="system", href="/admin/system-settings",
         label_key="systemSettings", capability="settings.read",
     ),

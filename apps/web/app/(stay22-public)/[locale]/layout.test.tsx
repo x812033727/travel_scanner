@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom/vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 const { config, incoming, original, redirect } = vi.hoisted(() => ({ config: vi.fn(), incoming: vi.fn(), original: vi.fn(), redirect: vi.fn((url: string) => { throw new Error(`redirect:${url}`); }) }));
 vi.mock("@/lib/stay22-script.server", () => ({ getStay22ScriptConfig: config }));
@@ -10,6 +10,7 @@ vi.mock("@/app/[locale]/layout", () => ({ default: original, generateMetadata: v
 vi.mock("@/components/stay22-script", () => ({ Stay22Script: () => <span data-testid="official-script" /> }));
 import PublicLayout from "./layout";
 import { disabledStay22Script } from "@/lib/stay22-script";
+import { localeLabels, locales } from "@/i18n/routing";
 const STAY22_SCRIPT_LMA_ID = "6aa15a455ff1d17f658d1692";
 
 describe("separate public document root", () => {
@@ -35,6 +36,25 @@ describe("separate public document root", () => {
     expect(original).toHaveBeenCalledTimes(1);
     expect(screen.getByTestId("original-layout")).toBeTruthy();
     expect(screen.queryByTestId("official-script")).toBeNull();
+  });
+  it.each(locales)("exposes native clean public language links in the %s top header", async (locale) => {
+    incoming.mockResolvedValue(new Headers({ "x-travel-pathname": `/${locale}/destinations/osaka-kyoto/services` }));
+    const common = (await import(`@/messages/${locale}/common.json`)).default;
+    const result = await PublicLayout({ children: <p>Public hotels</p>, params: Promise.resolve({ locale }) });
+    const body = (result.props.children as React.ReactElement<{ children: React.ReactNode }>[])[1];
+    render(body.props.children);
+    const language = screen.getByRole("navigation", { name: common.language });
+    expect(language.closest("header")?.firstElementChild).toBe(language);
+    expect(within(language).getAllByRole("link")).toHaveLength(5);
+    for (const value of locales) {
+      const link = within(language).getByRole("link", { name: localeLabels[value] });
+      expect(link).toHaveAttribute("href", `/${value}/destinations/osaka-kyoto/services`);
+      expect(link).toHaveAttribute("hreflang", value);
+      if (value === locale) expect(link).toHaveAttribute("aria-current", "page");
+      else expect(link).not.toHaveAttribute("aria-current");
+    }
+    expect(original).not.toHaveBeenCalled();
+    expect(document.querySelectorAll("form,input,iframe")).toHaveLength(0);
   });
   it("strips URL conditions before exposing a script document", async () => {
     incoming.mockResolvedValue(new Headers({ "x-travel-pathname": "/zh-TW/destinations/tokyo/services?start_date=2027-01-01&trip_id=private" }));

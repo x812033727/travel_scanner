@@ -347,6 +347,8 @@ async def test_food_merchant_hotel_existing_publication_contracts(harness):
             coordinate_source_url="https://example.com/map",
         )
         hotel = TravelServiceProduct(
+            # A public identifier may legitimately contain the private-price digits.
+            id=UUID("99900000-0000-4000-8000-000000000001"),
             source_key="test:hotel",
             kind="hotel",
             destination_id="tokyo",
@@ -379,8 +381,24 @@ async def test_food_merchant_hotel_existing_publication_contracts(harness):
         "/api/v1/discovery/search", params={"locale": "en", "destination": "Tokyo"}
     )
     assert result.status_code == 200, result.text
-    assert {item["kind"] for item in result.json()["items"]} == {"food", "hotel"}
-    assert "999" not in result.text and "reference_price" not in result.text
+    payload = result.json()
+    assert {item["kind"] for item in payload["items"]} == {"food", "hotel"}
+    public_hotel = next(item for item in payload["items"] if item["kind"] == "hotel")
+    assert public_hotel["id"] == f"hotel:{hotel.id}"
+
+    def assert_no_private_price(value: Any) -> None:
+        # Inspect fields and whole scalar values, not substrings of timestamps/UUIDs.
+        if isinstance(value, dict):
+            assert "reference_price" not in value
+            for child in value.values():
+                assert_no_private_price(child)
+        elif isinstance(value, list):
+            for child in value:
+                assert_no_private_price(child)
+        else:
+            assert value not in (999, "999")
+
+    assert_no_private_price(payload)
     async with factory() as session:
         session.add(
             FoodMerchantSource(

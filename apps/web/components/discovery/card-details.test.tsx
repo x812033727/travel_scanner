@@ -72,16 +72,16 @@ describe("compact discovery cards", () => {
     for (const entry of display_topics) expect(within(meta as HTMLElement).getByText(entry.label)).toBeTruthy();
     expect(meta.textContent).not.toContain("+");
   });
-  it("deduplicates kinds, labels and IDs before showing two topics and a truthful +N", () => {
+  it("deduplicates kinds, labels and IDs and shows every topic without truncation", () => {
     const display_topics = [topic("kind", "景點"), topic("blank", " "), topic("category:culture", "文化"), topic("theme:duplicate", " 文化 "), topic("theme:sakura", "賞櫻"), topic("theme:sakura", "Duplicate ID"), topic("theme:autumn", "賞楓"), topic("theme:market", "市場")];
     const { container } = render(<DiscoveryCard item={{ ...item, display_topics }} />);
     const meta = container.querySelector("article p")!;
-    expect(meta.querySelectorAll('[aria-hidden="true"]')).toHaveLength(5); // map, three separators and visible +N
+    expect(meta.querySelectorAll('[aria-hidden="true"]')).toHaveLength(6); // map and five separators
     expect(screen.getByText("文化")).toBeTruthy(); expect(screen.getByText("賞櫻")).toBeTruthy();
-    expect(screen.getByText("+2")).toBeTruthy();
-    expect(screen.getByTitle("主題: 賞楓 · 市場")).toBeTruthy();
+    expect(screen.queryByText("+2")).toBeNull();
+    expect(screen.getByText("市場")).toBeTruthy();
     expect(screen.queryByText("Duplicate ID")).toBeNull();
-    expect(screen.queryByText("賞楓", { exact: true })).toBeNull();
+    expect(screen.getByText("賞楓", { exact: true })).toBeTruthy();
   });
   it("has no leading separator when a destination is missing", () => {
     const { container } = render(<DiscoveryCard item={{ ...item, destination: null, display_topics: [topic("category:culture", "文化")] }} />);
@@ -100,6 +100,22 @@ describe("compact discovery cards", () => {
 });
 
 describe("source-linked discovery details", () => {
+  it("separates source articles and videos by type and hides empty groups", () => {
+    mock.detail = detail([guide("article", "https://source.test/article"), { ...guide("video", "https://source.test/video"), kind: "video" }]);
+    const { rerender } = render(<DiscoveryDetails kind="hotspot" id="place" />);
+    expect(within(screen.getByRole("region", { name: "articleGroup" })).getByRole("link", { name: /Guide article/ })).toBeTruthy();
+    expect(within(screen.getByRole("region", { name: "videoGroup" })).getByRole("link", { name: /Guide video/ })).toBeTruthy();
+    mock.detail = detail([guide("article", "https://source.test/article")]);
+    rerender(<DiscoveryDetails kind="hotspot" id="place" />);
+    expect(screen.queryByRole("region", { name: "videoGroup" })).toBeNull();
+  });
+  it("omits empty descriptions and coordinate-only place sections without placeholder copy", () => {
+    mock.detail = { ...item, summary: "  ", detail: { guides: [], merchants: [], place: { status: "ready", coordinates: { latitude: 25, longitude: 121, source: "wikidata" } } } };
+    const { container } = render(<DiscoveryDetails kind="hotspot" id="place" />);
+    expect(screen.queryByRole("heading", { name: "關於這裡" })).toBeNull();
+    expect(container.textContent).not.toContain("目前尚未提供更多資訊");
+    expect(container.querySelectorAll("section")).toHaveLength(1); // sources only
+  });
   it("omits coordinate text and copy controls but keeps map coordinates and official links", () => {
     const { container } = render(<DiscoveryDetails kind="hotspot" id="place" />);
     expect(container.textContent).not.toMatch(/25\.033|121\.5654|經緯度/);

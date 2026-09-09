@@ -43,6 +43,11 @@ jobs:
         run: uv run pytest tests/test_admin_operations_migration.py -q -p no:cacheprovider
         env:
           RUN_MIGRATION_TESTS: "1"
+      - name: Validate site-page version migrations on PostgreSQL
+        run: uv run pytest tests/test_site_pages_migration.py -q -p no:cacheprovider
+        env:
+          RUN_INTEGRATION_TESTS: "1"
+          RUN_MIGRATION_TESTS: "1"
       - run: uv run alembic upgrade head
       - name: Start private S3 integration companion
         run: |
@@ -86,11 +91,17 @@ jobs:
       - run: npm run build:web
       - run: npx playwright install --with-deps chromium
       - name: Run isolated browser UI tests
-        run: npx playwright test e2e/navigation.spec.ts e2e/readability.spec.ts e2e/signed-out.spec.ts e2e/travel-services.spec.ts e2e/stay22-allez.spec.ts e2e/stay22-script.spec.ts e2e/stay22-maps.spec.ts e2e/merchant-styles.spec.ts e2e/admin-domains.spec.ts e2e/admin-operations.spec.ts
+        run: npx playwright test e2e/navigation.spec.ts e2e/readability.spec.ts e2e/signed-out.spec.ts e2e/travel-services.spec.ts e2e/stay22-allez.spec.ts e2e/stay22-script.spec.ts e2e/stay22-maps.spec.ts e2e/merchant-styles.spec.ts e2e/admin-domains.spec.ts e2e/admin-operations.spec.ts e2e/site-experience.spec.ts e2e/site-pages.spec.ts e2e/discovery-card-details.spec.ts e2e/planner-premium.spec.ts
         working-directory: apps/web
         # Serve the build from the step above instead of a dev server that compiles
         # each page on first visit; see playwright.config.ts.
         env: { PLAYWRIGHT_SERVE_BUILD: "true" }
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: site-experience-browser-results
+          path: apps/web/test-results
+          retention-days: 7
   containers:
     runs-on: ubuntu-latest
     steps:

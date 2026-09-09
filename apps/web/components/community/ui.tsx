@@ -4,6 +4,7 @@ import { useEffect, useId, useRef, useState, type ReactNode, type ButtonHTMLAttr
 import { useTranslations } from "next-intl";
 import { ApiError, api } from "@/lib/api";
 import { useHeaderSession } from "@/components/header-session";
+import { isTopModalLayer, registerModalLayer } from "@/lib/modal-sheet";
 
 export const fieldClass = "mt-1.5 w-full rounded-xl border border-[var(--line)] bg-[var(--surface)] px-3 py-2.5 text-[var(--ink)] outline-none focus:ring-2 focus:ring-[var(--teal)] disabled:opacity-50";
 export const panelClass = "rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5 md:p-6";
@@ -40,28 +41,43 @@ export function Tabs({ value, onChange, items, children, label }: { value: strin
 export function Dialog({ title, children, onClose, returnFocusTo }: { title: string; children: ReactNode; onClose: () => void; returnFocusTo?: HTMLElement | null }) {
   const ref = useRef<HTMLDialogElement>(null);
   const originalTrigger = useRef<HTMLElement | null>(null);
+  const backdropDown = useRef(false);
   const id = useId();
   const t = useTranslations("community");
   useEffect(() => {
     const dialog = ref.current;
+    if (!dialog) return;
     if (!originalTrigger.current) originalTrigger.current = returnFocusTo || (document.activeElement instanceof HTMLElement ? document.activeElement : null);
     const trigger = originalTrigger.current;
-    if (dialog && !dialog.open) dialog.showModal();
+    if (!dialog.open) dialog.showModal();
+    const unregister = registerModalLayer(dialog);
     // Native cancel focus restoration can run after React removes the dialog.
     // Restore on the following frame, once both the top layer and DOM have settled.
-    return () => { requestAnimationFrame(() => { if (!dialog?.isConnected && trigger?.isConnected) trigger.focus(); }); };
+    return () => {
+      const wasTop = isTopModalLayer(dialog);
+      unregister();
+      requestAnimationFrame(() => { if (wasTop && !dialog.isConnected && trigger?.isConnected) trigger.focus(); });
+    };
   }, [returnFocusTo]);
   return <dialog ref={ref} aria-labelledby={id} onCancel={(event) => {
     event.stopPropagation();
-    if (event.target !== event.currentTarget) return;
     event.preventDefault();
+    if (event.target !== event.currentTarget || !isTopModalLayer(event.currentTarget)) return;
     onClose();
   }} onClose={(event) => {
     event.stopPropagation();
-    if (event.target === event.currentTarget) onClose();
+    if (event.target === event.currentTarget && isTopModalLayer(event.currentTarget)) onClose();
+  }} onPointerDown={(event) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    backdropDown.current = event.target === event.currentTarget && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom);
+  }} onClick={(event) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const outside = event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom;
+    if (backdropDown.current && outside && event.target === event.currentTarget && isTopModalLayer(event.currentTarget)) onClose();
+    backdropDown.current = false;
   }}
     className="m-auto max-h-[90dvh] w-[min(42rem,calc(100%-2rem))] overflow-y-auto rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6 text-[var(--ink)] backdrop:bg-black/50">
-    <div className="mb-5 flex items-center justify-between gap-3"><h2 id={id} className="text-xl font-bold">{title}</h2><Button secondary onClick={onClose}>{t("close")}</Button></div>{children}
+    <div className="sticky -top-6 z-10 -mx-6 -mt-6 mb-5 flex items-center justify-between gap-3 border-b border-[var(--line)] bg-[var(--surface)] px-6 py-4"><h2 id={id} className="text-xl font-bold">{title}</h2><Button secondary onClick={() => { if (ref.current && isTopModalLayer(ref.current)) onClose(); }}>{t("close")}</Button></div>{children}
   </dialog>;
 }
 export function CommunityImage(props: { id:string;alt:string;review?:boolean;thumbnail?:boolean }) {

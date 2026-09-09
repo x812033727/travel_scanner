@@ -1,4 +1,5 @@
 import { expect, test, type Page, type Route } from "@playwright/test";
+import type { SitePageDetail } from "../lib/site-pages";
 
 const ADMIN_PAGES = [
   "/admin",
@@ -16,6 +17,7 @@ const ADMIN_PAGES = [
   "/admin/usage-settings",
   "/admin/layout-settings",
   "/admin/ui-text",
+  "/admin/site-pages",
   "/admin/system-settings",
   "/admin/database",
   "/admin/deployments",
@@ -26,7 +28,7 @@ const ROLE_NAVIGATION = {
   viewer: ADMIN_PAGES.filter((path) => !["/admin/database", "/admin/deployments"].includes(path)),
   support: ["/admin", "/admin/community", "/admin/pet-friendly", "/admin/users", "/admin/audit"],
   content: ["/admin", "/admin/hotspots", "/admin/foods", "/admin/hotels", "/admin/travel-services", "/admin/catalog-review", "/admin/community", "/admin/pet-friendly", "/admin/partners", "/admin/audit"],
-  operations: ["/admin", "/admin/analytics", "/admin/settings", "/admin/usage-settings", "/admin/layout-settings", "/admin/ui-text", "/admin/system-settings", "/admin/audit"],
+  operations: ["/admin", "/admin/analytics", "/admin/settings", "/admin/usage-settings", "/admin/layout-settings", "/admin/ui-text", "/admin/site-pages", "/admin/system-settings", "/admin/audit"],
   database_operator: ["/admin", "/admin/database", "/admin/audit"],
   deployer: ["/admin", "/admin/deployments", "/admin/audit"],
   owner: [...ADMIN_PAGES],
@@ -190,6 +192,20 @@ async function isolateAdmin(page: Page, role = "owner") {
       response = { trial_uses: 3, packages: [], operation_costs: operationCosts, audit: [] };
     } else if (path === "/admin/ui-text") {
       response = { locale: url.searchParams.get("locale") || "zh-TW", namespace: url.searchParams.get("namespace"), version: "fixture", entries: [] };
+    } else if (path === "/admin/site-pages/privacy") {
+      // Read-only synthetic draft: the page matrix must never initialize or publish content.
+      response = {
+        slug: "privacy", locale: "zh-TW", version: 1,
+        draft: {
+          title: "Synthetic privacy draft", description: "Isolated navigation fixture",
+          effective_date: null,
+          blocks: [{ type: "paragraph", text: "Synthetic content. Not a real privacy policy." }],
+          requirements: { operator: "", location: "", contact: "", retention: "", legal: "" },
+        },
+        published: null,
+        pending_requirements: ["operator", "location", "contact", "retention", "legal", "effective_date"],
+        revisions: [], audit: [],
+      } satisfies SitePageDetail;
     } else if (path === "/admin/hotels" || path === "/admin/travel-services") {
       response = travelServices();
     } else if (path === "/admin/catalog-review") {
@@ -227,6 +243,9 @@ test("bootstrap registry drives every owner page without first-party failures", 
     expect(response?.status(), path).toBe(200);
     await expect(page.locator("h1").first(), path).toBeVisible();
     await expect(page.getByRole("navigation", { name: "營運控制台" }), path).toBeVisible();
+    if (path === "/admin/site-pages") {
+      await expect(page.getByRole("textbox", { name: "文件標題", exact: true })).toHaveValue("Synthetic privacy draft");
+    }
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     expect(overflow, `${path} must not overflow the desktop viewport`).toBeLessThanOrEqual(0);
   }

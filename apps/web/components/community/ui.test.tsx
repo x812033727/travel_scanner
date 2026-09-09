@@ -1,4 +1,5 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { useState } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { Dialog } from "./ui";
 
@@ -29,5 +30,30 @@ describe("nested Dialog", () => {
     render(<Dialog title="Reading detail" onClose={onClose}>Content</Dialog>);
     fireEvent(screen.getByRole("dialog", { name: "Reading detail" }), new Event("cancel", { cancelable: true }));
     expect(onClose).toHaveBeenCalledTimes(1);
+  });
+
+  it("dismisses only a complete backdrop click, not padding or a drag from the content", () => {
+    const onClose = vi.fn(); render(<Dialog title="Detail" onClose={onClose}>Content</Dialog>);
+    const dialog = screen.getByRole("dialog");
+    vi.spyOn(dialog, "getBoundingClientRect").mockReturnValue({ left: 20, top: 20, right: 200, bottom: 200 } as DOMRect);
+    fireEvent(dialog, new MouseEvent("pointerdown", { bubbles: true, clientX: 50, clientY: 50 }));
+    fireEvent.click(dialog, { clientX: 1, clientY: 1 }); expect(onClose).not.toHaveBeenCalled();
+    fireEvent(dialog, new MouseEvent("pointerdown", { bubbles: true, clientX: 1, clientY: 1 }));
+    fireEvent.click(dialog, { clientX: 1, clientY: 1 }); expect(onClose).toHaveBeenCalledTimes(1);
+  });
+
+  it("ignores dismissal aimed at an outer layer while a child is open", () => {
+    const outer = vi.fn(); render(<Dialog title="Outer" onClose={outer}><Dialog title="Inner" onClose={vi.fn()}>Child</Dialog></Dialog>);
+    fireEvent(screen.getByRole("dialog", { name: "Outer" }), new Event("cancel", { cancelable: true }));
+    expect(outer).not.toHaveBeenCalled();
+  });
+
+  it("unlocks scrolling and restores the opener after actual unmount", async () => {
+    function Example() { const [open, setOpen] = useState(false); return <><button onClick={() => setOpen(true)}>Open</button>{open && <Dialog title="Detail" onClose={() => setOpen(false)}>Content</Dialog>}</>; }
+    render(<Example />); const trigger = screen.getByRole("button", { name: "Open" }); trigger.focus(); fireEvent.click(trigger);
+    expect(document.body.style.overflow).toBe("hidden");
+    fireEvent(screen.getByRole("dialog"), new Event("cancel", { cancelable: true }));
+    await waitFor(() => expect(document.activeElement).toBe(trigger));
+    expect(document.body.style.overflow).toBe("");
   });
 });

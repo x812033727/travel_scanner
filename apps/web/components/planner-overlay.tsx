@@ -5,6 +5,7 @@ import { useLocale } from "next-intl";
 import { useCallback, useEffect, useId, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { plannerOverlayCopy } from "@/components/planner/overlay-copy";
+import { isTopModalLayer, registerModalLayer } from "@/lib/modal-sheet";
 
 type PlannerOverlayProps = {
   open: boolean; title: string; description?: string; onClose: () => void; onBack?: () => void;
@@ -86,7 +87,7 @@ function focusableElements(panel: HTMLElement) {
 // Older service sheets use useModalSheet instead of registering in this stack.
 // Their own keyboard trap must win while mounted inside a contextual tool panel.
 function hasNestedModal(panel: HTMLElement) {
-  return Array.from(panel.querySelectorAll<HTMLElement>('[role="dialog"][aria-modal="true"]')).some((dialog) => {
+  return Array.from(panel.querySelectorAll<HTMLElement>('[role="dialog"][aria-modal="true"], dialog[open]')).some((dialog) => {
     if (dialog.closest('[hidden], [inert], [aria-hidden="true"]')) return false;
     for (let node: HTMLElement | null = dialog; node && node !== panel; node = node.parentElement) {
       const style = getComputedStyle(node);
@@ -114,7 +115,9 @@ function OpenPlannerOverlay({
   const [expanded, setExpanded] = useState(defaultExpanded);
   const mounted = useSyncExternalStore(subscribeToClient, () => true, () => false);
   useEffect(() => { onCloseRef.current = onClose; }, [onClose]);
-  const closeOverlay = useCallback(() => onCloseRef.current(), []);
+  const closeOverlay = useCallback(() => {
+    if (panelRef.current && isTopModalLayer(panelRef.current)) onCloseRef.current();
+  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -133,7 +136,7 @@ function OpenPlannerOverlay({
     copyTheme();
     const observer = new MutationObserver(copyTheme);
     observer.observe(source, { attributes: true, attributeFilter: ["data-planner-theme", "class", "style"] });
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme", "class"] });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme", "data-palette", "class"] });
     return () => observer.disconnect();
   }, [mounted]);
 
@@ -143,10 +146,13 @@ function OpenPlannerOverlay({
     if (!mounted || !panel || !container) return;
     const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     const layer = { container, panel };
+    // Own the shared overflow lock before taking the planner's fixed-position snapshot.
+    // Native/custom children may unmount after this parent during a route change.
+    const unregister = registerModalLayer(panel);
     lockPage();
     layers.push(layer);
     syncLayers();
-    const isTop = () => layers.at(-1) === layer;
+    const isTop = () => layers.at(-1) === layer && isTopModalLayer(panel);
     const focusFrame = requestAnimationFrame(() => {
       if (isTop() && !hasNestedModal(panel)) (panel.querySelector<HTMLElement>("[data-planner-close]") || panel).focus({ preventScroll: true });
     });
@@ -177,6 +183,7 @@ function OpenPlannerOverlay({
       if (index !== -1) layers.splice(index, 1);
       syncLayers();
       const initialFocus = unlockPage();
+      unregister();
       if (!wasTop) return;
       const target = previousFocus?.isConnected && !previousFocus.closest("[inert]")
         ? previousFocus : layers.at(-1)?.panel || initialFocus;

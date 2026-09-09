@@ -16,6 +16,7 @@ describe("public hotel script directory", () => {
     expect(await screen.findByRole("heading", { name: hotel.title })).toBeTruthy();
     expect(fetch).toHaveBeenCalledTimes(1);
     const opener = screen.getByRole("button", { name: "查看預訂平台" });
+    expect(opener).toHaveClass("text-[var(--primary-text)]");
     opener.focus(); fireEvent.click(opener);
     const link = await screen.findByRole("link", { name: /前往 Booking.com/ });
     expect(link).toHaveAttribute("href", options[0].url);

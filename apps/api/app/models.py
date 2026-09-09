@@ -2146,6 +2146,54 @@ class ProviderConfig(Timestamped, Base):
     last_test_message: Mapped[str | None] = mapped_column(Text, nullable=True)
 
 
+class SitePage(Timestamped, Base):
+    __tablename__ = "site_pages"
+    __table_args__ = (
+        UniqueConstraint("slug", "locale", name="uq_site_page_slug_locale"),
+        CheckConstraint(
+            "slug IN ('privacy', 'terms', 'about', 'contact')", name="ck_site_page_slug"
+        ),
+        CheckConstraint(
+            "locale IN ('en', 'ja', 'ko', 'zh-TW', 'zh-CN')", name="ck_site_page_locale"
+        ),
+        CheckConstraint("version >= 1", name="ck_site_page_version"),
+        CheckConstraint(
+            "published_version IS NULL OR "
+            "(published_version >= 1 AND published_version <= version)",
+            name="ck_site_page_published_version",
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    slug: Mapped[str] = mapped_column(String(16))
+    locale: Mapped[str] = mapped_column(String(16))
+    version: Mapped[int] = mapped_column(Integer, default=1)
+    draft_json: Mapped[dict[str, Any]] = mapped_column(JSON)
+    # Read by (page_id, version), never by version alone. Avoids a circular FK
+    # and keeps a fresh metadata.create_all and an existing-db upgrade equivalent.
+    published_version: Mapped[int | None] = mapped_column(Integer, nullable=True)
+
+
+class SitePageRevision(Base):
+    __tablename__ = "site_page_revisions"
+    __table_args__ = (
+        UniqueConstraint("page_id", "version", name="uq_site_page_revision_version"),
+        CheckConstraint("version >= 1", name="ck_site_page_revision_version"),
+        CheckConstraint(
+            "action IN ('initialized', 'draft_saved', 'published', 'restored')",
+            name="ck_site_page_revision_action",
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    page_id: Mapped[UUID] = mapped_column(ForeignKey("site_pages.id"), index=True)
+    version: Mapped[int] = mapped_column(Integer)
+    action: Mapped[str] = mapped_column(String(32))
+    document_json: Mapped[dict[str, Any]] = mapped_column(JSON)
+    created_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
 class UiTextOverride(Timestamped, Base):
     """One administrator-edited sentence of web UI copy, per namespace, key and locale.
 

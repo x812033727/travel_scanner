@@ -89,7 +89,7 @@ export function Stay22PublicHotels({ destinationId, locale }: { destinationId: s
       {state.items.map((hotel) => <article key={hotel.id} className="flex min-w-0 flex-col rounded-3xl border border-[var(--line)] bg-[var(--surface-raised)] p-6 shadow-sm">
         <BedDouble aria-hidden size={28} className="mb-5 text-[var(--teal)]" />
         <h2 className="mb-5 break-words text-xl font-bold leading-7">{hotel.title}</h2>
-        <button onClick={() => setSelected(hotel)} className="mt-auto flex min-h-12 items-center justify-between gap-3 rounded-xl bg-[var(--teal)] px-4 py-3 text-left font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--teal)]">{copy.open}<ExternalLink aria-hidden size={18} className="shrink-0" /></button>
+        <button onClick={() => setSelected(hotel)} className="mt-auto flex min-h-12 items-center justify-between gap-3 rounded-xl bg-[var(--teal)] px-4 py-3 text-left font-semibold text-[var(--primary-text)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--teal)]">{copy.open}<ExternalLink aria-hidden size={18} className="shrink-0" /></button>
       </article>)}
     </div>
     {selected && <PlatformSheet key={selected.id} hotel={selected} locale={locale} close={close} />}

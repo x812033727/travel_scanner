@@ -15,7 +15,7 @@ vi.mock("@/i18n/navigation", () => ({
   useRouter: () => ({ push: vi.fn(), replace: vi.fn(), refresh: vi.fn() }),
 }));
 
-// The switcher writes the choice back through the API; the footer only has to place it.
+// Language controls live in the top header, not in the footer.
 vi.mock("@/components/language-switcher", () => ({
   LanguageSwitcher: () => <div data-testid="language-switcher" />,
 }));
@@ -44,9 +44,9 @@ describe("SiteFooter", () => {
     expect(href("聯絡我們")).toBe("/contact");
   });
 
-  it("offers the language choice and the year", () => {
+  it("keeps the year without duplicating the top-header language control", () => {
     renderAt("/");
-    expect(screen.getByTestId("language-switcher")).toBeTruthy();
+    expect(screen.queryByTestId("language-switcher")).toBeNull();
     expect(screen.getByText("© 2026 Mokaair")).toBeTruthy();
   });
 

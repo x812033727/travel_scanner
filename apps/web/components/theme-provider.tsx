@@ -2,18 +2,24 @@
 
 import { createContext, useCallback, useContext, useEffect, useLayoutEffect, useState } from "react";
 import {
+  DEFAULT_PALETTE,
+  isPalette,
   isThemePreference,
+  PALETTE_STORAGE_KEY,
   resolveTheme,
   THEME_STORAGE_KEY,
   type ResolvedTheme,
   type ThemePreference,
+  type Palette,
 } from "@/lib/theme";
 
 type ThemeContextValue = Readonly<{
   preference: ThemePreference;
   resolvedTheme: ResolvedTheme;
+  palette: Palette;
   ready: boolean;
   setPreference: (preference: ThemePreference) => void;
+  setPalette: (palette: Palette) => void;
 }>;
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
@@ -34,6 +40,7 @@ function applyTheme(preference: ThemePreference): ResolvedTheme {
 export function ThemeProvider({ children }: Readonly<{ children: React.ReactNode }>) {
   const [preference, setPreferenceState] = useState<ThemePreference>("system");
   const [resolvedTheme, setResolvedTheme] = useState<ResolvedTheme>("light");
+  const [palette, setPaletteState] = useState<Palette>(DEFAULT_PALETTE);
   const [ready, setReady] = useState(false);
 
   const updatePreference = useCallback((next: ThemePreference, persist: boolean) => {
@@ -50,23 +57,46 @@ export function ThemeProvider({ children }: Readonly<{ children: React.ReactNode
     setReady(true);
   }, []);
 
+  const updatePalette = useCallback((next: Palette, persist: boolean) => {
+    document.documentElement.dataset.palette = next;
+    if (persist) {
+      try {
+        localStorage.setItem(PALETTE_STORAGE_KEY, next);
+      } catch {
+        // Palette changes still work for this page when storage is blocked.
+      }
+    }
+    setPaletteState(next);
+  }, []);
+
   useLayoutEffect(() => {
     const bootstrapped = document.documentElement.dataset.themePreference;
     let initial: ThemePreference = isThemePreference(bootstrapped) ? bootstrapped : "system";
+    const bootstrappedPalette = document.documentElement.dataset.palette;
+    let initialPalette = isPalette(bootstrappedPalette) ? bootstrappedPalette : DEFAULT_PALETTE;
     try {
       const stored = localStorage.getItem(THEME_STORAGE_KEY);
       if (isThemePreference(stored)) initial = stored;
     } catch {
       // Use the bootstrapped system preference when storage is unavailable.
     }
+    try {
+      const stored = localStorage.getItem(PALETTE_STORAGE_KEY);
+      if (isPalette(stored)) initialPalette = stored;
+    } catch {
+      // Preserve the pre-paint palette if storage cannot be read.
+    }
     let cancelled = false;
     queueMicrotask(() => {
-      if (!cancelled) updatePreference(initial, false);
+      if (!cancelled) {
+        updatePalette(initialPalette, false);
+        updatePreference(initial, false);
+      }
     });
     return () => {
       cancelled = true;
     };
-  }, [updatePreference]);
+  }, [updatePalette, updatePreference]);
 
   useEffect(() => {
     if (preference !== "system") return;
@@ -79,20 +109,27 @@ export function ThemeProvider({ children }: Readonly<{ children: React.ReactNode
 
   useEffect(() => {
     const handleStorage = (event: StorageEvent) => {
-      if (event.key !== THEME_STORAGE_KEY) return;
-      updatePreference(isThemePreference(event.newValue) ? event.newValue : "system", false);
+      if (event.storageArea && event.storageArea !== localStorage) return;
+      if (event.key === null || event.key === THEME_STORAGE_KEY) {
+        updatePreference(isThemePreference(event.newValue) ? event.newValue : "system", false);
+      }
+      if (event.key === null || event.key === PALETTE_STORAGE_KEY) {
+        updatePalette(isPalette(event.newValue) ? event.newValue : DEFAULT_PALETTE, false);
+      }
     };
     window.addEventListener("storage", handleStorage);
     return () => window.removeEventListener("storage", handleStorage);
-  }, [updatePreference]);
+  }, [updatePalette, updatePreference]);
 
   const setPreference = useCallback(
     (next: ThemePreference) => updatePreference(next, true),
     [updatePreference],
   );
 
+  const setPalette = useCallback((next: Palette) => updatePalette(next, true), [updatePalette]);
+
   return (
-    <ThemeContext.Provider value={{ preference, resolvedTheme, ready, setPreference }}>
+    <ThemeContext.Provider value={{ preference, resolvedTheme, palette, ready, setPreference, setPalette }}>
       {children}
     </ThemeContext.Provider>
   );

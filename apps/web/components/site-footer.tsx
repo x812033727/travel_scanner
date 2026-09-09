@@ -2,7 +2,6 @@
 
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
-import { LanguageSwitcher } from "@/components/language-switcher";
 
 // The admin console is not a public page and has its own chrome. The planner runs as a
 // full-screen shell that already hides the bottom navigation, and a footer under it would
@@ -16,7 +15,7 @@ export function SiteFooter({ year }: { year: number }) {
 
   return (
     <footer aria-label={t("footerLabel")} className="mt-16 border-t border-[var(--line)] bg-[var(--paper)]">
-      <div className="mx-auto grid max-w-6xl gap-8 px-5 py-10 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto grid max-w-6xl gap-8 px-5 py-10 sm:grid-cols-2 lg:grid-cols-3">
         <div className="sm:col-span-2 lg:col-span-1">
           <p className="text-lg font-bold">Mokaair</p>
           <p className="mt-2 max-w-sm text-sm leading-6 text-[var(--muted)]">{t("footerTagline")}</p>
@@ -35,10 +34,6 @@ export function SiteFooter({ year }: { year: number }) {
             <li><Link className="text-[var(--muted)] underline-offset-4 hover:underline" href="/contact">{t("footerContact")}</Link></li>
           </ul>
         </nav>
-        <div>
-          <h2 className="text-sm font-bold">{t("footerLanguage")}</h2>
-          <div className="mt-3"><LanguageSwitcher compact /></div>
-        </div>
       </div>
       {/* The bottom navigation is fixed, and .public-app-shell already reserves 5rem plus the
           safe area below its content for it. Sitting inside that shell is what keeps this

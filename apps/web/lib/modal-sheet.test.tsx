@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { useState } from "react";
 import { describe, expect, it } from "vitest";
-import { useModalSheet } from "./modal-sheet";
+import { modalFocusTargets, registerModalLayer, useModalSheet } from "./modal-sheet";
 
 /**
  * Measured on the live site before this hook existed: the filter panel on /hotspots reported
@@ -37,6 +37,25 @@ function Sheet({ onOpenChange }: { onOpenChange?: (open: boolean) => void } = {}
 }
 
 describe("useModalSheet", () => {
+  it("includes the closed disclosure summary but excludes its hidden source link and hidden ancestors", () => {
+    const { container } = render(<div><button>Close</button><details><summary>Sources</summary><a href="https://example.com">Hidden source</a></details><div hidden><button>Hidden ancestor</button></div><div style={{ display: "none" }}><button>Hidden style</button></div></div>);
+    expect(modalFocusTargets(container).map((element) => element.textContent)).toEqual(["Close", "Sources"]);
+  });
+
+  it("keeps scrolling locked when an outer layer unmounts before its child", () => {
+    const { container } = render(<section><div /></section>);
+    const outer = container.querySelector("section")!; const inner = outer.querySelector("div")!;
+    const unlockInner = registerModalLayer(inner); const unlockOuter = registerModalLayer(outer);
+    unlockOuter(); expect(document.body.style.overflow).toBe("hidden");
+    unlockInner(); expect(document.body.style.overflow).toBe("");
+  });
+
+  it("does not close during IME composition or an already handled Escape", () => {
+    render(<Sheet />); fireEvent.click(screen.getByRole("button", { name: "Open filters" }));
+    fireEvent.keyDown(document, { key: "Escape", isComposing: true });
+    const event = new KeyboardEvent("keydown", { key: "Escape", cancelable: true }); event.preventDefault(); fireEvent(document, event);
+    expect(screen.getByRole("dialog")).toBeTruthy();
+  });
   it("is not a dialog until it opens", () => {
     render(<Sheet />);
     // On a wide screen this same form is the filter bar in the page. Calling that a modal

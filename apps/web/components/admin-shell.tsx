@@ -1,9 +1,10 @@
 "use client";
 
 import { ChevronDown, Command, HeartPulse, Search, UserRound, X } from "lucide-react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { AdminNav } from "@/components/admin-nav";
+import { LanguageSwitcher } from "@/components/language-switcher";
 import { useAdminOperations } from "@/components/admin-operations-provider";
 import { useHeaderSession } from "@/components/header-session";
 import { Link, usePathname } from "@/i18n/navigation";
@@ -26,6 +27,7 @@ function safeRecent(value: string | null): string[] {
 
 export function AdminShell({ children }: { children: React.ReactNode }) {
   const locale = useLocale();
+  const sitePages = useTranslations("admin.sitePages");
   const copy = adminOperationsCopy(locale);
   const pathname = usePathname();
   const operations = useAdminOperations();
@@ -40,7 +42,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
   const accountMenu = useRef<HTMLDivElement>(null);
   const navigation = useMemo(() => visibleAdminNavigation(bootstrap), [bootstrap]);
   const active = [...navigation].sort((a, b) => b.href.length - a.href.length).find((item) => item.href === "/admin" ? pathname === "/admin" : pathname.startsWith(item.href));
-  const label = (key: string, supplied?: string) => supplied || copy.nav[key] || key;
+  const label = (key: string, supplied?: string) => key === "sitePages" ? sitePages("title") : supplied || copy.nav[key] || key;
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
@@ -104,15 +106,16 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
     <AdminNav />
     <div className="admin-workspace">
       <header className="admin-topbar">
-        <div className="min-w-0">
+        <div className="admin-topbar-heading">
           <nav aria-label="Breadcrumb" className="admin-breadcrumb"><Link href="/admin">{copy.console}</Link><span aria-hidden>/</span><span aria-current="page">{active ? label(active.key, active.label) : copy.console}</span></nav>
           <p className="admin-topbar-mobile-title">{active ? label(active.key, active.label) : copy.console}</p>
         </div>
         <div className="admin-topbar-actions">
+          <LanguageSwitcher compact />
           <span className={`admin-health admin-health-${health}`} title={copy[health]}><HeartPulse aria-hidden size={16} /><span>{copy[health]}</span></span>
           <span className="admin-environment"><span>{copy.environment}</span><strong>{bootstrap.environment}</strong></span>
           <button ref={commandTrigger} type="button" onClick={() => setCommandOpen(true)} aria-label={copy.command} className="admin-command-trigger"><Search aria-hidden size={17} /><span>{copy.command}</span><kbd><Command aria-hidden size={11} />K</kbd></button>
-          <div ref={accountMenu} className="relative">
+          <div ref={accountMenu} className="admin-account-control">
             <button type="button" onClick={() => setAccountOpen((value) => !value)} aria-label={copy.account} aria-expanded={accountOpen} className="admin-account-trigger"><span className="admin-account-avatar"><UserRound aria-hidden size={17} /></span><span className="admin-account-email">{bootstrap.user?.email || user?.email}</span><ChevronDown aria-hidden size={15} /></button>
             {accountOpen && <div className="admin-account-menu"><p className="break-all px-3 py-2 text-xs text-[var(--muted)]">{bootstrap.user?.email || user?.email}</p><Link href="/account" onClick={() => setAccountOpen(false)}>{copy.account}</Link><button type="button" onClick={() => void logout()}>{copy.signOut}</button></div>}
           </div>

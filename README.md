@@ -4,6 +4,24 @@ Mokaair is a mock-first, API-first travel comparison MVP. It combines
 flights, hotels, activities, and transportation into complete trip plans and
 explains the trade-off between the cheapest, balanced, and comfortable choices.
 
+## Site appearance and information pages
+
+Visitors can choose mocha, lagoon or forest, each with light/dark variants, independently
+of the system brightness setting. Preferences are shared across headers and My space;
+existing custom planner palettes remain available. Language controls are at the top of
+desktop/mobile headers. Discovery cards show all reviewed topics, while reading details
+separate articles and videos and omit empty information sections.
+
+`/admin/site-pages` manages privacy, terms, about and contact in five languages using
+drafts, previews, complete version history and explicit publication. Migration
+`0069_site_pages` creates storage only. An administrator can initialize missing first
+drafts without overwriting existing documents. Initial drafts remain unpublished until
+the owner supplies and verifies operating/contact/retention/legal details and an effective
+date. Publishing requires `settings.manage`, a matching version and an explicit reason
+and confirmation. The public API serves only published locale-specific versions with
+`Cache-Control: no-store`; it never falls back to drafts. See the
+[workflow and verification notes](docs/site-experience.md).
+
 ## Merchant styles
 
 Merchant discovery also supports independent **photogenic / arts & culture** style filters.

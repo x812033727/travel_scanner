@@ -4,7 +4,7 @@ const OWNER_NAVIGATION = [
   "/admin", "/admin/hotspots", "/admin/foods", "/admin/hotels", "/admin/travel-services",
   "/admin/catalog-review", "/admin/community", "/admin/pet-friendly", "/admin/users",
   "/admin/analytics", "/admin/partners", "/admin/settings", "/admin/usage-settings",
-  "/admin/layout-settings", "/admin/ui-text", "/admin/system-settings", "/admin/database",
+  "/admin/layout-settings", "/admin/ui-text", "/admin/site-pages", "/admin/system-settings", "/admin/database",
   "/admin/deployments", "/admin/audit",
 ];
 
@@ -18,7 +18,7 @@ const ROLE_NAVIGATION: Record<string, string[]> = {
   ],
   operations: [
     "/admin", "/admin/analytics", "/admin/settings", "/admin/usage-settings",
-    "/admin/layout-settings", "/admin/ui-text", "/admin/system-settings", "/admin/audit",
+    "/admin/layout-settings", "/admin/ui-text", "/admin/site-pages", "/admin/system-settings", "/admin/audit",
   ],
   database_operator: ["/admin", "/admin/database", "/admin/audit"],
   deployer: ["/admin", "/admin/deployments", "/admin/audit"],
@@ -75,6 +75,12 @@ test("real owner bootstrap registry loads every admin page without console or fi
   const failedResponses: string[] = [];
 
   await login(page, "admin-workspace-desktop@example.com", ownerPassword);
+  // Explicit fixture setup in the localhost-only stack above. This creates only
+  // missing drafts, never publishes or overwrites existing policy versions. An
+  // uninitialised detail legitimately returns 404; keep the registry's strict
+  // no-first-party-errors assertion by preparing data, not by ignoring errors.
+  const initialized = await adminMutation(page, "/admin/site-pages/initialize", "POST", {});
+  expect(initialized.status).toBe(200);
   page.on("console", (message) => { if (message.type() === "error") consoleErrors.push(message.text()); });
   page.on("pageerror", (error) => pageErrors.push(error.message));
   page.on("response", (response) => {

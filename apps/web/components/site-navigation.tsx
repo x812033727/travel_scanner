@@ -2,9 +2,7 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { HeaderAuth } from "@/components/header-auth";
-import { LanguageSwitcher } from "@/components/language-switcher";
 import { MobileNav } from "@/components/mobile-nav";
-import { ThemeProvider } from "@/components/theme-provider";
 import { TextSizeSwitcher } from "@/components/text-size-switcher";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { useSiteVisibility } from "@/components/site-visibility-provider";
@@ -24,7 +22,7 @@ export function SiteNavigation() {
   const copy = frontendCopy(useLocale());
   const pathname = usePathname();
   return (
-    <ThemeProvider>
+    <>
       <MobileNav />
       <nav aria-label={t("primaryLabel")} className="hidden items-center justify-between gap-5 text-sm text-[var(--muted)] lg:flex">
         {discovery.loading ? <span aria-hidden className="h-11 w-64 rounded-xl bg-[var(--paper)]" /> : discovery.enabled ? frontendDestinations.filter((item) => !item.feature || featureVisible(visibility, item.feature)).map((item) => <Link key={item.key} href={item.href} aria-current={frontendActive(item.key, pathname) ? "page" : undefined} className="frontend-nav-link inline-flex min-h-11 items-center rounded-xl px-4 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--teal)]">{copy[item.key]}</Link>) : community.flags.enabled ? <>
@@ -39,9 +37,8 @@ export function SiteNavigation() {
         ))}
         {!discovery.enabled && !discovery.loading && <><TextSizeSwitcher />
         <ThemeSwitcher />
-        <LanguageSwitcher compact />
         <HeaderAuth /></>}
       </nav>
-    </ThemeProvider>
+    </>
   );
 }

@@ -5,6 +5,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { plannerOverlayCopy } from "./planner/overlay-copy";
 import { PlannerOverlay } from "./planner-overlay";
 import { useModalSheet } from "@/lib/modal-sheet";
+import { Dialog } from "@/components/community/ui";
 
 function LegacyChild() {
   const [open, setOpen] = useState(false);
@@ -51,6 +52,43 @@ const userEvent = {
 
 describe("PlannerOverlay", () => {
   afterEach(() => vi.restoreAllMocks());
+  it("does not handle Escape owned by a native child and restores all locks on route unmount", async () => {
+    const previous = Object.getOwnPropertyDescriptor(HTMLDialogElement.prototype, "showModal");
+    Object.defineProperty(HTMLDialogElement.prototype, "showModal", { configurable: true, value: function (this: HTMLDialogElement) { this.open = true; } });
+    const overflow = document.body.style.overflow; const position = document.body.style.position;
+    const close = vi.fn();
+    function Child() { const [open, setOpen] = useState(false); return <><button onClick={() => setOpen(true)}>Open native</button>{open && <Dialog title="Native child" onClose={() => setOpen(false)}>Private form</Dialog>}</>; }
+    const view = render(<PlannerOverlay open title="Tools" onClose={close}><Child /></PlannerOverlay>);
+    fireEvent.click(screen.getByRole("button", { name: "Open native" })); await nextFrame();
+    const native = screen.getByRole("dialog", { name: "Native child" });
+    fireEvent.keyDown(native, { key: "Escape" }); expect(close).not.toHaveBeenCalled();
+    fireEvent(native, new Event("cancel", { cancelable: true }));
+    expect(screen.queryByRole("dialog", { name: "Native child" })).toBeNull(); expect(document.body.style.overflow).toBe("hidden");
+    fireEvent.click(screen.getByRole("button", { name: "Open native" }));
+    view.unmount(); expect(document.body.style.overflow).toBe(overflow); expect(document.body.style.position).toBe(position);
+    if (previous) Object.defineProperty(HTMLDialogElement.prototype, "showModal", previous); else Reflect.deleteProperty(HTMLDialogElement.prototype, "showModal");
+  });
+
+  it("unlocks after a planner and an open legacy service are unmounted together", () => {
+    const overflow = document.body.style.overflow; const position = document.body.style.position;
+    const view = render(<PlannerOverlay open title="Tools" onClose={vi.fn()}><LegacyChild /></PlannerOverlay>);
+    fireEvent.click(screen.getByRole("button", { name: "Open hotel service" }));
+    view.unmount(); expect(document.body.style.overflow).toBe(overflow); expect(document.body.style.position).toBe(position);
+  });
+
+  it("refreshes the open portal when the site palette changes without changing the planner palette", async () => {
+    const previous = document.documentElement.getAttribute("data-palette");
+    const computed = window.getComputedStyle.bind(window); let accent = "#6b4a3a";
+    vi.spyOn(window, "getComputedStyle").mockImplementation((element) => element.matches("main[data-planner-theme]")
+      ? { getPropertyValue: (name: string) => name === "--teal" ? accent : "" } as CSSStyleDeclaration : computed(element));
+    render(<main data-planner-theme="site"><PlannerOverlay open title="Theme" onClose={vi.fn()}>Content</PlannerOverlay></main>);
+    const layer = screen.getByRole("dialog").parentElement!;
+    expect(layer.style.getPropertyValue("--teal")).toBe("#6b4a3a");
+    accent = "#0d6b68"; document.documentElement.dataset.palette = "lagoon";
+    await waitFor(() => expect(layer.style.getPropertyValue("--teal")).toBe("#0d6b68"));
+    expect(layer.dataset.plannerTheme).toBe("site");
+    if (previous === null) document.documentElement.removeAttribute("data-palette"); else document.documentElement.setAttribute("data-palette", previous);
+  });
   it("keeps the active input focused while a controlled parent re-renders", async () => {
     render(<Harness />);
     fireEvent.click(screen.getByRole("button", { name: "開啟編輯" }));

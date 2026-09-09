@@ -22,20 +22,53 @@ async function contrastOf(target: Locator) {
     const relativeLuminance = (rgb: number[]) => {
       const channels = rgb.map((value) => {
         const scaled = value / 255;
-        return scaled <= 0.03928 ? scaled / 12.92 : ((scaled + 0.055) / 1.055) ** 2.4;
+        return scaled <= 0.04045 ? scaled / 12.92 : ((scaled + 0.055) / 1.055) ** 2.4;
       });
       return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
     };
+    // Chromium serializes color-mix as color(srgb ...), not necessarily rgb().
+    // Ask its native colour parser for sRGB pixels; never guess black on a miss.
+    const canvas = document.createElement("canvas");
+    canvas.width = 1; canvas.height = 1;
+    const context = canvas.getContext("2d")!;
     const parse = (value: string) => {
-      const parts = /rgba?\(([^)]+)\)/.exec(value)?.[1].split(",").map((part) => Number.parseFloat(part)) ?? [0, 0, 0];
-      return [parts[0], parts[1], parts[2]];
+      if (!CSS.supports("color", value)) throw new Error(`Unsupported contrast colour: ${value}`);
+      context.clearRect(0, 0, 1, 1);
+      context.fillStyle = value; context.fillRect(0, 0, 1, 1);
+      return [...context.getImageData(0, 0, 1, 1).data];
     };
     const style = getComputedStyle(element);
-    const first = relativeLuminance(parse(style.color));
-    const second = relativeLuminance(parse(style.backgroundColor));
+    const background = parse(style.backgroundColor), foreground = parse(style.color);
+    if (background[3] !== 255 || style.backgroundImage !== "none") {
+      throw new Error("Contrast sample needs its own opaque, image-free background");
+    }
+    const alpha = foreground[3] / 255;
+    const first = relativeLuminance(foreground.slice(0, 3).map((value, index) => value * alpha + background[index] * (1 - alpha)));
+    const second = relativeLuminance(background.slice(0, 3));
     return (Math.max(first, second) + 0.05) / (Math.min(first, second) + 0.05);
   });
 }
+
+test("contrast measurement decodes CSS colour spaces without inventing a black background", async ({ page }) => {
+  // Isolated measurement fixtures, not evidence of a real application palette.
+  await page.setContent('<span id="sample">Synthetic colour measurement</span>');
+  const sample = page.locator("#sample");
+  await sample.evaluate((element) => {
+    const style = (element as HTMLElement).style;
+    style.color = "rgb(13, 107, 104)";
+    style.backgroundColor = "color-mix(in srgb, #0d6b68 8%, #fffcf8)";
+  });
+  const mixed = await contrastOf(sample);
+  expect(mixed).toBeGreaterThanOrEqual(MIN_CONTRAST);
+  await sample.evaluate((element) => {
+    (element as HTMLElement).style.backgroundColor = "rgb(236, 240, 236)";
+  });
+  expect(await contrastOf(sample)).toBeCloseTo(mixed, 2);
+  await sample.evaluate((element) => {
+    (element as HTMLElement).style.backgroundColor = "color(srgb 0.05098 0.419608 0.407843)";
+  });
+  expect(await contrastOf(sample)).toBeCloseTo(1, 2);
+});
 
 const routes = ["/zh-TW", "/zh-TW/hotspots", "/zh-TW/foods", "/zh-TW/alerts", "/zh-TW/login", "/zh-TW/trips"];
 
@@ -48,15 +81,19 @@ const collect = async (page: Page) =>
       const relativeLuminance = (rgb: number[]) => {
         const channels = rgb.map((value) => {
           const scaled = value / 255;
-          return scaled <= 0.03928 ? scaled / 12.92 : ((scaled + 0.055) / 1.055) ** 2.4;
+          return scaled <= 0.04045 ? scaled / 12.92 : ((scaled + 0.055) / 1.055) ** 2.4;
         });
         return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
       };
+      const canvas = document.createElement("canvas");
+      canvas.width = 1; canvas.height = 1;
+      const context = canvas.getContext("2d")!;
       const parse = (value: string) => {
-        const match = /rgba?\(([^)]+)\)/.exec(value);
-        if (!match) return null;
-        const parts = match[1].split(",").map((part) => Number.parseFloat(part));
-        return { rgb: [parts[0], parts[1], parts[2]], alpha: parts.length > 3 ? parts[3] : 1 };
+        if (!CSS.supports("color", value)) throw new Error(`Unsupported contrast colour: ${value}`);
+        context.clearRect(0, 0, 1, 1);
+        context.fillStyle = value; context.fillRect(0, 0, 1, 1);
+        const parts = [...context.getImageData(0, 0, 1, 1).data];
+        return { rgb: parts.slice(0, 3), alpha: parts[3] / 255 };
       };
       const contrast = (a: number[], b: number[]) => {
         const first = relativeLuminance(a);

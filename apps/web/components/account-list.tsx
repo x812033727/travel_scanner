@@ -19,13 +19,26 @@ import {
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ApiError, api, twd } from "@/lib/api";
 import { loginPath } from "@/lib/navigation";
 import { PriceAlertButton } from "@/components/price-alert-button";
 import { formatCurrency } from "@/lib/locale-format";
 import { displayTripStatus, type TripStatus } from "@/lib/trip-types";
 import { frontendCopy } from "@/lib/frontend-navigation";
+
+export function TripActions({ label, deleteLabel, onDelete }: { label: string; deleteLabel: string; onDelete: () => void }) {
+  const ref = useRef<HTMLDetailsElement>(null);
+  useEffect(() => {
+    const closeOutside = (event: PointerEvent) => { if (ref.current && event.target instanceof Node && !ref.current.contains(event.target)) ref.current.open = false; };
+    document.addEventListener("pointerdown", closeOutside);
+    return () => document.removeEventListener("pointerdown", closeOutside);
+  }, []);
+  function close() { if (ref.current) { ref.current.open = false; ref.current.querySelector("summary")?.focus(); } }
+  return <details ref={ref} className="relative" onKeyDown={(event) => {
+    if (event.key === "Escape" && !event.nativeEvent.isComposing && ref.current?.open) { event.preventDefault(); event.stopPropagation(); close(); }
+  }}><summary aria-label={label} className="app-icon-button flex min-h-11 cursor-pointer list-none items-center justify-center"><MoreHorizontal size={18} aria-hidden /></summary><div className="absolute right-0 z-10 mt-2 min-w-36 rounded-xl border border-[var(--line)] bg-[var(--surface)] p-2 shadow-lg"><button type="button" onClick={() => { close(); onDelete(); }} aria-label={deleteLabel} className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-sm"><Trash2 size={17} />{deleteLabel}</button></div></details>;
+}
 
 type TripItem = {
   id: string;
@@ -440,7 +453,7 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
                     </button>
                   </>
                 )}
-                {!isAlert ? <details className="relative"><summary aria-label={`${flowCopy.more}: ${trip.name}`} className="app-icon-button flex min-h-11 cursor-pointer list-none items-center justify-center"><MoreHorizontal size={18} aria-hidden /></summary><div className="absolute right-0 z-10 mt-2 min-w-36 rounded-xl border border-[var(--line)] bg-[var(--surface)] p-2 shadow-lg"><button type="button" onClick={() => setPendingDelete(row.id)} aria-label={flowCopy.deleteTrip} className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-sm"><Trash2 size={17} />{flowCopy.deleteTrip}</button></div></details> : <button
+                {!isAlert ? <TripActions label={`${flowCopy.more}: ${trip.name}`} deleteLabel={flowCopy.deleteTrip} onDelete={() => setPendingDelete(row.id)} /> : <button
                   type="button"
                   onClick={() => setPendingDelete(row.id)}
                   aria-label={`刪除${isAlert ? "通知" : "旅程"}`}
