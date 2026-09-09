@@ -21,6 +21,7 @@ scope:
   - apps/api/tests/test_saved_flow_integration.py
   - apps/api/tests/test_community_foundation.py
   - apps/api/tests/fixtures/frontend_flow_seed.py
+  - apps/api/tests/test_travel_services_integration.py
 ---
 
 # Unified saved items and private inbox API
@@ -116,3 +117,11 @@ calls. Root owns the workflow and browser acceptance spec.
 - CI fixture ID is `55000000-0000-4000-8000-000000000001`, title/query is
   `Frontend flow fixture Tokyo river`, destination is Tokyo. Its source and map
   IDs are explicitly synthetic and never represent reviewed production data.
+- CI follow-up (77f7ab, run 34309418031): 2365 PostgreSQL-enabled tests passed,
+  7 skipped, one service-favorites fixture failed because its new saved limiter
+  used a process-global Redis client belonging to an earlier event loop. The
+  service integration client now isolates the collection policy limiter just
+  like its existing service/affiliate limiters; production rate limits are not
+  modified. An always-on regression reuses that exact client and failing scenario
+  with an unisolated-Redis trap and verifies all four policy calls. Ruff passed;
+  the focused regression passed in 43.43 seconds. Final Linux CI rerun is required.

@@ -1,5 +1,6 @@
 """Saved-library contracts run on SQLite and on PostgreSQL in full-stack CI."""
 
+from contextlib import asynccontextmanager
 from datetime import UTC, date, datetime, timedelta
 from unittest.mock import AsyncMock
 from uuid import UUID, uuid4
@@ -24,10 +25,42 @@ from app.models import (
     TravelServiceProduct,
     TripPlan,
     TripPlanItem,
+    User,
 )
 from app.saved import service
 
 harness = community_harness
+
+
+@pytest.mark.asyncio
+async def test_service_integration_fixture_isolates_saved_limiter_on_current_loop(
+    harness: Harness, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    from test_travel_services_integration import client as service_client
+    from test_travel_services_integration import (
+        test_favorites_and_cascade_without_deleting_selected_history as favorites_scenario,
+    )
+
+    from app.community import policy
+
+    unisolated = AsyncMock(side_effect=AssertionError("Must not use another loop's Redis pool"))
+    monkeypatch.setattr(policy, "enforce_named_rate_limit", unisolated)
+    async with harness.factory() as session:
+        actor = await session.get(User, harness.ids[0])
+        # Exercise the actual integration fixture and exact failing CI scenario
+        # on the always-on SQLite harness; PostgreSQL CI runs both variants.
+        fixture = asynccontextmanager(service_client.__wrapped__)
+        async with fixture(session, actor, monkeypatch) as client:
+            await favorites_scenario(client, session)
+            assert policy.enforce_named_rate_limit is not unisolated
+            assert policy.enforce_named_rate_limit.await_count == 4
+            assert all(
+                call.args == ("community:interaction", str(actor.id))
+                and call.kwargs["window_seconds"] == 60
+                and call.kwargs["limit"] > 0
+                for call in policy.enforce_named_rate_limit.await_args_list
+            )
+    unisolated.assert_not_awaited()
 
 
 @pytest.mark.parametrize(

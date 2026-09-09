@@ -18,9 +18,16 @@ scope:
   - apps/web/components/app-bottom-nav.test.tsx
   - apps/web/components/site-navigation.test.tsx
   - apps/web/components/community/home.tsx
+  - apps/web/components/community/ui.tsx
+  - apps/web/components/community/ui.test.tsx
   - apps/web/components/search-workbench.tsx
   - apps/web/components/search-workbench.test.tsx
   - apps/web/app/[locale]/search/new
+  - apps/web/messages/en/metadata.json
+  - apps/web/messages/ja/metadata.json
+  - apps/web/messages/ko/metadata.json
+  - apps/web/messages/zh-TW/metadata.json
+  - apps/web/messages/zh-CN/metadata.json
   - apps/web/components/account-list.tsx
   - apps/web/components/account-list.test.tsx
   - apps/web/components/travel-card-actions.tsx
@@ -68,3 +75,5 @@ Run web lint/i18n/types/Vitest/build, API Ruff/mypy/pytest/migration, desktop an
 ## Notes
 
 Base main 7cee8650 includes planner PR #373. Owner authorized task-only closure dcc97fbd, imported as f7b78cc, and released new-trip-form for a minimal success handoff. No itinerary timeline/draft behavior changes.
+
+CI acceptance surfaced native nested dialog cancel/close propagation and a new-trip mobile navigation overlap. Both are fixed without weakening Escape assertions; 12 focused dialog/navigation tests pass. The standalone search metadata follows all five existing locale catalogs; 41 metadata tests and i18n checks pass. TypeScript passed after regenerating a corrupted local development type cache. Discovery desktop/Pixel 7 five-language editorial screenshots pass and are retained as explicitly synthetic fixture renders. Complete rerun remains required before review handoff.

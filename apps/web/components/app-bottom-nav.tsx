@@ -75,7 +75,7 @@ export function AppBottomNav() {
   if (
     normalizedPath.startsWith("/admin") ||
     normalizedPath.startsWith("/share/") ||
-    (normalizedPath.startsWith("/trips/") && normalizedPath !== "/trips/new")
+    normalizedPath.startsWith("/trips/")
   )
     return null;
   if (discovery.loading) return null;

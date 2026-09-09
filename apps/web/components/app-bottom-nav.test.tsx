@@ -4,10 +4,21 @@ import { AppBottomNav } from "./app-bottom-nav";
 import { SiteVisibilityProvider } from "./site-visibility-provider";
 import { closedSiteVisibility, openSiteVisibility } from "@/lib/site-features";
 const discovery = vi.hoisted(() => ({ enabled: false, loading: false }));
+const navigation = vi.hoisted(() => ({ pathname: "/" }));
+vi.mock("@/i18n/navigation", () => ({
+  Link: ({ href, children, ...props }: import("react").AnchorHTMLAttributes<HTMLAnchorElement>) => <a href={href} {...props}>{children}</a>,
+  usePathname: () => navigation.pathname,
+}));
 vi.mock("@/lib/discovery", () => ({useDiscoveryStatus: () => discovery}));
-beforeEach(() => { discovery.enabled = false; discovery.loading = false; });
+beforeEach(() => { discovery.enabled = false; discovery.loading = false; navigation.pathname = "/"; });
 
 describe("AppBottomNav", () => {
+  it.each(["/trips/new", "/zh-TW/trips/new", "/trips/example"])("keeps the focused planning flow unobstructed at %s", (pathname) => {
+    discovery.enabled = true;
+    navigation.pathname = pathname;
+    render(<AppBottomNav />);
+    expect(screen.queryByRole("navigation")).toBeNull();
+  });
   it("exposes exactly four primary destinations with discovery enabled", () => {
     discovery.enabled = true;
     render(<AppBottomNav />);

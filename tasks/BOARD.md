@@ -28,8 +28,8 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
 | [Unified saved items and private inbox API](open/2026-09-09-frontend-flow-saved-api.md) | codex-saved-flow | 2026-09-09T03:07:29Z | `codex/frontend-explore-flow` |
-| [Public discovery categories and safe detail projections](open/2026-09-09-frontend-flow-discovery-api.md) | codex-discovery-flow-api | 2026-09-09T03:31:06Z | `codex/frontend-explore-flow` |
-| [Editorial discovery and unified collection frontend](open/2026-09-09-frontend-flow-discovery-web.md) | codex-discovery-flow-web | 2026-09-09T03:36:39Z | `codex/frontend-explore-flow` |
+| [Public discovery categories and safe detail projections](open/2026-09-09-frontend-flow-discovery-api.md) | codex-discovery-flow-api | 2026-09-09T04:14:00Z | `codex/frontend-explore-flow` |
+| [Editorial discovery and unified collection frontend](open/2026-09-09-frontend-flow-discovery-web.md) | codex-discovery-flow-web | 2026-09-09T04:13:40Z | `codex/frontend-explore-flow` |
 | [Frontend flow navigation planning handoff and acceptance](open/2026-09-09-frontend-flow-integration.md) | codex-frontend-flow | 2026-09-09T03:08:42Z | `codex/frontend-explore-flow` |
 
 ## In review

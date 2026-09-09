@@ -1,11 +1,14 @@
-import { getLocale } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
+import type { Locale } from "@/i18n/routing";
 import { SiteHeader } from "@/components/site-header";
 import { SearchWorkbench } from "@/components/search-workbench";
 import { frontendCopy } from "@/lib/frontend-navigation";
 
-export async function generateMetadata() {
-  const copy = frontendCopy(await getLocale());
-  return { title: `${copy.search} | Mokaair`, description: copy.searchHelp };
+export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata" });
+  return { title: t("newSearchTitle"), description: t("newSearchDescription") };
 }
 
 export default async function SearchNewPage() {

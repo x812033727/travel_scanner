@@ -38,6 +38,7 @@ export function MyDirectory() {
   const links = [
     ...(discovery.enabled ? [["/explore/collections", "collections"]] : []),
     ...(featureVisible(visibility, "trips") ? [["/trips", "myTrips"]] : []),
+    ...(flags.enabled && flags.posting_enabled ? [["/community/new", "publish"]] : []),
     ...(flags.enabled ? [...(!discovery.enabled ? [["/community/collections", "collections"]] : []), [me?.profile ? `/community/profiles/${me.profile.handle}` : "/community/settings", "profile"], ["/community/settings", "profileSettings"], ["/community/drafts", "drafts"], ["/community/messages", "messages"]] : []),
     ["/account", "accountSettings"],
     ...(user?.is_admin ? [["/admin", "admin"]] : []),

@@ -1,6 +1,7 @@
 import { expect, test, type Page } from "@playwright/test";
 import { getDiscoveryCopy } from "../lib/discovery-copy";
 import { getFrontendFlowCopy } from "../lib/frontend-flow-copy";
+import { frontendCopy } from "../lib/frontend-navigation";
 import type { DiscoveryItem, DiscoveryPreferences } from "../lib/discovery";
 
 // Isolated UX fixtures only. No provider content, paid calls or production account.
@@ -75,7 +76,7 @@ for (const locale of ["zh-TW", "zh-CN", "en", "ja", "ko"]) {
     if (info.project.name === "mobile-chromium") {
       const tabs = page.locator(".app-bottom-nav");
       await expect(tabs.getByRole("link")).toHaveCount(4);
-      await expect(tabs.getByRole("link", { name: c.trips, exact: true })).toBeVisible();
+      await expect(tabs.getByRole("link", { name: frontendCopy(locale).trips, exact: true })).toBeVisible();
       for (const link of await tabs.getByRole("link").all()) expect((await link.boundingBox())!.height).toBeGreaterThanOrEqual(44);
     }
     await page.screenshot({ path: info.outputPath(`discovery-${locale}.png`), fullPage: true });
