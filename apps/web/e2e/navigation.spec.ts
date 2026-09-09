@@ -113,12 +113,16 @@ test("itinerary drag handle works with pointer input and keyboard move keeps foc
  * word next to it; on a wide screen they are in the header itself.
  */
 async function openDisplayPreferences(page: Page) {
+  if (await page.evaluate(() => window.matchMedia("(min-width: 1024px)").matches)) return;
   const menu = page.getByRole("button", { name: "Open navigation menu" });
-  if (await menu.isVisible()) await menu.click();
+  // The mobile menu appears after the discovery flag resolves during hydration.
+  await expect(menu).toBeVisible();
+  await menu.click();
 }
 
 test.beforeEach(async ({ page }) => {
   await pretendSignedIn(page);
+  await page.route("**/api/travel/discovery/status", (route) => route.fulfill({ json: { enabled: false } }));
   await page.route("**/api/travel/auth/me", (route) => route.fulfill({
     status: 200,
     contentType: "application/json",
@@ -745,7 +749,7 @@ test("airline fare lab asks a visitor to sign in before showing charge buttons",
   }));
   await page.goto("/zh-TW/labs/airlines");
   await expect(page.getByRole("heading", { name: "登入後查詢 · 消耗 1 次" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "登入" })).toHaveAttribute("href", "/zh-TW/login?next=%2Flabs%2Fairlines");
+  await expect(page.getByRole("link", { name: "登入", exact: true })).toHaveAttribute("href", "/zh-TW/login?next=%2Flabs%2Fairlines");
   await expect(page.getByRole("button", { name: /搜尋公開票價/ })).toHaveCount(0);
 });
 

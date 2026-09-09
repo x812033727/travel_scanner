@@ -3,6 +3,9 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { DiscoveryExplorer, DiscoveryHomeGate } from "./explorer";
 import { DiscoveryVideoPlayer } from "./video";
 import { DiscoveryCard } from "./card";
+import { DiscoveryDetailBoundary } from "./detail-drawer";
+import { OrganizeSavedContent } from "./saved-content-action";
+import { getFrontendFlowCopy } from "@/lib/frontend-flow-copy";
 import { DiscoveryCollections } from "./collections";
 import { DiscoveryPreferenceEditor } from "./preferences";
 import { CommunityImage } from "@/components/community/ui";
@@ -17,7 +20,7 @@ vi.mock("@/components/header-session", () => ({ useHeaderSession: () => ({ user:
 vi.mock("@/components/community/provider", () => ({ useCommunity: () => ({ flags: { enabled: mock.social }, me: null }) }));
 vi.mock("@/components/search-workbench", () => ({ SearchWorkbench: () => <div>Original search workbench</div> }));
 vi.mock("@/components/account-saved-items", () => ({ AccountSavedItems: () => <div>Existing saved places</div> }));
-vi.mock("@/i18n/navigation", () => ({ Link: ({ href, children, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }) => <a href={href} {...props}>{children}</a>, usePathname: () => "/explore", useRouter: () => ({ push: mock.push }) }));
+vi.mock("@/i18n/navigation", () => ({ Link: ({ href, children, scroll, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string; scroll?: boolean }) => { void scroll; return <a href={href} {...props}>{children}</a>; }, usePathname: () => "/explore", useRouter: () => ({ push: mock.push, replace: mock.push, back: mock.push }) }));
 const item: DiscoveryItem = { id: "guide:11111111-1111-4111-8111-111111111111", kind: "article", title: "東京散步攻略", summary: "從官方步道資料開始", locale: "ja", href: "/hotspots", destination: { id: "tokyo", name: "東京" }, source: { kind: "editorial", label: "City guide", url: "https://example.org/guide" }, published_at: "2026-09-01T00:00:00Z", updated_at: null, thumbnail_url: null, collection_ref: { kind: "guide", id: "11111111-1111-4111-8111-111111111111" }, recommendation_reason: "destination_interest" };
 const page = (items = [item]) => ({ enabled: true, items, query: "", next_cursor: null, filters: { kinds: [], destinations: [], topics: [] } });
 beforeEach(() => {
@@ -62,15 +65,16 @@ describe("discovery sources and privacy", () => {
     fireEvent.change(select, { target: { value: "tokyo" } });
     expect(mock.push).toHaveBeenCalledWith("/explore?destination=tokyo", { scroll: false });
   });
-  it("collapses optional mobile filters while preserving an accessible toggle and desktop grid", async () => {
+  it("keeps destination available and collapses advanced filters behind an accessible toggle", async () => {
     render(<DiscoveryExplorer />);
-    const toggle = screen.getByRole("button", { name: getDiscoveryCopy("zh-TW").filters });
+    const toggle = screen.getByRole("button", { name: getFrontendFlowCopy("zh-TW").advanced });
     expect(toggle.getAttribute("aria-expanded")).toBe("false");
-    const panel = document.getElementById(toggle.getAttribute("aria-controls")!);
-    expect(panel?.className).toContain("hidden"); expect(panel?.className).toContain("sm:grid");
+    expect(document.getElementById(toggle.getAttribute("aria-controls")!)).toBeNull();
+    expect(screen.getByRole("combobox", { name: "目的地" })).toBeTruthy();
     fireEvent.click(toggle);
     expect(toggle.getAttribute("aria-expanded")).toBe("true");
-    expect(panel?.className).not.toContain("hidden");
+    expect(document.getElementById(toggle.getAttribute("aria-controls")!)).toBeTruthy();
+    expect(screen.getByRole("combobox", { name: "內容類型" })).toBeTruthy();
     expect(await screen.findByText(item.title)).toBeTruthy();
   });
   it("restarts expired pagination at page one instead of retrying its expired cursor", async () => {
@@ -84,27 +88,27 @@ describe("discovery sources and privacy", () => {
     await waitFor(() => expect(mock.api.mock.calls.filter(([path]) => path === "/discovery/feed?mode=recommended")).toHaveLength(2));
     expect(mock.api.mock.calls.filter(([path]) => String(path).includes("cursor=expired"))).toHaveLength(1);
   });
-  it("keeps filters in the sign-in return path for following", () => {
+  it("keeps filters in the sign-in return path for following", async () => {
     mock.social = true; mock.query = "mode=following&destination=tokyo";
     render(<DiscoveryExplorer />);
-    expect(screen.getByRole("link", { name: "登入後繼續" }).getAttribute("href")).toContain(encodeURIComponent("destination=tokyo&mode=following"));
+    expect((await screen.findByRole("link", { name: "登入後繼續" })).getAttribute("href")).toContain(encodeURIComponent("destination=tokyo&mode=following"));
     expect(mock.api.mock.calls.some(([path]) => String(path).includes("/feed"))).toBe(false);
   });
   it("exposes guide collections without community enrollment or fake hotel prices", async () => {
     mock.user = { id: "reader" }; mock.identity = {};
-    render(<DiscoveryCard item={{ ...item, kind: "hotel", id: "hotel:1" }} />);
-    fireEvent.click(screen.getByRole("button", { name: "加入收藏清單" }));
+    render(<OrganizeSavedContent item={{ ...item, kind: "hotel", id: "hotel:1" }} onClose={vi.fn()} />);
     expect(await screen.findByRole("dialog")).toBeTruthy();
-    expect(mock.api).toHaveBeenCalledWith("/discovery/collections");
+    expect(mock.api).toHaveBeenCalledWith("/saved-items/collections", expect.objectContaining({ signal: expect.any(AbortSignal) }));
     expect(screen.queryByText(/NT\$/)).toBeNull();
   });
   it("creates private collections for plain accounts while community is off", async () => {
     mock.user = { id: "reader" }; mock.identity = {};
-    mock.api.mockImplementation(async (path: string, init?: RequestInit) => path === "/discovery/collections" && init?.method === "POST" ? { id: "list-1", name: "京都" } : { items: [] });
+    mock.api.mockImplementation(async (path: string, init?: RequestInit) => path.startsWith("/saved-items/collections") && init?.method === "POST" ? { id: "list-1", name: "京都" } : { items: [] });
     render(<DiscoveryCollections />);
-    fireEvent.change(await screen.findByLabelText("新增收藏清單"), { target: { value: "京都" } });
-    fireEvent.click(screen.getByRole("button", { name: "建立" }));
-    await waitFor(() => expect(mock.api.mock.calls.some(([path, init]) => path === "/discovery/collections" && init?.body === '{"name":"京都"}')).toBe(true));
+    fireEvent.click(await screen.findByRole("button", { name: "建立清單" }));
+    fireEvent.change(screen.getByLabelText("清單名稱"), { target: { value: "京都" } });
+    fireEvent.click(within(screen.getByRole("dialog")).getByRole("button", { name: "建立清單" }));
+    await waitFor(() => expect(mock.api.mock.calls.some(([path, init]) => path === "/saved-items/collections?expected_user_id=reader" && init?.body === '{"name":"京都"}')).toBe(true));
     expect(mock.api.mock.calls.some(([path]) => String(path).startsWith("/community"))).toBe(false);
   });
   it("renders sourced images lazily and blocks social cards when its separate flag is off", () => {
@@ -117,11 +121,12 @@ describe("discovery sources and privacy", () => {
     mock.social = true;
     const story: DiscoveryItem = { ...item, kind: "post", source: { ...item.source, kind: "community" }, content: { text: "Original story", media: [{ id: "image-1", alt: "Morning walk", width: 1200, height: 800 }, { id: "image-2", alt: "Garden path", width: 800, height: 1200 }] } };
     mock.api.mockImplementation(async (path: string) => path.startsWith("/community/media/") ? { url: `https://media.example.org/${path.split("/").at(-1)}` } : story);
-    render(<DiscoveryCard item={story} />);
+    const view = render(<DiscoveryDetailBoundary><DiscoveryCard item={story} /></DiscoveryDetailBoundary>);
     expect(await screen.findByRole("img", { name: "Morning walk" })).toBeTruthy();
     expect(mock.api).toHaveBeenCalledWith("/community/media/image-1?thumbnail=true");
     expect(mock.api).not.toHaveBeenCalledWith("/community/media/image-2?thumbnail=true");
-    fireEvent.click(screen.getByRole("button", { name: "閱讀詳情" }));
+    mock.query = `content=post:${item.id.split(":")[1]}`;
+    view.rerender(<DiscoveryDetailBoundary><DiscoveryCard item={story} /></DiscoveryDetailBoundary>);
     expect(await screen.findByRole("img", { name: "Garden path" })).toBeTruthy();
     expect(mock.api).toHaveBeenCalledWith("/community/media/image-1");
     expect(mock.api).toHaveBeenCalledWith("/community/media/image-2");
@@ -178,14 +183,16 @@ describe("discovery sources and privacy", () => {
   });
   it("renders plain authorized details, never HTML supplied by a source", async () => {
     mock.api.mockResolvedValue({ ...item, content: { text: "<script>bad()</script>", format: "plain" } });
-    render(<DiscoveryCard item={item} />); fireEvent.click(screen.getByRole("button", { name: "閱讀詳情" }));
+    mock.query = `content=article:${item.id.split(":")[1]}`;
+    render(<DiscoveryDetailBoundary><DiscoveryCard item={item} /></DiscoveryDetailBoundary>);
     expect(await screen.findByText("<script>bad()</script>")).toBeTruthy();
     expect(within(screen.getByRole("dialog")).getByRole("link", { name: "查看原始來源" }).getAttribute("rel")).toBe("noopener noreferrer");
   });
   it("shows public creator video references and an allowlisted itinerary without fetching a private trip", async () => {
     const publicItem = { ...item, content: { text: "Public story", video_refs: [{ provider: "youtube", video_id: "dQw4w9WgXcQ", source_url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", status: "link_only", embed_url: null }], itinerary: { destination: "Tokyo", timezone: "Asia/Tokyo", days: 1, stops: [{ day: 1, position: 0, title: "Public stop", location_name: "Tokyo", item_type: "activity", duration_minutes: 60, names: {} }] } } };
     mock.api.mockResolvedValue(publicItem);
-    render(<DiscoveryCard item={item} />); fireEvent.click(screen.getByRole("button", { name: "閱讀詳情" }));
+    mock.query = `content=article:${item.id.split(":")[1]}`;
+    render(<DiscoveryDetailBoundary><DiscoveryCard item={item} /></DiscoveryDetailBoundary>);
     expect(await screen.findByText("Public stop")).toBeTruthy();
     expect(screen.getAllByRole("link", { name: "查看原始來源" }).some((link) => link.getAttribute("href")?.includes("youtube.com/watch"))).toBe(true);
     expect(document.querySelector("iframe")).toBeNull();

@@ -2504,6 +2504,20 @@ async def list_trips(user: CurrentUser, session: Session) -> list[dict[str, Any]
     return [await serialize_trip(session, trip, include_items=False) for trip in trips]
 
 
+def _option_destination_id(trip: TripPlan) -> str | None:
+    # Older trips store a localized city name; newer snapshots may already have
+    # a catalog identity. Resolve both without copying destination alias tables
+    # into each localized picker or exposing the private trip snapshot.
+    data = trip.data if isinstance(trip.data, dict) else {}
+    for value in (data.get("destination_id"), trip.destination_name, data.get("destination_city")):
+        if not isinstance(value, str) or not value.strip():
+            continue
+        destination = destination_for_code(value.strip()) or match_destination(value.strip())
+        if destination:
+            return destination.id
+    return None
+
+
 @router.get("/options")
 async def trip_options(user: CurrentUser, session: Session) -> dict[str, object]:
     """Compact, shared trip picker used by cards across the public app.
@@ -2532,6 +2546,7 @@ async def trip_options(user: CurrentUser, session: Session) -> dict[str, object]
                 "start_date": trip.start_date,
                 "end_date": trip.end_date,
                 "destination_name": trip.destination_name,
+                "destination_id": _option_destination_id(trip),
             }
             for trip in dated
         ],

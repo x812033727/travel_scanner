@@ -1,5 +1,6 @@
 import { expect, request, test, type APIRequestContext, type Page } from "@playwright/test";
 import { getDiscoveryCopy } from "../lib/discovery-copy";
+import { getFrontendFlowCopy } from "../lib/frontend-flow-copy";
 
 // Ordinary production paths against isolated PostgreSQL/Redis/Mailpit. No route
 // interception, injected tokens, paid-provider requests or production credentials.
@@ -61,28 +62,30 @@ test("reviewed story discovery, private collections and preferences survive relo
 
     const visitor = await guest.newPage();
     await visitor.goto(`/en/explore?q=${encodeURIComponent(title)}&type=post&locale=en`);
-    await expect(visitor.getByRole("button", { name: title, exact: true })).toBeVisible();
-    await visitor.getByRole("button", { name: title, exact: true }).click();
-    await expect(visitor.getByRole("dialog", { name: title })).toBeVisible();
-    await expect(visitor.getByRole("dialog", { name: title }).getByRole("link", { name: c.source, exact: true })).toHaveAttribute("href", "https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+    await expect(visitor.getByRole("link", { name: title, exact: true })).toBeVisible();
+    await visitor.getByRole("link", { name: title, exact: true }).click();
+    await expect(visitor.getByRole("dialog", { name: c.details })).toBeVisible();
+    await expect(visitor.getByRole("dialog", { name: c.details }).getByRole("link", { name: c.source, exact: true })).toHaveAttribute("href", "https://www.youtube.com/watch?v=dQw4w9WgXcQ");
     await expect(visitor.locator("iframe")).toHaveCount(0); // No provider evidence/key: link-only.
     await visitor.screenshot({ path: info.outputPath("discovery-public-story.png"), fullPage: true });
 
     await page.goto("/en/explore/collections");
-    await page.getByLabel("New collection", { exact: true }).fill(`Saved trip ideas ${suffix}`);
-    await page.getByRole("button", { name: "Create", exact: true }).click();
-    await expect(page.getByRole("combobox", { name: "Collection", exact: true })).not.toHaveValue("");
-    const collection = { id: await page.getByRole("combobox", { name: "Collection", exact: true }).inputValue(), name: `Saved trip ideas ${suffix}` };
+    const f = getFrontendFlowCopy("en");
+    await page.getByRole("button", { name: f.createList, exact: true }).click();
+    await page.getByLabel(f.listName, { exact: true }).fill(`Saved trip ideas ${suffix}`);
+    await page.getByRole("dialog").getByRole("button", { name: f.createList, exact: true }).click();
+    await expect(page).toHaveURL(/collection=/);
+    const collection = { id: new URL(page.url()).searchParams.get("collection")!, name: `Saved trip ideas ${suffix}` };
     await json(page.request, "POST", `/discovery/collections/${collection.id}/items`, { kind: "post", id: draft.id });
     await json(page.request, "POST", `/discovery/collections/${collection.id}/items`, { kind: "post", id: draft.id });
     const saved = await json(page.request, "GET", `/discovery/collections/${collection.id}?locale=en`);
     expect(saved.items).toHaveLength(1);
     expect((await guest.request.get(`/api/travel/discovery/collections/${collection.id}`)).status()).toBe(401);
     await page.goto("/en/explore/collections");
-    await expect(page.getByRole("heading", { name: c.collections, exact: true })).toBeVisible();
+    await expect(page.getByRole("heading", { name: f.allSaved, exact: true, level: 1 })).toBeVisible();
     await page.reload();
-    await page.getByRole("combobox", { name: "Collection", exact: true }).selectOption(collection.id);
-    await expect(page.getByRole("button", { name: title, exact: true })).toBeVisible();
+    await page.getByRole("button", { name: collection.name, exact: true }).click();
+    await expect(page.getByRole("link", { name: title, exact: true })).toBeVisible();
 
     await page.screenshot({ path: info.outputPath("discovery-private-collection.png"), fullPage: true });
 
@@ -100,7 +103,7 @@ test("reviewed story discovery, private collections and preferences survive relo
     await page.keyboard.press("Escape");
     await page.reload();
     expect((await json(page.request, "GET", "/discovery/preferences")).topics).toEqual(["culture"]);
-    await expect(page.getByRole("button", { name: title, exact: true })).toBeVisible();
+    await expect(page.getByRole("link", { name: title, exact: true })).toBeVisible();
     await page.screenshot({ path: info.outputPath("discovery-real-stack.png"), fullPage: true });
 
     await json(page.request, "POST", `/community/posts/${draft.id}/withdraw`);
@@ -109,9 +112,11 @@ test("reviewed story discovery, private collections and preferences survive relo
     expect(invisible.items).toHaveLength(1);
     expect(invisible.items[0].unavailable).toBe(true);
     expect(invisible.items[0].discovery).toBeUndefined();
+    await visitor.keyboard.press("Escape");
+    await expect(visitor.getByRole("dialog")).toHaveCount(0);
     await visitor.reload();
     await expect(visitor.getByText(c.empty, { exact: true })).toBeVisible();
-    await expect(visitor.getByRole("button", { name: title, exact: true })).toHaveCount(0);
+    await expect(visitor.getByRole("link", { name: title, exact: true })).toHaveCount(0);
     await visitor.screenshot({ path: info.outputPath("discovery-withdrawn.png"), fullPage: true });
   } finally {
     await guest.close(); await admin.dispose();

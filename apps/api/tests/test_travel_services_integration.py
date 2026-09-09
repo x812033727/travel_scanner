@@ -100,6 +100,9 @@ async def client(session, actor, monkeypatch):
         monkeypatch.setattr(module, "get_redis", lambda: redis)
     monkeypatch.setattr(router, "enforce_named_rate_limit", AsyncMock())
     monkeypatch.setattr(affiliate_router, "enforce_named_rate_limit", AsyncMock())
+    # Unified saved writes reuse the collection policy. Isolate its limiter too:
+    # the process-global Redis pool may belong to a previous test module's loop.
+    monkeypatch.setattr("app.community.policy.enforce_named_rate_limit", AsyncMock())
     monkeypatch.setattr("app.trips.router.get_redis", lambda: redis)
     monkeypatch.setattr("app.trips.router.load_runtime_settings", AsyncMock(return_value=settings))
     # Hotel mutation reuses the real routing/serialization path with paid routing disabled.

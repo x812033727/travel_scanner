@@ -6,6 +6,20 @@ const { push } = vi.hoisted(() => ({ push: vi.fn() }));
 vi.mock("@/i18n/navigation", () => ({ useRouter: () => ({ push }) }));
 
 describe("SearchWorkbench", () => {
+  it("keeps compact search optional and queries only after explicit submission", async () => {
+    const view = render(<SearchWorkbench compact />);
+    await waitFor(() => expect(fetch).toHaveBeenCalled());
+    expect(vi.mocked(fetch).mock.calls.some(([, init]) => init?.method === "POST")).toBe(false);
+    const form = view.container.querySelector("form")!;
+    expect(form.getAttribute("data-compact")).not.toBeNull();
+    const toggle = screen.getByRole("button", {name:"更多偏好條件"});
+    expect(toggle.getAttribute("aria-expanded")).toBe("false");
+    fireEvent.click(toggle);
+    expect(toggle.getAttribute("aria-expanded")).toBe("true");
+    expect(form.getAttribute("data-advanced")).not.toBeNull();
+    fireEvent.click(screen.getByRole("button", {name:"尋找旅行方案"}));
+    await waitFor(() => expect(vi.mocked(fetch).mock.calls.filter(([, init]) => init?.method === "POST")).toHaveLength(1));
+  });
   beforeEach(() => {
     push.mockReset();
     vi.stubGlobal("fetch", vi.fn(async (input: RequestInfo | URL) => new Response(JSON.stringify(String(input).endsWith("/destinations") ? { items: [] } : {

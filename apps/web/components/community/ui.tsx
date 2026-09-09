@@ -51,7 +51,15 @@ export function Dialog({ title, children, onClose, returnFocusTo }: { title: str
     // Restore on the following frame, once both the top layer and DOM have settled.
     return () => { requestAnimationFrame(() => { if (!dialog?.isConnected && trigger?.isConnected) trigger.focus(); }); };
   }, [returnFocusTo]);
-  return <dialog ref={ref} aria-labelledby={id} onCancel={(event) => { event.preventDefault(); onClose(); }} onClose={onClose}
+  return <dialog ref={ref} aria-labelledby={id} onCancel={(event) => {
+    event.stopPropagation();
+    if (event.target !== event.currentTarget) return;
+    event.preventDefault();
+    onClose();
+  }} onClose={(event) => {
+    event.stopPropagation();
+    if (event.target === event.currentTarget) onClose();
+  }}
     className="m-auto max-h-[90dvh] w-[min(42rem,calc(100%-2rem))] overflow-y-auto rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6 text-[var(--ink)] backdrop:bg-black/50">
     <div className="mb-5 flex items-center justify-between gap-3"><h2 id={id} className="text-xl font-bold">{title}</h2><Button secondary onClick={onClose}>{t("close")}</Button></div>{children}
   </dialog>;

@@ -53,6 +53,10 @@ jobs:
       - run: npm ci
       - run: uv run alembic upgrade head
         working-directory: apps/api
+      - name: Seed isolated frontend acceptance place
+        run: uv run python tests/fixtures/frontend_flow_seed.py
+        working-directory: apps/api
+        env: { PYTHONPATH: . }
       - run: npm run build:web
       - name: Start isolated mail and bootstrap acceptance administrator
         run: |
@@ -78,10 +82,10 @@ jobs:
           exit 1
       - run: npx playwright install --with-deps chromium
       - name: Desktop and Pixel 7 discovery UI fixtures
-        run: npx playwright test e2e/discovery.spec.ts --workers=1 --output test-results/discovery-fixtures
+        run: npx playwright test e2e/discovery.spec.ts e2e/frontend-flow.spec.ts --workers=1 --output test-results/discovery-fixtures
         working-directory: apps/web
       - name: Unmocked login, invitations, private collections and public withdrawal
-        run: npx playwright test e2e/discovery-full-stack.spec.ts --workers=1 --output test-results/discovery-full-stack
+        run: npx playwright test e2e/discovery-full-stack.spec.ts e2e/frontend-flow-full-stack.spec.ts --workers=1 --output test-results/discovery-full-stack
         working-directory: apps/web
       - uses: actions/upload-artifact@v4
         if: always()

@@ -235,7 +235,7 @@ test("blank trip keeps flight, hotel and meal anchors with two time modes", asyn
   await openOptionalStops(page);
   await expect(systemCards).toHaveCount(2);
   await expect(systemCards.first()).toContainText("丸之內測試飯店");
-  await expect(page.getByText("住宿據點 · 返回", { exact: true })).toBeVisible();
+  await expect(systemCards.getByText("住宿據點 · 返回", { exact: true })).toBeVisible();
 
   await page.getByRole("button", { name: "略過用餐" }).first().click();
   await openOptionalStops(page);

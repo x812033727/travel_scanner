@@ -11,6 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
 }
 
 
-export default function NewTripPage() {
-  return <><SiteHeader /><main className="mx-auto max-w-6xl px-5 pb-20 pt-4 md:px-8"><NewTripAuthGate /></main></>;
+export default async function NewTripPage({ searchParams }: { searchParams: Promise<{ resume_plan?: string }> }) {
+  const query = await searchParams;
+  return <><SiteHeader /><main className="mx-auto max-w-6xl px-5 pb-20 pt-4 md:px-8"><NewTripAuthGate resumePlanning={query.resume_plan === "1"} /></main></>;
 }

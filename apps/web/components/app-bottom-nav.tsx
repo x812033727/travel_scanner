@@ -7,7 +7,7 @@ import { useSiteVisibility } from "@/components/site-visibility-provider";
 import { featureVisible, type SiteFeature } from "@/lib/site-features";
 import { useCommunity } from "@/components/community/provider";
 import { useDiscoveryStatus } from "@/lib/discovery";
-import { getDiscoveryCopy } from "@/lib/discovery-copy";
+import { frontendActive, frontendCopy, frontendDestinations } from "@/lib/frontend-navigation";
 
 const items: ReadonlyArray<{
   key: string;
@@ -49,13 +49,9 @@ export function AppBottomNav() {
   const community = useCommunity();
   const tc = useTranslations("community");
   const discovery = useDiscoveryStatus();
-  const discoveryCopy = getDiscoveryCopy(useLocale());
-  const discoveryItems: typeof items = [
-    { key: "explore", href: "/explore", icon: Compass, matches: ["/", "/explore", "/hotspots", "/foods", "/destinations"] },
-    { key: "collections", href: "/explore/collections", icon: Bookmark, matches: ["/explore/collections", "/community/collections"] },
-    { key: "trips", href: "/trips", icon: Route, matches: ["/trips", "/search"], feature: "trips" },
-    { key: "my", href: "/my", icon: UserRound, matches: ["/my", "/account", "/login", "/register", "/community/settings"] },
-  ];
+  const discoveryCopy = frontendCopy(useLocale());
+  const discoveryIcons = { explore: Compass, collections: Bookmark, trips: Route, my: UserRound };
+  const discoveryItems: typeof items = frontendDestinations.map((item) => ({ ...item, icon: discoveryIcons[item.key], matches: [] }));
   const discoveryLabels: Record<string, string> = {
     explore: discoveryCopy.explore, collections: discoveryCopy.collections,
     trips: discoveryCopy.trips, my: discoveryCopy.my,
@@ -79,15 +75,15 @@ export function AppBottomNav() {
   if (
     normalizedPath.startsWith("/admin") ||
     normalizedPath.startsWith("/share/") ||
-    (normalizedPath.startsWith("/trips/") && normalizedPath !== "/trips/new")
+    normalizedPath.startsWith("/trips/")
   )
     return null;
+  if (discovery.loading) return null;
   return (
     <nav aria-label={t("mobileLabel")} className="app-bottom-nav lg:hidden" style={{ gridTemplateColumns: `repeat(${visibleItems.length}, minmax(0, 1fr))` }}>
       {visibleItems.map((item) => {
         const active = discovery.enabled
-          ? item.matches.some((prefix) => prefix === "/" ? normalizedPath === "/" : normalizedPath === prefix || normalizedPath.startsWith(`${prefix}/`)) &&
-            !(item.key === "explore" && normalizedPath.startsWith("/explore/collections"))
+          ? frontendActive(item.key, normalizedPath)
           : community.flags.enabled
           ? item.key === "title"
             ? normalizedPath.startsWith("/community") && !socialItems.filter((other) => other.key !== "title").some((other) => other.matches.some((prefix) => prefix !== "/" && normalizedPath.startsWith(prefix)))

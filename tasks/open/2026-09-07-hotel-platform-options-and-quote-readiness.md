@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-09-07T12:32:44Z
 completed_at:
-branch: codex/hotel-content-review-taipei-rest
+branch: codex/pr367-merge-ready-20260909
 depends_on: []
 scope:
   - apps/api/tests/test_hotel_content_package.py
@@ -17,7 +17,83 @@ scope:
 
 # Hotel platform options and quote readiness
 
-## Latest: 2026-09-08 PR #360 deployment and remaining Taipei review
+## 2026-09-09 PR #367 merge preparation (no deployment)
+
+The user explicitly authorized merging PRs #361 and #367, without deployment.
+Prepared #367 in the isolated `codex/pr367-merge-ready-20260909` worktree from
+exact PR head `0337f781b0199590c4369392528f394a6390d1c8`. GitHub reported the PR
+OPEN / MERGEABLE / BEHIND, with all eight checks successful at that old head;
+those results are not validation of a later integration head.
+
+Normally merged fetched main `7cee8650aa451d96634b3ccf821204c22bd125a9` as local
+merge commit `fee0c878f7ede7e99d7c84a3c0099819f05e2cdd`, without rebasing or rewriting
+history. Only generated `tasks/BOARD.md` conflicted; `npm run tasks:board` resolved
+it. All application, web, workflow and operations files exactly preserve that main.
+The hotel content test and every `docs/hotel-platforms` file are unchanged from
+the original #367 head. No later hotel-review batches were added to this older PR.
+
+These source documents and counts remain historical checkpoints, not current live
+catalog state. Pending JSON is research input only: never replay it over independent
+live reviews, reset approved rows, or infer approval/publication from this Git merge.
+No import, production connection/write, browser review, paid API, deployment or
+database migration was performed during this integration. This task's remaining
+six-city content acceptance and rollout requirements stay unchecked.
+
+Local focused validation: 172 tests passed and three PostgreSQL-dependent tests
+skipped, covering hotel content/platforms/direct links, hotel admin, travel services,
+the legacy migration gate and offline Seoul coordinate reproduction. API-wide Ruff
+and the changed content test's format check passed. All 27 tooling tests, 196 task
+files and five locales / 25 namespaces passed. Missing local aiosqlite, optional
+pyproj and Playwright test dependencies were supplied without modifying shared
+Python dependencies, application manifests or lockfiles; their initial missing-
+dependency failures were resolved on rerun. The standalone historical docs scripts
+retain pre-existing formatting issues outside the API CI lint scope and were not
+edited or executed as live lookup/import tools.
+
+The i18n tool treats an in-progress merge's staged upstream files as new text against
+the old HEAD; that intermediate scan reported existing upstream planner/discovery
+copy. The post-integration catalog check passed; no upstream UI copy or checker was
+changed. The final remote head still needs full CI and a fresh SHA-guarded merge
+check, especially after main advances through #361. Root owns remote push/merge;
+this local preparation releases the shared task at handoff rather than marking it
+done. No remote push or PR merge was performed by the integration subtask.
+
+## Latest: 2026-09-08 PR #364 deployment and IAB Osaka / Taipei review
+
+User authorized merge, deployment, then more hotels/review; allowed IAB or Gemini.
+Merged #364 with exact head 3e08f993c26658410ea67c93b562c327c55d8674 after latest
+main 4343454, CLEAN/MERGEABLE and all eight checks. Merged SHA
+200e46ea922bdb0403f146b5db7ea4382af62c9a passed main CI 34199564301 before clean-archive
+deployment. All eight application services have that image with zero restarts; three
+ready checks/five homepages passed. Schema remains 0063. Actual prior live 4343454,
+environment, DB/Redis IDs/volumes, settings and community-off state preserved.
+
+After a verified backup and prior Taipei checkpoint validation, IAB verified three
+saved Osaka maps (Intergate Umeda, New Otani, Gracery Namba), eight Booking pages,
+three Agoda pages and W Taipei official. Normal versioned services approved the three
+map-only products and all twelve links; nine links retain truthful unconfirmed server
+health with actual browser evidence, three Agoda are healthy. Unsafe/unavailable checks
+unchanged. Grand Hyatt official stayed blank/pending, not falsely approved or delisted.
+Six new observed Osaka Expedia/Rakuten international candidates remain pending/version 2.
+
+Still 60 identities, now 30 products approved/30 pending and 100 options approved/260
+pending. Public five-locale Osaka5/16 options and Taipei10/30; Tokyo10/20, Seoul5/7,
+Kyoto0 and Busan0 unchanged. No city complete, no new city switches, affiliate/quotes,
+paid APIs, Gemini calls, clickouts or orders. Existing government facts/credits retained.
+
+Independent READ ONLY verification passed all27 new audits plus3 historic Agoda edits,
+exact targets and other57products342options/config-v5 fingerprint
+34b11bfb52a49a91109814c8dbb084f8da404e4e261414a12b4d3da362093cb6. Ten real HTTPS BFF reads
+and30 internal locale/city reads pass. IAB shows Intergate's four ordinary platform
+choices and no-live-price notice; Escape restores opener focus. Details/backups/evidence:
+docs/hotel-platforms/review-2026-09-08-iab-osaka-taipei.md and matching JSON checkpoint.
+Pending inputs are NOT live sync truth. Never replay them over independently reviewed
+rows. Original dirty worktree untouched; release at handoff, acceptance remains open.
+Local related194tests passed/oneintegration skipped, Ruff/check-format, mypy258sources,
+five locales/25namespaces,27tooling tests and task checks passed. Full new-head CI
+must be verified on the continuation evidence PR; no automatic second merge authorized.
+
+## Previous: 2026-09-08 PR #360 deployment and remaining Taipei review
 
 User authorized merging #360, deploying, then continuing. Verified head 333114d,
 base 8d2fb93, CLEAN/MERGEABLE and all eight checks; SHA-guarded merge to
