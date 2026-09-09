@@ -24,7 +24,7 @@ describe("direct hotel booking panel", () => {
     expect(form().getAttribute("action")).toBe("/api/travel/travel-services/hotel-1/booking-options/booking-1/clickout?locale=zh-TW&placement=destination");
     expect(form().getAttribute("method")).toBe("post");
     expect(form().getAttribute("target")).toBe("_blank");
-    expect(form().getAttribute("rel")).toBe("noopener noreferrer");
+    expect(form().getAttribute("rel")).toBe("noopener");
     expect([...new FormData(form()).keys()]).toEqual([]);
     expect(screen.getAllByText(copy.viaStay22)).toHaveLength(1);
     expect(screen.getByText(copy.disclosure)).toBeTruthy();

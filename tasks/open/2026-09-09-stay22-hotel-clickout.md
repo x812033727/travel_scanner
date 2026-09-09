@@ -18,6 +18,8 @@ scope:
   - apps/api/app/travel_services/admin.py
   - apps/api/app/travel_services/schemas.py
   - apps/api/app/travel_services/router.py
+  - apps/api/app/travel_services/service.py
+  - apps/api/app/travel_services/errors.py
   - apps/api/app/trips/stay_router.py
   - apps/api/tests/test_stay22_clickout.py
   - apps/api/tests/test_stay22_admin.py

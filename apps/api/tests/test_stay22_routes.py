@@ -267,3 +267,20 @@ async def test_query_context_is_not_wrapped_and_foreign_option_is_rejected(click
     assert await session.scalar(select(AffiliateClick)) is None
     foreign = await client.post(endpoint(product, option).replace(str(option.id), str(uuid4())))
     assert foreign.status_code == 404
+
+
+@pytest.mark.parametrize(
+    "headers,allowed", [({}, True), ({"dnt": "1"}, False), ({"sec-gpc": "1"}, False)]
+)
+async def test_public_catalog_channel_metadata_respects_privacy(
+    click_api, monkeypatch, headers, allowed
+) -> None:
+    client, _, _, _, _ = click_api
+    recommend = AsyncMock(return_value={"items": []})
+    monkeypatch.setattr(router, "recommendations", recommend)
+    response = await client.get(
+        "/api/v1/travel-services?destination_id=tokyo&type=hotel", headers=headers
+    )
+    assert response.status_code == 200, response.text
+    assert recommend.call_args.kwargs["tracking_allowed"] is allowed
+    assert response.json()["booking_context"] is None

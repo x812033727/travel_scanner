@@ -57,6 +57,8 @@ An error while executing the existing affiliate channel does **not** switch it t
 Stay22. Its existing direct fallback policy is unchanged. DNT/GPC exclude the new
 Stay22 channel, also respecting the ordinary-link setting. Eligibility is checked
 again on click, so old browser cards cannot bypass changed config or expired review.
+Public affiliate options expose `affiliate_channel=existing|stay22`; ordinary links
+omit this optional field to preserve their existing response shape.
 
 `POST /api/v1/travel-services/{product_id}/booking-options/{option_id}/clickout`
 returns 303. It accepts an empty body for legacy callers or an optional JSON /
@@ -88,7 +90,11 @@ stripping parameters. Existing HTTPS/OTA host/DNS/identity/review gates remain i
 effect. There is no Roam, LinkSwap, LMA, fuzzy matching or whole-site rewriting.
 
 The BFF enforces same-origin POST, never follows affiliate redirects, forwards
-DNT/GPC, and applies no-store/no-referrer. Browser-form failures return a localized
+DNT/GPC, and applies no-store/no-referrer to successful external redirects.
+First-party forms use `noopener` (not `noreferrer`, which Chromium turns into
+`Origin: null`). The local error document uses `same-origin` referrer policy so a
+retry passes the unchanged CSRF guard; no cross-origin referrer is sent.
+Browser-form failures return a localized
 HTML retry/return page; JSON clients retain Problem Details. A bounded first-party
 `return_to` hint is consumed only by the BFF error page and stripped before the
 upstream API call. Retry retains the four non-secret preference fields. It cannot

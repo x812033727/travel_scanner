@@ -196,7 +196,9 @@ async def public_options(
                 "provider": option.provider,
                 "name": BRANDS[option.provider].name if option.provider != "official" else None,
                 "mode": "direct" if channel == "direct" else "affiliate",
-                "affiliate_channel": channel if channel != "direct" else None,
+                # Ordinary links preserve the pre-Allez response shape. The
+                # optional channel describes affiliates, never a new OTA identity.
+                **({"affiliate_channel": channel} if channel != "direct" else {}),
                 "quote_status": "ready" if can_quote else "not_configured",
             }
         )

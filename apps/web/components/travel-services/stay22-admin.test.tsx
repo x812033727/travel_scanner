@@ -81,3 +81,25 @@ it("keeps the destination and status scope in readiness links", () => {
   render(<Stay22ReadinessPanel rows={[{ provider: "agoda", existing_affiliate: 0, stay22_capable: 2, missing_link: 0, review_expired: 0, blocked: 0 }]} destination="tokyo" status="approved" />);
   expect(screen.getByRole("link", { name: "Agoda · Stay22 可接: 2" })).toHaveAttribute("href", "/admin/hotels?tab=review&section=platforms&booking_provider=agoda&booking_readiness=stay22_capable&destination_id=tokyo&status=approved");
 });
+
+it("keeps a confirmed save when refresh fails and retries only the read", async () => {
+  request.mockResolvedValue({ version: 9 });
+  const reload = vi.fn().mockRejectedValueOnce(new ApiError("unavailable", 503)).mockResolvedValue(undefined);
+  const view = render(<Stay22Admin version={8} allowed value={stay22Default} onSaved={reload} />);
+  fireEvent.change(screen.getByLabelText("Stay22 AID"), { target: { value: "confirmed-aid" } });
+  fireEvent.click(screen.getByRole("button", { name: "儲存 Stay22 設定" }));
+  expect(await screen.findByRole("alert")).toHaveTextContent("設定已儲存，但重新載入畫面失敗");
+  expect(screen.getByRole("status")).toHaveTextContent("Stay22 設定已儲存");
+  expect(screen.getByRole("button", { name: "儲存 Stay22 設定" })).toBeDisabled();
+  // A stale parent read must not roll back a version or AID just confirmed by PATCH.
+  view.rerender(<Stay22Admin version={8} allowed value={{ ...stay22Default }} onSaved={reload} />);
+  expect(screen.getByLabelText("Stay22 AID")).toHaveValue("confirmed-aid");
+  fireEvent.click(screen.getByRole("button", { name: "重新載入設定" }));
+  await waitFor(() => expect(reload).toHaveBeenCalledTimes(2));
+  expect(request).toHaveBeenCalledTimes(1);
+  expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+  fireEvent.change(screen.getByLabelText("Stay22 AID"), { target: { value: "next-aid" } });
+  fireEvent.click(screen.getByRole("button", { name: "儲存 Stay22 設定" }));
+  await waitFor(() => expect(request).toHaveBeenCalledTimes(2));
+  expect(JSON.parse(request.mock.calls[1][1].body).version).toBe(9);
+});

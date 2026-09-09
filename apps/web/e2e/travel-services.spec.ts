@@ -5,7 +5,12 @@ import ko from "../messages/ko/travelServices.json" with { type: "json" };
 import tw from "../messages/zh-TW/travelServices.json" with { type: "json" };
 import cn from "../messages/zh-CN/travelServices.json" with { type: "json" };
 import { klookAffiliateCopy } from "../lib/klook-affiliate-copy";
-import { stay22AllezCopy, stay22AllezText } from "../lib/stay22-allez-copy";
+import type { Stay22AllezCopy } from "../lib/stay22-allez-copy";
+import { readFileSync } from "node:fs";
+
+function stay22AllezCopy(locale: string): Stay22AllezCopy {
+  return JSON.parse(readFileSync(new URL(`../lib/stay22-allez-messages/${locale}.json`, import.meta.url), "utf8"));
+}
 
 const catalogs = { en, ja, ko, "zh-TW": tw, "zh-CN": cn };
 
@@ -45,7 +50,7 @@ for (const [locale, copy] of Object.entries(catalogs)) {
     await expect(panel.locator('input[type="date"]')).toHaveCount(2);
     await expect(klook.locator("..")).toHaveAttribute("action", /booking-options\/klook-option\/clickout/);
     await expect(klook.locator("..")).toHaveAttribute("method", "post");
-    await expect(klook.locator("..")).toHaveAttribute("rel", "noopener noreferrer");
+    await expect(klook.locator("..")).toHaveAttribute("rel", "noopener");
     const box = await klook.boundingBox();
     expect(box?.height).toBeGreaterThanOrEqual(44);
     const popupWait = context.waitForEvent("page");
@@ -311,7 +316,7 @@ for (const [locale, copy] of Object.entries(catalogs)) {
         "hidden",
       );
       const booking = panel.getByRole("button", {
-        name: `${stay22AllezText(stay22AllezCopy(locale).openPlatform, { platform: "Booking.com" })} · ${copy.newTab}`,
+        name: `${stay22AllezCopy(locale).openPlatform.replace("{platform}", "Booking.com")} · ${copy.newTab}`,
       });
       await expect(booking).toHaveCount(1);
       await expect(booking.locator("..")).toHaveAttribute("target", "_blank");

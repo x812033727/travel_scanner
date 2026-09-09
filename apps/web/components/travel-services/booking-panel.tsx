@@ -217,7 +217,7 @@ export function BookingPanel({
                 action={`/api/travel/travel-services/${product.id}/booking-options/${option.id}/clickout?locale=${locale}&placement=${placement}`}
                 method="post"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
                 onSubmit={(event) => {
                   if (formError) {
                     event.preventDefault();
@@ -265,7 +265,7 @@ export function BookingPanel({
                   key={offer.id}
                   method="post"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener"
                   action={`/api/travel/affiliates/offers/${offer.id}/clickout?locale=${locale}&placement=${placement}`}
                 >
                   <button

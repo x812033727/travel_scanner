@@ -7,7 +7,7 @@ afterEach(() => vi.unstubAllGlobals());
 const id = "00000000-0000-4000-8000-000000000001";
 const path = ["travel-services", id, "booking-options", id, "clickout"];
 function request(accept = "text/html") {
-  return new NextRequest(`https://mokaair.test/api/travel/${path.join("/")}?locale=en&placement=trip`, {
+  return new NextRequest(`https://mokaair.test/api/travel/${path.join("/")}?locale=en&placement=trip&return_to=%2Fen%2Ftrips%2Fprivate-id`, {
     method: "POST", headers: { origin: "https://mokaair.test", accept, "content-type": "application/x-www-form-urlencoded", "sec-gpc": "1", dnt: "1", referer: "https://mokaair.test/en/trips/a?tab=stay" },
     body: "check_in=2030-11-01&check_out=2030-11-30&adults=2&children=0",
   });
@@ -35,6 +35,8 @@ describe("booking-option error boundary", () => {
     expect(response.headers.get("referrer-policy")).toBe("no-referrer");
     expect(fetcher).toHaveBeenCalledTimes(1);
     const options = (fetcher.mock.calls as unknown as [string, RequestInit][])[0][1];
+    expect((fetcher.mock.calls as unknown as [string, RequestInit][])[0][0]).not.toContain("private-id");
+    expect((fetcher.mock.calls as unknown as [string, RequestInit][])[0][0]).not.toContain("return_to");
     expect(options.redirect).toBe("manual");
     expect(new Headers(options.headers).get("sec-gpc")).toBe("1");
     expect(new Headers(options.headers).get("dnt")).toBe("1");

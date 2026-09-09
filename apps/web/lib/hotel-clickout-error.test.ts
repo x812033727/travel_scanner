@@ -13,6 +13,7 @@ describe("safe hotel clickout failure page", () => {
     expect(response.status).toBe(503);
     expect(response.headers.get("content-type")).toContain("text/html");
     expect(response.headers.get("cache-control")).toBe("no-store");
+    expect(response.headers.get("referrer-policy")).toBe("same-origin");
     expect(response.headers.get("content-security-policy")).toContain("default-src 'none'");
     expect(html).toContain('value="2030-11-30"');
     expect(html).toContain('href="/ja/trips/abc?tab=stay"');

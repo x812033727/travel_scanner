@@ -81,7 +81,7 @@ async def test_privacy_signals_cannot_advertise_stay22_when_propagated():
         AsyncMock(), product(), config(direct_hotel_links_enabled=True), Settings(), NOW,
         set(), tracking_allowed=False,
     )
-    assert result[0]["mode"] == "direct" and result[0]["affiliate_channel"] is None
+    assert result[0]["mode"] == "direct" and "affiliate_channel" not in result[0]
 
 
 async def test_global_and_platform_disable_take_effect_without_cached_channel():

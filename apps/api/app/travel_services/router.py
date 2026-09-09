@@ -94,6 +94,7 @@ async def public_config(session: Session) -> dict[str, Any]:
 async def public_services(
     session: Session,
     locale: RequestLocale,
+    request: Request,
     destination_id: Annotated[str, Query(max_length=64)],
     type: Kind | None = None,
     hotspot_id: UUID | None = None,
@@ -141,6 +142,8 @@ async def public_services(
         passengers=passengers,
         language=language,
         days=days,
+        tracking_allowed=request.headers.get("dnt") != "1"
+        and request.headers.get("sec-gpc") != "1",
     )
     if type:
         result["items"] = [p for p in result["items"] if p["kind"] == type]
@@ -154,6 +157,7 @@ async def trip_services(
     user: CurrentUser,
     session: Session,
     locale: RequestLocale,
+    request: Request,
     destination_id: str | None = None,
     type: Kind | None = None,
     area: str | None = None,
@@ -185,6 +189,8 @@ async def trip_services(
             passengers=passengers,
             countries=trip_countries(trip, rows),
             days=days,
+            tracking_allowed=request.headers.get("dnt") != "1"
+            and request.headers.get("sec-gpc") != "1",
         )
         for city in ([destination_id] if destination_id else cities)
     ]
