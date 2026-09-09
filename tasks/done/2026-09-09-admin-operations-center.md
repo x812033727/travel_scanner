@@ -1,13 +1,13 @@
 ---
 id: 2026-09-09-admin-operations-center
 title: Travel Scanner 後台營運中心升級
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: codex-root
 claimed_at: 2026-09-09T02:26:21Z
 created_at: 2026-09-09T02:25:54Z
-completed_at:
+completed_at: 2026-09-09T09:02:13Z
 branch: codex/admin-operations-center
 depends_on: []
 scope:
@@ -41,7 +41,7 @@ the API authorizes.
       verification, usage, and delayed erasure without bypassing owner/environment safeguards.
 - [x] Database operators can inspect fixed PostgreSQL metrics and, only after all gates, request
       verified backups or controlled ANALYZE through the restricted host agent.
-- [ ] Desktop and mobile administration flows are URL-restorable, accessible, localized, and
+- [x] Desktop and mobile administration flows are URL-restorable, accessible, localized, and
       covered by focused and full-stack checks.
 
 ## Steps
@@ -49,7 +49,7 @@ the API authorizes.
 - [x] Add migration, capability roles, server bootstrap, audit query, and step-up session.
 - [x] Extend the deployment agent with mutually exclusive verified backup and ANALYZE jobs.
 - [x] Finish the unified shell, user drawer/actions, database center, and audit UI.
-- [ ] Run backend, frontend, migration, browser, and CI validation; document rollout safeguards.
+- [x] Run backend, frontend, migration, browser, and CI validation; document rollout safeguards.
 
 ## How to verify
 
@@ -69,3 +69,7 @@ execution grant.
 The final concurrency hardening serializes database-operation terminal reconciliation and uses a
 consistent `Job → User → AccountErasureRequest` lock order for erasure cancellation. The
 PostgreSQL race regressions run in CI because the local Windows host has no PostgreSQL service.
+
+At code checkpoint `ed64e6c7`, both push and pull-request workflows passed API, web, containers,
+full-stack administration smoke, travel discovery, and planner browser checks. The final task
+closure commit is intentionally documentation-only and remains subject to the same merge gate.
