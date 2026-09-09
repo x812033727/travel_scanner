@@ -1,13 +1,13 @@
 ---
 id: 2026-09-08-travel-discovery-community
 title: Community curated video invitations and collection references
-status: review
+status: done
 priority: P1
 area: api
 owner: codex-discovery-community
 claimed_at: 2026-09-08T23:24:28Z
 created_at: 2026-09-08T23:24:09Z
-completed_at:
+completed_at: 2026-09-09T01:20:30Z
 branch: codex/travel-discovery-community
 depends_on: []
 scope:
@@ -46,7 +46,7 @@ requiring ordinary readers to enroll in the social publishing profile.
       mixed legacy collections, replay analytics, and deletion in focused regressions.
 - [x] Parent integration: desktop and Pixel 7 discovery fixtures plus the unmocked
       login/invitation/collection/withdrawal journey execute against migrated PostgreSQL.
-- [ ] Parent integration: complete full API/web CI (including bounded concurrent first
+- [x] Parent integration: complete full API/web CI (including bounded concurrent first
       invite), resolve remaining integration checks, and archive task after delivery.
 
 ## How to verify
@@ -97,8 +97,8 @@ worktree on PYTHONPATH and DATABASE_URL=sqlite+aiosqlite://, RUN_INTEGRATION_TES
 - Latest focused addon check: `pytest tests/test_discovery_community.py -q` reports
   39 passed, 1 PostgreSQL-only skipped in 15.98s. Owned Ruff checks and mypy across
   21 community source files both pass after the image/helper and actor refinements.
-- Delivery: [PR #372](https://github.com/x812033727/travel_scanner/pull/372), draft/open
-  at reviewed head `fa280c3a528c7f9113045b867dd1239a8e599d00`.
+- Initial review: [PR #372](https://github.com/x812033727/travel_scanner/pull/372)
+  at head `fa280c3a528c7f9113045b867dd1239a8e599d00`; final delivery is recorded below.
 - Independently read [PR acceptance run 34295000368](https://github.com/x812033727/travel_scanner/actions/runs/34295000368)
   at that exact head: PostgreSQL transactional upgrade from empty through
   `0064_klook_affiliate_channels -> 0065_travel_discovery -> 0066_discovery_community`
@@ -109,4 +109,21 @@ worktree on PYTHONPATH and DATABASE_URL=sqlite+aiosqlite://, RUN_INTEGRATION_TES
   **18 passed (15.7s)** plus **2 passed (14.4s)** and both new migrations applied.
   These are fresh-install/full-stack receipts, not evidence that all API concurrency
   tests or the remaining workflows have completed. Parent owns final CI resolution.
+- Final delivery: PR #372 merged at `2026-09-09T01:05:18Z` as
+  `6eacb8210c2b456b65e870902f9a6f5ed5022629`, independently confirmed from GitHub and
+  `origin/main`. Exact-merge main runs all succeeded: CI `34297744944`, discovery
+  acceptance `34297744914`, and Planner UX `34297744926`.
+- The main API job runs with `RUN_INTEGRATION_TESTS=1`: **2259 passed, 4 skipped,
+  3 warnings in 325.09s**, including discovery/community and migration modules.
+  Main discovery acceptance again executed **18 passed (16.1s)** and unmocked
+  **2 passed (17.3s)** across desktop and Pixel 7, with upgrade through 0066.
+- Parent's production verification: all eight application services use merged
+  `6eacb821`; schema is `0066_discovery_community`; three consecutive readiness
+  checks passed. A 13,672,114-byte PostgreSQL backup has mode 0600 and a validated
+  `pg_restore` index. Original environment hash, database/Redis container IDs and
+  volumes were preserved. Discovery and community remain OFF; deployment did not
+  authorize activation, content imports, registration changes, or invitations.
+- This final task receipt is archived only after the user-authorized merge and
+  deployment. Production observations above were verified by the parent deployment
+  owner; this agent did not connect to production.
 - No commits, merges, paid calls, or production changes were performed by this task.

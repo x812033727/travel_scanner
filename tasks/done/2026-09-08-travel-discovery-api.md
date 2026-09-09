@@ -1,13 +1,13 @@
 ---
 id: 2026-09-08-travel-discovery-api
 title: Travel discovery search feed and explicit preferences API
-status: review
+status: done
 priority: P1
 area: api
 owner: codex-discovery-api
 claimed_at: 2026-09-09T00:11:48Z
 created_at: 2026-09-08T23:24:09Z
-completed_at:
+completed_at: 2026-09-09T01:19:47Z
 branch: codex/travel-discovery-community
 depends_on: []
 scope:
@@ -41,7 +41,7 @@ inference, automatic publication or production activation.
 - [x] Private versioned preferences, reset/dismissal, account-erasure helper and existing private collections.
 - [x] Separate guarded migration 0065 and metadata registration; no browsing-history or metrics tables.
 - [x] Scoped Ruff, mypy and SQLite/ASGI regression checks pass.
-- [ ] PostgreSQL migration cases run in database-enabled CI (not available locally).
+- [x] PostgreSQL migration cases run in database-enabled CI (not available locally).
 
 ## Steps
 
@@ -75,3 +75,6 @@ From apps/api with its directory on PYTHONPATH, using the sibling installed runt
 - Discovery community details now include the shared `public_media_refs` ID/alt/dimension projection after publication authorization. Storage keys/signed URLs remain excluded and media reads still reauthorize through the existing endpoint.
 - Follow-up verification: scoped Ruff passed; mypy discovery plus the three touched hotspot modules passed (12 files); combined hotspot-guides, hotspot-admin-guides, hotspot-AI-search, discovery-community, travel-discovery and discovery-migration pytest suites passed 117 tests with 3 PostgreSQL-only skips. `git diff --check` and `npm run check:tasks` passed (194 tasks). No live provider calls were made.
 - Review delivery: draft PR [#372](https://github.com/x812033727/travel_scanner/pull/372), source head `fa280c3a`. Parent integration evidence: full local API 2018 passed / 125 skipped (Unix deployment-script tests excluded on Windows), full Ruff/mypy passed (275 files), Linux discovery full-stack passed. PostgreSQL migration-suite completion remains tracked by the parent in PR CI. This task only updates its review record; parent owns the board generation and commits.
+- Final delivery: PR [#372](https://github.com/x812033727/travel_scanner/pull/372) was squash-merged as `6eacb8210c2b456b65e870902f9a6f5ed5022629`. Independently verified the exact merge-SHA main [CI run](https://github.com/x812033727/travel_scanner/actions/runs/34297744944): Ruff passed; mypy passed for 275 source files; schema checks 4 passed; Linux API 2259 passed / 4 skipped / 3 warnings with 74% coverage. `RUN_INTEGRATION_TESTS=1` was present and `tests/test_discovery_migration.py` reported all five cases passed, including both PostgreSQL migration paths.
+- Merge-SHA browser verification: Vitest 1069 passed across 155 files; isolated browser UI 282 passed; full-stack smoke 8 travel + 6 private-media/mail/community + 2 admin-domain cases passed. [Planner UX](https://github.com/x812033727/travel_scanner/actions/runs/34297744926) passed 22 cases; [discovery acceptance](https://github.com/x812033727/travel_scanner/actions/runs/34297744914) passed 18 desktop/Pixel 7 fixture and 2 unmocked cases. Containers passed; all three push workflows completed successfully.
+- Production deployment evidence supplied by the parent (the sole production operator): exact merged release deployed successfully across all eight services, schema at `0066`, and readiness passed three consecutive checks. Discovery and community remain OFF; environment and volumes were preserved. Pre-deployment backup was verified at 13,672,114 bytes with mode `600`. This task made no production or provider calls and does not represent deployment as feature activation.
