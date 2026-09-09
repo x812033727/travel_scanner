@@ -82,7 +82,7 @@ test("public idea → real login → saved/list → create trip → explicit add
     for(let i=0;i<12 && !(await page.locator(`[data-date="${day}"]`).count());i++) await page.getByRole("button",{name:"Next month",exact:true}).click();
     await page.locator(`[data-date="${day}"]`).click();
   }
-  await page.getByRole("button",{name:form.closeCalendar,exact:true}).click();
+  await expect(page.getByRole("button",{name:form.closeCalendar,exact:true})).toHaveCount(0);
   await page.getByRole("button",{name:form.submit,exact:true}).click();
   await expect(page).toHaveURL(/resume_trip=/);
   const tripId=new URL(page.url()).searchParams.get("resume_trip")!;
@@ -92,6 +92,8 @@ test("public idea → real login → saved/list → create trip → explicit add
   await plan.getByRole("button",{name:n.confirm,exact:true}).click();
   await expect(plan).toHaveCount(0);
   const trip=await json(page.request,"GET",`/trips/${tripId}`);
+  expect(trip.start_date).toBe(startDay);
+  expect(trip.end_date).toBe(endDay);
   expect(JSON.stringify(trip.items)).toContain(id);
   await page.goto("/en/explore/collections");await page.reload();
   await expect(page.getByRole("link",{name:title,exact:true})).toHaveCount(1);
