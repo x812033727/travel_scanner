@@ -14,7 +14,10 @@ beforeEach(() => {
 afterEach(() => { cleanup(); vi.useRealTimers(); vi.restoreAllMocks(); });
 
 function Guard({ enabled = true, request }: { enabled?: boolean; request: (proceed: () => void) => boolean }) {
-  useNavigationGuard(enabled, request); return <a href="/pricing">Plans</a>;
+  useNavigationGuard(enabled, request);
+  // Exercise document-level native-link interception independently of Next's router.
+  // eslint-disable-next-line @next/next/no-html-link-for-pages
+  return <a href="/pricing">Plans</a>;
 }
 
 describe("draft navigation guard", () => {

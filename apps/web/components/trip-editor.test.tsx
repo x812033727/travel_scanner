@@ -1738,7 +1738,7 @@ describe("trip editor explicit drafts", () => {
   });
 
   it("keeps the editor and prevents locale writes when language navigation is cancelled", async () => {
-    const fetchMock = vi.fn(async (_url: string, _init?: RequestInit) => response(trip)); vi.stubGlobal("fetch", fetchMock);
+    const fetchMock = vi.fn<(url: string, init?: RequestInit) => Promise<Response>>(async () => response(trip)); vi.stubGlobal("fetch", fetchMock);
     render(<TripEditor tripId={trip.id} />);
     const editor = await openStopEditor("淺草散步");
     fireEvent.change(within(editor).getByLabelText("安排名稱"), { target: { value: "尚未儲存" } });

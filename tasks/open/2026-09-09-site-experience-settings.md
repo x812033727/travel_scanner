@@ -47,6 +47,7 @@ scope:
   - apps/web/components/admin-site-pages-panel.test.tsx
   - apps/web/components/site-page-content.tsx
   - apps/web/components/site-information-page.tsx
+  - apps/web/components/site-information-page.test.tsx
   - apps/web/lib/admin-operations-copy.ts
   - apps/web/components/site-page-content.test.tsx
   - apps/web/components/site-navigation.test.tsx

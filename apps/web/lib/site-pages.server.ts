@@ -1,5 +1,12 @@
 import { cache } from "react";
-import { isSitePageDocument, type PublishedSitePage, type SitePagePublicState, type SitePageSlug } from "./site-pages";
+import { isSitePageDocument, sitePageLocales, type PublishedSitePage, type SitePageLocale, type SitePagePublicState, type SitePageSlug } from "./site-pages";
+
+// Public legal-page labels and empty/error states cannot become an alternate
+// publication channel through general UI-text overrides. Never fall back a locale.
+export async function getSitePageCopy(locale: string): Promise<typeof import("../messages/en/admin.json")["sitePages"]> {
+  if (!sitePageLocales.includes(locale as SitePageLocale)) throw new Error("Unsupported site-page locale");
+  return (await import(`../messages/${locale}/admin.json`)).default.sitePages;
+}
 
 export async function loadSitePage(slug: SitePageSlug, locale: string): Promise<SitePagePublicState> {
   const unavailable: SitePagePublicState = { slug, locale, status: "unavailable", document: null };
