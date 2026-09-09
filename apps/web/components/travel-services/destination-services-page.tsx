@@ -10,11 +10,11 @@ import {
   PUBLIC_DESTINATIONS,
   type Kind,
 } from "@/components/travel-services/options";
-import { Link } from "@/i18n/navigation";
 import { locales, type Locale } from "@/i18n/routing";
 import { serviceDiscoveryModules } from "@/lib/travel-service-discovery";
 
-type Params = { locale: Locale; destinationId: string };
+export type DestinationServicesParams = { locale: Locale; destinationId: string };
+type Params = DestinationServicesParams;
 type DestinationItem = { id: string; city: string; country: string; role: string };
 const SUPPORTED = new Set<string>([...PUBLIC_DESTINATIONS, ...CITIES]);
 
@@ -98,14 +98,14 @@ export default async function DestinationServices({
             ? destinations
             : PUBLIC_DESTINATIONS.map((id) => ({ id, city: id, country: "", role: "" })))
             .map((city) => (
-            <Link
+            <a
               key={city.id}
-              href={`/destinations/${city.id}/services`}
+              href={`/${locale}/destinations/${city.id}/services`}
               aria-current={city.id === destinationId ? "page" : undefined}
               className="flex min-h-11 items-center rounded-full border border-[var(--line)] px-4 text-sm aria-[current=page]:bg-[var(--teal-soft)]"
             >
               {city.city}
-            </Link>
+            </a>
           ))}
         </nav>
         {!catalogCities.length && <DestinationAffiliateOptions

@@ -4,6 +4,7 @@ from typing import Annotated, Any
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, Query
+from pydantic import ValidationError
 
 from app.admin.service import load_runtime_settings
 from app.auth.service import AdminUser, CurrentUser, cached_admin_capabilities
@@ -19,7 +20,7 @@ from app.travel_services.admin import (
 )
 from app.travel_services.imports import commit_import
 from app.travel_services.router import Session
-from app.travel_services.schemas import CsvInput, HotelConfigPatch
+from app.travel_services.schemas import CsvInput, HotelConfigPatch, Stay22Config
 from app.travel_services.service import fail
 
 router = APIRouter(prefix="/admin/hotels", tags=["admin hotels"])
@@ -96,6 +97,15 @@ async def patch_config(
             **data.get("hotel_quote_policies", {}),
             **patch.pop("hotel_quote_policies"),
         }
+    if "stay22" in patch:
+        # Older clients know only Allez settings. Their save must not erase the
+        # newer script mode/identity or reactivate an incomplete configuration.
+        merged_stay22 = {**data.get("stay22", {}), **patch.pop("stay22")}
+        try:
+            Stay22Config.model_validate(merged_stay22)
+        except ValidationError as exc:
+            raise fail("stay22_config_invalid") from exc
+        data["stay22"] = merged_stay22
     data.update(patch)
     if row:
         row.data = data

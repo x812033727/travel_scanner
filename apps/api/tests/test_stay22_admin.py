@@ -167,7 +167,7 @@ async def test_stay22_patch_is_versioned_audited_and_preserves_catalog(
     await hotel_admin.patch_config(
         HotelConfigPatch(version=5, stay22=ALLeZ), actor("operations"), session
     )
-    assert row.data["stay22"] == ALLeZ
+    assert row.data["stay22"] == {**ALLeZ, "integration_mode": "allez", "lma_id": None}
     assert row.data["future"] == "keep"
     assert row.data["enabled_kinds"] == ["hotel"]
     log = await session.scalar(select(AdminAuditLog))
