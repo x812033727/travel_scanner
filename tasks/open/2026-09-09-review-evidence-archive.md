@@ -108,12 +108,33 @@ still active and dirty and is intentionally excluded.
   New-head CI remains required. This checkpoint is not production revalidation,
   a new deployment, or approval to merge the newly created archival PR.
 
-## Final source integration
+## Initial PR source integration
 
 Normally integrated final main 98f8067b3664a956e44d0b6e9f372b27a22775e6 after
 the authorized #343 and #335 merges. Only the generated board conflicted.
 The same root owner also closes those two narrow integration tasks here using
 their actual verified-merge evidence; those metadata records are separate from
 the unchanged original review artifacts. No application behavior, CI configuration
-or old review evidence is edited by this archival PR. Keep the new PR unmerged
-pending the user's separate review of this large, historical evidence handoff.
+or old review evidence is edited by this archival PR. At this checkpoint, the
+new PR remained unmerged pending the user's separate review of this large,
+historical evidence handoff.
+
+## Authorized merge preparation after #365
+
+The user subsequently authorized merging #365 and #376, but not #377. The first
+PR was guard-merged as 3d88373caf5c6aab99399867112ed9944b30684c at
+2026-09-09T07:34:43Z after all 12 checks passed. Normally integrated that exact
+main into this branch; only the generated board conflicted and it was regenerated.
+The old #376 head 7b88b105 passed 12/12 checks, including one disclosed same-head
+Web rerun after an unchanged Escape-dialog test failed; this is not a test fix.
+The updated head requires fresh CI before the authorized guarded merge.
+
+An independent preflight again confirmed all 213 hotel, 15 catalog and 4 content
+source blobs unchanged, no runtime/CI/package/Compose changes, and no material
+from the still-active fourth worktree. The original #365 integration owner
+explicitly handed only its completion-record scope to root, so this PR also
+closes that narrow task without closing its two operational follow-ups.
+
+Do not execute archived operators, contact production, deploy, alter provider
+configuration, or merge/fix #377. Preserve historical qualified failures and
+no-replay boundaries. Verify the final head and merged-main checks separately.
