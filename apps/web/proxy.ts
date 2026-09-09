@@ -16,6 +16,9 @@ export default function proxy(request: NextRequest) {
   // read the nonce for the theme bootstrap script.
   request.headers.set("content-security-policy-report-only", policy);
   request.headers.set("x-nonce", nonce);
+  // Nested server layouts use this trusted request header to retain the exact
+  // in-app destination when an unauthenticated administrator is sent to login.
+  request.headers.set("x-travel-pathname", `${request.nextUrl.pathname}${request.nextUrl.search}`);
   const response = handleLocale(request);
   response.headers.set("Content-Security-Policy-Report-Only", policy);
   return response;

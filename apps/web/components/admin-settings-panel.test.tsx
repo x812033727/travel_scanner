@@ -1,7 +1,9 @@
 import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { AdminSettingsPanel } from "./admin-settings-panel";
+import { AdminOperationsProvider } from "./admin-operations-provider";
 import { klookAffiliateCopy } from "@/lib/klook-affiliate-copy";
+import type { AdminBootstrap } from "@/lib/admin-operations";
 
 const sessionIdentity = vi.hoisted(() => ({ user: null as { id: string; email: string; preferred_currency?: string } | null, key: undefined as object | undefined }));
 vi.mock("@/components/header-session", () => ({ useHeaderSession: () => ({ user: sessionIdentity.user, sessionIdentity: sessionIdentity.key ?? sessionIdentity.user }) }));
@@ -401,7 +403,13 @@ function savedBody(fetchMock: ReturnType<typeof vi.fn>) {
   return JSON.parse(String(request.body));
 }
 
-afterEach(() => { vi.unstubAllGlobals(); vi.restoreAllMocks(); sessionIdentity.user = null; sessionIdentity.key = undefined; });
+afterEach(() => {
+  vi.unstubAllGlobals();
+  vi.restoreAllMocks();
+  sessionIdentity.user = null;
+  sessionIdentity.key = undefined;
+  window.history.replaceState(null, "", "/");
+});
 
 describe("AdminSettingsPanel", () => {
   it("saves a direct Klook affiliate ID as text without requiring or calling a pricing API", async () => {
@@ -702,6 +710,56 @@ describe("AdminSettingsPanel", () => {
     expect(screen.queryByRole("heading", { name: "Google Maps" })).toBeNull();
     expect(screen.queryByRole("tablist", { name: "API 供應商設定分頁" })).toBeNull();
     expect(screen.getByRole("heading", { name: "最近管理紀錄" })).toBeTruthy();
+  });
+
+  it("restores provider, field focus and audit panel from Back/Forward URL state", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(
+      new Response(JSON.stringify(providerTabsSnapshot), { status: 200 }),
+    ));
+    window.history.replaceState(null, "", "/zh-TW/admin/settings?provider=google_maps&field=route_cache_ttl_seconds");
+    render(<AdminSettingsPanel scope="providers" />);
+    const timeout = await screen.findByLabelText(/^路線快取秒數/);
+    await waitFor(() => expect(document.activeElement).toBe(timeout));
+
+    window.history.pushState(null, "", "/zh-TW/admin/settings?provider=google_maps&field=google_maps_api_key");
+    window.dispatchEvent(new PopStateEvent("popstate"));
+    const key = screen.getByLabelText("伺服器 API Key");
+    await waitFor(() => expect(document.activeElement).toBe(key));
+
+    window.history.pushState(null, "", "/zh-TW/admin/settings?provider=__audit");
+    window.dispatchEvent(new PopStateEvent("popstate"));
+    await screen.findByRole("heading", { name: "最近管理紀錄" });
+
+    window.history.pushState(null, "", "/zh-TW/admin/settings");
+    window.dispatchEvent(new PopStateEvent("popstate"));
+    await screen.findByRole("heading", { name: "Google Maps" });
+    expect(screen.queryByRole("heading", { name: "最近管理紀錄" })).toBeNull();
+  });
+
+  it("keeps provider mutations disabled for a settings viewer", async () => {
+    const fetchMock = vi.fn().mockResolvedValue(
+      new Response(JSON.stringify(providerTabsSnapshot), { status: 200 }),
+    );
+    vi.stubGlobal("fetch", fetchMock);
+    const bootstrap: AdminBootstrap = {
+      admin_roles: ["viewer"],
+      admin_capabilities: ["settings.read"],
+      navigation: [],
+      pending_counts: {},
+      system_status: {},
+      environment: "test",
+      can_deploy: false,
+      can_manage_database: false,
+    };
+    render(<AdminOperationsProvider bootstrap={bootstrap}><AdminSettingsPanel scope="providers" /></AdminOperationsProvider>);
+    await screen.findByRole("heading", { name: "Google Maps" });
+    const save = screen.getByRole("button", { name: "儲存設定" }) as HTMLButtonElement;
+    const test = screen.getByRole("button", { name: "測試連線" }) as HTMLButtonElement;
+    expect(save.disabled).toBe(true);
+    expect(test.disabled).toBe(true);
+    fireEvent.click(save);
+    fireEvent.click(test);
+    expect(fetchMock.mock.calls.filter(([, init]) => init?.method && init.method !== "GET")).toHaveLength(0);
   });
 
   it("moves between categories and providers with the keyboard", async () => {

@@ -17,6 +17,9 @@ export type HeaderUser = {
   email: string;
   is_admin?: boolean;
   can_deploy?: boolean;
+  can_database_maintain?: boolean;
+  admin_roles?: string[];
+  admin_capabilities?: string[];
   preferred_locale?: string;
   preferred_currency?: string;
   has_password?: boolean;

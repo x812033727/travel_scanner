@@ -1556,6 +1556,47 @@ for _saved_locale in LOCALES:
     ERROR_DETAILS[_saved_locale].update(_SAVED_FLOW_ERRORS[_saved_locale])
 
 
+_ADMIN_AUTH_ERRORS: dict[Locale, dict[str, str]] = {
+    "en": {
+        "account_suspended": "This account is currently suspended.",
+        "admin_capability_required": "Your administrator role cannot perform this operation.",
+        "admin_step_up_required": "Enter your password again before performing this operation.",
+        "admin_step_up_scope_required": "Verify your password again for this specific operation.",
+        "admin_step_up_invalid": "Password verification has expired. Enter it again.",
+    },
+    "ja": {
+        "account_suspended": "このアカウントは現在停止されています。",
+        "admin_capability_required": "現在の管理者ロールではこの操作を実行できません。",
+        "admin_step_up_required": "この操作を行う前に、もう一度パスワードを入力してください。",
+        "admin_step_up_scope_required": "この操作のために、もう一度パスワードを確認してください。",
+        "admin_step_up_invalid": "パスワード確認の有効期限が切れました。もう一度入力してください。",
+    },
+    "ko": {
+        "account_suspended": "이 계정은 현재 정지되어 있습니다.",
+        "admin_capability_required": "현재 관리자 역할로는 이 작업을 수행할 수 없습니다.",
+        "admin_step_up_required": "이 작업을 수행하기 전에 비밀번호를 다시 입력하세요.",
+        "admin_step_up_scope_required": "이 작업에 대한 비밀번호를 다시 확인하세요.",
+        "admin_step_up_invalid": "비밀번호 확인이 만료되었습니다. 다시 입력하세요.",
+    },
+    "zh-TW": {
+        "account_suspended": "這個帳號目前已被停權。",
+        "admin_capability_required": "目前管理員角色沒有這項操作權限。",
+        "admin_step_up_required": "請重新輸入密碼後再執行此操作。",
+        "admin_step_up_scope_required": "請重新驗證這項操作的權限。",
+        "admin_step_up_invalid": "重新驗證已失效，請再輸入一次密碼。",
+    },
+    "zh-CN": {
+        "account_suspended": "这个账号目前已被停权。",
+        "admin_capability_required": "当前管理员角色没有这项操作权限。",
+        "admin_step_up_required": "请重新输入密码后再执行此操作。",
+        "admin_step_up_scope_required": "请重新验证这项操作的权限。",
+        "admin_step_up_invalid": "重新验证已失效，请再输入一次密码。",
+    },
+}
+for _admin_auth_locale in LOCALES:
+    ERROR_DETAILS[_admin_auth_locale].update(_ADMIN_AUTH_ERRORS[_admin_auth_locale])
+
+
 def request_locale(headers: object) -> Locale:
     getter = getattr(headers, "get", None)
     return normalize_locale(getter("x-travel-locale") if callable(getter) else None)

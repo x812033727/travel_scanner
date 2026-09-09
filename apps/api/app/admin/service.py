@@ -2010,7 +2010,7 @@ async def test_provider_connection(
             actor_user_id=actor.id,
             action="provider_connection_tested",
             target=provider,
-            metadata_json={"status": status, "latency_ms": latency_ms},
+            metadata_json={"result": status, "latency_ms": latency_ms},
         )
     )
     await session.commit()

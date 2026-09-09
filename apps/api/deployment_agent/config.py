@@ -2,13 +2,16 @@ import os
 from dataclasses import dataclass
 from pathlib import Path
 
+DEFAULT_SOCKET_PATH = Path("/run/travel-scanner-deployer/deployer.sock")
+DEFAULT_STATE_PATH = Path("/var/lib/travel-scanner-deployer/state.sqlite3")
+
 
 @dataclass(frozen=True)
 class AgentConfig:
     hmac_key: str
     github_token: str
-    socket_path: Path = Path("/run/travel-scanner-deployer/deployer.sock")
-    state_path: Path = Path("/var/lib/travel-scanner-deployer/state.sqlite3")
+    socket_path: Path = DEFAULT_SOCKET_PATH
+    state_path: Path = DEFAULT_STATE_PATH
     lock_path: Path = Path("/run/travel-scanner-deployer/deploy.lock")
     mirror_path: Path = Path("/srv/travel-scanner/repository.git")
     releases_path: Path = Path("/srv/travel-scanner/releases")
@@ -34,15 +37,15 @@ class AgentConfig:
             raise RuntimeError("DEPLOY_AGENT_HMAC_KEY must contain at least 32 characters")
         if not token:
             raise RuntimeError("DEPLOY_AGENT_GITHUB_TOKEN is required")
+        socket_path = Path(os.environ.get("DEPLOY_AGENT_SOCKET", str(DEFAULT_SOCKET_PATH)))
+        state_path = Path(os.environ.get("DEPLOY_AGENT_STATE", str(DEFAULT_STATE_PATH)))
+        if socket_path != DEFAULT_SOCKET_PATH:
+            raise RuntimeError(f"DEPLOY_AGENT_SOCKET is fixed by systemd at {DEFAULT_SOCKET_PATH}")
+        if state_path != DEFAULT_STATE_PATH:
+            raise RuntimeError(f"DEPLOY_AGENT_STATE is fixed by systemd at {DEFAULT_STATE_PATH}")
         return cls(
             hmac_key=key,
             github_token=token,
-            socket_path=Path(
-                os.environ.get("DEPLOY_AGENT_SOCKET", "/run/travel-scanner-deployer/deployer.sock")
-            ),
-            state_path=Path(
-                os.environ.get(
-                    "DEPLOY_AGENT_STATE", "/var/lib/travel-scanner-deployer/state.sqlite3"
-                )
-            ),
+            socket_path=socket_path,
+            state_path=state_path,
         )

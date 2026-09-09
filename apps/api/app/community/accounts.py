@@ -28,7 +28,17 @@ def smtp_ready() -> bool:
     return bool(settings.community_smtp_host and settings.community_mail_from)
 
 
-async def request_mail(session: AsyncSession, user: User, purpose: str, locale: str) -> None:
+async def request_mail(
+    session: AsyncSession,
+    user: User,
+    purpose: str,
+    locale: str,
+    *,
+    commit: bool = True,
+    enqueue: bool = True,
+) -> None:
+    if enqueue and not commit:
+        raise ValueError("enqueue requires commit")
     if not smtp_ready():
         raise fail("community_mail_unavailable", 503)
     # Account cleanup and token consumption take the user before token rows.
@@ -45,7 +55,6 @@ async def request_mail(session: AsyncSession, user: User, purpose: str, locale: 
         or not current.is_active
         or current.deleted_at is not None
         or current.auth_version != requested_version
-        or (purpose == "reset" and not current.password_hash)
     ):
         # Keep the recovery response non-enumerating if the account changed
         # while this request waited; never recreate mail PII after erasure.
@@ -88,10 +97,12 @@ async def request_mail(session: AsyncSession, user: User, purpose: str, locale: 
             ),
         )
     )
-    await session.commit()
-    from app.community.jobs import enqueue_jobs
+    if commit:
+        await session.commit()
+    if enqueue:
+        from app.community.jobs import enqueue_jobs
 
-    enqueue_jobs()
+        enqueue_jobs()
 
 
 async def consume(session: AsyncSession, token: str, purpose: str) -> tuple[AccountToken, User]:
@@ -168,7 +179,10 @@ async def forgot_password(
         "reset-email", str(payload.email).lower(), limit=3, window_seconds=3600
     )
     user = await find_user_by_email(session, str(payload.email))
-    if user is not None and user.is_active and user.password_hash:
+    # Password recovery is also the authenticated-email path for a social-only
+    # account to establish its first local password. The public response stays
+    # indistinguishable for missing, inactive and existing accounts.
+    if user is not None and user.is_active:
         await request_mail(session, user, "reset", payload.locale)
     # Never disclose whether an account exists or uses a password.
     return {"accepted": True}

@@ -26,11 +26,13 @@ export function QuotePolicies({
   providers,
   brands,
   onChange,
+  disabled = false,
 }: {
   policies: Record<string, QuotePolicy>;
   providers: Record<string, { adapter_available: boolean }>;
   brands: Record<string, { name: string }>;
   onChange: (value: Record<string, QuotePolicy>) => void;
+  disabled?: boolean;
 }) {
   const t = useTranslations("travelServices");
   return (
@@ -46,6 +48,7 @@ export function QuotePolicies({
         return (
           <fieldset
             key={code}
+            disabled={disabled}
             className="mb-4 min-w-0 space-y-3 rounded-xl border border-[var(--line)] p-3"
           >
             <legend className="px-2 font-semibold">

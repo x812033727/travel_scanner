@@ -1,3 +1,4 @@
+import hashlib
 import json
 import os
 import re
@@ -48,18 +49,24 @@ class CommandRunner:
         env: Mapping[str, str] | None = None,
         timeout: int = 900,
         output_path: Path | None = None,
+        input_path: Path | None = None,
     ) -> str:
         stdout: Any = subprocess.PIPE
-        handle = None
+        output_handle = None
+        input_handle = None
         if output_path is not None:
-            handle = output_path.open("wb")
-            stdout = handle
+            output_handle = output_path.open("wb")
+            stdout = output_handle
+        stdin: Any = subprocess.DEVNULL
+        if input_path is not None:
+            input_handle = input_path.open("rb")
+            stdin = input_handle
         try:
             completed = subprocess.run(
                 list(args),
                 cwd=cwd,
                 env=dict(env) if env else None,
-                stdin=subprocess.DEVNULL,
+                stdin=stdin,
                 stdout=stdout,
                 stderr=subprocess.PIPE,
                 timeout=timeout,
@@ -67,8 +74,10 @@ class CommandRunner:
                 shell=False,
             )
         finally:
-            if handle:
-                handle.close()
+            if output_handle:
+                output_handle.close()
+            if input_handle:
+                input_handle.close()
         if completed.returncode:
             stderr = completed.stderr.decode(errors="replace") if completed.stderr else ""
             raise CommandError(sanitize(stderr) or f"command exited with {completed.returncode}")
@@ -245,6 +254,10 @@ class DeploymentExecutor:
                 "pg_dump",
                 ["docker", "exec", postgres_container, "pg_dump", "--version"],
             ),
+            (
+                "pg_restore",
+                ["docker", "exec", postgres_container, "pg_restore", "--version"],
+            ),
         ):
             try:
                 self.runner.run(command, timeout=30)
@@ -288,7 +301,6 @@ class DeploymentExecutor:
             {
                 "RELEASE_SHA": sha,
                 "RUNTIME_ENV_FILE": str(self.config.runtime_env_path),
-                "DEPLOY_AGENT_SOCKET_DIR": str(self.config.socket_path.parent),
                 "COMPOSE_PROJECT_NAME": self.config.project_name,
             }
         )
@@ -313,9 +325,7 @@ class DeploymentExecutor:
             "XDG_RUNTIME_DIR",
             "SYSTEMROOT",
         )
-        environment = {
-            name: os.environ[name] for name in inherited_names if name in os.environ
-        }
+        environment = {name: os.environ[name] for name in inherited_names if name in os.environ}
         for raw_line in self.config.runtime_env_path.read_text(encoding="utf-8").splitlines():
             line = raw_line.strip()
             if not line or line.startswith("#") or "=" not in line:
@@ -345,9 +355,9 @@ class DeploymentExecutor:
         return release
 
     def _backup(self, release: Path, sha: str) -> str:
-        self.config.backup_path.mkdir(parents=True, exist_ok=True)
-        name = f"travel-scanner-{datetime.now(UTC).strftime('%Y%m%dT%H%M%SZ')}-{sha[:7]}.dump"
-        path = self.config.backup_path / name
+        return str(self._create_verified_backup(release, sha)["backup_name"])
+
+    def _database_environment(self) -> dict[str, str]:
         environment = self._runtime_environment()
         environment.update(
             {
@@ -355,28 +365,320 @@ class DeploymentExecutor:
                 "COMPOSE_PROJECT_NAME": self.config.project_name,
             }
         )
-        self.runner.run(
-            [
-                "docker",
-                "compose",
-                "-f",
-                "docker-compose.prod.yml",
+        return environment
+
+    def _database_compose_command(self, *args: str) -> list[str]:
+        return ["docker", "compose", "-f", "docker-compose.prod.yml", *args]
+
+    def _schema_revision(self, release: Path, environment: Mapping[str, str]) -> str:
+        revision = self.runner.run(
+            self._database_compose_command(
                 "exec",
                 "-T",
                 "postgres",
                 "sh",
                 "-c",
-                'exec pg_dump -U "$POSTGRES_USER" -d "$POSTGRES_DB" -Fc',
-            ],
+                'exec psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" '
+                "-v ON_ERROR_STOP=1 -Atqc 'SELECT version_num FROM alembic_version LIMIT 1'",
+            ),
             cwd=release,
             env=environment,
-            timeout=600,
-            output_path=path,
+            timeout=60,
+        ).strip()
+        if not revision or len(revision) > 64 or not re.fullmatch(r"[A-Za-z0-9_.-]+", revision):
+            raise CommandError("database schema revision could not be verified")
+        return revision
+
+    def _verify_backup(
+        self,
+        release: Path,
+        path: Path,
+        environment: Mapping[str, str],
+    ) -> None:
+        self.runner.run(
+            self._database_compose_command(
+                "exec",
+                "-T",
+                "postgres",
+                "pg_restore",
+                "--list",
+            ),
+            cwd=release,
+            env=environment,
+            timeout=300,
+            input_path=path,
         )
-        if not path.is_file() or path.stat().st_size == 0:
-            raise CommandError("database backup is empty")
+
+    @staticmethod
+    def _checksum(path: Path) -> str:
+        digest = hashlib.sha256()
+        with path.open("rb") as handle:
+            for block in iter(lambda: handle.read(1024 * 1024), b""):
+                digest.update(block)
+        return digest.hexdigest()
+
+    def _create_verified_backup(
+        self,
+        release: Path,
+        sha: str,
+        *,
+        operation_id: str | None = None,
+    ) -> dict[str, str | int]:
+        self.config.backup_path.mkdir(parents=True, exist_ok=True)
+        operation_suffix = f"-{operation_id[:8]}" if operation_id else ""
+        name = (
+            f"travel-scanner-{datetime.now(UTC).strftime('%Y%m%dT%H%M%SZ')}"
+            f"-{sha[:7]}{operation_suffix}.dump"
+        )
+        path = self.config.backup_path / name
+        partial = path.with_suffix(".dump.partial")
+        environment = self._database_environment()
+        revision = self._schema_revision(release, environment)
+        try:
+            self.runner.run(
+                self._database_compose_command(
+                    "exec",
+                    "-T",
+                    "postgres",
+                    "sh",
+                    "-c",
+                    'exec pg_dump -U "$POSTGRES_USER" -d "$POSTGRES_DB" -Fc',
+                ),
+                cwd=release,
+                env=environment,
+                timeout=600,
+                output_path=partial,
+            )
+            if not partial.is_file() or partial.stat().st_size == 0:
+                raise CommandError("database backup is empty")
+            self._verify_backup(release, partial, environment)
+            checksum = self._checksum(partial)
+            size_bytes = partial.stat().st_size
+            partial.replace(path)
+        except Exception:
+            if partial.exists() and partial.resolve().parent == self.config.backup_path.resolve():
+                partial.unlink()
+            raise
+        result: dict[str, str | int] = {
+            "backup_name": name,
+            "checksum_sha256": checksum,
+            "size_bytes": size_bytes,
+            "schema_revision": revision,
+            "release_sha": sha,
+        }
+        try:
+            self.store.record_verified_backup(
+                backup_name=name,
+                checksum_sha256=checksum,
+                size_bytes=size_bytes,
+                schema_revision=revision,
+                release_sha=sha,
+                source="manual" if operation_id else "deployment",
+                source_job_id=operation_id,
+                verified_at=now_iso(),
+            )
+        except Exception:
+            # A file without durable verification metadata must never appear as a
+            # successful catalog entry. Roll the just-created artifact back too.
+            if path.exists() and path.resolve().parent == self.config.backup_path.resolve():
+                path.unlink()
+            raise
         self._rotate_backups()
-        return name
+        retained = {
+            item.name
+            for item in self.config.backup_path.glob("travel-scanner-*.dump")
+            if item.is_file() and item.resolve().parent == self.config.backup_path.resolve()
+        }
+        self.store.prune_verified_backups(retained)
+        return result
+
+    def _verified_backup_catalog(self) -> list[dict[str, Any]]:
+        retained = {
+            item.name
+            for item in self.config.backup_path.glob("travel-scanner-*.dump")
+            if item.is_file() and item.resolve().parent == self.config.backup_path.resolve()
+        }
+        self.store.prune_verified_backups(retained)
+        return [
+            item
+            for item in self.store.list_verified_backups(self.config.backup_retention)
+            if item["backup_name"] in retained
+        ]
+
+    def database_overview(self) -> dict[str, Any]:
+        checks: list[dict[str, str]] = []
+        active = self.store.active_database_job()
+        release_sha = self._current_sha()
+        release = self.config.releases_path / release_sha if release_sha else None
+        if release is None or not (release / "docker-compose.prod.yml").is_file():
+            checks.append(
+                {
+                    "name": "current_release",
+                    "status": "failed",
+                    "detail": "找不到可用的 current release",
+                }
+            )
+        else:
+            checks.append({"name": "current_release", "status": "ok", "detail": release_sha or ""})
+            try:
+                environment = self._database_environment()
+                commands = (
+                    (
+                        "database",
+                        self._database_compose_command(
+                            "exec",
+                            "-T",
+                            "postgres",
+                            "sh",
+                            "-c",
+                            'exec pg_isready -U "$POSTGRES_USER" -d "$POSTGRES_DB"',
+                        ),
+                    ),
+                    (
+                        "pg_dump",
+                        self._database_compose_command(
+                            "exec", "-T", "postgres", "pg_dump", "--version"
+                        ),
+                    ),
+                    (
+                        "pg_restore",
+                        self._database_compose_command(
+                            "exec", "-T", "postgres", "pg_restore", "--version"
+                        ),
+                    ),
+                )
+                for name, command in commands:
+                    try:
+                        self.runner.run(command, cwd=release, env=environment, timeout=30)
+                        checks.append({"name": name, "status": "ok", "detail": "可用"})
+                    except CommandError:
+                        checks.append({"name": name, "status": "failed", "detail": "無法使用"})
+            except CommandError as exc:
+                checks.append(
+                    {
+                        "name": "runtime_env",
+                        "status": "failed",
+                        "detail": sanitize(str(exc)),
+                    }
+                )
+        try:
+            free = shutil.disk_usage(self.config.backup_path.parent).free
+            checks.append(
+                {
+                    "name": "backup_disk",
+                    "status": "ok" if free >= self.config.min_free_bytes else "failed",
+                    "detail": f"可用空間 {free // (1024**3)} GiB",
+                }
+            )
+        except OSError:
+            checks.append({"name": "backup_disk", "status": "failed", "detail": "無法讀取備份空間"})
+        return {
+            "connected": True,
+            "available": all(item["status"] != "failed" for item in checks),
+            "release_sha": release_sha,
+            "checks": checks,
+            "active_job": active,
+            "backups": self._verified_backup_catalog(),
+        }
+
+    def _analyze(self, release: Path) -> dict[str, str]:
+        environment = self._database_environment()
+        revision = self._schema_revision(release, environment)
+        self.runner.run(
+            self._database_compose_command(
+                "exec",
+                "-T",
+                "postgres",
+                "sh",
+                "-c",
+                'exec psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" '
+                "-v ON_ERROR_STOP=1 -c 'ANALYZE;'",
+            ),
+            cwd=release,
+            env=environment,
+            timeout=900,
+        )
+        return {"schema_revision": revision}
+
+    def database_operation(self, job_id: str, action: str) -> None:
+        lock_descriptor = os.open(self.config.lock_path, os.O_CREAT | os.O_RDWR, 0o660)
+        try:
+            import fcntl
+
+            fcntl.flock(  # type: ignore[attr-defined]
+                lock_descriptor,
+                fcntl.LOCK_EX | fcntl.LOCK_NB,  # type: ignore[attr-defined]
+            )
+        except (ImportError, BlockingIOError):
+            os.close(lock_descriptor)
+            self.store.update_database_job(
+                job_id,
+                status="failed",
+                failure_code="database_operation_busy",
+                failure_detail="another host operation holds the lock",
+                finished_at=now_iso(),
+            )
+            self.store.database_event(job_id, "failed", "另一個部署或資料庫工作仍持有鎖定")
+            return
+        try:
+            self._database_operation_locked(job_id, action)
+        finally:
+            fcntl.flock(  # type: ignore[attr-defined]
+                lock_descriptor,
+                fcntl.LOCK_UN,  # type: ignore[attr-defined]
+            )
+            os.close(lock_descriptor)
+
+    def _database_operation_locked(self, job_id: str, action: str) -> None:
+        self.store.update_database_job(job_id, status="running", started_at=now_iso())
+        self.store.database_event(
+            job_id,
+            "running",
+            "正在建立並驗證 PostgreSQL 備份" if action == "backup" else "正在執行受控 ANALYZE",
+        )
+        try:
+            sha = self._current_sha()
+            if not sha:
+                raise CommandError("current release is not initialized")
+            release = self.config.releases_path / sha
+            if not (release / "docker-compose.prod.yml").is_file():
+                raise CommandError("current release files are unavailable")
+            if action == "backup":
+                result = self._create_verified_backup(release, sha, operation_id=job_id)
+                self.store.update_database_job(
+                    job_id,
+                    status="succeeded",
+                    finished_at=now_iso(),
+                    **result,
+                )
+                self.store.database_event(
+                    job_id, "succeeded", "備份完成且已通過 pg_restore 目錄驗證"
+                )
+                return
+            if action == "analyze":
+                analyze_result = self._analyze(release)
+                self.store.update_database_job(
+                    job_id,
+                    status="succeeded",
+                    release_sha=sha,
+                    finished_at=now_iso(),
+                    **analyze_result,
+                )
+                self.store.database_event(job_id, "succeeded", "ANALYZE 已完成")
+                return
+            raise CommandError("unsupported database operation")
+        except Exception as exc:
+            detail = sanitize(str(exc)) or "database operation failed"
+            self.store.update_database_job(
+                job_id,
+                status="failed",
+                failure_code=(
+                    "database_backup_failed" if action == "backup" else "database_analyze_failed"
+                ),
+                failure_detail=detail,
+                finished_at=now_iso(),
+            )
+            self.store.database_event(job_id, "failed", detail)
 
     def _rotate_backups(self) -> None:
         backups = sorted(
@@ -465,7 +767,8 @@ class DeploymentExecutor:
             self._deploy_locked(job_id, expected_sha)
         finally:
             fcntl.flock(  # type: ignore[attr-defined]
-                lock_descriptor, fcntl.LOCK_UN  # type: ignore[attr-defined]
+                lock_descriptor,
+                fcntl.LOCK_UN,  # type: ignore[attr-defined]
             )
             os.close(lock_descriptor)
 
@@ -527,6 +830,10 @@ class DeploymentExecutor:
             failure_code = "deployment_backup_failed"
             self._stage(job_id, "backing_up", "正在建立 PostgreSQL 備份")
             backup_name = self._backup(release, target)
+            # `_backup` remains an override seam for the fake deployment runner.
+            # The production implementation has already durably catalogued the
+            # verified artifact, so associate it with this deployment here.
+            self.store.attach_verified_backup_to_job(backup_name, job_id)
             self.store.update(job_id, backup_name=backup_name)
             failure_code = "deployment_migration_failed"
             self._stage(job_id, "migrating", "正在套用向前相容資料庫 migration")

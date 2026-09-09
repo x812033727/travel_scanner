@@ -14,7 +14,7 @@ from app.deployments.agent import DeploymentAgentClient
 from app.deployments.schemas import AgentCreateResponse, AgentOverview, CommitSummary
 from app.infra import get_redis
 from app.main import app
-from app.models import AdminAuditLog, DeploymentRun, User
+from app.models import AdminAuditLog, AdminRoleAssignment, DeploymentRun, User
 
 pytestmark = pytest.mark.skipif(
     os.getenv("RUN_INTEGRATION_TESTS") != "1",
@@ -65,9 +65,7 @@ async def test_deployment_requires_allowlist_reauth_confirmation_and_is_idempote
     monkeypatch.setattr(DeploymentAgentClient, "overview", overview_mock)
     monkeypatch.setattr(DeploymentAgentClient, "create", create_mock)
     try:
-        async with AsyncClient(
-            transport=ASGITransport(app=app), base_url="http://test"
-        ) as client:
+        async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
             registration = await client.post(
                 "/api/v1/auth/register",
                 json={"email": email, "password": password},
@@ -81,16 +79,21 @@ async def test_deployment_requires_allowlist_reauth_confirmation_and_is_idempote
             async with SessionFactory() as session:
                 user = await session.get(User, user_id)
                 assert user is not None
-                user.is_admin = True
+                session.add(
+                    AdminRoleAssignment(
+                        user_id=user.id,
+                        role="deployer",
+                        granted_by_user_id=None,
+                        source="manual",
+                    )
+                )
                 await session.commit()
 
             me = await client.get("/api/v1/auth/me", headers=headers)
             assert me.status_code == 200
             assert me.json()["can_deploy"] is True
 
-            overview = await client.get(
-                "/api/v1/admin/deployments/overview", headers=headers
-            )
+            overview = await client.get("/api/v1/admin/deployments/overview", headers=headers)
             assert overview.status_code == 200
             assert overview.json()["target_sha"] == target
 

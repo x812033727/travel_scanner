@@ -7,10 +7,28 @@ from app.admin import dashboard_router
 
 @pytest.mark.asyncio
 async def test_dashboard_counts_every_pending_catalog_type(monkeypatch: pytest.MonkeyPatch) -> None:
-    count = AsyncMock(
-        side_effect=[1, 984, 124, 87, 13, 245, 133, 0, 427, 1200, 150, 600, 41, 32, 5, 2]
+    counts = {
+        "users": 1,
+        "hotspots_public": 984,
+        "hotspots_pending": 124,
+        "foods_public": 87,
+        "foods_pending": 13,
+        "merchants_pending": 245,
+        "merchants_missing_area": 133,
+        "merchants_missing_category": 0,
+        "guides_pending": 427,
+        "hotspots_total": 1200,
+        "foods_total": 150,
+        "merchants_total": 600,
+        "hotspots_missing_location": 41,
+        "hotels_total": 32,
+        "hotels_pending": 5,
+        "hotels_without_options": 2,
+    }
+    dashboard_counts = AsyncMock(
+        return_value=counts
     )
-    monkeypatch.setattr(dashboard_router, "_count", count)
+    monkeypatch.setattr(dashboard_router, "_dashboard_counts", dashboard_counts)
     monkeypatch.setattr(dashboard_router, "can_deploy_user", lambda _user: False)
 
     result = await dashboard_router.dashboard(object(), object())  # type: ignore[arg-type]
@@ -26,8 +44,4 @@ async def test_dashboard_counts_every_pending_catalog_type(monkeypatch: pytest.M
     }
     assert result["counts"]["hotels_total"] == 32
     assert result["counts"]["hotels_pending"] == 5
-    # Every hotel metric must carry a hotel-only SQL predicate, not a mixed-service count.
-    for call in count.call_args_list[-3:]:
-        assert str(call.args[2].compile(compile_kwargs={"literal_binds": True})) == (
-            "travel_service_products.kind = 'hotel'"
-        )
+    dashboard_counts.assert_awaited_once()

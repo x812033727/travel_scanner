@@ -7,14 +7,19 @@ import time
 from http import HTTPStatus
 from pathlib import Path
 from typing import cast
+from unittest.mock import AsyncMock
 from uuid import uuid4
 
 import pytest
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.service import can_deploy_user
 from app.config import Settings, get_settings
-from app.models import User
-from deployment_agent.config import AgentConfig
+from app.deployments import service as deployment_service
+from app.deployments.schemas import AgentCreateResponse, DeploymentCreateRequest, DeploymentOverview
+from app.models import AdminAuditLog, DeploymentRun, User
+from app.problems import AppError
+from deployment_agent.config import DEFAULT_SOCKET_PATH, DEFAULT_STATE_PATH, AgentConfig
 from deployment_agent.executor import APPLICATION_SERVICES, CommandError, DeploymentExecutor
 from deployment_agent.security import sanitize, verify_request
 from deployment_agent.server import AgentApplication, make_handler
@@ -35,6 +40,57 @@ def config(tmp_path: Path) -> AgentConfig:
     )
 
 
+@pytest.mark.parametrize(
+    ("name", "value"),
+    [
+        ("DEPLOY_AGENT_SOCKET", "/tmp/custom-deployer.sock"),
+        ("DEPLOY_AGENT_STATE", "/tmp/custom-deployer.sqlite3"),
+    ],
+)
+def test_agent_environment_rejects_paths_not_supported_by_systemd(
+    monkeypatch: pytest.MonkeyPatch, name: str, value: str
+) -> None:
+    monkeypatch.setenv("DEPLOY_AGENT_HMAC_KEY", "x" * 32)
+    monkeypatch.setenv("DEPLOY_AGENT_GITHUB_TOKEN", "read-only-token")
+    monkeypatch.setenv("DEPLOY_AGENT_SOCKET", str(DEFAULT_SOCKET_PATH))
+    monkeypatch.setenv("DEPLOY_AGENT_STATE", str(DEFAULT_STATE_PATH))
+    monkeypatch.setenv(name, value)
+
+    with pytest.raises(RuntimeError, match=name):
+        AgentConfig.from_env()
+
+
+def test_agent_environment_accepts_only_the_packaged_paths(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setenv("DEPLOY_AGENT_HMAC_KEY", "x" * 32)
+    monkeypatch.setenv("DEPLOY_AGENT_GITHUB_TOKEN", "read-only-token")
+    monkeypatch.delenv("DEPLOY_AGENT_SOCKET", raising=False)
+    monkeypatch.delenv("DEPLOY_AGENT_STATE", raising=False)
+
+    selected = AgentConfig.from_env()
+
+    assert selected.socket_path == DEFAULT_SOCKET_PATH
+    assert selected.state_path == DEFAULT_STATE_PATH
+
+
+def test_packaged_agent_paths_match_systemd_and_compose() -> None:
+    repository = Path(__file__).resolve().parents[3]
+    unit = (repository / "ops" / "deployer" / "travel-scanner-deployer.service").read_text(
+        encoding="utf-8"
+    )
+    compose = (repository / "docker-compose.prod.yml").read_text(encoding="utf-8")
+
+    socket_path = DEFAULT_SOCKET_PATH.as_posix()
+    socket_parent = DEFAULT_SOCKET_PATH.parent.as_posix()
+    state_parent = DEFAULT_STATE_PATH.parent.as_posix()
+    assert socket_path in unit
+    assert socket_parent in unit
+    assert state_parent in unit
+    assert f"{socket_parent}:{socket_parent}:ro" in compose
+    assert "DEPLOY_AGENT_SOCKET_DIR" not in compose
+
+
 def test_deploy_permission_requires_feature_admin_and_allowlist(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
@@ -45,11 +101,112 @@ def test_deploy_permission_requires_feature_admin_and_allowlist(
     deploy_admin = User(email="deploy@example.com", password_hash="unused", is_admin=True)
     ordinary_admin = User(email="admin@example.com", password_hash="unused", is_admin=True)
     ordinary_user = User(email="deploy@example.com", password_hash="unused", is_admin=False)
-    assert can_deploy_user(deploy_admin) is True
+    assert can_deploy_user(deploy_admin) is False
+    assert can_deploy_user(deploy_admin, roles={"deployer"}) is True
     assert can_deploy_user(ordinary_admin) is False
     assert can_deploy_user(ordinary_user) is False
     monkeypatch.setattr(settings, "deployments_enabled", False)
-    assert can_deploy_user(deploy_admin) is False
+    assert can_deploy_user(deploy_admin, roles={"deployer"}) is False
+
+
+@pytest.mark.asyncio
+async def test_deployment_is_rejected_while_database_maintenance_is_active(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    session = AsyncMock()
+    session.scalar.side_effect = [None, uuid4()]
+    actor = User(id=uuid4(), email="deploy@example.com", password_hash="hash")
+    monkeypatch.setattr(deployment_service, "verify_password", lambda *_args: True)
+    monkeypatch.setattr(
+        deployment_service,
+        "deployment_overview",
+        AsyncMock(
+            return_value=DeploymentOverview(
+                enabled=True,
+                agent_connected=True,
+                deployed_sha="a" * 40,
+                target_sha="b" * 40,
+                update_available=True,
+                ci_status="success",
+            )
+        ),
+    )
+
+    with pytest.raises(AppError) as caught:
+        await deployment_service.create_deployment(
+            session,
+            actor,
+            DeploymentCreateRequest(
+                expected_target_sha="b" * 40,
+                password="current-password",
+                confirmation="DEPLOY bbbbbbb",
+            ),
+            "deployment-during-database-operation",
+        )
+
+    assert caught.value.code == "deployment_blocked_by_database_operation"
+
+
+@pytest.mark.asyncio
+async def test_deployment_job_id_mismatch_terminalizes_the_active_run(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    session = AsyncMock(spec=AsyncSession)
+    session.scalar.side_effect = [None, None]
+    actor = User(id=uuid4(), email="deploy@example.com", password_hash="hash")
+    monkeypatch.setattr(deployment_service, "verify_password", lambda *_args: True)
+    monkeypatch.setattr(
+        deployment_service,
+        "deployment_overview",
+        AsyncMock(
+            return_value=DeploymentOverview(
+                enabled=True,
+                agent_connected=True,
+                deployed_sha="a" * 40,
+                target_sha="b" * 40,
+                update_available=True,
+                ci_status="success",
+            )
+        ),
+    )
+    monkeypatch.setattr(
+        deployment_service.DeploymentAgentClient,
+        "create",
+        AsyncMock(return_value=AgentCreateResponse(job_id=str(uuid4()), status="preflight")),
+    )
+
+    with pytest.raises(AppError) as caught:
+        await deployment_service.create_deployment(
+            session,
+            actor,
+            DeploymentCreateRequest(
+                expected_target_sha="b" * 40,
+                password="current-password",
+                confirmation="DEPLOY bbbbbbb",
+            ),
+            "deployment-invalid-agent-job",
+        )
+
+    run = next(
+        call.args[0]
+        for call in session.add.call_args_list
+        if isinstance(call.args[0], DeploymentRun)
+    )
+    audits = [
+        call.args[0]
+        for call in session.add.call_args_list
+        if isinstance(call.args[0], AdminAuditLog)
+    ]
+    assert caught.value.code == "deployment_agent_invalid_response"
+    assert run.status == "failed"
+    assert run.failure_code == "deployment_agent_invalid_response"
+    assert run.finished_at is not None
+    assert any(
+        audit.action == "deployment.failed"
+        and audit.metadata_json.get("failure_code") == "deployment_agent_invalid_response"
+        for audit in audits
+    )
+    assert session.commit.await_count == 2
 
 
 @pytest.mark.parametrize(
@@ -57,7 +214,7 @@ def test_deploy_permission_requires_feature_admin_and_allowlist(
     [
         {"deploy_admin_emails": ""},
         {"deploy_agent_hmac_key": "short"},
-        {"deploy_agent_socket": "relative.sock"},
+        {"deploy_agent_socket": "/tmp/custom-deployer.sock"},
     ],
 )
 def test_enabled_production_deployments_require_secure_configuration(
@@ -90,9 +247,7 @@ def test_agent_hmac_is_body_bound_and_nonce_is_single_use(tmp_path: Path) -> Non
     digest = hashlib.sha256(body).hexdigest()
     message = f"{timestamp}\n{nonce}\nPOST\n/v1/deployments\n{digest}".encode()
     signature = hmac.new(key.encode(), message, hashlib.sha256).hexdigest()
-    assert verify_request(
-        store, key, "POST", "/v1/deployments", body, timestamp, nonce, signature
-    )
+    assert verify_request(store, key, "POST", "/v1/deployments", body, timestamp, nonce, signature)
     assert not verify_request(
         store, key, "POST", "/v1/deployments", body, timestamp, nonce, signature
     )
@@ -219,9 +374,7 @@ def test_interrupted_agent_rechecks_an_already_switched_release(tmp_path: Path) 
     unhealthy.current_sha = "b" * 40
     unhealthy.health_results = [False]
     unhealthy._deploy_locked(unhealthy_id, "b" * 40)
-    assert unhealthy_store.get_job(unhealthy_id)["status"] == (
-        "manual_intervention_required"
-    )
+    assert unhealthy_store.get_job(unhealthy_id)["status"] == ("manual_intervention_required")
 
 
 def test_sensitive_agent_messages_are_redacted() -> None:

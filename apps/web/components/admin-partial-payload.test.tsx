@@ -22,10 +22,10 @@ describe("admin panels against a partial payload", () => {
     await waitFor(() => expect(vi.mocked(fetch)).toHaveBeenCalled());
     // Each domain remains usable and missing counts are unknown, not false zeros.
     for (const [name, target] of [["景點", "hotspots"], ["美食", "foods"], ["飯店", "hotels"]]) {
-      const section = (await screen.findByRole("heading", { name })).closest("section")!;
-      expect(within(section).getByRole("link", { name: "進入管理" }).getAttribute("href")).toBe(`/admin/${target}`);
-      expect(within(section).getAllByText("—").length).toBeGreaterThan(0);
-      expect(within(section).queryByText("0")).toBeNull();
+      const domain = await screen.findByRole("region", { name });
+      expect(within(domain).getByRole("link", { name: "進入管理" }).getAttribute("href")).toBe(`/admin/${target}`);
+      expect(within(domain).getAllByText("—").length).toBeGreaterThan(0);
+      expect(within(domain).queryByText("0")).toBeNull();
     }
   });
 
@@ -59,11 +59,11 @@ describe("admin panels against a partial payload", () => {
     render(<AdminDashboard />);
 
     for (const [name, count, href] of [
-      ["景點待審", "124", "/admin/hotspots?tab=review&section=manual"],
-      ["料理待審", "13", "/admin/foods?tab=review&section=dishes"],
-      ["店家待審", "245", "/admin/foods?tab=review&section=merchants"],
-      ["文章待審", "427", "/admin/hotspots?tab=content&section=guides"],
-      ["飯店待審", "7", "/admin/hotels?tab=review&section=products"],
+      ["景點待審", "124", "/admin/hotspots?tab=review&section=manual&status=pending"],
+      ["料理待審", "13", "/admin/foods?tab=review&section=dishes&status=pending"],
+      ["店家待審", "245", "/admin/foods?tab=review&section=merchants&status=pending"],
+      ["文章待審", "427", "/admin/hotspots?tab=content&section=guides&status=pending"],
+      ["飯店待審", "7", "/admin/hotels?tab=review&section=products&status=pending"],
     ]) {
       const link = await screen.findByRole("link", { name: new RegExp(`${name}\\s*${count}$`) });
       expect(link.getAttribute("href")).toBe(href);

@@ -10,7 +10,7 @@ from typing import Any, cast
 from uuid import UUID
 
 from pydantic import ValidationError
-from sqlalchemy import func, select
+from sqlalchemy import delete, func, select
 
 from app import hotspots as hotspots_package
 from app.admin.service import load_runtime_settings
@@ -53,6 +53,7 @@ from app.hotspots.wikidata_labels import BOOTSTRAP_FILES, fill_bootstrap_files
 from app.infra import get_redis
 from app.models import (
     AdminAuditLog,
+    AdminRoleAssignment,
     FoodArea,
     FoodCategory,
     FoodMerchant,
@@ -89,17 +90,67 @@ async def set_admin(email: str, enabled: bool) -> None:
         user = await session.scalar(select(User).where(User.email == normalized_email))
         if user is None:
             raise SystemExit("User was not found")
-        user.is_admin = enabled
+        if not enabled and normalized_email in get_settings().admin_email_set:
+            raise SystemExit("ADMIN_EMAILS owners cannot be revoked by the CLI")
+        assignments = list(
+            (
+                await session.scalars(
+                    select(AdminRoleAssignment).where(
+                        AdminRoleAssignment.user_id == user.id
+                    )
+                )
+            ).all()
+        )
+        assigned_roles: list[str] = []
+        revoked_roles: list[str] = []
+        if enabled:
+            user.is_admin = True
+            existing_roles = {assignment.role for assignment in assignments}
+            for role in ("support", "content", "operations"):
+                if role in existing_roles:
+                    continue
+                session.add(
+                    AdminRoleAssignment(
+                        user_id=user.id,
+                        role=role,
+                        granted_by_user_id=None,
+                        source="legacy_backfill",
+                    )
+                )
+                assigned_roles.append(role)
+        else:
+            revocable = [
+                assignment
+                for assignment in assignments
+                if assignment.source == "legacy_backfill"
+                and assignment.role in {"support", "content", "operations"}
+            ]
+            revoked_roles = sorted(assignment.role for assignment in revocable)
+            await session.execute(
+                delete(AdminRoleAssignment).where(
+                    AdminRoleAssignment.id.in_([assignment.id for assignment in revocable])
+                )
+            )
+            preserved_roles = [
+                assignment for assignment in assignments if assignment not in revocable
+            ]
+            user.is_admin = bool(preserved_roles)
         session.add(
             AdminAuditLog(
                 actor_user_id=None,
                 action="admin_role.updated",
                 target=f"user:{user.id}",
-                metadata_json={"email": normalized_email, "is_admin": enabled, "source": "cli"},
+                metadata_json={
+                    "email": normalized_email,
+                    "is_admin": enabled,
+                    "source": "cli",
+                    "roles_added": assigned_roles,
+                    "roles_revoked": revoked_roles,
+                },
             )
         )
         await session.commit()
-        state = "administrator" if enabled else "regular user"
+        state = "administrator" if user.is_admin else "regular user"
         print(f"Updated {normalized_email} to {state}")
 
 

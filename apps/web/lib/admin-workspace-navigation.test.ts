@@ -62,6 +62,25 @@ describe("admin workspace navigation", () => {
       expect(window.location.search).toBe("");
     } finally { window.removeEventListener("admin:before-navigate", guard); }
   });
+  it("does not add duplicate history entries or wake leave guards for a no-op URL", () => {
+    window.history.replaceState(null, "", "/zh-TW/admin/foods?tab=catalog&section=merchants");
+    const push = vi.spyOn(window.history, "pushState");
+    const guard = vi.fn();
+    window.addEventListener("admin:before-navigate", guard);
+    try {
+      expect(adminNavigate(new URL(window.location.href))).toBe(true);
+      expect(push).not.toHaveBeenCalled();
+      expect(guard).not.toHaveBeenCalled();
+    } finally { window.removeEventListener("admin:before-navigate", guard); }
+  });
+  it("does not push duplicate workspace tab or section selections", async () => {
+    const { result } = renderHook(() => useAdminWorkspaceNavigation(config));
+    await waitFor(() => expect(result.current.ready).toBe(true));
+    const push = vi.spyOn(window.history, "pushState");
+    act(() => result.current.selectTab("catalog"));
+    act(() => result.current.selectSection("merchants"));
+    expect(push).not.toHaveBeenCalled();
+  });
   it("does not normalize the previous URL before Next commits a destination deep link", async () => {
     window.history.replaceState(null, "", "/zh-TW/admin");
     nextRoute.pathname = "/zh-TW/admin/foods";

@@ -18,8 +18,10 @@ from app.deployments.schemas import (
     DeploymentRunView,
 )
 from app.models import (
+    ACTIVE_DATABASE_OPERATION_STATUSES,
     ACTIVE_DEPLOYMENT_STATUSES,
     AdminAuditLog,
+    DatabaseOperationRun,
     DeploymentEvent,
     DeploymentRun,
     User,
@@ -263,6 +265,16 @@ async def create_deployment(
     overview = await deployment_overview(session)
     if overview.active_run is not None:
         raise AppError(409, "deployment_in_progress", "目前已有部署正在執行")
+    if await session.scalar(
+        select(DatabaseOperationRun.id).where(
+            DatabaseOperationRun.status.in_(ACTIVE_DATABASE_OPERATION_STATUSES)
+        )
+    ):
+        raise AppError(
+            409,
+            "deployment_blocked_by_database_operation",
+            "資料庫維護期間不能執行部署",
+        )
     if overview.cooldown_until is not None:
         raise AppError(429, "deployment_cooldown", "前一次部署剛完成，請稍候五分鐘")
     if not overview.agent_connected or not overview.target_sha:
@@ -338,6 +350,25 @@ async def create_deployment(
         await session.commit()
         raise
     if created.job_id != str(run.id):
+        run.status = "failed"
+        run.stage = "queued"
+        run.failure_code = "deployment_agent_invalid_response"
+        run.failure_detail = "部署代理回傳了不相符的工作識別碼"
+        run.finished_at = datetime.now(UTC)
+        session.add(
+            AdminAuditLog(
+                actor_user_id=actor.id,
+                action="deployment.failed",
+                target=str(run.id),
+                metadata_json={
+                    "run_id": str(run.id),
+                    "target_sha": run.target_sha,
+                    "status": "failed",
+                    "failure_code": run.failure_code,
+                },
+            )
+        )
+        await session.commit()
         raise AppError(502, "deployment_agent_invalid_response", "部署代理工作識別碼不正確")
     run.status = created.status
     await session.commit()

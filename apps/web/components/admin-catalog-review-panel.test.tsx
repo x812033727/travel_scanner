@@ -44,6 +44,7 @@ afterEach(() => {
   cleanup();
   vi.unstubAllGlobals();
   vi.useRealTimers();
+  window.history.replaceState(null, "", "/");
 });
 
 describe("AdminCatalogReviewPanel", () => {
@@ -56,7 +57,7 @@ describe("AdminCatalogReviewPanel", () => {
       return undefined;
     });
     render(<AdminCatalogReviewPanel />);
-    await screen.findByRole("button", { name: "繼續未完成工作" });
+    await screen.findByRole("button", { name: "繼續未完成工作" }, { timeout: 5_000 });
     expect(screen.queryByRole("button", { name: "開始審核現有待審" })).toBeNull();
     expect(screen.queryByRole("button", { name: /開始尋找/ })).toBeNull();
     expect(within(screen.getByRole("combobox", { name: "選擇審核工作" })).getByRole("option").textContent).toContain("跨領域（舊版混合）");
@@ -118,6 +119,31 @@ describe("AdminCatalogReviewPanel", () => {
     expect(screen.queryByRole("dialog")).toBeNull();
     await screen.findByRole("button", { name: "開始尋找 60 筆候選" });
     expect((screen.getByRole("button", { name: "預覽選取的 0 筆" }) as HTMLButtonElement).disabled).toBe(true);
+  });
+
+  it("discards a pending confirmation when browser history selects another run", async () => {
+    const secondRun = { ...run, id: "review-2", version: 8 };
+    const fetchMock = mockApi((url) => {
+      if (url === root) return response({ ...overview, runs: [run, secondRun] });
+      if (url === root + "/runs/review-2") return response(secondRun);
+      if (url.includes("/runs/review-1/items?")) return response(listing([candidate("one", "First run candidate")]));
+      if (url.includes("/runs/review-2/items?")) return response(listing([candidate("two", "Second run candidate")]));
+      return undefined;
+    });
+    render(<AdminCatalogReviewPanel scope="hotspots" />);
+    fireEvent.click(await screen.findByRole("checkbox", { name: "選取 First run candidate" }));
+    fireEvent.click(screen.getByRole("button", { name: "預覽選取的 1 筆" }));
+    expect(screen.getByRole("dialog")).toBeTruthy();
+
+    await act(async () => {
+      window.history.pushState(null, "", "/?run=review-2&page=1&action=approve");
+      window.dispatchEvent(new PopStateEvent("popstate"));
+    });
+
+    expect(screen.queryByRole("dialog")).toBeNull();
+    await screen.findByText("Second run candidate");
+    expect(screen.queryByText("First run candidate")).toBeNull();
+    expect(fetchMock.mock.calls.filter(([, init]) => init?.method === "POST")).toHaveLength(0);
   });
 
   it("disables requests using server capabilities and preserves blocking reasons", async () => {

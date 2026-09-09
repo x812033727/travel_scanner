@@ -4,6 +4,7 @@ import { Check, LoaderCircle, RefreshCw } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { FilterPills } from "@/components/admin-filter-pills";
+import { AdminReadOnlyNotice, useAdminActionGuard } from "@/components/admin-action-guard";
 import { localeLabels, type Locale } from "@/i18n/routing";
 import { useRouter } from "@/i18n/navigation";
 import { ApiError, api } from "@/lib/api";
@@ -85,6 +86,7 @@ export function AdminUiTextPanel({
   namespaces,
 }: Props) {
   const t = useTranslations("admin.uiText");
+  const manage = useAdminActionGuard("settings.manage");
   const shared = useTranslations("admin.settingsPanel");
   const uiLocale = useLocale();
   const router = useRouter();
@@ -201,6 +203,7 @@ export function AdminUiTextPanel({
   }
 
   function edit(key: string, value: string) {
+    if (!manage.allowed) return;
     setDrafts((previous) => ({ ...previous, [key]: value }));
     setNotice(undefined);
   }
@@ -214,6 +217,7 @@ export function AdminUiTextPanel({
   }
 
   async function saveAll() {
+    if (!manage.allowed) return;
     setBusy(true);
     setActionError(undefined);
     setNotice(undefined);
@@ -301,6 +305,7 @@ export function AdminUiTextPanel({
 
   return (
     <div className="mt-8">
+      <AdminReadOnlyNotice capability="settings.manage" className="mb-4" />
       <div className="sticky top-2 z-10 grid gap-3 rounded-2xl border border-[var(--line)] bg-white/95 p-4 backdrop-blur">
         <div className="grid gap-3 md:grid-cols-3">
           <label className="text-sm font-semibold">
@@ -490,7 +495,8 @@ export function AdminUiTextPanel({
                   rows={2}
                   maxLength={UI_TEXT_MAX_LENGTH}
                   value={row.shown}
-                  readOnly={row.orphan}
+                  readOnly={row.orphan || !manage.allowed}
+                  title={!manage.allowed ? manage.disabledReason : undefined}
                   placeholder={row.defaultValue}
                   aria-label={row.key}
                   aria-invalid={row.problem ? true : undefined}
@@ -515,6 +521,8 @@ export function AdminUiTextPanel({
                   {row.dirty ? (
                     <button
                       type="button"
+                      disabled={!manage.allowed}
+                      title={!manage.allowed ? manage.disabledReason : undefined}
                       aria-label={t("row.discardNamed", { key: row.key })}
                       onClick={() => discard(row.key)}
                       className="rounded-lg border border-[var(--line)] px-3 py-1.5 text-xs font-semibold"
@@ -525,6 +533,8 @@ export function AdminUiTextPanel({
                     row.override && (
                       <button
                         type="button"
+                        disabled={!manage.allowed}
+                        title={!manage.allowed ? manage.disabledReason : undefined}
                         aria-label={t("row.restoreNamed", { key: row.key })}
                         onClick={() => edit(row.key, "")}
                         className="rounded-lg border border-[var(--line)] px-3 py-1.5 text-xs font-semibold"
@@ -585,7 +595,8 @@ export function AdminUiTextPanel({
             </button>
             <button
               type="button"
-              disabled={busy || problems > 0}
+              disabled={!manage.allowed || busy || problems > 0}
+              title={!manage.allowed ? manage.disabledReason : undefined}
               onClick={saveAll}
               className="inline-flex items-center gap-2 rounded-xl bg-[var(--teal)] px-4 py-2 text-sm font-semibold text-white disabled:opacity-50"
             >

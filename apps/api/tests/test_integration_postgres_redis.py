@@ -6,7 +6,7 @@ from uuid import UUID, uuid4
 
 import pytest
 from httpx import ASGITransport, AsyncClient
-from sqlalchemy import func, select, update
+from sqlalchemy import func, select, text, update
 from sqlalchemy.exc import DBAPIError
 
 import app.trips.router as trips_router_module
@@ -119,8 +119,27 @@ async def test_affiliate_click_ledger_is_append_only() -> None:
             status="redirected",
         )
         session.add(click)
+        unrelated_user = User(
+            email=f"affiliate-unrelated-{uuid4()}@example.com",
+            password_hash="unused",
+            is_active=True,
+        )
+        session.add(unrelated_user)
+        await session.flush()
+        unrelated = AffiliateClick(
+            user_id=unrelated_user.id,
+            partner="booking",
+            module="hotel",
+            sub_id=uuid4().hex,
+            destination_summary="大阪",
+            target_host="www.booking.com",
+            status="redirected",
+        )
+        session.add(unrelated)
         await session.commit()
         click_id = click.id
+        user_id = user.id
+        unrelated_id = unrelated.id
 
     async with SessionFactory() as session:
         with pytest.raises(DBAPIError):
@@ -131,6 +150,37 @@ async def test_affiliate_click_ledger_is_append_only() -> None:
             )
             await session.commit()
         await session.rollback()
+
+    async with SessionFactory() as session:
+        first = await session.scalar(
+            text("SELECT public.anonymize_affiliate_clicks_for_user(:user_id)"),
+            {"user_id": user_id},
+        )
+        second = await session.scalar(
+            text("SELECT public.anonymize_affiliate_clicks_for_user(:user_id)"),
+            {"user_id": user_id},
+        )
+        await session.commit()
+        assert int(first or 0) == 1
+        # Direct user linkage has already been removed, so a repeat is a no-op.
+        assert int(second or 0) == 0
+
+    async with SessionFactory() as session:
+        anonymized = await session.get(AffiliateClick, click_id)
+        untouched = await session.get(AffiliateClick, unrelated_id)
+        assert anonymized is not None
+        assert anonymized.user_id is None
+        assert anonymized.search_id is None
+        assert anonymized.trip_id is None
+        assert anonymized.offer_id is None
+        assert anonymized.sub_id == ""
+        assert anonymized.destination_summary == ""
+        assert anonymized.partner == "booking"
+        assert anonymized.module == "hotel"
+        assert anonymized.target_host == "www.booking.com"
+        assert untouched is not None
+        assert untouched.user_id is not None
+        assert untouched.destination_summary == "大阪"
 
 
 @pytest.mark.asyncio(loop_scope="module")
