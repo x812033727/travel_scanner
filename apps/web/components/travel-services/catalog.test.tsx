@@ -24,7 +24,9 @@ vi.mock("@/i18n/navigation", () => ({
     <a href={href}>{children}</a>
   ),
   useRouter: () => ({ push: navigate }),
+  usePathname: () => "/destinations/tokyo/services",
 }));
+vi.mock("@/lib/discovery", () => ({ useDiscoveryStatus: () => ({enabled:false, loading:false}) }));
 
 const hotel = {
   id: "hotel-1",

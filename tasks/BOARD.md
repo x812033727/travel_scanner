@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**18 open · 2 in progress · 2 blocked · 1 in review · 177 done**
+**16 open · 4 in progress · 2 blocked · 1 in review · 177 done**
 
 ## Ready to claim
 
@@ -14,8 +14,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
 | P1 | [Hotel platform options and quote readiness](open/2026-09-07-hotel-platform-options-and-quote-readiness.md) | api | `apps/api/tests/test_hotel_content_package.py`<br>`docs/hotel-platforms` |
-| P1 | [Editorial discovery and unified collection frontend](open/2026-09-09-frontend-flow-discovery-web.md) | web | `apps/web/components/discovery`<br>`apps/web/components/saved-items-provider.tsx`<br>`apps/web/components/saved-items-provider.test.tsx`<br>`apps/web/lib/discovery.ts`<br>`apps/web/lib/discovery-copy.ts`<br>`apps/web/lib/saved-items.ts`<br>`apps/web/lib/saved-items.test.ts`<br>`apps/web/lib/frontend-flow-copy.ts` |
-| P1 | [Frontend flow navigation planning handoff and acceptance](open/2026-09-09-frontend-flow-integration.md) | web | `apps/web/components/site-navigation.tsx`<br>`apps/web/components/mobile-nav.tsx`<br>`apps/web/components/mobile-nav.test.tsx`<br>`apps/web/components/app-bottom-nav.tsx`<br>`apps/web/components/app-bottom-nav.test.tsx`<br>`apps/web/components/site-navigation.test.tsx`<br>`apps/web/components/community/home.tsx`<br>`apps/web/components/search-workbench.tsx`<br>`apps/web/components/search-workbench.test.tsx`<br>`apps/web/app/[locale]/search/new`<br>`apps/web/components/account-list.tsx`<br>`apps/web/components/account-list.test.tsx`<br>`apps/web/components/travel-card-actions.tsx`<br>`apps/web/components/travel-card-actions.test.tsx`<br>`apps/web/lib/frontend-flow.ts`<br>`apps/web/lib/frontend-flow.test.ts`<br>`apps/web/lib/frontend-navigation.ts`<br>`apps/web/app/globals.css`<br>`apps/web/e2e/frontend-flow.spec.ts`<br>`apps/web/e2e/frontend-flow-full-stack.spec.ts`<br>`apps/web/playwright.frontend-flow.config.ts`<br>`docs/frontend-flow.md` |
 | P2 | [防 jsonb 運算子的測試只守住 3 張表，實際有 42 張](open/2026-09-07-jsonb-3-42.md) | api | `apps/api/tests/test_migration_sql_dialect.py` |
 | P2 | [30 筆新購物店家還沒 place enrichment，所以加不進行程](open/2026-09-07-enrich-new-shopping-place-ids.md) | api | `ops/notes/hotspot-place-enrichment.md` |
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
@@ -30,7 +28,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
 | [Unified saved items and private inbox API](open/2026-09-09-frontend-flow-saved-api.md) | codex-saved-flow | 2026-09-09T03:07:29Z | `codex/frontend-explore-flow` |
-| [Public discovery categories and safe detail projections](open/2026-09-09-frontend-flow-discovery-api.md) | codex-discovery-flow-api | 2026-09-09T03:07:47Z | `codex/frontend-flow` |
+| [Public discovery categories and safe detail projections](open/2026-09-09-frontend-flow-discovery-api.md) | codex-discovery-flow-api | 2026-09-09T03:31:06Z | `codex/frontend-explore-flow` |
+| [Editorial discovery and unified collection frontend](open/2026-09-09-frontend-flow-discovery-web.md) | codex-discovery-flow-web | 2026-09-09T03:36:39Z | `codex/frontend-explore-flow` |
+| [Frontend flow navigation planning handoff and acceptance](open/2026-09-09-frontend-flow-integration.md) | codex-frontend-flow | 2026-09-09T03:08:42Z | `codex/frontend-explore-flow` |
 
 ## In review
 

@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+.frontend-nav-link[aria-current="page"] { color: var(--teal); background: var(--teal-soft); }
+.frontend-nav-link:hover { color: var(--ink); }
+.frontend-search-workbench[data-compact] { display: flex; flex-direction: column; gap: 1.5rem; }
+.frontend-search-workbench[data-compact] > .mb-5,
+.frontend-search-workbench[data-compact] > ol { display: none; }
+.frontend-search-workbench[data-compact] > section:nth-of-type(-n+3) { display: block; }
+.frontend-search-workbench[data-compact] > section:nth-of-type(4),
+.frontend-search-workbench[data-compact] > section:nth-of-type(5) { display: none; }
+.frontend-search-workbench[data-compact][data-advanced] > section:nth-of-type(4),
+.frontend-search-workbench[data-compact][data-advanced] > section:nth-of-type(5) { display: block; }
+.frontend-search-workbench[data-compact] > section { border-top: 1px solid var(--line); padding-top: 1.5rem; }
+.frontend-search-workbench[data-compact] :is(input, select, textarea) { min-height: 44px; }
+.frontend-search-workbench[data-compact] button:not([type="submit"])[aria-pressed="false"] { background: var(--surface); color: var(--ink); }
+.frontend-search-workbench[data-compact] .bg-white { background: var(--surface); color: var(--ink); }
+.frontend-search-workbench[data-compact] .bg-violet-50 { background: var(--paper); color: var(--ink); border-color: var(--line); }
+
 /* The calm planner keeps route details and editing tools out of the reading path. */
 .calm-planner .calm-day-panel { max-width:56rem; margin-inline:auto; }
 .calm-planner .calm-day-heading { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:.5rem; }

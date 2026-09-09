@@ -84,6 +84,7 @@ async def catalog_items(
     identifiers: dict[str, list[UUID]] | None = None,
     content_locale: Locale | None = None,
     topics: list[str] | None = None,
+    related_hotspot_id: UUID | None = None,
 ) -> list[DiscoveryItem]:
     """Every query is limited; explicit references never widen into a catalog scan."""
     output: list[DiscoveryItem] = []
@@ -162,7 +163,11 @@ async def catalog_items(
                 topics=[hotspot.category],
                 source=next(iter(hotspot.source_urls or []), None),
             )
-            item.place_ref = {"kind": "hotspot", "id": str(hotspot.id)}
+            item.place_ref = {
+                "kind": "hotspot",
+                "id": str(hotspot.id),
+                "destination_id": hotspot.destination_id,
+            }
             if hotspot.map_match_status == "verified":
                 item.place_ref["selection_path"] = f"/hotspots/{hotspot.id}/trip-selections"
             output.append(item)
@@ -258,6 +263,8 @@ async def catalog_items(
                 source=next(iter(food.source_urls or []), None),
             )
             item.place_ref = {"kind": "food", "id": str(food.id)}
+            if food_cities.get(food.id):
+                item.place_ref["destination_id"] = food_cities[food.id]
             output.append(item)
 
     if enabled("merchant") and (not topics or "food" in topics):
@@ -302,6 +309,7 @@ async def catalog_items(
             item.place_ref = {
                 "kind": "merchant",
                 "id": str(merchant.id),
+                "destination_id": merchant.destination_id,
                 "selection_path": f"/foods/merchants/{merchant.id}/trip-selections",
             }
             output.append(item)
@@ -370,6 +378,8 @@ async def catalog_items(
         ]
         if topics:
             filters.append(TravelHotspot.category.in_(topics))
+        if related_hotspot_id is not None:
+            filters.append(HotspotGuide.hotspot_id == related_hotspot_id)
         if kinds and kinds & {"article", "video"}:
             filters.append(HotspotGuide.content_type.in_(kinds & {"article", "video"}))
         if content_locale:

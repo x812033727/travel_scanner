@@ -1,10 +1,24 @@
 import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { AppBottomNav } from "./app-bottom-nav";
 import { SiteVisibilityProvider } from "./site-visibility-provider";
 import { closedSiteVisibility, openSiteVisibility } from "@/lib/site-features";
+const discovery = vi.hoisted(() => ({ enabled: false, loading: false }));
+vi.mock("@/lib/discovery", () => ({useDiscoveryStatus: () => discovery}));
+beforeEach(() => { discovery.enabled = false; discovery.loading = false; });
 
 describe("AppBottomNav", () => {
+  it("exposes exactly four primary destinations with discovery enabled", () => {
+    discovery.enabled = true;
+    render(<AppBottomNav />);
+    expect(screen.getAllByRole("link").map((link) => [link.textContent, link.getAttribute("href")])).toEqual([
+      ["探索", "/explore"], ["收藏", "/explore/collections"], ["我的旅程", "/trips"], ["我的", "/my"],
+    ]);
+  });
+  it("waits for the flag instead of showing the legacy navigation first", () => {
+    discovery.loading = true; render(<AppBottomNav />);
+    expect(screen.queryByRole("link")).toBeNull();
+  });
   it("provides the five thumb-friendly app destinations", () => {
     render(<AppBottomNav />);
     const links = screen.getAllByRole("link");

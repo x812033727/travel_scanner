@@ -3,8 +3,8 @@ from __future__ import annotations
 from typing import Annotated, Any, Literal
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, Query
-from sqlalchemy import delete, select
+from fastapi import APIRouter, Depends, Query, Response
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.service import CurrentUser
@@ -33,11 +33,25 @@ from app.models import (
     TravelServiceProduct,
 )
 from app.problems import AppError
+from app.saved.api import router as flow_router
 
 router = APIRouter(prefix="/saved-items", tags=["saved items"])
+router.include_router(flow_router)
 Session = Annotated[AsyncSession, Depends(get_session)]
 RequestLocale = Annotated[Locale, Depends(current_locale)]
-SavedType = Literal["hotspot", "food", "restaurant", "merchant", "service"]
+SavedType = Literal[
+    "hotspot",
+    "food",
+    "restaurant",
+    "merchant",
+    "service",
+    "hotel",
+    "guide",
+    "article",
+    "video",
+    "post",
+    "itinerary",
+]
 
 
 async def _hotspot(session: AsyncSession, item_id: str) -> TravelHotspot:
@@ -299,120 +313,28 @@ async def save_item(
     item_id: str,
     user: CurrentUser,
     session: Session,
-) -> dict[str, object]:
-    if item_type == "service":
-        from sqlalchemy.dialects.postgresql import insert
+    response: Response,
+    expected_user_id: UUID | None = None,
+) -> dict[str, Any]:
+    from app.saved.service import save_reference
 
-        from app.travel_services.service import catalog_config, fail, product_enabled
-
-        try:
-            product = await session.get(TravelServiceProduct, UUID(item_id))
-        except ValueError as exc:
-            raise fail("service_unavailable", 404) from exc
-        config, _ = await catalog_config(session)
-        if (
-            not product
-            or product.status != "approved"
-            or not product_enabled(config, product)
-        ):
-            raise fail("service_unavailable", 404)
-        await session.execute(
-            insert(TravelServiceFavorite)
-            .values(user_id=user.id, product_id=product.id)
-            .on_conflict_do_nothing(constraint="uq_service_favorite")
-        )
-    elif item_type == "hotspot":
-        hotspot = await _hotspot(session, item_id)
-        existing_hotspot = await session.scalar(
-            select(HotspotFavorite).where(
-                HotspotFavorite.user_id == user.id,
-                HotspotFavorite.hotspot_id == hotspot.id,
-            )
-        )
-        if existing_hotspot is None:
-            session.add(HotspotFavorite(user_id=user.id, hotspot_id=hotspot.id))
-    elif item_type == "food":
-        food = await _food(session, item_id)
-        existing_food = await session.scalar(
-            select(FoodFavorite).where(
-                FoodFavorite.user_id == user.id,
-                FoodFavorite.food_id == food.id,
-            )
-        )
-        if existing_food is None:
-            session.add(FoodFavorite(user_id=user.id, food_id=food.id))
-    elif item_type == "merchant":
-        merchant = await _merchant(session, item_id)
-        existing_merchant = await session.scalar(
-            select(FoodMerchantFavorite).where(
-                FoodMerchantFavorite.user_id == user.id,
-                FoodMerchantFavorite.merchant_id == merchant.id,
-            )
-        )
-        if existing_merchant is None:
-            session.add(FoodMerchantFavorite(user_id=user.id, merchant_id=merchant.id))
-    else:
-        restaurant = await _restaurant(session, item_id)
-        existing_restaurant = await session.scalar(
-            select(RestaurantFavorite).where(
-                RestaurantFavorite.user_id == user.id,
-                RestaurantFavorite.restaurant_place_id == restaurant.id,
-            )
-        )
-        if existing_restaurant is None:
-            session.add(RestaurantFavorite(user_id=user.id, restaurant_place_id=restaurant.id))
+    response.headers["Cache-Control"] = "private, no-store"
+    result = await save_reference(session, user, item_type, item_id, expected_user_id)
     await session.commit()
-    return {"type": item_type, "id": item_id, "saved": True}
+    return result
 
 
 @router.delete("/{item_type}/{item_id}", status_code=204)
 async def delete_item(
-    item_type: SavedType,
+    item_type: str,
     item_id: str,
     user: CurrentUser,
     session: Session,
+    response: Response,
+    expected_user_id: UUID | None = None,
 ) -> None:
-    if item_type == "service":
-        try:
-            product_id = UUID(item_id)
-        except ValueError as exc:
-            raise AppError(404, "saved_item_not_found", "saved_item_not_found") from exc
-        await session.execute(
-            delete(TravelServiceFavorite).where(
-                TravelServiceFavorite.user_id == user.id,
-                TravelServiceFavorite.product_id == product_id,
-            )
-        )
-    elif item_type == "hotspot":
-        hotspot = await _hotspot(session, item_id)
-        await session.execute(
-            delete(HotspotFavorite).where(
-                HotspotFavorite.user_id == user.id,
-                HotspotFavorite.hotspot_id == hotspot.id,
-            )
-        )
-    elif item_type == "food":
-        food = await _food(session, item_id)
-        await session.execute(
-            delete(FoodFavorite).where(
-                FoodFavorite.user_id == user.id,
-                FoodFavorite.food_id == food.id,
-            )
-        )
-    elif item_type == "merchant":
-        merchant = await _merchant(session, item_id)
-        await session.execute(
-            delete(FoodMerchantFavorite).where(
-                FoodMerchantFavorite.user_id == user.id,
-                FoodMerchantFavorite.merchant_id == merchant.id,
-            )
-        )
-    else:
-        restaurant = await _restaurant(session, item_id)
-        await session.execute(
-            delete(RestaurantFavorite).where(
-                RestaurantFavorite.user_id == user.id,
-                RestaurantFavorite.restaurant_place_id == restaurant.id,
-            )
-        )
+    from app.saved.service import unsave_reference
+
+    response.headers["Cache-Control"] = "private, no-store"
+    await unsave_reference(session, user, item_type, item_id, expected_user_id)
     await session.commit()

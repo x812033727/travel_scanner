@@ -218,6 +218,7 @@ async def test_community_migrations_fresh_and_existing_database(
             "0059_pet_friendly.py",
             "0060_community_places.py",
             "0066_discovery_community.py",
+            "0067_collection_inbox.py",
         ]
     ]
     monkeypatch.setattr(context, "is_offline_mode", lambda: False)

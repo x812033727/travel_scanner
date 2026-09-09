@@ -16,7 +16,7 @@ from app.config import get_settings
 from app.discovery.models import DiscoveryDismissal
 from app.discovery.policy import parse_key
 from app.discovery.preferences import get_preferences, payload
-from app.discovery.schemas import DiscoveryItem
+from app.discovery.schemas import CATEGORY_KINDS, Category, DiscoveryItem
 from app.discovery.sources import catalog_items, community_item
 from app.i18n import Locale
 from app.infra import get_redis
@@ -215,8 +215,12 @@ async def page(
     cursor: str | None = None,
     limit: int = 20,
     content_locale: Locale | None = None,
+    category: Category = "all",
 ) -> dict[str, Any]:
     kinds, destinations, topics = kinds or set(), destinations or [], topics or []
+    if category != "all":
+        kinds = kinds & CATEGORY_KINDS[category] if kinds else CATEGORY_KINDS[category].copy()
+    no_matches = category != "all" and not kinds
     if mode == "following" and not viewer:
         raise AppError(401, "authentication_required", "請先登入")
     prefs = await get_preferences(session, viewer.id) if viewer else payload(None)
@@ -233,6 +237,7 @@ async def page(
                 destinations,
                 topics,
                 mode,
+                category,
                 prefs,
             ],
             sort_keys=True,
@@ -252,18 +257,26 @@ async def page(
             raise AppError(422, "community_invalid_cursor", "分頁參數無效")
         keys = snapshot["ids"]
     else:
-        items = await candidates(
-            session,
-            viewer,
-            locale,
-            q=q,
-            kinds=kinds,
-            destinations=destinations,
-            topics=topics,
-            mode=mode,
-            content_locale=content_locale,
+        items = (
+            []
+            if no_matches
+            else await candidates(
+                session,
+                viewer,
+                locale,
+                q=q,
+                kinds=kinds,
+                destinations=destinations,
+                topics=topics,
+                mode=mode,
+                content_locale=content_locale,
+            )
         )
-        context = await explicit_context(session, viewer, locale) if mode == "recommended" else None
+        context = (
+            await explicit_context(session, viewer, locale)
+            if mode == "recommended" and not no_matches
+            else None
+        )
         if context:
             # Retrieve explicit interests before the bounded recency window; an
             # older relevant city/topic must not disappear behind 100 newer rows.
@@ -387,7 +400,12 @@ async def page(
         "items": output,
         "next_cursor": f"{key}:{offset}" if offset < len(keys) else None,
         "query": q,
-        "filters": {"kinds": sorted(kinds), "destinations": destinations, "topics": topics},
+        "filters": {
+            "category": category,
+            "kinds": sorted(kinds),
+            "destinations": destinations,
+            "topics": topics,
+        },
     }
 
 

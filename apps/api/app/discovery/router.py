@@ -14,7 +14,7 @@ from app.destinations.localized import city_name
 from app.discovery.models import DiscoveryDismissal
 from app.discovery.policy import destination_id, parse_key, require_enabled
 from app.discovery.preferences import get_preferences, locked_user, update_preferences
-from app.discovery.schemas import DismissInput, Kind, PreferenceInput
+from app.discovery.schemas import CATEGORY_KINDS, Category, DismissInput, Kind, PreferenceInput
 from app.discovery.service import page, resolve_discovery_items
 from app.i18n import Locale, current_locale
 from app.problems import AppError
@@ -49,6 +49,7 @@ async def search(
     mode: Literal["recommended", "latest", "following"] = "latest",
     q: TextQuery = "",
     type: Kind | Literal["all"] = "all",
+    category: Category = "all",
     destination: TextQuery = "",
     topic: TextQuery = "",
     locale: Locale | None = None,
@@ -63,6 +64,7 @@ async def search(
         mode=mode,
         q=q.strip(),
         kinds=set() if type == "all" else {type},
+        category=category,
         destinations=[destination_id(destination)] if destination else [],
         topics=[topic] if topic else [],
         cursor=cursor,
@@ -102,6 +104,7 @@ async def feed(
     mode: Literal["recommended", "latest", "following"] = "recommended",
     q: TextQuery = "",
     type: Kind | Literal["all"] = "all",
+    category: Category = "all",
     destination: TextQuery = "",
     topic: TextQuery = "",
     locale: Locale | None = None,
@@ -115,6 +118,7 @@ async def feed(
         content_locale=locale,
         q=q.strip(),
         kinds=set() if type == "all" else {type},
+        category=category,
         destinations=[destination_id(destination)] if destination else [],
         topics=[topic] if topic else [],
         mode=mode,
@@ -130,6 +134,7 @@ async def suggestions(
     display_locale: DisplayLocale,
     q: TextQuery = "",
     locale: Locale | None = None,
+    category: Category = "all",
 ) -> dict[str, Any]:
     from app.discovery.service import candidates
 
@@ -160,7 +165,7 @@ async def suggestions(
                 display_locale,
                 content_locale=locale,
                 q=query,
-                kinds=set(),
+                kinds=CATEGORY_KINDS.get(category, set()),
                 destinations=[],
                 topics=[],
                 mode="latest",
@@ -194,7 +199,9 @@ async def content(
     items = await resolve_discovery_items(session, [f"{key_kind}:{identifier}"], viewer, locale)
     if not items or items[0].kind != kind:
         raise AppError(404, "community_not_found", "找不到這筆公開內容")
-    return items[0]
+    from app.discovery.details import enrich_detail
+
+    return await enrich_detail(session, items[0], locale)
 
 
 @router.get("/preferences")

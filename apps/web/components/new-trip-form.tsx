@@ -16,6 +16,7 @@ import { ApiError, api } from "@/lib/api";
 import { dayCount, formatTripDay } from "@/lib/calendar";
 import { interestCodes, localizeDestinations, shopThemeCodes } from "@/lib/destinations";
 import { holidayCountriesFor } from "@/lib/holidays";
+import { completedTripDestination } from "@/lib/frontend-flow";
 
 type CreatedTrip = { id: string };
 const lodgingModes = ["hotel", "vacation_rental", "both", "any"] as const;
@@ -75,13 +76,13 @@ function clearDraft(storageKey: string) {
   try { window.sessionStorage.removeItem(storageKey); } catch { /* Storage is best-effort. */ }
 }
 
-export function NewTripForm() {
+export function NewTripForm({ resumePlanning = false }: { resumePlanning?: boolean }) {
   const { status, user } = useHeaderSession();
   const locale = useLocale();
   const copy = newTripCopy(locale);
   if (status !== "authenticated" || !user) return <div role="status" className="premium-new-trip-card p-6">
     {status === "loading" ? copy.sessionLoading : status === "unavailable" ? copy.sessionUnavailable : copy.signInRequired}
-    {status === "signed_out" && <a className="mt-3 block min-h-11 text-[var(--teal)]" href={`/${locale}/login?next=${encodeURIComponent(`/${locale}/trips/new`)}`}>{copy.signIn}</a>}
+    {status === "signed_out" && <a className="mt-3 block min-h-11 text-[var(--teal)]" href={`/${locale}/login?next=${encodeURIComponent(`/${locale}/trips/new${resumePlanning ? "?resume_plan=1" : ""}`)}`}>{copy.signIn}</a>}
   </div>;
   // Account changes must not restore another member's draft or deliver their
   // pending response to the new session. The global provider is the only auth read.
@@ -275,7 +276,7 @@ function NewTripFormForAccount({ accountId }: { accountId: string }) {
       if (!active.current) return;
       submitted.current = true;
       clearDraft(storageKey);
-      router.push("/trips/" + trip.id);
+      router.push(completedTripDestination(accountId, trip.id, new URLSearchParams(window.location.search).get("resume_plan") === "1"));
     } catch (reason) {
       if (!active.current) return;
       // Only a definitive rejection can unlock editing and retire the old key.

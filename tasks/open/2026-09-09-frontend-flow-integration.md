@@ -1,14 +1,14 @@
 ---
 id: 2026-09-09-frontend-flow-integration
 title: Frontend flow navigation planning handoff and acceptance
-status: open
+status: in-progress
 priority: P1
 area: web
-owner:
-claimed_at:
+owner: codex-frontend-flow
+claimed_at: 2026-09-09T03:08:42Z
 created_at: 2026-09-09T03:06:54Z
 completed_at:
-branch:
+branch: codex/frontend-explore-flow
 depends_on: []
 scope:
   - apps/web/components/site-navigation.tsx
@@ -25,6 +25,13 @@ scope:
   - apps/web/components/account-list.test.tsx
   - apps/web/components/travel-card-actions.tsx
   - apps/web/components/travel-card-actions.test.tsx
+  - apps/web/components/new-trip-form.tsx
+  - apps/web/components/new-trip-form.test.tsx
+  - apps/web/components/new-trip-auth-gate.tsx
+  - apps/web/components/new-trip-auth-gate.test.tsx
+  - apps/web/app/[locale]/trips/new/page.tsx
+  - apps/web/components/travel-services/catalog.tsx
+  - apps/web/components/travel-services/catalog.test.tsx
   - apps/web/lib/frontend-flow.ts
   - apps/web/lib/frontend-flow.test.ts
   - apps/web/lib/frontend-navigation.ts
@@ -33,27 +40,31 @@ scope:
   - apps/web/e2e/frontend-flow-full-stack.spec.ts
   - apps/web/playwright.frontend-flow.config.ts
   - docs/frontend-flow.md
+  - .github/workflows/travel-discovery.yml
 ---
 
 # Frontend flow navigation planning handoff and acceptance
 
 ## Why
 
-Describe the problem in the terms someone who has never seen it would need.
+Make the approved explore → save → trip journey calm and continuous, without replacing the existing planner or publishing changes to production.
 
 ## Definition of done
 
-- [ ] The observable outcome, not the implementation.
+- [ ] Four consistent navigation destinations, optional search form, contextual planning and safe new-trip handoff.
+- [ ] Five languages, accessible desktop/mobile and dark mode; regression tests and full-stack acceptance.
+- [ ] PR with verified checks; merge and deployment remain separately authorized.
 
 ## Steps
 
-- [ ] First sub-task.
-- [ ] Second sub-task.
+- [ ] Implement navigation, My directory and standalone search form.
+- [ ] Integrate shared save and contextual trip selection, retaining creation recovery.
+- [ ] Exercise fixture and full-stack scenarios, document evidence and open PR.
 
 ## How to verify
 
-The exact commands or clicks that prove it works.
+Run web lint/i18n/types/Vitest/build, API Ruff/mypy/pytest/migration, desktop and Pixel 7 Playwright. Production inspection is read-only.
 
 ## Notes
 
-Findings, decisions and dead ends, so the next agent does not repeat them.
+Base main 7cee8650 includes planner PR #373. Owner authorized task-only closure dcc97fbd, imported as f7b78cc, and released new-trip-form for a minimal success handoff. No itinerary timeline/draft behavior changes.
