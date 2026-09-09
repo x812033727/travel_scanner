@@ -87,3 +87,12 @@ Documentation is suitable for normal PR review rather than being held draft
 until affiliate activation or a separate network investigation is finished;
 those unfinished obligations are explicitly retained. No remote draft-state
 change, PR write, push, merge, deployment or live-provider call was performed.
+
+2026-09-09 CI-evidence follow-up: documented the root's reviewed #343 merged-main
+and #335 same-head push/PR observations in the owned community-read task, retaining
+exact job IDs and the distinction between a transport reset, token assertions,
+HTTP errors and reruns. Independently checked the job SHA/status/step metadata;
+recorded the root's sanitized failure-output findings without copying credentials,
+member IDs or request bodies. Added an open failure-artifact retention criterion,
+with workflow scope coordination required before implementation. No workflow,
+test, runtime or other task scope was changed, and no new main was integrated.
