@@ -24,6 +24,9 @@ scope:
   - apps/api/tests/test_database_admin.py
   - apps/api/tests/support/e2e_deploy_agent.py
   - apps/web/app/[locale]/layout.tsx
+  - apps/web/app/[locale]/metadata.test.ts
+  - apps/web/app/[locale]/page.test.tsx
+  - apps/web/app/[locale]/pricing/page.test.tsx
   - apps/web/app/[locale]/admin/site-pages
   - apps/web/app/[locale]/privacy
   - apps/web/app/[locale]/terms
@@ -31,6 +34,9 @@ scope:
   - apps/web/app/[locale]/contact
   - apps/web/app/globals.css
   - apps/web/components/theme-provider.tsx
+  - apps/web/components/flight-status-search.tsx
+  - apps/web/components/date-range-picker.tsx
+  - apps/web/components/hotspot-explorer.tsx
   - apps/web/components/theme-switcher.tsx
   - apps/web/components/theme-switcher.test.tsx
   - apps/web/components/palette-switcher.tsx
@@ -93,6 +99,7 @@ scope:
   - apps/web/e2e/site-experience.spec.ts
   - apps/web/e2e/discovery-card-details.spec.ts
   - apps/web/e2e/site-pages.spec.ts
+  - apps/web/e2e/admin-operations-full-stack.spec.ts
   - apps/web/e2e/navigation.spec.ts
   - apps/web/e2e/planner-premium.spec.ts
   - tools/e2e-runtime-api.mjs

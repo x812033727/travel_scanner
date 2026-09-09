@@ -1,6 +1,12 @@
-import { render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import PricingPage from "./page";
+import { ThemeProvider } from "@/components/theme-provider";
+
+async function renderPricing(locale = "zh-TW") {
+  const page = await PricingPage({ params: Promise.resolve({ locale }) });
+  await act(async () => { render(page, { wrapper: ThemeProvider }); });
+}
 
 const registrationState = vi.hoisted(() => ({ value: "open" as "open" | "closed" | "unavailable" }));
 const { defaultPackages, usageState } = vi.hoisted(() => {
@@ -43,7 +49,7 @@ describe("usage-pack pricing", () => {
 
   it("shows one-time, non-expiring packages and disabled purchase actions", async () => {
     vi.stubGlobal("fetch", vi.fn(() => new Promise<Response>(() => undefined)));
-    render(await PricingPage({ params: Promise.resolve({ locale: "zh-TW" }) }));
+    await renderPricing();
 
     expect(screen.getByRole("heading", { name: /不綁月租的旅遊查價次數/ })).toBeTruthy();
     expect(screen.getByText(/註冊先送 3 次/)).toBeTruthy();
@@ -58,7 +64,7 @@ describe("usage-pack pricing", () => {
   it("replaces the free registration link when registration is closed", async () => {
     registrationState.value = "closed";
     vi.stubGlobal("fetch", vi.fn(() => new Promise<Response>(() => undefined)));
-    render(await PricingPage({ params: Promise.resolve({ locale: "zh-TW" }) }));
+    await renderPricing();
 
     expect(screen.getByText("目前暫停開放註冊")).toBeTruthy();
     expect(screen.queryByRole("link", { name: "免費取得 3 次" })).toBeNull();
@@ -67,7 +73,7 @@ describe("usage-pack pricing", () => {
   it("does not expose registration when status cannot be confirmed", async () => {
     registrationState.value = "unavailable";
     vi.stubGlobal("fetch", vi.fn(() => new Promise<Response>(() => undefined)));
-    render(await PricingPage({ params: Promise.resolve({ locale: "zh-TW" }) }));
+    await renderPricing();
 
     expect(screen.getByText("暫時無法確認註冊狀態")).toBeTruthy();
     expect(screen.queryByRole("link", { name: "免費取得 3 次" })).toBeNull();
@@ -78,7 +84,7 @@ describe("usage-pack pricing", () => {
     ["ja", "日本語パック"], ["ko", "한국어 팩"],
   ])("renders the localized package returned for %s", async (locale, name) => {
     usageState.value.catalog.packages = [{ ...defaultPackages[0], name }];
-    render(await PricingPage({ params: Promise.resolve({ locale }) }));
+    await renderPricing(locale);
     expect(screen.getByText(name)).toBeTruthy();
   });
 });
