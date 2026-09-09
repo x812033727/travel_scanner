@@ -126,14 +126,15 @@ Implement the approved Mokaair frontend, six palettes and managed information pa
 - [x] Language is reachable at the top, six palettes share state, existing planner palettes remain selectable.
 - [x] Four five-language information documents support draft, preview, CAS, audited publication and revision restoration.
 - [ ] Safe frontend close/back/focus flows have regression coverage and desktop/mobile browser evidence.
-- [ ] Relevant local checks and full CI pass; PR remains unmerged.
+- [x] Relevant local checks and full CI pass; PR remains unmerged.
 
 ## Steps
 
 - [x] API/revisions/first drafts: hotspot_sources_kaohsiung.
 - [x] Theme/root navigation: hotspot_sources_taipei.
 - [x] Interaction/planner guards: archive_publication_audit.
-- [ ] CMS Web, discovery cards, integration, verification and PR: root.
+- [x] CMS Web, discovery cards, integration, automated verification and PR: root.
+- [ ] Built-in-browser manual acceptance on an approved isolated preview: root.
 
 ## How to verify
 
@@ -145,4 +146,6 @@ Task ownership: old review claims overlap this follow-up but their product chang
 
 Initial verification: API focused 86 passed / 18 skipped (PostgreSQL-only cases require CI); root CMS/discovery 50 passed; earlier agent-focused theme and interaction suites passed apart from one subsequently fixed mobile focus regression. Production webpack build including TypeScript passed; final overlay integration changed afterward and is included in CI. Full local parallel tests were stopped because available RAM fell below 40 MB; no full-pass claim. A local preview server launch was rejected by the execution policy, so built-in browser palette evidence remains pending. No policies published, no merge or deployment.
 
-Draft PR: https://github.com/x812033727/travel_scanner/pull/380. Follow-up evidence and exact remaining manual acceptance are recorded in docs/site-experience.md. CI-discovered strict types, managed-metadata/root-provider fixtures and admin registry navigation have been corrected. Current-head CI and approved-preview manual browser verification remain open; do not mark this task complete or merge automatically.
+Draft PR: https://github.com/x812033727/travel_scanner/pull/380. Follow-up evidence and exact remaining manual acceptance are recorded in docs/site-experience.md. CI-discovered strict types, managed-metadata/root-provider fixtures and admin registry navigation have been corrected. At that earlier checkpoint, current-head CI and approved-preview manual browser verification were both still open; the final code verification follows below.
+
+Code revision 470d16d6 is now fully green: API 2,805 passed / 15 skipped; Web units 1,445 passed; browser UI 376 passed / 4 skipped; migrations, Ruff, mypy, i18n, TypeScript, lint, build, containers, full-stack, planner and discovery workflows passed. Native multi-entry Back and the admin topbar overlap are fixed and verified. Twelve final-code palette screenshots were inspected. Latest main d9ef8fcd is incorporated without changing its hotel fixes. Only the approved-preview built-in-browser manual acceptance remains open; policy publication, PR merge and deployment are still not authorized.

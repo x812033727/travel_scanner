@@ -4,7 +4,7 @@
 
 This release adds three palette families (mocha, lagoon and forest), each in light and dark mode, moves language controls to top headers, expands all reviewed card topics and separates reading sources into articles and videos. Empty introductions and coordinate-only fact sections render nothing. Data, moderation gates, provider costs and API identifiers are unchanged.
 
-The original dirty checkout remains untouched. The feature branch starts at main `95122362` and incorporates main `a8be96cd`, preserving the intervening Stay22 changes. This change does not merge a PR, deploy, publish a policy, collect personal data or submit a paid provider request as part of verification.
+The original dirty checkout remains untouched. The feature branch starts at main `95122362` and incorporates main `d9ef8fcd`, preserving the intervening Stay22 integration and first-click/retry fixes. This change does not merge this PR, deploy, publish a policy, collect personal data or submit a paid provider request as part of verification.
 
 ## Information-page workflow
 
@@ -40,6 +40,12 @@ Local checks and built-in browser observations are recorded in the task/PR when 
 
 ### Current verification and remaining acceptance
 
+- Validated code revision: `470d16d6dea750f1643e7745f94652d6c47daa99`. [Full CI](https://github.com/x812033727/travel_scanner/actions/runs/34357389559) and the planner/discovery workflows passed: 2,805 API cases (15 skipped), 1,445 Web unit cases and 376 isolated browser cases (4 skipped), with Ruff, mypy, fresh/upgrade PostgreSQL migrations, TypeScript, lint, i18n, production builds, containers and full-stack workflows. Subsequent documentation-only commits do not change this implementation; current-head checks are linked from the PR.
+- The native same-document Back regression is resolved: both accept/cancel cases pass on desktop and Pixel 7, including the chosen destination and retained draft assertions. The eight-width topbar checks also pass. All twelve final palette screenshots were visually inspected. [Final-code automated screenshots](https://github.com/x812033727/travel_scanner/actions/runs/34357389559/artifacts/10106686351) are synthetic CI captures, not built-in-browser manual evidence.
+- **Only manual acceptance remains open:** an approved isolated preview is needed for the built-in-browser checks below. Policies remain unpublished, and the PR remains a draft without merge or deployment.
+
+Earlier checkpoints are retained below for traceability; their subsequently fixed failures are not current open regressions:
+
 - PR: https://github.com/x812033727/travel_scanner/pull/380 (draft; no merge or deployment).
 - Local production webpack build/TypeScript completed; subsequent fixes are checked against the current head in CI. Latest local full ESLint and five-language checks passed.
 - Local focused evidence: initial API 86 passed / 18 skipped; CMS/discovery 50 passed; publication-only rendering/loader 20 passed; shared overlays/navigation/mobile 36 passed; managed metadata 41 passed; root-provider page fixtures 9 passed; palette tokens and fill-gradient checks 24 passed.
@@ -68,6 +74,6 @@ This is a coverage inventory, not a claim of completed manual acceptance. The ne
 | Pet friendly | No direct pet-page journey in these six suites | Visibility gate, filters, unknown conditions, sources and detail close; reports/trip additions only on isolated fixtures |
 | Login | Error state, email retained/password cleared, return query and maximum-font layout | Keyboard/password reveal/Back; successful auth, reset and verification mail only with test accounts |
 | My/account | All six palettes through actual controls, contrast/focus samples, persisted and system preferences | Account menus, sign-out and setting windows; no changes to real credentials or personal data |
-| Information/CMS | Exact-locale metadata, unpublished/unavailable states, read-only permissions and synthetic revision workflow | Multi-entry Back regression resolution, long editor controls and human document review; no real publication |
+| Information/CMS | Exact-locale metadata, unpublished/unavailable states, read-only permissions, synthetic revision workflow and native multi-entry Back | Long editor/touch controls and human document review; no real publication |
 
 For every manual row, use desktop and Pixel 7 dimensions, keyboard and touch, large text, both brightness modes, nested layers and service-error states. Record the preview URL/commit, observed result and screenshot before checking a row complete. When a module is disabled, inspect its unavailable state without changing production settings. Shared jsdom dialog tests mock native `showModal`; they establish component contracts, not browser top-layer behavior.
