@@ -4,6 +4,7 @@ import { ExternalLink, X } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { useModalSheet } from "@/lib/modal-sheet";
+import type { HotelBookingPlacement } from "@/lib/hotel-booking-placement";
 import { stay22AllezCopy, stay22AllezText } from "@/lib/stay22-allez-copy";
 import { useStay22BookingContext, type BookingContext } from "@/lib/stay22-booking-context";
 import type { Product } from "./catalog";
@@ -78,7 +79,7 @@ export function BookingPanel({
   startDate?: string;
   endDate?: string;
   bookingContext?: BookingContext | null;
-  placement: string;
+  placement: HotelBookingPlacement;
   onClose: () => void;
 }) {
   const t = useTranslations("travelServices");

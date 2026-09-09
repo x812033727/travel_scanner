@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import re
 from datetime import UTC, date, datetime
-from typing import Literal
+from typing import Literal, get_args
 from urllib.parse import quote, unquote, urlencode, urlsplit
 
 from app.i18n import LOCALES, Locale
@@ -23,8 +23,10 @@ from app.travel_services.schemas import (
     Stay22Config,
 )
 
-BookingPlacement = Literal["destination", "hotspot", "trip", "stay", "checklist"]
-BOOKING_PLACEMENTS = frozenset({"destination", "hotspot", "trip", "stay", "checklist"})
+BookingPlacement = Literal["destination", "hotspot", "trip", "stay", "checklist", "discovery"]
+# The HTTP boundary and campaign builder share this finite set: a new public
+# entry point must not pass one check and then fail after the user clicks.
+BOOKING_PLACEMENTS = frozenset(get_args(BookingPlacement))
 BookingChannel = Literal["existing", "stay22", "direct"]
 
 # Deliberately narrower than generic reviewed links: Allez must get a property,
