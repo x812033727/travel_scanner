@@ -1,7 +1,7 @@
 ---
 id: 2026-09-09-frontend-flow-integration
 title: Frontend flow navigation planning handoff and acceptance
-status: in-progress
+status: review
 priority: P1
 area: web
 owner: codex-frontend-flow
@@ -58,14 +58,14 @@ Make the approved explore → save → trip journey calm and continuous, without
 
 ## Definition of done
 
-- [ ] Four consistent navigation destinations, optional search form, contextual planning and safe new-trip handoff.
+- [x] Four consistent navigation destinations, optional search form, contextual planning and safe new-trip handoff.
 - [ ] Five languages, accessible desktop/mobile and dark mode; regression tests and full-stack acceptance.
-- [ ] PR with verified checks; merge and deployment remain separately authorized.
+- [ ] PR #374 with verified checks; merge and deployment remain separately authorized.
 
 ## Steps
 
-- [ ] Implement navigation, My directory and standalone search form.
-- [ ] Integrate shared save and contextual trip selection, retaining creation recovery.
+- [x] Implement navigation, My directory and standalone search form.
+- [x] Integrate shared save and contextual trip selection, retaining creation recovery.
 - [ ] Exercise fixture and full-stack scenarios, document evidence and open PR.
 
 ## How to verify
@@ -77,3 +77,5 @@ Run web lint/i18n/types/Vitest/build, API Ruff/mypy/pytest/migration, desktop an
 Base main 7cee8650 includes planner PR #373. Owner authorized task-only closure dcc97fbd, imported as f7b78cc, and released new-trip-form for a minimal success handoff. No itinerary timeline/draft behavior changes.
 
 CI acceptance surfaced native nested dialog cancel/close propagation and a new-trip mobile navigation overlap. Both are fixed without weakening Escape assertions; 12 focused dialog/navigation tests pass. The standalone search metadata follows all five existing locale catalogs; 41 metadata tests and i18n checks pass. TypeScript passed after regenerating a corrupted local development type cache. Discovery desktop/Pixel 7 five-language editorial screenshots pass and are retained as explicitly synthetic fixture renders. Complete rerun remains required before review handoff.
+
+PR: https://github.com/x812033727/travel_scanner/pull/374. Review status means the PR is open; it is not merge/deployment authorization or a claim that pending CI is complete. The current PR checks remain the authoritative final acceptance record.

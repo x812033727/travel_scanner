@@ -1,7 +1,7 @@
 ---
 id: 2026-09-09-frontend-flow-discovery-web
 title: Editorial discovery and unified collection frontend
-status: in-progress
+status: review
 priority: P1
 area: web
 owner: codex-discovery-flow-web
@@ -61,6 +61,7 @@ Root runs `npm run typecheck:web`, production build and desktop/Pixel 7 Playwrig
 
 ## Notes
 
+- PR: https://github.com/x812033727/travel_scanner/pull/374. In review; the full CI suite is being rerun after compatibility repairs. Focused passing evidence below does not imply the current PR head is fully green, merged or deployed. Keep this task open until joint validation and merge evidence are recorded.
 - `/saved-items/all` and named lists are account-only and independent of community enrollment. Hotel/service and article/video/guide references are aliases, not duplicate saved rows. Non-restaurant UUID hex normalizes to dashed lowercase; opaque Google Place IDs retain case.
 - Save status probes batch up to 100 keys, coalesce sibling-card requests, and carry both mutation generations and per-key probe sequences. They never increment collection mutation revision.
 - Each login identity owns its async results and bounded in-memory page snapshots. No browsing history or private content is persisted to browser storage.

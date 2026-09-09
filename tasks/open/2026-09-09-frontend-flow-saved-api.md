@@ -1,7 +1,7 @@
 ---
 id: 2026-09-09-frontend-flow-saved-api
 title: Unified saved items and private inbox API
-status: in-progress
+status: review
 priority: P1
 area: api
 owner: codex-saved-flow
@@ -84,6 +84,9 @@ calls. Root owns the workflow and browser acceptance spec.
 
 ## Notes
 
+- PR #374 is open. Implementation is complete and this task is in review, not
+  done. Full PostgreSQL-enabled CI is being revalidated after the fixture fix;
+  no final pass, merge, or deployment is claimed yet.
 - Full local API verification before the final narrow refinements: Ruff passed,
   mypy 278 source files passed, pytest 2084 passed / 129 skipped in 339.46 seconds.
   One warning is the existing `test_usage_settings` AsyncMock coroutine warning;

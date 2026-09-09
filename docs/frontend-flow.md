@@ -29,4 +29,12 @@ New tests cover category/detail policy, 551+ saved rows and cursor deduplication
 
 Browser fixture screenshots are explicitly test-data renders, not evidence of live publishing. The opt-in `FRONTEND_CAPTURE_BASELINE=1` test only reads the public production homepage for before screenshots. `test-results` artifacts stay out of Git.
 
+### Visual and regression evidence
+
+- The public production before captures are `apps/web/test-results/frontend-before/{desktop,pixel7}-production-home.png`: the first screen is dominated by the date form.
+- The discovery acceptance artifact contains `after-home-{locale}.png` and `after-explore-dark-large-{locale}.png` for desktop and Pixel 7 across all five locales. They are synthetic content fixtures with no invented attraction photos. At standard text size the first card title is in the viewport; large/dark/reduced-motion views have no horizontal overflow.
+- Manual inspection of the Traditional Chinese captures confirmed compact search/category/destination controls, readable semantic dark surfaces and four direct bottom destinations. Reading-drawer Escape and focused creation-page navigation have dedicated regressions after the initial browser run exposed issues.
+- Full-stack acceptance uses ordinary email verification and sign-in with community disabled. It checks explicit save, list organization, destination/date entry in the existing creation form, calendar auto-close, confirmation after return, persisted trip dates/content, reload and base-save preservation after list deletion.
+- Local focused checks include 12 dialog/navigation, 41 metadata, 30 legacy frontend and 13 planning tests, plus the complete API suite (Windows cannot run the Linux `fcntl` module). PostgreSQL migrations/concurrency and full-suite Linux/browser results are recorded in [PR #374 checks](https://github.com/x812033727/travel_scanner/pull/374/checks); pending runs are not counted as passes.
+
 After authorized deployment, verify discovery ON/community OFF, ordinary public reading and private saved state with a real browser. Do not infer retention improvement from passing tests; reuse existing first-party events without new cross-day tracking.

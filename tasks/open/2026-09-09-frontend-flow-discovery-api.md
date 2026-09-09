@@ -1,7 +1,7 @@
 ---
 id: 2026-09-09-frontend-flow-discovery-api
 title: Public discovery categories and safe detail projections
-status: in-progress
+status: review
 priority: P1
 area: api
 owner: codex-discovery-flow-api
@@ -62,3 +62,4 @@ From apps/api with its directory on PYTHONPATH, use the installed sibling
 - Follow-up parent-approved scope adds only `/trips/options` canonical `destination_id` projection in the trip router plus a new frontend regression file. Existing catalog resolvers support stored IDs, localized destination names, airport aliases and legacy snapshot city names. Unknown or malformed values stay null; authenticated ownership, undated counts and saved-trip caps are unchanged. An actual-route SQLite regression checks those boundaries and private-data omission. The new flow API suite passed 10 tests; Ruff passed discovery/trip router/test; mypy passed 11 source files.
 - `frontend-plan-action.test.tsx` passed all 13 Vitest cases: one canonical destination match vs ambiguity, explicit dish restaurant/day/meal choice, every-day main-hotel replacement confirmation, guest login return with no reads/writes, account-bound create-trip marker and return-only confirmation, version-conflict refresh without automatic resubmit, network/504 unknown hotspot outcomes with no resend after reopening, exact original hotel body/path/key replay, and stale account read/write response isolation. Only Dialog is simplified for these transport tests; real buttons and effects remain mounted. The first run used unavailable jest-dom matchers; replacing those assertions with native DOM checks yielded a clean run without app changes.
 - CI follow-up, coordinated by parent with the parallel planner owner: `trip-editor.test.tsx` is claimed only for its top-level `next/navigation` mock. The single-line change adds `useSearchParams: () => new URLSearchParams()` required by the reused saved action in the hotel picker. The previously failing stay-area/main-hotel test passed (1 passed, 53 unselected), and scoped ESLint plus `git diff --check` passed. No production editor code or other assertions changed; no commit or push was made.
+- Review handoff: [PR #374](https://github.com/x812033727/travel_scanner/pull/374) is open. Source work is frozen; this task remains in review, not done, while the parent coordinates remaining CI and acceptance at the final PR head. CI is pending; no merge, deployment or production activation is claimed.
