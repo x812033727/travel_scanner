@@ -14,6 +14,7 @@ from app.community.content import public_media_refs, published_post
 from app.community.policy import public_profile, settings_for
 from app.community.videos import youtube_embed_metadata
 from app.db import escape_like
+from app.discovery.display_topics import attach_catalog_display_topics
 from app.discovery.policy import (
     aware,
     catalog_destination_ids,
@@ -23,6 +24,7 @@ from app.discovery.policy import (
     stamp,
 )
 from app.discovery.schemas import DiscoveryItem, Kind
+from app.discovery.taxonomy import display_category_topics
 from app.foods.publication import publishable_merchant_filters
 from app.i18n import Locale
 from app.models import (
@@ -71,6 +73,7 @@ def base_item(
         updated_at=stamp(updated),
         collection_ref={"kind": key_kind, "id": str(identifier)},
         topics=topics or [],
+        display_topics=display_category_topics(kind, topics or [], cast(Locale, locale)),
     )
 
 
@@ -88,6 +91,7 @@ async def catalog_items(
 ) -> list[DiscoveryItem]:
     """Every query is limited; explicit references never widen into a catalog scan."""
     output: list[DiscoveryItem] = []
+    hotspot_refs: dict[str, UUID] = {}
     destinations = catalog_destination_ids(destinations or [])
     q_city = destination_id(q) if q else ""
     visibility = await effective_site_visibility(session)
@@ -170,6 +174,7 @@ async def catalog_items(
             }
             if hotspot.map_match_status == "verified":
                 item.place_ref["selection_path"] = f"/hotspots/{hotspot.id}/trip-selections"
+            hotspot_refs[item.id] = hotspot.id
             output.append(item)
 
     if enabled("food"):
@@ -434,6 +439,7 @@ async def catalog_items(
             item.published_at = stamp(guide.published_at)
             item.locale = guide.locale
             item.content = {"text": guide.summary or "", "format": "plain"}
+            hotspot_refs[item.id] = hotspot.id
             if guide.content_type == "video":
                 item.video = {
                     "provider": guide.provider,
@@ -442,6 +448,7 @@ async def catalog_items(
                     **youtube_embed_metadata(guide),
                 }
             output.append(item)
+    await attach_catalog_display_topics(session, output, hotspot_refs, locale)
     return output
 
 

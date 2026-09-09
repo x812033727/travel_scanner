@@ -102,7 +102,8 @@ describe("unified discovery interactions", () => {
     mock.api.mockResolvedValue({ ...item, detail: { intro: null, merchants: [], guides: [], hotel: null, planning: null, place: { status: "ready", address: "Hiroshima, Japan", opening_hours: { weekday_descriptions: ["Monday: Open 24 hours"] }, coordinates: { latitude: 34.395483, longitude: 132.453592, source: "wikidata" }, google_maps_url: "https://maps.google.com/?q=Hiroshima", official_website_url: "javascript:alert(1)", fetched_at: "2026-09-09T00:00:00Z", attribution: { provider: "Google Maps", provider_url: "https://maps.google.com/", third_party: [{ provider: "City", providerUri: "https://example.com/city" }] } } } });
     render(<DiscoveryDetails kind="hotspot" id={id} />);
     expect(await screen.findByText("Hiroshima, Japan")).toBeTruthy(); expect(screen.getByText("Monday: Open 24 hours")).toBeTruthy();
-    expect(screen.getByText(/34.395483, 132.453592/)).toBeTruthy(); expect(screen.getByRole("link", { name: "Google Maps" }).getAttribute("rel")).toBe("noopener noreferrer");
+    expect(screen.queryByText(/34.395483|132.453592|經緯度/)).toBeNull(); expect(screen.queryByRole("button", { name: "複製" })).toBeNull();
+    expect(screen.getByRole("link", { name: "Google Maps" }).getAttribute("rel")).toBe("noopener noreferrer");
     expect(screen.queryByRole("link", { name: "官方網站" })).toBeNull();
   });
   it("can delete an unavailable legacy tombstone without permitting a new unsupported save", async () => {

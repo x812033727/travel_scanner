@@ -82,7 +82,7 @@ jobs:
           exit 1
       - run: npx playwright install --with-deps chromium
       - name: Desktop and Pixel 7 discovery UI fixtures
-        run: npx playwright test e2e/discovery.spec.ts e2e/frontend-flow.spec.ts --workers=1 --output test-results/discovery-fixtures
+        run: npx playwright test e2e/discovery.spec.ts e2e/frontend-flow.spec.ts e2e/discovery-card-details.spec.ts --workers=1 --output test-results/discovery-fixtures
         working-directory: apps/web
       - name: Unmocked login, invitations, private collections and public withdrawal
         run: npx playwright test e2e/discovery-full-stack.spec.ts e2e/frontend-flow-full-stack.spec.ts --workers=1 --output test-results/discovery-full-stack
