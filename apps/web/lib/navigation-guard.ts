@@ -52,8 +52,11 @@ export function useNavigationGuard(enabled: boolean, requestLeave: LeaveRequest)
       // Capture before Next handles popstate, including a history-menu jump past our sentinel.
       // Restoring our URL keeps the current component and its draft mounted during confirmation.
       event.stopImmediatePropagation();
+      const destinationUrl = window.location.href;
       window.history.pushState(guardState, "", url);
-      guard.request(() => window.history.back());
+      // Consuming the restored guard already reaches a different-URL destination.
+      // Only the same-URL base entry needs another Back to leave the editor.
+      guard.request(() => { if (destinationUrl === url) window.history.back(); });
     };
     const onClick = (event: MouseEvent) => {
       if (!armed || bypassClick || guards.at(-1) !== guard || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;

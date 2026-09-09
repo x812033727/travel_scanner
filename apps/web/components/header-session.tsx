@@ -59,6 +59,8 @@ export function HeaderSessionProvider({
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const query = searchParams?.toString() || "";
+  const latestRoute = useRef({ pathname, query });
   const locale = useLocale();
   const loadedLocale = useRef<string | undefined>(undefined);
   const requestId = useRef(0);
@@ -74,6 +76,10 @@ export function HeaderSessionProvider({
       setSessionIdentity({});
     }
   }, []);
+
+  useEffect(() => {
+    latestRoute.current = { pathname, query };
+  }, [pathname, query]);
 
   useEffect(() => {
     if (!hasSession) return;
@@ -104,9 +110,9 @@ export function HeaderSessionProvider({
             // A deferred confirmation must not revive a signed-out session's preference.
             if (requestId.current !== currentRequest) return;
             document.cookie = `travel_locale=${preferredLocale}; path=/; max-age=31536000; samesite=lax`;
-            // usePathname carries no query or fragment; dropping them here used
-            // to strip ?destination_id=... from deep links during the redirect.
-            const query = searchParams?.toString() || "";
+            // Auth and leave approval can arrive after a same-locale SPA navigation.
+            // Preserve the current route, query and fragment instead of the request's route.
+            const { pathname, query } = latestRoute.current;
             router.replace(
               `${pathname}${query ? `?${query}` : ""}${window.location.hash}`,
               { locale: preferredLocale },

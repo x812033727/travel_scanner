@@ -4,15 +4,17 @@ import { useNavigationGuard } from "@/lib/navigation-guard";
 import { HeaderSessionProvider, useHeaderSession } from "./header-session";
 
 const mocks = vi.hoisted(() => ({
+  pathname: "/admin/site-pages",
+  query: "page=privacy&content=hotel%3Afixture",
   router: { replace: vi.fn(), push: vi.fn(), refresh: vi.fn() },
 }));
 vi.mock("next-intl", () => ({ useLocale: () => "en" }));
 vi.mock("@/i18n/navigation", () => ({
-  usePathname: () => "/admin/site-pages",
+  usePathname: () => mocks.pathname,
   useRouter: () => mocks.router,
 }));
 vi.mock("next/navigation", () => ({
-  useSearchParams: () => new URLSearchParams("page=privacy&content=hotel%3Afixture"),
+  useSearchParams: () => new URLSearchParams(mocks.query),
 }));
 
 const user = { id: "fixture-admin", email: "admin@example.com", preferred_locale: "zh-TW" };
@@ -21,6 +23,8 @@ let originalUrl: string;
 
 beforeEach(() => {
   vi.clearAllMocks();
+  mocks.pathname = "/admin/site-pages";
+  mocks.query = "page=privacy&content=hotel%3Afixture";
   window.sessionStorage.clear();
   originalUrl = window.location.href;
   window.history.replaceState({ __NA: true, tree: "preserved" }, "", route);
@@ -80,6 +84,14 @@ function pendingAuthentication(requestLeave: (proceed: () => void) => boolean) {
   return {
     fetchMock,
     complete: () => act(async () => { finish(new Response(JSON.stringify(user))); }),
+    changeRoute: (pathname: string, query: string, hash: string) => {
+      mocks.pathname = pathname;
+      mocks.query = query;
+      window.history.replaceState(window.history.state, "", `/en${pathname}?${query}${hash}`);
+      view.rerender(<HeaderSessionProvider>
+        <SessionProbe dirty requestLeave={requestLeave} />
+      </HeaderSessionProvider>);
+    },
   };
 }
 
@@ -136,6 +148,28 @@ describe("stored header locale respects draft navigation protection", () => {
     expect(cookieWrite).not.toHaveBeenCalled();
     expect(mocks.router.replace).not.toHaveBeenCalled();
     expect(screen.getByText("signed_out")).toBeTruthy();
+    expect(authentication.fetchMock).toHaveBeenCalledOnce();
+  });
+
+  it("uses the latest same-locale SPA route when deferred authentication is approved", async () => {
+    let approve: (() => void) | undefined;
+    const cookieWrite = vi.spyOn(document, "cookie", "set");
+    const authentication = pendingAuthentication((proceed) => { approve = proceed; return false; });
+    authentication.changeRoute("/admin/layout-settings", "tab=visibility&content=hotel%3Acurrent", "#settings");
+    await authentication.complete();
+    expect(screen.getByText("authenticated")).toBeTruthy();
+    expect(approve).toBeTypeOf("function");
+    expect(cookieWrite).not.toHaveBeenCalled();
+    expect(mocks.router.replace).not.toHaveBeenCalled();
+    expect(authentication.fetchMock).toHaveBeenCalledOnce();
+    act(() => approve?.());
+    expect(cookieWrite).toHaveBeenCalledExactlyOnceWith(
+      "travel_locale=zh-TW; path=/; max-age=31536000; samesite=lax",
+    );
+    expect(mocks.router.replace).toHaveBeenCalledExactlyOnceWith(
+      "/admin/layout-settings?tab=visibility&content=hotel%3Acurrent#settings", { locale: "zh-TW" },
+    );
+    expect(mocks.router.push).not.toHaveBeenCalled();
     expect(authentication.fetchMock).toHaveBeenCalledOnce();
   });
 });

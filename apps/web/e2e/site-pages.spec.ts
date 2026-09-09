@@ -131,3 +131,38 @@ test("a delayed account language preference cannot discard a document draft", as
   expect(cookie?.value).not.toBe("ja");
   expect(writes).toHaveLength(0);
 });
+
+for (const cancel of [false, true]) {
+  test(`jumping back across the draft history guard ${cancel ? "can be cancelled without losing edits" : "honours the selected destination"}`, async ({ page, baseURL, isMobile }) => {
+    const writes = await adminFixtures(page, baseURL!);
+    const sessionReady = page.waitForResponse((response) => new URL(response.url()).pathname === "/api/travel/auth/me" && response.request().method() === "GET");
+    await page.goto("/en/admin/settings");
+    await sessionReady;
+    const documentStarted = await page.evaluate(() => performance.timeOrigin);
+    // Use real Next links so all three entries share a document. Separate goto()
+    // loads would exercise beforeunload instead of the SPA popstate guard.
+    for (const name of ["Operations overview", "Site information"]) {
+      if (isMobile) await page.getByRole("button", { name: "Open operations menu", exact: true }).click();
+      await page.getByRole("navigation", { name: "Operations console", exact: true }).getByRole("link", { name, exact: true }).click();
+      await expect(page).toHaveURL(name === "Operations overview" ? /\/en\/admin$/ : /\/en\/admin\/site-pages$/);
+    }
+    expect(await page.evaluate(() => performance.timeOrigin), "history entries must remain in the same document").toBe(documentStarted);
+    const field = page.getByRole("textbox", { name: "Document title", exact: true });
+    await field.fill("Keep the selected history destination");
+    await expect(page.getByRole("button", { name: "Save draft", exact: true })).toBeEnabled();
+    await expect.poll(() => page.evaluate(() => Boolean(window.history.state?.mokaairNavigationGuard))).toBe(true);
+    const confirmation = page.waitForEvent("dialog");
+    // Native multi-entry traversal models choosing the preceding page in the browser's Back menu.
+    await page.evaluate(() => window.history.go(-2));
+    const prompt = await confirmation;
+    if (cancel) {
+      await prompt.dismiss();
+      await expect(page).toHaveURL(/\/en\/admin\/site-pages$/);
+      await expect(field).toHaveValue("Keep the selected history destination");
+      page.once("dialog", (nextPrompt) => nextPrompt.accept());
+      await page.goBack();
+    } else await prompt.accept();
+    await expect(page).toHaveURL(/\/en\/admin$/);
+    expect(writes).toHaveLength(0);
+  });
+}
