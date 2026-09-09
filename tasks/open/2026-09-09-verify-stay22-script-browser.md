@@ -47,3 +47,14 @@ canonical URLs are routed locally, and unrecognized external hosts are aborted.
 No production bypass flag, external SDK download or live affiliate click is used.
 Primary source code is owned by the architecture/backend agents; this task owns only
 the new test file. Integration must await the root's coordinated production build.
+
+Initial browser run exposed a test-transport limitation: a fulfilled canonical
+HTTP redirect can bypass Playwright routing. Four query/mode-change cases may have
+made unintended read-only production requests; their fallback page content did not
+match the local fixtures. Do not describe that initial run as zero-network. No live
+hotel/affiliate target was clicked. The repaired harness forces browser offline
+mode and proves it with an un-intercepted reserved .invalid canary; all intended
+requests are fulfilled through Node's loopback transport. Query redirects are
+asserted via local HTTP with redirects disabled, then their clean target is opened
+separately. It also closes browser contexts before stopping the fixture server,
+avoiding ECONNRESET from in-flight legacy navigation prefetch during teardown.

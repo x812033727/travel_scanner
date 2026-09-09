@@ -1,7 +1,7 @@
 ---
 id: 2026-09-09-isolate-public-stay22-script
 title: Isolate public Stay22 script document and hotel links
-status: in-progress
+status: review
 priority: P1
 area: web
 owner: codex-stay22-script-ui

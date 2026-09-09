@@ -100,6 +100,7 @@ const test = base.extend<{ site: Fixture }>({
     server.stdout.on("data", (chunk) => { logs = `${logs}${chunk}`.slice(-12_000); });
     server.stderr.on("data", (chunk) => { logs = `${logs}${chunk}`.slice(-12_000); });
     server.on("error", (error) => { logs += error.message; });
+    let shuttingDown = false;
     const observe = (page: Page) => {
       page.on("pageerror", (error) => site.errors.push(error.message));
       page.on("console", (message) => {
@@ -115,10 +116,15 @@ const test = base.extend<{ site: Fixture }>({
         catch { return 0; }
       }, { timeout: 30_000 }).toBe(200);
       site.api.length = 0;
+      // Browser offline mode is an independent transport guard: Playwright can
+      // skip a route handler after a fulfilled redirect. Local Node route.fetch
+      // still works, but an escaped browser request cannot reach the network.
+      await context.setOffline(true);
       // Canonical browser URLs are fully intercepted. This exercises production
       // Host/origin gates without adding any production bypass switch.
       await context.route("**/*", async (route) => {
         const url = new URL(route.request().url());
+        if (url.hostname === "offline-canary.invalid") return route.continue();
         if (url.href === STAY22_SCRIPT_URL) {
           site.sdkLoads.push(url.href);
           if (site.sdk === "fail") return route.abort();
@@ -134,15 +140,32 @@ const test = base.extend<{ site: Fixture }>({
         }
         if (["mokaair.com", "www.mokaair.com", "preview.example.test"].includes(url.hostname) || url.origin === site.origin) {
           const headers = { ...await route.request().allHeaders(), host: url.host, "x-forwarded-host": url.host, "x-forwarded-proto": url.protocol.slice(0, -1) };
-          const response = await route.fetch({ url: `${site.origin}${url.pathname}${url.search}`, headers, maxRedirects: 0 });
-          return route.fulfill({ response });
+          try {
+            const response = await route.fetch({ url: `${site.origin}${url.pathname}${url.search}`, headers, maxRedirects: 0 });
+            // Query stripping is tested separately over local HTTP with redirects
+            // disabled. Never return a redirect that can escape browser routing.
+            if (response.status() >= 300 && response.status() < 400 && response.headers().location) {
+              throw new Error(`Unexpected browser fixture redirect: ${url.pathname}`);
+            }
+            return await route.fulfill({ response });
+          } catch (error) {
+            if (!shuttingDown) throw error;
+            return;
+          }
         }
         site.blocked.push(url.href);
         return route.abort();
       });
+      const canary = await context.newPage();
+      await expect(canary.goto("https://offline-canary.invalid/probe")).rejects.toThrow("ERR_INTERNET_DISCONNECTED");
+      await canary.close();
       await runTest(site);
     } finally {
       await testInfo.attach("isolated-script-server", { body: logs, contentType: "text/plain" });
+      // Close pages before their local transport. Otherwise legacy Link prefetch
+      // may still be using route.fetch and fail with ECONNRESET during teardown.
+      shuttingDown = true;
+      await context.close();
       if (server.exitCode === null && server.signalCode === null) {
         const exited = once(server, "exit"); server.kill(); await exited;
       }
@@ -174,6 +197,7 @@ test("public Script rewrites dynamically opened original links without Allez dou
   const { opener, dialog } = await sheet(page);
   const booking = dialog.getByRole("link", { name: /前往 Booking.com/ });
   await expect(booking).toHaveAttribute("href", /^https:\/\/stay22\.example\.test\/booking\?/);
+  expect(site.api.filter((call) => call.path.includes("stay22-script")).every((call) => !call.cookie && !call.authorization)).toBe(true);
   expect(new URL((await booking.getAttribute("href"))!).searchParams.get("link")).toBe(bookingUrl);
   await expect(dialog.getByRole("link", { name: /飯店官網/ })).toHaveAttribute("href", officialUrl);
   await expect(dialog.locator("form")).toHaveCount(0);
@@ -216,7 +240,7 @@ test("SDK load failure retains honest original hotel links", async ({ page, site
 
 test("saved mode toggle takes effect on reload and preserves the original Allez panel when off", async ({ page, site }) => {
   site.mode = "allez";
-  await page.goto(`${canonical}${publicPath}?type=hotel`);
+  await page.goto(`${canonical}${publicPath}`);
   await expect(page.locator(".public-app-shell")).toBeVisible();
   await expect(page.getByRole("heading", { name: hotel.title })).toBeVisible();
   expect(site.sdkLoads).toEqual([]);
@@ -355,8 +379,18 @@ test("native navigation from a private document cannot expose its referrer to Sc
   expect(site.blocked).toEqual([]);
 });
 
-test("private query conditions are removed before Script and URL fragments prevent loading", async ({ page, site }) => {
-  await page.goto(`${canonical}${publicPath}?trip_id=private-fixture&check_in=2099-11-10`);
+test("private query conditions are removed before Script and URL fragments prevent loading", async ({ page, request, site }) => {
+  // Verify the actual Next redirect over local HTTP, then open its clean target
+  // as a separate browser navigation. Fulfilled browser redirects can bypass
+  // Playwright routing; offline mode would stop them, not silently call live.
+  const redirect = await request.get(`${site.origin}${publicPath}?trip_id=private-fixture&check_in=2099-11-10`, {
+    headers: { Host: "mokaair.com", "X-Forwarded-Host": "mokaair.com", "X-Forwarded-Proto": "https" }, maxRedirects: 0,
+  });
+  expect(redirect.status()).toBe(307);
+  const target = new URL(redirect.headers().location, canonical);
+  expect(target.href).toBe(`${canonical}${publicPath}`);
+  expect(await redirect.text()).not.toContain(STAY22_SCRIPT_URL);
+  await page.goto(target.href);
   await expect(page).toHaveURL(`${canonical}${publicPath}`);
   await expect.poll(() => site.sdkLoads.length).toBe(1);
   await expect.poll(() => page.evaluate(() => (window as MockWindow).__stay22Mock?.documentUrl)).toBe(`${canonical}${publicPath}`);

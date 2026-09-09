@@ -1,7 +1,7 @@
 ---
 id: 2026-09-09-add-privacy-scoped-stay22-script-backend
 title: Add privacy scoped Stay22 script backend
-status: in-progress
+status: review
 priority: P1
 area: api
 owner: codex-stay22-backend

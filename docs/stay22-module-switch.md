@@ -89,6 +89,14 @@ Script mode/ID in the admin UI. Verify a small genuine visit in Chrome and Hub
 before calling the SDK or account attribution verified. Do not relabel the older
 Allez verification as LMA verification.
 
+Browser fixtures enforce offline mode with a disconnected-network canary in
+addition to request interception. Query stripping is asserted over loopback HTTP
+with redirects disabled, followed by a separate clean-document browser check.
+An earlier exploratory fixture could let fulfilled redirects escape interception
+and may have made unintended production page GETs; that run is not network-isolation
+evidence. The affected CI runs were canceled before publishing the corrected
+transport. No real affiliate click or booking is claimed by any of these checks.
+
 Local validation: full Ruff and mypy (291 application files), full ESLint,
 five-language checks, 27 tooling tests and a production Next build (267 routes)
 passed. Backend scope has 326 passing tests and two PostgreSQL-only skips;

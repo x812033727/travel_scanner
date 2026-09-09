@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**22 open · 5 in progress · 2 blocked · 8 in review · 194 done**
+**22 open · 1 in progress · 2 blocked · 12 in review · 194 done**
 
 ## Ready to claim
 
@@ -32,10 +32,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
-| [Preserve no-referrer on external clickout responses](open/2026-09-09-preserve-clickout-referrer-policy.md) | codex-clickout-headers | 2026-09-09T13:14:19Z | `codex/stay22-modular-toggle` |
-| [Clarify the modular hotel affiliate switch and original-channel fallback](open/2026-09-09-clarify-stay22-module-switch.md) | codex-stay22-module | 2026-09-09T13:15:13Z | `codex/stay22-modular-toggle` |
-| [Add privacy scoped Stay22 script backend](open/2026-09-09-add-privacy-scoped-stay22-script-backend.md) | codex-stay22-backend | 2026-09-09T13:26:11Z | `codex/stay22-modular-toggle` |
-| [Isolate public Stay22 script document and hotel links](open/2026-09-09-isolate-public-stay22-script.md) | codex-stay22-script-ui | 2026-09-09T13:26:57Z | `codex/stay22-modular-toggle` |
 | [Verify isolated Stay22 Script public browser flow](open/2026-09-09-verify-stay22-script-browser.md) | codex-stay22-script-e2e | 2026-09-09T13:32:33Z | `codex/stay22-modular-toggle` |
 
 ## In review
@@ -48,6 +44,10 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | [Editorial discovery and unified collection frontend](open/2026-09-09-frontend-flow-discovery-web.md) | codex-discovery-flow-web | `codex/frontend-explore-flow` |
 | [Frontend flow navigation planning handoff and acceptance](open/2026-09-09-frontend-flow-integration.md) | codex-frontend-flow | `codex/frontend-explore-flow` |
 | [Route apply state regression and semantic itinerary tones](open/2026-09-09-planner-route-tones.md) | codex | `codex/planner-route-tones` |
+| [Preserve no-referrer on external clickout responses](open/2026-09-09-preserve-clickout-referrer-policy.md) | codex-clickout-headers | `codex/stay22-modular-toggle` |
+| [Clarify the modular hotel affiliate switch and original-channel fallback](open/2026-09-09-clarify-stay22-module-switch.md) | codex-stay22-module | `codex/stay22-modular-toggle` |
+| [Add privacy scoped Stay22 script backend](open/2026-09-09-add-privacy-scoped-stay22-script-backend.md) | codex-stay22-backend | `codex/stay22-modular-toggle` |
+| [Isolate public Stay22 script document and hotel links](open/2026-09-09-isolate-public-stay22-script.md) | codex-stay22-script-ui | `codex/stay22-modular-toggle` |
 | [Archive completed catalog and hotel review evidence](open/2026-09-09-review-evidence-archive.md) | codex-review-archive | `codex/review-evidence-archive-20260909` |
 | [Compact discovery cards and source-linked details](open/2026-09-09-discovery-card-details.md) | codex-discovery-card-details | `codex/discovery-card-details-20260909` |
 

@@ -1,7 +1,7 @@
 ---
 id: 2026-09-09-preserve-clickout-referrer-policy
 title: Preserve no-referrer on external clickout responses
-status: in-progress
+status: review
 priority: P1
 area: web
 owner: codex-clickout-headers

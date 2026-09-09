@@ -1,7 +1,7 @@
 ---
 id: 2026-09-09-clarify-stay22-module-switch
 title: Clarify the modular hotel affiliate switch and original-channel fallback
-status: in-progress
+status: review
 priority: P1
 area: web
 owner: codex-stay22-module
@@ -36,7 +36,7 @@ from browser Script execution rather than imply the three OTA boxes control LMA.
 
 - [x] Inspect actual Hub details and editing restrictions in Chrome; user approved full scope.
 - [x] Add mode, Script ID, preserved settings and explicit document lifecycle explanation.
-- [ ] Validate UI, document separate native/Script contracts and hand over the feature PR.
+- [x] Validate UI, document separate native/Script contracts and hand over the feature PR.
 
 ## How to verify
 
@@ -53,8 +53,12 @@ that full scope. Reading Hub or showing enabled config is not proof of tracking.
 The previous d9ef8fcd first-click fix is live; this new Script work is not merged or
 deployed. Canonical dirty checkout remains untouched.
 
-Admin focused tests: 10 passed before final explanatory copy additions. Full
+Admin focused tests: 10 passed after final explanatory copy additions. Full
 ESLint, i18n, 27 tooling tests, Ruff, mypy (291 files) and final production Next
 build (267 routes including regenerated TypeScript route types) passed. CI now
 includes the isolated full Script browser suite. Full local Vitest was stopped
 under host memory pressure; do not report it as completed.
+
+Draft PR #383: https://github.com/x812033727/travel_scanner/pull/383.
+Full CI and final combined browser regression are still running. The draft is not
+merge/deployment authorization; leave production settings unchanged.
