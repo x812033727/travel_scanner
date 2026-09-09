@@ -1,11 +1,11 @@
 ---
 id: 2026-09-09-pr335-funnel-merge-integration
 title: Prepare PR 335 funnel integration against current main
-status: in-progress
+status: open
 priority: P1
 area: api
-owner: codex-pr335-merge-ready
-claimed_at: 2026-09-09T06:30:24Z
+owner:
+claimed_at:
 created_at: 2026-09-09T06:13:49Z
 completed_at:
 branch: codex/pr335-merge-ready-20260909
@@ -86,3 +86,24 @@ The existing `tasks/done/2026-09-07-observe-the-funnel.md` remains completed.
   the fresh PR CI before marking the remaining acceptance complete.
 - Parent owns the next normal main update after #343, push, fresh fixed-head CI and
   guarded #335 merge. This handoff performs no push, deployment or review-data replay.
+
+## Follow-up after #343 merged
+
+- Reclaimed this same narrow task and normally merged exact main
+  `d3426c86ba185326268fdcbb52825a8cfcd1438c` in merge commit
+  `16e41ba539e1e011aa061a613c001b3fa1ff12f2`. The only conflict was the
+  generated task board; it was regenerated with the task tool.
+- No additional runtime edits were needed. Independent read-only review confirmed
+  that account-token safety, account deletion, saved-item cleanup and analytics
+  internals exactly match new main. The sole runtime delta is still the original
+  flight event hook. The previously reviewed test extension is unchanged.
+- Re-ran analytics, trip creation/replay/intents/pricing/search, schema, community
+  foundation and saved-flow suites: **167 passed, 38 integration cases skipped**,
+  with two existing dependency deprecation warnings. The protected local test
+  environment remains `RUN_INTEGRATION_TESTS=0` and `127.0.0.1:1` endpoints.
+- Full API Ruff passed; mypy passed 278 files; tool tests passed 27; i18n passed
+  five locales and 25 namespaces; task checks passed 203 files. Existing unrelated
+  stale-claim and active-scope overlap warnings were not altered. Diff checks passed.
+- Released the task for parent handoff; PostgreSQL/Redis transaction assertions
+  still require fresh fixed-head CI. No push, remote mutation, merge or deployment
+  was performed by this subtask.
