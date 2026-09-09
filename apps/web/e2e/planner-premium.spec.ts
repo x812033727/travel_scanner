@@ -127,7 +127,7 @@ test("single-page creation needs only city and dates and opens an unpaid blank i
     if (path.endsWith("/auth/me")) return route.fulfill({ json: { id: "premium-create-ui", email: "create-ui@example.test", role: "user", is_active: true } });
     // The global shell and editor also read first-party state, never paid providers.
     if (request.method() === "GET" && ["/api/travel/saved-items", "/api/travel/trips"].includes(path)) return route.fulfill({ json: [] });
-    if (request.method() === "GET" && ["/api/travel/community/status", "/api/travel/analytics/config"].includes(path)) return route.fulfill({ json: { enabled: false } });
+    if (request.method() === "GET" && ["/api/travel/community/status", "/api/travel/discovery/status", "/api/travel/analytics/config"].includes(path)) return route.fulfill({ json: { enabled: false } });
     if (request.method() === "GET" && ["/api/travel/usage", "/api/travel/runtime/public-config", "/api/travel/trips/premium-created-trip/health"].includes(path)) return route.fulfill({ json: {} });
     if (path.endsWith("/holidays")) return route.fulfill({ json: { country: "JP", country_name: "日本", locale: "zh-TW", coverage_start: null, coverage_end: null, attribution: "", holidays: [] } });
     if (path === "/api/travel/trips" && request.method() === "POST") {

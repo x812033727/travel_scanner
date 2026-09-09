@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**16 open · 4 in progress · 2 blocked · 1 in review · 172 done**
+**16 open · 0 in progress · 2 blocked · 5 in review · 172 done**
 
 ## Ready to claim
 
@@ -25,18 +25,17 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-| Task | Owner | Claimed (UTC) | Branch |
-| --- | --- | --- | --- |
-| [Travel discovery search feed and explicit preferences API](open/2026-09-08-travel-discovery-api.md) | codex-discovery-api | 2026-09-09T00:11:48Z | `codex/travel-discovery-community` |
-| [Community curated video invitations and collection references](open/2026-09-08-travel-discovery-community.md) | codex-discovery-community | 2026-09-08T23:24:28Z | `codex/travel-discovery-community` |
-| [Travel discovery homepage search collections and media experience](open/2026-09-08-travel-discovery-web.md) | codex-discovery-web | 2026-09-09T00:21:40Z | `codex/travel-discovery-community` |
-| [Travel discovery integration navigation safety and acceptance](open/2026-09-08-travel-discovery-integration.md) | codex-discovery-root | 2026-09-09T00:02:51Z | `codex/travel-discovery-community` |
+_Nothing here._
 
 ## In review
 
 | Task | Owner | Branch |
 | --- | --- | --- |
 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | codex | `codex/merchant-style-batch-07` |
+| [Travel discovery search feed and explicit preferences API](open/2026-09-08-travel-discovery-api.md) | codex-discovery-api | `codex/travel-discovery-community` |
+| [Community curated video invitations and collection references](open/2026-09-08-travel-discovery-community.md) | codex-discovery-community | `codex/travel-discovery-community` |
+| [Travel discovery homepage search collections and media experience](open/2026-09-08-travel-discovery-web.md) | codex-discovery-web | `codex/travel-discovery-community` |
+| [Travel discovery integration navigation safety and acceptance](open/2026-09-08-travel-discovery-integration.md) | codex-discovery-root | `codex/travel-discovery-community` |
 
 ## Waiting
 

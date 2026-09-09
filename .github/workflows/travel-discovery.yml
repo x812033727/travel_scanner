@@ -78,10 +78,10 @@ jobs:
           exit 1
       - run: npx playwright install --with-deps chromium
       - name: Desktop and Pixel 7 discovery UI fixtures
-        run: npx playwright test e2e/discovery.spec.ts --workers=1
+        run: npx playwright test e2e/discovery.spec.ts --workers=1 --output test-results/discovery-fixtures
         working-directory: apps/web
       - name: Unmocked login, invitations, private collections and public withdrawal
-        run: npx playwright test e2e/discovery-full-stack.spec.ts --workers=1
+        run: npx playwright test e2e/discovery-full-stack.spec.ts --workers=1 --output test-results/discovery-full-stack
         working-directory: apps/web
       - uses: actions/upload-artifact@v4
         if: always()

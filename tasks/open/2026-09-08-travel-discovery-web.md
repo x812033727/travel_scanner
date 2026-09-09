@@ -1,11 +1,11 @@
 ---
 id: 2026-09-08-travel-discovery-web
 title: Travel discovery homepage search collections and media experience
-status: in-progress
+status: review
 priority: P1
 area: web
 owner: codex-discovery-web
-claimed_at: 2026-09-09T00:21:40Z
+claimed_at: 2026-09-09T00:30:50Z
 created_at: 2026-09-08T23:24:10Z
 completed_at:
 branch: codex/travel-discovery-community
@@ -26,6 +26,7 @@ scope:
   - apps/web/messages/ko/metadata.json
   - apps/web/messages/zh-CN/metadata.json
   - apps/web/messages/zh-TW/metadata.json
+  - apps/web/e2e/planner-premium.spec.ts
 ---
 
 # Travel discovery homepage search collections and media experience
@@ -40,7 +41,8 @@ Unify sourced travel discovery, clear recommendations, private collections and s
 - [x] Explicit preferences, dismiss/undo, private collection and trip handoff work with authentication return paths.
 - [x] Creator invites and reference-only video editing preserve existing publication review and draft behavior.
 - [x] Five-language UI, focused tests, route metadata and static checks pass.
-- [ ] Parent completes final desktop/Pixel 7 end-to-end and release validation.
+- [x] Parent completes discovery desktop/Pixel 7 and full-stack acceptance.
+- [ ] PR review and merge complete; parent owns release validation.
 
 ## Steps
 
@@ -48,7 +50,8 @@ Unify sourced travel discovery, clear recommendations, private collections and s
 - [x] Coordinate discovery/community API contracts and isolated localization ownership.
 - [x] Implement discovery and community UI with focused regression coverage.
 - [x] Complete final static checks and route metadata catalogs.
-- [ ] Parent completes final browser/release verification.
+- [x] Complete browser acceptance and prepare PR review evidence.
+- [ ] Parent completes final PR/release verification.
 
 ## How to verify
 
@@ -72,3 +75,5 @@ Root approved bounded scope extensions for opt-in TravelCardActions login-resume
 - After rebase and exact metadata scope handoff: metadata plus scoped suite passed, 7 files / 99 tests. check:i18n passed (5 locales / 25 namespaces); check:tasks passed (195 task files). The metadata test was not weakened.
 - Only exploreTitle/Description and discoveryCollectionsTitle/Description changed in each metadata catalog. Explore wording remains accurate with discovery OFF; the new private collection page has distinct titles/descriptions in all five languages.
 - Parent reported desktop/Pixel 7 focused search, dialog focus restoration and legacy-hub checks passed (6 cases). Parent retains final full-stack/build/release ownership; no generated next-env or production changes were made by this task.
+- Review handoff: [PR #372](https://github.com/x812033727/travel_scanner/pull/372), draft head fa280c3a at the time of the CI fixture follow-up. Parent reports discovery full-stack acceptance and all 18 local discovery Playwright cases passed.
+- CI compatibility follow-up: claimed only apps/web/e2e/planner-premium.spec.ts after the prior planner task was archived. Added GET /api/travel/discovery/status to the existing read-only enabled:false shell fixture; mutationPaths and unexpectedRequests assertions remain unchanged. Existing production build, port 3143: desktop Chromium plus Pixel 7 passed all 8 planner-premium cases (46.9s). No paid-provider or production data access; no commits or pushes performed by this task.

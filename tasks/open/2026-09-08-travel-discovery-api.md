@@ -1,7 +1,7 @@
 ---
 id: 2026-09-08-travel-discovery-api
 title: Travel discovery search feed and explicit preferences API
-status: in-progress
+status: review
 priority: P1
 area: api
 owner: codex-discovery-api
@@ -74,3 +74,4 @@ From apps/api with its directory on PYTHONPATH, using the sibling installed runt
 - Follow-up evidence pipeline: existing YouTube requests already include `status`; the client discarded it. Search/import now persist only strict provider privacy/embeddable fields, manual import and AI candidate scoring retain this provider-only evidence, and upsert clears missing/malformed proof (including non-provider edits of a video URL). No new requests, flags, migrations or bulk backfill were added. Existing locale/review/manual tags remain unchanged.
 - Discovery community details now include the shared `public_media_refs` ID/alt/dimension projection after publication authorization. Storage keys/signed URLs remain excluded and media reads still reauthorize through the existing endpoint.
 - Follow-up verification: scoped Ruff passed; mypy discovery plus the three touched hotspot modules passed (12 files); combined hotspot-guides, hotspot-admin-guides, hotspot-AI-search, discovery-community, travel-discovery and discovery-migration pytest suites passed 117 tests with 3 PostgreSQL-only skips. `git diff --check` and `npm run check:tasks` passed (194 tasks). No live provider calls were made.
+- Review delivery: draft PR [#372](https://github.com/x812033727/travel_scanner/pull/372), source head `fa280c3a`. Parent integration evidence: full local API 2018 passed / 125 skipped (Unix deployment-script tests excluded on Windows), full Ruff/mypy passed (275 files), Linux discovery full-stack passed. PostgreSQL migration-suite completion remains tracked by the parent in PR CI. This task only updates its review record; parent owns the board generation and commits.

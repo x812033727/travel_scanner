@@ -1,7 +1,7 @@
 ---
 id: 2026-09-08-travel-discovery-integration
 title: Travel discovery integration navigation safety and acceptance
-status: in-progress
+status: review
 priority: P1
 area: web
 owner: codex-discovery-root
@@ -57,12 +57,15 @@ worktree without changing existing itinerary work, production gates or paid serv
 
 Run tools/tasks, Ruff, mypy, pytest, migrations, Web lint/typecheck/Vitest/build;
 run new isolated and full-stack browser cases on desktop and Pixel 7. No paid
-queries or writes to production. Existing planner tests remain owned by PR #371.
+queries or writes to production. The planner source from merged PR #371 stays
+unchanged; the Web integration task claims the exact strict planner fixture for
+the new read-only discovery-status response.
 
 ## Notes
 
-Planner owner confirms it holds only global CSS and planner-specific files, not
-home/explore/nav/saved. Do not change globals.css or its E2E suites. Stay22 owner
+Planner owner originally held only global CSS and planner-specific files, not
+home/explore/nav/saved. Do not change globals.css. After its completion archive,
+the Web task claimed the exact planner E2E fixture for status-query compatibility. Stay22 owner
 explicitly released only csp.ts/csp.test.ts after confirming no undelivered work;
 the narrow task-only handoff is recorded without importing unverified planner code.
 
@@ -80,3 +83,14 @@ metadata + feature regressions 99 passed; nav/BFF/CSP regressions 22 passed. Fir
 whole Web run found metadata and one shared-Response fixture defect, now fixed.
 Desktop/Pixel 7 focus/search/legacy-hub recheck passed all 6 focused cases; final
 whole enabled-feature browser and Linux full-stack runs remain release gates.
+
+PR: https://github.com/x812033727/travel_scanner/pull/372 (draft until final CI).
+Final local production-browser run: all 18 discovery cases passed on desktop and
+Pixel 7. Reviewed Traditional-Chinese desktop/mobile and dark video screenshots;
+mobile filters collapse by default and all four bottom destinations remain visible.
+Linux enabled-discovery workflow passed on fa280c3a; ordinary login, verification,
+invited moderation, private collections and withdrawal ran against real services.
+Core full-stack smoke also passed. Planner regression exposed only a missing mock
+for the new public status endpoint, assigned to the Web task without weakening its
+unexpected-request or mutation assertions. Final head CI is tracked in the PR.
+No merge, deployment, production activation or provider call was authorized.

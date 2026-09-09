@@ -1,7 +1,7 @@
 ---
 id: 2026-09-08-travel-discovery-community
 title: Community curated video invitations and collection references
-status: in-progress
+status: review
 priority: P1
 area: api
 owner: codex-discovery-community
@@ -44,8 +44,10 @@ requiring ordinary readers to enroll in the social publishing profile.
       withdrawals, locale/following filters before bounded feed limits.
 - [x] Exercise migration idempotence, API policy, source freshness, private ownership,
       mixed legacy collections, replay analytics, and deletion in focused regressions.
-- [ ] Parent integration: run PostgreSQL CI (including bounded concurrent first invite),
-      full-stack E2E, complete API/web checks, and archive task after delivery.
+- [x] Parent integration: desktop and Pixel 7 discovery fixtures plus the unmocked
+      login/invitation/collection/withdrawal journey execute against migrated PostgreSQL.
+- [ ] Parent integration: complete full API/web CI (including bounded concurrent first
+      invite), resolve remaining integration checks, and archive task after delivery.
 
 ## How to verify
 
@@ -73,9 +75,10 @@ worktree on PYTHONPATH and DATABASE_URL=sqlite+aiosqlite://, RUN_INTEGRATION_TES
   This also allows FK KEY SHARE checks and serializes concurrent erasure/revocation.
 - Revoking an invitation prevents new publication/approval/restoration; it does not
   silently remove previously reviewed public content. Existing moderation does takedowns.
-- Public videos never fetch provider content. Current YouTube imports do not persist
-  explicit embeddability status, so existing videos honestly remain link-only. Future
-  trusted metadata can populate youtube_status; editorial approval alone is not proof.
+- Public reads never fetch provider content. Videos without fresh explicit provider
+  embeddability metadata honestly remain link-only; editorial approval alone is not
+  proof. The separately owned provider metadata integration supplies this evidence
+  only through its existing authorized refresh flow.
 - Existing test_community_foundation.py scope was explicitly added by parent solely
   to include 0066 in its legacy migration chain; current-column assertions remain intact.
 - Final compatibility review added destination-alias search, SQL/JSON-null-aware
@@ -94,4 +97,16 @@ worktree on PYTHONPATH and DATABASE_URL=sqlite+aiosqlite://, RUN_INTEGRATION_TES
 - Latest focused addon check: `pytest tests/test_discovery_community.py -q` reports
   39 passed, 1 PostgreSQL-only skipped in 15.98s. Owned Ruff checks and mypy across
   21 community source files both pass after the image/helper and actor refinements.
+- Delivery: [PR #372](https://github.com/x812033727/travel_scanner/pull/372), draft/open
+  at reviewed head `fa280c3a528c7f9113045b867dd1239a8e599d00`.
+- Independently read [PR acceptance run 34295000368](https://github.com/x812033727/travel_scanner/actions/runs/34295000368)
+  at that exact head: PostgreSQL transactional upgrade from empty through
+  `0064_klook_affiliate_channels -> 0065_travel_discovery -> 0066_discovery_community`
+  succeeds; fixture suite reports **18 passed (16.3s)** and unmocked full-stack suite
+  reports **2 passed (14.2s)**, not skipped. `DISCOVERY_E2E=1` and the two configured
+  projects are desktop Chromium and Pixel 7 mobile Chromium.
+- Independent push acceptance run 34294996183 at the same head also succeeds:
+  **18 passed (15.7s)** plus **2 passed (14.4s)** and both new migrations applied.
+  These are fresh-install/full-stack receipts, not evidence that all API concurrency
+  tests or the remaining workflows have completed. Parent owns final CI resolution.
 - No commits, merges, paid calls, or production changes were performed by this task.
