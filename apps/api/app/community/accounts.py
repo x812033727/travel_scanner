@@ -31,6 +31,26 @@ def smtp_ready() -> bool:
 async def request_mail(session: AsyncSession, user: User, purpose: str, locale: str) -> None:
     if not smtp_ready():
         raise fail("community_mail_unavailable", 503)
+    # Account cleanup and token consumption take the user before token rows.
+    # Also serialize first-time issuance, when no previous token exists to lock.
+    requested_version = user.auth_version
+    current = await session.scalar(
+        select(User)
+        .where(User.id == user.id)
+        .with_for_update(key_share=True)
+        .execution_options(populate_existing=True)
+    )
+    if (
+        current is None
+        or not current.is_active
+        or current.deleted_at is not None
+        or current.auth_version != requested_version
+        or (purpose == "reset" and not current.password_hash)
+    ):
+        # Keep the recovery response non-enumerating if the account changed
+        # while this request waited; never recreate mail PII after erasure.
+        return
+    user = current
     now = datetime.now(UTC)
     await session.execute(
         update(AccountToken)
@@ -75,18 +95,41 @@ async def request_mail(session: AsyncSession, user: User, purpose: str, locale: 
 
 
 async def consume(session: AsyncSession, token: str, purpose: str) -> tuple[AccountToken, User]:
+    token_digest = hashlib.sha256(token.encode()).hexdigest()
+    # Resolve ownership without holding a token lock. Locking Token -> User
+    # deadlocks with erasure's User -> Token order. Re-read under both locks.
+    user_id = await session.scalar(
+        select(AccountToken.user_id).where(
+            AccountToken.digest == token_digest,
+            AccountToken.purpose == purpose,
+        )
+    )
+    if user_id is None:
+        raise fail("community_token_invalid", 400)
+    user = await session.scalar(
+        select(User)
+        .where(User.id == user_id)
+        .with_for_update(key_share=True)
+        .execution_options(populate_existing=True)
+    )
+    if user is None or not user.is_active or user.deleted_at is not None:
+        raise fail("community_token_invalid", 400)
     row = await session.scalar(
         select(AccountToken)
         .where(
-            AccountToken.digest == hashlib.sha256(token.encode()).hexdigest(),
+            AccountToken.digest == token_digest,
             AccountToken.purpose == purpose,
+            AccountToken.user_id == user.id,
         )
         .with_for_update()
+        .execution_options(populate_existing=True)
     )
-    if row is None or row.consumed_at is not None or aware(row.expires_at) <= datetime.now(UTC):
-        raise fail("community_token_invalid", 400)
-    user = await session.scalar(select(User).where(User.id == row.user_id).with_for_update())
-    if user is None or not user.is_active or row.auth_version != user.auth_version:
+    if (
+        row is None
+        or row.consumed_at is not None
+        or aware(row.expires_at) <= datetime.now(UTC)
+        or row.auth_version != user.auth_version
+    ):
         raise fail("community_token_invalid", 400)
     row.consumed_at = datetime.now(UTC)
     return row, user

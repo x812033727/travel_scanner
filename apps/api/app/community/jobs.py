@@ -119,7 +119,12 @@ def send_mail(encrypted: str) -> None:
 async def erase_account(session: AsyncSession, user_id: UUID) -> None:
     # Serialize erasure with post-provider translation cache writes, so an
     # in-flight translation cannot recreate personal content after cleanup.
-    user = await session.scalar(select(User).where(User.id == user_id).with_for_update())
+    user = await session.scalar(
+        select(User)
+        .where(User.id == user_id)
+        .with_for_update()
+        .execution_options(populate_existing=True)
+    )
     if user is None or user.deleted_at is None:
         return
     from app.community.invitations import erase_creator_invitation

@@ -27,9 +27,11 @@ from app.community.media import clean_image
 from app.community.models import (
     AccountToken,
     Fork,
+    Job,
     Media,
     Message,
     Notification,
+    PostRevision,
     Profile,
     TranslationBudget,
 )
@@ -689,6 +691,202 @@ async def test_account_tokens_single_use_and_delete_revokes(harness: Harness) ->
 
 
 @pytest.mark.asyncio
+async def test_mail_request_rechecks_a_deleted_cached_account(
+    harness: Harness, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    from app.community.accounts import request_mail
+
+    monkeypatch.setattr("app.community.accounts.smtp_ready", lambda: True)
+    monkeypatch.setattr("app.community.accounts.encrypt_secrets", lambda _: "encrypted-test-job")
+    async with harness.factory() as pending:
+        cached = await pending.get(User, harness.ids[3])
+        assert cached and cached.is_active
+        async with harness.factory() as deleting:
+            user = await deleting.get(User, cached.id)
+            assert user
+            user.is_active = False
+            user.deleted_at = datetime.now(UTC)
+            user.auth_version += 1
+            await deleting.commit()
+        await request_mail(pending, cached, "verify", "en")
+        await pending.commit()
+    async with harness.factory() as session:
+        assert await session.scalar(select(func.count()).select_from(AccountToken)) == 0
+        assert await session.scalar(select(func.count()).select_from(Job)) == 0
+
+
+@pytest.mark.asyncio
+async def test_consume_rechecks_a_cached_used_token(harness: Harness) -> None:
+    from app.community.accounts import consume
+    from app.problems import AppError
+
+    token = "cached-token-" + "c" * 32
+    async with harness.factory() as session:
+        row = AccountToken(
+            user_id=harness.ids[3],
+            digest=hashlib.sha256(token.encode()).hexdigest(),
+            purpose="verify",
+            auth_version=1,
+            expires_at=datetime.now(UTC) + timedelta(minutes=5),
+        )
+        session.add(row)
+        await session.commit()
+        identifier = row.id
+    async with harness.factory() as pending:
+        cached = await pending.get(AccountToken, identifier)
+        assert cached and cached.consumed_at is None
+        async with harness.factory() as other:
+            used = await other.get(AccountToken, identifier)
+            assert used
+            used.consumed_at = datetime.now(UTC)
+            await other.commit()
+        with pytest.raises(AppError) as error:
+            await consume(pending, token, "verify")
+        assert error.value.code == "community_token_invalid"
+
+
+@pytest.mark.asyncio
+async def test_postgres_token_consumption_and_erasure_share_lock_order(
+    harness: Harness, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    import asyncio
+
+    from sqlalchemy.dialects import postgresql
+
+    from app.community.jobs import erase_account
+
+    token = "erasure-overlap-" + "d" * 32
+    async with harness.factory() as session:
+        if session.get_bind().dialect.name != "postgresql":
+            pytest.skip("Requires real PostgreSQL row locks")
+        user = await session.get(User, harness.ids[3])
+        assert user
+        user.is_active = False
+        user.deleted_at = datetime.now(UTC)
+        session.add(
+            AccountToken(
+                user_id=user.id,
+                digest=hashlib.sha256(token.encode()).hexdigest(),
+                purpose="verify",
+                auth_version=1,
+                expires_at=datetime.now(UTC) + timedelta(minutes=5),
+            )
+        )
+        await session.commit()
+    user_locked, token_read = asyncio.Event(), asyncio.Event()
+    original = AsyncSession.scalar
+    async with harness.factory() as erasing:
+
+        async def overlap(self: AsyncSession, statement: Any, *args: Any, **kwargs: Any) -> Any:
+            result = await original(self, statement, *args, **kwargs)
+            sql = str(statement.compile(dialect=postgresql.dialect())).replace("\n", " ")
+            if self is erasing and "FROM users " in sql and "FOR UPDATE" in sql:
+                user_locked.set()
+                await asyncio.wait_for(token_read.wait(), timeout=5)
+            elif self is not erasing and "FROM community_account_tokens " in sql:
+                token_read.set()
+            return result
+
+        monkeypatch.setattr(AsyncSession, "scalar", overlap)
+
+        async def cleanup() -> None:
+            await erase_account(erasing, harness.ids[3])
+            await erasing.commit()
+
+        async def confirm() -> Response:
+            await asyncio.wait_for(user_locked.wait(), timeout=5)
+            return await harness.call(
+                "POST", "/auth/verify-email", actor=None, expected=400, json={"token": token}
+            )
+
+        async with asyncio.timeout(20):
+            _, response = await asyncio.gather(cleanup(), confirm())
+        assert user_locked.is_set() and token_read.is_set()
+        assert response.json()["code"] == "community_token_invalid"
+    async with harness.factory() as session:
+        assert await session.scalar(select(func.count()).select_from(AccountToken)) == 0
+        user = await session.get(User, harness.ids[3])
+        assert user and user.email.endswith("@deleted.invalid") and not user.is_active
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("purpose", "route", "extra", "success"),
+    [
+        ("verify", "verify-email", {}, 200),
+        ("reset", "reset-password", {"password": "new-test-password-12345"}, 200),
+        ("delete", "delete-account", {"confirmation": "DELETE"}, 202),
+    ],
+)
+async def test_postgres_account_token_concurrent_replays_are_single_use(
+    harness: Harness, purpose: str, route: str, extra: dict[str, str], success: int
+) -> None:
+    import asyncio
+
+    token = "concurrent-token-" + "e" * 32
+    async with harness.factory() as session:
+        if session.get_bind().dialect.name != "postgresql":
+            pytest.skip("Requires real PostgreSQL row locks")
+        session.add(
+            AccountToken(
+                user_id=harness.ids[3],
+                digest=hashlib.sha256(token.encode()).hexdigest(),
+                purpose=purpose,
+                auth_version=1,
+                expires_at=datetime.now(UTC) + timedelta(minutes=5),
+            )
+        )
+        await session.commit()
+    async with asyncio.timeout(20):
+        responses = await asyncio.gather(
+            *(
+                harness.client.post(f"/api/v1/auth/{route}", json={"token": token, **extra})
+                for _ in range(2)
+            )
+        )
+    assert sorted(response.status_code for response in responses) == [success, 400]
+    assert (
+        next(response for response in responses if response.status_code == 400).json()["code"]
+        == "community_token_invalid"
+    )
+
+
+@pytest.mark.asyncio
+async def test_postgres_concurrent_mail_requests_leave_one_active_token(
+    harness: Harness, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    import asyncio
+
+    from app.community.accounts import request_mail
+
+    async with harness.factory() as session:
+        if session.get_bind().dialect.name != "postgresql":
+            pytest.skip("Requires real PostgreSQL row locks")
+    monkeypatch.setattr("app.community.accounts.smtp_ready", lambda: True)
+    monkeypatch.setattr("app.community.accounts.encrypt_secrets", lambda _: "encrypted-test-job")
+    both_loaded = asyncio.Event()
+    arrived = 0
+
+    async def issue() -> None:
+        nonlocal arrived
+        async with harness.factory() as session:
+            user = await session.get(User, harness.ids[3])
+            assert user
+            arrived += 1
+            if arrived == 2:
+                both_loaded.set()
+            await asyncio.wait_for(both_loaded.wait(), timeout=5)
+            await request_mail(session, user, "verify", "en")
+
+    async with asyncio.timeout(20):
+        await asyncio.gather(issue(), issue())
+    async with harness.factory() as session:
+        tokens = list((await session.scalars(select(AccountToken))).all())
+        assert len(tokens) == 2 and sum(row.consumed_at is None for row in tokens) == 1
+        assert await session.scalar(select(func.count()).select_from(Job)) == 2
+
+
+@pytest.mark.asyncio
 async def test_deleted_member_cannot_log_in_even_before_cleanup(
     harness: Harness, monkeypatch: pytest.MonkeyPatch
 ) -> None:
@@ -1233,6 +1431,7 @@ async def test_delete_job_erases_private_data_but_keeps_delivered_messages(
     from app.community.jobs import erase_account
 
     h = harness
+    draft = await h.post()
     await h.call("PUT", f"/community/profiles/{h.ids[1]}/follow")
     await h.call("PUT", f"/community/profiles/{h.ids[0]}/follow", actor=1)
     conversation = (
@@ -1245,6 +1444,11 @@ async def test_delete_job_erases_private_data_but_keeps_delivered_messages(
         json={"body": "Already delivered", "idempotency_key": "before-deletion-001"},
     )
     async with h.factory() as session:
+        revision = await session.scalar(
+            select(PostRevision).where(PostRevision.post_id == UUID(draft["id"]))
+        )
+        assert revision
+        revision.place_refs = [{"kind": "hotspot", "id": str(uuid4())}]
         user = await session.get(User, h.ids[0])
         assert user
         user.deleted_at = datetime.now(UTC)
@@ -1277,6 +1481,7 @@ async def test_delete_job_erases_private_data_but_keeps_delivered_messages(
         await erase_account(session, user.id)
         await session.commit()
         assert user.email.endswith("@deleted.invalid") and profile.handle.startswith("deleted_")
+        assert revision.place_refs == []
         assert trip.start_date is None and trip.data == {}
         item = await session.scalar(
             select(TripPlanItem).where(TripPlanItem.trip_plan_id == trip.id)
