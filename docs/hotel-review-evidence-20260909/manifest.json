@@ -1,0 +1,457 @@
+{
+  "schema_version": 1,
+  "tag": "hotel-review-evidence-20260909",
+  "baseline_hash": "342aee9610db65e78626d950efef368919a7d8e4cfcf55d06a32b64e26c5adee",
+  "decisions": [
+    {
+      "kind": "product",
+      "id": "50f2d47d-24fe-4b07-85a2-3e1c7671e452",
+      "version": 1,
+      "before_hash": "39eaef5356258ef4f6e615f3ea5653424193ecdb24b0d1eaca5d7ac8320b515e",
+      "decision": "approve",
+      "reason": "Westin Miyako Kyoto: actual IAB Google Place ID resolves to matching name, street and official Marriott website. Fresh independent CC0 Wikidata P625 Japanese-Wikipedia claim supplies a representative hotel point. Normal area, source and map gates remain mandatory.",
+      "source_urls": [
+        "https://www.google.com/maps/place/?q=place_id:ChIJN1AzAd8IAWAR2hJ9wcsW4TE",
+        "https://www.wikidata.org/wiki/Special:EntityData/Q11288502.json?revision=2434981201",
+        "https://www.marriott.com/en-us/hotels/ukywi-the-westin-miyako-kyoto/overview/",
+        "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "https://creativecommons.org/publicdomain/zero/1.0/"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-09T00:35:06.511692+00:00",
+      "browser_verified": true,
+      "new_evidence": "IAB 2026-09-09T00:35:04Z: 京都威斯汀都酒店 / The Westin Miyako Kyoto; 日本〒1 Kyoto, Higashiyama Ward, Awadaguchi Kachocho, JP 605-0052, Keage Sanjo, Higashiyaman-Ku; official marriott.com link. Refreshed current and pinned Wikidata JSON agree on the selected independent CC0 claim. No Google/OTA coordinates; not a surveyed entrance or positional accuracy guarantee.",
+      "facts_patch": {
+        "latitude": 35.00886111,
+        "longitude": 135.78794444,
+        "coordinate_source_url": "https://www.wikidata.org/wiki/Special:EntityData/Q11288502.json?revision=2434981201",
+        "source_credits": [
+          {
+            "title": "旅館業法に基づく許可施設及び施設外玄関帳場一覧（令和８年７月末時点）",
+            "publisher": "京都市 保健福祉局 医療衛生推進室 医療衛生センター",
+            "url": "https://data.city.kyoto.lg.jp/dataset/00039/",
+            "license_name": "CC BY 4.0",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/deed.ja",
+            "changes": "Mokaair 摘錄京都市 2026 年 7 月底許可清單中的飯店名稱與地址，依官網核對身份並整理住宿區域。原始資料不含座標，未自行猜測或搬用地圖／訂房平台座標、照片、評分、評論及價格；不代表京都市推薦。"
+          },
+          {
+            "title": "Wikidata Q11288502 P625 representative hotel point",
+            "publisher": "Wikidata contributors",
+            "url": "https://www.wikidata.org/wiki/Special:EntityData/Q11288502.json?revision=2434981201",
+            "license_name": "CC0-1.0",
+            "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+            "changes": "Selected P625 claim Q11288502$5AB1D2CD-AE18-4CED-892C-97B7269B056A, revision 2434981201; P143 imported from Japanese Wikipedia (Q177837). Alternative P248 Skyscanner (Q1319169) claims excluded. Representative hotel point, not a surveyed entrance; original municipal name/address credit retained."
+          }
+        ],
+        "google_place_id": "ChIJN1AzAd8IAWAR2hJ9wcsW4TE",
+        "map_verified": true
+      },
+      "evidence": {
+        "map": {
+          "url": "https://www.google.com/maps/place/?q=place_id:ChIJN1AzAd8IAWAR2hJ9wcsW4TE",
+          "identity_verified": true,
+          "method": "iab",
+          "checked_at": "2026-09-09T00:35:04Z",
+          "place_id": "ChIJN1AzAd8IAWAR2hJ9wcsW4TE"
+        },
+        "coordinates": {
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q11288502.json?revision=2434981201",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "non_google": true,
+          "checked_at": "2026-09-09T00:35:06.511692+00:00",
+          "qid": "Q11288502",
+          "claim_id": "Q11288502$5AB1D2CD-AE18-4CED-892C-97B7269B056A",
+          "revision": 2434981201,
+          "reference": "P143:Q177837"
+        }
+      }
+    },
+    {
+      "kind": "option",
+      "id": "42a3558d-bb99-4312-abe8-e06e080c09a3",
+      "version": 1,
+      "before_hash": "528f6e3d3f9b33188ea09f76d7ce01ab5dfce19059f712405d83327440b7b49f",
+      "decision": "approve",
+      "reason": "ウェスティン都ホテル京都 / expedia: actual IAB hotel name and complete street address agree with the recorded official identity. Normal versioned edit/review only; fully roll back if a safety guard fails.",
+      "source_urls": [
+        "https://www.expedia.com/Kyoto-Hotels-The-Westin-Miyako-Kyoto.h878301.Hotel-Information",
+        "https://www.marriott.com/en-us/hotels/ukywi-the-westin-miyako-kyoto/overview/"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-09T00:38:04.351Z",
+      "browser_verified": true,
+      "new_evidence": "Fresh rendered property name and full address at actual URL https://www.expedia.com/Kyoto-Hotels-The-Westin-Miyako-Kyoto.h878301.Hotel-Information; discovery/index results are not browser proof.",
+      "identity_note": "IAB 2026-09-09T00:38:04.351Z: The Westin Miyako Kyoto; 1 Awataguchi Kachocho, Higashiyama, Kyoto, Kyoto, 605-0052. Matches prior official identity fa78cab4-8f24-40d9-a563-5dc49e58b5b2 (2026-09-08 16:50:45.666921+00:00); official page not re-read in this IAB batch. Platform identity only; parent review separate. No quotes, prices or affiliate authority.",
+      "option_patch": {
+        "url": "https://www.expedia.com/Kyoto-Hotels-The-Westin-Miyako-Kyoto.h878301.Hotel-Information",
+        "evidence_url": "https://www.expedia.com/Kyoto-Hotels-The-Westin-Miyako-Kyoto.h878301.Hotel-Information"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "5e832165-9b06-45f3-88c3-ed4c991ea9ff",
+      "version": 1,
+      "before_hash": "7fe89ab5c35efb07551b133eb0a2fa96a9ab4c937a69a5a40310e81815a60d30",
+      "decision": "approve",
+      "reason": "ダイワロイネットホテル京都テラス八条PREMIER / expedia: actual IAB hotel name and complete street address agree with the recorded official identity. Normal versioned edit/review only; fully roll back if a safety guard fails.",
+      "source_urls": [
+        "https://www.expedia.com/Kyoto-Hotels-Daiwa-Roynet-Hotel-Kyoto-Terrace-Hachijo-Higashiguchi.h35355896.Hotel-Information",
+        "https://www.daiwaroynet.jp/en/kyoto-terrace/"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-09T00:38:25.708Z",
+      "browser_verified": true,
+      "new_evidence": "Fresh rendered property name and full address at actual URL https://www.expedia.com/Kyoto-Hotels-Daiwa-Roynet-Hotel-Kyoto-Terrace-Hachijo-Higashiguchi.h35355896.Hotel-Information; discovery/index results are not browser proof.",
+      "identity_note": "IAB 2026-09-09T00:38:25.708Z: Daiwa Roynet Hotel Kyoto Terrace Hachijo PREMIER; 14-1 Higashikujo Higashisannocho, Kyoto, Kyoto, 601-8004. Matches prior official identity 13054029-6360-4277-8450-7600d6024703 (2026-09-08 04:13:07.259507+00:00); official page not re-read in this IAB batch. Platform identity only; parent review separate. No quotes, prices or affiliate authority.",
+      "option_patch": {
+        "url": "https://www.expedia.com/Kyoto-Hotels-Daiwa-Roynet-Hotel-Kyoto-Terrace-Hachijo-Higashiguchi.h35355896.Hotel-Information",
+        "evidence_url": "https://www.expedia.com/Kyoto-Hotels-Daiwa-Roynet-Hotel-Kyoto-Terrace-Hachijo-Higashiguchi.h35355896.Hotel-Information"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "7189583a-865d-4ec6-a4f0-3adcab3b1132",
+      "version": 1,
+      "before_hash": "c518fca4617dd2d6e8b0c7188ad21543bce4d431644d4432f7878b366d020de4",
+      "decision": "approve",
+      "reason": "三井ガーデンホテル京都四条 / expedia: actual IAB hotel name and complete street address agree with the recorded official identity. Normal versioned edit/review only; fully roll back if a safety guard fails.",
+      "source_urls": [
+        "https://www.expedia.com/Kyoto-Hotels-Mitsui-Garden-Hotel-Kyoto-Shijo.h3806437.Hotel-Information",
+        "https://www.gardenhotels.co.jp/kyoto-shijo/eng/access/"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-09T00:42:34.850Z",
+      "browser_verified": true,
+      "new_evidence": "Fresh rendered property name and full address at actual URL https://www.expedia.com/Kyoto-Hotels-Mitsui-Garden-Hotel-Kyoto-Shijo.h3806437.Hotel-Information; discovery/index results are not browser proof.",
+      "identity_note": "IAB 2026-09-09T00:42:34.850Z: Mitsui Garden Hotel Kyoto Shijo; 707-1 Myodenji-cho, Shijo-sagaru, Nishinotoin St, Shimogyo-ku, Kyoto, Kyoto, 600-8472. Matches prior official identity 771bbcbd-fffb-47b7-8389-490d121bb287 (2026-09-08 03:40:59.202641+00:00); official page not re-read in this IAB batch. Platform identity only; parent review separate. No quotes, prices or affiliate authority.",
+      "option_patch": {
+        "url": "https://www.expedia.com/Kyoto-Hotels-Mitsui-Garden-Hotel-Kyoto-Shijo.h3806437.Hotel-Information",
+        "evidence_url": "https://www.expedia.com/Kyoto-Hotels-Mitsui-Garden-Hotel-Kyoto-Shijo.h3806437.Hotel-Information"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "93d82747-9209-4d79-88e8-ed51e280e934",
+      "version": 1,
+      "before_hash": "c89c605e8b2d9f02a8388523fbb7489af6b4506dc70145986d18f3c43eab6bac",
+      "decision": "approve",
+      "reason": "ザ ロイヤルパークホテル 京都三条 / expedia: actual IAB hotel name and complete street address agree with the recorded official identity. Normal versioned edit/review only; fully roll back if a safety guard fails.",
+      "source_urls": [
+        "https://www.expedia.com/Kyoto-Hotels-The-Royal-Park-Hotel-Kyoto-Sanjo.h4538458.Hotel-Information",
+        "https://www.royalparkhotels.co.jp/en/the/kyotosanjo/about/contact/index.html"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-09T00:38:37.523Z",
+      "browser_verified": true,
+      "new_evidence": "Fresh rendered property name and full address at actual URL https://www.expedia.com/Kyoto-Hotels-The-Royal-Park-Hotel-Kyoto-Sanjo.h4538458.Hotel-Information; discovery/index results are not browser proof.",
+      "identity_note": "IAB 2026-09-09T00:38:37.523Z: The Royal Park Hotel Kyoto Sanjo; 74 Nakajimacho,Kawaramachi Higashi-iru, Sanjo-dori, Nakagyo-ku, Kyoto, Kyoto, 604-8004. Matches prior official identity d2c5d850-2bf0-4d47-9fd8-28fff108b924 (2026-09-08 03:40:56.401915+00:00); official page not re-read in this IAB batch. Platform identity only; parent review separate. No quotes, prices or affiliate authority.",
+      "option_patch": {
+        "url": "https://www.expedia.com/Kyoto-Hotels-The-Royal-Park-Hotel-Kyoto-Sanjo.h4538458.Hotel-Information",
+        "evidence_url": "https://www.expedia.com/Kyoto-Hotels-The-Royal-Park-Hotel-Kyoto-Sanjo.h4538458.Hotel-Information"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "bf9172d0-5aef-4b36-a1b8-4d4588a8d1f6",
+      "version": 1,
+      "before_hash": "e59805514680c0bd588909b9ee084815123b2ad14c5ff7df6e195ab7691f9044",
+      "decision": "approve",
+      "reason": "ホテルグランヴィア京都 / expedia: actual IAB hotel name and complete street address agree with the recorded official identity. Normal versioned edit/review only; fully roll back if a safety guard fails.",
+      "source_urls": [
+        "https://www.expedia.com/Kyoto-Hotels-Hotel-Granvia-Kyoto.h444770.Hotel-Information",
+        "https://jrwest-hotels.jp/en/granvia-kyoto/"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-09T00:39:47.896Z",
+      "browser_verified": true,
+      "new_evidence": "Fresh rendered property name and full address at actual URL https://www.expedia.com/Kyoto-Hotels-Hotel-Granvia-Kyoto.h444770.Hotel-Information; discovery/index results are not browser proof.",
+      "identity_note": "IAB 2026-09-09T00:39:47.896Z: Hotel Granvia Kyoto; JR Kyoto Station, Karasuma Chuo-guchi, Karasuma-dori, Shimogyo, Kyoto, Kyoto, 600-8216. Matches prior official identity 44d41899-9bb9-499f-a5d1-7a4676a2e499 (2026-09-08 04:13:04.288432+00:00); official page not re-read in this IAB batch. Platform identity only; parent review separate. No quotes, prices or affiliate authority.",
+      "option_patch": {
+        "url": "https://www.expedia.com/Kyoto-Hotels-Hotel-Granvia-Kyoto.h444770.Hotel-Information",
+        "evidence_url": "https://www.expedia.com/Kyoto-Hotels-Hotel-Granvia-Kyoto.h444770.Hotel-Information"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "d1e93ed9-480d-41ba-9ce6-5de4e9d139f1",
+      "version": 1,
+      "before_hash": "4ccfa245893c4ca2816c8f2e8faa01dd59f3aea88319c1a732c1be711af1e6bd",
+      "decision": "approve",
+      "reason": "クロスホテル京都 / expedia: actual IAB hotel name and complete street address agree with the recorded official identity. Normal versioned edit/review only; fully roll back if a safety guard fails.",
+      "source_urls": [
+        "https://www.expedia.com/Kyoto-Hotels-CROSS-HOTEL-KYOTO.h27026975.Hotel-Information",
+        "https://cross-kyoto.orixhotelsandresorts.com/experience_cat/access/"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-09T00:48:00.284Z",
+      "browser_verified": true,
+      "new_evidence": "Fresh rendered property name and full address at actual URL https://www.expedia.com/Kyoto-Hotels-CROSS-HOTEL-KYOTO.h27026975.Hotel-Information; discovery/index results are not browser proof.",
+      "identity_note": "IAB 2026-09-09T00:48:00.284Z: Cross Hotel Kyoto; 71-1 Daikokucho, Kawaramachi-dori, Sanjo-sagaru, Nakagyo-ku, Kyoto, Kyoto, 604-8031. Matches prior official identity d269ceff-0dcd-43bf-915c-c2f033c26a5e (2026-09-08 04:13:09.402675+00:00); official page not re-read in this IAB batch. Platform identity only; parent review separate. No quotes, prices or affiliate authority.",
+      "option_patch": {
+        "url": "https://www.expedia.com/Kyoto-Hotels-CROSS-HOTEL-KYOTO.h27026975.Hotel-Information",
+        "evidence_url": "https://www.expedia.com/Kyoto-Hotels-CROSS-HOTEL-KYOTO.h27026975.Hotel-Information"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "f4865301-ce56-442c-b336-5370142f9b49",
+      "version": 1,
+      "before_hash": "8d24a3d2821dbc8e32c73a31d33b06b11abedfbbd65e7361be09c3b8078f890f",
+      "decision": "approve",
+      "reason": "HOTEL THE CELESTINE KYOTO GION / expedia: actual IAB hotel name and complete street address agree with the recorded official identity. Normal versioned edit/review only; fully roll back if a safety guard fails.",
+      "source_urls": [
+        "https://www.expedia.com/Kyoto-Hotels-HOTEL-THE-CELESTINE-KYOTO-GION.h17857390.Hotel-Information",
+        "https://www.celestinehotels.jp/en/kyoto-gion/access/?wovn=en"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-09T00:39:14.604Z",
+      "browser_verified": true,
+      "new_evidence": "Fresh rendered property name and full address at actual URL https://www.expedia.com/Kyoto-Hotels-HOTEL-THE-CELESTINE-KYOTO-GION.h17857390.Hotel-Information; discovery/index results are not browser proof.",
+      "identity_note": "IAB 2026-09-09T00:39:14.604Z: Hotel The Celestine Kyoto Gion; 572 Komatsucho, Higashiyama-ku, Kyoto, Kyoto, 605-0933. Matches prior official identity 8139b739-b19d-4769-b336-c131419b8ffb (2026-09-08 03:41:01.682880+00:00); official page not re-read in this IAB batch. Platform identity only; parent review separate. No quotes, prices or affiliate authority.",
+      "option_patch": {
+        "url": "https://www.expedia.com/Kyoto-Hotels-HOTEL-THE-CELESTINE-KYOTO-GION.h17857390.Hotel-Information",
+        "evidence_url": "https://www.expedia.com/Kyoto-Hotels-HOTEL-THE-CELESTINE-KYOTO-GION.h17857390.Hotel-Information"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "fac9680a-a241-4827-8b9e-70ef8758f760",
+      "version": 1,
+      "before_hash": "478dfd953ff21fe7893a93aed1e6f7b3c54b07fd12f7dc1d65c097bcd5be304f",
+      "decision": "approve",
+      "reason": "ホテルヴィスキオ京都 by GRANVIA / expedia: actual IAB hotel name and complete street address agree with the recorded official identity. Normal versioned edit/review only; fully roll back if a safety guard fails.",
+      "source_urls": [
+        "https://www.expedia.com/Kyoto-Hotels-Hotel-Vischio-Kyoto-By-GRANVIA.h30990875.Hotel-Information",
+        "https://www.hotelvischio-kyoto.jp/access/"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-09T00:39:31.386Z",
+      "browser_verified": true,
+      "new_evidence": "Fresh rendered property name and full address at actual URL https://www.expedia.com/Kyoto-Hotels-Hotel-Vischio-Kyoto-By-GRANVIA.h30990875.Hotel-Information; discovery/index results are not browser proof.",
+      "identity_note": "IAB 2026-09-09T00:39:31.386Z: Hotel Vischio Kyoto by GRANVIA; 44-1, Kamitonodacho, Higashikujo, Minami-ku, Kyoto, Kyoto, 601-8002. Matches prior official identity 76646f09-1235-4c63-a5e2-3baeba09fd7c (2026-09-08 04:13:05.201524+00:00); official page not re-read in this IAB batch. Platform identity only; parent review separate. No quotes, prices or affiliate authority.",
+      "option_patch": {
+        "url": "https://www.expedia.com/Kyoto-Hotels-Hotel-Vischio-Kyoto-By-GRANVIA.h30990875.Hotel-Information",
+        "evidence_url": "https://www.expedia.com/Kyoto-Hotels-Hotel-Vischio-Kyoto-By-GRANVIA.h30990875.Hotel-Information"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "fc367f21-cc02-4999-a159-1f0ecb662faa",
+      "version": 1,
+      "before_hash": "cc41ab85bb4550e7765e6861e8d6bc17eb298794cdd227df53fb26641736cdda",
+      "decision": "approve",
+      "reason": "都ホテル 京都八条 / expedia: actual IAB hotel name and complete street address agree with the recorded official identity. Normal versioned edit/review only; fully roll back if a safety guard fails.",
+      "source_urls": [
+        "https://www.expedia.com/Kyoto-Hotels-Miyako-Hotel-Kyoto-Hachijo.h26999.Hotel-Information",
+        "https://www.miyakohotels.ne.jp/kyoto-hachijo/"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-09T00:48:59.053Z",
+      "browser_verified": true,
+      "new_evidence": "Fresh rendered property name and full address at actual URL https://www.expedia.com/Kyoto-Hotels-Miyako-Hotel-Kyoto-Hachijo.h26999.Hotel-Information; discovery/index results are not browser proof.",
+      "identity_note": "IAB 2026-09-09T00:48:59.053Z: Miyako Hotel Kyoto Hachijo; 17 Nishi Kujoin-machi, Minami-ku, Kyoto, Kyoto, 601-8412. Matches prior official identity 644bd3d2-12ba-4ee7-9061-2ee0fbd629a6 (2026-09-08 04:13:08.320657+00:00); official page not re-read in this IAB batch. Platform identity only; parent review separate. No quotes, prices or affiliate authority.",
+      "option_patch": {
+        "url": "https://www.expedia.com/Kyoto-Hotels-Miyako-Hotel-Kyoto-Hachijo.h26999.Hotel-Information",
+        "evidence_url": "https://www.expedia.com/Kyoto-Hotels-Miyako-Hotel-Kyoto-Hachijo.h26999.Hotel-Information"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "7c0adcfd-3f12-47f4-ac34-9cccd9b940d4",
+      "version": 1,
+      "before_hash": "1ea542e79a747a9ab1a9ef242be7b1399d7dafd47d3a90f76352c4d51481cd42",
+      "decision": "approve",
+      "reason": "ホテルグレイスリー浅草 / agoda: actual IAB hotel name and complete street address agree with the recorded official identity. Normal versioned edit/review only; fully roll back if a safety guard fails.",
+      "source_urls": [
+        "https://www.agoda.com/zh-tw/hotel-gracery-asakusa/hotel/tokyo-jp.html",
+        "https://www.agoda.com/hotel-gracery-asakusa/hotel/tokyo-jp.html",
+        "https://gracery.com/asakusa/"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-09T00:42:34.903Z",
+      "browser_verified": true,
+      "new_evidence": "Fresh rendered property name and full address at actual URL https://www.agoda.com/zh-tw/hotel-gracery-asakusa/hotel/tokyo-jp.html; discovery/index results are not browser proof.",
+      "identity_note": "IAB 2026-09-09T00:42:34.903Z: 格拉斯麗淺草飯店 (Hotel Gracery Asakusa); 2-10-2 Kaminarimon, Taito, 淺草, 東京, 日本, 111-0034. Matches prior official identity 94208dea-57d0-5426-a1be-e2931ce5f181 (2026-09-07 12:16:41.318466+00:00); official page not re-read in this IAB batch. Platform identity only; parent review separate. No quotes, prices or affiliate authority.",
+      "option_patch": {
+        "url": "https://www.agoda.com/zh-tw/hotel-gracery-asakusa/hotel/tokyo-jp.html",
+        "evidence_url": "https://www.agoda.com/zh-tw/hotel-gracery-asakusa/hotel/tokyo-jp.html"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "e5da18b7-0b5e-4e1d-8c38-d76d8b795ac8",
+      "version": 1,
+      "before_hash": "42c6f4282130a1166ddff544e38188132bd1b6b0ad328efdb57111a8d8d4813f",
+      "decision": "approve",
+      "reason": "変なホテルプレミア東京 浅草田原町 / agoda: actual IAB hotel name and complete street address agree with the recorded official identity. Normal versioned edit/review only; fully roll back if a safety guard fails.",
+      "source_urls": [
+        "https://www.agoda.com/en-gb/henn-na-hotel-tokyo-asakusa-tawaramachi-h10565029/hotel/tokyo-jp.html",
+        "https://www.hennnahotel.com/asakusa-tawaramachi/",
+        "https://www.hennnahotel.com/asakusa-tawaramachi/access/"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-09T00:48:00.402Z",
+      "browser_verified": true,
+      "new_evidence": "Fresh rendered property name and full address at actual URL https://www.agoda.com/en-gb/henn-na-hotel-tokyo-asakusa-tawaramachi-h10565029/hotel/tokyo-jp.html; discovery/index results are not browser proof.",
+      "identity_note": "IAB 2026-09-09T00:48:00.402Z: Henn na Hotel Premier Tokyo Asakusa Tawaramachi; 3-19-8 Kotobuki, Taito-ku, Asakusa, Tokyo, Japan, 111-0042. Matches prior official identity 2af4cdf3-c4b4-5cc0-a6c3-14069d54e9bb (2026-09-07 12:16:48.204597+00:00); official page not re-read in this IAB batch. Platform identity only; parent review separate. No quotes, prices or affiliate authority.",
+      "option_patch": {
+        "url": "https://www.agoda.com/en-gb/henn-na-hotel-tokyo-asakusa-tawaramachi-h10565029/hotel/tokyo-jp.html",
+        "evidence_url": "https://www.agoda.com/en-gb/henn-na-hotel-tokyo-asakusa-tawaramachi-h10565029/hotel/tokyo-jp.html"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "1a23cbe8-1cd1-4a1d-932a-f3955f567ee4",
+      "version": 1,
+      "before_hash": "dc5675170926dbb6f49a26d9c325a34c52aef6d6671124a43711a0421f388f43",
+      "decision": "approve",
+      "reason": "ホテルヴィスキオ大阪 / rakuten: actual IAB hotel name and complete street address agree with the recorded official identity. Normal versioned edit/review only; fully roll back if a safety guard fails.",
+      "source_urls": [
+        "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456844049/",
+        "https://www.hotelvischio-osaka.jp/",
+        "https://www.hotelvischio-osaka.jp/access/"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-09T00:53:31.105Z",
+      "browser_verified": true,
+      "new_evidence": "Fresh rendered property name and full address at actual URL https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456844049/; discovery/index results are not browser proof.",
+      "identity_note": "IAB 2026-09-09T00:53:31.105Z: Hotel Vischio Osaka; 2-4-10 Shibata, Kita-ku, Osaka-shi, Osaka, 530-0012, Japan. Matches prior official identity 3ba7e8b5-6667-43aa-ad73-23e40c05d121 (2026-09-08 01:19:25.513029+00:00); official page not re-read in this IAB batch. Platform identity only; parent review separate. No quotes, prices or affiliate authority.",
+      "option_patch": {
+        "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456844049/",
+        "evidence_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456844049/"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "545a7eaf-00c9-45a0-b6c2-c1622c210260",
+      "version": 1,
+      "before_hash": "4de66b2dee11a833272fea058473067b56b5eb08137e5b0d5f809347aa27bc56",
+      "decision": "approve",
+      "reason": "ホテルモントレ ラ・スール大阪 / rakuten: actual IAB hotel name and complete street address agree with the recorded official identity. Normal versioned edit/review only; fully roll back if a safety guard fails.",
+      "source_urls": [
+        "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456794895/",
+        "https://www.hotelmonterey.co.jp/lasoeur_osaka/",
+        "https://www.hotelmonterey.co.jp/lasoeur_osaka/access/"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-09T00:53:31.629Z",
+      "browser_verified": true,
+      "new_evidence": "Fresh rendered property name and full address at actual URL https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456794895/; discovery/index results are not browser proof.",
+      "identity_note": "IAB 2026-09-09T00:53:31.629Z: Hotel Monterey La Soeur Osaka; 2-2-22 Shiromi, Chuo-ku, Osaka-shi, Osaka, 540-0001, Japan. Matches prior official identity 894a022a-0bfb-4976-92ce-562df3f750d7 (2026-09-08 02:28:15.216490+00:00); official page not re-read in this IAB batch. Platform identity only; parent review separate. No quotes, prices or affiliate authority.",
+      "option_patch": {
+        "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456794895/",
+        "evidence_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456794895/"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "90621e6c-4556-40a6-b08e-6b81b467dfbb",
+      "version": 1,
+      "before_hash": "987420029ac045f7655b764364aea5c8fc0861f3be3074ce71ab69f2c2dfcdc2",
+      "decision": "approve",
+      "reason": "スイスホテル南海大阪 / rakuten: actual IAB hotel name and complete street address agree with the recorded official identity. Normal versioned edit/review only; fully roll back if a safety guard fails.",
+      "source_urls": [
+        "https://travel.rakuten.com/usa/en-us/hotel_info_item/10123456795711",
+        "https://www.swissotel.com/hotels/nankai-osaka/",
+        "https://www.swissotel.com/hotels/nankai-osaka/pdf/swissotel-nankai-osaka-fact-sheet-v2/"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-09T00:54:01.710Z",
+      "browser_verified": true,
+      "new_evidence": "Fresh rendered property name and full address at actual URL https://travel.rakuten.com/usa/en-us/hotel_info_item/10123456795711; discovery/index results are not browser proof.",
+      "identity_note": "IAB 2026-09-09T00:54:01.710Z: Swissotel Nankai Osaka; 5-1-60 Nanba, Chuo-ku, Osaka-shi, Osaka, 542-0076, Japan. Matches prior official identity 32981540-acd2-48d6-9f37-450e2e18eb34 (2026-09-08 02:28:18.979451+00:00); official page not re-read in this IAB batch. Platform identity only; parent review separate. No quotes, prices or affiliate authority.",
+      "option_patch": {
+        "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/10123456795711",
+        "evidence_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/10123456795711"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "952a280b-b3d0-465a-a141-8390783df7e6",
+      "version": 1,
+      "before_hash": "0998b2f527cf63c7c9ca40e26f018c219bb84f8aedf665521759769a5c4237da",
+      "decision": "approve",
+      "reason": "ホテルグランヴィア大阪 / rakuten: actual IAB hotel name and complete street address agree with the recorded official identity. Normal versioned edit/review only; fully roll back if a safety guard fails.",
+      "source_urls": [
+        "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456794897",
+        "https://jrwest-hotels.jp/en/granvia-osaka/",
+        "https://jrwest-hotels.jp/en/granvia-osaka/access/"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-09T00:54:12.109Z",
+      "browser_verified": true,
+      "new_evidence": "Fresh rendered property name and full address at actual URL https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456794897; discovery/index results are not browser proof.",
+      "identity_note": "IAB 2026-09-09T00:54:12.109Z: Hotel Granvia Osaka; 3-1-1 Umeda, Kita-ku, Osaka-shi, Osaka, 530-0001, Japan. Matches prior official identity 5a23b490-18ed-465f-aa4e-3be06089b335 (2026-09-08 01:19:29.006518+00:00); official page not re-read in this IAB batch. Platform identity only; parent review separate. No quotes, prices or affiliate authority.",
+      "option_patch": {
+        "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456794897",
+        "evidence_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456794897"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "a3c846cd-b509-4dbe-a4eb-f19b388e6268",
+      "version": 1,
+      "before_hash": "145d667bde251ce9f871455ff1ead8b0681e1b4a0cb1c95031d855cd302b6b43",
+      "decision": "approve",
+      "reason": "ホテル阪急レスパイア大阪 / rakuten: actual IAB hotel name and complete street address agree with the recorded official identity. Normal versioned edit/review only; fully roll back if a safety guard fails.",
+      "source_urls": [
+        "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456794775/",
+        "https://www.hankyu-hotel.com/hotel/respire/osaka/",
+        "https://www.hankyu-hotel.com/hotel/respire/osaka/access"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-09T00:54:31.076Z",
+      "browser_verified": true,
+      "new_evidence": "Fresh rendered property name and full address at actual URL https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456794775/; discovery/index results are not browser proof.",
+      "identity_note": "IAB 2026-09-09T00:54:31.076Z: Hotel Hankyu Respire Osaka; 1-1 Ofukacho, Kita-ku, Osaka-shi, Osaka, 530-0011, Japan. Matches prior official identity 3afd61bc-e374-46f9-9f87-c4cf49569fa4 (2026-09-08 01:19:26.423496+00:00); official page not re-read in this IAB batch. Platform identity only; parent review separate. No quotes, prices or affiliate authority.",
+      "option_patch": {
+        "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456794775/",
+        "evidence_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456794775/"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "c59c981f-bf73-4f33-9e79-09c670114a71",
+      "version": 1,
+      "before_hash": "df1e19388e5dc87aee148b5b0321c004731d42d6067edb2c9b1d4ce04a1914d5",
+      "decision": "approve",
+      "reason": "相鉄グランドフレッサ 大阪なんば / rakuten: actual IAB hotel name and complete street address agree with the recorded official identity. Normal versioned edit/review only; fully roll back if a safety guard fails.",
+      "source_urls": [
+        "https://travel.rakuten.com/usa/en-us/hotel_info_item/10123456862141",
+        "https://sotetsu-hotels.com/grand-fresa/namba/",
+        "https://sotetsu-hotels.com/grand-fresa/namba/access/"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-09T00:54:31.382Z",
+      "browser_verified": true,
+      "new_evidence": "Fresh rendered property name and full address at actual URL https://travel.rakuten.com/usa/en-us/hotel_info_item/10123456862141; discovery/index results are not browser proof.",
+      "identity_note": "IAB 2026-09-09T00:54:31.382Z: Sotetsu Grand Fresa Osaka-Namba; 1-1-13 Nipponbashi, Chuo-ku, Osaka-shi, Osaka, 542-0073, Japan. Matches prior official identity 7380ce11-d500-4263-a309-f864e58162d5 (2026-09-08 02:28:20.639202+00:00); official page not re-read in this IAB batch. Platform identity only; parent review separate. No quotes, prices or affiliate authority.",
+      "option_patch": {
+        "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/10123456862141",
+        "evidence_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/10123456862141"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "fa1dcd2e-db55-4c4f-bac1-009bdacca6b6",
+      "version": 1,
+      "before_hash": "d7d0ea4dc288079e81b5738eecfd6cfb8ea05dbb4ca48b6806033e8e700d7c16",
+      "decision": "approve",
+      "reason": "ホテルロイヤルクラシック大阪 / rakuten: actual IAB hotel name and complete street address agree with the recorded official identity. Normal versioned edit/review only; fully roll back if a safety guard fails.",
+      "source_urls": [
+        "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456794944",
+        "https://www.hotel-royalclassic.jp/",
+        "https://www.hotel-royalclassic.jp/access"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-09T00:54:55.027Z",
+      "browser_verified": true,
+      "new_evidence": "Fresh rendered property name and full address at actual URL https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456794944; discovery/index results are not browser proof.",
+      "identity_note": "IAB 2026-09-09T00:54:55.027Z: Hotel Royal Classic Osaka; 4-3-3 Nanba, Chuo-ku, Osaka-shi, Osaka, 542-0076, Japan. Matches prior official identity b712edcc-85f8-4456-b2eb-8e1ec2d57de1 (2026-09-08 02:28:16.599137+00:00); official page not re-read in this IAB batch. Platform identity only; parent review separate. No quotes, prices or affiliate authority.",
+      "option_patch": {
+        "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456794944",
+        "evidence_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456794944"
+      }
+    }
+  ]
+}

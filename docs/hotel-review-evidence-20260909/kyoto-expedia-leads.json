@@ -1,0 +1,525 @@
+{
+  "schema_version": 1,
+  "tag": "hotel-review-evidence-20260909",
+  "task": "2026-09-09-hotel-evidence-continuation",
+  "scope": "Nine non-Hyatt Kyoto pending-null Expedia slots; source discovery only.",
+  "research_window": {
+    "started_at": "2026-09-09T00:28:40Z",
+    "completed_at": "2026-09-09T00:34:47Z",
+    "precision": "Bounded research window; per-page times were not sampled."
+  },
+  "prior_inventory": {
+    "file": "docs/hotel-review-platforms-20260909/post-replay-snapshot.json",
+    "file_sha256": "131a02972a744e83cc5442320d671c7333fcb06a53ab4cf57af13680662b0e11",
+    "captured_at": "2026-09-09 00:14:07.932005+00:00",
+    "remaining_items_file": "docs/hotel-review-platforms-20260909/remaining-items.json",
+    "limitation": "Local prior-batch inventory only, not a fresh production status read."
+  },
+  "method": "Primary Expedia website search/open/find; no shared browser use; no production or paid API operations.",
+  "summary": {
+    "requested_slots": 9,
+    "exact_property_url_candidates": 9,
+    "direct_open_title_matches": 9,
+    "direct_full_address_matches": 8,
+    "index_only_full_address": 1,
+    "browser_verified": 0,
+    "applied_reviews": 0
+  },
+  "restrictions": {
+    "production_requests": 0,
+    "database_writes": 0,
+    "paid_api_requests": 0,
+    "date_searches": 0,
+    "quotes_requested": 0,
+    "booking_clickouts": 0,
+    "google_coordinates_collected": false,
+    "property_ids_inferred": false,
+    "hyatt_excluded": true
+  },
+  "notes": [
+    "Incidental room or price text returned by public-page tools was not copied into this artifact and was not used as evidence.",
+    "Candidate URLs were not synthesized from hotel IDs or changed to another Expedia country/domain.",
+    "No Google Place ID research was performed in this bounded source task; root's independent map observations are not claimed here."
+  ],
+  "entries": [
+    {
+      "id": "42a3558d-bb99-4312-abe8-e06e080c09a3",
+      "kind": "option",
+      "parent_id": "50f2d47d-24fe-4b07-85a2-3e1c7671e452",
+      "provider": "expedia",
+      "source_key": "editorial:kyoto:westin-miyako-kyoto",
+      "prior_product_title": "ウェスティン都ホテル京都",
+      "prior_slot": {
+        "status": "pending",
+        "version": 1,
+        "url": null
+      },
+      "decision": "candidate_requires_root_iab_review",
+      "browser_verified": false,
+      "observed_url": "https://www.expedia.com/Kyoto-Hotels-The-Westin-Miyako-Kyoto.h878301.Hotel-Information",
+      "candidate_url": "https://www.expedia.com/Kyoto-Hotels-The-Westin-Miyako-Kyoto.h878301.Hotel-Information",
+      "url_provenance": {
+        "method": "The exact query-free property URL was observed in primary Expedia search results and then opened without changes.",
+        "discovery_query": "The Westin Miyako Kyoto Expedia hotel",
+        "search_domain_filter": [
+          "expedia.com"
+        ],
+        "search_reference": "turn383search0",
+        "open_reference": "turn397view0",
+        "source_url": "https://www.expedia.com/Kyoto-Hotels-The-Westin-Miyako-Kyoto.h878301.Hotel-Information"
+      },
+      "observed_title": "The Westin Miyako Kyoto",
+      "observed_full_address": "1 Awataguchi Kachocho, Higashiyama, Kyoto, Kyoto, 605-0052",
+      "address_evidence": {
+        "method": "primary_property_page_search_index",
+        "source_url": "https://www.expedia.com/Kyoto-Hotels-The-Westin-Miyako-Kyoto.h878301.Hotel-Information",
+        "source_reference": "turn383search0"
+      },
+      "checked_at": "2026-09-09T00:34:47Z",
+      "checked_at_precision": "Research completion boundary, not an exact per-page capture timestamp; all page operations occurred within the top-level research window.",
+      "readability": "The query-free property page opened with the correct hotel heading. Subsequent address find requests returned Internal Error, so its full address is supported by the Expedia search-index extract only, not a successful direct address read.",
+      "identity_comparison": "The hotel name, district and postal code agree with the prior official record. Expedia adds lot 1 Awataguchi Kachocho; that lot is absent from the prior official display and requires root's independent current identity evidence. Do not infer it from that old record.",
+      "prior_official_identity_reference": {
+        "option_id": "fa78cab4-8f24-40d9-a563-5dc49e58b5b2",
+        "status_in_prior_snapshot": "approved",
+        "verified_at": "2026-09-08 16:50:45.666921+00:00",
+        "source_url": "https://www.marriott.com/en-us/hotels/ukywi-the-westin-miyako-kyoto/overview/",
+        "observed_address": "Keage, Sanjo, Higashiyama-ku, Kyoto 605-0052",
+        "fresh_read": false,
+        "limitation": "Historical approved official-option record from the prior local snapshot; official page not re-read in this source-discovery task."
+      },
+      "limitations": [
+        "Research evidence only; root must independently inspect the actual property URL in the built-in browser before any review decision.",
+        "No prices, availability, booking request, affiliate authorization or public parent-product approval are established by this lead.",
+        "The indexed property page mentions a temporary fitness/onsen/pool facility interruption in January 2027, not whole-hotel closure; not used as evidence of present booking availability."
+      ],
+      "failed_read_references": [
+        "turn406view0",
+        "turn412view0",
+        "turn417view0",
+        "turn419view0"
+      ]
+    },
+    {
+      "id": "5e832165-9b06-45f3-88c3-ed4c991ea9ff",
+      "kind": "option",
+      "parent_id": "0a47515c-1b5a-4750-9790-1b7969048e30",
+      "provider": "expedia",
+      "source_key": "editorial:kyoto:daiwa-roynet-terrace-hachijo",
+      "prior_product_title": "ダイワロイネットホテル京都テラス八条PREMIER",
+      "prior_slot": {
+        "status": "pending",
+        "version": 1,
+        "url": null
+      },
+      "decision": "candidate_requires_root_iab_review",
+      "browser_verified": false,
+      "observed_url": "https://www.expedia.com/Kyoto-Hotels-Daiwa-Roynet-Hotel-Kyoto-Terrace-Hachijo-Higashiguchi.h35355896.Hotel-Information?rfrr=HOT.HIS.question.link.click",
+      "candidate_url": "https://www.expedia.com/Kyoto-Hotels-Daiwa-Roynet-Hotel-Kyoto-Terrace-Hachijo-Higashiguchi.h35355896.Hotel-Information",
+      "url_provenance": {
+        "method": "Removed only the observed non-identity UI/tracking query parameter, then successfully opened the resulting query-free property URL. Domain, city slug, hotel path and numeric property segment are unchanged.",
+        "discovery_query": "Daiwa Roynet Kyoto Terrace Hachijo Expedia",
+        "search_domain_filter": [
+          "expedia.com"
+        ],
+        "search_reference": "turn385search3",
+        "open_reference": "turn398view0",
+        "source_url": "https://www.expedia.com/Kyoto-Hotels-Daiwa-Roynet-Hotel-Kyoto-Terrace-Hachijo-Higashiguchi.h35355896.Hotel-Information"
+      },
+      "observed_title": "Daiwa Roynet Hotel Kyoto Terrace Hachijo PREMIER",
+      "observed_full_address": "14-1 Higashikujo Higashisannocho, Kyoto, Kyoto, 601-8004",
+      "address_evidence": {
+        "method": "primary_property_page_direct_find",
+        "source_url": "https://www.expedia.com/Kyoto-Hotels-Daiwa-Roynet-Hotel-Kyoto-Terrace-Hachijo-Higashiguchi.h35355896.Hotel-Information",
+        "source_reference": "turn404view0"
+      },
+      "checked_at": "2026-09-09T00:34:47Z",
+      "checked_at_precision": "Research completion boundary, not an exact per-page capture timestamp; all page operations occurred within the top-level research window.",
+      "readability": "Direct query-free Expedia property page opened with the hotel heading; a direct find returned its displayed full street address.",
+      "identity_comparison": "The Terrace Hachijo PREMIER branch and 14-1 Higashikujo Higashisannocho match the prior official address. The Expedia street line omits Minami-ku; no ward is inserted into the observed address.",
+      "prior_official_identity_reference": {
+        "option_id": "13054029-6360-4277-8450-7600d6024703",
+        "status_in_prior_snapshot": "approved",
+        "verified_at": "2026-09-08 04:13:07.259507+00:00",
+        "source_url": "https://www.daiwaroynet.jp/en/kyoto-terrace/",
+        "observed_address": "14-1 Higashikujo Higashisanno-cho, Minami-ku, Kyoto 601-8004",
+        "fresh_read": false,
+        "limitation": "Historical approved official-option record from the prior local snapshot; official page not re-read in this source-discovery task."
+      },
+      "limitations": [
+        "Research evidence only; root must independently inspect the actual property URL in the built-in browser before any review decision.",
+        "No prices, availability, booking request, affiliate authorization or public parent-product approval are established by this lead."
+      ],
+      "failed_read_references": []
+    },
+    {
+      "id": "7189583a-865d-4ec6-a4f0-3adcab3b1132",
+      "kind": "option",
+      "parent_id": "7f1b1d18-215a-4ae8-939b-c106ce224d6f",
+      "provider": "expedia",
+      "source_key": "editorial:kyoto:mitsui-garden-kyoto-shijo",
+      "prior_product_title": "三井ガーデンホテル京都四条",
+      "prior_slot": {
+        "status": "pending",
+        "version": 1,
+        "url": null
+      },
+      "decision": "candidate_requires_root_iab_review",
+      "browser_verified": false,
+      "observed_url": "https://www.expedia.com/Kyoto-Hotels-Mitsui-Garden-Hotel-Kyoto-Shijo.h3806437.Hotel-Information",
+      "candidate_url": "https://www.expedia.com/Kyoto-Hotels-Mitsui-Garden-Hotel-Kyoto-Shijo.h3806437.Hotel-Information",
+      "url_provenance": {
+        "method": "The exact query-free property URL was observed in primary Expedia search results and then opened without changes.",
+        "discovery_query": "Mitsui Garden Hotel Kyoto Shijo Expedia",
+        "search_domain_filter": [
+          "expedia.com"
+        ],
+        "search_reference": "turn391search0",
+        "open_reference": "turn396view0",
+        "source_url": "https://www.expedia.com/Kyoto-Hotels-Mitsui-Garden-Hotel-Kyoto-Shijo.h3806437.Hotel-Information"
+      },
+      "observed_title": "Mitsui Garden Hotel Kyoto Shijo",
+      "observed_full_address": "707-1 Myodenji-cho, Shijo-sagaru, Nishinotoin St, Shimogyo-ku, Kyoto, Kyoto, 600-8472",
+      "address_evidence": {
+        "method": "primary_property_page_direct_find",
+        "source_url": "https://www.expedia.com/Kyoto-Hotels-Mitsui-Garden-Hotel-Kyoto-Shijo.h3806437.Hotel-Information",
+        "source_reference": "turn408view0"
+      },
+      "checked_at": "2026-09-09T00:34:47Z",
+      "checked_at_precision": "Research completion boundary, not an exact per-page capture timestamp; all page operations occurred within the top-level research window.",
+      "readability": "Direct query-free Expedia property page opened with the hotel heading; a direct find returned its displayed full street address.",
+      "identity_comparison": "The Kyoto Shijo branch and 707-1 Myodenji-cho match the prior official record; Nishinotoin St corresponds to Nishinotoin-dori. Other Mitsui Kyoto branches in search results were excluded.",
+      "prior_official_identity_reference": {
+        "option_id": "771bbcbd-fffb-47b7-8389-490d121bb287",
+        "status_in_prior_snapshot": "approved",
+        "verified_at": "2026-09-08 03:40:59.202641+00:00",
+        "source_url": "https://www.gardenhotels.co.jp/kyoto-shijo/eng/access/",
+        "observed_address": "707-1 Myodenji-cho, Shijo-sagaru, Nishinotoin-dori, Shimogyo-ku, Kyoto 600-8472",
+        "fresh_read": false,
+        "limitation": "Historical approved official-option record from the prior local snapshot; official page not re-read in this source-discovery task."
+      },
+      "limitations": [
+        "Research evidence only; root must independently inspect the actual property URL in the built-in browser before any review decision.",
+        "No prices, availability, booking request, affiliate authorization or public parent-product approval are established by this lead."
+      ],
+      "failed_read_references": []
+    },
+    {
+      "id": "93d82747-9209-4d79-88e8-ed51e280e934",
+      "kind": "option",
+      "parent_id": "028e3657-62f8-4636-9033-ee80ad8fc7f1",
+      "provider": "expedia",
+      "source_key": "editorial:kyoto:royal-park-kyoto-sanjo",
+      "prior_product_title": "ザ ロイヤルパークホテル 京都三条",
+      "prior_slot": {
+        "status": "pending",
+        "version": 1,
+        "url": null
+      },
+      "decision": "candidate_requires_root_iab_review",
+      "browser_verified": false,
+      "observed_url": "https://www.expedia.com/Kyoto-Hotels-The-Royal-Park-Hotel-Kyoto-Sanjo.h4538458.Hotel-Information",
+      "candidate_url": "https://www.expedia.com/Kyoto-Hotels-The-Royal-Park-Hotel-Kyoto-Sanjo.h4538458.Hotel-Information",
+      "url_provenance": {
+        "method": "The exact query-free property URL was observed in primary Expedia search results and then opened without changes.",
+        "discovery_query": "The Royal Park Hotel Kyoto Sanjo Expedia 74",
+        "search_domain_filter": [
+          "expedia.com"
+        ],
+        "search_reference": "turn386search0",
+        "open_reference": "turn395view0",
+        "source_url": "https://www.expedia.com/Kyoto-Hotels-The-Royal-Park-Hotel-Kyoto-Sanjo.h4538458.Hotel-Information"
+      },
+      "observed_title": "The Royal Park Hotel Kyoto Sanjo",
+      "observed_full_address": "74 Nakajimacho,Kawaramachi Higashi-iru, Sanjo-dori, Nakagyo-ku, Kyoto, Kyoto, 604-8004",
+      "address_evidence": {
+        "method": "primary_property_page_direct_find",
+        "source_url": "https://www.expedia.com/Kyoto-Hotels-The-Royal-Park-Hotel-Kyoto-Sanjo.h4538458.Hotel-Information",
+        "source_reference": "turn411view0"
+      },
+      "checked_at": "2026-09-09T00:34:47Z",
+      "checked_at_precision": "Research completion boundary, not an exact per-page capture timestamp; all page operations occurred within the top-level research window.",
+      "readability": "Direct query-free Expedia property page opened with the hotel heading; a direct find returned its displayed full street address.",
+      "identity_comparison": "The Kyoto Sanjo branch, number 74, Nakajimacho, district and postcode match the prior official reference. The initial find for '74 Nakajima' failed; a subsequent exact spelling search for Nakajimacho returned the complete address.",
+      "prior_official_identity_reference": {
+        "option_id": "d2c5d850-2bf0-4d47-9fd8-28fff108b924",
+        "status_in_prior_snapshot": "approved",
+        "verified_at": "2026-09-08 03:40:56.401915+00:00",
+        "source_url": "https://www.royalparkhotels.co.jp/en/the/kyotosanjo/about/contact/index.html",
+        "observed_address": "74 Nakajima-cho, Nakagyo-ku, Kyoto 604-8004",
+        "fresh_read": false,
+        "limitation": "Historical approved official-option record from the prior local snapshot; official page not re-read in this source-discovery task."
+      },
+      "limitations": [
+        "Research evidence only; root must independently inspect the actual property URL in the built-in browser before any review decision.",
+        "No prices, availability, booking request, affiliate authorization or public parent-product approval are established by this lead."
+      ],
+      "failed_read_references": [
+        "turn405view0"
+      ]
+    },
+    {
+      "id": "bf9172d0-5aef-4b36-a1b8-4d4588a8d1f6",
+      "kind": "option",
+      "parent_id": "a124dc1e-7f75-44ff-b12d-080da031b3b9",
+      "provider": "expedia",
+      "source_key": "editorial:kyoto:granvia-kyoto",
+      "prior_product_title": "ホテルグランヴィア京都",
+      "prior_slot": {
+        "status": "pending",
+        "version": 1,
+        "url": null
+      },
+      "decision": "candidate_requires_root_iab_review",
+      "browser_verified": false,
+      "observed_url": "https://www.expedia.com/Kyoto-Hotels-Hotel-Granvia-Kyoto.h444770.Hotel-Information?equalTargetTab=tab-0",
+      "candidate_url": "https://www.expedia.com/Kyoto-Hotels-Hotel-Granvia-Kyoto.h444770.Hotel-Information",
+      "url_provenance": {
+        "method": "Removed only the observed non-identity UI/tracking query parameter, then successfully opened the resulting query-free property URL. Domain, city slug, hotel path and numeric property segment are unchanged.",
+        "discovery_query": "Hotel Granvia Kyoto Expedia",
+        "search_domain_filter": [
+          "expedia.com"
+        ],
+        "search_reference": "turn389search0",
+        "open_reference": "turn394view0",
+        "source_url": "https://www.expedia.com/Kyoto-Hotels-Hotel-Granvia-Kyoto.h444770.Hotel-Information"
+      },
+      "observed_title": "Hotel Granvia Kyoto",
+      "observed_full_address": "JR Kyoto Station, Karasuma Chuo-guchi, Karasuma-dori, Shimogyo, Kyoto, Kyoto, 600-8216",
+      "address_evidence": {
+        "method": "primary_property_page_direct_find",
+        "source_url": "https://www.expedia.com/Kyoto-Hotels-Hotel-Granvia-Kyoto.h444770.Hotel-Information",
+        "source_reference": "turn407view0"
+      },
+      "checked_at": "2026-09-09T00:34:47Z",
+      "checked_at_precision": "Research completion boundary, not an exact per-page capture timestamp; all page operations occurred within the top-level research window.",
+      "readability": "Direct query-free Expedia property page opened with the hotel heading; a direct find returned its displayed full street address.",
+      "identity_comparison": "The hotel name and JR Kyoto Station Karasuma central entrance match the prior official station-form address. Neither this Expedia street line nor the prior displayed record supplies a numbered lot; no 901 or other number is added.",
+      "prior_official_identity_reference": {
+        "option_id": "44d41899-9bb9-499f-a5d1-7a4676a2e499",
+        "status_in_prior_snapshot": "approved",
+        "verified_at": "2026-09-08 04:13:04.288432+00:00",
+        "source_url": "https://jrwest-hotels.jp/en/granvia-kyoto/",
+        "observed_address": "京都府京都市下京区烏丸通塩小路下ル JR京都駅中央口",
+        "fresh_read": false,
+        "limitation": "Historical approved official-option record from the prior local snapshot; official page not re-read in this source-discovery task."
+      },
+      "limitations": [
+        "Research evidence only; root must independently inspect the actual property URL in the built-in browser before any review decision.",
+        "No prices, availability, booking request, affiliate authorization or public parent-product approval are established by this lead."
+      ],
+      "failed_read_references": []
+    },
+    {
+      "id": "d1e93ed9-480d-41ba-9ce6-5de4e9d139f1",
+      "kind": "option",
+      "parent_id": "9cd0788a-a853-4755-bbd4-3e6f64ac0c57",
+      "provider": "expedia",
+      "source_key": "editorial:kyoto:cross-kyoto",
+      "prior_product_title": "クロスホテル京都",
+      "prior_slot": {
+        "status": "pending",
+        "version": 1,
+        "url": null
+      },
+      "decision": "candidate_requires_root_iab_review",
+      "browser_verified": false,
+      "observed_url": "https://www.expedia.com/Kyoto-Hotels-CROSS-HOTEL-KYOTO.h27026975.Hotel-Information?equalTargetTab=tab-3",
+      "candidate_url": "https://www.expedia.com/Kyoto-Hotels-CROSS-HOTEL-KYOTO.h27026975.Hotel-Information",
+      "url_provenance": {
+        "method": "Removed only the observed non-identity UI/tracking query parameter, then successfully opened the resulting query-free property URL. Domain, city slug, hotel path and numeric property segment are unchanged.",
+        "discovery_query": "Cross Hotel Kyoto Expedia 71",
+        "search_domain_filter": [
+          "expedia.com"
+        ],
+        "search_reference": "turn387search1",
+        "open_reference": "turn403view0",
+        "source_url": "https://www.expedia.com/Kyoto-Hotels-CROSS-HOTEL-KYOTO.h27026975.Hotel-Information"
+      },
+      "observed_title": "Cross Hotel Kyoto",
+      "observed_full_address": "71-1 Daikokucho, Kawaramachi-dori, Sanjo-sagaru, Nakagyo-ku, Kyoto, Kyoto, 604-8031",
+      "address_evidence": {
+        "method": "primary_property_page_direct_find",
+        "source_url": "https://www.expedia.com/Kyoto-Hotels-CROSS-HOTEL-KYOTO.h27026975.Hotel-Information",
+        "source_reference": "turn409view0"
+      },
+      "checked_at": "2026-09-09T00:34:47Z",
+      "checked_at_precision": "Research completion boundary, not an exact per-page capture timestamp; all page operations occurred within the top-level research window.",
+      "readability": "Direct query-free Expedia property page opened with the hotel heading; a direct find returned its displayed full street address.",
+      "identity_comparison": "The Kyoto branch and 71-1 Daikokucho on Kawaramachi below Sanjo match the prior official Japanese street record.",
+      "prior_official_identity_reference": {
+        "option_id": "d269ceff-0dcd-43bf-915c-c2f033c26a5e",
+        "status_in_prior_snapshot": "approved",
+        "verified_at": "2026-09-08 04:13:09.402675+00:00",
+        "source_url": "https://cross-kyoto.orixhotelsandresorts.com/experience_cat/access/",
+        "observed_address": "京都市中京区河原町通三条下る大黒町71-1",
+        "fresh_read": false,
+        "limitation": "Historical approved official-option record from the prior local snapshot; official page not re-read in this source-discovery task."
+      },
+      "limitations": [
+        "Research evidence only; root must independently inspect the actual property URL in the built-in browser before any review decision.",
+        "No prices, availability, booking request, affiliate authorization or public parent-product approval are established by this lead."
+      ],
+      "failed_read_references": []
+    },
+    {
+      "id": "f4865301-ce56-442c-b336-5370142f9b49",
+      "kind": "option",
+      "parent_id": "434dec94-7909-4556-863a-bee68788b642",
+      "provider": "expedia",
+      "source_key": "editorial:kyoto:celestine-kyoto-gion",
+      "prior_product_title": "HOTEL THE CELESTINE KYOTO GION",
+      "prior_slot": {
+        "status": "pending",
+        "version": 1,
+        "url": null
+      },
+      "decision": "candidate_requires_root_iab_review",
+      "browser_verified": false,
+      "observed_url": "https://www.expedia.com/Kyoto-Hotels-HOTEL-THE-CELESTINE-KYOTO-GION.h17857390.Hotel-Information?equalTargetTab=tab-1",
+      "candidate_url": "https://www.expedia.com/Kyoto-Hotels-HOTEL-THE-CELESTINE-KYOTO-GION.h17857390.Hotel-Information",
+      "url_provenance": {
+        "method": "Removed only the observed non-identity UI/tracking query parameter, then successfully opened the resulting query-free property URL. Domain, city slug, hotel path and numeric property segment are unchanged.",
+        "discovery_query": "HOTEL THE CELESTINE KYOTO GION Expedia 572",
+        "search_domain_filter": [
+          "expedia.com"
+        ],
+        "search_reference": "turn388search2",
+        "open_reference": "turn401view0",
+        "source_url": "https://www.expedia.com/Kyoto-Hotels-HOTEL-THE-CELESTINE-KYOTO-GION.h17857390.Hotel-Information"
+      },
+      "observed_title": "Hotel The Celestine Kyoto Gion",
+      "observed_full_address": "572 Komatsucho, Higashiyama-ku, Kyoto, Kyoto, 605-0933",
+      "address_evidence": {
+        "method": "primary_property_page_direct_find",
+        "source_url": "https://www.expedia.com/Kyoto-Hotels-HOTEL-THE-CELESTINE-KYOTO-GION.h17857390.Hotel-Information",
+        "source_reference": "turn413view0"
+      },
+      "checked_at": "2026-09-09T00:34:47Z",
+      "checked_at_precision": "Research completion boundary, not an exact per-page capture timestamp; all page operations occurred within the top-level research window.",
+      "readability": "Direct query-free Expedia property page opened with the hotel heading; a direct find returned its displayed full street address.",
+      "identity_comparison": "The Kyoto Gion branch, Komatsucho lot 572 and Higashiyama district agree with the prior official Japanese address. No claim that omitted cross-street directions appeared on Expedia.",
+      "prior_official_identity_reference": {
+        "option_id": "8139b739-b19d-4769-b336-c131419b8ffb",
+        "status_in_prior_snapshot": "approved",
+        "verified_at": "2026-09-08 03:41:01.682880+00:00",
+        "source_url": "https://www.celestinehotels.jp/en/kyoto-gion/access/?wovn=en",
+        "observed_address": "京都市東山区八坂通東大路西入る小松町572",
+        "fresh_read": false,
+        "limitation": "Historical approved official-option record from the prior local snapshot; official page not re-read in this source-discovery task."
+      },
+      "limitations": [
+        "Research evidence only; root must independently inspect the actual property URL in the built-in browser before any review decision.",
+        "No prices, availability, booking request, affiliate authorization or public parent-product approval are established by this lead."
+      ],
+      "failed_read_references": []
+    },
+    {
+      "id": "fac9680a-a241-4827-8b9e-70ef8758f760",
+      "kind": "option",
+      "parent_id": "ab8d3a45-10b9-477d-a523-07fc7e2036db",
+      "provider": "expedia",
+      "source_key": "editorial:kyoto:vischio-kyoto",
+      "prior_product_title": "ホテルヴィスキオ京都 by GRANVIA",
+      "prior_slot": {
+        "status": "pending",
+        "version": 1,
+        "url": null
+      },
+      "decision": "candidate_requires_root_iab_review",
+      "browser_verified": false,
+      "observed_url": "https://www.expedia.com/Kyoto-Hotels-Hotel-Vischio-Kyoto-By-GRANVIA.h30990875.Hotel-Information?equalTargetTab=tab-1",
+      "candidate_url": "https://www.expedia.com/Kyoto-Hotels-Hotel-Vischio-Kyoto-By-GRANVIA.h30990875.Hotel-Information",
+      "url_provenance": {
+        "method": "Removed only the observed non-identity UI/tracking query parameter, then successfully opened the resulting query-free property URL. Domain, city slug, hotel path and numeric property segment are unchanged.",
+        "discovery_query": "Hotel Vischio Kyoto by GRANVIA Expedia",
+        "search_domain_filter": [
+          "expedia.com"
+        ],
+        "search_reference": "turn392search0",
+        "open_reference": "turn400view0",
+        "source_url": "https://www.expedia.com/Kyoto-Hotels-Hotel-Vischio-Kyoto-By-GRANVIA.h30990875.Hotel-Information"
+      },
+      "observed_title": "Hotel Vischio Kyoto by GRANVIA",
+      "observed_full_address": "44-1, Kamitonodacho, Higashikujo, Minami-ku, Kyoto, Kyoto, 601-8002",
+      "address_evidence": {
+        "method": "primary_property_page_direct_find",
+        "source_url": "https://www.expedia.com/Kyoto-Hotels-Hotel-Vischio-Kyoto-By-GRANVIA.h30990875.Hotel-Information",
+        "source_reference": "turn410view0"
+      },
+      "checked_at": "2026-09-09T00:34:47Z",
+      "checked_at_precision": "Research completion boundary, not an exact per-page capture timestamp; all page operations occurred within the top-level research window.",
+      "readability": "Direct query-free Expedia property page opened with the hotel heading; a direct find returned its displayed full street address.",
+      "identity_comparison": "The Vischio Kyoto by GRANVIA name and 44-1 Higashikujo Kamitonodacho match the prior official record. Search results for Hotel Granvia Kyoto were excluded as a different property.",
+      "prior_official_identity_reference": {
+        "option_id": "76646f09-1235-4c63-a5e2-3baeba09fd7c",
+        "status_in_prior_snapshot": "approved",
+        "verified_at": "2026-09-08 04:13:05.201524+00:00",
+        "source_url": "https://www.hotelvischio-kyoto.jp/access/",
+        "observed_address": "京都市南区東九条上殿田町44-1",
+        "fresh_read": false,
+        "limitation": "Historical approved official-option record from the prior local snapshot; official page not re-read in this source-discovery task."
+      },
+      "limitations": [
+        "Research evidence only; root must independently inspect the actual property URL in the built-in browser before any review decision.",
+        "No prices, availability, booking request, affiliate authorization or public parent-product approval are established by this lead."
+      ],
+      "failed_read_references": []
+    },
+    {
+      "id": "fc367f21-cc02-4999-a159-1f0ecb662faa",
+      "kind": "option",
+      "parent_id": "758907f4-4870-421e-bf6c-6243cdcc30c4",
+      "provider": "expedia",
+      "source_key": "editorial:kyoto:miyako-kyoto-hachijo",
+      "prior_product_title": "都ホテル 京都八条",
+      "prior_slot": {
+        "status": "pending",
+        "version": 1,
+        "url": null
+      },
+      "decision": "candidate_requires_root_iab_review",
+      "browser_verified": false,
+      "observed_url": "https://www.expedia.com/Kyoto-Hotels-Miyako-Hotel-Kyoto-Hachijo.h26999.Hotel-Information",
+      "candidate_url": "https://www.expedia.com/Kyoto-Hotels-Miyako-Hotel-Kyoto-Hachijo.h26999.Hotel-Information",
+      "url_provenance": {
+        "method": "The exact query-free property URL was observed in primary Expedia search results and then opened without changes.",
+        "discovery_query": "Miyako Hotel Kyoto Hachijo Expedia",
+        "search_domain_filter": [
+          "expedia.com"
+        ],
+        "search_reference": "turn393search0",
+        "open_reference": "turn402view0",
+        "source_url": "https://www.expedia.com/Kyoto-Hotels-Miyako-Hotel-Kyoto-Hachijo.h26999.Hotel-Information"
+      },
+      "observed_title": "Miyako Hotel Kyoto Hachijo",
+      "observed_full_address": "17 Nishi Kujoin-machi, Minami-ku, Kyoto, Kyoto, 601-8412",
+      "address_evidence": {
+        "method": "primary_property_page_direct_find",
+        "source_url": "https://www.expedia.com/Kyoto-Hotels-Miyako-Hotel-Kyoto-Hachijo.h26999.Hotel-Information",
+        "source_reference": "turn418view0"
+      },
+      "checked_at": "2026-09-09T00:34:47Z",
+      "checked_at_precision": "Research completion boundary, not an exact per-page capture timestamp; all page operations occurred within the top-level research window.",
+      "readability": "Direct query-free Expedia property page opened with the hotel heading; a direct find returned its displayed full street address.",
+      "identity_comparison": "The Kyoto Hachijo branch and number 17 Nishi Kujoin-machi correspond to the prior official Japanese Nishikujo Inmachi address. Failed spelling probes Nishikujo/In-machi did not establish absence; the actual Map section displays the complete street.",
+      "prior_official_identity_reference": {
+        "option_id": "644bd3d2-12ba-4ee7-9061-2ee0fbd629a6",
+        "status_in_prior_snapshot": "approved",
+        "verified_at": "2026-09-08 04:13:08.320657+00:00",
+        "source_url": "https://www.miyakohotels.ne.jp/kyoto-hachijo/",
+        "observed_address": "京都市南区西九条院町17",
+        "fresh_read": false,
+        "limitation": "Historical approved official-option record from the prior local snapshot; official page not re-read in this source-discovery task."
+      },
+      "limitations": [
+        "Research evidence only; root must independently inspect the actual property URL in the built-in browser before any review decision.",
+        "No prices, availability, booking request, affiliate authorization or public parent-product approval are established by this lead."
+      ],
+      "failed_read_references": [
+        "turn414view0",
+        "turn415view0"
+      ]
+    }
+  ]
+}

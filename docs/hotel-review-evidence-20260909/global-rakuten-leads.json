@@ -1,0 +1,354 @@
+{
+  "schema_version": 1,
+  "tag": "hotel-review-evidence-20260909",
+  "purpose": "Rescue seven Osaka Rakuten empty slots with observed global-domain property URLs; source discovery only.",
+  "research_window": {
+    "started_at": "2026-09-09T00:52:08Z",
+    "completed_at": "2026-09-09T00:55:05Z"
+  },
+  "method": "Primary travel.rakuten.com web search/open/find only; no shared IAB use.",
+  "summary": {
+    "slots": 7,
+    "exact_global_property_urls": 7,
+    "direct_property_title_reads": 7,
+    "direct_global_address_header_reads": 4,
+    "index_only_global_address_headers": 2,
+    "global_full_address_not_observed": 1,
+    "browser_verified": 0,
+    "approved": 0,
+    "applied": 0
+  },
+  "restrictions": {
+    "production_requests": 0,
+    "database_connections": 0,
+    "database_writes": 0,
+    "paid_api_calls": 0,
+    "date_searches": 0,
+    "quote_calls": 0,
+    "booking_clickouts": 0,
+    "google_coordinates_collected": false,
+    "global_ids_inferred_from_japan_site": false
+  },
+  "notes": [
+    "Property review headers were read only for name and street address. User reviews, ratings, photos and incidental price text were not stored.",
+    "Primary web results may be cached/indexed; timestamp marks this research task, not a guarantee of current operations or availability.",
+    "Previously observed .co.jp URLs remain historical excluded evidence, never candidates for application."
+  ],
+  "entries": [
+    {
+      "id": "1a23cbe8-1cd1-4a1d-932a-f3955f567ee4",
+      "kind": "option",
+      "parent_id": "29a7720d-11c2-46ae-abe2-001cd69ac301",
+      "provider": "rakuten",
+      "source_key": "editorial:osaka:vischio-osaka",
+      "observed_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456844049/",
+      "candidate_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456844049/",
+      "observed_title": "Hotel Vischio Osaka",
+      "observed_full_address": "2-4-10 Shibata, Kita-ku, Osaka-shi, Osaka, 530-0012",
+      "checked_at": "2026-09-09T00:55:05Z",
+      "checked_at_precision": "Research-completion boundary, not exact individual page-fetch time.",
+      "browser_verified": false,
+      "decision": "candidate_requires_root_iab_and_normal_guard",
+      "url_provenance": {
+        "method": "Exact query-free travel.rakuten.com individual property URL directly observed in primary-domain search results, then opened unchanged.",
+        "search_query": "Hotel Vischio Osaka site:travel.rakuten.com hotel_info_item",
+        "search_reference": "turn423search0",
+        "open_reference": "turn428view0",
+        "no_domain_or_id_rewrite": true
+      },
+      "address_evidence": {
+        "url": "https://travel.rakuten.com/usa/en-us/hotel_info_review/cnt_japan/sub_osaka/cty_osaka_city/10123456844049/",
+        "reference": "turn449view0",
+        "discovery_reference": "turn445search0",
+        "method": "direct_primary_global_property_review_header",
+        "direct_read": true
+      },
+      "readability": "Property page heading and separate same-ID global property review-page name/address header were directly readable. No guest review text was retained.",
+      "identity_comparison": "Global title and street number/locality agree with the earlier official/.co.jp identity record, allowing transliteration variation (Nanba/Namba). This is source research, not an IAB approval.",
+      "prior_reference": {
+        "file": "docs/hotel-review-evidence-20260909/osaka-rakuten-leads.json",
+        "compiled_at": "2026-09-09T00:31:56Z",
+        "official_url": "https://www.hotelvischio-osaka.jp/access/",
+        "prior_recorded_address": "〒530-0012 大阪府大阪市北区芝田2丁目4番10号",
+        "fresh_read": false,
+        "excluded_co_jp_url": "https://travel.rakuten.co.jp/HOTEL/165566/165566.html",
+        "note": "Earlier source research only. The official/.co.jp pages were not re-read here. The .co.jp URL is unsupported by the current normal hotel link schema and must not be substituted into this slot."
+      },
+      "limitations": [
+        "All browser_verified flags remain false; root's separate current IAB observations must establish final identity.",
+        "No global hotel identifier was inferred from a Japanese-site identifier; the full literal URL was observed.",
+        "No date search, room selection, quote, booking, affiliate clickout or production write was performed."
+      ]
+    },
+    {
+      "id": "545a7eaf-00c9-45a0-b6c2-c1622c210260",
+      "kind": "option",
+      "parent_id": "a725fc3d-60bc-4f4b-9ca5-00a87ee6af6a",
+      "provider": "rakuten",
+      "source_key": "editorial:osaka:monterey-lasoeur-osaka",
+      "observed_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456794895/",
+      "candidate_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456794895/",
+      "observed_title": "Hotel Monterey La Soeur Osaka",
+      "observed_full_address": "2-2-22 Shiromi, Chuo-ku, Osaka-shi, Osaka, 540-0001",
+      "checked_at": "2026-09-09T00:55:05Z",
+      "checked_at_precision": "Research-completion boundary, not exact individual page-fetch time.",
+      "browser_verified": false,
+      "decision": "candidate_requires_root_iab_and_normal_guard",
+      "url_provenance": {
+        "method": "Exact query-free travel.rakuten.com individual property URL directly observed in primary-domain search results, then opened unchanged.",
+        "search_query": "Hotel Monterey La Soeur Osaka site:travel.rakuten.com hotel_info_item",
+        "search_reference": "turn420search0",
+        "open_reference": "turn430view0",
+        "no_domain_or_id_rewrite": true
+      },
+      "address_evidence": {
+        "url": "https://travel.rakuten.com/usa/en-us/hotel_info_review/cnt_japan/sub_osaka/cty_osaka_city/10123456794895/",
+        "reference": "turn450view0",
+        "discovery_reference": "turn447search0",
+        "method": "direct_primary_global_property_review_header",
+        "direct_read": true
+      },
+      "readability": "Property page heading and separate same-ID global property review-page name/address header were directly readable. No guest review text was retained.",
+      "identity_comparison": "Global title and street number/locality agree with the earlier official/.co.jp identity record, allowing transliteration variation (Nanba/Namba). This is source research, not an IAB approval.",
+      "prior_reference": {
+        "file": "docs/hotel-review-evidence-20260909/osaka-rakuten-leads.json",
+        "compiled_at": "2026-09-09T00:31:56Z",
+        "official_url": "https://www.hotelmonterey.co.jp/lasoeur_osaka/access/",
+        "prior_recorded_address": "〒540-0001 大阪府大阪市中央区城見2-2-22",
+        "fresh_read": false,
+        "excluded_co_jp_url": "https://travel.rakuten.co.jp/HOTEL/38808/38808.html",
+        "note": "Earlier source research only. The official/.co.jp pages were not re-read here. The .co.jp URL is unsupported by the current normal hotel link schema and must not be substituted into this slot."
+      },
+      "limitations": [
+        "All browser_verified flags remain false; root's separate current IAB observations must establish final identity.",
+        "No global hotel identifier was inferred from a Japanese-site identifier; the full literal URL was observed.",
+        "No date search, room selection, quote, booking, affiliate clickout or production write was performed."
+      ]
+    },
+    {
+      "id": "90621e6c-4556-40a6-b08e-6b81b467dfbb",
+      "kind": "option",
+      "parent_id": "352d2cf2-2a1b-48a4-ad94-3bfaa1a88303",
+      "provider": "rakuten",
+      "source_key": "editorial:osaka:swissotel-nankai-osaka",
+      "observed_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/10123456795711",
+      "candidate_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/10123456795711",
+      "observed_title": "Swissotel Nankai Osaka",
+      "observed_full_address": "5-1-60 Nanba, Chuo-ku, Osaka-shi, Osaka, 542-0076",
+      "checked_at": "2026-09-09T00:55:05Z",
+      "checked_at_precision": "Research-completion boundary, not exact individual page-fetch time.",
+      "browser_verified": false,
+      "decision": "candidate_requires_root_iab_and_normal_guard",
+      "url_provenance": {
+        "method": "Exact query-free travel.rakuten.com individual property URL directly observed in primary-domain search results, then opened unchanged.",
+        "search_query": "Swissotel Nankai Osaka site:travel.rakuten.com hotel_info_item",
+        "search_reference": "turn422search0",
+        "open_reference": "turn427view0",
+        "no_domain_or_id_rewrite": true
+      },
+      "address_evidence": {
+        "url": "https://travel.rakuten.com/tha/th-th/hotel_info_review/cnt_japan/sub_osaka/cty_osaka_city/10123456795711/",
+        "reference": "turn448search1",
+        "discovery_reference": "turn448search1",
+        "method": "primary_global_property_review_header_search_index_only",
+        "direct_read": false
+      },
+      "readability": "Property page hotel title readable. Full address was available only in the global same-property review-header search index; that address page was not directly opened in this bounded task.",
+      "identity_comparison": "Global title and street number/locality agree with the earlier official/.co.jp identity record, allowing transliteration variation (Nanba/Namba). This is source research, not an IAB approval.",
+      "prior_reference": {
+        "file": "docs/hotel-review-evidence-20260909/osaka-rakuten-leads.json",
+        "compiled_at": "2026-09-09T00:31:56Z",
+        "official_url": "https://www.swissotel.com/hotels/nankai-osaka/pdf/swissotel-nankai-osaka-fact-sheet-v2/",
+        "prior_recorded_address": "〒542-0076 大阪府大阪市中央区難波5-1-60",
+        "fresh_read": false,
+        "excluded_co_jp_url": "https://travel.rakuten.co.jp/HOTEL/1181/1181.html",
+        "note": "Earlier source research only. The official/.co.jp pages were not re-read here. The .co.jp URL is unsupported by the current normal hotel link schema and must not be substituted into this slot."
+      },
+      "limitations": [
+        "All browser_verified flags remain false; root's separate current IAB observations must establish final identity.",
+        "No global hotel identifier was inferred from a Japanese-site identifier; the full literal URL was observed.",
+        "No date search, room selection, quote, booking, affiliate clickout or production write was performed."
+      ]
+    },
+    {
+      "id": "952a280b-b3d0-465a-a141-8390783df7e6",
+      "kind": "option",
+      "parent_id": "6b6f2564-93f4-4aff-aa97-bfe34d456cad",
+      "provider": "rakuten",
+      "source_key": "editorial:osaka:granvia-osaka",
+      "observed_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456794897",
+      "candidate_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456794897",
+      "observed_title": "Hotel Granvia Osaka",
+      "observed_full_address": "3-1-1 Umeda, Kita-ku, Osaka-shi, Osaka, 530-0001",
+      "checked_at": "2026-09-09T00:55:05Z",
+      "checked_at_precision": "Research-completion boundary, not exact individual page-fetch time.",
+      "browser_verified": false,
+      "decision": "candidate_requires_root_iab_and_normal_guard",
+      "url_provenance": {
+        "method": "Exact query-free travel.rakuten.com individual property URL directly observed in primary-domain search results, then opened unchanged.",
+        "search_query": "Hotel Granvia Osaka site:travel.rakuten.com hotel_info_item",
+        "search_reference": "turn421search0",
+        "open_reference": "turn429view0",
+        "no_domain_or_id_rewrite": true
+      },
+      "address_evidence": {
+        "url": "https://travel.rakuten.com/usa/en-us/hotel_info_review/cnt_japan/sub_osaka/cty_osaka_city/10123456794897/",
+        "reference": "turn452view0",
+        "discovery_reference": "turn444search0",
+        "method": "direct_primary_global_property_review_header",
+        "direct_read": true
+      },
+      "readability": "Property page heading and separate same-ID global property review-page name/address header were directly readable. No guest review text was retained.",
+      "identity_comparison": "Global title and street number/locality agree with the earlier official/.co.jp identity record, allowing transliteration variation (Nanba/Namba). This is source research, not an IAB approval.",
+      "prior_reference": {
+        "file": "docs/hotel-review-evidence-20260909/osaka-rakuten-leads.json",
+        "compiled_at": "2026-09-09T00:31:56Z",
+        "official_url": "https://jrwest-hotels.jp/en/granvia-osaka/access/",
+        "prior_recorded_address": "〒530-0001 大阪府大阪市北区梅田3-1-1",
+        "fresh_read": false,
+        "excluded_co_jp_url": "https://travel.rakuten.co.jp/HOTEL/1731/1731.html",
+        "note": "Earlier source research only. The official/.co.jp pages were not re-read here. The .co.jp URL is unsupported by the current normal hotel link schema and must not be substituted into this slot."
+      },
+      "limitations": [
+        "All browser_verified flags remain false; root's separate current IAB observations must establish final identity.",
+        "No global hotel identifier was inferred from a Japanese-site identifier; the full literal URL was observed.",
+        "No date search, room selection, quote, booking, affiliate clickout or production write was performed."
+      ]
+    },
+    {
+      "id": "a3c846cd-b509-4dbe-a4eb-f19b388e6268",
+      "kind": "option",
+      "parent_id": "f4dc5d28-5de4-4e81-b79f-f8471f1e4863",
+      "provider": "rakuten",
+      "source_key": "editorial:osaka:hankyu-respire-osaka",
+      "observed_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456794775/",
+      "candidate_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456794775/",
+      "observed_title": "Hotel Hankyu Respire Osaka",
+      "observed_full_address": "1-1 Ofukacho, Kita-ku, Osaka-shi, Osaka, 530-0011",
+      "checked_at": "2026-09-09T00:55:05Z",
+      "checked_at_precision": "Research-completion boundary, not exact individual page-fetch time.",
+      "browser_verified": false,
+      "decision": "candidate_requires_root_iab_and_normal_guard",
+      "url_provenance": {
+        "method": "Exact query-free travel.rakuten.com individual property URL directly observed in primary-domain search results, then opened unchanged.",
+        "search_query": "Hotel Hankyu Respire Osaka site:travel.rakuten.com hotel_info_item",
+        "search_reference": "turn426search0",
+        "open_reference": "turn433view0",
+        "no_domain_or_id_rewrite": true
+      },
+      "address_evidence": {
+        "url": "https://travel.rakuten.com/usa/en-us/hotel_info_review/cnt_japan/sub_osaka/cty_osaka_city/10123456794775/",
+        "reference": "turn451view0",
+        "discovery_reference": "turn443search0",
+        "method": "direct_primary_global_property_review_header",
+        "direct_read": true
+      },
+      "readability": "Property page heading and separate same-ID global property review-page name/address header were directly readable. No guest review text was retained.",
+      "identity_comparison": "Global title and street number/locality agree with the earlier official/.co.jp identity record, allowing transliteration variation (Nanba/Namba). This is source research, not an IAB approval.",
+      "prior_reference": {
+        "file": "docs/hotel-review-evidence-20260909/osaka-rakuten-leads.json",
+        "compiled_at": "2026-09-09T00:31:56Z",
+        "official_url": "https://www.hankyu-hotel.com/hotel/respire/osaka/access",
+        "prior_recorded_address": "〒530-0011 大阪府大阪市北区大深町1-1",
+        "fresh_read": false,
+        "excluded_co_jp_url": "https://travel.rakuten.co.jp/HOTEL/176713/176713.html",
+        "note": "Earlier source research only. The official/.co.jp pages were not re-read here. The .co.jp URL is unsupported by the current normal hotel link schema and must not be substituted into this slot."
+      },
+      "limitations": [
+        "All browser_verified flags remain false; root's separate current IAB observations must establish final identity.",
+        "No global hotel identifier was inferred from a Japanese-site identifier; the full literal URL was observed.",
+        "No date search, room selection, quote, booking, affiliate clickout or production write was performed."
+      ]
+    },
+    {
+      "id": "c59c981f-bf73-4f33-9e79-09c670114a71",
+      "kind": "option",
+      "parent_id": "a5336bb9-321b-40a0-9d87-cf9d1e6d9d9b",
+      "provider": "rakuten",
+      "source_key": "editorial:osaka:sotetsu-grand-fresa-osaka-namba",
+      "observed_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/10123456862141",
+      "candidate_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/10123456862141",
+      "observed_title": "Sotetsu Grand Fresa Osaka-Namba",
+      "observed_full_address": null,
+      "checked_at": "2026-09-09T00:55:05Z",
+      "checked_at_precision": "Research-completion boundary, not exact individual page-fetch time.",
+      "browser_verified": false,
+      "decision": "candidate_requires_root_iab_and_normal_guard",
+      "url_provenance": {
+        "method": "Exact query-free travel.rakuten.com individual property URL directly observed in primary-domain search results, then opened unchanged.",
+        "search_query": "Sotetsu Grand Fresa Osaka Namba site:travel.rakuten.com hotel_info_item",
+        "search_reference": "turn424search0",
+        "open_reference": "turn431view0",
+        "no_domain_or_id_rewrite": true
+      },
+      "address_evidence": {
+        "url": "https://travel.rakuten.com/usa/en-us/hotel_info_review/cnt_japan/sub_osaka/cty_osaka_city/10123456862141/",
+        "reference": "turn446search3",
+        "discovery_reference": "turn446search3",
+        "method": "not_observed_in_global_extract",
+        "direct_read": false
+      },
+      "readability": "Property page hotel title readable, but complete street address was not observed in this agent's global extract. Exact same-property global review URL was observed in search but was not opened. Root must supply its own actual IAB address evidence.",
+      "identity_comparison": "Global title matches the same Osaka-Namba branch, but this record does not assert a full global-address match.",
+      "prior_reference": {
+        "file": "docs/hotel-review-evidence-20260909/osaka-rakuten-leads.json",
+        "compiled_at": "2026-09-09T00:31:56Z",
+        "official_url": "https://sotetsu-hotels.com/grand-fresa/namba/access/",
+        "prior_recorded_address": "〒542-0073 大阪府大阪市中央区日本橋1-1-13",
+        "fresh_read": false,
+        "excluded_co_jp_url": "https://travel.rakuten.co.jp/HOTEL/151202/151202.html",
+        "note": "Earlier source research only. The official/.co.jp pages were not re-read here. The .co.jp URL is unsupported by the current normal hotel link schema and must not be substituted into this slot."
+      },
+      "limitations": [
+        "All browser_verified flags remain false; root's separate current IAB observations must establish final identity.",
+        "No global hotel identifier was inferred from a Japanese-site identifier; the full literal URL was observed.",
+        "No date search, room selection, quote, booking, affiliate clickout or production write was performed."
+      ]
+    },
+    {
+      "id": "fa1dcd2e-db55-4c4f-bac1-009bdacca6b6",
+      "kind": "option",
+      "parent_id": "c74448b6-1fa7-426e-b5af-17b7d0953382",
+      "provider": "rakuten",
+      "source_key": "editorial:osaka:royal-classic-osaka",
+      "observed_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456794944",
+      "candidate_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456794944",
+      "observed_title": "Hotel Royal Classic Osaka",
+      "observed_full_address": "4-3-3 Nanba, Chuo-ku, Osaka-shi, Osaka, 542-0076",
+      "checked_at": "2026-09-09T00:55:05Z",
+      "checked_at_precision": "Research-completion boundary, not exact individual page-fetch time.",
+      "browser_verified": false,
+      "decision": "candidate_requires_root_iab_and_normal_guard",
+      "url_provenance": {
+        "method": "Exact query-free travel.rakuten.com individual property URL directly observed in primary-domain search results, then opened unchanged.",
+        "search_query": "Hotel Royal Classic Osaka site:travel.rakuten.com hotel_info_item",
+        "search_reference": "turn425search0",
+        "open_reference": "turn432view0",
+        "no_domain_or_id_rewrite": true
+      },
+      "address_evidence": {
+        "url": "https://travel.rakuten.com/kor/ko-kr/hotel_info_review/cnt_japan/sub_osaka/cty_osaka_city/10123456794944/",
+        "reference": "turn425search11",
+        "discovery_reference": "turn425search11",
+        "method": "primary_global_property_review_header_search_index_only",
+        "direct_read": false
+      },
+      "readability": "Property page hotel title readable. Full address was available only in the global same-property review-header search index; that address page was not directly opened in this bounded task.",
+      "identity_comparison": "Global title and street number/locality agree with the earlier official/.co.jp identity record, allowing transliteration variation (Nanba/Namba). This is source research, not an IAB approval.",
+      "prior_reference": {
+        "file": "docs/hotel-review-evidence-20260909/osaka-rakuten-leads.json",
+        "compiled_at": "2026-09-09T00:31:56Z",
+        "official_url": "https://www.hotel-royalclassic.jp/access",
+        "prior_recorded_address": "〒542-0076 大阪府大阪市中央区難波4-3-3",
+        "fresh_read": false,
+        "excluded_co_jp_url": "https://travel.rakuten.co.jp/HOTEL/178414/178414.html",
+        "note": "Earlier source research only. The official/.co.jp pages were not re-read here. The .co.jp URL is unsupported by the current normal hotel link schema and must not be substituted into this slot."
+      },
+      "limitations": [
+        "All browser_verified flags remain false; root's separate current IAB observations must establish final identity.",
+        "No global hotel identifier was inferred from a Japanese-site identifier; the full literal URL was observed.",
+        "No date search, room selection, quote, booking, affiliate clickout or production write was performed."
+      ]
+    }
+  ]
+}

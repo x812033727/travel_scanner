@@ -1,0 +1,120 @@
+{
+  "tag": "hotel-review-evidence-20260909",
+  "method": "read_only_backup_vs_current",
+  "checked_at": "2026-09-09T01:09:11.534270+00:00",
+  "database_writes": 0,
+  "backup_sha256": "fb52a997476aadb43ba44c0da770df4f1b543521fa8c6f9a6b267feec24a792f",
+  "secret_values_emitted": false,
+  "comparisons": [
+    {
+      "provider": "ai_guide_search",
+      "changed_fields": [],
+      "before_sha256": "dc66fe1afb6d5011e263fa94b71ce4c3e4dbeb7d5a1415ef28d90df48b12d7c5",
+      "current_sha256": "dc66fe1afb6d5011e263fa94b71ce4c3e4dbeb7d5a1415ef28d90df48b12d7c5"
+    },
+    {
+      "provider": "ai_planner",
+      "changed_fields": [],
+      "before_sha256": "22c78d3ebe7983028d9b2474eb0e3dbac381ca4d9df24133d33a46764a80b85b",
+      "current_sha256": "22c78d3ebe7983028d9b2474eb0e3dbac381ca4d9df24133d33a46764a80b85b"
+    },
+    {
+      "provider": "ai_vendors",
+      "changed_fields": [],
+      "before_sha256": "0fa02c830e33707732e2a163372e8205e80f5608ec0c162699b489d3c13dbd0c",
+      "current_sha256": "0fa02c830e33707732e2a163372e8205e80f5608ec0c162699b489d3c13dbd0c"
+    },
+    {
+      "provider": "booking",
+      "changed_fields": [],
+      "before_sha256": "1e0f41ed7a70bdc86d80a1d200320b629f2ef4f053b58bf18659161cf804c74e",
+      "current_sha256": "1e0f41ed7a70bdc86d80a1d200320b629f2ef4f053b58bf18659161cf804c74e"
+    },
+    {
+      "provider": "booking_demand",
+      "changed_fields": [],
+      "before_sha256": "45785e4aa18658f08f33cd06d526f645340f9dca66d9dbed299fb9bd029f0f34",
+      "current_sha256": "45785e4aa18658f08f33cd06d526f645340f9dca66d9dbed299fb9bd029f0f34"
+    },
+    {
+      "provider": "brave_guides",
+      "changed_fields": [],
+      "before_sha256": "a909a8c2b888d4646c316493dbbd6e3748e428eabc4078b8ed1b7fd1bf52275e",
+      "current_sha256": "a909a8c2b888d4646c316493dbbd6e3748e428eabc4078b8ed1b7fd1bf52275e"
+    },
+    {
+      "provider": "ekispert",
+      "changed_fields": [],
+      "before_sha256": "2e299e8029b1bf55582e5cb4557d796e0ff76ddfee0faf6e3e26721f6224867f",
+      "current_sha256": "2e299e8029b1bf55582e5cb4557d796e0ff76ddfee0faf6e3e26721f6224867f"
+    },
+    {
+      "provider": "gemini_guides",
+      "changed_fields": [],
+      "before_sha256": "c7843090e1094dcb0937083b152e7020f0d1df69ddffe135fa8cb9081cff5f5e",
+      "current_sha256": "c7843090e1094dcb0937083b152e7020f0d1df69ddffe135fa8cb9081cff5f5e"
+    },
+    {
+      "provider": "google_maps",
+      "changed_fields": [],
+      "before_sha256": "523f4c2fb8c878e03484749de509934164f9fb60325ff059aa09e761480e7b41",
+      "current_sha256": "523f4c2fb8c878e03484749de509934164f9fb60325ff059aa09e761480e7b41"
+    },
+    {
+      "provider": "hotspot_guides",
+      "changed_fields": [],
+      "before_sha256": "4c69906ef07bcfa46db693d30dc3efda00b6c108fa798899bbb17d86e4c4a76b",
+      "current_sha256": "4c69906ef07bcfa46db693d30dc3efda00b6c108fa798899bbb17d86e4c4a76b"
+    },
+    {
+      "provider": "klook",
+      "changed_fields": [],
+      "before_sha256": "15ecd1230df2e1ac5857d9450fcf3f1a6ea251044a15589bf8e75c6ff9075f89",
+      "current_sha256": "15ecd1230df2e1ac5857d9450fcf3f1a6ea251044a15589bf8e75c6ff9075f89"
+    },
+    {
+      "provider": "layout",
+      "changed_fields": [
+        "config",
+        "updated_at"
+      ],
+      "before_sha256": "077ba4198de700671f6c6de302347a2e6e5454ca30d83537eed6b7a38db9a8da",
+      "current_sha256": "157c0517ba8d0964f456af0cfae73f69495dd3202d5d79c9209a727554f0247b",
+      "config_changed_fields": [
+        "alerts_enabled"
+      ],
+      "updated_at": "2026-09-09T00:59:41.715125+00:00"
+    },
+    {
+      "provider": "runtime",
+      "changed_fields": [],
+      "before_sha256": "a1dc5efdeacb0da349ddb89f5cc3686ed699ca118656ce667e315eadcc582f00",
+      "current_sha256": "a1dc5efdeacb0da349ddb89f5cc3686ed699ca118656ce667e315eadcc582f00"
+    },
+    {
+      "provider": "travelpayouts",
+      "changed_fields": [],
+      "before_sha256": "83b458e1a4a6e8c0a88724d286ceede343225da4c654107ee561c087f32f0b52",
+      "current_sha256": "83b458e1a4a6e8c0a88724d286ceede343225da4c654107ee561c087f32f0b52"
+    },
+    {
+      "provider": "youtube_guides",
+      "changed_fields": [],
+      "before_sha256": "6318beff1c0db6bcb5c1a1945b74d67ad6ebe4e03f5ece8182346969bb2daa11",
+      "current_sha256": "6318beff1c0db6bcb5c1a1945b74d67ad6ebe4e03f5ece8182346969bb2daa11"
+    }
+  ],
+  "concurrent_layout_audits": [
+    {
+      "action": "layout_settings_updated",
+      "target": "layout",
+      "created_at": "2026-09-09T00:59:41.725952+00:00",
+      "config_fields": [
+        "alerts_enabled"
+      ],
+      "actor_present": true,
+      "actor_matches_hotel_root": true
+    }
+  ],
+  "note": "Actual concurrent difference, not an exception to strict acceptance. No setting restored, changed or normalized in the database."
+}
