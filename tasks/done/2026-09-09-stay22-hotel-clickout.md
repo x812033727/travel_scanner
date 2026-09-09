@@ -1,13 +1,13 @@
 ---
 id: 2026-09-09-stay22-hotel-clickout
 title: Stay22 exact hotel affiliate clickouts
-status: review
+status: done
 priority: P1
 area: api
 owner: codex-stay22
 claimed_at: 2026-09-09T11:09:58Z
 created_at: 2026-09-09T11:08:28Z
-completed_at:
+completed_at: 2026-09-09T12:04:46Z
 branch: codex/stay22-hotel-clickout
 depends_on: []
 scope:
@@ -60,12 +60,12 @@ Known, reviewed hotel pages should offer direct OTA booking links without requir
 - [x] Server-built Allez links with exact reviewed identities, strict context and privacy gates.
 - [x] Versioned default-off admin controls and readiness counts, without a migration.
 - [x] Five-language hotel booking panel and catalog-first stay flow, safe failure UX.
-- [ ] Backend, frontend and fixture browser validation; PR opened without merging or enabling live tracking.
+- [x] Backend, frontend and fixture browser validation; PR opened without enabling live tracking.
 
 ## Steps
 
 - [x] Implement and review independent API, admin and frontend changes.
-- [ ] Run checks, document release boundary and open PR.
+- [x] Run checks, document release boundary and open PR.
 
 ## How to verify
 
@@ -75,4 +75,6 @@ Ruff, mypy, pytest; ESLint, TypeScript, i18n, Vitest, build; desktop/Pixel fixtu
 
 Base origin/main 95122362. Canonical checkout is dirty and untouched. README.md remains claimed by the merchant task; all feature documentation goes in docs/stay22-allez.md. Existing catalog.tsx is also claimed, so booking context uses a narrow shared context provider around the existing stay catalog slot instead of editing that file.
 
-Implementation checkpoint: exact-hotel/channel/context tests and first-party HTTP persistence tests pass; admin capability/config tests and five-locale UI checks added. Full checks and desktop/Pixel fixture validation are still in progress. Allez remains default-off; no real affiliate click, order, commission claim, merge or deployment performed.
+Completed validation: all PR CI checks passed on 6e7e0d4ad186a36e0c50442ddef86af8aa39e3fb, including API (2691 passed, 13 skipped), web lint/type/i18n/tests/build, containers and PostgreSQL/Redis/RQ full-stack smoke. Local production Playwright passed 148 desktop/Pixel fixture tests. An early redirect fixture escaped interception using a fixture AID; this was disclosed in PR #379 and replaced with a same-origin fixture plus external-traffic blocking. No order or commission verification was performed.
+
+On explicit user merge authorization, PR #379 was squash-merged into main as a8be96cd5bc0fca3f35c1f13fe5086fb2b0b219d on 2026-09-09. Remote main containment was verified. No deployment or live Allez activation was requested or performed. This post-merge task closure is retained locally; no extra main push is part of the merge request.
