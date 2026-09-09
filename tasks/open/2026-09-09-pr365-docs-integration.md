@@ -59,15 +59,29 @@ The normal merge had only a generated BOARD conflict, resolved with
 the two original open tasks, this integration task and BOARD. Preserve both
 original operational tasks as open; this integration does not complete them.
 
-Validation: `npm run check:tasks` passed for 204 task files; it reports the
+Initial validation: `npm run check:tasks` passed for 204 task files; it reports the
 existing discovery/planner overlap on trip-editor.test.tsx, which was not edited.
 `node --test tools/tasks.test.mjs tools/json-duplicate-keys.test.mjs` passed all
 24 relevant checks; `git diff --check` passed. The attempted broader
 `npm run test:tools` passed those 24 checks but failed to import the unrelated
-airline-crawler test because this fresh worktree has no installed
+airline-crawler test because this fresh worktree initially had no installed
 `@playwright/test`. No dependency installation, browser launch or crawler run
-was attempted, and no full-tools pass is claimed. The receiving agent must run
-the updated PR's required CI before any remote merge.
+was attempted during that first check. This initial limitation is resolved by
+the authorized follow-up below; it is retained here as historical validation evidence.
+
+Authorized local dependency follow-up on 2026-09-09:
+`npm ci --ignore-scripts --no-audit --no-fund` completed successfully (545 packages).
+The locked package file is unchanged, SHA-256
+8d579e5bec8b85c2e2c111f49aefb75e509664455292b6a587e9581b5f5f17a9.
+Complete `npm run test:tools` now passes 27/27 tests with zero failures or skips.
+The crawler-named unit tests only exercise argument parsing, query construction
+and API-root validation; the crawler entry point and browsers were not invoked.
+`npm run tasks:board`, `npm run check:tasks` (204 files), and `git diff --check`
+also passed. Existing stale merchant-claim and discovery/planner-overlap warnings
+are unchanged ownership issues outside this task; no other task was modified.
+No further main merge was performed: integration remains pinned to a899437a
+until the root agent supplies the final main SHA after the functional PRs.
+The receiving agent must still run the updated PR's required CI before remote merge.
 
 Documentation is suitable for normal PR review rather than being held draft
 until affiliate activation or a separate network investigation is finished;
