@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**16 open · 1 in progress · 2 blocked · 6 in review · 181 done**
+**16 open · 1 in progress · 2 blocked · 6 in review · 182 done**
 
 ## Ready to claim
 
@@ -62,7 +62,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-09 [Travel discovery search feed and explicit preferences API](done/2026-09-08-travel-discovery-api.md)
 - 2026-09-09 [Travel discovery homepage search collections and media experience](done/2026-09-08-travel-discovery-web.md)
 - 2026-09-09 [Premium app-style itinerary planning flow](done/2026-09-08-planner-premium-app.md)
+- 2026-09-09 [Hotel platform source continuation](done/2026-09-08-hotel-platform-source-continuation.md)
 - 2026-09-08 [Hotel redirected platform identity review](done/2026-09-08-hotel-redirected-platform-identity-review.md)
 - 2026-09-08 [Hotel remaining identity review](done/2026-09-08-hotel-remaining-identity-review.md)
 - 2026-09-08 [Fix weather and itinerary intent panel contrast in dark mode](done/2026-09-08-planner-weather-dark-contrast.md)
-- 2026-09-08 [Fix nearby itinerary discovery across cities and reset insertion pagination](done/2026-09-08-planner-nearby-followup.md)
