@@ -1,14 +1,14 @@
 ---
 id: 2026-09-07-hotel-platform-options-and-quote-readiness
 title: Hotel platform options and quote readiness
-status: open
+status: in-progress
 priority: P1
 area: api
-owner:
-claimed_at:
+owner: codex-pr367-merge-ready
+claimed_at: 2026-09-09T04:05:22Z
 created_at: 2026-09-07T12:32:44Z
 completed_at:
-branch: codex/hotel-content-review-iab-osaka-taipei
+branch: codex/pr367-merge-ready-20260909
 depends_on: []
 scope:
   - apps/api/tests/test_hotel_content_package.py
