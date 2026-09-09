@@ -1,6 +1,7 @@
-import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { Trip } from "@/lib/trip-types";
+import { PlannerOverlay } from "./planner-overlay";
 import { ItineraryDiff, type IntentPreview } from "./itinerary-diff";
 
 vi.mock("@/components/usage-catalog-provider", () => ({
@@ -141,6 +142,133 @@ it("uses theme-aware intent surfaces without submitting when expanded or choosin
   fireEvent.click(screen.getByRole("button", { name: "這天下雨，改室內" }));
   expect((input as HTMLInputElement).value).toBe("這天下雨，改室內");
   expect(fetchMock).not.toHaveBeenCalled();
+});
+
+describe("embedded intent editor", () => {
+  it("announces busy before preparing and prevents duplicate submissions during the pending flush", async () => {
+    let finishPrepare!: (value: Trip) => void;
+    const prepare = vi.fn(() => new Promise<Trip>((resolve) => { finishPrepare = resolve; }));
+    const onBusy = vi.fn();
+    const fetchMock = vi.fn(async () => ok(preview({ base_version: 8 })));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<ItineraryDiff trip={trip} activeDay="2026-11-12" presentation="embedded" prepare={prepare} onBusy={onBusy} onApplied={vi.fn()} />);
+    fireEvent.change(screen.getByLabelText("想改什麼？"), { target: { value: "這天下雨，改室內" } });
+    const form = screen.getByLabelText("想改什麼？").closest("form")!;
+    fireEvent.submit(form);
+    fireEvent.submit(form);
+    expect(prepare).toHaveBeenCalledTimes(1);
+    expect(onBusy.mock.calls).toEqual([[true]]);
+    expect((screen.getByRole("button", { name: "重新安排中" }) as HTMLButtonElement).disabled).toBe(true);
+    expect(fetchMock).not.toHaveBeenCalled();
+
+    await act(async () => finishPrepare({ ...trip, version: 8 }));
+    expect(await screen.findByRole("region", { name: "確認這次調整" })).toBeTruthy();
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(JSON.parse(String(calls(fetchMock)[0][1].body))).toMatchObject({ version: 8, text: "這天下雨，改室內" });
+    expect(onBusy.mock.calls).toEqual([[true], [false]]);
+  });
+
+  it("clears parent busy and preserves the sentence when preparing fails without calling the provider", async () => {
+    let failPrepare!: (reason: Error) => void;
+    const prepare = vi.fn(() => new Promise<Trip>((_resolve, reject) => { failPrepare = reject; }));
+    const onBusy = vi.fn();
+    const onError = vi.fn();
+    const fetchMock = vi.fn();
+    vi.stubGlobal("fetch", fetchMock);
+    render(<ItineraryDiff trip={trip} activeDay="2026-11-12" presentation="embedded" prepare={prepare} onBusy={onBusy} onError={onError} onApplied={vi.fn()} />);
+    await submit("保留手動景點，走路少一點");
+    expect(onBusy.mock.calls).toEqual([[true]]);
+    await act(async () => failPrepare(new Error("本機修改尚未完成儲存")));
+    expect(onError).toHaveBeenCalledWith("本機修改尚未完成儲存");
+    expect(onBusy.mock.calls).toEqual([[true], [false]]);
+    expect((screen.getByLabelText("想改什麼？") as HTMLInputElement).value).toBe("保留手動景點，走路少一點");
+    expect((screen.getByRole("button", { name: "看看會怎麼改" }) as HTMLButtonElement).disabled).toBe(false);
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("keeps the embedded review busy until the single delayed apply completes", async () => {
+    let finishApply!: (value: ReturnType<typeof ok>) => void;
+    const onBusy = vi.fn();
+    const onApplied = vi.fn();
+    const fetchMock = vi.fn((url: string) => url.endsWith("/intents")
+      ? Promise.resolve(ok(preview())) : new Promise<ReturnType<typeof ok>>((resolve) => { finishApply = resolve; }));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<ItineraryDiff trip={trip} activeDay="2026-11-12" presentation="embedded" onBusy={onBusy} onApplied={onApplied} />);
+    await submit("這天下雨，改室內");
+    const review = await screen.findByRole("region", { name: "確認這次調整" });
+    const apply = within(review).getByRole("button", { name: /^套用/ });
+    fireEvent.click(apply);
+    fireEvent.click(apply);
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect((apply as HTMLButtonElement).disabled).toBe(true);
+    expect((within(review).getByRole("button", { name: "先不套用" }) as HTMLButtonElement).disabled).toBe(true);
+    expect(onBusy.mock.calls).toEqual([[true], [false], [true]]);
+    expect(onApplied).not.toHaveBeenCalled();
+    const applied = { ...trip, version: 8 };
+    await act(async () => finishApply(ok(applied)));
+    expect(onApplied).toHaveBeenCalledTimes(1);
+    expect(onApplied).toHaveBeenCalledWith(applied, "day", "2026-11-12");
+    expect(onBusy.mock.calls).toEqual([[true], [false], [true], [false]]);
+    expect(screen.queryByRole("region", { name: "確認這次調整" })).toBeNull();
+  });
+
+  it("shows a static expanded form using the requested scope without a floating trigger", () => {
+    const fetchMock = vi.fn();
+    vi.stubGlobal("fetch", fetchMock);
+    render(<ItineraryDiff trip={trip} activeDay="2026-11-12" presentation="embedded" initialScope="trip" onApplied={vi.fn()} />);
+    const region = screen.getByRole("region", { name: "描述想調整的地方" });
+    expect(region.className).toBe("premium-intent-form");
+    expect(region.className).not.toContain("sticky");
+    expect(screen.queryByRole("button", { name: "想改什麼？" })).toBeNull();
+    expect(screen.getByLabelText("想改什麼？").closest("form")?.className).not.toContain("hidden");
+    expect(screen.getByRole("radio", { name: "整趟行程" }).getAttribute("aria-checked")).toBe("true");
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("previews and cancels inside the existing AI panel without nesting a dialog", async () => {
+    const fetchMock = vi.fn(async () => ok(preview()));
+    vi.stubGlobal("fetch", fetchMock);
+    const onApplied = vi.fn();
+    render(<PlannerOverlay open title="AI 調整" onClose={vi.fn()}><ItineraryDiff trip={trip} activeDay="2026-11-12" presentation="embedded" onApplied={onApplied} /></PlannerOverlay>);
+    await submit("這天下雨，改室內");
+    const inlinePreview = await screen.findByRole("region", { name: "確認這次調整" });
+    expect(inlinePreview.className).toBe("premium-intent-preview");
+    await waitFor(() => expect(document.activeElement).toBe(within(inlinePreview).getByRole("heading", { name: "確認這次調整" })));
+    expect(screen.getAllByRole("dialog")).toHaveLength(1);
+    expect(document.querySelectorAll(".planner-overlay")).toHaveLength(1);
+    expect(screen.queryByRole("region", { name: "描述想調整的地方" })).toBeNull();
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(onApplied).not.toHaveBeenCalled();
+    fireEvent.click(within(inlinePreview).getByRole("button", { name: "先不套用" }));
+    expect((screen.getByLabelText("想改什麼？") as HTMLInputElement).value).toBe("這天下雨，改室內");
+    await waitFor(() => expect(document.activeElement).toBe(screen.getByLabelText("想改什麼？")));
+    expect(screen.getByRole("dialog", { name: "AI 調整" })).toBeTruthy();
+    expect(document.body.style.overflow).toBe("hidden");
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("applies an embedded preview only after confirmation through the unchanged endpoint", async () => {
+    const applied = { ...trip, version: 8 };
+    const fetchMock = vi.fn(async (url: string) => url.endsWith("/intents")
+      ? ok(preview({ scope: "trip", day_date: null, usage_operation: "ai_itinerary_generation" })) : ok(applied));
+    vi.stubGlobal("fetch", fetchMock);
+    const onApplied = vi.fn();
+    render(<ItineraryDiff trip={trip} activeDay="2026-11-12" presentation="embedded" initialScope="trip" onApplied={onApplied} />);
+    await submit("走路少一點");
+    const inlinePreview = await screen.findByRole("region", { name: "確認這次調整" });
+    expect(JSON.parse(String(calls(fetchMock)[0][1].body))).toMatchObject({ version: 7, scope: "trip", day_date: null });
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(onApplied).not.toHaveBeenCalled();
+    const apply = within(inlinePreview).getByRole("button", { name: /^套用/ });
+    expect(apply.textContent).toContain("1 次");
+    fireEvent.click(apply);
+    await waitFor(() => expect(onApplied).toHaveBeenCalledWith(applied, "trip", null));
+    const [url, init] = calls(fetchMock)[1];
+    expect(url).toBe("/api/travel/trips/t1/itinerary/apply");
+    expect(JSON.parse(String(init.body))).toEqual({ version: 7, preview_id: "p1" });
+    expect(screen.queryByRole("region", { name: "確認這次調整" })).toBeNull();
+  });
 });
 
 describe("intent bar", () => {
@@ -359,6 +487,7 @@ describe("intent bar", () => {
     await submit("這天下雨，改室內");
 
     await waitFor(() => expect(prepare).toHaveBeenCalled());
+    await waitFor(() => expect((screen.getByRole("button", { name: "看看會怎麼改" }) as HTMLButtonElement).disabled).toBe(false));
     expect(fetchMock).not.toHaveBeenCalled();
   });
 

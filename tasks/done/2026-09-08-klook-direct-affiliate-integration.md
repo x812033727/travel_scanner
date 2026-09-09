@@ -1,13 +1,13 @@
 ---
 id: 2026-09-08-klook-direct-affiliate-integration
 title: Klook direct affiliate product integration and reviewed rollout
-status: review
+status: done
 priority: P1
 area: api
 owner: codex-klook-root
 claimed_at: 2026-09-08T16:43:31Z
 created_at: 2026-09-08T16:29:02Z
-completed_at:
+completed_at: 2026-09-08T21:22:27Z
 branch: codex/klook-product-integration
 depends_on: []
 scope:
@@ -32,7 +32,7 @@ pretending affiliate enrollment grants price API access.
 - [x] Source-backed, additive pending product manifest with preview/apply/replay tests.
 - [x] Existing hotel facts, other booking platforms and review states preserved.
 - [x] Desktop / Pixel 7 browser checks and proportional API / Web regression validation.
-- [ ] PR with evidence and rollout instructions; production activation requires its own review.
+- [x] PR with evidence and rollout instructions; production activation requires its own review.
 
 ## Steps
 
@@ -40,7 +40,7 @@ pretending affiliate enrollment grants price API access.
 - [x] Verify account AID and documented link format using the authenticated internal browser.
 - [x] Integrate channel-aware backend and five-language catalog/admin UI from bounded agents.
 - [x] Record verified source identities and test safe additive pending imports.
-- [ ] Run checks, review diff and open PR.
+- [x] Run checks, review diff and open PR.
 
 ## How to verify
 
@@ -71,10 +71,10 @@ must be handed over by the merchant task owner before backend editing.
   existing replaceState is intentional. Test now verifies reload and back between
   pages; no assertion timeout or application navigation change.
 - Whole Ruff and mypy (262 sources) passed. Alembic head0064; no local Docker/PG.
-  Real0063/freshmetadata migration tests remain PostgreSQL-gated for CI.
+  Real0063/freshmetadata migration tests subsequently passed in PostgreSQL CI.
 - Full Web run became very slow and showed a failure in unchanged
-  itinerary-place-browser.test.tsx before interruption; isolated rerun and full CI
-  still required. Do not describe the incomplete local run as passing.
+  itinerary-place-browser.test.tsx before interruption; the unchanged isolated
+  test and complete retry subsequently passed, as did full Linux CI.
 - Full local API: 1903 passed / 122 skipped / one existing AsyncMock warning;
   Linux-only deployment_center excluded on Windows. This was before the final
   alias/privacy patch; final related bundle 152 passed / 2 PG-only skipped.
@@ -82,7 +82,7 @@ must be handed over by the merchant task owner before backend editing.
   Console destination-stream-close errors occurred during navigation, but no
   assertion failed; not claiming those pre-existing transport errors were fixed.
 - Isolated unchanged itinerary-place-browser rerun: 7 passed without edits.
-  Complete Web retry is still running; latest-SHA Linux CI is authoritative.
+  Complete Web retry: 147 files / 965 tests passed without unrelated code edits.
 - Independent review found a Klook short/detail alias inconsistency across hotel
   health, public option matching and clickout. Fixed only for the same typed
   numeric hotel identity, with bidirectional booking-query context preservation;
@@ -90,5 +90,27 @@ must be handed over by the merchant task owner before backend editing.
   tracking uses only coarse module/locale, never a member/trip-derived identifier.
 
 PR: https://github.com/x812033727/travel_scanner/pull/370 (base main).
-Draft while full Linux CI/PostgreSQL checks run. No merge or deployment authorized
-for this new feature; keep review tasks open until the PR is merged.
+
+## Final validation and merge
+
+- Final local API: 1912 passed / 122 skipped / one AsyncMock warning; Linux-only
+  deployment_center remains excluded on Windows and is covered by Linux CI.
+- Head 68300d6add1b49706a433e12e8f3238c31abd06d passed both complete CI runs
+  34255149868 (PR) and 34255142051 (push), all eight checks successful.
+- Linux API: 2100 passed / 3 skipped, including real PostgreSQL migration paths;
+  Web: 147 files / 965 tests passed; isolated Chromium / Pixel 7: 282 passed;
+  full-stack suites: 8 + 6 + 2 passed. Container build, Ruff, mypy, ESLint,
+  TypeScript, i18n, task checks, tools and production build also passed.
+- On the user's explicit merge request, rechecked base/main, CLEAN/MERGEABLE,
+  exact head and required checks. Squash merge used --match-head-commit for
+  68300d6add1b49706a433e12e8f3238c31abd06d, without a bypass or branch deletion.
+- Merged at 2026-09-08T21:18:58Z as
+  29c36b258789d3750d3620cceb3a8d1da7fc59df. Fetched origin/main matches and
+  contains that commit. Post-merge CI run: 34279895874.
+- No deployment, production imports, account activation, product approval or
+  publication performed. Klook pricing API access remains unapproved.
+- Post-merge CI 34279895874 completed SUCCESS on exact merge SHA 29c36b2:
+  all four jobs green; API 2100 passed / 3 skipped, Web 147 files / 965 tests,
+  tools 27, browser 282, full-stack 8 + 6 + 2; PostgreSQL 0063 to 0064 verified.
+  GitHub main independently rechecked at the same full merge SHA. Task archival
+  validation: 190 task files, tools 27 tests and git diff --check passed.

@@ -1,13 +1,13 @@
 ---
 id: 2026-09-08-klook-affiliate-web
 title: Klook affiliate frontend channels and contextual discovery
-status: review
+status: done
 priority: P1
 area: web
 owner: codex-klook-web
 claimed_at: 2026-09-08T16:32:56Z
 created_at: 2026-09-08T16:32:56Z
-completed_at:
+completed_at: 2026-09-08T21:22:28Z
 branch: codex/klook-product-integration
 depends_on: []
 scope:
@@ -39,7 +39,7 @@ Existing partner forms assume every brand uses Travelpayouts. Klook direct affil
 - [x] Existing hotel/tour/transfer/esim catalog surfaces contextual reviewed destination discovery without a new intrusive trip panel.
 - [x] Direct review can explicitly record browser evidence, scoped to the exact row version; no automatic attestation.
 - [x] Focused tests, TypeScript and ESLint pass.
-- [ ] Parent completes responsive E2E and overall release validation.
+- [x] Parent completes responsive E2E and overall implementation / CI validation; deployment remains separate.
 
 ## Steps
 
@@ -61,3 +61,20 @@ Existing partner forms assume every brand uses Travelpayouts. Klook direct affil
 - Final focused Vitest: 84 tests passed across six files. Whole-web TypeScript and focused ESLint (all 13 owned TypeScript files) passed; `git diff --check` passed. No live API, quote, approval, commit or publish calls were made by this subtask.
 - Brand selection captures the original row version instead of following later metadata snapshots. Unselected brand editors remain hidden rather than misrepresenting an approved account as pending. Successful writes may update only the selected channel's baseline.
 - Osaka/Kyoto trip destinations normalize to one canonical destination; the dual-city destination page displays common discovery only once. `showDestinationDiscovery` defaults true for existing catalog callers.
+
+## Final validation and merge
+
+- Full local Web retry and Linux CI: 147 files / 965 tests passed. Complete
+  ESLint, TypeScript, i18n, tools (27 tests) and production build passed.
+- Local travel-service Playwright: 126 passed, including 20 new Klook checks
+  across five locales on desktop Chromium and Pixel 7.
+- Full Linux CI browser tests: 282 isolated checks, 8 full-stack journeys,
+  6 community/private-media/mail and 2 admin-domain checks passed.
+- PR #370 head 68300d6 passed all eight checks in runs 34255149868 and
+  34255142051, then was squash-merged with that exact SHA guard following user
+  authorization. Merge 29c36b258789d3750d3620cceb3a8d1da7fc59df is on origin/main;
+  mergedAt 2026-09-08T21:18:58Z. Post-merge CI run: 34279895874.
+- No production deployment, import, approval or publication performed.
+- Post-merge CI 34279895874 completed SUCCESS on exact merge SHA 29c36b2;
+  all four jobs green. Web 147 files / 965 tests, tools 27, browser 282 and
+  full-stack 8 + 6 + 2 passed. GitHub main independently matches the merge SHA.

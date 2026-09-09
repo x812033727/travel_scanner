@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from datetime import date, datetime
-from typing import Any, cast
+from typing import Any
 from uuid import UUID
 
 from fastapi.exceptions import RequestValidationError
@@ -34,7 +34,7 @@ from app.search.schemas import (
     Travelers,
     TripType,
 )
-from app.trips.stay_areas import trip_timezone
+from app.trips.stay_areas import trip_settings_source, trip_timezone
 
 # Airports a member can fly out from today; the planning workbench offers the same three.
 ORIGIN_OPTIONS: tuple[str, ...] = ("TPE", "TSA", "KHH")
@@ -147,14 +147,13 @@ def derive_trip_search(
     base = _base_search(search_json)
     origin = trip_origin_airport(trip, base)
     destination = trip_destination_airport(trip, base)
+    source = trip_settings_source(trip, search_json if base is not None else None)
     if base is not None:
-        travelers, preferences, cabin_class = base.travelers, base.preferences, base.cabin_class
+        cabin_class = base.cabin_class
     else:
-        travelers = Travelers.model_validate(cast(dict[str, Any], trip.data.get("travelers") or {}))
-        preferences = SearchPreferences.model_validate(
-            cast(dict[str, Any], trip.data.get("preferences") or {})
-        )
         cabin_class = FlightCabinClass.ECONOMY
+    travelers = Travelers.model_validate(source.get("travelers") or {})
+    preferences = SearchPreferences.model_validate(source.get("preferences") or {}, extra="ignore")
     # Extension cities are a planning choice, not a flight route, and their
     # trip-length rule would reject a short trip that is otherwise searchable.
     preferences = preferences.model_copy(update={"extension_destination_ids": []})

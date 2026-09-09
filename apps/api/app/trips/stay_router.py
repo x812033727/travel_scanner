@@ -69,6 +69,7 @@ from app.trips.stay_areas import (
     stay_search_query,
     trim_offer,
     trip_city,
+    trip_settings_source,
 )
 
 logger = logging.getLogger(__name__)
@@ -185,9 +186,9 @@ def _stay22_map_context(context: StayContext) -> dict[str, Any] | None:
             ]:
                 return None
 
-    # The saved search is authoritative, including when it has incomplete party
-    # data. Schema defaults must not invent missing adults, children or rooms.
-    source = context.search_json if context.search_json is not None else trip.data
+    # Only an explicitly saved party edit overrides the original search. Schema
+    # defaults must not invent missing adults, children or rooms.
+    source = trip_settings_source(trip, context.search_json)
     raw_travelers = source.get("travelers")
     travelers = None
     if isinstance(raw_travelers, dict) and {"adults", "children", "rooms"} <= raw_travelers.keys():

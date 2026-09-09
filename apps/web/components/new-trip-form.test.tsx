@@ -1,21 +1,21 @@
 import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
+import "@testing-library/jest-dom/vitest";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { NewTripForm } from "./new-trip-form";
+import { automaticTripName, newTripCopy } from "./planner/new-trip-copy";
+import { NewTripPreferenceFields, NewTripTravelerFields, type NewTripPreferenceValues } from "./planner/new-trip-fields";
 
 const { push } = vi.hoisted(() => ({ push: vi.fn() }));
 vi.mock("@/i18n/navigation", () => ({ useRouter: () => ({ push }) }));
-vi.mock("./place-picker", () => ({
-  PlacePicker: ({ value, onTextChange }: { value: string; onTextChange: (value: string) => void }) => <input aria-label="目的地" value={value} onChange={(event) => onTextChange(event.target.value)} />,
-}));
 
 /**
  * The calendar asks the API for public holidays when it mounts, so a bare fetch stub would
  * hand those requests the response meant for the trip submission. This answers them
  * separately and leaves `mock` seeing only the calls the test is about.
  */
-function stubFetch(mock: unknown, holidayUrls: string[] = []) {
+function stubFetch(mock: unknown, holidayUrls: string[] = [], attribution = "") {
   const submit = mock as (input: unknown, init?: RequestInit) => unknown;
-  const empty = { country: "TW", country_name: "臺灣", locale: "zh-TW", coverage_start: null, coverage_end: null, attribution: "", holidays: [] };
+  const empty = { country: "TW", country_name: "臺灣", locale: "zh-TW", coverage_start: null, coverage_end: null, attribution, holidays: attribution ? [{ date: "2026-11-11", key: "example", kind: "public_holiday", is_working_day: false, name: "假日", country: "TW", country_name: "臺灣", source: "official" }] : [] };
   vi.stubGlobal("fetch", vi.fn((input: unknown, init?: RequestInit) => {
     if (String(input).includes("/holidays")) {
       holidayUrls.push(String(input));
@@ -40,21 +40,153 @@ function pickDay(iso: string) {
 function fillRequiredFields() {
   fireEvent.change(screen.getByLabelText("旅程名稱"), { target: { value: " 東京五日賞楓 " } });
   fireEvent.change(screen.getByLabelText("目的地"), { target: { value: " 東京 " } });
+  fireEvent.click(calendarToggle());
   pickDay("2026-11-10");
   pickDay("2026-11-15");
 }
 
-function next() {
-  fireEvent.click(screen.getByRole("button", { name: /下一步/ }));
+function calendarToggle() {
+  return within(screen.getByRole("group", { name: "旅行日期" })).getByRole("button");
 }
-
-function reachReview() {
-  next(); next(); next();
-}
+function openAdvanced() { fireEvent.click(screen.getByText("進階偏好（選填）")); }
+function submit() { fireEvent.click(screen.getByRole("button", { name: "開始安排" })); }
 
 describe("NewTripForm", () => {
+it("preserves existing nonstandard traveler values in the shared settings fields", () => {
+    render(<NewTripTravelerFields values={{ adults: "2", children: "8", rooms: "1" }} onChange={vi.fn()} />);
+    expect(screen.getByLabelText("兒童")).toHaveValue("8");
+  });
+
+  it("preserves existing numeric preferences and can hide an unpersistable route preference", () => {
+    const values: NewTripPreferenceValues = {
+      budget_twd: "", pace: "balanced", route_preference: "FEWER_TRANSFERS", nightly_min: "", nightly_max: "",
+      hotel_min_rating: "2", preferred_area: "", max_station_walk_minutes: "17", min_review_score: "8.5",
+      min_review_count: "75", breakfast_required: false, refundable_required: false, avoid_red_eye: true,
+    };
+    render(<NewTripPreferenceFields values={values} onChange={vi.fn()} lodgingMode="any" onLodgingModeChange={vi.fn()} interests={[]} onToggleInterest={vi.fn()} shopThemes={[]} onToggleShopTheme={vi.fn()} hideRoutePreference />);
+    expect(screen.getByLabelText("最低星級")).toHaveValue("2");
+    expect(screen.getByLabelText("車站步行上限")).toHaveValue("17");
+    expect(screen.getByLabelText("最低住客評分")).toHaveValue("8.5");
+    expect(screen.getByLabelText("最低評論數")).toHaveValue("75");
+    expect(screen.queryByLabelText("大眾運輸偏好")).toBeNull();
+  });
+it("shows one page with editable default travelers and optional preferences collapsed", () => {
+    render(<NewTripForm />);
+    expect(screen.getByLabelText("成人")).toHaveValue("2");
+    expect(screen.getByLabelText("兒童")).toHaveValue("0");
+    expect(screen.getByLabelText("房間")).toHaveValue("1");
+    expect(screen.getByText("進階偏好（選填）").closest("details")).not.toHaveAttribute("open");
+    expect(screen.queryByRole("list", { name: "建立步驟" })).toBeNull();
+    expect(screen.queryByRole("button", { name: /下一步|交給 AI|空白手動規劃/ })).toBeNull();
+    expect(screen.getByText(/不會自動呼叫 AI 或計算路線/)).toBeVisible();
+    expect(fetch).not.toHaveBeenCalled();
+  });
+
+  it("requires only city and dates, auto-names the trip and never calls AI, routes or geocoding", async () => {
+    const fetchMock = vi.fn().mockResolvedValue(new Response(JSON.stringify({ id: "simple-trip" }), { status: 201 }));
+    stubFetch(fetchMock);
+    render(<NewTripForm />);
+    fireEvent.click(screen.getByRole("button", { name: "東京" }));
+    fireEvent.click(calendarToggle());
+    pickDay("2026-11-10");
+    pickDay("2026-11-15");
+    expect(screen.getByLabelText("旅程名稱")).toHaveValue("東京・6 天");
+    expect(screen.getByLabelText("旅程名稱")).not.toBeRequired();
+    submit();
+    await waitFor(() => expect(push).toHaveBeenCalledWith("/trips/simple-trip"));
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(String(fetchMock.mock.calls[0][0])).toMatch(/\/trips$/);
+    expect(JSON.parse(String(fetchMock.mock.calls[0][1].body))).toMatchObject({
+      name: "東京・6 天", source: "blank", planning_mode: "manual_blank", destination_place_id: null,
+      travelers: { adults: 2, children: 0, rooms: 1 },
+      routing: { auto_compute: false, default_travel_mode: "transit", default_buffer_minutes: 10 },
+    });
+  });
+
+  it("preserves a custom name across city changes and can restore automatic naming", () => {
+    render(<NewTripForm />);
+    fillRequiredFields();
+    fireEvent.change(screen.getByLabelText("旅程名稱"), { target: { value: "我的生日旅行" } });
+    fireEvent.click(screen.getByRole("button", { name: "首爾" }));
+    expect(screen.getByLabelText("旅程名稱")).toHaveValue("我的生日旅行");
+    fireEvent.click(screen.getByRole("button", { name: "使用自動名稱" }));
+    expect(screen.getByLabelText("旅程名稱")).toHaveValue("首爾・6 天");
+    fireEvent.change(screen.getByLabelText("目的地"), { target: { value: "京都" } });
+    expect(screen.getByLabelText("旅程名稱")).toHaveValue("京都・6 天");
+  });
+
+  it("blocks excess rooms and non-positive optional budget before submitting", () => {
+    const fetchMock = vi.fn();
+    stubFetch(fetchMock);
+    render(<NewTripForm />);
+    fillRequiredFields();
+    fireEvent.change(screen.getByLabelText("房間"), { target: { value: "3" } });
+    submit();
+    expect(screen.getByRole("alert")).toHaveTextContent("房間數不可多於旅客人數");
+    fireEvent.change(screen.getByLabelText("房間"), { target: { value: "1" } });
+    openAdvanced();
+    fireEvent.change(screen.getByLabelText("整趟總預算（台幣）"), { target: { value: "0" } });
+    submit();
+    expect(screen.getByRole("alert")).toHaveTextContent("總預算必須大於 0");
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("restores legacy AI draft data but always submits manual blank planning", async () => {
+    window.sessionStorage.setItem("mokaair-new-trip-draft", JSON.stringify({
+      step: 3, planningMode: "ai_draft", lodgingMode: "any", selectedInterests: [],
+      form: { name: "已存旅程", destination_name: "東京", destination_place_id: "existing-verified-place", start_date: "2026-11-10", end_date: "2026-11-15" },
+    }));
+    const fetchMock = vi.fn().mockResolvedValue(new Response(JSON.stringify({ id: "restored-trip" }), { status: 201 }));
+    stubFetch(fetchMock);
+    render(<NewTripForm />);
+    await waitFor(() => expect(screen.getByLabelText("旅程名稱")).toHaveValue("已存旅程"));
+    submit();
+    await waitFor(() => expect(push).toHaveBeenCalledWith("/trips/restored-trip"));
+    expect(JSON.parse(String(fetchMock.mock.calls[0][1].body))).toMatchObject({
+      name: "已存旅程", planning_mode: "manual_blank", destination_place_id: "existing-verified-place", routing: { auto_compute: false },
+    });
+  });
+
+  it("keeps the draft after authentication failure and does not navigate", async () => {
+    stubFetch(vi.fn().mockResolvedValue(new Response(JSON.stringify({ detail: "請先登入" }), { status: 401 })));
+    render(<NewTripForm />);
+    fillRequiredFields();
+    await waitFor(() => expect(window.sessionStorage.getItem("mokaair-new-trip-draft")).toContain("東京"));
+    submit();
+    expect(await screen.findByRole("alert")).toHaveTextContent("請先登入");
+    expect(window.sessionStorage.getItem("mokaair-new-trip-draft")).toContain("2026-11-10");
+    expect(push).not.toHaveBeenCalled();
+  });
+
+  it("sends only one request when duplicate submits occur while the first is pending", async () => {
+    let resolveRequest: (value: Response) => void = () => {};
+    const fetchMock = vi.fn(() => new Promise<Response>((resolve) => { resolveRequest = resolve; }));
+    stubFetch(fetchMock);
+    const { container } = render(<NewTripForm />);
+    fillRequiredFields();
+    fireEvent.submit(container.querySelector("form")!);
+    fireEvent.submit(container.querySelector("form")!);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(screen.getByRole("button", { name: "正在建立…" })).toBeDisabled();
+    expect(screen.getByLabelText("目的地")).toBeDisabled();
+    resolveRequest(new Response(JSON.stringify({ id: "single-trip" }), { status: 201 }));
+    await waitFor(() => expect(push).toHaveBeenCalledWith("/trips/single-trip"));
+  });
+
+  it.each([
+    ["zh-TW", "東京", "東京・6 天", "開始安排"],
+    ["zh-CN", "东京", "东京・6 天", "开始安排"],
+    ["en", "Tokyo", "Tokyo · 6-day trip", "Start planning"],
+    ["ja", "東京", "東京・6日間", "旅の計画をはじめる"],
+    ["ko", "도쿄", "도쿄 6일 여행", "일정 시작하기"],
+  ])("provides localized automatic names and submit copy for %s", (locale, city, name, cta) => {
+    expect(automaticTripName(locale, city, 6)).toBe(name);
+    expect(automaticTripName(locale, "", 0)).toBe("");
+    expect(newTripCopy(locale).submit).toBe(cta);
+  });
   beforeEach(() => {
     push.mockReset();
+    stubFetch(vi.fn());
     // The calendar only offers days from today on; pin the clock so the
     // November 2026 fixtures stay reachable and the assertions stay exact.
     vi.setSystemTime(new Date("2026-09-05T12:00:00"));
@@ -65,24 +197,28 @@ describe("NewTripForm", () => {
     window.sessionStorage.clear();
   });
 
-  it("selects the trip dates as a continuous range on one calendar", () => {
+  it("toggles a continuous date range calendar without losing selected dates or holiday attribution", async () => {
+    stubFetch(vi.fn(), [], "官方假日資料來源");
     render(<NewTripForm />);
-    expect(screen.queryByLabelText("開始日期")).toBeNull();
-    const dates = within(screen.getByRole("group", { name: "旅行日期" }));
-    expect(dates.getByRole("status").textContent).toBe("請先點選開始日期。");
+    expect(screen.queryByRole("grid")).toBeNull();
+    expect(calendarToggle()).toHaveAttribute("aria-expanded", "false");
+    fireEvent.click(calendarToggle());
+    expect(screen.getByRole("status")).toHaveTextContent("請先點選開始日期。");
     pickDay("2026-11-10");
-    expect(dates.getByRole("status").textContent).toContain("再點選結束日期");
+    expect(screen.getByRole("status")).toHaveTextContent("再點選結束日期");
     pickDay("2026-11-15");
-    expect(dates.getByRole("status").textContent).toMatch(/2026年11月10日.*→.*2026年11月15日.*共 6 天/);
-    expect(dayButton("2026-11-12")?.getAttribute("aria-pressed")).toBe("true");
-    expect(screen.getByText("6 天")).toBeTruthy();
-    fireEvent.change(screen.getByLabelText("旅程名稱"), { target: { value: "東京賞楓" } });
-    fireEvent.change(screen.getByLabelText("目的地"), { target: { value: "東京" } });
-    next();
-    expect(screen.queryByRole("alert")).toBeNull();
+    expect(screen.getByRole("status").textContent).toMatch(/2026年11月10日.*→.*2026年11月15日.*共 6 天/);
+    expect(dayButton("2026-11-12")).toHaveAttribute("aria-pressed", "true");
+    expect(calendarToggle()).toHaveTextContent("6 天");
+    expect(await screen.findByText(/官方假日資料來源/)).toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: "收起日曆" }));
+    expect(screen.queryByRole("grid")).toBeNull();
+    fireEvent.click(calendarToggle());
+    expect(dayButton("2026-11-12")).toHaveAttribute("aria-pressed", "true");
+    expect(await screen.findByText(/官方假日資料來源/)).toBeVisible();
   });
 
-  it("drops a stale draft's past dates, ignores unknown values and returns to the first step", async () => {
+  it("drops stale draft dates and unknown values without restoring the old wizard", async () => {
     window.sessionStorage.setItem("mokaair-new-trip-draft", JSON.stringify({
       step: 3, lodgingMode: "hotel", planningMode: "manual_blank", selectedInterests: ["food", "bogus"],
       form: { name: "回到過去", destination_name: "東京", start_date: "2020-01-01", end_date: "2020-01-06", pace: "turbo", route_preference: "TELEPORT" },
@@ -90,32 +226,31 @@ describe("NewTripForm", () => {
     render(<NewTripForm />);
     await waitFor(() => expect((screen.getByLabelText("旅程名稱") as HTMLInputElement).value).toBe("回到過去"));
     expect(document.querySelector('[data-date][aria-pressed="true"]')).toBeNull();
-    expect(within(screen.getByRole("group", { name: "旅行日期" })).getByRole("status").textContent).toBe("請先點選開始日期。");
-    const steps = within(screen.getByRole("list", { name: "建立步驟" })).getAllByRole("listitem");
-    expect(steps[0].getAttribute("aria-current")).toBe("step");
-    expect(steps[3].getAttribute("aria-current")).toBeNull();
+    expect(calendarToggle()).toHaveTextContent("選擇旅行日期");
+    expect(screen.queryByRole("list", { name: "建立步驟" })).toBeNull();
+    openAdvanced();
     expect(screen.getByRole("button", { name: "適中" }).getAttribute("aria-pressed")).toBe("true");
     expect((screen.getByLabelText("大眾運輸偏好") as HTMLSelectElement).value).toBe("FEWER_TRANSFERS");
     expect(screen.getByRole("button", { name: "只住飯店" }).getAttribute("aria-pressed")).toBe("true");
     expect(screen.getByRole("button", { name: "美食" }).getAttribute("aria-pressed")).toBe("true");
-    next();
+    submit();
     expect(screen.getByRole("alert").textContent).toContain("請選擇開始與結束日期");
   });
 
   it("re-focuses the alert when the same error repeats", () => {
     render(<NewTripForm />);
-    next();
+    submit();
     const alert = screen.getByRole("alert");
     expect(document.activeElement).toBe(alert);
     alert.blur();
     expect(document.activeElement).not.toBe(alert);
-    next();
+    submit();
     expect(document.activeElement).toBe(screen.getByRole("alert"));
   });
 
   it("clears the validation error as soon as the user edits a field", () => {
     render(<NewTripForm />);
-    next();
+    submit();
     expect(screen.getByRole("alert")).toBeTruthy();
     fireEvent.change(screen.getByLabelText("旅程名稱"), { target: { value: "東京散步" } });
     expect(screen.queryByRole("alert")).toBeNull();
@@ -124,12 +259,14 @@ describe("NewTripForm", () => {
   it("autosaves the draft and restores it after a reload", async () => {
     const first = render(<NewTripForm />);
     fireEvent.change(screen.getByLabelText("旅程名稱"), { target: { value: "草稿旅程" } });
+    openAdvanced();
     fireEvent.click(screen.getByRole("button", { name: "美食" }));
     await waitFor(() => expect(window.sessionStorage.getItem("mokaair-new-trip-draft")).toContain("草稿旅程"));
     first.unmount();
 
     render(<NewTripForm />);
     await waitFor(() => expect((screen.getByLabelText("旅程名稱") as HTMLInputElement).value).toBe("草稿旅程"));
+    openAdvanced();
     expect(screen.getByRole("button", { name: "美食" }).getAttribute("aria-pressed")).toBe("true");
   });
 
@@ -138,32 +275,21 @@ describe("NewTripForm", () => {
     stubFetch(fetchMock);
     render(<NewTripForm />);
     fillRequiredFields();
-    next();
+    openAdvanced();
     fireEvent.change(screen.getByLabelText("成人"), { target: { value: "3" } });
     fireEvent.change(screen.getByLabelText("兒童"), { target: { value: "1" } });
     fireEvent.change(screen.getByLabelText("整趟總預算（台幣）"), { target: { value: "90000.4" } });
     fireEvent.click(screen.getByRole("button", { name: "悠閒" }));
     fireEvent.click(screen.getByRole("button", { name: "美食" }));
-    next();
     fireEvent.click(screen.getByRole("button", { name: "兩種都接受" }));
     fireEvent.change(screen.getByLabelText("每晚最低（台幣）"), { target: { value: "3000" } });
     fireEvent.change(screen.getByLabelText("每晚最高（台幣）"), { target: { value: "7000" } });
     fireEvent.change(screen.getByLabelText("最低星級"), { target: { value: "4" } });
     fireEvent.change(screen.getByLabelText("最低住客評分"), { target: { value: "8" } });
     fireEvent.change(screen.getByLabelText("最低評論數"), { target: { value: "100" } });
-    next();
     fireEvent.change(screen.getByLabelText("大眾運輸偏好"), { target: { value: "LESS_WALKING" } });
     fireEvent.change(screen.getByLabelText("其他補充"), { target: { value: " 不要一直換飯店 " } });
-    const review = within(screen.getByRole("region", { name: "完整行程條件" }));
-    expect(review.getByText(/2026年11月10日.*→.*2026年11月15日/)).toBeTruthy();
-    expect(review.getByText("每晚住宿預算")).toBeTruthy();
-    expect(review.getByText("NT$3,000～NT$7,000")).toBeTruthy();
-    expect(review.getByText("4 星以上")).toBeTruthy();
-    expect(review.getByText("8.0+")).toBeTruthy();
-    expect(review.getByText("100 則以上")).toBeTruthy();
-    expect(review.getByText("少走路")).toBeTruthy();
-    expect(screen.getByText(/不會傳送 Email、姓名或帳號識別資料/)).toBeTruthy();
-    fireEvent.click(screen.getByRole("button", { name: /交給 AI 排好行程/ }));
+    submit();
 
     await waitFor(() => expect(push).toHaveBeenCalledWith("/trips/trip-1"));
     expect(window.sessionStorage.getItem("mokaair-new-trip-draft")).toBeNull();
@@ -171,9 +297,9 @@ describe("NewTripForm", () => {
     expect(headers["Idempotency-Key"]).toMatch(/^[0-9a-f-]{36}$/);
     const request = JSON.parse(String((fetchMock.mock.calls[0][1] as RequestInit).body));
     expect(request).toMatchObject({
-      source: "blank", planning_mode: "ai_draft", name: "東京五日賞楓", destination_name: "東京", destination_place_id: null,
+      source: "blank", planning_mode: "manual_blank", name: "東京五日賞楓", destination_name: "東京", destination_place_id: null,
       start_date: "2026-11-10", end_date: "2026-11-15", route_preference: "LESS_WALKING",
-      routing: { auto_compute: true, default_travel_mode: "transit", default_buffer_minutes: 10 },
+      routing: { auto_compute: false, default_travel_mode: "transit", default_buffer_minutes: 10 },
       travelers: { adults: 3, children: 1, rooms: 1 },
       preferences: {
         budget_twd: 90000, pace: "relaxed", accepted_property_types: ["hotel", "vacation_rental"],
@@ -191,16 +317,17 @@ describe("NewTripForm", () => {
     stubFetch(fetchMock);
     render(<NewTripForm />);
     fillRequiredFields();
-    reachReview();
 
-    fireEvent.click(screen.getByRole("button", { name: /交給 AI 排好行程/ }));
+
+    submit();
     await waitFor(() => expect(screen.getByRole("alert").textContent).toContain("逾時"));
-    fireEvent.click(screen.getByRole("button", { name: /交給 AI 排好行程/ }));
+    submit();
     await waitFor(() => expect(push).toHaveBeenCalledWith("/trips/trip-2"));
 
     const keys = fetchMock.mock.calls.map((call) => ((call[1] as RequestInit).headers as Record<string, string>)["Idempotency-Key"]);
     expect(keys).toHaveLength(2);
     expect(keys[0]).toBe(keys[1]);
+    expect(fetchMock.mock.calls[0][1].body).toBe(fetchMock.mock.calls[1][1].body);
   });
 
   it("creates a blank manual timeline without automatic route computation", async () => {
@@ -208,12 +335,11 @@ describe("NewTripForm", () => {
     stubFetch(fetchMock);
     render(<NewTripForm />);
     fillRequiredFields();
-    reachReview();
 
-    fireEvent.click(screen.getByRole("button", { name: /空白手動規劃/ }));
-    expect(screen.getByText(/空白手動規劃不會呼叫 AI/)).toBeTruthy();
+
+    expect(screen.getByText(/不會自動呼叫 AI 或計算路線/)).toBeTruthy();
     expect(screen.queryByText(/傳給後台選定的 AI 供應商/)).toBeNull();
-    fireEvent.click(screen.getByRole("button", { name: "建立空白手動行程" }));
+    submit();
 
     await waitFor(() => expect(push).toHaveBeenCalledWith("/trips/manual-trip"));
     const request = JSON.parse(String((fetchMock.mock.calls[0][1] as RequestInit).body));
@@ -224,29 +350,25 @@ describe("NewTripForm", () => {
     });
   });
 
-  it("does not submit while moving from lodging preferences to review", () => {
+  it("does not submit when choosing a city, dates or optional preferences", () => {
     const fetchMock = vi.fn();
     stubFetch(fetchMock);
     render(<NewTripForm />);
     fillRequiredFields();
-    next();
-    next();
-
-    const defaultActionAllowed = fireEvent.click(screen.getByRole("button", { name: "下一步" }));
-
-    expect(defaultActionAllowed).toBe(false);
-    expect(screen.getByRole("heading", { name: "路線偏好與建立前確認" })).toBeTruthy();
-    expect(screen.getByRole("button", { name: /空白手動規劃/ })).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "首爾" }));
+    fireEvent.click(screen.getByRole("button", { name: "收起日曆" }));
+    openAdvanced();
+    fireEvent.click(screen.getByRole("button", { name: "只住飯店" }));
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
-  it("blocks an inverted nightly price range before review", () => {
+  it("blocks an inverted nightly price range before submitting", () => {
     render(<NewTripForm />);
     fillRequiredFields();
-    next(); next();
+    openAdvanced();
     fireEvent.change(screen.getByLabelText("每晚最低（台幣）"), { target: { value: "8000" } });
     fireEvent.change(screen.getByLabelText("每晚最高（台幣）"), { target: { value: "3000" } });
-    next();
+    submit();
     expect(screen.getByRole("alert").textContent).toContain("最低價格不可高於最高價格");
   });
 
@@ -254,8 +376,8 @@ describe("NewTripForm", () => {
     stubFetch(vi.fn().mockResolvedValue(new Response(JSON.stringify({ detail: [{ type: "missing", loc: ["body", "plan_id"], msg: "Field required" }] }), { status: 422, headers: { "Content-Type": "application/json" } })));
     render(<NewTripForm />);
     fillRequiredFields();
-    reachReview();
-    fireEvent.click(screen.getByRole("button", { name: /交給 AI 排好行程/ }));
+
+    submit();
     const alert = await screen.findByRole("alert");
     expect(alert.textContent).toContain("行程方案：必填");
     expect(alert.textContent).not.toContain("[object Object]");
@@ -264,10 +386,9 @@ describe("NewTripForm", () => {
     const holidayUrls: string[] = [];
     stubFetch(vi.fn(), holidayUrls);
     render(<NewTripForm />);
-    await waitFor(() => expect(holidayUrls.length).toBe(3));
-
-    holidayUrls.length = 0;
+    expect(holidayUrls).toEqual([]);
     fireEvent.change(screen.getByLabelText("目的地"), { target: { value: "日本東京" } });
+    fireEvent.click(calendarToggle());
     await waitFor(() => expect(holidayUrls.length).toBe(2));
     const asked = holidayUrls.map((url) => new URL(url, "https://travel.test").searchParams.get("country"));
     expect(asked.sort()).toEqual(["JP", "TW"]);
@@ -278,7 +399,7 @@ describe("NewTripForm", () => {
     stubFetch(fetchMock);
     render(<NewTripForm />);
     fillRequiredFields();
-    next();
+    openAdvanced();
 
     // The shop types mean nothing on their own, so they stay out of the way.
     expect(screen.queryByRole("group", { name: "想逛哪些店？（可複選）" })).toBeNull();
@@ -288,9 +409,7 @@ describe("NewTripForm", () => {
     fireEvent.click(within(shops).getByRole("button", { name: "電器／3C" }));
     expect(within(shops).getByRole("button", { name: "藥妝" }).getAttribute("aria-pressed")).toBe("true");
 
-    next();
-    next();
-    fireEvent.click(screen.getByRole("button", { name: /交給 AI 排好行程/ }));
+    submit();
 
     await waitFor(() => expect(push).toHaveBeenCalledWith("/trips/trip-2"));
     const request = JSON.parse(String((fetchMock.mock.calls[0][1] as RequestInit).body));
@@ -303,7 +422,7 @@ describe("NewTripForm", () => {
     stubFetch(fetchMock);
     render(<NewTripForm />);
     fillRequiredFields();
-    next();
+    openAdvanced();
 
     fireEvent.click(screen.getByRole("button", { name: "購物" }));
     fireEvent.click(within(screen.getByRole("group", { name: "想逛哪些店？（可複選）" })).getByRole("button", { name: "藥妝" }));
@@ -312,9 +431,7 @@ describe("NewTripForm", () => {
     fireEvent.click(screen.getByRole("button", { name: "購物" }));
     expect(screen.queryByRole("group", { name: "想逛哪些店？（可複選）" })).toBeNull();
 
-    next();
-    next();
-    fireEvent.click(screen.getByRole("button", { name: /交給 AI 排好行程/ }));
+    submit();
 
     await waitFor(() => expect(push).toHaveBeenCalledWith("/trips/trip-3"));
     const request = JSON.parse(String((fetchMock.mock.calls[0][1] as RequestInit).body));

@@ -13,10 +13,11 @@ from __future__ import annotations
 
 import hashlib
 import json
+from collections.abc import Mapping
 from dataclasses import dataclass, field
 from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
-from typing import Any, Literal, cast
+from typing import Any, Literal
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from app.affiliates.registry import PARTNERS_BY_CODE
@@ -416,6 +417,18 @@ def stay_dates(trip: TripPlan, today: date | None = None) -> StayDates:
     return StayDates("ready", check_in, check_in + timedelta(days=nights), nights, tuple(notes))
 
 
+def trip_settings_source(trip: TripPlan, search_json: Mapping[str, Any] | None) -> dict[str, Any]:
+    """Keep saved-search defaults until the member explicitly edits that section."""
+    if search_json is None:
+        return dict(trip.data)
+    source = dict(search_json)
+    overrides = trip.data.get("search_settings_overrides", [])
+    for key in ("travelers", "preferences"):
+        if key in overrides and isinstance(trip.data.get(key), dict):
+            source[key] = trip.data[key]
+    return source
+
+
 def stay_search_query(
     trip: TripPlan,
     city_code: str,
@@ -423,15 +436,14 @@ def stay_search_query(
     dates: StayDates,
     locale: Locale,
 ) -> SearchCreate:
+    source = trip_settings_source(trip, search_json)
     if search_json:
         base = SearchCreate.model_validate(search_json)
-        travelers, preferences, origin = base.travelers, base.preferences, base.origin
+        origin = base.origin
     else:
-        travelers = Travelers.model_validate(cast(dict[str, Any], trip.data.get("travelers") or {}))
-        preferences = SearchPreferences.model_validate(
-            cast(dict[str, Any], trip.data.get("preferences") or {})
-        )
         origin = None
+    travelers = Travelers.model_validate(source.get("travelers") or {})
+    preferences = SearchPreferences.model_validate(source.get("preferences") or {}, extra="ignore")
     return SearchCreate(
         trip_type=TripType.ROUND_TRIP,
         # Hotel providers never read the origin, but the schema validator requires one.

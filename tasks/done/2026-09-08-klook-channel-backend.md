@@ -1,13 +1,13 @@
 ---
 id: 2026-09-08-klook-channel-backend
 title: Klook channel aware affiliate backend and secure clickout
-status: review
+status: done
 priority: P1
 area: api
 owner: codex-klook-backend
 claimed_at: 2026-09-08T16:51:43Z
 created_at: 2026-09-08T16:31:23Z
-completed_at:
+completed_at: 2026-09-08T21:22:28Z
 branch: codex/klook-product-integration
 depends_on: []
 scope:
@@ -55,14 +55,14 @@ imports and clickouts need the same explicit channel/account boundary.
 - [x] Direct browser attestation requires exact identity evidence, safe DNS and an actor audit; it cannot bypass Travelpayouts checks.
 - [x] Imports remain pending/idempotent and hotel platform options remain independently reviewed; clickouts never book or charge usage.
 - [x] Focused tests, complete Ruff, complete mypy and Alembic head validation pass locally.
-- [ ] Real PostgreSQL migration/integration checks pass in CI, including fresh metadata and frozen 0063 schema paths.
+- [x] Real PostgreSQL migration/integration checks pass in CI, including fresh metadata and frozen 0063 schema paths.
 
 ## Steps
 
 - [x] Add channel-aware model, enrollment schema, settings and guarded migration 0064.
 - [x] Dispatch admin review, CSV import, product/destination/hotel clickouts and audit partner by channel.
 - [x] Add direct URL, network redirect, HTTP, import, identity, freshness and migration regressions.
-- [ ] Second sub-task.
+- [x] Complete Linux integration validation and SHA-guarded PR merge handoff.
 
 ## How to verify
 
@@ -91,3 +91,19 @@ Hotel option health accepts only the same typed numeric Klook hotel ID through a
 redirect; option-to-offer matching additionally preserves query parameters bidirectionally.
 Klook generic template sub_id is coarse module/locale only, never member/trip-derived, while
 other providers retain their established behavior.
+
+## Final validation and merge
+
+PR #370 head 68300d6 passed both full CI runs 34255149868 and 34255142051.
+Linux API: 2100 passed / 3 skipped with RUN_INTEGRATION_TESTS=1, including both
+frozen 0063 and fresh-current-metadata migration paths, idempotency and downgrade
+guards. Local final API: 1912 passed / 122 skipped (Linux-only deployment tests
+excluded on Windows). Whole Ruff and mypy (262 files) passed.
+
+The user explicitly authorized the merge. PR #370 was squash-merged with the
+verified head SHA guard at 2026-09-08T21:18:58Z as
+29c36b258789d3750d3620cceb3a8d1da7fc59df, verified on origin/main.
+Post-merge CI run: 34279895874. No deployment or production activation performed.
+That run completed SUCCESS on exact merge SHA 29c36b2, all four jobs green.
+Post-merge API: 2100 passed / 3 skipped / 3 warnings; PostgreSQL 0063 to 0064
+and both fresh/legacy migration test variants passed. GitHub main matches.

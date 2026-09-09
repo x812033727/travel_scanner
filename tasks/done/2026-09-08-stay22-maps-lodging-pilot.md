@@ -1,13 +1,13 @@
 ---
 id: 2026-09-08-stay22-maps-lodging-pilot
 title: Stay22 Maps lodging pilot
-status: review
+status: done
 priority: P2
 area: web
 owner: codex-stay22
 claimed_at: 2026-09-08T08:53:58Z
 created_at: 2026-09-08T08:51:18Z
-completed_at:
+completed_at: 2026-09-08T21:22:51Z
 branch: codex/stay22-maps-pilot
 depends_on: []
 scope:
@@ -41,7 +41,7 @@ affiliate links, importing provider prices, or pretending a map choice reserves 
 - [x] Only public catalog centers and minimal search fields leave the site after explicit consent.
 - [x] Invalid/missing dates or guests are disclosed, not fabricated; nonpilot destinations stay unchanged.
 - [x] Existing hotel selection and partner links remain intact, with five-language and mobile coverage.
-- [ ] Focused checks, full relevant Web/API checks and CI pass; PR awaits separate merge approval.
+- [x] Focused checks, full relevant Web/API checks and CI passed; PR #368 merged under separate authorization.
 
 ## Steps
 
@@ -55,6 +55,8 @@ checks, and desktop/390px Playwright. Open lodging, choose an area, explicitly l
 the map; confirm no Stay22 request before load and no trip mutation from map controls.
 
 ## Notes
+
+2026-09-09 handoff: GitHub confirms #368 merged as 7d20ffbbd8e1e4b32eaa1917c5b15ed5d7611919 on 2026-09-08. The subsequent authorized deployment and opt-in map smoke completed in the owner thread. This closes the stale task claim; the new planner task preserves the map privacy and click-to-load contract.
 
 Isolated branch from origin/main 200e46e, rebased onto e8afbc8 after PR #366 merged.
 Only the generated task board conflicted; regenerated with tasks.mjs.

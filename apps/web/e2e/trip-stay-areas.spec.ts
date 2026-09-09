@@ -122,6 +122,7 @@ test.beforeEach(async ({ page }) => {
 
 test("recommends stay areas, compares prices and sets the chosen hotel as primary lodging", async ({ page }) => {
   await page.goto(`/zh-TW/trips/${tripId}`);
+  await page.locator(".premium-optional-stop").filter({ has: page.getByRole("button", { name: "設定主要飯店", includeHidden: true }) }).first().locator("summary").first().click();
   await page.getByRole("button", { name: "設定主要飯店" }).first().click();
 
   const dialog = page.getByRole("dialog", { name: "住宿熱區" });
@@ -141,5 +142,5 @@ test("recommends stay areas, compares prices and sets the chosen hotel as primar
 
   await expect(page.getByText("已將 淺草河畔飯店 設為主要飯店，正在重新計算每日路線。")).toBeVisible();
   await expect(page.getByRole("dialog", { name: "住宿熱區" })).toHaveCount(0);
-  await expect(page.getByText("從 淺草河畔飯店 出發")).toBeVisible();
+  await expect(page.locator(".premium-optional-stop > summary").getByText("從 淺草河畔飯店 出發", { exact: true })).toBeVisible();
 });
