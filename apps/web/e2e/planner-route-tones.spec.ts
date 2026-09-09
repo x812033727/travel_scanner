@@ -166,6 +166,10 @@ async function expectIdleContentExposed(page: Page, panel: Locator) {
     return Math.min(mapBounds.y + mapBounds.height, barBounds.y, page.viewportSize()!.height) - Math.max(mapBounds.y, 0);
   }, { message: "A useful portion of the actual map must be on screen above the apply bar without scrolling" }).toBeGreaterThanOrEqual(80);
   const barBounds = (await bar.boundingBox())!;
+  const schematicNotice = panel.locator(".route-map-schematic-notice");
+  await expect(schematicNotice).toBeInViewport({ ratio: 1 });
+  const noticeBounds = (await schematicNotice.boundingBox())!;
+  expect(noticeBounds.y + noticeBounds.height, "The schematic disclaimer must remain above the fixed apply bar").toBeLessThanOrEqual(barBounds.y);
   const instructionBounds = (await instruction.boundingBox())!;
   expect(instructionBounds.y + instructionBounds.height, "The instruction must not sit behind the fixed apply bar").toBeLessThanOrEqual(barBounds.y);
   expect(await instruction.evaluate((element) => {
