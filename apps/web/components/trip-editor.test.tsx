@@ -1397,6 +1397,68 @@ describe("trip editor", () => {
     expect(fetchMock.mock.calls.some(([url]) => String(url).includes("/routes/"))).toBe(false);
   });
 
+  it("keeps the tools and unsaved trip note open after saving the trip name", async () => {
+    let currentTrip = { ...trip, notes: "已儲存的提醒" };
+    const fetchMock = vi.fn(async (url: RequestInfo | URL, init?: RequestInit) => {
+      if (String(url).endsWith(`/trips/${trip.id}`) && init?.method === "PATCH") {
+        currentTrip = { ...currentTrip, ...JSON.parse(String(init.body)), version: currentTrip.version + 1 };
+      }
+      return response(currentTrip);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+    const tools = await openToolsSection("旅程設定");
+    const note = within(tools).getByLabelText("旅程備註") as HTMLTextAreaElement;
+    fireEvent.change(note, { target: { value: "未儲存的訂位提醒" } });
+    fireEvent.click(within(tools).getByRole("button", { name: /旅程資訊/ }));
+    const meta = await screen.findByRole("dialog", { name: "旅程資訊" });
+    fireEvent.change(within(meta).getByLabelText("旅程名稱"), { target: { value: "東京安心旅行" } });
+    fireEvent.click(within(meta).getByRole("button", { name: "儲存變更" }));
+
+    await waitFor(() => expect(screen.queryByRole("dialog", { name: "旅程資訊" })).toBeNull());
+    expect(screen.getByRole("dialog", { name: "旅程工具" })).toBe(tools);
+    expect(within(tools).getByLabelText("旅程備註")).toBe(note);
+    expect(note.value).toBe("未儲存的訂位提醒");
+    expect(currentTrip.notes).toBe("已儲存的提醒");
+    expect(currentTrip.name).toBe("東京安心旅行");
+    const writes = fetchMock.mock.calls.filter(([, init]) => init?.method && init.method !== "GET");
+    expect(writes).toHaveLength(1);
+    expect(JSON.parse(String(writes[0][1]?.body))).toEqual({ version: 1, name: "東京安心旅行" });
+    expect(fetchMock.mock.calls.some(([url]) => String(url).includes("/routes/"))).toBe(false);
+  });
+
+  it("saves a route preference draft after another setting advanced the trip version", async () => {
+    let currentTrip = { ...trip, route_preference: "FEWER_TRANSFERS", notes: "" };
+    const fetchMock = vi.fn(async (url: RequestInfo | URL, init?: RequestInit) => {
+      if ((String(url).endsWith(`/trips/${trip.id}`) && init?.method === "PATCH")
+        || (String(url).endsWith("/itinerary") && init?.method === "PUT")) {
+        currentTrip = { ...currentTrip, ...JSON.parse(String(init.body)), version: currentTrip.version + 1 };
+      }
+      return response(currentTrip);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+    const tools = await openToolsSection("旅程設定");
+    const choices = within(tools).getByRole("group", { name: "路線偏好" });
+    const fastest = within(choices).getByRole("button", { name: "最快" });
+    fireEvent.click(fastest);
+    const note = within(tools).getByLabelText("旅程備註");
+    fireEvent.change(note, { target: { value: "已確認訂位" } });
+    fireEvent.click(within(note.closest("section")!).getByRole("button", { name: "儲存" }));
+    await waitFor(() => expect(currentTrip.version).toBe(2));
+    expect(fastest.getAttribute("aria-pressed")).toBe("true");
+    expect(currentTrip.route_preference).toBe("FEWER_TRANSFERS");
+    fireEvent.click(within(choices.closest("section")!).getByRole("button", { name: "儲存修改" }));
+
+    await waitFor(() => expect(currentTrip.route_preference).toBe("FASTEST"));
+    expect(currentTrip.version).toBe(3);
+    expect(currentTrip.notes).toBe("已確認訂位");
+    const writes = fetchMock.mock.calls.filter(([, init]) => init?.method && init.method !== "GET");
+    expect(writes).toHaveLength(2);
+    expect(JSON.parse(String(writes[1][1]?.body))).toMatchObject({ version: 2, route_preference: "FASTEST", items: trip.items });
+    expect(fetchMock.mock.calls.some(([url]) => /\/routes\/|\/preview|\/searches/.test(String(url)))).toBe(false);
+  });
+
   it("saves hotel departure time only after explicit confirmation, never on blur", async () => {
     const fetchMock = vi.fn().mockImplementation(() => Promise.resolve(
       response({ ...trip, items: [{ ...hotelStart, title: "從 已確認飯店 出發", location_name: "正式飯店", latitude: 35.71, longitude: 139.79, location_source: "confirmed", data: { needs_place_confirmation: false } }, { ...trip.items[0], position: 1 }] }),

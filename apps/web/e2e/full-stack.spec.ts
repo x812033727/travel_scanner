@@ -175,7 +175,7 @@ test("blank trip keeps flight, hotel and meal anchors with two time modes", asyn
   await page.getByLabel("目的地").fill("日本東京");
   await pickTripDay(page, "2026-11-10");
   await pickTripDay(page, "2026-11-10");
-  await expect(page.getByText(/共 1 天/)).toBeVisible();
+  await expect(page.getByRole("group", { name: "旅行日期", exact: true }).getByRole("button")).toContainText("1 天");
   await createBlankTrip(page);
 
   const systemCards = page.locator(".planner-system-card");
@@ -276,7 +276,7 @@ test("a saved trip searches flights from its own criteria and takes a quote back
   await page.getByLabel("目的地").fill("日本東京");
   await pickTripDay(page, "2026-11-10");
   await pickTripDay(page, "2026-11-14");
-  await expect(page.getByText(/共 5 天/)).toBeVisible();
+  await expect(page.getByRole("group", { name: "旅行日期", exact: true }).getByRole("button")).toContainText("5 天");
   await createBlankTrip(page);
   const tripUrl = page.url();
 
