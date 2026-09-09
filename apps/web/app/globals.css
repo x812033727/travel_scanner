@@ -887,20 +887,29 @@ body {
 .admin-desktop-sidebar-collapsed .admin-nav-link { justify-content: center; padding-inline: 0; }
 .admin-desktop-sidebar-collapsed .admin-nav-link-active { box-shadow: inset 0 -3px 0 var(--teal); }
 .admin-topbar { position: sticky; top: 0; z-index: 35; display: flex; min-height: 4.5rem; align-items: center; justify-content: space-between; gap: 1rem; border-bottom: 1px solid color-mix(in srgb, var(--line) 75%, transparent); background: color-mix(in srgb, var(--surface) 87%, transparent); padding: 0.75rem clamp(1rem, 3vw, 2.25rem); backdrop-filter: blur(18px); }
+.admin-topbar-heading { min-width: 0; flex: 1 1 16rem; }
 .admin-breadcrumb { display: flex; min-width: 0; align-items: center; gap: 0.55rem; color: var(--muted); font-size: 0.78rem; font-weight: 650; }
-.admin-breadcrumb [aria-current="page"] { max-width: 19rem; overflow: hidden; color: var(--ink); text-overflow: ellipsis; white-space: nowrap; }
+.admin-breadcrumb > a { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.admin-breadcrumb > [aria-hidden] { flex: none; }
+.admin-breadcrumb [aria-current="page"] { min-width: 0; max-width: 19rem; overflow: hidden; color: var(--ink); text-overflow: ellipsis; white-space: nowrap; }
 .admin-topbar-mobile-title { display: none; font-weight: 850; }
-.admin-topbar-actions { display: flex; min-width: 0; align-items: center; justify-content: flex-end; gap: 0.65rem; }
-.admin-health { display: inline-flex; min-height: 2.5rem; align-items: center; gap: 0.45rem; border-radius: 999px; padding: 0 0.75rem; font-size: 0.73rem; font-weight: 800; }
+.admin-topbar-actions { display: flex; min-width: 0; flex: 0 1 44rem; align-items: center; justify-content: flex-end; gap: 0.65rem; }
+/* Text-bearing actions must shrink inside their own flex box, not paint back
+   over the breadcrumb. Keep icon space; truncate only supplementary labels. */
+.admin-topbar-actions > .theme-switcher, .admin-topbar-actions svg, .admin-command-trigger kbd { flex: none; }
+.admin-health { display: inline-flex; min-width: 3.25rem; min-height: 2.5rem; align-items: center; gap: 0.45rem; border-radius: 999px; padding: 0 0.75rem; font-size: 0.73rem; font-weight: 800; }
+.admin-health > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .admin-health-healthy { background: rgb(236 253 245); color: rgb(4 120 87); }
 .admin-health-degraded { background: rgb(255 251 235); color: rgb(180 83 9); }
 .admin-health-unavailable { background: rgb(254 242 242); color: rgb(185 28 28); }
-.admin-environment { display: grid; min-height: 2.5rem; align-content: center; border-left: 1px solid var(--line); padding: 0 0.65rem; font-size: 0.65rem; line-height: 1.15; color: var(--muted); }
+.admin-environment { display: grid; min-width: 0; min-height: 2.5rem; align-content: center; border-left: 1px solid var(--line); padding: 0 0.65rem; font-size: 0.65rem; line-height: 1.15; color: var(--muted); }
+.admin-environment > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .admin-environment strong { max-width: 8rem; overflow: hidden; color: var(--ink); text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
-.admin-command-trigger { display: flex; min-height: 2.75rem; min-width: min(22vw, 15rem); align-items: center; gap: 0.55rem; border: 1px solid var(--line); border-radius: 0.9rem; background: var(--paper); padding: 0 0.65rem; color: var(--muted); font-size: 0.76rem; font-weight: 650; }
+.admin-command-trigger { display: flex; min-height: 2.75rem; min-width: 6rem; flex: 1 1 15rem; align-items: center; gap: 0.55rem; border: 1px solid var(--line); border-radius: 0.9rem; background: var(--paper); padding: 0 0.65rem; color: var(--muted); font-size: 0.76rem; font-weight: 650; }
 .admin-command-trigger > span { min-width: 0; flex: 1; overflow: hidden; text-align: left; text-overflow: ellipsis; white-space: nowrap; }
 .admin-command-trigger kbd { display: inline-flex; align-items: center; gap: 0.1rem; border: 1px solid var(--line); border-radius: 0.42rem; background: var(--surface); padding: 0.15rem 0.34rem; font-size: 0.65rem; }
-.admin-account-trigger { display: flex; min-height: 2.75rem; max-width: 14rem; align-items: center; gap: 0.45rem; border-radius: 0.9rem; padding: 0 0.35rem; font-size: 0.76rem; font-weight: 750; }
+.admin-account-control { position: relative; min-width: 5rem; flex: 0 1 14rem; }
+.admin-account-trigger { display: flex; min-width: 0; min-height: 2.75rem; width: 100%; max-width: 14rem; align-items: center; gap: 0.45rem; border-radius: 0.9rem; padding: 0 0.35rem; font-size: 0.76rem; font-weight: 750; }
 .admin-account-avatar { display: grid; width: 2.25rem; height: 2.25rem; flex: none; place-items: center; border-radius: 0.8rem; background: var(--ink-fill); color: white; }
 .admin-account-email { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .admin-account-menu { position: absolute; top: calc(100% + 0.55rem); right: 0; z-index: 70; display: grid; width: min(18rem, calc(100vw - 2rem)); overflow: hidden; border: 1px solid var(--line); border-radius: 1rem; background: var(--surface); padding: 0.35rem; box-shadow: var(--shadow-lg); }
@@ -926,6 +935,11 @@ body {
   .admin-mobile-sidebar { position: fixed; inset: 0 auto 0 0; z-index: 90; display: flex; width: min(88vw, 20rem); min-width: 0; flex-direction: column; overflow: hidden; transform: translateX(-105%); border-right: 1px solid var(--line); background: var(--surface); padding: max(1rem, env(safe-area-inset-top)) 0.8rem max(1rem, env(safe-area-inset-bottom)); box-shadow: var(--shadow-lg); transition: transform 180ms ease; }
   .admin-mobile-sidebar-open { transform: translateX(0); }
   .admin-topbar { min-height: 4.25rem; padding: calc(0.65rem + env(safe-area-inset-top)) 1rem 0.65rem 11rem; }
+  .admin-mobile-menu { max-width: 9.5rem; }
+  .admin-mobile-menu > svg { flex: none; }
+  .admin-mobile-menu > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .admin-topbar-actions, .admin-command-trigger { flex: none; }
+  .admin-account-control { min-width: 2.75rem; flex: none; }
   .admin-breadcrumb { display: none; }
   .admin-topbar-mobile-title { display: block; max-width: 10rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .admin-health span, .admin-environment, .admin-command-trigger > span, .admin-command-trigger kbd, .admin-account-email, .admin-account-trigger > svg { display: none; }

@@ -106,7 +106,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
     <AdminNav />
     <div className="admin-workspace">
       <header className="admin-topbar">
-        <div className="min-w-0">
+        <div className="admin-topbar-heading">
           <nav aria-label="Breadcrumb" className="admin-breadcrumb"><Link href="/admin">{copy.console}</Link><span aria-hidden>/</span><span aria-current="page">{active ? label(active.key, active.label) : copy.console}</span></nav>
           <p className="admin-topbar-mobile-title">{active ? label(active.key, active.label) : copy.console}</p>
         </div>
@@ -115,7 +115,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
           <span className={`admin-health admin-health-${health}`} title={copy[health]}><HeartPulse aria-hidden size={16} /><span>{copy[health]}</span></span>
           <span className="admin-environment"><span>{copy.environment}</span><strong>{bootstrap.environment}</strong></span>
           <button ref={commandTrigger} type="button" onClick={() => setCommandOpen(true)} aria-label={copy.command} className="admin-command-trigger"><Search aria-hidden size={17} /><span>{copy.command}</span><kbd><Command aria-hidden size={11} />K</kbd></button>
-          <div ref={accountMenu} className="relative">
+          <div ref={accountMenu} className="admin-account-control">
             <button type="button" onClick={() => setAccountOpen((value) => !value)} aria-label={copy.account} aria-expanded={accountOpen} className="admin-account-trigger"><span className="admin-account-avatar"><UserRound aria-hidden size={17} /></span><span className="admin-account-email">{bootstrap.user?.email || user?.email}</span><ChevronDown aria-hidden size={15} /></button>
             {accountOpen && <div className="admin-account-menu"><p className="break-all px-3 py-2 text-xs text-[var(--muted)]">{bootstrap.user?.email || user?.email}</p><Link href="/account" onClick={() => setAccountOpen(false)}>{copy.account}</Link><button type="button" onClick={() => void logout()}>{copy.signOut}</button></div>}
           </div>

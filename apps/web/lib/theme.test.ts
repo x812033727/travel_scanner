@@ -132,6 +132,18 @@ describe("approved palette CSS", () => {
     expect(reducedMotion).not.toContain("transition-duration: 0.01ms");
   });
 
+  it("contains admin action text within shrinkable boxes while preserving compact controls", () => {
+    expect(cssBlock(".admin-topbar-heading {")).toContain("min-width: 0;");
+    expect(cssBlock(".admin-topbar-actions {")).toContain("flex: 0 1 44rem;");
+    expect(cssBlock(".admin-command-trigger {")).toContain("flex: 1 1 15rem;");
+    expect(cssBlock(".admin-account-control {")).toContain("flex: 0 1 14rem;");
+    expect(cssBlock(".admin-account-trigger {")).toContain("width: 100%;");
+    expect(cssBlock(".admin-health > span {")).toContain("text-overflow: ellipsis;");
+    expect(css).toContain(".admin-topbar-actions, .admin-command-trigger { flex: none; }");
+    expect(css).toContain(".admin-account-control { min-width: 2.75rem; flex: none; }");
+    expect(css).toContain(".admin-mobile-menu { max-width: 9.5rem; }");
+  });
+
   it("pairs flight hero, selected dates, holiday dots and hotspot hints explicitly", () => {
     const source = (file: string) => readFileSync(`${import.meta.dirname}/../components/${file}`, "utf8");
     const hero = cssBlock(".flight-status-hero {");
