@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { RouteModePanel } from "./route-mode-panel";
 
@@ -47,9 +47,54 @@ function ok(payload: unknown) {
   return new Response(JSON.stringify(payload), { status: 200, headers: { "Content-Type": "application/json" } });
 }
 
-afterEach(() => vi.unstubAllGlobals());
+afterEach(() => { vi.unstubAllGlobals(); vi.useRealTimers(); });
 
 describe("route mode panel", () => {
+  it("uses one neutral idle instruction and a single query action without a repeated empty card", () => {
+    vi.stubGlobal("fetch", vi.fn(async () => ok({ google_maps_javascript_enabled: false })));
+    const { container } = render(<RouteModePanel trip={trip} items={items} fromItemId="from" toItemId="to" onApplied={vi.fn()} onError={vi.fn()} />);
+    expect(container.querySelector("[data-route-state='idle']")).toBeTruthy();
+    expect(screen.getAllByText("選好交通方式後，按「查詢交通方案」比較路線；確認套用前不會修改行程。")).toHaveLength(1);
+    expect(screen.getAllByRole("button", { name: "查詢交通方案" })).toHaveLength(1);
+    expect(screen.queryByText("尚未取得路線")).toBeNull();
+    expect(screen.queryByText(/Provider/)).toBeNull();
+    expect(container.querySelector(".route-empty-state")).toBeNull();
+    expect(container.querySelector(".route-panel-detail")).toBeNull();
+  });
+
+  it.each(["failed", "unavailable", "pending"])("does not label a %s saved route as applied or display its placeholder zero minutes", (status) => {
+    vi.stubGlobal("fetch", vi.fn(async () => ok({ google_maps_javascript_enabled: false })));
+    const { container } = render(<RouteModePanel trip={trip} items={items} fromItemId="from" toItemId="to" initialSegment={{ ...initialSegment, status, duration_minutes: 0 }} onApplied={vi.fn()} onError={vi.fn()} />);
+    expect(container.querySelector("[data-route-state='unavailable']")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "目前已套用" })).toBeNull();
+    expect(screen.queryByText("0 分鐘")).toBeNull();
+    expect((screen.getByRole("button", { name: "查詢交通方案" }) as HTMLButtonElement).disabled).toBe(false);
+  });
+
+  it.each([
+    { status: "stale", state: "stale", label: "已存路線需重新查詢" },
+    { status: "estimated", state: "estimated", label: "估算移動時間" },
+    { status: "manual", state: "manual", label: "已套用手動時間，未經地圖服務確認" },
+  ])("labels $status timing truthfully", ({ status, state, label }) => {
+    vi.stubGlobal("fetch", vi.fn(async () => ok({ google_maps_javascript_enabled: false })));
+    const { container } = render(<RouteModePanel trip={trip} items={items} fromItemId="from" toItemId="to" initialSegment={{ ...initialSegment, status, provider: status === "manual" ? "manual" : initialSegment.provider }} onApplied={vi.fn()} onError={vi.fn()} />);
+    expect(container.querySelector(`[data-route-state='${state}']`)).toBeTruthy();
+    expect(screen.getByRole("status").textContent).toContain(label);
+    if (status !== "manual") expect(screen.queryByRole("button", { name: "目前已套用" })).toBeNull();
+  });
+
+  it("preserves the saved route while a failed refresh offers a working retry", async () => {
+    vi.stubGlobal("fetch", vi.fn(async (url: string) => url.endsWith("/runtime/public-config")
+      ? ok({ google_maps_javascript_enabled: false })
+      : new Response(JSON.stringify({ detail: "Unable to refresh" }), { status: 503 })));
+    const { container } = render(<RouteModePanel trip={trip} items={items} fromItemId="from" toItemId="to" initialSegment={initialSegment} onApplied={vi.fn()} onError={vi.fn()} />);
+    fireEvent.click(screen.getByRole("button", { name: "重新查詢" }));
+    await screen.findByRole("alert");
+    expect(container.querySelector("[data-route-state='error']")).toBeTruthy();
+    expect(screen.getByRole("button", { name: /大眾運輸 · 24 分鐘/ })).toBeTruthy();
+    expect((screen.getByRole("button", { name: "重試" }) as HTMLButtonElement).disabled).toBe(false);
+    expect(screen.queryByRole("button", { name: "目前已套用" })).toBeNull();
+  });
   it("keeps initial mode, tab and buffer choices local until an explicit query", async () => {
     const requests: Array<Record<string, unknown>> = [];
     vi.stubGlobal("fetch", vi.fn(async (url: string, init?: RequestInit) => {
@@ -146,9 +191,37 @@ describe("route mode panel", () => {
     }));
     render(<RouteModePanel trip={trip} items={items} fromItemId="from" toItemId="to" onApplied={() => undefined} onError={() => undefined} />);
     fireEvent.click(screen.getByRole("button", { name: "查詢交通方案" }));
-    fireEvent.click(await screen.findByRole("button", { name: "套用此路線" }));
-    expect(screen.getByRole("alert").textContent).toContain("重新查詢");
+    expect(await screen.findByRole("button", { name: "重新查詢" })).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "套用此路線" })).toBeNull();
+    expect(screen.getByRole("status").textContent).toContain("預覽已過期");
     expect(applyCalls).toHaveLength(0);
+  });
+
+  it("replaces apply with requery when the selected preview expires while the drawer stays open", async () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2030-01-01T00:00:00Z"));
+    const applyCalls: string[] = [];
+    vi.stubGlobal("fetch", vi.fn(async (url: string) => {
+      if (url.endsWith("/runtime/public-config")) return ok({ google_maps_javascript_enabled: false });
+      if (url.endsWith("/routes/apply")) applyCalls.push(url);
+      return ok({ preview_id: "soon-expired", expires_at: "2030-01-01T00:00:01Z", segment: initialSegment, schedule_impact: { affected_items: [], conflicts: [] } });
+    }));
+    render(<RouteModePanel trip={trip} items={items} fromItemId="from" toItemId="to" onApplied={vi.fn()} onError={vi.fn()} />);
+    await act(async () => { fireEvent.click(screen.getByRole("button", { name: "查詢交通方案" })); });
+    expect(screen.getByRole("button", { name: "套用此路線" })).toBeTruthy();
+    act(() => { vi.advanceTimersByTime(1001); });
+    expect(screen.queryByRole("button", { name: "套用此路線" })).toBeNull();
+    expect(screen.getByRole("button", { name: "重新查詢" })).toBeTruthy();
+    expect(applyCalls).toHaveLength(0);
+  });
+
+  it("keeps a valid timing-only preview applicable without inventing a map path", async () => {
+    vi.stubGlobal("fetch", vi.fn(async (url: string) => url.endsWith("/runtime/public-config")
+      ? ok({ google_maps_javascript_enabled: false })
+      : ok({ preview_id: "timing-only", expires_at: "2100-01-01T00:00:00Z", segment: { ...initialSegment, encoded_polyline: null }, schedule_impact: { affected_items: [], conflicts: [] } })));
+    render(<RouteModePanel trip={trip} items={items} fromItemId="from" toItemId="to" onApplied={vi.fn()} onError={vi.fn()} />);
+    fireEvent.click(screen.getByRole("button", { name: "查詢交通方案" }));
+    expect((await screen.findByRole("button", { name: "套用此路線" }) as HTMLButtonElement).disabled).toBe(false);
   });
   it("shows an app-style map, named endpoints and verified transit steps", async () => {
     const detailedSegment = {

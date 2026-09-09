@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**16 open · 0 in progress · 2 blocked · 1 in review · 177 done**
+**16 open · 1 in progress · 2 blocked · 1 in review · 177 done**
 
 ## Ready to claim
 
@@ -26,7 +26,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-_Nothing here._
+| Task | Owner | Claimed (UTC) | Branch |
+| --- | --- | --- | --- |
+| [Route apply state regression and semantic itinerary tones](open/2026-09-09-planner-route-tones.md) | codex | 2026-09-09T03:38:23Z | `codex/planner-route-tones` |
 
 ## In review
 
