@@ -4,6 +4,7 @@ import { BookingPanel, type BookingOption } from "./booking-panel";
 import type { Product } from "./catalog";
 import { Stay22BookingContextProvider } from "@/lib/stay22-booking-context";
 import { stay22AllezCopy } from "@/lib/stay22-allez-copy";
+import { hotelBookingPlacements } from "@/lib/hotel-booking-placement";
 
 const copy = stay22AllezCopy("zh-TW");
 const options: BookingOption[] = [
@@ -18,6 +19,14 @@ function button() { return screen.getByRole("button", { name: /前往 Booking.co
 function form() { return button().closest("form")!; }
 
 describe("direct hotel booking panel", () => {
+  it.each(hotelBookingPlacements)("keeps the %s entry on the first submission", (placement) => {
+    window.history.replaceState({}, "", "/zh-TW/explore?category=hotels");
+    render(<BookingPanel product={product} placement={placement} onClose={vi.fn()} />);
+    fireEvent.submit(form());
+    const action = new URL(form().action);
+    expect(action.searchParams.get("placement")).toBe(placement);
+    expect(action.searchParams.get("return_to")).toBe("/zh-TW/explore?category=hotels");
+  });
   it("uses a first-party POST and only explicit optional fields, without fetching affiliate or quote APIs", () => {
     const fetch = vi.spyOn(globalThis, "fetch");
     render(<BookingPanel product={product} placement="destination" onClose={vi.fn()} />);

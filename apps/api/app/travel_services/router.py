@@ -60,6 +60,7 @@ from app.travel_services.service import (
     trip_countries,
     trip_destinations,
 )
+from app.travel_services.stay22 import BookingPlacement
 from app.trips.itinerary import ItineraryItem
 from app.trips.router import item_record, load_items, persist_system_schedule_change
 from app.trips.schedule import canonicalize_positions, ensure_system_slots, sync_primary_lodging
@@ -607,7 +608,7 @@ async def booking_option_clickout(
     session: Session,
     request: Request,
     locale: RequestLocale,
-    placement: Literal["destination", "hotspot", "trip", "stay", "checklist"] = "destination",
+    placement: BookingPlacement = "destination",
 ) -> RedirectResponse:
     from app.travel_services.hotel_options import matching_offer, ready_option, safe_click_target
     from app.travel_services.stay22 import booking_channel, build_stay22_url
@@ -751,7 +752,7 @@ async def offer_clickout(
     session: Session,
     locale: RequestLocale,
     request: Request,
-    placement: Literal["destination", "hotspot", "trip", "stay", "checklist"] = "destination",
+    placement: BookingPlacement = "destination",
 ) -> RedirectResponse:
     # Both anonymous and signed-in clicks use a coarse placement code, never a user/trip id.
     await enforce_named_rate_limit(
