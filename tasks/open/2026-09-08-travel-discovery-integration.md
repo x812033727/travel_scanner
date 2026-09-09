@@ -94,3 +94,11 @@ Core full-stack smoke also passed. Planner regression exposed only a missing moc
 for the new public status endpoint, assigned to the Web task without weakening its
 unexpected-request or mutation assertions. Final head CI is tracked in the PR.
 No merge, deployment, production activation or provider call was authorized.
+
+Artifact inspection found the original full-stack screenshot captured the loading
+state after reload. Tightened acceptance to await the published story in the feed
+and the actual empty state after withdrawal, then capture public story, private
+collection, loaded feed and withdrawal views separately. The workflow preserves
+fixture and real-stack output in separate folders. Read-only cross-layer review
+found no remaining blocker in account-switch isolation, media reauthorization,
+explicit-write confirmation, versioned preferences or invited publication gates.

@@ -66,6 +66,7 @@ test("reviewed story discovery, private collections and preferences survive relo
     await expect(visitor.getByRole("dialog", { name: title })).toBeVisible();
     await expect(visitor.getByRole("dialog", { name: title }).getByRole("link", { name: c.source, exact: true })).toHaveAttribute("href", "https://www.youtube.com/watch?v=dQw4w9WgXcQ");
     await expect(visitor.locator("iframe")).toHaveCount(0); // No provider evidence/key: link-only.
+    await visitor.screenshot({ path: info.outputPath("discovery-public-story.png"), fullPage: true });
 
     await page.goto("/en/explore/collections");
     await page.getByLabel("New collection", { exact: true }).fill(`Saved trip ideas ${suffix}`);
@@ -83,6 +84,8 @@ test("reviewed story discovery, private collections and preferences survive relo
     await page.getByRole("combobox", { name: "Collection", exact: true }).selectOption(collection.id);
     await expect(page.getByRole("button", { name: title, exact: true })).toBeVisible();
 
+    await page.screenshot({ path: info.outputPath("discovery-private-collection.png"), fullPage: true });
+
     const current = await json(page.request, "GET", "/discovery/preferences");
     const interests = { ...current, destinations: ["Tokyo"], topics: ["culture"] };
     const updated = await json(page.request, "PUT", "/discovery/preferences", interests);
@@ -97,6 +100,7 @@ test("reviewed story discovery, private collections and preferences survive relo
     await page.keyboard.press("Escape");
     await page.reload();
     expect((await json(page.request, "GET", "/discovery/preferences")).topics).toEqual(["culture"]);
+    await expect(page.getByRole("button", { name: title, exact: true })).toBeVisible();
     await page.screenshot({ path: info.outputPath("discovery-real-stack.png"), fullPage: true });
 
     await json(page.request, "POST", `/community/posts/${draft.id}/withdraw`);
@@ -106,7 +110,9 @@ test("reviewed story discovery, private collections and preferences survive relo
     expect(invisible.items[0].unavailable).toBe(true);
     expect(invisible.items[0].discovery).toBeUndefined();
     await visitor.reload();
+    await expect(visitor.getByText(c.empty, { exact: true })).toBeVisible();
     await expect(visitor.getByRole("button", { name: title, exact: true })).toHaveCount(0);
+    await visitor.screenshot({ path: info.outputPath("discovery-withdrawn.png"), fullPage: true });
   } finally {
     await guest.close(); await admin.dispose();
   }
