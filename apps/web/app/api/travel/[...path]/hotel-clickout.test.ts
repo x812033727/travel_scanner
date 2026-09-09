@@ -1,18 +1,30 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { NextRequest } from "next/server";
 import { POST } from "./route";
+import { hotelBookingPlacements } from "@/lib/hotel-booking-placement";
 
 vi.mock("next/headers", () => ({ cookies: async () => ({ get: () => undefined }) }));
 afterEach(() => vi.unstubAllGlobals());
 const id = "00000000-0000-4000-8000-000000000001";
 const path = ["travel-services", id, "booking-options", id, "clickout"];
-function request(accept = "text/html") {
-  return new NextRequest(`https://mokaair.test/api/travel/${path.join("/")}?locale=en&placement=trip&return_to=%2Fen%2Ftrips%2Fprivate-id`, {
+function request(accept = "text/html", placement = "trip") {
+  return new NextRequest(`https://mokaair.test/api/travel/${path.join("/")}?locale=en&placement=${placement}&return_to=%2Fen%2Ftrips%2Fprivate-id`, {
     method: "POST", headers: { origin: "https://mokaair.test", accept, "content-type": "application/x-www-form-urlencoded", "sec-gpc": "1", dnt: "1", referer: "https://mokaair.test/en/trips/a?tab=stay" },
     body: "check_in=2030-11-01&check_out=2030-11-30&adults=2&children=0",
   });
 }
 describe("booking-option error boundary", () => {
+  it.each(hotelBookingPlacements)("forwards %s once and preserves the validated redirect", async (placement) => {
+    const fetcher = vi.fn(async () => new Response(null, { status: 303, headers: { location: "https://hotel.example.test/" } }));
+    vi.stubGlobal("fetch", fetcher);
+    const response = await POST(request("text/html", placement), { params: Promise.resolve({ path }) });
+    expect(response.status).toBe(303);
+    expect(response.headers.get("location")).toBe("https://hotel.example.test/");
+    expect(fetcher).toHaveBeenCalledTimes(1);
+    const upstreamUrl = new URL((fetcher.mock.calls as unknown as [string, RequestInit][])[0][0]);
+    expect(upstreamUrl.searchParams.get("placement")).toBe(placement);
+    expect(upstreamUrl.searchParams.has("return_to")).toBe(false);
+  });
   it("returns useful HTML for failed browser forms, not raw provider details", async () => {
     vi.stubGlobal("fetch", vi.fn(async () => Response.json({ detail: "secret upstream trace" }, { status: 422 })));
     const response = await POST(request(), { params: Promise.resolve({ path }) });

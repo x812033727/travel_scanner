@@ -1,5 +1,6 @@
-import { expect, test, type BrowserContext } from "@playwright/test";
+import { expect, test, type BrowserContext, type Page } from "@playwright/test";
 import type { Stay22AllezCopy } from "../lib/stay22-allez-copy";
+import { getDiscoveryCopy } from "../lib/discovery-copy";
 import { readFileSync } from "node:fs";
 import { pretendSignedIn } from "./session";
 import travelServicesCopy from "../messages/zh-TW/travelServices.json" with { type: "json" };
@@ -15,22 +16,48 @@ const product = {
     { id: bookingOptionId, provider: "booking", name: "Booking.com", mode: "affiliate", affiliate_channel: "stay22", quote_status: "not_configured" },
     { id: "20000000-0000-4000-8000-000000000002", provider: "agoda", name: "Agoda", mode: "affiliate", affiliate_channel: "existing", quote_status: "not_configured" },
     { id: "20000000-0000-4000-8000-000000000003", provider: "expedia", name: "Expedia", mode: "affiliate", affiliate_channel: "stay22", quote_status: "not_configured" },
+    { id: "20000000-0000-4000-8000-000000000004", provider: "official", name: null, mode: "direct", quote_status: "not_configured" },
   ],
 };
 
-async function fixture(context: BrowserContext) {
-  const posts: { body: string; path: string }[] = [];
+const discoveryHotel = {
+  id: `hotel:${product.id}`, kind: "hotel", title: product.title,
+  summary: "Synthetic reviewed hotel fixture, not a real booking or price.",
+  locale: "zh-TW", href: "/destinations/tokyo/services?type=hotel",
+  destination: { id: "tokyo", name: "東京" },
+  source: { kind: "editorial", label: "Synthetic catalog fixture", url: null },
+  published_at: null, updated_at: null, thumbnail_url: null,
+  collection_ref: { kind: "hotel", id: product.id },
+  detail: { hotel: product, guides: [], merchants: [] },
+};
+
+async function openDiscoveryBookingPanel(page: Page) {
+  await page.goto("/zh-TW/explore?destination=tokyo&category=hotels");
+  await page.locator(`article[id="${discoveryHotel.id}"]`).getByRole("link", { name: product.title, exact: true }).click();
+  const detail = page.getByRole("dialog", { name: getDiscoveryCopy("zh-TW").details, exact: true });
+  await expect(detail.getByRole("heading", { name: product.title, exact: true })).toBeVisible();
+  await detail.getByRole("button", { name: travelServicesCopy.platforms, exact: true }).click();
+  const panel = page.getByRole("dialog", { name: product.title, exact: true });
+  await expect(panel).toBeVisible();
+  return panel;
+}
+
+async function fixture(context: BrowserContext, { realClickout = false } = {}) {
+  const posts: { body: string; path: string; url: string; origin: string | null }[] = [];
   const external: string[] = [];
   const quotes: string[] = [];
-  await context.route("https://**", async (route) => {
-    external.push(route.request().url());
+  await context.route("**/*", async (route) => {
+    const url = new URL(route.request().url());
+    if (["127.0.0.1", "localhost", "[::1]"].includes(url.hostname)) return route.fallback();
+    external.push(url.href);
     await route.abort();
   });
   await context.route("**/api/travel/**", async (route) => {
     const request = route.request();
     const path = new URL(request.url()).pathname.replace("/api/travel", "");
     if (path.endsWith("/clickout")) {
-      posts.push({ body: request.postData() || "", path });
+      posts.push({ body: request.postData() || "", path, url: request.url(), origin: await request.headerValue("origin") });
+      if (realClickout) return route.fallback();
       // Fulfill the popup locally: Playwright routing does not reliably intercept subsequent redirects.
       // Redirect URL generation is covered by API tests; no affiliate host is contacted here.
       await route.fulfill({ contentType: "text/html", body: "<!doctype html><title>Fixture booking platform</title><h1>Reviewed Tokyo Hotel</h1>", headers: { "Cache-Control": "no-store", "Referrer-Policy": "no-referrer" } });
@@ -38,7 +65,13 @@ async function fixture(context: BrowserContext) {
     }
     if (path.includes("hotel-quotes")) quotes.push(path);
     let body: unknown = {};
-    if (path === "/travel-services/config") body = { public_enabled: true, enabled_kinds: ["hotel"], enabled_destinations: ["tokyo"] };
+    if (path === "/discovery/status") body = { enabled: true };
+    else if (path === "/community/status") body = { enabled: false };
+    else if (path === "/analytics/config") body = { first_party_enabled: false, ga4_enabled: false };
+    else if (path === "/discovery/feed" || path === "/discovery/search") body = { enabled: true, query: "", items: [discoveryHotel], next_cursor: null, filters: { kinds: [], destinations: [], topics: [] } };
+    else if (path === `/discovery/content/hotel/${product.id}`) body = discoveryHotel;
+    else if (path === "/discovery/suggestions") body = { items: [], destinations: [{ id: "tokyo", name: "東京" }], topics: [] };
+    else if (path === "/travel-services/config") body = { public_enabled: true, enabled_kinds: ["hotel"], enabled_destinations: ["tokyo"] };
     else if (path === "/travel-services") body = { enabled: true, enabled_kinds: ["hotel"], destinations: ["tokyo"], items: [product], areas: [], selections: [] };
     else if (path.includes("destination-offers")) body = { options: [] };
     else if (path.includes("/saved-items")) body = { items: [], total: 0, has_more: false };
@@ -47,6 +80,41 @@ async function fixture(context: BrowserContext) {
     await route.fulfill({ json: body });
   });
   return { posts, external, quotes };
+}
+
+for (const option of product.booking_options) {
+  test(`discovery: first ${option.provider} click preserves its entry and booking conditions without retry`, async ({ page, context }) => {
+    const calls = await fixture(context);
+    const errors: string[] = [];
+    page.on("pageerror", (error) => errors.push(error.message));
+    const panel = await openDiscoveryBookingPanel(page);
+    const fields = { check_in: "2099-11-10", check_out: "2099-11-20", adults: "2", children: "1" };
+    await panel.getByLabel(localizedCopy.checkIn, { exact: true }).fill(fields.check_in);
+    await panel.getByLabel(localizedCopy.checkOut, { exact: true }).fill(fields.check_out);
+    await panel.getByLabel(localizedCopy.adults, { exact: true }).fill(fields.adults);
+    await panel.getByLabel(localizedCopy.children, { exact: true }).fill(fields.children);
+    const name = option.provider === "official" ? travelServicesCopy.officialHotel : option.name!;
+    const open = panel.getByRole("button", { name: `${platformCta(name)} · ${travelServicesCopy.newTab}`, exact: true });
+    const popupWait = context.waitForEvent("page");
+    await open.click();
+    const popup = await popupWait;
+    await expect(popup).toHaveTitle("Fixture booking platform");
+    await expect(popup.getByRole("button", { name: localizedCopy.retry })).toHaveCount(0);
+    expect(await popup.evaluate(() => window.opener === null)).toBe(true);
+    expect(calls.posts).toHaveLength(1);
+    const [post] = calls.posts;
+    expect(post.path).toBe(`/travel-services/${product.id}/booking-options/${option.id}/clickout`);
+    expect(new URL(post.url).searchParams.get("placement")).toBe("discovery");
+    expect(post.origin).toBe(new URL(page.url()).origin);
+    expect(Object.fromEntries(new URLSearchParams(post.body))).toEqual(fields);
+    await popup.close();
+    await expect(panel.getByLabel(localizedCopy.checkIn, { exact: true })).toHaveValue(fields.check_in);
+    expect(calls.posts).toHaveLength(1);
+    expect(calls.external).toEqual([]);
+    expect(calls.quotes).toEqual([]);
+    expect(errors).toEqual([]);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
+  });
 }
 
 for (const entry of ["destination", "nearby"] as const) {
@@ -164,16 +232,23 @@ test("trip lodging shows the reviewed catalog before its opt-in map and sends un
   await popup.close();
 });
 
-test("native same-origin form and retry reach the real BFF instead of an opaque-origin CSRF rejection", async ({ page, context }) => {
-  const external: string[] = [];
-  await context.route("https://**", (route) => { external.push(route.request().url()); return route.abort(); });
-  // Only seed public read models. The clickout POST and its retry exercise the actual Next BFF.
-  await context.route("**/api/travel/travel-services/config", (route) => route.fulfill({ json: { public_enabled: true, enabled_kinds: ["hotel"], enabled_destinations: ["tokyo"] } }));
-  await context.route("**/api/travel/travel-services?**", (route) => route.fulfill({ json: { enabled: true, enabled_kinds: ["hotel"], destinations: ["tokyo"], items: [product], areas: [], selections: [] } }));
-  await context.route("**/api/travel/affiliates/destination-offers?**", (route) => route.fulfill({ json: { options: [] } }));
-  await page.goto("/zh-TW/destinations/tokyo/services?type=hotel");
-  await page.getByRole("button", { name: travelServicesCopy.platforms, exact: true }).click();
-  const panel = page.getByRole("dialog", { name: product.title });
+for (const entry of ["destination", "discovery"] as const) {
+test(`${entry}: native same-origin form and retry preserve placement and conditions through the real BFF`, async ({ page, context }) => {
+  // Public read models are synthetic. POST and retry reach the actual Next BFF;
+  // the local upstream deliberately returns 404, not a successful provider redirect.
+  const calls = await fixture(context, { realClickout: true });
+  if (entry === "destination") {
+    await page.goto("/zh-TW/destinations/tokyo/services?type=hotel");
+    await page.getByRole("button", { name: travelServicesCopy.platforms, exact: true }).click();
+  } else {
+    await openDiscoveryBookingPanel(page);
+  }
+  const panel = page.getByRole("dialog", { name: product.title, exact: true });
+  const fields = { check_in: "2099-11-10", check_out: "2099-11-20", adults: "2", children: "1" };
+  await panel.getByLabel(localizedCopy.checkIn, { exact: true }).fill(fields.check_in);
+  await panel.getByLabel(localizedCopy.checkOut, { exact: true }).fill(fields.check_out);
+  await panel.getByLabel(localizedCopy.adults, { exact: true }).fill(fields.adults);
+  await panel.getByLabel(localizedCopy.children, { exact: true }).fill(fields.children);
   const open = panel.getByRole("button", { name: /前往 Booking.com 查價格/ });
   await expect(open.locator("..")).toHaveAttribute("rel", "noopener");
   const responseWait = context.waitForEvent("response", (response) => response.request().method() === "POST" && response.url().includes(`booking-options/${bookingOptionId}/clickout`));
@@ -186,6 +261,8 @@ test("native same-origin form and retry reach the real BFF instead of an opaque-
   expect(response.status()).toBe(404);
   expect(response.headers()["content-type"]).toContain("text/html");
   expect(await response.request().headerValue("origin")).toBe(new URL(page.url()).origin);
+  expect(new URL(response.url()).searchParams.get("placement")).toBe(entry);
+  expect(Object.fromEntries(new URLSearchParams(response.request().postData() || ""))).toEqual(fields);
   await expect(popup.getByRole("heading", { name: localizedCopy.errorTitle })).toBeVisible();
   expect(await popup.evaluate(() => window.opener === null)).toBe(true);
   const retryResponse = context.waitForEvent("response", (value) => value.request().method() === "POST" && value.url().includes(`booking-options/${bookingOptionId}/clickout`));
@@ -193,8 +270,12 @@ test("native same-origin form and retry reach the real BFF instead of an opaque-
   const retried = await retryResponse;
   expect(retried.status()).toBe(404);
   expect(retried.headers()["content-type"]).toContain("text/html");
+  expect(new URL(retried.url()).searchParams.get("placement")).toBe(entry);
+  expect(Object.fromEntries(new URLSearchParams(retried.request().postData() || ""))).toEqual(fields);
+  expect(calls.posts).toHaveLength(2);
   await expect(popup.getByRole("heading", { name: localizedCopy.errorTitle })).toBeVisible();
   await popup.close();
   await expect(panel).toBeVisible();
-  expect(external).toEqual([]);
+  expect(calls.external).toEqual([]);
 });
+}
