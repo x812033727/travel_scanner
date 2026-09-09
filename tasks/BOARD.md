@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**16 open · 0 in progress · 2 blocked · 2 in review · 176 done**
+**16 open · 0 in progress · 2 blocked · 1 in review · 177 done**
 
 ## Ready to claim
 
@@ -33,7 +33,6 @@ _Nothing here._
 | Task | Owner | Branch |
 | --- | --- | --- |
 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | codex | `codex/merchant-style-batch-07` |
-| [Calm daily timeline and safe explicit planner editing](open/2026-09-09-planner-calm-editing.md) | codex-planner-calm | `codex/planner-calm-editing` |
 
 ## Waiting
 
@@ -50,6 +49,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-09 [Calm daily timeline and safe explicit planner editing](done/2026-09-09-planner-calm-editing.md)
 - 2026-09-09 [Community curated video invitations and collection references](done/2026-09-08-travel-discovery-community.md)
 - 2026-09-09 [Travel discovery integration navigation safety and acceptance](done/2026-09-08-travel-discovery-integration.md)
 - 2026-09-09 [Travel discovery search feed and explicit preferences API](done/2026-09-08-travel-discovery-api.md)
@@ -59,4 +59,3 @@ _Nothing here._
 - 2026-09-08 [Fix nearby itinerary discovery across cities and reset insertion pagination](done/2026-09-08-planner-nearby-followup.md)
 - 2026-09-08 [Stay22 Maps lodging pilot](done/2026-09-08-stay22-maps-lodging-pilot.md)
 - 2026-09-08 [Klook affiliate frontend channels and contextual discovery](done/2026-09-08-klook-affiliate-web.md)
-- 2026-09-08 [Klook channel aware affiliate backend and secure clickout](done/2026-09-08-klook-channel-backend.md)
