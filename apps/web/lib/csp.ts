@@ -68,8 +68,9 @@ export function buildStrictContentSecurityPolicy({
     `img-src 'self' data: blob: https:${mediaSources.length ? " " + mediaSources.join(" ") : ""}`,
     "font-src 'self' data:",
     `connect-src 'self' ${[...ANALYTICS_CONNECT_SOURCES, ...NAVER_MAP_SOURCES, ...TRAVELPAYOUTS_DRIVE_SOURCES, ...mediaSources].join(" ")}`,
-    // Stay22 is a click-to-load iframe, never a parent-page LMA/script integration.
-    "frame-src https://www.google.com https://www.stay22.com",
+    // External lodging and video frames load only after an explicit action;
+    // neither needs provider scripts or connections in the parent page.
+    "frame-src https://www.google.com https://www.stay22.com https://www.youtube-nocookie.com",
     "worker-src 'self' blob:",
     "manifest-src 'self'",
     "media-src 'self'",

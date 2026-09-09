@@ -10,6 +10,8 @@ import { Button, CommunityImage, Dialog, Empty, ErrorNotice, fieldClass, panelCl
 import { ItineraryPreview } from "./post";
 import { RelatedPlaces } from "./places";
 import { useResource } from "./use-resource";
+import { CreatorInvitations } from "./creator-invitations";
+import { DiscoveryVideoPlayer } from "@/components/discovery/video";
 
 export function AdminGate({ children }: { children: ReactNode }) {
  const { user, status } = useHeaderSession();
@@ -29,7 +31,7 @@ export function CommunityAdmin() {
  const t = useTranslations("community");
  const [tab, setTab] = useState("posts");
  return <AdminGate><div className="space-y-6"><h1 className="text-3xl font-bold">{t("adminCommunity")}</h1><Tabs label={t("adminCommunity")} value={tab} onChange={setTab} items={["posts", "comments", "reports", "members", "settings", "overview"].map((value) => ({value, label:t(`adminTabs.${value}`)}))}>
- {tab === "posts" && <PostReview />}{tab === "comments" && <CommentReview />}{tab === "reports" && <ReportReview />}{tab === "members" && <MemberReview />}{tab === "settings" && <CommunitySettings />}{tab === "overview" && <CommunityOverview />}
+ {tab === "posts" && <PostReview />}{tab === "comments" && <CommentReview />}{tab === "reports" && <ReportReview />}{tab === "members" && <div className="space-y-6"><MemberReview /><CreatorInvitations /></div>}{tab === "settings" && <CommunitySettings />}{tab === "overview" && <CommunityOverview />}
  </Tabs></div></AdminGate>;
 }
 function PostReview() {
@@ -37,7 +39,7 @@ function PostReview() {
  const [state, setState] = useState("pending");
  const data = useResource<Page<Post>>(`/admin/community/posts?state=${state}`);
  const [action, setAction] = useState<{ post: Post; action: string }>();
- return <div className="space-y-4"><label className="block max-w-xs font-semibold">{t("status")}<select className={fieldClass} value={state} onChange={(e) => setState(e.target.value)}>{["pending","published","hidden"].map((key) => <option key={key} value={key}>{t(`states.${key}`)}</option>)}</select></label><ErrorNotice error={data.error} />{data.data?.items.length === 0 && <Empty>{t("queueEmpty")}</Empty>}{data.data?.items.map((post) => <article key={post.id} className={`${panelClass} space-y-4`}><header><h2 className="text-xl font-bold">{post.title}</h2><p className="text-sm">{post.author.display_name} · @{post.author.handle} · {post.locale}</p></header><p className="whitespace-pre-wrap break-words">{post.body}</p><div className="grid grid-cols-2 gap-3">{post.media.map((media) => <CommunityImage key={media.id} id={media.id} alt={media.alt} review />)}</div><RelatedPlaces places={post.places || []} />{post.itinerary && <ItineraryPreview itinerary={post.itinerary} />}<div className="flex flex-wrap gap-2">{(state === "pending" ? ["approve","return"] : state === "hidden" ? ["restore"] : ["hide", post.featured ? "unfeature" : "feature"]).map((key) => <Button key={key} secondary onClick={() => setAction({ post, action:key })}>{t(`actions.${key}`)}</Button>)}</div></article>)}
+ return <div className="space-y-4"><label className="block max-w-xs font-semibold">{t("status")}<select className={fieldClass} value={state} onChange={(e) => setState(e.target.value)}>{["pending","published","hidden"].map((key) => <option key={key} value={key}>{t(`states.${key}`)}</option>)}</select></label><ErrorNotice error={data.error} />{data.data?.items.length === 0 && <Empty>{t("queueEmpty")}</Empty>}{data.data?.items.map((post) => <article key={post.id} className={`${panelClass} space-y-4`}><header><h2 className="text-xl font-bold">{post.title}</h2><p className="text-sm">{post.author.display_name} · @{post.author.handle} · {post.locale}</p></header><p className="whitespace-pre-wrap break-words">{post.body}</p><div className="grid grid-cols-2 gap-3">{post.media.map((media) => <CommunityImage key={media.id} id={media.id} alt={media.alt} review />)}</div>{post.video_refs?.map((video) => <DiscoveryVideoPlayer key={video.video_id} video={video} />)}<RelatedPlaces places={post.places || []} />{post.itinerary && <ItineraryPreview itinerary={post.itinerary} />}<div className="flex flex-wrap gap-2">{(state === "pending" ? ["approve","return"] : state === "hidden" ? ["restore"] : ["hide", post.featured ? "unfeature" : "feature"]).map((key) => <Button key={key} secondary onClick={() => setAction({ post, action:key })}>{t(`actions.${key}`)}</Button>)}</div></article>)}
  {action && <ReasonAction title={t(`actions.${action.action}`)} onClose={() => setAction(undefined)} onSubmit={async (reason) => { await api(`/admin/community/posts/${action.post.id}`, {method:"PUT", body:JSON.stringify({ action:action.action, version:action.post.version, reason })}); await data.reload(); }} />}</div>;
 }
 function CommentReview() {

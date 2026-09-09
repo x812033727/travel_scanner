@@ -14,6 +14,7 @@ import { SiteHeader } from "@/components/site-header";
 import { Link } from "@/i18n/navigation";
 import { citiesForCountry, countryKeys } from "@/lib/destinations";
 import { CommunityHero, CommunityHome } from "@/components/community/home";
+import { DiscoveryHomeGate } from "@/components/discovery/explorer";
 
 export default async function Home() {
   const t = await getTranslations("search");
@@ -26,6 +27,7 @@ export default async function Home() {
   return (
     <>
       <SiteHeader />
+      <DiscoveryHomeGate>
       <main className="mx-auto min-h-screen max-w-6xl px-5 pb-20 md:px-8">
         {/* On a phone the first screen is the request form: a short hero, the
             workbench, and the three trust lines as one scrolling row underneath.
@@ -174,6 +176,7 @@ export default async function Home() {
         </section>
         <CommunityHome pets />
       </main>
+      </DiscoveryHomeGate>
     </>
   );
 }

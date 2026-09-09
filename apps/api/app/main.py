@@ -10,6 +10,7 @@ from app.admin.user_router import router as admin_user_router
 from app.affiliates.router import router as affiliates_router
 from app.ai.router import router as ai_router
 from app.alerts.router import router as alerts_router
+from app.analytics.discovery import router as discovery_metrics_router
 from app.analytics.router import admin_router as admin_analytics_router
 from app.analytics.router import router as analytics_router
 from app.auth.router import router as auth_router
@@ -28,6 +29,7 @@ from app.config import get_settings
 from app.crawlers.router import router as crawlers_router
 from app.db import engine
 from app.deployments.router import router as deployments_router
+from app.discovery.router import router as discovery_router
 from app.flights.router import router as flight_status_router
 from app.foods.admin_router import router as admin_foods_router
 from app.foods.router import router as foods_router
@@ -95,6 +97,8 @@ app.include_router(pet_planning_router, prefix="/api/v1")
 app.include_router(pet_admin_router, prefix="/api/v1")
 app.include_router(community_router, prefix="/api/v1")
 app.include_router(community_discovery_router, prefix="/api/v1")
+app.include_router(discovery_router, prefix="/api/v1")
+app.include_router(discovery_metrics_router, prefix="/api/v1")
 app.include_router(community_messaging_router, prefix="/api/v1")
 app.include_router(admin_router, prefix="/api/v1")
 app.include_router(catalog_review_router, prefix="/api/v1")

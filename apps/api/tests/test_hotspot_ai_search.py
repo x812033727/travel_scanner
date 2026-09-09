@@ -7,12 +7,14 @@ from pydantic import ValidationError
 from app.config import get_settings
 from app.hotspots.ai_search import (
     AnthropicResearchProvider,
+    CandidateAssessment,
     GeminiResearchProvider,
     QueryPlan,
     ResponsesResearchProvider,
     _candidate_metadata,
     configured_research_providers,
     estimate_calls,
+    provider_evidence,
     research_provider,
     summarize_provider_error,
 )
@@ -60,6 +62,43 @@ def test_ai_assessment_payload_never_exposes_a_candidate_url() -> None:
     assert payload["candidate_id"] == "c0"
     assert not any("url" in key for key in payload)
     assert "publisher.example" not in json.dumps(payload)
+
+
+def test_ai_scoring_cannot_supply_or_override_provider_embed_proof() -> None:
+    candidate = GuideCandidate(
+        content_type="video",
+        provider="youtube",
+        locale="ja",
+        title="Provider title",
+        creator_name="Publisher",
+        canonical_url="https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        provider_content_id="dQw4w9WgXcQ",
+        metadata={
+            "youtube_status": {"privacyStatus": "public", "embeddable": False, "unrelated": "drop"},
+            "untrusted_extra": "drop",
+        },
+    )
+    score = CandidateAssessment.model_validate(
+        {
+            "candidate_id": "c0",
+            "relevance_score": 95,
+            "quality_score": 95,
+            "detected_locale": "ja",
+            "language_confidence": 1,
+            "recommendation_reason": "Useful video",
+            "youtube_status": {"privacyStatus": "public", "embeddable": True},
+            "metadata": {"youtube_status": {"embeddable": True}},
+        }
+    )
+    assert "youtube_status" not in score.model_dump() and "metadata" not in score.model_dump()
+    assert provider_evidence(candidate) == {
+        "youtube_status": {"privacyStatus": "public", "embeddable": False}
+    }
+    assert "youtube_status" not in _candidate_metadata(candidate, "c0")
+    from dataclasses import replace
+
+    assert provider_evidence(replace(candidate, provider="gemini")) == {}
+    assert provider_evidence(replace(candidate, metadata={})) == {"youtube_status": {}}
 
 
 def test_unconfigured_provider_is_explicit_and_never_falls_back() -> None:

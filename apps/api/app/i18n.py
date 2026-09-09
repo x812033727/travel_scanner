@@ -1454,6 +1454,55 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
 for _service_locale in LOCALES:
     ERROR_DETAILS[_service_locale].update(SERVICE_ERRORS[_service_locale])
 
+_DISCOVERY_ERRORS: dict[str, dict[str, str]] = {
+    "en": {
+        "discovery_unavailable": "Travel discovery is not available right now.",
+        "discovery_version_conflict": "Your interests changed elsewhere. Reload before saving.",
+        "community_feed_expired": "These results have expired. Refresh to continue.",
+        "community_invalid_cursor": "This results page is no longer valid. Start a new search.",
+        "community_not_found": "This public content is no longer available.",
+        "validation_error": "Please check the information you entered and try again.",
+    },
+    "zh-TW": {
+        "discovery_unavailable": "旅遊探索目前尚未開放，請稍後再試。",
+        "discovery_version_conflict": "你的興趣設定已在其他地方更新，請重新載入後再儲存。",
+        "community_feed_expired": "搜尋結果已過期，請重新整理後繼續。",
+        "community_invalid_cursor": "這一頁搜尋結果已失效，請重新搜尋。",
+        "community_not_found": "這筆公開內容目前無法使用。",
+        "validation_error": "請檢查輸入的資料後再試一次。",
+    },
+    "zh-CN": {
+        "discovery_unavailable": "旅游探索目前尚未开放，请稍后再试。",
+        "discovery_version_conflict": "你的兴趣设置已在其他地方更新，请重新加载后再保存。",
+        "community_feed_expired": "搜索结果已过期，请刷新后继续。",
+        "community_invalid_cursor": "这一页搜索结果已失效，请重新搜索。",
+        "community_not_found": "这条公开内容目前无法使用。",
+        "validation_error": "请检查输入的信息后再试一次。",
+    },
+    "ja": {
+        "discovery_unavailable": "旅行の探索は現在利用できません。",
+        "discovery_version_conflict": (
+            "興味の設定が別の場所で更新されました。再読み込みしてから保存してください。"
+        ),
+        "community_feed_expired": "検索結果の有効期限が切れました。再読み込みしてください。",
+        "community_invalid_cursor": "この検索結果ページは無効です。もう一度検索してください。",
+        "community_not_found": "この公開コンテンツは現在利用できません。",
+        "validation_error": "入力内容を確認して、もう一度お試しください。",
+    },
+    "ko": {
+        "discovery_unavailable": "여행 둘러보기를 현재 이용할 수 없습니다.",
+        "discovery_version_conflict": (
+            "관심사가 다른 곳에서 변경되었습니다. 새로고침한 후 저장하세요."
+        ),
+        "community_feed_expired": "검색 결과가 만료되었습니다. 새로고침해 주세요.",
+        "community_invalid_cursor": "유효하지 않은 결과 페이지입니다. 다시 검색해 주세요.",
+        "community_not_found": "이 공개 콘텐츠는 현재 이용할 수 없습니다.",
+        "validation_error": "입력한 정보를 확인한 후 다시 시도해 주세요.",
+    },
+}
+for _discovery_locale in LOCALES:
+    ERROR_DETAILS[_discovery_locale].update(_DISCOVERY_ERRORS[_discovery_locale])
+
 
 def request_locale(headers: object) -> Locale:
     getter = getattr(headers, "get", None)

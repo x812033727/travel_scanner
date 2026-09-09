@@ -46,6 +46,7 @@ class FakeYouTube:
             provider_content_id="dQw4w9WgXcQ",
             view_count=12345,
             language_confidence=Decimal("0.900"),
+            metadata={"youtube_status": {"privacyStatus": "public", "embeddable": True}},
         )
 
     async def close(self) -> None:
@@ -122,6 +123,7 @@ async def test_manual_video_keeps_the_chosen_locale_and_is_approved(monkeypatch,
     assert candidate.locale == "zh-TW"
     assert candidate.language_confidence == Decimal("1.000")
     assert candidate.metadata == {
+        "youtube_status": {"privacyStatus": "public", "embeddable": True},
         "discovery_method": "manual",
         "requested_locale": "zh-TW",
         "detected_locale": "ja",

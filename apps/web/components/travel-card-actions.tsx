@@ -2,7 +2,8 @@
 
 import { AlertCircle, CalendarPlus, Check, Heart, LoaderCircle, LogIn, Share2, X } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { Link, usePathname } from "@/i18n/navigation";
 import { api } from "@/lib/api";
 import { loginPath } from "@/lib/navigation";
@@ -23,6 +24,7 @@ export function TravelCardActions({
   selectionPath,
   merchantId,
   shareRequiresAuth = false,
+  resumeAfterLogin = false,
 }: {
   type: SavedType;
   id: string;
@@ -30,12 +32,16 @@ export function TravelCardActions({
   selectionPath: string;
   merchantId?: string;
   shareRequiresAuth?: boolean;
+  resumeAfterLogin?: boolean;
 }) {
   const common = useTranslations("common");
   const savedItems = useSavedItems();
   const pathname = usePathname();
   const saved = savedItems.isSaved(type, id);
-  const [sheet, setSheet] = useState<"login" | "trip" | null>(null);
+  const [sheet, setSheet] = useState<"login" | "trip" | "save" | null>(null);
+  const dialog = useRef<HTMLElement>(null);
+  const [resumed, setResumed] = useState(false);
+  const [resumeTrip, setResumeTrip] = useState(false);
   const [trips, setTrips] = useState<TripOption[]>([]);
   const [tripId, setTripId] = useState("");
   const [dayDate, setDayDate] = useState("");
@@ -53,19 +59,21 @@ export function TravelCardActions({
     setError("");
   }
 
-  function requireAuth(action: () => void) {
+  function requireAuth(action: () => void, intent?: "save" | "trip") {
     // "loading" is not "signed out". Acting on it threw an already-signed-in
     // reader into the login sheet whenever they tapped before /saved-items
     // came back, which on a phone is most of the time.
     if (savedItems.status === "loading") return;
     if (savedItems.status !== "authenticated") {
-      setLoginHref(loginPath(`${pathname}${window.location.search}`));
+      const query = new URLSearchParams(window.location.search);
+      if (resumeAfterLogin && intent) { query.set("resume_action", intent); query.set("resume_item", `${type}:${id}`); }
+      setLoginHref(loginPath(`${pathname}${query.size ? `?${query}` : ""}`));
       setSheet("login");
     }
     else action();
   }
-  async function openTrip() {
-    clearFeedback();
+  const openTrip = useCallback(async () => {
+    setNotice(""); setNoticeHref(""); setError("");
     setSheet("trip");
     setBusy(true);
     try {
@@ -82,6 +90,51 @@ export function TravelCardActions({
     } finally {
       setBusy(false);
     }
+  }, []);
+  // A resolved login changes which modal is rendered; the effect below performs
+  // only the read-only trip lookup. It never confirms a saved item or itinerary.
+  if (resumeAfterLogin && !resumed && savedItems.status === "authenticated" && typeof window !== "undefined") {
+    const query = new URLSearchParams(window.location.search);
+    const action = query.get("resume_action");
+    if (query.get("resume_item") === `${type}:${id}` && (action === "save" || action === "trip")) {
+      setResumed(true); setSheet(action);
+      if (action === "trip") { setResumeTrip(true); setBusy(true); }
+    }
+  }
+  useEffect(() => {
+    if (!resumeTrip) return;
+    const controller = new AbortController();
+    api<{ items: TripOption[] }>("/trips/options", { signal: controller.signal }).then(({ items }) => {
+      if (controller.signal.aborted) return;
+      setTrips(items); if (items[0]) { setTripId(items[0].trip_id); setDayDate(items[0].start_date); }
+    }).catch((reason: unknown) => { if (!controller.signal.aborted) setError((reason as Error).message); })
+      .finally(() => { if (!controller.signal.aborted) setBusy(false); });
+    return () => controller.abort();
+  }, [resumeTrip]);
+  useEffect(() => {
+    if (!sheet) return;
+    const previous = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const overflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const focusable = () => Array.from(dialog.current?.querySelectorAll<HTMLElement>('a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex="0"]') || []);
+    focusable()[0]?.focus();
+    function keyboard(event: KeyboardEvent) {
+      if (event.key === "Escape") { event.preventDefault(); setSheet(null); }
+      if (event.key !== "Tab") return;
+      const items = focusable();
+      const first = items[0], last = items.at(-1);
+      if (!first) { event.preventDefault(); return; }
+      if (!dialog.current?.contains(document.activeElement) || (event.shiftKey && document.activeElement === first)) { event.preventDefault(); (event.shiftKey ? last : first)?.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    }
+    document.addEventListener("keydown", keyboard);
+    return () => { document.removeEventListener("keydown", keyboard); document.body.style.overflow = overflow; if (previous?.isConnected) previous.focus(); };
+  }, [sheet]);
+  async function confirmSave() {
+    setSaving(true); clearFeedback();
+    try { await savedItems.setSaved(type, id, true); setSheet(null); setNotice(common("cardActions.saved")); }
+    catch (reason) { setError((reason as Error).message); }
+    finally { setSaving(false); }
   }
   async function submitTrip() {
     const trip = trips.find((item) => item.trip_id === tripId);
@@ -155,7 +208,7 @@ export function TravelCardActions({
           type="button"
           aria-pressed={saved}
           disabled={saving}
-          onClick={() => requireAuth(() => void toggleSaved())}
+          onClick={() => requireAuth(() => void toggleSaved(), "save")}
           className={
             saved
               ? "travel-card-action travel-card-action-active"
@@ -168,7 +221,7 @@ export function TravelCardActions({
         <button
           type="button"
           disabled={(type === "food" || type === "merchant") && !merchantId}
-          onClick={() => requireAuth(() => void openTrip())}
+          onClick={() => requireAuth(() => void openTrip(), "trip")}
           className="travel-card-action disabled:cursor-not-allowed disabled:opacity-35"
         >
           <CalendarPlus size={18} />
@@ -196,7 +249,7 @@ export function TravelCardActions({
         </div>
       )}
       {error && <div role="alert" className="app-toast app-toast-error"><AlertCircle size={17} />{error}</div>}
-      {sheet && (
+      {sheet && createPortal(
         <div
           className="app-sheet-backdrop"
           onMouseDown={(event) => {
@@ -204,10 +257,12 @@ export function TravelCardActions({
           }}
         >
           <section
+            ref={dialog}
             role="dialog"
             aria-modal="true"
-            aria-label={sheet === "login" ? common("cardActions.login") : common("cardActions.trip")}
+            aria-label={sheet === "login" ? common("cardActions.login") : sheet === "save" ? common("cardActions.save") : common("cardActions.trip")}
             className="app-sheet"
+            style={{ background: "var(--surface)", color: "var(--ink)" }}
           >
             <div className="app-sheet-handle" />
             <button
@@ -229,7 +284,7 @@ export function TravelCardActions({
                   {common("cardActions.loginAction")}
                 </Link>
               </div>
-            ) : (
+            ) : sheet === "save" ? <div className="space-y-5 py-8"><h3 className="pr-12 text-xl font-bold">{title}</h3><button type="button" disabled={saving} onClick={() => void confirmSave()} className="min-h-12 rounded-xl bg-[var(--teal)] px-5 font-semibold text-white disabled:opacity-50">{saved ? common("cardActions.saved") : common("cardActions.save")}</button></div> : (
               <div className="pt-4">
                 <h3 className="pr-12 text-2xl font-bold">{common("cardActions.add")}</h3>
                 {busy && trips.length === 0 ? (
@@ -313,7 +368,7 @@ export function TravelCardActions({
               </div>
             )}
           </section>
-        </div>
+        </div>, document.body
       )}
     </>
   );
