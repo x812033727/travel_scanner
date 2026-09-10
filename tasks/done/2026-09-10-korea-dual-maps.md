@@ -7,7 +7,7 @@ area: api
 owner: codex-korea-dual-maps
 claimed_at: 2026-09-10T03:20:08Z
 created_at: 2026-09-10T03:19:53Z
-completed_at: 2026-09-10T04:50:15Z
+completed_at: 2026-09-10T05:34:25Z
 branch: codex/korea-dual-maps
 depends_on: []
 scope:
@@ -107,7 +107,7 @@ identities. Existing Korean publication and coordinate-evidence gates stay intac
 - [x] Map/navigation changes never query paid routes or mutate trip version.
 - [x] Local checks, production build and desktop/mobile fixture verification completed.
 - [x] GitHub PostgreSQL/Redis migration, container and full-stack CI gates pass.
-- [x] Deliver reviewed change; merge and deployment need separate authorization.
+- [x] Deliver reviewed change; merge and deployment separately authorized and verified.
 
 ## Steps
 
@@ -196,3 +196,14 @@ expected 404; the actual hotel entry is /zh-TW/destinations/{city}/services.
 No real provider lookup, credential change, catalog approval or data import
 was performed. Old-image fallback alone would fail the strict schema readiness
 check after 0070; no rollback or automatic database restore was performed.
+
+Closure reconciled during PR385 integration with explicit confirmation from the
+owning task on 2026-09-10. PR386 is merged at fe26ff8c with all 12 branch/PR checks
+passing; the owner confirmed production deployment completed 04:54:51 UTC with
+schema0070, unchanged provider settings, health/readiness checks and a verified
+private backup. This supersedes the earlier pending CI/release notes above.
+The owner's detailed local closure is commit ffd78f2a in korea-dual-maps.
+No outstanding edits to admin-hotspots-panel.tsx or its test remain under this
+claim; the owner explicitly handed those files to PR385 integration. The separate
+Seoul transport-UI investigation does not use those files. This bookkeeping does
+not itself deploy or complete any remaining catalog/provider work.
