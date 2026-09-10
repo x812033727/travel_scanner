@@ -60,12 +60,13 @@ return loading ? <main className={styles.page}><DiscoverySkeleton /></main> : en
 
 ## Definition of done
 
-- [ ] `curl -s localhost:3000/zh-TW` 的輸出含 hero `<h1>` 與目的地連結列（關掉 JS 也看得到）。
+- [x] ~~`curl -s localhost:3000/zh-TW` 的輸出含 hero `<h1>` 與目的地連結列~~ —— **已由
+      `2026-09-10-seo-home-ssr-and-internal-links` 的繞道解決**（discovery 關閉時不再包 gate）。
 - [ ] `curl -s localhost:3000/en/explore` 的輸出含 feed 第一頁的實際項目，不是骨架。
 - [ ] 功能開關關閉時，伺服器端直接渲染「關閉」狀態，不再先送骨架再切換。
 - [ ] `/explore` 與 `/explore/collections` 移除 `noindex`，並加進 `SITEMAP_ROUTES`。
-- [ ] 首頁輸出 `Organization` 與 `WebSite`（含 `potentialAction: SearchAction`）JSON-LD。
-- [ ] 首頁的城市 chip 從 `/hotspots?destination_id={id}` 改指 `/destinations/{id}`（若目的地頁已上線）。
+- [x] ~~首頁輸出 `Organization` 與 `WebSite` JSON-LD~~ —— 已由 `2026-09-10-seo-structured-data` 完成（放在 gate 外面）。
+- [x] ~~首頁的城市 chip 改指 `/destinations/{id}`~~ —— 已由 `2026-09-10-seo-home-ssr-and-internal-links` 完成。
 - [ ] 首屏不再出現骨架 → 內容的整頁位移。
 
 ## Steps
@@ -107,3 +108,24 @@ curl -s localhost:3000/en/explore | grep -c 'noindex'      # 必須是 0
   其餘任務都可以先行，不需要等它。
 - `2026-09-10-seo-open-content-pages`（社群與寵物友善內容頁）踩到同一個坑：那些頁面也是
   client component 進 `useEffect` 抓資料。兩個任務的處理原則一樣——**先做 SSR，再談索引**。
+
+### 範圍收斂（2026-09-10, claude-opus-5-seo）
+
+首頁那一半已經解決了，但**是繞過去的，不是修好的**。
+`2026-09-10-seo-home-ssr-and-internal-links` 新增 `lib/discovery-status.server.ts`
+在伺服器端解析開關，讓 `app/[locale]/page.tsx` 在 discovery 關閉時直接渲染行銷首頁，
+不包 `DiscoveryHomeGate`。因為 `DISCOVERY_ENABLED` 預設 false，正式環境的首頁因此有了內容。
+
+**本任務剩下的是繞不過去的那一半**，仍然要等
+`2026-09-09-frontend-flow-discovery-web` 與 `2026-09-09-discovery-card-details` 合併：
+
+1. **根治 `getServerSnapshot`。** `lib/discovery.ts` 回傳寫死的 `{ loading: true }`，
+   所以 **discovery 開啟時**首頁與 explore 的伺服器輸出依舊是骨架。要把伺服器端解析出來的值
+   餵進 store（現成範本是 root layout 的 `<SiteVisibilityProvider state={siteVisibility}>`）。
+   繞道之後這件事只影響「開啟」狀態，優先度因此下降。
+2. **`/explore` 與 `/explore/collections` 的 SSR。** 內容在 `DiscoveryExplorer` 裡，
+   那個元件在被鎖住的 `explorer.tsx`，**沒有繞道空間**。這兩頁維持 `noindex`。
+3. 上述完成後才把兩頁加進 `app/sitemap.ts` 的 `SITEMAP_ROUTES` 並移除 `noindex`。
+
+`app/[locale]/page.tsx` 已不在本任務 scope（改動落在 `2026-09-10-seo-structured-data`
+與 `2026-09-10-seo-home-ssr-and-internal-links`），scope 已相應收斂。

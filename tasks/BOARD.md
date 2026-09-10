@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**28 open · 1 in progress · 3 blocked · 17 in review · 200 done**
+**28 open · 1 in progress · 3 blocked · 18 in review · 200 done**
 
 ## Ready to claim
 
@@ -55,6 +55,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | [公開 robots.txt 與五語系 sitemap](open/2026-09-10-seo-robots-sitemap.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
 | [目的地索引頁與城市指南落地頁](open/2026-09-10-seo-destination-landing-pages.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
 | [JSON-LD 結構化資料基礎與列表頁標記](open/2026-09-10-seo-structured-data.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
+| [首頁伺服器端輸出真正的內容，並把目的地頁接進連結結構](open/2026-09-10-seo-home-ssr-and-internal-links.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
 | [Archive completed catalog and hotel review evidence](open/2026-09-09-review-evidence-archive.md) | codex-review-archive | `codex/review-evidence-archive-20260909` |
 | [Compact discovery cards and source-linked details](open/2026-09-09-discovery-card-details.md) | codex-discovery-card-details | `codex/discovery-card-details-20260909` |
 | [Simplify hotel booking platform and source copy](open/2026-09-10-simplify-hotel-booking-copy.md) | codex-hotel-copy | `codex/hotel-booking-copy` |

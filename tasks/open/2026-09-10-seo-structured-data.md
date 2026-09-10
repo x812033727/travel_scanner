@@ -141,3 +141,14 @@ request-scoped render，代價換不到東西。
   "Home / City food guide"），`item` 都是含語系前綴的絕對網址。
 - `/zh-TW/hotspots` 這次量不到 breadcrumb，因為後端沒開、`PublicFeatureGate` 用「暫停服務」頁
   取代了整個 children。這是正確行為（該頁此時也是 noindex），不是缺陷。
+
+### 後續（2026-09-10）
+
+`app/[locale]/page.tsx` 在本任務 scope 內又落了兩處屬於
+`2026-09-10-seo-home-ssr-and-internal-links` 的修改：discovery 關閉時繞過 `DiscoveryHomeGate`，
+以及城市 chip 從 `/hotspots?destination_id={id}` 改指 `/destinations/{id}`。
+兩個任務同 owner、同分支，處理方式與 sitemap 條目落在 `2026-09-10-seo-robots-sitemap` 一致。
+
+順帶一提：本任務當時把首頁 JSON-LD 放在 gate 外面是對的判斷，但理由現在只剩一半——
+discovery 關閉時整個首頁都已經在伺服器輸出裡了，gate 外面只在**開啟**時才有差別。
+`page.tsx` 裡那段註解已相應改寫。

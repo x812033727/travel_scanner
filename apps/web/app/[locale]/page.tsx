@@ -18,24 +18,26 @@ import { CommunityHero, CommunityHome } from "@/components/community/home";
 import { DiscoveryHomeGate } from "@/components/discovery/explorer";
 import { StructuredData } from "@/components/structured-data";
 import { organization, webSite } from "@/lib/structured-data";
+import { getDiscoveryStatus } from "@/lib/discovery-status.server";
 
 export default async function Home() {
-  const locale = normalizeLocale(await getLocale());
-  const t = await getTranslations("search");
-  const tc = await getTranslations("search.catalog");
+  const [locale, t, tc, discovery] = await Promise.all([
+    getLocale().then(normalizeLocale),
+    getTranslations("search"),
+    getTranslations("search.catalog"),
+    getDiscoveryStatus(),
+  ]);
   const benefits = [
     { key: "source", icon: BadgeCheck, text: t("sourceBenefit") },
     { key: "route", icon: CalendarClock, text: t("routeBenefit") },
     { key: "cost", icon: CircleDollarSign, text: t("costBenefit") },
   ];
-  return (
-    <>
-      <SiteHeader />
-      {/* Outside the gate on purpose. DiscoveryHomeGate renders a skeleton on the server --
-          useDiscoveryStatus's server snapshot is always `loading` -- so anything inside it is
-          absent from the response body. Sitting here, this reaches a crawler either way. */}
-      <StructuredData data={[organization(), webSite(locale)]} />
-      <DiscoveryHomeGate>
+  // The gate only earns its place when discovery is on: its other job, redirecting
+  // #trip-search, is itself conditional on `enabled`. Off -- which is the default, and what
+  // production runs -- it does nothing but pass children through, while still costing the
+  // server render, because useDiscoveryStatus's server snapshot is a fixed `loading: true`.
+  // Deciding here is what puts the hero, the copy and the destination rail in the HTML.
+  const body = (
       <main className="mx-auto min-h-screen max-w-6xl px-5 pb-20 md:px-8">
         {/* On a phone the first screen is the request form: a short hero, the
             workbench, and the three trust lines as one scrolling row underneath.
@@ -170,7 +172,7 @@ export default async function Home() {
                     {cities.map((city) => (
                       <Link
                         key={city.id}
-                        href={`/hotspots?destination_id=${city.id}`}
+                        href={`/destinations/${city.id}`}
                         className="destination-city-chip"
                       >
                         {city.name}
@@ -184,7 +186,14 @@ export default async function Home() {
         </section>
         <CommunityHome pets />
       </main>
-      </DiscoveryHomeGate>
+  );
+  return (
+    <>
+      <SiteHeader />
+      {/* Outside the gate: when discovery is on, everything inside it is still a skeleton in
+          the response body. Here the graph reaches a crawler in both states. */}
+      <StructuredData data={[organization(), webSite(locale)]} />
+      {discovery.enabled ? <DiscoveryHomeGate>{body}</DiscoveryHomeGate> : body}
     </>
   );
 }
