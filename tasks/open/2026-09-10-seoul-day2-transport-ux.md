@@ -1,11 +1,11 @@
 ---
 id: 2026-09-10-seoul-day2-transport-ux
 title: Seoul Day 2 transport settings and readable route details
-status: open
+status: in-progress
 priority: P1
 area: web
-owner:
-claimed_at:
+owner: codex-seoul-day2-release
+claimed_at: 2026-09-10T06:16:47Z
 created_at: 2026-09-10T05:38:15Z
 completed_at:
 branch: codex/seoul-day2-transport-ux
@@ -76,11 +76,13 @@ No catalog, credentials, publication, AI rewrite, reservations or provider
 activation changes. User clarified that this task targets transport settings
 and information, not rearranging sights. Any trip test mutation stays in Day 2.
 PR385 is being integrated by a different task; admin-hotspots files are not
-owned here. No new merge or production deployment is authorized for these fixes.
+owned here. The user authorized PR merge and production deployment on 2026-09-10
+after accepting the local fix. Coordinate with the preceding PR385 deployment.
 
 Implementation and targeted validation are complete; see
 docs/seoul-day2-transport-ux.md for exact evidence and live-versus-fixture boundaries.
-The task is handed back pending a PR/merge request, not marked merged/done.
+The release task is active again; do not mark done until merge and production
+verification are recorded.
 Real production trip items and saved routing remained unchanged. Google probe
 and detailed check used the existing usage meter (two bounded requests total).
 Unrelated force-refresh propagation and locale-prefixed login return bugs were
