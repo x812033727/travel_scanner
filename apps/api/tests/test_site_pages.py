@@ -9,6 +9,7 @@ from __future__ import annotations
 import asyncio
 import copy
 import os
+import re
 from collections.abc import AsyncIterator
 from datetime import UTC, datetime, timedelta
 from uuid import uuid4
@@ -33,6 +34,7 @@ from app.site_pages import service
 from app.site_pages.router import admin_router, public_router
 from app.site_pages.schemas import (
     PAGE_SLUGS,
+    REQUIRED_FIELDS,
     DraftWrite,
     LinkBlock,
     PageDocument,
@@ -41,6 +43,13 @@ from app.site_pages.schemas import (
 )
 
 TABLES = [User.__table__, SitePage.__table__, SitePageRevision.__table__, AdminAuditLog.__table__]
+# The operator's two confirmed addresses: one public mailbox that a person reads, and
+# the send-only sender of automated account mail. See docs/contact-channels.md.
+CONTACT_ADDRESS = "support@mokaair.com"
+NOREPLY_ADDRESS = "support-noreply@mokaair.com"
+# ASCII-only, so neither sentence punctuation nor an attached Korean particle is
+# read as part of an address and hides a third one.
+ADDRESS_PATTERN = r"[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+"
 
 
 @pytest.fixture(params=["sqlite", "postgresql"])
@@ -133,14 +142,43 @@ def test_all_twenty_initial_documents_are_localized_unpublished_and_pending(loca
     for slug in PAGE_SLUGS:
         document = service.initial_document(slug, locale)
         titles.append(document.title)
-        assert document.effective_date is None
-        assert set(document.requirements.model_dump().values()) == {""}
         assert len(document.blocks) >= 4
-        assert "operator" in service.pending_requirements(slug, document)
-        assert "contact" in service.pending_requirements(slug, document)
-        assert "effective_date" in service.pending_requirements(slug, document)
-        assert "@" not in document.model_dump_json()
+        requirements = document.requirements.model_dump()
+        # The owner confirmed these facts, so the drafts carry them in every language.
+        # A page never states a fact it does not require: no retention schedule or
+        # legal arrangement appears on the about or contact page.
+        for field in REQUIRED_FIELDS[slug]:
+            assert requirements[field]
+        for field in set(requirements) - set(REQUIRED_FIELDS[slug]):
+            assert requirements[field] == ""
+        assert CONTACT_ADDRESS in requirements["contact"]
+        # Only the two owner-confirmed addresses may appear anywhere in a document.
+        assert set(re.findall(ADDRESS_PATTERN, document.model_dump_json())) <= {
+            CONTACT_ADDRESS,
+            NOREPLY_ADDRESS,
+        }
+        # The effective date stays the one fact a person sets when publishing, so
+        # initialization alone can never publish a policy.
+        assert document.effective_date is None
+        assert service.pending_requirements(slug, document) == ["effective_date"]
     assert len(set(titles)) == 4
+
+
+@pytest.mark.parametrize("locale", LOCALES)
+def test_drafts_link_only_the_public_mailbox_readers_can_write_to(locale) -> None:
+    for slug in PAGE_SLUGS:
+        links = [
+            block
+            for block in service.initial_document(slug, locale).blocks
+            if isinstance(block, LinkBlock)
+        ]
+        # Privacy requests and reports need one tap; the other two pages point at the
+        # same address through their confirmed facts rather than repeating the link.
+        assert [link.url for link in links] == (
+            [f"mailto:{CONTACT_ADDRESS}"] if slug in ("privacy", "contact") else []
+        )
+        # A reader is never invited to write to the send-only sender, in any language.
+        assert all(CONTACT_ADDRESS in link.text for link in links)
 
 
 @pytest.mark.parametrize(

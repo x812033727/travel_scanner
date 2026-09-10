@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**25 open · 1 in progress · 3 blocked · 11 in review · 200 done**
+**25 open · 2 in progress · 3 blocked · 11 in review · 200 done**
 
 ## Ready to claim
 
@@ -13,7 +13,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
-| P1 | [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | docs | `apps/web/app/[locale]/privacy/page.tsx`<br>`apps/web/app/[locale]/terms/page.tsx`<br>`apps/web/app/[locale]/contact/page.tsx`<br>`apps/web/messages/en/navigation.json`<br>`apps/web/messages/ja/navigation.json`<br>`apps/web/messages/ko/navigation.json`<br>`apps/web/messages/zh-CN/navigation.json`<br>`apps/web/messages/zh-TW/navigation.json` |
 | P1 | [Hotel platform options and quote readiness](open/2026-09-07-hotel-platform-options-and-quote-readiness.md) | api | `apps/api/tests/test_hotel_content_package.py`<br>`docs/hotel-platforms` |
 | P1 | [Revalidate community read resets against production-build CI](open/2026-09-08-community-ci-read-retry.md) | web | `apps/web/e2e/community.spec.ts` |
 | P1 | [Complete live Travelpayouts brand and destination offer verification](open/2026-09-08-travelpayouts-live-destination-activation.md) | ops | `docs/travel-services.md` |
@@ -37,6 +36,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
+| [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | claude-opus-5 | 2026-09-10T16:59:30Z | `claude/mokaair-privacy-terms-ji8492` |
 | [Configurable catalog review run call limit](open/2026-09-09-configurable-catalog-review-run-call-limit.md) | codex-catalog-call-limit | 2026-09-09T15:54:14Z | `codex/catalog-review-call-limit` |
 
 ## In review
@@ -68,6 +68,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | active work in the same scope |
 | P2 | [Community read metric duplicate observed alongside smoke ECONNRESET](open/2026-09-07-community-read-metric-concurrency.md) | active work in the same scope |
 | P2 | [Preserve force refresh in daily route background jobs](open/2026-09-10-daily-route-force-refresh.md) | active work in the same scope |
+| P2 | [Automated account mail has no Reply-To, so user replies reach nobody](open/2026-09-10-account-mail-reply-to.md) | active work in the same scope |
 
 ## Recently finished
 
