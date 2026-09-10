@@ -1,14 +1,14 @@
 ---
 id: 2026-09-10-seo-robots-sitemap
 title: 公開 robots.txt 與五語系 sitemap
-status: open
+status: review
 priority: P1
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5-seo
+claimed_at: 2026-09-10T17:17:34Z
 created_at: 2026-09-10T16:43:33Z
 completed_at:
-branch:
+branch: claude/seo-optimization-planning-xq1vjl
 depends_on:
   - 2026-09-10-seo-canonical-hreflang
 scope:
@@ -34,26 +34,26 @@ scope:
 
 ## Definition of done
 
-- [ ] production build 下 `/robots.txt` 與 `/sitemap.xml` 都回 200。
-- [ ] sitemap 每一筆都帶五個 `hreflang` 加一個 `x-default`（Google 要求互指，Next 不會自動補自指連結）。
-- [ ] sitemap 裡的每一條路徑都對應到實際存在的 `page.tsx`，不會列出 404。
-- [ ] robots.txt 指向 sitemap 絕對網址。
-- [ ] 掛了 `noindex` 的頁面**沒有**同時被 `Disallow`。
+- [x] production build 下 `/robots.txt` 與 `/sitemap.xml` 都回 200。
+- [x] sitemap 每一筆都帶五個 `hreflang` 加一個 `x-default`（Google 要求互指，Next 不會自動補自指連結）。
+- [x] sitemap 裡的每一條路徑都對應到實際存在的 `page.tsx`，不會列出 404。
+- [x] robots.txt 指向 sitemap 絕對網址。
+- [x] 掛了 `noindex` 的頁面**沒有**同時被 `Disallow`。
 
 ## Steps
 
-- [ ] `apps/web/lib/seo.ts` 已由 `2026-09-10-seo-canonical-hreflang` 建好，這裡沿用它的
+- [x] `apps/web/lib/seo.ts` 已由 `2026-09-10-seo-canonical-hreflang` 建好，這裡沿用它的
       `siteUrl`、`localeUrl()` 與 `HREFLANG_DEFAULT`，不要另外讀一次 `NEXT_PUBLIC_SITE_URL`，
       否則 layout 與 sitemap 有機會對不起來。
-- [ ] `apps/web/app/robots.ts` 回 `MetadataRoute.Robots`。`disallow` 只放機器端點與 token 網址：
+- [x] `apps/web/app/robots.ts` 回 `MetadataRoute.Robots`。`disallow` 只放機器端點與 token 網址：
       `/api/`、`/*/out/`、`/*/share/`、`/*/share-target`、`/*/line/`、`/*/account/confirm`、`/*/admin`。
       因為 `localePrefix: "always"`，沒有不帶語系前綴的形式，pattern 必須寫成 `/*/…`。
-- [ ] `apps/web/app/sitemap.ts` 匯出一份 `SITEMAP_ROUTES` 常數（path + priority + changeFrequency），
+- [x] `apps/web/app/sitemap.ts` 匯出一份 `SITEMAP_ROUTES` 常數（path + priority + changeFrequency），
       再對五個語系展開，每筆帶完整的 `alternates.languages`。
-- [ ] **第一版只列現在就存在且可索引的路由**：`/`、`/hotspots`、`/foods`、`/flights/status`、
+- [x] **第一版只列現在就存在且可索引的路由**：`/`、`/hotspots`、`/foods`、`/flights/status`、
       `/pricing`、`/labs/airlines`，以及 33 筆 `/destinations/{id}/services`。
       後續任務（目的地落地頁、explore、社群內容）各自把自己的路由 append 進 `SITEMAP_ROUTES`。
-- [ ] `app/robots.test.ts`、`app/sitemap.test.ts`。sitemap 測試要包含一個「每條路徑都存在」的守門測試：
+- [x] `app/robots.test.ts`、`app/sitemap.test.ts`。sitemap 測試要包含一個「每條路徑都存在」的守門測試：
       走訪 `app/[locale]/` 確認對應的 `page.tsx` 真的在，這是防止 sitemap 列出 404 的唯一保險。
 
 ## How to verify
@@ -90,3 +90,42 @@ curl -s localhost:3000/sitemap.xml | head -40
 - **測試用 vitest，不要用 Playwright。** `vitest.config.ts` 只排除 `e2e/**`，新的 `*.test.ts` 會自動被收；
   而 CI 的 Playwright spec 清單寫死在 `.github/workflows/ci.yml`，那個檔被
   `2026-09-09-clarify-stay22-module-switch`（review）鎖住，加不進去。
+
+### 實作結果（2026-09-10, claude-opus-5-seo）
+
+- **`robots.ts` 與 `sitemap.ts` 都必須是 `force-dynamic`，這不是可有可無的。**
+  第一版讓它們維持預設的預先產生，實測結果是整份 sitemap 的網址都變成 `http://localhost:3000/…`——
+  因為 `siteUrl` 在 build 期就被求值，而那次 build 沒有帶 `NEXT_PUBLIC_SITE_URL`。
+  `docker-compose.prod.yml` 雖然同時以 build arg（第 168 行，有預設值）與 runtime（第 174 行，
+  用 `:?` 強制必填）提供這個變數，但**只有 runtime 那個是強制的**。也就是說漏帶 build arg 的 build
+  會安靜地產出一份跨網域的 sitemap，而 Google 會整份拒收。改成 per-request 之後實測 195 筆網址
+  全部落在 `https://mokaair.com`，`localhost` 出現 0 次。重新產生這份檔案的成本可以忽略。
+- 診斷時踩到一個坑值得記下來：舊的 `next start` 還佔著 3000 埠，新的啟動失敗但 `curl` 照樣有回應，
+  於是量到的是上一版 build 的輸出。改設定後請確認舊 server 真的死了再驗證。
+- **sitemap 不打 API 這件事後來看是對的。** 這個 route 會在 build 期被預先產生（改成 dynamic 之前），
+  而 `API_INTERNAL_URL` 只有 runtime 才有，CI 的 web job 也沒有後端。33 個 slug 直接取自
+  `components/travel-services/options.ts` 的 `PUBLIC_DESTINATIONS`（唯讀 import，該檔的 scope 屬於
+  review 中的 stay22 任務，本任務沒有修改它）。
+- `sitemap.test.ts` 的「每條路徑都對應到真的 `page.tsx`」守門測試會同時走訪 `app/[locale]` 與
+  `app/(stay22-public)/[locale]` 兩棵樹，並讓 `[dynamic]` 目錄比對字面 segment，
+  所以 `/destinations/tokyo/services` 解析得到。另外加了一個「守門的守門」測試
+  （`/not-a-route` 必須回 false），避免走訪邏輯壞掉之後整組測試變成空轉——
+  這個手法沿用 `metadata.test.ts` 既有的 "a guard on the guard"。
+- `robots.test.ts` 有一條測試專門守「掛了 `noindex` 的頁面不可以同時被 `Disallow`」，
+  刻意排除 `/admin`、`/share`、`/share-target`、`/line`、`/account/confirm` 這幾條兩邊都做的路徑。
+
+### 驗證紀錄
+
+`npm run lint:web`、`npm run typecheck:web`、`npm run build:web` 通過；
+`app/robots.test.ts` 與 `app/sitemap.test.ts` 共 53 個測試通過。build 輸出顯示
+`ƒ /robots.txt` 與 `ƒ /sitemap.xml`（dynamic）。
+
+對 production build 實測：
+
+```
+Sitemap: https://mokaair.com/sitemap.xml
+<loc>https://mokaair.com/en</loc>
+urls: 195   localhost leaks: 0   xhtml:link: 1170
+```
+
+195 = 39 條路由 × 5 語系；1170 = 195 × 6（五語系 + `x-default`）。

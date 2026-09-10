@@ -7,7 +7,7 @@ import { SiteHeader } from "@/components/site-header";
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata" });
-  return { title: t("shareTitle"), description: t("shareDescription"), openGraph: { images: [] }, twitter: { images: [] } };
+  return { title: t("shareTitle"), description: t("shareDescription"), robots: { index: false, follow: false }, openGraph: { images: [] }, twitter: { images: [] } };
 }
 
 export default async function SharePage({
