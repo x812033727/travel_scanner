@@ -18,7 +18,6 @@ scope:
   - apps/web/lib/discovery.server.ts
   - apps/web/lib/discovery.server.test.ts
   - apps/web/components/discovery/explorer.tsx
-  - apps/web/app/[locale]/page.tsx
   - apps/web/app/[locale]/explore/page.tsx
   - apps/web/app/[locale]/explore/collections/page.tsx
 ---

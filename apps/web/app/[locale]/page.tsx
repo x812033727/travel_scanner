@@ -8,15 +8,19 @@ import {
   Soup,
   Sparkles,
 } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { SearchWorkbench } from "@/components/search-workbench";
 import { SiteHeader } from "@/components/site-header";
 import { Link } from "@/i18n/navigation";
 import { citiesForCountry, countryKeys } from "@/lib/destinations";
+import { normalizeLocale } from "@/i18n/routing";
 import { CommunityHero, CommunityHome } from "@/components/community/home";
 import { DiscoveryHomeGate } from "@/components/discovery/explorer";
+import { StructuredData } from "@/components/structured-data";
+import { organization, webSite } from "@/lib/structured-data";
 
 export default async function Home() {
+  const locale = normalizeLocale(await getLocale());
   const t = await getTranslations("search");
   const tc = await getTranslations("search.catalog");
   const benefits = [
@@ -27,6 +31,10 @@ export default async function Home() {
   return (
     <>
       <SiteHeader />
+      {/* Outside the gate on purpose. DiscoveryHomeGate renders a skeleton on the server --
+          useDiscoveryStatus's server snapshot is always `loading` -- so anything inside it is
+          absent from the response body. Sitting here, this reaches a crawler either way. */}
+      <StructuredData data={[organization(), webSite(locale)]} />
       <DiscoveryHomeGate>
       <main className="mx-auto min-h-screen max-w-6xl px-5 pb-20 md:px-8">
         {/* On a phone the first screen is the request form: a short hero, the

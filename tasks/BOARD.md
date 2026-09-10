@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**31 open · 1 in progress · 3 blocked · 14 in review · 200 done**
+**30 open · 1 in progress · 3 blocked · 15 in review · 200 done**
 
 ## Ready to claim
 
@@ -54,6 +54,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | [Seoul Day 2 transport settings and readable route details](open/2026-09-10-seoul-day2-transport-ux.md) | codex-seoul-day2-release | `codex/seoul-day2-transport-ux` |
 | [校正私人頁與功能關閉頁的索引指令](open/2026-09-10-seo-index-directives.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
 | [公開 robots.txt 與五語系 sitemap](open/2026-09-10-seo-robots-sitemap.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
+| [JSON-LD 結構化資料基礎與列表頁標記](open/2026-09-10-seo-structured-data.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
 | [Archive completed catalog and hotel review evidence](open/2026-09-09-review-evidence-archive.md) | codex-review-archive | `codex/review-evidence-archive-20260909` |
 | [Compact discovery cards and source-linked details](open/2026-09-09-discovery-card-details.md) | codex-discovery-card-details | `codex/discovery-card-details-20260909` |
 | [Simplify hotel booking platform and source copy](open/2026-09-10-simplify-hotel-booking-copy.md) | codex-hotel-copy | `codex/hotel-booking-copy` |
@@ -71,7 +72,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [Mokaair community responsive web and five-language experience](open/2026-09-07-mokaair-community-web.md) | active work in the same scope |
 | P1 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | active work in the same scope |
 | P1 | [目的地索引頁與城市指南落地頁](open/2026-09-10-seo-destination-landing-pages.md) | depends on 2026-09-10-seo-canonical-hreflang, 2026-09-10-seo-robots-sitemap, 2026-09-10-seo-structured-data |
-| P1 | [JSON-LD 結構化資料基礎與列表頁標記](open/2026-09-10-seo-structured-data.md) | depends on 2026-09-10-seo-canonical-hreflang |
 | P1 | [首頁與 explore 要在伺服器端渲染出真正的內容](open/2026-09-10-seo-server-render-home-and-explore.md) | depends on 2026-09-09-frontend-flow-discovery-web, 2026-09-09-discovery-card-details, 2026-09-10-seo-structured-data |
 | P2 | [Community read metric duplicate observed alongside smoke ECONNRESET](open/2026-09-07-community-read-metric-concurrency.md) | active work in the same scope |
 | P2 | [Preserve force refresh in daily route background jobs](open/2026-09-10-daily-route-force-refresh.md) | active work in the same scope |
