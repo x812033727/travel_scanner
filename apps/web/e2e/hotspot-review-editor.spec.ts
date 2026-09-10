@@ -81,7 +81,7 @@ for (const colorScheme of ["light", "dark"] as const) {
     await page.getByRole("checkbox", { name: `選取 ${candidate.name}`, exact: true }).check();
     await expect(page.getByLabel("本次審核理由與來源", { exact: true })).toHaveValue("");
     await page.getByRole("button", { name: "核准", exact: true }).click();
-    await expect(page.getByRole("status")).toContainText("已更新 1 筆景點候選");
+    await expect(page.getByRole("status").filter({ hasText: "已更新 1 筆景點候選" })).toBeVisible();
     expect(approvals).toBe(1);
     await page.reload();
     await expect(page.getByRole("cell", { name: /approved/ })).toBeVisible();
