@@ -262,12 +262,18 @@ class RecordingProvider:
 
 
 @pytest.mark.asyncio
-async def test_korean_route_matrix_uses_naver_drive_and_external_navigation_for_other_modes(
-) -> None:
+async def test_korean_route_matrix_uses_naver_drive_google_transit_and_external_walk() -> None:
     redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
     naver = RecordingProvider("naver", None)
     google = RecordingProvider("google", None)
-    service = RouteService(redis, Settings(route_cache_ttl_seconds=300), google=google, naver=naver)
+    service = RouteService(
+        redis,
+        Settings(
+            route_cache_ttl_seconds=300, odsay_api_key=None, google_maps_api_key="fixture-only"
+        ),
+        google=google,
+        naver=naver,
+    )
     origin = RoutePoint(item_id=uuid4(), name="A", latitude=37.57, longitude=126.97)
     destination = RoutePoint(item_id=uuid4(), name="B", latitude=37.58, longitude=126.98)
 
@@ -276,11 +282,16 @@ async def test_korean_route_matrix_uses_naver_drive_and_external_navigation_for_
     ) is None
     assert naver.calls == ["drive"]
     assert google.calls == []
+    assert await service.compute(
+        origin, destination, None, "FASTEST", region_code="KR", travel_mode="walk"
+    ) is None
+    assert naver.calls == ["drive"]
+    assert google.calls == []
     await service.compute(
         origin, destination, None, "FASTEST", region_code="KR", travel_mode="transit"
     )
     assert naver.calls == ["drive"]
-    assert google.calls == []
+    assert google.calls == ["transit"]
     await redis.aclose()
 
 
