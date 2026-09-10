@@ -1,13 +1,13 @@
 ---
 id: 2026-09-09-preserve-clickout-referrer-policy
 title: Preserve no-referrer on external clickout responses
-status: review
+status: done
 priority: P1
 area: web
 owner: codex-clickout-headers
 claimed_at: 2026-09-09T13:14:19Z
 created_at: 2026-09-09T13:11:39Z
-completed_at:
+completed_at: 2026-09-10T00:47:25Z
 branch: codex/stay22-modular-toggle
 depends_on: []
 scope:

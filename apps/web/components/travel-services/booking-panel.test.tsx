@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
-import { BookingPanel, type BookingOption } from "./booking-panel";
+import { BookingPanel, SourceCredits, type BookingOption } from "./booking-panel";
 import type { Product } from "./catalog";
 import { Stay22BookingContextProvider } from "@/lib/stay22-booking-context";
 import { stay22AllezCopy } from "@/lib/stay22-allez-copy";
@@ -35,7 +35,7 @@ describe("direct hotel booking panel", () => {
     expect(form().getAttribute("target")).toBe("_blank");
     expect(form().getAttribute("rel")).toBe("noopener");
     expect([...new FormData(form()).keys()]).toEqual([]);
-    expect(screen.getAllByText(copy.viaStay22)).toHaveLength(1);
+    expect(screen.queryByText("透過 Stay22 合作連結")).toBeNull();
     expect(screen.getByText(copy.disclosure)).toBeTruthy();
     expect(document.querySelector("iframe, a[href*='stay22.com']")).toBeNull();
     expect(fetch).not.toHaveBeenCalled();
@@ -96,5 +96,40 @@ describe("direct hotel booking panel", () => {
     expect(quoteDetails?.open).toBe(false);
     expect(screen.getByText(copy.quotesNote)).toBeTruthy();
     expect(button().closest("details")).toBeNull();
+  });
+});
+
+describe("hotel source credits", () => {
+  it("uses the concise source label and preserves source and license links without rendering editorial changes", () => {
+    const changes = "Mokaair 將公開資料整理為飯店介紹，補充地址並調整格式；這是保留於來源資料的整理備註。";
+    const credit = Object.freeze({
+      title: "Reviewed hotel source", publisher: "Fixture publisher",
+      url: "https://source.example.test/hotel", license_name: "Fixture license",
+      license_url: "https://source.example.test/license", changes,
+    });
+    render(<SourceCredits credits={[credit]} />);
+    const summary = screen.getByText("資料來源", { exact: true });
+    expect(summary.tagName).toBe("SUMMARY");
+    expect(screen.queryByText("資料來源與授權")).toBeNull();
+    fireEvent.click(summary);
+    expect(summary.closest("details")?.open).toBe(true);
+    const source = screen.getByRole("link", { name: `${credit.title} · 另開新分頁` });
+    const license = screen.getByRole("link", { name: `${credit.license_name} · 另開新分頁` });
+    expect(source.getAttribute("href")).toBe(credit.url);
+    expect(license.getAttribute("href")).toBe(credit.license_url);
+    for (const link of [source, license]) {
+      expect(link.getAttribute("target")).toBe("_blank");
+      expect(link.getAttribute("rel")).toBe("noopener noreferrer");
+    }
+    expect(screen.getByText(credit.publisher, { exact: false })).toBeTruthy();
+    expect(screen.queryByText(changes)).toBeNull();
+    expect(credit.changes).toBe(changes);
+  });
+
+  it("does not add an empty source disclosure when source data is absent", () => {
+    const { container, rerender } = render(<SourceCredits />);
+    expect(container.innerHTML).toBe("");
+    rerender(<SourceCredits credits={[]} />);
+    expect(container.innerHTML).toBe("");
   });
 });

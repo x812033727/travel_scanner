@@ -1,11 +1,11 @@
 ---
 id: 2026-09-07-merchant-style-discovery
 title: 網美與文青店家風格篩選、審核及首批來源資料
-status: review
+status: open
 priority: P1
 area: api
-owner: codex
-claimed_at: 2026-09-08T06:24:09Z
+owner:
+claimed_at:
 created_at: 2026-09-07T23:14:18Z
 completed_at:
 branch: codex/merchant-style-batch-08

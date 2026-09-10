@@ -1,4 +1,4 @@
-import { expect, test, type BrowserContext, type Page } from "@playwright/test";
+import { expect, test, type BrowserContext, type Locator, type Page } from "@playwright/test";
 import type { Stay22AllezCopy } from "../lib/stay22-allez-copy";
 import { getDiscoveryCopy } from "../lib/discovery-copy";
 import { existsSync, readFileSync } from "node:fs";
@@ -96,9 +96,14 @@ test("production HTTP preserves clickout policies without following external red
   }
 });
 
+const sourceCredit = {
+  title: "Reviewed hotel source", publisher: "Fixture publisher", url: "https://source.example.test/hotel",
+  license_name: "Fixture license", license_url: "https://source.example.test/license",
+  changes: "Mokaair 將公開資料整理為飯店介紹，補充地址並調整格式；這是保留於來源資料的整理備註。",
+};
 const product = {
   id: "10000000-0000-4000-8000-000000000001", kind: "hotel", destination_id: "tokyo", title: "Reviewed Tokyo Hotel", source_url: "https://hotel.example.test", distance_km: 0.8,
-  reason: "center_distance", facts: { country_codes: ["JP"], languages: [], facilities: [], tethering: null, reference_price: null, currency: null }, offers: [],
+  reason: "center_distance", facts: { country_codes: ["JP"], languages: [], facilities: [], tethering: null, reference_price: null, currency: null, source_credits: [sourceCredit] }, offers: [],
   booking_options: [
     { id: bookingOptionId, provider: "booking", name: "Booking.com", mode: "affiliate", affiliate_channel: "stay22", quote_status: "not_configured" },
     { id: "20000000-0000-4000-8000-000000000002", provider: "agoda", name: "Agoda", mode: "affiliate", affiliate_channel: "existing", quote_status: "not_configured" },
@@ -118,6 +123,28 @@ const discoveryHotel = {
   detail: { hotel: product, guides: [], merchants: [] },
 };
 
+async function expectSimplifiedBookingCopy(panel: Locator) {
+  await expect(panel.getByText("透過 Stay22 合作連結", { exact: true })).toHaveCount(0);
+  await expect(panel.getByText(localizedCopy.disclosure, { exact: true })).toBeVisible();
+  await expect(panel.getByText("資料來源與授權", { exact: true })).toHaveCount(0);
+  const summary = panel.locator("summary").filter({ hasText: /^資料來源$/ });
+  await expect(summary).toHaveText("資料來源");
+  await summary.click();
+  const source = panel.getByRole("link", { name: `${sourceCredit.title} · ${travelServicesCopy.newTab}`, exact: true });
+  const license = panel.getByRole("link", { name: `${sourceCredit.license_name} · ${travelServicesCopy.newTab}`, exact: true });
+  await expect(source).toBeVisible();
+  await expect(source).toHaveAttribute("href", sourceCredit.url);
+  await expect(license).toBeVisible();
+  await expect(license).toHaveAttribute("href", sourceCredit.license_url);
+  for (const link of [source, license]) {
+    await expect(link).toHaveAttribute("target", "_blank");
+    await expect(link).toHaveAttribute("rel", "noopener noreferrer");
+  }
+  await expect(panel.getByText(sourceCredit.publisher, { exact: false })).toBeVisible();
+  // Verify absent DOM text, not just content hidden by the collapsed disclosure.
+  await expect(panel.getByText(sourceCredit.changes, { exact: true })).toHaveCount(0);
+}
+
 async function openDiscoveryBookingPanel(page: Page) {
   await page.goto("/zh-TW/explore?destination=tokyo&category=hotels");
   await page.locator(`article[id="${discoveryHotel.id}"]`).getByRole("link", { name: product.title, exact: true }).click();
@@ -126,6 +153,7 @@ async function openDiscoveryBookingPanel(page: Page) {
   await detail.getByRole("button", { name: travelServicesCopy.platforms, exact: true }).click();
   const panel = page.getByRole("dialog", { name: product.title, exact: true });
   await expect(panel).toBeVisible();
+  await expectSimplifiedBookingCopy(panel);
   return panel;
 }
 
@@ -214,7 +242,7 @@ for (const entry of ["destination", "nearby"] as const) {
     await page.getByRole("button", { name: travelServicesCopy.platforms, exact: true }).click();
     const panel = page.getByRole("dialog", { name: product.title });
     await expect(panel).toBeVisible();
-    await expect(panel.getByText(copy.viaStay22)).toHaveCount(2);
+    await expectSimplifiedBookingCopy(panel);
     expect(calls.external).toEqual([]);
     expect(calls.quotes).toEqual([]);
     await expect(page.locator("iframe")).toHaveCount(0);
@@ -305,6 +333,7 @@ test("trip lodging shows the reviewed catalog before its opt-in map and sends un
   await expect(map).not.toHaveAttribute("open");
   await catalog.getByRole("button", { name: travelServicesCopy.platforms, exact: true }).click();
   const panel = page.getByRole("dialog", { name: product.title });
+  await expectSimplifiedBookingCopy(panel);
   await expect(panel.getByLabel(copy.checkOut, { exact: true })).toHaveValue(bookingContext.check_out);
   await expect(panel.getByLabel(copy.adults, { exact: true })).toHaveValue("3");
   await expect(panel.getByText("原設定：2 間房")).toBeVisible();

@@ -59,7 +59,6 @@ export function SourceCredits({ credits }: { credits?: SourceCredit[] }) {
                 {credit.license_name}
               </a>
             </p>
-            <p>{credit.changes}</p>
           </li>
         ))}
       </ul>
@@ -245,7 +244,6 @@ export function BookingPanel({
                     <span className="text-sm text-[var(--muted)]">
                       {stay22AllezText(copy.openPlatform, { platform: name })}
                     </span>
-                    {option.affiliate_channel === "stay22" && <span className="mt-1 block text-xs font-semibold text-[var(--teal)]">{copy.viaStay22}</span>}
                   </span>
                   <ExternalLink size={18} className="shrink-0" />
                 </button>
