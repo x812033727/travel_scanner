@@ -1,7 +1,7 @@
 ---
 id: 2026-09-06-legal-content-from-owner
 title: 隱私權政策、服務條款與聯絡方式的內容要由擁有者提供
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: claude-opus-5
