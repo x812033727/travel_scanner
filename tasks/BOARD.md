@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**23 open · 2 in progress · 3 blocked · 13 in review · 195 done**
+**23 open · 1 in progress · 3 blocked · 14 in review · 195 done**
 
 ## Ready to claim
 
@@ -35,7 +35,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
 | [Configurable catalog review run call limit](open/2026-09-09-configurable-catalog-review-run-call-limit.md) | codex-catalog-call-limit | 2026-09-09T15:54:14Z | `codex/catalog-review-call-limit` |
-| [Complete hotspot review identity and rationale editor](open/2026-09-10-complete-hotspot-review-identity-and-rationale.md) | codex-hotspot-review-editor | 2026-09-10T01:48:05Z | `codex/hotspot-review-editor` |
 
 ## In review
 
@@ -50,6 +49,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | [Add privacy scoped Stay22 script backend](open/2026-09-09-add-privacy-scoped-stay22-script-backend.md) | codex-stay22-backend | `codex/stay22-modular-toggle` |
 | [Isolate public Stay22 script document and hotel links](open/2026-09-09-isolate-public-stay22-script.md) | codex-stay22-script-ui | `codex/stay22-modular-toggle` |
 | [Verify isolated Stay22 Script public browser flow](open/2026-09-09-verify-stay22-script-browser.md) | codex-stay22-script-e2e | `codex/stay22-modular-toggle` |
+| [Complete hotspot review identity and rationale editor](open/2026-09-10-complete-hotspot-review-identity-and-rationale.md) | codex-hotspot-review-editor | `codex/hotspot-review-editor` |
 | [Archive completed catalog and hotel review evidence](open/2026-09-09-review-evidence-archive.md) | codex-review-archive | `codex/review-evidence-archive-20260909` |
 | [Compact discovery cards and source-linked details](open/2026-09-09-discovery-card-details.md) | codex-discovery-card-details | `codex/discovery-card-details-20260909` |
 | [Simplify hotel booking platform and source copy](open/2026-09-10-simplify-hotel-booking-copy.md) | codex-hotel-copy | `codex/hotel-booking-copy` |

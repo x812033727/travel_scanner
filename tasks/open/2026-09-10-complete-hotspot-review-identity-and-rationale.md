@@ -1,7 +1,7 @@
 ---
 id: 2026-09-10-complete-hotspot-review-identity-and-rationale
 title: Complete hotspot review identity and rationale editor
-status: in-progress
+status: review
 priority: P1
 area: web
 owner: codex-hotspot-review-editor
