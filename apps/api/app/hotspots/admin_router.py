@@ -7,11 +7,12 @@ from typing import Annotated, Any, Literal, cast
 from uuid import UUID, uuid4
 
 from fastapi import APIRouter, Depends, Header, Query
-from pydantic import BaseModel, Field, model_validator
+from pydantic import AwareDatetime, BaseModel, Field, model_validator
 from redis import Redis as SyncRedis
 from redis.asyncio import Redis
 from rq import Queue
 from sqlalchemy import func, or_, select
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.listing import (
@@ -206,6 +207,15 @@ class HotspotReviewRequest(BaseModel):
     ids: list[UUID] = Field(min_length=1, max_length=100)
     action: Literal["approve", "reject", "disable", "update"]
     reason: str | None = Field(default=None, max_length=500)
+    category: (
+        Literal[
+            "culture", "food", "nature", "beach", "family", "viewpoint", "shopping", "nightlife"
+        ]
+        | None
+    ) = None
+    wikidata_item_id: str | None = Field(default=None, pattern=r"^Q[1-9][0-9]*$", max_length=32)
+    expected_updated_at: AwareDatetime | None = None
+    expected_updated_ats: dict[UUID, AwareDatetime] | None = None
     is_deep_travel: bool | None = None
     depth_kind: Literal["urban_local", "day_trip"] | None = None
     locality_score: int | None = Field(default=None, ge=0, le=100)
@@ -233,6 +243,21 @@ class HotspotReviewRequest(BaseModel):
 
     @model_validator(mode="after")
     def validate_depth(self) -> HotspotReviewRequest:
+        identity_fields = {"category", "wikidata_item_id"} & self.model_fields_set
+        if identity_fields and (self.action != "update" or len(set(self.ids)) != 1):
+            raise ValueError("分類與 Wikidata 識別只能於單筆編輯時修改")
+        if "category" in self.model_fields_set and self.category is None:
+            raise ValueError("分類不可清除")
+        if "expected_updated_at" in self.model_fields_set and (
+            self.expected_updated_at is None or self.action != "update" or len(set(self.ids)) != 1
+        ):
+            raise ValueError("單筆編輯必須提供有效的資料版本時間")
+        if "expected_updated_ats" in self.model_fields_set and (
+            self.expected_updated_ats is None
+            or self.action == "update"
+            or set(self.expected_updated_ats) != set(self.ids)
+        ):
+            raise ValueError("審核版本時間必須完整對應本次所有景點")
         if (self.latitude is None) != (self.longitude is None):
             raise ValueError("緯度與經度必須同時提供")
         if self.is_deep_travel:
@@ -551,6 +576,7 @@ async def list_hotspot_candidates(
                 "origin": hotspot.origin,
                 "status": hotspot.review_status,
                 "reason": hotspot.review_reason,
+                "updated_at": hotspot.updated_at.isoformat(),
                 "distance_km": float(hotspot.discovery_distance_km)
                 if hotspot.discovery_distance_km is not None
                 else None,
@@ -604,11 +630,62 @@ async def review_hotspot_candidates(
 ) -> dict[str, int | str]:
     rows = list(
         (
-            await session.scalars(select(TravelHotspot).where(TravelHotspot.id.in_(payload.ids)))
+            await session.scalars(
+                select(TravelHotspot)
+                .where(TravelHotspot.id.in_(payload.ids))
+                .order_by(TravelHotspot.id)
+                .with_for_update()
+                .execution_options(populate_existing=True)
+            )
         ).all()
     )
     if len(rows) != len(set(payload.ids)):
         raise AppError(404, "hotspot_not_found", "部分景點候選不存在")
+    # Check every locked row before changing even the first one. Refreshing the
+    # identity map above is essential if this session previously loaded a row.
+    for hotspot in rows:
+        expected = (
+            payload.expected_updated_at
+            if payload.expected_updated_at is not None
+            else (payload.expected_updated_ats or {}).get(hotspot.id)
+        )
+        actual = hotspot.updated_at
+        if actual.tzinfo is None:
+            actual = actual.replace(tzinfo=UTC)
+        if expected is not None and actual != expected:
+            raise AppError(409, "hotspot_review_conflict", "景點已由其他操作更新，請重新載入後審核")
+    if "wikidata_item_id" in payload.model_fields_set:
+        if (rows[0].wikidata_item_id or "").strip():
+            raise AppError(
+                409, "hotspot_wikidata_identity_locked", "既有 Wikidata 識別不可替換或清除"
+            )
+        if payload.wikidata_item_id is None:
+            raise AppError(
+                422, "hotspot_wikidata_identity_required", "請提供要補入的 Wikidata 識別"
+            )
+        duplicate = await session.scalar(
+            select(TravelHotspot.id).where(
+                TravelHotspot.wikidata_item_id == payload.wikidata_item_id,
+                TravelHotspot.id.not_in(payload.ids),
+            )
+        )
+        if duplicate:
+            raise AppError(409, "hotspot_wikidata_identity_exists", "Wikidata 識別已由其他景點使用")
+    if (
+        (payload.category is not None and payload.category != rows[0].category)
+        or "wikidata_item_id" in payload.model_fields_set
+    ) and not (payload.reason or "").strip():
+        raise AppError(
+            422, "hotspot_review_reason_required", "分類或識別修正必須提供來源與審核理由"
+        )
+    identity_before = {
+        hotspot.id: {
+            "category": hotspot.category,
+            "wikidata_item_id": hotspot.wikidata_item_id,
+            "reason": hotspot.review_reason,
+        }
+        for hotspot in rows
+    }
     status = {
         "approve": "approved",
         "reject": "rejected",
@@ -695,7 +772,12 @@ async def review_hotspot_candidates(
             )
         if payload.action != "update":
             hotspot.review_status = status
+        if payload.action != "update" or "reason" in payload.model_fields_set:
             hotspot.review_reason = payload.reason
+        if payload.category is not None:
+            hotspot.category = payload.category
+        if "wikidata_item_id" in payload.model_fields_set:
+            hotspot.wikidata_item_id = payload.wikidata_item_id
         hotspot.reviewed_at = now
         hotspot.reviewed_by_user_id = user.id
         if target_destination:
@@ -821,13 +903,35 @@ async def review_hotspot_candidates(
                 "coordinate_source_changed": bool(
                     {"coordinate_source_type", "coordinate_source_url"} & payload.model_fields_set
                 ),
+                "identity_changes": [
+                    {
+                        "id": str(hotspot.id),
+                        "before": identity_before[hotspot.id],
+                        "after": {
+                            "category": hotspot.category,
+                            "wikidata_item_id": hotspot.wikidata_item_id,
+                            "reason": hotspot.review_reason,
+                        },
+                    }
+                    for hotspot in rows
+                ],
                 "depth_score": float(rows[0].depth_score)
                 if rows[0].depth_score is not None
                 else None,
             },
         )
     )
-    await session.commit()
+    try:
+        await session.commit()
+    except IntegrityError as exc:
+        await session.rollback()
+        # Two different rows can race to fill the same previously unused QID.
+        # The unique index is the final arbiter; do not expose database details.
+        if "wikidata_item_id" in payload.model_fields_set and ("wikidata_item_id" in str(exc.orig)):
+            raise AppError(
+                409, "hotspot_wikidata_identity_exists", "Wikidata 識別已由其他景點使用"
+            ) from exc
+        raise
     return {"updated": len(rows), "status": status}
 
 
