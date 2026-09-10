@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from datetime import UTC, datetime
 from typing import Annotated, Any, Literal
 from uuid import UUID
 
@@ -16,6 +17,7 @@ from app.hotspots.maps import build_map_links
 from app.hotspots.service import load_hotspot_names
 from app.i18n import Locale, current_locale
 from app.localized_names import resolve_localized_name
+from app.locations.map_identity import catalog_map_identities
 from app.models import (
     FoodArea,
     FoodCategory,
@@ -34,6 +36,7 @@ from app.models import (
 )
 from app.problems import AppError
 from app.saved.api import router as flow_router
+from app.travel_services.service import public_product
 
 router = APIRouter(prefix="/saved-items", tags=["saved items"])
 router.include_router(flow_router)
@@ -147,6 +150,7 @@ async def list_saved_items(
                         hotspot_names.get(hotspot.id), locale, fallback=hotspot.name
                     ),
                     "subtitle": f"{hotspot.city_name} · {hotspot.category}",
+                    "map_identities": catalog_map_identities(hotspot),
                     "map_links": build_map_links(
                         name=hotspot.name,
                         local_name=hotspot.metadata_json.get("local_name"),
@@ -157,6 +161,7 @@ async def list_saved_items(
                         google_place_id=hotspot.google_place_id,
                         naver_map_url=hotspot.naver_map_url,
                         map_match_status=hotspot.map_match_status,
+                        map_identities=catalog_map_identities(hotspot),
                     ),
                     "saved_at": favorite.created_at,
                 }
@@ -237,6 +242,7 @@ async def list_saved_items(
                         merchant.names_json, locale, fallback=merchant.name
                     ),
                     "subtitle": f"{city_name} · {detail}" if detail else city_name,
+                    "map_identities": catalog_map_identities(merchant),
                     "map_links": build_map_links(
                         name=merchant.name,
                         local_name=merchant.local_name,
@@ -247,6 +253,7 @@ async def list_saved_items(
                         google_place_id=merchant.google_place_id,
                         naver_map_url=merchant.naver_map_url,
                         map_match_status=merchant.map_match_status,
+                        map_identities=catalog_map_identities(merchant),
                     ),
                     "saved_at": favorite.created_at,
                 }
@@ -297,7 +304,10 @@ async def list_saved_items(
                     "id": str(product.id),
                     "title": product.names_json.get(locale) or product.title,
                     "subtitle": product.destination_id,
-                    "map_links": [],
+                    "map_links": public_product(product, locale, datetime.now(UTC))["map_links"]
+                    if product.status == "approved" else [],
+                    "map_identities": catalog_map_identities(product)
+                    if product.status == "approved" else {},
                     "href": f"/destinations/{product.destination_id}/services?product={product.id}",
                     "saved_at": favorite.created_at,
                 }

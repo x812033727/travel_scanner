@@ -1726,6 +1726,112 @@ describe("trip editor route requests", () => {
   });
 });
 
+describe("trip editor map identity replacements", () => {
+  const map_identities = {
+    naver_maps: { provider: "naver_maps", place_id: "110000001", map_url: "https://map.naver.com/p/entry/place/110000001", status: "verified" },
+    google_places: { provider: "google_places", place_id: "old-google-place", map_url: "https://www.google.com/maps/search/?api=1&query=Seoul&query_place_id=old-google-place", status: "verified" },
+  };
+  const location_map_links = [
+    { provider: "naver", url: map_identities.naver_maps.map_url, position_only: false },
+    { provider: "google", url: map_identities.google_places.map_url, position_only: false },
+  ];
+  const original = { ...trip.items[0], title: "景福宮", location_name: "景福宮", location_source: "confirmed",
+    location_provider: "naver_local", provider_place_id: "110000001", latitude: 37.5796, longitude: 126.977,
+    map_identities, location_map_links, duration_minutes: 90,
+    data: { map_identities, map_links: location_map_links, google_maps_url: map_identities.google_places.map_url,
+      naver_maps_url: map_identities.naver_maps.map_url, place_provider: "naver_local", needs_place_confirmation: false } };
+  const koreanTrip = { ...trip, name: "首爾測試", destination_country_code: "KR", items: [original] };
+  const savedItem = (mock: ReturnType<typeof vi.fn>) => {
+    const write = mock.mock.calls.find(([, init]) => init?.method === "PUT");
+    expect(write).toBeTruthy();
+    return JSON.parse(String(write![1].body)).items[0];
+  };
+
+  it("preserves map identities and links for ordinary label and duration edits", async () => {
+    const fetchMock = vi.fn(async (_url: string, init?: RequestInit) => response(init?.method === "PUT"
+      ? { ...koreanTrip, version: 2, items: JSON.parse(String(init.body)).items } : koreanTrip));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+    const editor = await openStopEditor(original.title);
+    fireEvent.change(within(editor).getByLabelText("安排名稱"), { target: { value: "早上遊景福宮" } });
+    fireEvent.change(within(editor).getByLabelText("停留時間"), { target: { value: "120" } });
+    expect(within(editor).getByRole("link", { name: "NAVER Maps" }).getAttribute("href")).toBe(location_map_links[0].url);
+    await saveEditor(editor);
+    expect(savedItem(fetchMock)).toMatchObject({ ...original, title: "早上遊景福宮", duration_minutes: 120 });
+  });
+
+  it.each(["typed", "selected"])("clears stale map identities for a %s replacement before later label edits", async (replacement) => {
+    const current = replacement === "selected" ? { ...koreanTrip, items: [{ ...original,
+      location_source: null, data: { ...original.data, needs_place_confirmation: true } }] } : koreanTrip;
+    const nextPlace = { provider: "google_places", place_id: "new-google-place", name: "昌德宮", address: "首爾鐘路區昌德宮",
+      latitude: 37.5826, longitude: 126.991, google_maps_url: "https://www.google.com/maps/search/?api=1&query=Changdeokgung" };
+    const fetchMock = vi.fn(async (url: string, init?: RequestInit) => {
+      if (url.includes("/places/autocomplete?")) return response([nextPlace]);
+      if (url.includes("/places/google_places/new-google-place?")) return response(nextPlace);
+      return response(init?.method === "PUT" ? { ...current, version: 2, items: JSON.parse(String(init.body)).items } : current);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+    const editor = await openStopEditor(original.title);
+    expect(within(editor).getByRole("link", { name: "NAVER Maps" })).toBeTruthy();
+    if (replacement === "typed") {
+      fireEvent.change(within(editor).getByLabelText("地點"), { target: { value: "另一個地點" } });
+    } else {
+      fireEvent.click(await within(editor).findByRole("option", { name: /昌德宮/ }));
+      await waitFor(() => expect((within(editor).getByLabelText("地點") as HTMLInputElement).value).toBe(nextPlace.address));
+    }
+    expect(within(editor).queryByRole("link", { name: "NAVER Maps" })).toBeNull();
+    expect(within(editor).queryByRole("link", { name: "Google Maps" })).toBeNull();
+    fireEvent.change(within(editor).getByLabelText("安排名稱"), { target: { value: "新地點的自訂名稱" } });
+    fireEvent.change(within(editor).getByLabelText("停留時間"), { target: { value: "120" } });
+    await saveEditor(editor);
+    const saved = savedItem(fetchMock);
+    expect(saved).toMatchObject({ title: "新地點的自訂名稱", map_identities: {}, location_map_links: [],
+      provider_place_id: replacement === "selected" ? nextPlace.place_id : null });
+    expect(saved.data).not.toHaveProperty("map_identities");
+    expect(saved.data).not.toHaveProperty("map_links");
+    expect(saved.data).not.toHaveProperty("naver_maps_url");
+    expect(saved.data.google_maps_url).toBe(replacement === "selected" ? nextPlace.google_maps_url : undefined);
+    expect(fetchMock.mock.calls.some(([url]) => url.includes("/map-identities") || url.includes("/routes/"))).toBe(false);
+  });
+
+  it.each([false, true])("replaces a meal without inheriting its old map identities (new identities: %s)", async (hasNewIdentities) => {
+    const meal = { ...original, item_type: "meal", system_role: "lunch", title: "原本餐廳", fixed_time: true,
+      start_time: "2026-11-11T12:00:00", locked: true, notes: "保留的飲食備註" };
+    const current = { ...koreanTrip, items: [meal] };
+    const newIdentities = { naver_maps: { ...map_identities.naver_maps, place_id: "110000002", map_url: "https://map.naver.com/p/entry/place/110000002" } };
+    const newLinks = [{ provider: "naver", url: newIdentities.naver_maps.map_url, position_only: false }];
+    const selected = { ...trip.items[0], title: "新的餐廳", location_name: "新的餐廳地址", latitude: 37.58,
+      longitude: 126.98, provider_place_id: "110000002", location_source: "food_merchant_catalog", location_provider: "naver_local",
+      ...(hasNewIdentities ? { map_identities: newIdentities, location_map_links: newLinks } : {}),
+      data: { merchant_id: "new-merchant", needs_place_confirmation: false,
+        ...(hasNewIdentities ? { map_identities: newIdentities } : {}) } };
+    const fetchMock = vi.fn(async (url: string, init?: RequestInit) => {
+      if (url.includes("/place-options?")) return response({ items: [{ key: "merchant:new", id: "new", kind: "merchant",
+        title: selected.title, subtitle: "首爾", distance_km: 1, is_saved: false, item: selected }], next_offset: null, context: "nearby" });
+      return response(init?.method === "PUT" ? { ...current, version: 2, items: JSON.parse(String(init.body)).items } : current);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+    await screen.findByRole("heading", { name: current.name });
+    fireEvent.click(within(openOptionalStop(meal.title)).getByRole("button", { name: "更換餐廳" }));
+    let editor = await screen.findByRole("dialog", { name: "編輯午餐" });
+    fireEvent.click(within(editor).getByRole("button", { name: "從收藏或附近餐廳挑選" }));
+    fireEvent.click(await screen.findByRole("button", { name: "選擇 新的餐廳" }));
+    editor = await screen.findByRole("dialog", { name: "編輯午餐" });
+    fireEvent.change(within(editor).getByLabelText("餐廳名稱"), { target: { value: "新的餐廳別名" } });
+    fireEvent.click(within(editor).getByRole("button", { name: "儲存修改" }));
+    await waitFor(() => expect(screen.queryByRole("dialog", { name: "編輯午餐" })).toBeNull());
+    const saved = savedItem(fetchMock);
+    expect(saved).toMatchObject({ title: "新的餐廳別名", notes: meal.notes, fixed_time: true, locked: true,
+      map_identities: hasNewIdentities ? newIdentities : {}, location_map_links: hasNewIdentities ? newLinks : [] });
+    expect(saved.data.map_identities).toEqual(hasNewIdentities ? newIdentities : undefined);
+    expect(saved.data).not.toHaveProperty("google_maps_url");
+    expect(saved.data).not.toHaveProperty("naver_maps_url");
+    expect(saved.data).not.toHaveProperty("map_links");
+  });
+});
+
 describe("trip editor explicit drafts", () => {
   it.each([undefined, "forest", "ocean", "sunset", "lavender"])("uses site palette by default without replacing saved custom palette %s", async (theme) => {
     if (theme) window.localStorage.setItem("travel-planner-theme", theme);

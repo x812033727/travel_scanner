@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import type { RouteSegment, TripItem } from "@/lib/trip-types";
 import { ItineraryTimeline } from "./itinerary-timeline";
 
@@ -35,6 +35,48 @@ const directRoute: RouteSegment = {
 };
 
 describe("readonly itinerary timeline", () => {
+  it("lets share recipients open both map identities and a clearly labelled position reference without editing", () => {
+    const fetcher = vi.fn();
+    vi.stubGlobal("fetch", fetcher);
+    const items = [item("palace", "景福宮", 0, {
+      location_map_links: [
+        { provider: "naver", url: "https://map.naver.com/p/entry/place/11571707" },
+        { provider: "google", url: "https://www.google.com/maps/search/?api=1&query=37.5796,126.977", position_only: true },
+      ],
+    })];
+    render(<ItineraryTimeline items={items} timezone="Asia/Seoul" />);
+    const naver = screen.getByRole("link", { name: "NAVER Maps: 景福宮" });
+    const google = screen.getByRole("link", { name: "Google Maps · 位置參考: 景福宮" });
+    expect(naver.getAttribute("href")).toContain("/entry/place/11571707");
+    expect(google.getAttribute("href")).toContain("query=37.5796,126.977");
+    expect(google.getAttribute("target")).toBe("_blank");
+    expect(screen.queryByRole("button")).toBeNull();
+    expect(screen.queryByRole("textbox")).toBeNull();
+    expect(fetcher).not.toHaveBeenCalled();
+    vi.unstubAllGlobals();
+  });
+
+  it("uses only verified legacy identities and rejects unsafe or mismatched map hosts", () => {
+    const items = [item("palace", "景福宮", 0, { map_identities: {
+      naver_maps: { provider: "naver_maps", place_id: "11571707", map_url: "https://map.naver.com/p/entry/place/11571707", status: "verified" },
+      google_places: { provider: "google_places", place_id: "ChIJ-pending", map_url: "https://www.google.com/maps/search/?api=1&query_place_id=ChIJ-pending&query=place", status: "pending" },
+    } }), item("unsafe", "Unsafe", 1, { location_map_links: [
+      { provider: "google", url: "javascript:alert(1)" },
+      { provider: "naver", url: "https://attacker.example/naver" },
+    ] })];
+    render(<ItineraryTimeline items={items} />);
+    expect(screen.getAllByRole("link")).toHaveLength(1);
+    expect(screen.getByRole("link", { name: "NAVER Maps: 景福宮" })).toBeTruthy();
+    expect(screen.queryByRole("link", { name: /Google Maps/ })).toBeNull();
+  });
+
+  it("keeps an explicit empty server map list authoritative over cached identities", () => {
+    render(<ItineraryTimeline items={[item("palace", "景福宮", 0, { location_map_links: [], map_identities: {
+      google_places: { provider: "google_places", place_id: "ChIJ-old", map_url: "https://www.google.com/maps/search/?api=1&query=place&query_place_id=ChIJ-old", status: "verified" },
+    } })]} />);
+    expect(screen.queryByRole("link")).toBeNull();
+  });
+
   it("hides skipped meals, keeps hotel anchors, and separates logistics", () => {
     const items = [
       item("flight-out", "長榮航空 BR 198", 0, { item_type: "flight", system_role: "outbound_flight", fixed_time: true, locked: true, data: { flight_info: { airline: "長榮航空", flight_number: "BR 198", origin: "TPE", destination: "NRT", departure_local: "2026-11-10T08:50", arrival_local: "2026-11-10T13:10" } } }),

@@ -16,6 +16,8 @@ import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { useSearchParams } from "next/navigation";
 import { localeLabels, type Locale } from "@/i18n/routing";
 import { api, ApiError } from "@/lib/api";
+import { availableMapLinks, type CatalogMapLink } from "@/lib/map-identities";
+import { safeExternalHref } from "@/lib/navigation";
 import { useModalSheet } from "@/lib/modal-sheet";
 import { useSavedItems } from "@/components/saved-items-provider";
 import { DestinationAffiliateOptions } from "@/components/destination-affiliate-options";
@@ -74,6 +76,7 @@ export type Product = {
   }[];
   direct_links?: { provider: string; name: string | null }[];
   booking_options?: BookingOption[];
+  map_links?: CatalogMapLink[];
 };
 type Selection = {
   id: string;
@@ -789,6 +792,7 @@ export function ServiceCatalog({
                             />
                           </button>}
                         </div>
+                        {product.kind === "hotel" && availableMapLinks(product.map_links).length > 0 && <div className="mt-3 flex flex-wrap gap-2">{availableMapLinks(product.map_links).map((map) => <a key={map.url} href={safeExternalHref(map.url)} target="_blank" rel="noopener noreferrer" className={button} aria-label={`${map.label}: ${product.title}`}>{map.label}<ExternalLink size={14} aria-hidden /></a>)}</div>}
                         {showPlatforms === product.id &&
                           product.kind === "hotel" &&
                           product.booking_options && (

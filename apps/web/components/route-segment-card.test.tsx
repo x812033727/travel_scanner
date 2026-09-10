@@ -50,4 +50,19 @@ describe("route segment card", () => {
     const link = screen.getByRole("link", { name: /用 NAVER Maps 開啟/ });
     expect(link.getAttribute("href")).toContain("map.naver.com");
   });
+
+  it("renders both server navigation choices for a saved ODsay route", () => {
+    render(<RouteSegmentCard defaultExpanded segment={{ ...base, provider: "odsay", attribution: "ODsay", external_navigations: [
+      { provider: "naver_maps", label: "NAVER Maps", travel_mode: "transit", web_url: "https://map.naver.com/p/directions/naver", app_url: "nmap://route/public" },
+      { provider: "google_maps", label: "Google Maps", travel_mode: "transit", web_url: "https://www.google.com/maps/dir/?api=1", app_url: "https://www.google.com/maps/dir/?api=1" },
+    ] }} />);
+    expect(screen.getByRole("link", { name: "用 NAVER Maps 導航" }).getAttribute("href")).toContain("map.naver.com");
+    expect(screen.getByRole("link", { name: "用 Google Maps 導航" }).getAttribute("href")).toContain("google.com");
+    expect(screen.getByRole("link", { name: "開啟 NAVER App" }).getAttribute("href")).toBe("nmap://route/public");
+  });
+
+  it("does not revive a legacy maps URL when the server supplies an empty navigation list", () => {
+    render(<RouteSegmentCard defaultExpanded segment={{ ...base, maps_url: "https://www.google.com/maps/", external_navigations: [] }} />);
+    expect(screen.queryByRole("link")).toBeNull();
+  });
 });

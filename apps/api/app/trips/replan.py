@@ -58,6 +58,7 @@ MEAL_LOCATION_DATA_KEYS = frozenset(
         "generated_by",
         "google_maps_url",
         "map_links",
+        "map_identities",
         "merchant_id",
         "naver_maps_url",
         "place_match_status",
@@ -69,6 +70,7 @@ MEAL_LOCATION_DATA_KEYS = frozenset(
 # coordinates when a confirmed place is carried onto a re-created row.
 PLACE_DATA_KEYS = frozenset(
     {
+        "map_identities",
         "attribution",
         "google_maps_url",
         "naver_maps_url",

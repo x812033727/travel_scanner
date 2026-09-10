@@ -14,6 +14,7 @@ declare global {
         Polyline: new (options: Record<string, unknown>) => { setMap(map: unknown | null): void };
         Event: {
           addListener(target: unknown, eventName: string, handler: () => void): void;
+          clearInstanceListeners?(target: unknown): void;
         };
       };
     };

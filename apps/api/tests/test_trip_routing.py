@@ -42,6 +42,8 @@ def point(
         latitude=latitude,
         longitude=longitude,
         provider_place_id=provider_place_id,
+        # Fixture IDs represent independently confirmed Google identities.
+        google_place_id=provider_place_id,
     )
 
 

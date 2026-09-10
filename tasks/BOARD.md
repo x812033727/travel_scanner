@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**23 open · 1 in progress · 3 blocked · 13 in review · 195 done**
+**23 open · 1 in progress · 3 blocked · 10 in review · 199 done**
 
 ## Ready to claim
 
@@ -26,6 +26,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | api | `apps/api/app/hotspots/areas.py`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [第二批購物店家：十五個沒有公開座標來源的候選](open/2026-09-06-shopping-seeds-second-batch.md) | api | `apps/api/app/hotspots/shopping_bootstrap.json`<br>`apps/api/app/hotspots/theme_bootstrap.json`<br>`apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_shopping_bootstrap.py` |
 | P3 | [彈性日期區塊的價格標籤寫死 full_trip_search](open/2026-09-06-full-trip-search.md) | web | `apps/web/components/flight-date-options.tsx`<br>`apps/web/components/flight-date-options.test.tsx` |
+| P3 | [建立旅程時就問出發機場，不要等到查機票才問](open/2026-09-06-ask-origin-airport-at-trip-creation.md) | web | `apps/web/components/new-trip-form.tsx`<br>`apps/web/components/new-trip-form.test.tsx`<br>`apps/web/messages/en/newTrip.json`<br>`apps/web/messages/ja/newTrip.json`<br>`apps/web/messages/ko/newTrip.json`<br>`apps/web/messages/zh-TW/newTrip.json`<br>`apps/web/messages/zh-CN/newTrip.json` |
 | P3 | [整合測試用固定 email，同一個資料庫跑第二次就 UniqueViolation](open/2026-09-07-fixed-email-in-integration-tests.md) | api | `apps/api/tests/test_food_integration.py` |
 | P3 | [tasks/BOARD.md 是產生檔，卻讓每個 PR 互相衝突](open/2026-09-07-board-conflicts-on-every-pr.md) | tools | `.gitattributes`<br>`tools/tasks.mjs` |
 | P3 | [Isolate backup catalog test from host free disk capacity](open/2026-09-09-backup-catalog-free-disk-fixture.md) | api | `apps/api/tests/test_database_operations_center.py` |
@@ -41,14 +42,11 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Task | Owner | Branch |
 | --- | --- | --- |
 | [Unified saved items and private inbox API](open/2026-09-09-frontend-flow-saved-api.md) | codex-saved-flow | `codex/frontend-explore-flow` |
-| [Public discovery categories and safe detail projections](open/2026-09-09-frontend-flow-discovery-api.md) | codex-discovery-flow-api | `codex/frontend-explore-flow` |
 | [Editorial discovery and unified collection frontend](open/2026-09-09-frontend-flow-discovery-web.md) | codex-discovery-flow-web | `codex/frontend-explore-flow` |
-| [Frontend flow navigation planning handoff and acceptance](open/2026-09-09-frontend-flow-integration.md) | codex-frontend-flow | `codex/frontend-explore-flow` |
-| [Route apply state regression and semantic itinerary tones](open/2026-09-09-planner-route-tones.md) | codex | `codex/planner-route-tones` |
 | [Clarify the modular hotel affiliate switch and original-channel fallback](open/2026-09-09-clarify-stay22-module-switch.md) | codex-stay22-module | `codex/stay22-modular-toggle` |
-| [Add privacy scoped Stay22 script backend](open/2026-09-09-add-privacy-scoped-stay22-script-backend.md) | codex-stay22-backend | `codex/stay22-modular-toggle` |
 | [Isolate public Stay22 script document and hotel links](open/2026-09-09-isolate-public-stay22-script.md) | codex-stay22-script-ui | `codex/stay22-modular-toggle` |
 | [Verify isolated Stay22 Script public browser flow](open/2026-09-09-verify-stay22-script-browser.md) | codex-stay22-script-e2e | `codex/stay22-modular-toggle` |
+| [Korea dual map identities and transport navigation](open/2026-09-10-korea-dual-maps.md) | codex-korea-dual-maps | `codex/korea-dual-maps` |
 | [Archive completed catalog and hotel review evidence](open/2026-09-09-review-evidence-archive.md) | codex-review-archive | `codex/review-evidence-archive-20260909` |
 | [Compact discovery cards and source-linked details](open/2026-09-09-discovery-card-details.md) | codex-discovery-card-details | `codex/discovery-card-details-20260909` |
 | [Simplify hotel booking platform and source copy](open/2026-09-10-simplify-hotel-booking-copy.md) | codex-hotel-copy | `codex/hotel-booking-copy` |
@@ -66,18 +64,17 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [Mokaair community responsive web and five-language experience](open/2026-09-07-mokaair-community-web.md) | active work in the same scope |
 | P1 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | active work in the same scope |
 | P2 | [Community read metric duplicate observed alongside smoke ECONNRESET](open/2026-09-07-community-read-metric-concurrency.md) | active work in the same scope |
-| P3 | [建立旅程時就問出發機場，不要等到查機票才問](open/2026-09-06-ask-origin-airport-at-trip-creation.md) | active work in the same scope |
 | P3 | [行程裡新增一餐：四個 trip-selections 端點接受 mode: replace_meal\|append](open/2026-09-07-add-a-meal-to-a-day.md) | active work in the same scope |
 
 ## Recently finished
 
+- 2026-09-10 [Frontend flow navigation planning handoff and acceptance](done/2026-09-09-frontend-flow-integration.md)
+- 2026-09-10 [Add privacy scoped Stay22 script backend](done/2026-09-09-add-privacy-scoped-stay22-script-backend.md)
+- 2026-09-10 [Public discovery categories and safe detail projections](done/2026-09-09-frontend-flow-discovery-api.md)
+- 2026-09-10 [Route apply state regression and semantic itinerary tones](done/2026-09-09-planner-route-tones.md)
 - 2026-09-10 [Preserve no-referrer on external clickout responses](done/2026-09-09-preserve-clickout-referrer-policy.md)
 - 2026-09-09 [Fix first hotel clickout and affiliate availability feedback](done/2026-09-09-fix-first-hotel-clickout-and-affiliate.md)
 - 2026-09-09 [Stay22 exact hotel affiliate clickouts](done/2026-09-09-stay22-hotel-clickout.md)
 - 2026-09-09 [Travel Scanner 後台營運中心升級](done/2026-09-09-admin-operations-center.md)
 - 2026-09-09 [Integrate PR 365 historical deployment and open verification notes](done/2026-09-09-pr365-docs-integration.md)
 - 2026-09-09 [Prepare PR 335 funnel integration against current main](done/2026-09-09-pr335-funnel-merge-integration.md)
-- 2026-09-09 [Integrate PR 343 account safety with current main](done/2026-09-09-pr343-account-safety-integration.md)
-- 2026-09-09 [後台營運中心驗收矩陣與 CI](done/2026-09-09-ci.md)
-- 2026-09-09 [Calm daily timeline and safe explicit planner editing](done/2026-09-09-planner-calm-editing.md)
-- 2026-09-09 [Community curated video invitations and collection references](done/2026-09-08-travel-discovery-community.md)

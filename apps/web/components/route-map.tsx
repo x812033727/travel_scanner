@@ -5,7 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import Script from "next/script";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { api } from "@/lib/api";
-import type { RouteSegment, TravelMode, TripItem } from "@/lib/trip-types";
+import type { RouteMapCapabilities, RouteSegment, TravelMode, TripItem } from "@/lib/trip-types";
 
 type PublicMapConfig = {
   google_maps_browser_key?: string | null;
@@ -20,6 +20,7 @@ type GoogleMapInstance = {
   fitBounds(bounds: unknown, padding?: number | Record<string, number>): void;
 };
 type MapFailureReason = "load" | "authorization";
+export type RouteMapProvider = "naver_maps" | "google_maps";
 
 const GOOGLE_MAPS_SCRIPT_ID = "google-route-maps-js";
 const GOOGLE_MAPS_READY_CALLBACK = "__mokaairGoogleMapsReady";
@@ -65,6 +66,10 @@ export function RouteMap({
   toItemId,
   variant = "drawer",
   countryCode,
+  travelMode,
+  mapProvider,
+  mapCapabilities,
+  onMapProviderChange,
   externalOnly = false,
 }: {
   items: TripItem[];
@@ -75,6 +80,9 @@ export function RouteMap({
   fromItemId?: string;
   toItemId?: string;
   travelMode?: TravelMode;
+  mapProvider?: RouteMapProvider;
+  mapCapabilities?: RouteMapCapabilities;
+  onMapProviderChange?: (provider: RouteMapProvider) => void;
   variant?: "sidebar" | "drawer";
   countryCode?: string | null;
   externalOnly?: boolean;
@@ -87,14 +95,27 @@ export function RouteMap({
   const destroyMap = useRef<(() => void) | null>(null);
   const overlays = useRef<MapOverlay[]>([]);
   const [config, setConfig] = useState<PublicMapConfig>({});
-  const [sdkReady, setSdkReady] = useState(false);
-  const [mapFailure, setMapFailure] = useState<MapFailureReason | undefined>(
-    () => !isKorea
-      && typeof window !== "undefined"
-      && window.mokaairGoogleMapsAuthFailed
-      ? "authorization"
-      : undefined,
+  const [walkingMap, setWalkingMap] = useState<RouteMapProvider>("naver_maps");
+  const mode = travelMode || segment?.travel_mode || segments?.[selectedSegmentIndex]?.travel_mode || "transit";
+  const walkingProviders = mapCapabilities?.providers.length ? mapCapabilities.providers : ["naver_maps", "google_maps"] as const;
+  const walkingChoice = mapProvider || walkingMap;
+  const provider: RouteMapProvider = !isKorea || mode === "transit" ? "google_maps"
+    : mode === "drive" ? "naver_maps" : walkingProviders.includes(walkingChoice)
+      ? walkingChoice : mapCapabilities?.default_provider || "naver_maps";
+  const [readyProviders, setReadyProviders] = useState<Partial<Record<RouteMapProvider, boolean>>>({});
+  const [mapFailures, setMapFailures] = useState<Partial<Record<RouteMapProvider, MapFailureReason>>>(
+    () => typeof window !== "undefined" && window.mokaairGoogleMapsAuthFailed
+      ? { google_maps: "authorization" } : {},
   );
+  const sdkReady = readyProviders[provider];
+  const mapFailure = mapFailures[provider];
+  const setProviderReady = useCallback((key: RouteMapProvider, ready: boolean) => {
+    setReadyProviders((current) => current[key] === ready ? current : { ...current, [key]: ready });
+  }, []);
+  const failProvider = useCallback((key: RouteMapProvider, reason: MapFailureReason) => {
+    setProviderReady(key, false);
+    setMapFailures((current) => current[key] === reason ? current : { ...current, [key]: reason });
+  }, [setProviderReady]);
 
   useEffect(() => {
     let active = true;
@@ -120,25 +141,36 @@ export function RouteMap({
   const destination = items.find((item) => item.id === (selectedSegment?.to_item_id || toItemId));
   const hasCoordinates = origin?.latitude != null && origin.longitude != null
     && destination?.latitude != null && destination.longitude != null;
-  const useNaver = isKorea
+  const useNaver = provider === "naver_maps"
     && config.naver_dynamic_map_enabled
     && Boolean(config.naver_maps_browser_client_id);
   const javascriptAllowed = config.google_maps_javascript_enabled === true;
-  const useGoogle = !isKorea
+  const useGoogle = provider === "google_maps"
     && javascriptAllowed
     && Boolean(config.google_maps_browser_key);
   const mapFailed = Boolean(mapFailure);
   const optionCoordinates = useMemo(
-    () => routeOptions.map((option) => decodePolyline(option.encoded_polyline)),
-    [routeOptions],
+    () => routeOptions.map((option) => {
+      // A walking basemap is only an endpoint display. Provider geometry must
+      // also stay on its permitted basemap; switching maps never computes a path.
+      if (externalOnly || (isKorea && mode === "walk")) return [];
+      if (provider === "naver_maps" && option.provider === "google_routes") return [];
+      if (provider === "google_maps" && option.provider === "naver_maps") return [];
+      return decodePolyline(option.encoded_polyline);
+    }),
+    [externalOnly, isKorea, mode, provider, routeOptions],
   );
   const showSchematic = hasCoordinates
     && (externalOnly || (optionCoordinates[selectedIndex]?.length || 0) < 2);
 
   const clearOverlays = useCallback(() => {
-    for (const overlay of overlays.current) overlay.setMap(null);
+    for (const overlay of overlays.current) {
+      if (provider === "google_maps") window.google?.maps.event?.clearInstanceListeners(overlay);
+      else window.naver?.maps.Event.clearInstanceListeners?.(overlay);
+      overlay.setMap(null);
+    }
     overlays.current = [];
-  }, []);
+  }, [provider]);
 
   const disposeMap = useCallback(() => {
     clearOverlays();
@@ -152,12 +184,11 @@ export function RouteMap({
   }, [clearOverlays]);
 
   useEffect(() => {
-    if (isKorea) return;
+    if (provider !== "google_maps") return;
     const previousHandler = window.gm_authFailure;
     const handleAuthorizationFailure = () => {
       window.mokaairGoogleMapsAuthFailed = true;
-      setSdkReady(false);
-      setMapFailure("authorization");
+      failProvider("google_maps", "authorization");
     };
     window.gm_authFailure = handleAuthorizationFailure;
     return () => {
@@ -165,7 +196,7 @@ export function RouteMap({
         window.gm_authFailure = previousHandler;
       }
     };
-  }, [isKorea]);
+  }, [failProvider, provider]);
 
   useEffect(() => {
     if (!useGoogle || mapFailed) return;
@@ -175,13 +206,12 @@ export function RouteMap({
     const handleReady = () => {
       if (!active || !isReady() || window.mokaairGoogleMapsAuthFailed) return;
       if (timeoutId !== undefined) window.clearTimeout(timeoutId);
-      setSdkReady(true);
+      setProviderReady("google_maps", true);
     };
     const handleLoadFailure = () => {
       if (!active) return;
       document.getElementById(GOOGLE_MAPS_SCRIPT_ID)?.remove();
-      setSdkReady(false);
-      setMapFailure("load");
+      failProvider("google_maps", "load");
     };
 
     window.addEventListener(GOOGLE_MAPS_READY_EVENT, handleReady);
@@ -212,7 +242,7 @@ export function RouteMap({
       document.getElementById(GOOGLE_MAPS_SCRIPT_ID)
         ?.removeEventListener("error", handleLoadFailure);
     };
-  }, [config.google_maps_browser_key, locale, mapFailed, useGoogle]);
+  }, [config.google_maps_browser_key, failProvider, locale, mapFailed, setProviderReady, useGoogle]);
 
   const renderNaverMap = useCallback(() => {
     if (mapFailed || !useNaver || !hasCoordinates || !mapElement.current || !window.naver?.maps || !origin || !destination) return;
@@ -322,32 +352,48 @@ export function RouteMap({
       return;
     }
     if (!sdkReady) return;
-    if (useNaver) renderNaverMap();
-    if (useGoogle) renderGoogleMap();
-  }, [disposeMap, mapFailed, renderGoogleMap, renderNaverMap, sdkReady, useGoogle, useNaver]);
+    let active = true;
+    try {
+      if (useNaver) renderNaverMap();
+      if (useGoogle) renderGoogleMap();
+    } catch {
+      queueMicrotask(() => { if (active) failProvider(provider, "load"); });
+    }
+    return () => { active = false; };
+  }, [disposeMap, failProvider, mapFailed, provider, renderGoogleMap, renderNaverMap, sdkReady, useGoogle, useNaver]);
 
   useEffect(() => disposeMap, [disposeMap]);
 
-  const mapSource = useNaver ? "NAVER Maps" : useGoogle ? "Google Maps" : undefined;
+  const mapSource = provider === "naver_maps" ? "NAVER Maps" : "Google Maps";
+  const mapEnabled = useNaver || useGoogle;
   const emptyTitle = !hasCoordinates
     ? t("mapMissingPlaces")
     : mapFailed
       ? t("mapLoadFailed")
-      : !isKorea && Boolean(config.google_maps_browser_key) && !javascriptAllowed
+      : provider === "google_maps" && Boolean(config.google_maps_browser_key) && !javascriptAllowed
         ? t("mapSafelyDisabled")
         : t("mapNotEnabled");
   const originName = origin?.title || t("startFallback");
   const destinationName = destination?.title || t("endFallback");
 
-  return <section className={`route-map-card route-map-${variant}`}>
-    {useNaver && <Script id="naver-maps-js" src={`https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${encodeURIComponent(config.naver_maps_browser_client_id || "")}`} strategy="afterInteractive" onReady={() => setSdkReady(true)} onError={() => setMapFailure("load")} />}
-    <div className="flex items-center justify-between border-b border-[var(--line)] px-5 py-3.5"><div className="min-w-0"><p className="text-xs font-semibold tracking-[.14em] text-[var(--teal)]">{t("mapTitle")}{mapSource ? ` · ${mapSource}` : ""}</p><h2 className="mt-1 truncate font-bold">{selectedSegment ? t("mapOptionSummary", { index: selectedIndex + 1, minutes: selectedSegment.duration_minutes }) : `${originName} → ${destinationName}`}</h2></div><Map size={20} className="shrink-0 text-[var(--teal)]" /></div>
+  return <section className={`route-map-card route-map-${variant}`} data-map-provider={provider}>
+    {useNaver && <Script id="naver-maps-js" src={`https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${encodeURIComponent(config.naver_maps_browser_client_id || "")}`} strategy="afterInteractive" onReady={() => setProviderReady("naver_maps", true)} onError={() => failProvider("naver_maps", "load")} />}
+    <div className="border-b border-[var(--line)] px-5 py-3.5">
+      <div className="flex items-center justify-between gap-3">
+        <div className="min-w-0 flex-1"><p className="text-xs font-semibold tracking-[.14em] text-[var(--teal)]">{t("mapTitle")}{` · ${mapSource}`}</p><h2 className="mt-1 truncate font-bold">{selectedSegment ? t("mapOptionSummary", { index: selectedIndex + 1, minutes: selectedSegment.duration_minutes }) : `${originName} → ${destinationName}`}</h2></div>
+        {isKorea && mode === "walk"
+          ? <select aria-label={t("mapProviderLabel")} value={provider} onChange={(event) => { const next = event.target.value as RouteMapProvider; setWalkingMap(next); onMapProviderChange?.(next); }} className="min-h-11 max-w-[50%] shrink-0 rounded-xl border border-[var(--line)] bg-[var(--surface)] px-3 text-sm font-semibold">{walkingProviders.map((value) => <option key={value} value={value}>{value === "naver_maps" ? "NAVER Maps" : "Google Maps"}</option>)}</select>
+          : <Map size={20} className="shrink-0 text-[var(--teal)]" />}
+      </div>
+      {isKorea && mode === "walk" && <p className="mt-2 text-xs leading-5 text-[var(--muted)]">{t("mapProviderHint")}</p>}
+    </div>
     <div className="route-map-frame overflow-hidden">
-      {mapSource && hasCoordinates && !mapFailed
-        ? <div ref={mapElement} role="img" aria-label={t("mapAria", { from: originName, to: destinationName, provider: mapSource })} className="absolute inset-0 h-full w-full" />
-        : <div className="route-map-empty absolute inset-0 grid place-items-center p-6 text-center"><div>{mapFailed ? <TriangleAlert size={28} className="mx-auto text-amber-700" /> : <MapPin size={28} className="mx-auto text-[var(--teal)]" />}<p className="mt-3 font-semibold">{emptyTitle}</p><p className="mx-auto mt-2 max-w-xs text-sm leading-6 text-[var(--muted)]">{!hasCoordinates ? t("mapMissingHint") : mapFailure === "authorization" ? t("mapAuthorizationHint") : mapFailure === "load" ? t("mapLoadHint") : isKorea ? t("mapNaverHint") : Boolean(config.google_maps_browser_key) ? t("mapSafetyHint") : t("mapKeyHint")}</p></div></div>}
-      {mapSource && hasCoordinates && showSchematic && !mapFailed && <div className="route-map-schematic-notice" role="status">{t("mapSchematic")}</div>}
+      {mapEnabled && hasCoordinates && !mapFailed
+        ? <div key={provider} ref={mapElement} role="img" aria-label={t("mapAria", { from: originName, to: destinationName, provider: mapSource })} className="absolute inset-0 h-full w-full" />
+        : <div className="route-map-empty absolute inset-0 grid place-items-center p-6 text-center"><div>{mapFailed ? <TriangleAlert size={28} className="mx-auto text-amber-700" /> : <MapPin size={28} className="mx-auto text-[var(--teal)]" />}<p className="mt-3 font-semibold">{emptyTitle}</p><p className="mx-auto mt-2 max-w-xs text-sm leading-6 text-[var(--muted)]">{!hasCoordinates ? t("mapMissingHint") : mapFailure === "authorization" ? t("mapAuthorizationHint") : mapFailure === "load" ? t("mapLoadHint") : provider === "naver_maps" ? t("mapNaverHint") : Boolean(config.google_maps_browser_key) ? t("mapSafetyHint") : t("mapKeyHint")}</p></div></div>}
+      {mapEnabled && hasCoordinates && showSchematic && !mapFailed && <div className="route-map-schematic-notice" role="status">{t("mapSchematic")}</div>}
     </div>
     <div className="border-t border-[var(--line)] px-5 py-3 text-xs text-[var(--muted)]">{showSchematic ? t("mapEndpointsOnly") : selectedSegment ? `${selectedSegment.provider === "manual" ? t("manualTiming") : selectedSegment.status === "estimated" || selectedSegment.provider === "estimate" || String(selectedSegment.schedule_mode) === "estimate" ? t("estimatedTiming") : selectedSegment.schedule_mode === "preview" ? t("nearTerm") : selectedSegment.schedule_mode === "live" ? t("liveRoute") : t("scheduled")} · ${selectedSegment.attribution}` : t("mapEndpointsOnly")}</div>
+    {selectedSegment && <p className="px-5 pb-3 text-xs text-[var(--muted)]">{t("mapTimeSource", { provider: selectedSegment.provider === "manual" ? t("manualTiming") : selectedSegment.provider === "estimate" || selectedSegment.status === "estimated" || String(selectedSegment.schedule_mode) === "estimate" ? t("estimatedTiming") : selectedSegment.attribution })}</p>}
   </section>;
 }

@@ -90,6 +90,7 @@ def primary_lodging(trip: TripPlan, rows: list[TripPlanItem]) -> dict[str, Any] 
         "name": title,
         "location_name": hotel.location_name or title,
         "provider_place_id": hotel.provider_place_id,
+        "map_identities": (hotel.data or {}).get("map_identities", {}),
         "latitude": float(hotel.latitude) if hotel.latitude is not None else None,
         "longitude": float(hotel.longitude) if hotel.longitude is not None else None,
         "location_source": hotel.location_source,
@@ -391,9 +392,19 @@ def _promote_legacy_flights(trip: TripPlan, rows: list[TripPlanItem], days: list
 
 
 def _catalog_lodging_identity(lodging: dict[str, Any] | None) -> dict[str, Any]:
-    if not lodging or not lodging.get("catalog_product_id"):
+    if not lodging:
         return {}
-    return {key: lodging.get(key) for key in ("catalog_product_id", "naver_map_url", "map_links")}
+    return {
+        key: lodging.get(key)
+        for key in (
+            "catalog_product_id",
+            "naver_map_url",
+            "map_links",
+            "map_identities",
+            "place_provider",
+        )
+        if key in lodging
+    }
 
 
 def _sync_lodging(item: TripPlanItem, lodging: dict[str, Any] | None) -> bool:

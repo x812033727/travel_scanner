@@ -21,7 +21,9 @@ from app.auth.service import CurrentUser
 from app.db import get_session
 from app.models import TripPlan, TripPlanItem, TripRouteDaySetting, TripShare
 from app.problems import AppError
+from app.trips.map_identities import trip_map_identities
 from app.trips.router import limit_for, serialize_trip
+from app.trips.routing import infer_place_provider
 
 router = APIRouter(prefix="/shared-trips", tags=["shared trips"])
 Session = Annotated[AsyncSession, Depends(get_session)]
@@ -60,6 +62,8 @@ async def shared_trip_for(session: AsyncSession, token: str) -> TripPlan:
 
 
 def copied_item(trip_id: Any, source: TripPlanItem) -> TripPlanItem:
+    identities = trip_map_identities(source)
+    provider = infer_place_provider(source.location_source, source.data)
     return TripPlanItem(
         trip_plan_id=trip_id,
         item_type=source.item_type,
@@ -86,9 +90,17 @@ def copied_item(trip_id: Any, source: TripPlanItem) -> TripPlanItem:
         # notes stay with the author, as they do on the share payload itself.
         notes=None,
         data={
-            key: value
-            for key, value in (source.data or {}).items()
-            if key in COPIED_ITEM_DATA_KEYS
+            **{
+                key: value
+                for key, value in (source.data or {}).items()
+                if key in COPIED_ITEM_DATA_KEYS
+            },
+            **(
+                {"map_identities": identities}
+                if identities or "map_identities" in (source.data or {})
+                else {}
+            ),
+            **({"place_provider": provider} if provider else {}),
         },
     )
 
@@ -157,9 +169,7 @@ async def fork_shared_trip(
     settings = list(
         (
             await session.scalars(
-                select(TripRouteDaySetting).where(
-                    TripRouteDaySetting.trip_plan_id == source.id
-                )
+                select(TripRouteDaySetting).where(TripRouteDaySetting.trip_plan_id == source.id)
             )
         ).all()
     )
@@ -179,7 +189,10 @@ async def fork_shared_trip(
     # The one place a trip arrives from someone else's link; `share_created` on the
     # other side is what it converts against.
     await record_event(
-        session, "share_forked", path="/share", user_id=user.id,
+        session,
+        "share_forked",
+        path="/share",
+        user_id=user.id,
         properties={"items": len(items)},
     )
     await session.commit()

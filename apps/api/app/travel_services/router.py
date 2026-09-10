@@ -24,6 +24,7 @@ from app.db import get_session
 from app.hotspots.maps import build_map_links
 from app.i18n import Locale, current_locale
 from app.infra import enforce_named_rate_limit, get_redis
+from app.locations.map_identity import catalog_map_identities
 from app.models import (
     AffiliateClick,
     HotelBookingClick,
@@ -452,6 +453,7 @@ async def select_service(
             "coordinate_source_type": "admin_verified",
             "coordinate_source_url": facts.coordinate_source_url,
             "naver_map_url": facts.naver_map_url,
+            "map_identities": catalog_map_identities(product),
             "map_links": build_map_links(
                 name=product.title,
                 local_name=None,
@@ -462,6 +464,7 @@ async def select_service(
                 google_place_id=facts.google_place_id,
                 naver_map_url=facts.naver_map_url,
                 map_match_status="verified",
+                map_identities=catalog_map_identities(product),
             ),
             "catalog_product_id": str(product.id),
             "area_code": facts.area_code,

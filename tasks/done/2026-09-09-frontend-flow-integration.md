@@ -1,13 +1,13 @@
 ---
 id: 2026-09-09-frontend-flow-integration
 title: Frontend flow navigation planning handoff and acceptance
-status: review
+status: done
 priority: P1
 area: web
 owner: codex-frontend-flow
 claimed_at: 2026-09-09T03:08:42Z
 created_at: 2026-09-09T03:06:54Z
-completed_at:
+completed_at: 2026-09-10T03:28:33Z
 branch: codex/frontend-explore-flow
 depends_on: []
 scope:

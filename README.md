@@ -644,8 +644,8 @@ raise this value. `ODSAY_LANGUAGE=0` requests the Korean response supported by
 Standard contracts; select another documented language only when the contract
 includes multilingual output. A single request supplies up to three alternatives. The app
 does not call ODsay's additional route-geometry endpoint for every candidate;
-it draws a clearly labelled stop-sequence line and keeps NAVER Maps as the exact
-external navigation destination. ODsay's general route data is a preview, not a
+it draws a clearly labelled stop-sequence line and offers Google and NAVER
+external navigation. ODsay's general route data is a preview, not a
 promise of the future departure timetable.
 
 Korean place lookup, browser maps, and driving routes use NAVER Maps where its
@@ -654,14 +654,16 @@ above. Set `NAVER_MAPS_CLIENT_ID` and `NAVER_MAPS_CLIENT_SECRET` after
 enabling Web Dynamic Map, Directions 5, Geocoding, and NAVER API HUB Local
 Search for the same NCP application. Restrict the browser Client ID to the
 production HTTP referrer. Korean place lookup tries NAVER Local Search and
-Geocoding before Google, the planner renders NAVER Dynamic Map before Google
-Embed, and driving uses NAVER Directions before Google. NAVER place IDs are
-never passed to Google; only WGS84 coordinates cross the provider boundary.
+Geocoding before Google. Transit uses a Google basemap with ODsay time data;
+walking offers NAVER (default) and Google basemaps, while driving uses NAVER.
+Map choice never changes routing provider or itinerary times. NAVER hashes are
+never passed to Google; Google uses its independently verified ID or coordinates.
+See [dual-map identities and admin review](docs/korea-dual-maps.md).
 
 NAVER Directions does not return structured transit or walking routes. ODsay
 provides the structured Korean public-transit preview, while walking remains an
-exact external NAVER handoff. If either mode has no structured result, the API
-returns `kind=external_only` with server-generated official NAVER app/web links.
+external/manual time only. If either mode has no structured result, the API
+returns `kind=external_only` with server-generated Google/NAVER navigation options.
 That result cannot be applied to itinerary times, and the user may enter a
 clearly labelled manual duration instead. The administrator usage card counts
 server-side `local_search`, `geocode`, and `directions` requests only. It excludes

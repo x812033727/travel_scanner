@@ -18,6 +18,7 @@ from pydantic import BaseModel, Field, field_validator
 from redis.asyncio import Redis
 
 from app.config import Settings, get_settings
+from app.i18n import Locale
 from app.providers.usage_meter import (
     record_naver_maps_request,
     reserve_ekispert_request,
@@ -47,10 +48,13 @@ def infer_place_provider(location_source: str | None, data: dict[str, Any] | Non
 class RoutePoint(BaseModel):
     item_id: UUID
     name: str
-    latitude: float
-    longitude: float
+    latitude: float = Field(ge=-90, le=90, allow_inf_nan=False)
+    longitude: float = Field(ge=-180, le=180, allow_inf_nan=False)
     provider_place_id: str | None = None
     place_provider: str | None = None
+    # Set only by the server's independently verified identity projection.
+    google_place_id: str | None = None
+    naver_map_url: str | None = None
 
 
 EARTH_RADIUS_KM = 6371.0
@@ -129,6 +133,7 @@ class RouteStep(BaseModel):
     def _no_zero_minute_step(cls, value: int | None) -> int | None:
         """Round a sub-minute step up rather than telling the traveller it takes no time."""
         return value if value is None else max(1, value)
+
     distance_meters: int | None = None
     departure_stop: str | None = None
     arrival_stop: str | None = None
@@ -172,6 +177,8 @@ class RouteSegment(BaseModel):
     steps: list[RouteStep] = Field(default_factory=list)
     details_available: list[str] = Field(default_factory=list)
     warnings: list[str] = Field(default_factory=list)
+    external_navigations: list[ExternalNavigation] = Field(default_factory=list)
+    map_capabilities: dict[str, Any] = Field(default_factory=dict)
 
     @field_validator("duration_minutes")
     @classmethod
@@ -231,12 +238,8 @@ def google_directions_params(
 ) -> dict[str, object]:
     """Build deterministic Directions URL parameters without fuzzy name-only endpoints."""
 
-    origin_has_place_id = bool(
-        origin.provider_place_id and origin.place_provider in {None, "google_places"}
-    )
-    destination_has_place_id = bool(
-        destination.provider_place_id and destination.place_provider in {None, "google_places"}
-    )
+    origin_has_place_id = bool(origin.google_place_id)
+    destination_has_place_id = bool(destination.google_place_id)
     params: dict[str, object] = {
         "api": 1,
         "origin": origin.name
@@ -252,9 +255,9 @@ def google_directions_params(
         }[travel_mode],
     }
     if origin_has_place_id:
-        params["origin_place_id"] = origin.provider_place_id
+        params["origin_place_id"] = origin.google_place_id
     if destination_has_place_id:
-        params["destination_place_id"] = destination.provider_place_id
+        params["destination_place_id"] = destination.google_place_id
     return params
 
 
@@ -353,8 +356,8 @@ class GoogleRouteProvider:
 
     @staticmethod
     def waypoint(point: RoutePoint) -> dict[str, Any]:
-        if point.provider_place_id and point.place_provider in {None, "google_places"}:
-            return {"placeId": point.provider_place_id}
+        if point.google_place_id:
+            return {"placeId": point.google_place_id}
         return {"location": {"latLng": {"latitude": point.latitude, "longitude": point.longitude}}}
 
     async def _reserve(self) -> bool:
@@ -629,11 +632,7 @@ class GoogleRouteProvider:
                 {key: value for key, value in body.items() if key != "transitPreferences"},
                 "without_preference",
             )
-        uses_google_place_id = bool(
-            origin.provider_place_id and origin.place_provider in {None, "google_places"}
-        ) or bool(
-            destination.provider_place_id and destination.place_provider in {None, "google_places"}
-        )
+        uses_google_place_id = bool(origin.google_place_id or destination.google_place_id)
         if uses_google_place_id:
             coordinate_body = dict(attempts[-1][0])
             coordinate_body["origin"] = {
@@ -1365,6 +1364,126 @@ def google_external_navigation(
         web_url=url,
         reason=reason,
     )
+
+
+def route_map_capabilities(region_code: str | None, travel_mode: TravelMode) -> dict[str, Any]:
+    """Presentation policy, deliberately independent of route provider availability."""
+    providers = (
+        ["naver_maps", "google_maps"]
+        if region_code == "KR" and travel_mode == "walk"
+        else ["naver_maps"]
+        if region_code == "KR" and travel_mode == "drive"
+        else ["google_maps"]
+    )
+    return {"providers": providers, "default_provider": providers[0]}
+
+
+KoreaExternalReason = Literal[
+    "transit_unavailable", "transit_unconfigured", "walk_external", "drive_unavailable"
+]
+KOREA_EXTERNAL_REASONS: dict[Locale, dict[KoreaExternalReason, str]] = {
+    "zh-TW": {
+        "transit_unavailable": (
+            "ODsay 目前沒有回傳可套用的大眾運輸路線；可在 Google Maps 或 NAVER Maps 查看。"
+        ),
+        "transit_unconfigured": (
+            "站內大眾運輸需設定 ODsay；可在 Google Maps 或 NAVER Maps 查看。"
+        ),
+        "walk_external": "步行地圖僅供位置參考；可外開 NAVER／Google Maps 或輸入手動時間。",
+        "drive_unavailable": "目前沒有可套用的汽車路線；請到 NAVER Maps 查看即時導航。",
+    },
+    "zh-CN": {
+        "transit_unavailable": (
+            "ODsay 目前没有返回可应用的公共交通路线；可在 Google Maps 或 NAVER Maps 查看。"
+        ),
+        "transit_unconfigured": (
+            "站内公共交通需配置 ODsay；可在 Google Maps 或 NAVER Maps 查看。"
+        ),
+        "walk_external": "步行地图仅供位置参考；可打开 NAVER／Google Maps 或手动输入时间。",
+        "drive_unavailable": "目前没有可应用的汽车路线；请到 NAVER Maps 查看实时导航。",
+    },
+    "en": {
+        "transit_unavailable": (
+            "ODsay has not returned a usable transit route. "
+            "Check Google Maps or NAVER Maps."
+        ),
+        "transit_unconfigured": (
+            "In-app transit requires ODsay configuration. Check Google Maps or NAVER Maps."
+        ),
+        "walk_external": (
+            "Walking maps are for location reference only. "
+            "Open NAVER/Google Maps or enter a travel time manually."
+        ),
+        "drive_unavailable": (
+            "No usable driving route is currently available. "
+            "Check NAVER Maps for live navigation."
+        ),
+    },
+    "ja": {
+        "transit_unavailable": (
+            "ODsayから適用可能な公共交通ルートが返されていません。"
+            "Google MapsまたはNAVER Mapsで確認できます。"
+        ),
+        "transit_unconfigured": (
+            "サイト内の公共交通ルートにはODsayの設定が必要です。"
+            "Google MapsまたはNAVER Mapsで確認できます。"
+        ),
+        "walk_external": (
+            "徒歩地図は位置の参考表示のみです。"
+            "NAVER／Google Mapsを開くか、移動時間を手動で入力してください。"
+        ),
+        "drive_unavailable": (
+            "現在、適用可能な自動車ルートはありません。"
+            "NAVER Mapsで最新のナビゲーションを確認してください。"
+        ),
+    },
+    "ko": {
+        "transit_unavailable": (
+            "ODsay에서 적용 가능한 대중교통 경로를 반환하지 않았습니다. "
+            "Google Maps 또는 NAVER Maps에서 확인하세요."
+        ),
+        "transit_unconfigured": (
+            "사이트 내 대중교통 경로에는 ODsay 설정이 필요합니다. "
+            "Google Maps 또는 NAVER Maps에서 확인하세요."
+        ),
+        "walk_external": (
+            "도보 지도는 위치 참고용입니다. "
+            "NAVER／Google Maps를 열거나 이동 시간을 직접 입력하세요."
+        ),
+        "drive_unavailable": (
+            "현재 적용 가능한 자동차 경로가 없습니다. "
+            "NAVER Maps에서 실시간 길찾기를 확인하세요."
+        ),
+    },
+}
+
+
+def korean_external_route_reason(
+    travel_mode: TravelMode, *, odsay_configured: bool, locale: Locale
+) -> str:
+    reason: KoreaExternalReason
+    if travel_mode == "transit":
+        reason = "transit_unavailable" if odsay_configured else "transit_unconfigured"
+    else:
+        reason = "walk_external" if travel_mode == "walk" else "drive_unavailable"
+    return KOREA_EXTERNAL_REASONS[locale][reason]
+
+
+def external_navigations(
+    origin: RoutePoint,
+    destination: RoutePoint,
+    travel_mode: TravelMode,
+    region_code: str | None,
+    *,
+    reason: str = "",
+) -> list[ExternalNavigation]:
+    google = google_external_navigation(origin, destination, travel_mode, reason=reason)
+    if region_code != "KR":
+        return [google]
+    naver = naver_external_navigation(origin, destination, travel_mode, reason=reason)
+    if travel_mode == "drive":
+        return [naver]
+    return [google, naver] if travel_mode == "transit" else [naver, google]
 
 
 class NaverDirectionsProvider:
@@ -2396,6 +2515,8 @@ class RouteService:
                 "dpi": destination.provider_place_id,
                 "opp": origin.place_provider,
                 "dpp": destination.place_provider,
+                "ogi": origin.google_place_id,
+                "dgi": destination.google_place_id,
                 "t": self._cache_time_key(providers, departure_time, travel_mode),
                 "p": preference,
                 "r": region_code or ("JP" if japan else None),
@@ -2553,12 +2674,13 @@ def route_provider_configured(
     region = (region_code or "").upper()
     if region == "JP" and travel_mode == "transit":
         return settings.ekispert_configured or settings.navitime_configured
-    if region == "KR" and travel_mode == "transit":
-        return settings.odsay_configured
-    return bool(
-        settings.google_maps_api_key
-        or (region == "KR" and travel_mode == "drive" and settings.naver_maps_configured)
-    )
+    if region == "KR":
+        if travel_mode == "transit":
+            return settings.odsay_configured
+        if travel_mode == "drive":
+            return settings.naver_maps_configured
+        return False  # Walking maps are reference-only; there is no timing provider.
+    return bool(settings.google_maps_api_key)
 
 
 def preview_date_for(day: date, reference: datetime) -> datetime:
