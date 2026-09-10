@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**25 open · 1 in progress · 3 blocked · 11 in review · 200 done**
+**34 open · 1 in progress · 3 blocked · 11 in review · 200 done**
 
 ## Ready to claim
 
@@ -13,6 +13,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
+| P0 | [修好每頁的 canonical 與 hreflang](open/2026-09-10-seo-canonical-hreflang.md) | web | `apps/web/lib/seo.ts`<br>`apps/web/lib/seo.test.ts`<br>`apps/web/app/[locale]/layout.tsx` |
 | P1 | [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | docs | `apps/web/app/[locale]/privacy/page.tsx`<br>`apps/web/app/[locale]/terms/page.tsx`<br>`apps/web/app/[locale]/contact/page.tsx`<br>`apps/web/messages/en/navigation.json`<br>`apps/web/messages/ja/navigation.json`<br>`apps/web/messages/ko/navigation.json`<br>`apps/web/messages/zh-CN/navigation.json`<br>`apps/web/messages/zh-TW/navigation.json` |
 | P1 | [Hotel platform options and quote readiness](open/2026-09-07-hotel-platform-options-and-quote-readiness.md) | api | `apps/api/tests/test_hotel_content_package.py`<br>`docs/hotel-platforms` |
 | P1 | [Revalidate community read resets against production-build CI](open/2026-09-08-community-ci-read-retry.md) | web | `apps/web/e2e/community.spec.ts` |
@@ -23,6 +24,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [30 筆新購物店家還沒 place enrichment，所以加不進行程](open/2026-09-07-enrich-new-shopping-place-ids.md) | api | `ops/notes/hotspot-place-enrichment.md` |
 | P2 | [Verify the two reported hotels exact Booking links](open/2026-09-09-verify-reported-hotels-booking-links.md) | ops | `docs/reported-hotels-booking-review.md` |
 | P2 | [Normalize locale-prefixed login return paths](open/2026-09-10-locale-login-return-path.md) | web | `apps/web/components/auth-form.tsx`<br>`apps/web/components/auth-form.test.tsx` |
+| P2 | [公開資料改用 revalidate 快取，並把 /foods 店家列表放進 SSR](open/2026-09-10-seo-public-data-caching.md) | web | `apps/web/lib/hotspots.server.ts`<br>`apps/web/lib/hotspots.server.test.ts`<br>`apps/web/lib/foods.server.ts`<br>`apps/web/lib/foods.server.test.ts`<br>`apps/web/components/food-browser.tsx` |
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | api | `apps/api/app/hotspots/areas.py`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [第二批購物店家：十五個沒有公開座標來源的候選](open/2026-09-06-shopping-seeds-second-batch.md) | api | `apps/api/app/hotspots/shopping_bootstrap.json`<br>`apps/api/app/hotspots/theme_bootstrap.json`<br>`apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_shopping_bootstrap.py` |
@@ -66,8 +68,15 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [Mokaair community foundation and account safety](open/2026-09-07-mokaair-community-foundation.md) | active work in the same scope |
 | P1 | [Mokaair community responsive web and five-language experience](open/2026-09-07-mokaair-community-web.md) | active work in the same scope |
 | P1 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | active work in the same scope |
+| P1 | [校正私人頁與功能關閉頁的索引指令](open/2026-09-10-seo-index-directives.md) | depends on 2026-09-10-seo-canonical-hreflang |
+| P1 | [公開 robots.txt 與五語系 sitemap](open/2026-09-10-seo-robots-sitemap.md) | depends on 2026-09-10-seo-canonical-hreflang |
+| P1 | [目的地索引頁與城市指南落地頁](open/2026-09-10-seo-destination-landing-pages.md) | depends on 2026-09-10-seo-canonical-hreflang, 2026-09-10-seo-robots-sitemap, 2026-09-10-seo-structured-data |
+| P1 | [JSON-LD 結構化資料基礎與列表頁標記](open/2026-09-10-seo-structured-data.md) | depends on 2026-09-10-seo-canonical-hreflang |
+| P1 | [首頁與 explore 要在伺服器端渲染出真正的內容](open/2026-09-10-seo-server-render-home-and-explore.md) | depends on 2026-09-09-frontend-flow-discovery-web, 2026-09-09-discovery-card-details, 2026-09-10-seo-structured-data |
 | P2 | [Community read metric duplicate observed alongside smoke ECONNRESET](open/2026-09-07-community-read-metric-concurrency.md) | active work in the same scope |
 | P2 | [Preserve force refresh in daily route background jobs](open/2026-09-10-daily-route-force-refresh.md) | active work in the same scope |
+| P2 | [讓 pet-friendly 與社群內容頁先 SSR 再開放索引](open/2026-09-10-seo-open-content-pages.md) | depends on 2026-09-10-seo-index-directives |
+| P3 | [Lighthouse SEO 與效能門檻 workflow](open/2026-09-10-seo-lighthouse-workflow.md) | depends on 2026-09-10-seo-robots-sitemap, 2026-09-10-seo-destination-landing-pages, 2026-09-10-seo-server-render-home-and-explore |
 
 ## Recently finished
 
