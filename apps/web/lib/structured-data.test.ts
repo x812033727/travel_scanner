@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { siteUrl } from "@/lib/seo";
-import { breadcrumbs, organization, webSite } from "@/lib/structured-data";
+import { breadcrumbs, itemList, organization, touristDestination, webSite } from "@/lib/structured-data";
 
 const parse = (value: object) => JSON.parse(JSON.stringify(value));
 
@@ -43,5 +43,51 @@ describe("breadcrumbs", () => {
       { "@type": "ListItem", position: 1, name: "首頁", item: `${siteUrl}/zh-TW` },
       { "@type": "ListItem", position: 2, name: "熱門景點", item: `${siteUrl}/zh-TW/hotspots` },
     ]);
+  });
+});
+
+describe("itemList", () => {
+  it("numbers entries from one and resolves each URL for the locale", () => {
+    const data = parse(itemList("ja", [
+      { name: "東京", path: "/destinations/tokyo" },
+      { name: "ソウル", path: "/destinations/seoul" },
+    ]));
+    expect(data["@type"]).toBe("ItemList");
+    expect(data.itemListElement).toEqual([
+      { "@type": "ListItem", position: 1, name: "東京", url: `${siteUrl}/ja/destinations/tokyo` },
+      { "@type": "ListItem", position: 2, name: "ソウル", url: `${siteUrl}/ja/destinations/seoul` },
+    ]);
+  });
+});
+
+describe("touristDestination", () => {
+  const tokyo = {
+    name: "Tokyo", path: "/destinations/tokyo", description: "A dense, legible first trip to Japan.",
+    country: "Japan", alternateName: ["東京", "Tokyo"], center: { latitude: 35.6812, longitude: 139.7671 },
+  };
+
+  it("describes the place, its country and its coordinates", () => {
+    const data = parse(touristDestination("en", tokyo));
+    expect(data["@type"]).toBe("TouristDestination");
+    expect(data.url).toBe(`${siteUrl}/en/destinations/tokyo`);
+    expect(data.inLanguage).toBe("en");
+    expect(data.containedInPlace).toEqual({ "@type": "Country", name: "Japan" });
+    expect(data.geo).toEqual({ "@type": "GeoCoordinates", latitude: 35.6812, longitude: 139.7671 });
+  });
+
+  it("does not repeat the heading as an alternate name", () => {
+    // english_name matches `name` on the English page; the original script is the useful half.
+    expect(parse(touristDestination("en", tokyo)).alternateName).toEqual(["東京"]);
+  });
+
+  it("leaves out fields the catalog has no value for, rather than emitting empty ones", () => {
+    const data = parse(touristDestination("ko", {
+      name: "가마쿠라", path: "/destinations/kamakura", description: "", country: "", center: null,
+    }));
+    expect(data).not.toHaveProperty("description");
+    expect(data).not.toHaveProperty("containedInPlace");
+    expect(data).not.toHaveProperty("geo");
+    expect(data).not.toHaveProperty("alternateName");
+    expect(data.name).toBe("가마쿠라");
   });
 });

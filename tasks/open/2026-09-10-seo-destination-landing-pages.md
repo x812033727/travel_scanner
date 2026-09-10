@@ -1,14 +1,14 @@
 ---
 id: 2026-09-10-seo-destination-landing-pages
 title: 目的地索引頁與城市指南落地頁
-status: open
+status: review
 priority: P1
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5-seo
+claimed_at: 2026-09-10T17:50:09Z
 created_at: 2026-09-10T16:43:42Z
 completed_at:
-branch:
+branch: claude/seo-optimization-planning-xq1vjl
 depends_on:
   - 2026-09-10-seo-canonical-hreflang
   - 2026-09-10-seo-robots-sitemap
@@ -54,41 +54,41 @@ hotspots / foods / 行程規劃導流。
 
 ## Definition of done
 
-- [ ] `/{locale}/destinations` 依國家分組列出所有目的地，每筆連到自己的指南頁。
-- [ ] `/{locale}/destinations/{id}` 伺服器端渲染出：在地化城市名的 `<h1>`、為什麼去、區域清單、
+- [x] `/{locale}/destinations` 依國家分組列出所有目的地，每筆連到自己的指南頁。
+- [x] `/{locale}/destinations/{id}` 伺服器端渲染出：在地化城市名的 `<h1>`、為什麼去、區域清單、
       建議天數、時區與貨幣、熱門景點、代表店家。
-- [ ] 景點與店家**出現在原始 HTML 裡**（關掉 JS 也看得到），不是 hydration 後才 fetch。
-- [ ] 兩頁都有正確的 canonical、五語系 hreflang 與 `x-default`（沿用 `lib/seo.ts`）。
-- [ ] 兩頁都有 `BreadcrumbList`；指南頁另有 `TouristDestination`（`geo` 用 `center`）與景點 `ItemList`。
-- [ ] `role: "extension"` 的目的地 canonical 指向其 `parent_destination_id` 的指南頁，不與母目的地互相競爭。
-- [ ] 未知的 `destinationId` 回 404（`notFound()`），不是空白頁。
-- [ ] 後端不可用時頁面仍可渲染核心目錄內容，景點／店家區塊優雅缺席。
-- [ ] `npm run check:i18n` 與未經修改的 `metadata.test.ts` 都通過。
-- [ ] `npm run build:web` 通過，與既有的 `/{locale}/destinations/{id}/services` 沒有路由衝突。
+- [x] 景點與店家**出現在原始 HTML 裡**（關掉 JS 也看得到），不是 hydration 後才 fetch。
+- [x] 兩頁都有正確的 canonical、五語系 hreflang 與 `x-default`（沿用 `lib/seo.ts`）。
+- [x] 兩頁都有 `BreadcrumbList`；指南頁另有 `TouristDestination`（`geo` 用 `center`）與景點 `ItemList`。
+- [x] ~~`role: "extension"` 的目的地 canonical 指向其 `parent_destination_id`~~ —— **這一條做到一半推翻了，改成每個目的地都 canonical 指向自己**，理由見 Notes。母子關係改用雙向內部連結表達。
+- [x] 未知的 `destinationId` 回 404（`notFound()`），不是空白頁。
+- [x] 後端不可用時頁面仍可渲染核心目錄內容，景點／店家區塊優雅缺席。
+- [x] `npm run check:i18n` 與未經修改的 `metadata.test.ts` 都通過。
+- [x] `npm run build:web` 通過，與既有的 `/{locale}/destinations/{id}/services` 沒有路由衝突。
 
 ## Steps
 
-- [ ] **第一步先驗證路由能共存**：放一個空的 `app/[locale]/destinations/[destinationId]/page.tsx`
+- [x] **第一步先驗證路由能共存**：放一個空的 `app/[locale]/destinations/[destinationId]/page.tsx`
       跑一次 `npm run build:web`，確認沒有跟 route group 底下的 `/services` 衝突，再開始寫內容。
-- [ ] `apps/web/lib/destinations.server.ts`：照 `lib/hotspots.server.ts` 的既有形態
+- [x] `apps/web/lib/destinations.server.ts`：照 `lib/hotspots.server.ts` 的既有形態
       （`API_INTERNAL_URL` + `X-Travel-Locale` header + `try/catch` 回 `null` + React `cache()` 去重），
       加上 `next: { revalidate: 3600 }`（目錄大約一季才變一次）。
       指南頁另外取 `GET /api/v1/hotspots/rankings?destination_id={id}&limit=12`（`revalidate: 900`）
       與 `GET /api/v1/foods/merchants?destination_id={id}&limit=12`。
       目錄查詢失敗時 fallback 到 `apps/web/lib/destinations.ts` 的離線副本。
-- [ ] `apps/web/lib/destinations-copy.ts`：區塊標題等版面文案，locale-keyed TS 物件，
+- [x] `apps/web/lib/destinations-copy.ts`：區塊標題等版面文案，locale-keyed TS 物件，
       形態比照既有的 `lib/discovery-copy.ts` / `lib/stay22-script-copy.ts` / `lib/frontend-flow-copy.ts`。
       **不要新增 `messages/` namespace**（理由見 Notes）。
-- [ ] `apps/web/components/destination-guide.tsx`：純呈現，一個 `<h1>` + 數個 `<h2>` 分區
+- [x] `apps/web/components/destination-guide.tsx`：純呈現，一個 `<h1>` + 數個 `<h2>` 分區
       （住哪裡 / 看什麼 / 吃什麼 / 規劃行程 / 鄰近延伸），內部連結指向
       `/{locale}/hotspots?destination_id={id}&area=…`、`/{locale}/foods`、
       既有的 `/{locale}/destinations/{id}/services`、以及 `/search/new`。
       母目的地用 `extension_ids` 連向延伸目的地，延伸目的地反向連回母目的地。
-- [ ] 兩個 `page.tsx`。指南頁用 `if (!PUBLIC_DESTINATIONS.includes(destinationId)) notFound();` 驗證，
+- [x] 兩個 `page.tsx`。指南頁用 `if (!PUBLIC_DESTINATIONS.includes(destinationId)) notFound();` 驗證，
       形態與既有的 services 頁一致。
-- [ ] 五個 `messages/*/metadata.json` 補 `destinationsTitle`、`destinationsDescription` **兩個 key**。
-- [ ] 把 `/destinations` 與 33 筆指南頁 append 進 `app/sitemap.ts` 的 `SITEMAP_ROUTES`。
-- [ ] 掛上 `2026-09-10-seo-structured-data` 建好的 `StructuredData` 與 builder。
+- [x] 五個 `messages/*/metadata.json` 補 `destinationsTitle`、`destinationsDescription` **兩個 key**。
+- [x] 把 `/destinations` 與 33 筆指南頁 append 進 `app/sitemap.ts` 的 `SITEMAP_ROUTES`。
+- [x] 掛上 `2026-09-10-seo-structured-data` 建好的 `StructuredData` 與 builder。
 
 ## How to verify
 
@@ -141,3 +141,70 @@ curl -s -o /dev/null -w '%{http_code}\n' localhost:3000/zh-TW/destinations/not-a
 - 導覽列或頁尾的入口刻意不做：那需要五個 `navigation.json`，正好是看板上第一順位的
   `2026-09-06-legal-content-from-owner` 的 scope。首頁的城市 chip 改指目的地頁則屬於
   `2026-09-10-seo-server-render-home-and-explore`（它持有 `app/[locale]/page.tsx`）。
+
+### 實作結果（2026-09-10, claude-opus-5-seo）
+
+**路由共存已由 build 證實。** `npm run build:web` 同時列出三條：
+
+```
+├ ƒ /[locale]/destinations
+├ ƒ /[locale]/destinations/[destinationId]
+├ ƒ /[locale]/destinations/[destinationId]/services
+```
+
+新的指南頁在 `app/[locale]/`，`/services` 在 `app/(stay22-public)/[locale]/` route group，兩個 root layout
+並存沒有衝突。實測 `/zh-TW/destinations/tokyo/services` 仍回 200。動態 segment 必須叫
+`[destinationId]`（與既有那條一致），否則 Next 會報 "different slug names for the same dynamic path"。
+
+**推翻了原本的 extension canonical 設計。** 原訂 `role: "extension"` 的目的地 canonical 指向母目的地。
+實作完、驗證通過之後才想清楚這是錯的：rel=canonical 是給**重複或近乎重複**的頁面用的，而橫濱和東京
+是兩個不同城市——名稱、座標、內容都不同。把橫濱 canonical 到東京，若 Google 採信就等於主動讓一個
+合法頁面消失；若不採信（更可能，因為兩頁並不重複）則是一段無效標記。extension 真正的風險是
+**內容單薄**，而單薄的解法是補內容或 noindex，不是跨頁 canonical。
+
+改成每一頁都 canonical 指向自己，母子關係用雙向內部連結（指南頁的「鄰近目的地」區塊）表達。
+這也讓 sitemap 保持誠實：列進去的每一條都是自己的 canonical。
+
+**站台文案沒有開新的 `messages/` namespace。** 區塊標題放在 `lib/destinations-copy.ts`，形態比照
+`lib/stay22-script-copy.ts`。只有 `destinationsTitle` / `destinationsDescription` 兩個 key 進
+`messages/metadata.json`，因為 `metadata.test.ts` 只認那裡——而它會自動走訪找到新的
+`destinations/page.tsx` 並要求五語系都有唯一的 title/description，這次 1775 個測試全綠代表它滿意了。
+
+**跨任務落地的兩處**（兩個任務都仍由本人持有，同一個分支）：
+
+- `lib/structured-data.ts` 補上 `itemList` 與 `touristDestination` 兩個 builder（含測試）。
+  `2026-09-10-seo-structured-data` 當時刻意沒做，理由是「沒有帶 URL 的清單項目就不值得標記」；
+  目的地索引頁正是第一個項目真的有自己網址的清單，條件成立了。
+- `app/sitemap.ts` 補上 `/destinations` 與 33 條 `/destinations/{id}`。指南頁 priority 0.7、
+  `/services` 維持 0.4——後者是同一座城市的聯盟住宿目錄，該排在自己的指南頁下面。
+
+**API 契約逐欄確認過**：`GET /api/v1/destinations`（`apps/api/app/places/router.py:292`）依
+`X-Travel-Locale` 一次回齊 city / local_name / english_name / country / areas / reason /
+recommended_days / timezone / currency / center / role / parent_destination_id / extension_ids，
+而 `apps/api/app/destinations/localized.py` 有 `validate_localized_catalog()` 保證 33 個目的地
+× 5 語系齊備。所以這兩頁不需要自己的城市名翻譯表。
+
+**降級行為**：索引頁在 API 讀不到時退回 `lib/destinations.ts` 的離線副本（19 個城市，名稱取自
+`search.catalog`）——少幾個城市好過一片空白。指南頁不同：已知的 destination 卻讀不到目錄資料時
+**丟例外**，讓 Next 回 5xx。404 會邀請 Google 把一個真實頁面移出索引，空白的 200 會被當成薄內容收錄，
+5xx 才是「稍後再來」。
+
+### 驗證紀錄
+
+`npm run lint:web`、`npm run check:i18n`、`npm run typecheck:web` 通過；
+`npm run test:web` 203 個檔案 1775 個測試全綠；`npm run build:web` 通過。
+新增 28 個測試（server loader 11、guide 元件 7、copy 10），其中 copy 測試有一條專門抓
+「key 齊全但內容還是英文」的情形。
+
+因為本機沒有後端，另外寫了一支 stub API（scratchpad，未進 repo）提供
+`/destinations`、`/hotspots/rankings`、`/foods/merchants`、`/runtime/site-visibility`，
+對 production build 實測：
+
+- `/zh-TW/destinations/tokyo` 的原始 HTML 含 `<h1>東京</h1>` 與五個 `<h2>`（住哪一區／看什麼／
+  吃什麼／規劃這趟行程／鄰近目的地），景點「淺草寺」「澀谷 Sky」、店家「一蘭 新宿」、
+  以及 `Asia/Tokyo`、`JPY`、`4–6` 全部在伺服器輸出裡，不是 hydration 後才出現。
+- canonical 指向自己，五語系 hreflang + `x-default` 齊全。
+- `TouristDestination` 帶 description、`alternateName: ["東京"]`（英文頁上與 name 相同的
+  `english_name` 被濾掉）、`containedInPlace`、`geo`。索引頁帶 `ItemList` 與 `BreadcrumbList`。
+- `/zh-TW/destinations/not-a-city` 回 404；`/zh-TW/destinations/tokyo/services` 回 200。
+- `/en`、`/ja` 的城市名與頁面標題都跟著語系變（`<title>旅行先ガイド｜Mokaair</title>`）。

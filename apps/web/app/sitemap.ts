@@ -38,6 +38,14 @@ export const SITEMAP_ROUTES: readonly SitemapRoute[] = [
   { path: "/flights/status", priority: 0.5, changeFrequency: "weekly" },
   { path: "/pricing", priority: 0.5, changeFrequency: "monthly" },
   { path: "/labs/airlines", priority: 0.4, changeFrequency: "weekly" },
+  { path: "/destinations", priority: 0.6, changeFrequency: "weekly" },
+  // The guides are the destination-scoped content; the services pages are an affiliate lodging
+  // directory for the same city, so they rank below their own guide rather than beside it.
+  ...PUBLIC_DESTINATIONS.map((id) => ({
+    path: `/destinations/${id}`,
+    priority: 0.7,
+    changeFrequency: "weekly" as const,
+  })),
   ...PUBLIC_DESTINATIONS.map((id) => ({
     path: `/destinations/${id}/services`,
     priority: 0.4,

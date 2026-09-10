@@ -61,3 +61,45 @@ export function breadcrumbs(locale: Locale, trail: readonly Crumb[]): object {
     })),
   };
 }
+
+/** A list whose entries have their own pages. Entries without a URL are left unmarked: a
+ *  ListItem a crawler cannot follow is not worth describing. */
+export function itemList(locale: Locale, items: readonly Crumb[]): object {
+  return {
+    "@context": CONTEXT,
+    "@type": "ItemList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      url: localeUrl(locale, item.path),
+    })),
+  };
+}
+
+export function touristDestination(
+  locale: Locale,
+  input: {
+    name: string;
+    path: string;
+    description: string;
+    country: string;
+    alternateName?: readonly string[];
+    center?: { latitude: number; longitude: number } | null;
+  },
+): object {
+  const alternateName = (input.alternateName ?? []).filter((value) => value && value !== input.name);
+  return {
+    "@context": CONTEXT,
+    "@type": "TouristDestination",
+    name: input.name,
+    url: localeUrl(locale, input.path),
+    inLanguage: locale,
+    ...(input.description ? { description: input.description } : {}),
+    ...(alternateName.length ? { alternateName } : {}),
+    ...(input.country ? { containedInPlace: { "@type": "Country", name: input.country } } : {}),
+    ...(input.center
+      ? { geo: { "@type": "GeoCoordinates", latitude: input.center.latitude, longitude: input.center.longitude } }
+      : {}),
+  };
+}
