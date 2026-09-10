@@ -1,13 +1,13 @@
 ---
 id: 2026-09-10-korea-dual-maps
 title: Korea dual map identities and transport navigation
-status: review
+status: done
 priority: P1
 area: api
 owner: codex-korea-dual-maps
 claimed_at: 2026-09-10T03:20:08Z
 created_at: 2026-09-10T03:19:53Z
-completed_at:
+completed_at: 2026-09-10T04:50:15Z
 branch: codex/korea-dual-maps
 depends_on: []
 scope:
@@ -106,8 +106,8 @@ identities. Existing Korean publication and coordinate-evidence gates stay intac
 - [x] Human-reviewed Google candidate batches never auto-publish or rewrite canonical coordinates.
 - [x] Map/navigation changes never query paid routes or mutate trip version.
 - [x] Local checks, production build and desktop/mobile fixture verification completed.
-- [ ] GitHub PostgreSQL/Redis migration, container and full-stack CI gates pass.
-- [ ] Deliver reviewed change; merge and deployment need separate authorization.
+- [x] GitHub PostgreSQL/Redis migration, container and full-stack CI gates pass.
+- [x] Deliver reviewed change; merge and deployment need separate authorization.
 
 ## Steps
 
@@ -116,7 +116,7 @@ identities. Existing Korean publication and coordinate-evidence gates stay intac
 - [x] korea_routing_frontend: map/panel/navigation, five locales and browser fixtures.
 - [x] korea_catalog_frontend: admin review/forms and catalog dual-map links.
 - [x] Review combined changes, regression checks and documentation.
-- [ ] Publish implementation branch and report CI/release boundaries.
+- [x] Publish implementation branch and report CI/release boundaries.
 
 ## How to verify
 
@@ -169,3 +169,30 @@ playwright-fixture-seoul-390.png and playwright-fixture-busan-1280.png.
 These are labelled API/SDK fixture images, not the installed-Chrome evidence
 or proof of live provider operation.
 Full-suite/final production-build E2E and CI remain root-owned release gates.
+
+Release follow-up (2026-09-10): PR #386 merged with the head-commit guard after
+all 12 branch/PR checks passed. Exact reviewed head d9b1700d129ff2f37ba4352772de56946dc656d8;
+merge commit fe26ff8c9fa7ee8fccdd6f317e389d4260adc4f5. The authoritative PR CI
+run 34436632965 passed API 3073 tests (15 skips), web 1568 tests, 418 browser
+tests, containers and the real PostgreSQL/Redis/RQ full-stack smoke. This
+supersedes the earlier local partial-suite evidence above. The user separately
+authorized merge and deployment; production activation waits for post-merge
+main CI run 34438101893. No provider or catalog activation is authorized by
+the deployment request. The original dirty checkout remains untouched.
+
+Deployment completed at 2026-09-10T04:54:51Z after main CI 34438101893 and the
+Planner UX/discovery workflows passed. All eight pre-existing application
+services use fe26ff8c9fa7ee8fccdd6f317e389d4260adc4f5 images. The manual
+deployment held both host locks, preserved the existing project/runtime and
+PostgreSQL/Redis containers/volumes, and verified a private 15,901,774-byte
+custom-format dump with pg_restore --list before migration. Runtime checksum
+is unchanged. Schema is 0070_map_identity_metadata; the added JSON column is
+NOT NULL with empty-object default and zero NULL rows. API readiness and local
+plus public planner checks passed three consecutive times. Seoul/Busan food,
+Seoul hotspot/hotel APIs and public home/planner/food/hotspot pages returned
+200; the new admin identity route rejects unauthenticated access with 401.
+The first page probe used the nonexistent /zh-TW/hotels URL and got the
+expected 404; the actual hotel entry is /zh-TW/destinations/{city}/services.
+No real provider lookup, credential change, catalog approval or data import
+was performed. Old-image fallback alone would fail the strict schema readiness
+check after 0070; no rollback or automatic database restore was performed.
