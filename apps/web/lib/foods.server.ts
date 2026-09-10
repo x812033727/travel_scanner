@@ -15,14 +15,23 @@ import { cache } from "react";
 export type InitialFoods = {
   cities: unknown | null;
   categories: unknown | null;
+  merchants: unknown | null;
 };
 
-const EMPTY: InitialFoods = { cities: null, categories: null };
+const EMPTY: InitialFoods = { cities: null, categories: null, merchants: null };
 
-async function fetchJson(url: string, locale: string): Promise<unknown | null> {
+/**
+ * Cached, not `no-store`. Cities, categories and the unfiltered merchant page are public and
+ * identical for every reader, so going back to origin on each request only adds to TTFB, which
+ * lands in LCP. The taxonomy moves rarely; the merchant listing moves daily.
+ */
+const TAXONOMY_TTL = 3600;
+const LISTING_TTL = 900;
+
+async function fetchJson(url: string, locale: string, revalidate: number): Promise<unknown | null> {
   try {
     const response = await fetch(url, {
-      cache: "no-store",
+      next: { revalidate },
       headers: { Accept: "application/json", "X-Travel-Locale": locale },
     });
     if (!response.ok) return null;
@@ -36,12 +45,16 @@ async function fetchJson(url: string, locale: string): Promise<unknown | null> {
 
 export async function loadInitialFoods(locale: string): Promise<InitialFoods> {
   const apiBase = (process.env.API_INTERNAL_URL || "http://localhost:8000").replace(/\/$/, "");
-  const [cities, categories] = await Promise.all([
-    fetchJson(`${apiBase}/api/v1/foods/cities`, locale),
-    fetchJson(`${apiBase}/api/v1/foods/categories`, locale),
+  const [cities, categories, merchants] = await Promise.all([
+    fetchJson(`${apiBase}/api/v1/foods/cities`, locale, TAXONOMY_TTL),
+    fetchJson(`${apiBase}/api/v1/foods/categories`, locale, TAXONOMY_TTL),
+    // Only the unfiltered first page. A reader arriving with filters in the address bar gets
+    // their own query on mount, and a crawler -- which arrives without any -- gets the merchants
+    // in the HTML instead of a page of filter controls with nothing behind them.
+    fetchJson(`${apiBase}/api/v1/foods/merchants?limit=20`, locale, LISTING_TTL),
   ]);
   if (!cities) return EMPTY;
-  return { cities, categories };
+  return { cities, categories, merchants };
 }
 
 export const getInitialFoods = cache(loadInitialFoods);

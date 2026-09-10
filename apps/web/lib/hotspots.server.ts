@@ -24,10 +24,17 @@ export type HotspotFilters = {
 
 const EMPTY: InitialHotspots = { ranking: null, facets: null };
 
+/**
+ * Cached, not `no-store`. The ranking and the facets are public, identical for every reader and
+ * recomputed daily upstream, so a round trip per request bought nothing and went straight into
+ * TTFB and therefore LCP.
+ */
+const RANKING_TTL = 900;
+
 async function fetchJson(url: string, locale: string): Promise<unknown | null> {
   try {
     const response = await fetch(url, {
-      cache: "no-store",
+      next: { revalidate: RANKING_TTL },
       headers: { Accept: "application/json", "X-Travel-Locale": locale },
     });
     if (!response.ok) return null;

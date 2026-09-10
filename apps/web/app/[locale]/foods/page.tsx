@@ -25,7 +25,7 @@ export default async function FoodsPage({ params }: { params: Promise<{ locale: 
       <SiteHeader />
       <StructuredData data={breadcrumbs(locale, [{ name: nav("home"), path: "/" }, { name: nav("foods"), path: "/foods" }])} />
       <ExploreSwitch />
-      <FoodBrowser initialCities={initial.cities} initialCategories={initial.categories} />
+      <FoodBrowser initialCities={initial.cities} initialCategories={initial.categories} initialMerchants={initial.merchants} />
     </>
   );
 }

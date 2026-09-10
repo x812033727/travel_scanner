@@ -35,6 +35,10 @@ function isCitiesResponse(value: unknown): value is FoodCitiesResponse {
   return Array.isArray(candidate.countries);
 }
 
+function isMerchantsResponse(value: unknown): value is FoodMerchantsResponse {
+  return typeof value === "object" && value !== null && Array.isArray((value as FoodMerchantsResponse).items);
+}
+
 function isCategoriesResponse(value: unknown): value is FoodCategoriesResponse {
   if (typeof value !== "object" || value === null) return false;
   return Array.isArray((value as Partial<FoodCategoriesResponse>).items);
@@ -45,9 +49,10 @@ function isCategoriesResponse(value: unknown): value is FoodCategoriesResponse {
  * not depend on any filter. The city chooser is 2,492 pixels tall on a phone, so arriving
  * after hydration meant shoving the whole page down about four seconds in.
  */
-export function FoodBrowser({ initialCities, initialCategories }: {
+export function FoodBrowser({ initialCities, initialCategories, initialMerchants }: {
   initialCities?: unknown;
   initialCategories?: unknown;
+  initialMerchants?: unknown;
 } = {}) {
   const t = useTranslations("foods");
   const tCommon = useTranslations("common");
@@ -67,7 +72,11 @@ export function FoodBrowser({ initialCities, initialCategories }: {
   const queryValue = queryInput ?? filters.query;
   const [countries, setCountries] = useState<FoodCountry[]>(seededCities ?? []);
   const [siteCategories, setSiteCategories] = useState<FacetCategory[]>(seededCategories ?? []);
-  const [result, setResult] = useState<FoodMerchantsResponse | null>(null);
+  const seededMerchants = useMemo(
+    () => (isMerchantsResponse(initialMerchants) ? initialMerchants : null),
+    [initialMerchants],
+  );
+  const [result, setResult] = useState<FoodMerchantsResponse | null>(seededMerchants);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
   // Kept apart from `error`: losing the city list must not blank the merchants.
@@ -100,10 +109,13 @@ export function FoodBrowser({ initialCities, initialCategories }: {
     // Later replaceState calls change the snapshot; only the first client value seeds the list.
     if (search === null || hydrated.current) return;
     hydrated.current = true;
+    // The server only fetches the unfiltered page, so it is reusable exactly when this reader
+    // arrived without filters too. Anything in the address bar needs its own query.
+    if (seededMerchants && merchantsQuery(initialFilters) === merchantsQuery(readFoodBrowserFilters(""))) return;
     api<FoodMerchantsResponse>(`/foods/merchants?${merchantsQuery(initialFilters)}`)
       .then(setResult)
       .catch((reason: Error) => setError(reason.message));
-  }, [initialFilters, search]);
+  }, [initialFilters, search, seededMerchants]);
 
   useSharedAnchor(Boolean(result?.items.length));
 

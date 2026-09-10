@@ -1,14 +1,14 @@
 ---
 id: 2026-09-10-seo-public-data-caching
 title: 公開資料改用 revalidate 快取，並把 /foods 店家列表放進 SSR
-status: open
+status: review
 priority: P2
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5-seo
+claimed_at: 2026-09-10T18:08:12Z
 created_at: 2026-09-10T16:43:50Z
 completed_at:
-branch:
+branch: claude/seo-optimization-planning-xq1vjl
 depends_on: []
 scope:
   - apps/web/lib/hotspots.server.ts
@@ -16,6 +16,8 @@ scope:
   - apps/web/lib/foods.server.ts
   - apps/web/lib/foods.server.test.ts
   - apps/web/components/food-browser.tsx
+  - apps/web/components/food-browser-seed.test.tsx
+  - apps/web/app/[locale]/foods/page.tsx
 ---
 
 # 公開資料改用 revalidate 快取，並把 /foods 的店家列表放進 SSR
@@ -40,19 +42,19 @@ scope:
 
 ## Definition of done
 
-- [ ] 公開資料取用改成 `fetch(url, { next: { revalidate: N } })`，不再是 `cache: "no-store"`。
-- [ ] `/{locale}/foods` 的伺服器端 HTML 含店家列表第一頁。
-- [ ] 個人化或帶登入身分的請求**維持** `no-store`，不得被快取污染。
-- [ ] 後端不可用時各頁的降級行為不變（回 null、頁面照樣渲染）。
+- [x] 公開資料取用改成 `fetch(url, { next: { revalidate: N } })`，不再是 `cache: "no-store"`。
+- [x] `/{locale}/foods` 的伺服器端 HTML 含店家列表第一頁。
+- [x] 個人化或帶登入身分的請求**維持** `no-store`，不得被快取污染。
+- [x] 後端不可用時各頁的降級行為不變（回 null、頁面照樣渲染）。
 
 ## Steps
 
-- [ ] `lib/foods.server.ts` 加第三支 server fetch（`/foods/merchants?limit=20`），
+- [x] `lib/foods.server.ts` 加第三支 server fetch（`/foods/merchants?limit=20`），
       以 `initialMerchants` 傳進 `FoodBrowser`，比照 `HotspotExplorer` 收 `initialRanking` 的形狀。
-- [ ] `FoodBrowser` 接受 `initialMerchants` 當首屏資料，掛載後仍照舊依篩選條件重新查詢。
-- [ ] 為每一支公開端點挑一個合理的 `revalidate`：目的地目錄約一季才動一次（3600s 以上），
+- [x] `FoodBrowser` 接受 `initialMerchants` 當首屏資料，掛載後仍照舊依篩選條件重新查詢。
+- [x] 為每一支公開端點挑一個合理的 `revalidate`：目的地目錄約一季才動一次（3600s 以上），
       景點排行 900s，店家目錄 900s。`site-visibility` 是功能開關，維持 `no-store`。
-- [ ] 補測試涵蓋「初始資料有渲染出來」與「快取選項正確」。
+- [x] 補測試涵蓋「初始資料有渲染出來」與「快取選項正確」。
 
 ## How to verify
 
@@ -76,3 +78,41 @@ curl -s localhost:3000/zh-TW/foods | head -c 4000     # 必須看得到店家名
   （`hotel-offer-card.tsx`、`search-experience.tsx`、`account-list.tsx`、`trip-editor.tsx`、
   `shared-trip-view.tsx`）都已明確帶 `unoptimized`，而且五個全在登入後、掛 `noindex` 的頁面上，
   加 `remotePatterns` 既不會生效也不會改善任何可索引頁的 CWV。
+
+### 實作結果（2026-09-10, claude-opus-5-seo）
+
+- `lib/hotspots.server.ts` 與 `lib/foods.server.ts` 的 `cache: "no-store"` 換成
+  `next: { revalidate }`：分類與城市清單 3600 秒（很少變），排行與店家清單 900 秒（每天變）。
+  `site-visibility` 與 `site-pages` 不動——前者是功能開關，後者本來就 `no-store` 且有自己的理由。
+- `/foods` 的伺服器端多取一支 `/foods/merchants?limit=20`（**只取無篩選的第一頁**），
+  以 `initialMerchants` 傳進 `FoodBrowser`，形態比照既有的 `initialRanking` 餵 `HotspotExplorer`。
+  客戶端只在「這位讀者也沒有帶篩選條件」時才重用它，判斷方式是
+  `merchantsQuery(initialFilters) === merchantsQuery(readFoodBrowserFilters(""))`；
+  網址帶了篩選就照舊自己查。爬蟲一律是無篩選進來，所以它拿到的是有內容的頁面而不是一排空篩選器。
+- 客戶端測試另開 `components/food-browser-seed.test.tsx`，因為既有的
+  `components/food-browser.test.tsx` 屬於 `2026-09-07-merchant-style-discovery` 的 scope。
+
+### 驗證時踩到的兩個坑（都值得記下來）
+
+1. **Next 的 fetch cache 存在 `.next/cache/fetch-cache`，重啟 server 也不會清掉。**
+   第一次驗證時 stub API 完全沒收到 `/foods/merchants` 請求，但 HTML 裡卻有店家名稱——
+   因為那是更早一輪跑出來、寫進磁碟的快取。要驗「冷啟動會不會真的去取」必須先
+   `rm -rf .next/cache/fetch-cache`。
+2. **舊的 `next start` 佔著 3000 埠時，新的啟動會失敗但 curl 照樣有回應**，量到的是舊 build。
+   這一輪又中了一次。另外 `pgrep -f 'next-server'` 會匹配到執行這行指令的 shell 自己，
+   把自己殺掉；用 `PAT=$(printf 'next-%s' server)` 之類在執行期才組出字串的寫法可以避開。
+
+### 驗證紀錄
+
+`npm run lint:web`、`npm run typecheck:web` 通過；`npm run test:web` 206 個檔案 1791 個測試全綠。
+新增 12 個測試（foods.server 5、hotspots.server 3、food-browser 種子 4）。
+
+清空 `.next/cache/fetch-cache` 後對 production build 實測：
+
+- 冷啟動載入 `/ko/foods`，stub 收到三支請求，全部帶 `locale=ko`：
+  `/foods/cities`、`/foods/categories`、`/foods/merchants?limit=20`，
+  而店家名稱出現在伺服器輸出的 HTML 裡。
+- 同一頁再載入兩次，stub 收到 **0** 支 `/api/v1/foods` 請求。
+- **快取有依語系分開**：`/zh-TW/foods` 顯示「一蘭 新宿」、`/en/foods` 顯示 "Ichiran Shinjuku"，
+  `/zh-TW/hotspots` 顯示「淺草寺」、`/en/hotspots` 顯示 "Sensoji"，`locale=ko` 也是獨立取一次。
+  這一點特別確認過——共用快取若只用 URL 當 key，就會把某個語系的資料餵給其他語系的讀者。
