@@ -1,13 +1,13 @@
 ---
 id: 2026-09-10-korea-dual-maps
 title: Korea dual map identities and transport navigation
-status: review
+status: done
 priority: P1
 area: api
 owner: codex-korea-dual-maps
 claimed_at: 2026-09-10T03:20:08Z
 created_at: 2026-09-10T03:19:53Z
-completed_at:
+completed_at: 2026-09-10T05:34:25Z
 branch: codex/korea-dual-maps
 depends_on: []
 scope:
@@ -106,8 +106,8 @@ identities. Existing Korean publication and coordinate-evidence gates stay intac
 - [x] Human-reviewed Google candidate batches never auto-publish or rewrite canonical coordinates.
 - [x] Map/navigation changes never query paid routes or mutate trip version.
 - [x] Local checks, production build and desktop/mobile fixture verification completed.
-- [ ] GitHub PostgreSQL/Redis migration, container and full-stack CI gates pass.
-- [ ] Deliver reviewed change; merge and deployment need separate authorization.
+- [x] GitHub PostgreSQL/Redis migration, container and full-stack CI gates pass.
+- [x] Deliver reviewed change; merge and deployment separately authorized and verified.
 
 ## Steps
 
@@ -116,7 +116,7 @@ identities. Existing Korean publication and coordinate-evidence gates stay intac
 - [x] korea_routing_frontend: map/panel/navigation, five locales and browser fixtures.
 - [x] korea_catalog_frontend: admin review/forms and catalog dual-map links.
 - [x] Review combined changes, regression checks and documentation.
-- [ ] Publish implementation branch and report CI/release boundaries.
+- [x] Publish implementation branch and report CI/release boundaries.
 
 ## How to verify
 
@@ -169,3 +169,14 @@ playwright-fixture-seoul-390.png and playwright-fixture-busan-1280.png.
 These are labelled API/SDK fixture images, not the installed-Chrome evidence
 or proof of live provider operation.
 Full-suite/final production-build E2E and CI remain root-owned release gates.
+
+Closure reconciled during PR385 integration with explicit confirmation from the
+owning task on 2026-09-10. PR386 is merged at fe26ff8c with all 12 branch/PR checks
+passing; the owner confirmed production deployment completed 04:54:51 UTC with
+schema0070, unchanged provider settings, health/readiness checks and a verified
+private backup. This supersedes the earlier pending CI/release notes above.
+The owner's detailed local closure is commit ffd78f2a in korea-dual-maps.
+No outstanding edits to admin-hotspots-panel.tsx or its test remain under this
+claim; the owner explicitly handed those files to PR385 integration. The separate
+Seoul transport-UI investigation does not use those files. This bookkeeping does
+not itself deploy or complete any remaining catalog/provider work.
