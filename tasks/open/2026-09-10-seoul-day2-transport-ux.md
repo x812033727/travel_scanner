@@ -1,7 +1,7 @@
 ---
 id: 2026-09-10-seoul-day2-transport-ux
 title: Seoul Day 2 transport settings and readable route details
-status: in-progress
+status: review
 priority: P1
 area: web
 owner: codex-seoul-day2-release
