@@ -551,14 +551,20 @@ test("route drawer queries an unapplied Tokyo transit route only explicitly with
   await expect(dialog.getByRole("button", { name: "套用此路線" })).toBeVisible();
   expect(previews).toBe(1);
   await expect(dialog.getByText("目前已套用")).toHaveCount(0);
+  await expect(dialog.locator(".route-map-frame")).toHaveCount(0);
+  await dialog.locator(".route-panel-map > summary").filter({ hasText: "查看地圖（起終點參考）" }).click();
   const mapHeight = await dialog.locator(".route-map-frame").evaluate((element) => element.getBoundingClientRect().height);
   expect(mapHeight).toBeGreaterThanOrEqual(220);
   expect(mapHeight).toBeLessThanOrEqual(320);
+  // Opening the secondary map must not query again or apply the preview.
+  expect(previews).toBe(1);
+  expect(currentTrip.version).toBe(4);
+  expect(currentTrip.route_segments).toEqual([]);
   const noHorizontalOverflow = await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth);
   expect(noHorizontalOverflow).toBe(true);
 });
 
-test("Seoul route drawer uses NAVER drive and keeps transit external-only", async ({ page }) => {
+test("Seoul route drawer uses NAVER drive and keeps empty transit results external-only", async ({ page }) => {
   test.setTimeout(60_000);
   const routeItems = [
     { id: "gyeongbokgung", item_type: "custom", day_date: "2026-11-13", position: 0, title: "景福宮", location_name: "서울특별시 종로구 사직로 161", latitude: 37.5796, longitude: 126.977, provider_place_id: "naver-palace", location_source: "naver_local_auto", location_provider: "naver_local", locked: false, fixed_time: false, is_estimated: true, start_time: "2026-11-13T00:00:00Z", duration_minutes: 60, data: { place_provider: "naver_local", needs_place_confirmation: true } },
@@ -566,7 +572,7 @@ test("Seoul route drawer uses NAVER drive and keeps transit external-only", asyn
   ];
   const carSegment = {
     from_item_id: "gyeongbokgung", to_item_id: "bukchon", status: "resolved", travel_mode: "drive", is_override: true,
-    provider: "naver_maps", attribution: "NAVER Maps", generated_at: "2026-09-01T01:00:00Z", expires_at: "2026-09-01T01:15:00Z",
+    provider: "naver_maps", attribution: "NAVER Maps", generated_at: "2026-09-01T01:00:00Z", expires_at: routePreviewExpiresAt(),
     schedule_mode: "preview", preference: "FEWER_TRANSFERS", duration_minutes: 12, buffer_minutes: 10,
     departure_time: "2026-11-13T01:00:00Z", arrival_time: "2026-11-13T01:12:00Z", ready_time: "2026-11-13T01:22:00Z",
     distance_meters: 4300, encoded_polyline: "_p~iF~ps|U_ulLnnqC_mqNvxq`@", maps_url: "https://map.naver.com/p/directions/126.977,37.5796,%EA%B2%BD%EB%B3%B5%EA%B6%81/126.985,37.5826,%EB%B6%81%EC%B4%8C/-/car",
@@ -578,6 +584,7 @@ test("Seoul route drawer uses NAVER drive and keeps transit external-only", asyn
     route_preference: "FEWER_TRANSFERS", share_enabled: false, items: routeItems, route_segments: [] as typeof carSegment[],
     routing: { status: "idle", total: 1, completed: 0, warnings: [], conflicts: [], day_settings: [{ day_date: "2026-11-13", default_travel_mode: "transit", default_buffer_minutes: 10, route_preference: "FEWER_TRANSFERS", auto_compute: true }] },
   };
+  const previews: Array<Record<string, unknown>> = [];
   let applyBody: Record<string, unknown> | undefined;
   await page.route("**/api/travel/runtime/public-config", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ google_routes_enabled: true, naver_directions_enabled: true, naver_dynamic_map_enabled: false }) }));
   await page.route("**/api/travel/affiliates/options**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ options: [] }) }));
@@ -585,6 +592,7 @@ test("Seoul route drawer uses NAVER drive and keeps transit external-only", asyn
     const url = route.request().url();
     if (url.endsWith("/routes/preview")) {
       const body = route.request().postDataJSON();
+      previews.push(body);
       if (body.travel_mode === "transit") {
         await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ kind: "external_only", preview_id: null, expires_at: null, segment: null, schedule_impact: null, external_navigation: { provider: "naver_maps", label: "NAVER Maps", travel_mode: "transit", app_url: "nmap://route/public?slat=37.5796&slng=126.977&dlat=37.5826&dlng=126.985", web_url: "https://map.naver.com/p/directions/126.977,37.5796,%EA%B2%BD%EB%B3%B5%EA%B6%81/126.985,37.5826,%EB%B6%81%EC%B4%8C/-/transit", reason: "NAVER 官方 Directions API 不提供可保存的大眾運輸班次；請到 NAVER Maps 查看。" } }) });
       } else {
@@ -604,19 +612,43 @@ test("Seoul route drawer uses NAVER drive and keeps transit external-only", asyn
   await page.goto("/zh-TW/trips/seoul-route-trip");
   await page.getByRole("button", { name: /^查看前往 北村韓屋村 的路線/ }).click();
   const dialog = page.getByRole("dialog", { name: "這段路怎麼走" });
+  expect(previews).toEqual([]);
   await dialog.getByRole("button", { name: "查詢交通方案", exact: true }).click();
-  await expect(dialog.getByRole("link", { name: /用 NAVER Maps 規劃/ })).toBeVisible();
-  await expect(dialog.getByRole("button", { name: "外部導航，無法套用" })).toBeDisabled();
+  const externalLink = dialog.getByRole("link", { name: "用 NAVER Maps 導航", exact: true });
+  await expect(externalLink).toBeVisible();
+  await expect(externalLink).toHaveAttribute("href", /^https:\/\/map\.naver\.com\/p\/directions\/126\.977,37\.5796,/);
+  await expect(externalLink).toHaveAttribute("target", "_blank");
+  await expect(externalLink).toHaveAttribute("rel", /noopener/);
+  await expect(externalLink).toHaveAttribute("rel", /noreferrer/);
+  await expect(dialog.locator(".route-apply-bar").getByRole("link", { name: "前往 NAVER Maps 查看（離開本站）", exact: true })).toHaveAttribute("href", await externalLink.getAttribute("href") as string);
+  await expect(dialog.getByRole("button", { name: "套用此路線", exact: true })).toHaveCount(0);
+  await expect(dialog.locator(".route-apply-selection")).not.toContainText("分鐘");
+  expect(previews).toEqual([expect.objectContaining({ version: 5, travel_mode: "transit" })]);
+  expect(applyBody).toBeUndefined();
+  expect(currentTrip.version).toBe(5);
+  expect(currentTrip.route_segments).toEqual([]);
   await dialog.getByRole("tab", { name: "汽車" }).click();
+  expect(previews).toHaveLength(1);
   await dialog.getByRole("button", { name: "查詢交通方案", exact: true }).click();
   await expect(dialog.getByRole("button", { name: "套用此路線" })).toBeEnabled();
-  await expect(dialog.getByText("NAVER Maps").first()).toBeVisible();
+  await expect(dialog.locator(".route-panel-detail").getByText("交通時間來源：NAVER Maps", { exact: true })).toBeVisible();
+  await expect(dialog.getByRole("list", { name: "詳細移動步驟", exact: true })).toContainText("사직로 방면으로 우회전");
+  expect(previews).toHaveLength(2);
+  expect(previews[1]).toMatchObject({ version: 5, travel_mode: "drive", buffer_minutes: 10 });
+  expect(applyBody).toBeUndefined();
+  expect(currentTrip.version).toBe(5);
   await dialog.getByRole("button", { name: "套用此路線" }).click();
   await expect.poll(() => applyBody).toMatchObject({ version: 5, source: "provider", preview_id: "naver-drive-preview" });
+  await expect(dialog.getByRole("button", { name: "目前已套用", exact: true })).toBeDisabled();
+  expect(currentTrip.version).toBe(6);
   await dialog.getByRole("button", { name: "關閉" }).click();
   await expect(page.getByRole("button", { name: /查看前往 北村韓屋村 的路線/ })).toContainText("汽車");
   await page.reload();
   await expect(page.getByRole("button", { name: /查看前往 北村韓屋村 的路線/ })).toContainText("汽車");
+  await page.getByRole("button", { name: /查看前往 北村韓屋村 的路線/ }).click();
+  await expect(dialog.getByRole("button", { name: "目前已套用", exact: true })).toBeDisabled();
+  await expect(dialog.locator(".route-panel-detail").getByText("交通時間來源：NAVER Maps", { exact: true })).toBeVisible();
+  expect(previews).toHaveLength(2);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
 });
 

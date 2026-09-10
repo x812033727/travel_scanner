@@ -50,6 +50,134 @@ function ok(payload: unknown) {
 afterEach(() => { vi.unstubAllGlobals(); vi.useRealTimers(); });
 
 describe("route mode panel", () => {
+  it.each([
+    { status: "unconfigured", provider: "odsay", mode: "transit" as const },
+    { status: "external_only", provider: null, mode: "walk" as const },
+    { status: "unconfigured", provider: "naver_maps", mode: "drive" as const },
+  ])("uses direct external actions without a route query for $status $mode", async ({ status, provider, mode }) => {
+    const fetchMock = vi.fn(async (url: string) => {
+      if (!url.includes("/routes/navigation?")) throw new Error("Unexpected provider or SDK request");
+      return ok({ route_availability: { status, provider, can_query: false }, external_navigations: [
+        { provider: "naver_maps", label: "NAVER Maps", travel_mode: mode, web_url: "https://map.naver.com/p/directions/owned", app_url: "nmap://route/walk" },
+      ] });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    const { container } = render(<RouteModePanel trip={{ ...trip, destination_country_code: "KR" }} items={items} fromItemId="from" toItemId="to" initialTravelMode={mode} onApplied={vi.fn()} onError={vi.fn()} />);
+    const action = await screen.findByRole("link", { name: "前往 NAVER Maps 查看（離開本站）" });
+    expect(action.getAttribute("href")).toBe("https://map.naver.com/p/directions/owned");
+    expect(screen.getByText(mode === "transit" ? "目前未取得乘車步驟" : "目前未取得移動步驟")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "查詢交通方案" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "外部導航，無法套用" })).toBeNull();
+    expect(container.querySelector("[data-map-provider]")).toBeNull();
+    expect(screen.getByRole("combobox", { name: "移動緩衝時間" })).toBeTruthy();
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("supports the available Google transit fallback and exposes its actual steps before the optional map", async () => {
+    const fetchMock = vi.fn(async (url: string) => {
+      if (url.includes("/routes/navigation?")) return ok({ external_navigations: [], route_availability: { status: "available", provider: "google_routes", can_query: true } });
+      return ok({ kind: "provider", preview_id: "google-fallback", expires_at: "2100-01-01T00:00:00Z", segment: { ...initialSegment,
+        steps: [{ travel_mode: "TRANSIT", instruction: "搭乘1號線", departure_stop: "首爾站", arrival_stop: "市廳站", line_name: "1號線" },
+          { travel_mode: "TRANSIT", instruction: "轉乘2號線", departure_stop: "市廳站", arrival_stop: "乙支路入口", line_name: "2號線" }],
+      }, schedule_impact: { affected_items: [], conflicts: [] } });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    const { container } = render(<RouteModePanel trip={{ ...trip, destination_country_code: "KR" }} items={items} fromItemId="from" toItemId="to" onApplied={vi.fn()} onError={vi.fn()} />);
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
+    fireEvent.click(screen.getByRole("button", { name: "查詢交通方案" }));
+    await screen.findByRole("button", { name: "套用此路線" });
+    expect(screen.getByText("上車：首爾站")).toBeTruthy();
+    expect(screen.getByText("轉乘上車：市廳站")).toBeTruthy();
+    expect(screen.getByText("下車：乙支路入口")).toBeTruthy();
+    expect(screen.getByText("交通時間來源：Google Maps")).toBeTruthy();
+    expect(screen.queryByText("步行 0 分")).toBeNull();
+    const detail = container.querySelector(".route-panel-detail")!;
+    const map = container.querySelector(".route-panel-map")!;
+    expect(document.activeElement).toBe(detail);
+    expect(screen.queryByRole("listbox")).toBeNull();
+    expect(screen.queryByText("選擇路線")).toBeNull();
+    expect(Boolean(detail.compareDocumentPosition(map) & Node.DOCUMENT_POSITION_FOLLOWING)).toBe(true);
+    expect((map as HTMLDetailsElement).open).toBe(false);
+  });
+
+  it("keeps a verified preview applicable when a later availability response disables new queries", async () => {
+    let resolveNavigation!: (response: Response) => void;
+    const navigationResponse = new Promise<Response>((resolve) => { resolveNavigation = resolve; });
+    const applied = vi.fn();
+    const fetchMock = vi.fn(async (url: string) => {
+      if (url.includes("/routes/navigation?")) return navigationResponse;
+      if (url.endsWith("/routes/apply")) return ok({ ...trip, version: 4 });
+      return ok({ kind: "provider", preview_id: "verified-preview", expires_at: "2100-01-01T00:00:00Z",
+        segment: initialSegment, schedule_impact: { affected_items: [], conflicts: [] } });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<RouteModePanel trip={{ ...trip, destination_country_code: "KR" }} items={items} fromItemId="from" toItemId="to" onApplied={applied} onError={vi.fn()} />);
+    fireEvent.click(screen.getByRole("button", { name: "查詢交通方案" }));
+    const apply = await screen.findByRole("button", { name: "套用此路線" });
+    await act(async () => resolveNavigation(ok({ external_navigations: [], route_availability: { status: "unconfigured", provider: "google_routes", can_query: false } })));
+    expect((apply as HTMLButtonElement).disabled).toBe(false);
+    expect(screen.queryByText("目前未取得乘車步驟")).toBeNull();
+    fireEvent.click(apply);
+    await waitFor(() => expect(applied).toHaveBeenCalledOnce());
+    expect(fetchMock.mock.calls.filter(([url]) => url.endsWith("/routes/preview"))).toHaveLength(1);
+  });
+
+  it("does not request another query after switching from a transit preview to external-only walking", async () => {
+    const fetchMock = vi.fn(async (url: string) => {
+      if (url.includes("/routes/navigation?")) {
+        const walking = new URL(url, "http://localhost").searchParams.get("travel_mode") === "walk";
+        return ok({ route_availability: { status: walking ? "external_only" : "available", provider: walking ? null : "google_routes", can_query: !walking },
+          external_navigations: walking ? [{ provider: "naver_maps", label: "NAVER Maps", travel_mode: "walk", web_url: "https://map.naver.com/p/directions/owned", app_url: "nmap://route/walk" }] : [] });
+      }
+      return ok({ kind: "provider", preview_id: "transit-preview", expires_at: "2100-01-01T00:00:00Z",
+        segment: initialSegment, schedule_impact: { affected_items: [], conflicts: [] } });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<RouteModePanel trip={{ ...trip, destination_country_code: "KR" }} items={items} fromItemId="from" toItemId="to" onApplied={vi.fn()} onError={vi.fn()} />);
+    fireEvent.click(screen.getByRole("button", { name: "查詢交通方案" }));
+    await screen.findByRole("button", { name: "套用此路線" });
+    fireEvent.click(screen.getByRole("tab", { name: "步行" }));
+    await screen.findByRole("link", { name: "前往 NAVER Maps 查看（離開本站）" });
+    expect(screen.getByText("目前未取得移動步驟")).toBeTruthy();
+    expect(screen.queryByText("設定已變更，請重新查詢後再套用。")).toBeNull();
+    expect(screen.queryByRole("button", { name: "查詢交通方案" })).toBeNull();
+    expect(fetchMock.mock.calls.filter(([url]) => url.endsWith("/routes/preview"))).toHaveLength(1);
+    fireEvent.click(screen.getByRole("tab", { name: "大眾運輸" }));
+    expect((screen.getByRole("button", { name: "套用此路線" }) as HTMLButtonElement).disabled).toBe(false);
+  });
+
+  it("requires user-entered manual time and saves it explicitly without querying a provider", async () => {
+    const bodies: Array<Record<string, unknown>> = [];
+    vi.stubGlobal("fetch", vi.fn(async (url: string, init?: RequestInit) => {
+      expect(url).toContain("/routes/apply");
+      bodies.push(JSON.parse(String(init?.body)));
+      return ok({ ...trip, version: 4 });
+    }));
+    render(<RouteModePanel trip={trip} items={items} fromItemId="from" toItemId="to" onApplied={vi.fn()} onError={vi.fn()} />);
+    fireEvent.click(screen.getByRole("button", { name: "手動輸入時間" }));
+    const input = screen.getByRole("spinbutton");
+    expect((input as HTMLInputElement).value).toBe("");
+    const apply = screen.getByRole("button", { name: "套用手動時間" });
+    expect((apply as HTMLButtonElement).disabled).toBe(true);
+    fireEvent.change(input, { target: { value: "35" } });
+    fireEvent.change(screen.getByRole("combobox", { name: "移動緩衝時間" }), { target: { value: "5" } });
+    fireEvent.click(apply);
+    await waitFor(() => expect(bodies).toEqual([expect.objectContaining({ source: "manual", duration_minutes: 35, buffer_minutes: 5 })]));
+  });
+
+  it("preserves a saved manual duration as manual, without calling it a map route option", async () => {
+    vi.stubGlobal("fetch", vi.fn(async () => ok({ google_maps_javascript_enabled: false })));
+    const { container } = render(<RouteModePanel trip={trip} items={items} fromItemId="from" toItemId="to" initialSegment={{ ...initialSegment, provider: "manual", status: "manual", duration_minutes: 35 }} onApplied={vi.fn()} onError={vi.fn()} />);
+    expect(container.querySelector(".route-apply-selection")?.textContent).toContain("手動預留");
+    expect(screen.getByText("排程出發")).toBeTruthy();
+    expect(screen.queryByText("轉乘 0 次")).toBeNull();
+    fireEvent.click(screen.getByText("查看地圖（起終點參考）"));
+    await screen.findByText("瀏覽器地圖服務尚未啟用");
+    expect(screen.queryByText(/方案 1 · 約 35/)).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "修改手動預留時間" }));
+    expect((screen.getByRole("spinbutton") as HTMLInputElement).value).toBe("35");
+  });
+
   it("loads server navigation before querying and switches walking basemaps without requests or trip writes", async () => {
     const navigations = [
       { provider: "naver_maps", label: "NAVER Maps", travel_mode: "walk", web_url: "https://map.naver.com/p/directions/server-walk", app_url: "nmap://route/walk" },
@@ -67,17 +195,20 @@ describe("route mode panel", () => {
     expect(google.getAttribute("href")).toContain("travelmode=walking");
     expect(screen.getByRole("link", { name: "用 NAVER Maps 導航" }).getAttribute("href")).toContain("server-walk");
     expect(fetchMock.mock.calls.filter(([url]) => url.includes("/routes/navigation?"))).toHaveLength(1);
+    fireEvent.click(screen.getByText("查看地圖（起終點參考）"));
+    const selector = await screen.findByRole("combobox", { name: "顯示地圖" });
+    await waitFor(() => expect(fetchMock.mock.calls.some(([url]) => url.endsWith("/runtime/public-config"))).toBe(true));
     const callsBeforeSwitch = fetchMock.mock.calls.length;
-    const selector = screen.getByRole("combobox", { name: "顯示地圖" });
     fireEvent.change(selector, { target: { value: "google_maps" } });
     expect(container.querySelector("[data-map-provider='google_maps']")).toBeTruthy();
     fireEvent.change(selector, { target: { value: "naver_maps" } });
     expect(fetchMock).toHaveBeenCalledTimes(callsBeforeSwitch);
     expect(applied).not.toHaveBeenCalled();
     fireEvent.click(screen.getByRole("button", { name: "查詢交通方案" }));
-    expect(await screen.findByRole("link", { name: "用 Google Maps 規劃" })).toBeTruthy();
-    expect(screen.getByRole("link", { name: "用 NAVER Maps 規劃" })).toBeTruthy();
-    expect((screen.getByRole("button", { name: "外部導航，無法套用" }) as HTMLButtonElement).disabled).toBe(true);
+    expect(await screen.findByRole("link", { name: "前往 NAVER Maps 查看（離開本站）" })).toBeTruthy();
+    expect(screen.getByRole("link", { name: "用 Google Maps 導航" })).toBeTruthy();
+    expect(screen.getByRole("link", { name: "用 NAVER Maps 導航" })).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "外部導航，無法套用" })).toBeNull();
     expect(container.querySelector(".route-apply-selection")?.textContent).not.toContain("分鐘");
     fireEvent.change(selector, { target: { value: "google_maps" } });
     expect(fetchMock.mock.calls.filter(([url]) => url.endsWith("/routes/preview"))).toHaveLength(1);
@@ -141,7 +272,7 @@ describe("route mode panel", () => {
     expect(container.querySelector("[data-route-state='unavailable']")).toBeTruthy();
     expect(screen.queryByRole("button", { name: "目前已套用" })).toBeNull();
     expect(container.querySelector(".route-apply-selection")?.textContent).not.toContain("0 分鐘");
-    expect(container.querySelector(".route-panel-modes")?.textContent).not.toContain("0 分鐘");
+    expect(container.querySelector(".route-mode-tabs")?.textContent).not.toContain("0 分鐘");
     expect(container.querySelector(".route-panel-detail")).toBeNull();
     expect((screen.getByRole("button", { name: "查詢交通方案" }) as HTMLButtonElement).disabled).toBe(false);
   });
@@ -248,7 +379,6 @@ describe("route mode panel", () => {
     render(<RouteModePanel trip={trip} items={items} fromItemId="from" toItemId="to" initialTravelMode="drive" initialBufferMinutes={30} onApplied={() => undefined} onError={() => undefined} />);
     expect(screen.getByRole("tab", { name: "汽車" }).getAttribute("aria-selected")).toBe("true");
     fireEvent.click(screen.getByRole("tab", { name: "步行" }));
-    fireEvent.click(screen.getByText("進階路線設定"));
     const buffer = await screen.findByRole("combobox");
     expect((buffer as HTMLSelectElement).value).toBe("30");
     fireEvent.change(buffer, { target: { value: "15" } });
@@ -277,7 +407,6 @@ describe("route mode panel", () => {
     render(<RouteModePanel trip={trip} items={items} fromItemId="from" toItemId="to" onApplied={() => undefined} onError={() => undefined} />);
     fireEvent.click(screen.getByRole("button", { name: "查詢交通方案" }));
     await screen.findByRole("button", { name: "套用此路線" });
-    fireEvent.click(screen.getByText("進階路線設定"));
     fireEvent.change(await screen.findByRole("combobox"), { target: { value: "15" } });
     expect(screen.queryByRole("button", { name: "套用此路線" })).toBeNull();
     expect(screen.getByRole("status").textContent).toContain("設定已變更");
@@ -387,16 +516,16 @@ describe("route mode panel", () => {
     expect(screen.getByRole("region", { name: "路線起訖與交通方式" }).textContent).toContain("上野");
     expect(screen.getByRole("region", { name: "路線起訖與交通方式" }).textContent).toContain("淺草");
     expect(screen.getByRole("link", { name: "導航：上野到淺草" }).getAttribute("href")).toContain("origin_place_id=from");
-    expect(screen.queryByText("步行至東京晴空塔站")).toBeNull();
     const expandDetails = screen.getByRole("button", { name: /大眾運輸 · 24 分鐘/ });
-    expect(expandDetails.getAttribute("aria-expanded")).toBe("false");
-    fireEvent.click(expandDetails);
+    expect(expandDetails.getAttribute("aria-expanded")).toBe("true");
     expect(screen.getByText("步行至東京晴空塔站")).toBeTruthy();
-    expect(screen.getByText(/TOKYO SKYTREE Sta\. → 言問橋/)).toBeTruthy();
+    expect(screen.getByText("上車：TOKYO SKYTREE Sta.")).toBeTruthy();
+    expect(screen.getByText("下車：言問橋")).toBeTruthy();
     expect(screen.getByText("月台 1")).toBeTruthy();
     const map = container.querySelector(".route-panel-map");
     const details = container.querySelector(".route-panel-detail");
-    expect(map && details && Boolean(map.compareDocumentPosition(details) & Node.DOCUMENT_POSITION_FOLLOWING)).toBe(true);
+    expect(map && details && Boolean(details.compareDocumentPosition(map) & Node.DOCUMENT_POSITION_FOLLOWING)).toBe(true);
+    expect((map as HTMLDetailsElement).open).toBe(false);
   });
 
   it("labels provider-backed fallback schedules as near-term reference transit", () => {
@@ -524,9 +653,9 @@ describe("route mode panel", () => {
     render(<RouteModePanel trip={koreanTrip} items={items} fromItemId="from" toItemId="to" onApplied={() => undefined} onError={() => undefined} />);
     fireEvent.click(screen.getByRole("button", { name: "查詢交通方案" }));
 
-    const externalLink = await screen.findByRole("link", { name: /用 NAVER Maps 規劃/ });
+    const externalLink = await screen.findByRole("link", { name: "前往 NAVER Maps 查看（離開本站）" });
     expect(externalLink.getAttribute("href")).toContain("https://map.naver.com/");
-    expect((screen.getByRole("button", { name: "外部導航，無法套用" }) as HTMLButtonElement).disabled).toBe(true);
+    expect(screen.queryByRole("button", { name: "外部導航，無法套用" })).toBeNull();
     expect(screen.queryByRole("button", { name: "套用此路線" })).toBeNull();
     expect(screen.getByText(/外部結果不會自動套用/)).toBeTruthy();
   });
@@ -564,11 +693,11 @@ describe("route mode panel", () => {
     expect(screen.queryByRole("button", { name: "套用此路線" })).toBeNull();
     fireEvent.click(screen.getByRole("button", { name: "查詢交通方案" }));
 
-    const externalLink = await screen.findByRole("link", { name: /用 Google Maps 規劃/ });
+    const externalLink = await screen.findByRole("link", { name: "前往 Google Maps 查看（離開本站）" });
     expect(externalLink.getAttribute("href")).toContain("origin_place_id=from");
-    expect(screen.getByRole("region", { name: "Google Maps 外部導航" })).toBeTruthy();
+    expect(screen.getByRole("region", { name: "外部導航服務" })).toBeTruthy();
     expect(screen.queryByRole("link", { name: "開啟 NAVER App" })).toBeNull();
-    expect((screen.getByRole("button", { name: "外部導航，無法套用" }) as HTMLButtonElement).disabled).toBe(true);
+    expect(screen.queryByRole("button", { name: "外部導航，無法套用" })).toBeNull();
   });
 
   it("opens the missing endpoint editor without automatic location matching or route queries", async () => {
@@ -683,25 +812,23 @@ describe("route mode panel", () => {
     expect(previewCalls).toBe(1);
   });
 
-  it("keeps buffer and manual editing in advanced settings without fetching on disclosure", async () => {
+  it("keeps buffer visible and manual input blank without fetching on disclosure", async () => {
     const fetchMock = vi.fn(async (url: string) => url.endsWith("/runtime/public-config")
       ? ok({ google_maps_browser_key: null, google_maps_javascript_enabled: false })
       : ok({ ...trip, version: 4 }));
     vi.stubGlobal("fetch", fetchMock);
     const { container } = render(<RouteModePanel trip={trip} items={items} fromItemId="from" toItemId="to" initialSegment={initialSegment} onApplied={() => undefined} onError={() => undefined} />);
-    const settings = container.querySelector(".route-advanced-settings") as HTMLDetailsElement;
-    expect(settings.open).toBe(false);
-    expect(screen.queryByRole("combobox")).toBeNull();
-    fireEvent.click(screen.getByText("進階路線設定"));
-    await waitFor(() => expect(settings.open).toBe(true));
-    expect(screen.getByRole("combobox")).toBeTruthy();
+    expect(container.querySelector(".route-advanced-settings")).toBeNull();
+    expect(screen.getByRole("combobox", { name: "移動緩衝時間" })).toBeTruthy();
     fireEvent.click(screen.getByRole("button", { name: "手動輸入時間" }));
     const input = screen.getByRole("spinbutton");
     expect(document.activeElement).toBe(input);
+    expect((input as HTMLInputElement).value).toBe("");
+    expect((screen.getByRole("button", { name: "套用手動時間" }) as HTMLButtonElement).disabled).toBe(true);
     fireEvent.change(input, { target: { value: "35" } });
     fireEvent.click(screen.getByRole("button", { name: "取消自訂時間" }));
     expect(screen.queryByRole("spinbutton")).toBeNull();
-    expect(document.activeElement).toBe(settings.querySelector("summary"));
+    await waitFor(() => expect(document.activeElement).toBe(screen.getByRole("button", { name: "手動輸入時間" })));
     expect(fetchMock.mock.calls.filter(([url]) => String(url).includes("/routes/"))).toHaveLength(0);
   });
 

@@ -645,7 +645,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
   const activeDayRouteSetting = trip?.routing?.day_settings.find((setting) => setting.day_date === activeDay);
   const activeTravelMode = activeDayRouteSetting?.default_travel_mode || "transit";
   const activeTravelBuffer = activeDayRouteSetting?.default_buffer_minutes ?? 10;
-  const dayModel = deriveDayTimeline(activeRows, routes, { travelMode: activeTravelMode, bufferMinutes: activeTravelBuffer });
+  const dayModel = deriveDayTimeline(activeRows, routes, { travelMode: activeTravelMode, bufferMinutes: activeTravelBuffer, countryCode: trip?.destination_country_code });
   const activeDisplayRows = dayModel.rows;
   const activeRouteRows = dayModel.routeRows;
   const querySettings = routeQueryDrafts[activeDay] || { mode: activeTravelMode, buffer: activeTravelBuffer };
@@ -1307,7 +1307,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
     if (!latest || saveStateRef.current === "conflict") return;
     const from = latest.items.find((item) => item.id === fromItemId);
     if (!from) return;
-    const currentDay = deriveDayTimeline(latest.items.filter((item) => item.day_date === from.day_date), latest.route_segments || []);
+    const currentDay = deriveDayTimeline(latest.items.filter((item) => item.day_date === from.day_date), latest.route_segments || [], { countryCode: latest.destination_country_code });
     const edge = currentDay.edgesByFromId.get(fromItemId);
     if (!edge || edge.to.id !== toItemId) return;
     if (edge.blocker) { void openEditor(edge.blocker.id); return; }

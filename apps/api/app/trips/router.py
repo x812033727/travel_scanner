@@ -4802,6 +4802,34 @@ async def supplement_trip_map_identity(
         await redis.delete(operation_key)
 
 
+def route_query_availability(
+    settings: Settings, region: str | None, travel_mode: TravelMode
+) -> dict[str, Any]:
+    """Describe whether a query can be attempted, not whether a route exists.
+
+    This exposes no credentials and performs no provider request. A map SDK being
+    enabled does not imply that its transport service is configured.
+    """
+    if region == "KR" and travel_mode == "walk":
+        return {"status": "external_only", "provider": None, "can_query": False}
+    if region == "KR":
+        provider = (
+            ("odsay" if settings.odsay_configured else "google_routes")
+            if travel_mode == "transit"
+            else "naver_maps"
+        )
+    elif region == "JP" and travel_mode == "transit":
+        provider = "ekispert" if settings.ekispert_configured else "navitime"
+    else:
+        provider = "google_routes"
+    configured = route_provider_configured(settings, region, travel_mode)
+    return {
+        "status": "available" if configured else "unconfigured",
+        "provider": provider,
+        "can_query": configured,
+    }
+
+
 @router.get("/{trip_id}/routes/navigation")
 async def trip_route_navigation(
     trip_id: UUID,
@@ -4811,14 +4839,16 @@ async def trip_route_navigation(
     session: Session,
     travel_mode: TravelMode = "transit",
 ) -> dict[str, Any]:
-    """Pure server-built handoff links. No paid provider, version write or routing job."""
+    """Handoff links and query capabilities, without a paid lookup or trip write."""
     trip = await owned_trip(session, user.id, trip_id)
     first, second = _adjacent_route_rows(
         active_route_rows(await load_items(session, trip.id)), from_item_id, to_item_id
     )
     origin, destination = route_point(first), route_point(second)
     region = trip_region_code(trip.timezone, trip.destination_name, trip.data)
+    settings = await load_runtime_settings(session)
     return {
+        "route_availability": route_query_availability(settings, region, travel_mode),
         "map_capabilities": route_map_capabilities(region, travel_mode),
         "external_navigations": [
             nav.model_dump(mode="json")
@@ -4863,6 +4893,7 @@ async def preview_trip_route(
     region = trip_region_code(trip.timezone, trip.destination_name, trip.data)
     navigations = external_navigations(origin, destination, payload.travel_mode, region)
     navigation_payload = {
+        "route_availability": route_query_availability(settings, region, payload.travel_mode),
         "external_navigations": [nav.model_dump(mode="json") for nav in navigations],
         "map_capabilities": route_map_capabilities(region, payload.travel_mode),
     }
@@ -4892,6 +4923,7 @@ async def preview_trip_route(
             reason = korean_external_route_reason(
                 payload.travel_mode,
                 odsay_configured=settings.odsay_configured,
+                google_configured=bool(settings.google_maps_api_key),
                 locale=active_locale(),
             )
             external: ExternalNavigation = naver_external_navigation(

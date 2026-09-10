@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**23 open · 1 in progress · 3 blocked · 10 in review · 200 done**
+**25 open · 1 in progress · 3 blocked · 11 in review · 200 done**
 
 ## Ready to claim
 
@@ -22,6 +22,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [防 jsonb 運算子的測試只守住 3 張表，實際有 42 張](open/2026-09-07-jsonb-3-42.md) | api | `apps/api/tests/test_migration_sql_dialect.py` |
 | P2 | [30 筆新購物店家還沒 place enrichment，所以加不進行程](open/2026-09-07-enrich-new-shopping-place-ids.md) | api | `ops/notes/hotspot-place-enrichment.md` |
 | P2 | [Verify the two reported hotels exact Booking links](open/2026-09-09-verify-reported-hotels-booking-links.md) | ops | `docs/reported-hotels-booking-review.md` |
+| P2 | [Normalize locale-prefixed login return paths](open/2026-09-10-locale-login-return-path.md) | web | `apps/web/components/auth-form.tsx`<br>`apps/web/components/auth-form.test.tsx` |
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | api | `apps/api/app/hotspots/areas.py`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [第二批購物店家：十五個沒有公開座標來源的候選](open/2026-09-06-shopping-seeds-second-batch.md) | api | `apps/api/app/hotspots/shopping_bootstrap.json`<br>`apps/api/app/hotspots/theme_bootstrap.json`<br>`apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_shopping_bootstrap.py` |
@@ -48,6 +49,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | [Isolate public Stay22 script document and hotel links](open/2026-09-09-isolate-public-stay22-script.md) | codex-stay22-script-ui | `codex/stay22-modular-toggle` |
 | [Verify isolated Stay22 Script public browser flow](open/2026-09-09-verify-stay22-script-browser.md) | codex-stay22-script-e2e | `codex/stay22-modular-toggle` |
 | [Complete hotspot review identity and rationale editor](open/2026-09-10-complete-hotspot-review-identity-and-rationale.md) | codex-hotspot-review-editor | `codex/hotspot-review-editor` |
+| [Seoul Day 2 transport settings and readable route details](open/2026-09-10-seoul-day2-transport-ux.md) | codex-seoul-day2-release | `codex/seoul-day2-transport-ux` |
 | [Archive completed catalog and hotel review evidence](open/2026-09-09-review-evidence-archive.md) | codex-review-archive | `codex/review-evidence-archive-20260909` |
 | [Compact discovery cards and source-linked details](open/2026-09-09-discovery-card-details.md) | codex-discovery-card-details | `codex/discovery-card-details-20260909` |
 | [Simplify hotel booking platform and source copy](open/2026-09-10-simplify-hotel-booking-copy.md) | codex-hotel-copy | `codex/hotel-booking-copy` |
@@ -65,6 +67,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [Mokaair community responsive web and five-language experience](open/2026-09-07-mokaair-community-web.md) | active work in the same scope |
 | P1 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | active work in the same scope |
 | P2 | [Community read metric duplicate observed alongside smoke ECONNRESET](open/2026-09-07-community-read-metric-concurrency.md) | active work in the same scope |
+| P2 | [Preserve force refresh in daily route background jobs](open/2026-09-10-daily-route-force-refresh.md) | active work in the same scope |
 
 ## Recently finished
 

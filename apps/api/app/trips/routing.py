@@ -1379,15 +1379,22 @@ def route_map_capabilities(region_code: str | None, travel_mode: TravelMode) -> 
 
 
 KoreaExternalReason = Literal[
-    "transit_unavailable", "transit_unconfigured", "walk_external", "drive_unavailable"
+    "transit_unavailable",
+    "google_transit_unavailable",
+    "transit_unconfigured",
+    "walk_external",
+    "drive_unavailable",
 ]
 KOREA_EXTERNAL_REASONS: dict[Locale, dict[KoreaExternalReason, str]] = {
     "zh-TW": {
         "transit_unavailable": (
             "ODsay 目前沒有回傳可套用的大眾運輸路線；可在 Google Maps 或 NAVER Maps 查看。"
         ),
+        "google_transit_unavailable": (
+            "Google 本次沒有回傳可套用的大眾運輸路線；可在 Google Maps 或 NAVER Maps 查看。"
+        ),
         "transit_unconfigured": (
-            "站內大眾運輸需設定 ODsay；可在 Google Maps 或 NAVER Maps 查看。"
+            "尚未設定站內大眾運輸服務；可在 Google Maps 或 NAVER Maps 查看。"
         ),
         "walk_external": "步行地圖僅供位置參考；可外開 NAVER／Google Maps 或輸入手動時間。",
         "drive_unavailable": "目前沒有可套用的汽車路線；請到 NAVER Maps 查看即時導航。",
@@ -1396,8 +1403,11 @@ KOREA_EXTERNAL_REASONS: dict[Locale, dict[KoreaExternalReason, str]] = {
         "transit_unavailable": (
             "ODsay 目前没有返回可应用的公共交通路线；可在 Google Maps 或 NAVER Maps 查看。"
         ),
+        "google_transit_unavailable": (
+            "Google 本次没有返回可应用的公共交通路线；可在 Google Maps 或 NAVER Maps 查看。"
+        ),
         "transit_unconfigured": (
-            "站内公共交通需配置 ODsay；可在 Google Maps 或 NAVER Maps 查看。"
+            "尚未配置站内公共交通服务；可在 Google Maps 或 NAVER Maps 查看。"
         ),
         "walk_external": "步行地图仅供位置参考；可打开 NAVER／Google Maps 或手动输入时间。",
         "drive_unavailable": "目前没有可应用的汽车路线；请到 NAVER Maps 查看实时导航。",
@@ -1407,8 +1417,12 @@ KOREA_EXTERNAL_REASONS: dict[Locale, dict[KoreaExternalReason, str]] = {
             "ODsay has not returned a usable transit route. "
             "Check Google Maps or NAVER Maps."
         ),
+        "google_transit_unavailable": (
+            "Google did not return a usable transit route for this request. "
+            "Check Google Maps or NAVER Maps."
+        ),
         "transit_unconfigured": (
-            "In-app transit requires ODsay configuration. Check Google Maps or NAVER Maps."
+            "No in-app transit service is configured. Check Google Maps or NAVER Maps."
         ),
         "walk_external": (
             "Walking maps are for location reference only. "
@@ -1424,8 +1438,12 @@ KOREA_EXTERNAL_REASONS: dict[Locale, dict[KoreaExternalReason, str]] = {
             "ODsayから適用可能な公共交通ルートが返されていません。"
             "Google MapsまたはNAVER Mapsで確認できます。"
         ),
+        "google_transit_unavailable": (
+            "今回のリクエストではGoogleから適用可能な公共交通ルートが返されませんでした。"
+            "Google MapsまたはNAVER Mapsで確認できます。"
+        ),
         "transit_unconfigured": (
-            "サイト内の公共交通ルートにはODsayの設定が必要です。"
+            "サイト内の公共交通サービスがまだ設定されていません。"
             "Google MapsまたはNAVER Mapsで確認できます。"
         ),
         "walk_external": (
@@ -1442,8 +1460,12 @@ KOREA_EXTERNAL_REASONS: dict[Locale, dict[KoreaExternalReason, str]] = {
             "ODsay에서 적용 가능한 대중교통 경로를 반환하지 않았습니다. "
             "Google Maps 또는 NAVER Maps에서 확인하세요."
         ),
+        "google_transit_unavailable": (
+            "이번 요청에서 Google이 적용 가능한 대중교통 경로를 반환하지 않았습니다. "
+            "Google Maps 또는 NAVER Maps에서 확인하세요."
+        ),
         "transit_unconfigured": (
-            "사이트 내 대중교통 경로에는 ODsay 설정이 필요합니다. "
+            "사이트 내 대중교통 서비스가 아직 설정되지 않았습니다. "
             "Google Maps 또는 NAVER Maps에서 확인하세요."
         ),
         "walk_external": (
@@ -1459,11 +1481,21 @@ KOREA_EXTERNAL_REASONS: dict[Locale, dict[KoreaExternalReason, str]] = {
 
 
 def korean_external_route_reason(
-    travel_mode: TravelMode, *, odsay_configured: bool, locale: Locale
+    travel_mode: TravelMode,
+    *,
+    odsay_configured: bool,
+    locale: Locale,
+    google_configured: bool = False,
 ) -> str:
     reason: KoreaExternalReason
     if travel_mode == "transit":
-        reason = "transit_unavailable" if odsay_configured else "transit_unconfigured"
+        reason = (
+            "transit_unavailable"
+            if odsay_configured
+            else "google_transit_unavailable"
+            if google_configured
+            else "transit_unconfigured"
+        )
     else:
         reason = "walk_external" if travel_mode == "walk" else "drive_unavailable"
     return KOREA_EXTERNAL_REASONS[locale][reason]
@@ -2427,7 +2459,9 @@ class RouteService:
             # request after Ekispert has already been chosen.
             return [self.ekispert] if self.settings.ekispert_configured else [self.navitime]
         if region == "KR" and travel_mode == "transit":
-            return [self.odsay]
+            # Pick one configured service, never a second paid provider after
+            # ODsay has returned no route. Google uses its existing usage guard.
+            return [self.odsay] if self.settings.odsay_configured else [self.google]
         if region == "KR" and travel_mode == "drive":
             return [self.naver]
         if region == "KR":
@@ -2676,7 +2710,7 @@ def route_provider_configured(
         return settings.ekispert_configured or settings.navitime_configured
     if region == "KR":
         if travel_mode == "transit":
-            return settings.odsay_configured
+            return settings.odsay_configured or bool(settings.google_maps_api_key)
         if travel_mode == "drive":
             return settings.naver_maps_configured
         return False  # Walking maps are reference-only; there is no timing provider.

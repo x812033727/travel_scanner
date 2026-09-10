@@ -1654,8 +1654,7 @@ describe("trip editor route requests", () => {
     const panel = await screen.findByRole("dialog", { name: "這段路怎麼走" });
     expect(within(panel).getByRole("tab", { name: "大眾運輸" }).getAttribute("aria-selected")).toBe("true");
     fireEvent.click(within(panel).getByRole("tab", { name: "步行" }));
-    fireEvent.click(within(panel).getByText("進階路線設定"));
-    fireEvent.change(await within(panel).findByRole("combobox"), { target: { value: "15" } });
+    fireEvent.change(await within(panel).findByRole("combobox", { name: "移動緩衝時間" }), { target: { value: "15" } });
     expect(fetchMock.mock.calls.filter(([url]) => String(url).includes("/routes/preview"))).toHaveLength(0);
     expect(fetchMock.mock.calls.filter(([url]) => String(url).includes("/routes/apply"))).toHaveLength(0);
     if (source === "provider") {
@@ -1669,8 +1668,7 @@ describe("trip editor route requests", () => {
     await waitFor(() => expect(current.version).toBe(2));
     await waitFor(() => expect(within(panel).getByRole("tab", { name: "步行" }).getAttribute("aria-selected")).toBe("true"));
     expect(within(panel).queryByRole("button", { name: "套用此路線" })).toBeNull();
-    fireEvent.click(within(panel).getByText("進階路線設定"));
-    expect((await within(panel).findByRole("combobox") as HTMLSelectElement).value).toBe("15");
+    expect((await within(panel).findByRole("combobox", { name: "移動緩衝時間" }) as HTMLSelectElement).value).toBe("15");
     expect(fetchMock.mock.calls.filter(([url]) => String(url).includes("/routes/preview"))).toHaveLength(source === "provider" ? 1 : 0);
     expect(fetchMock.mock.calls.filter(([url]) => String(url).includes("/routes/apply"))).toHaveLength(1);
     expect(computeCalls(fetchMock)).toHaveLength(0);
@@ -1721,7 +1719,8 @@ describe("trip editor route requests", () => {
     expect(screen.getByText("20 分")).toBeTruthy();
     expect(screen.queryByText("25 分")).toBeNull();
     expect(screen.queryByText("40 分")).toBeNull();
-    expect(screen.getAllByText(/^(約 \d+ 分|查看交通)$/)).toHaveLength(2);
+    expect(screen.getAllByText("尚未查詢")).toHaveLength(2);
+    expect(screen.queryByText(/^約 \d+ 分$/)).toBeNull();
     expect(screen.getByText("有 2 段移動尚未查路")).toBeTruthy();
   });
 });

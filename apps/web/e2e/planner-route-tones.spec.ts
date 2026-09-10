@@ -34,6 +34,7 @@ async function workspace(page: Page, locale = "zh-TW", optional = false) {
   const writes: Array<{ path: string; body: Record<string, unknown> }> = [];
   const previews: Array<Record<string, unknown>> = [];
   const unexpected: string[] = [];
+  let mapConfigReads = 0;
   let lastSegment: RouteSegment | undefined;
   await pretendSignedIn(page);
   await page.route("**/*", (route) => {
@@ -80,7 +81,10 @@ async function workspace(page: Page, locale = "zh-TW", optional = false) {
       return route.fulfill({ json: trip });
     }
     if (path === "/api/travel/trips/intuitive-trip" && request.method() === "GET") return route.fulfill({ json: trip });
-    if (path.endsWith("/runtime/public-config") && request.method() === "GET") return route.fulfill({ json: { google_maps_browser_key: "fixture-not-a-key", google_maps_javascript_enabled: true } });
+    if (path.endsWith("/runtime/public-config") && request.method() === "GET") {
+      mapConfigReads += 1;
+      return route.fulfill({ json: { google_maps_browser_key: "fixture-not-a-key", google_maps_javascript_enabled: true } });
+    }
     if (request.method() === "GET" && /\/health$/.test(path)) return route.fulfill({ json: { days: [], issues: [] } });
     if (request.method() === "GET" && /\/community\/status$|\/discovery\/status$|\/analytics\/config$/.test(path)) return route.fulfill({ json: { enabled: false } });
     if (request.method() === "GET" && /\/usage$/.test(path)) return route.fulfill({ json: {} });
@@ -90,7 +94,7 @@ async function workspace(page: Page, locale = "zh-TW", optional = false) {
   });
   await page.goto(`/${locale}/trips/intuitive-trip`);
   await expect(page.getByRole("heading", { name: trip.name })).toBeVisible();
-  return { writes, previews, unexpected, current: () => trip };
+  return { writes, previews, unexpected, current: () => trip, mapConfigReads: () => mapConfigReads };
 }
 
 async function theme(page: Page, value: Theme) {
@@ -156,26 +160,36 @@ async function resetPageScroll(page: Page) {
 
 async function expectIdleContentExposed(page: Page, panel: Locator) {
   const instruction = panel.locator('[data-route-instruction="idle"]');
-  const map = page.getByTestId("local-route-map");
   const bar = panel.locator(".route-apply-bar");
   await expect(instruction).toBeInViewport({ ratio: 1 });
   await expect(bar).toBeInViewport({ ratio: 1 });
-  await expect.poll(async () => {
-    const [mapBounds, barBounds] = await Promise.all([map.boundingBox(), bar.boundingBox()]);
-    if (!mapBounds || !barBounds) return 0;
-    return Math.min(mapBounds.y + mapBounds.height, barBounds.y, page.viewportSize()!.height) - Math.max(mapBounds.y, 0);
-  }, { message: "A useful portion of the actual map must be on screen above the apply bar without scrolling" }).toBeGreaterThanOrEqual(80);
   const barBounds = (await bar.boundingBox())!;
-  const schematicNotice = panel.locator(".route-map-schematic-notice");
-  await expect(schematicNotice).toBeInViewport({ ratio: 1 });
-  const noticeBounds = (await schematicNotice.boundingBox())!;
-  expect(noticeBounds.y + noticeBounds.height, "The schematic disclaimer must remain above the fixed apply bar").toBeLessThanOrEqual(barBounds.y);
   const instructionBounds = (await instruction.boundingBox())!;
   expect(instructionBounds.y + instructionBounds.height, "The instruction must not sit behind the fixed apply bar").toBeLessThanOrEqual(barBounds.y);
   expect(await instruction.evaluate((element) => {
     const bounds = element.getBoundingClientRect();
     return element.contains(document.elementFromPoint(bounds.x + bounds.width / 2, bounds.y + bounds.height / 2));
   }), "The initial instruction is not occluded by another overlay").toBe(true);
+  await expect(panel.locator(".route-panel-map")).not.toHaveAttribute("open", "");
+  await expect(page.getByTestId("local-route-map")).toHaveCount(0);
+}
+
+async function expectExpandedMapExposed(page: Page, panel: Locator) {
+  const map = page.getByTestId("local-route-map");
+  const bar = panel.locator(".route-apply-bar");
+  await map.scrollIntoViewIfNeeded();
+  await expect(map).toBeVisible();
+  await expect(bar).toBeInViewport({ ratio: 1 });
+  await expect.poll(async () => {
+    const [mapBounds, barBounds] = await Promise.all([map.boundingBox(), bar.boundingBox()]);
+    if (!mapBounds || !barBounds) return 0;
+    return Math.min(mapBounds.y + mapBounds.height, barBounds.y, page.viewportSize()!.height) - Math.max(mapBounds.y, 0);
+  }, { message: "After explicit expansion, a useful portion of the map remains above the apply bar" }).toBeGreaterThanOrEqual(80);
+  const barBounds = (await bar.boundingBox())!;
+  const schematicNotice = panel.locator(".route-map-schematic-notice");
+  await expect(schematicNotice).toBeInViewport({ ratio: 1 });
+  const noticeBounds = (await schematicNotice.boundingBox())!;
+  expect(noticeBounds.y + noticeBounds.height, "The schematic disclaimer must remain above the fixed apply bar").toBeLessThanOrEqual(barBounds.y);
   expect(await map.evaluate((element, bottom) => {
     const bounds = element.getBoundingClientRect();
     const top = Math.max(bounds.y, 0);
@@ -254,11 +268,16 @@ for (const width of [390, 920, 1280]) {
     await page.emulateMedia({ reducedMotion: "reduce" });
     const state = await workspace(page);
     await theme(page, "dark");
+    // The editor reads public capabilities once independently of the map.
+    await expect.poll(() => state.mapConfigReads()).toBeGreaterThan(0);
+    const configReadsBeforePanel = state.mapConfigReads();
     await page.locator(".premium-day-settings > summary").click();
     await page.locator(".route-day-settings").getByRole("button", { name: "查詢路線", exact: true }).click();
     const panel = page.locator(".route-panel-layout");
     await expect(panel).toHaveAttribute("data-route-state", "idle");
-    await expect(page.getByTestId("local-route-map")).toBeVisible();
+    await expect(page.getByTestId("local-route-map")).toHaveCount(0);
+    await expect(page.locator('script[src*="maps.googleapis.com"]')).toHaveCount(0);
+    expect(state.mapConfigReads(), "A collapsed route map must not load additional SDK configuration").toBe(configReadsBeforePanel);
     await expect(panel.locator(".route-empty-state")).toHaveCount(0);
     await expect(panel.locator('[data-route-instruction="idle"]')).toHaveCount(1);
     await expect(panel.locator('[data-route-instruction="idle"]')).toBeVisible();
@@ -285,19 +304,32 @@ for (const width of [390, 920, 1280]) {
     expect((await query.boundingBox())!.height).toBeGreaterThanOrEqual(44);
     await expectIdleContentExposed(page, panel);
     await noHorizontalOverflow(page);
+    await page.screenshot({ path: info.outputPath(`route-idle-${width}-map-collapsed.png`) });
+    const mapSummary = panel.locator(".route-panel-map > summary");
+    await mapSummary.click();
+    await expectExpandedMapExposed(page, panel);
+    expect(state.mapConfigReads()).toBe(configReadsBeforePanel + 1);
+    expect(state.previews).toEqual([]);
+    expect(state.writes).toEqual([]);
+    await noHorizontalOverflow(page);
     await page.screenshot({ path: info.outputPath(`route-idle-${width}-fixture-map.png`) });
+    await mapSummary.click();
+    await expect(page.getByTestId("local-route-map")).toHaveCount(0);
     await panel.getByRole("tab", { name: "汽車", exact: true }).click();
     await expect(panel.getByRole("tab", { name: "汽車", exact: true })).toHaveAttribute("aria-selected", "true");
     expect(state.previews).toEqual([]);
     expect(state.writes).toEqual([]);
     await panel.getByRole("tab", { name: "步行", exact: true }).click();
     await expect(panel.getByRole("tab", { name: "步行", exact: true })).toHaveAttribute("aria-selected", "true");
-    await panel.locator(".route-advanced-settings > summary").click();
-    await panel.getByRole("combobox").selectOption("15");
+    const buffer = panel.getByRole("combobox", { name: messages["zh-TW"].route.bufferSelectLabel, exact: true });
+    await expect(buffer).toBeVisible();
+    await buffer.selectOption("15");
     expect(state.previews).toEqual([]);
     expect(state.writes).toEqual([]);
     await query.click();
     await expect(panel).toHaveAttribute("data-route-state", "preview");
+    await expect(panel.locator(".route-panel-detail")).toBeFocused();
+    await expect(panel.getByRole("listbox")).toHaveCount(0);
     expect(state.previews).toHaveLength(1);
     expect(state.previews[0]).toMatchObject({ version: 1, travel_mode: "walk", buffer_minutes: 15 });
     expect(state.current().version).toBe(1);
@@ -305,14 +337,16 @@ for (const width of [390, 920, 1280]) {
     await panel.getByRole("button", { name: "套用此路線", exact: true }).click();
     await expect(panel).toHaveAttribute("data-route-state", "applied");
     await expect(panel.getByRole("tab", { name: "步行", exact: true })).toHaveAttribute("aria-selected", "true");
-    await panel.locator(".route-advanced-settings > summary").click();
-    await expect(panel.getByRole("combobox")).toHaveValue("15");
+    await expect(buffer).toHaveValue("15");
+    await expect(panel.locator(".route-panel-map")).not.toHaveAttribute("open", "");
     expect(state.current().version).toBe(2);
     expect(state.writes).toHaveLength(1);
     expect(state.writes[0].body).toMatchObject({ source: "provider", version: 1, preview_id: "fixture-walk-15" });
     expect(state.previews).toHaveLength(1);
     expect(state.unexpected).toEqual([]);
     await noHorizontalOverflow(page);
+    await mapSummary.click();
+    await expectExpandedMapExposed(page, panel);
     await page.screenshot({ path: info.outputPath(`route-applied-${width}-fixture-map.png`) });
   });
 }
