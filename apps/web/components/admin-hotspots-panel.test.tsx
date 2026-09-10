@@ -1,5 +1,5 @@
 import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
-import { describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { AdminHotspotsPanel } from "./admin-hotspots-panel";
 import { hotspotIdentityListHref } from "@/lib/admin-catalog-copy";
 
@@ -50,6 +50,10 @@ const listing = {
 };
 
 describe("AdminHotspotsPanel", () => {
+  beforeEach(() => {
+    window.localStorage.removeItem("mokaair-admin-hotspot-filters");
+  });
+
   it("fills a missing QID and category with a rationale without approving or changing map data", async () => {
     const candidate = { ...item, qid: null, category: "culture", reason: null };
     let body: Record<string, unknown> | undefined;
@@ -207,6 +211,132 @@ describe("AdminHotspotsPanel", () => {
     expect(body).toEqual({ ids: [item.id], action: "approve", reason: "依官方地址完成查證", expected_updated_ats: { [item.id]: item.updated_at } });
   });
 
+  it("preserves an editor's saved rationale when approving with an empty toolbar rationale", async () => {
+    const rationale = "同一景點的官方來源 https://www.oceanpark.com.hk/";
+    const updatedAt = "2026-09-10T02:00:00Z";
+    let saved = { ...item, qid: null as string | null, category: "culture", reason: null as string | null, map_match_status: "verified" };
+    const bodies: Record<string, unknown>[] = [];
+    const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      if (init?.method === "POST") {
+        expect(String(input)).toContain("/hotspots/review");
+        const body = JSON.parse(String(init.body));
+        bodies.push(body);
+        if (body.action === "update") {
+          saved = { ...saved, qid: body.wikidata_item_id, category: body.category, reason: body.reason, updated_at: updatedAt };
+        } else {
+          // Match the API's explicit-field semantics: null would erase the rationale.
+          saved = { ...saved, status: "approved", is_active: true, ...("reason" in body ? { reason: body.reason } : {}) };
+        }
+        return new Response(JSON.stringify({ updated: 1, status: saved.status }));
+      }
+      return new Response(JSON.stringify({ ...listing, items: [saved] }));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminHotspotsPanel />);
+    await screen.findByText(item.name);
+    fireEvent.click(screen.getByRole("button", { name: "編輯地點" }));
+    fireEvent.change(screen.getByLabelText("景點分類"), { target: { value: "family" } });
+    fireEvent.change(screen.getByLabelText("Wikidata ID"), { target: { value: item.qid } });
+    fireEvent.change(screen.getByLabelText("審核理由與來源"), { target: { value: rationale } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存地點" }));
+    await screen.findByText("已儲存精準地點。");
+    await screen.findByText(rationale);
+    fireEvent.click(screen.getByRole("checkbox", { name: `選取 ${item.name}` }));
+    expect((screen.getByLabelText("本次審核理由與來源") as HTMLTextAreaElement).value).toBe("");
+    const approve = screen.getByRole("button", { name: "核准" });
+    await waitFor(() => expect(approve.matches(":disabled")).toBe(false));
+    fireEvent.click(approve);
+    await screen.findByText(/已更新 1 筆景點候選/);
+    expect(bodies).toEqual([
+      { ids: [item.id], action: "update", category: "family", wikidata_item_id: item.qid, reason: rationale, expected_updated_at: item.updated_at },
+      { ids: [item.id], action: "approve", expected_updated_ats: { [item.id]: updatedAt } },
+    ]);
+    expect(saved.reason).toBe(rationale);
+    expect(saved.status).toBe("approved");
+    expect(fetchMock.mock.calls.every(([input]) => !String(input).includes("map-candidates") && !String(input).includes("map-identities"))).toBe(true);
+  });
+
+  it("guards dirty drafts on workspace navigation and only allows a confirmed leave", async () => {
+    const fetchMock = vi.fn(async () => new Response(JSON.stringify(listing)));
+    vi.stubGlobal("fetch", fetchMock);
+    const confirm = vi.fn(() => false);
+    vi.stubGlobal("confirm", confirm);
+    render(<AdminHotspotsPanel initialHotspotId={item.id} />);
+    await screen.findByText(item.name);
+    fireEvent.click(screen.getByRole("button", { name: "編輯地點" }));
+    fireEvent.change(screen.getByLabelText("審核理由與來源"), { target: { value: "尚未儲存的來源" } });
+    const navigate = () => new CustomEvent("admin:before-navigate", {
+      cancelable: true, detail: { url: "/zh-TW/admin/hotspots?tab=places&section=google" },
+    });
+    const cancelled = navigate();
+    expect(window.dispatchEvent(cancelled)).toBe(false);
+    expect(cancelled.defaultPrevented).toBe(true);
+    expect((screen.getByLabelText("審核理由與來源") as HTMLTextAreaElement).value).toBe("尚未儲存的來源");
+    expect(fireEvent.click(screen.getByRole("link", { name: "顯示全部地點" }))).toBe(false);
+    expect(confirm).toHaveBeenCalledTimes(2);
+    confirm.mockReturnValue(true);
+    expect(window.dispatchEvent(navigate())).toBe(true);
+    expect(confirm).toHaveBeenCalledTimes(3);
+    // Confirming navigation permits the workspace to unmount; it never submits a draft.
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it.each([200, 409])("keeps a deferred %s save locked after a filter request finishes", async (status) => {
+    const other = { ...item, id: "22222222-2222-4222-8222-222222222222", name: "另一個景點" };
+    let finishSave!: (response: Response) => void;
+    const pendingSave = new Promise<Response>((resolve) => { finishSave = resolve; });
+    const bodies: Record<string, unknown>[] = [];
+    const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      if (init?.method === "POST") {
+        bodies.push(JSON.parse(String(init.body)));
+        return pendingSave;
+      }
+      return new Response(JSON.stringify({ ...listing, items: [item, other], total: String(input).includes("city_code=HKG") ? 3 : 2 }));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    const confirm = vi.fn(() => true);
+    vi.stubGlobal("confirm", confirm);
+    render(<AdminHotspotsPanel initialHotspotId={item.id} />);
+    await screen.findByText(item.name);
+    const showFilters = screen.queryByRole("button", { name: "展開篩選條件" });
+    if (showFilters) fireEvent.click(showFilters);
+    const firstEdit = within(screen.getByText(item.name).closest("tr")!).getByRole("button", { name: "編輯地點" });
+    const secondEdit = within(screen.getByText(other.name).closest("tr")!).getByRole("button", { name: "編輯地點" });
+    fireEvent.click(firstEdit);
+    fireEvent.change(screen.getByLabelText("審核理由與來源"), { target: { value: "待儲存來源" } });
+    const save = screen.getByRole("button", { name: "儲存地點" });
+    fireEvent.click(save);
+    await waitFor(() => expect(bodies).toHaveLength(1));
+    fireEvent.change(screen.getByLabelText("城市代碼"), { target: { value: "HKG" } });
+    await screen.findByText("共 3 筆，已選 0 筆");
+    const close = screen.getByRole("button", { name: "關閉" });
+    for (const control of [save, close, firstEdit, secondEdit, ...save.closest("form")!.querySelectorAll("input, select, textarea")]) {
+      expect(control.matches(":disabled")).toBe(true);
+    }
+    fireEvent.click(secondEdit);
+    fireEvent.click(close);
+    fireEvent.click(save);
+    const navigate = new CustomEvent("admin:before-navigate", { cancelable: true, detail: { url: "/zh-TW/admin/hotspots?tab=review" } });
+    expect(window.dispatchEvent(navigate)).toBe(false);
+    expect(fireEvent.click(screen.getByRole("link", { name: "顯示全部地點" }))).toBe(false);
+    expect(confirm).not.toHaveBeenCalled();
+    expect(bodies).toHaveLength(1);
+    expect((screen.getByLabelText("審核理由與來源") as HTMLTextAreaElement).value).toBe("待儲存來源");
+    expect(screen.getByRole("heading", { name: `精準地點：${item.name}` })).toBeTruthy();
+    await act(async () => {
+      finishSave(new Response(JSON.stringify(status === 409
+        ? { code: "hotspot_review_conflict", detail: "資料已更新" }
+        : { updated: 1, status: "pending" }), { status }));
+    });
+    await waitFor(() => expect(secondEdit.matches(":disabled")).toBe(false));
+    if (status === 409) {
+      expect(await screen.findByRole("alert")).toBeTruthy();
+      expect((screen.getByLabelText("審核理由與來源") as HTMLTextAreaElement).value).toBe("待儲存來源");
+    } else {
+      expect(screen.queryByLabelText("審核理由與來源")).toBeNull();
+    }
+  });
+
   it("edits a Korean Google identity without clearing its NAVER identity", async () => {
     const korean = { ...item, country_code: "KR", google_place_id: "ChIJ-korea", naver_map_url: "https://map.naver.com/p/entry/place/123" };
     const fetchMock = vi.fn(async (_input: RequestInfo | URL, init?: RequestInit) => {
@@ -221,8 +351,26 @@ describe("AdminHotspotsPanel", () => {
     fireEvent.click(screen.getByRole("button", { name: "儲存地點" }));
     await screen.findByText("已儲存精準地點。");
     const [, init] = fetchMock.mock.calls.find(([, init]) => init?.method === "POST")!;
-    expect(JSON.parse(String(init?.body))).toMatchObject({ google_place_id: "ChIJ-correct-branch" });
-    expect(JSON.parse(String(init?.body))).not.toHaveProperty("naver_map_url");
+    expect(JSON.parse(String(init?.body))).toEqual({ ids: [item.id], action: "update", google_place_id: "ChIJ-correct-branch", expected_updated_at: item.updated_at });
+    expect(fetchMock.mock.calls.every(([input]) => !String(input).includes("map-candidates") && !String(input).includes("map-identities"))).toBe(true);
+  });
+
+  it("edits a Korean NAVER identity without clearing its Google identity or coordinates", async () => {
+    const korean = { ...item, country_code: "KR", google_place_id: "ChIJ-korea", naver_map_url: "https://map.naver.com/p/entry/place/123" };
+    const fetchMock = vi.fn(async (_input: RequestInfo | URL, init?: RequestInit) => {
+      if (init?.method === "POST") return new Response(JSON.stringify({ updated: 1 }));
+      return new Response(JSON.stringify({ ...listing, items: [korean] }));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminHotspotsPanel />);
+    await screen.findByText(korean.name);
+    fireEvent.click(screen.getByRole("button", { name: "編輯地點" }));
+    fireEvent.change(screen.getByLabelText("Naver 精準地點頁"), { target: { value: "https://map.naver.com/p/entry/place/456" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存地點" }));
+    await screen.findByText("已儲存精準地點。");
+    const [, init] = fetchMock.mock.calls.find(([, init]) => init?.method === "POST")!;
+    expect(JSON.parse(String(init?.body))).toEqual({ ids: [item.id], action: "update", naver_map_url: "https://map.naver.com/p/entry/place/456", expected_updated_at: item.updated_at });
+    expect(fetchMock.mock.calls.every(([input]) => !String(input).includes("map-candidates") && !String(input).includes("map-identities"))).toBe(true);
   });
 
   it.each([{ initialHotspotId: item.id }, { initialMissingLocation: true }])("offers a way out of canonical location filters %o", async (props) => {

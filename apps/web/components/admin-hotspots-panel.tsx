@@ -183,18 +183,41 @@ export function AdminHotspotsPanel({
   const [locationDraft, setLocationDraft] = useState<Candidate | null>(null);
   const [locationOriginal, setLocationOriginal] = useState<Candidate | null>(null);
   const [locationConflict, setLocationConflict] = useState(false);
+  const [locationBusy, setLocationBusy] = useState(false);
   const [mapCandidate, setMapCandidate] = useState<MapCandidate | null>(null);
   const locationDirty = locationDraft !== null && JSON.stringify(locationDraft) !== JSON.stringify(locationOriginal);
+  // List-filter requests finish independently of a save or candidate lookup.
+  // Their loading state must never unlock an editor whose own request is pending.
+  const actionBusy = loading || locationBusy;
 
   useEffect(() => {
-    if (!locationDirty) return;
-    const warn = (event: BeforeUnloadEvent) => { event.preventDefault(); };
+    if (!locationDirty && !locationBusy) return;
+    const warn = (event: BeforeUnloadEvent) => { event.preventDefault(); event.returnValue = ""; };
+    const canLeave = () => !locationBusy && (!locationDirty || window.confirm(reviewCopy.discard));
+    const beforeNavigate = (event: Event) => {
+      const url = (event as CustomEvent<{ url?: string }>).detail?.url;
+      if (!event.defaultPrevented && url && new URL(url, window.location.href).href !== window.location.href && !canLeave()) {
+        event.preventDefault();
+      }
+    };
+    const click = (event: MouseEvent) => {
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const anchor = event.target instanceof Element ? event.target.closest("a[href]") : null;
+      if (!(anchor instanceof HTMLAnchorElement) || (anchor.target && anchor.target !== "_self") || anchor.hasAttribute("download")) return;
+      if (anchor.href !== window.location.href && !canLeave()) { event.preventDefault(); event.stopPropagation(); }
+    };
     window.addEventListener("beforeunload", warn);
-    return () => window.removeEventListener("beforeunload", warn);
-  }, [locationDirty]);
+    window.addEventListener("admin:before-navigate", beforeNavigate);
+    document.addEventListener("click", click, true);
+    return () => {
+      window.removeEventListener("beforeunload", warn);
+      window.removeEventListener("admin:before-navigate", beforeNavigate);
+      document.removeEventListener("click", click, true);
+    };
+  }, [locationDirty, locationBusy, reviewCopy.discard]);
 
   function openLocationEditor(item: Candidate) {
-    if (loading) return;
+    if (actionBusy) return;
     if (locationDirty && !window.confirm(reviewCopy.discard)) return;
     setLocationOriginal(item);
     setLocationDraft(item);
@@ -203,7 +226,7 @@ export function AdminHotspotsPanel({
   }
 
   function closeLocationEditor() {
-    if (loading) return;
+    if (actionBusy) return;
     if (locationDirty && !window.confirm(reviewCopy.discard)) return;
     setLocationDraft(null);
     setLocationOriginal(null);
@@ -267,13 +290,14 @@ export function AdminHotspotsPanel({
   }
 
   async function review(action: "approve" | "reject" | "disable") {
-    if (!manage.allowed || !selected.size || loading) return;
+    if (!manage.allowed || !selected.size || actionBusy) return;
     setLoading(true);
     try {
       await api("/admin/hotspots/review", {
         method: "POST",
         body: JSON.stringify({
-          ids: [...selected], action, reason: reviewReason.trim() || null,
+          ids: [...selected], action,
+          ...(reviewReason.trim() ? { reason: reviewReason.trim() } : {}),
           ...([...selected].every((id) => selectedVersions.current.has(id)) ? {
             expected_updated_ats: Object.fromEntries([...selected].map((id) => [id, selectedVersions.current.get(id)])),
           } : {}),
@@ -291,7 +315,7 @@ export function AdminHotspotsPanel({
   }
 
   async function updateDepth(isDeep: boolean) {
-    if (!selected.size) return;
+    if (!manage.allowed || !selected.size || actionBusy) return;
     setLoading(true);
     try {
       await api("/admin/hotspots/review", {
@@ -328,7 +352,7 @@ export function AdminHotspotsPanel({
   }
 
   async function moveDestination() {
-    if (!selected.size || !moveDestinationId.trim()) return;
+    if (!manage.allowed || !selected.size || !moveDestinationId.trim() || actionBusy) return;
     setLoading(true);
     try {
       await api("/admin/hotspots/review", {
@@ -351,7 +375,8 @@ export function AdminHotspotsPanel({
   }
 
   async function searchMapCandidate() {
-    if (!locationDraft || locationDraft.country_code === "KR") return;
+    if (!manage.allowed || !locationDraft || locationDraft.country_code === "KR" || actionBusy) return;
+    setLocationBusy(true);
     setLoading(true);
     try {
       const result = await api<{
@@ -378,11 +403,12 @@ export function AdminHotspotsPanel({
       setMessage((error as Error).message);
     } finally {
       setLoading(false);
+      setLocationBusy(false);
     }
   }
 
   async function saveLocation() {
-    if (!manage.allowed || !locationDraft || !locationOriginal || loading || locationConflict) return;
+    if (!manage.allowed || !locationDraft || !locationOriginal || actionBusy || locationConflict) return;
     const identityChanged = locationDraft.category !== locationOriginal.category || locationDraft.qid !== locationOriginal.qid;
     if (identityChanged && !locationDraft.reason?.trim()) {
       setMessage(reviewCopy.required);
@@ -400,6 +426,7 @@ export function AdminHotspotsPanel({
     }
     if (locationDraft.qid !== locationOriginal.qid) changes.wikidata_item_id = locationDraft.qid?.trim() || null;
     if (identityChanged) changes.reason = locationDraft.reason?.trim();
+    setLocationBusy(true);
     setLoading(true);
     try {
       await api("/admin/hotspots/review", {
@@ -420,6 +447,8 @@ export function AdminHotspotsPanel({
       if ((error as { code?: string }).code === "hotspot_review_conflict") setLocationConflict(true);
       setMessage((error as Error).message);
       setLoading(false);
+    } finally {
+      setLocationBusy(false);
     }
   }
 
@@ -554,21 +583,21 @@ export function AdminHotspotsPanel({
         </span>
         {selected.size > 0 && <>
         <button
-          disabled={!manage.allowed || !selected.size || loading}
+          disabled={!manage.allowed || !selected.size || actionBusy}
           onClick={() => void review("approve")}
           className="rounded-xl bg-[var(--teal)] px-4 py-2 text-sm font-semibold text-white disabled:opacity-40"
         >
           {ta("hotspotsPanel.approve")}
         </button>
         <button
-          disabled={!manage.allowed || !selected.size || loading}
+          disabled={!manage.allowed || !selected.size || actionBusy}
           onClick={() => void review("reject")}
           className="rounded-xl border border-[var(--coral)] px-4 py-2 text-sm font-semibold text-[var(--coral)] disabled:opacity-40"
         >
           {ta("hotspotsPanel.reject")}
         </button>
         <button
-          disabled={!manage.allowed || !selected.size || loading}
+          disabled={!manage.allowed || !selected.size || actionBusy}
           onClick={() => void review("disable")}
           className="rounded-xl border border-[var(--line)] px-4 py-2 text-sm font-semibold disabled:opacity-40"
         >
@@ -578,7 +607,7 @@ export function AdminHotspotsPanel({
       </div>
       {selected.size > 0 && <label className="mt-3 block text-sm font-semibold">
         {reviewCopy.batchReason}
-        <textarea aria-label={reviewCopy.batchReason} value={reviewReason} maxLength={500} disabled={loading || !manage.allowed}
+        <textarea aria-label={reviewCopy.batchReason} value={reviewReason} maxLength={500} disabled={actionBusy || !manage.allowed}
           onChange={(event) => setReviewReason(event.target.value)}
           className="mt-1 min-h-20 w-full rounded-xl border border-[var(--line)] bg-[var(--surface)] p-3 text-[var(--ink)]" />
         <span className="block text-xs font-normal text-[var(--muted)]">{reviewCopy.reasonHint}</span>
@@ -595,7 +624,7 @@ export function AdminHotspotsPanel({
           className="h-10 rounded-xl border border-[var(--line)] px-3"
         />
         <button
-          disabled={!manage.allowed || !selected.size || loading || !moveDestinationId.trim()}
+          disabled={!manage.allowed || !selected.size || actionBusy || !moveDestinationId.trim()}
           onClick={() => void moveDestination()}
           className="rounded-xl border border-[var(--teal)] px-4 py-2 text-sm font-semibold text-[var(--teal)] disabled:opacity-40"
         >
@@ -658,14 +687,14 @@ export function AdminHotspotsPanel({
           </label>
         ))}
         <button
-          disabled={!manage.allowed || !selected.size || loading || !depthReason.trim()}
+          disabled={!manage.allowed || !selected.size || actionBusy || !depthReason.trim()}
           onClick={() => void updateDepth(true)}
           className="rounded-xl bg-amber-700 px-4 py-2 text-sm font-semibold text-white disabled:opacity-40"
         >
           {ta("hotspotsPanel.setDepth")}
         </button>
         <button
-          disabled={!manage.allowed || !selected.size || loading}
+          disabled={!manage.allowed || !selected.size || actionBusy}
           onClick={() => void updateDepth(false)}
           className="rounded-xl border border-amber-700 px-4 py-2 text-sm font-semibold text-amber-900 disabled:opacity-40"
         >
@@ -686,13 +715,13 @@ export function AdminHotspotsPanel({
             <button
               type="button"
               onClick={closeLocationEditor}
-              disabled={loading}
+              disabled={actionBusy}
               className="min-h-11 rounded-xl border px-3"
             >
               {ta("hotspotsPanel.close")}
             </button>
           </div>
-          <fieldset disabled={!manage.allowed || loading} className="mt-4 grid gap-3 md:grid-cols-2">
+          <fieldset disabled={!manage.allowed || actionBusy} className="mt-4 grid gap-3 md:grid-cols-2">
             <label className="text-sm font-semibold">
               {reviewCopy.category}
               <select value={locationDraft.category} autoFocus
@@ -718,7 +747,7 @@ export function AdminHotspotsPanel({
               <span className="block text-xs font-normal text-[var(--muted)]">{reviewCopy.reasonHint}</span>
             </label>
           </fieldset>
-          <fieldset disabled={!manage.allowed || loading} className="mt-4 grid gap-3 md:grid-cols-2 lg:grid-cols-4">
+          <fieldset disabled={!manage.allowed || actionBusy} className="mt-4 grid gap-3 md:grid-cols-2 lg:grid-cols-4">
             <label className="text-xs font-semibold">
               {ta("hotspotsPanel.latitude")}
               <input
@@ -849,7 +878,7 @@ export function AdminHotspotsPanel({
           <div className="mt-3 flex flex-wrap gap-2">
             <button
               type="button"
-              disabled={!manage.allowed || locationDraft.country_code === "KR" || loading}
+              disabled={!manage.allowed || locationDraft.country_code === "KR" || actionBusy}
               onClick={() => void searchMapCandidate()}
               className="min-h-11 rounded-xl border border-sky-700 px-4 font-semibold text-sky-900 disabled:opacity-40"
             >
@@ -857,7 +886,7 @@ export function AdminHotspotsPanel({
             </button>
             <button
               type="submit"
-              disabled={!manage.allowed || loading || locationConflict}
+              disabled={!manage.allowed || actionBusy || locationConflict}
               className="ml-auto min-h-11 rounded-xl bg-sky-800 px-5 font-semibold text-white disabled:opacity-40"
             >
               {ta("hotspotsPanel.saveLocation")}
@@ -865,9 +894,10 @@ export function AdminHotspotsPanel({
           </div>
           {locationConflict && <div role="alert" className="mt-3 rounded-xl border border-[var(--coral)] p-3 text-sm">
             <p>{reviewCopy.conflict}</p>
-            <button type="button" disabled={loading} className="mt-2 min-h-11 rounded-xl border border-[var(--line)] px-3"
+            <button type="button" disabled={actionBusy} className="mt-2 min-h-11 rounded-xl border border-[var(--line)] px-3"
               onClick={async () => {
-                if (!window.confirm(reviewCopy.discard)) return;
+                if (actionBusy || !window.confirm(reviewCopy.discard)) return;
+                setLocationBusy(true);
                 setLoading(true);
                 try {
                   const result = await api<Response>(`/admin/hotspots/candidates?hotspot_id=${locationDraft.id}&limit=1`);
@@ -876,7 +906,7 @@ export function AdminHotspotsPanel({
                     setLocationOriginal(latest); setLocationDraft(latest); setLocationConflict(false); setMapCandidate(null);
                   }
                 } catch (error) { setMessage((error as Error).message); }
-                finally { setLoading(false); }
+                finally { setLoading(false); setLocationBusy(false); }
               }}>{reviewCopy.refresh}</button>
           </div>}
           {mapCandidate && (
@@ -890,7 +920,7 @@ export function AdminHotspotsPanel({
               </p>
               <button
                 type="button"
-                disabled={loading || !manage.allowed}
+                disabled={actionBusy || !manage.allowed}
                 onClick={() =>
                   setLocationDraft({
                     ...locationDraft,
@@ -1042,7 +1072,7 @@ export function AdminHotspotsPanel({
                                 className="mt-2 inline-flex min-h-11 items-center rounded-xl border border-sky-700 px-3 font-semibold text-sky-900"
                               >{copy.identityEditor}</Link> : <button
                                 type="button"
-                                disabled={!manage.allowed || loading}
+                                disabled={!manage.allowed || actionBusy}
                                 title={!manage.allowed ? manage.disabledReason : undefined}
                                 onClick={() => openLocationEditor(item)}
                                 className="mt-2 min-h-11 rounded-xl border border-sky-700 px-3 font-semibold text-sky-900"
@@ -1083,7 +1113,7 @@ export function AdminHotspotsPanel({
         <nav aria-label={ta("hotspotsPanel.paginationLabel")} className="mt-4 flex items-center justify-end gap-3">
           <button
             type="button"
-            disabled={page <= 1 || loading}
+            disabled={page <= 1 || actionBusy}
             onClick={() => setPage((current) => Math.max(1, current - 1))}
             className="min-h-11 rounded-xl border px-4 text-sm font-semibold disabled:opacity-40"
           >
@@ -1094,7 +1124,7 @@ export function AdminHotspotsPanel({
           </span>
           <button
             type="button"
-            disabled={page >= data.pages || loading}
+            disabled={page >= data.pages || actionBusy}
             onClick={() => setPage((current) => Math.min(data.pages, current + 1))}
             className="min-h-11 rounded-xl border px-4 text-sm font-semibold disabled:opacity-40"
           >

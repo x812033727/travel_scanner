@@ -14,7 +14,8 @@ run, or make a paid provider request. Filling an ID is not proof of its identity
   QIDs return 409, including unique-index races. Whitespace-only legacy IDs count
   as missing. Correcting an existing identity requires a separate reviewed process.
 - Actual category/QID changes require a nonblank reason. Explicit `reason` on
-  `update` persists to the record and audit; omission preserves the existing reason.
+  every action persists to the record and audit; omission preserves each row's
+  existing reason, while explicit `null` remains an intentional clear operation.
   Editing does not change the row's publication status or active flag.
 - `expected_updated_at` protects a single-row edit. `expected_updated_ats` maps
   every selected ID to its observed timestamp for approve/reject/disable actions.
@@ -30,13 +31,16 @@ run, or make a paid provider request. Filling an ID is not proof of its identity
 The location editor now exposes classification, protected Wikidata identity, and
 review rationale/source text. Saving sends changed fields only (coordinates remain
 a pair), leaves other map providers intact, and does not approve the record. The
-normal moderation toolbar also submits the selected records' rationale.
+normal moderation toolbar submits a nonblank new rationale, or preserves each
+selected record's existing rationale when the toolbar is left blank.
 
 A stale edit retains its draft and disables resubmission until the administrator
 explicitly reloads the current record. Discarding a dirty editor requires confirmation;
 leaving the browser page warns about unsaved edits. While a request is in flight,
 closing/switching records and changing fields are disabled so late responses cannot
-overwrite another draft. New copy covers all five existing locales. Controls use
+overwrite another draft. Editor requests have their own busy lock, independent of
+list-filter loading. Workspace navigation and same-tab links share the dirty-draft
+confirmation and cannot leave during an editor request. New copy covers all five existing locales. Controls use
 the application's semantic colors and touch-sized inputs.
 
 ## Verification and boundaries
@@ -62,3 +66,26 @@ the application's semantic colors and touch-sized inputs.
 - Opening the editor does not search Google, call AI or approve any record. No
   credentials, provider configuration, feature flags, migration, or runtime deployment
   are part of this change. Production moderation remains a separately verified operation.
+
+## 2026-09-10 main integration
+
+User separately authorized integration, merge and deployment after PR386 landed.
+The merge preserves both Google/NAVER identities and the supplemental review
+panel. The previous Korean task owner confirmed that the overlapping admin files
+were released; its merged/deployed claim was closed through the task CLI.
+
+Integration review found and fixed saved-rationale erasure during subsequent
+approval, unguarded workspace navigation, and a filter-response/pending-save race.
+Backend regression was demonstrated first: three omitted-reason cases failed on
+old code. Final local API checks pass: Ruff, mypy (301 files), 59 focused tests
+(one PostgreSQL skip), and full pytest 2822 passed/161 service-gated skips. One
+existing unawaited AsyncMock warning remains in unrelated usage-setting tests.
+Alembic has one head, 0070_map_identity_metadata; this PR adds no migration.
+
+Final focused frontend checks pass 31 cases, scoped ESLint and full TypeScript.
+Reciprocal Korean map edits, blank-toolbar rationale preservation, cancelled
+navigation and delayed saves across filter refreshes have regression coverage.
+Full Web suite, production-build/browser checks and fresh CI are release gates,
+not inferred from the earlier pre-merge results above. Local staged i18n initially
+reported main's already-merged map copy as new against the old branch; the normal
+check passed after recording the merge. No i18n checks were disabled or altered.

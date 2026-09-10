@@ -326,6 +326,72 @@ async def test_legacy_reason_update_preserves_status_and_omitted_reason(
     assert row.review_status == "disabled" and not row.is_active
 
 
+@pytest.mark.parametrize("action", ["approve", "reject", "disable"])
+@pytest.mark.parametrize(
+    "reason_update",
+    [{}, {"reason": "Explicit replacement source"}, {"reason": None}],
+    ids=["omitted-preserves", "replacement", "explicit-null-clears"],
+)
+async def test_decision_reason_presence_preserves_each_row_and_audits(
+    session: AsyncSession, action: str, reason_update: dict[str, str | None]
+) -> None:
+    rows = [
+        hotspot(
+            wikidata_item_id=f"Q{index}",
+            review_reason=f"Independent source {index}",
+            map_match_status="verified",
+            google_place_id=f"ChIJ-fixture-{index}",
+            latitude=Decimal("25.1"),
+            longitude=Decimal("121.1"),
+            coordinate_source_type="wikidata",
+            coordinate_source_url=f"https://www.wikidata.org/wiki/Q{index}",
+            map_verified_at=STAMP,
+            coordinate_verified_at=STAMP,
+        )
+        for index in (1, 2)
+    ]
+    session.add_all(rows)
+    await session.commit()
+    before = {
+        str(row.id): {
+            "category": row.category,
+            "wikidata_item_id": row.wikidata_item_id,
+            "reason": row.review_reason,
+        }
+        for row in rows
+    }
+    request = HotspotReviewRequest.model_validate(
+        {
+            "ids": [str(row.id) for row in rows],
+            "action": action,
+            "expected_updated_ats": {str(row.id): STAMP for row in rows},
+            **reason_update,
+        }
+    )
+    result = await review_hotspot_candidates(request, actor(), session)
+    status = {"approve": "approved", "reject": "rejected", "disable": "disabled"}[action]
+    assert result == {"updated": 2, "status": status}
+    for row in rows:
+        await session.refresh(row)
+        expected_reason = reason_update.get("reason", before[str(row.id)]["reason"])
+        assert row.review_reason == expected_reason
+        assert (row.review_status, row.is_active) == (status, action == "approve")
+    assert await audit_count(session) == 1
+    audit = await session.scalar(select(AdminAuditLog))
+    assert audit is not None
+    assert audit.metadata_json["action"] == action
+    assert {
+        change["id"]: {"before": change["before"], "after": change["after"]}
+        for change in audit.metadata_json["identity_changes"]
+    } == {
+        str(row.id): {
+            "before": before[str(row.id)],
+            "after": {**before[str(row.id)], "reason": row.review_reason},
+        }
+        for row in rows
+    }
+
+
 @pytest.mark.parametrize(
     ("fields", "code"),
     [

@@ -772,7 +772,9 @@ async def review_hotspot_candidates(
             )
         if payload.action != "update":
             hotspot.review_status = status
-        if payload.action != "update" or "reason" in payload.model_fields_set:
+        # A decision without a new reason keeps each row's saved evidence;
+        # an explicitly supplied null remains an intentional clear operation.
+        if "reason" in payload.model_fields_set:
             hotspot.review_reason = payload.reason
         if payload.category is not None:
             hotspot.category = payload.category

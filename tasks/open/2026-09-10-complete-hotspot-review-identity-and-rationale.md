@@ -1,7 +1,7 @@
 ---
 id: 2026-09-10-complete-hotspot-review-identity-and-rationale
 title: Complete hotspot review identity and rationale editor
-status: in-progress
+status: review
 priority: P1
 area: web
 owner: codex-hotspot-review-editor
@@ -47,7 +47,7 @@ and `playwright test hotspot-review-editor.spec.ts` for desktop and Pixel 7.
 ## Notes
 
 Isolated branch from origin/main daa71684. Original dirty checkout is untouched.
-No production deployment or merge is authorized here. Existing non-empty QIDs are
+Initial implementation did not authorize deployment or merge. Existing non-empty QIDs are
 immutable through this narrow editor; assigning an ID does not verify its source,
 map identity or automatically publish it. No paid provider request on page load.
 
@@ -57,3 +57,20 @@ tests passed; production build and 4 desktop/Pixel 7 light/dark fixture Playwrig
 cases passed. Real PostgreSQL integration races remain skipped locally. See
 docs/hotspot-review-editor.md for evidence boundaries. Merge/deployment pending
 separate authorization; these tests do not complete production catalog moderation.
+
+2026-09-10 continuation: user explicitly authorized resolving PR385 conflicts,
+retesting, merging and deployment, then resuming moderation. Merged origin/main
+fe26ff8c, preserving PR386 dual maps. Its task owner explicitly handed over the
+two admin files and confirmed code/CI/deployment complete; closed only that
+completed claim via task CLI. Another active transport-UI task does not overlap.
+
+Additional integration fixes preserve omitted decision reasons, protect dirty
+workspace/link navigation, and keep pending editor requests locked across list
+refreshes. API final local pytest2822/161skips, Ruff/mypy301 and single0070 head
+pass; focusedWeb31, scopedESLint/fullTypeScript pass. FullWeb/build/browser and
+fresh final-head CI still pending here; never use previous-head green checks.
+Deployment must use immutable source/images with both host locks, verified fresh
+backup, preserved existing runtime/data containers and repeated readiness checks.
+Actual live source is /root/mokaair-release-fe26ff8c-UaykAgja/source, not the
+historical /root/travel_scanner checkout. No provider settings/flags/spending or
+new catalog batch is authorized by the deployment operation itself.
