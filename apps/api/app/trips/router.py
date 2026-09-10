@@ -5,6 +5,7 @@ import secrets
 from collections.abc import Mapping
 from datetime import UTC, date, datetime, time, timedelta
 from decimal import Decimal
+from math import isfinite
 from typing import Annotated, Any, Literal, cast, get_args
 from urllib.parse import urlparse
 from uuid import UUID, uuid4, uuid5
@@ -44,6 +45,7 @@ from app.localized_names import (
     ITEM_TITLE_KEY,
     resolve_item_field,
 )
+from app.locations.map_identity import normalize_map_identities
 from app.models import (
     FlightOfferRecord,
     FlightStatusLookup,
@@ -86,6 +88,7 @@ from app.trips.flight_anchor import (
 )
 from app.trips.hours import is_open_at, opens_within_day
 from app.trips.itinerary import ItineraryItem
+from app.trips.map_identities import item_route_point, location_map_links, trip_map_identities
 from app.trips.place_options import list_place_options, resolve_catalog_selection
 from app.trips.pricing import (
     lodging_from_offer,
@@ -130,9 +133,12 @@ from app.trips.routing import (
     RouteService,
     TravelMode,
     estimate_leg_minutes,
+    external_navigations,
     google_external_navigation,
     infer_place_provider,
+    korean_external_route_reason,
     naver_external_navigation,
+    route_map_capabilities,
     route_provider_configured,
     trip_region_code,
 )
@@ -528,6 +534,13 @@ class PrimaryLodgingUpdateRequest(BaseModel):
         return self
 
 
+class TripMapIdentityRequest(BaseModel):
+    version: int = Field(ge=1)
+    provider: Literal["google_places"] = "google_places"
+    place_id: str = Field(min_length=5, max_length=255, pattern=r"^[A-Za-z0-9_-]+$")
+    confirmed_same_place: Literal[True]
+
+
 class ScheduleDefaultsUpdateRequest(BaseModel):
     version: int = Field(ge=1)
     day_start_time: str | None = Field(default=None, pattern=r"^(?:[01]\d|2[0-3]):[0-5]\d$")
@@ -881,6 +894,8 @@ def serialize_item(
         "provider_place_id": item.provider_place_id,
         "location_source": item.location_source,
         "location_provider": infer_place_provider(item.location_source, item.data),
+        "map_identities": trip_map_identities(item),
+        "location_map_links": location_map_links(item),
         "duration_minutes": item.duration_minutes,
         "notes": item.notes,
         "fixed_time": item.fixed_time,
@@ -906,6 +921,8 @@ PUBLIC_TRIP_KEYS = (
     "updated_at",
 )
 PUBLIC_ITEM_KEYS = (
+    "map_identities",
+    "location_map_links",
     "id",
     "item_type",
     "day_date",
@@ -949,7 +966,12 @@ def public_item(item: Mapping[str, Any]) -> dict[str, Any]:
         public_data["flight_info"] = {
             key: flight_info[key] for key in PUBLIC_FLIGHT_INFO_KEYS if key in flight_info
         }
-    return {**{key: item[key] for key in PUBLIC_ITEM_KEYS}, "data": public_data}
+    return {
+        **{key: item.get(key) for key in PUBLIC_ITEM_KEYS},
+        "data": public_data,
+        "map_identities": item.get("map_identities", {}),
+        "location_map_links": item.get("location_map_links", []),
+    }
 
 
 async def load_items(session: AsyncSession, trip_id: UUID) -> list[TripPlanItem]:
@@ -1064,6 +1086,23 @@ async def serialize_trip(
                     route_segments = cast(list[dict[str, Any]], json.loads(raw))
                 except json.JSONDecodeError:
                     route_segments = []
+    points = {str(item.id): route_point(item) for item in items}
+    region = trip_region_code(trip.timezone, trip.destination_name, trip.data)
+    for segment in route_segments:
+        origin = points.get(str(segment.get("from_item_id")))
+        destination = points.get(str(segment.get("to_item_id")))
+        mode = cast(TravelMode, segment.get("travel_mode", "transit"))
+        if mode not in {"transit", "walk", "drive"}:
+            continue
+        segment["map_capabilities"] = route_map_capabilities(region, mode)
+        segment["external_navigations"] = (
+            [
+                nav.model_dump(mode="json")
+                for nav in external_navigations(origin, destination, mode, region)
+            ]
+            if origin and destination
+            else []
+        )
     pricing = (
         await trip_pricing_with_rates(trip, items, FxRateProvider(get_settings(), get_redis()))
         if include_items
@@ -1521,6 +1560,7 @@ async def _load_trip_candidates(
     candidates = [*catalogue, *await _inbox_candidates(session, trip.id)]
     if preferences.pet_companion:
         from app.community.pet_planning import filter_candidates
+
         return await filter_candidates(session, candidates, preferences.pet_companion)
     return candidates
 
@@ -1582,6 +1622,7 @@ async def _load_ai_planner_candidates(
             longitude=hotspot.longitude,
             duration_minutes=clamp_candidate_duration(hotspot.recommended_duration_minutes),
             map_links=hotspot.map_links,
+            map_identities=hotspot.map_identities,
             hotspot_id=hotspot.hotspot_id,
             depth_kind=("day_trip" if hotspot.depth_kind == "day_trip" else "urban_local"),
             access_minutes=clamp_candidate_access(hotspot.access_minutes),
@@ -1622,6 +1663,7 @@ async def _load_ai_planner_candidates(
                 longitude=food.longitude,
                 duration_minutes=75,
                 map_links=food.map_links,
+                map_identities=food.map_identities,
                 food_id=food.food_id,
                 merchant_id=food.merchant_id,
                 meal_types=meal_types,
@@ -1630,6 +1672,7 @@ async def _load_ai_planner_candidates(
         )
     if preferences.pet_companion:
         from app.community.pet_planning import filter_candidates
+
         return await filter_candidates(session, candidates, preferences.pet_companion)
     return candidates
 
@@ -1760,9 +1803,7 @@ async def reproject_saved_times(
             saved,
             points,
             cast(TravelMode, setting.default_travel_mode if setting else "transit"),
-            buffer_minutes=(
-                setting.default_buffer_minutes if setting else DEFAULT_BUFFER_MINUTES
-            ),
+            buffer_minutes=(setting.default_buffer_minutes if setting else DEFAULT_BUFFER_MINUTES),
         )
         for row in day_rows:
             if row.fixed_time or row.id not in projection.item_times:
@@ -1775,21 +1816,7 @@ async def reproject_saved_times(
 
 
 def route_point(item: TripPlanItem) -> RoutePoint | None:
-    if item.latitude is None or item.longitude is None:
-        return None
-    latitude, longitude = float(item.latitude), float(item.longitude)
-    # Legacy stored coordinates can predate request validation. NaN and infinity
-    # also fail these bounds, so malformed points remain explicit route barriers.
-    if not (-90 <= latitude <= 90 and -180 <= longitude <= 180):
-        return None
-    return RoutePoint(
-        item_id=item.id,
-        name=item.location_name or item.title or item.item_type,
-        latitude=latitude,
-        longitude=longitude,
-        provider_place_id=item.provider_place_id,
-        place_provider=infer_place_provider(item.location_source, item.data),
-    )
+    return item_route_point(item)
 
 
 def _destination_region_values(destination_name: str | None, timezone: str | None) -> str | None:
@@ -2225,7 +2252,8 @@ async def save_trip(
             return await serialize_trip(session, existing)
     creation_request = (
         {"key_digest": request_key.rsplit(":", 1)[-1], "request_hash": request_hash}
-        if request_key else None
+        if request_key
+        else None
     )
     count = await session.scalar(
         select(func.count()).select_from(TripPlan).where(TripPlan.user_id == user.id)
@@ -2342,7 +2370,10 @@ async def save_trip(
         # Sent from here, not the browser: the trip exists when this row commits, and
         # only the server knows which of the two doors it came through.
         await record_event(
-            session, "trip_created", path="/trips", user_id=user.id,
+            session,
+            "trip_created",
+            path="/trips",
+            user_id=user.id,
             properties={"source": "blank", "planning_mode": payload.planning_mode},
         )
         await session.commit()
@@ -2437,7 +2468,8 @@ async def save_trip(
         mode=plan["mode"],
         total_price=Decimal(str(plan["total_cost"]["total_cost"])),
         data={
-            **plan, **shared_keys,
+            **plan,
+            **shared_keys,
             **({"creation_request": creation_request} if creation_request else {}),
         },
         version=1,
@@ -2476,7 +2508,10 @@ async def save_trip(
                 record.data = {**record.data, "price_snapshot": flight_snapshot}
             session.add(record)
     await record_event(
-        session, "trip_created", path="/trips", user_id=user.id,
+        session,
+        "trip_created",
+        path="/trips",
+        user_id=user.id,
         properties={"source": "search", "quoted_flight": flight_snapshot is not None},
     )
     await session.commit()
@@ -3143,16 +3178,27 @@ async def trip_place_options(
     limit: Annotated[int, Query(ge=1, le=24)] = 12,
 ) -> dict[str, Any]:
     trip = await owned_trip(session, user.id, trip_id)
-    if radius_km not in {3, 10} or (latitude is None) != (longitude is None) or (
-        (next_latitude is None) != (next_longitude is None)
+    if (
+        radius_km not in {3, 10}
+        or (latitude is None) != (longitude is None)
+        or ((next_latitude is None) != (next_longitude is None))
     ):
         raise AppError(422, "invalid_place_bias", "經緯度需成對提供")
     return await list_place_options(
-        session, trip, locale=active_locale(), source=source, q=q, kind=kind,
+        session,
+        trip,
+        locale=active_locale(),
+        source=source,
+        q=q,
+        kind=kind,
         origin=(latitude, longitude) if latitude is not None and longitude is not None else None,
         following=(next_latitude, next_longitude)
-        if next_latitude is not None and next_longitude is not None else None,
-        radius_km=radius_km, all_cities=all_cities, offset=offset, limit=limit,
+        if next_latitude is not None and next_longitude is not None
+        else None,
+        radius_km=radius_km,
+        all_cities=all_cities,
+        offset=offset,
+        limit=limit,
     )
 
 
@@ -3211,12 +3257,44 @@ async def update_itinerary(
     catalog_items: dict[int, dict[str, Any]] = {}
     for index, item in enumerate(incoming_items):
         existing = existing_by_id.get(item.id) if item.id is not None else None
+        # Verification belongs to the server. Echoed old forms preserve both IDs;
+        # replacing a place clears them, and clients cannot certify arbitrary IDs.
+        same_place = existing is not None and (
+            existing.provider_place_id == item.provider_place_id
+            and existing.latitude
+            == (Decimal(str(item.latitude)) if item.latitude is not None else None)
+            and existing.longitude
+            == (Decimal(str(item.longitude)) if item.longitude is not None else None)
+            and (item.location_name or "")
+            in {
+                existing.location_name or "",
+                resolve_item_field(
+                    existing.names_json,
+                    ITEM_LOCATION_KEY,
+                    active_locale(),
+                    fallback=existing.location_name,
+                )
+                or "",
+            }
+        )
+        incoming_items[index] = item = item.model_copy(
+            update={
+                "data": {
+                    **item.data,
+                    "map_identities": trip_map_identities(existing)
+                    if same_place and existing
+                    else {},
+                }
+            }
+        )
         selection = item.data.get("catalog_selection")
         if selection and (
             existing is None or selection != (existing.data or {}).get("catalog_selection")
         ):
-            if existing is not None and existing.system_role is not None and (
-                existing.system_role not in {"lunch", "dinner"}
+            if (
+                existing is not None
+                and existing.system_role is not None
+                and (existing.system_role not in {"lunch", "dinner"})
             ):
                 raise AppError(422, "system_itinerary_item_immutable", "此系統卡不可更換景點")
             catalog_items[index] = await resolve_catalog_selection(
@@ -3267,12 +3345,16 @@ async def update_itinerary(
     for index, item in enumerate(incoming_items):
         catalog_item = catalog_items.get(index)
         if catalog_item:
-            item = item.model_copy(update={
-                "latitude": catalog_item["latitude"], "longitude": catalog_item["longitude"],
-                "provider_place_id": catalog_item["provider_place_id"],
-                "location_source": catalog_item["location_source"], "is_estimated": False,
-                "data": {**item.data, **catalog_item["data"]},
-            })
+            item = item.model_copy(
+                update={
+                    "latitude": catalog_item["latitude"],
+                    "longitude": catalog_item["longitude"],
+                    "provider_place_id": catalog_item["provider_place_id"],
+                    "location_source": catalog_item["location_source"],
+                    "is_estimated": False,
+                    "data": {**item.data, **catalog_item["data"]},
+                }
+            )
         row = existing_by_id.get(item.id) if item.id is not None else None
         if row is None:
             row = item_record(trip.id, item)
@@ -3342,7 +3424,8 @@ async def update_itinerary(
             apply_item_request(row, item)
         if catalog_item:
             row.names_json = {
-                key: value for key, value in catalog_item["names"].items()
+                key: value
+                for key, value in catalog_item["names"].items()
                 if getattr(item, key, None) == catalog_item[key]
             }
             row.coordinate_source_type = catalog_item["data"]["coordinate_source_type"]
@@ -3407,6 +3490,20 @@ async def update_primary_lodging(
 ) -> dict[str, Any]:
     trip = await owned_trip(session, user.id, trip_id)
     rows = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
+    current_lodging = primary_lodging(trip, rows)
+    same_place = bool(
+        current_lodging
+        and current_lodging.get("provider_place_id") == payload.provider_place_id
+        and all(
+            (
+                Decimal(str(current_lodging[key]))
+                if current_lodging.get(key) is not None
+                else None
+            )
+            == (Decimal(str(value)) if value is not None else None)
+            for key, value in (("latitude", payload.latitude), ("longitude", payload.longitude))
+        )
+    )
     lodging = {
         "name": payload.name.strip(),
         "location_name": payload.location_name.strip(),
@@ -3414,6 +3511,14 @@ async def update_primary_lodging(
         "latitude": payload.latitude,
         "longitude": payload.longitude,
         "location_source": payload.location_source,
+        # Only server-owned metadata survives an edit of the same canonical hotel.
+        # Replacements explicitly clear both fields on every generated anchor.
+        "map_identities": normalize_map_identities(current_lodging.get("map_identities"))
+        if same_place and current_lodging
+        else {},
+        "place_provider": current_lodging.get("place_provider")
+        if same_place and current_lodging
+        else None,
         "selection_source": "user",
         "selected_at": datetime.now(UTC).isoformat(),
     }
@@ -3551,7 +3656,10 @@ async def attach_flight_offer(
     # #324; this endpoint did not exist on that branch, so the flight half — the way
     # most trips get a real quote — was missing until #249 landed.
     await record_event(
-        session, "offer_attached", path="/trips", user_id=user.id,
+        session,
+        "offer_attached",
+        path="/trips",
+        user_id=user.id,
         properties={"kind": "flight", "source": "from_offer", "direction": direction},
     )
     return await persist_information_anchor_change(
@@ -3658,26 +3766,37 @@ def _trip_create_request_key(user_id: UUID, idempotency_key: str) -> str:
 
 
 def _trip_create_payload_hash(payload: SaveTripRequest) -> str:
-    return hashlib.sha256(json.dumps(
-        payload.model_dump(mode="json"), ensure_ascii=False, sort_keys=True,
-        separators=(",", ":"),
-    ).encode()).hexdigest()
+    return hashlib.sha256(
+        json.dumps(
+            payload.model_dump(mode="json"),
+            ensure_ascii=False,
+            sort_keys=True,
+            separators=(",", ":"),
+        ).encode()
+    ).hexdigest()
 
 
 async def _trip_create_replay(
-    session: AsyncSession, user_id: UUID, request_key: str, request_hash: str,
+    session: AsyncSession,
+    user_id: UUID,
+    request_key: str,
+    request_hash: str,
 ) -> TripPlan | None:
     # The durable record is part of the original commit, so a lost HTTP response
     # or a Redis write failure can never turn a retry into a second trip.
-    existing: TripPlan | None = await session.scalar(select(TripPlan).where(
-        TripPlan.user_id == user_id,
-        TripPlan.data["creation_request"]["key_digest"].as_string()
-        == request_key.rsplit(":", 1)[-1],
-    ))
+    existing: TripPlan | None = await session.scalar(
+        select(TripPlan).where(
+            TripPlan.user_id == user_id,
+            TripPlan.data["creation_request"]["key_digest"].as_string()
+            == request_key.rsplit(":", 1)[-1],
+        )
+    )
     if existing is not None:
         if existing.data["creation_request"].get("request_hash") != request_hash:
             raise AppError(
-                409, "trip_create_payload_conflict", "這次建立的內容已改變，請先確認我的旅程。",
+                409,
+                "trip_create_payload_conflict",
+                "這次建立的內容已改變，請先確認我的旅程。",
             )
         return existing
     cached = await get_redis().get(request_key)
@@ -3689,21 +3808,30 @@ async def _trip_create_replay(
             raise ValueError("legacy or invalid creation record")
         if record["request_hash"] != request_hash:
             raise AppError(
-                409, "trip_create_payload_conflict", "這次建立的內容已改變，請先確認我的旅程。",
+                409,
+                "trip_create_payload_conflict",
+                "這次建立的內容已改變，請先確認我的旅程。",
             )
         trip_id = UUID(record["trip_id"])
     except (ValueError, TypeError, KeyError) as error:
         # A UUID-only legacy record cannot prove what was submitted. Do not
         # silently discard edited fields or create a replacement trip.
         raise AppError(
-            409, "trip_create_recovery_required", "無法安全重送這次建立，請先到我的旅程確認。",
+            409,
+            "trip_create_recovery_required",
+            "無法安全重送這次建立，請先到我的旅程確認。",
         ) from error
-    existing = await session.scalar(select(TripPlan).where(
-        TripPlan.id == trip_id, TripPlan.user_id == user_id,
-    ))
+    existing = await session.scalar(
+        select(TripPlan).where(
+            TripPlan.id == trip_id,
+            TripPlan.user_id == user_id,
+        )
+    )
     if existing is None:
         raise AppError(
-            409, "trip_create_recovery_required", "原旅程已不可用，請先到我的旅程確認。",
+            409,
+            "trip_create_recovery_required",
+            "原旅程已不可用，請先到我的旅程確認。",
         )
     return existing
 
@@ -4325,7 +4453,10 @@ async def apply_trip_itinerary_preview(
         # The draft is only worth anything once it is applied; a preview nobody keeps
         # is the interesting failure, and it is the gap between these two counts.
         await record_event(
-            session, "ai_applied", path="/trips", user_id=user.id,
+            session,
+            "ai_applied",
+            path="/trips",
+            user_id=user.id,
             properties={
                 "scope": generation_payload.scope,
                 "provider": planning.planning.provider,
@@ -4556,6 +4687,148 @@ async def trip_route_status(
     return {"version": trip.version, **routing_summary(trip, settings, records)}
 
 
+@router.post("/{trip_id}/items/{item_id}/map-identities")
+async def supplement_trip_map_identity(
+    trip_id: UUID,
+    item_id: UUID,
+    payload: TripMapIdentityRequest,
+    user: CurrentUser,
+    session: Session,
+    idempotency_key: Annotated[str, Header(alias="Idempotency-Key", min_length=8, max_length=255)],
+) -> dict[str, Any]:
+    """Confirm an additional personal-trip Google identity, never replace the place."""
+    trip = await owned_trip(session, user.id, trip_id)
+    digest = hashlib.sha256(f"{item_id}:{idempotency_key}".encode()).hexdigest()
+    request_hash = hashlib.sha256(payload.model_dump_json().encode()).hexdigest()
+    operations = dict((trip.data or {}).get("map_identity_operations") or {})
+    if digest in operations:
+        if operations[digest] != request_hash:
+            raise AppError(409, "idempotency_key_conflict", "相同操作代碼不能用於不同地點")
+        return await serialize_trip(session, trip)
+    if trip.version != payload.version:
+        raise AppError(409, "trip_version_conflict", "旅程已更新，請重新載入後再確認地點")
+    item = await session.scalar(
+        select(TripPlanItem).where(
+            TripPlanItem.id == item_id,
+            TripPlanItem.trip_plan_id == trip.id,
+        )
+    )
+    if item is None:
+        raise AppError(404, "itinerary_item_not_found", "找不到行程項目")
+    point = route_point(item)
+    if point is None:
+        raise AppError(422, "route_location_unavailable", "請先設定主要地點，再補充地圖身分")
+    redis = get_redis()
+    operation_key = f"trip-map-identity:{user.id}:{trip.id}:{digest}"
+    if not await redis.set(operation_key, "processing", ex=60, nx=True):
+        raise AppError(409, "map_identity_in_progress", "相同地圖身分正在確認，請稍候")
+    try:
+        await enforce_named_rate_limit(
+            "google-places-user",
+            str(user.id),
+            limit=120,
+            window_seconds=600,
+        )
+        google = GoogleTravelService(
+            redis, await load_runtime_settings(session), locale=active_locale()
+        )
+        if not google.configured:
+            raise AppError(503, "google_maps_not_configured", "Google Maps 地點搜尋尚未啟用")
+        place = await google.place_details(payload.place_id)
+        if not place or place.get("place_id") != payload.place_id:
+            raise AppError(422, "map_identity_unavailable", "Google 地點已失效，請重新搜尋")
+        # Distance rejects obviously unrelated countries; it never proves branch identity.
+        lat, lng = place.get("latitude"), place.get("longitude")
+        if (
+            not isinstance(lat, (float, int))
+            or not isinstance(lng, (float, int))
+            or isinstance(lat, bool)
+            or isinstance(lng, bool)
+            or not -90 <= lat <= 90
+            or not -180 <= lng <= 180
+            or not isfinite(lat)
+            or not isfinite(lng)
+            or (abs(lat - point.latitude) > 0.1 or abs(lng - point.longitude) > 0.1)
+        ):
+            raise AppError(
+                422, "map_identity_location_mismatch", "候選地點與原地點不符，請核對分館與完整地址"
+            )
+        identities = trip_map_identities(item)
+        identities["google_places"] = {
+            "provider": "google_places",
+            "place_id": payload.place_id,
+            "map_url": None,
+            "status": "verified",
+            "verified_at": datetime.now(UTC).isoformat(),
+        }
+        operations[digest] = request_hash
+        operations = dict(list(operations.items())[-50:])
+        next_version = await session.scalar(
+            update(TripPlan)
+            .where(
+                TripPlan.id == trip.id,
+                TripPlan.user_id == user.id,
+                TripPlan.version == payload.version,
+            )
+            .values(
+                version=TripPlan.version + 1,
+                data={
+                    **trip.data,
+                    "map_identity_operations": operations,
+                },
+            )
+            .returning(TripPlan.version)
+        )
+        if next_version is None:
+            raise AppError(409, "trip_version_conflict", "旅程已更新，未套用這次地圖身分")
+        item.data = {**item.data, "map_identities": identities}
+        # No route invalidation: title, canonical coordinates, sequence and times are unchanged.
+        if item.system_role in {"hotel_start", "hotel_end"}:
+            lodging = dict(trip.data.get("primary_lodging") or {})
+            lodging["map_identities"] = identities
+            trip.data = {**trip.data, "primary_lodging": lodging}
+            for anchor in await load_items(session, trip.id):
+                if anchor.system_role in {"hotel_start", "hotel_end"} and (
+                    anchor.latitude == item.latitude and anchor.longitude == item.longitude
+                ):
+                    anchor.data = {**anchor.data, "map_identities": identities}
+        await session.commit()
+        await session.refresh(trip)
+        return await serialize_trip(session, trip)
+    except Exception:
+        await session.rollback()
+        raise
+    finally:
+        await redis.delete(operation_key)
+
+
+@router.get("/{trip_id}/routes/navigation")
+async def trip_route_navigation(
+    trip_id: UUID,
+    from_item_id: UUID,
+    to_item_id: UUID,
+    user: CurrentUser,
+    session: Session,
+    travel_mode: TravelMode = "transit",
+) -> dict[str, Any]:
+    """Pure server-built handoff links. No paid provider, version write or routing job."""
+    trip = await owned_trip(session, user.id, trip_id)
+    first, second = _adjacent_route_rows(
+        active_route_rows(await load_items(session, trip.id)), from_item_id, to_item_id
+    )
+    origin, destination = route_point(first), route_point(second)
+    region = trip_region_code(trip.timezone, trip.destination_name, trip.data)
+    return {
+        "map_capabilities": route_map_capabilities(region, travel_mode),
+        "external_navigations": [
+            nav.model_dump(mode="json")
+            for nav in external_navigations(origin, destination, travel_mode, region)
+        ]
+        if origin and destination
+        else [],
+    }
+
+
 @router.post("/{trip_id}/routes/preview")
 async def preview_trip_route(
     trip_id: UUID,
@@ -4588,6 +4861,11 @@ async def preview_trip_route(
     preference = payload.route_preference or setting.route_preference
     settings = await load_runtime_settings(session)
     region = trip_region_code(trip.timezone, trip.destination_name, trip.data)
+    navigations = external_navigations(origin, destination, payload.travel_mode, region)
+    navigation_payload = {
+        "external_navigations": [nav.model_dump(mode="json") for nav in navigations],
+        "map_capabilities": route_map_capabilities(region, payload.travel_mode),
+    }
     option_limit = payload.max_options if payload.include_alternatives else 1
     route_departure_time = first.end_time or first.start_time
     if route_departure_time is not None:
@@ -4611,14 +4889,10 @@ async def preview_trip_route(
     )
     if not segments:
         if region == "KR":
-            reason = (
-                "ODsay 目前沒有回傳可套用的大眾運輸路線；請到 NAVER Maps 查看。"
-                if payload.travel_mode == "transit" and settings.odsay_configured
-                else "韓國站內大眾運輸需先設定 ODsay Server Key；請到 NAVER Maps 查看。"
-                if payload.travel_mode == "transit"
-                else "目前沒有可套用的站內步行路線；請到 NAVER Maps 查看。"
-                if payload.travel_mode == "walk"
-                else "目前沒有可套用的汽車路線；請到 NAVER Maps 查看即時導航。"
+            reason = korean_external_route_reason(
+                payload.travel_mode,
+                odsay_configured=settings.odsay_configured,
+                locale=active_locale(),
             )
             external: ExternalNavigation = naver_external_navigation(
                 origin,
@@ -4626,8 +4900,15 @@ async def preview_trip_route(
                 payload.travel_mode,
                 reason=reason,
             )
+            navigation_payload["external_navigations"] = [
+                nav.model_dump(mode="json")
+                for nav in external_navigations(
+                    origin, destination, payload.travel_mode, region, reason=reason
+                )
+            ]
             await session.rollback()
             return {
+                **navigation_payload,
                 "kind": "external_only",
                 "preview_id": None,
                 "expires_at": None,
@@ -4659,8 +4940,15 @@ async def preview_trip_route(
                 payload.travel_mode,
                 reason=reason,
             )
+            navigation_payload["external_navigations"] = [
+                nav.model_dump(mode="json")
+                for nav in external_navigations(
+                    origin, destination, payload.travel_mode, region, reason=reason
+                )
+            ]
             await session.rollback()
             return {
+                **navigation_payload,
                 "kind": "external_only",
                 "preview_id": None,
                 "expires_at": None,
@@ -4688,8 +4976,15 @@ async def preview_trip_route(
                 else "目前無法取得可套用的站內路線；已保留精準起訖點，可先到 Google Maps 查看。"
             ),
         )
+        navigation_payload["external_navigations"] = [
+            nav.model_dump(mode="json")
+            for nav in external_navigations(
+                origin, destination, payload.travel_mode, region, reason=external.reason
+            )
+        ]
         await session.rollback()
         return {
+            **navigation_payload,
             "kind": "external_only",
             "preview_id": None,
             "expires_at": None,
@@ -4716,6 +5011,8 @@ async def preview_trip_route(
                 "expires_at": expires_at,
                 "is_override": payload.travel_mode != setting.default_travel_mode,
                 "route_option_rank": index + 1,
+                "external_navigations": navigations,
+                "map_capabilities": navigation_payload["map_capabilities"],
             }
         )
         projection = project_day_schedule(day_rows, [*persisted, ranked_segment])
@@ -4752,6 +5049,7 @@ async def preview_trip_route(
     recommended = options[0]
     await session.rollback()
     return {
+        **navigation_payload,
         "kind": "provider",
         "preview_id": recommended["preview_id"],
         "expires_at": recommended["expires_at"],
@@ -5665,7 +5963,10 @@ async def create_share(trip_id: UUID, user: CurrentUser, session: Session) -> di
         share.token_hash = token_hash
         share.revoked_at = None
     await record_event(
-        session, "share_created", path="/trips", user_id=user.id,
+        session,
+        "share_created",
+        path="/trips",
+        user_id=user.id,
         properties={"reissued": reissued},
     )
     await session.commit()

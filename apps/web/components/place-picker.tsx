@@ -36,8 +36,10 @@ export function PlacePicker({
   kinds,
   placeholder,
   selectionContextKey,
+  provider,
 }: {
   value: string;
+  provider?: "google_places" | "naver_local";
   confirmed: boolean;
   onTextChange: (value: string) => void;
   onSelect: (place: Place) => void;
@@ -77,7 +79,7 @@ export function PlacePicker({
   const biasLatitude = bias?.latitude;
   const biasLongitude = bias?.longitude;
 
-  const scope = JSON.stringify([selectionContextKey, value, confirmed, countryKey, kinds, biasLatitude, biasLongitude]);
+  const scope = JSON.stringify([selectionContextKey, value, confirmed, countryKey, kinds, biasLatitude, biasLongitude, provider]);
   const suggestions = suggestionResult?.scope === scope ? suggestionResult.rows : [];
   const visibleSuggestions = canSearch ? suggestions : [];
   const loading = loadingScope === scope;
@@ -117,6 +119,7 @@ export function PlacePicker({
       const params = new URLSearchParams({ q: value.trim(), session_token: token.current });
       if (countryKey) params.set("country_codes", countryKey);
       if (kinds) params.set("kinds", kinds);
+      if (provider) params.set("provider", provider);
       if (biasLatitude != null && biasLongitude != null) {
         params.set("latitude", String(biasLatitude));
         params.set("longitude", String(biasLongitude));
@@ -138,7 +141,7 @@ export function PlacePicker({
         .finally(() => { if (!cancelled && !controller.signal.aborted) setLoadingScope(undefined); });
     }, 320);
     return () => { cancelled = true; window.clearTimeout(timeout); controller.abort(); };
-  }, [biasLatitude, biasLongitude, canSearch, countryKey, kinds, noMatchesMessage, value, scope, searchAttempt]);
+  }, [biasLatitude, biasLongitude, canSearch, countryKey, kinds, noMatchesMessage, value, scope, searchAttempt, provider]);
 
   async function choose(suggestion: Suggestion) {
     invalidateDetails();

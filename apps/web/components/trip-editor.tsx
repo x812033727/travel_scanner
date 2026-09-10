@@ -37,6 +37,7 @@ import {
 } from "lucide-react";
 import { Link, useRouter } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
+import { TripMapIdentityEditor } from "@/components/trip-map-identity-editor";
 import Image from "next/image";
 import {
   useCallback,
@@ -881,7 +882,10 @@ export function TripEditor({ tripId }: { tripId: string }) {
       ...meal, ...selected, id: meal.id, system_role: meal.system_role, day_date: meal.day_date,
       item_type: meal.item_type, fixed_time: meal.fixed_time, locked: meal.locked, is_skipped: meal.is_skipped,
       start_time: meal.start_time, end_time: meal.end_time, duration_minutes: meal.duration_minutes,
-      notes: meal.notes, data: { ...meal.data, ...selected.data, meal_selection_source: "user" },
+      map_identities: selected.map_identities || {}, location_map_links: selected.location_map_links || [],
+      notes: meal.notes, data: { ...meal.data, map_identities: undefined, map_links: undefined,
+        google_maps_url: undefined, naver_maps_url: undefined, place_provider: undefined, attribution: undefined,
+        ...selected.data, meal_selection_source: "user" },
     } : {
       ...selected, id: crypto.randomUUID(), day_date: pickerPoint.day, position: 0,
       fixed_time: false, locked: false, system_role: null, is_skipped: false,
@@ -1030,6 +1034,20 @@ export function TripEditor({ tripId }: { tripId: string }) {
     } finally { draftSavingRef.current = false; setDraftSaving(false); }
   }
 
+  function editLocationText(item: TripItem, value: string) {
+    patchItem(item.id, {
+      location_name: value, provider_place_id: null, latitude: null, longitude: null,
+      location_source: null, location_provider: null, is_estimated: true,
+      map_identities: {}, location_map_links: [],
+      data: { ...item.data, map_identities: undefined, catalog_selection: undefined,
+        hotspot_id: undefined, merchant_id: undefined, map_links: undefined,
+        google_maps_url: undefined, naver_maps_url: undefined, place_provider: undefined, attribution: undefined,
+        coordinate_source_type: undefined, coordinate_source_url: undefined,
+        place_match_status: "unresolved", needs_place_confirmation: true,
+        ...(item.system_role === "lunch" || item.system_role === "dinner" ? { meal_selection_source: "user" } : {}) },
+    });
+  }
+
   function choosePlace(item: TripItem, place: Place) {
     patchItem(item.id, {
       title: item.title.trim() ? item.title : place.name,
@@ -1039,8 +1057,10 @@ export function TripEditor({ tripId }: { tripId: string }) {
       provider_place_id: place.place_id,
       location_source: "confirmed",
       location_provider: place.provider,
+      map_identities: {},
+      location_map_links: [],
       is_estimated: false,
-      data: { ...item.data, catalog_selection: undefined, hotspot_id: undefined, merchant_id: undefined, map_links: undefined, coordinate_source_type: undefined, coordinate_source_url: undefined, opening_hours: place.opening_hours || [], google_maps_url: place.google_maps_url, naver_maps_url: place.naver_maps_url || place.external_url, place_provider: place.provider, attribution: place.attribution, place_match_status: "confirmed", needs_place_confirmation: false, ...(item.system_role === "lunch" || item.system_role === "dinner" ? { meal_selection_source: "user" } : {}) },
+      data: { ...item.data, map_identities: undefined, catalog_selection: undefined, hotspot_id: undefined, merchant_id: undefined, map_links: undefined, coordinate_source_type: undefined, coordinate_source_url: undefined, opening_hours: place.opening_hours || [], google_maps_url: place.google_maps_url, naver_maps_url: place.naver_maps_url || place.external_url, place_provider: place.provider, attribution: place.attribution, place_match_status: "confirmed", needs_place_confirmation: false, ...(item.system_role === "lunch" || item.system_role === "dinner" ? { meal_selection_source: "user" } : {}) },
     });
   }
 
@@ -2133,7 +2153,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
       })} className="calm-optional-entry"><MapPin size={18} />{copy.browseMeals}</button>}
 
       <label className="text-sm font-semibold">{te(editingMeal ? "restaurantName" : "itemName")}<input value={editingItem.title} maxLength={255} onChange={(event) => patchItem(editingItem.id, { title: event.target.value, ...(editingMeal ? { data: { ...editingItem.data, meal_selection_source: "user" } } : {}) }, false)} placeholder={te(editingMeal ? "restaurantPlaceholder" : "itemPlaceholder")} className={fieldClass} /></label>
-      <div><label className="text-sm font-semibold">{te(editingMeal ? "restaurantPlace" : "place")}</label><PlacePicker selectionContextKey={editingItem.id} label={te(editingMeal ? "restaurantPlace" : "place")} value={editingItem.location_name || ""} confirmed={editingItem.location_source === "confirmed" || (["google_places", "naver_local", "hotspot_catalog", "food_merchant_catalog"].includes(editingItem.location_source || "") && editingItem.data.needs_place_confirmation !== true)} countryCodes={placeCountryCodes} bias={placeBias} onTextChange={(value) => patchItem(editingItem.id, { location_name: value, provider_place_id: null, latitude: null, longitude: null, location_source: null, is_estimated: true, data: { ...editingItem.data, catalog_selection: undefined, hotspot_id: undefined, merchant_id: undefined, map_links: undefined, coordinate_source_type: undefined, coordinate_source_url: undefined, place_match_status: "unresolved", needs_place_confirmation: true, ...(editingMeal ? { meal_selection_source: "user" } : {}) } })} onSelect={(place) => choosePlace(editingItem, place)} /><p className="mt-2 flex items-center gap-1.5 text-xs text-[var(--muted)]">{editingItem.location_source === "confirmed" || (["google_places", "naver_local", "hotspot_catalog", "food_merchant_catalog"].includes(editingItem.location_source || "") && editingItem.data.needs_place_confirmation !== true) ? <><Check size={13} className="text-emerald-600" />{te("placeConfirmed")}</> : editingItem.location_source?.endsWith("_auto") ? <><CircleAlert size={13} className="text-sky-700" />{te("placeAutoFix", { provider: editingItem.location_provider === "naver_local" || editingItem.location_source === "naver_local_auto" ? "NAVER" : "Google" })}</> : editingItem.location_name ? <><CircleAlert size={13} />{te("placePickFromResults")}</> : <><MapPin size={13} />{te("placeLater")}</>}</p></div>
+      <div><label className="text-sm font-semibold">{te(editingMeal ? "restaurantPlace" : "place")}</label><PlacePicker selectionContextKey={editingItem.id} label={te(editingMeal ? "restaurantPlace" : "place")} value={editingItem.location_name || ""} confirmed={editingItem.location_source === "confirmed" || (["google_places", "naver_local", "hotspot_catalog", "food_merchant_catalog"].includes(editingItem.location_source || "") && editingItem.data.needs_place_confirmation !== true)} countryCodes={placeCountryCodes} bias={placeBias} onTextChange={(value) => editLocationText(editingItem, value)} onSelect={(place) => choosePlace(editingItem, place)} /><p className="mt-2 flex items-center gap-1.5 text-xs text-[var(--muted)]">{editingItem.location_source === "confirmed" || (["google_places", "naver_local", "hotspot_catalog", "food_merchant_catalog"].includes(editingItem.location_source || "") && editingItem.data.needs_place_confirmation !== true) ? <><Check size={13} className="text-emerald-600" />{te("placeConfirmed")}</> : editingItem.location_source?.endsWith("_auto") ? <><CircleAlert size={13} className="text-sky-700" />{te("placeAutoFix", { provider: editingItem.location_provider === "naver_local" || editingItem.location_source === "naver_local_auto" ? "NAVER" : "Google" })}</> : editingItem.location_name ? <><CircleAlert size={13} />{te("placePickFromResults")}</> : <><MapPin size={13} />{te("placeLater")}</>}</p></div>
       {!editingItem.system_role && <div className="grid gap-4">
         <label className="text-sm font-semibold">{te("date")}<select value={editingItem.day_date} onChange={(event) => {
           const day = event.target.value;
@@ -2144,6 +2164,16 @@ export function TripEditor({ tripId }: { tripId: string }) {
       </div>}
       {editingMeal ? <label className="text-sm font-semibold">{te("notes")}<textarea rows={4} maxLength={4000} value={editingItem.notes || ""} onChange={(event) => patchItem(editingItem.id, { notes: event.target.value }, false)} placeholder={te("mealNotesPlaceholder")} className={fieldClass} /></label> : <details className="planner-advanced-settings"><summary>{te("advanced")}</summary><div className="grid gap-4 px-4 pb-4"><label className="text-sm font-semibold">{te("notes")}<textarea rows={4} maxLength={4000} value={editingItem.notes || ""} onChange={(event) => patchItem(editingItem.id, { notes: event.target.value }, false)} placeholder={te("itemNotesPlaceholder")} className={fieldClass} /></label><button type="button" aria-pressed={editingItem.locked} onClick={() => patchItem(editingItem.id, { locked: !editingItem.locked }, false)} className={`flex min-h-12 items-center gap-3 rounded-xl border px-4 text-left text-sm font-semibold ${editingItem.locked ? "border-amber-300 bg-amber-50 text-amber-900" : "border-[var(--line)]"}`}>{editingItem.locked ? <LockKeyhole size={18} /> : <Unlock size={18} />}{te(editingItem.locked ? "lockedNoSort" : "lockItem")}</button></div></details>}
       {editingId && !editingItem.system_role && <button type="button" onClick={() => removeItem(editingItem)} className="flex min-h-12 items-center justify-center gap-2 rounded-xl border border-red-200 bg-red-50 font-semibold text-red-800"><Trash2 size={18} />{te("deleteItem")}</button>}
+      {placeCountryCodes.includes("kr") && editingId && <TripMapIdentityEditor key={`${editingItem.id}:${trip.version}`}
+        tripId={trip.id} version={trip.version} item={editingItem}
+        onBusy={(busy) => { draftSavingRef.current = busy; setDraftSaving(busy); }}
+        canSave={editingItem.latitude != null && editingItem.longitude != null && JSON.stringify(editingItem) === JSON.stringify(items.find((row) => row.id === editingItem.id))}
+        onSaved={(updated) => {
+          replaceTrip(updated); setRoutes(updated.route_segments || []);
+          const updatedItem = updated.items.find((row) => row.id === editingItem.id);
+          if (updatedItem) { editingBaseRef.current = structuredClone(updatedItem); setDraftItem(structuredClone(updatedItem)); }
+          editingVersionRef.current = updated.version; setNotice(te("mapIdentities.saved"));
+        }} />}
       <details className="planner-advanced-settings"><summary>{calm.details}</summary><div className="grid gap-2 p-4 text-sm text-[var(--muted)]">
         {originalItemName(editingItem) && <p lang={editingItem.names?.title?.original_locale}>{originalItemName(editingItem)}</p>}
         <p>{editingItem.location_name || te("noLocation")}</p>

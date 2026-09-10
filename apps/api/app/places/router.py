@@ -1,7 +1,7 @@
 import hashlib
 import re
 from datetime import UTC, date, datetime, timedelta
-from typing import Annotated, Any
+from typing import Annotated, Any, Literal
 from urllib.parse import urlparse
 
 import httpx
@@ -64,6 +64,7 @@ async def autocomplete_places(
     latitude: float | None = None,
     longitude: float | None = None,
     kinds: str | None = None,
+    provider: Literal["google_places", "naver_local"] | None = None,
 ) -> list[dict[str, Any]]:
     _ = user
     if kinds is not None and kinds != "cities":
@@ -86,6 +87,12 @@ async def autocomplete_places(
     redis = get_redis()
     google = GoogleTravelService(redis, settings, locale=locale)
     naver = NaverPlaceService(redis, settings)
+    if provider == "naver_local" and (codes != ["kr"] or kinds is not None):
+        raise AppError(422, "invalid_place_provider", "NAVER 地點搜尋只支援韓國地點")
+    if provider == "google_places" and not google.configured:
+        raise AppError(503, "google_maps_not_configured", "Google Maps 地點搜尋尚未啟用")
+    if provider == "naver_local" and not naver.configured:
+        raise AppError(503, "naver_maps_not_configured", "NAVER Maps 地點搜尋尚未啟用")
     if codes == ["kr"] and not naver.configured and not google.configured:
         raise AppError(503, "place_provider_not_configured", "韓國地點搜尋服務尚未啟用")
     if codes != ["kr"] and not google.configured:
@@ -97,9 +104,9 @@ async def autocomplete_places(
         window_seconds=GOOGLE_PLACES_USER_WINDOW_SECONDS,
     )
     # NAVER Local only knows POIs, so a city-level search goes to Google even for Korea.
-    if codes == ["kr"] and naver.configured and kinds is None:
+    if codes == ["kr"] and naver.configured and kinds is None and provider != "google_places":
         results = await naver.autocomplete(q, session_token)
-        if results:
+        if results or provider == "naver_local":
             return results
     return await google.autocomplete(q, session_token, codes, latitude, longitude, kinds)
 

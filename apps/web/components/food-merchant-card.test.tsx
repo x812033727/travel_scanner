@@ -80,6 +80,13 @@ function renderCard(item: FoodMerchant) {
 }
 
 describe("FoodMerchantCard", () => {
+  it("shows both independently supplied map links without turning a coordinate reference into a confirmed place", () => {
+    renderCard({ ...merchant, map_links: [...merchant.map_links, { provider: "google", label: "Google 位置導航", url: "https://www.google.com/maps/search/?api=1&query=37.57,126.99", primary: false }] });
+    expect(screen.getByRole("link", { name: /Naver Map/ }).getAttribute("href")).toContain("/entry/place/123456");
+    expect(screen.getByRole("link", { name: /Google 位置導航/ }).getAttribute("href")).toContain("query=37.57,126.99");
+    expect(screen.queryByText("已確認 Google 店家")).toBeNull();
+  });
+
   it("shows overlapping reviewed styles with source links and filtering controls", () => {
     const select = vi.fn();
     vi.stubGlobal("fetch", vi.fn(async () => new Response(JSON.stringify({ items: [] }))));

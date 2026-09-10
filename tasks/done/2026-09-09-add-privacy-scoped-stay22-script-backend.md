@@ -1,13 +1,13 @@
 ---
 id: 2026-09-09-add-privacy-scoped-stay22-script-backend
 title: Add privacy scoped Stay22 script backend
-status: review
+status: done
 priority: P1
 area: api
 owner: codex-stay22-backend
 claimed_at: 2026-09-09T13:26:11Z
 created_at: 2026-09-09T13:26:02Z
-completed_at:
+completed_at: 2026-09-10T03:20:08Z
 branch: codex/stay22-modular-toggle
 depends_on: []
 scope:

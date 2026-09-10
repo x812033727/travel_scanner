@@ -78,6 +78,17 @@ it("keeps destination service routes aligned to the 33-place public catalog", ()
 });
 
 describe("reviewed travel services", () => {
+  it("shows both server-verified Korean hotel map links without opening the booking panel", async () => {
+    request.mockResolvedValue({ ...result, items: [{ ...hotel, destination_id: "seoul", map_links: [
+      { provider: "naver", label: "NAVER Maps", url: "https://map.naver.com/p/entry/place/123", primary: true },
+      { provider: "google", label: "Google Maps", url: "https://www.google.com/maps/search/?api=1&query=hotel&query_place_id=ChIJ-hotel", primary: false },
+    ] }] });
+    render(<ServiceCatalog destinationId="seoul" initialKind="hotel" />);
+    expect((await screen.findByRole("link", { name: "NAVER Maps: Reviewed hotel" })).getAttribute("href")).toContain("/entry/place/123");
+    expect(screen.getByRole("link", { name: "Google Maps: Reviewed hotel" }).getAttribute("href")).toContain("query_place_id=ChIJ-hotel");
+    expect(screen.queryByRole("dialog")).toBeNull();
+  });
+
   it("narrows destination discovery to the active service category without quoting or booking", async () => {
     request.mockImplementation(async (path: string) => {
       if (path.startsWith("/affiliates/destination-offers")) {

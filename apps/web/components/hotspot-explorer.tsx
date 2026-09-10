@@ -16,6 +16,7 @@ import { HOTSPOT_CATEGORY_CODES } from "@/lib/hotspot-categories";
 import { type HotspotTheme, type ThemeFacet, isInSeason } from "@/lib/hotspot-themes";
 import { loginPath, safeExternalHref } from "@/lib/navigation";
 import { useSharedAnchor } from "@/lib/use-shared-anchor";
+import { availableMapLinks } from "@/lib/map-identities";
 
 type MapLink = { provider: "google" | "naver"; label: string; url: string; primary: boolean };
 type PlaceSummary = {
@@ -561,7 +562,18 @@ export function HotspotExplorer({ initialRanking, initialFacets, initialFilters 
         {error && <div role="alert" className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-3xl bg-[var(--coral-soft)] p-6"><span>{error}</span><button type="button" onClick={() => void load()} className="min-h-11 rounded-xl border border-[var(--line)] bg-white px-4 font-semibold">{t("retry")}</button></div>}
         {!loading && !error && ranking?.items.length === 0 && <div className="rounded-3xl border border-dashed border-[var(--line)] bg-white/70 p-8 text-center"><h3 className="font-bold">{t("emptyTitle")}</h3><p className="mt-2 text-sm text-[var(--muted)]">{t(theme ? "emptyThemeBody" : "emptyBody")}</p>{appliedFilters.length === 0 && <button type="button" onClick={clearFilters} className="mt-4 min-h-11 rounded-xl border border-[var(--line)] bg-white px-5 font-semibold text-[var(--teal)]">{t("clearFilters")}</button>}</div>}
         {ranking && ranking.items.length > 0 && <ol className="grid gap-4 md:grid-cols-2">{ranking.items.map((item, index) => <li key={item.id} id={`hotspot-${item.id}`} className={`travel-result-card travel-result-card-${item.category} relative overflow-hidden rounded-3xl border border-[var(--line)] bg-white p-5`}>
-          <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2"><div className="flex min-w-[11rem] flex-1 gap-3"><span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[var(--teal-soft)] text-lg font-bold text-[var(--teal-dark)]">{appliedFilters.length > 0 ? index + 1 : item.rank}</span><div><h3 className="text-lg font-bold">{item.name}</h3>{item.local_name && item.local_name !== item.name && <p className="text-xs text-[var(--muted)]">{item.local_name}</p>}{item.map_links?.[0] ? <a href={safeExternalHref(item.map_links[0].url)} target="_blank" rel="noopener noreferrer" aria-label={`${item.map_links[0].label}: ${item.name}`} className="mt-1 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-[var(--teal)] underline-offset-4 hover:underline"><MapPin size={14} />{[item.city_name, item.area?.name, t(`categories.${item.category}`)].filter(Boolean).join(" · ")}<ExternalLink size={13} /></a> : <p className="mt-1 flex min-h-11 items-center gap-1.5 text-sm text-[var(--muted)]"><MapPin size={14} />{[item.city_name, item.area?.name, t(`categories.${item.category}`)].filter(Boolean).join(" · ")}</p>}</div></div><div className="ml-auto text-right"><p><strong className="text-2xl text-[var(--teal)]">{Math.round(item.score)}</strong><span className="text-sm font-semibold text-[var(--muted)]">{t("scoreOutOf")}</span></p><p className="text-xs text-[var(--muted)]">{t("score")}</p></div></div>
+          <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
+            <div className="flex min-w-0 flex-1 gap-3">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[var(--teal-soft)] text-lg font-bold text-[var(--teal-dark)]">{appliedFilters.length > 0 ? index + 1 : item.rank}</span>
+              <div className="min-w-0">
+                <h3 className="break-words text-lg font-bold">{item.name}</h3>
+                {item.local_name && item.local_name !== item.name && <p className="text-xs text-[var(--muted)]">{item.local_name}</p>}
+                <p className="mt-1 flex min-h-11 items-center gap-1.5 text-sm text-[var(--muted)]"><MapPin size={14} />{[item.city_name, item.area?.name, t(`categories.${item.category}`)].filter(Boolean).join(" · ")}</p>
+                <div className="flex flex-wrap gap-2">{availableMapLinks(item.map_links).map((map) => <a key={map.url} href={safeExternalHref(map.url)} target="_blank" rel="noopener noreferrer" aria-label={`${map.label}: ${item.name}`} className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-[var(--line)] px-3 text-sm font-semibold text-[var(--teal)] underline-offset-4 hover:underline">{map.label}<ExternalLink size={13} /></a>)}</div>
+              </div>
+            </div>
+            <div className="ml-auto text-right"><p><strong className="text-2xl text-[var(--teal)]">{Math.round(item.score)}</strong><span className="text-sm font-semibold text-[var(--muted)]">{t("scoreOutOf")}</span></p><p className="text-xs text-[var(--muted)]">{t("score")}</p></div>
+          </div>
           <HotspotIntro text={item.intro?.body} className="mt-3" />
           <HotspotThemeBadges
             themes={item.themes}

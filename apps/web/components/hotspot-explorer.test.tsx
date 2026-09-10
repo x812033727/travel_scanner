@@ -39,6 +39,21 @@ describe("HotspotExplorer", () => {
     window.history.replaceState(null, "", "/");
   });
 
+  it("keeps both independently reviewed Korean map entries visible", async () => {
+    vi.stubGlobal("fetch", vi.fn(async (input: RequestInfo | URL) => {
+      const path = String(input);
+      if (path.includes("/saved-items")) return new Response(JSON.stringify({ items: [] }));
+      if (path.includes("/facets")) return new Response(facetsBody([]));
+      return new Response(rankingBody([rankingItem({ name: "景福宮", local_name: "경복궁", country_code: "KR", destination_id: "seoul", map_links: [
+        { provider: "naver", label: "NAVER Maps", url: "https://map.naver.com/p/entry/place/11571707", primary: true },
+        { provider: "google", label: "Google Maps", url: "https://www.google.com/maps/search/?api=1&query=palace&query_place_id=ChIJ-palace", primary: false },
+      ] })]));
+    }));
+    render(<SavedItemsProvider><HotspotExplorer /></SavedItemsProvider>);
+    expect((await screen.findByRole("link", { name: "NAVER Maps: 景福宮" })).getAttribute("href")).toContain("/entry/place/11571707");
+    expect(screen.getByRole("link", { name: "Google Maps: 景福宮" }).getAttribute("href")).toContain("query_place_id=ChIJ-palace");
+  });
+
   it("shows ranked hotspots with provenance and freshness", async () => {
     const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
       const url = String(input);
@@ -165,7 +180,8 @@ describe("HotspotExplorer", () => {
     expect(screen.queryByRole("combobox", { name: "全部旅遊" })).toBeNull();
     expect(screen.getByRole("button", { name: /景點詳情/ })).toBeTruthy();
     const map = screen.getByRole("link", { name: /Google Maps/ });
-    expect(map.textContent).toContain("東京 · 淺草／晴空塔 · 文化古蹟");
+    expect(map.textContent).toContain("Google Maps");
+    expect(screen.getByText("東京 · 淺草／晴空塔 · 文化古蹟")).toBeTruthy();
     expect(map.getAttribute("href")).toContain("query_place_id=ChIJ-test");
     expect(map.getAttribute("href")).not.toContain("35.7");
     expect(map.getAttribute("target")).toBe("_blank");

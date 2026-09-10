@@ -2,6 +2,8 @@
 
 import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
+import { AdminMapIdentitiesPanel } from "./admin-map-identities-panel";
+import { mapIdentityCopy } from "@/lib/map-identity-copy";
 import { useSearchParams } from "next/navigation";
 import { api } from "@/lib/api";
 import { Link } from "@/i18n/navigation";
@@ -145,6 +147,7 @@ export function AdminHotspotsPanel({
   const manage = useAdminActionGuard("content.manage");
   const copy = adminCatalogCopy(useLocale());
   const reviewCopy = hotspotReviewCopy(useLocale());
+  const mapCopy = mapIdentityCopy(useLocale());
   const search = useSearchParams();
   const t = useTranslations("hotspots");
   const tHotspotAdmin = useTranslations("hotspotAdmin");
@@ -779,7 +782,7 @@ export function AdminHotspotsPanel({
                 className="mt-1 h-10 w-full rounded-xl border px-3"
               />
             </label>
-            {locationDraft.country_code === "KR" ? (
+            {(locationDraft.country_code === "KR" || locationDraft.naver_map_url) && (
               <div className="lg:col-span-2">
                 <label className="text-xs font-semibold">
                   {ta("hotspotsPanel.naverUrl")}
@@ -808,7 +811,7 @@ export function AdminHotspotsPanel({
                   {ta("hotspotsPanel.openNaverSearch")}
                 </a>
               </div>
-            ) : (
+            )}
               <label className="text-xs font-semibold lg:col-span-2">
                 Google Place ID
                 <input
@@ -822,7 +825,7 @@ export function AdminHotspotsPanel({
                   className="mt-1 h-10 w-full rounded-xl border px-3"
                 />
               </label>
-            )}
+            {locationDraft.country_code === "KR" && <p className="text-sm text-[var(--muted)] lg:col-span-2">{mapCopy.independent}</p>}
             <label className="text-xs font-semibold">
               {ta("hotspotsPanel.matchStatus")}
               <select
@@ -902,6 +905,7 @@ export function AdminHotspotsPanel({
           )}
         </form>
       )}
+      {locationEditing !== "link" && <AdminMapIdentitiesPanel initialKind="hotspot" canManage={manage.allowed} />}
       {message && (
         <p role="status" className="mt-3 text-sm text-[var(--muted)]">
           {message}

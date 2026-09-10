@@ -47,6 +47,7 @@ from app.localized_names import (
     resolve_localized_name,
 )
 from app.locations.coordinates import has_durable_coordinates
+from app.locations.map_identity import catalog_map_identities
 from app.models import (
     FoodMerchant,
     HotspotGuide,
@@ -1057,6 +1058,7 @@ async def list_rankings(
                     "article": guide_counts.get((hotspot.id, "article"), 0),
                     "video": guide_counts.get((hotspot.id, "video"), 0),
                 },
+                "map_identities": catalog_map_identities(hotspot),
                 "map_links": build_map_links(
                     name=localized_name,
                     local_name=local_name,
@@ -1067,6 +1069,7 @@ async def list_rankings(
                     google_place_id=hotspot.google_place_id,
                     naver_map_url=hotspot.naver_map_url,
                     map_match_status=hotspot.map_match_status,
+                    map_identities=catalog_map_identities(hotspot),
                 ),
                 "opening_hours": fresh_hours(
                     place_profile.opening_hours_json if place_profile else None,
@@ -1374,6 +1377,7 @@ async def load_planner_hotspots(
                 latitude=item["latitude"],
                 longitude=item["longitude"],
                 map_links=item["map_links"],
+                map_identities=item.get("map_identities") or {},
                 depth_kind=item["depth_kind"] or "urban_local",
                 depth_score=item["depth_score"] or 0,
                 depth_reason=item["depth_reason"] or "",

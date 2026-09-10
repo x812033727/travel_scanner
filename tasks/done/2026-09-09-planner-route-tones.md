@@ -1,13 +1,13 @@
 ---
 id: 2026-09-09-planner-route-tones
 title: Route apply state regression and semantic itinerary tones
-status: review
+status: done
 priority: P1
 area: web
 owner: codex
 claimed_at: 2026-09-09T03:38:23Z
 created_at: 2026-09-09T03:36:20Z
-completed_at:
+completed_at: 2026-09-10T03:19:51Z
 branch: codex/planner-route-tones
 depends_on: []
 scope:

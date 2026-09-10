@@ -58,6 +58,7 @@ def test_a_copied_stop_keeps_the_plan_and_leaves_the_author_their_own_working_no
     assert copy.data == {
         "timeline_section": "morning",
         "flight_info": {"number": "BR195"},
+        "place_provider": "google_places",
     }
 
 

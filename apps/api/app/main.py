@@ -42,6 +42,7 @@ from app.hotspots.admin_router import router as admin_hotspots_router
 from app.hotspots.router import router as hotspots_router
 from app.infra import get_redis
 from app.line.router import router as line_router
+from app.locations.map_identity_router import router as map_identity_router
 from app.middleware import RequestBodyLimitMiddleware, RequestContextMiddleware
 from app.places.router import public_router as public_places_router
 from app.places.router import router as places_router
@@ -146,6 +147,7 @@ app.include_router(flight_router, prefix="/api/v1")
 app.include_router(crawlers_router, prefix="/api/v1")
 app.include_router(hotspots_router, prefix="/api/v1")
 app.include_router(admin_hotspots_router, prefix="/api/v1")
+app.include_router(map_identity_router, prefix="/api/v1")
 app.include_router(restaurants_router, prefix="/api/v1")
 app.include_router(restaurant_user_router, prefix="/api/v1")
 app.include_router(saved_items_router, prefix="/api/v1")

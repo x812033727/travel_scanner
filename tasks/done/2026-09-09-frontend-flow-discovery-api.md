@@ -1,13 +1,13 @@
 ---
 id: 2026-09-09-frontend-flow-discovery-api
 title: Public discovery categories and safe detail projections
-status: review
+status: done
 priority: P1
 area: api
 owner: codex-discovery-flow-api
 claimed_at: 2026-09-09T04:14:00Z
 created_at: 2026-09-09T03:06:51Z
-completed_at:
+completed_at: 2026-09-10T03:19:52Z
 branch: codex/frontend-explore-flow
 depends_on: []
 scope:

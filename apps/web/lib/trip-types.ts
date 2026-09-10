@@ -16,7 +16,18 @@ export type TripItemNames = {
   location_name?: LocalizedNames;
 };
 
+export type MapIdentity = {
+  provider: "google_places" | "naver_maps";
+  place_id: string | null;
+  map_url: string | null;
+  status: "unverified" | "pending" | "verified" | "rejected";
+  verified_at?: string | null;
+};
+export type MapIdentities = Partial<Record<MapIdentity["provider"], MapIdentity>>;
+
 export type TripItem = {
+  map_identities?: MapIdentities;
+  location_map_links?: Array<{ provider: "google" | "naver"; url: string; position_only?: boolean }>;
   id: string;
   item_type: string;
   offer_id?: string | null;
@@ -44,6 +55,7 @@ export type TripItem = {
 };
 
 export type PrimaryLodging = {
+  map_identities?: MapIdentities;
   name: string;
   location_name: string;
   provider_place_id?: string | null;
@@ -95,6 +107,19 @@ export type RouteStep = {
 
 export type TravelMode = "transit" | "walk" | "drive";
 
+export type RouteExternalNavigation = {
+  provider: "naver_maps" | "google_maps";
+  label: string;
+  travel_mode: TravelMode;
+  app_url: string;
+  web_url: string;
+  reason?: string;
+};
+export type RouteMapCapabilities = {
+  providers: Array<"google_maps" | "naver_maps">;
+  default_provider: "google_maps" | "naver_maps";
+};
+
 export type RouteScheduleChange = {
   item_id: string;
   title: string;
@@ -119,6 +144,8 @@ export type RouteScheduleImpact = {
 };
 
 export type RouteSegment = {
+  external_navigations?: RouteExternalNavigation[];
+  map_capabilities?: RouteMapCapabilities;
   from_item_id: string;
   to_item_id: string;
   status: string;

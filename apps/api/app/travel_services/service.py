@@ -231,6 +231,9 @@ def ready_destination_offer(
 
 
 def public_product(product: TravelServiceProduct, locale: str, now: datetime) -> dict[str, Any]:
+    from app.hotspots.maps import build_map_links
+    from app.locations.map_identity import catalog_country_code, catalog_map_identities
+
     facts = Facts.model_validate(product.facts)
     # A stale or missing reference is unknown, never free or a quote.
     if product.kind == "hotel" or not fresh_price(facts, now):
@@ -243,7 +246,19 @@ def public_product(product: TravelServiceProduct, locale: str, now: datetime) ->
         "destination_id": product.destination_id,
         "title": product.names_json.get(locale) or product.title,
         # Link URLs and review evidence stay server-side; clickout resolves saved identity.
-        "facts": facts.model_dump(mode="json", exclude={"hotel_links"}),
+        "facts": {
+            **facts.model_dump(mode="json", exclude={"hotel_links", "map_identities"}),
+            "map_identities": catalog_map_identities(product),
+        },
+        "map_identities": catalog_map_identities(product),
+        "map_links": build_map_links(
+            name=product.title, local_name=None, city_name=product.destination_id,
+            country_code=catalog_country_code(product),
+            latitude=facts.latitude, longitude=facts.longitude,
+            google_place_id=facts.google_place_id, naver_map_url=facts.naver_map_url,
+            map_match_status="verified" if facts.map_verified else "unverified",
+            map_identities=catalog_map_identities(product),
+        ) if product.kind == "hotel" else [],
         "source_url": product.source_url,
         "verified_at": product.verified_at,
         "distance_km": None,

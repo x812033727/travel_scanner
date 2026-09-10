@@ -30,6 +30,7 @@ from app.i18n import Locale, current_locale
 from app.infra import enforce_named_rate_limit, get_redis
 from app.localized_names import item_names
 from app.locations.coordinates import has_durable_coordinates
+from app.locations.map_identity import catalog_map_identities
 from app.models import HotspotPlaceProfile, TravelHotspot, TripPlanItem
 from app.problems import AppError
 from app.trips.hours import fresh_hours
@@ -365,6 +366,7 @@ async def select_hotspot_for_trip(
         google_place_id=hotspot.google_place_id,
         naver_map_url=hotspot.naver_map_url,
         map_match_status=hotspot.map_match_status,
+        map_identities=catalog_map_identities(hotspot),
     )
     # The stop keeps every site locale plus the original script, so the plan
     # follows the traveller's language instead of the one used when adding it.
@@ -392,6 +394,7 @@ async def select_hotspot_for_trip(
             "hotspot_id": str(hotspot.id),
             "hotspot_slug": hotspot.slug,
             "map_links": map_links,
+            "map_identities": catalog_map_identities(hotspot),
             "selection_source": "hotspot_card",
             # A copy of what Google told us, so the day view can say "closed when
             # you arrive" without asking Places again. Empty when the cache has
