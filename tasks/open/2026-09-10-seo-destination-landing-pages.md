@@ -184,10 +184,25 @@ recommended_days / timezone / currency / center / role / parent_destination_id /
 而 `apps/api/app/destinations/localized.py` 有 `validate_localized_catalog()` 保證 33 個目的地
 × 5 語系齊備。所以這兩頁不需要自己的城市名翻譯表。
 
-**降級行為**：索引頁在 API 讀不到時退回 `lib/destinations.ts` 的離線副本（19 個城市，名稱取自
-`search.catalog`）——少幾個城市好過一片空白。指南頁不同：已知的 destination 卻讀不到目錄資料時
-**丟例外**，讓 Next 回 5xx。404 會邀請 Google 把一個真實頁面移出索引，空白的 200 會被當成薄內容收錄，
-5xx 才是「稍後再來」。
+**降級行為分三種，不是兩種。** 第一版把「目錄整個讀不到」和「目錄讀到了但沒有這個 slug」混成同一條
+路徑，兩者都丟例外。做完整份 sitemap 的逐條 HTTP 稽核時才發現這是錯的：33 條指南頁裡有 29 條回 500，
+因為驗證用的 stub 目錄只有 4 個目的地。正式環境的 API 有全部 33 個所以不會發生，但這暴露一個真實風險
+——`PUBLIC_DESTINATIONS`（前端的 33 個 slug）和 API 目錄一旦漂移，我卻正在用 sitemap 叫 Google
+去爬那些網址，它們會回 500。
+
+兩種失敗是可以區分的，因為 `loadDestinations()` 回 `null` 代表整份目錄讀不到，回陣列但找不到 id
+代表漂移。現在：
+
+| 情況 | 回應 | 理由 |
+| --- | --- | --- |
+| 目錄讀不到（冷快取 + API 掛掉） | 5xx | 「稍後再來」。404 會邀請 Google 移除一個真實頁面 |
+| 目錄讀到了但沒有這個 slug | 404 | 這個目的地是真的不存在，誠實回答 |
+| slug 根本不在 `PUBLIC_DESTINATIONS` | 404 | 同上，而且更早就擋掉 |
+| 索引頁遇到目錄讀不到 | 200 + 離線副本 19 個城市 | 少幾個城市好過一片空白 |
+
+另外發現一個沒預期到但很有用的性質：**只要目錄曾經被快取過，API 掛掉不會讓目的地頁掛掉**——
+`next: { revalidate }` 是 stale-while-revalidate，會繼續送上一份好的資料。5xx 只在「冷快取 + API 同時掛掉」
+才會發生。對 SEO 來說這比每次後端抖動就一片 5xx 好得多。
 
 ### 驗證紀錄
 
@@ -208,3 +223,29 @@ recommended_days / timezone / currency / center / role / parent_destination_id /
   `english_name` 被濾掉）、`containedInPlace`、`geo`。索引頁帶 `ItemList` 與 `BreadcrumbList`。
 - `/zh-TW/destinations/not-a-city` 回 404；`/zh-TW/destinations/tokyo/services` 回 200。
 - `/en`、`/ja` 的城市名與頁面標題都跟著語系變（`<title>旅行先ガイド｜Mokaair</title>`）。
+
+### 追加驗證（2026-09-10，修正 404/500 之後）
+
+把 stub 擴充成供應全部 33 個 slug 之後，對 production build 逐條稽核整份 sitemap：
+
+```
+checked 365 URLs, 0 non-200
+```
+
+365 = 73 條路由 × 5 語系。另外兩項交叉檢查也都乾淨：
+
+- sitemap 裡沒有任何一條網址帶 `noindex`（0 contradictions）。
+- sitemap 裡沒有混進 `/login`、`/register`、`/account`、`/trips`、`/alerts`、`/my`、`/admin`、
+  `/search`、`/share` 任何一條。
+
+冷快取 + API 關閉時實測：指南頁 500、索引頁 200 且列出 19 個離線城市、`/foods` 200。
+API 開著但目錄沒有該 slug 時：404。
+
+**殘留風險**：`PUBLIC_DESTINATIONS` 與 API 目錄的一致性目前沒有自動化守門，靠的是兩邊都源自
+同一份 catalog。漂移的後果現在是 404 而不是 500，但 sitemap 仍會列出那條網址。
+要根治得有一個跨語言的比對測試（讀 `apps/api/app/destinations/catalog.py` 的 id 與
+`PUBLIC_DESTINATIONS` 對照），評估後認為那種 regex 解析 Python 的測試太脆，先記在這裡而不做。
+
+**測試覆蓋的界線**：404 與 5xx 的分岔是三行內嵌在 page 裡的邏輯，用單元測試包起來需要 mock 掉整個
+server component 的相依，代價不成比例。它的輸入（`loadDestinations` 回 `null` 還是陣列）有單元測試，
+分岔本身則以上面對 production build 的實測為證。

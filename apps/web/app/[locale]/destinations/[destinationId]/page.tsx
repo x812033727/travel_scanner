@@ -30,18 +30,21 @@ export default async function DestinationGuidePage({ params }: { params: Promise
   const { locale, destinationId } = await params;
   if (!known(destinationId)) notFound();
 
-  const [destination, all, places, merchants, nav] = await Promise.all([
-    getDestination(locale, destinationId),
+  const [all, places, merchants, nav] = await Promise.all([
     getDestinations(locale),
     getGuidePlaces(locale, destinationId),
     getGuideMerchants(locale, destinationId),
     getTranslations({ locale, namespace: "navigation" }),
   ]);
 
-  // A known destination with no record means the catalog could not be read. Throwing gives a 5xx,
-  // which tells a crawler to come back; a 404 would invite it to drop a real page, and an empty
-  // 200 would get the page indexed as thin content.
-  if (!destination) throw new Error(`Destination catalog unavailable for ${destinationId}`);
+  // Two different failures, two different answers. A catalog that could not be read at all is an
+  // outage: throwing gives a 5xx, which tells a crawler to come back, where a 404 would invite it
+  // to drop a real page and an empty 200 would get one indexed as thin content. A catalog that
+  // loaded but does not carry this slug is drift between PUBLIC_DESTINATIONS and the API, and
+  // then the destination really is absent, so 404 is the honest answer.
+  if (all === null) throw new Error(`Destination catalog unavailable for ${destinationId}`);
+  const destination = all.find((row) => row.id === destinationId);
+  if (!destination) notFound();
 
   const copy = destinationsCopy(locale);
   const byId = new Map((all ?? []).map((row) => [row.id, row]));

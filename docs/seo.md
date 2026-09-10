@@ -5,14 +5,16 @@ what is indexable, why, and the rules a change must not break. It exists because
 were previously nowhere: before 2026-09-10 the repository had no `robots.txt`, no
 `sitemap.xml`, no structured data, and no written account of which routes were meant to rank.
 
-The work itself is queued as tasks — see the `2026-09-10-seo-*` entries in
-[`tasks/BOARD.md`](../tasks/BOARD.md). This document is the shared reasoning behind them.
+The `2026-09-10-seo-*` entries in [`tasks/BOARD.md`](../tasks/BOARD.md) track the work. Six of
+them have landed; each task file records what was verified and how. This document is the shared
+reasoning behind all of them.
 
 ## What the audit found
 
-Three problems held at once.
+Three problems held at once. The first two are fixed; the third is fixed for the home page's
+structured data and still open for the page body.
 
-**Canonical URLs pointed every page at its locale home page.** `app/[locale]/layout.tsx`
+**Canonical URLs pointed every page at its locale home page.** *(Fixed.)* `app/[locale]/layout.tsx`
 returned a fixed ``alternates: { canonical: `${siteUrl}/${locale}` }``. Next.js merges metadata
 shallowly from parent to child, and `alternates` is a top-level field, so only a page that
 sets its own `alternates` replaces it. Exactly one route did — the destination services page.
@@ -21,12 +23,14 @@ page. `alternates.languages` had the same defect: five `hreflang` links, all poi
 locale home pages rather than at the five translations of the current page, and no
 `x-default`.
 
-**The index directives were inverted.** Private surfaces carried no `robots` directive at all
+**The index directives were inverted.** *(Fixed.)* Private surfaces carried no `robots` directive at all
 — the whole admin console, the planner, auth forms, per-token share links, search results.
 Meanwhile the site's own content — `/explore`, `/pet-friendly`, community posts and profiles —
 was hard-coded `noindex`.
 
-**The home page has no indexable content.** `lib/discovery.ts` passes
+**The home page has no indexable content.** *(Open — the files belong to two in-review
+branches; see `2026-09-10-seo-server-render-home-and-explore`. The Organization and WebSite
+graphs are emitted outside the gate, so those do reach a crawler today.)* `lib/discovery.ts` passes
 `() => ({ enabled: false, loading: true })` as the `getServerSnapshot` argument to
 `useSyncExternalStore`. `DiscoveryHomeGate` reads that value, sees `loading: true` on the
 server, and renders a skeleton. The hero `<h1>`, the marketing copy and the country/city link
@@ -61,7 +65,7 @@ excluded from locale rewriting. `/robots.txt` and `/sitemap.xml` are therefore s
 
 | Category | Routes | Directive |
 | --- | --- | --- |
-| Public content | `/`, `/hotspots`, `/foods`, `/destinations`, `/destinations/{id}`, `/flights/status`, `/labs/airlines`, `/pricing` | indexable |
+| Public content | `/`, `/hotspots`, `/foods`, `/destinations`, `/destinations/{id}`, `/destinations/{id}/services`, `/flights/status`, `/labs/airlines`, `/pricing` | indexable |
 | Managed documents | `/about`, `/privacy`, `/terms`, `/contact` | indexable **only when published**; `site-information-page.tsx` already returns `noindex` for an unpublished document |
 | Gated features | the six routes wrapped in `PublicFeatureGate` | indexable while the feature is enabled; `noindex` when it is closed or `site-visibility` is unreachable |
 | Community and pets | `/explore`, `/pet-friendly`, `/pet-friendly/{id}`, `/community/posts/{id}`, `/community/profiles/{handle}` | `noindex` until the content is server-rendered, then indexable while the feature is public |
@@ -92,8 +96,15 @@ component cannot contribute metadata.
 ## Sitemap
 
 One entry per locale per route, each carrying the full five-locale plus `x-default` alternate
-set. Roughly 200 URLs against a 50,000-per-file limit, so there is no sitemap index and no
+set — 365 URLs today, against a 50,000-per-file limit, so there is no sitemap index and no
 `generateSitemaps()`. Revisit that when hotspot, merchant or article detail URLs exist.
+
+`robots.ts` and `sitemap.ts` are `force-dynamic`. Left prerendered they resolve `siteUrl` at
+build time, and a build that missed the `NEXT_PUBLIC_SITE_URL` build arg publishes a sitemap full
+of `localhost` URLs. `docker-compose.prod.yml` supplies the value both ways, but only the runtime
+one is mandatory (`:?set NEXT_PUBLIC_SITE_URL`), and Google rejects a sitemap whose entries are on
+another host — so the failure would be total and silent. Regenerating two small documents per
+request costs nothing.
 
 The sitemap does **not** call the API. The 33 destination slugs are already in the web bundle
 (`PUBLIC_DESTINATIONS` in `components/travel-services/options.ts`) and the sitemap needs URLs,
@@ -106,8 +117,17 @@ out until `2026-09-06-legal-content-from-owner` publishes them, because listing 
 just accumulates "Excluded by noindex" in Search Console. They are linked from the footer, so
 nothing is lost by waiting.
 
-A guard test walks `app/[locale]/` and asserts every path in the sitemap resolves to a real
-`page.tsx`. That is the only thing standing between a refactor and a sitemap full of 404s.
+A guard test walks both `app/[locale]/` and `app/(stay22-public)/[locale]/`, letting a
+`[dynamic]` folder stand in for a literal segment, and asserts every path in the sitemap resolves
+to a real `page.tsx`. That is the only thing standing between a rename and a sitemap full of 404s.
+It carries a guard of its own — a path that does not exist must be reported missing — because a
+walk that silently stops matching would make every case pass vacuously.
+
+A destination whose slug the API catalog does not carry answers 404, not 500. Those are different
+failures: a catalog that cannot be read at all is an outage and should say "come back later",
+while a catalog that loaded without this slug means the destination really is absent. The first
+version conflated them, and a URL-by-URL audit of the sitemap surfaced it as 29 guides returning
+500.
 
 ## Structured data
 
@@ -147,10 +167,20 @@ TTFB and therefore in LCP. They should use `next: { revalidate: N }` instead, si
 each actually changes. Anything carrying a session cookie or user identity stays `no-store`;
 the revalidated cache is shared across users.
 
-Two other things matter more than any config change: server-rendering the home page (see the
-audit above — it is currently a skeleton, which is simultaneously the largest LCP problem, a
-full-page CLS shift, and the reason the site has no indexable home page), and seeding
-`/foods` with its merchant list the way `/hotspots` already seeds its ranking.
+`/foods` now seeds its merchant list the way `/hotspots` already seeded its ranking, so the page
+ships merchants rather than filter controls with nothing behind them. The server fetches only the
+unfiltered first page — which is what a crawler asks for — and the client reuses it only when this
+reader also arrived without filters.
+
+Server-rendering the home page is the one large item still outstanding. It is simultaneously the
+biggest LCP problem, a full-page CLS shift, and the reason the site has no indexable home page
+body; the files belong to two in-review branches, so it is queued rather than done.
+
+Two things about the cache are worth knowing before debugging it. Next keys the fetch cache per
+request headers, so `X-Travel-Locale` keeps the locales apart — worth re-checking after any change,
+because a cache keyed on URL alone would serve one language's data to every reader. And the cache
+lives in `.next/cache/fetch-cache`, which survives a server restart: to test whether a cold load
+really goes to the API, delete it first.
 
 `next.config.ts` deliberately has no `images` configuration. Every `next/image` call site passes
 `unoptimized`, and all five of them are on signed-in, `noindex` surfaces, so `remotePatterns`
