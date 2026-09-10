@@ -34,6 +34,8 @@ scope:
   - apps/api/app/trips/router.py
   - apps/api/tests/test_korea_dual_maps.py
   - apps/web/e2e/korea-dual-maps.spec.ts
+  - apps/web/e2e/planner-route-tones.spec.ts
+  - apps/web/e2e/navigation.spec.ts
   - docs/seoul-day2-transport-ux.md
 ---
 
