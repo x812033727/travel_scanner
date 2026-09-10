@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**23 open · 1 in progress · 3 blocked · 9 in review · 200 done**
+**26 open · 1 in progress · 3 blocked · 9 in review · 200 done**
 
 ## Ready to claim
 
@@ -19,9 +19,12 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [Complete live Travelpayouts brand and destination offer verification](open/2026-09-08-travelpayouts-live-destination-activation.md) | ops | `docs/travel-services.md` |
 | P1 | [Prevent Google coordinates being labelled durable by merchant review](open/2026-09-08-prevent-google-coordinates-being-labelled-durable.md) | api | `apps/api/app/foods/coordinate_queue.py`<br>`apps/api/tests/test_food_coordinate_queue.py` |
 | P1 | [Continue evidence-backed remaining hotspot candidate review](open/2026-09-08-continue-evidence-backed-remaining-hotspot-candidate.md) | ops | `docs/hotspot-review-next-batch.md`<br>`ops/hotspot_review_next_batch.py`<br>`ops/hotspot_review_next_batch.json` |
+| P1 | [Seoul Day 2 transport settings and readable route details](open/2026-09-10-seoul-day2-transport-ux.md) | web | `apps/web/components/trip-editor.tsx`<br>`apps/web/components/trip-editor.test.tsx`<br>`apps/api/app/trips/routing.py`<br>`apps/api/tests/test_korea_transit_google_fallback.py`<br>`apps/api/tests/test_trip_routing.py`<br>`apps/web/components/route-mode-panel.tsx`<br>`apps/web/components/route-mode-panel.test.tsx`<br>`apps/web/components/route-segment-card.tsx`<br>`apps/web/components/route-segment-card.test.tsx`<br>`apps/web/components/planner/route-panel.module.css`<br>`apps/web/components/route-timeline-link.tsx`<br>`apps/web/components/route-timeline-link.test.tsx`<br>`apps/web/components/planner/day-timeline-copy.ts`<br>`apps/web/lib/trip-types.ts`<br>`apps/web/lib/trip-types.test.ts`<br>`apps/web/messages/zh-TW/trips.json`<br>`apps/web/messages/zh-CN/trips.json`<br>`apps/web/messages/en/trips.json`<br>`apps/web/messages/ja/trips.json`<br>`apps/web/messages/ko/trips.json`<br>`apps/api/app/trips/router.py`<br>`apps/api/tests/test_korea_dual_maps.py`<br>`apps/web/e2e/korea-dual-maps.spec.ts`<br>`docs/seoul-day2-transport-ux.md` |
 | P2 | [防 jsonb 運算子的測試只守住 3 張表，實際有 42 張](open/2026-09-07-jsonb-3-42.md) | api | `apps/api/tests/test_migration_sql_dialect.py` |
 | P2 | [30 筆新購物店家還沒 place enrichment，所以加不進行程](open/2026-09-07-enrich-new-shopping-place-ids.md) | api | `ops/notes/hotspot-place-enrichment.md` |
 | P2 | [Verify the two reported hotels exact Booking links](open/2026-09-09-verify-reported-hotels-booking-links.md) | ops | `docs/reported-hotels-booking-review.md` |
+| P2 | [Preserve force refresh in daily route background jobs](open/2026-09-10-daily-route-force-refresh.md) | api | `apps/api/app/trips/router.py`<br>`apps/api/app/trips/route_tasks.py`<br>`apps/api/tests/test_route_tasks.py` |
+| P2 | [Normalize locale-prefixed login return paths](open/2026-09-10-locale-login-return-path.md) | web | `apps/web/components/auth-form.tsx`<br>`apps/web/components/auth-form.test.tsx` |
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | api | `apps/api/app/hotspots/areas.py`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [第二批購物店家：十五個沒有公開座標來源的候選](open/2026-09-06-shopping-seeds-second-batch.md) | api | `apps/api/app/hotspots/shopping_bootstrap.json`<br>`apps/api/app/hotspots/theme_bootstrap.json`<br>`apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_shopping_bootstrap.py` |

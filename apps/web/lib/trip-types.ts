@@ -517,8 +517,8 @@ export function distanceKm(
 }
 
 /**
- * A rough travel time for a leg nobody has queried yet, so the timeline keeps a
- * believable running total without spending a provider request. Straight-line
+ * A placeholder travel time for a leg nobody has queried yet. This is not a
+ * provider route or a usable timetable. Straight-line
  * distance at a modest speed plus a fixed overhead for transit and driving, rounded
  * up to five minutes; undefined when a stop has no coordinates.
  */
@@ -605,10 +605,11 @@ function itemDurationMinutes(row: TripItem) {
 export function deriveDayTimeline(
   rows: TripItem[],
   segments: RouteSegment[],
-  options: { bufferMinutes?: number; travelMode?: TravelMode } = {},
+  options: { bufferMinutes?: number; travelMode?: TravelMode; countryCode?: string | null } = {},
 ) {
   const bufferMinutes = options.bufferMinutes ?? 10;
   const travelMode = options.travelMode ?? "transit";
+  const isKorea = options.countryCode?.toUpperCase() === "KR";
   const ordered = groupTripItems(rows).flatMap(([, dayRows]) => dayRows);
   const optionalRows = ordered.filter(isOptionalSystemItem);
   const displayRows = ordered.filter((row) => !isLogisticsItem(row) && !isOptionalSystemItem(row));
@@ -626,11 +627,18 @@ export function deriveDayTimeline(
       if (previous) {
         const blocker = [previous, row].find((item) => !hasRoutePoint(item));
         const saved = blocker ? undefined : byPair.get(pairKey(previous.id, row.id));
-        const segment = saved && !["failed", "unavailable"].includes(saved.status)
+        const validSegment = saved && !["failed", "unavailable"].includes(saved.status)
           && Number.isFinite(saved.duration_minutes) && saved.duration_minutes > 0 ? saved : undefined;
-        const estimatedMinutes = blocker ? undefined : estimateLegMinutes(previous, row, travelMode);
-        edge = { from: previous, to: row, travelMode: segment?.travel_mode || travelMode, segment, blocker, estimatedMinutes,
-          status: blocker ? "pending" : segment ? segmentStatus(segment) : "estimated" };
+        const effectiveMode = validSegment?.travel_mode || travelMode;
+        // Korean walking has no supported in-app timing provider. Coordinates or
+        // a legacy placeholder must not manufacture an arrival; explicit manual
+        // durations and previously saved real routes remain usable.
+        const walkingTimePending = isKorea && effectiveMode === "walk" && (!validSegment
+          || validSegment.provider === "estimate" || validSegment.status === "estimated");
+        const segment = walkingTimePending ? undefined : validSegment;
+        const estimatedMinutes = blocker || walkingTimePending ? undefined : estimateLegMinutes(previous, row, effectiveMode);
+        edge = { from: previous, to: row, travelMode: effectiveMode, segment, blocker, estimatedMinutes,
+          status: blocker || walkingTimePending ? "pending" : segment ? segmentStatus(segment) : "estimated" };
         edges.push(edge);
         edgesByFromId.set(previous.id, edge);
       }

@@ -1017,7 +1017,7 @@ def test_japan_transit_requires_navitime_configuration() -> None:
     assert route_provider_configured(google_only, "JP", "walk") is True
     assert route_provider_configured(Settings(ekispert_api_key="key"), "JP", "transit") is True
     assert route_provider_configured(Settings(odsay_api_key="key"), "KR", "transit") is True
-    assert route_provider_configured(google_only, "KR", "transit") is False
+    assert route_provider_configured(google_only, "KR", "transit") is True
 
 
 def test_navitime_base_url_is_pinned_to_official_gateways() -> None:

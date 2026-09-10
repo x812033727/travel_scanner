@@ -319,3 +319,89 @@ describe("deriveDayTimeline", () => {
 
   it("accepts zero coordinates", () => { expect(hasRoutePoint({ latitude: 0, longitude: 0 })).toBe(true); });
 });
+
+describe("Korean walking timeline timing", () => {
+  const palace = item({ id: "palace", position: 0, latitude: 37.5796, longitude: 126.977,
+    fixed_time: true, start_time: "2026-11-10T09:00:00+09:00" });
+  const village = item({ id: "village", position: 1, latitude: 37.5826, longitude: 126.983,
+    locked: true, start_time: "2026-11-10T11:00:00+09:00" });
+  const market = item({ id: "market", position: 2, latitude: 37.5704, longitude: 126.9997 });
+
+  it("keeps unqueried walking time pending instead of projecting a straight-line arrival", () => {
+    const rows = [palace, village, market];
+    const original = JSON.stringify(rows);
+    const value = deriveDayTimeline(rows, [], { countryCode: "KR", travelMode: "walk" });
+    expect(value.edges).toHaveLength(2);
+    expect(value.edges.every((edge) => edge.status === "pending" && edge.estimatedMinutes === undefined
+      && edge.segment === undefined && edge.blocker === undefined)).toBe(true);
+    expect(value.starts.size).toBe(0);
+    expect(value.unresolvedItems).toEqual([]);
+    expect(JSON.stringify(rows)).toBe(original);
+  });
+
+  it.each([
+    { provider: "estimate", status: "estimated" },
+    { provider: "estimate", status: "resolved" },
+    { provider: "legacy", status: "estimated" },
+    { provider: "google_routes", status: "failed" },
+  ])("does not reuse a placeholder walking duration for Korea: %j", (source) => {
+    const saved = { ...segment("palace", "village", "2026-11-10T10:25:00+09:00"),
+      ...source, travel_mode: "walk" as const, duration_minutes: 15 };
+    const value = deriveDayTimeline([palace, village], [saved], { countryCode: "KR", travelMode: "walk" });
+    expect(value.edges[0]).toMatchObject({ status: "pending", travelMode: "walk" });
+    expect(value.edges[0].estimatedMinutes).toBeUndefined();
+    expect(value.edges[0].segment).toBeUndefined();
+    expect(value.starts.has("village")).toBe(false);
+  });
+
+  it("applies an explicit manual walking duration and buffer without estimating the next leg", () => {
+    const saved = { ...segment("palace", "village", "2026-11-10T10:23:00+09:00"),
+      provider: "manual", travel_mode: "walk" as const, duration_minutes: 18, buffer_minutes: 5 };
+    const value = deriveDayTimeline([palace, village, market], [saved], { countryCode: "KR", travelMode: "walk" });
+    expect(value.edges[0]).toMatchObject({ status: "ready", segment: saved });
+    expect(formatTime(value.starts.get("village")?.start, "zh-TW", "Asia/Seoul")).toBe("10:23");
+    expect(value.starts.get("village")?.estimated).toBe(false);
+    expect(value.starts.has("market")).toBe(false);
+  });
+
+  it("preserves a fixed appointment after an unknown leg and chains from its saved manual route", () => {
+    const fixed = { ...village, fixed_time: true, start_time: "2026-11-10T11:00:00+09:00" };
+    const saved = { ...segment("village", "market", "2026-11-10T12:25:00+09:00"),
+      provider: "manual", travel_mode: "walk" as const, duration_minutes: 15, buffer_minutes: 10 };
+    const value = deriveDayTimeline([palace, fixed, market], [saved], { countryCode: "kr", travelMode: "walk" });
+    expect(value.starts.has("village")).toBe(false);
+    expect(fixed.start_time).toBe("2026-11-10T11:00:00+09:00");
+    expect(formatTime(value.starts.get("market")?.start, "zh-TW", "Asia/Seoul")).toBe("12:25");
+    expect(value.starts.get("market")?.estimated).toBe(false);
+  });
+
+  it("preserves saved real route overrides when the day's default is walking", () => {
+    const saved = { ...segment("palace", "village", "2026-11-10T10:25:00+09:00"),
+      provider: "naver_directions", travel_mode: "drive" as const, duration_minutes: 15 };
+    const value = deriveDayTimeline([palace, village], [saved], { countryCode: "KR", travelMode: "walk" });
+    expect(value.edges[0]).toMatchObject({ status: "ready", travelMode: "drive", segment: saved });
+    expect(formatTime(value.starts.get("village")?.start, "zh-TW", "Asia/Seoul")).toBe("10:25");
+  });
+
+  it("does not treat a legacy Korean walking estimate as real when the day's default is transit", () => {
+    const saved = { ...segment("palace", "village", "2026-11-10T10:25:00+09:00"),
+      provider: "estimate", status: "estimated", travel_mode: "walk" as const, duration_minutes: 15 };
+    const value = deriveDayTimeline([palace, village], [saved], { countryCode: "KR", travelMode: "transit" });
+    expect(value.edges[0]).toMatchObject({ status: "pending", travelMode: "walk" });
+    expect(value.starts.has("village")).toBe(false);
+  });
+
+  it.each([undefined, "JP", "TW"])("preserves existing unqueried walking estimates outside explicit KR (%s)", (countryCode) => {
+    const value = deriveDayTimeline([palace, village], [], { countryCode, travelMode: "walk" });
+    expect(value.edges[0].status).toBe("estimated");
+    expect(value.edges[0].estimatedMinutes).toBe(10);
+    expect(formatTime(value.starts.get("village")?.start, "zh-TW", "Asia/Seoul")).toBe("10:20");
+    expect(value.starts.get("village")?.estimated).toBe(true);
+  });
+
+  it.each(["transit", "drive"] as const)("retains explicitly estimated draft timing for Korea %s", (travelMode) => {
+    const value = deriveDayTimeline([palace, village], [], { countryCode: "KR", travelMode });
+    expect(value.edges[0].status).toBe("estimated");
+    expect(value.starts.get("village")?.estimated).toBe(true);
+  });
+});

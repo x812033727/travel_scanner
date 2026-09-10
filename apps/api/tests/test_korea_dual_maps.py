@@ -84,7 +84,7 @@ def test_korean_mode_matrix(mode, expected_maps, expected_outbound):
         ("drive", "google", False),
         ("drive", "naver", True),
         ("drive", "odsay", False),
-        ("transit", "google", False),
+        ("transit", "google", True),
         ("transit", "naver", False),
         ("transit", "odsay", True),
     ],
@@ -259,7 +259,7 @@ async def test_unavailable_preview_keeps_reasons_on_every_external_navigation(
         ),
         (
             "transit", False,
-            "站內大眾運輸需設定 ODsay；可在 Google Maps 或 NAVER Maps 查看。",
+            "尚未設定站內大眾運輸服務；可在 Google Maps 或 NAVER Maps 查看。",
         ),
         (
             "walk", False,
@@ -361,6 +361,76 @@ async def test_navigation_is_read_only_and_does_not_call_provider(trip_db, monke
     ]
     assert trip.version == 1
     assert compute.await_count == 0
+    assert response["route_availability"] == {
+        "status": "available", "provider": "google_routes", "can_query": True,
+    }
+    assert "fixture-only" not in str(response)
+
+
+@pytest.mark.parametrize(
+    "mode,provider,status,can_query",
+    [
+        ("transit", "google_routes", "available", True),
+        ("walk", None, "external_only", False),
+        ("drive", "naver_maps", "unconfigured", False),
+    ],
+)
+@pytest.mark.asyncio
+async def test_navigation_describes_korean_query_limits_before_search(
+    trip_db, monkeypatch, mode, provider, status, can_query
+):
+    session, user, trip, first, second, route = trip_db
+    compute = AsyncMock(side_effect=AssertionError("capabilities cannot query a provider"))
+    monkeypatch.setattr(router.RouteService, "compute_options", compute)
+    before_time = second.start_time
+    before_duration = route.duration_minutes
+    response = await router.trip_route_navigation(
+        trip.id, first.id, second.id, user, session, mode
+    )
+    assert response["route_availability"] == {
+        "status": status, "provider": provider, "can_query": can_query,
+    }
+    assert trip.version == 1
+    assert second.start_time == before_time
+    assert route.duration_minutes == before_duration
+    assert compute.await_count == 0
+
+
+def test_route_query_availability_distinguishes_google_transit_from_naver_drive():
+    assert router.route_query_availability(Settings(), "KR", "transit") == {
+        "status": "unconfigured", "provider": "google_routes", "can_query": False,
+    }
+    maps_only = Settings(google_maps_api_key="google-secret", google_maps_enabled=True)
+    assert router.route_query_availability(maps_only, "KR", "transit") == {
+        "status": "available", "provider": "google_routes", "can_query": True,
+    }
+    assert router.route_query_availability(maps_only, "KR", "drive")["can_query"] is False
+    assert router.route_query_availability(maps_only, "TW", "transit") == {
+        "status": "available", "provider": "google_routes", "can_query": True,
+    }
+    assert router.route_query_availability(
+        Settings(odsay_api_key="odsay-secret", odsay_enabled=True), "KR", "transit"
+    ) == {"status": "available", "provider": "odsay", "can_query": True}
+    assert router.route_query_availability(
+        Settings(
+            naver_maps_enabled=True,
+            naver_maps_client_id="browser-id",
+            naver_maps_client_secret="naver-secret",
+        ),
+        "KR", "drive",
+    ) == {"status": "available", "provider": "naver_maps", "can_query": True}
+
+
+@pytest.mark.asyncio
+async def test_other_user_cannot_read_navigation_capabilities(trip_db, monkeypatch):
+    session, _, trip, first, second, _ = trip_db
+    other_user = User(id=uuid4(), email=f"navigation-other-{uuid4().hex}@example.test")
+    runtime_lookup = AsyncMock(side_effect=AssertionError("ownership check must precede settings"))
+    monkeypatch.setattr(router, "load_runtime_settings", runtime_lookup)
+    with pytest.raises(AppError) as error:
+        await router.trip_route_navigation(trip.id, first.id, second.id, other_user, session)
+    assert error.value.code == "trip_not_found"
+    assert runtime_lookup.await_count == 0
 
 
 @pytest.mark.asyncio
