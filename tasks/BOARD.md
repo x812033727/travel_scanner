@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**34 open · 1 in progress · 3 blocked · 11 in review · 200 done**
+**33 open · 1 in progress · 3 blocked · 12 in review · 200 done**
 
 ## Ready to claim
 
@@ -13,7 +13,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
-| P0 | [修好每頁的 canonical 與 hreflang](open/2026-09-10-seo-canonical-hreflang.md) | web | `apps/web/lib/seo.ts`<br>`apps/web/lib/seo.test.ts`<br>`apps/web/app/[locale]/layout.tsx` |
 | P1 | [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | docs | `apps/web/app/[locale]/privacy/page.tsx`<br>`apps/web/app/[locale]/terms/page.tsx`<br>`apps/web/app/[locale]/contact/page.tsx`<br>`apps/web/messages/en/navigation.json`<br>`apps/web/messages/ja/navigation.json`<br>`apps/web/messages/ko/navigation.json`<br>`apps/web/messages/zh-CN/navigation.json`<br>`apps/web/messages/zh-TW/navigation.json` |
 | P1 | [Hotel platform options and quote readiness](open/2026-09-07-hotel-platform-options-and-quote-readiness.md) | api | `apps/api/tests/test_hotel_content_package.py`<br>`docs/hotel-platforms` |
 | P1 | [Revalidate community read resets against production-build CI](open/2026-09-08-community-ci-read-retry.md) | web | `apps/web/e2e/community.spec.ts` |
@@ -45,6 +44,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Task | Owner | Branch |
 | --- | --- | --- |
+| [修好每頁的 canonical 與 hreflang](open/2026-09-10-seo-canonical-hreflang.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
 | [Unified saved items and private inbox API](open/2026-09-09-frontend-flow-saved-api.md) | codex-saved-flow | `codex/frontend-explore-flow` |
 | [Editorial discovery and unified collection frontend](open/2026-09-09-frontend-flow-discovery-web.md) | codex-discovery-flow-web | `codex/frontend-explore-flow` |
 | [Clarify the modular hotel affiliate switch and original-channel fallback](open/2026-09-09-clarify-stay22-module-switch.md) | codex-stay22-module | `codex/stay22-modular-toggle` |

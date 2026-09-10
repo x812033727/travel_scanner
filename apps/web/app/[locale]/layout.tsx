@@ -16,6 +16,7 @@ import { getCommunityState } from "@/lib/community/server";
 import { AnalyticsProvider } from "@/components/analytics-provider";
 import { TravelpayoutsDrive } from "@/components/travelpayouts-drive";
 import { routing } from "@/i18n/routing";
+import { alternatesFor, routePathFromRequest, siteUrl } from "@/lib/seo";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
 import { NAVIGATION_HISTORY_BOOTSTRAP_SCRIPT } from "@/lib/navigation-history";
 import { TEXT_SIZE_BOOTSTRAP_SCRIPT } from "@/lib/text-size";
@@ -29,7 +30,6 @@ type Props = Readonly<{
   params: Promise<{ locale: string }>;
 }>;
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 const travelpayoutsDriveEnabled = isTravelpayoutsDriveOrigin(siteUrl);
 
 export function generateStaticParams() {
@@ -39,16 +39,26 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Pick<Props, "params">): Promise<Metadata> {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
-  const t = await getTranslations({ locale, namespace: "metadata" });
-  const languages = Object.fromEntries(routing.locales.map((value) => [value, `${siteUrl}/${value}`]));
+  const [t, requestHeaders] = await Promise.all([
+    getTranslations({ locale, namespace: "metadata" }),
+    headers(),
+  ]);
+  // Every page inherits this `alternates` unless it sets its own, so a fixed value here made
+  // all forty-odd routes canonicalize to the locale home page. proxy.ts puts the real path in
+  // this header; a page wanting a different canonical still overrides the whole field.
+  const path = routePathFromRequest(requestHeaders.get("x-travel-pathname"));
+  const home = path === "/";
   return {
     metadataBase: new URL(siteUrl),
     title: t("title"),
     description: t("description"),
-    alternates: { canonical: `${siteUrl}/${locale}`, languages },
+    alternates: alternatesFor(locale, path),
     openGraph: {
-      title: t("ogTitle"),
-      description: t("ogDescription"),
+      // Only the home page carries the site-level social copy. Everywhere else these are left
+      // out on purpose: Next's postProcessMetadata fills og:title and og:description from the
+      // page's own resolved title, which is what a share card should say. Naming them here
+      // would hand every page the site-wide pair instead.
+      ...(home ? { title: t("ogTitle"), description: t("ogDescription") } : {}),
       images: [{ url: "/og.png", width: 1200, height: 630, alt: t("ogTitle") }],
       locale: locale.replace("-", "_"),
       alternateLocale: routing.locales.filter((value) => value !== locale).map((value) => value.replace("-", "_")),
@@ -56,8 +66,7 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
     },
     twitter: {
       card: "summary_large_image",
-      title: t("ogTitle"),
-      description: t("ogDescription"),
+      ...(home ? { title: t("ogTitle"), description: t("ogDescription") } : {}),
       images: ["/og.png"],
     },
   };
