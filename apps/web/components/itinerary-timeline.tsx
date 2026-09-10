@@ -2,6 +2,7 @@ import {
   BedDouble,
   CalendarDays,
   Clock3,
+  ExternalLink,
   Info,
   LockKeyhole,
   MapPin,
@@ -11,6 +12,8 @@ import {
 import { FlightAnchorCard } from "@/components/flight-anchor-card";
 import { RouteSegmentCard } from "@/components/route-segment-card";
 import { activeLocale } from "@/lib/locale-format";
+import { mapIdentityCopy } from "@/lib/map-identity-copy";
+import { safeExternalHref } from "@/lib/navigation";
 import {
   formatTime,
   groupTripItems,
@@ -27,6 +30,39 @@ function systemLabel(item: TripItem) {
   if (item.system_role === "dinner") return "晚餐";
   if (item.system_role === "hotel_start") return "從飯店出發";
   return "返回飯店";
+}
+
+function LocationMapLinks({ item }: { item: TripItem }) {
+  const copy = mapIdentityCopy(activeLocale());
+  // A server-supplied empty list is authoritative. The fallback supports older
+  // share responses, and never turns an unreviewed candidate into an exact link.
+  const links = item.location_map_links ?? Object.values(item.map_identities || {})
+    .filter((identity) => identity.status === "verified" && identity.map_url)
+    .map((identity) => ({
+      provider: identity.provider === "google_places" ? "google" as const : "naver" as const,
+      url: identity.map_url!,
+      position_only: false,
+    }));
+  const seen = new Set<string>();
+  const available = links.filter((link) => {
+    if (!safeExternalHref(link.url, ["https:"]) || seen.has(link.url)) return false;
+    const host = new URL(link.url).hostname;
+    if (link.provider === "naver" ? host !== "map.naver.com" : !["www.google.com", "maps.google.com"].includes(host)) return false;
+    seen.add(link.url);
+    return true;
+  });
+  if (!available.length) return null;
+  return <div className="mt-3 flex min-w-0 flex-wrap gap-2">
+    {available.map((link) => {
+      const brand = link.provider === "naver" ? "NAVER Maps" : "Google Maps";
+      const label = link.position_only ? `${brand} · ${copy.position}` : brand;
+      return <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer"
+        aria-label={`${label}: ${item.title}`}
+        className="inline-flex min-h-11 max-w-full items-center gap-2 rounded-xl border border-[var(--line)] bg-white px-3 py-2 text-sm font-semibold text-[var(--teal)] underline-offset-4 hover:underline">
+        <MapPin size={14} aria-hidden className="shrink-0" /><span className="break-words">{label}</span><ExternalLink size={13} aria-hidden className="shrink-0" />
+      </a>;
+    })}
+  </div>;
 }
 
 export function ItineraryTimeline({
@@ -71,6 +107,7 @@ export function ItineraryTimeline({
                 </p>
                 <h3 className="mt-1 font-semibold">{item.title}</h3>
                 {item.location_name && <p className="mt-1 text-sm text-slate-600">{item.location_name}</p>}
+                <LocationMapLinks item={item} />
               </article>
             ))}
           </div>
@@ -121,7 +158,7 @@ export function ItineraryTimeline({
                     : "接續前站 · 待路線更新";
                 return (
                   <li key={item.id}>
-                    <div className="relative grid grid-cols-[2.3rem_1fr] gap-3">
+                    <div className="relative grid grid-cols-[2.3rem_minmax(0,1fr)] gap-3">
                       <span className={`z-10 mt-3 grid h-9 w-9 place-items-center rounded-full ${meal ? "bg-amber-100 text-amber-800" : hotel ? "bg-slate-100 text-slate-700" : item.is_estimated ? "bg-amber-100 text-amber-800" : "bg-[var(--teal-soft)] text-[var(--teal)]"}`}>
                         {meal ? <Utensils size={16} /> : hotel ? <BedDouble size={16} /> : item.is_estimated ? <Sparkles size={16} /> : <Clock3 size={16} />}
                       </span>
@@ -154,6 +191,7 @@ export function ItineraryTimeline({
                           <MapPin size={14} />
                           {item.location_name || (hotel ? "尚未設定主要飯店" : meal ? "待選餐廳" : "尚未設定地點")}
                         </p>
+                        <LocationMapLinks item={item} />
                       </div>
                     </div>
                     {routeIndex >= 0 && nextItem && route && <div className="mt-3"><RouteSegmentCard segment={route} timezone={timezone} /></div>}

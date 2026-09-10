@@ -74,6 +74,14 @@ const food: FoodItem = {
 };
 
 describe("FoodDishCard", () => {
+  it("offers both reviewed map identities for the same recommended restaurant", () => {
+    vi.stubGlobal("fetch", vi.fn(async () => new Response(JSON.stringify({ items: [] }))));
+    const merchant = food.recommended_merchants[0];
+    render(<SavedItemsProvider><FoodDishCard food={{ ...food, recommended_merchants: [{ ...merchant, map_links: [...merchant.map_links, { provider: "google", label: "Google Maps", url: "https://www.google.com/maps/search/?api=1&query=restaurant&query_place_id=ChIJ-restaurant", primary: false }] }] }} /></SavedItemsProvider>);
+    expect(screen.getByRole("link", { name: /使用 Naver Map 導航/ })).toBeTruthy();
+    expect(screen.getByRole("link", { name: /使用 Google Maps 導航/ }).getAttribute("href")).toContain("query_place_id=ChIJ-restaurant");
+  });
+
   it("renders the localized dish, public food area, and exact merchant map link", async () => {
     vi.stubGlobal(
       "fetch",

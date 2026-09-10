@@ -62,6 +62,7 @@ class ItineraryDay(BaseModel):
 
 
 class ItineraryHotspot(BaseModel):
+    map_identities: dict[str, dict[str, Any]] = Field(default_factory=dict)
     hotspot_id: UUID
     name: str
     # Five site locales plus the original text (app.localized_names).
@@ -88,6 +89,7 @@ class ItineraryHotspot(BaseModel):
 
 
 class ItineraryFood(BaseModel):
+    map_identities: dict[str, dict[str, Any]] = Field(default_factory=dict)
     food_id: UUID
     name: str
     local_name: str
@@ -385,6 +387,7 @@ def build_itinerary(
                     "source_mode": "approved_hotspot",
                     "hotspot_id": str(hotspot.hotspot_id),
                     "map_links": hotspot.map_links,
+                    "map_identities": hotspot.map_identities,
                     "destination_id": hotspot.destination_id,
                     "parent_destination_id": hotspot.parent_destination_id,
                     "is_cross_city": True,
@@ -419,6 +422,7 @@ def build_itinerary(
                     "source_mode": "approved_hotspot",
                     "hotspot_id": str(hotspot.hotspot_id),
                     "map_links": hotspot.map_links,
+                    "map_identities": hotspot.map_identities,
                     "depth_kind": hotspot.depth_kind,
                     "depth_score": hotspot.depth_score,
                     "depth_reason": hotspot.depth_reason,
@@ -452,6 +456,7 @@ def build_itinerary(
                         "source_mode": "approved_hotspot",
                         "hotspot_id": str(hotspot.hotspot_id),
                         "map_links": hotspot.map_links,
+                        "map_identities": hotspot.map_identities,
                         "depth_kind": hotspot.depth_kind,
                         "depth_score": hotspot.depth_score,
                         "depth_reason": hotspot.depth_reason,
@@ -569,6 +574,7 @@ def build_itinerary(
                 "merchant_name": food.merchant_name,
                 "hotspot_id": str(food.hotspot_id) if food.hotspot_id else None,
                 "map_links": food.map_links,
+                "map_identities": food.map_identities,
                 "merchant_status": food.merchant_status,
                 "needs_place_confirmation": not confirmed,
                 "interest": "food",

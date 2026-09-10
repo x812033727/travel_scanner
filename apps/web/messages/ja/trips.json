@@ -177,6 +177,17 @@
   "capacity": "旅行 {count}／{limit} 件を作成済み",
   "capacityFull": "旅行の上限に達しました。古い旅行を削除すると新しく作成できます。",
   "editor": {
+    "mapIdentities": {
+      "position": "位置の参考",
+      "title": "地図上の識別情報",
+      "supplement": "Google の識別情報を追加",
+      "replaceHint": "場所を変更すると主座標が更新されます。識別情報の追加は同じ場所を関連付けます。",
+      "search": "Google で同じ場所を検索",
+      "confirm": "名称、支店、住所全体を照合し、同じ場所であることを確認しました",
+      "apply": "Google の識別情報のみ保存",
+      "saveFirst": "現在の場所の変更を保存してから識別情報を追加してください。",
+      "saved": "識別情報を追加しました。旅程の時刻とルートは変わりません。"
+    },
     "duration": {
       "m20": "20 分",
       "m30": "30 分",
@@ -704,7 +715,12 @@
     "manualApplied": "手動の移動時間を適用済み。地図サービスでは未確認です",
     "estimatedTiming": "推定移動時間",
     "manualTiming": "手動の移動時間",
-    "mapTitle": "経路地図",
+    "mapProviderLabel": "表示する地図",
+    "mapProviderHint": "地図を切り替えても、移動時間や旅程は変わりません。",
+    "mapTimeSource": "移動時間の提供元：{provider}",
+    "navigationProviders": "外部ナビゲーション",
+    "navigateWithProvider": "{provider} でナビを開く",
+    "mapTitle": "サイト内の地図",
     "mapOptionSummary": "候補 {index} · 約 {minutes} 分",
     "mapAria": "{from}から{to}までの{provider}経路地図",
     "mapMissingPlaces": "出発地と目的地を設定すると地図が表示されます",

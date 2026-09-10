@@ -19,6 +19,7 @@ from app.config import Settings
 from app.hotspots.guides import canonical_external_url
 from app.hotspots.maps import build_map_links
 from app.locations.coordinates import has_durable_coordinates
+from app.locations.map_identity import catalog_map_identities
 from app.models import HotspotPlaceEnrichmentRun, HotspotPlaceProfile, TravelHotspot
 from app.places.google import GoogleTravelService
 from app.problems import AppError
@@ -429,6 +430,7 @@ def _exact_map_links(hotspot: TravelHotspot) -> list[dict[str, str | bool]]:
         google_place_id=hotspot.google_place_id,
         naver_map_url=hotspot.naver_map_url,
         map_match_status=hotspot.map_match_status,
+        map_identities=catalog_map_identities(hotspot),
     )
 
 
@@ -485,6 +487,7 @@ def place_summary_payload(
         "status": place_status(profile, configured=configured, now=observed_at),
         "google_maps_url": _map_url(hotspot),
         "map_links": _exact_map_links(hotspot),
+        "map_identities": catalog_map_identities(hotspot),
         "official_website_url": official_website,
         "official_website_verified": bool(profile and profile.manual_official_website_url),
         "has_details": bool(

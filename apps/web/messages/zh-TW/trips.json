@@ -177,6 +177,17 @@
   "capacity": "已建立 {count}／{limit} 個旅程",
   "capacityFull": "已達旅程數量上限，刪除舊旅程後才能再建立。",
   "editor": {
+    "mapIdentities": {
+      "position": "位置參考",
+      "title": "地圖身分",
+      "supplement": "補充 Google 地圖身分",
+      "replaceHint": "更換地點會更新主座標；補充身分只連結同一地點。",
+      "search": "搜尋同一地點的 Google 身分",
+      "confirm": "已核對名稱、分館及完整地址為同一地點",
+      "apply": "只儲存 Google 身分",
+      "saveFirst": "請先儲存目前地點變更，再補充身分。",
+      "saved": "已補充地圖身分，行程時間與路線不變。"
+    },
     "duration": {
       "m20": "20 分鐘",
       "m30": "30 分鐘",
@@ -704,7 +715,12 @@
     "manualApplied": "已套用手動時間，未經地圖服務確認",
     "estimatedTiming": "估算移動時間",
     "manualTiming": "手動移動時間",
-    "mapTitle": "路線地圖",
+    "mapProviderLabel": "顯示地圖",
+    "mapProviderHint": "切換地圖只改變畫面；交通時間與行程保持原樣。",
+    "mapTimeSource": "交通時間來源：{provider}",
+    "navigationProviders": "外部導航服務",
+    "navigateWithProvider": "用 {provider} 導航",
+    "mapTitle": "站內地圖",
     "mapOptionSummary": "方案 {index} · 約 {minutes} 分鐘",
     "mapAria": "{from}到{to}的{provider}路線地圖",
     "mapMissingPlaces": "補齊兩端地點後顯示地圖",

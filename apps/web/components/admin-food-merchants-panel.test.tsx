@@ -107,6 +107,28 @@ function taxonomyResponse(url: string): Response | null {
 }
 
 describe("AdminFoodMerchantsPanel", () => {
+  it("preserves the supplemental Google identity when saving a Korean NAVER location", async () => {
+    const korean = { ...merchant, country_code: "KR", destination_id: "seoul", naver_map_url: "https://map.naver.com/p/entry/place/123", google_place_id: "ChIJ-korea-confirmed", map_match_status: "verified" };
+    const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      const stub = taxonomyResponse(String(input));
+      if (stub) return stub;
+      if (init?.method === "PATCH") return new Response(JSON.stringify({ ...korean, ...JSON.parse(String(init.body)) }));
+      return new Response(JSON.stringify({ items: [korean], total: 1, page: 1, pages: 1 }));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminFoodMerchantsPanel />);
+    await screen.findByText(korean.name);
+    fireEvent.click(screen.getByRole("button", { name: "編輯地點與來源" }));
+    expect((screen.getByLabelText("Google Place ID") as HTMLInputElement).value).toBe("ChIJ-korea-confirmed");
+    fireEvent.change(screen.getByLabelText("Naver 精準地點頁"), { target: { value: "https://map.naver.com/p/entry/place/456" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存店家地點" }));
+    await waitFor(() => expect(fetchMock.mock.calls.some(([, init]) => init?.method === "PATCH")).toBe(true));
+    const [, init] = fetchMock.mock.calls.find(([, init]) => init?.method === "PATCH")!;
+    expect(JSON.parse(String(init?.body))).toMatchObject({ naver_map_url: "https://map.naver.com/p/entry/place/456", map_match_status: "verified" });
+    expect(JSON.parse(String(init?.body))).not.toHaveProperty("google_place_id");
+    await screen.findByText(/已儲存店家地點/);
+  });
+
   it.each(["", "pending"])("sends the requested review filter %s for searches and explicit reloads", async (initialStatus) => {
     const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
       const stub = taxonomyResponse(String(input));

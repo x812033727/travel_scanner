@@ -1144,6 +1144,7 @@ class FoodMerchant(Timestamped, Base):
     )
     naver_map_url: Mapped[str | None] = mapped_column(String(2048), nullable=True, unique=True)
     official_website_url: Mapped[str | None] = mapped_column(String(2048), nullable=True)
+    map_identity_metadata: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
     official_website_verified_at: Mapped[datetime | None] = mapped_column(
         DateTime(timezone=True), nullable=True
     )

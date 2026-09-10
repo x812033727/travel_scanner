@@ -49,6 +49,24 @@ const listing = {
 };
 
 describe("AdminHotspotsPanel", () => {
+  it("edits a Korean Google identity without clearing its NAVER identity", async () => {
+    const korean = { ...item, country_code: "KR", google_place_id: "ChIJ-korea", naver_map_url: "https://map.naver.com/p/entry/place/123" };
+    const fetchMock = vi.fn(async (_input: RequestInfo | URL, init?: RequestInit) => {
+      if (init?.method === "POST") return new Response(JSON.stringify({ updated: 1 }));
+      return new Response(JSON.stringify({ ...listing, items: [korean] }));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminHotspotsPanel />);
+    await screen.findByText(korean.name);
+    fireEvent.click(screen.getByRole("button", { name: "編輯地點" }));
+    fireEvent.change(screen.getByLabelText("Google Place ID"), { target: { value: "ChIJ-correct-branch" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存地點" }));
+    await screen.findByText("已儲存精準地點。");
+    const [, init] = fetchMock.mock.calls.find(([, init]) => init?.method === "POST")!;
+    expect(JSON.parse(String(init?.body))).toMatchObject({ google_place_id: "ChIJ-correct-branch" });
+    expect(JSON.parse(String(init?.body))).not.toHaveProperty("naver_map_url");
+  });
+
   it.each([{ initialHotspotId: item.id }, { initialMissingLocation: true }])("offers a way out of canonical location filters %o", async (props) => {
     vi.stubGlobal("fetch", vi.fn(async () => new Response(JSON.stringify(listing))));
     render(<AdminHotspotsPanel initialStatus="" {...props} />);

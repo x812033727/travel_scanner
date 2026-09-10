@@ -1,12 +1,14 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { api } from "@/lib/api";
 import { MERCHANT_STYLES } from "@/lib/foods";
 import { AdminMerchantStyles } from "./admin-merchant-styles";
 import { naverMapSearchUrl } from "@/lib/naver-map";
 import { safeExternalHref } from "@/lib/navigation";
+import { mapIdentityCopy } from "@/lib/map-identity-copy";
+import { AdminMapIdentitiesPanel } from "./admin-map-identities-panel";
 import {
   LocalizedNameFields,
   completeNames,
@@ -217,6 +219,7 @@ export function AdminFoodMerchantsPanel({
   initialStatus?: string;
 } = {}) {
   const t = useTranslations("foodAdmin");
+  const mapCopy = mapIdentityCopy(useLocale());
   const ta = useTranslations("admin");
   const ts = useTranslations("foods.styles");
   const [filterStyle, setFilterStyle] = useState("");
@@ -536,6 +539,7 @@ export function AdminFoodMerchantsPanel({
 
   async function save() {
     if (!editing) return;
+    const original = data?.items.find((item) => item.id === editing.id);
     setLoading(true);
     setSaveError("");
     try {
@@ -557,10 +561,12 @@ export function AdminFoodMerchantsPanel({
           longitude: editing.longitude,
           coordinate_source_type: editing.coordinate_source_type,
           coordinate_source_url: editing.coordinate_source_url,
-          google_place_id:
-            editing.country_code === "KR" ? null : editing.google_place_id,
-          naver_map_url:
-            editing.country_code === "KR" ? editing.naver_map_url : null,
+          // A supplemental review can finish while this editor is open. Do not
+          // overwrite the other provider with the stale, unchanged form value.
+          ...(editing.country_code !== "KR" || !original || editing.google_place_id !== original.google_place_id
+            ? { google_place_id: editing.google_place_id } : {}),
+          ...(editing.country_code !== "KR" || !original || editing.naver_map_url !== original.naver_map_url
+            ? { naver_map_url: editing.naver_map_url } : {}),
           official_website_url: editing.official_website_url,
           map_match_status: editing.map_match_status,
           review_status: editing.review_status,
@@ -821,6 +827,7 @@ export function AdminFoodMerchantsPanel({
           {t("merchants.add")}
         </button>
       </div>
+      <AdminMapIdentitiesPanel initialKind="merchant" />
       {message && (
         <p
           role="status"
@@ -1238,7 +1245,7 @@ export function AdminFoodMerchantsPanel({
                   className="mt-1 h-11 w-full rounded-xl border px-3"
                 />
               </label>
-              {editing.country_code === "KR" ? (
+              {(editing.country_code === "KR" || editing.naver_map_url) && (
                 <label className="text-sm font-semibold md:col-span-2">
                   {ta("foodMerchantsPanel.naverUrl")}
                   <input
@@ -1253,7 +1260,7 @@ export function AdminFoodMerchantsPanel({
                     className="mt-1 h-11 w-full rounded-xl border px-3"
                   />
                 </label>
-              ) : (
+              )}
                 <label className="text-sm font-semibold md:col-span-2">
                   Google Place ID
                   <input
@@ -1267,7 +1274,7 @@ export function AdminFoodMerchantsPanel({
                     className="mt-1 h-11 w-full rounded-xl border px-3"
                   />
                 </label>
-              )}
+              {editing.country_code === "KR" && <p className="text-sm text-[var(--muted)] md:col-span-2">{mapCopy.independent}</p>}
             </div>
             <div className="mt-4 flex flex-wrap gap-2">
               {editing.country_code === "KR" && (

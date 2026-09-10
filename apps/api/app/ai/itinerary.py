@@ -86,6 +86,7 @@ def clamp_candidate_access(minutes: int | None) -> int:
 
 
 class AIPlannerCandidate(BaseModel):
+    map_identities: dict[str, dict[str, Any]] = Field(default_factory=dict)
     model_config = ConfigDict(extra="forbid")
 
     key: str = Field(min_length=3, max_length=160)
@@ -126,7 +127,9 @@ class AIPlannerCandidate(BaseModel):
 
 
 # Per-locale labels are storage for the saved stop, not planning input.
-PROMPT_EXCLUDED_CANDIDATE_FIELDS: frozenset[str] = frozenset({"names", "dish_names"})
+PROMPT_EXCLUDED_CANDIDATE_FIELDS: frozenset[str] = frozenset(
+    {"names", "dish_names", "map_identities"}
+)
 
 
 class AIItineraryRequest(BaseModel):
@@ -1009,6 +1012,7 @@ def draft_to_itinerary(
                         "access_minutes": candidate.access_minutes,
                         "is_cross_city": candidate.is_cross_city,
                         "map_links": candidate.map_links,
+                        "map_identities": candidate.map_identities,
                         "map_match_status": "verified",
                         "destination_city": request.destination_name,
                         "destination_timezone": request.timezone,

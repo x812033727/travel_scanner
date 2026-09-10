@@ -15,6 +15,7 @@ from app.config import get_settings
 from app.db import SessionFactory, engine
 from app.infra import get_redis
 from app.models import TripPlan, TripPlanItem, TripRouteSegment
+from app.trips.map_identities import item_route_point
 from app.trips.route_planner import (
     get_or_create_day_setting,
     item_end,
@@ -28,23 +29,13 @@ from app.trips.routing import (
     RouteSegment,
     RouteService,
     TravelMode,
-    infer_place_provider,
     trip_region_code,
 )
 from app.trips.schedule import active_route_rows, route_pair_count
 
 
 def _route_point(item: TripPlanItem) -> RoutePoint | None:
-    if item.latitude is None or item.longitude is None:
-        return None
-    return RoutePoint(
-        item_id=item.id,
-        name=item.location_name or item.title or item.item_type,
-        latitude=float(item.latitude),
-        longitude=float(item.longitude),
-        provider_place_id=item.provider_place_id,
-        place_provider=infer_place_provider(item.location_source, item.data),
-    )
+    return item_route_point(item)
 
 
 async def _items(session: AsyncSession, trip_id: UUID) -> list[TripPlanItem]:
@@ -69,16 +60,10 @@ def _advance_projected_time(
         if previous_end is not None
         else None
     )
-    ready = (
-        arrival + timedelta(minutes=segment.buffer_minutes)
-        if arrival is not None
-        else None
-    )
+    ready = arrival + timedelta(minutes=segment.buffer_minutes) if arrival is not None else None
     next_start = (
         max(following.start_time, ready)
-        if following.fixed_time
-        and following.start_time is not None
-        and ready is not None
+        if following.fixed_time and following.start_time is not None and ready is not None
         else ready or following.start_time
     )
     return next_start, item_end(following, next_start)
@@ -127,9 +112,7 @@ async def compute_and_apply_routes(
     missing_location_pairs = 0
     unavailable_pairs = 0
     conflicts: list[dict[str, Any]] = []
-    total_pairs = route_pair_count(
-        [row for row in rows if row.day_date in set(target_days)]
-    )
+    total_pairs = route_pair_count([row for row in rows if row.day_date in set(target_days)])
 
     for day_value in target_days:
         day_rows = active_route_rows(rows, day_value)
@@ -227,9 +210,7 @@ async def compute_and_apply_routes(
                         update={
                             "status": "stale",
                             "warnings": list(
-                                dict.fromkeys(
-                                    [*stale.warnings, "重新查詢失敗，暫時保留先前路線。"]
-                                )
+                                dict.fromkeys([*stale.warnings, "重新查詢失敗，暫時保留先前路線。"])
                             ),
                         }
                     )
@@ -272,9 +253,7 @@ async def compute_and_apply_routes(
         )
 
     if missing_location_pairs:
-        warnings.append(
-            f"{missing_location_pairs} 段移動缺少已確認地點，請先完成地點設定。"
-        )
+        warnings.append(f"{missing_location_pairs} 段移動缺少已確認地點，請先完成地點設定。")
     if unavailable_pairs:
         warnings.append(f"{unavailable_pairs} 段移動暫時沒有可用路線。")
 

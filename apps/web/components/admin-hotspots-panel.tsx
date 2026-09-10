@@ -2,6 +2,8 @@
 
 import { Fragment, useCallback, useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
+import { AdminMapIdentitiesPanel } from "./admin-map-identities-panel";
+import { mapIdentityCopy } from "@/lib/map-identity-copy";
 import { useSearchParams } from "next/navigation";
 import { api } from "@/lib/api";
 import { Link } from "@/i18n/navigation";
@@ -142,6 +144,7 @@ export function AdminHotspotsPanel({
 }) {
   const manage = useAdminActionGuard("content.manage");
   const copy = adminCatalogCopy(useLocale());
+  const mapCopy = mapIdentityCopy(useLocale());
   const search = useSearchParams();
   const t = useTranslations("hotspots");
   const tHotspotAdmin = useTranslations("hotspotAdmin");
@@ -335,6 +338,7 @@ export function AdminHotspotsPanel({
 
   async function saveLocation() {
     if (!locationDraft) return;
+    const original = data?.items.find((item) => item.id === locationDraft.id);
     setLoading(true);
     try {
       await api("/admin/hotspots/review", {
@@ -346,14 +350,10 @@ export function AdminHotspotsPanel({
           longitude: locationDraft.longitude,
           coordinate_source_type: locationDraft.coordinate_source_type,
           coordinate_source_url: locationDraft.coordinate_source_url,
-          google_place_id:
-            locationDraft.country_code === "KR"
-              ? null
-              : locationDraft.google_place_id,
-          naver_map_url:
-            locationDraft.country_code === "KR"
-              ? locationDraft.naver_map_url
-              : null,
+          ...(locationDraft.country_code !== "KR" || !original || locationDraft.google_place_id !== original.google_place_id
+            ? { google_place_id: locationDraft.google_place_id } : {}),
+          ...(locationDraft.country_code !== "KR" || !original || locationDraft.naver_map_url !== original.naver_map_url
+            ? { naver_map_url: locationDraft.naver_map_url } : {}),
           map_match_status: locationDraft.map_match_status,
         }),
       });
@@ -691,7 +691,7 @@ export function AdminHotspotsPanel({
                 className="mt-1 h-10 w-full rounded-xl border px-3"
               />
             </label>
-            {locationDraft.country_code === "KR" ? (
+            {(locationDraft.country_code === "KR" || locationDraft.naver_map_url) && (
               <div className="lg:col-span-2">
                 <label className="text-xs font-semibold">
                   {ta("hotspotsPanel.naverUrl")}
@@ -720,7 +720,7 @@ export function AdminHotspotsPanel({
                   {ta("hotspotsPanel.openNaverSearch")}
                 </a>
               </div>
-            ) : (
+            )}
               <label className="text-xs font-semibold lg:col-span-2">
                 Google Place ID
                 <input
@@ -734,7 +734,7 @@ export function AdminHotspotsPanel({
                   className="mt-1 h-10 w-full rounded-xl border px-3"
                 />
               </label>
-            )}
+            {locationDraft.country_code === "KR" && <p className="text-sm text-[var(--muted)] lg:col-span-2">{mapCopy.independent}</p>}
             <label className="text-xs font-semibold">
               {ta("hotspotsPanel.matchStatus")}
               <select
@@ -798,6 +798,7 @@ export function AdminHotspotsPanel({
           )}
         </div>
       )}
+      {locationEditing !== "link" && <AdminMapIdentitiesPanel initialKind="hotspot" canManage={manage.allowed} />}
       {message && (
         <p role="status" className="mt-3 text-sm text-[var(--muted)]">
           {message}

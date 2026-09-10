@@ -27,6 +27,8 @@ import { safeExternalHref } from "@/lib/navigation";
 import { hasRoutePoint } from "@/lib/trip-types";
 import type {
   RouteScheduleImpact,
+  RouteExternalNavigation,
+  RouteMapCapabilities,
   RouteSegment,
   TravelMode,
   Trip,
@@ -48,14 +50,8 @@ type ProviderRoutePreview = {
   segment: RouteSegment;
   schedule_impact: RouteScheduleImpact;
   options?: RouteOptionPreview[];
-};
-type ExternalNavigation = {
-  provider: "naver_maps" | "google_maps";
-  label: string;
-  travel_mode: TravelMode;
-  app_url: string;
-  web_url: string;
-  reason: string;
+  external_navigations?: RouteExternalNavigation[];
+  map_capabilities?: RouteMapCapabilities;
 };
 type ExternalRoutePreview = {
   kind: "external_only";
@@ -64,7 +60,9 @@ type ExternalRoutePreview = {
   segment: null;
   schedule_impact: null;
   options?: [];
-  external_navigation: ExternalNavigation;
+  external_navigation?: RouteExternalNavigation;
+  external_navigations?: RouteExternalNavigation[];
+  map_capabilities?: RouteMapCapabilities;
 };
 type RoutePreview = ProviderRoutePreview | ExternalRoutePreview;
 
@@ -253,6 +251,7 @@ export function RouteModePanel({
     initialBufferMinutes ?? initialSegment?.buffer_minutes ?? daySetting?.default_buffer_minutes ?? 10,
   );
   const [previews, setPreviews] = useState<Record<string, RoutePreview>>({});
+  const [navigationResult, setNavigationResult] = useState<{ key: string; external_navigations: RouteExternalNavigation[]; map_capabilities?: RouteMapCapabilities }>();
   const [selectedOptions, setSelectedOptions] = useState<Record<string, number>>({});
   const [loadingMode, setLoadingMode] = useState<TravelMode>();
   const [applying, setApplying] = useState(false);
@@ -294,7 +293,9 @@ export function RouteModePanel({
   }, [expiresAt]);
   const selectedExpired = Boolean(selectedOption && previewExpired(selectedOption.expires_at));
   const canApplyPreview = Boolean(selectedOption && hasVerifiedTiming(selectedOption.segment) && !selectedExpired && !localError);
-  const externalNavigation = preview?.kind === "external_only" ? preview.external_navigation : undefined;
+  const isExternalPreview = preview?.kind === "external_only";
+  const externalNavigation = isExternalPreview
+    ? preview.external_navigations?.[0] || preview.external_navigation : undefined;
   const externalIsNaver = externalNavigation?.provider === "naver_maps";
   const initialMatches = initialSegment?.travel_mode === mode
     && (initialSegment.buffer_minutes ?? 10) === buffer
@@ -311,7 +312,7 @@ export function RouteModePanel({
     .map((item) => ({ item_id: item.id, title: item.title, reason: t("placePending") }));
   const settingsOutdated = !preview && (Boolean(initialSegment && !initialMatches) || Object.keys(previews).length > 0);
   const routeState = loadingMode ? "loading" : localError ? "error" : unresolvedItems.length ? "missing"
-    : selectedExpired ? "expired" : canApplyPreview ? "preview" : externalNavigation ? "external"
+    : selectedExpired ? "expired" : canApplyPreview ? "preview" : isExternalPreview ? "external"
       : isApplied ? (isManualTiming(initialSegment) ? "manual" : "applied")
         : initialMatches && (initialSegment?.status === "stale" || savedExpired) ? "stale"
           : isEstimatedTiming(activeSegment) ? "estimated"
@@ -425,6 +426,29 @@ export function RouteModePanel({
     : undefined;
 
   const navigationUrl = externalNavigation?.web_url || activeSegment?.maps_url || directionsUrl;
+  const navigationKey = JSON.stringify([trip.id, trip.version, fromItemId, toItemId, mode]);
+  const suppliedNavigations = preview?.external_navigations ?? activeSegment?.external_navigations;
+  const needsNavigationLookup = trip.destination_country_code === "KR" && suppliedNavigations === undefined
+    && unresolvedItems.length === 0 && Boolean(fromItem && toItem);
+  useEffect(() => {
+    if (!needsNavigationLookup) return;
+    const controller = new AbortController();
+    const params = new URLSearchParams({ from_item_id: fromItemId, to_item_id: toItemId, travel_mode: mode });
+    api<{ external_navigations: RouteExternalNavigation[]; map_capabilities?: RouteMapCapabilities }>(`/trips/${trip.id}/routes/navigation?${params}`, { signal: controller.signal })
+      .then((value) => {
+        if (!controller.signal.aborted && Array.isArray(value.external_navigations)) {
+          setNavigationResult({ key: navigationKey, external_navigations: value.external_navigations, map_capabilities: value.map_capabilities });
+        }
+      }).catch(() => { /* Route queries and map display remain independently usable. */ });
+    return () => controller.abort();
+  }, [fromItemId, mode, navigationKey, needsNavigationLookup, toItemId, trip.id]);
+  const availableNavigations = suppliedNavigations
+    ?? (navigationResult?.key === navigationKey ? navigationResult.external_navigations : undefined);
+  const navigations = (availableNavigations
+    ?? (externalNavigation ? [externalNavigation] : []))
+    .filter((navigation) => navigation.travel_mode === mode
+      && (trip.destination_country_code !== "KR" || mode !== "drive" || navigation.provider === "naver_maps"));
+  const hasNavigationContract = availableNavigations !== undefined || Boolean(externalNavigation);
   const stateLabel = routeState === "preview" ? t("previewReady") : routeState === "expired" ? t("previewExpired")
     : routeState === "stale" ? t("staleRoute") : routeState === "manual" ? t("manualApplied")
       : routeState === "estimated" ? t("estimatedTiming") : routeState === "applied" ? t(initialSegment?.status === "conflict" ? "appliedConflict" : "applied")
@@ -446,7 +470,7 @@ export function RouteModePanel({
           event.preventDefault();
           event.currentTarget.parentElement?.querySelectorAll<HTMLButtonElement>("[role='tab']")[next]?.focus({ preventScroll: true });
         }} onClick={() => { setMode(value); setLocalError(undefined); }} className={`route-mode-tab ${mode === value ? "route-mode-tab-active" : ""}`}><Icon size={18} />{t(labelKey)}{loadingMode === value && <Loader2 size={14} className="animate-spin" />}</button>)}</div>
-        {navigationUrl && <a href={safeExternalHref(navigationUrl)} target="_blank" rel="noopener noreferrer" className="route-navigation-link" aria-label={t("navigateFromTo", { from: fromItem?.title || t("startFallback"), to: toItem?.title || t("endFallback") })}><Navigation size={16} /><span>{t("navigate")}</span></a>}
+        {navigations.length > 0 ? <div className="flex flex-wrap gap-2" aria-label={t("navigationProviders")}>{navigations.map((navigation) => <a key={navigation.provider} href={safeExternalHref(navigation.web_url)} target="_blank" rel="noopener noreferrer" className="route-navigation-link" aria-label={t("navigateWithProvider", { provider: navigation.label })}><Navigation size={16} /><span>{navigation.label}</span></a>)}</div> : !hasNavigationContract && navigationUrl && <a href={safeExternalHref(navigationUrl)} target="_blank" rel="noopener noreferrer" className="route-navigation-link" aria-label={t("navigateFromTo", { from: fromItem?.title || t("startFallback"), to: toItem?.title || t("endFallback") })}><Navigation size={16} /><span>{t("navigate")}</span></a>}
       </div>
       <div className={styles.feedback}>
         {stateLabel && <p role="status" className={styles.state}><strong>{stateLabel}</strong>{activeSegment && ["preview", "applied"].includes(routeState) && <span>{activeSegment.schedule_mode === "preview" ? t("nearTerm") : activeSegment.schedule_mode === "live" ? t("liveRoute") : t("scheduled")}</span>}</p>}
@@ -496,7 +520,15 @@ export function RouteModePanel({
         </div>
       </section>}
 
-      {externalNavigation && <section className={`rounded-2xl border p-4 text-sm ${externalIsNaver ? "border-[#b8e7ca] bg-[#eefaf2] text-[#075c31]" : "border-sky-200 bg-sky-50 text-sky-950"}`} aria-label={t("externalAria", { provider: externalNavigation.label })}><p className="flex items-center gap-2 font-bold"><ExternalLink size={18} />{t("switchToProvider", { provider: externalNavigation.label })}</p><p className="mt-2 leading-6">{externalNavigation.reason}</p><p className={`mt-2 text-xs leading-5 ${externalIsNaver ? "text-[#397354]" : "text-sky-800"}`}>{t("externalNote")}</p><div className="mt-3 flex flex-wrap gap-2"><a href={safeExternalHref(externalNavigation.web_url)} target="_blank" rel="noopener noreferrer" className={`flex min-h-11 items-center gap-2 rounded-xl px-4 font-bold text-white ${externalIsNaver ? "bg-[#03c75a]" : "bg-sky-700"}`}>{t("planWithProvider", { provider: externalNavigation.label })}<ExternalLink size={15} /></a>{externalIsNaver && externalNavigation.app_url !== externalNavigation.web_url && <a href={safeExternalHref(externalNavigation.app_url, ["nmap:", "https:"])} className="flex min-h-11 items-center gap-2 rounded-xl border border-[#7fd5a3] bg-white px-4 font-bold">{t("openNaverApp")}</a>}<button type="button" onClick={openManual} className="min-h-11 rounded-xl px-3 font-bold">{t("manualEntry")}</button></div></section>}
+      {isExternalPreview && <section className={`rounded-2xl border p-4 text-sm ${externalIsNaver ? "border-[#b8e7ca] bg-[#eefaf2] text-[#075c31]" : "border-sky-200 bg-sky-50 text-sky-950"}`} aria-label={externalNavigation ? t("externalAria", { provider: externalNavigation.label }) : t("navigationProviders")}>
+        <p className="flex items-center gap-2 font-bold"><ExternalLink size={18} />{t("externalNavigation")}</p>
+        {externalNavigation?.reason && <p className="mt-2 leading-6">{externalNavigation.reason}</p>}
+        <p className={`mt-2 text-xs leading-5 ${externalIsNaver ? "text-[#397354]" : "text-sky-800"}`}>{t("externalNote")}</p>
+        <div className="mt-3 flex flex-wrap gap-2">{navigations.map((navigation) => <a key={navigation.provider} href={safeExternalHref(navigation.web_url)} target="_blank" rel="noopener noreferrer" className="flex min-h-11 items-center gap-2 rounded-xl bg-[var(--ink)] px-4 font-bold text-[var(--surface)]">{t("planWithProvider", { provider: navigation.label })}<ExternalLink size={15} /></a>)}
+          {navigations.filter((navigation) => navigation.provider === "naver_maps" && navigation.app_url !== navigation.web_url).map((navigation) => <a key={navigation.provider} href={safeExternalHref(navigation.app_url, ["nmap:", "https:"])} className="flex min-h-11 items-center gap-2 rounded-xl border border-[#7fd5a3] bg-white px-4 font-bold text-[#075c31]">{t("openNaverApp")}</a>)}
+          <button type="button" onClick={openManual} className="min-h-11 rounded-xl px-3 font-bold">{t("manualEntry")}</button>
+        </div>
+      </section>}
 
       {activeImpact && (activeImpact.affected_items.length > 0 || activeImpact.conflicts.length > 0) && <section className="route-impact-card"><div className="flex items-center gap-2"><Clock3 size={18} /><h3 className="font-bold">{t("impactTitle")}</h3></div>{activeImpact.affected_items.slice(0, 4).map((item) => <p key={item.item_id} className="mt-2 flex justify-between gap-3 text-sm"><span className="truncate">{item.title}</span><strong className={`route-impact-value shrink-0 ${item.delta_minutes < 0 ? "route-impact-earlier" : item.delta_minutes > 0 ? "route-impact-later" : ""}`}>{scheduleDeltaLabel(t, item.delta_minutes)}</strong></p>)}{activeImpact.conflicts.map((conflict) => <div key={conflict.item_id} className="mt-3 rounded-xl bg-red-50 p-3 text-sm text-red-900"><strong>{t("conflictLate", { minutes: conflict.late_minutes })}</strong><p className="mt-1">{t("conflictKeeps", { title: conflict.title })}</p><p className="mt-1 text-xs">{t("suggestionsLabel", { list: conflict.suggestions.join(t("listSeparator")) })}</p></div>)}</section>}
 
@@ -522,14 +554,15 @@ export function RouteModePanel({
           fromItemId={fromItemId}
           toItemId={toItemId}
           travelMode={mode}
+          mapCapabilities={preview?.map_capabilities ?? activeSegment?.map_capabilities ?? (navigationResult?.key === navigationKey ? navigationResult.map_capabilities : undefined)}
           variant="drawer"
           countryCode={trip.destination_country_code}
-          externalOnly={Boolean(externalNavigation)}
+          externalOnly={isExternalPreview}
         />
       </div>
       {activeSegment && <section className={`route-panel-detail min-w-0 ${styles.detail}`} aria-label={copy.routeDetails}><h3 className="mb-1 text-sm font-bold">{copy.routeDetails}</h3><p className="mb-3 text-xs text-[var(--muted)]">{copy.routeDetailsHint}</p><RouteSegmentCard key={selectedOption?.preview_id || `${mode}-applied`} segment={activeSegment} selected timezone={trip.timezone} /></section>}
     </div>
 
-    <div className={`route-apply-bar ${styles.applyBar}`}><div className="route-apply-selection min-w-0"><span className="block text-xs text-[var(--muted)]">{t("currentChoice")}</span><strong className="block">{modeLabel(mode)}{activeSegment ? `${options.length ? ` · ${t("optionNumber", { index: selectedOptionIndex + 1 })}` : ""} · ${t("durationMinutes", { minutes: activeSegment.duration_minutes })}` : ""}</strong></div><button type="button" aria-label={canApplyPreview ? t("applyThisRoute") : undefined} onClick={() => canApplyPreview ? void applyPreview() : void previewMode(mode)} disabled={applying || Boolean(loadingMode) || unresolvedItems.length > 0 || !fromItem || !toItem || (isApplied && !localError) || Boolean(externalNavigation)} className="route-apply-button flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-5 font-bold text-white disabled:opacity-45">{applying || loadingMode ? <Loader2 size={17} className="animate-spin" /> : isApplied && !localError ? <Check size={17} /> : null}{localError ? t("retry") : loadingMode ? t("fetchingShort") : isApplied ? t("applied") : canApplyPreview ? <><span className="route-apply-label-long">{t("applyThisRoute")}</span><span className="route-apply-label-short">{t("applyShort")}</span></> : externalNavigation ? t("externalCannotApply") : selectedExpired || routeState === "stale" ? timelineCopy.requery : timelineCopy.query}</button></div>
+    <div className={`route-apply-bar ${styles.applyBar}`}><div className="route-apply-selection min-w-0"><span className="block text-xs text-[var(--muted)]">{t("currentChoice")}</span><strong className="block">{modeLabel(mode)}{activeSegment ? `${options.length ? ` · ${t("optionNumber", { index: selectedOptionIndex + 1 })}` : ""} · ${t("durationMinutes", { minutes: activeSegment.duration_minutes })}` : ""}</strong></div><button type="button" aria-label={canApplyPreview ? t("applyThisRoute") : undefined} onClick={() => canApplyPreview ? void applyPreview() : void previewMode(mode)} disabled={applying || Boolean(loadingMode) || unresolvedItems.length > 0 || !fromItem || !toItem || (isApplied && !localError) || isExternalPreview} className="route-apply-button flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-5 font-bold text-white disabled:opacity-45">{applying || loadingMode ? <Loader2 size={17} className="animate-spin" /> : isApplied && !localError ? <Check size={17} /> : null}{localError ? t("retry") : loadingMode ? t("fetchingShort") : isApplied ? t("applied") : canApplyPreview ? <><span className="route-apply-label-long">{t("applyThisRoute")}</span><span className="route-apply-label-short">{t("applyShort")}</span></> : isExternalPreview ? t("externalCannotApply") : selectedExpired || routeState === "stale" ? timelineCopy.requery : timelineCopy.query}</button></div>
   </div></div>;
 }

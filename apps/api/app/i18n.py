@@ -121,7 +121,7 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "oauth_link_session_invalid": "The account-linking session expired",
         "oauth_identity_not_found": "This sign-in method could not be found",
         "oauth_last_method": "Keep at least one working sign-in method",
-            # Added 2026-09-07: every public error code the API raises now says what
+        # Added 2026-09-07: every public error code the API raises now says what
         # went wrong. Before this a reader outside zh-TW got GENERIC_DETAILS —
         # one sentence for 124 different problems.
         "admin_required": "This is for system administrators only",
@@ -297,7 +297,7 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "queue_unavailable": "The background queue is temporarily unavailable",
         "unsupported_destination": "That destination link includes something we do not support",
         "usage_account_missing": "This account does not have a usage balance yet",
-},
+    },
     "ja": {
         "password_not_set": "このアカウントにはまだパスワードがありません",
         "oauth_cancelled": "ログインをキャンセルしました",
@@ -316,7 +316,7 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "oauth_link_session_invalid": "アカウント連携の有効期限が切れました",
         "oauth_identity_not_found": "このログイン方法が見つかりません",
         "oauth_last_method": "利用可能なログイン方法を1つ以上残してください",
-            # Added 2026-09-07: every public error code the API raises now says what
+        # Added 2026-09-07: every public error code the API raises now says what
         # went wrong. Before this a reader outside zh-TW got GENERIC_DETAILS —
         # one sentence for 124 different problems.
         "admin_required": "この機能はシステム管理者専用です",
@@ -353,8 +353,7 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "flight_track_unavailable": "この便の実際の航跡データはまだありません",
         "flightaware_not_configured": "FlightAware の運航状況は有効になっていません",
         "flightaware_unavailable": (
-            "FlightAware の運航データを取得できません。"
-            "しばらくしてからお試しください"
+            "FlightAware の運航データを取得できません。しばらくしてからお試しください"
         ),
         "food_merchant_location_unverified": "この店舗の場所はまだ確認されていません",
         "fx_rate_unavailable": "この為替レートは現在取得できません",
@@ -370,8 +369,7 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "idempotency_key_required": "Idempotency-Key ヘッダーが必要です",
         "idempotency_key_reused": "この Idempotency-Key は別の操作ですでに使われています",
         "idempotency_result_unavailable": (
-            "この Idempotency-Key には再生できる結果がありません。"
-            "新しいキーを使ってください"
+            "この Idempotency-Key には再生できる結果がありません。新しいキーを使ってください"
         ),
         "invalid_external_reference": "外部参照は 1〜200 文字にしてください",
         "invalid_food_cursor": "グルメ一覧のページ位置が不正です",
@@ -391,12 +389,10 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         ),
         "itinerary_date_out_of_range": "食事の日付が旅程の範囲外です",
         "itinerary_exact_locations_required": (
-            "確認済みのスポットや店舗が足りないため、"
-            "旅程は変更されません"
+            "確認済みのスポットや店舗が足りないため、旅程は変更されません"
         ),
         "itinerary_optimization_limit": (
-            "一日に最適化できる移動可能な場所が多すぎます。"
-            "いくつか固定してください"
+            "一日に最適化できる移動可能な場所が多すぎます。いくつか固定してください"
         ),
         "itinerary_optimization_unavailable": "比較できる動線の結果が得られませんでした",
         "itinerary_optimization_unchanged": (
@@ -463,16 +459,14 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "usage_operation_unknown": "不明な回数消費の操作です",
         "usage_package_not_found": "この回数パックが見つかりません",
         "weather_api_not_enabled": (
-            "Google Weather API が無効か、サーバーの "
-            "API キーで許可されていません"
+            "Google Weather API が無効か、サーバーの API キーで許可されていません"
         ),
         "weather_location_unavailable": (
             "旅程に使える座標がまだありません。まず一つ以上の場所を確定してください"
         ),
         "weather_not_configured": "天気のサービスが設定されていません",
         "weather_provider_rejected": (
-            "MET Norway がリクエストを拒否しました。"
-            "User-Agent の設定を確認してください"
+            "MET Norway がリクエストを拒否しました。User-Agent の設定を確認してください"
         ),
         "weather_provider_unavailable": "Google Weather が一時的に応答していません",
         "weather_rate_limited": "Google Weather の照会枠が一時的に不足しています",
@@ -484,7 +478,7 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "queue_unavailable": "バックグラウンドのキューが一時的に利用できません",
         "unsupported_destination": "目的地の指定に対応していない項目が含まれています",
         "usage_account_missing": "このアカウントには回数の残高がまだありません",
-},
+    },
     "ko": {
         "password_not_set": "이 계정에는 아직 비밀번호가 없습니다",
         "oauth_cancelled": "로그인을 취소했습니다",
@@ -503,7 +497,7 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "oauth_link_session_invalid": "계정 연결 세션이 만료되었습니다",
         "oauth_identity_not_found": "이 로그인 방법을 찾을 수 없습니다",
         "oauth_last_method": "사용 가능한 로그인 방법을 하나 이상 유지하세요",
-            # Added 2026-09-07: every public error code the API raises now says what
+        # Added 2026-09-07: every public error code the API raises now says what
         # went wrong. Before this a reader outside zh-TW got GENERIC_DETAILS —
         # one sentence for 124 different problems.
         "admin_required": "이 기능은 시스템 관리자 전용입니다",
@@ -541,8 +535,7 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "flight_track_unavailable": "이 항공편의 실제 항적 데이터가 아직 없습니다",
         "flightaware_not_configured": "FlightAware 운항 정보가 활성화되지 않았습니다",
         "flightaware_unavailable": (
-            "FlightAware 항공 데이터를 가져올 수 없습니다. "
-            "잠시 후 다시 시도해 주세요"
+            "FlightAware 항공 데이터를 가져올 수 없습니다. 잠시 후 다시 시도해 주세요"
         ),
         "food_merchant_location_unverified": "이 가게의 위치가 아직 확인되지 않았습니다",
         "fx_rate_unavailable": "해당 환율을 지금 가져올 수 없습니다",
@@ -550,8 +543,7 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "holiday_range_invalid": "종료일이 시작일보다 앞섭니다",
         "holiday_range_too_wide": "공휴일은 한 번에 3년치까지 조회할 수 있습니다",
         "hotel_offer_expired": (
-            "이 요금은 만료되었습니다. 호텔 비교를 새로고침한 "
-            "뒤 다시 선택해 주세요"
+            "이 요금은 만료되었습니다. 호텔 비교를 새로고침한 뒤 다시 선택해 주세요"
         ),
         "hotspot_official_website_invalid": "공식 웹사이트는 공개된 HTTPS 주소여야 합니다",
         "hotspot_official_website_not_official": "이 주소는 승인 가능한 공식 웹사이트가 아닙니다",
@@ -559,8 +551,7 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "idempotency_key_required": "Idempotency-Key 헤더가 필요합니다",
         "idempotency_key_reused": "이 Idempotency-Key는 다른 작업에 이미 사용되었습니다",
         "idempotency_result_unavailable": (
-            "이 Idempotency-Key에는 재생할 결과가 없습니다. "
-            "새 키를 사용해 주세요"
+            "이 Idempotency-Key에는 재생할 결과가 없습니다. 새 키를 사용해 주세요"
         ),
         "invalid_external_reference": "외부 참조는 1~200자여야 합니다",
         "invalid_food_cursor": "맛집 목록의 페이지 커서 형식이 올바르지 않습니다",
@@ -576,14 +567,12 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "invalid_user": "이 계정은 현재 사용할 수 없습니다",
         "itinerary_candidate_invalid": "AI가 등록되지 않은 장소를 반환했습니다",
         "itinerary_candidates_changed": (
-            "일부 명소나 가게가 변경되었습니다. 다시 "
-            "미리보기를 실행해 주세요"
+            "일부 명소나 가게가 변경되었습니다. 다시 미리보기를 실행해 주세요"
         ),
         "itinerary_date_out_of_range": "식사 날짜가 여행 범위를 벗어납니다",
         "itinerary_exact_locations_required": "확인된 명소나 가게가 부족하여 일정은 그대로입니다",
         "itinerary_optimization_limit": (
-            "하루에 최적화할 수 있는 이동 가능 장소가 "
-            "너무 많습니다. 일부를 고정해 주세요"
+            "하루에 최적화할 수 있는 이동 가능 장소가 너무 많습니다. 일부를 고정해 주세요"
         ),
         "itinerary_optimization_unavailable": "비교할 동선 결과를 얻지 못했습니다",
         "itinerary_optimization_unchanged": "이미 권장 순서이므로 적용할 변경이 없습니다",
@@ -617,8 +606,7 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "route_items_insufficient": "위치가 있는 일정 항목이 두 개 이상 필요합니다",
         "route_items_invalid": "출발과 도착은 같은 날의 항목이어야 합니다",
         "route_items_limit": (
-            "한 번에 계산할 장소가 너무 많습니다. 하루 "
-            "또는 더 좁은 범위를 지정해 주세요"
+            "한 번에 계산할 장소가 너무 많습니다. 하루 또는 더 좁은 범위를 지정해 주세요"
         ),
         "route_items_not_adjacent": "경로는 같은 날 인접한 항목 사이에서만 계산할 수 있습니다",
         "route_location_unavailable": "경로를 찾기 전에 두 장소를 먼저 확정해 주세요",
@@ -636,14 +624,12 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "trip_item_not_found": "해당 항목을 찾을 수 없습니다",
         "trip_ledger_full": "이 여행의 지출 내역이 한도에 도달했습니다",
         "trip_ledger_not_empty": (
-            "지출 내역이 있으면 통화를 바꿀 수 없습니다. "
-            "먼저 내역을 비워 주세요"
+            "지출 내역이 있으면 통화를 바꿀 수 없습니다. 먼저 내역을 비워 주세요"
         ),
         "trip_place_not_found": "배치되지 않은 해당 장소를 찾을 수 없습니다",
         "trip_places_empty": "장소 또는 Google 지도 링크를 하나 이상 붙여넣어 주세요",
         "trip_places_too_many_lines": (
-            "한 번에 붙여넣은 장소가 너무 많습니다. "
-            "나누어 붙여넣어 주세요"
+            "한 번에 붙여넣은 장소가 너무 많습니다. 나누어 붙여넣어 주세요"
         ),
         "trip_planning_fields_missing": "여행에 목적지나 날짜가 없어 다시 계획할 수 없습니다",
         "trip_reoptimization_unavailable": "공급사에서 사용할 수 있는 조합을 받지 못했습니다",
@@ -655,17 +641,14 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "usage_operation_unknown": "알 수 없는 횟수 차감 작업입니다",
         "usage_package_not_found": "해당 횟수 팩을 찾을 수 없습니다",
         "weather_api_not_enabled": (
-            "Google Weather API가 비활성 상태이거나 "
-            "서버 API 키가 이를 허용하지 않습니다"
+            "Google Weather API가 비활성 상태이거나 서버 API 키가 이를 허용하지 않습니다"
         ),
         "weather_location_unavailable": (
-            "여행에 사용할 수 있는 좌표가 아직 없습니다. "
-            "장소를 하나 이상 확정해 주세요"
+            "여행에 사용할 수 있는 좌표가 아직 없습니다. 장소를 하나 이상 확정해 주세요"
         ),
         "weather_not_configured": "날씨 서비스가 설정되지 않았습니다",
         "weather_provider_rejected": (
-            "MET Norway가 요청을 거부했습니다. User-Agent "
-            "설정을 확인해 주세요"
+            "MET Norway가 요청을 거부했습니다. User-Agent 설정을 확인해 주세요"
         ),
         "weather_provider_unavailable": "Google Weather가 일시적으로 응답하지 않습니다",
         "weather_rate_limited": "Google Weather 조회 한도가 일시적으로 부족합니다",
@@ -677,7 +660,7 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "queue_unavailable": "백그라운드 대기열을 일시적으로 사용할 수 없습니다",
         "unsupported_destination": "목적지 연결에 지원하지 않는 항목이 포함되어 있습니다",
         "usage_account_missing": "이 계정에는 아직 사용 횟수 잔액이 없습니다",
-},
+    },
     "zh-TW": {
         "password_not_set": "這個帳號尚未設定密碼",
         "oauth_cancelled": "已取消登入",
@@ -711,7 +694,7 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "oauth_link_session_invalid": "账号关联会话已失效",
         "oauth_identity_not_found": "找不到这个登录方式",
         "oauth_last_method": "至少需要保留一种可用的登录方式",
-            # Added 2026-09-07: every public error code the API raises now says what
+        # Added 2026-09-07: every public error code the API raises now says what
         # went wrong. Before this a reader outside zh-TW got GENERIC_DETAILS —
         # one sentence for 124 different problems.
         "admin_required": "此功能仅限系统管理员使用",
@@ -848,7 +831,7 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "queue_unavailable": "后台队列暂时无法使用",
         "unsupported_destination": "目的地关联包含不支持的项目",
         "usage_account_missing": "此会员尚未建立次数账户",
-},
+    },
 }
 
 ERROR_DETAILS: dict[Locale, dict[str, str]] = {
@@ -1653,6 +1636,118 @@ _SITE_PAGE_ERRORS: dict[Locale, dict[str, str]] = {
 }
 for _site_page_locale, _site_page_errors in _SITE_PAGE_ERRORS.items():
     ERROR_DETAILS[_site_page_locale].update(_site_page_errors)
+
+
+_MAP_IDENTITY_ERRORS: dict[Locale, dict[str, str]] = {
+    "zh-TW": {
+        "catalog_place_not_found": "找不到這筆目錄地點",
+        "google_maps_usage_guard": "Google 地點配對已達用量保護門檻，請稍後再試",
+        "idempotency_key_conflict": "相同操作代碼不能用於不同地點",
+        "invalid_place_provider": "NAVER 地點搜尋只支援韓國地點",
+        "itinerary_item_not_found": "找不到這個行程項目",
+        "korean_place_required": "雙地圖配對目前只處理韓國地點",
+        "map_identity_batch_expired": "配對批次已過期，請建立新批次",
+        "map_identity_batch_in_progress": "配對批次正在建立，請稍候",
+        "map_identity_batch_not_found": "找不到這個配對批次",
+        "map_identity_changed": "地點或配對候選已更新，請重新取得候選並確認",
+        "map_identity_duplicate": "此 Google 地點已由其他目錄項目使用",
+        "map_identity_in_progress": "相同地圖身分正在確認，請稍候",
+        "map_identity_location_mismatch": "這個地圖地點與目前行程地點不符，請確認分店與地址",
+        "map_identity_queue_unavailable": "配對工作暫時無法排程，請稍後再試",
+        "map_identity_snapshot_expired": "地點比較已過期，請重新取得候選",
+        "map_identity_unavailable": "暫時無法確認這個地圖地點，請稍後再試",
+    },
+    "zh-CN": {
+        "catalog_place_not_found": "找不到这条目录地点",
+        "google_maps_usage_guard": "Google 地点匹配已达到用量保护阈值，请稍后重试",
+        "idempotency_key_conflict": "相同操作代码不能用于不同地点",
+        "invalid_place_provider": "NAVER 地点搜索仅支持韩国地点",
+        "itinerary_item_not_found": "找不到这个行程项目",
+        "korean_place_required": "双地图匹配目前仅处理韩国地点",
+        "map_identity_batch_expired": "匹配批次已过期，请创建新批次",
+        "map_identity_batch_in_progress": "正在创建匹配批次，请稍候",
+        "map_identity_batch_not_found": "找不到这个匹配批次",
+        "map_identity_changed": "地点或匹配候选已更新，请重新获取候选并确认",
+        "map_identity_duplicate": "此 Google 地点已由其他目录项目使用",
+        "map_identity_in_progress": "正在确认相同地图身份，请稍候",
+        "map_identity_location_mismatch": "这个地图地点与当前行程地点不符，请确认分店和地址",
+        "map_identity_queue_unavailable": "暂时无法安排匹配任务，请稍后重试",
+        "map_identity_snapshot_expired": "地点比较已过期，请重新获取候选",
+        "map_identity_unavailable": "暂时无法确认这个地图地点，请稍后重试",
+    },
+    "en": {
+        "catalog_place_not_found": "This catalog place could not be found",
+        "google_maps_usage_guard": "Google place matching reached its usage limit; try again later",
+        "idempotency_key_conflict": "The same operation key cannot be used for different places",
+        "invalid_place_provider": "NAVER place search only supports places in Korea",
+        "itinerary_item_not_found": "This itinerary item could not be found",
+        "korean_place_required": "Dual map matching currently supports Korean places only",
+        "map_identity_batch_expired": "This matching batch expired; create a new batch",
+        "map_identity_batch_in_progress": "This matching batch is being created; please wait",
+        "map_identity_batch_not_found": "This matching batch could not be found",
+        "map_identity_changed": (
+            "The place or candidate changed; reload the candidates and confirm again"
+        ),
+        "map_identity_duplicate": "Another catalog item already uses this Google place",
+        "map_identity_in_progress": "This map identity is being confirmed; please wait",
+        "map_identity_location_mismatch": (
+            "This map place differs from the itinerary stop; check the branch and address"
+        ),
+        "map_identity_queue_unavailable": "The matching job could not be queued; try again later",
+        "map_identity_snapshot_expired": "This place comparison expired; reload the candidates",
+        "map_identity_unavailable": "This map place could not be confirmed; try again later",
+    },
+    "ja": {
+        "catalog_place_not_found": "このカタログの場所が見つかりません",
+        "google_maps_usage_guard": (
+            "Google の場所照合が利用上限に達しました。後でもう一度お試しください"
+        ),
+        "idempotency_key_conflict": "同じ操作キーを異なる場所に使用できません",
+        "invalid_place_provider": "NAVER の場所検索は韓国内の場所のみ対応しています",
+        "itinerary_item_not_found": "この旅程項目が見つかりません",
+        "korean_place_required": "2つの地図の照合は現在、韓国の場所のみ対応しています",
+        "map_identity_batch_expired": "照合バッチの有効期限が切れました。新しく作成してください",
+        "map_identity_batch_in_progress": "照合バッチを作成しています。お待ちください",
+        "map_identity_batch_not_found": "この照合バッチが見つかりません",
+        "map_identity_changed": "場所または候補が更新されました。候補を再取得して確認してください",
+        "map_identity_duplicate": "この Google の場所は別のカタログ項目で使用されています",
+        "map_identity_in_progress": "この地図上の場所を確認しています。お待ちください",
+        "map_identity_location_mismatch": (
+            "地図上の場所が旅程の目的地と一致しません。支店と住所を確認してください"
+        ),
+        "map_identity_queue_unavailable": "照合処理を開始できません。後でもう一度お試しください",
+        "map_identity_snapshot_expired": (
+            "場所の比較の有効期限が切れました。候補を再取得してください"
+        ),
+        "map_identity_unavailable": "地図上の場所を確認できません。後でもう一度お試しください",
+    },
+    "ko": {
+        "catalog_place_not_found": "이 목록의 장소를 찾을 수 없습니다",
+        "google_maps_usage_guard": (
+            "Google 장소 대조 사용 한도에 도달했습니다. 나중에 다시 시도해 주세요"
+        ),
+        "idempotency_key_conflict": "같은 작업 키를 서로 다른 장소에 사용할 수 없습니다",
+        "invalid_place_provider": "NAVER 장소 검색은 한국 내 장소만 지원합니다",
+        "itinerary_item_not_found": "이 일정 항목을 찾을 수 없습니다",
+        "korean_place_required": "두 지도 간 장소 대조는 현재 한국 장소만 지원합니다",
+        "map_identity_batch_expired": "장소 대조 작업이 만료되었습니다. 새 작업을 만들어 주세요",
+        "map_identity_batch_in_progress": "장소 대조 작업을 만들고 있습니다. 잠시 기다려 주세요",
+        "map_identity_batch_not_found": "이 장소 대조 작업을 찾을 수 없습니다",
+        "map_identity_changed": "장소 또는 후보가 변경되었습니다. 후보를 다시 불러와 확인해 주세요",
+        "map_identity_duplicate": "다른 목록 항목에서 이미 이 Google 장소를 사용하고 있습니다",
+        "map_identity_in_progress": "이 지도 장소를 확인하고 있습니다. 잠시 기다려 주세요",
+        "map_identity_location_mismatch": (
+            "지도 장소가 일정의 장소와 다릅니다. 지점과 주소를 확인해 주세요"
+        ),
+        "map_identity_queue_unavailable": (
+            "장소 대조 작업을 시작할 수 없습니다. 나중에 다시 시도해 주세요"
+        ),
+        "map_identity_snapshot_expired": "장소 비교가 만료되었습니다. 후보를 다시 불러와 주세요",
+        "map_identity_unavailable": "이 지도 장소를 확인할 수 없습니다. 나중에 다시 시도해 주세요",
+    },
+}
+for _map_identity_locale, _map_identity_errors in _MAP_IDENTITY_ERRORS.items():
+    ERROR_DETAILS[_map_identity_locale].update(_map_identity_errors)
 
 
 def active_locale() -> Locale:

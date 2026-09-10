@@ -3,7 +3,7 @@ from __future__ import annotations
 import ipaddress
 import re
 from datetime import date, datetime
-from typing import Annotated, Literal, Self
+from typing import Annotated, Any, Literal, Self
 from urllib.parse import parse_qsl, urlsplit, urlunsplit
 from uuid import UUID
 
@@ -12,6 +12,7 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator, model_valida
 from app.affiliates.schemas import AffiliateChannel, AffiliateModule
 from app.destinations.catalog import DESTINATIONS
 from app.i18n import Locale
+from app.locations.map_identity import MapIdentity
 
 Kind = Literal["hotel", "transfer", "tour", "esim"]
 Status = Literal["pending", "approved", "disabled"]
@@ -286,6 +287,8 @@ class Facts(StrictModel):
     google_place_id: str | None = Field(None, pattern=r"^[A-Za-z0-9_-]{5,255}$")
     naver_map_url: str | None = None
     map_verified: bool = False
+    map_identities: dict[str, MapIdentity] = Field(default_factory=dict)
+    map_identity_review: dict[str, Any] = Field(default_factory=dict, exclude=True)
     facilities: list[Literal["wifi", "breakfast", "accessible", "family", "laundry"]] = Field(
         default_factory=list
     )

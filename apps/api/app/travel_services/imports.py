@@ -109,9 +109,19 @@ async def upsert_product(
     # Link edits have their own review lifecycle. Never persist the legacy JSON copy.
     core = data.model_dump(mode="json")
     core["facts"].pop("hotel_links", None)
+    # Supplemental identity decisions belong to the dedicated CAS review endpoint.
+    # Ordinary edits and CSV imports cannot supply or erase server-owned decisions.
+    for field in ("map_identities", "map_identity_review"):
+        core["facts"].pop(field, None)
+        if row and field in row.facts:
+            core["facts"][field] = row.facts[field]
     before = product_input(row).model_dump(mode="json") if row else None
     if before:
         before["facts"].pop("hotel_links", None)
+        for field in ("map_identities", "map_identity_review"):
+            before["facts"].pop(field, None)
+            if row and field in row.facts:
+                before["facts"][field] = row.facts[field]
     changed = not row or fingerprint(before) != fingerprint(core)
     if row is None:
         row = TravelServiceProduct(

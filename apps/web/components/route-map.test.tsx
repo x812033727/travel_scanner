@@ -75,6 +75,23 @@ afterEach(() => {
 });
 
 describe("RouteMap", () => {
+  it.each(["transit", "walk", "drive"] as const)("identifies the selected Korean %s map even when both browser keys are disabled", async (travelMode) => {
+    vi.stubGlobal("fetch", vi.fn(async () => ok({ google_maps_javascript_enabled: false, naver_dynamic_map_enabled: false })));
+    const { container } = render(<RouteMap items={items} fromItemId="from" toItemId="to" countryCode="KR" travelMode={travelMode} />);
+    expect(await screen.findByText("瀏覽器地圖服務尚未啟用")).toBeTruthy();
+    expect(screen.getByText(`站內地圖 · ${travelMode === "transit" ? "Google Maps" : "NAVER Maps"}`)).toBeTruthy();
+    expect(screen.queryByRole("img")).toBeNull();
+    expect(container.querySelector("iframe")).toBeNull();
+    expect(document.getElementById("google-route-maps-js")).toBeNull();
+    expect(screen.queryByTestId("next-script")).toBeNull();
+    if (travelMode === "walk") {
+      fireEvent.change(screen.getByRole("combobox", { name: "顯示地圖" }), { target: { value: "google_maps" } });
+      expect(screen.getByText("站內地圖 · Google Maps")).toBeTruthy();
+      expect(screen.getByText("瀏覽器地圖服務尚未啟用")).toBeTruthy();
+      expect(screen.queryByRole("img")).toBeNull();
+    }
+  });
+
   it("loads NAVER Dynamic Map for Korean trips in a fixed map frame", async () => {
     vi.stubGlobal("fetch", vi.fn(async () => ok({
       naver_maps_browser_client_id: "browser-client-id",
@@ -82,7 +99,7 @@ describe("RouteMap", () => {
       google_maps_embed_enabled: false,
     })));
     const { container } = render(
-      <RouteMap items={items} fromItemId="from" toItemId="to" countryCode="KR" />,
+      <RouteMap items={items} fromItemId="from" toItemId="to" countryCode="KR" travelMode="walk" />,
     );
 
     const script = await screen.findByTestId("next-script");
@@ -95,18 +112,20 @@ describe("RouteMap", () => {
     expect(container.querySelector("iframe")).toBeNull();
   });
 
-  it("does not load Google Maps for a Korean trip when NAVER Dynamic Map is unavailable", async () => {
+  it("keeps Korean driving on NAVER when that map is unavailable", async () => {
     vi.stubGlobal("fetch", vi.fn(async () => ok({
       google_maps_browser_key: "google-browser-key",
       google_maps_javascript_enabled: true,
       naver_dynamic_map_enabled: false,
     })));
-    const { container } = render(<RouteMap items={items} segment={segment} fromItemId="from" toItemId="to" countryCode="KR" />);
+    const { container } = render(<RouteMap items={items} segment={segment} fromItemId="from" toItemId="to" countryCode="KR" travelMode="drive" />);
 
     expect(await screen.findByText("瀏覽器地圖服務尚未啟用")).toBeTruthy();
     expect(screen.getByText("請在管理設定啟用 NAVER Dynamic Map。")).toBeTruthy();
     expect(container.querySelector("iframe")).toBeNull();
     expect(screen.queryByTestId("next-script")).toBeNull();
+    expect(document.getElementById("google-route-maps-js")).toBeNull();
+    expect(screen.queryByRole("combobox")).toBeNull();
   });
 
   it("loads a Google JavaScript basemap with endpoints before a provider route exists", async () => {
@@ -216,7 +235,7 @@ describe("RouteMap", () => {
       naver_maps_browser_client_id: "browser-client-id",
       naver_dynamic_map_enabled: true,
     })));
-    render(<RouteMap items={items} fromItemId="from" toItemId="to" countryCode="KR" />);
+    render(<RouteMap items={items} fromItemId="from" toItemId="to" countryCode="KR" travelMode="walk" />);
 
     expect((await screen.findByTestId("next-script")).getAttribute("data-src"))
       .toContain("oapi.map.naver.com");
@@ -273,6 +292,64 @@ describe("RouteMap", () => {
     fireEvent.click(screen.getByRole("img", { name: /Google Maps路線地圖/ }));
     lineClicks[5]();
     expect(onSelect).toHaveBeenCalledWith(2);
+  });
+
+  it("uses Google for Korean transit while clearly attributing the independent ODsay time", async () => {
+    vi.stubGlobal("fetch", vi.fn(async () => ok({ google_maps_browser_key: "google", google_maps_javascript_enabled: true, naver_maps_browser_client_id: "naver", naver_dynamic_map_enabled: true })));
+    render(<RouteMap items={items} segment={{ ...segment, provider: "odsay", attribution: "ODsay" }} countryCode="KR" />);
+    expect(await screen.findByRole("img", { name: /Google Maps路線地圖/ })).toBeTruthy();
+    expect(screen.getByText("交通時間來源：ODsay")).toBeTruthy();
+    expect(screen.getByText("示意連線，非實際路線")).toBeTruthy();
+    expect(screen.queryByTestId("next-script")).toBeNull();
+    expect(screen.queryByRole("combobox")).toBeNull();
+  });
+
+  it("switches walking maps without requests or paths, disposes old overlays, and keeps failures independent", async () => {
+    const destroyed = vi.fn();
+    const naverCleared = vi.fn();
+    const googleCleared = vi.fn();
+    const detached = vi.fn();
+    const naverLines: Array<Record<string, unknown>> = [];
+    const googleLines: Array<Record<string, unknown>> = [];
+    class NaverMap { fitBounds() {} destroy() { destroyed(); } }
+    class GoogleMap { fitBounds() {} }
+    class Bounds { extend() {} }
+    class Point {}
+    class Marker { setMap(value: unknown) { detached(value); } }
+    class NaverLine extends Marker { constructor(options: Record<string, unknown>) { super(); naverLines.push(options); } }
+    class GoogleLine extends Marker { constructor(options: Record<string, unknown>) { super(); googleLines.push(options); } addListener() {} }
+    window.naver = { maps: { Map: NaverMap, LatLng: Point, LatLngBounds: Bounds, Marker, Polyline: NaverLine, Event: { addListener() {}, clearInstanceListeners: naverCleared } } };
+    window.google = { maps: { Map: GoogleMap, LatLngBounds: Bounds, Marker, Polyline: GoogleLine, event: { clearInstanceListeners: googleCleared } } };
+    const fetchMock = vi.fn(async () => ok({ google_maps_browser_key: "google", google_maps_javascript_enabled: true, naver_maps_browser_client_id: "naver", naver_dynamic_map_enabled: true }));
+    vi.stubGlobal("fetch", fetchMock);
+    const props = { items, countryCode: "KR", segment: { ...segment, travel_mode: "walk" as const, encoded_polyline: "_p~iF~ps|U_ulLnnqC" } };
+    const { rerender, unmount } = render(<RouteMap {...props} />);
+    const select = screen.getByRole("combobox", { name: "顯示地圖" });
+    expect((select as HTMLSelectElement).value).toBe("naver_maps");
+    await waitFor(() => expect(naverLines).toHaveLength(1));
+    expect(naverLines[0].strokeStyle).toBe("shortdash");
+    fireEvent.change(select, { target: { value: "google_maps" } });
+    await waitFor(() => expect(googleLines).toHaveLength(1));
+    expect(googleLines[0].icons).toBeTruthy();
+    expect(destroyed).toHaveBeenCalledTimes(1);
+    expect(naverCleared).toHaveBeenCalledTimes(3);
+    expect(detached).toHaveBeenCalledWith(null);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    act(() => window.gm_authFailure?.());
+    expect(await screen.findByText("地圖載入失敗")).toBeTruthy();
+    fireEvent.change(select, { target: { value: "naver_maps" } });
+    expect(await screen.findByRole("img", { name: /NAVER Maps路線地圖/ })).toBeTruthy();
+    expect(screen.queryByText("地圖載入失敗")).toBeNull();
+    fireEvent.change(select, { target: { value: "google_maps" } });
+    expect(await screen.findByText("地圖載入失敗")).toBeTruthy();
+    rerender(<RouteMap {...props} travelMode="drive" />);
+    expect(screen.queryByRole("combobox")).toBeNull();
+    expect(await screen.findByRole("img", { name: /NAVER Maps路線地圖/ })).toBeTruthy();
+    // A legacy Google geometry must never be painted on the driving NAVER map.
+    expect(naverLines.every((line) => line.strokeStyle === "shortdash")).toBe(true);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    unmount();
+    expect(googleCleared).toHaveBeenCalled();
   });
 
   it("marks the selected missing path schematic even when another real option can be drawn", async () => {

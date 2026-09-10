@@ -1,7 +1,10 @@
 from __future__ import annotations
 
 from decimal import Decimal
+from typing import Any
 from urllib.parse import urlencode
+
+from app.locations.map_identity import verified_google_place_id
 
 # Naver URLs that identify exactly one place; shared with the SQL publication filter.
 EXACT_NAVER_PLACE_PREFIXES: tuple[str, ...] = (
@@ -35,6 +38,7 @@ def build_map_links(
     google_place_id: str | None = None,
     naver_map_url: str | None = None,
     map_match_status: str = "unverified",
+    map_identities: dict[str, Any] | None = None,
 ) -> list[dict[str, str | bool]]:
     """Build only reviewed provider links that identify one exact POI."""
 
@@ -44,7 +48,7 @@ def build_map_links(
     if country_code.upper() == "KR":
         if not is_exact_naver_map_url(naver_map_url):
             return []
-        return [
+        links: list[dict[str, str | bool]] = [
             {
                 "provider": "naver",
                 "label": "Naver Map",
@@ -52,6 +56,15 @@ def build_map_links(
                 "primary": True,
             }
         ]
+        if google_place_id and verified_google_place_id(map_identities, google_place_id):
+            query = " ".join(item for item in (local_name or name, city_name) if item)
+            params = {"api": "1", "query": query, "query_place_id": google_place_id}
+            links.append({
+                "provider": "google", "label": "Google Maps",
+                "url": f"https://www.google.com/maps/search/?{urlencode(params)}",
+                "primary": False,
+            })
+        return links
     if not google_place_id:
         return []
 

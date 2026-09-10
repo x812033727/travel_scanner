@@ -32,6 +32,7 @@ from app.localized_names import (
     sanitize_localized_names,
 )
 from app.locations.coordinates import has_durable_coordinates
+from app.locations.map_identity import catalog_map_identities
 from app.models import (
     FoodArea,
     FoodCategory,
@@ -616,6 +617,7 @@ async def _serialize_foods(
                 "destination_id": hotspot.destination_id,
                 "latitude": float(hotspot.latitude) if hotspot.latitude is not None else None,
                 "longitude": float(hotspot.longitude) if hotspot.longitude is not None else None,
+                "map_identities": catalog_map_identities(hotspot),
                 "map_links": build_map_links(
                     name=name,
                     local_name=local_name,
@@ -626,6 +628,7 @@ async def _serialize_foods(
                     google_place_id=hotspot.google_place_id,
                     naver_map_url=hotspot.naver_map_url,
                     map_match_status=hotspot.map_match_status,
+                    map_identities=catalog_map_identities(hotspot),
                 ),
             }
         )
@@ -734,6 +737,7 @@ async def _serialize_foods(
                     else None,
                 },
                 "official_website_url": merchant.official_website_url,
+                "map_identities": catalog_map_identities(merchant),
                 "map_links": build_map_links(
                     name=merchant.name,
                     local_name=merchant.local_name,
@@ -744,6 +748,7 @@ async def _serialize_foods(
                     google_place_id=merchant.google_place_id,
                     naver_map_url=merchant.naver_map_url,
                     map_match_status=merchant.map_match_status,
+                    map_identities=catalog_map_identities(merchant),
                 ),
                 "reservation_links": platform_links_by_merchant.get(merchant.id, []),
                 "verified_at": merchant.verified_at.isoformat()
@@ -957,6 +962,7 @@ async def foods_for_planner(
                 "latitude": merchant["latitude"] if merchant else None,
                 "longitude": merchant["longitude"] if merchant else None,
                 "map_links": merchant["map_links"] if merchant else [],
+                "map_identities": merchant["map_identities"] if merchant else {},
                 "merchant_status": "verified" if merchant else "merchant_pending",
             }
         )
@@ -1115,6 +1121,7 @@ async def _serialize_merchant_cards(
                     else None,
                 },
                 "official_website_url": merchant.official_website_url,
+                "map_identities": catalog_map_identities(merchant),
                 "map_links": build_map_links(
                     name=merchant.name,
                     local_name=merchant.local_name,
@@ -1125,6 +1132,7 @@ async def _serialize_merchant_cards(
                     google_place_id=merchant.google_place_id,
                     naver_map_url=merchant.naver_map_url,
                     map_match_status=merchant.map_match_status,
+                    map_identities=catalog_map_identities(merchant),
                 ),
                 "reservation_links": platform_links_by_merchant.get(merchant.id, []),
                 "verified_at": merchant.verified_at.isoformat()

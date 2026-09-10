@@ -20,6 +20,7 @@ from app.hotspots.maps import build_map_links
 from app.hotspots.service import load_hotspot_names
 from app.localized_names import item_names, resolve_localized_name
 from app.locations.coordinates import has_durable_coordinates
+from app.locations.map_identity import catalog_map_identities
 from app.models import (
     FoodFavorite,
     FoodMerchant,
@@ -188,6 +189,7 @@ async def catalog_option(
         else row.destination_id
     )
     links = build_map_links(
+        map_identities=catalog_map_identities(row),
         name=row.name,
         local_name=(
             str(row.metadata_json.get("local_name") or "")
@@ -232,6 +234,7 @@ async def catalog_option(
             "location_source": "hotspot_catalog" if hotspot else "food_merchant_catalog",
             "location_provider": provider,
             "provider_place_id": row.google_place_id if row.country_code != "KR" else None,
+            "map_identities": catalog_map_identities(row),
             "duration_minutes": duration,
             "fixed_time": False,
             "locked": False,
@@ -243,6 +246,7 @@ async def catalog_option(
                 "catalog_selection": {"kind": kind, "id": str(row.id)},
                 f"{kind}_id": str(row.id),
                 "map_links": links,
+                "map_identities": catalog_map_identities(row),
                 "naver_maps_url": row.naver_map_url if row.country_code == "KR" else None,
                 "place_provider": provider,
                 "needs_place_confirmation": False,

@@ -5,6 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useRouter } from "@/i18n/navigation";
 import { AdminReadOnlyNotice, useAdminActionGuard } from "@/components/admin-action-guard";
 import { AdminSettingsPanel } from "@/components/admin-settings-panel";
+import { AdminMapIdentitiesPanel } from "@/components/admin-map-identities-panel";
 import { useHeaderSession } from "@/components/header-session";
 import { adminHotelsCopy } from "@/lib/admin-hotels-copy";
 import { klookAffiliateCopy } from "@/lib/klook-affiliate-copy";
@@ -467,6 +468,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
   return (
     <div className="mt-7 min-w-0 space-y-5">
       <AdminReadOnlyNotice capability="content.manage" />
+      {isHotel && workspaceTab === "catalog" && <AdminMapIdentitiesPanel initialKind="hotel" canManage={manage.allowed} />}
       <div
         role="tablist"
         aria-label={isHotel ? copy.title : workspace === "partners" ? copy.partnersTitle : t("adminTitle")}

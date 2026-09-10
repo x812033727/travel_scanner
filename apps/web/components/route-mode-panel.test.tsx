@@ -50,6 +50,76 @@ function ok(payload: unknown) {
 afterEach(() => { vi.unstubAllGlobals(); vi.useRealTimers(); });
 
 describe("route mode panel", () => {
+  it("loads server navigation before querying and switches walking basemaps without requests or trip writes", async () => {
+    const navigations = [
+      { provider: "naver_maps", label: "NAVER Maps", travel_mode: "walk", web_url: "https://map.naver.com/p/directions/server-walk", app_url: "nmap://route/walk" },
+      { provider: "google_maps", label: "Google Maps", travel_mode: "walk", web_url: "https://www.google.com/maps/dir/?api=1&travelmode=walking", app_url: "https://www.google.com/maps/dir/?api=1&travelmode=walking" },
+    ];
+    const fetchMock = vi.fn(async (url: string) => {
+      if (url.endsWith("/runtime/public-config")) return ok({ google_maps_javascript_enabled: false });
+      if (url.includes("/routes/navigation?")) return ok({ external_navigations: navigations });
+      return ok({ kind: "external_only", preview_id: null, segment: null, external_navigations: navigations });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    const applied = vi.fn();
+    const { container } = render(<RouteModePanel trip={{ ...trip, destination_country_code: "KR" }} items={items} fromItemId="from" toItemId="to" initialTravelMode="walk" onApplied={applied} onError={vi.fn()} />);
+    const google = await screen.findByRole("link", { name: "用 Google Maps 導航" });
+    expect(google.getAttribute("href")).toContain("travelmode=walking");
+    expect(screen.getByRole("link", { name: "用 NAVER Maps 導航" }).getAttribute("href")).toContain("server-walk");
+    expect(fetchMock.mock.calls.filter(([url]) => url.includes("/routes/navigation?"))).toHaveLength(1);
+    const callsBeforeSwitch = fetchMock.mock.calls.length;
+    const selector = screen.getByRole("combobox", { name: "顯示地圖" });
+    fireEvent.change(selector, { target: { value: "google_maps" } });
+    expect(container.querySelector("[data-map-provider='google_maps']")).toBeTruthy();
+    fireEvent.change(selector, { target: { value: "naver_maps" } });
+    expect(fetchMock).toHaveBeenCalledTimes(callsBeforeSwitch);
+    expect(applied).not.toHaveBeenCalled();
+    fireEvent.click(screen.getByRole("button", { name: "查詢交通方案" }));
+    expect(await screen.findByRole("link", { name: "用 Google Maps 規劃" })).toBeTruthy();
+    expect(screen.getByRole("link", { name: "用 NAVER Maps 規劃" })).toBeTruthy();
+    expect((screen.getByRole("button", { name: "外部導航，無法套用" }) as HTMLButtonElement).disabled).toBe(true);
+    expect(container.querySelector(".route-apply-selection")?.textContent).not.toContain("分鐘");
+    fireEvent.change(selector, { target: { value: "google_maps" } });
+    expect(fetchMock.mock.calls.filter(([url]) => url.endsWith("/routes/preview"))).toHaveLength(1);
+    expect(fetchMock.mock.calls.filter(([url]) => url.endsWith("/routes/apply"))).toHaveLength(0);
+  });
+
+  it("keeps both navigation choices on an applicable Korean transit preview", async () => {
+    const navigations = [
+      { provider: "naver_maps" as const, label: "NAVER Maps", travel_mode: "transit" as const, web_url: "https://map.naver.com/p/directions/server", app_url: "nmap://route/public" },
+      { provider: "google_maps" as const, label: "Google Maps", travel_mode: "transit" as const, web_url: "https://www.google.com/maps/dir/?api=1", app_url: "https://www.google.com/maps/dir/?api=1" },
+    ];
+    vi.stubGlobal("fetch", vi.fn(async (url: string) => {
+      if (url.endsWith("/runtime/public-config")) return ok({ google_maps_javascript_enabled: false });
+      if (url.includes("/routes/navigation?")) return ok({ external_navigations: navigations });
+      return ok({ kind: "provider", preview_id: "odsay-preview", expires_at: "2100-01-01T00:00:00Z", segment: { ...initialSegment, provider: "odsay", attribution: "ODsay" }, schedule_impact: { affected_items: [], conflicts: [] }, external_navigations: navigations });
+    }));
+    render(<RouteModePanel trip={{ ...trip, destination_country_code: "KR" }} items={items} fromItemId="from" toItemId="to" onApplied={vi.fn()} onError={vi.fn()} />);
+    fireEvent.click(screen.getByRole("button", { name: "查詢交通方案" }));
+    expect(await screen.findByRole("button", { name: "套用此路線" })).toBeTruthy();
+    expect(screen.getByRole("link", { name: "用 NAVER Maps 導航" })).toBeTruthy();
+    expect(screen.getByRole("link", { name: "用 Google Maps 導航" })).toBeTruthy();
+    expect(screen.getByText("交通時間來源：ODsay")).toBeTruthy();
+  });
+
+  it("keeps server navigation available when a Korean transit query fails", async () => {
+    vi.stubGlobal("fetch", vi.fn(async (url: string) => {
+      if (url.endsWith("/runtime/public-config")) return ok({ google_maps_javascript_enabled: false });
+      if (url.includes("/routes/navigation?")) return ok({ external_navigations: [
+        { provider: "naver_maps", label: "NAVER Maps", travel_mode: "transit", web_url: "https://map.naver.com/p/directions/server", app_url: "nmap://route/public" },
+        { provider: "google_maps", label: "Google Maps", travel_mode: "transit", web_url: "https://www.google.com/maps/dir/?api=1", app_url: "https://www.google.com/maps/dir/?api=1" },
+      ] });
+      return new Response(JSON.stringify({ detail: "Routing unavailable" }), { status: 503 });
+    }));
+    render(<RouteModePanel trip={{ ...trip, destination_country_code: "KR" }} items={items} fromItemId="from" toItemId="to" onApplied={vi.fn()} onError={vi.fn()} />);
+    await screen.findByRole("link", { name: "用 Google Maps 導航" });
+    fireEvent.click(screen.getByRole("button", { name: "查詢交通方案" }));
+    await screen.findByRole("alert");
+    expect(screen.getByRole("link", { name: "用 Google Maps 導航" })).toBeTruthy();
+    expect(screen.getByRole("link", { name: "用 NAVER Maps 導航" })).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "套用此路線" })).toBeNull();
+  });
+
   it("uses one neutral idle instruction and a single query action without a repeated empty card", () => {
     vi.stubGlobal("fetch", vi.fn(async () => ok({ google_maps_javascript_enabled: false })));
     const { container } = render(<RouteModePanel trip={trip} items={items} fromItemId="from" toItemId="to" onApplied={vi.fn()} onError={vi.fn()} />);

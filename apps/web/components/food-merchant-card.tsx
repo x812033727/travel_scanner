@@ -3,7 +3,8 @@
 import { Award, CalendarCheck, ExternalLink, Globe, ListFilter, MapPin } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { TravelCardActions } from "@/components/travel-card-actions";
-import { primaryMapLink, type FoodMerchant } from "@/lib/foods";
+import { type FoodMerchant } from "@/lib/foods";
+import { availableMapLinks } from "@/lib/map-identities";
 import { safeExternalHref } from "@/lib/navigation";
 
 const distinctions = new Set([
@@ -29,8 +30,7 @@ export function FoodMerchantCard({
 }) {
   const t = useTranslations("foods");
   const locale = useLocale();
-  const map = primaryMapLink(merchant.map_links);
-  const mapHref = map ? safeExternalHref(map.url) : undefined;
+  const maps = availableMapLinks(merchant.map_links);
   // Keep cards usable while an older cached/BFF response without the additive
   // field is still in flight during a rolling deployment.
   const reservation = merchant.reservation_links?.[0];
@@ -135,19 +135,20 @@ export function FoodMerchantCard({
         </p>
       )}
       <div className="mt-4 grid gap-2">
-        {map && mapHref && (
+        {maps.map((map) => (
           <a
-            href={mapHref}
+            key={map.url}
+            href={safeExternalHref(map.url)}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={t("navigateTo", { name: merchant.name, provider: map.label })}
             className="flex min-h-11 items-center gap-2 rounded-2xl bg-[var(--paper)] px-3 py-2 text-sm font-semibold text-[var(--teal)] underline-offset-4 hover:underline"
           >
             <MapPin size={15} />
-            <span className="mr-auto">{t("navigate")}</span>
+            <span className="mr-auto">{map.label} · {t("navigate")}</span>
             <ExternalLink size={13} />
           </a>
-        )}
+        ))}
         {reservation && reservationHref && (
           <a
             href={reservationHref}
