@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**47 open · 2 in progress · 3 blocked · 0 in review · 237 done**
+**46 open · 2 in progress · 3 blocked · 1 in review · 237 done**
 
 ## Ready to claim
 
@@ -46,7 +46,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [推薦流的語言選擇與同地點去重](open/2026-09-11-discovery-feed-language-and-dedup.md) | api | `apps/api/app/discovery`<br>`apps/api/tests/test_discovery_flow.py` |
 | P2 | [取消或逾時搜尋時釋放已保留的次數](open/2026-09-11-release-reservation-on-cancel.md) | api | `apps/api/app/search/router.py`<br>`apps/api/app/usage/service.py` |
 | P2 | [Re-query the live Seoul Day 2 route after the #387 release](open/2026-09-11-seoul-day2-live-requery.md) | ops | `docs/seoul-day2-transport-ux.md` |
-| P2 | [Wire /guides into the sitemap, footer and destination pages](open/2026-09-11-guides-sitemap-and-entry-points.md) | web | `apps/web/app/sitemap.ts`<br>`apps/web/app/sitemap.test.ts`<br>`apps/web/components/site-footer.tsx`<br>`apps/web/components/site-footer.test.tsx`<br>`apps/web/components/destination-guide.tsx`<br>`apps/web/components/destination-guide.test.tsx`<br>`apps/web/lib/discovery-copy.ts` |
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | api | `apps/api/app/hotspots/areas.py`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [第二批購物店家：十五個沒有公開座標來源的候選](open/2026-09-06-shopping-seeds-second-batch.md) | api | `apps/api/app/hotspots/shopping_bootstrap.json`<br>`apps/api/app/hotspots/theme_bootstrap.json`<br>`apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_shopping_bootstrap.py` |
@@ -66,7 +65,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In review
 
-_Nothing here._
+| Task | Owner | Branch |
+| --- | --- | --- |
+| [Wire /guides into the sitemap, footer and destination pages](open/2026-09-11-guides-sitemap-and-entry-points.md) | claude-opus-5-guides | `claude/travel-info-guide-section-4ulqsj` |
 
 ## Waiting
 
