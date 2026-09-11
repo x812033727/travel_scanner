@@ -12,7 +12,7 @@ export function frontendActive(key: string, pathname: string) {
   if (key === "collections") return path.startsWith("/explore/collections") || path.startsWith("/community/collections");
   if (key === "trips") return path === "/trips" || path.startsWith("/trips/");
   if (key === "my") return ["/my", "/account", "/login", "/register", "/alerts", "/search", "/flights", "/labs", "/pricing", "/community"].some((prefix) => path === prefix || path.startsWith(prefix + "/")) && !path.startsWith("/community/collections");
-  return path === "/" || ["/explore", "/hotspots", "/foods", "/destinations"].some((prefix) => path === prefix || path.startsWith(prefix + "/")) && !path.startsWith("/explore/collections");
+  return path === "/" || ["/explore", "/hotspots", "/foods", "/destinations", "/guides"].some((prefix) => path === prefix || path.startsWith(prefix + "/")) && !path.startsWith("/explore/collections");
 }
 
 const en = {

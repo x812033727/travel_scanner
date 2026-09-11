@@ -141,8 +141,56 @@ RUN_INTEGRATION_TESTS=1 uv run pytest tests/test_guides.py tests/test_guides_mig
 The PostgreSQL leg and the migration test are what prove the append-only trigger; the
 `tests/test_guides.py` tables are built with `Base.metadata.create_all` and never see it.
 
+## The reader's side
+
+```
+/{locale}/guides                      hub: latest intel, featured guides, topic entries
+/{locale}/guides/{kind}               intel | howto, with ?topic= and ?destination= filters
+/{locale}/guides/{kind}/{slug}        the article
+/{locale}/admin/guides                the editor
+```
+
+`[kind]` is a dynamic segment holding exactly two literal values; anything else is a 404.
+It is dynamic on purpose: `app/[locale]/metadata.test.ts` requires a `metadata.json` title
+and description for every *static* public page, and one hub entry is the honest amount of
+per-page metadata for a section whose two halves differ only by kind.
+
+Filters are plain links resolved on the server, so a filtered view is shareable, works
+without JavaScript and is already in the HTML. Filtered views are `noindex`: they are the
+same collection reordered, and they should not compete with the section itself.
+
+`ContentBlocks` (`apps/web/components/content-blocks.tsx`) renders the body for the public
+page **and** the admin preview, and `lib/content-blocks.ts` holds the one link sanitizer
+that both guides and managed site documents use. That sharing is the point: a rule
+tightened for one surface cannot quietly miss the other.
+
+### Per-locale hreflang
+
+Publication is per locale, so the root layout's all-five alternate set would advertise
+translations that do not exist. The article page overrides `alternates.languages` with
+exactly the locales the API reports as published, and offers `x-default` only when English
+is among them. A locale that was never written renders a "not in your language" page,
+`noindex`, listing the languages that do exist.
+
+### Navigation
+
+`/guides` is in `primaryNavLinks` with **no feature flag**, and the header renders it
+outside the three mutually exclusive navigation modes. Adding it to `primaryNavLinks` alone
+would make it invisible whenever discovery or community mode is on — the defect
+`2026-09-11-no-sign-in-entry-in-discovery` records. `components/guides-navigation.test.tsx`
+holds that line. The phone header gets its own entry in the discovery branch, which returns
+before the menu sheet is rendered. The bottom tab bar is deliberately left at four tabs.
+
+### Caching
+
+The loaders are `cache: "no-store"` with a 3-second abort and React `cache()` for
+per-request dedupe. `docs/seo.md` asks moderated listings to stay uncached, and a
+five-minute window in which a withdrawn fare notice is still live is exactly what the
+publication gate exists to prevent.
+
 ## Not done here
 
-The public `/guides` pages, the admin editor, the navigation entries, the sitemap wiring in
-`apps/web/app/sitemap.ts`, the `Article` JSON-LD and the discovery relabel. Several of those
-files are held by in-review tasks; see `tasks/open/2026-09-11-travel-guides-api.md`.
+The sitemap wiring in `apps/web/app/sitemap.ts` (the API already serves
+`GET /guides/sitemap` for it) and the `攻略` relabel of discovery's external-article kind in
+`apps/web/lib/discovery-copy.ts`. Both files are held by other tasks; see
+`tasks/open/2026-09-11-travel-guides-web.md`.
