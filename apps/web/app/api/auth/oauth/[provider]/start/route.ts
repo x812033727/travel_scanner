@@ -8,6 +8,7 @@ import {
   encodeFlowCookie,
   flowCookieName,
   isOAuthProvider,
+  siteRedirectUrl,
 } from "../../_shared";
 
 export async function GET(
@@ -32,7 +33,7 @@ export async function GET(
       signal: AbortSignal.timeout(10_000),
     });
   } catch {
-    return NextResponse.redirect(new URL(`/${locale}/login?oauth_error=oauth_provider_unavailable`, request.url));
+    return NextResponse.redirect(siteRedirectUrl(`/${locale}/login?oauth_error=oauth_provider_unavailable`));
   }
   const payload = await upstream.json().catch(() => ({})) as {
     authorization_url?: string;
@@ -43,7 +44,7 @@ export async function GET(
   };
   if (!upstream.ok || !payload.authorization_url || !payload.flow_id || !payload.state) {
     const target = intent === "link" ? `/${locale}/account` : `/${locale}/login`;
-    const url = new URL(target, request.url);
+    const url = siteRedirectUrl(target);
     url.searchParams.set("oauth_error", payload.code || "oauth_provider_unavailable");
     return NextResponse.redirect(url);
   }

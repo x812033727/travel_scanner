@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**47 open · 2 in progress · 3 blocked · 0 in review · 236 done**
+**47 open · 3 in progress · 3 blocked · 0 in review · 236 done**
 
 ## Ready to claim
 
@@ -61,6 +61,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
+| [OAuth 回跳導向容器內部位址 0.0.0.0:3000，Google 登入最後必定落在錯誤頁](open/2026-09-11-oauth-redirect-internal-origin.md) | claude-opus-5 | 2026-09-11T16:27:35Z | `claude/google-oauth-setup-bd4f94` |
 | [全站沒有自訂的找不到頁面](open/2026-09-11-no-custom-not-found-page.md) | claude-opus-5 | 2026-09-11T13:17:20Z | `claude/mokaair-website-access-k7xiku` |
 | [登入頁的送出鈕在手機上要捲一下才看得到](open/2026-09-11-bottom-nav-covers-page-content.md) | claude-opus-5 | 2026-09-11T14:39:07Z | `claude/mokaair-website-access-k7xiku` |
 
