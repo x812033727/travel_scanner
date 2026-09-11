@@ -63,3 +63,6 @@ scope:
   - 沒有 verified 頁的店，另派一個代理用不同方法再找一次：地圖頁的訂位按鈕、店名變體、該國所有可能的平台。
   - 每一個 verified 頁都由兩個獨立代理複核，一個查分店身分、一個查訂位功能，兩者都駁不倒才保留。
   - 複核結果由 scratchpad 的 `apply_verdicts.py` 寫回各店的查核檔，再由 `build_reviews.py` 合成資料檔。
+- PR #408。CI 的 `api` 與 `full-stack-smoke` 會紅，原因與本 PR 無關：Docker Hub 已不開放匿名拉取，
+  `minio/minio:latest` 拉不下來（`docker: pull access denied`）。PR #407 正在把 MinIO 改從 quay.io 拉並釘版本。
+  等 #407 進 main，把 main 併進本分支重推一次，CI 就會綠。`containers` 這個 job 本來就是綠的。
