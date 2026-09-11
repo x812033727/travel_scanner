@@ -27,7 +27,10 @@ const EMPTY: InitialHotspots = { ranking: null, facets: null };
 async function fetchJson(url: string, locale: string): Promise<unknown | null> {
   try {
     const response = await fetch(url, {
+      // Rankings also contain live review decisions, themes and introductions. Daily score
+      // calculation is not permission to cache a subsequently withdrawn public record.
       cache: "no-store",
+      signal: AbortSignal.timeout(3000),
       headers: { Accept: "application/json", "X-Travel-Locale": locale },
     });
     if (!response.ok) return null;

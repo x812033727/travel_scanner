@@ -3,6 +3,8 @@ import { SiteHeader } from "@/components/site-header";
 import { SitePageContent } from "@/components/site-page-content";
 import { getSitePage, getSitePageCopy } from "@/lib/site-pages.server";
 import { requirementKeys, type SitePageSlug } from "@/lib/site-pages";
+import type { Locale } from "@/i18n/routing";
+import { localeUrl } from "@/lib/seo";
 
 export async function siteInformationMetadata(slug: SitePageSlug, locale: string): Promise<Metadata> {
   const [state, copy] = await Promise.all([getSitePage(slug, locale), getSitePageCopy(locale)]);
@@ -10,6 +12,10 @@ export async function siteInformationMetadata(slug: SitePageSlug, locale: string
     title: state.document?.title || copy[slug],
     description: state.document?.description || copy[state.status === "unavailable" ? "unavailable" : "unpublished"],
     robots: state.status === "published" ? undefined : { index: false },
+    // Each locale has an independent publication lifecycle. Replace the root's full
+    // alternate set rather than presenting other locales' drafts/empty states as translations.
+    // getSitePageCopy above validates the locale; no fallback language is selected here.
+    alternates: { canonical: localeUrl(locale as Locale, `/${slug}`) },
   };
 }
 

@@ -178,6 +178,7 @@ describe("trip editor", () => {
     let editor = await screen.findByRole("dialog", { name: "編輯安排" });
     expect((within(editor).getByLabelText("安排名稱") as HTMLInputElement).value).toBe("淺草散步");
     fireEvent.click(within(editor).getByRole("button", { name: "關閉" }));
+    await waitFor(() => expect(screen.queryByRole("dialog", { name: "編輯安排" })).toBeNull());
 
     fireEvent.click(summary);
     expect(menu.open).toBe(true);
@@ -186,6 +187,7 @@ describe("trip editor", () => {
     expect(document.activeElement).toBe(summary);
     editor = await openStopEditor("淺草散步");
     fireEvent.click(within(editor).getByRole("button", { name: "關閉" }));
+    await waitFor(() => expect(screen.queryByRole("dialog", { name: "編輯安排" })).toBeNull());
     fireEvent.click(summary);
     fireEvent.click(within(menu).getByRole("button", { name: "移動 淺草散步" }));
     expect(menu.open).toBe(false);

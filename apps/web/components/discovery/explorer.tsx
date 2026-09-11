@@ -19,14 +19,17 @@ import { DiscoveryPreferenceEditor } from "./preferences";
 import { TravelExplore } from "@/components/community/explore";
 import styles from "./discovery.module.css";
 
-export function DiscoveryHomeGate({ children }: { children: ReactNode }) {
+export function DiscoveryHomeGate({ children, initialEnabled }: { children: ReactNode; initialEnabled?: boolean }) {
   const { enabled, loading } = useDiscoveryStatus(); const router = useRouter();
   useEffect(() => {
     if (!enabled) return;
     const redirect = () => { if (window.location.hash === "#trip-search") router.replace("/search/new"); };
     redirect(); window.addEventListener("hashchange", redirect); return () => window.removeEventListener("hashchange", redirect);
   }, [enabled, router]);
-  return loading ? <main className={styles.page}><DiscoverySkeleton /></main> : enabled ? <DiscoveryExplorer home /> : children;
+  // Use the request's snapshot only until the shared client store resolves. Never remove
+  // this gate on the server: a failed status request must still recover after hydration.
+  if (loading) return initialEnabled === false ? children : <main className={styles.page}><DiscoverySkeleton /></main>;
+  return enabled ? <DiscoveryExplorer home /> : children;
 }
 export function DiscoveryExplorer({ home = false }: { home?: boolean }) {
   const t = useTranslations("community"); const { enabled, loading } = useDiscoveryStatus();

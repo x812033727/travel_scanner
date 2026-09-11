@@ -4,6 +4,8 @@ import type { Locale } from "@/i18n/routing";
 import { ExploreSwitch } from "@/components/explore-switch";
 import { HotspotExplorer } from "@/components/hotspot-explorer";
 import { SiteHeader } from "@/components/site-header";
+import { StructuredData } from "@/components/structured-data";
+import { breadcrumbs } from "@/lib/structured-data";
 import { getInitialHotspots } from "@/lib/hotspots.server";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }): Promise<Metadata> {
@@ -31,10 +33,14 @@ export default async function HotspotsPage({
     theme: first(query.theme).trim(),
     query: first(query.q).trim(),
   };
-  const initial = await getInitialHotspots(locale, filters);
+  const [initial, nav] = await Promise.all([
+    getInitialHotspots(locale, filters),
+    getTranslations({ locale, namespace: "navigation" }),
+  ]);
   return (
     <>
       <SiteHeader />
+      <StructuredData data={breadcrumbs(locale, [{ name: nav("home"), path: "/" }, { name: nav("hotspots"), path: "/hotspots" }])} />
       <ExploreSwitch />
       <HotspotExplorer initialRanking={initial.ranking} initialFacets={initial.facets} initialFilters={filters} />
     </>

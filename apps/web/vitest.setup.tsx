@@ -62,6 +62,8 @@ vi.mock("next-intl", () => ({
 
 vi.mock("next-intl/server", () => ({
   getTranslations: async (input: string | { namespace: string }) => translator(typeof input === "string" ? input : input.namespace),
+  // Async Server Components cannot call the useLocale hook, so they read the locale this way.
+  getLocale: async () => "zh-TW",
 }));
 
 vi.mock("@/i18n/navigation", () => ({

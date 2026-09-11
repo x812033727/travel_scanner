@@ -1,7 +1,8 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
+import { destinationsCopy } from "@/lib/destinations-copy";
 
 // The admin console is not a public page and has its own chrome. The planner runs as a
 // full-screen shell that already hides the bottom navigation, and a footer under it would
@@ -10,6 +11,9 @@ const HIDDEN_ON = ["/admin", "/trips/"];
 
 export function SiteFooter({ year }: { year: number }) {
   const t = useTranslations("navigation");
+  // Not a navigation.json key: those five files belong to two other tasks, and this label
+  // already exists in all five locales next to the destination pages it points at.
+  const destinations = destinationsCopy(useLocale()).breadcrumb;
   const pathname = usePathname();
   if (HIDDEN_ON.some((prefix) => pathname.startsWith(prefix))) return null;
 
@@ -30,6 +34,10 @@ export function SiteFooter({ year }: { year: number }) {
         <nav aria-label={t("footerSite")}>
           <h2 className="text-sm font-bold">{t("footerSite")}</h2>
           <ul className="mt-3 grid gap-2 text-sm">
+            {/* The only entry point to the 33 city guides that every public page carries. The
+                footer is a sibling of {children} in the layout, so unlike the home page rail it
+                is in the response body whatever the discovery switch says. */}
+            <li><Link className="text-[var(--muted)] underline-offset-4 hover:underline" href="/destinations">{destinations}</Link></li>
             <li><Link className="text-[var(--muted)] underline-offset-4 hover:underline" href="/about">{t("footerAbout")}</Link></li>
             <li><Link className="text-[var(--muted)] underline-offset-4 hover:underline" href="/contact">{t("footerContact")}</Link></li>
           </ul>

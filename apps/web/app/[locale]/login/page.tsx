@@ -11,7 +11,7 @@ import type { Locale } from "@/i18n/routing";
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata" });
-  return { title: t("loginTitle"), description: t("loginDescription") };
+  return { title: t("loginTitle"), description: t("loginDescription"), robots: { index: false, follow: true } };
 }
 
 

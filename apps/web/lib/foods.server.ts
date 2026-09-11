@@ -1,4 +1,5 @@
 import { cache } from "react";
+import { emptyFoodBrowserFilters, merchantsQuery, type FoodBrowserFilters } from "@/lib/foods";
 
 /**
  * The city chooser the food page used to fetch after hydration.
@@ -15,14 +16,16 @@ import { cache } from "react";
 export type InitialFoods = {
   cities: unknown | null;
   categories: unknown | null;
+  merchants: unknown | null;
 };
 
-const EMPTY: InitialFoods = { cities: null, categories: null };
-
+// These lists include current publication decisions and counts. Request memoization saves
+// duplicate reads without continuing to expose a merchant or category after moderation.
 async function fetchJson(url: string, locale: string): Promise<unknown | null> {
   try {
     const response = await fetch(url, {
       cache: "no-store",
+      signal: AbortSignal.timeout(3000),
       headers: { Accept: "application/json", "X-Travel-Locale": locale },
     });
     if (!response.ok) return null;
@@ -34,14 +37,17 @@ async function fetchJson(url: string, locale: string): Promise<unknown | null> {
   }
 }
 
-export async function loadInitialFoods(locale: string): Promise<InitialFoods> {
+export async function loadInitialFoods(
+  locale: string,
+  filters: FoodBrowserFilters = emptyFoodBrowserFilters,
+): Promise<InitialFoods> {
   const apiBase = (process.env.API_INTERNAL_URL || "http://localhost:8000").replace(/\/$/, "");
-  const [cities, categories] = await Promise.all([
+  const [cities, categories, merchants] = await Promise.all([
     fetchJson(`${apiBase}/api/v1/foods/cities`, locale),
     fetchJson(`${apiBase}/api/v1/foods/categories`, locale),
+    fetchJson(`${apiBase}/api/v1/foods/merchants?${merchantsQuery(filters)}`, locale),
   ]);
-  if (!cities) return EMPTY;
-  return { cities, categories };
+  return { cities, categories, merchants };
 }
 
 export const getInitialFoods = cache(loadInitialFoods);
