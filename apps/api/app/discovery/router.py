@@ -15,7 +15,7 @@ from app.discovery.models import DiscoveryDismissal
 from app.discovery.policy import destination_id, parse_key, require_enabled
 from app.discovery.preferences import get_preferences, locked_user, update_preferences
 from app.discovery.schemas import CATEGORY_KINDS, Category, DismissInput, Kind, PreferenceInput
-from app.discovery.service import page, resolve_discovery_items
+from app.discovery.service import apply_saved_counts, page, resolve_discovery_items
 from app.i18n import Locale, current_locale
 from app.problems import AppError
 
@@ -46,7 +46,7 @@ async def search(
     session: Session,
     viewer: OptionalCurrentUser,
     display_locale: DisplayLocale,
-    mode: Literal["recommended", "latest", "following"] = "latest",
+    mode: Literal["recommended", "latest", "following", "most_saved"] = "latest",
     q: TextQuery = "",
     type: Kind | Literal["all"] = "all",
     category: Category = "all",
@@ -101,7 +101,7 @@ async def feed(
     session: Session,
     viewer: OptionalCurrentUser,
     display_locale: DisplayLocale,
-    mode: Literal["recommended", "latest", "following"] = "recommended",
+    mode: Literal["recommended", "latest", "following", "most_saved"] = "recommended",
     q: TextQuery = "",
     type: Kind | Literal["all"] = "all",
     category: Category = "all",
@@ -199,6 +199,7 @@ async def content(
     items = await resolve_discovery_items(session, [f"{key_kind}:{identifier}"], viewer, locale)
     if not items or items[0].kind != kind:
         raise AppError(404, "community_not_found", "找不到這筆公開內容")
+    await apply_saved_counts(session, items[:1])
     from app.discovery.details import enrich_detail
 
     return await enrich_detail(session, items[0], locale)

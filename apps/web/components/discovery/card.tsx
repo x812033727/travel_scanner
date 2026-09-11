@@ -2,7 +2,7 @@
 import { useState, type MouseEvent, type ReactNode } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
-import { MapPin, ArrowUpRight } from "lucide-react";
+import { MapPin, ArrowUpRight, Bookmark } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useCommunity } from "@/components/community/provider";
 import { ItineraryPreview } from "@/components/community/post";
@@ -24,6 +24,13 @@ export function discoveryDetailHref(item: Pick<DiscoveryItem, "kind" | "id">, re
   const url = new URL(safeNextPath(returnTo, "/explore"), "https://local.invalid");
   url.searchParams.set("content", `${item.kind}:${item.id.split(":").at(-1)}`);
   return `${url.pathname}${url.search}${url.hash}`;
+}
+function SavedCount({ item }: { item: Pick<DiscoveryItem, "saved_count"> }) {
+  // Catalogued in messages/, not lib/discovery-copy.ts: check-i18n rejects new display
+  // text there. The community `saves` message already reads a count in all five locales.
+  const t = useTranslations("community");
+  const count = item.saved_count ?? 0;
+  return count > 0 ? <span className={styles.savedCount}><Bookmark size={13} aria-hidden />{t("saves", { count })}</span> : null;
 }
 export function DiscoveryCard({ item, onDismiss }: { item: DiscoveryItem; onDismiss?: (item: DiscoveryItem) => void }) {
   const locale = useLocale(); const c = getDiscoveryCopy(locale);
@@ -50,7 +57,7 @@ export function DiscoveryCard({ item, onDismiss }: { item: DiscoveryItem; onDism
       {item.summary?.trim() && <p className={styles.cardSummary}>{item.summary}</p>}
       <p className={styles.cardMeta}>{c.sourceKinds[item.source.kind]} · {item.author?.display_name || item.source.label}{item.published_at && <> · <time dateTime={item.published_at}>{new Date(item.published_at).toLocaleDateString(locale)}</time></>}</p>
       {item.recommendation_reason && <p className={styles.reason}><span className="sr-only">{c.reason}: </span>{getRecommendationReason(locale, item.recommendation_reason)}</p>}
-      <div className={styles.cardFooter}><SavedContentAction item={item} returnTo={returnTo} compact resumeEnabled={!params.has("content")} /><TravelPlanAction item={item} returnTo={returnTo} compact resumeEnabled={!params.has("content")} /></div>
+      <div className={styles.cardFooter}><SavedContentAction item={item} returnTo={returnTo} compact resumeEnabled={!params.has("content")} /><TravelPlanAction item={item} returnTo={returnTo} compact resumeEnabled={!params.has("content")} /><SavedCount item={item} /></div>
       {onDismiss && <button type="button" onClick={() => onDismiss(item)} className="min-h-11 self-start rounded-lg text-xs text-[var(--muted)] underline underline-offset-4 focus-visible:outline focus-visible:outline-2">{c.dismiss}</button>}
     </div>
   </article>;
@@ -119,7 +126,7 @@ export function DiscoveryDetails({ kind, id, returnTo = "/explore" }: { kind: st
         {source && <ExternalLink href={source}>{c.source}</ExternalLink>}
         {item.href && !item.href.includes("/explore?content=") && <Link href={safeNextPath(item.href, "/explore").replace(/^\/(?:zh-TW|zh-CN|en|ja|ko)(?=\/)/, "")} className="flex min-h-11 items-center text-[var(--teal)] underline">{c.details}</Link>}
       </section>
-    </div><footer className={styles.detailFooter}><SavedContentAction item={item} returnTo={returnTo} /><TravelPlanAction item={item} returnTo={returnTo} /></footer></>;
+    </div><footer className={styles.detailFooter}><SavedContentAction item={item} returnTo={returnTo} /><TravelPlanAction item={item} returnTo={returnTo} /><SavedCount item={item} /></footer></>;
 }
 function HotelDetails({ product }: { product: Product }) {
   const t = useTranslations("travelServices"); const [open, setOpen] = useState(false);

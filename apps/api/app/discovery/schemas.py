@@ -56,6 +56,7 @@ class DiscoveryItem(BaseModel):
     updated_at: str | None = None
     thumbnail_url: str | None = None
     collection_ref: dict[str, str]
+    saved_count: int = 0
     topics: list[str] = Field(default_factory=list)
     display_topics: list[DiscoveryDisplayTopic] = Field(default_factory=list)
     place_ref: dict[str, str] | None = None

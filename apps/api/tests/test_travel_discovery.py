@@ -12,7 +12,15 @@ from sqlalchemy import event, select, update
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
 from app.auth.service import current_user, optional_current_user
-from app.community.models import Media, Post, PostRevision, Profile, Relationship
+from app.community.models import (
+    Collection,
+    CollectionItem,
+    Media,
+    Post,
+    PostRevision,
+    Profile,
+    Relationship,
+)
 from app.config import Settings
 from app.db import Base, get_session
 from app.discovery.models import DiscoveryDismissal, DiscoveryPreference
@@ -671,3 +679,92 @@ async def test_search_metrics_keep_only_coarse_result_facts(harness, monkeypatch
     ]
     assert record.call_args_list[0].kwargs["properties"] == {"kind": "hotspot", "result_count": 0}
     assert "private search phrase" not in str(record.call_args_list)
+
+
+@pytest.mark.asyncio
+async def test_saved_count_is_public_and_orders_its_own_mode(harness):
+    client, factory, ids, _, _ = harness
+    newest, middle, oldest = await seed_hotspots(factory, 3)
+    async with factory() as session:
+        third = User(id=uuid4(), email=f"{uuid4()}@example.com")
+        session.add(third)
+        session.add_all(
+            [
+                HotspotFavorite(user_id=ids[0], hotspot_id=oldest),
+                HotspotFavorite(user_id=ids[1], hotspot_id=oldest),
+                HotspotFavorite(user_id=ids[0], hotspot_id=middle),
+            ]
+        )
+        await session.flush()
+        # The same account organizing its own save must not count twice.
+        named = Collection(user_id=ids[0], name="Kyoto shortlist")
+        session.add(named)
+        await session.flush()
+        session.add(CollectionItem(collection_id=named.id, kind="hotspot", target=str(middle)))
+        await session.commit()
+
+    latest = await client.get("/api/v1/discovery/feed", params={"mode": "latest"})
+    assert latest.status_code == 200, latest.text
+    assert [item["id"] for item in latest.json()["items"]] == [
+        f"hotspot:{value}" for value in (newest, middle, oldest)
+    ]
+    # Anonymous readers see the count in every mode, not only on the ranking tab.
+    assert [item["saved_count"] for item in latest.json()["items"]] == [0, 1, 2]
+
+    ranked = await client.get("/api/v1/discovery/feed", params={"mode": "most_saved"})
+    assert ranked.status_code == 200, ranked.text
+    assert [item["id"] for item in ranked.json()["items"]] == [
+        f"hotspot:{value}" for value in (oldest, middle, newest)
+    ]
+    assert [item["saved_count"] for item in ranked.json()["items"]] == [2, 1, 0]
+    assert [item["recommendation_reason"] for item in ranked.json()["items"]] == [None] * 3
+
+    detail = await client.get(f"/api/v1/discovery/content/hotspot/{oldest}")
+    assert detail.status_code == 200, detail.text
+    assert detail.json()["saved_count"] == 2
+    assert (
+        await client.get("/api/v1/discovery/search", params={"mode": "most_saved", "q": "Temple"})
+    ).status_code == 200
+
+
+@pytest.mark.asyncio
+async def test_saved_count_reads_guides_that_only_exist_in_a_collection(harness):
+    client, factory, ids, _, _ = harness
+    async with factory() as session:
+        place = hotspot("Guided temple", map_match_status="verified")
+        session.add(place)
+        await session.flush()
+        guide = HotspotGuide(
+            hotspot_id=place.id,
+            content_type="article",
+            provider="editorial",
+            locale="en",
+            title="Walking the temple district",
+            creator_name="Fixture publisher",
+            canonical_url="https://example.org/walk",
+            review_status="approved",
+            last_verified_at=datetime.now(UTC),
+            metadata_json={},
+        )
+        session.add(guide)
+        inbox = Collection(user_id=ids[0], name="Saved references", system_role="inbox")
+        other = Collection(user_id=ids[1], name="Reading list")
+        session.add_all([inbox, other])
+        await session.flush()
+        # Guides have no typed favorite table, so the collection rows are the only source.
+        # The dashed and bare spellings both normalize to one reference.
+        session.add_all(
+            [
+                CollectionItem(collection_id=inbox.id, kind="guide", target=str(guide.id)),
+                CollectionItem(collection_id=other.id, kind="article", target=guide.id.hex),
+            ]
+        )
+        await session.commit()
+
+    result = await client.get(
+        "/api/v1/discovery/feed", params={"mode": "most_saved", "type": "article"}
+    )
+    assert result.status_code == 200, result.text
+    items = result.json()["items"]
+    assert [item["id"] for item in items] == [f"guide:{guide.id}"]
+    assert items[0]["saved_count"] == 2

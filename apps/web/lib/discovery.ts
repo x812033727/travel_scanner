@@ -17,6 +17,7 @@ export type DiscoveryItem = {
   destination: { id: string; name: string; country_code?: string } | null;
   source: { label: string; url: string | null; kind: "editorial" | "official" | "community" };
   published_at: string | null; updated_at: string | null; thumbnail_url: string | null;
+  saved_count?: number;
   topics?: string[];
   display_topics?: DiscoveryDisplayTopic[];
   author?: { display_name: string; handle?: string } | null;

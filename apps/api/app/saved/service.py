@@ -221,6 +221,133 @@ async def states(session: AsyncSession, user: User, keys: list[str]) -> dict[str
     }
 
 
+# Discovery displays a public count for these kinds only; "restaurant" is not one of them.
+COUNTED_KINDS = {"hotspot", "food", "merchant", "service", "guide", "post"}
+COUNT_BATCH = 200
+
+
+def stored_kinds(kind: str) -> set[str]:
+    """Every ``CollectionItem.kind`` that ``canonical`` folds into ``kind``."""
+    return {kind} | {alias for alias, name in ALIASES.items() if name == kind}
+
+
+def stored_targets(kind: str, target: str) -> set[str]:
+    """Every spelling of ``target`` a collection row may hold.
+
+    ``collection_columns`` normalises on read because older rows were written before
+    ``public_id`` was applied. Matching those spellings on the raw column instead keeps
+    the (kind, target) index usable; everything this codebase writes is the dashed
+    lowercase form, and the hex and upper-case variants cover the legacy writers.
+    """
+    if kind not in UUID_KINDS:
+        return {target}
+    try:
+        value = UUID(target)
+    except ValueError:
+        return {target, target.lower(), target.upper()}
+    return {value.hex, value.hex.upper(), str(value), str(value).upper()}
+
+
+async def collect_savers(
+    session: AsyncSession,
+    pairs: list[tuple[str, str]],
+    savers: dict[tuple[str, str], set[UUID]],
+) -> None:
+    """Add the accounts that saved each pair, from all three places a save can land."""
+    by_kind: dict[str, list[str]] = {}
+    for kind, target in pairs:
+        by_kind.setdefault(kind, []).append(target)
+    for kind, targets in by_kind.items():
+        model_column = FAVORITES.get(kind)
+        if model_column is None:
+            continue
+        model, column = model_column
+        identifiers: dict[UUID, tuple[str, str]] = {}
+        for target in targets:
+            try:
+                identifiers[UUID(target)] = (kind, target)
+            except ValueError:
+                continue
+        if not identifiers:
+            continue
+        rows = (
+            await session.execute(
+                select(model.user_id, column).where(column.in_(list(identifiers)))
+            )
+        ).all()
+        for user_id, identifier in rows:
+            pair = identifiers.get(identifier)
+            if pair is not None:
+                savers.setdefault(pair, set()).add(user_id)
+    posts: dict[UUID, tuple[str, str]] = {}
+    for target in by_kind.get("post", []):
+        try:
+            posts[UUID(target)] = ("post", target)
+        except ValueError:
+            continue
+    if posts:
+        rows = (
+            await session.execute(
+                select(Reaction.user_id, Reaction.post_id).where(
+                    Reaction.kind == "save", Reaction.post_id.in_(list(posts))
+                )
+            )
+        ).all()
+        for user_id, post_id in rows:
+            pair = posts.get(post_id)
+            if pair is not None:
+                savers.setdefault(pair, set()).add(user_id)
+    kinds: set[str] = set()
+    targets_wanted: set[str] = set()
+    for kind, target in pairs:
+        kinds |= stored_kinds(kind)
+        targets_wanted |= stored_targets(kind, target)
+    if not targets_wanted:
+        return
+    wanted = set(pairs)
+    rows = (
+        await session.execute(
+            select(Collection.user_id, CollectionItem.kind, CollectionItem.target)
+            .join(Collection, Collection.id == CollectionItem.collection_id)
+            .where(
+                CollectionItem.kind.in_(sorted(kinds)),
+                CollectionItem.target.in_(sorted(targets_wanted)),
+            )
+        )
+    ).all()
+    for user_id, kind, target in rows:
+        try:
+            pair = canonical(kind, target)
+        except AppError:
+            continue
+        if pair in wanted:
+            savers.setdefault(pair, set()).add(user_id)
+
+
+async def saved_counts(session: AsyncSession, keys: list[str]) -> dict[str, int]:
+    """How many distinct accounts saved each reference, keyed by the caller's own strings.
+
+    All three storage sites are read because ``ensure_base`` writes to exactly one of
+    them per kind: typed favorites for places and products, ``Reaction`` for posts, and
+    the collection inbox for guides, which have no typed table. Organizing a reference
+    into a named list adds a second row for the same account, so the accounts are folded
+    into a set rather than counted, matching ``COUNT(DISTINCT user_id)``.
+    """
+    wanted: dict[tuple[str, str], list[str]] = {}
+    for key in keys:
+        try:
+            pair = parse_key(key)
+        except AppError:
+            continue
+        if pair[0] in COUNTED_KINDS:
+            wanted.setdefault(pair, []).append(key)
+    savers: dict[tuple[str, str], set[UUID]] = {}
+    pairs = list(wanted)
+    for start in range(0, len(pairs), COUNT_BATCH):
+        await collect_savers(session, pairs[start : start + COUNT_BATCH], savers)
+    return {key: len(savers.get(pair, set())) for pair, group in wanted.items() for key in group}
+
+
 async def insert_unique_reference(
     session: AsyncSession, model: Any, values: dict[str, Any], columns: list[str]
 ) -> bool:
