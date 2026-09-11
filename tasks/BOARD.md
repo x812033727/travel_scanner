@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**46 open · 2 in progress · 3 blocked · 1 in review · 239 done**
+**46 open · 3 in progress · 3 blocked · 1 in review · 239 done**
 
 ## Ready to claim
 
@@ -61,6 +61,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
 | [全站沒有自訂的找不到頁面](open/2026-09-11-no-custom-not-found-page.md) | claude-opus-5 | 2026-09-11T13:17:20Z | `claude/mokaair-website-access-k7xiku` |
+| [從程式碼盤點個資處理，供擁有者填寫隱私權頁的確認資訊](open/2026-09-11-privacy-data-map.md) | claude-opus-5-guides | 2026-09-11T23:32:27Z | `claude/privacy-data-map` |
 | [登入頁的送出鈕在手機上要捲一下才看得到](open/2026-09-11-bottom-nav-covers-page-content.md) | claude-opus-5 | 2026-09-11T14:39:07Z | `claude/mokaair-website-access-k7xiku` |
 
 ## In review
