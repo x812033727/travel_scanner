@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**48 open · 1 in progress · 3 blocked · 21 in review · 203 done**
+**48 open · 2 in progress · 3 blocked · 21 in review · 203 done**
 
 ## Ready to claim
 
@@ -48,6 +48,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
 | [Configurable catalog review run call limit](open/2026-09-09-configurable-catalog-review-run-call-limit.md) | codex-catalog-call-limit | 2026-09-09T15:54:14Z | `codex/catalog-review-call-limit` |
+| [Travel guides content API and schema](open/2026-09-11-travel-guides-api.md) | claude-opus-5-guides | 2026-09-11T12:59:36Z | `claude/travel-info-guide-section-4ulqsj` |
 
 ## In review
 
