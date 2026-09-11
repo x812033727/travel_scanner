@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**47 open · 1 in progress · 3 blocked · 22 in review · 202 done**
+**48 open · 1 in progress · 3 blocked · 21 in review · 203 done**
 
 ## Ready to claim
 
@@ -34,6 +34,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [Verify the two reported hotels exact Booking links](open/2026-09-09-verify-reported-hotels-booking-links.md) | ops | `docs/reported-hotels-booking-review.md` |
 | P2 | [Normalize locale-prefixed login return paths](open/2026-09-10-locale-login-return-path.md) | web | `apps/web/components/auth-form.tsx`<br>`apps/web/components/auth-form.test.tsx` |
 | P2 | [表單驗證與低於四十四像素的觸控目標](open/2026-09-11-form-validation-and-touch-targets.md) | web | `apps/web/components/community/shell.tsx`<br>`apps/web/components/airline-fare-lab.tsx`<br>`apps/web/components/flight-status-search.tsx`<br>`apps/web/components/date-range-picker.tsx`<br>`apps/web/components/admin-restaurant-sources-panel.tsx`<br>`apps/web/components/admin-usage-settings-panel.tsx`<br>`apps/web/components/admin-analytics-panel.tsx` |
+| P2 | [規劃彈層的關閉鈕在重開後會靜默失效](open/2026-09-11-planner-overlay-close-guard-race.md) | web | `apps/web/components/planner-overlay.tsx`<br>`apps/web/lib/modal-sheet.ts`<br>`apps/web/components/planner-overlay.test.tsx` |
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | api | `apps/api/app/hotspots/areas.py`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [第二批購物店家：十五個沒有公開座標來源的候選](open/2026-09-06-shopping-seeds-second-batch.md) | api | `apps/api/app/hotspots/shopping_bootstrap.json`<br>`apps/api/app/hotspots/theme_bootstrap.json`<br>`apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_shopping_bootstrap.py` |
@@ -74,7 +75,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | [Compact discovery cards and source-linked details](open/2026-09-09-discovery-card-details.md) | codex-discovery-card-details | `codex/discovery-card-details-20260909` |
 | [公開資料改用 revalidate 快取，並把 /foods 店家列表放進 SSR](open/2026-09-10-seo-public-data-caching.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
 | [SEO 稽核補漏：404 metadata、sitemap lastmod 與文件準確性](open/2026-09-10-seo-audit-followups.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
-| [探索卡顯示累積蒐藏數與蒐藏數排行分頁](open/2026-09-11-discovery-saved-count-ranking.md) | claude-opus-5 | `claude/planning-card-collection-count-pdbiwg` |
 
 ## Waiting
 
@@ -104,6 +104,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## Recently finished
 
+- 2026-09-11 [探索卡顯示累積蒐藏數與蒐藏數排行分頁](done/2026-09-11-discovery-saved-count-ranking.md)
 - 2026-09-11 [Simplify hotel booking platform and source copy](done/2026-09-10-simplify-hotel-booking-copy.md)
 - 2026-09-11 [Verify simplified hotel booking copy without changing affiliate flow](done/2026-09-10-verify-hotel-booking-copy.md)
 - 2026-09-10 [Korea dual map identities and transport navigation](done/2026-09-10-korea-dual-maps.md)
@@ -113,4 +114,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-10 [Route apply state regression and semantic itinerary tones](done/2026-09-09-planner-route-tones.md)
 - 2026-09-10 [Preserve no-referrer on external clickout responses](done/2026-09-09-preserve-clickout-referrer-policy.md)
 - 2026-09-09 [Fix first hotel clickout and affiliate availability feedback](done/2026-09-09-fix-first-hotel-clickout-and-affiliate.md)
-- 2026-09-09 [Stay22 exact hotel affiliate clickouts](done/2026-09-09-stay22-hotel-clickout.md)
