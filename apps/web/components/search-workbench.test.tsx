@@ -20,6 +20,32 @@ describe("SearchWorkbench", () => {
     fireEvent.click(screen.getByRole("button", {name:"尋找旅行方案"}));
     await waitFor(() => expect(vi.mocked(fetch).mock.calls.filter(([, init]) => init?.method === "POST")).toHaveLength(1));
   });
+  it("survives a response with no recommendations key and offers the city candidates instead", async () => {
+    // The API branch taken when dates, trip length and countries are all left open
+    // answers with city candidates. Reading `.length` off a missing key used to throw
+    // and discard every answer in the five-step form.
+    vi.stubGlobal("fetch", vi.fn(async (input: RequestInfo | URL) => new Response(JSON.stringify(
+      String(input).endsWith("/destinations") ? { items: [] } : {
+        origin: "TPE",
+        region: "JP",
+        source: "curated_estimate",
+        candidates: [{
+          city: "福岡", airport: "FUK", country: "日本", areas: ["博多", "天神"],
+          estimated_flight_twd: 9800, within_budget_estimate: true, reason: "航班多、機票便宜",
+        }],
+        next_step: "選定城市後再執行即時機票、住宿、活動與接送搜尋",
+      },
+    ), { status: 200, headers: { "content-type": "application/json" } })));
+
+    render(<SearchWorkbench compact />);
+    await waitFor(() => expect(fetch).toHaveBeenCalled());
+    fireEvent.click(screen.getByRole("button", { name: "尋找旅行方案" }));
+
+    expect(await screen.findByText("先看看這些城市")).toBeTruthy();
+    expect(screen.getByText("日本・福岡")).toBeTruthy();
+    expect(screen.getByRole("button", { name: "選這個城市" })).toBeTruthy();
+  });
+
   beforeEach(() => {
     push.mockReset();
     vi.stubGlobal("fetch", vi.fn(async (input: RequestInfo | URL) => new Response(JSON.stringify(String(input).endsWith("/destinations") ? { items: [] } : {

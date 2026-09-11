@@ -1,14 +1,14 @@
 ---
 id: 2026-09-11-bottom-nav-labels-fail-contrast
 title: 底部主導覽的文字標籤未達對比度標準
-status: open
+status: in-progress
 priority: P1
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-11T13:17:19Z
 created_at: 2026-09-11T13:05:04Z
 completed_at:
-branch:
+branch: claude/mokaair-website-access-k7xiku
 depends_on: []
 scope:
   - apps/web/app/globals.css
