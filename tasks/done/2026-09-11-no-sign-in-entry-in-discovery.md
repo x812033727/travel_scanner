@@ -1,13 +1,13 @@
 ---
 id: 2026-09-11-no-sign-in-entry-in-discovery
 title: 探索模式開啟時全站沒有登入入口
-status: in-progress
+status: done
 priority: P0
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-11T08:19:37Z
 created_at: 2026-09-11T03:20:23Z
-completed_at:
+completed_at: 2026-09-11T09:16:26Z
 branch: claude/google-apple-line-login-0fmfi5
 depends_on: []
 scope:

@@ -1,13 +1,13 @@
 ---
 id: 2026-09-11-social-login-buttons-use-official-brand
 title: Social login buttons use official brand marks
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-11T09:07:24Z
 created_at: 2026-09-11T09:07:21Z
-completed_at:
+completed_at: 2026-09-11T09:16:26Z
 branch: claude/google-apple-line-login-0fmfi5
 depends_on: []
 scope:

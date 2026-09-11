@@ -1,13 +1,13 @@
 ---
 id: 2026-09-11-traditional-chinese-google-and-line-login
 title: Traditional Chinese Google and LINE login setup guide
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: claude-opus-5
 claimed_at: 2026-09-11T08:53:51Z
 created_at: 2026-09-11T08:53:48Z
-completed_at:
+completed_at: 2026-09-11T09:16:26Z
 branch: claude/google-apple-line-login-0fmfi5
 depends_on: []
 scope:

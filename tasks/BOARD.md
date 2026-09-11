@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**46 open · 4 in progress · 3 blocked · 20 in review · 202 done**
+**46 open · 1 in progress · 3 blocked · 20 in review · 205 done**
 
 ## Ready to claim
 
@@ -48,10 +48,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
-| [探索模式開啟時全站沒有登入入口](open/2026-09-11-no-sign-in-entry-in-discovery.md) | claude-opus-5 | 2026-09-11T08:19:37Z | `claude/google-apple-line-login-0fmfi5` |
 | [Configurable catalog review run call limit](open/2026-09-09-configurable-catalog-review-run-call-limit.md) | codex-catalog-call-limit | 2026-09-09T15:54:14Z | `codex/catalog-review-call-limit` |
-| [Traditional Chinese Google and LINE login setup guide](open/2026-09-11-traditional-chinese-google-and-line-login.md) | claude-opus-5 | 2026-09-11T08:53:51Z | `claude/google-apple-line-login-0fmfi5` |
-| [Social login buttons use official brand marks](open/2026-09-11-social-login-buttons-use-official-brand.md) | claude-opus-5 | 2026-09-11T09:07:24Z | `claude/google-apple-line-login-0fmfi5` |
 
 ## In review
 
@@ -104,6 +101,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## Recently finished
 
+- 2026-09-11 [探索模式開啟時全站沒有登入入口](done/2026-09-11-no-sign-in-entry-in-discovery.md)
+- 2026-09-11 [Social login buttons use official brand marks](done/2026-09-11-social-login-buttons-use-official-brand.md)
+- 2026-09-11 [Traditional Chinese Google and LINE login setup guide](done/2026-09-11-traditional-chinese-google-and-line-login.md)
 - 2026-09-11 [Simplify hotel booking platform and source copy](done/2026-09-10-simplify-hotel-booking-copy.md)
 - 2026-09-11 [Verify simplified hotel booking copy without changing affiliate flow](done/2026-09-10-verify-hotel-booking-copy.md)
 - 2026-09-10 [Korea dual map identities and transport navigation](done/2026-09-10-korea-dual-maps.md)
@@ -111,6 +111,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-10 [Add privacy scoped Stay22 script backend](done/2026-09-09-add-privacy-scoped-stay22-script-backend.md)
 - 2026-09-10 [Public discovery categories and safe detail projections](done/2026-09-09-frontend-flow-discovery-api.md)
 - 2026-09-10 [Route apply state regression and semantic itinerary tones](done/2026-09-09-planner-route-tones.md)
-- 2026-09-10 [Preserve no-referrer on external clickout responses](done/2026-09-09-preserve-clickout-referrer-policy.md)
-- 2026-09-09 [Fix first hotel clickout and affiliate availability feedback](done/2026-09-09-fix-first-hotel-clickout-and-affiliate.md)
-- 2026-09-09 [Stay22 exact hotel affiliate clickouts](done/2026-09-09-stay22-hotel-clickout.md)
