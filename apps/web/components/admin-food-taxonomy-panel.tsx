@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { api } from "@/lib/api";
+import { useModalSheet } from "@/lib/modal-sheet";
 
 export const nameLocales = ["zh-TW", "zh-CN", "en", "ja", "ko"] as const;
 export type NameLocale = (typeof nameLocales)[number];
@@ -130,6 +131,9 @@ export function AdminFoodAreasPanel() {
   const [editing, setEditing] = useState<AdminArea | null>(null);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  // aria-modal="true" without a trap is a claim the page does not honour: a screen reader
+  // is told the rest of the document is inert while Tab walks into the table behind.
+  const editorRef = useModalSheet<HTMLDivElement>(Boolean(editing), () => setEditing(null));
 
   const listUrl = useMemo(() => {
     const params = new URLSearchParams({ limit: "200" });
@@ -347,6 +351,7 @@ export function AdminFoodAreasPanel() {
       {editing && (
         <div className="fixed inset-0 z-[90] overflow-y-auto bg-slate-950/50 p-4 md:p-8">
           <div
+            ref={editorRef}
             role="dialog"
             aria-modal="true"
             aria-labelledby="food-area-editor-title"
@@ -489,6 +494,7 @@ export function AdminFoodCategoriesPanel() {
   const [editing, setEditing] = useState<AdminCategory | null>(null);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const editorRef = useModalSheet<HTMLDivElement>(Boolean(editing), () => setEditing(null));
 
   const load = useCallback(async () => {
     try {
@@ -662,6 +668,7 @@ export function AdminFoodCategoriesPanel() {
       {editing && (
         <div className="fixed inset-0 z-[90] overflow-y-auto bg-slate-950/50 p-4 md:p-8">
           <div
+            ref={editorRef}
             role="dialog"
             aria-modal="true"
             aria-labelledby="food-category-editor-title"

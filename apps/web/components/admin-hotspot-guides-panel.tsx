@@ -18,6 +18,7 @@ import {
 import { useTranslations } from "next-intl";
 import { FormEvent, useCallback, useEffect, useMemo, useState } from "react";
 import { api } from "@/lib/api";
+import { useModalSheet } from "@/lib/modal-sheet";
 import { safeExternalHref } from "@/lib/navigation";
 
 const locales = ["en", "ja", "ko", "zh-TW", "zh-CN"] as const;
@@ -228,7 +229,6 @@ export function AdminHotspotGuidesPanel() {
     (Notice & { hotspotId: string }) | null
   >(null);
   const [showAllCoverage, setShowAllCoverage] = useState(false);
-  const runActive = isRunActive(run);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -276,34 +276,6 @@ export function AdminHotspotGuidesPanel() {
     );
     return () => window.clearInterval(timer);
   }, [load, run]);
-  useEffect(() => {
-    if (!draft) return;
-    const handleKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape" && !runActive) setDraft(null);
-      if (event.key !== "Tab") return;
-      const dialog = document.querySelector<HTMLElement>("[role='dialog']");
-      const focusable = dialog?.querySelectorAll<HTMLElement>(
-        "button:not(:disabled), select:not(:disabled), textarea:not(:disabled), input:not(:disabled), a[href]",
-      );
-      if (!focusable?.length) return;
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    };
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", handleKey);
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", handleKey);
-    };
-  }, [draft, runActive]);
-
   const estimate = useMemo(() => {
     if (!draft) return { ai: 0, brave: 0, youtube: 0 };
     const queries = depthQueries[draft.depth] * draft.locales.length;
@@ -966,6 +938,13 @@ function AISearchSheet({
   const failed = run?.status === "failed";
   const partial = run?.status === "partial";
   const [touchStart, setTouchStart] = useState<number | null>(null);
+  // The trap this replaces read `document.querySelector("[role='dialog']")`, so it guarded
+  // whichever dialog came first in the document rather than this one, restored the page's
+  // overflow to "" instead of to what it was, and never moved focus in or handed it back.
+  // The sheet only ever renders while a draft exists, so it is open for its whole life.
+  const draftRef = useModalSheet<HTMLElement>(true, () => {
+    if (!active) setDraft(null);
+  });
   return (
     <div
       className="fixed inset-0 z-50 bg-black/45 backdrop-blur-sm"
@@ -974,6 +953,7 @@ function AISearchSheet({
       }}
     >
       <section
+        ref={draftRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby="ai-search-title"

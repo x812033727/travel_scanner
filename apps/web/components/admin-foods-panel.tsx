@@ -3,6 +3,7 @@
 import { Fragment, useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { api } from "@/lib/api";
+import { useModalSheet } from "@/lib/modal-sheet";
 import { AdminReadOnlyNotice, useAdminActionGuard } from "./admin-action-guard";
 import { FilterPills } from "./admin-filter-pills";
 
@@ -114,6 +115,9 @@ export function AdminFoodsPanel({ initialStatus = "" }: { initialStatus?: string
   // reported there looked like a save that silently did nothing.
   const [saveError, setSaveError] = useState("");
   const [loading, setLoading] = useState(true);
+  // aria-modal="true" told a screen reader the page behind was inert while the keyboard
+  // walked straight into it. This gives the claim something to stand on.
+  const editorRef = useModalSheet<HTMLDivElement>(Boolean(editing), () => setEditing(null));
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -470,6 +474,7 @@ export function AdminFoodsPanel({ initialStatus = "" }: { initialStatus?: string
             role="presentation"
           >
             <div
+              ref={editorRef}
               role="dialog"
               aria-modal="true"
               aria-labelledby="food-editor-title"

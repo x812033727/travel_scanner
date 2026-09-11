@@ -901,7 +901,7 @@ export function AdminFoodMerchantsPanel({
                 <p className="font-semibold">
                   {merchant.name} · {merchant.destination_id}
                 </p>
-                {error && <p className="mt-1 text-sm text-red-700">{error}</p>}
+                {error && <p role="alert" className="mt-1 text-sm text-red-700">{error}</p>}
                 {!error && !response?.configured && (
                   <p className="mt-1 text-sm text-amber-800">
                     {response?.message ?? ta("foodMerchantsPanel.notConfigured")}

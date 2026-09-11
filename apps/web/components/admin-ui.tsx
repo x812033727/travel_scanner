@@ -2,6 +2,7 @@
 
 import { AlertTriangle, Inbox, LoaderCircle, RefreshCw, X } from "lucide-react";
 import { useEffect, useRef, type ReactNode } from "react";
+import { useModalSheet } from "@/lib/modal-sheet";
 
 export function AdminPageHeader({ eyebrow = "OPERATIONS", title, description, actions }: { eyebrow?: string; title: string; description: string; actions?: ReactNode }) {
   return <header className="flex flex-col justify-between gap-5 md:flex-row md:items-end"><div className="min-w-0"><p className="text-xs font-black tracking-[.16em] text-[var(--teal)]">{eyebrow}</p><h1 className="mt-2 text-3xl font-black tracking-[-.025em] md:text-4xl">{title}</h1><p className="mt-3 max-w-3xl leading-7 text-[var(--muted)]">{description}</p></div>{actions && <div className="flex flex-wrap gap-2">{actions}</div>}</header>;
@@ -37,57 +38,23 @@ export function AdminDataTable({ label, headers, children }: { label: string; he
 }
 
 export function AdminDetailDrawer({ open, title, onClose, children, footer, closeLabel = "Close" }: { open: boolean; title: string; onClose: () => void; children: ReactNode; footer?: ReactNode; closeLabel?: string }) {
-  const panel = useRef<HTMLElement>(null);
-  const close = useRef<HTMLButtonElement>(null);
-  const onCloseRef = useRef(onClose);
-  useEffect(() => { onCloseRef.current = onClose; }, [onClose]);
-  useEffect(() => {
-    if (!open) return;
-    const previous = document.activeElement as HTMLElement | null;
-    close.current?.focus();
-    const keydown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") { event.preventDefault(); onCloseRef.current(); return; }
-      if (event.key !== "Tab" || !panel.current) return;
-      const focusable = Array.from(panel.current.querySelectorAll<HTMLElement>("button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), a[href]"));
-      const first = focusable[0], last = focusable[focusable.length - 1];
-      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
-      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
-    };
-    document.addEventListener("keydown", keydown);
-    const overflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => { document.removeEventListener("keydown", keydown); document.body.style.overflow = overflow; previous?.focus(); };
-  }, [open]);
+  // A drawer is routinely the layer *under* AdminConfirmDialog — admin-users-panel opens
+  // the suspend and erase confirmations from inside this drawer. Two hand-rolled traps each
+  // listening on document meant one Escape closed both, and whichever unmounted first put
+  // the page's scrollbar back while the other layer still covered it. The shared stack in
+  // lib/modal-sheet keeps Escape, Tab and the lock on whichever layer is on top.
+  const panel = useModalSheet<HTMLElement>(open, onClose);
   if (!open) return null;
-  return <div className="fixed inset-0 z-[95] bg-slate-950/45" role="presentation" onMouseDown={(event) => { if (event.currentTarget === event.target) onClose(); }}><aside ref={panel} role="dialog" aria-modal="true" aria-labelledby="admin-detail-title" className="absolute inset-y-0 right-0 flex w-full max-w-2xl flex-col overflow-hidden bg-[var(--surface)] shadow-2xl"><header className="flex min-h-[4.5rem] items-center justify-between gap-4 border-b border-[var(--line)] px-5"><h2 id="admin-detail-title" className="min-w-0 truncate text-xl font-black">{title}</h2><button ref={close} type="button" aria-label={closeLabel} onClick={onClose} className="admin-icon-button"><X aria-hidden size={20} /></button></header><div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-5 md:p-7">{children}</div>{footer && <footer className="border-t border-[var(--line)] bg-[var(--surface)] p-4">{footer}</footer>}</aside></div>;
+  return <div className="fixed inset-0 z-[95] bg-slate-950/45" role="presentation" onMouseDown={(event) => { if (event.currentTarget === event.target) onClose(); }}><aside ref={panel} role="dialog" aria-modal="true" aria-labelledby="admin-detail-title" className="absolute inset-y-0 right-0 flex w-full max-w-2xl flex-col overflow-hidden bg-[var(--surface)] shadow-2xl"><header className="flex min-h-[4.5rem] items-center justify-between gap-4 border-b border-[var(--line)] px-5"><h2 id="admin-detail-title" className="min-w-0 truncate text-xl font-black">{title}</h2><button type="button" aria-label={closeLabel} onClick={onClose} className="admin-icon-button"><X aria-hidden size={20} /></button></header><div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-5 md:p-7">{children}</div>{footer && <footer className="border-t border-[var(--line)] bg-[var(--surface)] p-4">{footer}</footer>}</aside></div>;
 }
 
 export function AdminConfirmDialog({ open, title, description, confirmationLabel, confirmation, expectedConfirmation, password, passwordLabel, recoveryAction, busy, cancelLabel = "Cancel", confirmLabel = "Confirm", onConfirmationChange, onPasswordChange, onCancel, onConfirm }: { open: boolean; title: string; description: string; confirmationLabel: string; confirmation: string; expectedConfirmation: string; password: string; passwordLabel: string; recoveryAction?: ReactNode; busy?: boolean; cancelLabel?: string; confirmLabel?: string; onConfirmationChange: (value: string) => void; onPasswordChange: (value: string) => void; onCancel: () => void; onConfirm: () => void }) {
   const input = useRef<HTMLInputElement>(null);
-  const panel = useRef<HTMLElement>(null);
-  const onCancelRef = useRef(onCancel);
-  const busyRef = useRef(Boolean(busy));
-  useEffect(() => { onCancelRef.current = onCancel; busyRef.current = Boolean(busy); }, [busy, onCancel]);
-  useEffect(() => {
-    if (!open) return;
-    const previous = document.activeElement as HTMLElement | null;
-    input.current?.focus();
-    const keydown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        if (!busyRef.current) { event.preventDefault(); onCancelRef.current(); }
-        return;
-      }
-      if (event.key !== "Tab" || !panel.current) return;
-      const focusable = Array.from(panel.current.querySelectorAll<HTMLElement>("button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), a[href]"));
-      const first = focusable[0], last = focusable[focusable.length - 1];
-      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
-      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
-    };
-    document.addEventListener("keydown", keydown);
-    const overflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => { document.removeEventListener("keydown", keydown); document.body.style.overflow = overflow; previous?.focus(); };
-  }, [open]);
+  // An operation already under way cannot be taken back, so Escape is inert while it runs.
+  const panel = useModalSheet<HTMLElement>(open, () => { if (!busy) onCancel(); });
+  // Declared after useModalSheet so it wins: the sheet would otherwise start on whatever
+  // comes first, and `recoveryAction` puts a link above the field the reader has to fill in.
+  useEffect(() => { if (open) input.current?.focus(); }, [open]);
   if (!open) return null;
   return <div className="fixed inset-0 z-[110] grid place-items-center overflow-y-auto bg-slate-950/55 p-4" role="presentation" onMouseDown={(event) => { if (event.currentTarget === event.target && !busy) onCancel(); }}><section ref={panel} role="dialog" aria-modal="true" aria-labelledby="admin-confirm-title" className="w-full max-w-lg rounded-[1.75rem] bg-[var(--surface)] p-6 shadow-2xl"><h2 id="admin-confirm-title" className="text-2xl font-black">{title}</h2><p className="mt-2 text-sm leading-6 text-[var(--muted)]">{description}</p>{recoveryAction && <div className="mt-3 text-sm font-semibold text-[var(--teal)]">{recoveryAction}</div>}<label className="mt-5 block text-sm font-bold">{passwordLabel}<input ref={input} type="password" autoComplete="current-password" value={password} onChange={(event) => onPasswordChange(event.target.value)} className="mt-2 min-h-12 w-full rounded-xl border border-[var(--line)] px-4" /></label><label className="mt-4 block text-sm font-bold">{confirmationLabel}<code className="ml-2 rounded bg-[var(--paper)] px-1.5 py-0.5">{expectedConfirmation}</code><input value={confirmation} onChange={(event) => onConfirmationChange(event.target.value)} className="mt-2 min-h-12 w-full rounded-xl border border-[var(--line)] px-4 font-mono" /></label><div className="mt-6 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end"><button type="button" disabled={busy} onClick={onCancel} className="min-h-12 rounded-xl border border-[var(--line)] px-5 font-bold disabled:opacity-50">{cancelLabel}</button><button type="button" disabled={busy || !password || confirmation !== expectedConfirmation} onClick={onConfirm} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[var(--coral-fill)] px-5 font-bold text-white disabled:opacity-40">{busy && <LoaderCircle aria-hidden className="animate-spin motion-reduce:animate-none" size={17} />}{confirmLabel}</button></div></section></div>;
 }

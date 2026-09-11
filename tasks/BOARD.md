@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**38 open · 1 in progress · 3 blocked · 21 in review · 229 done**
+**38 open · 1 in progress · 3 blocked · 21 in review · 230 done**
 
 ## Ready to claim
 
@@ -33,6 +33,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P3 | [行程裡新增一餐：四個 trip-selections 端點接受 mode: replace_meal\|append](open/2026-09-07-add-a-meal-to-a-day.md) | api | `apps/api/app/foods/router.py`<br>`apps/api/app/hotspots/router.py`<br>`apps/api/app/restaurants/user_router.py`<br>`apps/web/components/travel-card-actions.tsx` |
 | P3 | [tasks/BOARD.md 是產生檔，卻讓每個 PR 互相衝突](open/2026-09-07-board-conflicts-on-every-pr.md) | tools | `.gitattributes`<br>`tools/tasks.mjs` |
 | P3 | [Isolate backup catalog test from host free disk capacity](open/2026-09-09-backup-catalog-free-disk-fixture.md) | api | `apps/api/tests/test_database_operations_center.py` |
+| P3 | [admin-shell 命令面板改用 modal-sheet 的分層堆疊](open/2026-09-11-admin-shell-modal-layer.md) | web | `apps/web/components/admin-shell.tsx`<br>`apps/web/components/admin-shell.test.tsx` |
 
 ## In progress
 
@@ -84,7 +85,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [trip-editor 的關閉守門測試會隨檔案順序變紅](open/2026-09-11-trip-editor-close-guard-order-dependence.md) | active work in the same scope |
 | P2 | [Community read metric duplicate observed alongside smoke ECONNRESET](open/2026-09-07-community-read-metric-concurrency.md) | active work in the same scope |
 | P2 | [Preserve force refresh in daily route background jobs](open/2026-09-10-daily-route-force-refresh.md) | active work in the same scope |
-| P2 | [彈層原語未統一與可及性收尾](open/2026-09-11-dialog-primitives-and-a11y-cleanup.md) | active work in the same scope |
 | P2 | [安排編輯器的關閉鈕在儲存在途時被靜默吞掉](open/2026-09-11-planner-overlay-close-guard-race.md) | active work in the same scope |
 | P2 | [推薦流的語言選擇與同地點去重](open/2026-09-11-discovery-feed-language-and-dedup.md) | active work in the same scope |
 | P2 | [formatTime 在沒有時間時回傳寫死的繁中](open/2026-09-11-format-time-chinese-fallback.md) | active work in the same scope |
@@ -94,6 +94,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## Recently finished
 
+- 2026-09-11 [彈層原語未統一與可及性收尾](done/2026-09-11-dialog-primitives-and-a11y-cleanup.md)
 - 2026-09-11 [表單驗證與低於四十四像素的觸控目標](done/2026-09-11-form-validation-and-touch-targets.md)
 - 2026-09-11 [六處死路與缺空狀態合集](done/2026-09-11-ux-dead-ends-and-empty-states.md)
 - 2026-09-11 [登入頁的送出鈕在手機上要捲一下才看得到](done/2026-09-11-bottom-nav-covers-page-content.md)
@@ -103,4 +104,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-11 [路線地圖在手機吃掉頁面捲動且對輔助科技隱形](done/2026-09-11-route-map-mobile-and-a11y.md)
 - 2026-09-11 [【撤回】刪除行程項目的復原視窗其實是有效的](done/2026-09-11-itinerary-item-delete-no-confirm.md)
 - 2026-09-11 [餘額與行程上限都只在使用者投入之後才告知](done/2026-09-11-quota-and-limits-shown-too-late.md)
-- 2026-09-11 [後端回傳的繁中警告句被原樣顯示在所有語系](done/2026-09-11-api-warnings-leak-zh-tw.md)

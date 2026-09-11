@@ -110,6 +110,13 @@ function sourceFor(code: AirlineCode, sources: CrawlerSource[]) {
   return sources.find((source) => source.airline_code === code);
 }
 
+const FARE_MODES = [
+  { key: "conventional", label: "一般來回" },
+  { key: "back_to_back", label: "倒買法" },
+  { key: "live_back_to_back", label: "即時倒買 API" },
+] as const;
+const FARE_TAB_KEYS = ["ArrowLeft", "ArrowRight", "Home", "End"];
+
 export function AirlineFareLab() {
   const charge = useOperationCharge("public_airline_fare_search");
   const [insufficient, setInsufficient] = useState(false);
@@ -120,6 +127,19 @@ export function AirlineFareLab() {
   const usage = useTranslations("usage");
   const auth = useTranslations("auth");
   const [mode, setMode] = useState<"conventional" | "back_to_back" | "live_back_to_back">("conventional");
+
+  /** Arrow keys move between tabs, as the role promises. Same shape as admin-tabs. */
+  function moveFareTab(event: React.KeyboardEvent<HTMLButtonElement>, index: number) {
+    if (!FARE_TAB_KEYS.includes(event.key)) return;
+    event.preventDefault();
+    const next = event.key === "Home"
+      ? 0
+      : event.key === "End"
+        ? FARE_MODES.length - 1
+        : (index + (event.key === "ArrowRight" ? 1 : -1) + FARE_MODES.length) % FARE_MODES.length;
+    setMode(FARE_MODES[next].key);
+    requestAnimationFrame(() => document.getElementById(`fare-tab-${FARE_MODES[next].key}`)?.focus());
+  }
   const [status, setStatus] = useState<CrawlerStatus>();
   const [result, setResult] = useState<FareSearchResponse>();
   const [selected, setSelected] = useState<Record<AirlineCode, boolean>>({
@@ -230,11 +250,27 @@ export function AirlineFareLab() {
         })}
       </section>
 
+      {/* role="tab" without a roving tabindex, aria-controls or a panel promised a
+          widget that was not there: every tab was its own tab stop and none of them
+          said what it controlled. admin-tabs.tsx is the house pattern. */}
       <div role="tablist" aria-label="票價搜尋模式" className="mb-6 grid max-w-2xl grid-cols-1 gap-1 rounded-2xl border border-[var(--line)] bg-white p-1.5 sm:grid-cols-3 sm:gap-0">
-        <button role="tab" aria-selected={mode === "conventional"} onClick={() => setMode("conventional")} className={`min-h-11 rounded-xl px-4 py-2.5 text-sm font-semibold transition ${mode === "conventional" ? "bg-[var(--ink)] text-white" : "text-[var(--muted)]"}`}>一般來回</button>
-        <button role="tab" aria-selected={mode === "back_to_back"} onClick={() => setMode("back_to_back")} className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition ${mode === "back_to_back" ? "bg-[var(--ink)] text-white" : "text-[var(--muted)]"}`}>倒買法</button>
-        <button role="tab" aria-selected={mode === "live_back_to_back"} onClick={() => setMode("live_back_to_back")} className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition ${mode === "live_back_to_back" ? "bg-[var(--ink)] text-white" : "text-[var(--muted)]"}`}>即時倒買 API</button>
+        {FARE_MODES.map((tab, index) => {
+          const selected = mode === tab.key;
+          return <button
+            key={tab.key}
+            id={`fare-tab-${tab.key}`}
+            type="button"
+            role="tab"
+            aria-selected={selected}
+            aria-controls="fare-tabpanel"
+            tabIndex={selected ? 0 : -1}
+            onKeyDown={(event) => moveFareTab(event, index)}
+            onClick={() => setMode(tab.key)}
+            className={`min-h-11 rounded-xl px-4 py-2.5 text-sm font-semibold transition ${selected ? "bg-[var(--ink)] text-white" : "text-[var(--muted)]"}`}
+          >{tab.label}</button>;
+        })}
       </div>
+      <div id="fare-tabpanel" role="tabpanel" aria-labelledby={`fare-tab-${mode}`} tabIndex={0}>
 
       {session.status === "signed_out" ? <section className="rounded-[1.75rem] border border-[var(--line)] bg-white p-8 text-center shadow-[0_22px_70px_rgba(16,42,43,.08)]">
         <LogIn className="mx-auto text-[var(--teal)]" size={30} />
@@ -312,6 +348,7 @@ export function AirlineFareLab() {
           </div>}
         </div>
       </section>}
+      </div>
     </main>
   );
 }
