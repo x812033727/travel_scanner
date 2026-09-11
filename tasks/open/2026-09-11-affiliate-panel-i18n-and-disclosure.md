@@ -55,3 +55,6 @@ cd apps/web && npm run check:i18n && npm run test:web -- affiliate
 ## Notes
 
 - `docs/affiliate-configuration.md:170-173` 把「佣金揭露只有繁中」列為已知缺口，並標示為大致已修——`stay_router.py` 是唯一漏掉的呼叫端，文件可以順手更新。
+- **認領會被擋，這是正常的。** `2026-09-11-hotel-operation-rakuten-clickout`（owner `codex-hotel-guard`，目前 `review`）的 scope 含同樣五個
+  `apps/web/messages/*/travelServices.json`，所以在它離開 review 之前，`claim` 會拒絕這張任務。
+  等它結束再認領，不要為了繞過而把 scope 改窄成不誠實的範圍。
