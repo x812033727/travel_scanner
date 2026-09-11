@@ -21,7 +21,7 @@ const naver = {
   provider: "naver", label: "Naver Map", primary: true,
   url: "https://map.naver.com/p/entry/place/123456",
 };
-const platforms = [
+const platforms: ReservationLink[] = [
   { provider: "tablecheck", label: "TableCheck", url: "https://www.tablecheck.com/en/shops/sushi-sakai/reserve" },
   { provider: "catchtable_global", label: "Catchtable Global", url: "https://www.catchtable.net/shop/reviewed-branch" },
   { provider: "eztable", label: "EZTABLE", url: "https://www.eztable.com/restaurant/1234" },
@@ -29,6 +29,11 @@ const platforms = [
   { provider: "openrice", label: "OpenRice", url: "https://www.openrice.com/en/hongkong/r-reviewed-branch-r12345" },
   { provider: "hungry_hub", label: "Hungry Hub", url: "https://web.hungryhub.com/en/restaurants/reviewed-branch" },
   { provider: "pasgo", label: "PasGo", url: "https://pasgo.vn/nha-hang/reviewed-branch-1234" },
+  { provider: "inline", label: "inline", url: "https://inline.app/booking/-Np4PbmnyNDdeWIZzRem:inline-live-3/-Np4PbzfZuNZ-afLExLd?language=zh-tw" },
+  { provider: "maifood", label: "Maifood", url: "https://reservation.maifood.com.tw/qingtian76/qingtian76_1" },
+  { provider: "sevenrooms", label: "SevenRooms", url: "https://www.sevenrooms.com/explore/candlenutsingapore/reservations/create/search" },
+  { provider: "ikyu", label: "一休", url: "https://restaurant.ikyu.com/107953" },
+  { provider: "myconcierge", label: "My Concierge Japan", url: "https://myconciergejapan.com/restaurants/ginza-kyubey" },
 ].map((item) => ({ ...item, verified_at: "2026-09-08T00:00:00Z", language_code: "en" } satisfies ReservationLink));
 const merchant = {
   name: "鮨さかい", map_links: [google, naver], reservation_links: platforms,
@@ -62,14 +67,28 @@ describe("MerchantExternalLinks", () => {
     expect(screen.queryByText(zhTW.noVerifiedReservation)).toBeNull();
   });
 
-  it("deduplicates supplied URLs, not providers, without modifying the input array", () => {
+  it("shows each verified provider once across duplicate locale URLs without modifying inputs", () => {
     const first = platforms[0];
     const alternate = { ...first, url: "https://www.tablecheck.com/ja/shops/sushi-sakai/reserve" };
     const originalMaps = [google, naver, naver];
-    renderLinks({ map_links: originalMaps, reservation_links: [first, { ...first }, alternate] });
+    const originalReservations = [first, { ...first }, alternate];
+    renderLinks({ map_links: originalMaps, reservation_links: originalReservations });
     expect(originalMaps).toEqual([google, naver, naver]);
-    expect(screen.getAllByRole("link", { name: /TableCheck/ })).toHaveLength(2);
+    expect(originalReservations).toEqual([first, { ...first }, alternate]);
+    expect(screen.getAllByRole("link", { name: /TableCheck/ })).toHaveLength(1);
     expect(screen.getAllByRole("link", { name: /Naver Map/ })).toHaveLength(1);
+  });
+
+  it("keeps all twelve providers in fixed order regardless of the response order or label", () => {
+    renderLinks({ reservation_links: [...platforms].reverse().map((link) => ({ ...link, label: "Sponsored first" })) });
+    expect(screen.getAllByRole("link").slice(2, -1).map((link) => link.getAttribute("href"))).toEqual(platforms.map((link) => link.url));
+    expect(screen.queryByRole("link", { name: /Sponsored first/ })).toBeNull();
+  });
+
+  it("skips invalid duplicates before selecting a reviewed provider", () => {
+    renderLinks({ reservation_links: [{ ...platforms[0], url: "https://www.tablecheck.com/en/search" }, platforms[0]] });
+    expect(screen.getAllByRole("link", { name: /TableCheck/ })).toHaveLength(1);
+    expect(screen.getByRole("link", { name: /TableCheck/ }).getAttribute("href")).toBe(platforms[0].url);
   });
 
   it.each([
@@ -87,16 +106,28 @@ describe("MerchantExternalLinks", () => {
   });
 
   it.each([
-    { provider: "unknown" }, { provider: "toString" }, { url: "https://www.tablecheck.com.evil.example/en/shops/sushi-sakai/reserve" },
+    { provider: "unknown" }, { provider: "toString" }, { provider: "__proto__" }, { provider: "constructor" },
+    { url: "https://www.tablecheck.com.evil.example/en/shops/sushi-sakai/reserve" },
     { url: "https://www.catchtable.net/shop/reviewed-branch" }, { url: "https://www.tablecheck.com/" },
     { url: "https://www.tablecheck.com/en" }, { url: "https://www.tablecheck.com/en/search" },
     { url: "https://www.tablecheck.com/en/shops/search" },
+    { url: "https://www.tablecheck.com/en/shops/sushi-sakai/reserve?redirect=https://evil.example" },
+    { url: "https://www.tablecheck.com:443/en/shops/sushi-sakai/reserve" },
+    { url: "https://www.tablecheck.com/%2e%2e/en/shops/sushi-sakai/reserve" },
+    { url: "https://www.tablecheck.com/en/shops/sushi%2fsakai/reserve" },
     { verified_at: "" }, { verified_at: "invalid" }, { label: "" },
   ])("omits invalid reservation metadata and does not offer a homepage fallback: %o", (overrides) => {
     renderLinks({ reservation_links: [{ ...platforms[0], ...overrides }] });
     expect(screen.queryByRole("link", { name: /TableCheck/ })).toBeNull();
     expect(screen.getByText(zhTW.noVerifiedReservation)).toBeTruthy();
     expect(screen.getAllByRole("link")).toHaveLength(3);
+  });
+
+  it("does not invent a source-language hint when metadata is empty or missing", () => {
+    renderLinks({ reservation_links: [{ ...platforms[0], language_code: "" }, { ...platforms[1], language_code: undefined }] });
+    expect(screen.queryByText(/平台頁面語言/)).toBeNull();
+    expect(screen.getByRole("link", { name: /TableCheck/ })).toBeTruthy();
+    expect(screen.getByRole("link", { name: /Catchtable Global/ })).toBeTruthy();
   });
 
   it("handles older responses without additive reservation, map or website fields", () => {

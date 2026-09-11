@@ -1750,6 +1750,58 @@ for _map_identity_locale, _map_identity_errors in _MAP_IDENTITY_ERRORS.items():
     ERROR_DETAILS[_map_identity_locale].update(_map_identity_errors)
 
 
+_RESERVATION_PLATFORM_ERRORS: dict[Locale, dict[str, str]] = {
+    "en": {
+        "reservation_platform_version_conflict": (
+            "Another administrator changed this platform. "
+            "Reload its saved state, review the changes, then save again."
+        ),
+        "reservation_platform_url_conflict": (
+            "This exact platform page belongs to another merchant."
+        ),
+        "invalid_reservation_platform_status": "Choose a supported reservation review status.",
+    },
+    "ja": {
+        "reservation_platform_version_conflict": (
+            "別の管理者がこのプラットフォームを変更しました。"
+            "保存済みの状態を再読み込みし、変更を確認してから再度保存してください。"
+        ),
+        "reservation_platform_url_conflict": (
+            "このプラットフォームの店舗ページは別の店舗に登録されています。"
+        ),
+        "invalid_reservation_platform_status": (
+            "有効な予約プラットフォームの確認状態を選択してください。"
+        ),
+    },
+    "ko": {
+        "reservation_platform_version_conflict": (
+            "다른 관리자가 이 플랫폼을 변경했습니다. "
+            "저장된 상태를 다시 불러와 변경 사항을 확인한 뒤 다시 저장해 주세요."
+        ),
+        "reservation_platform_url_conflict": (
+            "이 플랫폼의 매장 페이지는 다른 매장에 등록되어 있습니다."
+        ),
+        "invalid_reservation_platform_status": "지원되는 예약 플랫폼 검토 상태를 선택해 주세요.",
+    },
+    "zh-TW": {
+        "reservation_platform_version_conflict": (
+            "另一位管理員已修改此平台。請重新載入已儲存狀態，確認差異後再儲存。"
+        ),
+        "reservation_platform_url_conflict": "這個精準平台頁已經對應到另一間店家。",
+        "invalid_reservation_platform_status": "請選擇有效的訂位平台查核狀態。",
+    },
+    "zh-CN": {
+        "reservation_platform_version_conflict": (
+            "另一位管理员已修改此平台。请重新加载已保存状态，确认差异后再保存。"
+        ),
+        "reservation_platform_url_conflict": "这个精确平台页已经对应到另一家店。",
+        "invalid_reservation_platform_status": "请选择有效的订位平台核查状态。",
+    },
+}
+for _reservation_locale, _reservation_errors in _RESERVATION_PLATFORM_ERRORS.items():
+    ERROR_DETAILS[_reservation_locale].update(_reservation_errors)
+
+
 def active_locale() -> Locale:
     """The locale of the request being served, or the site default outside a request."""
 

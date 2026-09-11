@@ -5,21 +5,10 @@ import { useLocale, useTranslations } from "next-intl";
 import type { FoodMerchant, ReservationLink } from "@/lib/foods";
 import { availableMapLinks } from "@/lib/map-identities";
 import { safeExternalHref } from "@/lib/navigation";
+import { reservationPlatformDefinitions, reservationPlatformHref } from "@/lib/reservation-platforms";
 
 type MerchantLinkDetails = Pick<FoodMerchant, "name" | "map_links" | "reservation_links">
   & Partial<Pick<FoodMerchant, "official_website_url">>;
-
-// Defense in depth for public responses. Branch identity and review status remain
-// the server's responsibility in foods/platform_links.py; this does not approve URLs.
-const reservationHosts: Record<string, readonly string[]> = {
-  tablecheck: ["tablecheck.com", "www.tablecheck.com"],
-  catchtable_global: ["catchtable.net", "www.catchtable.net"],
-  eztable: ["eztable.com", "www.eztable.com"],
-  chope: ["chope.co", "www.chope.co"],
-  openrice: ["openrice.com", "www.openrice.com"],
-  hungry_hub: ["hungryhub.com", "www.hungryhub.com", "web.hungryhub.com"],
-  pasgo: ["pasgo.vn", "www.pasgo.vn"],
-};
 
 function reviewedExternalHref(value: string | null | undefined) {
   const href = safeExternalHref(value, ["https:"]);
@@ -33,38 +22,19 @@ function reviewedExternalHref(value: string | null | undefined) {
 }
 
 function reviewedReservations(links: ReservationLink[] | undefined) {
-  const seen = new Set<string>();
-  return (links ?? []).filter((link) => {
-    const href = reviewedExternalHref(link.url);
-    if (!href || !link.label?.trim() || !link.verified_at
-      || !Number.isFinite(Date.parse(link.verified_at))) return false;
-    const url = new URL(href);
-    if (!Object.hasOwn(reservationHosts, link.provider)
-      || !reservationHosts[link.provider].includes(url.hostname)
-      || !merchantSpecificReservationPath(link.provider, url.pathname)) return false;
-    const key = `${link.provider}:${url.href}`;
-    if (seen.has(key)) return false;
-    seen.add(key);
-    return true;
-  });
-}
-
-/** Mirror the existing server branch-page shapes; never accept search or platform landing pages. */
-function merchantSpecificReservationPath(provider: string, pathname: string) {
-  const segments = pathname.toLowerCase().split("/").filter(Boolean);
-  const last = segments.at(-1);
-  if (!last || ["search", "ranking", "rankings", "discovery", "explore", "restaurants", "list_of_restaurants"].includes(last)) return false;
-  const after = (token: string) => segments.includes(token) && segments.indexOf(token) + 1 < segments.length;
-  switch (provider) {
-    case "tablecheck": return after("shops") && segments.includes("reserve");
-    case "catchtable_global": return segments.length >= 2 && ["shop", "restaurant", "restaurants"].some((token) => segments.includes(token));
-    case "eztable": return segments.length >= 2 && ["restaurant", "restaurants"].some((token) => segments.includes(token));
-    case "chope": return after("restaurant");
-    case "openrice": return segments.some((segment) => /^(p-|r-).*\d/.test(segment));
-    case "hungry_hub": return after("restaurants");
-    case "pasgo": return after("nha-hang");
-    default: return false;
+  // One reviewed branch per provider. Provider order is explicit in the shared
+  // registry; neither incoming array order nor commission can promote an option.
+  const reviewed = new Map<string, ReservationLink>();
+  for (const link of links ?? []) {
+    if (!link || typeof link.label !== "string" || !link.label.trim()
+      || typeof link.verified_at !== "string" || !Number.isFinite(Date.parse(link.verified_at))) continue;
+    const href = reservationPlatformHref(link.provider, link.url);
+    if (href && !reviewed.has(link.provider)) reviewed.set(link.provider, { ...link, url: href });
   }
+  return reservationPlatformDefinitions.flatMap((definition) => {
+    const link = reviewed.get(definition.provider);
+    return link ? [{ ...link, label: definition.label }] : [];
+  });
 }
 
 function differentLanguageLabel(languageCode: string | undefined, locale: string) {
