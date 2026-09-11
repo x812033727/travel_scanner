@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**47 open · 2 in progress · 3 blocked · 0 in review · 236 done**
+**47 open · 2 in progress · 3 blocked · 0 in review · 237 done**
 
 ## Ready to claim
 
@@ -82,6 +82,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-11 [OAuth 回跳導向容器內部位址 0.0.0.0:3000，Google 登入最後必定落在錯誤頁](done/2026-09-11-oauth-redirect-internal-origin.md)
 - 2026-09-11 [Configurable catalog review run call limit](done/2026-09-09-configurable-catalog-review-run-call-limit.md)
 - 2026-09-11 [Compact discovery cards and source-linked details](done/2026-09-09-discovery-card-details.md)
 - 2026-09-11 [Archive completed catalog and hotel review evidence](done/2026-09-09-review-evidence-archive.md)
@@ -91,4 +92,3 @@ _Nothing here._
 - 2026-09-11 [Complete hotspot review identity and rationale editor](done/2026-09-10-complete-hotspot-review-identity-and-rationale.md)
 - 2026-09-11 [Verify isolated Stay22 Script public browser flow](done/2026-09-09-verify-stay22-script-browser.md)
 - 2026-09-11 [Isolate public Stay22 script document and hotel links](done/2026-09-09-isolate-public-stay22-script.md)
-- 2026-09-11 [Clarify the modular hotel affiliate switch and original-channel fallback](done/2026-09-09-clarify-stay22-module-switch.md)

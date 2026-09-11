@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { locales, normalizeLocale, type Locale } from "@/i18n/routing";
 import { safeNextPath } from "@/lib/navigation";
 import { limitedRequestBody, RequestBodyError } from "@/lib/request-body";
+import { siteUrl } from "@/lib/seo";
 import { forwardedClientAddress } from "@/app/api/travel/[...path]/proxy-security";
 
 // An OAuth form_post callback carries a code, a state and possibly an error string —
@@ -64,6 +65,14 @@ export function localizedPath(locale: Locale, nextPath: string) {
   return safe === "/" ? `/${locale}` : `/${locale}${safe}`;
 }
 
+// Behind the reverse proxy the request reaches Next at the container's bind address, so
+// `request.url` and `request.nextUrl.origin` read https://0.0.0.0:3000 in production — a page
+// no browser can open. Browser-facing redirects are built on the public site URL instead: the
+// same origin the API puts in redirect_uri, and the one the flow cookie was set on.
+export function siteRedirectUrl(path: string) {
+  return new URL(path, `${siteUrl}/`);
+}
+
 const safeErrorCodes = new Set([
   "oauth_cancelled",
   "oauth_state_invalid",
@@ -87,7 +96,7 @@ export function errorRedirect(
   const locale = normalizeLocale(flow?.locale || request.cookies.get("travel_locale")?.value);
   const next = safeNextPath(flow?.next || "/");
   const target = flow?.intent === "link" ? `/${locale}/account` : `/${locale}/login`;
-  const url = new URL(target, request.nextUrl.origin);
+  const url = siteRedirectUrl(target);
   url.searchParams.set("oauth_error", safeErrorCodes.has(code) ? code : "oauth_token_invalid");
   url.searchParams.set("next", next);
   const response = NextResponse.redirect(url);
@@ -157,9 +166,7 @@ export async function callback(request: NextRequest, providerValue: string) {
     return errorRedirect(request, flow, payload.code || "oauth_token_invalid");
   }
   const locale = normalizeLocale(payload.user?.preferred_locale || flow.locale);
-  const response = NextResponse.redirect(
-    new URL(localizedPath(locale, flow.next), request.nextUrl.origin),
-  );
+  const response = NextResponse.redirect(siteRedirectUrl(localizedPath(locale, flow.next)));
   const secureCookie = process.env.NODE_ENV === "production" || request.nextUrl.protocol === "https:";
   response.cookies.set("travel_access", payload.access_token, {
     httpOnly: true,
