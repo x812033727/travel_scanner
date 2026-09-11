@@ -1,13 +1,13 @@
 ---
 id: 2026-09-11-social-login-email-notice
 title: 社群登入按鈕下方說明會取得 Email 與用途（LINE Email 權限申請要附這個畫面）
-status: in-progress
+status: done
 priority: P1
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-11T17:17:17Z
 created_at: 2026-09-11T17:17:15Z
-completed_at:
+completed_at: 2026-09-11T17:26:01Z
 branch: claude/social-login-email-notice
 depends_on: []
 scope:
