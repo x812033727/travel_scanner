@@ -39,6 +39,12 @@ from app.models import (
 )
 from app.problems import AppError
 from app.travel_services.channels import channel_for, resolve_offer_target
+from app.travel_services.hotel_operating import (
+    hotel_stay_available,
+    hotel_today,
+    require_hotel_booking_target,
+    require_hotel_stay,
+)
 from app.travel_services.hotel_quotes import HotelQuoteRequest, search_quotes
 from app.travel_services.schemas import (
     CITIES,
@@ -143,6 +149,49 @@ async def public_stay22_script_options(
     ):
         raise fail("service_unavailable", 404)
     return await script_options(product, config, datetime.now(UTC), locale=locale)
+
+
+@router.get("/travel-services/{product_id}/booking-details")
+async def public_hotel_booking_details(
+    product_id: UUID,
+    session: Session,
+    request: Request,
+    response: Response,
+    locale: RequestLocale,
+) -> dict[str, Any]:
+    """First-party hotel details independent of Discovery and external booking SDKs."""
+    response.headers["Cache-Control"] = "no-store"
+    response.headers["Referrer-Policy"] = "no-referrer"
+    product = await session.get(TravelServiceProduct, product_id)
+    config, _ = await catalog_config(session)
+    if not (
+        product
+        and product.kind == "hotel"
+        and product.status == "approved"
+        and product.destination_id in CITIES
+        and config.public_enabled
+        and product_enabled(config, product, now=datetime.now(UTC))
+    ):
+        raise fail("service_unavailable", 404)
+    try:
+        Facts.model_validate(product.facts)
+    except ValidationError as exc:
+        raise fail("service_unavailable", 404) from exc
+    result = await recommendations(
+        session,
+        await load_runtime_settings(session),
+        locale,
+        city=product.destination_id,
+        product_id=product.id,
+        tracking_allowed=request.headers.get("dnt") != "1"
+        and request.headers.get("sec-gpc") != "1",
+    )
+    detail: dict[str, Any] | None = next(
+        (item for item in result["items"] if item["id"] == str(product_id)), None
+    )
+    if detail is None:
+        raise fail("service_unavailable", 404)
+    return detail
 
 
 @router.get("/travel-services")
@@ -277,7 +326,8 @@ async def trip_services(
                 "status": s.status,
                 "kind": p.kind,
                 "title": p.names_json.get(locale) or p.title,
-                "available": p.status == "approved",
+                "available": p.status == "approved"
+                and hotel_stay_available(p, trip.start_date, trip.end_date),
                 "details": s.details,
             }
             for s, p in selections
@@ -349,6 +399,10 @@ async def select_service(
     if replay:
         if replay.request_hash != digest:
             raise fail("service_operation_conflict", 409)
+        replay_product = await session.get(TravelServiceProduct, replay.product_id)
+        if replay_product is None:
+            raise fail("service_unavailable", 404)
+        require_hotel_stay(replay_product, trip.start_date, trip.end_date)
         return {
             "id": str(replay.id),
             "version": trip.version,
@@ -361,6 +415,7 @@ async def select_service(
     config, _ = await catalog_config(session)
     if not product or product.status != "approved" or not product_enabled(config, product):
         raise fail("service_unavailable", 404)
+    require_hotel_stay(product, trip.start_date, trip.end_date)
     rows = await load_items(session, trip.id)
     if not rows:
         # Hydrate inside this transaction; the legacy helper commits and releases our lock.
@@ -576,6 +631,8 @@ async def hotel_clickout(
     config, _ = await catalog_config(session)
     if not product:
         raise fail("service_unavailable", 404)
+    # Legacy links accept no stay dates and cannot bypass a restricted hotel's form.
+    require_hotel_stay(product)
     link = next(
         (
             link
@@ -688,12 +745,31 @@ async def booking_option_clickout(
     zone = {"JP": "Asia/Tokyo", "KR": "Asia/Seoul", "TW": "Asia/Taipei"}.get(country or "", "UTC")
     today = now.astimezone(ZoneInfo(zone)).date()
     context = await _booking_click_context(request, today=today)
-    direct = await safe_click_target(option)
+    require_hotel_stay(
+        product,
+        context.check_in if context else None,
+        context.check_out if context else None,
+        now=now,
+    )
+    require_hotel_booking_target(product, option.url)
     settings = await load_runtime_settings(session)
     offer = await matching_offer(session, product, option, settings, now)
-    target, mode, fallback = direct, "direct", False
+    fallback = False
+    if offer:
+        try:
+            require_hotel_booking_target(product, offer.target_url)
+            if offer.static_url:
+                require_hotel_booking_target(product, offer.static_url)
+        except AppError:
+            if not config.direct_hotel_links_enabled:
+                raise
+            # An opaque saved affiliate URL is not safe to rewrite or convert.
+            # Use only this option's independently reviewed query-free original.
+            offer, fallback = None, True
+    direct = await safe_click_target(option)
+    target, mode = direct, "direct"
     sub_id = f"svc_hotel_{product.destination_id}_{locale}_{placement}"
-    channel = booking_channel(
+    channel = "direct" if fallback else booking_channel(
         option,
         config,
         has_offer=offer is not None,
@@ -799,6 +875,7 @@ async def hotel_quotes(
     zone = {"JP": "Asia/Tokyo", "KR": "Asia/Seoul", "TW": "Asia/Taipei"}[country]
     if payload.check_in < datetime.now(UTC).astimezone(ZoneInfo(zone)).date():
         raise fail("service_schedule_invalid")
+    require_hotel_stay(product, payload.check_in, payload.check_out)
     return await search_quotes(product, payload, locale, config, get_redis())
 
 
@@ -832,6 +909,18 @@ async def offer_clickout(
     if not result:
         raise fail("service_unavailable", 404)
     offer, brand, product = result
+    # Product offer links are another booking entry point, including older forms.
+    if product.kind == "hotel":
+        context = await _booking_click_context(request, today=hotel_today(product, now))
+        require_hotel_stay(
+            product,
+            context.check_in if context else None,
+            context.check_out if context else None,
+            now=now,
+        )
+        require_hotel_booking_target(product, offer.target_url)
+        if offer.static_url:
+            require_hotel_booking_target(product, offer.static_url)
     if not product_enabled(config, product) or not ready_offer(
         offer, brand, product, settings, now
     ):

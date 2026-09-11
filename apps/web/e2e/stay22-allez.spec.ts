@@ -1,5 +1,6 @@
 import { expect, test, type BrowserContext, type Locator, type Page } from "@playwright/test";
 import type { Stay22AllezCopy } from "../lib/stay22-allez-copy";
+import type { HotelOperatingRules } from "../lib/hotel-operation-rules";
 import { getDiscoveryCopy } from "../lib/discovery-copy";
 import { existsSync, readFileSync } from "node:fs";
 import { createServer } from "node:http";
@@ -157,7 +158,8 @@ async function openDiscoveryBookingPanel(page: Page) {
   return panel;
 }
 
-async function fixture(context: BrowserContext, { realClickout = false } = {}) {
+async function fixture(context: BrowserContext, { realClickout = false, operatingRules }: { realClickout?: boolean; operatingRules?: HotelOperatingRules } = {}) {
+  const fixtureProduct = { ...product, facts: { ...product.facts, ...(operatingRules ? { hotel_operating_rules: operatingRules } : {}) } };
   const posts: { body: string; path: string; url: string; origin: string | null }[] = [];
   const external: string[] = [];
   const quotes: string[] = [];
@@ -187,7 +189,7 @@ async function fixture(context: BrowserContext, { realClickout = false } = {}) {
     else if (path === `/discovery/content/hotel/${product.id}`) body = discoveryHotel;
     else if (path === "/discovery/suggestions") body = { items: [], destinations: [{ id: "tokyo", name: "東京" }], topics: [] };
     else if (path === "/travel-services/config") body = { public_enabled: true, enabled_kinds: ["hotel"], enabled_destinations: ["tokyo"] };
-    else if (path === "/travel-services") body = { enabled: true, enabled_kinds: ["hotel"], destinations: ["tokyo"], items: [product], areas: [], selections: [] };
+    else if (path === "/travel-services") body = { enabled: true, enabled_kinds: ["hotel"], destinations: ["tokyo"], items: [fixtureProduct], areas: [], selections: [] };
     else if (path.includes("destination-offers")) body = { options: [] };
     else if (path.includes("/saved-items")) body = { items: [], total: 0, has_more: false };
     else if (path === "/runtime/public-config") body = { hotspots_enabled: true, hotspots_destinations: ["tokyo"] };
@@ -196,6 +198,66 @@ async function fixture(context: BrowserContext, { realClickout = false } = {}) {
   });
   return { posts, external, quotes };
 }
+
+test("same-tab fallback is explicit and posts the current checked dates without opening another page", async ({ page, context }) => {
+  const calls = await fixture(context);
+  await page.goto("/zh-TW/destinations/tokyo/services?type=hotel");
+  await page.getByRole("button", { name: travelServicesCopy.platforms, exact: true }).click();
+  const panel = page.getByRole("dialog", { name: product.title });
+  const fallbackName = localizedCopy.openSameTab.replace("{platform}", "Booking.com");
+  await expect(panel.getByRole("button", { name: fallbackName, exact: true })).toHaveCount(0);
+  const popupWait = context.waitForEvent("page");
+  await panel.getByRole("button", { name: /前往 Booking.com 查價格/ }).click();
+  const popup = await popupWait;
+  await expect(popup).toHaveTitle("Fixture booking platform");
+  await popup.close();
+  await panel.getByLabel(localizedCopy.checkIn, { exact: true }).fill("2099-11-10");
+  await panel.getByLabel(localizedCopy.checkOut, { exact: true }).fill("2099-11-12");
+  const fallback = panel.getByRole("button", { name: fallbackName, exact: true });
+  await expect(fallback).toHaveAttribute("formtarget", "_self");
+  await fallback.scrollIntoViewIfNeeded();
+  expect((await fallback.boundingBox())!.height).toBeGreaterThanOrEqual(44);
+  const pages = context.pages().length;
+  await fallback.focus();
+  await page.keyboard.press("Enter");
+  await expect(page).toHaveTitle("Fixture booking platform");
+  expect(context.pages()).toHaveLength(pages);
+  expect(calls.posts).toHaveLength(2);
+  expect(Object.fromEntries(new URLSearchParams(calls.posts[1].body))).toEqual({ check_in: "2099-11-10", check_out: "2099-11-12" });
+  expect(new URL(calls.posts[1].url).searchParams.has("check_in")).toBe(false);
+  expect(calls.external).toEqual([]);
+  expect(calls.quotes).toEqual([]);
+});
+
+test("hotel restrictions prevent date omission and both clickout targets, with readable source notices", async ({ page, context }) => {
+  const calls = await fixture(context, { operatingRules: { unavailable_stays: [{ start_date: "2099-11-10", end_date: "2099-11-12", reason: "Synthetic maintenance exclusion", source_url: "https://hotel.example.test/notice" }] } });
+  await page.goto("/zh-TW/destinations/tokyo/services?type=hotel");
+  await page.getByRole("button", { name: travelServicesCopy.platforms, exact: true }).click();
+  const panel = page.getByRole("dialog", { name: product.title });
+  await expect(panel.getByRole("checkbox", { name: localizedCopy.omitDates })).toHaveCount(0);
+  const open = panel.getByRole("button", { name: /前往 Booking.com 查價格/ });
+  await open.click();
+  expect(calls.posts).toEqual([]);
+  await expect(panel.getByLabel(localizedCopy.checkIn, { exact: true })).toBeFocused();
+  await panel.getByLabel(localizedCopy.checkIn, { exact: true }).fill("2099-11-09");
+  await panel.getByLabel(localizedCopy.checkOut, { exact: true }).fill("2099-11-10");
+  const popupWait = context.waitForEvent("page");
+  await open.click();
+  const popup = await popupWait;
+  await expect(popup).toHaveTitle("Fixture booking platform");
+  await popup.close();
+  await panel.getByLabel(localizedCopy.checkOut, { exact: true }).fill("2099-11-11");
+  const fallback = panel.getByRole("button", { name: localizedCopy.openSameTab.replace("{platform}", "Booking.com"), exact: true });
+  await fallback.click();
+  await expect(panel.getByRole("alert")).toHaveText(localizedCopy.operatingUnavailable);
+  expect(calls.posts).toHaveLength(1);
+  const source = panel.getByRole("link", { name: new RegExp(localizedCopy.operatingSource) });
+  await expect(source).toHaveAttribute("href", "https://hotel.example.test/notice");
+  await expect(source).toHaveAttribute("rel", "noopener noreferrer");
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
+  await page.screenshot({ path: test.info().outputPath("hotel-restriction-panel.png") });
+  expect(calls.external).toEqual([]);
+});
 
 for (const option of product.booking_options) {
   test(`discovery: first ${option.provider} click preserves its entry and booking conditions without retry`, async ({ page, context }) => {

@@ -1,13 +1,13 @@
 ---
 id: 2026-09-10-verify-hotel-booking-copy
 title: Verify simplified hotel booking copy without changing affiliate flow
-status: review
+status: done
 priority: P2
 area: web
 owner: codex-hotel-copy-tests
 claimed_at: 2026-09-10T00:47:25Z
 created_at: 2026-09-10T00:46:05Z
-completed_at:
+completed_at: 2026-09-11T02:50:18Z
 branch: codex/hotel-booking-copy
 depends_on: []
 scope:

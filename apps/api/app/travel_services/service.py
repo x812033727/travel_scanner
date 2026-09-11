@@ -5,6 +5,7 @@ import json
 import re
 from datetime import UTC, datetime, timedelta
 from typing import Any
+from uuid import UUID
 
 from sqlalchemy import or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -31,6 +32,7 @@ from app.travel_services.channels import (
     klook_product_target,
     validate_offer_target,
 )
+from app.travel_services.hotel_operating import hotel_publicly_available, hotel_stay_available
 from app.travel_services.registry import BRANDS, affiliate_target
 from app.travel_services.schemas import CITIES, KINDS, CatalogConfig, Facts, HotelLink, ProductInput
 from app.trips.stay_areas import evidence_items, extension_destination_ids, score_stay_areas
@@ -57,7 +59,11 @@ def enabled(config: CatalogConfig, city: str, kind: str, *, public: bool = False
     )
 
 
-def product_enabled(config: CatalogConfig, product: TravelServiceProduct) -> bool:
+def product_enabled(
+    config: CatalogConfig, product: TravelServiceProduct, *, now: datetime | None = None
+) -> bool:
+    if not hotel_publicly_available(product, now):
+        return False
     if product.kind != "esim":
         return enabled(config, product.destination_id, product.kind)
     coverage = product.facts.get("country_codes", [])
@@ -167,6 +173,7 @@ def ready_offer(
 ) -> bool:
     if not (
         product.status == "approved"
+        and hotel_publicly_available(product, now)
         and offer.status == "approved"
         and offer.verified_at
         and now - timedelta(days=30) <= offer.verified_at <= now
@@ -273,7 +280,9 @@ def ready_hotel_links(
 ) -> list[HotelLink]:
     if not (
         config.direct_hotel_links_enabled
-        and product_enabled(config, product)
+        and product_enabled(config, product, now=now)
+        # This legacy surface has no date form. Restricted hotels use booking_options.
+        and hotel_stay_available(product, None, None, now=now)
         and product.kind == "hotel"
         and product.status == "approved"
         and product.verified_at
@@ -435,6 +444,7 @@ async def recommendations(
     trip: TripPlan | None = None,
     rows: list[TripPlanItem] | None = None,
     tracking_allowed: bool = True,
+    product_id: UUID | None = None,
     **filters: Any,
 ) -> dict[str, Any]:
     if city not in CITIES:
@@ -442,17 +452,25 @@ async def recommendations(
     config, _ = await catalog_config(session)
     kinds = [kind for kind in KINDS if enabled(config, city, kind, public=public)]
     now = datetime.now(UTC)
-    products = list(
-        await session.scalars(
-            select(TravelServiceProduct).where(
-                or_(
-                    TravelServiceProduct.destination_id == city, TravelServiceProduct.kind == "esim"
-                ),
-                TravelServiceProduct.kind.in_(kinds),
-                TravelServiceProduct.status == "approved",
-            )
-        )
+    product_query = select(TravelServiceProduct).where(
+        or_(
+            TravelServiceProduct.destination_id == city, TravelServiceProduct.kind == "esim"
+        ),
+        TravelServiceProduct.kind.in_(kinds),
+        TravelServiceProduct.status == "approved",
     )
+    if product_id is not None:
+        # A standalone detail must not disappear behind the public list's 120-item cap.
+        product_query = product_query.where(TravelServiceProduct.id == product_id)
+    products = list(await session.scalars(product_query))
+    products = [
+        product for product in products
+        if hotel_publicly_available(product, now)
+        and (
+            trip is None
+            or hotel_stay_available(product, trip.start_date, trip.end_date, now=now)
+        )
+    ]
     offers: dict[str, list[dict[str, Any]]] = {}
     hotel_targets: dict[str, set[tuple[str, str]]] = {}
     for offer, brand in (

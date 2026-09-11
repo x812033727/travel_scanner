@@ -1,4 +1,33 @@
 {
+  "hotelOperation": {
+    "title": "호텔 운영 날짜",
+    "hint": "호텔 현지 날짜를 기준으로 설정하세요. 공지에 휴업 시간이 있으면 영향을 받는 숙박일을 보수적으로 제외하세요. 이 규칙은 하루 중 시간대별 예외를 처리하지 않습니다.",
+    "range": "숙박 불가 기간 {number}",
+    "startDate": "숙박이 불가능한 첫날",
+    "endDate": "숙박 재개 날짜",
+    "rangeHint": "시작일 밤부터 재개일 전날 밤까지 제외합니다. 재개일 숙박과 시작일 체크아웃은 가능합니다.",
+    "reason": "공지 내용 / 사유",
+    "source": "호텔 공식 공지 또는 정부 출처 (HTTPS)",
+    "addRange": "숙박 불가 기간 추가",
+    "removeRange": "기간 {number} 삭제",
+    "cutoffTitle": "최종 운영 날짜",
+    "lastCheckoutDate": "체크아웃 가능한 마지막 날짜",
+    "cutoffHint": "이 날짜에 체크아웃할 수 있습니다. 이후 체크아웃이 필요한 숙박은 제외됩니다.",
+    "addCutoff": "마지막 체크아웃 날짜 설정",
+    "removeCutoff": "마지막 체크아웃 날짜 삭제",
+    "saveHint": "변경 사항은 초안에 유지됩니다. 검토를 위해 저장해야 반영되며, 승인은 별도 작업입니다.",
+    "save": "저장 후 검토 요청",
+    "errors": {
+      "invalidJson": "운영 날짜를 편집하기 전에 상품 JSON을 수정하세요.",
+      "invalidRules": "운영 날짜 규칙의 형식을 인식할 수 없습니다. JSON 편집기에서 수정하세요.",
+      "emptyRules": "숙박 불가 기간이나 마지막 체크아웃 날짜를 추가하거나 운영 날짜 규칙을 삭제하세요.",
+      "invalidDates": "유효한 날짜를 입력하세요. 재개일은 숙박이 불가능한 첫날보다 늦어야 합니다.",
+      "invalidReason": "각 규칙에 1~1,000자의 공지 내용 또는 사유를 입력하세요.",
+      "invalidSource": "각 규칙에 로그인 정보를 포함하지 않은 유효한 HTTPS 출처 URL을 입력하세요.",
+      "overlappingDates": "숙박 불가 기간은 겹칠 수 없습니다. 이어지는 기간은 허용됩니다.",
+      "tooManyRanges": "숙박 불가 기간은 최대 50개까지 설정할 수 있습니다."
+    }
+  },
   "destinationOffersTitle": "이 목적지의 제휴 서비스",
   "destinationOffersHint": "검증된 제휴 사이트에서 검색을 계속합니다. 목적지 링크는 특정 상품이나 실시간 가격을 뜻하지 않습니다.",
   "destinationProductsPending": "검증된 목적지 제휴 서비스는 위에 표시됩니다. 이 목적지의 개별 상품은 아직 검토 중입니다.",

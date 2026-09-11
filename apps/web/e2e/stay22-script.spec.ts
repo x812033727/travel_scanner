@@ -1,11 +1,12 @@
 import { expect, test as base, type Page } from "@playwright/test";
 import { spawn } from "node:child_process";
 import { once } from "node:events";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { createServer } from "node:http";
 import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
 import { defaultUsageCatalog } from "../lib/usage-catalog";
+import type { Stay22AllezCopy } from "../lib/stay22-allez-copy";
 import { klookAffiliateCopy } from "../lib/klook-affiliate-copy";
 import { siteFeatureKeys } from "../lib/site-features";
 import { stay22ScriptCopy } from "../lib/stay22-script-copy";
@@ -20,6 +21,7 @@ const fixtureLmaId = "000000000000000000000001";
 const bookingUrl = "https://www.booking.com/hotel/jp/script-fixture.html";
 const officialUrl = "https://hotel.example.test/access";
 const copy = stay22ScriptCopy("zh-TW");
+const bookingCopy: Stay22AllezCopy = JSON.parse(readFileSync(new URL("../lib/stay22-allez-messages/zh-TW.json", import.meta.url), "utf8"));
 const hotel = {
   id: hotelId, title: "Reviewed Script Hotel", destination_id: "tokyo", kind: "hotel",
   category: "city_hotel", official_url: officialUrl, distance_km: 1, reason: "center_distance",
@@ -30,7 +32,7 @@ type Mode = "script" | "off" | "allez" | "error" | "invalid";
 type ApiCall = { path: string; method: string; cookie: string; authorization: string };
 type Fixture = {
   origin: string; mode: Mode; sdk: "rewrite" | "noop" | "fail";
-  optionFailure: boolean; sdkLoads: string[]; driveLoads: string[]; blocked: string[];
+  optionFailure: boolean; operatingRules: boolean; sdkLoads: string[]; driveLoads: string[]; blocked: string[];
   popupLoads: string[]; api: ApiCall[]; errors: string[];
 };
 type MockWindow = Window & { __stay22Mock?: { lmaID: string; documentUrl: string }; __publicDocumentMarker?: string };
@@ -51,23 +53,30 @@ const mockSdk = `(() => {
 const test = base.extend<{ site: Fixture }>({
   site: async ({ context, request }, runTest, testInfo) => {
     test.skip(!existsSync(new URL("../.next/BUILD_ID", import.meta.url)), "Run next build for isolated Script browser coverage");
-    const site: Fixture = { origin: "", mode: "script", sdk: "rewrite", optionFailure: false, sdkLoads: [], driveLoads: [], blocked: [], popupLoads: [], api: [], errors: [] };
+    const site: Fixture = { origin: "", mode: "script", sdk: "rewrite", optionFailure: false, operatingRules: false, sdkLoads: [], driveLoads: [], blocked: [], popupLoads: [], api: [], errors: [] };
     const upstream = createServer((incoming, outgoing) => {
       incoming.resume();
       const url = new URL(incoming.url || "/", "http://127.0.0.1");
       site.api.push({ path: url.pathname, method: incoming.method || "GET", cookie: incoming.headers.cookie || "", authorization: incoming.headers.authorization || "" });
+      const fixtureHotel = { ...hotel, facts: { ...hotel.facts, ...(site.operatingRules ? {
+        hotel_operating_rules: { unavailable_stays: [{ start_date: "2099-11-10", end_date: "2099-11-12", reason: "Synthetic maintenance exclusion", source_url: "https://hotel.example.test/notice" }] },
+      } : {}) } };
       let result: unknown = {};
       if (url.pathname === "/api/v1/travel-services/stay22-script-config") {
         outgoing.statusCode = site.mode === "error" ? 503 : 200;
         result = { enabled: site.mode === "script" || site.mode === "invalid", integration_mode: site.mode === "allez" ? "allez" : "script", lma_id: site.mode === "invalid" ? "unexpected-id" : site.mode === "script" ? fixtureLmaId : null };
       } else if (url.pathname.endsWith("/stay22-script-options")) {
-        outgoing.statusCode = site.optionFailure ? 503 : site.mode === "script" ? 200 : 404;
+        outgoing.statusCode = site.optionFailure ? 503 : site.mode !== "script" ? 404 : site.operatingRules ? 422 : 200;
         result = { title: hotel.title, destination_id: "tokyo", options: outgoing.statusCode === 200 ? [
           { id: bookingId, provider: "booking", name: "Booking.com", url: bookingUrl },
           { id: "official-option", provider: "official", name: "Official website", url: officialUrl },
         ] : [] };
-      } else if (url.pathname === "/api/v1/travel-services") result = { enabled: true, enabled_kinds: ["hotel"], destinations: ["tokyo"], items: [hotel], areas: [], selections: [] };
+      } else if (url.pathname === "/api/v1/travel-services") result = { enabled: true, enabled_kinds: ["hotel"], destinations: ["tokyo"], items: [fixtureHotel], areas: [], selections: [] };
       else if (url.pathname === "/api/v1/travel-services/config") result = { public_enabled: true, enabled_kinds: ["hotel"], enabled_destinations: ["tokyo"] };
+      else if (url.pathname === `/api/v1/travel-services/${hotelId}/booking-details`) result = fixtureHotel;
+      // Ordinary exact-hotel booking must not depend on the discovery switch.
+      else if (url.pathname === "/api/v1/discovery/status") result = { enabled: false };
+      else if (url.pathname.startsWith("/api/v1/discovery/")) { outgoing.statusCode = 404; result = { detail: "Discovery is disabled" }; }
       else if (url.pathname.includes("destination-offers")) result = { options: [] };
       else if (url.pathname === "/api/v1/runtime/site-visibility") result = Object.fromEntries(siteFeatureKeys.map((key) => [`${key}_enabled`, true]));
       else if (url.pathname === "/api/v1/usage-catalog") result = defaultUsageCatalog;
@@ -410,6 +419,43 @@ test("public to private navigation discards vendor document state and back retur
   await expect(page.getByRole("heading", { name: hotel.title })).toBeVisible();
   expect(site.blocked).toEqual([]);
   expect(site.errors).toEqual([]);
+});
+
+test("restricted hotel entry discards the SDK document and opens booking dates with discovery disabled", async ({ page, request, site }) => {
+  site.operatingRules = true;
+  const discovery = await request.get(`${site.origin}/api/travel/discovery/status`);
+  expect(await discovery.json()).toMatchObject({ enabled: false });
+  await page.goto(`${canonical}${publicPath}`);
+  await expect.poll(() => page.evaluate(() => (window as MockWindow).__stay22Mock?.lmaID)).toBe(fixtureLmaId);
+  await expect(page.locator("form,input,iframe")).toHaveCount(0);
+  expect(site.api.some((call) => /\/auth\/|\/saved-items|\/trips/.test(call.path))).toBe(false);
+  const entry = page.getByRole("link", { name: bookingCopy.scriptDateEntry, exact: true });
+  const exactPath = `/zh-TW/hotels/${hotelId}`;
+  await expect(entry).toHaveAttribute("href", exactPath);
+  expect(await entry.getAttribute("target")).toBeNull();
+  await expect(page.getByRole("button", { name: copy.open, exact: true })).toHaveCount(0);
+  expect(site.api.some((call) => call.path.endsWith("/stay22-script-options"))).toBe(false);
+  await page.evaluate(() => { (window as MockWindow).__publicDocumentMarker = "discard-before-hotel-dates"; });
+  await entry.click();
+  await expect(page).toHaveURL(`${canonical}${exactPath}`);
+  await expect(page.locator(".public-app-shell")).toBeVisible();
+  expect(await page.evaluate(() => (window as MockWindow).__publicDocumentMarker)).toBeUndefined();
+  expect(await page.evaluate(() => (window as MockWindow).__stay22Mock)).toBeUndefined();
+  await expect(page.locator("#stay22-lma")).toHaveCount(0);
+  const panel = page.getByRole("dialog", { name: hotel.title, exact: true });
+  await expect(panel.getByLabel(bookingCopy.checkIn, { exact: true })).toBeVisible();
+  await expect(panel.getByLabel(bookingCopy.checkOut, { exact: true })).toBeVisible();
+  await expect(panel.getByRole("checkbox", { name: bookingCopy.omitDates })).toHaveCount(0);
+  await expect(panel.locator(`form[action*="booking-options/${bookingId}/clickout"]`)).toHaveCount(1);
+  await panel.getByLabel(bookingCopy.checkIn, { exact: true }).fill("2099-11-09");
+  await panel.getByLabel(bookingCopy.checkOut, { exact: true }).fill("2099-11-10");
+  expect(site.sdkLoads).toHaveLength(1);
+  expect(site.api.some((call) => call.path === `/api/v1/travel-services/${hotelId}/booking-details`)).toBe(true);
+  expect(site.api.some((call) => call.path.startsWith("/api/v1/discovery/") && !call.path.endsWith("/status"))).toBe(false);
+  expect(site.api.some((call) => call.path.endsWith("/clickout"))).toBe(false);
+  expect(site.blocked).toEqual([]);
+  expect(site.errors).toEqual([]);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
 });
 
 test("destination navigation from a transfer page creates a fresh public document", async ({ page, site }) => {

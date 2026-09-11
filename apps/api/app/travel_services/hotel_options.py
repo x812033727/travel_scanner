@@ -91,7 +91,7 @@ def ready_option(
     if not (
         product.kind == "hotel"
         and product.status == "approved"
-        and product_enabled(config, product)
+        and product_enabled(config, product, now=now)
         and option.status == "approved"
         and option.discovery_status == "found"
         and option.verified_at
