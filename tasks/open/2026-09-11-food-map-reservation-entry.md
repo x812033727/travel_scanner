@@ -1,7 +1,7 @@
 ---
 id: 2026-09-11-food-map-reservation-entry
 title: Fix food map and reservation entry points
-status: in-progress
+status: review
 priority: P1
 area: web
 owner: codex-food-map-reservation-entry
