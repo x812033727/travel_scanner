@@ -111,6 +111,18 @@ export function DestinationGuide({
         action={<Link className={link} href={`/foods?destination_id=${encodeURIComponent(destination.id)}`}>{copy.browseFood}</Link>}
       />
 
+      {/* The section publishes per locale, so a city may have articles in one language and
+          none in another. These are links into a filtered list rather than a rendered count:
+          the list answers honestly when it is empty, and this component stays synchronous --
+          the page test renders it without awaiting anything. */}
+      <section className="mt-10">
+        <h2 className="text-2xl font-bold tracking-tight">{copy.guidesTitle}</h2>
+        <ul className="mt-4 space-y-2">
+          <li><Link className={link} href={`/guides/intel?destination=${encodeURIComponent(destination.id)}`}>{copy.guidesIntel}</Link></li>
+          <li><Link className={link} href={`/guides/howto?destination=${encodeURIComponent(destination.id)}`}>{copy.guidesHowto}</Link></li>
+        </ul>
+      </section>
+
       <section className="mt-10">
         <h2 className="text-2xl font-bold tracking-tight">{copy.planTitle}</h2>
         <ul className="mt-4 space-y-2">

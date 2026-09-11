@@ -52,6 +52,15 @@ describe("SiteFooter", () => {
     expect(link.getAttribute("href")).toBe("/destinations");
   });
 
+  it("carries the only entry point to the guides that survives a first paint", () => {
+    // The header renders the section only after the discovery switch resolves; this link is
+    // in the response body of every public page regardless.
+    render(<SiteFooter year={2026} />);
+    const footer = screen.getByRole("contentinfo");
+    const link = within(footer).getByRole("link", { name: "情報攻略" });
+    expect(link.getAttribute("href")).toBe("/guides");
+  });
+
   it("keeps the year without duplicating the top-header language control", () => {
     renderAt("/");
     expect(screen.queryByTestId("language-switcher")).toBeNull();

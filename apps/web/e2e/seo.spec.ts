@@ -61,7 +61,10 @@ test("runtime sitemap exposes only public routes and stable localized alternate 
   if (!/no-store|no-cache/.test(cacheControl)) expect(cacheControl).toContain("must-revalidate");
   expect(cacheControl).not.toMatch(/(?:s-maxage|max-age)=[1-9]\d*/);
   const xml = await response.text();
-  expect(xml.match(/<url>/g)).toHaveLength(365); // fixture has all public switches enabled
+  // Ten base routes, 33 destination guides and 33 services pages, times five locales, with
+  // the fixture's public switches all enabled. The fixture API serves no /api/v1/guides, so
+  // `guideSitemapEntries` degrades to empty and no article URLs are appended here.
+  expect(xml.match(/<url>/g)).toHaveLength(5 * (10 + 33 + 33));
   expect(xml).toContain("/en/destinations/tokyo</loc>");
   expect(xml).toContain('hreflang="x-default"');
   expect(xml).not.toMatch(/<loc>[^<]*\/(?:admin|account|trips|login|privacy)(?:\/|<)/);
