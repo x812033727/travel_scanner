@@ -63,11 +63,14 @@ export function SocialLoginButtons({
         </a>
       ))}
       {available.length > 0 && (
-        <div className="flex items-center gap-3 py-2 text-xs text-[var(--muted)]" aria-hidden="true">
-          <span className="h-px flex-1 bg-[var(--line)]" />
-          {t("orUseEmail")}
-          <span className="h-px flex-1 bg-[var(--line)]" />
-        </div>
+        <>
+          <p className="text-xs leading-5 text-[var(--muted)]">{t("socialEmailNotice")}</p>
+          <div className="flex items-center gap-3 py-2 text-xs text-[var(--muted)]" aria-hidden="true">
+            <span className="h-px flex-1 bg-[var(--line)]" />
+            {t("orUseEmail")}
+            <span className="h-px flex-1 bg-[var(--line)]" />
+          </div>
+        </>
       )}
     </div>
   );
