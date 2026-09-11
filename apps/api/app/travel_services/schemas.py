@@ -106,7 +106,8 @@ class HotelLink(StrictModel):
 
     @model_validator(mode="after")
     def identity(self) -> Self:
-        from app.travel_services.registry import BRANDS, affiliate_target, brand_target
+        from app.travel_services.rakuten import RAKUTEN_JAPAN_HOST
+        from app.travel_services.registry import BRANDS, affiliate_target, direct_hotel_target
 
         host = urlsplit(self.url).hostname or ""
         # Ordinary links must not conceal a redirect or another affiliate's tracking.
@@ -132,7 +133,13 @@ class HotelLink(StrictModel):
             evidence_host = urlsplit(self.evidence_url).hostname or ""
             if host.removeprefix("www.") != evidence_host.removeprefix("www."):
                 raise ValueError("Official website evidence must belong to the same host")
-            if any(host == h or host.endswith("." + h) for b in BRANDS.values() for h in b.hosts):
+            if (
+                host == RAKUTEN_JAPAN_HOST
+                or host.endswith("." + RAKUTEN_JAPAN_HOST)
+                or any(
+                    host == h or host.endswith("." + h) for b in BRANDS.values() for h in b.hosts
+                )
+            ):
                 raise ValueError("A booking platform is not the hotel's official website")
             if host == "tpx.gr" or host.endswith(".tpx.gr"):
                 raise ValueError("Affiliate links are not ordinary hotel links")
@@ -143,7 +150,7 @@ class HotelLink(StrictModel):
             else:
                 raise ValueError("Affiliate links are not ordinary hotel links")
         else:
-            brand_target(self.provider, self.url)
+            direct_hotel_target(self.provider, self.url)
             path = urlsplit(self.url).path.lower()
             if path == "/" or re.search(
                 r"(?:^|/)(?:search(?:results)?(?:\.html)?|hotel-search|hotels-list|searchresult)(?:/|$)",
@@ -189,6 +196,12 @@ class HotelOptionInput(StrictModel):
                 provider=self.provider, url=self.url, evidence_url=self.evidence_url
             )
             self.url, self.evidence_url = validated.url, validated.evidence_url
+            if self.provider == "rakuten" and self.property_id is not None:
+                from app.travel_services.rakuten import rakuten_hotel_identity
+
+                identity = rakuten_hotel_identity(self.url)
+                if identity and identity[0] == "japan" and self.property_id != identity[1]:
+                    raise ValueError("Rakuten Japan property ID must match the hotel URL")
         elif self.url or self.property_id:
             raise ValueError("Unconfirmed discovery cannot assert a hotel identity")
         return self
@@ -276,7 +289,92 @@ class Stay22Config(StrictModel):
         return self
 
 
+def operating_source(value: str) -> str:
+    """Operating notices need durable first-party/editorial evidence, not map content."""
+    from app.problems import AppError
+    from app.restaurants.editorial import validate_editorial_url
+
+    value = safe_url(value)
+    try:
+        return validate_editorial_url(value)
+    except AppError as exc:
+        raise ValueError("Operating notice requires a public non-map HTTPS source") from exc
+
+
+def operating_date(value: Any) -> Any:
+    if value is None or type(value) is date:
+        return value
+    if not isinstance(value, str) or not re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}", value):
+        raise ValueError("Operating dates must be ISO calendar dates")
+    return value
+
+
+class OperatingStayExclusion(StrictModel):
+    """Unavailable accommodation nights [start_date, end_date), not operating hours."""
+
+    start_date: date
+    end_date: date
+    reason: str = Field(min_length=1, max_length=1000)
+    source_url: str
+
+    _dates = field_validator("start_date", "end_date", mode="before")(operating_date)
+    _source = field_validator("source_url")(operating_source)
+
+    @field_validator("reason")
+    @classmethod
+    def reason_text(cls, value: str) -> str:
+        if not value.strip():
+            raise ValueError("An operating reason is required")
+        return value.strip()
+
+    @model_validator(mode="after")
+    def ordered(self) -> Self:
+        if self.end_date <= self.start_date:
+            raise ValueError("Unavailable stay end must be after start")
+        return self
+
+
+class HotelOperatingRules(StrictModel):
+    unavailable_stays: list[OperatingStayExclusion] = Field(default_factory=list, max_length=50)
+    last_checkout_date: date | None = None
+    last_checkout_reason: str | None = Field(default=None, min_length=1, max_length=1000)
+    last_checkout_source_url: str | None = None
+
+    _date = field_validator("last_checkout_date", mode="before")(operating_date)
+
+    @field_validator("last_checkout_source_url")
+    @classmethod
+    def source(cls, value: str | None) -> str | None:
+        return operating_source(value) if value is not None else None
+
+    @field_validator("last_checkout_reason")
+    @classmethod
+    def reason(cls, value: str | None) -> str | None:
+        if value is not None and not value.strip():
+            raise ValueError("An operating reason is required")
+        return value.strip() if value is not None else None
+
+    @model_validator(mode="after")
+    def consistent(self) -> Self:
+        cutoff = (self.last_checkout_date, self.last_checkout_reason, self.last_checkout_source_url)
+        if any(value is not None for value in cutoff) and not all(
+            value is not None for value in cutoff
+        ):
+            raise ValueError("Last checkout requires its date, reason and source")
+        if not self.unavailable_stays and self.last_checkout_date is None:
+            raise ValueError("At least one operating restriction is required")
+        ordered = sorted(self.unavailable_stays, key=lambda rule: (rule.start_date, rule.end_date))
+        if any(
+            left.end_date > right.start_date
+            for left, right in zip(ordered, ordered[1:], strict=False)
+        ):
+            raise ValueError("Unavailable stay ranges cannot overlap or repeat")
+        self.unavailable_stays = ordered
+        return self
+
+
 class Facts(StrictModel):
+    hotel_operating_rules: HotelOperatingRules | None = None
     source_credits: list[SourceCredit] = Field(default_factory=list, max_length=10)
     hotel_links: list[HotelLink] = Field(default_factory=list, max_length=8)
     country_codes: list[str] = Field(default_factory=list, max_length=50)
@@ -348,6 +446,8 @@ class ProductInput(StrictModel):
     def hotel_only(self) -> Self:
         if self.kind != "hotel" and self.facts.hotel_links:
             raise ValueError("Ordinary booking links are only supported for hotels")
+        if self.kind != "hotel" and self.facts.hotel_operating_rules is not None:
+            raise ValueError("Hotel operating rules are only supported for hotels")
         return self
 
     @field_validator("source_url")
