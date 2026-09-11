@@ -1,14 +1,14 @@
 ---
 id: 2026-09-11-bottom-nav-covers-page-content
 title: 登入頁的送出鈕在手機上要捲一下才看得到
-status: open
+status: in-progress
 priority: P2
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-11T14:39:07Z
 created_at: 2026-09-11T13:05:03Z
 completed_at:
-branch:
+branch: claude/mokaair-website-access-k7xiku
 depends_on: []
 scope:
   - apps/web/app/globals.css

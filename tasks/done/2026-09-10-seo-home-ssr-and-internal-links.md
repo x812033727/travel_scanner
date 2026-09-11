@@ -1,13 +1,13 @@
 ---
 id: 2026-09-10-seo-home-ssr-and-internal-links
 title: 首頁伺服器端輸出真正的內容，並把目的地頁接進連結結構
-status: review
+status: done
 priority: P1
 area: web
 owner: claude-opus-5-seo
 claimed_at: 2026-09-10T23:03:21Z
 created_at: 2026-09-10T23:03:20Z
-completed_at:
+completed_at: 2026-09-11T14:39:06Z
 branch: claude/seo-optimization-planning-xq1vjl
 depends_on: []
 scope:
@@ -115,3 +115,9 @@ footer 入口在 `/en`、`/en/foods`、`/en/hotspots`、`/en/destinations`、`/e
 Destinations／目的地／旅行先／여행지。
 
 回歸稽核：整份 sitemap **365 個網址仍然全部 200，沒有任何一條帶 `noindex`**。
+
+## 標記完成（由站主授權，非原持有者）
+
+這張任務的工作已隨 PR #388（`d0ec33e`）合併進 main——`site-footer.tsx` 由 `ad2ab2e` 改過，各 `layout.tsx` 的索引指令也都在 main 上——但狀態一直停在 `review`，持有的 scope 因此擋住後續任務。
+
+站主指示標記完成以解開 scope。若原持有者 `claude-opus-5-seo` 尚有未推送的後續工作，請重新開一張任務，不要把這張改回 review。

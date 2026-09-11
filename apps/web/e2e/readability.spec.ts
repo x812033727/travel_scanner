@@ -144,6 +144,25 @@ const collect = async (page: Page) =>
     { minFont: MIN_FONT_PX },
   );
 
+const MIN_TARGET_PX = 44;
+
+/**
+ * Readable text is not the same as a reachable control. The footer links pass the
+ * font floor at 14px and still gave a 16px tall hit area, because `display: inline`
+ * with no padding makes the box the line box.
+ */
+test("the footer links are big enough to tap", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/zh-TW/about");
+  await page.waitForTimeout(800);
+  const footer = page.locator("footer");
+  const heights = await footer.locator("a").evaluateAll((links) =>
+    links.filter((link) => link.getBoundingClientRect().width > 2)
+      .map((link) => ({ text: (link.textContent || "").trim().slice(0, 20), height: Math.round(link.getBoundingClientRect().height) })));
+  expect(heights.length, "the footer renders links").toBeGreaterThan(0);
+  expect(heights.filter((link) => link.height < MIN_TARGET_PX), `footer links under ${MIN_TARGET_PX}px`).toEqual([]);
+});
+
 for (const route of routes) {
   test(`${route} keeps text readable`, async ({ page }) => {
     await page.goto(route);
