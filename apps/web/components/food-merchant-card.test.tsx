@@ -107,7 +107,7 @@ describe("FoodMerchantCard", () => {
     expect(screen.getByText("必比登推介")).toBeTruthy();
     expect(screen.getByText("韓式拌飯")).toBeTruthy();
     expect(screen.getByText("Seoul, Jung-gu")).toBeTruthy();
-    const naver = screen.getByRole("link", { name: "使用 Naver Map 導航至 Hankook Jib" });
+    const naver = screen.getByRole("link", { name: "使用 Naver Map 導航至 Hankook Jib（另開新分頁）" });
     expect(naver.getAttribute("href")).toBe("https://map.naver.com/p/entry/place/123456");
     expect(naver.getAttribute("target")).toBe("_blank");
     expect(naver.getAttribute("rel")).toContain("noopener");
@@ -151,8 +151,8 @@ describe("FoodMerchantCard", () => {
         language_code: "en",
       }],
     });
-    expect(await screen.findByRole("link", { name: "使用 Naver Map 導航至 Hankook Jib" })).toBeTruthy();
-    const booking = screen.getByRole("link", { name: "使用 Catchtable Global 查看或預訂 Hankook Jib" });
+    expect(await screen.findByRole("link", { name: "使用 Naver Map 導航至 Hankook Jib（另開新分頁）" })).toBeTruthy();
+    const booking = screen.getByRole("link", { name: "在 Catchtable Global 查看 Hankook Jib 的訂位資訊（另開新分頁）" });
     expect(booking.getAttribute("href")).toBe("https://www.catchtable.net/shop/hankook-jib");
     expect(booking.getAttribute("rel")).toContain("noopener");
   });

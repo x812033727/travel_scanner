@@ -2,6 +2,7 @@
 
 from datetime import UTC, date, datetime, timedelta
 from unittest.mock import AsyncMock
+from urllib.parse import parse_qs, urlsplit
 from uuid import uuid4
 
 import httpx
@@ -15,6 +16,7 @@ from app.models import (
     FoodLocalization,
     FoodMerchant,
     FoodMerchantFood,
+    FoodMerchantPlatformLink,
     FoodMerchantSource,
     HotelBookingOption,
     HotspotGuide,
@@ -491,6 +493,169 @@ async def test_dish_options_only_real_publishable_merchants_and_reauthorize(harn
         await session.commit()
     cleared = (await client.get(f"/api/v1/discovery/content/food/{dish.id}")).json()["detail"]
     assert cleared["merchants"] == [] and cleared["planning"] is None
+
+
+RESERVATION_FIXTURES = [
+    ("JP", "tokyo", "tablecheck", "TableCheck", "en",
+     "https://www.tablecheck.com/en/shops/mokaair-fixture/reserve"),
+    ("KR", "seoul", "catchtable_global", "Catchtable Global", "en",
+     "https://www.catchtable.net/shop/mokaair-fixture"),
+    ("TW", "taipei", "eztable", "EZTABLE", "zh-TW",
+     "https://www.eztable.com/restaurant/99999999"),
+    ("SG", "singapore", "chope", "Chope", "en",
+     "https://www.chope.co/singapore-restaurants/restaurant/mokaair-fixture"),
+    ("HK", "hong-kong", "openrice", "OpenRice", "en",
+     "https://www.openrice.com/en/hongkong/r-mokaair-fixture-r99999999"),
+    ("TH", "bangkok", "hungry_hub", "Hungry Hub", "en",
+     "https://web.hungryhub.com/en/restaurants/mokaair-fixture"),
+    ("VN", "ho-chi-minh-city", "pasgo", "PasGo", "vi",
+     "https://pasgo.vn/nha-hang/mokaair-fixture-99999999"),
+]
+
+
+async def seed_reservation_merchant(factory, *, country="JP", city="tokyo", **link_values):
+    """Synthetic identities only: these URLs must never be fetched by the tests."""
+    async with factory() as session:
+        dish = food("Synthetic sushi")
+        row = merchant(
+            "Synthetic branch",
+            country_code=country,
+            destination_id=city,
+            address="1 Synthetic Branch Street",
+            official_website_url="https://restaurant.example.com/branch",
+            official_website_verified_at=datetime.now(UTC),
+            naver_map_url="https://map.naver.com/p/entry/place/99999999"
+            if country == "KR" else None,
+        )
+        row.map_identity_metadata = {"map_identities": {"google_places": {
+            "provider": "google_places", "place_id": row.google_place_id,
+            "status": "verified",
+        }}}
+        session.add_all([dish, row])
+        await session.flush()
+        session.add_all([
+            FoodDestination(food_id=dish.id, destination_id=city),
+            FoodMerchantFood(food_id=dish.id, merchant_id=row.id),
+            FoodMerchantSource(
+                merchant_id=row.id, source_type="merchant_official",
+                source_scope="merchant_website", source_title="Synthetic official branch",
+                source_url="https://restaurant.example.com/branch", is_current=True,
+            ),
+            FoodMerchantPlatformLink(**({
+                "merchant_id": row.id, "provider": "tablecheck", "status": "verified",
+                "canonical_url": RESERVATION_FIXTURES[0][-1],
+                "checked_at": datetime.now(UTC), "review_note": "Private branch audit note",
+            } | link_values)),
+        ])
+        await session.commit()
+        return dish, row
+
+
+def block_detail_provider_clients(monkeypatch):
+    def forbidden(*args, **kwargs):
+        raise AssertionError("Reading food/merchant links must not construct provider clients")
+
+    monkeypatch.setattr(httpx.AsyncClient, "__init__", forbidden)
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("locale", ["en", "ja", "ko", "zh-TW", "zh-CN"])
+@pytest.mark.parametrize("country,city,provider,label,language,url", RESERVATION_FIXTURES)
+async def test_food_and_merchant_details_share_exact_reviewed_links_without_provider_calls(
+    harness, monkeypatch, locale, country, city, provider, label, language, url
+):
+    client, factory, _, _, _ = harness
+    dish, row = await seed_reservation_merchant(
+        factory, country=country, city=city, provider=provider, canonical_url=url
+    )
+    block_detail_provider_clients(monkeypatch)
+    headers = {"X-Travel-Locale": locale}
+    food_response = await client.get(
+        f"/api/v1/discovery/content/food/{dish.id}", headers=headers
+    )
+    own_response = await client.get(
+        f"/api/v1/discovery/content/merchant/{row.id}", headers=headers
+    )
+    assert food_response.status_code == own_response.status_code == 200
+    cards = food_response.json()["detail"]["merchants"]
+    assert cards == own_response.json()["detail"]["merchants"]
+    assert len(cards) == 1 and cards[0]["id"] == str(row.id)
+    assert cards[0]["address"] == row.address
+    assert cards[0]["official_website_url"] == row.official_website_url
+    maps, links = cards[0]["map_links"], cards[0]["reservation_links"]
+    assert [entry["provider"] for entry in maps] == (
+        ["naver", "google"] if country == "KR" else ["google"]
+    )
+    assert maps[0]["primary"] is True
+    if country == "KR":
+        assert maps[0]["url"] == row.naver_map_url and maps[1]["primary"] is False
+    assert parse_qs(urlsplit(maps[-1]["url"]).query)["query_place_id"] == [row.google_place_id]
+    assert len(links) == 1 and links[0] == {
+        "provider": provider, "label": label, "url": url,
+        "verified_at": links[0]["verified_at"], "language_code": language,
+    }
+    assert links[0]["verified_at"]
+    # A fallback stays the reviewed original, not a guessed translated path.
+    assert all("Private branch audit note" not in response.text
+               for response in (food_response, own_response))
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("overrides", [
+    {"status": "not_found", "canonical_url": None},
+    {"status": "ambiguous"},
+    {"status": "disabled"},
+    {"canonical_url": "https://www.tablecheck.com/"},
+    {"canonical_url": "https://www.tablecheck.com/en/search"},
+    {"canonical_url": "https://unreviewed.example.com/en/shops/fixture/reserve"},
+    {"canonical_url": "http://www.tablecheck.com/en/shops/fixture/reserve"},
+    {"canonical_url": "javascript:alert(1)"},
+    {"canonical_url": "https://127.0.0.1/en/shops/fixture/reserve"},
+    {"provider": "chope", "canonical_url": RESERVATION_FIXTURES[3][-1]},
+])
+async def test_discovery_omits_unreviewed_unsafe_or_wrong_country_reservation_links(
+    harness, monkeypatch, overrides
+):
+    client, factory, _, _, _ = harness
+    dish, row = await seed_reservation_merchant(factory, **overrides)
+    block_detail_provider_clients(monkeypatch)
+    for kind, identifier in (("food", dish.id), ("merchant", row.id)):
+        response = await client.get(f"/api/v1/discovery/content/{kind}/{identifier}")
+        assert response.status_code == 200
+        cards = response.json()["detail"]["merchants"]
+        assert len(cards) == 1 and cards[0]["reservation_links"] == []
+        assert cards[0]["map_links"] and cards[0]["address"] == row.address
+
+
+@pytest.mark.asyncio
+async def test_discovery_reservation_locale_and_live_withdrawal_preserve_other_links(
+    harness, monkeypatch
+):
+    client, factory, _, _, _ = harness
+    localized_url = "https://www.tablecheck.com/ja/shops/mokaair-fixture/reserve"
+    dish, row = await seed_reservation_merchant(
+        factory, localized_urls_json={"ja": localized_url}
+    )
+    block_detail_provider_clients(monkeypatch)
+    path = f"/api/v1/discovery/content/food/{dish.id}"
+    payload = (await client.get(path, headers={"X-Travel-Locale": "ja"})).json()
+    link = payload["detail"]["merchants"][0]["reservation_links"][0]
+    assert link["url"] == localized_url and link["language_code"] == "ja"
+    async with factory() as session:
+        await session.execute(update(FoodMerchantPlatformLink).where(
+            FoodMerchantPlatformLink.merchant_id == row.id
+        ).values(status="disabled"))
+        await session.commit()
+    withdrawn = (await client.get(path)).json()["detail"]["merchants"][0]
+    assert withdrawn["reservation_links"] == [] and withdrawn["map_links"]
+    assert withdrawn["official_website_url"] == row.official_website_url
+    async with factory() as session:
+        await session.execute(update(FoodMerchant).where(
+            FoodMerchant.id == row.id
+        ).values(review_status="rejected", is_active=False))
+        await session.commit()
+    assert (await client.get(path)).json()["detail"]["merchants"] == []
+    assert (await client.get(f"/api/v1/discovery/content/merchant/{row.id}")).status_code == 404
 
 
 @pytest.mark.asyncio
