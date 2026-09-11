@@ -289,7 +289,20 @@ describe("trip editor", () => {
     fireEvent.click(adjust);
     fireEvent.click(within(assistant).getByRole("button", { name: "關閉" }));
     fireEvent.keyDown(document, { key: "Escape" });
-    expect(screen.getAllByRole("dialog")).toEqual([assistant]);
+    // This assertion has gone red twice in CI on branches that never touched the trip
+    // editor, and has never reproduced on demand — not at the commit that failed, in a
+    // clean worktree, nor across repeated full runs here. It is left exactly as strict as
+    // it was; what is added is the state at the moment it fails, so the next person reads
+    // a cause instead of "expected [] to equal [dialog]". The two shapes to tell apart are
+    // "the guard let the overlay close" (nothing left in the DOM) and "another layer made
+    // it inaccessible" (still in the DOM, hidden from the accessibility tree).
+    expect(screen.queryAllByRole("dialog"), [
+      `dialogs in DOM: ${document.querySelectorAll('[role="dialog"]').length}`,
+      `assistant connected: ${assistant.isConnected}`,
+      `assistant hidden by an ancestor: ${assistant.closest('[aria-hidden="true"],[inert]') !== null}`,
+      `planner layers: ${document.querySelectorAll(".planner-overlay").length}`,
+      `body position: ${document.body.style.position || "(unset)"}`,
+    ].join("; ")).toEqual([assistant]);
     expect(within(assistant).queryByLabelText("想改什麼？")).toBeNull();
     await act(async () => finishPreview(response(itineraryPreview("day"))));
     expect(screen.getByRole("dialog", { name: "確認 AI 行程預覽" })).toBeTruthy();
@@ -2035,5 +2048,32 @@ describe("trip editor explicit drafts", () => {
       data: { hotspot_id: "museum", catalog_selection: { kind: "hotspot", id: "museum" } },
     });
     expect(saved.find((row: { id: string }) => row.id === fixedItem.id)).toMatchObject(fixedItem);
+  });
+  it("does not swallow the close button while the save it started is still in flight", async () => {
+    let finishSave!: (value: ReturnType<typeof response>) => void;
+    const fetchMock = vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      if (init?.method === "PUT") {
+        return new Promise<ReturnType<typeof response>>((resolve) => { finishSave = resolve; });
+      }
+      return Promise.resolve(response(trip));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+
+    const editor = await openStopEditor("淺草散步");
+    fireEvent.change(within(editor).getByLabelText("安排名稱"), { target: { value: "淺草寺" } });
+    fireEvent.click(within(editor).getByRole("button", { name: "儲存修改" }));
+    await waitFor(() => expect(fetchMock.mock.calls.some(([, init]) => init?.method === "PUT")).toBe(true));
+
+    // The close guard used to `return false` here and do nothing else: no close, no
+    // confirmation, no message. The reader pressed a button and the sheet sat there.
+    fireEvent.click(within(editor).getByRole("button", { name: "關閉" }));
+    expect(screen.getByRole("dialog", { name: "編輯安排" })).toBeTruthy();
+
+    // The save fails, so the editor legitimately stays open with an unapplied draft. The
+    // press still has to produce something: the exit is queued and runs once the write
+    // settles, which — with a draft still unsaved — is the keep-or-discard sheet.
+    await act(async () => { finishSave({ ok: false, status: 500, json: async () => ({ detail: "nope" }) }); });
+    expect(await screen.findByRole("dialog", { name: "保留這次修改嗎？" })).toBeTruthy();
   });
 });

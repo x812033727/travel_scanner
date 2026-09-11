@@ -392,7 +392,16 @@ export function TripEditor({ tripId }: { tripId: string }) {
   const [routeQueryDrafts, setRouteQueryDrafts] = useState<Record<string, { mode: TravelMode; buffer: number }>>({});
   const [aiRouteOnly, setAIRouteOnly] = useState(false);
   const [pendingExit, setPendingExit] = useState<{ run: () => void }>();
-  const panelWriteBusyRef = useRef(false);
+  // One entry per writer, not one flag shared by all of them. The day note, the trip note
+  // and the departure field each set this; with a single boolean, whichever finished first
+  // reported "idle" while another was still writing, and the guards below believed it.
+  const panelWrites = useRef(new Set<string>());
+  const panelWriteBusy = () => panelWrites.current.size > 0;
+  // A close pressed while a write is in flight used to be dropped on the floor: the guard
+  // returned false and nothing else happened, so the reader pressed a button and the sheet
+  // sat there with no close, no confirmation and no message. It is held instead, and runs
+  // as soon as the write settles.
+  const queuedExitRef = useRef<(() => void) | null>(null);
   const [recentItemId, setRecentItemId] = useState<string>();
   const [runtimeConfig, setRuntimeConfig] = useState<PublicRuntimeConfig>({});
   const [lodgingOpen, setLodgingOpen] = useState(false);
@@ -966,15 +975,28 @@ export function TripEditor({ tripId }: { tripId: string }) {
     editingVersionRef.current = undefined;
   }
 
+  function markPanelWrite(source: string, busy: boolean) {
+    if (busy) panelWrites.current.add(source);
+    else panelWrites.current.delete(source);
+    if (!busy) drainQueuedExit();
+  }
+
+  function drainQueuedExit() {
+    const run = queuedExitRef.current;
+    if (!run || draftSavingRef.current || panelWriteBusy()) return;
+    queuedExitRef.current = null;
+    requestExit(run);
+  }
+
   function requestExit(run: () => void) {
-    if (draftSavingRef.current || panelWriteBusyRef.current || action?.startsWith("update-")) return false;
+    if (draftSavingRef.current || panelWriteBusy()) { queuedExitRef.current = run; return false; }
     const editorDirty = Boolean(draftItem && JSON.stringify(draftItem) !== JSON.stringify(editingBaseRef.current));
     if (editorDirty || preferencesDirty || tripNoteDirty || dayNoteDirty || departureDirty || settingsDirty) { setPendingExit({ run }); return false; }
     run(); return true;
   }
 
   useNavigationGuard(Boolean(draftItem || preferencesDirty || tripNoteDirty || dayNoteDirty || departureDirty || settingsDirty || ["dirty", "saving", "offline", "conflict"].includes(saveState)), (run) => {
-    if (saveStateRef.current === "saving" || draftSavingRef.current || panelWriteBusyRef.current) return false;
+    if (saveStateRef.current === "saving" || draftSavingRef.current || panelWriteBusy()) return false;
     const leave = () => {
       navigationLeavingRef.current = true;
       // Discard never starts a write while the history entry is being consumed.
@@ -1036,7 +1058,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
     } catch (reason) {
       setError(reason instanceof ApiError && reason.code === "trip_version_conflict" ? calm.conflict
         : te("saveFailedKept", { message: reason instanceof Error ? reason.message : te("saveFailedFallback") }));
-    } finally { draftSavingRef.current = false; setDraftSaving(false); }
+    } finally { draftSavingRef.current = false; setDraftSaving(false); drainQueuedExit(); }
   }
 
   function editLocationText(item: TripItem, value: string) {
@@ -1214,10 +1236,10 @@ export function TripEditor({ tripId }: { tripId: string }) {
   }
 
   async function saveScheduleDefaults() {
-    if (panelWriteBusyRef.current) return;
-    panelWriteBusyRef.current = true;
+    if (panelWriteBusy()) return;
+    markPanelWrite("schedule-defaults", true);
     const currentTrip = await flushChanges(false);
-    if (!currentTrip) { panelWriteBusyRef.current = false; return; }
+    if (!currentTrip) { markPanelWrite("schedule-defaults", false); return; }
     setAction("schedule-defaults");
     setError(undefined);
     try {
@@ -1232,7 +1254,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
       setNotice(te("scheduleApplied"));
     } catch (reason) {
       setError(reason instanceof Error ? reason.message : te("scheduleFailed"));
-    } finally { panelWriteBusyRef.current = false; setAction(undefined); }
+    } finally { setAction(undefined); markPanelWrite("schedule-defaults", false); }
   }
 
   async function saveDepartureTime(value: string): Promise<boolean> {
@@ -1773,8 +1795,8 @@ export function TripEditor({ tripId }: { tripId: string }) {
   }
 
   async function saveRoutePreference() {
-    if (!routePreferenceDraft || panelWriteBusyRef.current) return;
-    panelWriteBusyRef.current = true;
+    if (!routePreferenceDraft || panelWriteBusy()) return;
+    markPanelWrite("route-preference", true);
     setAction("route-preference");
     setError(undefined);
     try {
@@ -1788,7 +1810,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
       setStaleDays(new Set(days)); setRoutePreferenceDraft(undefined); routePreferenceBaselineRef.current = undefined;
       setNotice(te("saved"));
     } catch (reason) { setError(reason instanceof Error ? reason.message : calm.conflict); }
-    finally { panelWriteBusyRef.current = false; setAction(undefined); }
+    finally { setAction(undefined); markPanelWrite("route-preference", false); }
   }
 
 
@@ -1841,7 +1863,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
     {/* Both AI buttons go grey when the charge cannot be read, and neither said so:
         usage-catalog-provider has had the sentence for it all along. */}
     {aiCharge.status !== "ready" && <p role="status" className="mb-3 rounded-xl bg-[var(--paper)] px-4 py-3 text-xs leading-5 text-[var(--muted)]">{aiCharge.unavailableHelp}</p>}
-    <section className="planner-day-strip sticky z-30 -mx-4 mb-4 border-y border-[var(--line)] px-4 py-3 lg:top-0 lg:mx-0 lg:mb-5 lg:rounded-2xl lg:border"><div ref={dayScrollRef} className="planner-day-scroll flex gap-2 overflow-x-auto pb-1" aria-label={te("pickDayLabel")}>{days.map((day, index) => { const label = dayLabel(day, index, locale); const count = (groups.get(day) || []).filter((item) => isActiveRouteItem(item) && !item.system_role?.startsWith("hotel_")).length; const selected = activeDay === day; return <button key={day} ref={selected ? activeDayChipRef : undefined} type="button" aria-current={selected ? "date" : undefined} aria-pressed={selected} onClick={() => { if (panelWriteBusyRef.current) return; if (dayNoteDirty || departureDirty) { requestExit(() => { setDayNoteDirty(false); setActiveDay(day); }); return; } const dayIds = new Set((groups.get(day) || []).filter(isActiveRouteItem).map((item) => item.id)); setActiveDay(day); setSelectedRoute(routes.find((route) => dayIds.has(route.from_item_id))); setRouteDrawerOpen(false); setRouteTarget(undefined); setReorderMode(false); }} className={`planner-day-chip min-h-14 min-w-[5.1rem] shrink-0 rounded-2xl border px-3 py-2 text-left ${selected ? "planner-day-chip-active" : ""}`}><span className="flex items-center gap-1.5"><span className="text-xs font-semibold tracking-[.12em] opacity-75">{day === today ? te("today") : label.eyebrow}</span><span aria-label={te("arrangedCount", { count })} className="planner-day-chip-count">{count}</span></span><span className="mt-0.5 block text-sm font-bold">{label.short} {label.weekday}</span><span className="block text-xs opacity-70 max-lg:hidden">{te("arrangedCount", { count })}</span></button>; })}</div></section>
+    <section className="planner-day-strip sticky z-30 -mx-4 mb-4 border-y border-[var(--line)] px-4 py-3 lg:top-0 lg:mx-0 lg:mb-5 lg:rounded-2xl lg:border"><div ref={dayScrollRef} className="planner-day-scroll flex gap-2 overflow-x-auto pb-1" aria-label={te("pickDayLabel")}>{days.map((day, index) => { const label = dayLabel(day, index, locale); const count = (groups.get(day) || []).filter((item) => isActiveRouteItem(item) && !item.system_role?.startsWith("hotel_")).length; const selected = activeDay === day; return <button key={day} ref={selected ? activeDayChipRef : undefined} type="button" aria-current={selected ? "date" : undefined} aria-pressed={selected} onClick={() => { if (panelWriteBusy()) return; if (dayNoteDirty || departureDirty) { requestExit(() => { setDayNoteDirty(false); setActiveDay(day); }); return; } const dayIds = new Set((groups.get(day) || []).filter(isActiveRouteItem).map((item) => item.id)); setActiveDay(day); setSelectedRoute(routes.find((route) => dayIds.has(route.from_item_id))); setRouteDrawerOpen(false); setRouteTarget(undefined); setReorderMode(false); }} className={`planner-day-chip min-h-14 min-w-[5.1rem] shrink-0 rounded-2xl border px-3 py-2 text-left ${selected ? "planner-day-chip-active" : ""}`}><span className="flex items-center gap-1.5"><span className="text-xs font-semibold tracking-[.12em] opacity-75">{day === today ? te("today") : label.eyebrow}</span><span aria-label={te("arrangedCount", { count })} className="planner-day-chip-count">{count}</span></span><span className="mt-0.5 block text-sm font-bold">{label.short} {label.weekday}</span><span className="block text-xs opacity-70 max-lg:hidden">{te("arrangedCount", { count })}</span></button>; })}</div></section>
 
 
 
@@ -1859,7 +1881,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
           </button>
         </header>
         <div className="premium-day-utilities">{activeRouteRows.length > 1 && <details className="premium-day-settings"><summary><Settings2 size={15} />{premium.dayOptions}</summary><section className="route-day-settings"><div><p className="text-xs font-semibold text-[var(--muted)]">{te("dayTravelTitle")}</p><div className="mt-2 flex gap-1.5" role="radiogroup" aria-label={te("dayTravelLabel")}>{([['transit', TrainFront], ['walk', Footprints], ['drive', CarFront]] as const).map(([value, Icon]) => <button key={value} type="button" role="radio" aria-checked={querySettings.mode === value} onClick={() => setRouteQueryDrafts((current) => ({ ...current, [activeDay]: { ...querySettings, mode: value } }))} disabled={busy("route")} className={`route-day-mode ${querySettings.mode === value ? "route-day-mode-active" : ""}`}><Icon size={15} /><span>{te(`mode.${value}`)}</span></button>)}</div></div><label className="shrink-0 text-xs font-semibold text-[var(--muted)]">{te("transferBuffer")}<select aria-label={te("bufferLabel")} value={querySettings.buffer} onChange={(event) => setRouteQueryDrafts((current) => ({ ...current, [activeDay]: { ...querySettings, buffer: Number(event.target.value) } }))} disabled={busy("route")} className="mt-2 block min-h-11 rounded-xl border border-[var(--line)] bg-white px-3 text-sm font-bold text-[var(--ink)]">{[0, 5, 10, 15, 30].map((minutes) => <option key={minutes} value={minutes}>{te("minutesShort", { minutes })}</option>)}</select></label><button type="button" className="premium-primary-button" onClick={inspectDayRoute}>{calm.query}</button></section></details>}
-        {activeDay && <details open={Boolean(trip.day_notes?.[activeDay])} className="planner-day-note mb-4"><summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 text-sm font-semibold"><NotebookPen size={16} className="text-[var(--teal)]" />{trip.day_notes?.[activeDay] ? t("dayNotesLabel") : t("dayNotesAdd")}</summary><div className="mt-2"><DraftNoteField onBusyChange={(pending) => { panelWriteBusyRef.current = pending; }} key={activeDay} onDirtyChange={setDayNoteDirty} label={t("dayNotesLabel")} placeholder={t("dayNotesPlaceholder")} value={trip.day_notes?.[activeDay] || ""} onSave={(next) => saveDayNotes(activeDay, next)} /></div></details>}</div>
+        {activeDay && <details open={Boolean(trip.day_notes?.[activeDay])} className="planner-day-note mb-4"><summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 text-sm font-semibold"><NotebookPen size={16} className="text-[var(--teal)]" />{trip.day_notes?.[activeDay] ? t("dayNotesLabel") : t("dayNotesAdd")}</summary><div className="mt-2"><DraftNoteField onBusyChange={(pending) => markPanelWrite("day-note", pending)} key={activeDay} onDirtyChange={setDayNoteDirty} label={t("dayNotesLabel")} placeholder={t("dayNotesPlaceholder")} value={trip.day_notes?.[activeDay] || ""} onSave={(next) => saveDayNotes(activeDay, next)} /></div></details>}</div>
         {reorderMode && <div className="mb-3 flex min-h-12 items-center gap-2 rounded-2xl bg-[var(--teal-soft)] px-4 py-3 text-sm font-semibold text-[var(--teal-dark)] md:hidden"><GripVertical size={17} /><span>{te("reorderHint")}</span></div>}
         {activeDay && activeArrangementCount === 0 && <div className="premium-empty-day"><MapPin size={28} /><h3>{premium.emptyTitle}</h3><p>{premium.emptyHint}</p><button type="button" onClick={() => add(activeDay)} className="premium-primary-button"><Plus size={17} />{premium.start}</button></div>}
         {days.length === 0 && <div className="app-empty-state mb-4"><CalendarDays size={22} aria-hidden /><p className="font-semibold">{t("noDatesTitle")}</p><p className="text-xs leading-5">{t("noDatesBody")}</p><button type="button" onClick={() => router.push("/trips")} className="min-h-11 rounded-xl border border-[var(--line)] bg-white px-4 text-sm font-semibold text-[var(--teal)]">{t("backToTrips")}</button></div>}
@@ -1891,7 +1913,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
                   routeStale={projectedStart?.estimated ?? true} chainedStart={projectedStart}
                   departureTime={trip.schedule_defaults?.day_start_time || defaultSchedule.day_start_time}
                   key={`${item.id}-${departureEditorKey}`} explicitDepartureSave onDepartureDirtyChange={setDepartureDirty}
-                  onDepartureBusyChange={(pending) => { panelWriteBusyRef.current = pending; }}
+                  onDepartureBusyChange={(pending) => markPanelWrite("departure", pending)}
                   departureBusy={action === "departure-time"} onDepartureTimeChange={saveDepartureTime}
                   onEdit={() => item.system_role?.startsWith("hotel_") ? openStayFlow() : void openEditor(item.id)}
                   onSkip={item.system_role === "lunch" || item.system_role === "dinner" ? () => void toggleMealSkip(item) : undefined} />
@@ -2001,7 +2023,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
     <PlannerOverlay open={toolsOpen} onClose={() => { if (!busy("preferences")) requestExit(() => { setPreferencesDirty(false); setTripNoteDirty(false); discardSettingsDrafts(); setToolsOpen(false); }); }} title={te("toolsTitle")} description={te("toolsDescription")}>
       {error && <p role="alert" className="mb-4 rounded-xl bg-red-50 p-3 text-sm text-red-800">{error}</p>}
       <PlannerToolSections locale={locale} disabled={busy("preferences")} beforeSectionChange={(proceed) => {
-        if (panelWriteBusyRef.current) return false;
+        if (panelWriteBusy()) return false;
         if (!preferencesDirty && !tripNoteDirty && !settingsDirty) return true;
         setPendingExit({ run: () => { setPreferencesDirty(false); setTripNoteDirty(false); discardSettingsDrafts(); proceed(); } }); return false;
       }} preparation={<>
@@ -2062,7 +2084,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
   }} />
         <section className="planner-tool-card">
           <div className="mb-3"><h3 className="font-bold">{t("notesTitle")}</h3><p className="mt-1 text-xs leading-5 text-[var(--muted)]">{t("notesHint")}</p></div>
-          <DraftNoteField onBusyChange={(pending) => { panelWriteBusyRef.current = pending; }} onDirtyChange={setTripNoteDirty} label={t("notesTitle")} placeholder={t("notesPlaceholder")} rows={4} value={trip.notes || ""} onSave={saveTripNotes} />
+          <DraftNoteField onBusyChange={(pending) => markPanelWrite("trip-note", pending)} onDirtyChange={setTripNoteDirty} label={t("notesTitle")} placeholder={t("notesPlaceholder")} rows={4} value={trip.notes || ""} onSave={saveTripNotes} />
         </section>
         <section className="planner-tool-card">
           <div className="mb-3"><h3 className="font-bold">{te("themeTitle")}</h3><p className="mt-1 text-xs leading-5 text-[var(--muted)]">{te("themeHint")}</p></div>
@@ -2186,7 +2208,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
       {editingId && !editingItem.system_role && <button type="button" onClick={() => removeItem(editingItem)} className="flex min-h-12 items-center justify-center gap-2 rounded-xl border border-red-200 bg-red-50 font-semibold text-red-800"><Trash2 size={18} />{te("deleteItem")}</button>}
       {placeCountryCodes.includes("kr") && editingId && <TripMapIdentityEditor key={`${editingItem.id}:${trip.version}`}
         tripId={trip.id} version={trip.version} item={editingItem}
-        onBusy={(busy) => { draftSavingRef.current = busy; setDraftSaving(busy); }}
+        onBusy={(busy) => { draftSavingRef.current = busy; setDraftSaving(busy); if (!busy) drainQueuedExit(); }}
         canSave={editingItem.latitude != null && editingItem.longitude != null && JSON.stringify(editingItem) === JSON.stringify(items.find((row) => row.id === editingItem.id))}
         onSaved={(updated) => {
           replaceTrip(updated); setRoutes(updated.route_segments || []);

@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**37 open · 2 in progress · 3 blocked · 21 in review · 232 done**
+**37 open · 1 in progress · 3 blocked · 21 in review · 234 done**
 
 ## Ready to claim
 
@@ -18,6 +18,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [Complete live Travelpayouts brand and destination offer verification](open/2026-09-08-travelpayouts-live-destination-activation.md) | ops | `docs/travel-services.md` |
 | P1 | [Prevent Google coordinates being labelled durable by merchant review](open/2026-09-08-prevent-google-coordinates-being-labelled-durable.md) | api | `apps/api/app/foods/coordinate_queue.py`<br>`apps/api/tests/test_food_coordinate_queue.py` |
 | P1 | [Continue evidence-backed remaining hotspot candidate review](open/2026-09-08-continue-evidence-backed-remaining-hotspot-candidate.md) | ops | `docs/hotspot-review-next-batch.md`<br>`ops/hotspot_review_next_batch.py`<br>`ops/hotspot_review_next_batch.json` |
+| P1 | [整套測試在負載下，有守門的 Escape 偶爾不生效](open/2026-09-11-modal-escape-flake-under-load.md) | web | `apps/web/lib/modal-sheet.ts`<br>`apps/web/lib/modal-sheet.test.tsx`<br>`apps/web/components/travel-card-actions.test.tsx`<br>`apps/web/vitest.config.ts` |
 | P2 | [防 jsonb 運算子的測試只守住 3 張表，實際有 42 張](open/2026-09-07-jsonb-3-42.md) | api | `apps/api/tests/test_migration_sql_dialect.py` |
 | P2 | [30 筆新購物店家還沒 place enrichment，所以加不進行程](open/2026-09-07-enrich-new-shopping-place-ids.md) | api | `ops/notes/hotspot-place-enrichment.md` |
 | P2 | [Verify the two reported hotels exact Booking links](open/2026-09-09-verify-reported-hotels-booking-links.md) | ops | `docs/reported-hotels-booking-review.md` |
@@ -42,7 +43,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
 | [Configurable catalog review run call limit](open/2026-09-09-configurable-catalog-review-run-call-limit.md) | codex-catalog-call-limit | 2026-09-09T15:54:14Z | `codex/catalog-review-call-limit` |
-| [trip-editor 的關閉守門測試會隨檔案順序變紅](open/2026-09-11-trip-editor-close-guard-order-dependence.md) | claude-opus-5 | 2026-09-11T20:25:44Z | `claude/mokaair-website-access-k7xiku` |
 
 ## In review
 
@@ -85,7 +85,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [首頁與 explore 要在伺服器端渲染出真正的內容](open/2026-09-10-seo-server-render-home-and-explore.md) | depends on 2026-09-09-frontend-flow-discovery-web, 2026-09-09-discovery-card-details, 2026-09-10-seo-structured-data |
 | P2 | [Community read metric duplicate observed alongside smoke ECONNRESET](open/2026-09-07-community-read-metric-concurrency.md) | active work in the same scope |
 | P2 | [Preserve force refresh in daily route background jobs](open/2026-09-10-daily-route-force-refresh.md) | active work in the same scope |
-| P2 | [安排編輯器的關閉鈕在儲存在途時被靜默吞掉](open/2026-09-11-planner-overlay-close-guard-race.md) | active work in the same scope |
 | P2 | [推薦流的語言選擇與同地點去重](open/2026-09-11-discovery-feed-language-and-dedup.md) | active work in the same scope |
 | P2 | [formatTime 在沒有時間時回傳寫死的繁中](open/2026-09-11-format-time-chinese-fallback.md) | active work in the same scope |
 | P2 | [當日檢視的離線 e2e 與 CI 接線](open/2026-09-11-offline-today-e2e.md) | active work in the same scope |
@@ -94,6 +93,8 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## Recently finished
 
+- 2026-09-11 [安排編輯器的關閉鈕在儲存在途時被靜默吞掉](done/2026-09-11-planner-overlay-close-guard-race.md)
+- 2026-09-11 [trip-editor 的關閉守門測試會隨檔案順序變紅](done/2026-09-11-trip-editor-close-guard-order-dependence.md)
 - 2026-09-11 [後端仍有二十餘處警告字串是寫死的繁中](done/2026-09-11-remaining-api-warning-literals.md)
 - 2026-09-11 [航班錨點卡與路線卡仍是硬編碼繁中](done/2026-09-11-anchor-and-route-cards-hardcoded-zh.md)
 - 2026-09-11 [彈層原語未統一與可及性收尾](done/2026-09-11-dialog-primitives-and-a11y-cleanup.md)
@@ -102,5 +103,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-11 [登入頁的送出鈕在手機上要捲一下才看得到](done/2026-09-11-bottom-nav-covers-page-content.md)
 - 2026-09-11 [規格書明定為必要的目的地支援閘門從未實作](done/2026-09-11-destination-supported-gate-missing.md)
 - 2026-09-11 [行程規劃器在手機沒有全域導覽且離線頁無入口](done/2026-09-11-planner-mobile-navigation-and-offline.md)
-- 2026-09-11 [後台九張表格在手機無法閱讀](done/2026-09-11-admin-tables-unusable-on-phone.md)
-- 2026-09-11 [路線地圖在手機吃掉頁面捲動且對輔助科技隱形](done/2026-09-11-route-map-mobile-and-a11y.md)
