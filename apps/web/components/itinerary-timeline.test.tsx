@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { RouteSegment, TripItem } from "@/lib/trip-types";
 import { ItineraryTimeline } from "./itinerary-timeline";
 
@@ -105,5 +105,54 @@ describe("readonly itinerary timeline", () => {
     expect(screen.getByText("去程航班")).toBeTruthy();
     expect(screen.getByText("回程航班尚未設定")).toBeTruthy();
     expect(screen.getByText("步行 · 18 分鐘")).toBeTruthy();
+  });
+});
+
+/**
+ * The timeline is the whole reason a share link gets opened, and the recipient may
+ * read no Chinese at all. activeLocale() reads the document language, so this suite
+ * sets it and asserts against the real English catalog rather than a stub.
+ *
+ * Fixtures here carry no Chinese of their own: anything Han on screen is the
+ * component's. FlightAnchorCard and RouteSegmentCard are left out on purpose —
+ * they still hold literals of their own and belong to other tasks.
+ */
+describe("the timeline in a language that is not Chinese", () => {
+  const han = () => document.body.textContent?.match(/\p{Script=Han}+/u)?.[0];
+
+  beforeEach(() => {
+    document.documentElement.lang = "en";
+  });
+  afterEach(() => {
+    document.documentElement.lang = "zh-TW";
+  });
+
+  it("writes no Chinese of its own across meals, hotels, badges and missing places", () => {
+    const items = [
+      item("hotel-start", "Leaving the hotel", 0, { item_type: "hotel_anchor", system_role: "hotel_start", locked: true, start_time: null }),
+      item("activity", "Sensō-ji", 1, { locked: true, is_estimated: true, location_name: undefined }),
+      item("lunch", "Lunch", 2, { item_type: "meal", system_role: "lunch", location_name: undefined }),
+      item("dinner", "Ginza dinner", 3, { item_type: "meal", system_role: "dinner", fixed_time: true, end_time: "2026-11-10T20:00:00+09:00", location_name: "Ginza" }),
+      item("transfer", "Airport transfer", 4, { start_time: null, data: { timeline_section: "logistics" } }),
+    ];
+    render(<ItineraryTimeline items={items} />);
+
+    expect(screen.getByText("Transfers and accommodation")).toBeTruthy();
+    expect(screen.getByText("3 stop(s)")).toBeTruthy();
+    expect(screen.getByText("Estimated")).toBeTruthy();
+    expect(screen.getByText("No location set")).toBeTruthy();
+    expect(screen.getByText("Restaurant not chosen")).toBeTruthy();
+    expect(screen.getByText("No main hotel set")).toBeTruthy();
+    // formatTime's own fallback is a Chinese literal; the transfer has no time and
+    // must not reach it.
+    expect(document.body.textContent).toContain("Flexible time");
+    expect(han(), "hardcoded copy on the shared timeline").toBeUndefined();
+  });
+
+  it("tells a share recipient that an empty trip is empty, in their language", () => {
+    render(<ItineraryTimeline items={[]} />);
+
+    expect(screen.getByText("This trip has no stops yet")).toBeTruthy();
+    expect(han(), "hardcoded copy on the empty state").toBeUndefined();
   });
 });

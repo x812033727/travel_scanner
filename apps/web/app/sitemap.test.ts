@@ -29,7 +29,12 @@ function routeExists(path: string): boolean {
     if (!rest.length) return readdirSync(directory).includes("page.tsx");
     const [head, ...tail] = rest;
     const names = directories(directory);
-    const candidates = names.includes(head) ? [head] : names.filter((name) => name.startsWith("["));
+    // A catch-all ([...rest]) matches every remaining segment, so counting it here would
+    // make routeExists answer true for any address and this guard would stop guarding.
+    // The locale segment has one, so that a mistyped URL reaches the localised 404.
+    const candidates = names.includes(head)
+      ? [head]
+      : names.filter((name) => name.startsWith("[") && !/^\[{1,2}\.\.\./.test(name));
     return candidates.some((name) => walk(join(directory, name), tail));
   };
   return ROOTS.some((root) => walk(root, segments));

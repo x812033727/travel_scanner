@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { FlightAnchorCard } from "@/components/flight-anchor-card";
 import { RouteSegmentCard } from "@/components/route-segment-card";
+import { itineraryCopy, itineraryText, type ItineraryCopy } from "@/lib/itinerary-copy";
 import { activeLocale } from "@/lib/locale-format";
 import { mapIdentityCopy } from "@/lib/map-identity-copy";
 import { safeExternalHref } from "@/lib/navigation";
@@ -25,11 +26,11 @@ import {
   type TripItem,
 } from "@/lib/trip-types";
 
-function systemLabel(item: TripItem) {
-  if (item.system_role === "lunch") return "午餐";
-  if (item.system_role === "dinner") return "晚餐";
-  if (item.system_role === "hotel_start") return "從飯店出發";
-  return "返回飯店";
+function systemLabel(copy: ItineraryCopy, item: TripItem) {
+  if (item.system_role === "lunch") return copy.systemLunch;
+  if (item.system_role === "dinner") return copy.systemDinner;
+  if (item.system_role === "hotel_start") return copy.systemHotelStart;
+  return copy.systemHotelEnd;
 }
 
 function LocationMapLinks({ item }: { item: TripItem }) {
@@ -74,6 +75,11 @@ export function ItineraryTimeline({
   routes?: RouteSegment[];
   timezone?: string;
 }) {
+  const copy = itineraryCopy(activeLocale());
+  // trip-types' formatTime falls back to a Chinese literal when an item has no time,
+  // and that file belongs to another task; this keeps the fallback out of the timeline.
+  const time = (value?: string | null) =>
+    value ? formatTime(value, undefined, timezone) : copy.flexibleTime;
   const dayFormatter = new Intl.DateTimeFormat(activeLocale(), {
     month: "long",
     day: "numeric",
@@ -84,6 +90,18 @@ export function ItineraryTimeline({
   const logistics = visibleItems.filter(isLogisticsItem);
   const dailyItems = visibleItems.filter((item) => !isLogisticsItem(item));
 
+  // A shared trip with nothing in it used to render an empty <div>: the recipient
+  // opened the link and found a title, blank space, and a call to action.
+  if (!visibleItems.length) {
+    return (
+      <div className="rounded-[1.75rem] border border-[var(--line)] bg-white p-8 text-center">
+        <CalendarDays aria-hidden className="mx-auto text-[var(--muted)]" size={30} />
+        <h2 className="mt-3 font-bold">{copy.emptyTitle}</h2>
+        <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-[var(--muted)]">{copy.emptyBody}</p>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6">
       {logistics.length > 0 && (
@@ -93,17 +111,15 @@ export function ItineraryTimeline({
               <Info size={18} />
             </span>
             <div>
-              <h2 className="font-bold text-slate-900">交通與住宿資訊</h2>
-              <p className="mt-1 text-xs leading-5 text-slate-600">
-                接送與入住退房資訊獨立保存，不加入每日外出路線。
-              </p>
+              <h2 className="font-bold text-slate-900">{copy.logisticsTitle}</h2>
+              <p className="mt-1 text-xs leading-5 text-slate-600">{copy.logisticsHint}</p>
             </div>
           </div>
           <div className="mt-4 grid gap-2 md:grid-cols-2">
             {logistics.map((item) => (
               <article key={item.id} className="rounded-2xl border border-slate-200 bg-white p-4">
                 <p className="text-xs font-semibold text-slate-500">
-                  {item.day_date} · {formatTime(item.start_time, undefined, timezone)}
+                  {item.day_date} · {time(item.start_time)}
                 </p>
                 <h3 className="mt-1 font-semibold">{item.title}</h3>
                 {item.location_name && <p className="mt-1 text-sm text-slate-600">{item.location_name}</p>}
@@ -134,7 +150,7 @@ export function ItineraryTimeline({
                   {dayFormatter.format(new Date(`${day}T00:00:00Z`))}
                 </h2>
               </div>
-              <span className="text-xs text-[var(--muted)]">{arrangementCount} 個安排</span>
+              <span className="text-xs text-[var(--muted)]">{itineraryText(copy.arrangements, { count: arrangementCount })}</span>
             </div>
             <ol className="relative space-y-3">
               {rows.map((item) => {
@@ -152,10 +168,10 @@ export function ItineraryTimeline({
                 const meal = item.system_role === "lunch" || item.system_role === "dinner";
                 const hotel = item.system_role === "hotel_start" || item.system_role === "hotel_end";
                 const timeMode = item.fixed_time
-                  ? `固定時間 · ${formatTime(item.start_time, undefined, timezone)}`
+                  ? itineraryText(copy.timeFixed, { time: time(item.start_time) })
                   : incomingRoute
-                    ? `接續前站 · 預計 ${formatTime(item.start_time, undefined, timezone)}`
-                    : "接續前站 · 待路線更新";
+                    ? itineraryText(copy.timeChained, { time: time(item.start_time) })
+                    : copy.timePending;
                 return (
                   <li key={item.id}>
                     <div className="relative grid grid-cols-[2.3rem_minmax(0,1fr)] gap-3">
@@ -166,8 +182,8 @@ export function ItineraryTimeline({
                         <div className="flex flex-wrap items-start justify-between gap-2">
                           <div>
                             <p className="text-xs font-semibold text-[var(--muted)]">
-                              {item.system_role ? `${systemLabel(item)} · ` : ""}{timeMode}
-                              {item.fixed_time && item.end_time ? `–${formatTime(item.end_time, undefined, timezone)}` : ""}
+                              {item.system_role ? `${systemLabel(copy, item)} · ` : ""}{timeMode}
+                              {item.fixed_time && item.end_time ? `–${time(item.end_time)}` : ""}
                             </p>
                             <h3 className="mt-1 font-semibold">{item.title}</h3>
                             {originalItemName(item) && (
@@ -178,18 +194,18 @@ export function ItineraryTimeline({
                           </div>
                           <div className="flex gap-2">
                             {item.locked && !item.system_role && (
-                              <span title="固定項目" className="rounded-full bg-white p-1.5 text-[var(--teal)]">
+                              <span title={copy.lockedItem} className="rounded-full bg-white p-1.5 text-[var(--teal)]">
                                 <LockKeyhole size={14} />
                               </span>
                             )}
                             {item.is_estimated && !item.system_role && (
-                              <span className="rounded-full bg-amber-100 px-2 py-1 text-xs font-semibold text-amber-900">估算</span>
+                              <span className="rounded-full bg-amber-100 px-2 py-1 text-xs font-semibold text-amber-900">{copy.estimatedBadge}</span>
                             )}
                           </div>
                         </div>
                         <p className="mt-2 flex items-center gap-1.5 text-sm text-[var(--muted)]">
                           <MapPin size={14} />
-                          {item.location_name || (hotel ? "尚未設定主要飯店" : meal ? "待選餐廳" : "尚未設定地點")}
+                          {item.location_name || (hotel ? copy.noHotel : meal ? copy.noRestaurant : copy.noLocation)}
                         </p>
                         <LocationMapLinks item={item} />
                       </div>

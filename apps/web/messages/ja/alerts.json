@@ -17,7 +17,8 @@
     "testSent": "テストメッセージを LINE に送信しました。",
     "unlinkDone": "LINE 連携を解除しました。"
   },
-  "capacity":"有効な通知 {count}／{limit} 件","capacityFull":"通知の上限に達しました。一時停止または削除すると追加できます。",
+  "capacity": "有効な通知 {count}／{limit} 件",
+  "capacityFull": "通知の上限に達しました。一時停止または削除すると追加できます。",
   "emptyHint": "価格通知は旅程や検索結果から作成します。まず旅程を開いて価格の追跡を始めましょう。",
   "emptyAction": "マイトリップへ",
   "button": {
@@ -34,5 +35,29 @@
     "loginReturn": "ログインしてこのページに戻る"
   },
   "manualOnly": "この提供元はバックグラウンドで再確認されません。価格は手動で確認してください。",
-  "manualOnlyRecheck": "旅行ページで再取得"
+  "manualOnlyRecheck": "旅行ページで再取得",
+  "list": {
+    "empty": "価格通知はまだありません。",
+    "deleteAction": "通知を削除",
+    "deleteConfirm": "この価格通知を削除しますか？削除すると元に戻せません。",
+    "active": "追跡中",
+    "paused": "停止中",
+    "modeAutomatic": "6 時間ごとに自動チェック",
+    "modeManual": "手動チェックのみ",
+    "fallbackSubtitle": "追跡中の項目",
+    "targetBelow": "{price} 未満で通知",
+    "anyDrop": "最安値を更新したら通知",
+    "currentPrice": "現在 {price}",
+    "currentPending": "現在価格は更新待ち",
+    "quotedAt": "取得日時 {time}",
+    "targetReached": "目標価格に到達しました",
+    "targetGap": "目標まであと {amount}",
+    "edit": "{title} を編集",
+    "pause": "{title} を停止",
+    "resume": "{title} を再開",
+    "targetLabel": "目標価格（{currency}）",
+    "targetInput": "{title} の目標価格を編集",
+    "targetPlaceholder": "空欄なら値下がりすべてを通知",
+    "savePrice": "価格を保存"
+  }
 }
