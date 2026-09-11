@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**50 open · 3 in progress · 3 blocked · 21 in review · 204 done**
+**50 open · 2 in progress · 3 blocked · 21 in review · 205 done**
 
 ## Ready to claim
 
@@ -25,7 +25,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [行程時間軸硬編碼繁中而它正是分享頁的主體](open/2026-09-11-itinerary-timeline-hardcoded-zh-tw.md) | web | `apps/web/components/itinerary-timeline.tsx`<br>`apps/web/lib/itinerary-messages`<br>`apps/web/lib/itinerary-copy.ts` |
 | P1 | [機票與飯店結果卡硬編碼繁中](open/2026-09-11-offer-cards-hardcoded-zh-tw.md) | web | `apps/web/components/flight-offer-card.tsx`<br>`apps/web/components/hotel-offer-card.tsx`<br>`apps/web/messages/en/search.json`<br>`apps/web/messages/ja/search.json`<br>`apps/web/messages/ko/search.json`<br>`apps/web/messages/zh-CN/search.json`<br>`apps/web/messages/zh-TW/search.json` |
 | P1 | [行程規劃器在手機沒有全域導覽且離線頁無入口](open/2026-09-11-planner-mobile-navigation-and-offline.md) | web | `apps/web/components/today-view.tsx`<br>`apps/web/components/offline-trip-cache.tsx`<br>`apps/web/app/[locale]/trips/[id]/page.tsx`<br>`apps/web/public/sw.js` |
+| P1 | [路線地圖在手機吃掉頁面捲動且對輔助科技隱形](open/2026-09-11-route-map-mobile-and-a11y.md) | web | `apps/web/components/route-map.tsx`<br>`apps/web/app/globals.css` |
 | P1 | [規格書明定為必要的目的地支援閘門從未實作](open/2026-09-11-destination-supported-gate-missing.md) | web | `apps/api/app/ai/parser.py`<br>`apps/web/components/trip-brief-composer.tsx`<br>`apps/web/components/brief-confirm-panel.tsx`<br>`docs/planning-flow-spec.md` |
+| P1 | [語言切換器的標籤在幾乎每一頁都被截斷](open/2026-09-11-language-switcher-label-clipped.md) | web | `apps/web/components/language-switcher.tsx`<br>`apps/web/app/globals.css` |
 | P2 | [防 jsonb 運算子的測試只守住 3 張表，實際有 42 張](open/2026-09-07-jsonb-3-42.md) | api | `apps/api/tests/test_migration_sql_dialect.py` |
 | P2 | [30 筆新購物店家還沒 place enrichment，所以加不進行程](open/2026-09-07-enrich-new-shopping-place-ids.md) | api | `ops/notes/hotspot-place-enrichment.md` |
 | P2 | [Verify the two reported hotels exact Booking links](open/2026-09-09-verify-reported-hotels-booking-links.md) | ops | `docs/reported-hotels-booking-review.md` |
@@ -46,7 +48,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- | --- |
 | [Configurable catalog review run call limit](open/2026-09-09-configurable-catalog-review-run-call-limit.md) | codex-catalog-call-limit | 2026-09-09T15:54:14Z | `codex/catalog-review-call-limit` |
 | [全站沒有自訂的找不到頁面](open/2026-09-11-no-custom-not-found-page.md) | claude-opus-5 | 2026-09-11T13:17:20Z | `claude/mokaair-website-access-k7xiku` |
-| [底部主導覽的文字標籤未達對比度標準](open/2026-09-11-bottom-nav-labels-fail-contrast.md) | claude-opus-5 | 2026-09-11T13:17:19Z | `claude/mokaair-website-access-k7xiku` |
 
 ## In review
 
@@ -93,9 +94,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [合作平台面板繁中且漏用在地化佣金揭露](open/2026-09-11-affiliate-panel-i18n-and-disclosure.md) | active work in the same scope |
 | P1 | [後台九張表格在手機無法閱讀](open/2026-09-11-admin-tables-unusable-on-phone.md) | active work in the same scope |
 | P1 | [刪除行程項目沒有確認而且復原視窗短於自動儲存](open/2026-09-11-itinerary-item-delete-no-confirm.md) | active work in the same scope |
-| P1 | [路線地圖在手機吃掉頁面捲動且對輔助科技隱形](open/2026-09-11-route-map-mobile-and-a11y.md) | active work in the same scope |
 | P1 | [頁尾五個連結全站每頁都只有十六像素高](open/2026-09-11-footer-links-sixteen-px-tall.md) | active work in the same scope |
-| P1 | [語言切換器的標籤在幾乎每一頁都被截斷](open/2026-09-11-language-switcher-label-clipped.md) | active work in the same scope |
 | P1 | [推薦流印出原始 HTML 標籤且語言混雜未去重](open/2026-09-11-discovery-feed-html-and-language-mix.md) | active work in the same scope |
 | P2 | [Community read metric duplicate observed alongside smoke ECONNRESET](open/2026-09-07-community-read-metric-concurrency.md) | active work in the same scope |
 | P2 | [Preserve force refresh in daily route background jobs](open/2026-09-10-daily-route-force-refresh.md) | active work in the same scope |
@@ -108,6 +107,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## Recently finished
 
+- 2026-09-11 [撤回：對比度不足的發現來自量測程式的解析錯誤](done/2026-09-11-bottom-nav-labels-fail-contrast.md)
 - 2026-09-11 [精靈三個條件都選不限時整頁崩潰並清空五步輸入](done/2026-09-11-wizard-crash-when-all-criteria-any.md)
 - 2026-09-11 [探索卡顯示累積蒐藏數與蒐藏數排行分頁](done/2026-09-11-discovery-saved-count-ranking.md)
 - 2026-09-11 [Simplify hotel booking platform and source copy](done/2026-09-10-simplify-hotel-booking-copy.md)
@@ -117,4 +117,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-10 [Add privacy scoped Stay22 script backend](done/2026-09-09-add-privacy-scoped-stay22-script-backend.md)
 - 2026-09-10 [Public discovery categories and safe detail projections](done/2026-09-09-frontend-flow-discovery-api.md)
 - 2026-09-10 [Route apply state regression and semantic itinerary tones](done/2026-09-09-planner-route-tones.md)
-- 2026-09-10 [Preserve no-referrer on external clickout responses](done/2026-09-09-preserve-clickout-referrer-policy.md)
