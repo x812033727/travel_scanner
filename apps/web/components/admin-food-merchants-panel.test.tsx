@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { AdminFoodMerchantsPanel } from "./admin-food-merchants-panel";
 
@@ -107,6 +107,158 @@ function taxonomyResponse(url: string): Response | null {
 }
 
 describe("AdminFoodMerchantsPanel", () => {
+  it("keeps one style editor and its draft through platform edits and close confirmations", async () => {
+    const style = { style: "instagrammable", status: "pending", evidence_url: "https://shop.example/design", evidence_title: "Branch design", rationale: "Floral greenhouse interior", checked_on: "2026-09-08", updated_at: "2026-09-08T00:00:00+00:00" };
+    vi.stubGlobal("fetch", vi.fn(async (input: RequestInfo | URL) => {
+      if (String(input).endsWith("/styles")) return new Response(JSON.stringify({ items: [style] }));
+      const stub = taxonomyResponse(String(input));
+      if (stub) return stub;
+      return new Response(JSON.stringify({ items: [merchant], total: 1 }));
+    }));
+    render(<AdminFoodMerchantsPanel />);
+    await screen.findByText(merchant.name);
+    fireEvent.click(screen.getByRole("button", { name: "編輯地點與來源" }));
+    const dialog = screen.getByRole("dialog");
+    const stylesButton = within(dialog).getByRole("button", { name: "風格新增與審核" });
+    fireEvent.click(stylesButton);
+    await within(dialog).findByDisplayValue("Branch design");
+    fireEvent.change(within(dialog).getByLabelText("本次審核原因"), { target: { value: "Keep style review draft" } });
+    const platforms = within(dialog).getByRole("region", { name: "旅客訂位平台" });
+    for (const [index, provider] of ["inline", "openrice", "tablecheck"].entries()) {
+      fireEvent.change(within(platforms).getByLabelText("訂位平台"), { target: { value: provider } });
+      fireEvent.change(within(platforms).getByLabelText("查核備註"), { target: { value: `Platform draft ${index}` } });
+      fireEvent.change(within(dialog).getByRole("textbox", { name: /^店名$/ }), { target: { value: `Merchant draft ${index}` } });
+      fireEvent.click(within(dialog).getByRole("button", { name: "關閉" }));
+      expect(within(dialog).getAllByRole("button", { name: "風格新增與審核" })).toHaveLength(1);
+      expect(within(dialog).getByRole("button", { name: "風格新增與審核" })).toBe(stylesButton);
+      expect((within(dialog).getByLabelText("本次審核原因") as HTMLInputElement).value).toBe("Keep style review draft");
+      fireEvent.click(within(dialog).getByRole("button", { name: "繼續編輯" }));
+    }
+    expect(within(dialog).getAllByRole("region", { name: "旅客訂位平台" })).toHaveLength(1);
+  });
+
+  it("traps editor focus, blocks background replacement and busy Escape, then restores focus and scroll", async () => {
+    let finish: (response: Response) => void = () => undefined;
+    const second = { ...merchant, id: "22222222-2222-4222-8222-222222222222", name: "Second merchant" };
+    vi.stubGlobal("fetch", vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      const stub = taxonomyResponse(String(input));
+      if (stub) return stub;
+      if (init?.method === "PUT") return new Promise<Response>((resolve) => { finish = resolve; });
+      return new Response(JSON.stringify({ items: [merchant, second], total: 2 }));
+    }));
+    const originalOverflow = document.body.style.overflow;
+    render(<AdminFoodMerchantsPanel />);
+    await screen.findByText(merchant.name);
+    const [opener, otherEditor] = screen.getAllByRole("button", { name: "編輯地點與來源" }) as HTMLButtonElement[];
+    const add = screen.getByRole("button", { name: "新增店家" }) as HTMLButtonElement;
+    opener.focus();
+    fireEvent.click(opener);
+    const dialog = screen.getByRole("dialog");
+    const close = within(dialog).getByRole("button", { name: "關閉" });
+    const saveMerchant = within(dialog).getByRole("button", { name: "儲存店家地點" });
+    expect(document.activeElement).toBe(close);
+    expect(document.body.style.overflow).toBe("hidden");
+    expect(opener.closest("[inert]")).not.toBeNull();
+    expect(otherEditor.disabled).toBe(true);
+    expect(add.disabled).toBe(true);
+    fireEvent.keyDown(document, { key: "Tab", shiftKey: true });
+    expect(document.activeElement).toBe(saveMerchant);
+    fireEvent.keyDown(document, { key: "Tab" });
+    expect(document.activeElement).toBe(close);
+
+    fireEvent.change(within(dialog).getByLabelText("查核備註"), { target: { value: "Retained keyboard draft" } });
+    fireEvent.click(otherEditor);
+    fireEvent.click(add);
+    expect(screen.getByRole("dialog")).toBe(dialog);
+    expect((within(dialog).getByLabelText("查核備註") as HTMLInputElement).value).toBe("Retained keyboard draft");
+    fireEvent.keyDown(document, { key: "Escape" });
+    expect(within(dialog).getByText("尚有未儲存的訂位平台草稿，關閉後會遺失。")).toBeTruthy();
+    fireEvent.click(within(dialog).getByRole("button", { name: "繼續編輯" }));
+
+    fireEvent.click(within(dialog).getByRole("button", { name: "只儲存訂位平台" }));
+    fireEvent.keyDown(document, { key: "Escape" });
+    fireEvent.click(otherEditor);
+    fireEvent.click(add);
+    expect(screen.getByRole("dialog")).toBe(dialog);
+    expect(within(dialog).queryByText("尚有未儲存的訂位平台草稿，關閉後會遺失。")).toBeNull();
+    await act(async () => finish(new Response(JSON.stringify({ ...merchant, platform_link: { ...merchant.platform_link, review_note: "Retained keyboard draft" } }))));
+    await within(dialog).findByText("已儲存 OpenRice 的訂位平台資料。");
+    fireEvent.keyDown(document, { key: "Escape" });
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(document.activeElement).toBe(opener);
+    expect(document.body.style.overflow).toBe(originalOverflow);
+    expect(opener.closest("[inert]")).toBeNull();
+  });
+
+  it("saves a platform without saving or refreshing dirty merchant fields, and keeps the other provider", async () => {
+    const inline = { ...merchant.platform_link, id: "platform-2", provider: "inline", provider_label: "inline", canonical_url: "https://inline.app/booking/company:1/branch1" };
+    const initial = { ...merchant, platform_links: [merchant.platform_link, inline] };
+    let finish: (response: Response) => void = () => undefined;
+    const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      const stub = taxonomyResponse(String(input));
+      if (stub) return stub;
+      if (init?.method === "PUT") return new Promise<Response>((resolve) => { finish = resolve; });
+      return new Response(JSON.stringify({ items: [initial], total: 1, available_platforms: [{ provider: "openrice", label: "OpenRice" }, { provider: "inline", label: "inline" }] }));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminFoodMerchantsPanel />);
+    await screen.findByText(merchant.name);
+    fireEvent.click(screen.getByRole("button", { name: "編輯地點與來源" }));
+    const dialog = screen.getByRole("dialog");
+    const section = within(dialog).getByRole("region", { name: "旅客訂位平台" });
+    const provider = within(section).getByLabelText("訂位平台");
+    expect(provider.querySelectorAll("option").length).toBe(2);
+    const name = within(dialog).getByRole("textbox", { name: /^店名$/ }) as HTMLInputElement;
+    const map = within(dialog).getByLabelText("Google Place ID") as HTMLInputElement;
+    const source = within(dialog).getByLabelText("來源標題") as HTMLInputElement;
+    fireEvent.change(name, { target: { value: "Dirty merchant name" } });
+    fireEvent.change(map, { target: { value: "ChIJ-dirty" } });
+    fireEvent.change(source, { target: { value: "Dirty source evidence" } });
+    fireEvent.change(within(section).getByLabelText("查核結果"), { target: { value: "disabled" } });
+    const listingCalls = () => fetchMock.mock.calls.filter(([url]) => String(url).includes("/merchants?"));
+    const before = listingCalls().length;
+    fireEvent.click(within(section).getByRole("button", { name: "只儲存訂位平台" }));
+    expect((within(dialog).getByRole("button", { name: "關閉" }) as HTMLButtonElement).disabled).toBe(true);
+    expect((within(dialog).getByRole("button", { name: "儲存店家地點" }) as HTMLButtonElement).disabled).toBe(true);
+    await act(async () => finish(new Response(JSON.stringify({ ...merchant, name: "Server name", sources: [], google_place_id: "Server map", platform_links: [{ ...merchant.platform_link, status: "disabled" }, inline], platform_link: { ...merchant.platform_link, status: "disabled" } }))));
+    await within(section).findByText("已儲存 OpenRice 的訂位平台資料。");
+    expect(name.value).toBe("Dirty merchant name");
+    expect(map.value).toBe("ChIJ-dirty");
+    expect(source.value).toBe("Dirty source evidence");
+    expect(screen.getByRole("dialog")).toBe(dialog);
+    expect(listingCalls().length).toBe(before);
+    const writes = fetchMock.mock.calls.filter(([, init]) => init?.method && init.method !== "GET");
+    expect(writes).toHaveLength(1);
+    expect(writes[0][1]?.method).toBe("PUT");
+    expect(JSON.parse(String(writes[0][1]?.body))).toMatchObject({ provider: "openrice", status: "disabled", expected_checked_at: merchant.platform_link.checked_at });
+    fireEvent.change(provider, { target: { value: "inline" } });
+    expect((within(section).getByLabelText("查核結果") as HTMLSelectElement).value).toBe("verified");
+  });
+
+  it("never implicitly saves platform drafts with the merchant and warns before discarding them", async () => {
+    const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      const stub = taxonomyResponse(String(input));
+      if (stub) return stub;
+      if (init?.method === "PATCH") return new Response(JSON.stringify({ ...merchant, ...JSON.parse(String(init.body)) }));
+      return new Response(JSON.stringify({ items: [merchant], total: 1 }));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminFoodMerchantsPanel />);
+    await screen.findByText(merchant.name);
+    fireEvent.click(screen.getByRole("button", { name: "編輯地點與來源" }));
+    fireEvent.change(screen.getByLabelText("查核備註"), { target: { value: "Unsaved platform evidence" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存店家地點" }));
+    await screen.findByText(/已儲存店家地點/);
+    await waitFor(() => expect((screen.getByRole("button", { name: "關閉" }) as HTMLButtonElement).disabled).toBe(false));
+    expect((screen.getByLabelText("查核備註") as HTMLInputElement).value).toBe("Unsaved platform evidence");
+    expect(fetchMock.mock.calls.filter(([, init]) => init?.method === "PATCH")).toHaveLength(1);
+    expect(fetchMock.mock.calls.some(([, init]) => init?.method === "PUT")).toBe(false);
+    fireEvent.click(screen.getByRole("button", { name: "關閉" }));
+    expect(screen.getByText("尚有未儲存的訂位平台草稿，關閉後會遺失。")).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "繼續編輯" }));
+    expect((screen.getByLabelText("查核備註") as HTMLInputElement).value).toBe("Unsaved platform evidence");
+  });
+
   it("preserves the supplemental Google identity when saving a Korean NAVER location", async () => {
     const korean = { ...merchant, country_code: "KR", destination_id: "seoul", naver_map_url: "https://map.naver.com/p/entry/place/123", google_place_id: "ChIJ-korea-confirmed", map_match_status: "verified" };
     const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {

@@ -498,18 +498,30 @@ async def test_dish_options_only_real_publishable_merchants_and_reauthorize(harn
 RESERVATION_FIXTURES = [
     ("JP", "tokyo", "tablecheck", "TableCheck", "en",
      "https://www.tablecheck.com/en/shops/mokaair-fixture/reserve"),
-    ("KR", "seoul", "catchtable_global", "Catchtable Global", "en",
+    ("KR", "seoul", "catchtable_global", "Catchtable Global", "",
      "https://www.catchtable.net/shop/mokaair-fixture"),
-    ("TW", "taipei", "eztable", "EZTABLE", "zh-TW",
+    ("TW", "taipei", "eztable", "EZTABLE", "",
      "https://www.eztable.com/restaurant/99999999"),
-    ("SG", "singapore", "chope", "Chope", "en",
+    ("SG", "singapore", "chope", "Chope", "",
      "https://www.chope.co/singapore-restaurants/restaurant/mokaair-fixture"),
     ("HK", "hong-kong", "openrice", "OpenRice", "en",
      "https://www.openrice.com/en/hongkong/r-mokaair-fixture-r99999999"),
     ("TH", "bangkok", "hungry_hub", "Hungry Hub", "en",
      "https://web.hungryhub.com/en/restaurants/mokaair-fixture"),
-    ("VN", "ho-chi-minh-city", "pasgo", "PasGo", "vi",
+    ("VN", "ho-chi-minh-city", "pasgo", "PasGo", "",
      "https://pasgo.vn/nha-hang/mokaair-fixture-99999999"),
+    ("TW", "taipei", "tablecheck", "TableCheck", "zh-TW",
+     "https://www.tablecheck.com/zh-TW/shin-yeh-main-restaurant/reserve/message"),
+    ("TW", "taipei", "inline", "inline", "zh-TW",
+     "https://inline.app/booking/-chain:inline-live-3/-branch?language=zh-tw"),
+    ("TW", "taipei", "maifood", "Maifood", "",
+     "https://reservation.maifood.com.tw/qingtian76/qingtian76_1"),
+    ("SG", "singapore", "sevenrooms", "SevenRooms", "",
+     "https://www.sevenrooms.com/explore/candlenutsingapore/reservations/create/search"),
+    ("JP", "tokyo", "ikyu", "一休", "",
+     "https://restaurant.ikyu.com/107953"),
+    ("JP", "tokyo", "myconcierge", "My Concierge Japan", "",
+     "https://myconciergejapan.com/restaurants/ginza-kyubey"),
 ]
 
 
@@ -611,9 +623,8 @@ async def test_food_and_merchant_details_share_exact_reviewed_links_without_prov
     {"canonical_url": "http://www.tablecheck.com/en/shops/fixture/reserve"},
     {"canonical_url": "javascript:alert(1)"},
     {"canonical_url": "https://127.0.0.1/en/shops/fixture/reserve"},
-    {"provider": "chope", "canonical_url": RESERVATION_FIXTURES[3][-1]},
 ])
-async def test_discovery_omits_unreviewed_unsafe_or_wrong_country_reservation_links(
+async def test_discovery_omits_unreviewed_or_unsafe_reservation_links(
     harness, monkeypatch, overrides
 ):
     client, factory, _, _, _ = harness
@@ -656,6 +667,39 @@ async def test_discovery_reservation_locale_and_live_withdrawal_preserve_other_l
         await session.commit()
     assert (await client.get(path)).json()["detail"]["merchants"] == []
     assert (await client.get(f"/api/v1/discovery/content/merchant/{row.id}")).status_code == 404
+
+
+@pytest.mark.asyncio
+async def test_discovery_returns_multiple_reviewed_platforms_across_countries(harness, monkeypatch):
+    client, factory, _, _, _ = harness
+    dish, row = await seed_reservation_merchant(factory, country="TW", city="taipei")
+    async with factory() as session:
+        session.add_all([
+            FoodMerchantPlatformLink(
+                merchant_id=row.id, provider="inline", status="verified",
+                canonical_url="https://inline.app/booking/chain:inline-live-3/branch?language=zh-tw",
+                checked_at=datetime.now(UTC),
+            ),
+            FoodMerchantPlatformLink(
+                merchant_id=row.id, provider="sevenrooms", status="verified",
+                canonical_url="https://www.sevenrooms.com/reservations/fixture",
+                checked_at=datetime.now(UTC),
+            ),
+            FoodMerchantPlatformLink(
+                merchant_id=row.id, provider="eztable", status="disabled",
+                canonical_url="https://www.eztable.com/restaurant/fixture",
+                checked_at=datetime.now(UTC),
+            ),
+        ])
+        await session.commit()
+    block_detail_provider_clients(monkeypatch)
+    expected = ["inline", "sevenrooms", "tablecheck"]
+    for kind, identifier in (("food", dish.id), ("merchant", row.id)):
+        response = await client.get(f"/api/v1/discovery/content/{kind}/{identifier}")
+        assert response.status_code == 200
+        links = response.json()["detail"]["merchants"][0]["reservation_links"]
+        assert [link["provider"] for link in links] == expected
+        assert [link["language_code"] for link in links] == ["zh-TW", "", "en"]
 
 
 @pytest.mark.asyncio

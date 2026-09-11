@@ -4,7 +4,7 @@ export type ReservationLink = {
   label: string;
   url: string;
   verified_at: string;
-  language_code: string;
+  language_code?: string;
 };
 /** Five site locales plus the original-script text; `name` is already the one for the UI locale. */
 export type LocalizedNameMap = Partial<Record<"en" | "ja" | "ko" | "zh-TW" | "zh-CN", string>> & {

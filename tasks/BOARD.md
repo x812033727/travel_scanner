@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**47 open · 2 in progress · 3 blocked · 20 in review · 202 done**
+**47 open · 2 in progress · 3 blocked · 21 in review · 202 done**
 
 ## Ready to claim
 
@@ -33,7 +33,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [30 筆新購物店家還沒 place enrichment，所以加不進行程](open/2026-09-07-enrich-new-shopping-place-ids.md) | api | `ops/notes/hotspot-place-enrichment.md` |
 | P2 | [Verify the two reported hotels exact Booking links](open/2026-09-09-verify-reported-hotels-booking-links.md) | ops | `docs/reported-hotels-booking-review.md` |
 | P2 | [Normalize locale-prefixed login return paths](open/2026-09-10-locale-login-return-path.md) | web | `apps/web/components/auth-form.tsx`<br>`apps/web/components/auth-form.test.tsx` |
-| P2 | [彈層原語未統一與可及性收尾](open/2026-09-11-dialog-primitives-and-a11y-cleanup.md) | web | `apps/web/components/hotspot-restaurants-panel.tsx`<br>`apps/web/components/admin-deployments-panel.tsx`<br>`apps/web/components/admin-food-merchants-panel.tsx` |
 | P2 | [表單驗證與低於四十四像素的觸控目標](open/2026-09-11-form-validation-and-touch-targets.md) | web | `apps/web/components/community/shell.tsx`<br>`apps/web/components/airline-fare-lab.tsx`<br>`apps/web/components/flight-status-search.tsx`<br>`apps/web/components/date-range-picker.tsx`<br>`apps/web/components/admin-restaurant-sources-panel.tsx`<br>`apps/web/components/admin-usage-settings-panel.tsx`<br>`apps/web/components/admin-analytics-panel.tsx` |
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | api | `apps/api/app/hotspots/areas.py`<br>`apps/api/tests/test_hotspot_areas.py` |
@@ -41,7 +40,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P3 | [彈性日期區塊的價格標籤寫死 full_trip_search](open/2026-09-06-full-trip-search.md) | web | `apps/web/components/flight-date-options.tsx`<br>`apps/web/components/flight-date-options.test.tsx` |
 | P3 | [建立旅程時就問出發機場，不要等到查機票才問](open/2026-09-06-ask-origin-airport-at-trip-creation.md) | web | `apps/web/components/new-trip-form.tsx`<br>`apps/web/components/new-trip-form.test.tsx`<br>`apps/web/messages/en/newTrip.json`<br>`apps/web/messages/ja/newTrip.json`<br>`apps/web/messages/ko/newTrip.json`<br>`apps/web/messages/zh-TW/newTrip.json`<br>`apps/web/messages/zh-CN/newTrip.json` |
 | P3 | [行程裡新增一餐：四個 trip-selections 端點接受 mode: replace_meal\|append](open/2026-09-07-add-a-meal-to-a-day.md) | api | `apps/api/app/foods/router.py`<br>`apps/api/app/hotspots/router.py`<br>`apps/api/app/restaurants/user_router.py`<br>`apps/web/components/travel-card-actions.tsx` |
-| P3 | [整合測試用固定 email，同一個資料庫跑第二次就 UniqueViolation](open/2026-09-07-fixed-email-in-integration-tests.md) | api | `apps/api/tests/test_food_integration.py` |
 | P3 | [tasks/BOARD.md 是產生檔，卻讓每個 PR 互相衝突](open/2026-09-07-board-conflicts-on-every-pr.md) | tools | `.gitattributes`<br>`tools/tasks.mjs` |
 | P3 | [Isolate backup catalog test from host free disk capacity](open/2026-09-09-backup-catalog-free-disk-fixture.md) | api | `apps/api/tests/test_database_operations_center.py` |
 
@@ -72,6 +70,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | [Review and harden PR 388 SEO behavior before merge](open/2026-09-11-pr388-seo-review.md) | codex-pr388-review | `codex/pr388-seo-review` |
 | [Hotel operating date guards Rakuten Japan and resilient clickouts](open/2026-09-11-hotel-operation-rakuten-clickout.md) | codex-hotel-guard | `codex/hotel-operation-rakuten-clickout` |
 | [Fix food map and reservation entry points](open/2026-09-11-food-map-reservation-entry.md) | codex-food-map-reservation-entry | `codex/food-map-reservation-entry` |
+| [Independent food reservation save and multi-platform support](open/2026-09-11-food-reservation-platforms.md) | codex-food-reservation-platforms | `codex/food-reservation-platforms` |
 | [Archive completed catalog and hotel review evidence](open/2026-09-09-review-evidence-archive.md) | codex-review-archive | `codex/review-evidence-archive-20260909` |
 | [Compact discovery cards and source-linked details](open/2026-09-09-discovery-card-details.md) | codex-discovery-card-details | `codex/discovery-card-details-20260909` |
 | [公開資料改用 revalidate 快取，並把 /foods 店家列表放進 SSR](open/2026-09-10-seo-public-data-caching.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
@@ -98,7 +97,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [Community read metric duplicate observed alongside smoke ECONNRESET](open/2026-09-07-community-read-metric-concurrency.md) | active work in the same scope |
 | P2 | [Preserve force refresh in daily route background jobs](open/2026-09-10-daily-route-force-refresh.md) | active work in the same scope |
 | P2 | [讓 pet-friendly 與社群內容頁先 SSR 再開放索引](open/2026-09-10-seo-open-content-pages.md) | depends on 2026-09-10-seo-index-directives |
+| P2 | [彈層原語未統一與可及性收尾](open/2026-09-11-dialog-primitives-and-a11y-cleanup.md) | active work in the same scope |
 | P2 | [六處死路與缺空狀態合集](open/2026-09-11-ux-dead-ends-and-empty-states.md) | active work in the same scope |
+| P3 | [整合測試用固定 email，同一個資料庫跑第二次就 UniqueViolation](open/2026-09-07-fixed-email-in-integration-tests.md) | active work in the same scope |
 | P3 | [Lighthouse SEO 與效能門檻 workflow](open/2026-09-10-seo-lighthouse-workflow.md) | depends on 2026-09-10-seo-robots-sitemap, 2026-09-10-seo-destination-landing-pages, 2026-09-10-seo-server-render-home-and-explore |
 
 ## Recently finished

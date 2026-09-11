@@ -1157,7 +1157,7 @@ async def _public_platform_links(
             select(FoodMerchantPlatformLink).where(
                 FoodMerchantPlatformLink.merchant_id.in_(merchant_ids),
                 FoodMerchantPlatformLink.status == "verified",
-            )
+            ).order_by(FoodMerchantPlatformLink.provider, FoodMerchantPlatformLink.id)
         )
     ).all()
     countries = {
