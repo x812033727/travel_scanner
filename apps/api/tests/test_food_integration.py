@@ -1,8 +1,10 @@
+import asyncio
 import os
 from collections import Counter
 from collections.abc import AsyncIterator
 from datetime import UTC, date, datetime
 from decimal import Decimal
+from uuid import UUID, uuid4
 
 import pytest
 import pytest_asyncio
@@ -63,6 +65,213 @@ pytestmark = pytest.mark.skipif(
     os.getenv("RUN_INTEGRATION_TESTS") != "1",
     reason="requires PostgreSQL",
 )
+
+
+@pytest_asyncio.fixture(loop_scope="module")
+async def reservation_records() -> AsyncIterator[tuple[UUID, list[UUID]]]:
+    """Isolated PostgreSQL records for real transaction/row-lock regression checks."""
+    token = uuid4().hex
+    async with SessionFactory() as session:
+        admin = User(email=f"reservation-{token}@example.test", is_admin=True)
+        food = TravelFood(
+            slug=f"reservation-food-{token}", local_name="Fixture dish",
+            romanized_name="Fixture dish", country_code="JP", food_kind="main",
+            search_text="Fixture dish",
+        )
+        category = FoodCategory(slug=f"reservation-category-{token}", names_json={"en": "Fixture"})
+        area = FoodArea(
+            slug=f"reservation-area-{token}", destination_id="tokyo", country_code="JP",
+            names_json={"en": "Fixture area"},
+        )
+        session.add_all([admin, food, category, area])
+        await session.flush()
+        merchants = [
+            FoodMerchant(
+                slug=f"reservation-merchant-{index}-{token}", name=f"Fixture branch {index}",
+                local_name=f"Fixture branch {index}", country_code="JP", destination_id="tokyo",
+                review_status="approved", map_match_status="verified", address="Fixture address",
+                google_place_id=f"fixture-place-{index}-{token}", names_json={"en": "Keep name"},
+                area_id=area.id, area_source="admin",
+            ) for index in range(2)
+        ]
+        session.add_all(merchants)
+        await session.flush()
+        session.add_all([
+            FoodMerchantFood(merchant_id=merchants[0].id, food_id=food.id, is_primary=True),
+            FoodMerchantCategory(
+                merchant_id=merchants[0].id, category_id=category.id, is_primary=True,
+            ),
+            FoodMerchantSource(
+                merchant_id=merchants[0].id, source_type="merchant_official",
+                source_scope="merchant_website", source_title="Keep source",
+                source_url="https://fixture.example/branch", is_current=True,
+            ),
+            FoodMerchantPlatformLink(
+                merchant_id=merchants[0].id, provider="tablecheck", status="verified",
+                canonical_url=f"https://www.tablecheck.com/en/shops/fixture-{token}/reserve",
+                checked_at=datetime.now(UTC), checked_by_user_id=admin.id,
+                review_note="Keep other platform",
+            ),
+        ])
+        await session.commit()
+        admin_id, merchant_ids = admin.id, [merchant.id for merchant in merchants]
+        food_id, category_id, area_id = food.id, category.id, area.id
+    try:
+        yield admin_id, merchant_ids
+    finally:
+        async with SessionFactory() as session:
+            await session.execute(
+                delete(AdminAuditLog).where(AdminAuditLog.actor_user_id == admin_id)
+            )
+            await session.execute(delete(FoodMerchant).where(FoodMerchant.id.in_(merchant_ids)))
+            await session.execute(delete(TravelFood).where(TravelFood.id == food_id))
+            await session.execute(delete(FoodCategory).where(FoodCategory.id == category_id))
+            await session.execute(delete(FoodArea).where(FoodArea.id == area_id))
+            await session.execute(delete(User).where(User.id == admin_id))
+            await session.commit()
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_platform_save_and_stale_guard_preserve_other_merchant_data_postgresql(
+    reservation_records: tuple[UUID, list[UUID]],
+) -> None:
+    admin_id, merchant_ids = reservation_records
+    merchant_id = merchant_ids[0]
+    models = (FoodMerchantFood, FoodMerchantCategory, FoodMerchantSource)
+    async with SessionFactory() as session:
+        admin = await session.get(User, admin_id)
+        assert admin is not None
+        merchant_before = dict((await session.execute(
+            select(FoodMerchant.__table__).where(FoodMerchant.id == merchant_id)
+        )).mappings().one())
+        relations_before = [
+            [dict(row) for row in (await session.execute(
+                select(model.__table__).where(model.merchant_id == merchant_id)
+            )).mappings()] for model in models
+        ]
+        other_before = dict((await session.execute(
+            select(FoodMerchantPlatformLink.__table__).where(
+                FoodMerchantPlatformLink.merchant_id == merchant_id
+            )
+        )).mappings().one())
+        url = f"https://inline.app/booking/chain:inline-live-3/{merchant_id.hex}?language=zh-tw"
+        created = await update_merchant_platform_link(
+            merchant_id, MerchantPlatformLinkPayload(
+                provider="inline", status="verified", canonical_url=url, expected_checked_at=None,
+            ), admin, session,
+        )
+        checked_at = created["platform_links"][0]["checked_at"]
+        assert checked_at.tzinfo is not None
+        await update_merchant_platform_link(
+            merchant_id, MerchantPlatformLinkPayload(
+                provider="inline", status="disabled", canonical_url=url,
+                expected_checked_at=checked_at,
+            ), admin, session,
+        )
+        for expected in (checked_at, None):
+            with pytest.raises(AppError) as error:
+                await update_merchant_platform_link(
+                    merchant_id, MerchantPlatformLinkPayload(
+                        provider="inline", status="not_found", expected_checked_at=expected,
+                    ), admin, session,
+                )
+            assert error.value.status == 409
+            assert error.value.code == "reservation_platform_version_conflict"
+        assert merchant_before == dict((await session.execute(
+            select(FoodMerchant.__table__).where(FoodMerchant.id == merchant_id)
+        )).mappings().one())
+        assert relations_before == [
+            [dict(row) for row in (await session.execute(
+                select(model.__table__).where(model.merchant_id == merchant_id)
+            )).mappings()] for model in models
+        ]
+        assert other_before == dict((await session.execute(
+            select(FoodMerchantPlatformLink.__table__).where(
+                FoodMerchantPlatformLink.merchant_id == merchant_id,
+                FoodMerchantPlatformLink.provider == "tablecheck",
+            )
+        )).mappings().one())
+        assert len((await session.scalars(select(AdminAuditLog).where(
+            AdminAuditLog.actor_user_id == admin_id
+        ))).all()) == 2
+
+
+@pytest.mark.asyncio(loop_scope="module")
+@pytest.mark.parametrize("same_merchant", [True, False])
+async def test_concurrent_platform_creation_and_branch_aliases_postgresql(
+    reservation_records: tuple[UUID, list[UUID]], same_merchant: bool,
+) -> None:
+    admin_id, merchant_ids = reservation_records
+    ready = asyncio.Barrier(2)
+    venue = uuid4().hex
+
+    async def save(index: int) -> str:
+        async with SessionFactory() as session:
+            admin = await session.get(User, admin_id)
+            assert admin is not None
+            await ready.wait()
+            try:
+                await update_merchant_platform_link(
+                    merchant_ids[0] if same_merchant else merchant_ids[index],
+                    MerchantPlatformLinkPayload(
+                        provider="sevenrooms", status="verified", expected_checked_at=None,
+                        canonical_url=(
+                            f"https://sevenrooms.com/reservations/{venue}" if index == 0 else
+                            f"https://www.sevenrooms.com/explore/{venue}/reservations/create/search"
+                        ),
+                    ), admin, session,
+                )
+            except AppError as error:
+                await session.rollback()
+                assert error.status == 409
+                return error.code
+            return "saved"
+
+    outcomes = await asyncio.wait_for(asyncio.gather(save(0), save(1)), timeout=20)
+    expected_conflict = (
+        "reservation_platform_version_conflict" if same_merchant
+        else "reservation_platform_url_conflict"
+    )
+    assert sorted(outcomes) == sorted(["saved", expected_conflict])
+    async with SessionFactory() as session:
+        rows = (await session.scalars(select(FoodMerchantPlatformLink).where(
+            FoodMerchantPlatformLink.merchant_id.in_(merchant_ids),
+            FoodMerchantPlatformLink.provider == "sevenrooms",
+        ))).all()
+        assert len(rows) == 1
+        assert len((await session.scalars(select(AdminAuditLog).where(
+            AdminAuditLog.actor_user_id == admin_id
+        ))).all()) == 1
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_platform_locale_and_route_alias_conflict_postgresql(
+    reservation_records: tuple[UUID, list[UUID]],
+) -> None:
+    admin_id, merchant_ids = reservation_records
+    async with SessionFactory() as session:
+        admin = await session.get(User, admin_id)
+        assert admin is not None
+        original = await session.scalar(select(FoodMerchantPlatformLink).where(
+            FoodMerchantPlatformLink.merchant_id == merchant_ids[0],
+            FoodMerchantPlatformLink.provider == "tablecheck",
+        ))
+        assert original is not None and original.canonical_url
+        venue = original.canonical_url.removeprefix(
+            "https://www.tablecheck.com/en/shops/"
+        ).removesuffix("/reserve")
+        with pytest.raises(AppError) as error:
+            await update_merchant_platform_link(
+                merchant_ids[1], MerchantPlatformLinkPayload(
+                    provider="tablecheck", status="verified", expected_checked_at=None,
+                    canonical_url=f"https://tablecheck.com/zh-TW/{venue}/reserve/message",
+                ), admin, session,
+            )
+        assert error.value.status == 409
+        assert error.value.code == "reservation_platform_url_conflict"
+        assert not (await session.scalars(select(AdminAuditLog).where(
+            AdminAuditLog.actor_user_id == admin_id
+        ))).all()
 
 
 @pytest_asyncio.fixture(scope="module", loop_scope="module", autouse=True)
@@ -655,18 +864,14 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         assert updated["area_source"] == "admin"
         assert [item["slug"] for item in updated["categories"]] == ["home-style", "rice-dishes"]
         assert [item["is_primary"] for item in updated["categories"]] == [True, False]
-        with pytest.raises(AppError) as wrong_platform:
-            await update_merchant_platform_link(
-                verified.id,
-                MerchantPlatformLinkPayload(
-                    provider="tablecheck",
-                    status="not_found",
-                    review_note="Wrong country on purpose",
-                ),
-                admin,
-                session,
-            )
-        assert wrong_platform.value.code == "reservation_platform_country_mismatch"
+        await update_merchant_platform_link(
+            verified.id,
+            MerchantPlatformLinkPayload(
+                provider="tablecheck", status="not_found",
+                review_note="Independent second platform audit",
+            ),
+            admin, session,
+        )
         reviewed = await update_merchant_platform_link(
             verified.id,
             MerchantPlatformLinkPayload(
@@ -681,6 +886,9 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         )
         assert reviewed["platform_link"]["status"] == "verified"
         assert reviewed["platform_link"]["checked_by_user_id"] == str(admin.id)
+        assert [item["provider"] for item in reviewed["platform_links"]] == [
+            "catchtable_global", "tablecheck",
+        ]
         assert await session.scalar(
             select(AdminAuditLog.id).where(
                 AdminAuditLog.action == "food_merchant_platform_link_reviewed",

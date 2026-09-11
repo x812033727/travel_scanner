@@ -1,14 +1,16 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { api } from "@/lib/api";
 import { MERCHANT_STYLES } from "@/lib/foods";
 import { AdminMerchantStyles } from "./admin-merchant-styles";
 import { naverMapSearchUrl } from "@/lib/naver-map";
-import { safeExternalHref } from "@/lib/navigation";
 import { mapIdentityCopy } from "@/lib/map-identity-copy";
 import { AdminMapIdentitiesPanel } from "./admin-map-identities-panel";
+import { reservationPlatformDefinitions } from "@/lib/reservation-platforms";
+import { useModalSheet } from "@/lib/modal-sheet";
+import { AdminMerchantPlatformEditor, merchantPlatformLinks, type MerchantPlatformFields, type MerchantPlatformLink, type PlatformOption } from "./admin-merchant-platform-editor";
 import {
   LocalizedNameFields,
   completeNames,
@@ -36,19 +38,6 @@ type MerchantSource = {
   distinction: string | null;
   is_current: boolean;
   last_verified_at?: string;
-};
-type PlatformStatus = "verified" | "not_found" | "ambiguous" | "disabled";
-type MerchantPlatformLink = {
-  id?: string;
-  provider: string;
-  provider_label: string;
-  canonical_url: string | null;
-  localized_urls: Partial<Record<"zh-TW" | "zh-CN" | "en" | "ja" | "ko", string>>;
-  status: PlatformStatus;
-  checked_at?: string;
-  checked_by_user_id?: string | null;
-  review_note: string | null;
-  country_mismatch?: boolean;
 };
 
 type Merchant = {
@@ -82,12 +71,13 @@ type Merchant = {
   foods: { id: string; slug: string; name: string }[];
   sources: MerchantSource[];
   platform_link: MerchantPlatformLink | null;
+  platform_links?: MerchantPlatformLink[];
   expected_platform: { provider: string; label: string };
 };
 
 export type MerchantTaxonomyFilter = "missing_area" | "missing_category";
 type DishOption = { id: string; slug: string; local_name: string; country_code: string };
-type MerchantResponse = { items: Merchant[]; total: number };
+type MerchantResponse = { items: Merchant[]; total: number; available_platforms?: PlatformOption[] };
 
 // The API caps limit at 100 and pages from 1; the panel used to hard-code
 // limit=100 with no pager, so merchant 101 onward simply did not exist here.
@@ -116,15 +106,6 @@ type BatchCandidateResult = {
   error?: string;
 };
 
-const RESERVATION_PLATFORMS: Record<string, { provider: string; label: string }> = {
-  JP: { provider: "tablecheck", label: "TableCheck" },
-  KR: { provider: "catchtable_global", label: "Catchtable Global" },
-  TW: { provider: "eztable", label: "EZTABLE" },
-  SG: { provider: "chope", label: "Chope" },
-  HK: { provider: "openrice", label: "OpenRice" },
-  TH: { provider: "hungry_hub", label: "Hungry Hub" },
-  VN: { provider: "pasgo", label: "PasGo" },
-};
 
 function nullableNumber(value: string): number | null {
   return value.trim() ? Number(value) : null;
@@ -152,6 +133,7 @@ function withTaxonomyDefaults(merchant: Merchant): Merchant {
     area_source: merchant.area_source ?? null,
     categories: merchant.categories ?? [],
     foods: merchant.foods ?? [],
+    platform_links: merchantPlatformLinks(merchant),
   };
 }
 
@@ -199,6 +181,7 @@ function blankMerchant(): Merchant {
       },
     ],
     platform_link: null,
+    platform_links: [],
     expected_platform: { provider: "", label: "" },
   };
 }
@@ -265,6 +248,36 @@ export function AdminFoodMerchantsPanel({
   const [saveError, setSaveError] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const merchantSaveInFlight = useRef(false);
+  const [platformBusy, setPlatformBusy] = useState(false);
+  const [platformDirty, setPlatformDirty] = useState(false);
+  const [confirmClose, setConfirmClose] = useState(false);
+  const [saveNotice, setSaveNotice] = useState("");
+  const editorTrigger = useRef<HTMLButtonElement | null>(null);
+  const editorOpen = Boolean(editing);
+  const availablePlatforms = data?.available_platforms ?? reservationPlatformDefinitions;
+
+  function acceptPlatformSave(saved: MerchantPlatformFields) {
+    const fields = { platform_link: saved.platform_link ?? null, platform_links: merchantPlatformLinks(saved) };
+    const merchantId = editing?.id;
+    setEditing((current) => current && current.id === merchantId ? { ...current, ...fields } : current);
+    setData((current) => current ? { ...current, items: current.items.map((item) => item.id === merchantId ? { ...item, ...fields } : item) } : current);
+  }
+
+  function closeEditor() {
+    if (loading || platformBusy) return;
+    if (platformDirty) { setConfirmClose(true); return; }
+    setEditing(null);
+    setSaveNotice("");
+  }
+  const editorRef = useModalSheet<HTMLDivElement>(editorOpen, closeEditor);
+  useEffect(() => {
+    // Disabling the inert opener can move browser focus before the modal hook runs.
+    if (!editorOpen && editorTrigger.current) {
+      if (editorTrigger.current.isConnected) editorTrigger.current.focus({ preventScroll: true });
+      editorTrigger.current = null;
+    }
+  }, [editorOpen]);
 
   const load = useCallback(async () => {
     const params = new URLSearchParams({ limit: String(PAGE_SIZE), page: String(page) });
@@ -538,10 +551,13 @@ export function AdminFoodMerchantsPanel({
   }
 
   async function save() {
-    if (!editing) return;
+    if (!editing || platformBusy || merchantSaveInFlight.current) return;
+    merchantSaveInFlight.current = true;
+    const submittedMerchantId = editing.id;
     const original = data?.items.find((item) => item.id === editing.id);
     setLoading(true);
     setSaveError("");
+    setSaveNotice("");
     try {
       const savedMerchant = await api<Merchant>(editing.id ? `/admin/foods/merchants/${editing.id}` : "/admin/foods/merchants", {
         method: editing.id ? "PATCH" : "POST",
@@ -587,26 +603,16 @@ export function AdminFoodMerchantsPanel({
             : {}),
         }),
       });
-      if (editing.platform_link) {
-        await api(`/admin/foods/merchants/${savedMerchant.id}/platform-link`, {
-          method: "PUT",
-          body: JSON.stringify({
-            provider: editing.platform_link.provider,
-            status: editing.platform_link.status,
-            canonical_url: editing.platform_link.canonical_url,
-            localized_urls: editing.platform_link.localized_urls,
-            review_note: editing.platform_link.review_note,
-          }),
-        });
-      }
-      setMessage(editing.id ? ta("foodMerchantsPanel.locationSaved") : t("merchants.created"));
-      setEditing(null);
+      setSaveNotice(editing.id ? ta("foodMerchantsPanel.locationSaved") : t("merchants.created"));
+      // Keep this editor mounted so unsaved drafts in other sections survive.
+      setEditing((current) => current && current.id === submittedMerchantId ? { ...current, id: savedMerchant.id } : current);
       setCandidate(null);
       setApplyNotice("");
       await load();
     } catch (reason) {
       setSaveError((reason as Error).message);
     } finally {
+      merchantSaveInFlight.current = false;
       setLoading(false);
     }
   }
@@ -673,6 +679,7 @@ export function AdminFoodMerchantsPanel({
 
   return (
     <section className="mt-12 border-t border-[var(--line)] pt-8">
+      <div inert={Boolean(editing)} aria-hidden={editing ? true : undefined}>
       <div className="flex flex-wrap items-end gap-3">
         <div className="mr-auto">
           <p className="text-sm font-semibold tracking-[.12em] text-[var(--teal)]">
@@ -727,8 +734,8 @@ export function AdminFoodMerchantsPanel({
           className="h-11 rounded-xl border px-3"
         >
           <option value="">{ta("foodMerchantsPanel.countryAll")}</option>
-          {Object.entries(RESERVATION_PLATFORMS).map(([code, item]) => (
-            <option key={code} value={code}>{code} · {item.label}</option>
+          {[...new Set(cities.map((city) => city.country_code))].sort().map((code) => (
+            <option key={code} value={code}>{code}</option>
           ))}
         </select>
         <select
@@ -797,7 +804,7 @@ export function AdminFoodMerchantsPanel({
           className="h-11 rounded-xl border px-3"
         >
           <option value="">{ta("foodMerchantsPanel.platformAll")}</option>
-          {Object.values(RESERVATION_PLATFORMS).map((item) => (
+          {availablePlatforms.map((item) => (
             <option key={item.provider} value={item.provider}>{item.label}</option>
           ))}
         </select>
@@ -816,7 +823,13 @@ export function AdminFoodMerchantsPanel({
         </select>
         <button
           type="button"
-          onClick={() => {
+          disabled={Boolean(editing) || loading || platformBusy}
+          onClick={(event) => {
+            if (editing || loading || platformBusy || merchantSaveInFlight.current) return;
+            editorTrigger.current = event.currentTarget;
+            setSaveNotice("");
+            setConfirmClose(false);
+            setPlatformDirty(false);
             setEditing(blankMerchant());
             setCandidate(null);
             setApplyNotice("");
@@ -991,8 +1004,8 @@ export function AdminFoodMerchantsPanel({
                       {ta("foodMerchantsPanel.sourcesLine", { direct: directSources, context: merchant.sources.length - directSources })}
                     </span>
                     <span className="mt-1 block text-xs font-semibold text-[var(--teal)]">
-                      {merchant.platform_link
-                        ? `${merchant.platform_link.provider_label} · ${ta(`foodMerchantsPanel.platformStatus.${merchant.platform_link.status}`)}`
+                      {merchantPlatformLinks(merchant).length
+                        ? merchantPlatformLinks(merchant).map((link) => <span key={link.provider} className="block">{link.provider_label} · {ta(`foodMerchantsPanel.platformStatus.${link.status}`)}</span>)
                         : ta("foodMerchantsPanel.platformUnreviewed")}
                     </span>
                   </td>
@@ -1005,8 +1018,14 @@ export function AdminFoodMerchantsPanel({
                   <td className="p-3">
                     <button
                       type="button"
-                      onClick={() => {
+                      disabled={Boolean(editing) || loading || platformBusy}
+                      onClick={(event) => {
+                        if (editing || loading || platformBusy || merchantSaveInFlight.current) return;
+                        editorTrigger.current = event.currentTarget;
                         setSaveError("");
+                        setSaveNotice("");
+                        setConfirmClose(false);
+                        setPlatformDirty(false);
                         setEditing({
                           ...merchant,
                           sources: merchant.sources.map((source) => ({
@@ -1036,10 +1055,12 @@ export function AdminFoodMerchantsPanel({
           <button type="button" disabled={page >= Math.ceil(data.total / PAGE_SIZE)} onClick={() => setPage((current) => current + 1)} className="min-h-11 rounded-xl border px-4 text-sm font-semibold disabled:opacity-40">{t("pagination.next")}</button>
         </nav>
       )}
+      </div>
 
       {editing && (
         <div className="fixed inset-0 z-[90] overflow-y-auto bg-slate-950/50 p-4 md:p-8">
           <div
+            ref={editorRef}
             role="dialog"
             aria-modal="true"
             aria-labelledby="merchant-map-title"
@@ -1056,12 +1077,19 @@ export function AdminFoodMerchantsPanel({
               </div>
               <button
                 type="button"
-                onClick={() => setEditing(null)}
+                aria-label={ta("foodMerchantsPanel.close")}
+                disabled={loading || platformBusy}
+                onClick={closeEditor}
                 className="min-h-11 rounded-xl border px-4"
               >
                 {ta("foodMerchantsPanel.close")}
               </button>
             </div>
+            {confirmClose && <div role="alert" className="mt-3 rounded-xl bg-amber-50 p-3 text-sm">
+              <p>{ta("foodMerchantsPanel.platformCloseWarning")}</p>
+              <button type="button" onClick={() => setConfirmClose(false)} className="mt-2 min-h-11 rounded-xl border bg-white px-3">{ta("foodMerchantsPanel.platformKeepEditing")}</button>
+              <button type="button" disabled={loading || platformBusy} onClick={() => { setEditing(null); setPlatformDirty(false); setConfirmClose(false); setSaveNotice(""); }} className="ml-2 mt-2 min-h-11 rounded-xl border bg-white px-3">{ta("foodMerchantsPanel.platformDiscardClose")}</button>
+            </div>}
             {editing.id ? <AdminMerchantStyles key={editing.id} merchantId={editing.id} />
               : <p className="mt-4 text-sm text-[var(--muted)]">{ts("createFirst")}</p>}
             <div className="mt-5 grid gap-4 md:grid-cols-2">
@@ -1120,10 +1148,6 @@ export function AdminFoodMerchantsPanel({
                       country_code: city?.country_code ?? editing.country_code,
                       area: null,
                       foods: countryChanged ? [] : editing.foods,
-                      platform_link: countryChanged ? null : editing.platform_link,
-                      expected_platform: countryChanged && city
-                        ? RESERVATION_PLATFORMS[city.country_code]
-                        : editing.expected_platform,
                     });
                   }}
                   className="mt-1 h-11 w-full rounded-xl border px-3"
@@ -1386,120 +1410,16 @@ export function AdminFoodMerchantsPanel({
                 ))}
               </div>
             </fieldset>
-            <fieldset className="mt-5 rounded-2xl border border-[var(--teal)] bg-[var(--teal-soft)] p-4">
-              <legend className="px-1 font-bold">{ta("foodMerchantsPanel.platformEditorTitle")}</legend>
-              <p className="text-xs leading-5 text-[var(--muted)]">
-                {ta("foodMerchantsPanel.platformEditorHelp")}
-              </p>
-              {!editing.platform_link ? (
-                <button
-                  type="button"
-                  disabled={!RESERVATION_PLATFORMS[editing.country_code]}
-                  onClick={() => {
-                    const expected = RESERVATION_PLATFORMS[editing.country_code];
-                    if (!expected) return;
-                    setEditing({
-                      ...editing,
-                      expected_platform: expected,
-                      platform_link: {
-                        provider: expected.provider,
-                        provider_label: expected.label,
-                        canonical_url: null,
-                        localized_urls: {},
-                        status: "not_found",
-                        review_note: null,
-                      },
-                    });
-                  }}
-                  className="mt-3 min-h-11 rounded-xl border border-[var(--teal)] bg-white px-4 font-semibold text-[var(--teal)] disabled:opacity-40"
-                >
-                  {ta("foodMerchantsPanel.platformStartReview", {
-                    provider: RESERVATION_PLATFORMS[editing.country_code]?.label ?? "—",
-                  })}
-                </button>
-              ) : (
-                <div className="mt-3 grid gap-3 md:grid-cols-2">
-                  {editing.platform_link.country_mismatch && (
-                    <p role="alert" className="rounded-xl bg-red-50 p-3 text-sm font-semibold text-red-800 md:col-span-2">
-                      {ta("foodMerchantsPanel.platformCountryMismatch")}
-                    </p>
-                  )}
-                  <label className="text-sm font-semibold">
-                    {ta("foodMerchantsPanel.platformProvider")}
-                    <input readOnly value={editing.platform_link.provider_label} className="mt-1 h-11 w-full rounded-xl border bg-white px-3" />
-                  </label>
-                  <label className="text-sm font-semibold">
-                    {ta("foodMerchantsPanel.platformReviewStatus")}
-                    <select
-                      value={editing.platform_link.status}
-                      onChange={(event) => setEditing({
-                        ...editing,
-                        platform_link: { ...editing.platform_link!, status: event.target.value as PlatformStatus },
-                      })}
-                      className="mt-1 h-11 w-full rounded-xl border bg-white px-3"
-                    >
-                      <option value="verified">{ta("foodMerchantsPanel.platformVerified")}</option>
-                      <option value="not_found">{ta("foodMerchantsPanel.platformNotFound")}</option>
-                      <option value="ambiguous">{ta("foodMerchantsPanel.platformAmbiguous")}</option>
-                      <option value="disabled">{ta("foodMerchantsPanel.platformDisabled")}</option>
-                    </select>
-                  </label>
-                  <label className="text-sm font-semibold md:col-span-2">
-                    {ta("foodMerchantsPanel.platformCanonicalUrl")}
-                    <span className="mt-1 flex gap-2">
-                      <input
-                        value={editing.platform_link.canonical_url ?? ""}
-                        onChange={(event) => setEditing({
-                          ...editing,
-                          platform_link: { ...editing.platform_link!, canonical_url: event.target.value || null },
-                        })}
-                        placeholder="https://"
-                        className="h-11 min-w-0 flex-1 rounded-xl border bg-white px-3"
-                      />
-                      {safeExternalHref(editing.platform_link.canonical_url) && (
-                        <a href={safeExternalHref(editing.platform_link.canonical_url)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center rounded-xl border bg-white px-3 font-semibold">
-                          {ta("foodMerchantsPanel.platformOpenCheck")}
-                        </a>
-                      )}
-                    </span>
-                  </label>
-                  {(["zh-TW", "zh-CN", "en", "ja", "ko"] as const).map((locale) => (
-                    <label key={locale} className="text-xs font-semibold">
-                      {ta("foodMerchantsPanel.platformLocalizedUrl", { locale })}
-                      <input
-                        value={editing.platform_link?.localized_urls[locale] ?? ""}
-                        onChange={(event) => setEditing({
-                          ...editing,
-                          platform_link: {
-                            ...editing.platform_link!,
-                            localized_urls: {
-                              ...editing.platform_link!.localized_urls,
-                              [locale]: event.target.value,
-                            },
-                          },
-                        })}
-                        placeholder="https://"
-                        className="mt-1 h-11 w-full rounded-xl border bg-white px-3"
-                      />
-                    </label>
-                  ))}
-                  <label className="text-sm font-semibold md:col-span-2">
-                    {ta("foodMerchantsPanel.platformReviewNote")}
-                    <textarea
-                      value={editing.platform_link.review_note ?? ""}
-                      onChange={(event) => setEditing({
-                        ...editing,
-                        platform_link: { ...editing.platform_link!, review_note: event.target.value || null },
-                      })}
-                      className="mt-1 min-h-24 w-full rounded-xl border bg-white p-3"
-                    />
-                  </label>
-                  <p className="text-xs text-[var(--muted)] md:col-span-2">
-                    {ta("foodMerchantsPanel.platformIndividualOnly")}
-                  </p>
-                </div>
-              )}
-            </fieldset>
+            <AdminMerchantPlatformEditor
+              key={editing.id || "new"}
+              merchantId={editing.id}
+              links={merchantPlatformLinks(editing)}
+              availablePlatforms={availablePlatforms}
+              disabled={loading}
+              onSaved={acceptPlatformSave}
+              onBusyChange={setPlatformBusy}
+              onDirtyChange={setPlatformDirty}
+            />
             <section className="mt-5 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
@@ -1720,13 +1640,15 @@ export function AdminFoodMerchantsPanel({
               </label>
               <button
                 type="button"
-                disabled={loading}
+                disabled={loading || platformBusy}
                 onClick={() => void save()}
                 className="ml-auto min-h-12 rounded-xl bg-[var(--teal)] px-6 font-semibold text-white disabled:opacity-40"
               >
                 {ta("foodMerchantsPanel.saveMerchant")}
               </button>
             </div>
+            <p className="mt-3 text-xs text-[var(--muted)]">{ta("foodMerchantsPanel.platformSeparateSave")}</p>
+            {saveNotice && <p role="status" className="mt-3 rounded-xl bg-[var(--teal-soft)] px-4 py-3 text-sm font-semibold">{saveNotice}</p>}
             {saveError && (
               <p role="alert" className="mt-3 rounded-xl bg-red-50 px-4 py-3 text-sm font-semibold text-red-800">
                 {saveError}

@@ -1,8 +1,9 @@
 from __future__ import annotations
 
 import re
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from decimal import Decimal
+from hashlib import sha256
 from typing import Annotated, Any, Literal
 from uuid import UUID
 
@@ -34,7 +35,10 @@ from app.foods.platform_links import (
     PLATFORM_STATUSES,
     PLATFORMS_BY_PROVIDER,
     SITE_LOCALES,
+    available_platforms,
     expected_platform,
+    platform_url_identity,
+    validate_localized_platform_urls,
     validate_platform_url,
 )
 from app.foods.service import (
@@ -320,6 +324,7 @@ class MerchantPlatformLinkPayload(BaseModel):
     canonical_url: str | None = Field(default=None, max_length=2048)
     localized_urls: dict[str, str] = Field(default_factory=dict)
     review_note: str | None = Field(default=None, max_length=1000)
+    expected_checked_at: datetime | None = None
 
     @model_validator(mode="after")
     def validate_urls(self) -> MerchantPlatformLinkPayload:
@@ -331,11 +336,12 @@ class MerchantPlatformLinkPayload(BaseModel):
             raise ValueError("已驗證狀態必須提供精準店家頁")
         if self.canonical_url:
             self.canonical_url = validate_platform_url(self.provider, self.canonical_url)
-        self.localized_urls = {
-            locale: validate_platform_url(self.provider, url)
-            for locale, url in self.localized_urls.items()
-            if url.strip()
-        }
+        self.localized_urls = validate_localized_platform_urls(
+            self.provider, self.canonical_url,
+            {locale: url for locale, url in self.localized_urls.items() if url.strip()},
+        )
+        if self.expected_checked_at is not None and self.expected_checked_at.tzinfo is None:
+            raise ValueError("expected_checked_at must include a timezone")
         return self
 
 
@@ -1109,15 +1115,38 @@ async def _merchant_admin_item(session: AsyncSession, merchant: FoodMerchant) ->
             .order_by(FoodMerchantCategory.is_primary.desc(), FoodMerchantCategory.display_order)
         )
     ).all()
-    platform_link = await session.scalar(
-        select(FoodMerchantPlatformLink).where(
-            FoodMerchantPlatformLink.merchant_id == merchant.id
-        )
-    )
-    platform_definition = (
-        PLATFORMS_BY_PROVIDER.get(platform_link.provider) if platform_link else None
-    )
+    platform_rows = (await session.scalars(
+        select(FoodMerchantPlatformLink)
+        .where(FoodMerchantPlatformLink.merchant_id == merchant.id)
+        .order_by(FoodMerchantPlatformLink.provider, FoodMerchantPlatformLink.id)
+    )).all()
     expected_definition = expected_platform(merchant.country_code)
+    platform_links = [
+        {
+            "id": str(row.id),
+            "provider": row.provider,
+            "provider_label": (
+                PLATFORMS_BY_PROVIDER[row.provider].label
+                if row.provider in PLATFORMS_BY_PROVIDER else row.provider
+            ),
+            "canonical_url": row.canonical_url,
+            "localized_urls": row.localized_urls_json,
+            "status": row.status,
+            "checked_at": (
+                row.checked_at.replace(tzinfo=UTC)
+                if row.checked_at.tzinfo is None else row.checked_at
+            ),
+            "checked_by_user_id": str(row.checked_by_user_id) if row.checked_by_user_id else None,
+            "review_note": row.review_note,
+            # Retained for older consumers; country no longer restricts providers.
+            "country_mismatch": False,
+        }
+        for row in platform_rows
+    ]
+    platform_link = next(
+        (row for row in platform_links if row["provider"] == expected_definition.provider),
+        platform_links[0] if platform_links else None,
+    )
     return {
         "id": str(merchant.id),
         "slug": merchant.slug,
@@ -1183,28 +1212,8 @@ async def _merchant_admin_item(session: AsyncSession, merchant: FoodMerchant) ->
             }
             for source in sources
         ],
-        "platform_link": (
-            {
-                "id": str(platform_link.id),
-                "provider": platform_link.provider,
-                "provider_label": (
-                    platform_definition.label if platform_definition else platform_link.provider
-                ),
-                "canonical_url": platform_link.canonical_url,
-                "localized_urls": platform_link.localized_urls_json,
-                "status": platform_link.status,
-                "checked_at": platform_link.checked_at,
-                "checked_by_user_id": (
-                    str(platform_link.checked_by_user_id)
-                    if platform_link.checked_by_user_id
-                    else None
-                ),
-                "review_note": platform_link.review_note,
-                "country_mismatch": platform_link.provider != expected_definition.provider,
-            }
-            if platform_link
-            else None
-        ),
+        "platform_link": platform_link,
+        "platform_links": platform_links,
         "expected_platform": {
             "provider": expected_definition.provider,
             "label": expected_definition.label,
@@ -1306,9 +1315,26 @@ async def list_food_merchants(
     )
     return {
         "items": [await _merchant_admin_item(session, item) for item in merchants],
+        "available_platforms": available_platforms(),
         "total": total,
         "page": page,
         "pages": (total + limit - 1) // limit,
+    }
+
+
+@router.get("/merchants/{merchant_id}/platform-links")
+async def get_merchant_platform_links(
+    merchant_id: UUID, user: AdminUser, session: Session
+) -> dict[str, object]:
+    merchant = await session.get(FoodMerchant, merchant_id)
+    if merchant is None:
+        raise AppError(404, "food_merchant_not_found", "找不到這筆店家資料")
+    item = await _merchant_admin_item(session, merchant)
+    return {
+        "platform_links": item["platform_links"],
+        "platform_link": item["platform_link"],
+        "expected_platform": item["expected_platform"],
+        "available_platforms": available_platforms(),
     }
 
 
@@ -1319,24 +1345,62 @@ async def update_merchant_platform_link(
     user: AdminUser,
     session: Session,
 ) -> dict[str, object]:
-    merchant = await session.get(FoodMerchant, merchant_id)
+    # The parent lock serializes first-row creation as well as updates to this merchant.
+    merchant = await session.scalar(
+        select(FoodMerchant).where(FoodMerchant.id == merchant_id).with_for_update()
+        .execution_options(populate_existing=True)
+    )
     if merchant is None:
         raise AppError(404, "food_merchant_not_found", "找不到這筆店家資料")
-    definition = expected_platform(merchant.country_code)
-    if payload.provider != definition.provider:
-        raise AppError(
-            422,
-            "reservation_platform_country_mismatch",
-            f"{merchant.country_code} 店家只能使用 {definition.label}",
-        )
     if payload.status not in PLATFORM_STATUSES:
         raise AppError(422, "invalid_reservation_platform_status", "查核狀態不正確")
     row = await session.scalar(
         select(FoodMerchantPlatformLink).where(
             FoodMerchantPlatformLink.merchant_id == merchant.id,
             FoodMerchantPlatformLink.provider == payload.provider,
-        )
+        ).with_for_update().execution_options(populate_existing=True)
     )
+    if "expected_checked_at" in payload.model_fields_set:
+        expected = payload.expected_checked_at
+        actual = row.checked_at if row else None
+        # SQLite drops timezone metadata; PostgreSQL keeps the timestamp's instant.
+        if actual is not None and actual.tzinfo is None:
+            actual = actual.replace(tzinfo=UTC)
+        if expected != actual:
+            raise AppError(
+                409, "reservation_platform_version_conflict",
+                "訂位平台資料已更新，請重新載入後再儲存",
+            )
+    if payload.canonical_url:
+        identity = platform_url_identity(payload.provider, payload.canonical_url)
+        if session.get_bind().dialect.name == "postgresql":
+            # Serialize aliases of the same branch across different merchants. This
+            # complements the existing unique(provider, canonical_url) constraint.
+            lock_key = int.from_bytes(
+                sha256(f"reservation:{payload.provider}:{identity}".encode()).digest()[:8],
+                signed=True,
+            )
+            await session.execute(select(func.pg_advisory_xact_lock(lock_key)))
+        existing_urls = (await session.scalars(
+            select(FoodMerchantPlatformLink.canonical_url).where(
+                FoodMerchantPlatformLink.provider == payload.provider,
+                FoodMerchantPlatformLink.merchant_id != merchant.id,
+                FoodMerchantPlatformLink.canonical_url.is_not(None),
+            )
+        )).all()
+        for existing_url in existing_urls:
+            try:
+                same_branch = (
+                    existing_url is not None
+                    and platform_url_identity(payload.provider, existing_url) == identity
+                )
+            except ValueError:
+                continue
+            if same_branch:
+                raise AppError(
+                    409, "reservation_platform_url_conflict",
+                    "這個精準平台頁已經對應到另一間店家",
+                )
     if row is None:
         row = FoodMerchantPlatformLink(
             merchant_id=merchant.id,
@@ -1349,7 +1413,10 @@ async def update_merchant_platform_link(
     row.canonical_url = payload.canonical_url
     row.localized_urls_json = payload.localized_urls
     row.review_note = payload.review_note
-    row.checked_at = datetime.now(UTC)
+    previous_checked_at = row.checked_at
+    if previous_checked_at.tzinfo is None:
+        previous_checked_at = previous_checked_at.replace(tzinfo=UTC)
+    row.checked_at = max(datetime.now(UTC), previous_checked_at + timedelta(microseconds=1))
     row.checked_by_user_id = user.id
     session.add(
         AdminAuditLog(
