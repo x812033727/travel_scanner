@@ -36,8 +36,12 @@ export function SiteNavigation() {
           <Link key={item.href} href={item.href} className="-mx-2 inline-flex min-h-11 items-center rounded-lg px-2 transition hover:text-[var(--ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--teal)]">{t(item.key)}</Link>
         ))}
         {!discovery.enabled && !discovery.loading && <><TextSizeSwitcher />
-        <ThemeSwitcher />
-        <HeaderAuth /></>}
+        <ThemeSwitcher /></>}
+        {/* Sign in belongs on every header. Gating it behind !discovery.enabled left the
+            live site with no way to sign in or out from the chrome, and made a signed-in
+            header identical to a signed-out one. Display preferences can stay in /my;
+            knowing whether you are signed in cannot. */}
+        {!discovery.loading && <HeaderAuth />}
       </nav>
     </>
   );

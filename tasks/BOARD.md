@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**46 open · 3 in progress · 3 blocked · 19 in review · 212 done**
+**45 open · 3 in progress · 3 blocked · 19 in review · 213 done**
 
 ## Ready to claim
 
@@ -13,7 +13,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
-| P0 | [登入入口只存在於我的頁底部且未登入者毫無說明](open/2026-09-11-no-sign-in-entry-in-discovery.md) | web | `apps/web/components/site-navigation.tsx`<br>`apps/web/components/mobile-nav.tsx` |
 | P1 | [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | docs | `apps/web/app/[locale]/privacy/page.tsx`<br>`apps/web/app/[locale]/terms/page.tsx`<br>`apps/web/app/[locale]/contact/page.tsx`<br>`apps/web/messages/en/navigation.json`<br>`apps/web/messages/ja/navigation.json`<br>`apps/web/messages/ko/navigation.json`<br>`apps/web/messages/zh-CN/navigation.json`<br>`apps/web/messages/zh-TW/navigation.json` |
 | P1 | [Hotel platform options and quote readiness](open/2026-09-07-hotel-platform-options-and-quote-readiness.md) | api | `apps/api/tests/test_hotel_content_package.py`<br>`docs/hotel-platforms` |
 | P1 | [Revalidate community read resets against production-build CI](open/2026-09-08-community-ci-read-retry.md) | web | `apps/web/e2e/community.spec.ts` |
@@ -102,6 +101,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## Recently finished
 
+- 2026-09-11 [登入入口只存在於我的頁底部且未登入者毫無說明](done/2026-09-11-no-sign-in-entry-in-discovery.md)
 - 2026-09-11 [次數用完後被導去已關閉的方案頁形成死路](done/2026-09-11-usage-exhausted-dead-end.md)
 - 2026-09-11 [搜尋結果頁的零結果失敗與無逾時三個死路](done/2026-09-11-search-result-dead-ends.md)
 - 2026-09-11 [推薦流印出原始 HTML 標籤](done/2026-09-11-discovery-feed-html-and-language-mix.md)
@@ -111,4 +111,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-11 [撤回：被判定截斷的文字全是螢幕閱讀器專用標籤](done/2026-09-11-language-switcher-label-clipped.md)
 - 2026-09-11 [撤回：對比度不足的發現來自量測程式的解析錯誤](done/2026-09-11-bottom-nav-labels-fail-contrast.md)
 - 2026-09-11 [精靈三個條件都選不限時整頁崩潰並清空五步輸入](done/2026-09-11-wizard-crash-when-all-criteria-any.md)
-- 2026-09-11 [探索卡顯示累積蒐藏數與蒐藏數排行分頁](done/2026-09-11-discovery-saved-count-ranking.md)
