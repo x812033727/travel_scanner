@@ -642,3 +642,37 @@ test("planner weather and intent contrast: dark loading and retry surfaces stay 
   await expectForecastReadable(page, true);
   fixture.assertReadOnly();
 });
+
+/**
+ * The one button on the page is the reason anyone opened it, and it used to be
+ * 120px below the fold at the two larger text sizes — chosen by exactly the readers
+ * least likely to go hunting for it. The site's own bottom navigation takes the
+ * last ~79px of the phone viewport, so "on screen" has to mean above that.
+ */
+test.describe("the sign-in button is on the first screen", () => {
+  const BOTTOM_NAV_PX = 80;
+
+  for (const textSize of ["standard", "large", "largest"] as const) {
+    test(`at the ${textSize} text size`, async ({ page }, info) => {
+      test.skip(info.project.name !== "mobile-chromium", "A fold only exists on a phone.");
+      await page.addInitScript((value) => {
+        try { window.localStorage.setItem("mokaair-text-size", value); } catch { /* private mode */ }
+      }, textSize);
+      await page.goto("/zh-TW/login");
+
+      // Not [type=submit]: the attribute is absent, and the DOM default does not
+      // make the CSS selector match. The name is zh-TW because the route is.
+      const submit = page.getByRole("button", { name: "登入", exact: true });
+      await expect(submit).toBeVisible();
+      const measured = await submit.evaluate((element, reserved) => ({
+        bottom: Math.round(element.getBoundingClientRect().bottom),
+        fold: window.innerHeight - reserved,
+        textSize: document.documentElement.dataset.textSize,
+      }), BOTTOM_NAV_PX);
+
+      expect(measured.textSize, "the text-size bootstrap did not run").toBe(textSize);
+      expect(measured.bottom, `sign in sits ${measured.bottom}px down, past the ${measured.fold}px fold`)
+        .toBeLessThanOrEqual(measured.fold);
+    });
+  }
+});

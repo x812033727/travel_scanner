@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**41 open · 1 in progress · 3 blocked · 21 in review · 226 done**
+**40 open · 1 in progress · 3 blocked · 21 in review · 227 done**
 
 ## Ready to claim
 
@@ -24,7 +24,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [Normalize locale-prefixed login return paths](open/2026-09-10-locale-login-return-path.md) | web | `apps/web/components/auth-form.tsx`<br>`apps/web/components/auth-form.test.tsx` |
 | P2 | [讓 pet-friendly 與社群內容頁先 SSR 再開放索引](open/2026-09-10-seo-open-content-pages.md) | web | `apps/web/components/community/page.tsx`<br>`apps/web/components/community/page.test.tsx`<br>`apps/web/app/[locale]/pet-friendly/page.tsx`<br>`apps/web/app/[locale]/pet-friendly/[id]/page.tsx`<br>`apps/web/app/[locale]/community/posts/[id]/page.tsx`<br>`apps/web/app/[locale]/community/profiles/[handle]/page.tsx`<br>`apps/web/lib/community/public.server.ts`<br>`apps/web/lib/community/public.server.test.ts` |
 | P2 | [表單驗證與低於四十四像素的觸控目標](open/2026-09-11-form-validation-and-touch-targets.md) | web | `apps/web/components/community/shell.tsx`<br>`apps/web/components/airline-fare-lab.tsx`<br>`apps/web/components/flight-status-search.tsx`<br>`apps/web/components/date-range-picker.tsx`<br>`apps/web/components/admin-restaurant-sources-panel.tsx`<br>`apps/web/components/admin-usage-settings-panel.tsx`<br>`apps/web/components/admin-analytics-panel.tsx` |
-| P2 | [登入頁的送出鈕在手機上要捲一下才看得到](open/2026-09-11-bottom-nav-covers-page-content.md) | web | `apps/web/app/globals.css`<br>`apps/web/components/app-bottom-nav.tsx`<br>`apps/web/app/[locale]/login/page.tsx` |
 | P2 | [取消或逾時搜尋時釋放已保留的次數](open/2026-09-11-release-reservation-on-cancel.md) | api | `apps/api/app/search/router.py`<br>`apps/api/app/usage/service.py` |
 | P2 | [店家座標佇列面板整個沒有 i18n](open/2026-09-11-merchant-coordinate-queue-i18n.md) | web | `apps/web/components/admin-merchant-coordinate-queue.tsx` |
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
@@ -97,6 +96,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## Recently finished
 
+- 2026-09-11 [登入頁的送出鈕在手機上要捲一下才看得到](done/2026-09-11-bottom-nav-covers-page-content.md)
 - 2026-09-11 [規格書明定為必要的目的地支援閘門從未實作](done/2026-09-11-destination-supported-gate-missing.md)
 - 2026-09-11 [行程規劃器在手機沒有全域導覽且離線頁無入口](done/2026-09-11-planner-mobile-navigation-and-offline.md)
 - 2026-09-11 [後台九張表格在手機無法閱讀](done/2026-09-11-admin-tables-unusable-on-phone.md)
@@ -106,4 +106,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-11 [後端回傳的繁中警告句被原樣顯示在所有語系](done/2026-09-11-api-warnings-leak-zh-tw.md)
 - 2026-09-11 [合作平台面板繁中且漏用在地化佣金揭露](done/2026-09-11-affiliate-panel-i18n-and-disclosure.md)
 - 2026-09-11 [行程時間軸硬編碼繁中而它正是分享頁的主體](done/2026-09-11-itinerary-timeline-hardcoded-zh-tw.md)
-- 2026-09-11 [全站沒有自訂的找不到頁面](done/2026-09-11-no-custom-not-found-page.md)
