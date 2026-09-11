@@ -100,3 +100,58 @@ cd apps/web && for i in 1 2 3; do npx vitest run --silent; done
   元素是否還連著、是否被 `aria-hidden`／`inert` 蓋住、幾層 overlay、body 的 position）。
   下次它紅的時候，先看那段輸出。`travel-card-actions.test.tsx:64` 還沒有同等的輸出，
   值得補上。
+
+## 第三個實例，以及一個新的假設（claude-opus-5, 2026-09-11）
+
+合併 main（`ce553c2`）之後再跑一次整套，紅的換成第三個檔：
+
+```
+components/route-mode-panel.test.tsx
+  × switches among cached route options and applies only the selected preview
+  AssertionError: expected <section tabindex="-1" aria-label="乘車與移動步驟" …>
+                  to be <button role="option" aria-selected="true" …>
+```
+
+單獨跑那個檔，43 條全過。
+
+**這一條是焦點斷言**：`route-mode-panel.test.tsx:799-801` 把焦點放在「方案 1」、按 ArrowRight、
+斷言焦點跑到「方案 2」。實際拿到的是 `.route-panel-detail`——一個 `tabindex="-1"` 的容器。
+
+看 `route-mode-panel.tsx:295-300`：
+
+```ts
+useEffect(() => {
+  if (!providerPreview || !focusNextPreviewRef.current || !detailRef.current) return;
+  focusNextPreviewRef.current = false;
+  detailRef.current.focus({ preventScroll: true });
+  ...
+}, [providerPreview]);
+```
+
+也就是說，有一個**延後執行的寫焦點動作**，條件只看一個 ref 旗標，不看「焦點現在在哪裡、是不是
+已經被使用者移到別處了」。
+
+### 把三個實例放在一起看
+
+| 檔 | 斷言 | 拿到的 |
+| --- | --- | --- |
+| `trip-editor.test.tsx:292` | 對話框還在 | 一個 dialog 都找不到 |
+| `travel-card-actions.test.tsx:64` | Escape 之後彈層關掉 | 彈層還在 |
+| `route-mode-panel.test.tsx:801` | 焦點在下一個選項 | 焦點在 `tabindex="-1"` 的容器 |
+
+三個都是**鍵盤／焦點在負載下行為不同**。第三個把方向指得比前兩個清楚：
+**從延後的 callback（`requestAnimationFrame` 或 effect）寫焦點，而沒有重新確認那件事還該不該做。**
+
+同樣形狀的地方至少還有：
+
+- `planner-overlay.tsx:157` 的 `focusFrame` —— rAF 裡 `(panel.querySelector("[data-planner-close]") || panel).focus()`。
+  只檢查 `isTop()` 與 `hasNestedModal()`，**不檢查焦點是不是已經在 panel 裡的某個地方**。
+  負載下這個 rAF 晚一點才跑，就會把使用者剛移過去的焦點搶回關閉鈕——而 `.route-panel-detail`
+  與 `panel` 一樣是 `tabindex="-1"` 的容器，症狀會長得一模一樣。
+- `airline-fare-lab.tsx` 的 `moveFareTab` 也用 rAF 移焦點（我寫的，同一天）。
+
+### 建議的下一步
+
+不要再從「原語壞了」下手。先寫一個探針：在負載下（另開一個 build 佔住 CPU）重跑整套，
+把每次 `focus()` 的呼叫點與當下的 `document.activeElement` 記下來，看是不是真的有延後的
+callback 在事後搶焦點。有證據再改；前兩個假設都是沒證據就下判斷，結果都錯了。
