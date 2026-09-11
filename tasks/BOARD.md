@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**48 open · 1 in progress · 3 blocked · 23 in review · 203 done**
+**53 open · 1 in progress · 3 blocked · 23 in review · 203 done**
 
 ## Ready to claim
 
@@ -26,6 +26,8 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [行程規劃器在手機沒有全域導覽且離線頁無入口](open/2026-09-11-planner-mobile-navigation-and-offline.md) | web | `apps/web/components/today-view.tsx`<br>`apps/web/components/offline-trip-cache.tsx`<br>`apps/web/app/[locale]/trips/[id]/page.tsx`<br>`apps/web/public/sw.js` |
 | P1 | [路線地圖在手機吃掉頁面捲動且對輔助科技隱形](open/2026-09-11-route-map-mobile-and-a11y.md) | web | `apps/web/components/route-map.tsx`<br>`apps/web/app/globals.css` |
 | P1 | [規格書明定為必要的目的地支援閘門從未實作](open/2026-09-11-destination-supported-gate-missing.md) | web | `apps/api/app/ai/parser.py`<br>`apps/web/components/trip-brief-composer.tsx`<br>`apps/web/components/brief-confirm-panel.tsx`<br>`docs/planning-flow-spec.md` |
+| P1 | [底部主導覽的文字標籤未達對比度標準](open/2026-09-11-bottom-nav-labels-fail-contrast.md) | web | `apps/web/app/globals.css`<br>`apps/web/components/app-bottom-nav.tsx` |
+| P1 | [語言切換器的標籤在幾乎每一頁都被截斷](open/2026-09-11-language-switcher-label-clipped.md) | web | `apps/web/components/language-switcher.tsx`<br>`apps/web/app/globals.css` |
 | P2 | [防 jsonb 運算子的測試只守住 3 張表，實際有 42 張](open/2026-09-07-jsonb-3-42.md) | api | `apps/api/tests/test_migration_sql_dialect.py` |
 | P2 | [30 筆新購物店家還沒 place enrichment，所以加不進行程](open/2026-09-07-enrich-new-shopping-place-ids.md) | api | `ops/notes/hotspot-place-enrichment.md` |
 | P2 | [Verify the two reported hotels exact Booking links](open/2026-09-09-verify-reported-hotels-booking-links.md) | ops | `docs/reported-hotels-booking-review.md` |
@@ -81,8 +83,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [Mokaair site experience palettes and managed information pages](open/2026-09-09-site-experience-settings.md) | see the task notes |
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | see the task notes |
 | P3 | [TourAPI（韓國觀光公社）可行性驗證：先確認拿得到金鑰、連得上、資料量夠不夠](open/2026-09-06-korea-tourism-tourapi-spike.md) | see the task notes |
-| P0 | [探索模式開啟時全站沒有登入入口](open/2026-09-11-no-sign-in-entry-in-discovery.md) | active work in the same scope |
+| P0 | [登入入口只存在於我的頁底部且未登入者毫無說明](open/2026-09-11-no-sign-in-entry-in-discovery.md) | active work in the same scope |
 | P0 | [次數用完後被導去已關閉的方案頁形成死路](open/2026-09-11-usage-exhausted-dead-end.md) | active work in the same scope |
+| P0 | [手機底部導覽列蓋住七成頁面的內容含登入鈕](open/2026-09-11-bottom-nav-covers-page-content.md) | active work in the same scope |
 | P1 | [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | active work in the same scope |
 | P1 | [Contextual travel services and affiliate catalog](open/2026-09-07-contextual-travel-services.md) | active work in the same scope |
 | P1 | [Mokaair community foundation and account safety](open/2026-09-07-mokaair-community-foundation.md) | active work in the same scope |
@@ -95,6 +98,8 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [全站沒有自訂的找不到頁面](open/2026-09-11-no-custom-not-found-page.md) | active work in the same scope |
 | P1 | [後台九張表格在手機無法閱讀](open/2026-09-11-admin-tables-unusable-on-phone.md) | active work in the same scope |
 | P1 | [刪除行程項目沒有確認而且復原視窗短於自動儲存](open/2026-09-11-itinerary-item-delete-no-confirm.md) | active work in the same scope |
+| P1 | [頁尾五個連結全站每頁都只有十六像素高](open/2026-09-11-footer-links-sixteen-px-tall.md) | active work in the same scope |
+| P1 | [推薦流印出原始 HTML 標籤且語言混雜未去重](open/2026-09-11-discovery-feed-html-and-language-mix.md) | active work in the same scope |
 | P2 | [Community read metric duplicate observed alongside smoke ECONNRESET](open/2026-09-07-community-read-metric-concurrency.md) | active work in the same scope |
 | P2 | [Preserve force refresh in daily route background jobs](open/2026-09-10-daily-route-force-refresh.md) | active work in the same scope |
 | P2 | [讓 pet-friendly 與社群內容頁先 SSR 再開放索引](open/2026-09-10-seo-open-content-pages.md) | depends on 2026-09-10-seo-index-directives |
