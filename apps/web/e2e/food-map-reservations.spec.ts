@@ -158,6 +158,20 @@ for (const viewport of [{ width: 320, height: 740 }, { width: 390, height: 844 }
         const c = getDiscoveryCopy(locale), f = getFrontendFlowCopy(locale);
         const listingPath = `/${locale}/explore?category=foods&q=Sushi&destination=tokyo&mode=latest`;
         await page.goto(listingPath);
+        const historyEvents: string[] = [];
+        page.on("console", (message) => { if (message.text().startsWith("food-history:")) historyEvents.push(message.text()); });
+        await page.evaluate(() => {
+          const record = (event: string, target?: unknown) => console.debug(`food-history:${JSON.stringify({ event, target, url: location.href, length: history.length })}`);
+          const originalBack = history.back.bind(history);
+          history.back = () => { record("back"); originalBack(); };
+          for (const method of ["pushState", "replaceState"] as const) {
+            const original = history[method].bind(history);
+            history[method] = (data, unused, url) => { record(method, url); original(data, unused, url); };
+          }
+          window.addEventListener("popstate", () => record("popstate"));
+          document.addEventListener("cancel", () => record("cancel"), true);
+          document.addEventListener("close", () => record("close"), true);
+        });
         const trigger = page.locator(`article[id="${state.dish.id}"]`).getByRole("link", { name: dishTitle, exact: true });
         for (const theme of ["light", "dark"] as const) {
           await page.emulateMedia({ colorScheme: theme, reducedMotion: "reduce" });
@@ -245,7 +259,7 @@ for (const viewport of [{ width: 320, height: 740 }, { width: 390, height: 844 }
               body: document.body.innerText.slice(0, 600),
             }))),
           });
-          await expect(page).toHaveURL(new URL(listingPath, page.url()).href);
+          await expect(page, JSON.stringify(historyEvents)).toHaveURL(new URL(listingPath, baseURL!).href);
           await expect(trigger).toBeFocused();
           await expect.poll(async () => Math.abs(await page.evaluate(() => window.scrollY) - initialScroll)).toBeLessThanOrEqual(2);
         }
