@@ -1,11 +1,11 @@
 "use client";
 
-import { CalendarCheck, ExternalLink, MapPin } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { TravelCardActions } from "@/components/travel-card-actions";
+import { MerchantExternalLinks } from "@/components/merchant-external-links";
 import { type FoodItem } from "@/lib/foods";
-import { availableMapLinks } from "@/lib/map-identities";
 import { safeExternalHref } from "@/lib/navigation";
 
 export function FoodDishCard({ food }: { food: FoodItem }) {
@@ -33,11 +33,6 @@ export function FoodDishCard({ food }: { food: FoodItem }) {
         <p className="text-xs font-semibold text-[var(--muted)]">{t("recommendedMerchants")}</p>
         <div className="mt-2 grid gap-2">
           {food.recommended_merchants.slice(0, 3).map((merchant) => {
-            const maps = availableMapLinks(merchant.map_links);
-            // Reservation links are additive. An older cached response should
-            // hide this action, not take down the whole food catalogue.
-            const reservation = merchant.reservation_links?.[0];
-            const reservationHref = reservation ? safeExternalHref(reservation.url) : undefined;
             return (
               <div key={merchant.merchant_id} className="rounded-2xl bg-[var(--paper)] p-3">
                 <p className="font-semibold text-[var(--ink)]">
@@ -45,19 +40,10 @@ export function FoodDishCard({ food }: { food: FoodItem }) {
                   {merchant.local_name !== merchant.name && <span className="ml-1 text-xs font-normal text-[var(--muted)]">· {merchant.local_name}</span>}
                 </p>
                 <p className="mt-1 text-xs text-[var(--muted)]">{merchant.destination_name}</p>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {maps.map((map) => (
-                    <a key={map.url} href={safeExternalHref(map.url)} target="_blank" rel="noopener noreferrer" aria-label={t("navigateTo", { name: merchant.name, provider: map.label })} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-[var(--line)] bg-white px-3 text-sm font-semibold text-[var(--teal)]">
-                      <MapPin size={15} />{map.label} · {t("navigate")}<ExternalLink size={13} />
-                    </a>
-                  ))}
-                  {reservation && reservationHref && (
-                    <a href={reservationHref} target="_blank" rel="noopener noreferrer" aria-label={t("reserveAt", { name: merchant.name, provider: reservation.label })} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-[var(--teal)] px-3 text-sm font-semibold text-white">
-                      <CalendarCheck size={15} />{t("viewOrReserve", { provider: reservation.label })}<ExternalLink size={13} />
-                    </a>
-                  )}
+                {merchant.address && <p className="mt-1 break-words text-xs text-[var(--muted)]">{merchant.address}</p>}
+                <div className="mt-2">
+                  <MerchantExternalLinks merchant={merchant} compact />
                 </div>
-                {reservation?.language_code === "vi" && reservationHref && <p className="mt-1 text-xs text-[var(--muted)]">{t("externalLanguage.vi")}</p>}
               </div>
             );
           })}

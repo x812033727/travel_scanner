@@ -1,6 +1,7 @@
 import { cleanup, render, screen, within } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { DiscoveryItem } from "@/lib/discovery";
+import type { FoodMerchant } from "@/lib/foods";
 import { getDiscoveryCopy } from "@/lib/discovery-copy";
 import { getFrontendFlowCopy } from "@/lib/frontend-flow-copy";
 import { DiscoveryCard, DiscoveryDetails } from "./card";
@@ -143,5 +144,46 @@ describe("source-linked discovery details", () => {
     mock.detail = detail([guide("legacy", "https://legacy.example.test/read", null as unknown as string)]);
     render(<DiscoveryDetails kind="hotspot" id="place" />);
     expect(screen.getByRole("link", { name: "Guide legacy (legacy.example.test)" })).toBeTruthy();
+  });
+});
+
+describe("food merchant detail actions", () => {
+  const merchant: FoodMerchant = {
+    id: "55555555-5555-4555-8555-555555555555", slug: "sushi-sakai", name: "鮨さかい", local_name: "鮨さかい",
+    destination_id: "fukuoka", destination_name: "福岡", country_code: "JP", area: null, categories: [], signature_dishes: [],
+    address: "福岡市中央区西中洲3-20 連ラウンドビル2F", latitude: null, longitude: null,
+    coordinate_source: { type: null, url: null, verified_at: null }, verified_at: null, sources: [],
+    official_website_url: "https://sakai-sushi.jp/sakai.php",
+    map_links: [{ provider: "google", label: "Google Maps", primary: true, url: "https://www.google.com/maps/search/?api=1&query=Sakai&query_place_id=ChIJfixture" }],
+    reservation_links: [{ provider: "tablecheck", label: "TableCheck", url: "https://www.tablecheck.com/en/shops/sushi-sakai/reserve", verified_at: "2026-09-08T00:00:00Z", language_code: "en" }],
+  };
+  function foodDetail(kind: "food" | "merchant") {
+    return { ...item, kind, id: `${kind}:${merchant.id}`, title: kind === "food" ? "壽司" : merchant.name, detail: { guides: [], merchants: [merchant] } };
+  }
+  it("keeps the merchant name internal but exposes exact maps, reservation and official URLs independently", () => {
+    mock.detail = foodDetail("food");
+    render(<DiscoveryDetails kind="food" id="dish" returnTo="/explore?q=sushi&category=foods&content=food%3Adish" />);
+    expect(screen.getByRole("link", { name: merchant.name }).getAttribute("href")).toBe(`/explore?q=sushi&category=foods&content=merchant%3A${merchant.id}`);
+    expect(screen.getByText(merchant.address!)).toBeTruthy();
+    for (const href of [merchant.map_links[0].url, merchant.reservation_links![0].url, merchant.official_website_url]) {
+      const link = screen.getAllByRole("link").find((element) => element.getAttribute("href") === href)!;
+      expect(link).toBeTruthy(); expect(link.getAttribute("target")).toBe("_blank");
+      expect(link.getAttribute("rel")).toBe("noopener noreferrer");
+    }
+  });
+  it("does not send the merchant's own detail back to itself or label it where to eat", () => {
+    mock.detail = foodDetail("merchant");
+    render(<DiscoveryDetails kind="merchant" id={merchant.id} />);
+    expect(screen.getByRole("heading", { name: merchant.name })).toBeTruthy();
+    expect(screen.queryByRole("link", { name: merchant.name })).toBeNull();
+    expect(screen.queryByRole("heading", { name: getFrontendFlowCopy(mock.locale).nearbyFood })).toBeNull();
+    expect(screen.getByText(merchant.address!)).toBeTruthy();
+    expect(screen.getAllByRole("link").filter((link) => link.getAttribute("target") === "_blank")).toHaveLength(3);
+  });
+  it("accepts absent legacy merchant fields without creating a fallback or an empty address", () => {
+    mock.detail = { ...foodDetail("merchant"), detail: { guides: [], merchants: [{ ...merchant, address: null, map_links: [], reservation_links: undefined, official_website_url: null }] } };
+    render(<DiscoveryDetails kind="merchant" id={merchant.id} />);
+    expect(screen.queryByRole("link")).toBeNull();
+    expect(screen.getByText("noVerifiedReservation")).toBeTruthy();
   });
 });

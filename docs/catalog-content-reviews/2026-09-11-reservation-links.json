@@ -1,0 +1,241 @@
+{
+  "schema_version": 1,
+  "batch_id": "2026-09-11-food-reservation-links-first-10",
+  "reviewed_on": "2026-09-11",
+  "method": "first_party_public_inventory_and_root_in_app_browser_original_page_checks",
+  "observation_time": {
+    "inventory_captured_at": "2026-09-11T03:52:30.593359+00:00",
+    "browser_window_utc": "Approximately 04:00-04:12, with subsequent first-batch follow-up during this task",
+    "per_page_exact_timestamps_recorded": false
+  },
+  "inventory": {
+    "public_merchants": 331,
+    "unique_ids": 331,
+    "locale": "zh-TW",
+    "cursor_page_sizes": [50, 50, 50, 50, 50, 50, 31],
+    "paginated_first_party_gets": 7,
+    "additional_orientation_gets": 1,
+    "merchants_with_map_links": 331,
+    "merchants_with_official_site": 115,
+    "merchants_with_address_text": 227,
+    "existing_published_platform_links": 3,
+    "without_published_platform_link": 328,
+    "excluded_prior_return_ids": 96,
+    "excluded_ids_found_public": 0,
+    "full_331_id_inventory_storage": "Private operator evidence; not copied into this repository report",
+    "countries": {"HK": 21, "JP": 102, "KR": 80, "SG": 24, "TH": 25, "TW": 55, "VN": 24}
+  },
+  "input_artifact_hashes": {
+    "public-merchant-inventory.private.json": "d27a212fbcb889c306d223820afd45b224fea6e688eb9cdccf3ec4613bd92d10",
+    "public-merchant-inventory-summary.json": "1f697f12af744a94da47a3be52701c8f99326d6606fc26534c736703e33cd412",
+    "return96-input.sealed.private.json": "87c1ee1dd47d48c2435293cc6a418bcaf41eed12dad4952bdba5800f5cf9019f",
+    "reservation-research-worklist.private.json": "82ffc57581da2f811272f5b63ac81eae47d81e9b17dc63c0f6614e765db78fb3"
+  },
+  "coverage": {
+    "first_batch_original_pages_visited": 10,
+    "platform_branch_identity_confirmed": 10,
+    "first_batch_needs_platform_confirmation": 0,
+    "outside_first_batch_not_started": 321,
+    "complete_public_catalog_research": false,
+    "not_found_dispositions": 0,
+    "new_platform_links_applied": 0,
+    "new_same_branch_candidates_pending_apply": 7,
+    "existing_link_corrections_pending_apply": 1,
+    "existing_platform_links_corrected": 0,
+    "production_writes": 0,
+    "booking_interfaces_observed": 3,
+    "explicitly_not_accepting_chope_bookings": 6,
+    "booking_capability_unknown": 1,
+    "confirmed_booking_availability_checks": 0
+  },
+  "rules": {
+    "identity_is_not_application": "Original-page identity confirmation does not mean a platform row was saved, corrected or made public.",
+    "information_is_not_booking": "A matching platform page may be information-only. No price, seat availability, booking completion or reservation acceptance is promised.",
+    "unsupported_country_provider": "Owner-linked TableCheck pages for Singapore and SevenRooms URLs remain evidence only; this batch does not bypass the existing Singapore/Chope provider rule.",
+    "research_status_not_database_status": "Per-row research_status describes this report only, not the application's platform verification field.",
+    "unsearched_is_not_not_found": "The other 321 merchants have not been researched in this round and are not marked not_found or ambiguous by this report.",
+    "preservation": "No merchant facts, coordinates, maps, sources, publication states, platform records or audit records were changed by this report.",
+    "application_interface": "Any later scoped platform-only save must use the existing dedicated PUT and current authorization/re-read guards. The general merchant editor first PATCHes full merchant facts and relations before its separate platform PUT."
+  },
+  "merchants": [
+    {
+      "id": "5f8fd75f-24e0-40f9-8c2d-8a8dcb482128",
+      "slug": "fukuoka-sushi-sakai",
+      "name": "鮨さかい",
+      "country_code": "JP",
+      "expected_provider": "tablecheck",
+      "public_link_at_inventory": "https://www.tablecheck.com/en/shops/sushi-sakai/reserve",
+      "research_status": "platform_branch_identity_confirmed",
+      "candidate_url": "https://www.tablecheck.com/ja/shops/sushi-sakai/reserve",
+      "proposed_action": "Retain the existing English branch link; Japanese localized URL is evidence-confirmed but has not been saved.",
+      "applied": false,
+      "booking_observation": "Original TableCheck page identifies Sushi Sakai; no date, party size, available seat or completed booking was checked.",
+      "evidence": [
+        {"url": "https://sakai-sushi.jp/sakai.php", "role": "owner_branch", "observation": "Owner page matches the stored Nishinakasu branch address in Fukuoka."},
+        {"url": "https://sakai-sushi.jp/reservations.php", "role": "owner_reservations", "observation": "Owner explicitly links the Japanese TableCheck Sushi Sakai reservation page."},
+        {"url": "https://www.tablecheck.com/ja/shops/sushi-sakai/reserve", "role": "original_platform_localized_page", "observation": "After following the exact owner link, the Japanese original page was directly visited. Its 鮨さかい title and reservation heading identify the same venue as the English page; no other locale routes were synthesized."},
+        {"url": "https://www.tablecheck.com/en/shops/sushi-sakai/reserve", "role": "original_platform_page", "observation": "Existing English URL opened in the in-app browser and identifies Sushi Sakai."}
+      ]
+    },
+    {
+      "id": "1db7e1f2-2809-4ac1-a9b5-47436bfd3ad0",
+      "slug": "hong-kong-yat-lok",
+      "name": "一樂燒鵝",
+      "country_code": "HK",
+      "expected_provider": "openrice",
+      "public_link_at_inventory": "https://www.openrice.com/en/hongkong/p-yat-lok-restaurant-p23206360",
+      "research_status": "platform_branch_identity_confirmed",
+      "candidate_url": "https://www.openrice.com/en/hongkong/r-yat-lok-restaurant-central-hong-kong-style-chinese-bbq-r78351",
+      "proposed_action": "Correct the existing photo-page link to the observed same-branch overview after a separate authorized save; not applied.",
+      "applied": false,
+      "booking_observation": "The overview is a verified restaurant information page; online reservation capability was not established.",
+      "evidence": [
+        {"url": "https://www.openrice.com/en/hongkong/p-yat-lok-restaurant-p23206360", "role": "existing_original_platform_page", "observation": "Existing public link opens a photo page, not the restaurant overview."},
+        {"url": "https://www.openrice.com/en/hongkong/r-yat-lok-restaurant-central-hong-kong-style-chinese-bbq-r78351", "role": "original_platform_overview", "observation": "Reached by clicking Overview; branch address is G/F, 34-38 Stanley Street, Central, Hong Kong."},
+        {"url": "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-yat-lok-restaurant.html", "role": "official_tourism_branch", "observation": "Original HKTB branch page independently agrees with the Stanley Street address."}
+      ]
+    },
+    {
+      "id": "e194d8f6-4a0d-4623-8531-31eac192c209",
+      "slug": "singapore-song-fa",
+      "name": "Song Fa Bak Kut Teh New Bridge Road",
+      "country_code": "SG",
+      "expected_provider": "chope",
+      "public_link_at_inventory": "https://www.chope.co/singapore-restaurants/restaurant/song-fa-bak-kut-teh",
+      "research_status": "platform_branch_identity_confirmed",
+      "candidate_url": "https://www.chope.co/singapore-restaurants/restaurant/song-fa-bak-kut-teh",
+      "proposed_action": "Retain as same-branch platform information, without a promise of Chope booking availability.",
+      "applied": false,
+      "booking_observation": "Chope explicitly reports it is not accepting bookings for this restaurant through Chope.",
+      "evidence": [
+        {"url": "https://www.chope.co/singapore-restaurants/restaurant/song-fa-bak-kut-teh", "role": "original_platform_page", "observation": "New Bridge Road branch and 11 New Bridge Road, #01-01, Singapore 059383 agree with the stored exact branch."}
+      ]
+    },
+    {
+      "id": "a5a85163-ce80-49f2-a840-12b87cb86ea1",
+      "slug": "singapore-the-coastal-settlement-changi",
+      "name": "The Coastal Settlement",
+      "country_code": "SG",
+      "expected_provider": "chope",
+      "public_link_at_inventory": null,
+      "research_status": "platform_branch_identity_confirmed",
+      "candidate_url": "https://www.chope.co/singapore-restaurants/restaurant/the-coastal-settlement",
+      "proposed_action": "Potential same-branch Chope information link, pending a separate save; owner-linked TableCheck remains unsupported-provider evidence only.",
+      "applied": false,
+      "booking_observation": "Chope explicitly reports no bookings through Chope; the owner separately links TableCheck. Neither is an availability check.",
+      "evidence": [
+        {"url": "https://www.thecoastalsettlement.com/", "role": "owner_branch", "observation": "Owner address is 200 Netheravon Road, Singapore 508529; its reservation link uses TableCheck."},
+        {"url": "https://www.tablecheck.com/en/the-coastal-settlement/reserve/message?utm_source=website", "role": "owner_observed_unsupported_provider_link", "observation": "Exact owner href observed; not rewritten to a guessed /shops route and not approved for the Singapore provider slot."},
+        {"url": "https://www.chope.co/singapore-restaurants/restaurant/the-coastal-settlement", "role": "original_platform_page", "observation": "Focused search discovered this candidate, then its original Chope page was visited and the 200 Netheravon Road / 508529 branch matched."}
+      ]
+    },
+    {
+      "id": "370a7305-db6d-4e4f-b032-3a6b883d46f8",
+      "slug": "singapore-jumbo-riverside",
+      "name": "JUMBO Seafood Riverside Point",
+      "country_code": "SG",
+      "expected_provider": "chope",
+      "public_link_at_inventory": null,
+      "research_status": "platform_branch_identity_confirmed",
+      "candidate_url": "https://www.chope.co/singapore-restaurants/restaurant/jumbo-seafood-riverside-point",
+      "proposed_action": "Potential same-branch Chope information link, pending a separate save; do not replace it with another JUMBO branch.",
+      "applied": false,
+      "booking_observation": "Chope explicitly reports no bookings through Chope; the owner reservation page links a separate TableCheck page.",
+      "evidence": [
+        {"url": "https://www.jumboseafood.com.sg/en/riverside-point", "role": "owner_branch", "observation": "Owner confirms Riverside Point, 30 Merchant Road, #01-01/02, Singapore 058282."},
+        {"url": "https://www.jumboseafood.com.sg/en/reservations", "role": "owner_reservations", "observation": "Owner reservation selection links the Riverside Point TableCheck entry."},
+        {"url": "https://www.tablecheck.com/en/jumbo-seafood-riverside/reserve/landing?utm_source=website", "role": "owner_observed_unsupported_provider_link", "observation": "Exact observed owner href retained as evidence only, without changing the SG/Chope rule."},
+        {"url": "https://www.chope.co/singapore-restaurants/restaurant/jumbo-seafood-riverside-point", "role": "original_platform_page", "observation": "Discovered through Chope on-site search and opened; branch name and exact address match the owner."}
+      ]
+    },
+    {
+      "id": "392cc8df-95b3-46b8-80ae-e8b284e8dfa9",
+      "slug": "singapore-palm-beach-seafood",
+      "name": "Palm Beach Seafood (One Fullerton)",
+      "country_code": "SG",
+      "expected_provider": "chope",
+      "public_link_at_inventory": null,
+      "research_status": "platform_branch_identity_confirmed",
+      "candidate_url": "https://www.chope.co/singapore-restaurants/restaurant/palm-beach-seafood",
+      "proposed_action": "Potential same-branch Chope information link, pending a separate save; SevenRooms remains unsupported-provider evidence only.",
+      "applied": false,
+      "booking_observation": "Chope explicitly reports no bookings through Chope; the owner's reservation modal embeds SevenRooms.",
+      "evidence": [
+        {"url": "https://www.palmbeachseafood.com/", "role": "owner_branch", "observation": "Owner identifies the One Fullerton location, matching 1 Fullerton Road, #01-09, Singapore 049213."},
+        {"url": "https://www.sevenrooms.com/reservations/palmbeach", "role": "owner_observed_unsupported_provider_embed", "observation": "Exact iframe source observed in the owner reservation modal; not promoted into a supported Chope link."},
+        {"url": "https://www.chope.co/singapore-restaurants/restaurant/palm-beach-seafood", "role": "original_platform_page", "observation": "Palm Beach Seafood Restaurant page identifies 1 Fullerton Road, #01-09, One Fullerton, Singapore 049213."}
+      ]
+    },
+    {
+      "id": "ffc78b5e-7732-470e-a398-65cbd7e87284",
+      "slug": "singapore-the-blue-ginger",
+      "name": "The Blue Ginger",
+      "country_code": "SG",
+      "expected_provider": "chope",
+      "public_link_at_inventory": null,
+      "research_status": "platform_branch_identity_confirmed",
+      "candidate_url": "https://www.chope.co/singapore-restaurants/restaurant/the-blue-ginger-tanjong-pagar",
+      "proposed_action": "Potential same-branch Chope information link, pending a separate save; do not confuse Tanjong Pagar with another Blue Ginger branch.",
+      "applied": false,
+      "booking_observation": "Owner reservation UI showed an empty restaurants.sg frame. Subsequent original Chope page explicitly reports no bookings through Chope; no availability checked.",
+      "evidence": [
+        {"url": "https://theblueginger.com/contact/", "role": "owner_branch", "observation": "Original contact and reservation flow identifies 97 Tanjong Pagar Road, Singapore 088518."},
+        {"url": "https://www.chope.co/singapore-restaurants/restaurant/the-blue-ginger-tanjong-pagar", "role": "original_platform_page", "observation": "Discovered through Chope on-site search and opened; The Blue Ginger (Tanjong Pagar) name and 97 Tanjong Pagar Road, Singapore 088518 match the owner."}
+      ]
+    },
+    {
+      "id": "fa9efaf9-ff78-4579-a956-bae824fd1f7b",
+      "slug": "singapore-esquina",
+      "name": "Esquina",
+      "country_code": "SG",
+      "expected_provider": "chope",
+      "public_link_at_inventory": null,
+      "research_status": "platform_branch_identity_confirmed",
+      "candidate_url": "https://www.chope.co/singapore-restaurants/restaurant/esquina",
+      "proposed_action": "Potential same-branch Chope platform entry, pending a separate save; observed booking control does not establish available seats.",
+      "applied": false,
+      "booking_observation": "Original Chope page has a Find a Table control. No availability query, form submission or booking was made.",
+      "evidence": [
+        {"url": "https://esquina.com.sg/contact/", "role": "owner_branch", "observation": "Original contact page agrees with 16 Jiak Chuan Road, Singapore 089267."},
+        {"url": "https://esquina.com.sg/", "role": "owner_home", "observation": "Owner homepage also visited as part of the branch check."},
+        {"url": "https://www.chope.co/singapore-restaurants/restaurant/esquina", "role": "original_platform_page", "observation": "Discovered through Chope on-site search and opened; Esquina title and 16 Jiak Chuan Road, Singapore 089267 match the owner."}
+      ]
+    },
+    {
+      "id": "980aa7f7-3db9-4158-849a-2883ea290613",
+      "slug": "singapore-chatterbox",
+      "name": "Chatterbox",
+      "country_code": "SG",
+      "expected_provider": "chope",
+      "public_link_at_inventory": null,
+      "research_status": "platform_branch_identity_confirmed",
+      "candidate_url": "https://www.chope.co/singapore-restaurants/restaurant/chatterbox",
+      "proposed_action": "Potential same-branch Chope platform entry, pending a separate save; owner-linked TableCheck remains evidence only.",
+      "applied": false,
+      "booking_observation": "Owner links TableCheck. Subsequent original Chope page has a Find a Table control; no availability query or form was submitted.",
+      "evidence": [
+        {"url": "https://www.chatterbox.com.sg/", "role": "owner_branch", "observation": "Owner matches Hilton Singapore Orchard, 333 Orchard Road, #05-03, Singapore 238867."},
+        {"url": "https://www.tablecheck.com/en/chatterbox-singapore/reserve/landing?utm_source=website", "role": "owner_observed_unsupported_provider_link", "observation": "Exact observed owner href retained without guessing another route or overriding the SG/Chope rule."},
+        {"url": "https://www.chope.co/singapore-restaurants/restaurant/chatterbox", "role": "original_platform_page", "observation": "Discovered through Chope on-site search and opened; exact 333 Orchard Road, #05-03, Hilton Singapore Orchard, Singapore 238867 matches the owner and stored branch."}
+      ]
+    },
+    {
+      "id": "6f4615b1-55ff-4042-9119-5fbfa480ca5c",
+      "slug": "singapore-candlenut",
+      "name": "Candlenut",
+      "country_code": "SG",
+      "expected_provider": "chope",
+      "public_link_at_inventory": null,
+      "research_status": "platform_branch_identity_confirmed",
+      "candidate_url": "https://www.chope.co/singapore-restaurants/restaurant/candlenut",
+      "proposed_action": "Potential same-branch Chope information link, pending a separate save; owner-linked SevenRooms remains evidence only.",
+      "applied": false,
+      "booking_observation": "Owner links SevenRooms. Subsequent original Chope page explicitly reports no bookings through Chope; no availability or reservation was checked.",
+      "evidence": [
+        {"url": "https://www.comoepicurean.com/restaurants/candlenut/", "role": "owner_branch", "observation": "Owner matches 17A Dempsey Road, Singapore 249676 and links SevenRooms."},
+        {"url": "https://www.sevenrooms.com/explore/candlenutsingapore/reservations/create/search", "role": "owner_observed_unsupported_provider_link", "observation": "Exact owner link preserved as research evidence only; not accepted as a Chope URL."},
+        {"url": "https://www.chope.co/singapore-restaurants/restaurant/candlenut", "role": "original_platform_page", "observation": "Original Chope page identifies Candlenut at Block 17A Dempsey Road, Singapore 249676, matching the owner."}
+      ]
+    }
+  ]
+}
