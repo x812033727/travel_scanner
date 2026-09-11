@@ -1,11 +1,11 @@
 ---
 id: 2026-09-11-modal-escape-flake-under-load
 title: 整套測試在負載下，有守門的 Escape 偶爾不生效
-status: in-progress
+status: open
 priority: P1
 area: web
-owner: claude-opus-5
-claimed_at: 2026-09-11T22:30:20Z
+owner:
+claimed_at:
 created_at: 2026-09-11T21:23:54Z
 completed_at:
 branch: claude/mokaair-website-access-k7xiku
