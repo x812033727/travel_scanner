@@ -604,7 +604,7 @@ export function AdminHotspotGuidesPanel() {
                 {item.complete ? t("complete") : t("missingContent")}
               </span>
             </div>
-            <div className="mt-3 grid grid-cols-5 gap-1 text-center text-xs">
+            <div className="mt-3 grid grid-cols-3 gap-1 text-center text-xs sm:grid-cols-5">
               {locales.map((value) => (
                 <div key={value} className="rounded-lg bg-[var(--paper)] p-1.5">
                   <strong>{value}</strong>

@@ -676,3 +676,24 @@ test.describe("the sign-in button is on the first screen", () => {
     });
   }
 });
+
+/**
+ * The house rule is 44px and it is kept in 96 files; these were the exceptions.
+ * Measured on the rendered page rather than grepped for a class, because the
+ * height comes from padding and line-height as often as from min-h-11.
+ */
+test("the community sub-navigation is big enough to tap", async ({ page }, info) => {
+  test.skip(info.project.name !== "mobile-chromium", "Touch targets are a phone concern.");
+  await page.goto("/zh-TW/pet-friendly");
+  const nav = page.getByRole("navigation").filter({ has: page.getByRole("link", { name: "訊息" }) }).first();
+  await expect(nav).toBeVisible();
+
+  const short = await nav.getByRole("link").evaluateAll((links, minimum) => links
+    .map((link) => ({
+      height: Math.round(link.getBoundingClientRect().height),
+      label: (link.textContent || "").trim().slice(0, 16),
+    }))
+    .filter((row) => row.height > 0 && row.height < minimum), MIN_TARGET_PX);
+
+  expect(short, `community links under ${MIN_TARGET_PX}px`).toEqual([]);
+});

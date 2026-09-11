@@ -230,8 +230,8 @@ export function AirlineFareLab() {
         })}
       </section>
 
-      <div role="tablist" aria-label="票價搜尋模式" className="mb-6 grid max-w-2xl grid-cols-3 rounded-2xl border border-[var(--line)] bg-white p-1.5">
-        <button role="tab" aria-selected={mode === "conventional"} onClick={() => setMode("conventional")} className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition ${mode === "conventional" ? "bg-[var(--ink)] text-white" : "text-[var(--muted)]"}`}>一般來回</button>
+      <div role="tablist" aria-label="票價搜尋模式" className="mb-6 grid max-w-2xl grid-cols-1 gap-1 rounded-2xl border border-[var(--line)] bg-white p-1.5 sm:grid-cols-3 sm:gap-0">
+        <button role="tab" aria-selected={mode === "conventional"} onClick={() => setMode("conventional")} className={`min-h-11 rounded-xl px-4 py-2.5 text-sm font-semibold transition ${mode === "conventional" ? "bg-[var(--ink)] text-white" : "text-[var(--muted)]"}`}>一般來回</button>
         <button role="tab" aria-selected={mode === "back_to_back"} onClick={() => setMode("back_to_back")} className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition ${mode === "back_to_back" ? "bg-[var(--ink)] text-white" : "text-[var(--muted)]"}`}>倒買法</button>
         <button role="tab" aria-selected={mode === "live_back_to_back"} onClick={() => setMode("live_back_to_back")} className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition ${mode === "live_back_to_back" ? "bg-[var(--ink)] text-white" : "text-[var(--muted)]"}`}>即時倒買 API</button>
       </div>
