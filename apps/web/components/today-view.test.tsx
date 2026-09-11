@@ -84,3 +84,27 @@ describe("TodayView", () => {
     expect(await screen.findByText(/連上網路後再試一次/)).toBeTruthy();
   });
 });
+
+describe("a way out of the day view", () => {
+  /**
+   * This page hides the site header below lg, app-bottom-nav returns null for
+   * /trips/, and site-footer lists /trips/ in HIDDEN_ON. A traveller standing on a
+   * platform had the browser's back button and nothing else.
+   */
+  it("links back to the trip list and the home page while the trip is loading", async () => {
+    vi.stubGlobal("fetch", vi.fn(() => new Promise(() => undefined)));
+    render(<TodayView tripId="trip-1" />);
+
+    expect(screen.getByRole("link", { name: "我的旅程" }).getAttribute("href")).toBe("/trips");
+    expect(screen.getByRole("link", { name: "首頁" }).getAttribute("href")).toBe("/");
+  });
+
+  it("keeps those links when the trip cannot be read at all", async () => {
+    vi.stubGlobal("fetch", vi.fn(() => Promise.reject(new Error("offline"))));
+    render(<TodayView tripId="trip-1" />);
+
+    expect(await screen.findByText(/現在讀不到這趟行程/)).toBeTruthy();
+    expect(screen.getByRole("link", { name: "我的旅程" })).toBeTruthy();
+    expect(screen.getByRole("link", { name: "首頁" })).toBeTruthy();
+  });
+});

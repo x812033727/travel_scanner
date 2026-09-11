@@ -1,6 +1,6 @@
 "use client";
 
-import { CalendarDays, MapPin, Navigation } from "lucide-react";
+import { ArrowLeft, CalendarDays, Home, MapPin, Navigation } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { Link } from "@/i18n/navigation";
@@ -55,9 +55,24 @@ export function TodayView({ tripId }: { tripId: string }) {
       .catch(() => setOffline(true));
   }, [tripId]);
 
+  /**
+   * This page hides the site header below lg, the bottom navigation returns null for
+   * /trips/, and the footer is on its HIDDEN_ON list — so without these two links a
+   * traveller standing on a platform has no way out but the browser's back button.
+   */
+  const exits = <nav aria-label={t("eyebrow")} className="mb-4 flex items-center gap-2 text-sm font-semibold">
+    <Link href="/trips" className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-[var(--line)] bg-white px-3 text-[var(--teal)]">
+      <ArrowLeft size={16} aria-hidden />{t("backToTrips")}
+    </Link>
+    <Link href="/" className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-[var(--line)] bg-white px-3 text-[var(--ink)]">
+      <Home size={16} aria-hidden />{t("home")}
+    </Link>
+  </nav>;
+
   if (!trip) {
-    return <main className="mx-auto max-w-xl px-5 py-16 text-[var(--muted)]">
-      {offline ? t("unavailable") : t("loading")}
+    return <main className="mx-auto max-w-xl px-5 py-16">
+      {exits}
+      <p className="text-[var(--muted)]">{offline ? t("unavailable") : t("loading")}</p>
     </main>;
   }
 
@@ -88,6 +103,7 @@ export function TodayView({ tripId }: { tripId: string }) {
   </article>;
 
   return <main className="mx-auto max-w-xl space-y-4 px-5 pb-24 pt-6">
+    {exits}
     <header>
       <p className="text-sm font-semibold text-[var(--teal)]">{t("eyebrow")}</p>
       <h1 className="mt-1 text-2xl font-bold">{trip.name}</h1>

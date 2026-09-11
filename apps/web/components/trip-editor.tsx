@@ -2002,6 +2002,18 @@ export function TripEditor({ tripId }: { tripId: string }) {
         if (!preferencesDirty && !tripNoteDirty && !settingsDirty) return true;
         setPendingExit({ run: () => { setPreferencesDirty(false); setTripNoteDirty(false); discardSettingsDrafts(); proceed(); } }); return false;
       }} preparation={<>
+        {/* Nothing in the app linked to ?view=today: the one column that stays
+            readable without a signal could only be reached by typing the query
+            string, which is why the cache was usually empty when it mattered. */}
+        <section className="planner-tool-card">
+          <a href={`/${locale}/trips/${trip.id}?view=today`} className="planner-tool-row">
+            <span className="planner-tool-icon"><CalendarDays size={18} /></span>
+            <span className="min-w-0 flex-1 text-left">
+              <strong className="block">{tTrips("todayEntry")}</strong>
+              <span className="block text-xs leading-5 text-[var(--muted)]">{tTrips("todayEntryHint")}</span>
+            </span>
+          </a>
+        </section>
         <AffiliatePartnerOptions tripId={trip.id} modules={["hotel", "activities", "transport", "connectivity"]} title={te("affiliateTitle")} />
 <section className="planner-tool-card">          <button type="button" onClick={() => { setToolsOpen(false); setConfirmAction("reprice"); }} disabled={busy("reprice") || trip.mode === "manual" || repriceCharge.status !== "ready"} className="planner-tool-row"><span className="planner-tool-icon"><RefreshCw size={18} /></span><span className="min-w-0 flex-1 text-left"><strong className="block">{te("repriceButton", { charge: repriceCharge.label })}</strong><span className="mt-0.5 block text-xs font-normal text-[var(--muted)]">{te("repriceHint")}</span></span></button></section>
         {trip.price_status === "stale"

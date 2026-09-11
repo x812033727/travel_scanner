@@ -1241,6 +1241,17 @@ describe("trip editor", () => {
     await waitFor(() => expect(stored.items.map((item) => item.id)).toEqual([trip.items[0].id]), { timeout: 4000 });
   });
 
+  it("offers the offline day view, which nothing in the app linked to", async () => {
+    // ?view=today was reachable only by typing the query string, so the cache it
+    // exists to fill was usually empty by the time the signal went.
+    vi.stubGlobal("fetch", vi.fn().mockImplementation(() => Promise.resolve(response(trip))));
+    render(<TripEditor tripId={trip.id} />);
+    const tools = await openToolsSection("旅行準備");
+
+    const link = within(tools).getByRole("link", { name: /今日檢視（可離線）/ });
+    expect(link.getAttribute("href")).toBe(`/zh-TW/trips/${trip.id}?view=today`);
+  });
+
   it("restores an unsynced local draft for the same server version", async () => {
     window.localStorage.setItem(`trip-planner-draft:${trip.id}`, JSON.stringify({
       baseVersion: 1,
