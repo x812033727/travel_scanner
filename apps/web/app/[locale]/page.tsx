@@ -19,24 +19,24 @@ import { DiscoveryHomeGate } from "@/components/discovery/explorer";
 import { StructuredData } from "@/components/structured-data";
 import { organization, webSite } from "@/lib/structured-data";
 import { getDiscoveryStatus } from "@/lib/discovery-status.server";
+import { getSiteVisibility } from "@/lib/site-visibility.server";
 
 export default async function Home() {
-  const [locale, t, tc, discovery] = await Promise.all([
+  const [locale, t, tc, discovery, visibility] = await Promise.all([
     getLocale().then(normalizeLocale),
     getTranslations("search"),
     getTranslations("search.catalog"),
     getDiscoveryStatus(),
+    getSiteVisibility(),
   ]);
   const benefits = [
     { key: "source", icon: BadgeCheck, text: t("sourceBenefit") },
     { key: "route", icon: CalendarClock, text: t("routeBenefit") },
     { key: "cost", icon: CircleDollarSign, text: t("costBenefit") },
   ];
-  // The gate only earns its place when discovery is on: its other job, redirecting
-  // #trip-search, is itself conditional on `enabled`. Off -- which is the default, and what
-  // production runs -- it does nothing but pass children through, while still costing the
-  // server render, because useDiscoveryStatus's server snapshot is a fixed `loading: true`.
-  // Deciding here is what puts the hero, the copy and the destination rail in the HTML.
+  const hotspotsEnabled = visibility.status === "ready" && visibility.features.hotspots_enabled;
+  const tripsEnabled = visibility.status === "ready" && visibility.features.trips_enabled;
+  // Seed the gate, rather than bypassing it, so SSR and client recovery both work.
   const body = (
       <main className="mx-auto min-h-screen max-w-6xl px-5 pb-20 md:px-8">
         {/* On a phone the first screen is the request form: a short hero, the
@@ -100,7 +100,7 @@ export default async function Home() {
             </div>
           </div>
           <div className="app-quick-grid">
-            <Link href="/hotspots" className="app-quick-card">
+            {hotspotsEnabled && <Link href="/hotspots" className="app-quick-card">
               <span className="app-quick-icon bg-emerald-50 text-emerald-800">
                 <Compass size={22} />
               </span>
@@ -108,7 +108,7 @@ export default async function Home() {
                 <strong>{t("quickHotspots")}</strong>
                 <small>{t("quickHotspotsDescription")}</small>
               </span>
-            </Link>
+            </Link>}
             <Link href="/foods" className="app-quick-card">
               <span className="app-quick-icon bg-orange-50 text-orange-800">
                 <Soup size={22} />
@@ -118,7 +118,7 @@ export default async function Home() {
                 <small>{t("quickFoodsDescription")}</small>
               </span>
             </Link>
-            <Link href="/trips" className="app-quick-card">
+            {tripsEnabled && <Link href="/trips" className="app-quick-card">
               <span className="app-quick-icon bg-sky-50 text-sky-800">
                 <Route size={22} />
               </span>
@@ -126,7 +126,7 @@ export default async function Home() {
                 <strong>{t("quickTrips")}</strong>
                 <small>{t("quickTripsDescription")}</small>
               </span>
-            </Link>
+            </Link>}
           </div>
         </section>
         <CommunityHome />
@@ -192,8 +192,8 @@ export default async function Home() {
       <SiteHeader />
       {/* Outside the gate: when discovery is on, everything inside it is still a skeleton in
           the response body. Here the graph reaches a crawler in both states. */}
-      <StructuredData data={[organization(), webSite(locale)]} />
-      {discovery.enabled ? <DiscoveryHomeGate>{body}</DiscoveryHomeGate> : body}
+      <StructuredData data={[organization(), webSite(locale, hotspotsEnabled)]} />
+      <DiscoveryHomeGate initialEnabled={discovery.enabled}>{body}</DiscoveryHomeGate>
     </>
   );
 }

@@ -24,17 +24,13 @@ export type HotspotFilters = {
 
 const EMPTY: InitialHotspots = { ranking: null, facets: null };
 
-/**
- * Cached, not `no-store`. The ranking and the facets are public, identical for every reader and
- * recomputed daily upstream, so a round trip per request bought nothing and went straight into
- * TTFB and therefore LCP.
- */
-const RANKING_TTL = 900;
-
 async function fetchJson(url: string, locale: string): Promise<unknown | null> {
   try {
     const response = await fetch(url, {
-      next: { revalidate: RANKING_TTL },
+      // Rankings also contain live review decisions, themes and introductions. Daily score
+      // calculation is not permission to cache a subsequently withdrawn public record.
+      cache: "no-store",
+      signal: AbortSignal.timeout(3000),
       headers: { Accept: "application/json", "X-Travel-Locale": locale },
     });
     if (!response.ok) return null;

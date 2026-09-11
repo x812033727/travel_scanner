@@ -30,23 +30,23 @@ describe("loadInitialFoods", () => {
     ]);
   });
 
-  it("caches the public lists instead of going back to origin every request", async () => {
+  it("keeps moderated lists and counts fresh with a bounded request", async () => {
     const fetch = stub(cities, categories, merchants);
     await loadInitialFoods("en");
     const options = fetch.mock.calls.map((call) => call[1]);
-    expect(options[0]).toMatchObject({ next: { revalidate: 3600 } });
-    expect(options[2]).toMatchObject({ next: { revalidate: 900 } });
     for (const option of options) {
-      expect(option).not.toHaveProperty("cache");
+      expect(option.cache).toBe("no-store");
+      expect(option).not.toHaveProperty("next");
+      expect(option.signal).toBeInstanceOf(AbortSignal);
       expect(option.headers).toMatchObject({ "X-Travel-Locale": "en" });
     }
   });
 
-  it("only asks for the unfiltered page, which is the one a crawler lands on", async () => {
+  it("requests the same normalized filters as the server-rendered controls", async () => {
     const fetch = stub(cities, categories, merchants);
-    await loadInitialFoods("en");
-    expect(fetch.mock.calls[2][0]).not.toContain("destination_id");
-    expect(fetch.mock.calls[2][0]).not.toContain("category");
+    await loadInitialFoods("en", { destinationId: "tokyo", area: "shibuya", category: "ramen", style: "artsy", query: "tea & cakes" });
+    const query = new URL(fetch.mock.calls[2][0]).searchParams;
+    expect(Object.fromEntries(query)).toEqual({ destination_id: "tokyo", area: "shibuya", category: "ramen", style: "artsy", q: "tea & cakes", limit: "20" });
   });
 
   it("gives up the whole seed when the city list is unavailable", async () => {
@@ -64,5 +64,24 @@ describe("loadInitialFoods", () => {
     expect(initial.cities).toEqual(cities);
     expect(initial.categories).toBeNull();
     expect(initial.merchants).toEqual(merchants);
+  });
+
+  it("keeps a valid merchant seed when only the city list fails", async () => {
+    vi.stubGlobal("fetch", vi.fn()
+      .mockResolvedValueOnce(new Response("unavailable", { status: 503 }))
+      .mockResolvedValueOnce(new Response(JSON.stringify(categories)))
+      .mockResolvedValueOnce(new Response(JSON.stringify(merchants))));
+    expect(await loadInitialFoods("en")).toEqual({ cities: null, categories, merchants });
+  });
+
+  it("asks again after a moderation change instead of reusing a previous response", async () => {
+    const fetch = vi.fn(async (input: string) => new Response(JSON.stringify(
+      input.includes("/merchants?") ? merchants : categories,
+    )));
+    vi.stubGlobal("fetch", fetch);
+    expect((await loadInitialFoods("en")).merchants).toEqual(merchants);
+    fetch.mockImplementation(async () => new Response(JSON.stringify({ items: [] })));
+    expect((await loadInitialFoods("en")).merchants).toEqual({ items: [] });
+    expect(fetch).toHaveBeenCalledTimes(6);
   });
 });

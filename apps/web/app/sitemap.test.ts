@@ -1,9 +1,13 @@
 import { readdirSync } from "node:fs";
 import { join } from "node:path";
-import { describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { locales } from "@/i18n/routing";
 import { siteUrl } from "@/lib/seo";
-import sitemap, { SITEMAP_ROUTES } from "./sitemap";
+import { closedSiteVisibility, openSiteVisibility } from "@/lib/site-features";
+import { getSiteVisibility } from "@/lib/site-visibility.server";
+import sitemap, { dynamic, SITEMAP_ROUTES } from "./sitemap";
+
+vi.mock("@/lib/site-visibility.server", () => ({ getSiteVisibility: vi.fn() }));
 
 const APP = import.meta.dirname;
 // Both trees serve /{locale}/…: the second is a route group with its own root layout.
@@ -32,7 +36,42 @@ function routeExists(path: string): boolean {
 }
 
 describe("sitemap", () => {
-  const entries = sitemap();
+  let entries: Awaited<ReturnType<typeof sitemap>>;
+  beforeEach(async () => {
+    vi.mocked(getSiteVisibility).mockReset().mockResolvedValue({ status: "ready", features: openSiteVisibility });
+    entries = await sitemap();
+  });
+
+  it("reads current visibility once instead of freezing switches during the build", () => {
+    expect(dynamic).toBe("force-dynamic");
+    expect(getSiteVisibility).toHaveBeenCalledTimes(1);
+  });
+
+  it.each([
+    ["/hotspots", "hotspots_enabled"],
+    ["/pricing", "pricing_enabled"],
+    ["/flights/status", "flight_status_enabled"],
+    ["/labs/airlines", "airline_fares_enabled"],
+  ] as const)("omits %s in every language immediately when its switch closes", async (path, key) => {
+    vi.mocked(getSiteVisibility).mockResolvedValue({ status: "ready", features: { ...openSiteVisibility, [key]: false } });
+    const closed = await sitemap();
+    expect(closed).toHaveLength(entries.length - locales.length);
+    for (const locale of locales) {
+      expect(closed.map((entry) => entry.url)).not.toContain(`${siteUrl}/${locale}${path}`);
+    }
+    vi.mocked(getSiteVisibility).mockResolvedValue({ status: "ready", features: openSiteVisibility });
+    expect(await sitemap()).toEqual(entries);
+  });
+
+  it.each(["ready", "unavailable"] as const)("keeps core pages but not gated pages when visibility is %s and closed", async (status) => {
+    // Even a stale open feature set must not make an unavailable state indexable.
+    vi.mocked(getSiteVisibility).mockResolvedValue({ status, features: status === "unavailable" ? openSiteVisibility : closedSiteVisibility });
+    const closed = await sitemap();
+    const expectedPaths = SITEMAP_ROUTES.filter((route) => !route.feature).map((route) => route.path);
+    expect(closed.map((entry) => entry.url)).toEqual(expectedPaths.flatMap((path) => locales.map((locale) => `${siteUrl}/${locale}${path === "/" ? "" : path}`)));
+    expect(closed.map((entry) => entry.url)).toContain(`${siteUrl}/en/foods`);
+    expect(closed.map((entry) => entry.url)).toContain(`${siteUrl}/en/destinations/tokyo`);
+  });
 
   it("publishes one entry per locale per route", () => {
     expect(entries).toHaveLength(SITEMAP_ROUTES.length * locales.length);

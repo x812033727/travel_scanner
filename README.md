@@ -75,7 +75,10 @@ public-fare research surface.
 ## Search indexing
 
 Public pages are indexable in five languages, with per-page canonical and hreflang, a
-`robots.txt`, a 365-URL sitemap and schema.org markup. [`docs/seo.md`](docs/seo.md) records which
+`robots.txt`, a runtime sitemap of up to 365 URLs and schema.org markup. Closed or unavailable
+features leave the sitemap; independently published site documents keep self canonicals without
+advertising unverified translations. Moderated listings remain uncached across requests, and
+food pages server-render results for their actual URL filters. [`docs/seo.md`](docs/seo.md) records which
 routes are indexable and why, the rules a change must not break, and what to do when adding a new
 public page.
 

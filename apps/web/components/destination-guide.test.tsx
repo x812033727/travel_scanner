@@ -19,6 +19,7 @@ function draw(overrides: Partial<Parameters<typeof DestinationGuide>[0]> = {}) {
     <DestinationGuide
       locale="zh-TW"
       destination={tokyo}
+      hotspotsEnabled
       places={[{ id: "p1", name: "淺草寺", detail: "上野／淺草" }]}
       merchants={[{ id: "m1", name: "一蘭", detail: "新宿" }]}
       related={[yokohama]}
@@ -63,7 +64,7 @@ describe("DestinationGuide", () => {
     draw();
     const hrefs = screen.getAllByRole("link").map((link) => link.getAttribute("href"));
     expect(hrefs).toContain("/hotspots?destination_id=tokyo");
-    expect(hrefs).toContain("/foods");
+    expect(hrefs).toContain("/foods?destination_id=tokyo");
     expect(hrefs).toContain("/search/new");
     expect(hrefs).toContain("/destinations/tokyo/services");
     expect(hrefs).toContain("/destinations");
@@ -79,8 +80,24 @@ describe("DestinationGuide", () => {
     draw();
     expect(screen.getByText("日本")).toBeTruthy();
     const { container } = render(
-      <DestinationGuide locale="en" destination={{ ...tokyo, city: "Tokyo", localName: "東京" }} places={[]} merchants={[]} related={[]} />,
+      <DestinationGuide locale="en" destination={{ ...tokyo, city: "Tokyo", localName: "東京" }} hotspotsEnabled places={[]} merchants={[]} related={[]} />,
     );
     expect(container.textContent).toContain("東京");
+  });
+
+  it("hides the closed hotspot section including stale entries and its action", () => {
+    draw({ hotspotsEnabled: false });
+    expect(screen.queryByText("淺草寺")).toBeNull();
+    expect(screen.queryByText(copy.seeTitle)).toBeNull();
+    expect(screen.queryByRole("link", { name: copy.browsePlaces })).toBeNull();
+    expect(screen.getByText("一蘭")).toBeTruthy();
+  });
+
+  it("distinguishes failed listing services from genuinely empty review queues", () => {
+    draw({ places: null, merchants: null });
+    expect(screen.getByText(copy.unavailablePlaces)).toBeTruthy();
+    expect(screen.getByText(copy.unavailableFood)).toBeTruthy();
+    expect(screen.queryByText(copy.emptyPlaces)).toBeNull();
+    expect(screen.queryByText(copy.emptyFood)).toBeNull();
   });
 });

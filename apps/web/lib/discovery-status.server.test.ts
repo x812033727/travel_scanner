@@ -10,11 +10,10 @@ describe("loadDiscoveryStatus", () => {
     vi.stubEnv("API_INTERNAL_URL", "http://api.test/");
 
     expect(await loadDiscoveryStatus()).toEqual({ enabled: true });
-    // A switch has to take effect when it is flipped, so this one stays no-store even though the
-    // listings around it are cached.
+    // Switches stay fresh and never delay the marketing fallback indefinitely.
     expect(fetch).toHaveBeenCalledWith(
       "http://api.test/api/v1/discovery/status",
-      expect.objectContaining({ cache: "no-store", headers: { Accept: "application/json" } }),
+      expect.objectContaining({ cache: "no-store", headers: { Accept: "application/json" }, signal: expect.any(AbortSignal) }),
     );
   });
 
@@ -23,8 +22,22 @@ describe("loadDiscoveryStatus", () => {
     expect(await loadDiscoveryStatus()).toEqual({ enabled: false });
   });
 
-  // Falling back to "off" is what keeps app/[locale]/page.test.tsx passing: that test stubs
-  // fetch to answer 401 for everything, and the home page must still render its marketing body.
+  it("bounds a hung status request and recovers to the marketing snapshot", async () => {
+    const controller = new AbortController();
+    const timeout = vi.spyOn(AbortSignal, "timeout").mockReturnValue(controller.signal);
+    vi.stubGlobal("fetch", vi.fn((_url, options: RequestInit) => new Promise((_resolve, reject) => {
+      options.signal?.addEventListener("abort", () => reject(new Error("timed out")), { once: true });
+    })));
+    try {
+      const result = loadDiscoveryStatus();
+      expect(timeout).toHaveBeenCalledWith(3_000);
+      controller.abort();
+      expect(await result).toEqual({ enabled: false });
+    } finally {
+      timeout.mockRestore();
+    }
+  });
+
   it.each([
     ["a transport failure", vi.fn().mockRejectedValue(new Error("offline"))],
     ["an unauthorized answer", vi.fn().mockResolvedValue(new Response("no", { status: 401 }))],

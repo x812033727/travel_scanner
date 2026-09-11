@@ -16,6 +16,10 @@ describe("organization", () => {
 });
 
 describe("webSite", () => {
+  it("omits a search action when its destination feature is closed or unavailable", () => {
+    expect(parse(webSite("en", false))).not.toHaveProperty("potentialAction");
+    expect(parse(webSite("en", false)).name).toBe("Mokaair");
+  });
   it("describes this locale's tree, not the bare origin", () => {
     const data = parse(webSite("ja")) as Record<string, string>;
     expect(data.url).toBe(`${siteUrl}/ja`);

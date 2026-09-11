@@ -27,7 +27,7 @@ import {
 import { useClientSearch } from "@/lib/use-client-search";
 import { useSharedAnchor } from "@/lib/use-shared-anchor";
 
-type ActiveChip = { key: string; label: string; clear: () => void };
+type ActiveChip = { key: string; label: string; filters: FoodBrowserFilters };
 
 function isCitiesResponse(value: unknown): value is FoodCitiesResponse {
   if (typeof value !== "object" || value === null) return false;
@@ -49,10 +49,11 @@ function isCategoriesResponse(value: unknown): value is FoodCategoriesResponse {
  * not depend on any filter. The city chooser is 2,492 pixels tall on a phone, so arriving
  * after hydration meant shoving the whole page down about four seconds in.
  */
-export function FoodBrowser({ initialCities, initialCategories, initialMerchants }: {
+export function FoodBrowser({ initialCities, initialCategories, initialMerchants, initialFilters: serverFilters }: {
   initialCities?: unknown;
   initialCategories?: unknown;
   initialMerchants?: unknown;
+  initialFilters?: FoodBrowserFilters;
 } = {}) {
   const t = useTranslations("foods");
   const tCommon = useTranslations("common");
@@ -65,7 +66,10 @@ export function FoodBrowser({ initialCities, initialCategories, initialMerchants
     [initialCategories],
   );
   const search = useClientSearch();
-  const initialFilters = useMemo(() => readFoodBrowserFilters(search ?? ""), [search]);
+  const initialFilters = useMemo(
+    () => search === null ? serverFilters ?? readFoodBrowserFilters("") : readFoodBrowserFilters(search),
+    [search, serverFilters],
+  );
   const [filterState, setFilterState] = useState<FoodBrowserFilters | null>(null);
   const filters = filterState ?? initialFilters;
   const [queryInput, setQueryInput] = useState<string | null>(null);
@@ -76,7 +80,14 @@ export function FoodBrowser({ initialCities, initialCategories, initialMerchants
     () => (isMerchantsResponse(initialMerchants) ? initialMerchants : null),
     [initialMerchants],
   );
-  const [result, setResult] = useState<FoodMerchantsResponse | null>(seededMerchants);
+  const serverQuery = merchantsQuery(serverFilters ?? readFoodBrowserFilters(""));
+  const [resultState, setResultState] = useState<{ query: string; data: FoodMerchantsResponse } | null>(
+    seededMerchants ? { query: serverQuery, data: seededMerchants } : null,
+  );
+  // A seed or late response belongs only to its own filter set. Never show another city's
+  // cards/cursor under the current controls, including when the replacement request fails.
+  const currentQuery = merchantsQuery(filters);
+  const result = resultState?.query === currentQuery ? resultState.data : null;
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
   // Kept apart from `error`: losing the city list must not blank the merchants.
@@ -85,6 +96,7 @@ export function FoodBrowser({ initialCities, initialCategories, initialMerchants
   const [filtersOpen, setFiltersOpen] = useState(false);
   const filterSheetRef = useModalSheet<HTMLFormElement>(filtersOpen, () => setFiltersOpen(false));
   const hydrated = useRef(false);
+  const activeRequest = useRef(0);
 
   const loadCities = useCallback(() => {
     api<FoodCitiesResponse>("/foods/cities")
@@ -109,13 +121,13 @@ export function FoodBrowser({ initialCities, initialCategories, initialMerchants
     // Later replaceState calls change the snapshot; only the first client value seeds the list.
     if (search === null || hydrated.current) return;
     hydrated.current = true;
-    // The server only fetches the unfiltered page, so it is reusable exactly when this reader
-    // arrived without filters too. Anything in the address bar needs its own query.
-    if (seededMerchants && merchantsQuery(initialFilters) === merchantsQuery(readFoodBrowserFilters(""))) return;
-    api<FoodMerchantsResponse>(`/foods/merchants?${merchantsQuery(initialFilters)}`)
-      .then(setResult)
-      .catch((reason: Error) => setError(reason.message));
-  }, [initialFilters, search, seededMerchants]);
+    const query = merchantsQuery(initialFilters);
+    if (seededMerchants && query === serverQuery) return;
+    const request = ++activeRequest.current;
+    api<FoodMerchantsResponse>(`/foods/merchants?${query}`)
+      .then((data) => { if (request === activeRequest.current) setResultState({ query, data }); })
+      .catch((reason: Error) => { if (request === activeRequest.current) setError(reason.message); });
+  }, [initialFilters, search, seededMerchants, serverQuery]);
 
   useSharedAnchor(Boolean(result?.items.length));
 
@@ -127,16 +139,20 @@ export function FoodBrowser({ initialCities, initialCategories, initialMerchants
     setPending(true);
     setAppending(Boolean(options.append));
     const cursor = options.append ? result?.next_cursor : undefined;
+    const query = merchantsQuery(next);
+    const request = ++activeRequest.current;
     api<FoodMerchantsResponse>(`/foods/merchants?${merchantsQuery(next, cursor)}`)
       .then((response) => {
-        setResult((current) =>
-          options.append && current
-            ? { ...response, items: [...current.items, ...response.items] }
+        if (request !== activeRequest.current) return;
+        setResultState((current) => ({
+          query,
+          data: options.append && current?.query === query
+            ? { ...response, items: [...current.data.items, ...response.items] }
             : response,
-        );
+        }));
       })
-      .catch((reason: Error) => setError(reason.message))
-      .finally(() => setPending(false));
+      .catch((reason: Error) => { if (request === activeRequest.current) setError(reason.message); })
+      .finally(() => { if (request === activeRequest.current) setPending(false); });
     if (!options.append) {
       const query = foodBrowserSearch(next);
       window.history.replaceState(
@@ -191,14 +207,14 @@ export function FoodBrowser({ initialCities, initialCategories, initialMerchants
     activeChips.push({
       key: "city",
       label: city.name,
-      clear: () => apply({ ...filters, destinationId: "", area: "" }),
+      filters: { ...filters, destinationId: "", area: "" },
     });
   }
   if (filters.area) {
     activeChips.push({
       key: "area",
       label: areaItems.find((item) => item.key === filters.area)?.label ?? filters.area,
-      clear: () => toggleArea(""),
+      filters: { ...filters, query: queryValue.trim(), area: "" },
     });
   }
   if (filters.category) {
@@ -206,7 +222,7 @@ export function FoodBrowser({ initialCities, initialCategories, initialMerchants
       key: "category",
       label:
         categoryItems.find((item) => item.key === filters.category)?.label ?? filters.category,
-      clear: () => toggleCategory(""),
+      filters: { ...filters, query: queryValue.trim(), category: "" },
     });
   }
   if (filters.style) {
@@ -214,14 +230,14 @@ export function FoodBrowser({ initialCities, initialCategories, initialMerchants
       key: "style",
       label: MERCHANT_STYLES.includes(filters.style as typeof MERCHANT_STYLES[number])
         ? t(`styles.${filters.style as typeof MERCHANT_STYLES[number]}`) : filters.style,
-      clear: () => toggleStyle(""),
+      filters: { ...filters, query: queryValue.trim(), style: "" },
     });
   }
   if (filters.query) {
     activeChips.push({
       key: "query",
       label: filters.query,
-      clear: () => apply({ ...filters, query: "" }),
+      filters: { ...filters, query: "" },
     });
   }
 
@@ -341,7 +357,7 @@ export function FoodBrowser({ initialCities, initialCategories, initialMerchants
             <button
               key={chip.key}
               type="button"
-              onClick={chip.clear}
+              onClick={() => apply(chip.filters)}
               aria-label={t("removeFilter", { label: chip.label })}
               className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[var(--teal)] bg-[var(--teal-soft)] px-3.5 font-semibold text-[var(--teal-dark)]"
             >

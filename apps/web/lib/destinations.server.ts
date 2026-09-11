@@ -1,4 +1,5 @@
 import { cache } from "react";
+import { getTranslations } from "next-intl/server";
 
 /**
  * Public destination data for the guide pages.
@@ -8,14 +9,11 @@ import { cache } from "react";
  * destinations in all five locales, checked upstream by validate_localized_catalog(). So these
  * pages do not need a translation table of their own for anything but section headings.
  *
- * Unlike the other *.server.ts helpers these responses are cached rather than `no-store`. None of
- * it is personalized, and going back to origin on every request lands straight in TTFB and
- * therefore in LCP. The catalog moves about once a quarter; rankings and merchant listings move
- * daily, so they get a shorter window.
+ * Only the source-controlled destination catalog is cached across requests. Place and merchant
+ * listings contain current moderation decisions, so those are always read fresh.
  */
 
 const CATALOG_TTL = 3600;
-const LISTING_TTL = 900;
 
 export type DestinationSummary = {
   id: string;
@@ -41,10 +39,11 @@ function apiBase() {
   return (process.env.API_INTERNAL_URL || "http://localhost:8000").replace(/\/$/, "");
 }
 
-async function fetchJson(path: string, locale: string, revalidate: number): Promise<unknown | null> {
+async function fetchJson(path: string, locale: string, revalidate?: number): Promise<unknown | null> {
   try {
     const response = await fetch(`${apiBase()}/api/v1${path}`, {
-      next: { revalidate },
+      ...(revalidate === undefined ? { cache: "no-store" as const } : { next: { revalidate } }),
+      signal: AbortSignal.timeout(3000),
       headers: { Accept: "application/json", "X-Travel-Locale": locale },
     });
     if (!response.ok) return null;
@@ -103,14 +102,18 @@ export async function loadDestinations(locale: string): Promise<DestinationSumma
 }
 
 export async function loadDestination(locale: string, id: string): Promise<DestinationSummary | null> {
-  const rows = await loadDestinations(locale);
+  const rows = await getDestinations(locale);
   return rows?.find((row) => row.id === id) ?? null;
 }
 
 /** Top reviewed places, server-rendered so the list is in the HTML rather than fetched on mount. */
-export async function loadPlaces(locale: string, id: string): Promise<GuideEntry[]> {
-  const payload = (await fetchJson(`/hotspots/rankings?destination_id=${encodeURIComponent(id)}&limit=12`, locale, LISTING_TTL)) as Record<string, unknown> | null;
-  const items = Array.isArray(payload?.items) ? payload.items : [];
+export async function loadPlaces(locale: string, id: string): Promise<GuideEntry[] | null> {
+  const [payload, t] = await Promise.all([
+    fetchJson(`/hotspots/rankings?destination_id=${encodeURIComponent(id)}&limit=12`, locale) as Promise<Record<string, unknown> | null>,
+    getTranslations({ locale, namespace: "hotspots" }),
+  ]);
+  if (!Array.isArray(payload?.items)) return null;
+  const items = payload.items;
   return items
     .map((item, index) => {
       if (typeof item !== "object" || item === null) return null;
@@ -119,14 +122,17 @@ export async function loadPlaces(locale: string, id: string): Promise<GuideEntry
       if (!name) return null;
       const area = row.area as Record<string, unknown> | null;
       // Chains share a name within one city, so the name is not a usable React key.
-      return { id: text(row.id) ?? `${name}-${index}`, name, detail: text(area?.name) ?? text(row.category) };
+      const category = text(row.category);
+      const categoryLabel = category && t.has(`categories.${category}`) ? t(`categories.${category}`) : null;
+      return { id: text(row.id) ?? `${name}-${index}`, name, detail: text(area?.name) ?? categoryLabel };
     })
     .filter((entry): entry is GuideEntry => entry !== null);
 }
 
-export async function loadMerchants(locale: string, id: string): Promise<GuideEntry[]> {
-  const payload = (await fetchJson(`/foods/merchants?destination_id=${encodeURIComponent(id)}&limit=12`, locale, LISTING_TTL)) as Record<string, unknown> | null;
-  const items = Array.isArray(payload?.items) ? payload.items : [];
+export async function loadMerchants(locale: string, id: string): Promise<GuideEntry[] | null> {
+  const payload = (await fetchJson(`/foods/merchants?destination_id=${encodeURIComponent(id)}&limit=12`, locale)) as Record<string, unknown> | null;
+  if (!Array.isArray(payload?.items)) return null;
+  const items = payload.items;
   return items
     .map((item, index) => {
       if (typeof item !== "object" || item === null) return null;

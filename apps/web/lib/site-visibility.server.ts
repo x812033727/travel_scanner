@@ -19,6 +19,7 @@ export async function loadSiteVisibility(): Promise<SiteVisibilityState> {
     const response = await fetch(`${apiBase}/api/v1/runtime/site-visibility`, {
       cache: "no-store",
       headers: { Accept: "application/json" },
+      signal: AbortSignal.timeout(3_000),
     });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const payload: unknown = await response.json();

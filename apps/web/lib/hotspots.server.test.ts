@@ -7,7 +7,7 @@ const facets = { countries: [], cities: [], areas: [] };
 afterEach(() => { vi.unstubAllGlobals(); vi.unstubAllEnvs(); });
 
 describe("loadInitialHotspots", () => {
-  it("caches the public ranking rather than going back to origin every request", async () => {
+  it("does not persist moderated rankings or facets across requests", async () => {
     const fetch = vi.fn()
       .mockResolvedValueOnce(new Response(JSON.stringify(ranking)))
       .mockResolvedValueOnce(new Response(JSON.stringify(facets)));
@@ -16,8 +16,9 @@ describe("loadInitialHotspots", () => {
 
     expect((await loadInitialHotspots("ja")).ranking).toEqual(ranking);
     for (const call of fetch.mock.calls) {
-      expect(call[1]).toMatchObject({ next: { revalidate: 900 }, headers: { "X-Travel-Locale": "ja" } });
-      expect(call[1]).not.toHaveProperty("cache");
+      expect(call[1]).toMatchObject({ cache: "no-store", headers: { "X-Travel-Locale": "ja" } });
+      expect(call[1]).not.toHaveProperty("next");
+      expect(call[1].signal).toBeInstanceOf(AbortSignal);
     }
   });
 

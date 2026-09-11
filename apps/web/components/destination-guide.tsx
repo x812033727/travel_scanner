@@ -31,11 +31,11 @@ function Facts({ destination, copy }: { destination: DestinationSummary; copy: R
   );
 }
 
-function EntryList({ title, entries, empty, action }: { title: string; entries: GuideEntry[]; empty: string; action: React.ReactNode }) {
+function EntryList({ title, entries, empty, unavailable, action }: { title: string; entries: GuideEntry[] | null; empty: string; unavailable: string; action: React.ReactNode }) {
   return (
     <section className="mt-10">
       <h2 className="text-2xl font-bold tracking-tight">{title}</h2>
-      {entries.length ? (
+      {entries?.length ? (
         <ul className="mt-4 grid gap-2 sm:grid-cols-2">
           {entries.map((entry) => (
             <li key={entry.id} className="rounded-2xl border border-[var(--line)] px-4 py-3">
@@ -45,7 +45,7 @@ function EntryList({ title, entries, empty, action }: { title: string; entries: 
           ))}
         </ul>
       ) : (
-        <p className="mt-3 leading-7 text-[var(--muted)]">{empty}</p>
+        <p className="mt-3 leading-7 text-[var(--muted)]">{entries === null ? unavailable : empty}</p>
       )}
       <p className="mt-4">{action}</p>
     </section>
@@ -56,13 +56,15 @@ export function DestinationGuide({
   locale,
   destination,
   places,
+  hotspotsEnabled,
   merchants,
   related,
 }: {
   locale: Locale;
   destination: DestinationSummary;
-  places: GuideEntry[];
-  merchants: GuideEntry[];
+  places: GuideEntry[] | null;
+  hotspotsEnabled: boolean;
+  merchants: GuideEntry[] | null;
   related: DestinationSummary[];
 }) {
   const copy = destinationsCopy(locale);
@@ -94,17 +96,19 @@ export function DestinationGuide({
         </section>
       ) : null}
 
-      <EntryList
+      {hotspotsEnabled ? <EntryList
         title={copy.seeTitle}
         entries={places}
         empty={copy.emptyPlaces}
+        unavailable={copy.unavailablePlaces}
         action={<Link className={link} href={`/hotspots?destination_id=${destination.id}`}>{copy.browsePlaces}</Link>}
-      />
+      /> : null}
       <EntryList
         title={copy.eatTitle}
         entries={merchants}
         empty={copy.emptyFood}
-        action={<Link className={link} href="/foods">{copy.browseFood}</Link>}
+        unavailable={copy.unavailableFood}
+        action={<Link className={link} href={`/foods?destination_id=${encodeURIComponent(destination.id)}`}>{copy.browseFood}</Link>}
       />
 
       <section className="mt-10">

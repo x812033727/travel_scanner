@@ -9,6 +9,8 @@ import type { Locale } from "@/i18n/routing";
 import { destinationsCopy } from "@/lib/destinations-copy";
 import { getDestination, getDestinations, getGuideMerchants, getGuidePlaces } from "@/lib/destinations.server";
 import { breadcrumbs, touristDestination } from "@/lib/structured-data";
+import { featureEnabled } from "@/lib/site-features";
+import { getSiteVisibility } from "@/lib/site-visibility.server";
 
 type Params = { locale: Locale; destinationId: string };
 
@@ -30,10 +32,9 @@ export default async function DestinationGuidePage({ params }: { params: Promise
   const { locale, destinationId } = await params;
   if (!known(destinationId)) notFound();
 
-  const [all, places, merchants, nav] = await Promise.all([
+  const [all, visibility, nav] = await Promise.all([
     getDestinations(locale),
-    getGuidePlaces(locale, destinationId),
-    getGuideMerchants(locale, destinationId),
+    getSiteVisibility(),
     getTranslations({ locale, namespace: "navigation" }),
   ]);
 
@@ -45,6 +46,11 @@ export default async function DestinationGuidePage({ params }: { params: Promise
   if (all === null) throw new Error(`Destination catalog unavailable for ${destinationId}`);
   const destination = all.find((row) => row.id === destinationId);
   if (!destination) notFound();
+  const hotspotsEnabled = featureEnabled(visibility, "hotspots");
+  const [places, merchants] = await Promise.all([
+    hotspotsEnabled ? getGuidePlaces(locale, destinationId) : Promise.resolve(null),
+    getGuideMerchants(locale, destinationId),
+  ]);
 
   const copy = destinationsCopy(locale);
   const byId = new Map((all ?? []).map((row) => [row.id, row]));
@@ -73,7 +79,7 @@ export default async function DestinationGuidePage({ params }: { params: Promise
           }),
         ]}
       />
-      <DestinationGuide locale={locale} destination={destination} places={places} merchants={merchants} related={related} />
+      <DestinationGuide locale={locale} destination={destination} places={places} hotspotsEnabled={hotspotsEnabled} merchants={merchants} related={related} />
     </>
   );
 }

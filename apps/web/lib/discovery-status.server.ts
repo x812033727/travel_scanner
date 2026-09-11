@@ -6,8 +6,8 @@ import { cache } from "react";
  * `lib/discovery.ts` reads the same switch from the browser, but its `useSyncExternalStore`
  * server snapshot is a fixed `{ enabled: false, loading: true }`, so anything behind
  * `DiscoveryHomeGate` renders as a skeleton in the response body -- on the home page that is the
- * whole `<h1>`, the hero and the destination rail. A page that knows the answer before it renders
- * can decide whether it needs that gate at all.
+ * whole `<h1>`, the hero and the destination rail. The server result lets the gate render the
+ * marketing body when discovery is off without losing client refreshes after hydration.
  *
  * `GET /discovery/status` is public and reads a setting rather than the database, so this is a
  * cheap call. It is deliberately `no-store`, like site-visibility: a switch has to take effect
@@ -24,6 +24,7 @@ export async function loadDiscoveryStatus(): Promise<DiscoveryStatus> {
     const response = await fetch(`${apiBase}/api/v1/discovery/status`, {
       cache: "no-store",
       headers: { Accept: "application/json" },
+      signal: AbortSignal.timeout(3_000),
     });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const payload: unknown = await response.json();

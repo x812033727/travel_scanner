@@ -26,7 +26,7 @@ export function organization(): object {
   };
 }
 
-export function webSite(locale: Locale): object {
+export function webSite(locale: Locale, searchEnabled = true): object {
   return {
     "@context": CONTEXT,
     "@type": "WebSite",
@@ -35,14 +35,14 @@ export function webSite(locale: Locale): object {
     inLanguage: locale,
     // /hotspots really does take `q` and filter on it, so this is a search endpoint a reader can
     // land on, not a shape invented to earn a sitelinks search box.
-    potentialAction: {
+    ...(searchEnabled ? { potentialAction: {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
         urlTemplate: `${localeUrl(locale, "/hotspots")}?q={search_term_string}`,
       },
       "query-input": "required name=search_term_string",
-    },
+    } } : {}),
   };
 }
 

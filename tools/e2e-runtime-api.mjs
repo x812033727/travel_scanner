@@ -145,6 +145,12 @@ function adminBootstrap(request) {
 const server = createServer((request, response) => {
   response.setHeader("Cache-Control", "no-store");
   response.setHeader("Content-Type", "application/json");
+  // Match the default production switch explicitly; homepage SSR tests must not
+  // accidentally rely on an unimplemented endpoint returning 404.
+  if (request.method === "GET" && request.url === "/api/v1/discovery/status") {
+    response.end(JSON.stringify({ enabled: false }));
+    return;
+  }
   if (request.method === "GET" && request.url === "/api/v1/runtime/site-visibility") {
     response.end(JSON.stringify(visibility));
     return;
