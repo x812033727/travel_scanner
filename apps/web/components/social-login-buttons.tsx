@@ -1,17 +1,22 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ComponentType } from "react";
+import { AppleMark, GoogleMark, LineMark } from "@/components/brand-marks";
 import type { Locale } from "@/i18n/routing";
 import { api } from "@/lib/api";
 
 type Provider = "google" | "line" | "apple";
 type ProviderStatus = { providers: Record<Provider, boolean> };
 
-const providers: Array<{ id: Provider; mark: string; className: string }> = [
-  { id: "google", mark: "G", className: "border-[var(--line)] bg-white text-[#3c4043]" },
-  { id: "line", mark: "LINE", className: "border-[#06c755] bg-[#06c755] text-white" },
-  { id: "apple", mark: "", className: "border-black bg-black text-white" },
+// Each provider's sign-in guidelines fix its button as well as its logo: Google's
+// light button is white with dark text, LINE's is its own #06C755, Apple's is
+// black. These are brand assets, not palette choices, so they stay fixed in both
+// themes instead of following the site's CSS variables.
+const providers: Array<{ id: Provider; Mark: ComponentType<{ className?: string }>; className: string }> = [
+  { id: "google", Mark: GoogleMark, className: "border-[#747775] bg-white text-[#1f1f1f]" },
+  { id: "line", Mark: LineMark, className: "border-[#06c755] bg-[#06c755] text-white" },
+  { id: "apple", Mark: AppleMark, className: "border-black bg-black text-white" },
 ];
 
 const knownErrors = new Set([
@@ -41,8 +46,14 @@ export function SocialLoginButtons({
   const locale = useLocale() as Locale;
   const t = useTranslations("auth");
   const [status, setStatus] = useState<ProviderStatus>();
+  const [settled, setSettled] = useState(false);
   useEffect(() => {
-    api<ProviderStatus>("/auth/oauth/providers").then(setStatus).catch(() => undefined);
+    let active = true;
+    api<ProviderStatus>("/auth/oauth/providers")
+      .then((result) => { if (active) setStatus(result); })
+      .catch(() => undefined)
+      .finally(() => { if (active) setSettled(true); });
+    return () => { active = false; };
   }, []);
   const available = providers.filter((provider) => status?.providers[provider.id]);
   return (
@@ -52,14 +63,19 @@ export function SocialLoginButtons({
           {t(`oauthErrors.${knownErrors.has(oauthError) ? oauthError : "oauth_token_invalid"}`)}
         </p>
       )}
-      {available.map((provider) => (
+      {/* Which providers exist is only known after a request, and the email form
+          sits directly below: without this the form is laid out at the top of the
+          card and then shoved down as the buttons arrive under the reader's
+          pointer. One placeholder row holds that space until the answer lands. */}
+      {!settled && <div aria-hidden="true" className="h-12 w-full animate-pulse rounded-xl bg-[var(--paper)]" />}
+      {available.map(({ id, Mark, className }) => (
         <a
-          key={provider.id}
-          href={`/api/auth/oauth/${provider.id}/start?intent=${intent}&locale=${locale}&next=${encodeURIComponent(nextPath)}`}
-          className={`flex min-h-12 w-full items-center justify-center gap-3 rounded-xl border px-4 font-semibold shadow-sm transition active:scale-[.99] ${provider.className}`}
+          key={id}
+          href={`/api/auth/oauth/${id}/start?intent=${intent}&locale=${locale}&next=${encodeURIComponent(nextPath)}`}
+          className={`flex min-h-12 w-full items-center justify-center gap-3 rounded-xl border px-4 font-semibold shadow-sm transition active:scale-[.99] ${className}`}
         >
-          <span aria-hidden="true" className={`min-w-7 text-center font-black ${provider.id === "apple" ? "text-xl" : "text-sm"}`}>{provider.mark}</span>
-          {t(`continueWith.${provider.id}`)}
+          <Mark />
+          {t(`continueWith.${id}`)}
         </a>
       ))}
       {available.length > 0 && (

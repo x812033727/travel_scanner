@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**46 open · 3 in progress · 3 blocked · 20 in review · 202 done**
+**46 open · 4 in progress · 3 blocked · 20 in review · 202 done**
 
 ## Ready to claim
 
@@ -51,6 +51,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | [探索模式開啟時全站沒有登入入口](open/2026-09-11-no-sign-in-entry-in-discovery.md) | claude-opus-5 | 2026-09-11T08:19:37Z | `claude/google-apple-line-login-0fmfi5` |
 | [Configurable catalog review run call limit](open/2026-09-09-configurable-catalog-review-run-call-limit.md) | codex-catalog-call-limit | 2026-09-09T15:54:14Z | `codex/catalog-review-call-limit` |
 | [Traditional Chinese Google and LINE login setup guide](open/2026-09-11-traditional-chinese-google-and-line-login.md) | claude-opus-5 | 2026-09-11T08:53:51Z | `claude/google-apple-line-login-0fmfi5` |
+| [Social login buttons use official brand marks](open/2026-09-11-social-login-buttons-use-official-brand.md) | claude-opus-5 | 2026-09-11T09:07:24Z | `claude/google-apple-line-login-0fmfi5` |
 
 ## In review
 
