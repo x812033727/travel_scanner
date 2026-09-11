@@ -8,7 +8,7 @@ import {
   type GuideList,
   type GuideTopic,
 } from "./guides";
-import { locales, type Locale } from "@/i18n/routing";
+import { defaultLocale, locales, type Locale } from "@/i18n/routing";
 
 /**
  * Server-to-server reads of the guides API.
@@ -104,6 +104,52 @@ export async function loadGuideArticle(
   // "unavailable" keeps the page out of the index instead of publishing a blank one.
   if (body.status !== "published" || !isPublishedGuide(body.document)) return unavailable;
   return { ...shared, status: "published", document: body.document };
+}
+
+/** One published translation of one article, for the sitemap. */
+export type GuideSitemapEntry = {
+  kind: GuideKind;
+  slug: string;
+  locale: Locale;
+  published_at: string;
+  /** Every locale this article is published in, so its alternates can be reciprocal. */
+  locales: Locale[];
+};
+
+/** Google's per-file limit is 50,000 URLs; this is a far lower self-imposed bound that keeps
+ *  one slow response from dominating the sitemap. The API applies the same cap. */
+export const SITEMAP_GUIDE_ENTRY_LIMIT = 1000;
+
+/**
+ * Publication-aware enumeration for `app/sitemap.ts`.
+ *
+ * Returns `[]` on any failure. The sitemap must degrade to its static list rather than
+ * disappear: an empty sitemap tells Google the site has no pages, which is far worse than
+ * one missing section.
+ */
+export async function guideSitemapEntries(): Promise<GuideSitemapEntry[]> {
+  const row = await fetchJson("/guides/sitemap", defaultLocale);
+  const body = row as Record<string, unknown> | null;
+  if (!body || !Array.isArray(body.entries)) return [];
+
+  const byArticle = new Map<string, Locale[]>();
+  const rows: Array<{ kind: GuideKind; slug: string; locale: Locale; published_at: string }> = [];
+  for (const value of body.entries) {
+    const entry = value as Record<string, unknown> | null;
+    if (!entry || typeof entry.slug !== "string" || typeof entry.published_at !== "string") continue;
+    if (!isGuideKind(entry.kind) || !locales.includes(entry.locale as Locale)) continue;
+    const locale = entry.locale as Locale;
+    const key = `${entry.kind}:${entry.slug}`;
+    byArticle.set(key, [...(byArticle.get(key) ?? []), locale]);
+    rows.push({ kind: entry.kind, slug: entry.slug, locale, published_at: entry.published_at });
+  }
+
+  return rows.slice(0, SITEMAP_GUIDE_ENTRY_LIMIT).map((entry) => ({
+    ...entry,
+    // Ordered by the site's own locale list rather than the API's row order, so two runs
+    // cannot produce differently ordered alternates for the same article.
+    locales: locales.filter((value) => byArticle.get(`${entry.kind}:${entry.slug}`)?.includes(value)),
+  }));
 }
 
 export const getGuideList = cache(loadGuideList);
