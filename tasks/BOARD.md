@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**34 open · 1 in progress · 3 blocked · 21 in review · 237 done**
+**34 open · 1 in progress · 3 blocked · 21 in review · 238 done**
 
 ## Ready to claim
 
@@ -83,13 +83,14 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [首頁與 explore 要在伺服器端渲染出真正的內容](open/2026-09-10-seo-server-render-home-and-explore.md) | depends on 2026-09-09-frontend-flow-discovery-web, 2026-09-09-discovery-card-details, 2026-09-10-seo-structured-data |
 | P2 | [Community read metric duplicate observed alongside smoke ECONNRESET](open/2026-09-07-community-read-metric-concurrency.md) | active work in the same scope |
 | P2 | [Preserve force refresh in daily route background jobs](open/2026-09-10-daily-route-force-refresh.md) | active work in the same scope |
-| P2 | [推薦流的語言選擇與同地點去重](open/2026-09-11-discovery-feed-language-and-dedup.md) | active work in the same scope |
 | P2 | [當日檢視的離線 e2e 與 CI 接線](open/2026-09-11-offline-today-e2e.md) | active work in the same scope |
 | P3 | [整合測試用固定 email，同一個資料庫跑第二次就 UniqueViolation](open/2026-09-07-fixed-email-in-integration-tests.md) | active work in the same scope |
 | P3 | [Lighthouse SEO 與效能門檻 workflow](open/2026-09-10-seo-lighthouse-workflow.md) | depends on 2026-09-10-seo-robots-sitemap, 2026-09-10-seo-destination-landing-pages, 2026-09-10-seo-server-render-home-and-explore |
+| P3 | [推薦流卡片標示內容語言（語言方向 1）](open/2026-09-11-discovery-card-language-badge.md) | active work in the same scope |
 
 ## Recently finished
 
+- 2026-09-11 [推薦流的語言選擇與同地點去重](done/2026-09-11-discovery-feed-language-and-dedup.md)
 - 2026-09-11 [取消或逾時搜尋時釋放已保留的次數](done/2026-09-11-release-reservation-on-cancel.md)
 - 2026-09-11 [店家座標佇列面板整個沒有 i18n](done/2026-09-11-merchant-coordinate-queue-i18n.md)
 - 2026-09-11 [formatTime 在沒有時間時回傳寫死的繁中](done/2026-09-11-format-time-chinese-fallback.md)
@@ -99,4 +100,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-11 [航班錨點卡與路線卡仍是硬編碼繁中](done/2026-09-11-anchor-and-route-cards-hardcoded-zh.md)
 - 2026-09-11 [彈層原語未統一與可及性收尾](done/2026-09-11-dialog-primitives-and-a11y-cleanup.md)
 - 2026-09-11 [表單驗證與低於四十四像素的觸控目標](done/2026-09-11-form-validation-and-touch-targets.md)
-- 2026-09-11 [六處死路與缺空狀態合集](done/2026-09-11-ux-dead-ends-and-empty-states.md)
