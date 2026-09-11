@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**47 open · 3 in progress · 3 blocked · 19 in review · 209 done**
+**47 open · 3 in progress · 3 blocked · 19 in review · 210 done**
 
 ## Ready to claim
 
@@ -92,17 +92,18 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [後台九張表格在手機無法閱讀](open/2026-09-11-admin-tables-unusable-on-phone.md) | active work in the same scope |
 | P1 | [刪除行程項目沒有確認而且復原視窗短於自動儲存](open/2026-09-11-itinerary-item-delete-no-confirm.md) | active work in the same scope |
 | P1 | [路線地圖在手機吃掉頁面捲動且對輔助科技隱形](open/2026-09-11-route-map-mobile-and-a11y.md) | active work in the same scope |
-| P1 | [推薦流印出原始 HTML 標籤且語言混雜未去重](open/2026-09-11-discovery-feed-html-and-language-mix.md) | active work in the same scope |
 | P2 | [Community read metric duplicate observed alongside smoke ECONNRESET](open/2026-09-07-community-read-metric-concurrency.md) | active work in the same scope |
 | P2 | [Preserve force refresh in daily route background jobs](open/2026-09-10-daily-route-force-refresh.md) | active work in the same scope |
 | P2 | [彈層原語未統一與可及性收尾](open/2026-09-11-dialog-primitives-and-a11y-cleanup.md) | active work in the same scope |
 | P2 | [六處死路與缺空狀態合集](open/2026-09-11-ux-dead-ends-and-empty-states.md) | active work in the same scope |
 | P2 | [安排編輯器的關閉鈕在儲存在途時被靜默吞掉](open/2026-09-11-planner-overlay-close-guard-race.md) | active work in the same scope |
+| P2 | [推薦流的語言選擇與同地點去重](open/2026-09-11-discovery-feed-language-and-dedup.md) | active work in the same scope |
 | P3 | [整合測試用固定 email，同一個資料庫跑第二次就 UniqueViolation](open/2026-09-07-fixed-email-in-integration-tests.md) | active work in the same scope |
 | P3 | [Lighthouse SEO 與效能門檻 workflow](open/2026-09-10-seo-lighthouse-workflow.md) | depends on 2026-09-10-seo-robots-sitemap, 2026-09-10-seo-destination-landing-pages, 2026-09-10-seo-server-render-home-and-explore |
 
 ## Recently finished
 
+- 2026-09-11 [推薦流印出原始 HTML 標籤](done/2026-09-11-discovery-feed-html-and-language-mix.md)
 - 2026-09-11 [頁尾五個連結全站每頁都只有十六像素高](done/2026-09-11-footer-links-sixteen-px-tall.md)
 - 2026-09-11 [校正私人頁與功能關閉頁的索引指令](done/2026-09-10-seo-index-directives.md)
 - 2026-09-11 [首頁伺服器端輸出真正的內容，並把目的地頁接進連結結構](done/2026-09-10-seo-home-ssr-and-internal-links.md)
@@ -112,4 +113,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-11 [探索卡顯示累積蒐藏數與蒐藏數排行分頁](done/2026-09-11-discovery-saved-count-ranking.md)
 - 2026-09-11 [Simplify hotel booking platform and source copy](done/2026-09-10-simplify-hotel-booking-copy.md)
 - 2026-09-11 [Verify simplified hotel booking copy without changing affiliate flow](done/2026-09-10-verify-hotel-booking-copy.md)
-- 2026-09-10 [Korea dual map identities and transport navigation](done/2026-09-10-korea-dual-maps.md)
