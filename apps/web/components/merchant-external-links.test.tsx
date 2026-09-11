@@ -91,6 +91,27 @@ describe("MerchantExternalLinks", () => {
     expect(screen.getByRole("link", { name: /TableCheck/ }).getAttribute("href")).toBe(platforms[0].url);
   });
 
+  it.each(Object.keys(catalogs) as (keyof typeof catalogs)[])("exposes reviewed dotted Catchtable links safely in %s", (locale) => {
+    const url = "https://www.catchtable.net/zh-TW/shop/yosukgung.kr";
+    renderLinks({ reservation_links: [{ ...platforms[1], url, language_code: "zh-TW" }] }, locale);
+    const anchor = screen.getByRole("link", { name: /Catchtable Global/ });
+    expect(anchor.getAttribute("href")).toBe(url);
+    expect(anchor.getAttribute("target")).toBe("_blank");
+    expect(anchor.getAttribute("rel")).toBe("noopener noreferrer");
+    expect(screen.queryByText(catalogs[locale].noVerifiedReservation)).toBeNull();
+  });
+
+  it.each([
+    { url: "https://www.catchtable.net/zh-TW/shop/yosukgung.kr", verified_at: "" },
+    { url: "https://www.catchtable.net/zh-TW/shop/yosukgung%2ekr" },
+    { url: "https://www.catchtable.net/zh-TW/shop/yosukgung.kr/../other" },
+    { url: "https://www.catchtable.net.evil.test/zh-TW/shop/yosukgung.kr" },
+  ])("does not expose unreviewed or unsafe dotted Catchtable links: %o", (overrides) => {
+    renderLinks({ reservation_links: [{ ...platforms[1], ...overrides }] });
+    expect(screen.queryByRole("link", { name: /Catchtable Global/ })).toBeNull();
+    expect(screen.getByText(zhTW.noVerifiedReservation)).toBeTruthy();
+  });
+
   it.each([
     "javascript:alert(1)", "data:text/html,unsafe", "http://www.tablecheck.com/en/shops/sushi-sakai/reserve",
     "https://user:pass@www.tablecheck.com/en/shops/sushi-sakai/reserve",

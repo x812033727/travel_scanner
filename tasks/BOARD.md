@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**53 open · 1 in progress · 3 blocked · 21 in review · 203 done**
+**54 open · 1 in progress · 3 blocked · 21 in review · 203 done**
 
 ## Ready to claim
 
@@ -98,6 +98,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [刪除行程項目沒有確認而且復原視窗短於自動儲存](open/2026-09-11-itinerary-item-delete-no-confirm.md) | active work in the same scope |
 | P1 | [頁尾五個連結全站每頁都只有十六像素高](open/2026-09-11-footer-links-sixteen-px-tall.md) | active work in the same scope |
 | P1 | [推薦流印出原始 HTML 標籤且語言混雜未去重](open/2026-09-11-discovery-feed-html-and-language-mix.md) | active work in the same scope |
+| P1 | [Support dotted Catchtable venue IDs safely](open/2026-09-11-catchtable-dot-venue-id.md) | active work in the same scope |
 | P2 | [Community read metric duplicate observed alongside smoke ECONNRESET](open/2026-09-07-community-read-metric-concurrency.md) | active work in the same scope |
 | P2 | [Preserve force refresh in daily route background jobs](open/2026-09-10-daily-route-force-refresh.md) | active work in the same scope |
 | P2 | [讓 pet-friendly 與社群內容頁先 SSR 再開放索引](open/2026-09-10-seo-open-content-pages.md) | depends on 2026-09-10-seo-index-directives |

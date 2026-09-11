@@ -27,6 +27,41 @@ function input(label: string) { return screen.getByLabelText(label) as HTMLInput
 function selectProvider(value: string) { fireEvent.change(screen.getByLabelText("訂位平台"), { target: { value } }); }
 
 describe("AdminMerchantPlatformEditor", () => {
+  it("enables and saves the exact dotted Catchtable ID without changing another provider", async () => {
+    const canonical_url = "https://www.catchtable.net/zh-TW/shop/yosukgung.kr";
+    const review_note = "Fixture-only exact branch name and address evidence";
+    const fetchMock = vi.fn(async (_input: RequestInfo | URL, init?: RequestInit) => {
+      const body = JSON.parse(String(init?.body));
+      return new Response(JSON.stringify({ platform_links: [link, other, { ...body, provider_label: "Catchtable Global", checked_at: "2026-09-11T01:00:00Z" }] }));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<Editor />);
+    selectProvider("catchtable_global");
+    fireEvent.change(input("精準分店網址"), { target: { value: canonical_url } });
+    fireEvent.change(input("查核備註"), { target: { value: review_note } });
+    fireEvent.change(screen.getByLabelText("查核結果"), { target: { value: "verified" } });
+    const save = screen.getByRole("button", { name: "只儲存訂位平台" });
+    expect((save as HTMLButtonElement).disabled).toBe(false);
+    expect(screen.getByRole("link", { name: "開啟核對" }).getAttribute("href")).toBe(canonical_url);
+    fireEvent.change(input("ja 網址（選填）"), { target: { value: "https://www.catchtable.net/ja/shop/yosukgung.jp" } });
+    expect((save as HTMLButtonElement).disabled).toBe(true);
+    expect(fetchMock).not.toHaveBeenCalled();
+    fireEvent.change(input("ja 網址（選填）"), { target: { value: "" } });
+    fireEvent.click(save);
+    await screen.findByText("已儲存 Catchtable Global 的訂位平台資料。");
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(fetchMock.mock.calls[0][0]).toBe("/api/travel/admin/foods/merchants/merchant-1/platform-link");
+    expect(fetchMock.mock.calls[0][1]?.method).toBe("PUT");
+    expect(JSON.parse(String(fetchMock.mock.calls[0][1]?.body))).toEqual({
+      provider: "catchtable_global", status: "verified", canonical_url,
+      localized_urls: {}, review_note, expected_checked_at: null,
+    });
+    selectProvider("tablecheck");
+    expect(input("精準分店網址").value).toBe(link.canonical_url);
+    selectProvider("inline");
+    expect(input("精準分店網址").value).toBe(other.canonical_url);
+  });
+
   it("keeps separate drafts across providers and saves only the selected provider", async () => {
     const fetchMock = vi.fn(async (_input: RequestInfo | URL, init?: RequestInit) => {
       const body = JSON.parse(String(init?.body));

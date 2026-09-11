@@ -30,6 +30,11 @@ const forbiddenSlugs = new Set([
 const merchantSlug = (value: string | undefined): value is string => Boolean(
   value && /^[A-Za-z0-9][A-Za-z0-9_-]*$/.test(value) && !forbiddenSlugs.has(value.toLowerCase()),
 );
+// Catchtable uses literal dots inside venue IDs; empty dot segments stay invalid.
+const catchtableSlug = (value: string | undefined): value is string => Boolean(
+  value && /^[A-Za-z0-9][A-Za-z0-9_-]*(?:\.[A-Za-z0-9][A-Za-z0-9_-]*)*$/.test(value)
+    && !forbiddenSlugs.has(value.toLowerCase()),
+);
 
 function merchantIdentity(provider: string, segments: string[]): string | undefined {
   const hasLocale = ["tablecheck", "catchtable_global", "eztable", "chope", "openrice", "hungry_hub", "myconcierge"].includes(provider)
@@ -43,7 +48,8 @@ function merchantIdentity(provider: string, segments: string[]): string | undefi
       if (hasLocale && path.length === 3 && lower[1] === "reserve" && ["message", "landing"].includes(lower[2])) return venue(0);
       return undefined;
     case "catchtable_global":
-      return path.length === 2 && ["shop", "restaurant", "restaurants"].includes(lower[0]) ? venue(1) : undefined;
+      return path.length === 2 && ["shop", "restaurant", "restaurants"].includes(lower[0]) && catchtableSlug(path[1])
+        ? path[1] : undefined;
     case "eztable":
       return path.length === 2 && ["restaurant", "restaurants"].includes(lower[0]) ? venue(1) : undefined;
     case "chope":
@@ -83,7 +89,7 @@ function reservationPlatformUrl(provider: string, value: string | null | undefin
   // Inspect the original authority and path before URL can erase an explicit :443,
   // turn backslashes into slashes, trim controls, or collapse dot segments.
   if (typeof value !== "string" || value.length > 2048 || /[\u0000-\u0020\u007f-\u009f\\]/.test(value)
-    || /%(?![\da-f]{2})|%(?:2f|5c|25)/i.test(value)) return undefined;
+    || /%(?![\da-f]{2})|%(?:2f|5c|2e|25)/i.test(value)) return undefined;
   const definition = reservationPlatformDefinitions.find((item) => item.provider === provider);
   const raw = /^https:\/\/([^/?#]+)(\/[^?#]*)?(?:\?([^#]*))?$/i.exec(value);
   if (!definition || !raw || !definition.hosts.includes(raw[1].toLowerCase())) return undefined;

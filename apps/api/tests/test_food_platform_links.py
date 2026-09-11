@@ -9,7 +9,7 @@ from alembic.migration import MigrationContext
 from alembic.operations import Operations
 from sqlalchemy import inspect, select
 from sqlalchemy.ext.asyncio import create_async_engine
-from test_discovery_flow import seed_reservation_merchant
+from test_discovery_flow import block_detail_provider_clients, seed_reservation_merchant
 from test_travel_discovery import harness as harness
 
 from app.foods.admin_router import (
@@ -26,6 +26,7 @@ from app.foods.platform_links import (
     platform_url_identity,
     platform_url_language,
     serialize_reservation_link,
+    validate_localized_platform_urls,
     validate_platform_url,
 )
 from app.models import (
@@ -82,6 +83,95 @@ def test_country_keeps_recommended_reservation_platform(country: str, provider: 
 )
 def test_exact_merchant_urls_are_accepted(provider: str, url: str) -> None:
     assert validate_platform_url(provider, url) == url
+
+
+@pytest.mark.parametrize("identifier", ["yosukgung.kr", "normal.brunch", "Venue-1.a_b.c2"])
+@pytest.mark.parametrize("route", ["shop", "restaurant", "restaurants"])
+def test_catchtable_accepts_literal_dotted_venue_ids(identifier: str, route: str) -> None:
+    url = f"https://www.catchtable.net/{route}/{identifier}"
+    assert validate_platform_url("catchtable_global", url) == url
+    assert platform_url_identity("catchtable_global", url) == identifier
+    assert platform_url_language("catchtable_global", url) == ""
+
+
+@pytest.mark.parametrize("locale", ["zh-TW", "zh-CN", "en", "ja", "ko"])
+def test_catchtable_dotted_identity_matches_reviewed_locale_aliases(locale: str) -> None:
+    canonical = "https://www.catchtable.net/shop/yosukgung.kr"
+    localized = f"https://catchtable.net/{locale}/restaurants/yosukgung.kr"
+    assert platform_url_identity("catchtable_global", canonical) == platform_url_identity(
+        "catchtable_global", localized
+    )
+    assert validate_localized_platform_urls(
+        "catchtable_global", canonical, {locale: localized}
+    ) == {locale: localized}
+    assert platform_url_language("catchtable_global", localized) == locale
+
+
+@pytest.mark.parametrize("identifier", ["yosukgungkr", "yosukgung-kr", "yosukgung.kr2",
+                                        "yosukgung.kr.branch", "Yosukgung.kr"])
+def test_catchtable_dotted_ids_remain_distinct(identifier: str) -> None:
+    canonical = "https://www.catchtable.net/shop/yosukgung.kr"
+    other = f"https://www.catchtable.net/ja/shop/{identifier}"
+    assert platform_url_identity("catchtable_global", canonical) != platform_url_identity(
+        "catchtable_global", other
+    )
+    with pytest.raises(ValueError, match="different merchant or branch"):
+        validate_localized_platform_urls("catchtable_global", canonical, {"ja": other})
+
+
+@pytest.mark.parametrize("url", [
+    "https://www.catchtable.net/shop/.yosukgung.kr",
+    "https://www.catchtable.net/shop/yosukgung.kr.",
+    "https://www.catchtable.net/shop/yosukgung..kr",
+    "https://www.catchtable.net/shop/yosukgung.-kr",
+    "https://www.catchtable.net/shop/yosukgung._kr",
+    "https://www.catchtable.net/shop/yosukgung%2ekr",
+    "https://www.catchtable.net/shop/yosukgung%2Ekr",
+    "https://www.catchtable.net/shop/yosukgung%252ekr",
+    "https://www.catchtable.net/shop/yosukgung.kr%2fother",
+    "https://www.catchtable.net/shop/yosukgung.kr%5cother",
+    "https://www.catchtable.net/shop/yosukgung.kr%0a",
+    "https://www.catchtable.net/shop/yosukgung.kr%C2%85",
+    "https://www.catchtable.net/shop/yosukgung.kr\\other",
+    "https://www.catchtable.net/shop/yosukgung.kr\n",
+    "https://www.catchtable.net/shop/../yosukgung.kr",
+    "https://www.catchtable.net/shop/yosukgung.kr/../other",
+    "https://www.catchtable.net/shop/%2e%2e/yosukgung.kr",
+    "https://www.catchtable.net/shop/yosukgung.\u212ar",
+    "https://www.catchtable.net/shop/yosukgung.kr?redirect=https://evil.test",
+    "https://www.catchtable.net/shop/yosukgung.kr?language=ja",
+    "https://www.catchtable.net/shop/yosukgung.kr?",
+    "https://www.catchtable.net/shop/yosukgung.kr#other",
+    "http://www.catchtable.net/shop/yosukgung.kr",
+    "https://www.catchtable.net.evil.test/shop/yosukgung.kr",
+    "https://www.catchtable.net@evil.test/shop/yosukgung.kr",
+    "https://user@www.catchtable.net/shop/yosukgung.kr",
+    "https://www.catchtable.net:443/shop/yosukgung.kr",
+    "https://www.catchtable.net./shop/yosukgung.kr",
+    "https://127.0.0.1/shop/yosukgung.kr",
+    "https://localhost/shop/yosukgung.kr",
+])
+def test_catchtable_dotted_ids_preserve_security_guards(url: str) -> None:
+    with pytest.raises(ValueError):
+        validate_platform_url("catchtable_global", url)
+
+
+@pytest.mark.parametrize("provider,url", [
+    ("tablecheck", "https://www.tablecheck.com/en/shops/normal.brunch/reserve"),
+    ("eztable", "https://www.eztable.com/restaurant/normal.brunch"),
+    ("chope", "https://www.chope.co/singapore-restaurants/restaurant/normal.brunch"),
+    ("openrice", "https://www.openrice.com/en/hongkong/r-normal.brunch-r123"),
+    ("hungry_hub", "https://web.hungryhub.com/en/restaurants/normal.brunch/web"),
+    ("pasgo", "https://pasgo.vn/nha-hang/normal.brunch"),
+    ("inline", "https://inline.app/booking/chain:inline-live-3/normal.brunch"),
+    ("maifood", "https://reservation.maifood.com.tw/brand/normal.brunch"),
+    ("sevenrooms", "https://www.sevenrooms.com/reservations/normal.brunch"),
+    ("ikyu", "https://restaurant.ikyu.com/107.953"),
+    ("myconcierge", "https://myconciergejapan.com/restaurants/normal.brunch"),
+])
+def test_dotted_catchtable_ids_do_not_widen_other_providers(provider: str, url: str) -> None:
+    with pytest.raises(ValueError):
+        validate_platform_url(provider, url)
 
 
 @pytest.mark.parametrize(
@@ -264,7 +354,13 @@ def test_invalid_legacy_localized_metadata_falls_back_to_reviewed_canonical() ->
 
 
 @pytest.mark.asyncio
-async def test_platform_save_preserves_merchant_relations_and_other_platform(harness: Any) -> None:
+@pytest.mark.parametrize("provider,url", [
+    ("inline", "https://inline.app/booking/chain:inline-live-3/branch?language=zh-tw"),
+    ("catchtable_global", "https://www.catchtable.net/zh-TW/shop/yosukgung.kr"),
+])
+async def test_platform_save_preserves_merchant_relations_and_other_platform(
+    harness: Any, provider: str, url: str,
+) -> None:
     _, factory, users, _, _ = harness
     _, merchant = await seed_reservation_merchant(factory)
     async with factory() as session:
@@ -290,12 +386,13 @@ async def test_platform_save_preserves_merchant_relations_and_other_platform(har
         created = await update_merchant_platform_link(
             merchant.id,
             MerchantPlatformLinkPayload(
-                provider="inline", status="verified", expected_checked_at=None,
-                canonical_url="https://inline.app/booking/chain:inline-live-3/branch?language=zh-tw",
+                provider=provider, status="verified", expected_checked_at=None,
+                canonical_url=url,
                 review_note="Only this platform changed",
             ), admin, session,
         )
-        assert [item["provider"] for item in created["platform_links"]] == ["inline", "tablecheck"]
+        assert [item["provider"] for item in created["platform_links"]] == [provider, "tablecheck"]
+        assert created["platform_links"][0]["canonical_url"] == url
         assert created["platform_link"]["provider"] == "tablecheck"
         assert created["platform_links"][0]["country_mismatch"] is False
         assert before == [
@@ -309,10 +406,38 @@ async def test_platform_save_preserves_merchant_relations_and_other_platform(har
         )).mappings().one())
         audit = (await session.scalars(select(AdminAuditLog))).one()
         assert audit.actor_user_id == admin.id
-        assert audit.metadata_json["provider"] == "inline"
+        assert audit.metadata_json["provider"] == provider
         refreshed = await get_merchant_platform_links(merchant.id, admin, session)
         assert refreshed["platform_links"] == created["platform_links"]
         assert len(refreshed["available_platforms"]) == 12
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("status", ["verified", "ambiguous", "disabled", "not_found"])
+async def test_dotted_catchtable_public_detail_requires_review_without_network(
+    harness: Any, monkeypatch: pytest.MonkeyPatch, status: str,
+) -> None:
+    client, factory, _, _, _ = harness
+    url = "https://www.catchtable.net/zh-TW/shop/yosukgung.kr"
+    _, merchant = await seed_reservation_merchant(
+        factory, country="KR", city="seoul", provider="catchtable_global",
+        canonical_url=url, status=status,
+    )
+    block_detail_provider_clients(monkeypatch)
+    for locale in ("zh-TW", "zh-CN", "en", "ja", "ko"):
+        response = await client.get(
+            f"/api/v1/discovery/content/merchant/{merchant.id}",
+            headers={"X-Travel-Locale": locale},
+        )
+        assert response.status_code == 200, response.text
+        links = response.json()["detail"]["merchants"][0]["reservation_links"]
+        if status == "verified":
+            assert len(links) == 1
+            assert links[0]["url"] == url  # No invented locale alternate.
+            assert links[0]["language_code"] == "zh-TW"
+        else:
+            assert links == []
+        assert "Private branch audit note" not in response.text
 
 
 @pytest.mark.asyncio

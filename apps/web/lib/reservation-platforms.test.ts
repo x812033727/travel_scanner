@@ -28,6 +28,72 @@ describe("reservation platforms", () => {
     expect(reservationPlatformIdentity(provider, url)).toBeTruthy();
   });
 
+  it.each(["en", "ja", "ko", "zh-TW", "zh-CN"])("preserves dotted Catchtable venue identity in %s", (locale) => {
+    // Format regression fixtures, not approval of unresearched language alternates.
+    const url = `https://www.catchtable.net/${locale}/shop/yosukgung.kr`;
+    expect(reservationPlatformHref("catchtable_global", url)).toBe(url);
+    expect(reservationPlatformIdentity("catchtable_global", url)).toBe("catchtable_global:yosukgung.kr");
+    expect(reservationPlatformIdentity("catchtable_global", url)).toBe(
+      reservationPlatformIdentity("catchtable_global", "https://catchtable.net/restaurants/yosukgung.kr/"),
+    );
+  });
+
+  it.each(["normal.brunch", "venue_1.branch-2.kr"])("accepts Catchtable dot-separated ASCII IDs: %s", (id) => {
+    const url = `https://www.catchtable.net/shop/${id}`;
+    expect(reservationPlatformHref("catchtable_global", url)).toBe(url);
+    expect(reservationPlatformIdentity("catchtable_global", url)).toBe(`catchtable_global:${id}`);
+  });
+
+  it("never drops a Catchtable dotted suffix when comparing branches", () => {
+    const identities = ["yosukgung.kr", "yosukgung.jp", "yosukgung", "yosukgungkr"].map((id) =>
+      reservationPlatformIdentity("catchtable_global", `https://www.catchtable.net/shop/${id}`));
+    expect(identities.every(Boolean)).toBe(true);
+    expect(new Set(identities).size).toBe(4);
+  });
+
+  it.each([
+    ".", "..", ".venue", "venue.", "venue..kr", "venue...kr", "venue._kr", "venue.-kr",
+    "yosukgung%2ekr", "yosukgung%2Ekr", "yosukgung%252ekr", "%2e", ".%2e", "%2e%2e",
+    "yosukgung.kr/..", "yosukgung.kr/../other", "../yosukgung.kr", "yosukgung.kr/.",
+    "yosukgung.kr%2fother", "yosukgung.kr%5cother", "yosukgung.kr\\other",
+    "yosukgung.kr%00", "yosukgung.kr%0a", "yosukgung.kr%7f", "yosukgung．kr", "yosukgung.Kr",
+  ])("rejects unsafe or unsupported dotted Catchtable IDs: %s", (id) => {
+    const url = `https://www.catchtable.net/zh-TW/shop/${id}`;
+    expect(reservationPlatformHref("catchtable_global", url)).toBeUndefined();
+    expect(reservationPlatformIdentity("catchtable_global", url)).toBeUndefined();
+  });
+
+  it.each([
+    "http://www.catchtable.net/zh-TW/shop/yosukgung.kr",
+    "https://www.catchtable.net.evil.test/zh-TW/shop/yosukgung.kr",
+    "https://www.catchtable.net@evil.test/zh-TW/shop/yosukgung.kr",
+    "https://user@www.catchtable.net/zh-TW/shop/yosukgung.kr",
+    "https://www.catchtable.net:443/zh-TW/shop/yosukgung.kr",
+    "https://127.0.0.1/zh-TW/shop/yosukgung.kr",
+    "https://[::1]/zh-TW/shop/yosukgung.kr",
+    "https://www.catchtable.net/zh-TW/shop/yosukgung.kr?redirect=https://evil.test",
+    "https://www.catchtable.net/zh-TW/shop/yosukgung.kr#other",
+  ])("retains authority and redirect guards with dotted IDs: %s", (url) => {
+    expect(reservationPlatformHref("catchtable_global", url)).toBeUndefined();
+    expect(reservationPlatformIdentity("catchtable_global", url)).toBeUndefined();
+  });
+
+  it.each([
+    ["tablecheck", "https://www.tablecheck.com/en/shops/venue.kr/reserve"],
+    ["eztable", "https://www.eztable.com/restaurant/venue.kr"],
+    ["chope", "https://www.chope.co/singapore-restaurants/restaurant/venue.kr"],
+    ["openrice", "https://www.openrice.com/en/hongkong/r-venue.kr-r123"],
+    ["hungry_hub", "https://web.hungryhub.com/en/restaurants/venue.kr"],
+    ["pasgo", "https://pasgo.vn/nha-hang/venue.kr"],
+    ["inline", "https://inline.app/booking/company:live/venue.kr"],
+    ["maifood", "https://reservation.maifood.com.tw/company/venue.kr"],
+    ["sevenrooms", "https://www.sevenrooms.com/reservations/venue.kr"],
+    ["ikyu", "https://restaurant.ikyu.com/123.456"],
+    ["myconcierge", "https://myconciergejapan.com/restaurants/venue.kr"],
+  ])("does not widen %s IDs when allowing Catchtable dots", (provider, url) => {
+    expect(reservationPlatformHref(provider, url)).toBeUndefined();
+  });
+
   it.each([
     ["tablecheck", "https://www.tablecheck.com/shops/sushi-sakai/reserve"],
     ["tablecheck", "https://www.tablecheck.com/zh-TW/sushi-sakai/reserve/message"],
