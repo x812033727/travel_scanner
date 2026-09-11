@@ -157,3 +157,83 @@ def test_botanical_gardens_publish_and_the_measured_floods_stay_with_a_human() -
         assert flooding_type not in ALLOWED_TYPES
         assert flooding_type not in DENIED_TYPES
         assert classify_types({flooding_type}) == ("culture", "pending", "unknown_type")
+
+
+def test_measured_non_attraction_types_are_rejected() -> None:
+    # Measured 2026-09-12 against every approved attraction; see DENIED_TYPES.
+    for noise_type in ("Q9842", "Q56351315", "Q55521176", "Q16917", "Q2175765", "Q687188"):
+        assert classify_types({noise_type})[1] == "rejected", noise_type
+    assert classify_types({"Q245016"})[1] == "rejected"
+    # Each of these also types an approved attraction, so a human still decides.
+    for kept_type in ("Q5358913", "Q285783"):
+        assert classify_types({kept_type}) == ("culture", "pending", "unknown_type"), kept_type
+
+
+@pytest.mark.asyncio
+async def test_denied_type_outside_the_radius_stays_rejected() -> None:
+    # The radius check used to turn a denied candidate back into pending, so a school
+    # just past the edge of a city still reached the review queue.
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.host == "www.wikidata.org":
+            return httpx.Response(
+                200,
+                json={
+                    "entities": {
+                        qid: {
+                            "labels": {"zh-hant": {"value": label}},
+                            "claims": {
+                                "P31": [{"mainsnak": {"datavalue": {"value": {"id": type_id}}}}]
+                            },
+                            "sitelinks": {},
+                        }
+                        for qid, label, type_id in (
+                            ("Q1", "遠方博物館", "Q33506"),
+                            ("Q2", "遠方小學", "Q9842"),
+                        )
+                    }
+                },
+            )
+        if "pageids" in request.url.params:
+            return httpx.Response(
+                200,
+                json={
+                    "query": {
+                        "pages": [
+                            {"pageid": 1, "pageprops": {"wikibase_item": "Q1"}},
+                            {"pageid": 2, "pageprops": {"wikibase_item": "Q2"}},
+                        ]
+                    }
+                },
+            )
+        return httpx.Response(
+            200,
+            json={
+                "query": {
+                    "geosearch": [
+                        {"pageid": 1, "title": "遠方館", "lat": 25.2, "lon": 121.5654},
+                        {"pageid": 2, "title": "遠方小學", "lat": 25.2, "lon": 121.5654},
+                    ]
+                }
+            },
+        )
+
+    city = HotspotCity(
+        "TST",
+        "測試市",
+        "TW",
+        "台灣",
+        "zh.wikipedia.org",
+        10,
+        (DiscoveryCenter(25.033, 121.5654, 10),),
+    )
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as http_client:
+        client = WikimediaDiscoveryClient("test", 1, http_client)
+        candidates = {c.qid: c for c in await client.discover_city(city)}
+    assert (candidates["Q1"].review_status, candidates["Q1"].review_reason) == (
+        "pending",
+        "outside_city_radius",
+    )
+    assert (candidates["Q2"].review_status, candidates["Q2"].review_reason) == (
+        "rejected",
+        "denylisted_type",
+    )
