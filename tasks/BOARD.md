@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**46 open · 2 in progress · 3 blocked · 1 in review · 237 done**
+**46 open · 2 in progress · 3 blocked · 1 in review · 239 done**
 
 ## Ready to claim
 
@@ -83,6 +83,8 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## Recently finished
 
+- 2026-09-11 [CI 拉不到 minio/minio:latest，改用 quay.io 並釘版本](done/2026-09-11-ci-minio-minio-latest-quay-io.md)
+- 2026-09-11 [社群登入按鈕下方說明會取得 Email 與用途（LINE Email 權限申請要附這個畫面）](done/2026-09-11-social-login-email-notice.md)
 - 2026-09-11 [OAuth 回跳導向容器內部位址 0.0.0.0:3000，Google 登入最後必定落在錯誤頁](done/2026-09-11-oauth-redirect-internal-origin.md)
 - 2026-09-11 [Configurable catalog review run call limit](done/2026-09-09-configurable-catalog-review-run-call-limit.md)
 - 2026-09-11 [Compact discovery cards and source-linked details](done/2026-09-09-discovery-card-details.md)
@@ -91,5 +93,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-11 [Hotel operating date guards Rakuten Japan and resilient clickouts](done/2026-09-11-hotel-operation-rakuten-clickout.md)
 - 2026-09-11 [Seoul Day 2 transport settings and readable route details](done/2026-09-10-seoul-day2-transport-ux.md)
 - 2026-09-11 [Complete hotspot review identity and rationale editor](done/2026-09-10-complete-hotspot-review-identity-and-rationale.md)
-- 2026-09-11 [Verify isolated Stay22 Script public browser flow](done/2026-09-09-verify-stay22-script-browser.md)
-- 2026-09-11 [Isolate public Stay22 script document and hotel links](done/2026-09-09-isolate-public-stay22-script.md)
