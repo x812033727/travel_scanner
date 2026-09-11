@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**45 open · 3 in progress · 3 blocked · 21 in review · 213 done**
+**45 open · 4 in progress · 3 blocked · 21 in review · 213 done**
 
 ## Ready to claim
 
@@ -45,6 +45,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- | --- |
 | [Configurable catalog review run call limit](open/2026-09-09-configurable-catalog-review-run-call-limit.md) | codex-catalog-call-limit | 2026-09-09T15:54:14Z | `codex/catalog-review-call-limit` |
 | [全站沒有自訂的找不到頁面](open/2026-09-11-no-custom-not-found-page.md) | claude-opus-5 | 2026-09-11T13:17:20Z | `claude/mokaair-website-access-k7xiku` |
+| [公開美食店家訂位平台連結補齊（查核與批次匯入）](open/2026-09-11-food-reservation-link-backfill.md) | claude-opus-5 | 2026-09-11T16:02:41Z | `claude/food-reservation-link-backfill` |
 | [登入頁的送出鈕在手機上要捲一下才看得到](open/2026-09-11-bottom-nav-covers-page-content.md) | claude-opus-5 | 2026-09-11T14:39:07Z | `claude/mokaair-website-access-k7xiku` |
 
 ## In review

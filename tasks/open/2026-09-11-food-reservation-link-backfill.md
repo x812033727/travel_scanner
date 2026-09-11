@@ -1,0 +1,60 @@
+---
+id: 2026-09-11-food-reservation-link-backfill
+title: 公開美食店家訂位平台連結補齊（查核與批次匯入）
+status: in-progress
+priority: P1
+area: api
+owner: claude-opus-5
+claimed_at: 2026-09-11T16:02:41Z
+created_at: 2026-09-11T15:58:40Z
+completed_at:
+branch: claude/food-reservation-link-backfill
+depends_on: []
+scope:
+  - apps/api/app/foods/platform_review_import.py
+  - apps/api/app/foods/data/platform_reviews
+  - apps/api/app/cli.py
+  - apps/api/tests/test_food_platform_review_import.py
+  - docs/catalog-content-reviews/2026-09-11-reservation-links-full.md
+---
+
+# 公開美食店家訂位平台連結補齊（查核與批次匯入）
+
+## Why
+
+331 間公開美食店家裡，只有 35 間有「查看平台訂位資訊」按鈕。這 35 間是 2026-09-11 有人在後台逐筆存的，另外 296 間從沒查過。
+後台一次只能存一個平台，幾百間店逐筆存不實際；而 `seed-foods` 只新增、不更新，也無法用來補。
+
+## Definition of done
+
+- [ ] 296 間未查核的公開店家都有查核結果：`verified`、`disabled`、`not_found` 或 `ambiguous`，每筆附證據。
+- [ ] 精準分店頁已寫進正式資料庫，前台出現對應按鈕；明寫不收訂位的平台頁不公開。
+- [ ] 後台人工審核過的列一筆都沒被覆寫。
+
+## Steps
+
+- [ ] `apply-food-platform-reviews` 指令與測試：預設試跑、只寫平台列、每列一筆稽核。
+- [ ] 用內建瀏覽器查核（JP／KR+VN／TW+HK+SG+TH 三組平行），結果整理成 `apps/api/app/foods/data/platform_reviews/2026-09-11-public-merchants.json`。
+- [ ] 查核摘要 `docs/catalog-content-reviews/2026-09-11-reservation-links-full.md`。
+- [ ] PR、合併、部署，在 api 容器試跑，確認後 `--apply`。
+
+## How to verify
+
+- `cd apps/api && pytest tests/test_food_platform_review_import.py tests/test_food_platform_links.py`
+- 部署後：`docker compose -f docker-compose.prod.yml exec -T api python -m app.cli apply-food-platform-reviews`（試跑），再加 `--apply`。
+- 公開 API `https://mokaair.com/api/travel/foods/merchants?limit=50` 逐頁統計 `reservation_links`，應等於 verified 的公開店家數。
+
+## Notes
+
+- 接續 `2026-09-11-food-map-reservation-entry` 剩下的店家。那份任務的首批 10 間，後來已由另一個後台帳號在 2026-09-11 09:13–12:56 UTC 逐筆存好（連同其他店共 36 列 verified）。
+- 正式資料庫在 2026-09-11 16:00 UTC 的狀態：
+  - 未審核的 ambiguous 共 166 列，都是 seed 寫的保守結果。
+  - 未審核的 verified 1 列，是 Song Fa 的 seed 列。
+  - 人工審核的 verified 36 列。
+  - 沒有任何人工審核的 not_found 或 ambiguous 列，所以沒有「已查過但查無」的店可以跳過。
+- 使用者決定（2026-09-11）：
+  - 只存現有 12 個平台，Tabelog、Grab Dine Out、Naver 預約等只記在證據裡。
+  - 平台頁明寫不收訂位的，存成 `disabled`，改用店家官網實際連出的平台。
+  - 寫入走批次指令。
+  - 查核先用內建瀏覽器，卡住才改用 Gemini。
+- 帶點的 Catchtable 店家 ID（例如 `yosukgung.kr`）要等 PR #397 合併才能通過驗證，先放在證據裡。
