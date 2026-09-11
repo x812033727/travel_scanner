@@ -98,6 +98,9 @@ type Parsed = {
   pace?: "relaxed" | "balanced" | "packed";
   confidence: number;
   missing_fields: string[];
+  /** False only when a place was named and this site does not search it. */
+  destination_supported?: boolean | null;
+  supported_destinations?: Array<{ code: string; city: string; country_label: string }>;
 };
 
 type Offer = Record<string, unknown> & {
@@ -462,6 +465,10 @@ export function SearchExperience() {
   const tripBlocked =
     Boolean(tripId) &&
     (!tripContext || tripIssues.origin || tripIssues.destinationUnresolved || tripIssues.dates);
+  // The same wall the trip path already has (trip_destination_unsupported), for the
+  // free-text path that had none: an unsupported destination used to be discovered
+  // only after a charged search returned an empty shell.
+  const unsupportedDestination = parsed?.destination_supported === false;
   // A trip search nobody edited sends the trip and nothing else, so the server derives
   // the criteria fresh at request time. Editing them pins them, and pinned flexible
   // dates are a separately priced operation — so read the price off the payload that
@@ -1435,7 +1442,8 @@ export function SearchExperience() {
                     providerStatus?.status !== "ready" ||
                     authState !== "signed_in" ||
                     charge.status !== "ready" ||
-                    tripBlocked
+                    tripBlocked ||
+                    unsupportedDestination
                   }
                   onClick={() => begin()}
                   className="rounded-2xl bg-[var(--teal)] px-6 py-3.5 font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50"
@@ -1451,6 +1459,23 @@ export function SearchExperience() {
                 <AirbnbSearchPanel criteria={airbnbCriteria} compact />
               )}
             </div>
+            {unsupportedDestination && (
+              <section role="status" className="mt-4 rounded-2xl border border-amber-300 bg-amber-50 p-5 text-amber-900">
+                <h2 className="font-bold">{t("unsupportedTitle")}</h2>
+                <p className="mt-2 text-sm leading-6">{t("unsupportedBody")}</p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {(parsed?.supported_destinations || []).map((option) => (
+                    <a
+                      key={option.code}
+                      href={`/${locale}/search/new?destination=${encodeURIComponent(option.code)}`}
+                      className="inline-flex min-h-11 items-center rounded-xl border border-amber-300 bg-white px-3 text-sm font-semibold"
+                    >
+                      {t("unsupportedPick", { city: option.city })}
+                    </a>
+                  ))}
+                </div>
+              </section>
+            )}
             {insufficient && (
               <div className="mt-4">
                 <UsageInsufficientNotice chargeLabel={charge.label} />

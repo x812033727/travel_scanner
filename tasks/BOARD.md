@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**42 open · 1 in progress · 3 blocked · 21 in review · 225 done**
+**41 open · 1 in progress · 3 blocked · 21 in review · 226 done**
 
 ## Ready to claim
 
@@ -18,7 +18,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [Complete live Travelpayouts brand and destination offer verification](open/2026-09-08-travelpayouts-live-destination-activation.md) | ops | `docs/travel-services.md` |
 | P1 | [Prevent Google coordinates being labelled durable by merchant review](open/2026-09-08-prevent-google-coordinates-being-labelled-durable.md) | api | `apps/api/app/foods/coordinate_queue.py`<br>`apps/api/tests/test_food_coordinate_queue.py` |
 | P1 | [Continue evidence-backed remaining hotspot candidate review](open/2026-09-08-continue-evidence-backed-remaining-hotspot-candidate.md) | ops | `docs/hotspot-review-next-batch.md`<br>`ops/hotspot_review_next_batch.py`<br>`ops/hotspot_review_next_batch.json` |
-| P1 | [規格書明定為必要的目的地支援閘門從未實作](open/2026-09-11-destination-supported-gate-missing.md) | web | `apps/api/app/ai/parser.py`<br>`apps/web/components/trip-brief-composer.tsx`<br>`apps/web/components/brief-confirm-panel.tsx`<br>`docs/planning-flow-spec.md` |
 | P2 | [防 jsonb 運算子的測試只守住 3 張表，實際有 42 張](open/2026-09-07-jsonb-3-42.md) | api | `apps/api/tests/test_migration_sql_dialect.py` |
 | P2 | [30 筆新購物店家還沒 place enrichment，所以加不進行程](open/2026-09-07-enrich-new-shopping-place-ids.md) | api | `ops/notes/hotspot-place-enrichment.md` |
 | P2 | [Verify the two reported hotels exact Booking links](open/2026-09-09-verify-reported-hotels-booking-links.md) | ops | `docs/reported-hotels-booking-review.md` |
@@ -98,6 +97,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## Recently finished
 
+- 2026-09-11 [規格書明定為必要的目的地支援閘門從未實作](done/2026-09-11-destination-supported-gate-missing.md)
 - 2026-09-11 [行程規劃器在手機沒有全域導覽且離線頁無入口](done/2026-09-11-planner-mobile-navigation-and-offline.md)
 - 2026-09-11 [後台九張表格在手機無法閱讀](done/2026-09-11-admin-tables-unusable-on-phone.md)
 - 2026-09-11 [路線地圖在手機吃掉頁面捲動且對輔助科技隱形](done/2026-09-11-route-map-mobile-and-a11y.md)
@@ -107,4 +107,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-11 [合作平台面板繁中且漏用在地化佣金揭露](done/2026-09-11-affiliate-panel-i18n-and-disclosure.md)
 - 2026-09-11 [行程時間軸硬編碼繁中而它正是分享頁的主體](done/2026-09-11-itinerary-timeline-hardcoded-zh-tw.md)
 - 2026-09-11 [全站沒有自訂的找不到頁面](done/2026-09-11-no-custom-not-found-page.md)
-- 2026-09-11 [機票與飯店結果卡硬編碼繁中](done/2026-09-11-offer-cards-hardcoded-zh-tw.md)
