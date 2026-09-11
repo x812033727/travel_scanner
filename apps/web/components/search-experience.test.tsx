@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { SearchExperience } from "./search-experience";
 
@@ -345,6 +345,39 @@ describe("SearchExperience", () => {
     // Cancelling clears the accepted search, so the start button comes back.
     expect(await screen.findByRole("button", { name: /^確認條件並開始搜尋 · / })).toBeTruthy();
     expect(screen.queryByRole("button", { name: "取消搜尋" })).toBeNull();
+
+    // Closing the stream tells the server nothing: without this the reserved use stays
+    // held for a search the member walked away from.
+    await waitFor(() => expect(vi.mocked(fetch).mock.calls.some(
+      ([url, init]) => String(url).endsWith("/searches/search-1/cancel") && init?.method === "POST",
+    )).toBe(true));
+
+    // Pressing it again must not ask a second time; there is nothing left to hand back.
+    const releases = () => vi.mocked(fetch).mock.calls.filter(
+      ([url]) => String(url).endsWith("/searches/search-1/cancel"),
+    ).length;
+    expect(releases()).toBe(1);
+  });
+
+  it("hands the reserved use back when the wait times out, not only when it is cancelled", async () => {
+    vi.useFakeTimers({ shouldAdvanceTime: true });
+    try {
+      location.search = criteria;
+      vi.stubGlobal("fetch", stubApi({ signedIn: true }));
+      render(<SearchExperience />);
+
+      fireEvent.click(await screen.findByRole("button", { name: /^確認條件並開始搜尋 · / }));
+      await screen.findByRole("button", { name: "取消搜尋" });
+      // The deadline fires from a closure created before the search existed, so it has to
+      // read the search id from somewhere other than the state it captured.
+      await act(async () => { await vi.advanceTimersByTimeAsync(150_000); });
+
+      await waitFor(() => expect(vi.mocked(fetch).mock.calls.some(
+        ([url, init]) => String(url).endsWith("/searches/search-1/cancel") && init?.method === "POST",
+      )).toBe(true));
+    } finally {
+      vi.useRealTimers();
+    }
   });
 
   it("starts the search once when a member returns with the resume marker, then drops it from the URL", async () => {

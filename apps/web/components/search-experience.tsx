@@ -557,6 +557,8 @@ export function SearchExperience() {
   // same search down exactly once.
   const liveStream = useRef<EventSource>(null);
   const deadline = useRef<ReturnType<typeof setTimeout>>(null);
+  // The search whose reserved use is still held, for the paths that have to hand it back.
+  const pending = useRef<string>(undefined);
   const lastRun = useRef<{ dates: string[]; flexDays: 0 | 3 | 7 }>(null);
   const [finished, setFinished] = useState(false);
 
@@ -711,8 +713,27 @@ export function SearchExperience() {
     deadline.current = null;
   }
 
+  /**
+   * Give the reserved use back for a search nobody is waiting for any more.
+   *
+   * Closing the stream tells the server nothing: the job keeps running and the use stays
+   * held until something settles it. Every operation costs zero uses today, but that is a
+   * setting, not a promise — the day it is not zero, a cancelled search would quietly cost
+   * a use for an answer the reader never saw.
+   *
+   * Held in a ref rather than read from `searchId`, because the timeout below fires from a
+   * closure created before the search existed. Failures are swallowed on purpose: the
+   * reader has already left this search behind, and the endpoint is safe to call again.
+   */
+  function releaseSearch() {
+    const id = pending.current;
+    pending.current = undefined;
+    if (id) void api(`/searches/${id}/cancel`, { method: "POST" }).catch(() => undefined);
+  }
+
   function cancelSearch() {
     stopSearch();
+    releaseSearch();
     setBusy(false);
     setFinished(false);
     setSearchId(undefined);
@@ -738,6 +759,7 @@ export function SearchExperience() {
     // search can sit at 40% for as long as the tab stays open.
     deadline.current = setTimeout(() => {
       stopSearch();
+      releaseSearch();
       setBusy(false);
       setFinished(true);
       setError(t("searchTimedOut"));
@@ -799,6 +821,7 @@ export function SearchExperience() {
         },
       );
       setSearchId(accepted.search_id);
+      pending.current = accepted.search_id;
       setUsageState(accepted.usage);
       const stream = new EventSource(
         `/api/travel/searches/${accepted.search_id}/events`,
@@ -849,6 +872,7 @@ export function SearchExperience() {
         setBusy(false);
         setFinished(true);
         stopSearch();
+        pending.current = undefined;
         trackAnalytics("search_completed");
         await loadFinal(accepted.search_id).catch(() => undefined);
       });
@@ -859,6 +883,7 @@ export function SearchExperience() {
         setBusy(false);
         setFinished(true);
         stopSearch();
+        pending.current = undefined;
         await loadFinal(accepted.search_id).catch(() => undefined);
       });
       stream.onerror = () => {
@@ -870,6 +895,9 @@ export function SearchExperience() {
           setBusy(false);
           setFinished(true);
           stopSearch();
+          // The server settles the reservation when the job ends; loadFinal below reads
+          // whatever it decided. Dropping the stream is not the reader giving up.
+          pending.current = undefined;
           void loadFinal(accepted.search_id).catch(() => undefined);
           return;
         }

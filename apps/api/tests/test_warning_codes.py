@@ -83,8 +83,9 @@ def test_no_new_warning_is_written_as_a_finished_sentence() -> None:
                 found.add((str(path), number, line.strip()))
 
     unexpected = [row for row in sorted(found) if row[0] not in {path for path, _ in allowed}]
-    assert not unexpected, "warnings must be codes; write them with app.warnings.warning_code:\n" + "\n".join(
-        f"  {path}:{number}: {text}" for path, number, text in unexpected
+    listed = "\n".join(f"  {path}:{number}: {text}" for path, number, text in unexpected)
+    assert not unexpected, (
+        f"warnings must be codes; write them with app.warnings.warning_code:\n{listed}"
     )
     # And the exceptions are still only the three that were argued for.
     assert {path for path, _, _ in found} == {path for path, _ in allowed}

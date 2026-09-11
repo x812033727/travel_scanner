@@ -236,6 +236,114 @@ async def test_registration_and_concurrent_idempotent_reservation() -> None:
 
 
 @pytest.mark.asyncio(loop_scope="module")
+async def test_cancelling_a_search_hands_the_reserved_use_back_exactly_once() -> None:
+    """The cancel button and the 150s timeout both call this, and a retry of either may too.
+
+    Charging someone for an answer they were never shown is the kind of quota error that
+    costs trust directly, so the reservation goes back. The endpoint has to survive being
+    called twice, and has to lose gracefully to the worker when the two land together.
+    """
+    email = f"cancel-search-{uuid4()}@example.com"
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        registered = await client.post(
+            "/api/v1/auth/register",
+            json={"email": email, "password": "integration-password-123"},
+        )
+        token = registered.json()["access_token"]
+        auth = {"Authorization": f"Bearer {token}"}
+        payload = {
+            "trip_type": "round_trip",
+            "origin": "TPE",
+            "destination": "NRT",
+            "departure_date": "2026-11-10",
+            "return_date": "2026-11-15",
+            "travelers": {"adults": 1, "children": 0},
+            "modules": ["flight"],
+            "preferences": {},
+        }
+        accepted = await client.post(
+            "/api/v1/searches",
+            json=payload,
+            headers={**auth, "Idempotency-Key": f"cancel-{uuid4()}"},
+        )
+        assert accepted.status_code == 202
+        search_id = accepted.json()["search_id"]
+        assert accepted.json()["usage"]["status"] == "reserved"
+        held = await client.get("/api/v1/usage", headers=auth)
+        assert held.json()["reserved_uses"] == 1
+
+        cancelled = await client.post(f"/api/v1/searches/{search_id}/cancel", headers=auth)
+        assert cancelled.status_code == 200
+        assert cancelled.json()["usage"]["status"] == "released"
+        after = await client.get("/api/v1/usage", headers=auth)
+        assert after.json()["reserved_uses"] == 0
+        assert after.json()["available_uses"] == held.json()["available_uses"] + 1
+
+        # Twice, and concurrently: neither may give the use back a second time.
+        again, and_again = await asyncio.gather(
+            client.post(f"/api/v1/searches/{search_id}/cancel", headers=auth),
+            client.post(f"/api/v1/searches/{search_id}/cancel", headers=auth),
+        )
+        assert again.status_code == and_again.status_code == 200
+        settled = await client.get("/api/v1/usage", headers=auth)
+        assert settled.json() == after.json()
+
+        # Somebody else's search is not theirs to cancel, and does not tell them it exists.
+        other = await client.post(
+            "/api/v1/auth/register",
+            json={
+                "email": f"cancel-other-{uuid4()}@example.com",
+                "password": "integration-password-123",
+            },
+        )
+        denied = await client.post(
+            f"/api/v1/searches/{search_id}/cancel",
+            headers={"Authorization": f"Bearer {other.json()['access_token']}"},
+        )
+        assert denied.status_code == 404
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_cancelling_after_the_worker_charged_does_not_undo_the_charge() -> None:
+    email = f"cancel-late-{uuid4()}@example.com"
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        registered = await client.post(
+            "/api/v1/auth/register",
+            json={"email": email, "password": "integration-password-123"},
+        )
+        token = registered.json()["access_token"]
+        auth = {"Authorization": f"Bearer {token}"}
+        accepted = await client.post(
+            "/api/v1/searches",
+            json={
+                "trip_type": "one_way",
+                "origin": "TPE",
+                "destination": "KIX",
+                "departure_date": "2026-11-10",
+                "travelers": {"adults": 1, "children": 0},
+                "modules": ["flight"],
+                "preferences": {},
+            },
+            headers={**auth, "Idempotency-Key": f"cancel-late-{uuid4()}"},
+        )
+        search_id = accepted.json()["search_id"]
+        async with SessionFactory() as session:
+            reservation = await session.scalar(
+                select(UsageReservation).where(UsageReservation.resource_id == UUID(search_id))
+            )
+            assert reservation is not None
+            await commit_reservation(session, reservation, UUID(search_id))
+            await session.commit()
+        charged = await client.get("/api/v1/usage", headers=auth)
+
+        late = await client.post(f"/api/v1/searches/{search_id}/cancel", headers=auth)
+        assert late.status_code == 200
+        assert late.json()["usage"]["status"] == "charged"
+        assert (await client.get("/api/v1/usage", headers=auth)).json() == charged.json()
+
+@pytest.mark.asyncio(loop_scope="module")
 async def test_account_locale_is_persisted_and_can_be_updated() -> None:
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as client:
