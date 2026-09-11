@@ -1,7 +1,7 @@
 ---
 id: 2026-09-11-discovery-saved-count-ranking
 title: 探索卡顯示累積蒐藏數與蒐藏數排行分頁
-status: in-progress
+status: review
 priority: P2
 area: web
 owner: claude-opus-5
@@ -30,6 +30,7 @@ scope:
   - apps/api/tests/test_travel_discovery.py
   - apps/api/tests/test_collection_item_lookup_migration.py
 ---
+
 # 探索卡顯示累積蒐藏數與蒐藏數排行分頁
 
 ## Why
@@ -78,4 +79,6 @@ cd apps/api && uv run ruff check . && uv run mypy app && uv run pytest
 - `check-i18n` 的漢字守衛連**程式註解**也算，第一次把「次收藏」寫進 `card.tsx` 的註解就被擋下；註解也要避開中文。
 - 已驗：`lint:web`、`check:i18n`（含 staged 後的漢字守衛）、`typecheck:web`、`test:web`（216 檔 1996 測試）、`test:tools`、`check:tasks`、`ruff check .`、`mypy app`（303 檔）、`pytest`（3036 passed / 161 skipped）、`alembic heads` = `0071_collection_item_lookup`。
 - `alembic upgrade head` 無法在 SQLite 跑完整條鏈（舊的 `usage_ledger ALTER COLUMN ... SET NOT NULL` 是 PostgreSQL 專用），與本次修改無關；0071 由 `tests/test_collection_item_lookup_migration.py` 以新舊兩種起始狀態驗證。
-- 尚未開 PR；分支 `claude/planning-card-collection-count-pdbiwg` 已推送。
+- PR: https://github.com/x812033727/travel_scanner/pull/393 （in review，尚未合併或部署）。
+- 開 PR 前先併入 `main`（#392 訂位平台），`tasks/BOARD.md` 衝突照 `AGENTS.md` 規則 2 用 `npm run tasks:board` 重新產生。合併後重跑全部檢查：web 218 檔 2134 測試、API 3133 passed / 165 skipped，其餘全過。
+- 本機跑 `CI=1 npm run check:i18n` 會誤報 `reservation-platforms.ts` 的「一休」：本機 merge commit 的 `HEAD^` 是本功能 commit，而 CI 在 PR merge ref 上的 `HEAD^` 是 base，兩者父節點順序相反。以 `origin/main...HEAD` 重跑同一套守衛邏輯為 PASS。
