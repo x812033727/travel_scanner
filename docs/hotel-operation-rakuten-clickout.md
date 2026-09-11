@@ -109,14 +109,18 @@ without a new-tab issue retain the original workflow.
 
 ## Validation and production follow-up
 
-Local progress (2026-09-11, before PR): API full suite 2,955 passed / 161 skipped;
+Local results (2026-09-11, PR #389): API full suite 2,955 passed / 161 skipped;
 subsequent final hotel-boundary regression 273 passed / 2 skipped. Full API Ruff
 and Mypy (303 files), Web lint/typecheck/i18n, 27 tool tests and the final
-production build including the independent hotel route pass. The local full
-single-worker Web suite is still running; it has reported failures in unchanged
-new-trip-form and destination landing tests. Do not count that run as green.
-Both booking browser suites are running against local fixtures. Final PR CI is
-required for PostgreSQL, containers and full-stack evidence.
+production build including the independent hotel route pass. The first full
+single-worker Web run finished with 1,918 passed, three timeouts in unchanged
+new-trip-form / destination landing tests and one admin-test worker-start
+timeout. Isolated reruns of all three affected files passed (48 tests); this is
+not a claim that the original full run was green. Both booking browser suites
+passed all 60 desktop/mobile tests against local fixtures, including same-tab
+POST and SDK-document isolation with Discovery disabled. Final-head PR CI is
+required for PostgreSQL, the full Web suite, containers and full-stack evidence;
+its live checks are the release gate, not these local rerun results.
 
 - API: `uv run ruff check .`, `uv run mypy app`, `uv run pytest -q`.
 - Web: lint, typecheck, i18n, single-worker Vitest, production build.

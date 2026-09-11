@@ -67,8 +67,8 @@ production button did not produce an observable new tab in the in-app browser.
 - [x] Start from freshly fetched main d0ec33ee in an isolated worktree and release verified merged task claims.
 - [x] Implement backend guards and Japanese-market identity checks in separate scopes.
 - [x] Add five-language admin/public controls, native fallback and typed error recovery.
-- [ ] Verify browser privacy boundaries, run suites and document any unavailable local integration services.
-- [ ] Push exact tested head and create PR, leaving merge/deploy for explicit authorization.
+- [x] Verify browser privacy boundaries, run suites and document any unavailable local integration services.
+- [x] Push tested implementation and create PR, leaving merge/deploy for explicit authorization.
 
 ## How to verify
 
@@ -97,3 +97,10 @@ stays outside script conversion.
 
 Local Docker command is unavailable. Never report skipped PostgreSQL/container
 checks as passed; obtain those results from PR CI. No production data modified.
+
+PR: https://github.com/x812033727/travel_scanner/pull/389 (draft until final-head
+CI passes). Local browser tests: 60 passed, desktop and mobile. Full API: 2,955
+passed / 161 skipped; final focused boundary tests: 273 passed / 2 skipped.
+First full Web run had three test timeouts and one worker-start timeout; all
+three affected files subsequently passed separately (48 tests). Full Web CI,
+PostgreSQL integration, containers and full-stack smoke remain release gates.
