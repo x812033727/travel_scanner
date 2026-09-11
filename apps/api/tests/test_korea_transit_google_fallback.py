@@ -342,7 +342,11 @@ async def test_korean_google_far_future_routes_remain_same_weekday_reference_pre
     assert segment is not None
     assert segment.schedule_mode == "preview"
     assert segment.requested_departure_time == requested
-    assert segment.warnings and any("相同星期" in warning for warning in segment.warnings)
+    assert segment.warnings and {
+        "transit_daytime_schedule_fallback",
+        "transit_near_term_schedule_fallback",
+        "transit_beyond_timetable_preview",
+    } & set(segment.warnings)
     assert len(requests) == 1
     effective = datetime.fromisoformat(requests[0]["departureTime"]).astimezone(now.tzinfo)
     assert now < effective < now + timedelta(days=8)

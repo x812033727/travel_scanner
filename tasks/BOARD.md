@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**44 open · 2 in progress · 3 blocked · 21 in review · 218 done**
+**44 open · 2 in progress · 3 blocked · 21 in review · 220 done**
 
 ## Ready to claim
 
@@ -83,12 +83,12 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [Mokaair community responsive web and five-language experience](open/2026-09-07-mokaair-community-web.md) | active work in the same scope |
 | P1 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | active work in the same scope |
 | P1 | [首頁與 explore 要在伺服器端渲染出真正的內容](open/2026-09-10-seo-server-render-home-and-explore.md) | depends on 2026-09-09-frontend-flow-discovery-web, 2026-09-09-discovery-card-details, 2026-09-10-seo-structured-data |
-| P1 | [後端回傳的繁中警告句被原樣顯示在所有語系](open/2026-09-11-api-warnings-leak-zh-tw.md) | active work in the same scope |
-| P1 | [合作平台面板繁中且漏用在地化佣金揭露](open/2026-09-11-affiliate-panel-i18n-and-disclosure.md) | active work in the same scope |
 | P1 | [後台九張表格在手機無法閱讀](open/2026-09-11-admin-tables-unusable-on-phone.md) | active work in the same scope |
 | P1 | [刪除行程項目沒有確認而且復原視窗短於自動儲存](open/2026-09-11-itinerary-item-delete-no-confirm.md) | active work in the same scope |
 | P1 | [路線地圖在手機吃掉頁面捲動且對輔助科技隱形](open/2026-09-11-route-map-mobile-and-a11y.md) | active work in the same scope |
 | P1 | [航班錨點卡與路線卡仍是硬編碼繁中](open/2026-09-11-anchor-and-route-cards-hardcoded-zh.md) | active work in the same scope |
+| P1 | [後端仍有二十餘處警告字串是寫死的繁中](open/2026-09-11-remaining-api-warning-literals.md) | active work in the same scope |
+| P1 | [trip-editor 的關閉守門測試會隨檔案順序變紅](open/2026-09-11-trip-editor-close-guard-order-dependence.md) | active work in the same scope |
 | P2 | [Community read metric duplicate observed alongside smoke ECONNRESET](open/2026-09-07-community-read-metric-concurrency.md) | active work in the same scope |
 | P2 | [Preserve force refresh in daily route background jobs](open/2026-09-10-daily-route-force-refresh.md) | active work in the same scope |
 | P2 | [彈層原語未統一與可及性收尾](open/2026-09-11-dialog-primitives-and-a11y-cleanup.md) | active work in the same scope |
@@ -101,6 +101,8 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## Recently finished
 
+- 2026-09-11 [後端回傳的繁中警告句被原樣顯示在所有語系](done/2026-09-11-api-warnings-leak-zh-tw.md)
+- 2026-09-11 [合作平台面板繁中且漏用在地化佣金揭露](done/2026-09-11-affiliate-panel-i18n-and-disclosure.md)
 - 2026-09-11 [行程時間軸硬編碼繁中而它正是分享頁的主體](done/2026-09-11-itinerary-timeline-hardcoded-zh-tw.md)
 - 2026-09-11 [全站沒有自訂的找不到頁面](done/2026-09-11-no-custom-not-found-page.md)
 - 2026-09-11 [機票與飯店結果卡硬編碼繁中](done/2026-09-11-offer-cards-hardcoded-zh-tw.md)
@@ -109,5 +111,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-11 [登入入口只存在於我的頁底部且未登入者毫無說明](done/2026-09-11-no-sign-in-entry-in-discovery.md)
 - 2026-09-11 [次數用完後被導去已關閉的方案頁形成死路](done/2026-09-11-usage-exhausted-dead-end.md)
 - 2026-09-11 [搜尋結果頁的零結果失敗與無逾時三個死路](done/2026-09-11-search-result-dead-ends.md)
-- 2026-09-11 [推薦流印出原始 HTML 標籤](done/2026-09-11-discovery-feed-html-and-language-mix.md)
-- 2026-09-11 [頁尾五個連結全站每頁都只有十六像素高](done/2026-09-11-footer-links-sixteen-px-tall.md)

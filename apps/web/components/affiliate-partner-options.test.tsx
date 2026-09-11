@@ -23,11 +23,13 @@ describe("AffiliatePartnerOptions", () => {
 
     render(<AffiliatePartnerOptions searchId="search-1" modules={["hotel"]} />);
 
-    const section = await screen.findByRole("region", { name: "合作平台" });
+    // The heading now defaults to the catalog title rather than a Chinese literal.
+    const section = await screen.findByRole("region", { name: "旅行服務" });
     expect(within(section).getByRole("button", { name: /Booking.com/ })).toBeTruthy();
     expect(within(section).getByRole("button", { name: /Agoda/ })).toBeTruthy();
     expect(within(section).getByText(/本站可能獲得分潤/)).toBeTruthy();
     expect(within(section).getByText(/不扣使用次數/)).toBeTruthy();
+    expect(within(section).getByText("住宿")).toBeTruthy();
     const forms = section.querySelectorAll("form");
     expect(forms[0].getAttribute("method")).toBe("post");
     expect(forms[0].getAttribute("target")).toBe("_blank");
@@ -41,6 +43,6 @@ describe("AffiliatePartnerOptions", () => {
     })));
     render(<AffiliatePartnerOptions tripId="trip-1" modules={["connectivity"]} />);
     await waitFor(() => expect(fetch).toHaveBeenCalledTimes(1));
-    expect(screen.queryByRole("region", { name: "合作平台" })).toBeNull();
+    expect(screen.queryByRole("region", { name: "旅行服務" })).toBeNull();
   });
 });

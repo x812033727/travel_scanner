@@ -18,7 +18,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
 from app.affiliates.registry import PARTNERS_BY_CODE
-from app.affiliates.router import DISCLOSURE
+from app.affiliates.router import DISCLOSURES
 from app.affiliates.service import (
     AffiliateContext,
     _with_query,
@@ -488,7 +488,9 @@ async def stay_area_hotels(
         "hotels": [],
         "nearby": [],
         "area_partners": stay_partner_options(settings, area_label, None),
-        "disclosure": DISCLOSURE,
+        # DISCLOSURE is the zh-TW string; the map is keyed by the request locale.
+        # A commission disclosure the reader cannot read is not a disclosure.
+        "disclosure": DISCLOSURES[locale],
     }
     if dates.status != "ready":
         return {

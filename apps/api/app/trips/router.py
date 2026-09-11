@@ -3149,14 +3149,14 @@ async def get_trip_weather(
         and trip.end_date
     ):
         if trip.end_date < weather.available_start_date:
-            warnings.append("旅程日期已過，天氣服務不提供這段期間的歷史預報")
+            warnings.append("weather_trip_past")
         elif trip.start_date > weather.available_end_date:
-            warnings.append("旅程日期超出目前 10 日預報範圍")
+            warnings.append("weather_beyond_forecast")
         elif (
             trip.start_date < weather.available_start_date
             or trip.end_date > weather.available_end_date
         ):
-            warnings.append("目前只能顯示旅程中落在 10 日預報範圍內的日期")
+            warnings.append("weather_partial_forecast")
     return weather.model_copy(update={"warnings": list(dict.fromkeys(warnings))})
 
 

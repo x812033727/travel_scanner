@@ -108,6 +108,7 @@ describe("readonly itinerary timeline", () => {
   });
 });
 
+
 /**
  * The timeline is the whole reason a share link gets opened, and the recipient may
  * read no Chinese at all. activeLocale() reads the document language, so this suite

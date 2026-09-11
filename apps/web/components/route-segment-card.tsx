@@ -17,6 +17,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { safeExternalHref } from "@/lib/navigation";
 import { formatTime, type RouteSegment, type TravelMode } from "@/lib/trip-types";
+import { translateWarnings } from "@/lib/warnings";
 
 type Translator = ReturnType<typeof useTranslations>;
 
@@ -37,6 +38,22 @@ function stepIcon(mode: string) {
   if (mode === "DRIVE") return CarFront;
   return Footprints;
 }
+
+// The API sends a code, not a sentence, so the reader's own catalog can say it.
+const KNOWN_WARNINGS = new Set([
+  "walk_route_beta",
+  "transit_preference_fallback",
+  "transit_current_schedule_fallback",
+  "transit_daytime_schedule_fallback",
+  "transit_near_term_schedule_fallback",
+  "coordinate_fallback",
+  "fixed_booking_late",
+  "transit_beyond_timetable_preview",
+  "transit_past_timetable_preview",
+  "naver_drive_current_traffic",
+  "average_wait_time",
+  "route_refresh_failed",
+]);
 
 export function RouteSegmentCard({
   segment,
@@ -85,7 +102,7 @@ export function RouteSegmentCard({
     <div className="route-time-grid mt-4" aria-label={t("timesLabel")}><div><span>{t(sourced ? "departs" : "transportUx.reservedDeparture")}</span><strong>{formatTime(segment.departure_time, undefined, timezone)}</strong></div><Route size={18} aria-hidden="true" /><div><span>{t(sourced ? "arrives" : "transportUx.reservedArrival")}</span><strong>{formatTime(segment.arrival_time, undefined, timezone)}</strong></div><div className="route-buffer-summary"><span>{t("bufferLabel")}</span><strong>{t("bufferMinutes", { minutes: segment.buffer_minutes || 0 })}</strong></div><div className="route-ready-summary"><span>{t("nextCanStart")}</span><strong>{formatTime(segment.ready_time, undefined, timezone)}</strong></div></div>
 
     {hasConflict && <p className="mt-3 flex items-start gap-2 rounded-xl bg-red-50 px-3 py-2.5 text-sm font-semibold text-red-800"><TriangleAlert size={17} className="mt-0.5 shrink-0" />{t("conflictWarning")}</p>}
-    {segment.warnings.map((warning) => <p key={warning} className="mt-2 rounded-xl bg-amber-50 px-3 py-2 text-xs leading-5 text-amber-900">{warning}</p>)}
+    {translateWarnings(segment.warnings, KNOWN_WARNINGS, t).map((warning) => <p key={warning} className="mt-2 rounded-xl bg-amber-50 px-3 py-2 text-xs leading-5 text-amber-900">{warning}</p>)}
 
     {expanded && <div className="mt-4 space-y-4 border-t border-[var(--line)] pt-4">
       <ol className="route-step-list" aria-label={t("stepsLabel")}>{steps.map((step, index) => { const StepIcon = stepIcon(step.travel_mode); const lineColor = step.line_color && /^#[0-9a-f]{6}$/i.test(step.line_color) ? step.line_color : "#177c78"; return <li key={`${step.instruction}-${index}`} className="route-step-item"><span className="route-step-marker"><StepIcon size={15} /></span><div className="min-w-0 pb-4"><div className="flex flex-wrap items-start justify-between gap-2"><p className="font-semibold leading-5">{step.instruction}</p>{(step.duration_minutes || step.distance_meters) && <span className="shrink-0 text-xs text-[var(--muted)]">{step.duration_minutes ? t("metricMinutes", { minutes: step.duration_minutes }) : ""}{step.duration_minutes && step.distance_meters ? " · " : ""}{distanceLabel(t, step.distance_meters)}</span>}</div>{step.line_name && <p className="mt-2 flex items-center gap-2 text-xs font-bold"><span aria-hidden="true" className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: lineColor }} />{step.line_short_name || step.line_name}</p>}{(step.departure_time || step.arrival_time) && <p className="mt-1 text-xs font-semibold text-[var(--teal)]">{formatTime(step.departure_time, undefined, timezone)} → {formatTime(step.arrival_time, undefined, timezone)}</p>}{step.travel_mode === "WALK" && <p className="mt-1 text-xs font-semibold">{t("modeWalk")}</p>}{step.travel_mode === "TRANSIT" && step.departure_stop && <p className="mt-1 text-sm font-semibold">{t(steps.slice(0, index).some((previous) => previous.travel_mode === "TRANSIT") ? "transportUx.transferAt" : "transportUx.boardAt", { stop: step.departure_stop })}</p>}{step.travel_mode === "TRANSIT" && step.arrival_stop && <p className="mt-1 text-sm font-semibold">{t("transportUx.alightAt", { stop: step.arrival_stop })}</p>}{(step.headsign || step.stop_count) && <p className="mt-1 text-xs text-[var(--muted)]">{step.headsign ? t("towards", { headsign: step.headsign }) : ""}{step.stop_count ? ` · ${t("stopCount", { count: step.stop_count })}` : ""}</p>}<div className="mt-2 flex flex-wrap gap-1.5 text-xs font-semibold">{step.platform && <span className="rounded-full bg-violet-50 px-2 py-1 text-violet-800">{t("platform", { value: step.platform })}</span>}{step.exit_name && <span className="rounded-full bg-emerald-50 px-2 py-1 text-emerald-800">{t("exit", { value: step.exit_name })}</span>}{step.recommended_car && <span className="rounded-full bg-orange-50 px-2 py-1 text-orange-800">{t("car", { value: step.recommended_car })}</span>}</div></div></li>; })}</ol>

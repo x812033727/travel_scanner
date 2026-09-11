@@ -63,6 +63,7 @@ import {
   type CriteriaUpdate,
 } from "@/components/search-criteria-editor";
 import { featureEnabled } from "@/lib/site-features";
+import { translateWarnings } from "@/lib/warnings";
 
 type Parsed = {
   origin?: string;
@@ -305,6 +306,16 @@ const TRIP_DATE_ISSUES = ["trip_dates_required", "trip_dates_past", "trip_dates_
 
 // The server's job times out at 120s; allow a margin for the final events to land.
 const SEARCH_TIMEOUT_MS = 150_000;
+
+// The search API sends warning codes; route-segment-card carries the same pattern
+// and the reason. Unknown codes render nothing rather than their raw name.
+const KNOWN_WARNINGS = new Set([
+  "emissions_unavailable",
+  "flight_status_unavailable",
+  "flex_pricing_unavailable",
+  "flex_pricing_unsupported",
+  "search_system_error",
+]);
 
 export function SearchExperience() {
   const params = useSearchParams();
@@ -632,7 +643,9 @@ export function SearchExperience() {
     if (result.result?.modules) setOffers(result.result.modules);
     if (result.result?.plans) setPlans(result.result.plans);
     setFlightDateOptions(result.result?.flight_date_options || []);
-    setWarnings(result.warnings || []);
+    // The API's warnings are codes; everything already in this state is a sentence
+    // this component produced, so they are turned into sentences on the way in.
+    setWarnings(translateWarnings(result.warnings, KNOWN_WARNINGS, t));
     if (result.usage) setUsageState(result.usage);
   }
 

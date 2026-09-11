@@ -626,7 +626,16 @@
     "forecastLabel": "10日間予報",
     "sourceLine": "出典：{attribution} · {freshness}",
     "cached": "キャッシュ",
-    "fresh": "更新したばかり"
+    "fresh": "更新したばかり",
+    "warning": {
+      "weather_trip_past": "旅行の日程が過去のため、天気サービスはこの期間の過去予報を提供していません。",
+      "weather_beyond_forecast": "旅行の日程が現在の 10 日間予報の範囲を超えています。",
+      "weather_partial_forecast": "10 日間予報の範囲に入っている日程のみ表示できます。",
+      "weather_current_incomplete": "現在の天気データが不完全です。",
+      "weather_current_unavailable": "現在の天気を一時的に取得できません。",
+      "weather_daily_incomplete": "日ごとの予報データの一部が不完全です。",
+      "weather_daily_unavailable": "10 日間予報を一時的に取得できません。"
+    }
   },
   "print": {
     "eyebrow": "旅程表",
@@ -888,7 +897,21 @@
     "externalCannotApply": "外部ナビは適用できません",
     "fetchingShort": "取得中…",
     "fetchRoute": "経路を取得",
-    "readyAt": "{time} から次の地点へ"
+    "readyAt": "{time} から次の地点へ",
+    "warning": {
+      "walk_route_beta": "徒歩ルートはベータ版です。現地の道路状況と安全を確認してご利用ください。",
+      "transit_preference_fallback": "希望条件では結果が出なかったため、通常の公共交通ルートに切り替えました。",
+      "transit_current_schedule_fallback": "指定日にも直近の参考時間帯にも結果がなかったため、Google が現在提供できる参考ルートを表示しています。所要時間は目安として使えますが、出発前に再確認してください。",
+      "transit_daytime_schedule_fallback": "指定の時間帯に便がないため、直近の同じ曜日の日中の参考ルートを表示しています。所要時間は目安として使えますが、出発前に再確認してください。",
+      "transit_near_term_schedule_fallback": "指定日のダイヤはまだ公開されていないため、直近の同じ曜日・時間帯の参考ルートを表示しています。所要時間は目安として使えますが、出発前に再確認してください。",
+      "coordinate_fallback": "正確な場所の識別ではルートを作成できなかったため、同じ場所の座標で再試行しました。",
+      "fixed_booking_late": "この移動により次の予約に遅れる可能性があります。次の場所の時刻をご確認ください。",
+      "transit_beyond_timetable_preview": "旅行の日程が公開ダイヤの範囲を超えています。同じ曜日・時間帯のプレビュールートです。",
+      "transit_past_timetable_preview": "日程がダイヤの範囲を過ぎているため、現在利用できる参考ルートを表示しています。",
+      "naver_drive_current_traffic": "NAVER の車ルートは現在の交通状況による推定で、旅行日の状況とは異なります。",
+      "average_wait_time": "このプランは平均待ち時間を使用しており、指定日の実際の便ではありません。",
+      "route_refresh_failed": "再取得に失敗したため、前回のルートを保持しています。"
+    }
   },
   "searchFlights": "航空券を探す · {charge}",
   "statusSearch": "運航状況 · {charge}",

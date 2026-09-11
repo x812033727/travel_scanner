@@ -626,7 +626,16 @@
     "forecastLabel": "10 日天气预报",
     "sourceLine": "数据来源：{attribution} · {freshness}",
     "cached": "缓存数据",
-    "fresh": "刚刚更新"
+    "fresh": "刚刚更新",
+    "warning": {
+      "weather_trip_past": "旅程日期已过，天气服务不提供这段期间的历史预报。",
+      "weather_beyond_forecast": "旅程日期超出目前 10 日预报范围。",
+      "weather_partial_forecast": "目前只能显示旅程中落在 10 日预报范围内的日期。",
+      "weather_current_incomplete": "目前天气数据格式不完整。",
+      "weather_current_unavailable": "目前天气暂时无法取得。",
+      "weather_daily_incomplete": "部分每日预报数据格式不完整。",
+      "weather_daily_unavailable": "10 日天气预报暂时无法取得。"
+    }
   },
   "print": {
     "eyebrow": "行程表",
@@ -888,7 +897,21 @@
     "externalCannotApply": "外部导航，无法套用",
     "fetchingShort": "取得中…",
     "fetchRoute": "取得路线",
-    "readyAt": "{time} 可开始下一站"
+    "readyAt": "{time} 可开始下一站",
+    "warning": {
+      "walk_route_beta": "步行路线为测试版，请依现场道路与安全状况调整。",
+      "transit_preference_fallback": "偏好条件没有结果，已改用一般公共交通路线。",
+      "transit_current_schedule_fallback": "指定日期与近期参考时段都没有结果，已改用 Google 目前可取得的参考路线；可以先套用移动时间，出发前请重新确认。",
+      "transit_daytime_schedule_fallback": "指定时段没有可用班次，已改用近期相同星期的日间参考路线；可以先套用移动时间，出发前请重新确认。",
+      "transit_near_term_schedule_fallback": "指定日期的班次尚未开放，已改用近期相同星期与时段的参考路线；可以先套用移动时间，出发前请重新确认。",
+      "coordinate_fallback": "精准地点识别无法建立路线，已用相同地点的坐标重试。",
+      "fixed_booking_late": "这段移动可能让下一个固定预约迟到，请确认下一站的时间。",
+      "transit_beyond_timetable_preview": "旅程超过可查班次范围，这是相同星期与时段的预览路线。",
+      "transit_past_timetable_preview": "日期已超过可查班次范围，显示目前可用的参考路线。",
+      "naver_drive_current_traffic": "NAVER 汽车路线依目前路况估算，不代表行程日期的实时路况。",
+      "average_wait_time": "此方案使用平均等待时间，不代表指定日期的实际班次。",
+      "route_refresh_failed": "重新查询失败，暂时保留先前路线。"
+    }
   },
   "searchFlights": "查机票 · {charge}",
   "statusSearch": "查航班动态 · {charge}",

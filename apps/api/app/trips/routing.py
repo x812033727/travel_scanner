@@ -336,8 +336,8 @@ def supported_transit_time(value: datetime | None) -> tuple[datetime | None, str
         return requested_utc, "scheduled", []
     if requested_utc > now + timedelta(days=100):
         preview = _next_matching_transit_time(requested_local, now=now)
-        return preview, "preview", ["旅程超過可查班次範圍，這是相同星期與時段的預覽路線。"]
-    return now, "preview", ["日期已超過可查班次範圍，顯示目前可用的參考路線。"]
+        return preview, "preview", ["transit_beyond_timetable_preview"]
+    return now, "preview", ["transit_past_timetable_preview"]
 
 
 class GoogleRouteProvider:
@@ -583,7 +583,9 @@ class GoogleRouteProvider:
         else:
             effective_time, schedule_mode, warnings = None, "live", []
         if travel_mode == "walk":
-            warnings.append("步行路線為測試版，請依現場道路與安全狀況調整。")
+            # Warnings travel to five languages; the reader's own catalog turns the
+            # code into a sentence. A sentence appended here can only be Chinese.
+            warnings.append("walk_route_beta")
         transit_preference = (
             preference
             if travel_mode == "transit" and preference in {"FEWER_TRANSFERS", "LESS_WALKING"}
@@ -770,27 +772,18 @@ class GoogleRouteProvider:
             return []
         routes = cast(list[dict[str, Any]], payload.get("routes", []))
         if used_preference_fallback:
-            warnings.append("偏好條件沒有結果，已改用一般大眾運輸路線。")
+            warnings.append("transit_preference_fallback")
         if used_current_schedule_fallback:
             schedule_mode = "preview"
-            warnings.append(
-                "指定日期與近期參考時段都沒有結果，已改用 Google 目前可取得的參考路線；"
-                "可以先套用移動時間，出發前請重新確認。"
-            )
+            warnings.append("transit_current_schedule_fallback")
         if used_daytime_schedule_fallback:
             schedule_mode = "preview"
-            warnings.append(
-                "指定時段沒有可用班次，已改用近期相同星期的日間參考路線；"
-                "可以先套用移動時間，出發前請重新確認。"
-            )
+            warnings.append("transit_daytime_schedule_fallback")
         if used_near_term_schedule_fallback:
             schedule_mode = "preview"
-            warnings.append(
-                "指定日期的班次尚未開放，已改用近期相同星期與時段的參考路線；"
-                "可以先套用移動時間，出發前請重新確認。"
-            )
+            warnings.append("transit_near_term_schedule_fallback")
         if used_coordinate_fallback:
-            warnings.append("精準地點識別無法建立路線，已用相同地點的座標重試。")
+            warnings.append("coordinate_fallback")
         segments: list[RouteSegment] = []
         seen: set[tuple[object, ...]] = set()
         for route in routes:
@@ -1678,7 +1671,7 @@ class NaverDirectionsProvider:
                             route_option_rank=rank,
                             steps=steps,
                             details_available=["steps", "traffic"] if steps else ["traffic"],
-                            warnings=["NAVER 汽車路線依目前路況估算，不代表行程日期的即時路況。"],
+                            warnings=["naver_drive_current_traffic"],
                         )
                     )
                 except (ArithmeticError, TypeError, ValueError):
@@ -2031,7 +2024,7 @@ class EkispertRouteProvider:
             "地圖線依車站序列繪製，不是逐道路或逐軌道導航。",
         ]
         if not timetable:
-            warnings.insert(0, "此方案使用平均等待時間，不代表指定日期的實際班次。")
+            warnings.insert(0, "average_wait_time")
         if hides_a_transfer_walk(steps):
             logger.info(
                 "route_candidate_hides_transfer_walk",

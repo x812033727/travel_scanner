@@ -210,7 +210,7 @@ async def compute_and_apply_routes(
                         update={
                             "status": "stale",
                             "warnings": list(
-                                dict.fromkeys([*stale.warnings, "重新查詢失敗，暫時保留先前路線。"])
+                                dict.fromkeys([*stale.warnings, "route_refresh_failed"])
                             ),
                         }
                     )
