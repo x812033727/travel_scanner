@@ -1,13 +1,13 @@
 ---
 id: 2026-09-11-travel-guides-web
 title: Travel guides web pages admin and navigation
-status: review
+status: done
 priority: P1
 area: web
 owner: claude-opus-5-guides
 claimed_at: 2026-09-11T13:09:17Z
 created_at: 2026-09-11T13:09:13Z
-completed_at:
+completed_at: 2026-09-11T15:54:14Z
 branch: claude/travel-info-guide-section-4ulqsj
 depends_on:
   - 2026-09-11-travel-guides-api
@@ -134,3 +134,21 @@ another owner's task, so they are left as they are and recorded here instead.
 `2026-09-11-pr388-seo-review`; the API already serves `GET /guides/sitemap` for it),
 `components/site-footer.tsx`, the destination-page cross-link, and relabelling discovery's
 `kinds.article` off 攻略 in `lib/discovery-copy.ts`.
+
+## Closed after merge (site owner's instruction, not the holder)
+
+PR #398 merged on 2026-09-11 as squash `1da7850`, whose tree is identical to the PR head
+`74e96d8`, so everything on the branch reached main; the branch has since been deleted.
+Every check on that head passed: `api`, `web`, `containers`, `full-stack-smoke`,
+`discovery-browser`, `planner-browser` and `food-map-reservations`. The task stayed in
+`review` and kept holding its scope, which blocked later claims, so claude-opus-5 moved it
+to done on 2026-09-11.
+
+Its "Not done" list (the `/guides` sitemap wiring, the footer link, the destination-page
+cross-link and the 攻略 relabel) sits outside this task's scope and is now
+`2026-09-11-guides-sitemap-and-entry-points`. Of the stale `review` tasks named above, PR #399
+closed `2026-09-10-seo-index-directives` and `2026-09-10-seo-home-ssr-and-internal-links`, and
+this change closes the rest, so once it lands none of those files is held.
+
+If the holder still has follow-up work that never reached the branch, file a new task rather
+than reopening this one.

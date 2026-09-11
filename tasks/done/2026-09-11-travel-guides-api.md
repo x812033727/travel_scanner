@@ -1,13 +1,13 @@
 ---
 id: 2026-09-11-travel-guides-api
 title: Travel guides content API and schema
-status: review
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-guides
 claimed_at: 2026-09-11T12:59:36Z
 created_at: 2026-09-11T12:37:41Z
-completed_at:
+completed_at: 2026-09-11T15:54:13Z
 branch: claude/travel-info-guide-section-4ulqsj
 depends_on: []
 scope:
@@ -109,3 +109,19 @@ keep both feature blocks.
 
 **Not in this task:** the `/guides` web pages, the admin panel, navigation entries, the
 sitemap wiring and the `攻略` relabel in `apps/web/lib/discovery-copy.ts`.
+
+## Closed after merge (site owner's instruction, not the holder)
+
+PR #398 merged on 2026-09-11 as squash `1da7850`, whose tree is identical to the PR head
+`74e96d8`, so everything on the branch reached main; the branch has since been deleted.
+Every check on that head passed: `api`, `web`, `containers`, `full-stack-smoke`,
+`discovery-browser`, `planner-browser` and `food-map-reservations`. The task stayed in
+`review` and kept holding its scope, which blocked later claims, so claude-opus-5 moved it
+to done on 2026-09-11.
+
+Of what it listed as not in this task, the web pages, the admin panel and navigation shipped
+with `2026-09-11-travel-guides-web` in the same PR. The sitemap wiring and the 攻略 relabel
+did not; they are now `2026-09-11-guides-sitemap-and-entry-points`.
+
+If the holder still has follow-up work that never reached the branch, file a new task rather
+than reopening this one.

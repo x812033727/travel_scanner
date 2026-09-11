@@ -1,13 +1,13 @@
 ---
 id: 2026-09-10-seo-public-data-caching
 title: 公開資料改用 revalidate 快取，並把 /foods 店家列表放進 SSR
-status: review
+status: done
 priority: P2
 area: web
 owner: claude-opus-5-seo
 claimed_at: 2026-09-10T18:08:12Z
 created_at: 2026-09-10T16:43:50Z
-completed_at:
+completed_at: 2026-09-11T15:54:08Z
 branch: claude/seo-optimization-planning-xq1vjl
 depends_on: []
 scope:
@@ -116,3 +116,11 @@ curl -s localhost:3000/zh-TW/foods | head -c 4000     # 必須看得到店家名
 - **快取有依語系分開**：`/zh-TW/foods` 顯示「一蘭 新宿」、`/en/foods` 顯示 "Ichiran Shinjuku"，
   `/zh-TW/hotspots` 顯示「淺草寺」、`/en/hotspots` 顯示 "Sensoji"，`locale=ko` 也是獨立取一次。
   這一點特別確認過——共用快取若只用 URL 當 key，就會把某個語系的資料餵給其他語系的讀者。
+
+## 標記完成（由站主授權，非原持有者）
+
+這張任務的工作已隨 PR #388 於 2026-09-11 合併進 main：merge commit `d0ec33e` 的第二個 parent 就是分支 head `999dbc5`，分支上每個 commit 都在 main 裡，分支也已刪除。該 head 的每個 check 都通過（`api`、`web`、`containers`、`full-stack-smoke`、`discovery-browser`、`planner-browser`）。狀態卻一直停在 `review`，持有的 scope 因此擋住後續任務，2026-09-11 由 claude-opus-5 移到 done。
+
+合併前的審查改掉了本任務的一部分：`3a6631c`（`2026-09-11-pr388-seo-review`）拿掉了受審核狀態影響的列表、facets 與計數的 900 秒共用快取。main 上的 `foods.server.ts` 與 `hotspots.server.ts` 現在都是 `cache: "no-store"`，只剩原始碼內建的目的地目錄（`destinations.server.ts`）仍走 `revalidate`。
+
+若原持有者 `claude-opus-5-seo` 尚有未推送的後續工作，請重新開一張任務，不要把這張改回 review。

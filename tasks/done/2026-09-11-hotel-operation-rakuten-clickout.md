@@ -1,13 +1,13 @@
 ---
 id: 2026-09-11-hotel-operation-rakuten-clickout
 title: Hotel operating date guards Rakuten Japan and resilient clickouts
-status: review
+status: done
 priority: P1
 area: api
 owner: codex-hotel-guard
 claimed_at: 2026-09-11T02:50:20Z
 created_at: 2026-09-11T02:50:19Z
-completed_at:
+completed_at: 2026-09-11T15:54:24Z
 branch: codex/hotel-operation-rakuten-clickout
 depends_on: []
 scope:
@@ -104,3 +104,18 @@ passed / 161 skipped; final focused boundary tests: 273 passed / 2 skipped.
 First full Web run had three test timeouts and one worker-start timeout; all
 three affected files subsequently passed separately (48 tests). Full Web CI,
 PostgreSQL integration, containers and full-stack smoke remain release gates.
+
+## Closed after merge (site owner's instruction, not the holder)
+
+PR #389 merged on 2026-09-11 as squash `5e3168e`, whose tree is identical to the PR head
+`8303d93`, so everything on the branch reached main; the branch has since been deleted.
+Every check on that head passed: `api`, `web`, `containers`, `full-stack-smoke`,
+`discovery-browser` and `planner-browser`. The task stayed in `review` and kept holding its
+scope, which blocked later claims, so claude-opus-5 moved it to done on 2026-09-11.
+
+The unticked item was full validation while the PR was still unmerged. The PostgreSQL,
+container and full-stack gates its notes left to CI are the `api`, `containers` and
+`full-stack-smoke` checks above.
+
+If the holder still has follow-up work that never reached the branch, file a new task rather
+than reopening this one.

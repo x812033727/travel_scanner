@@ -1,13 +1,13 @@
 ---
 id: 2026-09-09-frontend-flow-saved-api
 title: Unified saved items and private inbox API
-status: review
+status: done
 priority: P1
 area: api
 owner: codex-saved-flow
 claimed_at: 2026-09-09T03:07:29Z
 created_at: 2026-09-09T03:06:50Z
-completed_at:
+completed_at: 2026-09-11T15:54:15Z
 branch: codex/frontend-explore-flow
 depends_on: []
 scope:
@@ -137,3 +137,18 @@ calls. Root owns the workflow and browser acceptance spec.
   Existing saved fixtures must be retained. Other scopes and task status remain
   unchanged. This is local task metadata only: no source edit, push, other PR merge,
   deployment or production-data action.
+
+## Closed after merge (site owner's instruction, not the holder)
+
+PR #374 merged on 2026-09-09 as squash `a899437`, whose tree is identical to the PR head
+`48d12ae`, so everything on the branch reached main; the branch has since been deleted.
+Every check on that head passed: `api`, `web`, `containers`, `full-stack-smoke`,
+`discovery-browser` and `planner-browser`. The task stayed in `review` and kept holding its
+scope, which blocked later claims, so claude-opus-5 moved it to done on 2026-09-11.
+
+The unticked item waited on full final-head CI and unmocked browser acceptance. The `api`
+check runs the suite against a PostgreSQL service with `RUN_INTEGRATION_TESTS=1`, and it
+passed on that head together with both browser checks.
+
+If the holder still has follow-up work that never reached the branch, file a new task rather
+than reopening this one.
