@@ -303,6 +303,9 @@ function parseInterests(raw: string): string[] {
 
 const TRIP_DATE_ISSUES = ["trip_dates_required", "trip_dates_past", "trip_dates_too_short"];
 
+// The server's job times out at 120s; allow a margin for the final events to land.
+const SEARCH_TIMEOUT_MS = 150_000;
+
 export function SearchExperience() {
   const params = useSearchParams();
   // `/search?trip_id=…`: a flight search for a saved trip. The trip supplies
@@ -511,6 +514,13 @@ export function SearchExperience() {
   // One key per plan so a retried save replays the trip instead of creating a twin
   // that also consumes a slot of the 20-trip cap.
   const saveKeys = useRef(new Map<string, string>());
+  // A search had no way to end itself. The stream and the deadline live in refs so
+  // the cancel button, the timeout and the completion handlers can all shut the
+  // same search down exactly once.
+  const liveStream = useRef<EventSource>(null);
+  const deadline = useRef<ReturnType<typeof setTimeout>>(null);
+  const lastRun = useRef<{ dates: string[]; flexDays: 0 | 3 | 7 }>(null);
+  const [finished, setFinished] = useState(false);
 
   const resolveAuth = useCallback(() => {
     return api<{ id: string }>("/auth/me")
@@ -651,15 +661,47 @@ export function SearchExperience() {
     }
   }
 
+  // Closing the stream and clearing the deadline always happen together; doing one
+  // without the other is what left spinners running and timeouts firing after a
+  // search had already answered.
+  function stopSearch() {
+    liveStream.current?.close();
+    liveStream.current = null;
+    if (deadline.current) clearTimeout(deadline.current);
+    deadline.current = null;
+  }
+
+  function cancelSearch() {
+    stopSearch();
+    setBusy(false);
+    setFinished(false);
+    setSearchId(undefined);
+    setProgress(0);
+  }
+
+  useEffect(() => stopSearch, []);
+
   async function begin(
     requestedDates: string[] = dates,
     requestedFlexDays: 0 | 3 | 7 = parsed?.flex_days || 0,
   ) {
     if (!parsed || providerStatus?.status !== "ready" || tripBlocked) return;
+    lastRun.current = { dates: requestedDates, flexDays: requestedFlexDays };
+    stopSearch();
     setBusy(true);
     setError(undefined);
     setInsufficient(false);
+    setFinished(false);
     setProgress(2);
+    // The server caps its job at 120s but its event stream idles far longer, and the
+    // browser reconnects a stream that ends normally. Without a deadline of our own a
+    // search can sit at 40% for as long as the tab stays open.
+    deadline.current = setTimeout(() => {
+      stopSearch();
+      setBusy(false);
+      setFinished(true);
+      setError(t("searchTimedOut"));
+    }, SEARCH_TIMEOUT_MS);
     try {
       const accepted = await api<{ search_id: string; usage: UsageStatus }>(
         "/searches",
@@ -721,6 +763,7 @@ export function SearchExperience() {
       const stream = new EventSource(
         `/api/travel/searches/${accepted.search_id}/events`,
       );
+      liveStream.current = stream;
       stream.addEventListener("module.results", (message) => {
         const data = JSON.parse((message as MessageEvent).data);
         setProgress(data.progress);
@@ -764,7 +807,8 @@ export function SearchExperience() {
         if (data.usage) setUsageState(data.usage);
         setProgress(100);
         setBusy(false);
-        stream.close();
+        setFinished(true);
+        stopSearch();
         trackAnalytics("search_completed");
         await loadFinal(accepted.search_id).catch(() => undefined);
       });
@@ -773,7 +817,8 @@ export function SearchExperience() {
         if (data.usage) setUsageState(data.usage);
         setError(t("searchFailed"));
         setBusy(false);
-        stream.close();
+        setFinished(true);
+        stopSearch();
         await loadFinal(accepted.search_id).catch(() => undefined);
       });
       stream.onerror = () => {
@@ -783,6 +828,8 @@ export function SearchExperience() {
         // one needs us to go fetch whatever the server finished with.
         if (stream.readyState === EventSource.CLOSED) {
           setBusy(false);
+          setFinished(true);
+          stopSearch();
           void loadFinal(accepted.search_id).catch(() => undefined);
           return;
         }
@@ -1417,7 +1464,21 @@ export function SearchExperience() {
             className="mt-5 flex items-start gap-2 rounded-xl bg-red-50 p-4 text-sm text-red-800"
           >
             <AlertCircle size={18} className="mt-0.5 shrink-0" />
-            <span>{error}</span>
+            <div className="min-w-0">
+              <p>{error}</p>
+              {/* The start button lives behind `!searchId`, so once a search has been
+                  accepted a failure left the user with copy telling them to try again
+                  and nothing to press. */}
+              {lastRun.current && !busy && (
+                <button
+                  type="button"
+                  onClick={() => void begin(lastRun.current!.dates, lastRun.current!.flexDays)}
+                  className="mt-3 inline-flex min-h-11 items-center rounded-xl bg-white px-4 font-semibold text-red-800 shadow-sm"
+                >
+                  {t("retrySearch")}
+                </button>
+              )}
+            </div>
           </div>
         )}
         {warnings.map((warning) => (
@@ -1462,6 +1523,17 @@ export function SearchExperience() {
                     : t("reserved", { uses: charge.uses ?? usageState.uses })}
             </p>
           )}
+          {/* A search stuck at 40% used to leave the browser Back button as the only
+              way out. Cancelling releases the reservation the server is holding. */}
+          {busy && (
+            <button
+              type="button"
+              onClick={cancelSearch}
+              className="mt-4 inline-flex min-h-11 items-center rounded-xl border border-[var(--line)] px-4 font-semibold"
+            >
+              {t("cancelSearch")}
+            </button>
+          )}
           <div className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-4">
             {activeStages.map(({ key, icon: Icon }) => (
               <div
@@ -1484,6 +1556,28 @@ export function SearchExperience() {
         </section>
       )}
 
+      {/* A completed search with nothing in it used to stop the spinner, say
+          "analysis complete", show the charge, and then render nothing at all —
+          which reads as a broken page rather than an answer. */}
+      {finished &&
+        !error &&
+        plans.length === 0 &&
+        Object.keys(offers).length === 0 &&
+        flightDateOptions.length === 0 && (
+          <section role="status" className="mt-6 rounded-2xl border border-[var(--line)] p-6">
+            <h3 className="text-xl font-bold">{t("noResultsTitle")}</h3>
+            <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{t("noResultsBody")}</p>
+            {lastRun.current && (
+              <button
+                type="button"
+                onClick={() => void begin(lastRun.current!.dates, lastRun.current!.flexDays)}
+                className="mt-4 inline-flex min-h-11 items-center rounded-xl border border-[var(--line)] px-5 font-semibold"
+              >
+                {t("retrySearch")}
+              </button>
+            )}
+          </section>
+        )}
       {(plans.length > 0 ||
         Object.keys(offers).length > 0 ||
         flightDateOptions.length > 0) && (

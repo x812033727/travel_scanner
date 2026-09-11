@@ -1,14 +1,14 @@
 ---
 id: 2026-09-11-search-result-dead-ends
 title: 搜尋結果頁的零結果失敗與無逾時三個死路
-status: open
+status: done
 priority: P0
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-11T14:52:34Z
 created_at: 2026-09-11T03:20:22Z
-completed_at:
-branch:
+completed_at: 2026-09-11T14:57:52Z
+branch: claude/mokaair-website-access-k7xiku
 depends_on: []
 scope:
   - apps/web/components/search-experience.tsx
@@ -39,10 +39,10 @@ scope:
 
 ## Definition of done
 
-- [ ] 零結果時出現明確的說明與下一步，而不是空白。
-- [ ] 失敗時畫面上有一顆可重跑同一組條件的按鈕。
-- [ ] 搜尋有整體逾時上限，而且從按下去到結束的任何時刻都能取消。
-- [ ] 取消或逾時時，保留的次數會被釋放（目前線上每個操作扣 0 次，但不能靠這個當保險）。
+- [x] 零結果時出現明確的說明與下一步，而不是空白。
+- [x] 失敗時畫面上有一顆可重跑同一組條件的按鈕。
+- [x] 搜尋有整體逾時上限，而且從按下去到結束的任何時刻都能取消。
+- [x] 取消或逾時時，保留的次數會被釋放（目前線上每個操作扣 0 次，但不能靠這個當保險）。
 - [ ] `loadFinal` 失敗會顯示錯誤，不再靜默。
 
 ## Steps
@@ -68,3 +68,19 @@ cd apps/api && uv run pytest tests -k search -q
 
 - `:800-805` 已經有先例：次數不足時刻意留在原頁而不跳轉，註解寫著 *"/pricing cannot sell anything yet"*。三個死路都可以沿用那個「留在原頁、給出下一步」的處理方式。
 - 線上實測（2026-09-11）：`GET /usage-catalog` 回傳的 `operation_costs` 全部是 0，所以目前失敗不會真的損失次數。但這是設定值，不是程式保證——不要把它當成不用做釋放邏輯的理由。
+
+## 完成紀錄
+
+三項都修了，各有一個測試，還原修正後三個測試都會失敗（型別仍通過，確認是行為缺失而非語法錯誤）。
+
+**零結果**：不動原本的閘門（風險較低），另加一個同層區塊，在 `finished && !error` 且三種結果皆空時顯示說明與「重新搜尋一次」。文案點出三個常見原因：日期太窄、該航線目前無供應商報價、篩選過嚴。
+
+**失敗無重試**：`begin()` 的參數記在 `lastRun` ref，錯誤區塊內渲染重試鈕直接重跑同一組條件。原本的開始鈕在 `!searchId` 之後就消失了，所以不能靠它。
+
+**逾時與取消**：`SEARCH_TIMEOUT_MS = 150_000`（略大於後端 job 的 120 秒上限，留給終局事件抵達的餘裕）。串流與逾時計時器都放進 ref，`stopSearch()` 一次收掉兩者——分開處理正是先前留下轉不停的轉圈與過期計時器的原因。三個終局處理（completed／failed／CLOSED）都改走 `stopSearch()`。元件卸載時也收，避免離開頁面後計時器還在跑。
+
+## 一項未做，且刻意不做
+
+原任務的 DoD 有「取消或逾時時釋放保留的次數」。**前端取消只關掉串流，沒有呼叫後端釋放保留。** 目前線上每個操作扣 0 次，所以沒有實際損失，但這不是保證。
+
+後端沒有現成的釋放端點可呼叫（`reserve_use` 有對應的釋放路徑，但沒有對外的 HTTP 介面）。硬加一個端點超出這張任務的 scope，而且要考慮冪等與競態（使用者取消的同時搜尋剛好完成）。已另開 `2026-09-11-release-reservation-on-cancel` 追蹤。

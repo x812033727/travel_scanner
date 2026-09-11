@@ -297,6 +297,56 @@ describe("SearchExperience", () => {
     expect(postCalls("/searches")).toHaveLength(0);
   });
 
+  it("explains a search that came back with nothing instead of rendering blank", async () => {
+    // Completing with no plans, no offers and no date options used to stop the spinner,
+    // show "analysis complete" and the charge, then render nothing under it.
+    location.search = criteria;
+    vi.stubGlobal("fetch", vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      if (url.endsWith("/auth/me")) return json({ id: "u1" });
+      if (url.endsWith("/providers/status")) return json(providerStatus);
+      if (url.endsWith("/searches") && init?.method === "POST") return json({ search_id: "search-1", usage: { status: "reserved", uses: 1, reference: "u-1" } });
+      if (url.endsWith("/searches/search-1")) return json({ status: "completed", result: { modules: {}, plans: [] }, warnings: [] });
+      return json({ items: [] });
+    }));
+    render(<SearchExperience />);
+
+    fireEvent.click(await screen.findByRole("button", { name: /^確認條件並開始搜尋 · / }));
+    await waitFor(() => expect(FakeEventSource.instances).toHaveLength(1));
+    FakeEventSource.instances[0].emit("search.completed", {});
+
+    expect(await screen.findByText("這次沒有找到可用的結果")).toBeTruthy();
+    expect(screen.getByRole("button", { name: "重新搜尋一次" })).toBeTruthy();
+  });
+
+  it("offers a retry after a failure, because the start button is gone by then", async () => {
+    location.search = criteria;
+    vi.stubGlobal("fetch", stubApi({ signedIn: true }));
+    render(<SearchExperience />);
+
+    fireEvent.click(await screen.findByRole("button", { name: /^確認條件並開始搜尋 · / }));
+    await waitFor(() => expect(postCalls("/searches")).toHaveLength(1));
+    FakeEventSource.instances[0].emit("search.failed", {});
+
+    const retry = await screen.findByRole("button", { name: "重新搜尋一次" });
+    fireEvent.click(retry);
+    await waitFor(() => expect(postCalls("/searches")).toHaveLength(2));
+  });
+
+  it("can cancel a search that is still running", async () => {
+    location.search = criteria;
+    vi.stubGlobal("fetch", stubApi({ signedIn: true }));
+    render(<SearchExperience />);
+
+    fireEvent.click(await screen.findByRole("button", { name: /^確認條件並開始搜尋 · / }));
+    const cancel = await screen.findByRole("button", { name: "取消搜尋" });
+    fireEvent.click(cancel);
+
+    // Cancelling clears the accepted search, so the start button comes back.
+    expect(await screen.findByRole("button", { name: /^確認條件並開始搜尋 · / })).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "取消搜尋" })).toBeNull();
+  });
+
   it("starts the search once when a member returns with the resume marker, then drops it from the URL", async () => {
     location.search = `${criteria}&resume=search`;
     vi.stubGlobal("fetch", stubApi({ signedIn: true }));
