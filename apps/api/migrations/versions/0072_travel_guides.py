@@ -69,7 +69,11 @@ def upgrade() -> None:
         op.create_index(
             "ix_guide_topics_active_order", "guide_topics", ["is_active", "display_order"]
         )
-        _seed_topics()
+    # Outside the create branch on purpose. 0001 builds current metadata on a fresh
+    # database, so by the time this migration runs there the table already exists and the
+    # guard above skips it -- which previously skipped the vocabulary with it and left a
+    # fresh deployment with no topics at all.
+    _seed_topics()
 
     if inspector is None or not inspector.has_table("guide_articles"):
         op.create_table(
@@ -197,8 +201,17 @@ def upgrade() -> None:
 
 
 def _seed_topics() -> None:
-    """The subject vocabulary, not any article. Adding a topic is not publishing content."""
+    """The subject vocabulary, not any article. Adding a topic is not publishing content.
+
+    Only slugs that are absent are inserted, so re-running this never duplicates a row and
+    never overwrites one an administrator has since renamed or deactivated. That is the
+    same contract ``site_pages.initialize_pages`` keeps for its drafts.
+    """
     if context.is_offline_mode():
+        return
+    existing = set(op.get_bind().execute(sa.text("SELECT slug FROM guide_topics")).scalars())
+    missing = [entry for entry in SEED_TOPICS if entry[0] not in existing]
+    if not missing:
         return
     now = datetime.now(UTC)
     op.bulk_insert(
@@ -224,7 +237,7 @@ def _seed_topics() -> None:
                 "created_at": now,
                 "updated_at": now,
             }
-            for slug, order, labels in SEED_TOPICS
+            for slug, order, labels in missing
         ],
     )
 

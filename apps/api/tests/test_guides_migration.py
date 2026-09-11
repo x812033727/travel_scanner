@@ -124,8 +124,11 @@ def test_upgrade_seeds_topics_only_and_never_touches_existing_content(monkeypatc
             # A migration seeds the subject vocabulary. It never writes an article, and it
             # certainly never publishes one.
             assert connection.scalar(sa.select(sa.func.count()).select_from(GuideArticle)) == 0
+            # Seeded on both paths. On a fresh database 0001 has already created the table
+            # from current metadata, so a seed tied to the create branch would never run
+            # and the deployment would come up with no topics at all.
             topics = connection.scalar(sa.select(sa.func.count()).select_from(GuideTopic))
-            assert topics == (0 if fresh_metadata else len(module.SEED_TOPICS))
+            assert topics == len(module.SEED_TOPICS)
 
             revision_id = plant_history(connection)
             module.upgrade()
@@ -134,6 +137,7 @@ def test_upgrade_seeds_topics_only_and_never_touches_existing_content(monkeypatc
                 "preserve": "existing editor draft"
             }
             assert connection.scalar(sa.select(GuideArticleLocale.published_version)) == 2
+            # Re-running inserts nothing: only absent slugs are added, so no duplicates.
             assert connection.scalar(sa.select(sa.func.count()).select_from(GuideTopic)) == topics
 
             with pytest.raises(sa.exc.IntegrityError, match="append-only"):
@@ -159,6 +163,22 @@ def test_upgrade_seeds_topics_only_and_never_touches_existing_content(monkeypatc
             assert connection.scalar(sa.select(GuideArticleRevision.document_json)) == {
                 "preserve": "complete historical content"
             }
+
+            # A topic an administrator renamed or turned off survives a re-run untouched.
+            connection.execute(
+                sa.update(GuideTopic)
+                .where(GuideTopic.slug == "transport")
+                .values(is_active=False, names_json={"zh-TW": "自訂名稱"})
+            )
+            module.upgrade()
+            kept = connection.execute(
+                sa.select(GuideTopic.is_active, GuideTopic.names_json).where(
+                    GuideTopic.slug == "transport"
+                )
+            ).one()
+            assert kept.is_active is False
+            assert kept.names_json == {"zh-TW": "自訂名稱"}
+            assert connection.scalar(sa.select(sa.func.count()).select_from(GuideTopic)) == topics
 
             module.downgrade()
             names = sa.inspect(connection).get_table_names()
