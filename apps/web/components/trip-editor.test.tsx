@@ -1182,6 +1182,65 @@ describe("trip editor", () => {
     expect(await screen.findByText("淺草散步")).toBeTruthy();
   });
 
+  it("still has a way back after the autosave has already written the delete", async () => {
+    // The undo toast lasts 8 seconds; the autosave debounce is 1. Between second 2
+    // and second 8 the delete is already on the server while "undo" is still on
+    // screen, so this checks that the button means what it says by then.
+    let stored = structuredClone(trip);
+    const fetchMock = vi.fn().mockImplementation((_url: string, init?: RequestInit) => {
+      if (init?.method === "PUT") {
+        const body = JSON.parse(String(init.body));
+        stored = { ...stored, version: stored.version + 1, items: body.items };
+        return Promise.resolve(response(stored));
+      }
+      return Promise.resolve(response(stored));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+    const editor = await openStopEditor("淺草散步");
+    fireEvent.click(within(editor).getByRole("button", { name: "刪除這個安排" }));
+
+    // Let the debounce fire: the delete reaches the server.
+    await waitFor(() => expect(stored.items).toHaveLength(0), { timeout: 4000 });
+    expect(screen.getByRole("button", { name: "復原" })).toBeTruthy();
+
+    fireEvent.click(screen.getByRole("button", { name: "復原" }));
+    expect(await screen.findByText("淺草散步")).toBeTruthy();
+    await waitFor(() => expect(stored.items.map((item) => item.id)).toEqual([trip.items[0].id]), { timeout: 4000 });
+  });
+
+  it("does not lose the undone stop when it is clicked while the delete is still in flight", async () => {
+    // The narrow window the 8-second toast and the 1-second debounce create: the
+    // delete has been sent but not answered, and the member changes their mind.
+    let stored = structuredClone(trip);
+    let releaseDelete!: () => void;
+    let puts = 0;
+    const fetchMock = vi.fn().mockImplementation((_url: string, init?: RequestInit) => {
+      if (init?.method === "PUT") {
+        const body = JSON.parse(String(init.body));
+        puts += 1;
+        const answer = () => {
+          stored = { ...stored, version: stored.version + 1, items: body.items };
+          return response(stored);
+        };
+        if (puts === 1) return new Promise((resolve) => { releaseDelete = () => resolve(answer()); });
+        return Promise.resolve(answer());
+      }
+      return Promise.resolve(response(stored));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+    const editor = await openStopEditor("淺草散步");
+    fireEvent.click(within(editor).getByRole("button", { name: "刪除這個安排" }));
+    await waitFor(() => expect(puts).toBe(1), { timeout: 4000 });
+
+    fireEvent.click(screen.getByRole("button", { name: "復原" }));
+    await act(async () => { releaseDelete(); });
+
+    expect(await screen.findByText("淺草散步")).toBeTruthy();
+    await waitFor(() => expect(stored.items.map((item) => item.id)).toEqual([trip.items[0].id]), { timeout: 4000 });
+  });
+
   it("restores an unsynced local draft for the same server version", async () => {
     window.localStorage.setItem(`trip-planner-draft:${trip.id}`, JSON.stringify({
       baseVersion: 1,

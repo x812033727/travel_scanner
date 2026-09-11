@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**44 open · 2 in progress · 3 blocked · 21 in review · 220 done**
+**42 open · 2 in progress · 3 blocked · 21 in review · 222 done**
 
 ## Ready to claim
 
@@ -18,7 +18,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [Complete live Travelpayouts brand and destination offer verification](open/2026-09-08-travelpayouts-live-destination-activation.md) | ops | `docs/travel-services.md` |
 | P1 | [Prevent Google coordinates being labelled durable by merchant review](open/2026-09-08-prevent-google-coordinates-being-labelled-durable.md) | api | `apps/api/app/foods/coordinate_queue.py`<br>`apps/api/tests/test_food_coordinate_queue.py` |
 | P1 | [Continue evidence-backed remaining hotspot candidate review](open/2026-09-08-continue-evidence-backed-remaining-hotspot-candidate.md) | ops | `docs/hotspot-review-next-batch.md`<br>`ops/hotspot_review_next_batch.py`<br>`ops/hotspot_review_next_batch.json` |
-| P1 | [餘額與行程上限都只在使用者投入之後才告知](open/2026-09-11-quota-and-limits-shown-too-late.md) | web | `apps/web/components/new-trip-form.tsx`<br>`apps/web/components/usage-catalog-provider.tsx`<br>`apps/web/messages/en/newTrip.json`<br>`apps/web/messages/ja/newTrip.json`<br>`apps/web/messages/ko/newTrip.json`<br>`apps/web/messages/zh-CN/newTrip.json`<br>`apps/web/messages/zh-TW/newTrip.json` |
 | P1 | [行程規劃器在手機沒有全域導覽且離線頁無入口](open/2026-09-11-planner-mobile-navigation-and-offline.md) | web | `apps/web/components/today-view.tsx`<br>`apps/web/components/offline-trip-cache.tsx`<br>`apps/web/app/[locale]/trips/[id]/page.tsx`<br>`apps/web/public/sw.js` |
 | P1 | [規格書明定為必要的目的地支援閘門從未實作](open/2026-09-11-destination-supported-gate-missing.md) | web | `apps/api/app/ai/parser.py`<br>`apps/web/components/trip-brief-composer.tsx`<br>`apps/web/components/brief-confirm-panel.tsx`<br>`docs/planning-flow-spec.md` |
 | P2 | [防 jsonb 運算子的測試只守住 3 張表，實際有 42 張](open/2026-09-07-jsonb-3-42.md) | api | `apps/api/tests/test_migration_sql_dialect.py` |
@@ -84,7 +83,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | active work in the same scope |
 | P1 | [首頁與 explore 要在伺服器端渲染出真正的內容](open/2026-09-10-seo-server-render-home-and-explore.md) | depends on 2026-09-09-frontend-flow-discovery-web, 2026-09-09-discovery-card-details, 2026-09-10-seo-structured-data |
 | P1 | [後台九張表格在手機無法閱讀](open/2026-09-11-admin-tables-unusable-on-phone.md) | active work in the same scope |
-| P1 | [刪除行程項目沒有確認而且復原視窗短於自動儲存](open/2026-09-11-itinerary-item-delete-no-confirm.md) | active work in the same scope |
 | P1 | [路線地圖在手機吃掉頁面捲動且對輔助科技隱形](open/2026-09-11-route-map-mobile-and-a11y.md) | active work in the same scope |
 | P1 | [航班錨點卡與路線卡仍是硬編碼繁中](open/2026-09-11-anchor-and-route-cards-hardcoded-zh.md) | active work in the same scope |
 | P1 | [後端仍有二十餘處警告字串是寫死的繁中](open/2026-09-11-remaining-api-warning-literals.md) | active work in the same scope |
@@ -101,6 +99,8 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## Recently finished
 
+- 2026-09-11 [【撤回】刪除行程項目的復原視窗其實是有效的](done/2026-09-11-itinerary-item-delete-no-confirm.md)
+- 2026-09-11 [餘額與行程上限都只在使用者投入之後才告知](done/2026-09-11-quota-and-limits-shown-too-late.md)
 - 2026-09-11 [後端回傳的繁中警告句被原樣顯示在所有語系](done/2026-09-11-api-warnings-leak-zh-tw.md)
 - 2026-09-11 [合作平台面板繁中且漏用在地化佣金揭露](done/2026-09-11-affiliate-panel-i18n-and-disclosure.md)
 - 2026-09-11 [行程時間軸硬編碼繁中而它正是分享頁的主體](done/2026-09-11-itinerary-timeline-hardcoded-zh-tw.md)
@@ -109,5 +109,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-11 [我的旅程整頁硬編碼繁中含刪除確認框](done/2026-09-11-trips-list-hardcoded-zh-tw.md)
 - 2026-09-11 [Support dotted Catchtable venue IDs safely](done/2026-09-11-catchtable-dot-venue-id.md)
 - 2026-09-11 [登入入口只存在於我的頁底部且未登入者毫無說明](done/2026-09-11-no-sign-in-entry-in-discovery.md)
-- 2026-09-11 [次數用完後被導去已關閉的方案頁形成死路](done/2026-09-11-usage-exhausted-dead-end.md)
-- 2026-09-11 [搜尋結果頁的零結果失敗與無逾時三個死路](done/2026-09-11-search-result-dead-ends.md)

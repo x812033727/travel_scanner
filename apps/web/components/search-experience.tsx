@@ -47,7 +47,7 @@ import {
   type FlightOfferTripActions,
 } from "@/components/flight-offer-card";
 import { useSiteVisibility } from "@/components/site-visibility-provider";
-import { useOperationCharge } from "@/components/usage-catalog-provider";
+import { useAccountUsage, useOperationCharge } from "@/components/usage-catalog-provider";
 import { searchUsageOperation } from "@/lib/usage-catalog";
 import { UsageInsufficientNotice } from "@/components/usage-insufficient-notice";
 import {
@@ -481,6 +481,8 @@ export function SearchExperience() {
   const [authState, setAuthState] = useState<
     "checking" | "signed_in" | "signed_out" | "error"
   >("checking");
+  // Asked only once a session is known, so a signed-out reader does not collect a 401.
+  const accountUsage = useAccountUsage(authState === "signed_in");
   const [progress, setProgress] = useState(0);
   const [done, setDone] = useState<string[]>([]);
   const [plans, setPlans] = useState<Plan[]>([]);
@@ -1468,6 +1470,11 @@ export function SearchExperience() {
             )}
             <p className="mt-2 text-xs text-[var(--muted)]">
               {charge.status === "ready" ? t("chargeHelp", { charge: charge.label }) : charge.unavailableHelp}
+              {/* What an action costs was always on screen; what the member has left
+                  only ever arrived as a 402, after the wizard had been filled in. */}
+              {authState === "signed_in" && accountUsage.availableUses !== null
+                ? ` ${t("balance", { available: accountUsage.availableUses })}`
+                : ""}
             </p>
           </>
         )}
