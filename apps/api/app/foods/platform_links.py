@@ -61,6 +61,8 @@ _LANGUAGES = {
 }
 _LOCALE = "(?:" + "|".join(_LANGUAGES) + ")"
 _SLUG = r"[A-Za-z0-9][A-Za-z0-9_-]*"
+# Catchtable venue IDs may contain literal dots, but never empty dot segments.
+_CATCHTABLE_SLUG = r"[A-Za-z0-9][A-Za-z0-9_-]*(?:\.[A-Za-z0-9][A-Za-z0-9_-]*)*"
 _INLINE_ID = r"[A-Za-z0-9_-]+"
 _RESERVED = frozenset({
     "search", "ranking", "rankings", "discovery", "explore", "restaurants",
@@ -116,7 +118,7 @@ def _merchant_identity(provider: str, path: str) -> str:
             rf"/{_LOCALE}/(?P<id>{_SLUG})/reserve/(?:message|landing)",
         ),
         "catchtable_global": (
-            rf"/{optional_locale}(?:shop|restaurant|restaurants)/(?P<id>{_SLUG})",
+            rf"/{optional_locale}(?:shop|restaurant|restaurants)/(?P<id>{_CATCHTABLE_SLUG})",
         ),
         "eztable": (rf"/{optional_locale}(?:restaurant|restaurants)/(?P<id>{_SLUG})",),
         "chope": (

@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**45 open · 4 in progress · 3 blocked · 21 in review · 213 done**
+**45 open · 4 in progress · 3 blocked · 21 in review · 214 done**
 
 ## Ready to claim
 
@@ -104,6 +104,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## Recently finished
 
+- 2026-09-11 [Support dotted Catchtable venue IDs safely](done/2026-09-11-catchtable-dot-venue-id.md)
 - 2026-09-11 [登入入口只存在於我的頁底部且未登入者毫無說明](done/2026-09-11-no-sign-in-entry-in-discovery.md)
 - 2026-09-11 [次數用完後被導去已關閉的方案頁形成死路](done/2026-09-11-usage-exhausted-dead-end.md)
 - 2026-09-11 [搜尋結果頁的零結果失敗與無逾時三個死路](done/2026-09-11-search-result-dead-ends.md)
@@ -113,4 +114,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-11 [首頁伺服器端輸出真正的內容，並把目的地頁接進連結結構](done/2026-09-10-seo-home-ssr-and-internal-links.md)
 - 2026-09-11 [撤回：被判定截斷的文字全是螢幕閱讀器專用標籤](done/2026-09-11-language-switcher-label-clipped.md)
 - 2026-09-11 [撤回：對比度不足的發現來自量測程式的解析錯誤](done/2026-09-11-bottom-nav-labels-fail-contrast.md)
-- 2026-09-11 [精靈三個條件都選不限時整頁崩潰並清空五步輸入](done/2026-09-11-wizard-crash-when-all-criteria-any.md)

@@ -115,14 +115,39 @@ for (const locale of Object.keys(catalogs) as (keyof typeof catalogs)[]) {
       expect(writes[1].body.expected_checked_at).toBe("2026-09-10T00:00:00Z");
       expect(links.find((item) => item.provider === "tablecheck")!.status).toBe("verified");
       await expect(name).toHaveValue("Unsaved merchant draft");
+
+      // Regression: a literal dot is part of this Catchtable venue ID, not a URL
+      // separator to strip. This is mocked format data, never a live booking.
+      await provider.selectOption("catchtable_global");
+      await editor.getByRole("combobox", { name: copy.platformReviewStatus, exact: true }).selectOption("verified");
+      await editor.getByRole("textbox", { name: copy.platformReviewNote, exact: true }).fill("Fixture-only exact Catchtable branch evidence");
+      const catchtableInput = editor.getByRole("textbox", { name: copy.platformCanonicalUrl, exact: true });
+      const dottedUrl = "https://www.catchtable.net/zh-TW/shop/yosukgung.kr";
+      for (const unsafe of [dottedUrl.replace(".kr", "..kr"), dottedUrl.replace(".kr", "%2ekr"), `${dottedUrl}/../other`]) {
+        await catchtableInput.fill(unsafe);
+        await expect(save).toBeDisabled();
+        expect(writes).toHaveLength(2);
+      }
+      await catchtableInput.fill(dottedUrl);
+      await expect(save).toBeEnabled();
+      await save.click();
+      await expect.poll(() => writes.length).toBe(3);
+      expect(writes[2]).toMatchObject({ method: "PUT", path: `/admin/foods/merchants/${merchantId}/platform-link`, body: { provider: "catchtable_global", canonical_url: dottedUrl, status: "verified", localized_urls: {}, expected_checked_at: null } });
+      await expect(editor.getByRole("list", { name: copy.platformSavedList })).toContainText("Catchtable Global");
+      await expect(name).toHaveValue("Unsaved merchant draft");
+      expect(links.find((item) => item.provider === "tablecheck")!.canonical_url).toBe(tablecheckUrl);
+      expect(links.find((item) => item.provider === "inline")!.status).toBe("disabled");
+      expect(links.find((item) => item.provider === "catchtable_global")!.canonical_url).toBe(dottedUrl);
       const overflow = await editor.evaluate((element) => element.scrollWidth > element.clientWidth);
       expect(overflow).toBe(false);
       // A tall element screenshot extends outside the fixed modal viewport and
       // can include its background. Record the visible UI at both ends instead.
+      // Keep evidence at CSS resolution; emulated mobile DPR otherwise creates
+      // oversized PNGs even at the desktop-width case and can exhaust the test budget.
       await provider.scrollIntoViewIfNeeded();
-      await page.screenshot({ path: info.outputPath(`platforms-${locale}-${width}.png`) });
+      await page.screenshot({ path: info.outputPath(`platforms-${locale}-${width}.png`), scale: "css" });
       await save.scrollIntoViewIfNeeded();
-      await page.screenshot({ path: info.outputPath(`platforms-save-${locale}-${width}.png`) });
+      await page.screenshot({ path: info.outputPath(`platforms-save-${locale}-${width}.png`), scale: "css" });
     });
   }
 }
