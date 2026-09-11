@@ -1,6 +1,6 @@
 "use client";
 
-import { CircleUserRound, LogIn, Menu, Search, ShieldCheck, X } from "lucide-react";
+import { BookOpen, CircleUserRound, LogIn, Menu, Search, ShieldCheck, X } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
@@ -69,6 +69,9 @@ export function MobileNav() {
     </Link>
     <Link href="/explore" aria-label={flowCopy.explore} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] focus-visible:outline focus-visible:outline-2"><Search size={21} aria-hidden /></Link>
     <Link href="/my" aria-label={flowCopy.my} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] focus-visible:outline focus-visible:outline-2"><CircleUserRound size={21} aria-hidden /></Link>
+    {/* This branch returns before the menu sheet is rendered, so the guides section would
+        be unreachable on a phone in discovery mode without its own entry here. */}
+    <Link href="/guides" aria-label={nav("guides")} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] focus-visible:outline focus-visible:outline-2"><BookOpen size={21} aria-hidden /></Link>
   </div>;
   return <div className="flex items-center gap-1 lg:hidden">
     <LanguageSwitcher compact />

@@ -28,6 +28,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.community import models as community_models  # noqa: F401
 from app.community import pet_models  # noqa: F401
 from app.db import Base
+from app.guides import models as guide_models  # noqa: F401
 
 
 def utcnow() -> datetime:
