@@ -1,20 +1,25 @@
 ---
 id: 2026-09-11-modal-escape-flake-under-load
 title: 整套測試在負載下，有守門的 Escape 偶爾不生效
-status: open
+status: in-progress
 priority: P1
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-11T22:30:20Z
 created_at: 2026-09-11T21:23:54Z
 completed_at:
-branch:
+branch: claude/mokaair-website-access-k7xiku
 depends_on: []
 scope:
   - apps/web/lib/modal-sheet.ts
   - apps/web/lib/modal-sheet.test.tsx
   - apps/web/components/travel-card-actions.test.tsx
   - apps/web/vitest.config.ts
+  - apps/web/vitest.setup.tsx
+  - apps/web/components/route-mode-panel.tsx
+  - apps/web/components/route-mode-panel.test.tsx
+  - apps/web/components/planner-overlay.tsx
+  - apps/web/components/planner-overlay.test.tsx
 ---
 
 # 整套測試在負載下，有守門的 Escape 偶爾不生效
@@ -80,10 +85,11 @@ itinerary generation finishes」，在 CI 紅過兩次）是**同一個形狀**�
 
 ## Definition of done
 
-- [ ] 能穩定重現（例如在 CPU 有競爭時重跑，或找出觸發條件）。
-- [ ] 找到真正的成因，不是再一個沒有證據的假設。
-- [ ] 修好之後，連續三次整套 `npm run test:web` 都綠。
-- [ ] **不可以**用放寬斷言、加 `waitFor`、或 skip 來讓它變綠。
+- [x] 能穩定重現。→ **第三個實例做到了**：`route-mode-panel` 的焦點被搶，已經有確定性的
+      回歸測試。另外兩個（Escape 沒生效）還是重現不了。
+- [x] 找到真正的成因，不是再一個沒有證據的假設。→ 第三個實例找到了，用焦點探針。
+- [ ] 修好之後，連續三次整套 `npm run test:web` 都綠。→ 只修好三分之一，還不能宣告。
+- [x] **不可以**用放寬斷言、加 `waitFor`、或 skip 來讓它變綠。→ 沒有這樣做。
 
 ## How to verify
 
@@ -155,3 +161,57 @@ useEffect(() => {
 不要再從「原語壞了」下手。先寫一個探針：在負載下（另開一個 build 佔住 CPU）重跑整套，
 把每次 `focus()` 的呼叫點與當下的 `document.activeElement` 記下來，看是不是真的有延後的
 callback 在事後搶焦點。有證據再改；前兩個假設都是沒證據就下判斷，結果都錯了。
+
+## 進度：三個實例裡修好一個（claude-opus-5, 2026-09-11）
+
+用探針找到了第三個實例的確切成因，而且是可以穩定重現的。另外兩個還沒。
+
+### 探針怎麼做的
+
+在 `vitest.setup.tsx` 裡暫時包住 `HTMLElement.prototype.focus`，記下每一次呼叫的
+「從哪裡 → 到哪裡 @ 哪一行」（用 `process.stderr.write`，因為 vitest 會攔截 `console.log`）。
+跑那條會紅的測試，順序一目了然：
+
+```
+FOCUSPROBE body -> section .route-panel-detail @ components/route-mode-panel.tsx:298
+FOCUSPROBE section .route-panel-detail -> button role=option "方案 1" @ route-mode-panel.test.tsx:799
+FOCUSPROBE button "方案 1" -> button role=option "方案 2" @ onKeyDown (route-mode-panel.tsx:538)
+```
+
+綠的時候是這個順序。紅的時候，第一行跑在最後——`route-mode-panel.tsx:295-300` 那個
+effect 在路線回來之後**晚一個 commit** 才把焦點移到結果區，而測試在那個空檔裡已經把焦點
+放到選項上了。
+
+**這不只是測試的問題。** 同一個空檔裡，真的使用者也可能已經按了方向鍵。應用程式把焦點搶回去，
+就是在跟正在操作的人爭。
+
+### 修法
+
+記下「按下查詢的那一刻焦點在哪裡」（`previewFocusOriginRef`，在送出請求之前讀，不是在回應
+回來之後），effect 裡比對：焦點還在原處（或在 body、或已經在結果區裡）才移動，否則不動。
+
+回歸測試 `route-mode-panel.test.tsx`「does not pull focus back to the results when the
+reader has already moved it」把這個競態變成確定的事：把第二次的 preview 請求掛住，手動把
+焦點放到選項上，再放行回應。移除守門那一行，這條就紅——實測過。
+
+### 另外兩個還沒解決
+
+| 檔 | 斷言 | 狀態 |
+| --- | --- | --- |
+| `route-mode-panel.test.tsx:801` | 焦點在下一個選項 | **已修**，有確定性的回歸測試 |
+| `travel-card-actions.test.tsx:64` | Escape 之後彈層關掉 | 未解 |
+| `trip-editor.test.tsx:292` | 對話框還在 | 未解 |
+
+後兩個都不是焦點被搶（Escape 走 document 層級的 listener，和焦點無關），所以這次的修法
+大概率不會順便修好它們。**不要假設整套從此不會再紅。**
+
+### 給下一個人的建議
+
+那支焦點探針很有用，做法寫在上面，十行左右。要查 Escape 那兩個，同樣的手法可以用在
+`document.addEventListener("keydown")` 上：包住 listener，記下每次 Escape 進來時
+`isTopModalLayer()` 的結果、`layers` 有幾層、以及哪一層是最上層。有證據再改。
+
+**已經被推翻過的兩個假設，不要重走**（過程見
+`tasks/done/2026-09-11-trip-editor-close-guard-order-dependence.md`）：
+跨檔模組汙染（`isolate` 是 true，探針測過零洩漏）、`onCloseRef` 寫在 passive effect 會落後
+DOM 一個 render（探針測過，`flushSync` 之後兩個 ref 都已更新）。

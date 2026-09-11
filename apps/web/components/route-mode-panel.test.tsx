@@ -850,4 +850,49 @@ describe("route mode panel", () => {
     expect(panel.getAttribute("aria-labelledby")).toBe(transit.id);
     expect(fetchMock.mock.calls.filter(([url]) => String(url).includes("/routes/"))).toHaveLength(0);
   });
+  it("does not pull focus back to the results when the reader has already moved it", async () => {
+    // `route-mode-panel.test.tsx`'s sibling case has gone red in full-suite runs while
+    // passing on its own, always the same way: the assertion expects focus on a route
+    // option and finds it on the `.route-panel-detail` container instead. The effect that
+    // moves focus to the results runs a commit after the preview lands, and anything the
+    // reader does in that gap loses its focus to it. Held here on purpose so the race is
+    // a fact rather than a coin toss.
+    let releasePreview!: () => void;
+    const option = (rank: number, duration: number) => ({
+      preview_id: `preview-${rank}`,
+      rank,
+      provider_route_key: `route-${rank}`,
+      expires_at: "2100-09-01T00:15:00Z",
+      segment: { ...initialSegment, travel_mode: "walk" as const, duration_minutes: duration, route_option_rank: rank },
+      schedule_impact: { affected_items: [], conflicts: [] },
+    });
+    const options = [option(1, 18), option(2, 21)];
+    let previewCalls = 0;
+    vi.stubGlobal("fetch", vi.fn(async (url: string) => {
+      if (url.endsWith("/runtime/public-config")) {
+        return ok({ google_maps_browser_key: null, google_maps_javascript_enabled: false });
+      }
+      previewCalls += 1;
+      if (previewCalls > 1) {
+        await new Promise<void>((resolve) => { releasePreview = resolve; });
+      }
+      return ok({ kind: "provider", ...options[0], options });
+    }));
+
+    render(<RouteModePanel trip={trip} items={items} fromItemId="from" toItemId="to" initialSegment={initialSegment} onApplied={() => undefined} onError={() => undefined} />);
+    fireEvent.click(screen.getByRole("tab", { name: "步行" }));
+    fireEvent.click(screen.getByRole("button", { name: "查詢交通方案" }));
+    await screen.findByRole("option", { name: /方案 2/ });
+
+    // Ask again, and while that answer is on its way, put focus on an option by hand.
+    fireEvent.click(screen.getByRole("button", { name: "重新查詢" }));
+    await waitFor(() => expect(previewCalls).toBe(2));
+    const first = screen.getByRole("option", { name: /方案 1/ });
+    first.focus();
+    expect(document.activeElement).toBe(first);
+
+    await act(async () => { releasePreview(); await Promise.resolve(); });
+    await waitFor(() => expect(screen.getAllByRole("option").length).toBeGreaterThan(1));
+    expect(document.activeElement, "the panel took focus back off the reader").toBe(first);
+  });
 });
