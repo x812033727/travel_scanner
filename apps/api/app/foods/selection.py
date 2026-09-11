@@ -21,6 +21,7 @@ from app.trips.router import (
     owned_trip,
     persist_system_schedule_change,
 )
+from app.warnings import warning_code
 
 
 async def apply_merchant_meal_selection(
@@ -108,6 +109,6 @@ async def apply_merchant_meal_selection(
         user_id,
         version,
         rows,
-        warning="料理與店家已更新，請重新計算這一天的路線。",
+        warning=warning_code("food_selection_changed"),
         target_day=day_date,
     )

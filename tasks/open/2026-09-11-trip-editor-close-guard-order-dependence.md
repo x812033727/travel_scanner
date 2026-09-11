@@ -1,14 +1,14 @@
 ---
 id: 2026-09-11-trip-editor-close-guard-order-dependence
 title: trip-editor 的關閉守門測試會隨檔案順序變紅
-status: open
+status: in-progress
 priority: P1
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-11T20:25:44Z
 created_at: 2026-09-11T17:16:50Z
 completed_at:
-branch:
+branch: claude/mokaair-website-access-k7xiku
 depends_on: []
 scope:
   - apps/web/components/trip-editor.test.tsx

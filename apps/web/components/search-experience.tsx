@@ -318,6 +318,7 @@ const KNOWN_WARNINGS = new Set([
   "flex_pricing_unavailable",
   "flex_pricing_unsupported",
   "search_system_error",
+  "provider_fallback",
 ]);
 
 export function SearchExperience() {

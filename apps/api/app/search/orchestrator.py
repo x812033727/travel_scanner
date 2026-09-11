@@ -51,6 +51,7 @@ from app.providers.schemas import (
 from app.search.events import publish_event
 from app.search.schemas import SearchCreate
 from app.usage.service import commit_reservation, release_reservation, usage_status
+from app.warnings import warning_code
 
 MODULE_PROGRESS = {"flight": 25, "hotel": 45, "activities": 62, "transport": 78}
 
@@ -437,7 +438,11 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
                     offers = cast(list[Offer], flight_offers)
                     provider_name = ",".join(attempted_names)
                 if candidate_index > 0 and module != "flight":
-                    warnings.append(f"{module} 主要供應商暫時無法使用，已切換至 {provider_name}。")
+                    warnings.append(
+                        warning_code(
+                            "provider_fallback", module=module, provider=provider_name
+                        )
+                    )
                 return (
                     module,
                     provider_name,

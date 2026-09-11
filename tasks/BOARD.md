@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**38 open · 1 in progress · 3 blocked · 21 in review · 231 done**
+**37 open · 2 in progress · 3 blocked · 21 in review · 232 done**
 
 ## Ready to claim
 
@@ -35,12 +35,14 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P3 | [tasks/BOARD.md 是產生檔，卻讓每個 PR 互相衝突](open/2026-09-07-board-conflicts-on-every-pr.md) | tools | `.gitattributes`<br>`tools/tasks.mjs` |
 | P3 | [Isolate backup catalog test from host free disk capacity](open/2026-09-09-backup-catalog-free-disk-fixture.md) | api | `apps/api/tests/test_database_operations_center.py` |
 | P3 | [admin-shell 命令面板改用 modal-sheet 的分層堆疊](open/2026-09-11-admin-shell-modal-layer.md) | web | `apps/web/components/admin-shell.tsx`<br>`apps/web/components/admin-shell.test.tsx` |
+| P3 | [航班票價實驗室三個畫面的多語系與警告代碼](open/2026-09-11-fare-lab-warnings-and-copy.md) | web | `apps/web/components/airline-fare-lab.tsx`<br>`apps/web/components/back-to-back-fare-search.tsx`<br>`apps/web/components/live-back-to-back-search.tsx`<br>`apps/api/app/crawlers/back_to_back.py`<br>`apps/api/app/providers/live_back_to_back.py` |
 
 ## In progress
 
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
 | [Configurable catalog review run call limit](open/2026-09-09-configurable-catalog-review-run-call-limit.md) | codex-catalog-call-limit | 2026-09-09T15:54:14Z | `codex/catalog-review-call-limit` |
+| [trip-editor 的關閉守門測試會隨檔案順序變紅](open/2026-09-11-trip-editor-close-guard-order-dependence.md) | claude-opus-5 | 2026-09-11T20:25:44Z | `claude/mokaair-website-access-k7xiku` |
 
 ## In review
 
@@ -81,8 +83,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [Mokaair community responsive web and five-language experience](open/2026-09-07-mokaair-community-web.md) | active work in the same scope |
 | P1 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | active work in the same scope |
 | P1 | [首頁與 explore 要在伺服器端渲染出真正的內容](open/2026-09-10-seo-server-render-home-and-explore.md) | depends on 2026-09-09-frontend-flow-discovery-web, 2026-09-09-discovery-card-details, 2026-09-10-seo-structured-data |
-| P1 | [後端仍有二十餘處警告字串是寫死的繁中](open/2026-09-11-remaining-api-warning-literals.md) | active work in the same scope |
-| P1 | [trip-editor 的關閉守門測試會隨檔案順序變紅](open/2026-09-11-trip-editor-close-guard-order-dependence.md) | active work in the same scope |
 | P2 | [Community read metric duplicate observed alongside smoke ECONNRESET](open/2026-09-07-community-read-metric-concurrency.md) | active work in the same scope |
 | P2 | [Preserve force refresh in daily route background jobs](open/2026-09-10-daily-route-force-refresh.md) | active work in the same scope |
 | P2 | [安排編輯器的關閉鈕在儲存在途時被靜默吞掉](open/2026-09-11-planner-overlay-close-guard-race.md) | active work in the same scope |
@@ -94,6 +94,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## Recently finished
 
+- 2026-09-11 [後端仍有二十餘處警告字串是寫死的繁中](done/2026-09-11-remaining-api-warning-literals.md)
 - 2026-09-11 [航班錨點卡與路線卡仍是硬編碼繁中](done/2026-09-11-anchor-and-route-cards-hardcoded-zh.md)
 - 2026-09-11 [彈層原語未統一與可及性收尾](done/2026-09-11-dialog-primitives-and-a11y-cleanup.md)
 - 2026-09-11 [表單驗證與低於四十四像素的觸控目標](done/2026-09-11-form-validation-and-touch-targets.md)
@@ -103,4 +104,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-11 [行程規劃器在手機沒有全域導覽且離線頁無入口](done/2026-09-11-planner-mobile-navigation-and-offline.md)
 - 2026-09-11 [後台九張表格在手機無法閱讀](done/2026-09-11-admin-tables-unusable-on-phone.md)
 - 2026-09-11 [路線地圖在手機吃掉頁面捲動且對輔助科技隱形](done/2026-09-11-route-map-mobile-and-a11y.md)
-- 2026-09-11 [【撤回】刪除行程項目的復原視窗其實是有效的](done/2026-09-11-itinerary-item-delete-no-confirm.md)

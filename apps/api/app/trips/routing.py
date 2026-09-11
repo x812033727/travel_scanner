@@ -26,6 +26,7 @@ from app.providers.usage_meter import (
     reserve_navitime_request,
     reserve_odsay_request,
 )
+from app.warnings import warning_code
 
 logger = logging.getLogger(__name__)
 
@@ -2359,8 +2360,8 @@ class OdsayRouteProvider:
             steps=steps,
             details_available=details,
             warnings=[
-                "ODsay 提供目前一般大眾運輸路線，不代表指定日期的即時班次。",
-                "地圖線依停靠站序列繪製，不是逐道路或逐軌道導航。",
+                warning_code("odsay_current_service"),
+                warning_code("odsay_polyline_is_stop_sequence"),
             ],
         )
 

@@ -32,6 +32,7 @@ from app.trips.routing import (
     trip_region_code,
 )
 from app.trips.schedule import active_route_rows, route_pair_count
+from app.warnings import warning_code
 
 
 def _route_point(item: TripPlanItem) -> RoutePoint | None:
@@ -253,9 +254,11 @@ async def compute_and_apply_routes(
         )
 
     if missing_location_pairs:
-        warnings.append(f"{missing_location_pairs} 段移動缺少已確認地點，請先完成地點設定。")
+        warnings.append(
+            warning_code("missing_confirmed_locations", count=missing_location_pairs)
+        )
     if unavailable_pairs:
-        warnings.append(f"{unavailable_pairs} 段移動暫時沒有可用路線。")
+        warnings.append(warning_code("no_route_available", count=unavailable_pairs))
 
     completed = sum(len(value) for value in computed_by_day.values())
     has_stale = any(
@@ -329,7 +332,7 @@ async def _run(trip_id: UUID, expected_version: int, target_day: date | None) ->
                             or 0
                         ),
                         "completed": 0,
-                        "warnings": ["自動交通計算暫時失敗，可在行程頁重新計算。"],
+                        "warnings": [warning_code("route_computation_failed")],
                         "updated_at": datetime.now(UTC).isoformat(),
                     },
                 }

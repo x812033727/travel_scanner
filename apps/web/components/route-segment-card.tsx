@@ -53,6 +53,9 @@ const KNOWN_WARNINGS = new Set([
   "naver_drive_current_traffic",
   "average_wait_time",
   "route_refresh_failed",
+  "manual_duration_unverified",
+  "odsay_current_service",
+  "odsay_polyline_is_stop_sequence",
 ]);
 
 export function RouteSegmentCard({

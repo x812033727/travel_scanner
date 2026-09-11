@@ -71,6 +71,7 @@ from app.trips.stay_areas import (
     trip_city,
     trip_settings_source,
 )
+from app.warnings import warning_code
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/trips/{trip_id}/stay-areas", tags=["trips"])
@@ -83,7 +84,7 @@ STAY_PROVIDER_TRIP_LIMIT = 20
 STAY_SELECT_USER_LIMIT = 10
 STAY_CLICKOUT_USER_LIMIT = 120
 STAY_WINDOW_SECONDS = 3_600
-LODGING_WARNING = "主要飯店已更新，請重新計算每日來回路線。"
+LODGING_WARNING = warning_code("primary_lodging_changed")
 
 
 class StayHotelSelectRequest(BaseModel):
