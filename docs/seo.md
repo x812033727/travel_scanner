@@ -16,6 +16,9 @@ results. Historical task notes describe their original snapshots, not necessaril
 - CMS documents have independent publication states in each language. Their metadata overrides
   root alternates with a self canonical only; unconfirmed translations are never advertised.
   Adding CMS hreflang later requires knowing the actual published variants, not exposing drafts.
+- Guide articles (`/guides/{kind}/{slug}`) also publish per language, but the guides API reports
+  which translations exist. The article page and its sitemap entries declare exactly those, with
+  `x-default` only when English is among them; an unwritten translation is `noindex`.
 - The separate `(stay22-public)` services tree retains its own valid canonical/language builder.
   Its optional `x-default` is supplied through the sitemap, not HTML. Google accepts HTML and
   sitemap localization annotations as equivalent methods.
@@ -27,6 +30,7 @@ results. Historical task notes describe their original snapshots, not necessaril
 | Surface | Policy |
 | --- | --- |
 | Home, food directory, destination directory/guides/services | Indexable public content |
+| Guides hub, intel and how-to lists, published guide articles | Indexable; filtered list views and unwritten translations are `noindex` |
 | Hotspots, pricing, flight status, airline fares | Indexable only while the effective Web switch is enabled |
 | Privacy, terms, about, contact | Only the requested locale's published document is indexable |
 | Community/discovery/pet public shells | Existing `noindex` retained pending public server content |
@@ -49,22 +53,41 @@ may execute JavaScript, but that is not a substitute for verified public/private
 
 ## Runtime sitemap and robots
 
-`robots.ts` points to `/sitemap.xml`. The sitemap uses `dynamic = "force-dynamic"` and reads
-the six public visibility flags once at request time with `no-store`. This avoids freezing
-deployment-time flags or needing the API during `next build`.
+`robots.ts` points to `/sitemap.xml`. The sitemap uses `dynamic = "force-dynamic"` and makes two
+`no-store` reads at request time, in parallel: the six public visibility flags, and the guides
+API's publication-aware list (`GET /api/v1/guides/sitemap`). This avoids freezing deployment-time
+flags or published articles into the build, and needing the API during `next build`.
 
-There are at most **365 URLs**: five locales times seven base routes, 33 guides, and 33 services
-pages. Four base routes are conditional; all four closed/unavailable gives **345 URLs**.
-Static destination IDs come from `PUBLIC_DESTINATIONS`; no names or authenticated data are
-needed to enumerate them. All entries include language alternates. No sitemap index is needed.
+The static part has at most **380 URLs**: five locales times ten base routes, 33 city guides and
+33 services pages. The base routes include `/guides`, `/guides/intel` and `/guides/howto`, which
+have no feature switch. Four base routes are conditional; all four closed/unavailable gives
+**360 URLs**. Static destination IDs come from `PUBLIC_DESTINATIONS`; no names or authenticated
+data are needed to enumerate them. Every static entry carries all five languages plus `x-default`.
 
-Managed document URLs remain outside the sitemap until publication-aware enumeration is
-implemented. Published pages are still discoverable through footer links. Private and client
-shell routes stay out. No artificial `lastmod` is emitted because the sitemap does not know
-the underlying content update dates.
+Guide articles follow the static entries: one per published, unexpired translation, newest first,
+capped at 1,000 by the API and again by the Web loader. The API filters with the rule the list and
+the article page share (`apps/api/app/guides/publication.py`), so the sitemap cannot advertise a
+URL the site will not serve; an expired notice keeps its page but leaves the sitemap. Each entry's
+alternates are only that article's published translations, with `x-default` only when English is
+one of them: the set the article page declares. The whole file is therefore at most about
+**1,380 URLs** (380 static plus 1,000 translations), far below Google's 50,000-URL / 50 MB limit,
+so no sitemap index is needed. If the guides API fails or times out, the sitemap degrades to
+exactly its static entries rather than failing or emptying.
 
-Tests verify each listed path resolves to an App Router page, language URLs agree, private
-routes are absent, and each feature can close/reopen without a rebuild.
+`lastmod` is deliberately split. Static entries have none: the sitemap does not know when a city
+guide's places change, and a value that always says "now" teaches Google to distrust the file.
+Guide entries carry the API's `published_at`, a real date. It records a translation's first
+publication and survives republication, so an edited article's `lastmod` does not move yet
+(`2026-09-11-guide-lastmod-republication`).
+
+Managed site documents (`/about`, `/privacy`, `/terms`, `/contact`) remain outside the sitemap
+until their per-locale publication can be enumerated the same way. Published ones are still
+discoverable through footer links. Private and client shell routes stay out.
+
+Tests verify each listed static path resolves to an App Router page, language URLs agree, private
+routes are absent, each feature can close/reopen without a rebuild, and guide entries follow
+per-locale publication, carry their date, stay capped and fall back to the static list when the
+guides API fails.
 
 ## Server content and data freshness
 
@@ -131,13 +154,15 @@ npm run build:web
 
 The CI browser list includes `e2e/seo.spec.ts`: production Next output, JavaScript disabled,
 desktop and Pixel 7, five-language canonicals/alternates/social tags, server homepage content,
-CMS publication isolation, robots and the runtime sitemap. Unit tests separately cover
-visibility failures/reopening, filter seeds and moderation-sensitive fetch policies.
+CMS publication isolation, robots and the runtime sitemap, including synthetic guide translations'
+`lastmod` and per-article alternates. Unit tests separately cover visibility failures/reopening,
+filter seeds and moderation-sensitive fetch policies.
 
 Still outside this revision: full discovery/community SSR, indexable item detail pages,
-publication-aware CMS sitemap/hreflang, Search Console configuration and measured Lighthouse
-improvements. Single-city Osaka/Kyoto services are distinct from the combined guide (one
-service section versus two); do not consolidate their canonicals as if they were duplicates.
+publication-aware sitemap/hreflang for the managed site documents, Search Console configuration
+and measured Lighthouse improvements. Single-city Osaka/Kyoto services are distinct from the
+combined guide (one service section versus two); do not consolidate their canonicals as if they
+were duplicates.
 City-specific service descriptions and shared metadata helpers are optional future improvements.
 
 Deployment and Search Console submission are separate actions requiring authorization.

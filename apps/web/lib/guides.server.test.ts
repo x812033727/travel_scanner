@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { loadGuideArticle, loadGuideList, loadGuideTopics } from "./guides.server";
+import { guideSitemapEntries, loadGuideArticle, loadGuideList, loadGuideTopics } from "./guides.server";
 
 const article = {
   slug: "narita-to-tokyo", kind: "howto", locale: "zh-TW", status: "published",
@@ -117,5 +117,47 @@ describe("per-locale publication", () => {
     expect(state.status).toBe("published");
     expect(state.expired).toBe(true);
     expect(state.valid_until).toBe("2026-08-01");
+  });
+});
+
+describe("sitemap enumeration", () => {
+  const entry = { kind: "howto", slug: "narita-to-tokyo", locale: "ja", published_at: "2026-09-01T00:00:00Z" };
+
+  it("reads every language in one uncached, bounded request", async () => {
+    const fetchMock = respond({ entries: [entry] });
+    vi.stubGlobal("fetch", fetchMock);
+    await expect(guideSitemapEntries()).resolves.toEqual([entry]);
+    const [url, init] = fetchMock.mock.calls[0];
+    expect(new URL(url).pathname).toBe("/api/v1/guides/sitemap");
+    expect(init.cache).toBe("no-store");
+    expect(init.signal).toBeInstanceOf(AbortSignal);
+    expect(init.headers["X-Travel-Locale"]).toBeUndefined();
+  });
+
+  it("drops rows that would put a broken URL or date into the sitemap", async () => {
+    vi.stubGlobal("fetch", respond({
+      entries: [
+        entry,
+        null,
+        { ...entry, kind: "recipes" },
+        { ...entry, locale: "fr" },
+        { ...entry, slug: "" },
+        // Next writes <loc> unescaped, so either of these would break the whole file.
+        { ...entry, slug: "fares&rules" },
+        { ...entry, slug: "Narita-To-Tokyo" },
+        { ...entry, published_at: "sometime" },
+        { ...entry, published_at: null },
+      ],
+    }));
+    await expect(guideSitemapEntries()).resolves.toEqual([entry]);
+  });
+
+  it("degrades to no entries rather than throwing", async () => {
+    vi.stubGlobal("fetch", respond({ detail: "boom" }, false));
+    await expect(guideSitemapEntries()).resolves.toEqual([]);
+    vi.stubGlobal("fetch", respond({ entries: "not a list" }));
+    await expect(guideSitemapEntries()).resolves.toEqual([]);
+    vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new Error("connection reset")));
+    await expect(guideSitemapEntries()).resolves.toEqual([]);
   });
 });

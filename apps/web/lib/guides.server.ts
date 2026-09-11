@@ -24,12 +24,13 @@ function apiBase() {
   return (process.env.API_INTERNAL_URL || "http://localhost:8000").replace(/\/$/, "");
 }
 
-async function fetchJson(path: string, locale: string): Promise<unknown | null> {
+async function fetchJson(path: string, locale?: string): Promise<unknown | null> {
   try {
     const response = await fetch(`${apiBase()}/api/v1${path}`, {
       cache: "no-store",
       signal: AbortSignal.timeout(3000),
-      headers: { Accept: "application/json", "X-Travel-Locale": locale },
+      // The sitemap read covers every language at once, so it names none.
+      headers: { Accept: "application/json", ...(locale ? { "X-Travel-Locale": locale } : {}) },
     });
     if (!response.ok) return null;
     return (await response.json()) as unknown;
@@ -104,6 +105,37 @@ export async function loadGuideArticle(
   // "unavailable" keeps the page out of the index instead of publishing a blank one.
   if (body.status !== "published" || !isPublishedGuide(body.document)) return unavailable;
   return { ...shared, status: "published", document: body.document };
+}
+
+/** One published translation of one article, as `GET /guides/sitemap` lists it. */
+export type GuideSitemapEntry = { kind: GuideKind; slug: string; locale: Locale; published_at: string };
+
+/** The API's own ceiling (`SITEMAP_LIMIT` in `apps/api/app/guides/service.py`), applied again here
+ *  so that a backend change cannot grow the sitemap past what `docs/seo.md` budgets for. */
+export const GUIDE_SITEMAP_LIMIT = 1000;
+
+/** The API's `SLUG_PATTERN`. Next writes `<loc>` without escaping it, so a single slug holding `&`
+ *  or `<` would make the whole sitemap unparseable instead of costing one URL. */
+const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
+function isGuideSitemapEntry(value: unknown): value is GuideSitemapEntry {
+  const row = value as Record<string, unknown> | null;
+  return !!row && isGuideKind(row.kind)
+    && typeof row.slug === "string" && SLUG.test(row.slug)
+    && locales.includes(row.locale as Locale)
+    && typeof row.published_at === "string" && Number.isFinite(Date.parse(row.published_at));
+}
+
+/**
+ * Every published, unexpired translation, for `app/sitemap.ts`. The API answers with the same
+ * publication rule the list and the article page use, so this cannot surface a URL the site
+ * would refuse to serve. Any failure is `[]`: the sitemap then carries its static routes alone,
+ * the way it already degrades when the visibility read fails, rather than erroring or emptying.
+ */
+export async function guideSitemapEntries(): Promise<GuideSitemapEntry[]> {
+  const body = (await fetchJson("/guides/sitemap")) as Record<string, unknown> | null;
+  if (!body || !Array.isArray(body.entries)) return [];
+  return body.entries.filter(isGuideSitemapEntry).slice(0, GUIDE_SITEMAP_LIMIT);
 }
 
 export const getGuideList = cache(loadGuideList);

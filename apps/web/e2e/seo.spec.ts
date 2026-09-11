@@ -61,11 +61,32 @@ test("runtime sitemap exposes only public routes and stable localized alternate 
   if (!/no-store|no-cache/.test(cacheControl)) expect(cacheControl).toContain("must-revalidate");
   expect(cacheControl).not.toMatch(/(?:s-maxage|max-age)=[1-9]\d*/);
   const xml = await response.text();
-  expect(xml.match(/<url>/g)).toHaveLength(365); // fixture has all public switches enabled
+  // 380 static URLs with every public switch open in the fixture, plus the three synthetic guide
+  // translations tools/e2e-runtime-api.mjs publishes.
+  expect(xml.match(/<url>/g)).toHaveLength(383);
   expect(xml).toContain("/en/destinations/tokyo</loc>");
+  expect(xml).toContain("/ko/guides/howto</loc>");
   expect(xml).toContain('hreflang="x-default"');
   expect(xml).not.toMatch(/<loc>[^<]*\/(?:admin|account|trips|login|privacy)(?:\/|<)/);
+  // Only guide articles have a real date, and each lists only its own published translations.
+  expect(xml.match(/<lastmod>/g)).toHaveLength(3);
+  const notice = sitemapUrl(xml, "/zh-TW/guides/intel/synthetic-fare-notice");
+  expect(notice).toContain("<lastmod>2026-09-08T09:30:00.000Z</lastmod>");
+  expect(hreflangs(notice)).toEqual(["ja", "zh-TW"]); // never written in English, so no x-default
+  expect(hreflangs(sitemapUrl(xml, "/en/guides/howto/synthetic-airport-transfer"))).toEqual(["en", "x-default"]);
+  expect(xml).not.toContain("/en/guides/intel/synthetic-fare-notice</loc>");
   const robots = await request.get("/robots.txt");
   expect(robots.status()).toBe(200);
   expect(await robots.text()).toMatch(/Sitemap: https?:\/\/[^\s]+\/sitemap.xml/);
 });
+
+/** The `<url>` block whose `<loc>` ends with this path. */
+function sitemapUrl(xml: string, path: string): string {
+  const block = xml.split("<url>").find((part) => part.includes(`${path}</loc>`));
+  expect(block, `${path} is not in the sitemap`).toBeDefined();
+  return block ?? "";
+}
+
+function hreflangs(block: string): string[] {
+  return [...block.matchAll(/hreflang="([^"]+)"/g)].map((match) => match[1]).sort();
+}

@@ -155,6 +155,17 @@ const server = createServer((request, response) => {
     response.end(JSON.stringify(visibility));
     return;
   }
+  // Synthetic guide translations for the runtime sitemap only; the article pages are not served
+  // here. The notice is published without English and the how-to in English alone, so
+  // e2e/seo.spec.ts can check lastmod and each article's own hreflang set in the real XML.
+  if (request.method === "GET" && request.url === "/api/v1/guides/sitemap") {
+    response.end(JSON.stringify({ entries: [
+      { kind: "intel", slug: "synthetic-fare-notice", locale: "zh-TW", published_at: "2026-09-08T09:30:00Z" },
+      { kind: "intel", slug: "synthetic-fare-notice", locale: "ja", published_at: "2026-09-07T01:00:00Z" },
+      { kind: "howto", slug: "synthetic-airport-transfer", locale: "en", published_at: "2026-09-01T00:00:00Z" },
+    ] }));
+    return;
+  }
   if (request.method === "GET" && request.url === "/api/v1/auth/registration-status") {
     response.end(JSON.stringify({ registration_enabled: true }));
     return;
