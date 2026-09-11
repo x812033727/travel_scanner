@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**53 open · 1 in progress · 3 blocked · 24 in review · 203 done**
+**53 open · 1 in progress · 3 blocked · 23 in review · 204 done**
 
 ## Ready to claim
 
@@ -71,7 +71,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | [Independent food reservation save and multi-platform support](open/2026-09-11-food-reservation-platforms.md) | codex-food-reservation-platforms | `codex/food-reservation-platforms` |
 | [Travel guides content API and schema](open/2026-09-11-travel-guides-api.md) | claude-opus-5-guides | `claude/travel-info-guide-section-4ulqsj` |
 | [Travel guides web pages admin and navigation](open/2026-09-11-travel-guides-web.md) | claude-opus-5-guides | `claude/travel-info-guide-section-4ulqsj` |
-| [Support dotted Catchtable venue IDs safely](open/2026-09-11-catchtable-dot-venue-id.md) | codex-release | `codex/catchtable-dot-venue-id` |
 | [Archive completed catalog and hotel review evidence](open/2026-09-09-review-evidence-archive.md) | codex-review-archive | `codex/review-evidence-archive-20260909` |
 | [Compact discovery cards and source-linked details](open/2026-09-09-discovery-card-details.md) | codex-discovery-card-details | `codex/discovery-card-details-20260909` |
 | [公開資料改用 revalidate 快取，並把 /foods 店家列表放進 SSR](open/2026-09-10-seo-public-data-caching.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
@@ -112,6 +111,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## Recently finished
 
+- 2026-09-11 [Support dotted Catchtable venue IDs safely](done/2026-09-11-catchtable-dot-venue-id.md)
 - 2026-09-11 [探索卡顯示累積蒐藏數與蒐藏數排行分頁](done/2026-09-11-discovery-saved-count-ranking.md)
 - 2026-09-11 [Simplify hotel booking platform and source copy](done/2026-09-10-simplify-hotel-booking-copy.md)
 - 2026-09-11 [Verify simplified hotel booking copy without changing affiliate flow](done/2026-09-10-verify-hotel-booking-copy.md)
@@ -121,4 +121,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-10 [Public discovery categories and safe detail projections](done/2026-09-09-frontend-flow-discovery-api.md)
 - 2026-09-10 [Route apply state regression and semantic itinerary tones](done/2026-09-09-planner-route-tones.md)
 - 2026-09-10 [Preserve no-referrer on external clickout responses](done/2026-09-09-preserve-clickout-referrer-policy.md)
-- 2026-09-09 [Fix first hotel clickout and affiliate availability feedback](done/2026-09-09-fix-first-hotel-clickout-and-affiliate.md)

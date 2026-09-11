@@ -1,13 +1,13 @@
 ---
 id: 2026-09-11-catchtable-dot-venue-id
 title: Support dotted Catchtable venue IDs safely
-status: review
+status: done
 priority: P1
 area: web
 owner: codex-release
 claimed_at: 2026-09-11T15:00:25Z
 created_at: 2026-09-11T14:33:26Z
-completed_at:
+completed_at: 2026-09-11T15:35:28Z
 branch: codex/catchtable-dot-venue-id
 depends_on: []
 scope:
@@ -62,3 +62,4 @@ Run `uv run pytest tests/test_food_platform_links.py tests/test_reservation_plat
 - Implementation and local validation complete. Keep release separate: no PR opened, no merge/deployment, no catalog data write. The task is released with this handoff instead of being marked merged.
 - Release continuation: user explicitly authorized merge and deployment. Re-fetched main and confirmed it remains `94fef42d`; code head `c3b6d057` is clean. Historic scope overlaps were rechecked as merged PRs #391/#392 before reclaiming this isolated successor. No merchant publication is included in release authorization.
 - Production preflight: all eight application services use `19a94294`, API health/readiness pass at schema `0070_map_identity_metadata`, and the existing host-only manual release process is available. Deployment agent remains inactive; this release will use the established SHA-guarded SSH process, not enable the admin deployment surface.
+- Merge (claude-opus-5, 2026-09-11, on the owner's request to merge the open PRs): main had moved to `1da78504` (#398) after CI passed on `e1768ae7`, and only `tasks/BOARD.md` conflicted, so main was merged in and the board regenerated with the tool. The task is closed inside PR #397 itself so its scope is not left held in `review` after the merge. Merging does not deploy: the change reaches production with the next deploy of main, which was not run as part of this merge, so the release step above stays unticked until someone deploys.
