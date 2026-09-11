@@ -19,6 +19,24 @@ describe("MobileNav", () => {
     expect(screen.getByRole("link", {name:"探索"}).getAttribute("href")).toBe("/explore");
     expect(screen.getByRole("link", {name:"我的"}).getAttribute("href")).toBe("/my");
   });
+  // The P0 this file exists to pin: discovery mode used to ship a bar of three icons
+  // with no sign-in control at all, so a signed-out visitor had to guess that "my"
+  // was where login lived, and a signed-in one had no way to tell they were signed in.
+  it("offers sign in from the discovery bar when signed out", async () => {
+    discovery.enabled = true;
+    vi.stubGlobal("fetch", vi.fn(async () => new Response(null, { status: 401 })));
+    render(<ThemeProvider><HeaderSessionProvider><MobileNav /></HeaderSessionProvider></ThemeProvider>);
+    expect((await screen.findByRole("link", { name: "登入／切換帳號" })).getAttribute("href")).toBe("/login");
+  });
+
+  it("points the discovery bar at the account when signed in", async () => {
+    discovery.enabled = true;
+    vi.stubGlobal("fetch", vi.fn(async () => new Response(JSON.stringify({ id: "u1", email: "a@example.com", is_admin: false }), { status: 200 })));
+    render(<ThemeProvider><HeaderSessionProvider><MobileNav /></HeaderSessionProvider></ThemeProvider>);
+    expect((await screen.findByRole("link", { name: "會員帳號" })).getAttribute("href")).toBe("/account");
+    expect(screen.queryByRole("link", { name: "登入／切換帳號" })).toBeNull();
+  });
+
   it("keeps language directly accessible beside the account and menu", () => {
     render(<ThemeProvider><MobileNav /></ThemeProvider>);
     // Appearance, language and text size are display preferences with a word

@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**47 open · 1 in progress · 3 blocked · 20 in review · 202 done**
+**46 open · 2 in progress · 3 blocked · 20 in review · 202 done**
 
 ## Ready to claim
 
@@ -15,7 +15,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- | --- |
 | P0 | [精靈三個條件都選不限時整頁崩潰並清空五步輸入](open/2026-09-11-wizard-crash-when-all-criteria-any.md) | web | `apps/web/components/search-workbench.tsx`<br>`apps/api/app/places/router.py` |
 | P0 | [搜尋結果頁的零結果失敗與無逾時三個死路](open/2026-09-11-search-result-dead-ends.md) | web | `apps/web/components/search-experience.tsx`<br>`apps/api/app/search/router.py`<br>`apps/web/messages/en/search.json`<br>`apps/web/messages/ja/search.json`<br>`apps/web/messages/ko/search.json`<br>`apps/web/messages/zh-CN/search.json`<br>`apps/web/messages/zh-TW/search.json` |
-| P0 | [探索模式開啟時全站沒有登入入口](open/2026-09-11-no-sign-in-entry-in-discovery.md) | web | `apps/web/components/site-navigation.tsx`<br>`apps/web/components/mobile-nav.tsx` |
 | P1 | [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | docs | `apps/web/app/[locale]/privacy/page.tsx`<br>`apps/web/app/[locale]/terms/page.tsx`<br>`apps/web/app/[locale]/contact/page.tsx`<br>`apps/web/messages/en/navigation.json`<br>`apps/web/messages/ja/navigation.json`<br>`apps/web/messages/ko/navigation.json`<br>`apps/web/messages/zh-CN/navigation.json`<br>`apps/web/messages/zh-TW/navigation.json` |
 | P1 | [Hotel platform options and quote readiness](open/2026-09-07-hotel-platform-options-and-quote-readiness.md) | api | `apps/api/tests/test_hotel_content_package.py`<br>`docs/hotel-platforms` |
 | P1 | [Revalidate community read resets against production-build CI](open/2026-09-08-community-ci-read-retry.md) | web | `apps/web/e2e/community.spec.ts` |
@@ -49,6 +48,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
+| [探索模式開啟時全站沒有登入入口](open/2026-09-11-no-sign-in-entry-in-discovery.md) | claude-opus-5 | 2026-09-11T08:19:37Z | `claude/google-apple-line-login-0fmfi5` |
 | [Configurable catalog review run call limit](open/2026-09-09-configurable-catalog-review-run-call-limit.md) | codex-catalog-call-limit | 2026-09-09T15:54:14Z | `codex/catalog-review-call-limit` |
 
 ## In review

@@ -35,7 +35,10 @@ export function SiteNavigation() {
         </> : primaryNavLinks.filter((item) => !item.feature || featureVisible(visibility, item.feature)).map((item) => (
           <Link key={item.href} href={item.href} className="-mx-2 inline-flex min-h-11 items-center rounded-lg px-2 transition hover:text-[var(--ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--teal)]">{t(item.key)}</Link>
         ))}
-        {!discovery.enabled && !discovery.loading && <><TextSizeSwitcher />
+        {/* Sign in is not a "legacy mode" control. Discovery used to drop this whole
+            group, which left the desktop header with no way to sign in or out at all —
+            the one thing lib/nav-links.ts asks every navigation surface to agree on. */}
+        {!discovery.loading && <><TextSizeSwitcher />
         <ThemeSwitcher />
         <HeaderAuth /></>}
       </nav>

@@ -1,18 +1,20 @@
 ---
 id: 2026-09-11-no-sign-in-entry-in-discovery
 title: 探索模式開啟時全站沒有登入入口
-status: open
+status: in-progress
 priority: P0
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-11T08:19:37Z
 created_at: 2026-09-11T03:20:23Z
 completed_at:
-branch:
+branch: claude/google-apple-line-login-0fmfi5
 depends_on: []
 scope:
   - apps/web/components/site-navigation.tsx
   - apps/web/components/mobile-nav.tsx
+  - apps/web/components/site-navigation.test.tsx
+  - apps/web/components/mobile-nav.test.tsx
 ---
 
 # 探索模式開啟時全站沒有登入入口
@@ -32,16 +34,16 @@ scope:
 
 ## Definition of done
 
-- [ ] 探索模式下，未登入訪客在桌面與手機的頁首都看得到登入入口。
-- [ ] 已登入者在兩種尺寸都能一眼看到自己的登入狀態，並能登出。
-- [ ] `mobile-nav.tsx:109-113` 的死碼移除或修正條件。
+- [x] 探索模式下，未登入訪客在桌面與手機的頁首都看得到登入入口。
+- [x] 已登入者在兩種尺寸都能一眼看到自己的登入狀態，並能登出。
+- [x] `mobile-nav.tsx:109-113` 的死碼移除或修正條件。
 
 ## Steps
 
-- [ ] `site-navigation.tsx:38`：把 `HeaderAuth` 從 `!discovery.enabled` 的條件裡拿出來，讓它在兩種模式都渲染。順便決定 `TextSizeSwitcher` 與 `ThemeSwitcher` 是否也該保留（探索模式目前只能在 `/my` 調整）。
-- [ ] `mobile-nav.tsx:65-69`：discovery 分支補上登入／帳號圖示，行為與 `:78` 的非 discovery 分支一致（未登入 → `/login`，已登入 → `/account`）。
-- [ ] 移除 `:109-113` 的死碼。
-- [ ] 加測試釘住：`discovery.enabled` 為 true 且未登入時，頁首必須有 `/login` 連結。
+- [x] `site-navigation.tsx:38`：把 `HeaderAuth` 從 `!discovery.enabled` 的條件裡拿出來，讓它在兩種模式都渲染。`TextSizeSwitcher` 與 `ThemeSwitcher` 一併保留——它們消失的原因與 `HeaderAuth` 相同，而探索模式目前只能在 `/my` 調整字級與主題。現在的條件只剩 `!discovery.loading`。
+- [x] `mobile-nav.tsx:65-69`：discovery 分支補上登入／帳號圖示，行為與非 discovery 分支一致（未登入 → `/login` + `LogIn`，已登入 → `/account` + `CircleUserRound`）。
+- [x] 移除 `:109-113` 的死碼，連帶移除因此變成未使用的 `discoveryCopy` 與 `getDiscoveryCopy` import。
+- [x] 加測試釘住：`site-navigation.test.tsx` 與 `mobile-nav.test.tsx` 各補案例，已確認在修好前會失敗、修好後會通過。
 
 ## How to verify
 
@@ -54,5 +56,30 @@ cd apps/web && npx playwright test e2e/navigation.spec.ts
 
 ## Notes
 
-- 這是**線上正在發生**的狀態，不是潛在問題：discovery 已開啟。
+- 這是**線上正在發生**的狀態，不是潛在問題：discovery 已開啟。本次直接確認過
+  `GET https://mokaair.com/api/travel/discovery/status` 回傳 `{"enabled":true}`。
+
+### 寫測試時踩到的坑（留給下一個人）
+
+`useDiscoveryStatus`（`lib/discovery.ts`）把 `status`、`checkedAt`、`request` 放在
+**模組層級**當單例快取，30 秒內不會重新問。同一個測試檔裡先跑過的案例會把答案留給
+後面的案例，所以 `site-navigation.test.tsx` 新增的案例一開始「不改程式也會過」——
+它讀到的是前一個案例快取的 `enabled:false`。
+
+處理方式：那個案例放在 describe 的**最後**，並用
+`vi.spyOn(Date, "now").mockImplementation(() => realNow() + 60_000)` 把快取推成過期，
+逼它重新抓一次。回傳的 `enabled:true` 會留在快取裡，所以它不能放在別的案例前面。
+`mobile-nav.test.tsx` 沒有這個問題，因為它整個檔案 `vi.mock("@/lib/discovery")`。
+
+（`discovery-navigation.test.tsx` 其實是更自然的落點，它已經 mock 好 discovery，
+但目前被 `2026-09-09-frontend-flow-discovery-web`（review）佔住 scope，沒有動。）
+
+### 一併看到、但沒有動的事
+
+- `mobile-nav.tsx` 選單內 `{... !discovery.enabled ? [["/my","my"]] : []}` 也是永遠成立
+  的條件：整個選單只在 `!discovery.enabled` 時才打得開。留著沒有壞處，但下一個改這
+  個檔案的人可以順手拿掉。
+- `site-navigation.tsx:29-34` 的 `community.flags.enabled && !discovery.enabled` 分支
+  只渲染六個連結，會讓桌面版失去 `primaryNavLinks`。目前線上走不到（discovery 優先），
+  原任務已記錄，本次維持原狀。
 - `site-navigation.tsx:29-34` 還有另一條分支（`community.flags.enabled` 為 true 但 discovery 為 false）只渲染六個連結，會讓桌面版失去 `primaryNavLinks` 的所有項目，而手機選單（`mobile-nav.tsx:115-117`）有。那是同一類的漂移，但目前線上走不到（discovery 優先），所以沒有納入本任務——若之後關掉 discovery，要一併檢查。

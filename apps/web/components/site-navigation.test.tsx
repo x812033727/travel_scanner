@@ -66,4 +66,33 @@ describe("SiteNavigation", () => {
     expect(screen.queryByRole("link", { name: "航班動態" })).toBeNull();
     expect(screen.queryByRole("link", { name: "方案與次數包" })).toBeNull();
   });
+
+  // Discovery mode used to drop TextSizeSwitcher, ThemeSwitcher and HeaderAuth as a
+  // single group, which left the desktop header with no way to sign in or out at all.
+  // useDiscoveryStatus caches its answer in module scope and only re-asks after 30s,
+  // so this case ages that cache out — and runs last, because the answer it caches
+  // (discovery on) would change what every earlier case renders.
+  it("keeps the sign-in control in the desktop header while discovery is on", async () => {
+    const realNow = Date.now;
+    vi.spyOn(Date, "now").mockImplementation(() => realNow() + 60_000);
+    vi.stubGlobal("fetch", vi.fn(async (input: RequestInfo | URL) =>
+      String(input).endsWith("/discovery/status")
+        ? new Response(JSON.stringify({ enabled: true }), { status: 200 })
+        : new Response(JSON.stringify({ detail: "signed out" }), { status: 401 })));
+    try {
+      render(
+        <SiteVisibilityProvider state={{ status: "ready", features: openSiteVisibility }}>
+          <HeaderSessionProvider>
+            <ThemeProvider><SiteNavigation /></ThemeProvider>
+          </HeaderSessionProvider>
+        </SiteVisibilityProvider>,
+      );
+
+      // The discovery destinations confirm the header really is in discovery mode.
+      expect((await screen.findAllByRole("link", { name: "\u63a2\u7d22" })).length).toBeGreaterThan(0);
+      expect((await screen.findByRole("link", { name: "\u767b\u5165" })).getAttribute("href")).toBe("/login");
+    } finally {
+      vi.mocked(Date.now).mockRestore();
+    }
+  });
 });

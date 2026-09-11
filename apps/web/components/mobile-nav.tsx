@@ -17,7 +17,6 @@ import { primaryNavLinks } from "@/lib/nav-links";
 import { featureVisible } from "@/lib/site-features";
 import { useCommunity } from "@/components/community/provider";
 import { useDiscoveryStatus } from "@/lib/discovery";
-import { getDiscoveryCopy } from "@/lib/discovery-copy";
 import { frontendCopy } from "@/lib/frontend-navigation";
 
 export function MobileNav() {
@@ -27,7 +26,6 @@ export function MobileNav() {
   const tc = useTranslations("community");
   const locale = useLocale() as Locale;
   const discovery = useDiscoveryStatus();
-  const discoveryCopy = getDiscoveryCopy(locale);
   const flowCopy = frontendCopy(locale);
   const { preference } = useTheme();
   const themeValue = nav(preference === "system" ? "themeSystem" : preference === "dark" ? "themeDark" : "themeLight");
@@ -62,10 +60,17 @@ export function MobileNav() {
   // preferences, so they moved into the menu where each one has a word next to it,
   // and the bar keeps the two things people reach for: their account and the menu.
   if (discovery.loading) return <div className="flex items-center gap-1 lg:hidden"><LanguageSwitcher compact /><div aria-hidden className="h-11 w-24 rounded-xl bg-[var(--paper)]" /></div>;
+  // `/my` is a destination, not a sign-in control: it looks identical signed in and
+  // signed out, so discovery used to leave a visitor with no way to tell whether they
+  // were signed in, and no way to sign in without first guessing that "my" leads there.
+  // This is the same pair the legacy branch below shows.
   if (discovery.enabled) return <div className="flex items-center gap-1 lg:hidden">
     <LanguageSwitcher compact />
     <Link href="/explore" aria-label={flowCopy.explore} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] focus-visible:outline focus-visible:outline-2"><Search size={21} aria-hidden /></Link>
     <Link href="/my" aria-label={flowCopy.my} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] focus-visible:outline focus-visible:outline-2"><CircleUserRound size={21} aria-hidden /></Link>
+    <Link href={status === "authenticated" ? "/account" : "/login"} aria-label={status === "authenticated" ? nav("account") : nav("login")} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] hover:bg-[var(--teal-soft)] focus-visible:outline focus-visible:outline-2">
+      {status === "authenticated" ? <CircleUserRound size={21} aria-hidden /> : <LogIn size={21} aria-hidden />}
+    </Link>
   </div>;
   return <div className="flex items-center gap-1 lg:hidden">
     <LanguageSwitcher compact />
@@ -106,11 +111,6 @@ export function MobileNav() {
             </span>
           </div>
         <nav aria-label={nav("primaryLabel")} className="grid gap-1">
-          {discovery.enabled && [["/explore", discoveryCopy.explore], ["/explore/collections", discoveryCopy.collections], ["/my", discoveryCopy.my]].map(([href, label]) => <Link key={href} href={href} onClick={() => setOpen(false)} className="flex min-h-12 items-center rounded-xl px-3 font-semibold hover:bg-[var(--teal-soft)]">{label}</Link>)}
-          {discovery.enabled && community.flags.enabled && <>
-            {community.flags.posting_enabled && <Link href="/community/new" onClick={() => setOpen(false)} className="flex min-h-12 items-center rounded-xl px-3 font-semibold hover:bg-[var(--teal-soft)]">{discoveryCopy.publish}</Link>}
-            <Link href="/community/messages" onClick={() => setOpen(false)} className="flex min-h-12 items-center rounded-xl px-3 font-semibold hover:bg-[var(--teal-soft)]">{discoveryCopy.notifications}{community.unread > 0 ? ` (${community.unread})` : ""}</Link>
-          </>}
           {community.flags.enabled && [["/community", "title"], ["/pet-friendly", "pets"], ...(!discovery.enabled ? [["/my", "my"]] : [])].map(([href, key]) => <Link key={href} href={href} onClick={() => setOpen(false)} className="flex min-h-12 items-center rounded-xl px-3 font-semibold hover:bg-[var(--teal-soft)]">{tc(key)}</Link>)}
           {links.map((item) => <Link key={item.href} href={item.href} onClick={() => setOpen(false)} className="flex min-h-12 items-center rounded-xl px-3 font-semibold hover:bg-[var(--teal-soft)]">
             {nav(item.key)}
