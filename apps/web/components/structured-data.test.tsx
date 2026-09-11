@@ -2,7 +2,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { StructuredData } from "@/components/structured-data";
 
-const html = (data: object | object[]) => renderToStaticMarkup(<StructuredData data={data} />);
+const html = (data: object | null | ReadonlyArray<object | null>) => renderToStaticMarkup(<StructuredData data={data} />);
 const payload = (markup: string) => JSON.parse(markup.replace(/^<script[^>]*>/, "").replace(/<\/script>$/, ""));
 
 describe("StructuredData", () => {
@@ -22,5 +22,17 @@ describe("StructuredData", () => {
     expect(markup.match(/<\/script>/g)).toHaveLength(1);
     expect(markup).not.toContain("<script>alert");
     expect(payload(markup).name).toBe("Ramen </script><script>alert(1)</script>");
+  });
+});
+
+describe("StructuredData empty input", () => {
+  it("renders nothing rather than a null graph", () => {
+    expect(html(null)).toBe("");
+    expect(html([])).toBe("");
+    expect(html([null, null])).toBe("");
+  });
+
+  it("drops the nulls and keeps the rest", () => {
+    expect(payload(html([null, { "@type": "WebSite" }]))).toEqual({ "@type": "WebSite" });
   });
 });

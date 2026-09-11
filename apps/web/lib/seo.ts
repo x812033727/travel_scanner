@@ -32,7 +32,9 @@ export function routePathFromRequest(value: string | null | undefined): string {
   if (!pathname.startsWith("/")) return "/";
   const [, first, ...rest] = pathname.split("/");
   if (!(locales as readonly string[]).includes(first)) return "/";
-  const suffix = rest.join("/").replace(/\/+$/, "");
+  // filter(Boolean) drops empty segments, which is every repeated-slash case at once: leading
+  // (`/en//foods`), interior (`/en/a//b`) and trailing (`/en/foods/`).
+  const suffix = rest.filter(Boolean).join("/");
   return suffix ? `/${suffix}` : "/";
 }
 
@@ -52,40 +54,4 @@ export function languageAlternates(path: string): Record<string, string> {
 
 export function alternatesFor(locale: Locale, path: string): Metadata["alternates"] {
   return { canonical: localeUrl(locale, path), languages: languageAlternates(path) };
-}
-
-/**
- * Page-level metadata with the canonical, the alternates and an Open Graph block that agrees
- * with this page's own title rather than the site-wide one.
- *
- * Callers pass the resolved strings rather than a message key on purpose:
- * `app/[locale]/metadata.test.ts` reads page sources for a literal `title: t("someKey")`, so the
- * key has to stay visible at the call site.
- */
-export function pageMetadata(input: {
-  locale: Locale;
-  path: string;
-  title: string;
-  description: string;
-  images?: string[];
-  type?: "website" | "article";
-  robots?: Metadata["robots"];
-}): Metadata {
-  const { locale, path, title, description, images = ["/og.png"], type = "website", robots } = input;
-  return {
-    title,
-    description,
-    alternates: alternatesFor(locale, path),
-    openGraph: {
-      title,
-      description,
-      url: localeUrl(locale, path),
-      images,
-      locale: locale.replace("-", "_"),
-      alternateLocale: locales.filter((value) => value !== locale).map((value) => value.replace("-", "_")),
-      type,
-    },
-    twitter: { card: "summary_large_image", title, description, images },
-    ...(robots ? { robots } : {}),
-  };
 }

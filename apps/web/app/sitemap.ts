@@ -3,15 +3,6 @@ import { PUBLIC_DESTINATIONS } from "@/components/travel-services/options";
 import { locales } from "@/i18n/routing";
 import { languageAlternates, localeUrl } from "@/lib/seo";
 
-/**
- * Rendered per request rather than prerendered. `siteUrl` comes from NEXT_PUBLIC_SITE_URL, which
- * docker-compose.prod.yml supplies as a build arg *and* at runtime -- but only the runtime one is
- * mandatory (`:?set NEXT_PUBLIC_SITE_URL`). Baking the origin in at build time means a build that
- * missed the arg ships a sitemap full of localhost URLs, and Google rejects a sitemap whose entries
- * are on another host, so the failure is both total and silent. Regenerating this costs nothing.
- */
-export const dynamic = "force-dynamic";
-
 type SitemapRoute = {
   /** Path after the locale prefix, as `routePathFromRequest` produces it. */
   path: string;
@@ -30,6 +21,11 @@ type SitemapRoute = {
  * - /explore, /explore/collections, /pet-friendly and the community routes, which are `noindex`
  *   because their content is fetched after hydration and the server sends an empty shell.
  * - every member and token route, which carries `noindex`.
+ * - /destinations/osaka/services and /destinations/kyoto/services. The services page accepts
+ *   CITIES as well as PUBLIC_DESTINATIONS, so those two resolve, self-canonicalize and duplicate
+ *   /destinations/osaka-kyoto/services -- whose guide is the only one of the three that exists.
+ *   Listing them would be advertising a duplicate whose parent 404s; the canonical belongs on
+ *   the services page itself, which is another task's file.
  */
 export const SITEMAP_ROUTES: readonly SitemapRoute[] = [
   { path: "/", priority: 1.0, changeFrequency: "daily" },
@@ -61,13 +57,20 @@ export const SITEMAP_ROUTES: readonly SitemapRoute[] = [
  * names, so it needs neither localization nor network. That is not a preference --
  * `API_INTERNAL_URL` only exists at runtime, this route is prerendered at build time, and the CI
  * web job has no API, so a fetch here would silently bake in an empty sitemap.
+ *
+ * Prerendered on purpose, and `siteUrl` being fixed at build is not a reason to change that:
+ * NEXT_PUBLIC_* is inlined into the server bundle, so a dynamic route would read the same baked
+ * value. apps/web/Dockerfile fails the build outright when the arg is missing, so there is no
+ * "built without an origin" case to defend against.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
   return SITEMAP_ROUTES.flatMap((route) =>
     locales.map((locale) => ({
       url: localeUrl(locale, route.path),
-      lastModified,
+      // No `lastModified`. Google honours it only where it tracks real content change, and
+      // nothing here knows when a city guide's places last moved -- that lives behind the API
+      // this route deliberately does not call. An omitted field is a missing signal; one that
+      // always says "now" teaches Google to distrust the whole file.
       changeFrequency: route.changeFrequency,
       priority: route.priority,
       alternates: { languages: languageAlternates(route.path) },

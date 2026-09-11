@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { siteUrl } from "@/lib/seo";
 import { breadcrumbs, itemList, organization, touristDestination, webSite } from "@/lib/structured-data";
 
-const parse = (value: object) => JSON.parse(JSON.stringify(value));
+const parse = (value: object | null) => JSON.parse(JSON.stringify(value));
 
 describe("organization", () => {
   it("names the brand and an absolute logo", () => {
@@ -70,7 +70,6 @@ describe("touristDestination", () => {
     const data = parse(touristDestination("en", tokyo));
     expect(data["@type"]).toBe("TouristDestination");
     expect(data.url).toBe(`${siteUrl}/en/destinations/tokyo`);
-    expect(data.inLanguage).toBe("en");
     expect(data.containedInPlace).toEqual({ "@type": "Country", name: "Japan" });
     expect(data.geo).toEqual({ "@type": "GeoCoordinates", latitude: 35.6812, longitude: 139.7671 });
   });
@@ -89,5 +88,23 @@ describe("touristDestination", () => {
     expect(data).not.toHaveProperty("geo");
     expect(data).not.toHaveProperty("alternateName");
     expect(data.name).toBe("가마쿠라");
+  });
+});
+
+describe("empty graphs", () => {
+  it("returns null rather than an empty BreadcrumbList or ItemList", () => {
+    // Rich Results treats an empty itemListElement as an invalid object, so there is nothing
+    // useful to emit. The component drops nulls instead of writing them into the document.
+    expect(breadcrumbs("en", [])).toBeNull();
+    expect(itemList("en", [])).toBeNull();
+  });
+});
+
+describe("touristDestination language", () => {
+  it("does not claim inLanguage, which is not a Place property", () => {
+    const data = parse(touristDestination("ja", {
+      name: "東京", path: "/destinations/tokyo", description: "", country: "", center: null,
+    }));
+    expect(data).not.toHaveProperty("inLanguage");
   });
 });

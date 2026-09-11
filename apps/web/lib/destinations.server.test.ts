@@ -62,30 +62,30 @@ describe("loadDestination", () => {
 
 describe("guide listings", () => {
   it("server-renders the ranked places, labelled by area", async () => {
-    const fetch = respond({ items: [{ name: "淺草寺", area: { code: "asakusa", name: "上野／淺草" }, category: "landmark" }] });
+    const fetch = respond({ items: [{ id: "h1", name: "淺草寺", area: { code: "asakusa", name: "上野／淺草" }, category: "landmark" }] });
     vi.stubGlobal("fetch", fetch);
     vi.stubEnv("API_INTERNAL_URL", "http://api.test");
-    expect(await loadPlaces("zh-TW", "tokyo")).toEqual([{ name: "淺草寺", detail: "上野／淺草" }]);
+    expect(await loadPlaces("zh-TW", "tokyo")).toEqual([{ id: "h1", name: "淺草寺", detail: "上野／淺草" }]);
     expect(fetch.mock.calls[0][0]).toBe("http://api.test/api/v1/hotspots/rankings?destination_id=tokyo&limit=12");
   });
 
   it("falls back to the category when a place has no area", async () => {
-    vi.stubGlobal("fetch", respond({ items: [{ name: "Shibuya Sky", area: null, category: "viewpoint" }] }));
-    expect(await loadPlaces("en", "tokyo")).toEqual([{ name: "Shibuya Sky", detail: "viewpoint" }]);
+    vi.stubGlobal("fetch", respond({ items: [{ id: "h2", name: "Shibuya Sky", area: null, category: "viewpoint" }] }));
+    expect(await loadPlaces("en", "tokyo")).toEqual([{ id: "h2", name: "Shibuya Sky", detail: "viewpoint" }]);
   });
 
   it("labels merchants by area, then by their first category", async () => {
     vi.stubGlobal("fetch", respond({
       items: [
-        { name: "一蘭", area: { name: "新宿" }, categories: [{ name: "拉麵" }] },
-        { name: "Nakamura", area: null, categories: [{ name: "Sushi" }] },
-        { name: "No name at all", area: null, categories: [] },
+        { id: "m1", name: "一蘭", area: { name: "新宿" }, categories: [{ name: "拉麵" }] },
+        { id: "m2", name: "Nakamura", area: null, categories: [{ name: "Sushi" }] },
+        { id: "m3", name: "No name at all", area: null, categories: [] },
       ],
     }));
     expect(await loadMerchants("zh-TW", "tokyo")).toEqual([
-      { name: "一蘭", detail: "新宿" },
-      { name: "Nakamura", detail: "Sushi" },
-      { name: "No name at all", detail: null },
+      { id: "m1", name: "一蘭", detail: "新宿" },
+      { id: "m2", name: "Nakamura", detail: "Sushi" },
+      { id: "m3", name: "No name at all", detail: null },
     ]);
   });
 
@@ -93,5 +93,39 @@ describe("guide listings", () => {
     vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new Error("offline")));
     expect(await loadPlaces("en", "tokyo")).toEqual([]);
     expect(await loadMerchants("en", "tokyo")).toEqual([]);
+  });
+});
+
+describe("payloads that used to take the page down", () => {
+  it("skips a null row instead of throwing", async () => {
+    // toSummary ran outside the try/catch, so one null item in the array turned a page whose
+    // whole design is "degrade, do not fall over" into a 500.
+    vi.stubGlobal("fetch", respond({ items: [null, tokyo, "not an object", 42] }));
+    const rows = await loadDestinations("en");
+    expect(rows).toHaveLength(1);
+    expect(rows?.[0].id).toBe("tokyo");
+  });
+
+  it("reports a partial recommended_days as absent rather than as zero", async () => {
+    // {min: 3} used to render "3–0 days" on the destination index, which guards on min alone.
+    vi.stubGlobal("fetch", respond({ items: [{ ...tokyo, recommended_days: { min: 3 } }] }));
+    expect((await loadDestinations("en"))?.[0].recommendedDays).toBeNull();
+  });
+
+  it("drops blank areas rather than rendering an empty pill", async () => {
+    vi.stubGlobal("fetch", respond({ items: [{ ...tokyo, areas: ["新宿", "", "   ", 7] }] }));
+    expect((await loadDestinations("en"))?.[0].areas).toEqual(["新宿"]);
+  });
+
+  it("trims padding before it reaches the DOM and the JSON-LD", async () => {
+    vi.stubGlobal("fetch", respond({ items: [{ ...tokyo, city: "  Tokyo Tower  " }] }));
+    expect((await loadDestinations("en"))?.[0].city).toBe("Tokyo Tower");
+  });
+
+  it("gives same-named entries distinct keys when the API omits ids", async () => {
+    // Chains share a name within one city; keying the list by name collided in React.
+    vi.stubGlobal("fetch", respond({ items: [{ name: "7-Eleven" }, { name: "7-Eleven" }] }));
+    const entries = await loadMerchants("en", "tokyo");
+    expect(new Set(entries.map((entry) => entry.id)).size).toBe(2);
   });
 });

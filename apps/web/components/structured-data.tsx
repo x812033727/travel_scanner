@@ -10,11 +10,16 @@
  * graphs, and one containing `</script>` would close this element early. `<` is a JSON escape
  * that parses back to `<`, so the graph is unchanged.
  */
-export function StructuredData({ data }: { data: object | object[] }) {
+export function StructuredData({ data }: { data: object | null | ReadonlyArray<object | null> }) {
+  // A builder returns null rather than an empty graph (an empty BreadcrumbList is a Rich Results
+  // error), so drop those instead of emitting `null` into the document.
+  const graphs = (Array.isArray(data) ? data : [data]).filter((entry): entry is object => entry !== null);
+  if (!graphs.length) return null;
+  const payload = graphs.length === 1 ? graphs[0] : graphs;
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\\u003c") }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(payload).replace(/</g, "\\u003c") }}
     />
   );
 }

@@ -43,6 +43,13 @@ describe("sitemap", () => {
     expect(new Set(urls).size).toBe(urls.length);
   });
 
+  it("publishes no lastmod at all", () => {
+    // A `lastmod` of "now" on every crawl is worse than none: Google honours the field only
+    // where it tracks real content change, and this route has no access to that -- the city
+    // guides' content lives behind the API it deliberately does not call.
+    for (const entry of entries) expect(entry.lastModified).toBeUndefined();
+  });
+
   it("uses absolute URLs on the canonical origin", () => {
     for (const entry of entries) expect(entry.url.startsWith(`${siteUrl}/`)).toBe(true);
   });

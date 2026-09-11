@@ -19,8 +19,8 @@ function draw(overrides: Partial<Parameters<typeof DestinationGuide>[0]> = {}) {
     <DestinationGuide
       locale="zh-TW"
       destination={tokyo}
-      places={[{ name: "淺草寺", detail: "上野／淺草" }]}
-      merchants={[{ name: "一蘭", detail: "新宿" }]}
+      places={[{ id: "p1", name: "淺草寺", detail: "上野／淺草" }]}
+      merchants={[{ id: "m1", name: "一蘭", detail: "新宿" }]}
       related={[yokohama]}
       {...overrides}
     />,

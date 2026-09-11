@@ -54,7 +54,9 @@ export default async function DestinationsPage({ params }: { params: Promise<{ l
   // the two-letter code, which is still a stable grouping key.
   const groups = new Map<string, DestinationSummary[]>();
   for (const destination of destinations) {
-    const key = destination.country || destination.countryCode;
+    // `country` is the localized label; the code is the offline fallback's only value and a
+    // usable grouping key, but it also becomes the visible <h2>, so blanks must not get through.
+    const key = destination.country || destination.countryCode || copy.indexTitle;
     groups.set(key, [...(groups.get(key) ?? []), destination]);
   }
 
@@ -82,7 +84,7 @@ export default async function DestinationsPage({ params }: { params: Promise<{ l
                     </Link>
                   </h3>
                   {destination.reason ? <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{destination.reason}</p> : null}
-                  {destination.recommendedDays.min ? (
+                  {destination.recommendedDays ? (
                     <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">
                       {copy.factsDays}: {destination.recommendedDays.min}–{destination.recommendedDays.max} {copy.daysUnit}
                     </p>

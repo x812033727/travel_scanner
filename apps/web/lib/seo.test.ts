@@ -20,6 +20,14 @@ describe("routePathFromRequest", () => {
     expect(routePathFromRequest("/en/explore?content=video:abc#top")).toBe("/explore");
   });
 
+  it("does not let a repeated slash into the canonical", () => {
+    // Next 308-redirects repeated slashes before proxy.ts sets the header, so this is not
+    // reachable over HTTP today -- but this is an exported builder, and `//foods` would have
+    // gone into the canonical and all six hreflang links.
+    expect(routePathFromRequest("/en//foods")).toBe("/foods");
+    expect(routePathFromRequest("/en///a//b")).toBe("/a/b");
+  });
+
   it("keeps nested dynamic segments", () => {
     expect(routePathFromRequest("/ja/destinations/tokyo/services")).toBe("/destinations/tokyo/services");
   });

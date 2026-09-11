@@ -12,9 +12,9 @@ import type { DestinationSummary, GuideEntry } from "@/lib/destinations.server";
  */
 
 function Facts({ destination, copy }: { destination: DestinationSummary; copy: ReturnType<typeof destinationsCopy> }) {
-  const { min, max } = destination.recommendedDays;
+  const days = destination.recommendedDays;
   const facts = [
-    min && max ? { label: copy.factsDays, value: `${min}–${max} ${copy.daysUnit}` } : null,
+    days ? { label: copy.factsDays, value: `${days.min}–${days.max} ${copy.daysUnit}` } : null,
     destination.timezone ? { label: copy.factsTimezone, value: destination.timezone } : null,
     destination.currency ? { label: copy.factsCurrency, value: destination.currency } : null,
   ].filter((fact): fact is { label: string; value: string } => fact !== null);
@@ -38,7 +38,7 @@ function EntryList({ title, entries, empty, action }: { title: string; entries: 
       {entries.length ? (
         <ul className="mt-4 grid gap-2 sm:grid-cols-2">
           {entries.map((entry) => (
-            <li key={entry.name} className="rounded-2xl border border-[var(--line)] px-4 py-3">
+            <li key={entry.id} className="rounded-2xl border border-[var(--line)] px-4 py-3">
               <span className="font-semibold">{entry.name}</span>
               {entry.detail ? <span className="ml-2 text-sm text-[var(--muted)]">{entry.detail}</span> : null}
             </li>

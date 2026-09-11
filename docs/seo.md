@@ -99,12 +99,15 @@ One entry per locale per route, each carrying the full five-locale plus `x-defau
 set — 365 URLs today, against a 50,000-per-file limit, so there is no sitemap index and no
 `generateSitemaps()`. Revisit that when hotspot, merchant or article detail URLs exist.
 
-`robots.ts` and `sitemap.ts` are `force-dynamic`. Left prerendered they resolve `siteUrl` at
-build time, and a build that missed the `NEXT_PUBLIC_SITE_URL` build arg publishes a sitemap full
-of `localhost` URLs. `docker-compose.prod.yml` supplies the value both ways, but only the runtime
-one is mandatory (`:?set NEXT_PUBLIC_SITE_URL`), and Google rejects a sitemap whose entries are on
-another host — so the failure would be total and silent. Regenerating two small documents per
-request costs nothing.
+`robots.ts` and `sitemap.ts` are prerendered, and `siteUrl` is fixed at build time. That is not a
+limitation to work around: `NEXT_PUBLIC_*` is inlined into the server bundle, so making the routes
+dynamic reads the same baked value — it buys nothing. `apps/web/Dockerfile` fails the build
+outright when the arg is missing, so there is no "built without an origin" case to defend against.
+
+Neither route emits `lastmod`. Google honours it only where it tracks real content change, and
+nothing here knows when a city guide's places last moved — that lives behind the API the sitemap
+deliberately does not call. An omitted field is a missing signal; one that always says "now"
+teaches Google to distrust the whole file.
 
 The sitemap does **not** call the API. The 33 destination slugs are already in the web bundle
 (`PUBLIC_DESTINATIONS` in `components/travel-services/options.ts`) and the sitemap needs URLs,
@@ -141,13 +144,19 @@ JSON-LD is emitted by a shared server component. Two details are load-bearing:
   component, which forfeits static rendering for every page that uses it. If a real browser ever
   reports a CSP violation, revisit — the policy is Report-Only today.
 
-| Type | Where |
-| --- | --- |
-| `Organization`, `WebSite` + `SearchAction` | home page only |
-| `BreadcrumbList` | every nested page |
-| `TouristDestination` | `/destinations/{id}`, with `geo` from the catalog's `center` |
-| `ItemList` | `/destinations`, `/hotspots`, `/foods` |
-| `FAQPage` | only where a real question-and-answer block is rendered |
+| Type | Where | Why not elsewhere |
+| --- | --- | --- |
+| `Organization`, `WebSite` + `SearchAction` | home page only | one canonical place per site |
+| `BreadcrumbList` | the content pages: `/hotspots`, `/foods`, `/destinations`, `/destinations/{id}` | `/pricing`, `/flights/status` and `/labs/airlines` are tools, not content; a two-level `Home › Plans` trail tells a reader nothing the URL does not |
+| `TouristDestination` | `/destinations/{id}`, `geo` from the catalog's `center` | — |
+| `ItemList` | `/destinations` only | a `ListItem` needs a URL to be worth emitting, and hotspot and merchant entries have no pages of their own |
+| `FAQPage` | **not implemented** | there is no question-and-answer block on any page to describe |
+
+`TouristDestination` deliberately carries no `inLanguage`: it derives from `Place`, and `inLanguage`
+is a `CreativeWork` property that validators flag as unexpected. It is correct on `WebSite`.
+
+A builder returns `null` rather than an empty graph — an empty `itemListElement` is a Rich Results
+"invalid object" — and the component drops nulls instead of writing them into the document.
 
 `/pricing` does not get `Product` or `Offer`. Usage plans are not products, and mislabelled
 structured data is a Search Console violation. `Article` and `Person` wait until the community
@@ -229,3 +238,27 @@ curl -s localhost:3000/zh-TW                 | grep -c '<h1'
 After deploying: submit `sitemap.xml` in Google Search Console, check `/destinations/{id}` in the
 Rich Results Test, and use URL Inspection to confirm the declared canonical is the one Google
 selected.
+
+## Known gaps in the `(stay22-public)` tree
+
+`/{locale}/destinations/{id}/services` is 165 of the 365 sitemap URLs, and it lives in a second
+root layout under `app/(stay22-public)/`. That whole tree belongs to another task's scope, so the
+following are recorded rather than fixed:
+
+- **It builds its own `alternates`** in `components/travel-services/destination-services-page.tsx`
+  instead of using `lib/seo.ts`, and omits `x-default`. The sitemap publishes `x-default` for the
+  same URLs, so the page markup and the sitemap declare different hreflang sets — the exact drift
+  `lib/seo.ts` exists to prevent, on the one route that bypasses it.
+- **All 165 share one meta description.** The page uses `t("intro")`, which takes no arguments,
+  so every city ships "Stay, explore and arrive ready…" and titles that differ only by city name.
+  `app/[locale]/metadata.test.ts` cannot catch this: its walk starts at `app/[locale]` and never
+  enters the route group.
+- **`/destinations/osaka/services` and `/destinations/kyoto/services` resolve** because the page
+  accepts `CITIES` as well as `PUBLIC_DESTINATIONS`. They self-canonicalize, duplicate
+  `/destinations/osaka-kyoto/services`, and their guides (`/destinations/osaka`) 404. They are
+  kept out of the sitemap; the canonical belongs on the services page itself.
+- **No JSON-LD, and no `SiteFooter`** — so those 165 URLs carry no breadcrumb and none of the
+  site-wide footer links, including the one to `/destinations`.
+
+Whoever next owns that tree should point its metadata at `lib/seo.ts` and give each city its own
+description.

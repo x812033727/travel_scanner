@@ -49,7 +49,8 @@ export function webSite(locale: Locale): object {
 export type Crumb = { name: string; path: string };
 
 /** The trail a reader walked, in order, starting at the locale home page. */
-export function breadcrumbs(locale: Locale, trail: readonly Crumb[]): object {
+export function breadcrumbs(locale: Locale, trail: readonly Crumb[]): object | null {
+  if (!trail.length) return null;
   return {
     "@context": CONTEXT,
     "@type": "BreadcrumbList",
@@ -64,7 +65,8 @@ export function breadcrumbs(locale: Locale, trail: readonly Crumb[]): object {
 
 /** A list whose entries have their own pages. Entries without a URL are left unmarked: a
  *  ListItem a crawler cannot follow is not worth describing. */
-export function itemList(locale: Locale, items: readonly Crumb[]): object {
+export function itemList(locale: Locale, items: readonly Crumb[]): object | null {
+  if (!items.length) return null;
   return {
     "@context": CONTEXT,
     "@type": "ItemList",
@@ -94,7 +96,8 @@ export function touristDestination(
     "@type": "TouristDestination",
     name: input.name,
     url: localeUrl(locale, input.path),
-    inLanguage: locale,
+    // No `inLanguage`: TouristDestination derives from Place, and inLanguage is a CreativeWork
+    // property. Validators flag it as unexpected. It is correct on WebSite above.
     ...(input.description ? { description: input.description } : {}),
     ...(alternateName.length ? { alternateName } : {}),
     ...(input.country ? { containedInPlace: { "@type": "Country", name: input.country } } : {}),

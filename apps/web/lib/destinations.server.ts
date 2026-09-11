@@ -28,14 +28,14 @@ export type DestinationSummary = {
   parentDestinationId: string | null;
   extensionIds: string[];
   areas: string[];
-  recommendedDays: { min: number; max: number };
+  recommendedDays: { min: number; max: number } | null;
   timezone: string;
   currency: string;
   center: { latitude: number; longitude: number } | null;
   reason: string;
 };
 
-export type GuideEntry = { name: string; detail: string | null };
+export type GuideEntry = { id: string; name: string; detail: string | null };
 
 function apiBase() {
   return (process.env.API_INTERNAL_URL || "http://localhost:8000").replace(/\/$/, "");
@@ -56,9 +56,11 @@ async function fetchJson(path: string, locale: string, revalidate: number): Prom
   }
 }
 
-const text = (value: unknown) => (typeof value === "string" && value.trim() ? value : null);
+const text = (value: unknown) => (typeof value === "string" && value.trim() ? value.trim() : null);
 
-function toSummary(row: Record<string, unknown>): DestinationSummary | null {
+function toSummary(value: unknown): DestinationSummary | null {
+  if (typeof value !== "object" || value === null) return null;
+  const row = value as Record<string, unknown>;
   const id = text(row.id);
   const city = text(row.city);
   if (!id || !city) return null;
@@ -75,11 +77,13 @@ function toSummary(row: Record<string, unknown>): DestinationSummary | null {
     role,
     parentDestinationId: text(row.parent_destination_id),
     extensionIds: Array.isArray(row.extension_ids) ? row.extension_ids.filter((value): value is string => typeof value === "string") : [],
-    areas: Array.isArray(row.areas) ? row.areas.filter((value): value is string => typeof value === "string") : [],
-    recommendedDays: {
-      min: typeof days.min === "number" ? days.min : 0,
-      max: typeof days.max === "number" ? days.max : 0,
-    },
+    areas: Array.isArray(row.areas) ? row.areas.map(text).filter((value): value is string => value !== null) : [],
+    // Null rather than zeroes: a partial `{min: 3}` used to render "3–0 days" on the
+    // destination index, which guards on min alone. Absent and zero are different facts.
+    recommendedDays:
+      typeof days.min === "number" && typeof days.max === "number"
+        ? { min: days.min, max: days.max }
+        : null,
     timezone: text(row.timezone) ?? "",
     currency: text(row.currency) ?? "",
     center:
@@ -94,7 +98,7 @@ export async function loadDestinations(locale: string): Promise<DestinationSumma
   const payload = (await fetchJson("/destinations", locale, CATALOG_TTL)) as Record<string, unknown> | null;
   const items = payload?.items;
   if (!Array.isArray(items)) return null;
-  const rows = items.map((item) => toSummary(item as Record<string, unknown>)).filter((row): row is DestinationSummary => row !== null);
+  const rows = items.map(toSummary).filter((row): row is DestinationSummary => row !== null);
   return rows.length ? rows : null;
 }
 
@@ -108,12 +112,14 @@ export async function loadPlaces(locale: string, id: string): Promise<GuideEntry
   const payload = (await fetchJson(`/hotspots/rankings?destination_id=${encodeURIComponent(id)}&limit=12`, locale, LISTING_TTL)) as Record<string, unknown> | null;
   const items = Array.isArray(payload?.items) ? payload.items : [];
   return items
-    .map((item) => {
+    .map((item, index) => {
+      if (typeof item !== "object" || item === null) return null;
       const row = item as Record<string, unknown>;
       const name = text(row.name);
       if (!name) return null;
       const area = row.area as Record<string, unknown> | null;
-      return { name, detail: text(area?.name) ?? text(row.category) };
+      // Chains share a name within one city, so the name is not a usable React key.
+      return { id: text(row.id) ?? `${name}-${index}`, name, detail: text(area?.name) ?? text(row.category) };
     })
     .filter((entry): entry is GuideEntry => entry !== null);
 }
@@ -122,14 +128,15 @@ export async function loadMerchants(locale: string, id: string): Promise<GuideEn
   const payload = (await fetchJson(`/foods/merchants?destination_id=${encodeURIComponent(id)}&limit=12`, locale, LISTING_TTL)) as Record<string, unknown> | null;
   const items = Array.isArray(payload?.items) ? payload.items : [];
   return items
-    .map((item) => {
+    .map((item, index) => {
+      if (typeof item !== "object" || item === null) return null;
       const row = item as Record<string, unknown>;
       const name = text(row.name);
       if (!name) return null;
       const area = row.area as Record<string, unknown> | null;
       const categories = Array.isArray(row.categories) ? row.categories : [];
       const first = categories[0] as Record<string, unknown> | undefined;
-      return { name, detail: text(area?.name) ?? text(first?.name) };
+      return { id: text(row.id) ?? `${name}-${index}`, name, detail: text(area?.name) ?? text(first?.name) };
     })
     .filter((entry): entry is GuideEntry => entry !== null);
 }

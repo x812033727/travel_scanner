@@ -1,14 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteUrl } from "@/lib/seo";
 
-/**
- * Rendered per request rather than prerendered. `siteUrl` comes from NEXT_PUBLIC_SITE_URL, which
- * docker-compose.prod.yml supplies as a build arg *and* at runtime -- but only the runtime one is
- * mandatory (`:?set NEXT_PUBLIC_SITE_URL`). Baking the origin in at build time means a build that
- * missed the arg ships a robots.txt full of localhost URLs, and Google rejects a sitemap whose entries
- * are on another host, so the failure is both total and silent. Regenerating this costs nothing.
- */
-export const dynamic = "force-dynamic";
 
 /**
  * Disallow is not a way to remove a page from an index: a blocked URL is never fetched, so the

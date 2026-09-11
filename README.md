@@ -72,6 +72,13 @@ Production never falls back to mock or supplier test prices when credentials are
 absent. The experimental airline crawler remains a separate, non-bookable
 public-fare research surface.
 
+## Search indexing
+
+Public pages are indexable in five languages, with per-page canonical and hreflang, a
+`robots.txt`, a 365-URL sitemap and schema.org markup. [`docs/seo.md`](docs/seo.md) records which
+routes are indexable and why, the rules a change must not break, and what to do when adding a new
+public page.
+
 ## Architecture and project structure
 
 - `apps/web`: Next.js App Router frontend and same-origin BFF
