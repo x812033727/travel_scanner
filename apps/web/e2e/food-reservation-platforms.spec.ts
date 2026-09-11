@@ -117,7 +117,12 @@ for (const locale of Object.keys(catalogs) as (keyof typeof catalogs)[]) {
       await expect(name).toHaveValue("Unsaved merchant draft");
       const overflow = await editor.evaluate((element) => element.scrollWidth > element.clientWidth);
       expect(overflow).toBe(false);
-      await editor.screenshot({ path: info.outputPath(`platforms-${locale}-${width}.png`) });
+      // A tall element screenshot extends outside the fixed modal viewport and
+      // can include its background. Record the visible UI at both ends instead.
+      await provider.scrollIntoViewIfNeeded();
+      await page.screenshot({ path: info.outputPath(`platforms-${locale}-${width}.png`) });
+      await save.scrollIntoViewIfNeeded();
+      await page.screenshot({ path: info.outputPath(`platforms-save-${locale}-${width}.png`) });
     });
   }
 }
