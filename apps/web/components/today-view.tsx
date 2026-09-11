@@ -4,7 +4,7 @@ import { ArrowLeft, CalendarDays, Home, MapPin, Navigation } from "lucide-react"
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { Link } from "@/i18n/navigation";
-import { api } from "@/lib/api";
+import { api, ApiError } from "@/lib/api";
 import { safeExternalHref } from "@/lib/navigation";
 import {
   formatTime,
@@ -47,13 +47,22 @@ export function TodayView({ tripId }: { tripId: string }) {
   const t = useTranslations("trips.today");
   const locale = useLocale();
   const [trip, setTrip] = useState<Trip>();
-  const [offline, setOffline] = useState(false);
+  // Every failure used to be reported as "you are offline", including a 500 and a
+  // trip that is no longer there, with no way to try again.
+  const [failure, setFailure] = useState<"offline" | "error">();
+  const [attempt, setAttempt] = useState(0);
 
   useEffect(() => {
+    let active = true;
     api<Trip>(`/trips/${tripId}`)
-      .then(setTrip)
-      .catch(() => setOffline(true));
-  }, [tripId]);
+      .then((value) => { if (active) setTrip(value); })
+      .catch((reason: unknown) => {
+        if (!active) return;
+        const reachable = reason instanceof ApiError && reason.status > 0;
+        setFailure(reachable ? "error" : "offline");
+      });
+    return () => { active = false; };
+  }, [tripId, attempt]);
 
   /**
    * This page hides the site header below lg, the bottom navigation returns null for
@@ -72,7 +81,14 @@ export function TodayView({ tripId }: { tripId: string }) {
   if (!trip) {
     return <main className="mx-auto max-w-xl px-5 py-16">
       {exits}
-      <p className="text-[var(--muted)]">{offline ? t("unavailable") : t("loading")}</p>
+      <p className="text-[var(--muted)]">
+        {failure === "offline" ? t("unavailableOffline") : failure === "error" ? t("unavailableError") : t("loading")}
+      </p>
+      {failure && <button
+        type="button"
+        onClick={() => { setFailure(undefined); setAttempt((count) => count + 1); }}
+        className="mt-4 inline-flex min-h-11 items-center rounded-xl bg-[var(--teal)] px-4 text-sm font-semibold text-white"
+      >{t("retry")}</button>}
     </main>;
   }
 

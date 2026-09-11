@@ -528,6 +528,23 @@ export function SearchExperience() {
   const [hotelSort, setHotelSort] = useState<
     "recommended" | "price" | "rating" | "distance"
   >("recommended");
+  // These filters can empty the results between them, and the row that sets them
+  // had no way to unset them: the reader was left staring at "nothing here" with
+  // no idea which of six controls to undo.
+  const filtersApplied =
+    directOnly || refundableFlightOnly || sortByPrice
+    || activityInterest !== "all" || hotelMinRating > 0 || hotelNightlyMax > 0
+    || hotelMaxWalk > 0 || hotelSort !== "recommended";
+  function clearFilters() {
+    setDirectOnly(false);
+    setRefundableFlightOnly(false);
+    setSortByPrice(false);
+    setActivityInterest("all");
+    setHotelMinRating(0);
+    setHotelNightlyMax(0);
+    setHotelMaxWalk(0);
+    setHotelSort("recommended");
+  }
   const started = useRef(false);
   const resumed = useRef(false);
   const [insufficient, setInsufficient] = useState(false);
@@ -1839,6 +1856,15 @@ export function SearchExperience() {
             activeTab !== "connectivity" && (
               <div className="mb-4 flex flex-wrap items-center gap-4 rounded-2xl border border-[var(--line)] bg-white px-4 py-3 text-sm">
                 <strong className="text-[var(--teal-dark)]">{t("quickFilters")}</strong>
+                {filtersApplied && (
+                  <button
+                    type="button"
+                    onClick={clearFilters}
+                    className="ml-auto inline-flex min-h-11 items-center rounded-xl border border-[var(--line)] px-3 font-semibold text-[var(--teal)]"
+                  >
+                    {t("clearFilters")}
+                  </button>
+                )}
                 {activeTab !== "hotel" && (
                   <label className="flex items-center gap-2">
                     <input

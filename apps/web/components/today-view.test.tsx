@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { nowAndNext, TodayView } from "./today-view";
 import type { TripItem } from "@/lib/trip-types";
@@ -106,5 +106,27 @@ describe("a way out of the day view", () => {
     expect(await screen.findByText(/現在讀不到這趟行程/)).toBeTruthy();
     expect(screen.getByRole("link", { name: "我的旅程" })).toBeTruthy();
     expect(screen.getByRole("link", { name: "首頁" })).toBeTruthy();
+  });
+});
+
+describe("the day view when the trip cannot be read", () => {
+  /** A 500 and a dead connection are different news, and neither had a retry. */
+  it("separates a server that answered badly from a network that did not answer", async () => {
+    vi.stubGlobal("fetch", vi.fn(async () => new Response("{}", { status: 500, headers: { "Content-Type": "application/json" } })));
+    render(<TodayView tripId="trip-1" />);
+
+    expect(await screen.findByText(/讀取這趟行程時出了問題/)).toBeTruthy();
+    expect(screen.getByRole("button", { name: "重試一次" })).toBeTruthy();
+  });
+
+  it("still says offline when the request never reached anything", async () => {
+    const fetchMock = vi.fn(async () => { throw new TypeError("Failed to fetch"); });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TodayView tripId="trip-1" />);
+
+    expect(await screen.findByText(/連上網路後再試一次/)).toBeTruthy();
+    const before = fetchMock.mock.calls.length;
+    fireEvent.click(screen.getByRole("button", { name: "重試一次" }));
+    await waitFor(() => expect(fetchMock.mock.calls.length).toBeGreaterThan(before));
   });
 });

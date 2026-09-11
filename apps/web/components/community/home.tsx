@@ -43,7 +43,14 @@ export function MyDirectory() {
     ...(user?.is_admin ? [["/admin", "admin"]] : []),
     ...(!user ? [["/login", "login"]] : []),
   ];
-  return <div className="space-y-8"><nav aria-label={t("my")} className="mb-6 grid gap-4 sm:grid-cols-2">{links.map(([href, key]) => <Link key={key} href={href} className={`${panelClass} flex min-h-16 items-center font-semibold hover:border-[var(--teal)]`}>{t(key)}</Link>)}</nav>
+  return <div className="space-y-8">
+    {/* Every link above needed a session and the page said so nowhere: a signed-out
+        reader saw a grid of destinations and one unexplained "login" among them. */}
+    {!user && <section className="mb-6 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-5">
+      <h2 className="font-bold">{t("signedOutTitle")}</h2>
+      <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{t("signedOutBody")}</p>
+    </section>}
+    <nav aria-label={t("my")} className="mb-6 grid gap-4 sm:grid-cols-2">{links.map(([href, key]) => <Link key={key} href={href} className={`${panelClass} flex min-h-16 items-center font-semibold hover:border-[var(--teal)]`}>{t(key)}</Link>)}</nav>
     {discovery.enabled && <>
       <section className={panelClass}><h2 className="mb-4 text-lg font-bold">{copy.tools}</h2><nav aria-label={copy.tools} className="grid gap-2 sm:grid-cols-2"><Link href="/search/new" className="min-h-12 rounded-xl px-3 py-3 font-semibold text-[var(--teal)]">{copy.search}</Link>{primaryNavLinks.filter((item) => item.key !== "trips" && (!item.feature || featureVisible(visibility, item.feature))).map((item) => <Link key={item.key} href={item.href} className="min-h-12 rounded-xl px-3 py-3 hover:bg-[var(--paper)]">{nav(item.key)}</Link>)}</nav></section>
       {user && <button type="button" onClick={() => void logout()} className="min-h-11 rounded-xl border border-[var(--line)] px-5">{copy.logout}</button>}

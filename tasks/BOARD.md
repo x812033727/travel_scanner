@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**40 open · 1 in progress · 3 blocked · 21 in review · 227 done**
+**39 open · 1 in progress · 3 blocked · 21 in review · 228 done**
 
 ## Ready to claim
 
@@ -86,7 +86,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [Community read metric duplicate observed alongside smoke ECONNRESET](open/2026-09-07-community-read-metric-concurrency.md) | active work in the same scope |
 | P2 | [Preserve force refresh in daily route background jobs](open/2026-09-10-daily-route-force-refresh.md) | active work in the same scope |
 | P2 | [彈層原語未統一與可及性收尾](open/2026-09-11-dialog-primitives-and-a11y-cleanup.md) | active work in the same scope |
-| P2 | [六處死路與缺空狀態合集](open/2026-09-11-ux-dead-ends-and-empty-states.md) | active work in the same scope |
 | P2 | [安排編輯器的關閉鈕在儲存在途時被靜默吞掉](open/2026-09-11-planner-overlay-close-guard-race.md) | active work in the same scope |
 | P2 | [推薦流的語言選擇與同地點去重](open/2026-09-11-discovery-feed-language-and-dedup.md) | active work in the same scope |
 | P2 | [formatTime 在沒有時間時回傳寫死的繁中](open/2026-09-11-format-time-chinese-fallback.md) | active work in the same scope |
@@ -96,6 +95,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## Recently finished
 
+- 2026-09-11 [六處死路與缺空狀態合集](done/2026-09-11-ux-dead-ends-and-empty-states.md)
 - 2026-09-11 [登入頁的送出鈕在手機上要捲一下才看得到](done/2026-09-11-bottom-nav-covers-page-content.md)
 - 2026-09-11 [規格書明定為必要的目的地支援閘門從未實作](done/2026-09-11-destination-supported-gate-missing.md)
 - 2026-09-11 [行程規劃器在手機沒有全域導覽且離線頁無入口](done/2026-09-11-planner-mobile-navigation-and-offline.md)
@@ -105,4 +105,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-11 [餘額與行程上限都只在使用者投入之後才告知](done/2026-09-11-quota-and-limits-shown-too-late.md)
 - 2026-09-11 [後端回傳的繁中警告句被原樣顯示在所有語系](done/2026-09-11-api-warnings-leak-zh-tw.md)
 - 2026-09-11 [合作平台面板繁中且漏用在地化佣金揭露](done/2026-09-11-affiliate-panel-i18n-and-disclosure.md)
-- 2026-09-11 [行程時間軸硬編碼繁中而它正是分享頁的主體](done/2026-09-11-itinerary-timeline-hardcoded-zh-tw.md)
