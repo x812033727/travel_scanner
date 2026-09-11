@@ -101,6 +101,25 @@ async def saved_keys(session: AsyncSession, viewer: User) -> list[str]:
     return list(dict.fromkeys(keys))[:500]
 
 
+async def apply_saved_counts(
+    session: AsyncSession, items: list[DiscoveryItem]
+) -> dict[str, int]:
+    """Fill the public save count on items that are about to be shown, and return it.
+
+    Only display paths call this. ``explicit_context`` resolves up to 500 saved
+    references whose counts nobody renders, so filling inside
+    ``resolve_discovery_items`` would pay for that query five times per recommended feed.
+    """
+    from app.saved.service import saved_counts
+
+    if not items:
+        return {}
+    counts = await saved_counts(session, [item.id for item in items])
+    for item in items:
+        item.saved_count = counts.get(item.id, 0)
+    return counts
+
+
 async def explicit_context(
     session: AsyncSession, viewer: User | None, locale: Locale
 ) -> dict[str, Any]:
@@ -328,9 +347,11 @@ async def page(
                         content_locale=content_locale,
                     )
                 )
+        ranked = mode == "most_saved"
+        counts = await apply_saved_counts(session, items) if ranked else {}
         items.sort(
             key=lambda item: (
-                reason(item, context)[0] if context else 0,
+                counts.get(item.id, 0) if ranked else (reason(item, context)[0] if context else 0),
                 item.published_at or item.updated_at or "",
                 item.id,
             ),
@@ -392,9 +413,13 @@ async def page(
             if mode == "recommended":
                 context = context or await explicit_context(session, viewer, locale)
                 item.recommendation_reason = reason(item, context)[1]
+            elif mode == "most_saved":
+                # The count on the card is the reason; there is no separate line.
+                item.recommendation_reason = None
             else:
                 item.recommendation_reason = "following" if mode == "following" else "latest"
             output.append(item)
+    await apply_saved_counts(session, output)
     return {
         "enabled": True,
         "items": output,

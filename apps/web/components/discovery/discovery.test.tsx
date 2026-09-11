@@ -94,6 +94,30 @@ describe("discovery sources and privacy", () => {
     expect((await screen.findByRole("link", { name: "登入後繼續" })).getAttribute("href")).toContain(encodeURIComponent("destination=tokyo&mode=following"));
     expect(mock.api.mock.calls.some(([path]) => String(path).includes("/feed"))).toBe(false);
   });
+  it("ranks by the cumulative saved count on its own tab, without requiring a sign-in", async () => {
+    render(<DiscoveryExplorer />);
+    fireEvent.click(await screen.findByRole("button", { name: "蒐藏數" }));
+    expect(mock.push).toHaveBeenCalledWith("/explore?mode=most_saved", { scroll: false });
+    mock.push.mockReset(); mock.query = "mode=most_saved"; cleanup();
+    render(<DiscoveryExplorer />);
+    expect(await screen.findByText(item.title)).toBeTruthy();
+    await waitFor(() => expect(mock.api.mock.calls.some(([path]) => String(path) === "/discovery/feed?mode=most_saved")).toBe(true));
+    expect(screen.queryByRole("link", { name: "登入後繼續" })).toBeNull();
+  });
+  it("keeps the saved-count tab between latest and following", async () => {
+    mock.social = true;
+    render(<DiscoveryExplorer />);
+    const tabs = await screen.findByLabelText("下一站，從這裡發現", { selector: "div" });
+    expect(within(tabs).getAllByRole("button").map((button) => button.textContent)).toEqual(["為你推薦", "最新", "蒐藏數", "追蹤中"]);
+  });
+  it("shows the cumulative saved count on the card only once someone has saved it", () => {
+    const view = render(<DiscoveryCard item={{ ...item, saved_count: 3 }} />);
+    expect(screen.getByText("3 次收藏")).toBeTruthy();
+    view.rerender(<DiscoveryCard item={{ ...item, saved_count: 0 }} />);
+    expect(screen.queryByText(/次收藏$/)).toBeNull();
+    view.rerender(<DiscoveryCard item={item} />);
+    expect(screen.queryByText(/次收藏$/)).toBeNull();
+  });
   it("exposes guide collections without community enrollment or fake hotel prices", async () => {
     mock.user = { id: "reader" }; mock.identity = {};
     render(<OrganizeSavedContent item={{ ...item, kind: "hotel", id: "hotel:1" }} onClose={vi.fn()} />);

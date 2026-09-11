@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**47 open · 1 in progress · 3 blocked · 20 in review · 202 done**
+**47 open · 2 in progress · 3 blocked · 20 in review · 202 done**
 
 ## Ready to claim
 
@@ -50,6 +50,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
 | [Configurable catalog review run call limit](open/2026-09-09-configurable-catalog-review-run-call-limit.md) | codex-catalog-call-limit | 2026-09-09T15:54:14Z | `codex/catalog-review-call-limit` |
+| [探索卡顯示累積蒐藏數與蒐藏數排行分頁](open/2026-09-11-discovery-saved-count-ranking.md) | claude-opus-5 | 2026-09-11T08:19:59Z | `claude/planning-card-collection-count-pdbiwg` |
 
 ## In review
 

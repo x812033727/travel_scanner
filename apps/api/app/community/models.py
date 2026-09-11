@@ -166,6 +166,9 @@ class CollectionItem(Base):
     __tablename__ = "community_collection_items"
     __table_args__ = (
         UniqueConstraint("collection_id", "kind", "target", name="uq_community_collection_item"),
+        # Discovery counts the accounts that saved one reference, so that lookup starts
+        # from (kind, target) instead of from a collection.
+        Index("ix_community_collection_item_reference", "kind", "target"),
     )
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     collection_id: Mapped[UUID] = mapped_column(ForeignKey("community_collections.id"), index=True)
