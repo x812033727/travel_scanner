@@ -1,5 +1,6 @@
 import { cache } from "react";
 import { emptyFoodBrowserFilters, merchantsQuery, type FoodBrowserFilters } from "@/lib/foods";
+import { publicServerHeaders } from "@/lib/public-server-fetch";
 
 /**
  * The city chooser the food page used to fetch after hydration.
@@ -26,7 +27,7 @@ async function fetchJson(url: string, locale: string): Promise<unknown | null> {
     const response = await fetch(url, {
       cache: "no-store",
       signal: AbortSignal.timeout(3000),
-      headers: { Accept: "application/json", "X-Travel-Locale": locale },
+      headers: await publicServerHeaders(locale),
     });
     if (!response.ok) return null;
     return (await response.json()) as unknown;

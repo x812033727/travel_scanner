@@ -161,6 +161,9 @@ jobs:
       PLAYWRIGHT_BASE_URL: http://localhost:3000
       AUTH_REGISTER_IP_LIMIT: "100"
       AUTH_LOGIN_IP_LIMIT: "100"
+      # The whole browser suite reads the catalogue from one address, which is precisely
+      # the shape the public-read limit exists to notice. Its own unit tests cover it.
+      PUBLIC_READ_RATE_LIMIT_MODE: "off"
       ADMIN_EMAILS: admin-workspace-desktop@example.com,admin-workspace-mobile@example.com
       DATABASE_ADMIN_EMAILS: admin-workspace-desktop@example.com,admin-workspace-mobile@example.com
       ADMIN_DATABASE_MAINTENANCE_ENABLED: "true"

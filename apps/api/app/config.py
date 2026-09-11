@@ -136,6 +136,18 @@ class Settings(BaseSettings):
     hotel_area_search_timeout_seconds: float = Field(default=8.0, gt=0, le=30)
     rate_limit_per_minute: int = Field(default=120, ge=1)
     api_max_request_bytes: int = Field(default=5_242_880, ge=65_536, le=52_428_800)
+    # The public catalogue is meant to be read, including by search engines, so this
+    # bounds how fast one source may read it rather than deciding who may. It ships in
+    # "observe" -- counted and logged, never refused -- because the number that stops a
+    # scraper and the number that stops an office behind one NAT address are not known
+    # to be far apart until real traffic has been measured. Move to "enforce" on
+    # evidence, not on principle.
+    public_read_rate_limit_mode: Literal["off", "observe", "enforce"] = "observe"
+    public_read_ip_limit: int = Field(default=180, ge=10, le=100_000)
+    public_read_ip_window_seconds: int = Field(default=60, ge=10, le=3_600)
+    # The second window catches what the first cannot: a crawler polite enough to stay
+    # under the per-minute burst all day still empties the catalogue.
+    public_read_ip_hour_limit: int = Field(default=2_400, ge=60, le=1_000_000)
     analytics_enabled: bool = False
     ga4_enabled: bool = False
     ga4_measurement_id: str | None = None
