@@ -1,5 +1,5 @@
 "use client";
-import { useState, type ReactNode } from "react";
+import { useState, type MouseEvent, type ReactNode } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import { MapPin, ArrowUpRight } from "lucide-react";
@@ -8,6 +8,7 @@ import { useCommunity } from "@/components/community/provider";
 import { ItineraryPreview } from "@/components/community/post";
 import { Button, CommunityImage } from "@/components/community/ui";
 import { TravelPlanAction } from "@/components/travel-card-actions";
+import { MerchantExternalLinks } from "@/components/merchant-external-links";
 import { BookingPanel, SourceCredits } from "@/components/travel-services/booking-panel";
 import type { Product } from "@/components/travel-services/catalog";
 import { getDiscoveryCopy, getDiscoveryFeedback, getRecommendationReason } from "@/lib/discovery-copy";
@@ -33,16 +34,19 @@ export function DiscoveryCard({ item, onDismiss }: { item: DiscoveryItem; onDism
   const href = discoveryDetailHref(item, returnTo);
   const thumbnail = safeExternalHref(item.thumbnail_url, ["https:"]);
   const cover = item.content?.media?.[0];
+  const remember = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (!event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey && event.button === 0) navigation?.remember(event.currentTarget, href);
+  };
   if ((item.kind === "post" || item.kind === "itinerary" || item.source.kind === "community") && !flags.enabled) return null;
   return <article id={item.id} className={styles.card}>
-    {(cover || thumbnail) && <Link href={href} scroll={false} aria-label={`${c.details}: ${item.title}`} onClick={(event) => navigation?.remember(event.currentTarget, href)}>{cover ? <div className={styles.cover}><CommunityImage id={cover.id} alt={cover.alt || item.title} thumbnail /></div> : <div className={styles.cover}>
+    {(cover || thumbnail) && <Link href={href} scroll={false} aria-label={`${c.details}: ${item.title}`} onClick={remember}>{cover ? <div className={styles.cover}><CommunityImage id={cover.id} alt={cover.alt || item.title} thumbnail /></div> : <div className={styles.cover}>
       {/* Source-authorized images only. No image means no placeholder or empty link. */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={thumbnail} alt={item.title} loading="lazy" decoding="async" referrerPolicy="no-referrer" />
     </div>}</Link>}
     <div className={styles.cardBody}>
       <CardMetadata item={item} />
-      <h3 className={styles.cardTitle}><Link href={href} scroll={false} onClick={(event) => navigation?.remember(event.currentTarget, href)}>{item.title}</Link></h3>
+      <h3 className={styles.cardTitle}><Link href={href} scroll={false} onClick={remember}>{item.title}</Link></h3>
       {item.summary?.trim() && <p className={styles.cardSummary}>{item.summary}</p>}
       <p className={styles.cardMeta}>{c.sourceKinds[item.source.kind]} · {item.author?.display_name || item.source.label}{item.published_at && <> · <time dateTime={item.published_at}>{new Date(item.published_at).toLocaleDateString(locale)}</time></>}</p>
       {item.recommendation_reason && <p className={styles.reason}><span className="sr-only">{c.reason}: </span>{getRecommendationReason(locale, item.recommendation_reason)}</p>}
@@ -70,6 +74,7 @@ function CardMetadata({ item }: { item: DiscoveryItem }) {
 export function DiscoveryDetails({ kind, id, returnTo = "/explore" }: { kind: string; id: string; returnTo?: string }) {
   const locale = useLocale(); const c = getDiscoveryCopy(locale); const f = getFrontendFlowCopy(locale);
   const reading = useTranslations("admin.sitePages");
+  const navigation = useDiscoveryDetailNavigation();
   const result = useDiscoveryResource<DiscoveryItem>(`/discovery/content/${encodeURIComponent(kind)}/${encodeURIComponent(id)}`);
   if (result.error) return <div role="alert" className={styles.detailBody}><p>{c.unavailable}</p><Button secondary onClick={result.reload}>{c.retry}</Button></div>;
   if (!result.data) return <div role="status" className={styles.detailBody}><p>{c.loading}</p><div className={`${styles.skeleton} ${styles.skeletonImage}`} /></div>;
@@ -82,14 +87,27 @@ export function DiscoveryDetails({ kind, id, returnTo = "/explore" }: { kind: st
     return href && (guide.kind === "article" || guide.kind === "video") ? [{ id: guide.id, kind: guide.kind, title: guide.title, href, source: (guide.source.label || "").trim() || new URL(href).hostname }] : [];
   });
   const overview = [detail?.intro?.body, item.content?.text, item.summary].find((text) => text?.trim());
-  return <><div className={styles.detailBody}>
-      <h2 className="mb-3 text-2xl font-bold">{item.title}</h2>
+  return <><div className={styles.detailBody} data-discovery-detail-body ref={navigation?.restoreDetails}>
+      <h2 tabIndex={-1} className="mb-3 text-2xl font-bold">{item.title}</h2>
       {item.destination && <p className="mb-4 text-sm text-[var(--teal)]">{item.destination.name}</p>}
       {videos.map((video) => <DiscoveryVideoPlayer key={video.video_id} video={video} />)}
       {item.content?.media?.map((media) => <CommunityImage key={media.id} id={media.id} alt={media.alt || item.title} />)}
       {overview && <section className={styles.detailSection}><h3 className="sr-only">{f.overview}</h3><p className="whitespace-pre-wrap break-words leading-8">{overview}</p></section>}
       {detail?.place && <PlaceFacts place={detail.place} />}
-      {detail?.merchants?.length ? <section className={styles.detailSection}><h3 className="mb-3 font-bold">{f.nearbyFood}</h3><ul className="space-y-3">{detail.merchants.map((merchant) => <li key={merchant.id}><Link href={discoveryDetailHref({ kind: "merchant", id: merchant.id }, returnTo)} scroll={false} className="inline-flex min-h-11 items-center font-semibold text-[var(--teal)] underline">{merchant.name}</Link><p className="text-sm text-[var(--muted)]">{merchant.address}</p></li>)}</ul></section> : null}
+      {detail?.merchants?.length ? <section className={styles.detailSection}>
+        {kind !== "merchant" && <h3 className="mb-3 font-bold">{f.nearbyFood}</h3>}
+        <ul className="space-y-5">{detail.merchants.map((merchant) => {
+          const self = kind === "merchant" && merchant.id === id;
+          const href = discoveryDetailHref({ kind: "merchant", id: merchant.id }, returnTo);
+          return <li key={merchant.id} className="min-w-0">
+            {!self && <Link href={href} scroll={false} data-discovery-detail-target={`merchant:${merchant.id}`} onClick={(event) => {
+              if (!event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey && event.button === 0) navigation?.remember(event.currentTarget, href);
+            }} className="inline-flex min-h-11 items-center break-words font-semibold text-[var(--teal)] underline">{merchant.name}</Link>}
+            {merchant.address && <p className="mb-3 break-words text-sm text-[var(--muted)]">{merchant.address}</p>}
+            <MerchantExternalLinks merchant={merchant} />
+          </li>;
+        })}</ul>
+      </section> : null}
       {guides.length ? <section className={styles.detailSection}><h3 className="mb-3 font-bold">{f.relatedGuides}</h3>{(["article", "video"] as const).map((group) => {
         const entries = guides.filter((guide) => guide.kind === group);
         return entries.length ? <section key={group} aria-label={reading(group === "article" ? "articleGroup" : "videoGroup")} className="mt-5"><h4 className="mb-2 font-semibold">{reading(group === "article" ? "articleGroup" : "videoGroup")}</h4><ul>{entries.map((guide) => <li key={guide.id}><ExternalLink href={guide.href}>{guide.title} ({guide.source})</ExternalLink></li>)}</ul></section> : null;

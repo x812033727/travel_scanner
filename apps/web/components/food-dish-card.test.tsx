@@ -74,6 +74,18 @@ const food: FoodItem = {
 };
 
 describe("FoodDishCard", () => {
+  it("shows the address and every verified reservation without requiring a map link", () => {
+    vi.stubGlobal("fetch", vi.fn(async () => new Response(JSON.stringify({ items: [] }))));
+    const merchant = food.recommended_merchants[0];
+    render(<SavedItemsProvider><FoodDishCard food={{ ...food, recommended_merchants: [{ ...merchant, map_links: [], reservation_links: [
+      { provider: "catchtable_global", label: "Catchtable Global", url: "https://www.catchtable.net/shop/hankook-jib", verified_at: "2026-09-08T00:00:00Z", language_code: "en" },
+      { provider: "tablecheck", label: "TableCheck", url: "https://www.tablecheck.com/en/shops/hankook-jib/reserve", verified_at: "2026-09-08T00:00:00Z", language_code: "en" },
+    ] }] }} /></SavedItemsProvider>);
+    expect(screen.getByText("Seoul")).toBeTruthy();
+    expect(screen.getByRole("link", { name: /Catchtable Global.*訂位資訊/ }).getAttribute("href")).toBe("https://www.catchtable.net/shop/hankook-jib");
+    expect(screen.getByRole("link", { name: /TableCheck.*訂位資訊/ }).getAttribute("href")).toBe("https://www.tablecheck.com/en/shops/hankook-jib/reserve");
+    expect(screen.queryByRole("link", { name: /Naver Map/ })).toBeNull();
+  });
   it("offers both reviewed map identities for the same recommended restaurant", () => {
     vi.stubGlobal("fetch", vi.fn(async () => new Response(JSON.stringify({ items: [] }))));
     const merchant = food.recommended_merchants[0];
