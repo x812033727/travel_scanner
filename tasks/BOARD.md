@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**47 open · 4 in progress · 3 blocked · 0 in review · 238 done**
+**46 open · 3 in progress · 3 blocked · 1 in review · 239 done**
 
 ## Ready to claim
 
@@ -14,6 +14,8 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
 | P1 | [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | docs | `apps/web/app/[locale]/privacy/page.tsx`<br>`apps/web/app/[locale]/terms/page.tsx`<br>`apps/web/app/[locale]/contact/page.tsx`<br>`apps/web/messages/en/navigation.json`<br>`apps/web/messages/ja/navigation.json`<br>`apps/web/messages/ko/navigation.json`<br>`apps/web/messages/zh-CN/navigation.json`<br>`apps/web/messages/zh-TW/navigation.json` |
+| P1 | [Contextual travel services and affiliate catalog](open/2026-09-07-contextual-travel-services.md) | api | `apps/api/app/travel_services`<br>`apps/api/app/models.py`<br>`apps/api/app/main.py`<br>`apps/api/app/config.py`<br>`apps/api/app/affiliates`<br>`apps/api/app/saved`<br>`apps/api/app/trips/stay_router.py`<br>`apps/api/app/trips/schedule.py`<br>`apps/api/app/worker.py`<br>`apps/api/app/i18n.py`<br>`apps/api/app/ui_text/schemas.py`<br>`apps/api/app/analytics/scheduler.py`<br>`apps/api/migrations/versions`<br>`apps/api/tests/test_travel_services.py`<br>`apps/api/tests/test_travel_services_integration.py`<br>`apps/api/tests/test_ui_text.py`<br>`apps/web/components/travel-services`<br>`apps/web/components/trip-editor.tsx`<br>`apps/web/components/stay-area-flow.tsx`<br>`apps/web/components/hotspot-guide-panel.tsx`<br>`apps/web/components/hotspot-explorer.tsx`<br>`apps/web/components/admin-nav.tsx`<br>`apps/web/components/admin-nav.test.tsx`<br>`apps/web/components/saved-items-provider.tsx`<br>`apps/web/components/account-saved-items.tsx`<br>`apps/web/lib/api.ts`<br>`apps/web/app/api/travel/[...path]/route.ts`<br>`apps/web/app/api/travel/[...path]/proxy-context.ts`<br>`apps/web/app/api/travel/[...path]/route.test.ts`<br>`apps/web/i18n`<br>`apps/web/lib/ui-text.ts`<br>`apps/web/lib/ui-text.test.ts`<br>`apps/web/messages/en/travelServices.json`<br>`apps/web/messages/ja/travelServices.json`<br>`apps/web/messages/ko/travelServices.json`<br>`apps/web/messages/zh-TW/travelServices.json`<br>`apps/web/messages/zh-CN/travelServices.json`<br>`apps/web/messages/en/admin.json`<br>`apps/web/messages/ja/admin.json`<br>`apps/web/messages/ko/admin.json`<br>`apps/web/messages/zh-TW/admin.json`<br>`apps/web/messages/zh-CN/admin.json`<br>`apps/web/app/[locale]/destinations`<br>`apps/web/app/[locale]/admin/travel-services`<br>`apps/web/e2e/travel-services.spec.ts`<br>`apps/web/vitest.setup.tsx`<br>`docs/travel-services.md`<br>`tools/check-i18n.mjs`<br>`.env.example`<br>`.github/workflows/ci.yml` |
+| P1 | [Mokaair community foundation and account safety](open/2026-09-07-mokaair-community-foundation.md) | api | `apps/api/app/community`<br>`apps/api/app/models.py`<br>`apps/api/app/main.py`<br>`apps/api/app/config.py`<br>`apps/api/app/auth`<br>`apps/api/app/i18n.py`<br>`apps/api/app/worker.py`<br>`apps/api/app/trips`<br>`apps/api/app/search/schemas.py`<br>`docker-compose.yml`<br>`docker-compose.prod.yml`<br>`apps/api/pyproject.toml`<br>`apps/api/uv.lock`<br>`apps/api/migrations`<br>`apps/api/tests/test_community_foundation.py`<br>`apps/api/tests/test_schema.py`<br>`apps/api/tests/test_ui_text.py`<br>`.env.example`<br>`docker-compose.community.yml`<br>`.github/workflows/ci.yml`<br>`docs/community.md`<br>`apps/api/app/ui_text/schemas.py` |
 | P1 | [Hotel platform options and quote readiness](open/2026-09-07-hotel-platform-options-and-quote-readiness.md) | api | `apps/api/tests/test_hotel_content_package.py`<br>`docs/hotel-platforms` |
 | P1 | [Revalidate community read resets against production-build CI](open/2026-09-08-community-ci-read-retry.md) | web | `apps/web/e2e/community.spec.ts` |
 | P1 | [Complete live Travelpayouts brand and destination offer verification](open/2026-09-08-travelpayouts-live-destination-activation.md) | ops | `docs/travel-services.md` |
@@ -44,7 +46,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [推薦流的語言選擇與同地點去重](open/2026-09-11-discovery-feed-language-and-dedup.md) | api | `apps/api/app/discovery`<br>`apps/api/tests/test_discovery_flow.py` |
 | P2 | [取消或逾時搜尋時釋放已保留的次數](open/2026-09-11-release-reservation-on-cancel.md) | api | `apps/api/app/search/router.py`<br>`apps/api/app/usage/service.py` |
 | P2 | [Re-query the live Seoul Day 2 route after the #387 release](open/2026-09-11-seoul-day2-live-requery.md) | ops | `docs/seoul-day2-transport-ux.md` |
-| P2 | [Wire /guides into the sitemap, footer and destination pages](open/2026-09-11-guides-sitemap-and-entry-points.md) | web | `apps/web/app/sitemap.ts`<br>`apps/web/app/sitemap.test.ts`<br>`apps/web/components/site-footer.tsx`<br>`apps/web/components/site-footer.test.tsx`<br>`apps/web/components/destination-guide.tsx`<br>`apps/web/components/destination-guide.test.tsx`<br>`apps/web/lib/discovery-copy.ts` |
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | api | `apps/api/app/hotspots/areas.py`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [第二批購物店家：十五個沒有公開座標來源的候選](open/2026-09-06-shopping-seeds-second-batch.md) | api | `apps/api/app/hotspots/shopping_bootstrap.json`<br>`apps/api/app/hotspots/theme_bootstrap.json`<br>`apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_shopping_bootstrap.py` |
@@ -61,12 +62,13 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- | --- |
 | [全站沒有自訂的找不到頁面](open/2026-09-11-no-custom-not-found-page.md) | claude-opus-5 | 2026-09-11T13:17:20Z | `claude/mokaair-website-access-k7xiku` |
 | [Deny school, hospital, tram stop, ward and military base types in hotspot discovery](open/2026-09-11-deny-school-hospital-tram-stop-ward.md) | claude-opus-5 | 2026-09-11T16:53:59Z | `claude/attractions-review-progress-55bb39` |
-| [CI 拉不到 minio/minio:latest，改用 quay.io 並釘版本](open/2026-09-11-ci-minio-minio-latest-quay-io.md) | claude-opus-5-guides | 2026-09-11T22:51:20Z | `claude/ci-minio-quay-pin` |
 | [登入頁的送出鈕在手機上要捲一下才看得到](open/2026-09-11-bottom-nav-covers-page-content.md) | claude-opus-5 | 2026-09-11T14:39:07Z | `claude/mokaair-website-access-k7xiku` |
 
 ## In review
 
-_Nothing here._
+| Task | Owner | Branch |
+| --- | --- | --- |
+| [Wire /guides into the sitemap, footer and destination pages](open/2026-09-11-guides-sitemap-and-entry-points.md) | claude-opus-5-guides | `claude/travel-info-guide-section-4ulqsj` |
 
 ## Waiting
 
@@ -75,8 +77,6 @@ _Nothing here._
 | P1 | [Mokaair site experience palettes and managed information pages](open/2026-09-09-site-experience-settings.md) | see the task notes |
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | see the task notes |
 | P3 | [TourAPI（韓國觀光公社）可行性驗證：先確認拿得到金鑰、連得上、資料量夠不夠](open/2026-09-06-korea-tourism-tourapi-spike.md) | see the task notes |
-| P1 | [Contextual travel services and affiliate catalog](open/2026-09-07-contextual-travel-services.md) | active work in the same scope |
-| P1 | [Mokaair community foundation and account safety](open/2026-09-07-mokaair-community-foundation.md) | active work in the same scope |
 | P1 | [Mokaair community responsive web and five-language experience](open/2026-09-07-mokaair-community-web.md) | active work in the same scope |
 | P1 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | active work in the same scope |
 | P1 | [路線地圖在手機吃掉頁面捲動且對輔助科技隱形](open/2026-09-11-route-map-mobile-and-a11y.md) | active work in the same scope |
@@ -84,6 +84,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-11 [CI 拉不到 minio/minio:latest，改用 quay.io 並釘版本](done/2026-09-11-ci-minio-minio-latest-quay-io.md)
 - 2026-09-11 [社群登入按鈕下方說明會取得 Email 與用途（LINE Email 權限申請要附這個畫面）](done/2026-09-11-social-login-email-notice.md)
 - 2026-09-11 [OAuth 回跳導向容器內部位址 0.0.0.0:3000，Google 登入最後必定落在錯誤頁](done/2026-09-11-oauth-redirect-internal-origin.md)
 - 2026-09-11 [Configurable catalog review run call limit](done/2026-09-09-configurable-catalog-review-run-call-limit.md)
@@ -93,4 +94,3 @@ _Nothing here._
 - 2026-09-11 [Hotel operating date guards Rakuten Japan and resilient clickouts](done/2026-09-11-hotel-operation-rakuten-clickout.md)
 - 2026-09-11 [Seoul Day 2 transport settings and readable route details](done/2026-09-10-seoul-day2-transport-ux.md)
 - 2026-09-11 [Complete hotspot review identity and rationale editor](done/2026-09-10-complete-hotspot-review-identity-and-rationale.md)
-- 2026-09-11 [Verify isolated Stay22 Script public browser flow](done/2026-09-09-verify-stay22-script-browser.md)
