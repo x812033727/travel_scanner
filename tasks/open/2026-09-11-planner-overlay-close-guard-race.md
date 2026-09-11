@@ -99,3 +99,11 @@ npm run lint:web && npm run typecheck:web && npm run test:web
 - 由 PR #393 的 CI 調查順帶發現，非該 PR 造成。該 PR 的留言
   （https://github.com/x812033727/travel_scanner/pull/393#issuecomment-5632942149）
   把成因只歸給 `isTopModalLayer`，**那份歸因不完整**，以本檔為準。
+- **另一支測試也在紅，方向相反**（2026-09-11，合併 #397／#399 時發現）：
+  `trip-editor.test.tsx:292`「disables arrange and adjustment navigation until itinerary
+  generation finishes」當天紅了兩次——#399 分支的 CI run 34614048730，以及 #397 合併 main 後的
+  run 34617052934。這支測試在預覽請求在途時按「關閉」再按 Escape，期待 AI 對話框留著；
+  失敗時 `getAllByRole("dialog")` 一個都找不到，也就是對話框在產生中**被關掉了**——這裡的閘門是
+  該擋卻放行，與上面「該關卻吞掉」相反。main 的 `1da78504` 與 #397 合併前的 `e1768ae7` 都通過同一支
+  測試，兩個 PR 也都沒碰 trip-editor，所以同樣是時序問題。修閘門時一併確認「產生中」的狀態在
+  關閉鈕可被點到之前就已生效。
