@@ -1,13 +1,13 @@
 ---
 id: 2026-09-11-guides-sitemap
 title: Guide articles and section pages in the sitemap
-status: in-progress
+status: done
 priority: P1
 area: web
 owner: claude-opus-5-guides-sitemap
 claimed_at: 2026-09-11T16:00:26Z
 created_at: 2026-09-11T15:43:20Z
-completed_at:
+completed_at: 2026-09-11T16:29:14Z
 branch: claude/distracted-lumiere-260705
 depends_on: []
 scope:

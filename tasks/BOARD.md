@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**46 open · 4 in progress · 3 blocked · 21 in review · 214 done**
+**46 open · 3 in progress · 3 blocked · 21 in review · 215 done**
 
 ## Ready to claim
 
@@ -45,7 +45,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- | --- |
 | [Configurable catalog review run call limit](open/2026-09-09-configurable-catalog-review-run-call-limit.md) | codex-catalog-call-limit | 2026-09-09T15:54:14Z | `codex/catalog-review-call-limit` |
 | [全站沒有自訂的找不到頁面](open/2026-09-11-no-custom-not-found-page.md) | claude-opus-5 | 2026-09-11T13:17:20Z | `claude/mokaair-website-access-k7xiku` |
-| [Guide articles and section pages in the sitemap](open/2026-09-11-guides-sitemap.md) | claude-opus-5-guides-sitemap | 2026-09-11T16:00:26Z | `claude/distracted-lumiere-260705` |
 | [登入頁的送出鈕在手機上要捲一下才看得到](open/2026-09-11-bottom-nav-covers-page-content.md) | claude-opus-5 | 2026-09-11T14:39:07Z | `claude/mokaair-website-access-k7xiku` |
 
 ## In review
@@ -105,6 +104,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## Recently finished
 
+- 2026-09-11 [Guide articles and section pages in the sitemap](done/2026-09-11-guides-sitemap.md)
 - 2026-09-11 [Support dotted Catchtable venue IDs safely](done/2026-09-11-catchtable-dot-venue-id.md)
 - 2026-09-11 [登入入口只存在於我的頁底部且未登入者毫無說明](done/2026-09-11-no-sign-in-entry-in-discovery.md)
 - 2026-09-11 [次數用完後被導去已關閉的方案頁形成死路](done/2026-09-11-usage-exhausted-dead-end.md)
@@ -114,4 +114,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-11 [校正私人頁與功能關閉頁的索引指令](done/2026-09-10-seo-index-directives.md)
 - 2026-09-11 [首頁伺服器端輸出真正的內容，並把目的地頁接進連結結構](done/2026-09-10-seo-home-ssr-and-internal-links.md)
 - 2026-09-11 [撤回：被判定截斷的文字全是螢幕閱讀器專用標籤](done/2026-09-11-language-switcher-label-clipped.md)
-- 2026-09-11 [撤回：對比度不足的發現來自量測程式的解析錯誤](done/2026-09-11-bottom-nav-labels-fail-contrast.md)
