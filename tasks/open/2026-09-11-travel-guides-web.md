@@ -1,7 +1,7 @@
 ---
 id: 2026-09-11-travel-guides-web
 title: Travel guides web pages admin and navigation
-status: in-progress
+status: review
 priority: P1
 area: web
 owner: claude-opus-5-guides

@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**48 open · 3 in progress · 3 blocked · 21 in review · 203 done**
+**48 open · 1 in progress · 3 blocked · 23 in review · 203 done**
 
 ## Ready to claim
 
@@ -45,8 +45,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
 | [Configurable catalog review run call limit](open/2026-09-09-configurable-catalog-review-run-call-limit.md) | codex-catalog-call-limit | 2026-09-09T15:54:14Z | `codex/catalog-review-call-limit` |
-| [Travel guides content API and schema](open/2026-09-11-travel-guides-api.md) | claude-opus-5-guides | 2026-09-11T12:59:36Z | `claude/travel-info-guide-section-4ulqsj` |
-| [Travel guides web pages admin and navigation](open/2026-09-11-travel-guides-web.md) | claude-opus-5-guides | 2026-09-11T13:09:17Z | `claude/travel-info-guide-section-4ulqsj` |
 
 ## In review
 
@@ -69,6 +67,8 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | [Hotel operating date guards Rakuten Japan and resilient clickouts](open/2026-09-11-hotel-operation-rakuten-clickout.md) | codex-hotel-guard | `codex/hotel-operation-rakuten-clickout` |
 | [Fix food map and reservation entry points](open/2026-09-11-food-map-reservation-entry.md) | codex-food-map-reservation-entry | `codex/food-map-reservation-entry` |
 | [Independent food reservation save and multi-platform support](open/2026-09-11-food-reservation-platforms.md) | codex-food-reservation-platforms | `codex/food-reservation-platforms` |
+| [Travel guides content API and schema](open/2026-09-11-travel-guides-api.md) | claude-opus-5-guides | `claude/travel-info-guide-section-4ulqsj` |
+| [Travel guides web pages admin and navigation](open/2026-09-11-travel-guides-web.md) | claude-opus-5-guides | `claude/travel-info-guide-section-4ulqsj` |
 | [Archive completed catalog and hotel review evidence](open/2026-09-09-review-evidence-archive.md) | codex-review-archive | `codex/review-evidence-archive-20260909` |
 | [Compact discovery cards and source-linked details](open/2026-09-09-discovery-card-details.md) | codex-discovery-card-details | `codex/discovery-card-details-20260909` |
 | [公開資料改用 revalidate 快取，並把 /foods 店家列表放進 SSR](open/2026-09-10-seo-public-data-caching.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |

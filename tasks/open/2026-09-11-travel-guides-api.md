@@ -1,7 +1,7 @@
 ---
 id: 2026-09-11-travel-guides-api
 title: Travel guides content API and schema
-status: in-progress
+status: review
 priority: P1
 area: api
 owner: claude-opus-5-guides
