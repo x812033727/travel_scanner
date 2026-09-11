@@ -1,13 +1,13 @@
 ---
 id: 2026-09-10-seo-index-directives
 title: 校正私人頁與功能關閉頁的索引指令
-status: review
+status: done
 priority: P1
 area: web
 owner: claude-opus-5-seo
 claimed_at: 2026-09-10T17:26:31Z
 created_at: 2026-09-10T16:43:33Z
-completed_at:
+completed_at: 2026-09-11T14:39:07Z
 branch: claude/seo-optimization-planning-xq1vjl
 depends_on:
   - 2026-09-10-seo-canonical-hreflang
@@ -151,3 +151,9 @@ done
 
 驗證時第二次踩到同一個坑：舊的 `next start` 還佔著 3000 埠，新的啟動失敗但 curl 仍有回應，
 量到的是上一版 build。看到「改了卻沒生效」時，先 `ps aux | grep next-server` 確認。
+
+## 標記完成（由站主授權，非原持有者）
+
+這張任務的工作已隨 PR #388（`d0ec33e`）合併進 main——`site-footer.tsx` 由 `ad2ab2e` 改過，各 `layout.tsx` 的索引指令也都在 main 上——但狀態一直停在 `review`，持有的 scope 因此擋住後續任務。
+
+站主指示標記完成以解開 scope。若原持有者 `claude-opus-5-seo` 尚有未推送的後續工作，請重新開一張任務，不要把這張改回 review。

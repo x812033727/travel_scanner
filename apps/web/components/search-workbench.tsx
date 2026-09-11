@@ -18,7 +18,14 @@ type Recommendation = {
   trip_length_days: number; estimated_flight_twd: number; estimated_lodging_twd: number;
   estimated_total_twd: number; score: number; matched_interests: string[]; relaxed_preferences: string[];
 };
-type DiscoveryResult = { recommendations: Recommendation[]; assumptions: string[] };
+type Candidate = {
+  city: string; airport: string; country: string; areas: string[];
+  estimated_flight_twd: number; within_budget_estimate: boolean; reason: string;
+};
+// The API answers with recommendations when dates or countries narrow the search and
+// with bare city candidates when nothing does. Both keys are always present, but the
+// fallbacks below stay: a missing key must never cost the user five steps of input.
+type DiscoveryResult = { recommendations?: Recommendation[]; assumptions?: string[]; candidates?: Candidate[] };
 type CatalogDestination = {
   id: string; code: string; city: string; country_code: CountryKey; role: "primary" | "secondary" | "extension";
   parent_destination_id: string | null; gateway_codes: string[]; primary_gateway: string; areas: string[];
@@ -61,6 +68,8 @@ export function SearchWorkbench({ compact = false }: { compact?: boolean }) {
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
   const [selectedAreas, setSelectedAreas] = useState<Record<string, string>>({});
   const [assumptions, setAssumptions] = useState<string[]>([]);
+  const [candidates, setCandidates] = useState<Candidate[]>([]);
+  const [answered, setAnswered] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string>();
   const [dateError, setDateError] = useState<string>();
@@ -160,11 +169,12 @@ export function SearchWorkbench({ compact = false }: { compact?: boolean }) {
         lodging_preferences: { accepted_property_types: propertyTypes(), nightly_price_min_twd: numberOrNull("nightly_min"), nightly_price_max_twd: numberOrNull("nightly_max"), min_star_rating: numberOrNull("hotel_min_rating"), min_review_score: numberOrNull("min_review_score"), min_review_count: numberOrNull("min_review_count"), max_station_walk_minutes: numberOrNull("max_station_walk_minutes"), breakfast_required: form.get("breakfast_required") === "on" ? true : null, refundable_required: form.get("refundable_required") === "on" ? true : null },
         interests: selectedInterests, pace: String(form.get("pace") || "balanced"), notes: String(form.get("notes") || "") || null, top_n: 3,
       }) });
-      setRecommendations(result.recommendations); setAssumptions(result.assumptions || []);
+      setRecommendations(result.recommendations || []); setAssumptions(result.assumptions || []);
+      setCandidates(result.candidates || []); setAnswered(true);
       // The funnel's first step. Sent from here, not from the request, so a discovery
       // nobody got an answer to is not counted as an entry into the flow.
       trackAnalytics("discover_requested");
-    } catch (reason) { setError((reason as Error).message); } finally { setBusy(false); }
+    } catch (reason) { setError((reason as Error).message); setAnswered(false); } finally { setBusy(false); }
   }
 
   function chooseRecommendation(item: Recommendation, form: HTMLFormElement) {
@@ -196,6 +206,30 @@ export function SearchWorkbench({ compact = false }: { compact?: boolean }) {
 
     {error && <p role="alert" className="mt-4 rounded-xl bg-red-50 p-3 text-sm font-medium text-red-700">{error}</p>}
     {compact ? <div className="frontend-search-submit mt-5 flex flex-wrap gap-3"><button type="button" aria-expanded={advancedOpen} aria-controls="trip-search" onClick={() => setAdvancedOpen((open) => !open)} className="min-h-12 rounded-xl border border-[var(--line)] px-5 font-semibold">{copy.advanced}</button><button type="submit" disabled={busy} className="ml-auto inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-5 font-semibold text-white disabled:opacity-60">{busy && <LoaderCircle className="animate-spin motion-reduce:animate-none" size={18} />}{copy.query}</button></div> : <div className="mt-5 flex gap-3">{step > 0 && <button type="button" onClick={() => setStep(step - 1)} className="flex min-h-12 flex-1 items-center justify-center gap-1 rounded-xl border border-[var(--line)] px-4 py-3 font-semibold sm:flex-none">{<ChevronLeft size={18} />}{t("back")}</button>}{step < stepKeys.length - 1 ? <button type="button" onClick={(event) => goNext(event.currentTarget.form)} className="ml-auto flex min-h-12 flex-[2] items-center justify-center gap-1 rounded-xl bg-[var(--teal)] px-5 py-3 font-semibold text-white sm:flex-none">{t("next")}<ChevronRight size={18} /></button> : <button disabled={busy} className="ml-auto flex min-h-12 flex-[2] items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-5 py-3 font-semibold text-white disabled:opacity-60 sm:flex-none">{busy ? <LoaderCircle className="animate-spin" size={18} /> : <Sparkles size={18} />}{t("submit")}</button>}</div>}
+
+    {/* No dates and no countries means the API has city candidates rather than dated
+        recommendations. Showing them beats showing nothing, and keeps the five steps filled. */}
+    {recommendations.length === 0 && candidates.length > 0 && <section aria-labelledby="candidates-title" className="mt-7 border-t border-[var(--line)] pt-6">
+      <h3 id="candidates-title" className="text-xl font-bold">{t("candidatesTitle")}</h3>
+      <p className="mt-1 text-sm text-[var(--muted)]">{t("candidatesHint")}</p>
+      <div className="mt-4 grid gap-3">{candidates.map((item) => <article key={item.airport} className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4">
+        <div className="flex items-start justify-between gap-3">
+          <div className="min-w-0"><h4 className="text-lg font-bold">{item.country}・{item.city}</h4>
+          <p className="mt-1 text-sm text-[var(--muted)]">{item.reason}</p></div>
+          <strong className="shrink-0 text-right">{t("flightEstimate", { amount: twd.format(item.estimated_flight_twd) })}</strong>
+        </div>
+        {item.areas.length > 0 && <div className="mt-3 flex flex-wrap gap-2 text-xs">{item.areas.slice(0, 4).map((area) => <span key={area} className="rounded-full bg-white px-2.5 py-1">{area}</span>)}</div>}
+        <button type="button" onClick={() => { setDestinationCode(item.airport); setStep(0); }} className="mt-4 flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[var(--ink)] px-4 py-3 font-semibold text-white"><Check size={18} />{t("candidatePick")}</button>
+      </article>)}</div>
+    </section>}
+
+    {/* A search that came back with nothing used to stop the spinner and change nothing
+        else on screen, which reads as a broken button rather than an answer. */}
+    {answered && recommendations.length === 0 && candidates.length === 0 && <section role="status" className="mt-7 border-t border-[var(--line)] pt-6">
+      <h3 className="text-xl font-bold">{t("noResultsTitle")}</h3>
+      <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{t("noResultsBody")}</p>
+      <button type="button" onClick={() => setStep(0)} className="mt-4 inline-flex min-h-12 items-center justify-center rounded-xl border border-[var(--line)] px-5 font-semibold">{t("noResultsAction")}</button>
+    </section>}
 
     {recommendations.length > 0 && <section aria-labelledby="recommendations-title" className="mt-7 border-t border-[var(--line)] pt-6"><h3 id="recommendations-title" className="text-xl font-bold">{t("recommendationsTitle")}</h3><p className="mt-1 text-sm text-[var(--muted)]">{t("recommendationsHint")}</p><div className="mt-4 grid gap-4">{recommendations.map((item, index) => <article key={item.candidate_id} className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4"><div className="flex items-start justify-between gap-3"><div><p className="text-xs font-semibold text-[var(--teal)]">{index === 0 ? t("bestPick") : t("candidateN", { rank: index + 1 })} · {t("matchScore", { score: item.score })}</p><h4 className="mt-1 text-xl font-bold">{item.country}・{item.city}</h4><p className="mt-1 text-sm text-[var(--muted)]">{t("tripDates", { from: item.departure_date, to: item.return_date, days: item.trip_length_days })}</p></div><strong className="text-right text-lg">{t("approx", { amount: twd.format(item.estimated_total_twd) })}</strong></div><p className="mt-3 text-sm leading-6">{item.reason}</p><div className="mt-3 flex flex-wrap gap-2 text-xs"><span className="rounded-full bg-white px-2.5 py-1">{t("flightEstimate", { amount: twd.format(item.estimated_flight_twd) })}</span><span className="rounded-full bg-white px-2.5 py-1">{t("lodgingEstimate", { amount: twd.format(item.estimated_lodging_twd) })}</span>{item.matched_interests.map((interest) => <span key={interest} className="rounded-full bg-[var(--teal-soft)] px-2.5 py-1">{t("matchesInterest", { interest: interestLabel(interest, tc) })}</span>)}</div>{item.relaxed_preferences.length > 0 && <p className="mt-3 text-xs text-amber-800">{t("needsConfirm", { items: item.relaxed_preferences.join("、") })}</p>}<label className="mt-3 block text-sm font-semibold">{t("preferredArea")}<select value={selectedAreas[item.candidate_id] || ""} onChange={(event) => setSelectedAreas((current) => ({ ...current, [item.candidate_id]: event.target.value }))} className={fieldClass}><option value="">{t("anyPlaceholder")}</option>{item.areas.map((area) => <option key={area}>{area}</option>)}</select></label><button type="button" onClick={(event) => chooseRecommendation(item, event.currentTarget.form!)} className="mt-4 flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[var(--ink)] px-4 py-3 font-semibold text-white"><Check size={18} />{t("useThis")}</button></article>)}</div>{assumptions.map((item) => <p key={item} className="mt-2 text-xs text-[var(--muted)]">・{item}</p>)}</section>}
     <p className="mt-4 text-center text-xs leading-5 text-[var(--muted)]">{t("disclaimer")}</p>

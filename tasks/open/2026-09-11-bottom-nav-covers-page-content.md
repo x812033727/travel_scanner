@@ -1,14 +1,14 @@
 ---
 id: 2026-09-11-bottom-nav-covers-page-content
-title: 手機底部導覽列蓋住七成頁面的內容含登入鈕
-status: open
-priority: P0
+title: 登入頁的送出鈕在手機上要捲一下才看得到
+status: in-progress
+priority: P2
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-11T14:39:07Z
 created_at: 2026-09-11T13:05:03Z
 completed_at:
-branch:
+branch: claude/mokaair-website-access-k7xiku
 depends_on: []
 scope:
   - apps/web/app/globals.css
@@ -16,41 +16,45 @@ scope:
   - apps/web/app/[locale]/login/page.tsx
 ---
 
-# 手機底部導覽列蓋住七成頁面的內容含登入鈕
+# 登入頁的送出鈕在手機上要捲一下才看得到
 
-## Why
+## 更正在先：原始版本嚴重高估
 
-用真實瀏覽器掃過 162 個頁面（手機 390px 與桌面 1440px），量測結果：
+這張任務原本標為 **P0**，主張「有底部固定列的 79 個手機頁面裡 56 個（71%）有可互動元素被蓋住，包括 `/login` 的送出鈕」。
 
-- 手機頁面 81 個，其中 **79 個有固定底部導覽列**
-- 這 79 個裡，**56 個（71%）有可互動元素被那條列蓋住**
-- 桌面 0 個 —— 這是純手機問題
+**那是量測方法的缺陷。** 原本的判定是「**捲動位置 0 時**元素矩形與導覽列相交」，但那些元素捲一下就到得了。實測十條路由、捲到底之後再量：
 
-最嚴重的是 **`/login` 頁面本身**：「登入」送出鈕直接壓在導覽列下，只露出上緣；「忘記密碼」完全看不見。一個用手機想登入的人，第一眼看不到登入按鈕。
+```
+路由        捲動前被蓋  捲到底後仍被蓋
+/login          2             0
+/about          3             0
+/privacy        3             0
+/terms          3             0
+/contact        3             0
+/hotspots       4             0
+/foods          3             0
+/               0             0
+/explore        0             0
+/my             1             0
+```
 
-被遮住的內容依類型：
+**沒有任何一個頁面有元素是碰不到的。** `.public-app-shell` 的 `padding-bottom: calc(5rem + env(safe-area-inset-bottom))`（80px）對上導覽列的 69px 高加 10px 離底（合計 79px），保留是夠的。
 
-| 被遮住 | 路由 |
-| --- | --- |
-| 「登入」送出鈕、「忘記密碼」 | `/login` 與六條 `/admin/*` |
-| 篩選條件（賞雪、藥妝、壽司、海鮮、櫻花…） | `/hotspots`、`/foods`，五語系皆然 |
-| 頁尾連結（目的地、關於 Mokaair、聯絡我們） | `/about`、`/privacy`、`/terms`、`/contact` |
-| 卡片的「收藏」「加入旅程」 | 首頁、`/explore` |
+## 真正剩下的問題
 
-`globals.css:290-293` 的 `.public-app-shell` 有保留 `5rem + env(safe-area-inset-bottom)`，所以機制是存在的——問題在於**有些頁面沒有用到那個 shell，或保留量小於導覽列的實際高度**（量到的底部保留約 69px，而導覽列含外距約 86px）。
+`/login` 在 390×844 的手機上，送出鈕落在首屏之外，要捲一下才看得到。原因是表單上方堆了較多內容：`<main className="… py-14">` 的上下內距、歡迎語、標題，以及「現在只開放給既有會員」那張說明卡。
+
+這是第一印象的問題，不是無法使用——一個想登入的人第一眼看不到登入按鈕。值得改，但不急。
 
 ## Definition of done
 
-- [ ] 手機上沒有任何可互動元素被固定底部列蓋住。
-- [ ] `/login` 的送出鈕在預設捲動位置就看得見。
-- [ ] 有自動化斷言防止再犯。
+- [ ] `/login` 在 390×844 下，送出鈕不需捲動就看得見。
+- [ ] 桌面版不受影響。
 
 ## Steps
 
-- [ ] 先確認 `.public-app-shell` 的保留量與 `app-bottom-nav` 的實際高度（含 margin 與 safe-area）是否一致；不一致就以導覽列的實際高度為準。
-- [ ] 找出沒有套用該 shell 的頁面（`/login`、`/admin/*`、靜態內容頁是已知的），讓它們也取得同樣的底部保留。
-- [ ] `/hotspots` 與 `/foods` 的篩選列需額外確認——那是可捲動區域內的內容，可能要調整容器的 padding-bottom 而非整頁。
-- [ ] 加 e2e 斷言：Pixel 7 尺寸下，走訪主要路由，斷言沒有可互動元素與底部列的矩形相交。`e2e/navigation.spec.ts:64` 已有無橫向溢位的同類斷言可照抄。
+- [ ] 收斂 `/login` 首屏的垂直用量：`py-14` 在手機上可以小一點，或讓「只開放既有會員」的說明卡更精簡。
+- [ ] 只動這一頁，不要改 `.public-app-shell` 的保留量——那個目前是對的，動了會影響全站。
 
 ## How to verify
 
@@ -58,10 +62,9 @@ scope:
 cd apps/web && npx playwright test --project="Pixel 7"
 ```
 
-手動：手機尺寸開 `/zh-TW/login`，不捲動就要看得到登入鈕。
+斷言：390×844 視窗開啟 `/zh-TW/login`，不捲動時送出鈕的矩形完全在視窗內。
 
 ## Notes
 
-- 量測方法：對每個可見的可互動元素取 `getBoundingClientRect()`，與固定底部列的矩形做相交判定。不是目測。
-- 桌面 1440px 完全沒有此問題（0/81），所以修正時不要動到桌面版面。
-- 這條與 `2026-09-11-no-sign-in-entry-in-discovery` 相關但不同：那張講的是「頁首沒有登入入口」，這張講的是「登入頁自己的按鈕被蓋住」。兩張都要修才算完整。
+- `apps/web/app/[locale]/login/page.tsx` 目前也在 `2026-09-10-seo-index-directives` 的 scope 裡（`claude-opus-5-seo`，review 中），所以這張任務暫時 claim 不動。等那張結束再認領。
+- 教訓記在這裡：凡是牽涉固定定位元素的遮擋判定，都必須在**捲到底**的狀態下再量一次，否則會把「首屏之外」誤報成「無法觸及」。

@@ -37,6 +37,12 @@ describe("SiteNavigation", () => {
     expect(fetchMock.mock.calls.filter(([input]) => String(input).endsWith("/discovery/status"))).toHaveLength(1);
   });
 
+  // Not unit-tested here on purpose: useDiscoveryStatus caches its result at module
+  // level, so the first test in this file fixes it at enabled:false for the rest and
+  // a discovery-on case cannot be set up without resetting modules. The equivalent
+  // phone case is covered deterministically in mobile-nav.test.tsx, which mocks the
+  // hook directly. Changing that cache is a bigger change than this task.
+
   it("keeps the nav when visibility could not be read, hides it when closed", () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue(
       new Response(JSON.stringify({ detail: "signed out" }), { status: 401 }),

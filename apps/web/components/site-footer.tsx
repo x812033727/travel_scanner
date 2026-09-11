@@ -26,20 +26,20 @@ export function SiteFooter({ year }: { year: number }) {
         </div>
         <nav aria-label={t("footerLegal")}>
           <h2 className="text-sm font-bold">{t("footerLegal")}</h2>
-          <ul className="mt-3 grid gap-2 text-sm">
-            <li><Link className="text-[var(--muted)] underline-offset-4 hover:underline" href="/privacy">{t("footerPrivacy")}</Link></li>
-            <li><Link className="text-[var(--muted)] underline-offset-4 hover:underline" href="/terms">{t("footerTerms")}</Link></li>
+          <ul className="mt-3 grid text-sm">
+            <li><Link className="inline-flex min-h-11 items-center text-[var(--muted)] underline-offset-4 hover:underline" href="/privacy">{t("footerPrivacy")}</Link></li>
+            <li><Link className="inline-flex min-h-11 items-center text-[var(--muted)] underline-offset-4 hover:underline" href="/terms">{t("footerTerms")}</Link></li>
           </ul>
         </nav>
         <nav aria-label={t("footerSite")}>
           <h2 className="text-sm font-bold">{t("footerSite")}</h2>
-          <ul className="mt-3 grid gap-2 text-sm">
+          <ul className="mt-3 grid text-sm">
             {/* The only entry point to the 33 city guides that every public page carries. The
                 footer is a sibling of {children} in the layout, so unlike the home page rail it
                 is in the response body whatever the discovery switch says. */}
-            <li><Link className="text-[var(--muted)] underline-offset-4 hover:underline" href="/destinations">{destinations}</Link></li>
-            <li><Link className="text-[var(--muted)] underline-offset-4 hover:underline" href="/about">{t("footerAbout")}</Link></li>
-            <li><Link className="text-[var(--muted)] underline-offset-4 hover:underline" href="/contact">{t("footerContact")}</Link></li>
+            <li><Link className="inline-flex min-h-11 items-center text-[var(--muted)] underline-offset-4 hover:underline" href="/destinations">{destinations}</Link></li>
+            <li><Link className="inline-flex min-h-11 items-center text-[var(--muted)] underline-offset-4 hover:underline" href="/about">{t("footerAbout")}</Link></li>
+            <li><Link className="inline-flex min-h-11 items-center text-[var(--muted)] underline-offset-4 hover:underline" href="/contact">{t("footerContact")}</Link></li>
           </ul>
         </nav>
       </div>

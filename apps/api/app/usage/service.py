@@ -253,7 +253,10 @@ async def reserve_use(
             session, "usage_insufficient", path="/pricing", user_id=user_id,
             properties={"operation": operation, "needed": uses},
         )
-        raise AppError(402, "insufficient_uses", "可用次數不足，請前往方案頁查看次數包")
+        # The client decides where to send the reader: /pricing may be switched off, and
+        # telling someone to go buy more on a page that cannot sell is the dead end this
+        # message used to create. lib/api.ts maps the code to copy in their language.
+        raise AppError(402, "insufficient_uses", "可用次數不足")
     account.reserved_uses += uses
     reservation = UsageReservation(
         user_id=user_id,

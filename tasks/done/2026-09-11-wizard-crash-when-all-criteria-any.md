@@ -1,14 +1,14 @@
 ---
 id: 2026-09-11-wizard-crash-when-all-criteria-any
 title: 精靈三個條件都選不限時整頁崩潰並清空五步輸入
-status: open
+status: done
 priority: P0
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-11T13:17:11Z
 created_at: 2026-09-11T03:20:11Z
-completed_at:
-branch:
+completed_at: 2026-09-11T13:24:28Z
+branch: claude/mokaair-website-access-k7xiku
 depends_on: []
 scope:
   - apps/web/components/search-workbench.tsx
@@ -31,17 +31,17 @@ scope:
 
 ## Definition of done
 
-- [ ] 三個條件全空時送出精靈，不會崩潰，五步輸入保留。
-- [ ] 該情境下畫面呈現後端回傳的 `candidates`（或明確告知需要再縮一點條件），不是空白。
-- [ ] 前後端各有一個測試釘住這個契約，往後任一邊改動都會被擋下。
+- [x] 三個條件全空時送出精靈，不會崩潰，五步輸入保留。
+- [x] 該情境下畫面呈現後端回傳的 `candidates`（或明確告知需要再縮一點條件），不是空白。
+- [x] 前後端各有一個測試釘住這個契約，往後任一邊改動都會被擋下。
 
 ## Steps
 
-- [ ] `search-workbench.tsx:163` 改為 `setRecommendations(result.recommendations || [])`，先止血。
-- [ ] 決定契約方向：**建議後端一律回傳 `recommendations` 鍵**（無結果時為 `[]`），前端才不用同時支援兩種回應形狀。
-- [ ] 為 `candidates` 形狀補 UI：它有 `city`、`country`、`estimated_flight_twd`、`areas`、`reason`，足以渲染成「還沒決定目的地時的城市建議」卡片。
-- [ ] `:200` 的 `recommendations.length > 0` 之外，補一個零推薦時的說明（見 `2026-09-11-ux-dead-ends-and-empty-states`）。
-- [ ] `apps/api` 加一個測試：三條件全空的 payload，回應必須含 `recommendations` 鍵。
+- [x] `search-workbench.tsx:163` 改為 `setRecommendations(result.recommendations || [])`，先止血。
+- [x] 決定契約方向：**建議後端一律回傳 `recommendations` 鍵**（無結果時為 `[]`），前端才不用同時支援兩種回應形狀。
+- [x] 為 `candidates` 形狀補 UI：它有 `city`、`country`、`estimated_flight_twd`、`areas`、`reason`，足以渲染成「還沒決定目的地時的城市建議」卡片。
+- [x] `:200` 的 `recommendations.length > 0` 之外，補一個零推薦時的說明（見 `2026-09-11-ux-dead-ends-and-empty-states`）。
+- [x] `apps/api` 加一個測試：三條件全空的 payload，回應必須含 `recommendations` 鍵。
 
 ## How to verify
 
@@ -56,3 +56,11 @@ cd apps/api && uv run pytest tests -k places -q
 
 - 本任務 scope 含 `places/router.py`，但**只處理 `recommendations` 鍵的契約**。同一檔 `:513-516` 的 `assumptions` 與 `:541` 的 `next_step` 是寫死繁中，屬於 `2026-09-11-api-warnings-leak-zh-tw` 的同類問題，那張任務沒有把這個檔納入 scope 以免互卡——誰先動到這裡，順手把它記在對方的 Notes 裡。
 - `search-workbench.tsx:100-104` 允許把國家選到零個，`:189` 只給一句 `cityNeedsCountry` 的提示就放行。要不要禁止全不選是產品決定；本任務的立場是「允許，但不能崩潰」。
+
+## 完成紀錄
+
+後端選了「一律回傳相同鍵」的方向：`places/router.py` 的 else 分支現在也回傳 `recommendations: []` 與 `assumptions: []`，並在註解寫明原因。**沒有新增任何寫死中文字串**——零結果與候選城市的文案全在前端的五語系 catalog 裡。
+
+前端三件事：`result.recommendations || []` 的防禦性 fallback（即使契約再變也不會崩）、候選城市區塊（可直接選一個城市回到第一步補日期）、以及兩者皆空時的說明與「回去調整條件」。
+
+驗證：`tests/test_places_discover_contract.py` 把修正暫時還原後確實會失敗，復原後通過——測試真的抓得到這個 bug，不是空轉。

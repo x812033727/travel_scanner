@@ -17,7 +17,6 @@ import { primaryNavLinks } from "@/lib/nav-links";
 import { featureVisible } from "@/lib/site-features";
 import { useCommunity } from "@/components/community/provider";
 import { useDiscoveryStatus } from "@/lib/discovery";
-import { getDiscoveryCopy } from "@/lib/discovery-copy";
 import { frontendCopy } from "@/lib/frontend-navigation";
 
 export function MobileNav() {
@@ -27,7 +26,6 @@ export function MobileNav() {
   const tc = useTranslations("community");
   const locale = useLocale() as Locale;
   const discovery = useDiscoveryStatus();
-  const discoveryCopy = getDiscoveryCopy(locale);
   const flowCopy = frontendCopy(locale);
   const { preference } = useTheme();
   const themeValue = nav(preference === "system" ? "themeSystem" : preference === "dark" ? "themeDark" : "themeLight");
@@ -64,6 +62,11 @@ export function MobileNav() {
   if (discovery.loading) return <div className="flex items-center gap-1 lg:hidden"><LanguageSwitcher compact /><div aria-hidden className="h-11 w-24 rounded-xl bg-[var(--paper)]" /></div>;
   if (discovery.enabled) return <div className="flex items-center gap-1 lg:hidden">
     <LanguageSwitcher compact />
+    {/* Without this the phone header had no sign-in entry at all: a visitor had to
+        guess that "my" leads somewhere with a login link at the bottom of a list. */}
+    <Link href={status === "authenticated" ? "/account" : "/login"} aria-label={status === "authenticated" ? nav("account") : nav("login")} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] hover:bg-[var(--teal-soft)]">
+      {status === "authenticated" ? <CircleUserRound size={21} /> : <LogIn size={21} />}
+    </Link>
     <Link href="/explore" aria-label={flowCopy.explore} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] focus-visible:outline focus-visible:outline-2"><Search size={21} aria-hidden /></Link>
     <Link href="/my" aria-label={flowCopy.my} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] focus-visible:outline focus-visible:outline-2"><CircleUserRound size={21} aria-hidden /></Link>
     {/* This branch returns before the menu sheet is rendered, so the guides section would
@@ -109,11 +112,9 @@ export function MobileNav() {
             </span>
           </div>
         <nav aria-label={nav("primaryLabel")} className="grid gap-1">
-          {discovery.enabled && [["/explore", discoveryCopy.explore], ["/explore/collections", discoveryCopy.collections], ["/my", discoveryCopy.my]].map(([href, label]) => <Link key={href} href={href} onClick={() => setOpen(false)} className="flex min-h-12 items-center rounded-xl px-3 font-semibold hover:bg-[var(--teal-soft)]">{label}</Link>)}
-          {discovery.enabled && community.flags.enabled && <>
-            {community.flags.posting_enabled && <Link href="/community/new" onClick={() => setOpen(false)} className="flex min-h-12 items-center rounded-xl px-3 font-semibold hover:bg-[var(--teal-soft)]">{discoveryCopy.publish}</Link>}
-            <Link href="/community/messages" onClick={() => setOpen(false)} className="flex min-h-12 items-center rounded-xl px-3 font-semibold hover:bg-[var(--teal-soft)]">{discoveryCopy.notifications}{community.unread > 0 ? ` (${community.unread})` : ""}</Link>
-          </>}
+          {/* The sheet only opens when discovery is off (see `open` above), so anything
+              guarded by discovery.enabled here could never render. Removed rather than
+              left to mislead the next reader into thinking these links exist. */}
           {community.flags.enabled && [["/community", "title"], ["/pet-friendly", "pets"], ...(!discovery.enabled ? [["/my", "my"]] : [])].map(([href, key]) => <Link key={href} href={href} onClick={() => setOpen(false)} className="flex min-h-12 items-center rounded-xl px-3 font-semibold hover:bg-[var(--teal-soft)]">{tc(key)}</Link>)}
           {links.map((item) => <Link key={item.href} href={item.href} onClick={() => setOpen(false)} className="flex min-h-12 items-center rounded-xl px-3 font-semibold hover:bg-[var(--teal-soft)]">
             {nav(item.key)}

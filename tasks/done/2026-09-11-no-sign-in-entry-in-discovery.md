@@ -1,14 +1,14 @@
 ---
 id: 2026-09-11-no-sign-in-entry-in-discovery
 title: 登入入口只存在於我的頁底部且未登入者毫無說明
-status: open
+status: done
 priority: P0
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-11T15:05:39Z
 created_at: 2026-09-11T03:20:23Z
-completed_at:
-branch:
+completed_at: 2026-09-11T15:15:59Z
+branch: claude/mokaair-website-access-k7xiku
 depends_on: []
 scope:
   - apps/web/components/site-navigation.tsx
@@ -32,16 +32,16 @@ scope:
 
 ## Definition of done
 
-- [ ] 探索模式下，未登入訪客在桌面與手機的頁首都看得到登入入口。
-- [ ] 已登入者在兩種尺寸都能一眼看到自己的登入狀態，並能登出。
-- [ ] `mobile-nav.tsx:109-113` 的死碼移除或修正條件。
+- [x] 探索模式下，未登入訪客在桌面與手機的頁首都看得到登入入口。
+- [x] 已登入者在兩種尺寸都能一眼看到自己的登入狀態，並能登出。
+- [x] `mobile-nav.tsx:109-113` 的死碼移除或修正條件。
 
 ## Steps
 
-- [ ] `site-navigation.tsx:38`：把 `HeaderAuth` 從 `!discovery.enabled` 的條件裡拿出來，讓它在兩種模式都渲染。順便決定 `TextSizeSwitcher` 與 `ThemeSwitcher` 是否也該保留（探索模式目前只能在 `/my` 調整）。
-- [ ] `mobile-nav.tsx:65-69`：discovery 分支補上登入／帳號圖示，行為與 `:78` 的非 discovery 分支一致（未登入 → `/login`，已登入 → `/account`）。
-- [ ] 移除 `:109-113` 的死碼。
-- [ ] 加測試釘住：`discovery.enabled` 為 true 且未登入時，頁首必須有 `/login` 連結。
+- [x] `site-navigation.tsx:38`：把 `HeaderAuth` 從 `!discovery.enabled` 的條件裡拿出來，讓它在兩種模式都渲染。順便決定 `TextSizeSwitcher` 與 `ThemeSwitcher` 是否也該保留（探索模式目前只能在 `/my` 調整）。
+- [x] `mobile-nav.tsx:65-69`：discovery 分支補上登入／帳號圖示，行為與 `:78` 的非 discovery 分支一致（未登入 → `/login`，已登入 → `/account`）。
+- [x] 移除 `:109-113` 的死碼。
+- [x] 加測試釘住：`discovery.enabled` 為 true 且未登入時，頁首必須有 `/login` 連結。
 
 ## How to verify
 
@@ -68,3 +68,16 @@ cd apps/web && npx playwright test e2e/navigation.spec.ts
 
 所以完整修法是三件事：頁首補登入／帳號狀態、`/my` 未登入時給說明並把登入提前、底部列不要蓋住它。
 
+## 完成紀錄
+
+**桌面**：`HeaderAuth` 從 `!discovery.enabled` 的條件裡拿出來，改成只要 `!discovery.loading` 就渲染。文字大小與主題切換維持原樣留在該條件內——它們是顯示偏好，`/my` 裡有；「你是否登入」不是偏好，不能藏。
+
+**手機**：discovery 分支補上登入／帳號圖示，行為與非 discovery 分支一致（未登入 → `/login`，已登入 → `/account`）。
+
+**死碼**：`mobile-nav.tsx` 裡兩段由 `discovery.enabled` 守衛的連結移除——那張選單的 `open` 條件要求 `!discovery.enabled`，所以它們永遠不會渲染。連帶清掉因此沒人使用的 `discoveryCopy` 與其 import。留了註解說明為何移除而非保留。
+
+## 測試涵蓋與一個誠實的缺口
+
+手機那側有測試，且**還原修正後確實失敗**（9 個測試變成 1 failed / 8 passed）。
+
+桌面那側**沒有單元測試**，原因寫在 `site-navigation.test.tsx` 的註解裡：`useDiscoveryStatus` 在 module 層級快取結果，同檔第一個測試已把它固定成 `enabled: false`，無法在不重置模組的情況下建立 discovery-on 的情境。我寫過一個看似通過的版本，但它在還原修正後**仍然通過**——那是假驗證，已刪掉而不是留著充數。改掉那個快取是比這張任務更大的改動。
