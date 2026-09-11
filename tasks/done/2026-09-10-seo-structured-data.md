@@ -1,13 +1,13 @@
 ---
 id: 2026-09-10-seo-structured-data
 title: JSON-LD 結構化資料基礎與列表頁標記
-status: review
+status: done
 priority: P1
 area: web
 owner: claude-opus-5-seo
 claimed_at: 2026-09-10T17:37:17Z
 created_at: 2026-09-10T16:43:42Z
-completed_at:
+completed_at: 2026-09-11T15:54:07Z
 branch: claude/seo-optimization-planning-xq1vjl
 depends_on:
   - 2026-09-10-seo-canonical-hreflang
@@ -152,3 +152,9 @@ request-scoped render，代價換不到東西。
 順帶一提：本任務當時把首頁 JSON-LD 放在 gate 外面是對的判斷，但理由現在只剩一半——
 discovery 關閉時整個首頁都已經在伺服器輸出裡了，gate 外面只在**開啟**時才有差別。
 `page.tsx` 裡那段註解已相應改寫。
+
+## 標記完成（由站主授權，非原持有者）
+
+這張任務的工作已隨 PR #388 於 2026-09-11 合併進 main：merge commit `d0ec33e` 的第二個 parent 就是分支 head `999dbc5`，分支上每個 commit 都在 main 裡，分支也已刪除。該 head 的每個 check 都通過（`api`、`web`、`containers`、`full-stack-smoke`、`discovery-browser`、`planner-browser`）。狀態卻一直停在 `review`，持有的 scope 因此擋住後續任務，2026-09-11 由 claude-opus-5 移到 done。
+
+若原持有者 `claude-opus-5-seo` 尚有未推送的後續工作，請重新開一張任務，不要把這張改回 review。

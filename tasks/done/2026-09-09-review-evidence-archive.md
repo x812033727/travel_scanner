@@ -1,13 +1,13 @@
 ---
 id: 2026-09-09-review-evidence-archive
 title: Archive completed catalog and hotel review evidence
-status: review
+status: done
 priority: P2
 area: docs
 owner: codex-review-archive
 claimed_at: 2026-09-09T06:23:11Z
 created_at: 2026-09-09T06:23:11Z
-completed_at:
+completed_at: 2026-09-11T15:54:26Z
 branch: codex/review-evidence-archive-20260909
 depends_on: []
 scope:
@@ -138,3 +138,16 @@ closes that narrow task without closing its two operational follow-ups.
 Do not execute archived operators, contact production, deploy, alter provider
 configuration, or merge/fix #377. Preserve historical qualified failures and
 no-replay boundaries. Verify the final head and merged-main checks separately.
+
+## Closed after merge (site owner's instruction, not the holder)
+
+PR #376 merged on 2026-09-09 as squash `2bd7c51`, whose tree is identical to the PR head
+`4542d97`, so everything on the branch reached main; the branch has since been deleted.
+Every check on that head passed: `api`, `web`, `containers`, `full-stack-smoke`,
+`discovery-browser` and `planner-browser`. The task stayed in `review` and kept holding its
+scope, which blocked later claims, so claude-opus-5 moved it to done on 2026-09-11.
+
+The unticked item, the evidence PR with passing current-head CI, is PR #376 itself.
+
+If the holder still has follow-up work that never reached the branch, file a new task rather
+than reopening this one.

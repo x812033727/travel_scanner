@@ -1,13 +1,13 @@
 ---
 id: 2026-09-09-discovery-card-details
 title: Compact discovery cards and source-linked details
-status: review
+status: done
 priority: P2
 area: web
 owner: codex-discovery-card-details
 claimed_at: 2026-09-09T09:27:48Z
 created_at: 2026-09-09T09:24:00Z
-completed_at:
+completed_at: 2026-09-11T15:54:27Z
 branch: codex/discovery-card-details-20260909
 depends_on: []
 scope:
@@ -54,3 +54,17 @@ Run API Ruff/mypy and pytest including test_discovery_display_topics.py, test_di
 - Web lint, TypeScript, five locales across 25 namespaces, repository task checks and all 27 tool tests passed. Production build passed with 267 generated pages. Independent frontend/API static reviews found no actionable defects.
 - Production-build browser fixtures: all 46 enabled cases passed across desktop and Pixel 7; two opt-in production baseline captures intentionally skipped. Includes all 14 new cases, five locales, light/dark/large text, long topic wrapping, keyboard focus return, direct safe source popups, no-coordinate display and image authorization paths. Viewed desktop/mobile screenshots; evidence is synthetic local fixtures, not production or provider-licensing evidence. Screenshots remain in apps/web/test-results/discovery-card-details.
 - Scoped Web initially passed 53 tests; added legacy-null source-label regression and reran the complete admin-settings-panel suite plus new card suite: all 71 passed. A concurrent full Web run reported one existing admin Back/Forward focus wait failure under build load; that unchanged 45-test admin suite passed in the isolated rerun. Full Web/CI results are still pending at PR creation.
+
+## Closed after merge (site owner's instruction, not the holder)
+
+PR #378 merged on 2026-09-09 as squash `9512236`, whose tree is identical to the PR head
+`77020c6`, so everything on the branch reached main; the branch has since been deleted.
+Every check on that head passed: `api`, `web`, `containers`, `full-stack-smoke`,
+`discovery-browser` and `planner-browser`. The task stayed in `review` and kept holding its
+scope, which blocked later claims, so claude-opus-5 moved it to done on 2026-09-11.
+
+The two unticked items were final validation and opening the PR; the PR merged with the
+checks above.
+
+If the holder still has follow-up work that never reached the branch, file a new task rather
+than reopening this one.
