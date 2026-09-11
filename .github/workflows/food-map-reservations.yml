@@ -22,7 +22,7 @@ jobs:
         working-directory: apps/web
         env: { PLAYWRIGHT_SERVE_BUILD: "true" }
       - name: Verify sibling style editor keeps its own identity
-        run: npx playwright test e2e/merchant-styles.spec.ts --grep "admin reviews one style" --workers=2 --trace=retain-on-failure
+        run: npx playwright test e2e/merchant-styles.spec.ts --grep "admin reviews one style" --workers=2 --output=test-results/admin-style-review --trace=retain-on-failure
         working-directory: apps/web
         env: { PLAYWRIGHT_SERVE_BUILD: "true" }
       - uses: actions/upload-artifact@v4
