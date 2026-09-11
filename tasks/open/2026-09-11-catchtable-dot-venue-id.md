@@ -1,11 +1,11 @@
 ---
 id: 2026-09-11-catchtable-dot-venue-id
 title: Support dotted Catchtable venue IDs safely
-status: open
+status: review
 priority: P1
 area: web
-owner:
-claimed_at:
+owner: codex-release
+claimed_at: 2026-09-11T15:00:25Z
 created_at: 2026-09-11T14:33:26Z
 completed_at:
 branch: codex/catchtable-dot-venue-id
@@ -60,3 +60,5 @@ Run `uv run pytest tests/test_food_platform_links.py tests/test_reservation_plat
 - Final production-build Playwright run: **32 passed in 2.6 minutes**, all five locales at 320/390/1280px in desktop and mobile Chromium projects, light/dark theme cases, plus conflict retry. Command: `PLAYWRIGHT_SERVE_BUILD=true PLAYWRIGHT_PORT=3193 npx playwright test e2e/food-reservation-platforms.spec.ts --workers=1 --max-failures=2 --trace=retain-on-failure --output=test-results/catchtable-final` (environment variables set using PowerShell on Windows). `.last-run.json` reports passed with no failed tests. Normal startup warns about Next standalone/next start; no server launch or test failure in the final run.
 - Inspected actual 320px zh-TW and 390px ja dark save-result screenshots; verified the final CSS-resolution 320px capture as well. These are isolated fixture screenshots, not production moderation proof. Production build ID: `jT4r4mW4sST6Yys9psEHa`.
 - Implementation and local validation complete. Keep release separate: no PR opened, no merge/deployment, no catalog data write. The task is released with this handoff instead of being marked merged.
+- Release continuation: user explicitly authorized merge and deployment. Re-fetched main and confirmed it remains `94fef42d`; code head `c3b6d057` is clean. Historic scope overlaps were rechecked as merged PRs #391/#392 before reclaiming this isolated successor. No merchant publication is included in release authorization.
+- Production preflight: all eight application services use `19a94294`, API health/readiness pass at schema `0070_map_identity_metadata`, and the existing host-only manual release process is available. Deployment agent remains inactive; this release will use the established SHA-guarded SSH process, not enable the admin deployment surface.
