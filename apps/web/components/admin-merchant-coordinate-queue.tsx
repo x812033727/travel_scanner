@@ -84,6 +84,8 @@ function verdictBadge(signals: QueueSignals) {
   );
 }
 
+const COLUMNS = ["選取", "店家", "Google 找到", "訊號"] as const;
+
 export function AdminMerchantCoordinateQueue() {
   const [page, setPage] = useState(1);
   const [version, setVersion] = useState(0);
@@ -190,19 +192,16 @@ export function AdminMerchantCoordinateQueue() {
         </p>
       )}
       <div className="mt-4 overflow-x-auto rounded-2xl border bg-white">
-        <table className="w-full min-w-[960px] text-left text-sm">
+        <table className="admin-responsive-table w-full min-w-[960px] text-left text-sm">
           <thead className="bg-[var(--paper)]">
             <tr>
-              <th className="p-3">選取</th>
-              <th className="p-3">店家</th>
-              <th className="p-3">Google 找到</th>
-              <th className="p-3">訊號</th>
+              {COLUMNS.map((column) => <th key={column} className="p-3">{column}</th>)}
             </tr>
           </thead>
           <tbody>
             {(data?.items ?? []).map((item) => (
               <tr key={item.merchant.id} className="border-t align-top">
-                <td className="p-3">
+                <td data-label={COLUMNS[0]} className="p-3">
                   <input
                     type="checkbox"
                     aria-label={`選取 ${item.merchant.name}`}
@@ -212,7 +211,7 @@ export function AdminMerchantCoordinateQueue() {
                     onChange={() => toggle(item.merchant.id)}
                   />
                 </td>
-                <td className="p-3">
+                <td data-label={COLUMNS[1]} className="p-3">
                   <div className="font-semibold">{item.merchant.name}</div>
                   <div className="text-xs text-[var(--muted)]">
                     {item.merchant.local_name} · {item.merchant.destination_id.toUpperCase()} ·{" "}
@@ -227,7 +226,7 @@ export function AdminMerchantCoordinateQueue() {
                     </div>
                   )}
                 </td>
-                <td className="p-3">
+                <td data-label={COLUMNS[2]} className="p-3">
                   {item.candidate ? (
                     <>
                       <div className="font-semibold">{item.candidate.name}</div>
@@ -250,7 +249,7 @@ export function AdminMerchantCoordinateQueue() {
                     <span className="text-xs text-[var(--muted)]">找不到結果</span>
                   )}
                 </td>
-                <td className="p-3">
+                <td data-label={COLUMNS[3]} className="p-3">
                   <div className="flex flex-wrap items-center gap-2">
                     {verdictBadge(item.signals)}
                     {typeof item.signals.name_score === "number" && (

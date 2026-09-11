@@ -242,6 +242,7 @@ test("bootstrap registry drives every owner page without first-party failures", 
     const response = await page.goto(`/zh-TW${path}`);
     expect(response?.status(), path).toBe(200);
     await expect(page.locator("h1").first(), path).toBeVisible();
+    await page.waitForTimeout(2500);
     await expect(page.getByRole("navigation", { name: "營運控制台" }), path).toBeVisible();
     if (path === "/admin/site-pages") {
       await expect(page.getByRole("textbox", { name: "文件標題", exact: true })).toHaveValue("Synthetic privacy draft");
@@ -373,5 +374,53 @@ test("Pixel 7 shell, drawers and database tables do not overflow horizontally", 
   expect(shortTargets, "visible controls must keep a 44px touch target").toEqual([]);
   expect(fixture.failedFirstParty).toEqual([]);
   expect(fixture.unexpectedExternal).toEqual([]);
+  expect(fixture.writes).toEqual([]);
+});
+
+/**
+ * Nine tables used to reach a phone unreadable: five carried the card layout with
+ * no data-label, so every value sat right-aligned beside a blank column with its
+ * name nowhere on screen, and four were plain min-w-[820px]..[980px] tables behind
+ * overflow-x-auto -- three viewport widths of sideways scrolling with no sticky
+ * header to hold the column in view.
+ */
+test("Pixel 7 reads the operations tables without scrolling sideways", async ({ page }, info) => {
+  test.skip(info.project.name !== "mobile-chromium", "Mobile-only geometry acceptance.");
+  test.setTimeout(120_000);
+  const fixture = await isolateAdmin(page);
+  await page.emulateMedia({ reducedMotion: "reduce" });
+
+  let tablesReached = 0;
+  for (const path of ["/admin/hotspots", "/admin/foods", "/admin/deployments", "/admin/settings"]) {
+    await page.goto(`/zh-TW${path}`);
+    await expect(page.locator("h1").first(), path).toBeVisible();
+    // These workspaces paint a loading shell first and finish after the network
+    // has gone quiet, so wait for the table itself. Not every page in this sweep
+    // has one under the fixture, hence the bounded wait and the count below.
+    await page.locator("table").first().waitFor({ state: "attached", timeout: 10_000 }).catch(() => undefined);
+    tablesReached += await page.locator("table").count();
+
+    // Not a document-level overflow check: overflow-x-auto on the wrapper hides a
+    // 980px table from that measurement entirely, which is exactly how these
+    // shipped. What matters is whether a row fits without scrolling sideways.
+    const tooWide = await page.locator("table:visible").evaluateAll((tables) =>
+      tables
+        .filter((table) => Math.max(table.scrollWidth, table.getBoundingClientRect().width) > window.innerWidth + 1)
+        .map((table) => `${Math.round(Math.max(table.scrollWidth, table.getBoundingClientRect().width))}px ${table.getAttribute("class")?.slice(0, 40)}`),
+    );
+    expect(tooWide, `${path} has a table wider than a Pixel 7`).toEqual([]);
+
+    // Every rendered cell that got the card treatment must show its column name.
+    const nameless = await page.locator("table.admin-responsive-table td:visible").evaluateAll((cells) =>
+      cells
+        .filter((cell) => !cell.hasAttribute("colspan") && !cell.getAttribute("data-label"))
+        .map((cell) => cell.textContent?.trim().slice(0, 30) || "(empty)"),
+    );
+    expect(nameless, `${path} has values with no column name`).toEqual([]);
+  }
+
+  // A guard on the guard: an empty sweep would pass every assertion above.
+  expect(tablesReached, "the sweep reached no tables at all").toBeGreaterThan(0);
+  expect(fixture.failedFirstParty).toEqual([]);
   expect(fixture.writes).toEqual([]);
 });

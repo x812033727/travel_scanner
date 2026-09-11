@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**42 open · 1 in progress · 3 blocked · 21 in review · 223 done**
+**42 open · 1 in progress · 3 blocked · 21 in review · 224 done**
 
 ## Ready to claim
 
@@ -28,6 +28,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [表單驗證與低於四十四像素的觸控目標](open/2026-09-11-form-validation-and-touch-targets.md) | web | `apps/web/components/community/shell.tsx`<br>`apps/web/components/airline-fare-lab.tsx`<br>`apps/web/components/flight-status-search.tsx`<br>`apps/web/components/date-range-picker.tsx`<br>`apps/web/components/admin-restaurant-sources-panel.tsx`<br>`apps/web/components/admin-usage-settings-panel.tsx`<br>`apps/web/components/admin-analytics-panel.tsx` |
 | P2 | [登入頁的送出鈕在手機上要捲一下才看得到](open/2026-09-11-bottom-nav-covers-page-content.md) | web | `apps/web/app/globals.css`<br>`apps/web/components/app-bottom-nav.tsx`<br>`apps/web/app/[locale]/login/page.tsx` |
 | P2 | [取消或逾時搜尋時釋放已保留的次數](open/2026-09-11-release-reservation-on-cancel.md) | api | `apps/api/app/search/router.py`<br>`apps/api/app/usage/service.py` |
+| P2 | [店家座標佇列面板整個沒有 i18n](open/2026-09-11-merchant-coordinate-queue-i18n.md) | web | `apps/web/components/admin-merchant-coordinate-queue.tsx` |
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | api | `apps/api/app/hotspots/areas.py`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [第二批購物店家：十五個沒有公開座標來源的候選](open/2026-09-06-shopping-seeds-second-batch.md) | api | `apps/api/app/hotspots/shopping_bootstrap.json`<br>`apps/api/app/hotspots/theme_bootstrap.json`<br>`apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_shopping_bootstrap.py` |
@@ -82,7 +83,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [Mokaair community responsive web and five-language experience](open/2026-09-07-mokaair-community-web.md) | active work in the same scope |
 | P1 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | active work in the same scope |
 | P1 | [首頁與 explore 要在伺服器端渲染出真正的內容](open/2026-09-10-seo-server-render-home-and-explore.md) | depends on 2026-09-09-frontend-flow-discovery-web, 2026-09-09-discovery-card-details, 2026-09-10-seo-structured-data |
-| P1 | [後台九張表格在手機無法閱讀](open/2026-09-11-admin-tables-unusable-on-phone.md) | active work in the same scope |
 | P1 | [航班錨點卡與路線卡仍是硬編碼繁中](open/2026-09-11-anchor-and-route-cards-hardcoded-zh.md) | active work in the same scope |
 | P1 | [後端仍有二十餘處警告字串是寫死的繁中](open/2026-09-11-remaining-api-warning-literals.md) | active work in the same scope |
 | P1 | [trip-editor 的關閉守門測試會隨檔案順序變紅](open/2026-09-11-trip-editor-close-guard-order-dependence.md) | active work in the same scope |
@@ -98,6 +98,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## Recently finished
 
+- 2026-09-11 [後台九張表格在手機無法閱讀](done/2026-09-11-admin-tables-unusable-on-phone.md)
 - 2026-09-11 [路線地圖在手機吃掉頁面捲動且對輔助科技隱形](done/2026-09-11-route-map-mobile-and-a11y.md)
 - 2026-09-11 [【撤回】刪除行程項目的復原視窗其實是有效的](done/2026-09-11-itinerary-item-delete-no-confirm.md)
 - 2026-09-11 [餘額與行程上限都只在使用者投入之後才告知](done/2026-09-11-quota-and-limits-shown-too-late.md)
@@ -107,4 +108,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-11 [全站沒有自訂的找不到頁面](done/2026-09-11-no-custom-not-found-page.md)
 - 2026-09-11 [機票與飯店結果卡硬編碼繁中](done/2026-09-11-offer-cards-hardcoded-zh-tw.md)
 - 2026-09-11 [我的旅程整頁硬編碼繁中含刪除確認框](done/2026-09-11-trips-list-hardcoded-zh-tw.md)
-- 2026-09-11 [Support dotted Catchtable venue IDs safely](done/2026-09-11-catchtable-dot-venue-id.md)

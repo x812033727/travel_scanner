@@ -371,7 +371,7 @@ export function AdminFoodsPanel({ initialStatus = "" }: { initialStatus?: string
                     </tr>
                     {group.items.map((food) => (
                       <tr key={food.id} className="border-t border-[var(--line)]">
-                        <td className="p-3">
+                        <td data-label={t("table.select")} className="p-3">
                           <input
                             type="checkbox"
                             checked={selected.has(food.id)}
@@ -386,7 +386,7 @@ export function AdminFoodsPanel({ initialStatus = "" }: { initialStatus?: string
                             }
                           />
                         </td>
-                        <td className="p-3">
+                        <td data-label={t("table.food")} className="p-3">
                           <strong>
                             {food.localizations.find(
                               (item) => item.locale === "zh-TW",
@@ -396,26 +396,26 @@ export function AdminFoodsPanel({ initialStatus = "" }: { initialStatus?: string
                             {food.local_name} · {food.slug}
                           </span>
                         </td>
-                        <td className="p-3">
+                        <td data-label={t("table.kindMeal")} className="p-3">
                           {t(`kinds.${food.food_kind}`)}
                           <span className="block text-xs text-[var(--muted)]">
                             {food.meal_types.join(" · ")}
                           </span>
                         </td>
-                        <td className="p-3">
+                        <td data-label={t("table.destinationArea")} className="p-3">
                           {food.destination_ids.join(" · ")}
                           <span className="block text-xs text-[var(--muted)]">
                             {food.hotspots.map((item) => item.name).join(" · ") ||
                               t("noFoodArea")}
                           </span>
                         </td>
-                        <td className="p-3">
+                        <td data-label={t("table.status")} className="p-3">
                           {t(`statuses.${food.review_status}`)}
                           <span className="block text-xs text-[var(--muted)]">
                             {food.is_active ? t("active") : t("inactive")}
                           </span>
                         </td>
-                        <td className="p-3">
+                        <td data-label={t("table.actions")} className="p-3">
                           <button
                             type="button"
                             disabled={!manage.allowed}
