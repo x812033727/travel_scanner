@@ -38,6 +38,10 @@ export function SiteFooter({ year }: { year: number }) {
                 footer is a sibling of {children} in the layout, so unlike the home page rail it
                 is in the response body whatever the discovery switch says. */}
             <li><Link className="inline-flex min-h-11 items-center text-[var(--muted)] underline-offset-4 hover:underline" href="/destinations">{destinations}</Link></li>
+            {/* Like the destinations link above, this is in the response body of every public
+                page whatever the discovery switch says -- the header renders the section only
+                once the switch has resolved, so on a first paint this is the only entry. */}
+            <li><Link className="inline-flex min-h-11 items-center text-[var(--muted)] underline-offset-4 hover:underline" href="/guides">{t("guides")}</Link></li>
             <li><Link className="inline-flex min-h-11 items-center text-[var(--muted)] underline-offset-4 hover:underline" href="/about">{t("footerAbout")}</Link></li>
             <li><Link className="inline-flex min-h-11 items-center text-[var(--muted)] underline-offset-4 hover:underline" href="/contact">{t("footerContact")}</Link></li>
           </ul>

@@ -4,10 +4,14 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { locales } from "@/i18n/routing";
 import { siteUrl } from "@/lib/seo";
 import { closedSiteVisibility, openSiteVisibility } from "@/lib/site-features";
+import { guideSitemapEntries } from "@/lib/guides.server";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
 import sitemap, { dynamic, SITEMAP_ROUTES } from "./sitemap";
 
 vi.mock("@/lib/site-visibility.server", () => ({ getSiteVisibility: vi.fn() }));
+// Defaulting to no articles is what keeps every assertion below about the static routes
+// exactly as it was, including the whole-array comparison. The guide cases opt in.
+vi.mock("@/lib/guides.server", () => ({ guideSitemapEntries: vi.fn() }));
 
 const APP = import.meta.dirname;
 // Both trees serve /{locale}/…: the second is a route group with its own root layout.
@@ -44,6 +48,7 @@ describe("sitemap", () => {
   let entries: Awaited<ReturnType<typeof sitemap>>;
   beforeEach(async () => {
     vi.mocked(getSiteVisibility).mockReset().mockResolvedValue({ status: "ready", features: openSiteVisibility });
+    vi.mocked(guideSitemapEntries).mockReset().mockResolvedValue([]);
     entries = await sitemap();
   });
 
@@ -87,7 +92,11 @@ describe("sitemap", () => {
     expect(new Set(urls).size).toBe(urls.length);
   });
 
-  it("publishes no lastmod at all", () => {
+  // Scoped to the static routes, not the whole file. A guide article carries a real
+  // `lastModified` because the API returns its actual publication date; for a city guide the
+  // route still has no idea when its places moved, so an invented "now" would be the lie this
+  // assertion was written to prevent. See the guide-article cases at the bottom.
+  it("publishes no lastmod for the routes whose update date it cannot know", () => {
     // A `lastmod` of "now" on every crawl is worse than none: Google honours the field only
     // where it tracks real content change, and this route has no access to that -- the city
     // guides' content lives behind the API it deliberately does not call.
@@ -98,7 +107,10 @@ describe("sitemap", () => {
     for (const entry of entries) expect(entry.url.startsWith(`${siteUrl}/`)).toBe(true);
   });
 
-  it("gives every entry all five locales plus x-default", () => {
+  // Also scoped to the static routes. An article publishes one locale at a time and declares
+  // only the translations that exist, so requiring all five of it would force the sitemap to
+  // advertise pages nobody has written.
+  it("gives every static entry all five locales plus x-default", () => {
     for (const entry of entries) {
       const languages = entry.alternates?.languages ?? {};
       expect(Object.keys(languages).sort()).toEqual([...locales, "x-default"].sort());
@@ -132,5 +144,86 @@ describe("sitemap", () => {
     const paths = SITEMAP_ROUTES.map((route) => route.path);
     expect(paths).toContain("/destinations/tokyo/services");
     expect(paths.filter((path) => path.startsWith("/destinations/")).length).toBeGreaterThanOrEqual(33);
+  });
+});
+
+describe("guide articles in the sitemap", () => {
+  const narita = {
+    kind: "howto" as const, slug: "narita-to-tokyo", published_at: "2026-09-01T00:00:00Z",
+    locales: ["zh-TW", "ja"] as const,
+  };
+  const sale = {
+    kind: "intel" as const, slug: "jr-pass-sale", published_at: "2026-09-10T00:00:00Z",
+    locales: ["zh-TW", "en"] as const,
+  };
+  const rows = [
+    ...narita.locales.map((locale) => ({ ...narita, locale, locales: [...narita.locales] })),
+    ...sale.locales.map((locale) => ({ ...sale, locale, locales: [...sale.locales] })),
+  ];
+
+  async function build(entries = rows) {
+    vi.mocked(getSiteVisibility).mockReset().mockResolvedValue({ status: "ready", features: openSiteVisibility });
+    vi.mocked(guideSitemapEntries).mockReset().mockResolvedValue(entries);
+    return sitemap();
+  }
+
+  /** Articles only. `/guides/intel` and `/guides/howto` are static hub routes and belong to
+   *  the checks above, so matching on "/guides/" alone would sweep them in here. */
+  const guideEntries = (all: Awaited<ReturnType<typeof sitemap>>) =>
+    all.filter((entry) => (entry.url.split("/guides/")[1] ?? "").includes("/"));
+
+  it("publishes one entry per published locale and none for the others", async () => {
+    const guides = guideEntries(await build());
+    expect(guides.map((entry) => entry.url).sort()).toEqual([
+      `${siteUrl}/en/guides/intel/jr-pass-sale`,
+      `${siteUrl}/ja/guides/howto/narita-to-tokyo`,
+      `${siteUrl}/zh-TW/guides/howto/narita-to-tokyo`,
+      `${siteUrl}/zh-TW/guides/intel/jr-pass-sale`,
+    ]);
+    // The two locales nobody wrote must not appear anywhere.
+    for (const entry of guides) expect(entry.url).not.toContain("/ko/guides/");
+  });
+
+  it("advertises only the translations that exist", async () => {
+    const guides = guideEntries(await build());
+    const japanese = guides.find((entry) => entry.url.endsWith("/ja/guides/howto/narita-to-tokyo"));
+    expect(Object.keys(japanese!.alternates!.languages!).sort()).toEqual(["ja", "zh-TW"]);
+  });
+
+  it("offers x-default only where the English version is published", async () => {
+    const guides = guideEntries(await build());
+    const withDefault = guides.filter((entry) => "x-default" in (entry.alternates?.languages ?? {}));
+    expect(withDefault.map((entry) => entry.url).sort()).toEqual([
+      `${siteUrl}/en/guides/intel/jr-pass-sale`,
+      `${siteUrl}/zh-TW/guides/intel/jr-pass-sale`,
+    ]);
+  });
+
+  it("carries the real publication date, which is the point for a dated notice", async () => {
+    const guides = guideEntries(await build());
+    const notice = guides.find((entry) => entry.url.endsWith("/en/guides/intel/jr-pass-sale"));
+    expect(notice!.lastModified).toEqual(new Date("2026-09-10T00:00:00Z"));
+  });
+
+  it("adds no duplicate URL alongside the static routes", async () => {
+    const urls = (await build()).map((entry) => entry.url);
+    expect(new Set(urls).size).toBe(urls.length);
+  });
+
+  it("keeps the static sitemap intact when the guides API is unreachable", async () => {
+    vi.mocked(guideSitemapEntries).mockReset().mockResolvedValue([]);
+    const fallback = await build([]);
+    expect(fallback.length).toBe(SITEMAP_ROUTES.length * locales.length);
+    expect(guideEntries(fallback)).toEqual([]);
+  });
+
+  it("lists the section hubs, which are static routes and stay in the exact-array checks", () => {
+    const paths = SITEMAP_ROUTES.map((route) => route.path);
+    expect(paths).toContain("/guides");
+    expect(paths).toContain("/guides/intel");
+    expect(paths).toContain("/guides/howto");
+    for (const path of ["/guides", "/guides/intel", "/guides/howto"]) {
+      expect(routeExists(path), path).toBe(true);
+    }
   });
 });
