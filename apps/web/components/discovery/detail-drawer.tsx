@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useCallback, useContext, useRef, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { useSearchParams } from "next/navigation";
 import { useLocale } from "next-intl";
@@ -7,6 +7,7 @@ import { usePathname, useRouter } from "@/i18n/navigation";
 import { Dialog } from "@/components/community/ui";
 import { discoveryKinds } from "@/lib/discovery";
 import { getDiscoveryCopy } from "@/lib/discovery-copy";
+import { isTopModalLayer } from "@/lib/modal-sheet";
 import { DiscoveryDetails } from "./card";
 import styles from "./discovery.module.css";
 type DetailNavigation = {
@@ -22,9 +23,11 @@ export function DiscoveryDetailBoundary({ children }: { children: ReactNode }) {
   // Direct URLs remove content locally rather than navigating off-site.
   const ownedRoutes = useRef(new Set<string>());
   const positions = useRef(new Map<string, { target: string; scrollTop: number }>());
+  const closingRoute = useRef<string | null>(null);
   const identifier = params.get("content"); const [kind, id] = identifier?.split(":") || [];
   const valid = discoveryKinds.includes(kind as typeof discoveryKinds[number]) && /^[a-f0-9-]{36}$/i.test(id || "");
   const returnTo = `${pathname}${params.size ? `?${params}` : ""}`;
+  useEffect(() => { closingRoute.current = null; }, [returnTo]);
   const restoreDetails = useCallback((element: HTMLDivElement | null) => {
     if (!element) return;
     // The parent detail reloads asynchronously; restore focus against its new DOM.
@@ -39,6 +42,7 @@ export function DiscoveryDetailBoundary({ children }: { children: ReactNode }) {
   }, [returnTo]);
   function remember(trigger: HTMLElement, href: string) {
     if (!identifier) {
+      closingRoute.current = null;
       ownedRoutes.current.clear();
       setOrigin(trigger);
       positions.current.clear();
@@ -51,6 +55,10 @@ export function DiscoveryDetailBoundary({ children }: { children: ReactNode }) {
     ownedRoutes.current.add(href);
   }
   function close() {
+    // Native cancel/close pairs and rapid taps must consume only one history entry.
+    // The next committed route (or a fresh list journey) permits the next dismissal.
+    if (closingRoute.current === returnTo) return;
+    closingRoute.current = returnTo;
     if (ownedRoutes.current.has(returnTo)) router.back();
     else { const next = new URLSearchParams(params); next.delete("content"); router.replace(`${pathname}${next.size ? `?${next}` : ""}`, { scroll: false }); }
   }
@@ -58,5 +66,14 @@ export function DiscoveryDetailBoundary({ children }: { children: ReactNode }) {
 }
 function Drawer({ title, onClose, trigger, children }: { title: string; onClose: () => void; trigger?: HTMLElement; children: ReactNode }) {
   if (typeof document === "undefined") return null;
-  return createPortal(<div className={styles.drawer}><Dialog title={title} returnFocusTo={trigger} onClose={onClose}>{children}</Dialog></div>, document.body);
+  return createPortal(<div className={styles.drawer} onKeyDown={(event) => {
+    if (event.key !== "Escape" || event.defaultPrevented || event.nativeEvent.isComposing) return;
+    const dialog = event.currentTarget.querySelector<HTMLDialogElement>(":scope > dialog");
+    if (!dialog || !isTopModalLayer(dialog)) return;
+    // Consume the keyboard default before CloseWatcher can emit a non-cancelable
+    // cancel followed by close. A nested detail stays in the same open dialog.
+    event.preventDefault();
+    event.stopPropagation();
+    onClose();
+  }}><Dialog title={title} returnFocusTo={trigger} onClose={onClose}>{children}</Dialog></div>, document.body);
 }

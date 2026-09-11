@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { act, cleanup, fireEvent, render, screen, within } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { Dialog } from "@/components/community/ui";
 import { DiscoveryDetailBoundary, useDiscoveryDetailNavigation } from "./detail-drawer";
 
 const FOOD_ID = "11111111-1111-4111-8111-111111111111";
@@ -11,6 +12,7 @@ const mock = vi.hoisted(() => ({
   query: "", path: "/explore", back: vi.fn(), replace: vi.fn(),
   ready: new Set<string>(), pending: new Map<string, () => void>(),
   frames: new Map<number, FrameRequestCallback>(), nextFrame: 1,
+  childDialog: false, closeChild: vi.fn(),
 }));
 
 vi.mock("next/navigation", () => ({ useSearchParams: () => new URLSearchParams(mock.query) }));
@@ -45,6 +47,7 @@ function AsyncDetails({ kind, id }: { kind: string; id: string; returnTo: string
   if (!ready) return <p role="status">Loading {kind}</p>;
   return <div data-discovery-detail-body ref={navigation?.restoreDetails}>
     <h2 tabIndex={-1}>{kind === "food" ? "Sushi detail" : "Sakai detail"}</h2>
+    {mock.childDialog && <Dialog title="Nested child" onClose={mock.closeChild}><button type="button">Child control</button></Dialog>}
     {kind === "food" && <a href={detailHref("merchant", MERCHANT_ID)}
       data-discovery-detail-target={`merchant:${MERCHANT_ID}`}
       onClick={(event) => {
@@ -92,6 +95,7 @@ beforeEach(() => {
   mock.back.mockReset(); mock.replace.mockReset();
   mock.ready.clear(); mock.ready.add(FOOD_ID); mock.ready.add(MERCHANT_ID);
   mock.pending.clear(); mock.frames.clear(); mock.nextFrame = 1;
+  mock.childDialog = false; mock.closeChild.mockReset();
   Object.defineProperty(HTMLDialogElement.prototype, "showModal", {
     configurable: true,
     value: function (this: HTMLDialogElement) { this.setAttribute("open", ""); },
@@ -131,6 +135,89 @@ describe("discovery detail history and focus", () => {
     expect(mock.replace).not.toHaveBeenCalled();
     navigate(view, FILTERS);
     expect(screen.queryByRole("dialog")).toBeNull();
+  });
+
+  it("consumes a non-cancelable native cancel/close pair and rapid close taps only once per route", () => {
+    const view = render(<Harness />);
+    openFood(view); openMerchant(view);
+    const dialog = screen.getByRole("dialog");
+    // CloseWatcher may emit close even though a non-cancelable cancel handler
+    // called preventDefault. Both events reach the route owner before it commits.
+    fireEvent(dialog, new Event("cancel", { cancelable: false }));
+    fireEvent(dialog, new Event("close"));
+    closeDrawer(); closeDrawer();
+    expect(mock.back).toHaveBeenCalledTimes(1);
+    navigate(view, contentQuery("food", FOOD_ID));
+    closeDrawer(); closeDrawer();
+    expect(mock.back).toHaveBeenCalledTimes(2);
+    navigate(view, FILTERS);
+    openFood(view);
+    closeDrawer(); closeDrawer();
+    expect(mock.back).toHaveBeenCalledTimes(3);
+    expect(mock.replace).not.toHaveBeenCalled();
+  });
+
+  it("deduplicates direct URL replacement until the route changes", () => {
+    mock.query = contentQuery("food", FOOD_ID);
+    const view = render(<Harness />); flushFrames();
+    closeDrawer(); closeDrawer();
+    expect(mock.replace).toHaveBeenCalledTimes(1);
+    navigate(view, contentQuery("merchant", MERCHANT_ID));
+    closeDrawer(); closeDrawer();
+    expect(mock.replace).toHaveBeenCalledTimes(2);
+    expect(mock.back).not.toHaveBeenCalled();
+  });
+
+  it("prevents the keyboard Escape default before native cancel/close while retaining the nested dialog", () => {
+    const view = render(<Harness />);
+    openFood(view); openMerchant(view);
+    const dialog = screen.getByRole("dialog");
+    const nativeCancel = vi.fn();
+    dialog.addEventListener("cancel", nativeCancel);
+    const escape = new KeyboardEvent("keydown", { key: "Escape", bubbles: true, cancelable: true });
+    const allowDefault = fireEvent(screen.getByRole("heading", { name: "Sakai detail" }), escape);
+    // Model the browser default rather than making jsdom invent CloseWatcher.
+    if (allowDefault) {
+      fireEvent(dialog, new Event("cancel", { cancelable: false }));
+      fireEvent(dialog, new Event("close"));
+    }
+    expect(allowDefault).toBe(false);
+    expect(escape.defaultPrevented).toBe(true);
+    expect(nativeCancel).not.toHaveBeenCalled();
+    expect(mock.back).toHaveBeenCalledTimes(1);
+    expect((dialog as HTMLDialogElement).open).toBe(true);
+    navigate(view, contentQuery("food", FOOD_ID));
+    expect(screen.getByRole("dialog")).toBe(dialog);
+    expect(screen.getByRole("link", { name: "Sakai merchant" })).toBe(document.activeElement);
+    fireEvent.keyDown(screen.getByRole("link", { name: "Sakai merchant" }), { key: "Escape" });
+    expect(mock.back).toHaveBeenCalledTimes(2);
+    navigate(view, FILTERS);
+    expect(screen.getByRole("button", { name: "Open sushi" })).toBe(document.activeElement);
+  });
+
+  it("leaves consumed, composing and non-Escape keyboard events to their controls", () => {
+    const view = render(<Harness />); openFood(view);
+    const heading = screen.getByRole("heading", { name: "Sushi detail" });
+    const consumed = new KeyboardEvent("keydown", { key: "Escape", bubbles: true, cancelable: true });
+    consumed.preventDefault();
+    fireEvent(heading, consumed);
+    expect(fireEvent.keyDown(heading, { key: "Escape", isComposing: true })).toBe(true);
+    expect(fireEvent.keyDown(heading, { key: "Enter" })).toBe(true);
+    expect(mock.back).not.toHaveBeenCalled();
+    expect(mock.replace).not.toHaveBeenCalled();
+  });
+
+  it("does not intercept Escape for a top-layer child dialog", () => {
+    mock.childDialog = true;
+    const view = render(<Harness />); openFood(view);
+    const child = screen.getByRole("dialog", { name: "Nested child" });
+    const escape = new KeyboardEvent("keydown", { key: "Escape", bubbles: true, cancelable: true });
+    expect(fireEvent(within(child).getByRole("button", { name: "Child control" }), escape)).toBe(true);
+    expect(escape.defaultPrevented).toBe(false);
+    fireEvent(child, new Event("cancel", { cancelable: true }));
+    expect(mock.closeChild).toHaveBeenCalledTimes(1);
+    expect(mock.back).not.toHaveBeenCalled();
+    expect(mock.replace).not.toHaveBeenCalled();
   });
 
   it("restores the remounted merchant link and independently scrolling body after async browser back", async () => {
