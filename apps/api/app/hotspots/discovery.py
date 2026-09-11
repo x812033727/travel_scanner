@@ -124,6 +124,18 @@ DENIED_TYPES = {
     "Q3624078",  # sovereign state
     "Q6256",  # country
     "Q3024240",  # historical country
+    # Measured 2026-09-12 against all 1,247 approved attractions that carry a QID (their
+    # direct P31 read from Wikidata): none has any of the types below, while together
+    # they held about 50 rows of the pending queue. Deliberately absent although they
+    # flood too: elementary school in Japan (Q5358913, 袋町小学校平和資料館 is approved)
+    # and intersection (Q285783, the Shibuya scramble and 銀座四丁目 are approved).
+    "Q9842",  # primary school
+    "Q56351315",  # Japanese high school
+    "Q55521176",  # lower secondary school in Japan
+    "Q16917",  # hospital
+    "Q2175765",  # tram stop
+    "Q687188",  # ward of Vietnam
+    "Q245016",  # military base
 }
 
 
@@ -296,7 +308,9 @@ class WikimediaDiscoveryClient:
                 )
                 for center in city.centers
             )
-            if distance > max(center.radius_km for center in city.centers):
+            # A denied type stays rejected wherever it sits; sending it back to review just
+            # because it is past the radius is the flood the denylist exists to stop.
+            if status != "rejected" and distance > max(center.radius_km for center in city.centers):
                 status, reason = "pending", "outside_city_radius"
             labels = entity.get("labels", {})
             name = next(
