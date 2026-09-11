@@ -2333,6 +2333,24 @@ body:has(.planner-overlay) .premium-mobile-bar { display:none; }
   contain: layout paint;
 }
 
+/* Expanded, the map is the page: there is no scroll left for it to steal, which
+   is why the providers are given their full gestures only in this state. */
+.route-map-expanded {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0;
+  background: var(--surface);
+}
+
+.route-map-expanded .route-map-frame {
+  flex: 1;
+  height: auto;
+  min-height: 0;
+}
+
 .route-map-empty {
   background: linear-gradient(
     135deg,
@@ -2629,8 +2647,11 @@ body:has(.planner-overlay) .premium-mobile-bar { display:none; }
   .route-time-grid {
     grid-template-columns: 1fr auto 1fr;
   }
+  /* 240px was shorter than the 250px default and shorter than every other
+     breakpoint: the map was smallest on the screen with the least room to
+     begin with. The expand control above is the way out of both. */
   .route-map-drawer .route-map-frame {
-    height: 240px;
+    height: 300px;
   }
 }
 
