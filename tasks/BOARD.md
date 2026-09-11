@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**45 open · 4 in progress · 3 blocked · 21 in review · 214 done**
+**46 open · 4 in progress · 3 blocked · 21 in review · 214 done**
 
 ## Ready to claim
 
@@ -99,6 +99,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [六處死路與缺空狀態合集](open/2026-09-11-ux-dead-ends-and-empty-states.md) | active work in the same scope |
 | P2 | [安排編輯器的關閉鈕在儲存在途時被靜默吞掉](open/2026-09-11-planner-overlay-close-guard-race.md) | active work in the same scope |
 | P2 | [推薦流的語言選擇與同地點去重](open/2026-09-11-discovery-feed-language-and-dedup.md) | active work in the same scope |
+| P2 | [CatchTable 店家 id 有底線分段時存不了訂位連結](open/2026-09-11-catchtable-underscore-segment-id.md) | active work in the same scope |
 | P3 | [整合測試用固定 email，同一個資料庫跑第二次就 UniqueViolation](open/2026-09-07-fixed-email-in-integration-tests.md) | active work in the same scope |
 | P3 | [Lighthouse SEO 與效能門檻 workflow](open/2026-09-10-seo-lighthouse-workflow.md) | depends on 2026-09-10-seo-robots-sitemap, 2026-09-10-seo-destination-landing-pages, 2026-09-10-seo-server-render-home-and-explore |
 
