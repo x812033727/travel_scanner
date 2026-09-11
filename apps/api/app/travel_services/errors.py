@@ -2,6 +2,13 @@
 
 SERVICE_ERRORS: dict[str, dict[str, str]] = {
     "en": {
+        "hotel_operating_dates_required": (
+            "This hotel has operating restrictions. Select check-in and check-out dates first."
+        ),
+        "hotel_operating_unavailable": "This stay overlaps the hotel's operating restrictions.",
+        "hotel_operating_rules_invalid": (
+            "The hotel's operating dates need review. Booking is paused."
+        ),
         "hotel_booking_context_invalid": (
             "Check the arrival and departure dates and guest counts, or choose to set dates "
             "on the booking platform."
@@ -45,6 +52,13 @@ SERVICE_ERRORS: dict[str, dict[str, str]] = {
         "service_schedule_changed": ("Service selection changed. Recalculate affected routes."),
     },
     "ja": {
+        "hotel_operating_dates_required": (
+            "このホテルには営業制限があります。チェックイン・チェックアウト日を指定してください。"
+        ),
+        "hotel_operating_unavailable": "宿泊日がホテルの営業制限期間と重なっています。",
+        "hotel_operating_rules_invalid": (
+            "ホテルの営業日の確認が必要なため、予約を一時停止しています。"
+        ),
         "hotel_booking_context_invalid": (
             "チェックイン・チェックアウト日と人数を確認するか、予約サイトで日付を設定してください。"
         ),
@@ -74,6 +88,13 @@ SERVICE_ERRORS: dict[str, dict[str, str]] = {
         "service_schedule_changed": ("サービスが変更されました。ルートを再計算してください。"),
     },
     "ko": {
+        "hotel_operating_dates_required": (
+            "이 호텔에는 운영 제한이 있습니다. 체크인 및 체크아웃 날짜를 먼저 선택하세요."
+        ),
+        "hotel_operating_unavailable": "숙박 날짜가 호텔의 운영 제한 기간과 겹칩니다.",
+        "hotel_operating_rules_invalid": (
+            "호텔 운영 날짜를 확인해야 하므로 예약이 일시 중지되었습니다."
+        ),
         "hotel_booking_context_invalid": (
             "체크인·체크아웃 날짜와 인원수를 확인하거나 예약 사이트에서 날짜를 설정해 주세요."
         ),
@@ -105,6 +126,9 @@ SERVICE_ERRORS: dict[str, dict[str, str]] = {
         "service_schedule_changed": ("서비스 선택이 변경되었습니다. 경로를 다시 계산하세요."),
     },
     "zh-TW": {
+        "hotel_operating_dates_required": "這間飯店有營運限制，請先選擇入住與退房日期。",
+        "hotel_operating_unavailable": "住宿日期與飯店的營運限制期間重疊。",
+        "hotel_operating_rules_invalid": "飯店營運日期資料待確認，暫時無法預訂。",
         "hotel_booking_context_invalid": (
             "請確認入住與退房日期、成人及兒童人數；也可以選擇到平台設定日期。"
         ),
@@ -128,6 +152,9 @@ SERVICE_ERRORS: dict[str, dict[str, str]] = {
         "service_schedule_changed": ("服務選擇已變更，請重算受影響路線。"),
     },
     "zh-CN": {
+        "hotel_operating_dates_required": "这间酒店有运营限制，请先选择入住与退房日期。",
+        "hotel_operating_unavailable": "住宿日期与酒店的运营限制期间重叠。",
+        "hotel_operating_rules_invalid": "酒店运营日期资料待确认，暂时无法预订。",
         "hotel_booking_context_invalid": (
             "请确认入住与退房日期、成人及儿童人数；也可以选择到平台设置日期。"
         ),

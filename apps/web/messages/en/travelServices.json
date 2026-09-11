@@ -1,4 +1,33 @@
 {
+  "hotelOperation": {
+    "title": "Hotel operating dates",
+    "hint": "Use the hotel's local calendar dates. If an announcement lists closure hours, conservatively exclude the affected accommodation nights; these rules do not model exceptions by time of day.",
+    "range": "Unavailable stay period {number}",
+    "startDate": "First unavailable night",
+    "endDate": "Date stays can resume",
+    "rangeHint": "Exclude nights from the first date up to, but not including, the resume date. Checking out on the first date is allowed.",
+    "reason": "Announcement / reason",
+    "source": "Official announcement or government source (HTTPS)",
+    "addRange": "Add unavailable stay period",
+    "removeRange": "Remove period {number}",
+    "cutoffTitle": "Final operating date",
+    "lastCheckoutDate": "Latest permitted check-out date",
+    "cutoffHint": "Guests may check out on this date. Stays requiring a later check-out are excluded.",
+    "addCutoff": "Add a final check-out date",
+    "removeCutoff": "Remove final check-out date",
+    "saveHint": "Changes stay in this draft until you save for review. Approval is a separate action.",
+    "save": "Save for review",
+    "errors": {
+      "invalidJson": "Correct the product JSON before editing operating dates.",
+      "invalidRules": "The operating rules have an unsupported structure. Correct them in the JSON editor.",
+      "emptyRules": "Add an unavailable period or a final check-out date, or remove the operating rules.",
+      "invalidDates": "Enter valid calendar dates. Each period must end after its first unavailable night.",
+      "invalidReason": "Enter an announcement or reason of 1–1,000 characters for every rule.",
+      "invalidSource": "Enter a valid HTTPS source URL without login credentials for every rule.",
+      "overlappingDates": "Unavailable periods must not overlap. Adjacent periods are allowed.",
+      "tooManyRanges": "Use no more than 50 unavailable periods."
+    }
+  },
   "destinationOffersTitle": "Partner options for this destination",
   "destinationOffersHint": "Continue on a verified partner site. These destination links do not represent a specific product or live price.",
   "destinationProductsPending": "Verified destination partners will appear above. Exact products for this destination are still being reviewed.",

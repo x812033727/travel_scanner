@@ -26,6 +26,7 @@ import { klookAffiliateCopy } from "@/lib/klook-affiliate-copy";
 import { useDiscoveryStatus, type DiscoveryItem } from "@/lib/discovery";
 import { SavedContentAction } from "@/components/discovery/saved-content-action";
 import { TravelPlanAction } from "@/components/travel-card-actions";
+import type { HotelOperatingRules } from "@/lib/hotel-operation-rules";
 
 import { KINDS, type Kind } from "./options";
 import {
@@ -50,6 +51,7 @@ export type Product = {
   distance_km: number | null;
   reason: string;
   facts: {
+    hotel_operating_rules?: HotelOperatingRules | null;
     source_credits?: SourceCredit[];
     area_code: string | null;
     country_codes: string[];

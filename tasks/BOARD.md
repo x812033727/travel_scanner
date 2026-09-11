@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**28 open · 1 in progress · 3 blocked · 20 in review · 200 done**
+**28 open · 1 in progress · 3 blocked · 19 in review · 202 done**
 
 ## Ready to claim
 
@@ -57,10 +57,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | [JSON-LD 結構化資料基礎與列表頁標記](open/2026-09-10-seo-structured-data.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
 | [首頁伺服器端輸出真正的內容，並把目的地頁接進連結結構](open/2026-09-10-seo-home-ssr-and-internal-links.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
 | [Review and harden PR 388 SEO behavior before merge](open/2026-09-11-pr388-seo-review.md) | codex-pr388-review | `codex/pr388-seo-review` |
+| [Hotel operating date guards Rakuten Japan and resilient clickouts](open/2026-09-11-hotel-operation-rakuten-clickout.md) | codex-hotel-guard | `codex/hotel-operation-rakuten-clickout` |
 | [Archive completed catalog and hotel review evidence](open/2026-09-09-review-evidence-archive.md) | codex-review-archive | `codex/review-evidence-archive-20260909` |
 | [Compact discovery cards and source-linked details](open/2026-09-09-discovery-card-details.md) | codex-discovery-card-details | `codex/discovery-card-details-20260909` |
-| [Simplify hotel booking platform and source copy](open/2026-09-10-simplify-hotel-booking-copy.md) | codex-hotel-copy | `codex/hotel-booking-copy` |
-| [Verify simplified hotel booking copy without changing affiliate flow](open/2026-09-10-verify-hotel-booking-copy.md) | codex-hotel-copy-tests | `codex/hotel-booking-copy` |
 | [公開資料改用 revalidate 快取，並把 /foods 店家列表放進 SSR](open/2026-09-10-seo-public-data-caching.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
 | [SEO 稽核補漏：404 metadata、sitemap lastmod 與文件準確性](open/2026-09-10-seo-audit-followups.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
 
@@ -83,6 +82,8 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## Recently finished
 
+- 2026-09-11 [Simplify hotel booking platform and source copy](done/2026-09-10-simplify-hotel-booking-copy.md)
+- 2026-09-11 [Verify simplified hotel booking copy without changing affiliate flow](done/2026-09-10-verify-hotel-booking-copy.md)
 - 2026-09-10 [Korea dual map identities and transport navigation](done/2026-09-10-korea-dual-maps.md)
 - 2026-09-10 [Frontend flow navigation planning handoff and acceptance](done/2026-09-09-frontend-flow-integration.md)
 - 2026-09-10 [Add privacy scoped Stay22 script backend](done/2026-09-09-add-privacy-scoped-stay22-script-backend.md)
@@ -91,5 +92,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-10 [Preserve no-referrer on external clickout responses](done/2026-09-09-preserve-clickout-referrer-policy.md)
 - 2026-09-09 [Fix first hotel clickout and affiliate availability feedback](done/2026-09-09-fix-first-hotel-clickout-and-affiliate.md)
 - 2026-09-09 [Stay22 exact hotel affiliate clickouts](done/2026-09-09-stay22-hotel-clickout.md)
-- 2026-09-09 [Travel Scanner 後台營運中心升級](done/2026-09-09-admin-operations-center.md)
-- 2026-09-09 [Integrate PR 365 historical deployment and open verification notes](done/2026-09-09-pr365-docs-integration.md)

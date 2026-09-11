@@ -2,6 +2,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { NextRequest } from "next/server";
 import { POST } from "./route";
 import { hotelBookingPlacements } from "@/lib/hotel-booking-placement";
+import { stay22AllezCopy } from "@/lib/stay22-allez-copy";
 
 vi.mock("next/headers", () => ({ cookies: async () => ({ get: () => undefined }) }));
 afterEach(() => vi.unstubAllGlobals());
@@ -14,6 +15,19 @@ function request(accept = "text/html", placement = "trip") {
   });
 }
 describe("booking-option error boundary", () => {
+  it.each(["hotel_operating_dates_required", "hotel_operating_unavailable", "hotel_operating_rules_invalid"])("shows an actionable local restriction without futile retry for %s", async (code) => {
+    vi.stubGlobal("fetch", vi.fn(async () => Response.json({ code, detail: "secret upstream trace" }, { status: 409, headers: { "X-Request-ID": "restriction-check" } })));
+    const response = await POST(request(), { params: Promise.resolve({ path }) });
+    const html = await response.text();
+    const copy = stay22AllezCopy("en");
+    expect(response.status).toBe(409);
+    expect(response.headers.get("X-Request-ID")).toBe("restriction-check");
+    const message = code.endsWith("dates_required") ? copy.operatingDatesRequired : code.endsWith("unavailable") ? copy.operatingUnavailable : copy.operatingInvalid;
+    expect(html).toContain(message.replaceAll("'", "&#39;"));
+    expect(html).not.toContain("secret upstream trace");
+    expect(html).not.toContain("<form");
+    expect(html).toContain('href="/en/trips/private-id"');
+  });
   it.each(hotelBookingPlacements)("forwards %s once and preserves the validated redirect", async (placement) => {
     const fetcher = vi.fn(async () => new Response(null, { status: 303, headers: { location: "https://hotel.example.test/" } }));
     vi.stubGlobal("fetch", fetcher);

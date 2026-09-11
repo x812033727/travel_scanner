@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from urllib.parse import urlsplit
 
 from app.affiliates.schemas import AffiliateModule
+from app.travel_services.rakuten import RAKUTEN_JAPAN_HOST, rakuten_hotel_identity
 from app.travel_services.schemas import safe_url
 
 
@@ -60,6 +61,21 @@ def brand_target(code: str, value: str) -> str:
     ):
         raise ValueError("Target does not belong to the selected brand")
     return value
+
+
+def direct_hotel_target(code: str, value: str) -> str:
+    """Permit Japan's exact Rakuten hotel pages only for ordinary direct links.
+
+    BRANDS and brand_target remain the affiliate channel's allowlist: a verified
+    Japan property does not establish Travelpayouts/API support for that market.
+    """
+    value = safe_url(value)
+    if code == "rakuten" and urlsplit(value).hostname == RAKUTEN_JAPAN_HOST:
+        identity = rakuten_hotel_identity(value)
+        if identity is None or identity[0] != "japan":
+            raise ValueError("An exact untracked Rakuten Japan hotel page is required")
+        return value
+    return brand_target(code, value)
 
 
 def affiliate_target(value: str) -> str:

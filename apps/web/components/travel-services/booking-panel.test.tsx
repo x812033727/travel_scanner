@@ -19,6 +19,56 @@ function button() { return screen.getByRole("button", { name: /前往 Booking.co
 function form() { return button().closest("form")!; }
 
 describe("direct hotel booking panel", () => {
+  it("offers an explicit same-tab native POST only after an attempt, revalidating edited values", () => {
+    const fetch = vi.spyOn(globalThis, "fetch");
+    const open = vi.spyOn(window, "open");
+    render(<BookingPanel product={product} placement="destination" onClose={vi.fn()} />);
+    expect(screen.queryByRole("button", { name: /未開啟/ })).toBeNull();
+    fireEvent.submit(form());
+    const fallback = screen.getByRole("button", { name: "未開啟？在目前分頁前往 Booking.com" });
+    expect(fallback.getAttribute("formtarget")).toBe("_self");
+    expect(fallback.closest("form")).toBe(form());
+    expect(form().method).toBe("post");
+    expect(form().target).toBe("_blank");
+    fireEvent.change(screen.getByLabelText(copy.checkIn), { target: { value: "2099-11-10" } });
+    expect(fireEvent.submit(fallback.closest("form")!)).toBe(false);
+    fireEvent.change(screen.getByLabelText(copy.checkOut), { target: { value: "2099-11-12" } });
+    expect(fireEvent.submit(fallback.closest("form")!)).toBe(true);
+    expect(Object.fromEntries(new FormData(form()))).toEqual({ check_in: "2099-11-10", check_out: "2099-11-12" });
+    expect(fetch).not.toHaveBeenCalled();
+    expect(open).not.toHaveBeenCalled();
+  });
+
+  it("requires dates for restricted hotels, blocks both clickout targets, and allows boundary stays", () => {
+    const restricted = { ...product, facts: { ...product.facts, hotel_operating_rules: { unavailable_stays: [{ start_date: "2099-11-10", end_date: "2099-11-12", reason: "Maintenance exclusion", source_url: "https://hotel.example.com/maintenance" }], last_checkout_date: "2099-12-01", last_checkout_reason: "Operations ending", last_checkout_source_url: "https://hotel.example.com/closure" } } };
+    render(<BookingPanel product={restricted} placement="trip" onClose={vi.fn()} />);
+    expect(screen.getByRole("alert").textContent).toBe(copy.operatingDatesRequired);
+    expect(screen.queryByRole("checkbox", { name: copy.omitDates })).toBeNull();
+    expect(fireEvent.submit(form())).toBe(false);
+    expect(screen.getByText("Maintenance exclusion")).toBeTruthy();
+    expect(screen.getByRole("link", { name: /查看限制來源 · 2099-11-10/ }).getAttribute("rel")).toBe("noopener noreferrer");
+    fireEvent.change(screen.getByLabelText(copy.checkIn), { target: { value: "2099-11-09" } });
+    fireEvent.change(screen.getByLabelText(copy.checkOut), { target: { value: "2099-11-10" } });
+    expect(fireEvent.submit(form())).toBe(true);
+    const fallback = screen.getByRole("button", { name: /未開啟/ });
+    fireEvent.change(screen.getByLabelText(copy.checkOut), { target: { value: "2099-11-11" } });
+    expect(screen.getByRole("alert").textContent).toBe(copy.operatingUnavailable);
+    expect(fireEvent.submit(fallback.closest("form")!)).toBe(false);
+    fireEvent.change(screen.getByLabelText(copy.checkIn), { target: { value: "2099-11-12" } });
+    fireEvent.change(screen.getByLabelText(copy.checkOut), { target: { value: "2099-12-01" } });
+    expect(fireEvent.submit(form())).toBe(true);
+    fireEvent.change(screen.getByLabelText(copy.checkOut), { target: { value: "2099-12-02" } });
+    expect(fireEvent.submit(form())).toBe(false);
+    expect(screen.getByRole("alert").textContent).toBe(copy.operatingUnavailable);
+  });
+
+  it("fails closed for malformed persisted rules without rendering unsafe source URLs", () => {
+    const invalid = { ...product, facts: { ...product.facts, hotel_operating_rules: { unavailable_stays: [{ start_date: "2099-11-10", end_date: "2099-11-12", reason: "Untrusted", source_url: "javascript:alert(1)" }] } } };
+    render(<BookingPanel product={invalid} placement="destination" onClose={vi.fn()} />);
+    expect(screen.getByRole("alert").textContent).toBe(copy.operatingInvalid);
+    expect(fireEvent.submit(form())).toBe(false);
+    expect(document.querySelector('a[href^="javascript:"]')).toBeNull();
+  });
   it.each(hotelBookingPlacements)("keeps the %s entry on the first submission", (placement) => {
     window.history.replaceState({}, "", "/zh-TW/explore?category=hotels");
     render(<BookingPanel product={product} placement={placement} onClose={vi.fn()} />);
