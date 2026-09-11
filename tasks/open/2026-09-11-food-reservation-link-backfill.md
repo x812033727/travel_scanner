@@ -27,15 +27,15 @@ scope:
 
 ## Definition of done
 
-- [ ] 296 間未查核的公開店家都有查核結果：`verified`、`disabled`、`not_found` 或 `ambiguous`，每筆附證據。
-- [ ] 精準分店頁已寫進正式資料庫，前台出現對應按鈕；明寫不收訂位的平台頁不公開。
+- [x] 296 間未查核的公開店家都有查核結果：`verified`、`disabled`、`not_found` 或 `ambiguous`，每筆附證據。
+- [ ] 精準分店頁已寫進正式資料庫，前台出現對應按鈕；不能訂位的平台頁不公開。
 - [ ] 後台人工審核過的列一筆都沒被覆寫。
 
 ## Steps
 
-- [ ] `apply-food-platform-reviews` 指令與測試：預設試跑、只寫平台列、每列一筆稽核。
-- [ ] 用內建瀏覽器查核（JP／KR+VN／TW+HK+SG+TH 三組平行），結果整理成 `apps/api/app/foods/data/platform_reviews/2026-09-11-public-merchants.json`。
-- [ ] 查核摘要 `docs/catalog-content-reviews/2026-09-11-reservation-links-full.md`。
+- [x] `apply-food-platform-reviews` 指令與測試：預設試跑、只寫平台列、每列一筆稽核。
+- [x] 用內建瀏覽器查核，結果整理成 `apps/api/app/foods/data/platform_reviews/2026-09-11-public-merchants.json`（311 筆：verified 12、disabled 35、ambiguous 9、not_found 255）。
+- [x] 查核摘要 `docs/catalog-content-reviews/2026-09-11-reservation-links-full.md`。
 - [ ] PR、合併、部署，在 api 容器試跑，確認後 `--apply`。
 
 ## How to verify

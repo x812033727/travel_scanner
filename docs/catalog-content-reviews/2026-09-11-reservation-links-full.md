@@ -2,7 +2,34 @@
 
 接續 [首批 10 間紀錄](2026-09-11-reservation-links.md)。這一輪把沒有訂位按鈕的公開店家全部查過一次，結果存成可直接匯入的資料檔 [`apps/api/app/foods/data/platform_reviews/2026-09-11-public-merchants.json`](../../apps/api/app/foods/data/platform_reviews/2026-09-11-public-merchants.json)，由 `apply-food-platform-reviews` 指令寫入正式資料庫。
 
-<!-- RESULTS -->
+**結果：296 間沒有訂位按鈕的公開店家全部查過一次，另複查 5 間已公開的新加坡 Chope 頁，共 311 筆查核結果。其中 11 間店家查到可以線上訂位的精準分店頁；35 筆是「平台上有這家店，但那一頁不能訂位」，依 2026-09-11 的決定不公開。套用後全站有訂位按鈕的店家會從 35 間變成 45 間——Song Fa 的 Chope 頁明寫不收訂位，它現有的按鈕會下架。**
+
+| 國家 | 可訂位（會公開） | 有頁面但不能訂 | 無法確認 | 查無 |
+| --- | --- | --- | --- | --- |
+| JP | 2 | 1 | 1 | 92 |
+| KR | 1 | 10 | 3 | 60 |
+| TW | 2 | 1 | 4 | 46 |
+| TH | 1 | 2 | 0 | 21 |
+| SG | 4 | 7 | 0 | 11 |
+| VN | 0 | 0 | 0 | 24 |
+| HK | 2 | 14 | 1 | 1 |
+| 合計 | 12 | 35 | 9 | 255 |
+
+查到的訂位平台：SevenRooms 4、inline 3、一休 1、My Concierge Japan 1、Catchtable Global 1、Chope 1、EZTABLE 1（共 12 筆，分屬 11 間店家；銀座久兵衛同時有一休與 My Concierge 兩個平台）。
+
+三個看得出來的模式：
+
+- **香港 18 間裡有 14 間是「OpenRice 上查得到，但那一頁只能打電話訂位」**。OpenRice 頁面上的 Book 按鈕其實屬於下方的推薦餐廳廣告，本店自己沒有線上訂位。依你的決定，這些不公開。
+- **日本 96 間只查到 2 間**。日本餐廳絕大多數走 Tabelog（47 次）、AutoReserve（27 次）、Hot Pepper（26 次）、ぐるなび（19 次），這四個都不在支援的 12 個平台裡。
+- **韓國多為候位制**。Catchtable 上查到的店家多半只有候位（waitlist）或電話訂位，沒有線上訂位，因此存為停用。
+
+另外記下 177 筆不在支援清單上的訂位平台（只留證據、不寫入），最常見的是 Tabelog 47、AutoReserve 27、Hot Pepper 26、ぐるなび 19、Retty 7、愛食記 5、Klook 4、ヒトサラ 3。要提高日本或韓國的覆蓋率，得先決定要不要支援這些平台。
+
+### 沒能查完的部分
+
+- **inline 擋機器人**：台北春水堂（信義店）、台北 SIDOLI RADIO、台南翰林茶館赤崁店的 inline 頁面三次都被「按住不放」驗證擋下，沒有破解。前兩間的名稱與分店資訊都對得上，但頁面本身沒看到，所以維持「無法確認」。翰林另外在 OpenRice 有頁面（只能電話訂位），已記為停用。
+- **網址規則擋住一筆**：首爾 하니칼국수 的 Catchtable 頁確認可訂位，但店家 id `hani._.noodle` 有一段只有底線，現行網址規則不收，已另開任務 `2026-09-11-catchtable-underscore-segment-id`。
+- 新加坡 Druggists 與香港 Arca Society 的 inline 頁，第三次複查同樣被擋；這兩筆是以前兩次獨立開啟時實際看到的訂位表單為準，狀態與理由都寫在該筆 review_note 裡。
 
 ## 範圍
 
