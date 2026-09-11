@@ -1679,5 +1679,40 @@
     "validUntil": "適用期限",
     "validUntilHelp": "情報用の期限です。過ぎると一覧と sitemap から外れますが、URL は残ります。",
     "viewRevision": "このバージョンを見る"
+  },
+  "merchantCoordinateQueue": {
+    "title": "座標レビュー待ち",
+    "description": "永続的な座標がまだない店舗を、Google が見つけた場所と照合シグナルと並べて表示します。承認すると admin_verified を出所として座標を書き込みます。サーバー側で再検索して確認するため、ブラウザから送られた座標は決して採用しません。",
+    "notConfigured": "Google Places のキーが未設定のため、候補を解決できません。",
+    "columnSelect": "選択",
+    "columnMerchant": "店舗",
+    "columnCandidate": "Google の検索結果",
+    "columnSignals": "シグナル",
+    "selectMerchant": "{name} を選択",
+    "koreaNote": "韓国の店舗：座標は先に書き込めますが、公開には NAVER の正確な場所ページが必要です。",
+    "openInGoogleMaps": "Google マップで開く",
+    "noResult": "結果が見つかりません",
+    "nameScore": "名称 {score}",
+    "distanceKm": "距離 {km} km",
+    "placeIdTaken": "Place ID は使用済みです",
+    "queueEmpty": "待ち行列は空です — すべての店舗に永続的な座標があります。",
+    "approveSelected": "選択した {count} 件を承認",
+    "previousPage": "前へ",
+    "nextPage": "次へ",
+    "pageStatus": "{total} ページ中 {page} ページ・未処理 {pending} 件",
+    "verdictAgree": "一致",
+    "verdictNoResult": "結果なし",
+    "verdictCheck": "要目視確認",
+    "written": "座標を {count} 件書き込みました。",
+    "writtenWithSkipped": "座標を {count} 件書き込み、{skipped} 件をスキップしました（{reasons}）。",
+    "outcome": {
+      "verified": "検証済み",
+      "coordinates_saved": "座標を保存（NAVER リンク待ち）",
+      "candidate_changed": "Google の結果が変わったためスキップ",
+      "place_id_taken": "Place ID は他の店舗が使用済み",
+      "no_result": "結果が見つかりません",
+      "already_durable": "すでに永続的な座標があります",
+      "not_found": "店舗が存在しません"
+    }
   }
 }

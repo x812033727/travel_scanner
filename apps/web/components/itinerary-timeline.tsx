@@ -76,10 +76,7 @@ export function ItineraryTimeline({
   timezone?: string;
 }) {
   const copy = itineraryCopy(activeLocale());
-  // trip-types' formatTime falls back to a Chinese literal when an item has no time,
-  // and that file belongs to another task; this keeps the fallback out of the timeline.
-  const time = (value?: string | null) =>
-    value ? formatTime(value, undefined, timezone) : copy.flexibleTime;
+  const time = (value?: string | null) => formatTime(value, undefined, timezone);
   const dayFormatter = new Intl.DateTimeFormat(activeLocale(), {
     month: "long",
     day: "numeric",

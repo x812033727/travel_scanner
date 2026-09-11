@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**37 open · 1 in progress · 3 blocked · 21 in review · 234 done**
+**35 open · 1 in progress · 3 blocked · 21 in review · 236 done**
 
 ## Ready to claim
 
@@ -25,7 +25,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [Normalize locale-prefixed login return paths](open/2026-09-10-locale-login-return-path.md) | web | `apps/web/components/auth-form.tsx`<br>`apps/web/components/auth-form.test.tsx` |
 | P2 | [讓 pet-friendly 與社群內容頁先 SSR 再開放索引](open/2026-09-10-seo-open-content-pages.md) | web | `apps/web/components/community/page.tsx`<br>`apps/web/components/community/page.test.tsx`<br>`apps/web/app/[locale]/pet-friendly/page.tsx`<br>`apps/web/app/[locale]/pet-friendly/[id]/page.tsx`<br>`apps/web/app/[locale]/community/posts/[id]/page.tsx`<br>`apps/web/app/[locale]/community/profiles/[handle]/page.tsx`<br>`apps/web/lib/community/public.server.ts`<br>`apps/web/lib/community/public.server.test.ts` |
 | P2 | [取消或逾時搜尋時釋放已保留的次數](open/2026-09-11-release-reservation-on-cancel.md) | api | `apps/api/app/search/router.py`<br>`apps/api/app/usage/service.py` |
-| P2 | [店家座標佇列面板整個沒有 i18n](open/2026-09-11-merchant-coordinate-queue-i18n.md) | web | `apps/web/components/admin-merchant-coordinate-queue.tsx` |
 | P2 | [航班動態的查詢時間把 UTC 當成地方時顯示](open/2026-09-11-flight-status-checked-at-utc.md) | web | `apps/web/components/flight-anchor-card.tsx`<br>`apps/web/components/flight-anchor-card.test.tsx` |
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | api | `apps/api/app/hotspots/areas.py`<br>`apps/api/tests/test_hotspot_areas.py` |
@@ -86,13 +85,14 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [Community read metric duplicate observed alongside smoke ECONNRESET](open/2026-09-07-community-read-metric-concurrency.md) | active work in the same scope |
 | P2 | [Preserve force refresh in daily route background jobs](open/2026-09-10-daily-route-force-refresh.md) | active work in the same scope |
 | P2 | [推薦流的語言選擇與同地點去重](open/2026-09-11-discovery-feed-language-and-dedup.md) | active work in the same scope |
-| P2 | [formatTime 在沒有時間時回傳寫死的繁中](open/2026-09-11-format-time-chinese-fallback.md) | active work in the same scope |
 | P2 | [當日檢視的離線 e2e 與 CI 接線](open/2026-09-11-offline-today-e2e.md) | active work in the same scope |
 | P3 | [整合測試用固定 email，同一個資料庫跑第二次就 UniqueViolation](open/2026-09-07-fixed-email-in-integration-tests.md) | active work in the same scope |
 | P3 | [Lighthouse SEO 與效能門檻 workflow](open/2026-09-10-seo-lighthouse-workflow.md) | depends on 2026-09-10-seo-robots-sitemap, 2026-09-10-seo-destination-landing-pages, 2026-09-10-seo-server-render-home-and-explore |
 
 ## Recently finished
 
+- 2026-09-11 [店家座標佇列面板整個沒有 i18n](done/2026-09-11-merchant-coordinate-queue-i18n.md)
+- 2026-09-11 [formatTime 在沒有時間時回傳寫死的繁中](done/2026-09-11-format-time-chinese-fallback.md)
 - 2026-09-11 [安排編輯器的關閉鈕在儲存在途時被靜默吞掉](done/2026-09-11-planner-overlay-close-guard-race.md)
 - 2026-09-11 [trip-editor 的關閉守門測試會隨檔案順序變紅](done/2026-09-11-trip-editor-close-guard-order-dependence.md)
 - 2026-09-11 [後端仍有二十餘處警告字串是寫死的繁中](done/2026-09-11-remaining-api-warning-literals.md)
@@ -101,5 +101,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-11 [表單驗證與低於四十四像素的觸控目標](done/2026-09-11-form-validation-and-touch-targets.md)
 - 2026-09-11 [六處死路與缺空狀態合集](done/2026-09-11-ux-dead-ends-and-empty-states.md)
 - 2026-09-11 [登入頁的送出鈕在手機上要捲一下才看得到](done/2026-09-11-bottom-nav-covers-page-content.md)
-- 2026-09-11 [規格書明定為必要的目的地支援閘門從未實作](done/2026-09-11-destination-supported-gate-missing.md)
-- 2026-09-11 [行程規劃器在手機沒有全域導覽且離線頁無入口](done/2026-09-11-planner-mobile-navigation-and-offline.md)

@@ -1,3 +1,4 @@
+import { itineraryCopy } from "@/lib/itinerary-copy";
 import { activeLocale } from "@/lib/locale-format";
 
 /**
@@ -399,12 +400,17 @@ export type SharedTrip = Pick<
 >;
 
 export function formatTime(value?: string | null, locale?: string, timeZone?: string) {
-  if (!value) return "彈性時段";
+  const reader = locale || activeLocale();
+  // The timeline, the editor, today's view and the print sheet all come through here, so
+  // a literal fallback put the same four Chinese characters on every /en, /ja and /ko
+  // screen that had a stop with no time on it. The itinerary catalog already carries this
+  // sentence in five languages, and it is the catalog those screens read anyway.
+  if (!value) return itineraryCopy(reader).flexibleTime;
   const localWallClock = value.match(
     /^\d{4}-\d{2}-\d{2}T(\d{2}):(\d{2})(?::\d{2}(?:\.\d+)?)?$/,
   );
   if (localWallClock) return `${localWallClock[1]}:${localWallClock[2]}`;
-  return new Intl.DateTimeFormat(locale || activeLocale(), {
+  return new Intl.DateTimeFormat(reader, {
     hour: "2-digit",
     minute: "2-digit",
     hour12: false,
