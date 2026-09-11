@@ -1,5 +1,10 @@
 # Google, LINE, and Apple login
 
+> Setting these up for the first time? [`social-login-setup.zh-TW.md`](social-login-setup.zh-TW.md)
+> is the step-by-step operator guide in Traditional Chinese: provider-console
+> clicks, the admin page, and what to check when a provider still reports
+> `false`. This page is the reference for how the flow behaves and why.
+
 Mokaair supports password login and optional Google, LINE, and Apple OpenID
 Connect login. Provider credentials stay behind the FastAPI service and are
 stored with the existing encrypted provider-settings mechanism. The browser BFF
