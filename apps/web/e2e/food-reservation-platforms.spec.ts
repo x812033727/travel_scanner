@@ -52,6 +52,9 @@ async function fixture(page: Page, failFirst = false) {
       }
     } else if (path === "/auth/me") body = { id: "fixture-admin", email: "admin@example.test", is_admin: true, can_deploy: false };
     else if (path === "/analytics/config") body = { first_party_enabled: false, ga4_enabled: false };
+    // The workspace keeps its settings tab mounted so drafts survive tab changes.
+    // Its snapshot has a providers/audit contract, not the generic paginated list.
+    else if (path === "/admin/provider-settings") body = { providers: [], audit: [], encryption_source: "isolated-fixture" };
     else if (path === "/admin/dashboard") body = { counts: {}, can_deploy: false };
     else if (path === "/admin/foods/merchants") body = { items: [{ ...merchant, ...fields() }], total: 1, page: 1, pages: 1, available_platforms: reservationPlatformDefinitions.map(({ provider, label }) => ({ provider, label })) };
     else if (path === `/admin/foods/merchants/${merchantId}/platform-links`) body = fields();
@@ -71,6 +74,7 @@ for (const locale of Object.keys(catalogs) as (keyof typeof catalogs)[]) {
       if (width === 390) await page.addInitScript(() => localStorage.setItem("mokaair-theme", "dark"));
       const { writes, links } = await fixture(page);
       await page.goto(`/${locale}/admin/foods?tab=catalog&section=merchants`);
+      await expect(page.getByRole("button", { name: copy.editButton, exact: true })).toBeVisible();
       await page.getByRole("button", { name: copy.editButton, exact: true }).click();
       const dialog = page.getByRole("dialog"), editor = dialog.getByRole("region", { name: copy.platformEditorTitle, exact: true });
       await expect.poll(() => dialog.evaluate((node) => node.contains(document.activeElement))).toBe(true);
@@ -122,6 +126,7 @@ test("conflict reload preserves platform draft and requires explicit confirmatio
   const copy = zhTW.foodMerchantsPanel;
   const { writes } = await fixture(page, true);
   await page.goto("/zh-TW/admin/foods?tab=catalog&section=merchants");
+  await expect(page.getByRole("button", { name: copy.editButton, exact: true })).toBeVisible();
   await page.getByRole("button", { name: copy.editButton, exact: true }).click();
   const editor = page.getByRole("dialog").getByRole("region", { name: copy.platformEditorTitle, exact: true });
   const note = editor.getByRole("textbox", { name: copy.platformReviewNote, exact: true });

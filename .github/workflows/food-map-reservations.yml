@@ -18,7 +18,7 @@ jobs:
       - run: npm run build:web
       - run: npx playwright install --with-deps chromium
       - name: Verify five-language food actions and nested navigation
-        run: npx playwright test e2e/food-map-reservations.spec.ts e2e/food-reservation-platforms.spec.ts --workers=2 --trace=retain-on-failure
+        run: npx playwright test e2e/food-map-reservations.spec.ts e2e/food-reservation-platforms.spec.ts --workers=2 --max-failures=3 --trace=retain-on-failure
         working-directory: apps/web
         env: { PLAYWRIGHT_SERVE_BUILD: "true" }
       - uses: actions/upload-artifact@v4
