@@ -30,6 +30,7 @@ export type AdminBootstrap = {
 
 export const fallbackAdminNavigation: AdminNavigationItem[] = [
   { key: "dashboard", href: "/admin", group: "overview", capability: "dashboard.read" },
+  { key: "guides", href: "/admin/guides", group: "content", capability: "content.read" },
   { key: "hotspots", href: "/admin/hotspots", group: "content", capability: "content.read" },
   { key: "foods", href: "/admin/foods", group: "content", capability: "content.read" },
   { key: "hotels", href: "/admin/hotels", group: "content", capability: "content.read" },

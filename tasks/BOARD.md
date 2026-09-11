@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**53 open · 1 in progress · 3 blocked · 22 in review · 203 done**
+**53 open · 1 in progress · 3 blocked · 24 in review · 203 done**
 
 ## Ready to claim
 
@@ -15,8 +15,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- | --- |
 | P0 | [精靈三個條件都選不限時整頁崩潰並清空五步輸入](open/2026-09-11-wizard-crash-when-all-criteria-any.md) | web | `apps/web/components/search-workbench.tsx`<br>`apps/api/app/places/router.py` |
 | P0 | [搜尋結果頁的零結果失敗與無逾時三個死路](open/2026-09-11-search-result-dead-ends.md) | web | `apps/web/components/search-experience.tsx`<br>`apps/api/app/search/router.py`<br>`apps/web/messages/en/search.json`<br>`apps/web/messages/ja/search.json`<br>`apps/web/messages/ko/search.json`<br>`apps/web/messages/zh-CN/search.json`<br>`apps/web/messages/zh-TW/search.json` |
-| P0 | [登入入口只存在於我的頁底部且未登入者毫無說明](open/2026-09-11-no-sign-in-entry-in-discovery.md) | web | `apps/web/components/site-navigation.tsx`<br>`apps/web/components/mobile-nav.tsx` |
-| P1 | [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | docs | `apps/web/app/[locale]/privacy/page.tsx`<br>`apps/web/app/[locale]/terms/page.tsx`<br>`apps/web/app/[locale]/contact/page.tsx`<br>`apps/web/messages/en/navigation.json`<br>`apps/web/messages/ja/navigation.json`<br>`apps/web/messages/ko/navigation.json`<br>`apps/web/messages/zh-CN/navigation.json`<br>`apps/web/messages/zh-TW/navigation.json` |
 | P1 | [Hotel platform options and quote readiness](open/2026-09-07-hotel-platform-options-and-quote-readiness.md) | api | `apps/api/tests/test_hotel_content_package.py`<br>`docs/hotel-platforms` |
 | P1 | [Revalidate community read resets against production-build CI](open/2026-09-08-community-ci-read-retry.md) | web | `apps/web/e2e/community.spec.ts` |
 | P1 | [Complete live Travelpayouts brand and destination offer verification](open/2026-09-08-travelpayouts-live-destination-activation.md) | ops | `docs/travel-services.md` |
@@ -25,7 +23,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [餘額與行程上限都只在使用者投入之後才告知](open/2026-09-11-quota-and-limits-shown-too-late.md) | web | `apps/web/components/new-trip-form.tsx`<br>`apps/web/components/usage-catalog-provider.tsx`<br>`apps/web/messages/en/newTrip.json`<br>`apps/web/messages/ja/newTrip.json`<br>`apps/web/messages/ko/newTrip.json`<br>`apps/web/messages/zh-CN/newTrip.json`<br>`apps/web/messages/zh-TW/newTrip.json` |
 | P1 | [行程時間軸硬編碼繁中而它正是分享頁的主體](open/2026-09-11-itinerary-timeline-hardcoded-zh-tw.md) | web | `apps/web/components/itinerary-timeline.tsx`<br>`apps/web/lib/itinerary-messages`<br>`apps/web/lib/itinerary-copy.ts` |
 | P1 | [機票與飯店結果卡硬編碼繁中](open/2026-09-11-offer-cards-hardcoded-zh-tw.md) | web | `apps/web/components/flight-offer-card.tsx`<br>`apps/web/components/hotel-offer-card.tsx`<br>`apps/web/messages/en/search.json`<br>`apps/web/messages/ja/search.json`<br>`apps/web/messages/ko/search.json`<br>`apps/web/messages/zh-CN/search.json`<br>`apps/web/messages/zh-TW/search.json` |
-| P1 | [全站沒有自訂的找不到頁面](open/2026-09-11-no-custom-not-found-page.md) | web | `apps/web/app/[locale]/not-found.tsx`<br>`apps/web/messages/en/common.json`<br>`apps/web/messages/ja/common.json`<br>`apps/web/messages/ko/common.json`<br>`apps/web/messages/zh-CN/common.json`<br>`apps/web/messages/zh-TW/common.json` |
 | P1 | [行程規劃器在手機沒有全域導覽且離線頁無入口](open/2026-09-11-planner-mobile-navigation-and-offline.md) | web | `apps/web/components/today-view.tsx`<br>`apps/web/components/offline-trip-cache.tsx`<br>`apps/web/app/[locale]/trips/[id]/page.tsx`<br>`apps/web/public/sw.js` |
 | P1 | [路線地圖在手機吃掉頁面捲動且對輔助科技隱形](open/2026-09-11-route-map-mobile-and-a11y.md) | web | `apps/web/components/route-map.tsx`<br>`apps/web/app/globals.css` |
 | P1 | [規格書明定為必要的目的地支援閘門從未實作](open/2026-09-11-destination-supported-gate-missing.md) | web | `apps/api/app/ai/parser.py`<br>`apps/web/components/trip-brief-composer.tsx`<br>`apps/web/components/brief-confirm-panel.tsx`<br>`docs/planning-flow-spec.md` |
@@ -72,6 +69,8 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | [Hotel operating date guards Rakuten Japan and resilient clickouts](open/2026-09-11-hotel-operation-rakuten-clickout.md) | codex-hotel-guard | `codex/hotel-operation-rakuten-clickout` |
 | [Fix food map and reservation entry points](open/2026-09-11-food-map-reservation-entry.md) | codex-food-map-reservation-entry | `codex/food-map-reservation-entry` |
 | [Independent food reservation save and multi-platform support](open/2026-09-11-food-reservation-platforms.md) | codex-food-reservation-platforms | `codex/food-reservation-platforms` |
+| [Travel guides content API and schema](open/2026-09-11-travel-guides-api.md) | claude-opus-5-guides | `claude/travel-info-guide-section-4ulqsj` |
+| [Travel guides web pages admin and navigation](open/2026-09-11-travel-guides-web.md) | claude-opus-5-guides | `claude/travel-info-guide-section-4ulqsj` |
 | [Support dotted Catchtable venue IDs safely](open/2026-09-11-catchtable-dot-venue-id.md) | codex-release | `codex/catchtable-dot-venue-id` |
 | [Archive completed catalog and hotel review evidence](open/2026-09-09-review-evidence-archive.md) | codex-review-archive | `codex/review-evidence-archive-20260909` |
 | [Compact discovery cards and source-linked details](open/2026-09-09-discovery-card-details.md) | codex-discovery-card-details | `codex/discovery-card-details-20260909` |
@@ -85,8 +84,10 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [Mokaair site experience palettes and managed information pages](open/2026-09-09-site-experience-settings.md) | see the task notes |
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | see the task notes |
 | P3 | [TourAPI（韓國觀光公社）可行性驗證：先確認拿得到金鑰、連得上、資料量夠不夠](open/2026-09-06-korea-tourism-tourapi-spike.md) | see the task notes |
+| P0 | [登入入口只存在於我的頁底部且未登入者毫無說明](open/2026-09-11-no-sign-in-entry-in-discovery.md) | active work in the same scope |
 | P0 | [次數用完後被導去已關閉的方案頁形成死路](open/2026-09-11-usage-exhausted-dead-end.md) | active work in the same scope |
 | P0 | [手機底部導覽列蓋住七成頁面的內容含登入鈕](open/2026-09-11-bottom-nav-covers-page-content.md) | active work in the same scope |
+| P1 | [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | active work in the same scope |
 | P1 | [Contextual travel services and affiliate catalog](open/2026-09-07-contextual-travel-services.md) | active work in the same scope |
 | P1 | [Mokaair community foundation and account safety](open/2026-09-07-mokaair-community-foundation.md) | active work in the same scope |
 | P1 | [Mokaair community responsive web and five-language experience](open/2026-09-07-mokaair-community-web.md) | active work in the same scope |
@@ -95,6 +96,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [我的旅程整頁硬編碼繁中含刪除確認框](open/2026-09-11-trips-list-hardcoded-zh-tw.md) | active work in the same scope |
 | P1 | [後端回傳的繁中警告句被原樣顯示在所有語系](open/2026-09-11-api-warnings-leak-zh-tw.md) | active work in the same scope |
 | P1 | [合作平台面板繁中且漏用在地化佣金揭露](open/2026-09-11-affiliate-panel-i18n-and-disclosure.md) | active work in the same scope |
+| P1 | [全站沒有自訂的找不到頁面](open/2026-09-11-no-custom-not-found-page.md) | active work in the same scope |
 | P1 | [後台九張表格在手機無法閱讀](open/2026-09-11-admin-tables-unusable-on-phone.md) | active work in the same scope |
 | P1 | [刪除行程項目沒有確認而且復原視窗短於自動儲存](open/2026-09-11-itinerary-item-delete-no-confirm.md) | active work in the same scope |
 | P1 | [頁尾五個連結全站每頁都只有十六像素高](open/2026-09-11-footer-links-sixteen-px-tall.md) | active work in the same scope |

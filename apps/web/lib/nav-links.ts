@@ -3,10 +3,13 @@ import type { SiteFeature } from "@/lib/site-features";
 // One list for every navigation surface. The desktop header, the mobile menu
 // sheet and the bottom tab bar must never disagree about what this site has.
 export const primaryNavLinks: Array<{
-  key: "hotspots" | "foods" | "trips" | "alerts" | "flightStatus" | "airlines" | "pricing";
+  key: "guides" | "hotspots" | "foods" | "trips" | "alerts" | "flightStatus" | "airlines" | "pricing";
   href: string;
   feature?: SiteFeature;
 }> = [
+  // No `feature`: the guides section is first-party content with no provider cost and
+  // no switch behind it, so it must not disappear when a catalog module is closed.
+  { key: "guides", href: "/guides" },
   { key: "hotspots", href: "/hotspots", feature: "hotspots" },
   { key: "foods", href: "/foods" },
   { key: "trips", href: "/trips", feature: "trips" },

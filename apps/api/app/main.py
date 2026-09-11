@@ -37,6 +37,8 @@ from app.flights.router import router as flight_status_router
 from app.foods.admin_router import router as admin_foods_router
 from app.foods.router import router as foods_router
 from app.fx.router import router as fx_router
+from app.guides.router import admin_router as admin_guides_router
+from app.guides.router import public_router as guides_public_router
 from app.holidays.router import router as holidays_router
 from app.hotspots.admin_router import router as admin_hotspots_router
 from app.hotspots.router import router as hotspots_router
@@ -117,6 +119,8 @@ app.include_router(deployments_router, prefix="/api/v1")
 app.include_router(runtime_router, prefix="/api/v1")
 app.include_router(ui_text_runtime_router, prefix="/api/v1")
 app.include_router(admin_ui_text_router, prefix="/api/v1")
+app.include_router(admin_guides_router, prefix="/api/v1")
+app.include_router(guides_public_router, prefix="/api/v1")
 app.include_router(admin_site_pages_router, prefix="/api/v1")
 app.include_router(site_pages_public_router, prefix="/api/v1")
 app.include_router(affiliates_router, prefix="/api/v1")

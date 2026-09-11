@@ -445,6 +445,7 @@ def _admin_path_capability(request: Request) -> str:
         value in path
         for value in (
             "/admin/catalog-review",
+            "/admin/guides",
             "/admin/hotspots",
             "/admin/foods",
             "/admin/hotels",
