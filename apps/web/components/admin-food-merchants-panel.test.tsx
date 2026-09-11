@@ -107,6 +107,36 @@ function taxonomyResponse(url: string): Response | null {
 }
 
 describe("AdminFoodMerchantsPanel", () => {
+  it("keeps one style editor and its draft through platform edits and close confirmations", async () => {
+    const style = { style: "instagrammable", status: "pending", evidence_url: "https://shop.example/design", evidence_title: "Branch design", rationale: "Floral greenhouse interior", checked_on: "2026-09-08", updated_at: "2026-09-08T00:00:00+00:00" };
+    vi.stubGlobal("fetch", vi.fn(async (input: RequestInfo | URL) => {
+      if (String(input).endsWith("/styles")) return new Response(JSON.stringify({ items: [style] }));
+      const stub = taxonomyResponse(String(input));
+      if (stub) return stub;
+      return new Response(JSON.stringify({ items: [merchant], total: 1 }));
+    }));
+    render(<AdminFoodMerchantsPanel />);
+    await screen.findByText(merchant.name);
+    fireEvent.click(screen.getByRole("button", { name: "編輯地點與來源" }));
+    const dialog = screen.getByRole("dialog");
+    const stylesButton = within(dialog).getByRole("button", { name: "風格新增與審核" });
+    fireEvent.click(stylesButton);
+    await within(dialog).findByDisplayValue("Branch design");
+    fireEvent.change(within(dialog).getByLabelText("本次審核原因"), { target: { value: "Keep style review draft" } });
+    const platforms = within(dialog).getByRole("region", { name: "旅客訂位平台" });
+    for (const [index, provider] of ["inline", "openrice", "tablecheck"].entries()) {
+      fireEvent.change(within(platforms).getByLabelText("訂位平台"), { target: { value: provider } });
+      fireEvent.change(within(platforms).getByLabelText("查核備註"), { target: { value: `Platform draft ${index}` } });
+      fireEvent.change(within(dialog).getByRole("textbox", { name: /^店名$/ }), { target: { value: `Merchant draft ${index}` } });
+      fireEvent.click(within(dialog).getByRole("button", { name: "關閉" }));
+      expect(within(dialog).getAllByRole("button", { name: "風格新增與審核" })).toHaveLength(1);
+      expect(within(dialog).getByRole("button", { name: "風格新增與審核" })).toBe(stylesButton);
+      expect((within(dialog).getByLabelText("本次審核原因") as HTMLInputElement).value).toBe("Keep style review draft");
+      fireEvent.click(within(dialog).getByRole("button", { name: "繼續編輯" }));
+    }
+    expect(within(dialog).getAllByRole("region", { name: "旅客訂位平台" })).toHaveLength(1);
+  });
+
   it("traps editor focus, blocks background replacement and busy Escape, then restores focus and scroll", async () => {
     let finish: (response: Response) => void = () => undefined;
     const second = { ...merchant, id: "22222222-2222-4222-8222-222222222222", name: "Second merchant" };

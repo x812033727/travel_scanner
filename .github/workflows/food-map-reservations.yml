@@ -21,6 +21,10 @@ jobs:
         run: npx playwright test e2e/food-map-reservations.spec.ts e2e/food-reservation-platforms.spec.ts --workers=2 --max-failures=3 --trace=retain-on-failure
         working-directory: apps/web
         env: { PLAYWRIGHT_SERVE_BUILD: "true" }
+      - name: Verify sibling style editor keeps its own identity
+        run: npx playwright test e2e/merchant-styles.spec.ts --grep "admin reviews one style" --workers=2 --trace=retain-on-failure
+        working-directory: apps/web
+        env: { PLAYWRIGHT_SERVE_BUILD: "true" }
       - uses: actions/upload-artifact@v4
         if: always()
         with:

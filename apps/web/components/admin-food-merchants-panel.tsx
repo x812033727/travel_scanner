@@ -1090,7 +1090,7 @@ export function AdminFoodMerchantsPanel({
               <button type="button" onClick={() => setConfirmClose(false)} className="mt-2 min-h-11 rounded-xl border bg-white px-3">{ta("foodMerchantsPanel.platformKeepEditing")}</button>
               <button type="button" disabled={loading || platformBusy} onClick={() => { setEditing(null); setPlatformDirty(false); setConfirmClose(false); setSaveNotice(""); }} className="ml-2 mt-2 min-h-11 rounded-xl border bg-white px-3">{ta("foodMerchantsPanel.platformDiscardClose")}</button>
             </div>}
-            {editing.id ? <AdminMerchantStyles key={editing.id} merchantId={editing.id} />
+            {editing.id ? <AdminMerchantStyles key={`styles:${editing.id}`} merchantId={editing.id} />
               : <p className="mt-4 text-sm text-[var(--muted)]">{ts("createFirst")}</p>}
             <div className="mt-5 grid gap-4 md:grid-cols-2">
               <label className="text-sm font-semibold">
@@ -1411,7 +1411,7 @@ export function AdminFoodMerchantsPanel({
               </div>
             </fieldset>
             <AdminMerchantPlatformEditor
-              key={editing.id || "new"}
+              key={`platforms:${editing.id || "new"}`}
               merchantId={editing.id}
               links={merchantPlatformLinks(editing)}
               availablePlatforms={availablePlatforms}
