@@ -3,24 +3,37 @@
 import { BedDouble, ExternalLink, LoaderCircle, X } from "lucide-react";
 import { useCallback, useEffect, useId, useState } from "react";
 import { useModalSheet } from "@/lib/modal-sheet";
+import { stay22AllezCopy } from "@/lib/stay22-allez-copy";
 import { isOriginalHotelUrl } from "@/lib/stay22-script";
 import { stay22ScriptCopy } from "@/lib/stay22-script-copy";
 
-type Hotel = { id: string; title: string; destination_id: string };
+type Hotel = {
+  id: string; title: string;
+  facts?: { hotel_operating_rules?: unknown } | null;
+};
 type Option = { id: string; provider: string; name: string | null; url: string };
-type State<T> = { status: "loading" | "ready" | "error"; items: T[] };
+type State<T> = { status: "loading" | "ready" | "error"; items: T[]; retryable?: boolean };
+
+class PublicCatalogueError extends Error {
+  constructor(readonly status: number) { super("Public catalogue unavailable"); }
+}
+
+function hotelBookingHref(hotel: Hotel, locale: string) {
+  return `/${encodeURIComponent(locale)}/hotels/${encodeURIComponent(hotel.id)}`;
+}
 
 async function publicJson(path: string, locale: string, signal: AbortSignal) {
   const response = await fetch(`/api/travel${path}`, {
     credentials: "omit", cache: "no-store", signal: AbortSignal.any([signal, AbortSignal.timeout(5_000)]),
     headers: { Accept: "application/json", "x-travel-locale": locale },
   });
-  if (!response.ok) throw new Error("Public catalogue unavailable");
+  if (!response.ok) throw new PublicCatalogueError(response.status);
   return response.json();
 }
 
 function PlatformSheet({ hotel, locale, close }: { hotel: Hotel; locale: string; close: () => void }) {
   const copy = stay22ScriptCopy(locale);
+  const bookingCopy = stay22AllezCopy(locale);
   const id = useId();
   const ref = useModalSheet<HTMLDivElement>(true, close);
   const [attempt, setAttempt] = useState(0);
@@ -34,7 +47,9 @@ function PlatformSheet({ hotel, locale, close }: { hotel: Hotel; locale: string;
           typeof option.id === "string" && typeof option.provider === "string"
           && typeof option.url === "string" && isOriginalHotelUrl(option.url)) });
       })
-      .catch(() => { if (!abort.signal.aborted) setState({ status: "error", items: [] }); });
+      .catch((error: unknown) => {
+        if (!abort.signal.aborted) setState({ status: "error", items: [], retryable: !(error instanceof PublicCatalogueError && [409, 422].includes(error.status)) });
+      });
     return () => abort.abort();
   }, [hotel.id, locale, attempt]);
   return <div className="fixed inset-0 z-[80] bg-black/35 backdrop-blur-sm" onClick={(event) => { if (event.target === event.currentTarget) close(); }}>
@@ -45,8 +60,10 @@ function PlatformSheet({ hotel, locale, close }: { hotel: Hotel; locale: string;
       </header>
       <div className="min-h-0 space-y-4 overflow-y-auto overscroll-contain p-5">
         <p className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4 text-sm leading-6">{copy.dateNotice}</p>
+        {/* Native navigation leaves the SDK document before opening private booking controls. */}
+        <a href={hotelBookingHref(hotel, locale)} className="flex min-h-12 items-center justify-between gap-3 rounded-xl bg-[var(--teal)] px-4 py-3 font-semibold text-[var(--primary-text)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--teal)]">{bookingCopy.scriptBookingEntry}<ExternalLink aria-hidden size={18} className="shrink-0" /></a>
         {state.status === "loading" && <p role="status" className="flex min-h-16 items-center gap-2"><LoaderCircle aria-hidden size={18} className="motion-safe:animate-spin" />{copy.platformLoading}</p>}
-        {state.status === "error" && <div role="alert" className="space-y-3 rounded-2xl border border-[var(--line)] p-4"><p>{copy.platformError}</p><div className="flex flex-wrap gap-2"><button className="min-h-11 rounded-xl border border-[var(--line)] px-4" onClick={() => { setState({ status: "loading", items: [] }); setAttempt((value) => value + 1); }}>{copy.retry}</button><button className="min-h-11 rounded-xl border border-[var(--line)] px-4" onClick={() => window.location.reload()}>{copy.reload}</button></div></div>}
+        {state.status === "error" && <div role="alert" className="space-y-3 rounded-2xl border border-[var(--line)] p-4"><p>{state.retryable === false ? bookingCopy.scriptDateEntry : copy.platformError}</p>{state.retryable !== false && <div className="flex flex-wrap gap-2"><button className="min-h-11 rounded-xl border border-[var(--line)] px-4" onClick={() => { setState({ status: "loading", items: [] }); setAttempt((value) => value + 1); }}>{copy.retry}</button><button className="min-h-11 rounded-xl border border-[var(--line)] px-4" onClick={() => window.location.reload()}>{copy.reload}</button></div>}</div>}
         {state.status === "ready" && !state.items.length && <p>{copy.noLinks}</p>}
         {state.items.map((option) => {
           const name = option.provider === "official" ? copy.official : option.name || option.provider;
@@ -64,6 +81,7 @@ function PlatformSheet({ hotel, locale, close }: { hotel: Hotel; locale: string;
 /** Public content only: deliberately does not import identity, trips, saved data or their hooks. */
 export function Stay22PublicHotels({ destinationId, locale }: { destinationId: string; locale: string }) {
   const copy = stay22ScriptCopy(locale);
+  const bookingCopy = stay22AllezCopy(locale);
   const [state, setState] = useState<State<Hotel>>({ status: "loading", items: [] });
   const [selected, setSelected] = useState<Hotel | null>(null);
   const [attempt, setAttempt] = useState(0);
@@ -89,7 +107,10 @@ export function Stay22PublicHotels({ destinationId, locale }: { destinationId: s
       {state.items.map((hotel) => <article key={hotel.id} className="flex min-w-0 flex-col rounded-3xl border border-[var(--line)] bg-[var(--surface-raised)] p-6 shadow-sm">
         <BedDouble aria-hidden size={28} className="mb-5 text-[var(--teal)]" />
         <h2 className="mb-5 break-words text-xl font-bold leading-7">{hotel.title}</h2>
-        <button onClick={() => setSelected(hotel)} className="mt-auto flex min-h-12 items-center justify-between gap-3 rounded-xl bg-[var(--teal)] px-4 py-3 text-left font-semibold text-[var(--primary-text)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--teal)]">{copy.open}<ExternalLink aria-hidden size={18} className="shrink-0" /></button>
+        {hotel.facts?.hotel_operating_rules != null
+          // Full document navigation keeps date/auth state outside the SDK page.
+          ? <a href={hotelBookingHref(hotel, locale)} className="mt-auto flex min-h-12 items-center justify-between gap-3 rounded-xl bg-[var(--teal)] px-4 py-3 text-left font-semibold text-[var(--primary-text)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--teal)]">{bookingCopy.scriptDateEntry}<ExternalLink aria-hidden size={18} className="shrink-0" /></a>
+          : <button onClick={() => setSelected(hotel)} className="mt-auto flex min-h-12 items-center justify-between gap-3 rounded-xl bg-[var(--teal)] px-4 py-3 text-left font-semibold text-[var(--primary-text)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--teal)]">{copy.open}<ExternalLink aria-hidden size={18} className="shrink-0" /></button>}
       </article>)}
     </div>
     {selected && <PlatformSheet key={selected.id} hotel={selected} locale={locale} close={close} />}

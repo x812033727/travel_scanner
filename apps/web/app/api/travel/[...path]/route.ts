@@ -123,7 +123,7 @@ async function proxy(request: NextRequest, context: Context) {
   const failure = (status: number, code: string, detail: string) => browserClickout
     ? hotelClickoutErrorPage({
       requestUrl: request.url, referrer: request.headers.get("referer"),
-      locale: headers.get("X-Travel-Locale") || "zh-TW", body, contentType, status,
+      locale: headers.get("X-Travel-Locale") || "zh-TW", body, contentType, status, code,
     })
     : problem(status, code, detail);
   if (request.method !== "GET" && request.method !== "HEAD") {
@@ -183,7 +183,13 @@ async function proxy(request: NextRequest, context: Context) {
   }
   if (browserClickout) {
     // A successful booking clickout is a redirect, never provider JSON/HTML.
-    return preserveRequestId(failure(upstream.status, "hotel_link_unavailable", "訂房連結目前無法開啟"), upstream);
+    let code = "hotel_link_unavailable";
+    try {
+      const error: unknown = JSON.parse(text);
+      if (error && typeof error === "object" && "code" in error && typeof error.code === "string" &&
+          ["hotel_operating_dates_required", "hotel_operating_unavailable", "hotel_operating_rules_invalid"].includes(error.code)) code = error.code;
+    } catch { /* Unrecognized responses use the generic local error. */ }
+    return preserveRequestId(failure(upstream.status, code, "訂房連結目前無法開啟"), upstream);
   }
   let payload: unknown = text;
   try { payload = text ? JSON.parse(text) : null; } catch { /* preserve text */ }

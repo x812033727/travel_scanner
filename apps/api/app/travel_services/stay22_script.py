@@ -11,7 +11,9 @@ from urllib.parse import urlsplit
 
 from app.models import TravelServiceProduct
 from app.problems import AppError
+from app.travel_services.hotel_operating import require_hotel_stay
 from app.travel_services.hotel_options import ready_option, safe_click_target
+from app.travel_services.rakuten import rakuten_hotel_identity
 from app.travel_services.registry import BRANDS
 from app.travel_services.schemas import HOTEL_PROVIDERS, CatalogConfig
 from app.travel_services.stay22 import validate_stay22_target
@@ -43,6 +45,9 @@ async def script_options(
     *,
     locale: str,
 ) -> dict[str, Any]:
+    # Original anchors have no authoritative stay context. Never expose a bypass
+    # URL for hotels requiring calendar validation in the first-party booking form.
+    require_hotel_stay(product, now=now)
     options: list[dict[str, str]] = []
     ordered = sorted(
         product.hotel_options,
@@ -59,6 +64,12 @@ async def script_options(
             # affiliate identifiers or other opaque personal query values.
             if not option.url or urlsplit(option.url).query or urlsplit(option.url).fragment:
                 continue
+            # Japan hotel IDs are direct-only; the SDK's affiliate contract has
+            # not been verified for this separate Rakuten namespace.
+            if option.provider == "rakuten":
+                identity = rakuten_hotel_identity(option.url)
+                if identity and identity[0] == "japan":
+                    continue
             if option.provider in ("booking", "agoda", "expedia"):
                 validate_stay22_target(option.provider, option.url)
             url = await safe_click_target(option)

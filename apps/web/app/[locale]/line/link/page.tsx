@@ -1,5 +1,10 @@
+import type { Metadata } from "next";
 import { LineLinkPanel } from "@/components/line-link-panel";
 import { SiteHeader } from "@/components/site-header";
+
+// Reached only through a one-time token in a LINE message. It had no metadata at all, so it
+// inherited the site-wide title and was open to indexing.
+export const metadata: Metadata = { robots: { index: false, follow: false } };
 
 export default async function LineLinkPage({ searchParams }: { searchParams: Promise<{ linkToken?: string | string[] }> }) {
   const value = (await searchParams).linkToken;

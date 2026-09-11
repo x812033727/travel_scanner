@@ -8,7 +8,7 @@ import { frontendCopy } from "@/lib/frontend-navigation";
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata" });
-  return { title: t("newSearchTitle"), description: t("newSearchDescription") };
+  return { title: t("newSearchTitle"), description: t("newSearchDescription"), robots: { index: false, follow: true } };
 }
 
 export default async function SearchNewPage() {

@@ -174,7 +174,10 @@ async def search_quotes(
     config: CatalogConfig,
     redis: Any,
 ) -> dict[str, Any]:
+    from app.travel_services.hotel_operating import require_hotel_stay
+
     now = datetime.now(UTC)
+    require_hotel_stay(product, query.check_in, query.check_out, now=now)
     options = [
         o
         for o in product.hotel_options

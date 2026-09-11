@@ -4,6 +4,7 @@ import { ExternalLink, X } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { useModalSheet } from "@/lib/modal-sheet";
+import { evaluateHotelOperatingStay, hotelOperatingRulesError } from "@/lib/hotel-operation-rules";
 import type { HotelBookingPlacement } from "@/lib/hotel-booking-placement";
 import { stay22AllezCopy, stay22AllezText } from "@/lib/stay22-allez-copy";
 import { useStay22BookingContext, type BookingContext } from "@/lib/stay22-booking-context";
@@ -94,14 +95,23 @@ export function BookingPanel({
   const [children, setChildren] = useState(context?.children == null ? "" : String(context.children));
   const [omitDates, setOmitDates] = useState(false);
   const [quotesOpen, setQuotesOpen] = useState(false);
+  const [attemptedOption, setAttemptedOption] = useState<string | null>(null);
+  const rules = product.facts.hotel_operating_rules;
+  const restricted = rules != null;
+  const validRules = rules && !hotelOperatingRulesError(rules) ? rules : null;
+  const operatingState = evaluateHotelOperatingStay(rules, omitDates ? undefined : checkIn, omitDates ? undefined : checkOut);
+  const operatingError = operatingState === "dates_required" ? copy.operatingDatesRequired
+    : operatingState === "unavailable" ? copy.operatingUnavailable
+    : operatingState === "invalid" ? copy.operatingInvalid : "";
   const validDate = (value: string) => /^\d{4}-\d{2}-\d{2}$/.test(value) && !Number.isNaN(Date.parse(value)) && new Date(value).toISOString().slice(0, 10) === value;
   const now = new Date();
   const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
   const dateError = omitDates || (!checkIn && !checkOut) ? ""
     : !validDate(checkIn) || !validDate(checkOut) || checkOut <= checkIn ? copy.invalidDates
-    : checkIn < today ? copy.pastDates : "";
+    : checkIn < today ? (restricted ? copy.restrictedPastDates : copy.pastDates) : "";
   const guestError = (adults !== "" && (!/^\d+$/.test(adults) || Number(adults) < 1 || Number(adults) > 9)) || (children !== "" && (!/^\d+$/.test(children) || Number(children) > 9)) ? copy.invalidGuests : "";
-  const formError = dateError || guestError;
+  const formError = dateError || operatingError || guestError;
+  const dateInvalid = Boolean(dateError || operatingError);
   const id = useId();
   const onCloseRef = useRef(onClose);
   const touch = useRef<number | undefined>(undefined);
@@ -194,19 +204,33 @@ export function BookingPanel({
         <div className="min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-contain p-5">
           <fieldset className="min-w-0 space-y-3 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4">
             <legend className="px-1 font-semibold">{copy.conditions}</legend>
-            <p className="text-xs text-[var(--muted)]">{copy.optional}</p>
+            <p className="text-xs text-[var(--muted)]">{restricted ? copy.operatingDatesRequired : copy.optional}</p>
             <div className="grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-2">
-              <label className="min-w-0 text-sm">{copy.checkIn}<input type="date" value={checkIn} disabled={omitDates} aria-invalid={Boolean(dateError)} aria-describedby={dateError ? `${id}-error` : undefined} onChange={(event) => setCheckIn(event.target.value)} className="mt-1 min-h-11 w-full min-w-0 rounded-xl border border-[var(--line)] bg-[var(--surface-raised)] p-3 disabled:opacity-50" /></label>
-              <label className="min-w-0 text-sm">{copy.checkOut}<input type="date" value={checkOut} disabled={omitDates} aria-invalid={Boolean(dateError)} aria-describedby={dateError ? `${id}-error` : undefined} onChange={(event) => setCheckOut(event.target.value)} className="mt-1 min-h-11 w-full min-w-0 rounded-xl border border-[var(--line)] bg-[var(--surface-raised)] p-3 disabled:opacity-50" /></label>
+              <label className="min-w-0 text-sm">{copy.checkIn}<input type="date" value={checkIn} disabled={omitDates && !restricted} aria-invalid={dateInvalid} aria-describedby={dateInvalid ? `${id}-error` : undefined} onChange={(event) => { setOmitDates(false); setCheckIn(event.target.value); }} className="mt-1 min-h-11 w-full min-w-0 rounded-xl border border-[var(--line)] bg-[var(--surface-raised)] p-3 disabled:opacity-50" /></label>
+              <label className="min-w-0 text-sm">{copy.checkOut}<input type="date" value={checkOut} disabled={omitDates && !restricted} aria-invalid={dateInvalid} aria-describedby={dateInvalid ? `${id}-error` : undefined} onChange={(event) => { setOmitDates(false); setCheckOut(event.target.value); }} className="mt-1 min-h-11 w-full min-w-0 rounded-xl border border-[var(--line)] bg-[var(--surface-raised)] p-3 disabled:opacity-50" /></label>
               <label className="min-w-0 text-sm">{copy.adults}<input type="number" inputMode="numeric" min={1} max={9} step={1} value={adults} aria-invalid={Boolean(guestError)} aria-describedby={guestError ? `${id}-error` : undefined} onChange={(event) => setAdults(event.target.value)} className="mt-1 min-h-11 w-full min-w-0 rounded-xl border border-[var(--line)] bg-[var(--surface-raised)] p-3" /></label>
               <label className="min-w-0 text-sm">{copy.children}<input type="number" inputMode="numeric" min={0} max={9} step={1} value={children} aria-invalid={Boolean(guestError)} aria-describedby={guestError ? `${id}-error` : undefined} onChange={(event) => setChildren(event.target.value)} className="mt-1 min-h-11 w-full min-w-0 rounded-xl border border-[var(--line)] bg-[var(--surface-raised)] p-3" /></label>
             </div>
-            <label className="flex min-h-11 cursor-pointer items-center gap-2 text-sm"><input type="checkbox" checked={omitDates} onChange={(event) => setOmitDates(event.target.checked)} />{copy.omitDates}</label>
+            {!restricted && <label className="flex min-h-11 cursor-pointer items-center gap-2 text-sm"><input type="checkbox" checked={omitDates} onChange={(event) => setOmitDates(event.target.checked)} />{copy.omitDates}</label>}
             {formError && <p id={`${id}-error`} role="alert" className="text-sm text-[var(--coral)]">{formError}</p>}
             {context?.rooms != null && <p className="text-xs">{stay22AllezText(copy.rooms, { rooms: context.rooms })}</p>}
             {!!context?.children_ages?.length && <p className="text-xs">{stay22AllezText(copy.ages, { ages: context.children_ages.join(", ") })}</p>}
             <p className="text-xs text-[var(--muted)]">{copy.confirmOccupancy}</p>
           </fieldset>
+          {validRules && <section aria-label={copy.operatingTitle} className="space-y-3 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4 text-sm">
+            <h3 className="font-semibold">{copy.operatingTitle}</h3>
+            <p className="text-xs text-[var(--muted)]">{copy.operatingNote}</p>
+            {(validRules.unavailable_stays ?? []).map((range) => <div key={`${range.start_date}:${range.end_date}`} className="break-words">
+              <p>{stay22AllezText(copy.operatingRange, { start: range.start_date, end: range.end_date })}</p>
+              <p>{range.reason}</p>
+              <a href={range.source_url} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center underline" aria-label={`${copy.operatingSource} · ${range.start_date} · ${t("newTab")}`}>{copy.operatingSource}</a>
+            </div>)}
+            {validRules.last_checkout_date && <div className="break-words">
+              <p>{stay22AllezText(copy.operatingCutoff, { date: validRules.last_checkout_date })}</p>
+              <p>{validRules.last_checkout_reason}</p>
+              <a href={validRules.last_checkout_source_url!} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center underline" aria-label={`${copy.operatingSource} · ${validRules.last_checkout_date} · ${t("newTab")}`}>{copy.operatingSource}</a>
+            </div>}
+          </section>}
           {!options.length && <p>{copy.noExactLink}</p>}
           {options.map((option) => {
             const name =
@@ -228,6 +252,9 @@ export function BookingPanel({
                   const action = new URL(event.currentTarget.action, window.location.origin);
                   action.searchParams.set("return_to", `${window.location.pathname}${window.location.search}`);
                   event.currentTarget.action = `${action.pathname}${action.search}`;
+                  // A submitted form does not prove a new tab opened (some in-app browsers block it).
+                  // Offer an explicit native POST fallback; never expose a partner URL or auto-retry.
+                  setAttemptedOption(option.id);
                 }}
               >
                 {!omitDates && checkIn && <input type="hidden" aria-hidden="true" name="check_in" value={checkIn} />}
@@ -247,6 +274,11 @@ export function BookingPanel({
                   </span>
                   <ExternalLink size={18} className="shrink-0" />
                 </button>
+                {attemptedOption === option.id && <button
+                  type="submit"
+                  formTarget="_self"
+                  className="mt-2 min-h-11 w-full rounded-xl border border-[var(--line)] px-3 py-2 text-sm underline focus-visible:outline-2 focus-visible:outline-[var(--teal)]"
+                >{stay22AllezText(copy.openSameTab, { platform: name })}</button>}
               </form>
             );
           })}

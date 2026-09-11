@@ -1,4 +1,33 @@
 {
+  "hotelOperation": {
+    "title": "飯店營運日期",
+    "hint": "請依飯店當地日期設定。公告若包含停業時段，請保守排除受影響的住宿夜；這些規則不處理同一天內的時段例外。",
+    "range": "不可住宿期間 {number}",
+    "startDate": "第一晚不可住宿日期",
+    "endDate": "恢復可入住日期",
+    "rangeHint": "排除起始日期當晚至恢復日期前一晚；恢復日期當晚可入住，起始日期當天退房不受影響。",
+    "reason": "公告內容／原因",
+    "source": "飯店官方公告或政府來源（HTTPS）",
+    "addRange": "新增不可住宿期間",
+    "removeRange": "移除期間 {number}",
+    "cutoffTitle": "最終營運日期",
+    "lastCheckoutDate": "最晚可退房日期",
+    "cutoffHint": "可於此日期退房；需要更晚退房的住宿將排除。",
+    "addCutoff": "設定最晚退房日期",
+    "removeCutoff": "移除最晚退房日期",
+    "saveHint": "變更會保留在草稿，按下「儲存並送審」才會儲存；核准是另外的操作。",
+    "save": "儲存並送審",
+    "errors": {
+      "invalidJson": "請先修正產品 JSON，再編輯營運日期。",
+      "invalidRules": "營運日期規則的格式無法辨識，請在 JSON 編輯器中修正。",
+      "emptyRules": "請新增不可住宿期間或最晚退房日期，或移除營運日期規則。",
+      "invalidDates": "請填寫有效日期；恢復可入住日期必須晚於第一晚不可住宿日期。",
+      "invalidReason": "每項規則都需填寫 1 至 1,000 字的公告內容或原因。",
+      "invalidSource": "每項規則都需填寫有效的 HTTPS 來源網址，且不可含登入帳密。",
+      "overlappingDates": "不可住宿期間不得重疊，但可前後相接。",
+      "tooManyRanges": "最多可設定 50 個不可住宿期間。"
+    }
+  },
   "destinationOffersTitle": "這個目的地的合作平台",
   "destinationOffersHint": "前往已驗證的合作平台繼續搜尋；目的地入口不代表特定商品或即時價格。",
   "destinationProductsPending": "已驗證的目的地合作平台會顯示在上方；這個目的地的精準商品仍在審核中。",

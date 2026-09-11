@@ -44,6 +44,14 @@ describe("SiteFooter", () => {
     expect(href("聯絡我們")).toBe("/contact");
   });
 
+  it("carries the only site-wide entry point to the destination guides", () => {
+    // The 33 city guides are otherwise reachable only from each other and the sitemap. This
+    // footer renders on the server on every public page, which the home page rail does not.
+    renderAt("/");
+    const link = within(screen.getByRole("contentinfo")).getByRole("link", { name: "目的地" });
+    expect(link.getAttribute("href")).toBe("/destinations");
+  });
+
   it("keeps the year without duplicating the top-header language control", () => {
     renderAt("/");
     expect(screen.queryByTestId("language-switcher")).toBeNull();

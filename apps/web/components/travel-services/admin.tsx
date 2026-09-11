@@ -11,8 +11,10 @@ import { adminHotelsCopy } from "@/lib/admin-hotels-copy";
 import { klookAffiliateCopy } from "@/lib/klook-affiliate-copy";
 import { useAdminQueryValue, useAdminWorkspaceNavigation } from "@/lib/admin-workspace-navigation";
 import { ApiError, api } from "@/lib/api";
+import { readHotelOperationDraft } from "@/lib/hotel-operation-rules";
 import { CITIES, KINDS, type Kind } from "./catalog";
 import { HotelOptionsAdmin, type HotelOptionRow } from "./hotel-options-admin";
+import { HotelOperationFields } from "./hotel-operation-fields";
 import { QuotePolicies, type QuotePolicy } from "./quote-policies";
 import { Stay22Admin, Stay22ReadinessPanel, type Stay22Config, type Stay22Readiness } from "./stay22-admin";
 
@@ -254,6 +256,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
   const [csv, setCsv] = useState("");
   const [preview, setPreview] = useState<Preview>();
   const [editor, setEditor] = useState<{ row: RecordRow; json: string }>();
+  const hotelEditorError = editor?.row.kind === "hotel" ? readHotelOperationDraft(editor.json).error : null;
   const [offerProduct, setOfferProduct] = useState("");
   const [offerBrand, setOfferBrand] = useState("");
   const [offerTarget, setOfferTarget] = useState("");
@@ -681,7 +684,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                     </button>
                     </>}
                     {(!isHotel || workspaceTab === "catalog") &&
-                    <button className={button} disabled={!manage.allowed} title={!manage.allowed ? manage.disabledReason : undefined} onClick={() => edit(p)}>
+                    <button className={button} disabled={!manage.allowed || busy} title={!manage.allowed ? manage.disabledReason : undefined} onClick={() => edit(p)}>
                       {t("edit")}
                     </button>
                     }
@@ -783,10 +786,16 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
               )}
               {editor && (
                 <section className="rounded-2xl bg-[var(--paper)] p-4">
+                  {editor.row.kind === "hotel" && <HotelOperationFields
+                    json={editor.json}
+                    onChange={(json) => setEditor({ ...editor, json })}
+                    disabled={!manage.allowed || busy}
+                  />}
                   <label className="font-semibold">
                     {t("productJson")}
                     <textarea
                       className={`${field} min-h-80 font-mono`}
+                      disabled={!manage.allowed || busy}
                       value={editor.json}
                       onChange={(e) =>
                         setEditor({ ...editor, json: e.target.value })
@@ -795,7 +804,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                   </label>
                   <button
                     className={button}
-                    disabled={!manage.allowed || busy}
+                    disabled={!manage.allowed || busy || !!hotelEditorError}
                     title={!manage.allowed ? manage.disabledReason : undefined}
                     onClick={() =>
                       void run(async () => {
@@ -810,7 +819,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                       })
                     }
                   >
-                    {t("edit")}
+                    {editor.row.kind === "hotel" ? t("hotelOperation.save") : t("edit")}
                   </button>
                 </section>
               )}

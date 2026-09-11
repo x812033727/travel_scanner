@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**44 open · 1 in progress · 3 blocked · 11 in review · 200 done**
+**47 open · 1 in progress · 3 blocked · 19 in review · 202 done**
 
 ## Ready to claim
 
@@ -55,6 +55,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Task | Owner | Branch |
 | --- | --- | --- |
+| [修好每頁的 canonical 與 hreflang](open/2026-09-10-seo-canonical-hreflang.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
 | [Unified saved items and private inbox API](open/2026-09-09-frontend-flow-saved-api.md) | codex-saved-flow | `codex/frontend-explore-flow` |
 | [Editorial discovery and unified collection frontend](open/2026-09-09-frontend-flow-discovery-web.md) | codex-discovery-flow-web | `codex/frontend-explore-flow` |
 | [Clarify the modular hotel affiliate switch and original-channel fallback](open/2026-09-09-clarify-stay22-module-switch.md) | codex-stay22-module | `codex/stay22-modular-toggle` |
@@ -62,10 +63,17 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | [Verify isolated Stay22 Script public browser flow](open/2026-09-09-verify-stay22-script-browser.md) | codex-stay22-script-e2e | `codex/stay22-modular-toggle` |
 | [Complete hotspot review identity and rationale editor](open/2026-09-10-complete-hotspot-review-identity-and-rationale.md) | codex-hotspot-review-editor | `codex/hotspot-review-editor` |
 | [Seoul Day 2 transport settings and readable route details](open/2026-09-10-seoul-day2-transport-ux.md) | codex-seoul-day2-release | `codex/seoul-day2-transport-ux` |
+| [校正私人頁與功能關閉頁的索引指令](open/2026-09-10-seo-index-directives.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
+| [公開 robots.txt 與五語系 sitemap](open/2026-09-10-seo-robots-sitemap.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
+| [目的地索引頁與城市指南落地頁](open/2026-09-10-seo-destination-landing-pages.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
+| [JSON-LD 結構化資料基礎與列表頁標記](open/2026-09-10-seo-structured-data.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
+| [首頁伺服器端輸出真正的內容，並把目的地頁接進連結結構](open/2026-09-10-seo-home-ssr-and-internal-links.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
+| [Review and harden PR 388 SEO behavior before merge](open/2026-09-11-pr388-seo-review.md) | codex-pr388-review | `codex/pr388-seo-review` |
+| [Hotel operating date guards Rakuten Japan and resilient clickouts](open/2026-09-11-hotel-operation-rakuten-clickout.md) | codex-hotel-guard | `codex/hotel-operation-rakuten-clickout` |
 | [Archive completed catalog and hotel review evidence](open/2026-09-09-review-evidence-archive.md) | codex-review-archive | `codex/review-evidence-archive-20260909` |
 | [Compact discovery cards and source-linked details](open/2026-09-09-discovery-card-details.md) | codex-discovery-card-details | `codex/discovery-card-details-20260909` |
-| [Simplify hotel booking platform and source copy](open/2026-09-10-simplify-hotel-booking-copy.md) | codex-hotel-copy | `codex/hotel-booking-copy` |
-| [Verify simplified hotel booking copy without changing affiliate flow](open/2026-09-10-verify-hotel-booking-copy.md) | codex-hotel-copy-tests | `codex/hotel-booking-copy` |
+| [公開資料改用 revalidate 快取，並把 /foods 店家列表放進 SSR](open/2026-09-10-seo-public-data-caching.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
+| [SEO 稽核補漏：404 metadata、sitemap lastmod 與文件準確性](open/2026-09-10-seo-audit-followups.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
 
 ## Waiting
 
@@ -79,6 +87,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [Mokaair community foundation and account safety](open/2026-09-07-mokaair-community-foundation.md) | active work in the same scope |
 | P1 | [Mokaair community responsive web and five-language experience](open/2026-09-07-mokaair-community-web.md) | active work in the same scope |
 | P1 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | active work in the same scope |
+| P1 | [首頁與 explore 要在伺服器端渲染出真正的內容](open/2026-09-10-seo-server-render-home-and-explore.md) | depends on 2026-09-09-frontend-flow-discovery-web, 2026-09-09-discovery-card-details, 2026-09-10-seo-structured-data |
 | P1 | [我的旅程整頁硬編碼繁中含刪除確認框](open/2026-09-11-trips-list-hardcoded-zh-tw.md) | active work in the same scope |
 | P1 | [後端回傳的繁中警告句被原樣顯示在所有語系](open/2026-09-11-api-warnings-leak-zh-tw.md) | active work in the same scope |
 | P1 | [合作平台面板繁中且漏用在地化佣金揭露](open/2026-09-11-affiliate-panel-i18n-and-disclosure.md) | active work in the same scope |
@@ -86,10 +95,14 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [刪除行程項目沒有確認而且復原視窗短於自動儲存](open/2026-09-11-itinerary-item-delete-no-confirm.md) | active work in the same scope |
 | P2 | [Community read metric duplicate observed alongside smoke ECONNRESET](open/2026-09-07-community-read-metric-concurrency.md) | active work in the same scope |
 | P2 | [Preserve force refresh in daily route background jobs](open/2026-09-10-daily-route-force-refresh.md) | active work in the same scope |
+| P2 | [讓 pet-friendly 與社群內容頁先 SSR 再開放索引](open/2026-09-10-seo-open-content-pages.md) | depends on 2026-09-10-seo-index-directives |
 | P2 | [六處死路與缺空狀態合集](open/2026-09-11-ux-dead-ends-and-empty-states.md) | active work in the same scope |
+| P3 | [Lighthouse SEO 與效能門檻 workflow](open/2026-09-10-seo-lighthouse-workflow.md) | depends on 2026-09-10-seo-robots-sitemap, 2026-09-10-seo-destination-landing-pages, 2026-09-10-seo-server-render-home-and-explore |
 
 ## Recently finished
 
+- 2026-09-11 [Simplify hotel booking platform and source copy](done/2026-09-10-simplify-hotel-booking-copy.md)
+- 2026-09-11 [Verify simplified hotel booking copy without changing affiliate flow](done/2026-09-10-verify-hotel-booking-copy.md)
 - 2026-09-10 [Korea dual map identities and transport navigation](done/2026-09-10-korea-dual-maps.md)
 - 2026-09-10 [Frontend flow navigation planning handoff and acceptance](done/2026-09-09-frontend-flow-integration.md)
 - 2026-09-10 [Add privacy scoped Stay22 script backend](done/2026-09-09-add-privacy-scoped-stay22-script-backend.md)
@@ -98,5 +111,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-10 [Preserve no-referrer on external clickout responses](done/2026-09-09-preserve-clickout-referrer-policy.md)
 - 2026-09-09 [Fix first hotel clickout and affiliate availability feedback](done/2026-09-09-fix-first-hotel-clickout-and-affiliate.md)
 - 2026-09-09 [Stay22 exact hotel affiliate clickouts](done/2026-09-09-stay22-hotel-clickout.md)
-- 2026-09-09 [Travel Scanner 後台營運中心升級](done/2026-09-09-admin-operations-center.md)
-- 2026-09-09 [Integrate PR 365 historical deployment and open verification notes](done/2026-09-09-pr365-docs-integration.md)

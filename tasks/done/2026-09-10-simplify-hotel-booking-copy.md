@@ -1,13 +1,13 @@
 ---
 id: 2026-09-10-simplify-hotel-booking-copy
 title: Simplify hotel booking platform and source copy
-status: review
+status: done
 priority: P2
 area: web
 owner: codex-hotel-copy
 claimed_at: 2026-09-10T00:47:25Z
 created_at: 2026-09-10T00:46:05Z
-completed_at:
+completed_at: 2026-09-11T02:50:18Z
 branch: codex/hotel-booking-copy
 depends_on: []
 scope:
@@ -42,7 +42,7 @@ request to disable affiliate routing, delete source records, or change settings.
 - [x] Locate shared BookingPanel/SourceCredits rendering and all five-language labels.
 - [x] Remove only the requested display text and unused Stay22 badge translations.
 - [x] Validate desktop/mobile booking behavior with synthetic fixtures and no real affiliate traffic.
-- [ ] Deliver the reviewed change without merging or deploying without new authorization.
+- [x] Deliver the reviewed change without merging or deploying without new authorization.
 
 ## How to verify
 
@@ -52,6 +52,10 @@ focused BookingPanel/catalog/Stay22 Vitest tests, `npm run build:web`, and
 Pixel 7. Source notes must be absent from the DOM, not merely folded closed.
 
 ## Notes
+
+2026-09-11 housekeeping: GitHub freshly confirmed PR #384 merged at
+2026-09-10T01:14:40Z (merge daa71684167aafcaea9d1f44505132a0b3ace749).
+Archive the completed claim before the new hotel-operation task; this is not a new deployment.
 
 Built from origin/main 30a8e06a in an isolated worktree; the old canonical checkout
 and other working changes are untouched. `SourceCredit.changes` remains part of

@@ -260,6 +260,38 @@ async def test_dns_failure_is_partial_and_official_stays_plain_original(script_a
     }]
 
 
+@pytest.mark.parametrize("url,property_id,exposed", [
+    ("https://travel.rakuten.co.jp/HOTEL/187836/187836.html", "187836", False),
+    ("https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_tokyo/"
+     "cty_shinjuku_ward/10123456789012/", "10123456789012", True),
+])
+async def test_rakuten_japan_is_direct_only_while_global_script_behavior_is_preserved(
+    script_api, url, property_id, exposed
+) -> None:
+    client, session, product, booking, config, safe_target, _ = script_api
+    rakuten = HotelBookingOption(
+        id=uuid4(), provider="rakuten", url=url, evidence_url=url,
+        property_id=property_id, identity_note="Reviewed exact hotel",
+        status="approved", discovery_status="found", health_status="healthy",
+        verified_at=datetime.now(UTC), version=1,
+    )
+    product.hotel_options.append(rakuten)
+    await session.commit()
+    # The Japan option is ready for ordinary first-party booking, not rejected
+    # merely because its platform namespace is excluded from the SDK document.
+    assert stay22_script.ready_option(product, rakuten, config, datetime.now(UTC))
+    response = await client.get(options_url(product))
+    assert response.status_code == 200, response.text
+    assert [item["provider"] for item in response.json()["options"]] == (
+        ["booking", "rakuten"] if exposed else ["booking"]
+    )
+    assert (url in response.text) is exposed
+    if exposed:
+        assert safe_target.await_count == 2
+    else:
+        safe_target.assert_awaited_once_with(booking)
+
+
 async def test_real_target_validator_checks_dns_without_fetching_booking_pages(
     script_api, monkeypatch
 ) -> None:

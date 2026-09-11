@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { AdminAccessState } from "@/components/admin-access-state";
@@ -5,6 +6,11 @@ import { AdminOperationsProvider } from "@/components/admin-operations-provider"
 import { AdminShell } from "@/components/admin-shell";
 import { loadAdminBootstrap } from "@/lib/admin-bootstrap.server";
 import { canAccessAdminPath } from "@/lib/admin-operations";
+
+// Roughly twenty console pages, of which only admin/community and admin/pet-friendly said
+// anything about indexing. One export here covers the tree; the two that set their own still
+// win. `nofollow` as well: there is nothing behind the sign-in wall worth a crawler queueing.
+export const metadata: Metadata = { robots: { index: false, follow: false } };
 
 type Props = Readonly<{ children: React.ReactNode; params: Promise<{ locale: string }> }>;
 
