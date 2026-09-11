@@ -1,13 +1,13 @@
 ---
 id: 2026-09-09-clarify-stay22-module-switch
 title: Clarify the modular hotel affiliate switch and original-channel fallback
-status: review
+status: done
 priority: P1
 area: web
 owner: codex-stay22-module
 claimed_at: 2026-09-09T13:15:13Z
 created_at: 2026-09-09T13:15:12Z
-completed_at:
+completed_at: 2026-09-11T15:54:18Z
 branch: codex/stay22-modular-toggle
 depends_on: []
 scope:
@@ -65,3 +65,14 @@ The corrected offline-guarded combined browser regression passed all 50 cases
 suite. The PR is not merge/deployment authorization; leave production settings
 unchanged. Earlier fulfilled-redirect fixture risk and its transport correction
 are documented in the browser task and rollout document.
+
+## Closed after merge (site owner's instruction, not the holder)
+
+PR #383 merged on 2026-09-09 as squash `73f893a`, whose tree is identical to the PR head
+`132e3d7`, so everything on the branch reached main; the branch has since been deleted.
+Every check on that head passed: `api`, `web`, `containers`, `full-stack-smoke`,
+`discovery-browser` and `planner-browser`. The task stayed in `review` and kept holding its
+scope, which blocked later claims, so claude-opus-5 moved it to done on 2026-09-11.
+
+If the holder still has follow-up work that never reached the branch, file a new task rather
+than reopening this one.

@@ -1,13 +1,13 @@
 ---
 id: 2026-09-11-food-reservation-platforms
 title: Independent food reservation save and multi-platform support
-status: review
+status: done
 priority: P1
 area: web
 owner: codex-food-reservation-platforms
 claimed_at: 2026-09-11T06:29:33Z
 created_at: 2026-09-11T06:29:13Z
-completed_at:
+completed_at: 2026-09-11T15:54:12Z
 branch: codex/food-reservation-platforms
 depends_on: []
 scope:
@@ -72,3 +72,21 @@ Run focused pytest, Vitest, translation validation, typecheck, lint, production 
 - Four new PostgreSQL integration cases cover same-merchant concurrent creation, cross-merchant URL aliases, stale versions and preservation of unrelated rows; eight integration cases collect locally but require CI PostgreSQL. New Playwright suite collects 32 cases; actual browser execution uses the ordinary dedicated CI workflow, not a workaround for the previously denied local service launch.
 - CI on 05773d0f passed 3,443 API tests (including all eight food PostgreSQL tests), migration to 0070, full-stack smoke, frontend unit tests, lint, typecheck and production build. Original 32 food browser cases passed. New browser fixture initially omitted the mounted settings tab's providers/audit snapshot, causing all new cases to hit the admin error boundary before editing; corrected the isolated fixture contract rather than changing production code. The final browser rerun remains required.
 - Corrected fixture commit 59b628f5 passed all 64 food/map/reservation browser cases. The wider browser suite exposed duplicate sibling keys between the existing style editor and new platform editor; changed both to namespaced keys and added a failing-before/passing-after real-component regression. All 23 style/admin component checks passed. The dedicated workflow now also executes the two existing admin-style browser cases to protect that neighboring workflow.
+
+## Closed after merge (site owner's instruction, not the holder)
+
+PR #392 merged on 2026-09-11 as squash `19a9429`, whose tree is identical to the PR head
+`723aa63`, so everything on the branch reached main; the branch has since been deleted.
+Every check on that head passed: `api`, `web`, `containers`, `full-stack-smoke`,
+`discovery-browser`, `planner-browser` and `food-map-reservations`. The task stayed in
+`review` and kept holding its scope, which blocked later claims, so claude-opus-5 moved it
+to done on 2026-09-11.
+
+The unticked items were the browser regression and final validation. The
+`food-map-reservations` workflow runs `e2e/food-reservation-platforms.spec.ts` next to the
+food map suite, and it passed on that head; `docs/food-reservation-platforms.md` is on main.
+The catalog follow-up this task kept separate was being filed by another session as
+`2026-09-11-food-reservation-link-backfill` when this task closed.
+
+If the holder still has follow-up work that never reached the branch, file a new task rather
+than reopening this one.

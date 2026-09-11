@@ -1,13 +1,13 @@
 ---
 id: 2026-09-09-isolate-public-stay22-script
 title: Isolate public Stay22 script document and hotel links
-status: review
+status: done
 priority: P1
 area: web
 owner: codex-stay22-script-ui
 claimed_at: 2026-09-09T13:26:57Z
 created_at: 2026-09-09T13:26:57Z
-completed_at:
+completed_at: 2026-09-11T15:54:19Z
 branch: codex/stay22-modular-toggle
 depends_on: []
 scope:
@@ -97,3 +97,18 @@ intercepted canonical origin; no real vendor/OTA traffic or test orders.
   empty or clean exact-origin public-home/catalogue URLs are allowed. Private paths,
   query/hash, foreign origins and credentials fail closed with original-link status.
   A clean current URL alone does not hide a previous private-page referrer.
+
+## Closed after merge (site owner's instruction, not the holder)
+
+PR #383 merged on 2026-09-09 as squash `73f893a`, whose tree is identical to the PR head
+`132e3d7`, so everything on the branch reached main; the branch has since been deleted.
+Every check on that head passed: `api`, `web`, `containers`, `full-stack-smoke`,
+`discovery-browser` and `planner-browser`. The task stayed in `review` and kept holding its
+scope, which blocked later claims, so claude-opus-5 moved it to done on 2026-09-11.
+
+The unticked item waited on the coordinated production build and browser boundary
+acceptance, which `2026-09-09-verify-stay22-script-browser` recorded; the checks above
+passed on the merged head.
+
+If the holder still has follow-up work that never reached the branch, file a new task rather
+than reopening this one.

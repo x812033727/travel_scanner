@@ -1,13 +1,13 @@
 ---
 id: 2026-09-11-food-map-reservation-entry
 title: Fix food map and reservation entry points
-status: review
+status: done
 priority: P1
 area: web
 owner: codex-food-map-reservation-entry
 claimed_at: 2026-09-11T04:42:20Z
 created_at: 2026-09-11T03:49:54Z
-completed_at:
+completed_at: 2026-09-11T15:54:25Z
 branch: codex/food-map-reservation-entry
 depends_on: []
 scope:
@@ -98,3 +98,23 @@ Fresh inventory: 331 public / 331 map links / 3 existing platform links; all 96 
 See `docs/catalog-content-reviews/2026-09-11-reservation-links.{md,json}` for exact per-ID evidence and application boundaries. General admin Save PATCHes the entire merchant before PUTting its platform, so no production saves were made solely to record platform notes. A later platform-only application must re-read current rows and use the existing dedicated authorized PUT with ordinary audit records.
 
 The hotel coordinator released the deployment write pause after 04:04:42 UTC, with merchant/platform fingerprints unchanged on main 5e3168e18174427c9ce4ed5b7219517ad3d1f4aa. This food task itself has not merged, deployed, or changed production data. Reconcile current main and rerun checks before any later PR/merge request.
+
+## Closed after merge (site owner's instruction, not the holder)
+
+PR #391 merged on 2026-09-11 as squash `28ca9d7`, whose tree is identical to the PR head
+`aea1684`, so everything on the branch reached main; the branch has since been deleted.
+Every check on that head passed: `api`, `web`, `containers`, `full-stack-smoke`,
+`discovery-browser`, `planner-browser` and `food-map-reservations`. The task stayed in
+`review` and kept holding its scope, which blocked later claims, so claude-opus-5 moved it
+to done on 2026-09-11.
+
+The unticked items are what `e2e/food-map-reservations.spec.ts` asserts, and the
+`food-map-reservations` workflow ran it on that head and passed; the notes saying the
+browser suite had not run were written before that. The reservation research stays outside
+this task, as the task required: 7 link candidates and 1 correction are still unapplied and
+321 merchants are unchecked, as
+`docs/catalog-content-reviews/2026-09-11-reservation-links.md` records. Another session was
+filing `2026-09-11-food-reservation-link-backfill` for that work when this task closed.
+
+If the holder still has follow-up work that never reached the branch, file a new task rather
+than reopening this one.

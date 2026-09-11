@@ -1,13 +1,13 @@
 ---
 id: 2026-09-10-complete-hotspot-review-identity-and-rationale
 title: Complete hotspot review identity and rationale editor
-status: review
+status: done
 priority: P1
 area: web
 owner: codex-hotspot-review-editor
 claimed_at: 2026-09-10T05:34:25Z
 created_at: 2026-09-10T01:47:53Z
-completed_at:
+completed_at: 2026-09-11T15:54:22Z
 branch: codex/hotspot-review-editor
 depends_on: []
 scope:
@@ -74,3 +74,14 @@ backup, preserved existing runtime/data containers and repeated readiness checks
 Actual live source is /root/mokaair-release-fe26ff8c-UaykAgja/source, not the
 historical /root/travel_scanner checkout. No provider settings/flags/spending or
 new catalog batch is authorized by the deployment operation itself.
+
+## Closed after merge (site owner's instruction, not the holder)
+
+PR #385 merged on 2026-09-10 as squash `1aefd59`, whose tree is identical to the PR head
+`45716cb`, so everything on the branch reached main; the branch has since been deleted.
+Every check on that head passed: `api`, `web`, `containers`, `full-stack-smoke`,
+`discovery-browser` and `planner-browser`. The task stayed in `review` and kept holding its
+scope, which blocked later claims, so claude-opus-5 moved it to done on 2026-09-11.
+
+If the holder still has follow-up work that never reached the branch, file a new task rather
+than reopening this one.
