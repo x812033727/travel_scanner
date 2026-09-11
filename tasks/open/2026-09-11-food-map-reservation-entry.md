@@ -1,16 +1,17 @@
 ---
 id: 2026-09-11-food-map-reservation-entry
 title: Fix food map and reservation entry points
-status: blocked
+status: in-progress
 priority: P1
 area: web
 owner: codex-food-map-reservation-entry
-claimed_at: 2026-09-11T03:51:31Z
+claimed_at: 2026-09-11T04:42:20Z
 created_at: 2026-09-11T03:49:54Z
 completed_at:
 branch: codex/food-map-reservation-entry
 depends_on: []
 scope:
+  - .github/workflows/food-map-reservations.yml
   - apps/web/components/merchant-external-links.tsx
   - apps/web/components/merchant-external-links.test.tsx
   - apps/web/components/food-dish-card.tsx
@@ -62,6 +63,8 @@ Base d0ec33ee6d39a4bd8e2a39275b55cc675ddf5095. Fresh GitHub checks confirm old o
 Parallel ownership: root discovery/card/detail-drawer and their tests; merchant_external_ui shared component, legacy cards and five foods catalogs; food_links_acceptance E2E and API test; reservation_inventory public inventory, drawer unit tests, and research reports. No PR/merge/deploy. The hotel coordinator's initial production-write pause for PR389 was respected; release is recorded below. No production mutation was attempted.
 
 ## Implementation and validation handoff
+
+Release continuation: user explicitly requested PR merge and deployment. The local server-start rejection remains respected; the missing actual browser suite will run in the ordinary GitHub Actions CI environment in a dedicated read-only-permissions workflow. This resolves the external local-start prerequisite without changing local execution permissions. Reconcile current main and require exact-head browser and full CI success before merge, followed by post-merge CI, fresh verified backup and coordinated write pause before activation. Reservation research candidates remain unapplied and are not part of deployment.
 
 - Shared `MerchantExternalLinks` renders the original approved primary/secondary map URLs, all valid reservation links, and a distinct official website action. HTTPS/host/branch-page checks, no invented fallback URLs, new-tab accessibility labels, minimum 44px targets, narrow-screen stacking, five-language platform-language and empty-state copy.
 - Discovery food rows keep internal merchant titles; merchant details show address/actions without a self-referential where-to-eat section. Boundary-owned navigation restores the parent detail's actual scroll body and remounted merchant focus, then returns to the originating list. Modified clicks are not added to local history ownership.
