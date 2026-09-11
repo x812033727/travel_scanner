@@ -21,6 +21,8 @@ scope:
   - apps/web/components/destination-guide.test.tsx
   - apps/web/lib/discovery-copy.ts
   - apps/web/lib/destinations-copy.ts
+  - apps/web/e2e/seo.spec.ts
+  - docs/seo.md
 ---
 
 # Wire /guides into the sitemap, footer and destination pages
