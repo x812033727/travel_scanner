@@ -75,11 +75,11 @@ cd apps/web && PLAYWRIGHT_REUSE_EXISTING=true PLAYWRIGHT_SERVE_BUILD=true npx pl
   `2026-09-10-seo-robots-sitemap`、`2026-09-10-seo-audit-followups`、`2026-09-11-pr388-seo-review`
   （都隨 PR #388 合併，2026-09-11T01:27:36Z）與 `2026-09-11-travel-guides-web`（PR #398）。
   原本經使用者同意在本 PR 代為結案，但另一個 session 的 PR #400 同時在收同一批（連同另外 18 張，
-  證據更完整）。為了不讓兩個 PR 在 `tasks/done/` 上衝突，改由 #400 結案，本 PR 撤回。
-  #400 合併前，本分支的 `check:tasks` 會有這四張與本任務範圍重疊的警告，不影響 CI。
+  證據更完整）。為了不讓兩個 PR 在 `tasks/done/` 上衝突，改由 #400 結案，本 PR 撤回；
+  #400 已於 2026-09-11T16:35:56Z 合併（`3701aaa6`），本分支隨後合入 main，範圍重疊的警告隨之消失。
 - **與 `2026-09-11-guides-sitemap-and-entry-points` 重疊。** 那張由 PR #400 開立，把 sitemap、頁尾連結、
-  目的地頁連結與 discovery 的「攻略」改名綁在一起；其中 sitemap 就是本任務。#400 合併後，更新本分支時
-  把那張的 sitemap 項目勾掉並從 scope 拿掉 `app/sitemap.ts`、`app/sitemap.test.ts`，只留另外三項。
+  目的地頁連結與 discovery 的「攻略」改名綁在一起；其中 sitemap 就是本任務。#400 合併後，本 PR 把那張的
+  sitemap 項目勾掉、從 scope 拿掉 `app/sitemap.ts` 與 `app/sitemap.test.ts`，標題改成只涵蓋另外三項。
 - **刻意的例外：文章條目帶 `lastmod`。** 靜態路由不帶的理由是「sitemap 不知道內容何時變動」，
   這對城市指南成立，對文章不成立：API 回傳的是真實的發布日。`sitemap.test.ts` 原本「完全沒有
   lastmod」的斷言縮到靜態路由，並且在有文章的情況下執行，讓這個分流是測出來的，而不是假設的。
