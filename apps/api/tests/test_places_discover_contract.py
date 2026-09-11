@@ -17,8 +17,8 @@ from fastapi import FastAPI
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
 from app.db import Base, get_session
-from app.problems import AppError, app_error_handler
 from app.places.router import router as destinations_router
+from app.problems import AppError, app_error_handler
 
 REQUIRED = {"origin", "source", "recommendations", "assumptions"}
 

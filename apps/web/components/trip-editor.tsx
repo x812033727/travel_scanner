@@ -81,6 +81,7 @@ import { TripWeatherPanel } from "@/components/trip-weather-panel";
 import { TripPetPanel } from "@/components/community/pets";
 import { useOperationCharge } from "@/components/usage-catalog-provider";
 import { api, ApiError, isUsageInsufficient } from "@/lib/api";
+import { UsageInsufficientNotice } from "@/components/usage-insufficient-notice";
 import { formatMoney } from "@/lib/locale-format";
 import { formatTime, groupTripItems, isActiveRouteItem, isFlightAnchor, isLogisticsItem, missingSegmentCount, originalItemName, deriveDayTimeline, segmentsForRows, type RouteSegment, type ScheduleDefaults, type TravelMode, type Trip, type TripItem } from "@/lib/trip-types";
 
@@ -335,6 +336,10 @@ export function TripEditor({ tripId }: { tripId: string }) {
   const [routePreviewSettings, setRoutePreviewSettings] = useState<{ mode: TravelMode; buffer: number }>();
   const routePanelBusyRef = useRef(false);
   const [error, setError] = useState<string>();
+  // Running out of uses used to navigate away from the planner, discarding the trip
+  // the member had just finished building, and land them on a page whose purchase
+  // button is disabled. search-experience.tsx already chose to explain it in place.
+  const [insufficient, setInsufficient] = useState(false);
   const [notice, setNotice] = useState<string>();
   // Days the optimiser would refuse, kept out of the toast state so the offer to
   // lock the extra stops stays on screen until it is used or dismissed.
@@ -1437,7 +1442,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
     } catch (reason) {
       if (isUsageInsufficient(reason)) {
         optimizationApplyRef.current = undefined;
-        router.push("/pricing");
+        setInsufficient(true);
         return;
       }
       if (reason instanceof ApiError) {
@@ -1473,7 +1478,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
     } catch (reason) {
       if (isUsageInsufficient(reason)) {
         repriceRequestRef.current = undefined;
-        router.push("/pricing");
+        setInsufficient(true);
       } else if (reason instanceof ApiError) {
         repriceRequestRef.current = undefined;
         setError(te("serverNotCharged", { message: reason.message }));
@@ -1526,7 +1531,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
       if (isUsageInsufficient(reason)) {
         aiRequestRef.current = undefined;
         setAIMenuOpen(false);
-        router.push("/pricing");
+        setInsufficient(true);
       } else if (reason instanceof ApiError) {
         aiRequestRef.current = undefined;
         setError(te("unchangedNotCharged", { message: reason.message }));
@@ -1578,7 +1583,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
       if (isUsageInsufficient(reason)) {
         aiApplyRef.current = undefined;
         setAIMenuOpen(false);
-        router.push("/pricing");
+        setInsufficient(true);
       } else if (reason instanceof ApiError) {
         aiApplyRef.current = undefined;
         setError(te("unchangedRepreview", { message: reason.message }));
@@ -1974,7 +1979,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
       <button type="button" aria-label={premium.assistant} onClick={() => openAIPlanner(tripRouteItemCount ? "day" : "trip")} disabled={busy("ai") || aiCharge.status !== "ready"} className="planner-dock-button planner-dock-button-primary"><Sparkles size={18} />{premium.assistant}</button></>}
     </div></div>
 
-    {(error || notice || optimizeBlock) && <div className="planner-toast-stack fixed left-1/2 z-[80] w-[min(92vw,38rem)] -translate-x-1/2" aria-live="polite">{error && <div role="alert" className="flex items-start justify-between gap-3 rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-900 shadow-lg"><span className="min-w-0 flex-1">{error}{saveState === "offline" && <button type="button" onClick={() => void flushChanges(true)} className="ml-3 font-bold underline">{te("retry")}</button>}</span><button type="button" aria-label={t("dismissError")} onClick={() => setError(undefined)} className="grid h-11 w-11 shrink-0 place-items-center rounded-xl text-red-900/70 hover:bg-red-100"><X size={16} /></button></div>}{notice && <div className="mt-2 flex items-center justify-between gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-900 shadow-lg"><span className="flex items-center gap-2"><Check size={16} />{notice}</span>{!undoItem && undoEdit && <button type="button" onClick={undoLastEdit} className="flex min-h-11 shrink-0 items-center gap-1 font-bold"><Undo2 size={16} />{copy.undo}</button>}{undoItem && <button type="button" onClick={undoDelete} className="flex min-h-11 shrink-0 items-center gap-1 font-bold"><Undo2 size={16} />{te("undo")}</button>}</div>}{optimizeBlock && <div role="status" className="mt-2 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950 shadow-lg"><p className="font-semibold">{te("optimizeTooMany", { day: optimizeBlock.label, count: optimizeBlock.days.reduce((total, entry) => total + entry.excess, 0) + optimizeBlock.limit, limit: optimizeBlock.limit })}</p><p className="mt-1 text-xs leading-5">{te("optimizeTooManyHint", { count: optimizeBlock.days.reduce((total, entry) => total + entry.excess, 0) })}</p><div className="mt-3 flex flex-wrap gap-2"><button type="button" onClick={lockCrowdedDays} className="flex min-h-11 items-center gap-1.5 rounded-xl bg-amber-900 px-4 text-sm font-semibold text-white">{te("optimizeLockExtras", { count: optimizeBlock.days.reduce((total, entry) => total + entry.excess, 0) })}</button><button type="button" onClick={() => setOptimizeBlock(undefined)} className="flex min-h-11 items-center rounded-xl px-4 text-sm font-semibold">{t("dismissError")}</button></div></div>}</div>}
+    {(error || notice || optimizeBlock || insufficient) && <div className="planner-toast-stack fixed left-1/2 z-[80] w-[min(92vw,38rem)] -translate-x-1/2" aria-live="polite">{insufficient && <div className="mb-2"><UsageInsufficientNotice chargeLabel={aiCharge.label} /><button type="button" onClick={() => setInsufficient(false)} className="mt-2 min-h-11 rounded-xl px-4 text-sm font-semibold underline">{t("dismissError")}</button></div>}{error && <div role="alert" className="flex items-start justify-between gap-3 rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-900 shadow-lg"><span className="min-w-0 flex-1">{error}{saveState === "offline" && <button type="button" onClick={() => void flushChanges(true)} className="ml-3 font-bold underline">{te("retry")}</button>}</span><button type="button" aria-label={t("dismissError")} onClick={() => setError(undefined)} className="grid h-11 w-11 shrink-0 place-items-center rounded-xl text-red-900/70 hover:bg-red-100"><X size={16} /></button></div>}{notice && <div className="mt-2 flex items-center justify-between gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-900 shadow-lg"><span className="flex items-center gap-2"><Check size={16} />{notice}</span>{!undoItem && undoEdit && <button type="button" onClick={undoLastEdit} className="flex min-h-11 shrink-0 items-center gap-1 font-bold"><Undo2 size={16} />{copy.undo}</button>}{undoItem && <button type="button" onClick={undoDelete} className="flex min-h-11 shrink-0 items-center gap-1 font-bold"><Undo2 size={16} />{te("undo")}</button>}</div>}{optimizeBlock && <div role="status" className="mt-2 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950 shadow-lg"><p className="font-semibold">{te("optimizeTooMany", { day: optimizeBlock.label, count: optimizeBlock.days.reduce((total, entry) => total + entry.excess, 0) + optimizeBlock.limit, limit: optimizeBlock.limit })}</p><p className="mt-1 text-xs leading-5">{te("optimizeTooManyHint", { count: optimizeBlock.days.reduce((total, entry) => total + entry.excess, 0) })}</p><div className="mt-3 flex flex-wrap gap-2"><button type="button" onClick={lockCrowdedDays} className="flex min-h-11 items-center gap-1.5 rounded-xl bg-amber-900 px-4 text-sm font-semibold text-white">{te("optimizeLockExtras", { count: optimizeBlock.days.reduce((total, entry) => total + entry.excess, 0) })}</button><button type="button" onClick={() => setOptimizeBlock(undefined)} className="flex min-h-11 items-center rounded-xl px-4 text-sm font-semibold">{t("dismissError")}</button></div></div>}</div>}
 
     <PlannerOverlay open={aiMenuOpen} onClose={() => { if (!busy("ai", "intent")) { setAIMenuOpen(false); setAIPreview(undefined); } }} title={te(aiPreview ? "aiPreviewTitle" : "aiTitle")} description={aiPreview ? premium.previewHint : premium.assistantHint} size={aiPreview ? "wide" : "default"} footer={!aiIntentOpen && <div className="flex gap-3"><button type="button" onClick={() => { if (aiPreview) setAIPreview(undefined); else setAIMenuOpen(false); }} disabled={busy("ai")} className="min-h-12 flex-1 rounded-xl border border-[var(--line)] font-semibold disabled:opacity-40">{te(aiPreview ? "backAdjust" : "cancel")}</button><button type="button" onClick={() => { if (aiRouteOnly && !aiPreview) { setAIMenuOpen(false); void previewOptimization(aiScope === "day" ? activeDay : undefined); } else void (aiPreview ? applyAIItinerary() : generateAIItinerary(aiScope)); }} disabled={busy("ai") || (!aiPreview && ((aiScope === "day" && !activeDay) || (aiRouteOnly ? (aiScope === "day" ? activeRouteRows.length < 2 : tripRouteItemCount < 2) : aiCharge.status !== "ready"))) || (aiPreview?.readiness.status === "needs_setup")} className="flex min-h-12 flex-[1.5] items-center justify-center gap-2 rounded-xl bg-violet-700 px-4 font-semibold text-white disabled:opacity-45">{action?.startsWith("ai-") ? <Loader2 size={17} className="animate-spin" /> : <Sparkles size={17} />}{aiPreview ? (aiPreview.planning.provider === "catalog" || aiCharge.uses === 0 ? te("applyPlanCharge", { charge: premium.free }) : te("applyPlanCharge", { charge: aiCharge.label })) : te("generatePreview")}</button></div>}>
       {!aiPreview && <div className="premium-assistant-tabs" role="group" aria-label={premium.assistant}><button type="button" aria-pressed={!aiIntentOpen && !aiRouteOnly} disabled={busy("ai", "intent")} onClick={() => { setAIIntentOpen(false); setAIRouteOnly(false); }}>{premium.arrange}</button><button type="button" aria-pressed={aiIntentOpen} disabled={busy("ai", "intent")} onClick={() => { setAIIntentOpen(true); setAIRouteOnly(false); }}>{premium.adjust}</button><button type="button" aria-pressed={aiRouteOnly} disabled={busy("ai", "intent")} onClick={() => { setAIIntentOpen(false); setAIRouteOnly(true); }}>{calm.routeOnly}</button></div>}

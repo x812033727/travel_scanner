@@ -57,7 +57,10 @@ def matching(q: str, *columns: Any) -> Any:
 # treatment the Naver provider gives its fields in places/naver.py.
 # Inline markup never separates words — dropping <strong> must not put a space in
 # front of the comma that followed it — while block markup always does.
-_BLOCK = re.compile(r"</?(?:p|br|div|li|tr|td|th|h[1-6]|section|article|blockquote|ul|ol)\b[^>]*>", re.I)
+_BLOCK = re.compile(
+    r"</?(?:p|br|div|li|tr|td|th|h[1-6]|section|article|blockquote|ul|ol)\b[^>]*>",
+    re.I,
+)
 _TAG = re.compile(r"<[^>]+>")
 
 

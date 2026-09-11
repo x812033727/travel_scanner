@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**47 open · 3 in progress · 3 blocked · 19 in review · 211 done**
+**46 open · 3 in progress · 3 blocked · 19 in review · 212 done**
 
 ## Ready to claim
 
@@ -80,7 +80,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [Mokaair site experience palettes and managed information pages](open/2026-09-09-site-experience-settings.md) | see the task notes |
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | see the task notes |
 | P3 | [TourAPI（韓國觀光公社）可行性驗證：先確認拿得到金鑰、連得上、資料量夠不夠](open/2026-09-06-korea-tourism-tourapi-spike.md) | see the task notes |
-| P0 | [次數用完後被導去已關閉的方案頁形成死路](open/2026-09-11-usage-exhausted-dead-end.md) | active work in the same scope |
 | P1 | [Contextual travel services and affiliate catalog](open/2026-09-07-contextual-travel-services.md) | active work in the same scope |
 | P1 | [Mokaair community foundation and account safety](open/2026-09-07-mokaair-community-foundation.md) | active work in the same scope |
 | P1 | [Mokaair community responsive web and five-language experience](open/2026-09-07-mokaair-community-web.md) | active work in the same scope |
@@ -103,6 +102,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## Recently finished
 
+- 2026-09-11 [次數用完後被導去已關閉的方案頁形成死路](done/2026-09-11-usage-exhausted-dead-end.md)
 - 2026-09-11 [搜尋結果頁的零結果失敗與無逾時三個死路](done/2026-09-11-search-result-dead-ends.md)
 - 2026-09-11 [推薦流印出原始 HTML 標籤](done/2026-09-11-discovery-feed-html-and-language-mix.md)
 - 2026-09-11 [頁尾五個連結全站每頁都只有十六像素高](done/2026-09-11-footer-links-sixteen-px-tall.md)
@@ -112,4 +112,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-11 [撤回：對比度不足的發現來自量測程式的解析錯誤](done/2026-09-11-bottom-nav-labels-fail-contrast.md)
 - 2026-09-11 [精靈三個條件都選不限時整頁崩潰並清空五步輸入](done/2026-09-11-wizard-crash-when-all-criteria-any.md)
 - 2026-09-11 [探索卡顯示累積蒐藏數與蒐藏數排行分頁](done/2026-09-11-discovery-saved-count-ranking.md)
-- 2026-09-11 [Simplify hotel booking platform and source copy](done/2026-09-10-simplify-hotel-booking-copy.md)

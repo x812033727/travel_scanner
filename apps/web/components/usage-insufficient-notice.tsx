@@ -5,6 +5,8 @@ import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { Link } from "@/i18n/navigation";
 import { api } from "@/lib/api";
+import { useSiteVisibility } from "@/components/site-visibility-provider";
+import { featureEnabled } from "@/lib/site-features";
 
 type UsageSummary = { available_uses: number };
 
@@ -17,6 +19,10 @@ type UsageSummary = { available_uses: number };
 export function UsageInsufficientNotice({ chargeLabel }: { chargeLabel: string }) {
   const t = useTranslations("usage");
   const [available, setAvailable] = useState<number | null | undefined>(undefined);
+  // Linking to a page the owner has switched off is the other half of the dead end:
+  // "go and buy more" pointing at "temporarily closed" leaves nothing to do.
+  const visibility = useSiteVisibility();
+  const canSeePlans = featureEnabled(visibility, "pricing");
 
   useEffect(() => {
     let active = true;
@@ -35,11 +41,13 @@ export function UsageInsufficientNotice({ chargeLabel }: { chargeLabel: string }
           : available === null
             ? t("insufficientBodyUnknown", { uses: chargeLabel })
             : t("insufficientBody", { uses: chargeLabel, available })}
-        {" "}{t("insufficientPurchase")}
+        {" "}{canSeePlans ? t("insufficientPurchase") : t("purchaseUnavailable")}
       </p>
       <div className="mt-4 flex flex-wrap gap-3 text-sm font-semibold">
         <Link href="/account" className="rounded-xl bg-white px-4 py-2 text-amber-900 shadow-sm">{t("viewHistory")}</Link>
-        <Link href="/pricing" className="rounded-xl px-4 py-2 underline underline-offset-4">{t("viewPlans")}</Link>
+        {canSeePlans
+          ? <Link href="/pricing" className="rounded-xl px-4 py-2 underline underline-offset-4">{t("viewPlans")}</Link>
+          : <Link href="/contact" className="rounded-xl px-4 py-2 underline underline-offset-4">{t("contactUs")}</Link>}
       </div>
     </section>
   );
