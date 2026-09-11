@@ -1,13 +1,13 @@
 ---
 id: 2026-09-11-oauth-redirect-internal-origin
 title: OAuth 回跳導向容器內部位址 0.0.0.0:3000，Google 登入最後必定落在錯誤頁
-status: in-progress
+status: done
 priority: P0
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-11T16:27:35Z
 created_at: 2026-09-11T16:27:16Z
-completed_at:
+completed_at: 2026-09-11T16:37:36Z
 branch: claude/google-oauth-setup-bd4f94
 depends_on: []
 scope:
