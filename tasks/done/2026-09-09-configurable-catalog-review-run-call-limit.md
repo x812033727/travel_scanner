@@ -1,13 +1,13 @@
 ---
 id: 2026-09-09-configurable-catalog-review-run-call-limit
 title: Configurable catalog review run call limit
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: codex-catalog-call-limit
 claimed_at: 2026-09-09T15:54:14Z
 created_at: 2026-09-09T12:11:48Z
-completed_at:
+completed_at: 2026-09-11T15:54:29Z
 branch: codex/catalog-review-call-limit
 depends_on: []
 scope:
@@ -63,3 +63,15 @@ Isolated from origin/main a8be96cd. Existing untranslated-message files are clai
 - Final focused API/provider/localization regression: 263 passed, 18 PostgreSQL-only skipped. Reused existing localized validation/resume errors instead of changing another task's backend language registry.
 - Latest production-build admin-domain Playwright: 24 passed (desktop/Pixel 7, five locales, light/dark including new budget workflow). An earlier busy-host Back navigation observation timed out while displaying loading placeholders; condition-based actual-value assertions now wait up to 15 seconds, without fixed sleeps. Viewport screenshots confirm readable, 44px controls and focus containment.
 - CI for implementation SHA a14b79d8 passed Planner UX, Travel discovery acceptance and containers; final-head CI remains required before merge. Alembic head remains 0068_admin_operations_center (no schema change).
+
+## Closed after merge (site owner's instruction, not the holder)
+
+This task was still `in-progress`, and its notes still say PR #381 is not merged. It merged
+on 2026-09-09 as squash `584dd43`, whose tree is identical to the PR head `1ca3a1d`, so
+everything on the branch reached main; the branch has since been deleted. Every check on
+that head passed: `api`, `web`, `containers`, `full-stack-smoke`, `discovery-browser` and
+`planner-browser`. An `in-progress` task holds its scope exactly as a `review` one does, so
+claude-opus-5 moved it to done on 2026-09-11.
+
+If the holder still has follow-up work that never reached the branch, file a new task rather
+than reopening this one.

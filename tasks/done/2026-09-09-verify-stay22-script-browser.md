@@ -1,13 +1,13 @@
 ---
 id: 2026-09-09-verify-stay22-script-browser
 title: Verify isolated Stay22 Script public browser flow
-status: review
+status: done
 priority: P1
 area: web
 owner: codex-stay22-script-e2e
 claimed_at: 2026-09-09T13:32:33Z
 created_at: 2026-09-09T13:32:11Z
-completed_at:
+completed_at: 2026-09-11T15:54:20Z
 branch: codex/stay22-modular-toggle
 depends_on: []
 scope:
@@ -91,3 +91,14 @@ no Script. Scoped ESLint passed. Desktop Chromium and Pixel 7 each repeated the
 corrected case five times: 10 passed in 40.9 seconds, workers=1, unchanged production
 build and offline transport guard. The parent owns the follow-up CI; the combined
 50-case regression is rerun after the evidence handoff and reported on PR #383.
+
+## Closed after merge (site owner's instruction, not the holder)
+
+PR #383 merged on 2026-09-09 as squash `73f893a`, whose tree is identical to the PR head
+`132e3d7`, so everything on the branch reached main; the branch has since been deleted.
+Every check on that head passed: `api`, `web`, `containers`, `full-stack-smoke`,
+`discovery-browser` and `planner-browser`. The task stayed in `review` and kept holding its
+scope, which blocked later claims, so claude-opus-5 moved it to done on 2026-09-11.
+
+If the holder still has follow-up work that never reached the branch, file a new task rather
+than reopening this one.

@@ -1,13 +1,13 @@
 ---
 id: 2026-09-10-seoul-day2-transport-ux
 title: Seoul Day 2 transport settings and readable route details
-status: review
+status: done
 priority: P1
 area: web
 owner: codex-seoul-day2-release
 claimed_at: 2026-09-10T06:16:47Z
 created_at: 2026-09-10T05:38:15Z
-completed_at:
+completed_at: 2026-09-11T15:54:23Z
 branch: codex/seoul-day2-transport-ux
 depends_on: []
 scope:
@@ -90,3 +90,22 @@ Real production trip items and saved routing remained unchanged. Google probe
 and detailed check used the existing usage meter (two bounded requests total).
 Unrelated force-refresh propagation and locale-prefixed login return bugs were
 recorded in separate open tasks, not silently folded into this change.
+
+## Closed after merge (site owner's instruction, not the holder)
+
+PR #387 merged on 2026-09-10 with merge commit `a044e4c`, whose second parent is the branch
+head `3876b73`, so every commit on the branch is on main; the branch has since been deleted.
+Every check on that head passed: `api`, `web`, `containers`, `full-stack-smoke`,
+`discovery-browser` and `planner-browser`. The task stayed in `review` and kept holding its
+scope, which blocked later claims, so claude-opus-5 moved it to done on 2026-09-11.
+
+The one unticked step, deploying and then re-querying the live Seoul Day 2, is not recorded
+here or in `docs/seoul-day2-transport-ux.md`, which still ends by asking for it. That check
+needs only one of the 27 paths this task held, that document, so it moved to
+`2026-09-11-seoul-day2-live-requery` instead of keeping all 27 locked. This overrides the note
+above about staying open until production verification is recorded: on this board a merged
+pull request closes its task (`tasks/README.md`), and the verification now has a task of its
+own.
+
+If the holder still has follow-up work that never reached the branch, file a new task rather
+than reopening this one.
