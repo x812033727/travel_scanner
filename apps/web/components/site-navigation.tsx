@@ -35,6 +35,13 @@ export function SiteNavigation() {
         </> : primaryNavLinks.filter((item) => !item.feature || featureVisible(visibility, item.feature)).map((item) => (
           <Link key={item.href} href={item.href} className="-mx-2 inline-flex min-h-11 items-center rounded-lg px-2 transition hover:text-[var(--ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--teal)]">{t(item.key)}</Link>
         ))}
+        {/* Outside the three mode branches on purpose. Discovery-on renders only
+            frontendDestinations and community-on only its own links, so a link added to
+            primaryNavLinks alone vanishes in two of the three modes -- the same defect as
+            2026-09-11-no-sign-in-entry-in-discovery. */}
+        {!discovery.loading && (discovery.enabled || community.flags.enabled) && (
+          <Link href="/guides" aria-current={pathname.startsWith("/guides") ? "page" : undefined} className="-mx-2 inline-flex min-h-11 items-center rounded-lg px-2 transition hover:text-[var(--ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--teal)]">{t("guides")}</Link>
+        )}
         {!discovery.enabled && !discovery.loading && <><TextSizeSwitcher />
         <ThemeSwitcher />
         <HeaderAuth /></>}
