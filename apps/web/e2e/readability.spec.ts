@@ -684,6 +684,17 @@ test.describe("the sign-in button is on the first screen", () => {
  */
 test("the community sub-navigation is big enough to tap", async ({ page }, info) => {
   test.skip(info.project.name !== "mobile-chromium", "Touch targets are a phone concern.");
+  // `CommunityLinks` returns null while the feature is off, and it is off in CI — the
+  // fixture API answers nothing for `/community/status`, so the provider falls back to
+  // `closedCommunity`. Without this the nav is simply absent and the test measures
+  // nothing. Turning it on here is the whole point: these links only exist to be tapped
+  // when the community is open.
+  await page.route("**/api/travel/community/status", (route) => route.fulfill({
+    json: {
+      enabled: true, posting_enabled: true, comments_enabled: true,
+      messaging_enabled: true, translation_enabled: false, pet_reports_enabled: true,
+    },
+  }));
   await page.goto("/zh-TW/pet-friendly");
   const nav = page.getByRole("navigation").filter({ has: page.getByRole("link", { name: "訊息" }) }).first();
   await expect(nav).toBeVisible();
