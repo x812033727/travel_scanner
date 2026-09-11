@@ -54,7 +54,12 @@ for (const locale of locales) {
 test("runtime sitemap exposes only public routes and stable localized alternate URLs", async ({ request }) => {
   const response = await request.get("/sitemap.xml");
   expect(response.status()).toBe(200);
-  expect(response.headers()["cache-control"]).toMatch(/no-store|no-cache/);
+  // Next's metadata route handler may retain its explicit max-age=0/must-revalidate
+  // header even for force-dynamic routes. Both forms require a fresh response.
+  const cacheControl = response.headers()["cache-control"];
+  expect(cacheControl).toMatch(/no-store|no-cache|max-age=0/);
+  if (!/no-store|no-cache/.test(cacheControl)) expect(cacheControl).toContain("must-revalidate");
+  expect(cacheControl).not.toMatch(/(?:s-maxage|max-age)=[1-9]\d*/);
   const xml = await response.text();
   expect(xml.match(/<url>/g)).toHaveLength(365); // fixture has all public switches enabled
   expect(xml).toContain("/en/destinations/tokyo</loc>");
