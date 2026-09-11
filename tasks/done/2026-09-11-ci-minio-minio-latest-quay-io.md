@@ -1,13 +1,13 @@
 ---
 id: 2026-09-11-ci-minio-minio-latest-quay-io
 title: CI 拉不到 minio/minio:latest，改用 quay.io 並釘版本
-status: in-progress
+status: done
 priority: P1
 area: ops
 owner: claude-opus-5-guides
 claimed_at: 2026-09-11T22:51:20Z
 created_at: 2026-09-11T22:51:16Z
-completed_at:
+completed_at: 2026-09-11T23:08:03Z
 branch: claude/ci-minio-quay-pin
 depends_on: []
 scope:

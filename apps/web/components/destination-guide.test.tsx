@@ -93,6 +93,22 @@ describe("DestinationGuide", () => {
     expect(screen.getByText("一蘭")).toBeTruthy();
   });
 
+  it("links this city's intel and guides, filtered to it", () => {
+    draw({});
+    const intel = screen.getByRole("link", { name: copy.guidesIntel });
+    const howto = screen.getByRole("link", { name: copy.guidesHowto });
+    expect(intel.getAttribute("href")).toBe("/guides/intel?destination=tokyo");
+    expect(howto.getAttribute("href")).toBe("/guides/howto?destination=tokyo");
+    expect(screen.getByText(copy.guidesTitle)).toBeTruthy();
+  });
+
+  it("still offers the guides when both catalog listings are unavailable", () => {
+    // They are separate systems: an article about the city is readable even when the
+    // hotspot and merchant services are not.
+    draw({ places: null, merchants: null, hotspotsEnabled: false });
+    expect(screen.getByRole("link", { name: copy.guidesIntel })).toBeTruthy();
+  });
+
   it("distinguishes failed listing services from genuinely empty review queues", () => {
     draw({ places: null, merchants: null });
     expect(screen.getByText(copy.unavailablePlaces)).toBeTruthy();
