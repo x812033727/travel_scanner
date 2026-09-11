@@ -135,6 +135,14 @@ describe("the timeline in a language that is not Chinese", () => {
       item("lunch", "Lunch", 2, { item_type: "meal", system_role: "lunch", location_name: undefined }),
       item("dinner", "Ginza dinner", 3, { item_type: "meal", system_role: "dinner", fixed_time: true, end_time: "2026-11-10T20:00:00+09:00", location_name: "Ginza" }),
       item("transfer", "Airport transfer", 4, { start_time: null, data: { timeline_section: "logistics" } }),
+      // A configured anchor and an unconfigured one: the two cards say different things
+      // and both used to say them only in Chinese.
+      item("outbound", "Outbound", 5, {
+        item_type: "flight_anchor",
+        system_role: "outbound_flight",
+        data: { flight_info: { airline: "JAL", flight_number: "JL802", origin: "TPE", destination: "NRT", departure_local: "2026-11-10T08:40", arrival_local: "2026-11-10T12:45", stops: 0 } },
+      }),
+      item("inbound", "Return", 6, { item_type: "flight_anchor", system_role: "return_flight", data: {} }),
     ];
     render(<ItineraryTimeline items={items} />);
 
