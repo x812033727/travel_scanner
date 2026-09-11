@@ -1,13 +1,13 @@
 ---
 id: 2026-09-11-discovery-saved-count-ranking
 title: 探索卡顯示累積蒐藏數與蒐藏數排行分頁
-status: review
+status: done
 priority: P2
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-11T08:19:59Z
 created_at: 2026-09-11T08:19:56Z
-completed_at:
+completed_at: 2026-09-11T10:24:13Z
 branch: claude/planning-card-collection-count-pdbiwg
 depends_on: []
 scope:
