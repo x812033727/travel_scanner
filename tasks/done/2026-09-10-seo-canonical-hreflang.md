@@ -1,13 +1,13 @@
 ---
 id: 2026-09-10-seo-canonical-hreflang
 title: 修好每頁的 canonical 與 hreflang
-status: review
+status: done
 priority: P0
 area: web
 owner: claude-opus-5-seo
 claimed_at: 2026-09-10T17:04:03Z
 created_at: 2026-09-10T16:43:32Z
-completed_at:
+completed_at: 2026-09-11T15:54:03Z
 branch: claude/seo-optimization-planning-xq1vjl
 depends_on: []
 scope:
@@ -134,3 +134,9 @@ curl -s http://localhost:3000/en/foods | grep -E 'rel="canonical"|hreflang|og:ti
 og:title 全部是站台層級的同一句。`/en/foods` 輸出五個 hreflang 加一個 `x-default`，全部指向同一頁的
 五個語言版本。`/zh-TW/hotspots?destination_id=tokyo&area=x` 的 canonical 正確落在 `/zh-TW/hotspots`。
 `/en/destinations/tokyo/services` 自訂的 `alternates` 仍然優先，未受影響。
+
+## 標記完成（由站主授權，非原持有者）
+
+這張任務的工作已隨 PR #388 於 2026-09-11 合併進 main：merge commit `d0ec33e` 的第二個 parent 就是分支 head `999dbc5`，分支上每個 commit 都在 main 裡，分支也已刪除。該 head 的每個 check 都通過（`api`、`web`、`containers`、`full-stack-smoke`、`discovery-browser`、`planner-browser`）。狀態卻一直停在 `review`，持有的 scope 因此擋住後續任務，2026-09-11 由 claude-opus-5 移到 done。
+
+若原持有者 `claude-opus-5-seo` 尚有未推送的後續工作，請重新開一張任務，不要把這張改回 review。

@@ -1,13 +1,13 @@
 ---
 id: 2026-09-10-seo-destination-landing-pages
 title: 目的地索引頁與城市指南落地頁
-status: review
+status: done
 priority: P1
 area: web
 owner: claude-opus-5-seo
 claimed_at: 2026-09-10T17:50:09Z
 created_at: 2026-09-10T16:43:42Z
-completed_at:
+completed_at: 2026-09-11T15:54:06Z
 branch: claude/seo-optimization-planning-xq1vjl
 depends_on:
   - 2026-09-10-seo-canonical-hreflang
@@ -249,3 +249,9 @@ API 開著但目錄沒有該 slug 時：404。
 **測試覆蓋的界線**：404 與 5xx 的分岔是三行內嵌在 page 裡的邏輯，用單元測試包起來需要 mock 掉整個
 server component 的相依，代價不成比例。它的輸入（`loadDestinations` 回 `null` 還是陣列）有單元測試，
 分岔本身則以上面對 production build 的實測為證。
+
+## 標記完成（由站主授權，非原持有者）
+
+這張任務的工作已隨 PR #388 於 2026-09-11 合併進 main：merge commit `d0ec33e` 的第二個 parent 就是分支 head `999dbc5`，分支上每個 commit 都在 main 裡，分支也已刪除。該 head 的每個 check 都通過（`api`、`web`、`containers`、`full-stack-smoke`、`discovery-browser`、`planner-browser`）。狀態卻一直停在 `review`，持有的 scope 因此擋住後續任務，2026-09-11 由 claude-opus-5 移到 done。
+
+若原持有者 `claude-opus-5-seo` 尚有未推送的後續工作，請重新開一張任務，不要把這張改回 review。

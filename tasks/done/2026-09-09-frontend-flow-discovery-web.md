@@ -1,13 +1,13 @@
 ---
 id: 2026-09-09-frontend-flow-discovery-web
 title: Editorial discovery and unified collection frontend
-status: review
+status: done
 priority: P1
 area: web
 owner: codex-discovery-flow-web
 claimed_at: 2026-09-09T04:37:19Z
 created_at: 2026-09-09T03:06:52Z
-completed_at:
+completed_at: 2026-09-11T15:54:17Z
 branch: codex/frontend-explore-flow
 depends_on: []
 scope:
@@ -82,3 +82,17 @@ Root runs `npm run typecheck:web`, production build and desktop/Pixel 7 Playwrig
 - CI legacy UI compatibility repair: four additionally claimed test files passed 30/30 focused Vitest cases and scoped ESLint with zero warnings. New navigation labels/My-space publishing and posting-paused behavior are covered, while resolved-discovery-off homepage/community navigation and legacy menu Escape/focus checks remain intact. Account removal still asserts its exact DELETE path plus AbortSignal.
 - CI run 34310599758 isolated browser suite passed 277/282; all five failures came from the old navigation helper skipping the menu during discovery loading. The newly claimed navigation spec now explicitly mocks discovery off and waits for the mobile menu at actual viewport widths below 1024px, with every language, theme and persistence assertion retained. Scoped ESLint passed with zero warnings; Playwright `--list` successfully enumerated 70 desktop/Pixel 7 cases. Browser execution of this repair remains pending in the root rerun; no production or runtime fixture changed.
 - No source changes outside claimed scope, no source commits or production mutations performed by this agent.
+
+## Closed after merge (site owner's instruction, not the holder)
+
+PR #374 merged on 2026-09-09 as squash `a899437`, whose tree is identical to the PR head
+`48d12ae`, so everything on the branch reached main; the branch has since been deleted.
+Every check on that head passed: `api`, `web`, `containers`, `full-stack-smoke`,
+`discovery-browser` and `planner-browser`. The task stayed in `review` and kept holding its
+scope, which blocked later claims, so claude-opus-5 moved it to done on 2026-09-11.
+
+The two unticked items waited on the root's final build, browser acceptance and merge
+evidence: that is the passing final-head run above and this record of the merge.
+
+If the holder still has follow-up work that never reached the branch, file a new task rather
+than reopening this one.

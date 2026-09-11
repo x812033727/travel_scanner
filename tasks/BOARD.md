@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**45 open · 3 in progress · 3 blocked · 21 in review · 214 done**
+**47 open · 2 in progress · 3 blocked · 0 in review · 236 done**
 
 ## Ready to claim
 
@@ -13,29 +13,47 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
+| P1 | [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | docs | `apps/web/app/[locale]/privacy/page.tsx`<br>`apps/web/app/[locale]/terms/page.tsx`<br>`apps/web/app/[locale]/contact/page.tsx`<br>`apps/web/messages/en/navigation.json`<br>`apps/web/messages/ja/navigation.json`<br>`apps/web/messages/ko/navigation.json`<br>`apps/web/messages/zh-CN/navigation.json`<br>`apps/web/messages/zh-TW/navigation.json` |
+| P1 | [Contextual travel services and affiliate catalog](open/2026-09-07-contextual-travel-services.md) | api | `apps/api/app/travel_services`<br>`apps/api/app/models.py`<br>`apps/api/app/main.py`<br>`apps/api/app/config.py`<br>`apps/api/app/affiliates`<br>`apps/api/app/saved`<br>`apps/api/app/trips/stay_router.py`<br>`apps/api/app/trips/schedule.py`<br>`apps/api/app/worker.py`<br>`apps/api/app/i18n.py`<br>`apps/api/app/ui_text/schemas.py`<br>`apps/api/app/analytics/scheduler.py`<br>`apps/api/migrations/versions`<br>`apps/api/tests/test_travel_services.py`<br>`apps/api/tests/test_travel_services_integration.py`<br>`apps/api/tests/test_ui_text.py`<br>`apps/web/components/travel-services`<br>`apps/web/components/trip-editor.tsx`<br>`apps/web/components/stay-area-flow.tsx`<br>`apps/web/components/hotspot-guide-panel.tsx`<br>`apps/web/components/hotspot-explorer.tsx`<br>`apps/web/components/admin-nav.tsx`<br>`apps/web/components/admin-nav.test.tsx`<br>`apps/web/components/saved-items-provider.tsx`<br>`apps/web/components/account-saved-items.tsx`<br>`apps/web/lib/api.ts`<br>`apps/web/app/api/travel/[...path]/route.ts`<br>`apps/web/app/api/travel/[...path]/proxy-context.ts`<br>`apps/web/app/api/travel/[...path]/route.test.ts`<br>`apps/web/i18n`<br>`apps/web/lib/ui-text.ts`<br>`apps/web/lib/ui-text.test.ts`<br>`apps/web/messages/en/travelServices.json`<br>`apps/web/messages/ja/travelServices.json`<br>`apps/web/messages/ko/travelServices.json`<br>`apps/web/messages/zh-TW/travelServices.json`<br>`apps/web/messages/zh-CN/travelServices.json`<br>`apps/web/messages/en/admin.json`<br>`apps/web/messages/ja/admin.json`<br>`apps/web/messages/ko/admin.json`<br>`apps/web/messages/zh-TW/admin.json`<br>`apps/web/messages/zh-CN/admin.json`<br>`apps/web/app/[locale]/destinations`<br>`apps/web/app/[locale]/admin/travel-services`<br>`apps/web/e2e/travel-services.spec.ts`<br>`apps/web/vitest.setup.tsx`<br>`docs/travel-services.md`<br>`tools/check-i18n.mjs`<br>`.env.example`<br>`.github/workflows/ci.yml` |
+| P1 | [Mokaair community foundation and account safety](open/2026-09-07-mokaair-community-foundation.md) | api | `apps/api/app/community`<br>`apps/api/app/models.py`<br>`apps/api/app/main.py`<br>`apps/api/app/config.py`<br>`apps/api/app/auth`<br>`apps/api/app/i18n.py`<br>`apps/api/app/worker.py`<br>`apps/api/app/trips`<br>`apps/api/app/search/schemas.py`<br>`docker-compose.yml`<br>`docker-compose.prod.yml`<br>`apps/api/pyproject.toml`<br>`apps/api/uv.lock`<br>`apps/api/migrations`<br>`apps/api/tests/test_community_foundation.py`<br>`apps/api/tests/test_schema.py`<br>`apps/api/tests/test_ui_text.py`<br>`.env.example`<br>`docker-compose.community.yml`<br>`.github/workflows/ci.yml`<br>`docs/community.md`<br>`apps/api/app/ui_text/schemas.py` |
 | P1 | [Hotel platform options and quote readiness](open/2026-09-07-hotel-platform-options-and-quote-readiness.md) | api | `apps/api/tests/test_hotel_content_package.py`<br>`docs/hotel-platforms` |
 | P1 | [Revalidate community read resets against production-build CI](open/2026-09-08-community-ci-read-retry.md) | web | `apps/web/e2e/community.spec.ts` |
 | P1 | [Complete live Travelpayouts brand and destination offer verification](open/2026-09-08-travelpayouts-live-destination-activation.md) | ops | `docs/travel-services.md` |
 | P1 | [Prevent Google coordinates being labelled durable by merchant review](open/2026-09-08-prevent-google-coordinates-being-labelled-durable.md) | api | `apps/api/app/foods/coordinate_queue.py`<br>`apps/api/tests/test_food_coordinate_queue.py` |
 | P1 | [Continue evidence-backed remaining hotspot candidate review](open/2026-09-08-continue-evidence-backed-remaining-hotspot-candidate.md) | ops | `docs/hotspot-review-next-batch.md`<br>`ops/hotspot_review_next_batch.py`<br>`ops/hotspot_review_next_batch.json` |
+| P1 | [首頁與 explore 要在伺服器端渲染出真正的內容](open/2026-09-10-seo-server-render-home-and-explore.md) | web | `apps/web/lib/discovery.ts`<br>`apps/web/lib/discovery.server.ts`<br>`apps/web/lib/discovery.server.test.ts`<br>`apps/web/components/discovery/explorer.tsx`<br>`apps/web/app/[locale]/explore/page.tsx`<br>`apps/web/app/[locale]/explore/collections/page.tsx` |
 | P1 | [餘額與行程上限都只在使用者投入之後才告知](open/2026-09-11-quota-and-limits-shown-too-late.md) | web | `apps/web/components/new-trip-form.tsx`<br>`apps/web/components/usage-catalog-provider.tsx`<br>`apps/web/messages/en/newTrip.json`<br>`apps/web/messages/ja/newTrip.json`<br>`apps/web/messages/ko/newTrip.json`<br>`apps/web/messages/zh-CN/newTrip.json`<br>`apps/web/messages/zh-TW/newTrip.json` |
+| P1 | [我的旅程整頁硬編碼繁中含刪除確認框](open/2026-09-11-trips-list-hardcoded-zh-tw.md) | web | `apps/web/components/account-list.tsx`<br>`apps/web/messages/en/trips.json`<br>`apps/web/messages/ja/trips.json`<br>`apps/web/messages/ko/trips.json`<br>`apps/web/messages/zh-CN/trips.json`<br>`apps/web/messages/zh-TW/trips.json` |
+| P1 | [後端回傳的繁中警告句被原樣顯示在所有語系](open/2026-09-11-api-warnings-leak-zh-tw.md) | api | `apps/api/app/trips/routing.py`<br>`apps/api/app/trips/router.py`<br>`apps/api/app/search/orchestrator.py`<br>`apps/api/app/search/tasks.py` |
 | P1 | [行程時間軸硬編碼繁中而它正是分享頁的主體](open/2026-09-11-itinerary-timeline-hardcoded-zh-tw.md) | web | `apps/web/components/itinerary-timeline.tsx`<br>`apps/web/lib/itinerary-messages`<br>`apps/web/lib/itinerary-copy.ts` |
 | P1 | [機票與飯店結果卡硬編碼繁中](open/2026-09-11-offer-cards-hardcoded-zh-tw.md) | web | `apps/web/components/flight-offer-card.tsx`<br>`apps/web/components/hotel-offer-card.tsx`<br>`apps/web/messages/en/search.json`<br>`apps/web/messages/ja/search.json`<br>`apps/web/messages/ko/search.json`<br>`apps/web/messages/zh-CN/search.json`<br>`apps/web/messages/zh-TW/search.json` |
+| P1 | [合作平台面板繁中且漏用在地化佣金揭露](open/2026-09-11-affiliate-panel-i18n-and-disclosure.md) | web | `apps/web/components/affiliate-partner-options.tsx`<br>`apps/api/app/trips/stay_router.py`<br>`apps/web/messages/en/travelServices.json`<br>`apps/web/messages/ja/travelServices.json`<br>`apps/web/messages/ko/travelServices.json`<br>`apps/web/messages/zh-CN/travelServices.json`<br>`apps/web/messages/zh-TW/travelServices.json` |
+| P1 | [後台九張表格在手機無法閱讀](open/2026-09-11-admin-tables-unusable-on-phone.md) | web | `apps/web/components/admin-hotspots-panel.tsx`<br>`apps/web/components/admin-foods-panel.tsx`<br>`apps/web/components/admin-food-merchants-panel.tsx`<br>`apps/web/components/admin-food-taxonomy-panel.tsx`<br>`apps/web/components/admin-merchant-coordinate-queue.tsx`<br>`apps/web/components/admin-hotspot-places-panel.tsx`<br>`apps/web/components/admin-deployments-panel.tsx`<br>`apps/web/components/admin-settings-panel.tsx` |
+| P1 | [刪除行程項目沒有確認而且復原視窗短於自動儲存](open/2026-09-11-itinerary-item-delete-no-confirm.md) | web | `apps/web/components/trip-editor.tsx` |
 | P1 | [行程規劃器在手機沒有全域導覽且離線頁無入口](open/2026-09-11-planner-mobile-navigation-and-offline.md) | web | `apps/web/components/today-view.tsx`<br>`apps/web/components/offline-trip-cache.tsx`<br>`apps/web/app/[locale]/trips/[id]/page.tsx`<br>`apps/web/public/sw.js` |
 | P1 | [規格書明定為必要的目的地支援閘門從未實作](open/2026-09-11-destination-supported-gate-missing.md) | web | `apps/api/app/ai/parser.py`<br>`apps/web/components/trip-brief-composer.tsx`<br>`apps/web/components/brief-confirm-panel.tsx`<br>`docs/planning-flow-spec.md` |
 | P2 | [防 jsonb 運算子的測試只守住 3 張表，實際有 42 張](open/2026-09-07-jsonb-3-42.md) | api | `apps/api/tests/test_migration_sql_dialect.py` |
 | P2 | [30 筆新購物店家還沒 place enrichment，所以加不進行程](open/2026-09-07-enrich-new-shopping-place-ids.md) | api | `ops/notes/hotspot-place-enrichment.md` |
+| P2 | [Community read metric duplicate observed alongside smoke ECONNRESET](open/2026-09-07-community-read-metric-concurrency.md) | api | `apps/api/app/community`<br>`apps/api/tests/test_community.py` |
 | P2 | [Verify the two reported hotels exact Booking links](open/2026-09-09-verify-reported-hotels-booking-links.md) | ops | `docs/reported-hotels-booking-review.md` |
+| P2 | [Preserve force refresh in daily route background jobs](open/2026-09-10-daily-route-force-refresh.md) | api | `apps/api/app/trips/router.py`<br>`apps/api/app/trips/route_tasks.py`<br>`apps/api/tests/test_route_tasks.py` |
 | P2 | [Normalize locale-prefixed login return paths](open/2026-09-10-locale-login-return-path.md) | web | `apps/web/components/auth-form.tsx`<br>`apps/web/components/auth-form.test.tsx` |
 | P2 | [讓 pet-friendly 與社群內容頁先 SSR 再開放索引](open/2026-09-10-seo-open-content-pages.md) | web | `apps/web/components/community/page.tsx`<br>`apps/web/components/community/page.test.tsx`<br>`apps/web/app/[locale]/pet-friendly/page.tsx`<br>`apps/web/app/[locale]/pet-friendly/[id]/page.tsx`<br>`apps/web/app/[locale]/community/posts/[id]/page.tsx`<br>`apps/web/app/[locale]/community/profiles/[handle]/page.tsx`<br>`apps/web/lib/community/public.server.ts`<br>`apps/web/lib/community/public.server.test.ts` |
+| P2 | [彈層原語未統一與可及性收尾](open/2026-09-11-dialog-primitives-and-a11y-cleanup.md) | web | `apps/web/components/hotspot-restaurants-panel.tsx`<br>`apps/web/components/admin-deployments-panel.tsx`<br>`apps/web/components/admin-food-merchants-panel.tsx` |
 | P2 | [表單驗證與低於四十四像素的觸控目標](open/2026-09-11-form-validation-and-touch-targets.md) | web | `apps/web/components/community/shell.tsx`<br>`apps/web/components/airline-fare-lab.tsx`<br>`apps/web/components/flight-status-search.tsx`<br>`apps/web/components/date-range-picker.tsx`<br>`apps/web/components/admin-restaurant-sources-panel.tsx`<br>`apps/web/components/admin-usage-settings-panel.tsx`<br>`apps/web/components/admin-analytics-panel.tsx` |
+| P2 | [六處死路與缺空狀態合集](open/2026-09-11-ux-dead-ends-and-empty-states.md) | web | `apps/web/components/shared-trip-view.tsx`<br>`apps/web/components/today-view.tsx`<br>`apps/web/components/community/home.tsx`<br>`apps/web/components/discovery/collections.tsx` |
+| P2 | [安排編輯器的關閉鈕在儲存在途時被靜默吞掉](open/2026-09-11-planner-overlay-close-guard-race.md) | web | `apps/web/components/trip-editor.tsx`<br>`apps/web/components/planner-overlay.tsx`<br>`apps/web/lib/modal-sheet.ts`<br>`apps/web/components/planner-overlay.test.tsx` |
+| P2 | [推薦流的語言選擇與同地點去重](open/2026-09-11-discovery-feed-language-and-dedup.md) | api | `apps/api/app/discovery`<br>`apps/api/tests/test_discovery_flow.py` |
 | P2 | [取消或逾時搜尋時釋放已保留的次數](open/2026-09-11-release-reservation-on-cancel.md) | api | `apps/api/app/search/router.py`<br>`apps/api/app/usage/service.py` |
+| P2 | [Re-query the live Seoul Day 2 route after the #387 release](open/2026-09-11-seoul-day2-live-requery.md) | ops | `docs/seoul-day2-transport-ux.md` |
+| P2 | [Wire /guides into the sitemap, footer and destination pages](open/2026-09-11-guides-sitemap-and-entry-points.md) | web | `apps/web/app/sitemap.ts`<br>`apps/web/app/sitemap.test.ts`<br>`apps/web/components/site-footer.tsx`<br>`apps/web/components/site-footer.test.tsx`<br>`apps/web/components/destination-guide.tsx`<br>`apps/web/components/destination-guide.test.tsx`<br>`apps/web/lib/discovery-copy.ts` |
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | api | `apps/api/app/hotspots/areas.py`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [第二批購物店家：十五個沒有公開座標來源的候選](open/2026-09-06-shopping-seeds-second-batch.md) | api | `apps/api/app/hotspots/shopping_bootstrap.json`<br>`apps/api/app/hotspots/theme_bootstrap.json`<br>`apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_shopping_bootstrap.py` |
 | P3 | [彈性日期區塊的價格標籤寫死 full_trip_search](open/2026-09-06-full-trip-search.md) | web | `apps/web/components/flight-date-options.tsx`<br>`apps/web/components/flight-date-options.test.tsx` |
 | P3 | [建立旅程時就問出發機場，不要等到查機票才問](open/2026-09-06-ask-origin-airport-at-trip-creation.md) | web | `apps/web/components/new-trip-form.tsx`<br>`apps/web/components/new-trip-form.test.tsx`<br>`apps/web/messages/en/newTrip.json`<br>`apps/web/messages/ja/newTrip.json`<br>`apps/web/messages/ko/newTrip.json`<br>`apps/web/messages/zh-TW/newTrip.json`<br>`apps/web/messages/zh-CN/newTrip.json` |
 | P3 | [行程裡新增一餐：四個 trip-selections 端點接受 mode: replace_meal\|append](open/2026-09-07-add-a-meal-to-a-day.md) | api | `apps/api/app/foods/router.py`<br>`apps/api/app/hotspots/router.py`<br>`apps/api/app/restaurants/user_router.py`<br>`apps/web/components/travel-card-actions.tsx` |
+| P3 | [整合測試用固定 email，同一個資料庫跑第二次就 UniqueViolation](open/2026-09-07-fixed-email-in-integration-tests.md) | api | `apps/api/tests/test_food_integration.py` |
 | P3 | [tasks/BOARD.md 是產生檔，卻讓每個 PR 互相衝突](open/2026-09-07-board-conflicts-on-every-pr.md) | tools | `.gitattributes`<br>`tools/tasks.mjs` |
 | P3 | [Isolate backup catalog test from host free disk capacity](open/2026-09-09-backup-catalog-free-disk-fixture.md) | api | `apps/api/tests/test_database_operations_center.py` |
 
@@ -43,35 +61,12 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
-| [Configurable catalog review run call limit](open/2026-09-09-configurable-catalog-review-run-call-limit.md) | codex-catalog-call-limit | 2026-09-09T15:54:14Z | `codex/catalog-review-call-limit` |
 | [全站沒有自訂的找不到頁面](open/2026-09-11-no-custom-not-found-page.md) | claude-opus-5 | 2026-09-11T13:17:20Z | `claude/mokaair-website-access-k7xiku` |
 | [登入頁的送出鈕在手機上要捲一下才看得到](open/2026-09-11-bottom-nav-covers-page-content.md) | claude-opus-5 | 2026-09-11T14:39:07Z | `claude/mokaair-website-access-k7xiku` |
 
 ## In review
 
-| Task | Owner | Branch |
-| --- | --- | --- |
-| [修好每頁的 canonical 與 hreflang](open/2026-09-10-seo-canonical-hreflang.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
-| [Unified saved items and private inbox API](open/2026-09-09-frontend-flow-saved-api.md) | codex-saved-flow | `codex/frontend-explore-flow` |
-| [Editorial discovery and unified collection frontend](open/2026-09-09-frontend-flow-discovery-web.md) | codex-discovery-flow-web | `codex/frontend-explore-flow` |
-| [Clarify the modular hotel affiliate switch and original-channel fallback](open/2026-09-09-clarify-stay22-module-switch.md) | codex-stay22-module | `codex/stay22-modular-toggle` |
-| [Isolate public Stay22 script document and hotel links](open/2026-09-09-isolate-public-stay22-script.md) | codex-stay22-script-ui | `codex/stay22-modular-toggle` |
-| [Verify isolated Stay22 Script public browser flow](open/2026-09-09-verify-stay22-script-browser.md) | codex-stay22-script-e2e | `codex/stay22-modular-toggle` |
-| [Complete hotspot review identity and rationale editor](open/2026-09-10-complete-hotspot-review-identity-and-rationale.md) | codex-hotspot-review-editor | `codex/hotspot-review-editor` |
-| [Seoul Day 2 transport settings and readable route details](open/2026-09-10-seoul-day2-transport-ux.md) | codex-seoul-day2-release | `codex/seoul-day2-transport-ux` |
-| [公開 robots.txt 與五語系 sitemap](open/2026-09-10-seo-robots-sitemap.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
-| [目的地索引頁與城市指南落地頁](open/2026-09-10-seo-destination-landing-pages.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
-| [JSON-LD 結構化資料基礎與列表頁標記](open/2026-09-10-seo-structured-data.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
-| [Review and harden PR 388 SEO behavior before merge](open/2026-09-11-pr388-seo-review.md) | codex-pr388-review | `codex/pr388-seo-review` |
-| [Hotel operating date guards Rakuten Japan and resilient clickouts](open/2026-09-11-hotel-operation-rakuten-clickout.md) | codex-hotel-guard | `codex/hotel-operation-rakuten-clickout` |
-| [Fix food map and reservation entry points](open/2026-09-11-food-map-reservation-entry.md) | codex-food-map-reservation-entry | `codex/food-map-reservation-entry` |
-| [Independent food reservation save and multi-platform support](open/2026-09-11-food-reservation-platforms.md) | codex-food-reservation-platforms | `codex/food-reservation-platforms` |
-| [Travel guides content API and schema](open/2026-09-11-travel-guides-api.md) | claude-opus-5-guides | `claude/travel-info-guide-section-4ulqsj` |
-| [Travel guides web pages admin and navigation](open/2026-09-11-travel-guides-web.md) | claude-opus-5-guides | `claude/travel-info-guide-section-4ulqsj` |
-| [Archive completed catalog and hotel review evidence](open/2026-09-09-review-evidence-archive.md) | codex-review-archive | `codex/review-evidence-archive-20260909` |
-| [Compact discovery cards and source-linked details](open/2026-09-09-discovery-card-details.md) | codex-discovery-card-details | `codex/discovery-card-details-20260909` |
-| [公開資料改用 revalidate 快取，並把 /foods 店家列表放進 SSR](open/2026-09-10-seo-public-data-caching.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
-| [SEO 稽核補漏：404 metadata、sitemap lastmod 與文件準確性](open/2026-09-10-seo-audit-followups.md) | claude-opus-5-seo | `claude/seo-optimization-planning-xq1vjl` |
+_Nothing here._
 
 ## Waiting
 
@@ -80,36 +75,20 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [Mokaair site experience palettes and managed information pages](open/2026-09-09-site-experience-settings.md) | see the task notes |
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | see the task notes |
 | P3 | [TourAPI（韓國觀光公社）可行性驗證：先確認拿得到金鑰、連得上、資料量夠不夠](open/2026-09-06-korea-tourism-tourapi-spike.md) | see the task notes |
-| P1 | [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | active work in the same scope |
-| P1 | [Contextual travel services and affiliate catalog](open/2026-09-07-contextual-travel-services.md) | active work in the same scope |
-| P1 | [Mokaair community foundation and account safety](open/2026-09-07-mokaair-community-foundation.md) | active work in the same scope |
 | P1 | [Mokaair community responsive web and five-language experience](open/2026-09-07-mokaair-community-web.md) | active work in the same scope |
 | P1 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | active work in the same scope |
-| P1 | [首頁與 explore 要在伺服器端渲染出真正的內容](open/2026-09-10-seo-server-render-home-and-explore.md) | depends on 2026-09-09-frontend-flow-discovery-web, 2026-09-09-discovery-card-details, 2026-09-10-seo-structured-data |
-| P1 | [我的旅程整頁硬編碼繁中含刪除確認框](open/2026-09-11-trips-list-hardcoded-zh-tw.md) | active work in the same scope |
-| P1 | [後端回傳的繁中警告句被原樣顯示在所有語系](open/2026-09-11-api-warnings-leak-zh-tw.md) | active work in the same scope |
-| P1 | [合作平台面板繁中且漏用在地化佣金揭露](open/2026-09-11-affiliate-panel-i18n-and-disclosure.md) | active work in the same scope |
-| P1 | [後台九張表格在手機無法閱讀](open/2026-09-11-admin-tables-unusable-on-phone.md) | active work in the same scope |
-| P1 | [刪除行程項目沒有確認而且復原視窗短於自動儲存](open/2026-09-11-itinerary-item-delete-no-confirm.md) | active work in the same scope |
 | P1 | [路線地圖在手機吃掉頁面捲動且對輔助科技隱形](open/2026-09-11-route-map-mobile-and-a11y.md) | active work in the same scope |
-| P2 | [Community read metric duplicate observed alongside smoke ECONNRESET](open/2026-09-07-community-read-metric-concurrency.md) | active work in the same scope |
-| P2 | [Preserve force refresh in daily route background jobs](open/2026-09-10-daily-route-force-refresh.md) | active work in the same scope |
-| P2 | [彈層原語未統一與可及性收尾](open/2026-09-11-dialog-primitives-and-a11y-cleanup.md) | active work in the same scope |
-| P2 | [六處死路與缺空狀態合集](open/2026-09-11-ux-dead-ends-and-empty-states.md) | active work in the same scope |
-| P2 | [安排編輯器的關閉鈕在儲存在途時被靜默吞掉](open/2026-09-11-planner-overlay-close-guard-race.md) | active work in the same scope |
-| P2 | [推薦流的語言選擇與同地點去重](open/2026-09-11-discovery-feed-language-and-dedup.md) | active work in the same scope |
-| P3 | [整合測試用固定 email，同一個資料庫跑第二次就 UniqueViolation](open/2026-09-07-fixed-email-in-integration-tests.md) | active work in the same scope |
-| P3 | [Lighthouse SEO 與效能門檻 workflow](open/2026-09-10-seo-lighthouse-workflow.md) | depends on 2026-09-10-seo-robots-sitemap, 2026-09-10-seo-destination-landing-pages, 2026-09-10-seo-server-render-home-and-explore |
+| P3 | [Lighthouse SEO 與效能門檻 workflow](open/2026-09-10-seo-lighthouse-workflow.md) | depends on 2026-09-10-seo-server-render-home-and-explore |
 
 ## Recently finished
 
-- 2026-09-11 [Support dotted Catchtable venue IDs safely](done/2026-09-11-catchtable-dot-venue-id.md)
-- 2026-09-11 [登入入口只存在於我的頁底部且未登入者毫無說明](done/2026-09-11-no-sign-in-entry-in-discovery.md)
-- 2026-09-11 [次數用完後被導去已關閉的方案頁形成死路](done/2026-09-11-usage-exhausted-dead-end.md)
-- 2026-09-11 [搜尋結果頁的零結果失敗與無逾時三個死路](done/2026-09-11-search-result-dead-ends.md)
-- 2026-09-11 [推薦流印出原始 HTML 標籤](done/2026-09-11-discovery-feed-html-and-language-mix.md)
-- 2026-09-11 [頁尾五個連結全站每頁都只有十六像素高](done/2026-09-11-footer-links-sixteen-px-tall.md)
-- 2026-09-11 [校正私人頁與功能關閉頁的索引指令](done/2026-09-10-seo-index-directives.md)
-- 2026-09-11 [首頁伺服器端輸出真正的內容，並把目的地頁接進連結結構](done/2026-09-10-seo-home-ssr-and-internal-links.md)
-- 2026-09-11 [撤回：被判定截斷的文字全是螢幕閱讀器專用標籤](done/2026-09-11-language-switcher-label-clipped.md)
-- 2026-09-11 [撤回：對比度不足的發現來自量測程式的解析錯誤](done/2026-09-11-bottom-nav-labels-fail-contrast.md)
+- 2026-09-11 [Configurable catalog review run call limit](done/2026-09-09-configurable-catalog-review-run-call-limit.md)
+- 2026-09-11 [Compact discovery cards and source-linked details](done/2026-09-09-discovery-card-details.md)
+- 2026-09-11 [Archive completed catalog and hotel review evidence](done/2026-09-09-review-evidence-archive.md)
+- 2026-09-11 [Fix food map and reservation entry points](done/2026-09-11-food-map-reservation-entry.md)
+- 2026-09-11 [Hotel operating date guards Rakuten Japan and resilient clickouts](done/2026-09-11-hotel-operation-rakuten-clickout.md)
+- 2026-09-11 [Seoul Day 2 transport settings and readable route details](done/2026-09-10-seoul-day2-transport-ux.md)
+- 2026-09-11 [Complete hotspot review identity and rationale editor](done/2026-09-10-complete-hotspot-review-identity-and-rationale.md)
+- 2026-09-11 [Verify isolated Stay22 Script public browser flow](done/2026-09-09-verify-stay22-script-browser.md)
+- 2026-09-11 [Isolate public Stay22 script document and hotel links](done/2026-09-09-isolate-public-stay22-script.md)
+- 2026-09-11 [Clarify the modular hotel affiliate switch and original-channel fallback](done/2026-09-09-clarify-stay22-module-switch.md)
