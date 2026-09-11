@@ -19,6 +19,14 @@ describe("MobileNav", () => {
     expect(screen.getByRole("link", {name:"探索"}).getAttribute("href")).toBe("/explore");
     expect(screen.getByRole("link", {name:"我的"}).getAttribute("href")).toBe("/my");
   });
+  it("offers a way to sign in on a phone even in discovery mode", () => {
+    // Discovery mode returned early with only language, explore and my — so a visitor
+    // had to guess that "my" leads to a page with a login link at the bottom of a list.
+    discovery.enabled = true;
+    render(<ThemeProvider><MobileNav /></ThemeProvider>);
+    expect(screen.getByRole("link", { name: "登入／切換帳號" }).getAttribute("href")).toBe("/login");
+  });
+
   it("keeps language directly accessible beside the account and menu", () => {
     render(<ThemeProvider><MobileNav /></ThemeProvider>);
     // Appearance, language and text size are display preferences with a word

@@ -1,6 +1,8 @@
 """Bounded projections of current public records, never provider discovery calls."""
 
+import html
 import json
+import re
 from datetime import UTC, datetime, timedelta
 from typing import Any, cast
 from uuid import UUID
@@ -48,6 +50,25 @@ def matching(q: str, *columns: Any) -> Any:
     return or_(*(column.ilike(f"%{escape_like(q)}%", escape="\\") for column in columns))
 
 
+# Ingested summaries carry provider markup. The client renders `summary` as a text
+# node, which is the right call — interpolating provider HTML would be an injection
+# sink — so anything left in here reaches the reader verbatim, angle brackets and all.
+# Two of the six cards on the zh-TW home page showed `<strong>` mid-sentence. Same
+# treatment the Naver provider gives its fields in places/naver.py.
+# Inline markup never separates words — dropping <strong> must not put a space in
+# front of the comma that followed it — while block markup always does.
+_BLOCK = re.compile(
+    r"</?(?:p|br|div|li|tr|td|th|h[1-6]|section|article|blockquote|ul|ol)\b[^>]*>",
+    re.I,
+)
+_TAG = re.compile(r"<[^>]+>")
+
+
+def clean_summary(value: str) -> str:
+    spaced = _BLOCK.sub(" ", value or "")
+    return " ".join(html.unescape(_TAG.sub("", spaced)).split())
+
+
 def base_item(
     kind: Kind,
     identifier: UUID,
@@ -65,7 +86,7 @@ def base_item(
         id=f"{key_kind}:{identifier}",
         kind=kind,
         title=title,
-        summary=summary[:1200],
+        summary=clean_summary(summary)[:1200],
         destination=destination_payload(destination, cast(Locale, locale)),
         locale=locale,
         href=f"/{locale}/explore?content={kind}%3A{identifier}",

@@ -533,11 +533,16 @@ async def discover(
         }
         for item in sorted(profiles, key=lambda item: item.estimated_flight_twd)
     ]
+    # Both branches answer the same request, so they answer with the same keys.
+    # The caller reads `recommendations` unconditionally; omitting it here used to
+    # crash the wizard and discard five steps of input.
     return {
         "origin": payload.origin.upper(),
         "region": region,
         "source": "curated_estimate",
         "notes_parser": notes_parser,
+        "recommendations": [],
+        "assumptions": [],
         "candidates": candidates[: payload.top_n],
         "next_step": "選定城市後再執行即時機票、住宿、活動與接送搜尋",
     }
