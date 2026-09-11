@@ -234,8 +234,19 @@ for (const viewport of [{ width: 320, height: 740 }, { width: 390, height: 844 }
           await page.keyboard.press("Escape");
           await expect(dialog).toHaveCount(0);
           await expect(page.locator("body")).not.toHaveCSS("overflow", "hidden");
-          await expect(trigger).toBeFocused();
+          await info.attach(`closed-detail-${theme}.json`, {
+            contentType: "application/json",
+            body: JSON.stringify(await page.evaluate(() => ({
+              url: location.href,
+              title: document.title,
+              articles: document.querySelectorAll("article").length,
+              dialogs: Array.from(document.querySelectorAll("dialog")).map((node) => ({ open: node.open, connected: node.isConnected })),
+              focus: document.activeElement?.outerHTML.slice(0, 600),
+              body: document.body.innerText.slice(0, 600),
+            }))),
+          });
           await expect(page).toHaveURL(new URL(listingPath, page.url()).href);
+          await expect(trigger).toBeFocused();
           await expect.poll(async () => Math.abs(await page.evaluate(() => window.scrollY) - initialScroll)).toBeLessThanOrEqual(2);
         }
         expect(state.writes).toEqual([]);
