@@ -64,3 +64,18 @@ cd apps/web && npx playwright test --project="Pixel 7"
 
 - `search-workbench.tsx` 被 `2026-09-11-wizard-crash-when-all-criteria-any` 佔住 scope，本任務的 scope 不含它——驗證那部分請併到那張做，或等它完成。此處先記錄問題本身。
 - `type="number"` 用在約 26 個檔案但只有 10 個配了 `inputMode`。影響不大（iOS 對 `type="number"` 本來就給數字鍵盤），列出來備查。
+
+## 瀏覽器實測補充（2026-09-11 第二輪）
+
+162 個頁面的實測（`getBoundingClientRect()` 取渲染後尺寸，非讀 class）確認本任務列出的問題，並補上實際數值與出現頻率：
+
+| 元素 | 實測尺寸 | 出現頁數 |
+| --- | --- | --- |
+| 社群子導覽（社群動態／寵物友善／我的收藏／訊息…） | 42 × 82px | 22 |
+| 「發佈」 | 40 × 52px | 22 |
+| 「公開身分設定」 | 42 × 110px | 22 |
+| 「我的貼文與草稿」 | 42 × 124px | 22 |
+
+全站共 945 處低於 44px。**數量最多的頁尾五個連結（16px 高、每頁都有）不在本任務 scope**，已另立 `2026-09-11-footer-links-sixteen-px-tall`。
+
+另補一項本任務原本沒提到的：`/foods` 在**特大字**設定下橫向溢位 15px（`html[data-text-size="largest"]`）。162 頁中唯一一個溢位的頁面，其餘尺寸與設定皆正常。
