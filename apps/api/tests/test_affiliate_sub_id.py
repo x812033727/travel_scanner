@@ -75,7 +75,13 @@ class TestSafeSubId:
 
     @pytest.mark.parametrize(
         "value",
-        ["aff_hotel_en", "aff_hotel_tokyo_zh-TW", "dst_tour_osaka_ja", "svc_hotel_x_en_trip"],
+        [
+            "aff_hotel_en",
+            "aff_hotel_tokyo_zh-TW",
+            "dst_tour_osaka_ja",
+            "dst_connectivity_ho-chi-minh-city_zh-TW_guide",
+            "svc_hotel_x_en_trip",
+        ],
     )
     def test_passes_real_labels_through_untouched(self, value: str) -> None:
         assert safe_sub_id(value, rebuild="aff_x_en") == value

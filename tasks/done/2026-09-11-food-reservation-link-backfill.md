@@ -7,7 +7,7 @@ area: api
 owner: claude-opus-5
 claimed_at: 2026-09-11T16:02:41Z
 created_at: 2026-09-11T15:58:40Z
-completed_at: 2026-09-12T06:14:12Z
+completed_at: 2026-09-12T02:20:50Z
 branch: claude/food-reservation-link-backfill
 depends_on: []
 scope:
@@ -28,15 +28,15 @@ scope:
 ## Definition of done
 
 - [x] 296 間未查核的公開店家都有查核結果：`verified`、`disabled`、`not_found` 或 `ambiguous`，每筆附證據。
-- [x] 精準分店頁已寫進正式資料庫，前台出現對應按鈕；不能訂位的平台頁不公開。
+- [x] 精準分店頁已寫進正式資料庫，前台出現對應按鈕；不能訂位的平台頁不公開（香港 OpenRice 的後續例外見 `2026-09-12-hk-openrice-public`）。
 - [x] 後台人工審核過的列一筆都沒被覆寫。
 
 ## Steps
 
 - [x] `apply-food-platform-reviews` 指令與測試：預設試跑、只寫平台列、每列一筆稽核。
-- [x] 用內建瀏覽器查核，結果整理成 `apps/api/app/foods/data/platform_reviews/2026-09-11-public-merchants.json`（311 筆：verified 12、disabled 35、ambiguous 9、not_found 255）。
+- [x] 用內建瀏覽器查核，結果整理成 `apps/api/app/foods/data/platform_reviews/2026-09-11-public-merchants.json`（311 筆）。
 - [x] 查核摘要 `docs/catalog-content-reviews/2026-09-11-reservation-links-full.md`。
-- [x] PR、合併、部署，在 api 容器試跑，確認後 `--apply`。
+- [x] PR #408 合併、部署 `02317cf5`、容器內試跑後經擁有者確認才套用：寫入 311 筆（新建 190、更新 121、跳過 0），稽核 311 筆；有訂位按鈕的公開店家 35 → 45 間，Song Fa 的 Chope 按鈕下架，人工審核的 36 列未被更動；前台 `/zh-TW/foods` 已確認看到按鈕。
 
 ## How to verify
 
@@ -72,3 +72,7 @@ scope:
   `minio/minio:latest` 拉不下來（`docker: pull access denied`）。PR #407 正在把 MinIO 改從 quay.io 拉並釘版本。
   等 #407 進 main，把 main 併進本分支重推一次，CI 就會綠。`containers` 這個 job 本來就是綠的。
 - 2026-09-12 收尾（claude-fable-5-1）：PR #408 已合併為 `02317cf5` 並部署；正式站 `apply-food-platform-reviews --apply` 寫入 311 筆（190 新增、121 更新、0 略過），有訂位按鈕的公開店家 35 → 45，36 筆人工審核列未動。claim 已逾 24 小時屬 stale，依規則收掉以釋放 `apps/api/app/cli.py` 給 `2026-09-12-food-merchant-enrichment`。
+
+- 2026-09-12 後續：覆蓋率低的主因是平台白名單太窄，不是查核不足。
+  `2026-09-12-japan-korea-reservation-platforms` 把食べログ、ホットペッパーグルメ、ぐるなび、
+  AutoReserve 與 Naver 예약 納入白名單後又補了一輪。

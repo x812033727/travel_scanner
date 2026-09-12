@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const layers: HTMLElement[] = [];
 let originalOverflow = "";
@@ -49,7 +49,14 @@ export function modalFocusTargets(container: HTMLElement) {
  * element can be an ordinary inline form on a wide screen and a sheet on a narrow one.
  */
 export function useModalSheet<T extends HTMLElement>(open: boolean, onClose: () => void) {
-  const sheetRef = useRef<T>(null);
+  const sheetRef = useRef<T | null>(null);
+  // Only set when the effect has already run and found nothing to guard. A sheet that waits on
+  // data is not in the commit where `open` turns true, and with `[open]` as the only dependency
+  // the effect never ran again -- leaving a dialog that answered to no key and said nothing.
+  // Waking it on every attach instead would re-run it a commit late for every caller, and a
+  // late re-run steals focus back from whatever the caller had just focused.
+  const [lateSheet, setLateSheet] = useState<T | null>(null);
+  const missedSheet = useRef(false);
   // Read through a ref so a caller passing an inline arrow does not re-run the effect on
   // every render, which would re-steal focus while somebody is typing in the sheet.
   const closeRef = useRef(onClose);
@@ -62,7 +69,10 @@ export function useModalSheet<T extends HTMLElement>(open: boolean, onClose: () 
   useEffect(() => {
     if (!open) return;
     const sheet = sheetRef.current;
-    if (!sheet) return;
+    if (!sheet) {
+      missedSheet.current = true;
+      return;
+    }
 
     // Whatever had focus when the sheet opened, not a ref to one particular button: the
     // sheet can be opened from more than one place, and focus has to go back where it was.
@@ -122,7 +132,14 @@ export function useModalSheet<T extends HTMLElement>(open: boolean, onClose: () 
       // the document, several tabs from the control they had just used.
       if (wasTop && opener?.isConnected && (!layers.length || layers.at(-1)?.contains(opener))) opener.focus();
     };
-  }, [open]);
+  }, [open, lateSheet]);
 
-  return sheetRef;
+  // Stable, so React does not detach and reattach the element on every render.
+  return useCallback((node: T | null) => {
+    sheetRef.current = node;
+    if (node && missedSheet.current) {
+      missedSheet.current = false;
+      setLateSheet(node);
+    }
+  }, []);
 }

@@ -1,6 +1,12 @@
 import { render, screen, within } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { DestinationGuide } from "@/components/destination-guide";
+
+vi.mock("@/components/destination-affiliate-options", () => ({
+  DestinationAffiliateOptions: (props: { destinationId: string; placement?: string; modules?: string[] }) => (
+    <div data-testid="affiliate" data-destination={props.destinationId} data-placement={props.placement} data-modules={(props.modules ?? []).join(",")} />
+  ),
+}));
 import { destinationsCopy } from "@/lib/destinations-copy";
 import type { DestinationSummary } from "@/lib/destinations.server";
 
@@ -58,6 +64,16 @@ describe("DestinationGuide", () => {
     draw({ places: [], merchants: [] });
     expect(screen.getByText(copy.emptyPlaces)).toBeTruthy();
     expect(screen.getByText(copy.emptyFood)).toBeTruthy();
+  });
+
+  it("mounts the partner entrances once, for this city, labelled as the city surface", () => {
+    draw();
+    const panels = screen.getAllByTestId("affiliate");
+    expect(panels).toHaveLength(1);
+    expect(panels[0].getAttribute("data-destination")).toBe("tokyo");
+    expect(panels[0].getAttribute("data-placement")).toBe("city");
+    // All modules: the city page is the reader's general entrance, not a topic page.
+    expect(panels[0].getAttribute("data-modules")).toBe("");
   });
 
   it("links outward to the surfaces that hold the rest of the content", () => {

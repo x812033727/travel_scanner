@@ -50,6 +50,28 @@ def test_a_failed_test_still_wins_over_unverified() -> None:
     assert "401" in message
 
 
+def test_klook_with_only_an_aid_says_which_buttons_it_powers() -> None:
+    """An AID alone powers reviewed catalog offers but none of the generic partner buttons.
+    The card must say so instead of showing a green light the front end cannot honour."""
+    settings = _settings(klook_enabled=True, klook_affiliate_id="134379")
+    configured, status, message = card_state(
+        "klook", settings, enabled=True, last_test_status="success", last_test_message=None
+    )
+    assert (configured, status) == (True, "ready")
+    assert "合作連結範本" in message
+
+    settings = _settings(
+        klook_enabled=True,
+        klook_affiliate_id="134379",
+        klook_affiliate_url_template="https://www.klook.com/search/?query={destination}",
+    )
+    _, status, message = card_state(
+        "klook", settings, enabled=True, last_test_status="success", last_test_message=None
+    )
+    assert status == "ready"
+    assert "合作連結範本" not in message
+
+
 def test_a_card_with_no_key_is_still_not_configured() -> None:
     settings = _settings(google_maps_api_key=None)
     configured, status, _ = card_state(

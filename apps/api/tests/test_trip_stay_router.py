@@ -457,6 +457,7 @@ async def test_clickout_renders_partner_link_at_click_time_and_records_click(
     assert str(click.offer_id) == chosen["id"]
     assert click.partner == "agoda" and click.module == "hotel"
     assert click.target_host == "www.agoda.com"
+    assert click.placement == "stay"
     assert session.commits == 1
 
     area_only = await stay_router.stay_area_clickout(

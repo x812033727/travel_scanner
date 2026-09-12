@@ -1,7 +1,9 @@
 import { ContentBlocks } from "@/components/content-blocks";
+import { DestinationAffiliateOptions } from "@/components/destination-affiliate-options";
 import { Link } from "@/i18n/navigation";
 import { localeLabels, type Locale } from "@/i18n/routing";
 import { contentBlockLink } from "@/lib/content-blocks";
+import { guideAffiliateDestination, guideAffiliateModules } from "@/lib/guide-affiliate";
 import { guideHref, type GuideArticleState } from "@/lib/guides";
 
 export type GuideArticleLabels = {
@@ -30,6 +32,12 @@ export function GuideArticle({
   const { document } = state;
   const published = document.published_at.slice(0, 10);
   const others = state.published_locales.filter((value) => value !== state.locale);
+  // Partner buttons only where they are contextual: a destination the article belongs to,
+  // a module its topics point at, and a notice that still applies. An expired fare deal
+  // with a "book flights" button underneath would read as bait.
+  const affiliateDestination = guideAffiliateDestination(state.destination_id);
+  const affiliateModules = guideAffiliateModules(state.topics);
+  const showAffiliate = Boolean(affiliateDestination) && affiliateModules.length > 0 && !state.expired;
   return (
     <article className="space-y-6 break-words [overflow-wrap:anywhere]">
       <header>
@@ -56,6 +64,16 @@ export function GuideArticle({
       </header>
 
       <ContentBlocks blocks={document.blocks} />
+
+      {showAffiliate && affiliateDestination ? (
+        <DestinationAffiliateOptions
+          destinationId={affiliateDestination}
+          modules={affiliateModules}
+          contextual
+          destinationLabel={state.destination_label ?? undefined}
+          placement="guide"
+        />
+      ) : null}
 
       {state.topics.length ? (
         <ul className="flex flex-wrap gap-2 border-t border-[var(--line)] pt-6">

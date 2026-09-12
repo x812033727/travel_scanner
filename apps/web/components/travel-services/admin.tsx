@@ -11,6 +11,8 @@ import { adminHotelsCopy } from "@/lib/admin-hotels-copy";
 import { klookAffiliateCopy } from "@/lib/klook-affiliate-copy";
 import { useAdminQueryValue, useAdminWorkspaceNavigation } from "@/lib/admin-workspace-navigation";
 import { ApiError, api } from "@/lib/api";
+import { destinationsCopy } from "@/lib/destinations-copy";
+import { hotelBookingPlacements } from "@/lib/hotel-booking-placement";
 import { readHotelOperationDraft } from "@/lib/hotel-operation-rules";
 import { CITIES, KINDS, type Kind } from "./catalog";
 import { HotelOptionsAdmin, type HotelOptionRow } from "./hotel-options-admin";
@@ -75,6 +77,10 @@ type DestinationRow = {
   country: string;
   role: string;
 };
+// What the API assumes when a saved config predates the placement switch.
+const legacyPlacements: string[] = hotelBookingPlacements.filter(
+  (placement) => placement !== "guide" && placement !== "city",
+);
 type Config = {
   stay22?: Stay22Config;
   hotel_quote_policies?: Record<string, QuotePolicy>;
@@ -83,6 +89,9 @@ type Config = {
   enabled_kinds: Kind[];
   enabled_destinations: string[];
   airalo_feed_enabled: boolean;
+  // Which public surfaces may list destination offers; absent on configs saved before
+  // the switch existed, which the API reads as the legacy surfaces only.
+  affiliate_placements?: string[];
 };
 type Overview = {
   can_manage_stay22?: boolean;
@@ -209,11 +218,19 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
   workspace: "hotels" | "partners" | "services"; storageUserId?: string;
 }) {
   const t = useTranslations("travelServices");
-  const copy = adminHotelsCopy(useLocale());
-  const affiliateCopy = klookAffiliateCopy(useLocale());
+  const common = useTranslations("common");
+  const locale = useLocale();
+  const copy = adminHotelsCopy(locale);
+  const affiliateCopy = klookAffiliateCopy(locale);
   const router = useRouter();
   const manage = useAdminActionGuard("content.manage");
   const isHotel = workspace === "hotels";
+  // The two first-party content surfaces an operator can open for destination offers.
+  // Labelled with the section names readers already see, until the catalogs take new keys.
+  const contentPlacements: Array<[string, string]> = [
+    ["guide", common("guides.hubTitle")],
+    ["city", destinationsCopy(locale).guideEyebrow],
+  ];
   const storageKey = storageUserId ? `${hotelDraftKey}:${storageUserId}` : undefined;
   const navigation = useAdminWorkspaceNavigation({
     tabs: isHotel ? hotelTabs : workspace === "partners" ? partnerTabs : serviceTabs,
@@ -426,6 +443,16 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
       [key]: values.includes(value)
         ? values.filter((v) => v !== value)
         : [...values, value],
+    });
+  }
+  function togglePlacement(value: string) {
+    if (!config) return;
+    const current = config.affiliate_placements ?? [...legacyPlacements];
+    changeConfig({
+      ...config,
+      affiliate_placements: current.includes(value)
+        ? current.filter((item) => item !== value)
+        : [...current, value],
     });
   }
   function toggleDestination(value: string) {
@@ -1684,6 +1711,23 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                   ))}
                 </div>
               </fieldset>
+              {!isHotel && <fieldset>
+                <legend className="font-semibold">{t("destinationOffers")}</legend>
+                <p className="mt-1 text-sm text-[var(--muted)]">{t("destinationOffersHint")}</p>
+                <div className="mt-2 grid grid-cols-2 gap-2">
+                  {contentPlacements.map(([placement, label]) => (
+                    <label className="flex min-h-11 items-center gap-2" key={placement}>
+                      <input
+                        type="checkbox"
+                        disabled={!manage.allowed}
+                        checked={(config.affiliate_placements ?? legacyPlacements).includes(placement)}
+                        onChange={() => togglePlacement(placement)}
+                      />
+                      {label}
+                    </label>
+                  ))}
+                </div>
+              </fieldset>}
               {!isHotel && <label className="flex min-h-11 items-center gap-3">
                 <input
                   type="checkbox"

@@ -1,3 +1,4 @@
+import { DestinationAffiliateOptions } from "@/components/destination-affiliate-options";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { destinationsCopy } from "@/lib/destinations-copy";
@@ -129,6 +130,11 @@ export function DestinationGuide({
           <li><Link className={link} href="/search/new">{copy.planTrip}</Link></li>
           <li><Link className={link} href={`/destinations/${destination.id}/services`}>{copy.stays}</Link></li>
         </ul>
+        {/* Reviewed partner entrances for this city. A client island inside a server page: it
+            renders nothing until the API says a surface is on and an offer is verified. */}
+        <div className="mt-6">
+          <DestinationAffiliateOptions destinationId={destination.id} destinationLabel={destination.city} contextual placement="city" />
+        </div>
       </section>
 
       {related.length ? (

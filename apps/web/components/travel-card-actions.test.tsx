@@ -1,5 +1,6 @@
 import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
+import { isTopModalLayer } from "@/lib/modal-sheet";
 import { SavedItemsProvider } from "./saved-items-provider";
 import { TravelCardActions } from "./travel-card-actions";
 
@@ -61,7 +62,21 @@ describe("travel card actions", () => {
     close.focus(); fireEvent.keyDown(document, { key: "Tab", shiftKey: true });
     expect(dialog.contains(document.activeElement)).toBe(true);
     fireEvent.keyDown(document, { key: "Escape" });
-    expect(screen.queryByRole("dialog")).toBeNull(); expect(document.body.style.overflow).not.toBe("hidden");
+    // Red once under a loaded full run, never since: not in three full runs at four-way
+    // load, nor four more with the file order shuffled. The assertion is left exactly as
+    // strict as it was; what is added is the state at the moment it fails. On its own,
+    // "expected <section> to be null" cannot tell apart the three early returns in
+    // useModalSheet's keydown handler, and two of them have already been ruled out here --
+    // this file registers no listener of its own, and the app's only native <dialog> lives
+    // in another, isolated file. That leaves isTopModalLayer, so print it.
+    expect(screen.queryByRole("dialog"), [
+      `dialogs in DOM: ${document.querySelectorAll('[role="dialog"]').length}`,
+      `sheet still the top layer: ${isTopModalLayer(dialog)}`,
+      `sheet connected: ${dialog.isConnected}`,
+      `native dialog[open] anywhere: ${document.querySelectorAll("dialog[open]").length}`,
+      `body overflow: ${document.body.style.overflow || "(unset)"}`,
+    ].join("; ")).toBeNull();
+    expect(document.body.style.overflow).not.toBe("hidden");
   });
   it("shares a link that comes back to this card, not the bare list", async () => {
     vi.stubGlobal("fetch", stubFetch(() => new Response(JSON.stringify({ items: [] }))));

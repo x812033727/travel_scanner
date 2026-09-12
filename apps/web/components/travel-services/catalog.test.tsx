@@ -101,7 +101,7 @@ describe("reviewed travel services", () => {
     render(<ServiceCatalog tripId="trip-context" initialKind="hotel" />);
     expect(await screen.findByRole("button", { name: /Klook hotel/ })).toBeTruthy();
     let queries = request.mock.calls.filter(([path]) => path.startsWith("/affiliates/destination-offers"));
-    expect(queries.map(([path]) => path)).toEqual(["/affiliates/destination-offers?destination_id=osaka-kyoto&module=hotel"]);
+    expect(queries.map(([path]) => path)).toEqual(["/affiliates/destination-offers?destination_id=osaka-kyoto&module=hotel&placement=destination"]);
     fireEvent.click(screen.getByRole("button", { name: klookAffiliateCopy("zh-TW").tour }));
     expect(await screen.findByRole("button", { name: /Klook activities/ })).toBeTruthy();
     expect(screen.queryByRole("button", { name: /Klook hotel/ })).toBeNull();

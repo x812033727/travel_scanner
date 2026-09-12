@@ -3,6 +3,7 @@ from typing import Annotated, Any
 from fastapi import APIRouter, Depends, Query, Request, Response, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.analytics.affiliates import affiliate_report
 from app.analytics.schemas import (
     AnalyticsConfigResponse,
     AnalyticsEventBatch,
@@ -47,3 +48,20 @@ async def get_analytics_dashboard(
 ) -> dict[str, Any]:
     _ = user
     return await dashboard(session, range, compare, include_bots)
+
+
+@admin_router.get("/affiliates")
+async def get_affiliate_report(
+    user: AdminUser,
+    session: Session,
+    response: Response,
+    range: Annotated[AnalyticsRange, Query()] = "30d",
+) -> dict[str, Any]:
+    """Outbound affiliate clicks by partner, module, surface, destination and brand.
+
+    Counts redirects from the append-only ledger only; confirmed commission is not
+    connected and is never inferred from these numbers.
+    """
+    _ = user
+    response.headers["Cache-Control"] = "no-store"
+    return await affiliate_report(session, range)
