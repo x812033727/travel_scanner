@@ -110,6 +110,21 @@ Redis data. PostgreSQL stores normalized offers and ownership. A clickout is a
 user-authenticated POST through the BFF; FastAPI validates ownership, freshness
 and HTTPS before recording a provider audit row and issuing a 303 redirect.
 
+Affiliate money is a separate boundary from provider search. `affiliates` holds a
+static partner registry (`AFFILIATE_PARTNERS`, hard-coded priority) whose
+readiness is settings-driven at two granularities: `partner_configured` per
+partner and `partner_supports_module` per module. `travel_services` holds the
+reviewed brand and offer catalog (Travelpayouts and direct Klook channels) and
+the Stay22 hotel clickouts. Every path that leaves the site with a commission
+attached — the tokened member clickout, the anonymous destination-offer and
+service-offer clickouts, the trip stay flow and the Stay22 handoff — writes one
+row to the append-only `affiliate_clicks` ledger with partner, module, brand,
+destination and the `placement` that rendered the button. The partner-side
+`sub_id` is built only by `affiliates.sub_id` from catalog labels and never from
+member identity, and the surfaces that may show offers are an explicit list in
+the catalog config. Admin reporting reads that ledger and the settings, never a
+provider API: it counts redirects and cannot claim a booking or a commission.
+
 The experimental `crawlers` module is intentionally outside Search Orchestrator.
 Its public airline pages expose cached fare discoveries without the schedule,
 inventory, tax guarantees, or booking contract required by `FlightOffer`.

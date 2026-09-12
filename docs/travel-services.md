@@ -125,13 +125,24 @@ that preserves the brand and destination identity. Both brand and offer verifica
 expire after 30 days. A project, marker or account-setting change also invalidates
 the saved verification context.
 
-`GET /affiliates/destination-offers?destination_id=...&module=...` is anonymous and
-returns only offer IDs, brand labels, localized call-to-action text and same-origin
-clickout paths. It never returns the original or tracked URL. The associated POST
-clickout resolves the stored offer server-side, shares the existing 100 requests per
-minute Partner Links budget/cache, records brand/module/destination placement and
-returns a no-store 303. Invalid, disabled, stale, mismatched and unapproved records
-fail closed.
+`GET /affiliates/destination-offers?destination_id=...&module=...&placement=...` is
+anonymous and returns only offer IDs, brand labels, localized call-to-action text and
+same-origin clickout paths. It never returns the original or tracked URL. The associated
+POST clickout resolves the stored offer server-side, shares the existing 100 requests per
+minute Partner Links budget/cache, records brand/module/destination and the placement
+that rendered the button, and returns a no-store 303. Invalid, disabled, stale,
+mismatched and unapproved records fail closed.
+
+`placement` is the same closed `BookingPlacement` vocabulary the hotel clickouts use
+(`destination`, `hotspot`, `trip`, `stay`, `checklist`, `discovery`, `guide`, `city`).
+`guide` is a travel-intel or how-to article and `city` a destination page; both are
+first-party content surfaces and are **off by default**. `CatalogConfig.affiliate_placements`
+(Release controls → 目的地合作方案) lists the surfaces that may show offers; a surface not
+in the list gets an empty options list and a 404 on click, so a page loaded before the
+switch was turned off cannot click through. The placement is also the last `sub_id`
+segment (`dst_activities_tokyo_zh-TW_guide`) so partner dashboards can split it, and the
+admin analytics page reports `affiliate_clicks` by placement, partner, module, destination
+and brand (`GET /admin/analytics/affiliates`). Those are redirect counts, not bookings.
 
 Saved-search and trip affiliate options put verified branded destination offers
 first. The generic Travelpayouts option is shown only when no branded option is

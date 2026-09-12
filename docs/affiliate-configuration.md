@@ -21,10 +21,10 @@
 **升級路徑已內建，現在不必決定。** `AffiliatePartner.priority` 數字小的排前面：
 
 ```
-skyscanner / booking / kkday = 10
-agoda / klook               = 20
-trip_com                    = 30
-travelpayouts               = 90   ← 最後
+skyscanner / booking / kkday / airalo = 10
+agoda / klook                         = 20
+trip_com                              = 30
+travelpayouts                         = 90   ← 最後
 ```
 
 日後任一品牌的月成交量大到值得走直接方案時，只要在後台填該品牌的 CID/AID 與合作連結範本
@@ -39,7 +39,7 @@ travelpayouts               = 90   ← 最後
 | 欄位（後台標籤） | 填什麼 |
 |---|---|
 | 啟用 | 勾選 |
-| Partner Links API Base URL | `https://api.travelpayouts.com` — **不要改**。這個欄位被 `OFFICIAL_PROVIDER_HOSTS` 釘死（`config.py:59-74`），填別的網域會被拒絕 |
+| Partner Links API Base URL | `https://api.travelpayouts.com` — **不要改**。這個欄位被 `OFFICIAL_PROVIDER_HOSTS` 釘死（`config.py:59` 起），填別的網域會被拒絕 |
 | Marker | Travelpayouts 的 affiliate marker，**純數字** |
 | Project ID | Travelpayouts 專案 ID，即 API 的 `trs`，**純數字** |
 | API Token | Travelpayouts API token（加密欄位，存進 `provider_configs.secret_config_encrypted`） |
@@ -50,50 +50,56 @@ travelpayouts               = 90   ← 最後
 | 活動原始目標網址 | 例：`https://www.getyourguide.com/s/?q={destination}` |
 | 交通原始目標網址 | 例：`https://www.kiwitaxi.com/?destination={destination}` |
 | eSIM 原始目標網址 | Airalo 在 Travelpayouts 上的方案網址。留空時自動沿用「活動原始目標網址」 |
+| Partner link cache TTL (seconds) | 產生成功的合作連結在 Redis 的快取秒數，預設 86400（60–604800）；改完目標網址後看不到變化多半是這裡 |
+| Clickout token TTL (seconds) | 前台按鈕背後一次性 token 的有效秒數，預設 900（60–3600） |
 
-> `Marker` 與 `Project ID` 在送出 API 前會被 `int()`（`affiliates/service.py:98-99`），
+> `Marker` 與 `Project ID` 在送出 API 前會被 `int()`（`affiliates/service.py:162-163`），
 > 填入非數字會讓連結產生直接失敗。
 
-四個目標網址不必全填 —— 只要其中一個有值，加上 token / marker / project ID，
-就算「設定完成」（`registry.py:114-128`）。沒填的模組不會顯示 Travelpayouts 選項。
+五個目標網址不必全填 —— 只要其中一個有值，加上 token / marker / project ID，
+就算「設定完成」（`registry.py:117-131`）。沒填的模組不會顯示 Travelpayouts 選項
+（`partner_supports_module`，`affiliates/service.py:92-111`）。後台「分潤導流」分類最上方的
+夥伴 × 模組就緒表（讀 `GET /affiliates/status` 的 `supported_modules`）會直接標出哪個模組還缺目標網址。
 
 ---
 
 ## 3. 五個踩雷點
 
-### 3-1 `tp.media` 一定要加進允許跳轉網域
+### 3-1 `tp.media` 與 `tp.st` 都要留在允許跳轉網域
 
-Travelpayouts 的短連結是 `*.tp.st`，長連結是 `tp.media/r?marker=...&trs=...`。
-程式固定送 `shorten: true`（`affiliates/service.py:100`），所以 API 產出的連結一定是 `tp.st`；
-但**從儀表板複製來當備援的 static link 常常是 `tp.media` 網域**。
+Travelpayouts 的短連結是 `*.tp.st`，完整連結是 `tp.media/r?marker=...&trs=...`。
+程式自 PR #363 起固定送 `shorten: false`（`affiliates/service.py:164`），因為品牌化短網址
+（`*.tpx.gr`）過不了網域白名單與轉址檢查；所以 **API 產出的連結一定是 `tp.media`**，
+而從儀表板複製來當備援的 static link 則可能是 `tp.st`。
 
-`validate_target_url`（`affiliates/service.py:31-37`）會擋掉不在白名單的網域，
+`validate_target_url`（`affiliates/service.py:38-44`）會擋掉不在白名單的網域，
 症狀是「設定看起來都對，但前台就是沒有出現連結」。預設值已含這三個網域，
-若你手動改過這一欄，記得把 `tp.media` 加回去。
+若你手動改過這一欄，記得兩個都留著。
 
 ### 3-2 欄位格式驗證會擋
 
 - 任何以 `_url` / `_url_template` 結尾的欄位**必須 HTTPS**
 - 任何以 `_allowed_hosts` 結尾的欄位**必須是逗號分隔的純網域** —— 不可含協定、路徑、`*`、port、`@`
 
-驗證邏輯在 `admin/service.py:938-959`，違反會回 422 並顯示中文錯誤。
+驗證邏輯在 `admin/service.py:1298-1315`，違反會回 422 並顯示中文錯誤。
 
 ### 3-3 目標網址必須是你已訂閱的品牌方案
 
 Partner Links API 只接受你在 Travelpayouts 上**已加入該品牌方案**的網址。
-沒訂閱就送出，API 會回錯，程式會**靜默 fallback 到備援連結**（`affiliates/service.py:158-163`）。
+沒訂閱就送出，API 會回錯，程式會**靜默 fallback 到備援連結**（`affiliates/service.py:230-239`）。
 症狀是每個模組的連結都能點，但全部導到同一頁 —— 那就是備援連結。
 
-### 3-4 範本變數只有五個
+### 3-4 範本變數只有八個
 
 `{destination}` `{departure_date}` `{return_date}` `{sub_id}` `{module}`
-（渲染邏輯在 `affiliates/service.py:40-51`），代入的值會被 percent-encode。
+`{area}` `{hotel_name}` `{query}`（`query` 是「飯店名＋目的地＋區域」的自由文字，給只吃搜尋字串的落地頁用；
+渲染邏輯在 `affiliates/service.py:47-66`），代入的值會被 percent-encode。
 **沒有語系變數** —— 見下一節。
 
 ### 3-5 測試結果會被快取
 
-連結產生成功後會寫進 Redis（`affiliate:travelpayouts:link:*`），
-TTL 由 `affiliate_link_cache_ttl_seconds` 決定，預設 24 小時。
+連結產生成功後會寫進 Redis（`affiliate:travelpayouts:full-link:*`），
+TTL 由 Travelpayouts 卡片上的「Partner link cache TTL」（`affiliate_link_cache_ttl_seconds`）決定，預設 24 小時。
 改完目標網址後如果「測試連線」結果沒變，通常是命中快取，不是設定沒生效。
 
 ---
@@ -114,7 +120,7 @@ Booking、Agoda、GetYourGuide 等品牌會依瀏覽器的 `Accept-Language` 自
 ## 5. 簡易模式 vs 完整模式
 
 **簡易模式**：只填「安全備援合作連結」與「允許跳轉網域」。
-系統一看到備援連結就判定設定完成（`registry.py:105-113`），五個模組共用同一條通用連結。
+系統一看到備援連結就判定設定完成（`registry.py:109-116`），五個模組共用同一條通用連結。
 可以快速上線，但拿不到模組維度與 `sub_id` 維度的成效資料。
 
 **完整模式**（建議）：token + marker + project ID + 各模組目標網址，
@@ -135,15 +141,19 @@ Booking、Agoda、GetYourGuide 等品牌會依瀏覽器的 `Accept-Language` 自
 ## 6. 驗證清單
 
 1. **後台測試連線**：儲存後按「測試連線」。這會真的呼叫 Partner Links API
-   （`admin/service.py:1339-1357`，用「東京」+ 45/49 天後的日期、`sub_id="connection-test"`），
+   （`admin/service.py` 的 `_test_provider` 分潤分支，用「東京」+ 45/49 天後的日期），
    成功顯示「Travelpayouts 合作連結驗證成功」。失敗訊息已自動遮罩金鑰。
 2. **狀態 API**：`GET /api/v1/affiliates/status`，`travelpayouts` 應為
-   `enabled: true, configured: true, available: true`。
+   `enabled: true, configured: true, available: true`，`supported_modules` 列出有目標網址的模組。
+   後台「分潤導流」分類頂部的就緒表就是這個回應的表格版。
 3. **前台實測**：登入 → 執行一次搜尋 → 搜尋結果頁應出現「更多合作平台 / 整趟旅程合作平台」
-   區塊與分潤揭露文字，點擊後 303 導向 `*.tp.st`。
+   區塊與分潤揭露文字，點擊後 303 導向 `tp.media`。
 4. **落庫確認**：`affiliate_clicks` 應新增一列，`partner='travelpayouts'`、
-   `target_host` 為 tp.st 網域。該表有 append-only trigger，只能新增不能改刪。
-5. **後台成效**：`/admin/analytics` 的「聯盟外連」為 `affiliate_clicks` 的權威計數。
+   `target_host` 為 `tp.media`、`placement` 為 `search`（行程頁為 `trip`，住宿區為 `stay`）。
+   該表有 append-only trigger，只能新增不能改刪。
+5. **後台成效**：`/admin/analytics` 的「聯盟外連」區塊讀 `GET /admin/analytics/affiliates?range=`，
+   依 partner／placement／module／destination／brand／target_host／sub_id 各列前十名。
+   這是轉址計數，不是成交或佣金；佣金仍要到各夥伴後台對帳。
 
 純後台填值**不需要重新部署** —— `load_runtime_settings` 每次請求都重讀資料庫。
 
@@ -162,25 +172,52 @@ Booking、Agoda、GetYourGuide 等品牌會依瀏覽器的 `Accept-Language` 自
 | Trip.com | 飯店約 4.4%–5.9%，國際線機票約 3.5% | 30 天 | 依網路而定 | 僅需合作連結範本 |
 | Booking.com | 其佣金的 25%–40%（約成交額 4%–8%） | 短 | €100 | `booking_affiliate_id` → 自動注入為 `aid` |
 
-識別碼的自動注入邏輯在 `affiliates/service.py:167-172`：
+識別碼的自動注入邏輯在 `affiliates/service.py:243-252`：
 `kkday` / `agoda` 注入 `cid`，`booking` 注入 `aid`，且採 `setdefault` —— 範本裡已有的參數不會被覆寫。
+Klook 直簽走另一條路：`klook_affiliate_target`（`travel_services/channels.py:126`）只接受 `www.klook.com`
+正規網址，去掉任何追蹤參數後再補上後台設定的 AID；`s.klook.com` 短網址無法追蹤，不要填。
 
 Skyscanner 與 Airalo 走 Impact 平台，只需填入 Impact 產生的文字連結。
 Skyscanner 的合作申請清單見 [`skyscanner-partnership-application.md`](skyscanner-partnership-application.md)。
 
 ---
 
-## 8. 已知落差與後續建議
+## 8. 置入面與成效追蹤
 
-1. **分潤揭露只有繁體中文。** `affiliates/router.py:40` 的 `DISCLOSURE` 與 `:161` 的 CTA 文案
-   都是硬編碼中文，EN / JA / KO 使用者會看到中文揭露句。多語系並重的前提下，
-   這是合規面應優先補上的一項（需搬進 next-intl 訊息檔）。
-2. **聯盟選項目前只出現在搜尋頁，且需登入。** 掛載點在
-   `search-experience.tsx:1175-1189`（整趟旅程）與 `:1225-1233`（單模組）。
-   下列外連完全沒有包分潤，是目前最大的漏財點：
-   - `hotel-offer-card.tsx:118` 的「前往供應商」
+每一次 clickout 都寫 `affiliate_clicks.placement`，值是一個封閉集合：
+
+| placement | 哪個頁面 | 誰寫的 |
+|---|---|---|
+| `search` | 搜尋結果頁（登入後的合作平台區塊、Skyscanner 航班 clickout） | `affiliates/router.py`、`search/router.py` |
+| `trip` | 已存行程頁的合作平台區塊 | `affiliates/router.py` |
+| `stay` | 行程住宿區推薦的飯店按鈕 | `trips/stay_router.py` |
+| `destination`、`hotspot`、`discovery`、`checklist` | 目的地服務頁、景點附近住宿、探索卡、行前清單 | `travel_services/router.py` |
+| `guide` | 情報／攻略文章文末 | `affiliates/router.py`（目的地優惠） |
+| `city` | 目的地城市頁 | 同上 |
+
+`guide` 與 `city` 是第一方內容頁，**預設關閉**：後台「目錄服務」的發布控制裡有「目的地合作方案」
+兩個勾選（旅遊情報與攻略／目的地指南），對應 `travel_service_config.data.affiliate_placements`。
+關閉時列表回空、點擊回 404，所以先載入的舊頁面也點不出去。文章要出現按鈕還需要：
+文章有 `destination_id`、主題對得上模組（`apps/web/lib/guide-affiliate.ts` 的對應表）、且沒過期。
+
+`sub_id` 的最後一段也是 placement（例：`dst_activities_tokyo_zh-TW_guide`），
+在 Travelpayouts 或 Klook 後台可以直接依此拆成效。
+
+## 9. 已知落差與後續建議
+
+1. **住宿區 CTA 仍是硬編碼繁中。** 揭露句與一般 CTA 已五語系（`affiliates/router.py:59-66`、`:134-141`），
+   但 `trips/stay_areas.py:665-669` 的三句「到 X 預訂／在 X 搜尋此飯店／到 X 查看住宿」還沒有語系版本。
+2. **登入後的合作平台區塊只在搜尋頁與行程頁。** 掛載點在
+   `search-experience.tsx:1821`（整趟旅程）、`:1874`（單模組）與 `trip-editor.tsx:2042`（行程工具）。
+   下列外連完全沒有包分潤：
+   - `hotel-offer-card.tsx:120` 的「前往供應商」
    - `airbnb-search-panel.tsx` 的硬編碼 Airbnb 連結
-   - `flight-offer-card.tsx:157` 非 Skyscanner 供應商的 fallback
+   - `flight-offer-card.tsx:189` 非 Skyscanner 供應商的 fallback
    - `hotspot-explorer.tsx` / `hotspot-restaurants-panel.tsx` / `food-merchant-card.tsx` 的官網與地圖連結
+     （美食的訂位連結依 `merchant-external-links.tsx` 的規則刻意不依佣金排序，不要碰）
 3. **航班 clickout 的網域驗證較寬鬆。** 見 [`security-audit-2026-09.md`](security-audit-2026-09.md)
    的 API-14（Low）：`search/router.py` 的 303 轉址只驗 HTTPS，沒有 affiliate 流程的網域白名單。
+4. **沒有佣金回傳。** `affiliate_clicks` 只有 `redirected` 一種狀態，沒有訂單／佣金欄位，也沒有 postback；
+   要判斷「哪家值得轉直簽」仍得人工對照夥伴後台。
+5. **優先序寫死在程式。** `AffiliatePartner.priority` 是常數，`ProviderConfig.priority` 欄位沒人讀；
+   等成效報表累積到看得出差異再考慮做成後台可調。

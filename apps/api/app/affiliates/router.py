@@ -22,6 +22,7 @@ from app.affiliates.schemas import (
     AffiliateOption,
     AffiliateOptionsResponse,
     AffiliatePartnerStatus,
+    AffiliatePlacement,
     DestinationAffiliateOption,
     DestinationAffiliateOptionsResponse,
 )
@@ -52,6 +53,7 @@ from app.models import (
 from app.problems import AppError
 from app.travel_services.channels import channel_for, klook_affiliate_target, resolve_offer_target
 from app.travel_services.registry import BRANDS
+from app.travel_services.schemas import BookingPlacement
 from app.travel_services.service import catalog_config, ready_destination_offer
 
 router = APIRouter(prefix="/affiliates", tags=["affiliate partners"])
@@ -80,9 +82,14 @@ async def _ready_destination_offers(
     settings: Any,
     destination_id: str,
     module: AffiliateModule,
+    placement: BookingPlacement = "destination",
 ) -> list[tuple[DestinationAffiliateOffer, TravelServiceBrand]]:
     config, _ = await catalog_config(session)
-    if not config.public_enabled or destination_id not in config.enabled_destinations:
+    if (
+        not config.public_enabled
+        or destination_id not in config.enabled_destinations
+        or placement not in config.affiliate_placements
+    ):
         return []
     now = datetime.now(UTC)
     rows = list(
@@ -116,10 +123,13 @@ def _destination_option(
     locale: Locale,
     *,
     token: str | None = None,
+    placement: BookingPlacement = "destination",
 ) -> DestinationAffiliateOption:
     definition = BRANDS[brand.code]
     cta = _localized_cta(definition.name, locale)
-    suffix = f"?token={token}" if token else ""
+    # The placement rides the clickout URL so the click row and the partner-side sub_id
+    # both say which surface rendered the button; the clickout re-validates it.
+    query = f"?placement={placement}" + (f"&token={token}" if token else "")
     return DestinationAffiliateOption(
         id=str(offer.id),
         brand=brand.code,
@@ -127,7 +137,7 @@ def _destination_option(
         destination_id=offer.destination_id,
         module=cast(AffiliateModule, offer.module),
         cta=cta,
-        clickout_url=f"/api/travel/affiliates/destination-offers/{offer.id}/clickout{suffix}",
+        clickout_url=f"/api/travel/affiliates/destination-offers/{offer.id}/clickout{query}",
     )
 
 
@@ -153,6 +163,11 @@ async def affiliate_status(session: Session) -> list[AffiliatePartnerStatus]:
             available=partner_enabled(partner, settings) and partner_configured(partner, settings),
             modules=list(partner.modules),
             capabilities=list(partner.capabilities),
+            supported_modules=[
+                module
+                for module in partner.modules
+                if partner_supports_module(partner, module, settings)
+            ],
         )
         for partner in AFFILIATE_PARTNERS
     ]
@@ -226,6 +241,7 @@ async def destination_affiliate_options(
     module: AffiliateModule,
     session: Session,
     response: Response,
+    placement: BookingPlacement = "destination",
 ) -> DestinationAffiliateOptionsResponse:
     response.headers["Cache-Control"] = "no-store"
     profile = destination_for_id(destination_id)
@@ -233,12 +249,15 @@ async def destination_affiliate_options(
         raise AppError(404, "affiliate_destination_not_found", "找不到目的地")
     settings = await load_runtime_settings(session)
     locale = active_locale()
-    rows = await _ready_destination_offers(session, settings, profile.id, module)
+    rows = await _ready_destination_offers(session, settings, profile.id, module, placement)
     return DestinationAffiliateOptionsResponse(
         destination_id=profile.id,
         module=module,
         disclosure=DISCLOSURES[locale],
-        options=[_destination_option(offer, brand, locale) for offer, brand in rows],
+        options=[
+            _destination_option(offer, brand, locale, placement=placement)
+            for offer, brand in rows
+        ],
     )
 
 
@@ -249,6 +268,7 @@ async def destination_affiliate_clickout(
     session: Session,
     user: OptionalCurrentUser,
     token: str | None = None,
+    placement: BookingPlacement = "destination",
 ) -> RedirectResponse:
     await enforce_named_rate_limit(
         "destination-affiliate-clickout",
@@ -267,7 +287,12 @@ async def destination_affiliate_clickout(
     if not result:
         raise AppError(404, "affiliate_offer_not_found", "找不到合作方案")
     offer, brand = result
-    if not ready_destination_offer(offer, brand, settings, datetime.now(UTC)):
+    config, _ = await catalog_config(session)
+    # The same switch that hides the list also refuses the click, so a page rendered
+    # before a surface was switched off cannot still click through it.
+    if placement not in config.affiliate_placements or not ready_destination_offer(
+        offer, brand, settings, datetime.now(UTC)
+    ):
         raise AppError(404, "affiliate_offer_not_found", "找不到合作方案")
     redis = get_redis()
     source_search_id = source_trip_id = None
@@ -289,12 +314,15 @@ async def destination_affiliate_clickout(
         source_trip_id = payload.get("trip_id")
         await redis.delete(f"affiliate:destination-clickout:{token}")
     locale = active_locale()
-    sub_id = f"dst_{offer.module}_{offer.destination_id}_{locale}"
+    # Catalog labels only, with the surface as the last segment so the partner dashboard
+    # can split an article click from a services-page click.
+    sub_id = coarse_sub_id("dst", offer.module, offer.destination_id, locale, placement)
     try:
         target = await resolve_offer_target(
             offer, brand, settings, redis, sub_id,
             cache_context=(
-                f"destination:{brand.id}:{brand.version}:{offer.id}:{offer.version}:{locale}"
+                f"destination:{brand.id}:{brand.version}:{offer.id}:{offer.version}"
+                f":{locale}:{placement}"
             ),
         )
     except (ConnectionError, ValueError) as exc:
@@ -308,7 +336,7 @@ async def destination_affiliate_clickout(
             partner="klook" if channel_for(brand) == "klook_direct" else "travelpayouts",
             brand=brand.code,
             service_type=None,
-            placement="destination",
+            placement=placement,
             destination_id=offer.destination_id,
             module=offer.module,
             sub_id=sub_id[:64],
@@ -455,12 +483,16 @@ async def affiliate_clickout(
     except ValueError as exc:
         raise AppError(409, "affiliate_link_invalid", "合作連結無效") from exc
     await redis.delete(f"affiliate:clickout:{token}")
+    # _owned_context guarantees exactly one of search_id / trip_id, so the source of the
+    # token is also the surface that rendered the button.
+    placement: AffiliatePlacement = "trip" if payload.get("trip_id") else "search"
     session.add(
         AffiliateClick(
             user_id=user.id,
             search_id=UUID(payload["search_id"]) if payload.get("search_id") else None,
             trip_id=UUID(payload["trip_id"]) if payload.get("trip_id") else None,
             partner=partner,
+            placement=placement,
             module=str(payload.get("module") or "unknown"),
             sub_id=str(payload.get("sub_id") or "")[:64],
             destination_summary=str(payload.get("destination") or "旅遊目的地")[:128],

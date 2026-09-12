@@ -1591,3 +1591,22 @@ async def test_ai_planner_connection_test_fails_when_a_candidate_cannot_be_built
             object(),  # type: ignore[arg-type]
             object(),  # type: ignore[arg-type]
         )
+
+
+def test_affiliate_ttls_are_admin_editable_on_the_travelpayouts_card() -> None:
+    """The two affiliate TTLs used to be environment-only; every comparable TTL rides a
+    settings card, and these ride the Travelpayouts one because only its link client
+    reads the link cache."""
+    row = ProviderConfig(
+        provider="travelpayouts",
+        enabled=True,
+        updated_at=datetime(2026, 9, 12, tzinfo=UTC),
+        config={
+            "affiliate_link_cache_ttl_seconds": 120,
+            "affiliate_clickout_token_ttl_seconds": 300,
+        },
+        secret_config_encrypted=None,
+    )
+    settings = apply_runtime_overrides(Settings(), [row])
+    assert settings.affiliate_link_cache_ttl_seconds == 120
+    assert settings.affiliate_clickout_token_ttl_seconds == 300
