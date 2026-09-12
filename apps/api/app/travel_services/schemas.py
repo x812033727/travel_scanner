@@ -3,7 +3,7 @@ from __future__ import annotations
 import ipaddress
 import re
 from datetime import date, datetime
-from typing import Annotated, Any, Literal, Self
+from typing import Annotated, Any, Literal, Self, get_args
 from urllib.parse import parse_qsl, urlsplit, urlunsplit
 from uuid import UUID
 
@@ -16,6 +16,20 @@ from app.locations.map_identity import MapIdentity
 
 Kind = Literal["hotel", "transfer", "tour", "esim"]
 Status = Literal["pending", "approved", "disabled"]
+# Public entry labels for anonymous booking and offer clickouts. The HTTP boundary, the
+# Stay22 campaign builder and the destination-offer routes share this one finite set, so a
+# new public entry point cannot pass one check and then fail after the user clicks.
+# `guide` (an article) and `city` (a destination page) are first-party content surfaces;
+# CatalogConfig.affiliate_placements decides which surfaces may currently show offers.
+BookingPlacement = Literal[
+    "destination", "hotspot", "trip", "stay", "checklist", "discovery", "guide", "city"
+]
+BOOKING_PLACEMENTS = frozenset(get_args(BookingPlacement))
+# The surfaces that were live before the switch existed; the default keeps them on and
+# leaves the two content surfaces off until an operator enables them.
+LEGACY_BOOKING_PLACEMENTS: tuple[BookingPlacement, ...] = (
+    "destination", "hotspot", "trip", "stay", "checklist", "discovery",
+)
 KINDS: tuple[Kind, ...] = ("hotel", "transfer", "tour", "esim")
 # Osaka and Kyoto remain distinct even though the existing search gateway is shared.
 CITIES = {
@@ -620,6 +634,12 @@ class CatalogConfig(StrictModel):
     enabled_kinds: list[Kind] = Field(default_factory=list)
     enabled_destinations: list[str] = Field(default_factory=list)
     airalo_feed_enabled: bool = False
+    # Which public surfaces may list and click destination offers. Enforced by the API on
+    # both the options list and the clickout, so a stale page cannot click through a
+    # surface that was switched off after it loaded.
+    affiliate_placements: list[BookingPlacement] = Field(
+        default_factory=lambda: list(LEGACY_BOOKING_PLACEMENTS)
+    )
 
     @field_validator("enabled_destinations")
     @classmethod
@@ -627,6 +647,11 @@ class CatalogConfig(StrictModel):
         if any(city not in SERVICE_DESTINATION_IDS for city in value):
             raise ValueError("Unsupported destination")
         return list(dict.fromkeys(value))
+
+    @field_validator("affiliate_placements")
+    @classmethod
+    def placements(cls, value: list[BookingPlacement]) -> list[BookingPlacement]:
+        return [placement for placement in get_args(BookingPlacement) if placement in value]
 
 
 class ConfigInput(CatalogConfig):

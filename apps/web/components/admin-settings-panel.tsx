@@ -255,6 +255,8 @@ const fieldMeta: Record<string, FieldMeta> = {
   travelpayouts_transport_target_url: { localized: true, type: "url" },
   travelpayouts_connectivity_target_url: { localized: true, type: "url" },
   travelpayouts_allowed_hosts: { localized: true },
+  affiliate_link_cache_ttl_seconds: { label: "Partner link cache TTL (seconds)", type: "number" },
+  affiliate_clickout_token_ttl_seconds: { label: "Clickout token TTL (seconds)", type: "number" },
   kkday_cid: { label: "KKpartners CID" },
   kkday_affiliate_url_template: { localized: true, type: "url" },
   kkday_allowed_hosts: { localized: true },
@@ -321,6 +323,50 @@ const usageCategoryLabel: Record<string, string> = {
   enterprise: "Enterprise",
 };
 type Translator = ReturnType<typeof useTranslations>;
+
+type AffiliateStatusRow = {
+  code: string;
+  display_name: string;
+  enabled: boolean;
+  configured: boolean;
+  available: boolean;
+  modules: string[];
+  supported_modules?: string[];
+};
+const affiliateModules = ["flight", "hotel", "activities", "transport", "connectivity"] as const;
+
+/**
+ * Partner × module readiness, from the same `/affiliates/status` the API has always
+ * exposed. A partner can be configured (Klook with only an AID) yet render no generic
+ * button for any module; this is where that difference becomes visible instead of a
+ * green card and an empty search page. Column headers are the module codes until the
+ * message catalogs are free to take new keys.
+ */
+function AffiliateReadinessMatrix({ t, copy }: { t: Translator; copy: ReturnType<typeof adminSettingsCopy> }) {
+  const [rows, setRows] = useState<AffiliateStatusRow[]>();
+  useEffect(() => {
+    let active = true;
+    api<AffiliateStatusRow[]>("/affiliates/status")
+      .then((value) => { if (active) setRows(value); })
+      .catch(() => { if (active) setRows([]); });
+    return () => { active = false; };
+  }, []);
+  if (!rows?.length) return null;
+  return <section aria-label="Affiliate readiness" className="overflow-x-auto rounded-[1.75rem] border border-[var(--line)] bg-white p-5 shadow-sm">
+    <table className="w-full min-w-[640px] text-sm">
+      <caption className="sr-only">Affiliate readiness</caption>
+      <thead><tr className="text-left text-xs font-semibold uppercase tracking-wide text-[var(--muted)]"><th scope="col" className="py-2 pr-3">Partner</th>{affiliateModules.map((module) => <th key={module} scope="col" className="py-2 px-2 text-center">{module}</th>)}</tr></thead>
+      <tbody>{rows.map((row) => <tr key={row.code} className="border-t border-[var(--line)]">
+        <th scope="row" className="py-2 pr-3 text-left font-semibold">{row.display_name}<span className="ml-2 text-xs font-normal text-[var(--muted)]">{row.enabled ? t("settingsPanel.enable") : t("settingsPanel.statusDisabled")} · {row.configured ? copy.configured : copy.missing}</span></th>
+        {affiliateModules.map((module) => {
+          const declared = row.modules.includes(module);
+          const ready = (row.supported_modules ?? []).includes(module);
+          return <td key={module} data-state={!declared ? "na" : ready ? "ready" : "missing"} className={`py-2 px-2 text-center ${!declared ? "text-[var(--muted)]" : ready ? "font-semibold text-emerald-700" : "text-amber-700"}`}>{!declared ? "—" : ready ? t("settingsPanel.statusReady") : copy.missing}</td>;
+        })}
+      </tr>)}</tbody>
+    </table>
+  </section>;
+}
 
 const sourceKeys = new Set(["database", "environment", "none", "disabled"]);
 function sourceName(t: Translator, source: string): string {
@@ -987,6 +1033,8 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
         </div>}
       </div>
     </>}
+
+    {scope === "providers" && activeCategory === "affiliate" && <AffiliateReadinessMatrix t={t} copy={copy} />}
 
     <div className="grid gap-6">{displayedProviders.map((provider) => {
       const draft = drafts[provider.provider];

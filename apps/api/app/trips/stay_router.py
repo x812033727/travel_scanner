@@ -705,6 +705,7 @@ async def stay_area_clickout(
             offer_id=offer.id if offer else None,
             partner=partner,
             module="hotel",
+            placement="stay",
             sub_id=sub_id[:64],
             destination_summary=f"{context.destination_label}／{area_label}"[:128],
             target_host=(urlparse(target).hostname or "")[:255],

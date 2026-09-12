@@ -122,7 +122,14 @@ export function BookingPanel({
     if (window.history.state?.hotelBooking === id) window.history.back();
     else onCloseRef.current();
   }, [id]);
-  const ref = useModalSheet<HTMLDivElement>(true, close);
+  // This panel is the one caller that needs the element itself -- on a blocked submit it moves
+  // focus to the first field that failed -- so it keeps its own handle and feeds the hook too.
+  const sheetRef = useRef<HTMLDivElement>(null);
+  const registerSheet = useModalSheet<HTMLDivElement>(true, close);
+  const ref = useCallback((node: HTMLDivElement | null) => {
+    sheetRef.current = node;
+    registerSheet(node);
+  }, [registerSheet]);
   useEffect(() => {
     const previous = window.history.state;
     const url = window.location.href;
@@ -245,7 +252,7 @@ export function BookingPanel({
                 onSubmit={(event) => {
                   if (formError) {
                     event.preventDefault();
-                    ref.current?.querySelector<HTMLInputElement>('[aria-invalid="true"]')?.focus();
+                    sheetRef.current?.querySelector<HTMLInputElement>('[aria-invalid="true"]')?.focus();
                     return;
                   }
                   // BFF-only error recovery hint; the BFF validates it and never forwards it to a partner.

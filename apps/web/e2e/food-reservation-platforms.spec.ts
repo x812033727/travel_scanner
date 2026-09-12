@@ -83,7 +83,7 @@ for (const locale of Object.keys(catalogs) as (keyof typeof catalogs)[]) {
       const name = dialog.getByRole("textbox", { name: copy.name, exact: true });
       await name.fill("Unsaved merchant draft");
       const provider = editor.getByRole("combobox", { name: copy.platformProvider, exact: true });
-      await expect(provider.locator("option")).toHaveCount(12);
+      await expect(provider.locator("option")).toHaveCount(reservationPlatformDefinitions.length);
       await provider.selectOption("tablecheck");
       await editor.getByRole("combobox", { name: copy.platformReviewStatus, exact: true }).selectOption("verified");
       await editor.getByRole("textbox", { name: copy.platformCanonicalUrl, exact: true }).fill(tablecheckUrl);

@@ -626,3 +626,25 @@ def test_the_trust_gate_these_limits_now_sit_behind(monkeypatch: pytest.MonkeyPa
         assert client_ip(request) == "172.18.0.9"
     finally:
         get_settings.cache_clear()
+
+
+def test_catalog_config_keeps_legacy_surfaces_on_and_content_surfaces_off_by_default() -> None:
+    from app.travel_services.schemas import (
+        BOOKING_PLACEMENTS,
+        LEGACY_BOOKING_PLACEMENTS,
+        ConfigInput,
+    )
+
+    config = CatalogConfig()
+    assert config.affiliate_placements == list(LEGACY_BOOKING_PLACEMENTS)
+    assert "guide" not in config.affiliate_placements and "city" not in config.affiliate_placements
+    assert {"guide", "city"} <= BOOKING_PLACEMENTS
+    # Order is canonical and duplicates collapse, so a saved list never depends on click order.
+    reordered = CatalogConfig(affiliate_placements=["city", "guide", "guide", "destination"])
+    assert reordered.affiliate_placements == ["destination", "guide", "city"]
+    with pytest.raises(ValidationError):
+        ConfigInput(version=1, affiliate_placements=["evil"])
+    # A stored config written before the field existed reads back with the legacy default.
+    assert CatalogConfig.model_validate({"public_enabled": True}).affiliate_placements == list(
+        LEGACY_BOOKING_PLACEMENTS
+    )

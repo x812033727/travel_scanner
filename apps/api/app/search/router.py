@@ -541,6 +541,7 @@ async def clickout_offer(offer_id: UUID, user: CurrentUser, session: Session) ->
                 offer_id=offer_id,
                 partner="skyscanner",
                 module="flight",
+                placement="search",
                 # Never transmitted (the target comes from provider.clickout), but a
                 # random hex per row names nothing and defeats the sub_id index.
                 sub_id=coarse_sub_id("aff", "flight", None, active_locale()),

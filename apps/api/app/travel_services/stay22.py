@@ -9,24 +9,26 @@ from __future__ import annotations
 
 import re
 from datetime import UTC, date, datetime
-from typing import Literal, get_args
+from typing import Literal
 from urllib.parse import quote, unquote, urlencode, urlsplit
 
 from app.i18n import LOCALES, Locale
 from app.models import HotelBookingOption
 from app.travel_services.schemas import (
+    BOOKING_PLACEMENTS,
     SERVICE_DESTINATION_IDS,
     STAY22_PROVIDERS,
+    BookingPlacement,
     CatalogConfig,
     HotelBookingContext,
     HotelLink,
     Stay22Config,
 )
 
-BookingPlacement = Literal["destination", "hotspot", "trip", "stay", "checklist", "discovery"]
-# The HTTP boundary and campaign builder share this finite set: a new public
-# entry point must not pass one check and then fail after the user clicks.
-BOOKING_PLACEMENTS = frozenset(get_args(BookingPlacement))
+# BookingPlacement and BOOKING_PLACEMENTS live in schemas.py (CatalogConfig lists them)
+# and are re-exported here for the routes and tests that always imported them from
+# the campaign builder.
+__all__ = ["BOOKING_PLACEMENTS", "BookingPlacement"]
 BookingChannel = Literal["existing", "stay22", "direct"]
 
 # Deliberately narrower than generic reviewed links: Allez must get a property,

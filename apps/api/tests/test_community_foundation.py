@@ -27,6 +27,7 @@ from app.community.content import itinerary_snapshot
 from app.community.media import clean_image
 from app.community.models import (
     AccountToken,
+    CommunityMetric,
     Fork,
     Job,
     Media,
@@ -39,7 +40,7 @@ from app.community.models import (
 from app.community.pet_models import PetPlace
 from app.community.pet_schemas import PetRequirements, PetRule
 from app.community.pets import eligibility
-from app.community.policy import fail
+from app.community.policy import fail, metric
 from app.db import Base, get_session
 from app.main import app
 from app.models import (
@@ -1922,3 +1923,112 @@ async def test_real_private_s3_upload_decode_and_publication(
         for item in objects.get("Contents", []):
             await asyncio.to_thread(client.delete_object, Bucket=bucket, Key=item["Key"])
         await asyncio.to_thread(client.delete_bucket, Bucket=bucket)
+
+
+@pytest.mark.asyncio
+async def test_daily_metric_absorbs_a_repeat_without_raising(harness: Harness) -> None:
+    # Two readers of the same target on the same day race for one marker row, so the
+    # second write has to be a no-op rather than an error every caller must catch.
+    h = harness
+    async with h.factory() as session:
+        await metric(session, h.ids[0], "read", "repeat-target")
+        await metric(session, h.ids[0], "read", "repeat-target")
+        await session.commit()
+        rows = await session.scalar(
+            select(func.count())
+            .select_from(CommunityMetric)
+            .where(CommunityMetric.target == "repeat-target")
+        )
+    assert rows == 1
+
+
+@pytest.mark.asyncio
+async def test_daily_metric_leaves_the_callers_integrity_error_to_the_caller(
+    harness: Harness,
+) -> None:
+    # metric() used to enter begin_nested(), which flushes the whole session before it
+    # emits SAVEPOINT: pending rows of the caller landed inside the try and outside the
+    # savepoint, so an IntegrityError of theirs was caught here and their commit then
+    # raised PendingRollbackError instead -- the 409-became-500 shape that
+    # analytics/service.py already paid for once. The error has to arrive at the commit
+    # of the caller, where their own handler runs.
+    from sqlalchemy.exc import IntegrityError
+
+    h = harness
+    async with h.factory() as session:
+        await metric(session, h.ids[0], "read", "already-there")
+        await session.commit()
+    async with h.factory() as session:
+        session.add(
+            CommunityMetric(
+                day=datetime.now(UTC).date().isoformat(),
+                user_id=h.ids[0],
+                kind="read",
+                target="already-there",
+            )
+        )
+        await metric(session, h.ids[0], "read", "a-different-target")
+        with pytest.raises(IntegrityError):
+            await session.commit()
+
+
+@pytest.mark.asyncio
+async def test_daily_metric_does_not_flush_the_callers_pending_rows(harness: Harness) -> None:
+    # The first of the two rules in analytics/service.py: measuring an action must not
+    # send the rows of the caller to the database early. Identical emitted SQL either
+    # way, so only the pending set can tell the two apart.
+    h = harness
+    async with h.factory() as session:
+        session.add(
+            Notification(recipient_id=h.ids[0], actor_id=h.ids[1], kind="like", target="pending")
+        )
+        await metric(session, h.ids[0], "read", "flush-check")
+        assert len(session.new) == 1
+        await session.commit()
+
+
+@pytest.mark.asyncio
+async def test_daily_metric_is_emitted_as_an_upsert(
+    harness: Harness, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    # Compiled against whichever backend the parametrised harness runs on, so the
+    # SQLite run still proves the conflict clause that only PostgreSQL races on.
+    h = harness
+    statements: list[str] = []
+    original = AsyncSession.execute
+
+    async def record(self: AsyncSession, statement: Any, *args: Any, **kwargs: Any) -> Any:
+        statements.append(str(statement.compile(dialect=self.get_bind().dialect)))
+        return await original(self, statement, *args, **kwargs)
+
+    monkeypatch.setattr(AsyncSession, "execute", record)
+    async with h.factory() as session:
+        await metric(session, h.ids[0], "read", "emitted-sql")
+        await session.commit()
+    assert len(statements) == 1
+    assert "INSERT INTO community_metrics" in statements[0]
+    assert "ON CONFLICT" in statements[0] and "DO NOTHING" in statements[0]
+
+
+@pytest.mark.asyncio
+async def test_postgres_concurrent_daily_metric_writers_keep_one_row(harness: Harness) -> None:
+    import asyncio
+
+    h = harness
+    async with h.factory() as probe:
+        if probe.get_bind().dialect.name != "postgresql":
+            pytest.skip("Requires real PostgreSQL for separate concurrent transactions")
+
+    async def write() -> None:
+        async with h.factory() as session:
+            await metric(session, h.ids[0], "read", "concurrent-target")
+            await session.commit()
+
+    await asyncio.gather(*[write() for _ in range(4)])
+    async with h.factory() as session:
+        rows = await session.scalar(
+            select(func.count())
+            .select_from(CommunityMetric)
+            .where(CommunityMetric.target == "concurrent-target")
+        )
+    assert rows == 1

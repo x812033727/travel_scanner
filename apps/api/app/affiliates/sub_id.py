@@ -64,6 +64,14 @@ def coarse_sub_id(
     return "_".join(_segment(part) for part in parts if part)[:MAX_SUB_ID]
 
 
+def is_catalog_sub_id(value: str | None) -> bool:
+    """Whether ``value`` has the shape this module builds: a known prefix, catalog
+    characters only, and no identifier-length hex run. Shared by the egress gate and
+    by reporting, which must not echo a legacy member-derived value back to an admin."""
+    candidate = value or ""
+    return bool(SUB_ID_RE.fullmatch(candidate)) and not _HEX_RUN.search(candidate)
+
+
 def safe_sub_id(value: str | None, *, rebuild: str) -> str:
     """Return ``value`` if it is one of our labels, otherwise ``rebuild``.
 
@@ -74,9 +82,8 @@ def safe_sub_id(value: str | None, *, rebuild: str) -> str:
     job, that string is the identifier we are trying not to disclose, and a log
     line is a second place it would leak to.
     """
-    candidate = value or ""
-    if SUB_ID_RE.fullmatch(candidate) and not _HEX_RUN.search(candidate):
-        return candidate
+    if value and is_catalog_sub_id(value):
+        return value
     logger.warning(
         "affiliate sub_id rejected at egress and rebuilt from catalog labels; "
         "a caller is constructing sub_id outside app.affiliates.sub_id"

@@ -26,8 +26,23 @@ type Dashboard = {
   authoritative: Record<string, number>;
   data_quality: Record<string, string | number | boolean | null>;
 };
+type AffiliateDimension = "by_partner" | "by_placement" | "by_module" | "by_destination" | "by_brand" | "by_target_host" | "top_sub_ids";
+type AffiliateReport = Record<AffiliateDimension, Row[]> & {
+  range: Range;
+  timezone: string;
+  total: number;
+  previous_total: number;
+  change: number | null;
+};
 
 const ranges: Range[] = ["24h", "7d", "30d", "90d", "12m"];
+// Outbound affiliate clicks by the surface that rendered the button and by partner. These
+// are redirect counts from the append-only ledger, never bookings or commission. The tile
+// titles are ASCII until the message catalogs are free to take new keys.
+const affiliateDimensions: Array<[AffiliateDimension, string]> = [
+  ["by_partner", "Partner"], ["by_placement", "Placement"], ["by_module", "Module"],
+  ["by_destination", "Destination"], ["by_brand", "Brand"], ["by_target_host", "Target host"], ["top_sub_ids", "Sub ID"],
+];
 // The tiles the dashboard shows, not everything the API returns: `summary` now carries
 // one count per event name, and most of those are only interesting inside the funnel.
 const summaryKeys = ["live_sessions_30m", "page_views", "avg_daily_visitors", "sessions", "pages_per_session", "registration_completed", "discover_requested", "search_completed", "trip_created", "offer_attached", "outbound_click"];
@@ -47,6 +62,7 @@ export function AdminAnalyticsPanel() {
   const [range, setRange] = useState<Range>("30d");
   const [includeBots, setIncludeBots] = useState(false);
   const [data, setData] = useState<Dashboard>();
+  const [affiliates, setAffiliates] = useState<AffiliateReport>();
   const [error, setError] = useState<string>();
   const [loading, setLoading] = useState(true);
   const number = useMemo(() => new Intl.NumberFormat(locale, { maximumFractionDigits: 1 }), [locale]);
@@ -55,7 +71,14 @@ export function AdminAnalyticsPanel() {
   const load = useCallback(async () => {
     setLoading(true);
     try {
-      setData(await api<Dashboard>(`/admin/analytics/dashboard?range=${range}&compare=true&include_bots=${includeBots}`));
+      // The affiliate ledger is a separate, smaller read; a failure there must not blank
+      // the whole dashboard, so it degrades to "section absent".
+      const [dashboardData, affiliateData] = await Promise.all([
+        api<Dashboard>(`/admin/analytics/dashboard?range=${range}&compare=true&include_bots=${includeBots}`),
+        api<AffiliateReport>(`/admin/analytics/affiliates?range=${range}`).catch(() => undefined),
+      ]);
+      setData(dashboardData);
+      setAffiliates(affiliateData);
       setError(undefined);
     } catch (reason) { setError(reason instanceof Error ? reason.message : t("loadError")); }
     finally { setLoading(false); }
@@ -84,6 +107,14 @@ export function AdminAnalyticsPanel() {
       <section className="grid gap-6 xl:grid-cols-[1.15fr_.85fr]"><div className="rounded-[1.75rem] border border-[var(--line)] bg-[var(--ink)] p-5 text-white shadow-sm"><h2 className="text-xl font-bold">{t("funnel")}</h2><p className="mt-1 text-sm text-white/65">{t(data.source === "raw" ? "funnelRaw" : "funnelRollup")}</p><ol className="mt-5 space-y-3">{data.funnel?.map((item, index) => <li key={item.step}><div className="mb-1 flex justify-between text-sm"><span>{index + 1}. {t(`funnelSteps.${item.step}`)}</span><strong>{number.format(item.sessions)} · {item.conversion_rate}%</strong></div><div className="h-3 overflow-hidden rounded-full bg-white/10"><div className="h-full rounded-full bg-[var(--coral)]" style={{ width: `${Math.max(2, item.conversion_rate)}%` }} /></div></li>)}</ol></div><div className="rounded-[1.75rem] border border-[var(--line)] bg-white p-5 shadow-sm"><h2 className="text-xl font-bold">{t("authoritative")}</h2><p className="mt-1 text-sm text-[var(--muted)]">{t("authoritativeHelp")}</p><dl className="mt-5 grid grid-cols-2 gap-3">{Object.entries(data.authoritative).map(([key, value]) => <div key={key} className="rounded-xl bg-[var(--paper)] p-3"><dt className="text-xs text-[var(--muted)]">{t(`authoritativeMetrics.${key}`)}</dt><dd className="mt-1 text-xl font-bold">{number.format(value)}</dd></div>)}</dl></div></section>
 
       <div className="grid min-w-0 max-w-full gap-6 lg:grid-cols-2"><Ranking title={t("rankings.pages")} rows={data.top_pages} /><Ranking title={t("rankings.sources")} rows={data.referrers} /><Ranking title={t("rankings.devices")} rows={data.devices} /><Ranking title={t("rankings.locales")} rows={data.locales} /><Ranking title={t("rankings.countries")} rows={data.countries} /><Ranking title={t("rankings.utm")} rows={data.utm_sources} /></div>
+
+      {affiliates && <section aria-labelledby="affiliate-clicks-heading" className="rounded-[1.75rem] border border-[var(--line)] bg-white p-5 shadow-sm md:p-6">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div><h2 id="affiliate-clicks-heading" className="text-xl font-bold">{t("authoritativeMetrics.affiliate_clicks")}</h2><p className="mt-1 text-sm text-[var(--muted)]">{t("authoritativeHelp")}</p></div>
+          <div className="text-right"><p className="text-2xl font-bold tabular-nums" data-testid="affiliate-total">{number.format(affiliates.total)}</p>{affiliates.change == null ? <p className="mt-1 text-xs text-[var(--muted)]">{t("noComparison")}</p> : <p className={`mt-1 flex items-center justify-end gap-1 text-xs font-semibold ${affiliates.change >= 0 ? "text-emerald-700" : "text-rose-700"}`}>{affiliates.change >= 0 ? <ArrowUpRight size={13} /> : <ArrowDownRight size={13} />}{number.format(Math.abs(affiliates.change))}%</p>}</div>
+        </div>
+        <div className="mt-5 grid min-w-0 max-w-full gap-6 lg:grid-cols-2">{affiliateDimensions.map(([key, title]) => <Ranking key={key} title={title} rows={affiliates[key] ?? []} />)}</div>
+      </section>}
 
       <section className="rounded-[1.75rem] border border-[var(--line)] bg-white p-5 shadow-sm"><h2 className="text-xl font-bold">{t("heatmap")}</h2><p className="mt-1 text-sm text-[var(--muted)]">{t("heatmapHelp")}</p>{data.heatmap?.length ? <div className="mt-5 overflow-x-auto"><div className="grid min-w-[720px] grid-cols-[3.5rem_repeat(24,minmax(1.4rem,1fr))] gap-1" aria-hidden="true"><span />{Array.from({ length: 24 }, (_, hour) => <span key={hour} className="text-center text-xs text-[var(--muted)]">{hour}</span>)}{weekdays.flatMap((day, weekday) => [<span key={`${day}-label`} className="self-center text-xs font-semibold">{day}</span>, ...Array.from({ length: 24 }, (_, hour) => { const value = data.heatmap.find((cell) => cell.weekday === weekday && cell.hour === hour)?.value || 0; return <span key={`${day}-${hour}`} title={`${day} ${hour}:00 · ${value}`} className="aspect-square rounded-sm" style={{ backgroundColor: `color-mix(in srgb, var(--teal) ${Math.min(90, 8 + value * 8)}%, white)` }} />; })])}</div><table className="sr-only"><caption>{t("heatmap")}</caption><thead><tr><th>{t("weekday")}</th>{Array.from({ length: 24 }, (_, hour) => <th key={hour}>{hour}:00</th>)}</tr></thead><tbody>{weekdays.map((day, weekday) => <tr key={day}><th>{day}</th>{Array.from({ length: 24 }, (_, hour) => <td key={hour}>{data.heatmap.find((cell) => cell.weekday === weekday && cell.hour === hour)?.value || 0}</td>)}</tr>)}</tbody></table></div> : <p className="mt-5 text-sm text-[var(--muted)]">{t("heatmapUnavailable")}</p>}</section>
 

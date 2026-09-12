@@ -18,10 +18,10 @@ describe("DestinationAffiliateOptions", () => {
     })));
     const response = (destination: string, module: string, name: string) => ok({ destination_id: destination, module, disclosure: "Disclosure", options: [{ id: name, cta: name, clickout_url: "/api/travel/affiliates/destination-offers/verified/clickout" }] });
     const view = render(<DestinationAffiliateOptions destinationId="tokyo" modules={["hotel"]} contextual />);
-    expect(pending[0].url).toContain("destination_id=tokyo&module=hotel");
+    expect(pending[0].url).toContain("destination_id=tokyo&module=hotel&placement=destination");
     view.rerender(<DestinationAffiliateOptions destinationId="seoul" modules={["transport"]} contextual />);
     expect(pending[0].signal.aborted).toBe(true);
-    expect(pending[1].url).toContain("destination_id=seoul&module=transport");
+    expect(pending[1].url).toContain("destination_id=seoul&module=transport&placement=destination");
     await act(async () => { pending[1].resolve(response("seoul", "transport", "Seoul transfer")); });
     expect(await screen.findByRole("button", { name: /Seoul transfer/ })).toBeTruthy();
     await act(async () => { pending[0].resolve(response("tokyo", "hotel", "Old Tokyo hotel")); });
@@ -30,6 +30,10 @@ describe("DestinationAffiliateOptions", () => {
     expect(screen.queryByRole("button", { name: /Seoul transfer/ })).toBeNull();
     expect(pending).toHaveLength(3);
     expect(pending.every(({ url }) => !url.includes("hotel-quotes"))).toBe(true);
+    // The surface is part of the request identity: a different placement is a new request.
+    view.rerender(<DestinationAffiliateOptions destinationId="tokyo" modules={["activities"]} contextual placement="guide" />);
+    expect(pending[2].signal.aborted).toBe(true);
+    expect(pending[3].url).toContain("destination_id=tokyo&module=activities&placement=guide");
   });
   it("shows verified brand names without exposing Travelpayouts", async () => {
     vi.stubGlobal(
