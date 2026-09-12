@@ -9,7 +9,7 @@ from dataclasses import dataclass
 from datetime import UTC, datetime
 from typing import Annotated, Any, cast
 from urllib.parse import urlparse
-from uuid import NAMESPACE_URL, UUID, uuid5
+from uuid import UUID
 
 from fastapi import APIRouter, Depends, Path, Query
 from fastapi.responses import RedirectResponse
@@ -27,6 +27,7 @@ from app.affiliates.service import (
     resolve_partner_target,
     validate_target_url,
 )
+from app.affiliates.sub_id import coarse_sub_id
 from app.analytics.service import record_event
 from app.auth.service import CurrentUser
 from app.config import Settings
@@ -669,10 +670,10 @@ async def stay_area_clickout(
             trip, cast(str, context.city_code), context.search_json, dates, locale
         )
         offer = await _cached_offer(context, area, query, None, hotel_id)
-    sub_id = uuid5(
-        NAMESPACE_URL,
-        f"travel-scanner:affiliate:{user.id}:{trip.id}:{partner}:hotel:{area.code}",
-    ).hex
+    # Catalog labels only. This used to be uuid5(...user.id...trip.id...), and because
+    # klook is absent from STAY_PARTNER_ORDER the old Klook-only guard never fired here:
+    # agoda, booking, trip_com and travelpayouts all received the member-derived value.
+    sub_id = coarse_sub_id("aff", "hotel", area.code, locale)
     affiliate_context = AffiliateContext(
         module="hotel",
         destination=context.destination_label,

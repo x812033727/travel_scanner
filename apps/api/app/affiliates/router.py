@@ -2,7 +2,7 @@ import json
 from datetime import UTC, datetime
 from typing import Annotated, Any, cast
 from urllib.parse import urlparse
-from uuid import NAMESPACE_URL, UUID, uuid4, uuid5
+from uuid import UUID, uuid4
 
 from fastapi import APIRouter, Depends, Request, Response
 from fastapi.responses import RedirectResponse
@@ -36,6 +36,7 @@ from app.affiliates.service import (
 from app.affiliates.service import (
     TravelpayoutsLinkClient as TravelpayoutsLinkClient,
 )
+from app.affiliates.sub_id import coarse_sub_id
 from app.auth.service import CurrentUser, OptionalCurrentUser
 from app.db import get_session
 from app.destinations.catalog import destination_for_code, destination_for_id, match_destination
@@ -337,7 +338,7 @@ async def affiliate_options(
     )
     settings = await load_runtime_settings(session)
     redis = get_redis()
-    source = source_search_id or source_trip_id or "unknown"
+    # (`source` lived here only to seed the member-derived uuid5; it has no other reader.)
     options: list[AffiliateOption] = []
     branded_codes: set[str] = set()
     if destination_id:
@@ -373,12 +374,9 @@ async def affiliate_options(
             continue
         if not partner_supports_module(partner, module, settings):
             continue
-        sub_id = uuid5(
-            NAMESPACE_URL,
-            f"travel-scanner:affiliate:{user.id}:{source}:{partner.code}:{module}",
-        ).hex
-        if partner.code == "klook":
-            sub_id = f"aff_{module}_{active_locale()}"
+        # Catalog labels only. This used to be uuid5(...user.id...), which is stable per
+        # member and reversible by recomputation, and only Klook was exempted from it.
+        sub_id = coarse_sub_id("aff", module, destination_id, active_locale())
         context = AffiliateContext(
             module=base_context.module,
             destination=base_context.destination,
