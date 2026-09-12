@@ -49,8 +49,11 @@ curl -s -X POST https://booking.naver.com/graphql -H 'Content-Type: application/
 
 2026-09-12 試過而且**不通**的管道，別再走一次：
 
-- DuckDuckGo HTML 版（`html.duckduckgo.com/html/?q=site:booking.naver.com …`）：前兩三次可用，
-  之後整批 403，再之後改出圖形驗證。隔一陣子會解，所以這條之後或許還能用，但要壓低頻率。
+- DuckDuckGo HTML 版（`html.duckduckgo.com/html/?q=site:booking.naver.com …`）：**確定沒用**，
+  不是速率問題。第一次跑會 403、隔約 40 分鐘解封後改成每 12 秒一查重跑 41 間，
+  回來的結果每一查都是同一批無關商家（래빗하우스 키즈풀빌라、에이티엔피 대전둔산、CHOP HAIR…），
+  41 間比對下來 0 命中。DuckDuckGo 對 booking.naver.com 根本沒有可用的索引，
+  `site:` 只是回傳它手上那幾筆，跟查詢字沒有關係。
 - Bing：忽略 `site:` 運算子，回傳完全無關的結果。
 - `map.naver.com/p/api/search/allSearch`：回 `ncaptcha`，要 captcha token。
 - `pcmap.place.naver.com/restaurant/{id}/home`：429。
@@ -58,5 +61,11 @@ curl -s -X POST https://booking.naver.com/graphql -H 'Content-Type: application/
   不指定的話結果裡也沒有 booking.naver.com。
 - 從官網反查：73 間裡只有 3 間有官網。
 - 內建瀏覽器直接開 `booking.naver.com`：被政策擋掉。
+
+還沒試過、看起來最有機會的方向：
+
+- 有 Google 檢索結果的管道（Naver 的預約頁在 Google 上是搜得到的）。
+- Naver 開發者中心的搜尋 API（要申請 client id／secret，免費額度足夠 73 筆）。
+- 韓國觀光公社 TourAPI 的餐廳資料是否帶預約連結（見 `2026-09-06-korea-tourism-tourapi-spike`）。
 
 相關：`2026-09-12-japan-korea-reservation-platforms`。
