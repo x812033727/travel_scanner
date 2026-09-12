@@ -14,7 +14,9 @@ from redis.exceptions import RedisError, WatchError
 
 from app.affiliates.registry import AffiliatePartner, partner_configured, partner_enabled
 from app.affiliates.schemas import AffiliateModule
+from app.affiliates.sub_id import coarse_sub_id, safe_sub_id
 from app.config import Settings
+from app.i18n import active_locale
 
 
 @dataclass(frozen=True)
@@ -206,6 +208,16 @@ async def resolve_partner_target(
 ) -> str:
     hosts = allowed_hosts(settings, partner)
     template = cast(str | None, getattr(settings, partner.template_field))
+    # Every partner, before any branch returns. The Travelpayouts branch below exits at
+    # its own `return`s, so a guard placed after it would never run for the one partner
+    # that always transmits the value -- which is exactly where it used to sit.
+    context = replace(
+        context,
+        sub_id=safe_sub_id(
+            context.sub_id,
+            rebuild=coarse_sub_id("aff", context.module, None, active_locale()),
+        ),
+    )
     if partner.code == "travelpayouts":
         direct = _travelpayouts_target(settings, context.module)
         if (
@@ -227,11 +239,6 @@ async def resolve_partner_target(
         return validate_target_url(_render(template, context), hosts)
     if not template:
         raise ConnectionError(f"{partner.display_name} affiliate link is not configured")
-    if partner.code == "klook":
-        from app.i18n import active_locale
-
-        # A configured template may contain {sub_id}; never expose a member/trip-derived ID.
-        context = replace(context, sub_id=f"aff_{context.module}_{active_locale()}")
     target = _render(template, context)
     if partner.code == "klook":
         from app.travel_services.channels import klook_affiliate_target
