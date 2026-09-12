@@ -14,11 +14,6 @@ scope:
   - apps/web/app/[locale]/privacy/page.tsx
   - apps/web/app/[locale]/terms/page.tsx
   - apps/web/app/[locale]/contact/page.tsx
-  - apps/web/messages/en/navigation.json
-  - apps/web/messages/ja/navigation.json
-  - apps/web/messages/ko/navigation.json
-  - apps/web/messages/zh-CN/navigation.json
-  - apps/web/messages/zh-TW/navigation.json
 ---
 
 # 隱私權政策、服務條款與聯絡方式的內容要由擁有者提供
@@ -111,3 +106,8 @@ npm run check:i18n && npm run test:web -- site-footer
 - **不要請模型代寫這兩份文件然後直接上線。** 那正是上一張任務刻意沒做的事。
 - 這張票的 `scope` 是 09-06 寫的；自 #380 起 `/privacy` 等 `page.tsx` 只是薄薄一層讀資料庫，
   真正的文字在 `apps/api/app/site_pages/drafts/`，改文字要走那個目錄（和它自己的票）。
+
+2026-09-12 窄幅釋放（五語系 navigation-only）：這張票的 navigation.json 步驟已在 `fc274a1d`（#426）合併並打勾，
+剩下的工作全在後台與站主手上，不再需要這五個檔案。依 `2026-09-07-merchant-style-discovery` 的先例，
+只把 `apps/web/messages/{en,ja,ko,zh-CN,zh-TW}/navigation.json` 五個精確 scope 釋放給
+`2026-09-12-lifestyle-section-and-guides-relabel`（同一個 owner 身分 `claude-fable-5-1`）；其餘三個 page.tsx 仍歸這張票。

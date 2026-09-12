@@ -77,7 +77,7 @@ describe("robots", () => {
   });
 
   it("leaves public content crawlable", () => {
-    for (const path of ["/en", "/en/hotspots", "/zh-TW/foods", "/en/pricing", "/ja/destinations/tokyo/services"]) {
+    for (const path of ["/en", "/en/hotspots", "/zh-TW/foods", "/en/pricing", "/ja/destinations/tokyo/services", "/zh-TW/life"]) {
       expect(disallows(path), `${path} should be crawlable`).toBe(false);
     }
   });

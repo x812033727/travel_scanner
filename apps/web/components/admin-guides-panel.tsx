@@ -10,7 +10,10 @@ import { useAdminQueryValue } from "@/lib/admin-workspace-navigation";
 import { api, ApiError } from "@/lib/api";
 import type { ContentBlock } from "@/lib/content-blocks";
 import { useNavigationGuard } from "@/lib/navigation-guard";
-import { guideKinds, type GuideDocument, type GuideKind, type GuideSource, type GuideTopic } from "@/lib/guides";
+import {
+  guideKinds, guideSection,
+  type GuideDocument, type GuideKind, type GuideSource, type GuideTopic,
+} from "@/lib/guides";
 import { isUuid, type ArticleDetail, type ArticleSummary } from "@/lib/guides-admin";
 import { sitePageLocales, type SitePageLocale } from "@/lib/site-pages";
 
@@ -65,6 +68,15 @@ export function AdminGuidesPanel() {
 
   const showError = (problem: unknown) => setError(visibilityError(problem, t));
   const suffix = `?locale=${encodeURIComponent(locale)}`;
+  // A topic may only be attached to an article of its own section; the API refuses the rest
+  // with `guide_topic_section_mismatch`. A row served by an API that predates the column is
+  // read as travel, which is what it was.
+  const detailSection = detail ? guideSection(detail.kind) : "travel";
+  const sectionTopics = topics.filter((topic) => (topic.section ?? "travel") === detailSection);
+  // Kind is part of the URL, so moving an article between sections moves its URL. The API
+  // refuses that with 409 once any translation is published; this mirrors it in the editor
+  // rather than letting a save discover it.
+  const kindLocked = Boolean(detail?.locales.some((entry) => entry.published_version !== null));
   const row = detail?.locales.find((entry) => entry.locale === locale) ?? null;
 
   useEffect(() => {
@@ -236,8 +248,17 @@ export function AdminGuidesPanel() {
         <h2 className="text-xl font-bold">{t("taxonomy")}</h2>
         <fieldset disabled={!manage.allowed || busy} className="grid gap-4 sm:grid-cols-2">
           <label className="grid gap-2">{t("kind")}
-            <select className={control} value={detail.kind} onChange={(event) => setDetail({ ...detail, kind: event.target.value as GuideKind })}>
-              {guideKinds.map((value) => <option key={value} value={value}>{t(value)}</option>)}
+            <select className={control} value={detail.kind} onChange={(event) => {
+              const kind = event.target.value as GuideKind;
+              const moved = guideSection(kind) !== guideSection(detail.kind);
+              setDetail({ ...detail, kind, topics: moved ? [] : detail.topics });
+            }}>
+              {guideKinds.map((value) => (
+                <option key={value} value={value}
+                  disabled={kindLocked && guideSection(value) !== guideSection(detail.kind)}>
+                  {t(value)}
+                </option>
+              ))}
             </select>
           </label>
           <label className="grid gap-2">{t("destination")}
@@ -254,7 +275,7 @@ export function AdminGuidesPanel() {
           <fieldset className="grid gap-2 sm:col-span-2">
             <legend className="font-semibold">{t("topics")}</legend>
             <div className="flex flex-wrap gap-2">
-              {topics.map((topic) => {
+              {sectionTopics.map((topic) => {
                 const on = detail.topics.some((entry) => entry.slug === topic.slug);
                 return <label key={topic.slug} className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[var(--line)] px-3">
                   <input type="checkbox" checked={on} onChange={(event) => setDetail({
@@ -269,6 +290,8 @@ export function AdminGuidesPanel() {
             </div>
           </fieldset>
         </fieldset>
+        {detail.kind === "life" && <p className="text-sm leading-7 text-[var(--muted)]">{t("lifeDestinationHelp")}</p>}
+        {kindLocked && <p className="text-sm leading-7 text-[var(--muted)]">{t("kindLocked")}</p>}
         <p className="text-sm leading-7 text-[var(--muted)]">{t("validUntilHelp")}</p>
         <Button secondary disabled={busy || !manage.allowed} onClick={() => void saveTaxonomy()}>{t("saveTaxonomy")}</Button>
       </section>

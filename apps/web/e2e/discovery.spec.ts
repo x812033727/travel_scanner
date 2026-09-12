@@ -83,6 +83,34 @@ for (const locale of ["zh-TW", "zh-CN", "en", "ja", "ko"]) {
   });
 }
 
+// A header row that does not fit a phone does not overflow the document the way a desktop
+// layout would: the phone widens its own layout viewport to fit instead, so the
+// `scrollWidth > innerWidth` check above stays false and proves nothing. What gives it away
+// is the row's right edge landing past the screen and innerWidth coming back wider than the
+// screen was set to -- after which every coordinate on the page has shifted. That is how a
+// sixth 2.75rem icon in the phone header passed this file and only surfaced as a 320px food
+// acceptance run that could no longer hit its click targets.
+//
+// Both parameters here are load-bearing. The row is sized in rem, so the widest it ever gets
+// is at the reader's largest text step, and a breakpoint cannot adapt to that (rem inside a
+// media query means the initial 16px, not the chosen root) -- testing only the default or
+// the middle step leaves the case that actually breaks untested. The widths are the two
+// sides of the breakpoint plus the narrowest screen: 320 and 375 must fit without the sixth
+// icon, 390 must still fit with it.
+for (const width of [320, 375, 390]) {
+  test(`the discovery phone header fits a ${width}px screen at the largest text size`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 740 });
+    await fixtures(page);
+    await page.goto("/zh-TW/explore");
+    await expect(page.getByRole("heading", { level: 1, name: getFrontendFlowCopy("zh-TW").results, exact: true })).toBeVisible();
+    await page.evaluate(() => { document.documentElement.dataset.textSize = "largest"; });
+    const row = page.locator('header.site-header div[class*="lg:hidden"]').first();
+    const box = (await row.boundingBox())!;
+    expect(box.x + box.width).toBeLessThanOrEqual(width);
+    expect(await page.evaluate(() => window.innerWidth)).toBeLessThanOrEqual(width);
+  });
+}
+
 test("search filters persist through reload/back and empty results do not invent content", async ({ page }) => {
   const c = getDiscoveryCopy("en"); await fixtures(page);
   await page.goto("/en/explore");

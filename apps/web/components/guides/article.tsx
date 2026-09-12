@@ -1,14 +1,14 @@
+import type { ReactNode } from "react";
 import { ContentBlocks } from "@/components/content-blocks";
 import { DestinationAffiliateOptions } from "@/components/destination-affiliate-options";
 import { Link } from "@/i18n/navigation";
 import { localeLabels, type Locale } from "@/i18n/routing";
 import { contentBlockLink } from "@/lib/content-blocks";
-import { guideAffiliateDestination, guideAffiliateModules } from "@/lib/guide-affiliate";
-import { guideHref, type GuideArticleState } from "@/lib/guides";
+import { guideAffiliateDestination, guideAffiliateModules, guideAffiliatePlacement } from "@/lib/guide-affiliate";
+import { guideHref, guideListHref, type GuideArticleState, type GuideKind } from "@/lib/guides";
 
-export type GuideArticleLabels = {
-  intel: string;
-  howto: string;
+/** One label per kind (the badge above the title) plus the words around dates and sources. */
+export type GuideArticleLabels = Record<GuideKind, string> & {
   published: string;
   updated: string;
   expiredNotice: string;
@@ -22,12 +22,18 @@ export type GuideArticleLabels = {
 /**
  * An article a reader can reach. Expiry is shown, not hidden: an `intel` notice keeps its
  * URL so existing links do not break, and says plainly what date it applied until.
+ *
+ * The end of the article runs: body, partner panel (if any), `related`, topic chips,
+ * sources, other languages. `related` is whatever the page fetched to hand the reader on --
+ * for a lifestyle article the travel crosslinks -- and stays a plain node so this component
+ * remains synchronous and renders directly under React Testing Library.
  */
 export function GuideArticle({
-  state, labels,
+  state, labels, related,
 }: {
   state: GuideArticleState & { document: NonNullable<GuideArticleState["document"]> };
   labels: GuideArticleLabels;
+  related?: ReactNode;
 }) {
   const { document } = state;
   const published = document.published_at.slice(0, 10);
@@ -35,15 +41,21 @@ export function GuideArticle({
   // Partner buttons only where they are contextual: a destination the article belongs to,
   // a module its topics point at, and a notice that still applies. An expired fare deal
   // with a "book flights" button underneath would read as bait.
+  //
+  // A `life` article is the exception recorded in lib/guide-affiliate.ts: lifestyle topics
+  // point at no module, so the destination the editor deliberately filled in is the only
+  // contextual signal and the panel shows every module, exactly like the city page's own.
+  // It is rendered non-contextual so its heading names the destination's partners rather
+  // than inviting the reader to "keep exploring" a place the article was never about.
   const affiliateDestination = guideAffiliateDestination(state.destination_id);
-  const affiliateModules = guideAffiliateModules(state.topics);
+  const affiliateModules = guideAffiliateModules(state.topics, state.kind);
   const showAffiliate = Boolean(affiliateDestination) && affiliateModules.length > 0 && !state.expired;
   return (
     <article className="space-y-6 break-words [overflow-wrap:anywhere]">
       <header>
         <p className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">
           <span className="rounded-full bg-[var(--line)] px-2 py-1 text-[var(--fg)]">
-            {state.kind === "intel" ? labels.intel : labels.howto}
+            {labels[state.kind]}
           </span>
           {state.destination_label ? (
             <Link className="underline" href={`/destinations/${state.destination_id}`}>
@@ -69,11 +81,13 @@ export function GuideArticle({
         <DestinationAffiliateOptions
           destinationId={affiliateDestination}
           modules={affiliateModules}
-          contextual
+          contextual={state.kind !== "life"}
           destinationLabel={state.destination_label ?? undefined}
-          placement="guide"
+          placement={guideAffiliatePlacement(state.kind)}
         />
       ) : null}
+
+      {related}
 
       {state.topics.length ? (
         <ul className="flex flex-wrap gap-2 border-t border-[var(--line)] pt-6">
@@ -81,7 +95,7 @@ export function GuideArticle({
             <li key={topic.slug}>
               <Link
                 className="inline-flex min-h-11 items-center rounded-full border border-[var(--line)] px-3 py-1 text-sm text-[var(--muted)]"
-                href={`/guides/${state.kind}?topic=${encodeURIComponent(topic.slug)}`}
+                href={guideListHref(state.kind, topic.slug)}
               >
                 {topic.label}
               </Link>

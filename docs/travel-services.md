@@ -134,10 +134,11 @@ that rendered the button, and returns a no-store 303. Invalid, disabled, stale,
 mismatched and unapproved records fail closed.
 
 `placement` is the same closed `BookingPlacement` vocabulary the hotel clickouts use
-(`destination`, `hotspot`, `trip`, `stay`, `checklist`, `discovery`, `guide`, `city`, `share`).
-`guide` is a travel-intel or how-to article, `city` a destination page and `share` a
-read-only shared trip; all three are first-party content surfaces and are **off by
-default**. The trip planner uses `trip`. `CatalogConfig.affiliate_placements`
+(`destination`, `hotspot`, `trip`, `stay`, `checklist`, `discovery`, `guide`, `city`,
+`share`, `life`). `guide` is a travel-intel or how-to article, `city` a destination page,
+`share` a read-only shared trip and `life` a lifestyle article; all four are first-party
+content surfaces and are **off by default**. The trip planner uses `trip`.
+`CatalogConfig.affiliate_placements`
 (Release controls → 目的地合作方案) lists the surfaces that may show offers; a surface not
 in the list gets an empty options list and a 404 on click, so a page loaded before the
 switch was turned off cannot click through. The placement is also the last `sub_id`

@@ -42,10 +42,15 @@ export const SITEMAP_ROUTES: readonly SitemapRoute[] = [
   { path: "/labs/airlines", priority: 0.4, changeFrequency: "weekly", feature: "airline_fares" },
   { path: "/destinations", priority: 0.6, changeFrequency: "weekly" },
   // No `feature`: the guides section is first-party content with no switch behind it, so it
-  // is never one of the conditional routes. All three resolve through the `[kind]` folder.
+  // is never one of the conditional routes. The two kind hubs resolve through the `[kind]`
+  // folder; `/life` is its own folder, because `/guides/life/...` is deliberately a 404.
   { path: "/guides", priority: 0.7, changeFrequency: "daily" },
   { path: "/guides/intel", priority: 0.7, changeFrequency: "daily" },
   { path: "/guides/howto", priority: 0.6, changeFrequency: "weekly" },
+  // Same shape as /guides/howto on purpose: a hub of evergreen articles that are themselves
+  // listed as monthly below. Claiming daily for a page that changes when an editor publishes
+  // would be the same invented signal the lastmod comment further down warns about.
+  { path: "/life", priority: 0.6, changeFrequency: "weekly" },
   // The guides are the destination-scoped content; the services pages are an affiliate lodging
   // directory for the same city, so they rank below their own guide rather than beside it.
   ...PUBLIC_DESTINATIONS.map((id) => ({

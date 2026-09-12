@@ -5,7 +5,7 @@ import { SiteHeader } from "@/components/site-header";
 import { StructuredData } from "@/components/structured-data";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
-import { guideHref } from "@/lib/guides";
+import { guideHref, guideListHref } from "@/lib/guides";
 import { getGuideList, getGuideTopics } from "@/lib/guides.server";
 import { breadcrumbs, itemList } from "@/lib/structured-data";
 
@@ -20,14 +20,14 @@ export default async function GuidesHubPage({ params }: { params: Promise<{ loca
   const [intel, howto, topics, t, nav] = await Promise.all([
     getGuideList(locale, { kind: "intel" }, 6),
     getGuideList(locale, { kind: "howto" }, 6),
-    getGuideTopics(locale),
+    getGuideTopics(locale, "travel"),
     getTranslations({ locale, namespace: "common" }),
     getTranslations({ locale, namespace: "navigation" }),
   ]);
 
   const cardLabels = {
-    intel: t("guides.intel"), howto: t("guides.howto"), expired: t("guides.expired"),
-    validUntil: t("guides.validUntil"), published: t("guides.published"),
+    intel: t("guides.intel"), howto: t("guides.howto"), life: t("guides.life"),
+    expired: t("guides.expired"), validUntil: t("guides.validUntil"), published: t("guides.published"),
   };
   const sections = [
     { kind: "intel" as const, heading: t("guides.latestIntel"), lead: t("guides.intelLead"), rows: intel.articles },
@@ -52,7 +52,7 @@ export default async function GuidesHubPage({ params }: { params: Promise<{ loca
           <section key={section.kind} className="mt-10">
             <div className="flex flex-wrap items-baseline justify-between gap-3">
               <h2 className="text-2xl font-bold tracking-tight">{section.heading}</h2>
-              <Link className="inline-flex min-h-11 items-center text-[var(--teal)] underline" href={`/guides/${section.kind}`}>
+              <Link className="inline-flex min-h-11 items-center text-[var(--teal)] underline" href={guideListHref(section.kind)}>
                 {t("guides.seeAll")}
               </Link>
             </div>
@@ -77,7 +77,7 @@ export default async function GuidesHubPage({ params }: { params: Promise<{ loca
                 <li key={topic.slug}>
                   <Link
                     className="inline-flex min-h-11 items-center rounded-full border border-[var(--line)] px-3 py-1 text-sm text-[var(--muted)]"
-                    href={`/guides/howto?topic=${encodeURIComponent(topic.slug)}`}
+                    href={guideListHref("howto", topic.slug)}
                   >
                     {topic.label}
                   </Link>

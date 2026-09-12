@@ -1,17 +1,23 @@
-"""Topic vocabulary for intel and guide articles.
+"""Topic vocabulary for intel, guide and lifestyle articles.
 
 The first nine slugs are the ones ``app.discovery.taxonomy`` already uses for hotspots and
 dishes. Reusing those ids is what lets a guide and an attraction that share a subject find
 each other later instead of living in two vocabularies that only look alike.
+
+Each topic belongs to one section. A travel topic on a lifestyle article, or the reverse,
+is refused at write time (``admin_service._resolve_topics``), so the two vocabularies never
+bleed into each other's filters.
 """
 
 from __future__ import annotations
+
+from typing import cast
 
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.guides.models import GuideTopic
-from app.guides.schemas import TopicList, TopicOption
+from app.guides.schemas import Section, TopicList, TopicOption
 from app.i18n import DEFAULT_LOCALE, LOCALES, Locale
 
 # slug -> (en, ja, ko, zh-TW, zh-CN), in the order of app.i18n.LOCALES.
@@ -37,6 +43,22 @@ SEED_TOPICS: tuple[tuple[str, tuple[str, str, str, str, str]], ...] = (
     ("beach", ("Beaches", "ビーチ", "해변", "海灘", "海滩")),
 )
 
+# The lifestyle section's vocabulary, same shape. None of these slugs may collide with
+# SEED_TOPICS or app.discovery.taxonomy.LABELS: a slug is global (uq_guide_topic_slug) and
+# the section it belongs to is what keeps a "food" guide out of the lifestyle filter.
+LIFE_SEED_TOPICS: tuple[tuple[str, tuple[str, str, str, str, str]], ...] = (
+    ("ai", ("AI tools", "AIツール", "AI 도구", "AI 工具", "AI 工具")),
+    ("tutorial", ("Tutorials", "チュートリアル", "튜토리얼", "教學", "教程")),
+    (
+        "software",
+        ("Apps & software", "アプリ・ソフト", "앱·소프트웨어", "軟體與 App", "软件与应用"),
+    ),
+    ("gadgets", ("Gadgets", "ガジェット", "가젯", "3C 裝置", "3C 设备")),
+    ("productivity", ("Productivity", "仕事効率化", "생산성", "效率工作", "效率工作")),
+    ("daily", ("Everyday life", "暮らし", "일상", "生活雜記", "生活杂记")),
+    ("misc", ("Other", "その他", "기타", "其他", "其他")),
+)
+
 
 def seed_names(labels: tuple[str, str, str, str, str]) -> dict[str, str]:
     return dict(zip(LOCALES, labels, strict=True))
@@ -53,13 +75,16 @@ def topic_label(topic: GuideTopic, locale: Locale) -> str:
 
 
 def topic_option(topic: GuideTopic, locale: Locale) -> TopicOption:
-    return TopicOption(slug=topic.slug, label=topic_label(topic, locale))
-
-
-async def list_topics(session: AsyncSession, locale: Locale) -> TopicList:
-    rows = await session.scalars(
-        select(GuideTopic)
-        .where(GuideTopic.is_active.is_(True))
-        .order_by(GuideTopic.display_order, GuideTopic.slug)
+    return TopicOption(
+        slug=topic.slug, label=topic_label(topic, locale), section=cast(Section, topic.section)
     )
+
+
+async def list_topics(
+    session: AsyncSession, locale: Locale, section: Section | None = None
+) -> TopicList:
+    query = select(GuideTopic).where(GuideTopic.is_active.is_(True))
+    if section is not None:
+        query = query.where(GuideTopic.section == section)
+    rows = await session.scalars(query.order_by(GuideTopic.display_order, GuideTopic.slug))
     return TopicList(topics=[topic_option(row, locale) for row in rows])

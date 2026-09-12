@@ -3,9 +3,11 @@ import {
   isGuideSummary,
   isPublishedGuide,
   isGuideKind,
+  isGuideSection,
   type GuideArticleState,
   type GuideKind,
   type GuideList,
+  type GuideSection,
   type GuideTopic,
 } from "./guides";
 import { defaultLocale, locales, type Locale } from "@/i18n/routing";
@@ -41,11 +43,20 @@ async function fetchJson(path: string, locale: string): Promise<unknown | null> 
   }
 }
 
-export type GuideFilters = { kind?: GuideKind; destination?: string; topic?: string; cursor?: string };
+export type GuideFilters = {
+  kind?: GuideKind;
+  /** Which public section to list. The API treats `section` and `kind` as an intersection,
+   *  so `{ section: "life", kind: "intel" }` is an empty list, never an unfiltered one. */
+  section?: GuideSection;
+  destination?: string;
+  topic?: string;
+  cursor?: string;
+};
 
 function query(locale: string, filters: GuideFilters, limit: number): string {
   const params = new URLSearchParams({ locale, limit: String(limit) });
   if (filters.kind) params.set("kind", filters.kind);
+  if (filters.section) params.set("section", filters.section);
   if (filters.destination) params.set("destination", filters.destination);
   if (filters.topic) params.set("topic", filters.topic);
   if (filters.cursor) params.set("cursor", filters.cursor);
@@ -64,13 +75,21 @@ export async function loadGuideList(
   };
 }
 
-export async function loadGuideTopics(locale: Locale): Promise<GuideTopic[]> {
-  const row = await fetchJson(`/guides/topics?locale=${encodeURIComponent(locale)}`, locale);
+/**
+ * The topic vocabulary of one section. `section` is required rather than defaulted: a page
+ * that forgot to pass it would silently render every topic of both sections as its filter
+ * chips. A catalogue served by an older API carries no `section` on its rows; those rows are
+ * kept, because the server already filtered them.
+ */
+export async function loadGuideTopics(locale: Locale, section: GuideSection): Promise<GuideTopic[]> {
+  const params = new URLSearchParams({ locale, section });
+  const row = await fetchJson(`/guides/topics?${params.toString()}`, locale);
   const body = row as Record<string, unknown> | null;
   if (!body || !Array.isArray(body.topics)) return [];
   return body.topics.filter((topic): topic is GuideTopic => {
     const entry = topic as Record<string, unknown> | null;
-    return !!entry && typeof entry.slug === "string" && typeof entry.label === "string";
+    return !!entry && typeof entry.slug === "string" && typeof entry.label === "string"
+      && (entry.section === undefined || isGuideSection(entry.section));
   });
 }
 
@@ -85,7 +104,10 @@ export async function loadGuideArticle(
     `/guides/${kind}/${encodeURIComponent(slug)}?locale=${encodeURIComponent(locale)}`, locale,
   );
   const body = row as Record<string, unknown> | null;
-  if (!body || body.slug !== slug || body.locale !== locale || !isGuideKind(body.kind)) {
+  // `body.kind !== kind` is the one-article-one-URL insurance: the API looks an article up
+  // by slug, so a response for a `life` article must never render under `/guides/howto/…`
+  // (or the reverse) if a route ever forwards the wrong kind.
+  if (!body || body.slug !== slug || body.locale !== locale || !isGuideKind(body.kind) || body.kind !== kind) {
     return unavailable;
   }
   const published = Array.isArray(body.published_locales)

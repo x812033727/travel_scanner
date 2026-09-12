@@ -35,4 +35,18 @@ describe("admin server navigation boundary", () => {
     expect(canAccessAdminPath(support, "/en/admin/users/member-id", "en")).toBe(true);
     expect(canAccessAdminPath(support, "/en/admin/hotspots", "en")).toBe(false);
   });
+
+  it("opens the guides editor once the server navigation lists it", () => {
+    // The API registry had no guides entry, the web fallback list is consulted only when the
+    // server list is empty, and this check refuses anything outside the list -- so on the live
+    // site /admin/guides was forbidden by URL and absent from the sidebar: nineteen topics,
+    // zero articles. The registry now carries it; this pins the web half of that fix.
+    const content = payload([
+      { id: "dashboard", href: "/admin", group: "overview" },
+      { id: "guides", href: "/admin/guides", group: "content" },
+    ]);
+    expect(content.navigation.map((item) => item.key)).toContain("guides");
+    expect(canAccessAdminPath(content, "/zh-TW/admin/guides", "zh-TW")).toBe(true);
+    expect(canAccessAdminPath(content, "/zh-TW/admin/hotspots", "zh-TW")).toBe(false);
+  });
 });

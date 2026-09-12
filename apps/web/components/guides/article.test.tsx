@@ -15,7 +15,8 @@ vi.mock("@/components/destination-affiliate-options", () => ({
 }));
 
 const labels = {
-  intel: "情報", howto: "攻略", published: "發布", updated: "更新", expiredNotice: "已過期", validUntil: "有效至",
+  intel: "情報", howto: "攻略", life: "生活分享",
+  published: "發布", updated: "更新", expiredNotice: "已過期", validUntil: "有效至",
   sources: "來源", checkedOn: "查核日", destination: "目的地", otherLanguages: "其他語言",
 };
 
@@ -79,5 +80,54 @@ describe("GuideArticle partner buttons", () => {
     draw();
     expect(screen.getByText("先看流量。")).toBeTruthy();
     expect(screen.getByRole("link", { name: "網路通訊" })).toBeTruthy();
+  });
+});
+
+describe("GuideArticle in the lifestyle section", () => {
+  const life = {
+    kind: "life" as const,
+    topics: [{ slug: "ai", label: "AI 工具" }],
+  };
+
+  it("offers every module under its own surface once the editor names a destination", () => {
+    draw(life);
+    const panel = screen.getByTestId("affiliate");
+    expect(panel.getAttribute("data-destination")).toBe("tokyo");
+    expect(panel.getAttribute("data-modules")).toBe("flight,hotel,activities,transport,connectivity");
+    expect(panel.getAttribute("data-placement")).toBe("life");
+    // Not "contextual": the heading must name the destination's partners rather than invite
+    // the reader to keep exploring a place the article was never about.
+    expect(panel.getAttribute("data-contextual")).toBe("false");
+  });
+
+  it("shows no partner buttons at all without a destination, which is the usual case", () => {
+    draw({ ...life, destination_id: null, destination_label: null });
+    expect(screen.queryByTestId("affiliate")).toBeNull();
+  });
+
+  it("labels the badge with its own section name", () => {
+    draw(life);
+    expect(screen.getByText("生活分享")).toBeTruthy();
+  });
+
+  it("links its topic chips at the lifestyle listing, not a /guides one", () => {
+    draw(life);
+    expect(screen.getByRole("link", { name: "AI 工具" }).getAttribute("href")).toBe("/life?topic=ai");
+  });
+
+  it("renders whatever the page handed it to read next", () => {
+    render(
+      <GuideArticle
+        labels={labels}
+        related={<p>最新旅遊情報攻略</p>}
+        state={{
+          slug: "ai-notes", kind: "life", locale: "zh-TW", status: "published",
+          destination_id: null, destination_label: null,
+          topics: [{ slug: "ai", label: "AI 工具" }], valid_until: null, expired: false,
+          document, published_locales: ["zh-TW"],
+        }}
+      />,
+    );
+    expect(screen.getByText("最新旅遊情報攻略")).toBeTruthy();
   });
 });

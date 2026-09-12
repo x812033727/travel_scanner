@@ -52,16 +52,19 @@ describe("SiteFooter", () => {
     expect(link.getAttribute("href")).toBe("/destinations");
   });
 
-  it("carries the only entry point to the guides that survives a first paint", () => {
-    // The header renders the section only after the discovery switch resolves; this link is
-    // in the response body of every public page regardless.
+  it.each([
+    ["旅遊情報攻略", "/guides"],
+    ["生活分享", "/life"],
+  ])("carries the only entry point to %s that survives a first paint", (name, href) => {
+    // The header renders each section only after the discovery switch resolves; these links
+    // are in the response body of every public page regardless.
     // Through renderAt, not a bare render: the mocked pathname is module-level state that
     // the "stays out of /admin" cases below leave pointing at a path this footer refuses to
     // render on. Shuffled, those ran first and this one asserted on an empty document.
     renderAt("/");
     const footer = screen.getByRole("contentinfo");
-    const link = within(footer).getByRole("link", { name: "情報攻略" });
-    expect(link.getAttribute("href")).toBe("/guides");
+    const link = within(footer).getByRole("link", { name });
+    expect(link.getAttribute("href")).toBe(href);
   });
 
   it("keeps the year without duplicating the top-header language control", () => {
