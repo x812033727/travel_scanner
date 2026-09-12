@@ -8,7 +8,7 @@ owner: claude-opus-5
 claimed_at: 2026-09-12T05:00:19Z
 created_at: 2026-09-12T05:00:14Z
 completed_at:
-branch:
+branch: claude/food-booking-platform-links-db11f4
 depends_on: []
 scope:
   - apps/api/app/foods/platform_links.py
@@ -33,16 +33,16 @@ scope:
 
 ## Definition of done
 
-- [ ] 五個平台的網址規則前後端一致，各自有正例與反例測試。
-- [ ] 日本店家依新平台重查一輪，能訂位的公開、不能訂位的存成停用。
-- [ ] 既有 12 個平台的判斷一個都沒被放寬。
+- [x] 五個平台的網址規則前後端一致，各自有正例與反例測試。
+- [x] 日本店家依新平台重查一輪，能訂位的公開、不能訂位的存成停用。
+- [x] 既有 12 個平台的判斷一個都沒被放寬。
 
 ## Steps
 
-- [ ] `platform_links.py` 與 `apps/web/lib/reservation-platforms.ts` 加上五個平台。
-- [ ] 順手修掉 `2026-09-11-catchtable-underscore-segment-id`：CatchTable id 的點分段可以用底線開頭。
-- [ ] 查核並產出 `apps/api/app/foods/data/platform_reviews/2026-09-12-japan-platforms.json`。
-- [ ] 查核摘要寫進 `docs/catalog-content-reviews/`。
+- [x] `platform_links.py` 與 `apps/web/lib/reservation-platforms.ts` 加上五個平台。
+- [x] 順手修掉 `2026-09-11-catchtable-underscore-segment-id`：CatchTable id 的點分段可以用底線開頭。
+- [x] 查核並產出 `apps/api/app/foods/data/platform_reviews/2026-09-12-japan-platforms.json`（106 筆：verified 12、disabled 86、not_found 8）。
+- [x] 查核摘要寫進 `docs/catalog-content-reviews/2026-09-12-japan-platforms.md`。
 - [ ] PR、合併、部署，在 api 容器試跑 `--file`，確認後 `--apply`。
 
 ## How to verify
@@ -95,3 +95,14 @@ isDeleted addressJson bizItems{ id name } } }`，會回店名、道路名住址�
 
 所以韓國這半留成 `2026-09-12-naver-booking-ids`。等 DuckDuckGo 的封鎖過了（之前的經驗是隔一陣子會解），
 或改用有 Google 檢索結果的管道，一輪就能查完——驗證那半已經現成。
+
+### 這輪的結果
+
+PR #428。日本可訂位的 9 間店共 12 筆連結：ジンギスカン ひげのうし 本店與月と太陽BREWING 本店
+（食べログ＋ホットペッパー）、やさい巻き串屋 ねじけもん與矢場とん 矢場町本店（ホットペッパー）、
+首里 東道Dining（ぐるなび＋AutoReserve）、森八 本店（ぐるなび）、琉球料理 赤田風、琉球料理 美榮、
+炙屋十兵衛（AutoReserve）。日本覆蓋率 10/102 → 19/102。
+
+覆蓋率還是低不是查得不夠：沒有連結的 83 間裡，咖啡店與甜點佔 42 間、拉麵與麵食佔 17 間。
+逐頁打開的 105 個平台店頁只有 12 頁有本店自己的訂位入口。另外用食べログ英文站搜出 43 間
+原本沒有任何候選頁的店家，0 間可訂位——這 43 間不必再查一次。
