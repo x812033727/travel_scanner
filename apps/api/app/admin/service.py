@@ -401,6 +401,8 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
             "travelpayouts_transport_target_url",
             "travelpayouts_connectivity_target_url",
             "travelpayouts_allowed_hosts",
+            "affiliate_link_cache_ttl_seconds",
+            "affiliate_clickout_token_ttl_seconds",
         ),
         ("travelpayouts_api_token",),
         "travelpayouts_enabled",
@@ -898,6 +900,16 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
 
         partner = PARTNERS_BY_CODE[affiliate_codes[provider]]
         configured = partner_configured(partner, settings)
+        if provider == "klook" and configured and not settings.klook_affiliate_url_template:
+            # An AID alone is enough for reviewed catalog offers, but not for the generic
+            # search/trip partner buttons, which need a template. Say so on the card
+            # rather than showing a green light while the front end renders nothing.
+            return (
+                True,
+                "ready",
+                "Klook AID 已設定；只有已審核的 Klook 商品與目的地連結會顯示，"
+                "搜尋頁與行程頁的通用合作連結需另填合作連結範本",
+            )
         return (
             configured,
             "ready" if configured else "not_configured",

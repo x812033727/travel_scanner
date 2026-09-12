@@ -308,6 +308,39 @@ def test_travelpayouts_is_configured_with_only_an_esim_target() -> None:
     assert partner_configured(PARTNERS_BY_CODE["travelpayouts"], settings)
 
 
+@pytest.mark.asyncio
+async def test_status_reports_the_modules_a_button_can_actually_render(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """`configured` and `supported_modules` deliberately differ for Klook: an AID alone is
+    enough for reviewed catalog offers but renders none of the generic partner buttons."""
+    settings = Settings(
+        klook_enabled=True,
+        klook_affiliate_id="134379",
+        travelpayouts_enabled=True,
+        travelpayouts_api_token="secret-token",
+        travelpayouts_project_id="123",
+        travelpayouts_marker="456",
+        travelpayouts_flight_target_url="https://www.aviasales.com/search",
+    )
+
+    async def runtime_settings(_session: object) -> Settings:
+        return settings
+
+    monkeypatch.setattr(affiliate_router, "load_runtime_settings", runtime_settings)
+    status = {item.code: item for item in await affiliate_router.affiliate_status(object())}  # type: ignore[arg-type]
+    assert status["klook"].configured is True
+    assert status["klook"].supported_modules == []
+    assert status["travelpayouts"].supported_modules == ["flight"]
+    assert status["booking"].configured is False and status["booking"].supported_modules == []
+
+    settings = settings.model_copy(
+        update={"klook_affiliate_url_template": "https://www.klook.com/search/?query={destination}"}
+    )
+    status = {item.code: item for item in await affiliate_router.affiliate_status(object())}  # type: ignore[arg-type]
+    assert status["klook"].supported_modules == ["hotel", "activities", "transport", "connectivity"]
+
+
 def test_status_serialization_cannot_contain_credentials() -> None:
     settings = Settings(
         booking_enabled=True,
@@ -380,6 +413,8 @@ async def test_options_and_clickout_record_append_only_summary_without_usage_cha
     assert len(clicks) == 1
     assert clicks[0].destination_summary == "東京"
     assert clicks[0].target_host == "www.booking.com"
+    # A search-sourced token was rendered on the search page; the report groups by it.
+    assert clicks[0].placement == "search"
     assert not any(isinstance(item, UsageLedger) for item in session.added)
     assert "travelers" not in clicks[0].destination_summary
 

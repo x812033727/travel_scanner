@@ -162,6 +162,25 @@ page **and** the admin preview, and `lib/content-blocks.ts` holds the one link s
 that both guides and managed site documents use. That sharing is the point: a rule
 tightened for one surface cannot quietly miss the other.
 
+### Partner buttons at the end of an article
+
+`components/guides/article.tsx` ends a published article with the same
+`DestinationAffiliateOptions` panel the destination services page uses, labelled
+`placement="guide"`, when all three hold: the article has a `destination_id` (Kyoto folds
+into `osaka-kyoto`), at least one of its topics maps to a partner module, and the notice
+has not expired. The mapping is the explicit allowlist in `apps/web/lib/guide-affiliate.ts`:
+`connectivity → connectivity`, `hotel → hotel`, `transport → transport`, `deal → flight`,
+and `itinerary/season/family/nature/culture/viewpoint/beach → activities`. Entry rules,
+packing, budget, etiquette, safety, food, shopping and nightlife map to nothing on purpose:
+a flight button under a safety article is the non-contextual placement the catalog rules
+avoid, and the reader is one click from the all-modules city page.
+
+The panel renders nothing until the API says so: the `guide` surface must be enabled in
+the catalog's `affiliate_placements` (off by default) and a verified destination offer
+must exist for that destination and module. The disclosure comes with the options, so an
+article never shows a partner link without it. The in-article `offer` block that would let
+an editor place a button mid-text is `tasks/open/2026-09-12-guide-offer-content-block.md`.
+
 ### Per-locale hreflang
 
 Publication is per locale, so the root layout's all-five alternate set would advertise
