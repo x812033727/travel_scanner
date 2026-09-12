@@ -128,3 +128,57 @@ That exact main SHA is the final base integrated into this documentation branch.
 These successful validation outcomes do not diagnose or repair the socket reset,
 prove failure-artifact retention, or authorize operational activation/deployment.
 The unchecked investigation and artifact-retention criteria remain open.
+
+## Observations from an unrelated session: 2026-09-12
+
+Four PRs merged overnight (#404, #409, #410, #412, #416) hit this defect twice. Neither
+occurrence is diagnosed here and no source was changed; these are evidence for whoever
+takes the task.
+
+**The strongest single data point: a PR with no code changes reproduced it.**
+
+PR #416, head `2506ec4c`, run 34667035517, job 103480926023:
+
+```
+[mobile-chromium] › e2e/community.spec.ts:191:1
+Error: apiRequestContext.fetch: read ECONNRESET
+  - → GET http://localhost:3000/api/travel/community/me
+  at registerAndVerify (e2e/community.spec.ts:34)
+1 failed, 5 passed (56.8s)
+```
+
+That PR's entire diff is one task markdown file moved from `tasks/open/` to `tasks/done/`
+plus a regenerated `tasks/BOARD.md`. No source, configuration, dependency, lockfile or
+workflow change of any kind. **Whatever causes this, it is not in the diff** — which also
+means bisecting against application changes will not find it.
+
+**The same spec failed a second way on a re-run, which may matter more than the reset.**
+
+PR #409, head `f8c4ad3`, same step, two attempts:
+
+| attempt | job | failure |
+| --- | --- | --- |
+| 1 | 103471054909 | `read ECONNRESET` at `registerAndVerify` (`community.spec.ts:34`), test at `:57` |
+| 2 (re-run) | 103474435554 | `expect(locator).toBeVisible()` timeout 30s at `community.spec.ts:155`, `element(s) not found` |
+| 3 (re-run) | — | passed |
+
+The second failure is not a connection reset at all. It is the offline-redelivery
+assertion: after `readerContext.setOffline(false)`, a message sent while the reader was
+offline never became visible within 30s. Same long journey, a completely different stage.
+
+If the two share a cause, a retry limited to connection resets on read-only requests (the
+remedy this task's Definition of done proposes) would not cover the second one. Worth
+settling before implementing that retry: are these one defect or two?
+
+**Two further boundary conditions from the same night:**
+
+- The step runs `Running 6 tests using 2 workers`. Both failures were on `mobile-chromium`.
+- On `f8c4ad3` the duplicate workflow run (push vs. pull_request, started three seconds
+  apart on separate runners) passed `full-stack-smoke` on the *same* SHA while the other
+  failed — consistent with the same-head observation already recorded for #363.
+- #410 and #412 carried the same `main` merge and passed `full-stack-smoke` on every
+  attempt, so it is not tied to a particular base commit.
+
+The task's own history ("Attempt 3 of the same PR workflow passed") held again on #409.
+That is a description of the flake, not a repair, and each occurrence still costs a
+full-stack CI cycle per affected PR.
