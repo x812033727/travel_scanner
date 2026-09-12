@@ -97,3 +97,42 @@ describe("SharedTripView", () => {
     expect(screen.queryByRole("link", { name: "用 Mokaair 規劃你的旅行" })).toBeNull();
   });
 });
+
+describe("a share link that will not open", () => {
+  /**
+   * Every failure — a 500, a dropped connection, a link the owner really did turn
+   * off — used to say "this link does not exist", and returned early, taking the
+   * page's own way onward with it. A recipient gave up on a trip that was still there.
+   */
+  function stubStatus(status: number) {
+    return vi.fn(async (input: RequestInfo | URL) => {
+      if (String(input).includes("/shared-trips/")) {
+        return new Response(JSON.stringify({ detail: "nope" }), { status, headers: { "Content-Type": "application/json" } });
+      }
+      return new Response("{}", { status: 200, headers: { "Content-Type": "application/json" } });
+    });
+  }
+
+  it("offers a retry when the trip simply could not be fetched", async () => {
+    const fetchMock = stubStatus(500);
+    vi.stubGlobal("fetch", fetchMock);
+    render(<SharedTripView token="abc" />);
+
+    expect(await screen.findByText("現在打不開這個行程")).toBeTruthy();
+    const before = fetchMock.mock.calls.filter(([url]) => String(url).includes("/shared-trips/")).length;
+
+    fireEvent.click(screen.getByRole("button", { name: "重試一次" }));
+
+    await waitFor(() => expect(
+      fetchMock.mock.calls.filter(([url]) => String(url).includes("/shared-trips/")).length,
+    ).toBeGreaterThan(before));
+  });
+
+  it("says a revoked link is revoked, and does not pretend it can be retried", async () => {
+    vi.stubGlobal("fetch", stubStatus(404));
+    render(<SharedTripView token="abc" />);
+
+    expect(await screen.findByText(/這個分享連結已經失效/)).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "重試一次" })).toBeNull();
+  });
+});

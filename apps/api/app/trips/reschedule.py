@@ -41,6 +41,7 @@ from app.trips.schedule import (
     ensure_system_slots,
     route_pair_count,
 )
+from app.warnings import warning_code
 
 # The create path already caps a trip at 61 inclusive days; PATCH must not be a
 # way around it, or ensure_system_slots writes more system rows than the 500-item
@@ -493,7 +494,7 @@ def reschedule_trip_data(data: Mapping[str, Any], rows: Sequence[TripPlanItem]) 
         "status": "stale" if total else "idle",
         "total": total,
         "completed": 0,
-        "warnings": ["旅程日期已變更，移動時間需要重新計算。"] if total else [],
+        "warnings": [warning_code("trip_dates_changed")] if total else [],
         "updated_at": datetime.now(UTC).isoformat(),
     }
     return next_data

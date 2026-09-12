@@ -11,6 +11,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.localized_names import item_names
 from app.models import TripPlan, TripPlanItem
 from app.providers.schemas import HotelOffer
+from app.warnings import warning_code
 
 # Titles of a meal card that has no restaurant yet, per site locale.
 MEAL_PLACEHOLDER_LABELS: dict[str, dict[str, str]] = {
@@ -98,7 +99,7 @@ def primary_lodging(trip: TripPlan, rows: list[TripPlanItem]) -> dict[str, Any] 
     }
 
 
-USER_LODGING_KEPT_WARNING = "已保留你選擇的主要飯店，本次重新查價未更換住宿。"
+USER_LODGING_KEPT_WARNING = warning_code("user_lodging_kept")
 
 
 def merge_reoptimized_lodging(

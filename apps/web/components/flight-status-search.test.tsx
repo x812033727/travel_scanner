@@ -108,4 +108,18 @@ describe("FlightStatusSearch", () => {
     render(<FlightStatusSearch />);
     expect(screen.getByRole("button", { name: "查詢 · 消耗 1 次" })).toBeTruthy();
   });
+  it("announces the search mode as two toggles rather than a tablist with no tabs", () => {
+    render(<FlightStatusSearch />);
+    // role="tablist" over two plain buttons told a screen reader to expect arrow-key
+    // navigation and a tabpanel; neither was ever there.
+    expect(screen.queryByRole("tablist")).toBeNull();
+    expect(screen.queryAllByRole("tab")).toHaveLength(0);
+
+    const ident = screen.getByRole("button", { name: "依班號", pressed: true });
+    const route = screen.getByRole("button", { name: "依航線", pressed: false });
+    fireEvent.click(route);
+    expect(ident.getAttribute("aria-pressed")).toBe("false");
+    expect(route.getAttribute("aria-pressed")).toBe("true");
+    expect(screen.getByLabelText("出發機場")).toBeTruthy();
+  });
 });

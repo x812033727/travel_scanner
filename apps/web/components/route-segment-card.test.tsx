@@ -109,3 +109,19 @@ describe("route segment card", () => {
     expect(screen.queryByRole("link")).toBeNull();
   });
 });
+
+describe("route warnings", () => {
+  /**
+   * The API used to append whole Traditional Chinese sentences to segment.warnings
+   * and this card printed them verbatim, so a Japanese or Korean member planning a
+   * Seoul day read the one line that told them the route was a reference, not a
+   * timetable, in a language they may not have. The API sends a code now.
+   */
+  it("translates a warning code and says nothing about one it does not know", () => {
+    render(<RouteSegmentCard segment={{ ...base, warnings: ["walk_route_beta", "a_code_from_a_newer_server"] }} />);
+
+    expect(screen.getByText(/步行路線為測試版/)).toBeTruthy();
+    // An unreleased code must render nothing, not its own name.
+    expect(screen.queryByText(/a_code_from_a_newer_server/)).toBeNull();
+  });
+});

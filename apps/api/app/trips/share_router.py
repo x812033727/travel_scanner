@@ -24,6 +24,7 @@ from app.problems import AppError
 from app.trips.map_identities import trip_map_identities
 from app.trips.router import limit_for, serialize_trip
 from app.trips.routing import infer_place_provider
+from app.warnings import warning_code
 
 router = APIRouter(prefix="/shared-trips", tags=["shared trips"])
 Session = Annotated[AsyncSession, Depends(get_session)]
@@ -147,7 +148,7 @@ async def fork_shared_trip(
                 "status": "stale",
                 "total": 0,
                 "completed": 0,
-                "warnings": ["這是從分享連結存下的行程，移動時間需要重新計算。"],
+                "warnings": [warning_code("saved_from_share")],
                 "updated_at": now.isoformat(),
             },
         },

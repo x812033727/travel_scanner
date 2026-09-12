@@ -16,16 +16,9 @@ import {
   X,
 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import {
-  KeyboardEvent,
-  TouchEvent,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { TouchEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { api, ApiError } from "@/lib/api";
+import { useModalSheet } from "@/lib/modal-sheet";
 import { safeExternalHref } from "@/lib/navigation";
 import { Link } from "@/i18n/navigation";
 
@@ -150,10 +143,17 @@ export function HotspotRestaurantsPanel({
   const [tripDate, setTripDate] = useState("");
   const [mealRole, setMealRole] = useState<"lunch" | "dinner">("lunch");
   const [tripSaving, setTripSaving] = useState(false);
-  const dialogRef = useRef<HTMLDivElement>(null);
-  const closeRef = useRef<HTMLButtonElement>(null);
   const touchStart = useRef<number | null>(null);
   const initialPlaceIds = useRef<string[]>([]);
+  // Two layers, two sheets. The nested picker sits inside the panel, so a single trap
+  // scoped to the panel would offer the whole restaurant list as tab stops behind it,
+  // and a single Escape handler would have to guess which layer the reader meant.
+  // `useModalSheet` keeps a stack: each layer traps its own Tab, only the top one
+  // answers Escape, and the body stays locked until the last one closes.
+  const dialogRef = useModalSheet<HTMLDivElement>(true, onClose);
+  const tripDialogRef = useModalSheet<HTMLDivElement>(Boolean(tripRestaurant), () =>
+    setTripRestaurant(null),
+  );
   const number = new Intl.NumberFormat(locale);
   const date = new Intl.DateTimeFormat(locale, { dateStyle: "medium", timeStyle: "short" });
 
@@ -237,40 +237,6 @@ export function HotspotRestaurantsPanel({
       });
   }, []);
 
-  useEffect(() => {
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    closeRef.current?.focus();
-    const closeOnEscape = (event: globalThis.KeyboardEvent) => {
-      if (event.key === "Escape") {
-        if (tripRestaurant) setTripRestaurant(null);
-        else onClose();
-      }
-    };
-    document.addEventListener("keydown", closeOnEscape);
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      document.removeEventListener("keydown", closeOnEscape);
-    };
-  }, [onClose, tripRestaurant]);
-
-  function trapFocus(event: KeyboardEvent<HTMLDivElement>) {
-    if (event.key !== "Tab") return;
-    const nodes = dialogRef.current?.querySelectorAll<HTMLElement>(
-      "button:not([disabled]), a[href], select:not([disabled]), input:not([disabled])",
-    );
-    if (!nodes?.length) return;
-    const first = nodes[0];
-    const last = nodes[nodes.length - 1];
-    if (event.shiftKey && document.activeElement === first) {
-      event.preventDefault();
-      last.focus();
-    } else if (!event.shiftKey && document.activeElement === last) {
-      event.preventDefault();
-      first.focus();
-    }
-  }
-
   function handleTouchStart(event: TouchEvent) {
     touchStart.current = event.touches[0]?.clientY ?? null;
   }
@@ -352,10 +318,10 @@ export function HotspotRestaurantsPanel({
 
   return (
     <div className="fixed inset-0 z-[80] bg-slate-950/45 backdrop-blur-sm" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}>
-      <div ref={dialogRef} role="dialog" aria-modal="true" aria-labelledby="restaurant-panel-title" onKeyDown={trapFocus} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} className="absolute inset-x-0 bottom-0 flex h-[94dvh] flex-col rounded-t-[2rem] bg-[var(--paper)] shadow-2xl md:inset-y-0 md:left-auto md:h-full md:w-[38rem] md:rounded-none md:rounded-l-[2rem]">
+      <div ref={dialogRef} role="dialog" aria-modal="true" aria-labelledby="restaurant-panel-title" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} className="absolute inset-x-0 bottom-0 flex h-[94dvh] flex-col rounded-t-[2rem] bg-[var(--paper)] shadow-2xl md:inset-y-0 md:left-auto md:h-full md:w-[38rem] md:rounded-none md:rounded-l-[2rem]">
         <div className="mx-auto mt-2 h-1.5 w-11 rounded-full bg-slate-300 md:hidden" />
         <header className="border-b border-[var(--line)] px-5 pb-4 pt-4 md:px-7 md:pt-7">
-          <div className="flex items-start gap-3"><div className="min-w-0 flex-1"><p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[.16em] text-[var(--coral)]"><UtensilsCrossed size={15} />{t("eyebrow")}</p><h2 id="restaurant-panel-title" className="mt-1 text-2xl font-bold tracking-tight">{t("title", { name: hotspot.name })}</h2><p className="mt-1 text-sm text-[var(--muted)]">{t("threshold")}</p></div><button ref={closeRef} type="button" onClick={onClose} aria-label={t("close")} className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[var(--line)] bg-white"><X /></button></div>
+          <div className="flex items-start gap-3"><div className="min-w-0 flex-1"><p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[.16em] text-[var(--coral)]"><UtensilsCrossed size={15} />{t("eyebrow")}</p><h2 id="restaurant-panel-title" className="mt-1 text-2xl font-bold tracking-tight">{t("title", { name: hotspot.name })}</h2><p className="mt-1 text-sm text-[var(--muted)]">{t("threshold")}</p></div><button type="button" onClick={onClose} aria-label={t("close")} className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[var(--line)] bg-white"><X /></button></div>
           <div className="mt-4 grid grid-cols-2 gap-2"><label className="text-xs font-semibold text-[var(--muted)]">{t("radius")}<select value={radius} onChange={(event) => setRadius(Number(event.target.value) as 5 | 10)} className="mt-1 h-11 w-full rounded-xl border border-[var(--line)] bg-white px-3 text-sm text-[var(--ink)]"><option value={5}>{t("radiusOption", { radius: 5 })}</option><option value={10}>{t("radiusOption", { radius: 10 })}</option></select></label><label className="text-xs font-semibold text-[var(--muted)]">{t("sortLabel")}<select value={sort} onChange={(event) => setSort(event.target.value as RestaurantSort)} className="mt-1 h-11 w-full rounded-xl border border-[var(--line)] bg-white px-3 text-sm text-[var(--ink)]"><option value="recommended">{t("sort.recommended")}</option><option value="rating">{t("sort.rating")}</option><option value="reviews">{t("sort.reviews")}</option><option value="distance">{t("sort.distance")}</option></select></label></div>
           <p className="mt-2 text-xs leading-5 text-[var(--muted)]">{t("preferenceSaved")}</p>
         </header>
@@ -382,7 +348,7 @@ export function HotspotRestaurantsPanel({
           {!loading && !error && data?.next_cursor !== null && data?.next_cursor !== undefined && <button type="button" disabled={loadingMore} onClick={() => void search(data.next_cursor ?? undefined)} className="mt-4 flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl border border-[var(--teal)] bg-white font-semibold text-[var(--teal)] disabled:opacity-50">{loadingMore && <RefreshCw size={16} className="animate-spin" />}{t("loadMore")}</button>}
           {data && <p className="mt-5 text-center text-xs leading-5 text-[var(--muted)]">{t("attributionPrefix")} <span translate="no" className="whitespace-nowrap font-normal">{data.attribution}</span><br />{t("storageNotice")}</p>}
         </div>
-        {tripRestaurant && <div className="absolute inset-0 z-10 flex items-end bg-slate-950/35 p-3 md:items-center md:justify-center" role="dialog" aria-modal="true" aria-label={t("tripPickerTitle")}><div className="w-full rounded-[1.75rem] bg-white p-5 shadow-2xl md:max-w-md"><div className="flex items-center justify-between gap-3"><div><p className="text-xs font-bold text-[var(--teal)]">{t("addToTrip")}</p><h3 className="mt-1 text-xl font-bold">{tripRestaurant.editorial?.name || tripRestaurant.name}</h3></div><button type="button" onClick={() => setTripRestaurant(null)} className="grid h-11 w-11 place-items-center rounded-full border border-[var(--line)]" aria-label={t("closeTripPicker")}><X size={18} /></button></div>{tripOptions.length ? <div className="mt-5 grid gap-3"><label className="text-sm font-semibold">{t("tripLabel")}<select value={tripId} onChange={(event) => { const next = tripOptions.find((item) => item.trip_id === event.target.value); setTripId(event.target.value); setTripDate(next?.start_date || ""); }} className="mt-1 h-12 w-full rounded-xl border border-[var(--line)] px-3">{tripOptions.map((item) => <option key={item.trip_id} value={item.trip_id}>{item.name}</option>)}</select></label><label className="text-sm font-semibold">{t("dateLabel")}<input type="date" value={tripDate} min={tripOptions.find((item) => item.trip_id === tripId)?.start_date} max={tripOptions.find((item) => item.trip_id === tripId)?.end_date} onChange={(event) => setTripDate(event.target.value)} className="mt-1 h-12 w-full rounded-xl border border-[var(--line)] px-3" /></label><label className="text-sm font-semibold">{t("mealLabel")}<select value={mealRole} onChange={(event) => setMealRole(event.target.value as "lunch" | "dinner")} className="mt-1 h-12 w-full rounded-xl border border-[var(--line)] px-3"><option value="lunch">{t("lunch")}</option><option value="dinner">{t("dinner")}</option></select></label><button type="button" disabled={tripSaving || !tripDate} onClick={() => void saveToTrip()} className="mt-2 min-h-12 rounded-xl bg-[var(--ink)] px-4 font-semibold text-white disabled:opacity-50">{tripSaving ? t("savingTrip") : t("confirmTrip")}</button></div> : <p className="mt-5 rounded-xl bg-[var(--paper)] p-4 text-sm text-[var(--muted)]">{t("noTrips")}</p>}</div></div>}
+        {tripRestaurant && <div ref={tripDialogRef} className="absolute inset-0 z-10 flex items-end bg-slate-950/35 p-3 md:items-center md:justify-center" role="dialog" aria-modal="true" aria-label={t("tripPickerTitle")}><div className="w-full rounded-[1.75rem] bg-white p-5 shadow-2xl md:max-w-md"><div className="flex items-center justify-between gap-3"><div><p className="text-xs font-bold text-[var(--teal)]">{t("addToTrip")}</p><h3 className="mt-1 text-xl font-bold">{tripRestaurant.editorial?.name || tripRestaurant.name}</h3></div><button type="button" onClick={() => setTripRestaurant(null)} className="grid h-11 w-11 place-items-center rounded-full border border-[var(--line)]" aria-label={t("closeTripPicker")}><X size={18} /></button></div>{tripOptions.length ? <div className="mt-5 grid gap-3"><label className="text-sm font-semibold">{t("tripLabel")}<select value={tripId} onChange={(event) => { const next = tripOptions.find((item) => item.trip_id === event.target.value); setTripId(event.target.value); setTripDate(next?.start_date || ""); }} className="mt-1 h-12 w-full rounded-xl border border-[var(--line)] px-3">{tripOptions.map((item) => <option key={item.trip_id} value={item.trip_id}>{item.name}</option>)}</select></label><label className="text-sm font-semibold">{t("dateLabel")}<input type="date" value={tripDate} min={tripOptions.find((item) => item.trip_id === tripId)?.start_date} max={tripOptions.find((item) => item.trip_id === tripId)?.end_date} onChange={(event) => setTripDate(event.target.value)} className="mt-1 h-12 w-full rounded-xl border border-[var(--line)] px-3" /></label><label className="text-sm font-semibold">{t("mealLabel")}<select value={mealRole} onChange={(event) => setMealRole(event.target.value as "lunch" | "dinner")} className="mt-1 h-12 w-full rounded-xl border border-[var(--line)] px-3"><option value="lunch">{t("lunch")}</option><option value="dinner">{t("dinner")}</option></select></label><button type="button" disabled={tripSaving || !tripDate} onClick={() => void saveToTrip()} className="mt-2 min-h-12 rounded-xl bg-[var(--ink)] px-4 font-semibold text-white disabled:opacity-50">{tripSaving ? t("savingTrip") : t("confirmTrip")}</button></div> : <p className="mt-5 rounded-xl bg-[var(--paper)] p-4 text-sm text-[var(--muted)]">{t("noTrips")}</p>}</div></div>}
       </div>
     </div>
   );

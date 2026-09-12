@@ -626,7 +626,16 @@
     "forecastLabel": "10-day forecast",
     "sourceLine": "Source: {attribution} · {freshness}",
     "cached": "cached",
-    "fresh": "just updated"
+    "fresh": "just updated",
+    "warning": {
+      "weather_trip_past": "These dates are in the past, and the weather service does not provide historical forecasts for them.",
+      "weather_beyond_forecast": "These dates are beyond the current 10-day forecast.",
+      "weather_partial_forecast": "Only the days of this trip that fall inside the 10-day forecast can be shown.",
+      "weather_current_incomplete": "The current conditions came back incomplete.",
+      "weather_current_unavailable": "Current conditions are temporarily unavailable.",
+      "weather_daily_incomplete": "Part of the daily forecast came back incomplete.",
+      "weather_daily_unavailable": "The 10-day forecast is temporarily unavailable."
+    }
   },
   "print": {
     "eyebrow": "Itinerary",
@@ -680,7 +689,13 @@
     "nothingToday": "Nothing is planned for today.",
     "openPlanner": "Open the full plan",
     "loading": "Loading today…",
-    "unavailable": "This trip is not available right now. Try again once you are back online."
+    "unavailable": "This trip is not available right now. Try again once you are back online.",
+    "backToTrips": "My trips",
+    "home": "Home",
+    "offlineReady": "Today is saved on this device and readable without a signal.",
+    "retry": "Try again",
+    "unavailableOffline": "This trip cannot be read right now. Try again once you are back online.",
+    "unavailableError": "Something went wrong reading this trip. Trying again normally works."
   },
   "shareTarget": {
     "title": "Which trip is this for?",
@@ -888,7 +903,26 @@
     "externalCannotApply": "External navigation cannot be applied",
     "fetchingShort": "Fetching…",
     "fetchRoute": "Get the route",
-    "readyAt": "Next stop can start at {time}"
+    "readyAt": "Next stop can start at {time}",
+    "warning": {
+      "walk_route_beta": "Walking routes are in beta. Check the road and your own safety on the ground.",
+      "transit_preference_fallback": "Your preference returned nothing, so this is an ordinary public-transport route.",
+      "transit_current_schedule_fallback": "Neither the chosen date nor a recent reference window returned anything, so this is the reference route Google can offer right now. The travel time is usable, but re-check before you set off.",
+      "transit_daytime_schedule_fallback": "No service runs at the chosen time, so this is a daytime reference route from the same weekday. The travel time is usable, but re-check before you set off.",
+      "transit_near_term_schedule_fallback": "Timetables for the chosen date are not published yet, so this is a reference route from the same weekday and time. The travel time is usable, but re-check before you set off.",
+      "coordinate_fallback": "The exact place identity could not be routed, so this was retried with the same place's coordinates.",
+      "fixed_booking_late": "This leg may make the next fixed booking late. Check the time of your next stop.",
+      "transit_beyond_timetable_preview": "These dates are beyond published timetables. This is a preview from the same weekday and time.",
+      "transit_past_timetable_preview": "These dates are past the timetable range, so this is a reference route available now.",
+      "naver_drive_current_traffic": "NAVER estimates driving from current traffic, not the traffic on your travel date.",
+      "average_wait_time": "This option uses average waiting times, not the actual service on your date.",
+      "route_refresh_failed": "The re-check failed, so the previous route is kept for now.",
+      "manual_duration_unverified": "You entered this travel time yourself. No map service has checked it.",
+      "odsay_current_service": "ODsay gives the public-transport service running now, not the actual departures on your travel date.",
+      "odsay_polyline_is_stop_sequence": "The line on the map follows the stop sequence. It is not road-by-road or track-by-track navigation."
+    },
+    "mapExpand": "Enlarge map",
+    "mapCollapse": "Shrink map"
   },
   "searchFlights": "Find flights · {charge}",
   "statusSearch": "Flight status · {charge}",
@@ -904,5 +938,18 @@
   "watchCreated": "Watching {count} quoted prices",
   "watchManage": "Manage",
   "watchNothingQuoted": "Find flights or a place to stay first — a trip with no quote has no price to watch.",
-  "watchSignIn": "Sign in to watch these prices."
+  "watchSignIn": "Sign in to watch these prices.",
+  "list": {
+    "empty": "No saved trips yet.",
+    "emptyAction": "Create your first trip",
+    "deleteConfirm": "Delete this trip? This cannot be undone.",
+    "dateRange": "{start} – {end}",
+    "noDates": "No dates yet"
+  },
+  "todayEntry": "Today view (works offline)",
+  "todayEntryHint": "Just today's stops. Open it once before you set off and it stays readable on your phone without a signal.",
+  "shareUnavailableTitle": "This trip will not open right now",
+  "shareUnavailableBody": "That is usually the connection, or the sharing service having a moment. Trying again normally works.",
+  "shareRetry": "Try again",
+  "shareNotFoundBody": "This share link has expired, or the person who made it turned it off. Ask them for a new one."
 }

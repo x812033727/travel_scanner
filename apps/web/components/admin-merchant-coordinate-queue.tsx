@@ -1,7 +1,10 @@
 "use client";
 
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
+
+type Translator = ReturnType<typeof useTranslations>;
 
 type QueueMerchant = {
   id: string;
@@ -52,39 +55,55 @@ type ApproveOutcome = { merchant_id: string; outcome: string };
 
 const PAGE_SIZE = 10;
 
-const OUTCOME_LABELS: Record<string, string> = {
-  verified: "已驗證",
-  coordinates_saved: "座標已存（待 Naver 連結）",
-  candidate_changed: "Google 結果已改變，略過",
-  place_id_taken: "Place ID 已被其他店家使用",
-  no_result: "找不到結果",
-  already_durable: "已有永久座標",
-  not_found: "店家不存在",
-};
+// The outcomes the approve endpoint can report. An outcome this build does not know is
+// shown as its own code rather than dropped: the admin needs to see that something was
+// skipped even when a newer server is the one naming the reason.
+const OUTCOMES = [
+  "verified",
+  "coordinates_saved",
+  "candidate_changed",
+  "place_id_taken",
+  "no_result",
+  "already_durable",
+  "not_found",
+] as const;
 
-function verdictBadge(signals: QueueSignals) {
+function outcomeLabel(t: Translator, outcome: string) {
+  return (OUTCOMES as readonly string[]).includes(outcome) ? t(`outcome.${outcome}`) : outcome;
+}
+
+function verdictBadge(t: Translator, signals: QueueSignals) {
   if (signals.verdict === "agree") {
     return (
       <span className="rounded-full bg-emerald-100 px-2 py-1 text-xs font-semibold text-emerald-800">
-        一致
+        {t("verdictAgree")}
       </span>
     );
   }
   if (signals.verdict === "no_result") {
     return (
       <span className="rounded-full bg-slate-100 px-2 py-1 text-xs font-semibold text-slate-600">
-        無結果
+        {t("verdictNoResult")}
       </span>
     );
   }
   return (
     <span className="rounded-full bg-amber-100 px-2 py-1 text-xs font-semibold text-amber-800">
-      需人工比對
+      {t("verdictCheck")}
     </span>
   );
 }
 
+// One list for the header and for every cell's `data-label`, so the phone layout cannot
+// drift out of step with the columns it is labelling.
+const COLUMN_KEYS = ["columnSelect", "columnMerchant", "columnCandidate", "columnSignals"] as const;
+
 export function AdminMerchantCoordinateQueue() {
+  const t = useTranslations("admin.merchantCoordinateQueue");
+  // The reasons are a list, and every language punctuates a list differently — "、" is
+  // right in Chinese and wrong everywhere else.
+  const reasonList = new Intl.ListFormat(useLocale(), { style: "long", type: "unit" });
+  const columns = COLUMN_KEYS.map((key) => t(key));
   const [page, setPage] = useState(1);
   const [version, setVersion] = useState(0);
   const [data, setData] = useState<QueueResponse | null>(null);
@@ -151,13 +170,15 @@ export function AdminMerchantCoordinateQueue() {
         (outcome) => !["verified", "coordinates_saved"].includes(outcome.outcome),
       );
       setMessage(
-        `已寫入 ${result.written} 筆座標${
-          skipped.length
-            ? `；${skipped.length} 筆略過（${skipped
-                .map((outcome) => OUTCOME_LABELS[outcome.outcome] ?? outcome.outcome)
-                .join("、")}）`
-            : ""
-        }。`,
+        skipped.length
+          ? t("writtenWithSkipped", {
+              count: result.written,
+              skipped: skipped.length,
+              reasons: reasonList.format(
+                skipped.map((outcome) => outcomeLabel(t, outcome.outcome)),
+              ),
+            })
+          : t("written", { count: result.written }),
       );
       setVersion((current) => current + 1);
     } catch (reason) {
@@ -171,11 +192,8 @@ export function AdminMerchantCoordinateQueue() {
 
   return (
     <section className="mt-6">
-      <h2 className="text-lg font-bold">座標審核佇列</h2>
-      <p className="mt-1 text-sm text-[var(--muted)]">
-        列出還沒有永久座標的店家，並排 Google 找到的地點與比對訊號。核准會以
-        admin_verified 來源寫入座標；伺服器會重新查詢確認，絕不採用瀏覽器送來的座標。
-      </p>
+      <h2 className="text-lg font-bold">{t("title")}</h2>
+      <p className="mt-1 text-sm text-[var(--muted)]">{t("description")}</p>
       {message && (
         <p
           role="status"
@@ -186,33 +204,30 @@ export function AdminMerchantCoordinateQueue() {
       )}
       {data && !data.configured && (
         <p className="mt-3 rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm">
-          Google Places 金鑰未設定，無法解析候選。
+          {t("notConfigured")}
         </p>
       )}
       <div className="mt-4 overflow-x-auto rounded-2xl border bg-white">
-        <table className="w-full min-w-[960px] text-left text-sm">
+        <table className="admin-responsive-table w-full min-w-[960px] text-left text-sm">
           <thead className="bg-[var(--paper)]">
             <tr>
-              <th className="p-3">選取</th>
-              <th className="p-3">店家</th>
-              <th className="p-3">Google 找到</th>
-              <th className="p-3">訊號</th>
+              {columns.map((column) => <th key={column} className="p-3">{column}</th>)}
             </tr>
           </thead>
           <tbody>
             {(data?.items ?? []).map((item) => (
               <tr key={item.merchant.id} className="border-t align-top">
-                <td className="p-3">
+                <td data-label={columns[0]} className="p-3">
                   <input
                     type="checkbox"
-                    aria-label={`選取 ${item.merchant.name}`}
+                    aria-label={t("selectMerchant", { name: item.merchant.name })}
                     className="h-5 w-5"
                     disabled={!item.candidate}
                     checked={selected.has(item.merchant.id)}
                     onChange={() => toggle(item.merchant.id)}
                   />
                 </td>
-                <td className="p-3">
+                <td data-label={columns[1]} className="p-3">
                   <div className="font-semibold">{item.merchant.name}</div>
                   <div className="text-xs text-[var(--muted)]">
                     {item.merchant.local_name} · {item.merchant.destination_id.toUpperCase()} ·{" "}
@@ -223,11 +238,11 @@ export function AdminMerchantCoordinateQueue() {
                   )}
                   {item.merchant.needs_naver_url && (
                     <div className="mt-1 text-xs text-amber-700">
-                      韓國店家：座標可先寫入，發布仍需 Naver 精準地點頁
+                      {t("koreaNote")}
                     </div>
                   )}
                 </td>
-                <td className="p-3">
+                <td data-label={columns[2]} className="p-3">
                   {item.candidate ? (
                     <>
                       <div className="font-semibold">{item.candidate.name}</div>
@@ -243,28 +258,28 @@ export function AdminMerchantCoordinateQueue() {
                         rel="noreferrer"
                         className="text-xs text-[var(--teal)] underline"
                       >
-                        在 Google 地圖開啟
+                        {t("openInGoogleMaps")}
                       </a>
                     </>
                   ) : (
-                    <span className="text-xs text-[var(--muted)]">找不到結果</span>
+                    <span className="text-xs text-[var(--muted)]">{t("noResult")}</span>
                   )}
                 </td>
-                <td className="p-3">
+                <td data-label={columns[3]} className="p-3">
                   <div className="flex flex-wrap items-center gap-2">
-                    {verdictBadge(item.signals)}
+                    {verdictBadge(t, item.signals)}
                     {typeof item.signals.name_score === "number" && (
                       <span className="text-xs text-[var(--muted)]">
-                        名稱 {item.signals.name_score.toFixed(2)}
+                        {t("nameScore", { score: item.signals.name_score.toFixed(2) })}
                       </span>
                     )}
                     {typeof item.signals.distance_km === "number" && (
                       <span className="text-xs text-[var(--muted)]">
-                        距離 {item.signals.distance_km} km
+                        {t("distanceKm", { km: item.signals.distance_km })}
                       </span>
                     )}
                     {item.signals.place_id_taken && (
-                      <span className="text-xs text-red-700">Place ID 已被使用</span>
+                      <span className="text-xs text-red-700">{t("placeIdTaken")}</span>
                     )}
                   </div>
                 </td>
@@ -273,7 +288,7 @@ export function AdminMerchantCoordinateQueue() {
             {data && data.configured && !data.items?.length && (
               <tr>
                 <td colSpan={4} className="p-6 text-center text-sm text-[var(--muted)]">
-                  佇列已清空 — 所有店家都有永久座標了。
+                  {t("queueEmpty")}
                 </td>
               </tr>
             )}
@@ -287,7 +302,7 @@ export function AdminMerchantCoordinateQueue() {
           disabled={loading || !selected.size}
           className="min-h-11 rounded-xl bg-[var(--teal)] px-4 font-semibold text-white disabled:opacity-40"
         >
-          批次核准（{selected.size}）
+          {t("approveSelected", { count: selected.size })}
         </button>
         <button
           type="button"
@@ -298,10 +313,10 @@ export function AdminMerchantCoordinateQueue() {
           disabled={loading || page <= 1}
           className="min-h-11 rounded-xl border bg-white px-4 disabled:opacity-40"
         >
-          上一頁
+          {t("previousPage")}
         </button>
         <span className="text-sm text-[var(--muted)]">
-          第 {page} / {totalPages} 頁 · 待處理 {data?.total ?? 0} 筆
+          {t("pageStatus", { page, total: totalPages, pending: data?.total ?? 0 })}
         </span>
         <button
           type="button"
@@ -312,7 +327,7 @@ export function AdminMerchantCoordinateQueue() {
           disabled={loading || page >= totalPages}
           className="min-h-11 rounded-xl border bg-white px-4 disabled:opacity-40"
         >
-          下一頁
+          {t("nextPage")}
         </button>
       </div>
     </section>

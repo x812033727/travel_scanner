@@ -171,6 +171,7 @@ from app.usage.service import (
     reserve_use,
     usage_status,
 )
+from app.warnings import is_warning_code, warning_code
 from app.weather.schemas import TripWeather
 from app.weather.service import TripWeatherService
 
@@ -2150,24 +2151,27 @@ async def refreshed_plan(session: AsyncSession, trip: TripPlan) -> tuple[TripPla
     async def collect(module: str) -> tuple[str, list[Offer], str | None]:
         candidates = providers.get(module, [])
         if not candidates:
-            module_status = status.module_statuses.get(module)
-            return module, [], module_status.message if module_status else "供應商尚未設定"
-        primary_name = str(getattr(candidates[0], "name", "unknown"))
+            # The registry's own status sentence is admin copy, written in one language
+            # for the operations console. A member gets the code instead, so their own
+            # catalog says it.
+            return module, [], warning_code("provider_not_configured", module=module)
         for index, provider in enumerate(candidates):
             try:
                 offers = await run_provider_module(provider, runner, module, query)
                 warning = None
                 if index > 0:
                     offers = [offer.model_copy(update={"is_fallback": True}) for offer in offers]
-                    warning = (
-                        f"{module} 主要供應商 {primary_name} 暫時無法使用，"
-                        f"已切換至 {getattr(provider, 'name', 'backup')}。"
+                    warning = warning_code(
+                        "provider_fallback",
+                        module=module,
+                        provider=str(getattr(provider, "name", "backup")),
                     )
                 return module, offers, warning
-            except ProviderUnavailableError as exc:
+            except ProviderUnavailableError:
+                # `circuit is open` is a sentence for a log, not for a traveller.
                 if index + 1 == len(candidates):
-                    return module, [], str(exc)
-        return module, [], "供應商目前無法使用"
+                    return module, [], warning_code("provider_unavailable", module=module)
+        return module, [], warning_code("provider_unavailable", module=module)
 
     refreshed = await asyncio.gather(*(collect(str(module)) for module in query.modules))
     offers = {module: rows for module, rows, _ in refreshed}
@@ -2223,7 +2227,11 @@ async def refreshed_plan(session: AsyncSession, trip: TripPlan) -> tuple[TripPla
         foods,
     )
     if not plans:
-        detail = "；".join(warnings) or "供應商目前沒有可用組合"
+        # `warnings` now carries codes; a code is not an explanation, so only text a
+        # provider actually wrote can go into the sentence a member reads.
+        detail = "；".join(text for text in warnings if not is_warning_code(text)) or (
+            "供應商目前沒有可用組合"
+        )
         raise AppError(503, "trip_reoptimization_unavailable", detail)
     selected = next((plan for plan in plans if plan.mode == trip.mode), plans[0])
     if place_service.configured:
@@ -2346,7 +2354,7 @@ async def save_trip(
                     "warnings": (
                         []
                         if routing_status != "unavailable"
-                        else ["路線服務尚未啟用，可先使用手動移動時間。"]
+                        else [warning_code("route_service_unavailable")]
                     ),
                     "updated_at": datetime.now(UTC).isoformat(),
                 },
@@ -2395,7 +2403,7 @@ async def save_trip(
                         "status": "failed",
                         "total": route_pairs,
                         "completed": 0,
-                        "warnings": ["背景路線服務暫時無法使用，可在行程頁重新計算。"],
+                        "warnings": [warning_code("route_service_background_failed")],
                         "updated_at": datetime.now(UTC).isoformat(),
                     },
                 }
@@ -3149,14 +3157,14 @@ async def get_trip_weather(
         and trip.end_date
     ):
         if trip.end_date < weather.available_start_date:
-            warnings.append("旅程日期已過，天氣服務不提供這段期間的歷史預報")
+            warnings.append("weather_trip_past")
         elif trip.start_date > weather.available_end_date:
-            warnings.append("旅程日期超出目前 10 日預報範圍")
+            warnings.append("weather_beyond_forecast")
         elif (
             trip.start_date < weather.available_start_date
             or trip.end_date > weather.available_end_date
         ):
-            warnings.append("目前只能顯示旅程中落在 10 日預報範圍內的日期")
+            warnings.append("weather_partial_forecast")
     return weather.model_copy(update={"warnings": list(dict.fromkeys(warnings))})
 
 
@@ -3307,7 +3315,7 @@ async def update_itinerary(
             "status": "stale",
             "total": route_pair_count(existing_rows),
             "completed": 0,
-            "warnings": ["行程已變更，受影響的移動時間需要重新計算。"],
+            "warnings": [warning_code("trip_changed_routes_stale")],
             "updated_at": datetime.now(UTC).isoformat(),
         },
     }
@@ -3471,7 +3479,7 @@ async def update_itinerary(
                 "status": "stale",
                 "total": max(0, route_pair_count(next_rows)),
                 "completed": len(new_pairs - invalid_pairs),
-                "warnings": ["行程已變更，受影響的移動時間需要重新計算。"],
+                "warnings": [warning_code("trip_changed_routes_stale")],
                 "conflicts": conflicts,
                 "updated_at": datetime.now(UTC).isoformat(),
             },
@@ -3529,7 +3537,7 @@ async def update_primary_lodging(
         user.id,
         payload.version,
         rows,
-        warning="主要飯店已更新，請重新計算每日來回路線。",
+        warning=warning_code("primary_lodging_changed"),
         changed_item_ids=changed_rows,
     )
 
@@ -3559,7 +3567,7 @@ async def update_schedule_defaults(
         user.id,
         payload.version,
         rows,
-        warning="每日時間已更新，請重新計算受影響的移動時間。",
+        warning=warning_code("daily_times_changed"),
         changed_item_ids=set(),
     )
 
@@ -3745,7 +3753,7 @@ async def update_meal_skip(
         user.id,
         payload.version,
         rows,
-        warning="餐食狀態已更新，請重新計算這一天的路線。",
+        warning=warning_code("meal_changed"),
         target_day=item.day_date,
         changed_item_ids={item.id},
     )
@@ -4239,7 +4247,7 @@ async def generate_trip_itinerary(
                 "warnings": (
                     []
                     if routing_status != "unavailable"
-                    else ["路線服務尚未啟用，可先使用手動移動時間。"]
+                    else [warning_code("route_service_unavailable")]
                 ),
                 "updated_at": datetime.now(UTC).isoformat(),
             },
@@ -4269,7 +4277,7 @@ async def generate_trip_itinerary(
                         "status": "failed",
                         "total": route_pairs,
                         "completed": 0,
-                        "warnings": ["背景路線服務暫時無法使用，可在行程頁重新計算。"],
+                        "warnings": [warning_code("route_service_background_failed")],
                         "updated_at": datetime.now(UTC).isoformat(),
                     },
                 }
@@ -4440,7 +4448,7 @@ async def apply_trip_itinerary_preview(
                 "warnings": (
                     []
                     if routing_status != "unavailable"
-                    else ["路線服務尚未啟用，可先使用手動移動時間。"]
+                    else [warning_code("route_service_unavailable")]
                 ),
                 "updated_at": datetime.now(UTC).isoformat(),
             },
@@ -4483,7 +4491,7 @@ async def apply_trip_itinerary_preview(
                         "status": "failed",
                         "total": route_pairs,
                         "completed": 0,
-                        "warnings": ["背景路線服務暫時無法使用，可在行程頁重新計算。"],
+                        "warnings": [warning_code("route_service_background_failed")],
                         "updated_at": datetime.now(UTC).isoformat(),
                     },
                 }
@@ -4639,7 +4647,7 @@ async def resolve_trip_locations(
                 "routing": {
                     **previous,
                     "status": "stale",
-                    "warnings": ["地點已更新，受影響路段需要重新查詢。"],
+                    "warnings": [warning_code("locations_changed")],
                     "updated_at": datetime.now(UTC).isoformat(),
                 },
             }
@@ -5138,7 +5146,7 @@ async def apply_trip_route(
                 duration_minutes=cast(int, payload.duration_minutes),
                 buffer_minutes=payload.buffer_minutes,
                 details_available=[],
-                warnings=["此移動時間由使用者手動輸入，未經地圖服務驗證。"],
+                warnings=[warning_code("manual_duration_unverified")],
             )
             manual_note = payload.note.strip() if payload.note else None
         first, second = _adjacent_route_rows(
@@ -5283,7 +5291,7 @@ async def compute_trip_routes_for_day(
         trip.route_preference = payload.route_preference
         if not routable_pairs:
             warnings = [f"{item['title']}：{item['reason']}" for item in unresolved] or [
-                "這一天沒有可定位的相鄰行程，請先補上地點。"
+                warning_code("day_needs_locations")
             ]
             trip.data = {
                 **trip.data,
@@ -5332,7 +5340,7 @@ async def compute_trip_routes_for_day(
                     "status": "failed",
                     "total": len(day_rows) - 1,
                     "completed": 0,
-                    "warnings": ["背景路線服務暫時無法使用，請稍後重試。"],
+                    "warnings": [warning_code("route_service_retry_later")],
                     "updated_at": datetime.now(UTC).isoformat(),
                 },
             }
@@ -5495,7 +5503,7 @@ async def plan_itinerary_optimization(
             if first.id != second.id and first.id in point_by_id and second.id in point_by_id
         }
         if not costs:
-            warnings.append(f"{target_day.isoformat()} 沒有取得可比較的移動時間，這天維持原樣。")
+            warnings.append(warning_code("uncomparable_day", day=target_day.isoformat()))
             continue
         ordered = _nearest_neighbour(movable, costs)
         day_changed = [row.id for row in ordered] != [row.id for row in movable]

@@ -46,3 +46,32 @@ test("a session cookie is still verified, because it may have expired", async ({
   expect(asked.some((url) => url.includes("/auth/me"))).toBe(true);
   expect(asked.some((url) => url.includes("/saved-items"))).toBe(true);
 });
+
+/**
+ * A mistyped address used to reach Next's own 404: English on a five-language site,
+ * no header, no way out but the browser's back button. The page lives under [locale],
+ * so a catch-all segment pulls unmatched paths back into that layout — without it the
+ * request falls through to the root, where there is no locale and no providers.
+ */
+test("a mistyped address answers in the reader's language, with a way out", async ({ page }) => {
+  const headings: Record<string, string> = {
+    "zh-TW": "找不到這個頁面",
+    ja: "ページが見つかりません",
+    en: "We couldn't find that page",
+  };
+
+  for (const [locale, heading] of Object.entries(headings)) {
+    const response = await page.goto(`/${locale}/no-such-page`);
+    expect(response?.status(), `${locale} must answer 404, not 200`).toBe(404);
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText(heading);
+    // The header comes from the page, not the layout, so it is easy to lose here.
+    await expect(page.locator("header.site-header")).toBeVisible();
+    for (const href of ["", "/explore", "/trips"]) {
+      await expect(page.locator(`main a[href="/${locale}${href}"]`)).toBeVisible();
+    }
+  }
+
+  // /flights has a status/ child but no page of its own — the path people actually reach.
+  expect((await page.goto("/zh-TW/flights"))?.status()).toBe(404);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(headings["zh-TW"]);
+});

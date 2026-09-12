@@ -901,7 +901,7 @@ export function AdminFoodMerchantsPanel({
                 <p className="font-semibold">
                   {merchant.name} · {merchant.destination_id}
                 </p>
-                {error && <p className="mt-1 text-sm text-red-700">{error}</p>}
+                {error && <p role="alert" className="mt-1 text-sm text-red-700">{error}</p>}
                 {!error && !response?.configured && (
                   <p className="mt-1 text-sm text-amber-800">
                     {response?.message ?? ta("foodMerchantsPanel.notConfigured")}
@@ -959,7 +959,7 @@ export function AdminFoodMerchantsPanel({
               ).length;
               return (
                 <tr key={merchant.id} className="border-t">
-                  <td className="p-3">
+                  <td data-label={ta("foodMerchantsPanel.thSelect")} className="p-3">
                     <input
                       type="checkbox"
                       aria-label={ta("foodMerchantsPanel.selectItem", { name: merchant.name })}
@@ -968,13 +968,13 @@ export function AdminFoodMerchantsPanel({
                       className="h-5 w-5 accent-[var(--teal)]"
                     />
                   </td>
-                  <td className="p-3 font-semibold">
+                  <td data-label={ta("foodMerchantsPanel.thMerchant")} className="p-3 font-semibold">
                     {merchant.name}
                     <span className="block text-xs font-normal text-[var(--muted)]">
                       {merchant.local_name} · {merchant.slug}
                     </span>
                   </td>
-                  <td className="p-3">
+                  <td data-label={ta("foodMerchantsPanel.thDestinationCuisine")} className="p-3">
                     {merchant.destination_id}
                     {merchant.area ? ` · ${merchant.area.name}` : ""}
                     <span className="block text-xs text-[var(--muted)]">
@@ -984,7 +984,7 @@ export function AdminFoodMerchantsPanel({
                       ].join("、")}
                     </span>
                   </td>
-                  <td className="p-3">
+                  <td data-label={ta("foodMerchantsPanel.thMapIdentity")} className="p-3">
                     {merchant.map_match_status}
                     <span className="block max-w-[260px] truncate text-xs text-[var(--muted)]">
                       {merchant.country_code === "KR"
@@ -992,13 +992,13 @@ export function AdminFoodMerchantsPanel({
                         : merchant.google_place_id || ta("foodMerchantsPanel.noPlaceId")}
                     </span>
                   </td>
-                  <td className="p-3">
+                  <td data-label={ta("foodMerchantsPanel.thCoordinates")} className="p-3">
                     {merchant.latitude ?? "—"}, {merchant.longitude ?? "—"}
                     <span className="block text-xs text-[var(--muted)]">
                       {merchant.coordinate_source_type || ta("foodMerchantsPanel.coordinateSourceMissing")}
                     </span>
                   </td>
-                  <td className="p-3">
+                  <td data-label={ta("foodMerchantsPanel.thOfficial")} className="p-3">
                     {merchant.official_website_url ? ta("foodMerchantsPanel.websiteFilled") : ta("foodMerchantsPanel.websiteMissing")}
                     <span className="block text-xs text-[var(--muted)]">
                       {ta("foodMerchantsPanel.sourcesLine", { direct: directSources, context: merchant.sources.length - directSources })}
@@ -1009,13 +1009,13 @@ export function AdminFoodMerchantsPanel({
                         : ta("foodMerchantsPanel.platformUnreviewed")}
                     </span>
                   </td>
-                  <td className="p-3">
+                  <td data-label={ta("foodMerchantsPanel.thPublish")} className="p-3">
                     {merchant.review_status}
                     <span className="block text-xs text-[var(--muted)]">
                       {merchant.is_active ? ta("foodMerchantsPanel.active") : ta("foodMerchantsPanel.inactive")}
                     </span>
                   </td>
-                  <td className="p-3">
+                  <td data-label={ta("foodMerchantsPanel.thActions")} className="p-3">
                     <button
                       type="button"
                       disabled={Boolean(editing) || loading || platformBusy}

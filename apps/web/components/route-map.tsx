@@ -1,6 +1,6 @@
 "use client";
 
-import { Map, MapPin, TriangleAlert } from "lucide-react";
+import { Map, MapPin, Maximize2, Minimize2, TriangleAlert } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Script from "next/script";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -18,6 +18,8 @@ type Coordinate = { latitude: number; longitude: number };
 type MapOverlay = { setMap(map: unknown | null): void };
 type GoogleMapInstance = {
   fitBounds(bounds: unknown, padding?: number | Record<string, number>): void;
+  /** The map is reused across renders, so expanding has to re-state the gestures. */
+  setOptions?(options: Record<string, unknown>): void;
 };
 type MapFailureReason = "load" | "authorization";
 export type RouteMapProvider = "naver_maps" | "google_maps";
@@ -96,6 +98,11 @@ export function RouteMap({
   const overlays = useRef<MapOverlay[]>([]);
   const [config, setConfig] = useState<PublicMapConfig>({});
   const [walkingMap, setWalkingMap] = useState<RouteMapProvider>("naver_maps");
+  // Inline, the map must not swallow a scroll: on a phone it sits inside
+  // .planner-sheet-body, whose overscroll-behavior leaves a stolen swipe nowhere
+  // to go. Expanded it fills the viewport, so there is no page scroll to lose and
+  // every gesture belongs to the map.
+  const [expanded, setExpanded] = useState(false);
   const mode = travelMode || segment?.travel_mode || segments?.[selectedSegmentIndex]?.travel_mode || "transit";
   const walkingProviders = mapCapabilities?.providers.length ? mapCapabilities.providers : ["naver_maps", "google_maps"] as const;
   const walkingChoice = mapProvider || walkingMap;
@@ -250,7 +257,14 @@ export function RouteMap({
     const maps = window.naver.maps;
     const originPoint = new maps.LatLng(origin.latitude as number, origin.longitude as number);
     const destinationPoint = new maps.LatLng(destination.latitude as number, destination.longitude as number);
-    const map = new maps.Map(mapElement.current, { center: originPoint, zoom: 13, minZoom: 6, zoomControl: true });
+    // NAVER's SDK has no cooperative gesture mode, so inline the drag is simply
+    // off: one finger then does nothing to the map and the page scrolls as usual.
+    // Pinch still zooms, which is the "deliberate gesture" the map needs.
+    const map = new maps.Map(mapElement.current, {
+      center: originPoint, zoom: 13, minZoom: 6, zoomControl: true,
+      draggable: expanded, scrollWheel: expanded, pinchZoom: true,
+      disableTwoFingerTapZoom: false, disableDoubleTapZoom: !expanded,
+    });
     destroyMap.current = () => map.destroy?.();
     overlays.current.push(
       new maps.Marker({ position: originPoint, map, title: `1 · ${origin.title}` }),
@@ -293,7 +307,7 @@ export function RouteMap({
       new maps.LatLng(Math.max(...latitudes), Math.max(...longitudes)),
     );
     map.fitBounds(bounds, { top: 42, right: 42, bottom: 42, left: 42 });
-  }, [destination, disposeMap, hasCoordinates, mapFailed, onSelectSegment, optionCoordinates, origin, selectedIndex, showSchematic, useNaver]);
+  }, [destination, disposeMap, expanded, hasCoordinates, mapFailed, onSelectSegment, optionCoordinates, origin, selectedIndex, showSchematic, useNaver]);
 
   const renderGoogleMap = useCallback(() => {
     if (mapFailed || !useGoogle || !hasCoordinates || !mapElement.current || !window.google?.maps || !origin || !destination) return;
@@ -306,9 +320,15 @@ export function RouteMap({
       zoom: 13,
       renderingType: maps.RenderingType?.RASTER || "RASTER",
       mapTypeControl: false,
+      // Our own control, because the browser's fullscreen API is unavailable in
+      // some in-app browsers and the expanded state also changes the gestures.
       fullscreenControl: false,
       streetViewControl: false,
+      // Never left to the default: "auto" degrades to cooperative only when the
+      // page is judged scrollable, and this map sits in a nested scroller.
+      gestureHandling: expanded ? "greedy" : "cooperative",
     });
+    map.setOptions?.({ gestureHandling: expanded ? "greedy" : "cooperative" });
     googleMap.current = map;
     overlays.current.push(
       new maps.Marker({ position: originPoint, map, label: "1", title: origin.title }),
@@ -344,7 +364,7 @@ export function RouteMap({
       }));
     }
     map.fitBounds(bounds, 44);
-  }, [clearOverlays, destination, hasCoordinates, mapFailed, onSelectSegment, optionCoordinates, origin, selectedIndex, showSchematic, useGoogle]);
+  }, [clearOverlays, destination, expanded, hasCoordinates, mapFailed, onSelectSegment, optionCoordinates, origin, selectedIndex, showSchematic, useGoogle]);
 
   useEffect(() => {
     if (mapFailed) {
@@ -364,6 +384,16 @@ export function RouteMap({
 
   useEffect(() => disposeMap, [disposeMap]);
 
+  // Expanded, the map covers the page; Escape is the way out people reach for.
+  useEffect(() => {
+    if (!expanded) return;
+    const close = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && !event.isComposing) setExpanded(false);
+    };
+    document.addEventListener("keydown", close);
+    return () => document.removeEventListener("keydown", close);
+  }, [expanded]);
+
   const mapSource = provider === "naver_maps" ? "NAVER Maps" : "Google Maps";
   const mapEnabled = useNaver || useGoogle;
   const emptyTitle = !hasCoordinates
@@ -376,7 +406,7 @@ export function RouteMap({
   const originName = origin?.title || t("startFallback");
   const destinationName = destination?.title || t("endFallback");
 
-  return <section className={`route-map-card route-map-${variant}`} data-map-provider={provider}>
+  return <section className={`route-map-card route-map-${variant}${expanded ? " route-map-expanded" : ""}`} data-map-provider={provider}>
     {useNaver && <Script id="naver-maps-js" src={`https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${encodeURIComponent(config.naver_maps_browser_client_id || "")}`} strategy="afterInteractive" onReady={() => setProviderReady("naver_maps", true)} onError={() => failProvider("naver_maps", "load")} />}
     <div className="border-b border-[var(--line)] px-5 py-3.5">
       <div className="flex items-center justify-between gap-3">
@@ -384,12 +414,23 @@ export function RouteMap({
         {isKorea && mode === "walk"
           ? <select aria-label={t("mapProviderLabel")} value={provider} onChange={(event) => { const next = event.target.value as RouteMapProvider; setWalkingMap(next); onMapProviderChange?.(next); }} className="min-h-11 max-w-[50%] shrink-0 rounded-xl border border-[var(--line)] bg-[var(--surface)] px-3 text-sm font-semibold">{walkingProviders.map((value) => <option key={value} value={value}>{value === "naver_maps" ? "NAVER Maps" : "Google Maps"}</option>)}</select>
           : <Map size={20} className="shrink-0 text-[var(--teal)]" />}
+        {mapEnabled && hasCoordinates && !mapFailed && (
+          <button
+            type="button"
+            onClick={() => setExpanded((open) => !open)}
+            aria-expanded={expanded}
+            className="flex min-h-11 shrink-0 items-center gap-1.5 rounded-xl border border-[var(--line)] px-3 text-sm font-semibold text-[var(--teal)]"
+          >
+            {expanded ? <Minimize2 size={16} aria-hidden /> : <Maximize2 size={16} aria-hidden />}
+            {t(expanded ? "mapCollapse" : "mapExpand")}
+          </button>
+        )}
       </div>
       {isKorea && mode === "walk" && <p className="mt-2 text-xs leading-5 text-[var(--muted)]">{t("mapProviderHint")}</p>}
     </div>
     <div className="route-map-frame overflow-hidden">
       {mapEnabled && hasCoordinates && !mapFailed
-        ? <div key={provider} ref={mapElement} role="img" aria-label={t("mapAria", { from: originName, to: destinationName, provider: mapSource })} className="absolute inset-0 h-full w-full" />
+        ? <div key={provider} ref={mapElement} role="region" aria-label={t("mapAria", { from: originName, to: destinationName, provider: mapSource })} className="absolute inset-0 h-full w-full" />
         : <div className="route-map-empty absolute inset-0 grid place-items-center p-6 text-center"><div>{mapFailed ? <TriangleAlert size={28} className="mx-auto text-amber-700" /> : <MapPin size={28} className="mx-auto text-[var(--teal)]" />}<p className="mt-3 font-semibold">{emptyTitle}</p><p className="mx-auto mt-2 max-w-xs text-sm leading-6 text-[var(--muted)]">{!hasCoordinates ? t("mapMissingHint") : mapFailure === "authorization" ? t("mapAuthorizationHint") : mapFailure === "load" ? t("mapLoadHint") : provider === "naver_maps" ? t("mapNaverHint") : Boolean(config.google_maps_browser_key) ? t("mapSafetyHint") : t("mapKeyHint")}</p></div></div>}
       {mapEnabled && hasCoordinates && showSchematic && !mapFailed && <div className="route-map-schematic-notice" role="status">{t("mapSchematic")}</div>}
     </div>

@@ -417,7 +417,7 @@ class MetNorwayWeatherService:
         warnings: list[str] = []
         current = self._parse_current(entries[0], language_code, zone)
         if current is None:
-            warnings.append("目前天氣資料格式不完整")
+            warnings.append("weather_current_incomplete")
         days = self._parse_days(entries, zone, language_code)
         if current is None and not days:
             raise AppError(502, "weather_response_invalid", "MET Norway 回應格式不完整")

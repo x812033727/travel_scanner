@@ -1679,5 +1679,40 @@
     "validUntil": "適用至",
     "validUntilHelp": "情報用的截止日。過期後這篇會離開列表與 sitemap，網址仍然保留。",
     "viewRevision": "檢視這個版本"
+  },
+  "merchantCoordinateQueue": {
+    "title": "座標審核佇列",
+    "description": "列出還沒有永久座標的店家，並排 Google 找到的地點與比對訊號。核准會以 admin_verified 來源寫入座標；伺服器會重新查詢確認，絕不採用瀏覽器送來的座標。",
+    "notConfigured": "Google Places 金鑰未設定，無法解析候選。",
+    "columnSelect": "選取",
+    "columnMerchant": "店家",
+    "columnCandidate": "Google 找到",
+    "columnSignals": "訊號",
+    "selectMerchant": "選取 {name}",
+    "koreaNote": "韓國店家：座標可先寫入，發布仍需 Naver 精準地點頁",
+    "openInGoogleMaps": "在 Google 地圖開啟",
+    "noResult": "找不到結果",
+    "nameScore": "名稱 {score}",
+    "distanceKm": "距離 {km} km",
+    "placeIdTaken": "Place ID 已被使用",
+    "queueEmpty": "佇列已清空 — 所有店家都有永久座標了。",
+    "approveSelected": "批次核准（{count}）",
+    "previousPage": "上一頁",
+    "nextPage": "下一頁",
+    "pageStatus": "第 {page} / {total} 頁 · 待處理 {pending} 筆",
+    "verdictAgree": "一致",
+    "verdictNoResult": "無結果",
+    "verdictCheck": "需人工比對",
+    "written": "已寫入 {count} 筆座標。",
+    "writtenWithSkipped": "已寫入 {count} 筆座標；{skipped} 筆略過（{reasons}）。",
+    "outcome": {
+      "verified": "已驗證",
+      "coordinates_saved": "座標已存（待 Naver 連結）",
+      "candidate_changed": "Google 結果已改變，略過",
+      "place_id_taken": "Place ID 已被其他店家使用",
+      "no_result": "找不到結果",
+      "already_durable": "已有永久座標",
+      "not_found": "店家不存在"
+    }
   }
 }

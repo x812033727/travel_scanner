@@ -80,7 +80,7 @@ describe("RouteMap", () => {
     const { container } = render(<RouteMap items={items} fromItemId="from" toItemId="to" countryCode="KR" travelMode={travelMode} />);
     expect(await screen.findByText("瀏覽器地圖服務尚未啟用")).toBeTruthy();
     expect(screen.getByText(`站內地圖 · ${travelMode === "transit" ? "Google Maps" : "NAVER Maps"}`)).toBeTruthy();
-    expect(screen.queryByRole("img")).toBeNull();
+    expect(screen.queryByRole("region", { name: /路線地圖/ })).toBeNull();
     expect(container.querySelector("iframe")).toBeNull();
     expect(document.getElementById("google-route-maps-js")).toBeNull();
     expect(screen.queryByTestId("next-script")).toBeNull();
@@ -88,7 +88,7 @@ describe("RouteMap", () => {
       fireEvent.change(screen.getByRole("combobox", { name: "顯示地圖" }), { target: { value: "google_maps" } });
       expect(screen.getByText("站內地圖 · Google Maps")).toBeTruthy();
       expect(screen.getByText("瀏覽器地圖服務尚未啟用")).toBeTruthy();
-      expect(screen.queryByRole("img")).toBeNull();
+      expect(screen.queryByRole("region", { name: /路線地圖/ })).toBeNull();
     }
   });
 
@@ -106,7 +106,7 @@ describe("RouteMap", () => {
     expect(script.getAttribute("data-src")).toBe(
       "https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=browser-client-id",
     );
-    expect(screen.getByRole("img", { name: /景福宮到北村韓屋村的NAVER Maps路線地圖/ })).toBeTruthy();
+    expect(screen.getByRole("region", { name: /景福宮到北村韓屋村的NAVER Maps路線地圖/ })).toBeTruthy();
     expect(screen.getByText("示意連線，非實際路線")).toBeTruthy();
     expect(container.querySelector(".route-map-frame")).toBeTruthy();
     expect(container.querySelector("iframe")).toBeNull();
@@ -158,7 +158,7 @@ describe("RouteMap", () => {
     expect(script.src).toContain("loading=async");
     expect(script.src).toContain("callback=__mokaairGoogleMapsReady");
     expect(script.src).toContain("auth_referrer_policy=origin");
-    expect(screen.getByRole("img", { name: /景福宮到北村韓屋村的Google Maps路線地圖/ })).toBeTruthy();
+    expect(screen.getByRole("region", { name: /景福宮到北村韓屋村的Google Maps路線地圖/ })).toBeTruthy();
     expect(screen.getByText("示意連線，非實際路線")).toBeTruthy();
     expect(container.querySelector("iframe")).toBeNull();
 
@@ -202,13 +202,13 @@ describe("RouteMap", () => {
     })));
     render(<RouteMap items={items} fromItemId="from" toItemId="to" countryCode="JP" />);
 
-    expect(await screen.findByRole("img", { name: /Google Maps路線地圖/ })).toBeTruthy();
+    expect(await screen.findByRole("region", { name: /Google Maps路線地圖/ })).toBeTruthy();
     expect(window.gm_authFailure).toBeTypeOf("function");
     act(() => window.gm_authFailure?.());
 
     expect(await screen.findByText("地圖載入失敗")).toBeTruthy();
     expect(screen.getByText(/尚未允許目前網站網域/)).toBeTruthy();
-    expect(screen.queryByRole("img", { name: /Google Maps路線地圖/ })).toBeNull();
+    expect(screen.queryByRole("region", { name: /Google Maps路線地圖/ })).toBeNull();
     expect(window.mokaairGoogleMapsAuthFailed).toBe(true);
   });
 
@@ -289,7 +289,7 @@ describe("RouteMap", () => {
     rerender(<RouteMap items={items} segments={options} selectedSegmentIndex={2} onSelectSegment={onSelect} fromItemId="from" toItemId="to" countryCode="JP" />);
     await waitFor(() => expect(lineOptions).toHaveLength(6));
     expect(mapConstructed).toHaveBeenCalledTimes(1);
-    fireEvent.click(screen.getByRole("img", { name: /Google Maps路線地圖/ }));
+    fireEvent.click(screen.getByRole("region", { name: /Google Maps路線地圖/ }));
     lineClicks[5]();
     expect(onSelect).toHaveBeenCalledWith(2);
   });
@@ -297,7 +297,7 @@ describe("RouteMap", () => {
   it("uses Google for Korean transit while clearly attributing the independent ODsay time", async () => {
     vi.stubGlobal("fetch", vi.fn(async () => ok({ google_maps_browser_key: "google", google_maps_javascript_enabled: true, naver_maps_browser_client_id: "naver", naver_dynamic_map_enabled: true })));
     render(<RouteMap items={items} segment={{ ...segment, provider: "odsay", attribution: "ODsay" }} countryCode="KR" />);
-    expect(await screen.findByRole("img", { name: /Google Maps路線地圖/ })).toBeTruthy();
+    expect(await screen.findByRole("region", { name: /Google Maps路線地圖/ })).toBeTruthy();
     expect(screen.getByText("交通時間來源：ODsay")).toBeTruthy();
     expect(screen.getByText("示意連線，非實際路線")).toBeTruthy();
     expect(screen.queryByTestId("next-script")).toBeNull();
@@ -338,13 +338,13 @@ describe("RouteMap", () => {
     act(() => window.gm_authFailure?.());
     expect(await screen.findByText("地圖載入失敗")).toBeTruthy();
     fireEvent.change(select, { target: { value: "naver_maps" } });
-    expect(await screen.findByRole("img", { name: /NAVER Maps路線地圖/ })).toBeTruthy();
+    expect(await screen.findByRole("region", { name: /NAVER Maps路線地圖/ })).toBeTruthy();
     expect(screen.queryByText("地圖載入失敗")).toBeNull();
     fireEvent.change(select, { target: { value: "google_maps" } });
     expect(await screen.findByText("地圖載入失敗")).toBeTruthy();
     rerender(<RouteMap {...props} travelMode="drive" />);
     expect(screen.queryByRole("combobox")).toBeNull();
-    expect(await screen.findByRole("img", { name: /NAVER Maps路線地圖/ })).toBeTruthy();
+    expect(await screen.findByRole("region", { name: /NAVER Maps路線地圖/ })).toBeTruthy();
     // A legacy Google geometry must never be painted on the driving NAVER map.
     expect(naverLines.every((line) => line.strokeStyle === "shortdash")).toBe(true);
     expect(fetchMock).toHaveBeenCalledTimes(1);
@@ -378,5 +378,90 @@ describe("RouteMap", () => {
     await waitFor(() => expect(lineOptions).toHaveLength(3));
     expect(lineOptions[2]).toMatchObject({ strokeOpacity: 0.96, strokeWeight: 6 });
     expect(screen.queryByText("示意連線，非實際路線")).toBeNull();
+  });
+});
+
+describe("route map gestures and reach", () => {
+  /**
+   * On a phone this map sits inside .planner-sheet-body, whose overscroll-behavior
+   * leaves a swallowed swipe nowhere to go: a finger dragged across the map used to
+   * pan the map and freeze the page. Google is told cooperative explicitly rather
+   * than left on "auto", which only degrades when it judges the page scrollable, and
+   * NAVER — which has no cooperative mode at all — simply does not drag inline.
+   */
+  it("leaves a one-finger swipe to the page until the map is expanded", async () => {
+    const naverOptions: Array<Record<string, unknown>> = [];
+    const googleOptions: Array<Record<string, unknown>> = [];
+    class NaverMap {
+      constructor(_element: HTMLElement, options: Record<string, unknown>) { naverOptions.push(options); }
+      fitBounds() {}
+      destroy() {}
+    }
+    class GoogleMap {
+      constructor(_element: HTMLElement, options: Record<string, unknown>) { googleOptions.push(options); }
+      fitBounds() {}
+      setOptions() {}
+    }
+    class Bounds { extend() {} }
+    class Point {}
+    class Marker { setMap() {} }
+    class Line extends Marker { addListener() {} }
+    window.naver = { maps: { Map: NaverMap, LatLng: Point, LatLngBounds: Bounds, Marker, Polyline: Line, Event: { addListener() {}, clearInstanceListeners() {} } } };
+    window.google = { maps: { Map: GoogleMap, LatLngBounds: Bounds, Marker, Polyline: Line, event: { clearInstanceListeners() {} } } };
+    vi.stubGlobal("fetch", vi.fn(async () => ok({
+      naver_maps_browser_client_id: "naver", naver_dynamic_map_enabled: true,
+      google_maps_browser_key: "google", google_maps_javascript_enabled: true,
+    })));
+
+    const { container } = render(
+      <RouteMap items={items} fromItemId="from" toItemId="to" countryCode="KR" travelMode="walk" />,
+    );
+    await waitFor(() => expect(naverOptions).not.toHaveLength(0));
+    expect(naverOptions.at(-1)?.draggable).toBe(false);
+    expect(naverOptions.at(-1)?.pinchZoom).toBe(true);
+    expect(container.querySelector(".route-map-expanded")).toBeNull();
+
+    fireEvent.click(screen.getByRole("button", { name: "放大地圖" }));
+
+    expect(container.querySelector(".route-map-expanded")).toBeTruthy();
+    await waitFor(() => expect(naverOptions.at(-1)?.draggable).toBe(true));
+    expect(screen.getByRole("button", { name: "收合地圖" }).getAttribute("aria-expanded")).toBe("true");
+
+    fireEvent.keyDown(document, { key: "Escape" });
+    expect(container.querySelector(".route-map-expanded")).toBeNull();
+  });
+
+  it("never leaves Google's gesture handling to the default", async () => {
+    const googleOptions: Array<Record<string, unknown>> = [];
+    class GoogleMap {
+      constructor(_element: HTMLElement, options: Record<string, unknown>) { googleOptions.push(options); }
+      fitBounds() {}
+      setOptions() {}
+    }
+    class Bounds { extend() {} }
+    class Marker { setMap() {} }
+    class Line extends Marker { addListener() {} }
+    window.google = { maps: { Map: GoogleMap, LatLngBounds: Bounds, Marker, Polyline: Line, event: { clearInstanceListeners() {} } } };
+    vi.stubGlobal("fetch", vi.fn(async () => ok({
+      google_maps_browser_key: "google", google_maps_javascript_enabled: true,
+    })));
+
+    render(<RouteMap items={items} fromItemId="from" toItemId="to" countryCode="JP" />);
+
+    await waitFor(() => expect(googleOptions).not.toHaveLength(0));
+    expect(googleOptions.at(-1)?.gestureHandling).toBe("cooperative");
+  });
+
+  it("hands the map's markers and controls to assistive technology", async () => {
+    vi.stubGlobal("fetch", vi.fn(async () => ok({
+      naver_maps_browser_client_id: "naver", naver_dynamic_map_enabled: true,
+    })));
+    render(<RouteMap items={items} fromItemId="from" toItemId="to" countryCode="KR" travelMode="walk" />);
+
+    // role="img" made the whole subtree presentational, so every marker, control
+    // and route the SDK drew into it disappeared from a screen reader.
+    const map = await screen.findByRole("region", { name: /路線地圖/ });
+    expect(map.getAttribute("role")).toBe("region");
+    expect(screen.queryByRole("img", { name: /路線地圖/ })).toBeNull();
   });
 });

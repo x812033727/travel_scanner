@@ -13,7 +13,10 @@ from app.destinations.catalog import (
 
 
 class ParseTripRequest(BaseModel):
-    text: str = Field(min_length=3, max_length=2000)
+    # docs/planning-flow-spec.md:266 asks for 4000: a brief that names a hotel, a
+    # meal and a must-see per day runs past 2000 long before it stops being one
+    # request.
+    text: str = Field(min_length=3, max_length=4000)
 
 
 # The interest vocabulary is shared with the LLM parser in app.ai.trip_parser,
@@ -53,6 +56,14 @@ class ParsedTravelers(BaseModel):
     rooms: int = 1
 
 
+class SupportedDestination(BaseModel):
+    """One place the site can actually search, offered when the named one is not."""
+
+    code: str
+    city: str
+    country_label: str
+
+
 class ParsedTripRequest(BaseModel):
     origin: str | None = None
     destination: str | None = None
@@ -76,6 +87,15 @@ class ParsedTripRequest(BaseModel):
     confidence: float
     missing_fields: list[str]
     parser: str = "mock-rules-v1"
+    # True when the named place resolved to somewhere this site searches, False when
+    # a place was named and it did not, and None when nothing named a place at all.
+    #
+    # The distinction is the whole point: "you did not say where" and "we do not go
+    # there" are different sentences, and the second one has to arrive before a
+    # charged search rather than after a trip has been built around an empty shell
+    # (docs/planning-flow-spec.md:157).
+    destination_supported: bool | None = None
+    supported_destinations: list[SupportedDestination] = Field(default_factory=list)
 
 
 class AITripParser(Protocol):

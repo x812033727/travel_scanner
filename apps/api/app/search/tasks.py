@@ -27,7 +27,7 @@ async def _run(search_id: UUID) -> None:
             if search is not None:
                 search.status = "failed"
                 search.progress = 100
-                search.warnings_json = ["搜尋處理發生系統錯誤，已自動退回保留次數。"]
+                search.warnings_json = ["search_system_error"]
             if job is not None:
                 job.status = "failed"
                 job.error = "Search processing failed"
@@ -39,7 +39,7 @@ async def _run(search_id: UUID) -> None:
                 100,
                 {
                     "status": "failed",
-                    "warnings": ["搜尋處理發生系統錯誤，已自動退回保留次數。"],
+                    "warnings": ["search_system_error"],
                     "usage": usage_status(reservation).model_dump() if reservation else None,
                 },
             )

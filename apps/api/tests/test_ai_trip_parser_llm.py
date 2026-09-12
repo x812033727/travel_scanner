@@ -810,3 +810,150 @@ def test_the_parse_budget_stays_short_even_when_the_planner_budget_is_long() -> 
         parser.providers[0].timeout_seconds  # type: ignore[union-attr]
         == trip_parser_module.PARSE_TIMEOUT_CEILING_SECONDS
     )
+
+
+@pytest.mark.asyncio
+async def test_a_named_place_we_do_not_search_is_reported_as_unsupported() -> None:
+    """The gate docs/planning-flow-spec.md:157 calls mandatory rather than polish.
+
+    Before this, a destination outside the catalogue produced a parse with no
+    destination at all, indistinguishable from "they did not say where" — and the
+    traveller found out only after a charged search came back with an empty shell.
+    """
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        return responses_ok(draft_body(destination="Reykjavik", destination_region=None))
+
+    result = await parse_with(handler)
+
+    assert result.destination is None
+    assert result.destination_supported is False
+
+
+@pytest.mark.asyncio
+async def test_a_place_we_do_search_is_reported_as_supported() -> None:
+    result = await parse_with(lambda request: responses_ok(draft_body()))
+
+    assert result.destination == "NRT"
+    assert result.destination_supported is True
+
+
+@pytest.mark.asyncio
+async def test_saying_nothing_about_where_is_not_the_same_as_unsupported() -> None:
+    """"You did not say where" must not be answered with "we do not go there"."""
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        return responses_ok(draft_body(destination=None, destination_region=None))
+
+    result = await parse_with(handler)
+
+    assert result.destination is None
+    assert result.destination_supported is None
+
+
+@pytest.mark.asyncio
+async def test_a_country_we_cover_without_a_city_is_not_unsupported() -> None:
+    def handler(request: httpx.Request) -> httpx.Response:
+        # A Japanese city outside the catalogue: the country is covered, the city is not.
+        return responses_ok(draft_body(destination="Aomori", destination_region="Japan"))
+
+    result = await parse_with(handler)
+
+    assert result.destination_supported is None
+
+
+@pytest.mark.asyncio
+async def test_parse_trip_endpoint_offers_places_it_can_actually_search(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Refusing without saying where we do go is a wall, not an honest limit."""
+    from app.db import get_session
+    from app.main import app as fastapi_app
+
+    class StubSession:
+        async def close(self) -> None:
+            return None
+
+    async def fake_settings(session: Any) -> Settings:
+        return Settings(ai_planner_mode="auto", ai_planner_priority="openai", openai_api_key="sk-t")
+
+    made_clients: list[httpx.AsyncClient] = []
+    real_roster = trip_parser_providers
+
+    def roster_on_mock_transport(settings: Settings) -> list[Any]:
+        providers = real_roster(settings)
+        for provider in providers:
+            client = httpx.AsyncClient(
+                transport=httpx.MockTransport(
+                    lambda _r: responses_ok(
+                        draft_body(destination="Reykjavik", destination_region=None)
+                    )
+                )
+            )
+            made_clients.append(client)
+            provider.client = client  # type: ignore[union-attr]
+        return providers
+
+    monkeypatch.setattr(infra, "get_redis", CountingRedis)
+    monkeypatch.setattr(trip_parser_module, "load_runtime_settings", fake_settings)
+    monkeypatch.setattr(trip_parser_module, "trip_parser_providers", roster_on_mock_transport)
+    fastapi_app.dependency_overrides[get_session] = lambda: StubSession()
+    try:
+        transport = httpx.ASGITransport(app=fastapi_app)
+        async with httpx.AsyncClient(transport=transport, base_url="http://test") as client:
+            response = await client.post("/api/v1/ai/parse-trip", json={"text": TRIP_TEXT})
+    finally:
+        fastapi_app.dependency_overrides.clear()
+        for made in made_clients:
+            await made.aclose()
+
+    body = response.json()
+    assert body["destination_supported"] is False
+    assert len(body["supported_destinations"]) > 0
+    for option in body["supported_destinations"]:
+        assert option["code"] and option["city"] and option["country_label"]
+
+
+@pytest.mark.asyncio
+async def test_a_supported_parse_carries_no_suggestion_list(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    from app.db import get_session
+    from app.main import app as fastapi_app
+
+    class StubSession:
+        async def close(self) -> None:
+            return None
+
+    async def fake_settings(session: Any) -> Settings:
+        return Settings(ai_planner_mode="auto", ai_planner_priority="openai", openai_api_key="sk-t")
+
+    made_clients: list[httpx.AsyncClient] = []
+    real_roster = trip_parser_providers
+
+    def roster_on_mock_transport(settings: Settings) -> list[Any]:
+        providers = real_roster(settings)
+        for provider in providers:
+            client = httpx.AsyncClient(
+                transport=httpx.MockTransport(lambda _r: responses_ok(draft_body()))
+            )
+            made_clients.append(client)
+            provider.client = client  # type: ignore[union-attr]
+        return providers
+
+    monkeypatch.setattr(infra, "get_redis", CountingRedis)
+    monkeypatch.setattr(trip_parser_module, "load_runtime_settings", fake_settings)
+    monkeypatch.setattr(trip_parser_module, "trip_parser_providers", roster_on_mock_transport)
+    fastapi_app.dependency_overrides[get_session] = lambda: StubSession()
+    try:
+        transport = httpx.ASGITransport(app=fastapi_app)
+        async with httpx.AsyncClient(transport=transport, base_url="http://test") as client:
+            response = await client.post("/api/v1/ai/parse-trip", json={"text": TRIP_TEXT})
+    finally:
+        fastapi_app.dependency_overrides.clear()
+        for made in made_clients:
+            await made.aclose()
+
+    body = response.json()
+    assert body["destination_supported"] is True
+    assert body["supported_destinations"] == []

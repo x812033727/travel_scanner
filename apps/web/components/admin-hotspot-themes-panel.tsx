@@ -10,6 +10,7 @@ import {
 } from "./admin-food-taxonomy-panel";
 import { FilterPills } from "./admin-filter-pills";
 import { api } from "@/lib/api";
+import { useModalSheet } from "@/lib/modal-sheet";
 import { type ThemeKind, monthRangeLabel } from "@/lib/hotspot-themes";
 
 export type AdminTheme = {
@@ -110,6 +111,8 @@ export function AdminHotspotThemesPanel() {
   const [notice, setNotice] = useState("");
   const [draft, setDraft] = useState<AdminTheme | null>(null);
   const [saving, setSaving] = useState(false);
+  // aria-modal="true" without a trap or an Escape is a claim the page does not honour.
+  const draftRef = useModalSheet<HTMLDivElement>(Boolean(draft), () => setDraft(null));
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -260,6 +263,7 @@ export function AdminHotspotThemesPanel() {
       {draft && (
         <div className="fixed inset-0 z-[80] grid place-items-center bg-slate-950/45 p-4">
           <div
+            ref={draftRef}
             role="dialog"
             aria-modal="true"
             aria-labelledby="theme-editor-title"

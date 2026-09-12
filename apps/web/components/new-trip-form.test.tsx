@@ -9,15 +9,28 @@ const { push, identity } = vi.hoisted(() => ({ push: vi.fn(), identity: { id: "m
 vi.mock("@/components/header-session", () => ({ useHeaderSession: () => ({ status: identity.status, user: { id: identity.id } }) }));
 vi.mock("@/i18n/navigation", () => ({ useRouter: () => ({ push }) }));
 
+/** What /usage answers unless a test wants a different balance or trip count. */
+let usageSummary: Record<string, unknown> = {
+  remaining_uses: 8,
+  reserved_uses: 0,
+  available_uses: 8,
+  limits: { saved_trips: 20, price_alerts: 20 },
+  counts: { saved_trips: 3, price_alerts: 0 },
+};
+
 /**
- * The calendar asks the API for public holidays when it mounts, so a bare fetch stub would
- * hand those requests the response meant for the trip submission. This answers them
- * separately and leaves `mock` seeing only the calls the test is about.
+ * The calendar asks the API for public holidays when it mounts, and the form asks for the
+ * member's remaining uses and saved-trip count, so a bare fetch stub would hand those
+ * requests the response meant for the trip submission. This answers them separately and
+ * leaves `mock` seeing only the calls the test is about.
  */
 function stubFetch(mock: unknown, holidayUrls: string[] = [], attribution = "") {
   const submit = mock as (input: unknown, init?: RequestInit) => unknown;
   const empty = { country: "TW", country_name: "臺灣", locale: "zh-TW", coverage_start: null, coverage_end: null, attribution, holidays: attribution ? [{ date: "2026-11-11", key: "example", kind: "public_holiday", is_working_day: false, name: "假日", country: "TW", country_name: "臺灣", source: "official" }] : [] };
   vi.stubGlobal("fetch", vi.fn((input: unknown, init?: RequestInit) => {
+    if (String(input).includes("/usage")) {
+      return Promise.resolve(new Response(JSON.stringify(usageSummary), { status: 200, headers: { "Content-Type": "application/json" } }));
+    }
     if (String(input).includes("/holidays")) {
       holidayUrls.push(String(input));
       return Promise.resolve(new Response(JSON.stringify(empty), { status: 200, headers: { "Content-Type": "application/json" } }));
@@ -85,7 +98,35 @@ it("shows one page with editable default travelers and optional preferences coll
     expect(screen.queryByRole("list", { name: "建立步驟" })).toBeNull();
     expect(screen.queryByRole("button", { name: /下一步|交給 AI|空白手動規劃/ })).toBeNull();
     expect(screen.getByText(/不會自動呼叫 AI 或計算路線/)).toBeVisible();
-    expect(fetch).not.toHaveBeenCalled();
+    // One /usage read tells the member their balance and saved-trip count before
+    // they type. Nothing else may go out on mount -- no AI, routes or geocoding.
+    expect(vi.mocked(fetch).mock.calls.map(([input]) => String(input)))
+      .toEqual([expect.stringContaining("/usage")]);
+  });
+
+  it("says how many uses and trips are left before a single field is filled in", async () => {
+    await renderReady();
+    expect(await screen.findByText("剩餘 8 次 · 已儲存 3／20 個行程")).toBeTruthy();
+  });
+
+  it("stops at the trip limit before the form is filled in, and says where to make room", async () => {
+    usageSummary = { ...usageSummary, counts: { saved_trips: 20, price_alerts: 0 } };
+    render(<NewTripForm />);
+
+    expect(await screen.findByText("已達 20 個行程的上限")).toBeTruthy();
+    expect(screen.getByRole("link", { name: "去管理我的旅程" }).getAttribute("href")).toBe("/zh-TW/trips");
+    // The form used to take five sections of input and then fail on the POST.
+    expect(screen.getByRole("button", { name: "開始安排" })).toBeDisabled();
+    expect(screen.getByLabelText("目的地")).toBeDisabled();
+    expect(vi.mocked(fetch).mock.calls.every(([input]) => String(input).includes("/usage"))).toBe(true);
+  });
+
+  it("lets the form through when the summary cannot be read, because the server still enforces the cap", async () => {
+    vi.stubGlobal("fetch", vi.fn(() => Promise.reject(new Error("offline"))));
+    await renderReady();
+
+    expect(await screen.findByText(/目前無法確認剩餘次數與行程數量/)).toBeTruthy();
+    expect(screen.getByRole("button", { name: "開始安排" })).not.toBeDisabled();
   });
 
   it("requires only city and dates, auto-names the trip and never calls AI, routes or geocoding", async () => {
@@ -195,6 +236,11 @@ it("shows one page with editable default travelers and optional preferences coll
     push.mockReset();
     identity.id = "member-a";
     identity.status = "authenticated";
+    usageSummary = {
+      remaining_uses: 8, reserved_uses: 0, available_uses: 8,
+      limits: { saved_trips: 20, price_alerts: 20 },
+      counts: { saved_trips: 3, price_alerts: 0 },
+    };
     stubFetch(vi.fn());
     // The calendar only offers days from today on; pin the clock so the
     // November 2026 fixtures stay reachable and the assertions stay exact.

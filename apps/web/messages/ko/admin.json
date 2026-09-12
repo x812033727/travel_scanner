@@ -1679,5 +1679,40 @@
     "validUntil": "적용 기한",
     "validUntilHelp": "소식용 기한입니다. 지나면 목록과 sitemap에서 빠지지만 URL은 그대로 남습니다.",
     "viewRevision": "이 버전 보기"
+  },
+  "merchantCoordinateQueue": {
+    "title": "좌표 검토 대기열",
+    "description": "아직 영구 좌표가 없는 상점을 Google이 찾은 장소 및 대조 신호와 나란히 보여 줍니다. 승인하면 admin_verified 출처로 좌표를 기록하며, 서버가 다시 조회해 확인하므로 브라우저가 보낸 좌표는 절대 사용하지 않습니다.",
+    "notConfigured": "Google Places 키가 설정되지 않아 후보를 확인할 수 없습니다.",
+    "columnSelect": "선택",
+    "columnMerchant": "상점",
+    "columnCandidate": "Google 검색 결과",
+    "columnSignals": "신호",
+    "selectMerchant": "{name} 선택",
+    "koreaNote": "한국 상점: 좌표는 먼저 기록할 수 있지만, 공개하려면 정확한 NAVER 장소 페이지가 필요합니다.",
+    "openInGoogleMaps": "Google 지도에서 열기",
+    "noResult": "결과를 찾을 수 없습니다",
+    "nameScore": "이름 {score}",
+    "distanceKm": "거리 {km} km",
+    "placeIdTaken": "Place ID가 이미 사용 중입니다",
+    "queueEmpty": "대기열이 비었습니다 — 모든 상점에 영구 좌표가 있습니다.",
+    "approveSelected": "선택한 {count}건 승인",
+    "previousPage": "이전",
+    "nextPage": "다음",
+    "pageStatus": "{total}쪽 중 {page}쪽 · 대기 {pending}건",
+    "verdictAgree": "일치",
+    "verdictNoResult": "결과 없음",
+    "verdictCheck": "직접 확인 필요",
+    "written": "좌표 {count}건을 기록했습니다.",
+    "writtenWithSkipped": "좌표 {count}건을 기록하고 {skipped}건을 건너뛰었습니다({reasons}).",
+    "outcome": {
+      "verified": "검증됨",
+      "coordinates_saved": "좌표 저장됨(NAVER 링크 대기)",
+      "candidate_changed": "Google 결과가 바뀌어 건너뜀",
+      "place_id_taken": "Place ID를 다른 상점이 사용 중",
+      "no_result": "결과를 찾을 수 없습니다",
+      "already_durable": "이미 영구 좌표가 있습니다",
+      "not_found": "상점이 존재하지 않습니다"
+    }
   }
 }

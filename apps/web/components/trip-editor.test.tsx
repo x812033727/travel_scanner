@@ -289,7 +289,20 @@ describe("trip editor", () => {
     fireEvent.click(adjust);
     fireEvent.click(within(assistant).getByRole("button", { name: "關閉" }));
     fireEvent.keyDown(document, { key: "Escape" });
-    expect(screen.getAllByRole("dialog")).toEqual([assistant]);
+    // This assertion has gone red twice in CI on branches that never touched the trip
+    // editor, and has never reproduced on demand — not at the commit that failed, in a
+    // clean worktree, nor across repeated full runs here. It is left exactly as strict as
+    // it was; what is added is the state at the moment it fails, so the next person reads
+    // a cause instead of "expected [] to equal [dialog]". The two shapes to tell apart are
+    // "the guard let the overlay close" (nothing left in the DOM) and "another layer made
+    // it inaccessible" (still in the DOM, hidden from the accessibility tree).
+    expect(screen.queryAllByRole("dialog"), [
+      `dialogs in DOM: ${document.querySelectorAll('[role="dialog"]').length}`,
+      `assistant connected: ${assistant.isConnected}`,
+      `assistant hidden by an ancestor: ${assistant.closest('[aria-hidden="true"],[inert]') !== null}`,
+      `planner layers: ${document.querySelectorAll(".planner-overlay").length}`,
+      `body position: ${document.body.style.position || "(unset)"}`,
+    ].join("; ")).toEqual([assistant]);
     expect(within(assistant).queryByLabelText("想改什麼？")).toBeNull();
     await act(async () => finishPreview(response(itineraryPreview("day"))));
     expect(screen.getByRole("dialog", { name: "確認 AI 行程預覽" })).toBeTruthy();
@@ -1182,6 +1195,76 @@ describe("trip editor", () => {
     expect(await screen.findByText("淺草散步")).toBeTruthy();
   });
 
+  it("still has a way back after the autosave has already written the delete", async () => {
+    // The undo toast lasts 8 seconds; the autosave debounce is 1. Between second 2
+    // and second 8 the delete is already on the server while "undo" is still on
+    // screen, so this checks that the button means what it says by then.
+    let stored = structuredClone(trip);
+    const fetchMock = vi.fn().mockImplementation((_url: string, init?: RequestInit) => {
+      if (init?.method === "PUT") {
+        const body = JSON.parse(String(init.body));
+        stored = { ...stored, version: stored.version + 1, items: body.items };
+        return Promise.resolve(response(stored));
+      }
+      return Promise.resolve(response(stored));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+    const editor = await openStopEditor("淺草散步");
+    fireEvent.click(within(editor).getByRole("button", { name: "刪除這個安排" }));
+
+    // Let the debounce fire: the delete reaches the server.
+    await waitFor(() => expect(stored.items).toHaveLength(0), { timeout: 4000 });
+    expect(screen.getByRole("button", { name: "復原" })).toBeTruthy();
+
+    fireEvent.click(screen.getByRole("button", { name: "復原" }));
+    expect(await screen.findByText("淺草散步")).toBeTruthy();
+    await waitFor(() => expect(stored.items.map((item) => item.id)).toEqual([trip.items[0].id]), { timeout: 4000 });
+  });
+
+  it("does not lose the undone stop when it is clicked while the delete is still in flight", async () => {
+    // The narrow window the 8-second toast and the 1-second debounce create: the
+    // delete has been sent but not answered, and the member changes their mind.
+    let stored = structuredClone(trip);
+    let releaseDelete!: () => void;
+    let puts = 0;
+    const fetchMock = vi.fn().mockImplementation((_url: string, init?: RequestInit) => {
+      if (init?.method === "PUT") {
+        const body = JSON.parse(String(init.body));
+        puts += 1;
+        const answer = () => {
+          stored = { ...stored, version: stored.version + 1, items: body.items };
+          return response(stored);
+        };
+        if (puts === 1) return new Promise((resolve) => { releaseDelete = () => resolve(answer()); });
+        return Promise.resolve(answer());
+      }
+      return Promise.resolve(response(stored));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+    const editor = await openStopEditor("淺草散步");
+    fireEvent.click(within(editor).getByRole("button", { name: "刪除這個安排" }));
+    await waitFor(() => expect(puts).toBe(1), { timeout: 4000 });
+
+    fireEvent.click(screen.getByRole("button", { name: "復原" }));
+    await act(async () => { releaseDelete(); });
+
+    expect(await screen.findByText("淺草散步")).toBeTruthy();
+    await waitFor(() => expect(stored.items.map((item) => item.id)).toEqual([trip.items[0].id]), { timeout: 4000 });
+  });
+
+  it("offers the offline day view, which nothing in the app linked to", async () => {
+    // ?view=today was reachable only by typing the query string, so the cache it
+    // exists to fill was usually empty by the time the signal went.
+    vi.stubGlobal("fetch", vi.fn().mockImplementation(() => Promise.resolve(response(trip))));
+    render(<TripEditor tripId={trip.id} />);
+    const tools = await openToolsSection("旅行準備");
+
+    const link = within(tools).getByRole("link", { name: /今日檢視（可離線）/ });
+    expect(link.getAttribute("href")).toBe(`/zh-TW/trips/${trip.id}?view=today`);
+  });
+
   it("restores an unsynced local draft for the same server version", async () => {
     window.localStorage.setItem(`trip-planner-draft:${trip.id}`, JSON.stringify({
       baseVersion: 1,
@@ -1965,5 +2048,32 @@ describe("trip editor explicit drafts", () => {
       data: { hotspot_id: "museum", catalog_selection: { kind: "hotspot", id: "museum" } },
     });
     expect(saved.find((row: { id: string }) => row.id === fixedItem.id)).toMatchObject(fixedItem);
+  });
+  it("does not swallow the close button while the save it started is still in flight", async () => {
+    let finishSave!: (value: ReturnType<typeof response>) => void;
+    const fetchMock = vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      if (init?.method === "PUT") {
+        return new Promise<ReturnType<typeof response>>((resolve) => { finishSave = resolve; });
+      }
+      return Promise.resolve(response(trip));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+
+    const editor = await openStopEditor("淺草散步");
+    fireEvent.change(within(editor).getByLabelText("安排名稱"), { target: { value: "淺草寺" } });
+    fireEvent.click(within(editor).getByRole("button", { name: "儲存修改" }));
+    await waitFor(() => expect(fetchMock.mock.calls.some(([, init]) => init?.method === "PUT")).toBe(true));
+
+    // The close guard used to `return false` here and do nothing else: no close, no
+    // confirmation, no message. The reader pressed a button and the sheet sat there.
+    fireEvent.click(within(editor).getByRole("button", { name: "關閉" }));
+    expect(screen.getByRole("dialog", { name: "編輯安排" })).toBeTruthy();
+
+    // The save fails, so the editor legitimately stays open with an unapplied draft. The
+    // press still has to produce something: the exit is queued and runs once the write
+    // settles, which — with a draft still unsaved — is the keep-or-discard sheet.
+    await act(async () => { finishSave({ ok: false, status: 500, json: async () => ({ detail: "nope" }) }); });
+    expect(await screen.findByRole("dialog", { name: "保留這次修改嗎？" })).toBeTruthy();
   });
 });
