@@ -307,3 +307,33 @@ DoD 第三項（修好之後連續三次整套全綠）從字面上看已經滿�
 鍵盤完全沒反應、而且不出聲。二十一個呼叫點目前都沒踩到（四個 `open` 寫死 `true` 的都查過），
 但這是下一個人踩得到的地雷。另開 `2026-09-12-usemodalsheet-effect-ref`，沒有在這張裡順手改
 共用原語。
+
+## 第四個實例（claude-opus-5-testfixes, 2026-09-12）
+
+合併 main（`3230a33`，#419 的 sitemap／guides）之後跑整套，紅了一條：
+
+```
+components/route-mode-panel.test.tsx
+  × supports the available Google transit fallback and exposes its actual steps before the optional map
+```
+
+單獨跑那個檔 44 條全過；整套重跑一次 233 檔 / 2383 全綠。**所以這是第四個實例，不是 #419
+帶進來的回歸。**
+
+值得注意的是它落在 `route-mode-panel.test.tsx`，但**不是**我在 `#406` 修好的那一條
+（那條是「switches among cached route options and applies only the selected preview」）。
+同一個檔、不同的測試。所以焦點守門的修正沒有讓這個檔免疫，只解決了它自己那一條。
+
+四個實例現在長這樣：
+
+| 檔 | 斷言 | 狀態 |
+| --- | --- | --- |
+| `route-mode-panel.test.tsx`（cached route options） | 焦點在下一個選項 | 已修（`#406`） |
+| `route-mode-panel.test.tsx`（Google transit fallback） | — | **新，未解** |
+| `travel-card-actions.test.tsx:64` | Escape 之後彈層關掉 | 未解 |
+| `trip-editor.test.tsx:292` | 對話框還在 | 未解 |
+
+觸發的情境也對得上先前的觀察：**main 帶進新的測試檔會改變整套的檔案順序與時序**，而這個
+家族對那個很敏感。#419 一個字都沒碰 `route-mode-panel`。
+
+下次要查的時候，這條比另外兩條好下手——它在一個已經裝過焦點探針、而且探針確實奏效的檔裡。
