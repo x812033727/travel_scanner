@@ -1,7 +1,7 @@
 ---
 id: 2026-09-07-board-conflicts-on-every-pr
 title: tasks/BOARD.md 是產生檔，卻讓每個 PR 互相衝突
-status: in-progress
+status: review
 priority: P3
 area: tools
 owner: claude-opus-5
