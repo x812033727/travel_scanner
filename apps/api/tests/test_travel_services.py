@@ -1,16 +1,19 @@
 from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
+from pathlib import Path
 from uuid import uuid4
 
 import fakeredis.aioredis
 import httpx
 import pytest
 from pydantic import ValidationError
+from starlette.requests import Request
 
 from app.affiliates.service import TravelpayoutsLinkClient
-from app.config import Settings
+from app.config import Settings, get_settings
 from app.destinations.catalog import DESTINATIONS
 from app.i18n import ERROR_DETAILS, LOCALES
+from app.infra import client_ip
 from app.models import (
     DestinationAffiliateOffer,
     TravelServiceBrand,
@@ -586,3 +589,40 @@ def test_catalog_lodging_preserves_naver_identity_when_coordinates_are_unchanged
     # Replacing a catalog stay with a legacy stay must not retain a stale identity.
     sync_primary_lodging(trip, [item], {"name": "Different hotel"})
     assert "map_links" not in item.data and "naver_map_url" not in item.data
+
+
+def test_public_rate_limits_never_read_the_forwarded_address_directly() -> None:
+    """These five limits used to read the raw header, bypassing the trust gate entirely.
+
+    `stay22-script-options`, `hotel-direct-clickout`, `hotel-options`, `hotel-quotes` and
+    `service-clickout` keyed on `request.headers.get("x-travel-client-ip")` directly, so they
+    believed it in every environment -- development included, where TRUST_PROXY_CLIENT_IP is
+    false -- and skipped the address parsing too, which let any string become part of a Redis
+    key. Asserted against the source because the alternative is standing up five endpoints to
+    observe the absence of a behaviour; what matters is that the header is not read here at
+    all, which is exactly what the source can say.
+    """
+    source = (Path(__file__).resolve().parents[1] / "app/travel_services/router.py").read_text(
+        encoding="utf-8"
+    )
+    assert "x-travel-client-ip" not in source.lower()
+    assert source.count("client_ip(request)") == 5
+
+
+def test_the_trust_gate_these_limits_now_sit_behind(monkeypatch: pytest.MonkeyPatch) -> None:
+    """And the gate itself: an untrusted deployment falls back to the real peer."""
+    monkeypatch.setenv("TRUST_PROXY_CLIENT_IP", "false")
+    get_settings.cache_clear()
+    try:
+        request = Request(
+            {
+                "type": "http",
+                "method": "GET",
+                "path": "/api/v1/travel-services",
+                "headers": [(b"x-travel-client-ip", b"198.51.100.1")],
+                "client": ("172.18.0.9", 40000),
+            }
+        )
+        assert client_ip(request) == "172.18.0.9"
+    finally:
+        get_settings.cache_clear()

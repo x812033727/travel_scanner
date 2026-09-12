@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { forwardedClientAddress } from "@/app/api/travel/[...path]/proxy-security";
+import { forwardedClientHeaders } from "@/lib/client-address";
 
 const locales = new Set(["en", "ja", "ko", "zh-TW", "zh-CN"]);
 
@@ -19,8 +19,9 @@ export async function GET(
   if (token) headers.set("Authorization", `Bearer ${token}`);
   const userAgent = request.headers.get("user-agent")?.slice(0, 512);
   if (userAgent) headers.set("User-Agent", userAgent);
-  const clientAddress = forwardedClientAddress(request.headers);
-  if (clientAddress) headers.set("X-Travel-Client-IP", clientAddress);
+  for (const [name, value] of Object.entries(forwardedClientHeaders(request.headers))) {
+    headers.set(name, value);
+  }
   let response: Response;
   try {
     response = await fetch(`${base}/api/v1/hotspots/guides/${guideId}/open`, {

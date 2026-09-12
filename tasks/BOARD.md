@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**39 open · 2 in progress · 3 blocked · 0 in review · 268 done**
+**39 open · 2 in progress · 3 blocked · 2 in review · 268 done**
 
 ## Ready to claim
 
@@ -14,9 +14,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
 | P1 | [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | docs | `apps/web/app/[locale]/privacy/page.tsx`<br>`apps/web/app/[locale]/terms/page.tsx`<br>`apps/web/app/[locale]/contact/page.tsx`<br>`apps/web/messages/en/navigation.json`<br>`apps/web/messages/ja/navigation.json`<br>`apps/web/messages/ko/navigation.json`<br>`apps/web/messages/zh-CN/navigation.json`<br>`apps/web/messages/zh-TW/navigation.json` |
-| P1 | [Contextual travel services and affiliate catalog](open/2026-09-07-contextual-travel-services.md) | api | `apps/api/app/travel_services`<br>`apps/api/app/models.py`<br>`apps/api/app/main.py`<br>`apps/api/app/config.py`<br>`apps/api/app/affiliates`<br>`apps/api/app/saved`<br>`apps/api/app/trips/stay_router.py`<br>`apps/api/app/trips/schedule.py`<br>`apps/api/app/worker.py`<br>`apps/api/app/i18n.py`<br>`apps/api/app/ui_text/schemas.py`<br>`apps/api/app/analytics/scheduler.py`<br>`apps/api/migrations/versions`<br>`apps/api/tests/test_travel_services.py`<br>`apps/api/tests/test_travel_services_integration.py`<br>`apps/api/tests/test_ui_text.py`<br>`apps/web/components/travel-services`<br>`apps/web/components/trip-editor.tsx`<br>`apps/web/components/stay-area-flow.tsx`<br>`apps/web/components/hotspot-guide-panel.tsx`<br>`apps/web/components/hotspot-explorer.tsx`<br>`apps/web/components/admin-nav.tsx`<br>`apps/web/components/admin-nav.test.tsx`<br>`apps/web/components/saved-items-provider.tsx`<br>`apps/web/components/account-saved-items.tsx`<br>`apps/web/lib/api.ts`<br>`apps/web/app/api/travel/[...path]/route.ts`<br>`apps/web/app/api/travel/[...path]/proxy-context.ts`<br>`apps/web/app/api/travel/[...path]/route.test.ts`<br>`apps/web/i18n`<br>`apps/web/lib/ui-text.ts`<br>`apps/web/lib/ui-text.test.ts`<br>`apps/web/messages/en/travelServices.json`<br>`apps/web/messages/ja/travelServices.json`<br>`apps/web/messages/ko/travelServices.json`<br>`apps/web/messages/zh-TW/travelServices.json`<br>`apps/web/messages/zh-CN/travelServices.json`<br>`apps/web/messages/en/admin.json`<br>`apps/web/messages/ja/admin.json`<br>`apps/web/messages/ko/admin.json`<br>`apps/web/messages/zh-TW/admin.json`<br>`apps/web/messages/zh-CN/admin.json`<br>`apps/web/app/[locale]/destinations`<br>`apps/web/app/[locale]/admin/travel-services`<br>`apps/web/e2e/travel-services.spec.ts`<br>`apps/web/vitest.setup.tsx`<br>`docs/travel-services.md`<br>`tools/check-i18n.mjs`<br>`.env.example`<br>`.github/workflows/ci.yml` |
-| P1 | [Mokaair community foundation and account safety](open/2026-09-07-mokaair-community-foundation.md) | api | `apps/api/app/community`<br>`apps/api/app/models.py`<br>`apps/api/app/main.py`<br>`apps/api/app/config.py`<br>`apps/api/app/auth`<br>`apps/api/app/i18n.py`<br>`apps/api/app/worker.py`<br>`apps/api/app/trips`<br>`apps/api/app/search/schemas.py`<br>`docker-compose.yml`<br>`docker-compose.prod.yml`<br>`apps/api/pyproject.toml`<br>`apps/api/uv.lock`<br>`apps/api/migrations`<br>`apps/api/tests/test_community_foundation.py`<br>`apps/api/tests/test_schema.py`<br>`apps/api/tests/test_ui_text.py`<br>`.env.example`<br>`docker-compose.community.yml`<br>`.github/workflows/ci.yml`<br>`docs/community.md`<br>`apps/api/app/ui_text/schemas.py` |
-| P1 | [Mokaair community responsive web and five-language experience](open/2026-09-07-mokaair-community-web.md) | web | `apps/web/lib/api.ts`<br>`apps/web/lib/api.test.ts`<br>`apps/web/e2e/readability.spec.ts`<br>`apps/web/components/community`<br>`apps/web/app/[locale]/community`<br>`apps/web/app/[locale]/pet-friendly`<br>`apps/web/app/[locale]/my`<br>`apps/web/app/[locale]/explore`<br>`apps/web/app/[locale]/account/confirm`<br>`apps/web/app/[locale]/forgot-password`<br>`apps/web/app/[locale]/admin/community`<br>`apps/web/app/[locale]/admin/pet-friendly`<br>`apps/web/app/[locale]/page.tsx`<br>`apps/web/app/[locale]/layout.tsx`<br>`apps/web/app/[locale]/account/page.tsx`<br>`apps/web/app/api/travel`<br>`apps/web/lib/community`<br>`apps/web/messages`<br>`apps/web/i18n/request.ts`<br>`apps/web/components/site-navigation.tsx`<br>`apps/web/components/mobile-nav.tsx`<br>`apps/web/components/app-bottom-nav.tsx`<br>`apps/web/components/admin-nav.tsx`<br>`apps/web/components/header-session.tsx`<br>`apps/web/components/trip-editor.tsx`<br>`apps/web/e2e/community.spec.ts`<br>`apps/web/public/sw.js`<br>`README.md`<br>`apps/web/lib/csp.ts`<br>`apps/web/lib/csp.test.ts`<br>`apps/web/lib/ui-text.ts`<br>`apps/web/lib/ui-text.test.ts`<br>`apps/web/vitest.setup.tsx`<br>`apps/web/components/admin-nav.test.tsx` |
 | P1 | [Hotel platform options and quote readiness](open/2026-09-07-hotel-platform-options-and-quote-readiness.md) | api | `apps/api/tests/test_hotel_content_package.py`<br>`docs/hotel-platforms` |
 | P1 | [Revalidate community read resets against production-build CI](open/2026-09-08-community-ci-read-retry.md) | web | `apps/web/e2e/community.spec.ts` |
 | P1 | [Complete live Travelpayouts brand and destination offer verification](open/2026-09-08-travelpayouts-live-destination-activation.md) | ops | `docs/travel-services.md` |
@@ -32,7 +29,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [Normalize locale-prefixed login return paths](open/2026-09-10-locale-login-return-path.md) | web | `apps/web/components/auth-form.tsx`<br>`apps/web/components/auth-form.test.tsx` |
 | P2 | [讓 pet-friendly 與社群內容頁先 SSR 再開放索引](open/2026-09-10-seo-open-content-pages.md) | web | `apps/web/components/community/page.tsx`<br>`apps/web/components/community/page.test.tsx`<br>`apps/web/app/[locale]/pet-friendly/page.tsx`<br>`apps/web/app/[locale]/pet-friendly/[id]/page.tsx`<br>`apps/web/app/[locale]/community/posts/[id]/page.tsx`<br>`apps/web/app/[locale]/community/profiles/[handle]/page.tsx`<br>`apps/web/lib/community/public.server.ts`<br>`apps/web/lib/community/public.server.test.ts` |
 | P2 | [Re-query the live Seoul Day 2 route after the #387 release](open/2026-09-11-seoul-day2-live-requery.md) | ops | `docs/seoul-day2-transport-ux.md` |
-| P2 | [Sitemap lastmod should move when a guide translation is republished](open/2026-09-11-guide-lastmod-republication.md) | api | `apps/api/app/guides/service.py`<br>`apps/api/app/guides/schemas.py`<br>`apps/api/tests/test_guides.py`<br>`apps/web/lib/guides.server.ts`<br>`apps/web/app/sitemap.ts`<br>`apps/web/app/sitemap.test.ts` |
 | P2 | [CatchTable 店家 id 有底線分段時存不了訂位連結](open/2026-09-11-catchtable-underscore-segment-id.md) | api | `apps/api/app/foods/platform_links.py`<br>`apps/api/tests/test_food_platform_links.py`<br>`apps/web/lib/reservation-platforms.ts`<br>`apps/web/lib/reservation-platforms.test.ts` |
 | P2 | [航班動態的查詢時間把 UTC 當成地方時顯示](open/2026-09-11-flight-status-checked-at-utc.md) | web | `apps/web/components/flight-anchor-card.tsx`<br>`apps/web/components/flight-anchor-card.test.tsx` |
 | P2 | [當日檢視要真的離線可用，需要預先快取 app shell](open/2026-09-11-offline-day-view-needs-an-app.md) | web | `apps/web/public/sw.js`<br>`apps/web/components/offline-trip-cache.tsx`<br>`apps/web/components/offline-trip-cache.test.tsx` |
@@ -49,7 +45,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P3 | [admin-shell 命令面板改用 modal-sheet 的分層堆疊](open/2026-09-11-admin-shell-modal-layer.md) | web | `apps/web/components/admin-shell.tsx`<br>`apps/web/components/admin-shell.test.tsx` |
 | P3 | [航班票價實驗室三個畫面的多語系與警告代碼](open/2026-09-11-fare-lab-warnings-and-copy.md) | web | `apps/web/components/airline-fare-lab.tsx`<br>`apps/web/components/back-to-back-fare-search.tsx`<br>`apps/web/components/live-back-to-back-search.tsx`<br>`apps/api/app/crawlers/back_to_back.py`<br>`apps/api/app/providers/live_back_to_back.py` |
 | P3 | [推薦流卡片標示內容語言（語言方向 1）](open/2026-09-11-discovery-card-language-badge.md) | web | `apps/web/components/discovery/card.tsx`<br>`apps/web/components/discovery/card.test.tsx` |
-| P3 | [A capitalised guide slug shows a fake outage instead of the article](open/2026-09-12-guide-slug-casing-shows-a-fake-outage.md) | web | `apps/web/lib/guides.server.ts`<br>`apps/web/lib/guides.server.test.ts`<br>`apps/web/app/[locale]/guides/[kind]/[slug]/page.tsx`<br>`apps/web/app/[locale]/guides/[kind]/[slug]/page.test.tsx` |
 
 ## In progress
 
@@ -60,7 +55,10 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In review
 
-_Nothing here._
+| Task | Owner | Branch |
+| --- | --- | --- |
+| [公開讀取端點沒有任何速率上限，整站可被匿名爬走](open/2026-09-11-public-read-rate-limit.md) | claude-opus-5 | `claude/prevent-web-scraping-6xj3dg` |
+| [邊緣層沒有限流，轉送標頭也沒有人剝](open/2026-09-12-edge-rate-limit-and-header-hygiene.md) | claude-opus-5 | `claude/prevent-web-scraping-6xj3dg` |
 
 ## Waiting
 
@@ -69,8 +67,13 @@ _Nothing here._
 | P1 | [Mokaair site experience palettes and managed information pages](open/2026-09-09-site-experience-settings.md) | see the task notes |
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | see the task notes |
 | P3 | [TourAPI（韓國觀光公社）可行性驗證：先確認拿得到金鑰、連得上、資料量夠不夠](open/2026-09-06-korea-tourism-tourapi-spike.md) | see the task notes |
+| P1 | [Contextual travel services and affiliate catalog](open/2026-09-07-contextual-travel-services.md) | active work in the same scope |
+| P1 | [Mokaair community foundation and account safety](open/2026-09-07-mokaair-community-foundation.md) | active work in the same scope |
+| P1 | [Mokaair community responsive web and five-language experience](open/2026-09-07-mokaair-community-web.md) | active work in the same scope |
 | P1 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | active work in the same scope |
+| P2 | [Sitemap lastmod should move when a guide translation is republished](open/2026-09-11-guide-lastmod-republication.md) | active work in the same scope |
 | P3 | [Lighthouse SEO 與效能門檻 workflow](open/2026-09-10-seo-lighthouse-workflow.md) | depends on 2026-09-10-seo-server-render-home-and-explore |
+| P3 | [A capitalised guide slug shows a fake outage instead of the article](open/2026-09-12-guide-slug-casing-shows-a-fake-outage.md) | active work in the same scope |
 
 ## Recently finished
 

@@ -9,6 +9,7 @@ import {
   type GuideTopic,
 } from "./guides";
 import { defaultLocale, locales, type Locale } from "@/i18n/routing";
+import { publicServerHeaders } from "@/lib/public-server-fetch";
 
 /**
  * Server-to-server reads of the guides API.
@@ -29,7 +30,7 @@ async function fetchJson(path: string, locale: string): Promise<unknown | null> 
     const response = await fetch(`${apiBase()}/api/v1${path}`, {
       cache: "no-store",
       signal: AbortSignal.timeout(3000),
-      headers: { Accept: "application/json", "X-Travel-Locale": locale },
+      headers: await publicServerHeaders(locale),
     });
     if (!response.ok) return null;
     return (await response.json()) as unknown;
