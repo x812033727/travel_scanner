@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**38 open · 3 in progress · 3 blocked · 0 in review · 267 done**
+**38 open · 2 in progress · 3 blocked · 0 in review · 268 done**
 
 ## Ready to claim
 
@@ -32,6 +32,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [Normalize locale-prefixed login return paths](open/2026-09-10-locale-login-return-path.md) | web | `apps/web/components/auth-form.tsx`<br>`apps/web/components/auth-form.test.tsx` |
 | P2 | [讓 pet-friendly 與社群內容頁先 SSR 再開放索引](open/2026-09-10-seo-open-content-pages.md) | web | `apps/web/components/community/page.tsx`<br>`apps/web/components/community/page.test.tsx`<br>`apps/web/app/[locale]/pet-friendly/page.tsx`<br>`apps/web/app/[locale]/pet-friendly/[id]/page.tsx`<br>`apps/web/app/[locale]/community/posts/[id]/page.tsx`<br>`apps/web/app/[locale]/community/profiles/[handle]/page.tsx`<br>`apps/web/lib/community/public.server.ts`<br>`apps/web/lib/community/public.server.test.ts` |
 | P2 | [Re-query the live Seoul Day 2 route after the #387 release](open/2026-09-11-seoul-day2-live-requery.md) | ops | `docs/seoul-day2-transport-ux.md` |
+| P2 | [Sitemap lastmod should move when a guide translation is republished](open/2026-09-11-guide-lastmod-republication.md) | api | `apps/api/app/guides/service.py`<br>`apps/api/app/guides/schemas.py`<br>`apps/api/tests/test_guides.py`<br>`apps/web/lib/guides.server.ts`<br>`apps/web/app/sitemap.ts`<br>`apps/web/app/sitemap.test.ts` |
 | P2 | [CatchTable 店家 id 有底線分段時存不了訂位連結](open/2026-09-11-catchtable-underscore-segment-id.md) | api | `apps/api/app/foods/platform_links.py`<br>`apps/api/tests/test_food_platform_links.py`<br>`apps/web/lib/reservation-platforms.ts`<br>`apps/web/lib/reservation-platforms.test.ts` |
 | P2 | [航班動態的查詢時間把 UTC 當成地方時顯示](open/2026-09-11-flight-status-checked-at-utc.md) | web | `apps/web/components/flight-anchor-card.tsx`<br>`apps/web/components/flight-anchor-card.test.tsx` |
 | P2 | [當日檢視要真的離線可用，需要預先快取 app shell](open/2026-09-11-offline-day-view-needs-an-app.md) | web | `apps/web/public/sw.js`<br>`apps/web/components/offline-trip-cache.tsx`<br>`apps/web/components/offline-trip-cache.test.tsx` |
@@ -47,6 +48,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P3 | [admin-shell 命令面板改用 modal-sheet 的分層堆疊](open/2026-09-11-admin-shell-modal-layer.md) | web | `apps/web/components/admin-shell.tsx`<br>`apps/web/components/admin-shell.test.tsx` |
 | P3 | [航班票價實驗室三個畫面的多語系與警告代碼](open/2026-09-11-fare-lab-warnings-and-copy.md) | web | `apps/web/components/airline-fare-lab.tsx`<br>`apps/web/components/back-to-back-fare-search.tsx`<br>`apps/web/components/live-back-to-back-search.tsx`<br>`apps/api/app/crawlers/back_to_back.py`<br>`apps/api/app/providers/live_back_to_back.py` |
 | P3 | [推薦流卡片標示內容語言（語言方向 1）](open/2026-09-11-discovery-card-language-badge.md) | web | `apps/web/components/discovery/card.tsx`<br>`apps/web/components/discovery/card.test.tsx` |
+| P3 | [A capitalised guide slug shows a fake outage instead of the article](open/2026-09-12-guide-slug-casing-shows-a-fake-outage.md) | web | `apps/web/lib/guides.server.ts`<br>`apps/web/lib/guides.server.test.ts`<br>`apps/web/app/[locale]/guides/[kind]/[slug]/page.tsx`<br>`apps/web/app/[locale]/guides/[kind]/[slug]/page.test.tsx` |
 
 ## In progress
 
@@ -54,7 +56,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- | --- |
 | [公開美食店家訂位平台連結補齊（查核與批次匯入）](open/2026-09-11-food-reservation-link-backfill.md) | claude-opus-5 | 2026-09-11T16:02:41Z | `claude/food-reservation-link-backfill` |
 | [Deny school, hospital, tram stop, ward and military base types in hotspot discovery](open/2026-09-11-deny-school-hospital-tram-stop-ward.md) | claude-opus-5 | 2026-09-11T16:53:59Z | `claude/attractions-review-progress-55bb39` |
-| [Carry the guides sitemap follow-ups into main](open/2026-09-12-guides-sitemap-followup.md) | claude-opus-5-guides-sitemap | 2026-09-12T02:36:44Z | `claude/guides-sitemap-followup` |
 
 ## In review
 
@@ -68,12 +69,11 @@ _Nothing here._
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | see the task notes |
 | P3 | [TourAPI（韓國觀光公社）可行性驗證：先確認拿得到金鑰、連得上、資料量夠不夠](open/2026-09-06-korea-tourism-tourapi-spike.md) | see the task notes |
 | P1 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | active work in the same scope |
-| P2 | [Sitemap lastmod should move when a guide translation is republished](open/2026-09-11-guide-lastmod-republication.md) | active work in the same scope |
 | P3 | [Lighthouse SEO 與效能門檻 workflow](open/2026-09-10-seo-lighthouse-workflow.md) | depends on 2026-09-10-seo-server-render-home-and-explore |
-| P3 | [A capitalised guide slug shows a fake outage instead of the article](open/2026-09-12-guide-slug-casing-shows-a-fake-outage.md) | active work in the same scope |
 
 ## Recently finished
 
+- 2026-09-12 [Carry the guides sitemap follow-ups into main](done/2026-09-12-guides-sitemap-followup.md)
 - 2026-09-12 [填入擁有者確認資訊，解鎖四個網站資訊頁](done/2026-09-12-site-page-requirements.md)
 - 2026-09-12 [從程式碼盤點個資處理，供擁有者填寫隱私權頁的確認資訊](done/2026-09-11-privacy-data-map.md)
 - 2026-09-11 [Wire /guides into the sitemap, footer and destination pages](done/2026-09-11-guides-sitemap-and-entry-points.md)
@@ -83,4 +83,3 @@ _Nothing here._
 - 2026-09-11 [取消或逾時搜尋時釋放已保留的次數](done/2026-09-11-release-reservation-on-cancel.md)
 - 2026-09-11 [店家座標佇列面板整個沒有 i18n](done/2026-09-11-merchant-coordinate-queue-i18n.md)
 - 2026-09-11 [formatTime 在沒有時間時回傳寫死的繁中](done/2026-09-11-format-time-chinese-fallback.md)
-- 2026-09-11 [安排編輯器的關閉鈕在儲存在途時被靜默吞掉](done/2026-09-11-planner-overlay-close-guard-race.md)

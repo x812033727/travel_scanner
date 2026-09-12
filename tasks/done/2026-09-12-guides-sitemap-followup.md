@@ -1,13 +1,13 @@
 ---
 id: 2026-09-12-guides-sitemap-followup
 title: Carry the guides sitemap follow-ups into main
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5-guides-sitemap
 claimed_at: 2026-09-12T02:36:44Z
 created_at: 2026-09-12T02:36:44Z
-completed_at:
+completed_at: 2026-09-12T02:56:05Z
 branch: claude/guides-sitemap-followup
 depends_on: []
 scope:
