@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
 import type { AffiliateModule } from "@/components/affiliate-partner-options";
+import type { HotelBookingPlacement } from "@/lib/hotel-booking-placement";
 import { klookAffiliateCopy } from "@/lib/klook-affiliate-copy";
 
 type DestinationOption = {
@@ -45,17 +46,21 @@ export function DestinationAffiliateOptions({
   modules = MODULES,
   contextual = false,
   destinationLabel,
+  placement = "destination",
 }: {
   destinationId: string;
   modules?: AffiliateModule[];
   contextual?: boolean;
   destinationLabel?: string;
+  /** Which public surface renders the buttons. The API decides per placement whether
+   *  offers may show at all, and records it on every click. */
+  placement?: HotelBookingPlacement;
 }) {
   const t = useTranslations("travelServices");
   const locale = useLocale();
   const copy = klookAffiliateCopy(locale);
   const moduleKey = [...new Set(modules)].filter((module) => MODULES.includes(module)).join(",");
-  const requestKey = `${destinationId}:${moduleKey}:${locale}`;
+  const requestKey = `${destinationId}:${moduleKey}:${locale}:${placement}`;
   const [snapshot, setSnapshot] = useState<{ key: string; responses: DestinationResponse[] }>();
   const responses = snapshot?.key === requestKey ? snapshot.responses : [];
 
@@ -64,7 +69,7 @@ export function DestinationAffiliateOptions({
     Promise.all(
       (moduleKey.split(",").filter(Boolean) as AffiliateModule[]).map((module) =>
         api<DestinationResponse>(
-          `/affiliates/destination-offers?destination_id=${encodeURIComponent(destinationId)}&module=${module}`,
+          `/affiliates/destination-offers?destination_id=${encodeURIComponent(destinationId)}&module=${module}&placement=${placement}`,
           { signal: controller.signal },
         ).catch(() => ({
           destination_id: destinationId,
@@ -79,7 +84,7 @@ export function DestinationAffiliateOptions({
     return () => {
       controller.abort();
     };
-  }, [destinationId, moduleKey, requestKey]);
+  }, [destinationId, moduleKey, placement, requestKey]);
 
   if (!responses.length) return null;
   const disclosure = responses.find((response) => response.disclosure)?.disclosure;

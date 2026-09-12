@@ -298,9 +298,61 @@ async def test_destination_discovery_accepts_extended_city_but_not_a_product(fix
         "/api/v1/affiliates/destination-offers?destination_id=hiroshima&module=hotel"
     )
     assert len(options.json()["options"]) == 1
+    assert options.json()["options"][0]["clickout_url"].endswith(
+        f"/destination-offers/{identifier}/clickout?placement=destination"
+    )
     click = await client.post(f"/api/v1/affiliates/destination-offers/{identifier}/clickout")
     assert click.status_code == 303, click.text
     assert click.headers["location"] == target + "&aid=" + AID
+
+
+async def test_destination_offers_are_gated_and_labelled_per_surface(fixture):
+    session, client, _config, _actor = fixture
+    brand = await create_brand(client)
+    target = "https://www.klook.com/zh-TW/search/?query=Hiroshima"
+    created = await client.post(
+        "/api/v1/admin/travel-services/destination-offers",
+        json={
+            "brand_id": brand["id"],
+            "destination_id": "hiroshima",
+            "module": "hotel",
+            "target_url": target,
+        },
+    )
+    identifier = created.json()["id"]
+    review = await client.post(
+        f"/api/v1/admin/travel-services/destination-offers/{identifier}/review",
+        json={"version": 1, "status": "approved", "browser_verified": True, "evidence_url": target},
+    )
+    assert review.status_code == 200, review.text
+    listing = "/api/v1/affiliates/destination-offers?destination_id=hiroshima&module=hotel"
+    clickout = f"/api/v1/affiliates/destination-offers/{identifier}/clickout"
+
+    # The content surfaces are off by default: the list is empty and the click refuses,
+    # so a page that guessed the URL cannot route a click through a closed surface.
+    assert (await client.get(listing + "&placement=guide")).json()["options"] == []
+    assert (await client.post(clickout + "?placement=guide")).status_code == 404
+    assert (await client.post(clickout + "?placement=evil")).status_code == 422
+    assert await session.scalar(select(func.count()).select_from(AffiliateClick)) == 0
+
+    row = await session.get(TravelServiceConfig, 1)
+    row.data = {**row.data, "affiliate_placements": [*row.data["affiliate_placements"], "guide"]}
+    await session.commit()
+
+    options = (await client.get(listing + "&placement=guide")).json()["options"]
+    assert [option["clickout_url"] for option in options] == [
+        f"/api/travel/affiliates/destination-offers/{identifier}/clickout?placement=guide"
+    ]
+    click = await client.post(clickout + "?placement=guide")
+    assert click.status_code == 303, click.text
+    recorded = (await session.scalars(select(AffiliateClick))).one()
+    assert recorded.placement == "guide"
+    assert recorded.sub_id == "dst_hotel_hiroshima_zh-TW_guide"
+    assert recorded.partner == "klook" and recorded.destination_id == "hiroshima"
+    # Switching the surface off again also revokes the click, not only the listing.
+    row.data = {**row.data, "affiliate_placements": ["destination"]}
+    await session.commit()
+    assert (await client.post(clickout + "?placement=guide")).status_code == 404
 
 
 async def test_direct_import_default_channel_and_replay_never_publish(fixture):

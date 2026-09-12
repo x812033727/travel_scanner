@@ -8,6 +8,7 @@ import {
   within,
 } from "@testing-library/react";
 import { TravelServicesAdmin } from "./admin";
+import common from "@/messages/zh-TW/common.json";
 import copy from "@/messages/zh-TW/travelServices.json";
 import { adminHotelsCopy } from "@/lib/admin-hotels-copy";
 import { klookAffiliateCopy } from "@/lib/klook-affiliate-copy";
@@ -21,8 +22,9 @@ vi.mock("next-intl", async () => {
     await vi.importActual<typeof import("next-intl")>("next-intl");
   return {
     useLocale: () => "zh-TW",
-    useTranslations: () =>
-      createTranslator({ locale: "zh-TW", messages: copy }),
+    // The workspace reads its own namespace plus `common` for the guide-section label.
+    useTranslations: (namespace?: string) =>
+      createTranslator({ locale: "zh-TW", messages: namespace === "common" ? common : copy }),
     useFormatter: () =>
       createFormatter({ locale: "zh-TW", timeZone: "Asia/Taipei" }),
   };
@@ -327,4 +329,20 @@ it("creates and batch-reviews destination offers without exposing arbitrary bran
     status: "approved",
     offers: [{ id: "22222222-2222-2222-2222-222222222222", version: 1 }],
   });
+});
+
+it("lets an operator open the guide and city surfaces for destination offers without dropping the legacy ones", async () => {
+  request.mockResolvedValue(overview);
+  // The workspace reads its tab from the URL; `config` is the release-controls panel.
+  window.history.replaceState(null, "", "/zh-TW/admin/travel-services?tab=config");
+  render(<TravelServicesAdmin workspace="services" />);
+  const guide = await screen.findByLabelText(common.guides.hubTitle);
+  expect((guide as HTMLInputElement).checked).toBe(false);
+  fireEvent.click(guide);
+  fireEvent.click(screen.getByRole("button", { name: copy.apply }));
+  await waitFor(() => expect(request.mock.calls.some(([path, opts]) => String(path).endsWith("/config") && opts?.method === "PUT")).toBe(true));
+  const [, options] = request.mock.calls.find(([path, opts]) => String(path).endsWith("/config") && opts?.method === "PUT")!;
+  const saved = JSON.parse(String(options.body));
+  expect(saved.affiliate_placements).toEqual(["destination", "hotspot", "trip", "stay", "checklist", "discovery", "guide"]);
+  expect(saved.public_enabled).toBe(false);
 });

@@ -477,6 +477,30 @@ describe("AdminSettingsPanel", () => {
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
+  it("shows a partner-by-module readiness matrix above the affiliate cards", async () => {
+    const data = { ...snapshot, providers: [{ provider: "travelpayouts", label: "Travelpayouts Affiliate", description: "Affiliate links", enabled: true,
+      configured: true, status: "ready", status_message: "Travelpayouts ready", config: { travelpayouts_marker: "456" },
+      config_sources: { travelpayouts_marker: "database" }, secrets: { travelpayouts_api_token: { configured: true, masked: "••••", source: "database" } }, updated_at: null }] };
+    const status = [
+      { code: "klook", display_name: "Klook", enabled: true, configured: true, available: true, modules: ["hotel", "activities", "transport", "connectivity"], supported_modules: [] },
+      { code: "travelpayouts", display_name: "Travelpayouts", enabled: true, configured: true, available: true, modules: ["flight", "hotel", "activities", "transport", "connectivity"], supported_modules: ["flight"] },
+    ];
+    const fetchMock = vi.fn().mockImplementation(async (input: RequestInfo | URL) =>
+      new Response(JSON.stringify(String(input).includes("/affiliates/status") ? status : data), { status: 200 }));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminSettingsPanel provider="travelpayouts" />);
+    const matrix = await screen.findByRole("region", { name: "Affiliate readiness" });
+    const klook = within(matrix).getByRole("row", { name: /Klook/ });
+    // Configured (AID present) yet no generic button can render: every declared module is missing.
+    expect(within(klook).getAllByText("未設定").length).toBeGreaterThanOrEqual(4);
+    expect(klook.querySelectorAll('[data-state="missing"]')).toHaveLength(4);
+    expect(klook.querySelectorAll('[data-state="na"]')).toHaveLength(1);
+    const travelpayouts = within(matrix).getByRole("row", { name: /Travelpayouts/ });
+    expect(travelpayouts.querySelectorAll('[data-state="ready"]')).toHaveLength(1);
+    expect(travelpayouts.querySelectorAll('[data-state="missing"]')).toHaveLength(4);
+    expect(fetchMock.mock.calls.some(([url]) => String(url).includes("/affiliates/status"))).toBe(true);
+  });
+
   it("saves a direct Klook affiliate ID as text without requiring or calling a pricing API", async () => {
     const data = { ...snapshot, providers: [{ provider: "klook", label: "Klook", description: "Affiliate links", enabled: true,
       configured: true, status: "ready", status_message: "Affiliate links ready", config: { klook_affiliate_id: "12345" },
@@ -486,12 +510,16 @@ describe("AdminSettingsPanel", () => {
     render(<AdminSettingsPanel provider="klook" field="klook_affiliate_id" />);
     const field = await screen.findByLabelText(/^Klook Affiliate ID/);
     expect(screen.getByText(klookAffiliateCopy("zh-TW").noApi)).toBeTruthy();
-    expect(fetchMock).toHaveBeenCalledTimes(1);
+    // The affiliate category also reads /affiliates/status for the readiness matrix; only
+    // the settings snapshot and, later, the save may touch provider-settings.
+    const settingsCalls = () => fetchMock.mock.calls.filter(([url]) => String(url).includes("/admin/provider-settings"));
+    expect(settingsCalls()).toHaveLength(1);
     fireEvent.change(field, { target: { value: "67890" } });
     fireEvent.click(screen.getByRole("button", { name: "儲存設定" }));
-    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
-    expect(String(fetchMock.mock.calls[1][0])).toContain("/admin/provider-settings/klook");
-    expect(JSON.parse(String(fetchMock.mock.calls[1][1].body))).toEqual({ config: { klook_affiliate_id: "67890" }, secrets: {}, expected_updated_at: null });
+    await waitFor(() => expect(settingsCalls()).toHaveLength(2));
+    const save = settingsCalls()[1];
+    expect(String(save[0])).toContain("/admin/provider-settings/klook");
+    expect(JSON.parse(String(save[1].body))).toEqual({ config: { klook_affiliate_id: "67890" }, secrets: {}, expected_updated_at: null });
     expect(fetchMock.mock.calls.some(([url]) => String(url).includes("test-connection") || String(url).includes("hotel-quotes"))).toBe(false);
   });
   it("keeps active and retained drafts when currency/profile updates replace the user object", async () => {
