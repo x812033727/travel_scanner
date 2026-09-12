@@ -1,13 +1,13 @@
 ---
 id: 2026-09-12-usemodalsheet-effect-ref
 title: useModalSheet 的 effect 在 ref 還沒掛上時會靜靜地永久放棄
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5-testfixes
 claimed_at: 2026-09-12T02:34:16Z
 created_at: 2026-09-12T01:18:15Z
-completed_at:
+completed_at: 2026-09-12T03:09:00Z
 branch:
 depends_on: []
 scope:

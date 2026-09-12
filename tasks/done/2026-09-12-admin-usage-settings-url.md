@@ -1,13 +1,13 @@
 ---
 id: 2026-09-12-admin-usage-settings-url
 title: admin-usage-settings 的分頁存在 URL，測試之間沒有重設就互相影響
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5-testfixes
 claimed_at: 2026-09-12T02:34:15Z
 created_at: 2026-09-12T01:40:33Z
-completed_at:
+completed_at: 2026-09-12T03:09:00Z
 branch:
 depends_on: []
 scope:

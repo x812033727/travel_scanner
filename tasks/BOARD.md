@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**36 open · 6 in progress · 3 blocked · 0 in review · 266 done**
+**36 open · 2 in progress · 3 blocked · 0 in review · 270 done**
 
 ## Ready to claim
 
@@ -23,6 +23,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [Prevent Google coordinates being labelled durable by merchant review](open/2026-09-08-prevent-google-coordinates-being-labelled-durable.md) | api | `apps/api/app/foods/coordinate_queue.py`<br>`apps/api/tests/test_food_coordinate_queue.py` |
 | P1 | [Continue evidence-backed remaining hotspot candidate review](open/2026-09-08-continue-evidence-backed-remaining-hotspot-candidate.md) | ops | `docs/hotspot-review-next-batch.md`<br>`ops/hotspot_review_next_batch.py`<br>`ops/hotspot_review_next_batch.json` |
 | P1 | [首頁與 explore 要在伺服器端渲染出真正的內容](open/2026-09-10-seo-server-render-home-and-explore.md) | web | `apps/web/lib/discovery.ts`<br>`apps/web/lib/discovery.server.ts`<br>`apps/web/lib/discovery.server.test.ts`<br>`apps/web/components/discovery/explorer.tsx`<br>`apps/web/app/[locale]/explore/page.tsx`<br>`apps/web/app/[locale]/explore/collections/page.tsx` |
+| P1 | [整套測試在負載下，有守門的 Escape 偶爾不生效](open/2026-09-11-modal-escape-flake-under-load.md) | web | `apps/web/lib/modal-sheet.ts`<br>`apps/web/lib/modal-sheet.test.tsx`<br>`apps/web/components/travel-card-actions.test.tsx`<br>`apps/web/vitest.config.ts`<br>`apps/web/vitest.setup.tsx`<br>`apps/web/components/route-mode-panel.tsx`<br>`apps/web/components/route-mode-panel.test.tsx`<br>`apps/web/components/planner-overlay.tsx`<br>`apps/web/components/planner-overlay.test.tsx` |
 | P2 | [防 jsonb 運算子的測試只守住 3 張表，實際有 42 張](open/2026-09-07-jsonb-3-42.md) | api | `apps/api/tests/test_migration_sql_dialect.py` |
 | P2 | [30 筆新購物店家還沒 place enrichment，所以加不進行程](open/2026-09-07-enrich-new-shopping-place-ids.md) | api | `ops/notes/hotspot-place-enrichment.md` |
 | P2 | [Community read metric duplicate observed alongside smoke ECONNRESET](open/2026-09-07-community-read-metric-concurrency.md) | api | `apps/api/app/community`<br>`apps/api/tests/test_community.py` |
@@ -53,10 +54,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- | --- |
 | [公開美食店家訂位平台連結補齊（查核與批次匯入）](open/2026-09-11-food-reservation-link-backfill.md) | claude-opus-5 | 2026-09-11T16:02:41Z | `claude/food-reservation-link-backfill` |
 | [Deny school, hospital, tram stop, ward and military base types in hotspot discovery](open/2026-09-11-deny-school-hospital-tram-stop-ward.md) | claude-opus-5 | 2026-09-11T16:53:59Z | `claude/attractions-review-progress-55bb39` |
-| [填入擁有者確認資訊，解鎖四個網站資訊頁](open/2026-09-12-site-page-requirements.md) | claude-opus-5-guides | 2026-09-12T01:56:04Z | — |
-| [useModalSheet 的 effect 在 ref 還沒掛上時會靜靜地永久放棄](open/2026-09-12-usemodalsheet-effect-ref.md) | claude-opus-5-testfixes | 2026-09-12T02:34:16Z | — |
-| [site-footer 有一條測試繼承別人留下的路徑，打亂順序就紅](open/2026-09-12-site-footer.md) | claude-opus-5-testfixes | 2026-09-12T02:34:15Z | — |
-| [admin-usage-settings 的分頁存在 URL，測試之間沒有重設就互相影響](open/2026-09-12-admin-usage-settings-url.md) | claude-opus-5-testfixes | 2026-09-12T02:34:15Z | — |
 
 ## In review
 
@@ -70,18 +67,17 @@ _Nothing here._
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | see the task notes |
 | P3 | [TourAPI（韓國觀光公社）可行性驗證：先確認拿得到金鑰、連得上、資料量夠不夠](open/2026-09-06-korea-tourism-tourapi-spike.md) | see the task notes |
 | P1 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | active work in the same scope |
-| P1 | [整套測試在負載下，有守門的 Escape 偶爾不生效](open/2026-09-11-modal-escape-flake-under-load.md) | active work in the same scope |
 | P3 | [Lighthouse SEO 與效能門檻 workflow](open/2026-09-10-seo-lighthouse-workflow.md) | depends on 2026-09-10-seo-server-render-home-and-explore |
 
 ## Recently finished
 
+- 2026-09-12 [admin-usage-settings 的分頁存在 URL，測試之間沒有重設就互相影響](done/2026-09-12-admin-usage-settings-url.md)
+- 2026-09-12 [site-footer 有一條測試繼承別人留下的路徑，打亂順序就紅](done/2026-09-12-site-footer.md)
+- 2026-09-12 [useModalSheet 的 effect 在 ref 還沒掛上時會靜靜地永久放棄](done/2026-09-12-usemodalsheet-effect-ref.md)
+- 2026-09-12 [填入擁有者確認資訊，解鎖四個網站資訊頁](done/2026-09-12-site-page-requirements.md)
 - 2026-09-12 [從程式碼盤點個資處理，供擁有者填寫隱私權頁的確認資訊](done/2026-09-11-privacy-data-map.md)
 - 2026-09-11 [Wire /guides into the sitemap, footer and destination pages](done/2026-09-11-guides-sitemap-and-entry-points.md)
 - 2026-09-11 [CI 拉不到 minio/minio:latest，改用 quay.io 並釘版本](done/2026-09-11-ci-minio-minio-latest-quay-io.md)
 - 2026-09-11 [當日檢視的離線 e2e 與 CI 接線](done/2026-09-11-offline-today-e2e.md)
 - 2026-09-11 [推薦流的語言選擇與同地點去重](done/2026-09-11-discovery-feed-language-and-dedup.md)
 - 2026-09-11 [取消或逾時搜尋時釋放已保留的次數](done/2026-09-11-release-reservation-on-cancel.md)
-- 2026-09-11 [店家座標佇列面板整個沒有 i18n](done/2026-09-11-merchant-coordinate-queue-i18n.md)
-- 2026-09-11 [formatTime 在沒有時間時回傳寫死的繁中](done/2026-09-11-format-time-chinese-fallback.md)
-- 2026-09-11 [安排編輯器的關閉鈕在儲存在途時被靜默吞掉](done/2026-09-11-planner-overlay-close-guard-race.md)
-- 2026-09-11 [trip-editor 的關閉守門測試會隨檔案順序變紅](done/2026-09-11-trip-editor-close-guard-order-dependence.md)

@@ -1,13 +1,13 @@
 ---
 id: 2026-09-12-site-footer
 title: site-footer 有一條測試繼承別人留下的路徑，打亂順序就紅
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5-testfixes
 claimed_at: 2026-09-12T02:34:15Z
 created_at: 2026-09-12T01:37:09Z
-completed_at:
+completed_at: 2026-09-12T03:09:00Z
 branch:
 depends_on: []
 scope:
