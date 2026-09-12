@@ -1,13 +1,13 @@
 ---
 id: 2026-09-11-privacy-data-map
 title: 從程式碼盤點個資處理，供擁有者填寫隱私權頁的確認資訊
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: claude-opus-5-guides
 claimed_at: 2026-09-11T23:32:27Z
 created_at: 2026-09-11T23:32:27Z
-completed_at:
+completed_at: 2026-09-12T01:55:42Z
 branch: claude/privacy-data-map
 depends_on: []
 scope:
@@ -38,7 +38,7 @@ retention 只對了一半：期限是承諾要人定，**現況是事實，可�
       哪些第三方拿得到，每一條標到檔案與行號。
 - [x] 現有五語系草稿與程式不符的地方修掉。
 - [x] 補測試擋住兩種回歸。
-- [ ] 五個只有擁有者能回答的問題整理給站主。**這張票到此為止，不代寫政策條文。**
+- [x] 五個只有擁有者能回答的問題整理給站主。**這張票到此為止，不代寫政策條文。**
 
 ## Steps
 
@@ -86,3 +86,21 @@ KKday／Agoda／Trip.com／Airalo／Booking／Skyscanner 只要後台樣板含 `
 
 兩個測試都**先植入回歸確認會失敗**才留下：抽掉 ko 的一則項目、把一筆帶 email 的稽核
 寫入改成非 `user:` target，各自都會失敗並指出確切的檔案與行號。
+
+**收尾（#410 已合併，commit c488bc0）。** 五個問題已於 2026-09-12 提給站主並全部得到答覆：
+
+| 欄位 | 站主的決定 |
+| --- | --- |
+| `operator` | 「Mokaair 站長（個人營運）」，不具名 |
+| `location` | 台灣 |
+| `contact` | support@mokaair.com |
+| `retention` | 照程式現況據實寫，不另訂期限 |
+| `legal` | 只寫適用中華民國法律，不指定管轄法院 |
+| 生效日期 | 留空，由站主在後台按發布的當天填 |
+
+站主另外決定**不開啟 Google／Apple 社群登入**（`auth_*_enabled` 三個本來就預設 False，
+`social-login-buttons.tsx:47,65` 在沒有可用供應商時整塊不渲染，所以不需要任何程式變更）。
+那並不免除 `operator` 欄位——發布閘門與個資法 §8 各自要求它，與登入方式無關。
+
+填入的工作另開 `2026-09-12-site-page-requirements`，因為它動的是同一個 drafts 目錄，
+而這張票的 scope 押著它。

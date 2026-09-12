@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**36 open · 4 in progress · 3 blocked · 0 in review · 265 done**
+**36 open · 4 in progress · 3 blocked · 0 in review · 266 done**
 
 ## Ready to claim
 
@@ -54,8 +54,8 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- | --- |
 | [公開美食店家訂位平台連結補齊（查核與批次匯入）](open/2026-09-11-food-reservation-link-backfill.md) | claude-opus-5 | 2026-09-11T16:02:41Z | `claude/food-reservation-link-backfill` |
 | [Deny school, hospital, tram stop, ward and military base types in hotspot discovery](open/2026-09-11-deny-school-hospital-tram-stop-ward.md) | claude-opus-5 | 2026-09-11T16:53:59Z | `claude/attractions-review-progress-55bb39` |
-| [從程式碼盤點個資處理，供擁有者填寫隱私權頁的確認資訊](open/2026-09-11-privacy-data-map.md) | claude-opus-5-guides | 2026-09-11T23:32:27Z | `claude/privacy-data-map` |
-| [香港 OpenRice 店家頁改為公開（僅電話訂位也顯示）](open/2026-09-12-hk-openrice-public.md) | claude-opus-5 | 2026-09-12T02:08:16Z | `claude/hk-openrice-public` |
+| [填入擁有者確認資訊，解鎖四個網站資訊頁](open/2026-09-12-site-page-requirements.md) | claude-opus-5-guides | 2026-09-12T01:56:04Z | — |
+| [香港 OpenRice 店家頁改為公開（僅電話訂位也顯示）](open/2026-09-12-hk-openrice-public.md) | claude-opus-5 | 2026-09-12T00:45:00Z | `claude/hk-openrice-public` |
 
 ## In review
 
@@ -73,6 +73,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-12 [從程式碼盤點個資處理，供擁有者填寫隱私權頁的確認資訊](done/2026-09-11-privacy-data-map.md)
 - 2026-09-11 [Wire /guides into the sitemap, footer and destination pages](done/2026-09-11-guides-sitemap-and-entry-points.md)
 - 2026-09-11 [CI 拉不到 minio/minio:latest，改用 quay.io 並釘版本](done/2026-09-11-ci-minio-minio-latest-quay-io.md)
 - 2026-09-11 [當日檢視的離線 e2e 與 CI 接線](done/2026-09-11-offline-today-e2e.md)
@@ -82,4 +83,3 @@ _Nothing here._
 - 2026-09-11 [formatTime 在沒有時間時回傳寫死的繁中](done/2026-09-11-format-time-chinese-fallback.md)
 - 2026-09-11 [安排編輯器的關閉鈕在儲存在途時被靜默吞掉](done/2026-09-11-planner-overlay-close-guard-race.md)
 - 2026-09-11 [trip-editor 的關閉守門測試會隨檔案順序變紅](done/2026-09-11-trip-editor-close-guard-order-dependence.md)
-- 2026-09-11 [後端仍有二十餘處警告字串是寫死的繁中](done/2026-09-11-remaining-api-warning-literals.md)
