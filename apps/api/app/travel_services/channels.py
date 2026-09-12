@@ -9,6 +9,7 @@ from typing import Any
 from urllib.parse import parse_qsl, unquote, urlencode, urlsplit, urlunsplit
 
 from app.config import Settings
+from app.i18n import active_locale
 from app.models import DestinationAffiliateOffer, TravelServiceBrand, TravelServiceOffer
 from app.travel_services.registry import affiliate_click_target, affiliate_target, brand_target
 from app.travel_services.schemas import safe_url
@@ -203,7 +204,12 @@ async def resolve_offer_target(
     cache_context: str,
 ) -> str:
     from app.affiliates.service import TravelpayoutsLinkClient
+    from app.affiliates.sub_id import coarse_sub_id, safe_sub_id
 
+    # The other egress. This path reaches the Travelpayouts Links API directly, so the
+    # gate in resolve_partner_target never sees it; without this line a caller could
+    # transmit any string it liked.
+    sub_id = safe_sub_id(sub_id, rebuild=coarse_sub_id("svc", "offer", None, active_locale()))
     target = validate_offer_target(brand, offer.target_url, offer.static_url)
     if channel_for(brand) == "klook_direct":
         if not settings.klook_enabled or brand.project_id != settings.klook_affiliate_id:
