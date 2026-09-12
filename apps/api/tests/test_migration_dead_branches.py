@@ -480,6 +480,87 @@ async def test_0055_rollback_restores_the_check_only_when_every_row_still_fits()
 
 
 
+def _guide_checks(connection: Connection, table: str) -> dict[str, str]:
+    return {
+        str(check["name"]): str(check.get("sqltext") or "")
+        for check in sa.inspect(connection).get_check_constraints(table)
+    }
+
+
+def _back_to_0072(connection: Connection) -> None:
+    """Put PostgreSQL into the shape 0072 left, so 0073's guarded branches do real work.
+
+    A fresh database gets these tables from 0001's ``create_all`` over current metadata, so
+    without this the column and the widened CHECK are already there and every guard in 0073
+    returns early -- the add_column and the rewrite would never run in CI.
+    """
+    connection.execute(sa.text("DELETE FROM guide_topics WHERE section = 'life'"))
+    connection.execute(
+        sa.text("ALTER TABLE guide_topics DROP CONSTRAINT IF EXISTS ck_guide_topic_section")
+    )
+    connection.execute(sa.text("ALTER TABLE guide_topics DROP COLUMN IF EXISTS section"))
+    connection.execute(
+        sa.text("ALTER TABLE guide_articles DROP CONSTRAINT IF EXISTS ck_guide_article_kind")
+    )
+    connection.execute(
+        sa.text(
+            "ALTER TABLE guide_articles ADD CONSTRAINT ck_guide_article_kind "
+            "CHECK (kind IN ('intel', 'howto'))"
+        )
+    )
+
+
+def _plant_topic(connection: Connection, slug: str) -> None:
+    connection.execute(
+        sa.text(
+            "INSERT INTO guide_topics (id, slug, names_json, display_order, is_active, source,"
+            " created_at, updated_at) VALUES (gen_random_uuid(), :slug, '{}'::json, 10, true,"
+            " 'admin', now(), now())"
+        ).bindparams(slug=slug)
+    )
+
+
+def _exercise_0073_on_a_0072_shaped_database(connection: Connection) -> None:
+    _back_to_0072(connection)
+    # A topic an administrator added before the column existed: the backfill must read it as
+    # travel, which is what it was, rather than leaving it NULL or guessing.
+    _plant_topic(connection, "operator-added")
+
+    run_upgrade(connection, "0074_lifestyle_guides")
+
+    assert "ck_guide_topic_section" in _guide_checks(connection, "guide_topics")
+    assert connection.execute(
+        sa.text("SELECT section FROM guide_topics WHERE slug = 'operator-added'")
+    ).scalar() == "travel"
+    life = connection.execute(
+        sa.text("SELECT slug FROM guide_topics WHERE section = 'life' ORDER BY display_order")
+    ).scalars().all()
+    assert life == [
+        "ai", "tutorial", "software", "gadgets", "productivity", "daily", "misc",
+    ]
+    assert "'life'" in _guide_checks(connection, "guide_articles")["ck_guide_article_kind"]
+
+    # Re-running is a no-op: both guards now read the shape they just wrote.
+    run_upgrade(connection, "0074_lifestyle_guides")
+    assert connection.execute(
+        sa.text("SELECT count(*) FROM guide_topics WHERE section = 'life'")
+    ).scalar() == len(life)
+
+    run_downgrade(connection, "0074_lifestyle_guides")
+    assert "section" not in {
+        column["name"] for column in sa.inspect(connection).get_columns("guide_topics")
+    }
+    assert "'life'" not in _guide_checks(connection, "guide_articles")["ck_guide_article_kind"]
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_0073_backfills_the_topic_section_and_widens_the_kind_check() -> None:
+    async with engine.connect() as connection:
+        await connection.run_sync(
+            in_a_rolled_back_transaction(_exercise_0073_on_a_0072_shaped_database)
+        )
+
+
 @pytest.mark.asyncio(loop_scope="module")
 async def test_the_rollback_left_the_shared_schema_intact() -> None:
     """The other integration modules run against the same database afterwards."""
@@ -496,7 +577,11 @@ async def test_the_rollback_left_the_shared_schema_intact() -> None:
                 c["name"] for c in sa.inspect(sync).get_check_constraints("travel_hotspots")
             }
         )
+        topic_columns = await connection.run_sync(
+            lambda sync: {c["name"] for c in sa.inspect(sync).get_columns("guide_topics")}
+        )
     assert {"notes", "budget_amount", "cost_currency"} <= columns
     assert {"trip_day_notes", "trip_expenses", "hotspot_guide_backfill_attempts"} <= tables
     assert "ck_travel_hotspot_review_status" in checks
     assert "source" in food_columns
+    assert "section" in topic_columns

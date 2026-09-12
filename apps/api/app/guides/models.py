@@ -29,7 +29,6 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db import Base
 
-KINDS = ("intel", "howto")
 LOCALE_CHECK = "locale IN ('en', 'ja', 'ko', 'zh-TW', 'zh-CN')"
 
 
@@ -50,7 +49,10 @@ class GuideArticle(Timestamped, Base):
     __tablename__ = "guide_articles"
     __table_args__ = (
         UniqueConstraint("slug", name="uq_guide_article_slug"),
-        CheckConstraint("kind IN ('intel', 'howto')", name="ck_guide_article_kind"),
+        # `life` is the lifestyle section; `intel` and `howto` are the travel section. One
+        # table, one editor, one revision history: the section only changes the URL, the
+        # navigation, the topic vocabulary and the end-of-article block.
+        CheckConstraint("kind IN ('intel', 'howto', 'life')", name="ck_guide_article_kind"),
         CheckConstraint("version >= 1", name="ck_guide_article_version"),
         Index("ix_guide_articles_kind_active", "kind", "is_active"),
     )
@@ -136,6 +138,7 @@ class GuideTopic(Timestamped, Base):
     __table_args__ = (
         UniqueConstraint("slug", name="uq_guide_topic_slug"),
         CheckConstraint("source IN ('seed', 'admin')", name="ck_guide_topic_source"),
+        CheckConstraint("section IN ('travel', 'life')", name="ck_guide_topic_section"),
         Index("ix_guide_topics_active_order", "is_active", "display_order"),
     )
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
@@ -144,6 +147,10 @@ class GuideTopic(Timestamped, Base):
     display_order: Mapped[int] = mapped_column(Integer, default=100)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
     source: Mapped[str] = mapped_column(String(16), default="admin")
+    # Which section's articles may carry this topic. The DDL default is not decoration:
+    # 0072's seed inserts rows without this column, and on a fresh database that seed runs
+    # against a table 0001 already built from this model.
+    section: Mapped[str] = mapped_column(String(16), default="travel", server_default="travel")
 
 
 class GuideArticleTopic(Base):

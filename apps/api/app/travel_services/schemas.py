@@ -19,15 +19,27 @@ Status = Literal["pending", "approved", "disabled"]
 # Public entry labels for anonymous booking and offer clickouts. The HTTP boundary, the
 # Stay22 campaign builder and the destination-offer routes share this one finite set, so a
 # new public entry point cannot pass one check and then fail after the user clicks.
-# `guide` (an article), `city` (a destination page) and `share` (a read-only shared trip)
-# are first-party content surfaces; CatalogConfig.affiliate_placements decides which
-# surfaces may currently show offers.
+# `guide` (a travel article), `city` (a destination page), `share` (a read-only shared
+# trip) and `life` (a lifestyle article) are first-party content surfaces;
+# CatalogConfig.affiliate_placements decides which surfaces may currently show offers.
+# New values go last on purpose: the literal's order is the canonical order a saved
+# placement list is normalised to, so appending keeps every list an operator already saved
+# byte-for-byte the same.
 BookingPlacement = Literal[
-    "destination", "hotspot", "trip", "stay", "checklist", "discovery", "guide", "city", "share"
+    "destination",
+    "hotspot",
+    "trip",
+    "stay",
+    "checklist",
+    "discovery",
+    "guide",
+    "city",
+    "share",
+    "life",
 ]
 BOOKING_PLACEMENTS = frozenset(get_args(BookingPlacement))
 # The surfaces that were live before the switch existed; the default keeps them on and
-# leaves the two content surfaces off until an operator enables them.
+# leaves the three content surfaces off until an operator enables them.
 LEGACY_BOOKING_PLACEMENTS: tuple[BookingPlacement, ...] = (
     "destination", "hotspot", "trip", "stay", "checklist", "discovery",
 )

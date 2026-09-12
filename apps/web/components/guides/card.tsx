@@ -1,9 +1,8 @@
 import { Link } from "@/i18n/navigation";
-import { guideHref, isExpired, type GuideSummary } from "@/lib/guides";
+import { guideHref, isExpired, type GuideKind, type GuideSummary } from "@/lib/guides";
 
-export type GuideCardLabels = {
-  intel: string;
-  howto: string;
+/** One label per kind (the badge in the corner) plus the three date words. */
+export type GuideCardLabels = Record<GuideKind, string> & {
   expired: string;
   validUntil: string;
   published: string;
@@ -21,7 +20,7 @@ export function GuideCard({ article, labels }: { article: GuideSummary; labels: 
     <li className="rounded-2xl border border-[var(--line)] p-4">
       <p className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">
         <span className="rounded-full bg-[var(--line)] px-2 py-1 text-[var(--fg)]">
-          {article.kind === "intel" ? labels.intel : labels.howto}
+          {labels[article.kind]}
         </span>
         {article.destination_label ? <span>{article.destination_label}</span> : null}
         {expired ? <span className="text-[var(--muted)]">{labels.expired}</span> : null}

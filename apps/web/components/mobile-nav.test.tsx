@@ -19,6 +19,17 @@ describe("MobileNav", () => {
     expect(screen.getByRole("link", {name:"探索"}).getAttribute("href")).toBe("/explore");
     expect(screen.getByRole("link", {name:"我的"}).getAttribute("href")).toBe("/my");
   });
+  // The discovery branch returns before the menu sheet is rendered, so each content
+  // section needs its own icon there or it is unreachable on a phone in that mode.
+  it.each([
+    ["旅遊情報攻略", "/guides"],
+    ["生活分享", "/life"],
+  ])("carries an icon link to %s in discovery mode", (name, href) => {
+    discovery.enabled = true;
+    render(<ThemeProvider><MobileNav /></ThemeProvider>);
+    expect(screen.getByRole("link", { name }).getAttribute("href")).toBe(href);
+  });
+
   it("offers a way to sign in on a phone even in discovery mode", () => {
     // Discovery mode returned early with only language, explore and my — so a visitor
     // had to guess that "my" leads to a page with a login link at the bottom of a list.

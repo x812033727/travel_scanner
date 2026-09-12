@@ -156,9 +156,15 @@ describe("guide articles in the sitemap", () => {
     kind: "intel" as const, slug: "jr-pass-sale", published_at: "2026-09-10T00:00:00Z",
     locales: ["zh-TW", "en"] as const,
   };
+  // Published in one locale only, so its entry must carry a single alternate and no x-default.
+  const notes = {
+    kind: "life" as const, slug: "ai-notes", published_at: "2026-09-05T08:00:00Z",
+    locales: ["zh-TW"] as const,
+  };
   const rows = [
     ...narita.locales.map((locale) => ({ ...narita, locale, locales: [...narita.locales] })),
     ...sale.locales.map((locale) => ({ ...sale, locale, locales: [...sale.locales] })),
+    ...notes.locales.map((locale) => ({ ...notes, locale, locales: [...notes.locales] })),
   ];
 
   async function build(entries = rows) {
@@ -171,6 +177,10 @@ describe("guide articles in the sitemap", () => {
    *  the checks above, so matching on "/guides/" alone would sweep them in here. */
   const guideEntries = (all: Awaited<ReturnType<typeof sitemap>>) =>
     all.filter((entry) => (entry.url.split("/guides/")[1] ?? "").includes("/"));
+
+  /** Lifestyle articles only. `/life` itself is a static hub, so a slug must follow it. */
+  const lifeEntries = (all: Awaited<ReturnType<typeof sitemap>>) =>
+    all.filter((entry) => /\/life\/[^/]+$/.test(new URL(entry.url).pathname));
 
   it("publishes one entry per published locale and none for the others", async () => {
     const guides = guideEntries(await build());
@@ -238,13 +248,31 @@ describe("guide articles in the sitemap", () => {
     expect(guideEntries(fallback)).toEqual([]);
   });
 
+  it("files a lifestyle article under /life, in its own locale only, on the evergreen cadence", async () => {
+    const all = await build();
+    const life = lifeEntries(all);
+    expect(life.map((entry) => entry.url)).toEqual([`${siteUrl}/zh-TW/life/ai-notes`]);
+    expect(life[0].changeFrequency).toBe("monthly");
+    expect(life[0].lastModified).toEqual(new Date("2026-09-05T08:00:00Z"));
+    // One published locale and no English: a single self-referencing alternate, no x-default.
+    expect(life[0].alternates?.languages).toEqual({ "zh-TW": `${siteUrl}/zh-TW/life/ai-notes` });
+    // The kind never leaks into the travel folder, which is a 404 for it.
+    for (const entry of all) expect(entry.url).not.toContain("/guides/life/");
+    expect(guideEntries(all)).toHaveLength(4);
+  });
+
   it("lists the section hubs, which are static routes and stay in the exact-array checks", () => {
     const paths = SITEMAP_ROUTES.map((route) => route.path);
     expect(paths).toContain("/guides");
     expect(paths).toContain("/guides/intel");
     expect(paths).toContain("/guides/howto");
-    for (const path of ["/guides", "/guides/intel", "/guides/howto"]) {
+    expect(paths).toContain("/life");
+    for (const path of ["/guides", "/guides/intel", "/guides/howto", "/life"]) {
       expect(routeExists(path), path).toBe(true);
     }
+    // A hub of evergreen articles, like /guides/howto: weekly, not the intel hub's daily.
+    expect(SITEMAP_ROUTES.find((route) => route.path === "/life")).toEqual({
+      path: "/life", priority: 0.6, changeFrequency: "weekly",
+    });
   });
 });

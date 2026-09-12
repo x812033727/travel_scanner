@@ -637,11 +637,13 @@ def test_catalog_config_keeps_legacy_surfaces_on_and_content_surfaces_off_by_def
 
     config = CatalogConfig()
     assert config.affiliate_placements == list(LEGACY_BOOKING_PLACEMENTS)
-    assert not {"guide", "city", "share"} & set(config.affiliate_placements)
-    assert {"guide", "city", "share"} <= BOOKING_PLACEMENTS
+    assert not {"guide", "city", "share", "life"} & set(config.affiliate_placements)
+    assert {"guide", "city", "share", "life"} <= BOOKING_PLACEMENTS
     # Order is canonical and duplicates collapse, so a saved list never depends on click order.
-    reordered = CatalogConfig(affiliate_placements=["city", "guide", "guide", "destination"])
-    assert reordered.affiliate_placements == ["destination", "guide", "city"]
+    reordered = CatalogConfig(
+        affiliate_placements=["life", "city", "guide", "guide", "destination"]
+    )
+    assert reordered.affiliate_placements == ["destination", "guide", "city", "life"]
     with pytest.raises(ValidationError):
         ConfigInput(version=1, affiliate_placements=["evil"])
     # A stored config written before the field existed reads back with the legacy default.

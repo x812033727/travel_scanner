@@ -36,6 +36,7 @@ from app.guides.publication import (
 )
 from app.guides.schemas import (
     KINDS,
+    SECTION_KINDS,
     ArticleCreate,
     ArticleDetail,
     ArticleFacets,
@@ -54,7 +55,9 @@ from app.guides.schemas import (
     RevisionAction,
     RevisionDetail,
     RevisionSummary,
+    Section,
     VisibilityWrite,
+    section_of,
 )
 from app.guides.service import (
     MAX_PAGE,
@@ -64,6 +67,7 @@ from app.guides.service import (
     _topics_for,
     destination_label,
     document_hash,
+    kind_filter,
 )
 from app.guides.taxonomy import topic_option
 from app.i18n import Locale
@@ -82,7 +86,9 @@ AUDIT_ACTIONS = (
 )
 
 
-async def _resolve_topics(session: AsyncSession, slugs: list[str]) -> list[GuideTopic]:
+async def _resolve_topics(
+    session: AsyncSession, slugs: list[str], section: Section
+) -> list[GuideTopic]:
     wanted = list(dict.fromkeys(slug.strip().casefold() for slug in slugs if slug.strip()))
     if not wanted:
         return []
@@ -95,6 +101,14 @@ async def _resolve_topics(session: AsyncSession, slugs: list[str]) -> list[Guide
     missing = [slug for slug in wanted if slug not in found]
     if missing:
         raise AppError(422, "guide_topic_unknown", f"找不到主題：{', '.join(missing)}")
+    # A topic belongs to one section. Letting a travel topic onto a lifestyle article would
+    # make that article answer the travel topic filter, which is the one list it must never
+    # appear in.
+    foreign = [row.slug for row in rows if row.section != section]
+    if foreign:
+        raise AppError(
+            422, "guide_topic_section_mismatch", f"主題不屬於這個專區：{', '.join(sorted(foreign))}"
+        )
     order = {slug: index for index, slug in enumerate(wanted)}
     return sorted(rows, key=lambda row: order[row.slug])
 
@@ -291,7 +305,7 @@ async def create_article(
     session: AsyncSession, actor: User, payload: ArticleCreate
 ) -> ArticleDetail:
     destination_id = _validate_destination(payload.destination_id)
-    topics = await _resolve_topics(session, payload.topics)
+    topics = await _resolve_topics(session, payload.topics, section_of(payload.kind))
     now = datetime.now(UTC)
     encoded = payload.document.model_dump(mode="json")
     # The id is assigned here, not left to the column default: ``row`` needs it now, and a
@@ -363,7 +377,19 @@ async def update_article(
 ) -> ArticleDetail:
     article = await _find_article(session, article_id)
     destination_id = _validate_destination(payload.destination_id)
-    topics = await _resolve_topics(session, payload.topics)
+    section = section_of(payload.kind)
+    if section != section_of(cast(Kind, article.kind)):
+        # Moving an article across sections moves its URL. While any translation is
+        # public, that would silently withdraw a page readers and search engines already
+        # have; the editor withdraws every locale first, then moves it. Checked before the
+        # topics resolve: ``topics`` defaults to ``[]``, so a mismatch alone would not catch
+        # a PUT that carries no topics at all.
+        rows = (await _locale_rows(session, [article.id])).get(article.id, [])
+        if any(row.published_version is not None for row in rows):
+            raise AppError(
+                409, "guide_kind_locked", "已發布的文章不能換專區，請先撤下所有語言版本"
+            )
+    topics = await _resolve_topics(session, payload.topics, section)
     before = {
         "kind": article.kind,
         "destination_id": article.destination_id,
@@ -795,6 +821,7 @@ async def list_articles(
     locale: Locale,
     *,
     kind: Kind | None = None,
+    section: Section | None = None,
     destination: str | None = None,
     topic: str | None = None,
     status: ArticleStatus | None = None,
@@ -802,9 +829,23 @@ async def list_articles(
     page: int = 1,
     limit: int = MAX_PAGE,
 ) -> ArticleList:
+    size = min(max(limit, 1), 100)
+    if kind_filter(kind, section) == ():
+        # `?section=life&kind=intel` asks for a combination nothing satisfies. Answering
+        # with an unfiltered list is how lifestyle articles would leak into a travel one.
+        return ArticleList(
+            articles=[], total=0, page=max(page, 1), pages=0,
+            facets=ArticleFacets(
+                status=[FacetCount(code=value, count=0) for value in ARTICLE_STATUSES],
+                kind=[FacetCount(code=value, count=0) for value in KINDS],
+            ),
+        )
     # Keyed by dimension so each facet can drop only its own filter, the shape the foods
-    # admin list already uses.
+    # admin list already uses. The section is its own dimension rather than part of `kind`:
+    # the kind facet drops only itself, so its counts stay inside the section being browsed.
     filters: dict[str, Any] = {}
+    if section is not None:
+        filters["section"] = GuideArticle.kind.in_(SECTION_KINDS[section])
     if kind is not None:
         filters["kind"] = GuideArticle.kind == kind
     if destination:
@@ -832,7 +873,6 @@ async def list_articles(
     def without(dimension: str) -> list[Any]:
         return [clause for key, clause in filters.items() if key != dimension]
 
-    size = min(max(limit, 1), 100)
     total = int(await session.scalar(select(func.count(GuideArticle.id)).where(*where)) or 0)
     rows = list(
         await session.scalars(

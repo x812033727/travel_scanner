@@ -79,7 +79,7 @@ type DestinationRow = {
 };
 // The first-party content surfaces are off until an operator opens them; everything
 // else is what the API assumes when a saved config predates the placement switch.
-const contentPlacementTokens = new Set(["guide", "city", "share"]);
+const contentPlacementTokens = new Set(["guide", "city", "share", "life"]);
 const legacyPlacements: string[] = hotelBookingPlacements.filter(
   (placement) => !contentPlacementTokens.has(placement),
 );
@@ -233,6 +233,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
     ["guide", common("guides.hubTitle")],
     ["city", destinationsCopy(locale).guideEyebrow],
     ["share", common("cardActions.share")],
+    ["life", common("guides.lifeHubTitle")],
   ];
   const storageKey = storageUserId ? `${hotelDraftKey}:${storageUserId}` : undefined;
   const navigation = useAdminWorkspaceNavigation({

@@ -29,12 +29,14 @@ from app.guides.models import (
 )
 from app.guides.publication import article_is_live, published_filters
 from app.guides.schemas import (
+    SECTION_KINDS,
     GuideDocument,
     Kind,
     PublicArticle,
     PublicList,
     PublicSummary,
     PublishedDocument,
+    Section,
     SitemapEntry,
     SitemapList,
 )
@@ -44,6 +46,21 @@ from app.problems import AppError
 
 MAX_PAGE = 50
 SITEMAP_LIMIT = 1000
+
+
+def kind_filter(kind: Kind | None, section: Section | None) -> tuple[Kind, ...] | None:
+    """The kinds a listing may show. ``None`` means no restriction; an empty tuple means
+    the caller asked for a combination nothing satisfies (``?section=life&kind=intel``).
+
+    Callers must treat the empty tuple as "answer with nothing", never as "no filter":
+    the latter would let lifestyle articles leak into a travel list that only set a kind.
+    """
+    if section is None:
+        return None if kind is None else (kind,)
+    kinds = SECTION_KINDS[section]
+    if kind is None:
+        return kinds
+    return (kind,) if kind in kinds else ()
 
 
 def _target(article_id: UUID, locale: str | None = None) -> str:
@@ -152,19 +169,23 @@ async def public_list(
     locale: Locale,
     *,
     kind: Kind | None = None,
+    section: Section | None = None,
     destination: str | None = None,
     topic: str | None = None,
     cursor: str | None = None,
     limit: int = 20,
 ) -> PublicList:
+    kinds = kind_filter(kind, section)
+    if kinds is not None and not kinds:
+        return PublicList(articles=[], next_cursor=None)
     size = min(max(limit, 1), MAX_PAGE)
     query = (
         select(GuideArticle, GuideArticleLocale)
         .join(GuideArticleLocale, GuideArticleLocale.article_id == GuideArticle.id)
         .where(GuideArticleLocale.locale == locale, *published_filters())
     )
-    if kind is not None:
-        query = query.where(GuideArticle.kind == kind)
+    if kinds:
+        query = query.where(GuideArticle.kind.in_(kinds))
     if destination:
         query = query.where(GuideArticle.destination_id == destination.casefold())
     if topic:

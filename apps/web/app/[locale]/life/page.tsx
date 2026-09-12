@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { GuideCard } from "@/components/guides/card";
 import { GuideFilters } from "@/components/guides/filters";
@@ -7,54 +6,48 @@ import { SiteHeader } from "@/components/site-header";
 import { StructuredData } from "@/components/structured-data";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
-import { guideHref, guideListHref, isTravelGuideKind } from "@/lib/guides";
+import { guideHref, guideListHref } from "@/lib/guides";
 import { getGuideList, getGuideTopics } from "@/lib/guides.server";
 import { breadcrumbs, itemList } from "@/lib/structured-data";
 
-type Params = { locale: Locale; kind: string };
-type Search = { topic?: string; destination?: string; cursor?: string };
+type Params = { locale: Locale };
+type Search = { topic?: string; cursor?: string };
 
-/** `[kind]` holds the two travel kinds; anything else is a 404, not a 500. That includes
- *  `life`, whose articles list at `/life`, so no listing ever answers at two addresses. */
-async function resolve(params: Promise<Params>) {
-  const { locale, kind } = await params;
-  if (!isTravelGuideKind(kind)) notFound();
-  return { locale, kind };
-}
-
+/**
+ * The lifestyle section: the same article system as `/guides`, with its own hub, its own
+ * topic vocabulary and no kind segment, because `life` is the only kind that lists here.
+ */
 export async function generateMetadata(
   { params, searchParams }: { params: Promise<Params>; searchParams: Promise<Search> },
 ): Promise<Metadata> {
-  const [{ locale, kind }, search] = await Promise.all([resolve(params), searchParams]);
-  const t = await getTranslations({ locale, namespace: "common" });
-  const filtered = Boolean(search.topic || search.destination || search.cursor);
+  const [{ locale }, search] = await Promise.all([params, searchParams]);
+  const t = await getTranslations({ locale, namespace: "metadata" });
+  const filtered = Boolean(search.topic || search.cursor);
   return {
-    title: kind === "intel" ? t("guides.intelTitle") : t("guides.howtoTitle"),
-    description: kind === "intel" ? t("guides.intelLead") : t("guides.howtoLead"),
+    title: t("lifeTitle"),
+    description: t("lifeDescription"),
     // A filtered view is the same collection in a different order. Let the unfiltered
     // section carry the ranking rather than competing with dozens of near-duplicates.
     ...(filtered ? { robots: { index: false, follow: true } } : {}),
   };
 }
 
-export default async function GuideListPage(
+export default async function LifeHubPage(
   { params, searchParams }: { params: Promise<Params>; searchParams: Promise<Search> },
 ) {
-  const [{ locale, kind }, search] = await Promise.all([resolve(params), searchParams]);
+  const [{ locale }, search] = await Promise.all([params, searchParams]);
   const [list, topics, t, nav] = await Promise.all([
-    getGuideList(locale, { kind, topic: search.topic, destination: search.destination, cursor: search.cursor }, 24),
-    getGuideTopics(locale, "travel"),
+    getGuideList(locale, { kind: "life", topic: search.topic, cursor: search.cursor }, 24),
+    getGuideTopics(locale, "life"),
     getTranslations({ locale, namespace: "common" }),
     getTranslations({ locale, namespace: "navigation" }),
   ]);
 
-  const heading = kind === "intel" ? t("guides.intelTitle") : t("guides.howtoTitle");
-  const lead = kind === "intel" ? t("guides.intelLead") : t("guides.howtoLead");
   const cardLabels = {
     intel: t("guides.intel"), howto: t("guides.howto"), life: t("guides.life"),
     expired: t("guides.expired"), validUntil: t("guides.validUntil"), published: t("guides.published"),
   };
-  const listing = guideListHref(kind, search.topic);
+  const listing = guideListHref("life", search.topic);
   const next = `${listing}${listing.includes("?") ? "&" : "?"}cursor=`;
 
   return (
@@ -64,18 +57,17 @@ export default async function GuideListPage(
         data={[
           breadcrumbs(locale, [
             { name: nav("home"), path: "/" },
-            { name: t("guides.hubTitle"), path: "/guides" },
-            { name: heading, path: guideListHref(kind) },
+            { name: t("guides.lifeHubTitle"), path: "/life" },
           ]),
           itemList(locale, list.articles.map((article) => ({ name: article.title, path: guideHref(article.kind, article.slug) }))),
         ]}
       />
       <main className="mx-auto max-w-5xl px-5 py-10 md:px-8">
-        <h1 className="text-4xl font-bold tracking-tight">{heading}</h1>
-        <p className="mt-4 max-w-2xl text-lg leading-8 text-[var(--muted)]">{lead}</p>
+        <h1 className="text-4xl font-bold tracking-tight">{t("guides.lifeHubTitle")}</h1>
+        <p className="mt-4 max-w-2xl text-lg leading-8 text-[var(--muted)]">{t("guides.lifeHubIntro")}</p>
 
         <GuideFilters
-          kind={kind}
+          kind="life"
           topics={topics}
           active={search.topic ?? null}
           labels={{ allTopics: t("guides.allTopics"), topicsLabel: t("guides.topicsLabel") }}

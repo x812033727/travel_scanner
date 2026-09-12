@@ -42,6 +42,7 @@ export function SiteFooter({ year }: { year: number }) {
                 page whatever the discovery switch says -- the header renders the section only
                 once the switch has resolved, so on a first paint this is the only entry. */}
             <li><Link className="inline-flex min-h-11 items-center text-[var(--muted)] underline-offset-4 hover:underline" href="/guides">{t("guides")}</Link></li>
+            <li><Link className="inline-flex min-h-11 items-center text-[var(--muted)] underline-offset-4 hover:underline" href="/life">{t("life")}</Link></li>
             <li><Link className="inline-flex min-h-11 items-center text-[var(--muted)] underline-offset-4 hover:underline" href="/about">{t("footerAbout")}</Link></li>
             <li><Link className="inline-flex min-h-11 items-center text-[var(--muted)] underline-offset-4 hover:underline" href="/contact">{t("footerContact")}</Link></li>
           </ul>

@@ -195,21 +195,36 @@ Skyscanner 的合作申請清單見 [`skyscanner-partnership-application.md`](sk
 | `guide` | 情報／攻略文章文末 | `affiliates/router.py`（目的地優惠） |
 | `city` | 目的地城市頁 | 同上 |
 | `share` | 唯讀的行程分享頁（`/share/{token}`） | 同上 |
+| `life` | 生活分享文章文末 | 同上 |
 
 行程頁的「抵達後的安排／門票與一日遊／接下來可以預訂」區塊與分享頁都用目的地優惠：
 行程本體 `GET /trips/{id}` 多帶 `partner_offers.modules`（哪些模組有優惠，不含優惠本身），
 區塊只在有模組時出現、展開才載入，遵守行程頁第一屏不打分潤請求的規則。
 
-`guide` 與 `city` 是第一方內容頁，**預設關閉**：後台「目錄服務」的發布控制裡有「目的地合作方案」
-兩個勾選（旅遊情報與攻略／目的地指南），對應 `travel_service_config.data.affiliate_placements`。
-關閉時列表回空、點擊回 404，所以先載入的舊頁面也點不出去。文章要出現按鈕還需要：
-文章有 `destination_id`、主題對得上模組（`apps/web/lib/guide-affiliate.ts` 的對應表）、且沒過期。
+`guide`、`city` 與 `life` 是第一方內容頁，**預設關閉**：後台「目錄服務」的發布控制裡有
+「目的地合作方案」三個勾選（旅遊情報與攻略／目的地指南／生活分享），對應
+`travel_service_config.data.affiliate_placements`。關閉時列表回空、點擊回 404，
+所以先載入的舊頁面也點不出去。旅遊文章要出現按鈕還需要：文章有 `destination_id`、
+主題對得上模組（`apps/web/lib/guide-affiliate.ts` 的對應表）、且沒過期。
+
+生活分享文章的規則不同，因為生活主題（AI、教學、軟體、3C…）本來就對不到任何旅遊模組：
+**編輯自己填的 `destination_id` 就是唯一的情境訊號**，填了才顯示，而且顯示該城市的全部模組
+（和目的地城市頁一樣）。仍然要過三道閘：編輯填了目的地、營運勾了 `life` 置入面、文章沒過期。
+文末另外永遠有一段不帶分潤的站內導流（最新旅遊情報攻略＋最多六個目的地連結），
+與合作方面板之間有分隔線，符合「一般連結要和分潤區塊明顯分開、且不掛揭露句」的規則。
 
 `sub_id` 的最後一段也是 placement（例：`dst_activities_tokyo_zh-TW_guide`），
 在 Travelpayouts 或 Klook 後台可以直接依此拆成效。
 
 ## 9. 已知落差與後續建議
 
+0. **「預設關閉」只擋目的地優惠那條路。** 只有 `affiliates/router.py` 的
+   `_ready_destination_offers`（列表）與 clickout 會檢查 `config.affiliate_placements`。
+   `travel_services/router.py` 的飯店 `booking_option_clickout` 與 `offer_clickout`
+   只驗商品／優惠本身是否就緒，從不看那個開關——所以 `?placement=life`（以及既有的
+   `guide`、`city`）在那兩條路上一律接受，會寫出 `affiliate_clicks.placement='life'`、
+   `sub_id` `svc_hotel_..._life` 與 Stay22 campaign 標籤 `mokaair_<city>_<provider>_<locale>_life`。
+   這是 placement 開關上線時就有的缺口，不是生活分享造成的；要補就是在那兩條路也讀同一個設定。
 1. **住宿區 CTA 仍是硬編碼繁中。** 揭露句與一般 CTA 已五語系（`affiliates/router.py:59-66`、`:134-141`），
    但 `trips/stay_areas.py:665-669` 的三句「到 X 預訂／在 X 搜尋此飯店／到 X 查看住宿」還沒有語系版本。
 2. **登入後的合作平台區塊只在搜尋頁與行程頁。** 掛載點在
