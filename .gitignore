@@ -29,3 +29,9 @@ test-results/
 
 # Generated attraction candidate lists: inputs to a verification run, not artifacts
 candidates/
+
+# The task board is a pure function of tasks/open and tasks/done, and every task that is
+# filed, claimed or finished rewrites the whole file. Committing it made each of those
+# pull requests collide with every other one in the same few table rows (PRs #404, #409,
+# #410 in one day), so it is generated on demand instead: `npm run tasks:board`.
+tasks/BOARD.md

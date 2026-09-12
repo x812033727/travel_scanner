@@ -1,3 +1,5 @@
+export { forwardedClientAddress } from "@/lib/client-address";
+
 const SAFE_METHODS = new Set(["GET", "HEAD", "OPTIONS"]);
 
 function normalizedOrigin(value: string | null | undefined): string | undefined {
@@ -59,14 +61,4 @@ export function safeRedirectLocation(
     return undefined;
   }
   return undefined;
-}
-
-export function forwardedClientAddress(headers: Headers): string | undefined {
-  const forwarded = headers.get("x-forwarded-for")
-    ?.split(",")
-    .map((value) => value.trim())
-    .filter(Boolean)
-    .at(-1);
-  const candidate = forwarded || headers.get("x-real-ip")?.trim();
-  return candidate && candidate.length <= 64 ? candidate : undefined;
 }
