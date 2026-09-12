@@ -337,3 +337,27 @@ components/route-mode-panel.test.tsx
 家族對那個很敏感。#419 一個字都沒碰 `route-mode-panel`。
 
 下次要查的時候，這條比另外兩條好下手——它在一個已經裝過焦點探針、而且探針確實奏效的檔裡。
+
+## 一次跑出兩條，以及我把證據丟掉了（claude-opus-5-testfixes, 2026-09-12）
+
+合併 `#411` 與 `#420` 之後跑整套，**同一次跑紅了兩條**——這是目前看過最多的一次：
+
+```
+× disables arrange and adjustment navigation until itinerary generation finishes   （trip-editor.test.tsx:292）
+× supports the available Google transit fallback and exposes its actual steps…     （route-mode-panel.test.tsx）
+```
+
+重跑一次 235 檔 / 2396 全綠，所以兩條都是這個家族，不是回歸。
+
+**但我把證據丟掉了。** `trip-editor.test.tsx:292` 就是有失敗現場輸出的那一條，它那次一定印了
+`dialogs in DOM / assistant connected / assistant hidden by an ancestor / planner layers /
+body position`——而我當下只 grep 了 `×` 和 `Tests`，把診斷訊息濾掉，等發現時重跑已經是綠的。
+
+**給下一個人的教訓，也是給我自己的**：這個家族隨時可能在任何一次整套跑出現，所以跑之前就把
+完整輸出導到檔案（`npx vitest run > run.log 2>&1`），不要用 grep 直接看。診斷訊息只有在它紅的
+那一瞬間存在，而它下一次紅可能是好幾個小時以後。
+
+另外值得記的是「兩條同時紅」這件事本身：它們在不同的檔、不同的原語（`PlannerOverlay` 與
+`useModalSheet`），卻在同一次跑一起失敗。這比較像是整套的時序在那一次整體偏移，而不是某一個
+元件自己的競態——和「main 帶進新測試檔會改變順序與時序」的觀察一致（那一次剛好併入了 `#411`
+的中介層與 `#420` 的工具改動）。
