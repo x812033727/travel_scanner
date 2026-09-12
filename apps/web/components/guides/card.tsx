@@ -9,15 +9,26 @@ export type GuideCardLabels = Record<GuideKind, string> & {
 };
 
 /**
- * A guide has no artwork, so its identity comes from the three things that actually tell a
- * reader whether it is for them: which section it is in, which city it is about and what it
- * is about.
+ * A card's identity comes from the three things that actually tell a reader whether it is
+ * for them: which section it is in, which city it is about and what it is about. The hero,
+ * when the article has one, sits above them at the same 16:9 the article shows it in.
  */
 export function GuideCard({ article, labels }: { article: GuideSummary; labels: GuideCardLabels }) {
   const expired = isExpired(article.valid_until);
   const published = article.published_at.slice(0, 10);
   return (
     <li className="rounded-2xl border border-[var(--line)] p-4">
+      {article.hero ? (
+        <img
+          src={article.hero.src}
+          alt={article.hero.alt}
+          width={article.hero.width}
+          height={article.hero.height}
+          loading="lazy"
+          decoding="async"
+          className="mb-3 aspect-video w-full rounded-xl object-cover"
+        />
+      ) : null}
       <p className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">
         <span className="rounded-full bg-[var(--line)] px-2 py-1 text-[var(--fg)]">
           {labels[article.kind]}

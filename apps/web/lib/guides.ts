@@ -1,4 +1,12 @@
-import { isContentBlockList, type ContentBlock } from "./content-blocks";
+import type { AffiliateModule } from "@/components/affiliate-partner-options";
+import {
+  contentImageSrc,
+  isImageCredit,
+  isImageSize,
+  isRichContentBlock,
+  type ImageCredit,
+  type RichContentBlock,
+} from "./content-blocks";
 import type { Locale } from "@/i18n/routing";
 
 export const guideKinds = ["intel", "howto", "life"] as const;
@@ -47,14 +55,76 @@ export type GuideTopic = { slug: string; label: string; section?: GuideSection }
 
 export type GuideSource = { title: string; url: string; checked_on: string | null };
 
+// --- the guide-only blocks ---------------------------------------------------------------
+
+/** The partner modules an editor may place mid-article: the catalog's own five. */
+export const offerModules = ["flight", "hotel", "activities", "transport", "connectivity"] as const;
+
+/**
+ * A partner button placed by the editor next to the paragraph that earns it. Which brands
+ * show is still the catalog's decision; `destination_id` overrides the article's own so a
+ * cross-destination notice can point each section at its city.
+ */
+export type OfferBlock = {
+  type: "offer";
+  module: AffiliateModule;
+  destination_id: string | null;
+  heading?: string;
+};
+
+export type GuideBlock = RichContentBlock | OfferBlock;
+
+/** The article's own picture: a self-hosted raster, because it doubles as the social card. */
+export type GuideHero = { src: string; alt: string; width: number; height: number; credit: ImageCredit | null };
+
+export function isOfferBlock(value: unknown): value is OfferBlock {
+  if (!value || typeof value !== "object") return false;
+  const entry = value as Record<string, unknown>;
+  return entry.type === "offer"
+    && (offerModules as readonly string[]).includes(entry.module as string)
+    && (entry.destination_id === null || entry.destination_id === undefined || typeof entry.destination_id === "string")
+    && (entry.heading === undefined || typeof entry.heading === "string");
+}
+
+export function isGuideBlock(value: unknown): value is GuideBlock {
+  return isRichContentBlock(value) || isOfferBlock(value);
+}
+
+export function isGuideBlockList(value: unknown): value is GuideBlock[] {
+  return Array.isArray(value) && value.every(isGuideBlock);
+}
+
+const HERO_SRC = /\.(?:webp|jpg|png)$/;
+
+export function isGuideHero(value: unknown): value is GuideHero {
+  if (!value || typeof value !== "object") return false;
+  const hero = value as Record<string, unknown>;
+  const src = contentImageSrc(hero.src);
+  return src !== null && HERO_SRC.test(src) && typeof hero.alt === "string"
+    && isImageSize(hero.width) && isImageSize(hero.height)
+    && (hero.credit === null || hero.credit === undefined || isImageCredit(hero.credit));
+}
+
+/** Absent from the wire (an older API) and explicitly null both mean "no artwork". */
+function isOptionalHero(value: unknown): boolean {
+  return value === undefined || value === null || isGuideHero(value);
+}
+
 export type GuideDocument = {
   title: string;
   description: string;
-  blocks: ContentBlock[];
+  hero?: GuideHero | null;
+  blocks: GuideBlock[];
   sources: GuideSource[];
 };
 
-export type PublishedGuide = GuideDocument & { version: number; published_at: string };
+export type PublishedGuide = GuideDocument & {
+  version: number;
+  published_at: string;
+  /** When the version readers see went live; moves on republication where `published_at`
+   *  does not. Optional so a document from an older API still renders. */
+  modified_at?: string | null;
+};
 
 export type GuideSummary = {
   slug: string;
@@ -64,6 +134,7 @@ export type GuideSummary = {
   topics: GuideTopic[];
   title: string;
   description: string;
+  hero?: GuideHero | null;
   published_at: string;
   valid_until: string | null;
   featured: boolean;
@@ -108,7 +179,9 @@ export function isPublishedGuide(value: unknown): value is PublishedGuide {
   const row = value as Record<string, unknown>;
   return typeof row.title === "string" && typeof row.description === "string"
     && typeof row.version === "number" && typeof row.published_at === "string"
-    && isContentBlockList(row.blocks) && isSourceList(row.sources);
+    && (row.modified_at === undefined || row.modified_at === null || typeof row.modified_at === "string")
+    && isOptionalHero(row.hero)
+    && isGuideBlockList(row.blocks) && isSourceList(row.sources);
 }
 
 export function isGuideSummary(value: unknown): value is GuideSummary {
@@ -120,6 +193,7 @@ export function isGuideSummary(value: unknown): value is GuideSummary {
     && (row.destination_id === null || typeof row.destination_id === "string")
     && (row.destination_label === null || typeof row.destination_label === "string")
     && (row.valid_until === null || typeof row.valid_until === "string")
+    && isOptionalHero(row.hero)
     && isTopicList(row.topics);
 }
 
@@ -128,4 +202,65 @@ export function isExpired(validUntil: string | null, today: Date = new Date()): 
   if (!validUntil) return false;
   const cutoff = new Date(`${validUntil}T23:59:59Z`);
   return Number.isFinite(cutoff.getTime()) && cutoff.getTime() < today.getTime();
+}
+
+// --- reading the body ------------------------------------------------------------------
+
+/**
+ * The body cut at every partner button, so a page can draw each slice with the shared
+ * renderer and put a client island between them. `headingStart` is the number of level-2
+ * headings before the slice: heading ids are numbered across the whole article, and a
+ * renderer that restarted at each slice would give two sections the same anchor.
+ */
+export type GuideSegment = { blocks: RichContentBlock[]; headingStart: number; offer: OfferBlock | null };
+
+export function splitGuideBlocks(blocks: readonly GuideBlock[]): GuideSegment[] {
+  const segments: GuideSegment[] = [];
+  let current: RichContentBlock[] = [];
+  let start = 0;
+  let seen = 0;
+  for (const block of blocks) {
+    if (block.type === "offer") {
+      segments.push({ blocks: current, headingStart: start, offer: block });
+      current = [];
+      start = seen;
+      continue;
+    }
+    if (block.type === "heading" && block.level === 2) seen += 1;
+    current.push(block);
+  }
+  segments.push({ blocks: current, headingStart: start, offer: null });
+  return segments;
+}
+
+export type GuideHeading = { id: string; text: string };
+
+/** The level-2 headings with the ids `ContentBlocks` gives them, for a table of contents. */
+export function guideHeadings(blocks: readonly GuideBlock[]): GuideHeading[] {
+  const headings: GuideHeading[] = [];
+  for (const block of blocks) {
+    if (block.type === "heading" && block.level === 2) {
+      headings.push({ id: `section-${headings.length + 1}`, text: block.text });
+    }
+  }
+  return headings;
+}
+
+const CJK = /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]/gu;
+
+/** Roughly how long the body takes to read: CJK by character, everything else by word. Never
+ *  below one minute, so a short notice does not claim to take none. */
+export function readingMinutes(document: GuideDocument): number {
+  const parts: string[] = [];
+  for (const block of document.blocks) {
+    if (block.type === "heading" || block.type === "paragraph" || block.type === "link") parts.push(block.text);
+    if (block.type === "callout") parts.push(block.title ?? "", block.text);
+    if (block.type === "list") parts.push(...block.items);
+    if (block.type === "table") parts.push(...block.header, ...block.rows.flat());
+    if (block.type === "image") parts.push(block.caption ?? "");
+  }
+  const text = parts.join(" ");
+  const characters = (text.match(CJK) ?? []).length;
+  const words = text.replace(CJK, " ").split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.ceil(characters / 400 + words / 200));
 }

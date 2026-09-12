@@ -88,9 +88,26 @@ current metadata on a fresh database) and seeds the **topic vocabulary only**. A
 never writes an article and never publishes one.
 
 The body reuses `app/site_pages/schemas.py`'s structured blocks — heading, paragraph, list,
-link — including the validator that rejects HTML and control characters. Articles add
-`sources`: an optional list of `{title, https url, checked_on}`, because a notice that
-states a fare or a rule should be able to say where it read it.
+link — including the validator that rejects HTML and control characters, and adds four of
+its own in `app/guides/schemas.py` (`GuideBlock`): `image`, `table`, `callout` and `offer`.
+They are guide-only on purpose: the legal pages keep the four-block `ContentBlock`, so their
+editor never meets a block it has no fields for. An article may also carry a `hero`
+(`GuideDocument.hero`, optional so every revision written before it validates), which is
+the picture at the top of the page, on the listing cards and on the share card.
+
+- `image` / `hero` — `src` must match `/guides/<slug>/<name>.(webp|jpg|png|svg)`, a path
+  under the web app's own `public/`, never a URL: an article can never make a reader's
+  browser fetch a picture from a third party, and the files ship and review with the code.
+  The hero is raster only (`jpg|png|webp`), because social crawlers do not render SVG.
+  `width`/`height` are stored so the browser reserves the box before the bytes arrive.
+  `credit` is `{author, license, source_url?}`; the web renders "圖片：author (licence)",
+  linking the author to the source page and a Creative Commons licence to its deed.
+- `table` — `header` (1–6 cells) and rectangular `rows` (≤30), each cell plain text.
+- `callout` — `tone` (`tip`/`warning`/`info`), optional `title`, `text`.
+- `offer` — see "Partner buttons" below.
+
+Articles add `sources`: an optional list of `{title, https url, checked_on}`, because a
+notice that states a fare or a rule should be able to say where it read it.
 
 ## Publication
 
@@ -105,7 +122,11 @@ back to another language and nothing invents a translation.
 - Restoring writes a **new draft** from an old revision and never moves the public pointer.
 - A `published_version` pointing at a missing revision returns `503`, never the draft.
 - `published_at` records the **first** publication and does not move when the article is
-  edited and republished.
+  edited and republished. `PublishedDocument.modified_at` is the timestamp of the revision
+  readers currently see — it moves on every republication — and is what the page shows as
+  "更新日期", what the `Article` JSON-LD reports as `dateModified`, and what the sitemap
+  carries as `lastmod` (`SitemapEntry.modified_at`, an outer join on the published
+  revision that falls back to `published_at` so a damaged pointer never drops the URL).
 
 `app/guides/publication.py` holds the single definition of "public in this locale". The
 list, the article and the sitemap all compose it, so they cannot disagree about what is
@@ -201,6 +222,36 @@ RUN_INTEGRATION_TESTS=1 uv run pytest tests/test_guides.py tests/test_guides_mig
 The PostgreSQL leg and the migration test are what prove the append-only trigger; the
 `tests/test_guides.py` tables are built with `Base.metadata.create_all` and never see it.
 
+## Content packs: authoring in the repository
+
+Ten launch articles with heroes, diagrams, tables and partner blocks are not something to
+type into a form, and their source of truth should be reviewable next to the images they
+reference. `app/guides/content/<slug>.json` is that source: the article's identity and
+taxonomy plus one `GuideDocument` per locale (`app/guides/content_pack.py:ArticlePack`;
+the first locale is the one the article is created with), with its pictures under
+`apps/web/public/guides/<slug>/`. A test walks the directory: every pack validates, every
+image it names exists and is ≤300 KB, every locale cites at least one source.
+
+```
+python -m app.cli guides-import --actor-email <admin> [--dir …] [--slug …] [--locale …] [--publish] [--dry-run]
+```
+
+The command goes through `admin_service` — create, new translation, draft save, optional
+publish — so every import leaves the same revisions and audit rows an editor's clicks
+would, attributed to `--actor-email` (an active administrator). It validates every pack
+first (pydantic, destination, topics, the offer rules) and writes nothing if any fails;
+`--dry-run` stops there and prints the plan. Then it writes per (slug, locale), each call
+its own commit, exactly as the editor does; a refusal mid-run stops the run and is named in
+the report (`created / updated / unchanged / published / taxonomy_updated / failed`). It is
+idempotent: an article that already matches its pack — compared on normalised documents,
+because rows written before `hero` existed lack the key — is `unchanged`, and `--publish`
+republishes a locale only when the public version differs. Rerunning after fixing the
+cause finishes the rest. A migration still never writes an article.
+
+Deploy-time sequence: deploy, then on the host
+`docker compose exec api python -m app.cli guides-import --actor-email <admin> --dry-run`,
+read the plan, run it again with `--publish`.
+
 ## The reader's side
 
 ```
@@ -251,7 +302,38 @@ same collection reordered, and they should not compete with the section itself.
 `ContentBlocks` (`apps/web/components/content-blocks.tsx`) renders the body for the public
 page **and** the admin preview, and `lib/content-blocks.ts` holds the one link sanitizer
 that both guides and managed site documents use. That sharing is the point: a rule
-tightened for one surface cannot quietly miss the other.
+tightened for one surface cannot quietly miss the other. The renderer draws the
+`RichContentBlock` superset (image, table, callout); the legal pages' documents stay typed
+to the four shared blocks. Images are plain `<img>` with their stored size (`next/image`
+has no optimizer in the standalone build); a wide table scrolls inside its own box; a link
+back into this site opens in the same tab. A `link` block in the body is still an ordinary
+anchor — not an affiliate link, and not `rel="sponsored"` (`2026-09-12-content-link-block-sponsored`).
+
+### What a travel article looks like
+
+Header (kind, city, title, description, published / updated dates, reading time) → hero with
+its credit → one line of disclosure, only when the body itself carries partner buttons →
+a table of contents once there are three level-2 headings (`section-N` anchors the renderer
+numbers across the whole body) → the body in slices around each `offer` block → the end
+panel → related reading → topic chips → sources → other languages. `lib/guides.ts` holds
+`splitGuideBlocks`, `guideHeadings` and `readingMinutes` (CJK by character, the rest by
+word); `article.tsx` stays synchronous and the page (`article-page.tsx`) does the fetching.
+
+Related reading for a travel article is up to three other travel articles about the same
+destination, topped up from the first topic, never the article itself and never a
+lifestyle one — the same `TravelCrosslinks` component a lifestyle article ends with, with
+no destination chips.
+
+### Share cards and structured data
+
+An article with a hero puts it on the share card: `guideArticleMetadata` reads the layout's
+resolved `openGraph` through Next's `parent` argument and restates `siteName`, `locale` and
+`alternateLocale` next to the image, `type: "article"`, `publishedTime` and
+`modifiedTime`, because Next replaces a whole top-level metadata key rather than merging
+inside it. The image path is relative; the layout's `metadataBase` makes it absolute the
+same way it does for `/og.png`. Without a hero neither `openGraph` nor `twitter` is set and
+the site card inherits. The `Article` JSON-LD claims `image` only when a hero exists, and
+`dateModified` from `modified_at`.
 
 ### The end of a lifestyle article
 
@@ -292,8 +374,34 @@ avoid, and the reader is one click from the all-modules city page.
 The panel renders nothing until the API says so: the `guide` surface must be enabled in
 the catalog's `affiliate_placements` (off by default) and a verified destination offer
 must exist for that destination and module. The disclosure comes with the options, so an
-article never shows a partner link without it. The in-article `offer` block that would let
-an editor place a button mid-text is `tasks/open/2026-09-12-guide-offer-content-block.md`.
+article never shows a partner link without it.
+
+### Partner buttons placed by the editor (`offer` blocks)
+
+An `offer` block — `{module, destination_id?, heading?}` — puts the same panel, for one
+module, next to the paragraph that earned it: the "how to buy the ticket" section gets the
+transport button, the theme-park day gets the activities button. Which brands show is still
+the catalog's decision (an approved, verified destination offer for that destination and
+module, the surface enabled); the block only says where and for which module.
+
+- `destination_id` overrides the article's own, which is what lets a cross-destination
+  notice ("autumn leaves in Tokyo and Kyoto", `destination_id` null, so no end panel) point
+  each section at its city. Kyoto folds into `osaka-kyoto` on the reader's side exactly as
+  the end panel does, and a city not in `PUBLIC_DESTINATIONS` draws nothing.
+- The write path enforces what the model cannot: at most three per article
+  (`422 guide_offer_limit`), a block on a cross-destination article must name its city
+  (`guide_offer_destination_required`), and the city must exist in the catalog
+  (`guide_offer_destination_unknown`). `_validate_document` runs on create, new
+  translation, draft save, publish and restore — publish re-checks because the article's
+  destination may have been cleared since the draft was saved — and never on withdrawal.
+  The rules sit in `admin_service`, not on the pydantic model, because that model also
+  validates every stored revision on the public read path, where a retired destination must
+  degrade to "no button" rather than a 500.
+- The reader's side: a module the editor placed mid-article is left out of the end panel,
+  so the same button never appears twice; one line of disclosure sits under the hero
+  whenever the body carries a block (the end panel still carries its own); expiry drops
+  every button, inline ones included. The admin preview shows a placeholder where the
+  buttons will go and never fetches offers.
 
 ### Per-locale hreflang
 
@@ -334,12 +442,10 @@ publication gate exists to prevent.
 The sitemap wiring and the `攻略` relabel both landed in PR #404, together with the footer and
 destination-page links. Between #398 and the visibility work the back-office entry itself was
 unreachable in production: `/admin/guides` was in the web fallback navigation but not in
-`NAVIGATION_REGISTRY`, so the layout answered "forbidden". What is left is one API-side
-defect: `published_at` records the first publication only, so a corrected notice keeps its
-original `lastmod` and tells Google nothing changed. `tasks/open/2026-09-11-guide-lastmod-republication.md` holds the fix, which reads the
-currently published revision's timestamp instead of unfreezing the column the list orders by.
+`NAVIGATION_REGISTRY`, so the layout answered "forbidden". The frozen `lastmod` was the
+last API-side defect and is fixed by `modified_at` (see Publication).
 
-Two more, both filed while the lifestyle section was planned:
+Two remain, both filed while the lifestyle section was planned:
 
 - `tasks/open/2026-09-12-guide-topic-admin-crud.md` — a topic still needs a seed migration,
   which contradicts what this file and `GuideTopic`'s own docstring promise.
@@ -351,5 +457,4 @@ Two more, both filed while the lifestyle section was planned:
 Both sections share one 1,000-row sitemap budget, newest first, with no per-section cap
 (`SITEMAP_LIMIT`, `SITEMAP_GUIDE_ENTRY_LIMIT`). That is 2% of Google's per-file limit and
 about 200 articles across five locales; an evicted article stays indexable, just
-unadvertised. Worth splitting only if the combined count approaches ~800, and worth
-coordinating with the lastmod task, which is already editing `SitemapEntry`.
+unadvertised. Worth splitting only if the combined count approaches ~800.

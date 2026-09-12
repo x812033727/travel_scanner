@@ -16,7 +16,7 @@ from app import hotspots as hotspots_package
 from app.admin.service import load_runtime_settings
 from app.auth.schemas import RegisterRequest
 from app.auth.service import hash_password
-from app.catalog_review.enrich_cli import enrich_food_merchants
+from app.catalog_review.enrich_cli import _admin_user, enrich_food_merchants
 from app.config import get_settings
 from app.crawlers.airlines import AirlineFareCrawlerService
 from app.crawlers.schemas import AirlineFareSearch
@@ -34,6 +34,7 @@ from app.foods.platform_review_import import apply_food_platform_reviews
 from app.foods.service import seed_food_catalog
 from app.foods.trend_import import DEFAULT_FILE as TREND_MERCHANTS_FILE
 from app.foods.trend_import import backfill_english_names, import_trend_merchants
+from app.guides.content_pack import ContentPackError, apply_import, load_packs, plan_import
 from app.holidays.refresh import HolidaySourceError
 from app.holidays.refresh import refresh as refresh_holidays
 from app.hotspots.candidate_cli import import_candidates
@@ -90,6 +91,50 @@ async def add_usage_package(email: str, package_code: str, reference: str) -> No
             f"Added {ledger.amount} uses to {email}; "
             f"remaining balance is {ledger.balance_after} (reference {ledger.reference})"
         )
+
+
+async def import_guides(
+    *,
+    directory: Path | None,
+    actor_email: str | None,
+    slugs: set[str] | None,
+    locales: set[str] | None,
+    publish: bool,
+    dry_run: bool,
+) -> dict[str, Any]:
+    """Import editorial content packs (``app/guides/content``) through the admin write path.
+
+    Validates every pack before writing anything; a dry run stops there and prints the plan.
+    """
+    from app.i18n import LOCALES, Locale
+
+    unknown = (locales or set()) - set(LOCALES)
+    if unknown:
+        raise SystemExit(f"Unknown locale(s): {', '.join(sorted(unknown))}")
+    try:
+        packs = load_packs(directory, slugs=slugs)
+    except ContentPackError as error:
+        raise SystemExit(f"Invalid content pack: {error}") from error
+    if not packs:
+        raise SystemExit("No content packs found")
+    async with SessionFactory() as session:
+        actor = None
+        if not dry_run:
+            if not actor_email:
+                raise SystemExit("--actor-email is required unless --dry-run")
+            actor = await _admin_user(session, actor_email)
+            if actor is None:
+                raise SystemExit("The actor must be an active administrator")
+        try:
+            plan = await plan_import(
+                session, packs, locales=cast(set[Locale], locales) if locales else None
+            )
+        except ContentPackError as error:
+            raise SystemExit(f"Invalid content pack: {error}") from error
+        if actor is None:
+            return {"dry_run": True, **plan.as_dict()}
+        report = await apply_import(session, actor, plan, publish=publish)
+        return report.as_dict()
 
 
 async def set_admin(email: str, enabled: bool) -> None:
@@ -848,6 +893,26 @@ def main() -> None:
     backfill.add_argument(
         "--dry-run", action="store_true", help="Count what would change without writing"
     )
+    guides_import = subparsers.add_parser(
+        "guides-import",
+        help="Import editorial guide articles from content packs (app/guides/content)",
+    )
+    guides_import.add_argument(
+        "--dir", help="Directory of <slug>.json packs; defaults to the packaged app/guides/content"
+    )
+    guides_import.add_argument(
+        "--actor-email", help="Administrator the revisions and audit rows are attributed to"
+    )
+    guides_import.add_argument("--slug", action="append", help="Only this slug (repeatable)")
+    guides_import.add_argument("--locale", action="append", help="Only this locale (repeatable)")
+    guides_import.add_argument(
+        "--publish",
+        action="store_true",
+        help="Publish each imported locale whose public version differs from the pack",
+    )
+    guides_import.add_argument(
+        "--dry-run", action="store_true", help="Validate and print the plan without writing"
+    )
     guide_review = subparsers.add_parser(
         "review-pending-guides",
         help=(
@@ -928,6 +993,20 @@ def main() -> None:
         asyncio.run(add_usage_package(args.email, args.package, args.reference))
     elif args.command == "set-admin":
         asyncio.run(set_admin(args.email, not args.revoke))
+    elif args.command == "guides-import":
+        outcome = asyncio.run(
+            import_guides(
+                directory=Path(args.dir) if args.dir else None,
+                actor_email=args.actor_email,
+                slugs=set(args.slug) if args.slug else None,
+                locales=set(args.locale) if args.locale else None,
+                publish=args.publish,
+                dry_run=args.dry_run,
+            )
+        )
+        print(json.dumps(outcome, ensure_ascii=False, indent=2))
+        if outcome.get("failed"):
+            raise SystemExit(1)
     elif args.command == "create-admin":
         asyncio.run(create_admin(args.email, _read_password(args.password_stdin)))
     elif args.command == "verify-airline-crawlers":
