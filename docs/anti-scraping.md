@@ -54,7 +54,15 @@ itself down the first time anyone browsed quickly.
 
 The header is only believed when `TRUST_PROXY_CLIENT_IP` is true, which production
 requires (`apps/api/app/config.py`). **The edge must strip inbound `X-Travel-Client-IP`
-and `X-Forwarded-For` before setting its own**, or a caller can pick its own bucket.
+and `X-Forwarded-For` before setting its own**, or a caller can pick its own bucket;
+[`ops/nginx/proxy-headers.conf`](../ops/nginx/proxy-headers.conf) is that configuration.
+
+Inside the Compose network nothing reaches the API through nginx at all, and nothing at the
+network layer separates our own web container from anything else on the bridge: neither
+Compose file declares `networks:`, so addresses are dynamic and the subnet is one flat trust
+domain. `INTERNAL_PROXY_TOKEN`, shared by the API and the web container, is what distinguishes
+them. Leaving it empty keeps the previous behaviour — set on the API alone, no forwarded
+address would be believed at all and every visitor would collapse into one bucket.
 
 ### Public reads fail open
 
@@ -99,12 +107,13 @@ threshold is too low. A few sources with thousands is what the limit is for.
 
 ## Known gaps
 
-- **No edge rate limiting.** Production terminates TLS on an nginx that lives outside this
-  repository, with no `limit_req`, no connection cap and no configuration under version
-  control. Recorded as INF-10 in [`security-audit-2026-09.md`](security-audit-2026-09.md).
-  Application-level limiting still spends a worker on every refused request; the edge is
-  where volume is actually cheap to refuse, and it is also where the forwarded-header
-  stripping above has to happen. **Everything here rests on that.**
+- **Edge rate limiting is written but not known to be applied.** [`ops/nginx/`](../ops/nginx)
+  now holds the `limit_req` zones, connection cap and header hygiene, with an installer and
+  a verification runbook; CI syntax-checks it. But nginx runs on the host, outside this
+  repository and outside any deploy this project performs, so the repo cannot tell you
+  whether the running proxy matches those files. The runbook's forged-address check is what
+  answers that, and until someone runs it on the host, INF-10 in
+  [`security-audit-2026-09.md`](security-audit-2026-09.md) is addressed on paper only.
 - **No WAF, CAPTCHA or challenge.** Out of scope by decision: the brief was to bound
   volume without a normal visitor noticing anything.
 - **Whole-dataset endpoints are still unpaginated** — `GET /guides/sitemap`,

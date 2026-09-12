@@ -183,6 +183,15 @@ class Settings(BaseSettings):
     airline_fares_enabled: bool = True
     pricing_enabled: bool = True
     trust_proxy_client_ip: bool = False
+    # Proof that a forwarded address came from our own BFF rather than from something else
+    # that can reach this API. Nothing at the network layer can tell those apart: neither
+    # Compose file declares `networks:`, so every container shares one bridge with addresses
+    # that change on each restart, and "the Compose subnet" is precisely the set we would be
+    # trying to exclude. Empty means the address is believed on `trust_proxy_client_ip`
+    # alone -- the previous behaviour, kept as the default because a token set on the API but
+    # not on the web container would collapse every visitor into one rate-limit bucket, which
+    # is an outage rather than a defence.
+    internal_proxy_token: str = ""
     ai_planner_enabled: bool = True
     ai_planner_mode: str = "auto"
     ai_planner_priority: str = "openai,anthropic,minimax,gemini"

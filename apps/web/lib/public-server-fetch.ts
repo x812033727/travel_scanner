@@ -1,6 +1,6 @@
 import { headers } from "next/headers";
 import { cache } from "react";
-import { forwardedClientAddress } from "@/lib/client-address";
+import { forwardedClientHeaders } from "@/lib/client-address";
 
 /**
  * Request headers for a server-side read of a public API endpoint.
@@ -25,8 +25,7 @@ export const publicServerHeaders = cache(async (locale: string): Promise<Record<
     Accept: "application/json",
     "X-Travel-Locale": locale,
   };
-  const address = forwardedClientAddress(incoming);
-  if (address) forwarded["X-Travel-Client-IP"] = address;
+  Object.assign(forwarded, forwardedClientHeaders(incoming));
   const agent = incoming.get("user-agent")?.slice(0, 512);
   if (agent) forwarded["X-Travel-User-Agent"] = agent;
   return forwarded;

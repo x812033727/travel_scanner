@@ -1,4 +1,5 @@
 import hashlib
+import hmac
 import ipaddress
 import logging
 from collections.abc import Awaitable, Mapping
@@ -22,17 +23,43 @@ def get_redis() -> Redis:
     return cast(Redis, Redis.from_url(get_settings().redis_url, decode_responses=True))
 
 
+PROXY_TOKEN_HEADER = "X-Travel-Proxy-Token"
+
+
+def _from_our_proxy(headers: Mapping[str, str]) -> bool:
+    """Whether this request carries our BFF's shared token.
+
+    Only meaningful once a token is configured. Until then every caller passes, which
+    is the behaviour this replaced: a token present on the API but missing from the web
+    container would stop every forwarded address being believed at once, collapsing all
+    visitors into the web container's single bucket.
+    """
+    expected = get_settings().internal_proxy_token
+    if not expected:
+        return True
+    presented = headers.get(PROXY_TOKEN_HEADER) or ""
+    if hmac.compare_digest(presented, expected):
+        return True
+    # Loud, because the same silence covers "someone forged a header" and "the token was
+    # rolled on one side only", and the second is the one that quietly degrades metering.
+    logger.warning("a forwarded address arrived without our proxy token; ignoring it")
+    return False
+
+
 def forwarded_client_ip(headers: Mapping[str, str]) -> str | None:
     """The caller's address as the BFF reported it, or ``None``.
 
-    ``None`` covers three different things on purpose: we are not configured to
-    believe the header, nobody set it, or what arrived was not an address. All
-    three mean the same thing to a caller -- there is no address worth keying on.
+    ``None`` covers four things on purpose: we are not configured to believe the header,
+    it did not come from our own proxy, nobody set it, or what arrived was not an
+    address. All four mean the same thing to a caller -- there is no address worth
+    keying on.
     """
     if not get_settings().trust_proxy_client_ip:
         return None
     forwarded = headers.get("X-Travel-Client-IP")
     if not forwarded:
+        return None
+    if not _from_our_proxy(headers):
         return None
     try:
         return str(ipaddress.ip_address(forwarded.strip()))

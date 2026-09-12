@@ -102,4 +102,5 @@ cd apps/web && PLAYWRIGHT_SERVE_BUILD=true npx playwright test e2e/seo.spec.ts
 - `Google-Extended` 與 `Applebot-Extended` 是純訓練用 token，擋它們不影響 Googlebot 檢索排名與 Applebot 搜尋。不擋 `ChatGPT-User`、`OAI-SearchBot` 這類使用者觸發或引用用途的 agent。
 - **這次不做 UA 封鎖**：UA 可以隨手偽造，而任何 UA 規則都會擦到上面那個 Twitterbot 金絲雀。宣告交給 robots.txt，實際流量交給速率上限。
 - `apps/api/tests/conftest.py` 存在的唯一理由就是「整套測試從同一個 IP 打同一個 Redis」而把 `AUTH_REGISTER_IP_LIMIT` 拉到 500。新的上限不補同樣一行，整套 API 測試會自己把自己 429。
-- 後續（尚未開單）：邊緣層 nginx 的 `limit_req` 與「剝掉外部送進來的 `X-Travel-Client-IP` / `X-Forwarded-For`」——目前 `TRUST_PROXY_CLIENT_IP=true` 之下，compose 網路內任何容器都能偽造這個標頭（審計編號 API-11），**每來源計數的正確性完全建立在這一層之上**。
+- 後續已開單：`2026-09-12-edge-rate-limit-and-header-hygiene`（同一個 owner、同一條 branch，
+  因 scope 重疊而以 `--force` 認領）。邊緣層 nginx 的 `limit_req` 與「剝掉外部送進來的 `X-Travel-Client-IP` / `X-Forwarded-For`」——目前 `TRUST_PROXY_CLIENT_IP=true` 之下，compose 網路內任何容器都能偽造這個標頭（審計編號 API-11），**每來源計數的正確性完全建立在這一層之上**。

@@ -214,6 +214,63 @@ async def test_ignores_a_forwarded_address_we_are_not_configured_to_believe(
 
 
 @pytest.mark.asyncio
+async def test_believes_a_forwarded_address_carrying_our_proxy_token(
+    limited_app: Starlette, counted: dict[str, int], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setenv("INTERNAL_PROXY_TOKEN", "shared-secret")
+    get_settings.cache_clear()
+    async for client in _client(limited_app):
+        await client.get(
+            "/api/v1/foods/categories",
+            headers={**FORWARDED, "X-Travel-Proxy-Token": "shared-secret"},
+        )
+
+    assert counted["public-read-ip-minute:203.0.113.9"] == 1
+
+
+@pytest.mark.asyncio
+async def test_ignores_a_forwarded_address_without_the_proxy_token(
+    limited_app: Starlette, counted: dict[str, int], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Nothing at the network layer separates our BFF from anything else on the bridge.
+
+    Both Compose files declare no networks, so container addresses are dynamic and the whole
+    subnet is one trust domain. The token is what actually distinguishes the two.
+    """
+    monkeypatch.setenv("INTERNAL_PROXY_TOKEN", "shared-secret")
+    get_settings.cache_clear()
+    async for client in _client(limited_app):
+        forged = [
+            (await client.get("/api/v1/foods/categories", headers=FORWARDED)).status_code
+            for _ in range(30)
+        ]
+        wrong = await client.get(
+            "/api/v1/foods/categories",
+            headers={**FORWARDED, "X-Travel-Proxy-Token": "guessed"},
+        )
+
+    assert forged == [200] * 30
+    assert wrong.status_code == 200
+    assert counted == {}
+
+
+@pytest.mark.asyncio
+async def test_an_unset_token_keeps_the_previous_behaviour(
+    limited_app: Starlette, counted: dict[str, int]
+) -> None:
+    """Back-compatibility is the point, not an oversight.
+
+    A token configured on the API but not yet on the web container would stop every
+    forwarded address being believed at once, collapsing all visitors into the web
+    container's single bucket -- an outage wearing a security feature's clothes.
+    """
+    async for client in _client(limited_app):
+        await client.get("/api/v1/foods/categories", headers=FORWARDED)
+
+    assert counted["public-read-ip-minute:203.0.113.9"] == 1
+
+
+@pytest.mark.asyncio
 async def test_counts_each_source_separately(
     limited_app: Starlette, counted: dict[str, int], recorded: list[str]
 ) -> None:

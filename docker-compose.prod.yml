@@ -50,6 +50,7 @@ services:
       DATABASE_URL: ${DATABASE_URL:?set DATABASE_URL}
       REDIS_URL: ${REDIS_URL:?set REDIS_URL}
       TRUST_PROXY_CLIENT_IP: "true"
+      INTERNAL_PROXY_TOKEN: ${INTERNAL_PROXY_TOKEN:-}
     command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
     ports: ["127.0.0.1:8090:8000"]
     volumes:
@@ -170,6 +171,7 @@ services:
     restart: unless-stopped
     environment:
       API_INTERNAL_URL: http://api:8000
+      INTERNAL_PROXY_TOKEN: ${INTERNAL_PROXY_TOKEN:-}
       COMMUNITY_MEDIA_ORIGIN: ${COMMUNITY_MEDIA_ORIGIN:-}
       NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:?set NEXT_PUBLIC_SITE_URL}
       API_PROXY_MAX_BODY_BYTES: ${API_PROXY_MAX_BODY_BYTES:-5242880}
