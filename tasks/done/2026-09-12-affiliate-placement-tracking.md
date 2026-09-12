@@ -1,13 +1,13 @@
 ---
 id: 2026-09-12-affiliate-placement-tracking
 title: Placement-aware destination offers and per-surface affiliate switch
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-fable-5-1
 claimed_at: 2026-09-12T05:36:20Z
 created_at: 2026-09-12T05:36:15Z
-completed_at:
+completed_at: 2026-09-12T12:08:16Z
 branch: claude/affiliate-controls-and-guide-cta
 depends_on: []
 scope:

@@ -1,13 +1,13 @@
 ---
 id: 2026-09-12-affiliate-cta-guides-and-city-pages
 title: Affiliate CTAs on guide articles and destination city pages
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-fable-5-1
 claimed_at: 2026-09-12T05:36:31Z
 created_at: 2026-09-12T05:36:17Z
-completed_at:
+completed_at: 2026-09-12T12:08:17Z
 branch: claude/affiliate-controls-and-guide-cta
 depends_on:
   - 2026-09-12-affiliate-placement-tracking
