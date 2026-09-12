@@ -336,3 +336,120 @@ vanished city gates (臺灣府城小北門, 原臺灣府考棚遺構) and Tainan
 ID belongs to the modern occupant of the site.
 
 `ops/hotspot_review_next_batch.json` holds all 866 rows touched on 2026-09-12.
+
+# Fourth batch, 2026-09-13: the non-Korean remainder, 41 -> 11
+
+The third batch closed saying the 42 rows it left needed "a person or a different identity source",
+because three shapes of Text Search query had failed on them. There was a different identity source,
+unused: **Places Autocomplete**.
+
+## Autocomplete is a different index path, and it was free
+
+`POST /admin/hotspots/map-candidates` bills Text Search Pro and keeps only the **first** result.
+The site's own `GET /api/travel/places/autocomplete` bills the **Essentials** tier — 10,000 free
+requests a month, of which September had used 98 — returns up to **five** predictions, and with
+`origin` set it reports `distanceMeters` for each one. It needs a logged-in user, not an admin.
+
+September's Google budget at the start of this batch:
+
+| SKU | used | free |
+|---|---|---|
+| Autocomplete Requests (essentials) | 98 | 10,000 |
+| Text Search Pro | 3,713 | 5,000 |
+| Place Details Enterprise | 904 | 1,000 (hard stop at 900) |
+
+Two rounds of autocomplete — the Wikidata local-language label first, then a rewritten query built
+from what the full article actually said the place is called today — produced an exact-name identity
+for 15 of the 41 rows: the 11 that were approved, the three that are now blocked only on a wrong
+coordinate, and 下北沢オープンソースCafe, whose identity was never in doubt and which was rejected on
+what the venue is. What the rewrite looked like matters more than the tool: 成功大學舊總圖書館
+found nothing, `成大未來館` found it at 8 m; `Thái Hà Ấp` returned phone shops on Phố Thái Hà,
+`Lăng Hoàng Cao Khải` (the estate's surviving tomb, named in the article body) returned it at 13 m;
+`Đền Ngọc Sơn` returned temples in Ninh Bình, `Đền Ngọc Sơn Hoàn Kiếm` returned the right one at 12 m.
+
+## Every approval was confirmed twice, and the second pass caught two errors
+
+After autocomplete picked a candidate, the same row went through `map-candidates` (Text Search Pro,
+12 calls) and the two place IDs were compared. Nine of twelve matched outright. The three that did
+not were the interesting ones:
+
+- **遍照寺 (沖縄市)** — autocomplete's hit sat 1 m from the stored coordinate, which looks like a
+  perfect match. Text Search returned a *different* 遍照寺 3.2 km away. The 1 m hit is
+  「遍照寺沖縄市桃原霊苑かなさ」, the temple's columbarium; the temple itself is at 久保田1-2-5.
+  **The stored Wikidata coordinate points at the cemetery, not the temple** — so the row stays
+  pending rather than being approved onto a graveyard.
+- **原臺南高等工業學校校舍** — its 本館 is 成大博物館, and `ChIJA2xpnZJ2bjQRbOkCD2qgHqE` is already
+  held by the approved row `wikidata-q14581491`. The pending row is a duplicate.
+- **喜屋武城** — the two tools returned two Google POIs at the same address: the park built on the
+  castle site and the pavilion at its top. The park was taken.
+
+The lesson is narrow and reusable: **a 1 m match is not proof, because the coordinate can be wrong in
+the same direction as the candidate.** Two independent lookups disagreeing is what exposed it.
+
+## Three rows were filed under the wrong city, and Wikipedia was the reason twice
+
+- **新營美術園區** was in 高雄 with 高雄 coordinates. Wikidata has no P625 and zh-wiki's `{{coord}}`
+  is 22.6199,120.2817 — Kaohsiung — while the article's own first sentence says 臺南市新營區. The
+  row was re-homed to `tainan` and given 23.30498,120.30618 from the Tainan city government's own
+  tourism page (`official_tourism`, https://www.twtainan.net/zh-tw/attractions/detail/5609/).
+- **Thác Mây Treo** was in 順化; the Vietnamese article says xã Bà Nà / phường Hải Vân, Đà Nẵng.
+  Re-homed to `da-nang`. Still pending: Google's waterfall is 3.7 km from the stored point.
+- **新福宮** is the same failure as 新營美術園區 and could not be fixed the same way: Wikidata *and*
+  zh-wiki both carry 24.1352,120.6894 (Taichung) while the article says 臺北市中山區新生北路二段.
+  Google confirms the Taipei address and gives a Place ID; there is no auditable source for the
+  correct coordinate, so it stays pending with both facts written into the row.
+
+## Result
+
+| | before | after |
+|---|---|---|
+| pending | 205 | **175** |
+| approved | 1,953 | 1,964 |
+| rejected | 1,731 | 1,750 |
+
+The 41 non-Korean rows became 11 approved, 19 rejected, 11 still pending. **164 Korean rows are
+untouched by choice** — NAVER's search API answers a `ncaptcha` challenge to an unauthenticated
+caller, which is not something to work around, so the gate still wants a key or a person.
+
+Rankings are a snapshot: `refresh_rankings` selects every active public row, and `hotspot-collector`
+rebuilds it every 21,600 s, so the eleven appear in `/hotspots/rankings` within six hours of the
+writes rather than immediately. Verified by reading the code and by confirming that older approved
+rows (國立成功大學博物館, and 47 rows in Hanoi) do answer the same query.
+
+## What the 19 rejections rest on
+
+None of them rest on a thin article. Fourteen rest on a fact about the place:
+
+- **gone**: 大圓環 (roundabout removed in the 1990s, now 美麗島站), 臺南火車站前圓環 (rebuilt into a
+  ㄇ-shaped road in March 2026), 臺灣府城小北門 (demolished 1926; the surviving 門額 is a museum
+  object), วังวรวรรณ (expropriated for a road), 野澤屋 (closed as 橫濱松坂屋).
+- **closed or not open**: 新建國戲院 (closed 2016), บ้านพระอาทิตย์ (a newspaper's offices),
+  原住吉秀松宅邸 (private, ownership in litigation), 原臺南長老教中學校講堂暨校長宿舍 (inside an
+  operating high school).
+- **covered by a parent already published**: 吉羊康泰 in 臺中公園, 臺北于右任銅像 in 國父紀念館,
+  朴寶劍樹 in 中央公園, 原臺南高等工業學校校舍 = 成大博物館, 臺北市市政大樓 (whose twin row
+  `wikidata-q9105560` an earlier batch rejected).
+
+Three are editorial and were put to the site owner rather than decided by a model: 大東亜聖戦大碑
+and 信義計畫區 were rejected on their instruction; 臺北天空塔 was kept pending on their instruction,
+because a rejection is a tombstone discovery skips and the tower is only under construction.
+
+晏架街 and 下北沢オープンソースCafe are the two judgement calls: a Mok Cheong street whose article
+lists only the buildings on it (the 京士柏道 precedent), and a coworking space whose Google entry is
+exact but whose nature is a place to work.
+
+## The 11 still pending, and what each one waits for
+
+| row | blocked on |
+|---|---|
+| 遍照寺 (沖縄市) | stored coordinate is the temple's columbarium, 3.2 km from the temple |
+| 新福宮 | Wikidata and zh-wiki coordinates both say Taichung; Place ID found |
+| Huyện Sỹ Church | Wikidata P625 is 31 km west; no other auditable source. Place ID found |
+| Thác Mây Treo | re-homed to Đà Nẵng; Google's waterfall is 3.7 km from the stored point |
+| 昭南神社 | only a `Syonan Jinja Historic Marker` 1.48 km away |
+| 鎮平台 | only `Đồn Mang Cá`, an active military compound, 522 m away |
+| 枳殻坂, Đèo Tà Nung, Lăng Trường Thiệu, Lục bộ | no Google POI after four query shapes each |
+| 臺北天空塔 | still under construction |
+
+Four of them are one edit away: the Place ID is known and only the coordinate is wrong upstream.
+Fixing those four coordinates in Wikidata would clear them on the next pass.

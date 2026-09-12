@@ -1,11 +1,11 @@
 ---
 id: 2026-09-08-continue-evidence-backed-remaining-hotspot-candidate
 title: Continue evidence-backed remaining hotspot candidate review
-status: open
+status: in-progress
 priority: P1
 area: ops
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-12T16:25:50Z
 created_at: 2026-09-08T09:35:17Z
 completed_at:
 branch:
@@ -134,3 +134,39 @@ What is left, and why it is not a model's job:
   passes will not help; these need a person or a different identity source.
 - Huyện Sỹ Church specifically: its Wikidata P625 is ~30 km wrong and the Vietnamese article has
   no coordinate, so there is no durable source to write. Fixing Wikidata upstream would fix it.
+
+## 2026-09-13 fourth batch — non-Korean backlog 41 -> 11
+
+Pending 205 -> 175. Write-up in `docs/hotspot-review-next-batch.md`; the row receipt file now holds
+both batches under a `batches` array (nothing reads it, so the shape was changed rather than
+overwritten).
+
+The third batch's conclusion — "further model passes will not help; these need a person or a
+different identity source" — was half right. The identity source existed and was unused:
+
+- **Places Autocomplete, not Text Search.** `GET /api/travel/places/autocomplete` bills the
+  Essentials SKU (10,000 free a month, 98 used), returns five predictions instead of
+  `map-candidates`'s single one, and reports `distanceMeters` per prediction. It needs any
+  logged-in user, not an admin. It found identities the three earlier Text Search query shapes
+  had missed.
+- **Confirm every approval with the other tool.** All 12 candidates were re-run through
+  `map-candidates` and the place IDs compared. Three disagreed, and two of those disagreements were
+  real errors: 原臺南高等工業學校校舍 is a duplicate of the published 成大博物館 row, and 遍照寺's
+  1 m "perfect" match is the temple's columbarium while the temple is 3.2 km away. **A 1 m match
+  proves nothing if the stored coordinate is wrong in the same direction as the candidate.**
+- **Korea, re-measured.** NAVER's own search API answers an unauthenticated caller with an
+  `ncaptcha` challenge. Not workable, and not something to work around. Still blocked on
+  `2026-09-06-naver-maps-key`.
+
+What is left, and it is genuinely small:
+
+- 164 Korean rows (unchanged, deliberately).
+- 11 non-Korean rows, each with its blocker written into `review_reason`. **Four are one edit away**
+  — 遍照寺, 新福宮, Huyện Sỹ Church and Thác Mây Treo all have a confirmed Place ID and are held up
+  only by a coordinate that is wrong in Wikidata or Wikipedia upstream. Fixing those four upstream
+  coordinates clears them.
+- 臺北天空塔 stays pending on the site owner's instruction until it opens, because `discover_city`
+  skips rejected rows and a rejection would be permanent.
+
+Rankings lag the writes: `refresh_rankings` takes every active public row but only runs inside
+`hotspot-collector`, which rebuilds every 21,600 s, so approvals surface publicly within six hours.
