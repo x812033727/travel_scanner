@@ -215,3 +215,51 @@ reader has already moved it」把這個競態變成確定的事：把第二次�
 `tasks/done/2026-09-11-trip-editor-close-guard-order-dependence.md`）：
 跨檔模組汙染（`isolate` 是 true，探針測過零洩漏）、`onCloseRef` 寫在 passive effect 會落後
 DOM 一個 render（探針測過，`flushSync` 之後兩個 ref 都已更新）。
+
+## 第四輪：三個假設用證據排除，但重現不出來（claude-opus-5-flake, 2026-09-12）
+
+`#406` 合併之後，在合併後的 main 上重跑。**三次整套 + 四核心跑滿的負載：233 檔 /
+2381 測試，三次全綠。** 沒有重現。
+
+同時把探針裝在 `useModalSheet` 的 `onKeyDown` 裡（`MODAL_PROBE=1` 才出聲），記錄每一次
+Escape 是被哪一個提前返回吃掉的。單獨跑 `travel-card-actions.test.tsx` 的基準線乾淨：
+register／unregister 完全成對、深度恆為 1、`isTop=true`、`defaultPrevented=false`、
+`foreignOpenDialogs=0`。
+
+### 三個假設，用證據排除（不是推論）
+
+| 假設 | 證據 | 結論 |
+| --- | --- | --- |
+| 外來的 `dialog[open]` 讓第二個守門返回 | 全站只有一個原生 `<dialog>`，在 `components/community/ui.tsx:62`。`isolate` 是 true，每個測試檔有自己的 jsdom，它到不了 `travel-card-actions.test.tsx` | 排除 |
+| `event.defaultPrevented` 被另一個 listener 先搶走 | `travel-card-actions.tsx` 自己一個 `addEventListener` 都沒有；全站只有五個元件掛 document keydown（`route-map`、`admin-nav`、`hotspot-explorer`、`admin-shell`、`planner-overlay`），都在別的檔，隔離下到不了 | 排除 |
+| `sheetRef.current` 在 effect 執行時是 null，effect 靜靜地什麼都不做 | 見下。四個 `open` 寫死 `true` 的呼叫點全部查過，ref 都是無條件掛上的 | 今天排除，但**原語有隱患** |
+
+### 查到的一個隱患（不是這次的成因，另開任務）
+
+`useModalSheet` 的 effect：
+
+```ts
+useEffect(() => {
+  if (!open) return;
+  const sheet = sheetRef.current;
+  if (!sheet) return;   // ← 靜靜地放棄，而且 deps 是 [open]，永遠不會重試
+  ...
+}, [open]);
+```
+
+`open` 沒變的話 effect 不會再跑。所以只要有一個呼叫點在 effect 執行的那一刻還沒把 ref
+掛上（例如彈層藏在 loading 狀態後面），那個彈層就會**永久**沒有 Escape、沒有 focus trap、
+沒有捲動鎖、也沒有進 `layers`——而且完全不出聲。
+
+四個把 `open` 寫死 `true` 的呼叫點風險最高，因為 effect 只在掛載時跑一次：
+`hotspot-restaurants-panel:153`（ref 在 321，中間沒有提前 return）、
+`admin-hotspot-guides-panel:945`（ref 在 956）、
+`travel-services/booking-panel:125`（ref 在 165）、
+`travel-services/stay22-public-hotels:38`（ref 在 56，loading 狀態在 div **裡面**，所以安全）。
+**四個目前都沒事**，但這是一個等著被下一個呼叫點踩到的地雷。
+
+### 一個容易誤導人的事實
+
+`lib/modal-sheet.ts` **不是 `#406` 改的**——它上一次變動是 `#380` 與 `#338`。`#406` 改的是
+呼叫端（十一個彈層搬過來用它）。所以「原語是新的、所以原語有問題」這個方向不成立；
+變的是 `travel-card-actions.tsx` 開始走這條路。
