@@ -338,11 +338,14 @@ it("lets an operator open the guide and city surfaces for destination offers wit
   render(<TravelServicesAdmin workspace="services" />);
   const guide = await screen.findByLabelText(common.guides.hubTitle);
   expect((guide as HTMLInputElement).checked).toBe(false);
+  const share = screen.getByLabelText(common.cardActions.share);
+  expect((share as HTMLInputElement).checked).toBe(false);
   fireEvent.click(guide);
+  fireEvent.click(share);
   fireEvent.click(screen.getByRole("button", { name: copy.apply }));
   await waitFor(() => expect(request.mock.calls.some(([path, opts]) => String(path).endsWith("/config") && opts?.method === "PUT")).toBe(true));
   const [, options] = request.mock.calls.find(([path, opts]) => String(path).endsWith("/config") && opts?.method === "PUT")!;
   const saved = JSON.parse(String(options.body));
-  expect(saved.affiliate_placements).toEqual(["destination", "hotspot", "trip", "stay", "checklist", "discovery", "guide"]);
+  expect(saved.affiliate_placements).toEqual(["destination", "hotspot", "trip", "stay", "checklist", "discovery", "guide", "share"]);
   expect(saved.public_enabled).toBe(false);
 });

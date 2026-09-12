@@ -1,3 +1,4 @@
+import type { AffiliateModule } from "@/components/affiliate-partner-options";
 import { itineraryCopy } from "@/lib/itinerary-copy";
 import { activeLocale } from "@/lib/locale-format";
 
@@ -337,10 +338,21 @@ export type TripCost = {
   items: TripExpense[];
 };
 
+/**
+ * Which partner modules have a ready destination offer for this trip's surface. It is
+ * availability only, carried with the trip so the planner can show a collapsed block
+ * without a request on first paint; the offers themselves load when the block opens.
+ */
+export type TripPartnerOffers = {
+  destination_id: string | null;
+  modules: AffiliateModule[];
+};
+
 export type Trip = {
   id: string;
   name: string;
   status?: TripStatus;
+  partner_offers?: TripPartnerOffers | null;
   cover_image_url?: string | null;
   mode: string;
   total_price: number;
@@ -396,7 +408,7 @@ export type Trip = {
  */
 export type SharedTrip = Pick<
   Trip,
-  "id" | "name" | "destination_name" | "start_date" | "end_date" | "timezone" | "items" | "route_segments" | "updated_at"
+  "id" | "name" | "destination_name" | "start_date" | "end_date" | "timezone" | "items" | "route_segments" | "updated_at" | "partner_offers"
 >;
 
 export function formatTime(value?: string | null, locale?: string, timeZone?: string) {

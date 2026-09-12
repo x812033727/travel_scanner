@@ -73,6 +73,7 @@ from app.providers.registry import (
 from app.providers.runner import ProviderRunner, ProviderUnavailableError
 from app.providers.schemas import ActivityOffer, FlightOffer, HotelOffer, Offer, TransportOffer
 from app.search.schemas import SearchCreate, SearchModule, SearchPreferences, Travelers, TripType
+from app.travel_services.service import partner_offer_modules
 from app.trips.expenses import (
     EXPENSE_CATEGORIES,
     MAX_EXPENSES,
@@ -1065,11 +1066,22 @@ async def serialize_trip(
     cost: dict[str, Any] | None = None
     # Gated with the items: list_trips() serialises every trip a member owns,
     # and an ungated ledger query there would be a 2xN fan-out.
+    partner_offers: dict[str, Any] | None = None
     if include_items:
         day_notes = {
             row.day_date.isoformat(): row.notes for row in await load_day_notes(session, trip.id)
         }
         cost = cost_summary(trip, await load_expenses(session, trip.id))
+        # Availability only (which modules have a ready partner offer for this trip's
+        # destination on the trip surface), so the planner can show a collapsed block
+        # without a request on first paint. The offers themselves load on demand.
+        offer_destination = _option_destination_id(trip)
+        partner_offers = {
+            "destination_id": offer_destination,
+            "modules": await partner_offer_modules(
+                session, await load_runtime_settings(session), offer_destination, "trip"
+            ),
+        }
         route_records = await load_route_segments(session, trip.id)
         day_route_settings = await load_day_settings(session, trip.id)
         route_segments = [
@@ -1139,6 +1151,7 @@ async def serialize_trip(
         "notes": trip.notes,
         "day_notes": day_notes,
         "cost": cost,
+        "partner_offers": partner_offers,
         "items": [serialize_item(item) for item in items],
         "route_segments": route_segments,
         "routing": routing_summary(trip, day_route_settings, route_records),
@@ -6043,7 +6056,16 @@ async def shared_trip(token: str, session: Session) -> dict[str, Any]:
     # Additive allowlist: a new field on the owner's payload never reaches the share
     # link until it is named here. trip.data (preferences, budget, cost breakdown,
     # planner provider) and every per-item note stay with the owner.
+    # The share page is its own surface: it asks the `share` switch, not the owner's
+    # `trip` answer, and the destination id is already derivable from destination_name.
+    share_destination = _option_destination_id(trip)
     return {
         **{key: payload[key] for key in PUBLIC_TRIP_KEYS},
         "items": [public_item(item) for item in payload["items"]],
+        "partner_offers": {
+            "destination_id": share_destination,
+            "modules": await partner_offer_modules(
+                session, await load_runtime_settings(session), share_destination, "share"
+            ),
+        },
     }

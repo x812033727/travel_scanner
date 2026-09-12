@@ -355,6 +355,62 @@ async def test_destination_offers_are_gated_and_labelled_per_surface(fixture):
     assert (await client.post(clickout + "?placement=guide")).status_code == 404
 
 
+async def test_partner_offer_modules_follow_the_surface_switch(fixture):
+    """A trip payload asks "which modules have something ready here?", never for the
+    offers; the answer follows the same switch as the public list and the click."""
+    from app.travel_services.service import partner_offer_modules
+
+    session, client, config, _actor = fixture
+    brand = await create_brand(client)
+    for module, target in (
+        ("transport", "https://www.klook.com/airport-transfers/city/28-tokyo-airport/"),
+        ("activities", "https://www.klook.com/destination/c28-tokyo/1-things-to-do/"),
+    ):
+        created = await client.post(
+            "/api/v1/admin/travel-services/destination-offers",
+            json={
+                "brand_id": brand["id"],
+                "destination_id": "tokyo",
+                "module": module,
+                "target_url": target,
+            },
+        )
+        review = await client.post(
+            f"/api/v1/admin/travel-services/destination-offers/{created.json()['id']}/review",
+            json={
+                "version": 1,
+                "status": "approved",
+                "browser_verified": True,
+                "evidence_url": target,
+            },
+        )
+        assert review.status_code == 200, review.text
+    # Canonical module order, not insertion order; `trip` is a legacy surface and on.
+    assert await partner_offer_modules(session, config, "tokyo", "trip") == [
+        "activities",
+        "transport",
+    ]
+    # `share` is a content surface and off until an operator enables it.
+    assert await partner_offer_modules(session, config, "tokyo", "share") == []
+    assert await partner_offer_modules(session, config, None, "trip") == []
+    assert await partner_offer_modules(session, config, "hiroshima", "trip") == []
+    row = await session.get(TravelServiceConfig, 1)
+    row.data = {**row.data, "affiliate_placements": [*row.data["affiliate_placements"], "share"]}
+    await session.commit()
+    assert await partner_offer_modules(session, config, "tokyo", "share") == [
+        "activities",
+        "transport",
+    ]
+    # The share page's clicks carry their own label once the surface is open.
+    offers = (
+        await client.get(
+            "/api/v1/affiliates/destination-offers?destination_id=tokyo&module=transport"
+            "&placement=share"
+        )
+    ).json()["options"]
+    assert [offer["clickout_url"].rsplit("?", 1)[1] for offer in offers] == ["placement=share"]
+
+
 async def test_direct_import_default_channel_and_replay_never_publish(fixture):
     session, client, config, _actor = fixture
     header = "source_key,kind,destination_id,title,source_url,brand,target_url,channel\n"

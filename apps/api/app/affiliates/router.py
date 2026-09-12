@@ -54,7 +54,11 @@ from app.problems import AppError
 from app.travel_services.channels import channel_for, klook_affiliate_target, resolve_offer_target
 from app.travel_services.registry import BRANDS
 from app.travel_services.schemas import BookingPlacement
-from app.travel_services.service import catalog_config, ready_destination_offer
+from app.travel_services.service import (
+    catalog_config,
+    ready_destination_offer,
+    ready_destination_offers,
+)
 
 router = APIRouter(prefix="/affiliates", tags=["affiliate partners"])
 Session = Annotated[AsyncSession, Depends(get_session)]
@@ -84,37 +88,9 @@ async def _ready_destination_offers(
     module: AffiliateModule,
     placement: BookingPlacement = "destination",
 ) -> list[tuple[DestinationAffiliateOffer, TravelServiceBrand]]:
-    config, _ = await catalog_config(session)
-    if (
-        not config.public_enabled
-        or destination_id not in config.enabled_destinations
-        or placement not in config.affiliate_placements
-    ):
-        return []
-    now = datetime.now(UTC)
-    rows = list(
-        (
-            await session.execute(
-                select(DestinationAffiliateOffer, TravelServiceBrand)
-                .join(
-                    TravelServiceBrand,
-                    TravelServiceBrand.id == DestinationAffiliateOffer.brand_id,
-                )
-                .where(
-                    DestinationAffiliateOffer.destination_id == destination_id,
-                    DestinationAffiliateOffer.module == module,
-                )
-                .order_by(TravelServiceBrand.code, DestinationAffiliateOffer.id)
-            )
-        ).tuples().all()
-    )
-    # One CTA per brand: prefer its explicitly enrolled direct channel when both are ready.
-    ready = [row for row in rows if ready_destination_offer(*row, settings, now)]
-    ready.sort(key=lambda row: (row[1].code, channel_for(row[1]) != "klook_direct", str(row[0].id)))
-    unique: dict[str, tuple[DestinationAffiliateOffer, TravelServiceBrand]] = {}
-    for row in ready:
-        unique.setdefault(row[1].code, row)
-    return list(unique.values())
+    # Kept as a module attribute (tests monkeypatch it); the query itself lives with the
+    # catalog so trip payloads can ask the same question without importing this router.
+    return await ready_destination_offers(session, settings, destination_id, placement, module)
 
 
 def _destination_option(
@@ -367,11 +343,14 @@ async def affiliate_options(
     settings = await load_runtime_settings(session)
     redis = get_redis()
     # (`source` lived here only to seed the member-derived uuid5; it has no other reader.)
+    # A trip-sourced button was rendered on the trip page; label it so the click report
+    # can tell it from the services page. The search page keeps the destination label.
+    placement: BookingPlacement = "trip" if source_trip_id else "destination"
     options: list[AffiliateOption] = []
     branded_codes: set[str] = set()
     if destination_id:
         for offer, brand in await _ready_destination_offers(
-            session, settings, destination_id, module
+            session, settings, destination_id, module, placement
         ):
             token = uuid4().hex
             await redis.set(
@@ -386,7 +365,9 @@ async def affiliate_options(
                 ),
                 ex=settings.affiliate_clickout_token_ttl_seconds,
             )
-            localized = _destination_option(offer, brand, active_locale(), token=token)
+            localized = _destination_option(
+                offer, brand, active_locale(), token=token, placement=placement
+            )
             options.append(
                 AffiliateOption(
                     partner=brand.code,
