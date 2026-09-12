@@ -1,13 +1,13 @@
 ---
 id: 2026-09-12-japan-korea-reservation-platforms
 title: 日本與韓國訂位平台納入白名單，並補上對應店家連結
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-opus-5
 claimed_at: 2026-09-12T05:00:19Z
 created_at: 2026-09-12T05:00:14Z
-completed_at:
+completed_at: 2026-09-12T13:43:17Z
 branch: claude/food-booking-platform-links-db11f4
 depends_on: []
 scope:
@@ -44,7 +44,7 @@ scope:
 - [x] 順手修掉 `2026-09-11-catchtable-underscore-segment-id`：CatchTable id 的點分段可以用底線開頭。
 - [x] 查核並產出 `apps/api/app/foods/data/platform_reviews/2026-09-12-japan-platforms.json`（106 筆：verified 12、disabled 86、not_found 8）。
 - [x] 查核摘要寫進 `docs/catalog-content-reviews/2026-09-12-japan-platforms.md`。
-- [ ] PR、合併、部署，在 api 容器試跑 `--file`，確認後 `--apply`。
+- [x] PR、合併、部署，在 api 容器試跑 `--file`，確認後 `--apply`。
 
 ## How to verify
 
@@ -128,3 +128,19 @@ PR #428。日本可訂位的 9 間店共 12 筆連結：ジンギスカン ひ�
 
 一棟樓裡有好幾家店的情況（崎陽軒本店、鶴屋吉信本店）沒有硬套：清單那一列對應哪一家，
 用官網網址與招牌菜決定，其餘同棟的店只記進證據。
+
+### 上線結果（2026-09-12 13:40 UTC）
+
+PR #428 與 #434 都已合併，部署 `a86bffc5`（健康檢查 3/3、首頁 200）。
+兩個批次在 api 容器內先試跑再 `--apply`，經擁有者確認：
+
+- `2026-09-12-japan-platforms.json`：106 筆（新建 105、更新 1、跳過 0）
+- `2026-09-12-japan-platforms-second.json`：136 筆（新建 135、更新 1、跳過 0）
+
+公開 API 逐頁統計：**331 間公開店家有 59 間帶 `reservation_links`（原本 45）**，
+日本 24/102（原本 10）。平台分布：AutoReserve 9、ホットペッパー 4、ぐるなび 2、食べログ 2，
+其餘為原有平台。
+
+語系挑選實測（`X-Travel-Locale`）：zh-TW→`/tw/`、zh-CN→`/cn/`、en→`/en/`、ko→`/kr/`，
+ja 因為沒有存日文版而退回 canonical，與設計一致。
+前台 `/zh-TW/foods` 已確認 ジンギスカン ひげのうし 本店 渲染出繁中版食べログ與ホットペッパー兩個按鈕。
