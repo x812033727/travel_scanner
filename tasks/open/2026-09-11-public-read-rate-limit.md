@@ -1,7 +1,7 @@
 ---
 id: 2026-09-11-public-read-rate-limit
 title: 公開讀取端點沒有任何速率上限，整站可被匿名爬走
-status: in-progress
+status: review
 priority: P1
 area: api
 owner: claude-opus-5

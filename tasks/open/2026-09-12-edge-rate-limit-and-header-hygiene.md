@@ -1,7 +1,7 @@
 ---
 id: 2026-09-12-edge-rate-limit-and-header-hygiene
 title: 邊緣層沒有限流，轉送標頭也沒有人剝
-status: in-progress
+status: review
 priority: P1
 area: ops
 owner: claude-opus-5

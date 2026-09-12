@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**36 open · 4 in progress · 3 blocked · 1 in review · 264 done**
+**36 open · 2 in progress · 3 blocked · 3 in review · 264 done**
 
 ## Ready to claim
 
@@ -51,13 +51,13 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- | --- |
 | [公開美食店家訂位平台連結補齊（查核與批次匯入）](open/2026-09-11-food-reservation-link-backfill.md) | claude-opus-5 | 2026-09-11T16:02:41Z | `claude/food-reservation-link-backfill` |
 | [Deny school, hospital, tram stop, ward and military base types in hotspot discovery](open/2026-09-11-deny-school-hospital-tram-stop-ward.md) | claude-opus-5 | 2026-09-11T16:53:59Z | `claude/attractions-review-progress-55bb39` |
-| [公開讀取端點沒有任何速率上限，整站可被匿名爬走](open/2026-09-11-public-read-rate-limit.md) | claude-opus-5 | 2026-09-11T22:14:42Z | `claude/prevent-web-scraping-6xj3dg` |
-| [邊緣層沒有限流，轉送標頭也沒有人剝](open/2026-09-12-edge-rate-limit-and-header-hygiene.md) | claude-opus-5 | 2026-09-12T01:05:32Z | `claude/prevent-web-scraping-6xj3dg` |
 
 ## In review
 
 | Task | Owner | Branch |
 | --- | --- | --- |
+| [公開讀取端點沒有任何速率上限，整站可被匿名爬走](open/2026-09-11-public-read-rate-limit.md) | claude-opus-5 | `claude/prevent-web-scraping-6xj3dg` |
+| [邊緣層沒有限流，轉送標頭也沒有人剝](open/2026-09-12-edge-rate-limit-and-header-hygiene.md) | claude-opus-5 | `claude/prevent-web-scraping-6xj3dg` |
 | [Wire /guides into the sitemap, footer and destination pages](open/2026-09-11-guides-sitemap-and-entry-points.md) | claude-opus-5-guides | `claude/travel-info-guide-section-4ulqsj` |
 
 ## Waiting
