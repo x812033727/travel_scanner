@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">關西機場到大阪、京都路線圖 / Kansai Airport rail and bus routes to Osaka and Kyoto</title>
+  <desc id="desc">南海電鐵 Rapi:t 與空港急行到難波；JR 特急 HARUKA 到天王寺、新大阪、京都；JR 關空快速到天王寺、大阪；利木津巴士到梅田、難波與京都站。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="80" y="88" font-size="40" font-weight="700" fill="#102A2B">関西空港 → 大阪・京都　主要路線</text>
+  <text x="80" y="128" font-size="22" fill="#5C6B6B">Kansai Airport → Osaka / Kyoto · 時間為概略車程，以官網時刻表為準</text>
+
+  <!-- Nankai to Namba -->
+  <path d="M 300 480 C 620 480, 760 230, 1250 230" fill="none" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"/>
+  <!-- JR Haruka: Tennoji -> Shin-Osaka -> Kyoto -->
+  <path d="M 300 480 C 620 480, 760 370, 1000 370 L 1250 370 L 1250 520 L 1250 690" fill="none" stroke="#6B4A3A" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- JR Kansai Airport Rapid: Tennoji -> Osaka -->
+  <path d="M 1000 370 C 1100 370, 1140 800, 1250 800" fill="none" stroke="#6B4A3A" stroke-width="8" stroke-dasharray="4 14" stroke-linecap="round"/>
+  <!-- Limousine bus: Umeda, Kyoto -->
+  <path d="M 300 480 C 620 560, 900 800, 1210 800" fill="none" stroke="#B8442D" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+  <path d="M 300 480 C 700 620, 1000 690, 1210 690" fill="none" stroke="#B8442D" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+
+  <g>
+    <rect x="80" y="420" width="220" height="120" rx="24" fill="#0D6B68"/>
+    <text x="190" y="470" font-size="30" font-weight="700" fill="#FFFFFF" text-anchor="middle">関西空港</text>
+    <text x="190" y="508" font-size="20" fill="#E6F2F1" text-anchor="middle">Kansai Airport · KIX</text>
+  </g>
+
+  <g font-size="26" font-weight="700" fill="#102A2B">
+    <circle cx="1250" cy="230" r="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+    <text x="1285" y="222">なんば Namba</text>
+    <text x="1285" y="250" font-size="18" font-weight="400" fill="#5C6B6B">ラピート 約 38 分 · 空港急行 約 45 分</text>
+    <circle cx="1000" cy="370" r="16" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"/>
+    <text x="1000" y="330" text-anchor="middle">天王寺 Tennoji</text>
+    <circle cx="1250" cy="370" r="16" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"/>
+    <text x="1285" y="362">新大阪 Shin-Osaka</text>
+    <text x="1285" y="390" font-size="18" font-weight="400" fill="#5C6B6B">はるか 約 50 分 · 轉新幹線</text>
+    <circle cx="1250" cy="520" r="16" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"/>
+    <text x="1285" y="528">京都 Kyoto</text>
+    <text x="1285" y="556" font-size="18" font-weight="400" fill="#5C6B6B">はるか 約 80 分</text>
+    <circle cx="1210" cy="690" r="16" fill="#FFFFFF" stroke="#B8442D" stroke-width="8"/>
+    <text x="1285" y="698">京都駅 Kyoto Station（巴士）</text>
+    <circle cx="1230" cy="800" r="16" fill="#FFFFFF" stroke="#B8442D" stroke-width="8"/>
+    <text x="1285" y="808">大阪・梅田 Osaka / Umeda</text>
+    <text x="1285" y="836" font-size="18" font-weight="400" fill="#5C6B6B">関空快速 約 70 分 · 巴士 約 60 分</text>
+  </g>
+
+  <g font-size="22" font-weight="700">
+    <text x="600" y="300" fill="#0D6B68">南海電鉄 Nankai · ラピート Rapi:t / 空港急行</text>
+    <text x="560" y="415" fill="#6B4A3A">JR 特急はるか HARUKA</text>
+    <text x="1030" y="600" fill="#6B4A3A">JR 関空快速</text>
+    <text x="520" y="640" fill="#B8442D">リムジンバス Airport Limousine</text>
+  </g>
+
+  <g font-size="20" fill="#102A2B">
+    <line x1="80" y1="860" x2="140" y2="860" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+    <text x="152" y="867">南海電鐵 Nankai</text>
+    <line x1="400" y1="860" x2="460" y2="860" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round"/>
+    <text x="472" y="867">JR 西日本 JR West</text>
+    <line x1="760" y1="860" x2="820" y2="860" stroke="#B8442D" stroke-width="8" stroke-dasharray="18 12" stroke-linecap="round"/>
+    <text x="832" y="867">巴士 Bus</text>
+    <text x="1180" y="867" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+  </g>
+</svg>

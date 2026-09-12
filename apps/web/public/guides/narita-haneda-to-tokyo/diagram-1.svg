@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">成田・羽田機場到東京市區路線圖 / Narita and Haneda airport rail and bus routes into Tokyo</title>
+  <desc id="desc">成田機場：京成 Skyliner 到日暮里、上野；JR 成田特快 N'EX 到東京、品川、新宿；利木津巴士到東京站與各大飯店。羽田機場：京急線到品川；東京單軌電車到濱松町；利木津巴士到新宿等地。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="80" y="88" font-size="40" font-weight="700" fill="#102A2B">成田・羽田 → 東京市區　主要路線</text>
+  <text x="80" y="128" font-size="22" fill="#5C6B6B">Narita / Haneda → central Tokyo · 時間為概略車程，以官網時刻表為準</text>
+
+  <!-- Narita routes -->
+  <path d="M 300 300 C 620 300, 760 190, 1190 190" fill="none" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 1190 190 L 1310 190 L 1310 262" fill="none" stroke="#0D6B68" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 300 300 C 640 300, 760 380, 1190 380 L 1310 380 L 1310 470 L 1310 620" fill="none" stroke="#6B4A3A" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 300 300 C 560 330, 900 470, 1270 470" fill="none" stroke="#B8442D" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+
+  <!-- Haneda routes -->
+  <path d="M 300 700 C 700 700, 900 470, 1260 470" fill="none" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 300 700 C 700 720, 900 790, 1270 790" fill="none" stroke="#6B4A3A" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 300 700 C 760 660, 980 620, 1270 620" fill="none" stroke="#B8442D" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+
+  <!-- airports -->
+  <g>
+    <rect x="80" y="240" width="220" height="120" rx="24" fill="#0D6B68"/>
+    <text x="190" y="290" font-size="30" font-weight="700" fill="#FFFFFF" text-anchor="middle">成田空港</text>
+    <text x="190" y="328" font-size="20" fill="#E6F2F1" text-anchor="middle">Narita Airport · NRT</text>
+    <rect x="80" y="640" width="220" height="120" rx="24" fill="#6B4A3A"/>
+    <text x="190" y="690" font-size="30" font-weight="700" fill="#FFFFFF" text-anchor="middle">羽田空港</text>
+    <text x="190" y="728" font-size="20" fill="#F1E6DF" text-anchor="middle">Haneda Airport · HND</text>
+  </g>
+
+  <!-- destination stations -->
+  <g font-size="26" font-weight="700" fill="#102A2B">
+    <circle cx="1190" cy="190" r="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+    <text x="1225" y="182">日暮里 Nippori</text>
+    <text x="1225" y="210" font-size="18" font-weight="400" fill="#5C6B6B">轉 JR 山手線 · 約 41 分</text>
+    <circle cx="1310" cy="262" r="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+    <text x="1345" y="270">上野 Ueno</text>
+    <circle cx="1310" cy="380" r="16" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"/>
+    <text x="1345" y="372">東京 Tokyo</text>
+    <text x="1345" y="400" font-size="18" font-weight="400" fill="#5C6B6B">N'EX 約 60 分</text>
+    <circle cx="1270" cy="470" r="16" fill="#FFFFFF" stroke="#B8442D" stroke-width="8"/>
+    <text x="1345" y="478">品川 Shinagawa</text>
+    <circle cx="1310" cy="620" r="16" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"/>
+    <text x="1345" y="628">新宿 Shinjuku</text>
+    <circle cx="1270" cy="790" r="16" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"/>
+    <text x="1345" y="798">浜松町 Hamamatsucho</text>
+    <text x="1345" y="826" font-size="18" font-weight="400" fill="#5C6B6B">單軌電車 · 約 13–18 分</text>
+  </g>
+
+  <!-- route labels -->
+  <g font-size="22" font-weight="700">
+    <text x="640" y="238" fill="#0D6B68">京成スカイライナー Keisei Skyliner</text>
+    <text x="640" y="424" fill="#6B4A3A">JR 成田エクスプレス N'EX</text>
+    <text x="560" y="520" fill="#B8442D">リムジンバス Airport Limousine · 約 85–120 分</text>
+    <text x="700" y="560" fill="#0D6B68">京急線 Keikyu · 品川 約 13–15 分</text>
+    <text x="760" y="648" fill="#B8442D">リムジンバス Airport Limousine</text>
+    <text x="700" y="770" fill="#6B4A3A">東京モノレール Tokyo Monorail</text>
+  </g>
+
+  <!-- legend -->
+  <g font-size="20" fill="#102A2B">
+    <line x1="80" y1="860" x2="140" y2="860" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+    <text x="152" y="867">私鐵 / Private railway</text>
+    <line x1="420" y1="860" x2="480" y2="860" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round"/>
+    <text x="492" y="867">JR / 單軌電車 Monorail</text>
+    <line x1="820" y1="860" x2="880" y2="860" stroke="#B8442D" stroke-width="8" stroke-dasharray="18 12" stroke-linecap="round"/>
+    <text x="892" y="867">巴士 Bus</text>
+    <text x="1180" y="867" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+  </g>
+</svg>
