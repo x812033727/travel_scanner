@@ -1,18 +1,18 @@
 ---
 id: 2026-09-07-community-read-metric-concurrency
 title: Community read metric duplicate observed alongside smoke ECONNRESET
-status: open
+status: done
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5-community-metric
+claimed_at: 2026-09-12T05:40:58Z
 created_at: 2026-09-07T23:27:30Z
-completed_at:
+completed_at: 2026-09-12T06:17:15Z
 branch: codex/hotel-content-review-kyoto-station
 depends_on: []
 scope:
   - apps/api/app/community
-  - apps/api/tests/test_community.py
+  - apps/api/tests/test_community_foundation.py
 ---
 
 # Community read metric duplicate observed alongside smoke ECONNRESET
@@ -28,13 +28,17 @@ This is outside the hotel-content task and must not be silently declared resolve
 ## Definition of done
 
 - [ ] Concurrent reads of the same community target do not produce a 500 or reset.
-- [ ] Daily metric updates remain accurate and idempotent under concurrent requests.
-- [ ] PostgreSQL concurrency regression test and full-stack community smoke pass.
+      Deliberately left unticked: the metric can no longer raise at all (proved below),
+      but the ECONNRESET this ticket opened on was never tied to it. Moved to
+      2026-09-12-community-smoke-econnreset-stays-unexplained-after rather than ticked.
+- [x] Daily metric updates remain accurate and idempotent under concurrent requests.
+- [x] PostgreSQL concurrency regression test and full-stack community smoke pass.
 
 ## Steps
 
 - [ ] Correlate the failed request with API logs and reproduce against PostgreSQL.
-- [ ] Fix the verified cause without changing analytics privacy/counting semantics.
+      The duplicate was correlated (#417 CI, 2026-09-12) but the reset never reproduced.
+- [x] Fix the verified cause without changing analytics privacy/counting semantics.
 
 ## How to verify
 
@@ -142,3 +146,54 @@ scope 裡塞一個沒驗證過的修正，只會讓兩邊都難收拾。
 
 **對接手的人**：`uq_community_metric` 的那個 insert 如果改成 upsert，看起來就是這張的解，
 但要先確認 DoD 第二項——每日計數在併發下仍然正確且冪等，不能只是把錯誤吞掉。
+
+## 2026-09-12 修正（claude-opus-5-community-metric）
+
+`policy.metric()` 的 `begin_nested()` + `except IntegrityError: pass` 換成
+`ON CONFLICT DO NOTHING`，並包在 `session.no_autoflush` 裡。
+
+### 上一位接手的人說對了一半
+
+「改成 upsert」是對的，但那個 `try` 的問題比重複鍵本身嚴重，而且 repo 自己早就把答案寫下來了：
+`app/analytics/service.py:323-346`（`record_event` 的 docstring）記著兩條規則，以及它當初
+破壞這兩條的後果——「two members racing to create the same alert got a 500 instead of the
+409 that endpoint has always returned」。
+
+1. **那個 `try` 比它的 savepoint 寬。** `SessionTransaction._take_snapshot()` 對 BEGIN_NESTED
+   會在發出 SAVEPOINT **之前** flush 整個 session（SQLAlchemy 2.0.52、`orm/session.py:1086-1091`，
+   由 `__init__` 在 :962 呼叫）。所以呼叫端待寫的資料是在 `try` 裡面、savepoint 外面被沖出去的：
+   它們的 `IntegrityError` 被這裡接走，它們的 `commit()` 接著拿到 `PendingRollbackError`。
+
+2. **兩種 insert 形式編譯出完全相同的 SQL，但只有一個會 autoflush。**
+   `insert(CommunityMetric)`（ORM entity）走 ORM 路徑，`orm_pre_session_exec` 裡有
+   `session._autoflush()`；`insert(CommunityMetric.__table__)`（純 Core）不會。實測（呼叫端先放
+   一筆 pending 的 `Reaction`）：前者離開時 pending 數為 0，後者為 1。所以「比對發出的 SQL」這種
+   檢查看不出差別，只有 pending 集合看得出來——回歸測試因此斷言 `len(session.new)`，不只斷言
+   SQL 裡有 ON CONFLICT。定稿用 ORM entity + `no_autoflush`（與 analytics 先例同形）；`__table__`
+   是 `FromClause`，`insert()` 不收，mypy 會紅。
+
+### 三向還原驗證（`pytest -k daily_metric`）
+
+| 版本 | 結果 |
+| --- | --- |
+| 舊版：`begin_nested` + swallow | 3 紅，含 `PendingRollbackError` 失敗現場 |
+| upsert 但用 ORM entity、無 `no_autoflush` | 2 紅；「發出的是 upsert」那條照樣綠 |
+| 定稿：ORM entity + `no_autoflush` | 4 綠、1 skipped（Postgres 那條） |
+
+中間那一欄是這次最該記住的事：只比對 SQL 文字，會讓一個真的缺陷看起來已經修好。
+
+### 本機驗證
+
+`ruff` All checks passed、`mypy app` 314 檔無問題、`pytest` 3333 passed / 180 skipped。
+唯一的紅是 `test_warning_codes.py::test_no_new_warning_is_written_as_a_finished_sentence`，
+Windows-only 的既有問題（白名單用正斜線、`str(path)` 給反斜線），與本次無關，
+另開 2026-09-12-test-warning-codes-allowlist-misses-its。`RUN_INTEGRATION_TESTS=1` 的
+Postgres 那輪本機沒有資料庫，交給 CI。
+
+### 刻意沒做的事
+
+沒有碰 `content.py` 的 fork 路徑。修正之後，重複 fork 的 `IntegrityError` 會回到呼叫端自己的
+`commit()`，而 `content.py` 那裡沒有 `except IntegrityError`（`router.py:132`、`pets.py:331`
+有，fork 沒有），所以那條路徑在修正前後都是 500、沒有變差。既有的
+`test_postgres_comment_and_fork_lock_overlap_has_no_deadlock` 顯示兩個並發 fork 被鎖序列化、
+重複 INSERT 到不了，因此今天不是可達的缺陷；要給 fork 補冪等處理是另一張票的事。

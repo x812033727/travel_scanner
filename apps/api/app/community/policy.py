@@ -8,7 +8,9 @@ from typing import Any
 from uuid import UUID
 
 from pydantic import ValidationError
-from sqlalchemy import and_, or_, select, text
+from sqlalchemy import Insert, and_, or_, select, text
+from sqlalchemy.dialects.postgresql import insert as postgres_insert
+from sqlalchemy.dialects.sqlite import insert as sqlite_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.community.models import Event, Notification, Profile, Relationship
@@ -145,23 +147,44 @@ async def event(session: AsyncSession, recipient: UUID, kind: str, target: str) 
 
 
 async def metric(session: AsyncSession, user_id: UUID, kind: str, target: str) -> None:
-    from sqlalchemy.exc import IntegrityError
-
+    # Concurrent readers of one target race for the same daily marker, so the database
+    # absorbs the collision and the insert rides along in the caller's transaction.
+    # Both rules record_event states in analytics/service.py apply here for the same
+    # reason, and this function used to break the second one:
+    #   - No begin_nested(). Entering a savepoint flushes the caller's pending rows
+    #     first, so they land inside the try written to swallow our own duplicate: an
+    #     IntegrityError of theirs was caught here, and their commit then failed on a
+    #     session in pending-rollback.
+    #   - No autoflush. This insert would otherwise flush the caller on its way out, and
+    #     the two forms compile to identical SQL, so no emitted-SQL check can tell them
+    #     apart -- only the pending set can.
+    # Residual risk, stated rather than papered over: a marker that fails for some
+    # other reason (the member erased between request and flush) poisons the caller's
+    # transaction. Narrow, and a savepoint would cause worse.
     from app.community.models import CommunityMetric
 
-    try:
-        async with session.begin_nested():
-            session.add(
-                CommunityMetric(
-                    day=datetime.now(UTC).date().isoformat(),
-                    user_id=user_id,
-                    kind=kind,
-                    target=target,
-                )
-            )
-            await session.flush()
-    except IntegrityError:
-        pass
+    values = {
+        "day": datetime.now(UTC).date().isoformat(),
+        "user_id": user_id,
+        "kind": kind,
+        "target": target,
+    }
+    conflict = ["day", "user_id", "kind", "target"]  # uq_community_metric
+    marker: Insert
+    if session.get_bind().dialect.name == "postgresql":
+        marker = (
+            postgres_insert(CommunityMetric)
+            .values(values)
+            .on_conflict_do_nothing(index_elements=conflict)
+        )
+    else:
+        marker = (
+            sqlite_insert(CommunityMetric)
+            .values(values)
+            .on_conflict_do_nothing(index_elements=conflict)
+        )
+    with session.no_autoflush:
+        await session.execute(marker)
 
 
 async def signal(recipient: UUID) -> None:
