@@ -1,13 +1,13 @@
 ---
 id: 2026-09-12-affiliate-subid-guard
 title: 聯盟 sub_id 不得帶使用者身分：防護套用到全部夥伴
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-guides
 claimed_at: 2026-09-12T03:37:52Z
 created_at: 2026-09-12T03:37:52Z
-completed_at:
+completed_at: 2026-09-12T04:27:39Z
 branch:
 depends_on: []
 scope:
@@ -77,3 +77,14 @@ cd apps/api && uv run ruff check . && uv run mypy app && uv run pytest tests/ -q
 本身。那是旅行內容不是身分，也是聯盟深層連結的必要成分，但已記進
 `privacy-data-map.md` 讓政策照實說。`travel_services/stay22.py:128` 的 `campaign` 是
 另一個名字的 sub-id、在 `AffiliateContext` 之外組出來，不帶身分，這次沒動它。
+
+**收尾（#421 已合併，commit efb4cd8）。** 站主指示「把防護套用到全部」，做法先用一個
+四階段 workflow 查清楚才動手（盤點 → 三個獨立設計 → 評分 → 三個對抗視角推翻）。
+
+那次盤點推翻了我先前給站主的回報：**綁使用者的產生點是兩個，不是一個**，而漏掉的那個
+（住宿區點擊外連）因為 `klook` 不在 `STAY_PARTNER_ORDER` 裡，防護從未生效。對抗驗證
+另外抓到 `channels.resolve_offer_target` 這條直通 Travelpayouts API 的旁路，原設計漏了它。
+
+**沒有宣稱 fail-closed。** 閘門是形狀與內容檢查，`SUB_ID_RE` 會讓
+`aff_hotel_<uuid4hex>` 這種東西通過形狀檢查——所以另外加了長串 16 進位的拒絕規則，
+並在 docstring 裡照實寫明它分辨不出標籤的來源。持久的保證在測試不在閘門。
