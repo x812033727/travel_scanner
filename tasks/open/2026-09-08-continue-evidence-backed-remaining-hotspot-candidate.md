@@ -1,11 +1,11 @@
 ---
 id: 2026-09-08-continue-evidence-backed-remaining-hotspot-candidate
 title: Continue evidence-backed remaining hotspot candidate review
-status: in-progress
+status: open
 priority: P1
 area: ops
-owner: claude-opus-5
-claimed_at: 2026-09-12T05:26:06Z
+owner:
+claimed_at:
 created_at: 2026-09-08T09:35:17Z
 completed_at:
 branch:
