@@ -106,7 +106,11 @@ async def test_a_dry_run_reports_the_candidate_without_writing(
     row = merchant()
 
     reports = await match_merchant_places(
-        session, None, Settings(), [row], apply=False  # type: ignore[arg-type]
+        session,
+        None,
+        Settings(),
+        [row],
+        apply=False,  # type: ignore[arg-type]
     )
 
     assert [r.outcome for r in reports] == ["would_match"]
@@ -123,7 +127,11 @@ async def test_applying_writes_only_the_place_id(monkeypatch: pytest.MonkeyPatch
     row = merchant()
 
     reports = await match_merchant_places(
-        session, None, Settings(), [row], apply=True  # type: ignore[arg-type]
+        session,
+        None,
+        Settings(),
+        [row],
+        apply=True,  # type: ignore[arg-type]
     )
 
     assert [r.outcome for r in reports] == ["matched"]
@@ -147,7 +155,11 @@ async def test_a_place_id_another_merchant_owns_is_reported_not_written(
     row = merchant()
 
     reports = await match_merchant_places(
-        session, None, Settings(), [row], apply=True  # type: ignore[arg-type]
+        session,
+        None,
+        Settings(),
+        [row],
+        apply=True,  # type: ignore[arg-type]
     )
 
     assert [r.outcome for r in reports] == ["duplicate"]
@@ -175,7 +187,11 @@ async def test_no_candidate_and_provider_failure_do_not_stop_the_batch(
     rows = [merchant(slug="a"), merchant(slug="b"), merchant(slug="c")]
 
     reports = await match_merchant_places(
-        session, None, Settings(), rows, apply=True  # type: ignore[arg-type]
+        session,
+        None,
+        Settings(),
+        rows,
+        apply=True,  # type: ignore[arg-type]
     )
 
     assert [r.outcome for r in reports] == ["no_candidate", "failed", "matched"]
@@ -209,7 +225,11 @@ async def test_an_unconfigured_provider_stops_the_batch(monkeypatch: pytest.Monk
     session = MatchSession()
 
     reports = await match_merchant_places(
-        session, None, Settings(), [merchant()], apply=True  # type: ignore[arg-type]
+        session,
+        None,
+        Settings(),
+        [merchant()],
+        apply=True,  # type: ignore[arg-type]
     )
 
     assert [r.outcome for r in reports] == ["not_configured"]
@@ -247,7 +267,9 @@ async def test_korea_is_excluded_from_the_target_query() -> None:
             return Result()
 
     await unmatched_merchants(
-        QuerySession(), destination_ids=("seoul",), limit=5  # type: ignore[arg-type]
+        QuerySession(),
+        destination_ids=("seoul",),
+        limit=5,  # type: ignore[arg-type]
     )
 
     sql = captured["sql"]
@@ -268,3 +290,64 @@ def test_the_summary_counts_outcomes() -> None:
     assert summary["processed"] == 3
     assert summary["outcomes"] == {"matched": 2, "no_candidate": 1}
     assert summary["rows"][0]["place_id"] == "p1"
+
+
+@pytest.mark.asyncio
+async def test_origin_actor_and_run_id_are_recorded_in_audit(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    stub_preview(monkeypatch, preview("ChIJrun"))
+    session = MatchSession()
+    actor, run_id = uuid4(), uuid4()
+    await match_merchant_places(
+        session,  # type: ignore[arg-type]
+        None,  # type: ignore[arg-type]
+        Settings(_env_file=None),
+        [merchant()],
+        apply=True,
+        actor_id=actor,
+        origin="catalog_review",
+        run_id=run_id,
+    )
+    (audit,) = session.added
+    assert audit.actor_user_id == actor
+    assert audit.metadata_json["source"] == "catalog_review"
+    assert audit.metadata_json["run_id"] == str(run_id)
+
+
+@pytest.mark.asyncio
+async def test_the_default_audit_shape_is_unchanged(monkeypatch: pytest.MonkeyPatch) -> None:
+    stub_preview(monkeypatch, preview("ChIJcli"))
+    session = MatchSession()
+    await match_merchant_places(
+        session,  # type: ignore[arg-type]
+        None,  # type: ignore[arg-type]
+        Settings(_env_file=None),
+        [merchant()],
+        apply=True,
+    )
+    (audit,) = session.added
+    assert audit.actor_user_id is None
+    assert audit.metadata_json["source"] == "cli"
+    assert "run_id" not in audit.metadata_json
+
+
+@pytest.mark.asyncio
+async def test_should_continue_false_stops_before_calling_google(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    queries = stub_preview(monkeypatch, preview("ChIJnever"))
+
+    async def lease_lost() -> bool:
+        return False
+
+    reports = await match_merchant_places(
+        MatchSession(),  # type: ignore[arg-type]
+        None,  # type: ignore[arg-type]
+        Settings(_env_file=None),
+        [merchant(), merchant(slug="tokyo-second")],
+        apply=True,
+        should_continue=lease_lost,
+    )
+    assert [report.outcome for report in reports] == ["lease_lost"]
+    assert queries == []

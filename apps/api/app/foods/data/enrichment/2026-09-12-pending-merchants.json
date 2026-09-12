@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "batch_id": "2026-09-12-pending-merchant-enrichment",
+  "researched_at": "2026-09-12T08:00:00+00:00",
+  "researched_by": "claude-fable-5-1 with in-app-browser subagents",
+  "method": "Worklist from `python -m app.cli export-food-merchant-worklist`. Per merchant: the Google Maps branch page for identity only (name and address compared, Place ID read from the expanded URL); a DuckDuckGo html search for the official site, opened and checked for the shop name, this branch's address and that it still operates; a tourism-board or government page about that one merchant on the trusted registry hosts; the 商圈 chosen from the destination's areas by address; up to three categories from the official page. Every cited page was opened; quotes are exact visible text.",
+  "rules": {
+    "sources": "Only the merchant's own site (merchant_official / merchant_website), a tourism-board or government page about that one merchant (official_tourism / merchant_listing), or Wikimedia. Google, Naver, Michelin, Tabelog, Gurunavi, HotPepper, Retty, OpenRice, CatchTable and social pages are never sources; *.gorp.jp official pages count as merchant_website.",
+    "address": "Taken only from a cited official site or listing page, never from Google Maps.",
+    "google": "The Maps page is used for identity (name and address match) and for the Place ID in its URL; nothing else from Google is stored.",
+    "coordinates": "Never proposed here; fill-food-merchant-coordinates reads the new pages afterwards.",
+    "korea": "Naver is unreachable in the browser pane; recorded as not_possible_in_pane.",
+    "not_found": "The searches made are listed as evidence so the merchant is not researched twice."
+  },
+  "records": []
+}

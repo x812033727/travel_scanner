@@ -62,3 +62,31 @@ class DiscoveryDraft(CatalogModel):
 
 class DiscoveryBatch(CatalogModel):
     items: list[DiscoveryDraft] = Field(default_factory=list, max_length=5)
+
+
+EnrichmentField = Literal[
+    "address", "official_website_url", "listing_source_url", "area_slug", "category_slug"
+]
+
+
+class EnrichmentCorrection(CatalogModel):
+    """One field the model proposes to fill, and the fetched page it quotes for it."""
+
+    field: EnrichmentField
+    value: str = Field(min_length=1, max_length=2048)
+    source_url: str = Field(min_length=1, max_length=2048)
+    quote: str = Field(min_length=1, max_length=300)
+    title: str | None = Field(default=None, max_length=255)
+
+
+class EnrichmentAssessment(CatalogModel):
+    """No decision field on purpose: enrichment never approves, rejects or publishes."""
+
+    candidate_id: str = Field(min_length=1, max_length=100)
+    confidence: float = Field(ge=0, le=1, allow_inf_nan=False)
+    reason: str = Field(min_length=1, max_length=2000)
+    corrections: list[EnrichmentCorrection] = Field(default_factory=list, max_length=12)
+
+
+class EnrichmentBatch(CatalogModel):
+    items: list[EnrichmentAssessment] = Field(default_factory=list, max_length=20)

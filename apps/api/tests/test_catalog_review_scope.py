@@ -22,7 +22,12 @@ from app.auth.service import current_user
 from app.catalog_review import jobs
 from app.catalog_review.repository import fingerprint
 from app.catalog_review.router import router
-from app.catalog_review.schemas import AssessmentBatch, DiscoveryBatch, ReviewAssessment
+from app.catalog_review.schemas import (
+    AssessmentBatch,
+    DiscoveryBatch,
+    EnrichmentAssessment,
+    ReviewAssessment,
+)
 from app.catalog_review.scope import SCOPE_KINDS, CatalogScope, request_scope, scope_counts
 from app.catalog_review.service import (
     ApplyRequest,
@@ -31,8 +36,11 @@ from app.catalog_review.service import (
     apply_decisions,
     create_run,
     get_run,
+    item_view,
     overview,
     prepare_resume,
+    record_enrichment,
+    request_document,
     run_items,
     run_view,
 )
@@ -43,7 +51,11 @@ from app.models import (
     Base,
     CatalogReviewItem,
     CatalogReviewRun,
+    FoodArea,
+    FoodCategory,
     FoodMerchant,
+    FoodMerchantCategory,
+    FoodMerchantSource,
     TravelFood,
     TravelHotspot,
     User,
@@ -206,7 +218,7 @@ async def test_same_scope_prior_review_and_legacy_idempotency(
     session, user = catalog
     # Persist the exact payload/hash produced before the scope field existed.
     payload = StartRequest(mode="review_pending")
-    legacy = payload.model_dump(mode="json", exclude={"scope"})
+    legacy = request_document(payload, exclude={"scope"})
     old = CatalogReviewRun(
         id=uuid4(),
         actor_user_id=user.id,
@@ -270,7 +282,7 @@ async def test_omitted_budget_snapshots_runtime_setting_and_replay_ignores_later
     run, created = await create_run(session, settings, user.id, payload, key)
     assert created and run.request_json["max_calls"] == configured_limit
     assert run.request_hash == fingerprint(
-        {**payload.model_dump(mode="json"), "max_calls_source": "configured_default"}
+        {**request_document(payload), "max_calls_source": "configured_default"}
     )
     assert run.request_json["max_calls_source"] == "configured_default"
     original_items = [row.id for row in await run_items(session, run.id)]
@@ -339,7 +351,7 @@ async def test_default_and_explicit_80_budget_are_distinct_idempotent_requests(
     source = "explicit" if first_explicit else "configured_default"
     assert run.request_json["max_calls_source"] == source
     assert run.request_hash == fingerprint(
-        {**original.model_dump(mode="json"), "max_calls_source": source}
+        {**request_document(original), "max_calls_source": source}
     )
     with pytest.raises(AppError) as conflict:
         await create_run(session, settings, user.id, mixed, key)
@@ -357,7 +369,7 @@ async def test_legacy_scoped_hashes_replay_without_rewriting_the_saved_budget(
 ) -> None:
     session, user = catalog
     payload = StartRequest(mode="review_pending", scope=scope)
-    legacy = payload.model_dump(mode="json")
+    legacy = request_document(payload)
     old = CatalogReviewRun(
         id=uuid4(),
         actor_user_id=user.id,
@@ -801,3 +813,313 @@ async def test_http_budget_extension_is_explicit_scoped_versioned_and_admin_only
         assert duplicate.status_code == 409
         assert duplicate.json()["code"] == "catalog_version_conflict"
         assert routes.enqueue_saved_run.await_count == 1
+
+
+# --- merchant enrichment -------------------------------------------------------------
+
+ENRICH_OFFICIAL = "https://scope-merchant.example/tsukiji"
+ENRICH_LISTING = "https://www.gotokyo.org/en/spot/scope-merchant"
+
+
+async def pending_merchant(session: AsyncSession) -> FoodMerchant:
+    merchant = await session.scalar(
+        select(FoodMerchant).where(FoodMerchant.slug == "scope-merchant")
+    )
+    assert merchant is not None
+    return merchant
+
+
+def enrichment_corrections(listing: str = ENRICH_LISTING) -> list[dict[str, Any]]:
+    return [
+        {
+            "field": "address",
+            "value": "東京都中央区築地5-2-1",
+            "source_url": ENRICH_OFFICIAL,
+            "quote": "Scope merchant 東京都中央区築地5-2-1",
+            "title": "Scope merchant",
+            "kind": "address",
+        },
+        {
+            "field": "official_website_url",
+            "value": ENRICH_OFFICIAL,
+            "source_url": ENRICH_OFFICIAL,
+            "quote": "Scope merchant 東京都中央区築地5-2-1",
+            "title": "Scope merchant",
+            "kind": "merchant_website",
+        },
+        {
+            "field": "listing_source_url",
+            "value": listing,
+            "source_url": listing,
+            "quote": "Scope merchant",
+            "title": "GO TOKYO",
+            "kind": "merchant_listing",
+        },
+        {
+            "field": "area_slug",
+            "value": "tokyo-tsukiji",
+            "source_url": ENRICH_OFFICIAL,
+            "quote": "築地",
+            "title": None,
+            "kind": "area",
+        },
+        {
+            "field": "category_slug",
+            "value": "sushi",
+            "source_url": ENRICH_OFFICIAL,
+            "quote": "Scope merchant",
+            "title": None,
+            "kind": "category",
+        },
+    ]
+
+
+async def enrichment_run(
+    session: AsyncSession, user: User, corrections: list[dict[str, Any]]
+) -> tuple[CatalogReviewRun, CatalogReviewItem]:
+    session.add_all(
+        [
+            FoodArea(
+                slug="tokyo-tsukiji",
+                destination_id="tokyo",
+                country_code="JP",
+                names_json={"en": "Tsukiji"},
+                match_terms_json=["築地"],
+                is_active=True,
+            ),
+            FoodCategory(slug="sushi", names_json={"en": "Sushi"}, is_active=True),
+        ]
+    )
+    await session.commit()
+    run, created = await create_run(
+        session,
+        configured(),
+        user.id,
+        StartRequest(mode="enrich_merchants", scope="foods"),
+        uuid4().hex,
+    )
+    assert created
+    (item,) = await run_items(session, run.id, scope="foods")
+    record_enrichment(
+        item,
+        EnrichmentAssessment(candidate_id=str(item.id), confidence=0.8, reason="找到官網。"),
+        corrections,
+        [],
+        identify={"matched_in_run": False, "place_id": None, "skipped": None},
+    )
+    run.status = "completed"
+    await session.commit()
+    return run, item
+
+
+@pytest.mark.asyncio
+async def test_enrich_mode_requires_foods_scope_and_pending_merchants(
+    catalog: tuple[AsyncSession, User],
+) -> None:
+    session, user = catalog
+    with pytest.raises(AppError) as wrong_scope:
+        await create_run(
+            session,
+            configured(),
+            user.id,
+            StartRequest(mode="enrich_merchants", scope="all"),
+            uuid4().hex,
+        )
+    assert wrong_scope.value.code == "catalog_scope_invalid"
+    with pytest.raises(AppError) as nothing:
+        await create_run(
+            session,
+            configured(),
+            user.id,
+            StartRequest(mode="enrich_merchants", scope="foods", destination_ids=["seoul"]),
+            uuid4().hex,
+        )
+    assert nothing.value.code == "catalog_enrichment_nothing_pending"
+    assert (await overview(session, configured(), "foods"))["can_start_enrichment"] is True
+    assert (await overview(session, configured(), "hotspots"))["can_start_enrichment"] is False
+
+    run, created = await create_run(
+        session,
+        configured(),
+        user.id,
+        StartRequest(mode="enrich_merchants", scope="foods", destination_ids=["Tokyo"], limit=5),
+        uuid4().hex,
+    )
+    assert created and run.mode == "enrich_merchants" and run.phase == "enrich_merchants"
+    assert run.request_json["destination_ids"] == ["tokyo"]
+    assert run.request_json["limit"] == 5 and run.request_json["identify_places"] is True
+    items = await run_items(session, run.id, scope="foods")
+    assert [(item.kind, item.phase, item.name) for item in items] == [
+        ("merchant", "enrich_merchants", "Scope merchant")
+    ]
+    assert "missing_exact_map_identity" in items[0].gaps_json
+    view = await run_view(session, run, configured())
+    assert view["enrichment"] == {"identify": None, "items_with_corrections": 0, "corrections": 0}
+    assert (await overview(session, configured(), "foods"))["can_start_enrichment"] is False
+    audit = await session.scalar(
+        select(AdminAuditLog).where(AdminAuditLog.target == f"catalog-review:{run.id}")
+    )
+    assert audit is not None and audit.metadata_json["snapshot_count"] == 1
+    assert audit.metadata_json["destination_ids"] == ["tokyo"]
+
+
+@pytest.mark.asyncio
+async def test_apply_corrections_fills_only_empty_fields_upserts_sources_and_audits(
+    catalog: tuple[AsyncSession, User],
+) -> None:
+    session, user = catalog
+    run, item = await enrichment_run(session, user, enrichment_corrections())
+    assert item.status == "assessed"
+    view = await run_view(session, run, configured())
+    assert view["enrichment"] == {"identify": None, "items_with_corrections": 1, "corrections": 5}
+    assert item_view(item)["allowed_actions"] == ["apply_corrections", "keep_pending"]
+
+    version = run.version
+    response = await apply_decisions(
+        session,
+        run.id,
+        user.id,
+        ApplyRequest(item_ids=[item.id], action="apply_corrections", expected_version=version),
+        "apply-corrections-1",
+        scope="foods",
+    )
+    (outcome,) = response["outcomes"]
+    assert outcome["status"] == "applied" and outcome["action"] == "apply_corrections"
+    assert outcome["changes"] == {
+        "address": "東京都中央区築地5-2-1",
+        "official_website_url": ENRICH_OFFICIAL,
+        "area_slug": "tokyo-tsukiji",
+    }
+    assert outcome["skipped_fields"] == {}
+    assert response["updated"] == 1
+    assert item.status == "applied" and item.applied_action == "apply_corrections"
+
+    merchant = await pending_merchant(session)
+    await session.refresh(merchant)
+    assert merchant.address == "東京都中央区築地5-2-1"
+    assert merchant.official_website_url == ENRICH_OFFICIAL
+    assert merchant.official_website_verified_at is not None
+    assert merchant.area_id is not None and merchant.area_source == "admin"
+    assert merchant.review_status == "pending" and merchant.is_active is False
+    assert merchant.map_match_status == "unverified" and merchant.latitude is None
+    sources = (
+        await session.scalars(
+            select(FoodMerchantSource)
+            .where(FoodMerchantSource.merchant_id == merchant.id)
+            .order_by(FoodMerchantSource.source_url)
+        )
+    ).all()
+    assert [(row.source_scope, row.source_url) for row in sources] == [
+        ("merchant_website", ENRICH_OFFICIAL),
+        ("merchant_listing", ENRICH_LISTING),
+    ]
+    assert sources[0].claims_json == ["display_name", "official_website", "address"]
+    categories = (
+        await session.scalars(
+            select(FoodMerchantCategory).where(FoodMerchantCategory.merchant_id == merchant.id)
+        )
+    ).all()
+    assert [(row.is_primary, row.source) for row in categories] == [(True, "gemini")]
+    audits = (
+        await session.scalars(
+            select(AdminAuditLog).where(AdminAuditLog.action == "food_merchant_enriched")
+        )
+    ).all()
+    assert len(audits) == 1
+    assert audits[0].actor_user_id == user.id
+    assert audits[0].metadata_json["origin"] == {
+        "kind": "catalog_review",
+        "reference": f"{run.id}/{item.id}",
+    }
+    assert audits[0].metadata_json["before"]["address"] is None
+    assert not await session.scalar(
+        select(AdminAuditLog).where(AdminAuditLog.action == "catalog_review_applied")
+    )
+
+    replay = await apply_decisions(
+        session,
+        run.id,
+        user.id,
+        ApplyRequest(item_ids=[item.id], action="apply_corrections", expected_version=version),
+        "apply-corrections-1",
+        scope="foods",
+    )
+    assert replay["outcomes"] == response["outcomes"]
+    assert (
+        len(
+            (
+                await session.scalars(
+                    select(AdminAuditLog).where(AdminAuditLog.action == "food_merchant_enriched")
+                )
+            ).all()
+        )
+        == 1
+    )
+    again = await apply_decisions(
+        session,
+        run.id,
+        user.id,
+        ApplyRequest(item_ids=[item.id], action="keep_pending", expected_version=run.version),
+        "keep-after-apply",
+        scope="foods",
+    )
+    assert again["outcomes"][0]["reason"] == "action_not_allowed"
+
+
+@pytest.mark.asyncio
+async def test_apply_corrections_refuses_changed_snapshots_untrusted_listings_and_review_items(
+    catalog: tuple[AsyncSession, User],
+) -> None:
+    session, user = catalog
+    run, item = await enrichment_run(
+        session, user, enrichment_corrections(listing="https://tourism.example/scope-merchant")
+    )
+    untrusted = await apply_decisions(
+        session,
+        run.id,
+        user.id,
+        ApplyRequest(item_ids=[item.id], action="apply_corrections", expected_version=run.version),
+        "untrusted",
+        scope="foods",
+    )
+    assert untrusted["outcomes"][0] == {
+        "id": str(item.id),
+        "action": "apply_corrections",
+        "status": "skipped",
+        "reason": "catalog_source_untrusted",
+    }
+    merchant = await pending_merchant(session)
+    await session.refresh(merchant)
+    assert merchant.address is None and merchant.official_website_url is None
+    assert item.status == "assessed"
+
+    merchant.address = "管理員填的地址"
+    await session.commit()
+    changed = await apply_decisions(
+        session,
+        run.id,
+        user.id,
+        ApplyRequest(item_ids=[item.id], action="apply_corrections", expected_version=run.version),
+        "changed",
+        scope="foods",
+    )
+    assert changed["outcomes"][0]["reason"] == "candidate_changed"
+
+    review = await start(session, user, "foods")
+    await complete(session, review)
+    review_item = next(
+        entry
+        for entry in await run_items(session, review.id, scope="foods")
+        if entry.kind == "merchant"
+    )
+    refused = await apply_decisions(
+        session,
+        review.id,
+        user.id,
+        ApplyRequest(
+            item_ids=[review_item.id], action="apply_corrections", expected_version=review.version
+        ),
+        "review-item",
+        scope="foods",
+    )
+    assert refused["outcomes"][0]["reason"] == "action_not_allowed"

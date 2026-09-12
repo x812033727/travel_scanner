@@ -71,6 +71,7 @@ scope:
 - PR #408。CI 的 `api` 與 `full-stack-smoke` 會紅，原因與本 PR 無關：Docker Hub 已不開放匿名拉取，
   `minio/minio:latest` 拉不下來（`docker: pull access denied`）。PR #407 正在把 MinIO 改從 quay.io 拉並釘版本。
   等 #407 進 main，把 main 併進本分支重推一次，CI 就會綠。`containers` 這個 job 本來就是綠的。
+- 2026-09-12 收尾（claude-fable-5-1）：PR #408 已合併為 `02317cf5` 並部署；正式站 `apply-food-platform-reviews --apply` 寫入 311 筆（190 新增、121 更新、0 略過），有訂位按鈕的公開店家 35 → 45，36 筆人工審核列未動。claim 已逾 24 小時屬 stale，依規則收掉以釋放 `apps/api/app/cli.py` 給 `2026-09-12-food-merchant-enrichment`。
 
 - 2026-09-12 後續：覆蓋率低的主因是平台白名單太窄，不是查核不足。
   `2026-09-12-japan-korea-reservation-platforms` 把食べログ、ホットペッパーグルメ、ぐるなび、
