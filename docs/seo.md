@@ -64,9 +64,13 @@ No sitemap index is needed.
 Published guide articles are appended after that static list, one entry per published
 translation, capped at `SITEMAP_GUIDE_ENTRY_LIMIT` (1000) so one large response cannot dominate
 the file. They are the one publication-aware section, enumerated through `GET /guides/sitemap`,
-and the only entries carrying `lastmod`: their real `published_at`. An article's alternates name
-only the locales it is genuinely published in, and an expired intel notice leaves the sitemap
-while keeping its page.
+and the only entries carrying `lastmod`: their real `published_at`. That stamp records a
+translation's **first** publication and survives republication, so a corrected notice does not
+move its `lastmod` yet — `2026-09-11-guide-lastmod-republication` tracks the fix. An article's
+alternates name only the locales it is genuinely published in, with `x-default` only where
+English is one of them, and an expired intel notice leaves the sitemap while keeping its page.
+If the guides API fails or times out, the sitemap degrades to exactly its static entries rather
+than failing or emptying.
 
 The four managed site documents stay outside the sitemap. `site-information-page.tsx` returns
 `noindex` until an administrator publishes that locale's document, so listing them now would
@@ -76,7 +80,9 @@ outside the guides emits `lastmod`, because the sitemap does not know when a cit
 last moved.
 
 Tests verify each listed path resolves to an App Router page, language URLs agree, private
-routes are absent, and each feature can close/reopen without a rebuild.
+routes are absent, and each feature can close/reopen without a rebuild. The browser suite
+additionally renders three synthetic articles into the XML Next actually emits, which is the only
+check that exercises `lastmod` serialisation and an article's partial hreflang set.
 
 ## Server content and data freshness
 

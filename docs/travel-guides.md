@@ -14,10 +14,9 @@ It is deliberately separate from the three things it is easy to confuse it with:
 | `discovery` / `/explore` | no — it aggregates | nobody; it reads approved catalog rows, **external** article/video references (`HotspotGuide`) and community posts | no (`robots: noindex`) |
 | `site_pages` | yes | the owner, four fixed legal slugs | no until published |
 
-`攻略` is currently also the zh-TW label for discovery's external-article kind
-(`apps/web/lib/discovery-copy.ts`). Two things under one word is a defect; the intended
-resolution is to relabel discovery's kind to 站外文章 and leave 攻略 to this section. That
-file is held by another task, so it is not done here.
+`攻略` used to be the zh-TW label for discovery's external-article kind as well
+(`apps/web/lib/discovery-copy.ts`). Two things under one word was a defect; PR #404 relabelled
+discovery's kind to 站外文章, so the word now belongs to this section alone.
 
 ## Classification
 
@@ -104,9 +103,8 @@ GET /api/v1/guides/sitemap
 GET /api/v1/guides/{kind}/{slug}?locale=
 ```
 
-`GET /guides/sitemap` is the publication-aware enumeration that `docs/seo.md` records as
-missing: one row per published, non-expired article × locale, capped at 1,000 and ordered
-newest first. The article response carries `published_locales` so the web layer can emit
+`GET /guides/sitemap` is the publication-aware enumeration `apps/web/app/sitemap.ts` consumes:
+one row per published, non-expired article × locale, capped at 1,000 and ordered newest first. The article response carries `published_locales` so the web layer can emit
 hreflang for the translations that actually exist.
 
 Admin (`content.manage` for writes):
@@ -188,9 +186,10 @@ per-request dedupe. `docs/seo.md` asks moderated listings to stay uncached, and 
 five-minute window in which a withdrawn fare notice is still live is exactly what the
 publication gate exists to prevent.
 
-## Not done here
+## Still open
 
-The sitemap wiring in `apps/web/app/sitemap.ts` (the API already serves
-`GET /guides/sitemap` for it) and the `攻略` relabel of discovery's external-article kind in
-`apps/web/lib/discovery-copy.ts`. Both files are held by other tasks; see
-`tasks/open/2026-09-11-travel-guides-web.md`.
+The sitemap wiring and the `攻略` relabel both landed in PR #404, together with the footer and
+destination-page links. What is left is one API-side defect: `published_at` records the first
+publication only, so a corrected notice keeps its original `lastmod` and tells Google nothing
+changed. `tasks/open/2026-09-11-guide-lastmod-republication.md` holds the fix, which reads the
+currently published revision's timestamp instead of unfreezing the column the list orders by.
