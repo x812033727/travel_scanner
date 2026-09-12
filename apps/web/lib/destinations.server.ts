@@ -1,5 +1,6 @@
 import { cache } from "react";
 import { getTranslations } from "next-intl/server";
+import { publicServerHeaders } from "@/lib/public-server-fetch";
 
 /**
  * Public destination data for the guide pages.
@@ -41,10 +42,17 @@ function apiBase() {
 
 async function fetchJson(path: string, locale: string, revalidate?: number): Promise<unknown | null> {
   try {
+    // Only the uncached reads carry the visitor's address. A revalidated response is shared
+    // between readers, and a per-visitor header would split it into one entry each; reading
+    // the request at all would also stop the page that depends on it rendering statically.
+    // The catalogue behind those reads is a fixed list of cities, which is not worth metering.
     const response = await fetch(`${apiBase()}/api/v1${path}`, {
       ...(revalidate === undefined ? { cache: "no-store" as const } : { next: { revalidate } }),
       signal: AbortSignal.timeout(3000),
-      headers: { Accept: "application/json", "X-Travel-Locale": locale },
+      headers:
+        revalidate === undefined
+          ? await publicServerHeaders(locale)
+          : { Accept: "application/json", "X-Travel-Locale": locale },
     });
     if (!response.ok) return null;
     return (await response.json()) as unknown;
