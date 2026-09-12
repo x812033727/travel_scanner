@@ -87,6 +87,8 @@ export function ContentBlocks({
       const caption = block.caption?.trim() ?? "";
       return (
         <figure key={index} className="my-2">
+          {/* Plain <img>: no image optimizer in the standalone build; the stored size reserves the box. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={src} alt={block.alt} width={block.width} height={block.height} loading="lazy" decoding="async" className="h-auto w-full rounded-2xl" />
           {caption || block.credit ? (
             <figcaption className="mt-2 text-sm leading-6 text-[var(--muted)]">

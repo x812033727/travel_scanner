@@ -115,6 +115,9 @@ export function GuideArticle({
 
       {document.hero ? (
         <figure>
+          {/* Plain <img>: the standalone build has no image optimizer, and width/height are
+              stored so the box is reserved before the bytes arrive. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={document.hero.src}
             alt={document.hero.alt}

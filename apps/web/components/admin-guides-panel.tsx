@@ -596,6 +596,7 @@ export function AdminGuidesPanel() {
       <div lang={locale} className="space-y-6">
         <h1 className="text-3xl font-bold">{preview.title}</h1>
         <p className="leading-7 text-[var(--muted)]">{preview.description}</p>
+        {/* eslint-disable-next-line @next/next/no-img-element -- the reader's own plain <img> */}
         {preview.hero?.src ? <img src={preview.hero.src} alt={preview.hero.alt} width={preview.hero.width} height={preview.hero.height} className="h-auto w-full rounded-2xl" /> : null}
         {splitGuideBlocks(preview.blocks).map((segment, index) => <Fragment key={index}>
           {segment.blocks.length ? <ContentBlocks blocks={segment.blocks} labels={blockLabels} headingStart={segment.headingStart} /> : null}

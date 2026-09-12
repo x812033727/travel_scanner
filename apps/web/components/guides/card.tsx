@@ -19,6 +19,9 @@ export function GuideCard({ article, labels }: { article: GuideSummary; labels: 
   return (
     <li className="rounded-2xl border border-[var(--line)] p-4">
       {article.hero ? (
+        // A plain <img>: the standalone build has no image optimizer, and the stored size
+        // already reserves the box. Same trade-off as discovery/card.tsx.
+        // eslint-disable-next-line @next/next/no-img-element
         <img
           src={article.hero.src}
           alt={article.hero.alt}
