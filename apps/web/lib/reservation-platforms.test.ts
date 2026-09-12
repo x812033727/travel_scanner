@@ -25,7 +25,7 @@ const platformUrls = [
 describe("reservation platforms", () => {
   it("exposes each known provider exactly once in a fixed order", () => {
     expect(reservationPlatformDefinitions.map((item) => item.provider)).toEqual(platformUrls.map(([provider]) => provider));
-    expect(new Set(reservationPlatformDefinitions.map((item) => item.provider)).size).toBe(17);
+    expect(new Set(reservationPlatformDefinitions.map((item) => item.provider)).size).toBe(platformUrls.length);
   });
 
   it.each(platformUrls)("accepts the merchant-specific %s URL without dropping its identity", (provider, url) => {

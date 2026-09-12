@@ -17,6 +17,7 @@ scope:
   - apps/api/tests/test_food_platform_review_import.py
   - apps/web/lib/reservation-platforms.ts
   - apps/web/lib/reservation-platforms.test.ts
+  - apps/web/e2e/food-reservation-platforms.spec.ts
   - docs/catalog-content-reviews
 ---
 
@@ -106,3 +107,7 @@ PR #428。日本可訂位的 9 間店共 12 筆連結：ジンギスカン ひ�
 覆蓋率還是低不是查得不夠：沒有連結的 83 間裡，咖啡店與甜點佔 42 間、拉麵與麵食佔 17 間。
 逐頁打開的 105 個平台店頁只有 12 頁有本店自己的訂位入口。另外用食べログ英文站搜出 43 間
 原本沒有任何候選頁的店家，0 間可訂位——這 43 間不必再查一次。
+
+- CI 的 `food-map-reservations` 第一次紅：`apps/web/e2e/food-reservation-platforms.spec.ts`
+  把後台平台下拉選單的選項數寫死成 12。改成對 `reservationPlatformDefinitions.length`，
+  以後加平台不會再撞。單元測試那邊的數字也一併改成對常數推導。
