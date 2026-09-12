@@ -39,8 +39,10 @@ type could still reach the queue.
 - [x] Types that also describe an approved attraction still reach a human
       (Q5358913 elementary school in Japan, Q285783 intersection; streets unchanged).
 - [x] A denied candidate outside the city radius stays rejected.
-- [ ] Merged and deployed; after the next discovery pass the pending rows with these
-      types are `rejected / denylisted_type`.
+- [x] Merged as PR #403 (`7867d5dd`) and deployed 2026-09-12 in `6925e3d1`, which was
+      verified to contain that commit.
+- [ ] After the next discovery pass the pending rows with these types are
+      `rejected / denylisted_type`.
 
 ## Steps
 
@@ -48,7 +50,9 @@ type could still reach the queue.
       235 rows, live Wikidata P31 for the other 1,012 QIDs).
 - [x] Extend `DENIED_TYPES` and fix the radius override.
 - [x] Unit tests for both.
-- [ ] Merge, deploy, and check the next discovery pass.
+- [x] Merge and deploy.
+- [ ] Check the next discovery pass (due after 2026-09-15 05:54 UTC, the first 6-hour
+      collector cycle following it).
 
 ## How to verify
 
