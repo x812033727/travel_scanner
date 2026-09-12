@@ -16,7 +16,7 @@ from pathlib import Path
 import pytest
 
 from app.i18n import Locale
-from app.site_pages.schemas import PAGE_SLUGS, PageDocument, PageSlug
+from app.site_pages.schemas import PAGE_SLUGS, REQUIRED_FIELDS, PageDocument, PageSlug
 from app.site_pages.service import initial_document, pending_requirements
 
 LOCALES: tuple[Locale, ...] = ("en", "ja", "ko", "zh-TW", "zh-CN")
@@ -50,15 +50,34 @@ def test_every_locale_has_the_same_document_shape(slug: PageSlug) -> None:
 
 
 @pytest.mark.parametrize("locale", LOCALES)
-def test_no_locale_ships_a_filled_requirement(locale: Locale) -> None:
-    """The owner supplies these. A value committed here would be published as a promise
-    nobody made, which is the whole reason `pending_requirements` gates publication."""
+def test_every_locale_carries_the_owner_supplied_requirements(locale: Locale) -> None:
+    """These five values were supplied by the site owner on 2026-09-12 and are published
+    verbatim on the page, so every locale must carry them and no locale may carry one the
+    page does not ask for: `about` and `contact` declare only three fields in
+    REQUIRED_FIELDS, and a retention promise rendered on `/about` would be a commitment
+    nobody made for that page."""
+    for slug in PAGE_SLUGS:
+        requirements = initial_document(slug, locale).requirements.model_dump()
+        required = set(REQUIRED_FIELDS[slug])
+        for field, value in requirements.items():
+            if field in required:
+                assert value.strip(), f"{locale}/{slug}.{field} is empty"
+            else:
+                assert value == "", f"{locale}/{slug}.{field} is set but not required"
+
+
+@pytest.mark.parametrize("locale", LOCALES)
+def test_effective_date_is_never_committed(locale: Locale) -> None:
+    """The owner sets this in the admin on the day they publish, so publication stays
+    gated here and the date on the page is the day it genuinely went public. It is also
+    the one requirement `pending_requirements` adds on its own, so a committed date would
+    make a fresh environment publishable without anyone deciding to."""
     for slug in PAGE_SLUGS:
         document = initial_document(slug, locale)
-        assert document.effective_date is None
-        assert set(pending_requirements(slug, document)) >= {"effective_date"}
-        for field, value in document.requirements.model_dump().items():
-            assert value == "", f"{locale}/{slug}.{field} is pre-filled"
+        assert document.effective_date is None, f"{locale}/{slug} ships an effective_date"
+        assert pending_requirements(slug, document) == ["effective_date"], (
+            f"{locale}/{slug} is blocked by something other than the date"
+        )
 
 
 @pytest.mark.parametrize("locale", LOCALES)
