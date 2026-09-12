@@ -70,7 +70,7 @@ describe("a failing or malformed API", () => {
   it("degrades a listing to empty rather than throwing", async () => {
     vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new Error("connection reset")));
     await expect(loadGuideList("zh-TW")).resolves.toEqual({ articles: [], next_cursor: null });
-    await expect(loadGuideTopics("zh-TW")).resolves.toEqual([]);
+    await expect(loadGuideTopics("zh-TW", "travel")).resolves.toEqual([]);
   });
 
   it("drops rows that do not match the contract instead of rendering them", async () => {

@@ -22,9 +22,20 @@ from app.guides.publication import ArticleStatus
 from app.i18n import Locale
 from app.site_pages.schemas import ContentBlock, NonemptyText, StrictModel, plain_text
 
-Kind = Literal["intel", "howto"]
-KINDS: tuple[Kind, ...] = ("intel", "howto")
+Kind = Literal["intel", "howto", "life"]
+# The kinds in the order the admin facets list them. Kept beside the Literal because the
+# facet counts iterate it, so a kind added above must appear here or vanish from the list.
+KINDS: tuple[Kind, ...] = ("intel", "howto", "life")
+# A section is a reader-facing area with its own URL space, navigation entry and topic
+# vocabulary. The travel section holds intel and how-to articles at /guides; the lifestyle
+# section holds `life` articles at /life. Nothing else about an article differs.
+Section = Literal["travel", "life"]
+SECTION_KINDS: dict[Section, tuple[Kind, ...]] = {"travel": ("intel", "howto"), "life": ("life",)}
 RevisionAction = Literal["created", "draft_saved", "published", "unpublished", "restored"]
+
+
+def section_of(kind: Kind) -> Section:
+    return "life" if kind == "life" else "travel"
 
 SLUG_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 
@@ -84,6 +95,7 @@ class PublishedDocument(GuideDocument):
 class TopicOption(BaseModel):
     slug: str
     label: str
+    section: Section
 
 
 class TopicList(BaseModel):

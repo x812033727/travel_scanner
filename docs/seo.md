@@ -28,6 +28,7 @@ results. Historical task notes describe their original snapshots, not necessaril
 | --- | --- |
 | Home, food directory, destination directory/guides/services | Indexable public content |
 | Travel intel and guides (`/guides`, `/guides/{kind}`, articles) | Indexable public content; an article only in the locales it is published in |
+| Lifestyle (`/life`, `/life/{slug}`) | Indexable public content; same per-locale publication rule. Topic-filtered views are `noindex` |
 | Hotspots, pricing, flight status, airline fares | Indexable only while the effective Web switch is enabled |
 | Privacy, terms, about, contact | Only the requested locale's published document is indexable |
 | Community/discovery/pet public shells | Existing `noindex` retained pending public server content |
@@ -54,10 +55,16 @@ may execute JavaScript, but that is not a substitute for verified public/private
 the six public visibility flags once at request time with `no-store`. This avoids freezing
 deployment-time flags or needing the API during `next build`.
 
-The static list is at most **380 URLs**: five locales times ten base routes, 33 destination
-guides, and 33 services pages. Four base routes are conditional; all four closed/unavailable
-gives **360 URLs**. The three `/guides` hubs carry no feature switch, so they are never among
-the conditional ones. Static destination IDs come from `PUBLIC_DESTINATIONS`; no names or
+The static list is at most **385 URLs**: five locales times eleven base routes, 33
+destination guides, and 33 services pages. Four base routes are conditional; all four
+closed/unavailable gives **365 URLs**. The three `/guides` hubs and `/life` carry no feature
+switch, so they are never among the conditional ones.
+
+`/life` is listed at `priority 0.6` / `changeFrequency weekly`, matching `/guides/howto`
+rather than the dated `/guides/intel` feed: its articles are evergreen and are emitted at
+`0.5` / `monthly`, and a hub claiming daily change over monthly articles is the
+false-freshness signal this file warns about below. This file has never carried a priority
+policy; that reasoning lives in a comment beside the route list. Static destination IDs come from `PUBLIC_DESTINATIONS`; no names or
 authenticated data are needed to enumerate them. All entries include language alternates.
 No sitemap index is needed.
 

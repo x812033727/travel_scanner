@@ -1,5 +1,5 @@
 import { Link } from "@/i18n/navigation";
-import type { GuideKind, GuideTopic } from "@/lib/guides";
+import { guideListHref, type GuideKind, type GuideTopic } from "@/lib/guides";
 
 export type GuideFilterLabels = { allTopics: string; topicsLabel: string };
 
@@ -16,7 +16,8 @@ export function GuideFilters({
   labels: GuideFilterLabels;
 }) {
   if (!topics.length) return null;
-  const href = (topic: string | null) => (topic ? `/guides/${kind}?topic=${encodeURIComponent(topic)}` : `/guides/${kind}`);
+  // The listing URL comes from one place, so a `life` filter lands on `/life`, never `/guides/life`.
+  const href = (topic: string | null) => guideListHref(kind, topic);
   const chip = (selected: boolean) =>
     `inline-flex min-h-11 items-center rounded-full border px-3 py-1 text-sm ${
       selected

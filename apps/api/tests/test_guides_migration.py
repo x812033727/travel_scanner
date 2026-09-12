@@ -41,9 +41,9 @@ GUIDE_TABLES = (
 )
 
 
-def migration():
-    path = Path(__file__).parents[1] / "migrations/versions/0072_travel_guides.py"
-    spec = importlib.util.spec_from_file_location("travel_guides_migration", path)
+def migration(name: str = "0072_travel_guides"):
+    path = Path(__file__).parents[1] / f"migrations/versions/{name}.py"
+    spec = importlib.util.spec_from_file_location(f"{name}_migration", path)
     assert spec is not None and spec.loader is not None
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -210,6 +210,160 @@ def test_the_seeded_topics_match_the_python_vocabulary():
 
     module = migration()
     assert [(slug, labels) for slug, _, labels in module.SEED_TOPICS] == list(SEED_TOPICS)
+
+
+def test_the_seeded_life_topics_match_the_python_vocabulary():
+    """Same contract for the lifestyle vocabulary, which 0073 seeds."""
+    from app.guides.taxonomy import LIFE_SEED_TOPICS
+
+    module = migration("0074_lifestyle_guides")
+    assert [
+        (slug, labels) for slug, _, labels in module.LIFE_SEED_TOPICS
+    ] == list(LIFE_SEED_TOPICS)
+
+
+LIFE_SLUGS = ("ai", "tutorial", "software", "gadgets", "productivity", "daily", "misc")
+
+
+def sections(connection) -> dict[str, str]:
+    return {
+        row.slug: row.section
+        for row in connection.execute(sa.select(GuideTopic.slug, GuideTopic.section))
+    }
+
+
+def insert_article(connection, *, slug: str, kind: str):
+    now = datetime.now(UTC)
+    connection.execute(
+        GuideArticle.__table__.insert().values(
+            id=uuid4(), slug=slug, kind=kind, destination_id=None, valid_until=None,
+            featured=False, display_order=100, is_active=True, version=1,
+            created_at=now, updated_at=now,
+        )
+    )
+
+
+@pytest.mark.parametrize("fresh_metadata", [False, True])
+def test_0073_adds_the_life_kind_and_section_without_touching_travel_rows(
+    monkeypatch, fresh_metadata
+):
+    """0073 on both shapes a deployment can be in: a database 0072 upgraded, and a fresh one
+    where 0001 already built the tables from the current models.
+
+    The engine deliberately leaves ``PRAGMA foreign_keys`` off, as the 0072 test does: a
+    SQLite batch rebuild drops and recreates the table, and with enforcement on the implicit
+    DELETE would cascade through guide_article_locales and guide_article_topics.
+    """
+    travel = migration()
+    life = migration("0074_lifestyle_guides")
+    for module in (travel, life):
+        monkeypatch.setattr(module.context, "is_offline_mode", lambda: False)
+    engine = sa.create_engine("sqlite://")
+    with engine.begin() as connection:
+        tables = [User.__table__]
+        if fresh_metadata:
+            tables += [
+                GuideTopic.__table__,
+                GuideArticle.__table__,
+                GuideArticleLocale.__table__,
+                GuideArticleRevision.__table__,
+            ]
+        Base.metadata.create_all(connection, tables=tables)
+        with Operations.context(MigrationContext.configure(connection)):
+            travel.upgrade()
+            if not fresh_metadata:
+                # Before 0073 the two-value CHECK is what an upgrading database carries, so
+                # the widening below is doing real work rather than passing vacuously.
+                with connection.begin_nested() as nested:
+                    with pytest.raises(sa.exc.IntegrityError):
+                        insert_article(connection, slug="too-early", kind="life")
+                    nested.rollback()
+
+            life.upgrade()
+
+            # Still a vocabulary migration: it seeds topics and writes no article.
+            assert connection.scalar(sa.select(sa.func.count()).select_from(GuideArticle)) == 0
+            total = len(travel.SEED_TOPICS) + len(life.LIFE_SEED_TOPICS)
+            assert connection.scalar(sa.select(sa.func.count()).select_from(GuideTopic)) == total
+            by_slug = sections(connection)
+            assert {slug for slug, value in by_slug.items() if value == "life"} == set(LIFE_SLUGS)
+            for slug, _, _labels in travel.SEED_TOPICS:
+                assert by_slug[slug] == "travel", slug
+
+            # The widened CHECK accepts the new kind and still refuses anything else.
+            insert_article(connection, slug="ai-notes", kind="life")
+            for bad in ("recipes", "lifestyle", ""):
+                with connection.begin_nested() as nested:
+                    with pytest.raises(sa.exc.IntegrityError):
+                        insert_article(connection, slug=f"bad-{bad or 'empty'}", kind=bad)
+                    nested.rollback()
+            with connection.begin_nested() as nested:
+                with pytest.raises(sa.exc.IntegrityError):
+                    connection.execute(
+                        GuideTopic.__table__.insert().values(
+                            id=uuid4(), slug="hobby", names_json={}, display_order=1,
+                            is_active=True, section="hobby", source="admin",
+                            created_at=datetime.now(UTC), updated_at=datetime.now(UTC),
+                        )
+                    )
+                nested.rollback()
+
+            # The batch rebuild must not have cost the table its identity or its indexes.
+            reported = sa.inspect(connection).get_indexes("guide_articles")
+            indexes = {index["name"] for index in reported}
+            assert {
+                "ix_guide_articles_slug",
+                "ix_guide_articles_destination_id",
+                "ix_guide_articles_is_active",
+                "ix_guide_articles_kind_active",
+            } <= indexes
+            with connection.begin_nested() as nested:
+                with pytest.raises(sa.exc.IntegrityError):
+                    insert_article(connection, slug="ai-notes", kind="life")
+                nested.rollback()
+
+            # Re-running changes nothing: only absent slugs are inserted, and both guards
+            # read the shape they just wrote.
+            life.upgrade()
+            assert connection.scalar(sa.select(sa.func.count()).select_from(GuideTopic)) == total
+            assert connection.scalar(sa.select(sa.func.count()).select_from(GuideArticle)) == 1
+
+            # A lifestyle topic an administrator renamed or turned off survives a re-run.
+            connection.execute(
+                sa.update(GuideTopic).where(GuideTopic.slug == "ai").values(
+                    is_active=False, names_json={"zh-TW": "自訂"}
+                )
+            )
+            life.upgrade()
+            kept = connection.execute(
+                sa.select(GuideTopic.is_active, GuideTopic.names_json, GuideTopic.section)
+                .where(GuideTopic.slug == "ai")
+            ).one()
+            assert kept.is_active is False
+            assert kept.names_json == {"zh-TW": "自訂"}
+            assert kept.section == "life"
+
+            # A rollback with a published lifestyle article keeps the wider CHECK rather
+            # than destroying the row; the column and the seeded topics still go.
+            life.downgrade()
+            assert connection.scalar(sa.select(sa.func.count()).select_from(GuideArticle)) == 1
+            assert "section" not in {
+                column["name"] for column in sa.inspect(connection).get_columns("guide_topics")
+            }
+            assert connection.scalar(
+                sa.select(sa.func.count()).select_from(GuideTopic)
+            ) == len(travel.SEED_TOPICS)
+
+            # With the lifestyle articles gone the CHECK narrows back, so the API that
+            # returns is the one that never knew the kind.
+            connection.execute(sa.delete(GuideArticle))
+            life.upgrade()
+            life.downgrade()
+            with connection.begin_nested() as nested:
+                with pytest.raises(sa.exc.IntegrityError):
+                    insert_article(connection, slug="after-rollback", kind="life")
+                nested.rollback()
+    engine.dispose()
 
 
 @pytest.mark.skipif(
