@@ -1,13 +1,13 @@
 ---
 id: 2026-09-12-affiliate-click-report
 title: Affiliate click report by partner, module and placement
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-fable-5-1
 claimed_at: 2026-09-12T05:36:24Z
 created_at: 2026-09-12T05:34:36Z
-completed_at:
+completed_at: 2026-09-12T12:08:18Z
 branch: claude/affiliate-controls-and-guide-cta
 depends_on: []
 scope:

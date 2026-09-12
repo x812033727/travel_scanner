@@ -1,13 +1,13 @@
 ---
 id: 2026-09-12-affiliate-docs-refresh
 title: Refresh affiliate configuration docs and state the affiliates boundary
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-fable-5-1
 claimed_at: 2026-09-12T05:36:34Z
 created_at: 2026-09-12T05:34:56Z
-completed_at:
+completed_at: 2026-09-12T12:08:19Z
 branch: claude/affiliate-controls-and-guide-cta
 depends_on:
   - 2026-09-12-affiliate-click-report

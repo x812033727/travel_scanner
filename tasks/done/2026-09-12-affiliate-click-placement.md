@@ -1,13 +1,13 @@
 ---
 id: 2026-09-12-affiliate-click-placement
 title: Record placement on every affiliate click
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-fable-5-1
 claimed_at: 2026-09-12T05:36:33Z
 created_at: 2026-09-12T05:34:52Z
-completed_at:
+completed_at: 2026-09-12T12:08:19Z
 branch: claude/affiliate-controls-and-guide-cta
 depends_on:
   - 2026-09-12-affiliate-readiness-matrix
