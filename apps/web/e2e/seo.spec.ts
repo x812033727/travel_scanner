@@ -61,14 +61,34 @@ test("runtime sitemap exposes only public routes and stable localized alternate 
   if (!/no-store|no-cache/.test(cacheControl)) expect(cacheControl).toContain("must-revalidate");
   expect(cacheControl).not.toMatch(/(?:s-maxage|max-age)=[1-9]\d*/);
   const xml = await response.text();
-  // Ten base routes, 33 destination guides and 33 services pages, times five locales, with
-  // the fixture's public switches all enabled. The fixture API serves no /api/v1/guides, so
-  // `guideSitemapEntries` degrades to empty and no article URLs are appended here.
-  expect(xml.match(/<url>/g)).toHaveLength(5 * (10 + 33 + 33));
+  // Ten base routes, 33 destination guides and 33 services pages, times five locales, with the
+  // fixture's public switches all enabled, plus the three synthetic guide translations the
+  // fixture API publishes.
+  expect(xml.match(/<url>/g)).toHaveLength(5 * (10 + 33 + 33) + 3);
   expect(xml).toContain("/en/destinations/tokyo</loc>");
   expect(xml).toContain('hreflang="x-default"');
   expect(xml).not.toMatch(/<loc>[^<]*\/(?:admin|account|trips|login|privacy)(?:\/|<)/);
+  // Articles are the only entries with a date, and each names only its own published
+  // translations. This is the one place either is rendered into the XML Next actually emits:
+  // no static entry carries a lastmod, and every static entry carries all five locales.
+  expect(xml.match(/<lastmod>/g)).toHaveLength(3);
+  const notice = sitemapUrl(xml, "/zh-TW/guides/intel/synthetic-fare-notice");
+  expect(notice).toContain("<lastmod>2026-09-08T09:30:00.000Z</lastmod>");
+  expect(hreflangs(notice)).toEqual(["ja", "zh-TW"]); // never written in English, so no x-default
+  expect(hreflangs(sitemapUrl(xml, "/en/guides/howto/synthetic-airport-transfer"))).toEqual(["en", "x-default"]);
+  expect(xml).not.toContain("/ko/guides/intel/synthetic-fare-notice</loc>");
   const robots = await request.get("/robots.txt");
   expect(robots.status()).toBe(200);
   expect(await robots.text()).toMatch(/Sitemap: https?:\/\/[^\s]+\/sitemap.xml/);
 });
+
+/** The `<url>` block whose `<loc>` ends with this path. */
+function sitemapUrl(xml: string, path: string): string {
+  const block = xml.split("<url>").find((part) => part.includes(`${path}</loc>`));
+  expect(block, `${path} is not in the sitemap`).toBeDefined();
+  return block ?? "";
+}
+
+function hreflangs(block: string): string[] {
+  return [...block.matchAll(/hreflang="([^"]+)"/g)].map((match) => match[1]).sort();
+}

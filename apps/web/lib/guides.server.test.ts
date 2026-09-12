@@ -158,12 +158,22 @@ describe("the sitemap enumeration", () => {
         { kind: "howto", slug: "no-locale", locale: "xx", published_at: "2026-09-01T00:00:00Z" },
         { kind: "howto", slug: "no-date", locale: "en" },
         { kind: "howto", locale: "en", published_at: "2026-09-01T00:00:00Z" },
+        // Next writes <loc> and every alternate href unescaped, so a slug outside the grammar the
+        // API enforces on write costs the whole document rather than one URL.
+        { kind: "howto", slug: "fares&rules", locale: "en", published_at: "2026-09-01T00:00:00Z" },
+        { kind: "howto", slug: "Narita-To-Tokyo", locale: "en", published_at: "2026-09-01T00:00:00Z" },
+        { kind: "howto", slug: "", locale: "en", published_at: "2026-09-01T00:00:00Z" },
+        // A date that does not parse reaches Next as an Invalid Date, which is truthy and is a
+        // Date, so its serialiser calls toISOString() and throws: a 500 on /sitemap.xml.
+        { kind: "howto", slug: "bad-date", locale: "en", published_at: "sometime" },
       ],
     }));
     const entries = await guideSitemapEntries();
     expect(entries).toHaveLength(3);
     expect(entries.some((entry) => entry.slug.startsWith("no-"))).toBe(false);
     expect(entries.some((entry) => String(entry.kind) === "recipes")).toBe(false);
+    expect(entries.some((entry) => entry.slug === "bad-date")).toBe(false);
+    for (const entry of entries) expect(entry.slug).toMatch(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
   });
 
   it("returns nothing rather than an exception when the API is unreachable", async () => {
@@ -180,13 +190,23 @@ describe("the sitemap enumeration", () => {
       kind: "intel", slug: `deal-${index}`, locale: "zh-TW", published_at: "2026-09-01T00:00:00Z",
     }));
     vi.stubGlobal("fetch", respond({ entries: many }));
-    expect(await guideSitemapEntries()).toHaveLength(SITEMAP_GUIDE_ENTRY_LIMIT);
+    const entries = await guideSitemapEntries();
+    expect(entries).toHaveLength(SITEMAP_GUIDE_ENTRY_LIMIT);
+    // Which rows survive matters as much as how many. The API orders newest first, so a cap that
+    // kept the tail would discard exactly the articles it exists to keep, and a count-only
+    // assertion passes either way.
+    expect(entries[0].slug).toBe("deal-0");
+    expect(entries[SITEMAP_GUIDE_ENTRY_LIMIT - 1].slug).toBe(`deal-${SITEMAP_GUIDE_ENTRY_LIMIT - 1}`);
   });
 
   it("does not cache a list an editor can withdraw from", async () => {
     const fetchMock = respond({ entries: [] });
     vi.stubGlobal("fetch", fetchMock);
     await guideSitemapEntries();
-    expect(fetchMock.mock.calls[0][1].cache).toBe("no-store");
+    const [url, init] = fetchMock.mock.calls[0];
+    // This path appears once on the web side, at the call site, so nothing else would catch a
+    // typo in it until a crawler did.
+    expect(new URL(url).pathname).toBe("/api/v1/guides/sitemap");
+    expect(init.cache).toBe("no-store");
   });
 });
