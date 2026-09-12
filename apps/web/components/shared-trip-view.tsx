@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import QRCode from "qrcode";
 import { useEffect, useState } from "react";
+import { DestinationAffiliateOptions } from "@/components/destination-affiliate-options";
 import { ItineraryTimeline } from "@/components/itinerary-timeline";
 import { Link, useRouter } from "@/i18n/navigation";
 import { api, ApiError } from "@/lib/api";
@@ -79,6 +80,18 @@ export function SharedTripView({ token }: { token: string }) {
       })
     : t("shareUpdatedRecently");
   return <main className="mx-auto max-w-4xl px-5 pb-20 md:px-8"><section className="mb-6 rounded-[2rem] border border-[var(--line)] bg-white p-6 shadow-[var(--shadow-lg)] md:p-8"><p className="flex items-center gap-2 text-sm font-semibold text-[var(--teal)]"><ShieldCheck size={17} />{t("shareReadOnly")}</p><h1 className="mt-2 text-3xl font-bold md:text-4xl">{trip.name}</h1><p className="mt-3 text-[var(--muted)]">{trip.destination_name || t("shareFallbackDestination")} · {updated}</p><p className="mt-4 rounded-xl bg-[var(--teal-soft)] p-3 text-sm text-[var(--teal-dark)]">{t("shareDisclaimer")}</p></section><ItineraryTimeline items={trip.items} routes={trip.route_segments} timezone={trip.timezone} />
+    {/* Reviewed partner entrances for the trip's destination. The payload already says
+        whether anything is ready for the `share` surface, so this asks for offers only
+        when there are some, and the surface itself is an operator switch. */}
+    {trip.partner_offers?.destination_id && trip.partner_offers.modules.length > 0 && <div className="mt-8">
+      <DestinationAffiliateOptions
+        destinationId={trip.partner_offers.destination_id}
+        modules={trip.partner_offers.modules}
+        contextual
+        destinationLabel={trip.destination_name ?? undefined}
+        placement="share"
+      />
+    </div>}
     {/* The share page used to end here with no way onward; a recipient could only leave. */}
     <section className="mt-8 grid gap-6 rounded-[2rem] border border-[var(--line)] bg-white p-6 shadow-[var(--shadow-lg)] md:grid-cols-[1fr_auto] md:p-8">
       <div>

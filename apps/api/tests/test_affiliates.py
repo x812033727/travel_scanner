@@ -24,6 +24,7 @@ from app.models import (
     DestinationAffiliateOffer,
     SearchRequest,
     TravelServiceBrand,
+    TripPlan,
     UsageLedger,
     User,
 )
@@ -31,12 +32,12 @@ from app.problems import AppError
 
 
 class AffiliateSession:
-    def __init__(self, search: SearchRequest | None = None) -> None:
+    def __init__(self, search: SearchRequest | TripPlan | None = None) -> None:
         self.search = search
         self.added: list[Any] = []
         self.commits = 0
 
-    async def scalar(self, _statement: object) -> SearchRequest | None:
+    async def scalar(self, _statement: object) -> SearchRequest | TripPlan | None:
         return self.search
 
     async def get(self, _model: object, _identifier: object) -> None:
@@ -488,6 +489,33 @@ async def test_verified_destination_brand_replaces_generic_travelpayouts(
     assert [item.partner for item in response.options] == ["klook"]
     assert response.options[0].display_name == "Klook"
     assert "travelpayouts" not in str(response.model_dump())
+    # A search-page button keeps the destination label on its click.
+    assert "/clickout?placement=destination&token=" in response.options[0].clickout_url
+
+    # The same brand offer rendered on a trip page is labelled as the trip surface, so
+    # the click report can tell the two apart.
+    trip = TripPlan(
+        id=uuid4(),
+        user_id=user.id,
+        name="東京",
+        destination_name="東京",
+        mode="manual",
+        total_price=0,
+        currency="TWD",
+        version=1,
+        start_date=datetime(2026, 11, 11, tzinfo=UTC).date(),
+        end_date=datetime(2026, 11, 13, tzinfo=UTC).date(),
+        timezone="Asia/Tokyo",
+        data={"destination_id": "tokyo"},
+    )
+    response = await affiliate_router.affiliate_options(
+        "activities",
+        user,
+        AffiliateSession(trip),  # type: ignore[arg-type]
+        trip_id=trip.id,  # type: ignore[arg-type]
+    )
+    assert [item.partner for item in response.options] == ["klook"]
+    assert "/clickout?placement=trip&token=" in response.options[0].clickout_url
 
 
 @pytest.mark.asyncio

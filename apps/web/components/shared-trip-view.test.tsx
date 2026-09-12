@@ -136,3 +136,30 @@ describe("a share link that will not open", () => {
     expect(screen.queryByRole("button", { name: "重試一次" })).toBeNull();
   });
 });
+
+describe("SharedTripView partner entrances", () => {
+  it("offers the destination's partners when the share surface has something ready", async () => {
+    const fetchMock = vi.fn(async (url: string) => {
+      if (String(url).includes("/affiliates/destination-offers")) {
+        return new Response(JSON.stringify({
+          destination_id: "osaka-kyoto", module: "activities", disclosure: "Disclosure",
+          options: [{ id: "offer-1", brand: "klook", display_name: "Klook", destination_id: "osaka-kyoto", module: "activities", cta: "Klook activities", clickout_url: "/api/travel/affiliates/destination-offers/offer-1/clickout?placement=share" }],
+        }));
+      }
+      return new Response(JSON.stringify({ ...sharedTrip, partner_offers: { destination_id: "osaka-kyoto", modules: ["activities"] } }));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<SharedTripView token="abc" />);
+    expect(await screen.findByRole("button", { name: /Klook activities/ })).toBeTruthy();
+    const offerCalls = fetchMock.mock.calls.map(([url]) => String(url)).filter((url) => url.includes("/affiliates/destination-offers"));
+    expect(offerCalls).toEqual(["/api/travel/affiliates/destination-offers?destination_id=osaka-kyoto&module=activities&placement=share"]);
+  });
+
+  it("asks for nothing when the share surface has nothing ready", async () => {
+    const fetchMock = vi.fn<(url: string) => Promise<Response>>(async () => new Response(JSON.stringify({ ...sharedTrip, partner_offers: { destination_id: "osaka-kyoto", modules: [] } })));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<SharedTripView token="abc" />);
+    await screen.findByRole("heading", { name: "京都五天" });
+    expect(fetchMock.mock.calls.some(([url]) => String(url).includes("/affiliates/"))).toBe(false);
+  });
+});

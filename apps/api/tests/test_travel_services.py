@@ -637,8 +637,8 @@ def test_catalog_config_keeps_legacy_surfaces_on_and_content_surfaces_off_by_def
 
     config = CatalogConfig()
     assert config.affiliate_placements == list(LEGACY_BOOKING_PLACEMENTS)
-    assert "guide" not in config.affiliate_placements and "city" not in config.affiliate_placements
-    assert {"guide", "city"} <= BOOKING_PLACEMENTS
+    assert not {"guide", "city", "share"} & set(config.affiliate_placements)
+    assert {"guide", "city", "share"} <= BOOKING_PLACEMENTS
     # Order is canonical and duplicates collapse, so a saved list never depends on click order.
     reordered = CatalogConfig(affiliate_placements=["city", "guide", "guide", "destination"])
     assert reordered.affiliate_placements == ["destination", "guide", "city"]

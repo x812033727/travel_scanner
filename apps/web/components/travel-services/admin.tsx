@@ -77,9 +77,11 @@ type DestinationRow = {
   country: string;
   role: string;
 };
-// What the API assumes when a saved config predates the placement switch.
+// The first-party content surfaces are off until an operator opens them; everything
+// else is what the API assumes when a saved config predates the placement switch.
+const contentPlacementTokens = new Set(["guide", "city", "share"]);
 const legacyPlacements: string[] = hotelBookingPlacements.filter(
-  (placement) => placement !== "guide" && placement !== "city",
+  (placement) => !contentPlacementTokens.has(placement),
 );
 type Config = {
   stay22?: Stay22Config;
@@ -225,11 +227,12 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
   const router = useRouter();
   const manage = useAdminActionGuard("content.manage");
   const isHotel = workspace === "hotels";
-  // The two first-party content surfaces an operator can open for destination offers.
+  // The three first-party content surfaces an operator can open for destination offers.
   // Labelled with the section names readers already see, until the catalogs take new keys.
   const contentPlacements: Array<[string, string]> = [
     ["guide", common("guides.hubTitle")],
     ["city", destinationsCopy(locale).guideEyebrow],
+    ["share", common("cardActions.share")],
   ];
   const storageKey = storageUserId ? `${hotelDraftKey}:${storageUserId}` : undefined;
   const navigation = useAdminWorkspaceNavigation({

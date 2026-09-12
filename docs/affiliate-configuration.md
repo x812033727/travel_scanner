@@ -194,6 +194,11 @@ Skyscanner 的合作申請清單見 [`skyscanner-partnership-application.md`](sk
 | `destination`、`hotspot`、`discovery`、`checklist` | 目的地服務頁、景點附近住宿、探索卡、行前清單 | `travel_services/router.py` |
 | `guide` | 情報／攻略文章文末 | `affiliates/router.py`（目的地優惠） |
 | `city` | 目的地城市頁 | 同上 |
+| `share` | 唯讀的行程分享頁（`/share/{token}`） | 同上 |
+
+行程頁的「抵達後的安排／門票與一日遊／接下來可以預訂」區塊與分享頁都用目的地優惠：
+行程本體 `GET /trips/{id}` 多帶 `partner_offers.modules`（哪些模組有優惠，不含優惠本身），
+區塊只在有模組時出現、展開才載入，遵守行程頁第一屏不打分潤請求的規則。
 
 `guide` 與 `city` 是第一方內容頁，**預設關閉**：後台「目錄服務」的發布控制裡有「目的地合作方案」
 兩個勾選（旅遊情報與攻略／目的地指南），對應 `travel_service_config.data.affiliate_placements`。

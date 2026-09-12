@@ -58,6 +58,8 @@ import { PlannerPreferences } from "@/components/planner/preferences";
 import { AffiliatePartnerOptions } from "@/components/affiliate-partner-options";
 import { ServiceCatalog, TripTravelServices } from "@/components/travel-services/catalog";
 import { DayHealthStrip } from "@/components/day-health-strip";
+import { TripDayPartnerOffers, TripPartnerNextSteps } from "@/components/trip-day-partner-offers";
+import { afterAiPartnerModules, dayPartnerKind, dayPartnerModules } from "@/lib/trip-partner-offers";
 import { FlightAnchorCard, flightAnchorInfo } from "@/components/flight-anchor-card";
 import { TripInboxPanel, type PlaceCandidate } from "@/components/trip-inbox-panel";
 import { PlacePicker } from "@/components/place-picker";
@@ -375,6 +377,8 @@ export function TripEditor({ tripId }: { tripId: string }) {
   const [aiMenuOpen, setAIMenuOpen] = useState(false);
   const [aiScope, setAIScope] = useState<AIPlanningScope>("day");
   const [aiPreview, setAIPreview] = useState<AIItineraryPreview>();
+  // Set once an AI plan is applied; cleared when the member dismisses the next-steps card.
+  const [aiNextSteps, setAINextSteps] = useState<{ scope: "day" | "trip"; dayDate?: string }>();
   const [plannerTheme, setPlannerTheme] = useState<PlannerTheme>("site");
   const [draftItem, setDraftItem] = useState<TripItem>();
   const editingBaseRef = useRef<TripItem | undefined>(undefined);
@@ -1593,6 +1597,9 @@ export function TripEditor({ tripId }: { tripId: string }) {
       aiApplyRef.current = undefined;
       setAIPreview(undefined);
       setAIMenuOpen(false);
+      // The moment the stops exist is the moment tickets and transport for them are an
+      // answer rather than an interruption.
+      setAINextSteps({ scope: aiPreview.scope === "trip" ? "trip" : "day", dayDate: aiPreview.day_date || undefined });
       try { window.localStorage.removeItem(draftKey); } catch { /* storage can be blocked */ }
       const provider = aiProviderLabel(updated.planning?.provider, te);
       const scopeLabel = aiPreview.scope === "day"
@@ -1829,6 +1836,15 @@ export function TripEditor({ tripId }: { tripId: string }) {
       : undefined;
   const outboundReady = items.some((item) => item.system_role === "outbound_flight" && item.data.flight_selection_source !== "unset");
   const returnReady = items.some((item) => item.system_role === "return_flight" && item.data.flight_selection_source !== "unset");
+  // Partner blocks: the trip payload says which modules have a ready offer (availability
+  // only), so nothing here requests anything on first paint. The day block is a closed
+  // disclosure that mounts the panel on open; the post-AI card is member-initiated.
+  const partnerAvailable = trip?.partner_offers?.modules ?? [];
+  const partnerDestinationId = trip?.partner_offers?.destination_id ?? null;
+  const partnerKind = activeDay ? dayPartnerKind(activeDay, days, items) : "day";
+  const dayPartner = dayPartnerModules(partnerKind, { lodgingReady, available: partnerAvailable });
+  const nextStepsVisible = Boolean(aiNextSteps && (aiNextSteps.scope === "trip" || aiNextSteps.dayDate === activeDay));
+  const nextStepsModules = aiNextSteps && nextStepsVisible ? afterAiPartnerModules(aiNextSteps.scope, partnerKind, partnerAvailable) : [];
   const unresolvedRouteItems = dayModel.unresolvedItems;
   const routeWarnings = trip?.routing?.warnings || [];
   const routeNeedsLocations = unresolvedRouteItems.length > 0;
@@ -1956,6 +1972,12 @@ export function TripEditor({ tripId }: { tripId: string }) {
             <span className="itinerary-gap-line" /><span className="itinerary-gap-label"><Plus size={15} />{copy.addHere}</span><span className="itinerary-gap-line" />
           </button></li>}
         </EditableItineraryTimeline>
+        {nextStepsVisible && partnerDestinationId && nextStepsModules.length > 0 && <TripPartnerNextSteps
+          destinationId={partnerDestinationId}
+          modules={nextStepsModules}
+          destinationLabel={trip.destination_name ?? undefined}
+          onDismiss={() => setAINextSteps(undefined)}
+        />}
         {dayModel.optionalRows.length > 0 && <details className="calm-optional-arrangements">
           <summary><Plus size={16} /><span>{calm.extras}</span><span className="text-xs text-[var(--muted)]">{dayModel.optionalRows.length}</span></summary>
           <p className="mb-3 text-xs leading-5 text-[var(--muted)]">{calm.extrasHint}</p>
@@ -1993,6 +2015,12 @@ export function TripEditor({ tripId }: { tripId: string }) {
     {trip.routing && ["queued", "processing"].includes(trip.routing.status) && <section aria-live="polite" className="mb-4 flex items-center gap-3 rounded-2xl border border-sky-200 bg-sky-50 px-4 py-3 text-sm text-sky-950"><span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white"><Loader2 size={18} className="animate-spin text-sky-700" /></span><div className="min-w-0 flex-1"><p className="font-semibold">{te("routingTitle")}</p><p className="mt-0.5 text-xs opacity-75">{te("routingProgress", { completed: trip.routing.completed, total: trip.routing.total })}</p></div></section>}
           </div>
         </details>
+        {!nextStepsVisible && partnerDestinationId && dayPartner.length > 0 && <TripDayPartnerOffers
+          destinationId={partnerDestinationId}
+          modules={dayPartner}
+          kind={partnerKind}
+          destinationLabel={trip.destination_name ?? undefined}
+        />}
       </section>
       {desktopMapVisible && selectedRoute && <aside className="min-w-0 space-y-4 lg:sticky lg:top-24 lg:self-start"><RouteSegmentCard segment={selectedRoute} selected defaultExpanded timezone={trip.timezone} /></aside>}
     </div>

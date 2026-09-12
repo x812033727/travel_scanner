@@ -134,15 +134,22 @@ that rendered the button, and returns a no-store 303. Invalid, disabled, stale,
 mismatched and unapproved records fail closed.
 
 `placement` is the same closed `BookingPlacement` vocabulary the hotel clickouts use
-(`destination`, `hotspot`, `trip`, `stay`, `checklist`, `discovery`, `guide`, `city`).
-`guide` is a travel-intel or how-to article and `city` a destination page; both are
-first-party content surfaces and are **off by default**. `CatalogConfig.affiliate_placements`
+(`destination`, `hotspot`, `trip`, `stay`, `checklist`, `discovery`, `guide`, `city`, `share`).
+`guide` is a travel-intel or how-to article, `city` a destination page and `share` a
+read-only shared trip; all three are first-party content surfaces and are **off by
+default**. The trip planner uses `trip`. `CatalogConfig.affiliate_placements`
 (Release controls → 目的地合作方案) lists the surfaces that may show offers; a surface not
 in the list gets an empty options list and a 404 on click, so a page loaded before the
 switch was turned off cannot click through. The placement is also the last `sub_id`
 segment (`dst_activities_tokyo_zh-TW_guide`) so partner dashboards can split it, and the
 admin analytics page reports `affiliate_clicks` by placement, partner, module, destination
 and brand (`GET /admin/analytics/affiliates`). Those are redirect counts, not bookings.
+
+`GET /trips/{id}` (full payload) and `GET /shared-trips/{token}` carry
+`partner_offers: {destination_id, modules}` — availability only, computed by
+`partner_offer_modules` for the `trip` and `share` surfaces respectively — so the planner
+and the share page can render a collapsed partner block without a request on first
+paint. The offers themselves are fetched only when the block is opened.
 
 Saved-search and trip affiliate options put verified branded destination offers
 first. The generic Travelpayouts option is shown only when no branded option is
