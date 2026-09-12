@@ -39,6 +39,18 @@ describe("AdminNav", () => {
     expect(screen.queryByRole("link", { name: "資料庫" })).toBeNull();
   });
 
+  it("names destinations the inline copy predates from the message catalog", () => {
+    renderNav(bootstrap([
+      { key: "dashboard", href: "/admin", group: "overview" },
+      { key: "guides", href: "/admin/guides", group: "content" },
+      { key: "hotspots", href: "/admin/hotspots", group: "content" },
+    ]), "guides");
+    const link = screen.getByRole("link", { name: "情報與攻略" });
+    expect(link.getAttribute("href")).toBe("/admin/guides");
+    expect(link.getAttribute("aria-current")).toBe("page");
+    expect(screen.queryByRole("link", { name: "guides" })).toBeNull();
+  });
+
   it("marks the current destination and preserves backend labels", () => {
     renderNav(bootstrap([
       { key: "dashboard", href: "/admin", group: "overview" },

@@ -3,56 +3,52 @@
 import { useCallback, useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { AdminReadOnlyNotice, useAdminActionGuard } from "@/components/admin-action-guard";
+import { AdminGuidesList, GuideVisibilityDialog, updateAdminQuery, visibilityError, type VisibilityAction } from "@/components/admin-guides-list";
 import { Button, Dialog } from "@/components/community/ui";
 import { ContentBlocks } from "@/components/content-blocks";
+import { useAdminQueryValue } from "@/lib/admin-workspace-navigation";
 import { api, ApiError } from "@/lib/api";
 import type { ContentBlock } from "@/lib/content-blocks";
 import { useNavigationGuard } from "@/lib/navigation-guard";
 import { guideKinds, type GuideDocument, type GuideKind, type GuideSource, type GuideTopic } from "@/lib/guides";
+import { isUuid, type ArticleDetail, type ArticleSummary } from "@/lib/guides-admin";
 import { sitePageLocales, type SitePageLocale } from "@/lib/site-pages";
 
 const control = "min-h-11 w-full rounded-xl border border-[var(--control-border,var(--line))] bg-[var(--surface)] px-3 py-2 text-[var(--ink)]";
 const languages: Record<SitePageLocale, string> = { "zh-TW": "繁體中文", "zh-CN": "简体中文", en: "English", ja: "日本語", ko: "한국어" };
 
-type LocaleState = {
-  locale: SitePageLocale; version: number; published_version: number | null;
-  published_at: string | null; title: string; updated_at: string;
-};
-type Revision = { id: string; version: number; action: string; created_at: string };
-type ArticleSummary = {
-  id: string; slug: string; kind: GuideKind; destination_id: string | null;
-  destination_label: string | null; topics: GuideTopic[]; valid_until: string | null;
-  expired: boolean; featured: boolean; display_order: number; is_active: boolean;
-  version: number; locales: LocaleState[]; updated_at: string;
-};
-type ArticleDetail = ArticleSummary & {
-  locale: SitePageLocale; draft: GuideDocument;
-  published: (GuideDocument & { version: number; published_at: string }) | null;
-  revisions: Revision[];
-};
-
 const emptyDocument = (): GuideDocument => ({
   title: "", description: "", blocks: [{ type: "paragraph", text: "" }], sources: [],
 });
+const isSiteLocale = (value: string): value is SitePageLocale => (sitePageLocales as readonly string[]).includes(value);
 
+/**
+ * The URL owns the workspace: no `?article=` is the list, `?article=<id>&lang=<locale>` is
+ * the editor for one translation. "Back to the list" therefore returns to the same filters,
+ * and a filtered view or an open article can be bookmarked or shared.
+ */
 export function AdminGuidesPanel() {
   const t = useTranslations("admin.guides");
   const interfaceLocale = useLocale();
   const manage = useAdminActionGuard("content.manage");
-  const [articles, setArticles] = useState<ArticleSummary[]>();
+  const [selected] = useAdminQueryValue("article", "", isUuid);
+  const [requestedLocale] = useAdminQueryValue("lang", "", isSiteLocale);
+  const locale: SitePageLocale = isSiteLocale(requestedLocale) ? requestedLocale : isSiteLocale(interfaceLocale) ? interfaceLocale : "zh-TW";
   const [topics, setTopics] = useState<GuideTopic[]>([]);
-  const [selected, setSelected] = useState<string | null>(null);
-  const [locale, setLocale] = useState<SitePageLocale>(
-    sitePageLocales.includes(interfaceLocale as SitePageLocale) ? (interfaceLocale as SitePageLocale) : "zh-TW",
-  );
-  const [detail, setDetail] = useState<ArticleDetail | null>();
-  const [draft, setDraft] = useState<GuideDocument | null>(null);
   const [reload, setReload] = useState(0);
+  // The loaded article is keyed by what it was loaded for, so a change of article, language
+  // or reload shows the loading state without an effect having to reset anything.
+  const key = `${selected}|${locale}|${reload}`;
+  const [loaded, setLoaded] = useState<{ key: string; detail: ArticleDetail | null }>();
+  const detail = loaded?.key === key ? loaded.detail : undefined;
+  const setDetail = (value: ArticleDetail | null) => setLoaded({ key, detail: value });
+  const [draft, setDraft] = useState<GuideDocument | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
   const [preview, setPreview] = useState<GuideDocument | null>(null);
   const [gate, setGate] = useState<"publish" | "unpublish" | null>(null);
+  const [visibility, setVisibility] = useState<VisibilityAction | null>(null);
   const [confirmed, setConfirmed] = useState(false);
   const [reason, setReason] = useState("");
   const [restoreReason, setRestoreReason] = useState("");
@@ -67,31 +63,19 @@ export function AdminGuidesPanel() {
   }, [busy, dirty, t]);
   useNavigationGuard(dirty || busy, requestLeave);
 
-  const showError = (problem: unknown) => setError(
-    problem instanceof ApiError && problem.code === "guide_version_conflict" ? t("conflict")
-      : problem instanceof Error ? problem.message : t("error"),
-  );
+  const showError = (problem: unknown) => setError(visibilityError(problem, t));
   const suffix = `?locale=${encodeURIComponent(locale)}`;
   const row = detail?.locales.find((entry) => entry.locale === locale) ?? null;
 
   useEffect(() => {
+    if (!selected) return;
     const controller = new AbortController();
-    Promise.all([
-      api<{ articles: ArticleSummary[] }>(`/admin/guides${suffix}`, { signal: controller.signal }),
-      api<{ topics: GuideTopic[] }>(`/admin/guides/topics${suffix}`, { signal: controller.signal }),
-    ]).then(([list, vocabulary]) => {
-      if (controller.signal.aborted) return;
-      setArticles(list.articles);
-      setTopics(vocabulary.topics);
-    }).catch((problem: unknown) => {
-      if (!controller.signal.aborted) { setArticles([]); showError(problem); }
-    });
+    api<{ topics: GuideTopic[] }>(`/admin/guides/topics${suffix}`, { signal: controller.signal })
+      .then((vocabulary) => { if (!controller.signal.aborted) setTopics(vocabulary.topics); })
+      .catch(() => { /* the taxonomy chips stay empty; the detail request reports the outage */ });
     return () => controller.abort();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [suffix, reload]);
+  }, [selected, suffix]);
 
-  // The loading and empty states are set where the selection actually changes -- an event
-  // handler -- so this effect only fetches.
   useEffect(() => {
     if (!selected) return;
     const controller = new AbortController();
@@ -115,32 +99,25 @@ export function AdminGuidesPanel() {
     requestLeave(() => { setError(""); setNotice(""); apply(); });
   }
 
-  /** Switching article or language throws away the open draft, so it clears it here. */
-  function reselect(apply: () => void, hasTarget: boolean) {
-    change(() => { setDetail(hasTarget ? undefined : null); setDraft(null); apply(); });
-  }
-
-  async function run(work: () => Promise<void>) {
-    if (!manage.allowed || busy) return;
+  async function run<T>(work: () => Promise<T>): Promise<T | undefined> {
+    if (!manage.allowed || busy) return undefined;
     setBusy(true); setError("");
-    try { await work(); } catch (problem) { showError(problem); } finally { setBusy(false); }
+    try { return await work(); } catch (problem) { showError(problem); return undefined; } finally { setBusy(false); }
   }
 
-  const refresh = (value: ArticleDetail) => {
-    setDetail(value); setDraft(value.draft);
-    setArticles((current) => current?.map((entry) => (entry.id === value.id ? { ...entry, ...value } : entry)));
-  };
+  const refresh = (value: ArticleDetail) => { setDetail(value); setDraft(value.draft); };
 
-  const create = () => run(async () => {
-    const value = await api<ArticleDetail>("/admin/guides", {
+  const create = async () => {
+    const value = await run(async () => api<ArticleDetail>("/admin/guides", {
       method: "POST",
       body: JSON.stringify({ slug: newSlug, kind: newKind, topics: [], document: emptyDocument(), locale }),
-    });
+    }));
+    if (!value) return;
     setCreating(false); setNewSlug("");
-    setArticles((current) => [value, ...(current ?? [])]);
-    setSelected(value.id); setDetail(value); setDraft(value.draft);
     setNotice(t("saved"));
-  });
+    // Navigating while `busy` would be refused by the guard, so it happens after `run`.
+    updateAdminQuery({ article: value.id, lang: locale });
+  };
 
   const startTranslation = () => run(async () => {
     const value = await api<ArticleDetail>(`/admin/guides/${selected}/${locale}`, {
@@ -166,6 +143,16 @@ export function AdminGuidesPanel() {
     setNotice(t(action === "publish" ? "publishSuccess" : "unpublishSuccess"));
   });
 
+  const setHidden = (action: VisibilityAction, why: string) => run(async () => {
+    if (!detail) return;
+    const summary = await api<ArticleSummary>(`/admin/guides/${detail.id}/${action}${suffix}`, {
+      method: "POST", body: JSON.stringify({ expected_version: detail.version, confirmed: true, reason: why }),
+    });
+    setLoaded((current) => (current?.detail ? { ...current, detail: { ...current.detail, ...summary } } : current));
+    setVisibility(null);
+    setNotice(t(action === "hide" ? "hideSuccess" : "unhideSuccess"));
+  });
+
   const saveTaxonomy = () => run(async () => {
     if (!detail) return;
     refresh(await api<ArticleDetail>(`/admin/guides/${detail.id}${suffix}`, {
@@ -173,7 +160,7 @@ export function AdminGuidesPanel() {
       body: JSON.stringify({
         expected_version: detail.version, kind: detail.kind, destination_id: detail.destination_id,
         topics: detail.topics.map((topic) => topic.slug), valid_until: detail.valid_until,
-        featured: detail.featured, display_order: detail.display_order, is_active: detail.is_active,
+        featured: detail.featured, display_order: detail.display_order,
       }),
     }));
     setNotice(t("taxonomySaved"));
@@ -214,31 +201,24 @@ export function AdminGuidesPanel() {
     </header>
     <AdminReadOnlyNotice capability="content.manage" />
 
-    <div className="grid gap-4 sm:grid-cols-2">
-      <label className="grid gap-2">{t("articleList")}
-        <select className={control} disabled={busy} value={selected ?? ""} onChange={(event) => reselect(() => setSelected(event.target.value || null), Boolean(event.target.value))}>
-          <option value="">—</option>
-          {(articles ?? []).map((article) => (
-            <option key={article.id} value={article.id}>
-              {article.slug} · {t(article.kind)}{article.is_active ? "" : ` · ${t("archived")}`}
-            </option>
-          ))}
-        </select>
-      </label>
-      <label className="grid gap-2">{t("documentLanguage")}
-        <select className={control} disabled={busy} value={locale} onChange={(event) => reselect(() => setLocale(event.target.value as SitePageLocale), Boolean(selected))}>
+    <div className="flex flex-wrap items-end gap-3">
+      {selected && <Button secondary disabled={busy} onClick={() => updateAdminQuery({ article: "" })}>{t("backToList")}</Button>}
+      <Button secondary disabled={busy || !manage.allowed} onClick={() => change(() => setCreating(true))}>{t("newArticle")}</Button>
+      {selected && <label className="grid min-w-[12rem] gap-2">{t("documentLanguage")}
+        <select className={control} disabled={busy} value={locale} onChange={(event) => updateAdminQuery({ lang: event.target.value })}>
           {sitePageLocales.map((value) => <option key={value} value={value}>{languages[value]}</option>)}
         </select>
-      </label>
-    </div>
-    <div className="flex flex-wrap gap-3">
-      <Button secondary disabled={busy || !manage.allowed} onClick={() => change(() => setCreating(true))}>{t("newArticle")}</Button>
+      </label>}
     </div>
 
-    {articles?.length === 0 && <p role="status">{t("noArticles")}</p>}
-    {error && <div role="alert" className="space-y-3">
+    {!selected && <AdminGuidesList
+      onOpen={(id) => updateAdminQuery({ article: id, lang: locale })}
+      onCreate={() => change(() => setCreating(true))}
+    />}
+
+    {error && !visibility && <div role="alert" className="space-y-3">
       <p>{error}</p>
-      <Button secondary disabled={busy} onClick={() => reselect(() => setReload((value) => value + 1), Boolean(selected))}>{t("reload")}</Button>
+      <Button secondary disabled={busy} onClick={() => change(() => setReload((value) => value + 1))}>{t("reload")}</Button>
     </div>}
     {notice && <p role="status">{notice}</p>}
     {selected && detail === undefined && !error && <p role="status">{t("loading")}</p>}
@@ -249,6 +229,9 @@ export function AdminGuidesPanel() {
     </section>}
 
     {detail && draft && row && <>
+      <p className="text-sm text-[var(--muted)]">{detail.slug} · {t(detail.kind)} · {t(`statuses.${detail.status}`)}</p>
+      {!detail.is_active && <p role="status" className="rounded-xl border border-[var(--line)] bg-[var(--paper)] p-3 text-sm leading-6">{t("hiddenNotice")}</p>}
+
       <section className="space-y-4 rounded-2xl border border-[var(--line)] p-4">
         <h2 className="text-xl font-bold">{t("taxonomy")}</h2>
         <fieldset disabled={!manage.allowed || busy} className="grid gap-4 sm:grid-cols-2">
@@ -267,9 +250,6 @@ export function AdminGuidesPanel() {
           </label>
           <label className="flex min-h-11 items-center gap-3">
             <input type="checkbox" checked={detail.featured} onChange={(event) => setDetail({ ...detail, featured: event.target.checked })} />{t("featured")}
-          </label>
-          <label className="flex min-h-11 items-center gap-3">
-            <input type="checkbox" checked={detail.is_active} onChange={(event) => setDetail({ ...detail, is_active: event.target.checked })} />{t("active")}
           </label>
           <fieldset className="grid gap-2 sm:col-span-2">
             <legend className="font-semibold">{t("topics")}</legend>
@@ -364,8 +344,11 @@ export function AdminGuidesPanel() {
         <div className="sticky bottom-3 z-10 flex flex-wrap gap-3 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-3 shadow-sm">
           <Button type="submit" disabled={busy || !manage.allowed || !dirty}>{t("save")}</Button>
           <Button secondary disabled={busy} onClick={() => setPreview(draft)}>{t("preview")}</Button>
-          <Button secondary disabled={busy || dirty || !manage.allowed} onClick={() => { setConfirmed(false); setReason(""); setGate("publish"); }}>{t("publish")}</Button>
+          <Button secondary disabled={busy || dirty || !manage.allowed || !detail.is_active} onClick={() => { setConfirmed(false); setReason(""); setGate("publish"); }}>{t("publish")}</Button>
           {row.published_version !== null && <Button secondary disabled={busy || !manage.allowed} onClick={() => { setConfirmed(false); setReason(""); setGate("unpublish"); }}>{t("unpublish")}</Button>}
+          <Button secondary disabled={busy || !manage.allowed} onClick={() => { setError(""); setVisibility(detail.is_active ? "hide" : "unhide"); }}>
+            {detail.is_active ? t("hide") : t("unhide")}
+          </Button>
         </div>
       </form>
 
@@ -424,5 +407,8 @@ export function AdminGuidesPanel() {
         </Button>
       </div>
     </Dialog>}
+
+    {visibility && <GuideVisibilityDialog action={visibility} count={1} busy={busy} error={error}
+      onConfirm={(why) => void setHidden(visibility, why)} onClose={() => { setVisibility(null); setError(""); }} />}
   </div>;
 }

@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { AdminGuidesPanel } from "@/components/admin-guides-panel";
 import { ApiError } from "@/lib/api";
@@ -36,10 +36,12 @@ afterAll(() => {
 });
 
 const topics = [{ slug: "transport", label: "交通" }];
+// `?article=` only accepts a UUID, so the fixture id has to be one.
+const id = "00000000-0000-4000-8000-0000000000a1";
 const summary = {
-  id: "a1", slug: "narita-to-tokyo", kind: "howto", destination_id: "tokyo",
+  id, slug: "narita-to-tokyo", kind: "howto", destination_id: "tokyo",
   destination_label: "東京", topics, valid_until: null, expired: false, featured: false,
-  display_order: 100, is_active: true, version: 1, updated_at: "2026-09-01T00:00:00Z",
+  display_order: 100, is_active: true, status: "draft", version: 1, updated_at: "2026-09-01T00:00:00Z",
   locales: [{
     locale: "zh-TW", version: 2, published_version: null, published_at: null,
     title: "怎麼走", updated_at: "2026-09-01T00:00:00Z",
@@ -51,29 +53,31 @@ const detail = {
   published: null,
   revisions: [{ id: "r1", version: 1, action: "created", created_at: "2026-09-01T00:00:00Z" }],
 };
+const facets = { status: [{ code: "published", count: 0 }, { code: "draft", count: 1 }, { code: "hidden", count: 0 }, { code: "expired", count: 0 }], kind: [{ code: "intel", count: 0 }, { code: "howto", count: 1 }] };
 
 function route(path: string, init?: { method?: string; body?: string }) {
   if (path.startsWith("/admin/guides/topics")) return Promise.resolve({ topics });
-  if (path.startsWith("/admin/guides?")) return Promise.resolve({ articles: [summary] });
+  if (path.startsWith("/admin/guides?")) return Promise.resolve({ articles: [summary], total: 1, page: 1, pages: 1, facets });
   if (path.includes("/publish")) {
     return Promise.resolve({
       ...detail,
       locales: [{ ...detail.locales[0], version: 3, published_version: 3, published_at: "2026-09-11T00:00:00Z" }],
     });
   }
+  if (path.includes("/hide")) return Promise.resolve({ ...summary, is_active: false, status: "hidden", version: 2 });
   if (init?.method === "PUT") return Promise.resolve({ ...detail, draft: JSON.parse(init.body!).document });
   return Promise.resolve(detail);
 }
 
 async function open() {
+  window.history.replaceState(null, "", `/zh-TW/admin/guides?article=${id}&lang=zh-TW`);
   render(<AdminGuidesPanel />);
-  await screen.findByRole("option", { name: /narita-to-tokyo/ });
-  fireEvent.change(screen.getByLabelText("文章列表"), { target: { value: "a1" } });
   await screen.findByDisplayValue("怎麼走");
 }
 
 beforeEach(() => {
   vi.clearAllMocks();
+  window.history.replaceState(null, "", "/zh-TW/admin/guides");
   mocks.guard.mockReturnValue({ allowed: true });
   mocks.api.mockImplementation(route);
 });
@@ -89,6 +93,25 @@ describe("permissions", () => {
     await open();
     expect((screen.getByRole("button", { name: "儲存草稿" }) as HTMLButtonElement).disabled).toBe(true);
     expect((screen.getByRole("button", { name: "建立新文章" }) as HTMLButtonElement).disabled).toBe(true);
+    expect((screen.getByRole("button", { name: "隱藏文章" }) as HTMLButtonElement).disabled).toBe(true);
+  });
+});
+
+describe("the workspace", () => {
+  it("starts on the list and opens an article through the URL", async () => {
+    render(<AdminGuidesPanel />);
+    fireEvent.click(await screen.findByRole("button", { name: "怎麼走" }));
+    await waitFor(() => expect(window.location.search).toContain(`article=${id}`));
+    await screen.findByDisplayValue("怎麼走");
+    expect(screen.getByRole("button", { name: "返回清單" })).toBeTruthy();
+  });
+
+  it("goes back to the list by dropping the article from the URL", async () => {
+    await open();
+    fireEvent.click(screen.getByRole("button", { name: "返回清單" }));
+    await waitFor(() => expect(window.location.search).not.toContain("article="));
+    expect(await screen.findByRole("button", { name: "怎麼走" })).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "儲存草稿" })).toBeNull();
   });
 });
 
@@ -133,6 +156,37 @@ describe("publishing", () => {
   });
 });
 
+describe("hiding", () => {
+  it("sends the article version with a reason and then blocks publishing", async () => {
+    await open();
+    fireEvent.click(screen.getByRole("button", { name: "隱藏文章" }));
+    const dialog = await screen.findByRole("dialog");
+    expect((within(dialog).getByRole("button", { name: "確認隱藏" }) as HTMLButtonElement).disabled).toBe(true);
+    fireEvent.change(within(dialog).getByLabelText("原因"), { target: { value: "票價已變" } });
+    fireEvent.click(within(dialog).getByLabelText("我已閱讀並確認這次操作"));
+    fireEvent.click(within(dialog).getByRole("button", { name: "確認隱藏" }));
+
+    await waitFor(() => {
+      const call = mocks.api.mock.calls.find(([path]) => String(path).startsWith(`/admin/guides/${id}/hide`));
+      expect(call).toBeTruthy();
+      expect(JSON.parse(call![1].body)).toEqual({ expected_version: 1, confirmed: true, reason: "票價已變" });
+    });
+    expect(await screen.findByRole("button", { name: "恢復上架" })).toBeTruthy();
+    expect((screen.getByRole("button", { name: "發布" }) as HTMLButtonElement).disabled).toBe(true);
+    expect(screen.getByText(/這篇文章已隱藏/)).toBeTruthy();
+  });
+
+  it("never sends visibility inside the classification form", async () => {
+    await open();
+    fireEvent.click(screen.getByRole("button", { name: "儲存分類" }));
+    await waitFor(() => {
+      const call = mocks.api.mock.calls.find(([path, init]) => String(path).startsWith(`/admin/guides/${id}?`) && init?.method === "PUT");
+      expect(call).toBeTruthy();
+      expect(JSON.parse(call![1].body)).not.toHaveProperty("is_active");
+    });
+  });
+});
+
 describe("conflicts", () => {
   it("tells the editor to reload rather than showing a raw error code", async () => {
     await open();
@@ -147,12 +201,10 @@ describe("a language nobody has started", () => {
   it("offers to start it instead of reporting a failure", async () => {
     mocks.api.mockImplementation((path: string) => {
       if (path.startsWith("/admin/guides/topics")) return Promise.resolve({ topics });
-      if (path.startsWith("/admin/guides?")) return Promise.resolve({ articles: [summary] });
       return Promise.reject(new ApiError("missing", 404, "guide_locale_not_found"));
     });
+    window.history.replaceState(null, "", `/zh-TW/admin/guides?article=${id}&lang=ja`);
     render(<AdminGuidesPanel />);
-    await screen.findByRole("option", { name: /narita-to-tokyo/ });
-    fireEvent.change(screen.getByLabelText("文章列表"), { target: { value: "a1" } });
     expect(await screen.findByRole("button", { name: "新增這個語言的草稿" })).toBeTruthy();
     expect(screen.queryByRole("alert")).toBeNull();
   });

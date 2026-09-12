@@ -51,6 +51,12 @@ NAVIGATION_REGISTRY: tuple[AdminNavigationItem, ...] = (
         id="dashboard", group="overview", href="/admin", label_key="dashboard",
         capability="dashboard.read",
     ),
+    # First-party travel intel and guides (guide_articles). No badge: ``guides_pending``
+    # counts third-party HotspotGuide links, which belong to the hotspots workspace.
+    AdminNavigationItem(
+        id="guides", group="content", href="/admin/guides", label_key="guides",
+        capability="content.read",
+    ),
     AdminNavigationItem(
         id="hotspots", group="content", href="/admin/hotspots", label_key="hotspots",
         capability="content.read", badge_key="hotspots_pending",

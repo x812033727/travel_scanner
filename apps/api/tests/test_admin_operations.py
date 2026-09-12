@@ -26,6 +26,9 @@ def test_navigation_registry_has_stable_unique_destinations() -> None:
     assert len(hrefs) == len(set(hrefs))
     assert "/admin/database" in hrefs
     assert "/admin/audit" in hrefs
+    # The web fallback list has carried /admin/guides since PR #398, but the layout trusts
+    # this registry whenever the API answers, so a missing row made the page "forbidden".
+    assert "/admin/guides" in hrefs
     assert all(item.href.startswith("/admin") for item in operations_service.NAVIGATION_REGISTRY)
 
 

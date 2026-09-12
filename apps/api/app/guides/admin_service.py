@@ -12,11 +12,12 @@ from datetime import UTC, datetime
 from typing import Any, cast
 from uuid import UUID, uuid4
 
-from sqlalchemy import delete, select, update
+from sqlalchemy import delete, func, or_, select, update
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.schemas import AdminAuditView
+from app.db import escape_like
 from app.destinations.catalog import destination_for_id
 from app.guides.models import (
     GuideArticle,
@@ -25,14 +26,26 @@ from app.guides.models import (
     GuideArticleTopic,
     GuideTopic,
 )
-from app.guides.publication import article_is_live, today
+from app.guides.publication import (
+    ARTICLE_STATUSES,
+    ArticleStatus,
+    admin_status_filters,
+    article_is_live,
+    article_status,
+    today,
+)
 from app.guides.schemas import (
+    KINDS,
     ArticleCreate,
     ArticleDetail,
+    ArticleFacets,
     ArticleList,
     ArticleSummary,
     ArticleUpdate,
+    BatchVisibilityResult,
+    BatchVisibilityWrite,
     DraftWrite,
+    FacetCount,
     GuideDocument,
     Kind,
     LocaleState,
@@ -41,6 +54,7 @@ from app.guides.schemas import (
     RevisionAction,
     RevisionDetail,
     RevisionSummary,
+    VisibilityWrite,
 )
 from app.guides.service import (
     MAX_PAGE,
@@ -63,6 +77,8 @@ AUDIT_ACTIONS = (
     "guide_article_published",
     "guide_article_unpublished",
     "guide_article_restored",
+    "guide_article_hidden",
+    "guide_article_unhidden",
 )
 
 
@@ -161,6 +177,7 @@ def _summary(
         featured=article.featured,
         display_order=article.display_order,
         is_active=article.is_active,
+        status=article_status(article, rows),
         version=article.version,
         locales=[_locale_state(row) for row in rows],
         updated_at=article.updated_at,
@@ -353,7 +370,6 @@ async def update_article(
         "valid_until": article.valid_until.isoformat() if article.valid_until else None,
         "featured": article.featured,
         "display_order": article.display_order,
-        "is_active": article.is_active,
     }
     try:
         changed = await session.scalar(
@@ -368,7 +384,6 @@ async def update_article(
                 valid_until=payload.valid_until,
                 featured=payload.featured,
                 display_order=payload.display_order,
-                is_active=payload.is_active,
                 version=payload.expected_version + 1,
                 updated_at=datetime.now(UTC),
             )
@@ -396,7 +411,6 @@ async def update_article(
                         ),
                         "featured": payload.featured,
                         "display_order": payload.display_order,
-                        "is_active": payload.is_active,
                     },
                     "topics": [topic.slug for topic in topics],
                 },
@@ -544,6 +558,166 @@ async def restore_revision(
     )
 
 
+# --- article visibility ---------------------------------------------------------
+#
+# "Hidden" is the article-wide switch (``GuideArticle.is_active``), the one every public
+# reader already checks through ``publication.published_filters``. It leaves each
+# translation's ``published_version`` untouched, so restoring an article puts back exactly
+# the languages that were live before, without a second round of publishing.
+
+
+async def _flip_visibility(
+    session: AsyncSession, article: GuideArticle, *, hidden: bool, expected_version: int
+) -> None:
+    changed = await session.scalar(
+        update(GuideArticle)
+        .where(GuideArticle.id == article.id, GuideArticle.version == expected_version)
+        .values(is_active=not hidden, version=expected_version + 1, updated_at=datetime.now(UTC))
+        .returning(GuideArticle.id)
+        .execution_options(synchronize_session=False)
+    )
+    if changed is None:
+        raise AppError(409, "guide_version_conflict", "這篇文章已被更新，請重新載入後再操作")
+
+
+def _visibility_audit(
+    actor: User,
+    article: GuideArticle,
+    *,
+    hidden: bool,
+    expected_version: int,
+    reason: str,
+    batch_id: UUID | None = None,
+) -> AdminAuditLog:
+    return AdminAuditLog(
+        actor_user_id=actor.id,
+        action="guide_article_hidden" if hidden else "guide_article_unhidden",
+        target=_target(article.id),
+        metadata_json={
+            "article_id": str(article.id),
+            "before_version": expected_version,
+            "version": expected_version + 1,
+            "before": {"is_active": article.is_active},
+            "after": {"is_active": not hidden},
+            "reason": reason,
+            "operator_confirmed": True,
+            "batch_id": str(batch_id) if batch_id else None,
+        },
+    )
+
+
+async def _summaries(
+    session: AsyncSession, articles: list[GuideArticle], locale: Locale
+) -> list[ArticleSummary]:
+    ids = [article.id for article in articles]
+    locales = await _locale_rows(session, ids)
+    topics = await _topics_for(session, ids)
+    return [
+        _summary(article, locales.get(article.id, []), topics.get(article.id, []), locale)
+        for article in articles
+    ]
+
+
+async def set_visibility(
+    session: AsyncSession,
+    actor: User,
+    article_id: UUID,
+    *,
+    hidden: bool,
+    payload: VisibilityWrite,
+    locale: Locale,
+) -> ArticleSummary:
+    article = await _find_article(session, article_id)
+    if article.is_active == (not hidden):
+        # Not idempotent on purpose: a second click from a stale tab would otherwise
+        # write a second audit row saying something changed when nothing did.
+        if hidden:
+            raise AppError(409, "guide_article_already_hidden", "這篇文章已經是隱藏狀態")
+        raise AppError(409, "guide_article_not_hidden", "這篇文章目前並未隱藏")
+    try:
+        await _flip_visibility(
+            session, article, hidden=hidden, expected_version=payload.expected_version
+        )
+        session.add(
+            _visibility_audit(
+                actor,
+                article,
+                hidden=hidden,
+                expected_version=payload.expected_version,
+                reason=payload.reason,
+            )
+        )
+        await session.commit()
+    except Exception:
+        await session.rollback()
+        raise
+    return (await _summaries(session, [await _find_article(session, article_id)], locale))[0]
+
+
+async def batch_visibility(
+    session: AsyncSession, actor: User, payload: BatchVisibilityWrite, locale: Locale
+) -> BatchVisibilityResult:
+    """Hide or restore several articles in one transaction.
+
+    All or nothing: one stale version and nothing is written, because an editor who
+    selected twelve rows against a list they were looking at has no way to tell which
+    seven went through. Rows already in the requested state are skipped, not rewritten.
+    """
+    hidden = payload.action == "hide"
+    expected = {item.id: item.expected_version for item in payload.items}
+    articles = list(
+        await session.scalars(
+            select(GuideArticle)
+            .where(GuideArticle.id.in_(list(expected)))
+            .with_for_update()
+            .execution_options(populate_existing=True)
+        )
+    )
+    if len(articles) != len(expected):
+        raise AppError(404, "guide_article_not_found", "部分文章不存在，請重新載入清單")
+    if any(article.version != expected[article.id] for article in articles):
+        raise AppError(409, "guide_version_conflict", "部分文章已被更新，請重新載入後再操作")
+    batch_id = uuid4()
+    updated = 0
+    try:
+        for article in articles:
+            if article.is_active == (not hidden):
+                continue
+            await _flip_visibility(
+                session, article, hidden=hidden, expected_version=article.version
+            )
+            session.add(
+                _visibility_audit(
+                    actor,
+                    article,
+                    hidden=hidden,
+                    expected_version=article.version,
+                    reason=payload.reason,
+                    batch_id=batch_id,
+                )
+            )
+            updated += 1
+        await session.commit()
+    except Exception:
+        await session.rollback()
+        raise
+    order = {item.id: index for index, item in enumerate(payload.items)}
+    refreshed = sorted(
+        await session.scalars(
+            select(GuideArticle)
+            .where(GuideArticle.id.in_(list(expected)))
+            .execution_options(populate_existing=True)
+        ),
+        key=lambda article: order[article.id],
+    )
+    return BatchVisibilityResult(
+        updated=updated,
+        skipped=len(articles) - updated,
+        status="hidden" if hidden else "active",
+        articles=await _summaries(session, refreshed, locale),
+    )
+
+
 def _revision_view(revision: GuideArticleRevision) -> RevisionDetail:
     return RevisionDetail(
         id=revision.id,
@@ -623,35 +797,88 @@ async def list_articles(
     kind: Kind | None = None,
     destination: str | None = None,
     topic: str | None = None,
+    status: ArticleStatus | None = None,
+    q: str | None = None,
+    page: int = 1,
     limit: int = MAX_PAGE,
 ) -> ArticleList:
-    query = select(GuideArticle)
+    # Keyed by dimension so each facet can drop only its own filter, the shape the foods
+    # admin list already uses.
+    filters: dict[str, Any] = {}
     if kind is not None:
-        query = query.where(GuideArticle.kind == kind)
+        filters["kind"] = GuideArticle.kind == kind
     if destination:
-        query = query.where(GuideArticle.destination_id == destination.casefold())
+        filters["destination"] = GuideArticle.destination_id == destination.casefold()
     if topic:
-        query = query.where(
-            GuideArticle.id.in_(
-                select(GuideArticleTopic.article_id)
-                .join(GuideTopic, GuideTopic.id == GuideArticleTopic.topic_id)
-                .where(GuideTopic.slug == topic.casefold())
-            )
+        filters["topic"] = GuideArticle.id.in_(
+            select(GuideArticleTopic.article_id)
+            .join(GuideTopic, GuideTopic.id == GuideArticleTopic.topic_id)
+            .where(GuideTopic.slug == topic.casefold())
         )
+    if status is not None:
+        filters["status"] = admin_status_filters(status)[0]
+    if q and q.strip():
+        pattern = f"%{escape_like(q.strip())}%"
+        # The slug is the URL; the title is what the editor remembers. Draft titles, not
+        # published ones, so an article nobody has published yet can still be found.
+        titled = select(GuideArticleLocale.article_id).where(
+            GuideArticleLocale.draft_json["title"].as_string().ilike(pattern, escape="\\")
+        )
+        filters["q"] = or_(
+            GuideArticle.slug.ilike(pattern, escape="\\"), GuideArticle.id.in_(titled)
+        )
+    where = list(filters.values())
+
+    def without(dimension: str) -> list[Any]:
+        return [clause for key, clause in filters.items() if key != dimension]
+
+    size = min(max(limit, 1), 100)
+    total = int(await session.scalar(select(func.count(GuideArticle.id)).where(*where)) or 0)
     rows = list(
         await session.scalars(
-            query.order_by(
+            select(GuideArticle)
+            .where(*where)
+            .order_by(
                 GuideArticle.featured.desc(),
                 GuideArticle.display_order,
                 GuideArticle.updated_at.desc(),
-            ).limit(min(max(limit, 1), MAX_PAGE))
+                GuideArticle.slug,
+            )
+            .offset((max(page, 1) - 1) * size)
+            .limit(size)
         )
     )
-    ids = [row.id for row in rows]
-    locales = await _locale_rows(session, ids)
-    topics = await _topics_for(session, ids)
+    status_counts = [
+        FacetCount(
+            code=value,
+            count=int(
+                await session.scalar(
+                    select(func.count(GuideArticle.id)).where(
+                        *without("status"), *admin_status_filters(value)
+                    )
+                )
+                or 0
+            ),
+        )
+        for value in ARTICLE_STATUSES
+    ]
+    kind_rows: dict[str, int] = {
+        str(value): int(count)
+        for value, count in (
+            await session.execute(
+                select(GuideArticle.kind, func.count(GuideArticle.id))
+                .where(*without("kind"))
+                .group_by(GuideArticle.kind)
+            )
+        ).all()
+    }
     return ArticleList(
-        articles=[
-            _summary(row, locales.get(row.id, []), topics.get(row.id, []), locale) for row in rows
-        ]
+        articles=await _summaries(session, rows, locale),
+        total=total,
+        page=max(page, 1),
+        pages=(total + size - 1) // size,
+        facets=ArticleFacets(
+            status=status_counts,
+            kind=[FacetCount(code=value, count=int(kind_rows.get(value, 0))) for value in KINDS],
+        ),
     )
