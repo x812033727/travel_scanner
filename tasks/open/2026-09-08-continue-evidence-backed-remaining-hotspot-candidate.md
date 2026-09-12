@@ -161,12 +161,21 @@ different identity source" — was half right. The identity source existed and w
 What is left, and it is genuinely small:
 
 - 164 Korean rows (unchanged, deliberately).
-- 11 non-Korean rows, each with its blocker written into `review_reason`. **Four are one edit away**
-  — 遍照寺, 新福宮, Huyện Sỹ Church and Thác Mây Treo all have a confirmed Place ID and are held up
-  only by a coordinate that is wrong in Wikidata or Wikipedia upstream. Fixing those four upstream
-  coordinates clears them.
+- 9 non-Korean rows, each with its blocker written into `review_reason`. Of the four that were held
+  up only by a wrong upstream coordinate, **two were cleared the same day with `admin_verified`**
+  after the site owner declined to edit Wikidata: Huyện Sỹ Church (OSM way 907280822, which is
+  itself tagged `wikidata=Q10800886` and disagrees with that item by 31 km; French Wikipedia
+  corroborates within 78 m) and 新福宮 (OSM node 5110491036, re-homed `taichung` -> `taipei`).
+  遍照寺 and Thác Mây Treo were left alone on purpose — ja-wiki carries the *same* coordinate as
+  Wikidata for the first, and Wikidata has no P625 at all for the second, so neither has a sourceable
+  replacement that is not Google's.
+- Wikidata remains wrong for Q10800886 and Q10306724. Our rows no longer depend on it.
 - 臺北天空塔 stays pending on the site owner's instruction until it opens, because `discover_city`
   skips rejected rows and a rejection would be permanent.
 
 Rankings lag the writes: `refresh_rankings` takes every active public row but only runs inside
 `hotspot-collector`, which rebuilds every 21,600 s, so approvals surface publicly within six hours.
+
+Filed from this batch: `2026-09-12-search-text` — `review` rewrites `city_name` when it re-homes a
+row but never rebuilds `search_text`, and `collect_hotspots` skips approved rows, so a moved row
+stays searchable under its old city forever (three rows are in that state now).

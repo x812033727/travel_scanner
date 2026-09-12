@@ -9540,10 +9540,10 @@
   },
   {
    "batch": "2026-09-13-non-korean-remainder",
-   "note": "The 41 non-Korean rows the 2026-09-12 batches left. Identities came from Places Autocomplete (essentials tier, 98/10,000 used) instead of the single-result Text Search the earlier batches used; every approval was confirmed a second time through the admin's own map-candidates endpoint. Read back out of production after the writes.",
+   "note": "The 41 non-Korean rows the 2026-09-12 batches left. Identities came from Places Autocomplete (essentials tier, 98/10,000 used) instead of the single-result Text Search the earlier batches used; every approval was confirmed a second time through the admin's own map-candidates endpoint. Two rows whose Wikidata coordinate is wrong upstream were cleared with admin_verified coordinates instead, on the site owner's instruction not to edit Wikidata. Read back out of production after the writes.",
    "totals": {
-    "approved": 11,
-    "pending": 11,
+    "approved": 13,
+    "pending": 9,
     "rejected": 19
    },
    "rows": [
@@ -9621,6 +9621,36 @@
      "latitude": "23.304980",
      "longitude": "120.306180",
      "reason": "原歸高雄有誤：中文維基百科與本列座標均為 22.6199,120.2817（高雄），實際位於臺南市新營區公園路一段139號。改歸臺南，座標改採臺南市政府台南旅遊網官方頁所載 23.30498,120.30618，Google「新營美術園區」距該點 0.266 公里。"
+    },
+    {
+     "slug": "wikidata-q10306724",
+     "name": "新福宮",
+     "city_name": "台北",
+     "country_code": "TW",
+     "category": "culture",
+     "review_status": "approved",
+     "map_match_status": "verified",
+     "google_place_id": "ChIJA96E-WepQjQRr4hLD1ZphIM",
+     "qid": "Q10306724",
+     "coordinate_source_type": "admin_verified",
+     "latitude": "25.056255",
+     "longitude": "121.526170",
+     "reason": "原歸台中有誤，已改歸台北。Wikidata P625 與中文維基百科座標均為 24.1352,120.6894（台中），與條目內文「臺北市中山區新生北路二段」相差 113 公里；上游不修改，改由管理員核實後寫入 OpenStreetMap node 5110491036「台北新福宮，新生北路二段62巷，中山里，中山區」的 25.0562546,121.5261696。Google 獨立回同一門牌（新福宮(土地公廟)，新生北路二段62巷），三方一致。"
+    },
+    {
+     "slug": "nha-tho-huyen-sy",
+     "name": "Huyen Sy Church",
+     "city_name": "胡志明市",
+     "country_code": "VN",
+     "category": "culture",
+     "review_status": "approved",
+     "map_match_status": "verified",
+     "google_place_id": "ChIJY58O7asvdTERJhBD3mlVNbw",
+     "qid": "Q10800886",
+     "coordinate_source_type": "admin_verified",
+     "latitude": "10.768614",
+     "longitude": "106.688957",
+     "reason": "座標由管理員核實後寫入。Wikidata P625（10.7547,106.4150）偏西 31 公里且無法在上游修正；改採 OpenStreetMap way 907280822——該建物本身標註 wikidata=Q10800886，與本列同一識別——的 10.768614,106.688957（1 Tôn Thất Tùng, Bến Thành, Quận 1）。法文維基百科 Église Saint-Philippe (Hô Chi Minh-Ville) 獨立記載 10.76878,106.68966，相距 78 公尺，互為佐證。地圖識別 Google「Nhà thờ Huyện Sỹ」（同址）。"
     },
     {
      "slug": "wikidata-q30919669",
@@ -9758,21 +9788,6 @@
      "reason": "Google 僅有「Syonan Jinja Historic Marker」（Sime Road／Lornie Nature Corridor），距本列 Wikidata 座標 1.48 公里；「Syonan Jinja Ruins」「Syonan Shrine MacRitchie」等查詢皆無結果。遺構位於中央集水區自然保護區內，需人工確認該標示牌是否為正確識別。"
     },
     {
-     "slug": "wikidata-q10306724",
-     "name": "新福宮",
-     "city_name": "台中",
-     "country_code": "TW",
-     "category": "culture",
-     "review_status": "pending",
-     "map_match_status": "unverified",
-     "google_place_id": "",
-     "qid": "Q10306724",
-     "coordinate_source_type": "wikidata",
-     "latitude": "24.135173",
-     "longitude": "120.689403",
-     "reason": "地圖識別已確認：新福宮(土地公廟)，臺北市中山區中山里新生北路二段62巷，Place ID ChIJA96E-WepQjQRr4hLD1ZphIM，與條目內文相符。卡在座標：Wikidata P625 與中文維基百科座標均為 24.1352,120.6894（臺中），本列座標即沿用該錯誤值。修正上游座標或補可稽核來源後可改歸臺北並核准。"
-    },
-    {
      "slug": "wikidata-q47528623",
      "name": "臺北天空塔",
      "city_name": "台北",
@@ -9786,21 +9801,6 @@
      "latitude": "25.036500",
      "longitude": "121.566056",
      "reason": "維基百科至 2026-09 仍記為興建中（2022 年 11 月結構封頂），尚未開放參觀。依決定保留待審、不以拒絕留下永久墓碑（探索程式會跳過 rejected 的列），待開放後補地圖識別再核准。"
-    },
-    {
-     "slug": "nha-tho-huyen-sy",
-     "name": "Huyen Sy Church",
-     "city_name": "胡志明市",
-     "country_code": "VN",
-     "category": "culture",
-     "review_status": "pending",
-     "map_match_status": "unverified",
-     "google_place_id": "",
-     "qid": "Q10800886",
-     "coordinate_source_type": "",
-     "latitude": "",
-     "longitude": "",
-     "reason": "地圖識別已確認：Nhà thờ Huyện Sỹ（Đường Tôn Thất Tùng, Bến Thành, Quận 1），Place ID ChIJY58O7asvdTERJhBD3mlVNbw。卡在座標：Wikidata P625（10.7547,106.4150）偏西約 31 公里，越南語維基百科無座標，本列亦無座標，缺少可稽核的永久來源。修正 Wikidata 上游或補官方旅遊來源後即可核准。"
     },
     {
      "slug": "wikidata-q20025844",

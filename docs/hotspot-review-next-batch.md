@@ -403,11 +403,11 @@ the same direction as the candidate.** Two independent lookups disagreeing is wh
 
 | | before | after |
 |---|---|---|
-| pending | 205 | **175** |
-| approved | 1,953 | 1,964 |
+| pending | 205 | **173** |
+| approved | 1,953 | 1,966 |
 | rejected | 1,731 | 1,750 |
 
-The 41 non-Korean rows became 11 approved, 19 rejected, 11 still pending. **164 Korean rows are
+The 41 non-Korean rows became 13 approved, 19 rejected, 9 still pending. **164 Korean rows are
 untouched by choice** — NAVER's search API answers a `ncaptcha` challenge to an unauthenticated
 caller, which is not something to work around, so the gate still wants a key or a person.
 
@@ -438,18 +438,45 @@ because a rejection is a tombstone discovery skips and the tower is only under c
 lists only the buildings on it (the 京士柏道 precedent), and a coworking space whose Google entry is
 exact but whose nature is a place to work.
 
-## The 11 still pending, and what each one waits for
+## The 9 still pending, and what each one waits for
 
 | row | blocked on |
 |---|---|
 | 遍照寺 (沖縄市) | stored coordinate is the temple's columbarium, 3.2 km from the temple |
-| 新福宮 | Wikidata and zh-wiki coordinates both say Taichung; Place ID found |
-| Huyện Sỹ Church | Wikidata P625 is 31 km west; no other auditable source. Place ID found |
 | Thác Mây Treo | re-homed to Đà Nẵng; Google's waterfall is 3.7 km from the stored point |
 | 昭南神社 | only a `Syonan Jinja Historic Marker` 1.48 km away |
 | 鎮平台 | only `Đồn Mang Cá`, an active military compound, 522 m away |
 | 枳殻坂, Đèo Tà Nung, Lăng Trường Thiệu, Lục bộ | no Google POI after four query shapes each |
 | 臺北天空塔 | still under construction |
 
-Four of them are one edit away: the Place ID is known and only the coordinate is wrong upstream.
-Fixing those four coordinates in Wikidata would clear them on the next pass.
+## Two more rows were cleared without touching Wikidata
+
+Four rows were blocked only by a coordinate that is wrong upstream. The site owner declined to edit
+Wikidata, so two of them — the two where a replacement could be sourced and cross-checked — were
+cleared with `admin_verified` instead, the vocabulary's own term for a coordinate a human vouched
+for, each pointing at an auditable public URL. They are the last two entries in the approved list
+above, not in the pending table:
+
+- **Huyện Sỹ Church** → 10.768614, 106.688957, from OpenStreetMap way 907280822. That way is
+  **tagged `wikidata=Q10800886`**, the row's own QID, so OSM and Wikidata disagree by 31 km about
+  the same object. French Wikipedia independently gives 10.76878, 106.68966 — 78 m away.
+  Italian Wikipedia carries Wikidata's wrong value, which is how the error spread.
+- **新福宮** → 25.0562546, 121.5261696, from OpenStreetMap node 5110491036
+  (「台北新福宮，新生北路二段62巷，中山里，中山區」), re-homed from `taichung` to `taipei`.
+  Google independently returns the same street number. Wikidata and zh-wiki are 113 km out.
+
+The other two were left alone on purpose:
+
+- **遍照寺 (沖縄市)** — ja-wiki carries the *same* coordinate as Wikidata, so this is not a
+  transcription slip, and the temple was building a new 本堂 as of October 2023 which may well be
+  at the 桃原 site. There is no source for a replacement that is not Google's.
+- **Thác Mây Treo** — Wikidata has no P625 at all; the coordinate comes from vi-wiki, and nothing
+  available says whether it or Google's pin is the right one.
+
+Wikidata itself is therefore still wrong for Q10800886 and Q10306724. Anyone with an account can
+fix them; our rows no longer depend on it.
+
+**One wart this left behind**: `POST /admin/hotspots/review` rewrites `city_name` when it re-homes a
+row but never rebuilds `search_text`, and `collect_hotspots` skips approved rows, so a moved row
+stays searchable under its old city forever. Three rows are in that state right now. Filed as
+`2026-09-12-search-text`.
