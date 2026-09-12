@@ -1,18 +1,18 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { Fragment, useCallback, useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { AdminReadOnlyNotice, useAdminActionGuard } from "@/components/admin-action-guard";
 import { AdminGuidesList, GuideVisibilityDialog, updateAdminQuery, visibilityError, type VisibilityAction } from "@/components/admin-guides-list";
 import { Button, Dialog } from "@/components/community/ui";
-import { ContentBlocks } from "@/components/content-blocks";
+import { ContentBlocks, type ContentBlockLabels } from "@/components/content-blocks";
 import { useAdminQueryValue } from "@/lib/admin-workspace-navigation";
 import { api, ApiError } from "@/lib/api";
-import type { ContentBlock } from "@/lib/content-blocks";
+import { calloutTones, type ImageBlock, type ImageCredit, type TableBlock } from "@/lib/content-blocks";
 import { useNavigationGuard } from "@/lib/navigation-guard";
 import {
-  guideKinds, guideSection,
-  type GuideDocument, type GuideKind, type GuideSource, type GuideTopic,
+  guideKinds, guideSection, offerModules, splitGuideBlocks,
+  type GuideBlock, type GuideDocument, type GuideHero, type GuideKind, type GuideSource, type GuideTopic,
 } from "@/lib/guides";
 import { isUuid, type ArticleDetail, type ArticleSummary } from "@/lib/guides-admin";
 import { sitePageLocales, type SitePageLocale } from "@/lib/site-pages";
@@ -21,9 +21,60 @@ const control = "min-h-11 w-full rounded-xl border border-[var(--control-border,
 const languages: Record<SitePageLocale, string> = { "zh-TW": "繁體中文", "zh-CN": "简体中文", en: "English", ja: "日本語", ko: "한국어" };
 
 const emptyDocument = (): GuideDocument => ({
-  title: "", description: "", blocks: [{ type: "paragraph", text: "" }], sources: [],
+  title: "", description: "", hero: null, blocks: [{ type: "paragraph", text: "" }], sources: [],
 });
 const isSiteLocale = (value: string): value is SitePageLocale => (sitePageLocales as readonly string[]).includes(value);
+
+/** Every block an editor can add, in the order the buttons appear. */
+const blockTypes = ["heading", "paragraph", "list", "link", "image", "table", "callout", "offer"] as const;
+type BlockType = typeof blockTypes[number];
+
+function newBlock(type: BlockType): GuideBlock {
+  switch (type) {
+    case "heading": return { type, level: 2, text: "" };
+    case "list": return { type, items: [""], ordered: false };
+    case "link": return { type, text: "", url: "" };
+    case "image": return { type, src: "", alt: "", width: 1600, height: 900, caption: "", credit: null };
+    case "table": return { type, header: ["", ""], rows: [["", ""]], caption: "" };
+    case "callout": return { type, tone: "tip", title: "", text: "" };
+    case "offer": return { type, module: "activities", destination_id: null, heading: "" };
+    default: return { type: "paragraph", text: "" };
+  }
+}
+
+const emptyCredit = (): ImageCredit => ({ author: "", license: "", source_url: null });
+const emptyHero = (): GuideHero => ({ src: "", alt: "", width: 1600, height: 900, credit: null });
+
+/** A credit with nothing in it is no credit; the API refuses blank author or licence. */
+function packCredit(credit: ImageCredit): ImageCredit | null {
+  return credit.author || credit.license || credit.source_url ? credit : null;
+}
+
+/** The table as the editor types it: header on the first line, cells split by `|`. Split and
+ *  joined without trimming so the text round-trips exactly and the caret never jumps; the API
+ *  strips each cell when the draft is saved. */
+function tableText(block: TableBlock): string {
+  return [block.header, ...block.rows].map((row) => row.join("|")).join("\n");
+}
+
+function parseTable(text: string): Pick<TableBlock, "header" | "rows"> {
+  const [first = "", ...rest] = text.split("\n");
+  return {
+    header: first.split("|"),
+    rows: rest.filter((line) => line !== "").map((line) => line.split("|")),
+  };
+}
+
+const sizeValue = (value: string) => Math.max(0, Math.min(4000, Number.parseInt(value, 10) || 0));
+
+/** How the affiliate modules are named everywhere else on the site (`travelServices`). */
+const moduleLabelKeys: Record<typeof offerModules[number], string> = {
+  flight: "affiliateFlight",
+  hotel: "affiliateHotel",
+  activities: "affiliateActivities",
+  transport: "affiliateTransport",
+  connectivity: "affiliateConnectivity",
+};
 
 /**
  * The URL owns the workspace: no `?article=` is the list, `?article=<id>&lang=<locale>` is
@@ -32,6 +83,7 @@ const isSiteLocale = (value: string): value is SitePageLocale => (sitePageLocale
  */
 export function AdminGuidesPanel() {
   const t = useTranslations("admin.guides");
+  const ts = useTranslations("travelServices");
   const interfaceLocale = useLocale();
   const manage = useAdminActionGuard("content.manage");
   const [selected] = useAdminQueryValue("article", "", isUuid);
@@ -46,6 +98,9 @@ export function AdminGuidesPanel() {
   const detail = loaded?.key === key ? loaded.detail : undefined;
   const setDetail = (value: ArticleDetail | null) => setLoaded({ key, detail: value });
   const [draft, setDraft] = useState<GuideDocument | null>(null);
+  // What the editor has typed into each table so far, by block position. The parsed block is
+  // what gets saved; the raw text is what stays on screen, so a half-typed row survives.
+  const [tableDrafts, setTableDrafts] = useState<Record<number, string>>({});
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
@@ -78,6 +133,9 @@ export function AdminGuidesPanel() {
   // rather than letting a save discover it.
   const kindLocked = Boolean(detail?.locales.some((entry) => entry.published_version !== null));
   const row = detail?.locales.find((entry) => entry.locale === locale) ?? null;
+  const blockLabels: ContentBlockLabels = {
+    imageCredit: t("imageCredit"), tip: t("toneTip"), warning: t("toneWarning"), info: t("toneInfo"),
+  };
 
   useEffect(() => {
     if (!selected) return;
@@ -94,7 +152,7 @@ export function AdminGuidesPanel() {
     api<ArticleDetail>(`/admin/guides/${selected}${suffix}`, { signal: controller.signal })
       .then((value) => {
         if (controller.signal.aborted) return;
-        setDetail(value); setDraft(value.draft);
+        setDetail(value); setDraft(value.draft); setTableDrafts({});
       })
       .catch((problem: unknown) => {
         if (controller.signal.aborted) return;
@@ -117,7 +175,7 @@ export function AdminGuidesPanel() {
     try { return await work(); } catch (problem) { showError(problem); return undefined; } finally { setBusy(false); }
   }
 
-  const refresh = (value: ArticleDetail) => { setDetail(value); setDraft(value.draft); };
+  const refresh = (value: ArticleDetail) => { setDetail(value); setDraft(value.draft); setTableDrafts({}); };
 
   const create = async () => {
     const value = await run(async () => api<ArticleDetail>("/admin/guides", {
@@ -193,17 +251,154 @@ export function AdminGuidesPanel() {
     setNotice(t("restored"));
   });
 
-  function updateBlock(index: number, block: ContentBlock) {
+  function updateBlock(index: number, block: GuideBlock) {
     if (draft) setDraft({ ...draft, blocks: draft.blocks.map((entry, i) => (i === index ? block : entry)) });
+  }
+  function setBlocks(blocks: GuideBlock[]) {
+    if (!draft) return;
+    // Positions change, so the raw table text keyed by position is thrown away; what comes
+    // back is the saved shape of each table, which is what was parsed from it anyway.
+    setTableDrafts({});
+    setDraft({ ...draft, blocks });
   }
   function moveBlock(index: number, offset: number) {
     if (!draft || index + offset < 0 || index + offset >= draft.blocks.length) return;
     const blocks = [...draft.blocks];
     [blocks[index], blocks[index + offset]] = [blocks[index + offset], blocks[index]];
-    setDraft({ ...draft, blocks });
+    setBlocks(blocks);
   }
   function updateSource(index: number, source: GuideSource) {
     if (draft) setDraft({ ...draft, sources: draft.sources.map((entry, i) => (i === index ? source : entry)) });
+  }
+  function setHero(hero: GuideHero | null) {
+    if (draft) setDraft({ ...draft, hero });
+  }
+
+  /** The credit fields shared by the hero and every image block. */
+  function creditFields(credit: ImageCredit | null, apply: (credit: ImageCredit | null) => void) {
+    const current = credit ?? emptyCredit();
+    return (
+      <div className="grid gap-3 sm:grid-cols-3">
+        <label className="grid gap-2">{t("creditAuthor")}
+          <input className={control} value={current.author} onChange={(event) => apply(packCredit({ ...current, author: event.target.value }))} />
+        </label>
+        <label className="grid gap-2">{t("creditLicense")}
+          <input className={control} value={current.license} onChange={(event) => apply(packCredit({ ...current, license: event.target.value }))} />
+        </label>
+        <label className="grid gap-2">{t("creditUrl")}
+          <input className={control} value={current.source_url ?? ""} onChange={(event) => apply(packCredit({ ...current, source_url: event.target.value || null }))} />
+        </label>
+        <p className="text-sm leading-6 text-[var(--muted)] sm:col-span-3">{t("creditHelp")}</p>
+      </div>
+    );
+  }
+
+  function imageFields(image: Pick<ImageBlock, "src" | "alt" | "width" | "height">, apply: (patch: Partial<Pick<ImageBlock, "src" | "alt" | "width" | "height">>) => void) {
+    return (
+      <div className="grid gap-3 sm:grid-cols-2">
+        <label className="grid gap-2">{t("imageSrc")}
+          <input className={control} value={image.src} placeholder="/guides/narita-to-tokyo/hero.jpg" onChange={(event) => apply({ src: event.target.value })} />
+        </label>
+        <label className="grid gap-2">{t("imageAlt")}
+          <input className={control} value={image.alt} onChange={(event) => apply({ alt: event.target.value })} />
+        </label>
+        <label className="grid gap-2">{t("imageWidth")}
+          <input type="number" min={1} max={4000} className={control} value={image.width || ""} onChange={(event) => apply({ width: sizeValue(event.target.value) })} />
+        </label>
+        <label className="grid gap-2">{t("imageHeight")}
+          <input type="number" min={1} max={4000} className={control} value={image.height || ""} onChange={(event) => apply({ height: sizeValue(event.target.value) })} />
+        </label>
+      </div>
+    );
+  }
+
+  function blockFields(block: GuideBlock, index: number) {
+    switch (block.type) {
+      case "heading":
+        return <>
+          <label className="grid gap-2">{t("level")}
+            <select className={control} value={block.level} onChange={(event) => updateBlock(index, { ...block, level: Number(event.target.value) as 2 | 3 })}>
+              <option value={2}>2</option><option value={3}>3</option>
+            </select>
+          </label>
+          <label className="grid gap-2">{t("text")}
+            <textarea className={control} rows={2} value={block.text} onChange={(event) => updateBlock(index, { ...block, text: event.target.value })} />
+          </label>
+        </>;
+      case "paragraph":
+        return <label className="grid gap-2">{t("text")}
+          <textarea className={control} rows={4} value={block.text} onChange={(event) => updateBlock(index, { ...block, text: event.target.value })} />
+        </label>;
+      case "list":
+        return <>
+          <label className="grid gap-2">{t("itemsHelp")}
+            <textarea className={control} rows={4} value={block.items.join("\n")} onChange={(event) => updateBlock(index, { ...block, items: event.target.value.split("\n") })} />
+          </label>
+          <label className="flex min-h-11 items-center gap-3">
+            <input type="checkbox" checked={block.ordered} onChange={(event) => updateBlock(index, { ...block, ordered: event.target.checked })} />{t("ordered")}
+          </label>
+        </>;
+      case "link":
+        return <>
+          <label className="grid gap-2">{t("text")}
+            <textarea className={control} rows={2} value={block.text} onChange={(event) => updateBlock(index, { ...block, text: event.target.value })} />
+          </label>
+          <label className="grid gap-2">{t("url")}
+            <input className={control} value={block.url} onChange={(event) => updateBlock(index, { ...block, url: event.target.value })} />
+          </label>
+        </>;
+      case "image":
+        return <>
+          {imageFields(block, (patch) => updateBlock(index, { ...block, ...patch }))}
+          <label className="grid gap-2">{t("imageCaption")}
+            <input className={control} value={block.caption ?? ""} onChange={(event) => updateBlock(index, { ...block, caption: event.target.value })} />
+          </label>
+          {creditFields(block.credit ?? null, (credit) => updateBlock(index, { ...block, credit }))}
+        </>;
+      case "table":
+        return <>
+          <label className="grid gap-2">{t("tableHelp")}
+            <textarea className={`${control} font-mono`} rows={6} value={tableDrafts[index] ?? tableText(block)} onChange={(event) => {
+              setTableDrafts((current) => ({ ...current, [index]: event.target.value }));
+              updateBlock(index, { ...block, ...parseTable(event.target.value) });
+            }} />
+          </label>
+          <label className="grid gap-2">{t("tableCaption")}
+            <input className={control} value={block.caption ?? ""} onChange={(event) => updateBlock(index, { ...block, caption: event.target.value })} />
+          </label>
+        </>;
+      case "callout":
+        return <>
+          <label className="grid gap-2">{t("tone")}
+            <select className={control} value={block.tone} onChange={(event) => updateBlock(index, { ...block, tone: event.target.value as typeof block.tone })}>
+              {calloutTones.map((tone) => <option key={tone} value={tone}>{blockLabels[tone]}</option>)}
+            </select>
+          </label>
+          <label className="grid gap-2">{t("calloutTitle")}
+            <input className={control} value={block.title ?? ""} onChange={(event) => updateBlock(index, { ...block, title: event.target.value })} />
+          </label>
+          <label className="grid gap-2">{t("text")}
+            <textarea className={control} rows={3} value={block.text} onChange={(event) => updateBlock(index, { ...block, text: event.target.value })} />
+          </label>
+        </>;
+      case "offer":
+        return <>
+          <label className="grid gap-2">{t("module")}
+            <select className={control} value={block.module} onChange={(event) => updateBlock(index, { ...block, module: event.target.value as typeof block.module })}>
+              {offerModules.map((module) => <option key={module} value={module}>{ts(moduleLabelKeys[module])}</option>)}
+            </select>
+          </label>
+          <label className="grid gap-2">{t("offerDestination")}
+            <input className={control} value={block.destination_id ?? ""} placeholder={detail?.destination_id ?? ""} onChange={(event) => updateBlock(index, { ...block, destination_id: event.target.value || null })} />
+          </label>
+          <label className="grid gap-2">{t("offerHeading")}
+            <input className={control} value={block.heading ?? ""} onChange={(event) => updateBlock(index, { ...block, heading: event.target.value })} />
+          </label>
+          <p className="text-sm leading-6 text-[var(--muted)]">{t("offerHelp")}</p>
+        </>;
+      default:
+        return null;
+    }
   }
 
   return <div className="space-y-6">
@@ -310,40 +505,28 @@ export function AdminGuidesPanel() {
             <textarea className={control} required maxLength={500} value={draft.description} onChange={(event) => setDraft({ ...draft, description: event.target.value })} />
           </label>
 
+          <section className="space-y-3 rounded-2xl border border-[var(--line)] p-4">
+            <h2 className="font-semibold">{t("hero")}</h2>
+            <p className="text-sm leading-6 text-[var(--muted)]">{t("heroHelp")}</p>
+            {draft.hero ? <>
+              {imageFields(draft.hero, (patch) => setHero({ ...(draft.hero ?? emptyHero()), ...patch }))}
+              {creditFields(draft.hero.credit, (credit) => setHero({ ...(draft.hero ?? emptyHero()), credit }))}
+              <Button secondary onClick={() => setHero(null)}>{t("removeHero")}</Button>
+            </> : <Button secondary onClick={() => setHero(emptyHero())}>{t("addHero")}</Button>}
+          </section>
+
           <div className="space-y-5">{draft.blocks.map((block, index) => <fieldset key={index} className="space-y-3 rounded-2xl border border-[var(--line)] p-4">
-            <legend className="px-2 font-semibold">{t(block.type)} {index + 1}</legend>
-            {block.type === "heading" && <label className="grid gap-2">{t("level")}
-              <select className={control} value={block.level} onChange={(event) => updateBlock(index, { ...block, level: Number(event.target.value) as 2 | 3 })}>
-                <option value={2}>2</option><option value={3}>3</option>
-              </select>
-            </label>}
-            {block.type === "list" ? <>
-              <label className="grid gap-2">{t("itemsHelp")}
-                <textarea className={control} rows={4} value={block.items.join("\n")} onChange={(event) => updateBlock(index, { ...block, items: event.target.value.split("\n") })} />
-              </label>
-              <label className="flex min-h-11 items-center gap-3">
-                <input type="checkbox" checked={block.ordered} onChange={(event) => updateBlock(index, { ...block, ordered: event.target.checked })} />{t("ordered")}
-              </label>
-            </> : <label className="grid gap-2">{t("text")}
-              <textarea className={control} rows={block.type === "paragraph" ? 4 : 2} value={block.text} onChange={(event) => updateBlock(index, { ...block, text: event.target.value })} />
-            </label>}
-            {block.type === "link" && <label className="grid gap-2">{t("url")}
-              <input className={control} value={block.url} onChange={(event) => updateBlock(index, { ...block, url: event.target.value })} />
-            </label>}
+            <legend className="px-2 font-semibold">{t(`blocks.${block.type}`)} {index + 1}</legend>
+            {blockFields(block, index)}
             <div className="flex flex-wrap gap-2">
               <Button secondary disabled={index === 0} onClick={() => moveBlock(index, -1)}>{t("moveUp")}</Button>
               <Button secondary disabled={index === draft.blocks.length - 1} onClick={() => moveBlock(index, 1)}>{t("moveDown")}</Button>
-              <Button secondary onClick={() => setDraft({ ...draft, blocks: draft.blocks.filter((_, i) => i !== index) })}>{t("removeBlock")}</Button>
+              <Button secondary onClick={() => setBlocks(draft.blocks.filter((_, i) => i !== index))}>{t("removeBlock")}</Button>
             </div>
           </fieldset>)}</div>
 
-          <div className="flex flex-wrap gap-2">{(["heading", "paragraph", "list", "link"] as const).map((type) =>
-            <Button secondary key={type} onClick={() => setDraft({
-              ...draft,
-              blocks: [...draft.blocks, type === "list" ? { type, items: [""], ordered: false }
-                : type === "heading" ? { type, level: 2 as const, text: "" }
-                : type === "link" ? { type, text: "", url: "" } : { type, text: "" }],
-            })}>{t("addBlock")} · {t(type)}</Button>)}
+          <div className="flex flex-wrap gap-2">{blockTypes.map((type) =>
+            <Button secondary key={type} onClick={() => setBlocks([...draft.blocks, newBlock(type)])}>{t("addBlock")} · {t(`blocks.${type}`)}</Button>)}
           </div>
 
           <section className="space-y-4 rounded-2xl border border-[var(--line)] p-4">
@@ -407,11 +590,19 @@ export function AdminGuidesPanel() {
     </Dialog>}
 
     {preview && <Dialog title={t("preview")} onClose={() => setPreview(null)}>
-      {/* The reader's renderer, not a second one, so the preview cannot flatter the draft. */}
+      {/* The reader's renderer, not a second one, so the preview cannot flatter the draft. A
+          partner block shows where its buttons will go; the buttons themselves come from the
+          catalog at read time and are never fetched from the editor. */}
       <div lang={locale} className="space-y-6">
         <h1 className="text-3xl font-bold">{preview.title}</h1>
         <p className="leading-7 text-[var(--muted)]">{preview.description}</p>
-        <ContentBlocks blocks={preview.blocks} />
+        {preview.hero?.src ? <img src={preview.hero.src} alt={preview.hero.alt} width={preview.hero.width} height={preview.hero.height} className="h-auto w-full rounded-2xl" /> : null}
+        {splitGuideBlocks(preview.blocks).map((segment, index) => <Fragment key={index}>
+          {segment.blocks.length ? <ContentBlocks blocks={segment.blocks} labels={blockLabels} headingStart={segment.headingStart} /> : null}
+          {segment.offer ? <p role="note" className="rounded-xl border border-dashed border-[var(--line)] p-3 text-sm">
+            {t("offerPreview")} · {ts(moduleLabelKeys[segment.offer.module])}{segment.offer.destination_id ? ` · ${segment.offer.destination_id}` : ""}
+          </p> : null}
+        </Fragment>)}
       </div>
     </Dialog>}
 

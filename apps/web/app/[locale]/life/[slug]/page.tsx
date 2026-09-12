@@ -1,13 +1,15 @@
-import type { Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 import { guideArticleMetadata, renderGuideArticle } from "@/components/guides/article-page";
 import type { Locale } from "@/i18n/routing";
 
 type Params = { locale: Locale; slug: string };
 
 /** A lifestyle article. The kind is fixed by the route, so no `[kind]` segment to validate. */
-export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
+export async function generateMetadata(
+  { params }: { params: Promise<Params> }, parent?: ResolvingMetadata,
+): Promise<Metadata> {
   const { locale, slug } = await params;
-  return guideArticleMetadata({ locale, kind: "life", slug });
+  return guideArticleMetadata({ locale, kind: "life", slug }, parent);
 }
 
 export default async function LifeArticlePage({ params }: { params: Promise<Params> }) {

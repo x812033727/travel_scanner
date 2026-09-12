@@ -219,3 +219,63 @@ describe("preview", () => {
     expect(dialog.textContent).toContain("三種選擇");
   });
 });
+
+describe("rich blocks", () => {
+  const savedDocument = () => {
+    const call = mocks.api.mock.calls.find(([path, init]) => String(path).endsWith("/zh-TW/draft") && init?.method === "PUT");
+    return call ? JSON.parse(call[1].body).document : null;
+  };
+
+  it("adds a table typed as text and previews it as a table", async () => {
+    await open();
+    fireEvent.click(screen.getByRole("button", { name: "新增區塊 · 表格" }));
+    const editor = screen.getByLabelText("第一行是表頭，欄位用 | 分隔，一行一列。");
+    fireEvent.change(editor, { target: { value: "方式|時間\nSkyliner|41 分\n" } });
+    // The raw text stays exactly as typed, trailing newline included, so the next row can be started.
+    expect((editor as HTMLTextAreaElement).value).toBe("方式|時間\nSkyliner|41 分\n");
+
+    fireEvent.click(screen.getByRole("button", { name: "預覽" }));
+    const dialog = await screen.findByRole("dialog");
+    expect(within(dialog).getAllByRole("columnheader").map((cell) => cell.textContent)).toEqual(["方式", "時間"]);
+    expect(within(dialog).getAllByRole("cell").map((cell) => cell.textContent)).toEqual(["Skyliner", "41 分"]);
+  });
+
+  it("sends a hero and a partner block in the draft it saves", async () => {
+    await open();
+    fireEvent.click(screen.getByRole("button", { name: "加入主圖" }));
+    fireEvent.change(screen.getByLabelText("圖片路徑"), { target: { value: "/guides/narita-to-tokyo/hero.jpg" } });
+    fireEvent.change(screen.getByLabelText("替代文字"), { target: { value: "Skyliner 停在月台" } });
+    fireEvent.change(screen.getByLabelText("作者"), { target: { value: "Mokaair" } });
+    fireEvent.change(screen.getByLabelText("授權"), { target: { value: "© Mokaair" } });
+
+    fireEvent.click(screen.getByRole("button", { name: "新增區塊 · 合作連結" }));
+    fireEvent.change(screen.getByLabelText("合作模組"), { target: { value: "transport" } });
+    fireEvent.change(screen.getByLabelText("區塊標題（可留空）"), { target: { value: "先買車票" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存草稿" }));
+
+    await waitFor(() => expect(savedDocument()).toBeTruthy());
+    const saved = savedDocument();
+    expect(saved.hero).toEqual({
+      src: "/guides/narita-to-tokyo/hero.jpg", alt: "Skyliner 停在月台", width: 1600, height: 900,
+      credit: { author: "Mokaair", license: "© Mokaair", source_url: null },
+    });
+    expect(saved.blocks.at(-1)).toEqual({ type: "offer", module: "transport", destination_id: null, heading: "先買車票" });
+  });
+
+  it("shows a partner block in the preview as a placeholder rather than fetching offers", async () => {
+    await open();
+    fireEvent.click(screen.getByRole("button", { name: "新增區塊 · 合作連結" }));
+    fireEvent.click(screen.getByRole("button", { name: "預覽" }));
+    const dialog = await screen.findByRole("dialog");
+    expect(within(dialog).getByRole("note").textContent).toContain("合作連結區塊（發布後才會顯示按鈕）");
+    expect(mocks.api.mock.calls.some(([path]) => String(path).includes("/affiliates/"))).toBe(false);
+  });
+
+  it("drops the hero again from the draft when it is removed", async () => {
+    await open();
+    fireEvent.click(screen.getByRole("button", { name: "加入主圖" }));
+    fireEvent.click(screen.getByRole("button", { name: "移除主圖" }));
+    expect(screen.queryByLabelText("圖片路徑")).toBeNull();
+    expect(screen.getByRole("button", { name: "加入主圖" })).toBeTruthy();
+  });
+});

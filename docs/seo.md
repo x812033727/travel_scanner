@@ -71,9 +71,9 @@ No sitemap index is needed.
 Published guide articles are appended after that static list, one entry per published
 translation, capped at `SITEMAP_GUIDE_ENTRY_LIMIT` (1000) so one large response cannot dominate
 the file. They are the one publication-aware section, enumerated through `GET /guides/sitemap`,
-and the only entries carrying `lastmod`: their real `published_at`. That stamp records a
-translation's **first** publication and survives republication, so a corrected notice does not
-move its `lastmod` yet — `2026-09-11-guide-lastmod-republication` tracks the fix. An article's
+and the only entries carrying `lastmod`: the timestamp of the revision readers currently see
+(`modified_at`), which moves on every republication, falling back to the first `published_at`
+when an older API omits it. An article's
 alternates name only the locales it is genuinely published in, with `x-default` only where
 English is one of them, and an expired intel notice leaves the sitemap while keeping its page.
 If the guides API fails or times out, the sitemap degrades to exactly its static entries rather
@@ -127,10 +127,15 @@ so content cannot close its script tag. It emits only nonempty graphs that descr
 | BreadcrumbList | Hotspots, foods, destination index and guides |
 | ItemList | Destination index with actual guide URLs |
 | TouristDestination | Guide using public catalog names/country/coordinates |
+| Article | Published intel, how-to and lifestyle articles: real headline, body, `datePublished`, `dateModified`, and `image` only when the article has a hero |
 
-There is no invented review, FAQ or article markup. `TouristDestination` is a Place, so it does
+There is no invented review or FAQ markup. `TouristDestination` is a Place, so it does
 not claim the CreativeWork-only `inLanguage` property. Purchases are not enabled; this work
 does not add Product/Offer markup or represent plans as bookable offers.
+
+An article with a hero image also puts it on the Open Graph and Twitter cards, restating the
+layout's locale and alternate locales beside it (Next replaces the whole `openGraph` key);
+without one the page inherits the site card, `/og.png`.
 
 SearchAction is optional descriptive metadata, **not a promised Google sitelinks search box**;
 Google retired that search result feature in November 2024. JSON-LD is a non-executable data
