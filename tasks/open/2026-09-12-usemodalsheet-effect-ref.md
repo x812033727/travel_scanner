@@ -1,11 +1,11 @@
 ---
 id: 2026-09-12-usemodalsheet-effect-ref
 title: useModalSheet 的 effect 在 ref 還沒掛上時會靜靜地永久放棄
-status: open
+status: in-progress
 priority: P2
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5-testfixes
+claimed_at: 2026-09-12T02:34:16Z
 created_at: 2026-09-12T01:18:15Z
 completed_at:
 branch:
@@ -83,3 +83,66 @@ deps 只有 `[open]`。`open` 沒再變的話，這個 effect 不會重跑。所
 
 不要為了修這個而放寬既有的斷言。`useModalSheet` 現在有二十一個呼叫點、十一個是 `#406`
 才搬過來的，改動要保守。
+
+## 完成（claude-opus-5-testfixes, 2026-09-12）
+
+### 會紅的測試先寫出來了
+
+`lib/modal-sheet.test.tsx` 新增「guards a sheet whose element arrives after the first commit」：
+`open` 全程是 `true`，但元素要等一個 promise 解析才渲染（就是彈層藏在 loading 後面的形狀）。
+在修正前它會紅，而且是紅在對的地方——`body.style.overflow` 是空字串，代表彈層根本沒註冊：
+
+```
+AssertionError: expected '' to be 'hidden'
+```
+
+### 修法，以及中途撞到的回歸
+
+**第一版是錯的，測試抓到了。** 一開始把 ref 換成 callback ref、元素放進 state、effect 依賴
+`[open, sheet]`。新測試綠了，但 `admin-deployments-panel` 與另一個檔各紅一條**焦點**斷言：
+
+```
+expected <button …> to be <input id="deploy-password" …>
+```
+
+因為那樣寫會讓**每一個**呼叫點的 effect 都晚一個 commit 才跑，於是原語在呼叫端自己把焦點設好
+之後又搶回關閉鈕。**這正是 `#406` 在 `route-mode-panel` 修掉的那一類毛病**，差點自己再造一個。
+
+改成只在 effect **真的撲空過**的時候才喚醒：
+
+```ts
+const sheetRef = useRef<T | null>(null);
+const [lateSheet, setLateSheet] = useState<T | null>(null);
+const missedSheet = useRef(false);
+
+useEffect(() => {
+  if (!open) return;
+  const sheet = sheetRef.current;
+  if (!sheet) { missedSheet.current = true; return; }   // ← 記下撲空
+  ...
+}, [open, lateSheet]);
+
+return useCallback((node: T | null) => {
+  sheetRef.current = node;
+  if (node && missedSheet.current) { missedSheet.current = false; setLateSheet(node); }
+}, []);
+```
+
+元素本來就在第一個 commit 裡的時候（二十一個呼叫點目前全部如此），`missedSheet` 永遠是 false，
+`setLateSheet` 一次都不會呼叫——**時序與多出來的 render 都和改之前完全相同**。只有撲空過的
+那條路徑會多一次喚醒。
+
+### 回傳型別改了，有一個呼叫點要跟著動
+
+`RefObject<T>` → `RefCallback<T>`。**typecheck 抓出一個我先前人工掃描漏掉的呼叫點**：
+`travel-services/booking-panel.tsx:248` 會讀 `ref.current`（提交被擋下時把焦點移到第一個未通過
+驗證的欄位）。那個檔改成自己留一份 `sheetRef` 再餵給 hook。
+
+另一個選項是讓 hook 回傳「可呼叫又帶 `.current`」的混合型別，二十一個呼叫點都不用動——沒有採用，
+那會留下一個以後每個讀者都要解碼的怪型別，而真正需要元素的只有一個呼叫點。
+
+### 驗證
+
+- 還原修正 → 新測試紅（`expected '' to be 'hidden'`）；放回去 → 綠。做過兩次，測試形狀改過之後重做。
+- 二十一個呼叫點所屬的 18 個測試檔：205 條全過。
+- 整套 233 檔 / 2382 測試全綠。

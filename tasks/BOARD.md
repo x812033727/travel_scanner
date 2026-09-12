@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**39 open · 3 in progress · 3 blocked · 0 in review · 266 done**
+**36 open · 6 in progress · 3 blocked · 0 in review · 266 done**
 
 ## Ready to claim
 
@@ -23,7 +23,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [Prevent Google coordinates being labelled durable by merchant review](open/2026-09-08-prevent-google-coordinates-being-labelled-durable.md) | api | `apps/api/app/foods/coordinate_queue.py`<br>`apps/api/tests/test_food_coordinate_queue.py` |
 | P1 | [Continue evidence-backed remaining hotspot candidate review](open/2026-09-08-continue-evidence-backed-remaining-hotspot-candidate.md) | ops | `docs/hotspot-review-next-batch.md`<br>`ops/hotspot_review_next_batch.py`<br>`ops/hotspot_review_next_batch.json` |
 | P1 | [首頁與 explore 要在伺服器端渲染出真正的內容](open/2026-09-10-seo-server-render-home-and-explore.md) | web | `apps/web/lib/discovery.ts`<br>`apps/web/lib/discovery.server.ts`<br>`apps/web/lib/discovery.server.test.ts`<br>`apps/web/components/discovery/explorer.tsx`<br>`apps/web/app/[locale]/explore/page.tsx`<br>`apps/web/app/[locale]/explore/collections/page.tsx` |
-| P1 | [整套測試在負載下，有守門的 Escape 偶爾不生效](open/2026-09-11-modal-escape-flake-under-load.md) | web | `apps/web/lib/modal-sheet.ts`<br>`apps/web/lib/modal-sheet.test.tsx`<br>`apps/web/components/travel-card-actions.test.tsx`<br>`apps/web/vitest.config.ts`<br>`apps/web/vitest.setup.tsx`<br>`apps/web/components/route-mode-panel.tsx`<br>`apps/web/components/route-mode-panel.test.tsx`<br>`apps/web/components/planner-overlay.tsx`<br>`apps/web/components/planner-overlay.test.tsx` |
 | P2 | [防 jsonb 運算子的測試只守住 3 張表，實際有 42 張](open/2026-09-07-jsonb-3-42.md) | api | `apps/api/tests/test_migration_sql_dialect.py` |
 | P2 | [30 筆新購物店家還沒 place enrichment，所以加不進行程](open/2026-09-07-enrich-new-shopping-place-ids.md) | api | `ops/notes/hotspot-place-enrichment.md` |
 | P2 | [Community read metric duplicate observed alongside smoke ECONNRESET](open/2026-09-07-community-read-metric-concurrency.md) | api | `apps/api/app/community`<br>`apps/api/tests/test_community.py` |
@@ -35,9 +34,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [CatchTable 店家 id 有底線分段時存不了訂位連結](open/2026-09-11-catchtable-underscore-segment-id.md) | api | `apps/api/app/foods/platform_links.py`<br>`apps/api/tests/test_food_platform_links.py`<br>`apps/web/lib/reservation-platforms.ts`<br>`apps/web/lib/reservation-platforms.test.ts` |
 | P2 | [航班動態的查詢時間把 UTC 當成地方時顯示](open/2026-09-11-flight-status-checked-at-utc.md) | web | `apps/web/components/flight-anchor-card.tsx`<br>`apps/web/components/flight-anchor-card.test.tsx` |
 | P2 | [當日檢視要真的離線可用，需要預先快取 app shell](open/2026-09-11-offline-day-view-needs-an-app.md) | web | `apps/web/public/sw.js`<br>`apps/web/components/offline-trip-cache.tsx`<br>`apps/web/components/offline-trip-cache.test.tsx` |
-| P2 | [useModalSheet 的 effect 在 ref 還沒掛上時會靜靜地永久放棄](open/2026-09-12-usemodalsheet-effect-ref.md) | web | `apps/web/lib/modal-sheet.test.tsx` |
-| P2 | [site-footer 有一條測試繼承別人留下的路徑，打亂順序就紅](open/2026-09-12-site-footer.md) | web | `apps/web/components/site-footer.test.tsx` |
-| P2 | [admin-usage-settings 的分頁存在 URL，測試之間沒有重設就互相影響](open/2026-09-12-admin-usage-settings-url.md) | web | `apps/web/components/admin-usage-settings-panel.test.tsx` |
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | api | `apps/api/app/hotspots/areas.py`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [第二批購物店家：十五個沒有公開座標來源的候選](open/2026-09-06-shopping-seeds-second-batch.md) | api | `apps/api/app/hotspots/shopping_bootstrap.json`<br>`apps/api/app/hotspots/theme_bootstrap.json`<br>`apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_shopping_bootstrap.py` |
@@ -58,6 +54,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | [公開美食店家訂位平台連結補齊（查核與批次匯入）](open/2026-09-11-food-reservation-link-backfill.md) | claude-opus-5 | 2026-09-11T16:02:41Z | `claude/food-reservation-link-backfill` |
 | [Deny school, hospital, tram stop, ward and military base types in hotspot discovery](open/2026-09-11-deny-school-hospital-tram-stop-ward.md) | claude-opus-5 | 2026-09-11T16:53:59Z | `claude/attractions-review-progress-55bb39` |
 | [填入擁有者確認資訊，解鎖四個網站資訊頁](open/2026-09-12-site-page-requirements.md) | claude-opus-5-guides | 2026-09-12T01:56:04Z | — |
+| [useModalSheet 的 effect 在 ref 還沒掛上時會靜靜地永久放棄](open/2026-09-12-usemodalsheet-effect-ref.md) | claude-opus-5-testfixes | 2026-09-12T02:34:16Z | — |
+| [site-footer 有一條測試繼承別人留下的路徑，打亂順序就紅](open/2026-09-12-site-footer.md) | claude-opus-5-testfixes | 2026-09-12T02:34:15Z | — |
+| [admin-usage-settings 的分頁存在 URL，測試之間沒有重設就互相影響](open/2026-09-12-admin-usage-settings-url.md) | claude-opus-5-testfixes | 2026-09-12T02:34:15Z | — |
 
 ## In review
 
@@ -71,6 +70,7 @@ _Nothing here._
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | see the task notes |
 | P3 | [TourAPI（韓國觀光公社）可行性驗證：先確認拿得到金鑰、連得上、資料量夠不夠](open/2026-09-06-korea-tourism-tourapi-spike.md) | see the task notes |
 | P1 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | active work in the same scope |
+| P1 | [整套測試在負載下，有守門的 Escape 偶爾不生效](open/2026-09-11-modal-escape-flake-under-load.md) | active work in the same scope |
 | P3 | [Lighthouse SEO 與效能門檻 workflow](open/2026-09-10-seo-lighthouse-workflow.md) | depends on 2026-09-10-seo-server-render-home-and-explore |
 
 ## Recently finished

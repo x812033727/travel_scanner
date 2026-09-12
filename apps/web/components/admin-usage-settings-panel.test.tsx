@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { usageOperations } from "@/lib/usage-catalog";
 import { AdminUsageSettingsPanel } from "./admin-usage-settings-panel";
 
@@ -22,6 +22,13 @@ const snapshot = {
   operation_costs: usageOperations.map((operation) => ({ operation, uses: 1, source: "database" })),
   audit: [],
 };
+
+// The tab is URL state (useAdminQueryState), and one jsdom serves the whole file, so a tab
+// selected by one case is still selected in the next. Without this the first case only
+// passes because it happens to run first.
+beforeEach(() => {
+  window.history.replaceState(null, "", "/");
+});
 
 afterEach(() => {
   vi.unstubAllGlobals();

@@ -1,11 +1,11 @@
 ---
 id: 2026-09-12-admin-usage-settings-url
 title: admin-usage-settings 的分頁存在 URL，測試之間沒有重設就互相影響
-status: open
+status: in-progress
 priority: P2
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5-testfixes
+claimed_at: 2026-09-12T02:34:15Z
 created_at: 2026-09-12T01:40:33Z
 completed_at:
 branch:
@@ -100,3 +100,17 @@ beforeEach(() => { window.history.replaceState(null, "", "/"); });
 查 `2026-09-11-modal-escape-flake-under-load` 時用 `--sequence.shuffle` 順手撞到的第二條。
 和 `2026-09-12-site-footer` 是同一個形狀——測試斷言了自己沒設定的前提——只是外洩的載體不同：
 那邊是 `vi.hoisted` 的模組變數，這邊是 URL。值得順手把兩張一起做掉。
+
+## 完成（claude-opus-5-testfixes, 2026-09-12）
+
+加了 `beforeEach(() => window.history.replaceState(null, "", "/"))`，照 `travel-card-actions.test.tsx`
+的寫法。斷言一個字都沒改——要修的是前提沒被設定，不是斷言太嚴。
+
+先確認過 `useAdminQueryState` 是透過 `useSyncExternalStore` 讀 `window.location.href`
+（`lib/admin-workspace-navigation.ts:64-65`），所以重設 URL 確實是對的地方，不是猜的。
+
+DoD 要求的掃描做了——所有用 `useAdminQueryState`／`useAdminQueryValue` 的元件，其測試檔現在
+都有重設 URL：`admin-settings-panel`、`admin-catalog-review-panel`、`admin-usage-settings-panel`、
+`community/admin`。只有這一個漏掉。
+
+種子 `1789176414571` 驗證：改之前紅、改之後綠。

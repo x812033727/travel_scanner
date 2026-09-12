@@ -1,11 +1,11 @@
 ---
 id: 2026-09-12-site-footer
 title: site-footer 有一條測試繼承別人留下的路徑，打亂順序就紅
-status: open
+status: in-progress
 priority: P2
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5-testfixes
+claimed_at: 2026-09-12T02:34:15Z
 created_at: 2026-09-12T01:37:09Z
 completed_at:
 branch:
@@ -96,3 +96,10 @@ year={2026} />)`，**沒有設定路徑**，所以它拿到的是上一條測試
 defaultPrevented=false foreignOpenDialogs=0`，彈層那邊一切正常。
 
 打亂順序是個便宜又有效的手法，值得偶爾拿來掃一遍——這次一跑就抓到一條真的順序相依。
+
+## 完成（claude-opus-5-testfixes, 2026-09-12）
+
+第 58 行改走 `renderAt("/")`。用種子 `1789176414571` 驗證過：改之前那條會紅、改之後綠。
+
+掃過同一個檔，`render(<SiteFooter …/>)` 只有第 25 行（在 `renderAt` 裡）和第 58 行兩處，第 58 行
+就是唯一漏掉的。其餘七處都已經走 `renderAt`。
