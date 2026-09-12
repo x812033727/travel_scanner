@@ -21,7 +21,7 @@
 
 | 主張 | 核對結果 |
 | --- | --- |
-| Travelpayouts 收到 `uuid5(...user.id...)` 當 `sub_id` | ✅ 成立，而且**範圍比初稿更廣**（見第七節） |
+| Travelpayouts 收到 `uuid5(...user.id...)` 當 `sub_id` | ✅ 當時成立，範圍比初稿更廣（**兩個產生點**）。**已於 2026-09-12 修掉**，見第七節 |
 | Travelpayouts Drive 沒有 env flag，只看 production hostname | ✅ 成立 |
 | `AI_PLANNER_ENABLED` 預設 true，`notes` 原文送給 AI 廠商 | ✅ 成立 |
 | `users` 列留著、`usage_*` 三張表 `erase_account()` 完全沒碰 | ✅ 成立 |
@@ -232,28 +232,36 @@ ledger and already-delivered conversations; erase PII.」）：
   （`alerts/monitor.py:321-394`）。預設關閉。
 - **SMTP**：收件者 email 與一次性連結。**S3／MinIO**：社群圖片，物件鍵含使用者 id。
 
-### 一個要特別決定的問題：交給聯盟網路的每使用者識別碼
+### 交給聯盟網路的每使用者識別碼——已修掉（2026-09-12）
 
-`affiliates/router.py:376-379`（已核對）：
+**過去的行為。** 有**兩個**產生點各自算出一個綁定使用者的 `uuid5`：
 
-```python
-sub_id = uuid5(
-    NAMESPACE_URL,
-    f"travel-scanner:affiliate:{user.id}:{source}:{partner.code}:{module}",
-).hex
-if partner.code == "klook":
-    sub_id = f"aff_{module}_{active_locale()}"
-```
+- `affiliates/router.py`（`/affiliates/options`）：`uuid5(..., f"…:{user.id}:{search_或_trip_id}:{partner}:{module}")`
+- `trips/stay_router.py`（行程住宿區點擊外連）：`uuid5(..., f"…:{user.id}:{trip.id}:{partner}:hotel:{area}")`
 
-這是一個**穩定的、綁定使用者的假名識別碼**，交給聯盟網路做跨站歸因。Travelpayouts 透過
-Links API 收到它（`service.py:163`）；其他夥伴則是在管理後台設定的網址樣板裡若出現
-`{sub_id}` 就會被代入（`service.py:55`）。
+`uuid5` 是決定性的，不是加鹽雜湊：任何人只要知道命名空間字串，就能拿一個猜測的
+`user.id` 重算來確認是否吻合。
 
-**Klook 是唯一有防護的**（`service.py:231-234`：「never expose a member/trip-derived ID」）。
-KKday、Agoda、Trip.com、Airalo、Booking、Skyscanner 都沒有同樣的處理。
+**防護只有 Klook 有，而且在第二條路徑上從未生效**：`klook` 不在 `STAY_PARTNER_ORDER`
+裡（只有 agoda、booking、trip_com、travelpayouts），所以住宿那條路徑上四家全部收得到。
+主要防護寫在 `service.py` 的 travelpayouts 分支**之後**，而該分支自己就 `return` 了，
+所以對唯一總是傳送該值的夥伴也不可達。
 
-→ 這件事有兩個選項：在政策裡揭露它，或是把 Klook 那條防護套用到所有夥伴。**這是產品決定，
-不只是文件問題。**
+**現在的行為。** `app/affiliates/sub_id.py` 是唯一的產生處，值只由封閉目錄標籤組成
+（`aff_{module}_{destination}_{locale}`）。兩個出口——`resolve_partner_target` 與
+`travel_services/channels.py` 的 `resolve_offer_target`——都會先過 `safe_sub_id`，
+不符合就重建。
+
+**這道閘門保證什麼、不保證什麼**：它檢查的是**形狀與內容**，不是來源。它擋掉不像我們
+標籤的值，以及任何帶長串 16 進位的值（本專案出現過的每一種 UUID 拼法），但它無法分辨
+`aff_hotel_tokyo_zh-TW` 是程式建的還是手打的。持久的保證來自
+`tests/test_affiliate_sub_id.py`：原始碼掃描會在新的產生點出現時失敗，而夥伴測試是照
+註冊表參數化的，新增夥伴就自動多一個案例。
+
+**仍然會離站的**：`service.py` 的 `_render` 仍會把 `{destination}`、`{query}`、
+`{hotel_name}`、`{departure_date}`、`{return_date}` 代入夥伴樣板。在住宿路徑上這些來自
+行程本身，所以**旅行內容**（不是身分）仍會出現在網址裡。這是聯盟深層連結的必要成分，
+但政策要照實說。
 
 ### 一個寫政策時不能講錯的前提
 
