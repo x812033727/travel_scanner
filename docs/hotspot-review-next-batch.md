@@ -258,3 +258,81 @@ independently of its decision stage, count rulings per row rather than trusting 
 - One trap worth naming: when re-querying by hand it is easy to type an approximate coordinate
   into the drift check, which silently invalidates it. 眾恩祠 looked 1.6 km out and was 0.003 km
   out once the row's real coordinate was used.
+
+---
+
+# Third batch: 302 -> 206, and the 40 parked rows un-parked
+
+## The parked rows were a mistake, caught by checking the claim
+
+The first batch gave 40 identity-less AI candidate rows a verified `wikidata_item_id` and left
+them for the 2026-09-15 discovery pass to adopt by QID. That was stated twice as settled. It was
+only two-thirds true.
+
+`discover_city` asks MediaWiki `geosearch` with `gsradius = min(radius_km * 1000, 10_000)` and
+`gslimit = min(limit, 100)`. Both are hard API caps, and geosearch returns results ordered by
+distance — so discovery can only ever see the **100 nearest articles within 10 km** of a city
+centre, whatever `radius_km` says. Measuring the 40 parked rows against that ring:
+
+- 31 fall inside it.
+- **9 do not, and could never have been re-discovered**: Kabuki-za (10.7 km), Tokyo
+  International Forum (10.3 km), Asakusa Hanayashiki (13.8 km), Cape Maeda (12.8 km), Sōgen-ji
+  (17.1 km), Tsuboya Pottery Museum (17.6 km), Klong Muang Beach (16.8 km), Ko Thap (17.4 km),
+  Huyện Sỹ Church (24.7 km).
+
+So all 40 were un-parked instead: each row's own Wikidata P625 coordinate was written directly,
+then matched and approved. 38 matched cleanly at once — Kabuki-za 0.043 km, 西本願寺 0.03 km,
+Tokyo International Forum 0.044 km. 崇元寺 needed a second query (`崇元寺 沖縄市` returned the
+street Sogenji-dori; `崇元寺石門 那覇市泊` returned the national-treasure gate at 0.003 km).
+Huyện Sỹ Church is the one left: its Wikidata coordinate is ~30 km wrong and the Vietnamese
+article carries none, so there is no durable source to write.
+
+`2026-09-12-discovery-only-sees-100-articles-per-centre` tracks the underlying limit. It also
+explains why the catalogue was missing Kabuki-za in the first place.
+
+## The 61 rows two passes could not settle
+
+These were sent to two independent adjudicators per batch, given the full article, the rejection
+argument **and** the refutation that overturned it, and told explicitly what each verdict costs —
+that "human" is not free, because it means a queue nobody clears. Only agreement decided.
+
+| | |
+|---|---|
+| adjudicated | 61 |
+| the two adjudicators agreed | 56 (92 %) |
+| keep | 37 |
+| reject | 18 |
+| escalated to a human | 6 |
+
+The recurring reason a rejection failed was named precisely by both adjudicators and is worth
+keeping: **an argument from absence is not a visitor reason.** "The article is a two-sentence
+stub, so something might be there" does not justify a keep; neither does pointing at a park or a
+station *near* the street rather than on it. 京士柏道, 聖約翰里 and 運動場道 all fell that way.
+
+What the adjudicators did keep, they kept on named evidence: 仙台市立東二番丁小學校 holds a
+memorial Kannon for 23 children killed in the 1945 air raid with an inscription by 土井晩翠;
+橫濱中央醫院 is a 1960 Yamada Mamoru building (the Tokyo Tower architect) in DOCOMOMO Japan's
+208; 仙台中郵便局 and 仙台東二番丁郵便局 issue official 風景印 scenic postmarks, the same basis
+on which 定山渓郵便局 is already published.
+
+The six escalations are genuinely not model decisions. 大東亜聖戦大碑 is the clearest: both
+adjudicators agreed on every fact — it is a real stone monument on the approach to 石川護國神社
+with an annual festival — and both still refused, because whether a Traditional-Chinese travel
+catalogue should list a monument that groups campaign to remove for glorifying the war is an
+editorial judgement, not a factual one.
+
+## Result
+
+| | start of day | now |
+|---|---|---|
+| pending | 987 | **206** |
+| approved | 1,294 | 1,952 |
+| rejected | 1,608 | 1,731 |
+
+**164 of the 206 are Korean** and blocked as described above. The non-Korean backlog is **42**:
+the 6 human escalations, 3 rows whose Google candidate was wrong on this pass, and 33 keeps with
+no distinct POI to point at — rivers (秋盆河, Sông Vàm Thuật), mountain passes (Đèo Tà Nung),
+vanished city gates (臺灣府城小北門, 原臺灣府考棚遺構) and Tainan heritage buildings whose Place
+ID belongs to the modern occupant of the site.
+
+`ops/hotspot_review_next_batch.json` holds all 866 rows touched on 2026-09-12.

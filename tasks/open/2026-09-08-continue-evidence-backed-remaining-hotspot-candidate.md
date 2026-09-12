@@ -105,3 +105,32 @@ Still open:
   agents to a session limit. They were deliberately left pending: the workflow tally counts
   "no ruling" as "not refuted", so verified and unverified rejections have to be separated by
   counting rulings per row. Re-run the verify phase before applying any of them.
+
+## 2026-09-12 third batch — non-Korean backlog cleared to 42
+
+Pending 302 -> 206. Full write-up in `docs/hotspot-review-next-batch.md`.
+
+Two things the next session should know:
+
+- **The 40 "parked" rows were un-parked, because the plan behind them was wrong.** They had been
+  given a Wikidata QID and left for discovery to adopt, but `geosearch` caps the radius at 10 km
+  and the result count at 100 per centre, so 9 of them - Kabuki-za and Tokyo International Forum
+  among them - could never have been re-discovered. Each row's own P625 coordinate was written
+  directly instead. See `2026-09-12-discovery-only-sees-100-articles-per-centre`.
+- **"An argument from absence is not a visitor reason."** That single rule settled most of the
+  61 rows two earlier passes had deadlocked on. A stub article's silence does not prove the
+  street is empty, and a park *near* a road is not a reason to visit the road.
+
+What is left, and why it is not a model's job:
+
+- 164 Korean rows, blocked on the NAVER gate.
+- 6 rows escalated on purpose by two agreeing adjudicators. 大東亜聖戦大碑 is the type case: the
+  facts are agreed, and the question - whether a Traditional-Chinese travel catalogue should list
+  a monument that campaigners want removed for glorifying the war - is editorial.
+  新福宮 is also here, and note it was on an earlier session's deliberate do-not-reject list.
+- 33 keeps with no distinct Google POI: rivers, mountain passes, vanished city gates, and Tainan
+  heritage buildings whose Place ID belongs to the site's modern occupant. Three query shapes
+  were tried (stored name + city; Wikidata local label + P131 ward; hand-written). Further model
+  passes will not help; these need a person or a different identity source.
+- Huyện Sỹ Church specifically: its Wikidata P625 is ~30 km wrong and the Vietnamese article has
+  no coordinate, so there is no durable source to write. Fixing Wikidata upstream would fix it.
