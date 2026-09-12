@@ -1,13 +1,13 @@
 ---
 id: 2026-09-12-site-page-requirements
 title: 填入擁有者確認資訊，解鎖四個網站資訊頁
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: claude-opus-5-guides
 claimed_at: 2026-09-12T01:56:04Z
 created_at: 2026-09-12T01:55:59Z
-completed_at:
+completed_at: 2026-09-12T02:12:11Z
 branch:
 depends_on: []
 scope:
@@ -77,3 +77,17 @@ cd apps/api && uv run ruff check . && uv run mypy app && \
 **頁尾那三個 message 鍵還不能刪。** `2026-09-06-legal-content-from-owner` 的 DoD 要求刪掉
 `footerPendingTitle`／`footerPendingBody`／`footerContactBody`，但那要等四頁在正式站真的
 發布之後——未發布的頁面仍靠它們顯示說明，先刪會變空白。
+
+**收尾（#412 已合併，commit d5ee9ef）。** 站主逐字審過公開文字後批准
+（「文字沒問題」），四頁 × 五語系的確認資訊已填入，`pending_requirements()` 對全部
+20 份文件只回 `["effective_date"]`。
+
+**這張票的狀態沒有在 #412 裡一起改掉，是漏的**，所以另外補了一個只改任務狀態的 PR。
+同一個 session 裡這已經是第二次（#404 也漏了 `2026-09-11-guides-sitemap-and-entry-points`）。
+留著不改會押住 `apps/api/app/site_pages/drafts` 與兩個測試檔的 scope——正是 #400 花一整個
+PR 清掉 22 張過期鎖的那個問題。下次把 `tasks -- done` 放進 PR 的最後一個 commit。
+
+剩下的工作不在程式碼裡：正式站要在後台逐頁逐語系發布 20 次，每次填生效日期、儲存、
+再發布（填原因並打勾確認）。發布鈕在有未儲存變更或 `pending_requirements` 非空時是停用的，
+所以順序一定是填 → 儲存 → 發布。若正式站尚未初始化，後台的「初始化」一顆按鈕會一次建立
+全部 20 筆並帶著這些文字；若已初始化，`on_conflict_do_nothing` 讓它不受影響，要手動貼。
