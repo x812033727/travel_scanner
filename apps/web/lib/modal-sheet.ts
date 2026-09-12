@@ -3,6 +3,18 @@
 import { useEffect, useRef } from "react";
 
 const layers: HTMLElement[] = [];
+// TEMPORARY PROBE -- remove before commit. Enabled with MODAL_PROBE=1.
+const PROBE = typeof process !== "undefined" && process.env?.MODAL_PROBE;
+function probe(what: string, extra: Record<string, unknown> = {}) {
+  if (!PROBE) return;
+  const pairs = Object.entries(extra).map(([k, v]) => `${k}=${String(v)}`).join(" ");
+  process.stderr.write(`MODALPROBE ${what} ${pairs}\n`);
+}
+function describe(el: Element | null | undefined) {
+  if (!el) return "none";
+  const label = el.getAttribute?.("aria-label") || el.getAttribute?.("role") || "";
+  return `${el.tagName.toLowerCase()}${label ? `[${label}]` : ""}${el.isConnected ? "" : "(DETACHED)"}`;
+}
 let originalOverflow = "";
 
 /** Nested unmounts must not unlock a still-open parent. */
@@ -11,8 +23,10 @@ export function registerModalLayer(element: HTMLElement) {
   // React mounts child effects first; put a newly mounted parent below its children.
   const child = layers.findIndex((layer) => element.contains(layer));
   if (child < 0) layers.push(element); else layers.splice(child, 0, element);
+  probe("register", { el: describe(element), depth: layers.length, index: layers.indexOf(element) });
   return () => {
     const index = layers.indexOf(element);
+    probe("unregister", { el: describe(element), found: index >= 0, depthBefore: layers.length });
     if (index >= 0) layers.splice(index, 1);
     if (!layers.length) document.body.style.overflow = originalOverflow;
   };
@@ -77,6 +91,21 @@ export function useModalSheet<T extends HTMLElement>(open: boolean, onClose: () 
     const focusable = () => modalFocusTargets(sheet);
 
     const onKeyDown = (event: KeyboardEvent) => {
+      if (PROBE && event.key === "Escape") {
+        const foreign = Array.from(document.querySelectorAll("dialog[open]")).filter((d) => !sheet.contains(d));
+        probe("escape", {
+          self: describe(sheet),
+          isTop: isTopModalLayer(sheet),
+          depth: layers.length,
+          index: layers.indexOf(sheet),
+          top: describe(layers.at(-1)),
+          detachedLayers: layers.filter((l) => !l.isConnected).length,
+          defaultPrevented: event.defaultPrevented,
+          isComposing: event.isComposing,
+          foreignOpenDialogs: foreign.length,
+          foreign: foreign.map(describe).join(","),
+        });
+      }
       if (!isTopModalLayer(sheet) || event.defaultPrevented || event.isComposing) return;
       if (Array.from(document.querySelectorAll("dialog[open]")).some((dialog) => !sheet.contains(dialog))) return;
       if (event.key === "Escape") {
