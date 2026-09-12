@@ -4,7 +4,7 @@ from collections.abc import AsyncIterator
 from datetime import UTC, datetime
 from typing import Annotated, Any, cast
 from urllib.parse import urlparse
-from uuid import UUID, uuid4
+from uuid import UUID
 
 from fastapi import APIRouter, Depends, Header
 from fastapi.responses import RedirectResponse, StreamingResponse
@@ -15,10 +15,12 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
+from app.affiliates.sub_id import coarse_sub_id
 from app.analytics.service import record_event
 from app.auth.service import CurrentUser
 from app.config import get_settings
 from app.db import get_session
+from app.i18n import active_locale
 from app.infra import enforce_rate_limit, get_redis
 from app.models import (
     AffiliateClick,
@@ -539,7 +541,9 @@ async def clickout_offer(offer_id: UUID, user: CurrentUser, session: Session) ->
                 offer_id=offer_id,
                 partner="skyscanner",
                 module="flight",
-                sub_id=uuid4().hex,
+                # Never transmitted (the target comes from provider.clickout), but a
+                # random hex per row names nothing and defeats the sub_id index.
+                sub_id=coarse_sub_id("aff", "flight", None, active_locale()),
                 destination_summary=f"{offer.origin}-{offer.destination}"[:128],
                 target_host=(parsed.hostname or "")[:255],
                 status="redirected",
