@@ -21,6 +21,7 @@ from app.db import Base
 from app.hotspots.admin_router import (
     HotspotReviewRequest,
     list_hotspot_candidates,
+    rehomed_search_text,
     review_hotspot_candidates,
 )
 from app.models import (
@@ -578,3 +579,54 @@ async def test_postgres_stale_writer_waits_and_competing_qid_fill_is_unique() ->
         async with administrator.begin() as connection:
             await connection.execute(text(f'DROP SCHEMA "{schema}" CASCADE'))
         await administrator.dispose()
+
+
+def test_rehomed_search_text_swaps_only_the_destination_tokens() -> None:
+    # A seed contributes its aliases and localized names to the same bag, so a move
+    # must cost the row its old city and nothing else.
+    result = rehomed_search_text(
+        "臺中公園 taichung park rmq 台中 tw 台灣 culture",
+        before=("taichung", "RMQ", "台中", "TW", "台灣"),
+        after=("taipei", "TPE", "台北", "TW", "台灣"),
+    )
+    assert result.split() == [
+        "臺中公園",
+        "park",
+        "culture",
+        "taipei",
+        "tpe",
+        "台北",
+        "tw",
+        "台灣",
+    ]
+
+
+def test_rehomed_search_text_does_not_repeat_a_token_the_row_already_has() -> None:
+    result = rehomed_search_text(
+        "taipei 101 taichung",
+        before=("taichung",),
+        after=("taipei", "台北"),
+    )
+    assert result.split() == ["taipei", "101", "台北"]
+
+
+async def test_moving_a_hotspot_rewrites_its_search_text(session: AsyncSession) -> None:
+    row = hotspot(
+        name="新福宮",
+        destination_id="taichung",
+        city_code="RMQ",
+        city_name="台中",
+        search_text="新福宮 新福宮 (中山區) 台中",
+    )
+    session.add(row)
+    await session.commit()
+    result = await review_hotspot_candidates(
+        payload(row, destination_id="taipei"), actor(), session
+    )
+    assert result == {"updated": 1, "status": "pending"}
+    await session.refresh(row)
+    assert (row.destination_id, row.city_code, row.city_name) == ("taipei", "TPE", "台北")
+    # The Wikipedia title the row was discovered under stays; only the city it left goes.
+    assert "(中山區)" in row.search_text
+    assert "台中" not in row.search_text
+    assert {"taipei", "tpe", "台北"} <= set(row.search_text.split())
