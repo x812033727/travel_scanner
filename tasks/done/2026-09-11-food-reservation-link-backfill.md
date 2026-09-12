@@ -28,15 +28,15 @@ scope:
 ## Definition of done
 
 - [x] 296 間未查核的公開店家都有查核結果：`verified`、`disabled`、`not_found` 或 `ambiguous`，每筆附證據。
-- [ ] 精準分店頁已寫進正式資料庫，前台出現對應按鈕；不能訂位的平台頁不公開。
-- [ ] 後台人工審核過的列一筆都沒被覆寫。
+- [x] 精準分店頁已寫進正式資料庫，前台出現對應按鈕；不能訂位的平台頁不公開（香港 OpenRice 的後續例外見 `2026-09-12-hk-openrice-public`）。
+- [x] 後台人工審核過的列一筆都沒被覆寫。
 
 ## Steps
 
 - [x] `apply-food-platform-reviews` 指令與測試：預設試跑、只寫平台列、每列一筆稽核。
-- [x] 用內建瀏覽器查核，結果整理成 `apps/api/app/foods/data/platform_reviews/2026-09-11-public-merchants.json`（311 筆：verified 12、disabled 35、ambiguous 9、not_found 255）。
+- [x] 用內建瀏覽器查核，結果整理成 `apps/api/app/foods/data/platform_reviews/2026-09-11-public-merchants.json`（311 筆）。
 - [x] 查核摘要 `docs/catalog-content-reviews/2026-09-11-reservation-links-full.md`。
-- [ ] PR、合併、部署，在 api 容器試跑，確認後 `--apply`。
+- [x] PR #408 合併、部署 `02317cf5`、容器內試跑後經擁有者確認才套用：寫入 311 筆（新建 190、更新 121、跳過 0），稽核 311 筆；有訂位按鈕的公開店家 35 → 45 間，Song Fa 的 Chope 按鈕下架，人工審核的 36 列未被更動；前台 `/zh-TW/foods` 已確認看到按鈕。
 
 ## How to verify
 
