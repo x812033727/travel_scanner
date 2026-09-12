@@ -130,3 +130,107 @@ anything being run by hand.
 - **49 rows whose Google candidate was a different place**, and **14 whose Place ID is already
   taken** by a published row.
 - Text Search Pro usage after this batch is roughly 3,700 of 5,000 for September.
+
+---
+
+# Second batch, same day: 458 -> 346
+
+The first batch stopped at 458 because the type lever was exhausted and the first judgement
+pass had left 233 rows "unsure". This batch attacked the three things that were actually
+blocking those rows.
+
+## Korea is unreachable, measured rather than assumed
+
+164 of the 458 were Korean, and `has_exact_map_identity` accepts **only** a
+`https://map.naver.com/p/entry/place/` URL for `KR` — a Google Place ID is never valid there.
+Three independent routes were checked and all are closed:
+
+- `map.naver.com` is blocked by policy in the browser pane, so the URL cannot be read by hand.
+- Wikidata has no NAVER Map place identifier property at all (`Naver Encyclopedia`,
+  `Naver movie`, `Naver VIBE`… exist; a map place ID does not).
+- Of the 164 rows' Wikipedia articles, exactly **one** links `map.naver.com`, and in the
+  retired `siteview.nhn?code=` form rather than the `p/entry/place/` form the gate requires.
+
+So Korea needs the NAVER key (`2026-09-06-naver-maps-key`) or a person with a Korean browser.
+No model pass can move it. That is a third of the remaining queue.
+
+## Bad Google matches were bad queries, not a bad tool
+
+64 rows had been judged keep but failed their Google lookup. Re-querying with the row's own
+Wikidata **local-language label plus its P131 administrative unit** fixed 33 of them in one
+pass:
+
+| query that failed | query that worked |
+|---|---|
+| 善照寺 東京 (matched a same-name temple 11 km away) | 善照寺 杉並区 |
+| 材木座海岸 鎌倉 (matched the neighbourhood) | 材木座海岸 材木座 → *Kamakura Zaimokuza Beach* |
+| 清邁動物園 (matched the night zoo 8 km off) | สวนสัตว์เชียงใหม่ จังหวัดเชียงใหม่ |
+| 打惱路玄天上帝廟 (1.9 km off) | ศาลเจ้าพ่อเสือ (เสาชิงช้า) |
+
+## `hotspot_map_identity_exists` is a duplicate detector, and it has two cases
+
+13 of those approvals were refused with a 409. Looking up who holds the Place ID splits them:
+
+- **9 were held by an approved row** — the pending row genuinely duplicates a published
+  attraction (朗豪坊 vs 朗豪坊購物商場, 原臺南公會堂 vs 吳園, Dinh III vs 保大宮). Rejected,
+  naming the holder.
+- **4 were held by a *rejected* row** — a `candidate_import` tombstone from 2026-09-07, with
+  no rejection reason recorded, squatting the identity of a real attraction. Here the unique
+  index was keeping a genuine sight out of the catalogue. Repaired by clearing the Place ID on
+  the tombstone (`action:'update'`, `google_place_id: null`) and then approving the live row:
+  警固公園, 臺中市孔廟, 國立工藝館, 海蔵寺 are now published.
+
+## The intro was the problem, not the model
+
+The 190 rows still undecided were re-judged with the **full** Wikipedia article instead of the
+intro extract, plus Wikidata heritage/website/part-of/visitor statements. (`prop=extracts`
+without `exintro` returns one page per request — `exlimit` does not apply to full text — so
+these have to be fetched one at a time.)
+
+| | first pass (intro) | second pass (full article) |
+|---|---|---|
+| keep | — | 93 |
+| reject proposed | — | 80 |
+| unsure | 190 | 37 |
+| skeptic overturn rate | 68 % | ~25 % |
+
+What the full article changed, concretely:
+
+- **廣島市役所** — the intro says "city hall"; the body records the preserved basement of the
+  old hall as a bomb-damage exhibition room, two A-bombed cherry trees, and a listing on
+  Hiroshima's official tourism site.
+- **仙台市立立町小學校** — an ordinary primary school, except for the 土井晚翠 school-song
+  archive room opened inside it in 2003.
+- **三井住友銀行橫濱支店** — a bank branch, in a 1931 Trowbridge & Livingstone building
+  certified as a Yokohama historic structure in August 2025.
+- **千田車廠** — a tram depot whose 1912 substation is a surviving A-bombed building, open to
+  the public every 23 November with preserved A-bombed trams.
+
+These are exactly the rows a two-sentence intro gets wrong in both directions.
+
+## Result
+
+| | start of batch | now |
+|---|---|---|
+| pending | 458 | **346** |
+| approved | 1,763 | 1,866 |
+
+103 approvals and 9 duplicate rejections this batch. Public rankings have since rebuilt and
+the whole day's work is live: Tainan 59 → 93, Bangkok 35 → 91, Kanazawa 31 → 66, Hiroshima
+46 → 72, Hue 20 → 50, Kamakura → 89.
+
+## Carried forward
+
+- **164 Korean rows** — blocked as described above.
+- **40 rows parked on purpose** — the AI-candidate rows given a verified `wikidata_item_id`
+  in the first batch. They have no coordinates until the 2026-09-15 discovery pass adopts them
+  by QID; nothing should touch them before then.
+- **Rejections awaiting their second opinion.** 80 rejections were proposed; 15 had both
+  skeptics agree and were applied, 22 were refuted, and the rest lost their verifier agents to
+  a session limit mid-run. Unverified rejections were deliberately **not** applied — the
+  workflow's own accounting treats "no ruling" the same as "no refutation", which is wrong when
+  the ruling never ran, so they were separated by counting rulings per row rather than trusting
+  the tally.
+- ~30 rows whose Google candidate is still a different place, several of them because the
+  **stored coordinate is wrong**, not Google: 新營美術園區 is stored at a Kaohsiung coordinate
+  76 km from 新營, and 旗山聖若瑟天主堂 32 km from 旗山. Those need the coordinate fixed first.

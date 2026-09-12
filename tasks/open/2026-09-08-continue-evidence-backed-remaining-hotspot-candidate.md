@@ -76,3 +76,32 @@ on its own.
 
 A second session was draining the same queue at the same time; 61 of the rejections and 18 of
 the approvals in the production window are theirs, not this batch's.
+
+## 2026-09-12 second batch
+
+Pending 458 -> 346; see the second half of `docs/hotspot-review-next-batch.md`.
+
+Three things were settled that the next session should not re-litigate:
+
+- **Korea is not model-solvable.** The gate takes only a `map.naver.com/p/entry/place/` URL,
+  `map.naver.com` is policy-blocked in the browser, Wikidata has no NAVER Map place property,
+  and only 1 of the 164 Korean rows' articles links NAVER at all (in the retired
+  `siteview.nhn` form). It needs the key from `2026-09-06-naver-maps-key`, or a person.
+- **A failed Google match is usually a bad query.** Re-query with the row's Wikidata
+  local-language label plus its P131 administrative unit; that alone fixed 33 of 64.
+- **`hotspot_map_identity_exists` has two cases.** Held by an approved row = the pending row is
+  a duplicate. Held by a *rejected* row = a `candidate_import` tombstone is squatting a real
+  attraction's identity; clear it with `action:'update', google_place_id: null` and approve the
+  live row. Four sights were recovered that way.
+
+Still open:
+
+- 164 Korean rows, 40 rows deliberately parked until the 2026-09-15 discovery pass adopts them
+  by QID, ~30 rows whose Google candidate is a different place (several because the *stored*
+  coordinate is wrong - 新營美術園區 is 76 km out, 旗山聖若瑟天主堂 32 km), and 37 rows the
+  second pass still could not decide.
+- **Rejections awaiting verification.** 80 were proposed by the second pass; 15 were applied
+  after both skeptics cleared them, 22 were refuted, and the remainder lost their verifier
+  agents to a session limit. They were deliberately left pending: the workflow tally counts
+  "no ruling" as "not refuted", so verified and unverified rejections have to be separated by
+  counting rulings per row. Re-run the verify phase before applying any of them.
