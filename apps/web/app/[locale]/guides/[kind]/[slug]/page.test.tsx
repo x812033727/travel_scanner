@@ -1,11 +1,17 @@
 import { render, screen } from "@testing-library/react";
+import type { ResolvingMetadata } from "next";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import GuideArticlePage, { generateMetadata } from "./page";
 
-const mocks = vi.hoisted(() => ({ article: vi.fn(), notFound: vi.fn(() => { throw new Error("NEXT_NOT_FOUND"); }) }));
+const mocks = vi.hoisted(() => ({ article: vi.fn(), list: vi.fn(), notFound: vi.fn(() => { throw new Error("NEXT_NOT_FOUND"); }) }));
 vi.mock("@/components/site-header", () => ({ SiteHeader: () => null }));
-vi.mock("@/lib/guides.server", () => ({ getGuideArticle: mocks.article }));
+vi.mock("@/lib/guides.server", () => ({ getGuideArticle: mocks.article, getGuideList: mocks.list }));
 vi.mock("next/navigation", () => ({ notFound: mocks.notFound }));
+vi.mock("@/components/destination-affiliate-options", () => ({
+  DestinationAffiliateOptions: (props: { destinationId: string; modules?: string[] }) => (
+    <div data-testid="affiliate" data-destination={props.destinationId} data-modules={(props.modules ?? []).join(",")} />
+  ),
+}));
 
 const document = {
   title: "成田機場到東京車站怎麼走",
@@ -16,6 +22,11 @@ const document = {
   sources: [{ title: "京成電鐵時刻表", url: "https://www.keisei.co.jp/", checked_on: "2026-09-01" }],
 };
 
+const hero = {
+  src: "/guides/narita-to-tokyo/hero.jpg", alt: "Skyliner 停在成田機場月台", width: 1600, height: 900,
+  credit: { author: "Mokaair", license: "© Mokaair", source_url: null },
+};
+
 const published = {
   slug: "narita-to-tokyo", kind: "howto" as const, locale: "zh-TW", status: "published" as const,
   destination_id: "tokyo", destination_label: "東京",
@@ -23,12 +34,29 @@ const published = {
   document, published_locales: ["zh-TW" as const, "ja" as const],
 };
 
+const summary = (slug: string, title: string) => ({
+  slug, kind: "howto" as const, destination_id: "tokyo", destination_label: "東京",
+  topics: [{ slug: "transport", label: "交通" }], title, description: "…",
+  published_at: "2026-09-02T00:00:00Z", valid_until: null, featured: false,
+});
+
 const params = (over: Record<string, string> = {}) =>
   Promise.resolve({ locale: "zh-TW" as const, kind: "howto", slug: "narita-to-tokyo", ...over });
+
+/** What the locale layout resolves to, as far as this page reads it. */
+const parent = Promise.resolve({
+  openGraph: { siteName: "Mokaair", locale: "zh_TW", alternateLocale: ["en_US", "ja_JP"], images: [{ url: "/og.png" }] },
+}) as unknown as ResolvingMetadata;
+
+function jsonLd(container: HTMLElement): Record<string, unknown>[] {
+  return [...container.querySelectorAll("script[type='application/ld+json']")]
+    .flatMap((script) => JSON.parse(script.textContent ?? "[]") as Record<string, unknown>[]);
+}
 
 beforeEach(() => {
   vi.clearAllMocks();
   mocks.article.mockResolvedValue(published);
+  mocks.list.mockResolvedValue({ articles: [], next_cursor: null });
 });
 
 describe("an unknown section", () => {
@@ -66,6 +94,89 @@ describe("a published article", () => {
     const link = screen.getByRole("link", { name: "日本語" });
     expect(link.getAttribute("href")).toBe("/ja/guides/howto/narita-to-tokyo");
     expect(link.getAttribute("hreflang")).toBe("ja");
+  });
+
+  it("claims no image and leaves the site's share card alone when it has no hero", async () => {
+    const metadata = await generateMetadata({ params: params() }, parent);
+    expect(metadata.openGraph).toBeUndefined();
+    expect(metadata.twitter).toBeUndefined();
+    const { container } = render(await GuideArticlePage({ params: params() }));
+    const article = jsonLd(container).find((graph) => graph["@type"] === "Article")!;
+    expect(article.image).toBeUndefined();
+    expect(article.dateModified).toBe("2026-09-01T00:00:00Z");
+  });
+
+  it("tells the reader how long it takes", async () => {
+    render(await GuideArticlePage({ params: params() }));
+    expect(screen.getByText("閱讀時間約 1 分鐘")).toBeTruthy();
+  });
+});
+
+describe("an article with a hero", () => {
+  const illustrated = {
+    ...published,
+    document: { ...document, hero, modified_at: "2026-09-12T09:00:00Z" },
+  };
+
+  beforeEach(() => {
+    mocks.article.mockResolvedValue(illustrated);
+  });
+
+  it("puts the hero on the share card without losing the layout's locales", async () => {
+    const metadata = await generateMetadata({ params: params() }, parent);
+    expect(metadata.openGraph).toMatchObject({
+      type: "article",
+      siteName: "Mokaair",
+      locale: "zh_TW",
+      alternateLocale: ["en_US", "ja_JP"],
+      publishedTime: "2026-09-01T00:00:00Z",
+      modifiedTime: "2026-09-12T09:00:00Z",
+      images: [{ url: "/guides/narita-to-tokyo/hero.jpg", width: 1600, height: 900, alt: hero.alt }],
+    });
+    expect(metadata.twitter).toEqual({ card: "summary_large_image", images: ["/guides/narita-to-tokyo/hero.jpg"] });
+  });
+
+  it("still builds the card when no parent metadata is handed in", async () => {
+    const metadata = await generateMetadata({ params: params() });
+    expect(metadata.openGraph).toMatchObject({ type: "article", images: [{ url: "/guides/narita-to-tokyo/hero.jpg" }] });
+  });
+
+  it("claims the image and the correction date in the structured data", async () => {
+    const { container } = render(await GuideArticlePage({ params: params() }));
+    const article = jsonLd(container).find((graph) => graph["@type"] === "Article")!;
+    expect(article.image).toBe("http://localhost:3000/guides/narita-to-tokyo/hero.jpg");
+    expect(article.dateModified).toBe("2026-09-12T09:00:00Z");
+    expect(article.datePublished).toBe("2026-09-01T00:00:00Z");
+    expect(screen.getByRole("img", { name: hero.alt })).toBeTruthy();
+  });
+});
+
+describe("related reading", () => {
+  it("ends with other travel articles about the same city, never the article itself", async () => {
+    mocks.list.mockResolvedValue({
+      articles: [summary("narita-to-tokyo", "成田機場到東京車站怎麼走"), summary("tokyo-transit-passes", "東京交通票券怎麼選")],
+      next_cursor: null,
+    });
+    render(await GuideArticlePage({ params: params() }));
+    expect(mocks.list).toHaveBeenCalledWith("zh-TW", { section: "travel", destination: "tokyo" }, 4);
+    expect(screen.getByRole("heading", { name: "延伸閱讀" })).toBeTruthy();
+    expect(screen.getByRole("link", { name: "東京交通票券怎麼選" }).getAttribute("href")).toBe("/guides/howto/tokyo-transit-passes");
+    // The article is on the page once, as the h1, and not again as a card.
+    expect(screen.getAllByText("成田機場到東京車站怎麼走")).toHaveLength(1);
+  });
+
+  it("tops up from the first topic when the city has too few", async () => {
+    mocks.list
+      .mockResolvedValueOnce({ articles: [], next_cursor: null })
+      .mockResolvedValueOnce({ articles: [summary("incheon-airport-to-seoul", "仁川機場到首爾")], next_cursor: null });
+    render(await GuideArticlePage({ params: params() }));
+    expect(mocks.list).toHaveBeenLastCalledWith("zh-TW", { section: "travel", topic: "transport" }, 4);
+    expect(screen.getByRole("link", { name: "仁川機場到首爾" })).toBeTruthy();
+  });
+
+  it("shows no related section at all when there is nothing to show", async () => {
+    render(await GuideArticlePage({ params: params() }));
+    expect(screen.queryByRole("heading", { name: "延伸閱讀" })).toBeNull();
   });
 });
 

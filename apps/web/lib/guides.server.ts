@@ -135,6 +135,10 @@ export type GuideSitemapEntry = {
   slug: string;
   locale: Locale;
   published_at: string;
+  /** When the current public version went live -- the honest `lastmod`. Absent when the API
+   *  predates it or sent something unparseable, in which case the sitemap falls back to
+   *  `published_at` rather than dropping the row. */
+  modified_at?: string;
   /** Every locale this article is published in, so its alternates can be reciprocal. */
   locales: Locale[];
 };
@@ -159,7 +163,7 @@ export async function guideSitemapEntries(): Promise<GuideSitemapEntry[]> {
   if (!body || !Array.isArray(body.entries)) return [];
 
   const byArticle = new Map<string, Locale[]>();
-  const rows: Array<{ kind: GuideKind; slug: string; locale: Locale; published_at: string }> = [];
+  const rows: Array<Omit<GuideSitemapEntry, "locales">> = [];
   for (const value of body.entries) {
     const entry = value as Record<string, unknown> | null;
     if (!entry || typeof entry.slug !== "string" || typeof entry.published_at !== "string") continue;
@@ -176,7 +180,10 @@ export async function guideSitemapEntries(): Promise<GuideSitemapEntry[]> {
     const locale = entry.locale as Locale;
     const key = `${entry.kind}:${entry.slug}`;
     byArticle.set(key, [...(byArticle.get(key) ?? []), locale]);
-    rows.push({ kind: entry.kind, slug: entry.slug, locale, published_at: entry.published_at });
+    // Same guard as published_at, but a bad value here costs only the lastmod, never the URL.
+    const modified = typeof entry.modified_at === "string" && Number.isFinite(Date.parse(entry.modified_at))
+      ? { modified_at: entry.modified_at } : {};
+    rows.push({ kind: entry.kind, slug: entry.slug, locale, published_at: entry.published_at, ...modified });
   }
 
   return rows.slice(0, SITEMAP_GUIDE_ENTRY_LIMIT).map((entry) => ({

@@ -50,6 +50,7 @@ from app.guides.schemas import (
     GuideDocument,
     Kind,
     LocaleState,
+    OfferBlock,
     PublishWrite,
     RestoreWrite,
     RevisionAction,
@@ -207,6 +208,37 @@ def _validate_destination(destination_id: str | None) -> str | None:
     return normalized
 
 
+# More than this and the article reads as a catalogue with prose between the buttons.
+MAX_OFFER_BLOCKS = 3
+
+
+def _validate_document(document: GuideDocument, article_destination: str | None) -> None:
+    """The rules about partner buttons that only the write path may enforce.
+
+    They live here rather than on the pydantic model because that model also validates
+    every stored revision on the public read path, where a destination since retired from
+    the catalog must degrade to "no button" rather than a 500. Publishing re-runs this even
+    though the draft passed it when saved: the article's own destination may have been
+    cleared in between, and an offer that leaned on it would then point nowhere.
+    """
+    offers = [block for block in document.blocks if isinstance(block, OfferBlock)]
+    if len(offers) > MAX_OFFER_BLOCKS:
+        raise AppError(422, "guide_offer_limit", "一篇文章最多放三個合作連結區塊")
+    for offer in offers:
+        if offer.destination_id is None:
+            if article_destination is None:
+                raise AppError(
+                    422,
+                    "guide_offer_destination_required",
+                    "文章沒有目的地時，合作連結區塊必須自己指定目的地",
+                )
+            continue
+        if destination_for_id(offer.destination_id) is None:
+            raise AppError(
+                422, "guide_offer_destination_unknown", "合作連結區塊指定的目的地代碼不存在"
+            )
+
+
 # --- the single mutation path -------------------------------------------------
 
 
@@ -305,6 +337,7 @@ async def create_article(
     session: AsyncSession, actor: User, payload: ArticleCreate
 ) -> ArticleDetail:
     destination_id = _validate_destination(payload.destination_id)
+    _validate_document(payload.document, destination_id)
     topics = await _resolve_topics(session, payload.topics, section_of(payload.kind))
     now = datetime.now(UTC)
     encoded = payload.document.model_dump(mode="json")
@@ -456,6 +489,7 @@ async def start_translation(
     article = await _find_article(session, article_id)
     if await _find_locale_row(session, article, locale) is not None:
         raise AppError(409, "guide_locale_exists", "這個語言的草稿已經存在")
+    _validate_document(document, article.destination_id)
     now = datetime.now(UTC)
     encoded = document.model_dump(mode="json")
     row = GuideArticleLocale(
@@ -507,6 +541,7 @@ async def save_draft(
 ) -> ArticleDetail:
     article = await _find_article(session, article_id)
     row = await _require_locale_row(session, article, locale)
+    _validate_document(payload.document, article.destination_id)
     return await _write_revision(
         session, actor, article, row, payload.expected_version, payload.document, "draft_saved"
     )
@@ -524,6 +559,7 @@ async def publish_locale(
     if not article_is_live(article):
         raise AppError(409, "guide_article_expired", "這篇文章的有效期限已過，請先更新期限")
     document = GuideDocument.model_validate(row.draft_json)
+    _validate_document(document, article.destination_id)
     return await _write_revision(
         session,
         actor,
@@ -569,6 +605,8 @@ async def restore_revision(
     )
     if revision is None:
         raise AppError(404, "guide_revision_not_found", "找不到這篇文章的指定版本")
+    restored = GuideDocument.model_validate(revision.document_json)
+    _validate_document(restored, article.destination_id)
     # Restoring writes a new draft. It never moves the public pointer, so a restore cannot
     # publish old text by accident.
     return await _write_revision(
@@ -577,7 +615,7 @@ async def restore_revision(
         article,
         row,
         payload.expected_version,
-        GuideDocument.model_validate(revision.document_json),
+        restored,
         "restored",
         reason=payload.reason,
         source_revision_id=revision.id,

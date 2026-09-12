@@ -181,6 +181,23 @@ describe("the sitemap enumeration", () => {
     for (const entry of entries) expect(entry.slug).toMatch(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
   });
 
+  it("carries the current version's own timestamp when the API sends one, and only then", async () => {
+    vi.stubGlobal("fetch", respond({
+      entries: [
+        { ...rows[0], modified_at: "2026-09-12T09:00:00Z" },
+        // An API that predates the field, and one that sends something unparseable: both keep
+        // their URL and simply carry no lastmod of their own.
+        rows[1],
+        { ...rows[2], modified_at: "sometime" },
+      ],
+    }));
+    const entries = await guideSitemapEntries();
+    expect(entries).toHaveLength(3);
+    expect(entries[0].modified_at).toBe("2026-09-12T09:00:00Z");
+    expect(entries[1].modified_at).toBeUndefined();
+    expect(entries[2].modified_at).toBeUndefined();
+  });
+
   it("returns nothing rather than an exception when the API is unreachable", async () => {
     vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new Error("connection reset")));
     await expect(guideSitemapEntries()).resolves.toEqual([]);

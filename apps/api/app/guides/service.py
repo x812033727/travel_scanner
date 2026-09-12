@@ -15,7 +15,7 @@ from datetime import datetime
 from typing import Any, cast
 from uuid import UUID
 
-from sqlalchemy import select
+from sqlalchemy import and_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.destinations.catalog import destination_for_id
@@ -140,6 +140,7 @@ async def _published_document(
         **document.model_dump(),
         version=revision.version,
         published_at=row.published_at or revision.created_at,
+        modified_at=revision.created_at,
     )
 
 
@@ -227,6 +228,7 @@ async def public_list(
                 topics=[topic_option(item, locale) for item in topics.get(article.id, [])],
                 title=published.title,
                 description=published.description,
+                hero=published.hero,
                 published_at=published.published_at,
                 valid_until=article.valid_until,
                 featured=article.featured,
@@ -288,14 +290,26 @@ async def sitemap_entries(session: AsyncSession) -> SitemapList:
     Only rows that the list and the article page would also serve. Expired intel and
     withdrawn translations leave here at the same moment they leave the site.
     """
+    # The current public version's own timestamp rides along as ``modified_at``: the same
+    # predicate ``_published_document`` resolves the pointer with, as an outer join so a
+    # damaged pointer costs that row its lastmod rather than its place in the file.
     rows = await session.execute(
         select(
             GuideArticle.kind,
             GuideArticle.slug,
             GuideArticleLocale.locale,
             GuideArticleLocale.published_at,
+            GuideArticleRevision.created_at,
         )
         .join(GuideArticleLocale, GuideArticleLocale.article_id == GuideArticle.id)
+        .outerjoin(
+            GuideArticleRevision,
+            and_(
+                GuideArticleRevision.article_locale_id == GuideArticleLocale.id,
+                GuideArticleRevision.version == GuideArticleLocale.published_version,
+                GuideArticleRevision.action == "published",
+            ),
+        )
         .where(*published_filters())
         .order_by(GuideArticleLocale.published_at.desc())
         .limit(SITEMAP_LIMIT)
@@ -307,8 +321,9 @@ async def sitemap_entries(session: AsyncSession) -> SitemapList:
                 slug=slug,
                 locale=cast(Locale, locale),
                 published_at=published_at,
+                modified_at=modified_at or published_at,
             )
-            for kind, slug, locale, published_at in rows
+            for kind, slug, locale, published_at, modified_at in rows
             if published_at is not None
         ]
     )
