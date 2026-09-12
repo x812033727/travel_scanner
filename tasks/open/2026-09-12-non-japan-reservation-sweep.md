@@ -85,8 +85,7 @@ scope:
   這一批沒有寫入這一筆。
 - `taipei-cafe-acme-fine-arts-museum`：inline 上有品牌頁 `-MYne3QpFTXQSW31f8Kt:inline-live-2`，
   但品牌頁沒有分店代碼、URL 規則不收；北美館分店的分店頁還沒拿到。
-- `kaohsiung-chun-shui-tang`、`taichung-chun-shui-siwei`：春水堂品牌頁
-  `-KsqbueWIURxuxAQ8EIy:inline-live-chunshuitang` 底下的分店清單沒能打開；信義店那一頁的結論
-  （不開放線上訂位）**不能**直接套到其他分店。
+- （已解決）`kaohsiung-chun-shui-tang`、`taichung-chun-shui-siwei`：春水堂品牌頁的分店清單後來打開了，
+  inline 上只有七家分店，高雄那一家（三民河堤路）與台中四維創始店都不在名單上，兩筆記成 `not_found`。
 - inline 的按壓牆節奏：開一頁就會被擋，大約隔十分鐘才能再開一頁；403 對 curl 與 WebFetch 一樣，
   Firebase 也是 `Permission denied`。要一次做完這三筆，得留一段只做 inline 的時間。

@@ -26,6 +26,7 @@
 | Hungry Hub（泰國） | `puma.hungryhub.com/graphql` 的 `SearchSuggestions` | 「Copper Beyond Buffet」兩家分店都查得到 |
 | PasGo（越南） | `pasgo.vn/Search/SearchHeader`（`keySearch`） | 峴港的 Cá Voi、Cây Dừa 都查得到，含變音字比對 |
 | SevenRooms | 限定 `sevenrooms.com` 網域的網路檢索 | 查得到新加坡既有的 gu-um、nomada 等訂位頁 |
+| 店家官網 | 把 105 間裡有官網的 21 間逐頁抓下來，掃有沒有連到白名單平台 | 富錦樹集團的店家頁掃出 11 個 inline 連結 |
 
 候選頁一律**實際打開**再判斷能不能訂位，判斷依據只看頁面上本店自己的訂位控制項：
 
@@ -77,6 +78,17 @@
 鼎泰豐 信義店也屬於這一類的變形：inline 上鼎泰豐有八個分店頁，**全部都是 `/order/` 線上訂餐**，
 沒有任何 `/booking/` 訂位頁。
 
+春水堂是「品牌在平台上、清單這一家不在」的標準例子。inline 的春水堂品牌訂位頁
+（`-KsqbueWIURxuxAQ8EIy:inline-live-chunshuitang`）掛的是七家分店：台北信義新天地 A9、台北南西店一館、
+台中中港店、新光天母店、桃園站前店、高雄左營店、台北站前店。清單裡的三家春水堂，只有信義店在名單上
+（而它自己的分店頁寫著不開放線上訂位）；高雄那一家的座標對到官網高雄門市清單的**三民區河堤路 322 號**、
+不是左營高鐵路 123 號，台中那一家是**西區四維街 30 號的四維創始店**、不是中港店——兩家都不在 inline 上。
+
+富錦樹那一筆還有集團官網當佐證：`fujintreeshop.com/zh-hant/pages/shopinfo` 上，台菜香檳
+（敦北本館、101 旗艦店、大直店）、挽肉と米、SOIL、武田咖哩每一家都掛 inline「線上訂位」連結，
+而三家「富錦樹咖啡」（富錦店 353 號、中山店、華山店）掛的都是「Follow Us」——同一個集團、
+同一份頁面，餐廳能訂位、咖啡廳不能。
+
 ## Chope sitemap 上還在、頁面已經沒了
 
 新加坡有三間店的 Chope 店家頁還留在官方 sitemap 裡，但網址現在都回 404：
@@ -112,6 +124,7 @@ sitemap 撿到同樣的網址。
   （`/-NAJO8JVP2S8P6_wsanZ`）與台南新光三越店，但這一輪被按壓牆擋住，沒能確認中正店就是清單這一家、
   也沒能確認它開不開放線上訂位。**這一筆這次不寫入**，維持原狀。
 - `taipei-cafe-acme-fine-arts-museum`（CAFE ACME 北美館）：inline 上有品牌頁
-  `-MYne3QpFTXQSW31f8Kt:inline-live-2`，但品牌頁沒有分店代碼、不能存；北美館分店的分店頁還沒拿到。
+  `-MYne3QpFTXQSW31f8Kt:inline-live-2`，但品牌頁沒有分店代碼、不能存；北美館分店的分店頁還沒拿到
+  （品牌頁會列出所有分店，像春水堂那樣，只是這次每次都被按壓牆擋住）。
 - 這一輪只查了四國的支援平台。台灣還有 FunNow、饗訂位等平台，泰國還有 Eatigo、TableCheck，
   都不在白名單上，也沒有證據顯示清單上的店家在用。
