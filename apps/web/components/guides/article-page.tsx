@@ -10,7 +10,10 @@ import { Link } from "@/i18n/navigation";
 import { localeLabels, type Locale } from "@/i18n/routing";
 import { citiesForCountry, countryKeys, destinationSeeds, type CatalogTranslator } from "@/lib/destinations";
 import { guideAffiliateDestination } from "@/lib/guide-affiliate";
-import { guideHref, guideListHref, readingMinutes, type GuideArticleState, type GuideKind, type GuideSummary } from "@/lib/guides";
+import {
+  guideHref, guideListHref, readingMinutes,
+  type GuideArticleState, type GuideKind, type GuideSummary, type PublishedGuide,
+} from "@/lib/guides";
 import { getGuideArticle, getGuideList } from "@/lib/guides.server";
 import { localeUrl, siteUrl } from "@/lib/seo";
 import { breadcrumbs, type Crumb } from "@/lib/structured-data";
@@ -68,7 +71,7 @@ export async function guideArticleMetadata(
         ...(state.published_locales.includes("en") ? { "x-default": localeUrl("en", path) } : {}),
       },
     },
-    ...(await socialCard(state, parent)),
+    ...(await socialCard(state.document, parent)),
   };
 }
 
@@ -82,10 +85,9 @@ export async function guideArticleMetadata(
  * keys are left alone and the site card inherits.
  */
 async function socialCard(
-  state: GuideArticleState & { document: NonNullable<GuideArticleState["document"]> },
-  parent?: ResolvingMetadata,
+  document: PublishedGuide, parent?: ResolvingMetadata,
 ): Promise<Pick<Metadata, "openGraph" | "twitter">> {
-  const hero = state.document.hero;
+  const hero = document.hero;
   if (!hero) return {};
   const inherited = parent ? (await parent).openGraph : null;
   return {
@@ -94,8 +96,8 @@ async function socialCard(
       ...(inherited?.locale ? { locale: inherited.locale } : {}),
       ...(inherited?.alternateLocale ? { alternateLocale: inherited.alternateLocale } : {}),
       type: "article",
-      publishedTime: state.document.published_at,
-      modifiedTime: state.document.modified_at ?? state.document.published_at,
+      publishedTime: document.published_at,
+      modifiedTime: document.modified_at ?? document.published_at,
       images: [{ url: hero.src, width: hero.width, height: hero.height, alt: hero.alt }],
     },
     twitter: { card: "summary_large_image", images: [hero.src] },
