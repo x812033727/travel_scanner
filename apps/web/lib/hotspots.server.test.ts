@@ -1,4 +1,9 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
+const { incoming } = vi.hoisted(() => ({ incoming: vi.fn() }));
+// The loaders read the visitor's address out of the request so the API can meter reads
+// per source. Nothing here depends on the value; it just has to be readable.
+vi.mock("next/headers", () => ({ headers: incoming }));
+incoming.mockResolvedValue(new Headers({ "x-forwarded-for": "203.0.113.9" }));
 import { loadInitialHotspots } from "./hotspots.server";
 
 const ranking = { items: [{ id: "1", name: "淺草寺" }] };

@@ -45,7 +45,11 @@ from app.hotspots.router import router as hotspots_router
 from app.infra import get_redis
 from app.line.router import router as line_router
 from app.locations.map_identity_router import router as map_identity_router
-from app.middleware import RequestBodyLimitMiddleware, RequestContextMiddleware
+from app.middleware import (
+    PublicReadRateLimitMiddleware,
+    RequestBodyLimitMiddleware,
+    RequestContextMiddleware,
+)
 from app.places.router import public_router as public_places_router
 from app.places.router import router as places_router
 from app.problems import AppError, app_error_handler, validation_error_handler
@@ -85,6 +89,10 @@ app = FastAPI(
     openapi_url=None if settings.production else "/openapi.json",
 )
 app.add_middleware(RequestBodyLimitMiddleware, max_bytes=settings.api_max_request_bytes)
+# Registration order is reversed at runtime, so this sits inside CORS and the request
+# context -- a 429 still carries its CORS headers and request id -- but outside the body
+# reader, so a refused caller is answered before its upload is buffered.
+app.add_middleware(PublicReadRateLimitMiddleware)
 app.add_middleware(RequestContextMiddleware)
 app.add_middleware(
     CORSMiddleware,

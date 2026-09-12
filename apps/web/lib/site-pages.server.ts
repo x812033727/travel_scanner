@@ -1,5 +1,6 @@
 import { cache } from "react";
 import { isSitePageDocument, sitePageLocales, type PublishedSitePage, type SitePageLocale, type SitePagePublicState, type SitePageSlug } from "./site-pages";
+import { publicServerHeaders } from "@/lib/public-server-fetch";
 
 // Public legal-page labels and empty/error states cannot become an alternate
 // publication channel through general UI-text overrides. Never fall back a locale.
@@ -13,7 +14,7 @@ export async function loadSitePage(slug: SitePageSlug, locale: string): Promise<
   const apiBase = (process.env.API_INTERNAL_URL || "http://localhost:8000").replace(/\/$/, "");
   try {
     const response = await fetch(`${apiBase}/api/v1/site-pages/${slug}?locale=${encodeURIComponent(locale)}`, {
-      cache: "no-store", headers: { Accept: "application/json" }, signal: AbortSignal.timeout(3000),
+      cache: "no-store", headers: await publicServerHeaders(locale), signal: AbortSignal.timeout(3000),
     });
     if (!response.ok) return unavailable;
     const row = await response.json();

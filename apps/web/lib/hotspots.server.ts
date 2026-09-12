@@ -1,4 +1,5 @@
 import { cache } from "react";
+import { publicServerHeaders } from "@/lib/public-server-fetch";
 
 /**
  * The ranking the explorer used to fetch from the browser after hydration. On a
@@ -31,7 +32,7 @@ async function fetchJson(url: string, locale: string): Promise<unknown | null> {
       // calculation is not permission to cache a subsequently withdrawn public record.
       cache: "no-store",
       signal: AbortSignal.timeout(3000),
-      headers: { Accept: "application/json", "X-Travel-Locale": locale },
+      headers: await publicServerHeaders(locale),
     });
     if (!response.ok) return null;
     return (await response.json()) as unknown;

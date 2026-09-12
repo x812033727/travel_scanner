@@ -1,0 +1,113 @@
+# mokaair site configuration.
+#
+# Copy to sites-available/ and fill in server_name and the certificate paths; those belong to
+# the host, not to this repository, which is why this file ships as .example. Everything else
+# is meant to be applied as it stands.
+#
+# The browser talks only to the Next.js BFF (see architecture.md). The FastAPI service listens
+# on 127.0.0.1:8090 and MUST NOT be proxied here: reaching it directly skips the BFF's
+# same-origin check, its header allowlist, and the cookie handling that goes with them.
+
+upstream mokaair_web {
+    server 127.0.0.1:8091;
+    keepalive 32;
+}
+
+# --- Canonical origin -------------------------------------------------------------------
+#
+# This redirect already exists in production and is load-bearing, not cosmetic. The OAuth
+# flow cookie is host-only, so if the site answers on a second hostname a sign-in started
+# there leaves its cookie behind and every attempt fails with oauth_state_invalid, forever.
+# Path-preserving, and it must cover /api/* too. See docs/social-login.md.
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name www.example.com;          # EDIT
+
+    ssl_certificate     /etc/letsencrypt/live/example.com/fullchain.pem;   # EDIT
+    ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;     # EDIT
+
+    return 301 https://example.com$request_uri;                            # EDIT
+}
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name example.com www.example.com;                               # EDIT
+    return 301 https://example.com$request_uri;                            # EDIT
+}
+
+# --- The site ---------------------------------------------------------------------------
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    # Standalone directive since nginx 1.25.1; production runs 1.28.3. On anything older use
+    # the deprecated `listen 443 ssl http2;` form instead.
+    http2 on;
+    server_name example.com;                                               # EDIT
+
+    ssl_certificate     /etc/letsencrypt/live/example.com/fullchain.pem;   # EDIT
+    ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;     # EDIT
+
+    # If a CDN is ever put in front of this nginx, uncomment and fill in its ranges. Until
+    # then it must stay off: enabling it without a correct set_real_ip_from list means
+    # believing a CF-Connecting-IP header that anyone can send. With a CDN and this block
+    # *missing*, the opposite breaks -- $remote_addr becomes the CDN's egress address, every
+    # visitor lands in a handful of buckets, and both the limits below and the application's
+    # own per-source counting stop meaning anything.
+    # Check which world you are in:  curl -sI https://example.com | grep -i '^server:'
+    # set_real_ip_from   <CDN range>;
+    # real_ip_header     CF-Connecting-IP;
+    # real_ip_recursive  on;
+
+    # The application sends HSTS on its own responses (apps/web/next.config.ts). This covers
+    # the ones nginx generates itself: redirects, 429s from the limits below, 502s when the
+    # upstream is down. "always" because add_header otherwise skips exactly those statuses.
+    add_header Strict-Transport-Security "max-age=31536000" always;
+
+    client_max_body_size 6m;    # just above the app's own 5 MiB cap, so the app answers
+    limit_conn mokaair_conns 20;
+
+    # Immutable build output: deliberately NOT rate limited. One page load pulls dozens of
+    # these, so any rate low enough to matter would break the first visit of every session.
+    location /_next/static/ {
+        include /etc/nginx/snippets/mokaair-proxy-headers.conf;
+        proxy_pass http://mokaair_web;
+    }
+
+    location /brand/ {
+        include /etc/nginx/snippets/mokaair-proxy-headers.conf;
+        proxy_pass http://mokaair_web;
+    }
+
+    # LINE delivers webhooks in bursts and retries what it cannot deliver, and the request is
+    # authenticated by its X-Line-Signature rather than by anything nginx can see. Rate
+    # limiting it would drop real events, so it is exempt. The signature header passes through
+    # untouched: proxy_set_header only overrides the names it lists.
+    location = /api/line/webhook {
+        include /etc/nginx/snippets/mokaair-proxy-headers.conf;
+        proxy_pass http://mokaair_web;
+    }
+
+    # Served by Next out of apps/web/public/.well-known/. Do not intercept or rewrite this
+    # prefix: Apple fetches the domain-association file from it and sign-in breaks if it 404s.
+    location /.well-known/ {
+        include /etc/nginx/snippets/mokaair-proxy-headers.conf;
+        proxy_pass http://mokaair_web;
+    }
+
+    location /api/ {
+        include /etc/nginx/snippets/mokaair-proxy-headers.conf;
+        limit_req zone=mokaair_api burst=20 nodelay;
+        proxy_pass http://mokaair_web;
+        # Search results stream as server-sent events; buffering them defeats the point.
+        proxy_buffering off;
+        proxy_read_timeout 300s;
+    }
+
+    location / {
+        include /etc/nginx/snippets/mokaair-proxy-headers.conf;
+        limit_req zone=mokaair_pages burst=20 nodelay;
+        proxy_pass http://mokaair_web;
+    }
+}

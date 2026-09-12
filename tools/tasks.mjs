@@ -2,9 +2,10 @@
 // One shared backlog for humans and for whichever model picks up the work next.
 //
 // Every unfinished task is a single file in tasks/open, so two agents working on two
-// tasks never write the same file and never wait for each other. tasks/BOARD.md is the
-// one file they all touch, so it is generated rather than edited: a conflict there is
-// resolved by re-running this tool, not by hand-merging.
+// tasks never write the same file and never wait for each other. tasks/BOARD.md would be
+// the one file they all touch, so it is not committed at all: it is generated from the
+// task files on demand, and two branches that each file a task no longer collide in it.
+import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -518,15 +519,33 @@ function commandDone(root, id, now) {
   return { code: 0, lines };
 }
 
-function commandCheck(root, now) {
+// The board is ignored by git, so the copy on any one machine is a scratch file that is
+// allowed to lag behind a 'git pull'. It only has to be correct when it is in version
+// control, where a stale one would quietly misinform everyone reading it: so the freshness
+// check follows the file into and out of the repository rather than being dropped.
+export function isBoardTracked(root) {
+  try {
+    execFileSync("git", ["ls-files", "--error-unmatch", "--", "tasks/BOARD.md"], { cwd: root, stdio: "ignore" });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function commandCheck(root, now, boardTracked) {
   const tasks = loadTasks(root);
   const { errors, warnings } = validate(tasks, { now });
-  const expected = renderBoard(tasks);
-  const current = existsSync(boardFile(root)) ? readFileSync(boardFile(root), "utf8") : "";
-  if (current !== expected) errors.push("tasks/BOARD.md is out of date; run 'npm run tasks:board' (never hand-merge it)");
+  const tracked = boardTracked ?? isBoardTracked(root);
+  if (tracked) {
+    const expected = renderBoard(tasks);
+    const current = existsSync(boardFile(root)) ? readFileSync(boardFile(root), "utf8") : "";
+    if (current !== expected) {
+      errors.push("tasks/BOARD.md is committed and out of date; run 'npm run tasks:board' (never hand-merge it), or untrack it again");
+    }
+  }
   const lines = [...errors, ...warnings.map((warning) => `warning: ${warning}`)];
   if (errors.length) return { code: 1, lines };
-  lines.push(`Validated ${tasks.length} task file(s); the board is up to date.`);
+  lines.push(`Validated ${tasks.length} task file(s)${tracked ? "; the committed board is up to date" : ""}.`);
   return { code: 0, lines };
 }
 
@@ -545,15 +564,15 @@ Commands:
   release <id>                                  Give it back
   status <id> <open|in-progress|blocked|review> Move a task, optionally --owner/--branch
   done <id>                                     Archive it into tasks/done/
-  board                                         Regenerate tasks/BOARD.md
-  check                                         Validate every task and the board
+  board                                         Regenerate tasks/BOARD.md (generated, not committed)
+  check                                         Validate every task file
 
 Areas: ${AREAS.join(", ")}      Priorities: ${PRIORITIES.join(", ")}
 A claim older than ${STALE_CLAIM_HOURS}h is stale and can be taken over without --force.
 `;
 }
 
-export function runCommand(argv, { root, now = new Date() } = {}) {
+export function runCommand(argv, { root, now = new Date(), boardTracked } = {}) {
   const { positional, options } = parseArgs(argv);
   const [command, ...rest] = positional;
   try {
@@ -579,7 +598,7 @@ export function runCommand(argv, { root, now = new Date() } = {}) {
         writeBoard(root);
         return { code: 0, lines: ["Rewrote tasks/BOARD.md."] };
       case "check":
-        return commandCheck(root, now);
+        return commandCheck(root, now, boardTracked);
       default:
         return { code: 1, lines: [`unknown command '${command}'`, helpText()] };
     }
