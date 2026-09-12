@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**39 open · 2 in progress · 3 blocked · 1 in review · 264 done**
+**39 open · 3 in progress · 3 blocked · 0 in review · 266 done**
 
 ## Ready to claim
 
@@ -36,6 +36,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [航班動態的查詢時間把 UTC 當成地方時顯示](open/2026-09-11-flight-status-checked-at-utc.md) | web | `apps/web/components/flight-anchor-card.tsx`<br>`apps/web/components/flight-anchor-card.test.tsx` |
 | P2 | [當日檢視要真的離線可用，需要預先快取 app shell](open/2026-09-11-offline-day-view-needs-an-app.md) | web | `apps/web/public/sw.js`<br>`apps/web/components/offline-trip-cache.tsx`<br>`apps/web/components/offline-trip-cache.test.tsx` |
 | P2 | [useModalSheet 的 effect 在 ref 還沒掛上時會靜靜地永久放棄](open/2026-09-12-usemodalsheet-effect-ref.md) | web | `apps/web/lib/modal-sheet.test.tsx` |
+| P2 | [site-footer 有一條測試繼承別人留下的路徑，打亂順序就紅](open/2026-09-12-site-footer.md) | web | `apps/web/components/site-footer.test.tsx` |
 | P2 | [admin-usage-settings 的分頁存在 URL，測試之間沒有重設就互相影響](open/2026-09-12-admin-usage-settings-url.md) | web | `apps/web/components/admin-usage-settings-panel.test.tsx` |
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | api | `apps/api/app/hotspots/areas.py`<br>`apps/api/tests/test_hotspot_areas.py` |
@@ -56,12 +57,11 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- | --- |
 | [公開美食店家訂位平台連結補齊（查核與批次匯入）](open/2026-09-11-food-reservation-link-backfill.md) | claude-opus-5 | 2026-09-11T16:02:41Z | `claude/food-reservation-link-backfill` |
 | [Deny school, hospital, tram stop, ward and military base types in hotspot discovery](open/2026-09-11-deny-school-hospital-tram-stop-ward.md) | claude-opus-5 | 2026-09-11T16:53:59Z | `claude/attractions-review-progress-55bb39` |
+| [填入擁有者確認資訊，解鎖四個網站資訊頁](open/2026-09-12-site-page-requirements.md) | claude-opus-5-guides | 2026-09-12T01:56:04Z | — |
 
 ## In review
 
-| Task | Owner | Branch |
-| --- | --- | --- |
-| [Wire /guides into the sitemap, footer and destination pages](open/2026-09-11-guides-sitemap-and-entry-points.md) | claude-opus-5-guides | `claude/travel-info-guide-section-4ulqsj` |
+_Nothing here._
 
 ## Waiting
 
@@ -71,11 +71,12 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | see the task notes |
 | P3 | [TourAPI（韓國觀光公社）可行性驗證：先確認拿得到金鑰、連得上、資料量夠不夠](open/2026-09-06-korea-tourism-tourapi-spike.md) | see the task notes |
 | P1 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | active work in the same scope |
-| P2 | [site-footer 有一條測試繼承別人留下的路徑，打亂順序就紅](open/2026-09-12-site-footer.md) | active work in the same scope |
 | P3 | [Lighthouse SEO 與效能門檻 workflow](open/2026-09-10-seo-lighthouse-workflow.md) | depends on 2026-09-10-seo-server-render-home-and-explore |
 
 ## Recently finished
 
+- 2026-09-12 [從程式碼盤點個資處理，供擁有者填寫隱私權頁的確認資訊](done/2026-09-11-privacy-data-map.md)
+- 2026-09-11 [Wire /guides into the sitemap, footer and destination pages](done/2026-09-11-guides-sitemap-and-entry-points.md)
 - 2026-09-11 [CI 拉不到 minio/minio:latest，改用 quay.io 並釘版本](done/2026-09-11-ci-minio-minio-latest-quay-io.md)
 - 2026-09-11 [當日檢視的離線 e2e 與 CI 接線](done/2026-09-11-offline-today-e2e.md)
 - 2026-09-11 [推薦流的語言選擇與同地點去重](done/2026-09-11-discovery-feed-language-and-dedup.md)
@@ -84,5 +85,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-11 [formatTime 在沒有時間時回傳寫死的繁中](done/2026-09-11-format-time-chinese-fallback.md)
 - 2026-09-11 [安排編輯器的關閉鈕在儲存在途時被靜默吞掉](done/2026-09-11-planner-overlay-close-guard-race.md)
 - 2026-09-11 [trip-editor 的關閉守門測試會隨檔案順序變紅](done/2026-09-11-trip-editor-close-guard-order-dependence.md)
-- 2026-09-11 [後端仍有二十餘處警告字串是寫死的繁中](done/2026-09-11-remaining-api-warning-literals.md)
-- 2026-09-11 [航班錨點卡與路線卡仍是硬編碼繁中](done/2026-09-11-anchor-and-route-cards-hardcoded-zh.md)

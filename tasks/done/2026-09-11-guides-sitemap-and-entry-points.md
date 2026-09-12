@@ -1,13 +1,13 @@
 ---
 id: 2026-09-11-guides-sitemap-and-entry-points
 title: Wire /guides into the sitemap, footer and destination pages
-status: review
+status: done
 priority: P2
 area: web
 owner: claude-opus-5-guides
 claimed_at: 2026-09-11T17:07:17Z
 created_at: 2026-09-11T15:47:19Z
-completed_at:
+completed_at: 2026-09-11T23:31:27Z
 branch: claude/travel-info-guide-section-4ulqsj
 depends_on: []
 scope:
@@ -102,3 +102,18 @@ Korean draft left unpublished produced exactly three sitemap entries, each with 
 `lastmod` and alternates matching only its own published locales; the Korean draft never
 appeared. Setting `valid_until` to yesterday removed the notice from the sitemap while its URL
 kept answering 200 and rendered the dated expiry banner.
+
+**收尾（#404 已合併，commit d14a989）。** 開票時 `e2e/seo.spec.ts` 與 `docs/seo.md` 不在
+scope 裡，結果 CI 上 `web` 紅了：`seo.spec.ts:64` 寫死 `toHaveLength(365)`，而三個新的
+`/guides` 樞紐 × 五語系多出 15 個 URL。兩個檔案都補進 scope 後才改：數字改寫成
+`5 * (10 + 33 + 33)` 並註明來源，`docs/seo.md` 一併更正三處不再成立的敘述——其中
+「Managed document URLs remain outside the sitemap until publication-aware enumeration is
+implemented」與「No artificial `lastmod` is emitted」都已被這次改動推翻，還把舊稱呼
+「33 guides」改成「33 destination guides」以免與新專區混淆。
+
+**教訓：改動 `SITEMAP_ROUTES` 會牽動兩個寫死的數字**，一個在 e2e、一個在文件裡。
+下次動那張路由表的人，把這兩處一起看。
+
+**中途撞到一個與本任務無關的 CI 中斷**：MinIO 在 Docker Hub 上的公開映像不再開放匿名
+拉取，`api` 與 `full-stack-smoke` 因此全紅。那是另開 #407／#409 處理的，不屬於這張票；
+記在這裡只是說明為什麼這張票的 CI 中間紅過而與 diff 無關。

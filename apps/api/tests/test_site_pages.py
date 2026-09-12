@@ -9,6 +9,7 @@ from __future__ import annotations
 import asyncio
 import copy
 import os
+import re
 from collections.abc import AsyncIterator
 from datetime import UTC, datetime, timedelta
 from uuid import uuid4
@@ -33,6 +34,7 @@ from app.site_pages import service
 from app.site_pages.router import admin_router, public_router
 from app.site_pages.schemas import (
     PAGE_SLUGS,
+    REQUIRED_FIELDS,
     DraftWrite,
     LinkBlock,
     PageDocument,
@@ -134,12 +136,20 @@ def test_all_twenty_initial_documents_are_localized_unpublished_and_pending(loca
         document = service.initial_document(slug, locale)
         titles.append(document.title)
         assert document.effective_date is None
-        assert set(document.requirements.model_dump().values()) == {""}
         assert len(document.blocks) >= 4
-        assert "operator" in service.pending_requirements(slug, document)
-        assert "contact" in service.pending_requirements(slug, document)
-        assert "effective_date" in service.pending_requirements(slug, document)
-        assert "@" not in document.model_dump_json()
+        # The owner supplied these on 2026-09-12; before that every field was empty here.
+        # Each page carries exactly the fields REQUIRED_FIELDS declares for it and no more:
+        # a retention promise rendered on /about would be a commitment nobody made there.
+        filled = {
+            field for field, value in document.requirements.model_dump().items() if value.strip()
+        }
+        assert filled == set(REQUIRED_FIELDS[slug])
+        # Publication stays gated on the date, which the owner sets when they publish.
+        assert service.pending_requirements(slug, document) == ["effective_date"]
+        # The published contact address is deliberate. Nothing else may carry an address:
+        # this guard is why an email cannot reach these drafts by accident.
+        addresses = set(re.findall(r"[\w.+-]+@[\w-]+\.[\w.-]+", document.model_dump_json()))
+        assert addresses <= {"support@mokaair.com"}
     assert len(set(titles)) == 4
 
 
