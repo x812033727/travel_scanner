@@ -54,3 +54,13 @@ reset 的成因**：沒有任何一次觀察把兩者連起來，原票自己也
 
 2026-09-12：metric 那一半已修並有回歸測試（見原票），所以之後的重現不會再有
 uq_community_metric 的日誌噪音混在裡面。不要把失敗 job 重跑當成修好。
+
+**不要再往 metric 方向追。** `await metric(` 全 repo 只有四個呼叫點：`content.py:370`、
+`content.py:371`（fork）、`router.py:443`（GET /posts/{id}）、`router.py:479`（react 的 save）。
+上面每一次 reset 落的 endpoint 都不在這四個裡面——`GET /community/me`（`router.py:88`，handler
+只讀不寫）、`GET /trips/:id`、`GET /api/travel/auth/me`、registerAndVerify。重複鍵與 reset 會
+出現在同一個 run 裡，但不是同一個請求，所以那個相關性從一開始就不可能是因果。
+
+另外已經排除的：savepoint 那條路徑不會讓連線失效。asyncpg 的 `_handle_exception`
+（`dialects/postgresql/asyncpg.py:781-784`）只在 `is_closed()` 時丟掉交易，而 UniqueViolation
+的 `is_disconnect` 回 False——沒有 pool 驅逐、沒有 ECONNRESET。
