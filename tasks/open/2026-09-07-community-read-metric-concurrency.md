@@ -111,3 +111,34 @@ PR #354 to 88eb4b1, so the hotel branch was reconciled and requires fresh full C
 Neither that reconciliation nor any subsequent green run repairs this open defect.
 Hotel-content work did not change runtime, community tests, request concurrency,
 timeouts or error handling. Leave the defect open for a separately scoped diagnosis/fix.
+
+## 第二次獨立觀察（claude-opus-5-testfixes, 2026-09-12）
+
+在 `#417`（一個完全沒碰 community 的 PR）的 CI 上又出現一次，這次有精確的時間對應。
+
+`full-stack-smoke` 第 16 步「Run private-media, mail and community browser journeys」
+失敗，05:06:29 開始、05:07:44 結束。同一個窗口內 Postgres 連噴兩組：
+
+```
+05:06:46 ERROR: duplicate key value violates unique constraint "uq_community_metric"
+  DETAIL: Key (day, user_id, kind, target)=(2026-09-12, 9b3486ce-ee18-4720-bf51-88708349af8d, read, c78f2f9c-7a90-4a09-9385-63f27bcc0d6b) already exists.
+05:06:48 ERROR: 同上，key=(2026-09-12, 92c7dfc1-8dca-4f9b-8a68-d82b91f6e478, read, ab380dad-9222-4e8a-bc18-921a186130ff)
+```
+
+job: https://github.com/x812033727/travel_scanner/actions/runs/34674611735/job/103502110862
+
+### 這次多知道的兩件事
+
+1. **不必是 push smoke 才會發生。** 原本的紀錄是「push 的 smoke 紅、同 SHA 的 PR smoke 過」，
+   所以曾經懷疑和觸發方式有關。這次就是 PR 的 smoke 紅的，那個方向可以排除。
+2. **兩組不同的 (user_id, target) 在兩秒內各撞一次。** 不是單一使用者重按，而是這個步驟裡
+   多個併發讀取都會踩到——比較像是 insert 沒有做 upsert／`ON CONFLICT DO NOTHING`，
+   而不是某個特定測試的時序問題。
+
+### 還是沒有做的事
+
+沒有動 `apps/api/app/community`。這張任務無人認領，而我當時手上的 PR 與它無關；在別人的
+scope 裡塞一個沒驗證過的修正，只會讓兩邊都難收拾。
+
+**對接手的人**：`uq_community_metric` 的那個 insert 如果改成 upsert，看起來就是這張的解，
+但要先確認 DoD 第二項——每日計數在併發下仍然正確且冪等，不能只是把錯誤吞掉。

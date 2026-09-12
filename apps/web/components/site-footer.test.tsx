@@ -55,7 +55,10 @@ describe("SiteFooter", () => {
   it("carries the only entry point to the guides that survives a first paint", () => {
     // The header renders the section only after the discovery switch resolves; this link is
     // in the response body of every public page regardless.
-    render(<SiteFooter year={2026} />);
+    // Through renderAt, not a bare render: the mocked pathname is module-level state that
+    // the "stays out of /admin" cases below leave pointing at a path this footer refuses to
+    // render on. Shuffled, those ran first and this one asserted on an empty document.
+    renderAt("/");
     const footer = screen.getByRole("contentinfo");
     const link = within(footer).getByRole("link", { name: "情報攻略" });
     expect(link.getAttribute("href")).toBe("/guides");

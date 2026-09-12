@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { useState } from "react";
-import { describe, expect, it } from "vitest";
+import { useEffect, useState } from "react";
+import { describe, expect, it, vi } from "vitest";
 import { modalFocusTargets, registerModalLayer, useModalSheet } from "./modal-sheet";
 
 /**
@@ -32,6 +32,33 @@ function Sheet({ onOpenChange }: { onOpenChange?: (open: boolean) => void } = {}
         <input aria-label="Search" />
         <button type="submit">Apply</button>
       </form>
+    </div>
+  );
+}
+
+/**
+ * A sheet whose element is not in the first commit: `open` is true the whole time, but the
+ * panel waits on data, as a sheet behind a loading state does. Nothing here is exotic -- it is
+ * the shape any caller reaches for when the sheet has to fetch something before it can draw.
+ */
+function LateSheet({ onClose }: { onClose: () => void }) {
+  const [ready, setReady] = useState(false);
+  const ref = useModalSheet<HTMLDivElement>(true, onClose);
+  useEffect(() => {
+    let alive = true;
+    void Promise.resolve().then(() => {
+      if (alive) setReady(true);
+    });
+    return () => {
+      alive = false;
+    };
+  }, []);
+  if (!ready) return <p>loading</p>;
+  return (
+    <div ref={ref} role="dialog" aria-modal="true" aria-label="Late">
+      <button type="button" aria-label="Close late">
+        x
+      </button>
     </div>
   );
 }
@@ -136,5 +163,17 @@ describe("useModalSheet", () => {
     expect(document.body.style.overflow).toBe("hidden");
     fireEvent.keyDown(document, { key: "Escape" });
     expect(document.body.style.overflow).toBe("");
+  });
+  // A sheet that renders after the effect has already run used to be left with no Escape, no
+  // Tab trap and no scroll lock -- and said nothing about it, so it looked like a working
+  // dialog and answered to none of the keyboard. `open` never changes here, so the effect's
+  // one dependency never fires it again; the element itself has to be what wakes it.
+  it("guards a sheet whose element arrives after the first commit", async () => {
+    const onClose = vi.fn();
+    render(<LateSheet onClose={onClose} />);
+    expect(await screen.findByRole("dialog", { name: "Late" })).toBeTruthy();
+    expect(document.body.style.overflow).toBe("hidden");
+    fireEvent.keyDown(document, { key: "Escape" });
+    expect(onClose).toHaveBeenCalledTimes(1);
   });
 });

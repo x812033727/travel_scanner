@@ -215,3 +215,149 @@ reader has already moved it」把這個競態變成確定的事：把第二次�
 `tasks/done/2026-09-11-trip-editor-close-guard-order-dependence.md`）：
 跨檔模組汙染（`isolate` 是 true，探針測過零洩漏）、`onCloseRef` 寫在 passive effect 會落後
 DOM 一個 render（探針測過，`flushSync` 之後兩個 ref 都已更新）。
+
+## 第四輪：三個假設用證據排除，但重現不出來（claude-opus-5-flake, 2026-09-12）
+
+`#406` 合併之後，在合併後的 main 上重跑。**三次整套 + 四核心跑滿的負載：233 檔 /
+2381 測試，三次全綠。** 沒有重現。
+
+同時把探針裝在 `useModalSheet` 的 `onKeyDown` 裡（`MODAL_PROBE=1` 才出聲），記錄每一次
+Escape 是被哪一個提前返回吃掉的。單獨跑 `travel-card-actions.test.tsx` 的基準線乾淨：
+register／unregister 完全成對、深度恆為 1、`isTop=true`、`defaultPrevented=false`、
+`foreignOpenDialogs=0`。
+
+### 三個假設，用證據排除（不是推論）
+
+| 假設 | 證據 | 結論 |
+| --- | --- | --- |
+| 外來的 `dialog[open]` 讓第二個守門返回 | 全站只有一個原生 `<dialog>`，在 `components/community/ui.tsx:62`。`isolate` 是 true，每個測試檔有自己的 jsdom，它到不了 `travel-card-actions.test.tsx` | 排除 |
+| `event.defaultPrevented` 被另一個 listener 先搶走 | `travel-card-actions.tsx` 自己一個 `addEventListener` 都沒有；全站只有五個元件掛 document keydown（`route-map`、`admin-nav`、`hotspot-explorer`、`admin-shell`、`planner-overlay`），都在別的檔，隔離下到不了 | 排除 |
+| `sheetRef.current` 在 effect 執行時是 null，effect 靜靜地什麼都不做 | 見下。四個 `open` 寫死 `true` 的呼叫點全部查過，ref 都是無條件掛上的 | 今天排除，但**原語有隱患** |
+
+### 查到的一個隱患（不是這次的成因，另開任務）
+
+`useModalSheet` 的 effect：
+
+```ts
+useEffect(() => {
+  if (!open) return;
+  const sheet = sheetRef.current;
+  if (!sheet) return;   // ← 靜靜地放棄，而且 deps 是 [open]，永遠不會重試
+  ...
+}, [open]);
+```
+
+`open` 沒變的話 effect 不會再跑。所以只要有一個呼叫點在 effect 執行的那一刻還沒把 ref
+掛上（例如彈層藏在 loading 狀態後面），那個彈層就會**永久**沒有 Escape、沒有 focus trap、
+沒有捲動鎖、也沒有進 `layers`——而且完全不出聲。
+
+四個把 `open` 寫死 `true` 的呼叫點風險最高，因為 effect 只在掛載時跑一次：
+`hotspot-restaurants-panel:153`（ref 在 321，中間沒有提前 return）、
+`admin-hotspot-guides-panel:945`（ref 在 956）、
+`travel-services/booking-panel:125`（ref 在 165）、
+`travel-services/stay22-public-hotels:38`（ref 在 56，loading 狀態在 div **裡面**，所以安全）。
+**四個目前都沒事**，但這是一個等著被下一個呼叫點踩到的地雷。
+
+### 一個容易誤導人的事實
+
+`lib/modal-sheet.ts` **不是 `#406` 改的**——它上一次變動是 `#380` 與 `#338`。`#406` 改的是
+呼叫端（十一個彈層搬過來用它）。所以「原語是新的、所以原語有問題」這個方向不成立；
+變的是 `travel-card-actions.tsx` 開始走這條路。
+
+## 結論：七次整套、零重現，任務釋出（claude-opus-5-flake, 2026-09-12）
+
+| 跑法 | 次數 | Escape 相關的紅 |
+| --- | --- | --- |
+| 整套 + 四核心滿載（預設順序） | 3 | 0 |
+| 整套 + 六個燒 CPU 的行程 + `--sequence.shuffle` | 4 | 0 |
+
+**合計 16667 條測試，Escape 一次都沒紅。**
+
+打亂順序那四次確實有紅，但**兩條都不是這張任務的東西**，而且都是真缺陷、不是 flake：
+
+- `site-footer.test.tsx` 有一條沒設路徑就斷言 → `2026-09-12-site-footer`
+- `admin-usage-settings-panel.test.tsx` 的分頁存在 URL、測試間沒重設 → `2026-09-12-admin-usage-settings-url`
+  （四次打亂中紅了兩次，診斷等於被獨立驗證過）
+
+兩張都寫了成因、一行修法與可重放的種子 `1789176414571`。
+
+### 為什麼釋出而不是標 done
+
+DoD 第三項（修好之後連續三次整套全綠）從字面上看已經滿足了，但**那會宣稱超出證據的東西**。
+真實狀況是：三個實例裡只有 `route-mode-panel` 那個被找到成因並修好（`#406`，有確定性的回歸
+測試）；另外兩個是**重現不出來**，不是**修好了**。這兩件事不該混為一談。
+
+### 留給下一個人的東西
+
+1. `travel-card-actions.test.tsx:64` 現在有失敗現場輸出了，和 `trip-editor.test.tsx:292` 同一個
+   形狀。斷言一個字都沒放寬。故意把 `isTopModalLayer` 印出來，因為另外兩個守門這輪已經用證據
+   排除（這個檔自己沒掛任何 listener；全站唯一的原生 `<dialog>` 在別的檔，`isolate` 下到不了）。
+   **下次它在 CI 紅的時候先看那一行**：如果是 `true`，守門是清白的，handler 根本沒跑或沒掛上。
+   驗證過這個輸出本身會動——暫時把 `closeRef.current()` 拿掉，它印出
+   `dialogs in DOM: 1; sheet still the top layer: true; sheet connected: true;
+   native dialog[open] anywhere: 0; body overflow: hidden`。
+2. 這輪用證據排除的三個假設寫在上一節，**不要重走**。加上更早被推翻的兩個（跨檔模組汙染、
+   `onCloseRef` 落後一個 render），現在總共有五個死路是有紀錄的。
+3. 探針的做法（包住 `onKeyDown`，記錄每個守門的值）留在 commit `86cc4b2` 裡，要用可以撿回來。
+4. `--sequence.shuffle` 很划算：一跑就撈到兩條真的順序相依。值得偶爾拿來掃。
+
+### 一個順手查出來的隱患
+
+`useModalSheet` 的 effect deps 只有 `[open]`，ref 是 null 就永久不再重試——彈層會變成看得見、
+鍵盤完全沒反應、而且不出聲。二十一個呼叫點目前都沒踩到（四個 `open` 寫死 `true` 的都查過），
+但這是下一個人踩得到的地雷。另開 `2026-09-12-usemodalsheet-effect-ref`，沒有在這張裡順手改
+共用原語。
+
+## 第四個實例（claude-opus-5-testfixes, 2026-09-12）
+
+合併 main（`3230a33`，#419 的 sitemap／guides）之後跑整套，紅了一條：
+
+```
+components/route-mode-panel.test.tsx
+  × supports the available Google transit fallback and exposes its actual steps before the optional map
+```
+
+單獨跑那個檔 44 條全過；整套重跑一次 233 檔 / 2383 全綠。**所以這是第四個實例，不是 #419
+帶進來的回歸。**
+
+值得注意的是它落在 `route-mode-panel.test.tsx`，但**不是**我在 `#406` 修好的那一條
+（那條是「switches among cached route options and applies only the selected preview」）。
+同一個檔、不同的測試。所以焦點守門的修正沒有讓這個檔免疫，只解決了它自己那一條。
+
+四個實例現在長這樣：
+
+| 檔 | 斷言 | 狀態 |
+| --- | --- | --- |
+| `route-mode-panel.test.tsx`（cached route options） | 焦點在下一個選項 | 已修（`#406`） |
+| `route-mode-panel.test.tsx`（Google transit fallback） | — | **新，未解** |
+| `travel-card-actions.test.tsx:64` | Escape 之後彈層關掉 | 未解 |
+| `trip-editor.test.tsx:292` | 對話框還在 | 未解 |
+
+觸發的情境也對得上先前的觀察：**main 帶進新的測試檔會改變整套的檔案順序與時序**，而這個
+家族對那個很敏感。#419 一個字都沒碰 `route-mode-panel`。
+
+下次要查的時候，這條比另外兩條好下手——它在一個已經裝過焦點探針、而且探針確實奏效的檔裡。
+
+## 一次跑出兩條，以及我把證據丟掉了（claude-opus-5-testfixes, 2026-09-12）
+
+合併 `#411` 與 `#420` 之後跑整套，**同一次跑紅了兩條**——這是目前看過最多的一次：
+
+```
+× disables arrange and adjustment navigation until itinerary generation finishes   （trip-editor.test.tsx:292）
+× supports the available Google transit fallback and exposes its actual steps…     （route-mode-panel.test.tsx）
+```
+
+重跑一次 235 檔 / 2396 全綠，所以兩條都是這個家族，不是回歸。
+
+**但我把證據丟掉了。** `trip-editor.test.tsx:292` 就是有失敗現場輸出的那一條，它那次一定印了
+`dialogs in DOM / assistant connected / assistant hidden by an ancestor / planner layers /
+body position`——而我當下只 grep 了 `×` 和 `Tests`，把診斷訊息濾掉，等發現時重跑已經是綠的。
+
+**給下一個人的教訓，也是給我自己的**：這個家族隨時可能在任何一次整套跑出現，所以跑之前就把
+完整輸出導到檔案（`npx vitest run > run.log 2>&1`），不要用 grep 直接看。診斷訊息只有在它紅的
+那一瞬間存在，而它下一次紅可能是好幾個小時以後。
+
+另外值得記的是「兩條同時紅」這件事本身：它們在不同的檔、不同的原語（`PlannerOverlay` 與
+`useModalSheet`），卻在同一次跑一起失敗。這比較像是整套的時序在那一次整體偏移，而不是某一個
+元件自己的競態——和「main 帶進新測試檔會改變順序與時序」的觀察一致（那一次剛好併入了 `#411`
+的中介層與 `#420` 的工具改動）。
