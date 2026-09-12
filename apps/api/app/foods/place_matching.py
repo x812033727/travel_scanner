@@ -17,8 +17,10 @@ produce one, so a Place ID there would add noise without moving a row closer to 
 
 from __future__ import annotations
 
+from collections.abc import Awaitable, Callable
 from dataclasses import dataclass
 from typing import Any
+from uuid import UUID
 
 from redis.asyncio import Redis
 from sqlalchemy import select
@@ -87,11 +89,17 @@ async def match_merchant_places(
     merchants: list[FoodMerchant],
     *,
     apply: bool = False,
+    actor_id: UUID | None = None,
+    origin: str = "cli",
+    run_id: UUID | None = None,
+    should_continue: Callable[[], Awaitable[bool]] | None = None,
 ) -> list[MerchantMatchReport]:
     """Attach a Place ID to each merchant, committing after each row.
 
     Stops at the first row the Google usage guard refuses, so a long batch cannot push
-    the month past the free tier.
+    the month past the free tier. A catalog review run passes its lease check as
+    ``should_continue`` for the same reason: a worker that lost its lease must not keep
+    spending Google calls on rows another worker may already be matching.
     """
 
     reports: list[MerchantMatchReport] = []
@@ -100,6 +108,9 @@ async def match_merchant_places(
         if merchant.google_place_id:
             reports.append(MerchantMatchReport(slug, name, "already_matched"))
             continue
+        if should_continue is not None and not await should_continue():
+            reports.append(MerchantMatchReport(slug, name, "lease_lost"))
+            break
         if not await automatic_refresh_allowed(redis, settings):
             reports.append(MerchantMatchReport(slug, name, "usage_guard"))
             break
@@ -145,14 +156,15 @@ async def match_merchant_places(
         merchant.google_place_id = place_id
         session.add(
             AdminAuditLog(
-                actor_user_id=None,
+                actor_user_id=actor_id,
                 action="food_merchant.cli_place_matched",
                 target=f"food_merchant:{merchant.id}",
                 metadata_json={
-                    "source": "cli",
+                    "source": origin,
                     "slug": slug,
                     "place_id": place_id,
                     "candidate_name": candidate.get("name"),
+                    **({"run_id": str(run_id)} if run_id is not None else {}),
                 },
             )
         )

@@ -653,7 +653,10 @@ class CatalogReviewRun(Timestamped, Base):
     __tablename__ = "catalog_review_runs"
     __table_args__ = (
         UniqueConstraint("actor_user_id", "idempotency_key", name="uq_catalog_run_idempotency"),
-        CheckConstraint("mode IN ('review_pending', 'discover_new')", name="ck_catalog_run_mode"),
+        CheckConstraint(
+            "mode IN ('review_pending', 'discover_new', 'enrich_merchants')",
+            name="ck_catalog_run_mode",
+        ),
         CheckConstraint(
             "status IN ('queued', 'running', 'completed', 'partial', 'failed', 'cancelled')",
             name="ck_catalog_run_status",

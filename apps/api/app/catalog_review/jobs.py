@@ -18,24 +18,46 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
 from app.catalog_review.budget import run_call_limit
+from app.catalog_review.enrichment import (
+    VerifiedCandidate,
+    load_enrichment_taxonomy,
+    merchant_prompt_context,
+    verify_candidates,
+)
 from app.catalog_review.errors import CatalogAssessmentError, safe_error_diagnostics
-from app.catalog_review.evidence import fetch_sources, normalize_source_url
-from app.catalog_review.provider import CatalogGeminiProvider
+from app.catalog_review.evidence import MAX_URLS, fetch_sources, normalize_source_url
+from app.catalog_review.provider import CatalogGeminiProvider, VerifiedEnrichment
 from app.catalog_review.repository import (
     ENTITY_TYPES,
+    entity_snapshot,
+    fingerprint,
     import_draft,
+    load_entity,
     make_review_item,
+    publication_gaps,
     source_urls,
     trusted_hosts,
 )
-from app.catalog_review.schemas import CatalogKind, EvidenceSource, ReviewCandidate
+from app.catalog_review.schemas import (
+    CatalogKind,
+    EnrichmentAssessment,
+    EvidenceSource,
+    ReviewCandidate,
+)
 from app.catalog_review.scope import SCOPE_KINDS, request_scope, scope_counts
 from app.config import Settings, get_settings
 from app.db import SessionFactory, engine
-from app.destinations.catalog import DESTINATIONS
+from app.destinations.catalog import DESTINATIONS, destination_for_id
+from app.foods.place_matching import SKIPPED_COUNTRIES, match_merchant_places
 from app.hotspots.guides import consume_search_budget
 from app.infra import get_redis
-from app.models import CatalogReviewItem, CatalogReviewRun, FoodCategory, FoodDestination
+from app.models import (
+    CatalogReviewItem,
+    CatalogReviewRun,
+    FoodCategory,
+    FoodDestination,
+    FoodMerchant,
+)
 from app.problems import AppError
 
 logger = logging.getLogger(__name__)
@@ -46,6 +68,18 @@ MAX_CONSECUTIVE_PROVIDER_FAILURES = 3
 DISCOVERY_DESTINATION_BATCH_SIZE = 1
 TARGET_COUNTS: dict[str, int] = {"hotspot": 40, "food": 20, "merchant": 40}
 TOKEN_KEYS = ("input_tokens", "output_tokens", "thought_tokens")
+ENRICH_MODE = "enrich_merchants"
+#: Five merchants share one grounded search: ~30 grounding chunks per answer leave about
+#: six pages each, and one structured call reads them all back.
+ENRICH_BATCH_SIZE = 5
+IDENTIFY_CHUNK_SIZE = 10
+#: Per merchant: its own cited pages first, then what the search found.
+ENRICH_OWN_SOURCES = 5
+ENRICH_OFFICIAL_SOURCES = 3
+ENRICH_LISTING_SOURCES = 2
+ENRICH_STOP_OUTCOMES = frozenset({"usage_guard", "not_configured", "lease_lost"})
+STALE_MERCHANT_REASON = "店家已不在待審狀態，未再補資料。"
+NO_PAGES_REASON = "搜尋未找到可獨立核對的官網或觀光局頁面。"
 
 
 class LeaseLost(Exception):
@@ -518,6 +552,326 @@ async def _discover_items(
                 raise ProviderCircuitOpen() from error
 
 
+async def _lease_alive(run_id: UUID, token: str) -> bool:
+    try:
+        async with SessionFactory() as session:
+            await _locked_run(session, run_id, token)
+    except LeaseLost:
+        return False
+    return True
+
+
+def _identify_context(item: CatalogReviewItem, matched_ids: set[str]) -> dict[str, Any]:
+    snapshot = item.snapshot_json or {}
+    country = str(snapshot.get("country_code") or "").upper()
+    return {
+        "matched_in_run": str(item.entity_id) in matched_ids,
+        "place_id": snapshot.get("google_place_id"),
+        "skipped": "kr" if country in SKIPPED_COUNTRIES else None,
+    }
+
+
+async def _identify_items(run_id: UUID, token: str, settings: Settings) -> None:
+    """Give the merchants that still lack a Place ID one through the existing matcher.
+
+    Zero Gemini calls: this is Google Text Search, guarded by the same 90% brake and
+    the same ownership check as ``match-food-merchant-places``. It writes only
+    ``google_place_id``; the snapshot each item carries is refreshed later, right
+    before its batch is assessed, so what a human applies against is what Gemini saw.
+    """
+    async with SessionFactory() as session:
+        run = await _locked_run(session, run_id, token)
+        run.phase = "identify"
+        request = run.request_json or {}
+        enabled = request.get("identify_places", True) is not False
+        actor_id = run.actor_user_id
+        entity_ids = list(
+            (
+                await session.scalars(
+                    select(CatalogReviewItem.entity_id).where(
+                        CatalogReviewItem.run_id == run_id,
+                        CatalogReviewItem.kind == "merchant",
+                        CatalogReviewItem.phase == ENRICH_MODE,
+                        CatalogReviewItem.status.in_(("pending", "error")),
+                    )
+                )
+            ).all()
+        )
+        await session.commit()
+    outcomes: Counter[str] = Counter()
+    matched: list[str] = []
+    stopped: str | None = None if enabled else "disabled"
+    if enabled and entity_ids:
+        async with SessionFactory() as session:
+            merchants = list(
+                (
+                    await session.scalars(
+                        select(FoodMerchant)
+                        .where(
+                            FoodMerchant.id.in_(entity_ids),
+                            FoodMerchant.google_place_id.is_(None),
+                            FoodMerchant.review_status == "pending",
+                            FoodMerchant.country_code.notin_(tuple(SKIPPED_COUNTRIES)),
+                        )
+                        .order_by(
+                            FoodMerchant.destination_id,
+                            FoodMerchant.display_order,
+                            FoodMerchant.name,
+                        )
+                    )
+                ).all()
+            )
+
+            async def still_leased() -> bool:
+                return await _lease_alive(run_id, token)
+
+            for offset in range(0, len(merchants), IDENTIFY_CHUNK_SIZE):
+                chunk = merchants[offset : offset + IDENTIFY_CHUNK_SIZE]
+                by_slug = {merchant.slug: merchant for merchant in chunk}
+                reports = await match_merchant_places(
+                    session,
+                    get_redis(),
+                    settings,
+                    chunk,
+                    apply=True,
+                    actor_id=actor_id,
+                    origin="catalog_review",
+                    run_id=run_id,
+                    should_continue=still_leased,
+                )
+                for report in reports:
+                    outcomes[report.outcome] += 1
+                    if report.outcome == "matched" and report.slug in by_slug:
+                        matched.append(str(by_slug[report.slug].id))
+                    if report.outcome in ENRICH_STOP_OUTCOMES:
+                        stopped = report.outcome
+                if stopped:
+                    break
+    if stopped == "lease_lost":
+        raise LeaseLost()
+    async with SessionFactory() as session:
+        run = await _locked_run(session, run_id, token)
+        run.result_json = {
+            **(run.result_json or {}),
+            "identify": {
+                "processed": sum(outcomes.values()),
+                "outcomes": dict(sorted(outcomes.items())),
+                "stopped": stopped,
+                "matched_entity_ids": matched,
+            },
+        }
+        await session.commit()
+
+
+async def _refresh_enrichment_batch(
+    session: AsyncSession, run_id: UUID, item_ids: list[UUID]
+) -> list[CatalogReviewItem]:
+    """Re-snapshot each item from its live merchant, or mark it stale.
+
+    The identify phase and administrators both change merchants after the snapshot was
+    taken; assessing a stale snapshot would make ``apply`` refuse every correction with
+    ``candidate_changed``.
+    """
+    items = list(
+        (
+            await session.scalars(
+                select(CatalogReviewItem)
+                .where(
+                    CatalogReviewItem.run_id == run_id,
+                    CatalogReviewItem.id.in_(item_ids),
+                    CatalogReviewItem.status.in_(("pending", "error")),
+                )
+                .with_for_update()
+            )
+        ).all()
+    )
+    live: list[CatalogReviewItem] = []
+    for item in items:
+        entity = await load_entity(session, item.kind, item.entity_id, lock=True)
+        if entity is None or entity.review_status != "pending":
+            item.status = "stale"
+            item.reason = STALE_MERCHANT_REASON
+            continue
+        data = await entity_snapshot(session, entity)
+        item.snapshot_json = data
+        item.snapshot_hash = fingerprint(data)
+        item.gaps_json = publication_gaps(item.kind, data)
+        live.append(item)
+    return live
+
+
+def _enrichment_sources(
+    known_urls: list[str],
+    pages: list[VerifiedCandidate],
+    by_url: dict[str, EvidenceSource],
+) -> list[EvidenceSource]:
+    own = [
+        by_url[key] for url in known_urls if (key := normalize_source_url(url) or url) in by_url
+    ][:ENRICH_OWN_SOURCES]
+    official = [
+        by_url[page.url] for page in pages if page.kind == "official" and page.url in by_url
+    ]
+    listing = [by_url[page.url] for page in pages if page.kind == "listing" and page.url in by_url]
+    merged = [*own, *official[:ENRICH_OFFICIAL_SOURCES], *listing[:ENRICH_LISTING_SOURCES]]
+    return list({source.url: source for source in merged}.values())[:10]
+
+
+async def _enrich_items(
+    run_id: UUID,
+    token: str,
+    provider: CatalogGeminiProvider,
+    hosts: set[str],
+    saved_usage: dict[str, int],
+) -> None:
+    """Two Gemini calls per batch: a grounded search, then one structured extraction.
+
+    Between them the server fetches every candidate page and decides, by name and
+    location, which page may back which merchant; the model is never asked to attribute
+    URLs, and every correction it returns is re-checked against the fetched text.
+    """
+    async with SessionFactory() as session:
+        run = await _locked_run(session, run_id, token)
+        run.phase = ENRICH_MODE
+        result = run.result_json or {}
+        consecutive_failures = _count(result.get("consecutive_provider_failures"))
+        matched_ids = {
+            str(value) for value in (result.get("identify") or {}).get("matched_entity_ids") or []
+        }
+        item_ids = list(
+            (
+                await session.scalars(
+                    select(CatalogReviewItem.id)
+                    .where(
+                        CatalogReviewItem.run_id == run_id,
+                        CatalogReviewItem.kind == "merchant",
+                        CatalogReviewItem.phase == ENRICH_MODE,
+                        CatalogReviewItem.status.in_(("pending", "error")),
+                    )
+                    .order_by(CatalogReviewItem.id)
+                )
+            ).all()
+        )
+        taxonomy = await load_enrichment_taxonomy(session)
+        await session.commit()
+    if consecutive_failures >= MAX_CONSECUTIVE_PROVIDER_FAILURES:
+        raise ProviderCircuitOpen()
+    # Import here: the API service can enqueue jobs without an import cycle.
+    from app.catalog_review.service import record_enrichment
+
+    for offset in range(0, len(item_ids), ENRICH_BATCH_SIZE):
+        batch_ids = item_ids[offset : offset + ENRICH_BATCH_SIZE]
+        sources_by_item: dict[UUID, list[EvidenceSource]] = {}
+        try:
+            async with SessionFactory() as session:
+                await _locked_run(session, run_id, token)
+                items = await _refresh_enrichment_batch(session, run_id, batch_ids)
+                await session.commit()
+            if not items:
+                continue
+            profiles = {item.id: destination_for_id(item.destination_id) for item in items}
+            try:
+                evidence = await provider.enrich_search(
+                    [merchant_prompt_context(item, profiles[item.id]) for item in items]
+                )
+            finally:
+                await _save_usage(run_id, token, provider, saved_usage)
+            titles = {str(entry["source_url"]): str(entry.get("title") or "") for entry in evidence}
+            known = {item.id: source_urls(item.snapshot_json or {}) for item in items}
+            urls = list(
+                dict.fromkeys([*titles, *(url for values in known.values() for url in values)])
+            )[:MAX_URLS]
+            fetched = await fetch_sources(urls, hosts) if urls else []
+            by_url = {normalize_source_url(source.url) or source.url: source for source in fetched}
+            verified: dict[str, list[VerifiedCandidate]] = {}
+            area_slugs: dict[str, list[str]] = {}
+            candidates: list[ReviewCandidate] = []
+            for item in items:
+                snapshot = item.snapshot_json or {}
+                pages = verify_candidates(snapshot, fetched, titles, profiles[item.id], hosts)
+                verified[str(item.id)] = pages
+                area_slugs[str(item.id)] = taxonomy.area_slugs(item.destination_id)
+                sources_by_item[item.id] = _enrichment_sources(known[item.id], pages, by_url)
+                candidates.append(
+                    ReviewCandidate(
+                        candidate_id=str(item.id),
+                        kind="merchant",
+                        name=item.name,
+                        local_name=str(snapshot.get("local_name") or ""),
+                        destination_id=item.destination_id,
+                        data=snapshot,
+                        sources=sources_by_item[item.id],
+                    )
+                )
+            results: dict[str, VerifiedEnrichment] = {}
+            if any(
+                source.fetched and source.text
+                for sources in sources_by_item.values()
+                for source in sources
+            ):
+                try:
+                    results = await provider.enrich_assess(
+                        candidates,
+                        verified=verified,
+                        area_slugs=area_slugs,
+                        catalog=taxonomy.prompt_catalog(
+                            {item.destination_id for item in items if item.destination_id}
+                        ),
+                    )
+                finally:
+                    await _save_usage(run_id, token, provider, saved_usage)
+            async with SessionFactory() as session:
+                run = await _locked_run(session, run_id, token)
+                current = (
+                    await session.scalars(
+                        select(CatalogReviewItem)
+                        .where(
+                            CatalogReviewItem.run_id == run_id,
+                            CatalogReviewItem.id.in_([item.id for item in items]),
+                            CatalogReviewItem.status.in_(("pending", "error")),
+                        )
+                        .with_for_update()
+                    )
+                ).all()
+                for item in current:
+                    outcome = results.get(str(item.id))
+                    identify = _identify_context(item, matched_ids)
+                    if outcome is None:
+                        record_enrichment(
+                            item,
+                            EnrichmentAssessment(
+                                candidate_id=str(item.id), confidence=0.0, reason=NO_PAGES_REASON
+                            ),
+                            [],
+                            sources_by_item.get(item.id, []),
+                            identify=identify,
+                        )
+                    else:
+                        record_enrichment(
+                            item,
+                            outcome.assessment,
+                            outcome.corrections,
+                            sources_by_item.get(item.id, []),
+                            identify=identify,
+                        )
+                run.result_json = {
+                    **(run.result_json or {}),
+                    "consecutive_provider_failures": 0,
+                    "last_enrichment_diagnostics": dict(
+                        getattr(provider, "enrichment_diagnostics", {})
+                    ),
+                }
+                await session.commit()
+            consecutive_failures = 0
+        except (BudgetStopped, LeaseLost):
+            raise
+        except Exception as exc:
+            if isinstance(exc, CatalogAssessmentError):
+                consecutive_failures += 1
+            await _batch_error(run_id, token, batch_ids, exc, sources_by_item, consecutive_failures)
+            if consecutive_failures >= MAX_CONSECUTIVE_PROVIDER_FAILURES:
+                raise ProviderCircuitOpen() from exc
+
+
 async def _finish(
     run_id: UUID,
     token: str,
@@ -593,10 +947,14 @@ async def _run(run_id: UUID) -> None:
             trusted_hosts=hosts,
             model=run.model,
         )
-        if run.mode == "discover_new":
-            await _discover_items(run_id, token, provider, saved_usage)
-        phase = "review_new" if run.mode == "discover_new" else "review_pending"
-        await _review_items(run_id, token, phase, provider, hosts, saved_usage)
+        if run.mode == ENRICH_MODE:
+            await _identify_items(run_id, token, settings)
+            await _enrich_items(run_id, token, provider, hosts, saved_usage)
+        else:
+            if run.mode == "discover_new":
+                await _discover_items(run_id, token, provider, saved_usage)
+            phase = "review_new" if run.mode == "discover_new" else "review_pending"
+            await _review_items(run_id, token, phase, provider, hosts, saved_usage)
         await _finish(run_id, token)
     except LeaseLost:
         logger.info("Catalog review %s stopped after losing its lease", run_id)
