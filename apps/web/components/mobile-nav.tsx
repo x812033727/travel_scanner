@@ -74,14 +74,18 @@ export function MobileNav() {
     <Link href="/guides" aria-label={nav("guides")} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] focus-visible:outline focus-visible:outline-2"><BookOpen size={21} aria-hidden /></Link>
     {/* Same reasoning for the lifestyle section: no menu sheet in this branch, so no other
         phone entry. The footer carries both links as well.
-        Hidden below 360px because this row cannot hold six of them there. Six 2.75rem
-        targets plus their gaps are 322.5px at the large text size, and the header's own
-        1.25rem padding puts the right edge at 345px: past a 320px screen. The phone then
-        widens its layout viewport to fit -- innerWidth reports 342 instead of 320 -- and
-        every coordinate on the page shifts with it, which is what broke the 320px food
-        acceptance run. The same overflow is what collapsed the language switcher into an
-        icon; see the comment in language-switcher.tsx. */}
-    <Link href="/life" aria-label={nav("life")} className="hidden min-[360px]:grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] focus-visible:outline focus-visible:outline-2"><Sparkles size={21} aria-hidden /></Link>
+        Hidden below 380px because this row cannot hold six of them there. The row is
+        sized in rem, so the reader's text size sets how wide it is, and the step that
+        decides this is the largest one (globals.css: 125%, 1rem = 20px), not the default:
+        six 2.75rem targets plus five 0.25rem gaps are 17.75rem = 355px, and the header's
+        own 1.25rem padding puts the right edge at 380px. Anything narrower and the phone
+        widens its layout viewport to fit instead of scrolling -- innerWidth comes back as
+        380 on a 360px screen -- and every coordinate on the page shifts with it, which is
+        what broke the 320px food acceptance run. A media query cannot read the text size
+        (rem in a media query means the initial 16px, not the chosen root), so the
+        breakpoint has to be the widest the row can get. The same overflow is what
+        collapsed the language switcher into an icon; see language-switcher.tsx. */}
+    <Link href="/life" aria-label={nav("life")} className="hidden min-[380px]:grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] focus-visible:outline focus-visible:outline-2"><Sparkles size={21} aria-hidden /></Link>
   </div>;
   return <div className="flex items-center gap-1 lg:hidden">
     <LanguageSwitcher compact />
