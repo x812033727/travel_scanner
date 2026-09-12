@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**37 open · 3 in progress · 3 blocked · 1 in review · 264 done**
+**38 open · 3 in progress · 3 blocked · 1 in review · 264 done**
 
 ## Ready to claim
 
@@ -32,6 +32,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [CatchTable 店家 id 有底線分段時存不了訂位連結](open/2026-09-11-catchtable-underscore-segment-id.md) | api | `apps/api/app/foods/platform_links.py`<br>`apps/api/tests/test_food_platform_links.py`<br>`apps/web/lib/reservation-platforms.ts`<br>`apps/web/lib/reservation-platforms.test.ts` |
 | P2 | [航班動態的查詢時間把 UTC 當成地方時顯示](open/2026-09-11-flight-status-checked-at-utc.md) | web | `apps/web/components/flight-anchor-card.tsx`<br>`apps/web/components/flight-anchor-card.test.tsx` |
 | P2 | [當日檢視要真的離線可用，需要預先快取 app shell](open/2026-09-11-offline-day-view-needs-an-app.md) | web | `apps/web/public/sw.js`<br>`apps/web/components/offline-trip-cache.tsx`<br>`apps/web/components/offline-trip-cache.test.tsx` |
+| P2 | [admin-usage-settings 的分頁存在 URL，測試之間沒有重設就互相影響](open/2026-09-12-admin-usage-settings-url.md) | web | `apps/web/components/admin-usage-settings-panel.test.tsx` |
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | api | `apps/api/app/hotspots/areas.py`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [第二批購物店家：十五個沒有公開座標來源的候選](open/2026-09-06-shopping-seeds-second-batch.md) | api | `apps/api/app/hotspots/shopping_bootstrap.json`<br>`apps/api/app/hotspots/theme_bootstrap.json`<br>`apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_shopping_bootstrap.py` |
