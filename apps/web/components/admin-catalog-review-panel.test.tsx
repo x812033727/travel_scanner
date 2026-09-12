@@ -762,4 +762,90 @@ describe("AdminCatalogReviewPanel", () => {
     await act(async () => { finishApply!(new Response(JSON.stringify({ run, outcomes: [], updated: 1 }))); });
     expect(fetchMock.mock.calls).toHaveLength(requestsBeforeUnmount);
   });
+
+  it("shows the merchant enrichment step only in the foods workspace and starts it with the enrich_merchants mode", async () => {
+    const foodRun = { ...run, scope: "foods" };
+    const fetchMock = mockApi((url, init) => {
+      if (url === root) return response({ ...overview, pending_counts: { hotspot: 0, food: 20, merchant: 49, total: 69 }, can_start_enrichment: true, runs: [foodRun] });
+      if (url === root + "/runs/review-1") return response(foodRun);
+      if (url === root + "/runs" && init?.method === "POST") return response({ ...foodRun, mode: "enrich_merchants", phase: "identify", status: "queued" });
+      return undefined;
+    });
+    render(<AdminCatalogReviewPanel scope="foods" />);
+    const start = await screen.findByRole("button", { name: "補齊店家資料" });
+    await waitFor(() => expect((start as HTMLButtonElement).disabled).toBe(false));
+    expect(screen.getByText("待審店家 49 筆")).toBeTruthy();
+    fireEvent.click(start);
+    await waitFor(() => expect(fetchMock.mock.calls.some(([, init]) => init?.method === "POST")).toBe(true));
+    const init = fetchMock.mock.calls.find(([, init]) => init?.method === "POST")![1]!;
+    expect(JSON.parse(String(init.body))).toEqual({ mode: "enrich_merchants", scope: "foods", max_calls: 80 });
+  });
+
+  it("keeps enrichment outside the foods workspace and disabled when the server does not allow it", async () => {
+    mockApi((url) => url === root ? response({ ...overview, can_start_enrichment: true }) : undefined);
+    render(<AdminCatalogReviewPanel scope="hotspots" />);
+    await screen.findByText("gemini-review-model", { exact: false });
+    expect(screen.queryByRole("button", { name: "補齊店家資料" })).toBeNull();
+    cleanup();
+    const fetchMock = mockApi((url) => url === root ? response({ ...overview, runs: [{ ...run, scope: "foods" }] }) : undefined);
+    render(<AdminCatalogReviewPanel scope="foods" />);
+    const start = await screen.findByRole("button", { name: "補齊店家資料" });
+    expect((start as HTMLButtonElement).disabled).toBe(true);
+    fireEvent.click(start);
+    expect(fetchMock.mock.calls.filter(([, init]) => init?.method === "POST")).toHaveLength(0);
+  });
+
+  it("renders verified corrections and applies them only through apply_corrections with a confirmation", async () => {
+    const enrichRun = {
+      ...run, id: "enrich-1", scope: "foods", mode: "enrich_merchants", phase: "enrich_merchants",
+      counts: { ...run.counts, total: 2, assessed: 2, approved: 0, needs_review: 2 },
+      enrichment: { items_with_corrections: 1, corrections: 2 },
+    };
+    const site = "https://sushi-dai.example/tsukiji";
+    const enriched = {
+      ...candidate("one", "Sushi Dai"), kind: "merchant", phase: "enrich_merchants", decision: "needs_review", reason: "找到官網。",
+      evidence: [{ url: site, quote: "寿司大 東京都中央区築地5-2-1" }], allowed_actions: ["apply_corrections", "keep_pending"], confidence: 0.8,
+      corrections: [
+        { field: "address", value: "東京都中央区築地5-2-1", source_url: site, quote: "寿司大 東京都中央区築地5-2-1", kind: "address" },
+        { field: "official_website_url", value: site, source_url: "javascript:alert(1)", quote: "寿司大", kind: "merchant_website" },
+      ],
+      identify: { matched_in_run: true, place_id: "ChIJx", skipped: null },
+    };
+    const empty = {
+      ...candidate("two", "No pages"), kind: "merchant", phase: "enrich_merchants", decision: "needs_review", reason: "搜尋未找到可獨立核對的官網或觀光局頁面。",
+      evidence: [], allowed_actions: ["keep_pending"], confidence: 0, corrections: [], identify: { matched_in_run: false, place_id: null, skipped: "kr" },
+    };
+    const fetchMock = mockApi((url, init) => {
+      if (url === root) return response({ ...overview, can_start_enrichment: false, runs: [enrichRun] });
+      if (url === root + "/runs/enrich-1") return response(enrichRun);
+      if (url.includes("/items?")) return response(listing([enriched, empty]));
+      if (url.endsWith("/apply") && init?.method === "POST") return response({ run: { ...enrichRun, version: 4 }, updated: 1, outcomes: [{ id: "one", action: "apply_corrections", status: "applied", reason: "找到官網。", changes: { address: "東京都中央区築地5-2-1", official_website_url: site }, skipped_fields: {} }] });
+      return undefined;
+    });
+    render(<AdminCatalogReviewPanel scope="foods" />);
+    expect(await screen.findByText("Sushi Dai")).toBeTruthy();
+    const corrections = screen.getByRole("list", { name: "Sushi Dai 的建議補齊" });
+    expect(within(corrections).getByText("店家官網 · 官網網址")).toBeTruthy();
+    expect(within(corrections).getByText("東京都中央区築地5-2-1")).toBeTruthy();
+    expect(within(corrections).getByRole("link", { name: site }).getAttribute("href")).toBe(site);
+    expect(within(corrections).getByText("來源網址無法安全開啟")).toBeTruthy();
+    expect(screen.getByText("本次已配對 Google 分店身分")).toBeTruthy();
+    expect(screen.getAllByText("補齊店家欄位 · 已評估")).toHaveLength(2);
+    expect(screen.queryByRole("list", { name: "No pages 的建議補齊" })).toBeNull();
+    const select = screen.getByLabelText("批次動作") as HTMLSelectElement;
+    expect(Array.from(select.options).map((option) => option.textContent)).toEqual(["套用補齊資料", "保留待審"]);
+    expect(select.value).toBe("apply_corrections");
+    expect((screen.getByRole("checkbox", { name: "選取 No pages" }) as HTMLInputElement).disabled).toBe(true);
+    fireEvent.click(screen.getByRole("button", { name: "選取本頁可操作項目（1）" }));
+    fireEvent.click(screen.getByRole("button", { name: "預覽選取的 1 筆" }));
+    const dialog = screen.getByRole("dialog", { name: "確認套用補齊資料 1 筆" });
+    expect(within(dialog).getByText(/只會填入目前為空的欄位/)).toBeTruthy();
+    expect(within(dialog).getByText("地址: 東京都中央区築地5-2-1")).toBeTruthy();
+    expect(within(dialog).queryByText("找到官網。")).toBeNull();
+    fireEvent.click(within(dialog).getByRole("button", { name: "確認並套用" }));
+    expect(await screen.findByText("實際更新 1 筆")).toBeTruthy();
+    expect(screen.getByText("已填入：地址, 官網網址")).toBeTruthy();
+    const init = fetchMock.mock.calls.find(([input]) => String(input).endsWith("/apply?scope=foods"))![1]!;
+    expect(JSON.parse(String(init.body))).toEqual({ item_ids: ["one"], action: "apply_corrections", expected_version: 3 });
+  });
 });

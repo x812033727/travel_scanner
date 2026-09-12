@@ -20,8 +20,20 @@ import { useModalSheet } from "@/lib/modal-sheet";
 import { safeExternalHref } from "@/lib/navigation";
 
 type Kind = "hotspot" | "food" | "merchant";
-type Action = "approve" | "reject" | "keep_pending";
-type Mode = "review_pending" | "discover_new";
+type Action = "approve" | "reject" | "keep_pending" | "apply_corrections";
+type Mode = "review_pending" | "discover_new" | "enrich_merchants";
+type Correction = {
+  field: string;
+  value: string;
+  source_url: string;
+  quote: string;
+  kind: string;
+};
+type Identify = {
+  matched_in_run: boolean;
+  place_id: string | null;
+  skipped: string | null;
+};
 type Run = {
   id: string;
   scope?: CatalogReviewScope;
@@ -58,6 +70,7 @@ type Run = {
   can_resume: boolean;
   max_calls: number;
   can_extend_budget: boolean;
+  enrichment?: { items_with_corrections: number; corrections: number } | null;
 };
 type Item = {
   id: string;
@@ -65,7 +78,7 @@ type Item = {
   entity_id: string | null;
   name: string;
   destination_id: string | null;
-  phase: "review_pending" | "review_new";
+  phase: string;
   decision: "approve" | "reject" | "needs_review" | null;
   reason: string;
   evidence: { url: string; quote: string }[];
@@ -75,6 +88,8 @@ type Item = {
   status: "pending" | "assessed" | "error" | "applied" | "stale";
   confidence: number | null;
   error_code?: string | null;
+  corrections?: Correction[];
+  identify?: Identify | null;
 };
 type Overview = {
   active_run?: { id: string; scope: CatalogReviewScope; status: string } | null;
@@ -85,6 +100,7 @@ type Overview = {
   pending_counts: Record<Kind | "total", number>;
   can_start_review: boolean;
   can_start_discovery: boolean;
+  can_start_enrichment?: boolean;
   blocking_reasons: string[];
   runs: Run[];
 };
@@ -100,6 +116,8 @@ type Outcome = {
   action: string;
   status: "applied" | "skipped";
   reason: string;
+  changes?: Record<string, unknown>;
+  skipped_fields?: Record<string, string>;
 };
 type Confirmation = {
   runId: string;
@@ -120,7 +138,12 @@ type BudgetConfirmation = {
 };
 
 const ROOT = "/admin/catalog-review";
-const ACTIONS: Action[] = ["approve", "reject", "keep_pending"];
+const ACTIONS: Action[] = ["approve", "reject", "keep_pending", "apply_corrections"];
+const REVIEW_ACTIONS: Action[] = ["approve", "reject", "keep_pending"];
+const ENRICH_ACTIONS: Action[] = ["apply_corrections", "keep_pending"];
+// An enrichment run fills fields; approving or rejecting stays with the ordinary review.
+const visibleActions = (mode?: Mode | null) =>
+  mode === "enrich_merchants" ? ENRICH_ACTIONS : REVIEW_ACTIONS;
 const KINDS: Kind[] = ["hotspot", "food", "merchant"];
 const COUNT_KEYS = [
   "total",
@@ -154,7 +177,8 @@ function eligible(item: Item, action: Action) {
     item.status === "assessed" &&
     !item.applied_action &&
     (item.allowed_actions ?? []).includes(action) &&
-    (action !== "approve" || (item.gaps ?? []).length === 0)
+    (action !== "approve" || (item.gaps ?? []).length === 0) &&
+    (action !== "apply_corrections" || (item.corrections ?? []).length > 0)
   );
 }
 
@@ -193,6 +217,10 @@ function CatalogReviewContent({ scope }: PanelProps) {
   const [error, setError] = useState("");
   const [reconnecting, setReconnecting] = useState(false);
   const [action, setAction] = useAdminQueryState("action", ACTIONS, "approve");
+  // The URL may carry an action the selected run cannot take; fall back without a state write.
+  const effectiveAction = visibleActions(run?.mode).includes(action)
+    ? action
+    : visibleActions(run?.mode)[0];
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [confirmation, setConfirmation] = useState<Confirmation | null>(null);
   const [budgetConfirmation, setBudgetConfirmation] = useState<BudgetConfirmation | null>(null);
@@ -319,6 +347,7 @@ function CatalogReviewContent({ scope }: PanelProps) {
                     ...current,
                     can_start_review: false,
                     can_start_discovery: false,
+                    can_start_enrichment: false,
                   }
                 : null,
             );
@@ -332,7 +361,7 @@ function CatalogReviewContent({ scope }: PanelProps) {
             new Set(
               items.items
                 .filter(
-                  (item) => current.has(item.id) && eligible(item, action),
+                  (item) => current.has(item.id) && eligible(item, effectiveAction),
                 )
                 .map((item) => item.id),
             ),
@@ -361,7 +390,7 @@ function CatalogReviewContent({ scope }: PanelProps) {
     confirmation,
     budgetConfirmation,
     itemsLoading,
-    action,
+    effectiveAction,
     scope,
     overviewUrl,
   ]);
@@ -384,7 +413,7 @@ function CatalogReviewContent({ scope }: PanelProps) {
       item.scope === scope,
   );
   const items = data?.items ?? [];
-  const eligibleItems = items.filter((item) => eligible(item, action));
+  const eligibleItems = items.filter((item) => eligible(item, effectiveAction));
   const selectedItems = eligibleItems.filter((item) => selected.has(item.id));
   const canApply = Boolean(
     manage.allowed &&
@@ -408,6 +437,13 @@ function CatalogReviewContent({ scope }: PanelProps) {
     validCatalogCallLimit(overview.run_call_limit) &&
     overview.can_start_discovery &&
     priorReview,
+  );
+  const canEnrich = Boolean(
+    manage.allowed &&
+    scope === "foods" &&
+    overview?.configured &&
+    validCatalogCallLimit(overview.run_call_limit) &&
+    overview.can_start_enrichment,
   );
   const requestedCounts =
     scope === "hotspots"
@@ -498,18 +534,27 @@ function CatalogReviewContent({ scope }: PanelProps) {
 
   async function start(mode: Mode) {
     if (!scope) return;
-    if (mode === "review_pending" ? !canReview : !canDiscover) return;
+    const allowed =
+      mode === "review_pending"
+        ? canReview
+        : mode === "discover_new"
+          ? canDiscover
+          : canEnrich;
+    if (!allowed) return;
     const controller = beginMutation();
     if (!controller) return;
-    const payload = {
-      mode,
-      scope,
-      requested_counts: requestedCounts,
-      max_calls: overview!.run_call_limit,
-      ...(mode === "discover_new"
-        ? { prior_review_run_id: priorReview!.id }
-        : {}),
-    };
+    const payload =
+      mode === "enrich_merchants"
+        ? { mode, scope, max_calls: overview!.run_call_limit }
+        : {
+            mode,
+            scope,
+            requested_counts: requestedCounts,
+            max_calls: overview!.run_call_limit,
+            ...(mode === "discover_new"
+              ? { prior_review_run_id: priorReview!.id }
+              : {}),
+          };
     const signature = JSON.stringify(payload);
     if (startIdentity.current?.signature !== signature)
       startIdentity.current = { signature, key: crypto.randomUUID() };
@@ -668,7 +713,11 @@ function CatalogReviewContent({ scope }: PanelProps) {
       {scope && (
         <section
           aria-label={t("workflow")}
-          className="grid gap-4 lg:grid-cols-2"
+          className={
+            scope === "foods"
+              ? "grid gap-4 lg:grid-cols-3"
+              : "grid gap-4 lg:grid-cols-2"
+          }
         >
           <article className="rounded-3xl border border-[var(--line)] bg-white p-5">
             <p className="text-xs font-bold text-[var(--teal)]">
@@ -724,6 +773,30 @@ function CatalogReviewContent({ scope }: PanelProps) {
               </p>
             )}
           </article>
+          {scope === "foods" && (
+            <article className="rounded-3xl border border-[var(--line)] bg-white p-5">
+              <p className="text-xs font-bold text-[var(--teal)]">
+                {t("step", { number: 3 })}
+              </p>
+              <h2 className="mt-2 text-xl font-bold">{t("enrichmentTitle")}</h2>
+              <p className="mt-2 text-sm text-[var(--muted)]">
+                {t("enrichmentDescription")}
+              </p>
+              <p className="my-4 text-sm font-semibold">
+                {t("enrichmentPending", {
+                  count: overview?.pending_counts?.merchant ?? 0,
+                })}
+              </p>
+              <button
+                type="button"
+                disabled={busy || loading || !canEnrich}
+                onClick={() => void start("enrich_merchants")}
+                className={primaryClass}
+              >
+                {t("startEnrichment")}
+              </button>
+            </article>
+          )}
         </section>
       )}
       <section
@@ -904,7 +977,7 @@ function CatalogReviewContent({ scope }: PanelProps) {
             <label className="text-sm font-semibold">
               {t("batchAction")}
             <select
-              value={action}
+              value={effectiveAction}
               disabled={!manage.allowed || busy || Boolean(confirmation)}
               title={!manage.allowed ? manage.disabledReason : undefined}
                 onChange={(event) => {
@@ -913,7 +986,7 @@ function CatalogReviewContent({ scope }: PanelProps) {
                 }}
                 className="ml-2 min-h-11 rounded-xl border border-[var(--line)] bg-white px-3"
               >
-                {ACTIONS.map((value) => (
+                {visibleActions(run?.mode).map((value) => (
                   <option key={value} value={value}>
                     {t(`actions.${value}`)}
                   </option>
@@ -948,7 +1021,7 @@ function CatalogReviewContent({ scope }: PanelProps) {
                     runId: run.id,
                     scope: run.scope ?? "all",
                     version: run.version,
-                    action,
+                    action: effectiveAction,
                     items: selectedItems,
                     key: crypto.randomUUID(),
                   });
@@ -985,8 +1058,8 @@ function CatalogReviewContent({ scope }: PanelProps) {
                     <input
                       type="checkbox"
                       aria-label={t("selectItem", { name: item.name })}
-                      checked={selected.has(item.id) && eligible(item, action)}
-                      disabled={busy || !canApply || !eligible(item, action)}
+                      checked={selected.has(item.id) && eligible(item, effectiveAction)}
+                      disabled={busy || !canApply || !eligible(item, effectiveAction)}
                       onChange={(event) =>
                         setSelected((current) => {
                           const next = new Set(current);
@@ -1027,6 +1100,54 @@ function CatalogReviewContent({ scope }: PanelProps) {
                         {t("appliedAction", {
                           action: label("actions", item.applied_action),
                         })}
+                      </p>
+                    )}
+                    {(item.corrections ?? []).length > 0 && (
+                      <details className="mt-2">
+                        <summary className="min-h-9 cursor-pointer font-semibold text-[var(--teal)]">
+                          {t("correctionsCount", {
+                            count: item.corrections?.length ?? 0,
+                          })}
+                        </summary>
+                        <ul
+                          aria-label={t("itemCorrections", { name: item.name })}
+                          className="mt-2 space-y-2"
+                        >
+                          {(item.corrections ?? []).map((correction, index) => (
+                            <li
+                              key={index}
+                              className="break-words rounded-xl bg-[var(--paper)] p-3 text-xs"
+                            >
+                              <p className="font-semibold">
+                                {label("correctionKinds", correction.kind)} ·{" "}
+                                {label("correctionFields", correction.field)}
+                              </p>
+                              <p className="mt-1 break-all">{correction.value}</p>
+                              {safeExternalHref(correction.source_url) ? (
+                                <a
+                                  href={safeExternalHref(correction.source_url)}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="break-all text-[var(--teal)] underline"
+                                >
+                                  {correction.source_url}
+                                </a>
+                              ) : (
+                                <p className="text-[var(--muted)]">
+                                  {t("invalidEvidenceLink")}
+                                </p>
+                              )}
+                              <blockquote className="mt-1 border-l-2 border-[var(--line)] pl-2 text-[var(--muted)]">
+                                {correction.quote}
+                              </blockquote>
+                            </li>
+                          ))}
+                        </ul>
+                      </details>
+                    )}
+                    {item.identify?.matched_in_run && (
+                      <p className="mt-2 text-xs font-semibold text-[var(--teal-dark)]">
+                        {t("identifyMatched")}
                       </p>
                     )}
                   </td>
@@ -1078,10 +1199,10 @@ function CatalogReviewContent({ scope }: PanelProps) {
                         {t("noGapsReported")}
                       </p>
                     )}
-                    {!eligible(item, action) && !item.applied_action && (
+                    {!eligible(item, effectiveAction) && !item.applied_action && (
                       <p className="mt-2 text-xs text-[var(--muted)]">
                         {t("actionUnavailable", {
-                          action: t(`actions.${action}`),
+                          action: t(`actions.${effectiveAction}`),
                         })}
                       </p>
                     )}
@@ -1155,6 +1276,15 @@ function CatalogReviewContent({ scope }: PanelProps) {
                       : outcome.reason}
                   </p>
                 )}
+                {outcome.changes && Object.keys(outcome.changes).length > 0 && (
+                  <p className="text-xs text-[var(--muted)]">
+                    {t("outcomeChanges", {
+                      fields: Object.keys(outcome.changes)
+                        .map((field) => label("correctionFields", field))
+                        .join(", "),
+                    })}
+                  </p>
+                )}
               </li>
             ))}
           </ul>
@@ -1215,7 +1345,9 @@ function CatalogReviewContent({ scope }: PanelProps) {
               })}
             </h2>
             <p className="mt-3 text-sm text-[var(--muted)]">
-              {t("confirmDescription")}
+              {confirmation.action === "apply_corrections"
+                ? t("confirmCorrectionsDescription")
+                : t("confirmDescription")}
             </p>
             <ul className="my-4 space-y-3">
               {confirmation.items.map((item) => (
@@ -1224,7 +1356,17 @@ function CatalogReviewContent({ scope }: PanelProps) {
                   className="rounded-xl bg-[var(--paper)] p-3 text-sm"
                 >
                   <p className="font-semibold">{item.name}</p>
-                  <p className="mt-1">{item.reason}</p>
+                  {confirmation.action === "apply_corrections" ? (
+                    <ul className="mt-1 space-y-1">
+                      {(item.corrections ?? []).map((correction, index) => (
+                        <li key={index} className="break-all">
+                          {label("correctionFields", correction.field)}: {correction.value}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="mt-1">{item.reason}</p>
+                  )}
                 </li>
               ))}
             </ul>
