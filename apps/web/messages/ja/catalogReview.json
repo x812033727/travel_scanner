@@ -72,7 +72,9 @@
     "catalog_review_failed": "審査が完了しませんでした。進捗は保存されています。サービスの状態を確認してください。",
     "catalog_queue_unavailable": "処理は保存されましたが、キューに追加できませんでした。後で再開してください。",
     "catalog_review_unconfigured": "Gemini API キーが未設定のため、評価を実行できません。",
-    "catalog_review_budget_exhausted": "本日の Gemini の安全呼び出し枠を使い切りました。進捗は保存されています。"
+    "catalog_review_budget_exhausted": "本日の Gemini の安全呼び出し枠を使い切りました。進捗は保存されています。",
+    "catalog_enrichment_nothing_pending": "補完対象の審査待ち店舗がありません。",
+    "catalog_source_untrusted": "掲載元は信頼できる観光局または行政機関のホストである必要があります。"
   },
   "kinds": {
     "hotspot": "観光スポット",
@@ -81,13 +83,16 @@
   },
   "modes": {
     "review_pending": "審査待ちを確認",
-    "discover_new": "候補を検索・審査"
+    "discover_new": "候補を検索・審査",
+    "enrich_merchants": "店舗情報を補完"
   },
   "phases": {
     "review_pending": "審査待ちを確認中",
     "discover_new": "新候補を検索中",
     "review_new": "新候補を審査中",
-    "completed": "審査完了"
+    "completed": "審査完了",
+    "identify": "店舗識別の確認",
+    "enrich_merchants": "店舗項目の補完"
   },
   "runStatus": {
     "queued": "待機中",
@@ -107,7 +112,8 @@
   "actions": {
     "approve": "承認",
     "reject": "却下",
-    "keep_pending": "審査待ちを維持"
+    "keep_pending": "審査待ちを維持",
+    "apply_corrections": "補完案を適用"
   },
   "decisions": {
     "approve": "承認を提案",
@@ -157,5 +163,28 @@
   "outcomeStatus": {
     "applied": "適用済み",
     "skipped": "スキップ"
+  },
+  "enrichmentTitle": "店舗情報を補完",
+  "enrichmentDescription": "Gemini は店舗の公式サイト、観光局ページ、Wikimedia のみから住所・情報源・エリア・カテゴリと Google の店舗識別を補完します。座標は書き込まず、審査状態も変えません。",
+  "enrichmentPending": "審査待ち店舗 {count} 件",
+  "startEnrichment": "店舗情報を補完",
+  "correctionsCount": "補完案（{count}）",
+  "itemCorrections": "{name} の補完案",
+  "confirmCorrectionsDescription": "空欄のみ埋めます。情報源は追加または再確認日時を更新します。座標や審査状態は書き込みません。",
+  "identifyMatched": "今回の実行で Google の店舗識別が一致しました",
+  "outcomeChanges": "補完済み：{fields}",
+  "correctionKinds": {
+    "merchant_website": "店舗公式サイト",
+    "merchant_listing": "公式掲載ページ",
+    "address": "住所",
+    "area": "エリア",
+    "category": "カテゴリ"
+  },
+  "correctionFields": {
+    "address": "住所",
+    "official_website_url": "公式サイト URL",
+    "listing_source_url": "公式掲載ページの情報源",
+    "area_slug": "エリア",
+    "category_slug": "カテゴリ"
   }
 }

@@ -72,7 +72,9 @@
     "catalog_review_failed": "审核任务未完成，进度已保留。请检查服务状态。",
     "catalog_queue_unavailable": "任务已保存，但目前无法加入队列，请稍后继续。",
     "catalog_review_unconfigured": "Gemini API Key 尚未配置，无法进行评估。",
-    "catalog_review_budget_exhausted": "Gemini 今天的安全调用预算已用完，进度已保留。"
+    "catalog_review_budget_exhausted": "Gemini 今天的安全调用预算已用完，进度已保留。",
+    "catalog_enrichment_nothing_pending": "目前没有符合条件的待审店家。",
+    "catalog_source_untrusted": "旅游局来源必须是可信的官方或政府主机。"
   },
   "kinds": {
     "hotspot": "景点",
@@ -81,13 +83,16 @@
   },
   "modes": {
     "review_pending": "审核现有待审",
-    "discover_new": "新增候选与审核"
+    "discover_new": "新增候选与审核",
+    "enrich_merchants": "补齐店家资料"
   },
   "phases": {
     "review_pending": "核对现有待审",
     "discover_new": "寻找新候选",
     "review_new": "核对新候选",
-    "completed": "审核完成"
+    "completed": "审核完成",
+    "identify": "确认分店身份",
+    "enrich_merchants": "补齐店家字段"
   },
   "runStatus": {
     "queued": "排队中",
@@ -107,7 +112,8 @@
   "actions": {
     "approve": "批准",
     "reject": "拒绝",
-    "keep_pending": "保留待审"
+    "keep_pending": "保留待审",
+    "apply_corrections": "应用补齐资料"
   },
   "decisions": {
     "approve": "建议批准",
@@ -157,5 +163,28 @@
   "outcomeStatus": {
     "applied": "已应用",
     "skipped": "已跳过"
+  },
+  "enrichmentTitle": "补齐店家资料",
+  "enrichmentDescription": "Gemini 只从店家官网、旅游局页面与 Wikimedia 补地址、来源、商圈、分类与 Google 分店身份；不写坐标，也不改变审核状态。",
+  "enrichmentPending": "待审店家 {count} 家",
+  "startEnrichment": "补齐店家资料",
+  "correctionsCount": "建议补齐（{count}）",
+  "itemCorrections": "{name} 的建议补齐",
+  "confirmCorrectionsDescription": "只会填入目前为空的字段；来源会新增或更新核对时间；不会写入坐标，也不会改变审核状态。",
+  "identifyMatched": "本次已匹配 Google 分店身份",
+  "outcomeChanges": "已填入：{fields}",
+  "correctionKinds": {
+    "merchant_website": "店家官网",
+    "merchant_listing": "官方店家页",
+    "address": "地址",
+    "area": "商圈",
+    "category": "分类"
+  },
+  "correctionFields": {
+    "address": "地址",
+    "official_website_url": "官网网址",
+    "listing_source_url": "官方店家页来源",
+    "area_slug": "商圈",
+    "category_slug": "分类"
   }
 }
