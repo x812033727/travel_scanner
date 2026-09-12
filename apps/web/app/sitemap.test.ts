@@ -184,10 +184,28 @@ describe("guide articles in the sitemap", () => {
     for (const entry of guides) expect(entry.url).not.toContain("/ko/guides/");
   });
 
-  it("advertises only the translations that exist", async () => {
+  it("advertises only the translations that exist, each at its own URL", async () => {
     const guides = guideEntries(await build());
     const japanese = guides.find((entry) => entry.url.endsWith("/ja/guides/howto/narita-to-tokyo"));
     expect(Object.keys(japanese!.alternates!.languages!).sort()).toEqual(["ja", "zh-TW"]);
+    // The href matters as much as the key set: checking keys alone leaves a wrong target -- some
+    // other locale's prefix, or the hub path -- invisible on every entry.
+    for (const entry of guides) {
+      const path = new URL(entry.url).pathname.replace(/^\/[^/]+/, "");
+      const languages = (entry.alternates?.languages ?? {}) as Record<string, string>;
+      for (const [language, href] of Object.entries(languages)) {
+        expect(href).toBe(`${siteUrl}/${language === "x-default" ? "en" : language}${path}`);
+      }
+    }
+  });
+
+  it("leaves the static routes first and untouched when articles are appended", async () => {
+    // Every other static assertion in this file runs with the guides mocked to an empty list, so
+    // a change that only shows up once the API returns rows would pass all of them.
+    const staticOnly = await build([]);
+    const all = await build();
+    expect(all.slice(0, staticOnly.length)).toEqual(staticOnly);
+    expect(all).toHaveLength(staticOnly.length + rows.length);
   });
 
   it("offers x-default only where the English version is published", async () => {
@@ -205,9 +223,12 @@ describe("guide articles in the sitemap", () => {
     expect(notice!.lastModified).toEqual(new Date("2026-09-10T00:00:00Z"));
   });
 
-  it("adds no duplicate URL alongside the static routes", async () => {
-    const urls = (await build()).map((entry) => entry.url);
+  it("adds no duplicate URL alongside the static routes, even if a row repeats", async () => {
+    // The fixture's four translations are already distinct, so without the repeated row this
+    // assertion cannot fail and the property it names goes unchecked.
+    const urls = (await build([...rows, rows[0]])).map((entry) => entry.url);
     expect(new Set(urls).size).toBe(urls.length);
+    expect(urls).toHaveLength(SITEMAP_ROUTES.length * locales.length + rows.length);
   });
 
   it("keeps the static sitemap intact when the guides API is unreachable", async () => {

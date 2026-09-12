@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**36 open · 2 in progress · 3 blocked · 0 in review · 267 done**
+**38 open · 3 in progress · 3 blocked · 0 in review · 267 done**
 
 ## Ready to claim
 
@@ -54,6 +54,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- | --- |
 | [公開美食店家訂位平台連結補齊（查核與批次匯入）](open/2026-09-11-food-reservation-link-backfill.md) | claude-opus-5 | 2026-09-11T16:02:41Z | `claude/food-reservation-link-backfill` |
 | [Deny school, hospital, tram stop, ward and military base types in hotspot discovery](open/2026-09-11-deny-school-hospital-tram-stop-ward.md) | claude-opus-5 | 2026-09-11T16:53:59Z | `claude/attractions-review-progress-55bb39` |
+| [Carry the guides sitemap follow-ups into main](open/2026-09-12-guides-sitemap-followup.md) | claude-opus-5-guides-sitemap | 2026-09-12T02:36:44Z | `claude/guides-sitemap-followup` |
 
 ## In review
 
@@ -67,7 +68,9 @@ _Nothing here._
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | see the task notes |
 | P3 | [TourAPI（韓國觀光公社）可行性驗證：先確認拿得到金鑰、連得上、資料量夠不夠](open/2026-09-06-korea-tourism-tourapi-spike.md) | see the task notes |
 | P1 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | active work in the same scope |
+| P2 | [Sitemap lastmod should move when a guide translation is republished](open/2026-09-11-guide-lastmod-republication.md) | active work in the same scope |
 | P3 | [Lighthouse SEO 與效能門檻 workflow](open/2026-09-10-seo-lighthouse-workflow.md) | depends on 2026-09-10-seo-server-render-home-and-explore |
+| P3 | [A capitalised guide slug shows a fake outage instead of the article](open/2026-09-12-guide-slug-casing-shows-a-fake-outage.md) | active work in the same scope |
 
 ## Recently finished
 
