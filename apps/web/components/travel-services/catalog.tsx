@@ -615,6 +615,7 @@ export function ServiceCatalog({
             modules={serviceDiscoveryModules(kind)}
             contextual
             destinationLabel={destination === "osaka-kyoto" ? `${t("osaka")} · ${t("kyoto")}` : t.has(destination) ? t(destination) : destination}
+            placement={tripId ? "trip" : hotspotId ? "hotspot" : "destination"}
           />)}
           {loading && (
             <p role="status" className="flex items-center gap-2">

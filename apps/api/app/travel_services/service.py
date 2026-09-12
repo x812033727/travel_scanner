@@ -4,12 +4,13 @@ import hashlib
 import json
 import re
 from datetime import UTC, datetime, timedelta
-from typing import Any
+from typing import Any, get_args
 from uuid import UUID
 
 from sqlalchemy import or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.affiliates.schemas import AffiliateModule
 from app.config import Settings
 from app.hotspots.areas import city_areas
 from app.hotspots.cities import CITY_BY_DESTINATION_ID
@@ -34,7 +35,15 @@ from app.travel_services.channels import (
 )
 from app.travel_services.hotel_operating import hotel_publicly_available, hotel_stay_available
 from app.travel_services.registry import BRANDS, affiliate_target
-from app.travel_services.schemas import CITIES, KINDS, CatalogConfig, Facts, HotelLink, ProductInput
+from app.travel_services.schemas import (
+    CITIES,
+    KINDS,
+    BookingPlacement,
+    CatalogConfig,
+    Facts,
+    HotelLink,
+    ProductInput,
+)
 from app.trips.stay_areas import evidence_items, extension_destination_ids, score_stay_areas
 
 
@@ -235,6 +244,71 @@ def ready_destination_offer(
         and settings.travelpayouts_marker
         and settings.travelpayouts_project_id
     )
+
+
+async def ready_destination_offers(
+    session: AsyncSession,
+    settings: Settings,
+    destination_id: str,
+    placement: BookingPlacement,
+    module: AffiliateModule | None = None,
+) -> list[tuple[DestinationAffiliateOffer, TravelServiceBrand]]:
+    """The destination offers a public surface may show right now, one per brand and module.
+
+    Every gate that hides the list also hides the click (the clickout re-checks the same
+    switch), so a page rendered before a surface was closed cannot route a click through it.
+    The catalog config is read first: with the catalog off, nothing else is touched.
+    """
+    config, _ = await catalog_config(session)
+    if (
+        not config.public_enabled
+        or destination_id not in config.enabled_destinations
+        or placement not in config.affiliate_placements
+    ):
+        return []
+    now = datetime.now(UTC)
+    query = (
+        select(DestinationAffiliateOffer, TravelServiceBrand)
+        .join(TravelServiceBrand, TravelServiceBrand.id == DestinationAffiliateOffer.brand_id)
+        .where(DestinationAffiliateOffer.destination_id == destination_id)
+        .order_by(TravelServiceBrand.code, DestinationAffiliateOffer.id)
+    )
+    if module is not None:
+        query = query.where(DestinationAffiliateOffer.module == module)
+    rows = list((await session.execute(query)).tuples().all())
+    # One CTA per brand and module: prefer the explicitly enrolled direct channel when both
+    # channels are ready for the same brand.
+    ready = [row for row in rows if ready_destination_offer(*row, settings, now)]
+    ready.sort(
+        key=lambda row: (
+            row[0].module,
+            row[1].code,
+            channel_for(row[1]) != "klook_direct",
+            str(row[0].id),
+        )
+    )
+    unique: dict[tuple[str, str], tuple[DestinationAffiliateOffer, TravelServiceBrand]] = {}
+    for row in ready:
+        unique.setdefault((row[0].module, row[1].code), row)
+    return list(unique.values())
+
+
+async def partner_offer_modules(
+    session: AsyncSession,
+    settings: Settings,
+    destination_id: str | None,
+    placement: BookingPlacement,
+) -> list[AffiliateModule]:
+    """Which modules have a ready offer for this destination on this surface.
+
+    Availability only, never the offers themselves: a trip payload carries this so the
+    planner can decide whether a partner block exists without a request on first paint.
+    """
+    if not destination_id:
+        return []
+    ready = await ready_destination_offers(session, settings, destination_id, placement)
+    present = {offer.module for offer, _brand in ready}
+    return [module for module in get_args(AffiliateModule) if module in present]
 
 
 def public_product(product: TravelServiceProduct, locale: str, now: datetime) -> dict[str, Any]:

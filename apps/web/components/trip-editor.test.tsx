@@ -111,15 +111,22 @@ afterEach(() => {
 });
 describe("trip editor", () => {
   it("does not load affiliate options or stay areas until the member opens the stay flow", async () => {
-    const fetchMock = vi.fn().mockImplementation(() => Promise.resolve(response(trip)));
+    // The payload says a partner block exists for this trip; the block itself stays a
+    // closed disclosure, so the first paint still makes no partner request.
+    // The only day of an undated trip is its arrival day, so a transport offer is what
+    // makes a block exist here at all.
+    const partnerTrip = { ...trip, partner_offers: { destination_id: "tokyo", modules: ["transport"] } };
+    const fetchMock = vi.fn().mockImplementation(() => Promise.resolve(response(partnerTrip)));
     vi.stubGlobal("fetch", fetchMock);
 
     render(<TripEditor tripId={trip.id} />);
 
     expect((await screen.findAllByText("東京五日")).length).toBeGreaterThan(0);
     expect(screen.queryByText("這趟旅程的合作平台")).toBeNull();
+    const block = screen.getByText("抵達後的安排").closest("details")!;
+    expect(block.open).toBe(false);
     expect(
-      fetchMock.mock.calls.some(([input]) => String(input).includes("/affiliates/options")),
+      fetchMock.mock.calls.some(([input]) => String(input).includes("/affiliates/")),
     ).toBe(false);
     expect(fetchMock.mock.calls.some(([input]) => String(input).includes("/stay-areas"))).toBe(false);
   });
@@ -140,7 +147,7 @@ describe("trip editor", () => {
     expect(await screen.findByRole("heading", { name: "淺草散步" })).toBeTruthy();
     expect(screen.queryByRole("dialog")).toBeNull();
     expect(screen.queryByRole("heading", { name: "旅伴與旅行偏好" })).toBeNull();
-    const preparationCalls = () => fetchMock.mock.calls.filter(([input]) => /\/affiliates\/options|\/weather$|\/places$|\/travel-services\/config$/.test(String(input)));
+    const preparationCalls = () => fetchMock.mock.calls.filter(([input]) => /\/affiliates\/options|\/affiliates\/destination-offers|\/weather$|\/places$|\/travel-services\/config$/.test(String(input)));
     expect(preparationCalls()).toHaveLength(0);
 
     fireEvent.click(screen.getByRole("button", { name: "開啟旅程工具" }));
@@ -2075,5 +2082,121 @@ describe("trip editor explicit drafts", () => {
     // settles, which — with a draft still unsaved — is the keep-or-discard sheet.
     await act(async () => { finishSave({ ok: false, status: 500, json: async () => ({ detail: "nope" }) }); });
     expect(await screen.findByRole("dialog", { name: "保留這次修改嗎？" })).toBeTruthy();
+  });
+});
+
+describe("trip editor partner blocks", () => {
+  const partnerTrip = {
+    ...trip,
+    destination_name: "東京",
+    start_date: "2026-11-11",
+    end_date: "2026-11-12",
+    partner_offers: { destination_id: "tokyo", modules: ["hotel", "activities", "transport", "connectivity"] },
+    items: [
+      ...trip.items,
+      {
+        id: "00000000-0000-4000-8000-000000000009",
+        item_type: "flight",
+        system_role: "outbound_flight",
+        day_date: "2026-11-11",
+        position: -1,
+        title: "去程航班",
+        locked: true,
+        is_estimated: false,
+        data: { timeline_section: "flight_anchor", flight_selection_source: "unset", flight_info: null },
+      },
+    ],
+  };
+  const offer = (url: string) => {
+    const query = new URL(url, "https://mokaair.com").searchParams;
+    return response({
+      destination_id: query.get("destination_id"), module: query.get("module"), disclosure: "Disclosure",
+      options: [{ id: `${query.get("module")}-offer`, brand: "klook", display_name: "Klook", destination_id: "tokyo", module: query.get("module"), cta: `Klook ${query.get("module")}`, clickout_url: `/api/travel/affiliates/destination-offers/${query.get("module")}-offer/clickout?placement=trip` }],
+    });
+  };
+  const offerCalls = (fetchMock: ReturnType<typeof vi.fn>) =>
+    fetchMock.mock.calls.map(([input]) => String(input)).filter((url) => url.includes("/affiliates/destination-offers"));
+
+  it("asks for the arrival modules on the first day, only once the block is opened", async () => {
+    const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
+      const url = String(input);
+      return url.includes("/affiliates/destination-offers") ? offer(url) : response(partnerTrip);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+    const summary = await screen.findByText("抵達後的安排");
+    const block = summary.closest("details")!;
+    expect(offerCalls(fetchMock)).toHaveLength(0);
+
+    block.open = true;
+    fireEvent(block, new Event("toggle"));
+    expect(await screen.findByRole("button", { name: /Klook transport/ })).toBeTruthy();
+    // No hotel is set, so the ride, a way online and a place to stay; never tickets on arrival.
+    expect(offerCalls(fetchMock).map((url) => new URL(url, "https://mokaair.com").searchParams.get("module"))).toEqual(["hotel", "transport", "connectivity"]);
+    expect(offerCalls(fetchMock).every((url) => url.includes("placement=trip"))).toBe(true);
+
+    block.open = false;
+    fireEvent(block, new Event("toggle"));
+    expect(screen.queryByRole("button", { name: /Klook transport/ })).toBeNull();
+    expect(offerCalls(fetchMock)).toHaveLength(3);
+  });
+
+  it("switches to tickets on a day in the middle of the trip", async () => {
+    const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
+      const url = String(input);
+      return url.includes("/affiliates/destination-offers") ? offer(url) : response(partnerTrip);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+    await screen.findByText("抵達後的安排");
+    const dayChip = screen.getAllByRole("button").find((button) => button.hasAttribute("aria-pressed") && button.textContent?.includes("11/12"));
+    fireEvent.click(dayChip!);
+    // The last day of a two-day trip is the departure day.
+    expect(await screen.findByText("回程前的安排")).toBeTruthy();
+    expect(screen.queryByText("抵達後的安排")).toBeNull();
+  });
+
+  it("shows no partner block when the destination has nothing ready", async () => {
+    const fetchMock = vi.fn().mockImplementation(() => Promise.resolve(response({ ...partnerTrip, partner_offers: { destination_id: "tokyo", modules: [] } })));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+    expect((await screen.findAllByText("東京五日")).length).toBeGreaterThan(0);
+    expect(screen.queryByText("抵達後的安排")).toBeNull();
+    expect(screen.queryByText("門票與一日遊")).toBeNull();
+    expect(offerCalls(fetchMock)).toHaveLength(0);
+  });
+
+  it("offers the next steps right after an AI plan is applied, and lets the member dismiss them", async () => {
+    const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/affiliates/destination-offers")) return offer(url);
+      if (url.includes("/itinerary/preview")) return response(itineraryPreview("day"));
+      if (url.includes("/itinerary/apply")) {
+        return response({
+          ...partnerTrip,
+          version: 2,
+          planning: { status: "live", readiness: "ready", provider: "minimax", model: "MiniMax-M2.1", generated_at: "2026-11-01T10:00:00Z", warnings: [], scope: "day", day_date: "2026-11-11" },
+          usage: { status: "charged", uses: 1, reference: "ai-day-1" },
+        });
+      }
+      return response(partnerTrip);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+    await openAI();
+    fireEvent.click(screen.getByRole("radio", { name: /\u55ae\u65e5\u5b89\u6392/ }));
+    fireEvent.click(screen.getByRole("button", { name: /^產生預覽/ }));
+    expect(await screen.findByRole("dialog", { name: "確認 AI 行程預覽" })).toBeTruthy();
+    expect(offerCalls(fetchMock)).toHaveLength(0);
+    fireEvent.click(screen.getByRole("button", { name: /^套用行程/ }));
+    const card = await screen.findByRole("region", { name: "接下來可以預訂" });
+    expect(await screen.findByRole("button", { name: /Klook activities/ })).toBeTruthy();
+    // Arrival day: tickets plus the ride and a way online.
+    expect(offerCalls(fetchMock).map((url) => new URL(url, "https://mokaair.com").searchParams.get("module"))).toEqual(["activities", "transport", "connectivity"]);
+    // While the card is up the day block steps aside so the same offers are not requested twice.
+    expect(screen.queryByText("抵達後的安排")).toBeNull();
+    fireEvent.click(within(card).getByRole("button", { name: "關閉" }));
+    expect(screen.queryByRole("region", { name: "接下來可以預訂" })).toBeNull();
+    expect(screen.getByText("抵達後的安排")).toBeTruthy();
   });
 });

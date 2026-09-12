@@ -708,6 +708,9 @@ async def test_trip_edit_share_and_revoke_flow() -> None:
         )
         assert update.status_code == 200
         assert update.json()["version"] == 2
+        # The full payload says which partner modules are ready for the trip surface;
+        # nothing is seeded here, so the answer is an empty list, never an absent key.
+        assert update.json()["partner_offers"]["modules"] == []
         stale = await client.put(
             f"/api/v1/trips/{trip['id']}/itinerary",
             headers=headers,
@@ -1975,7 +1978,10 @@ async def test_share_link_carries_no_item_notes_and_no_trip_data(
             "route_segments",
             "updated_at",
             "items",
+            "partner_offers",
         }
+        # Availability only, for the share surface, which is off by default.
+        assert payload["partner_offers"]["modules"] == []
         assert payload["name"] == "分享白名單測試"
         shared_stop = next(item for item in payload["items"] if item["title"] == "淺草寺")
         assert "notes" not in shared_stop

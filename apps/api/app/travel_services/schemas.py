@@ -19,10 +19,11 @@ Status = Literal["pending", "approved", "disabled"]
 # Public entry labels for anonymous booking and offer clickouts. The HTTP boundary, the
 # Stay22 campaign builder and the destination-offer routes share this one finite set, so a
 # new public entry point cannot pass one check and then fail after the user clicks.
-# `guide` (an article) and `city` (a destination page) are first-party content surfaces;
-# CatalogConfig.affiliate_placements decides which surfaces may currently show offers.
+# `guide` (an article), `city` (a destination page) and `share` (a read-only shared trip)
+# are first-party content surfaces; CatalogConfig.affiliate_placements decides which
+# surfaces may currently show offers.
 BookingPlacement = Literal[
-    "destination", "hotspot", "trip", "stay", "checklist", "discovery", "guide", "city"
+    "destination", "hotspot", "trip", "stay", "checklist", "discovery", "guide", "city", "share"
 ]
 BOOKING_PLACEMENTS = frozenset(get_args(BookingPlacement))
 # The surfaces that were live before the switch existed; the default keeps them on and

@@ -128,5 +128,8 @@ def test_the_trip_level_allowlist_names_no_private_field() -> None:
         "primary_lodging",
         "planning",
         "version",
+        # The share page computes its own partner availability for the `share` surface;
+        # the owner's `trip` answer must not leak through the allowlist.
+        "partner_offers",
     }
     assert not private & set(PUBLIC_TRIP_KEYS)
