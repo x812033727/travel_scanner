@@ -2,8 +2,8 @@ import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import { RequestBodyError, limitedRequestBody } from "@/lib/request-body";
 import { hotelClickoutErrorPage } from "@/lib/hotel-clickout-error";
+import { forwardedClientHeaders } from "@/lib/client-address";
 import {
-  forwardedClientAddress,
   isAllowedMutationOrigin,
   observedRequestOrigin,
   safeRedirectLocation,
@@ -103,8 +103,9 @@ async function proxy(request: NextRequest, context: Context) {
   if (requestId && /^[A-Za-z0-9._:-]{1,128}$/.test(requestId)) {
     headers.set("X-Request-ID", requestId);
   }
-  const sourceAddress = forwardedClientAddress(request.headers);
-  if (sourceAddress) headers.set("X-Travel-Client-IP", sourceAddress);
+  for (const [name, value] of Object.entries(forwardedClientHeaders(request.headers))) {
+    headers.set(name, value);
+  }
   const userAgent = request.headers.get("user-agent")?.slice(0, 512);
   if (userAgent) headers.set("X-Travel-User-Agent", userAgent);
   const analyticsSession = forwardedAnalyticsSession(request.headers.get("x-travel-analytics-session"));

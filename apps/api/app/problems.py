@@ -8,10 +8,20 @@ from app.i18n import ERROR_DETAILS, GENERIC_DETAILS, PROBLEM_TITLES, request_loc
 
 
 class AppError(Exception):
-    def __init__(self, status: int, code: str, detail: str) -> None:
+    def __init__(
+        self,
+        status: int,
+        code: str,
+        detail: str,
+        *,
+        headers: dict[str, str] | None = None,
+    ) -> None:
         self.status = status
         self.code = code
         self.detail = detail
+        # Some refusals are only actionable with a header: a 429 the caller cannot
+        # time its retry against invites the same request a second later.
+        self.headers = headers
 
 
 async def app_error_handler(request: Request, exc: AppError) -> JSONResponse:
@@ -28,7 +38,12 @@ async def app_error_handler(request: Request, exc: AppError) -> JSONResponse:
         "detail": detail,
         "request_id": getattr(request.state, "request_id", None),
     }
-    return JSONResponse(payload, status_code=exc.status, media_type="application/problem+json")
+    return JSONResponse(
+        payload,
+        status_code=exc.status,
+        media_type="application/problem+json",
+        headers=exc.headers,
+    )
 
 
 FIELD_LABELS = {

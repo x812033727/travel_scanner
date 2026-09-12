@@ -3,7 +3,7 @@ import { locales, normalizeLocale, type Locale } from "@/i18n/routing";
 import { safeNextPath } from "@/lib/navigation";
 import { limitedRequestBody, RequestBodyError } from "@/lib/request-body";
 import { siteUrl } from "@/lib/seo";
-import { forwardedClientAddress } from "@/app/api/travel/[...path]/proxy-security";
+import { forwardedClientHeaders } from "@/lib/client-address";
 
 // An OAuth form_post callback carries a code, a state and possibly an error string —
 // a few hundred bytes. The route is unauthenticated, so it must never buffer an
@@ -54,8 +54,9 @@ export function authHeaders(request: NextRequest) {
   const headers = new Headers({ "Content-Type": "application/json" });
   const token = request.cookies.get("travel_access")?.value;
   if (token) headers.set("Authorization", `Bearer ${token}`);
-  const sourceAddress = forwardedClientAddress(request.headers);
-  if (sourceAddress) headers.set("X-Travel-Client-IP", sourceAddress);
+  for (const [name, value] of Object.entries(forwardedClientHeaders(request.headers))) {
+    headers.set(name, value);
+  }
   return headers;
 }
 
