@@ -31,7 +31,7 @@ from app.guides.models import (
     GuideTopic,
 )
 from app.guides.router import admin_router, public_router
-from app.guides.taxonomy import SEED_TOPICS, seed_names
+from app.guides.taxonomy import LIFE_SEED_TOPICS, SEED_TOPICS, seed_names
 from app.models import AdminAuditLog, User
 from app.problems import AppError, app_error_handler, validation_error_handler
 
@@ -76,6 +76,19 @@ async def database(request, tmp_path) -> AsyncIterator[async_sessionmaker[AsyncS
                     slug=slug,
                     names_json=seed_names(labels),
                     display_order=order * 10,
+                    section="travel",
+                    source="seed",
+                )
+            )
+        # The lifestyle vocabulary is seeded here too, so a life article can attach `ai`
+        # without every test first inventing a topic the migration already ships.
+        for order, (slug, labels) in enumerate(LIFE_SEED_TOPICS):
+            session.add(
+                GuideTopic(
+                    slug=slug,
+                    names_json=seed_names(labels),
+                    display_order=200 + order * 10,
+                    section="life",
                     source="seed",
                 )
             )
@@ -538,17 +551,17 @@ async def test_the_admin_listing_filters_by_status_and_reports_facets(database, 
             "hidden": 1,
             "expired": 1,
         }
-        assert facet(everything, "kind") == {"intel": 1, "howto": 3}
+        assert facet(everything, "kind") == {"intel": 1, "howto": 3, "life": 0}
 
         hidden = await admin_list(api, status="hidden")
         assert [item["slug"] for item in hidden["articles"]] == ["hidden-guide"]
         # A facet never counts its own filter, so the other pills keep their numbers.
         assert facet(hidden, "status") == facet(everything, "status")
-        assert facet(hidden, "kind") == {"intel": 0, "howto": 1}
+        assert facet(hidden, "kind") == {"intel": 0, "howto": 1, "life": 0}
 
         intel = await admin_list(api, kind="intel")
         assert intel["total"] == 1
-        assert facet(intel, "kind") == {"intel": 1, "howto": 3}
+        assert facet(intel, "kind") == {"intel": 1, "howto": 3, "life": 0}
         assert facet(intel, "status") == {"published": 0, "draft": 0, "hidden": 0, "expired": 1}
 
         nonsense = await api.get("/admin/guides", params={"locale": "zh-TW", "status": "gone"})
@@ -937,3 +950,152 @@ def test_the_shared_topic_ids_match_the_discovery_vocabulary() -> None:
 
 def test_now_is_utc_not_local_time() -> None:
     assert datetime.now(UTC).tzinfo is UTC
+
+
+async def test_a_lifestyle_article_lives_in_its_own_section(database, actor) -> None:
+    """The section is what the public listings filter on, and `life` is its only kind."""
+    async with client(make_app(database, actor)) as api:
+        life = await create_article(
+            api, slug="ai-notes", kind="life", destination_id=None, topics=["ai"]
+        )
+        await publish(api, life["id"], "zh-TW", life["version"])
+        travel = await create_article(api, slug="narita-to-tokyo", kind="howto")
+        await publish(api, travel["id"], "zh-TW", travel["version"])
+
+        async def slugs(**params):
+            response = await api.get("/guides", params={"locale": "zh-TW", **params})
+            assert response.status_code == 200, response.text
+            return sorted(item["slug"] for item in response.json()["articles"])
+
+        assert await slugs() == ["ai-notes", "narita-to-tokyo"]
+        assert await slugs(section="life") == ["ai-notes"]
+        assert await slugs(section="travel") == ["narita-to-tokyo"]
+        # kind and section compose as an intersection, and an empty one is an empty list --
+        # not, as a careless refactor would have it, an unfiltered one.
+        assert await slugs(section="life", kind="life") == ["ai-notes"]
+        assert await slugs(section="life", kind="intel") == []
+        assert await slugs(section="travel", kind="howto") == ["narita-to-tokyo"]
+        assert (await api.get("/guides", params={"section": "hobby"})).status_code == 422
+
+        # Its own kind path serves it; the travel path does not, whatever the slug.
+        served = await api.get("/guides/life/ai-notes", params={"locale": "zh-TW"})
+        assert served.status_code == 200
+        assert served.json()["status"] == "published"
+        assert served.json()["destination_id"] is None
+        elsewhere = await api.get("/guides/howto/ai-notes", params={"locale": "zh-TW"})
+        assert elsewhere.json()["status"] == "unpublished"
+
+        entries = (await api.get("/guides/sitemap")).json()["entries"]
+        assert {entry["kind"] for entry in entries} == {"life", "howto"}
+
+
+async def test_topics_belong_to_one_section_and_are_refused_in_the_other(
+    database, actor
+) -> None:
+    async with client(make_app(database, actor)) as api:
+        for section, slugs in (("life", ["ai"]), ("travel", ["transport"])):
+            response = await api.get(
+                "/guides/topics", params={"locale": "zh-TW", "section": section}
+            )
+            rows = response.json()["topics"]
+            assert {row["section"] for row in rows} == {section}
+            assert set(slugs) <= {row["slug"] for row in rows}
+        life_rows = (await api.get("/guides/topics", params={"section": "life"})).json()["topics"]
+        assert [row["slug"] for row in life_rows] == [
+            "ai", "tutorial", "software", "gadgets", "productivity", "daily", "misc",
+        ]
+        unfiltered = (await api.get("/guides/topics", params={"locale": "zh-TW"})).json()["topics"]
+        assert len(unfiltered) == len(life_rows) + 19
+
+        # A travel topic on a lifestyle article, and the reverse, are both refused -- on
+        # create and on update, because `topics` is optional and would otherwise be a way in.
+        wrong_way = await api.post(
+            "/admin/guides",
+            json={
+                "slug": "mismatched", "kind": "life", "destination_id": None,
+                "topics": ["transport"], "document": document(),
+            },
+        )
+        assert wrong_way.status_code == 422
+        assert wrong_way.json()["code"] == "guide_topic_section_mismatch"
+
+        other_way = await api.post(
+            "/admin/guides",
+            json={
+                "slug": "mismatched", "kind": "howto", "destination_id": "tokyo",
+                "topics": ["ai"], "document": document(),
+            },
+        )
+        assert other_way.status_code == 422
+        assert other_way.json()["code"] == "guide_topic_section_mismatch"
+
+        article = await create_article(api, slug="narita-to-tokyo", kind="howto")
+        update = await api.put(
+            f"/admin/guides/{article['id']}",
+            json={
+                "expected_version": article["version"], "kind": "howto",
+                "destination_id": "tokyo", "topics": ["ai"], "valid_until": None,
+                "featured": False, "display_order": 100,
+            },
+        )
+        assert update.status_code == 422
+        assert update.json()["code"] == "guide_topic_section_mismatch"
+
+
+async def test_a_published_article_cannot_change_section(database, actor) -> None:
+    """Kind is part of the URL. Moving sections moves the URL, so it is refused while any
+    translation is public; withdrawing every language first is the way through."""
+    async with client(make_app(database, actor)) as api:
+        article = await create_article(api, slug="narita-to-tokyo", kind="howto")
+        await publish(api, article["id"], "zh-TW", article["version"])
+
+        def taxonomy(version: int, kind: str, topics: list[str]):
+            return {
+                "expected_version": version, "kind": kind, "destination_id": "tokyo",
+                "topics": topics, "valid_until": None, "featured": False,
+                "display_order": 100,
+            }
+
+        detail = (await api.get(f"/admin/guides/{article['id']}")).json()
+        locked = await api.put(
+            f"/admin/guides/{article['id']}", json=taxonomy(detail["version"], "life", [])
+        )
+        assert locked.status_code == 409
+        assert locked.json()["code"] == "guide_kind_locked"
+
+        # Within the section the URL keeps the same shape, so this stays allowed.
+        same_section = await api.put(
+            f"/admin/guides/{article['id']}",
+            json=taxonomy(detail["version"], "intel", ["transport"]),
+        )
+        assert same_section.status_code == 200
+        assert same_section.json()["kind"] == "intel"
+
+        row = next(
+            entry for entry in same_section.json()["locales"] if entry["locale"] == "zh-TW"
+        )
+        withdrawn = await api.post(
+            f"/admin/guides/{article['id']}/zh-TW/unpublish",
+            json={"expected_version": row["version"], "confirmed": True, "reason": "測試撤下"},
+        )
+        assert withdrawn.status_code == 200
+        moved = await api.put(
+            f"/admin/guides/{article['id']}",
+            json=taxonomy(withdrawn.json()["version"], "life", ["ai"]),
+        )
+        assert moved.status_code == 200
+        assert moved.json()["kind"] == "life"
+        assert [topic["section"] for topic in moved.json()["topics"]] == ["life"]
+
+
+def test_the_two_seed_vocabularies_stay_disjoint() -> None:
+    """A slug is global (uq_guide_topic_slug), so the sections cannot share one; and a
+    lifestyle slug must not collide with the discovery vocabulary either."""
+    from app.discovery.taxonomy import LABELS
+    from app.guides.taxonomy import LIFE_SEED_TOPICS
+
+    life = {slug for slug, _ in LIFE_SEED_TOPICS}
+    travel = {slug for slug, _ in SEED_TOPICS}
+    assert life & travel == set()
+    assert life & set(LABELS) == set()
+    assert len(life) == len(LIFE_SEED_TOPICS)

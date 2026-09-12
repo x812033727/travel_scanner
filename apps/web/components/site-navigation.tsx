@@ -39,9 +39,10 @@ export function SiteNavigation() {
             frontendDestinations and community-on only its own links, so a link added to
             primaryNavLinks alone vanishes in two of the three modes -- the same defect as
             2026-09-11-no-sign-in-entry-in-discovery. */}
-        {!discovery.loading && (discovery.enabled || community.flags.enabled) && (
+        {!discovery.loading && (discovery.enabled || community.flags.enabled) && (<>
           <Link href="/guides" aria-current={pathname.startsWith("/guides") ? "page" : undefined} className="-mx-2 inline-flex min-h-11 items-center rounded-lg px-2 transition hover:text-[var(--ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--teal)]">{t("guides")}</Link>
-        )}
+          <Link href="/life" aria-current={pathname.startsWith("/life") ? "page" : undefined} className="-mx-2 inline-flex min-h-11 items-center rounded-lg px-2 transition hover:text-[var(--ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--teal)]">{t("life")}</Link>
+        </>)}
         {!discovery.enabled && !discovery.loading && <><TextSizeSwitcher />
         <ThemeSwitcher /></>}
         {/* Sign in belongs on every header. Gating it behind !discovery.enabled left the

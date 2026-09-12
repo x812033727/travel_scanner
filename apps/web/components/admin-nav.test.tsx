@@ -45,7 +45,8 @@ describe("AdminNav", () => {
       { key: "guides", href: "/admin/guides", group: "content" },
       { key: "hotspots", href: "/admin/hotspots", group: "content" },
     ]), "guides");
-    const link = screen.getByRole("link", { name: "情報與攻略" });
+    // The editor covers both content sections now, so its label names both.
+    const link = screen.getByRole("link", { name: "旅遊情報與生活分享" });
     expect(link.getAttribute("href")).toBe("/admin/guides");
     expect(link.getAttribute("aria-current")).toBe("page");
     expect(screen.queryByRole("link", { name: "guides" })).toBeNull();

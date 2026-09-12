@@ -8,7 +8,7 @@ import { AdminEmptyState, AdminErrorState, AdminFilterBar, AdminStatusPill } fro
 import { Button, Dialog } from "@/components/community/ui";
 import { adminNavigate, useAdminQueryValue } from "@/lib/admin-workspace-navigation";
 import { api, ApiError } from "@/lib/api";
-import { guideKinds, isGuideKind, type GuideTopic } from "@/lib/guides";
+import { guideKinds, guideSections, isGuideKind, isGuideSection, type GuideTopic } from "@/lib/guides";
 import {
   articleStatuses, isArticleStatus, isPageNumber,
   type ArticleList, type ArticleStatus, type ArticleSummary, type BatchVisibilityResult,
@@ -78,6 +78,7 @@ export function AdminGuidesList({ onOpen, onCreate }: { onOpen: (id: string) => 
   const locale: SitePageLocale = sitePageLocales.includes(interfaceLocale as SitePageLocale) ? interfaceLocale as SitePageLocale : "zh-TW";
   const [status] = useAdminQueryValue("status", "", isArticleStatus);
   const [kind] = useAdminQueryValue("kind", "", isGuideKind);
+  const [section] = useAdminQueryValue("section", "", isGuideSection);
   const [destination] = useAdminQueryValue("destination");
   const [topic] = useAdminQueryValue("topic");
   const [query] = useAdminQueryValue("q");
@@ -94,11 +95,12 @@ export function AdminGuidesList({ onOpen, onCreate }: { onOpen: (id: string) => 
   const params = new URLSearchParams({ locale, page: String(page), limit: String(PAGE_SIZE) });
   if (status) params.set("status", status);
   if (kind) params.set("kind", kind);
+  if (section) params.set("section", section);
   if (destination) params.set("destination", destination);
   if (topic) params.set("topic", topic);
   if (query) params.set("q", query);
   const suffix = params.toString();
-  const filtered = Boolean(status || kind || destination || topic || query);
+  const filtered = Boolean(status || kind || section || destination || topic || query);
   // The page and the selection are keyed by what they were loaded for: a filter change or a
   // reload shows the loading state and drops the ticks without an effect resetting either.
   const key = `${suffix}#${reload}`;
@@ -182,6 +184,14 @@ export function AdminGuidesList({ onOpen, onCreate }: { onOpen: (id: string) => 
     />
 
     <AdminFilterBar>
+      <label className="grid gap-2 text-sm font-semibold">{t("sectionFilter")}
+        <select className={control} value={section} onChange={(event) => updateAdminQuery({ section: event.target.value, kind: "", page: "" })}>
+          <option value="">{t("sectionAll")}</option>
+          {guideSections.map((value) => (
+            <option key={value} value={value}>{value === "life" ? t("sectionLife") : t("sectionTravel")}</option>
+          ))}
+        </select>
+      </label>
       <label className="grid gap-2 text-sm font-semibold">{t("kind")}
         <select className={control} value={kind} onChange={(event) => updateAdminQuery({ kind: event.target.value, page: "" })}>
           <option value="">{t("allKinds")}</option>

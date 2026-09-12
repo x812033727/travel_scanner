@@ -1,19 +1,49 @@
 import { isContentBlockList, type ContentBlock } from "./content-blocks";
 import type { Locale } from "@/i18n/routing";
 
-export const guideKinds = ["intel", "howto"] as const;
+export const guideKinds = ["intel", "howto", "life"] as const;
 export type GuideKind = typeof guideKinds[number];
+
+/** The two kinds that live under `/guides`; `life` has its own section at `/life`. */
+export const travelGuideKinds = ["intel", "howto"] as const;
+export type TravelGuideKind = typeof travelGuideKinds[number];
+
+export const guideSections = ["travel", "life"] as const;
+export type GuideSection = typeof guideSections[number];
 
 export function isGuideKind(value: unknown): value is GuideKind {
   return typeof value === "string" && (guideKinds as readonly string[]).includes(value);
 }
 
-/** Kind is part of the URL, so an article never moves between the two sections. */
-export function guideHref(kind: GuideKind, slug: string): string {
-  return `/guides/${kind}/${slug}`;
+export function isTravelGuideKind(value: unknown): value is TravelGuideKind {
+  return typeof value === "string" && (travelGuideKinds as readonly string[]).includes(value);
 }
 
-export type GuideTopic = { slug: string; label: string };
+export function isGuideSection(value: unknown): value is GuideSection {
+  return typeof value === "string" && (guideSections as readonly string[]).includes(value);
+}
+
+/** Which public section a kind belongs to: intel and howto are travel, life is its own. */
+export function guideSection(kind: GuideKind): GuideSection {
+  return kind === "life" ? "life" : "travel";
+}
+
+/**
+ * Kind fixes the URL: travel articles live at `/guides/{kind}/{slug}`, lifestyle articles at
+ * `/life/{slug}`. An article never has two URLs, and `/guides/life/...` is a 404.
+ */
+export function guideHref(kind: GuideKind, slug: string): string {
+  return kind === "life" ? `/life/${slug}` : `/guides/${kind}/${slug}`;
+}
+
+/** The listing a kind belongs to, optionally filtered by topic. Every listing URL comes from here. */
+export function guideListHref(kind: GuideKind, topic?: string | null): string {
+  const base = kind === "life" ? "/life" : `/guides/${kind}`;
+  return topic ? `${base}?topic=${encodeURIComponent(topic)}` : base;
+}
+
+/** `section` is optional on the wire so a catalogue served by an older API still parses. */
+export type GuideTopic = { slug: string; label: string; section?: GuideSection };
 
 export type GuideSource = { title: string; url: string; checked_on: string | null };
 
@@ -60,7 +90,8 @@ export type GuideArticleState = {
 function isTopicList(value: unknown): value is GuideTopic[] {
   return Array.isArray(value) && value.every((row) => {
     const topic = row as Record<string, unknown> | null;
-    return !!topic && typeof topic.slug === "string" && typeof topic.label === "string";
+    return !!topic && typeof topic.slug === "string" && typeof topic.label === "string"
+      && (topic.section === undefined || isGuideSection(topic.section));
   });
 }
 

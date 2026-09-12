@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { guideHref, isExpired, isGuideKind, isGuideSummary, isPublishedGuide } from "./guides";
+import { guideHref, guideListHref, guideSection, isExpired, isGuideKind, isGuideSummary, isPublishedGuide, isTravelGuideKind } from "./guides";
 
 const summary = {
   slug: "narita-to-tokyo", kind: "howto", destination_id: "tokyo", destination_label: "東京",
@@ -13,17 +13,36 @@ const document = {
 };
 
 describe("guide kinds", () => {
-  it("accepts only the two kinds that exist as URLs", () => {
+  it("accepts only the three kinds that exist as URLs", () => {
     expect(isGuideKind("intel")).toBe(true);
     expect(isGuideKind("howto")).toBe(true);
-    for (const value of ["guides", "article", "", null, undefined, 1]) {
+    expect(isGuideKind("life")).toBe(true);
+    for (const value of ["guides", "article", "travel", "", null, undefined, 1]) {
       expect(isGuideKind(value)).toBe(false);
     }
   });
 
-  it("keeps the kind in the path so an article never moves between sections", () => {
+  it("keeps life out of the /guides route, which only serves the two travel kinds", () => {
+    expect(isTravelGuideKind("intel")).toBe(true);
+    expect(isTravelGuideKind("howto")).toBe(true);
+    expect(isTravelGuideKind("life")).toBe(false);
+    expect(guideSection("intel")).toBe("travel");
+    expect(guideSection("howto")).toBe("travel");
+    expect(guideSection("life")).toBe("life");
+  });
+
+  it("keeps the kind in the path so an article has exactly one URL", () => {
     expect(guideHref("intel", "jr-pass-sale")).toBe("/guides/intel/jr-pass-sale");
     expect(guideHref("howto", "narita-to-tokyo")).toBe("/guides/howto/narita-to-tokyo");
+    expect(guideHref("life", "ai-notes")).toBe("/life/ai-notes");
+  });
+
+  it("builds every listing URL, with the topic filter encoded", () => {
+    expect(guideListHref("howto")).toBe("/guides/howto");
+    expect(guideListHref("intel", "deal")).toBe("/guides/intel?topic=deal");
+    expect(guideListHref("life")).toBe("/life");
+    expect(guideListHref("life", "ai")).toBe("/life?topic=ai");
+    expect(guideListHref("life", null)).toBe("/life");
   });
 });
 

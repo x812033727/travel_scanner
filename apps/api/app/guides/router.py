@@ -24,6 +24,7 @@ from app.guides.schemas import (
     PublishWrite,
     RestoreWrite,
     RevisionDetail,
+    Section,
     SitemapList,
     TopicList,
     VisibilityWrite,
@@ -41,6 +42,7 @@ async def list_public(
     session: Session,
     locale: Locale = "zh-TW",
     kind: Kind | None = None,
+    section: Section | None = None,
     destination: str | None = Query(default=None, max_length=64),
     topic: str | None = Query(default=None, max_length=64),
     cursor: str | None = Query(default=None, max_length=512),
@@ -48,16 +50,26 @@ async def list_public(
 ) -> PublicList:
     response.headers["Cache-Control"] = "no-store"
     return await service.public_list(
-        session, locale, kind=kind, destination=destination, topic=topic, cursor=cursor, limit=limit
+        session,
+        locale,
+        kind=kind,
+        section=section,
+        destination=destination,
+        topic=topic,
+        cursor=cursor,
+        limit=limit,
     )
 
 
 @public_router.get("/topics", response_model=TopicList)
 async def list_public_topics(
-    response: Response, session: Session, locale: Locale = "zh-TW"
+    response: Response,
+    session: Session,
+    locale: Locale = "zh-TW",
+    section: Section | None = None,
 ) -> TopicList:
     response.headers["Cache-Control"] = "no-store"
-    return await taxonomy.list_topics(session, locale)
+    return await taxonomy.list_topics(session, locale, section)
 
 
 @public_router.get("/sitemap", response_model=SitemapList)
@@ -84,6 +96,7 @@ async def list_admin(
     session: Session,
     locale: Locale = "zh-TW",
     kind: Kind | None = None,
+    section: Section | None = None,
     destination: str | None = Query(default=None, max_length=64),
     topic: str | None = Query(default=None, max_length=64),
     status: ArticleStatus | None = None,
@@ -95,6 +108,7 @@ async def list_admin(
         session,
         locale,
         kind=kind,
+        section=section,
         destination=destination,
         topic=topic,
         status=status,
@@ -106,9 +120,12 @@ async def list_admin(
 
 @admin_router.get("/topics", response_model=TopicList)
 async def list_admin_topics(
-    user: AdminUser, session: Session, locale: Locale = "zh-TW"
+    user: AdminUser,
+    session: Session,
+    locale: Locale = "zh-TW",
+    section: Section | None = None,
 ) -> TopicList:
-    return await taxonomy.list_topics(session, locale)
+    return await taxonomy.list_topics(session, locale, section)
 
 
 @admin_router.post("", response_model=ArticleDetail, status_code=201)
