@@ -1,13 +1,13 @@
 ---
 id: 2026-09-12-affiliate-readiness-matrix
 title: Affiliate readiness matrix and per-module status
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-fable-5-1
 claimed_at: 2026-09-12T05:36:46Z
 created_at: 2026-09-12T05:34:50Z
-completed_at:
+completed_at: 2026-09-12T12:08:18Z
 branch: claude/affiliate-controls-and-guide-cta
 depends_on: []
 scope:
