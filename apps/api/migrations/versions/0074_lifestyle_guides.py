@@ -161,9 +161,12 @@ def downgrade() -> None:
         with op.batch_alter_table("guide_topics") as batch:
             batch.drop_constraint(SECTION_CHECK, type_="check")
             batch.drop_column("section")
-        with op.batch_alter_table("guide_articles") as batch:
-            batch.drop_constraint(KIND_CHECK, type_="check")
-            batch.create_check_constraint(KIND_CHECK, LEGACY_KIND_PREDICATE)
+        # The kind CHECK stays widened. Offline generates SQL against no database, so
+        # it cannot do what _narrow_kind_check does and count the lifestyle articles
+        # first; the deletes above take the topics and the links, never the articles.
+        # Emitting the narrow CHECK would abort the whole rollback on any database that
+        # still holds one, which is the opposite of what this downgrade promises: the
+        # rows stay, and the API that comes back is the one that never wrote them.
         return
     bind = op.get_bind()
     tables = set(sa.inspect(bind).get_table_names())

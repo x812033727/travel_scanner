@@ -83,6 +83,28 @@ for (const locale of ["zh-TW", "zh-CN", "en", "ja", "ko"]) {
   });
 }
 
+// 320px is the narrowest screen this app is tested at. A header row that does not fit
+// there does not overflow the document the way a desktop layout would: the phone widens
+// its own layout viewport to fit instead, so `scrollWidth > innerWidth` above stays false
+// and proves nothing. What gives it away is the row's own right edge landing past the
+// screen, and innerWidth coming back wider than the screen was set to -- after which every
+// coordinate on the page has shifted. That is how a sixth 2.75rem icon in the phone header
+// passed this file and only surfaced as a 320px food acceptance run that could no longer
+// hit its click targets.
+test("the discovery phone header fits the narrowest supported screen", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 740 });
+  await fixtures(page);
+  await page.goto("/zh-TW/explore");
+  await expect(page.getByRole("heading", { level: 1, name: getFrontendFlowCopy("zh-TW").results, exact: true })).toBeVisible();
+  // The reader-chosen large text size scales every rem in the row, so it is what runs out
+  // of width first. Testing only the default size would leave the real limit untested.
+  await page.evaluate(() => { document.documentElement.dataset.textSize = "large"; });
+  const row = page.locator('header.site-header div[class*="lg:hidden"]').first();
+  const box = (await row.boundingBox())!;
+  expect(box.x + box.width).toBeLessThanOrEqual(320);
+  expect(await page.evaluate(() => window.innerWidth)).toBeLessThanOrEqual(320);
+});
+
 test("search filters persist through reload/back and empty results do not invent content", async ({ page }) => {
   const c = getDiscoveryCopy("en"); await fixtures(page);
   await page.goto("/en/explore");

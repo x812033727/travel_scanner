@@ -33,6 +33,7 @@ from uuid import UUID, uuid4
 import pytest
 import pytest_asyncio
 import sqlalchemy as sa
+from alembic import context as alembic_context
 from alembic.migration import MigrationContext
 from alembic.operations import Operations
 from sqlalchemy.engine import Connection
@@ -50,6 +51,22 @@ pytestmark = pytest.mark.skipif(
 )
 
 VERSIONS = Path(__file__).resolve().parents[1] / "migrations" / "versions"
+
+
+@pytest.fixture(autouse=True)
+def never_offline(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Answer alembic's "am I generating SQL to a file?" for migrations that ask.
+
+    ``context.is_offline_mode()`` lives on alembic's EnvironmentContext proxy, which is
+    only established while env.py drives the run. This file drives a MigrationContext
+    directly -- that is the point, it is how the guarded branches CI would otherwise skip
+    get executed -- so a migration that asks gets a NameError instead of a boolean, and
+    the test dies before it reaches its first assertion. Every migration here runs against
+    a real connection, so the answer is always False; the rest of the suite pins the same
+    flag the same way (see test_guides_migration.py). The proxy is a singleton, so this
+    covers every migration this file loads, including the next one.
+    """
+    monkeypatch.setattr(alembic_context, "is_offline_mode", lambda: False)
 
 
 @pytest_asyncio.fixture(scope="module", loop_scope="module", autouse=True)
@@ -488,10 +505,10 @@ def _guide_checks(connection: Connection, table: str) -> dict[str, str]:
 
 
 def _back_to_0072(connection: Connection) -> None:
-    """Put PostgreSQL into the shape 0072 left, so 0073's guarded branches do real work.
+    """Put PostgreSQL into the shape 0072 left, so 0074's guarded branches do real work.
 
     A fresh database gets these tables from 0001's ``create_all`` over current metadata, so
-    without this the column and the widened CHECK are already there and every guard in 0073
+    without this the column and the widened CHECK are already there and every guard in 0074
     returns early -- the add_column and the rewrite would never run in CI.
     """
     connection.execute(sa.text("DELETE FROM guide_topics WHERE section = 'life'"))
@@ -520,7 +537,7 @@ def _plant_topic(connection: Connection, slug: str) -> None:
     )
 
 
-def _exercise_0073_on_a_0072_shaped_database(connection: Connection) -> None:
+def _exercise_0074_on_a_0072_shaped_database(connection: Connection) -> None:
     _back_to_0072(connection)
     # A topic an administrator added before the column existed: the backfill must read it as
     # travel, which is what it was, rather than leaving it NULL or guessing.
@@ -554,10 +571,10 @@ def _exercise_0073_on_a_0072_shaped_database(connection: Connection) -> None:
 
 
 @pytest.mark.asyncio(loop_scope="module")
-async def test_0073_backfills_the_topic_section_and_widens_the_kind_check() -> None:
+async def test_0074_backfills_the_topic_section_and_widens_the_kind_check() -> None:
     async with engine.connect() as connection:
         await connection.run_sync(
-            in_a_rolled_back_transaction(_exercise_0073_on_a_0072_shaped_database)
+            in_a_rolled_back_transaction(_exercise_0074_on_a_0072_shaped_database)
         )
 
 

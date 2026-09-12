@@ -12,7 +12,7 @@ branch: claude/travel-info-lifestyle-sharing-cf720f
 depends_on: []
 scope:
   - apps/api/app/guides
-  - apps/api/migrations/versions/0073_lifestyle_guides.py
+  - apps/api/migrations/versions/0074_lifestyle_guides.py
   - apps/api/app/travel_services/schemas.py
   - apps/api/app/admin/operations_service.py
   - apps/api/tests/test_guides.py
@@ -37,8 +37,11 @@ scope:
   - apps/web/components/community/explore.test.tsx
   - apps/web/components/community/home.tsx
   - apps/web/components/community/home.test.tsx
+  - apps/web/components/community/travel-tools.test.tsx
   - apps/web/components/admin-nav.tsx
+  - apps/web/components/admin-nav.test.tsx
   - apps/web/components/admin-guides-panel.tsx
+  - apps/web/components/admin-guides-list.tsx
   - apps/web/components/admin-guides-panel.test.tsx
   - apps/web/components/travel-services/admin.tsx
   - apps/web/components/travel-services/admin.test.tsx
@@ -72,6 +75,7 @@ scope:
   - apps/web/messages/zh-CN/admin.json
   - apps/web/messages/zh-TW/admin.json
   - apps/web/e2e/seo.spec.ts
+  - apps/web/e2e/discovery.spec.ts
   - tools/e2e-runtime-api.mjs
   - docs/travel-guides.md
   - docs/travel-services.md
