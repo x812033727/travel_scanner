@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**36 open · 3 in progress · 3 blocked · 0 in review · 267 done**
+**36 open · 2 in progress · 3 blocked · 0 in review · 268 done**
 
 ## Ready to claim
 
@@ -53,7 +53,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
 | [Deny school, hospital, tram stop, ward and military base types in hotspot discovery](open/2026-09-11-deny-school-hospital-tram-stop-ward.md) | claude-opus-5 | 2026-09-11T16:53:59Z | `claude/attractions-review-progress-55bb39` |
-| [填入擁有者確認資訊，解鎖四個網站資訊頁](open/2026-09-12-site-page-requirements.md) | claude-opus-5-guides | 2026-09-12T01:56:04Z | — |
 | [香港 OpenRice 店家頁改為公開（僅電話訂位也顯示）](open/2026-09-12-hk-openrice-public.md) | claude-opus-5 | 2026-09-12T00:45:00Z | `claude/hk-openrice-public` |
 
 ## In review
@@ -73,6 +72,7 @@ _Nothing here._
 ## Recently finished
 
 - 2026-09-12 [公開美食店家訂位平台連結補齊（查核與批次匯入）](done/2026-09-11-food-reservation-link-backfill.md)
+- 2026-09-12 [填入擁有者確認資訊，解鎖四個網站資訊頁](done/2026-09-12-site-page-requirements.md)
 - 2026-09-12 [從程式碼盤點個資處理，供擁有者填寫隱私權頁的確認資訊](done/2026-09-11-privacy-data-map.md)
 - 2026-09-11 [Wire /guides into the sitemap, footer and destination pages](done/2026-09-11-guides-sitemap-and-entry-points.md)
 - 2026-09-11 [CI 拉不到 minio/minio:latest，改用 quay.io 並釘版本](done/2026-09-11-ci-minio-minio-latest-quay-io.md)
@@ -81,4 +81,3 @@ _Nothing here._
 - 2026-09-11 [取消或逾時搜尋時釋放已保留的次數](done/2026-09-11-release-reservation-on-cancel.md)
 - 2026-09-11 [店家座標佇列面板整個沒有 i18n](done/2026-09-11-merchant-coordinate-queue-i18n.md)
 - 2026-09-11 [formatTime 在沒有時間時回傳寫死的繁中](done/2026-09-11-format-time-chinese-fallback.md)
-- 2026-09-11 [安排編輯器的關閉鈕在儲存在途時被靜默吞掉](done/2026-09-11-planner-overlay-close-guard-race.md)
