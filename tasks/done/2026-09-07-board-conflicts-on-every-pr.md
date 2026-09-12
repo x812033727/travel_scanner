@@ -1,13 +1,13 @@
 ---
 id: 2026-09-07-board-conflicts-on-every-pr
 title: tasks/BOARD.md 是產生檔，卻讓每個 PR 互相衝突
-status: review
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5
 claimed_at: 2026-09-12T03:26:18Z
 created_at: 2026-09-07T01:23:52Z
-completed_at:
+completed_at: 2026-09-12T04:11:51Z
 branch: claude/great-torvalds-c39666
 depends_on: []
 scope:
