@@ -201,8 +201,8 @@ Skyscanner 的合作申請清單見 [`skyscanner-partnership-application.md`](sk
 行程本體 `GET /trips/{id}` 多帶 `partner_offers.modules`（哪些模組有優惠，不含優惠本身），
 區塊只在有模組時出現、展開才載入，遵守行程頁第一屏不打分潤請求的規則。
 
-`guide`、`city` 與 `life` 是第一方內容頁，**預設關閉**：後台「目錄服務」的發布控制裡有
-「目的地合作方案」三個勾選（旅遊情報與攻略／目的地指南／生活分享），對應
+`guide`、`city`、`share` 與 `life` 是預設關閉的置入面：後台「目錄服務」的發布控制裡有
+「目的地合作方案」四個勾選（旅遊情報與攻略／目的地指南／分享／生活分享），對應
 `travel_service_config.data.affiliate_placements`。關閉時列表回空、點擊回 404，
 所以先載入的舊頁面也點不出去。旅遊文章要出現按鈕還需要：文章有 `destination_id`、
 主題對得上模組（`apps/web/lib/guide-affiliate.ts` 的對應表）、且沒過期。

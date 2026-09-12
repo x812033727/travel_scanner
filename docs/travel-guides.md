@@ -35,7 +35,7 @@ discovery's kind to 站外文章, so the word now belongs to this section alone.
 Three orthogonal axes, because no single one of them covers the content:
 
 1. **Kind** — `intel`, `howto` or `life`. Three values, a `CHECK` constraint
-   (`ck_guide_article_kind`, widened by `0073_lifestyle_guides`). It is part of the URL, so
+   (`ck_guide_article_kind`, widened by `0074_lifestyle_guides`). It is part of the URL, so
    `update_article` refuses a *cross-section* change with `409 guide_kind_locked` once any
    locale is published. To move an article between sections: withdraw every language first.
    The old URL then answers "not published in this language" and is `noindex`; there is no
@@ -259,7 +259,7 @@ Always, and with no commission attached: `components/guides/travel-crosslinks.ts
 three newest travel articles as `GuideCard`s (omitted when there are none), then at most six
 destination links. When the article names a destination the six come from that city's
 country; otherwise one per country. It is a synchronous presentational component in its own
-`<section>` with a `border-t` heading, fetched by `GuideArticleScreen` and passed in through
+`<section>` with a `border-t` heading, fetched by `renderGuideArticle` and passed in through
 `related`, so `GuideArticle` stays synchronous and testable. Internal links carry no
 disclosure, and the separator is what keeps them visibly apart from any offer panel above —
 `docs/travel-services.md` requires exactly that.

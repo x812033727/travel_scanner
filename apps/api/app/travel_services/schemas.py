@@ -39,7 +39,7 @@ BookingPlacement = Literal[
 ]
 BOOKING_PLACEMENTS = frozenset(get_args(BookingPlacement))
 # The surfaces that were live before the switch existed; the default keeps them on and
-# leaves the three content surfaces off until an operator enables them.
+# leaves the four content surfaces off until an operator enables them.
 LEGACY_BOOKING_PLACEMENTS: tuple[BookingPlacement, ...] = (
     "destination", "hotspot", "trip", "stay", "checklist", "discovery",
 )

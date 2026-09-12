@@ -31,7 +31,7 @@ scope:
 `docs/travel-guides.md` 與 `GuideTopic` 的 docstring 都說「編輯可以不用部署就新增主題」，但 API 只有
 `GET /guides/topics` 與 `GET /admin/guides/topics`（`apps/api/app/guides/router.py`），沒有任何寫入端點，
 後台面板（`apps/web/components/admin-guides-panel.tsx`）也只把既有主題畫成勾選框。主題目前只能靠
-migration 種子（0072 旅遊、0073 生活）或直接改資料庫。生活分享專區的定位是「AI、教學、其他的東西」，
+migration 種子（0072 旅遊、0074 生活）或直接改資料庫。生活分享專區的定位是「AI、教學、其他的東西」，
 編輯遲早會需要新主題。
 
 ## Definition of done
