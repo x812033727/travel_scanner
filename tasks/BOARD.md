@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**37 open · 2 in progress · 3 blocked · 0 in review · 267 done**
+**38 open · 2 in progress · 3 blocked · 0 in review · 267 done**
 
 ## Ready to claim
 
@@ -24,6 +24,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [Continue evidence-backed remaining hotspot candidate review](open/2026-09-08-continue-evidence-backed-remaining-hotspot-candidate.md) | ops | `docs/hotspot-review-next-batch.md`<br>`ops/hotspot_review_next_batch.py`<br>`ops/hotspot_review_next_batch.json` |
 | P1 | [首頁與 explore 要在伺服器端渲染出真正的內容](open/2026-09-10-seo-server-render-home-and-explore.md) | web | `apps/web/lib/discovery.ts`<br>`apps/web/lib/discovery.server.ts`<br>`apps/web/lib/discovery.server.test.ts`<br>`apps/web/components/discovery/explorer.tsx`<br>`apps/web/app/[locale]/explore/page.tsx`<br>`apps/web/app/[locale]/explore/collections/page.tsx` |
 | P1 | [整套測試在負載下，有守門的 Escape 偶爾不生效](open/2026-09-11-modal-escape-flake-under-load.md) | web | `apps/web/lib/modal-sheet.ts`<br>`apps/web/lib/modal-sheet.test.tsx`<br>`apps/web/components/travel-card-actions.test.tsx`<br>`apps/web/vitest.config.ts`<br>`apps/web/vitest.setup.tsx`<br>`apps/web/components/route-mode-panel.tsx`<br>`apps/web/components/route-mode-panel.test.tsx`<br>`apps/web/components/planner-overlay.tsx`<br>`apps/web/components/planner-overlay.test.tsx` |
+| P1 | [ops/nginx 的上機指引有三處會假通過](open/2026-09-12-nginx-deploy-checks-false-pass.md) | ops | `ops/nginx` |
 | P2 | [防 jsonb 運算子的測試只守住 3 張表，實際有 42 張](open/2026-09-07-jsonb-3-42.md) | api | `apps/api/tests/test_migration_sql_dialect.py` |
 | P2 | [30 筆新購物店家還沒 place enrichment，所以加不進行程](open/2026-09-07-enrich-new-shopping-place-ids.md) | api | `ops/notes/hotspot-place-enrichment.md` |
 | P2 | [Community read metric duplicate observed alongside smoke ECONNRESET](open/2026-09-07-community-read-metric-concurrency.md) | api | `apps/api/app/community`<br>`apps/api/tests/test_community.py` |
