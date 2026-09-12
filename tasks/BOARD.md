@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**36 open · 3 in progress · 3 blocked · 0 in review · 265 done**
+**36 open · 4 in progress · 3 blocked · 0 in review · 265 done**
 
 ## Ready to claim
 
@@ -55,6 +55,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | [公開美食店家訂位平台連結補齊（查核與批次匯入）](open/2026-09-11-food-reservation-link-backfill.md) | claude-opus-5 | 2026-09-11T16:02:41Z | `claude/food-reservation-link-backfill` |
 | [Deny school, hospital, tram stop, ward and military base types in hotspot discovery](open/2026-09-11-deny-school-hospital-tram-stop-ward.md) | claude-opus-5 | 2026-09-11T16:53:59Z | `claude/attractions-review-progress-55bb39` |
 | [從程式碼盤點個資處理，供擁有者填寫隱私權頁的確認資訊](open/2026-09-11-privacy-data-map.md) | claude-opus-5-guides | 2026-09-11T23:32:27Z | `claude/privacy-data-map` |
+| [香港 OpenRice 店家頁改為公開（僅電話訂位也顯示）](open/2026-09-12-hk-openrice-public.md) | claude-opus-5 | 2026-09-12T02:08:16Z | `claude/hk-openrice-public` |
 
 ## In review
 
