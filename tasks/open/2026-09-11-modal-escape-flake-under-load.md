@@ -1,11 +1,11 @@
 ---
 id: 2026-09-11-modal-escape-flake-under-load
 title: 整套測試在負載下，有守門的 Escape 偶爾不生效
-status: in-progress
+status: open
 priority: P1
 area: web
-owner: claude-opus-5-flake
-claimed_at: 2026-09-12T00:40:02Z
+owner:
+claimed_at:
 created_at: 2026-09-11T21:23:54Z
 completed_at:
 branch: claude/mokaair-website-access-k7xiku
@@ -263,3 +263,47 @@ useEffect(() => {
 `lib/modal-sheet.ts` **不是 `#406` 改的**——它上一次變動是 `#380` 與 `#338`。`#406` 改的是
 呼叫端（十一個彈層搬過來用它）。所以「原語是新的、所以原語有問題」這個方向不成立；
 變的是 `travel-card-actions.tsx` 開始走這條路。
+
+## 結論：七次整套、零重現，任務釋出（claude-opus-5-flake, 2026-09-12）
+
+| 跑法 | 次數 | Escape 相關的紅 |
+| --- | --- | --- |
+| 整套 + 四核心滿載（預設順序） | 3 | 0 |
+| 整套 + 六個燒 CPU 的行程 + `--sequence.shuffle` | 4 | 0 |
+
+**合計 16667 條測試，Escape 一次都沒紅。**
+
+打亂順序那四次確實有紅，但**兩條都不是這張任務的東西**，而且都是真缺陷、不是 flake：
+
+- `site-footer.test.tsx` 有一條沒設路徑就斷言 → `2026-09-12-site-footer`
+- `admin-usage-settings-panel.test.tsx` 的分頁存在 URL、測試間沒重設 → `2026-09-12-admin-usage-settings-url`
+  （四次打亂中紅了兩次，診斷等於被獨立驗證過）
+
+兩張都寫了成因、一行修法與可重放的種子 `1789176414571`。
+
+### 為什麼釋出而不是標 done
+
+DoD 第三項（修好之後連續三次整套全綠）從字面上看已經滿足了，但**那會宣稱超出證據的東西**。
+真實狀況是：三個實例裡只有 `route-mode-panel` 那個被找到成因並修好（`#406`，有確定性的回歸
+測試）；另外兩個是**重現不出來**，不是**修好了**。這兩件事不該混為一談。
+
+### 留給下一個人的東西
+
+1. `travel-card-actions.test.tsx:64` 現在有失敗現場輸出了，和 `trip-editor.test.tsx:292` 同一個
+   形狀。斷言一個字都沒放寬。故意把 `isTopModalLayer` 印出來，因為另外兩個守門這輪已經用證據
+   排除（這個檔自己沒掛任何 listener；全站唯一的原生 `<dialog>` 在別的檔，`isolate` 下到不了）。
+   **下次它在 CI 紅的時候先看那一行**：如果是 `true`，守門是清白的，handler 根本沒跑或沒掛上。
+   驗證過這個輸出本身會動——暫時把 `closeRef.current()` 拿掉，它印出
+   `dialogs in DOM: 1; sheet still the top layer: true; sheet connected: true;
+   native dialog[open] anywhere: 0; body overflow: hidden`。
+2. 這輪用證據排除的三個假設寫在上一節，**不要重走**。加上更早被推翻的兩個（跨檔模組汙染、
+   `onCloseRef` 落後一個 render），現在總共有五個死路是有紀錄的。
+3. 探針的做法（包住 `onKeyDown`，記錄每個守門的值）留在 commit `86cc4b2` 裡，要用可以撿回來。
+4. `--sequence.shuffle` 很划算：一跑就撈到兩條真的順序相依。值得偶爾拿來掃。
+
+### 一個順手查出來的隱患
+
+`useModalSheet` 的 effect deps 只有 `[open]`，ref 是 null 就永久不再重試——彈層會變成看得見、
+鍵盤完全沒反應、而且不出聲。二十一個呼叫點目前都沒踩到（四個 `open` 寫死 `true` 的都查過），
+但這是下一個人踩得到的地雷。另開 `2026-09-12-usemodalsheet-effect-ref`，沒有在這張裡順手改
+共用原語。
