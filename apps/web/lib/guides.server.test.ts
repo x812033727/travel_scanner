@@ -4,7 +4,13 @@ const { incoming } = vi.hoisted(() => ({ incoming: vi.fn() }));
 // per source. Nothing here depends on the value; it just has to be readable.
 vi.mock("next/headers", () => ({ headers: incoming }));
 incoming.mockResolvedValue(new Headers({ "x-forwarded-for": "203.0.113.9" }));
-import { loadGuideArticle, loadGuideList, loadGuideTopics } from "./guides.server";
+import {
+  guideSitemapEntries,
+  loadGuideArticle,
+  loadGuideList,
+  loadGuideTopics,
+  SITEMAP_GUIDE_ENTRY_LIMIT,
+} from "./guides.server";
 
 const article = {
   slug: "narita-to-tokyo", kind: "howto", locale: "zh-TW", status: "published",
@@ -122,5 +128,70 @@ describe("per-locale publication", () => {
     expect(state.status).toBe("published");
     expect(state.expired).toBe(true);
     expect(state.valid_until).toBe("2026-08-01");
+  });
+});
+
+describe("the sitemap enumeration", () => {
+  const rows = [
+    { kind: "howto", slug: "narita-to-tokyo", locale: "zh-TW", published_at: "2026-09-01T00:00:00Z" },
+    { kind: "howto", slug: "narita-to-tokyo", locale: "ja", published_at: "2026-09-02T00:00:00Z" },
+    { kind: "intel", slug: "jr-pass-sale", locale: "en", published_at: "2026-09-10T00:00:00Z" },
+  ];
+
+  it("tells each row which locales its article is published in", async () => {
+    vi.stubGlobal("fetch", respond({ entries: rows }));
+    const entries = await guideSitemapEntries();
+    expect(entries).toHaveLength(3);
+    const narita = entries.filter((entry) => entry.slug === "narita-to-tokyo");
+    for (const entry of narita) expect(entry.locales).toEqual(["ja", "zh-TW"]);
+    expect(entries.find((entry) => entry.slug === "jr-pass-sale")!.locales).toEqual(["en"]);
+  });
+
+  it("orders the alternates by the site's locale list, not the API's row order", async () => {
+    vi.stubGlobal("fetch", respond({ entries: [...rows].reverse() }));
+    const entries = await guideSitemapEntries();
+    for (const entry of entries.filter((row) => row.slug === "narita-to-tokyo")) {
+      expect(entry.locales).toEqual(["ja", "zh-TW"]);
+    }
+  });
+
+  it("drops a malformed row instead of putting a broken URL in the sitemap", async () => {
+    vi.stubGlobal("fetch", respond({
+      entries: [
+        ...rows,
+        { kind: "recipes", slug: "not-a-section", locale: "zh-TW", published_at: "2026-09-01T00:00:00Z" },
+        { kind: "howto", slug: "no-locale", locale: "xx", published_at: "2026-09-01T00:00:00Z" },
+        { kind: "howto", slug: "no-date", locale: "en" },
+        { kind: "howto", locale: "en", published_at: "2026-09-01T00:00:00Z" },
+      ],
+    }));
+    const entries = await guideSitemapEntries();
+    expect(entries).toHaveLength(3);
+    expect(entries.some((entry) => entry.slug.startsWith("no-"))).toBe(false);
+    expect(entries.some((entry) => String(entry.kind) === "recipes")).toBe(false);
+  });
+
+  it("returns nothing rather than an exception when the API is unreachable", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new Error("connection reset")));
+    await expect(guideSitemapEntries()).resolves.toEqual([]);
+    vi.stubGlobal("fetch", respond(null, false));
+    await expect(guideSitemapEntries()).resolves.toEqual([]);
+    vi.stubGlobal("fetch", respond({ entries: "not-an-array" }));
+    await expect(guideSitemapEntries()).resolves.toEqual([]);
+  });
+
+  it("caps the list so one large response cannot dominate the sitemap", async () => {
+    const many = Array.from({ length: SITEMAP_GUIDE_ENTRY_LIMIT + 25 }, (_, index) => ({
+      kind: "intel", slug: `deal-${index}`, locale: "zh-TW", published_at: "2026-09-01T00:00:00Z",
+    }));
+    vi.stubGlobal("fetch", respond({ entries: many }));
+    expect(await guideSitemapEntries()).toHaveLength(SITEMAP_GUIDE_ENTRY_LIMIT);
+  });
+
+  it("does not cache a list an editor can withdraw from", async () => {
+    const fetchMock = respond({ entries: [] });
+    vi.stubGlobal("fetch", fetchMock);
+    await guideSitemapEntries();
+    expect(fetchMock.mock.calls[0][1].cache).toBe("no-store");
   });
 });

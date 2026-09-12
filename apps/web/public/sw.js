@@ -32,6 +32,9 @@ self.addEventListener("message", (event) => {
   const data = event.data || {};
   if (data.type === "signed-in" && typeof data.member === "string" && data.member) {
     cacheName = `${CACHE_PREFIX}${data.member}`;
+    // The page waits for this before priming the cache: until the name is set the
+    // fetch handler below returns early, so anything fetched first is never stored.
+    if (event.ports && event.ports[0]) event.ports[0].postMessage({ type: "ready" });
     event.waitUntil(dropCachesExcept(cacheName));
     return;
   }

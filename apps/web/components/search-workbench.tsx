@@ -73,6 +73,7 @@ export function SearchWorkbench({ compact = false }: { compact?: boolean }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string>();
   const [dateError, setDateError] = useState<string>();
+  const [lodgingError, setLodgingError] = useState<string>();
   const stepHeadingRef = useRef<HTMLHeadingElement>(null);
   const stepChangedByUser = useRef(false);
   useEffect(() => {
@@ -124,6 +125,9 @@ export function SearchWorkbench({ compact = false }: { compact?: boolean }) {
     return [];
   }
 
+  // places/router.py:232 -- mirrored so the wizard says it where the dates are.
+  const MAX_WINDOW_DAYS = 180;
+
   // The date and day-count rules used to fire only on the final submit, four
   // steps after the fields they complain about. Check them where they happen.
   function validateStepOne(form: HTMLFormElement | null): boolean {
@@ -141,12 +145,36 @@ export function SearchWorkbench({ compact = false }: { compact?: boolean }) {
       setDateError(t("dayOrderError"));
       return false;
     }
+    // places/router.py caps the window at 180 days. Unmirrored, the wizard let
+    // someone fill in four more steps and answered with the raw server message.
+    if (!dateAny && startDate && endDate) {
+      const days = (Date.parse(endDate) - Date.parse(startDate)) / 86_400_000;
+      if (days > MAX_WINDOW_DAYS) {
+        setDateError(t("windowTooLongError"));
+        return false;
+      }
+    }
     setDateError(undefined);
+    return true;
+  }
+
+  /** The other server rule the wizard did not mirror: nightly min above max. */
+  function validateLodging(form: HTMLFormElement | null): boolean {
+    if (!form) return true;
+    const data = new FormData(form);
+    const low = Number(data.get("nightly_min") || 0);
+    const high = Number(data.get("nightly_max") || 0);
+    if (low > 0 && high > 0 && low > high) {
+      setLodgingError(t("nightlyOrderError"));
+      return false;
+    }
+    setLodgingError(undefined);
     return true;
   }
 
   function goNext(form: HTMLFormElement | null) {
     if (step === 0 && !validateStepOne(form)) return;
+    if (step === 3 && !validateLodging(form)) return;
     setStep(step + 1);
   }
 
@@ -154,6 +182,7 @@ export function SearchWorkbench({ compact = false }: { compact?: boolean }) {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
     if (!validateStepOne(event.currentTarget)) { setStep(0); return; }
+    if (!validateLodging(event.currentTarget)) { setStep(3); return; }
     const minDays = Number(form.get("min_days") || 0); const maxDays = Number(form.get("max_days") || 0);
     const startDate = String(form.get("window_start") || ""); const endDate = String(form.get("window_end") || "");
     const numberOrNull = (name: string) => { const value = Number(form.get(name) || 0); return value > 0 ? value : null; };
@@ -200,7 +229,7 @@ export function SearchWorkbench({ compact = false }: { compact?: boolean }) {
 
     <section className={step === 2 ? "block" : "hidden"}><h3 ref={step === 2 ? stepHeadingRef : undefined} tabIndex={-1} className="flex items-center gap-2 text-lg font-bold outline-none"><Users size={19} />{t("partyTitle")}</h3><div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4"><label className="text-sm font-semibold">{t("origin")}<select name="origin" defaultValue="TPE" className={fieldClass}><option value="TPE">{t("originTpe")}</option><option value="TSA">{t("originTsa")}</option><option value="KHH">{t("originKhh")}</option></select></label><label className="text-sm font-semibold">{t("adults")}<select name="adults" defaultValue="2" className={fieldClass}>{[1,2,3,4,5,6,7,8,9].map((value) => <option key={value}>{value}</option>)}</select></label><label className="text-sm font-semibold">{t("childrenLabel")}<select aria-label={t("childrenCount")} value={children} onChange={(event) => changeChildren(Number(event.target.value))} className={fieldClass}>{[0,1,2,3,4].map((value) => <option key={value}>{value}</option>)}</select></label><label className="text-sm font-semibold">{t("rooms")}<select name="rooms" defaultValue="1" className={fieldClass}>{[1,2,3,4].map((value) => <option key={value}>{value}</option>)}</select></label></div>{children > 0 && <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">{childAges.map((age, index) => <label key={index} className="text-sm font-semibold">{t("childAge", { index: index + 1 })}<select aria-label={t("childAge", { index: index + 1 })} value={age} onChange={(event) => setChildAges((current) => current.map((item, childIndex) => childIndex === index ? Number(event.target.value) : item))} className={fieldClass}>{Array.from({ length: 18 }, (_, value) => <option key={value} value={value}>{t("ageYears", { age: value })}</option>)}</select></label>)}</div>}<label className="mt-4 block text-sm font-semibold">{t("budget")}<input name="budget_twd" type="number" min="1" placeholder={t("anyPlaceholder")} className={fieldClass} /></label></section>
 
-    <section className={step === 3 ? "block" : "hidden"}><h3 ref={step === 3 ? stepHeadingRef : undefined} tabIndex={-1} className="flex items-center gap-2 text-lg font-bold outline-none"><Hotel size={19} />{t("lodgingTitle")}</h3><div className="mt-4 grid grid-cols-2 gap-2">{([["hotel", t("lodgingHotel")], ["vacation_rental", t("lodgingRental")], ["both", t("lodgingBoth")], ["any", t("lodgingAny")]] as const).map(([value, label]) => <button key={value} type="button" aria-pressed={lodgingMode === value} onClick={() => setLodgingMode(value)} className={optionClass(lodgingMode === value)}><span className="flex items-center gap-1.5"><Chosen active={lodgingMode === value} />{label}</span></button>)}</div><div className="mt-4 grid grid-cols-2 gap-3"><label className="text-sm font-semibold">{t("nightlyMin")}<input name="nightly_min" type="number" min="0" placeholder={t("anyPlaceholder")} className={fieldClass} /></label><label className="text-sm font-semibold">{t("nightlyMax")}<input name="nightly_max" type="number" min="1" placeholder={t("anyPlaceholder")} className={fieldClass} /></label><label className="text-sm font-semibold">{t("minRating")}<select name="hotel_min_rating" className={fieldClass}><option value="">{t("anyPlaceholder")}</option>{[3,4,5].map((value) => <option key={value} value={value}>{t("ratingOption", { stars: value })}</option>)}</select></label><label className="text-sm font-semibold">{t("stationWalk")}<select name="max_station_walk_minutes" className={fieldClass}><option value="">{t("anyPlaceholder")}</option>{[5,10,15,20].map((value) => <option key={value} value={value}>{t("walkOption", { minutes: value })}</option>)}</select></label><label className="text-sm font-semibold">{t("minReviewScore")}<select name="min_review_score" className={fieldClass}><option value="">{t("anyPlaceholder")}</option><option value="7">7.0+</option><option value="8">8.0+</option><option value="9">9.0+</option></select></label><label className="text-sm font-semibold">{t("minReviewCount")}<select name="min_review_count" className={fieldClass}><option value="">{t("anyPlaceholder")}</option>{[20,50,100,300].map((value) => <option key={value} value={value}>{t("reviewCountOption", { count: value })}</option>)}</select></label></div><div className="mt-4 grid gap-2 text-sm sm:grid-cols-2"><label className="flex min-h-12 items-center gap-2.5 rounded-xl bg-[var(--paper)] p-3"><input type="checkbox" name="breakfast_required" className="h-5 w-5 accent-[var(--teal)]" />{t("breakfast")}</label><label className="flex min-h-12 items-center gap-2.5 rounded-xl bg-[var(--paper)] p-3"><input type="checkbox" name="refundable_required" className="h-5 w-5 accent-[var(--teal)]" />{t("refundable")}</label></div></section>
+    <section className={step === 3 ? "block" : "hidden"}><h3 ref={step === 3 ? stepHeadingRef : undefined} tabIndex={-1} className="flex items-center gap-2 text-lg font-bold outline-none"><Hotel size={19} />{t("lodgingTitle")}</h3><div className="mt-4 grid grid-cols-2 gap-2">{([["hotel", t("lodgingHotel")], ["vacation_rental", t("lodgingRental")], ["both", t("lodgingBoth")], ["any", t("lodgingAny")]] as const).map(([value, label]) => <button key={value} type="button" aria-pressed={lodgingMode === value} onClick={() => setLodgingMode(value)} className={optionClass(lodgingMode === value)}><span className="flex items-center gap-1.5"><Chosen active={lodgingMode === value} />{label}</span></button>)}</div><div className="mt-4 grid grid-cols-2 gap-3"><label className="text-sm font-semibold">{t("nightlyMin")}<input name="nightly_min" type="number" min="0" placeholder={t("anyPlaceholder")} className={fieldClass} /></label><label className="text-sm font-semibold">{t("nightlyMax")}<input name="nightly_max" type="number" min="1" placeholder={t("anyPlaceholder")} className={fieldClass} /></label><label className="text-sm font-semibold">{t("minRating")}<select name="hotel_min_rating" className={fieldClass}><option value="">{t("anyPlaceholder")}</option>{[3,4,5].map((value) => <option key={value} value={value}>{t("ratingOption", { stars: value })}</option>)}</select></label><label className="text-sm font-semibold">{t("stationWalk")}<select name="max_station_walk_minutes" className={fieldClass}><option value="">{t("anyPlaceholder")}</option>{[5,10,15,20].map((value) => <option key={value} value={value}>{t("walkOption", { minutes: value })}</option>)}</select></label><label className="text-sm font-semibold">{t("minReviewScore")}<select name="min_review_score" className={fieldClass}><option value="">{t("anyPlaceholder")}</option><option value="7">7.0+</option><option value="8">8.0+</option><option value="9">9.0+</option></select></label><label className="text-sm font-semibold">{t("minReviewCount")}<select name="min_review_count" className={fieldClass}><option value="">{t("anyPlaceholder")}</option>{[20,50,100,300].map((value) => <option key={value} value={value}>{t("reviewCountOption", { count: value })}</option>)}</select></label></div><div className="mt-4 grid gap-2 text-sm sm:grid-cols-2"><label className="flex min-h-12 items-center gap-2.5 rounded-xl bg-[var(--paper)] p-3"><input type="checkbox" name="breakfast_required" className="h-5 w-5 accent-[var(--teal)]" />{t("breakfast")}</label><label className="flex min-h-12 items-center gap-2.5 rounded-xl bg-[var(--paper)] p-3"><input type="checkbox" name="refundable_required" className="h-5 w-5 accent-[var(--teal)]" />{t("refundable")}</label></div>{lodgingError && <p role="alert" className="mt-3 rounded-xl bg-red-50 p-3 text-sm font-medium text-red-700">{lodgingError}</p>}</section>
 
     <section className={step === 4 ? "block" : "hidden"}><h3 ref={step === 4 ? stepHeadingRef : undefined} tabIndex={-1} className="flex items-center gap-2 text-lg font-bold outline-none"><Sparkles size={19} />{t("preferencesTitle")}</h3><div className="mt-4 flex flex-wrap gap-2">{interestCodes.map((code) => <button key={code} type="button" aria-pressed={selectedInterests.includes(code)} onClick={() => toggleInterest(code)} className={optionClass(selectedInterests.includes(code))}><span className="flex items-center gap-1.5"><Chosen active={selectedInterests.includes(code)} />{tc(`interests.${code}`)}</span></button>)}</div><div className="mt-4 grid gap-3 sm:grid-cols-2"><label className="text-sm font-semibold">{t("pace")}<select name="pace" defaultValue="balanced" className={fieldClass}><option value="relaxed">{t("paceRelaxed")}</option><option value="balanced">{t("paceBalanced")}</option><option value="packed">{t("pacePacked")}</option></select></label><label className="mt-7 flex min-h-12 items-center gap-2.5 rounded-xl bg-[var(--paper)] p-3 text-sm"><input type="checkbox" name="avoid_red_eye" defaultChecked className="h-5 w-5 accent-[var(--teal)]" />{t("avoidRedEye")}</label></div><label className="mt-4 block text-sm font-semibold">{t("notes")}<textarea name="notes" rows={3} placeholder={t("notesPlaceholder")} className={fieldClass} /></label></section>
 

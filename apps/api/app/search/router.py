@@ -156,6 +156,42 @@ async def get_search(search_id: UUID, user: CurrentUser, session: Session) -> di
     }
 
 
+@router.post("/searches/{search_id}/cancel")
+async def cancel_search(search_id: UUID, user: CurrentUser, session: Session) -> dict[str, Any]:
+    """Hand back the use reserved for a search nobody is waiting for any more.
+
+    The worker is not recalled — a job already handed to the queue runs to the end, and
+    whatever it writes stays readable. What this returns is the reservation, because a
+    reader who cancelled, or whose wait timed out, should not pay for an answer they were
+    never shown.
+
+    Racing the worker is safe in both directions and needs nothing new: `release_reservation`
+    and `commit_reservation` each take the reservation row `FOR UPDATE` and act only while it
+    is still `reserved`, so whichever transaction gets there first decides and the other one
+    changes nothing. A second cancel changes nothing either, for the same reason.
+    """
+    search = await session.scalar(
+        select(SearchRequest).where(SearchRequest.id == search_id, SearchRequest.user_id == user.id)
+    )
+    if search is None:
+        raise AppError(404, "search_not_found", "找不到這次搜尋")
+    reservation = await session.scalar(
+        select(UsageReservation).where(UsageReservation.resource_id == search.id)
+    )
+    if reservation is not None and reservation.status == "reserved":
+        await release_reservation(session, reservation, "cancelled")
+        await record_event(session, "search_cancelled", path="/search", user_id=user.id,
+                           properties={"operation": search.operation})
+    await session.commit()
+    # `search.status` is deliberately left alone: the orchestrator writes the real outcome
+    # at the end of the run, and a "cancelled" written here would just be overwritten.
+    return {
+        "search_id": str(search.id),
+        "status": search.status,
+        "usage": usage_status(reservation).model_dump() if reservation else None,
+    }
+
+
 @router.get("/searches/{search_id}/events")
 async def search_events(
     search_id: UUID,

@@ -817,3 +817,89 @@ async def test_hotel_options_keep_review_freshness_switch_and_server_side_target
         await session.commit()
     expired = (await client.get(path)).json()["detail"]["hotel"]
     assert expired["booking_options"] == [] and expired["direct_links"] == []
+async def seed_one_place_many_guides(factory, *, count=6, locale="ja"):
+    """One hotspot with several approved guides — the shape production actually served."""
+    now = datetime.now(UTC)
+    async with factory() as session:
+        # Every Tokyo Station item is newer than everything about the other place, so
+        # recency alone puts the whole screen on one station. That is the real shape:
+        # a place with plenty of approved guides takes every slot it can reach.
+        place = hotspot("Tokyo Station", updated_at=now)
+        other = hotspot("Sensoji", updated_at=now - timedelta(days=2))
+        session.add_all([place, other])
+        await session.flush()
+        session.add_all(
+            [
+                guide(
+                    place,
+                    f"Tokyo Station guide {index}",
+                    locale=locale,
+                    published_at=now - timedelta(minutes=index),
+                )
+                for index in range(count)
+            ]
+            + [guide(other, "Sensoji guide", locale=locale, published_at=now - timedelta(days=2))]
+        )
+        await session.commit()
+        return place, other
+
+
+@pytest.mark.asyncio
+async def test_one_place_cannot_fill_the_whole_feed(harness):
+    """Six cards, six guides, one station — that is what /discovery/feed?limit=6 returned.
+
+    Nothing is dropped: a place's second card simply waits until every other place has had
+    a first. With one place and nothing else the feed still shows all of it, in order.
+    """
+    client, factory, users, _, _ = harness
+    place, other = await seed_one_place_many_guides(factory)
+
+    response = await client.get(
+        "/api/v1/discovery/feed?limit=6", headers={"X-Test-User": str(users[0])}
+    )
+    assert response.status_code == 200
+    places = [
+        (item.get("place_ref") or {}).get("id") for item in response.json()["items"]
+    ]
+    # The other place has two cards in total (its own, and its one guide) and six slots
+    # are on offer, so a round robin shows both of them: Tokyo Station takes four, not
+    # five. Ranked by recency alone the screen was Tokyo Station five times over.
+    assert places.count(str(other.id)) == 2, (
+        f"the other place did not get every slot a round robin owes it: {places}"
+    )
+    assert places.count(str(place.id)) == 4, f"one place still took more than its turn: {places}"
+
+
+@pytest.mark.asyncio
+async def test_the_readers_own_language_wins_a_tie_without_hiding_the_rest(harness):
+    """Relevance still leads; language only decides between items that rank the same.
+
+    Filtering to the reader's locale was rejected deliberately: this site writes about
+    Japan, South Korea and Thailand, and the Japanese source is often the best one. So
+    every language stays in the feed and the reader's own goes first.
+    """
+    client, factory, users, _, _ = harness
+    async with factory() as session:
+        place = hotspot("Tokyo Station")
+        session.add(place)
+        await session.flush()
+        # The reader's own language is the *oldest* of the three, so recency alone puts it
+        # last. Without a locale weight this ordering is what the feed serves.
+        now = datetime.now(UTC)
+        session.add_all(
+            [
+                guide(place, "Japanese guide", locale="ja", published_at=now),
+                guide(place, "English guide", locale="en", published_at=now - timedelta(days=1)),
+                guide(place, "Chinese guide", locale="zh-TW", published_at=now - timedelta(days=2)),
+            ]
+        )
+        await session.commit()
+
+    response = await client.get(
+        "/api/v1/discovery/feed?limit=6",
+        headers={"X-Test-User": str(users[0]), "X-Travel-Locale": "zh-TW"},
+    )
+    assert response.status_code == 200
+    locales = [item["locale"] for item in response.json()["items"]]
+    assert locales[0] == "zh-TW", f"the reader's own language did not lead: {locales}"
+    assert set(locales) == {"zh-TW", "ja", "en"}, "another language was dropped, not ranked"

@@ -46,4 +46,30 @@ describe("AdminDeploymentsPanel", () => {
     expect(await screen.findByText("目前已是最新綠燈版本")).toBeTruthy();
     expect((screen.getByRole("button", { name: "部署最新版本" }) as HTMLButtonElement).disabled).toBe(true);
   });
+  it("closes the confirmation with Escape from anywhere and traps Tab inside it", async () => {
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) =>
+      String(input).endsWith("/admin/deployments/overview") ? response(overview) : response({ items: [] })));
+    render(<AdminDeploymentsPanel />);
+    const deploy = await screen.findByRole("button", { name: "部署最新版本" });
+    deploy.focus();
+    fireEvent.click(deploy);
+
+    const confirm = screen.getByRole("dialog", { name: /部署/ });
+    expect(document.activeElement).toBe(screen.getByLabelText("目前密碼"));
+    expect(document.body.style.overflow).toBe("hidden");
+
+    // Tab must not walk out into the deployment history behind the scrim.
+    const close = screen.getByRole("button", { name: "關閉部署確認" });
+    close.focus();
+    fireEvent.keyDown(close, { key: "Tab", shiftKey: true });
+    expect(confirm.contains(document.activeElement)).toBe(true);
+
+    // Escape was bound to the form, so it did nothing whenever focus was not inside it —
+    // which is where focus lands after a click on the scrim.
+    document.body.focus();
+    fireEvent.keyDown(document.body, { key: "Escape" });
+    await waitFor(() => expect(screen.queryByRole("dialog", { name: /部署/ })).toBeNull());
+    expect(document.body.style.overflow).toBe("");
+    expect(document.activeElement).toBe(deploy);
+  });
 });

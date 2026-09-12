@@ -2,10 +2,11 @@
 
 import { Check, ChevronDown, ChevronUp, ExternalLink, Leaf, LoaderCircle, Plane, PlaneLanding, PlaneTakeoff, RefreshCw } from "lucide-react";
 import { useMemo, useState } from "react";
-import { api, twd } from "@/lib/api";
+import { useTranslations } from "next-intl";
+import { api } from "@/lib/api";
 import { safeExternalHref } from "@/lib/navigation";
 import { PriceAlertButton } from "@/components/price-alert-button";
-import { activeLocale } from "@/lib/locale-format";
+import { activeLocale, formatCurrency } from "@/lib/locale-format";
 
 type FlightSegment = {
   origin?: string;
@@ -83,11 +84,14 @@ function localParts(value?: string | null) {
   return match ? { date: `${Number(match[2])}/${Number(match[3])}`, isoDate: `${match[1]}-${match[2]}-${match[3]}`, time: `${match[4]}:${match[5]}` } : null;
 }
 
-function durationLabel(minutes: number) {
-  if (!minutes || minutes < 1) return "供應商未提供";
+type Translate = (key: string, values?: Record<string, string | number>) => string;
+
+function durationLabel(t: Translate, minutes: number) {
+  if (!minutes || minutes < 1) return t("notProvided");
   const hours = Math.floor(minutes / 60);
   const rest = minutes % 60;
-  return `${hours ? `${hours} 小時` : ""}${hours && rest ? " " : ""}${rest ? `${rest} 分` : ""}`;
+  if (hours && rest) return t("durationHoursMinutes", { hours, minutes: rest });
+  return hours ? t("durationHours", { hours }) : t("durationMinutes", { minutes: rest });
 }
 
 function legDuration(segments: FlightSegment[], departure?: string | null, arrival?: string | null) {
@@ -108,6 +112,8 @@ function splitSegments(offer: FlightCardOffer) {
 }
 
 function FlightLeg({ label, segments, departure, arrival, fallbackOrigin, fallbackDestination }: { label: string; segments: FlightSegment[]; departure?: string | null; arrival?: string | null; fallbackOrigin: string; fallbackDestination: string }) {
+  const t = useTranslations("search.results.flightCard");
+  const shared = useTranslations("search.results");
   const first = segments[0];
   const last = segments.at(-1);
   const depart = localParts(first?.departure_time || departure);
@@ -115,17 +121,19 @@ function FlightLeg({ label, segments, departure, arrival, fallbackOrigin, fallba
   const numbers = Array.from(new Set(segments.map((segment) => segment.flight_number).filter(Boolean)));
   const dayOffset = depart && arrive ? Math.round((Date.parse(arrive.isoDate) - Date.parse(depart.isoDate)) / 86400000) : 0;
   return <div className="grid gap-3 rounded-xl bg-[var(--paper)] p-4 sm:grid-cols-[72px_1fr_auto] sm:items-center">
-    <div><span className="rounded-full bg-white px-2.5 py-1 text-xs font-bold text-[var(--teal-dark)]">{label}</span><p className="mt-2 text-xs text-[var(--muted)]">{depart?.date || "供應商未提供"}</p></div>
+    <div><span className="rounded-full bg-white px-2.5 py-1 text-xs font-bold text-[var(--teal-dark)]">{label}</span><p className="mt-2 text-xs text-[var(--muted)]">{depart?.date || t("notProvided")}</p></div>
     <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3">
-      <div><strong className="text-xl">{depart?.time || "供應商未提供"}</strong><p className="text-sm text-[var(--muted)]">{first?.origin || fallbackOrigin}</p></div>
-      <div className="min-w-20 text-center"><p className="text-xs text-[var(--muted)]">{durationLabel(legDuration(segments, departure, arrival))}</p><div className="my-1 h-px bg-[var(--line)]" /><p className="text-xs">{Math.max(0, segments.length - 1) ? `${segments.length - 1} 次轉機` : "直飛"}</p></div>
-      <div className="text-right"><strong className="text-xl">{arrive?.time || "供應商未提供"}{dayOffset > 0 ? <sup className="ml-1 text-xs text-[var(--coral)]">+{dayOffset}</sup> : null}</strong><p className="text-sm text-[var(--muted)]">{last?.destination || fallbackDestination}</p></div>
+      <div><strong className="text-xl">{depart?.time || t("notProvided")}</strong><p className="text-sm text-[var(--muted)]">{first?.origin || fallbackOrigin}</p></div>
+      <div className="min-w-20 text-center"><p className="text-xs text-[var(--muted)]">{durationLabel(t, legDuration(segments, departure, arrival))}</p><div className="my-1 h-px bg-[var(--line)]" /><p className="text-xs">{Math.max(0, segments.length - 1) ? shared("stops", { count: segments.length - 1 }) : shared("direct")}</p></div>
+      <div className="text-right"><strong className="text-xl">{arrive?.time || t("notProvided")}{dayOffset > 0 ? <sup className="ml-1 text-xs text-[var(--coral)]">+{dayOffset}</sup> : null}</strong><p className="text-sm text-[var(--muted)]">{last?.destination || fallbackDestination}</p></div>
     </div>
-    <p className="text-xs text-[var(--muted)] sm:text-right">{numbers.length ? numbers.join("、") : "班號：供應商未提供"}<br />當地時間</p>
+    <p className="text-xs text-[var(--muted)] sm:text-right">{numbers.length ? numbers.join(shared("listSeparator")) : t("flightNumberUnknown")}<br />{t("localTime")}</p>
   </div>;
 }
 
 export function FlightOfferCard({ offer, fallbackUrl, alertReturnPath, tripActions }: { offer: FlightCardOffer; fallbackUrl: string; alertReturnPath?: string; tripActions?: FlightOfferTripActions }) {
+  const t = useTranslations("search.results.flightCard");
+  const shared = useTranslations("search.results");
   const [price, setPrice] = useState(Number(offer.total_price || 0));
   const [verifiedAt, setVerifiedAt] = useState(offer.last_verified_at || offer.retrieved_at);
   const [refreshing, setRefreshing] = useState(false);
@@ -135,42 +143,50 @@ export function FlightOfferCard({ offer, fallbackUrl, alertReturnPath, tripActio
   const hasReturnLeg = returning.length > 0 || Boolean(offer.return_departure_time);
   // An estimate is a price for a date window, not a flight that can be booked.
   const legActions = tripActions && offer.source_mode !== "estimate" ? tripActions : undefined;
-  const operating = Array.isArray(offer.operating_airlines) ? offer.operating_airlines.join("、") : "";
-  const baggage = offer.baggage_summary ? String(offer.baggage_summary) : Number(offer.checked_baggage_kg || 0) > 0 ? `托運 ${offer.checked_baggage_kg} kg` : offer.carry_on ? "含手提行李" : "行李需向售票端確認";
+  const currency = offer.currency || "TWD";
+  const money = (value: unknown) => formatCurrency(Number(value || 0), currency);
+  const operating = Array.isArray(offer.operating_airlines) ? offer.operating_airlines.join(shared("listSeparator")) : "";
+  const baggage = offer.baggage_summary
+    ? String(offer.baggage_summary)
+    : Number(offer.checked_baggage_kg || 0) > 0
+      ? t("baggageChecked", { kg: String(offer.checked_baggage_kg) })
+      : offer.carry_on
+        ? t("baggageCarryOn")
+        : t("baggageConfirm");
 
   async function refresh() {
     setRefreshing(true); setMessage("");
     try {
       const result = await api<RefreshResult>(`/offers/${offer.id}/refresh`, { method: "POST" });
       setPrice(Number(result.new_price)); setVerifiedAt(result.refreshed_at);
-      setMessage(result.still_available ? "已更新為供應商最新價格" : "此票價目前已售罄");
+      setMessage(result.still_available ? t("refreshUpdated") : t("refreshSoldOut"));
     } catch (error) { setMessage((error as Error).message); }
     finally { setRefreshing(false); }
   }
 
   return <article className="overflow-hidden rounded-[1.5rem] border border-[var(--line)] bg-white">
     <div className="p-5 md:p-6">
-      <div className="flex flex-wrap items-start justify-between gap-4"><div><p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-[var(--teal)]"><Plane size={16} />{offer.source_mode === "estimate" ? "彈性日期估算" : "即時航班價格"}{offer.is_fallback ? " · 備援來源" : ""}</p><h2 className="mt-1 text-xl font-bold">{String(offer.marketing_airline || offer.airline || "航空公司待確認")}</h2><p className="mt-1 text-xs text-[var(--muted)]">{operating ? `實際承運：${operating} · ` : ""}售票端：{String(offer.selling_agent || "重新確認時顯示")}</p></div><div className="text-right"><strong className="text-xl">{twd.format(price)}</strong><p className="mt-1 text-xs text-[var(--muted)]">{baggage}</p></div></div>
+      <div className="flex flex-wrap items-start justify-between gap-4"><div><p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-[var(--teal)]"><Plane size={16} />{t(offer.source_mode === "estimate" ? "estimateHeading" : "liveHeading")}{offer.is_fallback ? ` · ${shared("fallbackSource")}` : ""}</p><h2 className="mt-1 text-xl font-bold">{String(offer.marketing_airline || offer.airline || t("airlineTbd"))}</h2><p className="mt-1 text-xs text-[var(--muted)]">{operating ? `${t("operatedBy", { airlines: operating })} · ` : ""}{t("sellingAgent", { agent: String(offer.selling_agent || t("sellingAgentTbd")) })}</p></div><div className="text-right"><strong className="text-xl">{money(price)}</strong><p className="mt-1 text-xs text-[var(--muted)]">{baggage}</p></div></div>
       <div className="mt-4 space-y-2">
-        <FlightLeg label="去程" segments={outbound} departure={offer.departure_time} arrival={offer.arrival_time} fallbackOrigin={String(offer.origin || "")} fallbackDestination={String(offer.destination || "")} />
-        {(returning.length || offer.return_departure_time) ? <FlightLeg label="回程" segments={returning} departure={offer.return_departure_time} arrival={offer.return_arrival_time} fallbackOrigin={String(offer.destination || "")} fallbackDestination={String(offer.origin || "")} /> : null}
+        <FlightLeg label={t("legOutbound")} segments={outbound} departure={offer.departure_time} arrival={offer.arrival_time} fallbackOrigin={String(offer.origin || "")} fallbackDestination={String(offer.destination || "")} />
+        {(returning.length || offer.return_departure_time) ? <FlightLeg label={t("legReturn")} segments={returning} departure={offer.return_departure_time} arrival={offer.return_arrival_time} fallbackOrigin={String(offer.destination || "")} fallbackDestination={String(offer.origin || "")} /> : null}
       </div>
-      {(outbound.length + returning.length > 0) && <button type="button" onClick={() => setExpanded((value) => !value)} className="mt-3 flex items-center gap-1 text-sm font-semibold text-[var(--teal)]">{expanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}{expanded ? "收合詳細班次" : "查看詳細班次"}</button>}
+      {(outbound.length + returning.length > 0) && <button type="button" onClick={() => setExpanded((value) => !value)} className="mt-3 flex items-center gap-1 text-sm font-semibold text-[var(--teal)]">{expanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}{t(expanded ? "hideSegments" : "showSegments")}</button>}
       {expanded && <div className="mt-3 space-y-3 border-l-2 border-[var(--teal-soft)] pl-4">{([[
-        "去程", outbound,
-      ], ["回程", returning]] as Array<[string, FlightSegment[]]>).map(([label, segments]) => segments.length ? <div key={label}><p className="mb-2 text-xs font-bold text-[var(--teal-dark)]">{label}</p>{segments.map((segment, index) => { const depart = localParts(segment.departure_time); const arrive = localParts(segment.arrival_time); const previous = segments[index - 1]; const layover = previous?.arrival_time && segment.departure_time ? Math.round((Date.parse(segment.departure_time) - Date.parse(previous.arrival_time)) / 60000) : 0; return <div key={`${segment.flight_number || "segment"}-${index}`} className="mb-2 rounded-xl border border-[var(--line)] p-3 text-sm">{index > 0 && layover > 0 ? <p className="mb-2 text-xs font-semibold text-[var(--coral)]">轉機停留 {durationLabel(layover)}</p> : null}<div className="flex flex-wrap justify-between gap-2"><strong>{segment.airline || "航空公司：供應商未提供"} · {segment.flight_number || "班號：供應商未提供"}</strong><span>{depart?.date || "供應商未提供"} {depart?.time || "供應商未提供"} {segment.origin || "—"} → {arrive?.time || "供應商未提供"} {segment.destination || "—"}</span></div><p className="mt-1 text-xs text-[var(--muted)]">{segment.departure_timezone || "當地時間"} → {segment.arrival_timezone || "當地時間"}</p></div>; })}</div> : null)}</div>}
-      <p className="mt-3 text-xs text-[var(--muted)]">來源：{offer.provider || "未標示"}{verifiedAt ? ` · 驗價 ${new Date(verifiedAt).toLocaleString(activeLocale())}` : ""}</p>
+        t("legOutbound"), outbound,
+      ], [t("legReturn"), returning]] as Array<[string, FlightSegment[]]>).map(([label, segments]) => segments.length ? <div key={label}><p className="mb-2 text-xs font-bold text-[var(--teal-dark)]">{label}</p>{segments.map((segment, index) => { const depart = localParts(segment.departure_time); const arrive = localParts(segment.arrival_time); const previous = segments[index - 1]; const layover = previous?.arrival_time && segment.departure_time ? Math.round((Date.parse(segment.departure_time) - Date.parse(previous.arrival_time)) / 60000) : 0; return <div key={`${segment.flight_number || "segment"}-${index}`} className="mb-2 rounded-xl border border-[var(--line)] p-3 text-sm">{index > 0 && layover > 0 ? <p className="mb-2 text-xs font-semibold text-[var(--coral)]">{t("layover", { duration: durationLabel(t, layover) })}</p> : null}<div className="flex flex-wrap justify-between gap-2"><strong>{segment.airline || t("airlineUnknown")} · {segment.flight_number || t("flightNumberUnknown")}</strong><span>{depart?.date || t("notProvided")} {depart?.time || t("notProvided")} {segment.origin || "—"} → {arrive?.time || t("notProvided")} {segment.destination || "—"}</span></div><p className="mt-1 text-xs text-[var(--muted)]">{segment.departure_timezone || t("localTime")} → {segment.arrival_timezone || t("localTime")}</p></div>; })}</div> : null)}</div>}
+      <p className="mt-3 text-xs text-[var(--muted)]">{shared("sourceLine", { provider: offer.provider || shared("unlabelled") })}{verifiedAt ? ` · ${t("verifiedAt", { time: new Date(verifiedAt).toLocaleString(activeLocale()) })}` : ""}</p>
       <div className="mt-3 grid gap-2 rounded-xl bg-[var(--paper)] p-3 text-xs text-[var(--muted)] sm:grid-cols-2">
-        <p>票價 {twd.format(Number(offer.base_price || 0))} · 稅費 {twd.format(Number(offer.taxes || 0))}{Number(offer.fees || 0) ? ` · 其他費用 ${twd.format(Number(offer.fees))}` : ""}</p>
-        <p>{offer.refundable ? "可退款" : "不可退款／需確認"} · {offer.changeable ? "可更改" : "不可更改／需確認"}</p>
-        {offer.original_currency && offer.original_total_price != null && offer.original_currency !== "TWD" ? <p>原幣 {offer.original_currency} {Number(offer.original_total_price).toLocaleString(activeLocale())} · 匯率 {String(offer.exchange_rate || "待確認")}</p> : null}
-        <p>{offer.expires_at ? `報價期限 ${new Date(offer.expires_at).toLocaleString(activeLocale())}` : "報價期限待確認"}</p>
+        <p>{t("fareLine", { base: money(offer.base_price), taxes: money(offer.taxes) })}{Number(offer.fees || 0) ? ` · ${t("feesExtra", { fees: money(offer.fees) })}` : ""}</p>
+        <p>{offer.refundable ? shared("refundable") : t("nonRefundable")} · {t(offer.changeable ? "changeable" : "nonChangeable")}</p>
+        {offer.original_currency && offer.original_total_price != null && offer.original_currency !== currency ? <p>{t("originalCurrency", { currency: offer.original_currency, amount: Number(offer.original_total_price).toLocaleString(activeLocale()), rate: String(offer.exchange_rate || t("rateTbd")) })}</p> : null}
+        <p>{offer.expires_at ? t("expiresAt", { time: new Date(offer.expires_at).toLocaleString(activeLocale()) }) : t("expiresTbd")}</p>
       </div>
-      <p className="mt-3 flex items-center gap-2 text-sm"><Leaf size={16} className="text-emerald-700" />{offer.emissions_kg_per_pax != null ? `每位旅客 ${Number(offer.emissions_kg_per_pax).toFixed(1)} kg CO₂e · Google Travel Impact Model${offer.emissions_model_version ? ` ${offer.emissions_model_version}` : ""}` : "碳排資料不足"}</p>
-      {offer.status_details?.map((status, index) => <p key={`${String(status.fa_flight_id || status.ident)}-${index}`} className="mt-2 rounded-lg bg-sky-50 px-3 py-2 text-xs text-sky-900">FlightAware：{status.schedule_only ? "班表已核對" : String(status.status || "動態已更新")}{status.cancelled ? " · 已取消" : ""}{Number(status.departure_delay_seconds || 0) > 0 ? ` · 延誤 ${Math.round(Number(status.departure_delay_seconds) / 60)} 分` : ""}{status.departure_terminal ? ` · 航廈 ${String(status.departure_terminal)}` : ""}{status.departure_gate ? ` · 登機門 ${String(status.departure_gate)}` : ""}</p>)}
+      <p className="mt-3 flex items-center gap-2 text-sm"><Leaf size={16} className="text-emerald-700" />{offer.emissions_kg_per_pax != null ? t("emissions", { kg: Number(offer.emissions_kg_per_pax).toFixed(1), model: `Google Travel Impact Model${offer.emissions_model_version ? ` ${offer.emissions_model_version}` : ""}` }) : t("emissionsUnknown")}</p>
+      {offer.status_details?.map((status, index) => <p key={`${String(status.fa_flight_id || status.ident)}-${index}`} className="mt-2 rounded-lg bg-sky-50 px-3 py-2 text-xs text-sky-900">{t("flightAware", { status: status.schedule_only ? t("flightAwareSchedule") : String(status.status || t("flightAwareUpdated")) })}{status.cancelled ? ` · ${t("flightAwareCancelled")}` : ""}{Number(status.departure_delay_seconds || 0) > 0 ? ` · ${t("flightAwareDelay", { minutes: Math.round(Number(status.departure_delay_seconds) / 60) })}` : ""}{status.departure_terminal ? ` · ${t("flightAwareTerminal", { terminal: String(status.departure_terminal) })}` : ""}{status.departure_gate ? ` · ${t("flightAwareGate", { gate: String(status.departure_gate) })}` : ""}</p>)}
       {offer.provider === "skyscanner" && <p className="mt-2 text-xs text-[var(--muted)]">Powered by <a className="font-semibold underline" href="https://www.skyscanner.net" target="_blank" rel="noreferrer">Skyscanner</a></p>}
       {message && <p className="mt-3 text-sm text-[var(--coral)]" role="status">{message}</p>}
-      <div className="mt-4 grid gap-2 sm:grid-cols-2"><button type="button" onClick={refresh} disabled={refreshing || offer.source_mode === "estimate"} className="flex items-center justify-center gap-2 rounded-xl border border-[var(--line)] px-4 py-3 text-sm font-semibold disabled:opacity-50"><RefreshCw size={16} className={refreshing ? "animate-spin" : ""} />{refreshing ? "驗價中" : "重新驗價"}</button>{offer.clickout_available ? <form action={`/api/travel/offers/${offer.id}/clickout`} method="post" target="_blank"><button className="flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-4 py-3 text-sm font-semibold text-white" type="submit">前往訂票 <ExternalLink size={16} /></button></form> : <a href={safeExternalHref(fallbackUrl)} target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 rounded-xl border border-[var(--teal)] px-4 py-3 text-sm font-semibold text-[var(--teal)]">外站重新確認<ExternalLink size={16} /></a>}</div>
+      <div className="mt-4 grid gap-2 sm:grid-cols-2"><button type="button" onClick={refresh} disabled={refreshing || offer.source_mode === "estimate"} className="flex items-center justify-center gap-2 rounded-xl border border-[var(--line)] px-4 py-3 text-sm font-semibold disabled:opacity-50"><RefreshCw size={16} className={refreshing ? "animate-spin" : ""} />{t(refreshing ? "verifying" : "verify")}</button>{offer.clickout_available ? <form action={`/api/travel/offers/${offer.id}/clickout`} method="post" target="_blank"><button className="flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-4 py-3 text-sm font-semibold text-white" type="submit">{t("book")} <ExternalLink size={16} /></button></form> : <a href={safeExternalHref(fallbackUrl)} target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 rounded-xl border border-[var(--teal)] px-4 py-3 text-sm font-semibold text-[var(--teal)]">{shared("recheckExternal")}<ExternalLink size={16} /></a>}</div>
       {legActions && <div className="mt-3 grid gap-2 sm:grid-cols-2">{(["outbound", "return"] as const).filter((direction) => direction === "outbound" || hasReturnLeg).map((direction) => {
         const state = legActions.state[direction];
         const label = state === "done" ? (direction === "outbound" ? legActions.labels.doneOutbound : legActions.labels.doneReturn) : state === "busy" ? legActions.labels.busy : direction === "outbound" ? legActions.labels.outbound : legActions.labels.return;
@@ -178,7 +194,7 @@ export function FlightOfferCard({ offer, fallbackUrl, alertReturnPath, tripActio
           {state === "done" ? <Check size={16} /> : state === "busy" ? <LoaderCircle size={16} className="animate-spin" /> : direction === "outbound" ? <PlaneTakeoff size={16} /> : <PlaneLanding size={16} />}{label}
         </button>;
       })}</div>}
-      {offer.source_mode !== "estimate" && <PriceAlertButton resourceType="flight" resourceId={offer.id} currentPrice={price} currency={offer.currency || "TWD"} returnPath={alertReturnPath} />}
+      {offer.source_mode !== "estimate" && <PriceAlertButton resourceType="flight" resourceId={offer.id} currentPrice={price} currency={currency} returnPath={alertReturnPath} />}
     </div>
   </article>;
 }

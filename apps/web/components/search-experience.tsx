@@ -47,7 +47,7 @@ import {
   type FlightOfferTripActions,
 } from "@/components/flight-offer-card";
 import { useSiteVisibility } from "@/components/site-visibility-provider";
-import { useOperationCharge } from "@/components/usage-catalog-provider";
+import { useAccountUsage, useOperationCharge } from "@/components/usage-catalog-provider";
 import { searchUsageOperation } from "@/lib/usage-catalog";
 import { UsageInsufficientNotice } from "@/components/usage-insufficient-notice";
 import {
@@ -63,6 +63,7 @@ import {
   type CriteriaUpdate,
 } from "@/components/search-criteria-editor";
 import { featureEnabled } from "@/lib/site-features";
+import { translateWarnings } from "@/lib/warnings";
 
 type Parsed = {
   origin?: string;
@@ -97,6 +98,9 @@ type Parsed = {
   pace?: "relaxed" | "balanced" | "packed";
   confidence: number;
   missing_fields: string[];
+  /** False only when a place was named and this site does not search it. */
+  destination_supported?: boolean | null;
+  supported_destinations?: Array<{ code: string; city: string; country_label: string }>;
 };
 
 type Offer = Record<string, unknown> & {
@@ -306,6 +310,17 @@ const TRIP_DATE_ISSUES = ["trip_dates_required", "trip_dates_past", "trip_dates_
 // The server's job times out at 120s; allow a margin for the final events to land.
 const SEARCH_TIMEOUT_MS = 150_000;
 
+// The search API sends warning codes; route-segment-card carries the same pattern
+// and the reason. Unknown codes render nothing rather than their raw name.
+const KNOWN_WARNINGS = new Set([
+  "emissions_unavailable",
+  "flight_status_unavailable",
+  "flex_pricing_unavailable",
+  "flex_pricing_unsupported",
+  "search_system_error",
+  "provider_fallback",
+]);
+
 export function SearchExperience() {
   const params = useSearchParams();
   // `/search?trip_id=…`: a flight search for a saved trip. The trip supplies
@@ -451,6 +466,10 @@ export function SearchExperience() {
   const tripBlocked =
     Boolean(tripId) &&
     (!tripContext || tripIssues.origin || tripIssues.destinationUnresolved || tripIssues.dates);
+  // The same wall the trip path already has (trip_destination_unsupported), for the
+  // free-text path that had none: an unsupported destination used to be discovered
+  // only after a charged search returned an empty shell.
+  const unsupportedDestination = parsed?.destination_supported === false;
   // A trip search nobody edited sends the trip and nothing else, so the server derives
   // the criteria fresh at request time. Editing them pins them, and pinned flexible
   // dates are a separately priced operation — so read the price off the payload that
@@ -470,6 +489,8 @@ export function SearchExperience() {
   const [authState, setAuthState] = useState<
     "checking" | "signed_in" | "signed_out" | "error"
   >("checking");
+  // Asked only once a session is known, so a signed-out reader does not collect a 401.
+  const accountUsage = useAccountUsage(authState === "signed_in");
   const [progress, setProgress] = useState(0);
   const [done, setDone] = useState<string[]>([]);
   const [plans, setPlans] = useState<Plan[]>([]);
@@ -508,6 +529,23 @@ export function SearchExperience() {
   const [hotelSort, setHotelSort] = useState<
     "recommended" | "price" | "rating" | "distance"
   >("recommended");
+  // These filters can empty the results between them, and the row that sets them
+  // had no way to unset them: the reader was left staring at "nothing here" with
+  // no idea which of six controls to undo.
+  const filtersApplied =
+    directOnly || refundableFlightOnly || sortByPrice
+    || activityInterest !== "all" || hotelMinRating > 0 || hotelNightlyMax > 0
+    || hotelMaxWalk > 0 || hotelSort !== "recommended";
+  function clearFilters() {
+    setDirectOnly(false);
+    setRefundableFlightOnly(false);
+    setSortByPrice(false);
+    setActivityInterest("all");
+    setHotelMinRating(0);
+    setHotelNightlyMax(0);
+    setHotelMaxWalk(0);
+    setHotelSort("recommended");
+  }
   const started = useRef(false);
   const resumed = useRef(false);
   const [insufficient, setInsufficient] = useState(false);
@@ -519,6 +557,8 @@ export function SearchExperience() {
   // same search down exactly once.
   const liveStream = useRef<EventSource>(null);
   const deadline = useRef<ReturnType<typeof setTimeout>>(null);
+  // The search whose reserved use is still held, for the paths that have to hand it back.
+  const pending = useRef<string>(undefined);
   const lastRun = useRef<{ dates: string[]; flexDays: 0 | 3 | 7 }>(null);
   const [finished, setFinished] = useState(false);
 
@@ -632,7 +672,9 @@ export function SearchExperience() {
     if (result.result?.modules) setOffers(result.result.modules);
     if (result.result?.plans) setPlans(result.result.plans);
     setFlightDateOptions(result.result?.flight_date_options || []);
-    setWarnings(result.warnings || []);
+    // The API's warnings are codes; everything already in this state is a sentence
+    // this component produced, so they are turned into sentences on the way in.
+    setWarnings(translateWarnings(result.warnings, KNOWN_WARNINGS, t));
     if (result.usage) setUsageState(result.usage);
   }
 
@@ -671,8 +713,27 @@ export function SearchExperience() {
     deadline.current = null;
   }
 
+  /**
+   * Give the reserved use back for a search nobody is waiting for any more.
+   *
+   * Closing the stream tells the server nothing: the job keeps running and the use stays
+   * held until something settles it. Every operation costs zero uses today, but that is a
+   * setting, not a promise — the day it is not zero, a cancelled search would quietly cost
+   * a use for an answer the reader never saw.
+   *
+   * Held in a ref rather than read from `searchId`, because the timeout below fires from a
+   * closure created before the search existed. Failures are swallowed on purpose: the
+   * reader has already left this search behind, and the endpoint is safe to call again.
+   */
+  function releaseSearch() {
+    const id = pending.current;
+    pending.current = undefined;
+    if (id) void api(`/searches/${id}/cancel`, { method: "POST" }).catch(() => undefined);
+  }
+
   function cancelSearch() {
     stopSearch();
+    releaseSearch();
     setBusy(false);
     setFinished(false);
     setSearchId(undefined);
@@ -698,6 +759,7 @@ export function SearchExperience() {
     // search can sit at 40% for as long as the tab stays open.
     deadline.current = setTimeout(() => {
       stopSearch();
+      releaseSearch();
       setBusy(false);
       setFinished(true);
       setError(t("searchTimedOut"));
@@ -759,6 +821,7 @@ export function SearchExperience() {
         },
       );
       setSearchId(accepted.search_id);
+      pending.current = accepted.search_id;
       setUsageState(accepted.usage);
       const stream = new EventSource(
         `/api/travel/searches/${accepted.search_id}/events`,
@@ -809,6 +872,7 @@ export function SearchExperience() {
         setBusy(false);
         setFinished(true);
         stopSearch();
+        pending.current = undefined;
         trackAnalytics("search_completed");
         await loadFinal(accepted.search_id).catch(() => undefined);
       });
@@ -819,6 +883,7 @@ export function SearchExperience() {
         setBusy(false);
         setFinished(true);
         stopSearch();
+        pending.current = undefined;
         await loadFinal(accepted.search_id).catch(() => undefined);
       });
       stream.onerror = () => {
@@ -830,6 +895,9 @@ export function SearchExperience() {
           setBusy(false);
           setFinished(true);
           stopSearch();
+          // The server settles the reservation when the job ends; loadFinal below reads
+          // whatever it decided. Dropping the stream is not the reader giving up.
+          pending.current = undefined;
           void loadFinal(accepted.search_id).catch(() => undefined);
           return;
         }
@@ -1420,7 +1488,8 @@ export function SearchExperience() {
                     providerStatus?.status !== "ready" ||
                     authState !== "signed_in" ||
                     charge.status !== "ready" ||
-                    tripBlocked
+                    tripBlocked ||
+                    unsupportedDestination
                   }
                   onClick={() => begin()}
                   className="rounded-2xl bg-[var(--teal)] px-6 py-3.5 font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50"
@@ -1436,6 +1505,23 @@ export function SearchExperience() {
                 <AirbnbSearchPanel criteria={airbnbCriteria} compact />
               )}
             </div>
+            {unsupportedDestination && (
+              <section role="status" className="mt-4 rounded-2xl border border-amber-300 bg-amber-50 p-5 text-amber-900">
+                <h2 className="font-bold">{t("unsupportedTitle")}</h2>
+                <p className="mt-2 text-sm leading-6">{t("unsupportedBody")}</p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {(parsed?.supported_destinations || []).map((option) => (
+                    <a
+                      key={option.code}
+                      href={`/${locale}/search/new?destination=${encodeURIComponent(option.code)}`}
+                      className="inline-flex min-h-11 items-center rounded-xl border border-amber-300 bg-white px-3 text-sm font-semibold"
+                    >
+                      {t("unsupportedPick", { city: option.city })}
+                    </a>
+                  ))}
+                </div>
+              </section>
+            )}
             {insufficient && (
               <div className="mt-4">
                 <UsageInsufficientNotice chargeLabel={charge.label} />
@@ -1455,6 +1541,11 @@ export function SearchExperience() {
             )}
             <p className="mt-2 text-xs text-[var(--muted)]">
               {charge.status === "ready" ? t("chargeHelp", { charge: charge.label }) : charge.unavailableHelp}
+              {/* What an action costs was always on screen; what the member has left
+                  only ever arrived as a 402, after the wizard had been filled in. */}
+              {authState === "signed_in" && accountUsage.availableUses !== null
+                ? ` ${t("balance", { available: accountUsage.availableUses })}`
+                : ""}
             </p>
           </>
         )}
@@ -1794,6 +1885,15 @@ export function SearchExperience() {
             activeTab !== "connectivity" && (
               <div className="mb-4 flex flex-wrap items-center gap-4 rounded-2xl border border-[var(--line)] bg-white px-4 py-3 text-sm">
                 <strong className="text-[var(--teal-dark)]">{t("quickFilters")}</strong>
+                {filtersApplied && (
+                  <button
+                    type="button"
+                    onClick={clearFilters}
+                    className="ml-auto inline-flex min-h-11 items-center rounded-xl border border-[var(--line)] px-3 font-semibold text-[var(--teal)]"
+                  >
+                    {t("clearFilters")}
+                  </button>
+                )}
                 {activeTab !== "hotel" && (
                   <label className="flex items-center gap-2">
                     <input

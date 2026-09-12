@@ -7,6 +7,7 @@ import { createPortal } from "react-dom";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { useSearchParams } from "next/navigation";
 import { ApiError, api } from "@/lib/api";
+import { useModalSheet } from "@/lib/modal-sheet";
 import { loginPath } from "@/lib/navigation";
 import { useSavedItems, type SavedType } from "@/components/saved-items-provider";
 import { useHeaderSession } from "@/components/header-session";
@@ -192,7 +193,9 @@ function LegacyTravelCardActions({
   const pathname = usePathname();
   const saved = savedItems.isSaved(type, id);
   const [sheet, setSheet] = useState<"login" | "trip" | "save" | null>(null);
-  const dialog = useRef<HTMLElement>(null);
+  // This sheet was a hand-copy of useModalSheet without its layer stack, so it unlocked
+  // the page and answered Escape even when another layer sat above it.
+  const dialog = useModalSheet<HTMLElement>(Boolean(sheet), () => setSheet(null));
   const [resumed, setResumed] = useState(false);
   const [resumeTrip, setResumeTrip] = useState(false);
   const [trips, setTrips] = useState<TripOption[]>([]);
@@ -264,25 +267,6 @@ function LegacyTravelCardActions({
       .finally(() => { if (!controller.signal.aborted) setBusy(false); });
     return () => controller.abort();
   }, [resumeTrip]);
-  useEffect(() => {
-    if (!sheet) return;
-    const previous = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    const overflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    const focusable = () => Array.from(dialog.current?.querySelectorAll<HTMLElement>('a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex="0"]') || []);
-    focusable()[0]?.focus();
-    function keyboard(event: KeyboardEvent) {
-      if (event.key === "Escape") { event.preventDefault(); setSheet(null); }
-      if (event.key !== "Tab") return;
-      const items = focusable();
-      const first = items[0], last = items.at(-1);
-      if (!first) { event.preventDefault(); return; }
-      if (!dialog.current?.contains(document.activeElement) || (event.shiftKey && document.activeElement === first)) { event.preventDefault(); (event.shiftKey ? last : first)?.focus(); }
-      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
-    }
-    document.addEventListener("keydown", keyboard);
-    return () => { document.removeEventListener("keydown", keyboard); document.body.style.overflow = overflow; if (previous?.isConnected) previous.focus(); };
-  }, [sheet]);
   async function confirmSave() {
     setSaving(true); clearFeedback();
     try { await savedItems.setSaved(type, id, true); setSheet(null); setNotice(common("cardActions.saved")); }

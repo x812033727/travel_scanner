@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { api } from "@/lib/api";
+import { useModalSheet } from "@/lib/modal-sheet";
 
 export const nameLocales = ["zh-TW", "zh-CN", "en", "ja", "ko"] as const;
 export type NameLocale = (typeof nameLocales)[number];
@@ -130,6 +131,9 @@ export function AdminFoodAreasPanel() {
   const [editing, setEditing] = useState<AdminArea | null>(null);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  // aria-modal="true" without a trap is a claim the page does not honour: a screen reader
+  // is told the rest of the document is inert while Tab walks into the table behind.
+  const editorRef = useModalSheet<HTMLDivElement>(Boolean(editing), () => setEditing(null));
 
   const listUrl = useMemo(() => {
     const params = new URLSearchParams({ limit: "200" });
@@ -297,7 +301,7 @@ export function AdminFoodAreasPanel() {
           <tbody>
             {data?.items?.map((area) => (
               <tr key={area.id} className="border-t">
-                <td className="p-3">
+                <td data-label={t("areas.table.select")} className="p-3">
                   <input
                     type="checkbox"
                     aria-label={t("areas.select", { name: area.name })}
@@ -313,17 +317,17 @@ export function AdminFoodAreasPanel() {
                     className="h-5 w-5 accent-[var(--teal)]"
                   />
                 </td>
-                <td className="p-3 font-semibold">
+                <td data-label={t("areas.table.name")} className="p-3 font-semibold">
                   {area.name}
                   <span className="block text-xs font-normal text-[var(--muted)]">
                     {area.names.en} · {area.slug}
                   </span>
                 </td>
-                <td className="p-3">{area.destination_name}</td>
-                <td className="p-3">{area.display_order}</td>
-                <td className="p-3">{t("areas.merchantCount", { count: area.merchant_count })}</td>
-                <td className="p-3">{area.is_active ? t("active") : t("inactive")}</td>
-                <td className="p-3">
+                <td data-label={t("areas.table.destination")} className="p-3">{area.destination_name}</td>
+                <td data-label={t("areas.table.order")} className="p-3">{area.display_order}</td>
+                <td data-label={t("areas.table.merchants")} className="p-3">{t("areas.merchantCount", { count: area.merchant_count })}</td>
+                <td data-label={t("areas.table.status")} className="p-3">{area.is_active ? t("active") : t("inactive")}</td>
+                <td data-label={t("areas.table.actions")} className="p-3">
                   <button
                     type="button"
                     onClick={() => setEditing({ ...area, names: completeNames(area.names) })}
@@ -347,6 +351,7 @@ export function AdminFoodAreasPanel() {
       {editing && (
         <div className="fixed inset-0 z-[90] overflow-y-auto bg-slate-950/50 p-4 md:p-8">
           <div
+            ref={editorRef}
             role="dialog"
             aria-modal="true"
             aria-labelledby="food-area-editor-title"
@@ -489,6 +494,7 @@ export function AdminFoodCategoriesPanel() {
   const [editing, setEditing] = useState<AdminCategory | null>(null);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const editorRef = useModalSheet<HTMLDivElement>(Boolean(editing), () => setEditing(null));
 
   const load = useCallback(async () => {
     try {
@@ -609,7 +615,7 @@ export function AdminFoodCategoriesPanel() {
           <tbody>
             {data?.items?.map((category) => (
               <tr key={category.id} className="border-t">
-                <td className="p-3">
+                <td data-label={t("categories.table.select")} className="p-3">
                   <input
                     type="checkbox"
                     aria-label={t("categories.select", { name: category.name })}
@@ -625,18 +631,18 @@ export function AdminFoodCategoriesPanel() {
                     className="h-5 w-5 accent-[var(--teal)]"
                   />
                 </td>
-                <td className="p-3 font-semibold">
+                <td data-label={t("categories.table.name")} className="p-3 font-semibold">
                   {category.name}
                   <span className="block text-xs font-normal text-[var(--muted)]">
                     {category.names.en} · {category.slug}
                   </span>
                 </td>
-                <td className="p-3">{category.display_order}</td>
-                <td className="p-3">
+                <td data-label={t("categories.table.order")} className="p-3">{category.display_order}</td>
+                <td data-label={t("categories.table.merchants")} className="p-3">
                   {t("categories.merchantCount", { count: category.merchant_count })}
                 </td>
-                <td className="p-3">{category.is_active ? t("active") : t("inactive")}</td>
-                <td className="p-3">
+                <td data-label={t("categories.table.status")} className="p-3">{category.is_active ? t("active") : t("inactive")}</td>
+                <td data-label={t("categories.table.actions")} className="p-3">
                   <button
                     type="button"
                     onClick={() =>
@@ -662,6 +668,7 @@ export function AdminFoodCategoriesPanel() {
       {editing && (
         <div className="fixed inset-0 z-[90] overflow-y-auto bg-slate-950/50 p-4 md:p-8">
           <div
+            ref={editorRef}
             role="dialog"
             aria-modal="true"
             aria-labelledby="food-category-editor-title"

@@ -1679,5 +1679,40 @@
     "validUntil": "Applies until",
     "validUntilHelp": "For intel. Past this date the article leaves the listings and the sitemap; its URL stays.",
     "viewRevision": "View this revision"
+  },
+  "merchantCoordinateQueue": {
+    "title": "Coordinate review queue",
+    "description": "Merchants that still have no durable coordinates, side by side with the place Google found and the matching signals. Approving writes the coordinates with an admin_verified source; the server looks the place up again to confirm, and never takes coordinates sent by a browser.",
+    "notConfigured": "The Google Places key is not set, so candidates cannot be resolved.",
+    "columnSelect": "Select",
+    "columnMerchant": "Merchant",
+    "columnCandidate": "Found by Google",
+    "columnSignals": "Signals",
+    "selectMerchant": "Select {name}",
+    "koreaNote": "Korean merchant: the coordinates can be written now, but publishing still needs an exact NAVER place page.",
+    "openInGoogleMaps": "Open in Google Maps",
+    "noResult": "No result found",
+    "nameScore": "Name {score}",
+    "distanceKm": "Distance {km} km",
+    "placeIdTaken": "Place ID already in use",
+    "queueEmpty": "The queue is empty — every merchant has durable coordinates.",
+    "approveSelected": "Approve selected ({count})",
+    "previousPage": "Previous",
+    "nextPage": "Next",
+    "pageStatus": "Page {page} of {total} · {pending} waiting",
+    "verdictAgree": "Agrees",
+    "verdictNoResult": "No result",
+    "verdictCheck": "Needs a human look",
+    "written": "Wrote {count} set(s) of coordinates.",
+    "writtenWithSkipped": "Wrote {count} set(s) of coordinates; skipped {skipped} ({reasons}).",
+    "outcome": {
+      "verified": "Verified",
+      "coordinates_saved": "Coordinates saved (NAVER link pending)",
+      "candidate_changed": "Google's result changed, skipped",
+      "place_id_taken": "Place ID already used by another merchant",
+      "no_result": "No result found",
+      "already_durable": "Already has durable coordinates",
+      "not_found": "Merchant does not exist"
+    }
   }
 }

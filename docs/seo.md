@@ -27,6 +27,7 @@ results. Historical task notes describe their original snapshots, not necessaril
 | Surface | Policy |
 | --- | --- |
 | Home, food directory, destination directory/guides/services | Indexable public content |
+| Travel intel and guides (`/guides`, `/guides/{kind}`, articles) | Indexable public content; an article only in the locales it is published in |
 | Hotspots, pricing, flight status, airline fares | Indexable only while the effective Web switch is enabled |
 | Privacy, terms, about, contact | Only the requested locale's published document is indexable |
 | Community/discovery/pet public shells | Existing `noindex` retained pending public server content |
@@ -53,15 +54,26 @@ may execute JavaScript, but that is not a substitute for verified public/private
 the six public visibility flags once at request time with `no-store`. This avoids freezing
 deployment-time flags or needing the API during `next build`.
 
-There are at most **365 URLs**: five locales times seven base routes, 33 guides, and 33 services
-pages. Four base routes are conditional; all four closed/unavailable gives **345 URLs**.
-Static destination IDs come from `PUBLIC_DESTINATIONS`; no names or authenticated data are
-needed to enumerate them. All entries include language alternates. No sitemap index is needed.
+The static list is at most **380 URLs**: five locales times ten base routes, 33 destination
+guides, and 33 services pages. Four base routes are conditional; all four closed/unavailable
+gives **360 URLs**. The three `/guides` hubs carry no feature switch, so they are never among
+the conditional ones. Static destination IDs come from `PUBLIC_DESTINATIONS`; no names or
+authenticated data are needed to enumerate them. All entries include language alternates.
+No sitemap index is needed.
 
-Managed document URLs remain outside the sitemap until publication-aware enumeration is
-implemented. Published pages are still discoverable through footer links. Private and client
-shell routes stay out. No artificial `lastmod` is emitted because the sitemap does not know
-the underlying content update dates.
+Published guide articles are appended after that static list, one entry per published
+translation, capped at `SITEMAP_GUIDE_ENTRY_LIMIT` (1000) so one large response cannot dominate
+the file. They are the one publication-aware section, enumerated through `GET /guides/sitemap`,
+and the only entries carrying `lastmod`: their real `published_at`. An article's alternates name
+only the locales it is genuinely published in, and an expired intel notice leaves the sitemap
+while keeping its page.
+
+The four managed site documents stay outside the sitemap. `site-information-page.tsx` returns
+`noindex` until an administrator publishes that locale's document, so listing them now would
+only accumulate "Excluded by noindex"; they wait for `2026-09-06-legal-content-from-owner` and
+remain discoverable through footer links. Private and client shell routes stay out. Nothing
+outside the guides emits `lastmod`, because the sitemap does not know when a city guide's places
+last moved.
 
 Tests verify each listed path resolves to an App Router page, language URLs agree, private
 routes are absent, and each feature can close/reopen without a rebuild.

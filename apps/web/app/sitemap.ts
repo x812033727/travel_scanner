@@ -1,8 +1,10 @@
 import type { MetadataRoute } from "next";
 import { PUBLIC_DESTINATIONS } from "@/components/travel-services/options";
 import { locales } from "@/i18n/routing";
+import { guideHref } from "@/lib/guides";
 import { languageAlternates, localeUrl } from "@/lib/seo";
 import { featureEnabled, type SiteFeature } from "@/lib/site-features";
+import { guideSitemapEntries } from "@/lib/guides.server";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
 
 // Evaluate public switches at request time, not while building without the API.
@@ -39,6 +41,11 @@ export const SITEMAP_ROUTES: readonly SitemapRoute[] = [
   { path: "/pricing", priority: 0.5, changeFrequency: "monthly", feature: "pricing" },
   { path: "/labs/airlines", priority: 0.4, changeFrequency: "weekly", feature: "airline_fares" },
   { path: "/destinations", priority: 0.6, changeFrequency: "weekly" },
+  // No `feature`: the guides section is first-party content with no switch behind it, so it
+  // is never one of the conditional routes. All three resolve through the `[kind]` folder.
+  { path: "/guides", priority: 0.7, changeFrequency: "daily" },
+  { path: "/guides/intel", priority: 0.7, changeFrequency: "daily" },
+  { path: "/guides/howto", priority: 0.6, changeFrequency: "weekly" },
   // The guides are the destination-scoped content; the services pages are an affiliate lodging
   // directory for the same city, so they rank below their own guide rather than beside it.
   ...PUBLIC_DESTINATIONS.map((id) => ({
@@ -63,17 +70,52 @@ export const SITEMAP_ROUTES: readonly SitemapRoute[] = [
  * if the settings service is unavailable. The canonical origin is still fixed at build time.
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const visibility = await getSiteVisibility();
-  return SITEMAP_ROUTES.filter((route) => !route.feature || featureEnabled(visibility, route.feature)).flatMap((route) =>
+  const [visibility, guides] = await Promise.all([getSiteVisibility(), guideSitemapEntries()]);
+  const routes = SITEMAP_ROUTES.filter(
+    (route) => !route.feature || featureEnabled(visibility, route.feature),
+  ).flatMap((route) =>
     locales.map((locale) => ({
       url: localeUrl(locale, route.path),
-      // No `lastModified`. Google honours it only where it tracks real content change, and
-      // nothing here knows when a city guide's places last moved -- that lives behind the API
-      // this route deliberately does not call. An omitted field is a missing signal; one that
-      // always says "now" teaches Google to distrust the whole file.
+      // No `lastModified` on these. Google honours it only where it tracks real content
+      // change, and nothing here knows when a city guide's places last moved -- that lives
+      // behind the API this route deliberately does not call for them. An omitted field is a
+      // missing signal; one that always says "now" teaches Google to distrust the whole file.
       changeFrequency: route.changeFrequency,
       priority: route.priority,
       alternates: { languages: languageAlternates(route.path) },
     })),
   );
+
+  /**
+   * Guide articles, appended after the static routes so their exact order stays testable.
+   *
+   * Two things here deliberately differ from every route above, and both follow from the
+   * section publishing one locale at a time:
+   *
+   * - `lastModified` is real. The comment above is true of a city guide and false of an
+   *   article: the API returns the actual publication date, and for a dated notice that
+   *   signal is the point.
+   * - The alternates carry only the locales an article is genuinely published in, never the
+   *   full five. Advertising a translation nobody wrote is the one thing per-locale
+   *   publication exists to prevent, and the article page's own hreflang agrees with this.
+   */
+  const articles = guides.map((entry) => {
+    const path = guideHref(entry.kind, entry.slug);
+    return {
+      url: localeUrl(entry.locale, path),
+      changeFrequency: (entry.kind === "intel" ? "daily" : "monthly") as NonNullable<
+        MetadataRoute.Sitemap[number]["changeFrequency"]
+      >,
+      priority: 0.5,
+      lastModified: new Date(entry.published_at),
+      alternates: {
+        languages: {
+          ...Object.fromEntries(entry.locales.map((locale) => [locale, localeUrl(locale, path)])),
+          ...(entry.locales.includes("en") ? { "x-default": localeUrl("en", path) } : {}),
+        },
+      },
+    };
+  });
+
+  return [...routes, ...articles];
 }

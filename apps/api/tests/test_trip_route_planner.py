@@ -133,7 +133,7 @@ async def test_google_routes_maps_non_transit_modes(mode: str) -> None:
     assert result.travel_mode == mode
     assert result.duration_minutes == 12
     if mode == "walk":
-        assert any("測試版" in warning for warning in result.warnings)
+        assert "walk_route_beta" in result.warnings
 
 
 class ModeCountingProvider:

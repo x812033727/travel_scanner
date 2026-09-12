@@ -165,7 +165,8 @@
     "roomsExceedTravelers": "房间数不可多于旅客人数。",
     "budgetPositive": "总预算必须大于 0。",
     "nightlyInverted": "每晚最低价格不可高于最高价格。",
-    "createFailed": "创建行程失败，请稍后再试。"
+    "createFailed": "创建行程失败，请稍后再试。",
+    "atCapacity": "已达 {limit} 个行程的上限，请先删掉一个再创建。"
   },
   "gate": {
     "checking": "正在确认登录状态…",
@@ -187,5 +188,10 @@
     "vintage": "古着／二手",
     "anime-hobby": "动漫／模型",
     "market-street": "商店街／市场"
-  }
+  },
+  "usageLine": "剩余 {available} 次 · 已保存 {count}／{limit} 个行程",
+  "usageUnknown": "目前无法确认剩余次数与行程数量，仍可以继续创建。",
+  "capacityTitle": "已达 {limit} 个行程的上限",
+  "capacityBody": "每个账号最多保存 {limit} 个行程。要创建新的，请先到「我的旅程」删掉一个不再需要的。",
+  "capacityAction": "去管理我的旅程"
 }

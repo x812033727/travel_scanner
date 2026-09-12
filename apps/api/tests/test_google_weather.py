@@ -134,7 +134,7 @@ async def test_google_weather_returns_partial_result_when_daily_forecast_fails()
 
     assert weather.current is not None
     assert weather.days == []
-    assert weather.warnings == ["10 日天氣預報暫時無法取得"]
+    assert weather.warnings == ["weather_daily_unavailable"]
     await client.aclose()
     await redis.aclose()
 

@@ -18,7 +18,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
 from app.affiliates.registry import PARTNERS_BY_CODE
-from app.affiliates.router import DISCLOSURE
+from app.affiliates.router import DISCLOSURES
 from app.affiliates.service import (
     AffiliateContext,
     _with_query,
@@ -71,6 +71,7 @@ from app.trips.stay_areas import (
     trip_city,
     trip_settings_source,
 )
+from app.warnings import warning_code
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/trips/{trip_id}/stay-areas", tags=["trips"])
@@ -83,7 +84,7 @@ STAY_PROVIDER_TRIP_LIMIT = 20
 STAY_SELECT_USER_LIMIT = 10
 STAY_CLICKOUT_USER_LIMIT = 120
 STAY_WINDOW_SECONDS = 3_600
-LODGING_WARNING = "主要飯店已更新，請重新計算每日來回路線。"
+LODGING_WARNING = warning_code("primary_lodging_changed")
 
 
 class StayHotelSelectRequest(BaseModel):
@@ -488,7 +489,9 @@ async def stay_area_hotels(
         "hotels": [],
         "nearby": [],
         "area_partners": stay_partner_options(settings, area_label, None),
-        "disclosure": DISCLOSURE,
+        # DISCLOSURE is the zh-TW string; the map is keyed by the request locale.
+        # A commission disclosure the reader cannot read is not a disclosure.
+        "disclosure": DISCLOSURES[locale],
     }
     if dates.status != "ready":
         return {
