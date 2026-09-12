@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**36 open · 3 in progress · 3 blocked · 1 in review · 264 done**
+**37 open · 3 in progress · 3 blocked · 1 in review · 264 done**
 
 ## Ready to claim
 
@@ -70,6 +70,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [Mokaair community responsive web and five-language experience](open/2026-09-07-mokaair-community-web.md) | active work in the same scope |
 | P1 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | active work in the same scope |
 | P2 | [useModalSheet 的 effect 在 ref 還沒掛上時會靜靜地永久放棄](open/2026-09-12-usemodalsheet-effect-ref.md) | active work in the same scope |
+| P2 | [site-footer 有一條測試繼承別人留下的路徑，打亂順序就紅](open/2026-09-12-site-footer.md) | active work in the same scope |
 | P3 | [Lighthouse SEO 與效能門檻 workflow](open/2026-09-10-seo-lighthouse-workflow.md) | depends on 2026-09-10-seo-server-render-home-and-explore |
 
 ## Recently finished
