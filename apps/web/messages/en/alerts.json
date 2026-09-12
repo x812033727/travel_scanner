@@ -17,7 +17,8 @@
     "testSent": "The test message is on its way to LINE.",
     "unlinkDone": "LINE is no longer linked."
   },
-  "capacity":"{count} of {limit} active alerts","capacityFull":"You have reached the alert limit. Pause or delete one to add another.",
+  "capacity": "{count} of {limit} active alerts",
+  "capacityFull": "You have reached the alert limit. Pause or delete one to add another.",
   "emptyHint": "Price alerts are created from a trip or a search result — open a trip to start tracking a price.",
   "emptyAction": "Go to my trips",
   "button": {
@@ -34,5 +35,29 @@
     "loginReturn": "Sign in and come back here"
   },
   "manualOnly": "This source is never re-checked in the background; the price has to be confirmed by hand.",
-  "manualOnlyRecheck": "Re-price it on the trip"
+  "manualOnlyRecheck": "Re-price it on the trip",
+  "list": {
+    "empty": "No price alerts yet.",
+    "deleteAction": "Delete alert",
+    "deleteConfirm": "Delete this price alert? This cannot be undone.",
+    "active": "Tracking",
+    "paused": "Paused",
+    "modeAutomatic": "Checked every 6 hours",
+    "modeManual": "Manual checks only",
+    "fallbackSubtitle": "Tracked item",
+    "targetBelow": "Below {price}",
+    "anyDrop": "Alert on any new low",
+    "currentPrice": "now {price}",
+    "currentPending": "current price pending",
+    "quotedAt": "Quoted {time}",
+    "targetReached": "Target price reached",
+    "targetGap": "{amount} above target",
+    "edit": "Edit {title}",
+    "pause": "Pause {title}",
+    "resume": "Resume {title}",
+    "targetLabel": "Target price ({currency})",
+    "targetInput": "Edit the target price for {title}",
+    "targetPlaceholder": "Leave empty to track any drop",
+    "savePrice": "Save price"
+  }
 }

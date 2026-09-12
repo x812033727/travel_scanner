@@ -1679,5 +1679,40 @@
     "validUntil": "适用至",
     "validUntilHelp": "情报用的截止日。过期后这篇会离开列表与 sitemap，网址仍然保留。",
     "viewRevision": "查看这个版本"
+  },
+  "merchantCoordinateQueue": {
+    "title": "座标审核队列",
+    "description": "列出还没有永久座标的店家，并排 Google 找到的地点与比对信号。核准会以 admin_verified 来源写入座标；服务器会重新查询确认，绝不采用浏览器送来的座标。",
+    "notConfigured": "Google Places 密钥未设置，无法解析候选。",
+    "columnSelect": "选取",
+    "columnMerchant": "店家",
+    "columnCandidate": "Google 找到",
+    "columnSignals": "信号",
+    "selectMerchant": "选取 {name}",
+    "koreaNote": "韩国店家：座标可先写入，发布仍需 Naver 精准地点页",
+    "openInGoogleMaps": "在 Google 地图开启",
+    "noResult": "找不到结果",
+    "nameScore": "名称 {score}",
+    "distanceKm": "距离 {km} km",
+    "placeIdTaken": "Place ID 已被使用",
+    "queueEmpty": "队列已清空 — 所有店家都有永久座标了。",
+    "approveSelected": "批次核准（{count}）",
+    "previousPage": "上一页",
+    "nextPage": "下一页",
+    "pageStatus": "第 {page} / {total} 页 · 待处理 {pending} 笔",
+    "verdictAgree": "一致",
+    "verdictNoResult": "无结果",
+    "verdictCheck": "需人工比对",
+    "written": "已写入 {count} 笔座标。",
+    "writtenWithSkipped": "已写入 {count} 笔座标；{skipped} 笔略过（{reasons}）。",
+    "outcome": {
+      "verified": "已验证",
+      "coordinates_saved": "座标已存（待 Naver 链接）",
+      "candidate_changed": "Google 结果已改变，略过",
+      "place_id_taken": "Place ID 已被其他店家使用",
+      "no_result": "找不到结果",
+      "already_durable": "已有永久座标",
+      "not_found": "店家不存在"
+    }
   }
 }

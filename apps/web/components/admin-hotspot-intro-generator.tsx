@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
+import { useModalSheet } from "@/lib/modal-sheet";
 
 const LOCALES = ["zh-TW", "zh-CN", "en", "ja", "ko"] as const;
 
@@ -58,6 +59,8 @@ export function AdminHotspotIntroGenerator({
   const [loading, setLoading] = useState(false);
   const [run, setRun] = useState<IntroRun | null>(null);
   const [error, setError] = useState("");
+  // aria-modal="true" without a trap or an Escape is a claim the page does not honour.
+  const dialogRef = useModalSheet<HTMLDivElement>(open, () => setOpen(false));
 
   const active = isActive(run);
 
@@ -139,6 +142,7 @@ export function AdminHotspotIntroGenerator({
       {open && (
         <div className="fixed inset-0 z-[80] grid place-items-center bg-slate-950/45 p-4">
           <div
+            ref={dialogRef}
             role="dialog"
             aria-modal="true"
             aria-label={t("intros.generateTitle", { name: hotspotName })}

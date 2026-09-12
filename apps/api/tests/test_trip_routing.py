@@ -486,7 +486,7 @@ async def test_ekispert_uses_wgs84_points_and_parses_plain_route() -> None:
     assert segment.steps[1].headsign == "浅草"
     assert "headsign" in segment.details_available
     assert segment.encoded_polyline
-    assert "平均等待時間" in segment.warnings[0]
+    assert segment.warnings[0] == "average_wait_time"
 
 
 @pytest.mark.asyncio
@@ -1321,7 +1321,7 @@ async def test_google_transit_retries_once_without_empty_preference() -> None:
     assert len(bodies) == 2
     assert "transitPreferences" in bodies[0]
     assert "transitPreferences" not in bodies[1]
-    assert any("已改用一般大眾運輸" in warning for warning in segment.warnings)
+    assert "transit_preference_fallback" in segment.warnings
 
 
 @pytest.mark.asyncio
@@ -1366,7 +1366,7 @@ async def test_transit_beyond_published_timetables_asks_the_near_term_reference_
     assert datetime.now(UTC) < fallback_utc <= datetime.now(UTC) + timedelta(days=8)
     assert fallback_local.weekday() == requested.weekday()
     assert (fallback_local.hour, fallback_local.minute) == (11, 30)
-    assert any("可以先套用移動時間" in warning for warning in segment.warnings)
+    assert "transit_near_term_schedule_fallback" in segment.warnings
 
 
 @pytest.mark.asyncio
@@ -1409,8 +1409,7 @@ async def test_scheduled_transit_uses_current_google_schedule_after_empty_refere
     assert daytime_local.weekday() == requested.weekday()
     assert (daytime_local.hour, daytime_local.minute) == (10, 0)
     assert "departureTime" not in bodies[-1]
-    assert any("Google 目前可取得" in warning for warning in segment.warnings)
-    assert any("可以先套用移動時間" in warning for warning in segment.warnings)
+    assert "transit_current_schedule_fallback" in segment.warnings
 
 
 @pytest.mark.asyncio
@@ -1438,7 +1437,7 @@ async def test_far_future_transit_retries_with_current_schedule() -> None:
     assert segment.schedule_mode == "preview"
     assert len(bodies) == 3
     assert "departureTime" not in bodies[-1]
-    assert any("目前可取得的參考路線" in warning for warning in segment.warnings)
+    assert "transit_current_schedule_fallback" in segment.warnings
 
 
 @pytest.mark.asyncio
@@ -1466,7 +1465,7 @@ async def test_google_route_retries_coordinates_when_place_ids_have_no_route() -
     assert segment is not None and segment.duration_minutes == 15
     assert len(bodies) == 3
     assert "location" in cast(dict[str, object], bodies[-1]["origin"])
-    assert any("座標重試" in warning for warning in segment.warnings)
+    assert "coordinate_fallback" in segment.warnings
 
 
 def test_google_external_navigation_preserves_exact_place_ids() -> None:

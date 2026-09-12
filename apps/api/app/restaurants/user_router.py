@@ -23,6 +23,7 @@ from app.trips.router import (
     owned_trip,
     persist_system_schedule_change,
 )
+from app.warnings import warning_code
 
 router = APIRouter(prefix="/restaurants", tags=["restaurants"])
 Session = Annotated[AsyncSession, Depends(get_session)]
@@ -228,7 +229,7 @@ async def select_restaurant_for_trip(
         user.id,
         payload.version,
         rows,
-        warning="餐廳已更新，請重新計算這一天的路線。",
+        warning=warning_code("restaurant_changed"),
         target_day=payload.day_date,
     )
     return cast(dict[str, object], result)

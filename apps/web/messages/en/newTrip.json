@@ -165,7 +165,8 @@
     "roomsExceedTravelers": "Rooms cannot exceed the number of travelers.",
     "budgetPositive": "The total budget must be greater than 0.",
     "nightlyInverted": "The nightly minimum cannot exceed the maximum.",
-    "createFailed": "Could not create the trip. Please try again later."
+    "createFailed": "Could not create the trip. Please try again later.",
+    "atCapacity": "You have {limit} trips saved, which is the limit. Delete one before creating another."
   },
   "gate": {
     "checking": "Checking your sign-in…",
@@ -187,5 +188,10 @@
     "vintage": "Vintage",
     "anime-hobby": "Anime & hobby",
     "market-street": "Shopping streets"
-  }
+  },
+  "usageLine": "{available} uses left · {count} of {limit} trips saved",
+  "usageUnknown": "Your remaining uses and trip count could not be read. You can still create a trip.",
+  "capacityTitle": "You have reached the limit of {limit} trips",
+  "capacityBody": "An account can hold {limit} saved trips. Delete one you no longer need from My trips to make room.",
+  "capacityAction": "Manage my trips"
 }

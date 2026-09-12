@@ -23,6 +23,8 @@ from app.crawlers.verification import build_verification_report
 from app.db import SessionFactory
 from app.foods.coordinate_fill_cli import fill_food_merchant_coordinates
 from app.foods.place_matching_cli import match_food_merchant_places
+from app.foods.platform_review_import import DEFAULT_REVIEW_FILE as PLATFORM_REVIEW_FILE
+from app.foods.platform_review_import import apply_food_platform_reviews
 from app.foods.service import seed_food_catalog
 from app.foods.trend_import import DEFAULT_FILE as TREND_MERCHANTS_FILE
 from app.foods.trend_import import backfill_english_names, import_trend_merchants
@@ -689,6 +691,22 @@ def main() -> None:
     trend.add_argument(
         "--apply", action="store_true", help="Write the rows instead of only reporting them"
     )
+    platform_reviews = subparsers.add_parser(
+        "apply-food-platform-reviews",
+        help=(
+            "Apply a committed reservation-platform review file. Writes platform rows only, "
+            "never overwrites a row an administrator reviewed, and reports unless --apply."
+        ),
+    )
+    platform_reviews.add_argument(
+        "--file",
+        default=str(PLATFORM_REVIEW_FILE),
+        help="Review JSON (default: the batch committed in app/foods/data/platform_reviews)",
+    )
+    platform_reviews.add_argument("--limit", type=int, help="Stop after this many records")
+    platform_reviews.add_argument(
+        "--apply", action="store_true", help="Write the rows instead of only reporting them"
+    )
     places = subparsers.add_parser(
         "match-hotspot-places",
         help="Fill Google Place IDs for public hotspots that have none (uses the live key)",
@@ -884,6 +902,11 @@ def main() -> None:
     elif args.command == "import-trend-merchants":
         report = asyncio.run(
             import_trend_merchants(Path(args.file), apply=args.apply, limit=args.limit)
+        )
+        print(json.dumps(report, ensure_ascii=False, indent=2))
+    elif args.command == "apply-food-platform-reviews":
+        report = asyncio.run(
+            apply_food_platform_reviews(Path(args.file), apply=args.apply, limit=args.limit)
         )
         print(json.dumps(report, ensure_ascii=False, indent=2))
     elif args.command == "collect-hotspots":

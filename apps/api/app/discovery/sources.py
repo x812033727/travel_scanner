@@ -460,6 +460,14 @@ async def catalog_items(
             item.published_at = stamp(guide.published_at)
             item.locale = guide.locale
             item.content = {"text": guide.summary or "", "format": "plain"}
+            # A guide is about a place, and saying which one is what stops six articles
+            # on the same station from being six unrelated cards. Same shape the detail
+            # endpoint builds (details.py), so a card and its detail agree.
+            item.place_ref = {
+                "kind": "hotspot",
+                "id": str(hotspot.id),
+                "destination_id": hotspot.destination_id,
+            }
             hotspot_refs[item.id] = hotspot.id
             if guide.content_type == "video":
                 item.video = {

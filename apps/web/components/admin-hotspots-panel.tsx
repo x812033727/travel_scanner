@@ -992,7 +992,7 @@ export function AdminHotspotsPanel({
                         </tr>
                         {group.items.map((item) => (
                           <tr key={item.id} className="border-t border-[var(--line)]">
-                            <td className="p-3">
+                            <td data-label={ta("hotspotsPanel.thSelect")} className="p-3">
                               <input
                                 type="checkbox"
                                 checked={selected.has(item.id)}
@@ -1000,13 +1000,13 @@ export function AdminHotspotsPanel({
                                 onChange={(e) => toggleMany([item.id], e.target.checked)}
                               />
                             </td>
-                            <td className="p-3 font-semibold">
+                            <td data-label={ta("hotspotsPanel.thHotspot")} className="p-3 font-semibold">
                               {item.name}
                               <span className="block text-xs font-normal text-[var(--muted)]">
                                 {item.qid || ta("hotspotsPanel.noQid")}
                               </span>
                             </td>
-                            <td className="p-3">
+                            <td data-label={ta("hotspotsPanel.thCategoryCity")} className="p-3">
                               {categoryLabel(item.category)}
                               <span className="block text-xs text-[var(--muted)]">
                                 {item.city_name} ({item.city_code})
@@ -1035,7 +1035,7 @@ export function AdminHotspotsPanel({
                                 />}
                               </div>
                             </td>
-                            <td className="p-3">
+                            <td data-label={ta("hotspotsPanel.thDepth")} className="p-3">
                               {item.is_deep_travel ? (
                                 <>
                                   <span className="rounded-full bg-amber-100 px-2 py-1 text-xs">
@@ -1050,19 +1050,19 @@ export function AdminHotspotsPanel({
                                 "—"
                               )}
                             </td>
-                            <td className="p-3">
+                            <td data-label={ta("hotspotsPanel.thDistance")} className="p-3">
                               {item.distance_km?.toFixed(1) ?? "—"} km
                             </td>
-                            <td className="p-3">
+                            <td data-label={ta("hotspotsPanel.thViews")} className="p-3">
                               {item.pageviews_30d?.toLocaleString("zh-TW") ?? "—"}
                             </td>
-                            <td className="p-3">
+                            <td data-label={ta("hotspotsPanel.thStatus")} className="p-3">
                               {item.status}
                               <span className="block text-xs text-[var(--muted)]">
                                 {item.reason || "—"}
                               </span>
                             </td>
-                            <td className="p-3">
+                            <td data-label={ta("hotspotsPanel.thMap")} className="p-3">
                               {item.map_match_status}
                               <span className="block text-xs text-[var(--muted)]">
                                 {item.coordinate_source_type || ta("hotspotsPanel.coordinateSourceMissing")}
@@ -1080,7 +1080,7 @@ export function AdminHotspotsPanel({
                                 {ta("hotspotsPanel.editLocation")}
                               </button>}
                             </td>
-                            <td className="p-3">
+                            <td data-label={ta("hotspotsPanel.thSources")} className="p-3">
                               {item.source_urls.map((url, index) => (
                                 <a
                                   key={url}

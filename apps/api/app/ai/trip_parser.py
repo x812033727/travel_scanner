@@ -450,6 +450,15 @@ def to_parsed_request(draft: TripParseDraft, parser_label: str) -> ParsedTripReq
         logger.warning("trip parser %s dropped fields: %s", parser_label, sorted(set(dropped)))
 
     confidence = max(0.3, min(0.95, 1.0 - 0.15 * len(missing) - 0.1 * len(dropped)))
+    # Three answers, not two. A resolved place is supported; a place the model read
+    # out of the text that resolved to neither a city nor a region we cover is a
+    # place we do not go; anything else is simply unsaid.
+    if destination_profile is not None:
+        destination_supported: bool | None = True
+    elif (draft.destination or "").strip() and region is None:
+        destination_supported = False
+    else:
+        destination_supported = None
     return ParsedTripRequest(
         origin=origin_profile.code if origin_profile else None,
         destination=destination_profile.code if destination_profile else None,
@@ -477,6 +486,7 @@ def to_parsed_request(draft: TripParseDraft, parser_label: str) -> ParsedTripReq
         confidence=round(confidence, 2),
         missing_fields=missing,
         parser=parser_label,
+        destination_supported=destination_supported,
     )
 
 

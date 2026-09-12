@@ -183,7 +183,7 @@ async def test_naver_directions_parses_drive_path_steps_and_usage() -> None:
     assert result.encoded_polyline
     assert result.steps[0].instruction == "사직로 방면으로 우회전"
     assert result.maps_url and result.maps_url.startswith("https://map.naver.com/p/directions/")
-    assert any("目前路況" in warning for warning in result.warnings)
+    assert "naver_drive_current_traffic" in result.warnings
     assert await provider.compute(origin, destination, None, "FASTEST", "transit") is None
     usage = await naver_maps_usage_snapshot(redis)
     assert usage.breakdown["directions"] == 1

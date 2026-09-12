@@ -171,6 +171,36 @@ def reason(item: DiscoveryItem, context: dict[str, Any]) -> tuple[int, str]:
     return 0, "latest"
 
 
+def spread_by_place(items: list[DiscoveryItem]) -> list[DiscoveryItem]:
+    """Reorder so one place cannot fill the screen, without dropping anything.
+
+    Measured on production: `GET /discovery/feed?limit=6` returned six cards and all six
+    were about Tokyo Station. The ranking above has no diversity term at all, so a place
+    with plenty of approved guides takes every slot it can reach.
+
+    This is a round robin, not a cap: each place gives up one item per pass, so a place's
+    second card waits until every other place has had a first, its third until they have
+    had a second, and so on. Nothing is removed — a feed that genuinely has one place in
+    it still shows all of it, in the same order. Items with no place of their own are each
+    their own group, so they are never pooled together by accident.
+    """
+    groups: dict[str, list[DiscoveryItem]] = {}
+    order: list[str] = []
+    for item in items:
+        place = item.place_ref or {}
+        key = f"{place['kind']}:{place['id']}" if place.get("kind") and place.get("id") else item.id
+        if key not in groups:
+            groups[key] = []
+            order.append(key)
+        groups[key].append(item)
+    spread: list[DiscoveryItem] = []
+    while len(spread) < len(items):
+        for key in order:
+            if groups[key]:
+                spread.append(groups[key].pop(0))
+    return spread
+
+
 async def candidates(
     session: AsyncSession,
     viewer: User | None,
@@ -352,11 +382,18 @@ async def page(
         items.sort(
             key=lambda item: (
                 counts.get(item.id, 0) if ranked else (reason(item, context)[0] if context else 0),
+                # Language ranks, it does not filter. This site writes about Japan, South
+                # Korea and Thailand, and the Japanese source is often the best one there
+                # is — dropping it would take content away from exactly the readers with
+                # the least. `reason()` returns 0-4, so most items tie on relevance and
+                # this decides between them; it can never outrank relevance itself.
+                item.locale == locale,
                 item.published_at or item.updated_at or "",
                 item.id,
             ),
             reverse=True,
         )
+        items = spread_by_place(items)
         keys = list(dict.fromkeys(item.id for item in items))[:SNAPSHOT_LIMIT]
         offset, key = 0, secrets.token_hex(16)
         await get_redis().set(

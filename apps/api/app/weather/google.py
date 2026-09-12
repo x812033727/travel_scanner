@@ -283,9 +283,9 @@ class GoogleWeatherService:
                     cast(dict[str, Any], current_payload.get("timeZone") or {}).get("id") or ""
                 ) or None
             except (KeyError, TypeError, ValueError):
-                warnings.append("目前天氣資料格式不完整")
+                warnings.append("weather_current_incomplete")
         else:
-            warnings.append("目前天氣暫時無法取得")
+            warnings.append("weather_current_unavailable")
         if isinstance(daily_result, dict):
             daily_payload = cast(dict[str, Any], daily_result)
             timezone = timezone or str(
@@ -295,9 +295,9 @@ class GoogleWeatherService:
                 try:
                     days.append(self._parse_day(value))
                 except (KeyError, TypeError, ValueError):
-                    warnings.append("部分每日預報資料格式不完整")
+                    warnings.append("weather_daily_incomplete")
         else:
-            warnings.append("10 日天氣預報暫時無法取得")
+            warnings.append("weather_daily_unavailable")
         if current is None and not days:
             if errors:
                 raise self._public_error(errors[0])

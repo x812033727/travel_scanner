@@ -127,7 +127,10 @@ def project_day_schedule(
                     late_minutes=late_minutes,
                 )
                 conflicts.append(conflict)
-                segment_warnings.append(f"固定預約可能遲到 {late_minutes} 分鐘")
+                # The exact minutes already travel structurally on the conflict
+                # above, and route-mode-panel renders them through its own
+                # catalog; this line only ever repeated them in Chinese.
+                segment_warnings.append("fixed_booking_late")
         else:
             old_start = following.start_time
             delta = round((next_start - old_start).total_seconds() / 60) if old_start else 0

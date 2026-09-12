@@ -283,7 +283,10 @@ describe("AdminHotspotGuidesPanel feedback", () => {
 
     await screen.findByText("搜尋佇列暫時無法使用");
     expect(screen.queryByRole("button", { name: "重新執行" })).toBeNull();
-    fireEvent.keyDown(window, { key: "Escape" });
+    // From the document, not from `window`: a real Escape starts at the focused element
+    // and bubbles up, so a test that dispatches on `window` passes only for a listener
+    // bound there and says nothing about the ones bound to the document.
+    fireEvent.keyDown(document.body, { key: "Escape" });
     expect(screen.queryByRole("dialog")).toBeNull();
   });
 

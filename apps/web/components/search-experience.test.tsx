@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { SearchExperience } from "./search-experience";
 
@@ -345,6 +345,39 @@ describe("SearchExperience", () => {
     // Cancelling clears the accepted search, so the start button comes back.
     expect(await screen.findByRole("button", { name: /^確認條件並開始搜尋 · / })).toBeTruthy();
     expect(screen.queryByRole("button", { name: "取消搜尋" })).toBeNull();
+
+    // Closing the stream tells the server nothing: without this the reserved use stays
+    // held for a search the member walked away from.
+    await waitFor(() => expect(vi.mocked(fetch).mock.calls.some(
+      ([url, init]) => String(url).endsWith("/searches/search-1/cancel") && init?.method === "POST",
+    )).toBe(true));
+
+    // Pressing it again must not ask a second time; there is nothing left to hand back.
+    const releases = () => vi.mocked(fetch).mock.calls.filter(
+      ([url]) => String(url).endsWith("/searches/search-1/cancel"),
+    ).length;
+    expect(releases()).toBe(1);
+  });
+
+  it("hands the reserved use back when the wait times out, not only when it is cancelled", async () => {
+    vi.useFakeTimers({ shouldAdvanceTime: true });
+    try {
+      location.search = criteria;
+      vi.stubGlobal("fetch", stubApi({ signedIn: true }));
+      render(<SearchExperience />);
+
+      fireEvent.click(await screen.findByRole("button", { name: /^確認條件並開始搜尋 · / }));
+      await screen.findByRole("button", { name: "取消搜尋" });
+      // The deadline fires from a closure created before the search existed, so it has to
+      // read the search id from somewhere other than the state it captured.
+      await act(async () => { await vi.advanceTimersByTimeAsync(150_000); });
+
+      await waitFor(() => expect(vi.mocked(fetch).mock.calls.some(
+        ([url, init]) => String(url).endsWith("/searches/search-1/cancel") && init?.method === "POST",
+      )).toBe(true));
+    } finally {
+      vi.useRealTimers();
+    }
   });
 
   it("starts the search once when a member returns with the resume marker, then drops it from the URL", async () => {
@@ -440,5 +473,59 @@ describe("SearchExperience", () => {
     FakeEventSource.instances[0].emit("search.completed", { usage: { status: "charged", uses: 1, reference: "u-1" } });
     fireEvent.click(await screen.findByRole("tab", { name: "機票" }));
     expect(await screen.findByRole("button", { name: "比較更多來源 · 不扣次" })).toBeTruthy();
+  });
+});
+
+describe("a destination this site does not search", () => {
+  /**
+   * docs/planning-flow-spec.md:157 calls this gate mandatory rather than polish:
+   * without it an unsupported place parsed to no destination at all — the same
+   * shape as saying nothing — and the traveller found out after a charged search
+   * came back with an empty shell, or after a trip was built around one.
+   */
+  const unsupported = {
+    travelers: { adults: 2 },
+    interests: [],
+    extension_destination_ids: [],
+    avoid_red_eye: false,
+    confidence: 0.5,
+    missing_fields: ["destination"],
+    destination_supported: false,
+    supported_destinations: [
+      { code: "NRT", city: "東京", country_label: "日本" },
+      { code: "ICN", city: "首爾", country_label: "韓國" },
+    ],
+  };
+
+  function stubParse(parsed: unknown) {
+    return vi.fn(async (input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.endsWith("/auth/me")) return json({ id: "u1" });
+      if (url.endsWith("/providers/status")) return json(providerStatus);
+      if (url.includes("/ai/parse-trip")) return json(parsed);
+      return json({ items: [] });
+    });
+  }
+
+  it("says so before the search, and offers somewhere it can search", async () => {
+    location.search = "q=" + encodeURIComponent("想去冰島看極光");
+    vi.stubGlobal("fetch", stubParse(unsupported));
+    render(<SearchExperience />);
+
+    expect(await screen.findByText("這個目的地目前還沒開放")).toBeTruthy();
+    expect(screen.getByRole("link", { name: "改查 東京" }).getAttribute("href"))
+      .toContain("destination=NRT");
+    const start = screen.getByRole("button", { name: /^確認條件並開始搜尋/ });
+    expect((start as HTMLButtonElement).disabled).toBe(true);
+  });
+
+  it("stays out of the way when the destination was simply not named", async () => {
+    // "You did not say where" already has its own message; this one must not fire.
+    location.search = "q=" + encodeURIComponent("十一月想出去玩五天");
+    vi.stubGlobal("fetch", stubParse({ ...unsupported, destination_supported: null, supported_destinations: [] }));
+    render(<SearchExperience />);
+
+    await screen.findByRole("button", { name: /^確認條件並開始搜尋/ });
+    expect(screen.queryByText("這個目的地目前還沒開放")).toBeNull();
   });
 });

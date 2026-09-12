@@ -35,6 +35,7 @@ from app.models import HotspotPlaceProfile, TravelHotspot, TripPlanItem
 from app.problems import AppError
 from app.trips.hours import fresh_hours
 from app.trips.router import load_items, owned_trip, persist_system_schedule_change
+from app.warnings import warning_code
 
 router = APIRouter(prefix="/hotspots", tags=["hotspots"])
 Session = Annotated[AsyncSession, Depends(get_session)]
@@ -419,7 +420,7 @@ async def select_hotspot_for_trip(
         user.id,
         payload.version,
         rows,
-        warning="景點已加入，請重新計算這一天的路線。",
+        warning=warning_code("hotspot_added"),
         target_day=payload.day_date,
     )
 

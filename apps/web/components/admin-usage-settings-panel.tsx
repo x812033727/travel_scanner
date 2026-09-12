@@ -515,7 +515,7 @@ export function AdminUsageSettingsPanel() {
                           disabled={!manage.allowed}
                           title={!manage.allowed ? manage.disabledReason : undefined}
                           onClick={() => beginEdit(item)}
-                          className="grid min-h-10 min-w-10 place-items-center rounded-lg border border-[var(--line)] disabled:opacity-40"
+                          className="grid min-h-11 min-w-11 place-items-center rounded-lg border border-[var(--line)] disabled:opacity-40"
                         >
                           <Pencil size={16} />
                         </button>
@@ -533,7 +533,7 @@ export function AdminUsageSettingsPanel() {
                           disabled={!manage.allowed || busy}
                           title={!manage.allowed ? manage.disabledReason : undefined}
                           onClick={() => void togglePackage(item)}
-                          className="grid min-h-10 min-w-10 place-items-center rounded-lg border border-[var(--line)]"
+                          className="grid min-h-11 min-w-11 place-items-center rounded-lg border border-[var(--line)]"
                         >
                           {item.is_active ? (
                             <Archive size={16} />

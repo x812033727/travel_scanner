@@ -17,6 +17,7 @@ import { dayCount, formatTripDay } from "@/lib/calendar";
 import { interestCodes, localizeDestinations, shopThemeCodes } from "@/lib/destinations";
 import { holidayCountriesFor } from "@/lib/holidays";
 import { completedTripDestination } from "@/lib/frontend-flow";
+import { savedTripsAtCapacity, useAccountUsage } from "@/components/usage-catalog-provider";
 
 type CreatedTrip = { id: string };
 const lodgingModes = ["hotel", "vacation_rental", "both", "any"] as const;
@@ -95,6 +96,11 @@ function NewTripFormForAccount({ accountId }: { accountId: string }) {
   const t = useTranslations("newTrip");
   const catalog = useTranslations("search.catalog");
   const copy = newTripCopy(locale);
+  // Both caps used to be invisible until the POST came back: the 20-trip limit as a
+  // 403 after five sections of form, the remaining uses as a 402 after the search
+  // that spent them. One /usage call answers both before anything is typed.
+  const usage = useAccountUsage();
+  const atCapacity = savedTripsAtCapacity(usage);
   const cities = useMemo(() => localizeDestinations(catalog), [catalog]);
   const today = useMemo(() => new Date().toLocaleDateString("sv"), []);
   const [busy, setBusy] = useState(false);
@@ -223,6 +229,7 @@ function NewTripFormForAccount({ accountId }: { accountId: string }) {
     setSelectedShopThemes((current) => current.includes(code) ? current.filter((item) => item !== code) : [...current, code]);
   }
   function validate() {
+    if (atCapacity) return t("errors.atCapacity", { limit: usage.savedTripLimit ?? 0 });
     if (!destinationName) return t("errors.destinationRequired");
     if (!validDay(form.start_date) || !validDay(form.end_date)) return { message: t("errors.datesRequired"), field: "dates" as const };
     if (form.start_date < today) return { message: t("errors.startInPast"), field: "dates" as const };
@@ -296,8 +303,25 @@ function NewTripFormForAccount({ accountId }: { accountId: string }) {
       <h1 className="mt-2 text-3xl font-bold">{copy.title}</h1>
       <p className="mt-3 text-[var(--muted)]">{copy.subtitle}</p>
     </header>
+    {usage.status !== "loading" && (
+      atCapacity ? (
+        <section role="status" className="mb-5 rounded-2xl border border-amber-300 bg-amber-50 p-5 text-amber-900">
+          <h2 className="font-bold">{t("capacityTitle", { limit: usage.savedTripLimit ?? 0 })}</h2>
+          <p className="mt-2 text-sm leading-6">{t("capacityBody", { limit: usage.savedTripLimit ?? 0 })}</p>
+          <a href={`/${locale}/trips`} className="mt-3 inline-flex min-h-11 items-center font-semibold underline underline-offset-4">
+            {t("capacityAction")}
+          </a>
+        </section>
+      ) : (
+        <p className="mb-5 text-sm text-[var(--muted)]">
+          {usage.status === "ready" && usage.availableUses !== null && usage.savedTrips !== null && usage.savedTripLimit !== null
+            ? t("usageLine", { available: usage.availableUses, count: usage.savedTrips, limit: usage.savedTripLimit })
+            : t("usageUnknown")}
+        </p>
+      )
+    )}
     <section className="premium-new-trip-card rounded-[2rem] border border-[var(--line)] bg-[var(--surface)] p-6 md:p-8">
-      <fieldset disabled={busy || !draftReady || Boolean(pending) || recoveryBlocked} className="min-w-0">
+      <fieldset disabled={busy || !draftReady || Boolean(pending) || recoveryBlocked || atCapacity} className="min-w-0">
         <div className="premium-new-trip-basics grid gap-5 md:grid-cols-2">
           <div>
             <label htmlFor="trip-destination" className="flex items-center gap-2 text-sm font-semibold"><MapPinned size={18} />{t("basics.destination")}</label>
@@ -345,7 +369,7 @@ function NewTripFormForAccount({ accountId }: { accountId: string }) {
       </section>}
       <footer className="calm-new-trip-footer premium-new-trip-footer mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-[var(--line)] pt-5">
         <p className="max-w-md text-xs leading-5 text-[var(--muted)]">{copy.notice}</p>
-        <button type="submit" disabled={busy || !draftReady || expired || recoveryBlocked} className="premium-new-trip-submit flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-6 py-3 font-semibold text-white disabled:opacity-60">{busy ? copy.creating : pending ? copy.retryOriginal : copy.submit}<ArrowRight size={18} /></button>
+        <button type="submit" disabled={busy || !draftReady || expired || recoveryBlocked || atCapacity} className="premium-new-trip-submit flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-6 py-3 font-semibold text-white disabled:opacity-60">{busy ? copy.creating : pending ? copy.retryOriginal : copy.submit}<ArrowRight size={18} /></button>
       </footer>
     </section>
   </form>;
