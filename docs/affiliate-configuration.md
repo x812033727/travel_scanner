@@ -120,9 +120,15 @@ Booking、Agoda、GetYourGuide 等品牌會依瀏覽器的 `Accept-Language` 自
 **完整模式**（建議）：token + marker + project ID + 各模組目標網址，
 走 Partner Links API 產生帶 `sub_id` 的深層連結，備援連結只在 API 掛掉時頂上。
 
-`sub_id` 由 `uuid5(NAMESPACE_URL, "travel-scanner:affiliate:{user_id}:{search_或_trip_id}:{partner}:{module}")`
-產生（`affiliates/router.py:126-129`），對同一組條件穩定不變，且不含明碼個資。
-在 Travelpayouts 後台可以用它區分成效來源。
+`sub_id` 由 `app/affiliates/sub_id.py` 的 `coarse_sub_id()` 產生，格式是
+`aff_{module}_{destination}_{locale}`，只由封閉目錄標籤組成。在 Travelpayouts 後台
+可以用它區分模組、目的地與語系的成效來源。
+
+**不要在這裡放任何隨使用者變動的東西。** 這個欄位在 2026-09-12 之前是
+`uuid5(..., user.id, ...)`，等於把一個穩定的每使用者假名交給聯盟網路做跨站歸因；
+`uuid5` 是決定性的，可用猜測的 `user.id` 重算驗證。兩個出口現在都會過 `safe_sub_id`，
+不符合目錄標籤形狀（或帶有長串 16 進位）的值會被擋下並重建，
+`tests/test_affiliate_sub_id.py` 會讓新的產生點在 CI 失敗。
 
 ---
 
