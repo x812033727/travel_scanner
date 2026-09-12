@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**36 open · 3 in progress · 3 blocked · 1 in review · 264 done**
+**36 open · 3 in progress · 3 blocked · 0 in review · 265 done**
 
 ## Ready to claim
 
@@ -58,9 +58,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In review
 
-| Task | Owner | Branch |
-| --- | --- | --- |
-| [Wire /guides into the sitemap, footer and destination pages](open/2026-09-11-guides-sitemap-and-entry-points.md) | claude-opus-5-guides | `claude/travel-info-guide-section-4ulqsj` |
+_Nothing here._
 
 ## Waiting
 
@@ -74,6 +72,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## Recently finished
 
+- 2026-09-11 [Wire /guides into the sitemap, footer and destination pages](done/2026-09-11-guides-sitemap-and-entry-points.md)
 - 2026-09-11 [CI 拉不到 minio/minio:latest，改用 quay.io 並釘版本](done/2026-09-11-ci-minio-minio-latest-quay-io.md)
 - 2026-09-11 [當日檢視的離線 e2e 與 CI 接線](done/2026-09-11-offline-today-e2e.md)
 - 2026-09-11 [推薦流的語言選擇與同地點去重](done/2026-09-11-discovery-feed-language-and-dedup.md)
@@ -83,4 +82,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-11 [安排編輯器的關閉鈕在儲存在途時被靜默吞掉](done/2026-09-11-planner-overlay-close-guard-race.md)
 - 2026-09-11 [trip-editor 的關閉守門測試會隨檔案順序變紅](done/2026-09-11-trip-editor-close-guard-order-dependence.md)
 - 2026-09-11 [後端仍有二十餘處警告字串是寫死的繁中](done/2026-09-11-remaining-api-warning-literals.md)
-- 2026-09-11 [航班錨點卡與路線卡仍是硬編碼繁中](done/2026-09-11-anchor-and-route-cards-hardcoded-zh.md)
