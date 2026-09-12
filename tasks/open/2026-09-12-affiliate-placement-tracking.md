@@ -21,6 +21,7 @@ scope:
   - apps/web/lib/hotel-booking-placement.ts
   - apps/web/components/destination-affiliate-options.tsx
   - apps/web/components/destination-affiliate-options.test.tsx
+  - apps/web/components/travel-services/catalog.test.tsx
   - docs/travel-services.md
 ---
 
