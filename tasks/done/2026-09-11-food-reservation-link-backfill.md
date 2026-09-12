@@ -1,13 +1,13 @@
 ---
 id: 2026-09-11-food-reservation-link-backfill
 title: 公開美食店家訂位平台連結補齊（查核與批次匯入）
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-opus-5
 claimed_at: 2026-09-11T16:02:41Z
 created_at: 2026-09-11T15:58:40Z
-completed_at:
+completed_at: 2026-09-12T02:20:50Z
 branch: claude/food-reservation-link-backfill
 depends_on: []
 scope:
