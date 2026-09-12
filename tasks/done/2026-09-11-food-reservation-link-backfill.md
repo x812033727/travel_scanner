@@ -71,3 +71,7 @@ scope:
 - PR #408。CI 的 `api` 與 `full-stack-smoke` 會紅，原因與本 PR 無關：Docker Hub 已不開放匿名拉取，
   `minio/minio:latest` 拉不下來（`docker: pull access denied`）。PR #407 正在把 MinIO 改從 quay.io 拉並釘版本。
   等 #407 進 main，把 main 併進本分支重推一次，CI 就會綠。`containers` 這個 job 本來就是綠的。
+
+- 2026-09-12 後續：覆蓋率低的主因是平台白名單太窄，不是查核不足。
+  `2026-09-12-japan-korea-reservation-platforms` 把食べログ、ホットペッパーグルメ、ぐるなび、
+  AutoReserve 與 Naver 예약 納入白名單後又補了一輪。

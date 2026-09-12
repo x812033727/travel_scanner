@@ -1,0 +1,2015 @@
+{
+ "schema_version": 1,
+ "batch_id": "2026-09-12-japan-platforms",
+ "researched_at": "2026-09-12T12:00:00+00:00",
+ "method": "把食べログ、ホットペッパーグルメ、ぐるなび、AutoReserve 納入白名單後，重查日本公開店家。候選頁來自 2026-09-11 那輪留下的 unsupported_platform_evidence，加上食べログ英文站的站內搜尋；每一頁都實際打開過，判斷依據是頁面上本店自己的訂位控制項，不是推薦店家區塊或通用宣傳。ぐるなび 擋掉一般抓取，改用內建瀏覽器逐頁看。沒有送出任何訂位，也沒有查空位。",
+ "rules": {
+  "verified": "本店的精準店頁，且頁面有本店自己的線上訂位入口。",
+  "disabled": "確認是本店的精準店頁，但沒有線上訂位；不公開。",
+  "not_found": "2026-09-11 記下的頁面現在已不存在。",
+  "unsupported_platforms": "Retty、ひとさら、EPARK、Toreta、ebica 等仍只當證據，沒有納入白名單。"
+ },
+ "records": [
+  {
+   "merchant_id": "00d07ce9-ff61-40fc-960b-15b17a8ea0ec",
+   "slug": "sapporo-zingisukan-higenoushi-ben-dian",
+   "name": "ジンギスカン ひげのうし 本店",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "verified",
+   "canonical_url": "https://tabelog.com/en/hokkaido/A0101/A010103/1004766",
+   "localized_urls": {
+    "en": "https://tabelog.com/en/hokkaido/A0101/A010103/1004766",
+    "zh-TW": "https://tabelog.com/tw/hokkaido/A0101/A010103/1004766",
+    "zh-CN": "https://tabelog.com/cn/hokkaido/A0101/A010103/1004766",
+    "ko": "https://tabelog.com/kr/hokkaido/A0101/A010103/1004766"
+   },
+   "review_note": "2026-09-12 查核：食べログ店頁「Jingisukan Higenoushi Honten Reservation - Tanukikoji/Jingisukan」，地址 北海道札幌市中央区南三条西5丁目35-3，電話 +81-11-281-2980，與清單的店名與座標相符。頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。 英文／繁中／簡中／韓文四個語系頁都開得起來，標題各自寫「Reservation」「可預約」「可预约」「예약가능」，同一家店編號。日文版（無語系目錄）本次未存：食べログ的日文路徑擋掉了本次的抓取，沒有親眼確認。",
+   "booking_observation": "頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/en/hokkaido/A0101/A010103/1004766",
+     "role": "platform_branch_page",
+     "observation": "標題「Jingisukan Higenoushi Honten Reservation - Tanukikoji/Jingisukan」，地址 北海道札幌市中央区南三条西5丁目35-3，電話 +81-11-281-2980；側欄有 ネット予約 日曆。"
+    },
+    {
+     "url": "https://tabelog.com/tw/hokkaido/A0101/A010103/1004766",
+     "role": "localized_page",
+     "observation": "繁體中文頁，同一店家編號，標題標「可預約」。"
+    },
+    {
+     "url": "https://tabelog.com/kr/hokkaido/A0101/A010103/1004766",
+     "role": "localized_page",
+     "observation": "韓文頁，同一店家編號，標題標「예약가능」。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "698da131-36b7-4b1d-a1a5-f20d36d2aad2",
+   "slug": "sapporo-brewing",
+   "name": "月と太陽BREWING 本店",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "verified",
+   "canonical_url": "https://tabelog.com/en/hokkaido/A0101/A010103/1047035",
+   "localized_urls": {
+    "en": "https://tabelog.com/en/hokkaido/A0101/A010103/1047035",
+    "zh-TW": "https://tabelog.com/tw/hokkaido/A0101/A010103/1047035",
+    "zh-CN": "https://tabelog.com/cn/hokkaido/A0101/A010103/1047035",
+    "ko": "https://tabelog.com/kr/hokkaido/A0101/A010103/1047035"
+   },
+   "review_note": "2026-09-12 查核：食べログ店頁「Tsuki to Taiyo Brewing Honten Reservation - Hosui Susukino/Beer Bar」，地址 北海道札幌市中央区南3条東1-3 アルファ創成川公園ビル 1F，電話 +81-50-3085-2989，與清單的店名與座標相符。頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。 英文／繁中／簡中／韓文四個語系頁都開得起來，標題各自寫「Reservation」「可預約」「可预约」「예약가능」，同一家店編號。日文版（無語系目錄）本次未存：食べログ的日文路徑擋掉了本次的抓取，沒有親眼確認。",
+   "booking_observation": "頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/en/hokkaido/A0101/A010103/1047035",
+     "role": "platform_branch_page",
+     "observation": "標題「Tsuki to Taiyo Brewing Honten Reservation - Hosui Susukino/Beer Bar」，地址 北海道札幌市中央区南3条東1-3 アルファ創成川公園ビル 1F，電話 +81-50-3085-2989；側欄有 ネット予約 日曆。"
+    },
+    {
+     "url": "https://tabelog.com/tw/hokkaido/A0101/A010103/1047035",
+     "role": "localized_page",
+     "observation": "繁體中文頁，同一店家編號，標題標「可預約」。"
+    },
+    {
+     "url": "https://tabelog.com/kr/hokkaido/A0101/A010103/1047035",
+     "role": "localized_page",
+     "observation": "韓文頁，同一店家編號，標題標「예약가능」。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "c1c1894b-2335-48cd-b204-25b1852243ba",
+   "slug": "fukuoka-nejikemon",
+   "name": "やさい巻き串屋 ねじけもん",
+   "country_code": "JP",
+   "provider": "hotpepper",
+   "status": "verified",
+   "canonical_url": "https://www.hotpepper.jp/strJ001025125",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：ホットペッパーグルメ店頁「やさい巻き串屋 ねじけもん(天神/居酒屋)＜ネット予約可＞」，地址 大名2-1-29 AIビルC館1F，與清單店名相符。頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。",
+   "booking_observation": "頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。",
+   "evidence": [
+    {
+     "url": "https://www.hotpepper.jp/strJ001025125",
+     "role": "platform_branch_page",
+     "observation": "標題「やさい巻き串屋 ねじけもん(天神/居酒屋)＜ネット予約可＞」，地址 大名2-1-29 AIビルC館1F。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "25b32b3d-53b2-4129-9e98-fe04a246fbdf",
+   "slug": "nagoya-yabaton",
+   "name": "矢場とん 矢場町本店",
+   "country_code": "JP",
+   "provider": "hotpepper",
+   "status": "verified",
+   "canonical_url": "https://www.hotpepper.jp/strJ000107401",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：ホットペッパーグルメ店頁「矢場とん 矢場町本店(矢場町/創作料理)＜ネット予約可＞」，地址 大須3-6-18，與清單店名相符。頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。",
+   "booking_observation": "頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。",
+   "evidence": [
+    {
+     "url": "https://www.hotpepper.jp/strJ000107401",
+     "role": "platform_branch_page",
+     "observation": "標題「矢場とん 矢場町本店(矢場町/創作料理)＜ネット予約可＞」，地址 大須3-6-18。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "00d07ce9-ff61-40fc-960b-15b17a8ea0ec",
+   "slug": "sapporo-zingisukan-higenoushi-ben-dian",
+   "name": "ジンギスカン ひげのうし 本店",
+   "country_code": "JP",
+   "provider": "hotpepper",
+   "status": "verified",
+   "canonical_url": "https://www.hotpepper.jp/strJ003297588",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：ホットペッパーグルメ店頁「ジンギスカン　ひげのうし本店(すすきの駅/焼肉・ホルモン)＜ネット予約可＞」，地址 南3条西5丁目35-3，與清單店名相符。頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。",
+   "booking_observation": "頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。",
+   "evidence": [
+    {
+     "url": "https://www.hotpepper.jp/strJ003297588",
+     "role": "platform_branch_page",
+     "observation": "標題「ジンギスカン　ひげのうし本店(すすきの駅/焼肉・ホルモン)＜ネット予約可＞」，地址 南3条西5丁目35-3。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "698da131-36b7-4b1d-a1a5-f20d36d2aad2",
+   "slug": "sapporo-brewing",
+   "name": "月と太陽BREWING 本店",
+   "country_code": "JP",
+   "provider": "hotpepper",
+   "status": "verified",
+   "canonical_url": "https://www.hotpepper.jp/strJ001285486",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：ホットペッパーグルメ店頁「月と太陽BREWING 本店(札幌大通/ダイニングバー・バル)＜ネット予約可＞」，地址 南3条東1丁目3 アルファ創成川公園ビル1階，與清單店名相符。頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。",
+   "booking_observation": "頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。",
+   "evidence": [
+    {
+     "url": "https://www.hotpepper.jp/strJ001285486",
+     "role": "platform_branch_page",
+     "observation": "標題「月と太陽BREWING 本店(札幌大通/ダイニングバー・バル)＜ネット予約可＞」，地址 南3条東1丁目3 アルファ創成川公園ビル1階。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "7d730687-f10b-4ed1-9c23-bfa34ede6370",
+   "slug": "okinawa-tunda-dining",
+   "name": "首里 東道Dining",
+   "country_code": "JP",
+   "provider": "gurunavi",
+   "status": "verified",
+   "canonical_url": "https://r.gnavi.co.jp/ejp0u6h60000",
+   "localized_urls": {},
+   "review_note": "2026-09-12 用內建瀏覽器查核（ぐるなび 擋掉一般抓取）：店頁「首里 東道Dining」，地址 沖縄県那覇市首里当蔵町2-13 キャッスルビュー4F，與清單店名與座標相符。頁面有「空席確認・予約する」連往本店自己的 plan-reserve 方案頁，不是頁尾那則「ネット予約して来店すると、楽天ポイントが貯まる」的通用宣傳。",
+   "booking_observation": "頁面有「空席確認・予約する」連往本店自己的 plan-reserve 方案頁，不是頁尾那則「ネット予約して来店すると、楽天ポイントが貯まる」的通用宣傳。",
+   "evidence": [
+    {
+     "url": "https://r.gnavi.co.jp/ejp0u6h60000",
+     "role": "platform_branch_page",
+     "observation": "標題「首里 東道Dining」，地址 沖縄県那覇市首里当蔵町2-13 キャッスルビュー4F；有「空席確認・予約する」。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "6592fdb1-cb55-44c9-bfe7-259c2349be9a",
+   "slug": "kanazawa-morihachi",
+   "name": "森八 本店",
+   "country_code": "JP",
+   "provider": "gurunavi",
+   "status": "verified",
+   "canonical_url": "https://r.gnavi.co.jp/r6pyrfvf0000",
+   "localized_urls": {},
+   "review_note": "2026-09-12 用內建瀏覽器查核（ぐるなび 擋掉一般抓取）：店頁「森八 本店 森八茶寮」，地址 石川県金沢市大手町10-15，與清單店名與座標相符。頁面有「空席確認・予約する」連往本店自己的 plan-reserve 方案頁，不是頁尾那則「ネット予約して来店すると、楽天ポイントが貯まる」的通用宣傳。",
+   "booking_observation": "頁面有「空席確認・予約する」連往本店自己的 plan-reserve 方案頁，不是頁尾那則「ネット予約して来店すると、楽天ポイントが貯まる」的通用宣傳。",
+   "evidence": [
+    {
+     "url": "https://r.gnavi.co.jp/r6pyrfvf0000",
+     "role": "platform_branch_page",
+     "observation": "標題「森八 本店 森八茶寮」，地址 石川県金沢市大手町10-15；有「空席確認・予約する」。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "7d730687-f10b-4ed1-9c23-bfa34ede6370",
+   "slug": "okinawa-tunda-dining",
+   "name": "首里 東道Dining",
+   "country_code": "JP",
+   "provider": "autoreserve",
+   "status": "verified",
+   "canonical_url": "https://autoreserve.com/ja/restaurants/uQ44Ud8JVDbYCy9ykyQE",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：AutoReserve 店頁「首里 東道ダイニングの予約」，地址 沖縄県那覇市首里当蔵町2-13 4F，與清單店名與座標相符。頁面有「予約する」與空席欄位，且沒有「予約代行不可」。AutoReserve 是代訂服務：送出後由 AutoReserve 代為向店家訂位，不是餐廳自己的線上訂位系統。",
+   "booking_observation": "頁面有「予約する」與空席欄位，且沒有「予約代行不可」。AutoReserve 是代訂服務：送出後由 AutoReserve 代為向店家訂位，不是餐廳自己的線上訂位系統。",
+   "evidence": [
+    {
+     "url": "https://autoreserve.com/ja/restaurants/uQ44Ud8JVDbYCy9ykyQE",
+     "role": "platform_branch_page",
+     "observation": "標題「首里 東道ダイニングの予約」，地址 沖縄県那覇市首里当蔵町2-13 4F；有「予約する」與空席欄位。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "023b29ec-9e30-4888-9bce-ae132f7e46ce",
+   "slug": "okinawa-akatafu",
+   "name": "琉球料理 赤田風",
+   "country_code": "JP",
+   "provider": "autoreserve",
+   "status": "verified",
+   "canonical_url": "https://autoreserve.com/ja/restaurants/pY8eo63z1LYemPW9xxgg",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：AutoReserve 店頁「赤田風の予約」，地址 沖縄県那覇市首里赤田町1-37，與清單店名與座標相符。頁面有「予約する」與空席欄位，且沒有「予約代行不可」。AutoReserve 是代訂服務：送出後由 AutoReserve 代為向店家訂位，不是餐廳自己的線上訂位系統。",
+   "booking_observation": "頁面有「予約する」與空席欄位，且沒有「予約代行不可」。AutoReserve 是代訂服務：送出後由 AutoReserve 代為向店家訂位，不是餐廳自己的線上訂位系統。",
+   "evidence": [
+    {
+     "url": "https://autoreserve.com/ja/restaurants/pY8eo63z1LYemPW9xxgg",
+     "role": "platform_branch_page",
+     "observation": "標題「赤田風の予約」，地址 沖縄県那覇市首里赤田町1-37；有「予約する」與空席欄位。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "f6b2ed7a-388f-4eae-b37b-dfeccb335cfe",
+   "slug": "okinawa-ryukyu-ryori-mie",
+   "name": "琉球料理 美榮",
+   "country_code": "JP",
+   "provider": "autoreserve",
+   "status": "verified",
+   "canonical_url": "https://autoreserve.com/ja/restaurants/BPPgH4xy6to737C6QtQk",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：AutoReserve 店頁「美榮の予約」，地址 沖縄県那覇市久茂地1-8-8，與清單店名與座標相符。頁面有「予約する」與空席欄位，且沒有「予約代行不可」。AutoReserve 是代訂服務：送出後由 AutoReserve 代為向店家訂位，不是餐廳自己的線上訂位系統。",
+   "booking_observation": "頁面有「予約する」與空席欄位，且沒有「予約代行不可」。AutoReserve 是代訂服務：送出後由 AutoReserve 代為向店家訂位，不是餐廳自己的線上訂位系統。",
+   "evidence": [
+    {
+     "url": "https://autoreserve.com/ja/restaurants/BPPgH4xy6to737C6QtQk",
+     "role": "platform_branch_page",
+     "observation": "標題「美榮の予約」，地址 沖縄県那覇市久茂地1-8-8；有「予約する」與空席欄位。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "bb7c3aea-e6e1-4608-bcad-93e2dad84f9b",
+   "slug": "sendai-aburiya-jujiro",
+   "name": "炙屋十兵衛",
+   "country_code": "JP",
+   "provider": "autoreserve",
+   "status": "verified",
+   "canonical_url": "https://autoreserve.com/ja/restaurants/MnzSEZfmc7Us9RLdv11o",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：AutoReserve 店頁「炙屋十兵衛 仙台エスパル店【公式】のネット予約」，地址 宮城県仙台市青葉区中央1-1-1 エスパル仙台店 B1F，與清單店名與座標相符。頁面有「予約する」與空席欄位，且沒有「予約代行不可」。AutoReserve 是代訂服務：送出後由 AutoReserve 代為向店家訂位，不是餐廳自己的線上訂位系統。 分店判定：仙台只有エスパル店與三井アウトレットパーク仙台港店兩間，清單座標 38.2590/140.8811 距エスパル約 170 公尺、距アウトレット約 12 公里，且 2026-09-11 那輪查核獨立找到的ホットペッパー頁也是エスパル店。",
+   "booking_observation": "頁面有「予約する」與空席欄位，且沒有「予約代行不可」。AutoReserve 是代訂服務：送出後由 AutoReserve 代為向店家訂位，不是餐廳自己的線上訂位系統。",
+   "evidence": [
+    {
+     "url": "https://autoreserve.com/ja/restaurants/MnzSEZfmc7Us9RLdv11o",
+     "role": "platform_branch_page",
+     "observation": "標題「炙屋十兵衛 仙台エスパル店【公式】のネット予約」，地址 宮城県仙台市青葉区中央1-1-1 エスパル仙台店 B1F；有「予約する」與空席欄位。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "977c5dea-eb61-4d33-bc0f-0d5107d73e95",
+   "slug": "fukuoka-manu-coffee",
+   "name": "manu coffee 大名店",
+   "country_code": "JP",
+   "provider": "hotpepper",
+   "status": "disabled",
+   "canonical_url": "https://www.hotpepper.jp/strJ001089930/",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：hotpepper 店頁「マヌコーヒー 大名店(大名/カフェ・スイーツ) | ホットペッパーグルメ」，地址 大名1-1-3石井ビル１F，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。）。",
+   "evidence": [
+    {
+     "url": "https://www.hotpepper.jp/strJ001089930/",
+     "role": "platform_branch_page",
+     "observation": "標題「マヌコーヒー 大名店(大名/カフェ・スイーツ) | ホットペッパーグルメ」，地址 大名1-1-3石井ビル１F；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "5d82f21c-2b9b-4806-a30b-822bc5e1b13f",
+   "slug": "hiroshima-hassei",
+   "name": "お好み焼き 八誠",
+   "country_code": "JP",
+   "provider": "hotpepper",
+   "status": "disabled",
+   "canonical_url": "https://www.hotpepper.jp/strJ000552577/",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：hotpepper 店頁「八誠(小町・じぞう通り/その他グルメ) | ホットペッパーグルメ」，地址 富士見町4-17，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。）。",
+   "evidence": [
+    {
+     "url": "https://www.hotpepper.jp/strJ000552577/",
+     "role": "platform_branch_page",
+     "observation": "標題「八誠(小町・じぞう通り/その他グルメ) | ホットペッパーグルメ」，地址 富士見町4-17；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "0fb2f4cc-55dc-4f49-a4c4-adba5cb78de4",
+   "slug": "kamakura-chikaramochiya",
+   "name": "力餅家",
+   "country_code": "JP",
+   "provider": "hotpepper",
+   "status": "disabled",
+   "canonical_url": "https://www.hotpepper.jp/strJ001065581/",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：hotpepper 店頁「力餅家(長谷/その他グルメ) | ホットペッパーグルメ」，地址 坂ノ下18-18，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。）。",
+   "evidence": [
+    {
+     "url": "https://www.hotpepper.jp/strJ001065581/",
+     "role": "platform_branch_page",
+     "observation": "標題「力餅家(長谷/その他グルメ) | ホットペッパーグルメ」，地址 坂ノ下18-18；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "ef09d370-59a4-4568-ae98-7ed30039f264",
+   "slug": "kamakura-toshimaya-karyo-hatokoji",
+   "name": "豊島屋菓寮 八十小路",
+   "country_code": "JP",
+   "provider": "hotpepper",
+   "status": "disabled",
+   "canonical_url": "https://www.hotpepper.jp/strJ000952063/",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：hotpepper 店頁「豊島屋菓寮 八十小路(鎌倉駅/カフェ・スイーツ) | ホットペッパーグルメ」，地址 小町2-9-20，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。）。",
+   "evidence": [
+    {
+     "url": "https://www.hotpepper.jp/strJ000952063/",
+     "role": "platform_branch_page",
+     "observation": "標題「豊島屋菓寮 八十小路(鎌倉駅/カフェ・スイーツ) | ホットペッパーグルメ」，地址 小町2-9-20；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "42ef13df-6690-4fb9-84e9-9e367813b743",
+   "slug": "kamakura-akimoto",
+   "name": "鎌倉 秋本",
+   "country_code": "JP",
+   "provider": "hotpepper",
+   "status": "disabled",
+   "canonical_url": "https://www.hotpepper.jp/strJ000225234/",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：hotpepper 店頁「鎌倉・秋本(鎌倉駅/その他グルメ) | ホットペッパーグルメ」，地址 小町1-6-15i－ZA鎌倉3階，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。）。",
+   "evidence": [
+    {
+     "url": "https://www.hotpepper.jp/strJ000225234/",
+     "role": "platform_branch_page",
+     "observation": "標題「鎌倉・秋本(鎌倉駅/その他グルメ) | ホットペッパーグルメ」，地址 小町1-6-15i－ZA鎌倉3階；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "feebc29c-6296-4421-81c3-ddb12449e975",
+   "slug": "kanazawa-mori-mori-sushi",
+   "name": "もりもり寿し 近江町店",
+   "country_code": "JP",
+   "provider": "hotpepper",
+   "status": "disabled",
+   "canonical_url": "https://www.hotpepper.jp/strJ000105843/",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：hotpepper 店頁「もりもり寿司・近江町店(武蔵・近江町/その他グルメ) | ホットペッパーグルメ」，地址 青草町88近江町市場内1階，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。）。",
+   "evidence": [
+    {
+     "url": "https://www.hotpepper.jp/strJ000105843/",
+     "role": "platform_branch_page",
+     "observation": "標題「もりもり寿司・近江町店(武蔵・近江町/その他グルメ) | ホットペッパーグルメ」，地址 青草町88近江町市場内1階；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "a5189c93-326e-49ae-b292-d5b9e859df75",
+   "slug": "okinawa-shimujo",
+   "name": "沖縄そばの店 しむじょう",
+   "country_code": "JP",
+   "provider": "hotpepper",
+   "status": "disabled",
+   "canonical_url": "https://www.hotpepper.jp/strJ000636708/",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：hotpepper 店頁「しむじょう(首里/和食) | ホットペッパーグルメ」，地址 首里末吉町2-124-2，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。）。",
+   "evidence": [
+    {
+     "url": "https://www.hotpepper.jp/strJ000636708/",
+     "role": "platform_branch_page",
+     "observation": "標題「しむじょう(首里/和食) | ホットペッパーグルメ」，地址 首里末吉町2-124-2；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "7d730687-f10b-4ed1-9c23-bfa34ede6370",
+   "slug": "okinawa-tunda-dining",
+   "name": "首里 東道Dining",
+   "country_code": "JP",
+   "provider": "hotpepper",
+   "status": "disabled",
+   "canonical_url": "https://www.hotpepper.jp/strJ001010766/",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：hotpepper 店頁「首里 東道ダイニング(首里/ダイニングバー・バル) | ホットペッパーグルメ」，地址 首里当蔵町２-13 キャッスルビュー4階，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。）。",
+   "evidence": [
+    {
+     "url": "https://www.hotpepper.jp/strJ001010766/",
+     "role": "platform_branch_page",
+     "observation": "標題「首里 東道ダイニング(首里/ダイニングバー・バル) | ホットペッパーグルメ」，地址 首里当蔵町２-13 キャッスルビュー4階；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "e7b58afb-6701-4599-af35-2426fdbb979d",
+   "slug": "okinawa-kijimuna-depot-island",
+   "name": "タコライスcafe きじむなぁ デポアイランド店",
+   "country_code": "JP",
+   "provider": "hotpepper",
+   "status": "disabled",
+   "canonical_url": "https://www.hotpepper.jp/strJ000987614/",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：hotpepper 店頁「タコライスcafe きじむなぁ デポアイランド店(北谷/カフェ・スイーツ) | ホットペッパーグルメ」，地址 北谷町字美浜９番地１ デポアイランドビルC棟2F，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。）。",
+   "evidence": [
+    {
+     "url": "https://www.hotpepper.jp/strJ000987614/",
+     "role": "platform_branch_page",
+     "observation": "標題「タコライスcafe きじむなぁ デポアイランド店(北谷/カフェ・スイーツ) | ホットペッパーグルメ」，地址 北谷町字美浜９番地１ デポアイランドビルC棟2F；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "166adb77-5cb2-4f2a-9bf8-136d6847ab50",
+   "slug": "okinawa-emi-no-mise",
+   "name": "笑味の店",
+   "country_code": "JP",
+   "provider": "hotpepper",
+   "status": "disabled",
+   "canonical_url": "https://www.hotpepper.jp/strJ000114210/",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：hotpepper 店頁「笑味の店(沖縄県北部その他/その他グルメ) | ホットペッパーグルメ」，地址 沖縄県国頭郡大宜味村大兼久61，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。）。",
+   "evidence": [
+    {
+     "url": "https://www.hotpepper.jp/strJ000114210/",
+     "role": "platform_branch_page",
+     "observation": "標題「笑味の店(沖縄県北部その他/その他グルメ) | ホットペッパーグルメ」，地址 沖縄県国頭郡大宜味村大兼久61；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "703dd672-2f7b-47c4-8772-bd40d4959413",
+   "slug": "osaka-kyoto-endo-sushi",
+   "name": "ゑんどう寿司",
+   "country_code": "JP",
+   "provider": "hotpepper",
+   "status": "disabled",
+   "canonical_url": "https://www.hotpepper.jp/strJ000849142/",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：hotpepper 店頁「ゑんどう寿司・中央市場店(野田阪神/その他グルメ) | ホットペッパーグルメ」，地址 野田1-1-86，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。）。",
+   "evidence": [
+    {
+     "url": "https://www.hotpepper.jp/strJ000849142/",
+     "role": "platform_branch_page",
+     "observation": "標題「ゑんどう寿司・中央市場店(野田阪神/その他グルメ) | ホットペッパーグルメ」，地址 野田1-1-86；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "65760310-eebf-4384-a8c4-932ecbc6bee4",
+   "slug": "osaka-kyoto-mizuno",
+   "name": "美津の",
+   "country_code": "JP",
+   "provider": "hotpepper",
+   "status": "disabled",
+   "canonical_url": "https://www.hotpepper.jp/strJ000109658/",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：hotpepper 店頁「美津の(道頓堀・宗右衛門町/お好み焼き・もんじゃ) | ホットペッパーグルメ」，地址 道頓堀１‐４‐１５ ，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。）。",
+   "evidence": [
+    {
+     "url": "https://www.hotpepper.jp/strJ000109658/",
+     "role": "platform_branch_page",
+     "observation": "標題「美津の(道頓堀・宗右衛門町/お好み焼き・もんじゃ) | ホットペッパーグルメ」，地址 道頓堀１‐４‐１５ ；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "2677a3e2-1739-4fb9-9d77-72d6e297320c",
+   "slug": "hokkyokusei-shinsaibashi-main-store",
+   "name": "北極星 心斎橋本店",
+   "country_code": "JP",
+   "provider": "hotpepper",
+   "status": "disabled",
+   "canonical_url": "https://www.hotpepper.jp/strJ000109256/",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：hotpepper 店頁「北極星 心斎橋 本店(アメリカ村・西心斎橋/洋食) | ホットペッパーグルメ」，地址 西心斎橋２－７－２７，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。）。",
+   "evidence": [
+    {
+     "url": "https://www.hotpepper.jp/strJ000109256/",
+     "role": "platform_branch_page",
+     "observation": "標題「北極星 心斎橋 本店(アメリカ村・西心斎橋/洋食) | ホットペッパーグルメ」，地址 西心斎橋２－７－２７；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "55feb791-4e56-47e9-be33-964d9ff98bff",
+   "slug": "sapporo-garaku",
+   "name": "スープカレーGARAKU 札幌本店",
+   "country_code": "JP",
+   "provider": "hotpepper",
+   "status": "disabled",
+   "canonical_url": "https://www.hotpepper.jp/strJ000697432/",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：hotpepper 店頁「スープカレー GARAKU ガラク(すすきの駅/創作料理) | ホットペッパーグルメ」，地址 南２条西２丁目おくむらビルB１F，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。）。",
+   "evidence": [
+    {
+     "url": "https://www.hotpepper.jp/strJ000697432/",
+     "role": "platform_branch_page",
+     "observation": "標題「スープカレー GARAKU ガラク(すすきの駅/創作料理) | ホットペッパーグルメ」，地址 南２条西２丁目おくむらビルB１F；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "bb7c3aea-e6e1-4608-bcad-93e2dad84f9b",
+   "slug": "sendai-aburiya-jujiro",
+   "name": "炙屋十兵衛",
+   "country_code": "JP",
+   "provider": "hotpepper",
+   "status": "disabled",
+   "canonical_url": "https://www.hotpepper.jp/strJ000302104/",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：hotpepper 店頁「炙屋十兵衛エスパル店(仙台駅/和食) | ホットペッパーグルメ」，地址 中央１－１－１　エスパルB1F，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。）。",
+   "evidence": [
+    {
+     "url": "https://www.hotpepper.jp/strJ000302104/",
+     "role": "platform_branch_page",
+     "observation": "標題「炙屋十兵衛エスパル店(仙台駅/和食) | ホットペッパーグルメ」，地址 中央１－１－１　エスパルB1F；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "209b6414-9c9f-4886-9871-7c354aef420a",
+   "slug": "tokyo-torishiki",
+   "name": "鳥しき",
+   "country_code": "JP",
+   "provider": "hotpepper",
+   "status": "disabled",
+   "canonical_url": "https://www.hotpepper.jp/strJ000729539/",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：hotpepper 店頁「鳥しき(目黒/和食) | ホットペッパーグルメ」，地址 上大崎2-14-12，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面標題帶「＜ネット予約可＞」，JSON-LD 的 ReserveAction 指向本店自己的 /yoyaku/，不是「このエリアのお店」清單裡別家的ネット予約標籤。）。",
+   "evidence": [
+    {
+     "url": "https://www.hotpepper.jp/strJ000729539/",
+     "role": "platform_branch_page",
+     "observation": "標題「鳥しき(目黒/和食) | ホットペッパーグルメ」，地址 上大崎2-14-12；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "14aaadfb-e689-4574-9f14-fe809735fced",
+   "slug": "fukuoka-coffee-county-fukuoka",
+   "name": "COFFEE COUNTY Fukuoka",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/fukuoka/A4001/A400103/40044408",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「COFFEE COUNTY Fukuoka - 葯院/咖啡店 | Tabelog」，地址 福岡県福岡市中央区高砂1-21-21，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/fukuoka/A4001/A400103/40044408",
+     "role": "platform_branch_page",
+     "observation": "標題「COFFEE COUNTY Fukuoka - 葯院/咖啡店 | Tabelog」，地址 福岡県福岡市中央区高砂1-21-21；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "0450df1f-e0f4-40b8-8d65-7f4e617c7d6e",
+   "slug": "fukuoka-daimyo-softcream",
+   "name": "DAIMYO SOFTCREAM 大名店",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/fukuoka/A4001/A400104/40046420",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「大名軟雪糕 大名店 - 赤坂/軟冰淇淋 | Tabelog」，地址 福岡県福岡市中央区大名1-11-4，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/fukuoka/A4001/A400104/40046420",
+     "role": "platform_branch_page",
+     "observation": "標題「大名軟雪糕 大名店 - 赤坂/軟冰淇淋 | Tabelog」，地址 福岡県福岡市中央区大名1-11-4；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "c1c1894b-2335-48cd-b204-25b1852243ba",
+   "slug": "fukuoka-nejikemon",
+   "name": "やさい巻き串屋 ねじけもん",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/fukuoka/A4001/A400104/40028622",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「蔬菜卷串屋 Nejikemon - 赤坂/串燒 | Tabelog」，地址 福岡県福岡市中央区大名2-1-29 AIビルC館 1F，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/fukuoka/A4001/A400104/40028622",
+     "role": "platform_branch_page",
+     "observation": "標題「蔬菜卷串屋 Nejikemon - 赤坂/串燒 | Tabelog」，地址 福岡県福岡市中央区大名2-1-29 AIビルC館 1F；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "977c5dea-eb61-4d33-bc0f-0d5107d73e95",
+   "slug": "fukuoka-manu-coffee",
+   "name": "manu coffee 大名店",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/fukuoka/A4001/A400103/40027221",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「manu coffee 大名店 - 西鐵福岡/咖啡店 | Tabelog」，地址 福岡県福岡市中央区大名1-1-3 石井ビル　１F，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/fukuoka/A4001/A400103/40027221",
+     "role": "platform_branch_page",
+     "observation": "標題「manu coffee 大名店 - 西鐵福岡/咖啡店 | Tabelog」，地址 福岡県福岡市中央区大名1-1-3 石井ビル　１F；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "5d82f21c-2b9b-4806-a30b-822bc5e1b13f",
+   "slug": "hiroshima-hassei",
+   "name": "お好み焼き 八誠",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/hiroshima/A3401/A340117/34001574",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「御好燒・鐵板燒 八誠 - 中電前/大阪燒 | Tabelog」，地址 広島県広島市中区富士見町4-17，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/hiroshima/A3401/A340117/34001574",
+     "role": "platform_branch_page",
+     "observation": "標題「御好燒・鐵板燒 八誠 - 中電前/大阪燒 | Tabelog」，地址 広島県広島市中区富士見町4-17；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "0fb2f4cc-55dc-4f49-a4c4-adba5cb78de4",
+   "slug": "kamakura-chikaramochiya",
+   "name": "力餅家",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/kanagawa/A1404/A140402/14007758",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「力餅家 - 長谷/日式點心 | Tabelog」，地址 神奈川県鎌倉市坂の下18-18，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/kanagawa/A1404/A140402/14007758",
+     "role": "platform_branch_page",
+     "observation": "標題「力餅家 - 長谷/日式點心 | Tabelog」，地址 神奈川県鎌倉市坂の下18-18；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "ef09d370-59a4-4568-ae98-7ed30039f264",
+   "slug": "kamakura-toshimaya-karyo-hatokoji",
+   "name": "豊島屋菓寮 八十小路",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/kanagawa/A1404/A140402/14004948",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「豐島屋菓寮 八十小路 - 鎌倉/日式甜點店 | Tabelog」，地址 神奈川県鎌倉市小町2-9-20，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/kanagawa/A1404/A140402/14004948",
+     "role": "platform_branch_page",
+     "observation": "標題「豐島屋菓寮 八十小路 - 鎌倉/日式甜點店 | Tabelog」，地址 神奈川県鎌倉市小町2-9-20；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "42ef13df-6690-4fb9-84e9-9e367813b743",
+   "slug": "kamakura-akimoto",
+   "name": "鎌倉 秋本",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/kanagawa/A1404/A140402/14003222",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「秋本 - 鎌倉/日本料理 | Tabelog」，地址 神奈川県鎌倉市小町1-6-15 アイザ鎌倉 3F，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/kanagawa/A1404/A140402/14003222",
+     "role": "platform_branch_page",
+     "observation": "標題「秋本 - 鎌倉/日本料理 | Tabelog」，地址 神奈川県鎌倉市小町1-6-15 アイザ鎌倉 3F；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "6d39b56b-8029-460e-acf1-bb69f3758709",
+   "slug": "kamakura-shirasuya-koshigoe",
+   "name": "しらすや 腰越漁港前店",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/kanagawa/A1404/A140403/14002304",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「Shirasu Ya 腰越漁港前店 - 腰越/海鮮 | Tabelog」，地址 神奈川県鎌倉市腰越2-10-13，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/kanagawa/A1404/A140403/14002304",
+     "role": "platform_branch_page",
+     "observation": "標題「Shirasu Ya 腰越漁港前店 - 腰越/海鮮 | Tabelog」，地址 神奈川県鎌倉市腰越2-10-13；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "68d8b6bd-5469-4959-8bb4-e0d7065e703c",
+   "slug": "kamakura-tenshin-an",
+   "name": "点心庵",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/kanagawa/A1404/A140401/14070650",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「點心庵 - 北鎌倉/咖啡店 | Tabelog」，地址 神奈川県鎌倉市山ノ内7，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/kanagawa/A1404/A140401/14070650",
+     "role": "platform_branch_page",
+     "observation": "標題「點心庵 - 北鎌倉/咖啡店 | Tabelog」，地址 神奈川県鎌倉市山ノ内7；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "feebc29c-6296-4421-81c3-ddb12449e975",
+   "slug": "kanazawa-mori-mori-sushi",
+   "name": "もりもり寿し 近江町店",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/ishikawa/A1701/A170101/17000911",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「Morimori壽司 近江町店 - 北鐵金澤/回轉壽司 | Tabelog」，地址 石川県金沢市青草町88 近江町いちば館 1F，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/ishikawa/A1701/A170101/17000911",
+     "role": "platform_branch_page",
+     "observation": "標題「Morimori壽司 近江町店 - 北鐵金澤/回轉壽司 | Tabelog」，地址 石川県金沢市青草町88 近江町いちば館 1F；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "25b32b3d-53b2-4129-9e98-fe04a246fbdf",
+   "slug": "nagoya-yabaton",
+   "name": "矢場とん 矢場町本店",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/aichi/A2301/A230103/23000134",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「名古屋名物 味噌豬排 矢場豚 矢場町本店 - 矢場町/炸豬排 | Tabelog」，地址 愛知県名古屋市中区大須3-6-18，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/aichi/A2301/A230103/23000134",
+     "role": "platform_branch_page",
+     "observation": "標題「名古屋名物 味噌豬排 矢場豚 矢場町本店 - 矢場町/炸豬排 | Tabelog」，地址 愛知県名古屋市中区大須3-6-18；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "2d0e6d7e-ec3f-4126-a2e4-b610a8c84c6a",
+   "slug": "okinawa-inaka-kosetsu-ichiba",
+   "name": "ソーキそば専門店 田舎 公設市場前南店",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/okinawa/A4701/A470101/47000179",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「田舍 公設市場南店 - 牧志/沖繩麵 | Tabelog」，地址 沖縄県那覇市松尾2-10-20，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/okinawa/A4701/A470101/47000179",
+     "role": "platform_branch_page",
+     "observation": "標題「田舍 公設市場南店 - 牧志/沖繩麵 | Tabelog」，地址 沖縄県那覇市松尾2-10-20；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "a5189c93-326e-49ae-b292-d5b9e859df75",
+   "slug": "okinawa-shimujo",
+   "name": "沖縄そばの店 しむじょう",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/okinawa/A4701/A470103/47001610",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「Shimujou - 市立醫院前/沖繩麵 | Tabelog」，地址 沖縄県那覇市首里末吉町2-124-1，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/okinawa/A4701/A470103/47001610",
+     "role": "platform_branch_page",
+     "observation": "標題「Shimujou - 市立醫院前/沖繩麵 | Tabelog」，地址 沖縄県那覇市首里末吉町2-124-1；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "7d730687-f10b-4ed1-9c23-bfa34ede6370",
+   "slug": "okinawa-tunda-dining",
+   "name": "首里 東道Dining",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/okinawa/A4701/A470102/47011702",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「首里 Tunda Dining - 儀保/酒吧 | Tabelog」，地址 沖縄県那覇市首里当蔵町2-13 4F，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/okinawa/A4701/A470102/47011702",
+     "role": "platform_branch_page",
+     "observation": "標題「首里 Tunda Dining - 儀保/酒吧 | Tabelog」，地址 沖縄県那覇市首里当蔵町2-13 4F；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "023b29ec-9e30-4888-9bce-ae132f7e46ce",
+   "slug": "okinawa-akatafu",
+   "name": "琉球料理 赤田風",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/okinawa/A4701/A470102/47000037",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「赤田風 - 首里/沖繩料理 | Tabelog」，地址 沖縄県那覇市首里赤田町1-37，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/okinawa/A4701/A470102/47000037",
+     "role": "platform_branch_page",
+     "observation": "標題「赤田風 - 首里/沖繩料理 | Tabelog」，地址 沖縄県那覇市首里赤田町1-37；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "f6b2ed7a-388f-4eae-b37b-dfeccb335cfe",
+   "slug": "okinawa-ryukyu-ryori-mie",
+   "name": "琉球料理 美榮",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/okinawa/A4701/A470101/47002034",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「美榮 - 縣政府前/沖繩料理 | Tabelog」，地址 沖縄県那覇市久茂地1-8-8，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/okinawa/A4701/A470101/47002034",
+     "role": "platform_branch_page",
+     "observation": "標題「美榮 - 縣政府前/沖繩料理 | Tabelog」，地址 沖縄県那覇市久茂地1-8-8；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "bf8c9dca-4bf5-4177-b013-55429d0b41e9",
+   "slug": "okinawa-kijimuna-onna",
+   "name": "タコライスcafe きじむなぁ 恩納村店",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/okinawa/A4703/A470303/47027592",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「Taco Rice cafe Kijimuna 恩納村店 - 恩納村/咖啡店 | Tabelog」，地址 沖縄県国頭郡恩納村字恩納6092-1，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/okinawa/A4703/A470303/47027592",
+     "role": "platform_branch_page",
+     "observation": "標題「Taco Rice cafe Kijimuna 恩納村店 - 恩納村/咖啡店 | Tabelog」，地址 沖縄県国頭郡恩納村字恩納6092-1；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "e7b58afb-6701-4599-af35-2426fdbb979d",
+   "slug": "okinawa-kijimuna-depot-island",
+   "name": "タコライスcafe きじむなぁ デポアイランド店",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/okinawa/A4703/A470304/47007592",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「Taco Rice cafe Kijimunaa Depo Island店 - 北谷町/咖啡店 | Tabelog」，地址 沖縄県中頭郡北谷町字美浜9番地1 デポアイランドビルＣ棟2F，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/okinawa/A4703/A470304/47007592",
+     "role": "platform_branch_page",
+     "observation": "標題「Taco Rice cafe Kijimunaa Depo Island店 - 北谷町/咖啡店 | Tabelog」，地址 沖縄県中頭郡北谷町字美浜9番地1 デポアイランドビルＣ棟2F；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "e0df37a3-7fca-4bd2-a849-2c2cf3ca948d",
+   "slug": "okinawa-c-c-breakfast-okinawa",
+   "name": "C&C BREAKFAST OKINAWA",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/okinawa/A4701/A470101/47014183",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「C&C BREAKFAST OKINAWA - 牧志/咖啡店 | Tabelog」，地址 沖縄県那覇市松尾2-9-6 タカミネビル 1F，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/okinawa/A4701/A470101/47014183",
+     "role": "platform_branch_page",
+     "observation": "標題「C&C BREAKFAST OKINAWA - 牧志/咖啡店 | Tabelog」，地址 沖縄県那覇市松尾2-9-6 タカミネビル 1F；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "166adb77-5cb2-4f2a-9bf8-136d6847ab50",
+   "slug": "okinawa-emi-no-mise",
+   "name": "笑味の店",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/okinawa/A4702/A470203/47001468",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「笑味之店 - 大宜味村/沖繩料理 | Tabelog」，地址 沖縄県国頭郡大宜味村字大兼久61，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/okinawa/A4702/A470203/47001468",
+     "role": "platform_branch_page",
+     "observation": "標題「笑味之店 - 大宜味村/沖繩料理 | Tabelog」，地址 沖縄県国頭郡大宜味村字大兼久61；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "fbb0805d-9016-4036-ba01-97c2b2d3cc8d",
+   "slug": "okinawa-kominka-shokudo-yukuru",
+   "name": "古民家食堂 ゆくる",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/okinawa/A4702/A470202/47021278",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「古民家食堂 Yukuru - 本部町/沖繩料理 | Tabelog」，地址 沖縄県国頭郡本部町備瀬511，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/okinawa/A4702/A470202/47021278",
+     "role": "platform_branch_page",
+     "observation": "標題「古民家食堂 Yukuru - 本部町/沖繩料理 | Tabelog」，地址 沖縄県国頭郡本部町備瀬511；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "ad92865c-8a01-459a-ba09-6ce807e18c91",
+   "slug": "okinawa-faidama",
+   "name": "食堂faidama",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/okinawa/A4701/A470101/47017787",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「食堂 Faidama - 牧志/食堂 | Tabelog」，地址 沖縄県那覇市松尾2-12-14，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/okinawa/A4701/A470101/47017787",
+     "role": "platform_branch_page",
+     "observation": "標題「食堂 Faidama - 牧志/食堂 | Tabelog」，地址 沖縄県那覇市松尾2-12-14；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "703dd672-2f7b-47c4-8772-bd40d4959413",
+   "slug": "osaka-kyoto-endo-sushi",
+   "name": "ゑんどう寿司",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/osaka/A2701/A270108/27002698",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「中央市場 Endo - 玉川/壽司 | Tabelog」，地址 大阪府大阪市福島区野田1-1-86 大阪市中央卸売市場本場，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/osaka/A2701/A270108/27002698",
+     "role": "platform_branch_page",
+     "observation": "標題「中央市場 Endo - 玉川/壽司 | Tabelog」，地址 大阪府大阪市福島区野田1-1-86 大阪市中央卸売市場本場；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "70f8a0c4-1bf6-4f3b-899b-89a015c91dd2",
+   "slug": "osaka-kyoto-tempura-makino",
+   "name": "天丼まきの京都寺町",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/kyoto/A2601/A260202/26028159",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「天丼Makino 京都寺町店 - 京都河原町/天婦羅蓋飯 | Tabelog」，地址 京都府京都市中京区寺町通下る中筋町481-3，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/kyoto/A2601/A260202/26028159",
+     "role": "platform_branch_page",
+     "observation": "標題「天丼Makino 京都寺町店 - 京都河原町/天婦羅蓋飯 | Tabelog」，地址 京都府京都市中京区寺町通下る中筋町481-3；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "65760310-eebf-4384-a8c4-932ecbc6bee4",
+   "slug": "osaka-kyoto-mizuno",
+   "name": "美津の",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/osaka/A2701/A270202/27001278",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「美津之 - 難波/大阪燒 | Tabelog」，地址 大阪府大阪市中央区道頓堀1-4-15，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/osaka/A2701/A270202/27001278",
+     "role": "platform_branch_page",
+     "observation": "標題「美津之 - 難波/大阪燒 | Tabelog」，地址 大阪府大阪市中央区道頓堀1-4-15；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "98b8df74-82c9-4728-9622-eb102a1e6536",
+   "slug": "osaka-kyoto-aizuya",
+   "name": "会津屋 ナンバ店",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/osaka/A2701/A270202/27001205",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「會津屋 難波店 - 難波/章魚燒 | Tabelog」，地址 大阪府大阪市中央区難波5 なんなんタウン5号，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/osaka/A2701/A270202/27001205",
+     "role": "platform_branch_page",
+     "observation": "標題「會津屋 難波店 - 難波/章魚燒 | Tabelog」，地址 大阪府大阪市中央区難波5 なんなんタウン5号；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "4ad72890-3de6-46b8-8bcf-9b96fb0d9f69",
+   "slug": "osaka-kyoto-toraya-kyoto",
+   "name": "虎屋菓寮 京都一条店",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/kyoto/A2601/A260202/26000206",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「虎屋菓寮 京都一條店 - 今出川/日式甜點店 | Tabelog」，地址 京都府京都市上京区一条通烏丸西入ル，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/kyoto/A2601/A260202/26000206",
+     "role": "platform_branch_page",
+     "observation": "標題「虎屋菓寮 京都一條店 - 今出川/日式甜點店 | Tabelog」，地址 京都府京都市上京区一条通烏丸西入ル；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "66aa13cc-7032-43ac-8f15-abf4a942ec6d",
+   "slug": "dotonbori-imai-main-store",
+   "name": "道頓堀 今井 本店",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/osaka/A2701/A270202/27001289",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「道頓堀 今井 本店 - 難波/烏龍麵 | Tabelog」，地址 大阪府大阪市中央区道頓堀1-7-22，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/osaka/A2701/A270202/27001289",
+     "role": "platform_branch_page",
+     "observation": "標題「道頓堀 今井 本店 - 難波/烏龍麵 | Tabelog」，地址 大阪府大阪市中央区道頓堀1-7-22；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "2677a3e2-1739-4fb9-9d77-72d6e297320c",
+   "slug": "hokkyokusei-shinsaibashi-main-store",
+   "name": "北極星 心斎橋本店",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/osaka/A2701/A270202/27001274",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「北極星 心齋橋本店 - 大阪難波/蛋包飯 | Tabelog」，地址 大阪府大阪市中央区西心斎橋2-7-27，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/osaka/A2701/A270202/27001274",
+     "role": "platform_branch_page",
+     "observation": "標題「北極星 心齋橋本店 - 大阪難波/蛋包飯 | Tabelog」，地址 大阪府大阪市中央区西心斎橋2-7-27；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "77f6135f-5fd8-46cc-86ad-029466a5547f",
+   "slug": "osaka-kyoto-tables-coffee-bakery-diner",
+   "name": "TABLES Coffee Bakery&Diner",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/osaka/A2701/A270105/27067976",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「套餐清單 : [已停業]TABLES Coffee Bakery & Diner - 櫻川/咖啡店 | Tabelog」，地址 大阪府大阪市西区南堀江2-9-10，是本店沒錯，但頁面沒有自己的線上訂位功能（食べログ 把這家店標為已停業），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（食べログ 把這家店標為已停業）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/osaka/A2701/A270105/27067976",
+     "role": "platform_branch_page",
+     "observation": "標題「套餐清單 : [已停業]TABLES Coffee Bakery & Diner - 櫻川/咖啡店 | Tabelog」，地址 大阪府大阪市西区南堀江2-9-10；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "646a8047-926a-4a2f-9cfe-6b6274eabe11",
+   "slug": "osaka-kyoto-cafe-taiyounotou-honten",
+   "name": "cafe太陽ノ塔 本店",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/osaka/A2701/A270101/27015668",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「太陽之塔 本店 - 中崎町/咖啡店 | Tabelog」，地址 大阪府大阪市北区中崎2-3-12 パイロットビル1F，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/osaka/A2701/A270101/27015668",
+     "role": "platform_branch_page",
+     "observation": "標題「太陽之塔 本店 - 中崎町/咖啡店 | Tabelog」，地址 大阪府大阪市北区中崎2-3-12 パイロットビル1F；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "be82719a-c9be-4370-bade-d1ee3c700589",
+   "slug": "osaka-kyoto-welala",
+   "name": "koji zakka & cafe welala",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/osaka/A2701/A270105/27148256",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「koji zakka & cafe welala - 西長堀/咖啡店 | Tabelog」，地址 大阪府大阪市西区南堀江3-1-23 伊勢村ビル 1F，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/osaka/A2701/A270105/27148256",
+     "role": "platform_branch_page",
+     "observation": "標題「koji zakka & cafe welala - 西長堀/咖啡店 | Tabelog」，地址 大阪府大阪市西区南堀江3-1-23 伊勢村ビル 1F；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "55feb791-4e56-47e9-be33-964d9ff98bff",
+   "slug": "sapporo-garaku",
+   "name": "スープカレーGARAKU 札幌本店",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/hokkaido/A0101/A010102/1082918",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「Soup curry GARAKU 札幌本店 - 巴士中心前/湯咖哩 | Tabelog」，地址 北海道札幌市中央区南三条東2-6-1 プレサント南3東2 B1F，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/hokkaido/A0101/A010102/1082918",
+     "role": "platform_branch_page",
+     "observation": "標題「Soup curry GARAKU 札幌本店 - 巴士中心前/湯咖哩 | Tabelog」，地址 北海道札幌市中央区南三条東2-6-1 プレサント南3東2 B1F；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "bb7c3aea-e6e1-4608-bcad-93e2dad84f9b",
+   "slug": "sendai-aburiya-jujiro",
+   "name": "炙屋十兵衛",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/miyagi/A0401/A040101/4000163",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「炙屋十兵衛 仙台S-PAL店 - 仙台/居酒屋 (酒館) | Tabelog」，地址 宮城県仙台市青葉区中央1-1-1 エスパル仙台店 B1F，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/miyagi/A0401/A040101/4000163",
+     "role": "platform_branch_page",
+     "observation": "標題「炙屋十兵衛 仙台S-PAL店 - 仙台/居酒屋 (酒館) | Tabelog」，地址 宮城県仙台市青葉区中央1-1-1 エスパル仙台店 B1F；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "879b1f7a-db92-4b76-a38a-cc3d6003cf54",
+   "slug": "tokyo-sushi-dai",
+   "name": "寿司大",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/tokyo/A1313/A131307/13227096",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「壽司大 - 市場前/壽司 | Tabelog」，地址 東京都江東区豊洲6-5-1 豊洲市場内6街区 水産仲卸売場棟 3F，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/tokyo/A1313/A131307/13227096",
+     "role": "platform_branch_page",
+     "observation": "標題「壽司大 - 市場前/壽司 | Tabelog」，地址 東京都江東区豊洲6-5-1 豊洲市場内6街区 水産仲卸売場棟 3F；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "209b6414-9c9f-4886-9871-7c354aef420a",
+   "slug": "tokyo-torishiki",
+   "name": "鳥しき",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/tokyo/A1316/A131601/13041029",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「鳥志氣 - 目黑/烤雞肉串 | Tabelog」，地址 東京都品川区上大崎2-14-12，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/tokyo/A1316/A131601/13041029",
+     "role": "platform_branch_page",
+     "observation": "標題「鳥志氣 - 目黑/烤雞肉串 | Tabelog」，地址 東京都品川区上大崎2-14-12；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "16f742fe-2180-4a82-9855-6366e1de9ad6",
+   "slug": "tokyo-fuglen-tokyo",
+   "name": "FUGLEN TOKYO",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/tokyo/A1318/A131810/13141002",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「FUGLEN TOKYO - 代代木公園/咖啡店 | Tabelog」，地址 東京都渋谷区富ヶ谷1-16-11 1F，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/tokyo/A1318/A131810/13141002",
+     "role": "platform_branch_page",
+     "observation": "標題「FUGLEN TOKYO - 代代木公園/咖啡店 | Tabelog」，地址 東京都渋谷区富ヶ谷1-16-11 1F；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "2df511d4-67a9-471e-a31d-0f2343d5fd56",
+   "slug": "tokyo-yuan-su-jiao-zi-lou",
+   "name": "原宿餃子樓",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/tokyo/A1306/A130601/13001284",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「原宿餃子樓 - 明治神宮前/餃子 | Tabelog」，地址 東京都渋谷区神宮前6-2-4 岡島ビル 1F，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/tokyo/A1306/A130601/13001284",
+     "role": "platform_branch_page",
+     "observation": "標題「原宿餃子樓 - 明治神宮前/餃子 | Tabelog」，地址 東京都渋谷区神宮前6-2-4 岡島ビル 1F；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "1c07c8cb-e413-411d-a89c-df8a5eba5aa5",
+   "slug": "tokyo-namiki-yabusoba",
+   "name": "並木藪蕎麦",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/tokyo/A1311/A131102/13003650",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「並木藪蕎麥 - 淺草/蕎麥麵 | Tabelog」，地址 東京都台東区雷門2-11-9，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/tokyo/A1311/A131102/13003650",
+     "role": "platform_branch_page",
+     "observation": "標題「並木藪蕎麥 - 淺草/蕎麥麵 | Tabelog」，地址 東京都台東区雷門2-11-9；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "0c01a2f4-1fbd-4c17-a792-3cfb26a72f99",
+   "slug": "tokyo-the-roastery-by-nozy-coffee",
+   "name": "THE ROASTERY BY NOZY COFFEE",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/tokyo/A1303/A130301/13161140",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「THE ROASTERY BY NOZY COFFEE - 明治神宮前/咖啡店 | Tabelog」，地址 東京都渋谷区神宮前5-17-13，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/tokyo/A1303/A130301/13161140",
+     "role": "platform_branch_page",
+     "observation": "標題「THE ROASTERY BY NOZY COFFEE - 明治神宮前/咖啡店 | Tabelog」，地址 東京都渋谷区神宮前5-17-13；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "9ff492cf-f70f-445d-a0e0-ee1a858566a9",
+   "slug": "tokyo-torianonyang-guo-zi-dian",
+   "name": "トリアノン洋菓子店",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/tokyo/A1319/A131904/13006597",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「Trianon洋菓子店 高圓寺本店 - 高圓寺/蛋糕 | Tabelog」，地址 東京都杉並区高円寺南4-26-12 1F，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/tokyo/A1319/A131904/13006597",
+     "role": "platform_branch_page",
+     "observation": "標題「Trianon洋菓子店 高圓寺本店 - 高圓寺/蛋糕 | Tabelog」，地址 東京都杉並区高円寺南4-26-12 1F；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "763b7cd8-4e80-4d1a-be82-97a986784eea",
+   "slug": "yokohama-yoshimuraya",
+   "name": "吉村家",
+   "country_code": "JP",
+   "provider": "tabelog",
+   "status": "disabled",
+   "canonical_url": "https://tabelog.com/tw/kanagawa/A1401/A140102/14090328",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：tabelog 店頁「家系總本山 吉村家 - 平沼橋/拉麵 | Tabelog」，地址 神奈川県横浜市西区岡野1-6-4，是本店沒錯，但頁面沒有自己的線上訂位功能（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。），依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有店家資訊，沒有可用的線上訂位入口（頁面側欄有食べログ自己的「ネット予約」區塊（rstdtl-side-yoyaku__booking，含日期選擇），不是推薦店家區塊的按鈕。）。",
+   "evidence": [
+    {
+     "url": "https://tabelog.com/tw/kanagawa/A1401/A140102/14090328",
+     "role": "platform_branch_page",
+     "observation": "標題「家系總本山 吉村家 - 平沼橋/拉麵 | Tabelog」，地址 神奈川県横浜市西区岡野1-6-4；沒有本店自己的訂位控制項。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "0450df1f-e0f4-40b8-8d65-7f4e617c7d6e",
+   "slug": "fukuoka-daimyo-softcream",
+   "name": "DAIMYO SOFTCREAM 大名店",
+   "country_code": "JP",
+   "provider": "autoreserve",
+   "status": "disabled",
+   "canonical_url": "https://autoreserve.com/en/restaurants/G9YEAPzDH21V6nAhcjpR",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：AutoReserve 店頁「DAIMYO SOFTCREAM | Fukuoka-shi Chuo-ku, Fukuoka | Ice Cream | AutoReserve」，地址 1 Chome-11-4 Daimyo, Chuo Ward, Fukuoka, 810-0041，是本店沒錯，但頁面寫明「予約代行不可」，依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面寫明「予約代行不可」。",
+   "evidence": [
+    {
+     "url": "https://autoreserve.com/en/restaurants/G9YEAPzDH21V6nAhcjpR",
+     "role": "platform_branch_page",
+     "observation": "標題「DAIMYO SOFTCREAM | Fukuoka-shi Chuo-ku, Fukuoka | Ice Cream | AutoReserve」，地址 1 Chome-11-4 Daimyo, Chuo Ward, Fukuoka, 810-0041；頁面寫明「予約代行不可」。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "950d187c-e2b2-4fe6-91b0-ee2d7a434727",
+   "slug": "fukuoka-manucoffee-roasters",
+   "name": "manucoffee roasters クジラ店",
+   "country_code": "JP",
+   "provider": "autoreserve",
+   "status": "disabled",
+   "canonical_url": "https://autoreserve.com/ja/restaurants/1Atwht7Dk2DyziRGcbBy",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：AutoReserve 店頁「マヌコーヒー ロースターズ クジラ店 | 福岡県福岡市中央区 | カフェ | AutoReserve」，地址 福岡県福岡市中央区白金1-18-23，是本店沒錯，但頁面沒有「予約する」或空席欄位，只列電話，依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面沒有「予約する」或空席欄位，只列電話。",
+   "evidence": [
+    {
+     "url": "https://autoreserve.com/ja/restaurants/1Atwht7Dk2DyziRGcbBy",
+     "role": "platform_branch_page",
+     "observation": "標題「マヌコーヒー ロースターズ クジラ店 | 福岡県福岡市中央区 | カフェ | AutoReserve」，地址 福岡県福岡市中央区白金1-18-23；頁面沒有「予約する」或空席欄位，只列電話。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "6d39b56b-8029-460e-acf1-bb69f3758709",
+   "slug": "kamakura-shirasuya-koshigoe",
+   "name": "しらすや 腰越漁港前店",
+   "country_code": "JP",
+   "provider": "autoreserve",
+   "status": "disabled",
+   "canonical_url": "https://autoreserve.com/ja/restaurants/scUtamdVL3RN4c42LPvx",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：AutoReserve 店頁「しらすや 腰越漁港前店の予約 | 神奈川県鎌倉市 | 海鮮 | AutoReserve」，地址 神奈川県鎌倉市腰越2-10-13，是本店沒錯，但頁面寫明「予約代行不可」，依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面寫明「予約代行不可」。",
+   "evidence": [
+    {
+     "url": "https://autoreserve.com/ja/restaurants/scUtamdVL3RN4c42LPvx",
+     "role": "platform_branch_page",
+     "observation": "標題「しらすや 腰越漁港前店の予約 | 神奈川県鎌倉市 | 海鮮 | AutoReserve」，地址 神奈川県鎌倉市腰越2-10-13；頁面寫明「予約代行不可」。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "68d8b6bd-5469-4959-8bb4-e0d7065e703c",
+   "slug": "kamakura-tenshin-an",
+   "name": "点心庵",
+   "country_code": "JP",
+   "provider": "autoreserve",
+   "status": "disabled",
+   "canonical_url": "https://autoreserve.com/ja/restaurants/HZoyxDXYYpNRbLstDVRj",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：AutoReserve 店頁「点心庵の予約 | 神奈川県鎌倉市 | カフェ | AutoReserve」，地址 神奈川県鎌倉市山ノ内7，是本店沒錯，但頁面寫明「予約代行不可」，依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面寫明「予約代行不可」。",
+   "evidence": [
+    {
+     "url": "https://autoreserve.com/ja/restaurants/HZoyxDXYYpNRbLstDVRj",
+     "role": "platform_branch_page",
+     "observation": "標題「点心庵の予約 | 神奈川県鎌倉市 | カフェ | AutoReserve」，地址 神奈川県鎌倉市山ノ内7；頁面寫明「予約代行不可」。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "bf8c9dca-4bf5-4177-b013-55429d0b41e9",
+   "slug": "okinawa-kijimuna-onna",
+   "name": "タコライスcafe きじむなぁ 恩納村店",
+   "country_code": "JP",
+   "provider": "autoreserve",
+   "status": "disabled",
+   "canonical_url": "https://autoreserve.com/ja/restaurants/87FLeZHNWr77ckRr6dYX",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：AutoReserve 店頁「タコライスcafe きじむなぁ 恩納村店 | 沖縄県国頭郡恩納村 | カフェ | AutoReserve」，地址 沖縄県国頭郡恩納村字恩納6092-1，是本店沒錯，但頁面沒有「予約する」或空席欄位，只列電話，依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面沒有「予約する」或空席欄位，只列電話。",
+   "evidence": [
+    {
+     "url": "https://autoreserve.com/ja/restaurants/87FLeZHNWr77ckRr6dYX",
+     "role": "platform_branch_page",
+     "observation": "標題「タコライスcafe きじむなぁ 恩納村店 | 沖縄県国頭郡恩納村 | カフェ | AutoReserve」，地址 沖縄県国頭郡恩納村字恩納6092-1；頁面沒有「予約する」或空席欄位，只列電話。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "e0df37a3-7fca-4bd2-a849-2c2cf3ca948d",
+   "slug": "okinawa-c-c-breakfast-okinawa",
+   "name": "C&C BREAKFAST OKINAWA",
+   "country_code": "JP",
+   "provider": "autoreserve",
+   "status": "disabled",
+   "canonical_url": "https://autoreserve.com/ja/restaurants/XwBeHyxrxzJMsRmvVp6M",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：AutoReserve 店頁「C&C BREAKFAST OKINAWA | 沖縄県那覇市 | カフェ | AutoReserve」，地址 沖縄県那覇市松尾2-9-6 タカミネビル 1F，是本店沒錯，但頁面沒有「予約する」或空席欄位，只列電話，依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面沒有「予約する」或空席欄位，只列電話。",
+   "evidence": [
+    {
+     "url": "https://autoreserve.com/ja/restaurants/XwBeHyxrxzJMsRmvVp6M",
+     "role": "platform_branch_page",
+     "observation": "標題「C&C BREAKFAST OKINAWA | 沖縄県那覇市 | カフェ | AutoReserve」，地址 沖縄県那覇市松尾2-9-6 タカミネビル 1F；頁面沒有「予約する」或空席欄位，只列電話。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "166adb77-5cb2-4f2a-9bf8-136d6847ab50",
+   "slug": "okinawa-emi-no-mise",
+   "name": "笑味の店",
+   "country_code": "JP",
+   "provider": "autoreserve",
+   "status": "disabled",
+   "canonical_url": "https://autoreserve.com/ja/restaurants/WAvTPiDTqzLXw2s7MyDv",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：AutoReserve 店頁「笑味の店の予約 | 沖縄県国頭郡大宜味村 | 沖縄料理 | AutoReserve」，地址 沖縄県国頭郡大宜味村字大兼久61，是本店沒錯，但頁面寫明「予約代行不可」，依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面寫明「予約代行不可」。",
+   "evidence": [
+    {
+     "url": "https://autoreserve.com/ja/restaurants/WAvTPiDTqzLXw2s7MyDv",
+     "role": "platform_branch_page",
+     "observation": "標題「笑味の店の予約 | 沖縄県国頭郡大宜味村 | 沖縄料理 | AutoReserve」，地址 沖縄県国頭郡大宜味村字大兼久61；頁面寫明「予約代行不可」。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "ad92865c-8a01-459a-ba09-6ce807e18c91",
+   "slug": "okinawa-faidama",
+   "name": "食堂faidama",
+   "country_code": "JP",
+   "provider": "autoreserve",
+   "status": "disabled",
+   "canonical_url": "https://autoreserve.com/ja/restaurants/tgEYY1FcskFhP5L9rFyy",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：AutoReserve 店頁「食堂 ファイダマ | 沖縄県那覇市 | 食堂 | AutoReserve」，地址 沖縄県那覇市松尾2-12-14，是本店沒錯，但頁面沒有「予約する」或空席欄位，只列電話，依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面沒有「予約する」或空席欄位，只列電話。",
+   "evidence": [
+    {
+     "url": "https://autoreserve.com/ja/restaurants/tgEYY1FcskFhP5L9rFyy",
+     "role": "platform_branch_page",
+     "observation": "標題「食堂 ファイダマ | 沖縄県那覇市 | 食堂 | AutoReserve」，地址 沖縄県那覇市松尾2-12-14；頁面沒有「予約する」或空席欄位，只列電話。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "66aa13cc-7032-43ac-8f15-abf4a942ec6d",
+   "slug": "dotonbori-imai-main-store",
+   "name": "道頓堀 今井 本店",
+   "country_code": "JP",
+   "provider": "autoreserve",
+   "status": "disabled",
+   "canonical_url": "https://autoreserve.com/ja/restaurants/91FxEE6JLr2HE2owrKVL",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：AutoReserve 店頁「道頓堀 今井 本店の予約 | 大阪府大阪市中央区 | うどん | AutoReserve」，地址 大阪府大阪市中央区道頓堀1-7-22，是本店沒錯，但頁面寫明「予約代行不可」，依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面寫明「予約代行不可」。",
+   "evidence": [
+    {
+     "url": "https://autoreserve.com/ja/restaurants/91FxEE6JLr2HE2owrKVL",
+     "role": "platform_branch_page",
+     "observation": "標題「道頓堀 今井 本店の予約 | 大阪府大阪市中央区 | うどん | AutoReserve」，地址 大阪府大阪市中央区道頓堀1-7-22；頁面寫明「予約代行不可」。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "16f742fe-2180-4a82-9855-6366e1de9ad6",
+   "slug": "tokyo-fuglen-tokyo",
+   "name": "FUGLEN TOKYO",
+   "country_code": "JP",
+   "provider": "autoreserve",
+   "status": "disabled",
+   "canonical_url": "https://autoreserve.com/en/restaurants/8o81oPq21whoF1RHoiQf",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：AutoReserve 店頁「FUGLEN Online reservation | Shibuya-ku, Tokyo | Cafe | AutoReserve」，地址 Tokyo, Shibuya City, Yoyogi, 4 Chome, 20 番 10 号，是本店沒錯，但頁面寫明「予約代行不可」，依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面寫明「予約代行不可」。",
+   "evidence": [
+    {
+     "url": "https://autoreserve.com/en/restaurants/8o81oPq21whoF1RHoiQf",
+     "role": "platform_branch_page",
+     "observation": "標題「FUGLEN Online reservation | Shibuya-ku, Tokyo | Cafe | AutoReserve」，地址 Tokyo, Shibuya City, Yoyogi, 4 Chome, 20 番 10 号；頁面寫明「予約代行不可」。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "1c07c8cb-e413-411d-a89c-df8a5eba5aa5",
+   "slug": "tokyo-namiki-yabusoba",
+   "name": "並木藪蕎麦",
+   "country_code": "JP",
+   "provider": "autoreserve",
+   "status": "disabled",
+   "canonical_url": "https://autoreserve.com/ja/restaurants/v9JgqrkVvS3mW2YrAF7S",
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：AutoReserve 店頁「並木藪蕎麦 | 東京都台東区 | そば | AutoReserve」，地址 東京都台東区雷門2-11-9，是本店沒錯，但頁面沒有「予約する」或空席欄位，只列電話，依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面沒有「予約する」或空席欄位，只列電話。",
+   "evidence": [
+    {
+     "url": "https://autoreserve.com/ja/restaurants/v9JgqrkVvS3mW2YrAF7S",
+     "role": "platform_branch_page",
+     "observation": "標題「並木藪蕎麦 | 東京都台東区 | そば | AutoReserve」，地址 東京都台東区雷門2-11-9；頁面沒有「予約する」或空席欄位，只列電話。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "c1c1894b-2335-48cd-b204-25b1852243ba",
+   "slug": "fukuoka-nejikemon",
+   "name": "やさい巻き串屋 ねじけもん",
+   "country_code": "JP",
+   "provider": "gurunavi",
+   "status": "disabled",
+   "canonical_url": "https://r.gnavi.co.jp/nmwubfx70000",
+   "localized_urls": {},
+   "review_note": "2026-09-12 用內建瀏覽器查核：ぐるなび 店頁「やさい巻き串屋 ねじけもん」，地址 福岡県福岡市中央区大名2-1-29 AIビルC館1F，是本店沒錯，但沒有連往本店 plan-reserve 的「空席確認・予約する」，只有電話，依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有電話，沒有本店自己的ネット予約方案。",
+   "evidence": [
+    {
+     "url": "https://r.gnavi.co.jp/nmwubfx70000",
+     "role": "platform_branch_page",
+     "observation": "標題「やさい巻き串屋 ねじけもん」，地址 福岡県福岡市中央区大名2-1-29 AIビルC館1F；沒有 plan-reserve 連結。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "5d82f21c-2b9b-4806-a30b-822bc5e1b13f",
+   "slug": "hiroshima-hassei",
+   "name": "お好み焼き 八誠",
+   "country_code": "JP",
+   "provider": "gurunavi",
+   "status": "disabled",
+   "canonical_url": "https://r.gnavi.co.jp/n5c6uphp0000",
+   "localized_urls": {},
+   "review_note": "2026-09-12 用內建瀏覽器查核：ぐるなび 店頁「八誠」，地址 広島県広島市中区富士見町4-17，是本店沒錯，但沒有連往本店 plan-reserve 的「空席確認・予約する」，只有電話，依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有電話，沒有本店自己的ネット予約方案。",
+   "evidence": [
+    {
+     "url": "https://r.gnavi.co.jp/n5c6uphp0000",
+     "role": "platform_branch_page",
+     "observation": "標題「八誠」，地址 広島県広島市中区富士見町4-17；沒有 plan-reserve 連結。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "42ef13df-6690-4fb9-84e9-9e367813b743",
+   "slug": "kamakura-akimoto",
+   "name": "鎌倉 秋本",
+   "country_code": "JP",
+   "provider": "gurunavi",
+   "status": "disabled",
+   "canonical_url": "https://r.gnavi.co.jp/g552000",
+   "localized_urls": {},
+   "review_note": "2026-09-12 用內建瀏覽器查核：ぐるなび 店頁「秋本」，地址 神奈川県鎌倉市小町1-6-15 i-ZA鎌倉3F，是本店沒錯，但沒有連往本店 plan-reserve 的「空席確認・予約する」，只有電話，依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有電話，沒有本店自己的ネット予約方案。",
+   "evidence": [
+    {
+     "url": "https://r.gnavi.co.jp/g552000",
+     "role": "platform_branch_page",
+     "observation": "標題「秋本」，地址 神奈川県鎌倉市小町1-6-15 i-ZA鎌倉3F；沒有 plan-reserve 連結。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "6d39b56b-8029-460e-acf1-bb69f3758709",
+   "slug": "kamakura-shirasuya-koshigoe",
+   "name": "しらすや 腰越漁港前店",
+   "country_code": "JP",
+   "provider": "gurunavi",
+   "status": "disabled",
+   "canonical_url": "https://r.gnavi.co.jp/487se41d0000",
+   "localized_urls": {},
+   "review_note": "2026-09-12 用內建瀏覽器查核：ぐるなび 店頁「しらすや」，地址 神奈川県鎌倉市腰越2-10-13，是本店沒錯，但沒有連往本店 plan-reserve 的「空席確認・予約する」，只有電話，依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有電話，沒有本店自己的ネット予約方案。",
+   "evidence": [
+    {
+     "url": "https://r.gnavi.co.jp/487se41d0000",
+     "role": "platform_branch_page",
+     "observation": "標題「しらすや」，地址 神奈川県鎌倉市腰越2-10-13；沒有 plan-reserve 連結。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "68d8b6bd-5469-4959-8bb4-e0d7065e703c",
+   "slug": "kamakura-tenshin-an",
+   "name": "点心庵",
+   "country_code": "JP",
+   "provider": "gurunavi",
+   "status": "disabled",
+   "canonical_url": "https://r.gnavi.co.jp/ba1xfr8y0000",
+   "localized_urls": {},
+   "review_note": "2026-09-12 用內建瀏覽器查核：ぐるなび 店頁「点心庵」，地址 神奈川県鎌倉市山ノ内7，是本店沒錯，但沒有連往本店 plan-reserve 的「空席確認・予約する」，只有電話，依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有電話，沒有本店自己的ネット予約方案。",
+   "evidence": [
+    {
+     "url": "https://r.gnavi.co.jp/ba1xfr8y0000",
+     "role": "platform_branch_page",
+     "observation": "標題「点心庵」，地址 神奈川県鎌倉市山ノ内7；沒有 plan-reserve 連結。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "feebc29c-6296-4421-81c3-ddb12449e975",
+   "slug": "kanazawa-mori-mori-sushi",
+   "name": "もりもり寿し 近江町店",
+   "country_code": "JP",
+   "provider": "gurunavi",
+   "status": "disabled",
+   "canonical_url": "https://r.gnavi.co.jp/sgknv0wz0000",
+   "localized_urls": {},
+   "review_note": "2026-09-12 用內建瀏覽器查核：ぐるなび 店頁「もりもり寿し 近江町店」，地址 石川県金沢市青草町88，是本店沒錯，但沒有連往本店 plan-reserve 的「空席確認・予約する」，只有電話，依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有電話，沒有本店自己的ネット予約方案。",
+   "evidence": [
+    {
+     "url": "https://r.gnavi.co.jp/sgknv0wz0000",
+     "role": "platform_branch_page",
+     "observation": "標題「もりもり寿し 近江町店」，地址 石川県金沢市青草町88；沒有 plan-reserve 連結。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "25b32b3d-53b2-4129-9e98-fe04a246fbdf",
+   "slug": "nagoya-yabaton",
+   "name": "矢場とん 矢場町本店",
+   "country_code": "JP",
+   "provider": "gurunavi",
+   "status": "disabled",
+   "canonical_url": "https://r.gnavi.co.jp/58707y710000",
+   "localized_urls": {},
+   "review_note": "2026-09-12 用內建瀏覽器查核：ぐるなび 店頁「矢場とん矢場町本店」，地址 愛知県名古屋市中区大須3-6-18，是本店沒錯，但沒有連往本店 plan-reserve 的「空席確認・予約する」，只有電話，依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有電話，沒有本店自己的ネット予約方案。",
+   "evidence": [
+    {
+     "url": "https://r.gnavi.co.jp/58707y710000",
+     "role": "platform_branch_page",
+     "observation": "標題「矢場とん矢場町本店」，地址 愛知県名古屋市中区大須3-6-18；沒有 plan-reserve 連結。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "703dd672-2f7b-47c4-8772-bd40d4959413",
+   "slug": "osaka-kyoto-endo-sushi",
+   "name": "ゑんどう寿司",
+   "country_code": "JP",
+   "provider": "gurunavi",
+   "status": "disabled",
+   "canonical_url": "https://r.gnavi.co.jp/5x692gky0000",
+   "localized_urls": {},
+   "review_note": "2026-09-12 用內建瀏覽器查核：ぐるなび 店頁「中央市場ゑんどう」，地址 大阪府大阪市福島区野田1-1-86 大阪市中央卸売市場内，是本店沒錯，但沒有連往本店 plan-reserve 的「空席確認・予約する」，只有電話，依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有電話，沒有本店自己的ネット予約方案。",
+   "evidence": [
+    {
+     "url": "https://r.gnavi.co.jp/5x692gky0000",
+     "role": "platform_branch_page",
+     "observation": "標題「中央市場ゑんどう」，地址 大阪府大阪市福島区野田1-1-86 大阪市中央卸売市場内；沒有 plan-reserve 連結。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "65760310-eebf-4384-a8c4-932ecbc6bee4",
+   "slug": "osaka-kyoto-mizuno",
+   "name": "美津の",
+   "country_code": "JP",
+   "provider": "gurunavi",
+   "status": "disabled",
+   "canonical_url": "https://r.gnavi.co.jp/k137800",
+   "localized_urls": {},
+   "review_note": "2026-09-12 用內建瀏覽器查核：ぐるなび 店頁「美津の」，地址 大阪府大阪市中央区道頓堀1-4-15，是本店沒錯，但沒有連往本店 plan-reserve 的「空席確認・予約する」，只有電話，依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有電話，沒有本店自己的ネット予約方案。",
+   "evidence": [
+    {
+     "url": "https://r.gnavi.co.jp/k137800",
+     "role": "platform_branch_page",
+     "observation": "標題「美津の」，地址 大阪府大阪市中央区道頓堀1-4-15；沒有 plan-reserve 連結。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "98b8df74-82c9-4728-9622-eb102a1e6536",
+   "slug": "osaka-kyoto-aizuya",
+   "name": "会津屋 ナンバ店",
+   "country_code": "JP",
+   "provider": "gurunavi",
+   "status": "disabled",
+   "canonical_url": "https://r.gnavi.co.jp/6z345z400000",
+   "localized_urls": {},
+   "review_note": "2026-09-12 用內建瀏覽器查核：ぐるなび 店頁「会津屋 ナンバ店」，地址 大阪府大阪市中央区難波5，是本店沒錯，但沒有連往本店 plan-reserve 的「空席確認・予約する」，只有電話，依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有電話，沒有本店自己的ネット予約方案。",
+   "evidence": [
+    {
+     "url": "https://r.gnavi.co.jp/6z345z400000",
+     "role": "platform_branch_page",
+     "observation": "標題「会津屋 ナンバ店」，地址 大阪府大阪市中央区難波5；沒有 plan-reserve 連結。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "66aa13cc-7032-43ac-8f15-abf4a942ec6d",
+   "slug": "dotonbori-imai-main-store",
+   "name": "道頓堀 今井 本店",
+   "country_code": "JP",
+   "provider": "gurunavi",
+   "status": "disabled",
+   "canonical_url": "https://r.gnavi.co.jp/k001100",
+   "localized_urls": {},
+   "review_note": "2026-09-12 用內建瀏覽器查核：ぐるなび 店頁「道頓堀 今井本店」，地址 大阪府大阪市中央区道頓堀1-7-22，是本店沒錯，但沒有連往本店 plan-reserve 的「空席確認・予約する」，只有電話，依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有電話，沒有本店自己的ネット予約方案。",
+   "evidence": [
+    {
+     "url": "https://r.gnavi.co.jp/k001100",
+     "role": "platform_branch_page",
+     "observation": "標題「道頓堀 今井本店」，地址 大阪府大阪市中央区道頓堀1-7-22；沒有 plan-reserve 連結。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "2677a3e2-1739-4fb9-9d77-72d6e297320c",
+   "slug": "hokkyokusei-shinsaibashi-main-store",
+   "name": "北極星 心斎橋本店",
+   "country_code": "JP",
+   "provider": "gurunavi",
+   "status": "disabled",
+   "canonical_url": "https://r.gnavi.co.jp/n2vf7hd90000",
+   "localized_urls": {},
+   "review_note": "2026-09-12 用內建瀏覽器查核：ぐるなび 店頁「北極星 心斎橋本店」，地址 大阪府大阪市中央区西心斎橋2-7-27，是本店沒錯，但沒有連往本店 plan-reserve 的「空席確認・予約する」，只有電話，依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有電話，沒有本店自己的ネット予約方案。",
+   "evidence": [
+    {
+     "url": "https://r.gnavi.co.jp/n2vf7hd90000",
+     "role": "platform_branch_page",
+     "observation": "標題「北極星 心斎橋本店」，地址 大阪府大阪市中央区西心斎橋2-7-27；沒有 plan-reserve 連結。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "71d6f7e6-2630-4471-8f2a-c3cf163fd20b",
+   "slug": "sapporo-sumire",
+   "name": "すみれ 札幌本店",
+   "country_code": "JP",
+   "provider": "gurunavi",
+   "status": "disabled",
+   "canonical_url": "https://r.gnavi.co.jp/h098800",
+   "localized_urls": {},
+   "review_note": "2026-09-12 用內建瀏覽器查核：ぐるなび 店頁「すみれ 札幌本店」，地址 北海道札幌市豊平区中の島2条4-7-28，是本店沒錯，但沒有連往本店 plan-reserve 的「空席確認・予約する」，只有電話，依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有電話，沒有本店自己的ネット予約方案。",
+   "evidence": [
+    {
+     "url": "https://r.gnavi.co.jp/h098800",
+     "role": "platform_branch_page",
+     "observation": "標題「すみれ 札幌本店」，地址 北海道札幌市豊平区中の島2条4-7-28；沒有 plan-reserve 連結。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "00d07ce9-ff61-40fc-960b-15b17a8ea0ec",
+   "slug": "sapporo-zingisukan-higenoushi-ben-dian",
+   "name": "ジンギスカン ひげのうし 本店",
+   "country_code": "JP",
+   "provider": "gurunavi",
+   "status": "disabled",
+   "canonical_url": "https://r.gnavi.co.jp/h191700",
+   "localized_urls": {},
+   "review_note": "2026-09-12 用內建瀏覽器查核：ぐるなび 店頁「ジンギスカン ひげのうし 本店」，地址 北海道札幌市中央区南3条西5丁目，是本店沒錯，但沒有連往本店 plan-reserve 的「空席確認・予約する」，只有電話，依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有電話，沒有本店自己的ネット予約方案。",
+   "evidence": [
+    {
+     "url": "https://r.gnavi.co.jp/h191700",
+     "role": "platform_branch_page",
+     "observation": "標題「ジンギスカン ひげのうし 本店」，地址 北海道札幌市中央区南3条西5丁目；沒有 plan-reserve 連結。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "1c07c8cb-e413-411d-a89c-df8a5eba5aa5",
+   "slug": "tokyo-namiki-yabusoba",
+   "name": "並木藪蕎麦",
+   "country_code": "JP",
+   "provider": "gurunavi",
+   "status": "disabled",
+   "canonical_url": "https://r.gnavi.co.jp/pwrvhdk60000",
+   "localized_urls": {},
+   "review_note": "2026-09-12 用內建瀏覽器查核：ぐるなび 店頁「並木藪蕎麦」，地址 東京都台東区，是本店沒錯，但沒有連往本店 plan-reserve 的「空席確認・予約する」，只有電話，依 2026-09-11 的規則存為停用、不公開。",
+   "booking_observation": "頁面只有電話，沒有本店自己的ネット予約方案。",
+   "evidence": [
+    {
+     "url": "https://r.gnavi.co.jp/pwrvhdk60000",
+     "role": "platform_branch_page",
+     "observation": "標題「並木藪蕎麦」，地址 東京都台東区；沒有 plan-reserve 連結。"
+    }
+   ]
+  },
+  {
+   "merchant_id": "77f6135f-5fd8-46cc-86ad-029466a5547f",
+   "slug": "osaka-kyoto-tables-coffee-bakery-diner",
+   "name": "TABLES Coffee Bakery&Diner",
+   "country_code": "JP",
+   "provider": "gurunavi",
+   "status": "not_found",
+   "canonical_url": null,
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：ぐるなび 店家編號 c018405 已經轉回ぐるなび首頁，這個店頁不存在了。",
+   "booking_observation": null,
+   "evidence": []
+  },
+  {
+   "merchant_id": "bb7c3aea-e6e1-4608-bcad-93e2dad84f9b",
+   "slug": "sendai-aburiya-jujiro",
+   "name": "炙屋十兵衛",
+   "country_code": "JP",
+   "provider": "gurunavi",
+   "status": "not_found",
+   "canonical_url": null,
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：ぐるなび 店家編號 1ccb53b80000 已經轉回ぐるなび首頁，這個店頁不存在了。",
+   "booking_observation": null,
+   "evidence": []
+  },
+  {
+   "merchant_id": "68d8b6bd-5469-4959-8bb4-e0d7065e703c",
+   "slug": "kamakura-tenshin-an",
+   "name": "点心庵",
+   "country_code": "JP",
+   "provider": "hotpepper",
+   "status": "not_found",
+   "canonical_url": null,
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：2026-09-11 記下的ホットペッパー頁 https://www.hotpepper.jp/strJ004234931/ 現在回 404，店頁已經不在了。",
+   "booking_observation": null,
+   "evidence": []
+  },
+  {
+   "merchant_id": "bf8c9dca-4bf5-4177-b013-55429d0b41e9",
+   "slug": "okinawa-kijimuna-onna",
+   "name": "タコライスcafe きじむなぁ 恩納村店",
+   "country_code": "JP",
+   "provider": "hotpepper",
+   "status": "not_found",
+   "canonical_url": null,
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：2026-09-11 記下的ホットペッパー頁 https://www.hotpepper.jp/strJ000603282/yoyaku/ 現在回 404，店頁已經不在了。",
+   "booking_observation": null,
+   "evidence": []
+  },
+  {
+   "merchant_id": "fbb0805d-9016-4036-ba01-97c2b2d3cc8d",
+   "slug": "okinawa-kominka-shokudo-yukuru",
+   "name": "古民家食堂 ゆくる",
+   "country_code": "JP",
+   "provider": "hotpepper",
+   "status": "not_found",
+   "canonical_url": null,
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：2026-09-11 記下的ホットペッパー頁 https://www.hotpepper.jp/strJ001260822/report/ 現在回 404，店頁已經不在了。",
+   "booking_observation": null,
+   "evidence": []
+  },
+  {
+   "merchant_id": "98b8df74-82c9-4728-9622-eb102a1e6536",
+   "slug": "osaka-kyoto-aizuya",
+   "name": "会津屋 ナンバ店",
+   "country_code": "JP",
+   "provider": "hotpepper",
+   "status": "not_found",
+   "canonical_url": null,
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：2026-09-11 記下的ホットペッパー頁 https://www.hotpepper.jp/strJ000015820/ 現在回 404，店頁已經不在了。",
+   "booking_observation": null,
+   "evidence": []
+  },
+  {
+   "merchant_id": "77f6135f-5fd8-46cc-86ad-029466a5547f",
+   "slug": "osaka-kyoto-tables-coffee-bakery-diner",
+   "name": "TABLES Coffee Bakery&Diner",
+   "country_code": "JP",
+   "provider": "hotpepper",
+   "status": "not_found",
+   "canonical_url": null,
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：2026-09-11 記下的ホットペッパー頁 https://www.hotpepper.jp/strJ001010936/course/ 現在回 404，店頁已經不在了。",
+   "booking_observation": null,
+   "evidence": []
+  },
+  {
+   "merchant_id": "763b7cd8-4e80-4d1a-be82-97a986784eea",
+   "slug": "yokohama-yoshimuraya",
+   "name": "吉村家",
+   "country_code": "JP",
+   "provider": "hotpepper",
+   "status": "not_found",
+   "canonical_url": null,
+   "localized_urls": {},
+   "review_note": "2026-09-12 查核：2026-09-11 記下的ホットペッパー頁 https://www.hotpepper.jp/strJ003913002/ 現在回 404，店頁已經不在了。",
+   "booking_observation": null,
+   "evidence": []
+  },
+  {
+   "merchant_id": "e26f32d7-e0b1-4dae-ad41-6c315a384fa3",
+   "slug": "seoul-hanikalgugsu",
+   "name": "Hani Kalguksu",
+   "country_code": "KR",
+   "provider": "catchtable_global",
+   "status": "disabled",
+   "canonical_url": "https://www.catchtable.net/shop/hani._.noodle",
+   "localized_urls": {},
+   "review_note": "2026-09-12：CatchTable 店家 id「hani._.noodle」中間那段只有一個底線，舊的網址規則要求每個點分段都以英數開頭，所以 2026-09-11 那輪只能記成待確認。規則已放寬（分段可以用底線開頭），這一頁現在存得進來。身分沿用 2026-09-11 的兩次獨立複核：Haninoodle／하니칼국수，서울특별시 중구 퇴계로 411-15，電話 02-3298-6909，與清單住址一字不差。但狀態存為停用而不是公開：該店在 CatchTable 的服務是現場候位與優先入場（WAITING_GLOBAL／RESERVED_ENTRY_GLOBAL），不是一般桌位訂位，與 seoul-mokmyeoksanbang 等其他候位型頁面在 2026-09-11 的處理一致。",
+   "booking_observation": "CatchTable 上只有候位與優先入場，沒有一般訂位；頁面也沒有寫不接受預約。",
+   "evidence": [
+    {
+     "url": "https://www.catchtable.net/shop/hani._.noodle",
+     "role": "platform_branch_page",
+     "observation": "店名 Haninoodle · 하니칼국수，Sindang・Noodle；2026-09-11 兩次獨立複核都確認是本店。"
+    },
+    {
+     "url": "https://api.catchtable.net/api/v5/shop/detail?localeCode=zh-TW&shopRefOrAlias=hani._.noodle",
+     "role": "original_platform_page",
+     "observation": "mainServiceType WAITING、serviceTypes WAITING_GLOBAL／RESERVED_ENTRY_GLOBAL、shopAddressKo 서울특별시 중구 퇴계로 411-15。"
+    }
+   ]
+  }
+ ]
+}

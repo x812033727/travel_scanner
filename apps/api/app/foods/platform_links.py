@@ -51,6 +51,21 @@ PLATFORMS_BY_PROVIDER.update({
             "myconcierge", "My Concierge Japan",
             ("myconciergejapan.com", "www.myconciergejapan.com"), "",
         ),
+        # Japan books through its own listing platforms far more than through TableCheck,
+        # and Korea through Naver; a country default stays a hint, so these are extras.
+        PlatformDefinition("tabelog", "食べログ", ("tabelog.com",), "ja"),
+        PlatformDefinition(
+            "hotpepper", "ホットペッパーグルメ",
+            ("www.hotpepper.jp", "hotpepper.jp"), "ja",
+        ),
+        PlatformDefinition(
+            "gurunavi", "ぐるなび", ("r.gnavi.co.jp", "gurunavi.com"), "ja"
+        ),
+        PlatformDefinition("autoreserve", "AutoReserve", ("autoreserve.com",), ""),
+        PlatformDefinition(
+            "naver_booking", "네이버 예약",
+            ("booking.naver.com", "m.booking.naver.com"), "ko",
+        ),
     )
 })
 
@@ -60,10 +75,33 @@ _LANGUAGES = {
     "zh-cn": "zh-CN", "zh-hans": "zh-CN",
 }
 _LOCALE = "(?:" + "|".join(_LANGUAGES) + ")"
+# Tabelog and Gurunavi label their language directories their own way, and serve
+# Japanese with no directory at all.
+_TABELOG_LANGUAGES = {"en": "en", "tw": "zh-TW", "cn": "zh-CN", "kr": "ko", "th": "th"}
+_TABELOG_LOCALE = "(?:" + "|".join(_TABELOG_LANGUAGES) + ")"
+_GURUNAVI_LANGUAGES = {"ja": "ja", "en": "en", "ko": "ko", "zh-hant": "zh-TW", "zh-hans": "zh-CN"}
+_GURUNAVI_LOCALE = "(?:" + "|".join(_GURUNAVI_LANGUAGES) + ")"
+# Hot Pepper and Naver reservation pages exist in one language each.
+_SINGLE_LANGUAGE_PLATFORMS = {"hotpepper": "ja", "naver_booking": "ko"}
+_PLATFORM_LANGUAGE_DIRECTORIES = {
+    "tabelog": _TABELOG_LANGUAGES,
+    "gurunavi": _GURUNAVI_LANGUAGES,
+}
 _SLUG = r"[A-Za-z0-9][A-Za-z0-9_-]*"
-# Catchtable venue IDs may contain literal dots, but never empty dot segments.
-_CATCHTABLE_SLUG = r"[A-Za-z0-9][A-Za-z0-9_-]*(?:\.[A-Za-z0-9][A-Za-z0-9_-]*)*"
+# Catchtable venue IDs may contain literal dots. A dot segment may start with an
+# underscore (`hani._.noodle`), but is never empty and never starts the whole ID.
+_CATCHTABLE_SLUG = r"[A-Za-z0-9][A-Za-z0-9_-]*(?:\.[A-Za-z0-9_][A-Za-z0-9_-]*)*"
 _INLINE_ID = r"[A-Za-z0-9_-]+"
+# Tabelog numbers every restaurant; Hot Pepper prefixes a fixed-width shop code;
+# Gurunavi kept a legacy letter+six-digit code beside its twelve-character one.
+_TABELOG_ID = r"[0-9]+"
+_HOTPEPPER_ID = r"J[0-9]{9}"
+_GURUNAVI_ID = r"[a-z][0-9]{6}|[a-z0-9]{12}"
+_AUTORESERVE_ID = r"[A-Za-z0-9]{20}"
+_NAVER_BIZ_ID = r"[0-9]+"
+_CASE_FOLDED_ID_PLATFORMS = frozenset(
+    {"openrice", "tabelog", "hotpepper", "gurunavi", "naver_booking"}
+)
 _RESERVED = frozenset({
     "search", "ranking", "rankings", "discovery", "explore", "restaurants",
     "list_of_restaurants", "booking", "reserve", "reservations", "shops",
@@ -109,9 +147,16 @@ def normalize_platform_url(url: str) -> str:
     return urlunsplit(("https", parts.netloc.lower(), path, parts.query, ""))
 
 
-def _merchant_identity(provider: str, path: str) -> str:
+def _merchant_identity(provider: str, path: str, host: str) -> str:
     """Return the branch identifier, excluding known locale and route aliases."""
     optional_locale = rf"(?:{_LOCALE}/)?"
+    # Gurunavi keeps its Japanese and international sites on separate hosts with
+    # different route shapes; one is never a valid page on the other.
+    gurunavi_routes = (
+        (rf"/(?P<id>{_GURUNAVI_ID})",)
+        if host == "r.gnavi.co.jp"
+        else (rf"/{_GURUNAVI_LOCALE}/(?P<id>{_GURUNAVI_ID})/rst",)
+    )
     patterns: dict[str, tuple[str, ...]] = {
         "tablecheck": (
             rf"/{optional_locale}shops/(?P<id>{_SLUG})/reserve",
@@ -138,6 +183,15 @@ def _merchant_identity(provider: str, path: str) -> str:
         ),
         "ikyu": (r"/(?P<id>[0-9]+)",),
         "myconcierge": (rf"/{optional_locale}restaurants/(?P<id>{_SLUG})",),
+        # The prefecture and area codes locate the shop page; the number identifies it.
+        "tabelog": (
+            rf"/(?:{_TABELOG_LOCALE}/)?[a-z]+/A[0-9]+/A[0-9]+/(?P<id>{_TABELOG_ID})",
+        ),
+        "hotpepper": (rf"/str(?P<id>{_HOTPEPPER_ID})",),
+        "gurunavi": gurunavi_routes,
+        "autoreserve": (rf"/{_LOCALE}/restaurants/(?P<id>{_AUTORESERVE_ID})",),
+        # The leading number is Naver's business category, not the business itself.
+        "naver_booking": (rf"/booking/[0-9]+/bizes/(?P<id>{_NAVER_BIZ_ID})",),
     }
     for pattern in patterns.get(provider, ()):
         match = re.fullmatch(pattern, path, flags=re.IGNORECASE | re.ASCII)
@@ -156,6 +210,9 @@ def _merchant_identity(provider: str, path: str) -> str:
             if provider == "openrice":
                 if any(not (char.isalnum() or char in "_-") for char in path.split("/")[-1]):
                     break
+            # These platforms spell an ID one way only, so case is never a second branch.
+            # AutoReserve is left alone: its IDs are case-sensitive.
+            if provider in _CASE_FOLDED_ID_PLATFORMS:
                 identifier = identifier.lower()
             return f"{region.lower()}/{identifier}" if region else identifier
     raise ValueError("reservation URL is not a recognized merchant-specific page")
@@ -170,7 +227,7 @@ def validate_platform_url(provider: str, url: str) -> str:
     parts = urlsplit(normalized)
     if parts.hostname not in definition.hosts:
         raise ValueError("reservation URL host does not match provider")
-    _merchant_identity(provider, unquote(parts.path, errors="strict"))
+    _merchant_identity(provider, unquote(parts.path, errors="strict"), parts.netloc)
     query = ""
     if parts.query:
         pairs = parse_qsl(parts.query, keep_blank_values=True, strict_parsing=True)
@@ -186,18 +243,27 @@ def validate_platform_url(provider: str, url: str) -> str:
 
 def platform_url_identity(provider: str, url: str) -> str:
     parts = urlsplit(validate_platform_url(provider, url))
-    return _merchant_identity(provider, unquote(parts.path, errors="strict"))
+    return _merchant_identity(provider, unquote(parts.path, errors="strict"), parts.netloc)
 
 
 def platform_url_language(provider: str, url: str) -> str:
     parts = urlsplit(validate_platform_url(provider, url))
+    if provider in _SINGLE_LANGUAGE_PLATFORMS:
+        return _SINGLE_LANGUAGE_PLATFORMS[provider]
+    first_segment = unquote(parts.path, errors="strict").split("/")[1].lower()
+    aliases = _PLATFORM_LANGUAGE_DIRECTORIES.get(provider)
+    if aliases is not None:
+        # Both platforms serve Japanese from the bare path, with no language directory.
+        if provider == "gurunavi" and parts.netloc == "r.gnavi.co.jp":
+            return "ja"
+        return aliases.get(first_segment, "ja")
     if provider == "inline":
         language = dict(parse_qsl(parts.query)).get("language", "")
     elif provider in {
         "tablecheck", "catchtable_global", "eztable", "chope", "openrice",
-        "hungry_hub", "myconcierge",
+        "hungry_hub", "myconcierge", "autoreserve",
     }:
-        language = unquote(parts.path, errors="strict").split("/")[1]
+        language = first_segment
     else:
         language = ""
     return _LANGUAGES.get(language.lower(), "")

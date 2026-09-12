@@ -22,6 +22,7 @@ from app.foods.platform_link_catalog import PLATFORM_LINK_AUDIT_SEEDS
 from app.foods.platform_links import (
     PLATFORMS_BY_COUNTRY,
     PLATFORMS_BY_PROVIDER,
+    available_platforms,
     expected_platform,
     platform_url_identity,
     platform_url_language,
@@ -94,6 +95,113 @@ def test_catchtable_accepts_literal_dotted_venue_ids(identifier: str, route: str
     assert platform_url_language("catchtable_global", url) == ""
 
 
+def test_catchtable_accepts_an_underscore_only_dot_segment() -> None:
+    """Seoul 하니칼국수 is `hani._.noodle`; only the whole ID must start alphanumeric."""
+    url = "https://www.catchtable.net/shop/hani._.noodle"
+    assert validate_platform_url("catchtable_global", url) == url
+    assert platform_url_identity("catchtable_global", url) == "hani._.noodle"
+
+
+@pytest.mark.parametrize(
+    ("provider", "url", "identity", "language"),
+    [
+        ("tabelog", "https://tabelog.com/osaka/A2701/A270202/27001289", "27001289", "ja"),
+        ("tabelog", "https://tabelog.com/en/tokyo/A1301/A130101/13226719", "13226719", "en"),
+        ("tabelog", "https://tabelog.com/tw/tokyo/A1301/A130101/13226719", "13226719", "zh-TW"),
+        ("tabelog", "https://tabelog.com/cn/tokyo/A1301/A130101/13226719", "13226719", "zh-CN"),
+        ("tabelog", "https://tabelog.com/kr/tokyo/A1301/A130101/13226719", "13226719", "ko"),
+        ("tabelog", "https://tabelog.com/th/tokyo/A1301/A130101/13226719", "13226719", "th"),
+        ("hotpepper", "https://www.hotpepper.jp/strJ003560255", "j003560255", "ja"),
+        ("gurunavi", "https://r.gnavi.co.jp/k001100", "k001100", "ja"),
+        ("gurunavi", "https://r.gnavi.co.jp/nmwubfx70000", "nmwubfx70000", "ja"),
+        ("gurunavi", "https://gurunavi.com/en/k001100/rst", "k001100", "en"),
+        ("gurunavi", "https://gurunavi.com/zh-hant/k001100/rst", "k001100", "zh-TW"),
+        ("gurunavi", "https://gurunavi.com/zh-hans/k001100/rst", "k001100", "zh-CN"),
+        (
+            "autoreserve",
+            "https://autoreserve.com/ja/restaurants/91FxEE6JLr2HE2owrKVL",
+            "91FxEE6JLr2HE2owrKVL",
+            "ja",
+        ),
+        (
+            "autoreserve",
+            "https://autoreserve.com/zh-tw/restaurants/91FxEE6JLr2HE2owrKVL",
+            "91FxEE6JLr2HE2owrKVL",
+            "zh-TW",
+        ),
+        ("naver_booking", "https://booking.naver.com/booking/13/bizes/210459", "210459", "ko"),
+        ("naver_booking", "https://m.booking.naver.com/booking/13/bizes/210459", "210459", "ko"),
+    ],
+)
+def test_japan_and_korea_shop_pages_are_accepted(
+    provider: str, url: str, identity: str, language: str
+) -> None:
+    assert validate_platform_url(provider, url) == url
+    assert validate_platform_url(provider, f"{url}/") == url
+    assert platform_url_identity(provider, url) == identity
+    assert platform_url_language(provider, url) == language
+
+
+@pytest.mark.parametrize(
+    ("provider", "url"),
+    [
+        # Area, ranking and review routes are not one shop.
+        ("tabelog", "https://tabelog.com/osaka/A2701/A270202"),
+        ("tabelog", "https://tabelog.com/tokyo/rstLst/RC0101"),
+        ("tabelog", "https://tabelog.com/en/tokyo/A1301/A130101/13226719/dtlrvwlst"),
+        ("tabelog", "https://tabelog.com/en/tokyo/A1301/A130101/1322671a"),
+        # Tabelog has no Hong Kong directory; a site locale is not a Tabelog locale.
+        ("tabelog", "https://tabelog.com/hk/tokyo/A1301/A130101/13226719"),
+        ("tabelog", "https://tabelog.com/zh-tw/tokyo/A1301/A130101/13226719"),
+        ("hotpepper", "https://www.hotpepper.jp/strJ00356025"),
+        ("hotpepper", "https://www.hotpepper.jp/strJ003560255/yoyaku"),
+        ("hotpepper", "https://www.hotpepper.jp/fukuoka"),
+        ("gurunavi", "https://r.gnavi.co.jp/area"),
+        ("gurunavi", "https://r.gnavi.co.jp/plan/r6pyrfvf0000/plan-reserve"),
+        # Each Gurunavi route belongs to one host only.
+        ("gurunavi", "https://r.gnavi.co.jp/en/k001100/rst"),
+        ("gurunavi", "https://gurunavi.com/k001100/rst"),
+        ("gurunavi", "https://gurunavi.com/en/k001100"),
+        ("autoreserve", "https://autoreserve.com/ja/restaurants/91FxEE6JLr2HE2owrKV"),
+        ("autoreserve", "https://autoreserve.com/restaurants/91FxEE6JLr2HE2owrKVL"),
+        ("autoreserve", "https://autoreserve.com/ja/areas/osaka"),
+        ("naver_booking", "https://booking.naver.com/booking/13/bizes"),
+        ("naver_booking", "https://booking.naver.com/booking/13/bizes/210459/items/4567"),
+        # Naver's map entry is a place page, not the reservation platform.
+        ("naver_booking", "https://map.naver.com/p/entry/place/210459"),
+    ],
+)
+def test_japan_and_korea_non_shop_pages_are_rejected(provider: str, url: str) -> None:
+    with pytest.raises(ValueError):
+        validate_platform_url(provider, url)
+
+
+@pytest.mark.parametrize(
+    ("locale", "directory"),
+    [("ja", ""), ("en", "en/"), ("zh-TW", "tw/"), ("zh-CN", "cn/"), ("ko", "kr/")],
+)
+def test_tabelog_language_directories_map_onto_site_locales(
+    locale: str, directory: str
+) -> None:
+    canonical = "https://tabelog.com/osaka/A2701/A270202/27001289"
+    localized = f"https://tabelog.com/{directory}osaka/A2701/A270202/27001289"
+    assert validate_localized_platform_urls("tabelog", canonical, {locale: localized}) == {
+        locale: localized
+    }
+
+
+def test_tabelog_language_directory_must_match_its_locale() -> None:
+    canonical = "https://tabelog.com/osaka/A2701/A270202/27001289"
+    with pytest.raises(ValueError, match="language does not match"):
+        validate_localized_platform_urls(
+            "tabelog", canonical, {"ko": "https://tabelog.com/tw/osaka/A2701/A270202/27001289"}
+        )
+    with pytest.raises(ValueError, match="different merchant or branch"):
+        validate_localized_platform_urls(
+            "tabelog", canonical, {"en": "https://tabelog.com/en/osaka/A2701/A270202/27001290"}
+        )
+
+
 @pytest.mark.parametrize("locale", ["zh-TW", "zh-CN", "en", "ja", "ko"])
 def test_catchtable_dotted_identity_matches_reviewed_locale_aliases(locale: str) -> None:
     canonical = "https://www.catchtable.net/shop/yosukgung.kr"
@@ -121,10 +229,10 @@ def test_catchtable_dotted_ids_remain_distinct(identifier: str) -> None:
 
 @pytest.mark.parametrize("url", [
     "https://www.catchtable.net/shop/.yosukgung.kr",
+    "https://www.catchtable.net/shop/_yosukgung.kr",
     "https://www.catchtable.net/shop/yosukgung.kr.",
     "https://www.catchtable.net/shop/yosukgung..kr",
     "https://www.catchtable.net/shop/yosukgung.-kr",
-    "https://www.catchtable.net/shop/yosukgung._kr",
     "https://www.catchtable.net/shop/yosukgung%2ekr",
     "https://www.catchtable.net/shop/yosukgung%2Ekr",
     "https://www.catchtable.net/shop/yosukgung%252ekr",
@@ -242,11 +350,13 @@ def test_localized_url_is_selected_only_when_reviewed_on_the_same_row() -> None:
     assert public["language_code"] == "ja"
 
 
-def test_all_twelve_platforms_are_available_independent_of_country() -> None:
+def test_every_reviewed_platform_is_available_independent_of_country() -> None:
     assert set(PLATFORMS_BY_PROVIDER) == {
         "tablecheck", "catchtable_global", "eztable", "chope", "openrice", "hungry_hub",
         "pasgo", "inline", "maifood", "sevenrooms", "ikyu", "myconcierge",
+        "tabelog", "hotpepper", "gurunavi", "autoreserve", "naver_booking",
     }
+    assert [item["provider"] for item in available_platforms()] == sorted(PLATFORMS_BY_PROVIDER)
 
 
 @pytest.mark.parametrize("url", [
@@ -409,7 +519,7 @@ async def test_platform_save_preserves_merchant_relations_and_other_platform(
         assert audit.metadata_json["provider"] == provider
         refreshed = await get_merchant_platform_links(merchant.id, admin, session)
         assert refreshed["platform_links"] == created["platform_links"]
-        assert len(refreshed["available_platforms"]) == 12
+        assert len(refreshed["available_platforms"]) == len(PLATFORMS_BY_PROVIDER)
 
 
 @pytest.mark.asyncio
