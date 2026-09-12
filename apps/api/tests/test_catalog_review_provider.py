@@ -494,9 +494,9 @@ async def test_discovery_searches_before_structuring_and_removes_authority_field
             )
         assert "tools" not in body
         assert body["generationConfig"]["responseMimeType"] == "application/json"
-        data_schema = body["generationConfig"]["responseSchema"]["properties"]["items"][
-            "items"
-        ]["properties"]["data"]
+        data_schema = body["generationConfig"]["responseSchema"]["properties"]["items"]["items"][
+            "properties"
+        ]["data"]
         assert set(data_schema["properties"]) >= {
             "category",
             "localizations",
@@ -1350,3 +1350,232 @@ async def test_discovery_truncation_is_typed_without_fabricating_partial_drafts(
             await provider.discover("hotspot", 1, [{"id": "tokyo"}], [])
         assert provider.call_count == 1
     assert caught.value.code == "catalog_response_truncated"
+
+
+# --- merchant enrichment -------------------------------------------------------------
+
+MERCHANT_SITE = "https://sushi-dai.example/tsukiji"
+TOURISM_PAGE = "https://www.gotokyo.org/en/spot/sushi-dai"
+TABELOG = "https://tabelog.com/tokyo/A1313/A131301/13002260/"
+MERCHANT_TEXT = "寿司大 東京都中央区築地5-2-1 営業時間 5:00-13:00"
+
+
+def merchant_candidate(**updates: Any) -> ReviewCandidate:
+    return ReviewCandidate.model_validate(
+        {
+            "candidate_id": "row-1",
+            "kind": "merchant",
+            "name": "Sushi Dai",
+            "local_name": "寿司大",
+            "destination_id": "tokyo",
+            "data": {"name": "Sushi Dai", "local_name": "寿司大", "address": None},
+            "sources": [source(MERCHANT_SITE, MERCHANT_TEXT)],
+            **updates,
+        }
+    )
+
+
+def enrichment_document(*corrections: dict[str, Any], candidate_id: str = "row-1") -> Any:
+    return {
+        "items": [
+            {
+                "candidate_id": candidate_id,
+                "confidence": 0.8,
+                "reason": "官網列出分店地址。",
+                "corrections": list(corrections),
+            }
+        ]
+    }
+
+
+async def test_enrich_search_keeps_untrusted_non_platform_hosts_and_marks_trust() -> None:
+    bodies: list[dict[str, Any]] = []
+
+    def respond(request: httpx.Request) -> httpx.Response:
+        body = json.loads(request.content)
+        bodies.append(body)
+        return httpx.Response(
+            200,
+            json=gemini_body(
+                "row-1: official site sushi-dai.example; GO TOKYO listing.",
+                grounding=[
+                    MERCHANT_SITE,
+                    TOURISM_PAGE,
+                    TABELOG,
+                    "https://www.google.com/maps/place/x",
+                    "https://www.openrice.com/en/hongkong/r-x-r1",
+                ],
+            ),
+        )
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(respond)) as client:
+        provider = CatalogGeminiProvider(
+            settings(), reserve, client=client, trusted_hosts=["www.gotokyo.org"]
+        )
+        evidence = await provider.enrich_search(
+            [{"candidate_id": "row-1", "name": "Sushi Dai", "destination": {"id": "tokyo"}}]
+        )
+        with pytest.raises(ValueError):
+            await provider.enrich_search([])
+        with pytest.raises(ValueError):
+            await provider.enrich_search([{"candidate_id": str(n)} for n in range(9)])
+    assert [(item["source_url"], item["trusted"]) for item in evidence] == [
+        (MERCHANT_SITE, False),
+        (TOURISM_PAGE, True),
+    ]
+    assert provider.enrichment_diagnostics == {
+        "grounding_chunks": 5,
+        "kept_grounding_sources": 2,
+        "trusted_grounding_sources": 1,
+        "platform_dropped": 2,
+    }
+    (body,) = bodies
+    assert body["tools"] == [{"google_search": {}}]
+    assert "responseSchema" not in body["generationConfig"]
+    assert "www.gotokyo.org" in body["contents"][0]["parts"][0]["text"]
+    assert provider.call_count == 1
+
+
+async def test_enrich_assess_uses_enum_schema_without_tools_and_rechecks_every_correction() -> None:
+    bodies: list[dict[str, Any]] = []
+
+    def respond(request: httpx.Request) -> httpx.Response:
+        body = json.loads(request.content)
+        bodies.append(body)
+        return httpx.Response(
+            200,
+            json=gemini_body(
+                enrichment_document(
+                    {
+                        "field": "address",
+                        "value": "東京都中央区築地5-2-1",
+                        "source_url": MERCHANT_SITE,
+                        "quote": "東京都中央区築地5-2-1",
+                    },
+                    {
+                        "field": "official_website_url",
+                        "value": MERCHANT_SITE,
+                        "source_url": MERCHANT_SITE,
+                        "quote": "寿司大",
+                        "title": "寿司大 公式",
+                    },
+                    {
+                        "field": "category_slug",
+                        "value": "ramen",
+                        "source_url": MERCHANT_SITE,
+                        "quote": "寿司大",
+                    },
+                    {
+                        "field": "area_slug",
+                        "value": "tokyo-tsukiji",
+                        "source_url": MERCHANT_SITE,
+                        "quote": "築地",
+                    },
+                    {
+                        "field": "listing_source_url",
+                        "value": TOURISM_PAGE,
+                        "source_url": TOURISM_PAGE,
+                        "quote": "never fetched",
+                    },
+                )
+            ),
+        )
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(respond)) as client:
+        provider = CatalogGeminiProvider(
+            settings(), reserve, client=client, trusted_hosts=["www.gotokyo.org"]
+        )
+        result = await provider.enrich_assess(
+            [merchant_candidate()],
+            verified={
+                "row-1": [
+                    provider_module.VerifiedCandidate(MERCHANT_SITE, "official", "寿司大", False)
+                ]
+            },
+            area_slugs={"row-1": ["tokyo-tsukiji"]},
+            catalog={"category_slugs": ["sushi"], "areas": {}, "categories": []},
+        )
+    (body,) = bodies
+    assert "tools" not in body
+    schema = body["generationConfig"]["responseSchema"]
+    item_schema = schema["properties"]["items"]["items"]
+    assert item_schema["properties"]["candidate_id"]["enum"] == ["row-1"]
+    field_schema = item_schema["properties"]["corrections"]["items"]["properties"]["field"]
+    assert set(field_schema["enum"]) == {
+        "address",
+        "official_website_url",
+        "listing_source_url",
+        "area_slug",
+        "category_slug",
+    }
+    payload = json.loads(body["contents"][0]["parts"][0]["text"])
+    assert payload["candidates"][0]["enrichment"] == {
+        "official_website_candidates": [MERCHANT_SITE],
+        "listing_candidates": [],
+        "area_slugs": ["tokyo-tsukiji"],
+    }
+    assert payload["catalog"]["category_slugs"] == ["sushi"]
+    outcome = result["row-1"]
+    assert [(entry["field"], entry["value"], entry["kind"]) for entry in outcome.corrections] == [
+        ("address", "東京都中央区築地5-2-1", "address"),
+        ("official_website_url", MERCHANT_SITE, "merchant_website"),
+        ("area_slug", "tokyo-tsukiji", "area"),
+    ]
+    assert outcome.corrections[1]["title"] == "寿司大 公式"
+    assert outcome.rejected == {"category_not_allowed": 1, "unknown_source": 1}
+    assert provider.enrichment_diagnostics["corrections_accepted"] == 3
+    assert provider.enrichment_diagnostics["rejected_category_not_allowed"] == 1
+    assert provider.call_count == 1
+
+
+async def test_enrich_assess_ids_must_match_and_authority_fields_fail_as_invalid_json() -> None:
+    authority = {
+        "field": "google_place_id",
+        "value": "ChIJmadeup",
+        "source_url": MERCHANT_SITE,
+        "quote": "寿司大",
+    }
+    documents = [
+        enrichment_document(candidate_id="row-2"),
+        enrichment_document(authority),
+        enrichment_document(authority),
+    ]
+
+    def respond(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(200, json=gemini_body(documents.pop(0)))
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(respond)) as client:
+        provider = CatalogGeminiProvider(settings(), reserve, client=client)
+        with pytest.raises(CatalogAssessmentError) as mismatch:
+            await provider.enrich_assess(
+                [merchant_candidate()], verified={}, area_slugs={}, catalog={"category_slugs": []}
+            )
+        assert mismatch.value.code == "catalog_response_ids_invalid"
+        assert provider.call_count == 1
+        with pytest.raises(CatalogAssessmentError) as invalid:
+            await provider.enrich_assess(
+                [merchant_candidate()], verified={}, area_slugs={}, catalog={"category_slugs": []}
+            )
+        # One repair attempt, each reserved, then the authority field is refused for good.
+        assert invalid.value.code == "catalog_response_invalid"
+        assert provider.call_count == 3
+
+
+async def test_discovery_grounding_still_keeps_only_trusted_hosts() -> None:
+    async def never_request(request: httpx.Request) -> httpx.Response:
+        pytest.fail("grounding evidence must not fetch publishers")
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(never_request)) as client:
+        provider = CatalogGeminiProvider(
+            settings(), reserve, client=client, trusted_hosts=["www.gotokyo.org"]
+        )
+        evidence = await provider._grounding_evidence(
+            gemini_body("prose", grounding=[MERCHANT_SITE, TOURISM_PAGE, TABELOG])
+        )
+    assert [item["source_url"] for item in evidence] == [TOURISM_PAGE]
+    assert "trusted" not in evidence[0]
+    assert provider.discovery_diagnostics == {
+        "grounding_chunks": 3,
+        "trusted_grounding_sources": 1,
+    }
+    assert provider.enrichment_diagnostics == {}

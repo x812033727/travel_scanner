@@ -60,11 +60,11 @@ All endpoints require the existing administrator capability:
 | Endpoint | Purpose |
 | --- | --- |
 | `GET /api/v1/admin/catalog-review` | Configuration availability, pending counts, recent jobs |
-| `POST /api/v1/admin/catalog-review/runs` | Snapshot review or bounded discovery; Idempotency-Key required |
+| `POST /api/v1/admin/catalog-review/runs` | Snapshot review, bounded discovery or merchant enrichment; Idempotency-Key required |
 | `GET /api/v1/admin/catalog-review/runs/{id}` | Persisted counts, status, budget and resumability |
 | `GET /api/v1/admin/catalog-review/runs/{id}/items` | Paginated assessment previews, default 30, maximum 100 |
 | `POST /api/v1/admin/catalog-review/runs/{id}/resume` | Explicit retry of unfinished work |
-| `POST /api/v1/admin/catalog-review/runs/{id}/apply` | Confirm selected eligible actions with version and Idempotency-Key |
+| `POST /api/v1/admin/catalog-review/runs/{id}/apply` | Confirm selected eligible actions (including `apply_corrections`) with version and Idempotency-Key |
 
 Only one catalog job runs globally. PostgreSQL serializes job starts, worker leases and
 apply operations. Workers renew a five-minute lease; stale workers cannot reserve calls
@@ -196,3 +196,105 @@ The snapshot also confirms existing publication gaps: all 307 have unverified ma
 matches, 215 lack durable verified coordinates, 179 lack exact map identity, and
 32 lack a direct merchant source. These counts overlap. A successful model assessment
 does not resolve these independent requirements or authorize bulk publication.
+
+## Merchant enrichment (`enrich_merchants`)
+
+A third run mode fills the descriptive gaps of **pending food merchants** — address,
+the merchant's own website, a tourism-board listing, 商圈 and categories — so that the
+ordinary review and the coordinate work have something to stand on. It is available
+only in the Food workspace (`scope=foods`) and never publishes: `map_match_status`,
+coordinates, `review_status` and `is_active` are never written by it.
+
+Owner decision (2026-09-12): platforms are used only for **identity and discovery**.
+Google supplies a Place ID through the existing matcher; Google Search grounding finds
+candidate pages; Tabelog, Gurunavi, HotPepper, Retty, OpenRice, CatchTable, reservation
+platforms and social networks are never stored as sources (`PLATFORM_HOSTS` in
+`app/foods/enrichment.py`). Durable facts still come from the merchant's own site
+(`merchant_official` / `merchant_website`), a tourism-board or government page about
+that one merchant (`official_tourism` / `merchant_listing`) or Wikimedia.
+
+### What the worker does
+
+1. **identify** — for snapshot rows without a Place ID outside Korea, the existing
+   `match-food-merchant-places` logic runs (Google Text Search Pro, 90% SKU brake,
+   ownership check). It writes only `google_place_id` with the run id in its audit row.
+   `identify_places: false` skips it.
+2. **enrich** — five merchants per batch, two Gemini calls:
+   - a grounded prose search for each merchant's official page and tourism listing
+     (`_ENRICH_SEARCH_INSTRUCTIONS`); every non-platform host in the grounding metadata
+     is kept and flagged `trusted` or not;
+   - the server fetches every candidate page and the merchant's already cited pages
+     (`fetch_sources`, same SSRF and size limits) and classifies them
+     (`verify_candidates`): a trusted-registry page that names the merchant is a
+     **listing**; any other non-platform page that names the merchant *and* places it
+     (address fragment or the city's name in any script) is an **official** candidate;
+   - one structured call (`_ENRICH_INSTRUCTIONS`) extracts `address`,
+     `official_website_url`, `listing_source_url`, `area_slug` and `category_slug`
+     corrections with a quote each; `verified_corrections` keeps only those whose cited
+     page was fetched, still contains the quote, and whose value passes the field's
+     rule (an official site must be a verified official candidate, a listing a verified
+     listing, an address must appear on the page and be empty in the snapshot, areas and
+     categories must be active catalog slugs).
+   Each item's snapshot is refreshed right before its batch is assessed, so the
+   fingerprint the apply step checks is the state Gemini saw. Items are always
+   `needs_review`; `allowed_actions` is `apply_corrections` (when something was
+   verified) or `keep_pending`.
+3. **apply_corrections** — writes the item's corrections through
+   `app.foods.enrichment.apply_merchant_enrichment`, the same function the researched
+   JSON importer uses: only empty scalars are filled, sources are upserted by URL with
+   `last_verified_at` refreshed, categories are only added (`source='gemini'`), the
+   listing host must be trusted, and one `food_merchant_enriched` audit row records
+   before/after, origin and evidence. Snapshot, seven-day and pending checks apply as
+   for the other actions.
+
+### Requests, budgets and the CLI
+
+`POST /runs` with `{"mode": "enrich_merchants", "scope": "foods"}` plus optional
+`destination_ids`, `limit` (≤ 500) and `identify_places`; those three fields are
+rejected for the other modes and do not enter their request hashes. The overview
+reports `can_start_enrichment`; items expose `corrections` and `identify`; runs expose
+`enrichment` counts.
+
+163 pending merchants cost about 33 batches × 2 = 66 Gemini calls (99 with every
+repair). The per-run cap (`catalog_review_max_calls`, default 80) must be raised to at
+least 120 before a full run, or the run must be chunked with `destination_ids` (≤ 40
+merchants ≈ 16 calls). The Google phase spends at most one Text Search Pro call per
+merchant without a Place ID.
+
+```bash
+python -m app.cli enrich-food-merchants --actor-email <admin> --dry-run
+python -m app.cli enrich-food-merchants --actor-email <admin> --destination tokyo --limit 5 --max-calls 6
+```
+
+The command creates the run through the normal service (idempotency key derived from
+actor, arguments and UTC date, so a retry resumes rather than re-searches) and executes
+the worker inline in the api container; corrections are still applied from the admin
+page.
+
+### Researched batches (browser lane)
+
+`python -m app.cli export-food-merchant-worklist [--status pending] [--destination …]
+[--include-researched] [--out <path>]` prints each merchant with its current data, the
+destination's areas (slug, names, match terms) and the active categories. Research
+results go into `app/foods/data/enrichment/<date>-<name>.json` (schema in
+`app/foods/enrichment_import.py`: per record an outcome of `found`, `partial`,
+`not_found` or `blocked_retry_later`, the official page and listing with exact quotes,
+the address taken from one of them, the Google Maps branch URL or Place ID with an
+identity observation, area and category slugs, the Naver outcome for Korean rows, and
+the evidence list). `python -m app.cli apply-food-merchant-enrichment [--file …]
+[--check] [--limit N] [--slug …] [--apply]` validates the whole file first, then writes
+through the same shared function; a dry run makes the same calls and rolls back.
+`not_found` and `blocked_retry_later` records only leave a
+`food_merchant.cli_enrichment_researched` audit row, which the worklist export uses to
+skip settled merchants and list blocked ones again.
+
+### Known limits
+
+- Official sites behind bot walls or rendered only by JavaScript return `http_403` or
+  `empty_content` and produce no candidate; publisher redirects are not followed.
+- Korean rows skip the Google phase and still need a Naver place URL by hand.
+- A chain's brand site that names the branch and the city passes the official check;
+  the human applying the corrections is the last check on branch identity.
+- Coordinates are out of scope: `fill-food-merchant-coordinates` can read JSON-LD from
+  the newly added pages, and the coordinate queue reviewer must not treat a Google
+  candidate's coordinates as durable.

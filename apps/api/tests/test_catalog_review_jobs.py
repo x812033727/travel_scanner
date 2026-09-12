@@ -5,6 +5,7 @@ from __future__ import annotations
 import asyncio
 import hashlib
 import json
+from collections.abc import Callable
 from datetime import UTC, datetime, timedelta
 from types import SimpleNamespace
 from typing import Any
@@ -13,16 +14,22 @@ from uuid import UUID, uuid4
 
 import pytest
 from sqlalchemy.sql import operators
+from sqlalchemy.sql.elements import Null
 
 from app.catalog_review import jobs
+from app.catalog_review.enrichment import EnrichmentTaxonomy, VerifiedCandidate
 from app.catalog_review.errors import CatalogAssessmentError
+from app.catalog_review.provider import VerifiedEnrichment
 from app.catalog_review.schemas import (
     AssessmentBatch,
     DiscoveryBatch,
     DiscoveryDraft,
+    EnrichmentAssessment,
     EvidenceSource,
     ReviewAssessment,
 )
+from app.catalog_review.service import allowed_actions as jobs_allowed_actions
+from app.foods.place_matching import MerchantMatchReport
 from app.models import CatalogReviewItem, CatalogReviewRun, FoodMerchant
 from app.worker import QUEUE_NAMES
 
@@ -36,6 +43,10 @@ def matches(row: Any, expression: Any) -> bool:
     right = expression.right.value if hasattr(expression.right, "value") else True
     if expression.operator is operators.in_op:
         return left in right
+    if expression.operator is operators.not_in_op:
+        return left not in right
+    if expression.operator is operators.is_:
+        return left is None if isinstance(expression.right, Null) else left is right
     return left == right
 
 
@@ -494,13 +505,11 @@ async def test_three_empty_discovery_rounds_report_honest_shortfall(
     assert len(provider.discover_calls) == 3
     assert all(call["count"] == 5 for call in provider.discover_calls)
     destination_windows = [
-        tuple(entry["id"] for entry in call["destinations"])
-        for call in provider.discover_calls
+        tuple(entry["id"] for entry in call["destinations"]) for call in provider.discover_calls
     ]
     assert len(set(destination_windows)) == 3
     assert all(
-        len(window) <= jobs.DISCOVERY_DESTINATION_BATCH_SIZE
-        for window in destination_windows
+        len(window) <= jobs.DISCOVERY_DESTINATION_BATCH_SIZE for window in destination_windows
     )
     assert run.result_json["discovery_round_counts"]["merchant"] == 3
     assert not provider.assess_calls
@@ -767,3 +776,358 @@ async def test_expired_worker_reclaim_preserves_committed_failure_streak(
     assert len(provider.assess_calls) == 3 - prior_failures
     assert run.usage_json["calls"] == 3
     assert run.result_json["consecutive_provider_failures"] == 3
+
+
+# --- merchant enrichment -------------------------------------------------------------
+
+
+def merchant_row(number: int, **values: Any) -> FoodMerchant:
+    defaults = dict(
+        id=UUID(int=1000 + number),
+        slug=f"tokyo-sushi-{number}",
+        destination_id="tokyo",
+        country_code="JP",
+        name=f"Sushi {number}",
+        local_name=f"寿司{number}",
+        names_json={},
+        address=None,
+        google_place_id=None,
+        review_status="pending",
+        map_match_status="unverified",
+        is_active=False,
+        display_order=number,
+    )
+    return FoodMerchant(**(defaults | values))
+
+
+def enrich_item(run: CatalogReviewRun, merchant: FoodMerchant, number: int) -> CatalogReviewItem:
+    return new_item(
+        run,
+        number,
+        kind="merchant",
+        entity_id=merchant.id,
+        phase="enrich_merchants",
+        name=merchant.name,
+        snapshot_json={"source_urls": []},
+        snapshot_hash="stale",
+    )
+
+
+def enrich_run(**values: Any) -> CatalogReviewRun:
+    request = {"max_calls": 80, "scope": "foods", "identify_places": True}
+    request.update(values.pop("request_json", {}))
+    return new_run(
+        mode="enrich_merchants", phase="enrich_merchants", request_json=request, **values
+    )
+
+
+def merchant_page_url(name: str) -> str:
+    return f"https://{name.lower().replace(' ', '-')}.example/tsukiji"
+
+
+class FakeEnrichProvider(FakeProvider):
+    def __init__(self, store: Store):
+        super().__init__(store)
+        self.search_calls: list[list[str]] = []
+        self.enrich_assess_calls: list[list[str]] = []
+        self.search_failures = 0
+        self.enrichment_diagnostics: dict[str, int] = {}
+
+    async def enrich_search(self, merchants: list[dict[str, Any]]) -> list[dict[str, Any]]:
+        await self.sent()
+        self.search_calls.append([item["candidate_id"] for item in merchants])
+        if self.search_failures:
+            self.search_failures -= 1
+            raise CatalogAssessmentError("catalog_provider_timeout", retryable=True)
+        return [
+            {
+                "source_url": merchant_page_url(item["name"]),
+                "title": f"{item['name']} official",
+                "supporting_claims": [],
+                "trusted": False,
+            }
+            for item in merchants
+        ]
+
+    async def enrich_assess(
+        self,
+        candidates: list[Any],
+        *,
+        verified: dict[str, list[VerifiedCandidate]],
+        area_slugs: dict[str, list[str]],
+        catalog: dict[str, Any],
+    ) -> dict[str, VerifiedEnrichment]:
+        await self.sent()
+        self.enrich_assess_calls.append([item.candidate_id for item in candidates])
+        results: dict[str, VerifiedEnrichment] = {}
+        for item in candidates:
+            pages = [
+                page for page in verified.get(item.candidate_id, []) if page.kind == "official"
+            ]
+            corrections = [
+                {
+                    "field": "official_website_url",
+                    "value": page.url,
+                    "source_url": page.url,
+                    "quote": item.local_name,
+                    "title": page.title,
+                    "kind": "merchant_website",
+                }
+                for page in pages[:1]
+            ]
+            results[item.candidate_id] = VerifiedEnrichment(
+                assessment=EnrichmentAssessment(
+                    candidate_id=item.candidate_id, confidence=0.8, reason="找到官網。"
+                ),
+                corrections=corrections,
+                rejected={},
+            )
+        return results
+
+
+def enrich_setup(
+    monkeypatch: pytest.MonkeyPatch,
+    run: CatalogReviewRun,
+    merchants: list[FoodMerchant],
+    *,
+    match_outcomes: list[str] | None = None,
+    fetched_text: Callable[[str], str | None] | None = None,
+) -> tuple[Store, FakeEnrichProvider, list[CatalogReviewItem], list[list[str]]]:
+    items = [enrich_item(run, merchant, number) for number, merchant in enumerate(merchants, 1)]
+    store = Store(run, items)
+    store.rows.extend(merchants)
+    provider = FakeEnrichProvider(store)
+    monkeypatch.setattr(jobs, "SessionFactory", store.session)
+    monkeypatch.setattr(jobs, "get_redis", lambda: object())
+    monkeypatch.setattr(jobs, "consume_search_budget", AsyncMock(return_value=True))
+    monkeypatch.setattr(
+        jobs,
+        "load_runtime_settings",
+        AsyncMock(return_value=SimpleNamespace(hotspot_guide_gemini_daily_search_budget=30)),
+    )
+    monkeypatch.setattr(jobs, "trusted_hosts", AsyncMock(return_value={"www.gotokyo.org"}))
+    monkeypatch.setattr(
+        jobs,
+        "load_enrichment_taxonomy",
+        AsyncMock(
+            return_value=EnrichmentTaxonomy(
+                areas_by_destination={
+                    "tokyo": [{"slug": "tokyo-tsukiji", "names": {}, "match_terms": ["築地"]}]
+                },
+                categories=[{"slug": "sushi", "names": {}}],
+            )
+        ),
+    )
+    by_page = {merchant_page_url(merchant.name): merchant for merchant in merchants}
+
+    async def evidence(urls: list[str], _hosts: Any) -> list[EvidenceSource]:
+        sources = []
+        for url in urls:
+            merchant = by_page.get(url)
+            text = (
+                fetched_text(url)
+                if fetched_text is not None
+                else f"{merchant.local_name} {merchant.name} 東京都中央区築地 Tokyo"
+                if merchant is not None
+                else None
+            )
+            if text is None:
+                sources.append(EvidenceSource(url=url, error="http_403"))
+                continue
+            sources.append(
+                EvidenceSource(
+                    url=url,
+                    text=text,
+                    fetched=True,
+                    trusted=False,
+                    fingerprint=hashlib.sha256(text.encode()).hexdigest(),
+                )
+            )
+        return sources
+
+    monkeypatch.setattr(jobs, "fetch_sources", AsyncMock(side_effect=evidence))
+    matcher_calls: list[list[str]] = []
+    outcomes = list(match_outcomes or [])
+
+    async def fake_matcher(
+        _session: Any, _redis: Any, _settings: Any, chunk: list[FoodMerchant], **kwargs: Any
+    ) -> list[MerchantMatchReport]:
+        assert kwargs["apply"] is True and kwargs["origin"] == "catalog_review"
+        assert kwargs["run_id"] == run.id and kwargs["actor_id"] == run.actor_user_id
+        assert await kwargs["should_continue"]() is True
+        matcher_calls.append([merchant.slug for merchant in chunk])
+        reports = []
+        for merchant in chunk:
+            outcome = outcomes.pop(0) if outcomes else "matched"
+            if outcome == "matched":
+                merchant.google_place_id = f"ChIJ{merchant.slug}"
+            reports.append(MerchantMatchReport(merchant.slug, merchant.name, outcome))
+            if outcome in jobs.ENRICH_STOP_OUTCOMES:
+                break
+        return reports
+
+    monkeypatch.setattr(jobs, "match_merchant_places", fake_matcher)
+
+    def factory(_settings: Any, reserve: Any, **_kwargs: Any) -> FakeEnrichProvider:
+        provider.reserve = reserve
+        return provider
+
+    monkeypatch.setattr(jobs, "CatalogGeminiProvider", factory)
+    return store, provider, items, matcher_calls
+
+
+async def test_enrich_run_identifies_then_refreshes_snapshot_before_assessing(
+    monkeypatch: pytest.MonkeyPatch,
+):
+    run = enrich_run()
+    without_id = merchant_row(1)
+    with_id = merchant_row(2, google_place_id="ChIJexisting")
+    _, provider, items, matcher_calls = enrich_setup(monkeypatch, run, [without_id, with_id])
+    await jobs._run(run.id)
+
+    assert matcher_calls == [["tokyo-sushi-1"]]
+    assert run.result_json["identify"] == {
+        "processed": 1,
+        "outcomes": {"matched": 1},
+        "stopped": None,
+        "matched_entity_ids": [str(without_id.id)],
+    }
+    assert provider.search_calls == [[str(items[0].id), str(items[1].id)]]
+    assert provider.enrich_assess_calls == [[str(items[0].id), str(items[1].id)]]
+    assert run.usage_json["calls"] == 2
+    assert run.status == "completed" and run.phase == "enrich_merchants"
+    first, second = items
+    assert first.snapshot_hash != "stale"
+    assert first.snapshot_json["google_place_id"] == "ChIJtokyo-sushi-1"
+    assert first.assessment_json["identify"] == {
+        "matched_in_run": True,
+        "place_id": "ChIJtokyo-sushi-1",
+        "skipped": None,
+    }
+    assert second.assessment_json["identify"]["matched_in_run"] is False
+    for item in items:
+        assert item.status == "assessed" and item.decision == "needs_review"
+        (correction,) = item.assessment_json["corrections"]
+        assert correction["kind"] == "merchant_website"
+        assert correction["value"] == merchant_page_url(item.name)
+        assert all("text" not in entry for entry in item.evidence_json)
+        assert "missing_durable_coordinates" in item.gaps_json
+    assert run.result_json["consecutive_provider_failures"] == 0
+
+
+async def test_enrich_identify_skips_kr_rows_and_rows_with_place_id(
+    monkeypatch: pytest.MonkeyPatch,
+):
+    run = enrich_run()
+    korea = merchant_row(1, country_code="KR", destination_id="seoul", slug="seoul-hani")
+    done = merchant_row(2, google_place_id="ChIJdone")
+    fresh = merchant_row(3)
+    _, provider, items, matcher_calls = enrich_setup(monkeypatch, run, [korea, done, fresh])
+    await jobs._run(run.id)
+    assert matcher_calls == [["tokyo-sushi-3"]]
+    assert korea.google_place_id is None
+    assert items[0].assessment_json["identify"]["skipped"] == "kr"
+    assert items[1].assessment_json["identify"] == {
+        "matched_in_run": False,
+        "place_id": "ChIJdone",
+        "skipped": None,
+    }
+    assert provider.search_calls and run.status == "completed"
+
+
+async def test_enrich_identify_can_be_disabled_and_stops_on_usage_guard(
+    monkeypatch: pytest.MonkeyPatch,
+):
+    run = enrich_run()
+    run.request_json = {**run.request_json, "identify_places": False}
+    _, provider, _, matcher_calls = enrich_setup(monkeypatch, run, [merchant_row(1)])
+    await jobs._run(run.id)
+    assert matcher_calls == []
+    assert run.result_json["identify"]["stopped"] == "disabled"
+    assert provider.search_calls and run.status == "completed"
+
+    guarded = enrich_run()
+    _, provider, _, matcher_calls = enrich_setup(
+        monkeypatch, guarded, [merchant_row(1), merchant_row(2)], match_outcomes=["usage_guard"]
+    )
+    await jobs._run(guarded.id)
+    assert matcher_calls == [["tokyo-sushi-1", "tokyo-sushi-2"]]
+    assert guarded.result_json["identify"]["stopped"] == "usage_guard"
+    assert guarded.result_json["identify"]["outcomes"] == {"usage_guard": 1}
+    assert len(provider.search_calls) == 1 and guarded.status == "completed"
+
+
+async def test_enrich_batches_two_calls_per_five_items(monkeypatch: pytest.MonkeyPatch):
+    run = enrich_run()
+    merchants = [merchant_row(n, google_place_id=f"ChIJ{n}") for n in range(1, 13)]
+    _, provider, items, _ = enrich_setup(monkeypatch, run, merchants)
+    await jobs._run(run.id)
+    assert [len(call) for call in provider.search_calls] == [5, 5, 2]
+    assert [len(call) for call in provider.enrich_assess_calls] == [5, 5, 2]
+    assert run.usage_json["calls"] == 6
+    assert all(item.status == "assessed" for item in items)
+    assert run.status == "completed"
+
+
+async def test_enrich_skips_the_structured_call_when_nothing_was_fetched(
+    monkeypatch: pytest.MonkeyPatch,
+):
+    run = enrich_run()
+    _, provider, items, _ = enrich_setup(
+        monkeypatch,
+        run,
+        [merchant_row(1, google_place_id="ChIJ1")],
+        fetched_text=lambda _url: None,
+    )
+    await jobs._run(run.id)
+    assert len(provider.search_calls) == 1 and provider.enrich_assess_calls == []
+    assert run.usage_json["calls"] == 1
+    (item,) = items
+    assert item.status == "assessed" and item.decision == "needs_review"
+    assert item.reason == jobs.NO_PAGES_REASON
+    assert item.assessment_json["corrections"] == []
+    assert item.evidence_json == []
+    assert jobs_allowed_actions(item) == ["keep_pending"]
+
+
+async def test_enrich_marks_non_pending_merchants_stale_without_spending(
+    monkeypatch: pytest.MonkeyPatch,
+):
+    run = enrich_run()
+    approved = merchant_row(1, review_status="approved", google_place_id="ChIJ1")
+    _, provider, items, matcher_calls = enrich_setup(monkeypatch, run, [approved])
+    await jobs._run(run.id)
+    assert matcher_calls == [] and provider.search_calls == []
+    (item,) = items
+    assert item.status == "stale" and item.reason == jobs.STALE_MERCHANT_REASON
+    assert run.usage_json.get("calls", 0) == 0
+    assert run.status == "completed"
+
+
+async def test_enrich_circuit_breaker_after_three_failed_batches(
+    monkeypatch: pytest.MonkeyPatch,
+):
+    run = enrich_run()
+    merchants = [merchant_row(n, google_place_id=f"ChIJ{n}") for n in range(1, 21)]
+    _, provider, items, _ = enrich_setup(monkeypatch, run, merchants)
+    provider.search_failures = 3
+    await jobs._run(run.id)
+    assert len(provider.search_calls) == 3 and provider.enrich_assess_calls == []
+    assert run.status == "partial"
+    assert run.error_code == "catalog_review_provider_circuit_open"
+    assert sum(item.status == "error" for item in items) == 15
+    assert sum(item.status == "pending" for item in items) == 5
+
+
+async def test_enrich_budget_stop_is_partial_and_keeps_progress(
+    monkeypatch: pytest.MonkeyPatch,
+):
+    run = enrich_run(request_json={"max_calls": 1, "scope": "foods"})
+    _, provider, items, _ = enrich_setup(
+        monkeypatch, run, [merchant_row(1, google_place_id="ChIJ1")]
+    )
+    await jobs._run(run.id)
+    assert len(provider.search_calls) == 1 and provider.enrich_assess_calls == []
+    assert run.status == "partial" and run.error_code == "catalog_review_call_limit"
+    assert run.usage_json["calls"] == 1
+    assert items[0].status == "pending"

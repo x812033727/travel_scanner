@@ -837,6 +837,10 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
 ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     "en": {
         **OAUTH_ERROR_DETAILS["en"],
+        "catalog_enrichment_nothing_pending": "No pending merchants match the enrichment request.",
+        "catalog_source_untrusted": (
+            "The listing source must be on a trusted tourism or government host."
+        ),
         "catalog_scope_invalid": "The review scope is invalid. Select attractions or food.",
         "catalog_scope_mismatch": "This review job belongs to another workspace.",
         "provider_setting_conflict": (
@@ -992,6 +996,10 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     },
     "ja": {
         **OAUTH_ERROR_DETAILS["ja"],
+        "catalog_enrichment_nothing_pending": "補完対象の審査待ち店舗がありません。",
+        "catalog_source_untrusted": (
+            "掲載元は信頼できる観光局または行政機関のホストである必要があります。"
+        ),
         "catalog_scope_invalid": (
             "審査範囲が正しくありません。観光スポットまたはグルメを選択してください。"
         ),
@@ -1147,6 +1155,10 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     },
     "ko": {
         **OAUTH_ERROR_DETAILS["ko"],
+        "catalog_enrichment_nothing_pending": "보완할 심사 대기 가게가 없습니다.",
+        "catalog_source_untrusted": (
+            "등록 출처는 신뢰할 수 있는 관광청 또는 정부 호스트여야 합니다."
+        ),
         "catalog_scope_invalid": "검토 범위가 잘못되었습니다. 명소 또는 음식을 선택하세요.",
         "catalog_scope_mismatch": "이 검토 작업은 다른 작업 공간에 속합니다.",
         "provider_setting_conflict": "다른 관리자가 설정을 변경했습니다. 새로고침한 후 저장하세요.",
@@ -1289,6 +1301,8 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         **OAUTH_ERROR_DETAILS["zh-TW"],
         "trip_create_payload_conflict": "這次建立的內容與原始請求不同，請先到我的旅程確認。",
         "trip_create_recovery_required": "無法安全重送這次建立，請先到我的旅程確認。",
+        "catalog_enrichment_nothing_pending": "目前沒有符合條件的待審店家。",
+        "catalog_source_untrusted": "觀光局來源必須是信任的官方或政府主機。",
         "catalog_scope_invalid": "審核範圍不正確，請選擇景點或美食。",
         "catalog_scope_mismatch": "這筆審核工作屬於其他工作區。",
         "provider_setting_conflict": "設定已被其他管理員更新，請重新載入後再儲存。",
@@ -1339,6 +1353,8 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     },
     "zh-CN": {
         **OAUTH_ERROR_DETAILS["zh-CN"],
+        "catalog_enrichment_nothing_pending": "目前没有符合条件的待审店家。",
+        "catalog_source_untrusted": "旅游局来源必须是可信的官方或政府主机。",
         "catalog_scope_invalid": "审核范围不正确，请选择景点或美食。",
         "catalog_scope_mismatch": "此审核工作属于其他工作区。",
         "provider_setting_conflict": "设置已被其他管理员更新，请重新加载后再保存。",

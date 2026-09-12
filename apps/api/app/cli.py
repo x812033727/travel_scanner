@@ -16,12 +16,18 @@ from app import hotspots as hotspots_package
 from app.admin.service import load_runtime_settings
 from app.auth.schemas import RegisterRequest
 from app.auth.service import hash_password
+from app.catalog_review.enrich_cli import enrich_food_merchants
 from app.config import get_settings
 from app.crawlers.airlines import AirlineFareCrawlerService
 from app.crawlers.schemas import AirlineFareSearch
 from app.crawlers.verification import build_verification_report
 from app.db import SessionFactory
 from app.foods.coordinate_fill_cli import fill_food_merchant_coordinates
+from app.foods.enrichment_import import DEFAULT_ENRICHMENT_FILE as ENRICHMENT_FILE
+from app.foods.enrichment_import import (
+    apply_food_merchant_enrichment,
+    export_food_merchant_worklist,
+)
 from app.foods.place_matching_cli import match_food_merchant_places
 from app.foods.platform_review_import import DEFAULT_REVIEW_FILE as PLATFORM_REVIEW_FILE
 from app.foods.platform_review_import import apply_food_platform_reviews
@@ -97,9 +103,7 @@ async def set_admin(email: str, enabled: bool) -> None:
         assignments = list(
             (
                 await session.scalars(
-                    select(AdminRoleAssignment).where(
-                        AdminRoleAssignment.user_id == user.id
-                    )
+                    select(AdminRoleAssignment).where(AdminRoleAssignment.user_id == user.id)
                 )
             ).all()
         )
@@ -707,6 +711,69 @@ def main() -> None:
     platform_reviews.add_argument(
         "--apply", action="store_true", help="Write the rows instead of only reporting them"
     )
+    enrich = subparsers.add_parser(
+        "enrich-food-merchants",
+        help=(
+            "Run the catalog review's merchant enrichment inline: Google Place IDs for "
+            "pending merchants without one, then Gemini-found official sites, tourism "
+            "listings, addresses, areas and categories as corrections for an administrator "
+            "to apply; never coordinates or review status"
+        ),
+    )
+    enrich.add_argument(
+        "--actor-email", required=True, help="Administrator the run is recorded for"
+    )
+    enrich.add_argument(
+        "--destination", action="append", default=[], help="Limit to a destination (repeatable)"
+    )
+    enrich.add_argument("--limit", type=int, help="Snapshot at most this many pending merchants")
+    enrich.add_argument("--max-calls", type=int, help="Per-run Gemini call cap for this run")
+    enrich.add_argument("--no-identify", action="store_true", help="Skip the Google Place ID phase")
+    enrich.add_argument(
+        "--dry-run", action="store_true", help="List the pending merchants and gaps; no run"
+    )
+    enrich.add_argument(
+        "--idempotency-key", help="Override the key derived from actor, arguments and date"
+    )
+    enrichment_file = subparsers.add_parser(
+        "apply-food-merchant-enrichment",
+        help=(
+            "Apply a researched merchant-enrichment file: fills only empty address, official "
+            "site, area and Place ID, upserts sources, adds categories; never coordinates or "
+            "review status; reports unless --apply"
+        ),
+    )
+    enrichment_file.add_argument(
+        "--file",
+        default=str(ENRICHMENT_FILE),
+        help="Enrichment JSON (default: the batch committed in app/foods/data/enrichment)",
+    )
+    enrichment_file.add_argument("--limit", type=int, help="Stop after this many records")
+    enrichment_file.add_argument(
+        "--slug", action="append", default=[], help="Only these merchant slugs (repeatable)"
+    )
+    enrichment_file.add_argument(
+        "--check",
+        action="store_true",
+        help="Validate the file and print its counts without opening the database",
+    )
+    enrichment_file.add_argument(
+        "--apply", action="store_true", help="Write the rows instead of only reporting them"
+    )
+    worklist = subparsers.add_parser(
+        "export-food-merchant-worklist",
+        help=(
+            "Print the merchants to research as JSON, with each destination's areas and the "
+            "active categories; merchants already settled by a committed enrichment file are "
+            "left out unless --include-researched"
+        ),
+    )
+    worklist.add_argument("--status", choices=["pending", "approved", "all"], default="pending")
+    worklist.add_argument(
+        "--destination", action="append", default=[], help="Limit to a destination (repeatable)"
+    )
+    worklist.add_argument("--include-researched", action="store_true")
+    worklist.add_argument("--out", help="Write the JSON to this path instead of stdout")
     places = subparsers.add_parser(
         "match-hotspot-places",
         help="Fill Google Place IDs for public hotspots that have none (uses the live key)",
@@ -909,6 +976,47 @@ def main() -> None:
             apply_food_platform_reviews(Path(args.file), apply=args.apply, limit=args.limit)
         )
         print(json.dumps(report, ensure_ascii=False, indent=2))
+    elif args.command == "enrich-food-merchants":
+        enrichment = asyncio.run(
+            enrich_food_merchants(
+                actor_email=args.actor_email,
+                destination_ids=args.destination,
+                limit=args.limit,
+                max_calls=args.max_calls,
+                identify=not args.no_identify,
+                dry_run=args.dry_run,
+                idempotency_key=args.idempotency_key,
+            )
+        )
+        print(json.dumps(enrichment, ensure_ascii=False, indent=2, default=str))
+        if enrichment.get("error"):
+            raise SystemExit(1)
+    elif args.command == "apply-food-merchant-enrichment":
+        report = asyncio.run(
+            apply_food_merchant_enrichment(
+                Path(args.file),
+                apply=args.apply,
+                limit=args.limit,
+                slugs=args.slug,
+                check_only=args.check,
+            )
+        )
+        print(json.dumps(report, ensure_ascii=False, indent=2))
+    elif args.command == "export-food-merchant-worklist":
+        worklist_document = asyncio.run(
+            export_food_merchant_worklist(
+                status=args.status,
+                destination_ids=args.destination,
+                include_researched=args.include_researched,
+            )
+        )
+        rendered = json.dumps(worklist_document, ensure_ascii=False, indent=2) + "\n"
+        if args.out:
+            Path(args.out).write_text(rendered, encoding="utf-8")
+            print(json.dumps({"written": args.out, "count": worklist_document["count"]}))
+        else:
+            # The Windows console codepage mangles Han text; write the bytes ourselves.
+            sys.stdout.buffer.write(rendered.encode("utf-8"))
     elif args.command == "collect-hotspots":
         print(asyncio.run(collect_once()))
     elif args.command == "seed-foods":
