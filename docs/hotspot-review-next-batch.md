@@ -212,12 +212,27 @@ These are exactly the rows a two-sentence intro gets wrong in both directions.
 
 | | start of batch | now |
 |---|---|---|
-| pending | 458 | **346** |
-| approved | 1,763 | 1,866 |
+| pending | 458 | **302** |
+| approved | 1,763 | 1,874 |
+| rejected | 1,668 | 1,713 |
 
-103 approvals and 9 duplicate rejections this batch. Public rankings have since rebuilt and
-the whole day's work is live: Tainan 59 → 93, Bangkok 35 → 91, Kanazawa 31 → 66, Hiroshima
+111 approvals and 45 rejections in this batch. Public rankings have since rebuilt and the
+whole day's work is live: Tainan 59 → 93, Bangkok 35 → 91, Kanazawa 31 → 66, Hiroshima
 46 → 72, Hue 20 → 50, Kamakura → 89.
+
+### The rejection accounting nearly went wrong
+
+80 rejections were proposed. The verifier agents for 9 of the 14 batches were killed by a
+session limit part-way through the run, and the script's own tally counts a row with **no
+ruling** the same as a row **no skeptic objected to** — so its first result reported 60
+surviving rejections when only 15 had actually been checked. Re-running the verify phase
+(`resumeFromRunId`, so the decide agents replayed from cache and only the dead verifiers ran
+again) settled all 80: **36 survived, 44 were overturned**. Two of the 15 that had looked
+clean before the re-run — 広島市立竹屋小学校 and 大阪ガス御堂筋東ビル — were refuted by the
+second skeptic, so applying the early list would have tombstoned them wrongly.
+
+The lesson is narrow and worth keeping: when a workflow's verification stage can fail
+independently of its decision stage, count rulings per row rather than trusting the aggregate.
 
 ## Carried forward
 
@@ -231,6 +246,15 @@ the whole day's work is live: Tainan 59 → 93, Bangkok 35 → 91, Kanazawa 31 �
   workflow's own accounting treats "no ruling" the same as "no refutation", which is wrong when
   the ruling never ran, so they were separated by counting rulings per row rather than trusting
   the tally.
-- ~30 rows whose Google candidate is still a different place, several of them because the
-  **stored coordinate is wrong**, not Google: 新營美術園區 is stored at a Kaohsiung coordinate
-  76 km from 新營, and 旗山聖若瑟天主堂 32 km from 旗山. Those need the coordinate fixed first.
+- 37 keeps whose Google candidate is still a different place. A last targeted round with
+  hand-written queries recovered 8 more (眾恩祠, Học viện Âm nhạc Huế, Đèo Prenn, Upper Peirce
+  Reservoir, 臺中市立棒球場, Chợ Âm Phủ, Đình Hoàng Mai, Wat Phra That Doi Kham); the rest are
+  rivers, mountain passes and vanished city-gate sites with no distinct POI to point at.
+- **The stored-coordinate defect is small, measured.** Every pending row with a QID was
+  compared against its own live Wikidata P625: only **4** are more than 1 km out
+  (旗山聖若瑟天主堂 32 km, 秋盆河 12 km, 宏總亞太財經廣場 3.8 km, 물장오리오름 1.3 km). A further
+  115 have no P625 at all — almost all Korean, where the coordinate came from the Wikipedia
+  geosearch instead. So bad coordinates are not what is holding the queue up.
+- One trap worth naming: when re-querying by hand it is easy to type an approximate coordinate
+  into the drift check, which silently invalidates it. 眾恩祠 looked 1.6 km out and was 0.003 km
+  out once the row's real coordinate was used.
