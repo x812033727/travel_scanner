@@ -55,6 +55,27 @@ describe("robots", () => {
     }
   });
 
+  it("refuses the content harvesters without touching what an ordinary crawler may read", () => {
+    const rules = robots().rules;
+    const groups = Array.isArray(rules) ? rules : [rules];
+    // The catch-all has to stay first: disallows() above reads rules[0], and a group that
+    // refuses everything sitting there would quietly close the site to every crawler.
+    expect(groups[0].userAgent).toBe("*");
+    const refused = groups.slice(1);
+    expect(refused.map((rule) => rule.userAgent)).toContain("GPTBot");
+    expect(refused.every((rule) => rule.disallow === "/")).toBe(true);
+    // Training-only tokens. Blocking these leaves Googlebot and Applebot, and so search
+    // itself, untouched -- which is the only reason they are safe to refuse.
+    expect(refused.map((rule) => rule.userAgent)).toEqual(
+      expect.arrayContaining(["Google-Extended", "Applebot-Extended"]),
+    );
+    // Agents that fetch for a person and cite the source are a different bargain, and get
+    // the same answer a search engine does.
+    expect(refused.map((rule) => rule.userAgent)).not.toEqual(
+      expect.arrayContaining(["ChatGPT-User", "OAI-SearchBot", "Googlebot"]),
+    );
+  });
+
   it("leaves public content crawlable", () => {
     for (const path of ["/en", "/en/hotspots", "/zh-TW/foods", "/en/pricing", "/ja/destinations/tokyo/services"]) {
       expect(disallows(path), `${path} should be crawlable`).toBe(false);

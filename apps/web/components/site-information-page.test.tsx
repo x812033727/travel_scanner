@@ -5,6 +5,10 @@ import { getSitePageCopy } from "@/lib/site-pages.server";
 import { sitePageLocales, sitePageSlugs } from "@/lib/site-pages";
 import { alternatesFor, localeUrl } from "@/lib/seo";
 
+const { incoming } = vi.hoisted(() => ({ incoming: vi.fn() }));
+// The document loader reads the request so the API can meter public reads per source.
+vi.mock("next/headers", () => ({ headers: incoming }));
+incoming.mockResolvedValue(new Headers({ "x-forwarded-for": "203.0.113.9" }));
 vi.mock("@/components/site-header", () => ({ SiteHeader: () => null }));
 vi.mock("next-intl/server", () => ({ getTranslations: () => { throw new Error("General UI-text is not a publication channel"); } }));
 afterEach(() => { cleanup(); vi.unstubAllGlobals(); });

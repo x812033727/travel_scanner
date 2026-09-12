@@ -1,4 +1,9 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
+const { incoming } = vi.hoisted(() => ({ incoming: vi.fn() }));
+// The loaders read the visitor's address out of the request so the API can meter reads
+// per source. Nothing here depends on the value; it just has to be readable.
+vi.mock("next/headers", () => ({ headers: incoming }));
+incoming.mockResolvedValue(new Headers({ "x-forwarded-for": "203.0.113.9" }));
 import { loadDestination, loadDestinations, loadMerchants, loadPlaces } from "./destinations.server";
 import enHotspots from "@/messages/en/hotspots.json";
 import zhTwHotspots from "@/messages/zh-TW/hotspots.json";
@@ -42,11 +47,27 @@ describe("loadDestinations", () => {
       center: { latitude: 35.68, longitude: 139.76 }, extensionIds: ["yokohama", "kamakura"],
     });
     // None of this is personalized, and a round trip per request lands in TTFB and so in LCP.
+    // Matched exactly because of what must stay out: no visitor address on a cached read.
+    // One would split the shared entry per reader, and reading the request at all would stop
+    // this page rendering statically. The read it would meter is a fixed list of cities.
     expect(fetch).toHaveBeenCalledWith(
       "http://api.test/api/v1/destinations",
       expect.objectContaining({
         next: { revalidate: 3600 },
         headers: { Accept: "application/json", "X-Travel-Locale": "ja" },
+      }),
+    );
+  });
+
+  it("meters the uncached reads, which are the ones worth copying", async () => {
+    const fetch = respond({ items: [] });
+    vi.stubGlobal("fetch", fetch);
+    await loadPlaces("ja", "tokyo");
+    expect(fetch).toHaveBeenCalledWith(
+      expect.stringContaining("/hotspots/rankings?destination_id=tokyo"),
+      expect.objectContaining({
+        cache: "no-store",
+        headers: expect.objectContaining({ "X-Travel-Client-IP": "203.0.113.9" }),
       }),
     );
   });

@@ -99,10 +99,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
    *   full five. Advertising a translation nobody wrote is the one thing per-locale
    *   publication exists to prevent, and the article page's own hreflang agrees with this.
    */
-  const articles = guides.map((entry) => {
+  // The API's unique keys on the article and its locale already rule a repeated row out. Keeping
+  // the guard here makes "no duplicate URL" a property of this file rather than an assumption
+  // about the query behind it -- and keeps the test of that name able to fail.
+  const listed = new Set<string>();
+  const articles = guides.flatMap((entry) => {
     const path = guideHref(entry.kind, entry.slug);
-    return {
-      url: localeUrl(entry.locale, path),
+    const url = localeUrl(entry.locale, path);
+    if (listed.has(url)) return [];
+    listed.add(url);
+    return [{
+      url,
       changeFrequency: (entry.kind === "intel" ? "daily" : "monthly") as NonNullable<
         MetadataRoute.Sitemap[number]["changeFrequency"]
       >,
@@ -114,7 +121,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           ...(entry.locales.includes("en") ? { "x-default": localeUrl("en", path) } : {}),
         },
       },
-    };
+    }];
   });
 
   return [...routes, ...articles];

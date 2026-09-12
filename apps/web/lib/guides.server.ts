@@ -9,6 +9,7 @@ import {
   type GuideTopic,
 } from "./guides";
 import { defaultLocale, locales, type Locale } from "@/i18n/routing";
+import { publicServerHeaders } from "@/lib/public-server-fetch";
 
 /**
  * Server-to-server reads of the guides API.
@@ -29,7 +30,7 @@ async function fetchJson(path: string, locale: string): Promise<unknown | null> 
     const response = await fetch(`${apiBase()}/api/v1${path}`, {
       cache: "no-store",
       signal: AbortSignal.timeout(3000),
-      headers: { Accept: "application/json", "X-Travel-Locale": locale },
+      headers: await publicServerHeaders(locale),
     });
     if (!response.ok) return null;
     return (await response.json()) as unknown;
@@ -120,6 +121,9 @@ export type GuideSitemapEntry = {
  *  one slow response from dominating the sitemap. The API applies the same cap. */
 export const SITEMAP_GUIDE_ENTRY_LIMIT = 1000;
 
+/** The slug grammar the API enforces on write (`SLUG_PATTERN`, apps/api/app/guides/schemas.py). */
+const SITEMAP_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
 /**
  * Publication-aware enumeration for `app/sitemap.ts`.
  *
@@ -138,6 +142,15 @@ export async function guideSitemapEntries(): Promise<GuideSitemapEntry[]> {
     const entry = value as Record<string, unknown> | null;
     if (!entry || typeof entry.slug !== "string" || typeof entry.published_at !== "string") continue;
     if (!isGuideKind(entry.kind) || !locales.includes(entry.locale as Locale)) continue;
+    // Neither of these is reachable through today's API, which validates the slug on write and
+    // types published_at as a datetime. They are here because either one costs the whole file
+    // rather than one URL. Next interpolates the URL into <loc> and into every alternate's href
+    // with no escaping (next/dist/build/webpack/loaders/metadata/resolve-route-data.js), so a
+    // slug holding `&` or `<` makes the document unparseable; and a date that does not parse
+    // becomes an Invalid Date, which is truthy and is a Date, so the same serialiser calls
+    // toISOString() on it and throws -- a 500 on /sitemap.xml rather than a missing entry.
+    if (!SITEMAP_SLUG.test(entry.slug)) continue;
+    if (!Number.isFinite(Date.parse(entry.published_at))) continue;
     const locale = entry.locale as Locale;
     const key = `${entry.kind}:${entry.slug}`;
     byArticle.set(key, [...(byArticle.get(key) ?? []), locale]);
