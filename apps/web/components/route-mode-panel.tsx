@@ -270,6 +270,12 @@ export function RouteModePanel({
   const manualInputRef = useRef<HTMLInputElement>(null);
   const detailRef = useRef<HTMLElement>(null);
   const focusNextPreviewRef = useRef(false);
+  // Where focus was when the route was asked for. The effect below runs a commit after the
+  // answer lands, and in that gap the reader can have moved focus themselves — an arrow key
+  // on the options, a tab out of the panel. Taking it back then is the app arguing with the
+  // person using it, and it is what made the sibling test go red under load: it expected
+  // focus on a route option and found it on this panel's container.
+  const previewFocusOriginRef = useRef<Element | null>(null);
   const [manualMinutes, setManualMinutes] = useState("");
   const [localError, setLocalError] = useState<string>();
   const [, refreshExpiry] = useState(0);
@@ -295,6 +301,11 @@ export function RouteModePanel({
   useEffect(() => {
     if (!providerPreview || !focusNextPreviewRef.current || !detailRef.current) return;
     focusNextPreviewRef.current = false;
+    const moved = document.activeElement !== previewFocusOriginRef.current
+      && document.activeElement !== document.body
+      && !detailRef.current.contains(document.activeElement);
+    previewFocusOriginRef.current = null;
+    if (moved) return;
     detailRef.current.focus({ preventScroll: true });
     detailRef.current.scrollIntoView?.({ block: "start", behavior: "auto" });
   }, [providerPreview]);
@@ -345,6 +356,9 @@ export function RouteModePanel({
     const identity = requestKey;
     setLoadingMode(nextMode);
     setLocalError(undefined);
+    // Read before the round trip, not after: the reader moves focus while they wait, and
+    // this is the thing the effect compares against to know whether they did.
+    previewFocusOriginRef.current = document.activeElement;
     try {
       const value = await api<RoutePreview>(`/trips/${trip.id}/routes/preview`, {
         method: "POST",

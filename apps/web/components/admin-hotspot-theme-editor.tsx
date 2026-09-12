@@ -4,6 +4,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { MonthToggles } from "./admin-hotspot-themes-panel";
 import { api } from "@/lib/api";
+import { useModalSheet } from "@/lib/modal-sheet";
 import { type ThemeKind, monthRangeLabel } from "@/lib/hotspot-themes";
 
 export type AssignedTheme = {
@@ -44,6 +45,8 @@ export function AdminHotspotThemeEditor({
   const [draft, setDraft] = useState<Map<string, Draft>>(new Map());
   const [assigned, setAssigned] = useState<AssignedTheme[]>(initial ?? []);
   const [loading, setLoading] = useState(false);
+  // aria-modal="true" without a trap or an Escape is a claim the page does not honour.
+  const editorRef = useModalSheet<HTMLDivElement>(open, () => setOpen(false));
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
@@ -142,6 +145,7 @@ export function AdminHotspotThemeEditor({
       {open && (
         <div className="fixed inset-0 z-[80] grid place-items-center bg-slate-950/45 p-4">
           <div
+            ref={editorRef}
             role="dialog"
             aria-modal="true"
             aria-label={t("editor.title", { name: hotspotName })}

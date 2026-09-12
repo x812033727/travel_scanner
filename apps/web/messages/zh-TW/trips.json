@@ -626,7 +626,16 @@
     "forecastLabel": "10 日天氣預報",
     "sourceLine": "資料來源：{attribution} · {freshness}",
     "cached": "快取資料",
-    "fresh": "剛剛更新"
+    "fresh": "剛剛更新",
+    "warning": {
+      "weather_trip_past": "旅程日期已過，天氣服務不提供這段期間的歷史預報。",
+      "weather_beyond_forecast": "旅程日期超出目前 10 日預報範圍。",
+      "weather_partial_forecast": "目前只能顯示旅程中落在 10 日預報範圍內的日期。",
+      "weather_current_incomplete": "目前天氣資料格式不完整。",
+      "weather_current_unavailable": "目前天氣暫時無法取得。",
+      "weather_daily_incomplete": "部分每日預報資料格式不完整。",
+      "weather_daily_unavailable": "10 日天氣預報暫時無法取得。"
+    }
   },
   "print": {
     "eyebrow": "行程表",
@@ -680,7 +689,13 @@
     "nothingToday": "今天沒有安排。",
     "openPlanner": "打開完整行程",
     "loading": "正在讀取今天的安排…",
-    "unavailable": "現在讀不到這趟行程，連上網路後再試一次。"
+    "unavailable": "現在讀不到這趟行程，連上網路後再試一次。",
+    "backToTrips": "我的旅程",
+    "home": "首頁",
+    "offlineReady": "已存下今天的安排，沒有訊號也看得到。",
+    "retry": "重試一次",
+    "unavailableOffline": "現在讀不到這趟行程，連上網路後再試一次。",
+    "unavailableError": "讀取這趟行程時出了問題，重試一次通常就好了。"
   },
   "shareTarget": {
     "title": "加到哪一趟行程？",
@@ -888,7 +903,26 @@
     "externalCannotApply": "外部導航，無法套用",
     "fetchingShort": "取得中…",
     "fetchRoute": "取得路線",
-    "readyAt": "{time} 可開始下一站"
+    "readyAt": "{time} 可開始下一站",
+    "warning": {
+      "walk_route_beta": "步行路線為測試版，請依現場道路與安全狀況調整。",
+      "transit_preference_fallback": "偏好條件沒有結果，已改用一般大眾運輸路線。",
+      "transit_current_schedule_fallback": "指定日期與近期參考時段都沒有結果，已改用 Google 目前可取得的參考路線；可以先套用移動時間，出發前請重新確認。",
+      "transit_daytime_schedule_fallback": "指定時段沒有可用班次，已改用近期相同星期的日間參考路線；可以先套用移動時間，出發前請重新確認。",
+      "transit_near_term_schedule_fallback": "指定日期的班次尚未開放，已改用近期相同星期與時段的參考路線；可以先套用移動時間，出發前請重新確認。",
+      "coordinate_fallback": "精準地點識別無法建立路線，已用相同地點的座標重試。",
+      "fixed_booking_late": "這段移動可能讓下一個固定預約遲到，請確認下一站的時間。",
+      "transit_beyond_timetable_preview": "旅程超過可查班次範圍，這是相同星期與時段的預覽路線。",
+      "transit_past_timetable_preview": "日期已超過可查班次範圍，顯示目前可用的參考路線。",
+      "naver_drive_current_traffic": "NAVER 汽車路線依目前路況估算，不代表行程日期的即時路況。",
+      "average_wait_time": "此方案使用平均等待時間，不代表指定日期的實際班次。",
+      "route_refresh_failed": "重新查詢失敗，暫時保留先前路線。",
+      "manual_duration_unverified": "此移動時間由使用者手動輸入，未經地圖服務驗證。",
+      "odsay_current_service": "ODsay 提供目前一般大眾運輸路線，不代表指定日期的即時班次。",
+      "odsay_polyline_is_stop_sequence": "地圖線依停靠站序列繪製，不是逐道路或逐軌道導航。"
+    },
+    "mapExpand": "放大地圖",
+    "mapCollapse": "收合地圖"
   },
   "searchFlights": "查機票 · {charge}",
   "statusSearch": "查航班動態 · {charge}",
@@ -904,5 +938,18 @@
   "watchCreated": "已追蹤 {count} 筆報價",
   "watchManage": "前往管理",
   "watchNothingQuoted": "先查機票或住宿才能追蹤價格：還沒有報價的旅程沒有價格可追。",
-  "watchSignIn": "請先登入才能追蹤價格。"
+  "watchSignIn": "請先登入才能追蹤價格。",
+  "list": {
+    "empty": "目前還沒有已儲存旅程。",
+    "emptyAction": "建立第一個行程",
+    "deleteConfirm": "確定刪除這筆旅程？刪除後無法復原。",
+    "dateRange": "{start} 至 {end}",
+    "noDates": "尚未安排"
+  },
+  "todayEntry": "今日檢視（可離線）",
+  "todayEntryHint": "只看今天的安排，出發前開一次就會存在手機裡，路上沒訊號也讀得到。",
+  "shareUnavailableTitle": "現在打不開這個行程",
+  "shareUnavailableBody": "可能是網路不穩，也可能是分享服務暫時出問題。重試一次通常就好了。",
+  "shareRetry": "重試一次",
+  "shareNotFoundBody": "這個分享連結已經失效，或被建立者關掉了。向對方要一個新的連結就可以。"
 }

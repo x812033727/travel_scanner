@@ -1,10 +1,10 @@
 "use client";
 
-import { CalendarDays, MapPin, Navigation } from "lucide-react";
+import { ArrowLeft, CalendarDays, Home, MapPin, Navigation } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { Link } from "@/i18n/navigation";
-import { api } from "@/lib/api";
+import { api, ApiError } from "@/lib/api";
 import { safeExternalHref } from "@/lib/navigation";
 import {
   formatTime,
@@ -47,17 +47,48 @@ export function TodayView({ tripId }: { tripId: string }) {
   const t = useTranslations("trips.today");
   const locale = useLocale();
   const [trip, setTrip] = useState<Trip>();
-  const [offline, setOffline] = useState(false);
+  // Every failure used to be reported as "you are offline", including a 500 and a
+  // trip that is no longer there, with no way to try again.
+  const [failure, setFailure] = useState<"offline" | "error">();
+  const [attempt, setAttempt] = useState(0);
 
   useEffect(() => {
+    let active = true;
     api<Trip>(`/trips/${tripId}`)
-      .then(setTrip)
-      .catch(() => setOffline(true));
-  }, [tripId]);
+      .then((value) => { if (active) setTrip(value); })
+      .catch((reason: unknown) => {
+        if (!active) return;
+        const reachable = reason instanceof ApiError && reason.status > 0;
+        setFailure(reachable ? "error" : "offline");
+      });
+    return () => { active = false; };
+  }, [tripId, attempt]);
+
+  /**
+   * This page hides the site header below lg, the bottom navigation returns null for
+   * /trips/, and the footer is on its HIDDEN_ON list — so without these two links a
+   * traveller standing on a platform has no way out but the browser's back button.
+   */
+  const exits = <nav aria-label={t("eyebrow")} className="mb-4 flex items-center gap-2 text-sm font-semibold">
+    <Link href="/trips" className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-[var(--line)] bg-white px-3 text-[var(--teal)]">
+      <ArrowLeft size={16} aria-hidden />{t("backToTrips")}
+    </Link>
+    <Link href="/" className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-[var(--line)] bg-white px-3 text-[var(--ink)]">
+      <Home size={16} aria-hidden />{t("home")}
+    </Link>
+  </nav>;
 
   if (!trip) {
-    return <main className="mx-auto max-w-xl px-5 py-16 text-[var(--muted)]">
-      {offline ? t("unavailable") : t("loading")}
+    return <main className="mx-auto max-w-xl px-5 py-16">
+      {exits}
+      <p className="text-[var(--muted)]">
+        {failure === "offline" ? t("unavailableOffline") : failure === "error" ? t("unavailableError") : t("loading")}
+      </p>
+      {failure && <button
+        type="button"
+        onClick={() => { setFailure(undefined); setAttempt((count) => count + 1); }}
+        className="mt-4 inline-flex min-h-11 items-center rounded-xl bg-[var(--teal)] px-4 text-sm font-semibold text-white"
+      >{t("retry")}</button>}
     </main>;
   }
 
@@ -88,6 +119,7 @@ export function TodayView({ tripId }: { tripId: string }) {
   </article>;
 
   return <main className="mx-auto max-w-xl space-y-4 px-5 pb-24 pt-6">
+    {exits}
     <header>
       <p className="text-sm font-semibold text-[var(--teal)]">{t("eyebrow")}</p>
       <h1 className="mt-1 text-2xl font-bold">{trip.name}</h1>

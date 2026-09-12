@@ -9,6 +9,7 @@ import pytest
 
 import app.infra as infra
 import app.trips.stay_router as stay_router
+from app.affiliates.router import DISCLOSURES
 from app.config import Settings
 from app.hotspots.areas import city_areas
 from app.models import AffiliateClick, TripPlan, TripPlanItem, User
@@ -520,3 +521,34 @@ async def test_clickout_uses_booking_deep_link_without_affiliate_template(
 
 def _unquote(value: str) -> str:
     return unquote(value)
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("locale", ["en", "ja", "ko", "zh-CN"])
+async def test_stay_disclosure_is_written_in_the_requested_language(
+    harness: dict[str, Any], locale: str
+) -> None:
+    """A commission disclosure the reader cannot read is not a disclosure.
+
+    This route used to import the bare zh-TW constant while /affiliates next door
+    already keyed the same sentence by locale, so every non-Traditional-Chinese
+    member was told about the commission in Traditional Chinese. Asserting "no Han
+    characters" would be wrong here -- Japanese and Simplified Chinese both use
+    them -- so this pins the exact sentence each locale is owed instead.
+    """
+    area = URBAN[0]
+    payload = await stay_router.stay_area_hotels(
+        harness["trip"].id, area.code, harness["user"], harness["session"], locale
+    )
+
+    assert payload["disclosure"] == DISCLOSURES[locale]
+    assert payload["disclosure"] != DISCLOSURES["zh-TW"]
+
+
+@pytest.mark.asyncio
+async def test_stay_disclosure_still_reads_in_chinese_for_zh_tw(harness: dict[str, Any]) -> None:
+    area = URBAN[0]
+    payload = await stay_router.stay_area_hotels(
+        harness["trip"].id, area.code, harness["user"], harness["session"], "zh-TW"
+    )
+
+    assert payload["disclosure"] == DISCLOSURES["zh-TW"]

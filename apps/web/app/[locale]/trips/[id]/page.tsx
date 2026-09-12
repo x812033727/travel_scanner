@@ -23,7 +23,7 @@ export default async function TripPage({
   const { view } = await searchParams;
   // ?view=today is the day itself: one column, now and next, readable without a signal.
   if (view === "today") {
-    return <><div className="hidden lg:block"><SiteHeader /></div><OfflineTripCache /><TodayView tripId={id} /></>;
+    return <><div className="hidden lg:block"><SiteHeader /></div><OfflineTripCache tripId={id} /><TodayView tripId={id} /></>;
   }
   // The offline worker belongs to the day view only. The planner is an editing surface:
   // it should never read a cached trip, and a worker that intercepts its requests would

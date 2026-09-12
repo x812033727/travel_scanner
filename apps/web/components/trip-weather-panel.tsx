@@ -13,6 +13,7 @@ import {
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { api, ApiError } from "@/lib/api";
+import { translateWarnings } from "@/lib/warnings";
 
 type Condition = { description: string; type: string };
 type CurrentWeather = {
@@ -73,6 +74,18 @@ function rainValue(day: DailyWeather) {
   if (day.precipitation_mm != null) return `${day.precipitation_mm} mm`;
   return "—";
 }
+
+// Codes, not sentences -- but the weather provider also passes through advisories
+// it has already localised, which translateWarnings keeps. See lib/warnings.ts.
+const KNOWN_WARNINGS = new Set([
+  "weather_trip_past",
+  "weather_beyond_forecast",
+  "weather_partial_forecast",
+  "weather_current_incomplete",
+  "weather_current_unavailable",
+  "weather_daily_incomplete",
+  "weather_daily_unavailable",
+]);
 
 export function TripWeatherPanel({
   tripId,
@@ -197,7 +210,7 @@ export function TripWeatherPanel({
         </div>
       )}
 
-      {weather.warnings.map((warning) => <p key={warning} className="mt-3 text-xs text-amber-900">{warning}</p>)}
+      {translateWarnings(weather.warnings, KNOWN_WARNINGS, t).map((warning) => <p key={warning} className="mt-3 text-xs text-amber-900">{warning}</p>)}
       <p className="mt-3 text-xs text-[var(--muted)]">{t("sourceLine", { attribution: weather.attribution, freshness: weather.cache_status === "hit" ? t("cached") : t("fresh") })}</p>
     </section>
   );

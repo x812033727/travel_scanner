@@ -17,7 +17,11 @@ export function SharedTripView({ token }: { token: string }) {
   const locale = useLocale();
   const router = useRouter();
   const [trip, setTrip] = useState<SharedTrip>();
-  const [error, setError] = useState<string>();
+  // A revoked link and a dropped connection are different news. Answering both
+  // with "this link does not exist" told the recipient to give up on a trip that
+  // was still there, and took the page's own way onward with it.
+  const [error, setError] = useState<{ gone: boolean }>();
+  const [attempt, setAttempt] = useState(0);
   const [forking, setForking] = useState(false);
   const [forkError, setForkError] = useState<string>();
   // Drawn in the browser from the address bar: a QR service would learn every
@@ -46,9 +50,28 @@ export function SharedTripView({ token }: { token: string }) {
     }
   }
   useEffect(() => {
-    api<SharedTrip>(`/shared-trips/${token}`).then(setTrip).catch((reason: Error) => setError(reason.message));
-  }, [token]);
-  if (error) return <main className="mx-auto max-w-4xl px-5 py-16"><p role="alert" className="rounded-2xl bg-red-50 p-5 text-red-800">{t("shareNotFound")}</p></main>;
+    let active = true;
+    api<SharedTrip>(`/shared-trips/${token}`)
+      .then((value) => { if (active) setTrip(value); })
+      .catch((reason: unknown) => {
+        if (!active) return;
+        const status = reason instanceof ApiError ? reason.status : 0;
+        setError({ gone: status === 404 || status === 410 });
+      });
+    return () => { active = false; };
+  }, [token, attempt]);
+  if (error) return <main className="mx-auto max-w-4xl px-5 py-16">
+    <section role="alert" className="rounded-2xl border border-[var(--line)] bg-white p-6">
+      <h1 className="text-xl font-bold">{error.gone ? t("shareNotFound") : t("shareUnavailableTitle")}</h1>
+      <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{error.gone ? t("shareNotFoundBody") : t("shareUnavailableBody")}</p>
+      {!error.gone && <button
+        type="button"
+        onClick={() => { setError(undefined); setTrip(undefined); setAttempt((count) => count + 1); }}
+        className="mt-4 inline-flex min-h-11 items-center rounded-xl bg-[var(--teal)] px-4 text-sm font-semibold text-white"
+      >{t("shareRetry")}</button>}
+      <p className="mt-5"><Link href="/" className="inline-flex min-h-11 items-center font-semibold text-[var(--teal)]">{t("backToTrips")}</Link></p>
+    </section>
+  </main>;
   if (!trip) return <main className="mx-auto max-w-4xl px-5 py-16 text-[var(--muted)]">{t("shareLoading")}</main>;
   const updated = trip.updated_at
     ? t("shareUpdatedAt", {

@@ -51,6 +51,7 @@ from app.providers.schemas import (
 from app.search.events import publish_event
 from app.search.schemas import SearchCreate
 from app.usage.service import commit_reservation, release_reservation, usage_status
+from app.warnings import warning_code
 
 MODULE_PROGRESS = {"flight": 25, "hotel": 45, "activities": 62, "transport": 78}
 
@@ -211,7 +212,7 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
             try:
                 normalized = await GoogleTravelImpactProvider(redis, settings).enrich(normalized)
             except ConnectionError:
-                warnings.append("Google Travel Impact 碳排資料暫時無法取得。")
+                warnings.append("emissions_unavailable")
         if not settings.flightaware_configured or settings.flightaware_enrich_offer_limit == 0:
             return normalized
         groups: dict[str, FlightOffer] = {}
@@ -239,7 +240,7 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
                 if statuses:
                     details[key] = statuses
         except ConnectionError:
-            warnings.append("FlightAware 航班動態暫時無法取得，票價結果不受影響。")
+            warnings.append("flight_status_unavailable")
         return [
             offer.model_copy(
                 update={"status_details": details.get(offer.itinerary_key or str(offer.id), [])}
@@ -360,9 +361,9 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
                                 query, query.flex_days
                             )
                         except (ConnectionError, ProviderUnavailableError):
-                            flex_warnings.append("彈性日期估價暫時無法取得，原日期班次仍可使用。")
+                            flex_warnings.append("flex_pricing_unavailable")
                     else:
-                        flex_warnings.append("目前航班供應商不支援彈性日期估價。")
+                        flex_warnings.append("flex_pricing_unsupported")
                     exact_flights = [item for item in offers if isinstance(item, FlightOffer)]
                     if exact_flights and query.departure_date:
                         cheapest = min(exact_flights, key=lambda item: item.total_price)
@@ -437,7 +438,11 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
                     offers = cast(list[Offer], flight_offers)
                     provider_name = ",".join(attempted_names)
                 if candidate_index > 0 and module != "flight":
-                    warnings.append(f"{module} 主要供應商暫時無法使用，已切換至 {provider_name}。")
+                    warnings.append(
+                        warning_code(
+                            "provider_fallback", module=module, provider=provider_name
+                        )
+                    )
                 return (
                     module,
                     provider_name,

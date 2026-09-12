@@ -20,7 +20,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ApiError, api, twd } from "@/lib/api";
+import { ApiError, api } from "@/lib/api";
 import { loginPath } from "@/lib/navigation";
 import { PriceAlertButton } from "@/components/price-alert-button";
 import { formatCurrency } from "@/lib/locale-format";
@@ -85,22 +85,23 @@ function LoadError({
   path: string;
   retry: () => void;
 }) {
+  const t = useTranslations("common");
   if (error.status === 401)
     return (
       <div className="rounded-2xl border border-[var(--line)] bg-white p-7 text-center">
-        <p className="font-semibold">登入後才能查看這裡的內容</p>
+        <p className="font-semibold">{t("accountList.signInTitle")}</p>
         <Link
           href={loginPath(path)}
           className="mt-4 inline-flex rounded-xl bg-[var(--teal)] px-4 py-3 text-sm font-semibold text-white"
         >
-          前往登入
+          {t("accountList.signInAction")}
         </Link>
       </div>
     );
   const detail =
     error.status === 403
-      ? "目前帳號沒有查看這些資料的權限。"
-      : "服務暫時無法載入資料，請稍後再試。";
+      ? t("accountList.forbidden")
+      : t("accountList.unavailable");
   return (
     <div role="alert" className="rounded-2xl bg-red-50 p-5 text-red-800">
       <p className="font-semibold">{detail}</p>
@@ -111,7 +112,7 @@ function LoadError({
         className="mt-4 inline-flex items-center gap-2 rounded-xl border border-red-200 bg-white px-4 py-2 text-sm font-semibold"
       >
         <RotateCw size={15} />
-        重新載入
+        {t("accountList.reload")}
       </button>
     </div>
   );
@@ -120,7 +121,8 @@ function LoadError({
 type Capacity = { count: number; limit: number };
 
 export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
-  const flowCopy = frontendCopy(useLocale());
+  const locale = useLocale();
+  const flowCopy = frontendCopy(locale);
   const common = useTranslations("common");
   const t = useTranslations(kind);
   const tripsCatalog = useTranslations("trips");
@@ -217,7 +219,7 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
       <div role="status" className="grid gap-3">
         <span className="app-skeleton h-28" />
         <span className="app-skeleton h-28" />
-        <span className="sr-only">正在載入…</span>
+        <span className="sr-only">{common("accountList.loading")}</span>
       </div>
     );
   if (error)
@@ -236,7 +238,7 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
         ) : (
           <Bell className="mx-auto mb-3" />
         )}
-        目前還沒有{kind === "trips" ? "已儲存旅程" : "價格通知"}。
+        {t("list.empty")}
         {kind === "trips" ? (
           <div>
             <Link
@@ -244,7 +246,7 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
               className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-xl bg-[var(--teal)] px-4 py-3 text-sm font-semibold text-white"
             >
               <Plus size={16} />
-              建立第一個行程
+              {t("list.emptyAction")}
             </Link>
           </div>
         ) : (
@@ -298,18 +300,20 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
                       <span
                         className={`rounded-full px-2 py-1 text-xs font-semibold ${alert.active ? "bg-emerald-50 text-emerald-800" : "bg-slate-100 text-slate-600"}`}
                       >
-                        {alert.active ? "追蹤中" : "已暫停"}
+                        {t(alert.active ? "list.active" : "list.paused")}
                       </span>
                       <span
                         className={`rounded-full px-2 py-1 text-xs font-semibold ${alert.monitoring_mode === "automatic" ? "bg-sky-50 text-sky-800" : "bg-amber-50 text-amber-800"}`}
                       >
-                        {alert.monitoring_mode === "automatic"
-                          ? "每 6 小時自動查價"
-                          : "僅手動查看"}
+                        {t(
+                          alert.monitoring_mode === "automatic"
+                            ? "list.modeAutomatic"
+                            : "list.modeManual",
+                        )}
                       </span>
                     </div>
                     <p className="mt-1 text-sm text-[var(--muted)]">
-                      {alert.subtitle || "價格項目"}
+                      {alert.subtitle || t("list.fallbackSubtitle")}
                     </p>
                     {(alert.resource_type === "trip" || alert.links?.trip_id) && (
                       <Link
@@ -322,18 +326,22 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
                     )}
                     <p className="mt-2 text-sm">
                       {alert.target_price
-                        ? `目標低於 ${money(Number(alert.target_price), alert.currency)}`
-                        : "刷新低價時通知"}
+                        ? t("list.targetBelow", {
+                            price: money(Number(alert.target_price), alert.currency),
+                          })
+                        : t("list.anyDrop")}
+                      {" · "}
                       {alert.current_price
-                        ? ` · 目前 ${money(Number(alert.current_price), alert.currency)}`
-                        : " · 目前價格待更新"}
+                        ? t("list.currentPrice", {
+                            price: money(Number(alert.current_price), alert.currency),
+                          })
+                        : t("list.currentPending")}
                     </p>
                     {alert.price_updated_at && (
                       <p className="mt-1 text-xs text-[var(--muted)]">
-                        報價時間{" "}
-                        {new Date(alert.price_updated_at).toLocaleString(
-                          "zh-TW",
-                        )}
+                        {t("list.quotedAt", {
+                          time: new Date(alert.price_updated_at).toLocaleString(locale),
+                        })}
                       </p>
                     )}
                     {currentPrice > 0 && targetPrice > 0 && (
@@ -343,8 +351,13 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
                         <div className="flex items-center justify-between gap-3 text-xs">
                           <span>
                             {targetReached
-                              ? "已達到目標價格"
-                              : `距離目標還差 ${money(Math.max(0, currentPrice - targetPrice), alert.currency)}`}
+                              ? t("list.targetReached")
+                              : t("list.targetGap", {
+                                  amount: money(
+                                    Math.max(0, currentPrice - targetPrice),
+                                    alert.currency,
+                                  ),
+                                })}
                           </span>
                           <strong>{Math.round(targetProgress)}%</strong>
                         </div>
@@ -403,14 +416,17 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
                         {[
                           trip.destination_name,
                           trip.start_date && trip.end_date
-                            ? `${trip.start_date} 至 ${trip.end_date}`
+                            ? t("list.dateRange", {
+                                start: trip.start_date,
+                                end: trip.end_date,
+                              })
                             : undefined,
                         ]
                           .filter(Boolean)
                           .join(" · ") ||
                           (trip.total_price
-                            ? twd.format(trip.total_price)
-                            : "尚未安排")}
+                            ? money(Number(trip.total_price), trip.currency || "TWD")
+                            : t("list.noDates"))}
                       </span>
                     </span>
                     <ChevronRight
@@ -432,7 +448,7 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
                           alert.target_price ? String(alert.target_price) : "",
                         );
                       }}
-                      aria-label={`編輯 ${alert.title}`}
+                      aria-label={t("list.edit", { title: alert.title })}
                       className="app-icon-button"
                     >
                       <Pencil size={17} />
@@ -442,11 +458,9 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
                       onClick={() =>
                         patchAlert(alert, { active: !alert.active })
                       }
-                      aria-label={
-                        alert.active
-                          ? `暫停 ${alert.title}`
-                          : `啟用 ${alert.title}`
-                      }
+                      aria-label={t(alert.active ? "list.pause" : "list.resume", {
+                        title: alert.title,
+                      })}
                       className="app-icon-button"
                     >
                       {alert.active ? <Pause size={17} /> : <Play size={17} />}
@@ -456,7 +470,7 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
                 {!isAlert ? <TripActions label={`${flowCopy.more}: ${trip.name}`} deleteLabel={flowCopy.deleteTrip} onDelete={() => setPendingDelete(row.id)} /> : <button
                   type="button"
                   onClick={() => setPendingDelete(row.id)}
-                  aria-label={`刪除${isAlert ? "通知" : "旅程"}`}
+                  aria-label={t("list.deleteAction")}
                   className="app-icon-button"
                 >
                   <Trash2 size={17} />
@@ -477,14 +491,14 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
             {isAlert && editing === alert.id && (
               <div className="mt-4 rounded-xl bg-[var(--paper)] p-4">
                 <label className="text-sm font-semibold">
-                  目標價格（{alert.currency}）
+                  {t("list.targetLabel", { currency: alert.currency })}
                   <input
-                    aria-label={`編輯 ${alert.title} 的目標價格`}
+                    aria-label={t("list.targetInput", { title: alert.title })}
                     min="1"
                     type="number"
                     value={draftPrice}
                     onChange={(event) => setDraftPrice(event.target.value)}
-                    placeholder="留空代表任何降價"
+                    placeholder={t("list.targetPlaceholder")}
                     className="mt-2 w-full rounded-lg border border-[var(--line)] bg-white px-3 py-2 font-normal"
                   />
                 </label>
@@ -499,7 +513,7 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
                     }
                     className="rounded-lg bg-[var(--teal)] px-4 py-2 text-sm font-semibold text-white disabled:opacity-50"
                   >
-                    儲存價格
+                    {t("list.savePrice")}
                   </button>
                   <button
                     type="button"
@@ -507,37 +521,35 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
                     className="flex items-center gap-1 rounded-lg border border-[var(--line)] px-4 py-2 text-sm"
                   >
                     <X size={15} />
-                    取消
+                    {common("cancel")}
                   </button>
                 </div>
               </div>
             )}
             {pendingDelete === row.id && (
               <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl bg-red-50 p-4 text-sm text-red-900">
-                <span>
-                  確定刪除這筆{isAlert ? "價格通知" : "旅程"}？刪除後無法復原。
-                </span>
+                <span>{t("list.deleteConfirm")}</span>
                 <span className="flex gap-2">
                   <button
                     type="button"
                     onClick={() => remove(row.id)}
                     className="rounded-lg bg-red-700 px-3 py-2 font-semibold text-white"
                   >
-                    確定刪除
+                    {common("accountList.deleteConfirmYes")}
                   </button>
                   <button
                     type="button"
                     onClick={() => setPendingDelete(undefined)}
                     className="rounded-lg border border-red-200 bg-white px-3 py-2"
                   >
-                    取消
+                    {common("cancel")}
                   </button>
                 </span>
               </div>
             )}
             {rowError[row.id] && (
               <p role="alert" className="mt-3 text-sm text-red-700">
-                操作失敗：{rowError[row.id]}
+                {common("accountList.actionFailed", { message: rowError[row.id] })}
               </p>
             )}
           </article>

@@ -126,4 +126,4 @@ async def test_trip_weather_uses_an_owned_trip_coordinate_and_marks_future_dates
         )
     ]
     assert result.location_name == "東京"
-    assert result.warnings == ["旅程日期超出目前 10 日預報範圍"]
+    assert result.warnings == ["weather_beyond_forecast"]

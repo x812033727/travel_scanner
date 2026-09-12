@@ -165,7 +165,8 @@
     "roomsExceedTravelers": "部屋数は人数を超えられません。",
     "budgetPositive": "予算は 0 より大きい値にしてください。",
     "nightlyInverted": "1泊の下限が上限を超えています。",
-    "createFailed": "旅程を作成できませんでした。しばらくしてからお試しください。"
+    "createFailed": "旅程を作成できませんでした。しばらくしてからお試しください。",
+    "atCapacity": "保存済みの旅行が上限の {limit} 件に達しています。1 件削除してから作成してください。"
   },
   "gate": {
     "checking": "ログイン状態を確認しています…",
@@ -187,5 +188,10 @@
     "vintage": "古着",
     "anime-hobby": "アニメ・ホビー",
     "market-street": "商店街・市場"
-  }
+  },
+  "usageLine": "残り {available} 回 · 保存済み {count}／{limit} 件",
+  "usageUnknown": "残り回数と保存件数を確認できませんでした。このまま作成できます。",
+  "capacityTitle": "保存できる旅行は {limit} 件までです",
+  "capacityBody": "1 アカウントにつき旅行は {limit} 件まで保存できます。新しく作るには、マイ旅行から不要なものを削除してください。",
+  "capacityAction": "マイ旅行を整理する"
 }

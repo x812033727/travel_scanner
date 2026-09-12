@@ -34,8 +34,8 @@ export function CommunityLinks() {
   if (!flags.enabled) return null;
   return <nav aria-label={t("title")} className="mb-6 flex flex-wrap items-center gap-2 text-sm">
     {[ ["/community", "feed"], ["/community/search", "search"], ["/pet-friendly", "pets"],
-      ["/community/collections", "collections"], ["/community/drafts", "drafts"], ["/community/settings", "profileSettings"] ].map(([href, key]) => <Link key={key} href={href} className="rounded-xl border border-[var(--line)] px-3 py-2.5 hover:bg-[var(--paper)]">{t(key)}</Link>)}
-    {flags.posting_enabled && <Link href="/community/new" className="rounded-xl bg-[var(--teal)] px-3 py-2.5 font-semibold text-white">{t("publish")}</Link>}
-    <Link href="/community/messages" className="rounded-xl border border-[var(--line)] px-3 py-2.5">{t("messages")}{unread > 0 && <span className="ml-2 rounded-full bg-[var(--teal)] px-2 text-white">{unread}</span>}</Link>
+      ["/community/collections", "collections"], ["/community/drafts", "drafts"], ["/community/settings", "profileSettings"] ].map(([href, key]) => <Link key={key} href={href} className="inline-flex min-h-11 items-center rounded-xl border border-[var(--line)] px-3 py-2.5 hover:bg-[var(--paper)]">{t(key)}</Link>)}
+    {flags.posting_enabled && <Link href="/community/new" className="inline-flex min-h-11 items-center rounded-xl bg-[var(--teal)] px-3 py-2.5 font-semibold text-white">{t("publish")}</Link>}
+    <Link href="/community/messages" className="inline-flex min-h-11 items-center rounded-xl border border-[var(--line)] px-3 py-2.5">{t("messages")}{unread > 0 && <span className="ml-2 rounded-full bg-[var(--teal)] px-2 text-white">{unread}</span>}</Link>
   </nav>;
 }

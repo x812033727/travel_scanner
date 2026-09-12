@@ -17,7 +17,8 @@
     "testSent": "測試訊息已送到 LINE。",
     "unlinkDone": "LINE 連結已解除。"
   },
-  "capacity":"追蹤中 {count}／{limit} 筆價格通知","capacityFull":"已達價格通知上限，暫停或刪除一筆後才能再建立。",
+  "capacity": "追蹤中 {count}／{limit} 筆價格通知",
+  "capacityFull": "已達價格通知上限，暫停或刪除一筆後才能再建立。",
   "emptyHint": "價格通知是在行程或搜尋結果上建立的，先開一個行程就能追蹤價格。",
   "emptyAction": "去看我的旅程",
   "button": {
@@ -34,5 +35,29 @@
     "loginReturn": "登入後返回此頁"
   },
   "manualOnly": "此來源不會背景自動重查；價格要回頭手動確認。",
-  "manualOnlyRecheck": "到旅程頁重新查價"
+  "manualOnlyRecheck": "到旅程頁重新查價",
+  "list": {
+    "empty": "目前還沒有價格通知。",
+    "deleteAction": "刪除通知",
+    "deleteConfirm": "確定刪除這筆價格通知？刪除後無法復原。",
+    "active": "追蹤中",
+    "paused": "已暫停",
+    "modeAutomatic": "每 6 小時自動查價",
+    "modeManual": "僅手動查看",
+    "fallbackSubtitle": "價格項目",
+    "targetBelow": "目標低於 {price}",
+    "anyDrop": "刷新低價時通知",
+    "currentPrice": "目前 {price}",
+    "currentPending": "目前價格待更新",
+    "quotedAt": "報價時間 {time}",
+    "targetReached": "已達到目標價格",
+    "targetGap": "距離目標還差 {amount}",
+    "edit": "編輯 {title}",
+    "pause": "暫停 {title}",
+    "resume": "啟用 {title}",
+    "targetLabel": "目標價格（{currency}）",
+    "targetInput": "編輯 {title} 的目標價格",
+    "targetPlaceholder": "留空代表任何降價",
+    "savePrice": "儲存價格"
+  }
 }

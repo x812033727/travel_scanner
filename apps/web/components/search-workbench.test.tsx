@@ -130,3 +130,45 @@ describe("SearchWorkbench", () => {
     expect(url.searchParams.get("extension_destination_ids")).toBe("tainan");
   });
 });
+
+describe("the wizard mirrors the server's own limits", () => {
+  /**
+   * places/router.py caps the travel window at 180 days and rejects a nightly
+   * minimum above the maximum. Neither was mirrored: someone filled in four more
+   * steps, pressed submit, and got the raw validation sentence back.
+   */
+  it("stops a travel window longer than 180 days on the step that sets it", async () => {
+    render(<SearchWorkbench />);
+    fireEvent.change(screen.getByLabelText("最早出發日"), { target: { value: "2026-11-01" } });
+    fireEvent.change(screen.getByLabelText("最晚回程日"), { target: { value: "2027-11-01" } });
+
+    fireEvent.click(screen.getByRole("button", { name: /下一步/ }));
+
+    expect(screen.getByRole("alert").textContent).toContain("180");
+    // Complained about on the step that sets the dates: every step lives in the
+    // DOM at once, so "still on step one" is the section that is not hidden.
+    const dates = screen.getByLabelText("最早出發日").closest("section");
+    expect(dates?.className).toContain("block");
+  });
+
+  it("stops a nightly minimum above the maximum on the lodging step", async () => {
+    render(<SearchWorkbench />);
+    for (let index = 0; index < 3; index += 1) fireEvent.click(screen.getByRole("button", { name: /下一步/ }));
+    fireEvent.change(screen.getByLabelText("每晚最低（台幣）"), { target: { value: "9000" } });
+    fireEvent.change(screen.getByLabelText("每晚最高（台幣）"), { target: { value: "3000" } });
+
+    fireEvent.click(screen.getByRole("button", { name: /下一步/ }));
+
+    expect(screen.getByRole("alert").textContent).toContain("每晚最低價不能高於最高價");
+  });
+
+  it("lets a window inside the cap through", async () => {
+    render(<SearchWorkbench />);
+    fireEvent.change(screen.getByLabelText("最早出發日"), { target: { value: "2026-11-01" } });
+    fireEvent.change(screen.getByLabelText("最晚回程日"), { target: { value: "2027-01-01" } });
+
+    fireEvent.click(screen.getByRole("button", { name: /下一步/ }));
+
+    expect(screen.queryByRole("alert")).toBeNull();
+  });
+});

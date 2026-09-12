@@ -263,7 +263,7 @@ All authed unless marked. All mutating trip endpoints take `version` and 409 `tr
 
 | Method | Path | Request | Response | Auth |
 |---|---|---|---|---|
-| POST | `/ai/parse-trip` *(changed)* | `{text ≤4000}` | `ParsedTripRequest` + `must_include[]`, `constraints[]`, `destination_supported` | user |
+| POST | `/ai/parse-trip` *(changed; `text ≤4000` and `destination_supported` shipped 2026-09-11, `must_include[]` / `constraints[]` not yet)* | `{text ≤4000}` | `ParsedTripRequest` + `must_include[]`, `constraints[]`, `destination_supported`, `supported_destinations[]` | user |
 | POST | `/trips/draft/preview` *(new)* | `{brief_text, destination_name, start_date, end_date, travelers, preferences, must_include[]}` | `{draft_id, days[], planning{provider,readiness,partial}, unscheduled_slots[], candidate_keys[]}` | user, 6/h |
 | POST | `/trips` *(changed)* | `+ draft_preview_id?, brief_text?, must_include[]` | existing | user, `Idempotency-Key` |
 | PATCH | `/trips/{id}` *(new)* | `{version, name?, start_date?, end_date?, route_preference?, cover_image_url?, status?}` | serialized trip | owner |
@@ -316,9 +316,17 @@ Each increment ships independently and leaves the product working. None is block
 
 **PR 3 — Brief parser extension.** `must_include` / `constraints` / `destination_supported` on `TripParseDraft` and `ParsedTripRequest`; one prompt line; raise `ParseTripRequest.text` to 4000; 5-locale keys. Backend-only, no UI yet. *Much smaller than the proposals claimed — the LLM parser already ships.*
 
+> **Partly shipped, 2026-09-11** (`2026-09-11-destination-supported-gate-missing`). `destination_supported` and the 4000-character limit are in, and the gate has a front end — but on the existing search entry, not on the brief composer PR 5 describes. `must_include` and `constraints` are **not** done.
+>
+> `destination_supported` has three states, not the two the line above implies: `true` when the named place resolved, `false` when a place was named that resolved to neither a covered city nor a covered region, and `null` when nothing named a place. Collapsing the last two would answer "you did not say where" with "we do not go there", which is a different and wrong sentence.
+>
+> The signal comes from the LLM parser, which is the only one that can tell a named-but-unknown place from an unnamed one; `MockAITripParser` leaves it `null`. So with no AI provider configured the gate does not fire. That is a real limit of this increment, not an oversight.
+
 **PR 4 — Intent bar.** `POST /trips/{id}/intents` writing the `_itinerary_preview_key` envelope; `itinerary-diff.tsx`. **Zero changes to `/itinerary/apply`.** Includes the 這區已經沒有其他選擇了 exhaustion state. *This is the differentiator and it lands fourth, on machinery that already exists.*
 
 **PR 5 — Draft-first front door.** `POST /trips/draft/preview`; `trip-brief-composer.tsx`; `brief-confirm-panel.tsx`; `draft_preview_id` on `SaveTripRequest`; the wizard demoted to a link. Progressive skeleton loading.
+
+> **Not shipped, and deliberately deferred, 2026-09-11.** The owner asked for the minimum viable gate only. The mandatory part of `:157` — telling someone we do not cover their destination *before* they spend anything on it — is now met by the search entry, so what remains here is the draft-first front door itself: a product direction decision about whether the five-step wizard is demoted, not a defect. Nothing is blocked on it.
 
 **PR 6 — Day Health strip (`0039`).** `apps/api/app/trips/hours.py` (parse Google structured periods into weekday intervals in the trip timezone; evaluate against `route_planner`'s existing forward projection), `GET /trips/{id}/health`, `day-health-strip.tsx`. Copy `opening_hours_json` onto items in the `trip-selections` paths (`hotspots/router.py:344`). **Cache-only, `provider_expires_at` respected, unknown renders as unknown.** *Independently valuable even if PR 7 never ships.*
 

@@ -14,6 +14,17 @@ import {
 } from "./trip-types";
 
 describe("formatTime", () => {
+  it("says the no-time fallback in the reader's language, not always in Chinese", () => {
+    // Shared by the timeline, the editor, today's view and the print sheet, so a Chinese
+    // literal here put those four characters on every /en, /ja and /ko screen that had a
+    // stop with no time on it.
+    expect(formatTime(undefined, "en")).toBe("Flexible time");
+    expect(formatTime(null, "ja")).toBe("時間未定");
+    expect(formatTime("", "ko")).toBe("시간 미정");
+    expect(formatTime(undefined, "zh-TW")).toBe("彈性時段");
+    expect(formatTime(undefined, "zh-CN")).toBe("弹性时段");
+  });
+
   it("keeps offset-free itinerary values as trip-local wall-clock time", () => {
     expect(formatTime("2026-11-10T15:00:00", "zh-TW", "Asia/Tokyo")).toBe("15:00");
   });

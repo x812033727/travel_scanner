@@ -1,5 +1,6 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
+import { modalFocusTargets } from "@/lib/modal-sheet";
 import { HotspotRestaurantsPanel } from "./hotspot-restaurants-panel";
 
 describe("HotspotRestaurantsPanel", () => {
@@ -106,5 +107,82 @@ describe("HotspotRestaurantsPanel", () => {
       "/login?next=%2Fhotspots%3Fcategory%3Dfood",
     );
     expect(fetchMock.mock.calls.filter(([input]) => String(input).includes("restaurant-searches"))).toHaveLength(1);
+  });
+  it("keeps the keyboard inside the nested add-to-trip dialog", async () => {
+    vi.stubGlobal("fetch", vi.fn(async (input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.endsWith("/restaurants/favorites")) return new Response(JSON.stringify({ place_ids: [] }));
+      if (url.endsWith("/restaurants/trip-options")) {
+        return new Response(JSON.stringify({ items: [{
+          trip_id: "trip-1",
+          name: "廣島三日",
+          version: 4,
+          start_date: "2026-10-01",
+          end_date: "2026-10-03",
+        }] }));
+      }
+      return new Response(JSON.stringify({
+        items: [{
+          place_id: "ChIJ-food",
+          name: "廣島燒名店",
+          address: "日本廣島縣廣島市",
+          latitude: 34.39712,
+          longitude: 132.45531,
+          distance_km: 1.25,
+          rating: 4.6,
+          review_count: 2345,
+          recommendation_score: 4.42,
+          opening_hours: [],
+          open_now: true,
+          official_website_url: null,
+          google_maps_url: null,
+          primary_type: "japanese_restaurant",
+          observed_at: "2026-09-01T12:00:00Z",
+          editorial: null,
+        }],
+        next_cursor: null,
+        coverage: { status: "completed", cells_completed: 7, cells_total: 7, candidate_count: 42 },
+        attribution: "Google Maps",
+      }));
+    }));
+
+    const onClose = vi.fn();
+    render(<HotspotRestaurantsPanel hotspot={{ id: "hotspot-1", name: "平和紀念公園" }} onClose={onClose} />);
+
+    const opener = await screen.findByRole("button", { name: "加入行程" });
+    // jsdom does not focus a button on click the way a browser does, and where focus
+    // returns to when the nested dialog closes is exactly what this asserts.
+    opener.focus();
+    fireEvent.click(opener);
+
+    const inner = await screen.findByRole("dialog", { name: "選擇要加入的旅程" });
+    // The panel re-runs its own focus on every state change, so opening the nested dialog
+    // used to pull focus back to the close button of the sheet behind it.
+    await waitFor(() => expect(inner.contains(document.activeElement)).toBe(true));
+
+    // The nested dialog is the last child of the sheet, so a trap scoped to the sheet puts
+    // its own controls at the end of one long list and wraps out into the restaurant list.
+    const stops = modalFocusTargets(inner);
+    expect(stops.length).toBeGreaterThan(3);
+    const [first] = stops;
+    const last = stops[stops.length - 1];
+
+    last.focus();
+    fireEvent.keyDown(last, { key: "Tab" });
+    expect(document.activeElement).toBe(first);
+
+    first.focus();
+    fireEvent.keyDown(first, { key: "Tab", shiftKey: true });
+    expect(document.activeElement).toBe(last);
+
+    // Escape closes the layer on top, not the sheet under it.
+    fireEvent.keyDown(document.activeElement as HTMLElement, { key: "Escape" });
+    await waitFor(() => expect(screen.queryByRole("dialog", { name: "選擇要加入的旅程" })).toBeNull());
+    expect(onClose).not.toHaveBeenCalled();
+    expect(screen.getByRole("dialog", { name: "平和紀念公園 附近吃什麼" })).toBeTruthy();
+    expect(document.activeElement).toBe(opener);
+
+    fireEvent.keyDown(document.body, { key: "Escape" });
+    expect(onClose).toHaveBeenCalledTimes(1);
   });
 });

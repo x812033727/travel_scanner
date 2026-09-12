@@ -399,4 +399,35 @@ describe("airline fare lab", () => {
     expect(screen.getByText("單選星宇可能沒有完整倒買組合")).toBeTruthy();
     expect(screen.getByText(/若要先驗證完整流程，可同時勾選華航/)).toBeTruthy();
   });
+  it("moves between fare modes with the arrow keys and names the panel they control", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(ok(status)));
+    render(<AirlineFareLab />);
+    await screen.findByText("政策停用");
+
+    const tabs = () => screen.getAllByRole("tab");
+    const roving = () => tabs().map((tab) => tab.getAttribute("tabindex"));
+    expect(tabs()).toHaveLength(3);
+
+    // role="tab" promised a single tab stop and a panel; neither existed.
+    const panel = screen.getByRole("tabpanel");
+    expect(panel.id).toBeTruthy();
+    expect(tabs().every((tab) => tab.getAttribute("aria-controls") === panel.id)).toBe(true);
+    expect(panel.getAttribute("aria-labelledby")).toBe(tabs()[0].id);
+    expect(roving()).toEqual(["0", "-1", "-1"]);
+
+    fireEvent.keyDown(tabs()[0], { key: "ArrowRight" });
+    await waitFor(() => expect(tabs()[1].getAttribute("aria-selected")).toBe("true"));
+    expect(roving()).toEqual(["-1", "0", "-1"]);
+    await waitFor(() => expect(document.activeElement).toBe(tabs()[1]));
+
+    fireEvent.keyDown(tabs()[1], { key: "End" });
+    await waitFor(() => expect(tabs()[2].getAttribute("aria-selected")).toBe("true"));
+    expect(panel.getAttribute("aria-labelledby")).toBe(tabs()[2].id);
+
+    // Wraps, like every other tablist in the app.
+    fireEvent.keyDown(tabs()[2], { key: "ArrowRight" });
+    await waitFor(() => expect(tabs()[0].getAttribute("aria-selected")).toBe("true"));
+    fireEvent.keyDown(tabs()[0], { key: "ArrowLeft" });
+    await waitFor(() => expect(tabs()[2].getAttribute("aria-selected")).toBe("true"));
+  });
 });
