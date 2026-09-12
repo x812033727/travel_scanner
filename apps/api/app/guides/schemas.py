@@ -18,6 +18,7 @@ from uuid import UUID
 from pydantic import BaseModel, Field, field_validator, model_validator
 
 from app.admin.schemas import AdminAuditView
+from app.guides.publication import ArticleStatus
 from app.i18n import Locale
 from app.site_pages.schemas import ContentBlock, NonemptyText, StrictModel, plain_text
 
@@ -108,7 +109,9 @@ class ArticleCreate(StrictModel):
 
 
 class ArticleUpdate(StrictModel):
-    """Taxonomy only. The text of a translation is changed through its own draft."""
+    """Taxonomy only. The text of a translation is changed through its own draft, and
+    whether the article is hidden through ``VisibilityWrite``: a classification save must
+    never quietly put an article back on the site."""
 
     expected_version: int = Field(ge=1, le=2_147_483_646, strict=True)
     kind: Kind
@@ -117,7 +120,6 @@ class ArticleUpdate(StrictModel):
     valid_until: date | None = None
     featured: bool = False
     display_order: int = Field(default=100, ge=0, le=100_000)
-    is_active: bool = True
 
 
 class DraftWrite(StrictModel):
@@ -142,6 +144,43 @@ class RestoreWrite(StrictModel):
     expected_version: int = Field(ge=1, le=2_147_483_646, strict=True)
     revision_id: UUID
     reason: NonemptyText = Field(max_length=500)
+
+
+class VisibilityWrite(PublishWrite):
+    """Hide a whole article from every public surface, or put it back.
+
+    Same weight as withdrawing a translation, so the same gate: explicit confirmation and a
+    reason. ``expected_version`` is the article's own version, not a translation's.
+    """
+
+
+VisibilityAction = Literal["hide", "unhide"]
+
+
+class BatchVisibilityItem(StrictModel):
+    id: UUID
+    expected_version: int = Field(ge=1, le=2_147_483_646, strict=True)
+
+
+class BatchVisibilityWrite(StrictModel):
+    items: list[BatchVisibilityItem] = Field(min_length=1, max_length=100)
+    action: VisibilityAction
+    confirmed: bool = Field(strict=True)
+    reason: NonemptyText = Field(max_length=500)
+
+    @field_validator("confirmed")
+    @classmethod
+    def require_confirmation(cls, value: bool) -> bool:
+        if not value:
+            raise ValueError("batch visibility changes require explicit confirmation")
+        return value
+
+    @field_validator("items")
+    @classmethod
+    def one_row_per_article(cls, value: list[BatchVisibilityItem]) -> list[BatchVisibilityItem]:
+        if len({item.id for item in value}) != len(value):
+            raise ValueError("each article may appear once")
+        return value
 
 
 # --- admin reads --------------------------------------------------------------
@@ -180,14 +219,37 @@ class ArticleSummary(BaseModel):
     featured: bool
     display_order: int
     is_active: bool
+    status: ArticleStatus
     version: int
     locales: list[LocaleState]
     updated_at: datetime
 
 
+class FacetCount(BaseModel):
+    code: str
+    count: int
+
+
+class ArticleFacets(BaseModel):
+    status: list[FacetCount]
+    kind: list[FacetCount]
+
+
 class ArticleList(BaseModel):
     articles: list[ArticleSummary]
-    next_cursor: str | None = None
+    total: int
+    page: int
+    pages: int
+    facets: ArticleFacets
+
+
+class BatchVisibilityResult(BaseModel):
+    updated: int
+    # Rows already in the requested state. They keep their version and get no audit row,
+    # so an editor who clicks twice does not fabricate history.
+    skipped: int
+    status: Literal["hidden", "active"]
+    articles: list[ArticleSummary]
 
 
 class ArticleDetail(ArticleSummary):

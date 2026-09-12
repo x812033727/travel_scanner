@@ -42,14 +42,6 @@ from app.guides.taxonomy import topic_option
 from app.i18n import LOCALES, Locale
 from app.problems import AppError
 
-AUDIT_ACTIONS = (
-    "guide_article_created",
-    "guide_article_updated",
-    "guide_article_draft_saved",
-    "guide_article_published",
-    "guide_article_unpublished",
-    "guide_article_restored",
-)
 MAX_PAGE = 50
 SITEMAP_LIMIT = 1000
 

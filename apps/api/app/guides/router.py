@@ -7,11 +7,15 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.auth.service import AdminUser
 from app.db import get_session
 from app.guides import admin_service, service, taxonomy
+from app.guides.publication import ArticleStatus
 from app.guides.schemas import (
     ArticleCreate,
     ArticleDetail,
     ArticleList,
+    ArticleSummary,
     ArticleUpdate,
+    BatchVisibilityResult,
+    BatchVisibilityWrite,
     DraftWrite,
     GuideDocument,
     Kind,
@@ -22,6 +26,7 @@ from app.guides.schemas import (
     RevisionDetail,
     SitemapList,
     TopicList,
+    VisibilityWrite,
 )
 from app.i18n import Locale
 
@@ -81,10 +86,21 @@ async def list_admin(
     kind: Kind | None = None,
     destination: str | None = Query(default=None, max_length=64),
     topic: str | None = Query(default=None, max_length=64),
-    limit: int = Query(default=50, ge=1, le=50),
+    status: ArticleStatus | None = None,
+    q: str | None = Query(default=None, max_length=100),
+    page: int = Query(default=1, ge=1),
+    limit: int = Query(default=30, ge=1, le=100),
 ) -> ArticleList:
     return await admin_service.list_articles(
-        session, locale, kind=kind, destination=destination, topic=topic, limit=limit
+        session,
+        locale,
+        kind=kind,
+        destination=destination,
+        topic=topic,
+        status=status,
+        q=q,
+        page=page,
+        limit=limit,
     )
 
 
@@ -98,6 +114,45 @@ async def list_admin_topics(
 @admin_router.post("", response_model=ArticleDetail, status_code=201)
 async def create(payload: ArticleCreate, user: AdminUser, session: Session) -> ArticleDetail:
     return await admin_service.create_article(session, user, payload)
+
+
+# Declared before the ``/{article_id}/...`` routes on purpose. Starlette takes the first
+# pattern that matches and FastAPI then validates the parameters, so ``POST /batch`` and
+# ``POST /{id}/hide`` would otherwise land in ``/{article_id}/{locale}`` and fail as 422.
+@admin_router.post("/batch", response_model=BatchVisibilityResult)
+async def batch_visibility(
+    payload: BatchVisibilityWrite,
+    user: AdminUser,
+    session: Session,
+    locale: Locale = "zh-TW",
+) -> BatchVisibilityResult:
+    return await admin_service.batch_visibility(session, user, payload, locale)
+
+
+@admin_router.post("/{article_id}/hide", response_model=ArticleSummary)
+async def hide(
+    article_id: UUID,
+    payload: VisibilityWrite,
+    user: AdminUser,
+    session: Session,
+    locale: Locale = "zh-TW",
+) -> ArticleSummary:
+    return await admin_service.set_visibility(
+        session, user, article_id, hidden=True, payload=payload, locale=locale
+    )
+
+
+@admin_router.post("/{article_id}/unhide", response_model=ArticleSummary)
+async def unhide(
+    article_id: UUID,
+    payload: VisibilityWrite,
+    user: AdminUser,
+    session: Session,
+    locale: Locale = "zh-TW",
+) -> ArticleSummary:
+    return await admin_service.set_visibility(
+        session, user, article_id, hidden=False, payload=payload, locale=locale
+    )
 
 
 @admin_router.get("/{article_id}", response_model=ArticleDetail)

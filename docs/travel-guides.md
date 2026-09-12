@@ -79,6 +79,24 @@ back to another language and nothing invents a translation.
 list, the article and the sitemap all compose it, so they cannot disagree about what is
 live.
 
+**Hiding is article-wide.** `guide_articles.is_active` is the switch every public reader
+already checks, so `POST /admin/guides/{id}/hide` takes every language off the site, the
+lists and the sitemap at once and `.../unhide` puts them back — without touching any
+translation's `published_version`, so the languages that were live come back together and
+nothing has to be republished. Both carry the same gate as withdrawing a translation
+(`confirmed: true`, a `reason`, the article's own `expected_version`) and write one
+`guide_article_hidden` / `guide_article_unhidden` audit row. `POST /admin/guides/batch`
+does the same for up to 100 articles in one transaction: one stale version and nothing is
+written; rows already in the requested state are skipped rather than rewritten. A
+classification save (`PUT /admin/guides/{id}`) no longer accepts `is_active`, so it can
+never quietly put a hidden article back.
+
+The editor-facing state is computed once, in `publication.article_status` (in memory) and
+`admin_status_expression` (SQL), with the same precedence: `hidden` when the switch is
+off, `expired` when `valid_until` has passed, `published` when at least one translation
+is live, otherwise `draft`. The admin list filters and counts by it; a hidden article can
+be restored, but `publish` still refuses it until it is.
+
 **Expiry is not withdrawal.** An `intel` article past its `valid_until` keeps its URL —
 retracting it would 404 every link already pointing at it — and is returned with
 `expired: true` so the page can say what date it applied until. It leaves the listings and
@@ -110,10 +128,15 @@ hreflang for the translations that actually exist.
 Admin (`content.manage` for writes):
 
 ```
-GET    /api/v1/admin/guides                              list + per-locale state
+GET    /api/v1/admin/guides?status=&kind=&destination=&topic=&q=&page=&limit=
+                                                         list + per-locale state, total/pages,
+                                                         status and kind facets
 POST   /api/v1/admin/guides                              create + first locale draft
+POST   /api/v1/admin/guides/batch                        hide or unhide up to 100 articles
 GET    /api/v1/admin/guides/{id}?locale=
-PUT    /api/v1/admin/guides/{id}                         taxonomy only
+PUT    /api/v1/admin/guides/{id}                         taxonomy only (never visibility)
+POST   /api/v1/admin/guides/{id}/hide
+POST   /api/v1/admin/guides/{id}/unhide
 POST   /api/v1/admin/guides/{id}/{locale}                open a new translation
 PUT    /api/v1/admin/guides/{id}/{locale}/draft
 POST   /api/v1/admin/guides/{id}/{locale}/publish
@@ -145,8 +168,17 @@ The PostgreSQL leg and the migration test are what prove the append-only trigger
 /{locale}/guides                      hub: latest intel, featured guides, topic entries
 /{locale}/guides/{kind}               intel | howto, with ?topic= and ?destination= filters
 /{locale}/guides/{kind}/{slug}        the article
-/{locale}/admin/guides                the editor
+/{locale}/admin/guides                the list: status pills with counts, kind / topic /
+                                      destination / search filters, paging, one badge per
+                                      language, single and multi-select hide / restore
+/{locale}/admin/guides?article=<id>&lang=<locale>   the editor for one translation
 ```
+
+The list and the editor keep their state in the URL (`components/admin-guides-list.tsx`,
+`lib/admin-workspace-navigation.ts`), so "back to the list" returns to the same filters
+and a filtered view can be bookmarked. `/admin/guides` is registered in the API's
+`NAVIGATION_REGISTRY`; the web fallback list alone is not enough, because the layout
+trusts the registry whenever the API answers and marks any other path forbidden.
 
 `[kind]` is a dynamic segment holding exactly two literal values; anything else is a 404.
 It is dynamic on purpose: `app/[locale]/metadata.test.ts` requires a `metadata.json` title
@@ -208,7 +240,10 @@ publication gate exists to prevent.
 ## Still open
 
 The sitemap wiring and the `攻略` relabel both landed in PR #404, together with the footer and
-destination-page links. What is left is one API-side defect: `published_at` records the first
+destination-page links. Between #398 and the visibility work the back-office entry itself was
+unreachable in production: `/admin/guides` was in the web fallback navigation but not in
+`NAVIGATION_REGISTRY`, so the layout answered "forbidden". What is left is one API-side
+defect: `published_at` records the first
 publication only, so a corrected notice keeps its original `lastmod` and tells Google nothing
 changed. `tasks/open/2026-09-11-guide-lastmod-republication.md` holds the fix, which reads the
 currently published revision's timestamp instead of unfreezing the column the list orders by.

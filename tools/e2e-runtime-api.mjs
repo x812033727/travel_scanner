@@ -82,6 +82,7 @@ adminCapabilities.owner = [...new Set(Object.values(adminCapabilities).flat()), 
 
 const adminNavigation = [
   ["dashboard", "overview", "/admin", "dashboard.read"],
+  ["guides", "content", "/admin/guides", "content.read"],
   ["hotspots", "content", "/admin/hotspots", "content.read", "hotspots_pending"],
   ["foods", "content", "/admin/foods", "content.read", "foods_pending"],
   ["hotels", "content", "/admin/hotels", "content.read", "hotels_pending"],

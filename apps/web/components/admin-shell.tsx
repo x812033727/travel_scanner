@@ -28,6 +28,7 @@ function safeRecent(value: string | null): string[] {
 export function AdminShell({ children }: { children: React.ReactNode }) {
   const locale = useLocale();
   const sitePages = useTranslations("admin.sitePages");
+  const navigationCopy = useTranslations("admin.navigation");
   const copy = adminOperationsCopy(locale);
   const pathname = usePathname();
   const operations = useAdminOperations();
@@ -42,7 +43,8 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
   const accountMenu = useRef<HTMLDivElement>(null);
   const navigation = useMemo(() => visibleAdminNavigation(bootstrap), [bootstrap]);
   const active = [...navigation].sort((a, b) => b.href.length - a.href.length).find((item) => item.href === "/admin" ? pathname === "/admin" : pathname.startsWith(item.href));
-  const label = (key: string, supplied?: string) => key === "sitePages" ? sitePages("title") : supplied || copy.nav[key] || key;
+  const label = (key: string, supplied?: string) => key === "sitePages" ? sitePages("title")
+    : supplied || copy.nav[key] || (navigationCopy.has(key) ? navigationCopy(key) : key);
 
   useEffect(() => {
     const timer = window.setTimeout(() => {

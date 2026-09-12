@@ -170,6 +170,40 @@ async def publish(api: AsyncClient, article_id: str, locale: str, version: int):
     )
 
 
+async def set_hidden(
+    api: AsyncClient, article_id: str, version: int, *, hidden: bool = True, reason="內容有誤"
+):
+    return await api.post(
+        f"/admin/guides/{article_id}/{'hide' if hidden else 'unhide'}",
+        json={"expected_version": version, "confirmed": True, "reason": reason},
+    )
+
+
+async def batch(api: AsyncClient, items: list[tuple[str, int]], action: str, **extra):
+    return await api.post(
+        "/admin/guides/batch",
+        json={
+            "items": [
+                {"id": article_id, "expected_version": version} for article_id, version in items
+            ],
+            "action": action,
+            "confirmed": True,
+            "reason": "批次處理",
+            **extra,
+        },
+    )
+
+
+async def admin_list(api: AsyncClient, **params):
+    response = await api.get("/admin/guides", params={"locale": "zh-TW", **params})
+    assert response.status_code == 200, response.text
+    return response.json()
+
+
+def facet(body, name: str) -> dict[str, int]:
+    return {item["code"]: item["count"] for item in body["facets"][name]}
+
+
 async def test_publishing_one_locale_leaves_the_others_unpublished(database, actor) -> None:
     async with client(make_app(database, actor)) as api:
         created = await create_article(api)
@@ -334,26 +368,293 @@ async def test_publishing_an_already_expired_article_is_refused(database, actor)
         assert response.json()["code"] == "guide_article_expired"
 
 
-async def test_archiving_removes_the_article_from_every_public_surface(database, actor) -> None:
+async def test_hiding_withdraws_every_locale_and_restoring_brings_them_all_back(
+    database, actor
+) -> None:
     async with client(make_app(database, actor)) as api:
         created = await create_article(api)
         await publish(api, created["id"], "zh-TW", created["version"])
-        updated = await api.put(
-            f"/admin/guides/{created['id']}",
-            json={
-                "expected_version": created["version"],
-                "kind": "howto",
-                "destination_id": "tokyo",
-                "topics": ["transport"],
-                "is_active": False,
-            },
+        japanese = await api.post(
+            f"/admin/guides/{created['id']}/ja",
+            json=document(title="成田空港から東京駅まで", description="三つの行き方を比べます"),
         )
-        assert updated.status_code == 200
-        assert (await api.get("/guides/howto/narita-to-tokyo", params={"locale": "zh-TW"})).json()[
-            "status"
-        ] == "unpublished"
+        assert japanese.status_code == 201
+        await publish(api, created["id"], "ja", 1)
+
+        hidden = await set_hidden(api, created["id"], created["version"])
+        assert hidden.status_code == 200, hidden.text
+        assert hidden.json()["status"] == "hidden"
+        assert hidden.json()["is_active"] is False
+        assert hidden.json()["version"] == created["version"] + 1
+        # Only the article-wide switch moved: each translation keeps its published pointer.
+        assert all(row["published_version"] for row in hidden.json()["locales"])
+        for locale in ("zh-TW", "ja"):
+            page = await api.get("/guides/howto/narita-to-tokyo", params={"locale": locale})
+            assert page.json()["status"] == "unpublished"
         assert (await api.get("/guides", params={"locale": "zh-TW"})).json()["articles"] == []
         assert (await api.get("/guides/sitemap")).json()["entries"] == []
+
+        restored = await set_hidden(
+            api, created["id"], hidden.json()["version"], hidden=False, reason="已修正"
+        )
+        assert restored.status_code == 200, restored.text
+        assert restored.json()["status"] == "published"
+        # No second round of publishing: both languages are back at once.
+        for locale in ("zh-TW", "ja"):
+            page = await api.get("/guides/howto/narita-to-tokyo", params={"locale": locale})
+            assert page.json()["status"] == "published"
+        entries = (await api.get("/guides/sitemap")).json()["entries"]
+        assert sorted(entry["locale"] for entry in entries) == ["ja", "zh-TW"]
+
+
+@pytest.mark.parametrize(
+    "payload",
+    [
+        {"expected_version": 1, "confirmed": False, "reason": "下架"},
+        {"expected_version": 1, "confirmed": "true", "reason": "下架"},
+        {"expected_version": 1, "confirmed": True, "reason": ""},
+        {"expected_version": 1, "confirmed": True},
+        {"expected_version": "1", "confirmed": True, "reason": "下架"},
+    ],
+)
+async def test_hiding_requires_a_strict_confirmation_and_a_reason(database, actor, payload) -> None:
+    async with client(make_app(database, actor)) as api:
+        created = await create_article(api)
+        response = await api.post(f"/admin/guides/{created['id']}/hide", json=payload)
+        assert response.status_code == 422
+        assert (await api.get(f"/admin/guides/{created['id']}")).json()["is_active"] is True
+
+
+async def test_a_stale_version_cannot_hide_and_repeating_a_hide_is_a_conflict(
+    database, actor
+) -> None:
+    async with client(make_app(database, actor)) as api:
+        created = await create_article(api)
+        stale = await set_hidden(api, created["id"], created["version"] + 5)
+        assert stale.status_code == 409
+        assert stale.json()["code"] == "guide_version_conflict"
+
+        hidden = await set_hidden(api, created["id"], created["version"])
+        assert hidden.status_code == 200
+        again = await set_hidden(api, created["id"], hidden.json()["version"])
+        assert again.status_code == 409
+        assert again.json()["code"] == "guide_article_already_hidden"
+
+        restored = await set_hidden(api, created["id"], hidden.json()["version"], hidden=False)
+        assert restored.status_code == 200
+        twice = await set_hidden(api, created["id"], restored.json()["version"], hidden=False)
+        assert twice.status_code == 409
+        assert twice.json()["code"] == "guide_article_not_hidden"
+
+        detail = await api.get(f"/admin/guides/{created['id']}", params={"locale": "zh-TW"})
+        actions = [item["action"] for item in detail.json()["audit"]]
+        assert actions.count("guide_article_hidden") == 1
+        assert actions.count("guide_article_unhidden") == 1
+    async with database() as session:
+        rows = list(
+            await session.scalars(
+                select(AdminAuditLog)
+                .where(AdminAuditLog.action == "guide_article_hidden")
+                .order_by(AdminAuditLog.created_at)
+            )
+        )
+    assert len(rows) == 1
+    assert rows[0].metadata_json["reason"] == "內容有誤"
+    assert rows[0].metadata_json["operator_confirmed"] is True
+    assert rows[0].metadata_json["before"] == {"is_active": True}
+    assert rows[0].metadata_json["after"] == {"is_active": False}
+    assert rows[0].metadata_json["batch_id"] is None
+
+
+async def test_a_hidden_article_cannot_be_published_until_it_is_restored(database, actor) -> None:
+    async with client(make_app(database, actor)) as api:
+        created = await create_article(api)
+        hidden = await set_hidden(api, created["id"], created["version"])
+        refused = await publish(api, created["id"], "zh-TW", created["locales"][0]["version"])
+        assert refused.status_code == 409
+        assert refused.json()["code"] == "guide_article_inactive"
+
+        await set_hidden(api, created["id"], hidden.json()["version"], hidden=False)
+        allowed = await publish(api, created["id"], "zh-TW", created["locales"][0]["version"])
+        assert allowed.status_code == 200, allowed.text
+        assert allowed.json()["status"] == "published"
+
+
+async def test_a_classification_save_never_changes_visibility(database, actor) -> None:
+    async with client(make_app(database, actor)) as api:
+        created = await create_article(api)
+        hidden = await set_hidden(api, created["id"], created["version"])
+        taxonomy = {
+            "kind": "howto",
+            "destination_id": "tokyo",
+            "topics": ["transport"],
+            "featured": True,
+        }
+        saved = await api.put(
+            f"/admin/guides/{created['id']}",
+            json={"expected_version": hidden.json()["version"], **taxonomy},
+        )
+        assert saved.status_code == 200, saved.text
+        assert saved.json()["featured"] is True
+        assert saved.json()["is_active"] is False
+        assert saved.json()["status"] == "hidden"
+        # The old shape carried the switch inside the classification payload. Refusing it
+        # outright is what keeps a stale client from quietly republishing an article.
+        legacy = await api.put(
+            f"/admin/guides/{created['id']}",
+            json={"expected_version": saved.json()["version"], **taxonomy, "is_active": True},
+        )
+        assert legacy.status_code == 422
+        assert (await api.get(f"/admin/guides/{created['id']}")).json()["is_active"] is False
+
+
+async def test_the_admin_listing_filters_by_status_and_reports_facets(database, actor) -> None:
+    async with client(make_app(database, actor)) as api:
+        await create_article(api, slug="draft-only")
+        live = await create_article(api, slug="live-guide")
+        await publish(api, live["id"], "zh-TW", live["version"])
+        gone = await create_article(api, slug="hidden-guide")
+        await publish(api, gone["id"], "zh-TW", gone["version"])
+        await set_hidden(api, gone["id"], gone["version"])
+        await create_article(
+            api,
+            slug="old-deal",
+            kind="intel",
+            valid_until=(date.today() - timedelta(days=1)).isoformat(),
+        )
+
+        everything = await admin_list(api)
+        assert everything["total"] == 4
+        assert everything["pages"] == 1
+        assert {item["slug"]: item["status"] for item in everything["articles"]} == {
+            "draft-only": "draft",
+            "live-guide": "published",
+            "hidden-guide": "hidden",
+            "old-deal": "expired",
+        }
+        assert facet(everything, "status") == {
+            "published": 1,
+            "draft": 1,
+            "hidden": 1,
+            "expired": 1,
+        }
+        assert facet(everything, "kind") == {"intel": 1, "howto": 3}
+
+        hidden = await admin_list(api, status="hidden")
+        assert [item["slug"] for item in hidden["articles"]] == ["hidden-guide"]
+        # A facet never counts its own filter, so the other pills keep their numbers.
+        assert facet(hidden, "status") == facet(everything, "status")
+        assert facet(hidden, "kind") == {"intel": 0, "howto": 1}
+
+        intel = await admin_list(api, kind="intel")
+        assert intel["total"] == 1
+        assert facet(intel, "kind") == {"intel": 1, "howto": 3}
+        assert facet(intel, "status") == {"published": 0, "draft": 0, "hidden": 0, "expired": 1}
+
+        nonsense = await api.get("/admin/guides", params={"locale": "zh-TW", "status": "gone"})
+        assert nonsense.status_code == 422
+
+
+async def test_the_admin_listing_searches_by_slug_or_title_and_pages(database, actor) -> None:
+    async with client(make_app(database, actor)) as api:
+        for index in range(5):
+            await create_article(
+                api, slug=f"guide-{index}", document=document(title=f"第 {index} 篇攻略")
+            )
+        first = await admin_list(api, limit=2, page=1)
+        assert first["total"] == 5
+        assert first["pages"] == 3
+        assert len(first["articles"]) == 2
+        last = await admin_list(api, limit=2, page=3)
+        assert len(last["articles"]) == 1
+        seen: list[str] = []
+        for number in (1, 2, 3):
+            chunk = await admin_list(api, limit=2, page=number)
+            seen.extend(item["slug"] for item in chunk["articles"])
+        assert sorted(seen) == [f"guide-{index}" for index in range(5)]
+        assert len(seen) == len(set(seen))
+
+        async def found(q: str) -> list[str]:
+            return [item["slug"] for item in (await admin_list(api, q=q))["articles"]]
+
+        assert await found("guide-3") == ["guide-3"]
+        assert await found("第 4") == ["guide-4"]
+        # LIKE metacharacters are matched literally, never as wildcards.
+        assert (await admin_list(api, q="%"))["articles"] == []
+        assert (await admin_list(api, q="_"))["total"] == 0
+
+
+async def test_batch_visibility_is_all_or_nothing_and_skips_rows_already_there(
+    database, actor
+) -> None:
+    async with client(make_app(database, actor)) as api:
+        first = await create_article(api, slug="batch-a")
+        await publish(api, first["id"], "zh-TW", first["version"])
+        second = await create_article(api, slug="batch-b")
+        await publish(api, second["id"], "zh-TW", second["version"])
+        third = await create_article(api, slug="batch-c")
+        already = await set_hidden(api, third["id"], third["version"])
+
+        stale = await batch(api, [(first["id"], 1), (second["id"], 99)], "hide")
+        assert stale.status_code == 409
+        assert stale.json()["code"] == "guide_version_conflict"
+        assert (await admin_list(api, status="hidden"))["total"] == 1
+
+        missing = await batch(api, [(first["id"], 1), (str(uuid4()), 1)], "hide")
+        assert missing.status_code == 404
+
+        done = await batch(
+            api,
+            [(first["id"], 1), (second["id"], 1), (third["id"], already.json()["version"])],
+            "hide",
+        )
+        assert done.status_code == 200, done.text
+        assert done.json()["updated"] == 2
+        assert done.json()["skipped"] == 1
+        assert done.json()["status"] == "hidden"
+        assert [item["slug"] for item in done.json()["articles"]] == [
+            "batch-a",
+            "batch-b",
+            "batch-c",
+        ]
+        assert all(item["status"] == "hidden" for item in done.json()["articles"])
+        assert [item["version"] for item in done.json()["articles"]] == [2, 2, 2]
+        assert (await api.get("/guides", params={"locale": "zh-TW"})).json()["articles"] == []
+
+        restored = await batch(api, [(first["id"], 2), (second["id"], 2)], "unhide")
+        assert restored.status_code == 200
+        assert restored.json()["updated"] == 2
+        assert restored.json()["status"] == "active"
+        assert len((await api.get("/guides", params={"locale": "zh-TW"})).json()["articles"]) == 2
+
+        for broken in (
+            {"confirmed": False},
+            {"items": [{"id": first["id"], "expected_version": 3}] * 2},
+            {"items": []},
+            {"action": "archive"},
+        ):
+            response = await api.post(
+                "/admin/guides/batch",
+                json={
+                    "items": [{"id": first["id"], "expected_version": 3}],
+                    "action": "hide",
+                    "confirmed": True,
+                    "reason": "批次處理",
+                    **broken,
+                },
+            )
+            assert response.status_code == 422, broken
+    async with database() as session:
+        rows = list(
+            await session.scalars(
+                select(AdminAuditLog)
+                .where(AdminAuditLog.action == "guide_article_hidden")
+                .order_by(AdminAuditLog.created_at)
+            )
+        )
+    assert len(rows) == 3
+    batch_ids = {row.metadata_json["batch_id"] for row in rows}
+    assert None in batch_ids and len(batch_ids) == 2
 
 
 async def test_restoring_a_revision_writes_a_draft_and_never_moves_the_public_pointer(

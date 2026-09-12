@@ -2,7 +2,7 @@
 
 import {
   BarChart3, BookOpenCheck, BriefcaseBusiness, ChevronRight, ClipboardCheck,
-  Database, Hotel, KeyRound, Languages, LayoutDashboard, Menu, PanelLeftClose,
+  Database, Hotel, KeyRound, Languages, LayoutDashboard, Menu, Newspaper, PanelLeftClose,
   PanelLeftOpen, PawPrint, Rocket, Settings2, ShieldCheck, Soup, UsersRound, X,
 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
@@ -15,7 +15,7 @@ import { fallbackAdminNavigation, visibleAdminNavigation, type AdminBootstrap, t
 import { adminOperationsCopy } from "@/lib/admin-operations-copy";
 
 const icons: Record<string, typeof LayoutDashboard> = {
-  dashboard: LayoutDashboard, hotspots: Database, foods: Soup, hotels: Hotel,
+  dashboard: LayoutDashboard, guides: Newspaper, hotspots: Database, foods: Soup, hotels: Hotel,
   catalogReview: BookOpenCheck, travelServices: ClipboardCheck, community: UsersRound,
   pets: PawPrint, partners: BriefcaseBusiness, analytics: BarChart3, users: UsersRound,
   usage: BarChart3, audit: ShieldCheck, layout: Settings2, uiText: Languages,
@@ -63,6 +63,8 @@ export function AdminNav({ current }: { current?: string } = {}) {
   const locale = useLocale();
   const copy = adminOperationsCopy(locale);
   const sitePagesTitle = useTranslations("admin.sitePages")("title");
+  // Destinations the inline copy table predates (guides) are named by the message catalog.
+  const navigationCopy = useTranslations("admin.navigation");
   const pathname = usePathname();
   const operations = useAdminOperations();
   const { user } = useHeaderSession();
@@ -90,7 +92,8 @@ export function AdminNav({ current }: { current?: string } = {}) {
     try { window.localStorage.setItem("admin-sidebar-collapsed", next ? "1" : "0"); } catch { /* storage may be blocked */ }
   }
 
-  const label = (item: AdminNavigationItem) => item.key === "sitePages" ? sitePagesTitle : item.label || copy.nav[item.key] || item.key;
+  const label = (item: AdminNavigationItem) => item.key === "sitePages" ? sitePagesTitle
+    : item.label || copy.nav[item.key] || (navigationCopy.has(item.key) ? navigationCopy(item.key) : item.key);
   const term = query.trim().toLocaleLowerCase(locale);
   const filtered = links.filter((item) => !term || label(item).toLocaleLowerCase(locale).includes(term));
   const activeFor = (href: string) => href === "/admin" ? activePath === href : activePath.startsWith(href);
