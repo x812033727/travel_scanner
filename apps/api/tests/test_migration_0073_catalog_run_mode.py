@@ -154,11 +154,13 @@ def _exercise_downgrade(connection: Connection) -> None:
     assert "enrich_merchants" in check_text(connection)
 
 
+@pytest.mark.asyncio(loop_scope="module")
 async def test_0073_widens_the_mode_check_and_is_idempotent() -> None:
     async with engine.connect() as connection:
         await connection.run_sync(in_a_rolled_back_transaction(_exercise_upgrade))
 
 
+@pytest.mark.asyncio(loop_scope="module")
 async def test_0073_downgrade_refuses_while_enrichment_runs_exist() -> None:
     async with engine.connect() as connection:
         await connection.run_sync(in_a_rolled_back_transaction(_exercise_downgrade))
