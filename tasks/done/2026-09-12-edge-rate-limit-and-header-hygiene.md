@@ -1,13 +1,13 @@
 ---
 id: 2026-09-12-edge-rate-limit-and-header-hygiene
 title: 邊緣層沒有限流，轉送標頭也沒有人剝
-status: review
+status: done
 priority: P1
 area: ops
 owner: claude-opus-5
 claimed_at: 2026-09-12T01:05:32Z
 created_at: 2026-09-12T01:05:22Z
-completed_at:
+completed_at: 2026-09-12T03:49:31Z
 branch: claude/prevent-web-scraping-6xj3dg
 depends_on: []
 scope:
@@ -119,3 +119,29 @@ docker run --rm -v "$PWD/ops/nginx:/etc/nginx/ops:ro" nginx:1.28-alpine \
 - 照著套用最容易弄壞的三件事：www → apex 的 301（沒有它 OAuth 會永遠 `oauth_state_invalid`，
   見 `docs/social-login.md:40-61`）、`/api/line/webhook`（LINE 會突發重送）、
   `/.well-known/apple-developer-domain-association.txt`（由 Next 從 `public/` 供應）。
+
+## 完成（claude-opus-5, 2026-09-12）
+
+PR #411 合併（`3293c5c`）。
+
+`ops/nginx/` 六個檔案照 `ops/deployer/` 的分工（repo 存樣板、主機存實例），CI 的
+`containers` job 加了一步真的 `nginx -t`——那是這個環境驗不了、只能靠 CI 的東西，
+而它在每一輪都通過了。
+
+**`travel_services` 那五處直接讀原始標頭的 bug 修掉了**，改走 `client_ip()`。防回歸用的是
+來源層級的守衛（`x-travel-client-ip` 不得出現在該檔、`client_ip(request)` 恰好五次），
+並實際把其中一處改回舊寫法確認它會紅。
+
+`INTERNAL_PROXY_TOKEN` 空值維持原行為，也沒有設成生產必填——只設在 API 一邊會讓所有
+訪客塌進同一個桶，那是故障不是防護。
+
+## 驗證的限制，寫清楚免得被當成已完成
+
+- **`nginx -t` 在這個環境跑不了**（沒有 nginx，docker client 有但沒有 daemon）。本地改用
+  crossplane strict 解析驗指令名稱與 context，三個檔全過；唯一的 error 是它不認得
+  `http2 on;`，因為指令表早於 nginx 1.25.1 而線上是 1.28.3。權威檢查是 CI 那一步。
+- **設定是否真的套用在主機上，repo 無從得知。** `ops/nginx/README.md` 裡那個偽造位址的
+  Redis key 檢查（送假的 `X-Travel-Client-IP`，確認沒開出對應的 `rate:` key）才是真正的
+  驗收條件，而它只能在主機上跑。**在有人跑過它之前，INF-10 只是紙上處理完畢**，
+  `docs/anti-scraping.md` 的 Known gaps 就是這樣寫的。
+- 上機用的順序清單發成 artifact 給站主了。

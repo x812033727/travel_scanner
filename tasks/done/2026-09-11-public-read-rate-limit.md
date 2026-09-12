@@ -1,13 +1,13 @@
 ---
 id: 2026-09-11-public-read-rate-limit
 title: 公開讀取端點沒有任何速率上限，整站可被匿名爬走
-status: review
+status: done
 priority: P1
 area: api
 owner: claude-opus-5
 claimed_at: 2026-09-11T22:14:42Z
 created_at: 2026-09-11T22:14:37Z
-completed_at:
+completed_at: 2026-09-12T03:49:30Z
 branch: claude/prevent-web-scraping-6xj3dg
 depends_on: []
 scope:
@@ -104,3 +104,33 @@ cd apps/web && PLAYWRIGHT_SERVE_BUILD=true npx playwright test e2e/seo.spec.ts
 - `apps/api/tests/conftest.py` 存在的唯一理由就是「整套測試從同一個 IP 打同一個 Redis」而把 `AUTH_REGISTER_IP_LIMIT` 拉到 500。新的上限不補同樣一行，整套 API 測試會自己把自己 429。
 - 後續已開單：`2026-09-12-edge-rate-limit-and-header-hygiene`（同一個 owner、同一條 branch，
   因 scope 重疊而以 `--force` 認領）。邊緣層 nginx 的 `limit_req` 與「剝掉外部送進來的 `X-Travel-Client-IP` / `X-Forwarded-For`」——目前 `TRUST_PROXY_CLIENT_IP=true` 之下，compose 網路內任何容器都能偽造這個標頭（審計編號 API-11），**每來源計數的正確性完全建立在這一層之上**。
+
+## 完成（claude-opus-5, 2026-09-12）
+
+PR #411 合併（`3293c5c`）。
+
+實際落地的與原計畫一致：`PublicReadRateLimitMiddleware` 兩個窗口、只對帶轉送位址的請求
+計數、公開讀取 fail-open、`observe` 模式先行、robots.txt 十一個 harvester 群組、
+不做 UA 封鎖。
+
+**驗證時真正有價值的那幾件：**
+
+- 帶 `X-Forwarded-For: 10.0.0.1, 198.51.100.77` 請求 `/zh-TW/foods`，三個內容讀取都帶著
+  **最右段** `198.51.100.77`，四個旗標探針（site-visibility、usage-catalog、community/status、
+  ui-text）都沒帶——那個區分是刻意的，額度要對應內容讀取而不是被設定探針吃掉。
+- 用 stash 重建比對過改動前後的算繪模式，`/destinations`、`/foods`、`/hotspots`、`/guides`
+  四頁在改動前就已經是 dynamic，沒有任何一頁被我改掉。
+- `e2e/seo.spec.ts` 在這個環境跑不起來（Playwright 要 chromium build 1234，容器裡是 1194），
+  改用 curl 以 `Twitterbot/1.0` 關 JS 驗五語系都是 200、內容 300KB 以上。
+
+## 後記：合併花的時間遠超過實作
+
+從 PR 開出到合併重新同步了 **七次**，七次的唯一衝突檔案都是 `tasks/BOARD.md`。形狀固定：
+CI 要 14 分鐘，`main` 在那之內又併一個 PR，於是 `dirty`，而 **auto-merge 不會解衝突**。
+
+開 auto-merge 沒有用，加開「Always suggest updating pull request branches」也沒有用——
+那兩個都處理不了衝突。最後是站主暫時關掉分支保護的
+**"Require branches to be up to date before merging"**，第一輪就過了。
+
+根因是 `2026-09-07-board-conflicts-on-every-pr`（P3，open）。今晚推著 `main` 一直前進的
+#415、#416、#418 全都是純 task 文件的 PR。
