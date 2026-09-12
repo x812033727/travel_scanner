@@ -71,7 +71,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [Mokaair community foundation and account safety](open/2026-09-07-mokaair-community-foundation.md) | active work in the same scope |
 | P1 | [Mokaair community responsive web and five-language experience](open/2026-09-07-mokaair-community-web.md) | active work in the same scope |
 | P1 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | active work in the same scope |
-| P1 | [ops/nginx 的上機指引有三處會假通過](open/2026-09-12-nginx-deploy-checks-false-pass.md) | active work in the same scope |
+| P1 | [ops/nginx 的上機指引有三處會假通過](open/2026-09-12-nginx-deploy-checks-false-pass.md) | depends on 2026-09-12-edge-rate-limit-and-header-hygiene |
 | P2 | [Sitemap lastmod should move when a guide translation is republished](open/2026-09-11-guide-lastmod-republication.md) | active work in the same scope |
 | P3 | [Lighthouse SEO 與效能門檻 workflow](open/2026-09-10-seo-lighthouse-workflow.md) | depends on 2026-09-10-seo-server-render-home-and-explore |
 | P3 | [A capitalised guide slug shows a fake outage instead of the article](open/2026-09-12-guide-slug-casing-shows-a-fake-outage.md) | active work in the same scope |

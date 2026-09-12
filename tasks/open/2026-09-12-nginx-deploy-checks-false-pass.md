@@ -9,7 +9,8 @@ claimed_at:
 created_at: 2026-09-12T03:56:07Z
 completed_at:
 branch:
-depends_on: []
+depends_on:
+  - 2026-09-12-edge-rate-limit-and-header-hygiene
 scope:
   - ops/nginx
 ---
@@ -22,8 +23,8 @@ scope:
 `ops/nginx/README.md` 的驗收步驟做，三項檢查全部「通過」——但沒有一項證明了它宣稱要證明的
 事。三個都是**假通過**：會回報成功，所以沒有人會回頭查。
 
-設定本身來自 `2026-09-12-edge-rate-limit-and-header-hygiene`（PR #411，開票時仍未合併），這張票只談那份設定的**上機指引**，不動設定內容本身。`depends_on` 留空是因為那張票的檔案還
-在 PR 分支上，`check` 看不到它。
+設定本身來自 `2026-09-12-edge-rate-limit-and-header-hygiene`（PR #411，2026-09-12 03:47Z 合併），
+這張票只談那份設定的**上機指引**，不動設定內容本身。
 
 1. **`install.sh` 種的檔名不是主機啟用的那個。** 安裝器寫 `sites-available/mokaair.conf`，
    而這台主機啟用的是 `sites-enabled/mokaair.com -> sites-available/mokaair.com`。照 README
@@ -36,7 +37,8 @@ scope:
    key 的 `PublicReadRateLimitMiddleware` 跟 nginx 設定在同一個 PR 裡，而邊緣層**本來就該先
    上**——app 層限流的正確性正是建立在標頭已經被剝掉之上。所以在正確的上機順序下，跑這項檢查
    時 middleware 必定還沒部署，`EXISTS` 必定回 0，包含「nginx 根本沒剝標頭」的情況。檢查沒有
-   驗證自己的前置條件。
+   驗證自己的前置條件。#411 在邊緣層上線四分鐘後就合併進 main 了，但正式機當時仍在 #406，
+   兩件事差得夠遠，剛好示範了這個時間差不是假想的。
 
 3. **`grep 'limiting requests' /var/log/nginx/error.log` 在 Debian/Ubuntu 預設安裝下永遠回空。**
    `10-rate-limit.conf` 設了 `limit_req_log_level warn`，但 Ubuntu 的 `nginx.conf` 是
