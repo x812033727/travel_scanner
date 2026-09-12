@@ -4,8 +4,9 @@ One place to record work that is not finished yet, so that a person and any numb
 of models can each pick up a batch without waiting for one another and without two
 of them editing the same files at the same time.
 
-- [`BOARD.md`](BOARD.md) — the generated overview: everything unfinished, grouped by
-  what can be started right now, what someone is already on, and what is waiting.
+- `BOARD.md` — the same overview as a file: everything unfinished, grouped by what can
+  be started right now, what someone is already on, and what is waiting. It is generated
+  from the task files, git ignores it, and `npm run tasks:board` writes it.
 - [`open/`](open) — one file per unfinished task: why it exists, the definition of
   done, the sub-tasks, how to verify it, and notes for whoever picks it up next.
 - [`done/`](done) — the same files after they are finished, kept as the record of
@@ -23,9 +24,11 @@ npm run tasks -- next      # the best task nobody else is on
 
 1. **One task is one file.** Only ever write the file of the task you own. Two
    agents on two tasks never touch the same file, so their branches never conflict.
-2. **`BOARD.md` is generated, never edited.** Every command that changes a task
-   rewrites it. If it ever conflicts in a merge, do not resolve it by hand — run
-   `npm run tasks:board` and stage the result.
+2. **`BOARD.md` is generated and never committed.** Every command that changes a task
+   rewrites it, and git ignores it, so two branches that each file a task no longer
+   collide in it. Do not commit it or edit it by hand; `npm run tasks -- list` reads the
+   task files directly and so is never out of date, and `npm run tasks:board` refreshes
+   the file when you want it on disk.
 3. **`scope:` is a claim on files, not a hint.** It lists every path the task is
    allowed to change. `claim` refuses a task whose scope overlaps work already in
    progress, and `next` never offers one. Keep scopes narrow: a task scoped to
@@ -92,6 +95,8 @@ request; `done` lives in `done/`.
 
 `npm run check:tasks` runs in CI and fails on a task file that would mislead the next
 reader: an unknown field, a status that does not match the folder, an owner without a
-claim time, an empty scope, a dependency that does not exist or that loops, or a board
-that no longer matches the task files. It also prints warnings — a stale claim, or two
+claim time, an empty scope, or a dependency that does not exist or that loops. If
+`BOARD.md` is in version control at all it must also match the task files, so that
+putting it back can never go unnoticed; while git is ignoring it, a local copy is free to
+lag behind a `git pull`. It also prints warnings — a stale claim, or two
 active tasks whose scopes overlap — without failing the build.

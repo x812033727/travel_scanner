@@ -93,8 +93,7 @@ public page.
 ## Task board
 
 Work that is known but not yet done lives in [`tasks/`](tasks/README.md), one file
-per task, with [`tasks/BOARD.md`](tasks/BOARD.md) as the generated overview. It is a
-shared queue: a person and several AI agents can each take a batch from it at the
+per task, with `npm run tasks -- list` as the overview. It is a shared queue: a person and several AI agents can each take a batch from it at the
 same time, because a task is claimed by name before it is started and declares every
 path it may change, so the tool refuses to hand two agents work in the same files.
 

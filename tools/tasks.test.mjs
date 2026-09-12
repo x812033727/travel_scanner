@@ -15,9 +15,13 @@ function workspace() {
   return root;
 }
 
-function run(root, argv, iso = "2026-09-05T09:00:00Z") {
-  return runCommand(argv, { root, now: AT(iso) });
+function run(root, argv, iso = "2026-09-05T09:00:00Z", boardTracked = false) {
+  return runCommand(argv, { root, now: AT(iso), boardTracked });
 }
+
+// The temp workspaces are not git repositories, so whether the board is in version control
+// is stated here rather than discovered.
+const runTracked = (root, argv) => run(root, argv, "2026-09-05T09:00:00Z", true);
 
 function file(root, folder, name) {
   return readFileSync(path.join(root, "tasks", folder, name), "utf8");
@@ -147,15 +151,30 @@ test("finishing a task archives it and keeps the board honest", () => {
   assert.match(board, /- 2026-09-05 \[Alert list\]\(done\/2026-09-05-alert-list\.md\)/);
 });
 
-test("check fails on a hand-edited board and passes once it is regenerated", () => {
+test("a committed board that no longer matches the task files fails the check", () => {
   const root = workspace();
   run(root, ["new", "--title", "Alert list", "--area", "web", "--scope", "apps/web/components/alerts"]);
   writeFileSync(path.join(root, "tasks", "BOARD.md"), "# Task board\n\nsomeone typed this\n");
-  const stale = run(root, ["check"]);
+  const stale = runTracked(root, ["check"]);
   assert.equal(stale.code, 1);
-  assert.match(stale.lines[0], /BOARD\.md is out of date/);
+  assert.match(stale.lines[0], /BOARD\.md is committed and out of date/);
   assert.equal(run(root, ["board"]).code, 0);
-  assert.equal(run(root, ["check"]).code, 0);
+  assert.equal(runTracked(root, ["check"]).code, 0);
+});
+
+// The board is generated on demand and kept out of version control, so that two branches
+// each filing a task no longer collide in it. A local copy may therefore lag behind what
+// the task files now say, and must not fail anyone's pre-push checks when it does.
+test("a stale board that is not committed is not the check's business", () => {
+  const root = workspace();
+  run(root, ["new", "--title", "Alert list", "--area", "web", "--scope", "apps/web/components/alerts"]);
+  writeFileSync(path.join(root, "tasks", "BOARD.md"), "# Task board\n\nleft over from an older pull\n");
+  const result = run(root, ["check"]);
+  assert.equal(result.code, 0);
+  assert.ok(
+    !result.lines.some((line) => line.includes("BOARD.md")),
+    "a file git is ignoring going stale is not something to report",
+  );
 });
 
 test("check names every way a task file can be wrong", () => {
