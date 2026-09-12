@@ -176,7 +176,8 @@ async def test_branch_conflicts_and_identity_mismatches_write_nothing(
 
 
 @pytest.mark.parametrize("change,message", [
-    ({"provider": "tabelog"}, "不支援這個訂位平台"),
+    # A real platform the catalog deliberately does not store links for.
+    ({"provider": "opentable"}, "不支援這個訂位平台"),
     ({"canonical_url": "https://www.sevenrooms.com/explore"}, "merchant-specific page"),
     ({"canonical_url": f"{SEVENROOMS}?utm_source=website"}, "unsupported query parameters"),
     ({"canonical_url": None}, "已驗證狀態必須提供精準店家頁"),

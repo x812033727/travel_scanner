@@ -1,13 +1,13 @@
 ---
 id: 2026-09-11-food-reservation-link-backfill
 title: 公開美食店家訂位平台連結補齊（查核與批次匯入）
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-opus-5
 claimed_at: 2026-09-11T16:02:41Z
 created_at: 2026-09-11T15:58:40Z
-completed_at:
+completed_at: 2026-09-12T05:00:07Z
 branch: claude/food-reservation-link-backfill
 depends_on: []
 scope:
@@ -28,15 +28,15 @@ scope:
 ## Definition of done
 
 - [x] 296 間未查核的公開店家都有查核結果：`verified`、`disabled`、`not_found` 或 `ambiguous`，每筆附證據。
-- [ ] 精準分店頁已寫進正式資料庫，前台出現對應按鈕；不能訂位的平台頁不公開。
-- [ ] 後台人工審核過的列一筆都沒被覆寫。
+- [x] 精準分店頁已寫進正式資料庫，前台出現對應按鈕；不能訂位的平台頁不公開。
+- [x] 後台人工審核過的列一筆都沒被覆寫。
 
 ## Steps
 
 - [x] `apply-food-platform-reviews` 指令與測試：預設試跑、只寫平台列、每列一筆稽核。
 - [x] 用內建瀏覽器查核，結果整理成 `apps/api/app/foods/data/platform_reviews/2026-09-11-public-merchants.json`（311 筆：verified 12、disabled 35、ambiguous 9、not_found 255）。
 - [x] 查核摘要 `docs/catalog-content-reviews/2026-09-11-reservation-links-full.md`。
-- [ ] PR、合併、部署，在 api 容器試跑，確認後 `--apply`。
+- [x] PR、合併、部署，在 api 容器試跑，確認後 `--apply`。
 
 ## How to verify
 
@@ -71,3 +71,9 @@ scope:
 - PR #408。CI 的 `api` 與 `full-stack-smoke` 會紅，原因與本 PR 無關：Docker Hub 已不開放匿名拉取，
   `minio/minio:latest` 拉不下來（`docker: pull access denied`）。PR #407 正在把 MinIO 改從 quay.io 拉並釘版本。
   等 #407 進 main，把 main 併進本分支重推一次，CI 就會綠。`containers` 這個 job 本來就是綠的。
+
+- 2026-09-12 收尾：PR #408 已合併並部署（`02317cf5`），在 api 容器跑 `--apply` 寫入 311 筆
+  （新增 190、更新 121、跳過 0），後台人工審核的 36 列一列都沒被覆寫。公開 API 逐頁統計，
+  331 間公開店家有 45 間帶 `reservation_links`（JP 10、SG 13、KR 7、TW 5、TH 5、HK 5、VN 0）。
+- 覆蓋率低的原因是平台白名單太窄，不是查核不足。後續改由
+  `2026-09-12-japan-korea-reservation-platforms` 放寬白名單後再補一輪。

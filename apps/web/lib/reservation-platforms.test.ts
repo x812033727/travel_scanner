@@ -15,12 +15,17 @@ const platformUrls = [
   ["sevenrooms", "https://www.sevenrooms.com/reservations/palmbeach"],
   ["ikyu", "https://restaurant.ikyu.com/107953"],
   ["myconcierge", "https://myconciergejapan.com/restaurants/ginza-kyubey"],
+  ["tabelog", "https://tabelog.com/osaka/A2701/A270202/27001289"],
+  ["hotpepper", "https://www.hotpepper.jp/strJ003560255"],
+  ["gurunavi", "https://r.gnavi.co.jp/k001100"],
+  ["autoreserve", "https://autoreserve.com/ja/restaurants/91FxEE6JLr2HE2owrKVL"],
+  ["naver_booking", "https://booking.naver.com/booking/13/bizes/210459"],
 ] as const;
 
 describe("reservation platforms", () => {
   it("exposes each known provider exactly once in a fixed order", () => {
     expect(reservationPlatformDefinitions.map((item) => item.provider)).toEqual(platformUrls.map(([provider]) => provider));
-    expect(new Set(reservationPlatformDefinitions.map((item) => item.provider)).size).toBe(12);
+    expect(new Set(reservationPlatformDefinitions.map((item) => item.provider)).size).toBe(17);
   });
 
   it.each(platformUrls)("accepts the merchant-specific %s URL without dropping its identity", (provider, url) => {
@@ -38,7 +43,7 @@ describe("reservation platforms", () => {
     );
   });
 
-  it.each(["normal.brunch", "venue_1.branch-2.kr"])("accepts Catchtable dot-separated ASCII IDs: %s", (id) => {
+  it.each(["normal.brunch", "venue_1.branch-2.kr", "hani._.noodle"])("accepts Catchtable dot-separated ASCII IDs: %s", (id) => {
     const url = `https://www.catchtable.net/shop/${id}`;
     expect(reservationPlatformHref("catchtable_global", url)).toBe(url);
     expect(reservationPlatformIdentity("catchtable_global", url)).toBe(`catchtable_global:${id}`);
@@ -52,7 +57,7 @@ describe("reservation platforms", () => {
   });
 
   it.each([
-    ".", "..", ".venue", "venue.", "venue..kr", "venue...kr", "venue._kr", "venue.-kr",
+    ".", "..", ".venue", "venue.", "venue..kr", "venue...kr", "venue.-kr", "_venue.kr",
     "yosukgung%2ekr", "yosukgung%2Ekr", "yosukgung%252ekr", "%2e", ".%2e", "%2e%2e",
     "yosukgung.kr/..", "yosukgung.kr/../other", "../yosukgung.kr", "yosukgung.kr/.",
     "yosukgung.kr%2fother", "yosukgung.kr%5cother", "yosukgung.kr\\other",
@@ -106,6 +111,50 @@ describe("reservation platforms", () => {
     ["openrice", "https://www.openrice.com/zh-HK/hongkong/r-%E9%8F%9E%E8%A8%98-r23206360"],
   ])("recognizes documented alternate %s merchant page shapes", (provider, url) => {
     expect(reservationPlatformHref(provider, url)).toBe(url);
+  });
+
+  it.each([
+    ["tabelog", "https://tabelog.com/en/tokyo/A1301/A130101/13226719", "tabelog:13226719"],
+    ["tabelog", "https://tabelog.com/tw/tokyo/A1301/A130101/13226719", "tabelog:13226719"],
+    ["tabelog", "https://tabelog.com/kr/tokyo/A1301/A130101/13226719", "tabelog:13226719"],
+    ["gurunavi", "https://gurunavi.com/en/k001100/rst", "gurunavi:k001100"],
+    ["gurunavi", "https://gurunavi.com/zh-hant/k001100/rst", "gurunavi:k001100"],
+    ["gurunavi", "https://r.gnavi.co.jp/nmwubfx70000", "gurunavi:nmwubfx70000"],
+    ["autoreserve", "https://autoreserve.com/zh-tw/restaurants/91FxEE6JLr2HE2owrKVL", "autoreserve:91FxEE6JLr2HE2owrKVL"],
+    ["naver_booking", "https://m.booking.naver.com/booking/13/bizes/210459", "naver_booking:210459"],
+  ])("keeps one branch identity across %s language and host variants", (provider, url, identity) => {
+    expect(reservationPlatformHref(provider, url)).toBe(url);
+    expect(reservationPlatformIdentity(provider, url)).toBe(identity);
+  });
+
+  it.each([
+    // Area, ranking and review routes are not one shop.
+    ["tabelog", "https://tabelog.com/osaka/A2701/A270202"],
+    ["tabelog", "https://tabelog.com/tokyo/rstLst/RC0101"],
+    ["tabelog", "https://tabelog.com/en/tokyo/A1301/A130101/13226719/dtlrvwlst"],
+    ["tabelog", "https://tabelog.com/en/tokyo/A1301/A130101/1322671a"],
+    // Tabelog has no Hong Kong directory; a site locale is not a Tabelog locale.
+    ["tabelog", "https://tabelog.com/hk/tokyo/A1301/A130101/13226719"],
+    ["tabelog", "https://tabelog.com/zh-tw/tokyo/A1301/A130101/13226719"],
+    ["hotpepper", "https://www.hotpepper.jp/strJ00356025"],
+    ["hotpepper", "https://www.hotpepper.jp/strJ003560255/yoyaku"],
+    ["hotpepper", "https://www.hotpepper.jp/fukuoka"],
+    ["gurunavi", "https://r.gnavi.co.jp/area"],
+    ["gurunavi", "https://r.gnavi.co.jp/plan/r6pyrfvf0000/plan-reserve"],
+    // Each Gurunavi route belongs to one host only.
+    ["gurunavi", "https://r.gnavi.co.jp/en/k001100/rst"],
+    ["gurunavi", "https://gurunavi.com/k001100/rst"],
+    ["gurunavi", "https://gurunavi.com/en/k001100"],
+    ["autoreserve", "https://autoreserve.com/ja/restaurants/91FxEE6JLr2HE2owrKV"],
+    ["autoreserve", "https://autoreserve.com/restaurants/91FxEE6JLr2HE2owrKVL"],
+    ["autoreserve", "https://autoreserve.com/ja/areas/osaka"],
+    ["naver_booking", "https://booking.naver.com/booking/13/bizes"],
+    ["naver_booking", "https://booking.naver.com/booking/13/bizes/210459/items/4567"],
+    // Naver's map entry is a place page, not the reservation platform.
+    ["naver_booking", "https://map.naver.com/p/entry/place/210459"],
+  ])("rejects the %s page that is not one shop: %s", (provider, url) => {
+    expect(reservationPlatformHref(provider, url)).toBeUndefined();
+    expect(reservationPlatformIdentity(provider, url)).toBeUndefined();
   });
 
   it.each(platformUrls)("normalizes host casing and a trailing slash for %s", (provider, url) => {
