@@ -286,6 +286,30 @@ class HotspotReviewRequest(BaseModel):
         return self
 
 
+def rehomed_search_text(
+    search_text: str,
+    *,
+    before: tuple[str | None, ...],
+    after: tuple[str | None, ...],
+) -> str:
+    """Swap the destination tokens in a hotspot's search bag when an admin moves it.
+
+    ``search_text`` is a casefolded bag of tokens that the ranking query matches with
+    ILIKE, built by whichever path created the row - a seed contributes its aliases and
+    localized names, discovery contributes the Wikipedia title. Rebuilding it from the
+    ORM row would throw those away, so only the old destination's own identifiers are
+    dropped and the new ones appended.
+    """
+
+    def tokens(values: tuple[str | None, ...]) -> list[str]:
+        return [token for value in values if value for token in value.casefold().split()]
+
+    stale = set(tokens(before))
+    kept = [token for token in search_text.split() if token not in stale]
+    fresh = [token for token in tokens(after) if token not in kept]
+    return " ".join([*kept, *fresh])
+
+
 def _sync_map_match_status(hotspot: TravelHotspot, *, actor_id: UUID) -> None:
     """Keep map_match_status in step with the hotspot's exact map identity.
 
@@ -783,6 +807,13 @@ async def review_hotspot_candidates(
         hotspot.reviewed_at = now
         hotspot.reviewed_by_user_id = user.id
         if target_destination:
+            previous_destination = (
+                hotspot.destination_id,
+                hotspot.city_code,
+                hotspot.city_name,
+                hotspot.country_code,
+                hotspot.country_name,
+            )
             hotspot.destination_id = target_destination.id
             hotspot.city_code = target_destination.code
             hotspot.city_name = target_destination.city
@@ -797,6 +828,19 @@ async def review_hotspot_candidates(
                 "Vietnam": "VN",
             }
             hotspot.country_code = country_codes[target_destination.country]
+            # Without this a moved hotspot keeps answering to the city it left: collect
+            # only rebuilds search_text for rows it still owns, and it skips approved ones.
+            hotspot.search_text = rehomed_search_text(
+                hotspot.search_text,
+                before=previous_destination,
+                after=(
+                    hotspot.destination_id,
+                    hotspot.city_code,
+                    hotspot.city_name,
+                    hotspot.country_code,
+                    hotspot.country_name,
+                ),
+            )
         if "google_place_id" in payload.model_fields_set:
             hotspot.google_place_id = payload.google_place_id
         if "naver_map_url" in payload.model_fields_set:
