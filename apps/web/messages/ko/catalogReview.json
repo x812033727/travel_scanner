@@ -72,7 +72,9 @@
     "catalog_review_failed": "검토가 완료되지 않았습니다. 진행 상황은 저장되었습니다. 서비스 상태를 확인하세요.",
     "catalog_queue_unavailable": "작업은 저장되었지만 대기열에 넣지 못했습니다. 나중에 재개하세요.",
     "catalog_review_unconfigured": "Gemini API 키가 설정되지 않아 평가할 수 없습니다.",
-    "catalog_review_budget_exhausted": "오늘의 Gemini 안전 호출 한도를 모두 사용했습니다. 진행 상황은 저장되었습니다."
+    "catalog_review_budget_exhausted": "오늘의 Gemini 안전 호출 한도를 모두 사용했습니다. 진행 상황은 저장되었습니다.",
+    "catalog_enrichment_nothing_pending": "보완할 심사 대기 가게가 없습니다.",
+    "catalog_source_untrusted": "등록 출처는 신뢰할 수 있는 관광청 또는 정부 호스트여야 합니다."
   },
   "kinds": {
     "hotspot": "관광지",
@@ -81,13 +83,16 @@
   },
   "modes": {
     "review_pending": "대기 항목 검토",
-    "discover_new": "후보 검색 및 검토"
+    "discover_new": "후보 검색 및 검토",
+    "enrich_merchants": "가게 정보 보완"
   },
   "phases": {
     "review_pending": "대기 항목 확인 중",
     "discover_new": "신규 후보 검색 중",
     "review_new": "신규 후보 검토 중",
-    "completed": "검토 완료"
+    "completed": "검토 완료",
+    "identify": "지점 식별 확인",
+    "enrich_merchants": "가게 항목 보완"
   },
   "runStatus": {
     "queued": "대기 중",
@@ -107,7 +112,8 @@
   "actions": {
     "approve": "승인",
     "reject": "거절",
-    "keep_pending": "검토 대기 유지"
+    "keep_pending": "검토 대기 유지",
+    "apply_corrections": "보완 제안 적용"
   },
   "decisions": {
     "approve": "승인 권고",
@@ -157,5 +163,28 @@
   "outcomeStatus": {
     "applied": "적용 완료",
     "skipped": "건너뜀"
+  },
+  "enrichmentTitle": "가게 정보 보완",
+  "enrichmentDescription": "Gemini는 가게 공식 사이트, 관광청 페이지, Wikimedia에서만 주소·출처·상권·카테고리와 Google 지점 식별을 보완합니다. 좌표는 쓰지 않고 심사 상태도 바꾸지 않습니다.",
+  "enrichmentPending": "심사 대기 가게 {count}곳",
+  "startEnrichment": "가게 정보 보완",
+  "correctionsCount": "보완 제안 ({count})",
+  "itemCorrections": "{name}의 보완 제안",
+  "confirmCorrectionsDescription": "비어 있는 항목만 채웁니다. 출처는 추가되거나 재확인 시각이 갱신됩니다. 좌표와 심사 상태는 쓰지 않습니다.",
+  "identifyMatched": "이번 실행에서 Google 지점 식별이 일치했습니다",
+  "outcomeChanges": "채움: {fields}",
+  "correctionKinds": {
+    "merchant_website": "가게 공식 사이트",
+    "merchant_listing": "공식 등록 페이지",
+    "address": "주소",
+    "area": "상권",
+    "category": "카테고리"
+  },
+  "correctionFields": {
+    "address": "주소",
+    "official_website_url": "공식 사이트 URL",
+    "listing_source_url": "공식 등록 페이지 출처",
+    "area_slug": "상권",
+    "category_slug": "카테고리"
   }
 }

@@ -72,7 +72,9 @@
     "catalog_review_failed": "The review did not finish. Progress is saved. Check the service status.",
     "catalog_queue_unavailable": "The run is saved but could not be queued. Resume it later.",
     "catalog_review_unconfigured": "A Gemini API key is not configured, so assessment is unavailable.",
-    "catalog_review_budget_exhausted": "Today's Gemini safety call budget is exhausted. Progress is saved."
+    "catalog_review_budget_exhausted": "Today's Gemini safety call budget is exhausted. Progress is saved.",
+    "catalog_enrichment_nothing_pending": "No pending merchants match the enrichment request.",
+    "catalog_source_untrusted": "The listing source must be on a trusted tourism or government host."
   },
   "kinds": {
     "hotspot": "Hotspots",
@@ -81,13 +83,16 @@
   },
   "modes": {
     "review_pending": "Review pending items",
-    "discover_new": "Discover and review"
+    "discover_new": "Discover and review",
+    "enrich_merchants": "Fill in merchant details"
   },
   "phases": {
     "review_pending": "Reviewing pending items",
     "discover_new": "Finding new candidates",
     "review_new": "Reviewing new candidates",
-    "completed": "Review complete"
+    "completed": "Review complete",
+    "identify": "Confirming branch identity",
+    "enrich_merchants": "Filling merchant fields"
   },
   "runStatus": {
     "queued": "Queued",
@@ -107,7 +112,8 @@
   "actions": {
     "approve": "Approve",
     "reject": "Reject",
-    "keep_pending": "Keep pending"
+    "keep_pending": "Keep pending",
+    "apply_corrections": "Apply corrections"
   },
   "decisions": {
     "approve": "Recommend approval",
@@ -157,5 +163,28 @@
   "outcomeStatus": {
     "applied": "Applied",
     "skipped": "Skipped"
+  },
+  "enrichmentTitle": "Fill in merchant details",
+  "enrichmentDescription": "Gemini fills address, sources, area, category and Google branch identity only from the merchant's own site, tourism boards and Wikimedia. It never writes coordinates or changes review status.",
+  "enrichmentPending": "{count} pending merchants",
+  "startEnrichment": "Fill in merchant details",
+  "correctionsCount": "Proposed corrections ({count})",
+  "itemCorrections": "Proposed corrections for {name}",
+  "confirmCorrectionsDescription": "Only empty fields are filled; sources are added or re-verified; coordinates and review status are never written.",
+  "identifyMatched": "Google branch identity matched in this run",
+  "outcomeChanges": "Filled: {fields}",
+  "correctionKinds": {
+    "merchant_website": "Merchant website",
+    "merchant_listing": "Official listing",
+    "address": "Address",
+    "area": "Area",
+    "category": "Category"
+  },
+  "correctionFields": {
+    "address": "Address",
+    "official_website_url": "Official website",
+    "listing_source_url": "Listing source",
+    "area_slug": "Area",
+    "category_slug": "Category"
   }
 }

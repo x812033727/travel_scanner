@@ -72,7 +72,9 @@
     "catalog_review_failed": "審核工作未完成，已保留進度。請檢查服務狀態。",
     "catalog_queue_unavailable": "工作已保存，但目前無法排入佇列，請稍後續跑。",
     "catalog_review_unconfigured": "Gemini API Key 尚未設定，無法進行評估。",
-    "catalog_review_budget_exhausted": "Gemini 今日安全呼叫預算已用完，已保留進度。"
+    "catalog_review_budget_exhausted": "Gemini 今日安全呼叫預算已用完，已保留進度。",
+    "catalog_enrichment_nothing_pending": "目前沒有符合條件的待審店家。",
+    "catalog_source_untrusted": "觀光局來源必須是信任的官方或政府主機。"
   },
   "kinds": {
     "hotspot": "景點",
@@ -81,13 +83,16 @@
   },
   "modes": {
     "review_pending": "審核現有待審",
-    "discover_new": "新增候選與審核"
+    "discover_new": "新增候選與審核",
+    "enrich_merchants": "補齊店家資料"
   },
   "phases": {
     "review_pending": "核對現有待審",
     "discover_new": "尋找新候選",
     "review_new": "核對新候選",
-    "completed": "審核完成"
+    "completed": "審核完成",
+    "identify": "確認分店身分",
+    "enrich_merchants": "補齊店家欄位"
   },
   "runStatus": {
     "queued": "排隊中",
@@ -107,7 +112,8 @@
   "actions": {
     "approve": "核准",
     "reject": "拒絕",
-    "keep_pending": "保留待審"
+    "keep_pending": "保留待審",
+    "apply_corrections": "套用補齊資料"
   },
   "decisions": {
     "approve": "建議核准",
@@ -157,5 +163,28 @@
   "outcomeStatus": {
     "applied": "已套用",
     "skipped": "已略過"
+  },
+  "enrichmentTitle": "補齊店家資料",
+  "enrichmentDescription": "Gemini 只從店家官網、觀光局頁面與 Wikimedia 補地址、來源、商圈、分類與 Google 分店身分；不寫座標，也不改變審核狀態。",
+  "enrichmentPending": "待審店家 {count} 筆",
+  "startEnrichment": "補齊店家資料",
+  "correctionsCount": "建議補齊（{count}）",
+  "itemCorrections": "{name} 的建議補齊",
+  "confirmCorrectionsDescription": "只會填入目前為空的欄位；來源會新增或更新查核時間；不會寫入座標，也不會改變審核狀態。",
+  "identifyMatched": "本次已配對 Google 分店身分",
+  "outcomeChanges": "已填入：{fields}",
+  "correctionKinds": {
+    "merchant_website": "店家官網",
+    "merchant_listing": "官方店家頁",
+    "address": "地址",
+    "area": "商圈",
+    "category": "分類"
+  },
+  "correctionFields": {
+    "address": "地址",
+    "official_website_url": "官網網址",
+    "listing_source_url": "官方店家頁來源",
+    "area_slug": "商圈",
+    "category_slug": "分類"
   }
 }

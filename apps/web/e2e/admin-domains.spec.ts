@@ -194,7 +194,7 @@ async function catalogBudgetFixture(page: Page) {
     } else if (route.request().method() !== "GET") {
       await route.fulfill({ status: 403, json: { detail: "Unexpected fixture catalog operation" } });
     } else if (path === "/admin/catalog-review") {
-      await route.fulfill({ json: { configured: true, model: run.model, daily_call_limit: 300, run_call_limit: configuredLimit, pending_counts: { hotspot: 1000, food: 0, merchant: 0, total: 1000 }, can_start_review: true, can_start_discovery: false, blocking_reasons: [], active_run: null, runs: [run] } });
+      await route.fulfill({ json: { configured: true, model: run.model, daily_call_limit: 300, run_call_limit: configuredLimit, pending_counts: { hotspot: 1000, food: 0, merchant: 0, total: 1000 }, can_start_review: true, can_start_discovery: false, can_start_enrichment: false, blocking_reasons: [], active_run: null, runs: [run] } });
     } else if (path.endsWith("/items")) {
       await route.fulfill({ json: { items: [], total: 0, page: 1, page_size: 30, has_more: false } });
     } else {
