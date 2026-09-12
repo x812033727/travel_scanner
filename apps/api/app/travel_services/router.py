@@ -23,7 +23,7 @@ from app.auth.service import CurrentUser
 from app.db import get_session
 from app.hotspots.maps import build_map_links
 from app.i18n import Locale, current_locale
-from app.infra import enforce_named_rate_limit, get_redis
+from app.infra import client_ip, enforce_named_rate_limit, get_redis
 from app.locations.map_identity import catalog_map_identities
 from app.models import (
     AffiliateClick,
@@ -128,8 +128,7 @@ async def public_stay22_script_options(
     response.headers["Referrer-Policy"] = "no-referrer"
     await enforce_named_rate_limit(
         "stay22-script-options",
-        request.headers.get("x-travel-client-ip")
-        or (request.client.host if request.client else "unknown"),
+        client_ip(request),
         limit=60,
         window_seconds=60,
     )
@@ -622,8 +621,7 @@ async def hotel_clickout(
 ) -> RedirectResponse:
     await enforce_named_rate_limit(
         "hotel-direct-clickout",
-        request.headers.get("x-travel-client-ip")
-        or (request.client.host if request.client else "unknown"),
+        client_ip(request),
         limit=30,
         window_seconds=60,
     )
@@ -728,8 +726,7 @@ async def booking_option_clickout(
 
     await enforce_named_rate_limit(
         "hotel-options",
-        request.headers.get("x-travel-client-ip")
-        or (request.client.host if request.client else "unknown"),
+        client_ip(request),
         limit=60,
         window_seconds=60,
     )
@@ -857,8 +854,7 @@ async def hotel_quotes(
     response.headers["Cache-Control"] = "no-store"
     await enforce_named_rate_limit(
         "hotel-quotes",
-        request.headers.get("x-travel-client-ip")
-        or (request.client.host if request.client else "unknown"),
+        client_ip(request),
         limit=20,
         window_seconds=60,
     )
@@ -890,8 +886,7 @@ async def offer_clickout(
     # Both anonymous and signed-in clicks use a coarse placement code, never a user/trip id.
     await enforce_named_rate_limit(
         "service-clickout",
-        request.headers.get("x-travel-client-ip")
-        or (request.client.host if request.client else "unknown"),
+        client_ip(request),
         limit=120,
         window_seconds=60,
     )

@@ -1,4 +1,9 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
+const { incoming } = vi.hoisted(() => ({ incoming: vi.fn() }));
+// The loaders read the visitor's address out of the request so the API can meter reads
+// per source. Nothing here depends on the value; it just has to be readable.
+vi.mock("next/headers", () => ({ headers: incoming }));
+incoming.mockResolvedValue(new Headers({ "x-forwarded-for": "203.0.113.9" }));
 import { loadSitePage } from "./site-pages.server";
 import { sitePageLink } from "./site-pages";
 
@@ -13,7 +18,9 @@ describe("public site page loader", () => {
     const fetch = vi.fn().mockResolvedValue(new Response(JSON.stringify({ slug: "privacy", locale: "ja", status: "published", document })));
     vi.stubGlobal("fetch", fetch); vi.stubEnv("API_INTERNAL_URL", "http://api.test/");
     expect((await loadSitePage("privacy", "ja")).document?.title).toBe(document.title);
-    expect(fetch).toHaveBeenCalledWith("http://api.test/api/v1/site-pages/privacy?locale=ja", expect.objectContaining({ cache: "no-store", headers: { Accept: "application/json" }, signal: expect.any(AbortSignal) }));
+    // Matched exactly, not partially: the point of the case is what is absent. No cookie,
+    // no authorization -- only the locale and the address the read is metered against.
+    expect(fetch).toHaveBeenCalledWith("http://api.test/api/v1/site-pages/privacy?locale=ja", expect.objectContaining({ cache: "no-store", headers: { Accept: "application/json", "X-Travel-Locale": "ja", "X-Travel-Client-IP": "203.0.113.9" }, signal: expect.any(AbortSignal) }));
   });
   it.each([
     { slug: "privacy", locale: "en", status: "draft", document },

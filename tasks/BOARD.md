@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**36 open · 3 in progress · 3 blocked · 0 in review · 267 done**
+**39 open · 3 in progress · 3 blocked · 2 in review · 268 done**
 
 ## Ready to claim
 
@@ -14,7 +14,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
 | P1 | [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | docs | `apps/web/app/[locale]/privacy/page.tsx`<br>`apps/web/app/[locale]/terms/page.tsx`<br>`apps/web/app/[locale]/contact/page.tsx`<br>`apps/web/messages/en/navigation.json`<br>`apps/web/messages/ja/navigation.json`<br>`apps/web/messages/ko/navigation.json`<br>`apps/web/messages/zh-CN/navigation.json`<br>`apps/web/messages/zh-TW/navigation.json` |
-| P1 | [Mokaair community responsive web and five-language experience](open/2026-09-07-mokaair-community-web.md) | web | `apps/web/lib/api.ts`<br>`apps/web/lib/api.test.ts`<br>`apps/web/e2e/readability.spec.ts`<br>`apps/web/components/community`<br>`apps/web/app/[locale]/community`<br>`apps/web/app/[locale]/pet-friendly`<br>`apps/web/app/[locale]/my`<br>`apps/web/app/[locale]/explore`<br>`apps/web/app/[locale]/account/confirm`<br>`apps/web/app/[locale]/forgot-password`<br>`apps/web/app/[locale]/admin/community`<br>`apps/web/app/[locale]/admin/pet-friendly`<br>`apps/web/app/[locale]/page.tsx`<br>`apps/web/app/[locale]/layout.tsx`<br>`apps/web/app/[locale]/account/page.tsx`<br>`apps/web/app/api/travel`<br>`apps/web/lib/community`<br>`apps/web/messages`<br>`apps/web/i18n/request.ts`<br>`apps/web/components/site-navigation.tsx`<br>`apps/web/components/mobile-nav.tsx`<br>`apps/web/components/app-bottom-nav.tsx`<br>`apps/web/components/admin-nav.tsx`<br>`apps/web/components/header-session.tsx`<br>`apps/web/components/trip-editor.tsx`<br>`apps/web/e2e/community.spec.ts`<br>`apps/web/public/sw.js`<br>`README.md`<br>`apps/web/lib/csp.ts`<br>`apps/web/lib/csp.test.ts`<br>`apps/web/lib/ui-text.ts`<br>`apps/web/lib/ui-text.test.ts`<br>`apps/web/vitest.setup.tsx`<br>`apps/web/components/admin-nav.test.tsx` |
 | P1 | [Hotel platform options and quote readiness](open/2026-09-07-hotel-platform-options-and-quote-readiness.md) | api | `apps/api/tests/test_hotel_content_package.py`<br>`docs/hotel-platforms` |
 | P1 | [Revalidate community read resets against production-build CI](open/2026-09-08-community-ci-read-retry.md) | web | `apps/web/e2e/community.spec.ts` |
 | P1 | [Complete live Travelpayouts brand and destination offer verification](open/2026-09-08-travelpayouts-live-destination-activation.md) | ops | `docs/travel-services.md` |
@@ -33,6 +32,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [CatchTable 店家 id 有底線分段時存不了訂位連結](open/2026-09-11-catchtable-underscore-segment-id.md) | api | `apps/api/app/foods/platform_links.py`<br>`apps/api/tests/test_food_platform_links.py`<br>`apps/web/lib/reservation-platforms.ts`<br>`apps/web/lib/reservation-platforms.test.ts` |
 | P2 | [航班動態的查詢時間把 UTC 當成地方時顯示](open/2026-09-11-flight-status-checked-at-utc.md) | web | `apps/web/components/flight-anchor-card.tsx`<br>`apps/web/components/flight-anchor-card.test.tsx` |
 | P2 | [當日檢視要真的離線可用，需要預先快取 app shell](open/2026-09-11-offline-day-view-needs-an-app.md) | web | `apps/web/public/sw.js`<br>`apps/web/components/offline-trip-cache.tsx`<br>`apps/web/components/offline-trip-cache.test.tsx` |
+| P2 | [Re-add the Seoul National Folk Museum after its Wikidata QID was tombstoned](open/2026-09-12-re-add-the-seoul-national-folk.md) | ops | `docs/hotspot-review-next-batch.md` |
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | api | `apps/api/app/hotspots/areas.py`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [第二批購物店家：十五個沒有公開座標來源的候選](open/2026-09-06-shopping-seeds-second-batch.md) | api | `apps/api/app/hotspots/shopping_bootstrap.json`<br>`apps/api/app/hotspots/theme_bootstrap.json`<br>`apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_shopping_bootstrap.py` |
@@ -56,7 +56,10 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In review
 
-_Nothing here._
+| Task | Owner | Branch |
+| --- | --- | --- |
+| [公開讀取端點沒有任何速率上限，整站可被匿名爬走](open/2026-09-11-public-read-rate-limit.md) | claude-opus-5 | `claude/prevent-web-scraping-6xj3dg` |
+| [邊緣層沒有限流，轉送標頭也沒有人剝](open/2026-09-12-edge-rate-limit-and-header-hygiene.md) | claude-opus-5 | `claude/prevent-web-scraping-6xj3dg` |
 
 ## Waiting
 
@@ -67,11 +70,15 @@ _Nothing here._
 | P3 | [TourAPI（韓國觀光公社）可行性驗證：先確認拿得到金鑰、連得上、資料量夠不夠](open/2026-09-06-korea-tourism-tourapi-spike.md) | see the task notes |
 | P1 | [Contextual travel services and affiliate catalog](open/2026-09-07-contextual-travel-services.md) | active work in the same scope |
 | P1 | [Mokaair community foundation and account safety](open/2026-09-07-mokaair-community-foundation.md) | active work in the same scope |
+| P1 | [Mokaair community responsive web and five-language experience](open/2026-09-07-mokaair-community-web.md) | active work in the same scope |
 | P1 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | active work in the same scope |
+| P2 | [Sitemap lastmod should move when a guide translation is republished](open/2026-09-11-guide-lastmod-republication.md) | active work in the same scope |
 | P3 | [Lighthouse SEO 與效能門檻 workflow](open/2026-09-10-seo-lighthouse-workflow.md) | depends on 2026-09-10-seo-server-render-home-and-explore |
+| P3 | [A capitalised guide slug shows a fake outage instead of the article](open/2026-09-12-guide-slug-casing-shows-a-fake-outage.md) | active work in the same scope |
 
 ## Recently finished
 
+- 2026-09-12 [Carry the guides sitemap follow-ups into main](done/2026-09-12-guides-sitemap-followup.md)
 - 2026-09-12 [填入擁有者確認資訊，解鎖四個網站資訊頁](done/2026-09-12-site-page-requirements.md)
 - 2026-09-12 [從程式碼盤點個資處理，供擁有者填寫隱私權頁的確認資訊](done/2026-09-11-privacy-data-map.md)
 - 2026-09-11 [Wire /guides into the sitemap, footer and destination pages](done/2026-09-11-guides-sitemap-and-entry-points.md)
@@ -81,4 +88,3 @@ _Nothing here._
 - 2026-09-11 [取消或逾時搜尋時釋放已保留的次數](done/2026-09-11-release-reservation-on-cancel.md)
 - 2026-09-11 [店家座標佇列面板整個沒有 i18n](done/2026-09-11-merchant-coordinate-queue-i18n.md)
 - 2026-09-11 [formatTime 在沒有時間時回傳寫死的繁中](done/2026-09-11-format-time-chinese-fallback.md)
-- 2026-09-11 [安排編輯器的關閉鈕在儲存在途時被靜默吞掉](done/2026-09-11-planner-overlay-close-guard-race.md)
