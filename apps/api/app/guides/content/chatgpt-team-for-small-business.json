@@ -1,0 +1,350 @@
+{
+  "slug": "chatgpt-team-for-small-business",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "小公司要不要買 ChatGPT Business（原 Team）：資料不訓練、共用專案、集中管理",
+      "description": "小公司該每人各買 ChatGPT Plus，還是公司買 Business（原 Team）？依 OpenAI help center 2026 年 9 月的說明，講兩種座位、每人每月 25 美元（年繳 20 美元）、至少 2 個座位、預設不訓練與共用專案，再用三個問題給建議：一兩個人各買 Plus 並自己關訓練，三人以上又會貼客戶資料就買 Business。",
+      "hero": {
+        "src": "/guides/chatgpt-team-for-small-business/hero.jpg",
+        "alt": "米色底上一張圓形會議桌，桌面中央放著一個深綠色鎖頭，三個顏色不同的對話泡泡從三個方向圍著桌子，下方一行字「一張帳單，資料不訓練」",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "先講名字：OpenAI 在 2025 年 8 月 29 日把 ChatGPT Team 改名為 ChatGPT Business，help center 寫明這只是改名，功能、價格與上限都沒變，你在舊文章或同事口中聽到的 Team 方案就是現在的 Business。這篇只回答一個問題：台灣 3 到 30 人的小公司，例如設計工作室、代理商、會計事務所、電商小團隊或診所，該讓每個人各買每月 20 美元的 Plus，還是公司統一買 Business？依 help center 2026 年 9 月的說明，結論是：只要公司裡有人會把客戶資料貼進 ChatGPT，而且人數在三人以上，Business 預設不拿工作區資料訓練模型、加上集中付款與管理成員這兩件事，就值得每人每月多付 5 美元（年繳的話跟 Plus 同價）；只有一兩個人，各買 Plus 再自己關掉訓練設定就好。"
+        },
+        {
+          "type": "paragraph",
+          "text": "讀完你會知道 Business 的 Standard 與 Premium 座位差在哪、和 Plus 與 Enterprise 各差在哪，價格與至少 2 個座位的規則、台灣公司怎麼付款與統一編號怎麼處理，工作區裡誰看得到誰的對話、管理員能設什麼與不能設什麼，共用專案、自製 GPT 與連接器怎麼運作，邀請與移除成員、員工離職時對話與檔案會怎樣，最後用三個問題與一張表幫你決定，並點名幾個替代方案。方案階梯與 Pro 的細節在同系列的方案篇，這篇不重複整張方案表。"
+        },
+        {
+          "type": "heading",
+          "text": "Business 是什麼：和 Plus、Enterprise 差在哪",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPT Business 是一個自助訂閱的「工作區」（workspace）方案：公司開一個工作區、買幾個座位、把同事邀進來，帳單集中在一張卡上，由工作區的擁有者（Owner）與管理員（Admin）管成員與設定。座位分兩種：Standard 座位包含 ChatGPT、ChatGPT Work 與 Codex，官網給的 Codex 每 5 小時訊息估計值與 Plus 相同，另外每月含 15 則 Pro 訊息（GPT-6 Pro 與 GPT-5.6 Sol Pro 共用）；Premium 座位的用量是 Standard 的 5 倍、沒有 5 小時的短期上限，每週含 50 則 Pro 訊息。兩種座位可以混搭，重度使用的人給 Premium、其他人 Standard，擁有者隨時可以把座位換給別人。用量用完可以由擁有者買整個工作區共用的 credits 加購，有效期 12 個月。"
+        },
+        {
+          "type": "paragraph",
+          "text": "和 Plus 的差別不在模型，而在三件事：資料預設不拿去訓練、共用（專案與連接器可以分享給同事）、管理（集中帳單、成員與角色、SSO 與網域驗證）。和 Enterprise 的差別則是 Enterprise 要找 OpenAI 業務簽約、沒有公開價格，多了 SCIM 自動開帳號、可自訂的資料保留期限（例如 90 天或 180 天）、合規 API 與稽核紀錄、依角色細分權限（RBAC）、資料存放地區、發票與匯款付款，也才能在整個工作區關掉分享連結；help center 直接寫，座位超過 200 個或需要這些條件的公司才看 Enterprise。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT Plus、Pro 與其他方案差在哪：2026 年怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-plans-plus-pro-2026"
+        },
+        {
+          "type": "heading",
+          "text": "價格、最少座位與怎麼付款",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "價格一句話：Standard 座位每人每月 25 美元、年繳每人每月 20 美元，Premium 座位月繳 125 美元、年繳 100 美元，整張方案表與 Plus、Pro 的價格在方案篇。要注意的是規則：一個工作區至少要買 2 個座位（1 個 Standard 加 1 個 Premium 也算），2026 年 8 月 24 日起最多 200 個；每個計費週期開始時會收全部座位的錢，不管有沒有指派給人；加座位立刻生效並按剩餘天數比例收費，減座位要等下一個週期才生效，沒用到的座位不退款；月繳與年繳可以互換，但要到下一次續約日才生效。"
+        },
+        {
+          "type": "paragraph",
+          "text": "付款方式只有信用卡與簽帳金融卡，help center 寫明自助訂閱的 Business 不提供發票付款、匯款、採購單與月結，要這些得簽 Enterprise。稅的部分：2025 年 5 月 1 日起，帳號裡沒有填台灣統一編號的使用者會被加收 5% 營業稅；Business 的帳單說明頁寫明結帳時自行勾選為公司並填入 Tax ID（統一編號），這筆與之後的帳單就免收 VAT。被收 5% 的訂單會由 noreply@tax.openai.com 寄電子發票（eGUI）；填了統編、免收 5% 的訂單拿到的是 OpenAI 的帳單，能不能當公司憑證請問你的會計師。幣別：help center 的多幣別計費頁把台幣列在支援清單裡，但 Business 的台幣價格官網沒有寫，以結帳頁顯示的幣別與金額為準。"
+        },
+        {
+          "type": "heading",
+          "text": "資料：預設不訓練，誰看得到什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這是 Business 最核心的賣點。help center 寫明 Business 的工作區資料預設不用來訓練模型，傳輸與儲存都加密，適用 Business Terms 與 Enterprise Privacy 的承諾；記憶、專案與連接器讀到的內容也一樣不訓練。相對地，Free、Go、Plus、Pro 這些個人方案預設會用你的對話訓練，得自己到個人頭像 → Settings → Data Controls 關掉「Improve the model for everyone」。差別在於：個人方案是每個人各自負責、老闆看不到誰關了誰沒關；Business 是整個工作區一開始就不訓練，不用靠每個員工記得。"
+        },
+        {
+          "type": "paragraph",
+          "text": "工作區裡誰看得到誰的對話？help center 的答案是：每個成員有自己的對話與 Codex 紀錄，其他成員、管理員與擁有者預設都看不到；用量分析只看得到用了多少、花了多少 credits，看不到對話內容。成員要分享對話得自己產生分享連結，而且連結只有同一個工作區的人打得開，外人點了會被導回首頁。管理員能控制的是功能：可以整個工作區關掉記憶（關掉會刪掉成員已存的記憶）、關掉某個 App 或連接器。不能設定的也要說清楚：Business 不能設資料保留期限（對話與檔案預設無限期保留，自訂保留期是 Enterprise 才有）、不能整個工作區禁用分享連結、也沒有資料匯出功能，這點跟個人帳號可以匯出全部對話不同。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        },
+        {
+          "type": "heading",
+          "text": "共用：專案、自製 GPT 與連接器",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "共用專案是小公司最有感的功能。專案是把指令、檔案與多個對話收在一起的資料夾，個人方案也能分享但人數有限（Plus 最多 10 位協作者）；Business 可以用 Email、群組或工作區連結邀同事，分成「可編輯」與「只能對話」兩種權限，一個專案最多 40 個檔案、最多 100 個人加入。分享出去的專案會自動改成只用專案內的記憶，不會讀到任何成員專案外的對話。例如會計事務所開一個「客戶問答範本」專案，把常用提示詞寫進專案指令、把公版文件放進檔案，新同事加入就直接用同一套。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自製 GPT 要看兩件事。第一，個人帳號已經不能建立或發布新的 GPT，Business 工作區的成員可以建，還能只分享給工作區內的人；第二，OpenAI 已預告自製 GPT 會退場、改由 Plugins 接手，Enterprise 工作區預定 2026 年 12 月 11 日退場，搬遷工具預定 2026 年 9 月 17 日推出，help center 寫其他方案預計比照同一時程。所以不要為了共用 GPT 買 Business，要共用同一套指令與檔案，用共用專案就好。連接器（官網現在叫 Apps）在 Business 預設全部開啟：Google Drive、SharePoint 與 OneDrive、Slack、Gmail、Notion、GitHub、HubSpot 等，成員各自用自己的帳號連，只讀得到自己本來就有權限的檔案；管理員可以在 Workspace settings → Apps 關掉個別 App、限制能做的動作、限制只能用公司網域的帳號連。Business 另外有 Company Knowledge（公司知識）外掛，能跨連接的 App 找答案並附上來源。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT Projects：把檔案、指令與對話收在一個工作區",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-projects-guide"
+        },
+        {
+          "type": "link",
+          "text": "自製 GPT：不用寫程式做出自己的專用助手（2026 年誰能建、怎麼替代）",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-custom-gpts-build"
+        },
+        {
+          "type": "heading",
+          "text": "管理：邀請、移除、離職與 SSO",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "角色有四種：Owner（擁有者）管帳單、座位、身分與所有設定；Admin（管理員）管邀請與成員；Analytics viewer 只看用量分析；Member 只用 ChatGPT。只有擁有者能買座位、換座位類型、改別人的角色。",
+            "邀請：Workspace settings → Members → Invite member，輸入 Email 或上傳 CSV，選角色與座位類型；邀請不會先扣座位，對方接受時才檢查有沒有空位。一般成員也可以邀別人進來，目前無法禁止，管理員只能在 Pending invites 取消。工作區探索（workspace discovery）在 Business 預設開啟，用公司網域信箱註冊的人可以找到你的工作區並申請加入，擁有者核准才進得來；不想被找到就到 Identity & access 關掉。",
+            "移除與離職：Workspace settings → Members → 該成員的「•••」→ Remove member，對方立刻失去存取。Business 工作區會無限期保留他的對話、檔案與 canvas 文件，再邀回來就能恢復；他的專案與 GPT 會轉給一位擁有者，但只轉所有權，他建立的對話與檔案擁有者看不到。空出來的座位可以指派給新同事，付費座位數不會自動減少，不需要就到 Manage seats 排程減座位。",
+            "員工本來就有 Plus：用公司信箱加入 Business 時可以選「保留個人工作區」（Plus 照付、對話留在個人工作區，隨時切換）或「合併進 Business」（Plus 自動取消並按比例退款，App 內購的要自己取消；合併不可逆，自訂指令不會搬過去）。help center 寫明 Business 的管理員不能強制員工合併或刪除個人工作區。",
+            "SSO 與網域驗證：Business 含 SAML 與 OIDC 的單一登入與網域驗證，擁有者在 Workspace settings → Identity & access 設定，Okta、Microsoft Entra ID 或自訂 SAML 都能接；多重驗證（MFA）在身分提供者那邊設。沒有 SCIM 自動同步帳號，那是 Enterprise 的。要邀外部網域的接案夥伴，先打開 Allow External Domain Invites。",
+            "帳單與取消：只有擁有者能在 Workspace settings → Billing 看發票、換卡、改月繳年繳、取消方案。取消或扣款失敗後，工作區會在該計費週期結束後停用，資料留著但沒人能用，擁有者付清就能重新啟用；整個工作區刪除才會連資料與記憶一起刪。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "heading",
+          "text": "三個問題決定：要不要買、幾人才划算、要不要等",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一個問題：有沒有人會把客戶資料貼進去？合約、報價、病歷摘要、客戶名單、財報，只要有一個人會貼，就要靠制度而不是靠記得關設定。個人方案關訓練是每個人自己的事，公司無從確認；Business 是整個工作區預設不訓練，加上對話彼此看不到、分享連結出不了工作區，出事時至少說得清楚公司做了什麼。會貼客戶資料而且人數在三人以上，這一題就已經指向 Business。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二個問題：要不要共用同一套指令與檔案？如果同事各做各的、只是拿 ChatGPT 改信、查資料，各買 Plus 沒有損失；如果你希望新人一進來就用公司統一的提示詞、公版文件與客戶問答，共用專案會省下很多口頭交接，Business 一個專案最多 100 人、40 個檔案，這是個人方案分享專案做不到的規模。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三個問題：要不要有人能管帳號與帳單？各買 Plus 意味著每個人一張卡、一封收據、各自記得續訂與取消，員工離職時你也拿不回任何東西；Business 是一張卡、一張帳單，離職當天移除成員，座位轉給下一個人。算法很簡單：Plus 每人每月 20 美元，Business Standard 月繳 25 美元、年繳 20 美元，所以年繳的 Business 和各買 Plus 同價，月繳每人每月多 5 美元；5 個人月繳一年多 300 美元，換到的是不訓練、共用與管理。真正不划算的是一個人：Business 至少要 2 個座位，一個人月繳要付 50 美元，是 Plus 的 2.5 倍。要不要等？改名已經完成、Standard 與 Premium 座位制也上線了，沒有已公告的變動值得等；唯一在變的是自製 GPT 的退場時程，但那不影響共用專案。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/chatgpt-team-for-small-business/diagram-1.svg",
+          "alt": "左半是 Plus、Business、Enterprise 三張卡片，各列資料、共用、管理三行要點；右半是三個問題的決策流程，答是就買 Business，全部答否就各買 Plus 並自己關掉訓練。",
+          "width": 1600,
+          "height": 900,
+          "caption": "左邊由上到下是三階方案各自在資料、共用、管理三件事上的差別；右邊照順序回答三個問題，任何一題答「是」就走到 Business，三題都「否」就各買 Plus。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "三人以上、會貼客戶資料的公司，Business 值回票價",
+          "text": "三人以上、會把客戶資料貼進去的公司，Business 的預設不訓練與集中管理就值回票價：年繳每人每月 20 美元跟 Plus 同價，月繳也只多 5 美元。一兩個人就各買 Plus，並且立刻到 Settings → Data Controls 關掉「Improve the model for everyone」；一個人買 Business 得付 2 個座位的錢，沒有意義。"
+        },
+        {
+          "type": "heading",
+          "text": "替代方案",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "每人 Plus 加各自關訓練：適合一兩個人，或彼此不需要共用的團隊。缺點是靠每個人自律、老闆看不到誰關了設定、離職時對話全部跟著人走；分享專案最多 10 人，也沒有工作區內限定的分享連結。",
+            "Google Workspace 的 Gemini：公司已經在用 Google Workspace 的 Business 或 Enterprise 方案，Gemini 已經包含在訂閱裡，適合本來就在 Gmail、Docs 與 Drive 裡工作的團隊；功能與價格以 Google 官網為準。",
+            "Claude 的 Team 方案：Anthropic 給團隊用的方案，同樣是工作區加座位的模式；這篇不比價，以 Anthropic 官網為準。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
+          "url": "https://mokaair.com/zh-TW/life/ai-free-vs-paid-plans-2026"
+        },
+        {
+          "type": "table",
+          "header": [
+            "面向",
+            "Plus",
+            "Business（原 Team）",
+            "Enterprise"
+          ],
+          "rows": [
+            [
+              "價格（美元）",
+              "每人每月 20，只有月繳",
+              "Standard 每人每月 25、年繳 20；Premium 125、年繳 100",
+              "聯絡業務，沒有公開價格"
+            ],
+            [
+              "最少與最多人數",
+              "1 人",
+              "至少 2 個座位，最多 200 個",
+              "超過 200 個座位找這裡"
+            ],
+            [
+              "資料訓練預設",
+              "預設會訓練，要自己關 Improve the model for everyone",
+              "工作區預設不訓練",
+              "預設不訓練，可設保留期限與資料存放地區"
+            ],
+            [
+              "誰看得到對話",
+              "只有自己",
+              "只有自己；管理員看不到，分享連結限工作區內",
+              "只有自己；管理員可用合規 API 匯出、可禁用分享連結"
+            ],
+            [
+              "共用",
+              "專案可分享最多 10 人；不能建新 GPT",
+              "共用專案最多 100 人、40 個檔案；可建 GPT（退場中）；連接器預設開啟",
+              "同 Business，加 RBAC 細分誰能用什麼"
+            ],
+            [
+              "管理",
+              "各自刷卡、各自收據",
+              "一張帳單；邀請與移除成員；SAML／OIDC SSO、網域驗證",
+              "加 SCIM、稽核紀錄、使用者分析"
+            ],
+            [
+              "付款",
+              "信用卡或 App 內購",
+              "信用卡與簽帳金融卡；填統編免 5% 營業稅",
+              "發票、匯款、採購單、月結"
+            ],
+            [
+              "適合誰",
+              "一兩個人；不共用",
+              "3 到 30 人、會貼客戶資料、要有人管帳號的公司",
+              "人數多、有法遵或 IT 政策要求的公司"
+            ]
+          ],
+          "caption": "2026 年 9 月依 OpenAI help center 整理；價格為官網美元定價，台灣結帳幣別與金額以登入後的結帳頁為準。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 分享連結的隱私：誰看得到、怎麼取消",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-shared-links-privacy"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI Help Center：ChatGPT Business - Overview（Standard 與 Premium 座位、月繳 25／年繳 20 美元、Premium 125／100 美元、至少 2 個座位、預設不訓練、Team 於 2025 年 8 月 29 日改名、自助方案不提供發票與匯款付款）",
+          "url": "https://help.openai.com/en/articles/8792828-what-is-chatgpt-business",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Business Rename FAQ（2025 年 8 月 29 日 Team 改名 Business，功能、價格、上限與安全性不變）",
+          "url": "https://help.openai.com/en/articles/12111915-chatgpt-business-rename-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Managing billing and seats in ChatGPT Business（只收信用卡與簽帳金融卡、加座位立即按比例收費、減座位下期生效、未用座位不退、月繳年繳互換於續約生效、填 Tax ID 免 VAT、2026 年 8 月 24 日起上限 200 席、移除成員不減座位）",
+          "url": "https://help.openai.com/en/articles/8792536-managing-billing-and-seats-in-chatgpt-business",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Business: General FAQ（四種角色、成員可邀人且無法禁止、無資料匯出、管理員預設看不到成員對話、停用後資料保留、Business 之間不能合併）",
+          "url": "https://help.openai.com/en/articles/8542115-chatgpt-business-general-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Managing data, sharing, and privacy in ChatGPT Business（預設不訓練、加密、每人有自己的對話紀錄、用量分析不含對話內容、分享連結限同工作區、不能整個工作區禁用分享連結、無資料匯出）",
+          "url": "https://help.openai.com/en/articles/8798634-managing-data-sharing-and-privacy-in-chatgpt-business",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Managing members, seat types, and roles in ChatGPT Business（Owner／Admin／Analytics viewer／Member 權限表、Invite member 與 CSV、Pending invites、Remove member、工作區探索預設開啟、預設座位類型）",
+          "url": "https://help.openai.com/en/articles/8542216-managing-members-seat-types-and-roles-in-chatgpt-business",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Managing workspace lifecycle and migration in ChatGPT Business（保留或合併個人工作區、Plus 自動取消退款但 App 內購除外、合併不可逆且自訂指令不搬、離開工作區、停用與重新啟用）",
+          "url": "https://help.openai.com/en/articles/8801890-managing-workspace-lifecycle-and-migration-in-chatgpt-business",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Data retention when a member is removed from a workspace（Business 無限期保留對話、檔案與 canvas，再邀回即恢復；專案與 GPT 轉給擁有者但對話與檔案不轉；Enterprise 可設 90 天、180 天等期限）",
+          "url": "https://help.openai.com/en/articles/8266418-data-retention-when-a-member-is-removed-from-a-workspace",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Setting up single sign-on (SSO) for ChatGPT Business（Business 含 SAML 與 OIDC SSO 及網域驗證、Identity & access 設定、MFA 在身分提供者設定、無 SCIM、Allow External Domain Invites、管理員不能強制合併個人工作區）",
+          "url": "https://help.openai.com/en/articles/11489188-sso-for-chatgpt-business-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Business models and limits（Standard 每月 15 則、Premium 每週 50 則 Pro 訊息、Premium 為 Standard 的 5 倍且無 5 小時上限、Codex 每 5 小時訊息估計值）",
+          "url": "https://help.openai.com/en/articles/12003714-chatgpt-business-models-limits",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Projects in ChatGPT（Business 可用 Email、群組或工作區連結分享專案、可編輯與只能對話兩種權限、每個工作區專案最多 100 人與 40 個檔案、Plus 最多 10 位協作者、共用專案自動改為專案限定記憶、Business 專案資料不訓練）",
+          "url": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Sharing and publishing GPTs（個人帳號不能建立或發布新 GPT、工作區內分享層級、自製 GPT 退場改用 Plugins、Enterprise 預定 2026 年 12 月 11 日、搬遷工具預定 2026 年 9 月 17 日、其他方案預計比照）",
+          "url": "https://help.openai.com/en/articles/8798878-sharing-and-publishing-gpts",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Apps in ChatGPT（Business 預設開啟所有 App、管理員可停用個別 App、限制動作與登入網域、成員從 Settings 自行連接、Business 連接器內容不訓練）",
+          "url": "https://help.openai.com/en/articles/11487775-connectors-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Company knowledge in ChatGPT（Business、Enterprise、Edu 可用；跨連接的 App 找答案並附來源；只讀得到使用者本來有權限的內容）",
+          "url": "https://help.openai.com/en/articles/12628342-company-knowledge-in-chatgpt-business-enterprise-and-edu",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：What is ChatGPT Enterprise?（聯絡業務購買、網域驗證、SSO、SCIM、使用者分析、RBAC、個人方案遷入時自動取消並按比例退款）",
+          "url": "https://help.openai.com/en/articles/8265053-what-is-chatgpt-enterprise",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Flexible pricing for the Enterprise, Edu, and Business plans（Business 由擁有者在 Settings → Billing 買 credits、全工作區共用、有效期 12 個月、用量告警）",
+          "url": "https://help.openai.com/en/articles/11487671-flexible-pricing-for-the-enterprise-edu-and-business-plans",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Memory FAQ (Business Version)（記憶不訓練、擁有者可整個工作區關閉記憶且會刪除既有記憶、停用不刪資料、刪除工作區才刪）",
+          "url": "https://help.openai.com/en/articles/9295112-memory-faq-business-version",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Taiwan VAT and eGUI（2025 年 5 月 1 日起未填台灣統一編號者加收 5% 營業稅、電子發票由 noreply@tax.openai.com 寄出）",
+          "url": "https://help.openai.com/en/articles/11173733-taiwan-vat-and-egui",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Multi-currency billing（支援幣別清單含 TWD 台灣、所有國家收信用卡與簽帳金融卡、Business 不支援 UPI、換幣別需取消後重訂）",
+          "url": "https://help.openai.com/en/articles/10421635-multicurrency-billing",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：How your data is used to improve model performance（個人方案預設可用於訓練，需在 Settings → Data Controls 關閉 Improve the model for everyone；Business、Enterprise 與 API 預設不訓練）",
+          "url": "https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}
