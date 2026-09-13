@@ -1,13 +1,13 @@
 ---
 id: 2026-09-10-seo-server-render-home-and-explore
 title: 首頁與 explore 要在伺服器端渲染出真正的內容
-status: review
+status: done
 priority: P1
 area: web
 owner: claude-opus-5-seo
 claimed_at: 2026-09-13T15:10:18Z
 created_at: 2026-09-10T16:49:04Z
-completed_at:
+completed_at: 2026-09-13T22:53:43Z
 branch: claude/explore-server-render
 depends_on:
   - 2026-09-09-frontend-flow-discovery-web
