@@ -5,10 +5,17 @@ import { locales } from "@/i18n/routing";
 import { siteUrl } from "@/lib/seo";
 import { closedSiteVisibility, openSiteVisibility } from "@/lib/site-features";
 import { guideSitemapEntries, type GuideSitemapEntry } from "@/lib/guides.server";
+import { getDiscoveryStatus } from "@/lib/discovery-status.server";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
 import sitemap, { dynamic, SITEMAP_ROUTES } from "./sitemap";
 
 vi.mock("@/lib/site-visibility.server", () => ({ getSiteVisibility: vi.fn() }));
+// Discovery is off in production, so that is the default here too: /explore is the one route
+// listed behind it, and every count below is of the routes that do not depend on it.
+vi.mock("@/lib/discovery-status.server", () => ({ getDiscoveryStatus: vi.fn() }));
+
+/** The routes listed whatever the discovery switch says. */
+const STATIC_ROUTES = SITEMAP_ROUTES.filter((route) => !route.discovery);
 // Defaulting to an unreadable enumeration is what keeps every assertion below about the
 // static routes exactly as it was, including the whole-array comparison: with no complete
 // publication picture every section hub stays listed in all five languages. The guide cases
@@ -51,6 +58,7 @@ describe("sitemap", () => {
   beforeEach(async () => {
     vi.mocked(getSiteVisibility).mockReset().mockResolvedValue({ status: "ready", features: openSiteVisibility });
     vi.mocked(guideSitemapEntries).mockReset().mockResolvedValue({ entries: [], complete: false });
+    vi.mocked(getDiscoveryStatus).mockReset().mockResolvedValue({ enabled: false });
     entries = await sitemap();
   });
 
@@ -79,14 +87,27 @@ describe("sitemap", () => {
     // Even a stale open feature set must not make an unavailable state indexable.
     vi.mocked(getSiteVisibility).mockResolvedValue({ status, features: status === "unavailable" ? openSiteVisibility : closedSiteVisibility });
     const closed = await sitemap();
-    const expectedPaths = SITEMAP_ROUTES.filter((route) => !route.feature).map((route) => route.path);
+    const expectedPaths = STATIC_ROUTES.filter((route) => !route.feature).map((route) => route.path);
     expect(closed.map((entry) => entry.url)).toEqual(expectedPaths.flatMap((path) => locales.map((locale) => `${siteUrl}/${locale}${path === "/" ? "" : path}`)));
     expect(closed.map((entry) => entry.url)).toContain(`${siteUrl}/en/foods`);
     expect(closed.map((entry) => entry.url)).toContain(`${siteUrl}/en/destinations/tokyo`);
   });
 
   it("publishes one entry per locale per route", () => {
-    expect(entries).toHaveLength(SITEMAP_ROUTES.length * locales.length);
+    expect(entries).toHaveLength(STATIC_ROUTES.length * locales.length);
+  });
+
+  it("lists /explore only while discovery is on, and never its saved-items workspace", async () => {
+    // With the switch off the route falls back to a grid of links to pages already listed
+    // here. With it on it server-renders the feed's first page, which is its own content.
+    for (const locale of locales) expect(entries.map((entry) => entry.url)).not.toContain(`${siteUrl}/${locale}/explore`);
+    vi.mocked(getDiscoveryStatus).mockResolvedValue({ enabled: true });
+    const open = await sitemap();
+    expect(open).toHaveLength(entries.length + locales.length);
+    for (const locale of locales) expect(open.map((entry) => entry.url)).toContain(`${siteUrl}/${locale}/explore`);
+    // /explore/collections is every reader's own saved items behind a sign-in prompt. It is
+    // not thin content waiting for server rendering; it is a member page.
+    expect(open.map((entry) => entry.url)).not.toContain(`${siteUrl}/en/explore/collections`);
   });
 
   it("has no duplicate URLs", () => {
@@ -137,7 +158,7 @@ describe("sitemap", () => {
     // Managed documents are noindex until published; explore, pet-friendly and community send an
     // empty shell. Listing any of them would only collect "Excluded by noindex".
     const paths = SITEMAP_ROUTES.map((route) => route.path);
-    for (const path of ["/about", "/privacy", "/terms", "/contact", "/explore", "/explore/collections", "/pet-friendly"]) {
+    for (const path of ["/about", "/privacy", "/terms", "/contact", "/explore/collections", "/pet-friendly"]) {
       expect(paths).not.toContain(path);
     }
   });
@@ -172,6 +193,7 @@ describe("guide articles in the sitemap", () => {
   async function build(entries = rows, complete = false) {
     vi.mocked(getSiteVisibility).mockReset().mockResolvedValue({ status: "ready", features: openSiteVisibility });
     vi.mocked(guideSitemapEntries).mockReset().mockResolvedValue({ entries, complete });
+    vi.mocked(getDiscoveryStatus).mockReset().mockResolvedValue({ enabled: false });
     return sitemap();
   }
 
@@ -252,12 +274,12 @@ describe("guide articles in the sitemap", () => {
     // assertion cannot fail and the property it names goes unchecked.
     const urls = (await build([...rows, rows[0]])).map((entry) => entry.url);
     expect(new Set(urls).size).toBe(urls.length);
-    expect(urls).toHaveLength(SITEMAP_ROUTES.length * locales.length + rows.length);
+    expect(urls).toHaveLength(STATIC_ROUTES.length * locales.length + rows.length);
   });
 
   it("keeps the static sitemap intact when the guides API is unreachable", async () => {
     const fallback = await build([]);
-    expect(fallback.length).toBe(SITEMAP_ROUTES.length * locales.length);
+    expect(fallback.length).toBe(STATIC_ROUTES.length * locales.length);
     expect(guideEntries(fallback)).toEqual([]);
   });
 
@@ -301,6 +323,7 @@ describe("section hubs in a language with nothing published", () => {
   async function build(entries: GuideSitemapEntry[], complete: boolean) {
     vi.mocked(getSiteVisibility).mockReset().mockResolvedValue({ status: "ready", features: openSiteVisibility });
     vi.mocked(guideSitemapEntries).mockReset().mockResolvedValue({ entries, complete });
+    vi.mocked(getDiscoveryStatus).mockReset().mockResolvedValue({ enabled: false });
     return (await sitemap()).map((entry) => entry.url);
   }
 
@@ -331,6 +354,7 @@ describe("section hubs in a language with nothing published", () => {
   it("advertises only the languages a hub is listed in, and x-default only with English", async () => {
     vi.mocked(getSiteVisibility).mockReset().mockResolvedValue({ status: "ready", features: openSiteVisibility });
     vi.mocked(guideSitemapEntries).mockReset().mockResolvedValue({ entries: zhOnly, complete: true });
+    vi.mocked(getDiscoveryStatus).mockReset().mockResolvedValue({ enabled: false });
     const all = await sitemap();
     const hub = all.find((entry) => entry.url === `${siteUrl}/zh-TW/guides/intel`);
     // Pointing hreflang at /en/guides/intel would advertise the page this file just refused
