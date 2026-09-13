@@ -475,6 +475,93 @@ def area_labels(profile: DestinationProfile, locale: Locale) -> list[str]:
     return labels
 
 
+def city_words(destination_id: str | None, locale: Locale, fallback: str) -> tuple[str, ...]:
+    """The city as separate words: 「大阪／京都」 is two cities and a search wants both."""
+    return tuple(_area_segments(city_name_for(destination_id, locale, fallback)))
+
+
+def _build_country_names() -> dict[str, tuple[str, ...]]:
+    """Each catalog country with the words that name it: itself and its cities, ×5 locales."""
+    names: dict[str, list[str]] = {}
+    for profile in DESTINATIONS:
+        words = names.setdefault(profile.country, [])
+        for locale in LOCALES:
+            city = _area_segments(city_name(profile, locale))
+            for word in (country_label(profile, locale), *city):
+                if word and word not in words:
+                    words.append(word)
+    return {country: tuple(words) for country, words in names.items()}
+
+
+def _build_country_hints() -> dict[str, tuple[str, ...]]:
+    """The naming words plus the catalog's aliases: anything that points at a country.
+
+    Aliases are wider and more ambiguous than names — regions (北海道), old names (西貢,
+    which is also a district of Hong Kong), airport codes. A wrong hint only ever withholds
+    a conclusion, so the ambiguity is safe here and would not be safe among the names.
+    """
+    hints: dict[str, list[str]] = {
+        country: list(words) for country, words in COUNTRY_TERMS.items()
+    }
+    for profile in DESTINATIONS:
+        words = hints.setdefault(profile.country, [])
+        for word in profile.aliases:
+            if word and word not in words:
+                words.append(word)
+    return {country: tuple(words) for country, words in hints.items()}
+
+
+COUNTRY_TERMS: Final[Mapping[str, tuple[str, ...]]] = _build_country_names()
+COUNTRY_HINTS: Final[Mapping[str, tuple[str, ...]]] = _build_country_hints()
+
+# A Latin name must not be found inside a longer word, and the capital letter is part of
+# the evidence: Vietnam's Huế is written "Hue" in English, which is also an ordinary noun.
+_LATIN: Final[re.Pattern[str]] = re.compile(r"[A-Za-z]")
+# 臺 and 台 are the same character to a reader: the tourism bureau writes 臺灣 and 臺南,
+# the catalog and most travel writing write 台灣 and 台南. Neither spelling may hide a
+# place from the other.
+_VARIANTS: Final[Mapping[str, str]] = {"臺": "台"}
+
+
+def _normalize(text: str) -> str:
+    return "".join(_VARIANTS.get(character, character) for character in text)
+
+
+def _mentions(text: str, term: str) -> bool:
+    if not _LATIN.search(term):
+        return _normalize(term) in _normalize(text)
+    return re.search(rf"(?<![A-Za-z]){re.escape(term)}(?![A-Za-z])", text) is not None
+
+
+def mentions_place(text: str, term: str) -> bool:
+    """Whether ``text`` writes this place name, either 臺 or 台 spelling counting for both."""
+    return bool(term) and _mentions(text, term)
+
+
+def country_mentions(text: str) -> dict[str, str]:
+    """Every catalog country ``text`` names, mapped to the word that named it.
+
+    A search result never says which language it is written in, so all five locales count
+    at once: 「台灣」, 「台湾」, "Taiwan" and "대만" all name Taiwan, and so does 「台北」.
+    Catalog order decides which word is reported for a country named more than once.
+    """
+    found: dict[str, str] = {}
+    for country, terms in COUNTRY_TERMS.items():
+        for term in terms:
+            if _mentions(text, term):
+                found[country] = term
+                break
+    return found
+
+
+def mentions_country(text: str, country: str) -> bool:
+    """Whether anything in ``text`` points at this country, aliases and regions included.
+
+    「北海道小樽手宮公園」 never writes 札幌 or 日本, and it is still Japan.
+    """
+    return any(_mentions(text, term) for term in COUNTRY_HINTS.get(country, ()))
+
+
 def validate_localized_catalog() -> list[str]:
     """Every destination and country has every locale; run by the tests."""
     problems: list[str] = []

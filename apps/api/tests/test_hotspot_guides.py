@@ -21,6 +21,8 @@ from app.hotspots.guides import (
     classify_content_locale,
     consume_search_budget,
     describe_provider_error,
+    foreign_place,
+    guide_search_query,
     guideless_hotspots_statement,
     stale_youtube_guides_delete,
     upsert_guide,
@@ -737,3 +739,76 @@ def test_the_guide_backlog_worker_is_configurable_from_the_admin_page() -> None:
         Settings(), [ProviderConfig(provider="hotspot_guides", enabled=False, config={})]
     )
     assert off.hotspot_guides_enabled is False
+
+
+def _hotspot_in(
+    name: str, *, city: str, country: str, country_code: str, destination_id: str
+) -> TravelHotspot:
+    return TravelHotspot(
+        id=uuid4(),
+        slug=name,
+        name=name,
+        city_code=country_code,
+        destination_id=destination_id,
+        city_name=city,
+        country_code=country_code,
+        country_name=country,
+        category="culture",
+        search_text=name,
+    )
+
+
+def _ngoc_son() -> TravelHotspot:
+    return _hotspot_in(
+        "玉山祠", city="河內", country="越南", country_code="VN", destination_id="hanoi"
+    )
+
+
+def test_guide_search_query_says_which_city_and_country_it_means() -> None:
+    ngoc_son = _ngoc_son()
+    assert guide_search_query(ngoc_son, "玉山祠", "zh-TW") == "玉山祠 河內 越南 旅遊 景點 部落格"
+    assert guide_search_query(ngoc_son, "Ngoc Son Temple", "en") == (
+        "Ngoc Son Temple Hanoi Vietnam travel guide things to do"
+    )
+    kiyomizu = _hotspot_in(
+        "清水寺", city="大阪／京都", country="日本", country_code="JP", destination_id="osaka-kyoto"
+    )
+    assert guide_search_query(kiyomizu, "Kiyomizu-dera", "en") == (
+        "Kiyomizu-dera Osaka Kyoto Japan travel guide things to do"
+    )
+    # 「大阪城」 already carries its city, so the destination's other half stays out.
+    osaka_castle = _hotspot_in(
+        "大阪城", city="大阪／京都", country="日本", country_code="JP", destination_id="osaka-kyoto"
+    )
+    assert guide_search_query(osaka_castle, "大阪城", "zh-TW") == "大阪城 日本 旅遊 景點 部落格"
+
+
+def test_foreign_place_names_the_country_a_candidate_is_really_about() -> None:
+    ngoc_son = _ngoc_son()
+    # 玉山祠 is Hanoi's Ngọc Sơn temple; 玉山 is Taiwan's highest mountain, and the bare
+    # name collected the tourism bureau's page about it.
+    assert (
+        foreign_place(
+            "玉山山脈 > 交通部觀光署 位於南臺灣的中央山脈西側，臺灣南投縣水里鄉", ngoc_son
+        )
+        == "台灣"
+    )
+    assert foreign_place("玉山祠｜還劍湖上的文昌帝君廟", ngoc_son) is None
+    # Naming no country at all is not evidence of the wrong one.
+    assert foreign_place("還劍湖旅遊指南｜熱門景點資訊、交通地圖", ngoc_son) is None
+    # The search term the row was found with counts as this attraction.
+    assert (
+        foreign_place(
+            "台灣人也推薦的 Ngoc Son Temple", ngoc_son, own_terms=["Ngoc Son Temple"]
+        )
+        is None
+    )
+    maruyama = _hotspot_in(
+        "圓山公園", city="札幌", country="日本", country_code="JP", destination_id="sapporo"
+    )
+    assert foreign_place("圓山自然景觀公園｜花博文化遺跡，台北散步景點", maruyama) == "台北"
+    # Another city of the same country is not another country.
+    yokohama = _hotspot_in(
+        "紅磚倉庫", city="橫濱", country="日本", country_code="JP", destination_id="yokohama"
+    )
+    assert foreign_place("東京から日帰りで行ける赤レンガ倉庫", yokohama) is None

@@ -155,6 +155,22 @@ Pro usage reaches 90% of its configured monthly free threshold. If `GOOGLE_MAPS_
 queue work is started and the UI reports the integration as unavailable—there is no fixture or browser
 scraping fallback in production.
 
+### Introductions and the place they are about
+
+Standard discovery asks Brave and YouTube for the attraction, its city, its country and
+the locale's own words for travel writing. Where it is matters as much as what it is
+called: 玉山祠 is Hanoi's Ngọc Sơn temple and also reads as Taiwan's 玉山, 圓山 is a park
+in Sapporo and a hill in Taipei, and the bare name answers with the other country. The AI
+search path has always planned its queries from the same two words; this is the standard
+path saying them too.
+
+Review then reads the geography, not only the score. A candidate whose title or summary
+names another catalog country — by that country's name or by one of its cities, in any of
+the five locales, 臺 and 台 counting as one character — and never names this country, this
+city or this attraction is rejected as `地點不符` before the relevance and quality
+thresholds are consulted. Naming no country at all is not evidence of the wrong one, and
+another city of the same country is not another country.
+
 ## API surfaces
 
 - `GET /api/v1/destinations`: the canonical destination directory, including role, parent,
