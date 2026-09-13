@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans KR','PingFang TC','Microsoft JhengHei','Apple SD Gothic Neo',system-ui,sans-serif">
+  <title id="title">仁川機場到首爾市區路線圖 / Incheon Airport rail and bus routes into Seoul</title>
+  <desc id="desc">機場鐵路 AREX 直達列車到首爾站；一般列車停弘大入口、孔德等站到首爾站；機場巴士到明洞、江南等地；深夜巴士 N 系列。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="80" y="88" font-size="40" font-weight="700" fill="#102A2B">인천공항 仁川機場 → 서울 首爾市區　主要路線</text>
+  <text x="80" y="128" font-size="22" fill="#5C6B6B">Incheon Airport → central Seoul · 時間為概略車程，以官網時刻表為準</text>
+
+  <!-- AREX express: direct to Seoul Station -->
+  <path d="M 300 470 C 620 470, 780 400, 1250 400" fill="none" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"/>
+  <!-- AREX all-stop: via Hongik Univ -->
+  <path d="M 300 470 C 560 470, 700 250, 960 250 L 1250 250 L 1250 400" fill="none" stroke="#6B4A3A" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- buses -->
+  <path d="M 300 470 C 620 520, 900 580, 1210 580" fill="none" stroke="#B8442D" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+  <path d="M 300 470 C 620 600, 900 760, 1210 760" fill="none" stroke="#B8442D" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+
+  <g>
+    <rect x="80" y="410" width="220" height="120" rx="24" fill="#0D6B68"/>
+    <text x="190" y="458" font-size="30" font-weight="700" fill="#FFFFFF" text-anchor="middle">인천공항</text>
+    <text x="190" y="496" font-size="20" fill="#E6F2F1" text-anchor="middle">Incheon Airport · T1 / T2</text>
+  </g>
+
+  <g font-size="26" font-weight="700" fill="#102A2B">
+    <circle cx="960" cy="250" r="16" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"/>
+    <text x="960" y="210" text-anchor="middle">홍대입구 弘大入口 Hongik Univ.</text>
+    <circle cx="1250" cy="250" r="16" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"/>
+    <text x="1285" y="242">공덕 孔德 Gongdeok</text>
+    <circle cx="1250" cy="400" r="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+    <text x="1285" y="392">서울역 首爾站 Seoul Station</text>
+    <text x="1285" y="420" font-size="18" font-weight="400" fill="#5C6B6B">直達 T1 43 分／T2 51 分 · 一般列車 約 60 分</text>
+    <circle cx="1210" cy="580" r="16" fill="#FFFFFF" stroke="#B8442D" stroke-width="8"/>
+    <text x="1285" y="588">명동 明洞 Myeongdong</text>
+    <text x="1285" y="616" font-size="18" font-weight="400" fill="#5C6B6B">機場巴士 6001／6015 · 深夜 N6701 到首爾站約 60 分</text>
+    <circle cx="1210" cy="760" r="16" fill="#FFFFFF" stroke="#B8442D" stroke-width="8"/>
+    <text x="1285" y="768">강남 江南 Gangnam</text>
+    <text x="1285" y="796" font-size="18" font-weight="400" fill="#5C6B6B">機場巴士 6703 · 深夜 N6000 約 70 分</text>
+  </g>
+
+  <g font-size="22" font-weight="700">
+    <text x="560" y="300" fill="#6B4A3A">공항철도 일반열차 AREX All-stop（各站停）</text>
+    <text x="620" y="440" fill="#0D6B68">공항철도 직통열차 AREX Express（直達）</text>
+    <text x="520" y="690" fill="#B8442D">공항 리무진 Airport Limousine Bus · 深夜 N 系列</text>
+  </g>
+
+  <g font-size="20" fill="#102A2B">
+    <line x1="80" y1="860" x2="140" y2="860" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+    <text x="152" y="867">AREX 直達 Express</text>
+    <line x1="420" y1="860" x2="480" y2="860" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round"/>
+    <text x="492" y="867">AREX 一般 All-stop</text>
+    <line x1="780" y1="860" x2="840" y2="860" stroke="#B8442D" stroke-width="8" stroke-dasharray="18 12" stroke-linecap="round"/>
+    <text x="852" y="867">巴士 Bus</text>
+    <text x="1180" y="867" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+  </g>
+</svg>

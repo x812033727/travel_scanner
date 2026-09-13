@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">大阪、京都、奈良三角移動示意圖 / Travel times between Osaka, Kyoto and Nara</title>
+  <desc id="desc">大阪與京都之間 JR 新快速約 30 分、阪急約 45 分；大阪難波到奈良近鐵約 40 分；京都到奈良近鐵約 35 到 50 分、JR 約 45 分；關西機場到難波南海約 40 分；環球影城在大阪西側的西九条附近。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="80" y="88" font-size="40" font-weight="700" fill="#102A2B">大阪・京都・奈良　三角移動時間</text>
+  <text x="80" y="128" font-size="22" fill="#5C6B6B">Osaka / Kyoto / Nara · 概略車程，以官網時刻表為準</text>
+
+  <!-- triangle edges -->
+  <line x1="520" y1="640" x2="1080" y2="250" stroke="#6B4A3A" stroke-width="12" stroke-linecap="round"/>
+  <line x1="520" y1="640" x2="1230" y2="700" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"/>
+  <line x1="1080" y1="250" x2="1230" y2="700" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"/>
+  <!-- airport -->
+  <path d="M 200 780 C 300 780, 380 700, 500 660" fill="none" stroke="#0D6B68" stroke-width="10" stroke-dasharray="4 14" stroke-linecap="round"/>
+  <!-- USJ -->
+  <line x1="520" y1="640" x2="330" y2="520" stroke="#6B4A3A" stroke-width="8" stroke-dasharray="4 14" stroke-linecap="round"/>
+
+  <!-- nodes -->
+  <g font-weight="700" fill="#102A2B">
+    <circle cx="520" cy="640" r="46" fill="#FFFFFF" stroke="#102A2B" stroke-width="10"/>
+    <text x="520" y="648" font-size="30" text-anchor="middle">大阪</text>
+    <text x="520" y="722" font-size="22" text-anchor="middle">難波 Namba · 梅田 Umeda</text>
+
+    <circle cx="1080" cy="250" r="46" fill="#FFFFFF" stroke="#102A2B" stroke-width="10"/>
+    <text x="1080" y="258" font-size="30" text-anchor="middle">京都</text>
+    <text x="1080" y="190" font-size="22" text-anchor="middle">Kyoto · 京都駅 / 河原町</text>
+
+    <circle cx="1230" cy="700" r="46" fill="#FFFFFF" stroke="#102A2B" stroke-width="10"/>
+    <text x="1230" y="708" font-size="30" text-anchor="middle">奈良</text>
+    <text x="1230" y="782" font-size="22" text-anchor="middle">Nara · 近鉄奈良 / JR 奈良</text>
+
+    <circle cx="330" cy="520" r="30" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"/>
+    <text x="330" y="470" font-size="22" text-anchor="middle">環球影城 USJ</text>
+    <text x="330" y="498" font-size="18" font-weight="400" fill="#5C6B6B" text-anchor="middle">大阪駅から環状線・ゆめ咲線</text>
+
+    <rect x="80" y="740" width="200" height="80" rx="20" fill="#0D6B68"/>
+    <text x="180" y="774" font-size="24" fill="#FFFFFF" text-anchor="middle">関西空港</text>
+    <text x="180" y="804" font-size="18" fill="#E6F2F1" text-anchor="middle">KIX · 南海 → 難波 34–45 分</text>
+  </g>
+
+  <!-- edge labels -->
+  <g font-size="22" font-weight="700">
+    <rect x="600" y="380" width="380" height="90" rx="16" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="3"/>
+    <text x="790" y="416" fill="#6B4A3A" text-anchor="middle">JR 新快速 約 30 分</text>
+    <text x="790" y="450" fill="#6B4A3A" text-anchor="middle">阪急京都線 約 45 分（梅田 ⇄ 河原町）</text>
+
+    <rect x="720" y="690" width="340" height="90" rx="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+    <text x="890" y="726" fill="#0D6B68" text-anchor="middle">近鉄 快速急行・急行 約 35 分</text>
+    <text x="890" y="760" fill="#0D6B68" text-anchor="middle">大阪難波 ⇄ 近鉄奈良</text>
+
+    <rect x="1190" y="410" width="340" height="90" rx="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+    <text x="1360" y="446" fill="#0D6B68" text-anchor="middle">近鉄特急 約 35 分</text>
+    <text x="1360" y="480" fill="#0D6B68" text-anchor="middle">JR みやこ路快速 約 47 分</text>
+  </g>
+
+  <g font-size="20" fill="#102A2B">
+    <line x1="80" y1="860" x2="140" y2="860" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round"/>
+    <text x="152" y="867">JR / 阪急</text>
+    <line x1="320" y1="860" x2="380" y2="860" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+    <text x="392" y="867">近鐵 Kintetsu / 南海 Nankai</text>
+    <text x="1180" y="867" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+  </g>
+</svg>

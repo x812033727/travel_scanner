@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import { guideArticleMetadata, renderGuideArticle } from "@/components/guides/article-page";
 import type { Locale } from "@/i18n/routing";
@@ -14,8 +14,12 @@ async function resolve(params: Promise<Params>) {
   return { locale, kind, slug };
 }
 
-export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
-  return guideArticleMetadata(await resolve(params));
+export async function generateMetadata(
+  { params }: { params: Promise<Params> }, parent?: ResolvingMetadata,
+): Promise<Metadata> {
+  // The layout's social defaults are handed through so an article with a hero can replace
+  // only the image; Next replaces a whole top-level key, never merges inside it.
+  return guideArticleMetadata(await resolve(params), parent);
 }
 
 export default async function GuideArticlePage({ params }: { params: Promise<Params> }) {

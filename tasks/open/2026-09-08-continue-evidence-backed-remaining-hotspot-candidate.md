@@ -134,3 +134,48 @@ What is left, and why it is not a model's job:
   passes will not help; these need a person or a different identity source.
 - Huyện Sỹ Church specifically: its Wikidata P625 is ~30 km wrong and the Vietnamese article has
   no coordinate, so there is no durable source to write. Fixing Wikidata upstream would fix it.
+
+## 2026-09-13 fourth batch — non-Korean backlog 41 -> 11
+
+Pending 205 -> 175. Write-up in `docs/hotspot-review-next-batch.md`; the row receipt file now holds
+both batches under a `batches` array (nothing reads it, so the shape was changed rather than
+overwritten).
+
+The third batch's conclusion — "further model passes will not help; these need a person or a
+different identity source" — was half right. The identity source existed and was unused:
+
+- **Places Autocomplete, not Text Search.** `GET /api/travel/places/autocomplete` bills the
+  Essentials SKU (10,000 free a month, 98 used), returns five predictions instead of
+  `map-candidates`'s single one, and reports `distanceMeters` per prediction. It needs any
+  logged-in user, not an admin. It found identities the three earlier Text Search query shapes
+  had missed.
+- **Confirm every approval with the other tool.** All 12 candidates were re-run through
+  `map-candidates` and the place IDs compared. Three disagreed, and two of those disagreements were
+  real errors: 原臺南高等工業學校校舍 is a duplicate of the published 成大博物館 row, and 遍照寺's
+  1 m "perfect" match is the temple's columbarium while the temple is 3.2 km away. **A 1 m match
+  proves nothing if the stored coordinate is wrong in the same direction as the candidate.**
+- **Korea, re-measured.** NAVER's own search API answers an unauthenticated caller with an
+  `ncaptcha` challenge. Not workable, and not something to work around. Still blocked on
+  `2026-09-06-naver-maps-key`.
+
+What is left, and it is genuinely small:
+
+- 164 Korean rows (unchanged, deliberately).
+- 9 non-Korean rows, each with its blocker written into `review_reason`. Of the four that were held
+  up only by a wrong upstream coordinate, **two were cleared the same day with `admin_verified`**
+  after the site owner declined to edit Wikidata: Huyện Sỹ Church (OSM way 907280822, which is
+  itself tagged `wikidata=Q10800886` and disagrees with that item by 31 km; French Wikipedia
+  corroborates within 78 m) and 新福宮 (OSM node 5110491036, re-homed `taichung` -> `taipei`).
+  遍照寺 and Thác Mây Treo were left alone on purpose — ja-wiki carries the *same* coordinate as
+  Wikidata for the first, and Wikidata has no P625 at all for the second, so neither has a sourceable
+  replacement that is not Google's.
+- Wikidata remains wrong for Q10800886 and Q10306724. Our rows no longer depend on it.
+- 臺北天空塔 stays pending on the site owner's instruction until it opens, because `discover_city`
+  skips rejected rows and a rejection would be permanent.
+
+Rankings lag the writes: `refresh_rankings` takes every active public row but only runs inside
+`hotspot-collector`, which rebuilds every 21,600 s, so approvals surface publicly within six hours.
+
+Filed from this batch: `2026-09-12-search-text` — `review` rewrites `city_name` when it re-homes a
+row but never rebuilds `search_text`, and `collect_hotspots` skips approved rows, so a moved row
+stays searchable under its old city forever (three rows are in that state now).

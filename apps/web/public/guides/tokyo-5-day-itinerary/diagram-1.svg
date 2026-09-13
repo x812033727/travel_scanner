@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">東京五天四夜分區示意圖 / Tokyo in five days, one area per day along the Yamanote Line</title>
+  <desc id="desc">簡化示意地圖，中間是 JR 山手線環。Day 1 新宿與澀谷；Day 2 淺草、押上晴空塔、上野；Day 3 築地、豐洲 teamLab、銀座、東京車站；Day 4 明治神宮、原宿、表參道、澀谷；Day 5 從新宿或東京車站前往成田或羽田機場。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="60" y="60" font-size="34" font-weight="700" fill="#102A2B">東京五天四夜　順著山手線，一天一區</text>
+  <text x="60" y="94" font-size="18" fill="#5C6B6B">Tokyo in five days · 示意圖，非精確比例</text>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+
+  <!-- day areas (drawn first, translucent) -->
+  <ellipse cx="480" cy="560" rx="150" ry="200" fill="#7E57C2" opacity="0.16"/>
+  <ellipse cx="1240" cy="300" rx="260" ry="120" fill="#D97A2B" opacity="0.18"/>
+  <ellipse cx="1210" cy="650" rx="220" ry="170" fill="#2F6F9F" opacity="0.16"/>
+  <ellipse cx="610" cy="640" rx="150" ry="150" fill="#2E7D5B" opacity="0.18"/>
+
+  <!-- Sumida river -->
+  <path d="M 1360 180 C 1380 320, 1330 480, 1400 700" fill="none" stroke="#BFD9E3" stroke-width="18" stroke-linecap="round"/>
+  <text x="1412" y="500" font-size="15" fill="#3F6C7A" font-weight="700">隅田川 Sumida River</text>
+
+  <!-- Yamanote loop -->
+  <ellipse cx="800" cy="480" rx="360" ry="250" fill="none" stroke="#8A8F8F" stroke-width="14"/>
+  <ellipse cx="800" cy="480" rx="360" ry="250" fill="none" stroke="#F7F1E8" stroke-width="5" stroke-dasharray="26 26"/>
+  <text x="800" y="455" font-size="18" fill="#8A8F8F" text-anchor="middle" font-weight="700">JR 山手線 Yamanote Line</text>
+
+  <!-- stations on the loop -->
+  <g font-size="19" font-weight="700" fill="#102A2B">
+    <circle cx="440" cy="480" r="11" fill="#FFFFFF" stroke="#102A2B" stroke-width="5"/><text x="420" y="486" text-anchor="end">新宿 Shinjuku</text>
+    <circle cx="490" cy="620" r="11" fill="#FFFFFF" stroke="#102A2B" stroke-width="5"/><text x="470" y="626" text-anchor="end">原宿 Harajuku</text>
+    <circle cx="560" cy="700" r="11" fill="#FFFFFF" stroke="#102A2B" stroke-width="5"/><text x="540" y="726" text-anchor="end">渋谷 Shibuya</text>
+    <circle cx="800" cy="730" r="11" fill="#FFFFFF" stroke="#102A2B" stroke-width="5"/><text x="800" y="762" text-anchor="middle">品川 Shinagawa</text>
+    <circle cx="1155" cy="520" r="11" fill="#FFFFFF" stroke="#102A2B" stroke-width="5"/><text x="1175" y="526">東京 Tokyo</text>
+    <circle cx="1090" cy="300" r="11" fill="#FFFFFF" stroke="#102A2B" stroke-width="5"/><text x="1070" y="290" text-anchor="end">上野 Ueno</text>
+    <circle cx="1000" cy="250" r="11" fill="#FFFFFF" stroke="#102A2B" stroke-width="5"/><text x="985" y="236" text-anchor="end">日暮里 Nippori</text>
+    <circle cx="560" cy="260" r="11" fill="#FFFFFF" stroke="#102A2B" stroke-width="5"/><text x="540" y="250" text-anchor="end">池袋 Ikebukuro</text>
+  </g>
+
+  <!-- places -->
+  <g font-size="17" fill="#102A2B">
+    <circle cx="1290" cy="330" r="8" fill="#D97A2B"/><text x="1305" y="336">浅草 Asakusa</text>
+    <circle cx="1430" cy="270" r="8" fill="#D97A2B"/><text x="1445" y="276">押上 Oshiage</text>
+    <path d="M 1430 250 L 1436 200 L 1442 250 Z" fill="#D97A2B"/><rect x="1434" y="250" width="4" height="14" fill="#D97A2B"/>
+    <text x="1445" y="252" font-size="13" fill="#5C6B6B">東京スカイツリー Skytree</text>
+    <circle cx="1120" cy="610" r="8" fill="#2F6F9F"/><text x="1135" y="616">銀座 Ginza</text>
+    <circle cx="1180" cy="670" r="8" fill="#2F6F9F"/><text x="1195" y="676">築地 Tsukiji</text>
+    <circle cx="1320" cy="770" r="8" fill="#2F6F9F"/><text x="1335" y="776">豊洲 Toyosu · teamLab Planets</text>
+    <circle cx="930" cy="640" r="8" fill="#2F6F9F"/><text x="945" y="646">麻布台 Azabudai · teamLab Borderless</text>
+    <ellipse cx="590" cy="570" rx="46" ry="30" fill="#2E7D5B" opacity="0.5"/><text x="590" y="576" font-size="15" text-anchor="middle" fill="#0F3D2B" font-weight="700">明治神宮</text>
+    <text x="590" y="612" font-size="13" text-anchor="middle" fill="#5C6B6B">Meiji Jingu</text>
+    <circle cx="640" cy="660" r="8" fill="#2E7D5B"/><text x="655" y="666">表参道 Omotesando</text>
+  </g>
+
+  <!-- day badges -->
+  <g font-size="18" font-weight="700" fill="#FFFFFF">
+    <rect x="330" y="372" width="120" height="36" rx="18" fill="#7E57C2"/><text x="390" y="397" text-anchor="middle">Day 1</text>
+    <rect x="1000" y="166" width="120" height="36" rx="18" fill="#D97A2B"/><text x="1060" y="191" text-anchor="middle">Day 2</text>
+    <rect x="1000" y="560" width="120" height="36" rx="18" fill="#2F6F9F"/><text x="1060" y="585" text-anchor="middle">Day 3</text>
+    <rect x="560" y="800" width="120" height="36" rx="18" fill="#2E7D5B"/><text x="620" y="825" text-anchor="middle">Day 4</text>
+  </g>
+
+  <!-- Day 5 airports -->
+  <path d="M 1200 520 C 1350 560, 1450 600, 1560 560" fill="none" stroke="#5C6B6B" stroke-width="5" stroke-dasharray="12 10" marker-end="url(#arrow)"/>
+  <text x="1420" y="600" font-size="16" fill="#5C6B6B" font-weight="700">成田 Narita · N'EX、TYO-NRT 巴士 →</text>
+  <path d="M 810 745 C 830 800, 900 850, 1000 870" fill="none" stroke="#5C6B6B" stroke-width="5" stroke-dasharray="12 10" marker-end="url(#arrow)"/>
+  <text x="1010" y="878" font-size="16" fill="#5C6B6B" font-weight="700">羽田 Haneda · 京急、單軌電車 →</text>
+  <rect x="60" y="800" width="120" height="36" rx="18" fill="#5C6B6B"/><text x="120" y="825" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">Day 5</text>
+  <text x="192" y="825" font-size="16" fill="#5C6B6B">最後採買後前往機場（成田走 N'EX／巴士，羽田走京急／單軌電車）</text>
+
+  <!-- legend -->
+  <g font-size="15" fill="#102A2B">
+    <text x="60" y="140" fill="#7E57C2" font-weight="700">Day 1</text><text x="120" y="140">新宿 Shinjuku、渋谷 Shibuya</text>
+    <text x="60" y="166" fill="#D97A2B" font-weight="700">Day 2</text><text x="120" y="166">浅草 Asakusa、押上 Oshiage、上野 Ueno</text>
+    <text x="60" y="192" fill="#2F6F9F" font-weight="700">Day 3</text><text x="120" y="192">築地 Tsukiji、豊洲 Toyosu、銀座 Ginza、東京駅 Tokyo Station</text>
+    <text x="60" y="218" fill="#2E7D5B" font-weight="700">Day 4</text><text x="120" y="218">明治神宮 Meiji Jingu、原宿 Harajuku、表参道 Omotesando、渋谷 Shibuya</text>
+    <text x="1380" y="890" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+  </g>
+</svg>

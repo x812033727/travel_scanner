@@ -207,6 +207,13 @@ Skyscanner 的合作申請清單見 [`skyscanner-partnership-application.md`](sk
 所以先載入的舊頁面也點不出去。旅遊文章要出現按鈕還需要：文章有 `destination_id`、
 主題對得上模組（`apps/web/lib/guide-affiliate.ts` 的對應表）、且沒過期。
 
+文章內文也可以由編輯放按鈕：`offer` 區塊（`{module, destination_id?, heading?}`，一篇最多三個）
+把同一個面板、單一模組，放在「怎麼買票」「門票」那一段後面；`destination_id` 可以覆蓋文章的，
+讓跨城市的情報（例如東京與京都的紅葉）每一段指向自己的城市。按鈕來源、驗證與 `placement='guide'`
+的紀錄都和文末面板相同，文末面板會略過內文已放過的模組，內文有按鈕時主圖下方多一行揭露。
+規則細節在 `docs/travel-guides.md`。目前 `affiliate_clicks` 記不到是哪一篇文章帶來的點擊
+（`sub_id` 只到目的地×模組×語系×置入面），`2026-09-12-attribute-affiliate-clicks-to-the-guide` 追蹤補欄位。
+
 生活分享文章的規則不同，因為生活主題（AI、教學、軟體、3C…）本來就對不到任何旅遊模組：
 **編輯自己填的 `destination_id` 就是唯一的情境訊號**，填了才顯示，而且顯示該城市的全部模組
 （和目的地城市頁一樣）。仍然要過三道閘：編輯填了目的地、營運勾了 `life` 置入面、文章沒過期。

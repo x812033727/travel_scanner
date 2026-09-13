@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import os
 from collections.abc import AsyncIterator
-from datetime import UTC, date, datetime, timedelta
+from datetime import UTC, datetime, timedelta
 from uuid import uuid4
 
 import pytest
@@ -30,6 +30,7 @@ from app.guides.models import (
     GuideArticleTopic,
     GuideTopic,
 )
+from app.guides.publication import today
 from app.guides.router import admin_router, public_router
 from app.guides.taxonomy import LIFE_SEED_TOPICS, SEED_TOPICS, seed_names
 from app.models import AdminAuditLog, User
@@ -354,7 +355,7 @@ async def test_an_expired_notice_keeps_its_page_but_leaves_the_listings(database
 
     async with database() as session:
         await session.execute(
-            update(GuideArticle).values(valid_until=date.today() - timedelta(days=1))
+            update(GuideArticle).values(valid_until=today() - timedelta(days=1))
         )
         await session.commit()
 
@@ -374,7 +375,7 @@ async def test_publishing_an_already_expired_article_is_refused(database, actor)
             api,
             slug="last-winter-sale",
             kind="intel",
-            valid_until=(date.today() - timedelta(days=2)).isoformat(),
+            valid_until=(today() - timedelta(days=2)).isoformat(),
         )
         response = await publish(api, created["id"], "zh-TW", created["version"])
         assert response.status_code == 409
@@ -533,7 +534,7 @@ async def test_the_admin_listing_filters_by_status_and_reports_facets(database, 
             api,
             slug="old-deal",
             kind="intel",
-            valid_until=(date.today() - timedelta(days=1)).isoformat(),
+            valid_until=(today() - timedelta(days=1)).isoformat(),
         )
 
         everything = await admin_list(api)
@@ -1099,3 +1100,238 @@ def test_the_two_seed_vocabularies_stay_disjoint() -> None:
     assert life & travel == set()
     assert life & set(LABELS) == set()
     assert len(life) == len(LIFE_SEED_TOPICS)
+
+
+# --- rich blocks: images, tables, callouts, partner buttons ------------------------
+
+
+def rich_document(**offer):
+    """A document using every guide-only block once, with a hero image."""
+    return {
+        **document(),
+        "hero": {
+            "src": "/guides/narita-to-tokyo/hero.jpg",
+            "alt": "Skyliner 停在成田機場月台",
+            "width": 1600,
+            "height": 900,
+            "credit": {"author": "Mokaair", "license": "© Mokaair", "source_url": None},
+        },
+        "blocks": [
+            {"type": "heading", "text": "三種選擇", "level": 2},
+            {
+                "type": "image",
+                "src": "/guides/narita-to-tokyo/route-map.svg",
+                "alt": "成田到東京的三條路線",
+                "width": 1600,
+                "height": 900,
+                "caption": "路線示意圖",
+                "credit": {"author": "Mokaair", "license": "© Mokaair"},
+            },
+            {
+                "type": "table",
+                "header": ["方式", "時間", "票價"],
+                "rows": [["Skyliner", "41 分", "2,580 日圓"], ["巴士", "85 分", "1,300 日圓"]],
+                "caption": "2026 年 9 月查證",
+            },
+            {"type": "callout", "tone": "warning", "title": "注意", "text": "末班車後只剩計程車。"},
+            {"type": "paragraph", "text": "先決定住哪一區再選。"},
+            {"type": "offer", "module": "transport", **offer},
+        ],
+    }
+
+
+async def test_rich_blocks_and_the_hero_round_trip_to_the_reader(database, actor) -> None:
+    async with client(make_app(database, actor)) as api:
+        created = await create_article(api, document=rich_document(heading="先買車票"))
+        assert (await publish(api, created["id"], "zh-TW", created["version"])).status_code == 200
+
+        body = (await api.get("/guides/howto/narita-to-tokyo", params={"locale": "zh-TW"})).json()
+        assert body["document"]["hero"]["src"] == "/guides/narita-to-tokyo/hero.jpg"
+        assert body["document"]["hero"]["credit"]["license"] == "© Mokaair"
+        assert [block["type"] for block in body["document"]["blocks"]] == [
+            "heading", "image", "table", "callout", "paragraph", "offer",
+        ]
+        table = body["document"]["blocks"][2]
+        assert table["rows"][1] == ["巴士", "85 分", "1,300 日圓"]
+        offer = body["document"]["blocks"][5]
+        # No destination of its own: the reader's side falls back to the article's.
+        assert offer == {
+            "type": "offer", "module": "transport", "destination_id": None, "heading": "先買車票",
+        }
+        assert body["document"]["modified_at"]
+
+        # The listing carries the hero so a card can show a thumbnail without a second request.
+        listed = (await api.get("/guides", params={"locale": "zh-TW"})).json()["articles"]
+        assert listed[0]["hero"]["src"] == "/guides/narita-to-tokyo/hero.jpg"
+        assert listed[0]["hero"]["alt"] == "Skyliner 停在成田機場月台"
+
+
+async def test_an_article_without_a_hero_still_reads_and_lists(database, actor) -> None:
+    """Every revision written before the hero existed lacks the key; none may break."""
+    async with client(make_app(database, actor)) as api:
+        created = await create_article(api)
+        await publish(api, created["id"], "zh-TW", created["version"])
+        body = (await api.get("/guides/howto/narita-to-tokyo", params={"locale": "zh-TW"})).json()
+        assert body["document"]["hero"] is None
+        listed = (await api.get("/guides", params={"locale": "zh-TW"})).json()["articles"]
+        assert listed[0]["hero"] is None
+
+
+async def test_more_than_three_offer_blocks_are_refused(database, actor) -> None:
+    payload = rich_document()
+    payload["blocks"] += [{"type": "offer", "module": "activities"}] * 3
+    async with client(make_app(database, actor)) as api:
+        response = await api.post(
+            "/admin/guides",
+            json={
+                "slug": "too-many",
+                "kind": "howto",
+                "destination_id": "tokyo",
+                "topics": [],
+                "document": payload,
+            },
+        )
+        assert response.status_code == 422
+        assert response.json()["code"] == "guide_offer_limit"
+
+
+async def test_an_offer_on_a_cross_destination_article_must_name_its_own_city(
+    database, actor
+) -> None:
+    async with client(make_app(database, actor)) as api:
+        anonymous = await api.post(
+            "/admin/guides",
+            json={
+                "slug": "autumn-leaves",
+                "kind": "intel",
+                "destination_id": None,
+                "topics": ["season"],
+                "document": rich_document(),
+            },
+        )
+        assert anonymous.status_code == 422
+        assert anonymous.json()["code"] == "guide_offer_destination_required"
+
+        unknown = await api.post(
+            "/admin/guides",
+            json={
+                "slug": "autumn-leaves",
+                "kind": "intel",
+                "destination_id": None,
+                "topics": ["season"],
+                "document": rich_document(destination_id="atlantis"),
+            },
+        )
+        assert unknown.status_code == 422
+        assert unknown.json()["code"] == "guide_offer_destination_unknown"
+
+        # Named, and in the catalog's spelling regardless of how the editor typed it.
+        named = await api.post(
+            "/admin/guides",
+            json={
+                "slug": "autumn-leaves",
+                "kind": "intel",
+                "destination_id": None,
+                "topics": ["season"],
+                "document": rich_document(destination_id=" Osaka-Kyoto "),
+            },
+        )
+        assert named.status_code == 201, named.text
+        assert named.json()["draft"]["blocks"][5]["destination_id"] == "osaka-kyoto"
+
+
+async def test_publishing_rechecks_offers_after_the_destination_was_cleared(
+    database, actor
+) -> None:
+    """A draft passed when the article had a city; clearing the city must not let the
+    offer that leaned on it go live pointing nowhere."""
+    async with client(make_app(database, actor)) as api:
+        created = await create_article(api, document=rich_document())
+        cleared = await api.put(
+            f"/admin/guides/{created['id']}",
+            params={"locale": "zh-TW"},
+            json={
+                "expected_version": created["version"],
+                "kind": "howto",
+                "destination_id": None,
+                "topics": ["transport"],
+                "valid_until": None,
+                "featured": False,
+                "display_order": 100,
+            },
+        )
+        assert cleared.status_code == 200, cleared.text
+        refused = await publish(api, created["id"], "zh-TW", created["locales"][0]["version"])
+        assert refused.status_code == 422
+        assert refused.json()["code"] == "guide_offer_destination_required"
+
+
+@pytest.mark.parametrize(
+    ("label", "mutate"),
+    [
+        (
+            "an image hosted elsewhere",
+            lambda doc: doc["blocks"][1].update(src="https://upload.wikimedia.org/x.jpg"),
+        ),
+        (
+            "a path that climbs out of the guides folder",
+            lambda doc: doc["blocks"][1].update(src="/guides/x/../../etc/passwd.png"),
+        ),
+        (
+            "a vector hero, which social cards cannot render",
+            lambda doc: doc["hero"].update(src="/guides/x/hero.svg"),
+        ),
+        ("a ragged table", lambda doc: doc["blocks"][2]["rows"].append(["只有一格"])),
+        ("HTML in a caption", lambda doc: doc["blocks"][1].update(caption="<b>bold</b>")),
+        (
+            "a module the catalog does not sell",
+            lambda doc: doc["blocks"][5].update(module="insurance"),
+        ),
+        ("an image with no size", lambda doc: doc["blocks"][1].pop("width")),
+        (
+            "a credit with a script URL",
+            lambda doc: doc["blocks"][1]["credit"].update(source_url="javascript:alert(1)"),
+        ),
+    ],
+)
+async def test_malformed_rich_blocks_are_refused(database, actor, label, mutate) -> None:
+    payload = rich_document()
+    mutate(payload)
+    async with client(make_app(database, actor)) as api:
+        response = await api.post(
+            "/admin/guides",
+            json={
+                "slug": "bad-blocks",
+                "kind": "howto",
+                "destination_id": "tokyo",
+                "topics": [],
+                "document": payload,
+            },
+        )
+        assert response.status_code == 422, label
+
+
+async def test_modified_at_moves_on_republication_while_published_at_stays(
+    database, actor
+) -> None:
+    async with client(make_app(database, actor)) as api:
+        created = await create_article(api)
+        first = await publish(api, created["id"], "zh-TW", created["version"])
+        before = (await api.get("/guides/howto/narita-to-tokyo", params={"locale": "zh-TW"})).json()
+        edited = await api.put(
+            f"/admin/guides/{created['id']}/zh-TW/draft",
+            json={
+                "expected_version": first.json()["locales"][0]["version"],
+                "document": document(title="票價已更新"),
+            },
+        )
+        await publish(api, created["id"], "zh-TW", edited.json()["locales"][0]["version"])
+        after = (await api.get("/guides/howto/narita-to-tokyo", params={"locale": "zh-TW"})).json()
+
+        assert after["document"]["published_at"] == before["document"]["published_at"]
+        assert after["document"]["modified_at"] > before["document"]["modified_at"]
+
+        entry = (await api.get("/guides/sitemap")).json()["entries"][0]
+        assert entry["published_at"] == after["document"]["published_at"]
+        assert entry["modified_at"] == after["document"]["modified_at"]
+        assert entry["modified_at"] > entry["published_at"]
