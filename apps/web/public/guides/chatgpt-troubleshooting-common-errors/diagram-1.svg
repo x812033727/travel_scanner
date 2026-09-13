@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">ChatGPT 出問題時先看什麼、再試什麼 / ChatGPT troubleshooting decision tree</title>
+  <desc id="desc">一張由上往下的排解決策樹。最上面一列是第一步：打開 status.openai.com，ChatGPT 那一組不是 Operational 就先等 10 分鐘再試。往下分成三欄。左欄「進不去」四步：驗證碼收不到就翻垃圾郵件、重寄、只用最新一組；登入方式對嗎，註冊用 Google 或 Apple 就一直用同一種；密碼忘了按 Forgot password?，社群登入到那家改；帳號被停用就依通知信申訴，找不到信用申訴表單。中欄「進得去但用不了」四步：看畫面上的提示，有重置時間就等到那時候；換一個還能用的模型，推理額度用完可能自動換模型接手；買點數或升級，數字與價格見方案篇；免費版的工具上限，檔案、產圖、語音各自計算。右欄「能用但中斷」四步：重新整理或開新對話，再看狀態頁、清 cache、無痕視窗；等 30 到 60 秒，按 Stop generating 再按 Regenerate；關擴充功能與 VPN、換網路，公司網路請 IT 放行 OpenAI 網域；太長的對話開新的，對話不見先看 Archived Chats。三欄最後都通到最下面一列：都不行就到 help.openai.com 右下角找對話小幫手，附上帳號 Email、裝置與瀏覽器、錯誤截圖、時間與時區，客服不會重置額度。註腳：重裝 App 排在最後，它不會改變帳號、訂閱綁定或額度；依 OpenAI help center 與 status.openai.com 2026 年 9 月的說明整理。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">ChatGPT 出問題時先看什麼、再試什麼（2026 年 9 月查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Troubleshooting decision tree: check the status page first, then work down one of three columns</text>
+
+  <!-- step zero: status page -->
+  <rect x="48" y="108" width="1504" height="64" rx="14" fill="#E6F2EC" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="800" y="149" font-size="20" font-weight="700" fill="#1F5A40" text-anchor="middle">先看狀態頁：status.openai.com 上 ChatGPT 那一組不是 Operational，就先等 10 分鐘再試</text>
+  <path d="M 288 176 L 288 198" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 800 176 L 800 198" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 1312 176 L 1312 198" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- column headers -->
+  <rect x="48" y="204" width="480" height="56" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="288" y="240" font-size="20" font-weight="700" fill="#0B4F4D" text-anchor="middle">進不去　Can't get in</text>
+  <rect x="560" y="204" width="480" height="56" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="240" font-size="20" font-weight="700" fill="#1F4E73" text-anchor="middle">進得去但用不了　In, but blocked</text>
+  <rect x="1072" y="204" width="480" height="56" rx="14" fill="#FCEFE4" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1312" y="240" font-size="20" font-weight="700" fill="#8A4A16" text-anchor="middle">能用但中斷　Works, then breaks</text>
+  <path d="M 288 264 L 288 280" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 800 264 L 800 280" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 1312 264 L 1312 280" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- column 1: can't get in -->
+  <rect x="48" y="284" width="480" height="78" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="288" y="315" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">驗證碼收不到？</text>
+  <text x="288" y="343" font-size="15" fill="#5C6B6B" text-anchor="middle">翻垃圾郵件、重寄、只用最新一組</text>
+  <path d="M 288 364 L 288 384" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="48" y="386" width="480" height="78" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="288" y="417" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">登入方式對嗎？</text>
+  <text x="288" y="445" font-size="15" fill="#5C6B6B" text-anchor="middle">註冊用 Google 或 Apple 就一直用同一種</text>
+  <path d="M 288 466 L 288 486" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="48" y="488" width="480" height="78" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="288" y="519" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">密碼忘了？</text>
+  <text x="288" y="547" font-size="15" fill="#5C6B6B" text-anchor="middle">按 Forgot password?；社群登入到那家改</text>
+  <path d="M 288 568 L 288 588" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="48" y="590" width="480" height="78" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="288" y="621" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">帳號被停用？</text>
+  <text x="288" y="649" font-size="15" fill="#5C6B6B" text-anchor="middle">依通知信申訴，找不到信用申訴表單</text>
+  <path d="M 288 672 L 288 696" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- column 2: in, but blocked -->
+  <rect x="560" y="284" width="480" height="78" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="315" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">看畫面上的提示</text>
+  <text x="800" y="343" font-size="15" fill="#5C6B6B" text-anchor="middle">有重置時間就等到那時候</text>
+  <path d="M 800 364 L 800 384" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="560" y="386" width="480" height="78" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="417" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">換一個還能用的模型</text>
+  <text x="800" y="445" font-size="15" fill="#5C6B6B" text-anchor="middle">推理額度用完可能自動換模型接手</text>
+  <path d="M 800 466 L 800 486" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="560" y="488" width="480" height="78" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="519" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">買點數或升級</text>
+  <text x="800" y="547" font-size="15" fill="#5C6B6B" text-anchor="middle">數字與價格見方案篇</text>
+  <path d="M 800 568 L 800 588" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="560" y="590" width="480" height="78" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="621" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">免費版的工具上限</text>
+  <text x="800" y="649" font-size="15" fill="#5C6B6B" text-anchor="middle">檔案、產圖、語音各自計算，各有提示</text>
+  <path d="M 800 672 L 800 696" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- column 3: works, then breaks -->
+  <rect x="1072" y="284" width="480" height="78" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1312" y="315" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">重新整理或開新對話</text>
+  <text x="1312" y="343" font-size="15" fill="#5C6B6B" text-anchor="middle">再看狀態頁、清 cache、無痕視窗</text>
+  <path d="M 1312 364 L 1312 384" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="1072" y="386" width="480" height="78" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1312" y="417" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">等 30 到 60 秒</text>
+  <text x="1312" y="445" font-size="15" fill="#5C6B6B" text-anchor="middle">按 Stop generating，再按 Regenerate</text>
+  <path d="M 1312 466 L 1312 486" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="1072" y="488" width="480" height="78" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1312" y="519" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">關擴充功能與 VPN、換網路</text>
+  <text x="1312" y="547" font-size="15" fill="#5C6B6B" text-anchor="middle">公司網路請 IT 放行 OpenAI 網域</text>
+  <path d="M 1312 568 L 1312 588" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="1072" y="590" width="480" height="78" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1312" y="621" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">太長的對話開新的</text>
+  <text x="1312" y="649" font-size="15" fill="#5C6B6B" text-anchor="middle">對話不見先看 Archived Chats</text>
+  <path d="M 1312 672 L 1312 696" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- last resort: support -->
+  <rect x="48" y="700" width="1504" height="64" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="800" y="740" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">都不行：到 help.openai.com 右下角找對話小幫手，附上帳號 Email、裝置與瀏覽器、錯誤截圖、時間與時區；客服不會重置額度</text>
+
+  <text x="48" y="800" font-size="15" fill="#5C6B6B">重裝 App 排在最後：它不會改變帳號、訂閱綁定或額度；重裝前先做完更新、重啟、登出再登入、清 App 資料。</text>
+  <text x="48" y="826" font-size="15" fill="#5C6B6B">依 OpenAI help center 與 status.openai.com 2026 年 9 月的說明整理，之後可能變動；各步驟的官方原文見正文。</text>
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
