@@ -27,7 +27,6 @@ export default async function GuidesHubPage({ params }: { params: Promise<{ loca
 
   const cardLabels = {
     intel: t("guides.intel"), howto: t("guides.howto"), life: t("guides.life"),
-    expired: t("guides.expired"), validUntil: t("guides.validUntil"), published: t("guides.published"),
   };
   const sections = [
     { kind: "intel" as const, heading: t("guides.latestIntel"), lead: t("guides.intelLead"), rows: intel.articles },

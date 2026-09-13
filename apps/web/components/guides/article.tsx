@@ -13,13 +13,10 @@ import {
   type GuideArticleState, type GuideKind,
 } from "@/lib/guides";
 
-/** One label per kind (the badge above the title) plus the words around dates, sources and
+/** One label per kind (the badge above the title) plus the update-date word, sources and
  *  the parts of the body the renderer cannot name itself. */
 export type GuideArticleLabels = Record<GuideKind, string> & {
-  published: string;
   updated: string;
-  expiredNotice: string;
-  validUntil: string;
   sources: string;
   checkedOn: string;
   destination: string;
@@ -42,8 +39,10 @@ export type GuideArticleLabels = Record<GuideKind, string> & {
 export const CONTENTS_MIN_HEADINGS = 3;
 
 /**
- * An article a reader can reach. Expiry is shown, not hidden: an `intel` notice keeps its
- * URL so existing links do not break, and says plainly what date it applied until.
+ * An article a reader can reach. Expiry is silent: an `intel` notice keeps its URL so
+ * existing links do not break, and the reader is told nothing about dates — no first
+ * publication, no expiry banner, no date it applied until. `expired` still decides one
+ * thing, below: an expired notice carries no partner buttons.
  *
  * The body is drawn in slices around the editor's partner buttons (`offer` blocks) and partner
  * links (`partner_link` blocks), each a client island between two runs of the shared renderer.
@@ -64,6 +63,8 @@ export function GuideArticle({
   adsense?: AdsenseConfig;
 }) {
   const { document } = state;
+  // First publication is never drawn; it is only the date "updated" has to beat before it
+  // means anything, since `modified_at` equals it until the article is republished.
   const published = document.published_at.slice(0, 10);
   const modified = document.modified_at ? document.modified_at.slice(0, 10) : null;
   const others = state.published_locales.filter((value) => value !== state.locale);
@@ -128,16 +129,12 @@ export function GuideArticle({
         </p>
         <h1 className="mt-3 text-3xl font-bold">{document.title}</h1>
         <p className="mt-3 leading-7 text-[var(--muted)]">{document.description}</p>
-        <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-[var(--muted)]">
-          <span>{labels.published}: <time dateTime={published}>{published}</time></span>
-          {modified && modified > published ? (
-            <span>{labels.updated}: <time dateTime={modified}>{modified}</time></span>
-          ) : null}
-          {readingTime ? <span>{readingTime}</span> : null}
-        </p>
-        {state.expired && state.valid_until ? (
-          <p role="status" className="mt-4 rounded-2xl border border-[var(--line)] bg-[var(--line)] px-4 py-3 text-sm leading-6">
-            {labels.expiredNotice} {labels.validUntil}: <time dateTime={state.valid_until}>{state.valid_until}</time>
+        {(modified && modified > published) || readingTime ? (
+          <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-[var(--muted)]">
+            {modified && modified > published ? (
+              <span>{labels.updated}: <time dateTime={modified}>{modified}</time></span>
+            ) : null}
+            {readingTime ? <span>{readingTime}</span> : null}
           </p>
         ) : null}
       </header>

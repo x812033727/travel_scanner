@@ -201,10 +201,8 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
   // screen, which the programme policies forbid carrying ads, so it never even asks.
   const adsense = await getAdsenseSlot();
   const kindLabels = { intel: t("guides.intel"), howto: t("guides.howto"), life: t("guides.life") };
-  const card: GuideCardLabels = {
-    ...kindLabels, expired: t("guides.expired"),
-    validUntil: t("guides.validUntil"), published: t("guides.published"),
-  };
+  // A card is labelled by its section and nothing else, so the kind labels are the whole set.
+  const card: GuideCardLabels = kindLabels;
   const related = kind === "life"
     ? await travelCrosslinks(locale, state.destination_id, {
       relatedTravel: t("guides.relatedTravel"),
@@ -223,8 +221,7 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
     : [{ name: nav("home"), path: "/" }, { name: t("guides.hubTitle"), path: "/guides" }, listing];
   const labels: GuideArticleLabels = {
     ...kindLabels,
-    published: t("guides.published"), updated: t("guides.updated"),
-    expiredNotice: t("guides.expiredNotice"), validUntil: t("guides.validUntil"),
+    updated: t("guides.updated"),
     sources: t("guides.sources"), checkedOn: t("guides.checkedOn"),
     destination: t("guides.destination"), otherLanguages: t("guides.otherLanguages"),
     contents: t("guides.contents"),

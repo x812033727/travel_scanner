@@ -186,11 +186,12 @@ describe("an expired notice", () => {
     ...published, kind: "intel" as const, expired: true, valid_until: "2026-08-01",
   };
 
-  it("keeps its page and says what date it applied until", async () => {
+  it("keeps its page, and shows neither the date it applied until nor a banner", async () => {
     mocks.article.mockResolvedValue(expired);
     render(await GuideArticlePage({ params: params({ kind: "intel" }) }));
     expect(screen.getByRole("heading", { level: 1 })).toBeTruthy();
-    expect(screen.getByRole("status").textContent).toContain("2026-08-01");
+    expect(screen.queryByRole("status")).toBeNull();
+    expect(screen.queryByText(/2026-08-01/)).toBeNull();
   });
 
   it("stays indexable, because withdrawing the URL would break existing links", async () => {
