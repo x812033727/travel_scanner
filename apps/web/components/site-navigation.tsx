@@ -4,7 +4,6 @@ import { useLocale, useTranslations } from "next-intl";
 import { HeaderAuth } from "@/components/header-auth";
 import { MobileNav } from "@/components/mobile-nav";
 import { TextSizeSwitcher } from "@/components/text-size-switcher";
-import { ThemeSwitcher } from "@/components/theme-switcher";
 import { useSiteVisibility } from "@/components/site-visibility-provider";
 import { Link, usePathname } from "@/i18n/navigation";
 import { primaryNavLinks } from "@/lib/nav-links";
@@ -43,8 +42,10 @@ export function SiteNavigation() {
           <Link href="/guides" aria-current={pathname.startsWith("/guides") ? "page" : undefined} className="-mx-2 inline-flex min-h-11 items-center rounded-lg px-2 transition hover:text-[var(--ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--teal)]">{t("guides")}</Link>
           <Link href="/life" aria-current={pathname.startsWith("/life") ? "page" : undefined} className="-mx-2 inline-flex min-h-11 items-center rounded-lg px-2 transition hover:text-[var(--ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--teal)]">{t("life")}</Link>
         </>)}
-        {!discovery.enabled && !discovery.loading && <><TextSizeSwitcher />
-        <ThemeSwitcher /></>}
+        {/* No ThemeSwitcher here: SiteHeader now renders one unconditionally, and a
+            second copy in this branch put two identical Appearance selects side by side
+            whenever discovery was off. */}
+        {!discovery.enabled && !discovery.loading && <TextSizeSwitcher />}
         {/* Sign in belongs on every header. Gating it behind !discovery.enabled left the
             live site with no way to sign in or out from the chrome, and made a signed-in
             header identical to a signed-out one. Display preferences can stay in /my;
