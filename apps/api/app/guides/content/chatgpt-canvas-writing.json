@@ -1,0 +1,304 @@
+{
+  "slug": "chatgpt-canvas-writing",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "ChatGPT Canvas 改版後怎麼改稿：用寫作區塊與程式區塊逐段修文章、改小腳本",
+      "description": "ChatGPT 的 Canvas 並排編輯視窗自 2026 年 5 月 28 日起從 GPT-5.5 移除，改由對話裡的寫作區塊與程式區塊接手。這篇依 OpenAI help center 與官方公告說明兩者和一般對話差在哪、怎麼叫出來、哪些方案能用，用一篇 800 字社團公告示範反白局部修改、調長度與語氣、復原上一步、存進 Library 與下載，再用分帳小腳本示範加註解、除錯、轉語言與執行。",
+      "hero": {
+        "src": "/guides/chatgpt-canvas-writing/hero.jpg",
+        "alt": "左右並排的兩個視窗：左邊是幾個對話泡泡，右邊是一頁文字，其中一段被反白成青色，底下一行字「先貼草稿，再逐段改」。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "ChatGPT 的 Canvas 是 2024 年 10 月推出的並排編輯視窗，讓你和 AI 在同一份文件上改稿、改程式。這篇回答的問題是：2026 年 9 月的現在，Canvas 還在嗎、改稿要怎麼做。結論是：Canvas 這個獨立視窗自 2026 年 5 月 28 日起從 GPT-5.5 移除，功能改由對話裡的「寫作區塊」與「程式區塊」接手；並排改稿的做法還在，只是入口與按鈕換了。"
+        },
+        {
+          "type": "paragraph",
+          "text": "整篇的功能名稱、方案與日期都在 2026 年 9 月依 OpenAI help center、官方公告與 OpenAI Academy 查證。讀完你會知道寫作區塊和一般對話差在哪、怎麼叫出來、哪些方案能用，然後跟著兩個示範動手：把一篇自己寫的 800 字社團公告放進區塊逐段修，再把一個算分帳的小腳本交給程式區塊加註解、除錯、換語言。重點放在「改稿」而不是「生稿」：先貼自己的草稿，再一段一段改。"
+        },
+        {
+          "type": "heading",
+          "text": "Canvas 是什麼、2026 年 5 月之後變成了什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 在 2024 年 10 月 3 日推出 Canvas 時的說法是：它在對話旁邊另開一個視窗，左邊是對話、右邊是文件或程式碼，你可以直接在文件上打字，也可以反白其中一段，只請 ChatGPT 改那一段而不動其他地方；改壞了按返回鍵就能回到上一個版本。工具列上有幾個一鍵捷徑，寫作用的是建議修改、調整長度、改閱讀程度、最後潤飾、加表情符號，程式用的是審查程式、加日誌、加註解、修錯誤、轉成另一種語言。2024 年 12 月 10 日起免費版也能用，同時加入在 Canvas 裡直接執行 Python 的功能；2025 年 2 月 6 日工具列多了分享按鈕。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2026 年 5 月 28 日，OpenAI 在模型更新說明裡寫明：Canvas 不再提供給 GPT-5.5 Instant 與 GPT-5.5 Thinking，寫作與程式功能改為直接在對話回覆裡以寫作區塊（writing block）與程式區塊（code block）提供；付費使用者在舊模型下架前，還能透過舊模型用一段時間的 Canvas，但官網沒有寫明下架日期，能不能選到以你帳號的模型選單為準；Canvas 最早搭配的 GPT-4o 更早在 2026 年 2 月 13 日就已下架。到了 2026 年 9 月，免費版與 Go 的預設模型是 GPT-5.6 Luna、付費方案是 GPT-5.6 Sol，help center 原本的 Canvas 說明頁在查證當天也已經找不到，所以本文之後講的操作都以寫作區塊與程式區塊為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "三件事沒有變。一是「只改選取的部分」：你可以選取區塊裡的文字，請 ChatGPT 只修那一段，或整份都改。二是「可以回頭」：區塊支援復原與重做最近一次 AI 協助的修改。三是「自己直接改」：區塊裡的文字可以像文件一樣打字修改，並支援粗體、斜體、標題、連結、項目與編號清單、核取清單。差別在畫面：舊 Canvas 固定在右側並排，現在的寫作區塊直接出現在對話裡，長文可以切到全螢幕編輯畫面，這時文件佔滿主畫面、對話退到旁邊，效果接近以前的並排視窗。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "怎麼叫出來、哪些方案能用",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "寫作區塊不用特別開。help center 的說法是，當 ChatGPT 判斷它產生的文字之後大概會被修改或重複使用，例如信件、訊息、社群貼文、文件，就會把草稿放進寫作區塊；你也可以直接要求它做一份可以在對話裡編輯的草稿。要改自己的稿子，最省事的提示詞是先講清楚要做什麼，再貼原文：「這是我寫的社團公告草稿，先原封不動放進可以編輯的區塊，不要改內容，我會一段一段告訴你怎麼改。」它照做之後，你才開始下修改指令。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以前的 Canvas 有三個入口：在輸入框的工具選單（加號）裡選 Canvas、在提示詞裡加上「use canvas」、或直接輸入 /canvas；OpenAI Academy 的 Canvas 教材（2026 年 5 月 29 日更新）仍然這樣寫。這些入口只對還能選到舊模型的付費帳號有意義，在 GPT-5.6 底下看不到 Canvas 這個選項是正常的，不用去找。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "方案：help center 只寫「可用的動作依區塊類型、裝置、方案、工作區設定、模型與推出進度而不同」，沒有列出哪個方案有哪些按鈕；同一個帳號在網頁和手機看到的按鈕也可能不同，以畫面上出現的為準。",
+            "裝置：全螢幕寫作區塊、存進 Library 與下載，在 2026 年 6 月 8 日的更新說明裡只列在網頁版；Library 本身也只在網頁版。手機 App 可以編輯區塊，看不到的功能請回到電腦的瀏覽器。",
+            "Library 空間：Library 開放給 Free、Go、Plus、Pro、Business；免費版 500 MB，Go 4 GB，Plus 與 Business 20 GB，Pro 100 GB。",
+            "模型：免費版與 Go 是 GPT-5.6 Luna，難題按 Think；Plus 以上是 GPT-5.6 Sol。改稿這種工作用預設的 Instant 就夠，不必開推理。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "heading",
+          "text": "示範一：把 800 字的社團公告放進去逐段修",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "情境：你替社區的登山社寫了一篇 800 字的秋季健行公告，內容都對，但太長、語氣太硬，還有幾個錯字。不要叫 ChatGPT 重寫，照下面 5 步做，改完的還是你的文章。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "貼草稿：開新對話，輸入上面那句「先原封不動放進可以編輯的區塊」的提示詞，換行後貼上全文。確認區塊裡的文字和原稿一樣，再往下。",
+            "反白一段：選取第三段（例如集合地點與時間那段），請 ChatGPT 改選取的文字，指令是「這段只保留時間、地點、費用三個資訊，改成三行條列，其他段落不要動」。只有選取的那一段會改；選取後出現的編輯入口長什麼樣子依裝置而不同，找不到就直接在輸入框說「我選取的那段」。",
+            "調長度與語氣：對整份下指令，例如「整篇縮到 600 字以內，口氣改成鄰居聊天的親切感，不要加表情符號」。要控制它不亂動，把「不要改」的事寫進指令：「人名、日期、金額一律不改。」",
+            "只挑錯：最後請它「只修錯字與標點，不改用詞和句子順序」，這一步等於以前 Canvas 的最後潤飾。改完自己從頭讀一遍，特別對一次日期與金額。",
+            "存下來：按區塊的複製，貼到你發公告的地方；長文可以切到全螢幕，存進 Library 或下載。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "舊 Canvas 工具列的五個捷徑（建議修改、調整長度、改閱讀程度、最後潤飾、加表情符號）在現在 help center 的寫作區塊說明裡沒有列出，你看到什麼按鈕以畫面為準；沒有按鈕也不影響，每一個都能用一句話做到：「給我修改建議，先不要改」「縮成一半」「改成國中生看得懂的程度」「只修錯字與標點」「在標題和每段開頭加一個相關的表情符號」。文字指令的好處是可以加條件，比按鈕更精準。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/chatgpt-canvas-writing/diagram-1.svg",
+          "alt": "上半部是寫作區塊全螢幕畫面的結構：左邊對話、右邊文件與一段反白、上方工具列；下半部是改稿五步流程：1 貼草稿、2 反白一段、3 下指令、4 復原或看版本、5 匯出。",
+          "width": 1600,
+          "height": 900,
+          "caption": "上半部看畫面怎麼分區，下半部照 1 到 5 的順序做；按鈕位置與名稱依方案、裝置與推出進度不同，以你的畫面為準。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+        },
+        {
+          "type": "heading",
+          "text": "版本：回到上一步、比較兩個版本",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "help center 列出的版本功能是「復原或重做最近一次 AI 協助的修改」：改壞了先按復原，連續改了好幾步就一步一步退回。修改會在幾秒後隨對話存檔，之後追問時 ChatGPT 會以最新版本為準；暫時對話裡的修改在對話結束後可能不會保留，改重要的稿子不要用暫時對話。舊 Canvas 的返回鍵可以一路回到更早的版本，現在的區塊沒有寫明能退幾步，所以下面三個習慣值得養成。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "大改之前先留底：把目前版本複製到記事本或另一個檔案，或先存進 Library，再下「整篇換一種語氣」這類大範圍指令。",
+            "要比較就叫它並列：在對話裡說「先不要改區塊，把第二段的兩種改法寫在對話裡給我看，一種正式、一種親切」，看完再指定「用第二種套到區塊」。區塊只會改一次，而且你看得到差在哪。",
+            "想知道它動了什麼：改完問「列出你剛剛改了哪幾處，一行一處」，對照著檢查，比自己找快。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "heading",
+          "text": "示範二：程式區塊改一段算分帳的小腳本",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "程式區塊是 ChatGPT 放程式碼的地方，和文字分開，上面會標示語言（例如 Python、JavaScript、HTML）。help center 列出的動作有：複製、直接在區塊裡編輯、請 ChatGPT 修改、開成全螢幕、在 Code 與 Preview 之間切換、執行 Python 並看主控台輸出、分享唯讀連結。Preview 支援 HTML 網頁、React 元件、SVG 圖、Mermaid 圖表、Vega 或 Vega-Lite 圖表；看不到 Preview 就表示那段程式不支援預覽。執行與預覽都在沙箱裡，程式要連外部資源時 ChatGPT 會先問你。"
+        },
+        {
+          "type": "paragraph",
+          "text": "情境：你寫了一段二十幾行的 Python，把旅行的每筆花費和付錢的人記在清單裡，算出每個人該補多少錢給誰，但跑出來的金額對不上。做法跟改文章一樣，先貼自己的程式，再一步一步指定。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "貼程式：「這是我寫的分帳腳本，先原封不動放進程式區塊，不要改。」貼上程式碼，確認語言標示是 Python。",
+            "先加註解再除錯：「每個函式上方加一行中文註解說明用途，不要改邏輯。」看懂自己的程式之後，再說「找出金額對不上的原因，只改有問題的那幾行，並在對話裡說明錯在哪」。",
+            "執行驗證：按區塊的 Run，用你真實的三筆花費當測試資料，看主控台輸出對不對；跑不停可以按停止。",
+            "換語言（有需要才做）：「把這段轉成 JavaScript，保留註解。」舊 Canvas 的轉語言捷徑只支援 JavaScript、TypeScript、Python、Java、C++、PHP，現在用文字指令沒有這個清單限制，但轉完的程式一樣要自己跑過。",
+            "交出去：複製程式碼，或分享唯讀連結給一起分帳的朋友看。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "程式區塊也是 2026 年才變成這樣：2 月 19 日的更新讓它可以在對話裡直接編寫、編輯、預覽，並用分割畫面審查；2 月 27 日起在程式區塊裡畫的流程圖與圖表可以匯出成圖片。要寫整個專案而不是改一段腳本，OpenAI 另有 Codex 這條產品線，不在本文範圍。"
+        },
+        {
+          "type": "heading",
+          "text": "匯出與分享：複製、下載、Library、Email",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "寫作區塊的出口有四個。第一是複製，任何區塊都有。第二是下載：2026 年 6 月 8 日的更新說全螢幕寫作區塊加入下載支援，但沒有寫明檔案格式，以你畫面上的下載選單為準。第三是存進 Library：支援的文件草稿可以存到 Library，之後在左側欄的 Library 找到、再編輯，或勾選檔案按 Download 下載。第四是寄 Email：連結 Gmail 或 Outlook 之後，Plus、Pro、Business、Enterprise 的網頁版可以請 ChatGPT 起草並直接寄出，寄之前你會先看到草稿。程式區塊則是複製、唯讀分享連結、圖表匯出成圖片。舊 Canvas 工具列上的分享按鈕是同一個概念，分享的是文件本身而不是整段對話。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "需求",
+            "在寫作或程式區塊怎麼做",
+            "一般對話怎麼做",
+            "哪個好"
+          ],
+          "rows": [
+            [
+              "只改一段、其他不動",
+              "選取那段，直接下指令",
+              "把那段貼出來請它改，再自己貼回原文",
+              "區塊：少一次複製貼上，也不會動到別段"
+            ],
+            [
+              "縮短或加長整篇",
+              "對整份下指令，例如縮到 600 字",
+              "一樣下指令，它會重貼整篇",
+              "都可以；長文用區塊，看得到改了哪裡"
+            ],
+            [
+              "改語氣、改閱讀程度",
+              "對整份或某段下指令",
+              "下指令",
+              "差不多；想先看兩種版本再選，用對話"
+            ],
+            [
+              "改壞了要回上一步",
+              "復原或重做",
+              "往上捲找舊回覆，自己複製",
+              "區塊"
+            ],
+            [
+              "比較兩個版本",
+              "區塊只存最新一版",
+              "請它把兩個版本並列在對話裡",
+              "對話"
+            ],
+            [
+              "改一段程式並跑跑看",
+              "程式區塊按 Run，看主控台",
+              "貼回自己的電腦跑",
+              "區塊（Python）；其他語言回自己電腦跑"
+            ],
+            [
+              "只是問問題、查資料",
+              "用不到",
+              "直接問",
+              "對話"
+            ],
+            [
+              "存檔與分享",
+              "複製、下載、Library、唯讀連結",
+              "複製回覆，或分享整個對話",
+              "區塊：分享的是文件本身，不會連對話一起給出去"
+            ]
+          ],
+          "caption": "2026 年 9 月依 OpenAI help center 整理；按鈕名稱與可用功能依方案、裝置與推出進度不同，以畫面為準。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先貼自己的草稿再改，比從零生成更像自己寫的",
+          "text": "從零請 ChatGPT 生一篇公告，用字與節奏都是它的，你得花更多時間改回自己的口吻，而且容易留下它自己編出來的細節。把自己寫的草稿貼進區塊，指令只講「改哪裡、怎麼改、什麼不要動」，改完的文章保留你的資訊與語氣，讀的人也看得出是你寫的。事實、日期、金額每一次修改後都要重新對一次：區塊改得越順手，越容易漏看它順手「修」掉的正確內容。"
+        },
+        {
+          "type": "link",
+          "text": "用 ChatGPT 寫 Email：中英文商務信、道歉信、催款信的提示詞範本",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-for-email-writing"
+        },
+        {
+          "type": "link",
+          "text": "用 ChatGPT 改履歷與求職信：從自己的版本改起，不要從零生成",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-for-resume-cover-letter"
+        },
+        {
+          "type": "link",
+          "text": "AI 工具怎麼挑：依你要做的事選工具，不看排行榜",
+          "url": "https://mokaair.com/zh-TW/life/ai-tools-choose-by-task"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI Help Center：Working with writing blocks and code blocks in ChatGPT（寫作區塊與程式區塊的動作、格式、預覽、執行、存檔）",
+          "url": "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Model Release Notes（2026 年 5 月 28 日 GPT-5.5 Instant 更新：Canvas 移除、改由寫作區塊與程式區塊提供；2026 年 7 月 9 日 GPT-5.6 Sol）",
+          "url": "https://help.openai.com/en/articles/9624314-model-release-notes",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Release Notes（2026 年 6 月 8 日全螢幕寫作區塊、Library、下載、寄 Email；2026 年 2 月 19 日與 2 月 27 日程式區塊；2024 年 12 月 10 日 Canvas 開放免費版與 Python 執行；2025 年 2 月 6 日 Canvas 分享）",
+          "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI：Introducing canvas（2024 年 10 月 3 日公告：並排視窗、反白局部修改、返回鍵、寫作與程式捷徑、轉語言清單）",
+          "url": "https://openai.com/index/introducing-canvas/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Academy：Canvas（2025 年 9 月 8 日發布、2026 年 5 月 29 日更新：/canvas、加號選單、版本紀錄、匯出與分享）",
+          "url": "https://academy.openai.com/public/clubs/work-users-ynjqu/resources/canvas",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：File storage and Library in ChatGPT（Library 開放方案、各方案空間、只在網頁版、下載方式）",
+          "url": "https://help.openai.com/en/articles/20001052-file-storage-and-library-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：GPT-5.6 and GPT-6 Pro in ChatGPT（免費版與 Go 為 GPT-5.6 Luna、付費方案為 GPT-5.6 Sol、Think 與 Instant）",
+          "url": "https://help.openai.com/en/articles/20001354-gpt-5-6-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Retiring GPT-4o and other ChatGPT models（Canvas 原本搭配的 GPT-4o 於 2026 年 2 月 13 日自 ChatGPT 下架）",
+          "url": "https://help.openai.com/en/articles/20001051-retiring-gpt-4o-and-other-chatgpt-models",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}
