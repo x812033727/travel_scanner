@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">要不要付費、付哪一家：五種使用者的決策圖 / Free or paid, and which one: a decision tree for five kinds of users</title>
+  <desc id="desc">決策樹由上往下分三層。最上面一格：先用滿免費版兩週，再看你最常做什麼。第二層是五種情境，每種下面先問免費版卡到了嗎，再給建議。一、偶爾問問題：通常不會卡，ChatGPT 文字對話不限次數，Claude 與 Gemini 每 5 小時重置，三家免費版都能問；建議免費版就好，三家都開帳號試一輪，留最順手的一家，偶爾要旗艦模型再看月繳、隨時可取消的入門方案。二、每天寫作與翻譯：常卡，Claude 免費版 5 小時內的訊息額度先用完，ChatGPT 每天 3 個檔案，改稿要長上下文；建議預算最低選 ChatGPT Go 美國 8 美元或 Google AI Plus 台幣 165 元，重視改稿品質選 Claude Pro 20 美元、年繳折算 17 美元。三、大量讀文件：看上下文視窗與檔案數，Gemini 免費版上下文視窗只有 32k token，ChatGPT 每天 3 個檔案，長 PDF 讀不完就是卡了；建議 Google AI Pro 台幣 650 元，上下文放大到 100 萬 token，或 Claude Pro 20 美元，上下文 200k token，一個對話最多 20 個檔案、單檔 500 MB。四、寫程式：代理工具都在付費版，Claude Code 只在付費版，ChatGPT Plus 才有 Sol 與 Codex，旗艦模型都要付費；建議 Claude Pro 20 美元含 Claude Code 與 Cowork，或 ChatGPT Plus 20 美元有 GPT-5.6 Sol 與 Codex，先買一個月看額度夠不夠。五、做圖做影片：免費版產圖有上限，影片生成要付費，Gemini 的影片生成從 Google AI Plus 開始，數字以官網為準；建議 AI Plus 台幣 165 元有影片生成與 Flow 200 點，AI Pro 台幣 650 元有 Flow 1,000 點、用量 4 倍，ChatGPT Go 產圖 10 倍。最下面三行補充：上一階給每天大量使用的人，ChatGPT Pro 每月 100 或 200 美元、Claude Max 100 或 200 美元、Google AI Ultra 台幣 3,300 或 6,500 元，一般使用者先從入門方案開始；美元為美國定價，台幣為 Gemini 台灣訂閱頁，ChatGPT 與 Claude 的台幣價格以登入後看到的為準，App 內購以當地貨幣計價；三家都可月繳、隨時取消，只有 Claude Pro 有年繳折扣，方案與價格依 2026 年 9 月官網查證，之後可能變動。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">要不要付費、付哪一家：五種使用者的決策圖（2026 年 9 月查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Free or paid, and which one: a decision tree for five kinds of users</text>
+
+  <!-- start -->
+  <rect x="440" y="104" width="720" height="52" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="800" y="138" font-size="20" font-weight="700" fill="#0B4F4D" text-anchor="middle">先用滿免費版兩週，再看你最常做什麼</text>
+  <path d="M 800 158 L 800 170" stroke="#5C6B6B" stroke-width="4"/>
+  <path d="M 184 170 L 1416 170" stroke="#5C6B6B" stroke-width="4"/>
+  <path d="M 184 170 L 184 184" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 492 170 L 492 184" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 800 170 L 800 184" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 1108 170 L 1108 184" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 1416 170 L 1416 184" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- column 1: occasional questions -->
+  <rect x="48" y="190" width="272" height="64" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="184" y="218" font-size="20" font-weight="700" fill="#1F4E73" text-anchor="middle">偶爾問問題</text>
+  <text x="184" y="242" font-size="15" fill="#5C6B6B" text-anchor="middle">Occasional questions</text>
+  <path d="M 184 256 L 184 280" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="48" y="286" width="272" height="196" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="184" y="316" font-size="18" font-weight="700" fill="#8A4A16" text-anchor="middle">免費版卡到了嗎？</text>
+  <text x="72" y="346" font-size="16" fill="#102A2B">通常不會卡</text>
+  <text x="72" y="372" font-size="16" fill="#102A2B">ChatGPT 文字對話不限次數</text>
+  <text x="72" y="398" font-size="16" fill="#102A2B">Claude 每 5 小時重置</text>
+  <text x="72" y="424" font-size="16" fill="#102A2B">Gemini 每 5 小時重設</text>
+  <text x="72" y="450" font-size="16" fill="#102A2B">三家免費版都能問</text>
+  <path d="M 184 484 L 184 508" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="48" y="514" width="272" height="200" rx="14" fill="#E6F2EC" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="184" y="544" font-size="18" font-weight="700" fill="#1F5A40" text-anchor="middle">建議</text>
+  <text x="72" y="574" font-size="16" font-weight="700" fill="#102A2B">免費版就好</text>
+  <text x="72" y="600" font-size="16" fill="#102A2B">三家都開帳號試一輪</text>
+  <text x="72" y="626" font-size="16" fill="#102A2B">留最順手的一家</text>
+  <text x="72" y="652" font-size="16" fill="#102A2B">偶爾要旗艦模型再看</text>
+  <text x="72" y="678" font-size="16" fill="#102A2B">月繳、隨時可取消的入門方案</text>
+
+  <!-- column 2: daily writing and translation -->
+  <rect x="356" y="190" width="272" height="64" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="492" y="218" font-size="20" font-weight="700" fill="#1F4E73" text-anchor="middle">每天寫作與翻譯</text>
+  <text x="492" y="242" font-size="15" fill="#5C6B6B" text-anchor="middle">Daily writing and translation</text>
+  <path d="M 492 256 L 492 280" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="356" y="286" width="272" height="196" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="492" y="316" font-size="18" font-weight="700" fill="#8A4A16" text-anchor="middle">免費版卡到了嗎？</text>
+  <text x="380" y="346" font-size="16" fill="#B8442D">常卡</text>
+  <text x="380" y="372" font-size="16" fill="#102A2B">Claude 免費版 5 小時內</text>
+  <text x="380" y="398" font-size="16" fill="#102A2B">的訊息額度先用完</text>
+  <text x="380" y="424" font-size="16" fill="#102A2B">ChatGPT 每天 3 個檔案</text>
+  <text x="380" y="450" font-size="16" fill="#102A2B">改稿要長上下文</text>
+  <path d="M 492 484 L 492 508" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="356" y="514" width="272" height="200" rx="14" fill="#E6F2EC" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="492" y="544" font-size="18" font-weight="700" fill="#1F5A40" text-anchor="middle">建議</text>
+  <text x="380" y="574" font-size="16" fill="#102A2B">預算最低：ChatGPT Go</text>
+  <text x="380" y="600" font-size="16" fill="#102A2B">美國 8 美元，或 AI Plus</text>
+  <text x="380" y="626" font-size="16" fill="#102A2B">台幣 165 元</text>
+  <text x="380" y="652" font-size="16" fill="#102A2B">重視改稿品質：Claude Pro</text>
+  <text x="380" y="678" font-size="16" fill="#102A2B">20 美元，年繳折算 17 美元</text>
+
+  <!-- column 3: reading long documents -->
+  <rect x="664" y="190" width="272" height="64" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="218" font-size="20" font-weight="700" fill="#1F4E73" text-anchor="middle">大量讀文件</text>
+  <text x="800" y="242" font-size="15" fill="#5C6B6B" text-anchor="middle">Reading long documents</text>
+  <path d="M 800 256 L 800 280" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="664" y="286" width="272" height="196" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="800" y="316" font-size="18" font-weight="700" fill="#8A4A16" text-anchor="middle">免費版卡到了嗎？</text>
+  <text x="688" y="346" font-size="16" fill="#102A2B">看上下文視窗與檔案數</text>
+  <text x="688" y="372" font-size="16" fill="#102A2B">Gemini 免費版上下文視窗</text>
+  <text x="688" y="398" font-size="16" fill="#B8442D">只有 32k token</text>
+  <text x="688" y="424" font-size="16" fill="#102A2B">ChatGPT 每天 3 個檔案</text>
+  <text x="688" y="450" font-size="16" fill="#102A2B">長 PDF 讀不完就是卡了</text>
+  <path d="M 800 484 L 800 508" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="664" y="514" width="272" height="200" rx="14" fill="#E6F2EC" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="800" y="544" font-size="18" font-weight="700" fill="#1F5A40" text-anchor="middle">建議</text>
+  <text x="688" y="574" font-size="16" fill="#102A2B">Google AI Pro 台幣 650 元</text>
+  <text x="688" y="600" font-size="16" fill="#102A2B">上下文放大到 100 萬 token</text>
+  <text x="688" y="626" font-size="16" fill="#102A2B">或 Claude Pro 20 美元</text>
+  <text x="688" y="652" font-size="16" fill="#102A2B">上下文 200k token，一個對話</text>
+  <text x="688" y="678" font-size="16" fill="#102A2B">最多 20 個檔案、單檔 500 MB</text>
+
+  <!-- column 4: coding -->
+  <rect x="972" y="190" width="272" height="64" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1108" y="218" font-size="20" font-weight="700" fill="#1F4E73" text-anchor="middle">寫程式</text>
+  <text x="1108" y="242" font-size="15" fill="#5C6B6B" text-anchor="middle">Coding</text>
+  <path d="M 1108 256 L 1108 280" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="972" y="286" width="272" height="196" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1108" y="316" font-size="18" font-weight="700" fill="#8A4A16" text-anchor="middle">免費版卡到了嗎？</text>
+  <text x="996" y="346" font-size="16" fill="#B8442D">代理工具都在付費版</text>
+  <text x="996" y="372" font-size="16" fill="#102A2B">Claude Code 只在付費版</text>
+  <text x="996" y="398" font-size="16" fill="#102A2B">ChatGPT Plus 才有 Sol</text>
+  <text x="996" y="424" font-size="16" fill="#102A2B">與 Codex 代理工具</text>
+  <text x="996" y="450" font-size="16" fill="#102A2B">旗艦模型都要付費</text>
+  <path d="M 1108 484 L 1108 508" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="972" y="514" width="272" height="200" rx="14" fill="#E6F2EC" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1108" y="544" font-size="18" font-weight="700" fill="#1F5A40" text-anchor="middle">建議</text>
+  <text x="996" y="574" font-size="16" fill="#102A2B">Claude Pro 20 美元</text>
+  <text x="996" y="600" font-size="16" fill="#102A2B">含 Claude Code 與 Cowork</text>
+  <text x="996" y="626" font-size="16" fill="#102A2B">或 ChatGPT Plus 20 美元</text>
+  <text x="996" y="652" font-size="16" fill="#102A2B">GPT-5.6 Sol 與 Codex</text>
+  <text x="996" y="678" font-size="16" fill="#102A2B">先買一個月看額度夠不夠</text>
+
+  <!-- column 5: images and video -->
+  <rect x="1280" y="190" width="272" height="64" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1416" y="218" font-size="20" font-weight="700" fill="#1F4E73" text-anchor="middle">做圖做影片</text>
+  <text x="1416" y="242" font-size="15" fill="#5C6B6B" text-anchor="middle">Images and video</text>
+  <path d="M 1416 256 L 1416 280" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="1280" y="286" width="272" height="196" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1416" y="316" font-size="18" font-weight="700" fill="#8A4A16" text-anchor="middle">免費版卡到了嗎？</text>
+  <text x="1304" y="346" font-size="16" fill="#B8442D">免費版產圖有上限</text>
+  <text x="1304" y="372" font-size="16" fill="#102A2B">影片生成要付費</text>
+  <text x="1304" y="398" font-size="16" fill="#102A2B">Gemini 的影片生成</text>
+  <text x="1304" y="424" font-size="16" fill="#102A2B">從 Google AI Plus 開始</text>
+  <text x="1304" y="450" font-size="16" fill="#102A2B">數字以官網為準</text>
+  <path d="M 1416 484 L 1416 508" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="1280" y="514" width="272" height="200" rx="14" fill="#E6F2EC" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1416" y="544" font-size="18" font-weight="700" fill="#1F5A40" text-anchor="middle">建議</text>
+  <text x="1304" y="574" font-size="16" fill="#102A2B">AI Plus 台幣 165 元：</text>
+  <text x="1304" y="600" font-size="16" fill="#102A2B">影片生成、Flow 200 點</text>
+  <text x="1304" y="626" font-size="16" fill="#102A2B">AI Pro 台幣 650 元：</text>
+  <text x="1304" y="652" font-size="16" fill="#102A2B">Flow 1,000 點、用量 4 倍</text>
+  <text x="1304" y="678" font-size="16" fill="#102A2B">ChatGPT Go：產圖 10 倍</text>
+
+  <!-- notes -->
+  <text x="48" y="756" font-size="15" fill="#5C6B6B">上一階給每天大量使用的人：ChatGPT Pro 每月 100 或 200 美元、Claude Max 100 或 200 美元、Google AI Ultra 台幣 3,300 或 6,500 元；一般使用者先從入門方案開始。</text>
+  <text x="48" y="784" font-size="15" fill="#5C6B6B">美元為美國定價，台幣為 Gemini 台灣訂閱頁；ChatGPT 與 Claude 的台幣價格以登入後看到的為準，App 內購以當地貨幣計價。</text>
+  <text x="48" y="812" font-size="15" fill="#5C6B6B">三家都可月繳、隨時取消；只有 Claude Pro 有年繳折扣。方案與價格依 2026 年 9 月官網查證，之後可能變動。</text>
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
