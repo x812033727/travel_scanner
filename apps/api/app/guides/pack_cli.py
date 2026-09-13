@@ -16,12 +16,11 @@ import sys
 from pathlib import Path
 from typing import cast
 
-import httpx
-
 from app.guides.content_pack import default_directory
 from app.guides.pack_ingest import (
     PackIngestError,
     Problem,
+    commons_client,
     errors,
     ingest,
     lint_all,
@@ -68,7 +67,7 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "ingest":
         try:
-            with httpx.Client(timeout=60, follow_redirects=True) as client:
+            with commons_client() as client:
                 report = ingest(
                     args.workdir,
                     args.slug,

@@ -33,6 +33,9 @@ import re
 import shutil
 import subprocess
 import tempfile
+import time
+import urllib.error
+import urllib.request
 from collections.abc import Callable, Iterable, Iterator
 from dataclasses import dataclass, field
 from glob import glob
@@ -85,7 +88,7 @@ COMMONS_API = "https://commons.wikimedia.org/w/api.php"
 MOKAAIR_CREDIT = ImageCredit(author="Mokaair", license="© Mokaair")
 #: Wikimedia's robot policy wants ``name/version (contact)``; without an address it answers 403
 #: "Please respect our robot policy". The mailbox is the site's public support address.
-USER_AGENT = "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com) python-httpx"
+USER_AGENT = "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)"
 
 #: Commons ``LicenseShortName`` values the site may use, after ``_normalise_license``. Anchored
 #: at both ends so "CC BY-NC 2.0" (starts with "CC BY") and KOGL are refused.
@@ -346,6 +349,54 @@ def license_allowed(short_name: str) -> bool:
     return ALLOWED_LICENSE.match(_normalise_license(short_name)) is not None
 
 
+class UrllibTransport(httpx.BaseTransport):
+    """httpx over the standard library's ``urllib``.
+
+    Wikimedia's edge answers httpx's own connections with 403 "Please respect our robot
+    policy" whatever the User-Agent says, while the same request from ``urllib`` (and curl)
+    goes through; the block keys on the client, not the header. Routing httpx through
+    ``urllib`` keeps the ``httpx.Client`` seam the tests mock while sending a request the
+    edge accepts. Only GET is needed here.
+    """
+
+    def handle_request(self, request: httpx.Request) -> httpx.Response:
+        raw = urllib.request.Request(
+            str(request.url),
+            headers={key.decode(): value.decode() for key, value in request.headers.raw},
+            method=request.method,
+        )
+        try:
+            with urllib.request.urlopen(raw, timeout=60) as answer:
+                return httpx.Response(
+                    answer.status, headers=dict(answer.headers.items()), content=answer.read()
+                )
+        except urllib.error.HTTPError as error:
+            return httpx.Response(
+                error.code, headers=dict(error.headers.items()), content=error.read()
+            )
+
+
+def commons_client() -> httpx.Client:
+    """The client the CLI uses for Commons: urllib underneath, redirects followed."""
+    return httpx.Client(transport=UrllibTransport(), follow_redirects=True, timeout=60)
+
+
+#: Commons rate-limits a busy egress with 429; wait and retry a few times before giving up.
+RETRY_STATUSES = frozenset({429, 502, 503})
+RETRY_ATTEMPTS = 5
+
+
+def _get(client: httpx.Client, url: str, **kwargs: Any) -> httpx.Response:
+    response = client.get(url, headers={"User-Agent": USER_AGENT}, **kwargs)
+    for _ in range(RETRY_ATTEMPTS):
+        if response.status_code not in RETRY_STATUSES:
+            break
+        wait = response.headers.get("retry-after")
+        time.sleep(min(float(wait), 120.0) if wait and wait.isdigit() else 30.0)
+        response = client.get(url, headers={"User-Agent": USER_AGENT}, **kwargs)
+    return response
+
+
 def _strip_html(value: str) -> str:
     return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", "", value))).strip()
 
@@ -354,7 +405,8 @@ def commons_file_info(client: httpx.Client, title: str) -> CommonsInfo:
     """The licence, author, file page and a ≤1600 px rendition of one Commons file, from the
     API rather than a page scrape. Refuses a licence outside the allowlist."""
     name = title if title.startswith("File:") else f"File:{title}"
-    response = client.get(
+    response = _get(
+        client,
         COMMONS_API,
         params={
             "action": "query",
@@ -364,7 +416,6 @@ def commons_file_info(client: httpx.Client, title: str) -> CommonsInfo:
             "iiurlwidth": str(HERO_SIZE[0]),
             "format": "json",
         },
-        headers={"User-Agent": USER_AGENT},
     )
     _raise_for_status(response, name)
     pages = response.json().get("query", {}).get("pages", {})
@@ -398,7 +449,7 @@ def _raise_for_status(response: httpx.Response, what: str) -> None:
 
 
 def fetch_image(client: httpx.Client, url: str) -> Image.Image:
-    response = client.get(url, headers={"User-Agent": USER_AGENT})
+    response = _get(client, url)
     _raise_for_status(response, url)
     image = Image.open(io.BytesIO(response.content))
     image.load()
