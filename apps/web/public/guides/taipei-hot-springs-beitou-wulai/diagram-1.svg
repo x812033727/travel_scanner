@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','Noto Sans KR','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">台北車站到北投、新北投與烏來的溫泉路線圖 / Route map from Taipei Main Station to the Beitou and Wulai hot springs</title>
+  <desc id="desc">上方：淡水信義線從台北車站到北投（NT$30、約 22 分），北投站轉新北投支線到新北投（全程 NT$35、約 28 分）；新北投站周邊有免費的溫泉博物館與地熱谷，公共露天溫泉整修中。下方：淡水信義線一站到中正紀念堂轉松山新店線到新店（NT$30、約 21 分），再轉 849 公車（虛線，05:30 至 21:40，每 15 至 20 分一班）到烏來；烏來有老街、約 1.6 公里的台車與雲仙樂園纜車。Top: the red Tamsui-Xinyi Line from Taipei Main Station to Beitou (NT$30, about 22 minutes) and the Xinbeitou branch to Xinbeitou (NT$35, about 28 minutes in total), with the free Hot Spring Museum and Thermal Valley nearby and the public outdoor bath under renovation. Bottom: one stop to Chiang Kai-shek Memorial Hall, the green Songshan-Xindian Line to Xindian (NT$30, about 21 minutes), then bus 849 (dashed, 05:30 to 21:40, every 15 to 20 minutes) to Wulai, where the old street, the 1.6 km log cart and the Yun Hsien cable car are.</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="60" y="62" font-size="36" font-weight="700" fill="#102A2B">台北車站 → 北投・新北投 ／ 新店 → 烏來　溫泉路線圖</text>
+  <text x="60" y="96" font-size="20" fill="#5C6B6B">Taipei Main Station to the Beitou and Wulai hot springs · 示意圖，非精確比例 · 票價為單程全票，2026 年 9 月查證</text>
+
+  <!-- Tamsui-Xinyi Line to Beitou, then the Xinbeitou branch -->
+  <path d="M 300 460 C 420 460, 470 300, 620 300" fill="none" stroke="#B8442D" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 620 300 L 880 300" fill="none" stroke="#B8442D" stroke-width="7" stroke-linecap="round"/>
+  <!-- Tamsui-Xinyi Line one stop, then Songshan-Xindian Line to Xindian -->
+  <path d="M 300 500 C 380 500, 380 640, 460 640" fill="none" stroke="#B8442D" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 460 640 L 780 640" fill="none" stroke="#2E7D5B" stroke-width="12" stroke-linecap="round"/>
+  <!-- Bus 849 -->
+  <path d="M 780 640 L 1120 640" fill="none" stroke="#D97A2B" stroke-width="8" stroke-dasharray="20 14" stroke-linecap="round"/>
+
+  <!-- Taipei Main Station -->
+  <rect x="60" y="430" width="240" height="100" rx="20" fill="#0D6B68"/>
+  <text x="180" y="472" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle">台北車站</text>
+  <text x="180" y="504" font-size="18" fill="#E6F2F1" text-anchor="middle">Taipei Main Station</text>
+
+  <!-- Nodes on the Beitou branch -->
+  <circle cx="620" cy="300" r="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="7"/>
+  <text x="620" y="345" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">北投 Beitou</text>
+  <text x="620" y="372" font-size="17" fill="#5C6B6B" text-anchor="middle">NT$30 · 約 22 分 · 同月台轉支線</text>
+  <circle cx="880" cy="300" r="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="7"/>
+  <text x="862" y="255" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">新北投 Xinbeitou</text>
+  <text x="750" y="284" font-size="16" font-weight="700" fill="#B8442D" text-anchor="middle">新北投支線 Xinbeitou Branch</text>
+  <text x="880" y="345" font-size="17" fill="#5C6B6B" text-anchor="middle">全程 NT$35 · 約 28 分</text>
+  <text x="480" y="422" font-size="19" font-weight="700" fill="#B8442D">淡水信義線 Tamsui-Xinyi Line</text>
+
+  <!-- Nodes on the Xindian leg -->
+  <circle cx="460" cy="640" r="12" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="6"/>
+  <text x="460" y="690" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">中正紀念堂 轉乘 CKS Memorial Hall</text>
+  <text x="80" y="656" font-size="19" font-weight="700" fill="#2E7D5B">松山新店線 Songshan-Xindian</text>
+  <circle cx="780" cy="640" r="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="7"/>
+  <text x="780" y="572" font-size="17" fill="#5C6B6B" text-anchor="middle">NT$30 · 約 21 分</text>
+  <text x="780" y="602" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">新店 Xindian</text>
+  <text x="960" y="692" font-size="17" font-weight="700" fill="#9A4F12" text-anchor="middle">849 公車 Bus 849 · 05:30–21:40 · 每 15–20 分一班</text>
+  <circle cx="1120" cy="640" r="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="7"/>
+  <text x="1120" y="602" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">烏來 Wulai</text>
+  <text x="1120" y="572" font-size="16" fill="#5C6B6B" text-anchor="middle">849 總站 · 老街口</text>
+
+  <!-- Around Xinbeitou -->
+  <rect x="980" y="140" width="580" height="270" rx="20" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1010" y="180" font-size="21" font-weight="700" fill="#0D6B68">新北投站周邊 Around Xinbeitou Station</text>
+  <text x="1010" y="216" font-size="17" fill="#102A2B">溫泉博物館 Hot Spring Museum：免費 · 週二至日 10:00–18:00</text>
+  <text x="1010" y="242" font-size="16" fill="#5C6B6B">步行約 5 分 · 週一休 Closed Mon · 17:45 停止入館</text>
+  <text x="1010" y="278" font-size="17" fill="#102A2B">地熱谷 Thermal Valley：免費 · 週二至日 09:00–17:00</text>
+  <text x="1010" y="304" font-size="16" fill="#5C6B6B">週一休 Closed Mon · 只能參觀 Viewing only</text>
+  <text x="1010" y="340" font-size="17" fill="#B8442D">露天溫泉 Public outdoor bath：整修中 Under renovation</text>
+  <text x="1010" y="366" font-size="16" fill="#5C6B6B">預計 2026 年 9 月 26 日完工 · 整修前 NT$60 · 須泳裝＋泳帽</text>
+  <text x="1010" y="394" font-size="16" fill="#5C6B6B">私人湯屋 Private baths：以各家為準 Varies by venue</text>
+
+  <!-- Wulai -->
+  <rect x="760" y="730" width="800" height="118" rx="20" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="790" y="768" font-size="21" font-weight="700" fill="#9A4F12">烏來 Wulai</text>
+  <text x="790" y="798" font-size="16" fill="#102A2B">老街 Old Street 週一至五 10:00–17:00 · 週末 10:00–18:00　台車 Log cart 約 1.6 km · 平日 08:00–17:00</text>
+  <text x="790" y="826" font-size="16" fill="#102A2B">纜車 Cable car 平日 NT$250 · 假日 NT$300 · 09:00–17:00（假日至 17:30）　瀑布 Waterfall 免費 Free</text>
+
+  <!-- legend -->
+  <g font-size="16" fill="#102A2B">
+    <line x1="60" y1="876" x2="110" y2="876" stroke="#B8442D" stroke-width="10" stroke-linecap="round"/>
+    <text x="120" y="882">淡水信義線 Tamsui-Xinyi Line</text>
+    <line x1="360" y1="876" x2="410" y2="876" stroke="#2E7D5B" stroke-width="10" stroke-linecap="round"/>
+    <text x="420" y="882">松山新店線 Songshan-Xindian Line</text>
+    <line x1="700" y1="876" x2="750" y2="876" stroke="#D97A2B" stroke-width="7" stroke-dasharray="16 10" stroke-linecap="round"/>
+    <text x="760" y="882">849 公車 Bus 849（虛線）</text>
+    <text x="1540" y="882" fill="#8A8F8F" text-anchor="end">© Mokaair 2026</text>
+  </g>
+</svg>
