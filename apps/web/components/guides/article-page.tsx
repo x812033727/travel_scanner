@@ -14,6 +14,7 @@ import {
   guideHref, guideListHref, readingMinutes,
   type GuideArticleState, type GuideKind, type GuideSummary, type PublishedGuide,
 } from "@/lib/guides";
+import { getAdsenseSlot } from "@/lib/adsense.server";
 import { getGuideArticle, getGuideList } from "@/lib/guides.server";
 import { localeUrl, siteUrl } from "@/lib/seo";
 import { breadcrumbs, type Crumb } from "@/lib/structured-data";
@@ -196,6 +197,9 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
     );
   }
 
+  // Read only past the guard above: an unavailable or untranslated article is a "no content"
+  // screen, which the programme policies forbid carrying ads, so it never even asks.
+  const adsense = await getAdsenseSlot();
   const kindLabels = { intel: t("guides.intel"), howto: t("guides.howto"), life: t("guides.life") };
   // A card is labelled by its section and nothing else, so the kind labels are the whole set.
   const card: GuideCardLabels = kindLabels;
@@ -221,6 +225,7 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
     sources: t("guides.sources"), checkedOn: t("guides.checkedOn"),
     destination: t("guides.destination"), otherLanguages: t("guides.otherLanguages"),
     contents: t("guides.contents"),
+    adLabel: t("guides.adLabel"),
     disclosure: ts("disclosure"),
     blocks: {
       imageCredit: t("guides.imageCredit"),
@@ -258,6 +263,7 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
           related={related}
           readingTime={t("guides.readingTime", { minutes: readingMinutes(state.document) })}
           labels={labels}
+          adsense={adsense}
         />
         <p className="mt-10">
           <Link className="inline-flex min-h-11 items-center text-[var(--teal)] underline" href={listing.path}>

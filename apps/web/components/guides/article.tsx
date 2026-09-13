@@ -1,5 +1,7 @@
 import { Fragment, type ReactNode } from "react";
+import { ArticleAdSlot } from "@/components/ads/article-ad-slot";
 import { ContentBlocks, ImageCreditLine, type ContentBlockLabels } from "@/components/content-blocks";
+import { adsenseSplit, type AdsenseConfig } from "@/lib/adsense";
 import { DestinationAffiliateOptions } from "@/components/destination-affiliate-options";
 import { Link } from "@/i18n/navigation";
 import { localeLabels, type Locale } from "@/i18n/routing";
@@ -20,6 +22,8 @@ export type GuideArticleLabels = Record<GuideKind, string> & {
   otherLanguages: string;
   /** The table of contents heading. */
   contents: string;
+  /** Above an ad unit. Policy allows "廣告"/"Advertisements" and nothing softer. */
+  adLabel: string;
   /** One line under the hero whenever the body itself carries partner buttons, so the
    *  disclosure comes before the first button rather than only inside the end panel. */
   disclosure: string;
@@ -42,13 +46,15 @@ export const CONTENTS_MIN_HEADINGS = 3;
  * synchronous and renders directly under React Testing Library.
  */
 export function GuideArticle({
-  state, labels, related, readingTime,
+  state, labels, related, readingTime, adsense,
 }: {
   state: GuideArticleState & { document: NonNullable<GuideArticleState["document"]> };
   labels: GuideArticleLabels;
   related?: ReactNode;
   /** Already worded by the page ("about 5 min"); omitted when the page does not want it. */
   readingTime?: string | null;
+  /** Disabled, or absent, means no slot AND no reserved space anywhere in the body. */
+  adsense?: AdsenseConfig;
 }) {
   const { document } = state;
   // First publication is never drawn; it is only the date "updated" has to beat before it
@@ -69,6 +75,13 @@ export function GuideArticle({
     return destination ? [{ segment, offer: segment.offer, destination }] : [];
   });
   const inlineModules = new Set(islands.map((island) => island.offer.module));
+
+  // One in-article unit, in the first slice only: past the hero (the LCP element) and with a
+  // run of body left before the editor's first partner button. `null` — a short article, or
+  // one with no level-2 heading — simply carries no ad.
+  const adSplit = adsense?.enabled && segments.length
+    ? adsenseSplit(segments[0].blocks)
+    : null;
 
   // Partner buttons only where they are contextual: a destination the article belongs to,
   // a module its topics point at, and a notice that still applies. An expired fare deal
@@ -152,9 +165,25 @@ export function GuideArticle({
 
       {segments.map((segment, index) => {
         const island = islands.find((entry) => entry.segment === segment);
+        const split = index === 0 ? adSplit : null;
         return (
           <Fragment key={index}>
-            {segment.blocks.length ? (
+            {split ? (
+              <>
+                <ContentBlocks blocks={split.before} labels={labels.blocks} headingStart={segment.headingStart} />
+                <ArticleAdSlot
+                  publisherId={adsense?.publisher_id ?? ""}
+                  slotId={adsense?.slot_id ?? ""}
+                  label={labels.adLabel}
+                  cmpEnabled={Boolean(adsense?.cmp_enabled)}
+                />
+                <ContentBlocks
+                  blocks={split.after}
+                  labels={labels.blocks}
+                  headingStart={segment.headingStart + split.headingStart}
+                />
+              </>
+            ) : segment.blocks.length ? (
               <ContentBlocks blocks={segment.blocks} labels={labels.blocks} headingStart={segment.headingStart} />
             ) : null}
             {island ? (

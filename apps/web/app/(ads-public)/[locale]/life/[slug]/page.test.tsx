@@ -10,6 +10,7 @@ import LifeArticlePage, { generateMetadata } from "./page";
 
 const mocks = vi.hoisted(() => ({ article: vi.fn(), list: vi.fn() }));
 vi.mock("@/components/site-header", () => ({ SiteHeader: () => null }));
+vi.mock("@/lib/adsense.server", () => ({ getAdsenseSlot: async () => ({ enabled: false, publisher_id: null, slot_id: null, cmp_enabled: false }) }));
 vi.mock("@/lib/guides.server", () => ({ getGuideArticle: mocks.article, getGuideList: mocks.list }));
 vi.mock("@/components/destination-affiliate-options", () => ({
   DestinationAffiliateOptions: (props: { destinationId: string; modules?: string[]; placement?: string; contextual?: boolean }) => (

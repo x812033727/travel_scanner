@@ -4,6 +4,7 @@ import { getMessages, getTranslations } from "next-intl/server";
 import { cookies, headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { LegacyUiLocalizer } from "@/components/legacy-ui-localizer";
+import { AdsenseLoader } from "@/components/ads/adsense-loader";
 import { AppBottomNav } from "@/components/app-bottom-nav";
 import { HeaderSessionProvider } from "@/components/header-session";
 import { SavedItemsProvider } from "@/components/saved-items-provider";
@@ -15,6 +16,7 @@ import { CommunityProvider } from "@/components/community/provider";
 import { getCommunityState } from "@/lib/community/server";
 import { AnalyticsProvider } from "@/components/analytics-provider";
 import { TravelpayoutsDrive } from "@/components/travelpayouts-drive";
+import type { AdsenseConfig } from "@/lib/adsense";
 import { routing } from "@/i18n/routing";
 import { alternatesFor, routePathFromRequest, siteUrl } from "@/lib/seo";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
@@ -28,6 +30,12 @@ import "../globals.css";
 type Props = Readonly<{
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
+  /**
+   * Only the `(ads-public)` root passes this, and only when an article page is about to load
+   * Google's ad tag. Next.js itself never does, so every other route keeps the layout below
+   * exactly as it is. See `app/(ads-public)/[locale]/layout.tsx`.
+   */
+  ads?: AdsenseConfig | null;
 }>;
 
 const travelpayoutsDriveEnabled = isTravelpayoutsDriveOrigin(siteUrl);
@@ -72,7 +80,7 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
   };
 }
 
-export default async function LocaleLayout({ children, params }: Props) {
+export default async function LocaleLayout({ children, params, ads }: Props) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   const [messages, siteVisibility, usageCatalog, requestHeaders, jar, community] = await Promise.all([
@@ -87,6 +95,12 @@ export default async function LocaleLayout({ children, params }: Props) {
   // used to find that out by sending a request that could only come back 401, on every
   // page a signed-out reader opened.
   const hasSession = jar.has("travel_access");
+  // A document that loads Google's ad tag asks nothing about the reader. Both providers below
+  // fetch /auth/me, and a third-party script sharing this document can read whatever they put
+  // on the page; not mounting them means the answer never exists here to be read. The cost is
+  // that an article page shows the signed-out header, which is why this is off by default and
+  // only ever true for the two article routes.
+  const anonymousDocument = Boolean(ads?.enabled);
   // Set by proxy.ts so the static inline bootstraps satisfy the nonce-based CSP.
   const nonce = requestHeaders.get("x-nonce") ?? undefined;
   return (
@@ -113,10 +127,14 @@ export default async function LocaleLayout({ children, params }: Props) {
                     signed-out reader got three 401s for one fact. */}
                 {/* Keyed, so signing in or out remounts both providers instead of
                     leaving the previous session's answers in client state. */}
-                <HeaderSessionProvider key={hasSession ? "session" : "anonymous"} hasSession={hasSession}>
+                <HeaderSessionProvider
+                  key={anonymousDocument ? "ads" : hasSession ? "session" : "anonymous"}
+                  hasSession={!anonymousDocument && hasSession}
+                >
                   <CommunityProvider state={community}>
-                  <SavedItemsProvider hasSession={hasSession}>
+                  <SavedItemsProvider hasSession={!anonymousDocument && hasSession}>
                     <div className="public-app-shell">
+                      {ads?.enabled ? <AdsenseLoader publisherId={ads.publisher_id} cmpEnabled={ads.cmp_enabled} /> : null}
                       {children}
                       {/* Inside the shell, so the 5rem the shell already reserves for the
                           fixed bottom navigation sits below the footer rather than over it. */}
