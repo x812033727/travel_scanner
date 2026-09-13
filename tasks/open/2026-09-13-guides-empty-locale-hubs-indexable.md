@@ -1,7 +1,7 @@
 ---
 id: 2026-09-13-guides-empty-locale-hubs-indexable
 title: 非 zh-TW 的空文章 hub 可被索引又列在 sitemap
-status: in-progress
+status: review
 priority: P3
 area: web
 owner: claude-opus-5-seo
