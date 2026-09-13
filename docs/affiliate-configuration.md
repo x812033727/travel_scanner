@@ -196,6 +196,7 @@ Skyscanner 的合作申請清單見 [`skyscanner-partnership-application.md`](sk
 | `city` | 目的地城市頁 | 同上 |
 | `share` | 唯讀的行程分享頁（`/share/{token}`） | 同上 |
 | `life` | 生活分享文章文末 | 同上 |
+| `guide`／`life`（`status='clicked'`） | 文章內文的非旅遊合作夥伴連結（`partner_link` 區塊） | `guides/router.py`（只記點擊，不轉址） |
 
 行程頁的「抵達後的安排／門票與一日遊／接下來可以預訂」區塊與分享頁都用目的地優惠：
 行程本體 `GET /trips/{id}` 多帶 `partner_offers.modules`（哪些模組有優惠，不含優惠本身），
@@ -223,6 +224,33 @@ Skyscanner 的合作申請清單見 [`skyscanner-partnership-application.md`](sk
 `sub_id` 的最後一段也是 placement（例：`dst_activities_tokyo_zh-TW_guide`），
 在 Travelpayouts 或 Klook 後台可以直接依此拆成效。
 
+### 非旅遊內容合作夥伴（`partner_link`）
+
+生活分享的 Claude／AI 教學賺的不是旅遊分潤，而是教學裡實際用到的東西：部署用的主機、延伸閱讀的書、
+課程或軟體方案。這些方案走另一條路，原因與做法如下，完整規則在 `docs/travel-guides.md` 的「Partner links」。
+
+- **為什麼不用 clickout。** 旅遊優惠是同源 POST 表單＋303 轉址，轉址帶 `Referrer-Policy: no-referrer`，
+  夥伴看不到流量來自哪個網站。Hostinger 聯盟計畫條款（2026-08-19 版）禁止用遮蔽技術隱藏流量來源，
+  所以內容合作夥伴一律是**直接連到夥伴網址**的 `<a rel="sponsored noopener">`，保留來源網域
+  （`strict-origin-when-cross-origin`，不加 `noreferrer`）。表單不能加 `noreferrer` 的另一個原因
+  （瀏覽器送 `Origin: null`、BFF 回 403）見 PR #447；合作夥伴連結是一般導覽，不受那條規則影響。
+- **清單寫在程式碼。** `apps/api/app/affiliates/content_links.py` 的 `CONTENT_PARTNERS`：代碼、顯示名稱、
+  類別（`hosting`／`books`／`courses`／`software`）、允許的網域（含聯盟網路的追蹤網域）、
+  辨識追蹤連結的參數或路徑、以及方案條款不准放上網站的參數與原因。目前有 `hostinger`
+  （擋顧客推薦計畫的 `REFERRALCODE`）與 `books_com_tw`（博客來 AP 的 `/exep/assp.php/` 連結）。
+  **新增一個方案＝加一筆＋跑 `tests/test_guide_partner_links.py`**，要先在該方案後台拿到實際產生的連結，
+  確認網域；夥伴後台也要把 `mokaair.com` 登記成推廣網站。
+- **記錄了什麼。** 點擊時瀏覽器另外送一個 keepalive POST 到
+  `/api/travel/guides/{kind}/{slug}/partner-links/{key}/click`，API 從目前公開的版本找出那條連結，
+  寫一筆 `affiliate_clicks`：`partner`＝`brand`＝方案代碼、`module`＝類別、`placement`＝`life` 或 `guide`、
+  `sub_id`＝`cnt_<類別>_<語系>_<placement>`（**只存在本站，不會送給夥伴**，連結本身就是夥伴的網址）、
+  `destination_summary`＝文章 slug、`status`＝`clicked`（沒有轉址）、沒有任何使用者身分。
+  報表的 `by_partner`／`by_placement`／`top_sub_ids` 直接看得到；`by_destination` 會把它們歸在 `unknown` 那一列。
+- **揭露。** 文章主圖下方一行「本文含合作連結，透過連結購買或訂閱，本站可能獲得分潤，不另向你加價。」
+  （五語系，ja／ko 的徽章用「広告」／「광고」），每個連結旁再有一個徽章。
+- **一般連結不能再夾帶分潤。** 文章的 `link` 區塊、資料來源、圖片出處，以及法律頁的連結，
+  帶分潤參數或短網址時存檔就被擋（`422 content_link_affiliate`）；分潤連結只能用合作夥伴連結區塊放。
+
 ## 9. 已知落差與後續建議
 
 0. **「預設關閉」只擋目的地優惠那條路。** 只有 `affiliates/router.py` 的
@@ -244,7 +272,8 @@ Skyscanner 的合作申請清單見 [`skyscanner-partnership-application.md`](sk
      （美食的訂位連結依 `merchant-external-links.tsx` 的規則刻意不依佣金排序，不要碰）
 3. **航班 clickout 的網域驗證較寬鬆。** 見 [`security-audit-2026-09.md`](security-audit-2026-09.md)
    的 API-14（Low）：`search/router.py` 的 303 轉址只驗 HTTPS，沒有 affiliate 流程的網域白名單。
-4. **沒有佣金回傳。** `affiliate_clicks` 只有 `redirected` 一種狀態，沒有訂單／佣金欄位，也沒有 postback；
-   要判斷「哪家值得轉直簽」仍得人工對照夥伴後台。
+4. **沒有佣金回傳。** `affiliate_clicks` 只有 `redirected`（經本站轉址）與 `clicked`（內容合作夥伴連結，
+   只回報點擊）兩種狀態，沒有訂單／佣金欄位，也沒有 postback；要判斷「哪家值得轉直簽」仍得人工對照夥伴後台。
+   `clicked` 是瀏覽器回報的下限：關掉 JavaScript 或裝了阻擋器的讀者點了也不會被計入。
 5. **優先序寫死在程式。** `AffiliatePartner.priority` 是常數，`ProviderConfig.priority` 欄位沒人讀；
    等成效報表累積到看得出差異再考慮做成後台可調。

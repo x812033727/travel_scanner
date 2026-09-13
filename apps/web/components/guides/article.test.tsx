@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { GuideArticle } from "./article";
 import type { AdsenseConfig } from "@/lib/adsense";
@@ -27,6 +27,8 @@ const labels = {
   published: "發布", updated: "更新", expiredNotice: "已過期", validUntil: "有效至",
   sources: "來源", checkedOn: "查核日", destination: "目的地", otherLanguages: "其他語言",
   contents: "目錄", adLabel: "廣告", disclosure: "透過合作連結預訂，本站可能獲得分潤。",
+  partnerDisclosure: "本文含合作連結，透過連結購買或訂閱，本站可能獲得分潤。",
+  partner: { badge: "合作連結", newTab: "另開新分頁" },
   blocks: { imageCredit: "圖片：", tip: "小提醒", warning: "注意", info: "補充" },
 };
 
@@ -154,6 +156,71 @@ describe("GuideArticle partner buttons placed by the editor", () => {
   it("drops every button, inline ones included, under an expired notice", () => {
     draw({ document: withOffer, topics, kind: "intel", expired: true, valid_until: "2026-09-01" });
     expect(screen.queryByTestId("affiliate")).toBeNull();
+  });
+});
+
+describe("GuideArticle partner links placed by the editor", () => {
+  const url = "https://www.hostinger.com/tw/vps-hosting?aff_id=12345";
+  const resolved = { key: "0123456789abcdef", partner: "hostinger", display_name: "Hostinger", url };
+  const withPartner = {
+    ...document,
+    blocks: [
+      { type: "heading" as const, level: 2 as const, text: "選一台主機" },
+      { type: "paragraph" as const, text: "年繳方案才划算。" },
+      { type: "partner_link" as const, partner: "hostinger", url, label: "看 VPS 方案", note: "本站就架在這裡" },
+      { type: "paragraph" as const, text: "接著部署。" },
+    ],
+  };
+  const life = {
+    kind: "life" as const, slug: "claude-code-vps", destination_id: null, destination_label: null,
+    topics: [{ slug: "ai", label: "AI 工具" }],
+  };
+
+  it("draws the link where the editor put it, after a disclosure worded for buying, not booking", () => {
+    draw({ ...life, document: withPartner, partner_links: [resolved] });
+    const link = screen.getByRole("link", { name: /看 VPS 方案/ });
+    expect(link.getAttribute("href")).toBe(url);
+    expect(link.getAttribute("rel")).toContain("sponsored");
+    const note = screen.getByRole("note");
+    expect(note.textContent).toBe(labels.partnerDisclosure);
+    // The disclosure precedes the first partner link in the document, not only visually.
+    expect(note.compareDocumentPosition(link) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    // The paragraphs on either side are intact and in order around it.
+    const before = screen.getByText("年繳方案才划算。");
+    const after = screen.getByText("接著部署。");
+    expect(before.compareDocumentPosition(link) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(link.compareDocumentPosition(after) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(within(link.closest("aside")!).getByText("本站就架在這裡")).toBeTruthy();
+  });
+
+  it("draws nothing, disclosure included, for a link the API did not resolve", () => {
+    draw({ ...life, document: withPartner, partner_links: [] });
+    expect(screen.queryByRole("link", { name: /看 VPS 方案/ })).toBeNull();
+    expect(screen.queryByRole("note")).toBeNull();
+    // Nor is its label or URL drawn some other way, as plain text or an ordinary link.
+    expect(screen.queryByText("看 VPS 方案")).toBeNull();
+    expect(screen.queryAllByRole("link").some((anchor) => anchor.getAttribute("href") === url)).toBe(false);
+  });
+
+  it("does not trust a resolved entry for a different URL than the block holds", () => {
+    draw({ ...life, document: withPartner, partner_links: [{ ...resolved, url: "https://www.hostinger.com/tw" }] });
+    expect(screen.queryByRole("link", { name: /看 VPS 方案/ })).toBeNull();
+  });
+
+  it("reads a state without partner links, from an older API, as having none", () => {
+    draw({ ...life, document: withPartner });
+    expect(screen.queryByRole("link", { name: /看 VPS 方案/ })).toBeNull();
+  });
+
+  it("drops the link under an expired notice", () => {
+    draw({ ...life, document: withPartner, partner_links: [resolved], expired: true, valid_until: "2026-09-01" });
+    expect(screen.queryByRole("link", { name: /看 VPS 方案/ })).toBeNull();
+  });
+
+  it("keeps the booking wording when the body carries only offer buttons", () => {
+    const blocks = [...withPartner.blocks.slice(0, 2), { type: "offer" as const, module: "hotel" as const, destination_id: "tokyo", heading: "" }];
+    draw({ ...life, document: { ...document, blocks }, partner_links: [resolved] });
+    expect(screen.getByRole("note").textContent).toBe(labels.disclosure);
   });
 });
 
@@ -300,6 +367,26 @@ describe("GuideArticle advertising", () => {
         ],
       },
     }, { adsense: enabled });
+    expect(screen.queryByTestId("ad-slot")).toBeNull();
+  });
+
+  it("keeps the same distance from a partner link, which ends the first slice just like a button", () => {
+    const url = "https://www.hostinger.com/tw/vps-hosting?aff_id=12345";
+    draw({
+      kind: "life",
+      destination_id: null,
+      destination_label: null,
+      partner_links: [{ key: "0123456789abcdef", partner: "hostinger", display_name: "Hostinger", url }],
+      document: {
+        ...document,
+        blocks: [
+          heading, para("開頭"), para("一段"),
+          { type: "partner_link" as const, partner: "hostinger", url, label: "看方案" },
+          ...Array.from({ length: 8 }, (_, i) => para(`後段 ${i}`)),
+        ],
+      },
+    }, { adsense: enabled });
+    expect(screen.getByRole("link", { name: /看方案/ })).toBeTruthy();
     expect(screen.queryByTestId("ad-slot")).toBeNull();
   });
 

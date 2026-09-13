@@ -8,6 +8,7 @@ editor can recover from rather than a silently overwritten draft.
 
 from __future__ import annotations
 
+from collections.abc import Iterator
 from datetime import UTC, datetime
 from typing import Any, cast
 from uuid import UUID, uuid4
@@ -17,6 +18,7 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.schemas import AdminAuditView
+from app.affiliates.content_links import affiliate_marker, partner_link_problem
 from app.db import escape_like
 from app.destinations.catalog import destination_for_id
 from app.guides.models import (
@@ -48,9 +50,11 @@ from app.guides.schemas import (
     DraftWrite,
     FacetCount,
     GuideDocument,
+    ImageBlock,
     Kind,
     LocaleState,
     OfferBlock,
+    PartnerLinkBlock,
     PublishWrite,
     RestoreWrite,
     RevisionAction,
@@ -74,6 +78,7 @@ from app.guides.taxonomy import topic_option
 from app.i18n import Locale
 from app.models import AdminAuditLog, User
 from app.problems import AppError
+from app.site_pages.schemas import LinkBlock
 
 AUDIT_ACTIONS = (
     "guide_article_created",
@@ -210,17 +215,54 @@ def _validate_destination(destination_id: str | None) -> str | None:
 
 # More than this and the article reads as a catalogue with prose between the buttons.
 MAX_OFFER_BLOCKS = 3
+# The same cap for the same reason, counted apart from offers: a long tutorial may need a
+# bus ticket and a book, and neither should crowd out the other.
+MAX_PARTNER_LINK_BLOCKS = 3
+
+
+def _ordinary_urls(document: GuideDocument) -> Iterator[str]:
+    """Every URL in an article that is drawn as a plain link: none of them may be tracked."""
+    for block in document.blocks:
+        if isinstance(block, LinkBlock):
+            yield block.url
+        elif isinstance(block, ImageBlock) and block.credit and block.credit.source_url:
+            yield block.credit.source_url
+    if document.hero and document.hero.credit and document.hero.credit.source_url:
+        yield document.hero.credit.source_url
+    for source in document.sources:
+        yield source.url
 
 
 def _validate_document(document: GuideDocument, article_destination: str | None) -> None:
-    """The rules about partner buttons that only the write path may enforce.
+    """The rules about partner buttons and links that only the write path may enforce.
 
     They live here rather than on the pydantic model because that model also validates
     every stored revision on the public read path, where a destination since retired from
-    the catalog must degrade to "no button" rather than a 500. Publishing re-runs this even
-    though the draft passed it when saved: the article's own destination may have been
-    cleared in between, and an offer that leaned on it would then point nowhere.
+    the catalog must degrade to "no button" rather than a 500 -- and so must a partner
+    program since removed from ``app.affiliates.content_links``, or a tracking pattern added
+    to it after an article was written. Publishing re-runs this even though the draft passed
+    it when saved: the article's own destination may have been cleared in between, and an
+    offer that leaned on it would then point nowhere.
     """
+    partner_links = [block for block in document.blocks if isinstance(block, PartnerLinkBlock)]
+    if len(partner_links) > MAX_PARTNER_LINK_BLOCKS:
+        raise AppError(422, "guide_partner_link_limit", "一篇文章最多放三個合作夥伴連結")
+    for partner_link in partner_links:
+        problem = partner_link_problem(partner_link.partner, partner_link.url)
+        if problem is not None:
+            raise AppError(422, problem.code, problem.detail)
+    # An affiliate URL anywhere else would reach the reader undisclosed, unqualified and
+    # uncounted; the partner-link block is the one place that does all three.
+    for url in _ordinary_urls(document):
+        marker = affiliate_marker(url)
+        if marker is not None:
+            raise AppError(
+                422,
+                "content_link_affiliate",
+                f"這個網址帶有分潤追蹤或是短網址（{marker}），"
+                "不能放在一般連結、資料來源或圖片出處；"
+                "分潤連結請改用「合作夥伴連結」區塊，其他連結請貼原始網址",
+            )
     offers = [block for block in document.blocks if isinstance(block, OfferBlock)]
     if len(offers) > MAX_OFFER_BLOCKS:
         raise AppError(422, "guide_offer_limit", "一篇文章最多放三個合作連結區塊")

@@ -55,8 +55,11 @@ const detail = {
 };
 const facets = { status: [{ code: "published", count: 0 }, { code: "draft", count: 1 }, { code: "hidden", count: 0 }, { code: "expired", count: 0 }], kind: [{ code: "intel", count: 0 }, { code: "howto", count: 1 }] };
 
+const partners = [{ code: "hostinger", display_name: "Hostinger", category: "hosting", hosts: ["hostinger.com"] }];
+
 function route(path: string, init?: { method?: string; body?: string }) {
   if (path.startsWith("/admin/guides/topics")) return Promise.resolve({ topics });
+  if (path.startsWith("/admin/guides/partners")) return Promise.resolve({ partners });
   if (path.startsWith("/admin/guides?")) return Promise.resolve({ articles: [summary], total: 1, page: 1, pages: 1, facets });
   if (path.includes("/publish")) {
     return Promise.resolve({
@@ -277,5 +280,64 @@ describe("rich blocks", () => {
     fireEvent.click(screen.getByRole("button", { name: "移除主圖" }));
     expect(screen.queryByLabelText("圖片路徑")).toBeNull();
     expect(screen.getByRole("button", { name: "加入主圖" })).toBeTruthy();
+  });
+});
+
+describe("partner links", () => {
+  const savedDocument = () => {
+    const call = mocks.api.mock.calls.find(([path, init]) => String(path).endsWith("/zh-TW/draft") && init?.method === "PUT");
+    return call ? JSON.parse(call[1].body).document : null;
+  };
+  const url = "https://www.hostinger.com/tw/vps-hosting?aff_id=12345";
+
+  it("starts a partner link on the first program the API lists and saves what the editor typed", async () => {
+    await open();
+    fireEvent.click(await screen.findByRole("button", { name: "新增區塊 · 合作夥伴連結" }));
+    expect((screen.getByLabelText("合作夥伴") as HTMLSelectElement).value).toBe("hostinger");
+    expect(screen.getByText("只能連到：hostinger.com")).toBeTruthy();
+    fireEvent.change(screen.getByLabelText("合作連結網址（https）"), { target: { value: url } });
+    fireEvent.change(screen.getByLabelText("按鈕文字"), { target: { value: "看 VPS 方案" } });
+    fireEvent.change(screen.getByLabelText("補充說明（可留空）"), { target: { value: "本站就架在這裡" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存草稿" }));
+
+    await waitFor(() => expect(savedDocument()).toBeTruthy());
+    expect(savedDocument().blocks.at(-1)).toEqual({
+      type: "partner_link", partner: "hostinger", url, label: "看 VPS 方案", note: "本站就架在這裡",
+    });
+  });
+
+  it("offers no partner-link block while the API lists no programs", async () => {
+    mocks.api.mockImplementation((path: string, init?: { method?: string; body?: string }) =>
+      path.startsWith("/admin/guides/partners") ? Promise.resolve({ partners: [] }) : route(path, init));
+    await open();
+    await waitFor(() => expect(mocks.api.mock.calls.some(([path]) => String(path).startsWith("/admin/guides/partners"))).toBe(true));
+    expect(screen.queryByRole("button", { name: "新增區塊 · 合作夥伴連結" })).toBeNull();
+    expect(screen.getByRole("button", { name: "新增區塊 · 合作連結" })).toBeTruthy();
+  });
+
+  it("previews a partner link as a placeholder and never as the link itself", async () => {
+    await open();
+    fireEvent.click(await screen.findByRole("button", { name: "新增區塊 · 合作夥伴連結" }));
+    fireEvent.change(screen.getByLabelText("合作連結網址（https）"), { target: { value: url } });
+    fireEvent.change(screen.getByLabelText("按鈕文字"), { target: { value: "看 VPS 方案" } });
+    fireEvent.click(screen.getByRole("button", { name: "預覽" }));
+    const dialog = await screen.findByRole("dialog");
+    const note = within(dialog).getByRole("note");
+    expect(note.textContent).toContain("合作夥伴連結（發布後，夥伴仍在清單上才會顯示）");
+    expect(note.textContent).toContain("Hostinger");
+    expect(within(dialog).queryAllByRole("link").some((link) => link.getAttribute("href") === url)).toBe(false);
+  });
+
+  it("shows a program since removed from the registry as itself rather than silently switching it", async () => {
+    mocks.api.mockImplementation((path: string, init?: { method?: string; body?: string }) =>
+      path.startsWith(`/admin/guides/${id}?`)
+        ? Promise.resolve({
+          ...detail,
+          draft: { ...detail.draft, blocks: [{ type: "partner_link", partner: "retired_program", url, label: "舊方案", note: "" }] },
+        })
+        : route(path, init));
+    await open();
+    await waitFor(() => expect(screen.getByRole("option", { name: "Hostinger" })).toBeTruthy());
+    expect((screen.getByLabelText("合作夥伴") as HTMLSelectElement).value).toBe("retired_program");
   });
 });

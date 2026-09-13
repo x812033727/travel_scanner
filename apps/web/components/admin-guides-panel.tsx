@@ -12,7 +12,7 @@ import { calloutTones, type ImageBlock, type ImageCredit, type TableBlock } from
 import { useNavigationGuard } from "@/lib/navigation-guard";
 import {
   guideKinds, guideSection, offerModules, splitGuideBlocks,
-  type GuideBlock, type GuideDocument, type GuideHero, type GuideKind, type GuideSource, type GuideTopic,
+  type ContentPartnerOption, type GuideBlock, type GuideDocument, type GuideHero, type GuideKind, type GuideSource, type GuideTopic,
 } from "@/lib/guides";
 import { isUuid, type ArticleDetail, type ArticleSummary } from "@/lib/guides-admin";
 import { sitePageLocales, type SitePageLocale } from "@/lib/site-pages";
@@ -26,10 +26,11 @@ const emptyDocument = (): GuideDocument => ({
 const isSiteLocale = (value: string): value is SitePageLocale => (sitePageLocales as readonly string[]).includes(value);
 
 /** Every block an editor can add, in the order the buttons appear. */
-const blockTypes = ["heading", "paragraph", "list", "link", "image", "table", "callout", "offer"] as const;
+const blockTypes = ["heading", "paragraph", "list", "link", "image", "table", "callout", "offer", "partner_link"] as const;
 type BlockType = typeof blockTypes[number];
 
-function newBlock(type: BlockType): GuideBlock {
+/** `partner` is the program a new partner link starts on: the first one the API lists. */
+function newBlock(type: BlockType, partner = ""): GuideBlock {
   switch (type) {
     case "heading": return { type, level: 2, text: "" };
     case "list": return { type, items: [""], ordered: false };
@@ -38,6 +39,7 @@ function newBlock(type: BlockType): GuideBlock {
     case "table": return { type, header: ["", ""], rows: [["", ""]], caption: "" };
     case "callout": return { type, tone: "tip", title: "", text: "" };
     case "offer": return { type, module: "activities", destination_id: null, heading: "" };
+    case "partner_link": return { type, partner, url: "", label: "", note: "" };
     default: return { type: "paragraph", text: "" };
   }
 }
@@ -90,6 +92,7 @@ export function AdminGuidesPanel() {
   const [requestedLocale] = useAdminQueryValue("lang", "", isSiteLocale);
   const locale: SitePageLocale = isSiteLocale(requestedLocale) ? requestedLocale : isSiteLocale(interfaceLocale) ? interfaceLocale : "zh-TW";
   const [topics, setTopics] = useState<GuideTopic[]>([]);
+  const [partners, setPartners] = useState<ContentPartnerOption[]>([]);
   const [reload, setReload] = useState(0);
   // The loaded article is keyed by what it was loaded for, so a change of article, language
   // or reload shows the loading state without an effect having to reset anything.
@@ -143,6 +146,13 @@ export function AdminGuidesPanel() {
     api<{ topics: GuideTopic[] }>(`/admin/guides/topics${suffix}`, { signal: controller.signal })
       .then((vocabulary) => { if (!controller.signal.aborted) setTopics(vocabulary.topics); })
       .catch(() => { /* the taxonomy chips stay empty; the detail request reports the outage */ });
+    // The programs a partner link may point at come from the API's registry, never from a copy
+    // kept here. Without the list the editor simply offers no partner-link block.
+    api<{ partners: ContentPartnerOption[] }>("/admin/guides/partners", { signal: controller.signal })
+      .then((registry) => {
+        if (!controller.signal.aborted && Array.isArray(registry.partners)) setPartners(registry.partners);
+      })
+      .catch(() => { /* no partner list, no partner-link button */ });
     return () => controller.abort();
   }, [selected, suffix]);
 
@@ -396,6 +406,30 @@ export function AdminGuidesPanel() {
           </label>
           <p className="text-sm leading-6 text-[var(--muted)]">{t("offerHelp")}</p>
         </>;
+      case "partner_link": {
+        const current = partners.find((partner) => partner.code === block.partner);
+        return <>
+          <label className="grid gap-2">{t("partner")}
+            <select className={control} value={block.partner} onChange={(event) => updateBlock(index, { ...block, partner: event.target.value })}>
+              {/* A program since removed from the registry stays selectable as itself, so the
+                  editor sees what the block holds instead of a silently different choice. */}
+              {!current && <option value={block.partner}>{block.partner}</option>}
+              {partners.map((partner) => <option key={partner.code} value={partner.code}>{partner.display_name}</option>)}
+            </select>
+          </label>
+          <label className="grid gap-2">{t("partnerUrl")}
+            <input className={control} type="url" inputMode="url" placeholder="https://" value={block.url} onChange={(event) => updateBlock(index, { ...block, url: event.target.value })} />
+          </label>
+          {current && <p className="text-sm leading-6 text-[var(--muted)]">{t("partnerHosts", { hosts: current.hosts.join(", ") })}</p>}
+          <label className="grid gap-2">{t("partnerLabel")}
+            <input className={control} maxLength={80} value={block.label} onChange={(event) => updateBlock(index, { ...block, label: event.target.value })} />
+          </label>
+          <label className="grid gap-2">{t("partnerNote")}
+            <input className={control} maxLength={200} value={block.note ?? ""} onChange={(event) => updateBlock(index, { ...block, note: event.target.value })} />
+          </label>
+          <p className="text-sm leading-6 text-[var(--muted)]">{t("partnerHelp")}</p>
+        </>;
+      }
       default:
         return null;
     }
@@ -525,8 +559,8 @@ export function AdminGuidesPanel() {
             </div>
           </fieldset>)}</div>
 
-          <div className="flex flex-wrap gap-2">{blockTypes.map((type) =>
-            <Button secondary key={type} onClick={() => setBlocks([...draft.blocks, newBlock(type)])}>{t("addBlock")} · {t(`blocks.${type}`)}</Button>)}
+          <div className="flex flex-wrap gap-2">{blockTypes.filter((type) => type !== "partner_link" || partners.length > 0).map((type) =>
+            <Button secondary key={type} onClick={() => setBlocks([...draft.blocks, newBlock(type, partners[0]?.code)])}>{t("addBlock")} · {t(`blocks.${type}`)}</Button>)}
           </div>
 
           <section className="space-y-4 rounded-2xl border border-[var(--line)] p-4">
@@ -602,6 +636,10 @@ export function AdminGuidesPanel() {
           {segment.blocks.length ? <ContentBlocks blocks={segment.blocks} labels={blockLabels} headingStart={segment.headingStart} /> : null}
           {segment.offer ? <p role="note" className="rounded-xl border border-dashed border-[var(--line)] p-3 text-sm">
             {t("offerPreview")} · {ts(moduleLabelKeys[segment.offer.module])}{segment.offer.destination_id ? ` · ${segment.offer.destination_id}` : ""}
+          </p> : null}
+          {/* A placeholder, never the link: whether it is drawn is the API's call at read time. */}
+          {segment.partner ? <p role="note" className="rounded-xl border border-dashed border-[var(--line)] p-3 text-sm">
+            {t("partnerLinkPreview")} · {partners.find((partner) => partner.code === segment.partner?.partner)?.display_name ?? segment.partner.partner} · {segment.partner.label}
           </p> : null}
         </Fragment>)}
       </div>

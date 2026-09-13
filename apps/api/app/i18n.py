@@ -1618,6 +1618,7 @@ _SITE_PAGE_ERRORS: dict[Locale, dict[str, str]] = {
         "site_page_version_conflict": "文件已被更新，請重新載入後再操作",
         "site_page_requirements_pending": "請填妥待確認資料及生效日期後再發布",
         "site_page_unavailable": "暫時無法取得網站資訊，請稍後再試",
+        "content_link_affiliate": "連結不能帶分潤追蹤或是短網址，請貼原始網址",
     },
     "zh-CN": {
         "site_page_not_found": "请先初始化网站信息草稿",
@@ -1625,6 +1626,7 @@ _SITE_PAGE_ERRORS: dict[Locale, dict[str, str]] = {
         "site_page_version_conflict": "文件已更新，请重新加载后再操作",
         "site_page_requirements_pending": "请填写待确认信息及生效日期后再发布",
         "site_page_unavailable": "暂时无法获取网站信息，请稍后重试",
+        "content_link_affiliate": "链接不能带有联盟追踪参数或短链接，请粘贴原始网址",
     },
     "en": {
         "site_page_not_found": "Initialize the website information drafts first",
@@ -1634,6 +1636,9 @@ _SITE_PAGE_ERRORS: dict[Locale, dict[str, str]] = {
             "Complete the required information and effective date before publishing"
         ),
         "site_page_unavailable": "Website information is temporarily unavailable; try again later",
+        "content_link_affiliate": (
+            "Links cannot carry affiliate tracking or be short links; paste the original URL"
+        ),
     },
     "ja": {
         "site_page_not_found": "先にサイト情報の下書きを初期化してください",
@@ -1641,6 +1646,9 @@ _SITE_PAGE_ERRORS: dict[Locale, dict[str, str]] = {
         "site_page_version_conflict": "文書が更新されました。再読み込みしてから操作してください",
         "site_page_requirements_pending": "確認事項と発効日を入力してから公開してください",
         "site_page_unavailable": "サイト情報を取得できません。しばらくしてから再試行してください",
+        "content_link_affiliate": (
+            "リンクにアフィリエイト計測や短縮URLは使えません。元のURLを貼り付けてください"
+        ),
     },
     "ko": {
         "site_page_not_found": "먼저 사이트 정보 초안을 초기화해 주세요",
@@ -1648,6 +1656,9 @@ _SITE_PAGE_ERRORS: dict[Locale, dict[str, str]] = {
         "site_page_version_conflict": "문서가 변경되었습니다. 새로 불러온 후 계속해 주세요",
         "site_page_requirements_pending": "필수 확인 정보와 시행일을 입력한 후 게시해 주세요",
         "site_page_unavailable": "사이트 정보를 가져올 수 없습니다. 잠시 후 다시 시도해 주세요",
+        "content_link_affiliate": (
+            "링크에 제휴 추적 정보나 단축 URL을 사용할 수 없습니다. 원래 URL을 붙여 넣어 주세요"
+        ),
     },
 }
 for _site_page_locale, _site_page_errors in _SITE_PAGE_ERRORS.items():
