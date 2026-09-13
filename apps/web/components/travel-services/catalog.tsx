@@ -832,13 +832,15 @@ export function ServiceCatalog({
                                       link.provider === "official"
                                         ? t("officialHotel")
                                         : link.name;
+                                    // Both clickout forms here are `noopener` only: `noreferrer`
+                                    // sends `Origin: null`, which the BFF refuses with a 403.
                                     return (
                                       <form
                                         key={link.provider}
                                         action={`/api/travel/travel-services/${product.id}/hotel-links/${link.provider}/clickout?locale=${locale}`}
                                         method="post"
                                         target="_blank"
-                                        rel="noopener noreferrer"
+                                        rel="noopener"
                                       >
                                         <button
                                           type="submit"
@@ -872,7 +874,7 @@ export function ServiceCatalog({
                                   action={`/api/travel/affiliates/offers/${offer.id}/clickout?locale=${locale}&placement=${tripId ? "trip" : hotspotId ? "hotspot" : "destination"}`}
                                   method="post"
                                   target="_blank"
-                                  rel="noopener noreferrer"
+                                  rel="noopener"
                                 >
                                   <button
                                     className={`${button} w-full justify-between text-left`}
