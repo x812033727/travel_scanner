@@ -1,14 +1,14 @@
 ---
 id: 2026-09-13-life-ai-batch-01
 title: 生活分享 AI 系列批次 01：AI 入門與各工具總覽（先寫，之後每篇深入文都連回這 20 篇）（20 篇）
-status: open
+status: in-progress
 priority: P1
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-13T12:12:19Z
 created_at: 2026-09-13T11:55:58Z
 completed_at:
-branch:
+branch: claude/festive-brown-6nsxfm
 depends_on:
   - 2026-09-13-life-ai-series-tooling
   - 2026-09-13-life-ai-series-catalogue
