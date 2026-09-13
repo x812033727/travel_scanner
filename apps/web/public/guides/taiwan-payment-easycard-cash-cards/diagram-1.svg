@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','Noto Sans KR','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">這個場合怎麼付？台灣付款決策樹 / How do I pay here? A payment decision tree for Taiwan</title>
+  <desc id="desc">從「你在哪裡付錢」分成四條路。夜市、小吃攤、傳統市場：付現金，攤販與市場多只收現金，先在超商把 NT$1,000 鈔票換開；紙鈔有 100、200、500、1,000、2,000 元，硬幣有 1、5、10、20、50 元。便利商店 7-ELEVEN 與全家：用悠遊卡或感應刷卡，悠遊卡在商店單筆上限 NT$1,500、每日 NT$3,000；7-ELEVEN 信用卡限感應式，含國外 Visa、Mastercard、JCB 與銀聯；境外支付有 PayPay、GLN，支付寶與微信支付限中國大陸用戶。百貨公司、連鎖餐廳、飯店：刷信用卡，城市多數商店收主要信用卡（美國運通、萬事達、Visa、大來、JCB），飯店與餐廳加收 10% 服務費，不必給小費，結帳選新臺幣。捷運、公車、YouBike：用悠遊卡，交通扣款不受 NT$1,500 上限，卡片 NT$100、儲值上限 NT$10,000；台北捷運閘門也可感應 Visa、Mastercard、JCB、銀聯等銀行卡，按單程票價扣款、沒有轉乘優惠；台北市公車不收信用卡。底部：郵局 ATM 受理銀聯卡提領新臺幣，全家店內銀行 ATM 提供國際金融卡提款，手續費依卡片而定；統一發票六獎 NT$200 與五獎 NT$1,000 可在超商兌換，外國旅客帶護照，陸港澳居民帶入出境許可證，NT$10,000 以上獎金扣 20% 所得稅。Four branches from where you are paying: cash at night markets, stalls and traditional markets; EasyCard or a tapped card at convenience stores, with EasyCard capped at NT$1,500 per purchase and NT$3,000 a day, 7-ELEVEN taking contactless foreign Visa, Mastercard, JCB and UnionPay, and PayPay, GLN, Alipay and WeChat Pay (mainland users only) as cross-border options; credit cards at department stores, restaurants and hotels, where a 10% service charge replaces tipping; EasyCard on the MRT, buses and YouBike, where fares skip the NT$1,500 limit, the card costs NT$100 and balances stop at NT$10,000; Taipei MRT gates also take tapped bank cards at the single-journey fare with no transfer discount, and Taipei city buses take no credit cards. Footer notes on ATMs and the receipt lottery.</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+
+  <text x="60" y="58" font-size="32" font-weight="700" fill="#102A2B">這個場合怎麼付？　How do I pay here?</text>
+  <text x="60" y="92" font-size="18" fill="#5C6B6B">2026 年 9 月依悠遊卡、7-ELEVEN、全家、中華郵政、台北捷運、觀光署與財政部官網查證 · Checked on official pages, September 2026</text>
+
+  <!-- root question -->
+  <rect x="590" y="112" width="420" height="66" rx="33" fill="#102A2B"/>
+  <text x="800" y="141" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">你在哪裡付錢？</text>
+  <text x="800" y="166" font-size="16" fill="#DCEFEE" text-anchor="middle">Where are you paying?</text>
+
+  <!-- connectors -->
+  <path d="M 800 178 L 800 196 M 230 196 L 1370 196" stroke="#5C6B6B" stroke-width="4" fill="none"/>
+  <path d="M 230 196 L 230 218" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 610 196 L 610 218" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 990 196 L 990 218" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 1370 196 L 1370 218" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- column 1: night markets -->
+  <rect x="60" y="222" width="340" height="76" rx="16" fill="#B8442D"/>
+  <text x="230" y="254" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">夜市・小吃攤・傳統市場</text>
+  <text x="230" y="282" font-size="15" fill="#FBE9E4" text-anchor="middle">Night markets, food stalls, markets</text>
+  <path d="M 230 298 L 230 318" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="60" y="322" width="340" height="72" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="230" y="354" font-size="26" font-weight="700" fill="#B8442D" text-anchor="middle">現金</text>
+  <text x="230" y="382" font-size="17" font-weight="700" fill="#B8442D" text-anchor="middle">Cash (NT$)</text>
+  <rect x="60" y="410" width="340" height="322" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="2"/>
+  <g font-size="16" fill="#102A2B">
+    <text x="78" y="442">● 攤販、傳統市場多只收現金</text>
+    <text x="96" y="464" fill="#5C6B6B">Stalls, markets: often cash only</text>
+    <text x="78" y="500">● 先在超商把 NT$1,000 換開</text>
+    <text x="96" y="522" fill="#5C6B6B">Break NT$1,000 notes at a store</text>
+    <text x="78" y="558">● 紙鈔：100、200、500、1,000、2,000</text>
+    <text x="96" y="580" fill="#5C6B6B">Notes: NT$100 to NT$2,000</text>
+    <text x="78" y="616">● 硬幣：1、5、10、20、50</text>
+    <text x="96" y="638" fill="#5C6B6B">Coins: NT$1 to NT$50</text>
+    <text x="78" y="674">● 小咖啡店、小吃店也常只收現金</text>
+    <text x="96" y="696" fill="#5C6B6B">Small cafés, eateries: often cash</text>
+  </g>
+
+  <!-- column 2: convenience stores -->
+  <rect x="440" y="222" width="340" height="76" rx="16" fill="#0D6B68"/>
+  <text x="610" y="254" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">便利商店　7-ELEVEN・全家</text>
+  <text x="610" y="282" font-size="15" fill="#DCEFEE" text-anchor="middle">Convenience stores</text>
+  <path d="M 610 298 L 610 318" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="440" y="322" width="340" height="72" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="610" y="354" font-size="24" font-weight="700" fill="#0D6B68" text-anchor="middle">悠遊卡・感應刷卡</text>
+  <text x="610" y="382" font-size="17" font-weight="700" fill="#0D6B68" text-anchor="middle">EasyCard or a tapped card</text>
+  <rect x="440" y="410" width="340" height="322" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="2"/>
+  <g font-size="16" fill="#102A2B">
+    <text x="458" y="442">● 悠遊卡單筆上限 NT$1,500、</text>
+    <text x="476" y="464">每日上限 NT$3,000</text>
+    <text x="476" y="486" fill="#5C6B6B">EasyCard: NT$1,500 a purchase,</text>
+    <text x="476" y="508" fill="#5C6B6B">NT$3,000 a day</text>
+    <text x="458" y="544">● 7-ELEVEN 信用卡限感應式：</text>
+    <text x="476" y="566">國外 Visa、Mastercard、JCB、銀聯</text>
+    <text x="476" y="588" fill="#5C6B6B">Tap only: foreign Visa, Mastercard,</text>
+    <text x="476" y="610" fill="#5C6B6B">JCB and UnionPay</text>
+    <text x="458" y="646">● 境外支付 PayPay、GLN；</text>
+    <text x="476" y="668">支付寶、微信支付限中國大陸用戶</text>
+    <text x="476" y="690" fill="#5C6B6B">Alipay and WeChat Pay: mainland</text>
+    <text x="476" y="712" fill="#5C6B6B">China users only</text>
+  </g>
+
+  <!-- column 3: department stores, restaurants, hotels -->
+  <rect x="820" y="222" width="340" height="76" rx="16" fill="#6B4A3A"/>
+  <text x="990" y="254" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">百貨公司・連鎖餐廳・飯店</text>
+  <text x="990" y="282" font-size="15" fill="#F1E8E2" text-anchor="middle">Department stores, restaurants, hotels</text>
+  <path d="M 990 298 L 990 318" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="820" y="322" width="340" height="72" rx="14" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="4"/>
+  <text x="990" y="354" font-size="26" font-weight="700" fill="#6B4A3A" text-anchor="middle">信用卡</text>
+  <text x="990" y="382" font-size="17" font-weight="700" fill="#6B4A3A" text-anchor="middle">Credit card</text>
+  <rect x="820" y="410" width="340" height="322" rx="14" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="2"/>
+  <g font-size="16" fill="#102A2B">
+    <text x="838" y="442">● 城市多數商店收主要信用卡</text>
+    <text x="856" y="464" fill="#5C6B6B">Most city shops take major cards</text>
+    <text x="838" y="500">● AMEX、Mastercard、Visa、</text>
+    <text x="856" y="522">Diners Club、JCB</text>
+    <text x="838" y="558">● 飯店、餐廳加收 10% 服務費</text>
+    <text x="856" y="580" fill="#5C6B6B">10% service charge added</text>
+    <text x="838" y="616">● 不必給小費</text>
+    <text x="856" y="638" fill="#5C6B6B">No tipping needed</text>
+    <text x="838" y="674">● 結帳請選新臺幣</text>
+    <text x="856" y="696" fill="#5C6B6B">Choose NT$, not home currency</text>
+  </g>
+
+  <!-- column 4: transport -->
+  <rect x="1200" y="222" width="340" height="76" rx="16" fill="#2F6F9F"/>
+  <text x="1370" y="254" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">捷運・公車・YouBike</text>
+  <text x="1370" y="282" font-size="15" fill="#E6F0F7" text-anchor="middle">MRT, city buses, YouBike</text>
+  <path d="M 1370 298 L 1370 318" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="1200" y="322" width="340" height="72" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1370" y="354" font-size="26" font-weight="700" fill="#2F6F9F" text-anchor="middle">悠遊卡</text>
+  <text x="1370" y="382" font-size="17" font-weight="700" fill="#2F6F9F" text-anchor="middle">EasyCard</text>
+  <rect x="1200" y="410" width="340" height="322" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="2"/>
+  <g font-size="16" fill="#102A2B">
+    <text x="1218" y="442">● 交通扣款不受 NT$1,500 上限</text>
+    <text x="1236" y="464" fill="#5C6B6B">Fares skip the NT$1,500 limit</text>
+    <text x="1218" y="500">● 卡片 NT$100，儲值上限 NT$10,000</text>
+    <text x="1236" y="522" fill="#5C6B6B">Card NT$100; max balance NT$10,000</text>
+    <text x="1218" y="558">● 台北捷運閘門也可感應銀行卡：</text>
+    <text x="1236" y="580">單程票價，沒有轉乘優惠</text>
+    <text x="1236" y="602" fill="#5C6B6B">Taipei MRT takes tapped bank cards:</text>
+    <text x="1236" y="624" fill="#5C6B6B">single fare, no transfer discount</text>
+    <text x="1218" y="660">● 台北市公車不收信用卡</text>
+    <text x="1236" y="682" fill="#5C6B6B">Taipei city buses: no credit cards</text>
+  </g>
+
+  <!-- footer: ATMs -->
+  <rect x="60" y="746" width="720" height="124" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="2"/>
+  <text x="84" y="776" font-size="19" font-weight="700" fill="#102A2B">提款 ATM　Cash withdrawals</text>
+  <g font-size="16" fill="#102A2B">
+    <text x="84" y="804">郵局 ATM：銀聯卡可提領新臺幣　<tspan fill="#5C6B6B">Post office: UnionPay cards</tspan></text>
+    <text x="84" y="830">全家店內銀行 ATM：國際金融卡提款　<tspan fill="#5C6B6B">FamilyMart: international cards</tspan></text>
+    <text x="84" y="856">手續費依你的卡片而定　<tspan fill="#5C6B6B">Fees depend on your card</tspan></text>
+  </g>
+
+  <!-- footer: receipt lottery -->
+  <rect x="820" y="746" width="720" height="124" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="2"/>
+  <text x="844" y="776" font-size="19" font-weight="700" fill="#102A2B">統一發票對獎　Receipt lottery</text>
+  <g font-size="16" fill="#102A2B">
+    <text x="844" y="804">六獎 NT$200、五獎 NT$1,000：超商可兌換　<tspan fill="#5C6B6B">Small prizes at stores</tspan></text>
+    <text x="844" y="830">外國旅客帶護照；陸港澳居民帶入出境許可證　<tspan fill="#5C6B6B">Bring your passport</tspan></text>
+    <text x="844" y="856">NT$10,000 以上獎金扣 20% 所得稅　<tspan fill="#5C6B6B">20% tax on NT$10,000 and up</tspan></text>
+  </g>
+
+  <text x="1560" y="893" font-size="15" fill="#5C6B6B" text-anchor="end">© Mokaair 2026</text>
+</svg>
