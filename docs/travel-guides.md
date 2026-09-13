@@ -247,7 +247,7 @@ The PostgreSQL leg and the migration test are what prove the append-only trigger
 
 ## Content packs: authoring in the repository
 
-Thirty launch articles with heroes, diagrams, tables and partner blocks are not something to
+Fifty launch articles with heroes, diagrams, tables and partner blocks are not something to
 type into a form, and their source of truth should be reviewable next to the images they
 reference. `app/guides/content/<slug>.json` is that source: the article's identity and
 taxonomy plus one `GuideDocument` per locale (`app/guides/content_pack.py:ArticlePack`;
@@ -292,9 +292,11 @@ Images:
   local-script + English labels so one file serves every locale; the locale-specific words
   go in the caption. Every fare, time or date printed on a diagram must appear in the
   article's own verified text (a number the article does not carry is not drawn), and no
-  label is smaller than 15 px so the figure stays legible on a phone. The second batch's
-  diagrams were drawn by the writing agents from the same brief; the review checked both
-  rules mechanically before the packs were ingested.
+  label is smaller than 15 px so the figure stays legible on a phone. The second and third
+  batches' diagrams were drawn by the writing agents from the same brief; the review checked
+  both rules mechanically, then rendered every SVG to PNG (headless Edge) and looked at it,
+  because an agent cannot see its own layout: labels crossing their own route lines, text
+  running out of a box and labels piled on each other all passed the mechanical checks.
 - `alt` describes the picture; it does not repeat the caption. The hero is a photograph,
   not a diagram, because it doubles as the share card.
 
@@ -326,6 +328,12 @@ Text:
 - Every fare, duration and rule is checked against an official page on the day of writing
   and cited in `sources` with `checked_on`; a number the official page does not confirm is
   not written ("以官網為準" instead). Prices stay in the local currency.
+- A pack may carry several locales of one article (the Taiwan batch has `en`, `ja`, `ko`,
+  `zh-CN`, created in that order). Each locale is written for its own readers rather than
+  translated: entry rules, payment habits and language support differ by passport and home
+  market, so each locale checks those facts itself and may cite different sources. Images,
+  offer blocks and block order stay the same across locales; one diagram with Traditional
+  Chinese and English labels serves them all.
 - How-to articles run about 1,800–3,000 characters, notices 800–1,500; at least three
   level-2 headings (the table of contents starts at three), one table, one callout.
 - Internal links are `link` blocks with absolute site URLs (destination page, food
