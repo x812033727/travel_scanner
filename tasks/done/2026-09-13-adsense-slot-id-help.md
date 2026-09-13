@@ -8,7 +8,7 @@ owner: claude-opus-5
 claimed_at: 2026-09-13T12:39:30Z
 created_at: 2026-09-13T12:38:46Z
 completed_at: 2026-09-13T12:52:43Z
-branch: claude/unruffled-ptolemy-5bcb39
+branch: claude/adsense-slot-id-help
 depends_on: []
 scope:
   - apps/web/messages/*/admin.json
