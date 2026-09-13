@@ -1,0 +1,363 @@
+{
+  "slug": "chatgpt-mobile-app-tips",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "daily"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "ChatGPT 手機 App 十個技巧：拍照提問、Siri、鎖定畫面語音與排程通知",
+      "description": "ChatGPT 手機 App 有些用法只在手機上順手：拍照提問、多張照片一起問、語音與聽寫、鎖定畫面看語音對話、Siri 直接叫 ChatGPT、CarPlay、暫時對話、排程任務通知、位置分享、長按送出鍵選模型。這篇依 OpenAI help center 與發布記錄整理十個技巧，iPhone 與 Android 分開寫，附免費版能否使用的對照表、手機與網頁的差異，與怎麼認出正版 App。",
+      "hero": {
+        "src": "/guides/chatgpt-mobile-app-tips/hero.jpg",
+        "alt": "一隻手在木桌前拿著螢幕暗著的手機，上方是打開的筆電鍵盤，旁邊放著一杯水。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Shixart1985",
+          "license": "CC BY 2.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:A_person_is_focused_on_their_smartphone.jpg"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "ChatGPT 的手機 App 跟網頁版用的是同一個帳號、同一份對話紀錄，但有幾件事只有手機做得到，或在手機上明顯順手：拿起來就能拍照提問、用講的取代打字、鎖定畫面上繼續語音對話、對 Siri 說一句話就把問題丟過去。這篇整理十個這樣的技巧，結論是：拍照、語音、暫時對話、排程通知與位置分享免費版都能用，差別只在額度，只有長按送出鍵選模型是付費方案才有；Siri、鎖定畫面與 CarPlay 目前只有 iPhone 有官方說明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每個技巧會寫怎麼開、什麼情境好用、一個台灣生活裡的例子，iPhone 與 Android 的路徑分開寫，最後有一張技巧、開法與免費版能否使用的對照表，以及手機與網頁版的功能差異。功能名稱、開關位置與方案限制在 2026 年 9 月依 OpenAI help center 與 ChatGPT 發布記錄查證；App 介面常改版，設定名稱以你手上的版本為準。還沒裝 App 或還沒有帳號，先看新手入門那篇。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "技巧 1 到 3：拍照提問、多張照片一起問、用講的",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "技巧 1：拍照提問。iPhone 與 Android 的做法一樣，按輸入框旁的加號，選「加入照片與檔案」（Add photos & files），當場拍照或從相簿挑一張，再打一句你想問的話。官方說明支援 PNG、JPEG 與非動態的 GIF，每張最大 20MB，免費版與付費版都能用，只是免費版有額度上限，官方沒有給數字。最實用的場景是藥袋與說明書：把藥袋拍下來問「這幾種藥有沒有不能一起吃的」，或把大樓公告、租屋契約的某一頁拍下來請它用白話解釋；出國看不懂日文菜單也是同一招；iPhone 從 2026 年 8 月 21 日起長按加號就能直接打開最近的照片，少按一層。官方提醒它對非拉丁字母的文字（日文、韓文都列在裡面）、旋轉的圖片與數東西的準確度都比較弱，所以拍的時候把字拍正、拍清楚，藥名與劑量一定自己再核對一次。"
+        },
+        {
+          "type": "paragraph",
+          "text": "技巧 2：多張照片一起問。同一則訊息可以加不只一張照片，官方沒有規定固定張數，只說能加幾張取決於圖片大小與文字量，出錯時就減少張數或縮小圖片。適合一份文件分好幾頁的情況：三頁的租約拍三張、家電說明書拍前後兩頁、旅行時把地鐵路線圖與票價表一起拍，然後問「從我住的站到機場要怎麼轉」。iPhone 的 App 在 2026 年 6 月 8 日起送出後會立刻顯示照片預覽，也可以編輯已經附了照片的訊息；6 月 18 日起拍照與上傳的速度也改善了。"
+        },
+        {
+          "type": "paragraph",
+          "text": "技巧 3：語音模式與聽寫。輸入框右側有兩個「用講的」按鈕：聲波圖示是語音模式（ChatGPT Voice），你講它也講；麥克風圖示是聽寫，把你講的話轉成文字放進輸入框，可以修改再送出。免費版可以用 GPT-Live-1 mini 的語音，額度有限；想每次開新對話就直接講，到設定 → Voice 打開 Start with Voice。聽寫這半年改了兩件事：iPhone 從 2026 年 8 月 7 日起，聽寫因為網路問題失敗時會自動重試 1 次；Android 從 8 月 14 日起，加了文字或附件之後聽寫鍵仍然可以按，一則訊息可以講一段、打幾個字、再講一段。走路、騎車停紅燈、手上在切菜時，用講的比打字順手得多；練英文與旅行口譯的完整做法在語音模式那篇。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 語音模式：練英文、口說翻譯與免手打的完整做法",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-voice-mode-guide"
+        },
+        {
+          "type": "heading",
+          "text": "技巧 4 到 6：鎖定畫面、Siri 與 CarPlay，目前都是 iPhone 的事",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "技巧 4：鎖定畫面與動態島看語音對話。2026 年 8 月 31 日起，Live 語音對話的內容會顯示在 iPhone 的鎖定畫面，有動態島的機型也會顯示在動態島。前提是先到設定 → Voice 打開 Background conversations（背景對話），語音才會在你切到別的 App 或鎖定螢幕後繼續。官方在 8 月 7 日加了一道保護：背景語音看起來沒在用時，它會問你還在不在，沒回應就自動結束，避免額度被白白用掉。煮飯時把手機放一旁問食譜下一步、邊看地圖邊問路線，都不用一直切回 ChatGPT。Android 一樣有背景對話的開關，但鎖定畫面顯示官方目前只寫了 iPhone。"
+        },
+        {
+          "type": "paragraph",
+          "text": "技巧 5：對 Siri 說「Ask ChatGPT」，以及相機控制鈕的視覺智慧。這是 Apple Intelligence 的整合，開關不在 ChatGPT App 裡，而是在 iPhone 的設定 → Apple Intelligence 與 Siri → ChatGPT → 設定；可以不登入帳號就啟用，但要把對話存進 ChatGPT 的紀錄就得登入。啟用後，Siri 遇到它覺得 ChatGPT 比較擅長的問題會先問你要不要送過去；在問題前面加一句「Ask ChatGPT」就會直接送出、不再確認，不過要傳照片或檔案時 Siri 一定會先問。有相機控制鈕的機型，打開視覺智慧（Visual Intelligence）後按「Ask」，就能問眼前的東西是什麼，路邊看到不認識的植物、賣場裡看不懂的商品標示都適用。能不能用取決於 Apple 對語言與地區的支援，以 Apple 的說明為準；Android 目前沒有對應的官方整合說明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "技巧 6：CarPlay 語音。2026 年 4 月 2 日起，iOS 26.4 以上的 iPhone 接上支援 CarPlay 的車，車機畫面會出現 ChatGPT，點進去選 New voice chat，等文字從 Connecting 變成 Listening 就可以講話，所有方案都能用。想一上車就直接進語音，在 CarPlay 的 ChatGPT 畫面裡，Voice 底下打開 Start automatically in CarPlay，下次打開就直接進入語音；CarPlay 預設會重開上次用的 App，所以它有時會自己跳出來。它拿不到地圖、車輛資料與即時位置，也不能操作其他 App，適合的是口述待辦、問一個問題、練口說這類事；官方也提醒出發前先設定好，開車中只用語音。Android Auto 目前沒有官方說明。"
+        },
+        {
+          "type": "heading",
+          "text": "技巧 7 到 10：暫時對話、排程通知、位置分享、長按選模型",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "技巧 7：暫時對話。問健康、感情、薪水這類不想留紀錄的事，先開暫時對話（Temporary Chat）再問：它不會出現在對話紀錄、不會建立記憶、不會用來訓練模型，官方基於安全最多保留 30 天後刪除；事後覺得有用可以手動存進紀錄，存了就跟一般對話一樣。網頁版在新對話右上角有一顆 Temporary 膠囊按鈕，手機 App 的入口也在新對話畫面的右上角（官方說明頁附了手機截圖），位置以 App 顯示為準。手機上特別適合搭配語音用：先開暫時對話再按聲波圖示，口譯時對方的聲音就不會留在你的紀錄裡。"
+        },
+        {
+          "type": "paragraph",
+          "text": "技巧 8：排程任務與通知。直接用講的或打字：「每天早上幫我整理三則台灣的新聞」「明天下午提醒我去繳水費」，它會建立一個任務，時間到就推播或寄 Email 給你。免費版與 Go 同時最多 3 個任務、Plus 5 個、Pro 15 個；免費版只能建一次性或每天最多一次的任務，時段是早上、下午、晚上這種區間，要指定整點或每小時執行得升級付費方案。手機第一次建任務時會跳出通知權限，允許之後所有裝置都收得到；之後在設定 → Notifications 選推播、Email 或兩者都要。它不是行事曆，重要的繳費日仍然要在手機行事曆再設一次。"
+        },
+        {
+          "type": "paragraph",
+          "text": "技巧 9：位置分享。2026 年 3 月 26 日起所有消費者方案都能在設定 → Data controls → Location 打開裝置位置分享，預設是關的。開了之後問「附近還開著的藥局」「這一區今天會不會下雨」，答案會用你所在的位置。iPhone 與 Android 都可以只給大概位置、把精確位置另外關掉，官方說明精確位置用完就刪、不會另外保存。不常用可以問完再關掉。"
+        },
+        {
+          "type": "paragraph",
+          "text": "技巧 10：長按送出鍵選模型。這是付費方案才有的功能：iPhone 從 2026 年 6 月 8 日、Android 從 6 月 18 日起，付費方案的使用者長按送出鍵，可以只為這一則訊息挑一個模型，不會改掉預設；6 月 10 日起 Plus 與 Pro 的模型選單也搬到對話畫面的最上方。平常聊天用預設就好，遇到要算錢、比較方案、看合約條文的問題，長按選會多想一下的選項，答案通常穩一些。免費版沒有這個長按選單，用的是預設模型，想自己挑模型得升級付費方案。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/chatgpt-mobile-app-tips/diagram-1.svg",
+          "alt": "ChatGPT 手機 App 十個技巧的清單圖，兩排五格，每格一個圖示與一句話，並標出哪些技巧只有 iPhone 有官方說明。",
+          "width": 1600,
+          "height": 900,
+          "caption": "十個技巧分成兩排，照正文的順序 1 到 10 排列；右上角有「iPhone」標記的是目前只有 iPhone 有官方說明的功能。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "順手一起調的四個設定：語言、觸覺回饋、帳號、離線",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "App 語言：預設跟著手機的系統語言，想手動改就打開側欄 → 個人頭像 → App 底下的 Language，官方列出 81 種語言。這只改介面語言，回答的語言直接用講的或打字要求即可。",
+            "觸覺回饋與省電：每次回覆時的震動可以關。iPhone 在側欄 → 個人頭像 → 設定裡找 Haptic feedback；低耗電模式開著或電量低於 20% 時它會自動停用。Android 在側欄 → 個人頭像 → Personalization 裡找 Haptic Feedback，需要 Android 12 以上且機型支援才會出現這個開關。",
+            "切換帳號：同時登入 2 個帳號、一鍵切換的功能目前只有網頁版有，手機 App 還不支援，要換帳號只能登出再登入；在 App 內購買的訂閱綁在購買時的帳號，用另一個帳號登入看不到付費功能。",
+            "離線能做什麼：幾乎不能。文字、拍照、語音都要連上 OpenAI 的伺服器，語音全程需要網路；iPhone 的 App 從 2026 年 8 月 21 日起會明確顯示正在等待網路連線，看到這行字就是訊號的問題不是帳號的問題。出國要靠它看菜單、口譯，先把上網方案準備好。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "出國前的上網、簽證與機場攻略",
+          "url": "https://mokaair.com/zh-TW/guides"
+        },
+        {
+          "type": "link",
+          "text": "長輩的第一堂 AI 課：用語音跟 AI 聊天、查資料、寫訊息",
+          "url": "https://mokaair.com/zh-TW/life/ai-for-seniors-first-steps"
+        },
+        {
+          "type": "heading",
+          "text": "手機與網頁版的差別：什麼只在手機有，什麼網頁做比較好",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "只有手機有的：相機拍照、鎖定畫面與動態島、Siri 與視覺智慧、CarPlay，以及把精確位置與大概位置分開控制。語音模式裡的 Advanced 選項要開鏡頭給它看或分享螢幕，也只有 iOS 與 Android App 上符合資格的付費訂閱者能用。網頁做比較好的：帳號切換只有網頁有；Library 的儲存空間管理（設定 → Storage）目前只在網頁；2026 年 8 月 13 日與 9 月 10 日新增的 Google Drive、Box、Dropbox、SharePoint 連進 Library 也是網頁先上、手機之後；貼長文、整理多份檔案、把表格拉大來看，用電腦的螢幕與鍵盤還是省力得多。"
+        },
+        {
+          "type": "paragraph",
+          "text": "檔案上傳兩邊都有：手機 App 也能把 PDF、Word、Excel 丟進去，免費版每天 3 個檔案，付費方案每 3 小時最多 80 個，單檔上限 512MB，免費版的 Library 有 500 MB 空間。手機上通常是先用相機或相簿把東西丟進去問個大概，回到電腦再做需要反覆比對的整理；檔案分析的完整做法在檔案上傳那篇。隱私設定跟著帳號走，手機或網頁關一次就全部生效，可以照隱私清單那篇一次關好。"
+        },
+        {
+          "type": "link",
+          "text": "用 ChatGPT 分析檔案：PDF、Excel、合約與報表的上傳與提問方法",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-file-upload-analysis"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        },
+        {
+          "type": "table",
+          "header": [
+            "技巧",
+            "iPhone 怎麼開",
+            "Android 怎麼開",
+            "免費版可用嗎"
+          ],
+          "rows": [
+            [
+              "1 拍照提問",
+              "輸入框旁的加號 → 加入照片與檔案 → 拍照或選相簿",
+              "同 iPhone",
+              "可以，有額度上限"
+            ],
+            [
+              "2 多張照片一起問",
+              "同一則訊息連續加照片，張數依大小而定",
+              "同 iPhone",
+              "可以，有額度上限"
+            ],
+            [
+              "3 語音模式與聽寫",
+              "聲波圖示是語音、麥克風圖示是聽寫；設定 → Voice → Start with Voice",
+              "同 iPhone；聽寫鍵在加了文字或附件後仍可按",
+              "可以，語音用 GPT-Live-1 mini、額度有限"
+            ],
+            [
+              "4 鎖定畫面看語音",
+              "設定 → Voice → Background conversations，Live 語音會顯示在鎖定畫面與動態島",
+              "有背景對話開關；鎖定畫面顯示官方未提及",
+              "可以，用語音額度"
+            ],
+            [
+              "5 Siri 與視覺智慧",
+              "iPhone 設定 → Apple Intelligence 與 Siri → ChatGPT → 設定；說「Ask ChatGPT」",
+              "沒有官方整合說明",
+              "可以，不登入也能啟用"
+            ],
+            [
+              "6 CarPlay 語音",
+              "iOS 26.4 以上；CarPlay 選 ChatGPT → New voice chat；Voice 底下開 Start automatically in CarPlay",
+              "沒有官方說明",
+              "可以，所有方案"
+            ],
+            [
+              "7 暫時對話",
+              "新對話畫面右上角的暫時對話入口",
+              "同 iPhone",
+              "可以"
+            ],
+            [
+              "8 排程任務與通知",
+              "用講的建任務；設定 → Notifications 選推播或 Email",
+              "同 iPhone",
+              "可以，同時最多 3 個、只能一天一次"
+            ],
+            [
+              "9 位置分享",
+              "設定 → Data controls → Location；可單獨關精確位置",
+              "同 iPhone",
+              "可以，預設關閉"
+            ],
+            [
+              "10 長按送出鍵選模型",
+              "付費方案：長按送出鍵，只改這一則",
+              "同 iPhone",
+              "不行，付費方案才有"
+            ],
+            [
+              "App 語言",
+              "側欄 → 個人頭像 → App → Language",
+              "同 iPhone",
+              "可以"
+            ],
+            [
+              "觸覺回饋",
+              "側欄 → 個人頭像 → 設定 → Haptic feedback",
+              "側欄 → 個人頭像 → Personalization → Haptic Feedback（Android 12 以上）",
+              "可以"
+            ],
+            [
+              "切換帳號",
+              "App 不支援，要登出再登入",
+              "同 iPhone",
+              "網頁版才有切換"
+            ]
+          ],
+          "caption": "2026 年 9 月依 OpenAI help center 與 ChatGPT 發布記錄整理；設定名稱以 App 顯示為準，中文介面的譯名可能不同。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "認明 OpenAI 官方 App，App Store 與 Google Play 上有很多仿冒品",
+          "text": "官方的辨識方法很簡單：在 App Store 或 Google Play 搜尋「openai chatgpt」，只裝開發者顯示為 OpenAI 的那一個。iPhone 的正版圖示是白底、黑色的 OpenAI 結狀 logo，App 名稱就叫 ChatGPT；Android 的正版同樣由 OpenAI 發行，登入時會透過 Chrome 或 Brave 開啟，沒有這兩個瀏覽器會出錯。App 本身免費下載，任何要你先付費才能下載、名稱多了 Pro、AI Chat 之類字眼、開發者不是 OpenAI 的，都不是官方 App。付費訂閱只在 App 內或 chatgpt.com 進行，價格以官網顯示為準。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI Help Center：ChatGPT Image Inputs FAQ（加號 → Add photos & files、PNG／JPEG／GIF、每張 20MB、免費版可用、張數依大小、非拉丁字母與旋轉圖片的弱項）",
+          "url": "https://help.openai.com/en/articles/8400551-image-inputs-for-chatgpt-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Voice（聲波圖示開語音、Start with Voice、Background conversations、Advanced 的影片與螢幕分享限付費、免費版 GPT-Live-1 mini、語音中可附照片、Voice Isolation）",
+          "url": "https://help.openai.com/en/articles/20001274-chatgpt-voice",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Voice Dictation - FAQ（麥克風圖示、轉成文字可修改再送出、錄音保留）",
+          "url": "https://help.openai.com/en/articles/12168547-voice-dictation-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT — Release Notes（2026 年 3 月到 9 月的手機更新：位置分享、CarPlay、付費方案長按送出鍵選模型、照片預覽與最近照片、背景語音保護、聽寫、鎖定畫面與動態島、Library 雲端硬碟先上網頁）",
+          "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Apple Intelligence - Siri FAQ（Siri 預設先確認、「Ask ChatGPT」直接送出、傳檔案一定先問）",
+          "url": "https://help.openai.com/en/articles/10263570-apple-intelligence-siri-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Apple Intelligence - Visual Intelligence FAQ（相機控制開啟視覺智慧 → Ask）",
+          "url": "https://help.openai.com/en/articles/10263574-apple-intelligence-visual-intelligence-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Setting up ChatGPT with Apple Intelligence（設定 → Apple Intelligence 與 Siri → ChatGPT → Set Up、可不登入啟用、登入才存紀錄、語言與地區以 Apple 為準）",
+          "url": "https://help.openai.com/en/articles/10269382-setting-up-chatgpt-with-apple-intelligence",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Using ChatGPT in CarPlay（iOS 26.4 以上、所有方案、New voice chat、Start automatically in CarPlay、不能存取地圖與車輛資料）",
+          "url": "https://help.openai.com/en/articles/20001153-using-chatgpt-in-carplay",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Temporary Chat FAQ（不進紀錄、不建記憶、不用於訓練、最多保留 30 天、可事後儲存、網頁右上角 Temporary 按鈕與手機截圖）",
+          "url": "https://help.openai.com/en/articles/8914046-temporary-chat-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Scheduled tasks in ChatGPT（Free 與 Go 3 個、Plus 5 個、Pro 15 個、免費版時段區間與一天一次、Settings → Notifications 推播或 Email、手機通知權限）",
+          "url": "https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Searching the web with ChatGPT（Settings → Data controls → Location、預設關閉、iOS 與 Android 可單獨關精確位置、精確位置用完即刪）",
+          "url": "https://help.openai.com/en/articles/9237897-chatgpt-search",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：How to change your language setting in ChatGPT（手機 App 側欄 → 個人頭像 → App → Language、自動偵測裝置語言、81 種語言）",
+          "url": "https://help.openai.com/en/articles/8357869-how-to-change-your-language-setting-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT iOS App FAQ（App Store 下載、Haptic feedback 開關與低耗電模式或電量低於 20% 自動停用、位置服務預設關閉、App 內購訂閱與帳號）",
+          "url": "https://help.openai.com/en/articles/7885016-chatgpt-ios-app-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Android App FAQ（搜尋 openai chatgpt 認明 OpenAI 發行、登入需 Chrome 或 Brave、版本與資料控制路徑）",
+          "url": "https://help.openai.com/en/articles/8142208-chatgpt-android-app-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Haptic feedback in the ChatGPT Android app（側欄 → 個人頭像 → Personalization → Haptic Feedback、Android 12 以上且機型支援）",
+          "url": "https://help.openai.com/en/articles/8144762-haptic-feedback-in-the-chatgpt-android-app",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Use multiple accounts with account switching（只有網頁版、同時 2 個帳號、手機 App 尚未支援）",
+          "url": "https://help.openai.com/en/articles/20001068-use-multiple-accounts-with-account-switching",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：File Uploads FAQ（手機 App 支援檔案上傳、免費版每天 3 個、付費每 3 小時 80 個、單檔 512MB、Settings → Storage 看用量）",
+          "url": "https://help.openai.com/en/articles/8555545-file-uploads-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：File storage and Library in ChatGPT（免費版 Library 500 MB、儲存空間管理目前只在網頁）",
+          "url": "https://help.openai.com/en/articles/20001052-file-storage-and-library-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：What Does the Official ChatGPT iOS App Icon Look Like?（白底黑色 OpenAI 結狀 logo）",
+          "url": "https://help.openai.com/en/articles/7905742-what-does-the-official-chatgpt-ios-app-icon-look-like",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：How to find and install the ChatGPT Android app on the Google Play Store（搜尋 openai chatgpt、只裝 OpenAI 發行的版本）",
+          "url": "https://help.openai.com/en/articles/8167604-how-to-find-and-install-the-chatgpt-android-app-on-the-google-play-store",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}
