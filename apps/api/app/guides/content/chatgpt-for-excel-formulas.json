@@ -1,0 +1,374 @@
+{
+  "slug": "chatgpt-for-excel-formulas",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "productivity"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "用 ChatGPT 寫 Excel 公式與 VBA：從問題描述到可貼上的公式",
+      "description": "把 Excel 問題描述成固定格式（版本、欄位、三列範例、結果放哪一格），ChatGPT 給的公式才貼得上。用六個常見問題示範：跨表查找、多條件加總、日期差與民國年、去重與分組、依條件標色、把重複步驟寫成 VBA 巨集，每題附提示詞、公式與驗證方法；並整理 XLOOKUP、FILTER、UNIQUE、LET、TEXTSPLIT 的版本差、Alt+F11 貼巨集與 .xlsm 存檔。",
+      "hero": {
+        "src": "/guides/chatgpt-for-excel-formulas/hero.jpg",
+        "alt": "一張淺色的試算表格線上浮著一個墨綠色圓形裡的手寫 fx 符號，右上方有一個藍色對話泡泡，泡泡裡有三行文字線，米色底，下方寫著「描述清楚，公式就對」",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "「幫我寫一個公式」是很多人第一次在工作上用 ChatGPT 的理由，也最常拿到一條貼上去就報錯的公式。這篇回答的問題是：Excel 的問題要怎麼描述，它才會給出一條能直接貼上、貼上之後你也知道對不對的公式。結論是三件事：先講清楚 Excel 版本與欄位並附三列範例；貼回去之後用一格手算或小樣本驗證；改不掉的重複步驟才請它寫 VBA，而且先在新檔案上跑。"
+        },
+        {
+          "type": "paragraph",
+          "text": "整篇用台灣辦公室最常卡住的六個問題示範，每一題都走「怎麼描述 → 它給的公式 → 怎麼驗證」。函數存在於哪個版本、VBA 怎麼啟用與存檔，都在 2026 年 9 月依 Microsoft 支援頁查證；ChatGPT 免費版就能問，本篇不上傳檔案，只在對話裡貼欄位與範例，把整份 Excel 交給它分析是另一篇的事。"
+        },
+        {
+          "type": "heading",
+          "text": "先把問題描述成固定格式：版本、欄位、三列範例、結果放哪",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "它答錯的公式，多數不是函數寫錯，而是它不知道你的表長什麼樣：金額在哪一欄、第一列是不是標題、日期是真的日期還是文字。所以每一個問題都用同一個格式描述，四行就夠。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Excel 版本：Microsoft 365，或 Excel 2016、2019、2021、2024，Windows 或 Mac。新函數只有新版才有，這一行決定它該用哪一套寫法。",
+            "工作表與欄位：工作表叫什麼、A 欄到 F 欄各是什麼、第 1 列是標題、資料從第 2 列開始到大約第幾列；日期欄是日期格式還是「115/08/03」這種文字。",
+            "三列範例資料：照著表的樣子打三列，用假名字與假金額，不要貼真實客戶資料；範例裡放一個邊界情況，例如查不到的客戶、空白的狀態。",
+            "結果放哪一格、長什麼樣：「在訂單工作表的 G2 放公式，往下填滿」「結果是一個數字」「查不到就顯示查無」。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇六個問題都用同一份假想的表，提示詞的開頭固定是：「我用 Microsoft 365 的 Excel（Windows）。訂單工作表：A 訂單編號、B 日期（日期格式）、C 客戶、D 業務、E 金額、F 狀態，第 1 列標題，資料在第 2 到 500 列；客戶工作表：A 客戶名稱、B 地區、C 業務窗口。範例：……」，後面接那一題的要求，一次只問一題。它給的公式複製到儲存格時，確認開頭有等號、沒有多出前後的引號。"
+        },
+        {
+          "type": "link",
+          "text": "提示詞基本功：把要求寫成它做得到的指令",
+          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "問題 1 到 3：跨表查找、多條件加總、日期差與民國年",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "問題 1，跨表查找。要求寫成：「在訂單工作表 G2 放公式，用 C 欄的客戶名稱到客戶工作表 A 欄找同名的列，回傳那一列 B 欄的地區，找不到顯示查無。」Microsoft 365 它會給 =XLOOKUP(C2,客戶!$A$2:$A$500,客戶!$B$2:$B$500,\"查無\")。四個參數依序是：要找的值 C2、去哪一欄找、找到後回傳哪一欄、找不到時顯示什麼；後兩個範圍用 $ 鎖住，往下填滿時才不會跟著位移。Excel 2016 與 2019 沒有 XLOOKUP，要它改寫成 =IFERROR(INDEX(客戶!$B$2:$B$500,MATCH(C2,客戶!$A$2:$A$500,0)),\"查無\")：MATCH 找出客戶在第幾列，INDEX 回傳那一列的地區，最後的 0 代表完全相符，IFERROR 把找不到時的錯誤值換成「查無」。驗證：挑一個客戶，自己到客戶工作表翻它的地區對一次；再填一個不存在的客戶名，確認出現查無而不是 #N/A；明明有卻查無，多半是一邊的名稱尾巴多了空白，先用 TRIM 清掉。"
+        },
+        {
+          "type": "paragraph",
+          "text": "問題 2，多條件加總。要求：「算出業務是小美、狀態是已出貨、日期在 2026 年 8 月的金額合計，放在 I2。」它會給 =SUMIFS(E:E,D:D,\"小美\",F:F,\"已出貨\",B:B,\">=\"&DATE(2026,8,1),B:B,\"<\"&DATE(2026,9,1))。第一個參數是要加總的欄，後面每兩個一組：檢查哪一欄、條件是什麼；日期條件用「大於等於 8 月 1 日」與「小於 9 月 1 日」兩組夾出整個月，比用文字寫月份穩。SUMIFS 從 Excel 2016 就有，新舊版寫法相同。驗證：對訂單工作表開自動篩選，把業務、狀態、日期篩成同樣的條件，選取 E 欄篩出來的儲存格，看視窗底部狀態列的加總是不是同一個數字；再把條件改成一個不存在的業務名，結果應該是 0。"
+        },
+        {
+          "type": "paragraph",
+          "text": "問題 3，日期差與民國年。台灣的表常見 B 欄是「115/08/03」這種民國年文字，先轉成真正的日期才能算。要求：「B 欄是民國年文字，格式固定是三位年、兩位月、兩位日，用斜線分隔；在 G2 轉成西元日期。」它會給 =DATE(LEFT(B2,3)+1911,MID(B2,5,2),MID(B2,8,2))：LEFT 取前三個字的民國年加 1911，兩個 MID 分別取月與日，DATE 把三個數字組成日期。年只有兩位的「99/12/31」用這條會錯；年月日長度不固定時，Microsoft 365 可以要它改用 =LET(p,TEXTSPLIT(B2,\"/\"),DATE(INDEX(p,1)+1911,INDEX(p,2)*1,INDEX(p,3)*1))，TEXTSPLIT 先照斜線切成三段，LET 把切好的結果取名 p 重複使用，乘以 1 是把文字變成數字。日期差不用函數：=C2-B2 就是相差的天數，Microsoft 支援頁自己也這樣建議；要整月數用 =DATEDIF(B2,C2,\"M\")，支援頁同時提醒 DATEDIF 的 MD 單位可能算錯，不要用它算零頭的天數。驗證：G2 顯示一個五位數而不是日期，是儲存格格式沒設成日期；天數挑一組自己算，例如 2026 年 8 月 1 日到 9 月 13 日是 43 天，公式要給 43。"
+        },
+        {
+          "type": "heading",
+          "text": "問題 4 到 6：去重與分組、依條件標色、把手動步驟寫成 VBA",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "問題 4，去重與分組。要求：「在 H 欄列出 C 欄不重複的客戶，I 欄放每個客戶的金額合計。」Microsoft 365、Excel 2021 與 2024 它會給 H2 放 =UNIQUE(C2:C500)，這條會自動往下溢出成一整欄清單；I2 放 =SUMIFS($E$2:$E$500,$C$2:$C$500,H2) 再往下填滿。要挑出符合條件的整列，則是 =FILTER(A2:F500,F2:F500=\"待出貨\",\"沒有符合的列\")，第三個參數是空結果時顯示的字，支援頁說沒給它而結果是空的會出現 #CALC!；溢出範圍的下方有東西擋著會出現 #SPILL!，把那幾格清空就好。舊版沒有這兩個函數，替代做法是先把 C 欄複製到另一張工作表，資料 → 移除重複項目得到不重複的客戶清單（支援頁提醒這會永久刪掉資料，所以才先複製），再用同一條 SUMIFS 算每個客戶的合計。驗證：I 欄全部加總要等於 E 欄全部加總，差一筆就是有客戶名稱不一致，例如多一個全形空白。"
+        },
+        {
+          "type": "paragraph",
+          "text": "問題 5，依條件標色。這題不是儲存格公式，是設定格式化的條件用的公式，描述時要說清楚：「選取 A2 到 F500，狀態不是已出貨而且日期距今超過 30 天的整列標成淺紅色。」它會給 =AND($F2<>\"已出貨\",TODAY()-$B2>30)，操作是常用 → 設定格式化的條件 → 新增規則 → 使用公式決定要格式化哪些儲存格，貼上公式後設定填滿色。重點在 $F2 這種「鎖欄不鎖列」的寫法：欄前面有 $、列前面沒有，Excel 才會替每一列各自檢查自己的 F 欄與 B 欄；寫成 $F$2 就會整張表看同一格。找重複的訂單編號也是同一招：=COUNTIF($A$2:$A$500,$A2)>1。驗證：先只選前 10 列做小樣本，把其中一列的狀態改成已出貨，顏色應該立刻消失，改回來再出現；支援頁說這種規則的公式必須回傳 TRUE 或 FALSE，所以也可以把公式貼到空白格看它是哪一個。"
+        },
+        {
+          "type": "paragraph",
+          "text": "問題 6，把重複的手動步驟寫成 VBA 巨集。適合的情境是每週都要做同一串動作：把訂單工作表狀態是待出貨的列複製到新工作表、依日期排序、在最後一列加總金額。描述時把步驟按順序寫成清單，一步一句，寫明工作表與欄位，然後加三句要求：「寫成一個 Sub，每一行加中文註解說明在做什麼；不要刪除或覆蓋任何現有的工作表；找不到工作表時顯示訊息並停止。」它回覆的程式碼從 Sub 開始、End Sub 結束，接下來照這五步貼進去。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "開一個新的空白活頁簿，把訂單工作表複製一份進去當測試資料；巨集先在這個新檔案上跑，不碰原檔。",
+            "按 Alt+F11 開啟 Visual Basic 編輯器（Mac 從功能表 工具 → 巨集 → Visual Basic 編輯器 進），功能表 插入 → 模組，把程式碼貼進右邊的白色視窗。",
+            "回到 Excel，檔案 → 另存新檔，存檔類型選「Excel 啟用巨集的活頁簿 (*.xlsm)」；存成一般的 .xlsx 時 Excel 會跳出提示，按「是」就存成沒有巨集的活頁簿，剛貼的程式碼就不見了。",
+            "執行：開發人員索引標籤 → 巨集 → 選名稱 → 執行。開發人員索引標籤預設是隱藏的，到檔案 → 選項 → 自訂功能區，在主要索引標籤勾選「開發人員」。",
+            "看結果對不對：新工作表的列數要等於原表篩選待出貨的列數，最後一列的金額合計要等於用 SUMIFS 算出來的數字。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "安全性有三件事。第一，巨集設定在檔案 → 選項 → 信任中心 → 信任中心設定 → 巨集設定，保持預設的「使用通知停用所有巨集」，開啟含巨集的檔案時上方會出現安全性警告列，自己寫的檔案再按「啟用內容」；不要改成「啟用所有巨集」，支援頁註明這會讓危險的程式碼直接執行。第二，Windows 版 Office 預設會封鎖從網路下載或郵件附件裡的巨集，開啟時看到的是「安全性風險」而不是啟用內容按鈕；這是保護，支援頁說不確定那些巨集在做什麼，直接把檔案刪掉就好。第三，不要執行你看不懂的巨集，支援頁也明寫除非確定知道巨集在做什麼否則不要啟用：貼之前先要它逐行解釋，看到 Kill、Delete、SaveAs、Shell、開啟其他檔案這類字眼，問清楚它在動哪個檔案，不確定就不要跑；支援頁明寫巨集做的事不能復原。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/chatgpt-for-excel-formulas/diagram-1.svg",
+          "alt": "從問題描述到可貼上公式的六步流程圖：1 描述格式、2 提示、3 公式、4 貼上、5 驗證、6 追問修正，下方是六個問題各自對應的函數與驗證動作，最下方是新舊版函數的分界與副本、新檔案的提醒。",
+          "width": 1600,
+          "height": 900,
+          "caption": "上排六步由左到右做，驗證不過就從第 6 步回到第 3 步；中間六格對應正文的六個問題，寫的是該用的函數與驗證動作；最下方兩行是新舊版函數的分界與安全提醒，版本以正文與 Microsoft 支援頁為準。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "版本差：哪些函數只有新版有，舊版怎麼寫",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "它預設用最新的函數寫，你沒說版本，公式在同事的 Excel 2019 上打開就是 #NAME?。下面以 Microsoft 支援頁各函數的「適用於」欄位為準。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "XLOOKUP：Microsoft 365、Excel 2021、2024；支援頁明寫 Excel 2016 與 2019 沒有。舊版改用 INDEX 加 MATCH，或 VLOOKUP（支援頁提醒它只能由左往右找，要找的欄必須在範圍最左邊；最後一個參數填 FALSE 或 0 才是完全相符）。",
+            "FILTER、UNIQUE：Microsoft 365、Excel 2021、2024。舊版改用自動篩選、資料 → 移除重複項目。",
+            "LET：Microsoft 365、Excel 2021、2024。舊版把重複的算式直接展開，或加一欄輔助欄先算中間結果。",
+            "TEXTSPLIT：支援頁只列 Microsoft 365 與 Excel 2024，沒有 2021。舊版用 LEFT、MID、FIND 組合，問題 3 的第一條公式就是這種寫法。",
+            "SUMIFS、DATEDIF、ASC：支援頁的適用版本都從 Excel 2016 起，新舊版通用；沒列在這裡的函數以各自的支援頁為準。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "新版存的檔在舊版 Excel 打開，Microsoft 支援頁說這些函數會顯示 #NAME? 而不是結果，建議換成舊版有的函數，或把公式換成算出來的值（複製 → 選擇性貼上 → 值）。要跟用舊版的人共用檔案，最省事的做法是在提示詞裡寫：「請給兩個版本，一個用 Microsoft 365 的函數，一個只用 Excel 2016 就有的函數。」"
+        },
+        {
+          "type": "heading",
+          "text": "台灣特有的資料清理：民國年、全形數字、單位與空白",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "從公文系統、網路銀行或別人手打的表匯進來的資料，常常長得像數字但 Excel 當它是文字，加總永遠是 0。民國年的轉法在問題 3；其他三種也各有一條公式，描述時把原始格式原樣打給它看，例如「E 欄的金額長這樣：１２，３００元」，它才知道要拿掉哪些字。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "全形數字與英文：=ASC(E2) 把全形字轉成半形，支援頁列的適用版本從 Excel 2016 起；轉完還是文字，再包一層 =VALUE(ASC(E2)) 或乘以 1 才是數字。",
+            "「元」「,」與空白：=VALUE(SUBSTITUTE(SUBSTITUTE(ASC(E2),\"元\",\"\"),\",\",\"\"))，每個 SUBSTITUTE 拿掉一種字；前後的半形空白用 TRIM，全形空白 TRIM 拿不掉，要用 SUBSTITUTE(E2,\"　\",\"\")，引號裡打一個全形空格。",
+            "整欄已經是文字型的數字：不用公式也行，選取整欄後按儲存格旁邊的錯誤檢查圖示 → 轉換成數字；或另開一欄放 =VALUE(E2) 往下填滿，再複製那一欄 → 選擇性貼上 → 值貼回去；支援頁列的就是這兩種做法。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "清完之後用新欄計算、把原欄隱藏，不要把結果貼回原欄蓋掉原始資料，轉錯還有得救。整份表每一欄都要清的話，直接上傳檔案請它處理比一條一條公式快，那是另外兩篇的範圍。"
+        },
+        {
+          "type": "link",
+          "text": "上傳 PDF、Excel 給 ChatGPT：分析、摘要與抓重點",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-file-upload-analysis"
+        },
+        {
+          "type": "link",
+          "text": "用 ChatGPT 分析 CSV：從匯出資料到畫出第一張圖",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-data-analysis-csv"
+        },
+        {
+          "type": "heading",
+          "text": "常見錯與驗證：它假設了你沒有的東西",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "貼回去出錯，八成是這四種。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "引用錯欄：你說金額在 E 欄，它寫成 D 欄；或者你的表其實從第 3 列開始，它從第 2 列算，把標題算進去出現 #VALUE!。對法：把公式裡每個欄字母對回自己的表念一遍。",
+            "絕對與相對參照：往下填滿之後只有第一格對。看公式裡該鎖住的範圍有沒有 $；編輯公式時選取那段範圍按 F4，會在四種鎖法之間切換。",
+            "它假設了你沒有的欄位：例如它自己加了一欄「月份」再用那一欄算，或假設客戶名稱不會重複。回覆裡出現你沒提過的欄名、工作表名，就是它在補設定，要它只用你列出的欄位重寫。",
+            "資料型態：日期其實是文字、數字其實是文字，公式沒錯但結果是 0 或 #VALUE!；先用上一節的方法清理，再回來貼公式。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "驗證固定三個動作：一格手算（挑一列自己算，對公式的結果）、小樣本（前 10 列複製到新工作表跑一次，眼睛看得完）、邊界值（空白、查不到、金額為 0 的列各放一列進範例）。錯了就把錯誤訊息與那一格的內容原封不動貼回去追問：「G5 顯示 #N/A，C5 的內容是『大安店 』，客戶工作表 A 欄有『大安店』」，它會看出尾端的空白。追問時同一個對話問到底，它記得你的欄位；開新對話就要把描述格式再貼一次。它給的公式再順也只是根據你的描述推測，跟它說的其他事一樣要查。"
+        },
+        {
+          "type": "link",
+          "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
+          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+        },
+        {
+          "type": "table",
+          "header": [
+            "問題",
+            "提示詞重點",
+            "公式或函數",
+            "驗證動作"
+          ],
+          "rows": [
+            [
+              "1 跨表查找",
+              "找哪一欄、回傳哪一欄、找不到顯示什麼",
+              "XLOOKUP；舊版 INDEX 加 MATCH",
+              "挑一個客戶手動翻表對；填不存在的名字看是否查無"
+            ],
+            [
+              "2 多條件加總",
+              "每個條件的欄與值、日期用區間夾",
+              "SUMIFS",
+              "自動篩選後看狀態列的加總；改成不存在的條件應為 0"
+            ],
+            [
+              "3 日期差與民國年",
+              "民國年是文字、格式固定與否",
+              "DATE 加 LEFT、MID；新版 LET 加 TEXTSPLIT；相減、DATEDIF",
+              "顯示五位數表示沒設日期格式；自己算一組天數"
+            ],
+            [
+              "4 去重與分組",
+              "清單放哪一欄、合計放哪一欄",
+              "UNIQUE 加 SUMIFS、FILTER；舊版移除重複項目",
+              "分組合計的總和等於整欄總和"
+            ],
+            [
+              "5 依條件標色",
+              "選取範圍、條件、整列還是單格",
+              "設定格式化的條件加 AND、COUNTIF",
+              "小樣本改一格看顏色是否切換"
+            ],
+            [
+              "6 手動步驟寫成 VBA",
+              "步驟順序、工作表名稱、不刪不覆蓋、出錯停止",
+              "Sub 巨集，Alt+F11 貼入模組，存 .xlsm",
+              "新檔案上跑，列數與合計對回公式"
+            ]
+          ],
+          "caption": "2026 年 9 月依 Microsoft 支援頁各函數的適用版本整理；函數是否存在以你自己那一版 Excel 的函數清單為準。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "公式先在副本上試，VBA 先在新檔案上跑",
+          "text": "公式貼錯只會顯示錯誤值，但往下填滿、移除重複項目與巨集會改掉原本的資料，巨集執行完更不能復原。任何要動整欄的操作先另存一份副本；巨集一律在只有測試資料的新檔案上跑通，列數與金額都對再回原檔用。範例資料也一樣：用假名字與假金額，真實客戶名單不要貼進對話。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Microsoft 支援：XLOOKUP 函數（適用於 Microsoft 365、Excel 2021、2024；明寫 Excel 2016 與 2019 沒有；參數說明）",
+          "url": "https://support.microsoft.com/en-us/office/xlookup-function-b7fd680e-6d10-43e6-84f9-88eae8bf5929",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Microsoft 支援：FILTER 函數（適用於 Microsoft 365、Excel 2021、2024；空結果沒給第三參數會出現 #CALC!）",
+          "url": "https://support.microsoft.com/en-us/office/filter-function-f4f7cb66-82eb-4767-8f7c-4877ad80c759",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Microsoft 支援：UNIQUE 函數（適用於 Microsoft 365、Excel 2021、2024；結果會溢出）",
+          "url": "https://support.microsoft.com/en-us/office/unique-function-c5ab87fd-30a3-4ce9-9d1a-40204fb85e1e",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Microsoft 支援：LET 函數（適用於 Microsoft 365、Excel 2021、2024；語法）",
+          "url": "https://support.microsoft.com/en-us/office/let-function-34842dd8-b92b-4d3f-b325-b8b8f9908999",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Microsoft 支援：TEXTSPLIT 函數（適用於只列 Microsoft 365 與 Excel 2024；語法）",
+          "url": "https://support.microsoft.com/en-us/excel/functions/textsplit-function",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Microsoft 支援：SUMIFS 函數（適用於含 Excel 2016、2019；參數說明）",
+          "url": "https://support.microsoft.com/en-us/office/sumifs-function-c9e748f5-7ea7-455d-9406-611cebce642b",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Microsoft 支援：DATEDIF 函數（單位代碼、MD 可能算錯、天數直接相減的建議、適用於含 Excel 2016）",
+          "url": "https://support.microsoft.com/en-us/office/datedif-function-25dba1a4-2812-480b-84dd-8b32a451b35c",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Microsoft 支援：ASC 函數（全形轉半形；適用於含 Excel 2016）",
+          "url": "https://support.microsoft.com/en-us/office/asc-function-0b6abf1c-c663-4004-a964-ebc00b723266",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Microsoft 支援：使用 VLOOKUP、INDEX 或 MATCH 查閱值（VLOOKUP 只能由左往右找；INDEX 加 MATCH 的寫法）",
+          "url": "https://support.microsoft.com/en-us/office/look-up-values-with-vlookup-index-or-match-68297403-7c3c-4150-9e3c-4d348188976b",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Microsoft 支援：在 Excel 中使用設定格式化的條件來醒目提示資訊（常用 → 設定格式化的條件 → 新增規則、使用公式決定要格式化哪些儲存格、公式必須傳回 TRUE 或 FALSE、找重複值的 COUNTIF 範例）",
+          "url": "https://support.microsoft.com/zh-tw/office/use-conditional-formatting-to-highlight-information-in-excel-35f92fc6-10fc-46bf-958d-90ec64facfc8",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Microsoft 支援：篩選唯一值或移除重複值（資料 → 移除重複項目；永久刪除資料，先複製一份）",
+          "url": "https://support.microsoft.com/zh-tw/office/filter-for-unique-values-or-remove-duplicate-values-ccf664b0-81d6-449b-bbe1-8daaec1e83c2",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Microsoft 支援：#SPILL! 錯誤：溢出範圍不是空白（下方有東西擋著會出現 #SPILL!、選取阻擋的儲存格後刪掉或搬走就會正常溢出）",
+          "url": "https://support.microsoft.com/en-us/office/-spill-error-spill-range-isn-t-blank-182c7141-7ff5-4dc2-ba38-7a81b7bf51c7",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Microsoft 支援：將儲存成文字的數字轉換為數字（頁面列兩種做法：錯誤檢查 → 轉換成數字；VALUE 函數往下填滿再選擇性貼上 → 值；適用於含 Excel 2016）",
+          "url": "https://support.microsoft.com/en-us/excel/convert-numbers-stored-as-text-to-numbers-in-excel",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Microsoft 支援：啟用或停用 Microsoft 365 檔案中的巨集（檔案 → 選項 → 信任中心 → 信任中心設定 → 巨集設定的四個選項、安全性警告列與啟用內容、除非確定知道巨集在做什麼否則不要啟用）",
+          "url": "https://support.microsoft.com/zh-tw/office/enable-or-disable-macros-in-microsoft-365-files-12b036fd-d140-4e74-b45e-16fed1a7e5c6",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Microsoft 支援：儲存巨集（存檔類型選 Excel 啟用巨集的活頁簿 *.xlsm；存成一般格式時的對話方塊：按「是」存成無巨集的活頁簿，按「否」改存 .xlsm）",
+          "url": "https://support.microsoft.com/zh-tw/office/save-a-macro-24a026ef-3145-4bf8-a5f2-2fc7889ff74a",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Microsoft 支援：Excel 的公式相容性問題（舊版沒有的函數在舊版重算會顯示 #NAME? 而不是結果；相容性檢查程式的建議是換成舊版有的函數或把公式換成計算結果）",
+          "url": "https://support.microsoft.com/en-us/office/formula-compatibility-issues-in-excel-37224100-8f79-45de-b43a-7fa28c6c15c4",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Microsoft 支援：使用巨集錄製器自動執行工作（Windows 按 Alt+F11、Mac 從 工具 → 巨集 → Visual Basic 編輯器 開啟；開發人員索引標籤預設隱藏，Mac 在 Excel → 偏好設定 → 功能區與工具列 勾選；開發人員 → 巨集執行；巨集不能復原，先在副本上跑）",
+          "url": "https://support.microsoft.com/en-us/office/automate-tasks-with-the-macro-recorder-974ef220-f716-4e01-b015-3ea70e64937b",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Microsoft 支援：工作表或活頁簿「後面」的 VBA 程式碼可能無法運作（Alt+F11 開啟 Visual Basic 編輯器、插入功能表 → 模組、把程式碼貼進新模組）",
+          "url": "https://support.microsoft.com/en-us/topic/vba-code-behind-a-worksheet-or-a-workbook-may-not-work-in-excel-f2de64d3-a926-7035-e18e-1697f0a32bc5",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Microsoft 支援：有潛在危險的巨集已被封鎖（來自網路或郵件附件的檔案預設封鎖巨集並顯示「安全性風險」；不確定巨集在做什麼就直接刪掉檔案；信任的檔案在檔案總管 → 內容 → 解除封鎖）",
+          "url": "https://support.microsoft.com/en-us/topic/a-potentially-dangerous-macro-has-been-blocked-0952faa0-37e7-4316-b61d-5b5ed6024216",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Free Tier FAQ（免費版可以無限制地進行日常文字對話，進階功能另有上限）",
+          "url": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}

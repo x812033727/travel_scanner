@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">從問題描述到可貼上公式的六步與六題函數 / From a described problem to a checked formula</title>
+  <desc id="desc">上排六個步驟由左到右用箭頭串起。步驟 1 描述格式：寫 Excel 版本、工作表與欄位、三列範例資料、結果放哪一格。步驟 2 提示：一次只問一題。步驟 3 公式：要它給純文字的公式並說明每個參數。步驟 4 貼上：確認開頭有等號、沒有多出引號。步驟 5 驗證：一格手算、小樣本。步驟 6 追問修正：把錯誤訊息與那一格的內容原封不動貼回去問；驗證不過就從步驟 6 回到步驟 3。中間六格對應正文的六個問題。問題 1 跨表查找：XLOOKUP，舊版 INDEX 加 MATCH；驗證是挑一個客戶手動翻表對一次，填不存在的名字看是否顯示查無。問題 2 多條件加總：SUMIFS，日期條件用區間夾住整個月；驗證是自動篩選後看狀態列的加總，改成不存在的業務名結果應為 0。問題 3 日期差與民國年：DATE 加 LEFT、MID，民國年加 1911；新版可用 LET 加 TEXTSPLIT，天數直接相減；驗證是顯示五位數表示沒設日期格式，自己算一組天數。問題 4 去重與分組：UNIQUE 加 SUMIFS、FILTER；舊版先複製一份再用資料的移除重複項目；驗證是分組合計的總和等於整欄總和。問題 5 依條件標色：設定格式化的條件加 AND、COUNTIF，$F2 這種鎖欄不鎖列的寫法讓每一列各看自己那一列；驗證是小樣本改一格看顏色是否切換。問題 6 手動步驟寫成 VBA：按 Alt+F11，插入模組貼上程式碼，存成 .xlsm，先在只有測試資料的新檔案上跑，不碰原檔；驗證是列數與金額合計都對回公式的結果。最下方兩個橫條。版本分界：XLOOKUP、FILTER、UNIQUE、LET 要 Microsoft 365 或 Excel 2021、2024 才有，TEXTSPLIT 支援頁只列 Microsoft 365 與 2024；Excel 2016、2019 改用 INDEX 加 MATCH、移除重複項目、LEFT 加 MID，SUMIFS、DATEDIF、ASC 從 2016 起新舊版通用。安全提醒：公式先在副本上試，VBA 先在只有測試資料的新檔案上跑通，巨集執行後不能復原；給它的範例資料用假名字與假金額，真實客戶名單不要貼進對話，看不懂的巨集不要執行。2026 年 9 月查證。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#B8442D"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">從問題描述到可貼上公式的六步與六題函數（2026 年 9 月查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">From a described problem to a pasted, checked formula: six steps, and the functions for six common tasks</text>
+
+  <!-- row 1: six steps -->
+  <rect x="48" y="108" width="230" height="96" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="88" cy="142" r="18" fill="#0D6B68"/>
+  <text x="88" y="149" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+  <text x="116" y="149" font-size="18" font-weight="700" fill="#0B4F4D">描述格式</text>
+  <text x="68" y="186" font-size="15" fill="#102A2B">版本、欄位、範例、結果格</text>
+  <path d="M 280 156 L 298 156" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="302" y="108" width="230" height="96" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <circle cx="342" cy="142" r="18" fill="#2F6F9F"/>
+  <text x="342" y="149" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+  <text x="370" y="149" font-size="18" font-weight="700" fill="#1F4E73">提示</text>
+  <text x="322" y="186" font-size="15" fill="#102A2B">一次只問一題</text>
+  <path d="M 534 156 L 552 156" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="556" y="108" width="230" height="96" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <circle cx="596" cy="142" r="18" fill="#102A2B"/>
+  <text x="596" y="149" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+  <text x="624" y="149" font-size="18" font-weight="700" fill="#102A2B">公式</text>
+  <text x="576" y="186" font-size="15" fill="#102A2B">純文字，說明每個參數</text>
+  <path d="M 788 156 L 806 156" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="810" y="108" width="230" height="96" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="850" cy="142" r="18" fill="#0D6B68"/>
+  <text x="850" y="149" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+  <text x="878" y="149" font-size="18" font-weight="700" fill="#0B4F4D">貼上</text>
+  <text x="830" y="186" font-size="15" fill="#102A2B">確認開頭有等號</text>
+  <path d="M 1042 156 L 1060 156" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="1064" y="108" width="230" height="96" rx="14" fill="#E6F2EC" stroke="#2E7D5B" stroke-width="4"/>
+  <circle cx="1104" cy="142" r="18" fill="#2E7D5B"/>
+  <text x="1104" y="149" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+  <text x="1132" y="149" font-size="18" font-weight="700" fill="#1F5A40">驗證</text>
+  <text x="1084" y="186" font-size="15" fill="#102A2B">一格手算、小樣本</text>
+  <path d="M 1296 156 L 1314 156" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="1318" y="108" width="230" height="96" rx="14" fill="#FCEFE4" stroke="#D97A2B" stroke-width="4"/>
+  <circle cx="1358" cy="142" r="18" fill="#D97A2B"/>
+  <text x="1358" y="149" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">6</text>
+  <text x="1386" y="149" font-size="18" font-weight="700" fill="#8A4A16">追問修正</text>
+  <text x="1338" y="186" font-size="15" fill="#102A2B">貼錯誤訊息回去問</text>
+
+  <!-- return arrow: verification failed, back to step 3 -->
+  <path d="M 1433 206 V 234 H 671 V 210" stroke="#B8442D" stroke-width="4" fill="none" marker-end="url(#arrow-red)"/>
+  <text x="1052" y="258" font-size="15" fill="#B8442D" text-anchor="middle">驗證不過，回到第 3 步</text>
+
+  <!-- rows 2-3: the six problems -->
+  <rect x="48" y="272" width="485" height="150" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="68" y="306" font-size="18" font-weight="700" fill="#0B4F4D">1 跨表查找</text>
+  <text x="68" y="338" font-size="16" fill="#102A2B">函數：XLOOKUP；舊版 INDEX 加 MATCH</text>
+  <text x="68" y="366" font-size="16" fill="#102A2B">驗證：挑一個客戶手動翻表對一次</text>
+  <text x="68" y="394" font-size="16" fill="#5C6B6B">填不存在的名字，看是否顯示查無</text>
+
+  <rect x="557" y="272" width="485" height="150" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="577" y="306" font-size="18" font-weight="700" fill="#1F4E73">2 多條件加總</text>
+  <text x="577" y="338" font-size="16" fill="#102A2B">函數：SUMIFS，日期條件用區間夾住整個月</text>
+  <text x="577" y="366" font-size="16" fill="#102A2B">驗證：自動篩選後看狀態列的加總</text>
+  <text x="577" y="394" font-size="16" fill="#5C6B6B">改成不存在的業務名，結果應為 0</text>
+
+  <rect x="1066" y="272" width="485" height="150" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1086" y="306" font-size="18" font-weight="700" fill="#0B4F4D">3 日期差與民國年</text>
+  <text x="1086" y="338" font-size="16" fill="#102A2B">函數：DATE 加 LEFT、MID，民國年加 1911</text>
+  <text x="1086" y="366" font-size="16" fill="#102A2B">新版：LET 加 TEXTSPLIT；天數直接相減</text>
+  <text x="1086" y="394" font-size="16" fill="#5C6B6B">驗證：五位數是沒設日期格式；自己算一組天數</text>
+
+  <rect x="48" y="446" width="485" height="150" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="68" y="480" font-size="18" font-weight="700" fill="#1F4E73">4 去重與分組</text>
+  <text x="68" y="512" font-size="16" fill="#102A2B">函數：UNIQUE 加 SUMIFS、FILTER</text>
+  <text x="68" y="540" font-size="16" fill="#102A2B">舊版：先複製一份，再資料 → 移除重複項目</text>
+  <text x="68" y="568" font-size="16" fill="#5C6B6B">驗證：分組合計的總和等於整欄總和</text>
+
+  <rect x="557" y="446" width="485" height="150" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="577" y="480" font-size="18" font-weight="700" fill="#0B4F4D">5 依條件標色</text>
+  <text x="577" y="512" font-size="16" fill="#102A2B">規則：設定格式化的條件加 AND、COUNTIF</text>
+  <text x="577" y="540" font-size="16" fill="#102A2B">$F2 鎖欄不鎖列，每一列各看自己那一列</text>
+  <text x="577" y="568" font-size="16" fill="#5C6B6B">驗證：小樣本改一格，看顏色是否切換</text>
+
+  <rect x="1066" y="446" width="485" height="150" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1086" y="480" font-size="18" font-weight="700" fill="#8A4A16">6 手動步驟寫成 VBA</text>
+  <text x="1086" y="512" font-size="16" fill="#102A2B">做法：Alt+F11 → 插入 → 模組，存成 .xlsm</text>
+  <text x="1086" y="540" font-size="16" fill="#102A2B">先在只有測試資料的新檔案上跑，不碰原檔</text>
+  <text x="1086" y="568" font-size="16" fill="#5C6B6B">驗證：列數與金額合計都對回公式的結果</text>
+
+  <!-- row 4: version boundary -->
+  <rect x="48" y="620" width="1504" height="104" rx="16" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+  <text x="76" y="650" font-size="19" font-weight="700" fill="#102A2B">版本分界　Which version has which function</text>
+  <text x="76" y="678" font-size="16" fill="#102A2B">XLOOKUP、FILTER、UNIQUE、LET：Microsoft 365、Excel 2021、2024 才有；TEXTSPLIT：支援頁只列 Microsoft 365 與 2024</text>
+  <text x="76" y="706" font-size="16" fill="#102A2B">Excel 2016、2019：改用 INDEX 加 MATCH、移除重複項目、LEFT 加 MID；SUMIFS、DATEDIF、ASC 從 2016 起新舊版通用</text>
+
+  <!-- row 5: safety reminder -->
+  <rect x="48" y="740" width="1504" height="104" rx="16" fill="#FCEFE4" stroke="#B8442D" stroke-width="3"/>
+  <text x="76" y="770" font-size="19" font-weight="700" fill="#B8442D">安全提醒　Try it on a copy first</text>
+  <text x="76" y="798" font-size="16" fill="#102A2B">公式先在副本上試，VBA 先在只有測試資料的新檔案上跑通；巨集執行後不能復原</text>
+  <text x="76" y="826" font-size="16" fill="#102A2B">給它的範例資料用假名字與假金額，真實客戶名單不要貼進對話；看不懂的巨集不要執行</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
