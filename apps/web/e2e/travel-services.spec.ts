@@ -16,7 +16,7 @@ const catalogs = { en, ja, ko, "zh-TW": tw, "zh-CN": cn };
 
 for (const [locale, copy] of Object.entries(catalogs)) {
   test(`${locale} Klook direct hotel booking stays separate from destination discovery`, async ({ page, context }) => {
-    await mock(context, false, false, true);
+    const { clickoutOrigins } = await mock(context, false, false, true);
     const modules: string[] = [];
     const priceRequests: string[] = [];
     page.on("request", (request) => {
@@ -58,6 +58,7 @@ for (const [locale, copy] of Object.entries(catalogs)) {
     const popup = await popupWait;
     await expect(popup).toHaveTitle("Fixture partner page");
     expect(await popup.evaluate(() => window.opener === null)).toBe(true);
+    expect(clickoutOrigins).toEqual([new URL(page.url()).origin]);
     await popup.close();
     await page.keyboard.press("Escape");
     await expect(panel).toHaveCount(0);
@@ -66,7 +67,7 @@ for (const [locale, copy] of Object.entries(catalogs)) {
   });
 
   test(`${locale} Klook discovery follows day tour transfer and connectivity filters`, async ({ page, context }) => {
-    await mock(context);
+    const { clickoutOrigins } = await mock(context);
     const requests: string[] = [];
     await context.route("**/api/travel/travel-services?**", (route) => route.fulfill({ json: { ...results, items: [] } }));
     await context.route("**/api/travel/affiliates/destination-offers?**", (route) => {
@@ -81,6 +82,16 @@ for (const [locale, copy] of Object.entries(catalogs)) {
     const discovery = page.getByRole("region", { name: new RegExp(klookAffiliateCopy(locale).discover) });
     await expect(discovery.getByRole("button", { name: /Klook activities/ })).toBeVisible();
     expect(requests).toEqual(["activities"]);
+    // The same panel is the partner block in guide articles, city pages, trips and shares.
+    const partner = discovery.getByRole("button", { name: /Klook activities/ });
+    await expect(partner.locator("..")).toHaveAttribute("rel", "noopener");
+    const popupWait = context.waitForEvent("page");
+    await partner.click();
+    const popup = await popupWait;
+    await expect(popup).toHaveTitle("Fixture partner page");
+    expect(await popup.evaluate(() => window.opener === null)).toBe(true);
+    expect(clickoutOrigins).toEqual([new URL(page.url()).origin]);
+    await popup.close();
     for (const [kind, serviceModule] of [["transfer", "transport"], ["esim", "connectivity"]] as const) {
       await page.getByRole("button", { name: copy[kind], exact: true }).click();
       await expect(discovery.getByRole("button", { name: new RegExp(`Klook ${serviceModule}`) })).toBeVisible();
@@ -152,6 +163,10 @@ async function mock(
   ordinary = false,
   unified = false,
 ) {
+  // The popup is fulfilled here, before the BFF's same-origin guard would run, so keep the
+  // Origin the browser sent: a form that says `noreferrer` sends `Origin: null` and every
+  // real click gets a 403 while this fixture still shows the partner page.
+  const clickoutOrigins: (string | null)[] = [];
   await context.route("**/api/travel/**", async (route) => {
     const url = new URL(route.request().url());
     const path = url.pathname.replace("/api/travel", "");
@@ -234,8 +249,12 @@ async function mock(
     } else if (
       path.includes("/hotel-links/") ||
       path.includes("/booking-options/") ||
-      path.startsWith("/affiliates/offers")
+      path.startsWith("/affiliates/offers") ||
+      /^\/affiliates\/destination-offers\/[^/]+\/clickout$/.test(path)
     ) {
+      if (route.request().method() === "POST") {
+        clickoutOrigins.push(await route.request().headerValue("origin"));
+      }
       await route.fulfill({
         status: 200,
         contentType: "text/html",
@@ -293,6 +312,7 @@ async function mock(
       body: "<title>Fixture partner page</title><p>Isolated test destination. No commission or booking.</p>",
     }),
   );
+  return { clickoutOrigins };
 }
 
 for (const [locale, copy] of Object.entries(catalogs)) {
@@ -301,7 +321,7 @@ for (const [locale, copy] of Object.entries(catalogs)) {
       page,
       context,
     }) => {
-      await mock(context, false, false, true);
+      const { clickoutOrigins } = await mock(context, false, false, true);
       await page.setViewportSize({ width, height: 860 });
       await page.goto(
         `/${locale}/destinations/tokyo/services?type=hotel&area=marunouchi`,
@@ -325,6 +345,7 @@ for (const [locale, copy] of Object.entries(catalogs)) {
       const popup = await popupWait;
       await expect(popup).toHaveTitle("Fixture partner page");
       expect(await popup.evaluate(() => window.opener === null)).toBe(true);
+      expect(clickoutOrigins).toEqual([new URL(page.url()).origin]);
       await popup.close();
       await expect(page).toHaveURL(/area=marunouchi/);
       for (const theme of ["light", "dark"]) {
@@ -363,7 +384,7 @@ for (const [locale, copy] of Object.entries(catalogs)) {
       page,
       context,
     }) => {
-      await mock(context, false, true);
+      const { clickoutOrigins } = await mock(context, false, true);
       await page.setViewportSize({ width, height: 860 });
       await page.goto(
         `/${locale}/destinations/tokyo/services?type=hotel&area=marunouchi`,
@@ -379,6 +400,7 @@ for (const [locale, copy] of Object.entries(catalogs)) {
       const popup = await popupWait;
       await expect(popup).toHaveTitle("Fixture partner page");
       expect(await popup.evaluate(() => window.opener === null)).toBe(true);
+      expect(clickoutOrigins).toEqual([new URL(page.url()).origin]);
       await popup.close();
       await expect(page).toHaveURL(/area=marunouchi/);
       await expect(
@@ -407,7 +429,7 @@ for (const [locale, copy] of Object.entries(catalogs)) {
       page,
       context,
     }) => {
-      await mock(context);
+      const { clickoutOrigins } = await mock(context);
       await page.setViewportSize({ width, height: 860 });
       await page.goto(
         `/${locale}/destinations/tokyo/services?type=hotel&hotspot_id=fixture`,
@@ -423,10 +445,7 @@ for (const [locale, copy] of Object.entries(catalogs)) {
       });
       await expect(exact).toBeVisible();
       await expect(exact.locator("..")).toHaveAttribute("target", "_blank");
-      await expect(exact.locator("..")).toHaveAttribute(
-        "rel",
-        "noopener noreferrer",
-      );
+      await expect(exact.locator("..")).toHaveAttribute("rel", "noopener");
       await expect(page.getByText(copy.disclosure).first()).toBeVisible();
       await expect(page.getByText(copy.destinationScope).first()).toBeVisible();
       const popupWait = context.waitForEvent("page");
@@ -434,6 +453,7 @@ for (const [locale, copy] of Object.entries(catalogs)) {
       const popup = await popupWait;
       await expect(popup).toHaveTitle("Fixture partner page");
       expect(await popup.evaluate(() => window.opener === null)).toBe(true);
+      expect(clickoutOrigins).toEqual([new URL(page.url()).origin]);
       await popup.close();
       await page.getByRole("combobox", { name: copy.radius }).selectOption("5");
       await expect(page).toHaveURL(/radius_km=5/);

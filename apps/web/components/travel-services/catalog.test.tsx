@@ -161,7 +161,7 @@ describe("reviewed travel services", () => {
     );
     expect(form?.getAttribute("method")).toBe("post");
     expect(form?.getAttribute("target")).toBe("_blank");
-    expect(form?.getAttribute("rel")).toBe("noopener noreferrer");
+    expect(form?.getAttribute("rel")).toBe("noopener");
     expect(
       screen
         .getByRole("button", { name: copy.selectHotel })
@@ -209,7 +209,7 @@ describe("reviewed travel services", () => {
       "/api/travel/affiliates/offers/offer-1/clickout?locale=zh-TW&placement=destination",
     );
     expect(link?.getAttribute("target")).toBe("_blank");
-    expect(link?.getAttribute("rel")).toBe("noopener noreferrer");
+    expect(link?.getAttribute("rel")).toBe("noopener");
   });
 
   it("shows three cards and expands only on request", async () => {

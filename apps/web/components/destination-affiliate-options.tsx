@@ -111,13 +111,16 @@ export function DestinationAffiliateOptions({
               {t(LABEL_KEYS[response.module])}
             </p>
             <div className="flex gap-2 overflow-x-auto pb-1">
+              {/* `noopener` only: a `noreferrer` form POST goes out with `Origin: null`, and the
+                  BFF's same-origin guard answers that with a 403 instead of the partner page.
+                  The 303 onward already carries `Referrer-Policy: no-referrer`. */}
               {response.options.map((option) => (
                 <form
                   key={option.id}
                   action={option.clickout_url}
                   method="post"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener"
                   className="shrink-0"
                 >
                   <button

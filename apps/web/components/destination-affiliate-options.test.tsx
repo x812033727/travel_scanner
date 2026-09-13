@@ -80,7 +80,8 @@ describe("DestinationAffiliateOptions", () => {
     const form = button.closest("form");
     expect(form?.getAttribute("method")).toBe("post");
     expect(form?.getAttribute("target")).toBe("_blank");
-    expect(form?.getAttribute("rel")).toBe("noopener noreferrer");
+    // Never `noreferrer`: that POST carries `Origin: null` and the BFF refuses the click.
+    expect(form?.getAttribute("rel")).toBe("noopener");
     expect(form?.getAttribute("action")).toContain("destination-offers");
     await waitFor(() => expect(fetch).toHaveBeenCalledTimes(5));
   });
