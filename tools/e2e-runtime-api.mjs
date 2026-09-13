@@ -217,6 +217,14 @@ const server = createServer((request, response) => {
     response.end(JSON.stringify({ first_party_enabled: false, ga4_enabled: false }));
     return;
   }
+  // Advertising off, like production and like the default. Unknown paths answer 404, and a
+  // 404 here would fail `admin-operations` (it counts this site's 4xx responses) and
+  // `korea-dual-maps` (it counts console errors). The specs that assert zero external
+  // requests depend on this staying "off"; `guides-adsense.spec.ts` turns it on per test.
+  if (request.method === "GET" && requestUrl.pathname === "/api/v1/ads/config") {
+    response.end(JSON.stringify(adsConfig));
+    return;
+  }
   if (request.method === "GET" && requestUrl.pathname === "/api/v1/admin/dashboard") {
     response.end(JSON.stringify({
       counts: {

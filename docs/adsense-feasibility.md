@@ -146,6 +146,20 @@ AdSense 的衝突點：
 
 ## 六、站主要決定的事
 
+**2026-09-13 定案。** 站主的答案如下，程式碼已照這個實作並預設關閉（第八節）。
+發布商 ID：`ca-pub-4140966684432854`。
+
+| # | 決定 | 站主的答案 |
+| --- | --- | --- |
+| D1 | 隱私立場 | **只投非個人化廣告，不裝 CMP。** 載入器寫死 `requestNonPersonalizedAds = 1`，不做後台開關——切成個人化要先有認證 CMP 與改寫過的隱私政策，做成開關等於留一個一按就違反政策的按鈕。 |
+| D2 | 申請時機 | **程式碼先就緒、預設關閉**，審核通過拿到 slot ID 後再從後台開啟。 |
+| D3 | 版位 | **文中 1 個。** 第一個 level-2 標題與其第一段之後，不在第一屏，離 offer 區塊至少 6 個 block；太短的文章不放。 |
+| D4 | 廣告主封鎖 | 封鎖與分潤重疊的旅遊廣告主。純後台操作，不牽涉程式碼。 |
+| D5 | CSP | **只有文章路由、而且廣告開啟時**才套 AdSense 版政策。廣告關閉時（現況）所有頁面的政策一個字都不變。 |
+
+以下是當初的建議與替代方案，保留備查。
+
+
 | # | 決定 | 建議 | 替代方案與代價 |
 | --- | --- | --- | --- |
 | D1 | 隱私立場 | 全站只放**非個人化廣告**；DNT／GPC 時完全不載入；**不裝 CMP**（EEA／英國／瑞士只會收到非個人化或限制型廣告） | 個人化廣告＋Google「隱私權與訊息」CMP：RPM 較高，但要加同意 UI、改更多政策文字，也違背現在「consent 永遠 denied」的設計 |
@@ -171,9 +185,9 @@ AdSense 的衝突點：
 
 | 票 | 狀態 | 內容 |
 | --- | --- | --- |
-| `adsense-privacy-policy-section` | blocked（等 D1、法律頁任務） | 五語系同結構的廣告揭露區塊；正式站已初始化後改草稿無效，要在後台逐語系改版發布 |
-| `adsense-admin-config` | blocked（等 D1–D3） | 後台設定（開關、`ca-pub` 驗證、slot ID、非個人化）與匿名公開設定端點，預設關 |
-| `adsense-article-slot` | open，依賴上面兩張與分潤點擊歸因任務 | 文章頁版位、載入器、文章路由 CSP、`ads.txt`、e2e fixture、CLS 量測 |
+| `adsense-privacy-policy-section` | **done**（2026-09-13） | 五語系廣告揭露區塊。措辭改成條件句，所以不必等法律頁；正式站已初始化後改草稿無效，要在後台逐語系改版發布 |
+| `adsense-admin-config` | **done**（2026-09-13） | 後台 `adsense` provider 與匿名 `GET /api/v1/ads/config`，預設關 |
+| `adsense-article-slot` | **done**（2026-09-13） | 文章頁版位、載入器、`app/(ads-public)` 獨立 document、文章路由 CSP、`ads.txt`、e2e |
 | `guides-empty-locale-hubs-indexable` | open | 這次順帶發現：非 zh-TW 的空 hub 可索引又在 sitemap 裡 |
 | `google-ads-conversion-measurement` | blocked（等站主決定要投放） | 付費導流需要的轉換量測 |
 

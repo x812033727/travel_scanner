@@ -96,8 +96,11 @@ editor never meets a block it has no fields for. An article may also carry a `he
 the picture at the top of the page, on the listing cards and on the share card.
 
 - `image` / `hero` — `src` must match `/guides/<slug>/<name>.(webp|jpg|png|svg)`, a path
-  under the web app's own `public/`, never a URL: an article can never make a reader's
-  browser fetch a picture from a third party, and the files ship and review with the code.
+  under the web app's own `public/`, never a URL: an article's own pictures can never come
+  from a third party, and the files ship and review with the code. (Since 2026-09-13 an
+  article page *can* make third-party requests, but only for Google's ad tag, and only when
+  the owner has switched advertising on — see "Advertising" below. Nothing in an article's
+  content can introduce one.)
   The hero is raster only (`jpg|png|webp`), because social crawlers do not render SVG.
   `width`/`height` are stored so the browser reserves the box before the bytes arrive.
   `credit` is `{author, license, source_url?}`; the web renders "圖片：author (licence)",
@@ -504,3 +507,33 @@ Both sections share one 1,000-row sitemap budget, newest first, with no per-sect
 (`SITEMAP_LIMIT`, `SITEMAP_GUIDE_ENTRY_LIMIT`). That is 2% of Google's per-file limit and
 about 200 articles across five locales; an evicted article stays indexable, just
 unadvertised. Worth splitting only if the combined count approaches ~800.
+
+## Advertising
+
+Article pages — and only article pages — can carry one Google AdSense unit. Everything about
+it is off by default; `docs/adsense-feasibility.md` is the full evaluation and records the
+owner's decisions.
+
+- **Where.** `/{locale}/guides/{intel,howto}/{slug}` and `/{locale}/life/{slug}`, decided by
+  `isAdsenseArticlePath` (`apps/web/lib/adsense.ts`). Hubs and listings are "no content"
+  screens outside zh-TW, `/share/{token}` has its secret in the URL, and community, account
+  and trip pages are private — none of them may ever carry a slot.
+- **When.** All four must hold: the back-office `adsense` card is on with a valid publisher
+  id and slot id (`GET /api/v1/ads/config`), the host is the production origin, the request
+  carries neither `DNT: 1` nor `Sec-GPC: 1`, and the article is actually published in this
+  locale. Otherwise the page renders no slot and no reserved space, and the browser makes no
+  request to Google.
+- **What.** One in-article unit, placed after the first level-2 heading and its first
+  paragraph, never above the hero (the LCP element) and never within
+  `MIN_BLOCKS_AFTER` blocks of an `offer` block — the placement policies forbid an ad beside
+  an interactive element, and those partner buttons are the revenue it must not eat. A short
+  article gets none. Non-personalised ads only, hard-coded in the loader.
+- **Document boundary.** The two article routes live under `app/(ads-public)/`, a second root
+  layout. Next.js performs a complete document navigation across that boundary, so the ad
+  runtime is discarded before a reader reaches their account or a trip — removing a React
+  `<Script>` could not do that (`docs/stay22-module-switch.md:41-62`). The same layout omits
+  the two providers that fetch `/auth/me`, so no answer about the reader exists in a document
+  Google's tag can read. The cost is a full page load on hub → article navigation, paid
+  whether or not advertising is on.
+- **CSP.** `proxy.ts` emits the relaxed, AdSense-compatible policy only for an article route
+  with advertising actually on; every other response keeps the strict policy unchanged.

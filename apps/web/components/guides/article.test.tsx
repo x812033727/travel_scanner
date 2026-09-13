@@ -1,6 +1,13 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { GuideArticle } from "./article";
+import type { AdsenseConfig } from "@/lib/adsense";
+
+vi.mock("@/components/ads/article-ad-slot", () => ({
+  ArticleAdSlot: (props: { publisherId: string; slotId: string; label: string }) => (
+    <div data-testid="ad-slot" data-publisher={props.publisherId} data-slot={props.slotId}>{props.label}</div>
+  ),
+}));
 
 vi.mock("@/components/destination-affiliate-options", () => ({
   DestinationAffiliateOptions: (props: { destinationId: string; modules?: string[]; placement?: string; contextual?: boolean; destinationLabel?: string }) => (
@@ -19,7 +26,7 @@ const labels = {
   intel: "情報", howto: "攻略", life: "生活分享",
   published: "發布", updated: "更新", expiredNotice: "已過期", validUntil: "有效至",
   sources: "來源", checkedOn: "查核日", destination: "目的地", otherLanguages: "其他語言",
-  contents: "目錄", disclosure: "透過合作連結預訂，本站可能獲得分潤。",
+  contents: "目錄", adLabel: "廣告", disclosure: "透過合作連結預訂，本站可能獲得分潤。",
   blocks: { imageCredit: "圖片：", tip: "小提醒", warning: "注意", info: "補充" },
 };
 
@@ -32,11 +39,15 @@ const document = {
   sources: [],
 };
 
-function draw(overrides: Record<string, unknown> = {}, extra: { readingTime?: string } = {}) {
+function draw(
+  overrides: Record<string, unknown> = {},
+  extra: { readingTime?: string; adsense?: AdsenseConfig } = {},
+) {
   return render(
     <GuideArticle
       labels={labels}
       readingTime={extra.readingTime}
+      adsense={extra.adsense}
       state={{
         slug: "tokyo-esim", kind: "howto", locale: "zh-TW", status: "published",
         destination_id: "tokyo", destination_label: "東京",
@@ -242,5 +253,77 @@ describe("GuideArticle in the lifestyle section", () => {
       />,
     );
     expect(screen.getByText("最新旅遊情報攻略")).toBeTruthy();
+  });
+});
+
+describe("GuideArticle advertising", () => {
+  const enabled: AdsenseConfig = {
+    enabled: true, publisher_id: "ca-pub-4140966684432854", slot_id: "1234567890",
+  };
+  const heading = { type: "heading" as const, text: "先看流量", level: 2 as const };
+  const para = (text: string) => ({ type: "paragraph" as const, text });
+  const longBody = {
+    ...document,
+    blocks: [heading, para("開頭"), ...Array.from({ length: 6 }, (_, i) => para(`段落 ${i}`))],
+  };
+
+  it("renders nothing at all — not even reserved space — when advertising is off", () => {
+    const { container } = draw({ document: longBody });
+    expect(screen.queryByTestId("ad-slot")).toBeNull();
+    expect(container.querySelector("aside")).toBeNull();
+  });
+
+  it("places one labelled slot inside the body, never above the hero", () => {
+    draw({ document: longBody }, { adsense: enabled });
+    const slot = screen.getByTestId("ad-slot");
+    expect(slot.getAttribute("data-publisher")).toBe("ca-pub-4140966684432854");
+    expect(slot.getAttribute("data-slot")).toBe("1234567890");
+    expect(slot.textContent).toBe("廣告");
+    expect(screen.getAllByTestId("ad-slot")).toHaveLength(1);
+    // After the first heading and its paragraph, so the hero (the LCP element) is untouched.
+    const rendered = Array.from(slot.parentElement!.children).map((node) => node.textContent);
+    expect(rendered.indexOf("廣告")).toBeGreaterThan(rendered.indexOf("開頭"));
+  });
+
+  it("keeps its distance from the editor's partner buttons", () => {
+    // The body ends at the offer block, leaving too little after the cut to qualify. Policy
+    // forbids an ad beside an interactive element, and those buttons are the revenue.
+    draw({
+      document: {
+        ...document,
+        blocks: [
+          heading, para("開頭"), para("一段"),
+          { type: "offer" as const, module: "connectivity", destination_id: null, heading: null },
+          ...Array.from({ length: 8 }, (_, i) => para(`後段 ${i}`)),
+        ],
+      },
+    }, { adsense: enabled });
+    expect(screen.queryByTestId("ad-slot")).toBeNull();
+  });
+
+  it("leaves a short article alone", () => {
+    draw({ document: { ...document, blocks: [heading, para("只有兩段"), para("就這樣")] } },
+      { adsense: enabled });
+    expect(screen.queryByTestId("ad-slot")).toBeNull();
+  });
+
+  it("still numbers the headings the table of contents points at", () => {
+    const withContents = {
+      ...document,
+      blocks: [
+        heading, para("開頭"), para("一"), para("一之二"),
+        { type: "heading" as const, text: "再看價格", level: 2 as const }, para("二"), para("二之二"),
+        { type: "heading" as const, text: "最後看涵蓋", level: 2 as const }, para("三"), para("三之二"),
+      ],
+    };
+    draw({ document: withContents }, { adsense: enabled });
+    expect(screen.getByTestId("ad-slot")).toBeTruthy();
+    // Split rendering must not restart the numbering: the contents links would go nowhere.
+    const links = screen.getAllByRole("link").filter((a) => a.getAttribute("href")?.startsWith("#"));
+    expect(links.map((a) => a.getAttribute("href"))).toEqual(["#section-1", "#section-2", "#section-3"]);
+    // The second heading is drawn by the slice after the slot: without a continued count it
+    // would restart at section-1 and every contents link below the ad would go nowhere.
+    expect(screen.getAllByRole("heading", { level: 2 }).map((node) => node.id))
+      .toEqual(["section-1", "section-2", "section-3"]);
   });
 });
