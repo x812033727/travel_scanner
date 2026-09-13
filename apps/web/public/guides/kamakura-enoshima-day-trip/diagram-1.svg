@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">鎌倉・江ノ島 一日路線圖 / Kamakura and Enoshima day-trip route map</title>
+  <desc id="desc">小田急從新宿到藤沢與片瀬江ノ島（江の島・鎌倉フリーパス 新宿出發 1,640 日圓，浪漫特快特急券另加 750 日圓），JR 橫須賀線從東京、品川到北鎌倉與鎌倉，中間由江ノ電連接藤沢、江ノ島、鎌倉高校前、長谷、鎌倉五站，平日 10 點台約 14 分鐘一班，一日券のりおりくん 800 日圓。各站到景點的步行時間與門票：北鎌倉站到円覚寺 1 分鐘、500 日圓；鎌倉站東口到鶴岡八幡宮 10 分鐘、境內免費；長谷站到高徳院大仏 7 分鐘、300 日圓，到長谷寺 5 分鐘、400 日圓；江ノ島站到江島神社 15 到 23 分鐘，岩屋 500 日圓、シーキャンドル 800 日圓。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="60" y="66" font-size="36" font-weight="700" fill="#102A2B">鎌倉・江ノ島 一日路線圖　Kamakura and Enoshima day trip</text>
+  <text x="60" y="104" font-size="20" fill="#5C6B6B">小田急 江の島・鎌倉フリーパス 新宿發 1,640 日圓 · 江ノ電 のりおりくん 800 日圓 · 2026 年 9 月查證</text>
+
+  <!-- Odakyu: Shinjuku -> Fujisawa -> Katase-Enoshima -->
+  <path d="M 200 250 L 200 380 L 260 560" fill="none" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 260 560 C 300 470, 400 430, 520 430" fill="none" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round"/>
+  <!-- JR Yokosuka Line: Tokyo -> Kita-Kamakura -> Kamakura -->
+  <path d="M 1300 250 L 1200 400 L 1340 560" fill="none" stroke="#B8442D" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Enoden -->
+  <line x1="260" y1="560" x2="1340" y2="560" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"/>
+
+  <g>
+    <rect x="60" y="170" width="320" height="80" rx="20" fill="#6B4A3A"/>
+    <text x="220" y="204" font-size="26" font-weight="700" fill="#FFFFFF" text-anchor="middle">新宿 Shinjuku</text>
+    <text x="220" y="234" font-size="17" fill="#F1E7E0" text-anchor="middle">小田急 Odakyu · 周遊券 1,640 日圓</text>
+    <rect x="1130" y="170" width="340" height="80" rx="20" fill="#B8442D"/>
+    <text x="1300" y="204" font-size="26" font-weight="700" fill="#FFFFFF" text-anchor="middle">東京・品川 Tokyo</text>
+    <text x="1300" y="234" font-size="17" fill="#FBE9E4" text-anchor="middle">JR 横須賀線 Yokosuka Line · 約 1 小時</text>
+  </g>
+
+  <text x="215" y="320" font-size="18" fill="#6B4A3A">ロマンスカー Romancecar</text>
+  <text x="215" y="344" font-size="18" fill="#6B4A3A">特急券 +750 日圓</text>
+
+  <!-- Katase-Enoshima -->
+  <circle cx="520" cy="430" r="14" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="7"/>
+  <text x="545" y="425" font-size="20" font-weight="700" fill="#102A2B">片瀬江ノ島 Katase-Enoshima</text>
+  <text x="545" y="449" font-size="16" fill="#5C6B6B">小田急 · 周遊券範圍 藤沢〜片瀬江ノ島</text>
+  <line x1="520" y1="444" x2="520" y2="546" stroke="#5C6B6B" stroke-width="4" stroke-dasharray="6 10"/>
+
+  <!-- Kita-Kamakura -->
+  <circle cx="1200" cy="400" r="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="7"/>
+  <text x="1175" y="392" font-size="20" font-weight="700" fill="#102A2B" text-anchor="end">北鎌倉 Kita-Kamakura</text>
+  <text x="1175" y="416" font-size="16" fill="#5C6B6B" text-anchor="end">円覚寺 Engaku-ji · 徒歩 1 分 · 500 日圓</text>
+
+  <!-- Enoden stations -->
+  <g font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">
+    <circle cx="260" cy="560" r="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+    <text x="260" y="606">藤沢 Fujisawa</text>
+    <circle cx="520" cy="560" r="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+    <text x="535" y="606" text-anchor="start">江ノ島 Enoshima</text>
+    <circle cx="720" cy="560" r="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+    <text x="720" y="530">鎌倉高校前 Kamakura-kōkō-mae</text>
+    <circle cx="1020" cy="560" r="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+    <text x="1020" y="530">長谷 Hase</text>
+    <circle cx="1340" cy="560" r="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+    <text x="1340" y="530">鎌倉 Kamakura</text>
+  </g>
+  <text x="720" y="632" font-size="16" fill="#5C6B6B" text-anchor="middle">平交道拍照點 · 月台退到黃線內側</text>
+
+  <!-- walks from Kamakura -->
+  <line x1="1340" y1="560" x2="1440" y2="500" stroke="#5C6B6B" stroke-width="4" stroke-dasharray="6 10"/>
+  <text x="1560" y="470" font-size="20" font-weight="700" fill="#102A2B" text-anchor="end">鶴岡八幡宮 Hachimangū</text>
+  <text x="1560" y="494" font-size="16" fill="#5C6B6B" text-anchor="end">鎌倉駅東口 徒歩 10 分 · 境內免費</text>
+  <text x="1340" y="640" font-size="16" fill="#5C6B6B" text-anchor="middle">小町通 Komachi-dōri · 鎌倉駅東口正前方</text>
+
+  <!-- walks from Hase -->
+  <line x1="1020" y1="560" x2="900" y2="660" stroke="#5C6B6B" stroke-width="4" stroke-dasharray="6 10"/>
+  <line x1="1020" y1="560" x2="1160" y2="660" stroke="#5C6B6B" stroke-width="4" stroke-dasharray="6 10"/>
+  <text x="890" y="690" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">高徳院 大仏 Kōtoku-in</text>
+  <text x="890" y="714" font-size="16" fill="#5C6B6B" text-anchor="middle">徒歩 7 分 · 300 日圓</text>
+  <text x="1170" y="690" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">長谷寺 Hase-dera</text>
+  <text x="1170" y="714" font-size="16" fill="#5C6B6B" text-anchor="middle">徒歩 5 分 · 400 日圓</text>
+
+  <!-- walks from Enoshima -->
+  <line x1="520" y1="560" x2="520" y2="660" stroke="#5C6B6B" stroke-width="4" stroke-dasharray="6 10"/>
+  <text x="520" y="690" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">江島神社 Enoshima Shrine · 徒歩 15〜23 分</text>
+  <text x="520" y="714" font-size="16" fill="#5C6B6B" text-anchor="middle">岩屋 500 日圓 · シーキャンドル 800 日圓 · エスカー 500 日圓</text>
+
+  <!-- info box -->
+  <rect x="60" y="750" width="700" height="86" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="84" y="782" font-size="18" font-weight="700" fill="#0D6B68">江ノ電 Enoden：藤沢〜鎌倉 15 站，平日 10 點台約 14 分一班</text>
+  <text x="84" y="812" font-size="16" fill="#102A2B">十張交通 IC 卡都能刷；小田急周遊券已含全線，JR 來的人買 のりおりくん 800 日圓</text>
+
+  <!-- legend -->
+  <g font-size="17" fill="#102A2B">
+    <line x1="820" y1="800" x2="870" y2="800" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+    <text x="880" y="806">江ノ電 Enoden</text>
+    <line x1="1040" y1="800" x2="1090" y2="800" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round"/>
+    <text x="1100" y="806">小田急 Odakyu</text>
+    <line x1="1260" y1="800" x2="1310" y2="800" stroke="#B8442D" stroke-width="10" stroke-linecap="round"/>
+    <text x="1320" y="806">JR</text>
+    <line x1="820" y1="840" x2="870" y2="840" stroke="#5C6B6B" stroke-width="4" stroke-dasharray="6 10"/>
+    <text x="880" y="846">徒歩 Walk</text>
+    <text x="1380" y="874" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+  </g>
+</svg>

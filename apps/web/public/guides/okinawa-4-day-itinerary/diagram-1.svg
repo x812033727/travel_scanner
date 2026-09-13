@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">沖繩四天三夜路線示意圖：那霸、中部、北部、南部 / Okinawa 4-day route</title>
+  <desc id="desc">沖繩本島從西南的那霸往東北畫成一條帶狀路線，四天各用一種顏色。第一天青綠色是單軌：那霸機場到國際通，再到首里城，一日券 1,000 日圓可用 24 小時，那霸機場到首里單程 360 日圓，首里城有料區域現行 400 日圓、2026 年 11 月 23 日起 1,000 日圓。第二天紅色是自駕：那霸機場到美濱美國村約 35 分鐘，再到萬座毛，入場 100 日圓。第三天咖啡色是自駕走沖繩自動車道：那霸機場到美麗海水族館約 2 小時，門票成人 2,180 日圓，許田交流道到古宇利大橋約 26 公里、約 40 分鐘，橋長 1,960 公尺免費。第四天綠色是瀨長島 Umikaji Terrace，商店 10:00 到 20:00，再還車回那霸機場。右下角的方框列出各段的官網數字。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="60" y="64" font-size="34" font-weight="700" fill="#102A2B">沖繩四天三夜路線：那霸 → 中部 → 北部 → 南部</text>
+  <text x="60" y="98" font-size="19" fill="#5C6B6B">Okinawa 4-day route · 第 1 天單軌、第 2 到 4 天自駕 · 2026 年 9 月依各官網查證，車程為官網估計</text>
+
+  <!-- island band -->
+  <path d="M 250 790 L 380 730 L 520 665 L 700 580 L 880 495 L 1040 420 L 1150 300 L 1300 230" fill="none" stroke="#E6DCCB" stroke-width="96" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 520 665 L 660 760" fill="none" stroke="#E6DCCB" stroke-width="70" stroke-linecap="round"/>
+
+  <!-- day 4 green: Senaga -> Naha Airport -->
+  <path d="M 250 790 L 380 730" fill="none" stroke="#2E7D5B" stroke-width="10" stroke-linecap="round"/>
+  <!-- day 1 teal: Naha Airport -> Kokusai-dori -> Shuri (monorail) -->
+  <path d="M 380 730 L 520 665" fill="none" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+  <path d="M 520 665 L 660 760" fill="none" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+  <path d="M 520 665 L 660 760" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-dasharray="10 10"/>
+  <!-- day 2 coral: Kokusai-dori -> American Village -> Manzamo -->
+  <path d="M 520 665 L 700 580 L 880 495" fill="none" stroke="#B8442D" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- day 3 mocha: Manzamo -> Kyoda IC -> Churaumi -> Kouri -->
+  <path d="M 880 495 L 1040 420 L 1150 300 L 1300 230" fill="none" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- nodes -->
+  <g fill="#FFFFFF" stroke-width="5">
+    <circle cx="250" cy="790" r="13" stroke="#2E7D5B"/>
+    <circle cx="380" cy="730" r="13" stroke="#0D6B68"/>
+    <circle cx="520" cy="665" r="13" stroke="#0D6B68"/>
+    <circle cx="660" cy="760" r="13" stroke="#0D6B68"/>
+    <circle cx="700" cy="580" r="13" stroke="#B8442D"/>
+    <circle cx="880" cy="495" r="13" stroke="#B8442D"/>
+    <circle cx="1040" cy="420" r="13" stroke="#6B4A3A"/>
+    <circle cx="1150" cy="300" r="13" stroke="#6B4A3A"/>
+    <circle cx="1300" cy="230" r="13" stroke="#6B4A3A"/>
+  </g>
+
+  <!-- labels -->
+  <text x="150" y="838" font-size="18" font-weight="700" fill="#102A2B">瀬長島 Senaga Island</text>
+  <text x="150" y="860" font-size="15" fill="#5C6B6B">Umikaji Terrace 商店 10:00–20:00・還車後接駁回那覇空港</text>
+
+  <text x="150" y="690" font-size="18" font-weight="700" fill="#102A2B">那覇空港 Naha Airport</text>
+  <text x="150" y="712" font-size="15" fill="#5C6B6B">ゆいレール起點・租車接駁</text>
+
+  <text x="390" y="612" font-size="18" font-weight="700" fill="#102A2B">国際通り Kokusai-dori</text>
+  <text x="390" y="634" font-size="15" fill="#0D6B68">一日券 1,000 日圓・24 小時</text>
+
+  <text x="685" y="758" font-size="18" font-weight="700" fill="#102A2B">首里城 Shuri Castle</text>
+  <text x="685" y="781" font-size="15" fill="#5C6B6B">那覇空港→首里 単軌 360 日圓</text>
+  <text x="685" y="803" font-size="15" fill="#B8442D">有料区域 400 日圓</text>
+  <text x="685" y="825" font-size="15" fill="#B8442D">11 月 23 日起 1,000 日圓</text>
+
+  <text x="545" y="536" font-size="18" font-weight="700" fill="#102A2B">美浜アメリカンビレッジ American Village</text>
+  <text x="545" y="558" font-size="15" fill="#B8442D">那覇空港から車で約 35 分</text>
+
+  <text x="700" y="420" font-size="18" font-weight="700" fill="#102A2B">万座毛 Manzamo</text>
+  <text x="700" y="442" font-size="15" fill="#B8442D">入場 100 日圓・日落後看不到</text>
+
+  <text x="1062" y="468" font-size="18" font-weight="700" fill="#102A2B">許田IC Kyoda IC</text>
+  <text x="1062" y="490" font-size="15" fill="#5C6B6B">沖縄自動車道 Okinawa Expressway 出口</text>
+
+  <text x="1118" y="268" font-size="18" font-weight="700" fill="#102A2B" text-anchor="end">沖縄美ら海水族館 Churaumi Aquarium</text>
+  <text x="1118" y="290" font-size="15" fill="#6B4A3A" text-anchor="end">那覇空港から車で約 2 小時・門票 2,180 日圓</text>
+
+  <text x="1300" y="168" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">古宇利大橋 Kouri Bridge</text>
+  <text x="1300" y="190" font-size="15" fill="#6B4A3A" text-anchor="middle">全長 1,960 m 免費・許田IC から約 26 km、約 40 分</text>
+
+  <!-- info box -->
+  <rect x="980" y="556" width="560" height="262" rx="18" fill="#FFFFFF" stroke="#C9C2B8" stroke-width="2"/>
+  <text x="1004" y="592" font-size="18" font-weight="700" fill="#102A2B">各段的官網數字 Official figures</text>
+  <rect x="1004" y="612" width="26" height="8" rx="4" fill="#0D6B68"/>
+  <text x="1042" y="622" font-size="16" fill="#102A2B">第 1 天 ゆいレール：一日券 1,000 日圓，購票起 24 小時</text>
+  <rect x="1004" y="644" width="26" height="8" rx="4" fill="#B8442D"/>
+  <text x="1042" y="654" font-size="16" fill="#102A2B">第 2 天 自駕：那覇空港→美浜 約 35 分・万座毛 100 日圓</text>
+  <rect x="1004" y="676" width="26" height="8" rx="4" fill="#6B4A3A"/>
+  <text x="1042" y="686" font-size="16" fill="#102A2B">第 3 天 自駕：那覇空港→水族館 約 2 小時・門票 2,180 日圓</text>
+  <text x="1042" y="714" font-size="16" fill="#102A2B">許田IC→古宇利大橋 約 26 km・約 40 分・橋長 1,960 m</text>
+  <rect x="1004" y="736" width="26" height="8" rx="4" fill="#2E7D5B"/>
+  <text x="1042" y="746" font-size="16" fill="#102A2B">第 4 天 自駕：瀬長島 Umikaji Terrace 商店 10:00–20:00</text>
+  <text x="1004" y="782" font-size="15" fill="#5C6B6B">第 3 天回那覇或恩納也要抓 2 小時上下；虛線＝單軌，實線＝自駕，車程以導航為準</text>
+
+  <text x="1540" y="880" font-size="15" fill="#8A8F8F" text-anchor="end">© Mokaair 製圖 2026</text>
+</svg>
