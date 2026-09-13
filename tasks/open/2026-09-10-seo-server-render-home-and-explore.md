@@ -1,14 +1,14 @@
 ---
 id: 2026-09-10-seo-server-render-home-and-explore
 title: 首頁與 explore 要在伺服器端渲染出真正的內容
-status: open
+status: in-progress
 priority: P1
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5-seo
+claimed_at: 2026-09-13T15:10:18Z
 created_at: 2026-09-10T16:49:04Z
 completed_at:
-branch:
+branch: claude/explore-server-render
 depends_on:
   - 2026-09-09-frontend-flow-discovery-web
   - 2026-09-09-discovery-card-details
@@ -20,6 +20,9 @@ scope:
   - apps/web/components/discovery/explorer.tsx
   - apps/web/app/[locale]/explore/page.tsx
   - apps/web/app/[locale]/explore/collections/page.tsx
+  - apps/web/components/discovery/explore-ssr.test.tsx
+  - apps/web/app/sitemap.ts
+  - apps/web/app/sitemap.test.ts
 ---
 
 # 首頁與 explore 要在伺服器端渲染出真正的內容
@@ -62,24 +65,25 @@ return loading ? <main className={styles.page}><DiscoverySkeleton /></main> : en
 
 - [x] ~~`curl -s localhost:3000/zh-TW` 的輸出含 hero `<h1>` 與目的地連結列~~ —— **已由
       `2026-09-10-seo-home-ssr-and-internal-links` 的繞道解決**（discovery 關閉時不再包 gate）。
-- [ ] `curl -s localhost:3000/en/explore` 的輸出含 feed 第一頁的實際項目，不是骨架。
-- [ ] 功能開關關閉時，伺服器端直接渲染「關閉」狀態，不再先送骨架再切換。
-- [ ] `/explore` 與 `/explore/collections` 移除 `noindex`，並加進 `SITEMAP_ROUTES`。
+- [x] `curl -s localhost:3000/en/explore` 的輸出含 feed 第一頁的實際項目，不是骨架。
+- [x] 功能開關關閉時，伺服器端直接渲染「關閉」狀態，不再先送骨架再切換。
+- [x] `/explore` 移除 `noindex` 並加進 `SITEMAP_ROUTES`（都綁 discovery 開關）。
+      **`/explore/collections` 刻意不改**，理由見下方「與 DoD 不同的地方」。
 - [x] ~~首頁輸出 `Organization` 與 `WebSite` JSON-LD~~ —— 已由 `2026-09-10-seo-structured-data` 完成（放在 gate 外面）。
 - [x] ~~首頁的城市 chip 改指 `/destinations/{id}`~~ —— 已由 `2026-09-10-seo-home-ssr-and-internal-links` 完成。
-- [ ] 首屏不再出現骨架 → 內容的整頁位移。
+- [x] 首屏不再出現骨架 → 內容的整頁位移。
 
 ## Steps
 
-- [ ] 新增 `apps/web/lib/discovery.server.ts`，照 `lib/site-visibility.server.ts` 的既有形態
-      （`API_INTERNAL_URL` + `try/catch` + React `cache()`）在伺服器端解析 discovery 開關。
-- [ ] 把解析結果當成初始值餵進 store，讓 `getServerSnapshot` 回傳真實狀態而不是寫死的 `loading: true`。
-      現成範本是 root layout 已經在做的 `<SiteVisibilityProvider state={siteVisibility}>`。
-- [ ] `/explore` 比照 `getInitialHotspots` 餵 `/hotspots` 的做法，在伺服器端先取
-      `GET /api/v1/discovery/feed?mode=latest` 的第一頁當初始資料。
-- [ ] 移除兩個 explore 頁的 `robots: { index: false }`，並 append 進 `app/sitemap.ts` 的 `SITEMAP_ROUTES`。
-- [ ] 首頁掛上 `2026-09-10-seo-structured-data` 建好的 JSON-LD builder。
-- [ ] 更新／新增測試。**不要動 `app/[locale]/page.test.tsx`**（見 Notes）。
+- [x] 開關的伺服器端解析沿用既有的 `lib/discovery-status.server.ts`（繞道那次已經建好），
+      新的 `lib/discovery.server.ts` 只負責 feed 的第一頁。
+- [x] 解析結果以 prop 傳入（不是餵進 store，理由見下），讓伺服器端輸出真實狀態。
+
+- [x] `/explore` 比照 `getInitialHotspots` 餵 `/hotspots` 的做法，在伺服器端先取
+      `GET /api/v1/discovery/feed` 的第一頁當初始資料（用該網址真正對應的 mode，不是寫死 latest）。
+- [x] `/explore` 的 robots 與 sitemap 都綁 discovery 開關。
+- [x] ~~首頁掛上 JSON-LD builder~~ —— 早已完成，見上方 DoD。
+- [x] 更新／新增測試。沒有動 `app/[locale]/page.test.tsx`。
 
 ## How to verify
 
@@ -129,3 +133,48 @@ curl -s localhost:3000/en/explore | grep -c 'noindex'      # 必須是 0
 
 `app/[locale]/page.tsx` 已不在本任務 scope（改動落在 `2026-09-10-seo-structured-data`
 與 `2026-09-10-seo-home-ssr-and-internal-links`），scope 已相應收斂。
+
+### 做法與決定（2026-09-13, claude-opus-5-seo）
+
+**與 DoD 不同的地方：`/explore/collections` 維持 `noindex`，也不進 sitemap。**
+這一頁不是「內容在 hydration 之後才抓」的空殼，它是**每位讀者自己的收藏工作區**
+（`DiscoveryCollections` 未登入時只給一個登入按鈕，登入後是本人的 saved items）。
+沒有公開版本可以在伺服器端渲染，也沒有任何匿名爬蟲該看到的東西。它屬於 `/account`、
+`/trips` 那一類，跟開關無關。已在該檔與 `app/sitemap.ts` 寫下理由。
+
+**開關用 prop 傳，不餵進 module store。** `lib/discovery.ts` 的 store 是 module 層級的，
+在伺服器上由同一個容器裡**所有請求共用**；一次失敗的讀取會替其他請求回答。
+所以 `getServerSnapshot` 維持寫死的 `loading: true`，改由 `resolveDiscoveryStatus(live, initialEnabled)`
+在元件裡合併：store 還在 loading 且有伺服器值時用伺服器值。伺服器與 hydration 首次渲染
+結果相同（那時 store 必定還在 loading），所以這只改回應內容，不改 hydration 後的樹。
+
+**只預取 feed，不預取 search。** `GET /discovery/search` 的第一頁會記一筆 `discovery_search`；
+已登入讀者的瀏覽器還會用自己的身分再送一次，兩邊都送等於同一次搜尋算兩次。
+帶 `q=` 的網址 canonical 本來就指回 `/explore`，沒有東西要索引。`mode=following` 同理跳過：
+伺服器不讀 cookie，那個排序渲染出來是登入提示。
+
+**預取的是匿名排序。** `publicServerHeaders` 只轉發位址與 UA，不帶 cookie。已登入讀者的
+瀏覽器在 session 解析後照樣拿自己的那份——和現在的行為一樣。
+
+**path 當快取鍵。** `discoveryFeedPath()` 與 fetch 分開，兩個呼叫端（`generateMetadata` 與頁面本體）
+用同一個字串當 React `cache()` 的鍵，不必賭 `await searchParams` 兩次拿到同一個物件。
+`lib/discovery.server.test.ts` 拿真的 `discoveryQuery()`（client 模組）逐字比對，
+因為伺服器模組不能呼叫 `"use client"` 的函式，只能靠測試守住兩邊不飄移。
+
+**`/explore` 的 robots**：discovery 開著**且**伺服器真的取到 feed 才可索引。開關關著時
+這一頁是那張 fallback 連結格（連到的頁本來就各自在 sitemap 裡），沒有自己的內容可排名。
+sitemap 那邊只看開關——讀不到 API 時照樣列出，與 guides hub 的降級方向一致。
+
+### 還沒做的
+
+- 本機 `npm run typecheck:web` 有一個與本任務無關的既有錯誤：`components/shared-trip-view.tsx`
+  找不到 `qrcode`（本機安裝過舊）。
+- 沒有實際跑起 `next start` 用 curl 驗證（需要可連到的 API）。SSR 輸出改由
+  `components/discovery/explore-ssr.test.tsx` 以 `renderToString` 斷言。
+- **首頁在 discovery 開啟時仍然只 SSR 出外框加骨架**：`DiscoveryHomeGate` 現在會在伺服器端
+  渲染出 explorer 的標題與篩選列，但沒有 feed 第一頁，因為 `app/[locale]/page.tsx` 不在本任務
+  scope 裡。要補的話就是照 `/explore` 的兩行：`discoveryFeedPath()` + `getInitialDiscoveryFeed()`
+  傳進 `DiscoveryHomeGate`。開關關著時首頁本來就是行銷首頁，所以這件事今天沒有影響。
+- 本分支疊在 `claude/guides-empty-locale-hubs`（PR #464）上，因為兩者都動 `app/sitemap.ts`。
+  `npm run check:tasks` 因此會警告這兩張票的 scope 重疊——是預期的，兩張都在同一個人手上，
+  #464 併入後這裡 rebase 就沒事了。

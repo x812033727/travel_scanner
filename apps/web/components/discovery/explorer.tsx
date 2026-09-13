@@ -11,7 +11,8 @@ import { Button, fieldClass } from "@/components/community/ui";
 import { api } from "@/lib/api";
 import { getDiscoveryCopy, getDiscoveryFeedback } from "@/lib/discovery-copy";
 import { getFrontendFlowCopy } from "@/lib/frontend-flow-copy";
-import { discoveryCategories, discoveryKinds, discoveryQuery, useDiscoveryResource, useDiscoveryStatus, type DiscoveryItem, type DiscoveryPage, type DiscoveryQuery } from "@/lib/discovery";
+import { discoveryCategories, discoveryKinds, discoveryQuery, resolveDiscoveryStatus, useDiscoveryResource, useDiscoveryStatus, type DiscoveryItem, type DiscoveryPage, type DiscoveryQuery } from "@/lib/discovery";
+import type { InitialDiscoveryFeed } from "@/lib/discovery.server";
 import { loginPath } from "@/lib/navigation";
 import { DiscoveryCard } from "./card";
 import { DiscoveryDetailBoundary } from "./detail-drawer";
@@ -20,24 +21,32 @@ import { TravelExplore } from "@/components/community/explore";
 import styles from "./discovery.module.css";
 
 export function DiscoveryHomeGate({ children, initialEnabled }: { children: ReactNode; initialEnabled?: boolean }) {
-  const { enabled, loading } = useDiscoveryStatus(); const router = useRouter();
+  const { enabled, loading } = resolveDiscoveryStatus(useDiscoveryStatus(), initialEnabled); const router = useRouter();
   useEffect(() => {
     if (!enabled) return;
     const redirect = () => { if (window.location.hash === "#trip-search") router.replace("/search/new"); };
     redirect(); window.addEventListener("hashchange", redirect); return () => window.removeEventListener("hashchange", redirect);
   }, [enabled, router]);
-  // Use the request's snapshot only until the shared client store resolves. Never remove
+  // The request's snapshot stands in only until the shared client store resolves. Never remove
   // this gate on the server: a failed status request must still recover after hydration.
-  if (loading) return initialEnabled === false ? children : <main className={styles.page}><DiscoverySkeleton /></main>;
-  return enabled ? <DiscoveryExplorer home /> : children;
+  if (loading) return <main className={styles.page}><DiscoverySkeleton /></main>;
+  return enabled ? <DiscoveryExplorer home initialEnabled={initialEnabled} /> : children;
 }
-export function DiscoveryExplorer({ home = false }: { home?: boolean }) {
-  const t = useTranslations("community"); const { enabled, loading } = useDiscoveryStatus();
+/**
+ * `initialEnabled` and `initialFeed` are what the server already knows: the switch, and the
+ * first page of the feed behind it. Without them this component's whole body is a skeleton in
+ * the response -- nothing for a crawler to read, and a full-page shift for the reader when the
+ * real cards arrive. Both are optional, because the component is also rendered from places
+ * that have neither, and both are only a head start: the client store and the client fetch
+ * still take over.
+ */
+export function DiscoveryExplorer({ home = false, initialEnabled, initialFeed }: { home?: boolean; initialEnabled?: boolean; initialFeed?: InitialDiscoveryFeed }) {
+  const t = useTranslations("community"); const { enabled, loading } = resolveDiscoveryStatus(useDiscoveryStatus(), initialEnabled);
   if (loading) return <main className={styles.page}><DiscoverySkeleton /></main>;
   if (!enabled) return <main className="mx-auto max-w-5xl px-5 py-10"><h1 className="mb-6 text-3xl font-bold">{t("exploreTravel")}</h1><TravelExplore /></main>;
-  return <DiscoveryDetailBoundary><ExplorerContent home={home} /></DiscoveryDetailBoundary>;
+  return <DiscoveryDetailBoundary><ExplorerContent home={home} initialFeed={initialFeed} /></DiscoveryDetailBoundary>;
 }
-function ExplorerContent({ home }: { home: boolean }) {
+function ExplorerContent({ home, initialFeed }: { home: boolean; initialFeed?: InitialDiscoveryFeed }) {
   const locale = useLocale(); const c = getDiscoveryCopy(locale); const f = getFrontendFlowCopy(locale);
   // The saved-count tab label lives in the message catalog: new display text may not be
   // added to lib/discovery-copy.ts, which check-i18n guards against.
@@ -64,7 +73,7 @@ function ExplorerContent({ home }: { home: boolean }) {
     </section>}
     {selectedFilters.length > 0 && <div className="mb-4 flex flex-wrap gap-2">{selectedFilters.map((key) => { const label = key === "destination" ? options.data?.destinations?.find((item) => item.id === value[key])?.name || value[key] : key === "type" ? c.kinds[value.type as typeof discoveryKinds[number]] || value.type : key === "topic" ? options.data?.topics?.find((item) => item.id === value[key])?.label || value[key] : value[key]; return <button key={key} className={styles.chip} onClick={() => navigate({ [key]: "" })} aria-label={`${f.removeFilter}: ${label}`}>{label}<X size={14} aria-hidden /></button>; })}<Button secondary onClick={() => navigate({ q: "", type: "", destination: "", topic: "", locale: "", category: "" })}>{c.clear}</Button></div>}
     <div className="mb-4 flex flex-wrap items-center justify-between gap-2"><h2 className={value.q ? "text-xl font-bold" : "sr-only"}>{value.q ? `${c.matched}「${value.q}」` : c.feed}</h2><div className="flex flex-wrap items-center gap-1" aria-label={c.feed}>{(["recommended", "latest", "most_saved", "following"] as const).filter((key) => key !== "following" || flags.enabled).map((key) => <button type="button" key={key} aria-pressed={mode === key} onClick={() => navigate({ mode: key })} className="min-h-11 rounded-lg px-3 text-sm aria-pressed:font-bold aria-pressed:underline aria-pressed:decoration-[var(--teal)] aria-pressed:underline-offset-8 focus-visible:outline focus-visible:outline-2">{key === "most_saved" ? t("mostSaved") : c[key]}</button>)}</div>{user ? <Button secondary onClick={() => setPreferences(true)}>{c.preferences}</Button> : <Link href={loginPath(`${pathname}${params.size ? `?${params}` : ""}`)} className="inline-flex min-h-11 items-center text-sm text-[var(--teal)] underline">{c.preferences}</Link>}</div>
-    {mode === "following" && !user ? <section className="rounded-xl border border-[var(--line)] p-6"><p>{c.loginFollowing}</p><Link href={loginPath(`/explore?${discoveryQuery(value)}`)} className="inline-flex min-h-11 items-center text-[var(--teal)] underline">{c.login}</Link></section> : <Results query={{ ...value, mode }} identity={sessionIdentity} revision={revision} />}
+    {mode === "following" && !user ? <section className="rounded-xl border border-[var(--line)] p-6"><p>{c.loginFollowing}</p><Link href={loginPath(`/explore?${discoveryQuery(value)}`)} className="inline-flex min-h-11 items-center text-[var(--teal)] underline">{c.login}</Link></section> : <Results query={{ ...value, mode }} identity={sessionIdentity} revision={revision} initialFeed={initialFeed} />}
     <section className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-[var(--line)] py-7"><div><h2 className="font-bold">{c.planning}</h2><p className="mt-1 text-sm text-[var(--muted)]">{c.planningHelp}</p></div><Link href="/search/new" className="inline-flex min-h-11 items-center gap-2 font-semibold text-[var(--teal)] underline">{f.searchTrips}<ArrowRight size={17} aria-hidden /></Link></section>
     {preferences && user && <DiscoveryPreferenceEditor key={user.id} onClose={() => setPreferences(false)} onSaved={() => { setPreferences(false); setRevision((n) => n + 1); }} />}
   </main>;
@@ -96,7 +105,7 @@ export function DiscoverySearch({ initial, onSearch }: { initial: string; onSear
   </div>;
 }
 type PageState = { cursor: string | null; previous: DiscoveryItem[] };
-function Results({ query, identity, revision }: { query: DiscoveryQuery; identity: object | null; revision: number }) {
+function Results({ query, identity, revision, initialFeed }: { query: DiscoveryQuery; identity: object | null; revision: number; initialFeed?: InitialDiscoveryFeed }) {
   const c = getDiscoveryCopy(useLocale()); const { user } = useHeaderSession(); const { flags } = useCommunity();
   const scope = `${discoveryQuery(query)}:${revision}`;
   const [owner, setOwner] = useState(identity); const [pages, setPages] = useState<Record<string, PageState>>({});
@@ -107,7 +116,9 @@ function Results({ query, identity, revision }: { query: DiscoveryQuery; identit
   if (owner !== identity) { setOwner(identity); setPages({}); setHidden([]); setUndoItem(undefined); }
   const page = pages[scope]; const cursor = page?.cursor;
   const path = `/discovery/${query.q ? "search" : "feed"}?${discoveryQuery(query)}${cursor ? `&cursor=${encodeURIComponent(cursor)}` : ""}`;
-  const result = useDiscoveryResource<DiscoveryPage>(path, true);
+  // The server fetched one exact path. `useDiscoveryResource` matches on it and ignores
+  // anything else, so a filter the reader changed still goes to the API.
+  const result = useDiscoveryResource<DiscoveryPage>(path, true, initialFeed ? { path: initialFeed.path, data: initialFeed.page as DiscoveryPage } : null);
   const data = result.data;
   const items = [...new Map([...(page?.previous || []), ...(data?.items || [])].map((item) => [item.id, item])).values()].filter((item) => !hidden.includes(item.id) && (flags.enabled || (item.source.kind !== "community" && !["post", "itinerary"].includes(item.kind))));
   async function dismiss(item: DiscoveryItem, dismissed: boolean) {

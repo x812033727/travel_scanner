@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { api } from "@/lib/api";
 import { useHeaderSession } from "@/components/header-session";
 
@@ -67,13 +67,45 @@ export function useDiscoveryStatus() {
   return useSyncExternalStore(subscribe, () => status, () => closed);
 }
 
-/** Abort and key responses by login identity as well as URL; never show stale private feeds. */
-export function useDiscoveryResource<T>(path: string | null, retainPages = false) {
+export type DiscoveryStatus = { enabled: boolean; loading: boolean };
+
+/**
+ * The status to render with, given what the server already resolved.
+ *
+ * `getServerSnapshot` above returns a fixed `loading: true`, because a module-level store on
+ * the server is shared by every request in the container and one failed read would then answer
+ * for all of them. The switch arrives as a prop instead, resolved per request by
+ * `lib/discovery-status.server.ts`, and stands in until the browser's own store answers.
+ *
+ * Both sides render the same thing on the first pass -- the store is still loading when
+ * hydration runs -- so this changes the response body, not the hydrated tree. A server read
+ * that failed says `false`, which is the marketing page, and the client store still corrects it.
+ */
+export function resolveDiscoveryStatus(live: DiscoveryStatus, initialEnabled?: boolean): DiscoveryStatus {
+  return live.loading && initialEnabled !== undefined ? { enabled: initialEnabled, loading: false } : live;
+}
+
+/**
+ * Abort and key responses by login identity as well as URL; never show stale private feeds.
+ *
+ * `initial` is a page the server already fetched for this exact path. It seeds the first
+ * render under the identity of that render -- which is the signed-out one, because the server
+ * read no cookies -- so the effect below finds an answer and never asks again. A reader whose
+ * session then resolves gets their own request, as they do without it.
+ */
+export function useDiscoveryResource<T>(path: string | null, retainPages = false, initial?: { path: string; data: T } | null) {
   const { sessionIdentity } = useHeaderSession();
   const [attempt, setAttempt] = useState(0);
-  const [results, setResults] = useState<Array<{ path: string; identity: object | null; data?: T; error?: unknown }>>([]);
+  const [results, setResults] = useState<Array<{ path: string; identity: object | null; data?: T; error?: unknown }>>(
+    () => initial && initial.path === path ? [{ path: initial.path, identity: sessionIdentity, data: initial.data }] : [],
+  );
+  const seeded = useRef(initial && initial.path === path ? { path: initial.path, identity: sessionIdentity } : null);
   useEffect(() => {
     if (!path) return;
+    // Already answered, by the render that produced this page's HTML. Asking again would fetch
+    // the same rows and repaint them, which is the flash the server fetch exists to remove.
+    // `attempt` is the reader pressing retry, and that must always reach the API.
+    if (attempt === 0 && seeded.current?.path === path && seeded.current.identity === sessionIdentity) return;
     const controller = new AbortController();
     api<T>(path, { signal: controller.signal }).then((data) => {
       if (!controller.signal.aborted) setResults((prior) => [...(retainPages ? prior.filter((item) => item.identity === sessionIdentity && item.path !== path).slice(-7) : []), { path, identity: sessionIdentity, data }]);

@@ -5,6 +5,7 @@ import { guideHref, type GuideKind } from "@/lib/guides";
 import { HREFLANG_DEFAULT, languageAlternates, localeUrl } from "@/lib/seo";
 import { featureEnabled, type SiteFeature } from "@/lib/site-features";
 import { guideSitemapEntries } from "@/lib/guides.server";
+import { getDiscoveryStatus } from "@/lib/discovery-status.server";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
 
 // Evaluate public switches at request time, not while building without the API.
@@ -20,6 +21,9 @@ type SitemapRoute = {
    *  published there. Articles are published one language at a time, so the other four
    *  hubs say "nothing here yet" -- a soft 404 to offer, and nothing to rank. */
   hub?: readonly GuideKind[];
+  /** Listed only while the discovery switch is on. Behind it the route has server-rendered
+   *  content of its own; in front of it, the fallback link grid, which has nothing to rank. */
+  discovery?: true;
 };
 
 /**
@@ -30,8 +34,10 @@ type SitemapRoute = {
  *   an administrator publishes the managed document, so listing them now would only accumulate
  *   "Excluded by noindex" in Search Console. They are linked from the footer, so nothing is lost
  *   by waiting for 2026-09-06-legal-content-from-owner.
- * - /explore, /explore/collections, /pet-friendly and the community routes, which are `noindex`
+ * - /explore/collections, /pet-friendly and the community routes, which are `noindex`
  *   because their content is fetched after hydration and the server sends an empty shell.
+ *   /explore no longer sends one -- it is listed below, but only while discovery is on, since
+ *   with the switch off it falls back to a grid of links to pages already listed here.
  * - every member and token route, which carries `noindex`.
  * - an article hub in a language that has nothing published in it. Those pages exist and
  *   answer 200, but with one sentence saying the section is empty; `hub` below lists them
@@ -48,6 +54,9 @@ export const SITEMAP_ROUTES: readonly SitemapRoute[] = [
   { path: "/pricing", priority: 0.5, changeFrequency: "monthly", feature: "pricing" },
   { path: "/labs/airlines", priority: 0.4, changeFrequency: "weekly", feature: "airline_fares" },
   { path: "/destinations", priority: 0.6, changeFrequency: "weekly" },
+  // Ranked below the directories it draws from: the feed reorders their rows, and an entry
+  // there is one of them rather than a page of its own.
+  { path: "/explore", priority: 0.5, changeFrequency: "daily", discovery: true },
   // No `feature`: the guides section is first-party content with no switch behind it, so it
   // is never one of the conditional routes. The two kind hubs resolve through the `[kind]`
   // folder; `/life` is its own folder, because `/guides/life/...` is deliberately a 404.
@@ -82,7 +91,9 @@ export const SITEMAP_ROUTES: readonly SitemapRoute[] = [
  * if the settings service is unavailable. The canonical origin is still fixed at build time.
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [visibility, guides] = await Promise.all([getSiteVisibility(), guideSitemapEntries()]);
+  const [visibility, guides, discovery] = await Promise.all([
+    getSiteVisibility(), guideSitemapEntries(), getDiscoveryStatus(),
+  ]);
 
   /**
    * Which languages each hub has something to show, from the enumeration this route already
@@ -107,7 +118,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   });
 
   const routes = SITEMAP_ROUTES.filter(
-    (route) => !route.feature || featureEnabled(visibility, route.feature),
+    (route) => (!route.feature || featureEnabled(visibility, route.feature))
+      && (!route.discovery || discovery.enabled),
   ).flatMap((route) => {
     const available = hubLocales(route);
     const languages = available.length === locales.length
