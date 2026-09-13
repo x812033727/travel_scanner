@@ -1,7 +1,7 @@
 ---
 id: 2026-09-10-seo-server-render-home-and-explore
 title: 首頁與 explore 要在伺服器端渲染出真正的內容
-status: in-progress
+status: review
 priority: P1
 area: web
 owner: claude-opus-5-seo
