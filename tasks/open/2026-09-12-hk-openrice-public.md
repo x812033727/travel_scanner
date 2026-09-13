@@ -11,7 +11,7 @@ completed_at:
 branch: claude/hk-openrice-public
 depends_on: []
 scope:
-  - apps/api/app/foods/data/platform_reviews
+  - apps/api/app/foods/data/platform_reviews/2026-09-11-public-merchants.json
   - docs/catalog-content-reviews/2026-09-11-reservation-links-full.md
 ---
 
