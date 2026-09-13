@@ -117,7 +117,10 @@ measuring happens server-side'.」（`analytics/context.py:39-41`）
 **GA4 的同意狀態永遠是拒絕。** `analytics-provider.tsx:56-64` 把
 `analytics_storage`／`ad_storage`／`ad_user_data`／`ad_personalization` 全設為 denied、
 開啟 `ads_data_redaction`、關閉 `allow_google_signals`。**整個 repo 沒有任何一處呼叫
-`gtag("consent","update")`**——所以站上沒有同意橫幅，政策也不該先描述一個不存在的橫幅。
+`gtag("consent","update")`**。站上自己沒有同意橫幅。
+唯一的例外是文章頁的 AdSense：後台 `adsense_cmp_enabled` 開啟時，Google 認證的同意訊息
+由廣告標籤自己載入，並且會在讀者做出選擇後自己呼叫 `gtag("consent","update")`。
+那則訊息只對 EEA／英國／瑞士顯示，其他地區的讀者看不到，DNT／GPC 的讀者連廣告都不載入。
 
 **文章頁的 Google AdSense（2026-09-13 起有程式碼，預設關閉）。** 廣告腳本
 （`pagead2.googlesyndication.com/pagead/js/adsbygoogle.js`）只在四個條件同時成立時才載入：
@@ -125,7 +128,8 @@ measuring happens server-side'.」（`analytics/context.py:39-41`）
 請求路徑是文章頁（`/{locale}/guides/{intel,howto}/{slug}`、`/{locale}/life/{slug}`）、
 host 是正式站、而且請求**沒有**帶 `DNT: 1` 或 `Sec-GPC: 1`。任一條件不成立時，
 伺服器連版位的預留空間都不輸出，瀏覽器不會對 Google 發出任何請求。
-載入時一律先設 `requestNonPersonalizedAds = 1`，只投非個人化廣告；這是寫死的，不是後台選項。
+`adsense_cmp_enabled` 關閉時（預設），載入時先設 `requestNonPersonalizedAds = 1`，只投非個人化廣告；
+開啟時交給同意訊息的結果決定，因為在有認證 CMP 的情況下強制非個人化等於蓋掉讀者的選擇。
 有廣告的文章頁在獨立的 root layout（`app/(ads-public)`）底下，所以廣告腳本不會留在
 帳號、行程或社群頁面的同一份 document 裡。
 
@@ -300,7 +304,8 @@ ledger and already-delivered conversations; erase PII.」）：
 
 ~~以及一個缺口：全文沒有任何一句提到廣告。~~ — **2026-09-13 補上**。五語系 `privacy`
 草稿在「服務提供者與使用分析」之後多了「文章頁的廣告」區塊（heading＋paragraph＋兩項清單），
-揭露第三方使用 cookie 投放廣告、只投非個人化廣告、沒有同意橫幅、DNT／GPC 時完全不載入，
+揭露第三方使用 cookie 投放廣告、預設只投非個人化廣告、DNT／GPC 時完全不載入，
+說明個人化廣告啟用時 EEA／英國／瑞士會看到 Google 認證的同意訊息，
 並列出 `adssettings.google.com` 與 `aboutads.info` 兩個退出管道。
 措辭刻意是條件句（「當本站顯示廣告時」），因為廣告預設關閉：這樣在開啟前後都是事實，
 法律頁不必等廣告上線才能發布。`tests/test_site_pages_drafts.py` 有五語系的斷言擋住翻譯漏掉。

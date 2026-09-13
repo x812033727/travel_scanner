@@ -13,7 +13,9 @@ from app.config import Settings
 PUBLISHER_ID_PATTERN = re.compile(r"ca-pub-\d{16}")
 SLOT_ID_PATTERN = re.compile(r"\d{10}")
 
-DISABLED: dict[str, Any] = {"enabled": False, "publisher_id": None, "slot_id": None}
+DISABLED: dict[str, Any] = {
+    "enabled": False, "publisher_id": None, "slot_id": None, "cmp_enabled": False,
+}
 
 
 def adsense_config(settings: Settings, *, tracking_allowed: bool) -> dict[str, Any]:
@@ -33,4 +35,12 @@ def adsense_config(settings: Settings, *, tracking_allowed: bool) -> dict[str, A
     )
     if not enabled:
         return dict(DISABLED)
-    return {"enabled": True, "publisher_id": publisher_id, "slot_id": slot_id}
+    # Only meaningful alongside an enabled configuration: it tells the page whether a
+    # certified consent message decides personalisation, or whether the loader must force
+    # non-personalised ads because there is nothing there to ask the reader.
+    return {
+        "enabled": True,
+        "publisher_id": publisher_id,
+        "slot_id": slot_id,
+        "cmp_enabled": bool(settings.adsense_cmp_enabled),
+    }

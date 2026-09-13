@@ -163,6 +163,11 @@ class Settings(BaseSettings):
     adsense_enabled: bool = False
     adsense_publisher_id: str | None = None
     adsense_slot_id: str | None = None
+    # True asserts that a Google-certified consent message is published in the AdSense back
+    # office. It is the owner stating a fact about that account; the code derives behaviour
+    # from it — without it the loader forces non-personalised ads, because personalised ads
+    # in the EEA, the UK or Switzerland require a certified CMP.
+    adsense_cmp_enabled: bool = False
     auth_login_account_limit: int = Field(default=10, ge=1, le=100)
     auth_login_ip_limit: int = Field(default=30, ge=1, le=1_000)
     auth_login_window_seconds: int = Field(default=900, ge=60, le=86_400)

@@ -13,7 +13,7 @@ vi.mock("@/app/[locale]/layout", () => ({ default: original, generateMetadata: v
 import AdsPublicLayout from "./layout";
 import { disabledAdsense } from "@/lib/adsense";
 
-const enabled = { enabled: true, publisher_id: "ca-pub-4140966684432854", slot_id: "1234567890" };
+const enabled = { enabled: true, publisher_id: "ca-pub-4140966684432854", slot_id: "1234567890", cmp_enabled: false };
 const params = Promise.resolve({ locale: "zh-TW" });
 
 describe("the article document root", () => {

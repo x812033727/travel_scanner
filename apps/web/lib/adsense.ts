@@ -12,9 +12,18 @@ export type AdsenseConfig = {
   enabled: boolean;
   publisher_id: string | null;
   slot_id: string | null;
+  /**
+   * A Google-certified consent message ("Privacy & messaging") is published in the AdSense
+   * account, so the reader's own answer decides personalisation. False means the loader must
+   * force non-personalised ads: serving personalised ads in the EEA, the UK or Switzerland
+   * without a certified CMP is exactly what the programme policies forbid.
+   */
+  cmp_enabled: boolean;
 };
 
-export const disabledAdsense: AdsenseConfig = { enabled: false, publisher_id: null, slot_id: null };
+export const disabledAdsense: AdsenseConfig = {
+  enabled: false, publisher_id: null, slot_id: null, cmp_enabled: false,
+};
 
 /** Google's shapes: `ca-pub-` plus 16 digits, and a 10-digit ad unit slot. */
 export function isAdsensePublisherId(value: unknown): value is string {
@@ -29,6 +38,7 @@ export function validAdsenseConfig(value: unknown): value is AdsenseConfig {
   if (!value || typeof value !== "object") return false;
   const config = value as Partial<AdsenseConfig>;
   return typeof config.enabled === "boolean"
+    && typeof config.cmp_enabled === "boolean"
     && (config.publisher_id === null || isAdsensePublisherId(config.publisher_id))
     && (config.slot_id === null || isAdsenseSlotId(config.slot_id))
     && (!config.enabled || (isAdsensePublisherId(config.publisher_id) && isAdsenseSlotId(config.slot_id)));

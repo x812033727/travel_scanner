@@ -110,9 +110,25 @@ def test_privacy_discloses_advertising_cookies_and_an_opt_out(locale: Locale) ->
     body = _text("privacy", locale)
     assert "https://adssettings.google.com" in body
     assert "https://www.aboutads.info" in body
-    # The site has no consent banner and loads no ad script for a DNT/GPC browser, so the
-    # policy has to say so rather than describe a consent UI that does not exist.
+    # No ad script at all for a DNT/GPC browser, so the policy has to say so.
     assert "DNT" in body and "GPC" in body
+
+
+@pytest.mark.parametrize("locale", LOCALES)
+def test_privacy_describes_the_consent_message_conditionally(locale: Locale) -> None:
+    """Personalised ads are served only where a Google-certified consent message is published,
+    and that message is shown only in the EEA, the UK and Switzerland. The text has to hold in
+    both states — the site currently defaults to non-personalised ads with no message shown —
+    so it says what the default is and what changes when personalisation is switched on,
+    rather than describing a banner that may not exist yet."""
+    body = _text("privacy", locale)
+    assert "Google" in body
+    for region in {"en": ("European Economic Area", "United Kingdom", "Switzerland"),
+                   "ja": ("欧州経済領域", "英国", "スイス"),
+                   "ko": ("유럽 경제 지역", "영국", "스위스"),
+                   "zh-TW": ("歐洲經濟區", "英國", "瑞士"),
+                   "zh-CN": ("欧洲经济区", "英国", "瑞士")}[locale]:
+        assert region in body, f"{locale} does not name {region}"
 
 
 AUDIT_CALL = re.compile(r"AdminAuditLog\((.{0,800}?)\)\s*\n", re.S)

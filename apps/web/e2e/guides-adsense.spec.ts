@@ -1,4 +1,4 @@
-import { expect, test as base } from "@playwright/test";
+import { expect, test as base, type Route } from "@playwright/test";
 import { spawn } from "node:child_process";
 import { createServer } from "node:http";
 import { createRequire } from "node:module";
@@ -36,12 +36,32 @@ const article = {
   },
 };
 
-type Fixture = { origin: string; enabled: boolean; adRequests: string[] };
+type Fixture = { origin: string; enabled: boolean; cmp: boolean; adRequests: string[] };
+
+/**
+ * Forward a canonical-host request to the isolated server.
+ *
+ * Router prefetches for other routes keep arriving while a test finishes, and a reset or a
+ * closed context must not be reported as a failure of what the test was actually checking.
+ */
+async function proxyToSite(route: Route, origin: string) {
+  const url = new URL(route.request().url());
+  const headers = {
+    ...await route.request().allHeaders(),
+    host: url.host, "x-forwarded-host": url.host, "x-forwarded-proto": url.protocol.slice(0, -1),
+  };
+  try {
+    const response = await route.fetch({ url: `${origin}${url.pathname}${url.search}`, headers, maxRedirects: 0 });
+    return await route.fulfill({ response });
+  } catch {
+    return route.abort().catch(() => undefined);
+  }
+}
 
 const test = base.extend<{ site: Fixture }>({
   site: async ({ context, request }, runTest) => {
     test.skip(!existsSync(new URL("../.next/BUILD_ID", import.meta.url)), "Run next build for isolated AdSense coverage");
-    const site: Fixture = { origin: "", enabled: true, adRequests: [] };
+    const site: Fixture = { origin: "", enabled: true, cmp: false, adRequests: [] };
     const upstream = createServer((incoming, outgoing) => {
       incoming.resume();
       const url = new URL(incoming.url || "/", "http://127.0.0.1");
@@ -50,8 +70,8 @@ const test = base.extend<{ site: Fixture }>({
         // The server double applies the same privacy rule the real endpoint does.
         const tracking = incoming.headers.dnt !== "1" && incoming.headers["sec-gpc"] !== "1";
         result = site.enabled && tracking
-          ? { enabled: true, publisher_id: PUBLISHER, slot_id: SLOT }
-          : { enabled: false, publisher_id: null, slot_id: null };
+          ? { enabled: true, publisher_id: PUBLISHER, slot_id: SLOT, cmp_enabled: site.cmp }
+          : { enabled: false, publisher_id: null, slot_id: null, cmp_enabled: false };
       } else if (url.pathname === "/api/v1/guides/howto/tokyo-esim") result = article;
       else if (url.pathname.startsWith("/api/v1/guides/topics")) result = { items: [] };
       else if (url.pathname.startsWith("/api/v1/guides")) result = { articles: [], total: 0 };
@@ -91,12 +111,12 @@ const test = base.extend<{ site: Fixture }>({
           return route.fulfill({ contentType: "application/javascript", body: "/* isolated inert AdSense fixture */" });
         }
         if (["mokaair.com", "www.mokaair.com"].includes(url.hostname) || url.origin === site.origin) {
-          const headers = { ...await route.request().allHeaders(), host: url.host, "x-forwarded-host": url.host, "x-forwarded-proto": url.protocol.slice(0, -1) };
-          return route.fulfill({ response: await route.fetch({ url: `${site.origin}${url.pathname}${url.search}`, headers, maxRedirects: 0 }) });
+          return proxyToSite(route, site.origin);
         }
-        return route.abort();
+        return route.abort().catch(() => undefined);
       });
       await runTest(site);
+      await context.unrouteAll({ behavior: "ignoreErrors" });
     } finally {
       server.kill("SIGKILL");
       await new Promise<void>((resolve) => upstream.close(() => resolve()));
@@ -120,14 +140,34 @@ test("an article carries one labelled slot with its box already reserved", async
   expect(site.adRequests.every((url) => url.includes(`client=${PUBLISHER}`))).toBe(true);
 });
 
+test("without a consent message the tag is told to serve non-personalised ads", async ({ page, site }) => {
+  await page.goto(`${canonical}${articlePath}`);
+  await expect(page.locator("ins.adsbygoogle")).toHaveCount(1);
+  // Personalised ads in the EEA, the UK or Switzerland need a certified CMP; with none
+  // published, this flag is the only thing keeping the page inside the policy.
+  await expect.poll(() => page.evaluate(() => window.adsbygoogle?.requestNonPersonalizedAds))
+    .toBe(1);
+  expect(site.adRequests.every((url) => url.includes(`client=${PUBLISHER}`))).toBe(true);
+});
+
+test("a published consent message leaves personalisation to the reader's answer", async ({ page, site }) => {
+  site.cmp = true;
+  await page.goto(`${canonical}${articlePath}`);
+  await expect(page.locator("ins.adsbygoogle")).toHaveCount(1);
+  // Forcing the flag here would override whatever the reader chose in Google's message.
+  expect(await page.evaluate(() => window.adsbygoogle?.requestNonPersonalizedAds)).toBeUndefined();
+});
+
 test("a browser asking not to be tracked gets no slot and no request", async ({ browser, site }) => {
   const context = await browser.newContext({ extraHTTPHeaders: { "Sec-GPC": "1" } });
   const page = await context.newPage();
   await page.route("**/*", async (route) => {
     const url = new URL(route.request().url());
-    if (url.origin === ADSENSE_SCRIPT_ORIGIN) { site.adRequests.push(url.href); return route.abort(); }
-    const headers = { ...await route.request().allHeaders(), host: url.host, "x-forwarded-host": url.host, "x-forwarded-proto": url.protocol.slice(0, -1) };
-    return route.fulfill({ response: await route.fetch({ url: `${site.origin}${url.pathname}${url.search}`, headers, maxRedirects: 0 }) });
+    if (url.origin === ADSENSE_SCRIPT_ORIGIN) {
+      site.adRequests.push(url.href);
+      return route.abort().catch(() => undefined);
+    }
+    return proxyToSite(route, site.origin);
   });
   site.adRequests.length = 0;
   await page.goto(`${canonical}${articlePath}`);
@@ -136,6 +176,7 @@ test("a browser asking not to be tracked gets no slot and no request", async ({ 
   // Not even the reserved space: the page is exactly the page it is with advertising off.
   await expect(page.getByText(AD_LABEL, { exact: true })).toHaveCount(0);
   expect(site.adRequests).toEqual([]);
+  await page.unrouteAll({ behavior: "ignoreErrors" });
   await context.close();
 });
 

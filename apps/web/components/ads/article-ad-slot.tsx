@@ -15,10 +15,12 @@ const RESERVED_HEIGHT = 280;
  * may only ever read "廣告" / "Advertisements": the programme policies forbid dressing an ad
  * up as a recommendation.
  */
-export function ArticleAdSlot({ publisherId, slotId, label }: {
+export function ArticleAdSlot({ publisherId, slotId, label, cmpEnabled }: {
   publisherId: string;
   slotId: string;
   label: string;
+  /** Passed through to the queue: see `adsbygoogleQueue`. */
+  cmpEnabled: boolean;
 }) {
   const ref = useRef<HTMLModElement>(null);
   useEffect(() => {
@@ -29,11 +31,11 @@ export function ArticleAdSlot({ publisherId, slotId, label }: {
     // element it has claimed, which is the only reliable way to tell.
     if (element.getAttribute("data-adsbygoogle-status")) return;
     try {
-      adsbygoogleQueue().push({});
+      adsbygoogleQueue(cmpEnabled).push({});
     } catch {
       // A blocked or failed tag must never take the article down with it.
     }
-  }, []);
+  }, [cmpEnabled]);
   if (!isAdsensePublisherId(publisherId) || !isAdsenseSlotId(slotId)) return null;
   return (
     <aside aria-label={label} className="my-2">

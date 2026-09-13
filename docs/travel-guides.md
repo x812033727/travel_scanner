@@ -527,7 +527,14 @@ owner's decisions.
   paragraph, never above the hero (the LCP element) and never within
   `MIN_BLOCKS_AFTER` blocks of an `offer` block — the placement policies forbid an ad beside
   an interactive element, and those partner buttons are the revenue it must not eat. A short
-  article gets none. Non-personalised ads only, hard-coded in the loader.
+  article gets none.
+- **Personalisation.** Non-personalised ads unless `adsense_cmp_enabled` says a
+  Google-certified consent message ("Privacy & messaging") is published in the AdSense
+  account; then the reader's own answer decides, and the tag loads and shows that message
+  itself for the EEA, the UK and Switzerland. Nothing extra is loaded for readers elsewhere,
+  and a DNT/GPC browser sees no advertising and therefore no consent message at all. The flag
+  is the only thing that may allow personalisation: forcing `requestNonPersonalizedAds`
+  alongside a published message would override whatever the reader chose.
 - **Document boundary.** The two article routes live under `app/(ads-public)/`, a second root
   layout. Next.js performs a complete document navigation across that boundary, so the ad
   runtime is discarded before a reader reaches their account or a trip — removing a React
@@ -537,3 +544,10 @@ owner's decisions.
   whether or not advertising is on.
 - **CSP.** `proxy.ts` emits the relaxed, AdSense-compatible policy only for an article route
   with advertising actually on; every other response keeps the strict policy unchanged.
+- **Query strings.** With advertising on, an article URL carrying a query redirects to the
+  clean path before the document loads, because the ad tag can read `location.href` for
+  itself. The cost is that `utm_*` and `gclid` do not survive to an article page while
+  advertising is on, so first-party campaign attribution and the paid-traffic measurement in
+  `2026-09-13-google-ads-conversion-measurement` would both need this relaxed first. It is
+  one condition in `app/(ads-public)/[locale]/layout.tsx` if the owner decides the trade is
+  the wrong way round.

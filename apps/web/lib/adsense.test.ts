@@ -57,11 +57,16 @@ describe("identifiers", () => {
   });
 
   it("refuses an enabled payload whose identifiers would not render", () => {
-    expect(validAdsenseConfig({ enabled: true, publisher_id: PUBLISHER, slot_id: SLOT })).toBe(true);
-    expect(validAdsenseConfig({ enabled: false, publisher_id: null, slot_id: null })).toBe(true);
-    expect(validAdsenseConfig({ enabled: true, publisher_id: PUBLISHER, slot_id: null })).toBe(false);
-    expect(validAdsenseConfig({ enabled: true, publisher_id: null, slot_id: SLOT })).toBe(false);
-    expect(validAdsenseConfig({ enabled: "yes", publisher_id: PUBLISHER, slot_id: SLOT })).toBe(false);
+    const on = { enabled: true, publisher_id: PUBLISHER, slot_id: SLOT, cmp_enabled: false };
+    expect(validAdsenseConfig(on)).toBe(true);
+    expect(validAdsenseConfig({ ...on, cmp_enabled: true })).toBe(true);
+    expect(validAdsenseConfig({ enabled: false, publisher_id: null, slot_id: null, cmp_enabled: false })).toBe(true);
+    expect(validAdsenseConfig({ ...on, slot_id: null })).toBe(false);
+    expect(validAdsenseConfig({ ...on, publisher_id: null })).toBe(false);
+    expect(validAdsenseConfig({ ...on, enabled: "yes" })).toBe(false);
+    // A missing consent flag would read as `undefined` and quietly mean "no CMP"; refuse it
+    // so a payload from an older API can never decide personalisation by omission.
+    expect(validAdsenseConfig({ enabled: true, publisher_id: PUBLISHER, slot_id: SLOT })).toBe(false);
     expect(validAdsenseConfig(null)).toBe(false);
   });
 

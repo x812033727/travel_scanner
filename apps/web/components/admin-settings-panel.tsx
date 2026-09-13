@@ -144,6 +144,7 @@ const fieldMeta: Record<string, FieldMeta> = {
   ga4_measurement_id: { localized: true },
   adsense_publisher_id: { localized: true },
   adsense_slot_id: { localized: true },
+  adsense_cmp_enabled: { localized: true, type: "boolean" },
   analytics_trust_country_header: { localized: true, type: "boolean" },
   analytics_event_ip_limit: { localized: true, type: "number" },
   analytics_event_session_limit: { localized: true, type: "number" },

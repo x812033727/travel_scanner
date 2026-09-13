@@ -12,16 +12,19 @@ declare global {
 export type AdsbygoogleQueue = Record<string, unknown>[] & { requestNonPersonalizedAds?: number };
 
 /**
- * Non-personalised ads only, and deliberately not a setting: serving personalised ads in the
- * EEA, the UK or Switzerland requires a certified CMP and a different privacy policy, so
- * changing this has to be a code change reviewed alongside that text.
+ * `cmpEnabled` is the only thing that may allow personalised ads.
  *
- * The tag reads this flag off the same array the slots push into, so setting it in the same
- * tick as a push is enough however the two scripts interleave.
+ * With a Google-certified consent message published, the tag loads it for readers in the EEA,
+ * the UK and Switzerland and serves whatever they chose — forcing the flag here would
+ * override that answer and make the consent message pointless. Without one, the flag is
+ * mandatory: personalised ads in those regions require a certified CMP.
+ *
+ * The tag reads this off the same array the slots push into, so setting it in the same tick
+ * as a push is enough however the two scripts interleave.
  */
-export function adsbygoogleQueue(): AdsbygoogleQueue {
+export function adsbygoogleQueue(cmpEnabled: boolean): AdsbygoogleQueue {
   const queue: AdsbygoogleQueue = (window.adsbygoogle ??= []);
-  queue.requestNonPersonalizedAds = 1;
+  if (!cmpEnabled) queue.requestNonPersonalizedAds = 1;
   return queue;
 }
 
@@ -33,7 +36,10 @@ export function adsbygoogleQueue(): AdsbygoogleQueue {
  * document boundary — not unmounting — is what keeps this runtime out of account and trip
  * pages. See `docs/stay22-module-switch.md` for the precedent.
  */
-export function AdsenseLoader({ publisherId }: { publisherId: string | null }) {
+export function AdsenseLoader({ publisherId, cmpEnabled }: {
+  publisherId: string | null;
+  cmpEnabled: boolean;
+}) {
   if (!isAdsensePublisherId(publisherId)) return null;
   return (
     <Script
@@ -42,7 +48,7 @@ export function AdsenseLoader({ publisherId }: { publisherId: string | null }) {
       strategy="afterInteractive"
       crossOrigin="anonymous"
       onReady={() => {
-        adsbygoogleQueue();
+        adsbygoogleQueue(cmpEnabled);
       }}
     />
   );

@@ -144,9 +144,9 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
     ),
     "adsense": ProviderDefinition(
         "文章頁 Google 廣告",
-        "旅遊情報攻略與生活分享的文章頁顯示 Google AdSense 版位；只投放非個人化廣告，"
-        "讀者送出 DNT 或 GPC 時完全不載入。",
-        ("adsense_publisher_id", "adsense_slot_id"),
+        "旅遊情報攻略與生活分享的文章頁顯示 Google AdSense 版位。沒有啟用同意訊息時"
+        "只投放非個人化廣告；讀者送出 DNT 或 GPC 時完全不載入。",
+        ("adsense_publisher_id", "adsense_slot_id", "adsense_cmp_enabled"),
         # Both IDs are written into the page for every reader to see, so neither is a
         # secret: keeping them as plain config means the card can show what is set.
         (),
@@ -635,7 +635,12 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
 
         config = adsense_config(settings, tracking_allowed=True)
         if config["enabled"]:
-            return True, "ready", f"文章頁廣告已啟用（{config['publisher_id']}）"
+            personalisation = (
+                "同意訊息已啟用，個人化廣告依讀者的選擇投放"
+                if config["cmp_enabled"]
+                else "只投放非個人化廣告"
+            )
+            return True, "ready", f"文章頁廣告已啟用（{config['publisher_id']}）；{personalisation}"
         if not settings.adsense_enabled:
             return False, "not_configured", "文章頁廣告尚未啟用"
         missing = [
@@ -1279,6 +1284,7 @@ def _validate_provider_values(
         "analytics_trust_country_header",
         "google_maps_javascript_enabled",
         "adsense_enabled",
+        "adsense_cmp_enabled",
         *SITE_VISIBILITY_FIELDS,
     }
     for field in boolean_fields:

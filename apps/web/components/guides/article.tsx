@@ -178,6 +178,7 @@ export function GuideArticle({
                   publisherId={adsense?.publisher_id ?? ""}
                   slotId={adsense?.slot_id ?? ""}
                   label={labels.adLabel}
+                  cmpEnabled={Boolean(adsense?.cmp_enabled)}
                 />
                 <ContentBlocks
                   blocks={split.after}

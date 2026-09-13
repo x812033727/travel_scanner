@@ -134,7 +134,7 @@ export default async function LocaleLayout({ children, params, ads }: Props) {
                   <CommunityProvider state={community}>
                   <SavedItemsProvider hasSession={!anonymousDocument && hasSession}>
                     <div className="public-app-shell">
-                      {ads?.enabled ? <AdsenseLoader publisherId={ads.publisher_id} /> : null}
+                      {ads?.enabled ? <AdsenseLoader publisherId={ads.publisher_id} cmpEnabled={ads.cmp_enabled} /> : null}
                       {children}
                       {/* Inside the shell, so the 5rem the shell already reserves for the
                           fixed bottom navigation sits below the footer rather than over it. */}

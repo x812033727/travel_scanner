@@ -222,7 +222,7 @@ const server = createServer((request, response) => {
   // `korea-dual-maps` (it counts console errors). The specs that assert zero external
   // requests depend on this staying "off"; `guides-adsense.spec.ts` turns it on per test.
   if (request.method === "GET" && requestUrl.pathname === "/api/v1/ads/config") {
-    response.end(JSON.stringify(adsConfig));
+    response.end(JSON.stringify({ enabled: false, publisher_id: null, slot_id: null, cmp_enabled: false }));
     return;
   }
   if (request.method === "GET" && requestUrl.pathname === "/api/v1/admin/dashboard") {

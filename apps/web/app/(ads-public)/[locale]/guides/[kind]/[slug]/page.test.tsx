@@ -5,7 +5,7 @@ import GuideArticlePage, { generateMetadata } from "./page";
 
 const mocks = vi.hoisted(() => ({ article: vi.fn(), list: vi.fn(), notFound: vi.fn(() => { throw new Error("NEXT_NOT_FOUND"); }) }));
 vi.mock("@/components/site-header", () => ({ SiteHeader: () => null }));
-vi.mock("@/lib/adsense.server", () => ({ getAdsenseSlot: async () => ({ enabled: false, publisher_id: null, slot_id: null }) }));
+vi.mock("@/lib/adsense.server", () => ({ getAdsenseSlot: async () => ({ enabled: false, publisher_id: null, slot_id: null, cmp_enabled: false }) }));
 vi.mock("@/lib/guides.server", () => ({ getGuideArticle: mocks.article, getGuideList: mocks.list }));
 vi.mock("next/navigation", () => ({ notFound: mocks.notFound }));
 vi.mock("@/components/destination-affiliate-options", () => ({

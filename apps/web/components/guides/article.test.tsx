@@ -4,8 +4,8 @@ import { GuideArticle } from "./article";
 import type { AdsenseConfig } from "@/lib/adsense";
 
 vi.mock("@/components/ads/article-ad-slot", () => ({
-  ArticleAdSlot: (props: { publisherId: string; slotId: string; label: string }) => (
-    <div data-testid="ad-slot" data-publisher={props.publisherId} data-slot={props.slotId}>{props.label}</div>
+  ArticleAdSlot: (props: { publisherId: string; slotId: string; label: string; cmpEnabled: boolean }) => (
+    <div data-testid="ad-slot" data-publisher={props.publisherId} data-slot={props.slotId} data-cmp={String(props.cmpEnabled)}>{props.label}</div>
   ),
 }));
 
@@ -259,6 +259,7 @@ describe("GuideArticle in the lifestyle section", () => {
 describe("GuideArticle advertising", () => {
   const enabled: AdsenseConfig = {
     enabled: true, publisher_id: "ca-pub-4140966684432854", slot_id: "1234567890",
+    cmp_enabled: false,
   };
   const heading = { type: "heading" as const, text: "先看流量", level: 2 as const };
   const para = (text: string) => ({ type: "paragraph" as const, text });
@@ -279,6 +280,7 @@ describe("GuideArticle advertising", () => {
     expect(slot.getAttribute("data-publisher")).toBe("ca-pub-4140966684432854");
     expect(slot.getAttribute("data-slot")).toBe("1234567890");
     expect(slot.textContent).toBe("廣告");
+    expect(slot.getAttribute("data-cmp")).toBe("false");
     expect(screen.getAllByTestId("ad-slot")).toHaveLength(1);
     // After the first heading and its paragraph, so the hero (the LCP element) is untouched.
     const rendered = Array.from(slot.parentElement!.children).map((node) => node.textContent);
@@ -325,5 +327,24 @@ describe("GuideArticle advertising", () => {
     // would restart at section-1 and every contents link below the ad would go nowhere.
     expect(screen.getAllByRole("heading", { level: 2 }).map((node) => node.id))
       .toEqual(["section-1", "section-2", "section-3"]);
+  });
+});
+
+describe("GuideArticle consent message", () => {
+  const withCmp: AdsenseConfig = {
+    enabled: true, publisher_id: "ca-pub-4140966684432854", slot_id: "1234567890",
+    cmp_enabled: true,
+  };
+  const heading = { type: "heading" as const, text: "先看流量", level: 2 as const };
+  const para = (text: string) => ({ type: "paragraph" as const, text });
+  const longBody = {
+    ...document,
+    blocks: [heading, para("開頭"), ...Array.from({ length: 6 }, (_, i) => para(`段落 ${i}`))],
+  };
+
+  it("tells the slot when a certified consent message decides personalisation", () => {
+    draw({ document: longBody }, { adsense: withCmp });
+    // Without this the loader forces non-personalised ads and the consent answer is ignored.
+    expect(screen.getByTestId("ad-slot").getAttribute("data-cmp")).toBe("true");
   });
 });

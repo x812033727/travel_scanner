@@ -10,7 +10,7 @@ from httpx import ASGITransport, AsyncClient
 
 from app.admin.service import PROVIDER_DEFINITIONS, _configured
 from app.ads import router as ads_router
-from app.ads.service import adsense_config
+from app.ads.service import DISABLED, adsense_config
 from app.config import Settings, get_settings
 from app.problems import AppError, app_error_handler
 
@@ -46,11 +46,8 @@ def test_default_settings_leave_advertising_off() -> None:
     base = get_settings()
     assert base.adsense_enabled is False
     assert base.adsense_publisher_id is None and base.adsense_slot_id is None
-    assert adsense_config(base, tracking_allowed=True) == {
-        "enabled": False,
-        "publisher_id": None,
-        "slot_id": None,
-    }
+    assert base.adsense_cmp_enabled is False
+    assert adsense_config(base, tracking_allowed=True) == DISABLED
 
 
 @pytest.mark.parametrize(
@@ -69,13 +66,12 @@ def test_invalid_publisher_id_never_reaches_a_reader(publisher_id: str) -> None:
 
 @pytest.mark.parametrize("slot_id", ["", "123456789", "12345678901", "12345678ab", "abcdefghij"])
 def test_invalid_slot_id_never_reaches_a_reader(slot_id: str) -> None:
-    config = adsense_config(active_settings(adsense_slot_id=slot_id), tracking_allowed=True)
-    assert config == {"enabled": False, "publisher_id": None, "slot_id": None}
+    settings = active_settings(adsense_slot_id=slot_id)
+    assert adsense_config(settings, tracking_allowed=True) == DISABLED
 
 
 def test_switch_off_hides_identifiers_even_when_both_are_filled_in() -> None:
-    config = adsense_config(active_settings(adsense_enabled=False), tracking_allowed=True)
-    assert config == {"enabled": False, "publisher_id": None, "slot_id": None}
+    assert adsense_config(active_settings(adsense_enabled=False), tracking_allowed=True) == DISABLED
 
 
 def test_valid_configuration_returns_both_identifiers() -> None:
@@ -83,15 +79,18 @@ def test_valid_configuration_returns_both_identifiers() -> None:
         "enabled": True,
         "publisher_id": PUBLISHER_ID,
         "slot_id": SLOT_ID,
+        # Off until the owner says a certified consent message is published: without one,
+        # the page must force non-personalised ads.
+        "cmp_enabled": False,
     }
 
 
 def test_privacy_signal_disables_advertising_entirely() -> None:
-    assert adsense_config(active_settings(), tracking_allowed=False) == {
-        "enabled": False,
-        "publisher_id": None,
-        "slot_id": None,
-    }
+    assert adsense_config(active_settings(), tracking_allowed=False) == DISABLED
+    # A consent message is not an exception to this: a browser asking not to be tracked is
+    # not asked again by a banner, it simply gets no advertising.
+    with_cmp = active_settings(adsense_cmp_enabled=True)
+    assert adsense_config(with_cmp, tracking_allowed=False) == DISABLED
 
 
 async def test_endpoint_is_anonymous_and_never_cached(ads_api) -> None:
@@ -103,6 +102,7 @@ async def test_endpoint_is_anonymous_and_never_cached(ads_api) -> None:
         "enabled": True,
         "publisher_id": PUBLISHER_ID,
         "slot_id": SLOT_ID,
+        "cmp_enabled": False,
     }
     assert response.headers["cache-control"] == "no-store"
     assert response.headers["referrer-policy"] == "no-referrer"
@@ -113,7 +113,7 @@ async def test_endpoint_reports_off_for_a_privacy_signalling_browser(ads_api, he
     client, loaded = ads_api
     loaded.return_value = active_settings()
     response = await client.get("/api/v1/ads/config", headers=headers)
-    assert response.json() == {"enabled": False, "publisher_id": None, "slot_id": None}
+    assert response.json() == DISABLED
     assert PUBLISHER_ID not in response.text and SLOT_ID not in response.text
 
 
@@ -125,7 +125,9 @@ async def test_endpoint_reports_off_by_default(ads_api) -> None:
 def test_adsense_is_its_own_provider_not_part_of_analytics() -> None:
     definition = PROVIDER_DEFINITIONS["adsense"]
     assert definition.enabled_field == "adsense_enabled"
-    assert definition.config_fields == ("adsense_publisher_id", "adsense_slot_id")
+    assert definition.config_fields == (
+        "adsense_publisher_id", "adsense_slot_id", "adsense_cmp_enabled",
+    )
     # Both identifiers are printed into the page for every reader, so neither is a secret.
     assert definition.secret_fields == ()
     assert PROVIDER_DEFINITIONS["analytics"].enabled_field == "analytics_enabled"
@@ -140,3 +142,24 @@ def test_card_status_matches_what_a_reader_would_actually_be_served() -> None:
     configured, state, detail = _configured("adsense", active_settings(adsense_slot_id=None))
     assert (configured, state) == (False, "not_configured")
     assert "slot ID" in detail and "NAVITIME" not in detail
+
+
+def test_a_certified_consent_message_is_what_allows_personalised_ads() -> None:
+    """The flag is the owner asserting that a Google-certified message is published in their
+    AdSense account. Nothing else may turn personalisation on: the page forces
+    non-personalised ads whenever it is false, because serving personalised ads in the EEA,
+    the UK or Switzerland without a certified CMP is what the policy forbids."""
+    assert adsense_config(active_settings(), tracking_allowed=True)["cmp_enabled"] is False
+    with_cmp = adsense_config(active_settings(adsense_cmp_enabled=True), tracking_allowed=True)
+    assert with_cmp["cmp_enabled"] is True
+    # It cannot resurrect an otherwise unusable configuration.
+    assert adsense_config(
+        active_settings(adsense_enabled=False, adsense_cmp_enabled=True), tracking_allowed=True,
+    ) == DISABLED
+
+
+def test_card_says_which_kind_of_advertising_is_being_served() -> None:
+    _, _, without = _configured("adsense", active_settings())
+    _, _, with_message = _configured("adsense", active_settings(adsense_cmp_enabled=True))
+    assert "只投放非個人化廣告" in without
+    assert "同意訊息已啟用" in with_message

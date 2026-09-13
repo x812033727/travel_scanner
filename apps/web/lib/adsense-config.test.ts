@@ -4,7 +4,7 @@ import { fetchAdsenseConfig, resetAdsenseConfigCache } from "./adsense-config";
 
 const PUBLISHER = "ca-pub-4140966684432854";
 const SLOT = "1234567890";
-const enabled = { enabled: true, publisher_id: PUBLISHER, slot_id: SLOT };
+const enabled = { enabled: true, publisher_id: PUBLISHER, slot_id: SLOT, cmp_enabled: false };
 
 function reply(body: unknown, ok = true) {
   return { ok, json: async () => body } as Response;
@@ -47,7 +47,7 @@ describe("reading the advertising configuration", () => {
   it.each([
     ["an unreachable API", () => vi.mocked(fetch).mockRejectedValue(new Error("ECONNREFUSED"))],
     ["an error response", () => vi.mocked(fetch).mockResolvedValue(reply(enabled, false))],
-    ["a payload that would not render", () => vi.mocked(fetch).mockResolvedValue(reply({ enabled: true, publisher_id: PUBLISHER, slot_id: null }))],
+    ["a payload that would not render", () => vi.mocked(fetch).mockResolvedValue(reply({ enabled: true, publisher_id: PUBLISHER, slot_id: null, cmp_enabled: false }))],
     ["a payload that is not an object", () => vi.mocked(fetch).mockResolvedValue(reply("off"))],
   ])("fails closed on %s", async (_label, arrange) => {
     arrange();
