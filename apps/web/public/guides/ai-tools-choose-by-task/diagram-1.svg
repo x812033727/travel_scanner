@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">依任務選 AI 工具：八種任務的首選與備選 / Which AI to open for each task: first choice and backup</title>
+  <desc id="desc">八列八個任務、三個面向的矩陣：首選（綠框）、備選（藍框）、免費版能不能做。中文寫作與潤稿：首選 Claude，Artifacts 面板逐段改；備選 Gemini，Canvas 可匯出 Google 文件；免費可以。中英日翻譯：首選 Gemini，上傳檔案翻完匯出；備選 Claude，翻完直接產出 .docx；免費可以。讀長文件與摘要：首選 Claude，PDF 100 頁內含圖表、每對話 20 個檔案；備選 Gemini，10 個檔案，可丟影片與音訊；免費可以，有頁數與長度限制。寫程式與做小工具：首選 Claude，Artifacts 免費、Claude Code 要 Pro；備選 Codex，Free 只夠試、Plus 每月 20 美元；小工具免費可以，整個專案要付費。做圖片與修圖：首選 Gemini，Nano Banana 2，可上傳照片修；備選 ChatGPT，能生成與編輯，免費額度以官網為準；Gemini 免費可以，下載 1K。做研究與查資料：首選 Gemini Deep Research，免費、18 歲以上、每日有上限；備選 Claude Research，Pro 以上付費方案；Gemini 免費可以。語音對話與口說練習：首選 Gemini Live，手機 App，網頁版沒有；備選 Claude 語音模式，beta，含免費版，全平台；免費可以。在 Gmail、文件、試算表裡直接用：首選 Gemini，要 Google AI 方案，Plus 每月 165 元起；備選 Claude 連接器，免費，在 Claude 視窗裡做；Gemini 要付費，Claude 免費可以。底注：免費版指 2026 年 9 月 13 日各家官網與說明中心的內容，價格為官網幣別，之後以官網為準。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">依任務選 AI 工具：八種任務的首選與備選（2026 年 9 月查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Which AI to open for each task: first choice (green), backup (blue), and whether the free tier can do it</text>
+
+  <!-- header row -->
+  <rect x="60" y="106" width="1480" height="44" rx="10" fill="#E3F0EF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="80" y="136" font-size="17" font-weight="700" fill="#102A2B">任務</text>
+  <text x="430" y="136" font-size="17" font-weight="700" fill="#102A2B">首選（綠框）</text>
+  <text x="830" y="136" font-size="17" font-weight="700" fill="#102A2B">備選（藍框）</text>
+  <text x="1220" y="136" font-size="17" font-weight="700" fill="#102A2B">免費版能不能做</text>
+
+  <!-- row 1 y=160 -->
+  <rect x="60" y="160" width="1480" height="76" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="2"/>
+  <text x="80" y="205" font-size="18" font-weight="700" fill="#102A2B">中文寫作與潤稿</text>
+  <rect x="410" y="168" width="380" height="60" rx="10" fill="#E3F0EF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="430" y="192" font-size="17" font-weight="700" fill="#0B4F4D">Claude</text>
+  <text x="430" y="216" font-size="15" fill="#5C6B6B">Artifacts 面板逐段改</text>
+  <rect x="810" y="168" width="380" height="60" rx="10" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+  <text x="830" y="192" font-size="17" font-weight="700" fill="#1F4E73">Gemini</text>
+  <text x="830" y="216" font-size="15" fill="#5C6B6B">Canvas 可匯出 Google 文件</text>
+  <text x="1220" y="205" font-size="16" fill="#2E7D5B" font-weight="700">免費可以</text>
+
+  <!-- row 2 y=244 -->
+  <rect x="60" y="244" width="1480" height="76" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="2"/>
+  <text x="80" y="289" font-size="18" font-weight="700" fill="#102A2B">中英日翻譯</text>
+  <rect x="410" y="252" width="380" height="60" rx="10" fill="#E3F0EF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="430" y="276" font-size="17" font-weight="700" fill="#0B4F4D">Gemini</text>
+  <text x="430" y="300" font-size="15" fill="#5C6B6B">上傳檔案翻完，匯出 Google 文件</text>
+  <rect x="810" y="252" width="380" height="60" rx="10" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+  <text x="830" y="276" font-size="17" font-weight="700" fill="#1F4E73">Claude</text>
+  <text x="830" y="300" font-size="15" fill="#5C6B6B">翻完直接產出 .docx</text>
+  <text x="1220" y="289" font-size="16" fill="#2E7D5B" font-weight="700">免費可以</text>
+
+  <!-- row 3 y=328 -->
+  <rect x="60" y="328" width="1480" height="76" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="2"/>
+  <text x="80" y="373" font-size="18" font-weight="700" fill="#102A2B">讀長文件與摘要</text>
+  <rect x="410" y="336" width="380" height="60" rx="10" fill="#E3F0EF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="430" y="360" font-size="17" font-weight="700" fill="#0B4F4D">Claude</text>
+  <text x="430" y="384" font-size="15" fill="#5C6B6B">PDF 100 頁內含圖表、每對話 20 個檔案</text>
+  <rect x="810" y="336" width="380" height="60" rx="10" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+  <text x="830" y="360" font-size="17" font-weight="700" fill="#1F4E73">Gemini</text>
+  <text x="830" y="384" font-size="15" fill="#5C6B6B">10 個檔案，可丟影片與音訊</text>
+  <text x="1220" y="364" font-size="16" fill="#2E7D5B" font-weight="700">免費可以</text>
+  <text x="1220" y="388" font-size="15" fill="#5C6B6B">有頁數與長度限制</text>
+
+  <!-- row 4 y=412 -->
+  <rect x="60" y="412" width="1480" height="76" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="2"/>
+  <text x="80" y="457" font-size="18" font-weight="700" fill="#102A2B">寫程式與做小工具</text>
+  <rect x="410" y="420" width="380" height="60" rx="10" fill="#E3F0EF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="430" y="444" font-size="17" font-weight="700" fill="#0B4F4D">Claude</text>
+  <text x="430" y="468" font-size="15" fill="#5C6B6B">Artifacts 免費；Claude Code 要 Pro</text>
+  <rect x="810" y="420" width="380" height="60" rx="10" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+  <text x="830" y="444" font-size="17" font-weight="700" fill="#1F4E73">Codex</text>
+  <text x="830" y="468" font-size="15" fill="#5C6B6B">Free 只夠試；Plus 每月 20 美元</text>
+  <text x="1220" y="448" font-size="16" fill="#2E7D5B" font-weight="700">小工具免費可以</text>
+  <text x="1220" y="472" font-size="15" fill="#D97A2B">整個專案要付費</text>
+
+  <!-- row 5 y=496 -->
+  <rect x="60" y="496" width="1480" height="76" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="2"/>
+  <text x="80" y="541" font-size="18" font-weight="700" fill="#102A2B">做圖片與修圖</text>
+  <rect x="410" y="504" width="380" height="60" rx="10" fill="#E3F0EF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="430" y="528" font-size="17" font-weight="700" fill="#0B4F4D">Gemini</text>
+  <text x="430" y="552" font-size="15" fill="#5C6B6B">Nano Banana 2，可上傳照片修</text>
+  <rect x="810" y="504" width="380" height="60" rx="10" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+  <text x="830" y="528" font-size="17" font-weight="700" fill="#1F4E73">ChatGPT</text>
+  <text x="830" y="552" font-size="15" fill="#5C6B6B">能生成與編輯；免費額度以官網為準</text>
+  <text x="1220" y="532" font-size="16" fill="#2E7D5B" font-weight="700">Gemini 免費可以</text>
+  <text x="1220" y="556" font-size="15" fill="#5C6B6B">免費下載 1K 解析度</text>
+
+  <!-- row 6 y=580 -->
+  <rect x="60" y="580" width="1480" height="76" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="2"/>
+  <text x="80" y="625" font-size="18" font-weight="700" fill="#102A2B">做研究與查資料</text>
+  <rect x="410" y="588" width="380" height="60" rx="10" fill="#E3F0EF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="430" y="612" font-size="17" font-weight="700" fill="#0B4F4D">Gemini Deep Research</text>
+  <text x="430" y="636" font-size="15" fill="#5C6B6B">免費；18 歲以上；每日有上限</text>
+  <rect x="810" y="588" width="380" height="60" rx="10" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+  <text x="830" y="612" font-size="17" font-weight="700" fill="#1F4E73">Claude Research</text>
+  <text x="830" y="636" font-size="15" fill="#5C6B6B">Pro 以上的付費方案才有</text>
+  <text x="1220" y="625" font-size="16" fill="#2E7D5B" font-weight="700">Gemini 免費可以</text>
+
+  <!-- row 7 y=664 -->
+  <rect x="60" y="664" width="1480" height="76" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="2"/>
+  <text x="80" y="709" font-size="18" font-weight="700" fill="#102A2B">語音對話與口說練習</text>
+  <rect x="410" y="672" width="380" height="60" rx="10" fill="#E3F0EF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="430" y="696" font-size="17" font-weight="700" fill="#0B4F4D">Gemini Live</text>
+  <text x="430" y="720" font-size="15" fill="#5C6B6B">手機 App；網頁版沒有</text>
+  <rect x="810" y="672" width="380" height="60" rx="10" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+  <text x="830" y="696" font-size="17" font-weight="700" fill="#1F4E73">Claude 語音模式</text>
+  <text x="830" y="720" font-size="15" fill="#5C6B6B">beta；含免費版；手機、桌面、網頁</text>
+  <text x="1220" y="709" font-size="16" fill="#2E7D5B" font-weight="700">免費可以</text>
+
+  <!-- row 8 y=748 -->
+  <rect x="60" y="748" width="1480" height="76" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="2"/>
+  <text x="80" y="782" font-size="18" font-weight="700" fill="#102A2B">在 Gmail／文件／</text>
+  <text x="80" y="808" font-size="18" font-weight="700" fill="#102A2B">試算表裡直接用</text>
+  <rect x="410" y="756" width="380" height="60" rx="10" fill="#E3F0EF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="430" y="780" font-size="17" font-weight="700" fill="#0B4F4D">Gemini</text>
+  <text x="430" y="804" font-size="15" fill="#5C6B6B">要 Google AI 方案；Plus 每月 165 元起</text>
+  <rect x="810" y="756" width="380" height="60" rx="10" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+  <text x="830" y="780" font-size="17" font-weight="700" fill="#1F4E73">Claude 連接器</text>
+  <text x="830" y="804" font-size="15" fill="#5C6B6B">免費；在 Claude 視窗裡做</text>
+  <text x="1220" y="784" font-size="16" fill="#D97A2B" font-weight="700">Gemini 要付費</text>
+  <text x="1220" y="808" font-size="16" fill="#2E7D5B" font-weight="700">Claude 免費可以</text>
+
+  <text x="60" y="870" font-size="15" fill="#5C6B6B">免費版指 2026 年 9 月 13 日各家官網與說明中心的內容；價格為官網幣別，之後以官網為準。</text>
+  <text x="1540" y="870" font-size="15" fill="#5C6B6B" text-anchor="end">© Mokaair 製圖 2026</text>
+</svg>
