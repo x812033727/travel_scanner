@@ -6,6 +6,7 @@ vi.mock("next/headers", () => ({ headers: incoming }));
 incoming.mockResolvedValue(new Headers({ "x-forwarded-for": "203.0.113.9" }));
 import {
   guideSitemapEntries,
+  hubIsEmpty,
   loadGuideArticle,
   loadGuideList,
   loadGuideTopics,
@@ -24,7 +25,7 @@ const article = {
 };
 
 const summary = {
-  slug: "narita-to-tokyo", kind: "howto", destination_id: "tokyo", destination_label: "東京",
+  slug: "narita-to-tokyo", kind: "howto" as const, destination_id: "tokyo", destination_label: "東京",
   topics: [{ slug: "transport", label: "交通" }], title: "怎麼走", description: "三種選擇",
   published_at: "2026-09-01T00:00:00Z", valid_until: null, featured: false,
 };
@@ -69,7 +70,7 @@ describe("request discipline", () => {
 describe("a failing or malformed API", () => {
   it("degrades a listing to empty rather than throwing", async () => {
     vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new Error("connection reset")));
-    await expect(loadGuideList("zh-TW")).resolves.toEqual({ articles: [], next_cursor: null });
+    await expect(loadGuideList("zh-TW")).resolves.toEqual({ articles: [], next_cursor: null, available: false });
     await expect(loadGuideTopics("zh-TW", "travel")).resolves.toEqual([]);
   });
 
@@ -162,7 +163,7 @@ describe("the sitemap enumeration", () => {
 
   it("tells each row which locales its article is published in", async () => {
     vi.stubGlobal("fetch", respond({ entries: rows }));
-    const entries = await guideSitemapEntries();
+    const { entries } = await guideSitemapEntries();
     expect(entries).toHaveLength(3);
     const narita = entries.filter((entry) => entry.slug === "narita-to-tokyo");
     for (const entry of narita) expect(entry.locales).toEqual(["ja", "zh-TW"]);
@@ -171,7 +172,7 @@ describe("the sitemap enumeration", () => {
 
   it("orders the alternates by the site's locale list, not the API's row order", async () => {
     vi.stubGlobal("fetch", respond({ entries: [...rows].reverse() }));
-    const entries = await guideSitemapEntries();
+    const { entries } = await guideSitemapEntries();
     for (const entry of entries.filter((row) => row.slug === "narita-to-tokyo")) {
       expect(entry.locales).toEqual(["ja", "zh-TW"]);
     }
@@ -195,7 +196,7 @@ describe("the sitemap enumeration", () => {
         { kind: "howto", slug: "bad-date", locale: "en", published_at: "sometime" },
       ],
     }));
-    const entries = await guideSitemapEntries();
+    const { entries } = await guideSitemapEntries();
     expect(entries).toHaveLength(3);
     expect(entries.some((entry) => entry.slug.startsWith("no-"))).toBe(false);
     expect(entries.some((entry) => String(entry.kind) === "recipes")).toBe(false);
@@ -213,7 +214,7 @@ describe("the sitemap enumeration", () => {
         { ...rows[2], modified_at: "sometime" },
       ],
     }));
-    const entries = await guideSitemapEntries();
+    const { entries } = await guideSitemapEntries();
     expect(entries).toHaveLength(3);
     expect(entries[0].modified_at).toBe("2026-09-12T09:00:00Z");
     expect(entries[1].modified_at).toBeUndefined();
@@ -222,11 +223,14 @@ describe("the sitemap enumeration", () => {
 
   it("returns nothing rather than an exception when the API is unreachable", async () => {
     vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new Error("connection reset")));
-    await expect(guideSitemapEntries()).resolves.toEqual([]);
+    // `complete: false` is the half that matters downstream: the sitemap keeps listing every
+    // section hub in every language rather than reading "no entries" as "nothing published".
+    const unreachable = { entries: [], complete: false };
+    await expect(guideSitemapEntries()).resolves.toEqual(unreachable);
     vi.stubGlobal("fetch", respond(null, false));
-    await expect(guideSitemapEntries()).resolves.toEqual([]);
+    await expect(guideSitemapEntries()).resolves.toEqual(unreachable);
     vi.stubGlobal("fetch", respond({ entries: "not-an-array" }));
-    await expect(guideSitemapEntries()).resolves.toEqual([]);
+    await expect(guideSitemapEntries()).resolves.toEqual(unreachable);
   });
 
   it("caps the list so one large response cannot dominate the sitemap", async () => {
@@ -234,13 +238,25 @@ describe("the sitemap enumeration", () => {
       kind: "intel", slug: `deal-${index}`, locale: "zh-TW", published_at: "2026-09-01T00:00:00Z",
     }));
     vi.stubGlobal("fetch", respond({ entries: many }));
-    const entries = await guideSitemapEntries();
+    const capped = await guideSitemapEntries();
+    const { entries } = capped;
+    // A capped answer is not the publication picture: the 25 rows it dropped could be the only
+    // articles some language has, so callers must not read an absence here as "none published".
+    expect(capped.complete).toBe(false);
     expect(entries).toHaveLength(SITEMAP_GUIDE_ENTRY_LIMIT);
     // Which rows survive matters as much as how many. The API orders newest first, so a cap that
     // kept the tail would discard exactly the articles it exists to keep, and a count-only
     // assertion passes either way.
     expect(entries[0].slug).toBe("deal-0");
     expect(entries[SITEMAP_GUIDE_ENTRY_LIMIT - 1].slug).toBe(`deal-${SITEMAP_GUIDE_ENTRY_LIMIT - 1}`);
+  });
+
+  it("reports a whole answer as complete, which is what lets a hub be left out", async () => {
+    vi.stubGlobal("fetch", respond({ entries: rows }));
+    await expect(guideSitemapEntries()).resolves.toMatchObject({ complete: true });
+    // Nothing published at all is still a complete answer -- the API said so.
+    vi.stubGlobal("fetch", respond({ entries: [] }));
+    await expect(guideSitemapEntries()).resolves.toEqual({ entries: [], complete: true });
   });
 
   it("does not cache a list an editor can withdraw from", async () => {
@@ -252,5 +268,32 @@ describe("the sitemap enumeration", () => {
     // typo in it until a crawler did.
     expect(new URL(url).pathname).toBe("/api/v1/guides/sitemap");
     expect(init.cache).toBe("no-store");
+  });
+});
+
+describe("an empty section against a failed read", () => {
+  it("marks a listing the API answered as available, however few rows it holds", async () => {
+    vi.stubGlobal("fetch", respond({ articles: [summary], next_cursor: null }));
+    await expect(loadGuideList("zh-TW")).resolves.toMatchObject({ available: true });
+    vi.stubGlobal("fetch", respond({ articles: [], next_cursor: null }));
+    await expect(loadGuideList("en")).resolves.toMatchObject({ articles: [], available: true });
+  });
+
+  it("treats a malformed body as a failed read, not as an empty section", async () => {
+    vi.stubGlobal("fetch", respond({ articles: "not-an-array" }));
+    await expect(loadGuideList("en")).resolves.toMatchObject({ available: false });
+  });
+
+  it("calls a hub empty only when every listing behind it answered and is empty", () => {
+    const empty = { articles: [], next_cursor: null, available: true };
+    const failed = { articles: [], next_cursor: null, available: false };
+    const filled = { articles: [summary], next_cursor: null, available: true };
+    expect(hubIsEmpty(empty)).toBe(true);
+    expect(hubIsEmpty(empty, empty)).toBe(true);
+    expect(hubIsEmpty(failed)).toBe(false);
+    // /guides lists two kinds. One unreadable listing is an outage, and an outage must not
+    // noindex a hub that may well have articles under the kind that failed.
+    expect(hubIsEmpty(empty, failed)).toBe(false);
+    expect(hubIsEmpty(empty, filled)).toBe(false);
   });
 });

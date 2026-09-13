@@ -37,6 +37,28 @@ for (const locale of locales) {
     await expect(page.locator('head meta[property="og:description"]')).toHaveAttribute("content", description!);
   });
 
+  test(`${locale}: an article hub is indexable only where the section has something published`, async ({ page }) => {
+    // The fixture publishes intel in zh-TW and ja, how-to in en and lifestyle in zh-TW, the
+    // way the live site publishes one language at a time. A hub with nothing in it still
+    // answers 200 with its header and its language switcher, so it stays `follow`: the point
+    // is to keep an empty page out of the index, not to cut the crawler off from the rest.
+    const published: Record<string, string[]> = {
+      "/guides": ["zh-TW", "ja", "en"], "/guides/intel": ["zh-TW", "ja"],
+      "/guides/howto": ["en"], "/life": ["zh-TW"],
+    };
+    for (const [path, locales_] of Object.entries(published)) {
+      const response = await page.goto(`/${locale}${path}`);
+      expect(response?.status()).toBe(200);
+      const robots = page.locator('head meta[name="robots"]');
+      if (locales_.includes(locale)) {
+        await expect(robots).toHaveCount(0);
+      } else {
+        await expect(robots).toHaveAttribute("content", /noindex/);
+        await expect(robots).toHaveAttribute("content", /(?<!no)follow/);
+      }
+    }
+  });
+
   test(`${locale}: independently published CMS content does not inherit unverified translations`, async ({ page }) => {
     await page.goto(`/${locale}/privacy`);
     await expect(page.getByRole("heading", { name: `Synthetic privacy (${locale})` })).toBeVisible();
@@ -61,10 +83,21 @@ test("runtime sitemap exposes only public routes and stable localized alternate 
   if (!/no-store|no-cache/.test(cacheControl)) expect(cacheControl).toContain("must-revalidate");
   expect(cacheControl).not.toMatch(/(?:s-maxage|max-age)=[1-9]\d*/);
   const xml = await response.text();
-  // Eleven base routes, 33 destination guides and 33 services pages, times five locales, with
-  // the fixture's public switches all enabled, plus the four synthetic article translations
-  // the fixture API publishes (three travel, one lifestyle).
-  expect(xml.match(/<url>/g)).toHaveLength(5 * (11 + 33 + 33) + 4);
+  // Seven unconditional base routes, 33 destination guides and 33 services pages, times five
+  // locales, with the fixture's public switches all enabled; plus the four article hubs, which
+  // are listed per language rather than per route -- /guides wherever either travel kind
+  // publishes (zh-TW, ja, en), /guides/intel in zh-TW and ja, /guides/howto in en and /life in
+  // zh-TW, which is seven of their twenty possible URLs; plus the four synthetic article
+  // translations the fixture API publishes (three travel, one lifestyle).
+  expect(xml.match(/<url>/g)).toHaveLength(5 * (7 + 33 + 33) + 7 + 4);
+  for (const path of ["/guides", "/guides/intel", "/guides/howto", "/life"]) {
+    expect(xml).toContain(`/zh-TW${path}</loc>`);
+    // Nothing is published in Korean, so every hub of it is an empty page: not listed here,
+    // and `noindex` on the page itself.
+    expect(xml).not.toContain(`/ko${path}</loc>`);
+  }
+  expect(xml).toContain("/en/guides</loc>");
+  expect(xml).not.toContain("/en/guides/intel</loc>");
   expect(xml).toContain("/en/destinations/tokyo</loc>");
   expect(xml).toContain('hreflang="x-default"');
   expect(xml).not.toMatch(/<loc>[^<]*\/(?:admin|account|trips|login|privacy)(?:\/|<)/);

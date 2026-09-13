@@ -64,16 +64,40 @@ function query(locale: string, filters: GuideFilters, limit: number): string {
   return params.toString();
 }
 
+/**
+ * A listing, plus whether the API actually answered it.
+ *
+ * The body of a hub reads the same either way -- "nothing published here yet" -- but the
+ * indexing rule does not. `available: false` means the read failed or was malformed, and an
+ * empty `articles` then says nothing about whether the section is empty; a hub must stay
+ * indexable through an API outage rather than noindex every language at once.
+ */
+export type GuideListResult = GuideList & { available: boolean };
+
 export async function loadGuideList(
   locale: Locale, filters: GuideFilters = {}, limit = 12,
-): Promise<GuideList> {
+): Promise<GuideListResult> {
   const row = await fetchJson(`/guides?${query(locale, filters, limit)}`, locale);
   const body = row as Record<string, unknown> | null;
-  if (!body || !Array.isArray(body.articles)) return { articles: [], next_cursor: null };
+  if (!body || !Array.isArray(body.articles)) return { articles: [], next_cursor: null, available: false };
   return {
     articles: body.articles.filter(isGuideSummary),
     next_cursor: typeof body.next_cursor === "string" ? body.next_cursor : null,
+    available: true,
   };
+}
+
+/**
+ * Whether a hub is known to have nothing to show, which is the only case that may be
+ * `noindex`. Every listing behind the hub has to have answered: `/guides` covers two kinds,
+ * and one failed read there would otherwise hide a language that does have articles.
+ *
+ * A hub called empty here is still `follow`. The page keeps the header, the section links and
+ * the language switcher, and they remain the crawler's way into the languages that do
+ * publish. Only the empty page itself stays out of the index.
+ */
+export function hubIsEmpty(...lists: GuideListResult[]): boolean {
+  return lists.every((list) => list.available && list.articles.length === 0);
 }
 
 /**
@@ -155,16 +179,26 @@ export const SITEMAP_GUIDE_ENTRY_LIMIT = 1000;
 const SITEMAP_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 /**
+ * The enumeration, plus whether it is the complete publication picture.
+ *
+ * `complete` is what lets the sitemap leave a section hub out of a language with nothing
+ * published in it. A failed read returns no entries, and a response at the cap returns the
+ * newest slice of them; in both cases "this language has no articles of this kind" is
+ * unknowable, so the hubs stay listed for every language.
+ */
+export type GuideSitemapResult = { entries: GuideSitemapEntry[]; complete: boolean };
+
+/**
  * Publication-aware enumeration for `app/sitemap.ts`.
  *
- * Returns `[]` on any failure. The sitemap must degrade to its static list rather than
+ * Returns no entries on any failure. The sitemap must degrade to its static list rather than
  * disappear: an empty sitemap tells Google the site has no pages, which is far worse than
  * one missing section.
  */
-export async function guideSitemapEntries(): Promise<GuideSitemapEntry[]> {
+export async function guideSitemapEntries(): Promise<GuideSitemapResult> {
   const row = await fetchJson("/guides/sitemap", defaultLocale);
   const body = row as Record<string, unknown> | null;
-  if (!body || !Array.isArray(body.entries)) return [];
+  if (!body || !Array.isArray(body.entries)) return { entries: [], complete: false };
 
   const byArticle = new Map<string, Locale[]>();
   const rows: Array<Omit<GuideSitemapEntry, "locales">> = [];
@@ -190,12 +224,18 @@ export async function guideSitemapEntries(): Promise<GuideSitemapEntry[]> {
     rows.push({ kind: entry.kind, slug: entry.slug, locale, published_at: entry.published_at, ...modified });
   }
 
-  return rows.slice(0, SITEMAP_GUIDE_ENTRY_LIMIT).map((entry) => ({
-    ...entry,
-    // Ordered by the site's own locale list rather than the API's row order, so two runs
-    // cannot produce differently ordered alternates for the same article.
-    locales: locales.filter((value) => byArticle.get(`${entry.kind}:${entry.slug}`)?.includes(value)),
-  }));
+  return {
+    entries: rows.slice(0, SITEMAP_GUIDE_ENTRY_LIMIT).map((entry) => ({
+      ...entry,
+      // Ordered by the site's own locale list rather than the API's row order, so two runs
+      // cannot produce differently ordered alternates for the same article.
+      locales: locales.filter((value) => byArticle.get(`${entry.kind}:${entry.slug}`)?.includes(value)),
+    })),
+    // A response that filled the cap may have left rows behind, including the only article of
+    // some kind in some language. Dropped rows are always the oldest, and a hub is exactly as
+    // absent for one missing article as for a thousand.
+    complete: rows.length <= SITEMAP_GUIDE_ENTRY_LIMIT,
+  };
 }
 
 export const getGuideList = cache(loadGuideList);
