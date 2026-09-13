@@ -353,4 +353,7 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 
 每批做完把學到的事寫在這裡（一兩行，指向任務票的 Outcome），下一批開工前先讀。
 
-- （批次 01 完成後補。）
+- 批次 01（2026-09-13，`tasks/done/2026-09-13-life-ai-batch-01.md`）：一篇一個代理、同時七個最穩，沒有人被額度切斷；
+  代理只准 `--dry-run`，不碰 repo 檔案（有代理「清理」掉已收進去的文章）；`alt` ≤ 200 字、系列統一用語（token、上下文視窗）已寫進 brief；
+  收完後把 life→life 連結文字統一成目標標題；每張圖渲染後一定要人看，字壓框機械檢查抓不到。
+- Commons 照片：工具的 User-Agent 要有聯絡信箱，而且請求要走 urllib（httpx 的連線被 Wikimedia 擋 403）；十個代理同時搜 Commons 會被 429，工具會退避重試。
