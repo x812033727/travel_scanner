@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">日本環球影城購票決策樹與一日流程 / Universal Studios Japan ticket decision tree and one-day flow</title>
+  <desc id="desc">左邊是買票決策：先買指定日期的影城入場券，成人一日 8,400 日圓起。問題一：一定要進超級任天堂世界而且不想賭號碼券？是就買含區域入場保證的環球特快入場券 4、5、8 或 Premium，10,800 日圓起，看組合有沒有瑪利歐賽車。否則問題二：熱門設施想少排隊？是就買不含保證入場的特快券組合，任天堂世界改用 APP 號碼券；否就只買入場券，入園後立刻用官方 APP 領號碼券，一天一次，發完改抽籤券。右邊是一天的建議流程：開園前 60 到 90 分鐘到大門（9 月開園 8:00 到 9:00，可能提早）；安檢，行李箱寄園外置物櫃；入園後在 APP 登記全員票券並領號碼券；等時段時先排哈利波特禁忌之旅或飛天翼龍；11 點前午餐；依時段進超級任天堂世界，瑪利歐賽車、礦車、耀西冒險；傍晚看秀、拍城堡夜景，閉園前一小時買紀念品；9 月閉園 21:00 到 22:00。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">日本環球影城：先決定票，再決定一天的順序（2026 年 9 月查證價格）</text>
+
+  <!-- LEFT: decision tree -->
+  <text x="80" y="92" font-size="20" font-weight="700" fill="#102A2B">買票決策 Which ticket</text>
+  <rect x="80" y="104" width="640" height="56" rx="28" fill="#2E7D5B"/>
+  <text x="400" y="139" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">先買「指定日期」的影城入場券：成人 1 日 8,400 日圓起</text>
+  <path d="M 400 162 L 400 196" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <polygon points="400,200 640,262 400,324 160,262" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="400" y="255" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">問題 1　一定要進超級任天堂世界，</text>
+  <text x="400" y="281" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">而且不想賭號碼券？</text>
+
+  <!-- Q1 yes -->
+  <path d="M 640 262 L 700 262 L 700 344" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <text x="652" y="254" font-size="17" fill="#5C6B6B">是</text>
+  <rect x="470" y="348" width="300" height="100" rx="14" fill="#FBE9E4" stroke="#B8442D" stroke-width="4"/>
+  <text x="620" y="378" font-size="17" font-weight="700" fill="#8A2E1D" text-anchor="middle">買含「區域入場保證」的</text>
+  <text x="620" y="402" font-size="17" font-weight="700" fill="#8A2E1D" text-anchor="middle">環球特快入場券 4／5／8／Premium</text>
+  <text x="620" y="430" font-size="15" fill="#8A2E1D" text-anchor="middle">10,800 日圓起，看組合有沒有瑪利歐賽車</text>
+
+  <!-- Q1 no -->
+  <path d="M 160 262 L 100 262 L 100 486 L 64 486" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <text x="112" y="254" font-size="17" fill="#5C6B6B">否</text>
+  <polygon points="250,426 430,486 250,546 70,486" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="250" y="480" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">問題 2　熱門設施</text>
+  <text x="250" y="504" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">想少排隊？</text>
+
+  <!-- Q2 yes -->
+  <path d="M 430 486 L 466 486" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <text x="438" y="478" font-size="16" fill="#5C6B6B">是</text>
+  <rect x="470" y="464" width="300" height="96" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="620" y="494" font-size="16" font-weight="700" fill="#1F4E73" text-anchor="middle">不含保證入場的特快券也可以</text>
+  <text x="620" y="518" font-size="15" fill="#1F4E73" text-anchor="middle">（禁忌之旅、飛天翼龍等組合，10,800 日圓起）</text>
+  <text x="620" y="542" font-size="15" fill="#1F4E73" text-anchor="middle">任天堂世界改用 APP 號碼券</text>
+
+  <!-- Q2 no -->
+  <path d="M 250 548 L 250 584" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <text x="262" y="574" font-size="16" fill="#5C6B6B">否</text>
+  <rect x="80" y="588" width="340" height="96" rx="14" fill="#E9F5EE" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="250" y="618" font-size="17" font-weight="700" fill="#1F5C42" text-anchor="middle">只買入場券</text>
+  <text x="250" y="642" font-size="15" fill="#1F5C42" text-anchor="middle">入園後立刻用官方 APP 領號碼券</text>
+  <text x="250" y="666" font-size="15" fill="#1F5C42" text-anchor="middle">一天一次；發完改抽籤券（入場前 1 小時領）</text>
+
+  <text x="80" y="730" font-size="15" fill="#5C6B6B">特快券要另外買入場券、只在指定日期有效；價格依日期浮動，熱門日期提前售完</text>
+  <text x="80" y="754" font-size="15" fill="#5C6B6B">號碼券、抽籤券 2026 年 1 月 5 日起只能從官方 APP 領取；入場券 9 月 1 日起必須指定日期</text>
+  <text x="80" y="778" font-size="15" fill="#5C6B6B">1.5 日券 13,600 日圓起（第一天 15:00 入園）、2 日券 16,000 日圓起</text>
+
+  <!-- RIGHT: one-day flow -->
+  <line x1="820" y1="80" x2="820" y2="800" stroke="#B9B2A8" stroke-width="2"/>
+  <text x="900" y="92" font-size="20" font-weight="700" fill="#102A2B">一天的建議流程 One-day flow</text>
+  <path d="M 900 130 L 900 760" stroke="#0D6B68" stroke-width="6" stroke-linecap="round"/>
+
+  <g font-size="17" fill="#102A2B">
+    <circle cx="900" cy="140" r="22" fill="#0D6B68"/><text x="900" y="147" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+    <text x="940" y="136">開園前 60 到 90 分鐘到大門</text>
+    <text x="940" y="160" font-size="15" fill="#5C6B6B">9 月公告開園 8:00 到 9:00，官網說可能提早開園</text>
+
+    <circle cx="900" cy="230" r="22" fill="#0D6B68"/><text x="900" y="237" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+    <text x="940" y="226">安檢：口袋清空、水壺舉高過頭</text>
+    <text x="940" y="250" font-size="15" fill="#5C6B6B">行李箱寄園外置物櫃（500 到 2,000 日圓）或飯店</text>
+
+    <circle cx="900" cy="320" r="22" fill="#B8442D"/><text x="900" y="327" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+    <text x="940" y="316" font-weight="700">入園後第一件事：APP 登記全員票券、領號碼券</text>
+    <text x="940" y="340" font-size="15" fill="#5C6B6B">持特快券的人看票上的保證入場時段</text>
+
+    <circle cx="900" cy="410" r="22" fill="#0D6B68"/><text x="900" y="417" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+    <text x="940" y="406">等時段：先排哈利波特禁忌之旅、飛天翼龍</text>
+    <text x="940" y="430" font-size="15" fill="#5C6B6B">早上的排隊最短，11:00 前吃午餐</text>
+
+    <circle cx="900" cy="500" r="22" fill="#B8442D"/><text x="900" y="507" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+    <text x="940" y="496" font-weight="700">依時段進超級任天堂世界</text>
+    <text x="940" y="520" font-size="15" fill="#5C6B6B">瑪利歐賽車 → 咚奇剛的瘋狂礦車 → 耀西冒險 → 能量手環挑戰</text>
+
+    <circle cx="900" cy="590" r="22" fill="#0D6B68"/><text x="900" y="597" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">6</text>
+    <text x="940" y="586">傍晚看水世界或街頭秀，天黑後拍霍格華茲城堡</text>
+    <text x="940" y="610" font-size="15" fill="#5C6B6B">萬聖節季（9 月 10 日到 11 月 8 日）晚上有驚悚活動</text>
+
+    <circle cx="900" cy="680" r="22" fill="#0D6B68"/><text x="900" y="687" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">7</text>
+    <text x="940" y="676">閉園前 1 小時買紀念品</text>
+    <text x="940" y="700" font-size="15" fill="#5C6B6B">9 月閉園 21:00 到 22:00；出園就不能再進</text>
+
+    <circle cx="900" cy="760" r="22" fill="#102A2B"/><text x="900" y="767" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">8</text>
+    <text x="940" y="766">JR 環球城站回大阪站約 11 分、天王寺約 13 分</text>
+  </g>
+
+  <text x="1400" y="880" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

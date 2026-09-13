@@ -224,7 +224,7 @@ The PostgreSQL leg and the migration test are what prove the append-only trigger
 
 ## Content packs: authoring in the repository
 
-Ten launch articles with heroes, diagrams, tables and partner blocks are not something to
+Thirty launch articles with heroes, diagrams, tables and partner blocks are not something to
 type into a form, and their source of truth should be reviewable next to the images they
 reference. `app/guides/content/<slug>.json` is that source: the article's identity and
 taxonomy plus one `GuideDocument` per locale (`app/guides/content_pack.py:ArticlePack`;
@@ -267,7 +267,11 @@ Images:
   links the author to the file page and a CC licence to its deed.
 - Diagrams are drawn by the site (`credit.author` "Mokaair", `license` "© Mokaair") with
   local-script + English labels so one file serves every locale; the locale-specific words
-  go in the caption.
+  go in the caption. Every fare, time or date printed on a diagram must appear in the
+  article's own verified text (a number the article does not carry is not drawn), and no
+  label is smaller than 15 px so the figure stays legible on a phone. The second batch's
+  diagrams were drawn by the writing agents from the same brief; the review checked both
+  rules mechanically before the packs were ingested.
 - `alt` describes the picture; it does not repeat the caption. The hero is a photograph,
   not a diagram, because it doubles as the share card.
 

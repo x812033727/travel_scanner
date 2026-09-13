@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans KR','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">金海機場到釜山市區路線圖 / Gimhae Airport to Busan by light rail, metro, limousine bus and taxi</title>
+  <desc id="desc">金海機場出發的四種走法。釜山金海輕軌 6 分鐘到沙上（交通卡 1,600 韓元，機場站首班 05:06、末班 23:48），沙上轉 2 號線 8 站到西面、再 16 站到海雲台；西面轉 1 號線 8 站到南浦；輕軌 8 分鐘到大渚可轉 3 號線往蓮山、水營。利木津西面線 6,000 韓元、07:20 到 21:30、約 70 分一班；海雲台線 9,500 韓元、07:10 到 21:40、約 60 分一班，兩線都只收信用卡。計程車依機場官網估價：西面約 45 分 18,000、南浦洞約 60 分 20,000、海雲台約 70 分 25,000 韓元，23:00 到 04:00 夜間加成 20 到 30%。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="60" y="66" font-size="36" font-weight="700" fill="#102A2B">김해공항 金海機場 → 釜山市區　四種走法</text>
+  <text x="60" y="100" font-size="20" fill="#5C6B6B">Gimhae Airport → Busan · 票價與首末班 2026 年 9 月依官網查證 · 車程為官網估計</text>
+
+  <!-- light rail to Daejeo and line 3 -->
+  <path d="M 300 380 C 300 290, 420 230, 520 230" fill="none" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"/>
+  <line x1="520" y1="230" x2="1040" y2="230" stroke="#7E57C2" stroke-width="10" stroke-linecap="round"/>
+  <!-- light rail to Sasang, line 2, line 1 -->
+  <line x1="360" y1="435" x2="560" y2="435" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"/>
+  <line x1="560" y1="435" x2="1380" y2="435" stroke="#6B4A3A" stroke-width="12" stroke-linecap="round"/>
+  <line x1="900" y1="435" x2="900" y2="760" stroke="#D97A2B" stroke-width="10" stroke-linecap="round"/>
+  <!-- limousine buses -->
+  <path d="M 200 490 C 200 640, 600 600, 1044 600" fill="none" stroke="#B8442D" stroke-width="7" stroke-dasharray="18 12" stroke-linecap="round"/>
+  <path d="M 200 490 C 200 760, 800 700, 1384 660" fill="none" stroke="#B8442D" stroke-width="7" stroke-dasharray="18 12" stroke-linecap="round"/>
+
+  <!-- airport -->
+  <rect x="60" y="380" width="300" height="110" rx="24" fill="#0D6B68"/>
+  <text x="210" y="420" font-size="26" font-weight="700" fill="#FFFFFF" text-anchor="middle">김해공항 金海機場</text>
+  <text x="210" y="448" font-size="17" fill="#E6F2F1" text-anchor="middle">Gimhae Airport · PUS</text>
+  <text x="210" y="474" font-size="15" fill="#E6F2F1" text-anchor="middle">輕軌首班 05:06 · 末班 23:48</text>
+
+  <!-- light rail labels -->
+  <text x="460" y="410" font-size="16" font-weight="700" fill="#0D6B68" text-anchor="middle">輕軌 6 分 · 1,600 韓元</text>
+  <text x="385" y="332" font-size="16" font-weight="700" fill="#0D6B68">輕軌 8 分</text>
+
+  <!-- Daejeo and line 3 -->
+  <circle cx="520" cy="230" r="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+  <text x="520" y="196" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">대저 大渚 Daejeo</text>
+  <text x="520" y="266" font-size="15" fill="#5C6B6B" text-anchor="middle">轉 3 號線</text>
+  <circle cx="1040" cy="230" r="16" fill="#FFFFFF" stroke="#7E57C2" stroke-width="8"/>
+  <text x="1040" y="196" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">연산 蓮山 Yeonsan · 수영 水營 Suyeong</text>
+  <text x="1040" y="266" font-size="15" fill="#5C6B6B" text-anchor="middle">3 號線 · 蓮山轉 1 號線、水營轉 2 號線 · 住這一帶才順</text>
+
+  <!-- Sasang -->
+  <circle cx="560" cy="435" r="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+  <text x="560" y="480" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">사상 沙上 Sasang</text>
+  <text x="560" y="506" font-size="15" fill="#5C6B6B" text-anchor="middle">轉 2 號線 · 出站再進站，30 分內刷同一張卡</text>
+
+  <!-- Seomyeon -->
+  <circle cx="900" cy="435" r="16" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"/>
+  <text x="900" y="392" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">서면 西面 Seomyeon</text>
+  <text x="730" y="464" font-size="16" font-weight="700" fill="#6B4A3A" text-anchor="middle">2 號線 8 站</text>
+  <text x="1140" y="464" font-size="16" font-weight="700" fill="#6B4A3A" text-anchor="middle">2 號線 16 站 · 經廣安、Centum City</text>
+
+  <!-- Haeundae -->
+  <circle cx="1380" cy="435" r="16" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"/>
+  <text x="1380" y="392" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">해운대 海雲台 Haeundae</text>
+
+  <!-- Nampo via line 1 -->
+  <text x="882" y="560" font-size="16" font-weight="700" fill="#D97A2B" text-anchor="end">1 號線 8 站</text>
+  <circle cx="900" cy="760" r="16" fill="#FFFFFF" stroke="#D97A2B" stroke-width="8"/>
+  <text x="878" y="768" font-size="22" font-weight="700" fill="#102A2B" text-anchor="end">남포 南浦 Nampo（札嘎其）</text>
+  <text x="878" y="794" font-size="15" fill="#5C6B6B" text-anchor="end">西面轉 1 號線 8 站</text>
+
+  <!-- limousine stops -->
+  <circle cx="1060" cy="600" r="16" fill="#FFFFFF" stroke="#B8442D" stroke-width="8"/>
+  <text x="1086" y="592" font-size="20" font-weight="700" fill="#102A2B">利木津 西面線 · 서면 西面（樂天飯店）</text>
+  <text x="1086" y="618" font-size="15" fill="#5C6B6B">6,000 韓元 · 07:20–21:30 從機場發車 · 約 70 分一班</text>
+  <text x="1086" y="641" font-size="15" fill="#5C6B6B">停釜田市場、釜田站 · 只收信用卡</text>
+  <circle cx="1400" cy="660" r="16" fill="#FFFFFF" stroke="#B8442D" stroke-width="8"/>
+  <text x="1590" y="724" font-size="20" font-weight="700" fill="#102A2B" text-anchor="end">利木津 海雲台線 · 해운대 海雲台海水浴場 · 長山站</text>
+  <text x="1590" y="750" font-size="15" fill="#5C6B6B" text-anchor="end">9,500 韓元 · 07:10–21:40 從機場發車 · 約 60 分一班 · 約 1 小時</text>
+
+  <!-- taxi -->
+  <rect x="60" y="730" width="560" height="120" rx="20" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+  <text x="80" y="762" font-size="20" font-weight="700" fill="#102A2B">택시 計程車 Taxi（機場官網估價）</text>
+  <text x="80" y="790" font-size="15" fill="#102A2B">西面 45 分 18,000 · 南浦 60 分 20,000 · 海雲台 70 分 25,000 韓元</text>
+  <text x="80" y="814" font-size="15" fill="#102A2B">起跳 4,800 韓元／2 km · 23:00–04:00 夜間加成 20–30% · 模範約 1.8 倍</text>
+  <text x="80" y="838" font-size="15" fill="#B8442D">深夜落地（輕軌 23:48 末班後）只剩計程車</text>
+
+  <!-- legend -->
+  <g font-size="16" fill="#102A2B">
+    <line x1="660" y1="880" x2="710" y2="880" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/><text x="720" y="886">釜山金海輕軌 BGL</text>
+    <line x1="880" y1="880" x2="930" y2="880" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round"/><text x="940" y="886">地鐵 2 號線</text>
+    <line x1="1050" y1="880" x2="1100" y2="880" stroke="#D97A2B" stroke-width="10" stroke-linecap="round"/><text x="1110" y="886">1 號線</text>
+    <line x1="1170" y1="880" x2="1220" y2="880" stroke="#7E57C2" stroke-width="10" stroke-linecap="round"/><text x="1230" y="886">3 號線</text>
+    <line x1="1290" y1="880" x2="1340" y2="880" stroke="#B8442D" stroke-width="7" stroke-dasharray="14 10" stroke-linecap="round"/><text x="1350" y="886">利木津</text>
+    <text x="1420" y="886" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+  </g>
+</svg>

@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">曼谷蘇凡納布與廊曼機場到帕亞泰、暹羅、阿索克、考山路的路線圖 / Bangkok airports to city routes</title>
+  <desc id="desc">路線示意圖。右下是蘇凡納布機場，機場快線 ARL 從機場經瑪卡山、拉差帕洛到帕亞泰，營運 05:30 到 24:00；帕亞泰接 BTS 蘇坤蔚線往暹羅與阿索克，瑪卡山有連通道接 MRT 藍線碧武里站往蘇坤蔚與是隆；S1 巴士從蘇凡納布到考山路 60 泰銖。上方是廊曼機場，A1 巴士 30 泰銖到 BTS 蒙奇，A2 巴士 30 泰銖到勝利紀念碑，A4 巴士 50 泰銖到考山路，A3 巴士 50 泰銖往水門與倫披尼，SRT 紅線到曼谷阿披瓦中央車站 33 泰銖再轉 MRT 藍線。計程車與 Grab 兩機場都 24 小時，跳表加 50 泰銖；兩機場之間有免費接駁 05:00 到 24:00。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="60" y="70" font-size="36" font-weight="700" fill="#102A2B">曼谷兩座機場 → 市區　主要路線</text>
+  <text x="60" y="106" font-size="20" fill="#5C6B6B">BKK・DMK → พญาไท Phaya Thai・สยาม Siam・อโศก Asok・ข้าวสาร Khao San · 2026-09-13 查證</text>
+
+  <!-- legend -->
+  <g font-size="16" fill="#102A2B">
+    <rect x="1150" y="52" width="410" height="200" rx="16" fill="#FFFFFF" fill-opacity="0.6" stroke="#C9C2B8" stroke-width="1"/>
+    <line x1="1170" y1="80" x2="1225" y2="80" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+    <text x="1238" y="85">ARL 機場快線 Airport Rail Link</text>
+    <line x1="1170" y1="106" x2="1225" y2="106" stroke="#2E7D5B" stroke-width="10" stroke-linecap="round"/>
+    <text x="1238" y="111">BTS 蘇坤蔚線 Sukhumvit Line</text>
+    <line x1="1170" y1="132" x2="1225" y2="132" stroke="#2F6F9F" stroke-width="10" stroke-linecap="round"/>
+    <text x="1238" y="137">MRT 藍線 Blue Line</text>
+    <line x1="1170" y1="158" x2="1225" y2="158" stroke="#B8442D" stroke-width="10" stroke-linecap="round"/>
+    <text x="1238" y="163">SRT 紅線 Red Line</text>
+    <line x1="1170" y1="184" x2="1225" y2="184" stroke="#D97A2B" stroke-width="8" stroke-dasharray="14 10" stroke-linecap="round"/>
+    <text x="1238" y="189">機場巴士 A1・A2・A3・A4 Bus</text>
+    <line x1="1170" y1="210" x2="1225" y2="210" stroke="#7E57C2" stroke-width="8" stroke-dasharray="14 10" stroke-linecap="round"/>
+    <text x="1238" y="215">S1 巴士 → 考山路 Khao San</text>
+    <text x="1170" y="240" font-size="15" fill="#5C6B6B">票價為成人單程 · ARL 票價依站數計，以官網為準</text>
+  </g>
+
+  <!-- lines -->
+  <!-- A1 / A2 / A4 buses from DMK -->
+  <path d="M 680 230 L 680 320" fill="none" stroke="#D97A2B" stroke-width="8" stroke-dasharray="14 10" stroke-linecap="round"/>
+  <path d="M 600 230 C 600 380, 620 430, 680 430" fill="none" stroke="#D97A2B" stroke-width="8" stroke-dasharray="14 10" stroke-linecap="round"/>
+  <path d="M 560 185 C 330 185, 300 400, 300 644" fill="none" stroke="#D97A2B" stroke-width="8" stroke-dasharray="14 10" stroke-linecap="round"/>
+  <!-- Red Line DMK -> Krung Thep Aphiwat -->
+  <path d="M 800 185 C 1000 185, 1180 200, 1180 280" fill="none" stroke="#B8442D" stroke-width="10" stroke-linecap="round"/>
+  <!-- MRT Blue Line: Krung Thep Aphiwat -> Phetchaburi (Makkasan) -> Sukhumvit (Asok) -> Si Lom -->
+  <path d="M 1180 280 L 1180 720" fill="none" stroke="#2F6F9F" stroke-width="8" stroke-linecap="round"/>
+  <!-- BTS Sukhumvit Line: Mo Chit -> Victory Monument -> Phaya Thai -> Siam -> Asok -->
+  <path d="M 680 320 L 680 530 C 680 660, 700 660, 900 660 L 1180 660" fill="none" stroke="#2E7D5B" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- ARL: BKK -> Makkasan -> Ratchaprarop -> Phaya Thai -->
+  <path d="M 1445 690 L 1445 530 L 680 530" fill="none" stroke="#0D6B68" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- S1 bus: BKK -> Khao San -->
+  <path d="M 1350 775 C 1000 890, 450 880, 300 676" fill="none" stroke="#7E57C2" stroke-width="8" stroke-dasharray="14 10" stroke-linecap="round"/>
+
+  <!-- airports -->
+  <g>
+    <rect x="560" y="140" width="240" height="90" rx="20" fill="#102A2B"/>
+    <text x="680" y="172" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">ดอนเมือง</text>
+    <text x="680" y="196" font-size="16" fill="#E6F2F1" text-anchor="middle">Don Mueang Airport</text>
+    <text x="680" y="218" font-size="16" fill="#E6F2F1" text-anchor="middle">廊曼機場 DMK</text>
+    <rect x="1300" y="690" width="290" height="100" rx="20" fill="#102A2B"/>
+    <text x="1445" y="722" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">สุวรรณภูมิ</text>
+    <text x="1445" y="748" font-size="16" fill="#E6F2F1" text-anchor="middle">Suvarnabhumi Airport</text>
+    <text x="1445" y="772" font-size="16" fill="#E6F2F1" text-anchor="middle">蘇凡納布機場 BKK</text>
+  </g>
+
+  <!-- line labels -->
+  <g font-size="15" font-weight="700">
+    <text x="692" y="290" fill="#D97A2B">A1 30฿</text>
+    <text x="585" y="340" fill="#D97A2B" text-anchor="end">A2 30฿</text>
+    <text x="318" y="420" fill="#D97A2B">A4 50฿</text>
+    <text x="700" y="258" fill="#D97A2B" font-weight="400" font-size="15">A3 → 水門 Pratunam・倫披尼 Lumpini 50฿</text>
+    <text x="870" y="226" fill="#B8442D" font-size="15">SRT 紅線 Red Line 05:00 起</text>
+    <text x="960" y="512" fill="#0D6B68" font-size="17" text-anchor="middle">ARL 機場快線 05:30〜24:00</text>
+    <text x="1030" y="645" fill="#2E7D5B" font-size="15" text-anchor="middle">BTS สุขุมวิท Sukhumvit Line</text>
+    <text x="900" y="812" fill="#7E57C2" font-size="15" text-anchor="middle">S1 巴士 60฿ · 06:00 起，末班以站牌為準</text>
+  </g>
+
+  <!-- nodes -->
+  <g font-size="20" font-weight="700" fill="#102A2B">
+    <circle cx="680" cy="320" r="16" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="8"/>
+    <text x="705" y="315">หมอชิต Mo Chit 蒙奇</text>
+    <text x="705" y="340" font-size="15" font-weight="400" fill="#5C6B6B">BTS 起點 · A1 30฿ · 05:45〜24:00</text>
+
+    <circle cx="680" cy="430" r="16" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="8"/>
+    <text x="705" y="425">อนุสาวรีย์ชัยฯ Victory Monument</text>
+    <text x="705" y="450" font-size="15" font-weight="400" fill="#5C6B6B">勝利紀念碑 · A2 30฿ · 06:00〜23:00</text>
+
+    <circle cx="1180" cy="280" r="16" fill="#FFFFFF" stroke="#B8442D" stroke-width="8"/>
+    <text x="1210" y="268">กรุงเทพอภิวัฒน์</text>
+    <text x="1210" y="292" font-size="15" font-weight="400" fill="#5C6B6B">Krung Thep Aphiwat 中央車站 · 紅線 33฿ · 轉 MRT</text>
+
+    <circle cx="680" cy="530" r="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+    <text x="650" y="525" text-anchor="end">พญาไท Phaya Thai</text>
+    <text x="650" y="550" font-size="15" font-weight="400" fill="#5C6B6B" text-anchor="end">帕亞泰 · ARL 終點 · 連通道轉 BTS</text>
+
+    <circle cx="860" cy="530" r="11" fill="#FFFFFF" stroke="#0D6B68" stroke-width="6"/>
+    <text x="860" y="562" font-size="15" font-weight="400" fill="#5C6B6B" text-anchor="middle">ราชปรารภ Ratchaprarop</text>
+    <text x="860" y="582" font-size="15" font-weight="400" fill="#5C6B6B" text-anchor="middle">拉差帕洛 → 水門 Pratunam 步行</text>
+
+    <circle cx="1180" cy="530" r="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+    <text x="1200" y="562" font-size="18">มักกะสัน Makkasan</text>
+    <text x="1200" y="584" font-size="15" font-weight="400" fill="#5C6B6B">MRT เพชรบุรี Phetchaburi</text>
+    <text x="1200" y="604" font-size="15" font-weight="400" fill="#5C6B6B">瑪卡山 · 連通道轉 MRT 藍線</text>
+
+    <circle cx="900" cy="660" r="16" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="8"/>
+    <text x="900" y="700" text-anchor="middle">สยาม Siam 暹羅</text>
+    <text x="900" y="722" font-size="15" font-weight="400" fill="#5C6B6B" text-anchor="middle">帕亞泰過來兩站</text>
+
+    <circle cx="1180" cy="660" r="16" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="8"/>
+    <text x="1210" y="655">อโศก Asok 阿索克</text>
+    <text x="1210" y="678" font-size="15" font-weight="400" fill="#5C6B6B">MRT สุขุมวิท Sukhumvit 轉乘</text>
+    <text x="1180" y="742" font-size="15" font-weight="400" fill="#2F6F9F" text-anchor="middle">→ สีลม Si Lom 是隆</text>
+
+    <circle cx="300" cy="660" r="16" fill="#FFFFFF" stroke="#7E57C2" stroke-width="8"/>
+    <text x="270" y="655" text-anchor="end">ข้าวสาร Khao San</text>
+    <text x="270" y="680" font-size="15" font-weight="400" fill="#5C6B6B" text-anchor="end">考山路 · S1 60฿ · A4 50฿</text>
+  </g>
+
+  <!-- notes -->
+  <g font-size="16" fill="#102A2B">
+    <text x="60" y="838">計程車／Grab：兩機場都 24 小時，跳表加 50฿，過路費另付</text>
+    <text x="60" y="864">兩機場免費接駁 05:00〜24:00，每 30 分一班</text>
+    <text x="1380" y="872" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+  </g>
+</svg>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">新千歲機場、札幌、小樽 JR 路線示意圖 / New Chitose Airport – Sapporo – Otaru by JR</title>
+  <desc id="desc">一條 JR 線由右下的新千歲機場往左上經札幌到小樽。新千歲機場到札幌搭快速 Airport 最快 37 分鐘、特別快速 33 分鐘，大人 1,230 日圓，白天每小時 6 班，u 席指定席加 1,000 日圓；札幌到小樽約 35 分鐘、800 日圓，部分班次從小樽直通新千歲機場，最快 73 分鐘。札幌市內面板列出：大通公園、時計台、狸小路、薄野從札幌站搭地鐵一站 210 日圓，時計台 350 日圓、8:45 到 17:10；藻岩山纜車搭市電到ロープウェイ入口再轉免費接駁車，往復 2,100 日圓；白色戀人公園在地鐵東西線宮之澤站，1,200 日圓、10:00 到 18:00；北海道神宮在東西線圓山公園站；2027 年札幌雪祭 2 月 4 日到 11 日，大通、つどーむ、薄野三會場。小樽站步行可到小樽運河與堺町通，二月有雪あかりの路。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="80" y="80" font-size="40" font-weight="700" fill="#102A2B">新千歳空港・札幌・小樽　JR 快速エアポートで一本</text>
+  <text x="80" y="120" font-size="22" fill="#5C6B6B">New Chitose Airport – Sapporo – Otaru · 2026 年 9 月依官網查證，JR 票價為 2025 年 4 月 1 日調整後</text>
+
+  <!-- JR line: Otaru - Sapporo - New Chitose Airport -->
+  <path d="M 260 300 L 700 420 L 1120 670" fill="none" stroke="#0D6B68" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Airport box -->
+  <g>
+    <rect x="1120" y="620" width="280" height="100" rx="24" fill="#0D6B68"/>
+    <text x="1260" y="662" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle">新千歳空港</text>
+    <text x="1260" y="696" font-size="18" fill="#E6F2F1" text-anchor="middle">New Chitose Airport · CTS</text>
+    <text x="1260" y="760" font-size="17" fill="#5C6B6B" text-anchor="middle">小樽 ⇄ 新千歳空港 直通あり · 最速 73 分</text>
+  </g>
+
+  <!-- Sapporo -->
+  <g>
+    <circle cx="700" cy="420" r="18" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+    <text x="700" y="378" font-size="32" font-weight="700" fill="#102A2B" text-anchor="middle">札幌 Sapporo</text>
+    <text x="680" y="470" font-size="17" fill="#5C6B6B" text-anchor="end">JR 札幌駅 · 地下鉄 さっぽろ駅</text>
+  </g>
+
+  <!-- Otaru -->
+  <g>
+    <circle cx="260" cy="300" r="18" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+    <text x="260" y="258" font-size="28" font-weight="700" fill="#102A2B" text-anchor="middle">小樽 Otaru</text>
+    <text x="80" y="400" font-size="18" fill="#5C6B6B">小樽運河 Otaru Canal</text>
+    <text x="80" y="426" font-size="17" fill="#5C6B6B">堺町通り Sakaimachi · 駅から徒歩</text>
+    <text x="80" y="452" font-size="17" fill="#5C6B6B">2 月 雪あかりの路（日程は公式で）</text>
+  </g>
+
+  <!-- Segment labels -->
+  <g>
+    <text x="440" y="290" font-size="20" font-weight="700" fill="#0D6B68" text-anchor="middle">JR 函館本線 · 快速エアポート直通</text>
+    <text x="440" y="316" font-size="20" fill="#0D6B68" text-anchor="middle">約 35 分 · 800 日圓</text>
+    <text x="960" y="470" font-size="22" font-weight="700" fill="#0D6B68">快速エアポート Rapid Airport</text>
+    <text x="960" y="498" font-size="19" fill="#0D6B68">最速 37 分（特別快速 33 分）· 1,230 日圓</text>
+    <text x="960" y="524" font-size="17" fill="#5C6B6B">日中每小時 6 班 · uシート指定席 +1,000 日圓</text>
+  </g>
+
+  <!-- City panel -->
+  <g>
+    <rect x="80" y="520" width="680" height="300" rx="20" fill="#FFFFFF" stroke="#D8CCBE" stroke-width="2"/>
+    <text x="104" y="556" font-size="22" font-weight="700" fill="#102A2B">札幌市内 In the city · 地下鉄・市電・徒歩</text>
+    <g font-size="17" fill="#102A2B">
+      <text x="104" y="596">● 大通公園・時計台・狸小路・すすきの：地下鉄 1 駅 210 日圓</text>
+      <text x="104" y="628">● 時計台 大人 350 日圓 · 8:45–17:10 · 1/1–1/3 休館</text>
+      <text x="104" y="660">● 藻岩山：市電「ロープウェイ入口」→ 無料シャトル → 往復 2,100 日圓</text>
+      <text x="104" y="692">● 白い恋人パーク：東西線 宮の沢 · 1,200 日圓 · 10:00–18:00</text>
+      <text x="104" y="724">● 北海道神宮：東西線 円山公園（開門時間は公式サイトで）</text>
+      <text x="104" y="756">● さっぽろ雪まつり 2027：2 月 4 日〜11 日 · 大通・つどーむ・すすきの</text>
+      <text x="104" y="788" fill="#5C6B6B">市電 単区 230 日圓 · 地下鉄 1 日券 830 日圓 · 土日祝 ドニチカキップ 520 日圓</text>
+    </g>
+  </g>
+
+  <!-- Legend -->
+  <g font-size="20" fill="#102A2B">
+    <line x1="80" y1="875" x2="140" y2="875" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+    <text x="152" y="882">JR 北海道 JR Hokkaido · 快速エアポート / 函館本線</text>
+    <text x="1380" y="882" font-size="16" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+  </g>
+</svg>
