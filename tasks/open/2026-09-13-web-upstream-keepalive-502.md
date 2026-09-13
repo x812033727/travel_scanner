@@ -58,14 +58,14 @@ Next.js 16.3.3 自帶的文件寫的正是這個情況：`node_modules/next/dist
 
 ## Steps
 
-- [ ] `docker-compose.prod.yml` 的 web 加上 `KEEP_ALIVE_TIMEOUT: "65000"`，比 nginx 預設的 60 秒長。
-- [ ] 新增 `ops/nginx/upstream-keepalive.conf`，內容是 `keepalive 32;` 和 `keepalive_timeout 4s;`。4 秒比 Node 預設的 5 秒短。
-- [ ] `mokaair.conf.example` 的 upstream 改成 include 這個 snippet。`ci-validate.conf` 的 upstream 也 include，
+- [x] `docker-compose.prod.yml` 的 web 加上 `KEEP_ALIVE_TIMEOUT: "65000"`，比 nginx 預設的 60 秒長。
+- [x] 新增 `ops/nginx/upstream-keepalive.conf`，內容是 `keepalive 32;` 和 `keepalive_timeout 4s;`。4 秒比 Node 預設的 5 秒短。
+- [x] `mokaair.conf.example` 的 upstream 改成 include 這個 snippet。`ci-validate.conf` 的 upstream 也 include，
       讓 CI 的 `nginx -t` 真的在 upstream context 裡驗到這兩行。
-- [ ] `install.sh` 安裝這個 snippet。沒有任何已啟用的設定 include 它時，印出提醒。
-- [ ] `README.md`：表格補一列，補上升級說明與驗證步驟。
-- [ ] 本機實測 Next 16.3.3 standalone 真的會讀 `KEEP_ALIVE_TIMEOUT`。
-- [ ] 查 API 那一跳有沒有同樣的問題。
+- [x] `install.sh` 安裝這個 snippet。沒有任何已啟用的設定 include 它時，印出提醒。
+- [x] `README.md`：表格補一列，補上升級說明與驗證步驟。
+- [x] 本機實測 Next 16.3.3 standalone 真的會讀 `KEEP_ALIVE_TIMEOUT`。
+- [x] 查 API 那一跳有沒有同樣的問題。
 - [ ] **需要站主同意**：部署（compose 那半）。
 - [ ] **需要站主同意**：主機 nginx。staging 和 reload 分成兩次呼叫。
 - [ ] 上機後照 How to verify 驗證，把結果寫回這裡。
