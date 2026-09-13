@@ -9,7 +9,12 @@ import LifeHubPage, { generateMetadata } from "./page";
 
 const mocks = vi.hoisted(() => ({ list: vi.fn(), topics: vi.fn() }));
 vi.mock("@/components/site-header", () => ({ SiteHeader: () => null }));
-vi.mock("@/lib/guides.server", () => ({ getGuideList: mocks.list, getGuideTopics: mocks.topics }));
+// Only the two reads are stubbed: `hubIsEmpty` stays the real rule, so a test that fakes
+// an empty listing is exercising the indexing decision rather than restating it.
+vi.mock("@/lib/guides.server", async (original) => ({
+  ...await original<typeof import("@/lib/guides.server")>(),
+  getGuideList: mocks.list, getGuideTopics: mocks.topics,
+}));
 
 const summary = {
   slug: "ai-notes", kind: "life" as const, destination_id: null, destination_label: null,
@@ -23,7 +28,7 @@ const search = (over: Record<string, string> = {}) => Promise.resolve({ ...over 
 
 beforeEach(() => {
   vi.clearAllMocks();
-  mocks.list.mockResolvedValue({ articles: [summary], next_cursor: null });
+  mocks.list.mockResolvedValue({ articles: [summary], next_cursor: null, available: true });
   mocks.topics.mockResolvedValue([{ slug: "ai", label: "AI 工具", section: "life" }]);
 });
 
@@ -54,13 +59,13 @@ describe("the lifestyle listing", () => {
   });
 
   it("says the section is empty rather than rendering a bare heading", async () => {
-    mocks.list.mockResolvedValue({ articles: [], next_cursor: null });
+    mocks.list.mockResolvedValue({ articles: [], next_cursor: null, available: true });
     render(await LifeHubPage({ params, searchParams: search() }));
     expect(screen.getByText("這裡還沒有已發布的內容。")).toBeTruthy();
   });
 
   it("carries the cursor on the same listing URL as the filter", async () => {
-    mocks.list.mockResolvedValue({ articles: [summary], next_cursor: "abc==" });
+    mocks.list.mockResolvedValue({ articles: [summary], next_cursor: "abc==", available: true });
     render(await LifeHubPage({ params, searchParams: search({ topic: "ai" }) }));
     expect(screen.getByRole("link", { name: "看更多" }).getAttribute("href"))
       .toBe("/life?topic=ai&cursor=abc%3D%3D");
@@ -77,5 +82,29 @@ describe("what the lifestyle listing tells search engines", () => {
   it.each<Record<string, string>>([{ topic: "ai" }, { cursor: "abc==" }])("is noindex for %o", async (over) => {
     const metadata = await generateMetadata({ params, searchParams: search(over) });
     expect(metadata.robots).toEqual({ index: false, follow: true });
+  });
+
+  // Every lifestyle article is zh-TW today, so /en/life, /ja/life, /ko/life and /zh-CN/life
+  // are a heading over "nothing here yet": nothing to rank, and a soft 404 to Search Console.
+  it("keeps a language with nothing published out of the index, but still followed", async () => {
+    mocks.list.mockResolvedValue({ articles: [], next_cursor: null, available: true });
+    const metadata = await generateMetadata({ params, searchParams: search() });
+    expect(metadata.robots).toEqual({ index: false, follow: true });
+  });
+
+  it("stays indexable when the listing could not be read, because empty is not the same as failed", async () => {
+    // One API failure must not noindex the section in the language that does publish it.
+    mocks.list.mockResolvedValue({ articles: [], next_cursor: null, available: false });
+    const metadata = await generateMetadata({ params, searchParams: search() });
+    expect(metadata.robots).toBeUndefined();
+  });
+
+  it("reads the listing once for the metadata and the body together", async () => {
+    // Both call getGuideList with identical arguments, which is what lets React's per-request
+    // cache answer the second from the first instead of asking the API twice per crawl.
+    const arguments_ = { kind: "life", topic: undefined, cursor: undefined };
+    await generateMetadata({ params, searchParams: search() });
+    render(await LifeHubPage({ params, searchParams: search() }));
+    for (const call of mocks.list.mock.calls) expect(call).toEqual(["zh-TW", arguments_, 24]);
   });
 });

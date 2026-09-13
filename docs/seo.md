@@ -29,6 +29,7 @@ results. Historical task notes describe their original snapshots, not necessaril
 | Home, food directory, destination directory/guides/services | Indexable public content |
 | Travel intel and guides (`/guides`, `/guides/{kind}`, articles) | Indexable public content; an article only in the locales it is published in |
 | Lifestyle (`/life`, `/life/{slug}`) | Indexable public content; same per-locale publication rule. Topic-filtered views are `noindex` |
+| An article hub in a locale with nothing published (`/guides`, `/guides/{kind}`, `/life`) | `noindex, follow`, and absent from the sitemap for that locale |
 | Hotspots, pricing, flight status, airline fares | Indexable only while the effective Web switch is enabled |
 | Privacy, terms, about, contact | Only the requested locale's published document is indexable |
 | Community/discovery/pet public shells | Existing `noindex` retained pending public server content |
@@ -58,7 +59,30 @@ deployment-time flags or needing the API during `next build`.
 The static list is at most **385 URLs**: five locales times eleven base routes, 33
 destination guides, and 33 services pages. Four base routes are conditional; all four
 closed/unavailable gives **365 URLs**. The three `/guides` hubs and `/life` carry no feature
-switch, so they are never among the conditional ones.
+switch, so they are never among the conditional ones -- but they are listed per locale rather
+than per route, which is the second way the static count can fall short of 385.
+
+### An article hub in a locale that has nothing published
+
+Articles are published one locale at a time, so a section that exists only in zh-TW still
+answers 200 at `/en/guides`, `/ja/life` and their siblings -- with a heading and one sentence
+saying the section is empty. Those are the pages Search Console files as soft 404s and thin
+content, and there is nothing on them to rank. So:
+
+- each hub's `generateMetadata` emits `robots: { index: false, follow: true }` when the
+  listings behind it are empty. `/guides` covers two kinds and is empty only when both are.
+  It stays `follow`: the header, the section links and the language switcher are still the
+  crawler's way into the locales that do publish.
+- `app/sitemap.ts` lists a hub only in the locales one of its kinds publishes in, and its
+  hreflang set names only those locales -- `x-default` only when English is among them.
+  Advertising an alternate that answers `noindex` would contradict this file's own output.
+
+**An API failure is not an empty section.** `loadGuideList` reports `available`, and
+`guideSitemapEntries` reports `complete`; the rules above apply only to a read that actually
+answered and was not truncated at the entry cap. A guides outage therefore leaves every hub
+exactly as indexable and as listed as it is today, rather than `noindex`-ing all five locales
+at once. A hub returns to the index and to the sitemap with the first article published in
+that locale, with no deployment.
 
 `/life` is listed at `priority 0.6` / `changeFrequency weekly`, matching `/guides/howto`
 rather than the dated `/guides/intel` feed: its articles are evergreen and are emitted at

@@ -7,7 +7,12 @@ const mocks = vi.hoisted(() => ({
   notFound: vi.fn(() => { throw new Error("NEXT_NOT_FOUND"); }),
 }));
 vi.mock("@/components/site-header", () => ({ SiteHeader: () => null }));
-vi.mock("@/lib/guides.server", () => ({ getGuideList: mocks.list, getGuideTopics: mocks.topics }));
+// Only the two reads are stubbed: `hubIsEmpty` stays the real rule, so a test that fakes
+// an empty listing is exercising the indexing decision rather than restating it.
+vi.mock("@/lib/guides.server", async (original) => ({
+  ...await original<typeof import("@/lib/guides.server")>(),
+  getGuideList: mocks.list, getGuideTopics: mocks.topics,
+}));
 vi.mock("next/navigation", () => ({ notFound: mocks.notFound }));
 
 const summary = {
@@ -21,7 +26,7 @@ const search = (over: { topic?: string; destination?: string; cursor?: string } 
 
 beforeEach(() => {
   vi.clearAllMocks();
-  mocks.list.mockResolvedValue({ articles: [summary], next_cursor: null });
+  mocks.list.mockResolvedValue({ articles: [summary], next_cursor: null, available: true });
   mocks.topics.mockResolvedValue([{ slug: "transport", label: "交通" }]);
 });
 
@@ -50,7 +55,7 @@ describe("the section listing", () => {
   });
 
   it("says the section is empty rather than showing a bare heading", async () => {
-    mocks.list.mockResolvedValue({ articles: [], next_cursor: null });
+    mocks.list.mockResolvedValue({ articles: [], next_cursor: null, available: true });
     render(await GuideListPage({ params: params(), searchParams: search() }));
     expect(screen.getByText("這裡還沒有已發布的內容。")).toBeTruthy();
   });
@@ -58,7 +63,7 @@ describe("the section listing", () => {
   it("offers the next page only when the API says there is one", async () => {
     render(await GuideListPage({ params: params(), searchParams: search() }));
     expect(screen.queryByRole("link", { name: "看更多" })).toBeNull();
-    mocks.list.mockResolvedValue({ articles: [summary], next_cursor: "abc123" });
+    mocks.list.mockResolvedValue({ articles: [summary], next_cursor: "abc123", available: true });
     render(await GuideListPage({ params: params(), searchParams: search() }));
     expect(screen.getByRole("link", { name: "看更多" }).getAttribute("href")).toContain("cursor=abc123");
   });
@@ -78,6 +83,26 @@ describe("indexing", () => {
       expect(metadata.robots).toEqual({ index: false, follow: true });
     },
   );
+
+  // Every article is zh-TW today, so /en/guides/intel and its three siblings are a heading
+  // over "nothing here yet". Nothing to rank, and a soft 404 to Search Console.
+  it("keeps a language with nothing published out of the index, but still followed", async () => {
+    mocks.list.mockResolvedValue({ articles: [], next_cursor: null, available: true });
+    const metadata = await generateMetadata({ params: params(), searchParams: search() });
+    expect(metadata.robots).toEqual({ index: false, follow: true });
+  });
+
+  it("stays indexable when the listing could not be read, because empty is not the same as failed", async () => {
+    mocks.list.mockResolvedValue({ articles: [], next_cursor: null, available: false });
+    const metadata = await generateMetadata({ params: params(), searchParams: search() });
+    expect(metadata.robots).toBeUndefined();
+  });
+
+  it("asks for nothing extra on a filtered view, which is noindex whatever the listing says", async () => {
+    mocks.list.mockClear();
+    await generateMetadata({ params: params(), searchParams: search({ topic: "transport" }) });
+    expect(mocks.list).not.toHaveBeenCalled();
+  });
 
   it("does not set its own alternates, so the root layout keeps the language set", async () => {
     const metadata = await generateMetadata({ params: params(), searchParams: search() });

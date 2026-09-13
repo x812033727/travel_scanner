@@ -7,11 +7,16 @@ import { StructuredData } from "@/components/structured-data";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { guideHref, guideListHref } from "@/lib/guides";
-import { getGuideList, getGuideTopics } from "@/lib/guides.server";
+import { getGuideList, getGuideTopics, hubIsEmpty } from "@/lib/guides.server";
 import { breadcrumbs, itemList } from "@/lib/structured-data";
 
 type Params = { locale: Locale };
 type Search = { topic?: string; cursor?: string };
+
+/** One listing read, shared by the metadata and the body through React's per-request cache:
+ *  same arguments, one call to the API. */
+const listFor = (locale: Locale, search: Search) =>
+  getGuideList(locale, { kind: "life", topic: search.topic, cursor: search.cursor }, 24);
 
 /**
  * The lifestyle section: the same article system as `/guides`, with its own hub, its own
@@ -23,12 +28,18 @@ export async function generateMetadata(
   const [{ locale }, search] = await Promise.all([params, searchParams]);
   const t = await getTranslations({ locale, namespace: "metadata" });
   const filtered = Boolean(search.topic || search.cursor);
+  // Only the unfiltered view asks: a filtered one is `noindex` already, and the extra read
+  // would be a second API call per crawl of a URL whose answer cannot change.
+  const empty = !filtered && hubIsEmpty(await listFor(locale, search));
   return {
     title: t("lifeTitle"),
     description: t("lifeDescription"),
     // A filtered view is the same collection in a different order. Let the unfiltered
     // section carry the ranking rather than competing with dozens of near-duplicates.
-    ...(filtered ? { robots: { index: false, follow: true } } : {}),
+    // An empty section is out for a different reason: the lifestyle section has published
+    // nothing in this language yet, so the page is a heading over one sentence. Both stay
+    // `follow`, and the first article published here puts it back in the index.
+    ...(filtered || empty ? { robots: { index: false, follow: true } } : {}),
   };
 }
 
@@ -37,7 +48,7 @@ export default async function LifeHubPage(
 ) {
   const [{ locale }, search] = await Promise.all([params, searchParams]);
   const [list, topics, t, nav] = await Promise.all([
-    getGuideList(locale, { kind: "life", topic: search.topic, cursor: search.cursor }, 24),
+    listFor(locale, search),
     getGuideTopics(locale, "life"),
     getTranslations({ locale, namespace: "common" }),
     getTranslations({ locale, namespace: "navigation" }),

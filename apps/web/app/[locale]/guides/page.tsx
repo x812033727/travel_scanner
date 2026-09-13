@@ -6,20 +6,37 @@ import { StructuredData } from "@/components/structured-data";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { guideHref, guideListHref } from "@/lib/guides";
-import { getGuideList, getGuideTopics } from "@/lib/guides.server";
+import { getGuideList, getGuideTopics, hubIsEmpty } from "@/lib/guides.server";
 import { breadcrumbs, itemList } from "@/lib/structured-data";
+
+/** The same two reads the body makes, with the same arguments, so React's per-request cache
+ *  answers both from one call to the API. */
+const hubLists = (locale: Locale) => Promise.all([
+  getGuideList(locale, { kind: "intel" }, 6),
+  getGuideList(locale, { kind: "howto" }, 6),
+]);
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "metadata" });
-  return { title: t("guidesTitle"), description: t("guidesDescription") };
+  const [t, lists] = await Promise.all([
+    getTranslations({ locale, namespace: "metadata" }),
+    hubLists(locale),
+  ]);
+  return {
+    title: t("guidesTitle"),
+    description: t("guidesDescription"),
+    // Articles are published one language at a time. Until this one has any, the hub is a
+    // heading over "nothing here yet" -- a soft 404 to Search Console and a page with no
+    // content to Google. It stays `follow`, so the language switcher still leads to the
+    // languages that do publish, and it returns to the index with the first article.
+    ...(hubIsEmpty(...lists) ? { robots: { index: false, follow: true } } : {}),
+  };
 }
 
 export default async function GuidesHubPage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
-  const [intel, howto, topics, t, nav] = await Promise.all([
-    getGuideList(locale, { kind: "intel" }, 6),
-    getGuideList(locale, { kind: "howto" }, 6),
+  const [[intel, howto], topics, t, nav] = await Promise.all([
+    hubLists(locale),
     getGuideTopics(locale, "travel"),
     getTranslations({ locale, namespace: "common" }),
     getTranslations({ locale, namespace: "navigation" }),

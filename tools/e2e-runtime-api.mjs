@@ -169,6 +169,25 @@ const server = createServer((request, response) => {
     ] }));
     return;
   }
+  // The listing behind the section hubs, published exactly where /guides/sitemap above says
+  // those articles exist. A hub's robots rule and the sitemap's hub filter read these two
+  // endpoints separately, so a language must not look empty to one and full to the other.
+  if (request.method === "GET" && request.url?.startsWith("/api/v1/guides?")) {
+    const parameters = new URL(request.url, "http://127.0.0.1:8000").searchParams;
+    const kind = parameters.get("kind") === "life" ? "life"
+      : parameters.get("kind") === "howto" ? "howto" : "intel";
+    const publishedIn = { intel: ["zh-TW", "ja"], howto: ["en"], life: ["zh-TW"] };
+    const published = publishedIn[kind].includes(parameters.get("locale"))
+      ? [{
+          slug: `synthetic-${kind}-listing`, kind,
+          title: `Synthetic ${kind} listing`, description: "Synthetic fixture summary",
+          published_at: "2026-09-08T09:30:00Z", valid_until: null, featured: false,
+          destination_id: "tokyo", destination_label: "Tokyo", topics: [],
+        }]
+      : [];
+    response.end(JSON.stringify({ articles: published, next_cursor: null }));
+    return;
+  }
   if (request.method === "GET" && request.url === "/api/v1/auth/registration-status") {
     response.end(JSON.stringify({ registration_enabled: true }));
     return;

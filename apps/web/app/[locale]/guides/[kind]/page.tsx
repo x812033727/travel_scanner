@@ -7,8 +7,8 @@ import { SiteHeader } from "@/components/site-header";
 import { StructuredData } from "@/components/structured-data";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
-import { guideHref, guideListHref, isTravelGuideKind } from "@/lib/guides";
-import { getGuideList, getGuideTopics } from "@/lib/guides.server";
+import { guideHref, guideListHref, isTravelGuideKind, type TravelGuideKind } from "@/lib/guides";
+import { getGuideList, getGuideTopics, hubIsEmpty } from "@/lib/guides.server";
 import { breadcrumbs, itemList } from "@/lib/structured-data";
 
 type Params = { locale: Locale; kind: string };
@@ -22,18 +22,28 @@ async function resolve(params: Promise<Params>) {
   return { locale, kind };
 }
 
+/** One listing read, shared by the metadata and the body through React's per-request cache:
+ *  same arguments, one call to the API. */
+const listFor = (locale: Locale, kind: TravelGuideKind, search: Search) =>
+  getGuideList(locale, { kind, topic: search.topic, destination: search.destination, cursor: search.cursor }, 24);
+
 export async function generateMetadata(
   { params, searchParams }: { params: Promise<Params>; searchParams: Promise<Search> },
 ): Promise<Metadata> {
   const [{ locale, kind }, search] = await Promise.all([resolve(params), searchParams]);
   const t = await getTranslations({ locale, namespace: "common" });
   const filtered = Boolean(search.topic || search.destination || search.cursor);
+  // Only the unfiltered view asks: a filtered one is `noindex` already, and the extra read
+  // would be a second API call per crawl of a URL whose answer cannot change.
+  const empty = !filtered && hubIsEmpty(await listFor(locale, kind, search));
   return {
     title: kind === "intel" ? t("guides.intelTitle") : t("guides.howtoTitle"),
     description: kind === "intel" ? t("guides.intelLead") : t("guides.howtoLead"),
     // A filtered view is the same collection in a different order. Let the unfiltered
     // section carry the ranking rather than competing with dozens of near-duplicates.
-    ...(filtered ? { robots: { index: false, follow: true } } : {}),
+    // An empty language is out for a different reason: there is nothing on the page at all
+    // until this section publishes its first article here. Both stay `follow`.
+    ...(filtered || empty ? { robots: { index: false, follow: true } } : {}),
   };
 }
 
@@ -42,7 +52,7 @@ export default async function GuideListPage(
 ) {
   const [{ locale, kind }, search] = await Promise.all([resolve(params), searchParams]);
   const [list, topics, t, nav] = await Promise.all([
-    getGuideList(locale, { kind, topic: search.topic, destination: search.destination, cursor: search.cursor }, 24),
+    listFor(locale, kind, search),
     getGuideTopics(locale, "travel"),
     getTranslations({ locale, namespace: "common" }),
     getTranslations({ locale, namespace: "navigation" }),
