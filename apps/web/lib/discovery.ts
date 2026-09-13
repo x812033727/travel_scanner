@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { api } from "@/lib/api";
 import { useHeaderSession } from "@/components/header-session";
 
@@ -89,9 +89,14 @@ export function resolveDiscoveryStatus(live: DiscoveryStatus, initialEnabled?: b
  * Abort and key responses by login identity as well as URL; never show stale private feeds.
  *
  * `initial` is a page the server already fetched for this exact path. It seeds the first
- * render under the identity of that render -- which is the signed-out one, because the server
- * read no cookies -- so the effect below finds an answer and never asks again. A reader whose
- * session then resolves gets their own request, as they do without it.
+ * render, so the first paint carries rows instead of a skeleton, and the effect below then
+ * replaces it with the browser's own answer for the same path.
+ *
+ * The request is deliberately still made. The two answers agree for the reader the server
+ * rendered for -- a signed-out one, since the server sends no cookies -- but they are not the
+ * same request: the browser goes through the BFF with whatever session it has, and that is
+ * the answer this component is supposed to be showing. Skipping it saved one GET and made the
+ * page show a stale, anonymous ranking to anyone whose session or data had moved on.
  */
 export function useDiscoveryResource<T>(path: string | null, retainPages = false, initial?: { path: string; data: T } | null) {
   const { sessionIdentity } = useHeaderSession();
@@ -99,13 +104,8 @@ export function useDiscoveryResource<T>(path: string | null, retainPages = false
   const [results, setResults] = useState<Array<{ path: string; identity: object | null; data?: T; error?: unknown }>>(
     () => initial && initial.path === path ? [{ path: initial.path, identity: sessionIdentity, data: initial.data }] : [],
   );
-  const seeded = useRef(initial && initial.path === path ? { path: initial.path, identity: sessionIdentity } : null);
   useEffect(() => {
     if (!path) return;
-    // Already answered, by the render that produced this page's HTML. Asking again would fetch
-    // the same rows and repaint them, which is the flash the server fetch exists to remove.
-    // `attempt` is the reader pressing retry, and that must always reach the API.
-    if (attempt === 0 && seeded.current?.path === path && seeded.current.identity === sessionIdentity) return;
     const controller = new AbortController();
     api<T>(path, { signal: controller.signal }).then((data) => {
       if (!controller.signal.aborted) setResults((prior) => [...(retainPages ? prior.filter((item) => item.identity === sessionIdentity && item.path !== path).slice(-7) : []), { path, identity: sessionIdentity, data }]);

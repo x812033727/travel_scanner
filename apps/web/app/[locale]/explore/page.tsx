@@ -19,8 +19,9 @@ export async function generateMetadata({ params, searchParams }: Props) {
     params, searchParams, getTranslations("metadata"), getDiscoveryStatus(),
   ]);
   const feed = await getInitialDiscoveryFeed(locale, discoveryFeedPath(search, discovery.enabled));
-  // A searched or signed-in view is the same feed in a different order, and an unreachable API
-  // means the response body is the skeleton again. Neither belongs in the index.
+  // `feed` is null for a searched or signed-in view, for an unreachable API, and for a feed
+  // with no rows in it. In every one of those the response body is the skeleton or an empty
+  // page, so there is nothing here to index.
   const indexable = discovery.enabled && Boolean(feed);
   return {
     title: t("exploreTitle"),

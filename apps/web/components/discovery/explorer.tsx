@@ -116,8 +116,8 @@ function Results({ query, identity, revision, initialFeed }: { query: DiscoveryQ
   if (owner !== identity) { setOwner(identity); setPages({}); setHidden([]); setUndoItem(undefined); }
   const page = pages[scope]; const cursor = page?.cursor;
   const path = `/discovery/${query.q ? "search" : "feed"}?${discoveryQuery(query)}${cursor ? `&cursor=${encodeURIComponent(cursor)}` : ""}`;
-  // The server fetched one exact path. `useDiscoveryResource` matches on it and ignores
-  // anything else, so a filter the reader changed still goes to the API.
+  // The server fetched one exact path, and `useDiscoveryResource` uses it for the first paint
+  // only when it is the path this render wants. It asks the API for it either way.
   const result = useDiscoveryResource<DiscoveryPage>(path, true, initialFeed ? { path: initialFeed.path, data: initialFeed.page as DiscoveryPage } : null);
   const data = result.data;
   const items = [...new Map([...(page?.previous || []), ...(data?.items || [])].map((item) => [item.id, item])).values()].filter((item) => !hidden.includes(item.id) && (flags.enabled || (item.source.kind !== "community" && !["post", "itinerary"].includes(item.kind))));

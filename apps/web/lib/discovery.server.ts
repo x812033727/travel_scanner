@@ -82,7 +82,13 @@ export async function loadInitialDiscoveryFeed(
       headers: await publicServerHeaders(locale),
     });
     if (!response.ok) return null;
-    return { path, page: (await response.json()) as unknown };
+    const payload = (await response.json()) as unknown;
+    // Only a page with rows in it is worth handing over. An empty one would replace the
+    // skeleton with "nothing here yet" for as long as the browser's own request takes, and
+    // that is a worse first paint than the skeleton, not a better one.
+    const items = (payload as { items?: unknown } | null)?.items;
+    if (!Array.isArray(items) || !items.length) return null;
+    return { path, page: payload };
   } catch {
     // The client fetches the same path on mount, so a miss costs the reader the skeleton they
     // used to get every time and nothing else.

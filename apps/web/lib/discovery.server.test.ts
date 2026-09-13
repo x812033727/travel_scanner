@@ -86,6 +86,13 @@ describe("the prefetch itself", () => {
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
+  it("hands over nothing when the feed has no rows, so the skeleton is not replaced by an empty page", async () => {
+    vi.stubGlobal("fetch", respond({ ...page, items: [] }));
+    await expect(loadInitialDiscoveryFeed("en", "/discovery/feed?")).resolves.toBeNull();
+    vi.stubGlobal("fetch", respond({ enabled: true }));
+    await expect(loadInitialDiscoveryFeed("en", "/discovery/feed?")).resolves.toBeNull();
+  });
+
   it("degrades to no initial page rather than failing the render", async () => {
     vi.stubGlobal("fetch", respond(null, false));
     await expect(loadInitialDiscoveryFeed("en", "/discovery/feed?")).resolves.toBeNull();

@@ -153,8 +153,12 @@ curl -s localhost:3000/en/explore | grep -c 'noindex'      # 必須是 0
 帶 `q=` 的網址 canonical 本來就指回 `/explore`，沒有東西要索引。`mode=following` 同理跳過：
 伺服器不讀 cookie，那個排序渲染出來是登入提示。
 
-**預取的是匿名排序。** `publicServerHeaders` 只轉發位址與 UA，不帶 cookie。已登入讀者的
-瀏覽器在 session 解析後照樣拿自己的那份——和現在的行為一樣。
+**預取的是匿名排序，而且瀏覽器照樣會自己再要一次。**（2026-09-14 CI 之後改的：原本會跳過
+那次請求。）`publicServerHeaders` 只轉發位址與 UA、不帶 cookie，所以伺服器渲染的是登出狀態的
+排序；瀏覽器那次是走 BFF、帶著自己的 session，答案才是這個元件該顯示的東西。伺服器那份只負責
+**第一次繪製**，不是替代品。`e2e/discovery.spec.ts` 用 `page.route` 攔瀏覽器的請求塞測試資料，
+伺服器端那次攔不到——跳過瀏覽器請求等於讓那批測試看不到自己的 fixture，CI 的 discovery-browser
+就是這樣紅的。順帶一提，**空的 feed 不傳過去**：拿「這裡還沒有內容」蓋掉骨架比骨架更糟。
 
 **path 當快取鍵。** `discoveryFeedPath()` 與 fetch 分開，兩個呼叫端（`generateMetadata` 與頁面本體）
 用同一個字串當 React `cache()` 的鍵，不必賭 `await searchParams` 兩次拿到同一個物件。
