@@ -252,6 +252,48 @@ Deploy-time sequence: deploy, then on the host
 `docker compose exec api python -m app.cli guides-import --actor-email <admin> --dry-run`,
 read the plan, run it again with `--publish`.
 
+### Editorial rules (the review standard for a pack)
+
+Images:
+
+- Files live under `apps/web/public/guides/<slug>/`: `hero.jpg` (1600×900, ≤200 KB),
+  inline photos `photo-N.webp` (≤1200 px wide, ≤150 KB), diagrams `diagram-N.svg`
+  (viewBox 1600×900, a `<title>` and `<desc>`, system-font fallbacks only, no external
+  fonts or scripts). `apps/api/tests/test_guides_content_pack.py` checks existence and size.
+- Photographs come from Wikimedia Commons only, under CC0, Public domain, CC BY or CC BY-SA
+  (any version). Never NC or ND, never KOGL type 3/4 (its no-modification clause forbids
+  even a resize), never a merchant's own interior shot. The licence, author and file page are
+  read from the Commons API by the processing script and land in `credit`; the renderer
+  links the author to the file page and a CC licence to its deed.
+- Diagrams are drawn by the site (`credit.author` "Mokaair", `license` "© Mokaair") with
+  local-script + English labels so one file serves every locale; the locale-specific words
+  go in the caption.
+- `alt` describes the picture; it does not repeat the caption. The hero is a photograph,
+  not a diagram, because it doubles as the share card.
+
+Partner buttons:
+
+1. At most three `offer` blocks per article, placed after the paragraph that creates the
+   intent (buying the ticket, the theme-park day, the day trip), never before the first
+   level-2 heading. One disclosure line appears under the hero whenever the body carries one.
+2. Topics with no honest module (entry, packing, budget, etiquette, safety, food, shopping,
+   nightlife) get no end panel; an `offer` block there must be about that section itself
+   (airport transport at the end of an entry-rules notice is fine; a shopping notice gets none).
+3. Nothing under an expired notice — the renderer already enforces it.
+4. The end panel skips modules already placed inline, so a button never shows twice.
+5. Which article converts is read from `affiliate_clicks` once
+   `2026-09-12-attribute-affiliate-clicks-to-the-guide` lands; revisit placements after a month.
+
+Text:
+
+- Every fare, duration and rule is checked against an official page on the day of writing
+  and cited in `sources` with `checked_on`; a number the official page does not confirm is
+  not written ("以官網為準" instead). Prices stay in the local currency.
+- How-to articles run about 1,800–3,000 characters, notices 800–1,500; at least three
+  level-2 headings (the table of contents starts at three), one table, one callout.
+- Internal links are `link` blocks with absolute site URLs (destination page, food
+  directory); the renderer keeps them in the same tab.
+
 ## The reader's side
 
 ```
