@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">上傳 CSV 到拿到結果的七個步驟 / From a CSV to a checked chart</title>
+  <desc id="desc">左側七個步驟由上往下用一條線串起。步驟 1 準備檔案：第一列是欄名、一格一個值、存成 UTF-8；日期統一、民國年換西元、合併儲存格先拆。步驟 2 上傳：按「+」加入檔案，或從 Google Drive、OneDrive 挑；試算表約 50 MB 以內，免費版每天 3 個檔案。步驟 3 描述任務：說清楚欄名、要算什麼、分組依據、圖類與單位；一次一件事，先描述資料再問結論。步驟 4 它寫程式並執行：在不能連網的 Python 環境裡跑，回表格或圖；第一次選的方法或圖類不合意，直接要它重跑。步驟 5 看圖與程式碼：展開它跑的程式碼，看篩選了哪些列、怎麼補缺值；看不懂程式碼沒關係，看它條列的假設。步驟 6 驗證：抽 3 筆手算對照，要它說明樣本大小與排除了什麼；相關不是因果，y 軸要從 0 開始。步驟 7 下載：表格存 CSV、圖存 PNG，要 xlsx 就要它另存並附連結；連結不會永久有效，拿到就下載。右上的框是上傳前的檔案檢查清單：第一列是欄名、只留一列表頭；一格一個值，金額只放數字，去掉逗號、「元」與全形數字；存成 UTF-8，Excel 另存選「CSV UTF-8」，舊的 CSV 是 Big5 會亂碼；日期一種寫法，例如 2026-01-05，民國年加 1911，115 年就是 2026 年；合併儲存格先取消並往下填滿，備註另外一欄；個資去識別化，姓名改編號，電話、地址整欄刪掉；或直接傳 XLSX，沒有編碼問題。右下的框是它會錯的地方：把文字當數字，帶逗號或「元」的金額被略過；猜錯日期，01/02 是 1 月 2 日還是 2 月 1 日；相關講成因果，數量乘單價本來就等於金額；圖表軸不從零，y 軸從 980 畫到 1,020，小波動看起來像暴漲；小樣本外推，三個月的資料就給下季預測；沒說就自作主張，補平均、刪重複列；出錯的樣子是列數對不上、總和不同、月份少一個；方法或圖類不合意就要它換一種重跑。最下方的提醒：驗證方面，每個提示詞都留「列出你用的程式碼與假設」，假設有一條不合就重來，都對再抽 3 筆手算對照並要它說明樣本大小；隱私方面，先把姓名改編號、刪掉電話與地址欄，到個人頭像、Settings、Data Controls 關掉 Improve the model for everyone，或用右上角的暫時對話。2026 年 9 月查證。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">上傳 CSV 到拿到結果的七個步驟（2026 年 9 月查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">From a CSV to a checked chart: prepare, upload, describe, let it run Python, read the code, verify, download</text>
+
+  <!-- connector behind the steps -->
+  <path d="M 88 150 V 666" stroke="#5C6B6B" stroke-width="4"/>
+
+  <!-- step 1 準備檔案 -->
+  <rect x="48" y="112" width="712" height="76" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="88" cy="150" r="22" fill="#0D6B68"/>
+  <text x="88" y="157" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+  <text x="124" y="145" font-size="20" font-weight="700" fill="#0B4F4D">準備檔案</text>
+  <text x="124" y="170" font-size="15" fill="#5C6B6B">Prepare the file</text>
+  <text x="330" y="143" font-size="16" fill="#102A2B">第一列是欄名、一格一個值、存成 UTF-8</text>
+  <text x="330" y="169" font-size="16" fill="#102A2B">日期統一、民國年換西元、合併儲存格先拆</text>
+
+  <!-- step 2 上傳 -->
+  <rect x="48" y="198" width="712" height="76" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <circle cx="88" cy="236" r="22" fill="#2F6F9F"/>
+  <text x="88" y="243" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+  <text x="124" y="231" font-size="20" font-weight="700" fill="#1F4E73">上傳</text>
+  <text x="124" y="256" font-size="15" fill="#5C6B6B">Upload</text>
+  <text x="330" y="229" font-size="16" fill="#102A2B">按「+」加入檔案，或從 Google Drive、OneDrive 挑</text>
+  <text x="330" y="255" font-size="16" fill="#102A2B">試算表約 50 MB 以內；免費版每天 3 個檔案</text>
+
+  <!-- step 3 描述任務 -->
+  <rect x="48" y="284" width="712" height="76" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <circle cx="88" cy="322" r="22" fill="#102A2B"/>
+  <text x="88" y="329" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+  <text x="124" y="317" font-size="20" font-weight="700" fill="#102A2B">描述任務</text>
+  <text x="124" y="342" font-size="15" fill="#5C6B6B">Describe the task</text>
+  <text x="330" y="315" font-size="16" fill="#102A2B">說清楚欄名、要算什麼、分組依據、圖類與單位</text>
+  <text x="330" y="341" font-size="16" fill="#102A2B">一次一件事；先描述資料，再問結論</text>
+
+  <!-- step 4 它寫程式並執行 -->
+  <rect x="48" y="370" width="712" height="76" rx="14" fill="#FCEFE4" stroke="#D97A2B" stroke-width="4"/>
+  <circle cx="88" cy="408" r="22" fill="#D97A2B"/>
+  <text x="88" y="415" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+  <text x="124" y="403" font-size="20" font-weight="700" fill="#8A4A16">它寫程式並執行</text>
+  <text x="124" y="428" font-size="15" fill="#5C6B6B">Runs Python</text>
+  <text x="330" y="401" font-size="16" fill="#102A2B">在不能連網的 Python 環境裡跑，回表格或圖</text>
+  <text x="330" y="427" font-size="16" fill="#102A2B">第一次選的方法或圖類不合意，直接要它重跑</text>
+
+  <!-- step 5 看圖與程式碼 -->
+  <rect x="48" y="456" width="712" height="76" rx="14" fill="#E6F2EC" stroke="#2E7D5B" stroke-width="4"/>
+  <circle cx="88" cy="494" r="22" fill="#2E7D5B"/>
+  <text x="88" y="501" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+  <text x="124" y="489" font-size="20" font-weight="700" fill="#1F5A40">看圖與程式碼</text>
+  <text x="124" y="514" font-size="15" fill="#5C6B6B">Chart and code</text>
+  <text x="330" y="487" font-size="16" fill="#102A2B">展開它跑的程式碼，看篩選了哪些列、怎麼補缺值</text>
+  <text x="330" y="513" font-size="16" fill="#102A2B">看不懂程式碼沒關係，看它條列的假設</text>
+
+  <!-- step 6 驗證 -->
+  <rect x="48" y="542" width="712" height="76" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <circle cx="88" cy="580" r="22" fill="#2F6F9F"/>
+  <text x="88" y="587" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">6</text>
+  <text x="124" y="575" font-size="20" font-weight="700" fill="#1F4E73">驗證</text>
+  <text x="124" y="600" font-size="15" fill="#5C6B6B">Verify</text>
+  <text x="330" y="573" font-size="16" fill="#102A2B">抽 3 筆手算對照；要它說明樣本大小與排除了什麼</text>
+  <text x="330" y="599" font-size="16" fill="#B8442D">相關不是因果；y 軸要從 0 開始</text>
+
+  <!-- step 7 下載 -->
+  <rect x="48" y="628" width="712" height="76" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="88" cy="666" r="22" fill="#0D6B68"/>
+  <text x="88" y="673" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">7</text>
+  <text x="124" y="661" font-size="20" font-weight="700" fill="#0B4F4D">下載</text>
+  <text x="124" y="686" font-size="15" fill="#5C6B6B">Download</text>
+  <text x="330" y="659" font-size="16" fill="#102A2B">表格存 CSV、圖存 PNG；要 xlsx 就要它另存並附連結</text>
+  <text x="330" y="685" font-size="16" fill="#102A2B">連結不會永久有效，拿到就下載</text>
+
+  <!-- right top: checklist -->
+  <rect x="800" y="112" width="752" height="272" rx="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="828" y="146" font-size="19" font-weight="700" fill="#102A2B">上傳前的檔案檢查清單　Prepare the file</text>
+  <text x="828" y="180" font-size="16" fill="#102A2B">・第一列是欄名，只留一列表頭；欄名短、不換行</text>
+  <text x="828" y="208" font-size="16" fill="#102A2B">・一格一個值：金額只放數字，去掉逗號、「元」與全形數字</text>
+  <text x="828" y="236" font-size="16" fill="#102A2B">・存成 UTF-8：Excel 另存選「CSV UTF-8」，舊的 CSV 是 Big5 會亂碼</text>
+  <text x="828" y="264" font-size="16" fill="#102A2B">・日期一種寫法：2026-01-05；民國年加 1911，115 年就是 2026 年</text>
+  <text x="828" y="292" font-size="16" fill="#102A2B">・合併儲存格先取消並往下填滿；備註寫在另外一欄</text>
+  <text x="828" y="320" font-size="16" fill="#102A2B">・個資去識別化：姓名改編號，電話、地址整欄刪掉</text>
+  <text x="828" y="348" font-size="16" fill="#5C6B6B">・或直接傳 XLSX：沒有編碼問題，欄位型別也比較準</text>
+
+  <!-- right bottom: where it goes wrong -->
+  <rect x="800" y="404" width="752" height="300" rx="16" fill="#FFFFFF" stroke="#B8442D" stroke-width="3"/>
+  <text x="828" y="438" font-size="19" font-weight="700" fill="#102A2B">它會錯的地方　Where it goes wrong</text>
+  <text x="828" y="472" font-size="16" fill="#102A2B">・把文字當數字：帶逗號或「元」的金額被略過，總額小得離譜</text>
+  <text x="828" y="500" font-size="16" fill="#102A2B">・猜錯日期：01/02 是 1 月 2 日還是 2 月 1 日，一整欄反過來</text>
+  <text x="828" y="528" font-size="16" fill="#102A2B">・相關講成因果：數量乘單價本來就等於金額，這種相關是算式造成的</text>
+  <text x="828" y="556" font-size="16" fill="#102A2B">・圖表軸不從零：y 軸從 980 畫到 1,020，小波動看起來像暴漲</text>
+  <text x="828" y="584" font-size="16" fill="#102A2B">・小樣本外推：三個月的資料就給下季預測；要它說樣本有幾筆</text>
+  <text x="828" y="612" font-size="16" fill="#102A2B">・沒說就自作主張：把缺值補成平均、刪掉它認為重複的列</text>
+  <text x="828" y="640" font-size="16" fill="#B8442D">・出錯的樣子：列數對不上、總和跟自己算的不同、月份少一個</text>
+  <text x="828" y="668" font-size="16" fill="#5C6B6B">・方法或圖類不合意：直接要它換一種重跑，不用重新上傳</text>
+
+  <!-- bottom: verify and privacy reminders -->
+  <rect x="48" y="738" width="1504" height="96" rx="16" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+  <text x="76" y="776" font-size="16" fill="#102A2B">驗證：每個提示詞都留「列出你用的程式碼與假設」；假設有一條不合就重來，都對再抽 3 筆手算對照，並要它說明樣本大小</text>
+  <text x="76" y="808" font-size="16" fill="#102A2B">隱私：先把姓名改編號、刪掉電話與地址欄；個人頭像 → Settings → Data Controls 關掉「Improve the model for everyone」，或用右上角的暫時對話</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
