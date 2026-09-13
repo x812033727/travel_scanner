@@ -1,0 +1,308 @@
+{
+  "slug": "chatgpt-search-vs-google",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "productivity"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "ChatGPT 搜尋 vs Google：六類問題什麼時候該用哪一個",
+      "description": "ChatGPT 搜尋和 Google 搜尋不是誰取代誰，而是形狀不同的工具：Google 先給你資料卡片、地圖與結果清單，ChatGPT 先給你一段整理好的回答再附引用。這篇依 OpenAI 說明中心與 Google 搜尋說明中心的說明，講清楚 ChatGPT 搜尋怎麼開、免費版能不能用、引用怎麼點，Google 的一般搜尋、AI 摘要、AI 模式各是什麼，再用匯率天氣、在地店家、購物比價、官方規定、學新東西、多來源研究六類問題說明先開哪個、為什麼、怎麼交叉驗證，最後用「捷運士林站到故宮怎麼走」實際比較一次。",
+      "hero": {
+        "src": "/guides/chatgpt-search-vs-google/hero.jpg",
+        "alt": "左邊一支放大鏡、右邊一個對話泡泡，中間一座天平把兩者放在秤盤上，下方一行字「先開哪一個」",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "ChatGPT 搜尋和 Google 搜尋不是「誰取代誰」，而是兩種形狀不同的工具：Google 先給你一頁結果清單、地圖與商家卡片，ChatGPT 先給你一段整理好的回答再附引用。結論先講：匯率、天氣、店家營業時間、路線、比價這類「要的是一個當下正確的數字或地點」的問題，先開 Google 或 Google 地圖；「先解釋給我聽」「幫我整理好幾個來源」這類問題，先開 ChatGPT 搜尋；政府、銀行、醫療的規定兩邊都能起頭，但最後一步永遠是官方頁面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇帶你做到四件事：把 ChatGPT 搜尋開起來、知道免費版能不能用、學會點開引用；分清 Google 的一般搜尋、AI 摘要與 AI 模式各是什麼；用六類台灣日常會遇到的問題決定先開哪個、為什麼、怎麼交叉驗證；最後用「捷運士林站到故宮怎麼走」做一次兩邊的實際比較。功能名稱與開法都在 2026 年 9 月依 OpenAI 說明中心、OpenAI 官方公告、Google 搜尋說明中心與 Google 官方部落格查證；本文不比較兩者的流量或市占，因為沒有一手來源。"
+        },
+        {
+          "type": "heading",
+          "text": "ChatGPT 搜尋是什麼：怎麼開、免費版能不能用、引用怎麼點開",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPT 搜尋（OpenAI 的公告叫它 ChatGPT search，說明中心的頁面標題是「Searching the web with ChatGPT」）是讓 ChatGPT 在回答前先上網查，再把查到的內容整理成一段回答，並附上來源連結。它有兩種啟動方式：一是 ChatGPT 判斷你的問題需要最新資訊時自動去查；二是你手動指定：按輸入框的「+」打開工具選單，選「Search」（說明中心的步驟寫的是「View all tools」再選「Search」；介面上的中文名稱依帳號語言設定顯示，以官網為準），或直接在輸入框打「/」再選 Search，然後照常輸入問題。想確定它真的查過網路，就用手動方式；回答裡沒有引用，通常代表它是憑訓練資料回答的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "免費版能用。說明中心寫明網路搜尋在 Free、Go、Plus、Pro、Business、Enterprise、Edu 都可以用，連沒登入的人也能用，網頁版、桌面版與手機版的應用程式都有；差別在各方案的用量上限不同，碰到上限它會提示你稍後再試，額度數字以官網為準。回答裡的引用怎麼看：有用到搜尋的回答會在句子後面帶引用標記，點一下就開啟原始網頁；在電腦版網頁上，滑鼠移到引用上會先預覽；回答旁若有「Sources」（來源）按鈕，點開可以看到所有被引用的頁面和其他相關連結。這個按鈕是整篇文章最重要的動作，後面每一類問題的「交叉驗證」都從這裡開始。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩個跟本篇有關的延伸功能。第一是位置：裝置定位預設關閉、由你決定要不要分享；沒分享時它可能用網路位址推估一個大概的位置，分享後會用較精確的位置回答附近店家、在地新聞與天氣，在 iOS 與 Android 上相關結果還可能附一張地圖。第二是購物：問題帶有購物意圖時，它可以顯示附圖片、規格與購買連結的商品卡片；說明中心寫明商品結果由 ChatGPT 自行挑選、不是廣告、不受 OpenAI 的合作關係影響；點進商品會列出販售的商家，排序考慮庫存、價格、品質與是否為原廠或主要賣家。至於直接在對話裡結帳的 Instant Checkout，查證時只開放美國使用者向美國商家購買，台灣能不能用以官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "Google 這邊：一般搜尋、AI 摘要、AI 模式各是什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 搜尋現在同一個輸入框後面有三種東西。第一是一般搜尋：你熟悉的結果清單，加上地圖與商家卡片、商品卡片，以及標示「贊助」的廣告。第二是 AI 摘要（Google 說明中心的名稱就是「AI 摘要」，英文 AI Overviews）：Google 說明它是「AI 生成的重要資訊與相關連結」，在系統判斷生成式 AI 能幫上忙時出現在結果最上方。它沒有關閉的開關，但搜尋後選「網頁」篩選器，就只會看到純文字連結、不會有 AI 摘要。Google 在同一頁寫明「AI 回覆可能有誤」，並要你「務必多方查證重要資訊」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三是 AI 模式（AI Mode），這才是跟 ChatGPT 搜尋形狀最像的東西：一個可以追問的對話介面，回答附網頁連結，可以打字、用語音、拍照片或上傳檔案問。開法有三種：直接到 google.com/ai；在 google.com 搜尋後點結果頁上的「AI 模式」；或在 Google 應用程式首頁點「AI 模式」圖示。不登入也能用，只是不會保留紀錄。繁體中文版在 2025 年 10 月 8 日於台灣推出，Google 台灣的公告寫它會把複雜問題拆成多個子查詢同時搜尋，再整合成一份附參考連結的回答；Google 說明中心同時承認「AI 模式並非每次都能準確回答」。從 AI 摘要底部點「顯示更多」再打追問，也會進到 AI 模式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "所以下面比較的「Google」其實有兩層：要清單、地圖、卡片時，用一般搜尋；要對話式的整理時，用 AI 模式。AI 摘要是自動出現的，你不用特別去開，但也不要把它當結論。Google 自家的對話式助理 Gemini 又是另一個入口，另有一篇介紹。"
+        },
+        {
+          "type": "link",
+          "text": "Gemini 新手入門：Google 的 AI 助理怎麼開始用",
+          "url": "https://mokaair.com/zh-TW/life/gemini-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "六類問題：先開哪個、為什麼、怎麼交叉驗證",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "判斷原則只有一條：你要的是「一個當下正確的數字或地點」，還是「一段解釋或整理」。前者的答案在資料庫裡（匯率表、營業時間、商品價格、班次），Google 一般搜尋直接把資料庫的卡片端出來，中間沒有 AI 改寫；後者本來就需要有人讀完好幾頁再說給你聽，ChatGPT 搜尋和 Google 的 AI 模式都是這種形狀。下面六類照這個原則分。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "即時資訊（匯率、天氣、新聞）：先 Google 一般搜尋。輸入「日圓 匯率」「台北 天氣」，結果頁最上方就是資料卡片，來源是資料供應商，數字不經 AI 改寫。ChatGPT 搜尋也能答，OpenAI 的公告說它與新聞和資料供應商合作，天氣、股價、運動賽事、新聞與地圖有專屬的顯示樣式，但它給的仍是查到的網頁再整理，時間差與改寫風險都比卡片高。交叉：ChatGPT 給的匯率或天氣，點引用看是哪一家、幾點更新的；真的要換錢就看銀行牌告。",
+            "在地與地圖（店家、營業時間、路線）：先 Google 一般搜尋或 Google 地圖。商家卡片上的營業時間、電話、評論來自商家與使用者登錄的資料，路線功能可以直接選開車、大眾運輸、步行、單車。ChatGPT 搜尋開了定位後也能列附近店家、在手機上附地圖，適合「幫我挑一家有插座、晚上十點還開、離捷運近的咖啡店」這種帶條件的問法；但它讀到的營業時間可能來自過期的部落格。交叉：ChatGPT 推薦的店，把店名丟回 Google 地圖看今天的營業時間，出門前再看一次。",
+            "購物比價：先 Google 一般搜尋看商品卡片與各通路價格，再開 ChatGPT 搜尋做規格比較。ChatGPT 的商品卡片不是廣告，但它列的價格與商家來自第三方資料，跟台灣通路當天的價格可能對不上；Google 的商品區塊則會混入標示「贊助」的廣告。交叉：兩邊都不要在卡片上下單，點到品牌台灣官網或你常用的電商頁面看含運價格與保固。",
+            "官方規定（政府、銀行、醫療）：兩邊都可以起頭，但目的只有一個：找到官方頁面的網址。這類問題的答案常常有條件、有例外、有生效日期，AI 摘要和 ChatGPT 的一段話很容易漏掉「但書」。做法：問 ChatGPT 搜尋「這條規定的官方頁面在哪」，或在 Google 加上「site:gov.tw」這類限定；拿到網址後讀官方頁上的原文，AI 的版本只當導讀。醫療與用藥問題的最後一步是醫師或藥師，不是任何搜尋工具。",
+            "學新東西與解釋（一個名詞、一個原理、一段程式）：先 ChatGPT 搜尋，或 Google 的 AI 模式。這類問題要的不是一個數字，而是一段用你聽得懂的話說的解釋，可以追問「舉個台灣的例子」「再簡單一點」；Google 一般搜尋給的是十篇文章，你得自己讀。交叉：把解釋裡的關鍵詞再拿去 Google 找教科書、官方文件或百科條目，確認它沒有把兩個概念混在一起。",
+            "需要多來源的研究（比較幾家、整理一個議題的正反意見）：先 ChatGPT 搜尋；題目大的話改用 Deep Research，或用 Google 的 AI 模式一路追問。這類問題本來就要讀十幾頁，讓 AI 先讀、你再抽查，比自己一頁一頁開省時間。交叉：看「Sources」清單的網域，抽查三個最影響結論的引用，發現有一個對不上就整份重讀。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT Deep Research：讓 AI 花十分鐘幫你做一份完整研究",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-deep-research-guide"
+        },
+        {
+          "type": "image",
+          "src": "/guides/chatgpt-search-vs-google/diagram-1.svg",
+          "alt": "決策樹：從「你要找的是什麼」分成六類問題，每類指向先開 ChatGPT 搜尋或 Google，右欄列出對應的交叉驗證動作",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左往右看：先問自己要的是一個當下正確的數字或地點，還是一段解釋或整理；中間六條分支對應正文的六類問題，藍框是先開 Google、綠框是先開 ChatGPT 搜尋、橘框是兩邊都可起頭但要以官方頁為準，最右欄是每類的驗證動作。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "兩者共同的坑：摘要會錯、引用要點開、廣告與 SEO 混在一起",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一個坑：AI 生成的摘要會錯，而且供應商自己就這麼說。Google 說明中心寫「AI 回覆可能有誤」，AI 模式「並非每次都能準確回答」；OpenAI 在 Deep Research 的公告裡承認模型偶爾會編造事實或推論錯誤，而且不太會表達自己有多不確定，搜尋回答出自同一批模型，要用同樣的眼光看。錯法通常不是整段胡說，而是把 A 店的營業時間安在 B 店、把去年的規定當今年的、把兩種方案的價格接在一起。語氣越流暢越要小心；幻覺為什麼會發生、怎麼在三分鐘內查證，另有一篇專門講。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二個坑：引用不點開等於沒有引用。引用只證明「這句話從某個網頁來」，不證明那個網頁是對的，也不證明 AI 沒有讀錯。點開後看三件事：這是官方網站還是轉載、原句是不是這樣寫、頁面日期是哪一年。ChatGPT 的「Sources」按鈕、Google AI 摘要與 AI 模式旁邊的連結，都是為這個動作設計的；Google 說明中心也把「點選連結查看網路上的佐證資訊」列為使用 AI 摘要的步驟之一。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三個坑：廣告與 SEO 內容混在裡面。Google 一般搜尋的廣告有「贊助」標示；Google Ads 說明寫明廣告可以出現在 AI 摘要的上方或下方，而出現在 AI 摘要內部的廣告查證時只在部分英語市場開放，台灣不在名單上；2026 年 5 月 Google 又公告了 AI 模式裡的廣告格式，同樣標示「Sponsored」。ChatGPT 的商品結果說明中心寫明不是廣告，但它引用的網頁本身可能是內容農場或帶聯盟連結的評測。看到「最推薦」「必買」而沒有規格與來源的，兩邊都跳過。"
+        },
+        {
+          "type": "link",
+          "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
+          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+        },
+        {
+          "type": "heading",
+          "text": "示範：查「捷運士林站到故宮怎麼走」，兩邊各怎麼問",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 這邊，在搜尋框打「士林站 到 故宮博物院」，結果頁會直接出現路線卡片，點「路線」進入 Google 地圖，切到「大眾運輸」分頁，就會列出幾條公車或轉乘方案，每條有出發時間、車程與步行距離，資料來自交通業者提供給 Google 地圖的路線資訊；Google 地圖說明也註明只有業者已提供資料的城市才有大眾運輸路線。它答得快、班次是即時的，但不會替你考慮「我有行李」「今天下雨」這種條件，也不會主動告訴你哪個出口比較近。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPT 這邊，開搜尋後可以用整句話問：「我從捷運士林站出發，要去國立故宮博物院，帶一個行李箱，想要走路最少的方式，請附上你查到的來源。」它會回一段文字，說明大致的公車搭法、從哪個出口出去、大約要多久，句尾附引用，手機上可能附地圖。它的長處是能把條件納進去、能追問「如果改搭計程車大概多少錢」；它的短處是公車路線號碼、班距、票價都是從網頁讀來的，網頁一舊它就跟著錯，而且它不會告訴你哪一頁舊了。所以順序是：ChatGPT 問「怎麼走比較適合我」，Google 地圖確認「現在這班車幾點來」。台北與各地的交通整理，可以看站上的旅遊攻略。"
+        },
+        {
+          "type": "link",
+          "text": "Mokaair 旅遊攻略：日本、韓國、台灣的入境、交通與行程整理",
+          "url": "https://mokaair.com/zh-TW/guides"
+        },
+        {
+          "type": "paragraph",
+          "text": "下面這張表把六類問題加上路線與突發新聞兩種常見情境，整理成先用哪個、為什麼、驗證動作。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "問題類型",
+            "先用哪個",
+            "為什麼",
+            "驗證動作"
+          ],
+          "rows": [
+            [
+              "即時資訊：匯率、天氣、股價",
+              "Google 一般搜尋",
+              "結果頁最上方是資料卡片，數字不經 AI 改寫",
+              "要換錢看銀行牌告；ChatGPT 給的數字點引用看是哪一家、幾點更新"
+            ],
+            [
+              "在地：店家、營業時間、評價",
+              "Google 一般搜尋或 Google 地圖",
+              "商家卡片來自商家登錄的資料，看得到今天的營業時間",
+              "ChatGPT 推薦的店把店名丟回 Google 地圖再看一次；出門前看最新"
+            ],
+            [
+              "路線：捷運站到景點",
+              "Google 地圖的「大眾運輸」",
+              "有出發時間與車程，資料來自交通業者",
+              "有條件（行李、下雨、少走路）先問 ChatGPT，再回地圖確認班次"
+            ],
+            [
+              "購物比價",
+              "Google 一般搜尋看價格，ChatGPT 搜尋比規格",
+              "ChatGPT 商品卡片不是廣告但價格來自第三方；Google 商品區有「贊助」廣告",
+              "都不在卡片上下單，點到品牌台灣官網或電商頁看含運價格與保固"
+            ],
+            [
+              "官方規定：政府、銀行、醫療",
+              "兩邊都可起頭，目的是找到官方頁",
+              "AI 的一段話容易漏掉條件、例外與生效日期",
+              "讀官方頁原文並看日期；醫療與用藥問醫師或藥師"
+            ],
+            [
+              "學新東西、要一段解釋",
+              "ChatGPT 搜尋或 Google AI 模式",
+              "可以追問、換例子、要求講簡單一點",
+              "把關鍵詞拿去 Google 找教科書或官方文件核對"
+            ],
+            [
+              "多來源研究：比較幾家、正反意見",
+              "ChatGPT 搜尋，題目大改 Deep Research",
+              "讓 AI 先讀十幾頁，你再抽查",
+              "看 Sources 清單的網域，抽查三個最影響結論的引用"
+            ],
+            [
+              "突發新聞、正在發生的事",
+              "Google 一般搜尋的新聞區",
+              "看得到媒體名稱與發布時間，可以同時看多家",
+              "AI 摘要與 ChatGPT 的整理只當導讀，點原始報導看全文"
+            ]
+          ],
+          "caption": "六類問題加兩種常見情境的對照（2026 年 9 月依 OpenAI 說明中心與 Google 搜尋說明中心的功能說明整理；「先用哪個」是本站的建議，不是官方分類）。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "營業時間、價格、法規：AI 給的答案一律點到官方頁再用",
+          "text": "這三類東西的共同點是會變、有條件、錯了要付出代價。AI 摘要、AI 模式與 ChatGPT 搜尋的回答都是從網頁讀來再改寫的，網頁過期它不知道，改寫時也可能把條件漏掉。看到營業時間就開 Google 地圖或店家自己的頁面，看到價格就開品牌官網或電商頁，看到法規就開機關官網的原文，確認頁面日期再用；AI 的版本只負責告訴你該去哪一頁看。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後補一句：這張對照表比的是「搜尋」這一件事，不是兩家公司的全部。要寫東西、改文件、分析檔案、看圖片，工具的選法又不一樣；哪類任務該開哪個工具，另有一篇總覽。"
+        },
+        {
+          "type": "link",
+          "text": "AI 工具怎麼選：依任務類型挑工具的總覽",
+          "url": "https://mokaair.com/zh-TW/life/ai-tools-choose-by-task"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 說明中心：Searching the web with ChatGPT（工具選單 View all tools → Search，或打「/」選 Search；ChatGPT 可能自動搜尋；Free、Go、Plus、Pro、Business、Enterprise、Edu 與未登入者皆可用，受方案用量上限；引用可點開、桌面版可預覽、Sources 按鈕列出來源；定位預設關閉）",
+          "url": "https://help.openai.com/en/articles/9237897-chatgpt-search",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：Shopping with ChatGPT Search（購物意圖時顯示附圖片、規格與連結的商品卡片；商品結果由 ChatGPT 挑選、不是廣告、不受合作關係影響；商家排序考慮庫存、價格、品質、是否原廠；Instant Checkout 查證時限美國使用者與美國商家）",
+          "url": "https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：ChatGPT Free Tier FAQ（免費版可用網路搜尋等工具，各工具有獨立用量上限，達上限會提示稍後再試）",
+          "url": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI：Introducing ChatGPT search（與新聞及資料供應商合作；天氣、股價、運動賽事、新聞、地圖有專屬顯示樣式；回答附來源連結；陸續開放給免費使用者）",
+          "url": "https://openai.com/index/introducing-chatgpt-search/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：Deep research in ChatGPT（工具選單「+」選 Deep research 或打 @Deepresearch；產出附引用或來源連結的結構化報告）",
+          "url": "https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI：Introducing deep research（承認模型偶爾會編造事實或推論錯誤、不善表達不確定性）",
+          "url": "https://openai.com/index/introducing-deep-research/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google 搜尋說明：在 Google 搜尋中取得 AI 摘要（AI 摘要是 AI 生成的重要資訊與相關連結；系統判斷有幫助時顯示；無法關閉但可選「網頁」篩選器只看文字連結；「AI 回覆可能有誤」「務必多方查證重要資訊」；點「顯示更多」後追問進入 AI 模式；支援語言包含中文）",
+          "url": "https://support.google.com/websearch/answer/14901683",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google 搜尋說明：使用 Google 搜尋的 AI 模式（開法：google.com/ai、結果頁的「AI 模式」、Google 應用程式；支援文字、語音、圖片、檔案與追問；回答附相關連結；「AI 模式並非每次都能準確回答」；不登入也可用但不保留紀錄；支援國家含台灣、語言含繁體中文）",
+          "url": "https://support.google.com/websearch/answer/16011537",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google 台灣官方部落格：Google 搜尋正式推出繁體中文版「AI 模式」（2025 年 10 月 8 日；把複雜問題拆成多個子查詢；回答附參考連結；支援語音與 Google 智慧鏡頭；「無法保證每次都完美無瑕」）",
+          "url": "https://blog.google/intl/zh-tw/products/explore-get-answers/ai-mode-zhtw/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google 官方部落格：AI Overviews expansion（2025 年 5 月 20 日；AI 摘要擴大到更多國家與語言，新增中文；附顯眼的網頁連結）",
+          "url": "https://blog.google/products-and-platforms/products/search/ai-overview-expansion-may-2025-update/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google Ads 說明：About ads and AI Overviews（廣告可出現在 AI 摘要上方或下方；AI 摘要內部的廣告查證時僅限英語且台灣不在名單；敏感類別不投放）",
+          "url": "https://support.google.com/google-ads/answer/16297775",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google 官方部落格：A new generation of ads for the AI era of Search（2026 年 5 月 20 日；AI 模式中的廣告格式，標示 Sponsored）",
+          "url": "https://blog.google/products/ads-commerce/google-marketing-live-search-ads/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google 地圖說明：取得路線並顯示路徑（點「路線」；開車、大眾運輸、步行、單車、飛行；只有交通業者已提供資料的城市才有大眾運輸路線）",
+          "url": "https://support.google.com/maps/answer/144339",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}
