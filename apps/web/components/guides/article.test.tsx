@@ -17,8 +17,7 @@ vi.mock("@/components/destination-affiliate-options", () => ({
 
 const labels = {
   intel: "情報", howto: "攻略", life: "生活分享",
-  published: "發布", updated: "更新", expiredNotice: "已過期", validUntil: "有效至",
-  sources: "來源", checkedOn: "查核日", destination: "目的地", otherLanguages: "其他語言",
+  updated: "更新", sources: "來源", checkedOn: "查核日", destination: "目的地", otherLanguages: "其他語言",
   contents: "目錄", disclosure: "透過合作連結預訂，本站可能獲得分潤。",
   blocks: { imageCredit: "圖片：", tip: "小提醒", warning: "注意", info: "補充" },
 };
@@ -74,9 +73,9 @@ describe("GuideArticle partner buttons", () => {
     expect(screen.queryByTestId("affiliate")).toBeNull();
   });
 
-  it("shows nothing under an expired notice", () => {
+  it("shows nothing on an expired notice, which says nothing about being expired", () => {
     draw({ kind: "intel", expired: true, valid_until: "2026-09-01", topics: [{ slug: "deal", label: "優惠" }] });
-    expect(screen.getByRole("status")).toBeTruthy();
+    expect(screen.queryByRole("status")).toBeNull();
     expect(screen.queryByTestId("affiliate")).toBeNull();
   });
 
@@ -140,7 +139,7 @@ describe("GuideArticle partner buttons placed by the editor", () => {
     expect(screen.queryByRole("note")).toBeNull();
   });
 
-  it("drops every button, inline ones included, under an expired notice", () => {
+  it("drops every button, inline ones included, on an expired notice", () => {
     draw({ document: withOffer, topics, kind: "intel", expired: true, valid_until: "2026-09-01" });
     expect(screen.queryByTestId("affiliate")).toBeNull();
   });
@@ -159,6 +158,15 @@ describe("GuideArticle artwork, dates and contents", () => {
     expect(image.getAttribute("loading")).toBe("eager");
     expect(image.getAttribute("fetchpriority")).toBe("high");
     expect(screen.getByRole("link", { name: "Someone" }).getAttribute("href")).toBe(hero.credit.source_url);
+  });
+
+  it("dates nothing by itself: no first publication, and no date an expired notice applied until", () => {
+    const fresh = draw();
+    expect(screen.queryByText(/2026-09-10/)).toBeNull();
+    expect(fresh.container.querySelector("time")).toBeNull();
+    const expired = draw({ kind: "intel", expired: true, valid_until: "2026-09-01" });
+    expect(screen.queryByText(/2026-09-01/)).toBeNull();
+    expect(expired.container.querySelector("time")).toBeNull();
   });
 
   it("shows the update date only once the article was corrected after publication", () => {

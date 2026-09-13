@@ -152,9 +152,18 @@ be restored, but `publish` still refuses it until it is.
 
 **Expiry is not withdrawal.** An `intel` article past its `valid_until` keeps its URL —
 retracting it would 404 every link already pointing at it — and is returned with
-`expired: true` so the page can say what date it applied until. It leaves the listings and
-the sitemap, which is where "current" is what a reader expects. Publishing something that
-is *already* expired is refused rather than creating an invisible page.
+`expired: true`. It leaves the listings and the sitemap, which is where "current" is what a
+reader expects. Publishing something that is *already* expired is refused rather than
+creating an invisible page.
+
+**The reader is never shown a date.** `valid_until` and `published_at` are editorial and
+operational fields: they decide what is listed, what the sitemap carries and what the
+`Article` JSON-LD reports, and neither is drawn on a card or an article. There is no
+"published on", no "applies until" and no expiry banner — a notice that is still correct
+should not be aged by a date stamp, and an expired one is already handled by leaving the
+listings. What `expired: true` still changes on the page is one thing: it drops every
+partner button (see Partner buttons). The reader-facing date that survives is "更新日期",
+and only once `modified_at` is later than the first publication.
 
 ## Permissions
 
@@ -283,7 +292,7 @@ Partner buttons:
 2. Topics with no honest module (entry, packing, budget, etiquette, safety, food, shopping,
    nightlife) get no end panel; an `offer` block there must be about that section itself
    (airport transport at the end of an entry-rules notice is fine; a shopping notice gets none).
-3. Nothing under an expired notice — the renderer already enforces it.
+3. Nothing on an expired notice — the renderer already enforces it.
 4. The end panel skips modules already placed inline, so a button never shows twice.
 5. Which article converts is read from `affiliate_clicks` once
    `2026-09-12-attribute-affiliate-clicks-to-the-guide` lands; revisit placements after a month.
@@ -357,7 +366,8 @@ anchor — not an affiliate link, and not `rel="sponsored"` (`2026-09-12-content
 
 ### What a travel article looks like
 
-Header (kind, city, title, description, published / updated dates, reading time) → hero with
+Header (kind, city, title, description, then the update date and reading time — no
+publication date, see Expiry is not withdrawal) → hero with
 its credit → one line of disclosure, only when the body itself carries partner buttons →
 a table of contents once there are three level-2 headings (`section-N` anchors the renderer
 numbers across the whole body) → the body in slices around each `offer` block → the end
