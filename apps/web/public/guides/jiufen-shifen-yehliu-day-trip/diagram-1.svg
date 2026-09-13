@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','Noto Sans KR','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">九份・十分・野柳一日遊路線圖 / Jiufen, Shifen and Yehliu day trip from Taipei by bus and train</title>
+  <desc id="desc">示意路線圖：台北車站東三門搭國光客運 1815 到野柳（NT$104，門票 NT$120，08:00–17:00、夏季至 18:00）；野柳搭基隆客運 790 或 862 到基隆，再搭台鐵到瑞芳；台北到瑞芳搭台鐵區間車約 NT$73；瑞芳搭平溪線到十分、平溪、菁桐，一日券 NT$80；瑞芳搭台灣好行 856 到九份老街每段 NT$15；九份搭基隆客運 1062 回捷運忠孝復興站 NT$105；淡水搭台灣好行 716 到野柳每段 NT$15，11 到 4 月只開假日。實線是鐵路，虛線是巴士。Schematic map: bus 1815 from Taipei Main Station East Gate 3 to Yehliu NT$104, entry NT$120; buses 790/862 Yehliu to Keelung then TRA to Ruifang; TRA local train Taipei to Ruifang about NT$73; Pingxi line Ruifang to Shifen, Pingxi and Jingtong with the NT$80 one-day pass; shuttle 856 Ruifang to Jiufen NT$15 per segment; bus 1062 Jiufen to MRT Zhongxiao Fuxing NT$105; shuttle 716 Tamsui to Yehliu NT$15 per segment, weekends only November to April. Solid lines are rail, dashed lines are buses.</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="60" y="66" font-size="36" font-weight="700" fill="#102A2B">九份・十分・野柳　一日遊路線圖</text>
+  <text x="60" y="100" font-size="20" fill="#5C6B6B">Jiufen · Shifen · Yehliu day trip from Taipei　實線＝鐵路 Rail　虛線＝巴士 Bus　成人票價 2026 年 9 月查證</text>
+
+  <!-- 716 Tamsui to Yehliu (dashed purple) -->
+  <path d="M 175 250 C 350 250, 470 150, 620 150" fill="none" stroke="#7E57C2" stroke-width="5" stroke-dasharray="14 10"/>
+  <text x="120" y="134" font-size="15" font-weight="700" fill="#7E57C2">716 台灣好行皇冠北海岸線 Crown N. Coast shuttle</text>
+  <text x="120" y="155" font-size="15" fill="#5C6B6B">每段 NT$15 · 11–4 月只開假日 weekends only Nov–Apr</text>
+  <circle cx="160" cy="250" r="12" fill="#FFFFFF" stroke="#7E57C2" stroke-width="5"/>
+  <text x="60" y="222" font-size="18" font-weight="700" fill="#102A2B">淡水 Tamsui（捷運淡水站）</text>
+
+  <!-- 1815 Taipei to Yehliu (dashed coral) -->
+  <path d="M 300 440 C 380 330, 480 205, 620 205" fill="none" stroke="#B8442D" stroke-width="7" stroke-dasharray="18 12" stroke-linecap="round"/>
+  <text x="352" y="316" font-size="18" font-weight="700" fill="#B8442D" text-anchor="end">1815 國光客運 Kuo-Kuang Bus</text>
+  <text x="352" y="342" font-size="16" fill="#5C6B6B" text-anchor="end">台北車站東三門 → 野柳 NT$104</text>
+
+  <!-- TRA Taipei to Ruifang (solid teal) -->
+  <path d="M 330 540 L 1080 540" fill="none" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+  <text x="735" y="518" font-size="18" font-weight="700" fill="#0D6B68" text-anchor="middle">台鐵區間車 TRA local train · 約 NT$73</text>
+
+  <!-- 1062 Taipei to Ruifang (dashed orange) -->
+  <path d="M 330 560 C 600 600, 900 600, 1080 556" fill="none" stroke="#D97A2B" stroke-width="6" stroke-dasharray="16 10" stroke-linecap="round"/>
+  <text x="350" y="634" font-size="16" font-weight="700" fill="#D97A2B">1062 基隆客運 Keelung Bus · 捷運忠孝復興站 ↔ 九份老街 NT$105（經瑞芳 via Ruifang）</text>
+
+  <!-- Yehliu to Keelung (dashed grey) -->
+  <path d="M 980 175 L 1216 245" fill="none" stroke="#5C6B6B" stroke-width="5" stroke-dasharray="12 10"/>
+  <text x="1000" y="152" font-size="15" font-weight="700" fill="#5C6B6B">790／862 基隆客運 Keelung Bus → 基隆</text>
+
+  <!-- Keelung to Ruifang (solid teal) -->
+  <path d="M 1230 264 L 1092 526" fill="none" stroke="#0D6B68" stroke-width="8" stroke-linecap="round"/>
+  <text x="1190" y="400" font-size="15" font-weight="700" fill="#0D6B68">台鐵 TRA</text>
+
+  <!-- Ruifang to Jiufen (dashed green) -->
+  <path d="M 1098 530 L 1338 448" fill="none" stroke="#2E7D5B" stroke-width="6" stroke-dasharray="14 10" stroke-linecap="round"/>
+  <text x="1236" y="532" font-size="15" font-weight="700" fill="#2E7D5B">856 台灣好行 每段 NT$15</text>
+  <text x="1236" y="553" font-size="15" fill="#5C6B6B">788／965／1062 亦可 also stop here</text>
+
+  <!-- Pingxi line (solid mocha) -->
+  <path d="M 1080 540 L 1080 700 L 1000 760 L 760 760" fill="none" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="1100" y="694" font-size="18" font-weight="700" fill="#6B4A3A">平溪線 Pingxi line · 一日券 NT$80 one-day pass</text>
+
+  <!-- Taipei -->
+  <rect x="60" y="440" width="270" height="150" rx="22" fill="#0D6B68"/>
+  <text x="195" y="484" font-size="30" font-weight="700" fill="#FFFFFF" text-anchor="middle">台北 Taipei</text>
+  <text x="195" y="516" font-size="16" fill="#E6F2F1" text-anchor="middle">台北車站東三門 East Gate 3 · 1815</text>
+  <text x="195" y="542" font-size="16" fill="#E6F2F1" text-anchor="middle">台北車站 TRA → 瑞芳</text>
+  <text x="195" y="568" font-size="16" fill="#E6F2F1" text-anchor="middle">捷運忠孝復興站 MRT · 1062</text>
+
+  <!-- Yehliu -->
+  <rect x="620" y="120" width="360" height="110" rx="20" fill="#FFFFFF" stroke="#B8442D" stroke-width="5"/>
+  <text x="800" y="155" font-size="23" font-weight="700" fill="#102A2B" text-anchor="middle">野柳地質公園 Yehliu Geopark</text>
+  <text x="800" y="185" font-size="16" fill="#5C6B6B" text-anchor="middle">門票 NT$120 · 08:00–17:00（夏季至 18:00）</text>
+  <text x="800" y="210" font-size="15" fill="#5C6B6B" text-anchor="middle">Entry NT$120 · last ticket at closing time</text>
+
+  <!-- Keelung -->
+  <circle cx="1230" cy="250" r="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="6"/>
+  <text x="1252" y="257" font-size="20" font-weight="700" fill="#102A2B">基隆 Keelung</text>
+
+  <!-- Ruifang -->
+  <circle cx="1080" cy="540" r="17" fill="#FFFFFF" stroke="#0D6B68" stroke-width="7"/>
+  <text x="1100" y="602" font-size="24" font-weight="700" fill="#102A2B">瑞芳 Ruifang</text>
+  <text x="1100" y="626" font-size="15" fill="#5C6B6B">台鐵車站 · 平溪線起點 Pingxi line starts here</text>
+
+  <!-- Jiufen -->
+  <rect x="1330" y="330" width="240" height="120" rx="20" fill="#FFFFFF" stroke="#D97A2B" stroke-width="5"/>
+  <text x="1450" y="364" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">九份老街 Jiufen</text>
+  <text x="1450" y="390" font-size="15" fill="#5C6B6B" text-anchor="middle">傍晚點燈 lanterns from dusk</text>
+  <text x="1450" y="413" font-size="15" fill="#5C6B6B" text-anchor="middle">1062 → 台北 NT$105</text>
+  <text x="1450" y="436" font-size="15" fill="#5C6B6B" text-anchor="middle">856 ← 瑞芳 NT$15</text>
+
+  <!-- Shifen and Jingtong -->
+  <circle cx="1000" cy="760" r="16" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="7"/>
+  <text x="1000" y="805" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">十分 Shifen</text>
+  <text x="1000" y="830" font-size="15" fill="#5C6B6B" text-anchor="middle">天燈 sky lanterns · 十分瀑布免費 waterfall free</text>
+  <circle cx="760" cy="760" r="13" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="6"/>
+  <text x="760" y="805" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">平溪・菁桐 Pingxi · Jingtong</text>
+
+  <!-- legend -->
+  <g font-size="15" fill="#102A2B">
+    <line x1="60" y1="875" x2="110" y2="875" stroke="#0D6B68" stroke-width="8" stroke-linecap="round"/><text x="120" y="880">台鐵 TRA</text>
+    <line x1="230" y1="875" x2="280" y2="875" stroke="#6B4A3A" stroke-width="8" stroke-linecap="round"/><text x="290" y="880">平溪線 Pingxi line</text>
+    <line x1="450" y1="875" x2="500" y2="875" stroke="#B8442D" stroke-width="6" stroke-dasharray="14 10"/><text x="510" y="880">巴士 Bus（虛線 dashed）</text>
+    <text x="1540" y="880" fill="#8A8F8F" text-anchor="end">© Mokaair 2026</text>
+  </g>
+</svg>
