@@ -67,7 +67,7 @@
     },
     "adsense_publisher_id": {
       "label": "发布商 ID",
-      "help": "AdSense 后台的 ca-pub- 加 16 位数字；这是公开标识符，会直接写在文章页上。"
+      "help": "AdSense 后台的 ca-pub- 加 16 位数字；这是公开标识符，会直接写在文章页上。 改这里的 ID 时，`apps/web/public/ads.txt` 也要跟着改并重新部署，否则 Google 会把广告流量视为未授权。"
     },
     "adsense_slot_id": {
       "label": "文中广告单元 slot ID",

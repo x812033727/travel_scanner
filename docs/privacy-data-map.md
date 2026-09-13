@@ -126,8 +126,10 @@ measuring happens server-side'.」（`analytics/context.py:39-41`）
 （`pagead2.googlesyndication.com/pagead/js/adsbygoogle.js`）只在四個條件同時成立時才載入：
 後台 `adsense` 卡片開啟且發布商 ID 與 slot ID 都通過驗證（`GET /api/v1/ads/config`）、
 請求路徑是文章頁（`/{locale}/guides/{intel,howto}/{slug}`、`/{locale}/life/{slug}`）、
-host 是正式站、而且請求**沒有**帶 `DNT: 1` 或 `Sec-GPC: 1`。任一條件不成立時，
-伺服器連版位的預留空間都不輸出，瀏覽器不會對 Google 發出任何請求。
+**而且那篇文章在這個語系真的已發布**、host 是正式站、請求**沒有**帶 `DNT: 1` 或 `Sec-GPC: 1`。
+任一條件不成立時，伺服器連版位的預留空間都不輸出，瀏覽器不會對 Google 發出任何請求。
+「已發布」是在 layout 就查的，不是只在頁面查：網址長得像文章但文章不存在或沒有這個語系時，
+畫面是「找不到這篇文章」，而 layout 比頁面更早決定要不要載入廣告標籤。
 `adsense_cmp_enabled` 關閉時（預設），載入時先設 `requestNonPersonalizedAds = 1`，只投非個人化廣告；
 開啟時交給同意訊息的結果決定，因為在有認證 CMP 的情況下強制非個人化等於蓋掉讀者的選擇。
 有廣告的文章頁在獨立的 root layout（`app/(ads-public)`）底下，所以廣告腳本不會留在

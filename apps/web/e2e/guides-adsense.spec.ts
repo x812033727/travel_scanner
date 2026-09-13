@@ -180,6 +180,19 @@ test("a browser asking not to be tracked gets no slot and no request", async ({ 
   await context.close();
 });
 
+test("an article-shaped URL with no article behind it carries nothing", async ({ page, site }) => {
+  site.adRequests.length = 0;
+  // The fixture has no such slug, so this renders the "article unavailable" screen. The
+  // layout decides whether to load the tag before the page gets to say that, so it has to
+  // check the article really exists — advertising on a no-content screen is what the
+  // programme policies forbid.
+  await page.goto(`${canonical}/zh-TW/guides/howto/does-not-exist`);
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+  await expect(page.locator("ins.adsbygoogle")).toHaveCount(0);
+  await expect(page.getByText(AD_LABEL, { exact: true })).toHaveCount(0);
+  expect(site.adRequests).toEqual([]);
+});
+
 test("a hub is a listing, not an article, so it carries nothing", async ({ page, site }) => {
   site.adRequests.length = 0;
   await page.goto(`${canonical}${hubPath}`);

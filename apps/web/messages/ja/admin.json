@@ -67,7 +67,7 @@
     },
     "adsense_publisher_id": {
       "label": "サイト運営者 ID",
-      "help": "AdSense の ca-pub- と 16 桁の数字。公開識別子で、記事ページにそのまま出力されます。"
+      "help": "AdSense の ca-pub- と 16 桁の数字。公開識別子で、記事ページにそのまま出力されます。 この ID を変更する場合は apps/web/public/ads.txt も合わせて変更して再デプロイしてください。一致しないと Google は広告枠を未承認として扱います。"
     },
     "adsense_slot_id": {
       "label": "記事内広告ユニットのスロット ID",

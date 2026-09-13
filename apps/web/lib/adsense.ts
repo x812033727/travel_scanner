@@ -61,8 +61,45 @@ export function isAdsenseOrigin(value: string): boolean {
  * Community is behind a master switch and noindex. Account and trip pages are private.
  */
 export function isAdsenseArticlePath(pathname: string): boolean {
+  return adsenseArticleRoute(pathname) !== null;
+}
+
+/**
+ * The locale, kind and slug of an article URL, or `null` when the path is not one.
+ *
+ * Matching the shape is NOT enough to carry an ad: a URL of this shape whose article is
+ * missing, unpublished or untranslated renders the "article unavailable" screen, and putting
+ * advertising on that is the no-content-screen policy. The caller has to check.
+ */
+export function adsenseArticleRoute(
+  pathname: string,
+): { locale: string; kind: "intel" | "howto" | "life"; slug: string } | null {
   const path = pathname.split("?")[0].split("#")[0].replace(/\/+$/, "");
-  return /^\/(?:en|ja|ko|zh-TW|zh-CN)\/(?:guides\/(?:intel|howto)|life)\/[^/]+$/.test(path);
+  const match = /^\/(en|ja|ko|zh-TW|zh-CN)\/(?:guides\/(intel|howto)|(life))\/([^/]+)$/.exec(path);
+  if (!match) return null;
+  const kind = (match[2] ?? match[3]) as "intel" | "howto" | "life";
+  return { locale: match[1], kind, slug: match[4] };
+}
+
+/**
+ * Everything about a request that can be decided from the request alone.
+ *
+ * `proxy.ts` and `lib/adsense.server.ts` both go through this so they cannot drift: a
+ * request the renderer will refuse must not still get the relaxed policy. The renderer adds
+ * one more condition on top — that the article actually exists — which needs an API read and
+ * so cannot happen in the proxy.
+ */
+export function adsenseRequestGate(signals: {
+  host: string | null;
+  dnt: string | null;
+  gpc: string | null;
+  pathname: string;
+}): { locale: string; kind: "intel" | "howto" | "life"; slug: string } | null {
+  if (!isAdsenseOrigin(`https://${signals.host || ""}`)) return null;
+  // The site's standing rule for third-party scripts: a browser asking not to be tracked gets
+  // none of them — and therefore has no reason to be handed a loosened policy either.
+  if (signals.dnt === "1" || signals.gpc === "1") return null;
+  return adsenseArticleRoute(signals.pathname);
 }
 
 /**
@@ -72,8 +109,9 @@ export function isAdsenseArticlePath(pathname: string): boolean {
  * partner button — so this never has to reason about `offer` blocks itself.
  *
  * Constraints, in the order they bite:
- *   - Never above the fold: the hero image is the LCP element, and a slot above it moves it.
- *     The cut is therefore after the first level-2 heading and its first paragraph.
+ *   - Never above the hero, which is the LCP element: the cut is after the first level-2
+ *     heading and its first paragraph. An article with no hero has far less above that
+ *     point, so it needs `MIN_BLOCKS_BEFORE_WITHOUT_HERO` of body instead.
  *   - Never beside a partner button: the programme policies forbid placing an ad next to an
  *     interactive element, and those buttons are the affiliate revenue this must not eat.
  *   - Never on a thin article. `MIN_BLOCKS_AFTER` blocks of real content must follow the
@@ -84,9 +122,16 @@ export function isAdsenseArticlePath(pathname: string): boolean {
  * giving the table of contents the heading ids it already points at.
  */
 export const MIN_BLOCKS_AFTER = 6;
+/**
+ * A hero is optional, and it is most of what separates the headline from the first section.
+ * Without one the cut below can land inside the opening viewport, so the reader meets the ad
+ * before they have met the article. Require this much body above it instead.
+ */
+export const MIN_BLOCKS_BEFORE_WITHOUT_HERO = 3;
 
 export function adsenseSplit<T extends { type: string; level?: number }>(
   blocks: readonly T[],
+  { hasHero = true }: { hasHero?: boolean } = {},
 ): { before: T[]; after: T[]; headingStart: number } | null {
   const firstHeading = blocks.findIndex((block) => block.type === "heading" && block.level === 2);
   if (firstHeading < 0) return null;
@@ -94,7 +139,9 @@ export function adsenseSplit<T extends { type: string; level?: number }>(
     (block, index) => index > firstHeading && block.type === "paragraph",
   );
   if (firstParagraph < 0) return null;
-  const cut = firstParagraph + 1;
+  const cut = hasHero
+    ? firstParagraph + 1
+    : Math.max(firstParagraph + 1, MIN_BLOCKS_BEFORE_WITHOUT_HERO);
   if (blocks.length - cut < MIN_BLOCKS_AFTER) return null;
   const before = blocks.slice(0, cut);
   return {

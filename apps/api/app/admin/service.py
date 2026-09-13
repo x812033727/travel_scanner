@@ -1307,7 +1307,7 @@ def _validate_provider_values(
         merged["ga4_measurement_id"] = measurement_id
     if "adsense_publisher_id" in merged:
         publisher_id = str(merged["adsense_publisher_id"] or "").strip()
-        if publisher_id and not re.fullmatch(r"ca-pub-\d{16}", publisher_id):
+        if publisher_id and not re.fullmatch(r"ca-pub-[0-9]{16}", publisher_id):
             raise AppError(
                 422,
                 "provider_setting_invalid",
@@ -1316,7 +1316,7 @@ def _validate_provider_values(
         merged["adsense_publisher_id"] = publisher_id
     if "adsense_slot_id" in merged:
         slot_id = str(merged["adsense_slot_id"] or "").strip()
-        if slot_id and not re.fullmatch(r"\d{10}", slot_id):
+        if slot_id and not re.fullmatch(r"[0-9]{10}", slot_id):
             raise AppError(
                 422,
                 "provider_setting_invalid",

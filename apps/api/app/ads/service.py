@@ -10,8 +10,13 @@ from app.config import Settings
 # Both shapes are Google's: a publisher id is `ca-pub-` plus 16 digits, an ad unit slot
 # is 10 digits. Validating here means the page never renders an `<ins>` that can only
 # fail, and a typo in the back office shows up as "off" rather than as a blank box.
-PUBLISHER_ID_PATTERN = re.compile(r"ca-pub-\d{16}")
-SLOT_ID_PATTERN = re.compile(r"\d{10}")
+#
+# `[0-9]`, never `\d`: Python's `\d` also matches full-width and other Unicode digits, which
+# a zh-TW or ja IME produces without the typist noticing, while the web side's JavaScript
+# `\d` is ASCII-only. That difference would accept an id here, light the card green, and
+# leave every reader with no ad and no explanation.
+PUBLISHER_ID_PATTERN = re.compile(r"ca-pub-[0-9]{16}")
+SLOT_ID_PATTERN = re.compile(r"[0-9]{10}")
 
 DISABLED: dict[str, Any] = {
     "enabled": False, "publisher_id": None, "slot_id": None, "cmp_enabled": False,

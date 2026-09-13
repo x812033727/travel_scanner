@@ -62,4 +62,36 @@ describe("reading the advertising configuration", () => {
     // Otherwise one slow response flips every article page's policy for a full minute.
     expect(await fetchAdsenseConfig(now + 61_000)).toEqual(enabled);
   });
+
+  it("stops trusting a stale answer instead of riding out an outage forever", async () => {
+    vi.mocked(fetch).mockResolvedValue(reply(enabled));
+    const now = Date.now();
+    await fetchAdsenseConfig(now);
+    vi.mocked(fetch).mockRejectedValue(new Error("ECONNREFUSED"));
+    // Each failure must leave the original timestamp alone. Restamping here would reset the
+    // clock on every attempt, so "enabled" would outlive any outage and the owner could
+    // never switch advertising off while the API was unwell.
+    expect(await fetchAdsenseConfig(now + 61_000)).toEqual(enabled);
+    expect(await fetchAdsenseConfig(now + 300_000)).toEqual(enabled);
+    expect(await fetchAdsenseConfig(now + 600_001)).toEqual(disabledAdsense);
+  });
+
+  it("survives an impossible failure rather than taking every page down with it", async () => {
+    // proxy.ts awaits this on every request, so a rejection left in the in-flight slot would
+    // be handed to every later caller as well.
+    vi.mocked(fetch).mockImplementation(() => { throw { toString() { throw new Error("hostile"); } }; });
+    expect(await fetchAdsenseConfig()).toEqual(disabledAdsense);
+    vi.mocked(fetch).mockResolvedValue(reply(enabled));
+    expect(await fetchAdsenseConfig(Date.now() + 120_000)).toEqual(enabled);
+  });
+
+  it("recovers as soon as the API answers again", async () => {
+    vi.mocked(fetch).mockResolvedValue(reply(enabled));
+    const now = Date.now();
+    await fetchAdsenseConfig(now);
+    vi.mocked(fetch).mockRejectedValue(new Error("ECONNREFUSED"));
+    expect(await fetchAdsenseConfig(now + 700_000)).toEqual(disabledAdsense);
+    vi.mocked(fetch).mockResolvedValue(reply(enabled));
+    expect(await fetchAdsenseConfig(now + 800_000)).toEqual(enabled);
+  });
 });

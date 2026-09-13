@@ -67,7 +67,7 @@
     },
     "adsense_publisher_id": {
       "label": "發布商 ID",
-      "help": "AdSense 後台的 ca-pub- 加 16 位數字；這是公開識別碼，會直接寫在文章頁上。"
+      "help": "AdSense 後台的 ca-pub- 加 16 位數字；這是公開識別碼，會直接寫在文章頁上。 改這裡的 ID 時，`apps/web/public/ads.txt` 也要跟著改並重新部署，否則 Google 會把廣告流量視為未授權。"
     },
     "adsense_slot_id": {
       "label": "文中廣告單元 slot ID",

@@ -70,6 +70,24 @@ def test_invalid_slot_id_never_reaches_a_reader(slot_id: str) -> None:
     assert adsense_config(settings, tracking_allowed=True) == DISABLED
 
 
+@pytest.mark.parametrize(
+    ("publisher_id", "slot_id"),
+    [
+        ("ca-pub-４１４０９６６６８４４３２８５４", SLOT_ID),
+        (PUBLISHER_ID, "１２３４５６７８９０"),
+        (PUBLISHER_ID, "١٢٣٤٥٦٧٨٩٠"),
+    ],
+)
+def test_non_ascii_digits_are_refused_rather_than_lighting_the_card_green(
+    publisher_id: str, slot_id: str
+) -> None:
+    """Python's `\\d` matches full-width and Arabic-Indic digits; JavaScript's does not. A
+    zh-TW or ja IME produces full-width digits without the typist noticing, so `\\d` here would
+    store an id the web side then rejects — a green card and not one reader served an ad."""
+    settings = active_settings(adsense_publisher_id=publisher_id, adsense_slot_id=slot_id)
+    assert adsense_config(settings, tracking_allowed=True) == DISABLED
+
+
 def test_switch_off_hides_identifiers_even_when_both_are_filled_in() -> None:
     assert adsense_config(active_settings(adsense_enabled=False), tracking_allowed=True) == DISABLED
 

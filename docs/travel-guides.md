@@ -518,16 +518,23 @@ owner's decisions.
   `isAdsenseArticlePath` (`apps/web/lib/adsense.ts`). Hubs and listings are "no content"
   screens outside zh-TW, `/share/{token}` has its secret in the URL, and community, account
   and trip pages are private — none of them may ever carry a slot.
-- **When.** All four must hold: the back-office `adsense` card is on with a valid publisher
-  id and slot id (`GET /api/v1/ads/config`), the host is the production origin, the request
-  carries neither `DNT: 1` nor `Sec-GPC: 1`, and the article is actually published in this
-  locale. Otherwise the page renders no slot and no reserved space, and the browser makes no
-  request to Google.
+- **When.** All four must hold: the host is the production origin, the request carries
+  neither `DNT: 1` nor `Sec-GPC: 1`, the back-office `adsense` card is on with a valid
+  publisher id and slot id (`GET /api/v1/ads/config`), and the article is genuinely
+  published in this locale. Otherwise the page renders no slot and no reserved space, and
+  the browser makes no request to Google.
+  That last condition is checked in the layout, not only in the page: an article-shaped URL
+  whose article is missing, unpublished or untranslated renders the "article unavailable"
+  screen, and the layout decides whether to load the tag before the page gets to say so.
+  Advertising on a no-content screen is exactly what the programme policies forbid.
+  `getGuideArticle` is React-cached, so the layout and the page share one read.
 - **What.** One in-article unit, placed after the first level-2 heading and its first
   paragraph, never above the hero (the LCP element) and never within
   `MIN_BLOCKS_AFTER` blocks of an `offer` block — the placement policies forbid an ad beside
   an interactive element, and those partner buttons are the revenue it must not eat. A short
-  article gets none.
+  article gets none. A hero is optional and is most of what separates the headline from the
+  first section, so an article without one needs `MIN_BLOCKS_BEFORE_WITHOUT_HERO` of body
+  above the slot instead — otherwise the ad can be the first thing in the opening viewport.
 - **Personalisation.** Non-personalised ads unless `adsense_cmp_enabled` says a
   Google-certified consent message ("Privacy & messaging") is published in the AdSense
   account; then the reader's own answer decides, and the tag loads and shows that message
@@ -542,8 +549,18 @@ owner's decisions.
   the two providers that fetch `/auth/me`, so no answer about the reader exists in a document
   Google's tag can read. The cost is a full page load on hub → article navigation, paid
   whether or not advertising is on.
-- **CSP.** `proxy.ts` emits the relaxed, AdSense-compatible policy only for an article route
-  with advertising actually on; every other response keeps the strict policy unchanged.
+- **CSP.** `proxy.ts` emits the relaxed, AdSense-compatible policy only for a request that
+  could actually be served an ad; every other response keeps the strict policy unchanged,
+  byte for byte (`lib/csp.test.ts` pins it in full). The proxy and the renderer share one
+  gate, `adsenseRequestGate`, so they cannot drift apart — they used to decide separately,
+  and the proxy's half was the looser: a DNT request got a loosened policy for ad code it was
+  never going to receive. The one condition the proxy still cannot apply is whether the
+  article exists, which needs an API read it cannot afford per request; such a page carries
+  no ad code either way.
+- **ads.txt.** `apps/web/public/ads.txt` is a build-time file naming one publisher id, while
+  the id itself is back-office configuration. Changing the id therefore also means changing
+  that file and redeploying, or Google treats the inventory as unauthorised —
+  `2026-09-13-adsense-ads-txt-drift` is the ticket to remove that footgun.
 - **Query strings.** With advertising on, an article URL carrying a query redirects to the
   clean path before the document loads, because the ad tag can read `location.href` for
   itself. The cost is that `utm_*` and `gclid` do not survive to an article page while
