@@ -10,10 +10,16 @@ model's reason on the row so the decision stays auditable in the admin panel.
 
 Candidate titles and summaries are untrusted external text; ``ASSESS_PROMPT`` says so
 and the reply is bound to a schema, so a candidate cannot steer the review.
+
+The score is not the only gate. Hanoi's 玉山祠 and Taiwan's 玉山 share a name, so search
+answered with Taiwan's mountain and a title-reading scorer found it highly relevant;
+``foreign_place`` reads the geography instead and rejects a candidate that names another
+country and never this one, before any threshold is consulted.
 """
 
 from __future__ import annotations
 
+from collections.abc import Sequence
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from decimal import Decimal
@@ -34,6 +40,7 @@ from app.hotspots.ai_search import (
     research_provider,
     summarize_provider_error,
 )
+from app.hotspots.guides import foreign_place
 from app.i18n import LOCALES, Locale
 from app.models import AdminAuditLog, HotspotGuide, TravelHotspot
 
@@ -94,12 +101,22 @@ def _pending_metadata(guide: HotspotGuide, candidate_id: str) -> dict[str, Any]:
 def _decide(
     assessment: CandidateAssessment,
     guide: HotspotGuide,
+    hotspot: TravelHotspot,
     *,
     min_relevance: int,
     min_quality: int,
     min_language_confidence: float,
+    own_terms: Sequence[str] = (),
 ) -> tuple[Decision, str]:
     """Approve, relocate then approve, or reject — with the reason an admin will read."""
+    # Scores are the model's reading of a title; where the text says it is, is a fact.
+    elsewhere = foreign_place(
+        f"{guide.title} {guide.summary or ''}", hotspot, own_terms=own_terms
+    )
+    if elsewhere:
+        return "rejected", (
+            f"地點不符：內容講的是{elsewhere}，這個景點在{hotspot.city_name}（{hotspot.country_name}）"
+        )
     mismatch = assessment.detected_locale != guide.locale
     if mismatch and assessment.language_confidence < min_language_confidence:
         return "rejected", (
@@ -214,6 +231,17 @@ async def review_pending_guides(
             session, locales=locales, limit=limit
         ):
             context = await _localized_context(session, hotspot, locale)
+            # The names the search itself ran with: an attraction the candidate calls by
+            # one of them is this attraction, whatever else the text mentions.
+            own_terms = [
+                str(term)
+                for term in (
+                    context["name"],
+                    *(context["aliases"] or []),
+                    *(context["search_terms"] or []),
+                )
+                if term
+            ]
             for start in range(0, len(guides), batch_size):
                 if report.calls >= max_calls:
                     report.errors.append(f"停在 {max_calls} 次 AI 呼叫上限，其餘維持待審")
@@ -252,9 +280,11 @@ async def review_pending_guides(
                     decision, reason = _decide(
                         item,
                         guide,
+                        hotspot,
                         min_relevance=min_relevance,
                         min_quality=min_quality,
                         min_language_confidence=min_language_confidence,
+                        own_terms=own_terms,
                     )
                     report.decisions.append(
                         GuideDecision(

@@ -144,3 +144,47 @@ async def test_catalog_endpoint_localizes_areas() -> None:
     )
     zh = {item["id"]: item for item in default.json()["items"]}
     assert zh["tokyo"]["areas"] == ["新宿", "上野／淺草", "東京站／銀座", "澀谷"]
+
+
+def test_city_words_split_a_destination_written_as_two_cities() -> None:
+    assert localized.city_words("osaka-kyoto", "en", "大阪／京都") == ("Osaka", "Kyoto")
+    assert localized.city_words("osaka-kyoto", "zh-TW", "大阪／京都") == ("大阪", "京都")
+    assert localized.city_words("hanoi", "ja", "河內") == ("ハノイ",)
+    assert localized.city_words(None, "en", "河內") == ("河內",)
+
+
+def test_country_mentions_reads_the_place_names_of_every_locale() -> None:
+    # The search result never says which language it is in, so all five spellings count.
+    assert localized.country_mentions("Yushan National Park | Taiwan Tourism") == {
+        "Taiwan": "Taiwan"
+    }
+    assert localized.country_mentions("서울 나들이 코스") == {"South Korea": "서울"}
+    assert localized.country_mentions("東京ディズニーランドの回り方") == {"Japan": "東京"}
+    # A country is named by its cities too, and 臺 is the same character as 台.
+    assert localized.country_mentions("圓山自然景觀公園，台北散步景點") == {"Taiwan": "台北"}
+    assert localized.country_mentions("位於南臺灣的中央山脈西側，臺灣南投縣水里鄉") == {
+        "Taiwan": "台灣"
+    }
+    # A place the catalog never heard of names no country at all.
+    assert localized.country_mentions("還劍湖旅遊指南｜熱門景點資訊、交通地圖") == {}
+
+
+def test_country_mentions_keeps_a_latin_name_out_of_a_longer_word() -> None:
+    assert localized.country_mentions("Japanese sandwiches") == {}
+    assert localized.country_mentions("Japan in five days") == {"Japan": "Japan"}
+    # Vietnam's Huế is written "Hue"; the ordinary English noun is not a place.
+    assert localized.country_mentions("a warm hue at sunset") == {}
+
+
+def test_mentions_country_accepts_the_regions_and_old_names_in_the_aliases() -> None:
+    # 「北海道小樽手宮公園」 writes neither 札幌 nor 日本, and is still Japan.
+    assert localized.mentions_country("北海道小樽手宮公園｜小樽賞櫻最佳景點", "Japan") is True
+    assert localized.country_mentions("北海道小樽手宮公園｜小樽賞櫻最佳景點") == {}
+    assert localized.mentions_country("西貢海鮮街", "Vietnam") is True
+    assert localized.mentions_country("西門町一日遊", "Japan") is False
+
+
+def test_mentions_place_reads_a_name_in_either_taiwan_spelling() -> None:
+    assert localized.mentions_place("臺北101 觀景台怎麼去", "台北101") is True
+    assert localized.mentions_place("台北101 觀景台怎麼去", "臺北101") is True
+    assert localized.mentions_place("台北101 觀景台怎麼去", "") is False
