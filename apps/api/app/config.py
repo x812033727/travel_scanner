@@ -157,6 +157,17 @@ class Settings(BaseSettings):
     analytics_retention_days: int = Field(default=90, ge=30, le=365)
     analytics_rollup_retention_months: int = Field(default=25, ge=13, le=60)
     analytics_scheduler_interval_seconds: int = Field(default=3_600, ge=300, le=86_400)
+    # Display advertising on article pages. Off until the owner has an approved AdSense
+    # account and has filled both IDs in: the public endpoint reports "off" unless every
+    # one of these is set and valid, so a half-filled card never reaches a reader.
+    adsense_enabled: bool = False
+    adsense_publisher_id: str | None = None
+    adsense_slot_id: str | None = None
+    # True asserts that a Google-certified consent message is published in the AdSense back
+    # office. It is the owner stating a fact about that account; the code derives behaviour
+    # from it — without it the loader forces non-personalised ads, because personalised ads
+    # in the EEA, the UK or Switzerland require a certified CMP.
+    adsense_cmp_enabled: bool = False
     auth_login_account_limit: int = Field(default=10, ge=1, le=100)
     auth_login_ip_limit: int = Field(default=30, ge=1, le=1_000)
     auth_login_window_seconds: int = Field(default=900, ge=60, le=86_400)

@@ -28,12 +28,24 @@ export function createNonce(): string {
   return btoa(String.fromCharCode(...bytes));
 }
 
+/**
+ * `adsense` relaxes the policy for one request, and only the two article routes with
+ * advertising actually switched on ever ask for it (`proxy.ts`).
+ *
+ * Google's own guidance is that the ad code needs a nonce policy with `'unsafe-eval'`, and
+ * that the domains it reaches change without notice, so host allowlists are unsupported and
+ * "stricter policies may break without warning". That is a real loss, which is why it is
+ * scoped this narrowly instead of being applied site-wide or to every article: with
+ * advertising off — today, and the default — every response keeps the policy it has now.
+ */
 export function buildStrictContentSecurityPolicy({
   nonce,
   production,
+  adsense = false,
 }: {
   nonce: string;
   production: boolean;
+  adsense?: boolean;
 }): string {
   const mediaSources: string[] = [];
   try {
@@ -57,7 +69,8 @@ export function buildStrictContentSecurityPolicy({
     "https://www.googletagmanager.com",
     "https://oapi.map.naver.com",
     "https://emrldtp.cc",
-    ...(production ? [] : ["'unsafe-eval'"]),
+    ...(production && !adsense ? [] : ["'unsafe-eval'"]),
+    ...(adsense ? ["https:"] : []),
   ];
   const directives = [
     "default-src 'self'",
@@ -67,10 +80,10 @@ export function buildStrictContentSecurityPolicy({
     // Provider photos and hotspot thumbnails come from arbitrary HTTPS hosts.
     `img-src 'self' data: blob: https:${mediaSources.length ? " " + mediaSources.join(" ") : ""}`,
     "font-src 'self' data:",
-    `connect-src 'self' ${[...ANALYTICS_CONNECT_SOURCES, ...NAVER_MAP_SOURCES, ...TRAVELPAYOUTS_DRIVE_SOURCES, ...mediaSources].join(" ")}`,
+    `connect-src 'self' ${[...ANALYTICS_CONNECT_SOURCES, ...NAVER_MAP_SOURCES, ...TRAVELPAYOUTS_DRIVE_SOURCES, ...mediaSources, ...(adsense ? ["https:"] : [])].join(" ")}`,
     // External lodging and video frames load only after an explicit action;
     // neither needs provider scripts or connections in the parent page.
-    "frame-src https://www.google.com https://www.stay22.com https://www.youtube-nocookie.com",
+    `frame-src https://www.google.com https://www.stay22.com https://www.youtube-nocookie.com${adsense ? " https:" : ""}`,
     "worker-src 'self' blob:",
     "manifest-src 'self'",
     "media-src 'self'",

@@ -52,6 +52,31 @@ describe("content security policy", () => {
     expect(development).not.toContain("upgrade-insecure-requests");
   });
 
+  it("leaves every non-article response untouched when advertising is on", () => {
+    // The whole point of scoping this to article routes: `proxy.ts` passes `adsense: true`
+    // for nothing else, so the policy above is still what the rest of the site receives.
+    expect(buildStrictContentSecurityPolicy({ nonce: "abc123", production: true, adsense: false }))
+      .toBe(buildStrictContentSecurityPolicy({ nonce: "abc123", production: true }));
+  });
+
+  it("relaxes eval, frames and connections only for an article page carrying ads", () => {
+    const ads = buildStrictContentSecurityPolicy({ nonce: "abc123", production: true, adsense: true });
+    const directives = ads.split("; ");
+    // Google documents that the ad code needs eval and that the domains it reaches change
+    // without notice, so host allowlists are unsupported for frames and connections.
+    expect(ads).toContain("'unsafe-eval'");
+    expect(directives.find((value) => value.startsWith("script-src"))).toContain("https:");
+    expect(directives.find((value) => value.startsWith("frame-src"))).toContain("https:");
+    expect(directives.find((value) => value.startsWith("connect-src"))).toContain("https:");
+    // Relaxed, not abandoned: the nonce still gates which scripts may start the chain.
+    expect(ads).toContain("script-src 'self' 'nonce-abc123' 'strict-dynamic'");
+    expect(ads).toContain("default-src 'self'");
+    expect(ads).toContain("object-src 'none'");
+    expect(ads).toContain("base-uri 'self'");
+    expect(ads).toContain("frame-ancestors 'none'");
+    expect(ads).not.toContain("upgrade-insecure-requests");
+  });
+
   it("creates unpredictable base64 nonces", () => {
     const first = createNonce();
     expect(first).toMatch(/^[A-Za-z0-9+/]{22}==$/);
