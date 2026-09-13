@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">大阪、京都六個住宿區域與鐵道連結示意圖 / Where to stay in Osaka and Kyoto</title>
+  <desc id="desc">示意圖。大阪三區：梅田（JR 大阪站、阪急）、難波（南海、御堂筋線）、天王寺（JR 環狀線）；京都三區：京都站、河原町（阪急京都河原町）、祇園（京阪祇園四条）。關西機場：南海 Rapi:t 到難波約 34 到 39 分、空港急行約 43 分；JR HARUKA 到天王寺約 30 分、新大阪約 50 分、京都約 75 分（2,200 日圓）；關空快速到天王寺約 45 分、大阪約 65 分。大阪到京都：阪急特急大阪梅田到京都河原町 43 分；京阪特急淀屋橋到祇園四条約 40 分、490 日圓；JR 京都線新快速大阪站直達京都站。大阪環狀線接環球城，大阪站到環球城約 11 分、天王寺約 13 分。京都站搭 JR 奈良線到東福寺約 3 分、稻荷 5 分，京阪祇園四条到東福寺 180 日圓、伏見稻荷 240 日圓。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="60" y="58" font-size="34" font-weight="700" fill="#102A2B">大阪、京都六個住宿區域，和把它們連起來的鐵道</text>
+  <text x="60" y="92" font-size="19" fill="#5C6B6B">Where to stay in Osaka and Kyoto · 示意圖，非精確比例 · 2026 年 9 月查證</text>
+  <defs>
+    <marker id="arrowGrey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+
+  <!-- Osaka Loop Line -->
+  <path d="M 430 250 L 760 300 L 720 650 L 470 650 L 250 360 Z" fill="none" stroke="#6B4A3A" stroke-width="8" stroke-linejoin="round"/>
+  <text x="600" y="600" font-size="15" font-weight="700" fill="#6B4A3A">JR 大阪環状線 Osaka Loop Line</text>
+  <!-- USJ branch -->
+  <path d="M 250 360 L 170 400" fill="none" stroke="#6B4A3A" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="250" cy="360" r="9" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="5"/>
+  <text x="262" y="352" font-size="15" fill="#102A2B" font-weight="700">西九条 Nishikujo</text>
+  <circle cx="170" cy="400" r="12" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="6"/>
+  <text x="60" y="432" font-size="16" font-weight="700" fill="#102A2B">環球城 Universal City</text>
+  <text x="60" y="454" font-size="15" fill="#5C6B6B">大阪駅→約 11 分 · 天王寺→約 13 分</text>
+  <text x="60" y="474" font-size="15" fill="#5C6B6B">JR 難波→約 15 分 · 大阪難波→約 13 分</text>
+
+  <!-- JR Kyoto line: Osaka - Shin-Osaka - Kyoto -->
+  <path d="M 430 250 L 560 150 L 1090 112 L 1150 560" fill="none" stroke="#6B4A3A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="560" cy="150" r="11" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="6"/>
+  <text x="545" y="146" font-size="15" font-weight="700" fill="#102A2B" text-anchor="end">新大阪 Shin-Osaka · HARUKA 約 50 分 · 新幹線</text>
+  <text x="720" y="170" font-size="15" font-weight="700" fill="#6B4A3A">JR 京都線 新快速・HARUKA（大阪・新大阪 ↔ 京都）</text>
+
+  <!-- Hankyu Umeda - Kawaramachi -->
+  <path d="M 530 240 C 800 170, 1000 330, 1150 350" fill="none" stroke="#7E57C2" stroke-width="8" stroke-linecap="round"/>
+  <text x="700" y="222" font-size="15" font-weight="700" fill="#7E57C2">阪急京都線 特急 大阪梅田 → 京都河原町 43 分</text>
+
+  <!-- Midosuji line -->
+  <path d="M 430 290 L 430 480" fill="none" stroke="#B8442D" stroke-width="8" stroke-linecap="round"/>
+  <path d="M 430 560 L 640 632" fill="none" stroke="#B8442D" stroke-width="8" stroke-linecap="round"/>
+  <text x="445" y="452" font-size="15" font-weight="700" fill="#B8442D">Osaka Metro 御堂筋線</text>
+  <circle cx="430" cy="380" r="10" fill="#FFFFFF" stroke="#B8442D" stroke-width="5"/>
+  <text x="448" y="386" font-size="15" font-weight="700" fill="#102A2B">淀屋橋 Yodoyabashi</text>
+
+  <!-- Keihan Yodoyabashi - Kyobashi - Gion-Shijo -->
+  <path d="M 445 380 L 760 300 C 1000 300, 1150 480, 1390 400" fill="none" stroke="#2F6F9F" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="760" cy="300" r="10" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="5"/>
+  <text x="776" y="292" font-size="15" font-weight="700" fill="#102A2B">京橋 Kyobashi</text>
+  <text x="760" y="500" font-size="15" font-weight="700" fill="#2F6F9F">京阪 特急 淀屋橋 → 祇園四条 約 40 分・490 日圓</text>
+  <text x="760" y="522" font-size="15" fill="#2F6F9F">Premium Car 指定席另加 400 到 500 日圓</text>
+
+  <!-- Nankai to KIX -->
+  <path d="M 400 560 C 380 680, 300 740, 250 780" fill="none" stroke="#0D6B68" stroke-width="8" stroke-linecap="round"/>
+  <text x="60" y="600" font-size="15" font-weight="700" fill="#0D6B68">南海 Rapi:t α 約 34 分／β 約 39 分</text>
+  <text x="60" y="622" font-size="15" fill="#0D6B68">空港急行 約 43 分（往難波）</text>
+
+  <!-- JR from KIX to Tennoji -->
+  <path d="M 330 800 C 500 800, 640 760, 700 690" fill="none" stroke="#6B4A3A" stroke-width="8" stroke-linecap="round"/>
+  <text x="330" y="740" font-size="15" font-weight="700" fill="#6B4A3A">HARUKA 約 30 分 · 関空快速 約 45 分（往天王寺）</text>
+
+  <!-- Kyoto subway Karasuma -->
+  <path d="M 1150 560 L 1150 400" fill="none" stroke="#0D6B68" stroke-width="6" stroke-linecap="round"/>
+  <text x="1162" y="486" font-size="15" font-weight="700" fill="#0D6B68">地下鉄烏丸線 京都 → 四条</text>
+  <!-- JR Nara line south of Kyoto -->
+  <path d="M 1150 640 L 1150 700" fill="none" stroke="#6B4A3A" stroke-width="6" stroke-linecap="round" marker-end="url(#arrowGrey)"/>
+  <text x="1150" y="726" font-size="15" font-weight="700" fill="#6B4A3A" text-anchor="middle">JR 奈良線 東福寺 約 3 分 · 稲荷 5 分</text>
+  <!-- Keihan south of Gion -->
+  <path d="M 1485 400 L 1485 700" fill="none" stroke="#2F6F9F" stroke-width="6" stroke-linecap="round" marker-end="url(#arrowGrey)"/>
+  <text x="1580" y="748" font-size="15" font-weight="700" fill="#2F6F9F" text-anchor="end">京阪 → 東福寺 180 日圓・伏見稲荷 240 日圓 · 淀屋橋 490</text>
+  <!-- walk between Kawaramachi and Gion -->
+  <path d="M 1340 360 L 1390 360" fill="none" stroke="#5C6B6B" stroke-width="4" stroke-dasharray="4 8" stroke-linecap="round"/>
+  <text x="1365" y="312" font-size="15" fill="#5C6B6B" text-anchor="middle">步行過四条大橋</text>
+
+  <!-- KIX -->
+  <rect x="110" y="780" width="220" height="70" rx="20" fill="#0D6B68"/>
+  <text x="220" y="810" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">関西空港</text>
+  <text x="220" y="836" font-size="15" fill="#E6F2F1" text-anchor="middle">Kansai Airport · KIX</text>
+  <text x="350" y="808" font-size="15" fill="#102A2B">HARUKA 直達：天王寺 約 30 分 · 新大阪 約 50 分 · 京都 約 75 分（2,200 日圓）</text>
+  <text x="350" y="832" font-size="15" fill="#102A2B">関空快速：天王寺 約 45 分 · 大阪 約 65 分　　利木津巴士：大阪站前、難波、京都站</text>
+
+  <!-- Area boxes -->
+  <rect x="330" y="210" width="200" height="80" rx="20" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="6"/>
+  <text x="430" y="243" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">梅田 Umeda</text>
+  <text x="430" y="272" font-size="15" fill="#5C6B6B" text-anchor="middle">JR 大阪駅・阪急・阪神・Metro</text>
+
+  <rect x="330" y="480" width="200" height="80" rx="20" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+  <text x="430" y="513" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">難波 Namba</text>
+  <text x="430" y="542" font-size="15" fill="#5C6B6B" text-anchor="middle">南海・近鉄（奈良）・Metro</text>
+
+  <rect x="620" y="610" width="200" height="80" rx="20" fill="#FFFFFF" stroke="#D97A2B" stroke-width="6"/>
+  <text x="720" y="643" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">天王寺 Tennoji</text>
+  <text x="720" y="672" font-size="15" fill="#5C6B6B" text-anchor="middle">JR・Metro・近鉄 大阪阿部野橋</text>
+
+  <rect x="1050" y="560" width="200" height="80" rx="20" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="6"/>
+  <text x="1150" y="593" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">京都駅 Kyoto</text>
+  <text x="1150" y="622" font-size="15" fill="#5C6B6B" text-anchor="middle">JR・近鉄・地下鉄・市バス・新幹線</text>
+  <text x="1150" y="668" font-size="15" fill="#6B4A3A" text-anchor="middle" font-weight="700">HARUKA 関西空港 → 京都 約 75 分</text>
+
+  <rect x="1150" y="320" width="190" height="80" rx="20" fill="#FFFFFF" stroke="#7E57C2" stroke-width="6"/>
+  <text x="1245" y="353" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">河原町</text>
+  <text x="1245" y="382" font-size="15" fill="#5C6B6B" text-anchor="middle">Kawaramachi · 阪急・錦市場</text>
+
+  <rect x="1390" y="320" width="190" height="80" rx="20" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="6"/>
+  <text x="1485" y="353" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">祇園 Gion</text>
+  <text x="1485" y="382" font-size="15" fill="#5C6B6B" text-anchor="middle">京阪 祇園四条・八坂神社</text>
+
+  <!-- legend -->
+  <g font-size="15" fill="#102A2B">
+    <line x1="60" y1="880" x2="110" y2="880" stroke="#6B4A3A" stroke-width="8" stroke-linecap="round"/>
+    <text x="120" y="885">JR 西日本</text>
+    <line x1="230" y1="880" x2="280" y2="880" stroke="#B8442D" stroke-width="8" stroke-linecap="round"/>
+    <text x="290" y="885">Osaka Metro 御堂筋線</text>
+    <line x1="490" y1="880" x2="540" y2="880" stroke="#0D6B68" stroke-width="8" stroke-linecap="round"/>
+    <text x="550" y="885">南海・京都地下鉄</text>
+    <line x1="720" y1="880" x2="770" y2="880" stroke="#7E57C2" stroke-width="8" stroke-linecap="round"/>
+    <text x="780" y="885">阪急 Hankyu</text>
+    <line x1="920" y1="880" x2="970" y2="880" stroke="#2F6F9F" stroke-width="8" stroke-linecap="round"/>
+    <text x="980" y="885">京阪 Keihan</text>
+    <line x1="1120" y1="880" x2="1170" y2="880" stroke="#5C6B6B" stroke-width="4" stroke-dasharray="4 8" stroke-linecap="round"/>
+    <text x="1180" y="885">步行 Walk</text>
+    <text x="1400" y="885" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+  </g>
+</svg>

@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans KR','PingFang TC','Microsoft JhengHei','Apple SD Gothic Neo',system-ui,sans-serif">
+  <title id="title">首爾交通卡決策樹：T-money 還是 Climate Card / Which Seoul transit card to buy</title>
+  <desc id="desc">先在機場買一張 T-money，空卡約 2,500 到 5,000 韓元。問題一：在首爾的日子一天會搭 4 趟以上地鐵或公車嗎？不會就用 T-money 逐次付，地鐵 1,550、公車 1,500 韓元起，下車後 30 分內轉乘免費。會的話問題二：那幾天的行程都在首爾市內嗎？有出城（仁川機場來回、新盆唐線、水原、南怡島）的日子用 T-money，市內密集的日子再買短天數券。都在市內就到問題三：要連續用幾天？1 日券 5,000（一天 4 趟回本）、2 日券 8,000 與 3 日券 10,000（一天 3 趟回本）、5 日券 15,000 與 7 日券 20,000 韓元（一天 2 趟回本），實體卡另加 3,000 韓元。底下註記：短期券從儲值當天起算、車站儲值機只收現金；只搭一兩趟可用一回用交通卡 1,650 韓元加押金 500。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">首爾交通卡：三個問題決定 T-money 還是 Climate Card（2026 年 9 月查證票價）</text>
+
+  <!-- start -->
+  <rect x="300" y="72" width="1000" height="60" rx="30" fill="#2E7D5B"/>
+  <text x="800" y="110" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">落地先買一張 T-money 티머니（空卡約 2,500 到 5,000 韓元），機場那趟一定用得到</text>
+  <path d="M 800 134 L 800 166" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- Q1 -->
+  <polygon points="800,170 1100,230 800,290 500,230" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="800" y="224" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">問題 1　在首爾的日子，</text>
+  <text x="800" y="250" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">一天會搭 4 趟以上地鐵或公車嗎？</text>
+  <!-- Q1 no -->
+  <path d="M 500 230 L 330 230 L 330 296" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <text x="470" y="222" font-size="18" fill="#5C6B6B" text-anchor="end">否</text>
+  <rect x="120" y="300" width="420" height="96" rx="14" fill="#E9F5EE" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="330" y="332" font-size="19" font-weight="700" fill="#1F5C42" text-anchor="middle">T-money 逐次付 티머니 pay per ride</text>
+  <text x="330" y="358" font-size="15" fill="#1F5C42" text-anchor="middle">地鐵 1,550・公車 1,500 韓元起（10 公里內）</text>
+  <text x="330" y="382" font-size="15" fill="#1F5C42" text-anchor="middle">下車後 30 分內轉乘免費（21:00 到 07:00 為 60 分）</text>
+  <!-- Q1 yes -->
+  <path d="M 800 292 L 800 336" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="814" y="320" font-size="18" fill="#5C6B6B">是</text>
+
+  <!-- Q2 -->
+  <polygon points="800,340 1130,400 800,460 470,400" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="800" y="394" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">問題 2　那幾天的行程都在首爾市內嗎？</text>
+  <text x="800" y="420" font-size="15" fill="#5C6B6B" text-anchor="middle">（仁川機場來回、新盆唐線、水原、南怡島都不算市內）</text>
+  <!-- Q2 no -->
+  <path d="M 1130 400 L 1176 400" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <text x="1153" y="390" font-size="16" fill="#5C6B6B" text-anchor="middle">否</text>
+  <rect x="1180" y="350" width="390" height="100" rx="14" fill="#FBE9E4" stroke="#B8442D" stroke-width="4"/>
+  <text x="1375" y="382" font-size="18" font-weight="700" fill="#8A2E1D" text-anchor="middle">出城那幾天用 T-money</text>
+  <text x="1375" y="408" font-size="15" fill="#8A2E1D" text-anchor="middle">Climate Card 不含仁川機場段機場鐵道、</text>
+  <text x="1375" y="432" font-size="15" fill="#8A2E1D" text-anchor="middle">新盆唐線與市外區段；市內密集的日子再買短天數券</text>
+  <!-- Q2 yes -->
+  <path d="M 800 462 L 800 506" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="814" y="490" font-size="18" fill="#5C6B6B">是</text>
+
+  <!-- Q3 -->
+  <polygon points="800,510 1010,560 800,610 590,560" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="800" y="554" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">問題 3　要連續用幾天？</text>
+  <text x="800" y="580" font-size="15" fill="#5C6B6B" text-anchor="middle">買 Climate Card 기후동행카드 短期券</text>
+  <path d="M 800 612 L 800 650" stroke="#5C6B6B" stroke-width="4" fill="none"/>
+  <path d="M 240 650 L 1360 650" stroke="#5C6B6B" stroke-width="4" fill="none"/>
+  <g stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)">
+    <path d="M 240 650 L 240 676"/>
+    <path d="M 520 650 L 520 676"/>
+    <path d="M 800 650 L 800 676"/>
+    <path d="M 1080 650 L 1080 676"/>
+    <path d="M 1360 650 L 1360 676"/>
+  </g>
+  <g font-size="15" fill="#5C6B6B">
+    <text x="250" y="672">1 天</text>
+    <text x="530" y="672">2 天</text>
+    <text x="810" y="672">3 天</text>
+    <text x="1090" y="672">5 天</text>
+    <text x="1370" y="672">7 天</text>
+  </g>
+  <g fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4">
+    <rect x="115" y="680" width="250" height="90" rx="14"/>
+    <rect x="395" y="680" width="250" height="90" rx="14"/>
+    <rect x="675" y="680" width="250" height="90" rx="14"/>
+    <rect x="955" y="680" width="250" height="90" rx="14"/>
+    <rect x="1235" y="680" width="250" height="90" rx="14"/>
+  </g>
+  <g font-size="19" font-weight="700" fill="#1F4E73" text-anchor="middle">
+    <text x="240" y="712">1 日券 5,000 韓元</text>
+    <text x="520" y="712">2 日券 8,000 韓元</text>
+    <text x="800" y="712">3 日券 10,000 韓元</text>
+    <text x="1080" y="712">5 日券 15,000 韓元</text>
+    <text x="1360" y="712">7 日券 20,000 韓元</text>
+  </g>
+  <g font-size="15" fill="#1F4E73" text-anchor="middle">
+    <text x="240" y="738">一天 4 趟回本</text>
+    <text x="520" y="738">一天 3 趟回本（平均 4,000／日）</text>
+    <text x="800" y="738">一天 3 趟回本（平均 3,333／日）</text>
+    <text x="1080" y="738">一天 2 趟回本（平均 3,000／日）</text>
+    <text x="1360" y="738">一天 2 趟回本（平均 2,857／日）</text>
+    <text x="240" y="760">實體卡另加 3,000 韓元</text>
+    <text x="520" y="760">實體卡另加 3,000 韓元</text>
+    <text x="800" y="760">實體卡另加 3,000 韓元</text>
+    <text x="1080" y="760">實體卡另加 3,000 韓元</text>
+    <text x="1360" y="760">實體卡另加 3,000 韓元</text>
+  </g>
+
+  <!-- notes -->
+  <text x="60" y="812" font-size="15" fill="#5C6B6B">短期券從儲值當天起算，要用的那天早上再儲；地鐵 1 到 8 號線車站的儲值機只收現金。回本趟數以基本票價 1,550 韓元計算，常搭 10 公里以上的長程會更快回本。</text>
+  <text x="60" y="840" font-size="15" fill="#5C6B6B">只搭一兩趟：一回用交通卡 1,650 韓元＋押金 500（出站退還），公車不能用。轉乘最多 4 次；下公車一定要刷卡，否則轉乘中斷。</text>
+  <text x="1540" y="882" font-size="15" fill="#8A8F8F" text-anchor="end">© Mokaair 製圖 2026</text>
+</svg>

@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">東京住宿七區與機場路線示意圖 / Where to stay in Tokyo: seven areas on the Yamanote loop</title>
+  <desc id="desc">簡化的東京示意地圖。JR 山手線畫成一個環，環上依序是池袋、新宿、澀谷、品川、濱松町、東京車站、上野、日暮里；銀座在環內靠東京車站，淺草在環外東北側。成田機場出發：京成 Skyliner 到日暮里最快 36 分、上野 41 分；JR N'EX 到東京車站最快 53 分，再續行品川、澀谷、新宿。羽田機場出發：京急到品川 14 分，直通都營淺草線到淺草 37 分、押上 41 分；東京單軌電車到濱松町 13 分。七個住宿區用青綠色框標出，各附一句它適合誰。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="60" y="60" font-size="34" font-weight="700" fill="#102A2B">東京住哪一區：七個區都掛在 JR 山手線環上</text>
+  <text x="60" y="94" font-size="19" fill="#5C6B6B">Where to stay in Tokyo · 示意圖，非精確比例 · 2026 年 9 月查證各家官網的最快時間</text>
+  <defs>
+    <marker id="mBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2F6F9F"/></marker>
+    <marker id="mCoral" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#B8442D"/></marker>
+    <marker id="mPurple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#7E57C2"/></marker>
+    <marker id="mOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#D97A2B"/></marker>
+  </defs>
+
+  <!-- JR Yamanote loop -->
+  <ellipse cx="640" cy="470" rx="300" ry="230" fill="none" stroke="#2E7D5B" stroke-width="10"/>
+  <text x="640" y="392" font-size="18" font-weight="700" fill="#2E7D5B" text-anchor="middle">JR 山手線 Yamanote Line</text>
+  <text x="640" y="416" font-size="15" fill="#5C6B6B" text-anchor="middle">環狀線，順時針、逆時針都有車</text>
+
+  <!-- airport lines -->
+  <path d="M 1300 150 C 1150 110, 960 150, 792 260" fill="none" stroke="#2F6F9F" stroke-width="6" marker-end="url(#mBlue)"/>
+  <text x="980" y="205" font-size="16" font-weight="700" fill="#2F6F9F">京成 Skyliner　日暮里 36 分・上野 41 分</text>
+  <path d="M 1300 195 C 1290 340, 1180 480, 955 488" fill="none" stroke="#B8442D" stroke-width="6" marker-end="url(#mCoral)"/>
+  <text x="990" y="462" font-size="16" font-weight="700" fill="#B8442D">JR N'EX 東京 53 分</text>
+  <text x="965" y="602" font-size="15" fill="#B8442D">N'EX 續行品川・渋谷・新宿，不用換車</text>
+  <path d="M 1300 800 C 1120 840, 900 770, 730 700" fill="none" stroke="#7E57C2" stroke-width="6" marker-end="url(#mPurple)"/>
+  <text x="1000" y="832" font-size="16" font-weight="700" fill="#7E57C2">京急 Keikyu　品川 14 分</text>
+  <path d="M 1420 740 C 1420 560, 1330 420, 1212 332" fill="none" stroke="#7E57C2" stroke-width="5" stroke-dasharray="12 10" marker-end="url(#mPurple)"/>
+  <text x="1415" y="545" font-size="15" font-weight="700" fill="#7E57C2">京急直通 都営浅草線</text>
+  <text x="1415" y="568" font-size="15" fill="#7E57C2">浅草 37 分・押上 41 分</text>
+  <path d="M 1300 780 C 1150 760, 1000 700, 884 628" fill="none" stroke="#D97A2B" stroke-width="6" marker-end="url(#mOrange)"/>
+  <text x="985" y="660" font-size="16" font-weight="700" fill="#D97A2B">東京モノレール Monorail　浜松町 13 分</text>
+
+  <!-- airports -->
+  <rect x="1300" y="120" width="240" height="80" rx="16" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="1420" y="153" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">成田空港 Narita NRT</text>
+  <text x="1420" y="181" font-size="15" fill="#5C6B6B" text-anchor="middle">Skyliner・N'EX・巴士</text>
+  <rect x="1300" y="740" width="240" height="80" rx="16" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="1420" y="773" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">羽田空港 Haneda HND</text>
+  <text x="1420" y="801" font-size="15" fill="#5C6B6B" text-anchor="middle">京急・モノレール・巴士</text>
+
+  <!-- transfer stations on the loop -->
+  <g stroke="#102A2B" stroke-width="4" fill="#FFFFFF">
+    <circle cx="781" cy="267" r="9"/>
+    <circle cx="886" cy="338" r="9"/>
+    <circle cx="939" cy="490" r="9"/>
+    <circle cx="870" cy="618" r="9"/>
+    <circle cx="718" cy="692" r="9"/>
+    <circle cx="410" cy="618" r="9"/>
+    <circle cx="340" cy="470" r="9"/>
+    <circle cx="447" cy="294" r="9"/>
+  </g>
+  <circle cx="860" cy="530" r="7" fill="#6B4A3A"/>
+  <text x="781" y="222" font-size="15" fill="#5C6B6B" text-anchor="middle">Skyliner 36 分・轉山手線</text>
+  <text x="781" y="246" font-size="16" font-weight="700" fill="#102A2B" text-anchor="middle">日暮里 Nippori</text>
+  <text x="858" y="650" font-size="16" font-weight="700" fill="#102A2B" text-anchor="end">浜松町 Hamamatsucho</text>
+  <text x="718" y="728" font-size="16" font-weight="700" fill="#102A2B" text-anchor="middle">品川 Shinagawa</text>
+  <text x="718" y="750" font-size="15" fill="#5C6B6B" text-anchor="middle">京急 14 分・N'EX 停靠・轉山手線</text>
+
+  <!-- stay areas -->
+  <g stroke="#0D6B68" stroke-width="5" fill="#FFFFFF">
+    <rect x="120" y="425" width="200" height="80" rx="16"/>
+    <rect x="300" y="188" width="200" height="80" rx="16"/>
+    <rect x="190" y="630" width="200" height="80" rx="16"/>
+    <rect x="960" y="500" width="220" height="80" rx="16"/>
+    <rect x="690" y="505" width="150" height="72" rx="16"/>
+    <rect x="905" y="296" width="200" height="80" rx="16"/>
+    <rect x="1110" y="250" width="200" height="80" rx="16"/>
+  </g>
+  <g font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">
+    <text x="220" y="458">新宿 Shinjuku</text>
+    <text x="400" y="221">池袋 Ikebukuro</text>
+    <text x="290" y="663">渋谷 Shibuya</text>
+    <text x="1070" y="533">東京駅 Tokyo</text>
+    <text x="765" y="536" font-size="20">銀座 Ginza</text>
+    <text x="1005" y="329">上野 Ueno</text>
+    <text x="1210" y="283">浅草 Asakusa</text>
+  </g>
+  <g font-size="15" fill="#5C6B6B" text-anchor="middle">
+    <text x="220" y="486">N'EX 直達・夜生活・出口多</text>
+    <text x="400" y="249">Skyliner 到日暮里轉山手線</text>
+    <text x="290" y="691">N'EX 直達・年輕・坡道多</text>
+    <text x="1070" y="561">N'EX 53 分・新幹線</text>
+    <text x="765" y="562">地鐵三線・購物</text>
+    <text x="1005" y="357">Skyliner 41 分・阿美橫町</text>
+    <text x="1210" y="311">京急直通 37 分・雷門</text>
+  </g>
+  <!-- connectors from boxes to stations -->
+  <g stroke="#0D6B68" stroke-width="3" fill="none">
+    <path d="M 320 465 L 336 470"/>
+    <path d="M 447 268 L 447 285"/>
+    <path d="M 390 650 L 403 626"/>
+    <path d="M 960 520 L 946 496"/>
+    <path d="M 840 540 L 853 532"/>
+    <path d="M 905 336 L 895 338"/>
+  </g>
+
+  <!-- legend -->
+  <g font-size="16" fill="#102A2B">
+    <line x1="60" y1="812" x2="110" y2="812" stroke="#2E7D5B" stroke-width="8"/><text x="120" y="818">JR 山手線</text>
+    <line x1="220" y1="812" x2="270" y2="812" stroke="#2F6F9F" stroke-width="6"/><text x="280" y="818">京成 Skyliner</text>
+    <line x1="410" y1="812" x2="460" y2="812" stroke="#B8442D" stroke-width="6"/><text x="470" y="818">JR N'EX</text>
+    <line x1="560" y1="812" x2="610" y2="812" stroke="#7E57C2" stroke-width="6"/><text x="620" y="818">京急（虛線＝直通都營淺草線）</text>
+    <line x1="60" y1="850" x2="110" y2="850" stroke="#D97A2B" stroke-width="6"/><text x="120" y="856">東京單軌電車</text>
+    <rect x="220" y="840" width="50" height="20" rx="6" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/><text x="280" y="856">住宿區，框內一句它適合誰</text>
+    <circle cx="560" cy="850" r="7" fill="#6B4A3A"/><text x="575" y="856">地鐵站（不在山手線上）</text>
+  </g>
+  <text x="1590" y="880" font-size="15" fill="#5C6B6B" text-anchor="end">© Mokaair 製圖 2026</text>
+</svg>
