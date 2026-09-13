@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','Noto Sans KR','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">高雄三天兩夜路線示意圖：捷運紅線、橘線、環狀輕軌、渡輪與公車 / Kaohsiung 3-day route map on the metro, light rail, ferry and buses</title>
+  <desc id="desc">示意圖，非實際比例。高鐵從台北到左營最快 1 小時 34 分、標準車廂對號座 NT$1,490。第一天在港區：捷運美麗島站到哈瑪星站 6 分、NT$20；環狀輕軌 06:30 到 22:30、NT$20 到 35，駁二藝術特區在輕軌 C12、C13 站，駁二塔 NT$10；打狗英國領事館 NT$99、週三休館；鼓山輪渡站坐渡輪到旗津 5 到 10 分、NT$30，05:15 到 02:00。第二天在左營：左營站到生態園區站走到蓮池潭與龍虎塔，附近有台鐵左營（舊城）站與鳳山縣舊城；巨蛋站 1 號出口是瑞豐夜市，17:00 到 24:00、週一週三休；左營到美麗島 13 分、NT$25；美麗島站 1 號出口是六合夜市，17:00 到 02:00。第三天從高鐵左營站坐 E02 哈佛快線到佛陀紀念館約 35 分、NT$70，末班 18:30 從佛光山開、19:04 回到左營；或坐 E25 到旗山約 45 分、美濃約 1 小時。機場站到美麗島 16 分、NT$30。Schematic, not to scale. THSR Taipei to Zuoying in 1 h 34 min at NT$1,490. Day 1 on the harbour: Formosa Boulevard to Hamasen 6 min NT$20; circular light rail 06:30 to 22:30, NT$20 to 35, Pier-2 at C12 and C13, Pier-2 Tower NT$10; British Consulate NT$99, closed Wednesdays; ferry from Gushan to Cijin 5 to 10 min, NT$30, 05:15 to 02:00. Day 2 in Zuoying: Ecological District station for Lotus Pond, TRA Zuoying (Jiucheng) and the old city gates; Ruifeng Night Market at Kaohsiung Arena exit 1, 17:00 to 24:00, closed Mondays and Wednesdays; Zuoying to Formosa Boulevard 13 min NT$25; Liuhe Night Market at Formosa Boulevard exit 1, 17:00 to 02:00. Day 3 from HSR Zuoying: bus E02 to the Buddha Museum in about 35 min for NT$70, last bus 18:30 from Fo Guang Shan reaching Zuoying 19:04; or bus E25 to Qishan in about 45 min and Meinong in about an hour. Airport to Formosa Boulevard 16 min NT$30.</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- Header -->
+  <text x="60" y="60" font-size="34" font-weight="700" fill="#102A2B">高雄三天兩夜路線圖　Kaohsiung 3-day route map</text>
+  <text x="60" y="94" font-size="18" fill="#5C6B6B">示意圖，非實際比例 · 時間與票價為 2026 年 9 月官網查證 · 標籤為繁體中文＋英文</text>
+
+  <!-- Day zones -->
+  <rect x="60" y="118" width="630" height="292" rx="24" fill="#0D6B68" opacity="0.08"/>
+  <rect x="50" y="430" width="500" height="458" rx="24" fill="#B8442D" opacity="0.07"/>
+  <rect x="1100" y="150" width="470" height="550" rx="24" fill="#6B4A3A" opacity="0.08"/>
+
+  <!-- Cijin sandbar -->
+  <path d="M 90 790 Q 95 745 150 738 L 500 820 Q 540 835 515 868 Q 505 878 480 872 L 110 815 Q 85 810 90 790 Z" fill="#EADBC0" stroke="#C9B28A" stroke-width="3"/>
+
+  <!-- Circular light rail (schematic loop) -->
+  <rect x="200" y="420" width="780" height="270" rx="70" fill="none" stroke="#2E7D5B" stroke-width="8"/>
+
+  <!-- THSR into Zuoying -->
+  <line x1="700" y1="108" x2="700" y2="172" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"/>
+
+  <!-- MRT Red Line -->
+  <line x1="700" y1="185" x2="700" y2="770" stroke="#B8442D" stroke-width="12" stroke-linecap="round"/>
+  <!-- MRT Orange Line (section used in this plan) -->
+  <line x1="200" y1="560" x2="700" y2="560" stroke="#D97A2B" stroke-width="12" stroke-linecap="round"/>
+
+  <!-- Buses from HSR Zuoying (dashed) -->
+  <path d="M 712 180 C 900 150, 1100 200, 1228 292" fill="none" stroke="#6B4A3A" stroke-width="5" stroke-dasharray="14 10"/>
+  <path d="M 1252 294 L 1408 236" fill="none" stroke="#6B4A3A" stroke-width="5" stroke-dasharray="14 10"/>
+  <path d="M 712 190 C 1000 190, 1180 330, 1278 512" fill="none" stroke="#6B4A3A" stroke-width="5" stroke-dasharray="14 10"/>
+
+  <!-- Ferry Gushan to Cijin (dashed) -->
+  <line x1="140" y1="662" x2="170" y2="742" stroke="#2F6F9F" stroke-width="5" stroke-dasharray="12 8"/>
+
+  <!-- Walk from Ecological District to Lotus Pond -->
+  <line x1="688" y1="264" x2="449" y2="280" stroke="#5C6B6B" stroke-width="3" stroke-dasharray="6 6"/>
+
+  <!-- Day badges -->
+  <rect x="78" y="132" width="130" height="30" rx="15" fill="#0D6B68"/>
+  <text x="143" y="153" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">第 2 天 Day 2</text>
+  <rect x="60" y="444" width="130" height="30" rx="15" fill="#B8442D"/>
+  <text x="125" y="465" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">第 1 天 Day 1</text>
+  <rect x="1120" y="600" width="130" height="30" rx="15" fill="#6B4A3A"/>
+  <text x="1185" y="621" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">第 3 天 Day 3</text>
+
+  <!-- THSR label -->
+  <text x="690" y="124" font-size="15" font-weight="700" fill="#0D6B68" text-anchor="end">↑ 台北 Taipei</text>
+  <text x="724" y="132" font-size="17" font-weight="700" fill="#0D6B68">高鐵 THSR：台北→左營 最快 1 小時 34 分 · NT$1,490</text>
+
+  <!-- Red line stations -->
+  <circle cx="700" cy="185" r="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="7"/>
+  <text x="680" y="182" font-size="22" font-weight="700" fill="#102A2B" text-anchor="end">左營 Zuoying · R16</text>
+  <text x="680" y="204" font-size="15" fill="#5C6B6B" text-anchor="end">高鐵左營站 HSR Zuoying</text>
+
+  <circle cx="700" cy="262" r="11" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+  <text x="724" y="266" font-size="17" font-weight="700" fill="#102A2B">生態園區 R15</text>
+  <text x="724" y="286" font-size="15" fill="#5C6B6B">Ecological District</text>
+  <text x="590" y="258" font-size="15" fill="#5C6B6B" text-anchor="middle">步行 walk</text>
+
+  <circle cx="700" cy="339" r="11" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+  <text x="680" y="336" font-size="17" font-weight="700" fill="#102A2B" text-anchor="end">巨蛋 Kaohsiung Arena · R14</text>
+  <text x="680" y="357" font-size="15" fill="#5C6B6B" text-anchor="end">瑞豐夜市 Ruifeng · 1 號出口</text>
+  <text x="680" y="377" font-size="15" fill="#5C6B6B" text-anchor="end">17:00–24:00 · 週一、週三休</text>
+  <text x="680" y="405" font-size="16" font-weight="700" fill="#B8442D" text-anchor="end">左營→美麗島 13 分 · NT$25</text>
+
+  <circle cx="700" cy="470" r="11" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+  <text x="680" y="466" font-size="17" font-weight="700" fill="#102A2B" text-anchor="end">高雄車站 R11</text>
+  <text x="680" y="486" font-size="15" fill="#5C6B6B" text-anchor="end">Kaohsiung Main Station</text>
+
+  <circle cx="700" cy="560" r="17" fill="#FFFFFF" stroke="#102A2B" stroke-width="7"/>
+  <text x="726" y="552" font-size="20" font-weight="700" fill="#102A2B">美麗島 R10 / O5</text>
+  <text x="726" y="574" font-size="15" fill="#5C6B6B">Formosa Boulevard</text>
+  <text x="726" y="596" font-size="15" fill="#5C6B6B">六合夜市 Liuhe · 1 號出口</text>
+  <text x="726" y="616" font-size="15" fill="#5C6B6B">17:00–02:00</text>
+
+  <text x="682" y="728" font-size="16" font-weight="700" fill="#B8442D" text-anchor="end">機場→美麗島 16 分 · NT$30</text>
+  <text x="682" y="748" font-size="15" fill="#5C6B6B" text-anchor="end">Airport → Formosa Boulevard</text>
+
+  <rect x="560" y="770" width="280" height="72" rx="18" fill="#B8442D"/>
+  <text x="700" y="800" font-size="21" font-weight="700" fill="#FFFFFF" text-anchor="middle">高雄國際機場 R4</text>
+  <text x="700" y="826" font-size="15" fill="#F7F1E8" text-anchor="middle">Kaohsiung International Airport</text>
+
+  <!-- Day 2: Lotus Pond, TRA station, old city -->
+  <ellipse cx="345" cy="280" rx="102" ry="56" fill="#BFD9E3" stroke="#2F6F9F" stroke-width="3"/>
+  <text x="345" y="276" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">蓮池潭 Lotus Pond</text>
+  <text x="345" y="298" font-size="15" fill="#3F6C7A" text-anchor="middle">龍虎塔 1976 · 春秋閣</text>
+
+  <rect x="243" y="181" width="14" height="14" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="4"/>
+  <text x="268" y="186" font-size="15" font-weight="700" fill="#102A2B">台鐵左營(舊城)站</text>
+  <text x="268" y="206" font-size="15" fill="#5C6B6B">TRA Zuoying (Jiucheng)</text>
+
+  <rect x="208" y="243" width="14" height="14" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="4"/>
+  <text x="80" y="272" font-size="17" font-weight="700" fill="#102A2B">鳳山縣舊城</text>
+  <text x="80" y="292" font-size="15" fill="#5C6B6B">Old City gates</text>
+
+  <!-- Day 1: Hamasen, light rail, Pier-2, ferry, Cijin -->
+  <text x="240" y="448" font-size="16" font-weight="700" fill="#2E7D5B">環狀輕軌 Light Rail</text>
+  <text x="240" y="468" font-size="15" fill="#2E7D5B">06:30–22:30 · NT$20–35</text>
+
+  <circle cx="200" cy="560" r="16" fill="#FFFFFF" stroke="#102A2B" stroke-width="7"/>
+  <text x="228" y="522" font-size="18" font-weight="700" fill="#102A2B">哈瑪星 Hamasen · O1 / C14</text>
+  <text x="228" y="543" font-size="15" fill="#5C6B6B">武德殿 · 英國領事館 NT$99（週三休）</text>
+  <text x="450" y="590" font-size="16" font-weight="700" fill="#D97A2B" text-anchor="middle">美麗島→哈瑪星 6 分 · NT$20</text>
+
+  <circle cx="380" cy="690" r="9" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="5"/>
+  <circle cx="460" cy="690" r="9" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="5"/>
+  <text x="420" y="642" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">駁二藝術特區 Pier-2 Art Center</text>
+  <text x="420" y="664" font-size="15" fill="#5C6B6B" text-anchor="middle">輕軌 C12 · C13 · 駁二塔 NT$10</text>
+
+  <circle cx="140" cy="650" r="9" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="5"/>
+  <text x="60" y="612" font-size="16" font-weight="700" fill="#102A2B">鼓山輪渡站</text>
+  <text x="60" y="632" font-size="15" fill="#5C6B6B">Gushan Ferry</text>
+  <text x="182" y="712" font-size="15" font-weight="700" fill="#2F6F9F">渡輪 5–10 分 · NT$30</text>
+  <text x="182" y="730" font-size="15" fill="#2F6F9F">05:15–02:00 · Ferry</text>
+
+  <circle cx="172" cy="752" r="8" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="5"/>
+  <text x="300" y="800" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">旗津 Cijin</text>
+  <text x="300" y="822" font-size="15" fill="#5C6B6B" text-anchor="middle">天后宮 · 旗後燈塔 1883</text>
+
+  <!-- Day 3: buses to Qishan, Meinong, Buddha Museum -->
+  <text x="930" y="160" font-size="16" font-weight="700" fill="#6B4A3A">E25 公車：旗山約 45 分 · 美濃約 1 小時</text>
+  <text x="724" y="334" font-size="16" font-weight="700" fill="#6B4A3A">E02 哈佛快線 Harvard Express</text>
+  <text x="724" y="355" font-size="15" fill="#6B4A3A">高鐵左營站→佛陀紀念館 約 35 分 · NT$70</text>
+
+  <circle cx="1240" cy="300" r="12" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="6"/>
+  <text x="1258" y="334" font-size="19" font-weight="700" fill="#102A2B">旗山 Qishan</text>
+  <text x="1258" y="355" font-size="15" fill="#5C6B6B">旗山轉運站 · 老街</text>
+
+  <circle cx="1420" cy="230" r="12" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="6"/>
+  <text x="1420" y="205" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">美濃 Meinong</text>
+  <text x="1442" y="236" font-size="15" fill="#5C6B6B">油紙傘 · 客家</text>
+
+  <circle cx="1290" cy="520" r="13" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="6"/>
+  <text x="1312" y="524" font-size="17" font-weight="700" fill="#102A2B">佛陀紀念館 Buddha Museum</text>
+  <text x="1312" y="546" font-size="15" fill="#5C6B6B">佛光山 Fo Guang Shan</text>
+  <text x="1312" y="567" font-size="15" fill="#5C6B6B">免費參觀 · 週二休館</text>
+
+  <text x="1120" y="656" font-size="15" fill="#6B4A3A">回程末班：佛光山 18:30 → 左營 19:04</text>
+  <text x="1120" y="678" font-size="15" fill="#6B4A3A">Last bus back 18:30, Zuoying 19:04</text>
+
+  <!-- Legend -->
+  <g font-size="15" fill="#102A2B">
+    <line x1="1110" y1="735" x2="1160" y2="735" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+    <text x="1172" y="741">高鐵 THSR</text>
+    <line x1="1110" y1="763" x2="1160" y2="763" stroke="#B8442D" stroke-width="10" stroke-linecap="round"/>
+    <text x="1172" y="769">捷運紅線 Red Line</text>
+    <line x1="1110" y1="791" x2="1160" y2="791" stroke="#D97A2B" stroke-width="10" stroke-linecap="round"/>
+    <text x="1172" y="797">捷運橘線 Orange Line</text>
+    <line x1="1110" y1="819" x2="1160" y2="819" stroke="#2E7D5B" stroke-width="8"/>
+    <text x="1172" y="825">環狀輕軌 Light Rail</text>
+    <line x1="1380" y1="735" x2="1430" y2="735" stroke="#2F6F9F" stroke-width="5" stroke-dasharray="12 8"/>
+    <text x="1442" y="741">渡輪 Ferry</text>
+    <line x1="1380" y1="763" x2="1430" y2="763" stroke="#6B4A3A" stroke-width="5" stroke-dasharray="14 10"/>
+    <text x="1442" y="769">公車 Bus</text>
+    <line x1="1380" y1="791" x2="1430" y2="791" stroke="#5C6B6B" stroke-width="3" stroke-dasharray="6 6"/>
+    <text x="1442" y="797">步行 Walk</text>
+    <text x="1560" y="880" fill="#8A8F8F" text-anchor="end">© Mokaair 2026</text>
+  </g>
+</svg>
