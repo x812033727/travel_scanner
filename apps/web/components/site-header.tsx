@@ -1,6 +1,7 @@
 import { MokaairLogo } from "@/components/mokaair-logo";
 import { SiteNavigation } from "@/components/site-navigation";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { ThemeSwitcher } from "@/components/theme-switcher";
 import { Link } from "@/i18n/navigation";
 
 export function SiteHeader() {
@@ -10,7 +11,13 @@ export function SiteHeader() {
         <MokaairLogo className="text-[1.45rem] sm:text-[1.65rem]" />
       </Link>
       <SiteNavigation />
-      <div className="hidden lg:flex"><LanguageSwitcher compact /></div>
+      {/* Always visible, unlike SiteNavigation's own ThemeSwitcher which
+          discovery mode drops: without this, dark mode was reachable only
+          from the /my card (see #457's comment on discovery-navigation.tsx). */}
+      <div className="hidden lg:flex items-center gap-2">
+        <ThemeSwitcher />
+        <LanguageSwitcher compact />
+      </div>
     </header>
   );
 }

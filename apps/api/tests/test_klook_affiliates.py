@@ -13,6 +13,7 @@ from pydantic import ValidationError
 from app.affiliates.registry import PARTNERS_BY_CODE, partner_configured
 from app.affiliates.service import AffiliateContext, TravelpayoutsLinkClient, resolve_partner_target
 from app.config import Settings
+from app.i18n import bind_request_locale, reset_request_locale
 from app.models import (
     DestinationAffiliateOffer,
     TravelServiceBrand,
@@ -23,6 +24,8 @@ from app.travel_services.channels import (
     channel_context,
     klook_affiliate_target,
     klook_canonical_target,
+    klook_locale_target,
+    klook_product_identity,
     klook_product_target,
     resolve_offer_target,
     same_klook_identity,
@@ -102,6 +105,46 @@ def test_direct_target_preserves_identity_and_own_aid_without_user_tracking():
     assert klook_canonical_target(target, AID) == TARGET + "?query=Tokyo+Tower"
     with pytest.raises(ValueError):
         klook_canonical_target(target)
+
+
+@pytest.mark.parametrize(
+    ("locale", "segment"),
+    [("en", "en-US"), ("ja", "ja"), ("ko", "ko"), ("zh-TW", "zh-TW"), ("zh-CN", "zh-CN")],
+)
+def test_clickout_opens_the_reader_language_of_the_same_product(locale, segment):
+    token = bind_request_locale(locale)
+    try:
+        # The stored fixture is a zh-TW link: only the language segment may move, and the
+        # slug rides along because Klook identifies the page by the numeric id.
+        target = klook_affiliate_target(TARGET, AID)
+        assert urlsplit(target).path == f"/{segment}/activity/12345-reviewed-fixture/"
+        assert parse_qs(urlsplit(target).query) == {"aid": [AID]}
+        assert klook_product_identity(klook_locale_target(TARGET)) == klook_product_identity(TARGET)
+        # A template renders no language segment of its own, so this one is inserted.
+        inserted = klook_affiliate_target("https://www.klook.com/activity/12345/", AID)
+        assert urlsplit(inserted).path == f"/{segment}/activity/12345/"
+        assert klook_affiliate_target(target, AID) == target
+    finally:
+        reset_request_locale(token)
+
+
+@pytest.mark.parametrize(
+    "url",
+    [
+        "https://www.klook.com/zh-TW/activity/1?aid=2",
+        "https://www.klook.com/redirect?url=https%3A%2F%2Fevil.test",
+        "https://www.klook.com//evil.test",
+    ],
+)
+def test_language_rewrite_cannot_rescue_a_rejected_destination(url):
+    # The rewrite runs after the canonical gate, never before it, so reading in another
+    # language cannot launder a foreign AID or a redirect path into an accepted link.
+    token = bind_request_locale("ja")
+    try:
+        with pytest.raises(ValueError):
+            klook_affiliate_target(url, AID)
+    finally:
+        reset_request_locale(token)
 
 
 @pytest.mark.parametrize("aid", ["0", "-1", "123&aid=9", "abc", " 134379", "1" * 21])

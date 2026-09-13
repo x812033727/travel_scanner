@@ -9,10 +9,14 @@ from typing import Any
 from urllib.parse import parse_qsl, unquote, urlencode, urlsplit, urlunsplit
 
 from app.config import Settings
-from app.i18n import active_locale
+from app.i18n import active_locale, provider_locale
 from app.models import DestinationAffiliateOffer, TravelServiceBrand, TravelServiceOffer
 from app.travel_services.registry import affiliate_click_target, affiliate_target, brand_target
 from app.travel_services.schemas import safe_url
+
+# One definition of "a Klook path starts with a language segment", shared by the rewrite
+# and the product-identity match so the two can never disagree about where the id begins.
+_LOCALE_SEGMENT = r"[a-z]{2}(?:-[A-Za-z]{2})?"
 
 
 def channel_for(brand: TravelServiceBrand) -> str:
@@ -123,10 +127,28 @@ def klook_canonical_target(value: str, affiliate_id: str | None = None) -> str:
     return urlunsplit(("https", "www.klook.com", parsed.path, urlencode(retained), ""))
 
 
+def klook_locale_target(value: str) -> str:
+    """Point a canonical Klook URL at the language edition the visitor is reading in.
+
+    Klook publishes one slug per product and varies only this leading path segment --
+    its own hreflang set lists /ja/, /ko/, /zh-TW/ and /en-US/ against an identical
+    slug -- because the numeric product id, not the slug, identifies the page. So a
+    stored zh-TW link stays the same product when a Japanese reader opens it.
+
+    Only stored targets carry a locale; a template may render none, hence the insert.
+    """
+    parsed = urlsplit(value)
+    path = re.sub(rf"^/{_LOCALE_SEGMENT}(?=/|$)", "", parsed.path)
+    locale = provider_locale("klook", active_locale())
+    return urlunsplit(parsed._replace(path=f"/{locale}{path}"))
+
+
 def klook_affiliate_target(value: str, affiliate_id: str) -> str:
     if not re.fullmatch(r"[1-9][0-9]{0,19}", affiliate_id):
         raise ValueError("Klook AID required")
-    canonical = urlsplit(klook_canonical_target(value, affiliate_id))
+    # After the canonical gate, never before it: the rewrite must not be able to turn a
+    # rejected path into an accepted one.
+    canonical = urlsplit(klook_locale_target(klook_canonical_target(value, affiliate_id)))
     query = parse_qsl(canonical.query, keep_blank_values=True) + [("aid", affiliate_id)]
     return urlunsplit(canonical._replace(query=urlencode(query)))
 
@@ -154,7 +176,7 @@ def klook_product_target(value: str, kind: str) -> str:
 def klook_product_identity(value: str) -> tuple[str, str] | None:
     target = klook_canonical_target(value)
     match = re.fullmatch(
-        r"/(?:[a-z]{2}(?:-[A-Za-z]{2})?/)?(hotels|activity)/(?:detail/)?"
+        rf"/(?:{_LOCALE_SEGMENT}/)?(hotels|activity)/(?:detail/)?"
         r"([1-9][0-9]*)(?:-[^/]+)?/?",
         urlsplit(target).path,
     )
