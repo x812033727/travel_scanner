@@ -1,13 +1,13 @@
 ---
 id: 2026-09-13-hide-guide-published-and-valid-until
 title: 前台不再顯示情報攻略的發布日期與適用期限
-status: review
+status: done
 priority: P2
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-13T09:20:08Z
 created_at: 2026-09-13T09:19:15Z
-completed_at:
+completed_at: 2026-09-13T10:33:11Z
 branch: claude/charming-hopper-m0vhru
 depends_on: []
 scope:
