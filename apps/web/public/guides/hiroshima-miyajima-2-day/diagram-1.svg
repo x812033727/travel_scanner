@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">廣島市區與宮島交通路線圖 / Hiroshima city and Miyajima transport map</title>
+  <desc id="desc">廣島機場搭利木津巴士約 50 分、1,500 日圓到廣島站；廣島站搭廣電約 15 分、240 日圓到原爆圓頂前的和平紀念公園；廣島站到宮島口 JR 約 28 分、420 日圓，廣電約 60 分、240 日圓；宮島口搭渡輪約 10 分、200 日圓加訪問稅 100 日圓到宮島；和平公園的元安棧橋有高速船約 45 分、2,400 日圓直達宮島；宮島上從紅葉谷搭纜車到獅子岩，來回 2,000 日圓。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="80" y="82" font-size="40" font-weight="700" fill="#102A2B">広島市内と宮島　交通ルート</text>
+  <text x="80" y="122" font-size="22" fill="#5C6B6B">Hiroshima city and Miyajima · 分鐘與票價為各官網數字，以時刻表為準</text>
+
+  <!-- Airport (top right) -> Hiroshima Station (bus, dashed) -->
+  <rect x="1240" y="150" width="280" height="110" rx="24" fill="#6B4A3A"/>
+  <text x="1380" y="196" font-size="30" font-weight="700" fill="#FFFFFF" text-anchor="middle">広島空港</text>
+  <text x="1380" y="232" font-size="20" fill="#F1E8E3" text-anchor="middle">Hiroshima Airport · HIJ</text>
+  <path d="M 1300 260 C 1250 340, 1130 380, 1000 400" fill="none" stroke="#D97A2B" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+  <text x="1040" y="318" font-size="22" font-weight="700" fill="#D97A2B">リムジンバス Limousine 約 50 分 · 1,500 円</text>
+
+  <!-- Hiroshima Station hub -->
+  <rect x="860" y="380" width="280" height="110" rx="24" fill="#102A2B"/>
+  <text x="1000" y="426" font-size="30" font-weight="700" fill="#FFFFFF" text-anchor="middle">広島駅</text>
+  <text x="1000" y="462" font-size="20" fill="#E6F2F1" text-anchor="middle">Hiroshima Station · 新幹線</text>
+
+  <!-- Hiroden to Atomic Bomb Dome (west) -->
+  <path d="M 880 435 L 560 435" fill="none" stroke="#2E7D5B" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="560" cy="435" r="16" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="8"/>
+  <text x="330" y="405" font-size="24" font-weight="700" fill="#102A2B">原爆ドーム前 Atomic Bomb Dome</text>
+  <text x="330" y="433" font-size="18" fill="#5C6B6B">平和記念公園 Peace Memorial Park · 資料館</text>
+  <text x="720" y="468" font-size="20" font-weight="700" fill="#2E7D5B" text-anchor="middle">広電 Hiroden</text>
+  <text x="720" y="492" font-size="20" font-weight="700" fill="#2E7D5B" text-anchor="middle">約 15 分 · 240 円</text>
+
+  <!-- JR to Miyajimaguchi (south-west) and Hiroden Miyajima line -->
+  <path d="M 900 490 C 800 600, 640 650, 460 660" fill="none" stroke="#6B4A3A" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 560 451 C 520 540, 500 600, 460 660" fill="none" stroke="#2E7D5B" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="460" cy="660" r="16" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"/>
+  <text x="485" y="705" font-size="24" font-weight="700" fill="#102A2B">宮島口 Miyajimaguchi</text>
+  <text x="485" y="733" font-size="18" fill="#5C6B6B">JR 宮島口 · 広電宮島口 · 旅客ターミナル</text>
+  <text x="680" y="600" font-size="22" font-weight="700" fill="#6B4A3A">JR 山陽本線 約 28 分 · 420 円</text>
+  <text x="560" y="548" font-size="20" font-weight="700" fill="#2E7D5B">広電 2 号線 約 60 分 · 240 円</text>
+
+  <!-- Ferry to Miyajima -->
+  <path d="M 440 670 C 360 720, 300 760, 220 790" fill="none" stroke="#2F6F9F" stroke-width="12" stroke-dasharray="4 14" stroke-linecap="round"/>
+  <rect x="80" y="760" width="180" height="100" rx="24" fill="#B8442D"/>
+  <text x="170" y="802" font-size="30" font-weight="700" fill="#FFFFFF" text-anchor="middle">宮島</text>
+  <text x="170" y="836" font-size="20" fill="#FBE9E4" text-anchor="middle">Miyajima</text>
+  <text x="80" y="888" font-size="20" font-weight="700" fill="#2F6F9F">フェリー Ferry 約 10 分 · 200 円＋訪問税 100 円</text>
+
+  <!-- High-speed boat from Peace Park -->
+  <path d="M 540 455 C 420 520, 300 620, 200 760" fill="none" stroke="#2F6F9F" stroke-width="8" stroke-dasharray="4 14" stroke-linecap="round"/>
+  <text x="80" y="560" font-size="20" font-weight="700" fill="#2F6F9F">世界遺産航路 高速船 約 45 分 · 2,400 円</text>
+  <text x="80" y="586" font-size="18" fill="#5C6B6B">元安桟橋 Motoyasu Pier 出發</text>
+
+  <!-- Miyajima island detail -->
+  <path d="M 260 810 L 420 810" fill="none" stroke="#7E57C2" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="430" cy="810" r="14" fill="#FFFFFF" stroke="#7E57C2" stroke-width="7"/>
+  <text x="455" y="800" font-size="22" font-weight="700" fill="#102A2B">嚴島神社 → 紅葉谷 → 獅子岩</text>
+  <text x="455" y="828" font-size="18" fill="#7E57C2">宮島ロープウエー Ropeway 往復 2,000 円</text>
+
+  <!-- Legend -->
+  <g font-size="20" fill="#102A2B">
+    <line x1="1000" y1="620" x2="1060" y2="620" stroke="#D97A2B" stroke-width="8" stroke-dasharray="18 12" stroke-linecap="round"/>
+    <text x="1072" y="627">リムジンバス Bus</text>
+    <line x1="1000" y1="660" x2="1060" y2="660" stroke="#2E7D5B" stroke-width="10" stroke-linecap="round"/>
+    <text x="1072" y="667">広電 路面電車 Hiroden</text>
+    <line x1="1000" y1="700" x2="1060" y2="700" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round"/>
+    <text x="1072" y="707">JR 西日本 JR West</text>
+    <line x1="1000" y1="740" x2="1060" y2="740" stroke="#2F6F9F" stroke-width="10" stroke-dasharray="4 14" stroke-linecap="round"/>
+    <text x="1072" y="747">フェリー・高速船 Ferry / Boat</text>
+    <line x1="1000" y1="780" x2="1060" y2="780" stroke="#7E57C2" stroke-width="10" stroke-linecap="round"/>
+    <text x="1072" y="787">ロープウエー Ropeway</text>
+    <text x="1330" y="867" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+  </g>
+</svg>

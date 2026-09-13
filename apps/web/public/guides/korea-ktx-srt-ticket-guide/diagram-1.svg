@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans KR','PingFang TC','Microsoft JhengHei','Apple SD Gothic Neo',system-ui,sans-serif">
+  <title id="title">首爾／水西到釜山的 KTX 與 SRT 路線圖 / KTX from Seoul and SRT from Suseo to Busan</title>
+  <desc id="desc">兩條線：KTX 從首爾站出發（青色線），SRT 從水西站出發（珊瑚色線），在天安牙山之後走同一條京釜高速線，經大田、東大邱、慶州（舊新慶州）、蔚山到釜山。KTX 首爾到釜山最快 2 小時 18 分，一天 74 班，停靠站多的班次要 3 小時 27 分，票價以 Korail 官網為準；SRT 水西到釜山最快 2 小時 11 分，一天 44 班，一般室 52,200 韓元、特室 75,700 韓元，2026-09-01 起。圖下方列出 SRT 水西出發的一般室票價：天安牙山 11,300、大田 20,100、東大邱 37,000、慶州 42,400、蔚山 46,400、釜山 52,200 韓元；釜山與慶州之間 KTX 28 到 37 分鐘、SRT 一般室 10,100 韓元；首爾到慶州 KTX 最快 1 小時 59 分、水西到慶州 SRT 最快 1 小時 52 分。註記：首爾站買不到 SRT，水西站沒有 KTX，KORAIL PASS 不能搭 SRT。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">首爾／水西到釜山：KTX 與 SRT 的路線與最快車程（2026 年 9 月查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">KTX from Seoul Station, SRT from Suseo Station: fastest journey times and SRT standard-class fares</text>
+
+  <!-- summary boxes -->
+  <rect x="760" y="112" width="390" height="112" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="955" y="146" font-size="19" font-weight="700" fill="#0B4F4D" text-anchor="middle">KTX（Korail）首爾→釜山 最快 2 小時 18 分</text>
+  <text x="955" y="174" font-size="15" fill="#0B4F4D" text-anchor="middle">一天 74 班・停靠站多的班次 3 小時 27 分</text>
+  <text x="955" y="202" font-size="15" fill="#0B4F4D" text-anchor="middle">票價以 Korail 官網為準・KORAIL PASS 可搭</text>
+  <rect x="1170" y="112" width="390" height="112" rx="14" fill="#FBE9E4" stroke="#B8442D" stroke-width="4"/>
+  <text x="1365" y="146" font-size="19" font-weight="700" fill="#8A2E1D" text-anchor="middle">SRT（SR）水西→釜山 最快 2 小時 11 分</text>
+  <text x="1365" y="174" font-size="15" fill="#8A2E1D" text-anchor="middle">一天 44 班・一般室 52,200 韓元・特室 75,700 韓元</text>
+  <text x="1365" y="202" font-size="15" fill="#8A2E1D" text-anchor="middle">票價 2026-09-01 起・KORAIL PASS 不能搭</text>
+
+  <!-- legend -->
+  <path d="M 60 136 L 130 136" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+  <text x="144" y="142" font-size="16" fill="#102A2B">KTX（Korail）</text>
+  <path d="M 300 136 L 370 136" stroke="#B8442D" stroke-width="10" stroke-linecap="round"/>
+  <text x="384" y="142" font-size="16" fill="#102A2B">SRT（SR）</text>
+
+  <!-- lines -->
+  <path d="M 150 300 C 270 300, 280 460, 380 460" stroke="#0D6B68" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <path d="M 380 460 L 1400 460" stroke="#0D6B68" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <path d="M 150 700 C 270 700, 280 480, 380 480" stroke="#B8442D" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <path d="M 380 480 L 1400 480" stroke="#B8442D" stroke-width="10" fill="none" stroke-linecap="round"/>
+
+  <!-- origin stations -->
+  <circle cx="150" cy="300" r="20" fill="#0D6B68" stroke="#FFFFFF" stroke-width="5"/>
+  <text x="110" y="248" font-size="22" font-weight="700" fill="#102A2B">서울역 首爾站 Seoul Station</text>
+  <text x="110" y="274" font-size="16" fill="#5C6B6B">KTX 出發・部分班次從龍山站、行信站發車</text>
+  <circle cx="150" cy="700" r="20" fill="#B8442D" stroke="#FFFFFF" stroke-width="5"/>
+  <text x="110" y="648" font-size="22" font-weight="700" fill="#102A2B">수서역 水西站 Suseo Station</text>
+  <text x="110" y="674" font-size="16" fill="#5C6B6B">SRT 出發・地鐵 3 號線、水仁盆唐線、GTX-A</text>
+
+  <!-- trunk stations -->
+  <g fill="#FFFFFF" stroke="#102A2B" stroke-width="5">
+    <circle cx="380" cy="470" r="16"/>
+    <circle cx="560" cy="470" r="16"/>
+    <circle cx="780" cy="470" r="16"/>
+    <circle cx="980" cy="470" r="16"/>
+    <circle cx="1170" cy="470" r="16"/>
+    <circle cx="1400" cy="470" r="22"/>
+  </g>
+  <g font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">
+    <text x="380" y="524">천안아산 天安牙山</text>
+    <text x="560" y="404">대전 大田</text>
+    <text x="780" y="524">동대구 東大邱</text>
+    <text x="980" y="404">경주 慶州（舊新慶州）</text>
+    <text x="1170" y="524">울산 蔚山</text>
+    <text x="1400" y="404">부산 釜山</text>
+  </g>
+  <g font-size="15" fill="#5C6B6B" text-anchor="middle">
+    <text x="380" y="548">Cheonan-Asan</text>
+    <text x="560" y="428">Daejeon</text>
+    <text x="780" y="548">Dongdaegu</text>
+    <text x="980" y="428">Gyeongju</text>
+    <text x="1170" y="548">Ulsan</text>
+    <text x="1400" y="428">Busan</text>
+  </g>
+
+  <!-- SRT fares row -->
+  <text x="380" y="596" font-size="16" font-weight="700" fill="#8A2E1D" text-anchor="start">SRT 水西出發 一般室票價（韓元，2026-09-01 起）</text>
+  <g font-size="17" font-weight="700" fill="#8A2E1D" text-anchor="middle">
+    <text x="380" y="626">11,300</text>
+    <text x="560" y="626">20,100</text>
+    <text x="780" y="626">37,000</text>
+    <text x="980" y="626">42,400</text>
+    <text x="1170" y="626">46,400</text>
+    <text x="1400" y="626">52,200</text>
+  </g>
+
+  <!-- Busan-Gyeongju bracket -->
+  <path d="M 980 660 L 980 690 L 1400 690 L 1400 660" stroke="#2F6F9F" stroke-width="4" fill="none"/>
+  <text x="1190" y="718" font-size="16" font-weight="700" fill="#1F4E73" text-anchor="middle">釜山↔慶州 KTX 28～37 分・SRT 一般室 10,100 韓元</text>
+
+  <!-- notes -->
+  <text x="60" y="784" font-size="15" fill="#5C6B6B">車程是 2026-09-01 起 KTX·SRT 時刻表上的最快班次；首爾→慶州 KTX 最快 1 小時 59 分，水西→慶州 SRT 最快 1 小時 52 分。</text>
+  <text x="60" y="812" font-size="15" fill="#5C6B6B">KTX 與 SRT 是兩家公司：首爾站買不到 SRT，水西站沒有 KTX；KORAIL PASS 只能搭 Korail 的 KTX、ITX、무궁화，不能搭 SRT。</text>
+  <text x="1540" y="882" font-size="15" fill="#8A8F8F" text-anchor="end">© Mokaair 製圖 2026</text>
+</svg>
