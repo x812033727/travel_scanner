@@ -361,3 +361,41 @@ body position`——而我當下只 grep 了 `×` 和 `Tests`，把診斷訊息�
 `useModalSheet`），卻在同一次跑一起失敗。這比較像是整套的時序在那一次整體偏移，而不是某一個
 元件自己的競態——和「main 帶進新測試檔會改變順序與時序」的觀察一致（那一次剛好併入了 `#411`
 的中介層與 `#420` 的工具改動）。
+
+## 第四個實例（claude-opus-5, 2026-09-13）：同一個 commit 一紅一綠，而且這次不是 Escape
+
+CI 對 **同一個 commit `cc6c0c59`** 跑了兩個 run（push 與 pull_request 各觸發一次）。
+`web` job 一個紅、一個綠：
+
+- 紅：`actions/runs/34709672643/job/103595993227`（5m22s）
+- 綠：`actions/runs/34709670692/job/103595987235`（11m8s，同 commit）
+- 重跑那個紅的 job 之後也綠了。
+
+這是目前最乾淨的「非決定性」證據：同一份程式碼、同一個 commit、同一個 workflow，兩種結果。
+那個 PR 只改了 `apps/api` 的 Python 與一個任務票，碰不到任何 web 檔案。
+
+**紅的那次是 `trip-editor.test.tsx:197`**，案例是
+`opens editing from the stop title and exposes move only through its dismissible More menu`：
+
+```
+196: fireEvent.click(within(editor).getByRole("button", { name: "關閉" }));
+197: await waitFor(() => expect(screen.queryByRole("dialog", { name: "編輯安排" })).toBeNull());
+```
+
+三件事值得記下來：
+
+1. **觸發的是點「關閉」按鈕，不是 Escape。** 本票的標題與前三個實例都是 Escape 沒生效；這次
+   是一般的關閉按鈕。所以要找的時序假設**不在 keydown handler 裡**，或者不只在那裡。
+2. **它是包在 `waitFor` 裡失敗的**，案例耗時 1204ms。也就是彈層在整整一秒的重試視窗內都沒關掉
+   ——不是「差一個 frame」的競態。
+3. **body 的捲動鎖還在**：失敗當下的 DOM dump 是
+   `<body style="overflow: hidden; position: fixed; top: 0px; left: 0px; width: 100%;">`，
+   `<html style="overflow: hidden;">`。留下來的元素是 `class="planner-sheet"` 的
+   `<section role="dialog" aria-modal="true">`。**層根本沒被釋放**，不是只有 DOM 沒拆。
+
+那一輪的規模：243 檔 / 2549 測試 / 253s，只紅這一條。
+
+`trip-editor.test.tsx:292` 上次加的現場輸出沒有幫到這次——失敗落在 197 行，那裡沒有同等的
+輸出。既然現在知道 body 的鎖狀態是個有訊息量的訊號，值得把它加進 `waitFor` 失敗時的輸出裡
+（哪些層還在 `layers`、body 的 position/overflow、還有幾個 `role="dialog"`），比事後翻 DOM
+dump 有效率。
