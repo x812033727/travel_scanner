@@ -1,13 +1,13 @@
 ---
 id: 2026-09-13-launch-articles-batch-2-twenty-more
 title: Launch articles batch 2: twenty more travel guides
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: claude-fable-5-1
 claimed_at: 2026-09-13T02:36:54Z
 created_at: 2026-09-13T02:36:40Z
-completed_at:
+completed_at: 2026-09-13T04:08:26Z
 branch: claude/guide-articles-batch-2
 depends_on: []
 scope:
@@ -30,13 +30,13 @@ tickets, eSIM, drugstores, Japan entry), with three more dated notices.
 
 ## Definition of done
 
-- [ ] Twenty packs under `apps/api/app/guides/content/`, zh-TW, each with a hero photo, a
+- [x] Twenty packs under `apps/api/app/guides/content/`, zh-TW, each with a hero photo, a
       self-drawn SVG diagram, a table, sources with `checked_on`, and partner blocks per the
       rules in `docs/travel-guides.md`; the packaged-content test passes for all thirty.
-- [ ] Every photograph from Wikimedia Commons under CC0 / Public domain / CC BY / CC BY-SA,
+- [x] Every photograph from Wikimedia Commons under CC0 / Public domain / CC BY / CC BY-SA,
       licence and author read from the Commons API; every diagram labels only numbers the
       article verified.
-- [ ] Facts checked on official pages on the day of writing; anything unverified written as
+- [x] Facts checked on official pages on the day of writing; anything unverified written as
       以官網為準.
 
 ## Steps
@@ -64,12 +64,12 @@ The twenty (slug · kind · destination · topics):
 19. `japan-winter-illumination-2026` · intel (2027-01-15) · none · season, viewpoint
 20. `bangkok-airport-to-city` · howto · bangkok · transport, budget
 
-- [ ] Seven writing agents in parallel from one spec (`article_brief_v2.md`: pack, images
+- [x] Seven writing agents in parallel from one spec (`article_brief_v2.md`: pack, images
       JSON, Commons manifest, and the SVG diagram drawn by the agent this time).
-- [ ] `ingest_pack.py <slug>` per article: pydantic validation, copy the SVG, fetch and
+- [x] `ingest_pack.py <slug>` per article: pydantic validation, copy the SVG, fetch and
       licence-check the photos, write sizes and credits, save to the content folder.
-- [ ] Review each pack against its diagram (numbers must match), eyeball a sample through the
-      mock API, run the packaged-content test, commit, open the PR stacked on #443.
+- [x] Review each pack against its diagram (numbers must match), eyeball a sample through the
+      mock API, run the packaged-content test, commit, open the PR stacked on #443 (rebased onto main once #443 merged).
 
 ## How to verify
 
@@ -87,3 +87,18 @@ uv run python -m app.cli guides-import --actor-email <admin> --dry-run
 - Second-batch diagrams are agent-drawn; the review checks viewBox 1600×900, no external
   references, system fonts only, and that every time or fare printed on the diagram appears
   in the article's verified text.
+
+## Outcome (2026-09-13)
+
+- All twenty packs ingested; the packaged-content test passes for thirty articles. Fourteen
+  came with the agents' fact-check reports; the Kansai and Japan-wide agents (six articles)
+  were cut off by the session rate limit after writing every file, so their packs were
+  validated and reviewed from the files alone (sources, offers, diagram numbers, renders)
+  without a closing report.
+- Diagram review was mechanised (`review_diagrams.py` in the session scratchpad): every
+  number on a diagram must appear in the article text; labels under 15 px were raised.
+  The rule is now in `docs/travel-guides.md`.
+- Two ingest pitfalls fixed on the way: the script copied SVGs to `public/<slug>` instead of
+  `public/guides/<slug>`, and one hero (`osaka-kyoto-where-to-stay`) only compresses to
+  243 KB at the quality floor — within the 300 KB test budget, above the 200 KB guideline.
+- After deploy: `guides-import --dry-run` then `--publish` on the host, as for batch 1.
