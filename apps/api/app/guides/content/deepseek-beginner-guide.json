@@ -1,0 +1,323 @@
+{
+  "slug": "deepseek-beginner-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "DeepSeek 是什麼：免費、開源與資料流向，用之前先知道的事",
+      "description": "DeepSeek 是杭州一家公司的對話助理與開源模型：網頁版與 App 免費，V4.1-Flash 的權重以 MIT 授權開放，但隱私政策寫明資料在中華人民共和國收集、處理與儲存並可用於訓練，行政院也在 2025 年 2 月 3 日要求公務機關全面禁用。這篇依官網、Hugging Face、行政院與數位發展部的公告，講清楚它是什麼、免費能做什麼、資料去哪裡、誰不能用、內容審查是什麼現象，並用決策樹與表格比較官方 App、第三方雲端託管、自己電腦跑開源版三種途徑的資料流向與費用。",
+      "hero": {
+        "src": "/guides/deepseek-beginner-guide/hero.jpg",
+        "alt": "一個對話泡泡的右側分出三條線，分別連到一朵雲、一台伺服器機櫃和一台筆記型電腦，象徵同一段對話可以走三條不同的路",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "「DeepSeek 免費又好用」和「政府禁用 DeepSeek」在台灣常常同時聽到，而且都對：它的網頁版與 App 不收費，主力模型的權重以 MIT 授權開放下載；同時它的隱私政策白紙黑字寫著個人資料在中華人民共和國收集、處理與儲存，行政院也在 2025 年 2 月 3 日要求公務機關全面禁用。一般民眾與私人企業沒有禁令，但要不要用、怎麼用，取決於你貼進去的是什麼資料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇把查得到的事實排開：DeepSeek 是哪家公司、有哪些產品、免費版怎麼開始、隱私政策逐條寫了什麼、台灣的規定管到誰、內容審查是怎樣的現象，最後用一張決策樹和一張表格比較官方 App、第三方雲端託管、自己電腦跑開源版三種途徑的資料流向與費用。文中的模型名稱、價格與規定全部在 2026 年 9 月 13 日查自 DeepSeek 官方文件、Hugging Face、行政院與數位發展部的公告頁。"
+        },
+        {
+          "type": "heading",
+          "text": "DeepSeek 是什麼：杭州的公司、四種產品、一組開源模型",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "DeepSeek 的營運公司是杭州深度求索人工智能基础技术研究有限公司，官網中文首頁把產品分成四塊：DeepSeek 網頁版、DeepSeek 手機應用、API 開放平台，以及給開發者組裝 AI 代理用的開源工具 DeepSeek Harness。一般人會碰到的是前兩個，都是免費的對話助理；API 是給程式呼叫的付費服務，按 token 計價；Harness 這篇不展開。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官網首頁在 2026 年 9 月列出的現行主力是 DeepSeek-V4.1-Flash，官方更新記錄寫它在 2026 年 9 月 10 日發布，是新架構家族裡最小的模型，具備原生的圖像理解；更早的 V4 與 R1 等也列在首頁。V4.1-Flash 的權重放在 Hugging Face，模型卡寫明授權是 MIT，總參數 552B，每次推論只啟用其中一小部分，上下文最長 100 萬 token。MIT 授權的意思是任何人都可以下載、修改、商用，「開源」就是從這裡來的。但「開源權重」與「免費服務」是兩件事：前者是你自己拿模型去跑，後者是官方的伺服器幫你跑，資料流向完全不同。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 工具全景：聊天、搜尋、寫作、圖片工具怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+        },
+        {
+          "type": "heading",
+          "text": "免費能做什麼，App 與網頁怎麼開始",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "台灣 App Store 上的「DeepSeek - AI 智能助手」由杭州深度求索上架，價格是免費，年齡分級 13+，需要 iOS 15.0 以上；簡介把用途寫成搜尋、寫作、閱讀、解題、翻譯，2.5.1 版的更新說明寫著「新模型上線，快速、專家、識圖模式合併升級」，也就是 App 已經換上能看圖的新一代模型。網頁版在 chat.deepseek.com，功能相同。免費版的次數上限官網沒有公布，以登入後看到的為準。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "下載 App 或開啟網頁版，註冊帳號。隱私政策列出的帳號資料是電子郵件、電話號碼與密碼，也有第三方帳號登入，選項以登入頁為準。",
+            "註冊前把使用條款與隱私政策各讀一次，兩份文件都連在登入頁；條款寫明未滿 18 歲要與監護人一起閱讀。",
+            "進入對話畫面：中央是輸入框，旁邊有模式切換與夾帶圖片、檔案的按鈕，名稱與位置依版本不同。把問題送出即可。",
+            "進設定找「Improve the model for everyone」這個開關並關掉。使用條款第 4.3 條寫的是：不同意資料被用於改善模型，就關閉這個選項。位置與中文名稱依版本不同。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "對開發者，API 用美元計價。2026 年 9 月 10 日起，deepseek-flash 在尖峰時段每百萬 token 的價格是輸入 0.3 美元（快取命中 0.006 美元）、輸出 1.2 美元，離峰時段減半；尖峰時段是週一到週五 UTC 01:00 到 04:00 與 06:00 到 10:00，換成台灣時間是 09:00 到 12:00 與 14:00 到 18:00。免費額度價格頁沒寫，以開放平台為準。"
+        },
+        {
+          "type": "heading",
+          "text": "資料去哪裡：隱私政策逐條看",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這一節只引用 DeepSeek 自己公布的文件。英文版隱私政策最後更新是 2026 年 2 月 10 日，簡體中文版同日；使用條款最後更新是 2026 年 3 月 27 日。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "存放地：英文版「Where We Store Your Personal Data」一節寫「為了提供服務，我們直接在中華人民共和國收集、處理與儲存你的個人資料」，並提醒資料可能存放在你所在國家以外的伺服器；簡體中文版寫「將在境內運營過程中收集和產生的您的個人信息存儲於中華人民共和國境內」。",
+            "收集項目：帳號資料（生日、使用者名稱、電子郵件、電話、密碼）；使用者輸入（文字、語音、上傳的檔案與照片、聊天記錄）；裝置與網路資料（型號、作業系統、IP 位址、識別碼）；使用記錄與依 IP 推估的約略位置；Cookie；付款資料；第三方登入權杖；合作夥伴提供的安全資料；用於訓練的公開資料。",
+            "用途：提供與維護服務、改善與開發服務並訓練機器學習模型、通知與客服、安全與穩定、遵守法律義務、回應執法要求。簡體中文版直接寫「可能會將服務所收集的輸入及對應輸出，用於 DeepSeek 模型訓練和服務的優化」。",
+            "分享對象：服務供應商、集團內企業、執法機關、企業交易對象與你同意的第三方；並聲明不做目標式廣告、不出售個人資料。",
+            "保存期限：「在提供服務與本政策所列目的所需的期間內保留」，沒有寫具體天數；刪除帳號後無法復原內容。",
+            "你的權利：依所在地法律，可要求存取、更正、刪除、可攜，以及拒絕資料被用於訓練模型。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "使用條款補了兩件事：條款受中華人民共和國大陸地區法律管轄，爭議由杭州深度求索註冊地的法院管；第 3.3 條寫 DeepSeek 有權用技術手段審查使用者的使用行為，包括建立風險過濾機制。App Store 的隱私標籤則列出位置、聯絡資訊、使用者內容、搜尋記錄、識別碼、使用資料與診斷資料會與你連結。放在一起看，結論很直接：你打進去的每一句話、貼的每一份檔案，預設會傳到位於中國的伺服器，並可能用來訓練模型，除非你關掉那個開關；關掉之後，資料仍然存放在那裡。"
+        },
+        {
+          "type": "link",
+          "text": "AI 隱私設定檢查表：關掉訓練、刪掉記錄、看懂資料去哪裡",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        },
+        {
+          "type": "heading",
+          "text": "台灣的規定：公務機關禁用，民眾與企業自行評估",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方公告有三步。2025 年 1 月 31 日，數位發展部發布新聞稿「公務機關不得使用 Deepseek AI 服務以防範資安風險」，依據是行政院 2019 年訂的「各機關對危害國家資通安全產品限制使用原則」，適用公務機關、關鍵基礎設施提供者、公立學校、公營事業、行政法人與政府捐助的財團法人，理由是跨境傳輸及資訊外洩的資安疑慮。2025 年 2 月 3 日，行政院公告卓榮泰院長要求公務機關全面禁用 DeepSeek AI 服務，理由是使用資料有違反著作權法的疑慮、模型訓練上有思想審查與資料偏異、資料可能跨境傳送至中國、可能違反個資法；公立大學與研究機構有研究需求時，依程序報准後可以使用，並建議在不含個資的單機下載後斷網使用。2025 年 2 月 20 日，數位發展部資通安全署再發新聞稿，寫明禁用範圍「包含雲端服務、APP 及地端下載等方式」，也寫明「目前未進一步限制業者提供民眾下載及使用」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "整理成一句話：在公務機關、公立學校、公營事業或行政法人工作，或用公家的電腦與網路，三種形式都不能用，連自己下載到公家電腦上跑也不行；一般民眾與私人企業沒有禁令，但公務機關被禁的理由（資料存放地、訓練用途、內容審查）對你同樣成立，只是後果由你自己承擔。企業處理客戶個資時，個資法的要求不因工具免費而降低。"
+        },
+        {
+          "type": "heading",
+          "text": "內容審查：可以觀察到的現象",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這裡的「內容審查」指模型對某些話題不回答、只回答一部分，或用特定口徑回答，跟所有模型都有的「拒絕有害內容」不是同一件事。2025 年 5 月發表的研究論文 R1dacted 整理了一批會被 DeepSeek-R1 拒答、其他模型卻不會拒答的提示詞，集中在與中國相關的政治敏感話題；論文發現這種拒答在英文以外的語言也出現，而且會隨著蒸餾傳到用 R1 訓練出來的小模型上。2025 年 6 月的另一篇論文用 646 個政治敏感問題比對模型的內部推理與最終回覆，發現敏感內容常出現在推理過程裡，卻在最終輸出中被省略或改寫。行政院公告與 DeepSeek 使用條款也分別提到「思想審查」與「風險過濾機制」。兩篇論文測的是 R1 世代，現行的 V4.1-Flash 是否相同，官方沒有說明，只能自己測。"
+        },
+        {
+          "type": "paragraph",
+          "text": "對一般使用者的意義是：問旅遊、寫作、程式、翻譯，通常不會碰到；問歷史、時事、兩岸與人權相關的問題，答案可能不完整或帶有特定立場，這類問題最好換一個工具再問一次，並以一手資料為準。幻覺怎麼查證另有一篇。"
+        },
+        {
+          "type": "link",
+          "text": "AI 幻覺與查證：怎麼確認它說的是真的",
+          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+        },
+        {
+          "type": "heading",
+          "text": "三種途徑：資料流向差在哪",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "途徑一是官方 App 與網頁版：免費、功能最完整、模型最新，資料流向就是隱私政策寫的那樣。途徑二是第三方雲端託管：權重開源，所以其他雲端平台能自己架同一個模型。Microsoft Learn 的文件把 DeepSeek-V4-Pro、V4-Flash、V3.2 列在「由 Azure 銷售的模型」，並寫明這類模型「由 Azure 託管、由 Azure 營運」；Amazon Bedrock 的文件在查證時列出 V3.2、V3.1 與 R1。走這條路，資料進的是那家平台的資料中心，適用那家平台的隱私條款，與杭州的公司沒有連線；代價是按 token 付費、要有開發者帳號並寫程式呼叫，模型版本也落後官方，查證時 V4.1-Flash 還沒出現在這兩家的清單上。"
+        },
+        {
+          "type": "paragraph",
+          "text": "途徑三是在自己電腦跑開源權重：資料完全不離開你的機器，也不用付費，是三條路裡唯一資料不外流的一條。限制在硬體：V4.1-Flash 有 552B 參數，模型卡示範的是用 vLLM 或 SGLang 在伺服器級 GPU 上啟動，V4 Pro 的模型卡更提到單一節點四張 GB300，都不是筆電能跑的規模。一般電腦能跑的是小模型，Ollama 的 deepseek-r1 頁面列出從 1.5b（1.1GB）到 671b（404GB）共七種尺寸，小的版本是用 R1 的輸出蒸餾 Qwen 與 Llama 而來，能力不及原版。另外 Ollama 上的 deepseek-v4.1-flash 只有 cloud 標籤，Ollama 文件寫這類模型會「自動卸載到 Ollama 的雲端服務」執行，資料其實去了 Ollama 的伺服器。審查行為會跟著權重走，本機跑不會讓它消失。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/deepseek-beginner-guide/diagram-1.svg",
+          "alt": "決策樹：先問你是否在公務機關工作，是就不能用（行政院 2025 年 2 月 3 日禁用）；再問資料是否敏感，不敏感走官方 App 或網頁版，資料存放在中華人民共和國；敏感則依資源選第三方雲端託管或自己電腦跑開源權重，都沒有就不要用 AI 處理；右側面板整理三條路的資料去向與不要貼的資料",
+          "width": 1600,
+          "height": 900,
+          "caption": "從左上角的問題一往下讀，每個問題的答案把你導向右邊的一條路；右側面板是三條路的資料去向與共同注意事項。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "途徑",
+            "資料去哪裡",
+            "費用",
+            "適合誰",
+            "要注意"
+          ],
+          "rows": [
+            [
+              "官方 App 與網頁版（chat.deepseek.com）",
+              "傳到 DeepSeek 位於中華人民共和國的伺服器；預設可用於訓練，可在設定關閉",
+              "免費；API 另計，美元按 token 計價",
+              "問題不涉及個資與機密的一般使用者",
+              "公務機關、公立學校、公營事業、行政法人禁用；特定話題可能拒答"
+            ],
+            [
+              "第三方雲端託管（Microsoft Foundry、Amazon Bedrock 等）",
+              "進該平台的資料中心，適用該平台的隱私條款，不經 DeepSeek",
+              "按 token 付費，各平台定價不同",
+              "需要 DeepSeek 模型、又不能把資料送到中國的開發者與企業",
+              "要寫程式或做設定；模型版本落後官方；審查行為隨權重保留"
+            ],
+            [
+              "自己電腦跑開源權重（Ollama 等）",
+              "不離開你的電腦",
+              "免費，但要有足夠的記憶體與顯示卡",
+              "有技術能力、資料敏感或想離線使用的人",
+              "完整版要伺服器級 GPU；一般電腦只能跑蒸餾小模型；Ollama 的 cloud 標籤不是本機"
+            ]
+          ],
+          "caption": "三種途徑比較（2026 年 9 月依 DeepSeek 隱私政策、Microsoft Learn、AWS 與 Ollama 官方文件整理）。"
+        },
+        {
+          "type": "paragraph",
+          "text": "選法很簡單：資料不敏感、只是想試試或做日常的寫作翻譯，途徑一夠用，先關掉訓練開關；資料敏感又非用不可，途徑二給企業、途徑三給有電腦的人；兩者都沒有，就不要用 AI 處理這份資料。常被一起提到的 MiniMax，另有一篇用同樣方式整理。"
+        },
+        {
+          "type": "link",
+          "text": "MiniMax 是什麼：模型、產品與資料流向一次看懂",
+          "url": "https://mokaair.com/zh-TW/life/minimax-beginner-guide"
+        },
+        {
+          "type": "link",
+          "text": "大型語言模型是什麼：用白話解釋 token、上下文與幻覺",
+          "url": "https://mokaair.com/zh-TW/life/what-is-a-large-language-model"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "這些資料絕對不要貼進去",
+          "text": "身分證字號、護照號碼與護照照片、信用卡號、任何帳號密碼與驗證碼；病歷、健保與保險資料；公司未公開的財報、合約、客戶名單、原始碼與內部文件；別人的個資，包括同事、客戶、家人的姓名加上電話或地址；含姓名與訂位代號的機票、住宿訂單截圖。判斷方法只有一個問題：這段內容如果存在一台由你不認識的人管理、位於另一個法域的伺服器上，還可能被拿去訓練模型，你會不會困擾；會，就改走途徑三，或不要用 AI 處理它。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "DeepSeek 官網中文首頁（公司名稱、網頁版、手機應用、API 開放平台、DeepSeek Harness、模型列表）",
+          "url": "https://www.deepseek.com/zh",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "DeepSeek API 文件：更新記錄（V4.1-Flash 2026 年 9 月 10 日發布、V4 系列時間線）",
+          "url": "https://api-docs.deepseek.com/updates",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "DeepSeek API 文件：DeepSeek-V4.1-Flash 發布說明（552B 參數、原生多模態、2026 年 9 月 10 日起的新價格）",
+          "url": "https://api-docs.deepseek.com/news/news260910",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "DeepSeek API 文件：價格（deepseek-flash 與 deepseek-v4-pro 每百萬 token 價格、尖峰與離峰時段）",
+          "url": "https://api-docs.deepseek.com/quick_start/pricing",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Hugging Face：deepseek-ai/DeepSeek-V4.1-Flash 模型卡（MIT 授權、552B 參數、100 萬 token 上下文、vLLM 與 SGLang 啟動方式）",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Hugging Face：deepseek-ai/DeepSeek-V4-Pro-0813 模型卡（MIT 授權、單一節點四張 GB300 的部署示範）",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "GitHub：deepseek-ai/deepseek-harness（DeepSeek Harness 為 MIT 授權的開源代理工具）",
+          "url": "https://github.com/deepseek-ai/deepseek-harness",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "DeepSeek 隱私政策（英文版，2026 年 2 月 10 日更新：存放地、收集項目、用途、分享對象、保存期限、使用者權利）",
+          "url": "https://cdn.deepseek.com/policies/en-US/deepseek-privacy-policy.html",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "DeepSeek 隱私政策（簡體中文版，2026 年 2 月 10 日更新：存儲於中華人民共和國境內、輸入與輸出用於模型訓練）",
+          "url": "https://cdn.deepseek.com/policies/zh-CN/deepseek-privacy-policy.html",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "DeepSeek 使用條款（英文版，2026 年 3 月 27 日更新：未滿 18 歲、Improve the model for everyone 開關、風險過濾機制、中華人民共和國法律管轄）",
+          "url": "https://cdn.deepseek.com/policies/en-US/deepseek-terms-of-use.html",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "App Store（台灣）：DeepSeek - AI 智能助手（免費、13+、iOS 15.0 以上、2.5.1 版更新說明、隱私標籤）",
+          "url": "https://apps.apple.com/tw/app/deepseek-ai-assistant/id6737597349",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "數位發展部新聞稿 2025 年 1 月 31 日：公務機關不得使用 Deepseek AI 服務以防範資安風險（適用對象、2019 年限制使用原則）",
+          "url": "https://moda.gov.tw/press/press-releases/15104",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "行政院新聞 2025 年 2 月 3 日：卓揆：公務機關全面禁用 Deepseek AI 服務（四項理由、研究用途報准、單機斷網建議）",
+          "url": "https://www.ey.gov.tw/Page/9277F759E41CCD91/3ce9fe8f-2f5f-4d1d-8176-6fa4cf622b82",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "數位發展部資通安全署新聞稿 2025 年 2 月 20 日：公務機關全面禁用 DeepSeek AI 服務，未限制一般民間使用（雲端服務、APP 及地端下載）",
+          "url": "https://moda.gov.tw/ACS/press/news/press/15296",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Naseh 等：R1dacted: Investigating Local Censorship in DeepSeek's R1 Language Model，arXiv 2505.12625，2025 年 5 月",
+          "url": "https://arxiv.org/abs/2505.12625",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Qiu、Zhou、Ferrara：Information Suppression in Large Language Models: Auditing, Quantifying, and Characterizing Censorship in DeepSeek，arXiv 2506.12349，2025 年 6 月（646 個政治敏感問題）",
+          "url": "https://arxiv.org/abs/2506.12349",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Microsoft Learn：Foundry Models sold by Azure（DeepSeek-V4-Pro、V4-Flash、V3.2 由 Azure 託管與營運）",
+          "url": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "AWS 官方文件：Amazon Bedrock 的 DeepSeek 模型（V3.2、V3.1、R1）",
+          "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards-deepseek.html",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Ollama 模型庫：deepseek-r1（1.5b 到 671b 七種尺寸與檔案大小、蒸餾自 Qwen 與 Llama、MIT 授權）",
+          "url": "https://ollama.com/library/deepseek-r1",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Ollama 官方文件：Cloud models（cloud 模型自動卸載到 Ollama 的雲端服務執行）",
+          "url": "https://docs.ollama.com/cloud",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}
