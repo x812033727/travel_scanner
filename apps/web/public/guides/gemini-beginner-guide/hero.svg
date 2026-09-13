@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">一顆星芒連到信封、文件與手機 / A star connected to an envelope, a document and a phone</title>
+  <desc id="desc">米色底上，左邊一顆青綠色的八角星芒，三條藍色曲線從星芒分別連到右邊的三個圖形：上方一個白色信封、中間一份橘色線條的文件、下方一支手機，象徵同一個 AI 助理出現在郵件、文件與手機裡。左下角一行字：一個帳號，四個入口。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- soft glow behind the star -->
+  <circle cx="560" cy="470" r="265" fill="#E3F0EF"/>
+
+  <!-- connectors: star to envelope, document, phone -->
+  <path d="M 700 380 Q 860 200 1000 190" fill="none" stroke="#2F6F9F" stroke-width="10" stroke-linecap="round"/>
+  <path d="M 745 470 Q 900 470 1118 450" fill="none" stroke="#2F6F9F" stroke-width="10" stroke-linecap="round"/>
+  <path d="M 690 570 Q 850 760 1000 745" fill="none" stroke="#2F6F9F" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="1000" cy="190" r="14" fill="#D97A2B"/>
+  <circle cx="1118" cy="450" r="14" fill="#D97A2B"/>
+  <circle cx="1000" cy="745" r="14" fill="#D97A2B"/>
+
+  <!-- the star -->
+  <polygon points="560,285 594,389 691,339 641,436 745,470 641,504 691,601 594,551 560,655 526,551 429,601 479,504 375,470 479,436 429,339 526,389" fill="#0D6B68"/>
+  <polygon points="560,360 580,422 638,392 608,450 670,470 608,490 638,548 580,518 560,580 540,518 482,548 512,490 450,470 512,450 482,392 540,422" fill="#F7F1E8"/>
+  <circle cx="560" cy="470" r="34" fill="#D97A2B"/>
+
+  <!-- envelope -->
+  <rect x="1000" y="110" width="270" height="170" rx="20" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="8"/>
+  <polyline points="1012,126 1135,222 1258,126" fill="none" stroke="#2F6F9F" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- document -->
+  <rect x="1118" y="330" width="220" height="250" rx="20" fill="#FFFFFF" stroke="#D97A2B" stroke-width="8"/>
+  <line x1="1158" y1="390" x2="1298" y2="390" stroke="#D97A2B" stroke-width="8" stroke-linecap="round"/>
+  <line x1="1158" y1="440" x2="1298" y2="440" stroke="#D97A2B" stroke-width="8" stroke-linecap="round"/>
+  <line x1="1158" y1="490" x2="1298" y2="490" stroke="#D97A2B" stroke-width="8" stroke-linecap="round"/>
+  <line x1="1158" y1="540" x2="1240" y2="540" stroke="#D97A2B" stroke-width="8" stroke-linecap="round"/>
+
+  <!-- phone -->
+  <rect x="1000" y="630" width="150" height="240" rx="24" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="8"/>
+  <rect x="1022" y="662" width="106" height="150" rx="10" fill="#E3F0EF"/>
+  <circle cx="1075" cy="842" r="10" fill="#2E7D5B"/>
+
+  <!-- one line of text -->
+  <text x="80" y="820" font-size="46" font-weight="700" fill="#102A2B">一個帳號，四個入口</text>
+</svg>
