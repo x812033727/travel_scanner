@@ -44,6 +44,11 @@ export function MyDirectory() {
     ...(!user ? [["/login", "login"]] : []),
   ];
   return <div className="space-y-8">
+    {/* First on the page, not last. With discovery on, the header drops the text
+        size and theme controls and the phone menu sheet never opens, so this card is
+        the only way left to reach dark mode -- and it sat under a dozen destination
+        links, a screen of scrolling away. */}
+    <section className={panelClass}><h2 className="mb-4 text-lg font-bold">{copy.display}</h2><div className="grid gap-5"><TextSizeSwitcher variant="expanded" /><div className="flex min-h-12 items-center justify-between"><span>{nav("themeLabel")}</span><ThemeSwitcher /></div><PaletteSwitcher /></div></section>
     {/* Every link above needed a session and the page said so nowhere: a signed-out
         reader saw a grid of destinations and one unexplained "login" among them. */}
     {!user && <section className="mb-6 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-5">
@@ -55,6 +60,5 @@ export function MyDirectory() {
       <section className={panelClass}><h2 className="mb-4 text-lg font-bold">{copy.tools}</h2><nav aria-label={copy.tools} className="grid gap-2 sm:grid-cols-2"><Link href="/search/new" className="min-h-12 rounded-xl px-3 py-3 font-semibold text-[var(--teal)]">{copy.search}</Link>{primaryNavLinks.filter((item) => item.key !== "trips" && item.key !== "life" && (!item.feature || featureVisible(visibility, item.feature))).map((item) => <Link key={item.key} href={item.href} className="min-h-12 rounded-xl px-3 py-3 hover:bg-[var(--paper)]">{nav(item.key)}</Link>)}</nav></section>
       {user && <button type="button" onClick={() => void logout()} className="min-h-11 rounded-xl border border-[var(--line)] px-5">{copy.logout}</button>}
     </>}
-    <section className={panelClass}><h2 className="mb-4 text-lg font-bold">{copy.display}</h2><div className="grid gap-5"><TextSizeSwitcher variant="expanded" /><div className="flex min-h-12 items-center justify-between"><span>{nav("themeLabel")}</span><ThemeSwitcher /></div><PaletteSwitcher /></div></section>
   </div>;
 }

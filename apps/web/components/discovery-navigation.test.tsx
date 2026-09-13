@@ -100,6 +100,17 @@ describe("discovery navigation", () => {
     expect(within(desktop).getByRole("link", { name: "收藏" }).getAttribute("href")).toBe("/explore/collections");
   });
 
+  it("keeps the display card above the directory links", async () => {
+    render(<ThemeProvider><MyDirectory /></ThemeProvider>);
+    await act(async () => {});
+    // With discovery on, the header hides the theme control and the phone menu sheet
+    // never opens, so this card is the only way to reach dark mode: it may not drift
+    // back below the destination links.
+    const display = screen.getByRole("heading", { name: frontendCopy("zh-TW").display });
+    const directory = screen.getByRole("navigation", { name: "我的" });
+    expect(display.compareDocumentPosition(directory) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  });
+
   it("lets signed-out readers choose every palette even when discovery and community are off", async () => {
     state.enabled = false;
     state.community = false;
