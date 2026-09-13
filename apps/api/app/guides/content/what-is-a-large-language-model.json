@@ -1,0 +1,273 @@
+{
+  "slug": "what-is-a-large-language-model",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "大型語言模型是什麼：用白話解釋 token、上下文與幻覺",
+      "description": "大型語言模型（LLM）不是在查資料庫，而是看著前面的文字猜下一個 token，再把猜到的接回去繼續猜。這篇用一句中文示範它怎麼運作，並依 Anthropic、OpenAI、Google 的官方文件與原始論文，白話解釋 token、上下文視窗、幻覺、推理模型與知識截止日，附常見誤解對照表，以及哪些事可以放心交給它、哪些事一定要自己查。",
+      "hero": {
+        "src": "/guides/what-is-a-large-language-model/hero.jpg",
+        "alt": "一排寫著「今天天氣很好，我們去公園」的方塊排成一句話，最後一格是問號，上方浮著幾條長短不一的候選長條",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "大型語言模型（LLM）其實只做一件事：看著前面的文字，猜下一個字最可能是什麼，把猜出來的字接回去，再猜下一個。ChatGPT、Claude、Gemini 這些工具回答問題、寫信、翻譯，全都是這個動作重複幾百幾千次的結果。它不是在查資料庫，也不是先「理解」再回答，這一點決定了它哪裡厲害、哪裡會出錯。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇不談程式，只用生活比喻把幾個常見名詞講清楚：token（模型眼中的字）、上下文視窗（它一次能看多少）、幻覺（為什麼會一本正經地講錯）、推理模型（多想一下再答的版本）、知識截止日（它的世界停在哪一天）。讀完你會知道為什麼它數字母會錯、為什麼不知道上週的新聞，以及哪些事可以放心交給它、哪些事一定要自己查。文中的數字全部來自 Anthropic、OpenAI、Google 在 2026 年 9 月的官方文件與原始論文。"
+        },
+        {
+          "type": "heading",
+          "text": "它其實只做一件事：猜下一個字",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "拿一句中文來看：「今天天氣很好，我們去公園」，你腦中大概已經浮現「散步」「野餐」「走走」這幾個接法，不太會想到「開會」。語言模型做的就是這件事，只是它把所有可能的下一個字都算出一個機率，「散步」最高、「野餐」次之、「開會」幾乎是零，然後從機率高的候選裡挑一個接上去。接上「散步」之後，句子變成「今天天氣很好，我們去公園散步」，它再重新看一次整句、猜下一個字，可能是句號，也可能是「，順便」。一個字一個字接下去，就成了你看到的整段回覆。它寫一封三百字的信，就是把這個動作做了幾百次。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這個能力是從海量文字裡練出來的。Anthropic 的官方名詞表寫得很直白：Claude 底下的模型在「預訓練」階段做的事，就是給定前面的文字、預測下一個字；預訓練完的模型並不擅長回答問題或聽指令，還要再經過「微調」與「人類回饋強化學習」（RLHF），才變成會好好對話的助理。這類模型的骨架叫 Transformer，來自 2017 年一篇題為 Attention Is All You Need 的論文，後來的大型語言模型幾乎都建立在它上面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "知道它是在「挑機率高的字」，就能理解一個常見現象：同一個問題問兩次，答案不一樣。因為挑字時不是每次都拿機率最高的那個，而是帶一點隨機，官方文件把控制隨機程度的參數叫 temperature，調高會更有變化、調低會更保守；Anthropic 甚至註明即使 temperature 設為 0，同樣的輸入也不保證每次結果完全相同。所以答案有出入不代表它壞了，那是它的正常運作方式。"
+        },
+        {
+          "type": "heading",
+          "text": "token：模型眼中的「字」跟你的字不一樣",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "前面說「猜下一個字」是為了好懂，精確地說模型猜的是下一個 token。文字送進模型前會先被切成一段一段的 token，可能是一個完整的英文單字、半個單字、一個標點，也可能是一個中文字的一部分。Anthropic 的說明是：對 Claude 而言，一個 token 大約相當於 3.5 個英文字元，實際數字依語言而異；Google 對 Gemini 的說法是一個 token 約 4 個字元，100 個 token 大約等於 60 到 80 個英文單字；OpenAI 的官方範例則示範一個長單字 antidisestablishmentarianism 會被切成 6 個 token，並提醒在某些語言裡一個 token 可以比一個字元還短、也可以比一個單字還長。"
+        },
+        {
+          "type": "paragraph",
+          "text": "中文一個字算幾個 token，三家的官方文件都沒有給出固定數字，只說依語言不同，所以最誠實的答案是「依各家分詞方式不同」，同一段中文在不同模型裡的 token 數可能差很多。你會在乎 token，是因為它是計價與容量的單位：API 按 token 收費，上下文視窗也用 token 計算，聊天工具說「這段對話太長」，指的就是 token 用完了。下面這張圖把「輸入、切 token、猜、接回去」四步畫成一圈，看懂它就看懂了這篇的其他章節。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/what-is-a-large-language-model/diagram-1.svg",
+          "alt": "語言模型產生文字的四步流程圖：第一步輸入句子「今天天氣很好，我們去公園」，第二步切成 token，第三步為每個候選算機率並挑一個，第四步把「散步」接回去再猜下一個，箭頭繞回第三步；下方三格整理 token 是什麼、為什麼會錯、怎麼用才安心",
+          "width": 1600,
+          "height": 900,
+          "caption": "從左到右看四步，再看底下的迴圈箭頭：模型寫出一段話，就是第三、四步不斷重複；圖中的機率長條只是示意，沒有實際數值。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "AI 名詞速查：50 個常見術語一次看懂",
+          "url": "https://mokaair.com/zh-TW/life/ai-glossary-50-terms"
+        },
+        {
+          "type": "heading",
+          "text": "上下文視窗：它一次能「看」多少",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "上下文視窗是模型在產生回覆時能參考的全部文字，包括你這輪的問題、之前的對話、貼進去的文件，還有它自己正在寫的回覆；Anthropic 的文件把它比喻為模型的「工作記憶」，跟訓練時讀過的海量資料是兩回事。它有上限，以 2026 年 9 月的官方文件為例，Anthropic 的 Claude Opus 5 是 100 萬 token，OpenAI 的 GPT-6 Astra 是 105 萬 token；超過上限，最早的對話會被截掉或壓縮，模型也就「忘了」你前面說過的事。Anthropic 還提醒，視窗塞得越滿，準確度與回想能力反而下降，所以不是越大越好，長對話另開一個新對話常常比較準。上下文視窗怎麼估、怎麼省，另有一篇細講。"
+        },
+        {
+          "type": "link",
+          "text": "上下文視窗是什麼：為什麼 AI 聊久了會忘記前面說的話",
+          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+        },
+        {
+          "type": "heading",
+          "text": "為什麼會「幻覺」：它不是在查資料庫",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "幻覺指的是模型講出聽起來合理、其實錯誤的內容，例如編出一本不存在的書、一條不存在的法規、一個錯的電話號碼。它會這樣，是因為它從頭到尾都在「猜最像的下一個字」，不是在資料庫裡「查」。當答案在訓練資料裡很少見，它手上沒有夠強的訊號，但「一個看起來像答案的句子」在機率上仍然是最順的接法，於是它就接下去了，而且語氣跟講對的時候一模一樣。你沒辦法從口氣判斷它有沒有把握。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 研究人員在 2025 年 9 月發表的論文 Why Language Models Hallucinate 用了一個貼切的比喻：像學生面對難題時會猜答案，模型在不確定時也會猜，因為訓練與評測的方式都獎勵猜對、懲罰「我不知道」。論文還舉了個例子：如果訓練資料裡有 20% 的人物生日只出現過一次，那模型至少會在 20% 的生日問題上出錯，因為只看過一次的事實根本記不牢。Anthropic 的官方文件則列出幾個降低幻覺的做法：明確允許模型說「我不知道」、要求它逐字引用你提供的文件、要它為每個主張附上出處並在找不到出處時撤回；文件同時強調這些方法只能減少、不能消除幻覺，重要的事一定要自己驗證。"
+        },
+        {
+          "type": "link",
+          "text": "AI 幻覺與查證：怎麼確認它說的是真的",
+          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+        },
+        {
+          "type": "heading",
+          "text": "為什麼算數學、數字母會錯",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「strawberry 裡有幾個 r」這類問題模型常答錯，原因就在 token。模型看到的不是一個一個字母，而是切好的 token。上面那篇論文用 DEEPSEEK 這個字舉例：模型看到的是 D、EEP、SEE、K 四塊，而不是八個字母，所以問「DEEPSEEK 裡有幾個 D」，DeepSeek-V3 在十次測試裡答的是 2 或 3，正確答案是 1。要它數字母，等於要一個只看得到整塊積木的人去數積木上的刻痕。"
+        },
+        {
+          "type": "paragraph",
+          "text": "數學也是同一個道理。它不是計算機，沒有在「執行」加減乘除，而是在猜「這個算式後面最常接什麼數字」。簡單的加法在訓練資料裡出現過無數次，猜得很準；多位數乘法、複利、匯率換算這種組合在文字裡很少見，它就會給一個位數看起來對、數值卻不對的答案。所以看到它「算」出來的數字，要當成草稿，不要當成計算結果；現在多數聊天工具可以讓模型呼叫計算工具或寫程式來算，要它算就請它用工具。"
+        },
+        {
+          "type": "paragraph",
+          "text": "推理模型就是為了補這個洞。OpenAI 的說明是：推理模型會先產生內部的「推理 token」，再給出回覆，用來規劃、檢查不同做法、處理多步驟的問題；Anthropic 的做法叫 thinking，模型會先想一段再答。上面那篇論文也提到，先推理再回答可以繞過「看到的是 token 而不是字母」這個限制，例如先把字拆開一個一個列出來再數。代價是比較慢、比較貴，哪些情況值得用，另有一篇說明。"
+        },
+        {
+          "type": "link",
+          "text": "推理模型是什麼：什麼時候該讓 AI 多想一下",
+          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+        },
+        {
+          "type": "heading",
+          "text": "訓練與「知識截止日」",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "模型的知識來自訓練資料，訓練在某個時間點停止，那之後發生的事它一概不知道，這個時間點就是「知識截止日」。Anthropic 的模型頁把它分成兩個日期：「可靠知識截止日」是模型知識最完整、最可靠的日期，「訓練資料截止日」則是實際用到的資料範圍。以 2026 年 9 月的官方文件為例，Claude Opus 5 的可靠知識截止日是 2026 年 5 月，OpenAI 的 GPT-6 Astra 是 2026 年 4 月 30 日。你問它「今天匯率多少」「這家店還開著嗎」，它若沒有接上搜尋工具，就只能用截止日前的印象回答，而且不一定會告訴你那是舊資料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "訓練資料的另一個特性是「常見的記得牢、罕見的記不住」。網路上被討論過千萬次的事，它答得又快又準；只出現過一兩次的小眾資訊，它會像考生一樣憑印象猜。所以同一個模型，回答「台北 101 在哪一區」跟回答「某個小鎮的公車時刻」，可靠度差很多。現在多數聊天工具都能讓模型即時搜尋網頁或讀你上傳的檔案，這等於把最新資料塞進上下文視窗給它看，能大幅減少舊資料的問題，但它讀到的網頁本身對不對，還是要你判斷。哪些工具有連網、有檔案上傳，可以看這篇總覽。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 工具全景：聊天、搜尋、寫作、圖片工具怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+        },
+        {
+          "type": "heading",
+          "text": "常見誤解 vs 實際情況",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "常見誤解",
+            "實際情況",
+            "對你的影響"
+          ],
+          "rows": [
+            [
+              "它在資料庫裡查答案",
+              "它在猜最可能的下一個 token，沒有「查表」這個動作",
+              "答案很順不代表對，具體事實要另外查"
+            ],
+            [
+              "它「理解」了我的問題",
+              "它學到的是文字之間的統計關係，表現得像理解，但沒有查證機制",
+              "問題描述越具體、給的資料越多，猜得越準"
+            ],
+            [
+              "同一個問題每次都該答一樣",
+              "挑字時帶隨機性（temperature），同題兩次答案本來就可能不同",
+              "重要內容多問一次，比對差異"
+            ],
+            [
+              "它知道現在發生的事",
+              "知識停在截止日；沒接搜尋工具就只有舊印象",
+              "問時效性問題先確認工具有沒有連網"
+            ],
+            [
+              "它會算數",
+              "它在猜算式後面最常接的數字，不是在計算",
+              "金額、日期、換算自己按計算機，或要它用工具算"
+            ],
+            [
+              "它說得很肯定就是對的",
+              "語氣由訓練決定，跟正確與否無關；不確定時也會用肯定句猜",
+              "把肯定語氣當成零資訊，看內容不看口氣"
+            ],
+            [
+              "上下文視窗越大越好",
+              "塞越滿，準確度與回想能力反而下降",
+              "長對話另開新對話，或只貼需要的段落"
+            ],
+            [
+              "它記得我們上次聊過什麼",
+              "每個對話預設只看得到視窗裡的文字，跨對話記憶要靠工具另外儲存",
+              "重要背景每次重新交代，或用工具的記憶功能"
+            ]
+          ],
+          "caption": "常見誤解對照（2026 年 9 月依 Anthropic、OpenAI、Google 官方文件與原始論文整理）。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "可以放心交給它的事、一定要自己查的事",
+          "text": "放心交給它：改寫語氣、摘要你貼進去的文章、翻譯、幫你列出思考面向、寫初稿、解釋一個你自己看得出對錯的概念，這些工作的原料都在你的對話裡，它只是重新組合。一定要自己查：任何它「從記憶裡」拿出來的具體事實，包括法規條文、藥物劑量、營業時間、票價、匯率、統計數字、書名與引文、網址與電話。判斷方法是問自己「這個答案是從我給的資料來的，還是它自己想起來的」，後者一律當成需要查證的線索，不是結論。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic 官方文件：Glossary（token 約 3.5 個英文字元、上下文視窗、預訓練、微調、RLHF、temperature）",
+          "url": "https://platform.claude.com/docs/en/about-claude/glossary",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Models overview（Claude Opus 5 上下文視窗 1M token、可靠知識截止日 2026 年 5 月、兩種截止日的定義）",
+          "url": "https://platform.claude.com/docs/en/models/overview",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Context windows（工作記憶、越滿準確度越低、1M token 模型）",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/context-windows",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Reduce hallucinations（允許說不知道、逐字引用、附出處，且無法完全消除）",
+          "url": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 官方文件：Models（GPT-6 Astra 上下文視窗 1.05M、知識截止日 2026 年 4 月 30 日）",
+          "url": "https://developers.openai.com/api/docs/models",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 官方文件：Reasoning models（先產生內部推理 token 再回覆）",
+          "url": "https://developers.openai.com/api/docs/guides/reasoning",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Cookbook：How to count tokens with tiktoken（英文 token 長度從一個字元到一個單字、長單字切成 6 個 token、某些語言 token 可短於一個字元）",
+          "url": "https://developers.openai.com/cookbook/examples/how_to_count_tokens_with_tiktoken",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google Gemini API 官方文件：Understand and count tokens（一個 token 約 4 個字元、100 token 約 60 到 80 個英文單字）",
+          "url": "https://ai.google.dev/gemini-api/docs/tokens",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Kalai, Nachum, Vempala, Zhang（OpenAI）：Why Language Models Hallucinate，arXiv 2509.04664，2025 年 9 月（考生猜題比喻、20% 生日例子、DEEPSEEK 數字母例子）",
+          "url": "https://arxiv.org/abs/2509.04664",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Vaswani 等：Attention Is All You Need，arXiv 1706.03762，2017 年（Transformer 架構）",
+          "url": "https://arxiv.org/abs/1706.03762",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}
