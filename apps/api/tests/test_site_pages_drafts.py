@@ -100,6 +100,30 @@ def test_privacy_describes_what_account_deletion_actually_leaves_behind() -> Non
     assert "ledger records" in body
 
 
+def _advertising_section(locale: Locale) -> str:
+    """Just the advertising section, never the whole page.
+
+    Asserting over the whole document is how the first version of these checks fooled itself:
+    the analytics section three headings up already says "cookies", "DNT" and "GPC", so a
+    page-wide `in` passed even when the advertising paragraph said none of them — and would
+    have passed with the section deleted outright. Read from its heading to the next one.
+    """
+    blocks = initial_document("privacy", locale).blocks
+    headings = [i for i, block in enumerate(blocks) if block.type == "heading"]
+    start = next(
+        i for i in headings
+        if "adssettings" in " ".join(
+            str(getattr(b, "text", "")) + " ".join(getattr(b, "items", ()))
+            for b in blocks[i:min([h for h in headings if h > i], default=len(blocks))]
+        )
+    )
+    end = min([h for h in headings if h > start], default=len(blocks))
+    return " ".join(
+        str(getattr(block, "text", "")) + " ".join(getattr(block, "items", ()))
+        for block in blocks[start:end]
+    )
+
+
 @pytest.mark.parametrize("locale", LOCALES)
 def test_privacy_discloses_advertising_cookies_and_an_opt_out(locale: Locale) -> None:
     """AdSense's programme policies require the privacy policy to say that third parties
@@ -107,11 +131,19 @@ def test_privacy_discloses_advertising_cookies_and_an_opt_out(locale: Locale) ->
     conditional ("when this site shows ads") so it is true both before the owner switches
     advertising on and after: the legal pages must not wait on the ad slot to be published,
     and the page must never describe something the site is not doing."""
-    body = _text("privacy", locale)
-    assert "https://adssettings.google.com" in body
-    assert "https://www.aboutads.info" in body
-    # No ad script at all for a DNT/GPC browser, so the policy has to say so.
-    assert "DNT" in body and "GPC" in body
+    section = _advertising_section(locale)
+    assert "https://adssettings.google.com" in section
+    assert "https://www.aboutads.info" in section
+    # No ad script at all for a DNT/GPC browser, so the section has to say so, by the names
+    # the standards actually use — a reader cannot act on an invented one.
+    assert "DNT" in section and "GPC" in section
+    # AdSense's programme policies require the disclosure to name cookies, in the word the
+    # reader of that language would recognise — not an invented one, and not the English word
+    # dropped into a Korean sentence.
+    cookie_word = {
+        "en": "cookie", "ja": "Cookie", "ko": "쿠키", "zh-TW": "Cookie", "zh-CN": "Cookie",
+    }
+    assert cookie_word[locale] in section, f"{locale} does not name cookies"
 
 
 @pytest.mark.parametrize("locale", LOCALES)
@@ -121,14 +153,14 @@ def test_privacy_describes_the_consent_message_conditionally(locale: Locale) -> 
     both states — the site currently defaults to non-personalised ads with no message shown —
     so it says what the default is and what changes when personalisation is switched on,
     rather than describing a banner that may not exist yet."""
-    body = _text("privacy", locale)
-    assert "Google" in body
+    section = _advertising_section(locale)
+    assert "Google" in section
     for region in {"en": ("European Economic Area", "United Kingdom", "Switzerland"),
                    "ja": ("欧州経済領域", "英国", "スイス"),
                    "ko": ("유럽 경제 지역", "영국", "스위스"),
                    "zh-TW": ("歐洲經濟區", "英國", "瑞士"),
                    "zh-CN": ("欧洲经济区", "英国", "瑞士")}[locale]:
-        assert region in body, f"{locale} does not name {region}"
+        assert region in section, f"{locale} does not name {region}"
 
 
 AUDIT_CALL = re.compile(r"AdminAuditLog\((.{0,800}?)\)\s*\n", re.S)

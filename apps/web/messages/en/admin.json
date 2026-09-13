@@ -67,7 +67,7 @@
     },
     "adsense_publisher_id": {
       "label": "Publisher ID",
-      "help": "The ca-pub- plus 16 digits from AdSense. A public identifier: it is written into the article page itself."
+      "help": "The ca-pub- plus 16 digits from AdSense. A public identifier: it is written into the article page itself. If you change this id, apps/web/public/ads.txt must be changed and redeployed to match, or Google treats the inventory as unauthorised."
     },
     "adsense_slot_id": {
       "label": "In-article ad unit slot ID",

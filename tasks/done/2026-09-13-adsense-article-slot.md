@@ -142,6 +142,28 @@ CLS 要在頂層頁用 Playwright 量（`chromium.launch()`，`addInitScript` �
   共用 fixture（`tools/e2e-runtime-api.mjs`）照樣要回應 `/api/v1/ads/config` 並回關閉，
   否則 404 會讓 `admin-operations`（數 4xx）與 `korea-dual-maps`（數 console 錯誤）變紅。
 
+### 合併前的覆核抓到的四件事（都已修）
+
+PR #449 開出來之後跑了一輪對抗式覆核，四個都是真的，修在同一條分支上：
+
+1. **（高）廣告會出現在「找不到這篇文章」的頁面。** `loadAdsenseSlot` 只看路徑形狀，
+   不看文章在不在。頁面雖然在 `article-page.tsx:169` 就先 return 了無內容畫面，
+   但 **layout 比頁面更早決定要不要載入標籤**，所以 `adsbygoogle.js` 照樣會載入在一個
+   沒有內容的頁面上——正好是 Google 的「無內容畫面」政策。
+   改成 layout 也查 `getGuideArticle`（React cache，跟頁面共用同一次讀取）。
+2. **（中）proxy 與 renderer 的閘門寬度不一樣。** proxy 只看路徑與開關，所以 DNT／GPC 的請求
+   和非正式站 host 都會拿到放寬的 CSP，即使它們永遠不會收到廣告程式碼。
+   抽出共用的 `adsenseRequestGate`，兩邊走同一個判斷。
+   剩下唯一不同的是「文章存不存在」，那需要一次 API 讀取，proxy 每個請求都做不起。
+3. **（中）設定快取失敗時會重新蓋時間戳。** 於是 API 一掛，舊的「開啟」永遠不會過期，
+   站主的關閉開關按不動。改成失敗時不蓋章，而且超過 `MAX_STALE_MS` 就 fail closed。
+   順手補了一個 `.catch`：proxy 每個請求都 await 它，一個被毒化的 in-flight promise
+   會讓整站 500。
+4. **（中）沒有主圖的文章，版位會落在第一屏。** hero 是選填的，而它是標題到第一節之間的
+   主要高度來源。沒有 hero 時改成要求 `MIN_BLOCKS_BEFORE_WITHOUT_HERO` 的內文在版位之上。
+
+前三項都做了變異驗證（把修正回退，確認對應的測試會紅）。
+
 ### 還沒做的
 
 - CLS 沒有量。版位有固定最小高度、e2e 斷言了預留高度不為零，但真正的 CLS 量測要照

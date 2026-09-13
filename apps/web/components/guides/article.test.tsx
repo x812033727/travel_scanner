@@ -338,8 +338,12 @@ describe("GuideArticle advertising", () => {
   };
   const heading = { type: "heading" as const, text: "先看流量", level: 2 as const };
   const para = (text: string) => ({ type: "paragraph" as const, text });
+  const articleHero = {
+    src: "/guides/tokyo-esim/hero.jpg", alt: "成田機場的 SIM 卡販賣機", width: 1600, height: 900,
+  };
   const longBody = {
     ...document,
+    hero: articleHero,
     blocks: [heading, para("開頭"), ...Array.from({ length: 6 }, (_, i) => para(`段落 ${i}`))],
   };
 
@@ -376,6 +380,22 @@ describe("GuideArticle advertising", () => {
       },
     }, { adsense: enabled });
     expect(screen.queryByTestId("ad-slot")).toBeNull();
+  });
+
+  it("keeps more of the article above the slot when there is no hero", () => {
+    // The hero is most of what separates the headline from the first section. Without one
+    // this body no longer has room for the clearance the slot needs, so it carries no ad —
+    // rather than putting one in the reader's opening viewport.
+    draw({ document: { ...longBody, hero: null } }, { adsense: enabled });
+    expect(screen.queryByTestId("ad-slot")).toBeNull();
+    // Long enough to afford the clearance, and it comes back.
+    draw({
+      document: {
+        ...longBody, hero: null,
+        blocks: [heading, para("開頭"), ...Array.from({ length: 8 }, (_, i) => para(`段落 ${i}`))],
+      },
+    }, { adsense: enabled });
+    expect(screen.getAllByTestId("ad-slot")).toHaveLength(1);
   });
 
   it("keeps the same distance from a partner link, which ends the first slice just like a button", () => {
@@ -432,8 +452,12 @@ describe("GuideArticle consent message", () => {
   };
   const heading = { type: "heading" as const, text: "先看流量", level: 2 as const };
   const para = (text: string) => ({ type: "paragraph" as const, text });
+  const articleHero = {
+    src: "/guides/tokyo-esim/hero.jpg", alt: "成田機場的 SIM 卡販賣機", width: 1600, height: 900,
+  };
   const longBody = {
     ...document,
+    hero: articleHero,
     blocks: [heading, para("開頭"), ...Array.from({ length: 6 }, (_, i) => para(`段落 ${i}`))],
   };
 

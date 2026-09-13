@@ -96,7 +96,7 @@ export function GuideArticle({
   // slice ends at whichever comes first. `null` — a short article, or one with no level-2
   // heading — simply carries no ad.
   const adSplit = adsense?.enabled && segments.length
-    ? adsenseSplit(segments[0].blocks)
+    ? adsenseSplit(segments[0].blocks, { hasHero: Boolean(document.hero) })
     : null;
 
   // Partner buttons only where they are contextual: a destination the article belongs to,
