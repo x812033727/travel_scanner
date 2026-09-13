@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">新千歳空港から札幌への JR とバス路線図 / New Chitose Airport to Sapporo by JR and airport bus</title>
+  <desc id="desc">實線是 JR 快速 Airport：新千歳空港、南千歳、新札幌、札幌，快速最快 37 分、特別快速最快 33 分、1,230 日圓，白天每小時 6 班、機場發車約 10 分一班，u 指定席加 1,000 日圓（えきねっと 800 日圓），一部分直通小樽，小樽到新千歳空港最快 73 分。虛線是北都交通與北海道中央巴士的機場巴士，1,500 日圓，到札幌駅前約 65 分、大通公園約 73 分、すすきの約 77 分、中島公園約 80 分；國內線 ANA 側 22 號、JAL 側 14 號，國際線 84 號站牌上車。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="80" y="84" font-size="40" font-weight="700" fill="#102A2B">新千歳空港 → 札幌　JR と空港連絡バス</text>
+  <text x="80" y="124" font-size="22" fill="#5C6B6B">New Chitose Airport → Sapporo · 2026 年 9 月查證，時間為官網最速與時刻表估計</text>
+
+  <!-- JR line (teal solid) -->
+  <path d="M 300 380 L 1180 380" fill="none" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"/>
+  <!-- JR through service to Otaru (teal, sparse dash) -->
+  <path d="M 1180 380 L 1440 380" fill="none" stroke="#0D6B68" stroke-width="8" stroke-dasharray="4 14" stroke-linecap="round"/>
+  <!-- airport bus (coral dashed) -->
+  <path d="M 190 460 C 190 700, 400 700, 760 700 L 1360 700" fill="none" stroke="#B8442D" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+
+  <!-- airport box -->
+  <g>
+    <rect x="65" y="320" width="250" height="140" rx="24" fill="#0D6B68"/>
+    <text x="190" y="372" font-size="30" font-weight="700" fill="#FFFFFF" text-anchor="middle">新千歳空港</text>
+    <text x="190" y="404" font-size="18" fill="#E6F2F1" text-anchor="middle">New Chitose Airport · CTS</text>
+    <text x="190" y="436" font-size="17" fill="#E6F2F1" text-anchor="middle">JR 駅は地下 1 階</text>
+  </g>
+
+  <!-- JR stations -->
+  <g font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">
+    <circle cx="540" cy="380" r="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+    <text x="540" y="436">南千歳</text>
+    <text x="540" y="462" font-size="16" font-weight="400" fill="#5C6B6B">Minami-Chitose</text>
+
+    <circle cx="860" cy="380" r="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+    <text x="860" y="436">新札幌</text>
+    <text x="860" y="462" font-size="16" font-weight="400" fill="#5C6B6B">Shin-Sapporo · 快速停車</text>
+
+    <circle cx="1180" cy="380" r="20" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+    <text x="1180" y="316" font-size="30">札幌 Sapporo</text>
+    <text x="1180" y="282" font-size="18" font-weight="400" fill="#0D6B68">快速 最速 37 分 · 特別快速 最速 33 分 · 1,230 円</text>
+
+    <circle cx="1440" cy="380" r="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+    <text x="1440" y="436">小樽 Otaru</text>
+    <text x="1440" y="462" font-size="16" font-weight="400" fill="#5C6B6B">直通あり · 最速 73 分</text>
+  </g>
+  <g font-size="19" fill="#0D6B68" font-weight="700">
+    <text x="740" y="230">JR 快速エアポート Rapid Airport</text>
+    <text x="740" y="258" font-size="17" font-weight="400" fill="#5C6B6B">日中 毎時 6 本 · 空港発 約 10 分間隔 · uシート指定席 +1,000 円（えきねっと 800 円）</text>
+  </g>
+
+  <!-- bus stops -->
+  <g font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">
+    <circle cx="760" cy="700" r="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="8"/>
+    <text x="760" y="752">札幌駅前</text>
+    <text x="760" y="778" font-size="16" font-weight="400" fill="#B8442D">Sapporo Sta. · 約 65 分</text>
+
+    <circle cx="960" cy="700" r="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="8"/>
+    <text x="960" y="752">大通公園</text>
+    <text x="960" y="778" font-size="16" font-weight="400" fill="#B8442D">Odori Park · 約 73 分</text>
+
+    <circle cx="1160" cy="700" r="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="8"/>
+    <text x="1160" y="752">すすきの</text>
+    <text x="1160" y="778" font-size="16" font-weight="400" fill="#B8442D">Susukino · 約 77 分</text>
+
+    <circle cx="1360" cy="700" r="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="8"/>
+    <text x="1360" y="752">中島公園</text>
+    <text x="1360" y="778" font-size="16" font-weight="400" fill="#B8442D">Nakajima Park · 約 80 分</text>
+  </g>
+  <g font-size="19" font-weight="700" fill="#B8442D">
+    <text x="330" y="600">空港連絡バス 北都交通・北海道中央バス · 1,500 円</text>
+    <text x="330" y="628" font-size="17" font-weight="400" fill="#5C6B6B">国内線 ANA 側 22 番 · JAL 側 14 番 · 国際線 84 番のりば · 交通系 IC 不可</text>
+  </g>
+
+  <!-- legend -->
+  <g font-size="20" fill="#102A2B">
+    <line x1="80" y1="860" x2="140" y2="860" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+    <text x="152" y="867">JR 北海道 JR Hokkaido</text>
+    <line x1="420" y1="860" x2="480" y2="860" stroke="#0D6B68" stroke-width="8" stroke-dasharray="4 14" stroke-linecap="round"/>
+    <text x="492" y="867">小樽直通（一部）Through to Otaru</text>
+    <line x1="860" y1="860" x2="920" y2="860" stroke="#B8442D" stroke-width="8" stroke-dasharray="18 12" stroke-linecap="round"/>
+    <text x="932" y="867">空港連絡バス Airport bus</text>
+    <text x="1540" y="867" fill="#5C6B6B" text-anchor="end">© Mokaair 製圖 2026</text>
+  </g>
+</svg>

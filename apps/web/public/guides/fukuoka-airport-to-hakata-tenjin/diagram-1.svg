@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">福岡空港国際線から博多・天神への路線図 / Fukuoka Airport International Terminal to Hakata and Tenjin</title>
+  <desc id="desc">國際線航廈先搭免費連絡巴士約 10 分到國內線航廈的地下鐵福岡空港站，再搭空港線：東比恵、博多（第 2 站、約 5 分、260 日圓）、祇園、中洲川端、天神（第 5 站、約 10 分、260 日圓）。虛線是西鐵直達巴士：國際線 6、7 號站牌到博多站筑紫口約 18 分、400 日圓；國際線 8 號站牌的 Airport Express 直達西鐵天神高速巴士總站 500 日圓。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="80" y="84" font-size="40" font-weight="700" fill="#102A2B">福岡空港 国際線 → 博多・天神　主要路線</text>
+  <text x="80" y="124" font-size="22" fill="#5C6B6B">Fukuoka Airport International Terminal → Hakata / Tenjin · 2026 年 9 月查證，時間為官網估計</text>
+
+  <!-- free shuttle: international -> domestic (dashed mocha) -->
+  <path d="M 320 500 L 450 500" fill="none" stroke="#6B4A3A" stroke-width="10" stroke-dasharray="6 14" stroke-linecap="round"/>
+  <!-- subway Kuko Line (teal solid) -->
+  <path d="M 560 500 L 1460 500" fill="none" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"/>
+  <!-- Nishitetsu bus to Hakata Chikushi exit (coral dashed, curve above) -->
+  <path d="M 190 440 C 260 250, 700 230, 920 300" fill="none" stroke="#B8442D" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+  <!-- Airport Express to Tenjin bus terminal (coral dashed, curve below) -->
+  <path d="M 190 560 C 300 760, 1100 760, 1400 700" fill="none" stroke="#B8442D" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+
+  <!-- International terminal box -->
+  <g>
+    <rect x="60" y="440" width="260" height="120" rx="24" fill="#B8442D"/>
+    <text x="190" y="490" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle">国際線ターミナル</text>
+    <text x="190" y="526" font-size="18" fill="#FBE9E4" text-anchor="middle">International Terminal</text>
+  </g>
+  <!-- Domestic terminal + subway station box -->
+  <g>
+    <rect x="450" y="440" width="250" height="120" rx="24" fill="#0D6B68"/>
+    <text x="575" y="484" font-size="26" font-weight="700" fill="#FFFFFF" text-anchor="middle">国内線・福岡空港駅</text>
+    <text x="575" y="516" font-size="17" fill="#E6F2F1" text-anchor="middle">Domestic Terminal</text>
+    <text x="575" y="540" font-size="17" fill="#E6F2F1" text-anchor="middle">Fukuokakuko Station</text>
+  </g>
+  <text x="385" y="425" font-size="19" font-weight="700" fill="#6B4A3A" text-anchor="middle">無料連絡バス 約 10 分</text>
+  <text x="385" y="600" font-size="16" fill="#5C6B6B" text-anchor="middle">Free shuttle · 国際線発 6:17–23:21</text>
+
+  <!-- stations on the Kuko line -->
+  <g font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">
+    <circle cx="760" cy="500" r="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+    <text x="760" y="560">東比恵</text>
+    <text x="760" y="586" font-size="16" font-weight="400" fill="#5C6B6B">Higashi-Hie</text>
+
+    <circle cx="920" cy="500" r="18" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+    <text x="920" y="444" font-size="28">博多 Hakata</text>
+    <text x="920" y="410" font-size="18" font-weight="400" fill="#0D6B68">2 駅 · 約 5 分 · 260 円</text>
+
+    <circle cx="1100" cy="500" r="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+    <text x="1100" y="560">祇園</text>
+    <text x="1100" y="586" font-size="16" font-weight="400" fill="#5C6B6B">Gion</text>
+
+    <circle cx="1280" cy="500" r="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+    <text x="1280" y="444">中洲川端</text>
+    <text x="1280" y="410" font-size="18" font-weight="400" fill="#0D6B68">Nakasu-Kawabata · 260 円</text>
+
+    <circle cx="1460" cy="500" r="18" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+    <text x="1460" y="560" font-size="28">天神 Tenjin</text>
+    <text x="1460" y="590" font-size="18" font-weight="400" fill="#0D6B68">5 駅 · 約 10 分 · 260 円</text>
+  </g>
+  <text x="1010" y="640" font-size="20" font-weight="700" fill="#0D6B68" text-anchor="middle">地下鉄 空港線 Kuko Line（姪浜方面）</text>
+
+  <!-- bus destinations -->
+  <g font-size="24" font-weight="700" fill="#102A2B">
+    <circle cx="920" cy="300" r="16" fill="#FFFFFF" stroke="#B8442D" stroke-width="8"/>
+    <text x="950" y="292">博多駅 筑紫口 Hakata Sta. Chikushi Exit</text>
+    <text x="950" y="322" font-size="18" font-weight="400" fill="#B8442D">西鉄バス 6・7 番のりば · 約 18 分 · 400 円</text>
+
+    <circle cx="1400" cy="700" r="16" fill="#FFFFFF" stroke="#B8442D" stroke-width="8"/>
+    <text x="1400" y="748" text-anchor="middle">天神高速バスターミナル</text>
+    <text x="1400" y="776" font-size="18" font-weight="400" fill="#B8442D" text-anchor="middle">Airport Express 8 番のりば · 500 円 · 直達</text>
+  </g>
+
+  <!-- legend -->
+  <g font-size="20" fill="#102A2B">
+    <line x1="80" y1="860" x2="140" y2="860" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+    <text x="152" y="867">福岡市地下鉄 Subway</text>
+    <line x1="400" y1="860" x2="460" y2="860" stroke="#6B4A3A" stroke-width="10" stroke-dasharray="6 14" stroke-linecap="round"/>
+    <text x="472" y="867">無料連絡バス Free shuttle</text>
+    <line x1="760" y1="860" x2="820" y2="860" stroke="#B8442D" stroke-width="8" stroke-dasharray="18 12" stroke-linecap="round"/>
+    <text x="832" y="867">西鉄バス Nishitetsu bus</text>
+    <text x="1540" y="867" fill="#5C6B6B" text-anchor="end">© Mokaair 製圖 2026</text>
+  </g>
+</svg>
