@@ -7,6 +7,18 @@ import { expect, test } from "@playwright/test";
 test.use({ javaScriptEnabled: false, userAgent: "Twitterbot/1.0" });
 const locales = ["zh-TW", "zh-CN", "en", "ja", "ko"] as const;
 
+/**
+ * The languages each article hub is published in, as `tools/e2e-runtime-api.mjs` serves them:
+ * intel in zh-TW and ja, how-to in en, lifestyle in zh-TW -- the same one-language-at-a-time
+ * shape the live site has. `/guides` covers both travel kinds, so it is listed wherever either
+ * one publishes. The page's robots rule and the sitemap's hub filter read the fixture through
+ * two different endpoints and must agree with this single list.
+ */
+const HUB_LOCALES: Record<string, readonly string[]> = {
+  "/guides": ["zh-TW", "ja", "en"], "/guides/intel": ["zh-TW", "ja"],
+  "/guides/howto": ["en"], "/life": ["zh-TW"],
+};
+
 for (const locale of locales) {
   test(`${locale}: marketing content and destination links exist without JavaScript`, async ({ page }) => {
     const response = await page.goto(`/${locale}`);
@@ -42,15 +54,11 @@ for (const locale of locales) {
     // way the live site publishes one language at a time. A hub with nothing in it still
     // answers 200 with its header and its language switcher, so it stays `follow`: the point
     // is to keep an empty page out of the index, not to cut the crawler off from the rest.
-    const published: Record<string, string[]> = {
-      "/guides": ["zh-TW", "ja", "en"], "/guides/intel": ["zh-TW", "ja"],
-      "/guides/howto": ["en"], "/life": ["zh-TW"],
-    };
-    for (const [path, locales_] of Object.entries(published)) {
+    for (const [path, published] of Object.entries(HUB_LOCALES)) {
       const response = await page.goto(`/${locale}${path}`);
       expect(response?.status()).toBe(200);
       const robots = page.locator('head meta[name="robots"]');
-      if (locales_.includes(locale)) {
+      if (published.includes(locale)) {
         await expect(robots).toHaveCount(0);
       } else {
         await expect(robots).toHaveAttribute("content", /noindex/);
@@ -90,14 +98,14 @@ test("runtime sitemap exposes only public routes and stable localized alternate 
   // zh-TW, which is seven of their twenty possible URLs; plus the four synthetic article
   // translations the fixture API publishes (three travel, one lifestyle).
   expect(xml.match(/<url>/g)).toHaveLength(5 * (7 + 33 + 33) + 7 + 4);
-  for (const path of ["/guides", "/guides/intel", "/guides/howto", "/life"]) {
-    expect(xml).toContain(`/zh-TW${path}</loc>`);
-    // Nothing is published in Korean, so every hub of it is an empty page: not listed here,
-    // and `noindex` on the page itself.
-    expect(xml).not.toContain(`/ko${path}</loc>`);
+  // Each hub in exactly the languages the fixture publishes its kinds in, and in no other:
+  // intel in zh-TW and ja, how-to in en, lifestyle in zh-TW. Nothing at all in Korean, so
+  // every Korean hub is an empty page -- absent here, and `noindex` on the page itself.
+  for (const [path, published] of Object.entries(HUB_LOCALES)) {
+    for (const language of locales) {
+      expect(xml.includes(`/${language}${path}</loc>`), `${language}${path}`).toBe(published.includes(language));
+    }
   }
-  expect(xml).toContain("/en/guides</loc>");
-  expect(xml).not.toContain("/en/guides/intel</loc>");
   expect(xml).toContain("/en/destinations/tokyo</loc>");
   expect(xml).toContain('hreflang="x-default"');
   expect(xml).not.toMatch(/<loc>[^<]*\/(?:admin|account|trips|login|privacy)(?:\/|<)/);
