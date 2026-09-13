@@ -52,7 +52,6 @@ export default async function GuideListPage(
   const lead = kind === "intel" ? t("guides.intelLead") : t("guides.howtoLead");
   const cardLabels = {
     intel: t("guides.intel"), howto: t("guides.howto"), life: t("guides.life"),
-    expired: t("guides.expired"), validUntil: t("guides.validUntil"), published: t("guides.published"),
   };
   const listing = guideListHref(kind, search.topic);
   const next = `${listing}${listing.includes("?") ? "&" : "?"}cursor=`;

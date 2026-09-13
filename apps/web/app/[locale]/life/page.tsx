@@ -45,7 +45,6 @@ export default async function LifeHubPage(
 
   const cardLabels = {
     intel: t("guides.intel"), howto: t("guides.howto"), life: t("guides.life"),
-    expired: t("guides.expired"), validUntil: t("guides.validUntil"), published: t("guides.published"),
   };
   const listing = guideListHref("life", search.topic);
   const next = `${listing}${listing.includes("?") ? "&" : "?"}cursor=`;
