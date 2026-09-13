@@ -103,50 +103,91 @@ export function adsenseRequestGate(signals: {
 }
 
 /**
- * Where the in-article unit goes inside one run of body blocks, or `null` for no ad here.
+ * Where the in-article units go: every segment of the body cut into pieces, with one unit
+ * between each pair of pieces. A segment that carries no ad comes back as a single piece.
  *
- * The caller passes the article's first segment — the blocks before the editor's first
- * partner button — so this never has to reason about `offer` blocks itself.
+ * The caller passes `splitGuideBlocks`' segments. Every boundary between two of them is an
+ * editor's partner button or partner link, and the end of the body is followed by the
+ * automatic partner panel, so those three places are what the clearance below is kept from.
  *
  * Constraints, in the order they bite:
- *   - Never above the hero, which is the LCP element: the cut is after the first level-2
- *     heading and its first paragraph. An article with no hero has far less above that
- *     point, so it needs `MIN_BLOCKS_BEFORE_WITHOUT_HERO` of body instead.
+ *   - Never above the hero, which is the LCP element: the first unit is no earlier than after
+ *     the first level-2 heading and its first paragraph. An article with no hero has far less
+ *     above that point, so it needs `MIN_BLOCKS_BEFORE_WITHOUT_HERO` of body instead.
  *   - Never beside a partner button: the programme policies forbid placing an ad next to an
  *     interactive element, and those buttons are the affiliate revenue this must not eat.
- *   - Never on a thin article. `MIN_BLOCKS_AFTER` blocks of real content must follow the
- *     slot in this same segment, which doubles as the clearance before the partner button
- *     that ends it: a short segment simply gets no ad.
+ *     `AD_CLEARANCE_BLOCKS` of body separate a unit from a button on either side of it, and
+ *     from the end of the article.
+ *   - Only after prose — a paragraph or a list — so a unit never splits a heading from its
+ *     section or sits directly under an image or a table it could be mistaken for part of.
+ *   - Never on a thin article. `MIN_BLOCKS_AFTER` blocks must follow the first unit.
+ *   - Content first: `MIN_BLOCKS_BETWEEN` blocks between two units, and one unit per
+ *     `BLOCKS_PER_AD` blocks of body up to `MAX_ADS`.
  *
- * `headingStart` continues the level-2 numbering across the split so `ContentBlocks` keeps
- * giving the table of contents the heading ids it already points at.
+ * Each piece's `headingStart` continues the level-2 numbering across every cut so
+ * `ContentBlocks` keeps giving the table of contents the heading ids it already points at.
  */
 export const MIN_BLOCKS_AFTER = 6;
 /**
  * A hero is optional, and it is most of what separates the headline from the first section.
- * Without one the cut below can land inside the opening viewport, so the reader meets the ad
+ * Without one the first unit can land inside the opening viewport, so the reader meets the ad
  * before they have met the article. Require this much body above it instead.
  */
 export const MIN_BLOCKS_BEFORE_WITHOUT_HERO = 3;
+export const AD_CLEARANCE_BLOCKS = 3;
+export const MIN_BLOCKS_BETWEEN = 10;
+export const BLOCKS_PER_AD = 12;
+export const MAX_ADS = 3;
 
-export function adsenseSplit<T extends { type: string; level?: number }>(
-  blocks: readonly T[],
+const PROSE = new Set(["paragraph", "list"]);
+
+export type AdsensePiece<T> = { blocks: T[]; headingStart: number };
+
+export function adsensePlacements<T extends { type: string; level?: number }>(
+  segments: readonly { blocks: readonly T[]; headingStart: number }[],
   { hasHero = true }: { hasHero?: boolean } = {},
-): { before: T[]; after: T[]; headingStart: number } | null {
-  const firstHeading = blocks.findIndex((block) => block.type === "heading" && block.level === 2);
-  if (firstHeading < 0) return null;
-  const firstParagraph = blocks.findIndex(
-    (block, index) => index > firstHeading && block.type === "paragraph",
-  );
-  if (firstParagraph < 0) return null;
-  const cut = hasHero
-    ? firstParagraph + 1
-    : Math.max(firstParagraph + 1, MIN_BLOCKS_BEFORE_WITHOUT_HERO);
-  if (blocks.length - cut < MIN_BLOCKS_AFTER) return null;
-  const before = blocks.slice(0, cut);
-  return {
-    before,
-    after: blocks.slice(cut),
-    headingStart: before.filter((b) => b.type === "heading" && b.level === 2).length,
-  };
+): AdsensePiece<T>[][] {
+  const flat = segments.flatMap((segment) => segment.blocks);
+  const cuts = segments.map((): number[] => []);
+  const firstHeading = flat.findIndex((block) => block.type === "heading" && block.level === 2);
+  const firstParagraph = firstHeading < 0
+    ? -1
+    : flat.findIndex((block, index) => index > firstHeading && block.type === "paragraph");
+  if (firstParagraph >= 0) {
+    const earliest = hasHero
+      ? firstParagraph + 1
+      : Math.max(firstParagraph + 1, MIN_BLOCKS_BEFORE_WITHOUT_HERO);
+    const limit = Math.min(MAX_ADS, Math.max(1, Math.floor(flat.length / BLOCKS_PER_AD)));
+    let placed = 0;
+    let last = -Infinity;
+    let offset = 0;
+    segments.forEach((segment, segmentIndex) => {
+      const { length } = segment.blocks;
+      // `cut` is the index the unit goes before; 0 would put it straight after a button.
+      for (let cut = 1; cut < length && placed < limit; cut += 1) {
+        const position = offset + cut;
+        if (position < earliest || position - last < MIN_BLOCKS_BETWEEN) continue;
+        if (!PROSE.has(segment.blocks[cut - 1].type)) continue;
+        if (segmentIndex > 0 && cut < AD_CLEARANCE_BLOCKS) continue;
+        if (length - cut < AD_CLEARANCE_BLOCKS) continue;
+        if (placed === 0 && flat.length - position < MIN_BLOCKS_AFTER) continue;
+        cuts[segmentIndex].push(cut);
+        placed += 1;
+        last = position;
+      }
+      offset += length;
+    });
+  }
+  return segments.map((segment, segmentIndex) => {
+    const pieces: AdsensePiece<T>[] = [];
+    let start = 0;
+    let headingStart = segment.headingStart;
+    for (const end of [...cuts[segmentIndex], segment.blocks.length]) {
+      const blocks = segment.blocks.slice(start, end);
+      pieces.push({ blocks, headingStart });
+      headingStart += blocks.filter((block) => block.type === "heading" && block.level === 2).length;
+      start = end;
+    }
+    return pieces;
+  });
 }

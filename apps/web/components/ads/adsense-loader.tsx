@@ -2,6 +2,7 @@
 
 import Script from "next/script";
 import { ADSENSE_SCRIPT_ORIGIN, isAdsensePublisherId } from "@/lib/adsense";
+import { AnchorAdOffset } from "./anchor-ad-offset";
 
 declare global {
   interface Window {
@@ -42,14 +43,19 @@ export function AdsenseLoader({ publisherId, cmpEnabled }: {
 }) {
   if (!isAdsensePublisherId(publisherId)) return null;
   return (
-    <Script
-      id="adsbygoogle-init"
-      src={`${ADSENSE_SCRIPT_ORIGIN}/pagead/js/adsbygoogle.js?client=${publisherId}`}
-      strategy="afterInteractive"
-      crossOrigin="anonymous"
-      onReady={() => {
-        adsbygoogleQueue(cmpEnabled);
-      }}
-    />
+    <>
+      <Script
+        id="adsbygoogle-init"
+        src={`${ADSENSE_SCRIPT_ORIGIN}/pagead/js/adsbygoogle.js?client=${publisherId}`}
+        strategy="afterInteractive"
+        crossOrigin="anonymous"
+        onReady={() => {
+          adsbygoogleQueue(cmpEnabled);
+        }}
+      />
+      {/* The same tag serves the account's Auto ads overlay formats (anchor, vignette) on
+          whatever page loads it; this keeps the anchor off the site's own fixed chrome. */}
+      <AnchorAdOffset />
+    </>
   );
 }

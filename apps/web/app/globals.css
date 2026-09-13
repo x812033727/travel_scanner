@@ -289,7 +289,14 @@ body {
 }
 .public-app-shell {
   min-height: 100dvh;
-  padding-bottom: calc(5rem + env(safe-area-inset-bottom));
+  /* --ad-anchor-bottom / --ad-anchor-top: how much of the viewport edge Google's anchor ad
+     covers, set by components/ads/anchor-ad-offset.tsx on article pages only. */
+  padding-bottom: calc(5rem + env(safe-area-inset-bottom) + var(--ad-anchor-bottom, 0px));
+}
+/* A unit Google could not fill keeps no empty reserved box. `data-ad-status` is the
+   documented AdSense attribute for this. */
+.article-ad-slot:has(ins.adsbygoogle[data-ad-status="unfilled"]) {
+  display: none;
 }
 .app-surface {
   border: 1px solid var(--line);
@@ -596,13 +603,15 @@ body {
   }
 }
 .site-header {
+  /* Unlayered, so this wins over the component's sticky `top-0` utility. */
+  top: var(--ad-anchor-top, 0px);
   border-bottom: 1px solid color-mix(in srgb, var(--line) 72%, transparent);
   background: color-mix(in srgb, var(--paper) 88%, transparent);
   backdrop-filter: blur(20px) saturate(1.2);
 }
 .app-bottom-nav {
   position: fixed;
-  inset: auto 0.7rem max(0.65rem, env(safe-area-inset-bottom)) 0.7rem;
+  inset: auto 0.7rem calc(max(0.65rem, env(safe-area-inset-bottom)) + var(--ad-anchor-bottom, 0px)) 0.7rem;
   z-index: 60;
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -817,7 +826,7 @@ body {
 }
 @media (min-width: 768px) {
   .public-app-shell {
-    padding-bottom: 0;
+    padding-bottom: var(--ad-anchor-bottom, 0px);
   }
 }
 .admin-app-shell {

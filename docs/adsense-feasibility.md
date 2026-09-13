@@ -115,6 +115,7 @@ AdSense 的衝突點：
 - 文章頁是單欄 `max-w-3xl`，hero 圖是 LCP，已預留寬高（`article.tsx:116-137`）。
 - 手機版有 `sticky top-0 z-40` 的 header（`components/site-header.tsx:8`）和 z-index 60 的固定底部導覽
   （`app/globals.css:606`），會跟 AdSense 的錨定廣告、插頁廣告撞在一起 → 自動廣告要關掉這兩種（D3）。
+  **2026-09-13 晚上 D3 修訂後改為開啟**，錨定廣告的重疊由 `components/ads/anchor-ad-offset.tsx` 讓位處理。
 - 站上沒有 web-vitals 回報、Lighthouse CI 或 CLS 測試（Lighthouse 是還沒做的 `2026-09-10-seo-lighthouse-workflow`）。
   CLS 要用 Playwright 在頂層頁量，而且要先跑一個故意位移的對照頁；內建瀏覽器 pane 永遠量到 0。
 
@@ -154,9 +155,36 @@ AdSense 的衝突點：
 | D1 | 隱私立場 | **~~只投非個人化廣告，不裝 CMP~~ → 改為裝 CMP**（站主當天稍後改的決定）。用 Google 自家的「隱私權與訊息」（Funding Choices，已整合 IAB TCF），同意訊息只對 EEA／英國／瑞士顯示。後台 `adsense_cmp_enabled` 關閉時仍然只投非個人化廣告，所以預設行為沒變。 |
 | D2 | 申請時機 | **程式碼先就緒、預設關閉**，審核通過拿到 slot ID 後再從後台開啟。 |
 | D1b | DNT／GPC | **不變：完全不載入廣告**，連同意訊息都不會出現。跟站上每一支第三方腳本一致。 |
-| D3 | 版位 | **文中 1 個。** 第一個 level-2 標題與其第一段之後，不在第一屏，離 offer 區塊至少 6 個 block；太短的文章不放。 |
+| D3 | 版位 | **~~文中 1 個~~ → 混合（2026-09-13 晚上改）。** 文中手動版位依長度 1–3 個，共用同一個 slot，規則見下方「D3 修訂」。錨定、插頁、Multiplex 改用自動廣告開啟，自動廣告的頁內橫幅維持關閉。 |
 | D4 | 廣告主封鎖 | 封鎖與分潤重疊的旅遊廣告主。純後台操作，不牽涉程式碼。 |
 | D5 | CSP | **只有文章路由、而且廣告開啟時**才套 AdSense 版政策。廣告關閉時（現況）所有頁面的政策一個字都不變。 |
+
+### D3 修訂（2026-09-13 晚上）
+
+站主問「文章裡怎麼放廣告收益最高」後改的決定。原本的規則只看第一個合作按鈕之前那一段，
+110 份文件裡有 34 份因為按鈕太靠前，連一個廣告都沒有。
+
+**文中版位**（`apps/web/lib/adsense.ts` 的 `adsensePlacements`）：
+
+- 第一個不早於「第一個 level-2 標題與其第一段」之後；沒有 hero 時至少在第 3 個區塊之後。
+- 只接在段落或清單後面，不接在標題、圖片、表格後面。
+- 跟每個合作按鈕（`offer`／`partner_link`）的前後、以及文末分潤面板之前，都至少隔 3 個區塊。
+- 第一個之後全篇至少還要有 6 個區塊；兩個之間至少隔 10 個區塊。
+- 上限是「區塊數 ÷ 12」，最少 1、最多 3。
+- 以當時的 content pack 模擬：110 份裡 0 個的只剩 3 份短文（15–20 區塊），1 個 12 份、2 個 57 份、3 個 38 份。
+- 第一個版位載入時就請求廣告；其餘等讀者捲到約一個螢幕內才請求，避免拉低可見度。Google 沒填到的版位會整個收起來。
+
+**自動廣告的疊加格式**（AdSense 後台設定，不用改程式）：
+
+- 腳本只在文章頁載入，所以自動廣告也只會出現在文章頁。
+- 開啟：錨定、插頁、Multiplex。關閉：頁內橫幅、側邊欄、意圖導向格式。
+  頁內橫幅不開，是因為自動插入的位置控制不了，可能貼著合作按鈕，也不會預留高度。
+- 第 4.5 節提到的衝突用程式解決：`components/ads/anchor-ad-offset.tsx` 量出錨定廣告蓋住的高度，
+  手機底部導覽列、頁首與頁面底部留白跟著讓位。
+- 如果 AdSense 介面無法只開 Multiplex 而不開頁內橫幅，就先不開 Multiplex；手動 Multiplex 需要另建廣告單元。
+
+**兩週後要看的**：文章頁的分潤點擊（`GET /admin/analytics/affiliates` 的 guide placement）、AdSense 網頁 RPM，
+以及 CLS。分潤點擊明顯下降時，先關插頁廣告。
 
 以下是當初的建議與替代方案，保留備查。
 
@@ -189,6 +217,8 @@ AdSense 的衝突點：
 | `adsense-privacy-policy-section` | **done**（2026-09-13） | 五語系廣告揭露區塊。措辭改成條件句，所以不必等法律頁；正式站已初始化後改草稿無效，要在後台逐語系改版發布 |
 | `adsense-admin-config` | **done**（2026-09-13） | 後台 `adsense` provider 與匿名 `GET /api/v1/ads/config`，預設關 |
 | `adsense-article-slot` | **done**（2026-09-13） | 文章頁版位、載入器、`app/(ads-public)` 獨立 document、文章路由 CSP、`ads.txt`、e2e |
+| `adsense-multi-slot-and-overlay-formats` | **done**（2026-09-13） | D3 修訂：文中 1–3 個版位、延遲請求、未填滿收起、錨定廣告讓位 |
+| `adsense-auto-ads-overlay-setup` | open | AdSense 後台開啟錨定／插頁／Multiplex、修正封鎖清單的國碼後綴、兩週後比較分潤點擊與 RPM |
 | `guides-empty-locale-hubs-indexable` | open | 這次順帶發現：非 zh-TW 的空 hub 可索引又在 sitemap 裡 |
 | `google-ads-conversion-measurement` | blocked（等站主決定要投放） | 付費導流需要的轉換量測 |
 
