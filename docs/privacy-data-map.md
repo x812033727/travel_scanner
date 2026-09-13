@@ -119,6 +119,16 @@ measuring happens server-side'.」（`analytics/context.py:39-41`）
 開啟 `ads_data_redaction`、關閉 `allow_google_signals`。**整個 repo 沒有任何一處呼叫
 `gtag("consent","update")`**——所以站上沒有同意橫幅，政策也不該先描述一個不存在的橫幅。
 
+**文章頁的 Google AdSense（2026-09-13 起有程式碼，預設關閉）。** 廣告腳本
+（`pagead2.googlesyndication.com/pagead/js/adsbygoogle.js`）只在四個條件同時成立時才載入：
+後台 `adsense` 卡片開啟且發布商 ID 與 slot ID 都通過驗證（`GET /api/v1/ads/config`）、
+請求路徑是文章頁（`/{locale}/guides/{intel,howto}/{slug}`、`/{locale}/life/{slug}`）、
+host 是正式站、而且請求**沒有**帶 `DNT: 1` 或 `Sec-GPC: 1`。任一條件不成立時，
+伺服器連版位的預留空間都不輸出，瀏覽器不會對 Google 發出任何請求。
+載入時一律先設 `requestNonPersonalizedAds = 1`，只投非個人化廣告；這是寫死的，不是後台選項。
+有廣告的文章頁在獨立的 root layout（`app/(ads-public)`）底下，所以廣告腳本不會留在
+帳號、行程或社群頁面的同一份 document 裡。
+
 ---
 
 ## 四、使用者產生的內容
@@ -288,9 +298,12 @@ ledger and already-delivered conversations; erase PII.」）：
 3. **沒提到未存檔的草稿會留在瀏覽器**（第二節）。共用裝置上這是實際風險。
 4. **「雜湊識別」其實是 HMAC**（第三節）。可以寫得更準確也更有利。
 
-以及一個缺口：**全文沒有任何一句提到廣告。** 要放 Google AdSense 的話，AdSense 計畫政策
-要求揭露第三方（含 Google）使用 cookie 投放廣告，這裡得新增一個區塊；同時第三節提到的
-「同意永遠是拒絕」現況也要一併交代。
+~~以及一個缺口：全文沒有任何一句提到廣告。~~ — **2026-09-13 補上**。五語系 `privacy`
+草稿在「服務提供者與使用分析」之後多了「文章頁的廣告」區塊（heading＋paragraph＋兩項清單），
+揭露第三方使用 cookie 投放廣告、只投非個人化廣告、沒有同意橫幅、DNT／GPC 時完全不載入，
+並列出 `adssettings.google.com` 與 `aboutads.info` 兩個退出管道。
+措辭刻意是條件句（「當本站顯示廣告時」），因為廣告預設關閉：這樣在開啟前後都是事實，
+法律頁不必等廣告上線才能發布。`tests/test_site_pages_drafts.py` 有五語系的斷言擋住翻譯漏掉。
 
 ---
 

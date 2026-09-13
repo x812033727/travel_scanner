@@ -65,6 +65,14 @@
       "label": "GA4 Measurement ID",
       "help": "格式为 G-...；这是公开标识符，不是 Data API 密钥。"
     },
+    "adsense_publisher_id": {
+      "label": "发布商 ID",
+      "help": "AdSense 后台的 ca-pub- 加 16 位数字；这是公开标识符，会直接写在文章页上。"
+    },
+    "adsense_slot_id": {
+      "label": "文中广告单元 slot ID",
+      "help": "in-article 广告单元的 10 位数字。两个 ID 都填对，文章页才会出现广告位。"
+    },
     "analytics_trust_country_header": {
       "label": "信任代理服务器国码",
       "help": "只读取 BFF 从已设置的可信代理标头转发的两码国码；未设置时一律为未知。"

@@ -1,14 +1,14 @@
 ---
 id: 2026-09-13-adsense-admin-config
 title: AdSense 後台設定與匿名公開設定端點（預設關閉）
-status: blocked
+status: done
 priority: P3
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-13T08:00:32Z
 created_at: 2026-09-13T05:16:04Z
-completed_at:
-branch:
+completed_at: 2026-09-13T08:06:13Z
+branch: claude/google-adsense-integration-plan-650u03
 depends_on: []
 scope:
   - apps/api/app/ads
@@ -45,25 +45,25 @@ scope:
 
 ## Definition of done
 
-- [ ] `PROVIDER_DEFINITIONS`（`apps/api/app/admin/service.py:108` 起）新增獨立的 `adsense` provider：
+- [x] `PROVIDER_DEFINITIONS`（`apps/api/app/admin/service.py:108` 起）新增獨立的 `adsense` provider：
       `enabled_field` 是 `adsense_enabled`；設定欄位有 `adsense_publisher_id`、`adsense_in_article_slot_id`、
       `adsense_end_slot_id`、`adsense_non_personalized_only`（預設 true）。全部是明文 config，不是 secret，
       因為這些值本來就公開寫在頁面上。
-- [ ] 驗證：`ca-pub-\d{16}`、slot 是 10 位數字、布林欄位加進 `boolean_fields`（`service.py:1246`），格式不對回 422。
-- [ ] 匿名端點（例如 `GET /api/v1/ads/config`）比照 `GET /travel-services/stay22-script-config`：
+- [x] 驗證：`ca-pub-\d{16}`、slot 是 10 位數字、布林欄位加進 `boolean_fields`（`service.py:1246`），格式不對回 422。
+- [x] 匿名端點（例如 `GET /api/v1/ads/config`）比照 `GET /travel-services/stay22-script-config`：
       匿名、`Cache-Control: no-store`、收到 `DNT: 1` 或 `Sec-GPC: 1` 就回「關閉」、
       只回有效狀態（開啟**且**ID 驗證通過）與驗證過的 ID。
-- [ ] `.env.example` 與 `config.py` 預設全關；沒有設定時端點回關閉。
-- [ ] 後台「設定」頁出現 AdSense 卡片，欄位標籤放 `admin.providerFields.*`（五語系）。
+- [x] `.env.example` 與 `config.py` 預設全關；沒有設定時端點回關閉。
+- [x] 後台「設定」頁出現 AdSense 卡片，欄位標籤放 `admin.providerFields.*`（五語系）。
 
 ## Steps
 
-- [ ] 在本檔 Notes 記下 D1–D3 的答案與發布商 ID。
-- [ ] `config.py` 欄位、`PROVIDER_DEFINITIONS`、驗證、`_configured` 的分支。
-- [ ] 把 `adsense` 加進 `LOCAL_ONLY_PROVIDERS`（`service.py:976`）。
-- [ ] 新模組 `apps/api/app/ads/`（router＋service），在 `main.py` 掛 router。
-- [ ] 後台面板的分類（`admin-settings-panel.tsx:97-132`）與欄位中繼資料，五語系標籤。
-- [ ] 測試：驗證、DNT／GPC、預設關、provider 分類。
+- [x] 在本檔 Notes 記下 D1–D3 的答案與發布商 ID。
+- [x] `config.py` 欄位、`PROVIDER_DEFINITIONS`、驗證、`_configured` 的分支。
+- [x] 把 `adsense` 加進 `LOCAL_ONLY_PROVIDERS`（`service.py:976`）。
+- [x] 新模組 `apps/api/app/ads/`（router＋service），在 `main.py` 掛 router。
+- [x] 後台面板的分類（`admin-settings-panel.tsx:97-132`）與欄位中繼資料，五語系標籤。
+- [x] 測試：驗證、DNT／GPC、預設關、provider 分類。
 
 ## How to verify
 
@@ -77,6 +77,20 @@ npm run lint:web && npm run check:i18n && npm run typecheck:web
 帶 `-H "Sec-GPC: 1"` 回關閉。
 
 ## Notes
+
+- 站主的決定（`docs/adsense-feasibility.md` 第六節）：D1 只投非個人化廣告、不裝 CMP；
+  D2 程式碼先就緒且預設關閉，審核通過後從後台開啟；D3 文中 1 個版位。
+  發布商 ID `ca-pub-4140966684432854`（站主提供，公開識別碼）。
+- **兩處刻意偏離原本的規格**：
+  - 不做 `adsense_end_slot_id`。D3 只要 1 個文中版位，欄位改叫 `adsense_slot_id`；
+    要加文末版位再開新票。
+  - 不做 `adsense_non_personalized_only` 開關。D1 已定案只投非個人化廣告，而切成個人化在
+    EEA／英國／瑞士需要認證 CMP 並且要改寫隱私政策——做成後台開關等於留一個一按就違反政策的
+    按鈕。改成在載入器裡寫死（`components/ads/adsense-loader.tsx` 的 `requestNonPersonalizedAds`），
+    要改必須改程式碼並同步更新政策。
+- `_configured` 的 `adsense` 分支直接呼叫 `app.ads.service.adsense_config`，
+  所以後台卡片的燈號跟讀者實際會拿到的答案永遠一致：開關開了但 ID 沒填，卡片說的是
+  「已開啟但缺少…，讀者不會看到版位」，不是綠燈。
 
 - **不要塞進既有的 `analytics` provider。** 它的 `enabled_field` 是 `analytics_enabled`（`service.py:130-144`），
   關掉流量分析會連帶關掉廣告，而且兩者的隱私條件不一樣。

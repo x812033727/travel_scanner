@@ -9,6 +9,7 @@ from app.admin.router import router as admin_router
 from app.admin.router import runtime_router
 from app.admin.security_router import router as admin_security_router
 from app.admin.user_router import router as admin_user_router
+from app.ads.router import router as ads_router
 from app.affiliates.router import router as affiliates_router
 from app.ai.router import router as ai_router
 from app.alerts.router import router as alerts_router
@@ -131,6 +132,7 @@ app.include_router(admin_guides_router, prefix="/api/v1")
 app.include_router(guides_public_router, prefix="/api/v1")
 app.include_router(admin_site_pages_router, prefix="/api/v1")
 app.include_router(site_pages_public_router, prefix="/api/v1")
+app.include_router(ads_router, prefix="/api/v1")
 app.include_router(affiliates_router, prefix="/api/v1")
 app.include_router(usage_router, prefix="/api/v1")
 app.include_router(admin_usage_router, prefix="/api/v1")

@@ -65,6 +65,14 @@
       "label": "GA4 Measurement ID",
       "help": "형식은 G-...이며 공개 식별자입니다. Data API 키가 아닙니다."
     },
+    "adsense_publisher_id": {
+      "label": "게시자 ID",
+      "help": "AdSense의 ca-pub- 와 16자리 숫자입니다. 공개 식별자이며 문서 페이지에 그대로 출력됩니다."
+    },
+    "adsense_slot_id": {
+      "label": "본문 광고 단위 슬롯 ID",
+      "help": "본문 광고 단위의 10자리 숫자입니다. 두 ID가 모두 유효할 때만 문서 페이지에 광고 자리가 나타납니다."
+    },
     "analytics_trust_country_header": {
       "label": "프록시 국가 코드 헤더 신뢰",
       "help": "BFF가 설정된 신뢰 프록시 헤더에서 전달한 두 글자 코드만 읽습니다. 미설정 시 항상 알 수 없음입니다."

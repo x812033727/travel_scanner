@@ -65,6 +65,14 @@
       "label": "GA4 Measurement ID",
       "help": "形式は G-...。公開識別子であり、Data API のキーではありません。"
     },
+    "adsense_publisher_id": {
+      "label": "サイト運営者 ID",
+      "help": "AdSense の ca-pub- と 16 桁の数字。公開識別子で、記事ページにそのまま出力されます。"
+    },
+    "adsense_slot_id": {
+      "label": "記事内広告ユニットのスロット ID",
+      "help": "記事内広告ユニットの 10 桁の数字。両方の ID が正しいときだけ記事ページに広告枠が出ます。"
+    },
     "analytics_trust_country_header": {
       "label": "プロキシの国コードヘッダーを信頼",
       "help": "BFF が設定済みの信頼できるプロキシヘッダーから転送する 2 文字コードだけを読みます。未設定なら常に不明です。"

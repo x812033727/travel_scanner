@@ -100,6 +100,21 @@ def test_privacy_describes_what_account_deletion_actually_leaves_behind() -> Non
     assert "ledger records" in body
 
 
+@pytest.mark.parametrize("locale", LOCALES)
+def test_privacy_discloses_advertising_cookies_and_an_opt_out(locale: Locale) -> None:
+    """AdSense's programme policies require the privacy policy to say that third parties
+    use cookies to serve ads and to name an opt-out. The wording is deliberately
+    conditional ("when this site shows ads") so it is true both before the owner switches
+    advertising on and after: the legal pages must not wait on the ad slot to be published,
+    and the page must never describe something the site is not doing."""
+    body = _text("privacy", locale)
+    assert "https://adssettings.google.com" in body
+    assert "https://www.aboutads.info" in body
+    # The site has no consent banner and loads no ad script for a DNT/GPC browser, so the
+    # policy has to say so rather than describe a consent UI that does not exist.
+    assert "DNT" in body and "GPC" in body
+
+
 AUDIT_CALL = re.compile(r"AdminAuditLog\((.{0,800}?)\)\s*\n", re.S)
 TARGET = re.compile(r"target=([^,\n]+)")
 METADATA = re.compile(r"metadata_json=(\{.{0,400}?\})", re.S)

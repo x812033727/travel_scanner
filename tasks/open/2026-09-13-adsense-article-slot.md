@@ -1,14 +1,14 @@
 ---
 id: 2026-09-13-adsense-article-slot
 title: 文章頁 AdSense 版位、載入器與文章路由 CSP
-status: open
+status: in-progress
 priority: P3
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-13T08:08:46Z
 created_at: 2026-09-13T05:16:19Z
 completed_at:
-branch:
+branch: claude/google-adsense-integration-plan-650u03
 depends_on:
   - 2026-09-13-adsense-privacy-policy-section
   - 2026-09-13-adsense-admin-config

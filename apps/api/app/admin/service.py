@@ -142,6 +142,16 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
         (),
         "analytics_enabled",
     ),
+    "adsense": ProviderDefinition(
+        "文章頁 Google 廣告",
+        "旅遊情報攻略與生活分享的文章頁顯示 Google AdSense 版位；只投放非個人化廣告，"
+        "讀者送出 DNT 或 GPC 時完全不載入。",
+        ("adsense_publisher_id", "adsense_slot_id"),
+        # Both IDs are written into the page for every reader to see, so neither is a
+        # secret: keeping them as plain config means the card can show what is set.
+        (),
+        "adsense_enabled",
+    ),
     "runtime": ProviderDefinition(
         "執行模式與保護設定",
         "控制公開註冊、即時／測試供應商選擇、逾時與重試斷路器。",
@@ -618,6 +628,26 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
         else:
             message += "；GA4 未啟用"
         return configured, "ready" if configured else "not_configured", message
+    if provider == "adsense":
+        # Deliberately the same rule the public endpoint applies, so the card never shows
+        # a green light for a configuration readers would not actually be served.
+        from app.ads.service import adsense_config
+
+        config = adsense_config(settings, tracking_allowed=True)
+        if config["enabled"]:
+            return True, "ready", f"文章頁廣告已啟用（{config['publisher_id']}）"
+        if not settings.adsense_enabled:
+            return False, "not_configured", "文章頁廣告尚未啟用"
+        missing = [
+            name
+            for name, value in (
+                ("發布商 ID", settings.adsense_publisher_id),
+                ("廣告單元 slot ID", settings.adsense_slot_id),
+            )
+            if not (value or "").strip()
+        ]
+        detail = "缺少" + "與".join(missing) if missing else "發布商 ID 或 slot ID 格式不正確"
+        return False, "not_configured", f"文章頁廣告已開啟但{detail}，讀者不會看到版位"
     if provider == "runtime":
         from app.providers.registry import flight_provider_status, hotel_provider_status
 
@@ -973,7 +1003,7 @@ CONNECTION_TESTED_PROVIDERS = frozenset({
 })
 # The rest hold settings with no upstream to call, or read other cards' keys, so testing
 # them proves nothing and their green light already means what it says.
-LOCAL_ONLY_PROVIDERS = frozenset({"analytics", "hotspot_guides", "layout", "runtime"})
+LOCAL_ONLY_PROVIDERS = frozenset({"adsense", "analytics", "hotspot_guides", "layout", "runtime"})
 
 
 def _production_test_required(provider: str, settings: Settings) -> bool:
@@ -1248,6 +1278,7 @@ def _validate_provider_values(
         "ga4_enabled",
         "analytics_trust_country_header",
         "google_maps_javascript_enabled",
+        "adsense_enabled",
         *SITE_VISIBILITY_FIELDS,
     }
     for field in boolean_fields:
@@ -1268,6 +1299,24 @@ def _validate_provider_values(
                 "ga4_measurement_id 必須是有效的 G-... Measurement ID",
             )
         merged["ga4_measurement_id"] = measurement_id
+    if "adsense_publisher_id" in merged:
+        publisher_id = str(merged["adsense_publisher_id"] or "").strip()
+        if publisher_id and not re.fullmatch(r"ca-pub-\d{16}", publisher_id):
+            raise AppError(
+                422,
+                "provider_setting_invalid",
+                "adsense_publisher_id 必須是 ca-pub- 加 16 位數字",
+            )
+        merged["adsense_publisher_id"] = publisher_id
+    if "adsense_slot_id" in merged:
+        slot_id = str(merged["adsense_slot_id"] or "").strip()
+        if slot_id and not re.fullmatch(r"\d{10}", slot_id):
+            raise AppError(
+                422,
+                "provider_setting_invalid",
+                "adsense_slot_id 必須是 10 位數字",
+            )
+        merged["adsense_slot_id"] = slot_id
     modes = {
         "travel_provider_mode": {"mock", "amadeus", "live", "disabled"},
         "flight_provider_mode": {"auto", "skyscanner", "duffel", "amadeus", "mock", "disabled"},

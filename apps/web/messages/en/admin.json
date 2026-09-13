@@ -65,6 +65,14 @@
       "label": "GA4 Measurement ID",
       "help": "Formatted G-...; a public identifier, not a Data API key."
     },
+    "adsense_publisher_id": {
+      "label": "Publisher ID",
+      "help": "The ca-pub- plus 16 digits from AdSense. A public identifier: it is written into the article page itself."
+    },
+    "adsense_slot_id": {
+      "label": "In-article ad unit slot ID",
+      "help": "The 10 digits of the in-article ad unit. Article pages show a slot only once both IDs are valid."
+    },
     "analytics_trust_country_header": {
       "label": "Trust the proxy's country header",
       "help": "Reads only the two-letter code the BFF forwards from a configured trusted proxy header; unknown when unset."
