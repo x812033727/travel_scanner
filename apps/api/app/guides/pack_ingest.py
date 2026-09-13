@@ -83,6 +83,9 @@ SITEMAP_WARN_ROWS = 800
 SITE_ORIGIN = "https://mokaair.com/"
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
 MOKAAIR_CREDIT = ImageCredit(author="Mokaair", license="© Mokaair")
+#: Wikimedia's robot policy wants ``name/version (contact)``; without an address it answers 403
+#: "Please respect our robot policy". The mailbox is the site's public support address.
+USER_AGENT = "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com) python-httpx"
 
 #: Commons ``LicenseShortName`` values the site may use, after ``_normalise_license``. Anchored
 #: at both ends so "CC BY-NC 2.0" (starts with "CC BY") and KOGL are refused.
@@ -361,9 +364,9 @@ def commons_file_info(client: httpx.Client, title: str) -> CommonsInfo:
             "iiurlwidth": str(HERO_SIZE[0]),
             "format": "json",
         },
-        headers={"User-Agent": "Mokaair editorial tooling (https://mokaair.com)"},
+        headers={"User-Agent": USER_AGENT},
     )
-    response.raise_for_status()
+    _raise_for_status(response, name)
     pages = response.json().get("query", {}).get("pages", {})
     page: dict[str, Any] = next(iter(pages.values()), {})
     info = (page.get("imageinfo") or [None])[0]
@@ -387,11 +390,16 @@ def commons_file_info(client: httpx.Client, title: str) -> CommonsInfo:
     )
 
 
+def _raise_for_status(response: httpx.Response, what: str) -> None:
+    """A refused or failed download is a workspace problem the report should name, not a
+    traceback."""
+    if response.is_error:
+        raise PackIngestError(f"{what}: Commons answered HTTP {response.status_code}")
+
+
 def fetch_image(client: httpx.Client, url: str) -> Image.Image:
-    response = client.get(
-        url, headers={"User-Agent": "Mokaair editorial tooling (https://mokaair.com)"}
-    )
-    response.raise_for_status()
+    response = client.get(url, headers={"User-Agent": USER_AGENT})
+    _raise_for_status(response, url)
     image = Image.open(io.BytesIO(response.content))
     image.load()
     return image
