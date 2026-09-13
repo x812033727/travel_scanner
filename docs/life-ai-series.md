@@ -356,4 +356,8 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 - 批次 01（2026-09-13，`tasks/done/2026-09-13-life-ai-batch-01.md`）：一篇一個代理、同時七個最穩，沒有人被額度切斷；
   代理只准 `--dry-run`，不碰 repo 檔案（有代理「清理」掉已收進去的文章）；`alt` ≤ 200 字、系列統一用語（token、上下文視窗）已寫進 brief；
   收完後把 life→life 連結文字統一成目標標題；每張圖渲染後一定要人看，字壓框機械檢查抓不到。
+- 批次 02（2026-09-13，`tasks/done/2026-09-13-life-ai-batch-02.md`）：撰稿代理會繼承 session 的 plan mode——開著時代理只寫計畫檔、不寫交付物；
+  `ExitPlanMode` 後用 SendMessage 讓同一個代理接著執行，查證不用重做。被額度切斷的代理留下的 `pack.json` 可由新代理接手補圖。
+  官網 403 的讀法（help center 網址加 `.json`、Wayback 快照、WebSearch 限定網域）已寫進 brief 第 5 節。代理在協調者 ingest 之後還會再改檔，
+  收尾前用 `find -newer` 再對一次。總表標題以實際篇名為準（本批同步了 12 列），life→life 連結文字收完後統一。
 - Commons 照片：工具的 User-Agent 要有聯絡信箱，而且請求要走 urllib（httpx 的連線被 Wikimedia 擋 403）；十個代理同時搜 Commons 會被 429，工具會退避重試。
