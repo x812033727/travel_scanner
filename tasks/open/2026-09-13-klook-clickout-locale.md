@@ -1,7 +1,7 @@
 ---
 id: 2026-09-13-klook-clickout-locale
 title: Klook clickout ignores the visitor locale
-status: in-progress
+status: review
 priority: P2
 area: api
 owner: claude-opus-5
