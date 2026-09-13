@@ -86,9 +86,9 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 | 6 | `codex-beginner-guide` | OpenAI Codex 是什麼：從 ChatGPT 裡的寫程式代理到 Codex CLI | ai, software | 插 |  | ✓ |
 | 7 | `minimax-beginner-guide` | MiniMax 是什麼：海螺 AI、影片與語音生成，台灣使用者怎麼用 | ai, software | 插 |  | ✓ |
 | 8 | `deepseek-beginner-guide` | DeepSeek 是什麼：免費、開源與資料流向，用之前先知道的事 | ai, software | 插 |  | ✓ |
-| 9 | `ai-chat-prompt-basics` | 提示詞入門：把問題問清楚的五個原則 | ai, tutorial | 插 |  |  |
+| 9 | `ai-chat-prompt-basics` | 提示詞入門：把問題問清楚的五個原則，改前改後對照著學 | ai, tutorial | 插 |  |  |
 | 10 | `ai-hallucination-fact-check` | AI 為什麼會一本正經地胡說：幻覺的成因與查證方法 | ai, tutorial | 插 |  |  |
-| 11 | `ai-context-window-explained` | 上下文視窗是什麼：為什麼聊久了 AI 會忘記前面 | ai, tutorial | 插 |  |  |
+| 11 | `ai-context-window-explained` | 上下文視窗是什麼：為什麼聊久了 AI 會忘記前面說的話，六個做法讓它記住 | ai, tutorial | 插 |  |  |
 | 12 | `ai-model-tiers-explained` | 同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選 | ai | 插 |  | ✓ |
 | 13 | `ai-free-vs-paid-plans-2026` | 免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026） | ai, software | 插 |  | ✓ |
 | 14 | `ai-privacy-settings-checklist` | 用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定 | ai, tutorial | 插 |  | ✓ |
@@ -97,7 +97,7 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 | 17 | `ai-agents-explained` | AI 代理（Agent）是什麼：從回答問題到替你完成任務 | ai, tutorial | 插 |  |  |
 | 18 | `ai-reasoning-models-explained` | 推理模型是什麼：o 系列、延伸思考、Deep Think 的差別 | ai, tutorial | 插 |  | ✓ |
 | 19 | `ai-glossary-50-terms` | AI 名詞速查：50 個常見詞彙一次搞懂 | ai, misc | 插 |  |  |
-| 20 | `ai-tools-choose-by-task` | 依任務選工具：寫作、翻譯、程式、圖片、研究各用哪一個 | ai, productivity | 插 |  | ✓ |
+| 20 | `ai-tools-choose-by-task` | 依任務選 AI 工具：寫作、翻譯、程式、圖片、研究各用哪一個 | ai, productivity | 插 |  | ✓ |
 
 ### 批次 02｜ChatGPT 教學
 
@@ -105,24 +105,24 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 |---|---|---|---|---|---|---|
 | 21 | `chatgpt-plans-plus-pro-2026` | ChatGPT Plus、Pro 與其他方案差在哪：2026 年怎麼選 | ai, software | 插 |  | ✓ |
 | 22 | `chatgpt-projects-guide` | ChatGPT Projects：把檔案、指令與對話收在一個工作區 | ai, tutorial | 插 |  |  |
-| 23 | `chatgpt-custom-instructions-memory` | 自訂指令與記憶功能：讓 ChatGPT 記住你的偏好 | ai, tutorial | 插 |  |  |
-| 24 | `chatgpt-voice-mode-guide` | ChatGPT 語音模式：練英文、口說翻譯與免手打 | ai, tutorial | 照 |  |  |
+| 23 | `chatgpt-custom-instructions-memory` | ChatGPT 自訂指令與記憶功能：讓它記住你的偏好，每次都用台灣繁體中文回答 | ai, tutorial | 插 |  |  |
+| 24 | `chatgpt-voice-mode-guide` | ChatGPT 語音模式：練英文、口說翻譯與免手打的完整做法 | ai, tutorial | 照 |  |  |
 | 25 | `chatgpt-deep-research-guide` | ChatGPT Deep Research：讓 AI 花十分鐘幫你做一份完整研究 | ai, productivity | 插 |  | ✓ |
 | 26 | `chatgpt-file-upload-analysis` | 上傳 PDF、Excel 給 ChatGPT：分析、摘要與抓重點 | ai, tutorial | 插 |  |  |
-| 27 | `chatgpt-image-generation-guide` | ChatGPT 畫圖教學：圖片生成、修圖與風格提示 | ai, tutorial | 插 |  | ✓ |
-| 28 | `chatgpt-canvas-writing` | ChatGPT Canvas：和 AI 並排改文章、改程式 | ai, tutorial | 插 |  |  |
-| 29 | `chatgpt-custom-gpts-build` | 自製 GPT：不用寫程式做出自己的專用助手 | ai, tutorial | 插 |  |  |
-| 30 | `chatgpt-search-vs-google` | ChatGPT 搜尋 vs Google：什麼時候該用哪一個 | ai, productivity | 插 |  |  |
+| 27 | `chatgpt-image-generation-guide` | ChatGPT 畫圖教學：圖片生成、修圖與風格提示詞怎麼寫 | ai, tutorial | 插 |  | ✓ |
+| 28 | `chatgpt-canvas-writing` | ChatGPT Canvas 改版後怎麼改稿：用寫作區塊與程式區塊逐段修文章、改小腳本 | ai, tutorial | 插 |  |  |
+| 29 | `chatgpt-custom-gpts-build` | 自製 GPT：不用寫程式做出自己的專用助手（2026 年誰能建、怎麼替代） | ai, tutorial | 插 |  |  |
+| 30 | `chatgpt-search-vs-google` | ChatGPT 搜尋 vs Google：六類問題什麼時候該用哪一個 | ai, productivity | 插 |  |  |
 | 31 | `chatgpt-agent-mode-guide` | ChatGPT 代理模式：讓它替你上網比價、填表、訂位 | ai, tutorial | 插 |  | ✓ |
-| 32 | `chatgpt-mobile-app-tips` | ChatGPT 手機 App 十個技巧：拍照提問、捷徑與小工具 | ai, daily | 照 |  |  |
+| 32 | `chatgpt-mobile-app-tips` | ChatGPT 手機 App 十個技巧：拍照提問、Siri、鎖定畫面語音與排程通知 | ai, daily | 照 |  |  |
 | 33 | `chatgpt-for-email-writing` | 用 ChatGPT 寫 Email：中英文商務信件範本與提示詞 | ai, productivity | 插 |  |  |
 | 34 | `chatgpt-for-excel-formulas` | 用 ChatGPT 寫 Excel 公式與 VBA：從問題描述到可貼上的公式 | ai, productivity | 插 |  |  |
-| 35 | `chatgpt-for-english-learning` | 用 ChatGPT 學英文：對話練習、糾錯與單字卡 | ai, daily | 插 |  |  |
+| 35 | `chatgpt-for-english-learning` | 用 ChatGPT 學英文：對話練習、糾錯與單字卡，每天 20 分鐘的六種練法與提示詞 | ai, daily | 插 |  |  |
 | 36 | `chatgpt-for-resume-cover-letter` | 用 ChatGPT 改履歷與求職信：改得像自己寫的做法 | ai, productivity | 插 |  |  |
 | 37 | `chatgpt-data-analysis-csv` | ChatGPT 資料分析：上傳 CSV 讓它跑程式畫圖表 | ai, tutorial | 插 |  |  |
 | 38 | `chatgpt-shared-links-privacy` | ChatGPT 分享連結與隱私：哪些對話可能被搜尋到 | ai, misc | 插 |  |  |
 | 39 | `chatgpt-troubleshooting-common-errors` | ChatGPT 常見問題排解：登不進、額度用完、回應中斷 | ai, tutorial | 插 |  | ✓ |
-| 40 | `chatgpt-team-for-small-business` | 小公司要不要買 ChatGPT Team：資料不訓練、共用 GPT 與管理 | ai, software | 插 |  | ✓ |
+| 40 | `chatgpt-team-for-small-business` | 小公司要不要買 ChatGPT Business（原 Team）：資料不訓練、共用專案、集中管理 | ai, software | 插 |  | ✓ |
 
 ### 批次 03｜Claude 教學
 
