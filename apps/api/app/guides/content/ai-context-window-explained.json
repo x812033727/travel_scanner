@@ -1,0 +1,337 @@
+{
+  "slug": "ai-context-window-explained",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "上下文視窗是什麼：為什麼聊久了 AI 會忘記前面說的話，六個做法讓它記住",
+      "description": "聊到後面它忘了開頭、貼長文件只看一半、跳出「對話太長」，原因都是上下文視窗：模型這一次能看到的全部文字有上限，塞滿了最早的內容會被推出去、細節顧不到、品質下降。這篇依 2026 年 9 月的 Anthropic、OpenAI、Google 官方文件整理各家免費與付費方案的視窗大小，並給六個做法：開新對話貼摘要、長文件分段、背景放進專案、記憶功能記偏好、先列大綱、先做摘要索引，附症狀對照表。",
+      "hero": {
+        "src": "/guides/ai-context-window-explained/hero.jpg",
+        "alt": "一長條印著對話泡泡的紙帶橫穿過一個方形取景框，框內的泡泡清楚，框外兩側的泡泡逐漸變淡，下方一行字寫著「它只看得到框裡的」",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "「聊到後面它忘了我一開始說的」「貼一份長文件它只看一半」「跳出對話太長，請開新對話」，這三件事的原因是同一個：上下文視窗。它是模型這一次能看到的全部文字，有上限，塞滿了就會有東西被推出去、被略過，或者還在裡面但它顧不到。這不是工具壞了，是它運作的方式，知道原因後每一種症狀都有對應做法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇會帶你弄清楚視窗裡裝了什麼、它跟訓練資料有什麼不同、各家工具目前給多少、一份中文文件大概佔多少、塞滿時會發生什麼，最後給六個做法：開新對話貼摘要、長文件分段、固定背景放進專案或自訂指令、用記憶功能記偏好、先列大綱再逐段、太長的檔案先做摘要索引。各家視窗大小與功能名稱，依 2026 年 9 月 13 日查到的 Anthropic、OpenAI、Google 官方文件與說明中心為準。"
+        },
+        {
+          "type": "heading",
+          "text": "上下文視窗是什麼：它這一次能看到的全部",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "上下文視窗（context window）指的是模型在產生這一則回覆時能參考的全部文字：你剛打的問題、這個對話裡之前所有的往返、你貼進去或上傳的檔案內容、它自己前面寫過的回覆，還有它正在寫的這一則，全部加起來算在同一個額度裡。Anthropic 的官方文件把它比喻成模型的「工作記憶」；Google 的 Gemini 說明中心則說它像「閱讀量」，決定一次能一起看懂多少內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "它跟訓練資料是兩回事。訓練資料是模型在訓練階段讀過的海量文字，練完就固定在模型裡，你沒辦法改；上下文視窗則是每一次對話當下臨時放進去給它看的內容，對話結束就沒了。換句話說，它「知道」的東西來自訓練，它「記得你說過」的東西只存在視窗裡。所以同一個模型，開新對話就像換了一個從沒見過你的人，除非工具另外有記憶功能把資料帶過去。"
+        },
+        {
+          "type": "paragraph",
+          "text": "視窗的單位是 token，不是字。模型把文字切成一塊一塊的 token 來讀，一個 token 可能是一個英文單字、半個單字、一個標點，或一個中文字的一部分，計價與視窗上限都用它算。token 怎麼切、模型為什麼是靠「猜下一個 token」在運作，這系列另一篇已經講過，這裡不重複，只要記得「視窗滿了」就是「token 用完了」。"
+        },
+        {
+          "type": "link",
+          "text": "大型語言模型是什麼：用白話解釋 token、上下文與幻覺",
+          "url": "https://mokaair.com/zh-TW/life/what-is-a-large-language-model"
+        },
+        {
+          "type": "heading",
+          "text": "各家目前的視窗有多大（2026 年 9 月查證）",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「視窗多大」要分兩層看：模型本身的上限，跟你用的聊天工具在你的方案裡實際給你多少。前者寫在開發者文件，後者寫在說明中心或定價頁，兩者常常不同，免費與付費也不同。以下是 2026 年 9 月 13 日查到的官方數字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic：開發者文件寫明 Claude Fable 5.1、Claude Opus 5、Claude Sonnet 5 的上下文視窗是 100 萬（1M）token，單次回覆最多 128K token；Claude Haiku 4.5 等其他模型是 200K。在 Claude 聊天工具裡，說明中心寫的是：Pro、Max、Team、Enterprise 付費方案用 Fable 5.1、Opus 5、Sonnet 5 有 1M 視窗，Opus 4.8、4.7、4.6 與 Sonnet 4.6 是 500K，其他模型 200K；免費方案的視窗官方沒有單獨列出，以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI：開發者文件的模型頁寫 GPT-6 Astra 與 GPT-5.6 系列的上下文視窗是 105 萬（1.05M）token，單次輸出最多 128K。ChatGPT 聊天工具各方案（Free、Go、Plus、Pro 等）實際給的視窗比 API 小，而且每個方案不同，OpenAI 把它列在定價頁的方案比較表；撰稿當天這一頁無法從本站的環境開啟，數字以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google：Gemini API 文件寫 Gemini 3.8 Flash（目前的穩定版）與 Gemini 3.1 Pro（預覽版）的輸入上限都是 1,048,576 token，輸出上限 65,536。Gemini 聊天 App 的說明中心則按方案分開列：沒有訂閱 Google AI 方案是 32k token，Google AI Plus 是 128k，Google AI Pro 與 Google AI Ultra 是 100 萬 token。三家的數字每幾個月就會變，本文的表格與圖只反映查證當天的狀態；哪些工具有哪些方案，可以看這篇總覽。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 工具全景：聊天、搜尋、寫作、圖片工具怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+        },
+        {
+          "type": "heading",
+          "text": "一份中文文件大約多少 token",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "三家官方文件對「一個 token 等於多少文字」都只給英文的估法：Anthropic 說對 Claude 而言一個 token 約 3.5 個英文字元，實際依語言不同；Google 說對 Gemini 一個 token 約 4 個字元，100 個 token 約 60 到 80 個英文單字。Anthropic 的模型頁另外給了一個整體換算：在目前的分詞器下，1M token 約 55.5 萬個英文單字或 250 萬個 Unicode 字元，200K token 約 15 萬個英文單字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "中文一個字算幾個 token，三家都沒有給固定數字，所以正確的說法是「依各家分詞方式不同」，同一段中文在不同模型裡的 token 數可能差很多。比較實用的是換成你熟悉的東西：Google 的 Gemini App 說明寫 1M token 的視窗可以讀約 1,500 頁文字或 3 萬行程式碼；反過來看，Gemini 免費方案的 32k 視窗大約是 1M 的三十分之一，換算下來不到 50 頁，貼一份長合約或整本手冊很容易就超過。一般使用者不必算得很精，記住「幾十頁以內通常沒問題，上百頁就要分段」這個量級就夠了。"
+        },
+        {
+          "type": "heading",
+          "text": "視窗塞滿會怎樣：截斷、忘記前面、品質下降",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "塞滿之後會發生的事，各家官方文件講得很具體。Anthropic 的文件說，聊天介面（例如 claude.ai）可以用「先進先出」的方式管理視窗，也就是最早的內容先被推出去，這就是「聊到後面它忘了我一開始說的」的直接原因；如果是透過 API 一次送進去的內容本身就超過視窗，則直接回傳「prompt is too long」的錯誤，不會處理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二種情況是品質下降。Anthropic 明確寫著：更多的上下文不會自動變得更好，token 越多，準確度與回想能力會下降，這個現象叫 context rot（上下文腐化），因此「整理放進去的內容」跟「有多少空間」一樣重要。Google 的 Gemini App 說明也提醒，超過視窗時回覆可能沒有把你給的內容全部考慮進去，或漏掉散在各處的關聯與細節。「貼長文件它只看一半」多半是這兩種情況的混合：後面的內容被截掉，或者沒被截掉但它顧不到。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三種是工具直接擋下來。Claude 的說明中心列出的錯誤訊息是「Your message will exceed the length limit for this chat」，建議附少一點或小一點的檔案，或開新對話；付費方案在開啟程式碼執行功能後，Claude 會在對話接近上限時自動把前面的訊息整理成摘要繼續聊，完整的對話紀錄仍然保留，官方也註明極端情況（例如第一則訊息就很大）仍可能碰到上限。看到「對話太長」的提示，代表工具已經幫你擋在視窗邊緣，接下來得靠你自己整理。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-context-window-explained/diagram-1.svg",
+          "alt": "上下文視窗滑動示意圖：一長條對話分成九段，右邊四段被一個框框住代表模型這次看得到的部分，左邊五段變灰代表已被推出視窗；下方三個框整理延長的三招：開新對話貼摘要、分段貼與先做索引、背景放進專案並把偏好交給記憶",
+          "width": 1600,
+          "height": 900,
+          "caption": "先看上面那條紙帶：對話越長，框往右滑，最左邊的段落最先掉出去；再看下面三招，第一招處理已經太長的對話，第二、三招是一開始就少塞。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "六個做法：從最省力到最花工夫",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "原因清楚了，做法就直接。下面六招大致從最省力排到最花工夫，前兩招處理「已經太長」的狀況，後四招是一開始就避免塞滿。三家工具的功能名稱不同，這裡照 2026 年 9 月各家說明中心的寫法，之後若改名以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一招，開新對話，把摘要貼過去。對話太長時最省力的做法，是在舊對話裡請它「把到目前為止確定的結論、還沒解決的問題、我說過的限制條件整理成一段」，複製之後開新對話，當作第一則訊息貼上，再接著問。新對話的視窗是乾淨的，它只需要看那一段摘要。貼上前自己讀一遍，把它寫錯或漏掉的地方改掉，因為新對話會把這段當成事實。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二招，把長文件分段貼。一份上百頁的文件不要整份丟。先依章節切成幾份，每次只貼跟問題有關的那一段，問完再貼下一段；如果要它比對前後兩章，就把那兩章一起貼、其他不貼。這樣做除了不會超過視窗，也避開了「散落多處的細節顧不到」的問題，因為你已經先幫它把相關的部分放在一起。Claude 說明中心給的建議也是同一套：切成小塊分開處理、先摘要或抽出關鍵段落、先請它找出相關的部分再細問。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三招，固定背景放進「專案」或「自訂指令」類功能。每次都要重講的背景，例如你是誰、產品是什麼、寫作風格、常用格式，不該每次佔視窗，也不該靠對話記住。Claude 的「專案」可以放專案知識與專案指示，免費方案最多五個專案，付費方案在知識量接近視窗上限時會自動改用檢索（RAG）方式只取相關段落；另有套用到所有對話的帳號層級「Instructions for Claude」。ChatGPT 的「專案」可以放檔案、指示與相關對話，官方說明寫免費與付費方案都能用，另有套用到每個對話的「自訂指令」。Gemini 的「Gems」可以寫指示並附檔案，「Instructions for Gemini」在設定的 Personal Intelligence 裡，只有個人 Google 帳號可用。要注意的是，專案裡的檔案仍然算進視窗，塞太多一樣會滿，放「這個專案每次都用得到」的東西就好。"
+        },
+        {
+          "type": "link",
+          "text": "Claude 新手指南：從註冊到第一次對話",
+          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 新手指南：從註冊到第一次對話",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+        },
+        {
+          "type": "paragraph",
+          "text": "第四招，用「記憶」功能記住偏好。記憶跟視窗是不同層的東西：它把你的偏好與背景存在對話之外，新對話開始時再帶進來。Claude 的記憶在「設定 → Memory → Generate memory from chats」開關，免費、Pro、Max 方案都有，可以直接跟它說「記住這件事」，每個專案各有獨立的記憶，健康、宗教、政治等敏感主題預設不存；付費方案另有「搜尋並參考過去對話」的功能。ChatGPT 的記憶分成自動存下的「已儲存的記憶」與「參考聊天紀錄」，可以在設定裡逐條刪除或整個關掉。Gemini 的「Memory」在設定的 Personal Intelligence 裡開關，需要個人帳號且年滿 18 歲。記憶適合放偏好與長期背景，例如「回覆用繁體中文、先給結論」，不適合放一份文件的內容，它記的是重點，不是逐字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第五招，要它先列大綱，再逐段寫。要它產出長文章、報告或程式時，一次要整份，結果常是後半段草率或直接斷掉，因為單次回覆有輸出上限，Anthropic 與 OpenAI 的 API 都是 128K token，聊天工具給的通常更短。先請它列大綱，你確認之後再說「寫第一節」「寫第二節」，每一節是獨立的一輪，視窗裡永遠有大綱當錨，不會寫到後面忘了前面的結構。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第六招，太長的檔案先請它做摘要索引。一份不能分段的長檔案，例如整本手冊、一整年的紀錄，先開一個對話只做一件事：請它列出「這份檔案有哪些章節、每章講什麼、關鍵數字在哪一段」，做成一頁索引。之後每次開新對話先貼索引，再貼你要問的那一章，它就知道整份的結構，卻不必整份讀。這跟 Claude 付費方案專案裡的檢索做法是同一個原理，只是你自己動手，任何工具都能用。怎麼把這些要求說清楚，可以看提示詞的基本寫法。"
+        },
+        {
+          "type": "link",
+          "text": "AI 對話提示詞基礎：怎麼問才會得到想要的答案",
+          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+        },
+        {
+          "type": "heading",
+          "text": "症狀對照表：看到什麼，就做什麼",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "症狀",
+            "原因",
+            "做法"
+          ],
+          "rows": [
+            [
+              "聊到後面它忘了我一開始說的",
+              "對話超過視窗，最早的內容被先進先出推出去，或被自動摘要壓縮掉細節",
+              "請它把目前結論整理成一段，開新對話貼上當開場；長期背景改放專案或記憶"
+            ],
+            [
+              "貼長文件它只看一半、漏掉細節",
+              "文件超過視窗被截斷；或沒被截斷但內容太多，散落各處的細節顧不到（context rot）",
+              "依章節分段貼；太長的先做一頁摘要索引，之後只貼索引加要問的那一章"
+            ],
+            [
+              "跳出「對話太長」「超過長度上限」的提示",
+              "這則訊息加上既有對話已到視窗上限，工具直接擋下",
+              "附少一點或小一點的檔案，或開新對話；Claude 付費方案開啟程式碼執行後會自動摘要"
+            ],
+            [
+              "每次開新對話都要重講背景",
+              "視窗只存在單一對話裡，新對話從零開始",
+              "固定背景放進專案、Gems、自訂指令類功能；偏好交給記憶功能"
+            ],
+            [
+              "要它寫長文，後半段草率或斷掉",
+              "單次輸出有上限，而且寫到後面，前面的結構在視窗裡離得越來越遠",
+              "先列大綱，確認後一節一節產出"
+            ],
+            [
+              "同一個對話越聊回答越不準",
+              "視窗越滿準確度與回想能力越差，不是越大越好",
+              "主動開新對話，只帶需要的摘要與段落過去"
+            ],
+            [
+              "同一份文件，不同工具答得差很多",
+              "各家視窗大小、免費與付費方案不同，token 的切法也不同",
+              "查各家官網的方案比較表；長文件用視窗大的方案，或一律分段"
+            ]
+          ],
+          "caption": "症狀、原因與做法對照（2026 年 9 月依 Anthropic、OpenAI、Google 官方文件與說明中心整理）。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "對話太長時，最省力的一招",
+          "text": "對話太長時，最省力的是請它把目前結論整理成一段，複製到新對話當開場。可以直接這樣說：「請把我們到目前為止確定的結論、還沒解決的問題、我提過的限制條件整理成一段，我要貼到新對話用。」貼上之前自己讀一遍，改掉它寫錯或漏掉的地方，因為新對話會把這段當成事實；之後每隔一陣子就重複一次。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic 官方文件：Context windows（視窗定義、工作記憶比喻、先進先出、context rot、1M 與 200k 模型、128k 輸出、prompt is too long）",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/context-windows",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Models overview（Fable 5.1、Opus 5、Sonnet 5 為 1M token，Haiku 4.5 為 200K；1M token 約 555k 英文單字或 2.5M Unicode 字元、200k 約 150k 單字）",
+          "url": "https://platform.claude.com/docs/en/models/overview",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Glossary（token 約 3.5 個英文字元、依語言不同）",
+          "url": "https://platform.claude.com/docs/en/about-claude/glossary",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：How large is the context window on paid Claude plans?（付費方案 1M／500K／200K 分模型列表、自動摘要）",
+          "url": "https://support.claude.com/en/articles/8606394-how-large-is-the-context-window-on-paid-claude-plans",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：How do usage and length limits work?（長度上限即上下文視窗、接近上限時自動摘要、需開啟程式碼執行、極端情況仍會碰到上限）",
+          "url": "https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Troubleshoot Claude error messages（length limit 錯誤訊息與建議做法：切小塊、先摘要、先找相關段落、開新對話）",
+          "url": "https://support.claude.com/en/articles/12466728-troubleshoot-claude-error-messages",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：What are projects?（專案知識與專案指示、免費最多五個專案、付費方案 RAG）",
+          "url": "https://support.claude.com/en/articles/9517075-what-are-projects",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Retrieval augmented generation (RAG) for projects（專案知識算進視窗、接近上限自動改用檢索）",
+          "url": "https://support.claude.com/en/articles/11473015-retrieval-augmented-generation-rag-for-projects",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Use Claude's chat search and memory（記憶的方案與設定路徑、記住這件事、專案獨立記憶、敏感主題預設不存、付費方案搜尋過去對話）",
+          "url": "https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Understanding Claude's personalization features（Instructions for Claude、專案指示）",
+          "url": "https://support.claude.com/en/articles/10185728-understanding-claude-s-personalization-features",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 官方文件：Models（GPT-6 Astra 與 GPT-5.6 系列上下文視窗 1.05M、最大輸出 128K）",
+          "url": "https://developers.openai.com/api/docs/models",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 官方定價頁：ChatGPT Pricing（各方案的上下文視窗比較表；撰稿當天無法從本站環境開啟，數字以此頁為準）",
+          "url": "https://openai.com/chatgpt/pricing/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：Memory FAQ（已儲存的記憶與參考聊天紀錄、可逐條刪除或關閉）",
+          "url": "https://help.openai.com/en/articles/11146739-how-does-reference-saved-memories-work",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：Projects in ChatGPT（專案可放檔案、指示與對話，免費與付費方案皆可用）",
+          "url": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google Gemini Apps 說明中心：Gemini Apps limits and upgrades for Google AI subscribers（無方案 32k、AI Plus 128k、AI Pro 與 AI Ultra 1M；1M 約 1,500 頁或 30,000 行程式碼；超過視窗會漏掉細節）",
+          "url": "https://support.google.com/gemini/answer/16275805",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google Gemini API 官方文件：Gemini 3.8 Flash（輸入上限 1,048,576、輸出上限 65,536；3.1 Pro 預覽版同）",
+          "url": "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google Gemini API 官方文件：Understand and count tokens（一個 token 約 4 個字元、100 token 約 60 到 80 個英文單字、計算 token 的功能）",
+          "url": "https://ai.google.dev/gemini-api/docs/tokens",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google Gemini Apps 說明中心：Use Gems（自訂指示與附加檔案）",
+          "url": "https://support.google.com/gemini/answer/15146780",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google Gemini Apps 說明中心：Customize Gemini's responses with your instructions（Instructions for Gemini 的位置與限制）",
+          "url": "https://support.google.com/gemini/answer/16598625",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google Gemini Apps 說明中心：Get personalization with memory of your past Gemini chats（Memory 開關位置、年滿 18 歲、個人帳號、Gems 與 Live 不適用）",
+          "url": "https://support.google.com/gemini/answer/16598469",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}
