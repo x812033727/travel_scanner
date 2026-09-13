@@ -3,7 +3,7 @@ from __future__ import annotations
 import hashlib
 import ipaddress
 import re
-from collections.abc import Awaitable
+from collections.abc import Awaitable, Sequence
 from dataclasses import dataclass, field
 from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
@@ -19,6 +19,14 @@ from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import Settings
+from app.destinations.localized import (
+    COUNTRY_BY_CODE,
+    city_words,
+    country_label_for,
+    country_mentions,
+    mentions_country,
+    mentions_place,
+)
 from app.i18n import LOCALES, Locale
 from app.models import (
     HotspotGuide,
@@ -485,6 +493,47 @@ async def _search_name(session: AsyncSession, hotspot: TravelHotspot, locale: Lo
     return localization.name if localization else hotspot.name
 
 
+def guide_search_query(hotspot: TravelHotspot, name: str, locale: Locale) -> str:
+    """The attraction plus where it is, because a name alone can belong to two countries.
+
+    Hanoi's 玉山祠 is the Ngọc Sơn temple, and a zh-TW search for the bare name answers
+    with Taiwan's 玉山: the national park, the tourism bureau's mountain-range page, a
+    drive up the 新中橫 road. Sapporo's 圓山 collects Taipei's 圓山 the same way. The AI
+    search path already plans its queries from the city and the country; this gives
+    standard discovery the same two words.
+    """
+    words = [name]
+    city = city_words(hotspot.destination_id, locale, hotspot.city_name)
+    # 「大阪城」 already says 大阪, and a destination written as two cities must not then
+    # answer with the other one: a name that carries its city keeps the country alone.
+    if not any(word in name for word in city):
+        words.extend(word for word in city if word and word not in words)
+    country = country_label_for(hotspot.country_code, locale, hotspot.country_name)
+    if country and country not in name and country not in words:
+        words.append(country)
+    return " ".join((*words, SEARCH_SUFFIXES[locale]))
+
+
+def foreign_place(
+    text: str, hotspot: TravelHotspot, *, own_terms: Sequence[str] = ()
+) -> str | None:
+    """The other country this text names, when nothing in it points at this attraction.
+
+    A scorer that reads titles approves 「玉山山脈 > 交通部觀光署」 for 玉山祠 — the name it
+    was searched with is right there. Reading the geography instead is decisive: a
+    candidate that names another country, and never this country, this city or this
+    attraction, is an introduction to somewhere else.
+    """
+    country = COUNTRY_BY_CODE.get((hotspot.country_code or "").upper())
+    mentions = country_mentions(text)
+    if country is None or not mentions or mentions_country(text, country):
+        return None
+    for term in (hotspot.name, hotspot.city_name, hotspot.country_name, *own_terms):
+        if mentions_place(text, term):
+            return None
+    return next(iter(mentions.values()))
+
+
 def manual_guide_filter() -> ColumnElement[bool]:
     """Rows an admin added by hand: provider ``manual`` or tagged in metadata (videos)."""
     return or_(
@@ -603,7 +652,7 @@ async def discover_guides(
     try:
         for locale in locales:
             name = await _search_name(session, hotspot, locale)
-            query = f"{name} {SEARCH_SUFFIXES[locale]}"
+            query = guide_search_query(hotspot, name, locale)
             for provider_name, provider in (("youtube", youtube), ("brave", brave)):
                 if provider is None:
                     report["providers"][provider_name] = "not_configured"

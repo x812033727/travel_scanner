@@ -301,3 +301,47 @@ async def test_candidate_text_travels_as_data_under_the_assessment_prompt(
     assert provider.payloads[0]["attraction"]["name"] == "浅草寺"
     assert report.counts() == {"rejected": 1}
     assert hostile.review_status == "rejected"
+
+
+def ngoc_son_row() -> TravelHotspot:
+    return TravelHotspot(
+        id=uuid4(),
+        name="玉山祠",
+        destination_id="hanoi",
+        city_name="河內",
+        country_code="VN",
+        country_name="越南",
+        category="culture",
+    )
+
+
+@pytest.mark.asyncio
+async def test_a_candidate_about_another_country_is_rejected_whatever_it_scored(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    hotspot = ngoc_son_row()
+    taiwan = guide_row(hotspot, "玉山山脈 > 交通部觀光署")
+    taiwan.summary = "位於南臺灣的中央山脈西側，臺灣南投縣水里鄉濁水溪南岸"
+    local = guide_row(hotspot, "玉山祠｜還劍湖上的文昌帝君廟")
+    local.summary = "走過棲旭橋，開放時間與門票"
+    session, _ = review_with(
+        monkeypatch,
+        [(taiwan, hotspot), (local, hotspot)],
+        [
+            AssessmentBatch(
+                items=[
+                    assessment("c0", relevance=95, reason="標題就是景點名稱"),
+                    assessment("c1"),
+                ]
+            )
+        ],
+    )
+
+    report = await review_pending_guides(session, Settings(), apply=True)  # type: ignore[arg-type]
+
+    # The model read 玉山 in the title and scored it 95; the text says Taiwan.
+    assert report.counts() == {"rejected": 1, "approved": 1}
+    assert (taiwan.review_status, local.review_status) == ("rejected", "approved")
+    assert "地點不符" in (taiwan.review_reason or "")
+    assert "台灣" in (taiwan.review_reason or "")
+    assert "河內" in (taiwan.review_reason or "")
