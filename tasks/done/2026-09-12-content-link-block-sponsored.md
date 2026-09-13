@@ -1,13 +1,13 @@
 ---
 id: 2026-09-12-content-link-block-sponsored
 title: 文章內文 link 區塊缺 rel=sponsored 與追蹤參數過濾
-status: in-progress
+status: done
 priority: P3
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-13T05:06:13Z
 created_at: 2026-09-12T14:18:00Z
-completed_at:
+completed_at: 2026-09-13T09:37:18Z
 branch: claude/claude-tutorial-affiliate-links-084ff0
 depends_on: []
 scope:

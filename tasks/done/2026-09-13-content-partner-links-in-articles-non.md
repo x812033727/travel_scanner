@@ -1,13 +1,13 @@
 ---
 id: 2026-09-13-content-partner-links-in-articles-non
 title: Content partner links in articles: non-travel affiliate programs with disclosure, rel=sponsored and a click beacon
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5
 claimed_at: 2026-09-13T05:06:19Z
 created_at: 2026-09-13T05:06:07Z
-completed_at:
+completed_at: 2026-09-13T09:37:17Z
 branch: claude/claude-tutorial-affiliate-links-084ff0
 depends_on: []
 scope:
