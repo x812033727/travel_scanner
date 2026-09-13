@@ -1,13 +1,13 @@
 ---
 id: 2026-09-13-partner-buttons-send-origin-null-and
 title: Partner buttons send Origin null and the BFF refuses every click
-status: in-progress
+status: done
 priority: P0
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-13T04:21:25Z
 created_at: 2026-09-13T04:20:49Z
-completed_at:
+completed_at: 2026-09-13T04:32:07Z
 branch: claude/travel-guide-klook-link-broken-2587c7
 depends_on: []
 scope:
