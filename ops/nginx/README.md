@@ -18,6 +18,7 @@ It exists to close two gaps that the application cannot close by itself:
 | --- | --- | --- |
 | `10-rate-limit.conf` | `conf.d/mokaair-rate-limit.conf` | The `limit_req` / `limit_conn` zones (http context only) |
 | `proxy-headers.conf` | `snippets/mokaair-proxy-headers.conf` | Header hygiene, included by every proxying location |
+| `upstream-keepalive.conf` | `snippets/mokaair-upstream-keepalive.conf` | Connection pool to Next.js, included inside `upstream mokaair_web` |
 | `mokaair.conf.example` | `sites-available/mokaair.conf` | Server blocks. Seeded once; yours thereafter |
 | `ci-validate.conf` | — | A self-contained wrapper so CI can run `nginx -t` |
 | `install.sh` | — | Idempotent installer |
@@ -36,7 +37,10 @@ sudo nginx -t && sudo systemctl reload nginx
 ```
 
 The installer never reloads nginx itself. Re-run it after upgrading a release: it overwrites
-the two files this project owns and leaves your site file alone.
+the three files this project owns and leaves your site file alone. A site file written before
+`upstream-keepalive.conf` existed has `keepalive 32;` in its upstream block; replace that line
+with the `include` from `mokaair.conf.example`, or the new snippet is installed and never read.
+The installer prints a reminder while no enabled config includes it.
 
 ## Verify
 
@@ -87,6 +91,36 @@ would still break sign-in and testing `/` cannot tell the two apart.
 curl -sSI https://www.example.com/api/auth/oauth/google/start | grep -iE '^HTTP|^location'
 # expect 301 -> https://example.com/api/auth/oauth/google/start
 ```
+
+### Idle connections to Next.js are closed by nginx, not by Next.js
+
+When the Next.js server is the one to close an idle pooled connection, nginx now and then sends a
+request down a connection that is already gone. A GET is retried without anyone noticing; a POST
+is not, and the browser gets a 502 while the error log says `upstream prematurely closed
+connection`. Check both halves, because each is applied by a different route:
+
+```bash
+# The server's idle timeout, from KEEP_ALIVE_TIMEOUT in docker-compose.prod.yml (reaches the host
+# with a deploy). timeout=5 means the container still runs with Node's default.
+curl -sI http://127.0.0.1:8091/ | grep -i '^keep-alive:'        # expect timeout=65
+
+# nginx's idle timeout, from this directory (reaches the host with install.sh, the include, a reload).
+sudo nginx -T 2>/dev/null | grep -E 'mokaair-upstream-keepalive|keepalive_timeout 4s'
+```
+
+`nginx -T` reads the files on disk, not what the running workers loaded, so also watch one pooled
+connection end. Whichever side closes a TCP connection first holds it in TIME-WAIT for a minute:
+
+```bash
+curl -s -o /dev/null https://example.com/zh-TW
+ss -tn state established '( dport = :8091 )'    # note nginx's local port(s)
+sleep 8
+ss -tan '( dport = :8091 )'    # -a matters: without it ss hides TIME-WAIT
+```
+
+The same local port in `TIME-WAIT` means nginx closed it: the nginx half is live. Still `ESTAB`
+means nginx keeps idle connections longer than 8 seconds, so its half is not. Gone altogether means
+Next.js closed it first, which is exactly the race; neither half is in effect.
 
 ### Whether a CDN is in front
 

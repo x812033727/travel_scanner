@@ -18,10 +18,11 @@ fi
 
 install -d -m 0755 "${CONF_D}" "${SNIPPETS}"
 
-# Re-applied on every run, like the rest of this repo's host installers: these two are ours
+# Re-applied on every run, like the rest of this repo's host installers: these three are ours
 # outright, so overwriting them is how an upgrade reaches the host at all.
 install -m 0644 "${SOURCE_ROOT}/10-rate-limit.conf" "${CONF_D}/mokaair-rate-limit.conf"
 install -m 0644 "${SOURCE_ROOT}/proxy-headers.conf" "${SNIPPETS}/mokaair-proxy-headers.conf"
+install -m 0644 "${SOURCE_ROOT}/upstream-keepalive.conf" "${SNIPPETS}/mokaair-upstream-keepalive.conf"
 
 # The site file is the operator's: it carries server_name and certificate paths this repo
 # does not know. Seed it once, then leave it alone -- overwriting it on an upgrade would
@@ -32,6 +33,17 @@ if [[ ! -f "${SITE_TARGET}" ]]; then
   echo "Seeded ${SITE_TARGET}. Edit every line marked EDIT before enabling it."
 else
   echo "Kept existing ${SITE_TARGET}; compare it against mokaair.conf.example by hand."
+fi
+
+# The keep-alive snippet does nothing until the site's upstream block includes it, and a site file
+# written before the snippet existed still has `keepalive 32;` there instead. nginx -t and the
+# reload both succeed either way, so say it out loud rather than let that pass for an upgrade.
+if ! grep -REqs '^[[:space:]]*include[[:space:]]+[^#]*mokaair-upstream-keepalive\.conf' \
+    /etc/nginx/sites-enabled /etc/nginx/conf.d; then
+  echo
+  echo "No enabled config includes ${SNIPPETS}/mokaair-upstream-keepalive.conf yet."
+  echo "In 'upstream mokaair_web', replace 'keepalive 32;' with:"
+  echo "    include ${SNIPPETS}/mokaair-upstream-keepalive.conf;"
 fi
 
 # Deliberately no reload. A bad config that nginx accepts at -t can still be wrong for this
