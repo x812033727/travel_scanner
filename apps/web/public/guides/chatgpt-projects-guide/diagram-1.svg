@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">ChatGPT 專案的結構：指令與檔案由所有對話共用 / How a ChatGPT project is structured</title>
+  <desc id="desc">左邊是一個名叫「日本自助旅行」的專案框。框裡上方有兩個區塊：專案指令（用繁體中文回答、金額用日圓與台幣並列、排行程前先問日期與人數、只在這個專案生效）與檔案（航班與訂房確認 PDF、想去的店與景點清單、交通票券資訊、所有對話都讀得到）。兩個區塊用箭頭接到下方三個對話：排行程、找交通、翻譯訊息，每個對話都不必重貼背景，指令與檔案自動套用。右邊是沒有專案的對照：同樣三個對話各自獨立，第一個要先貼日期、人數、住宿地點與語言幣別才能問；第二個又貼一次同樣的背景、檔案也要重新上傳、回答的假設可能跟上一個不同；第三個是第三次貼同樣的背景，哪個對話是最新版找不到，改了條件要三個對話各改一次。下方一排寫著每個專案的檔案上限：Free 5 個、Go 與 Plus 25 個、Pro 40 個，一次最多上傳 10 個，專案數量不限，必須登入；指令只在該專案生效並蓋過全域自訂指令，改指令不會回頭改寫舊回答，重要背景放檔案。2026 年 9 月依 OpenAI help center 查證。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0D6B68"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">ChatGPT 專案的結構：指令與檔案由所有對話共用（2026 年 9 月查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">How a ChatGPT project is structured: one set of instructions and files, many chats</text>
+
+  <!-- left: the project -->
+  <rect x="48" y="120" width="900" height="560" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="76" y="160" font-size="20" font-weight="700" fill="#0B4F4D">專案「日本自助旅行」　Project</text>
+
+  <!-- instructions -->
+  <rect x="76" y="185" width="400" height="170" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="96" y="218" font-size="18" font-weight="700" fill="#0B4F4D">專案指令　Instructions</text>
+  <text x="96" y="250" font-size="16" fill="#102A2B">用繁體中文回答</text>
+  <text x="96" y="276" font-size="16" fill="#102A2B">金額用日圓與台幣並列</text>
+  <text x="96" y="302" font-size="16" fill="#102A2B">排行程前先問日期與人數</text>
+  <text x="96" y="328" font-size="16" fill="#5C6B6B">只在這個專案生效</text>
+
+  <!-- files -->
+  <rect x="500" y="185" width="420" height="170" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="520" y="218" font-size="18" font-weight="700" fill="#1F4E73">檔案　Files</text>
+  <text x="520" y="250" font-size="16" fill="#102A2B">航班與訂房確認（PDF）</text>
+  <text x="520" y="276" font-size="16" fill="#102A2B">想去的店與景點清單</text>
+  <text x="520" y="302" font-size="16" fill="#102A2B">交通票券資訊</text>
+  <text x="520" y="328" font-size="16" fill="#5C6B6B">所有對話都讀得到</text>
+
+  <!-- bus from instructions and files to chats -->
+  <path d="M 276 355 L 276 378" stroke="#0D6B68" stroke-width="4" fill="none"/>
+  <path d="M 710 355 L 710 378" stroke="#0D6B68" stroke-width="4" fill="none"/>
+  <path d="M 208 378 L 786 378" stroke="#0D6B68" stroke-width="4" fill="none"/>
+  <path d="M 208 378 L 208 396" stroke="#0D6B68" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 497 378 L 497 396" stroke="#0D6B68" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 786 378 L 786 396" stroke="#0D6B68" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- chats inside the project -->
+  <rect x="76" y="400" width="265" height="190" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="3"/>
+  <text x="96" y="434" font-size="18" font-weight="700" fill="#102A2B">對話：排行程</text>
+  <text x="96" y="466" font-size="15" fill="#102A2B">不必重貼背景</text>
+  <text x="96" y="492" font-size="15" fill="#102A2B">直接問「第二天怎麼排」</text>
+  <text x="96" y="518" font-size="15" fill="#2E7D5B">指令與檔案自動套用</text>
+
+  <rect x="365" y="400" width="265" height="190" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="3"/>
+  <text x="385" y="434" font-size="18" font-weight="700" fill="#102A2B">對話：找交通</text>
+  <text x="385" y="466" font-size="15" fill="#102A2B">不必重貼背景</text>
+  <text x="385" y="492" font-size="15" fill="#102A2B">直接問「機場到飯店怎麼走」</text>
+  <text x="385" y="518" font-size="15" fill="#2E7D5B">指令與檔案自動套用</text>
+
+  <rect x="654" y="400" width="265" height="190" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="3"/>
+  <text x="674" y="434" font-size="18" font-weight="700" fill="#102A2B">對話：翻譯訊息</text>
+  <text x="674" y="466" font-size="15" fill="#102A2B">不必重貼背景</text>
+  <text x="674" y="492" font-size="15" fill="#102A2B">直接貼要給房東的話</text>
+  <text x="674" y="518" font-size="15" fill="#2E7D5B">指令與檔案自動套用</text>
+
+  <text x="76" y="632" font-size="16" fill="#102A2B">同一個專案裡可以開任意多個對話，每一個都讀得到同一組指令與檔案</text>
+  <text x="76" y="660" font-size="15" fill="#5C6B6B">改了指令只影響之後送出的訊息；會改的背景（日期、金額）放檔案，改了就重傳</text>
+
+  <!-- right: without a project -->
+  <rect x="980" y="120" width="572" height="560" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1008" y="160" font-size="20" font-weight="700" fill="#8A4A16">沒有專案　Without a project</text>
+
+  <rect x="1008" y="190" width="516" height="140" rx="14" fill="#FCEFE4" stroke="#D97A2B" stroke-width="3"/>
+  <text x="1028" y="224" font-size="18" font-weight="700" fill="#102A2B">對話：排行程</text>
+  <text x="1028" y="254" font-size="16" fill="#B8442D">先貼日期、人數、住宿地點</text>
+  <text x="1028" y="280" font-size="16" fill="#B8442D">再貼「用繁體中文、日圓與台幣並列」</text>
+  <text x="1028" y="306" font-size="16" fill="#102A2B">然後才能開始問</text>
+
+  <rect x="1008" y="350" width="516" height="140" rx="14" fill="#FCEFE4" stroke="#D97A2B" stroke-width="3"/>
+  <text x="1028" y="384" font-size="18" font-weight="700" fill="#102A2B">對話：找交通</text>
+  <text x="1028" y="414" font-size="16" fill="#B8442D">又貼一次同樣的背景</text>
+  <text x="1028" y="440" font-size="16" fill="#B8442D">檔案也要重新上傳</text>
+  <text x="1028" y="466" font-size="16" fill="#102A2B">回答的假設可能跟上一個對話不同</text>
+
+  <rect x="1008" y="510" width="516" height="140" rx="14" fill="#FCEFE4" stroke="#D97A2B" stroke-width="3"/>
+  <text x="1028" y="544" font-size="18" font-weight="700" fill="#102A2B">對話：翻譯訊息</text>
+  <text x="1028" y="574" font-size="16" fill="#B8442D">第三次貼同樣的背景</text>
+  <text x="1028" y="600" font-size="16" fill="#B8442D">哪個對話是最新版找不到</text>
+  <text x="1028" y="626" font-size="16" fill="#102A2B">改了條件要三個對話各改一次</text>
+
+  <!-- bottom: limits -->
+  <rect x="48" y="710" width="1504" height="120" rx="16" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="3"/>
+  <text x="76" y="744" font-size="19" font-weight="700" fill="#102A2B">每個專案的檔案上限　Files per project</text>
+  <text x="76" y="778" font-size="16" fill="#102A2B">・Free 5 個、Go 與 Plus 25 個、Pro 40 個；一次最多上傳 10 個；專案數量不限；必須登入才能用專案</text>
+  <text x="76" y="806" font-size="16" fill="#102A2B">・指令只在該專案生效，蓋過全域自訂指令；改指令不會回頭改寫舊回答，重要背景放檔案，不要靠對話記住</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
