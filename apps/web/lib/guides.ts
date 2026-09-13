@@ -1,5 +1,6 @@
 import type { AffiliateModule } from "@/components/affiliate-partner-options";
 import {
+  contentBlockLink,
   contentImageSrc,
   isImageCredit,
   isImageSize,
@@ -72,7 +73,22 @@ export type OfferBlock = {
   heading?: string;
 };
 
-export type GuideBlock = RichContentBlock | OfferBlock;
+/**
+ * A link to a non-travel affiliate program (hosting, books, courses, software), placed by the
+ * editor. Only the shape is checked here. Whether the partner is known and the URL is its own
+ * is the API's call (`apps/api/app/affiliates/content_links.py`), delivered as the article's
+ * `partner_links`; a block with no matching entry draws nothing, so the web never keeps a
+ * second copy of the partner list.
+ */
+export type PartnerLinkBlock = { type: "partner_link"; partner: string; url: string; label: string; note?: string };
+
+/** One partner link the API resolved for this article; `key` names it for the click count. */
+export type GuidePartnerLink = { key: string; partner: string; display_name: string; url: string };
+
+/** A partner program an editor may pick, as `GET /admin/guides/partners` lists it. */
+export type ContentPartnerOption = { code: string; display_name: string; category: string; hosts: string[] };
+
+export type GuideBlock = RichContentBlock | OfferBlock | PartnerLinkBlock;
 
 /** The article's own picture: a self-hosted raster, because it doubles as the social card. */
 export type GuideHero = { src: string; alt: string; width: number; height: number; credit: ImageCredit | null };
@@ -86,8 +102,39 @@ export function isOfferBlock(value: unknown): value is OfferBlock {
     && (entry.heading === undefined || typeof entry.heading === "string");
 }
 
+/** An https link, the same rule the API applies to both the block and the resolved entry. */
+function httpsLink(raw: unknown): string | null {
+  const href = contentBlockLink(raw);
+  return href?.startsWith("https:") ? href : null;
+}
+
+export function isPartnerLinkBlock(value: unknown): value is PartnerLinkBlock {
+  if (!value || typeof value !== "object") return false;
+  const entry = value as Record<string, unknown>;
+  // Any code-shaped partner passes: a program since removed from the registry must leave the
+  // document readable and simply find no entry in `partner_links`.
+  return entry.type === "partner_link" && typeof entry.partner === "string"
+    && httpsLink(entry.url) !== null && typeof entry.label === "string"
+    && (entry.note === undefined || typeof entry.note === "string");
+}
+
+const PARTNER_LINK_KEY = /^[0-9a-f]{16}$/;
+
+export function isGuidePartnerLink(value: unknown): value is GuidePartnerLink {
+  if (!value || typeof value !== "object") return false;
+  const entry = value as Record<string, unknown>;
+  return typeof entry.key === "string" && PARTNER_LINK_KEY.test(entry.key)
+    && typeof entry.partner === "string" && typeof entry.display_name === "string"
+    && httpsLink(entry.url) !== null;
+}
+
+/** Where a partner-link click is counted: through the BFF, so it carries this site's Origin. */
+export function partnerClickPath(kind: GuideKind, slug: string, locale: string, key: string): string {
+  return `/api/travel/guides/${kind}/${encodeURIComponent(slug)}/partner-links/${key}/click?locale=${encodeURIComponent(locale)}`;
+}
+
 export function isGuideBlock(value: unknown): value is GuideBlock {
-  return isRichContentBlock(value) || isOfferBlock(value);
+  return isRichContentBlock(value) || isOfferBlock(value) || isPartnerLinkBlock(value);
 }
 
 export function isGuideBlockList(value: unknown): value is GuideBlock[] {
@@ -156,6 +203,9 @@ export type GuideArticleState = {
   /** Only the locales genuinely published. The article page turns this into hreflang, so an
    *  unwritten translation is never advertised as one. */
   published_locales: Locale[];
+  /** The partner links the API resolved against its registry. Optional so an article from an
+   *  older API, or a state built without one, simply draws no partner link. */
+  partner_links?: GuidePartnerLink[];
 };
 
 function isTopicList(value: unknown): value is GuideTopic[] {
@@ -207,12 +257,21 @@ export function isExpired(validUntil: string | null, today: Date = new Date()): 
 // --- reading the body ------------------------------------------------------------------
 
 /**
- * The body cut at every partner button, so a page can draw each slice with the shared
- * renderer and put a client island between them. `headingStart` is the number of level-2
- * headings before the slice: heading ids are numbered across the whole article, and a
- * renderer that restarted at each slice would give two sections the same anchor.
+ * The body cut at every partner button and partner link, so a page can draw each slice with
+ * the shared renderer and put an island between them. A segment ends in at most one of the
+ * two. `headingStart` is the number of level-2 headings before the slice: heading ids are
+ * numbered across the whole article, and a renderer that restarted at each slice would give
+ * two sections the same anchor.
+ *
+ * A partner link never stays inside `blocks`: the shared renderer would draw its URL as an
+ * ordinary, unqualified link.
  */
-export type GuideSegment = { blocks: RichContentBlock[]; headingStart: number; offer: OfferBlock | null };
+export type GuideSegment = {
+  blocks: RichContentBlock[];
+  headingStart: number;
+  offer: OfferBlock | null;
+  partner: PartnerLinkBlock | null;
+};
 
 export function splitGuideBlocks(blocks: readonly GuideBlock[]): GuideSegment[] {
   const segments: GuideSegment[] = [];
@@ -220,8 +279,13 @@ export function splitGuideBlocks(blocks: readonly GuideBlock[]): GuideSegment[] 
   let start = 0;
   let seen = 0;
   for (const block of blocks) {
-    if (block.type === "offer") {
-      segments.push({ blocks: current, headingStart: start, offer: block });
+    if (block.type === "offer" || block.type === "partner_link") {
+      segments.push({
+        blocks: current,
+        headingStart: start,
+        offer: block.type === "offer" ? block : null,
+        partner: block.type === "partner_link" ? block : null,
+      });
       current = [];
       start = seen;
       continue;
@@ -229,7 +293,7 @@ export function splitGuideBlocks(blocks: readonly GuideBlock[]): GuideSegment[] 
     if (block.type === "heading" && block.level === 2) seen += 1;
     current.push(block);
   }
-  segments.push({ blocks: current, headingStart: start, offer: null });
+  segments.push({ blocks: current, headingStart: start, offer: null, partner: null });
   return segments;
 }
 

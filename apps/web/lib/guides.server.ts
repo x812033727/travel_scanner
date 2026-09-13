@@ -1,5 +1,6 @@
 import { cache } from "react";
 import {
+  isGuidePartnerLink,
   isGuideSummary,
   isPublishedGuide,
   isGuideKind,
@@ -126,7 +127,10 @@ export async function loadGuideArticle(
   // A published status with an unreadable document is a fault, not an empty article. Saying
   // "unavailable" keeps the page out of the index instead of publishing a blank one.
   if (body.status !== "published" || !isPublishedGuide(body.document)) return unavailable;
-  return { ...shared, status: "published", document: body.document };
+  // A malformed entry costs only its own link, never the article: the block it belongs to
+  // finds no match and draws nothing.
+  const partnerLinks = Array.isArray(body.partner_links) ? body.partner_links.filter(isGuidePartnerLink) : [];
+  return { ...shared, status: "published", document: body.document, partner_links: partnerLinks };
 }
 
 /** One published translation of one article, for the sitemap. */

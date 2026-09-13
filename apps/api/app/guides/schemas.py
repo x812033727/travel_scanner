@@ -18,6 +18,7 @@ from uuid import UUID
 from pydantic import AfterValidator, BaseModel, Field, field_validator, model_validator
 
 from app.admin.schemas import AdminAuditView
+from app.affiliates.content_links import ContentCategory
 from app.affiliates.schemas import AffiliateModule
 from app.guides.publication import ArticleStatus
 from app.i18n import Locale
@@ -198,6 +199,31 @@ class OfferBlock(StrictModel):
         return normalized or None
 
 
+def https_url(value: str) -> str:
+    safe_http_url(value)
+    if urlsplit(value).scheme != "https":
+        raise ValueError("partner links must use HTTPS")
+    return value
+
+
+class PartnerLinkBlock(StrictModel):
+    """A link to a non-travel affiliate program, placed by the editor where it earns its place.
+
+    Unlike an offer, the URL is the program's own: its terms forbid hiding the traffic source
+    behind a redirect (``app.affiliates.content_links``). Whether the partner is known and the
+    URL belongs to it is checked against that registry on write and again on every read, never
+    here: this model also validates stored revisions on the public read path, and a program
+    later removed from the registry must degrade to "no link", never to a 500. That is also why
+    ``partner`` is a code-shaped string rather than a literal of today's codes.
+    """
+
+    type: Literal["partner_link"]
+    partner: str = Field(pattern=r"^[a-z0-9_]{2,32}$")
+    url: Annotated[str, AfterValidator(https_url)] = Field(min_length=1, max_length=2000)
+    label: NonemptyText = Field(max_length=80)
+    note: PlainText = Field(default="", max_length=200)
+
+
 GuideBlock = Annotated[
     HeadingBlock
     | ParagraphBlock
@@ -206,7 +232,8 @@ GuideBlock = Annotated[
     | ImageBlock
     | TableBlock
     | CalloutBlock
-    | OfferBlock,
+    | OfferBlock
+    | PartnerLinkBlock,
     Field(discriminator="type"),
 ]
 
@@ -247,6 +274,17 @@ class TopicOption(BaseModel):
 
 class TopicList(BaseModel):
     topics: list[TopicOption]
+
+
+class ContentPartnerOption(BaseModel):
+    code: str
+    display_name: str
+    category: ContentCategory
+    hosts: list[str]
+
+
+class ContentPartnerList(BaseModel):
+    partners: list[ContentPartnerOption]
 
 
 # --- admin writes -------------------------------------------------------------
@@ -441,6 +479,20 @@ class PublicList(BaseModel):
     next_cursor: str | None = None
 
 
+class PublicPartnerLink(BaseModel):
+    """One partner link the reader may see, resolved against the registry at read time.
+
+    The web draws a ``partner_link`` block only when its partner and URL match an entry here,
+    so a program removed from the registry leaves every published article at the next deploy
+    without anyone editing one. ``key`` names the link for the click endpoint.
+    """
+
+    key: str
+    partner: str
+    display_name: str
+    url: str
+
+
 class PublicArticle(BaseModel):
     slug: str
     kind: Kind
@@ -458,6 +510,9 @@ class PublicArticle(BaseModel):
     # Only the locales this article is genuinely published in. The web layer turns this
     # into hreflang, so an unwritten translation is never advertised as one.
     published_locales: list[Locale] = Field(default_factory=list)
+    # Empty under an expired notice, for the reason offers disappear there: a purchase link
+    # beneath advice that no longer applies reads as bait.
+    partner_links: list[PublicPartnerLink] = Field(default_factory=list)
 
 
 class SitemapEntry(BaseModel):

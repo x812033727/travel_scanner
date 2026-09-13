@@ -3,12 +3,13 @@ import { ArticleAdSlot } from "@/components/ads/article-ad-slot";
 import { ContentBlocks, ImageCreditLine, type ContentBlockLabels } from "@/components/content-blocks";
 import { adsenseSplit, type AdsenseConfig } from "@/lib/adsense";
 import { DestinationAffiliateOptions } from "@/components/destination-affiliate-options";
+import { PartnerLink, type PartnerLinkLabels } from "@/components/guides/partner-link";
 import { Link } from "@/i18n/navigation";
 import { localeLabels, type Locale } from "@/i18n/routing";
 import { contentBlockLink } from "@/lib/content-blocks";
 import { guideAffiliateDestination, guideAffiliateModules, guideAffiliatePlacement } from "@/lib/guide-affiliate";
 import {
-  guideHeadings, guideHref, guideListHref, splitGuideBlocks,
+  guideHeadings, guideHref, guideListHref, partnerClickPath, splitGuideBlocks,
   type GuideArticleState, type GuideKind,
 } from "@/lib/guides";
 
@@ -27,6 +28,10 @@ export type GuideArticleLabels = Record<GuideKind, string> & {
   /** One line under the hero whenever the body itself carries partner buttons, so the
    *  disclosure comes before the first button rather than only inside the end panel. */
   disclosure: string;
+  /** The same line when the body carries a partner link: worded for buying or subscribing,
+   *  not only for booking, because a book or a hosting plan is not a booking. */
+  partnerDisclosure: string;
+  partner: PartnerLinkLabels;
   blocks: ContentBlockLabels;
 };
 
@@ -39,8 +44,9 @@ export const CONTENTS_MIN_HEADINGS = 3;
  * publication, no expiry banner, no date it applied until. `expired` still decides one
  * thing, below: an expired notice carries no partner buttons.
  *
- * The body is drawn in slices around the editor's partner buttons (`offer` blocks), each a
- * client island between two runs of the shared renderer. The end of the article runs: end
+ * The body is drawn in slices around the editor's partner buttons (`offer` blocks) and partner
+ * links (`partner_link` blocks), each a client island between two runs of the shared renderer.
+ * The end of the article runs: end
  * panel (if any), `related`, topic chips, sources, other languages. `related` is whatever
  * the page fetched to hand the reader on and stays a plain node so this component remains
  * synchronous and renders directly under React Testing Library.
@@ -76,9 +82,19 @@ export function GuideArticle({
   });
   const inlineModules = new Set(islands.map((island) => island.offer.module));
 
+  // The editor's partner links, each drawn only when the API resolved it against the partner
+  // registry: an unknown program, a foreign host or an expired notice leaves no link behind.
+  const resolved = state.expired ? [] : state.partner_links ?? [];
+  const partnerIslands = segments.flatMap((segment) => {
+    const block = segment.partner;
+    const link = block ? resolved.find((entry) => entry.partner === block.partner && entry.url === block.url) : undefined;
+    return block && link ? [{ segment, block, link }] : [];
+  });
+
   // One in-article unit, in the first slice only: past the hero (the LCP element) and with a
-  // run of body left before the editor's first partner button. `null` — a short article, or
-  // one with no level-2 heading — simply carries no ad.
+  // run of body left before the editor's first partner button or partner link, since the first
+  // slice ends at whichever comes first. `null` — a short article, or one with no level-2
+  // heading — simply carries no ad.
   const adSplit = adsense?.enabled && segments.length
     ? adsenseSplit(segments[0].blocks)
     : null;
@@ -146,8 +162,10 @@ export function GuideArticle({
         </figure>
       ) : null}
 
-      {islands.length ? (
-        <p role="note" className="text-sm leading-6 text-[var(--muted)]">{labels.disclosure}</p>
+      {islands.length || partnerIslands.length ? (
+        <p role="note" className="text-sm leading-6 text-[var(--muted)]">
+          {partnerIslands.length ? labels.partnerDisclosure : labels.disclosure}
+        </p>
       ) : null}
 
       {headings.length >= CONTENTS_MIN_HEADINGS ? (
@@ -166,6 +184,7 @@ export function GuideArticle({
       {segments.map((segment, index) => {
         const island = islands.find((entry) => entry.segment === segment);
         const split = index === 0 ? adSplit : null;
+        const partnerIsland = partnerIslands.find((entry) => entry.segment === segment);
         return (
           <Fragment key={index}>
             {split ? (
@@ -185,6 +204,15 @@ export function GuideArticle({
               </>
             ) : segment.blocks.length ? (
               <ContentBlocks blocks={segment.blocks} labels={labels.blocks} headingStart={segment.headingStart} />
+            ) : null}
+            {partnerIsland ? (
+              <PartnerLink
+                link={partnerIsland.link}
+                label={partnerIsland.block.label}
+                note={partnerIsland.block.note}
+                clickPath={partnerClickPath(state.kind, state.slug, state.locale, partnerIsland.link.key)}
+                labels={labels.partner}
+              />
             ) : null}
             {island ? (
               <section className="space-y-3">

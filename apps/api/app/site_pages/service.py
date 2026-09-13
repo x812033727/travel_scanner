@@ -13,6 +13,7 @@ from sqlalchemy.dialects.sqlite import insert as sqlite_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.schemas import AdminAuditView
+from app.affiliates.content_links import affiliate_marker
 from app.i18n import LOCALES, Locale
 from app.models import AdminAuditLog, SitePage, SitePageRevision, User
 from app.problems import AppError
@@ -21,6 +22,7 @@ from app.site_pages.schemas import (
     REQUIRED_FIELDS,
     DraftWrite,
     InitializationResult,
+    LinkBlock,
     PageDetail,
     PageDocument,
     PageList,
@@ -263,6 +265,25 @@ async def initialize_pages(session: AsyncSession, actor: User) -> Initialization
     return InitializationResult(pages=result.pages, created=created)
 
 
+def _refuse_affiliate_links(document: PageDocument) -> None:
+    """A tracked link on a policy page would reach the reader with no disclosure at all.
+
+    Checked on every write -- draft, publish, restore -- rather than in ``LinkBlock``: that
+    model also validates stored revisions on read, and a tracking pattern added to
+    ``app.affiliates.content_links`` later must make an old draft unpublishable, not unreadable.
+    """
+    for block in document.blocks:
+        if not isinstance(block, LinkBlock):
+            continue
+        marker = affiliate_marker(block.url)
+        if marker is not None:
+            raise AppError(
+                422,
+                "content_link_affiliate",
+                f"網站資訊文件的連結不能帶分潤追蹤或是短網址（{marker}），請貼原始網址",
+            )
+
+
 async def _write_revision(
     session: AsyncSession,
     actor: User,
@@ -274,6 +295,7 @@ async def _write_revision(
     reason: str | None = None,
     source_revision_id: UUID | None = None,
 ) -> PageDetail:
+    _refuse_affiliate_links(document)
     new_version = expected_version + 1
     encoded = document.model_dump(mode="json")
     now = datetime.now(UTC)
