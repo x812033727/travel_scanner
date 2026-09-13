@@ -12,12 +12,15 @@ import base64
 import hashlib
 import json
 from datetime import datetime
-from typing import Any, cast
+from typing import Any, Literal, cast
+from urllib.parse import urlsplit
 from uuid import UUID
 
 from sqlalchemy import and_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.affiliates.content_links import PARTNERS_BY_CODE, link_key, partner_link_problem
+from app.affiliates.sub_id import coarse_sub_id
 from app.destinations.catalog import destination_for_id
 from app.destinations.localized import city_name
 from app.guides.models import (
@@ -32,8 +35,10 @@ from app.guides.schemas import (
     SECTION_KINDS,
     GuideDocument,
     Kind,
+    PartnerLinkBlock,
     PublicArticle,
     PublicList,
+    PublicPartnerLink,
     PublicSummary,
     PublishedDocument,
     Section,
@@ -42,6 +47,7 @@ from app.guides.schemas import (
 )
 from app.guides.taxonomy import topic_option
 from app.i18n import LOCALES, Locale
+from app.models import AffiliateClick
 from app.problems import AppError
 
 MAX_PAGE = 50
@@ -269,6 +275,8 @@ async def public_article(
             published_locales=[item for item in LOCALES if item in set(published_locales)],
         )
     topics = (await _topics_for(session, [article.id])).get(article.id, [])
+    expired = not article_is_live(article)
+    document = await _published_document(session, row)
     return PublicArticle(
         slug=article.slug,
         kind=cast(Kind, article.kind),
@@ -278,10 +286,101 @@ async def public_article(
         destination_label=destination_label(article.destination_id, locale),
         topics=[topic_option(item, locale) for item in topics],
         valid_until=article.valid_until,
-        expired=not article_is_live(article),
-        document=await _published_document(session, row),
+        expired=expired,
+        document=document,
         published_locales=[item for item in LOCALES if item in set(published_locales)],
+        partner_links=[] if expired or document is None else partner_link_views(document),
     )
+
+
+# --- partner links ------------------------------------------------------------
+
+
+def placement_for(kind: Kind) -> Literal["guide", "life"]:
+    """The surface label a click from this article is recorded under, shared with offers."""
+    return "life" if kind == "life" else "guide"
+
+
+def partner_link_views(document: GuideDocument) -> list[PublicPartnerLink]:
+    """The partner links in ``document`` a reader may see: a known partner, a URL on its hosts.
+
+    Resolved on every read rather than trusted from the stored revision, so a program
+    removed from the registry leaves every article at once. Two blocks with the same URL
+    are the same link and share one entry and one key.
+    """
+    views: dict[str, PublicPartnerLink] = {}
+    for block in document.blocks:
+        if not isinstance(block, PartnerLinkBlock):
+            continue
+        if partner_link_problem(block.partner, block.url) is not None:
+            continue
+        key = link_key(block.url)
+        views.setdefault(
+            key,
+            PublicPartnerLink(
+                key=key,
+                partner=block.partner,
+                display_name=PARTNERS_BY_CODE[block.partner].display_name,
+                url=block.url,
+            ),
+        )
+    return list(views.values())
+
+
+async def _visible_partner_link(
+    session: AsyncSession, kind: Kind, slug: str, locale: Locale, key: str
+) -> tuple[GuideArticle, PublicPartnerLink] | None:
+    article = await session.scalar(
+        select(GuideArticle).where(GuideArticle.slug == slug.casefold(), GuideArticle.kind == kind)
+    )
+    if article is None or not article.is_active or not article_is_live(article):
+        return None
+    row = await session.scalar(
+        select(GuideArticleLocale).where(
+            GuideArticleLocale.article_id == article.id, GuideArticleLocale.locale == locale
+        )
+    )
+    document = await _published_document(session, row) if row is not None else None
+    if document is None:
+        return None
+    view = next((item for item in partner_link_views(document) if item.key == key), None)
+    return (article, view) if view is not None else None
+
+
+async def record_partner_click(
+    session: AsyncSession, kind: Kind, slug: str, locale: Locale, key: str
+) -> None:
+    """Count one click on a partner link the reader could actually see.
+
+    The link is looked up in the article's currently published translation, never taken
+    from the request, so the endpoint cannot log a click for a partner or URL the article
+    does not carry. Drafts, hidden and expired articles, and links since removed all answer
+    404. Nothing about the reader is stored: no user, no trip, no search.
+    """
+    found = await _visible_partner_link(session, kind, slug, locale, key)
+    if found is None:
+        raise AppError(404, "affiliate_link_not_found", "找不到合作連結")
+    article, view = found
+    partner = PARTNERS_BY_CODE[view.partner]
+    placement = placement_for(kind)
+    session.add(
+        AffiliateClick(
+            user_id=None,
+            partner=partner.code,
+            brand=partner.code,
+            module=partner.category,
+            placement=placement,
+            destination_id=None,
+            # The article that placed the link, until affiliate_clicks has a column of its own
+            # (2026-09-12-attribute-affiliate-clicks-to-the-guide). The table is append-only,
+            # so waiting for the column would lose this attribution for good.
+            destination_summary=article.slug[:128],
+            sub_id=coarse_sub_id("cnt", partner.category, None, locale, placement),
+            target_host=(urlsplit(view.url).hostname or "")[:255],
+            status="clicked",
+        )
+    )
+    await session.commit()
 
 
 async def sitemap_entries(session: AsyncSession) -> SitemapList:

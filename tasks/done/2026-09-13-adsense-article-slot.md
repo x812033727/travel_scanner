@@ -179,4 +179,9 @@ PR #449 開出來之後跑了一輪對抗式覆核，四個都是真的，修在
 - Travelpayouts Drive 已經在每一頁載入（`app/[locale]/layout.tsx:109`）；獨立 layout 要決定帶不帶它，比照 Stay22 layout 是不帶。
 - 範圍重疊：
   - `components/guides/article.tsx` 也在 `2026-09-12-attribute-affiliate-clicks-to-the-guide` 的 scope 裡，那張是依賴，先做完它。
+  - `2026-09-13-content-partner-links-in-articles-non`（claude-opus-5，PR #450，rebase 在本票合併之後）讓文章內文多了
+    `partner_link` 島（`components/guides/partner-link.tsx`，`splitGuideBlocks` 的 `segment.partner`），主圖下方的揭露句
+    在有合作連結時改用 `guides.partnerDisclosure`。合作夥伴連結跟 offer 一樣會切段，所以 `adsenseSplit` 的
+    `MIN_BLOCKS_AFTER` 間距同樣擋在第一個合作夥伴連結之前，不必另外處理；`article.test.tsx` 的
+    "keeps the same distance from a partner link" 守著這一條。
   - `lib/csp.ts` 在 `2026-09-07-mokaair-community-web` 的 scope 裡；claim 前用 `npm run tasks -- list` 看它是不是 in-progress。

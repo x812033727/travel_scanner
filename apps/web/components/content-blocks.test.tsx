@@ -99,6 +99,17 @@ describe("rendering", () => {
     expect(link.getAttribute("target")).toBeNull();
     expect(link.getAttribute("rel")).toBeNull();
   });
+
+  it("never draws a block it does not know as a link, even one that carries a URL", () => {
+    // A partner link that escaped the article's splitter, or a block from a newer API, used
+    // to fall through to the link branch and reach the page as an ordinary, unqualified link.
+    const stray = {
+      type: "partner_link", partner: "hostinger", label: "看方案", text: "看方案",
+      url: "https://www.hostinger.com/tw?aff_id=1",
+    } as unknown as RichContentBlock;
+    const { container } = render(<ContentBlocks blocks={[stray]} />);
+    expect(container.querySelector("a")).toBeNull();
+  });
 });
 
 /**

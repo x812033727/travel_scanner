@@ -88,8 +88,9 @@ current metadata on a fresh database) and seeds the **topic vocabulary only**. A
 never writes an article and never publishes one.
 
 The body reuses `app/site_pages/schemas.py`'s structured blocks — heading, paragraph, list,
-link — including the validator that rejects HTML and control characters, and adds four of
-its own in `app/guides/schemas.py` (`GuideBlock`): `image`, `table`, `callout` and `offer`.
+link — including the validator that rejects HTML and control characters, and adds five of
+its own in `app/guides/schemas.py` (`GuideBlock`): `image`, `table`, `callout`, `offer` and
+`partner_link`.
 They are guide-only on purpose: the legal pages keep the four-block `ContentBlock`, so their
 editor never meets a block it has no fields for. An article may also carry a `hero`
 (`GuideDocument.hero`, optional so every revision written before it validates), which is
@@ -108,9 +109,17 @@ the picture at the top of the page, on the listing cards and on the share card.
 - `table` — `header` (1–6 cells) and rectangular `rows` (≤30), each cell plain text.
 - `callout` — `tone` (`tip`/`warning`/`info`), optional `title`, `text`.
 - `offer` — see "Partner buttons" below.
+- `partner_link` — see "Partner links" below.
 
 Articles add `sources`: an optional list of `{title, https url, checked_on}`, because a
 notice that states a fare or a rule should be able to say where it read it.
+
+No ordinary URL in an article may be a tracked one: a `link` block, a source or an image
+credit whose URL carries affiliate tracking or is a short link is refused on every write
+with `422 content_link_affiliate` (`affiliate_marker` in `app/affiliates/content_links.py`).
+The partner-link block is the one way a paid link reaches a reader, because it is the one
+place that discloses it, qualifies it and counts it. The managed legal pages refuse the same
+URLs in `app/site_pages/service.py`.
 
 ## Publication
 
@@ -175,6 +184,7 @@ GET /api/v1/guides?locale=&kind=&section=&destination=&topic=&cursor=&limit=
 GET /api/v1/guides/topics?locale=&section=
 GET /api/v1/guides/sitemap
 GET /api/v1/guides/{kind}/{slug}?locale=
+POST /api/v1/guides/{kind}/{slug}/partner-links/{key}/click?locale=   count one partner-link click, 204
 ```
 
 `section` expands to the kinds it covers and composes with `kind` as an intersection. An
@@ -196,6 +206,7 @@ GET    /api/v1/admin/guides?status=&kind=&destination=&topic=&q=&page=&limit=
                                                          status and kind facets
 POST   /api/v1/admin/guides                              create + first locale draft
 POST   /api/v1/admin/guides/batch                        hide or unhide up to 100 articles
+GET    /api/v1/admin/guides/partners                     the partner programs a partner link may use
 GET    /api/v1/admin/guides/{id}?locale=
 PUT    /api/v1/admin/guides/{id}                         taxonomy only (never visibility)
 POST   /api/v1/admin/guides/{id}/hide
@@ -291,6 +302,16 @@ Partner buttons:
 5. Which article converts is read from `affiliate_clicks` once
    `2026-09-12-attribute-affiliate-clicks-to-the-guide` lands; revisit placements after a month.
 
+Partner links (non-travel programs, mostly in 生活分享):
+
+1. Only where the article actually uses the product — the tutorial that deploys to a VPS links
+   the host it deploys to, the reading list links the book. At most three per article.
+2. Paste the link the affiliate program's own dashboard generates. Customer referral codes
+   (Hostinger's `REFERRALCODE`, for one) are refused, because their terms keep them off
+   websites; resale, account-sharing or API relay services are never linked at all.
+3. The disclosure line and the badge beside each link are automatic; do not write a second
+   one into the body, and do not put a product's logo in the hero.
+
 Text:
 
 - Every fare, duration and rule is checked against an official page on the day of writing
@@ -355,15 +376,20 @@ tightened for one surface cannot quietly miss the other. The renderer draws the
 `RichContentBlock` superset (image, table, callout); the legal pages' documents stay typed
 to the four shared blocks. Images are plain `<img>` with their stored size (`next/image`
 has no optimizer in the standalone build); a wide table scrolls inside its own box; a link
-back into this site opens in the same tab. A `link` block in the body is still an ordinary
-anchor — not an affiliate link, and not `rel="sponsored"` (`2026-09-12-content-link-block-sponsored`).
+back into this site opens in the same tab. A `link` block in the body is an ordinary
+editorial anchor (`noopener noreferrer`, no `sponsored`): affiliate URLs never get that far,
+because the write path refuses them. The renderer draws only a `link` block as a link, so a
+block it does not know — a partner link, or something a newer API sends — draws nothing
+instead of falling through to the link branch.
 
 ### What a travel article looks like
 
 Header (kind, city, title, description, published / updated dates, reading time) → hero with
-its credit → one line of disclosure, only when the body itself carries partner buttons →
+its credit → one line of disclosure, only when the body itself carries partner buttons or
+partner links →
 a table of contents once there are three level-2 headings (`section-N` anchors the renderer
-numbers across the whole body) → the body in slices around each `offer` block → the end
+numbers across the whole body) → the body in slices around each `offer` and `partner_link`
+block → the end
 panel → related reading → topic chips → sources → other languages. `lib/guides.ts` holds
 `splitGuideBlocks`, `guideHeadings` and `readingMinutes` (CJK by character, the rest by
 word); `article.tsx` stays synchronous and the page (`article-page.tsx`) does the fetching.
@@ -452,6 +478,58 @@ module, the surface enabled); the block only says where and for which module.
   every button, inline ones included. The admin preview shows a placeholder where the
   buttons will go and never fetches offers.
 
+### Partner links (`partner_link` blocks)
+
+Travel offers cover the travel half of an article. A tutorial about an AI tool earns from
+something else — the host a project is deployed to, a book, a course, a software plan — and
+a `partner_link` block, `{partner, url, label, note?}`, is how that link gets into the body.
+It is allowed in every kind; the registry holds no travel brand, so it opens no way around
+the catalog's approval of travel offers.
+
+- **The registry is code.** `CONTENT_PARTNERS` in `app/affiliates/content_links.py` names
+  each program's code, display name, category (`hosting`, `books`, `courses`, `software`),
+  the hosts its links may use, the query keys or path prefixes that mark its tracked links,
+  and any query keys its own terms keep off websites, with the reason. Hostinger and
+  博客來 are listed today. Adding a program is one entry plus a test run of
+  `tests/test_guide_partner_links.py`; list the network's tracking domain too when its links
+  go through one.
+- **Write path.** `_validate_document` refuses more than three (`422
+  guide_partner_link_limit`), an unknown program (`partner_link_unknown`), a URL on another
+  host (`partner_link_host`, subdomains match, lookalike suffixes do not) and a forbidden
+  link (`partner_link_forbidden`, e.g. Hostinger's customer-referral `REFERRALCODE`). The
+  model itself only checks shape (an https URL, a code-shaped partner), so a program removed
+  from the registry leaves old revisions readable.
+- **Read path.** `public_article` resolves the blocks against the registry on every request
+  and returns `partner_links: [{key, partner, display_name, url}]`, empty under an expired
+  notice. The web draws a block only when an entry matches its partner and URL, so removing
+  a program takes its links off every article at the next deploy without editing one.
+  `key` is the first 16 hex characters of the URL's SHA-256: stable across reordering and
+  republication, and nothing a reader cannot already see.
+- **The link.** `components/guides/partner-link.tsx` draws a direct anchor to the partner's
+  URL with `target="_blank" rel="sponsored noopener"` and
+  `referrerPolicy="strict-origin-when-cross-origin"`, a badge ("合作連結", "広告", "광고")
+  and the partner's name beside it, and the article's disclosure line — worded for buying or
+  subscribing, `guides.partnerDisclosure` — above the first one. It is deliberately not the
+  same-origin clickout travel offers use: that is a 303 with `Referrer-Policy: no-referrer`,
+  and Hostinger's affiliate agreement forbids cloaking that hides the traffic source.
+- **Counting.** The click also sends a keepalive `fetch` POST to
+  `/api/travel/guides/{kind}/{slug}/partner-links/{key}/click?locale=`, which never delays
+  the navigation and whose failure nobody sees. `fetch`, not `sendBeacon`: a beacon's
+  `Origin` follows the page's referrer policy and the BFF refuses a write without one. The
+  endpoint rate-limits per IP (60 a minute, failing closed), looks the link up in the
+  currently published translation — never trusting the request for a partner or URL — and
+  writes one `affiliate_clicks` row with no identity: `partner` and `brand` are the program
+  code, `module` its category, `placement` `life` or `guide`, `sub_id`
+  `cnt_<category>_<locale>_<placement>` (stored only, never sent), `destination_summary` the
+  article slug until `2026-09-12-attribute-affiliate-clicks-to-the-guide` adds a column, and
+  `status='clicked'` because nothing was redirected. Drafts, hidden or expired articles,
+  other locales and unknown keys answer 404 and write nothing. The count is a floor: a
+  reader without JavaScript or with a blocker follows the link uncounted.
+- **Editor.** The block's program list comes from `GET /admin/guides/partners`; without it
+  the editor offers no partner-link block. The preview shows a placeholder, never the link,
+  and a block whose program has left the registry keeps showing that code rather than
+  silently switching to another program.
+
 ### Per-locale hreflang
 
 Publication is per locale, so the root layout's all-five alternate set would advertise
@@ -494,14 +572,14 @@ unreachable in production: `/admin/guides` was in the web fallback navigation bu
 `NAVIGATION_REGISTRY`, so the layout answered "forbidden". The frozen `lastmod` was the
 last API-side defect and is fixed by `modified_at` (see Publication).
 
-Two remain, both filed while the lifestyle section was planned:
+One remains of the two filed while the lifestyle section was planned:
 
 - `tasks/open/2026-09-12-guide-topic-admin-crud.md` — a topic still needs a seed migration,
   which contradicts what this file and `GuideTopic`'s own docstring promise.
-- `tasks/open/2026-09-12-content-link-block-sponsored.md` — a `link` block accepts any
-  http(s) host with any query string and renders without `sponsored`/`nofollow`, so an
-  editor pasting a tracked URL into the body produces an undisclosed, untracked affiliate
-  link. More likely now that a non-travel section invites outbound links.
+
+The other, a `link` block that published tracked URLs undisclosed and uncounted, was closed
+by the partner-link work: tracked ordinary URLs are refused on write and paid links have a
+block of their own (see "Partner links").
 
 Both sections share one 1,000-row sitemap budget, newest first, with no per-section cap
 (`SITEMAP_LIMIT`, `SITEMAP_GUIDE_ENTRY_LIMIT`). That is 2% of Google's per-file limit and
@@ -530,11 +608,14 @@ owner's decisions.
   `getGuideArticle` is React-cached, so the layout and the page share one read.
 - **What.** One in-article unit, placed after the first level-2 heading and its first
   paragraph, never above the hero (the LCP element) and never within
-  `MIN_BLOCKS_AFTER` blocks of an `offer` block — the placement policies forbid an ad beside
-  an interactive element, and those partner buttons are the revenue it must not eat. A short
-  article gets none. A hero is optional and is most of what separates the headline from the
-  first section, so an article without one needs `MIN_BLOCKS_BEFORE_WITHOUT_HERO` of body
-  above the slot instead — otherwise the ad can be the first thing in the opening viewport.
+  `MIN_BLOCKS_AFTER` blocks of an `offer` or `partner_link` block — both end the first slice,
+  so the same clearance applies to either. The placement policies forbid an ad beside an
+  interactive element, and those partner buttons and links are the revenue it must not eat;
+  an ad beside a partner link would also blur which of the two is the site's own
+  recommendation. A short article gets none. A hero is optional and is most of what separates
+  the headline from the first section, so an article without one needs
+  `MIN_BLOCKS_BEFORE_WITHOUT_HERO` of body above the slot instead — otherwise the ad can be
+  the first thing in the opening viewport.
 - **Personalisation.** Non-personalised ads unless `adsense_cmp_enabled` says a
   Google-certified consent message ("Privacy & messaging") is published in the AdSense
   account; then the reader's own answer decides, and the tag loads and shows that message

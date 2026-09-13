@@ -131,6 +131,28 @@ describe("per-locale publication", () => {
   });
 });
 
+describe("partner links", () => {
+  const resolved = {
+    key: "0123456789abcdef", partner: "hostinger", display_name: "Hostinger",
+    url: "https://www.hostinger.com/tw?aff_id=1",
+  };
+
+  it("carries the links the API resolved and drops a malformed entry without losing the article", async () => {
+    vi.stubGlobal("fetch", respond({
+      ...article,
+      partner_links: [resolved, { ...resolved, key: "not-a-key" }, { ...resolved, url: "javascript:alert(1)" }, null],
+    }));
+    const state = await loadGuideArticle("howto", "narita-to-tokyo", "zh-TW");
+    expect(state.status).toBe("published");
+    expect(state.partner_links).toEqual([resolved]);
+  });
+
+  it("reads an API that predates partner links as having none", async () => {
+    vi.stubGlobal("fetch", respond(article));
+    expect((await loadGuideArticle("howto", "narita-to-tokyo", "zh-TW")).partner_links).toEqual([]);
+  });
+});
+
 describe("the sitemap enumeration", () => {
   const rows = [
     { kind: "howto", slug: "narita-to-tokyo", locale: "zh-TW", published_at: "2026-09-01T00:00:00Z" },

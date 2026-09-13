@@ -1,7 +1,8 @@
 import { describe, expect, it } from "vitest";
 import {
-  guideHeadings, guideHref, guideListHref, guideSection, isExpired, isGuideKind, isGuideSummary,
-  isPublishedGuide, isTravelGuideKind, readingMinutes, splitGuideBlocks, type GuideBlock,
+  guideHeadings, guideHref, guideListHref, guideSection, isExpired, isGuideKind, isGuidePartnerLink,
+  isGuideSummary, isPublishedGuide, isTravelGuideKind, partnerClickPath, readingMinutes, splitGuideBlocks,
+  type GuideBlock,
 } from "./guides";
 
 const summary = {
@@ -135,6 +136,39 @@ describe("response guards", () => {
     expect(isPublishedGuide({ ...document, blocks })).toBe(false);
   });
 
+  const partnerLink = {
+    type: "partner_link", partner: "hostinger", url: "https://www.hostinger.com/tw?aff_id=1", label: "看方案", note: "",
+  };
+
+  it("accepts a partner link for any program code, leaving the registry to the API", () => {
+    // A program since removed from the registry must leave the article readable; the link
+    // itself then finds no resolved entry and draws nothing.
+    expect(isPublishedGuide({ ...document, blocks: [partnerLink] })).toBe(true);
+    expect(isPublishedGuide({ ...document, blocks: [{ ...partnerLink, partner: "retired_program", note: undefined }] })).toBe(true);
+  });
+
+  it.each([
+    ["plain http", { url: "http://www.hostinger.com/tw" }],
+    ["a script URL", { url: "javascript:alert(1)" }],
+    ["a missing label", { label: undefined }],
+    ["a missing partner", { partner: undefined }],
+  ])("rejects a partner link with %s", (_label, patch) => {
+    expect(isPublishedGuide({ ...document, blocks: [{ ...partnerLink, ...patch }] })).toBe(false);
+  });
+
+  it("accepts only resolved partner links with a key the click endpoint understands", () => {
+    const resolved = { key: "0123456789abcdef", partner: "hostinger", display_name: "Hostinger", url: partnerLink.url };
+    expect(isGuidePartnerLink(resolved)).toBe(true);
+    expect(isGuidePartnerLink({ ...resolved, key: "../../admin" })).toBe(false);
+    expect(isGuidePartnerLink({ ...resolved, url: "http://www.hostinger.com/tw" })).toBe(false);
+    expect(isGuidePartnerLink({ ...resolved, display_name: null })).toBe(false);
+  });
+
+  it("counts a partner click through the BFF, with the slug and locale encoded", () => {
+    expect(partnerClickPath("life", "claude-code-vps", "zh-TW", "0123456789abcdef"))
+      .toBe("/api/travel/guides/life/claude-code-vps/partner-links/0123456789abcdef/click?locale=zh-TW");
+  });
+
   it("tolerates a document from an API that predates modified_at", () => {
     expect(isPublishedGuide({ ...document, modified_at: null })).toBe(true);
     expect(isPublishedGuide({ ...document, modified_at: "2026-09-12T00:00:00Z" })).toBe(true);
@@ -172,6 +206,21 @@ describe("reading the body", () => {
     const segments = splitGuideBlocks([{ type: "paragraph", text: "x" }]);
     expect(segments).toHaveLength(1);
     expect(segments[0].offer).toBeNull();
+    expect(segments[0].partner).toBeNull();
+  });
+
+  it("cuts at a partner link too, and never leaves one for the shared renderer to draw", () => {
+    const segments = splitGuideBlocks([
+      { type: "heading", level: 2, text: "部署" },
+      { type: "partner_link", partner: "hostinger", url: "https://www.hostinger.com/tw", label: "看方案" },
+      { type: "offer", module: "hotel", destination_id: "tokyo", heading: "" },
+      { type: "heading", level: 2, text: "收尾" },
+    ]);
+    expect(segments.map((segment) => [segment.offer?.type ?? null, segment.partner?.type ?? null])).toEqual([
+      [null, "partner_link"], ["offer", null], [null, null],
+    ]);
+    expect(segments.flatMap((segment) => segment.blocks).some((block) => (block as { type: string }).type === "partner_link")).toBe(false);
+    expect(segments[2].headingStart).toBe(1);
   });
 
   it("lists the level-2 headings with the ids the renderer gives them", () => {

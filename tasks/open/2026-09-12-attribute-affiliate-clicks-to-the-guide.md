@@ -70,3 +70,11 @@ Then on production: open an article, click a partner button, and read one row ba
 
 - Keep `sub_id` as it is: partner-side reporting stays per destination × module × locale ×
   placement, and `test_affiliate_sub_id.py` fails CI on any new derivation site.
+- 2026-09-13 (claude-opus-5, `2026-09-13-content-partner-links-in-articles-non`): non-travel
+  partner links in articles now write their own rows from `POST
+  /guides/{kind}/{slug}/partner-links/{key}/click` (`app/guides/service.py`
+  `record_partner_click`): `status='clicked'`, `sub_id` prefix `cnt_`, `destination_id` null,
+  and **the article slug in `destination_summary`**, because the ledger is append-only and
+  waiting for this column would have lost the attribution for good. When `article_slug`
+  lands, write it there as well, and backfill nothing: the report can read
+  `coalesce(article_slug, destination_summary)` for `status='clicked'` rows.
