@@ -1,0 +1,400 @@
+{
+  "slug": "chatgpt-for-email-writing",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "productivity"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "用 ChatGPT 寫 Email：中英文商務信件範本與提示詞",
+      "description": "要 ChatGPT 寫出能直接寄的商務信，關鍵是提示詞怎麼給背景與語氣，而不是叫它「寫一封信」。這篇整理台灣上班族最常寫的六種信各一組提示詞與示範範本：中文請款或請假、向客戶道歉與補救、英文詢價或詢問合作、催款或催進度、婉拒、給日本客戶的英文信；並說明七部件的提示詞骨架、怎麼追問修改、怎麼貼舊信當範例、用 Canvas 逐段改、用專案或自訂指令固定簽名檔與語氣，以及哪些資料不該貼進去。",
+      "hero": {
+        "src": "/guides/chatgpt-for-email-writing/hero.jpg",
+        "alt": "一個白色信封從綠色的對話泡泡裡飛出來，後面拖著一條虛線軌跡，旁邊斜放著一支橘色的筆，底下一行字寫著「先講清楚，再寫信」",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "用 ChatGPT 寫商務信，成品好不好，多半在你送出前那一段提示詞就決定了：有沒有講清楚我是誰、寫給誰、要對方做什麼、語氣多重。只打「幫我寫一封催款信」，它只能給你一封誰都能寄、也誰都不會回的萬用信。OpenAI 自己的寫作教學講的也是同一件事：先給它原始材料，說清楚限制與格式，要它附主旨、簡短的開頭與明確的下一步，然後用具體的回饋一輪一輪修，而不是整封重來。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇先給一個七部件的提示詞骨架，再照台灣上班族最常寫的六種信，各給一組「提示詞全文、示範產出、常見追問」：中文的請款或請假、向客戶道歉與補救，英文的詢價或詢問合作、催款或催進度、婉拒，以及寫給日本客戶的英文信該怎麼拿捏禮貌層級。後半講怎麼把自己以前寫過的信貼進去當範例、用 Canvas 逐段改、用專案或自訂指令固定簽名檔與語氣，還有哪些東西不該貼。所有範本都是依提示詞寫出的示範，收件人與公司一律用代號，寄出前請換成你自己的細節。還沒用過 ChatGPT 的人，先看入門篇把帳號與第一個對話弄好。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "寫信提示詞的固定骨架：七個部件",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "寫信的提示詞不必長，但七件事要到齊：我是誰、收件人是誰、這封信的目的、一定要包含的三個點、語氣、長度、格式。前四個是它猜不到的事實，後三個是它預設值常常不對的地方。OpenAI Academy 的提示教學把這些歸納成幾條：講清楚任務、給誰看、為什麼重要；給背景與材料；描述理想的輸出，包括角色、讀者與呈現方式；引導語氣與格式；想要幾個版本就直接說。套到寫信，就是下面這個模板，把括號裡的字換掉就能用："
+        },
+        {
+          "type": "list",
+          "items": [
+            "我是誰：「我是〔公司類型〕的〔職稱〕，負責〔業務〕。」職稱決定它用什麼身分說話。",
+            "收件人是誰：「收件人是〔對方公司代號〕的〔角色〕，我們〔第一次聯絡／合作兩年／上週才通過電話〕。」關係決定客套話的多寡。",
+            "目的：「這封信要讓對方〔做一件具體的事〕。」一封信一個目的，兩個目的就拆成兩封。",
+            "一定要包含的三個點：「內文一定要提到：一、……；二、……；三、……。」這是信的骨頭，你不給，它就編。",
+            "語氣：「語氣〔客氣但立場清楚／溫和但要表達急迫／正式且不帶情緒〕。」兩個形容詞加一個「但」，比單一個「專業」精準得多。",
+            "長度：「〔三句話以內／120 個英文字以內／不超過兩段〕。」不講長度，它預設偏長。",
+            "格式：「附一行主旨；開頭一句直接講事情；結尾寫清楚希望對方什麼時候、做什麼；用段落不用條列；簽名檔留空。」"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "骨架後面再加一句「資訊不夠先問我，不要自己補」，它會停下來問你缺的日期或金額，而不是編一個。七個部件不用每次都齊，但你沒給的那一格，它就用最通用的說法填，成品讀起來就像 AI 寫的。提示詞用中文寫就可以，要英文信只要說「用英文寫」，背景用中文交代反而更精確。下面這張圖把七個部件與「寫、追問、貼回自己的版本」三步收在一起。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/chatgpt-for-email-writing/diagram-1.svg",
+          "alt": "寫信提示詞的七個部件結構圖：左邊一個大框列出我是誰、收件人、目的、三個點、語氣、長度、格式七塊，各附英文詢價信的例句；右邊是寫、追問、貼回自己的版本三步流程，追問有一條箭頭繞回第一版。",
+          "width": 1600,
+          "height": 900,
+          "caption": "左邊七塊是送出前放進提示詞的內容，用英文詢價信示範，前四塊是事實、後三塊是偏好；右邊是送出後的三步，不滿意就在同一個對話裡追問，滿意的版本存起來當下次的範例。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "中文信：請款或請假、向客戶道歉與補救",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "中文商務信最常出的問題是太客套、太長。台灣的公司內部信與客戶信多半直接講事情：一句稱呼、一句說明就進正題，結尾講清楚要對方做什麼。第一組是向客戶請款，把三個點與收件人換掉，同一個骨架就是請假信。"
+        },
+        {
+          "type": "paragraph",
+          "text": "提示詞：我是一家設計公司的專案經理，收件人是客戶 A 公司的行銷窗口林小姐，我們合作半年，關係良好。這封信要請對方在月底前完成 8 月款項的支付。內文一定要提到：一、8 月的請款單與發票已隨信附上；二、依合約付款期限是 9 月 30 日；三、若請款流程需要補任何文件請直接告訴我。語氣客氣但明確，不要一直道歉。五句話以內，附一行主旨，開頭一句直接講事情，結尾寫清楚希望對方什麼時候回覆，用段落不用條列，簽名檔留空。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "示範產出，主旨：8 月請款單與發票，請於 9 月 30 日前付款",
+            "林小姐您好，8 月的請款單與發票已隨信附上，請查收。",
+            "依合約，本期款項的付款期限為 9 月 30 日，再麻煩協助安排。",
+            "若貴公司的請款流程需要補任何文件，請直接告訴我，我當天處理。",
+            "收到後請回覆一聲，謝謝。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "常見追問：「第二句太硬，改成提醒的口吻，其他不動」「附件改成雲端連結，幫我加一句連結在下面」「請假版本：收件人改成我的主管，三個點換成請假日期與天數、原因一句話、工作交接給誰，語氣客氣但不用一直道歉，三句話以內」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二組是向客戶道歉。道歉信最容易寫壞：不是道歉太多、講不清楚怎麼補救，就是解釋一堆原因像在推卸責任。提示詞裡要把「原因講多少」與「補救方案是什麼」明講。"
+        },
+        {
+          "type": "paragraph",
+          "text": "提示詞：我是一家網路商店的客服主管，收件人是客戶 B 先生，他上週訂購的商品出貨延誤了 5 天，昨天在客服信箱抱怨。這封信要讓他接受我們的補救方案。內文一定要提到：一、明確為延誤道歉，不找藉口，原因用一句話帶過；二、補救方案是這次運費全退並附一張 200 元的折價券；三、商品已在今天寄出，並附追蹤碼。語氣誠懇但不卑微，不要用「造成您的不便」這種套話。三段以內，附一行主旨，簽名檔留空。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "示範產出，主旨：您的訂單已寄出，以及我們的補救方案",
+            "B 先生您好，這次出貨比承諾的日期晚了 5 天，是我們倉庫排程的疏失，向您道歉。",
+            "商品已在今天寄出，追蹤碼是【追蹤碼】。這次的運費會全額退回原付款方式，另附一張 200 元折價券，下次結帳可直接使用。",
+            "收到商品後若有任何問題，回覆這封信就能直接找到我。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "常見追問：「第一段改成先講商品已經寄出，再道歉」「退款那句講得更具體，幾個工作天會到帳」「整封縮成一段，我要放進 LINE 官方帳號的訊息裡」。"
+        },
+        {
+          "type": "heading",
+          "text": "英文信：詢價或詢問合作、催款或催進度",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "英文商務信在台灣最常見的毛病，是把中文的客套直接翻過去，變成一封又長又不知道要對方做什麼的信。提示詞裡直接寫「用簡單、直接的商務英文，不要過度禮貌」並限制字數，通常一次就好很多。第三組是第一次聯絡的詢價信，詢問合作只要換掉三個點。"
+        },
+        {
+          "type": "paragraph",
+          "text": "提示詞：我是台灣一家消費電子品牌的採購專員，收件人是越南線材廠 C 公司的業務團隊，我們從沒聯絡過。這封信要拿到報價與交期。內文一定要提到：一、我們要 5,000 條 1 公尺、印我們 logo 的 USB-C 線；二、需要單價、最低訂購量與交期；三、規格表可以提供。用英文寫，語氣有禮但直接，不要恭維。120 個英文字以內，附一行具體的主旨，開頭一句講清楚目的，結尾請對方在 9 月 20 日前回覆，簽名檔留空。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "示範產出，Subject: Quotation request: 5,000 custom USB-C cables",
+            "Dear Sales Team,",
+            "I am a purchasing specialist at a Taiwanese consumer electronics brand, and I am writing to request a quotation for 5,000 one-metre USB-C cables printed with our logo.",
+            "Could you please send us the unit price, minimum order quantity and current lead time? I can share the full spec sheet as soon as you confirm this is within your range.",
+            "It would help our planning to have your reply by 20 September.",
+            "Best regards,"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "常見追問：「交期那句改成問有沒有現貨」「加一句我們預計每季重複下單，但不要顯得在談判」「合作提案版本：三個點換成我們是誰、為什麼找上他們、希望安排一通 30 分鐘的線上會議」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第四組是催款，這種信的難處在於要讓對方感覺到急迫，又不能把合作關係催壞。提示詞裡要講清楚這是第幾次提醒、逾期多久，還要給對方台階。"
+        },
+        {
+          "type": "paragraph",
+          "text": "提示詞：我是一家軟體公司的客戶經理，收件人是客戶 D 公司的財務窗口 Mr. Lee，我們合作一年。這封信要催 7 月的款項，已經逾期 15 天，上週寄過一次提醒沒有回音。內文一定要提到：一、發票號碼與金額用【發票號】【金額】代替；二、原定付款日是 8 月 31 日；三、如果已經付款請忽略，如果有困難請告訴我們可以怎麼配合。用英文寫，語氣溫和但要讓對方感覺到急迫，不威脅。100 個英文字以內，主旨要讓人一眼看出是第二次提醒，簽名檔留空。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "示範產出，Subject: Second reminder: invoice 【發票號】 now 15 days overdue",
+            "Dear Mr. Lee,",
+            "I am following up on invoice 【發票號】 for 【金額】, which was due on 31 August and is now 15 days overdue. I sent a first reminder last week but have not heard back.",
+            "If the payment has already been made, please ignore this message. If anything is holding it up, let me know and we will do our best to accommodate.",
+            "Could you confirm the expected payment date by Friday?",
+            "Kind regards,"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "常見追問：「這是第一次提醒，主旨與第一段改溫和一點」「催進度版本：款項換成延遲的交付項目，第三點改成問新的預計完成日與需要我們配合什麼」「加一句提到合約的付款條款，語氣不變」。"
+        },
+        {
+          "type": "heading",
+          "text": "英文信：婉拒，以及寫給日本客戶的禮貌層級",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第五組是婉拒。中文使用者寫英文婉拒信常常繞到第三段才說不，對方讀完還以為有機會。提示詞要明講：答案要清楚，理由只給一個，並說要不要留未來合作的門。"
+        },
+        {
+          "type": "paragraph",
+          "text": "提示詞：我是一家行銷顧問公司的負責人，收件人是潛在客戶 E 公司的創辦人 Ms. Chen，上週開過一次會，她希望我們接下一個下個月就要上線的案子。這封信要婉拒，但留下未來合作的可能。內文一定要提到：一、感謝她的信任與上週的說明；二、婉拒的理由是現在的檔期無法在她的時程內做到我們要求的品質，只講這一個理由；三、如果時程能延到第四季，或需要我推薦其他團隊，都歡迎再聯絡。用英文寫，語氣溫暖但答案明確，不要在第一段就道歉，也不要留下模糊的空間。100 個英文字以內，簽名檔留空。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "示範產出，Subject: Re: Launch campaign proposal, our availability",
+            "Dear Ms. Chen,",
+            "Thank you for walking us through the project last week and for considering us for the launch.",
+            "After reviewing our schedule, I have to decline this time: with the launch set for next month, we would not be able to deliver at the standard you should expect from us.",
+            "If the timeline moves to the fourth quarter, I would be glad to revisit this. I am also happy to recommend other teams if that would help.",
+            "Warm regards,"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "常見追問：「decline 太直接，改成 we are not able to take this on，其他不動」「刪掉推薦其他團隊那句」「給我三種結尾，一個熱情、一個中性、一個簡短，我來挑」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第六組是給日本客戶的英文信，禮貌層級與歐美客戶不同：稱呼用姓氏加 san，開頭多一句問候或感謝，結尾多一句「今後也請多指教」的意思，段落短、每段一件事，而且不在信裡逼對方立刻決定。這些慣例要在提示詞裡明講，因為它預設的英文商務信是美式的直接風格。"
+        },
+        {
+          "type": "paragraph",
+          "text": "提示詞：我是台灣一家零件供應商的業務，收件人是日本客戶 F 公司採購部的 Tanaka-san，合作三年，一向由他的部門下單。這封信要通知下個月起單價調漲 8%，並請他確認。內文一定要提到：一、感謝三年來的合作；二、調漲原因是原料成本上升，10 月 1 日起生效，並附新價格表；三、理解這需要他內部討論，請他方便時告訴我們預計的回覆時間。用英文寫，語氣依日本商務習慣：正式、謙和、不催促，稱呼用 Tanaka-san，開頭一句問候，結尾表達期待繼續合作。不超過四段，每段兩到三句，簽名檔留空。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "示範產出，Subject: Notice of price revision from 1 October",
+            "Dear Tanaka-san,",
+            "I hope this message finds you well. Thank you for your continued support over the past three years; we truly value our relationship with F Company.",
+            "I am writing to let you know that, due to rising raw material costs, we will need to revise our unit prices by 8% from 1 October. The updated price list is attached for your reference.",
+            "We understand this will require discussion on your side. Whenever convenient, could you let us know when we might expect your feedback?",
+            "Thank you again for your understanding. We look forward to continuing to work with you.",
+            "Sincerely,"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "常見追問：「太美式了，把 I am writing to let you know 改得更委婉，並在調漲那段先表達歉意」「把整封信的禮貌程度分成三級各給一版，我要挑最接近對方上一封信的那一級」「這是對方上一封信，請照他的正式程度回」。最後那一句是給日本客戶寫信最可靠的做法：把對方的信貼進去，要它用同一個禮貌層級回，比你自己形容「要很有禮貌」準得多。"
+        },
+        {
+          "type": "heading",
+          "text": "貼舊信當範例、用 Canvas 逐段改、用專案固定簽名檔",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "骨架寫得再細，還是不如一封你以前寫得不錯的信。OpenAI Academy 的自訂教學建議直接提供你的寫作樣本，要它「照這個風格寫新的草稿」，模仿語氣、節奏與結構。做法是在提示詞最後加一段：「下面是我之前寫給同一類客戶的信，請照它的語氣、開頭與結尾方式寫，內容照上面的三個點」，然後貼上舊信，客戶名稱與金額先換成代號。貼兩到三封效果更穩，但格式要一致，它會照範例的樣子回。提示詞篇的原則三講的就是這件事。"
+        },
+        {
+          "type": "link",
+          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一版出來後，改信不要整封重來。ChatGPT 的 Canvas 是一個與對話並排的編輯區，依 OpenAI Academy 的說明，在對話框輸入 /canvas，或按加號選 Canvas 就能打開。你可以直接在裡面改字、選取某一段要它只改那一段，也有內建的「建議修改（Suggest edits）」「調整語氣與長度」「潤飾（Polish）」工具，還有版本紀錄可以退回前一版。寫信最實用的是選取一句話之後說「這句改得更委婉」，其他段落不會動。Canvas 的完整用法另有一篇。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT Canvas 寫作教學：並排編輯、逐段修改、版本回溯",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-canvas-writing"
+        },
+        {
+          "type": "paragraph",
+          "text": "每封信都要重打「我是誰」與簽名檔很煩，兩個地方可以固定。自訂指令（Custom instructions）是整個帳號的固定說明，依 OpenAI Academy，從個人頭像的「個人化（Personalize）」進去設定，每個新對話都會讀，適合放你的職稱、公司類型、慣用語言與「英文信一律簡短直接、簽名檔用這一段」這類通用偏好；專案（Projects）則是把指令、檔案與對話收在同一個工作區，從左側選單的 Projects 建立，專案指令只在這個專案內生效，適合放某一個客戶的背景、你們往來的舊信與這個客戶專用的簽名檔。建議的分法是：自訂指令放「我」，專案放「這個客戶」。設定路徑以你看到的介面為準，兩個功能各有專篇。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 自訂指令與記憶功能：讓它記住你的偏好，每次都用台灣繁體中文回答",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-custom-instructions-memory"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT Projects：把檔案、指令與對話收在一個工作區",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-projects-guide"
+        },
+        {
+          "type": "paragraph",
+          "text": "但貼之前先想一件事：這些對話會離開你的電腦。客戶的姓名、電話、Email、身分證字號、合約金額、內部爭議的細節（誰的責任、誰說了什麼）都不需要出現在提示詞裡，信寫好再自己填回去。做法很簡單：用代號取代，「客戶 A 公司」「林小姐」「【金額】」「【發票號】」，這篇的六組範本全部這樣寫，ChatGPT 照樣能寫出通順的信。公司配發的帳號通常有自己的規定，先問清楚；個人帳號的資料訓練設定怎麼關，另有一篇檢查表。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        },
+        {
+          "type": "heading",
+          "text": "英文信的三個常見錯與怎麼要它修",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "太長：它預設會寫三到四段，每段都有一句客套。修法：「縮到 80 個英文字以內，保留主旨、目的與下一步，刪掉所有客套句」。OpenAI 的寫作教學給的追問範例是 shorten by 25% and clarify the final call to action，指定比例與保留的部分，比「改短一點」有效。",
+            "太客氣到不清楚：滿篇 would you possibly、if it is not too much trouble，對方讀完不知道你要什麼。修法：「每一段第一句就講重點，把 I was wondering if 改成 Could you，結尾明確寫出希望對方做什麼、什麼時候」。",
+            "主旨空泛：Inquiry、Follow up、Hello 這種主旨在對方的收件匣裡等於沒有。修法：「給我五個主旨，每個包含一個具體的名詞加一個動作或日期，10 個英文字以內」。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "這三個修法都在同一個對話裡追問就好，不用重貼提示詞。改到滿意之後，把最終版貼回去說「以後這類信照這封寫」，或直接存進那個客戶的專案當範例，下次就從第二版開始。"
+        },
+        {
+          "type": "heading",
+          "text": "六種情境對照表",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "情境",
+            "提示詞重點",
+            "語氣",
+            "追問句"
+          ],
+          "rows": [
+            [
+              "中文請款或請假",
+              "合作關係、付款期限或請假日期、附了什麼、要對方回覆什麼",
+              "客氣但明確，不一直道歉",
+              "第二句太硬，改成提醒的口吻，其他不動"
+            ],
+            [
+              "中文道歉與補救",
+              "延誤多久、原因只講一句、補救方案要具體、商品現在的狀態",
+              "誠懇但不卑微，不用套話",
+              "先講已經寄出再道歉；退款幾個工作天到帳"
+            ],
+            [
+              "英文詢價或詢問合作",
+              "第一次聯絡、要什麼、要對方回哪三項資訊、回覆期限",
+              "有禮但直接，不恭維",
+              "改成問有沒有現貨；加一句每季會重複下單"
+            ],
+            [
+              "英文催款或催進度",
+              "第幾次提醒、逾期幾天、金額與發票用代號、給對方台階",
+              "溫和但有急迫感，不威脅",
+              "第一次提醒改溫和；加一句合約的付款條款"
+            ],
+            [
+              "英文婉拒",
+              "感謝什麼、只給一個理由、要不要留未來的門",
+              "溫暖但答案明確，不先道歉",
+              "decline 改委婉，其他不動；給三種結尾我來挑"
+            ],
+            [
+              "給日本客戶的英文信",
+              "稱呼加 san、開頭問候、結尾期待繼續合作、每段一件事、不催促",
+              "正式、謙和、不催促",
+              "太美式，調漲那段先表達歉意；照對方上一封信的正式程度回"
+            ]
+          ],
+          "caption": "六種商務信的提示詞重點、語氣與追問句（2026 年 9 月整理）。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "寄出前自己讀一遍",
+          "text": "寄出前自己讀一遍，把 AI 的萬用句刪掉，加一句只有你知道的細節。「I hope this email finds you well」「造成您的不便敬請見諒」這種句子任何人都能寫，對方一眼就看出是範本；換成「上週電話裡你提到的那批貨」「上次在台北的展會見面之後」，信才像你寫的。日期、金額、附件名稱也要自己核對一遍，它填錯數字不會自己發現。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI Academy：Prompting（講清楚任務、給誰、為什麼；給背景與材料；描述理想輸出；大任務拆小；要多個版本就直接說；引導語氣與格式；在對話中調整而不是重來；兩段式公告信的範例提示詞）",
+          "url": "https://academy.openai.com/public/clubs/work-users-ynjqu/resources/prompting",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI：Writing with ChatGPT（先給原始材料：草稿、條列、筆記或必須包含的事實；講清楚限制；指定格式；要寄得出去的信就要主旨、簡短開頭與明確下一步；用具體回饋迭代，例如 shorten by 25% and clarify the final call to action）",
+          "url": "https://openai.com/academy/writing/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Academy：Canvas（輸入 /canvas 或按加號選 Canvas；直接改字、行內回饋、選取段落要求建議；Suggest edits、Adjust tone/length、Polish；版本紀錄可退回前一版）",
+          "url": "https://academy.openai.com/public/clubs/work-users-ynjqu/resources/canvas",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Academy：Customizing ChatGPT（自訂指令從個人頭像的 Personalize 進入；可在帳號設定、專案指令、GPT 或單一對話設定；提供寫作樣本要它 Mirror this style；記憶可記住語氣、格式與用語偏好）",
+          "url": "https://academy.openai.com/public/clubs/work-users-ynjqu/resources/customizing-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Academy：Projects（專案裝檔案、自訂指令與對話；從左側選單建立並命名；專案指令適用於專案內所有對話；可分享給同事）",
+          "url": "https://academy.openai.com/public/clubs/work-users-ynjqu/resources/projects",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Academy：ChatGPT fundamentals（自訂指令告訴它你是誰與怎麼回答，套用到所有新對話；記憶可在設定裡檢視、管理與刪除）",
+          "url": "https://academy.openai.com/public/clubs/work-users-ynjqu/resources/chatgpt-basics",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Academy：ChatGPT Foundations Webinar Resource Guide（寫信的範例提示詞：給某位客戶就某主題寫一封專業、友善且精簡的信；要它檢查清晰與精簡並提出修改建議）",
+          "url": "https://academy.openai.com/public/resources/chatgpt-foundations-webinar-resource-guide",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}

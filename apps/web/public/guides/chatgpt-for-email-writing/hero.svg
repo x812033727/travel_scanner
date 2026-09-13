@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">用 ChatGPT 寫 Email：一個信封從對話泡泡裡飛出來 / Writing email with ChatGPT: an envelope flying out of a chat bubble</title>
+  <desc id="desc">米色底上，左邊是一個白色的大對話泡泡，尾巴朝左下，裡面有五條長短不一的綠色線條，代表一則寫好的提示詞。一個白色信封從泡泡的右上方飛出來，信封微微向上傾斜，封口是淡綠色的三角形，中間有一個綠色圓點當封蠟，後面拖著一條灰色的虛線軌跡與幾道短線。右下角斜放著一支橘色的筆，筆尖朝右上，筆身有一段淡綠色的環。背景右上與左下各有一個淡色的大圓形裝飾。底下正中偏左一行深色的字寫著「先講清楚，再寫信」。整張圖只有這一行字。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <circle cx="1380" cy="190" r="170" fill="#E3F0EF"/>
+  <circle cx="220" cy="740" r="120" fill="#E6F0F7"/>
+  <circle cx="1500" cy="620" r="26" fill="#0D6B68" opacity="0.25"/>
+  <circle cx="120" cy="140" r="18" fill="#2F6F9F" opacity="0.3"/>
+  <circle cx="1080" cy="80" r="12" fill="#D97A2B" opacity="0.5"/>
+
+  <!-- the chat bubble with the prompt inside -->
+  <path d="M 248 240 L 772 240 A 48 48 0 0 1 820 288 L 820 592 A 48 48 0 0 1 772 640 L 430 640 L 262 738 L 336 640 L 248 640 A 48 48 0 0 1 200 592 L 200 288 A 48 48 0 0 1 248 240 Z" fill="#FFFFFF" stroke="#102A2B" stroke-width="6" stroke-linejoin="round"/>
+  <rect x="262" y="306" width="300" height="18" rx="9" fill="#0D6B68"/>
+  <rect x="262" y="356" width="470" height="16" rx="8" fill="#0D6B68" opacity="0.5"/>
+  <rect x="262" y="400" width="390" height="16" rx="8" fill="#0D6B68" opacity="0.5"/>
+  <rect x="262" y="444" width="500" height="16" rx="8" fill="#0D6B68" opacity="0.5"/>
+  <rect x="262" y="488" width="330" height="16" rx="8" fill="#0D6B68" opacity="0.5"/>
+  <rect x="262" y="546" width="150" height="34" rx="17" fill="#2F6F9F"/>
+  <path d="M 292 563 L 380 563 M 366 550 L 380 563 L 366 576" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- motion trail from the bubble to the envelope -->
+  <path d="M 812 420 C 850 400, 870 360, 900 328" fill="none" stroke="#5C6B6B" stroke-width="6" stroke-dasharray="12 14" stroke-linecap="round" opacity="0.7"/>
+  <line x1="850" y1="470" x2="900" y2="452" stroke="#5C6B6B" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+  <line x1="880" y1="520" x2="936" y2="504" stroke="#5C6B6B" stroke-width="6" stroke-linecap="round" opacity="0.4"/>
+
+  <!-- the envelope flying out -->
+  <g transform="translate(1110 300) rotate(-12)">
+    <rect x="-180" y="-115" width="360" height="230" rx="20" fill="#FFFFFF" stroke="#0D6B68" stroke-width="7"/>
+    <path d="M -180 -95 L 0 40 L 180 -95" fill="#E3F0EF" stroke="#0D6B68" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M -180 115 L -40 10 M 180 115 L 40 10" fill="none" stroke="#0D6B68" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="0" cy="40" r="16" fill="#0D6B68"/>
+  </g>
+
+  <!-- the pen -->
+  <g transform="translate(1200 700) rotate(-40)">
+    <rect x="-190" y="-28" width="300" height="56" rx="12" fill="#D97A2B"/>
+    <rect x="-150" y="-28" width="40" height="56" fill="#E3F0EF"/>
+    <path d="M 110 -28 L 190 0 L 110 28 Z" fill="#F7F1E8" stroke="#102A2B" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M 160 -10 L 190 0 L 160 10 Z" fill="#102A2B"/>
+    <rect x="-190" y="-28" width="30" height="56" rx="12" fill="#102A2B"/>
+  </g>
+
+  <text x="560" y="846" font-size="52" font-weight="700" fill="#102A2B" text-anchor="middle">先講清楚，再寫信</text>
+</svg>
