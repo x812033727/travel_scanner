@@ -1,0 +1,297 @@
+{
+  "slug": "chatgpt-shared-links-privacy",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "misc"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "ChatGPT 分享連結與隱私：哪些對話可能被搜尋到",
+      "description": "按下 ChatGPT 的 Share 之後，那段對話會變成任何拿到網址的人都能開的網頁：內容是建立當下的快照、預設匿名、上傳的檔案與圖片一起出去，你刪掉連結前它一直存在。2025 年 7 月底約 4,500 筆分享對話被 Google 收錄後，OpenAI 移除了「可被搜尋引擎發現」的選項。這篇依 2026 年 9 月 OpenAI 說明中心整理分享連結的規則、怎麼查與一次刪除、公開 GPT、截圖與匯出等四條對話離開帳號的路徑，以及分享前的檢查清單。",
+      "hero": {
+        "src": "/guides/chatgpt-shared-links-privacy/hero.jpg",
+        "alt": "一個深綠色的對話泡泡右上角掛著橘色鎖頭，旁邊一條藍色的鏈結圖示從中間斷開，插圖以簡單幾何形狀表現分享連結與隱私",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "按下 ChatGPT 對話上方的 Share（分享）之後，那段對話會變成一個獨立的網頁，網址以 chatgpt.com/share/ 開頭：任何拿到網址的人都能打開，不需要登入你的帳號；內容是你建立連結當下的快照；連結沒有到期日，在你刪掉之前一直有效。2025 年 7 月底，數千筆這樣的分享對話出現在 Google 搜尋結果裡，OpenAI 隨後移除了讓分享對話「可被搜尋引擎發現」的選項；但分享連結本身仍然是一個公開網頁，這件事沒有變。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇依 2026 年 9 月 OpenAI 說明中心的內容整理：先回顧那次事件與 OpenAI 的處理，再講分享連結裡到底包含什麼、怎麼查自己分享過哪些連結並一次刪除、刪除之後搜尋引擎那邊還會剩下什麼；接著把公開 GPT、截圖轉貼、匯出資料這三條同樣會讓對話離開帳號的路徑放在一起比較，最後給一份分享前的檢查清單。"
+        },
+        {
+          "type": "heading",
+          "text": "2025 年 7 月：分享對話出現在 Google 搜尋結果",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "2025 年 7 月 30 日，美國媒體 Fast Company 報導，在 Google 用 site:chatgpt.com/share 搜尋，就能找到約 4,500 筆 ChatGPT 分享對話，內容有履歷、感情與心理健康的傾訴、成癮與受虐經驗、公司內部的工作內容，部分含有姓名或足以推斷出當事人的細節。這些對話不是被駭，而是使用者自己按了 Share；問題出在分享視窗裡多了一個「Make this chat discoverable」（讓這段對話可被發現）的勾選框，底下一行小字寫著允許它顯示在網頁搜尋中。很多人以為自己只是把連結傳給朋友或同事，勾了之後整段對話就進了搜尋引擎的索引。"
+        },
+        {
+          "type": "paragraph",
+          "text": "美國時間 7 月 31 日，OpenAI 資安長 Dane Stuckey 在 X 上說明：這是一個短暫的實驗，目的是讓有用的對話更容易被找到，需要使用者先選擇分享、再勾選才會生效；但它給了太多讓人不小心分享出自己並不想分享的東西的機會，所以移除這個選項，並會請相關的搜尋引擎移除已經收錄的內容，變更在隔天早上前推送給所有使用者。也就是說，OpenAI 做了兩件事：關掉入口、清理已經外流的索引；至於已經被別人存下、截圖或轉貼的內容，不在它能清理的範圍。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月查看 OpenAI 說明中心，分享流程的說明裡已經沒有這個勾選框；常見問題直接寫著：分享頁不打算讓搜尋引擎索引，但這不代表連結是私密的，任何能打開連結的人都能再轉傳。實際畫面以官網為準；重點是別把「不會被搜尋到」誤讀成「只有我傳的人看得到」。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "分享連結裡有什麼：快照、匿名、檔案與圖片一起出去",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "建立方式很簡單：打開對話，按 Share，看一遍預覽與可用的選項，按 Create link（建立連結）或 Copy link（複製連結），把網址傳出去。說明中心對個人帳號的分享連結寫得很清楚，整理成五條："
+        },
+        {
+          "type": "list",
+          "items": [
+            "誰能看：任何拿到連結的人都能看完整段對話。連結不會給對方你的帳號權限，但也沒辦法限定特定對象、設密碼或設到期日；不需要的時候只能刪。",
+            "快照還是同步：個人帳號的連結只包含建立或更新當下的內容，之後在同一個對話裡新增的訊息不會自動出現，要更新得再按 Share → Update link。公司或學校的 Business、Enterprise、Edu 工作區相反：連結只有同工作區成員能開，但可以包含分享之後新增的訊息。",
+            "名字：分享連結預設匿名，但 OpenAI 註明部分既有或較舊的分享介面可能顯示建立者名字，寄出前先看預覽；而你在對話裡自己打出來的名字、公司、地址，匿名設定不會幫你遮。",
+            "檔案與圖片：支援的圖片與上傳的檔案會出現在分享頁，也就是你丟給它看的合約、報表、照片會跟著連結一起出去。",
+            "記憶與自訂指令：記憶來源與自訂指令都不會出現在分享頁，但 ChatGPT 依照記憶寫出來的回答會，例如它在回答裡提到你住哪、做什麼工作，那些句子就跟著出去了。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "還有一條容易忽略：收到連結的人按 Continue（繼續）接著聊時，系統會在他的帳號裡複製出一份獨立的私人對話，之後你刪掉連結，那份副本仍然留在他那裡。另外，關掉「Improve the model for everyone」（用我的對話改善模型）不會刪除既有的分享連結，也不會改變誰能打開它們；訓練開關與分享是兩套互不影響的設定。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 自訂指令與記憶功能：讓它記住你的偏好，每次都用台灣繁體中文回答",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-custom-instructions-memory"
+        },
+        {
+          "type": "heading",
+          "text": "怎麼查自己分享過哪些連結、怎麼一次刪掉",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "Settings（設定）→ Data controls（資料控制）→ Shared links（分享連結）旁的 Manage（管理），會列出所有分享過的對話連結與排程任務連結。",
+            "單筆刪除：在清單裡對那一筆按 Delete shared link；全部刪除：打開 More actions，選 Delete all shared links。",
+            "刪掉原始對話也會讓它的分享連結失效；刪除帳號時，所有分享對話連結一併刪除。",
+            "刪除之後：連結立刻打不開，但原始對話不會被刪，別人已經 Continue 複製走的副本、已經截下的圖也不會消失。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "如果那段對話曾經被搜尋引擎收錄，刪除連結之後，搜尋結果裡的標題與摘要可能還會留一陣子，因為搜尋引擎要等下次重新抓取才會發現頁面不見了。Google 提供「移除過時內容」工具，任何有 Google 帳號的人都能提交，條件是原頁面已經不存在或內容已大幅改變，審核通常需要幾天，通過後頁面就不再出現在搜尋結果；Bing 也有 Bing Webmaster Tools 的內容移除工具。實際處理時間以各搜尋引擎為準。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/chatgpt-shared-links-privacy/diagram-1.svg",
+          "alt": "圖解：一段對話從私人到公開的四個階段，私人對話、建立分享連結、有連結的人、被轉貼或索引；下方是收回的兩步，刪除連結與請搜尋引擎移除，右邊列出收不回的東西",
+          "width": 1600,
+          "height": 900,
+          "caption": "上排由左到右是對話一步步離開你帳號的過程，每一格寫著這一步會帶走什麼；下排左邊兩格是能收回的兩步，右邊灰框是就算做完也收不回的部分。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "對話離開帳號的另外三條路：公開 GPT、截圖轉貼、匯出資料",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "用別人做的 GPT（自製 GPT）聊天時，說明中心明確寫著 GPT 的建立者看不到使用者與它的個別對話，你的記憶與自訂指令也不會被 GPT 使用。但如果那個 GPT 接了外部 API 或應用程式，你輸入內容中相關的部分可能會被送到第三方服務，OpenAI 不稽核也不控制對方怎麼使用或保存，所以只用你信得過的 GPT，而且不要在裡面貼機密。順帶一提，說明中心已經預告 GPT 將逐步退場（Enterprise 工作區預計 2026 年 12 月 11 日，其他方案預計跟進），個人帳號也不能再新建或發布 GPT，既有的 GPT 在退場前仍可使用，細節以官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "自製 GPT：不用寫程式做出自己的專用助手（2026 年誰能建、怎麼替代）",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-custom-gpts-build"
+        },
+        {
+          "type": "paragraph",
+          "text": "截圖與轉貼是最常見、也最收不回的一條路：不經過任何設定，不留任何紀錄，你的隱私設定、暫時對話、刪除連結都管不到別人手機裡的那張圖。說明中心那句「任何能打開連結的人都能再轉傳」也是同樣的意思。實際的判斷方式只有一個：假設這段對話會以截圖的形式出現在陌生人的螢幕上，還願意分享再分享。"
+        },
+        {
+          "type": "paragraph",
+          "text": "匯出資料是你自己把整份對話紀錄搬出來：Settings → Data controls → Export data，按 Export 再按 Confirm export，準備好會用電子郵件或簡訊通知，最久 7 天，下載連結收到後 24 小時失效，內容是一個 ZIP 檔，包含對話紀錄與帳號資料。它有一個實用的用途：壓縮檔裡的 shared_conversations.json 列出你每一個分享連結的 ID、對話 ID、標題與匿名設定，適合拿來盤點。但它也是一份完整副本，放進共用雲端硬碟或寄給別人，就是另一條外流路徑。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Projects（專案）裡的對話另有規則：從個人專案分享單一對話時，看的人只看到那一則對話，專案裡其他對話、檔案、指令與歷史都不會一起出去；但專案本身可以整個分享給「Anyone with a link」（任何有連結的人），那時候分享出去的就是整個工作區。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT Projects：把檔案、指令與對話收在一個工作區",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-projects-guide"
+        },
+        {
+          "type": "table",
+          "header": [
+            "路徑",
+            "誰看得到",
+            "能不能收回",
+            "主要風險"
+          ],
+          "rows": [
+            [
+              "分享連結",
+              "任何拿到網址的人；工作區帳號限同工作區成員",
+              "可以：Data controls → Shared links 刪除；別人 Continue 的副本與截圖收不回",
+              "以為只給朋友看，實際上是公開網頁；上傳的檔案與圖片一起出去"
+            ],
+            [
+              "公開 GPT",
+              "建立者看不到你的對話；接了外部 API 的 GPT 可能把相關內容送到第三方",
+              "送到第三方的資料由對方保存，OpenAI 不控制",
+              "把機密貼進來路不明的 GPT"
+            ],
+            [
+              "截圖與轉貼",
+              "拿到圖或被轉傳的每一個人",
+              "不能",
+              "不留紀錄、不受任何設定管，最常見的外流方式"
+            ],
+            [
+              "匯出資料",
+              "拿到 ZIP 檔的人",
+              "檔案在你手上，能不能收回看你放在哪",
+              "整份紀錄一次外流；放在共用雲端或寄出就等於分享"
+            ]
+          ],
+          "caption": "2026 年 9 月依 OpenAI 說明中心的分享連結、GPT、專案與資料匯出說明整理；介面名稱與位置可能調整，以官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "分享前的檢查清單",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "分享對話最常出事的不是主題本身，而是對話裡順手打進去的細節。按 Create link 之前把預覽從頭捲到尾，逐一檢查："
+        },
+        {
+          "type": "list",
+          "items": [
+            "個資：身分證字號、電話、地址、生日、銀行與信用卡號、密碼與驗證碼，包括你貼進去請它幫忙填的表格。",
+            "公司內部資料：未公開的數字、客戶名單、合約條款、原始碼與金鑰；請它改稿時常常整段貼進去。",
+            "別人的名字與對話：你請它分析的訊息截圖、朋友的訊息、同事的信，分享出去等於替別人公開。",
+            "上傳的檔案與圖片：分享頁會帶著它們一起出去，看預覽時記得點開檔案確認內容。",
+            "口頭禪與地點：常去的店、小孩的學校、上班地點、你的自稱與打字習慣，湊在一起足以認出你，即使連結是匿名的。",
+            "對話開頭的自我介紹：很多人第一句就是「我是某公司的某某，負責某專案」，那一句會原封不動出現在分享頁最上面。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "分享連結等於公開",
+          "text": "任何拿到網址的人都能看，在你刪掉之前它一直在。連結不能設密碼、不能限定對象、不會過期；別人接著聊的副本與截圖，刪掉連結也收不回。把它當成貼在公開網頁上的文章來決定要不要分享。"
+        },
+        {
+          "type": "heading",
+          "text": "相關設定：暫時對話與關閉訓練",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "兩個常被混在一起的設定，這裡只點到為止。暫時對話（Temporary Chat）：開新對話時按右上角的 Temporary，內容不進歷史、不建立記憶、不用於訓練，OpenAI 為了安全仍可能保留最多 30 天；它解決的是「不要留在我這邊」，跟分享連結無關。關閉訓練：Settings → Data controls → 關掉 Improve the model for everyone；個人方案（Free、Go、Plus、Pro）的對話可能用於訓練，除非你選擇退出，而且如前面所說，這個開關不影響既有的分享連結。三家 AI 工具的訓練、記憶、匯出與刪除設定，在隱私設定那篇有完整清單。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 說明中心：ChatGPT shared links（任何拿到連結的人都能看、建立當下的快照、預設匿名、上傳的檔案與圖片會出現、Settings → Data controls → Shared links → Manage、Delete all shared links、Continue 會在對方帳號建立副本、不打算讓搜尋引擎索引但不代表私密）",
+          "url": "https://help.openai.com/en/articles/7925741-chatgpt-shared-links-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：Delete / invalidate a shared link（刪除連結後停止存取、不刪原對話、對方已存的副本仍在）",
+          "url": "https://help.openai.com/en/articles/7943629-delete-invalidate-a-shared-link",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：Data Controls FAQ（Improve the model for everyone 開關、暫時對話 30 天後刪除、不用於訓練）",
+          "url": "https://help.openai.com/en/articles/7730893-data-controls-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：Memory FAQ（記憶來源不包含在分享的對話裡、Settings → Personalization → Memory、暫時對話不建立記憶）",
+          "url": "https://help.openai.com/en/articles/8590148-memory-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：ChatGPT Custom Instructions（自訂指令不會分享給分享連結的觀看者）",
+          "url": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：Temporary Chat FAQ（右上角 Temporary、不進歷史、不建立記憶、不用於訓練、最多保留 30 天）",
+          "url": "https://help.openai.com/en/articles/8914046-temporary-chat-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：GPTs in ChatGPT（建立者看不到個別對話、外部 API 可能收到輸入內容、GPT 不用記憶與自訂指令、個人帳號不能新建或發布 GPT、Enterprise 預計 2026 年 12 月 11 日退場、個人方案資料可能用於訓練除非退出）",
+          "url": "https://help.openai.com/en/articles/8554402-gpts-data-privacy-faqs",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：Projects in ChatGPT（從專案分享單一對話時觀看者只看到那則對話、專案可分享給 Anyone with a link）",
+          "url": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：Exporting your ChatGPT history and data（Settings → Data controls → Export data、最久 7 天、下載連結 24 小時失效、ZIP 內含對話紀錄）",
+          "url": "https://help.openai.com/en/articles/7260999-how-do-i-export-my-chatgpt-history-and-data",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 資安長 Dane Stuckey 在 X 的聲明（2025 年 7 月 31 日：移除可被搜尋引擎發現的選項、短暫實驗、需兩步 opt-in、請搜尋引擎移除已收錄內容、隔天早上前推送給所有使用者）",
+          "url": "https://x.com/cryps1s/status/1951041845938499669",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google 搜尋說明：Remove outdated content from Google Search（頁面已刪除但仍出現在搜尋結果時，描述或快取可能過時，可提交更新）",
+          "url": "https://support.google.com/websearch/answer/6349986",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google Search Console 說明：Refresh outdated content（任何 Google 帳號可提交、條件是頁面已不存在或內容大幅改變、處理需要幾天、通過後不再出現在搜尋結果）",
+          "url": "https://support.google.com/webmasters/answer/7041154",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Bing Webmaster Tools 說明：Content Removal（移除頁面或過時快取的工具；細節以官網為準）",
+          "url": "https://www.bing.com/webmasters/help/content-removal-cb6c294d",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}
