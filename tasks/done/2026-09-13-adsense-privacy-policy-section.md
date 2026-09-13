@@ -40,8 +40,10 @@ aboutads.info）。現在五語系的 `privacy` 草稿**一句都沒提廣告**�
       DNT／GPC 時不載入廣告；退出連結 `https://adssettings.google.com` 與 `https://www.aboutads.info`；
       若 D1 選個人化，還要說明同意訊息只對 EEA／英國／瑞士顯示。
 - [x] ~~廣告還沒上線前，不要在正式站發布這段文字。~~ 改成條件句後不再需要卡發布時機，見 Notes。
-- [ ] （站主手動）正式站（`site_pages` 已初始化之後，改 `drafts/*.json` 不會生效，見 `privacy-data-map.md:311-314`）：
+- [x] （站主手動）正式站（`site_pages` 已初始化之後，改 `drafts/*.json` 不會生效，見 `privacy-data-map.md:311-314`）：
       在後台「網站資訊」逐語系貼上、改生效日期、發布；五個語系都要做。
+      → 2026-09-13 五語系都已補上並發布，生效日 `2026-09-13`，做法與核對方式見
+      `tasks/done/2026-09-06-legal-content-from-owner.md` 的「正式站發布結果」。
 - [x] `docs/privacy-data-map.md` 第八節刪掉「全文沒有任何一句提到廣告」這個缺口，第三節補上廣告腳本的載入條件。
 
 ## Steps
@@ -49,7 +51,7 @@ aboutads.info）。現在五語系的 `privacy` 草稿**一句都沒提廣告**�
 - [x] 等 D1 的答案，寫進本檔 Notes。
 - [x] 改 `apps/api/app/site_pages/drafts/{zh-TW,zh-CN,en,ja,ko}.json`，新區塊放在「Service providers and usage analytics」那段之後。
 - [x] `uv run pytest tests/test_site_pages_drafts.py` 通過（`:43-49` 要求五語系結構相同，`:93-100` 的英文字句不能被改掉）。
-- [ ] （站主）核准文字，再到後台逐語系發布。
+- [x] （站主）核准文字，再到後台逐語系發布。→ 站主 2026-09-13 核准照草稿發布。
 
 ## How to verify
 
