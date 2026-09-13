@@ -1,13 +1,13 @@
 ---
 id: 2026-09-12-search-text
 title: 改目的地時 search_text 沒跟著重建，景點會留在舊城市的搜尋索引裡
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5
 claimed_at: 2026-09-13T00:00:00Z
 created_at: 2026-09-12T17:18:44Z
-completed_at:
+completed_at: 2026-09-13T04:02:24Z
 branch: claude/hotspot-search-text-rebuild
 depends_on: []
 scope:
