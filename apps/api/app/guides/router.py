@@ -1,9 +1,10 @@
 from typing import Annotated
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, Query, Response
+from fastapi import APIRouter, Depends, Path, Query, Request, Response
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.affiliates.content_links import CONTENT_PARTNERS
 from app.auth.service import AdminUser
 from app.db import get_session
 from app.guides import admin_service, service, taxonomy
@@ -16,6 +17,8 @@ from app.guides.schemas import (
     ArticleUpdate,
     BatchVisibilityResult,
     BatchVisibilityWrite,
+    ContentPartnerList,
+    ContentPartnerOption,
     DraftWrite,
     GuideDocument,
     Kind,
@@ -30,6 +33,7 @@ from app.guides.schemas import (
     VisibilityWrite,
 )
 from app.i18n import Locale
+from app.infra import client_ip, enforce_named_rate_limit
 
 Session = Annotated[AsyncSession, Depends(get_session)]
 public_router = APIRouter(prefix="/guides", tags=["travel guides"])
@@ -90,6 +94,28 @@ async def get_public_article(
     return await service.public_article(session, kind, slug, locale)
 
 
+# Not ``.../clickout``: that suffix is excluded from the site's Referrer-Policy header in
+# apps/web/next.config.ts, and this request neither redirects nor needs the exemption. The
+# link itself goes straight to the partner; this only counts the click, and the reader's
+# browser never waits for it.
+@public_router.post("/{kind}/{slug}/partner-links/{key}/click", status_code=204)
+async def count_partner_click(
+    kind: Kind,
+    slug: Annotated[str, Path(max_length=120)],
+    key: Annotated[str, Path(pattern=r"^[0-9a-f]{16}$")],
+    request: Request,
+    session: Session,
+    locale: Locale = "zh-TW",
+) -> Response:
+    # Fails closed: while Redis is unreachable a click goes uncounted, which no reader sees,
+    # rather than an unthrottled endpoint writing rows.
+    await enforce_named_rate_limit(
+        "guide-partner-click", client_ip(request), limit=60, window_seconds=60
+    )
+    await service.record_partner_click(session, kind, slug, locale, key)
+    return Response(status_code=204, headers={"Cache-Control": "no-store"})
+
+
 @admin_router.get("", response_model=ArticleList)
 async def list_admin(
     user: AdminUser,
@@ -126,6 +152,23 @@ async def list_admin_topics(
     section: Section | None = None,
 ) -> TopicList:
     return await taxonomy.list_topics(session, locale, section)
+
+
+# Before ``/{article_id}``, like the routes below: that pattern would take "partners" as an
+# article id and answer 422.
+@admin_router.get("/partners", response_model=ContentPartnerList)
+async def list_content_partners(user: AdminUser) -> ContentPartnerList:
+    return ContentPartnerList(
+        partners=[
+            ContentPartnerOption(
+                code=partner.code,
+                display_name=partner.display_name,
+                category=partner.category,
+                hosts=list(partner.hosts),
+            )
+            for partner in CONTENT_PARTNERS
+        ]
+    )
 
 
 @admin_router.post("", response_model=ArticleDetail, status_code=201)

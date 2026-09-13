@@ -130,6 +130,10 @@ export function ContentBlocks({
         </aside>
       );
     }
+    // Only a link block is drawn as a link. Anything the renderer does not know -- a partner
+    // link that escaped `splitGuideBlocks`, a block from a newer API -- draws nothing rather
+    // than falling through here and putting its URL on the page unqualified.
+    if (block.type !== "link") return null;
     const href = contentBlockLink(block.url);
     if (!href) return null;
     const external = !href.startsWith("mailto:") && !sameSite(href);

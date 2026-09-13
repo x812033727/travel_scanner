@@ -27,9 +27,11 @@ import re
 
 logger = logging.getLogger(__name__)
 
-#: The three label families this codebase sends: ``aff_`` (member-initiated
-#: clickouts), ``dst_`` (curated destination offers), ``svc_`` (travel services).
-SUB_ID_RE = re.compile(r"(?:aff|dst|svc)_[A-Za-z0-9][A-Za-z0-9._-]{0,59}\Z")
+#: The label families this codebase builds: ``aff_`` (member-initiated clickouts),
+#: ``dst_`` (curated destination offers), ``svc_`` (travel services), and ``cnt_``
+#: (content partner links in articles). ``cnt_`` is stored in ``affiliate_clicks`` only and
+#: never sent: those links are the program's own URL, so there is nowhere to put it.
+SUB_ID_RE = re.compile(r"(?:aff|dst|svc|cnt)_[A-Za-z0-9][A-Za-z0-9._-]{0,59}\Z")
 
 #: Long hex runs are how every identifier we have leaked was spelled: ``uuid5``
 #: and ``uuid4`` both render as 32 hex characters via ``.hex``. No catalog label

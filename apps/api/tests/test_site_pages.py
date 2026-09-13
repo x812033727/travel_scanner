@@ -249,8 +249,68 @@ def test_error_codes_are_translated_in_all_five_locales() -> None:
             "site_page_version_conflict",
             "site_page_requirements_pending",
             "site_page_unavailable",
+            "content_link_affiliate",
         ):
             assert ERROR_DETAILS[locale][code]
+
+
+async def test_a_tracked_link_cannot_be_saved_or_published(database, actor) -> None:
+    """``LinkBlock`` itself keeps accepting the URL: stored revisions are validated on every
+    read, and a tracking pattern added later must make an old draft unpublishable, never
+    unreadable. It is the write path that keeps a policy page free of undisclosed affiliate
+    and short links."""
+    tracked = "https://www.booking.com/hotel/jp/example.html?aid=304142"
+    assert LinkBlock(type="link", text="Booking.com", url=tracked).url == tracked
+    async with database() as session:
+        await service.initialize_pages(session, actor)
+        clean = confirmed_document()
+        # An ordinary query string is not tracking: the regulator's own page carries one.
+        clean.blocks.append(
+            LinkBlock(
+                type="link",
+                text="公平交易委員會",
+                url="https://www.ftc.gov.tw/internet/main/doc/docDetail.aspx?uid=165&docid=13021",
+            )
+        )
+        saved = await service.save_draft(
+            session, actor, "privacy", "en", DraftWrite(expected_version=1, document=clean)
+        )
+        assert saved.version == 2
+
+        for url in (tracked, "https://bit.ly/3abcdef", "https://tp.st/abc123"):
+            document = confirmed_document()
+            document.blocks.append(LinkBlock(type="link", text="Partner", url=url))
+            with pytest.raises(AppError) as refused:
+                await service.save_draft(
+                    session,
+                    actor,
+                    "privacy",
+                    "en",
+                    DraftWrite(expected_version=2, document=document),
+                )
+            assert refused.value.code == "content_link_affiliate"
+
+        # A draft stored before the rule existed can still be read, but not published.
+        before = await counts(session)
+        smuggled = confirmed_document()
+        smuggled.blocks.append(LinkBlock(type="link", text="Partner", url=tracked))
+        await session.execute(
+            update(SitePage)
+            .where(SitePage.slug == "privacy", SitePage.locale == "en")
+            .values(draft_json=smuggled.model_dump(mode="json"))
+        )
+        await session.commit()
+        assert (await service.page_detail(session, "privacy", "en")).draft == smuggled
+        with pytest.raises(AppError) as unpublishable:
+            await service.publish_page(
+                session,
+                actor,
+                "privacy",
+                "en",
+                PublishWrite(expected_version=2, confirmed=True, reason="Reviewed test draft"),
+            )
+        assert unpublishable.value.code == "content_link_affiliate"
+        assert await counts(session) == before
 
 
 async def test_public_read_does_not_initialize_or_expose_any_drafts(database, actor) -> None:

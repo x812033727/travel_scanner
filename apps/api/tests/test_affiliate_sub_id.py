@@ -81,6 +81,7 @@ class TestSafeSubId:
             "dst_tour_osaka_ja",
             "dst_connectivity_ho-chi-minh-city_zh-TW_guide",
             "svc_hotel_x_en_trip",
+            "cnt_hosting_zh-TW_life",
         ],
     )
     def test_passes_real_labels_through_untouched(self, value: str) -> None:

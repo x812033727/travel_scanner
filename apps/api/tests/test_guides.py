@@ -33,7 +33,7 @@ from app.guides.models import (
 from app.guides.publication import today
 from app.guides.router import admin_router, public_router
 from app.guides.taxonomy import LIFE_SEED_TOPICS, SEED_TOPICS, seed_names
-from app.models import AdminAuditLog, User
+from app.models import AdminAuditLog, AffiliateClick, User
 from app.problems import AppError, app_error_handler, validation_error_handler
 
 TABLES = [
@@ -44,6 +44,8 @@ TABLES = [
     GuideArticleRevision.__table__,
     GuideArticleTopic.__table__,
     AdminAuditLog.__table__,
+    # Partner-link clicks are counted here (tests/test_guide_partner_links.py).
+    AffiliateClick.__table__,
 ]
 
 
