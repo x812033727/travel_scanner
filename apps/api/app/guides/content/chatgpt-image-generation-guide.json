@@ -1,0 +1,335 @@
+{
+  "slug": "chatgpt-image-generation-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "ChatGPT 畫圖教學：圖片生成、修圖與風格提示詞怎麼寫",
+      "description": "ChatGPT 的畫圖功能叫 ChatGPT Images，2026 年 9 月更新到 Images 2.5，免費版也能用。這篇依 OpenAI 官網與 help center，教你從輸入框、側欄 Images、Templates 與 Sketch 畫圖，把提示詞拆成主體、風格、構圖與比例、文字四個部件並附五個可直接貼的提示詞，上傳照片後怎麼講換背景、去物件、改插畫風，同一個角色畫多張，不能畫的真人、商標與版權角色，以及 C2PA 標示與商用規定。",
+      "hero": {
+        "src": "/guides/chatgpt-image-generation-guide/hero.jpg",
+        "alt": "米色底上一個深綠色畫框，框裡有一個調色盤與一個白色對話泡泡，泡泡裡有三行文字線條，畫框旁有一支筆，寫著「用一句話畫出一張圖」",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "ChatGPT 的畫圖功能叫 ChatGPT Images，2026 年 9 月 8 日更新到 ChatGPT Images 2.5，免費版也能用：在輸入框描述你要的圖它就畫，上傳一張照片再說要改哪裡它就修。這篇回答四件事：在哪裡畫、提示詞怎麼寫才會得到能用的圖、修圖怎麼講、哪些不能畫與畫出來能不能商用。結論是把提示詞拆成主體、風格、構圖與比例、文字四個部件，圖上的中文字另外加，社群貼文圖、店家菜單插圖與簡報配圖多半做得出來。"
+        },
+        {
+          "type": "paragraph",
+          "text": "功能名稱、方案差別、使用政策與標示規則都在 2026 年 9 月依 OpenAI 官網與 help center 查證。讀完你會知道畫圖的入口在哪裡，拿到五個可以直接貼的提示詞，學會上傳照片後怎麼說「換背景、去掉東西、改成插畫、人物不要動」，知道同一個角色畫好幾張的做法，並清楚真人、商標、版權角色的界線，以及生成圖的 C2PA 標示與商用規定。"
+        },
+        {
+          "type": "heading",
+          "text": "在哪裡畫：輸入框、Images 頁面與各方案的差別",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "最直接的做法是在任何對話的輸入框打字描述，例如「畫一張……」，ChatGPT 會自動叫出畫圖功能，不用先切換模型；help center 也說明可以按輸入框旁的 More 再選 Images。第二個入口是左側欄的 Images（手機 App 在對話清單上方的橫列），這裡有 Create Image、Templates 範本（海報、logo、商品照等分類，選了範本後 ChatGPT 會追問細節）與你畫過的所有圖；產出的圖都自動存在這裡，可以 Copy、Save 下載或 Share 分享。手機 App 另有 Sketch：在輸入框打「@」選 Sketch，畫草圖再加一句說明，它會把草圖變成完整的圖。比例用圖片旁的 aspect ratio 選擇器挑，或直接寫在提示詞裡，任何比例都可以；一張圖可能要等幾分鐘。"
+        },
+        {
+          "type": "paragraph",
+          "text": "目前的模型是 ChatGPT Images 2.5，OpenAI 在 2026 年 9 月 8 日發布，官方公告寫它比 Images 2.0 的產圖延遲最多減少 50%，更會保留參考照片裡的主體，連續修改多次也比較不會走樣，並支援透明背景。網頁、iOS、Android 都有，所有方案都能用；舊的 DALL·E GPT 已在 2026 年 8 月 30 日下架。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "免費版：能畫圖，但畫圖跟檔案上傳、語音一樣有獨立的用量上限，help center 沒有寫死每天幾張，到達上限時畫面會提示，數字以官網為準。",
+            "ChatGPT Go：官方公告寫美國定價每月 8 美元，訊息、檔案上傳與畫圖額度是免費版的 10 倍；台灣的價格以登入後看到的為準。",
+            "ChatGPT Plus：每月 20 美元，畫圖上限比 Go 高，另有 Images with thinking（畫圖前先思考、規劃版面），help center 寫這個功能開放給 Plus、Pro 與 Business。",
+            "升級之後用量上限會重新計算；Pro 方案的細節見本系列的方案比較篇。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 付費方案比較：Go、Plus、Pro 該選哪一個（2026）",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-plans-plus-pro-2026"
+        },
+        {
+          "type": "heading",
+          "text": "提示詞的四個部件：主體、風格、構圖與比例、文字",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "畫不出能用的圖，多半是提示詞只寫了主體。把提示詞拆成四個部件，每一個都寫到，成功率差很多。部件 1 主體：畫什麼、幾個、在哪裡、正在做什麼，用具體名詞（「一杯珍珠奶茶放在木桌上」而不是「飲料」）。部件 2 風格：攝影還是插畫、水彩還是扁平向量、色調、光線，一次只講一種。部件 3 構圖與比例：橫式或直式、比例（1:1、4:3、16:9、3:4）、主體放哪裡、哪裡留白給你之後放字。部件 4 文字內容：要的話字少、字大、每一個字寫清楚；不要的話明說「不要放任何文字」，否則模型常常自己加一行看不懂的字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "中文字是目前最常出錯的地方。OpenAI 在 2025 年 12 月發布新版 ChatGPT Images 時把多語言文字列為限制；help center 的圖片輸入說明也寫，模型處理日文、韓文這類非拉丁字母的文字表現較差。實際上招牌、標題裡的中文會缺筆畫、多一橫或出現不存在的字。需要中文字的圖，先請它留白，字另外加，做法見文末提醒。下面五個提示詞可以直接貼，換掉引號裡的內容就是你的版本。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "社群貼文圖（正方形）：「主體：一杯珍珠奶茶放在木桌上，旁邊放一片切好的芒果。風格：明亮乾淨的商品攝影，柔和自然光，淺色背景。構圖：1:1 正方形，主體置中偏下，上方留三分之一空白。不要放任何文字。」",
+            "店家菜單插圖：「畫 4 道台灣小吃的插圖：滷肉飯、蚵仔煎、鹹酥雞、珍珠奶茶，各佔一格，2 乘 2 排列。風格：手繪水彩、線條簡單、米白色底、色調溫暖。構圖：4:3 橫式，每格留白一致。不要加文字、價格或裝飾邊框。」",
+            "簡報配圖：「一張簡報用的概念插圖：一條路從左邊通往右邊的山頂，路上有三個里程碑。風格：扁平向量插畫、藍綠色系、純白背景、沒有陰影與漸層。構圖：16:9 橫式，主體靠右，左邊留白放標題。不要放任何文字。」",
+            "照片改風格（先上傳照片）：「把這張照片改成手繪水彩插畫風。保留人物的五官、髮型、姿勢與衣服顏色，背景簡化成淡藍色漸層。不要加任何文字或裝飾。」",
+            "活動海報底圖：「中秋節活動的海報底圖：深藍夜空、一輪大月亮、桌上有月餅與柚子。風格：溫暖的剪紙插畫、深藍與金色。構圖：3:4 直式，下方三分之一留一塊乾淨的深色區域。不要生成任何文字。」"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "看結果之後只改不滿意的那一個部件，在同一個對話裡接著講，不要每次重寫整段；提示詞的通用原則見下面這篇。"
+        },
+        {
+          "type": "link",
+          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+        },
+        {
+          "type": "heading",
+          "text": "修圖：上傳照片後怎麼講",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "上傳的入口是輸入框左邊的「+」再選 Add photos & files，也可以把圖拖進輸入框或直接貼上；支援 PNG、JPEG 與非動態 GIF，單張最大 20 MB。上傳之後，或點一張 ChatGPT 畫好的圖，就能修：直接在對話裡描述要改什麼，或先用編輯器的 Select 工具塗出要改的區域再描述。help center 提醒塗選的範圍不一定精準，修改可能超出你選的區域，要改特定位置時把位置也寫進提示詞。修圖分 4 步：步驟 1 上傳照片；步驟 2 說要改什麼，一次只改一件事；步驟 3 說要保留什麼，人物、商品、字樣、比例不想動的都明講；步驟 4 看結果再修，在同一個對話接著說，走樣了就回到上一版重來。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "換背景：「把背景換成早晨的咖啡店窗邊，桌子與商品本身完全不要動，光線方向跟原圖一致。」",
+            "去掉物件：「把畫面右下角的垃圾桶拿掉，用周圍的地面補上，其他部分維持原樣。」",
+            "改成插畫風：「把整張照片改成粉彩色調的插畫風，保留每個人的五官、髮型與衣服。」",
+            "保留人物只換場景：「人物的臉、姿勢與衣服一律不動，只把場景換成夜市的攤位前。」",
+            "去背：「把商品去背，輸出透明背景。」官網說明支援透明背景。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "有幾件事做不到或不穩。它不是精準的修圖軟體，可能順手動到你沒提的地方，人臉與品牌字樣尤其容易微妙走樣，每一版都放大檢查。輸出的解析度官網沒有寫死數字，以你下載到的檔案為準，要印刷的大圖先試印。上傳別人的照片要先取得同意；把真人照片修成看起來像真的另一個場景，再拿去當證據或說成實拍，違反 OpenAI 的使用政策。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/chatgpt-image-generation-guide/diagram-1.svg",
+          "alt": "上半部是提示詞的 4 個部件：主體、風格、構圖與比例、文字內容，各附一句範例；下半部是修圖 4 步的流程：上傳照片、說要改什麼、說要保留什麼、看結果再修，並用箭頭回到第 2 步。",
+          "width": 1600,
+          "height": 900,
+          "caption": "上半部照 1 到 4 的順序把提示詞湊齊，下半部的 4 步在同一個對話裡循環，走樣就回到步驟 2 重講。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "一致性：同一個角色畫好幾張",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "要做一系列圖，例如店家吉祥物做四張貼文，關鍵是給模型「同一份參考」。先把角色畫定：一張正面、乾淨背景的角色設定圖，滿意之後下載存起來。之後每一張都上傳這張設定圖，貼上同一段固定的角色描述（顏色、身形、配件、表情一字不改），只換場景與動作那一句。官方公告寫 Images 2.5 更會保留參考照片裡的主體，多輪修改也比較不會劣化，同一個系列盡量在同一個對話裡完成。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "固定描述用具體特徵：「圓臉的橘色貓，左耳有一顆白點，戴綠色圍巾」比「可愛的貓」穩得多。",
+            "一次一張，畫好再畫下一張；一次要求四張並排，四個角色常常長得不一樣。",
+            "用 Share 再選 Prompt template 可以把提示詞分享給別人套用；舊圖從側欄 Images 找回，要刪一張圖得刪掉產生它的那段對話。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "AI 工具怎麼挑：依任務選 ChatGPT、Claude、Gemini 還是別的",
+          "url": "https://mokaair.com/zh-TW/life/ai-tools-choose-by-task"
+        },
+        {
+          "type": "heading",
+          "text": "哪些不能畫：真人、商標、版權角色與暴力色情",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 的使用政策（2025 年 10 月 29 日更新的版本）適用所有產品，畫圖也算。跟畫圖最相關的幾條：不得未經同意使用他人的肖像（包括照片般寫實的臉）做出可能讓人誤以為是真的內容；不得用於欺騙、詐騙、冒充；不得侵害他人的智慧財產權；不得製作性暴力或未經同意的私密影像、恐怖主義或暴力內容；不得把未滿 18 歲的人性化。Images 2.5 的系統卡說明，因為圖更逼真，OpenAI 在提示詞與圖片兩層都有檢查，會擋下政治、性或其他敏感情境中真實人物的偽造圖，宗教人物也在保護類別裡。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "真人與名人：拿名人的名字或照片畫他們沒做過的事會被拒絕；自己或朋友的照片改風格可以，但要有本人同意，成品不要冒充實拍。",
+            "商標與品牌：把別人的 logo、包裝畫進商品圖有侵害智慧財產權的風險；自家品牌請上傳自己的素材。",
+            "受版權保護的角色：直接點名動畫、遊戲角色或「某某工作室的風格」，可能被拒絕或產出被擋；就算畫出來，商用的法律風險也是你的，改成描述外型特徵、畫自創角色最保險。",
+            "暴力、色情、自殘、仇恨一律不行，涉及未成年的內容 OpenAI 會通報。被拒絕時不要繞，規避安全機制本身就是違規，換一個不指名、不涉及真人的描述重寫。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "heading",
+          "text": "版權與標示：能不能商用、有沒有浮水印",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "能不能商用，OpenAI 的說法很明確。使用條款（適用台灣的版本）寫：在你與 OpenAI 之間，你保有輸入的權利，並擁有輸出；help center 的 FAQ 也寫，在遵守內容政策與條款的前提下，你擁有用 ChatGPT 產出的內容，包括重印、販售與做成商品的權利，免費版與付費版都一樣。但條款同時寫，輸出不一定獨一無二，別人可能拿到相似的圖；你要對內容負責，並保證你有權提供輸入的素材，拿別人的照片或作品當底圖去商用，問題出在上傳那一步。"
+        },
+        {
+          "type": "paragraph",
+          "text": "標示方面，help center 說明用 ChatGPT 產生的圖同時帶有 C2PA 中繼資料（Content Credentials）與 SynthID 隱形浮水印；預設沒有肉眼可見的浮水印，想要可以在提示詞裡要求「在圖上加一個可見的 OpenAI 浮水印」。C2PA 中繼資料在截圖、上傳社群平台與轉檔時多半會被移除，SynthID 嵌在畫面裡，部分修改後仍可能保留；任何人都可以把圖上傳到 OpenAI 的 verify 頁面檢查來源訊號。使用條款也禁止把 AI 產出說成人做的，做成商品或投稿時誠實標示比較安全。"
+        },
+        {
+          "type": "paragraph",
+          "text": "台灣的著作權怎麼算，經濟部智慧財產局 2025 年 5 月 22 日的電子郵件解釋是：AI 生成的圖有沒有著作權，看創作過程中有沒有人類實際的創意投入，全由 AI 自動完成的沒有；商用時若與訓練資料裡的原作實質近似仍可能侵權。細節以智財局的說明為準，本系列之後會有專門談 AI 版權的一篇。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+        },
+        {
+          "type": "table",
+          "header": [
+            "需求",
+            "提示詞怎麼寫",
+            "常見問題與解法"
+          ],
+          "rows": [
+            [
+              "社群貼文圖",
+              "主體加風格加 1:1，說清楚哪裡留白，明說不要文字",
+              "自己加了看不懂的字：補一句「不要放任何文字」重畫"
+            ],
+            [
+              "店家菜單插圖",
+              "列出每一道菜名，指定同一種畫風與排列方式",
+              "幾道菜風格不一致：同一個對話一次畫齊，風格句一字不改"
+            ],
+            [
+              "簡報配圖",
+              "扁平向量、純白背景、16:9，主體靠一邊留白放標題",
+              "背景有陰影或漸層：明說「純白背景、無陰影」，或要求透明背景"
+            ],
+            [
+              "商品換背景",
+              "上傳後寫「背景換成……，商品本身完全不要動」",
+              "商品標籤或形狀被改：把要保留的東西逐一寫出，放大檢查"
+            ],
+            [
+              "照片改插畫風",
+              "上傳後指定畫風，並寫「保留五官、髮型、姿勢、衣服」",
+              "臉不像本人：加「五官不動」再試，或改用半身而非大頭"
+            ],
+            [
+              "同一角色多張",
+              "每次都上傳角色設定圖，貼同一段固定描述，只換場景句",
+              "衣服顏色或配件跑掉：描述裡把固定特徵寫成具體名詞"
+            ],
+            [
+              "含中文字的圖",
+              "先請它留白，不要生成文字",
+              "缺筆畫、多一橫、不存在的字：字用簡報軟體或修圖 App 另外加"
+            ]
+          ],
+          "caption": "2026 年 9 月依 OpenAI help center 的功能說明整理；提示詞為本文示範，結果會隨模型更新變動。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "含中文字的圖，字最後用其他工具加上去比較穩",
+          "text": "海報、菜單、貼文圖需要中文字時，提示詞裡先寫「不要生成任何文字，在上方（或下方）留一塊乾淨的區域」，圖畫好下載，再用簡報軟體或手機內建的修圖工具把字疊上去。字體、字級、行距都由你控制，不會出現缺筆畫或不存在的字，改文案也不用重畫。真的要讓模型寫字，就只寫 2 到 4 個大字、用英文或數字，畫完逐字檢查。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI Help Center：Images in ChatGPT（輸入框與 More → Images、側欄 Images、Templates、Sketch、aspect ratio、編輯器 Select 工具、所有方案可用、Images with thinking 的方案、DALL·E GPT 已下架）",
+          "url": "https://help.openai.com/en/articles/11084440-images-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI：Introducing ChatGPT Images 2.5（延遲最多減少 50%、保留參考照片主體、多輪編輯一致性、透明背景、Sketch、Templates、所有方案可用）",
+          "url": "https://openai.com/index/introducing-chatgpt-images-2-5/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Release Notes（2026 年 9 月 8 日 Images 2.5、2026 年 8 月 30 日 DALL·E GPT 下架、2026 年 4 月 21 日 Images 2.0 與 images with thinking、免費版與 Go 的圖片上限仍適用）",
+          "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Free Tier FAQ（免費版可畫圖、畫圖有獨立用量上限、達上限時會提示、升級後重新計算）",
+          "url": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：What is ChatGPT Go（畫圖額度比免費版高、美元計價）",
+          "url": "https://help.openai.com/en/articles/11989085-what-is-chatgpt-go",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI：Introducing ChatGPT Go, now available worldwide（美國每月 8 美元、訊息、檔案上傳與畫圖是免費版的 10 倍）",
+          "url": "https://openai.com/index/introducing-chatgpt-go/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：What is ChatGPT Plus（每月 20 美元、包含 Image generation）",
+          "url": "https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Image Inputs FAQ（「+」→ Add photos & files、拖曳與貼上、PNG／JPEG／GIF、單張 20 MB、非拉丁字母文字表現較差）",
+          "url": "https://help.openai.com/en/articles/8400551-image-inputs-for-chatgpt-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI：The new ChatGPT Images is here（2025 年 12 月 16 日；多語言文字列為限制）",
+          "url": "https://openai.com/index/new-chatgpt-images-is-here/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Usage policies（2025 年 10 月 29 日更新；肖像、冒充、智慧財產權、性暴力、未成年、規避安全機制）",
+          "url": "https://openai.com/policies/usage-policies/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Deployment Safety Hub：ChatGPT Images 2.5 System Card（提示詞與圖片兩層檢查、真實人物偽造圖、宗教人物、C2PA 與 SynthID）",
+          "url": "https://deploymentsafety.openai.com/chatgpt-images-2-5",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Provenance signals (Content Credentials, SynthID) in OpenAI-generated content（C2PA 中繼資料、SynthID 隱形浮水印、可要求可見浮水印、截圖與社群平台會移除中繼資料、verify 頁面）",
+          "url": "https://help.openai.com/en/articles/8912793-c2pa-in-chatgpt-images",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Terms of Use（Rest of World；擁有輸出、輸出可能與他人相似、對內容負責、不得把輸出說成人做的）",
+          "url": "https://openai.com/policies/row-terms-of-use/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：What is ChatGPT?（可商用：擁有輸出，包括重印、販售與做成商品，免費與付費相同）",
+          "url": "https://help.openai.com/en/articles/6783457-chatgpt-general-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "經濟部智慧財產局：電子郵件1140522c（AI 生成圖畫的著作權視人類創意投入而定、商用實質近似的侵權風險）",
+          "url": "https://www.tipo.gov.tw/tw/copyright/692-34252.html",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}
