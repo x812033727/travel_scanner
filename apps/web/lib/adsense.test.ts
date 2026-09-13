@@ -1,9 +1,12 @@
+import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
-  adsenseArticleRoute, adsenseRequestGate, adsenseSplit, isAdsenseArticlePath, isAdsenseOrigin,
-  isAdsensePublisherId, isAdsenseSlotId, MIN_BLOCKS_AFTER, MIN_BLOCKS_BEFORE_WITHOUT_HERO,
-  validAdsenseConfig,
+  AD_CLEARANCE_BLOCKS, adsenseArticleRoute, adsensePlacements, adsenseRequestGate, BLOCKS_PER_AD,
+  isAdsenseArticlePath, isAdsenseOrigin, isAdsensePublisherId, isAdsenseSlotId, MAX_ADS,
+  MIN_BLOCKS_AFTER, MIN_BLOCKS_BEFORE_WITHOUT_HERO, MIN_BLOCKS_BETWEEN, validAdsenseConfig,
 } from "./adsense";
+import { splitGuideBlocks, type GuideBlock } from "./guides";
 
 const PUBLISHER = "ca-pub-4140966684432854";
 const SLOT = "1234567890";
@@ -80,52 +83,158 @@ describe("identifiers", () => {
   });
 });
 
-describe("where the slot goes", () => {
-  it("cuts after the first level-2 heading and its first paragraph", () => {
-    const blocks = [paragraph, heading, paragraph, ...body(MIN_BLOCKS_AFTER)];
-    const split = adsenseSplit(blocks);
-    expect(split).not.toBeNull();
+type TestBlock = { type: string; level?: number };
+
+/** Cut at every partner button, the way `splitGuideBlocks` cuts a real article. */
+function segmentsOf(blocks: readonly TestBlock[]) {
+  const segments: { blocks: TestBlock[]; headingStart: number }[] = [{ blocks: [], headingStart: 0 }];
+  let headings = 0;
+  for (const block of blocks) {
+    if (block.type === "offer" || block.type === "partner_link") {
+      segments.push({ blocks: [], headingStart: headings });
+      continue;
+    }
+    if (block.type === "heading" && block.level === 2) headings += 1;
+    segments[segments.length - 1].blocks.push(block);
+  }
+  return segments;
+}
+
+/**
+ * Where the units land, as the index in the ORIGINAL block list each one goes before —
+ * partner buttons included — so a test can say "an ad before block 3" about the body it wrote.
+ */
+function adPositions(blocks: readonly TestBlock[], options?: { hasHero?: boolean }) {
+  const placements = adsensePlacements(segmentsOf(blocks), options);
+  const positions: number[] = [];
+  let index = 0;
+  placements.forEach((pieces, segmentIndex) => {
+    if (segmentIndex > 0) index += 1; // the button that opened this segment
+    pieces.forEach((piece, pieceIndex) => {
+      if (pieceIndex > 0) positions.push(index);
+      index += piece.blocks.length;
+    });
+  });
+  return positions;
+}
+
+describe("where the slots go", () => {
+  it("puts the first unit after the first level-2 heading and its first paragraph", () => {
     // Never above the hero, and never before the section it belongs to has said anything.
-    expect(split?.before).toHaveLength(3);
-    expect(split?.after).toHaveLength(MIN_BLOCKS_AFTER);
+    expect(adPositions([paragraph, heading, paragraph, ...body(MIN_BLOCKS_AFTER)])).toEqual([3]);
+    expect(adPositions([paragraph, paragraph, heading, paragraph, ...body(MIN_BLOCKS_AFTER)])).toEqual([4]);
   });
 
-  it("continues the heading numbering so the table of contents still points at them", () => {
-    expect(adsenseSplit([heading, paragraph, ...body(MIN_BLOCKS_AFTER)])?.headingStart).toBe(1);
-    expect(adsenseSplit([paragraph, heading, paragraph, ...body(MIN_BLOCKS_AFTER)])?.headingStart).toBe(1);
+  it("continues the heading numbering across every cut so the table of contents still points at them", () => {
+    const blocks = [
+      heading, paragraph, ...body(9),
+      heading, paragraph, ...body(9),
+      heading, paragraph, ...body(9),
+      heading, paragraph, ...body(9),
+    ];
+    const [pieces] = adsensePlacements(segmentsOf(blocks));
+    expect(pieces.length).toBeGreaterThan(2);
+    pieces.forEach((piece, index) => {
+      const before = pieces.slice(0, index).flatMap((p) => p.blocks);
+      expect(piece.headingStart).toBe(before.filter((b) => b.type === "heading").length);
+    });
+    // Nothing is lost or repeated by cutting.
+    expect(pieces.flatMap((piece) => piece.blocks)).toHaveLength(blocks.length);
   });
 
   it("leaves a thin article alone rather than making it mostly advertisement", () => {
-    expect(adsenseSplit([heading, paragraph, ...body(MIN_BLOCKS_AFTER - 1)])).toBeNull();
-    expect(adsenseSplit([heading, paragraph])).toBeNull();
-    expect(adsenseSplit([])).toBeNull();
+    expect(adPositions([heading, paragraph, ...body(MIN_BLOCKS_AFTER - 1)])).toEqual([]);
+    expect(adPositions([heading, paragraph])).toEqual([]);
+    expect(adPositions([])).toEqual([]);
+    expect(adsensePlacements([{ blocks: [], headingStart: 0 }])).toEqual([[{ blocks: [], headingStart: 0 }]]);
   });
 
   it("needs a level-2 heading followed by a paragraph", () => {
-    expect(adsenseSplit(body(20))).toBeNull();
-    expect(adsenseSplit([{ type: "heading", level: 3 }, paragraph, ...body(20)])).toBeNull();
-    // A heading whose section is a list, not prose: no paragraph to cut after.
-    expect(adsenseSplit([heading, { type: "list" }, { type: "list" }])).toBeNull();
+    expect(adPositions(body(20))).toEqual([]);
+    expect(adPositions([{ type: "heading", level: 3 }, paragraph, ...body(20)])).toEqual([]);
+    // A heading whose section is a list, not prose: no paragraph to start after.
+    expect(adPositions([heading, { type: "list" }, { type: "list" }])).toEqual([]);
   });
 
-  it("keeps more of the article above the slot when there is no hero", () => {
-    // With a hero the cut is after the first heading and its paragraph. Without one there is
-    // far less above that point, so the ad could be the first thing in the viewport.
+  it("keeps more of the article above the first unit when there is no hero", () => {
+    // With a hero the first unit follows the first heading and its paragraph. Without one
+    // there is far less above that point, so the ad could be the first thing in the viewport.
     const blocks = [heading, paragraph, ...body(MIN_BLOCKS_AFTER + 2)];
-    expect(adsenseSplit(blocks, { hasHero: true })?.before).toHaveLength(2);
-    expect(adsenseSplit(blocks, { hasHero: false })?.before).toHaveLength(MIN_BLOCKS_BEFORE_WITHOUT_HERO);
+    expect(adPositions(blocks, { hasHero: true })).toEqual([2]);
+    expect(adPositions(blocks, { hasHero: false })).toEqual([MIN_BLOCKS_BEFORE_WITHOUT_HERO]);
     // A hero-less article too short to afford that clearance simply carries no ad.
-    expect(adsenseSplit([heading, paragraph, ...body(MIN_BLOCKS_AFTER)], { hasHero: false })).toBeNull();
-    expect(adsenseSplit([heading, paragraph, ...body(MIN_BLOCKS_AFTER)], { hasHero: true })).not.toBeNull();
+    expect(adPositions([heading, paragraph, ...body(MIN_BLOCKS_AFTER)], { hasHero: false })).toEqual([]);
+    expect(adPositions([heading, paragraph, ...body(MIN_BLOCKS_AFTER)], { hasHero: true })).toEqual([2]);
     // An article whose intro already sits above the first heading needs no extra push.
-    const withIntro = [paragraph, heading, paragraph, ...body(MIN_BLOCKS_AFTER)];
-    expect(adsenseSplit(withIntro, { hasHero: false })?.before).toHaveLength(3);
-    expect(adsenseSplit(withIntro, { hasHero: false })?.headingStart).toBe(1);
+    expect(adPositions([paragraph, heading, paragraph, ...body(MIN_BLOCKS_AFTER)], { hasHero: false })).toEqual([3]);
   });
 
-  it("skips a paragraph that precedes the first heading", () => {
-    const split = adsenseSplit([paragraph, paragraph, heading, paragraph, ...body(MIN_BLOCKS_AFTER)]);
-    expect(split?.before.map((block) => block.type)).toEqual(["paragraph", "paragraph", "heading", "paragraph"]);
+  it("keeps its distance from a partner button on both sides, and from the end panel", () => {
+    const offer = { type: "offer" };
+    // The first section is too short to hold a unit clear of the button that ends it, so the
+    // first unit moves past the button — but not up against it.
+    const blocks = [heading, paragraph, paragraph, offer, ...body(12)];
+    expect(adPositions(blocks)).toEqual([3 + 1 + AD_CLEARANCE_BLOCKS]);
+    // Every placement in a busy body stays clear of every button and of the end.
+    const busy = [heading, ...body(5), offer, ...body(7), offer, ...body(4), offer, ...body(20), offer, ...body(9)];
+    const buttons = busy.flatMap((block, index) => (block.type === "offer" ? [index] : []));
+    const positions = adPositions(busy);
+    expect(positions.length).toBeGreaterThan(0);
+    for (const position of positions) {
+      for (const button of buttons) {
+        // A unit before `position` sits between blocks position-1 and position.
+        if (button < position) expect(position - button - 1).toBeGreaterThanOrEqual(AD_CLEARANCE_BLOCKS);
+        else expect(button - position).toBeGreaterThanOrEqual(AD_CLEARANCE_BLOCKS);
+      }
+      expect(busy.length - position).toBeGreaterThanOrEqual(AD_CLEARANCE_BLOCKS);
+    }
+  });
+
+  it("only follows prose, never a heading, an image or a table", () => {
+    const image = { type: "image" };
+    const table = { type: "table" };
+    // No hero, so the earliest place is block 3 — after the image. The next three places
+    // follow an image, a table and a heading; the list is the first prose after them.
+    const blocks = [heading, paragraph, image, table, heading, { type: "list" }, ...body(10)];
+    expect(adPositions(blocks, { hasHero: false })).toEqual([6]);
+  });
+
+  it("spaces units out and scales how many with the length of the article", () => {
+    const count = (length: number) => adPositions([heading, ...body(length - 1)]).length;
+    expect(count(BLOCKS_PER_AD * 2 - 1)).toBe(1);
+    expect(count(BLOCKS_PER_AD * 2)).toBe(2);
+    expect(count(BLOCKS_PER_AD * 3)).toBe(3);
+    expect(count(200)).toBe(MAX_ADS);
+    const positions = adPositions([heading, ...body(199)]);
+    positions.slice(1).forEach((position, index) => {
+      expect(position - positions[index]).toBeGreaterThanOrEqual(MIN_BLOCKS_BETWEEN);
+    });
+  });
+});
+
+const contentDirectory = resolve(import.meta.dirname, "../../api/app/guides/content");
+
+describe.skipIf(!existsSync(contentDirectory))("the rules against the articles actually published", () => {
+  type Pack = { slug: string; locales: Record<string, { hero?: unknown; blocks: GuideBlock[] }> };
+  const documents = readdirSync(contentDirectory)
+    .filter((file) => file.endsWith(".json"))
+    .flatMap((file) => {
+      const pack = JSON.parse(readFileSync(resolve(contentDirectory, file), "utf8")) as Pack;
+      return Object.entries(pack.locales).map(([locale, document]) => ({ id: `${pack.slug}:${locale}`, document }));
+    });
+
+  it("gives every article of ordinary length at least one unit", () => {
+    // The rule this replaced placed a unit in the first slice only, and a third of the
+    // articles opened with a partner button too early to carry any ad at all.
+    const bare = documents.filter(({ document }) => {
+      const segments = splitGuideBlocks(document.blocks);
+      const body = segments.reduce((total, segment) => total + segment.blocks.length, 0);
+      const units = adsensePlacements(segments, { hasHero: Boolean(document.hero) })
+        .reduce((total, pieces) => total + pieces.length - 1, 0);
+      return body >= BLOCKS_PER_AD * 2 && units === 0;
+    });
+    expect(documents.length).toBeGreaterThan(0);
+    expect(bare.map(({ id }) => id)).toEqual([]);
   });
 });
 

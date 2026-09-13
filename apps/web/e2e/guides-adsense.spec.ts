@@ -36,6 +36,21 @@ const article = {
   },
 };
 
+const longPath = "/zh-TW/guides/howto/tokyo-long";
+const longArticle = {
+  ...article,
+  slug: "tokyo-long",
+  document: {
+    ...article.document,
+    title: "東京長篇攻略",
+    blocks: Array.from({ length: 4 }, (_, section) => [
+      { type: "heading", text: `第 ${section + 1} 節`, level: 2 },
+      // Several lines each, so the later units start well below the lazy-loading margin.
+      ...Array.from({ length: 10 }, (_, index) => paragraph(`第 ${section + 1} 節第 ${index + 1} 段內文。`.repeat(12))),
+    ]).flat(),
+  },
+};
+
 type Fixture = { origin: string; enabled: boolean; cmp: boolean; adRequests: string[] };
 
 /**
@@ -73,6 +88,7 @@ const test = base.extend<{ site: Fixture }>({
           ? { enabled: true, publisher_id: PUBLISHER, slot_id: SLOT, cmp_enabled: site.cmp }
           : { enabled: false, publisher_id: null, slot_id: null, cmp_enabled: false };
       } else if (url.pathname === "/api/v1/guides/howto/tokyo-esim") result = article;
+      else if (url.pathname === "/api/v1/guides/howto/tokyo-long") result = longArticle;
       else if (url.pathname.startsWith("/api/v1/guides/topics")) result = { items: [] };
       else if (url.pathname.startsWith("/api/v1/guides")) result = { articles: [], total: 0 };
       else if (url.pathname === "/api/v1/runtime/site-visibility") result = Object.fromEntries(siteFeatureKeys.map((key) => [`${key}_enabled`, true]));
@@ -124,7 +140,7 @@ const test = base.extend<{ site: Fixture }>({
   },
 });
 
-test("an article carries one labelled slot with its box already reserved", async ({ page, site }) => {
+test("a short article carries one labelled slot with its box already reserved", async ({ page, site }) => {
   await page.goto(`${canonical}${articlePath}`);
   const slot = page.locator("ins.adsbygoogle");
   await expect(slot).toHaveCount(1);
@@ -138,6 +154,62 @@ test("an article carries one labelled slot with its box already reserved", async
   expect((await slot.boundingBox())!.y).toBeGreaterThan(heading!.y);
   await expect.poll(() => site.adRequests.length, { timeout: 10_000 }).toBeGreaterThan(0);
   expect(site.adRequests.every((url) => url.includes(`client=${PUBLISHER}`))).toBe(true);
+});
+
+test("a long article carries more units, and only the first asks for an ad before the reader scrolls", async ({ page, site }) => {
+  await page.goto(`${canonical}${longPath}`);
+  const slots = page.locator("ins.adsbygoogle");
+  await expect(slots).toHaveCount(3);
+  await expect(page.getByText(AD_LABEL, { exact: true })).toHaveCount(3);
+  expect(await slots.evaluateAll((nodes) => nodes.map((node) => node.getAttribute("data-ad-slot"))))
+    .toEqual([SLOT, SLOT, SLOT]);
+  // The inert fixture never drains the queue, so its length is the number of requests made.
+  await expect.poll(() => page.evaluate(() => window.adsbygoogle?.length)).toBe(1);
+  // Scrolled to the way a reader gets there: each unit asks as it comes near.
+  await slots.nth(1).scrollIntoViewIfNeeded();
+  await expect.poll(() => page.evaluate(() => window.adsbygoogle?.length)).toBe(2);
+  await slots.nth(2).scrollIntoViewIfNeeded();
+  await expect.poll(() => page.evaluate(() => window.adsbygoogle?.length)).toBe(3);
+  expect(site.adRequests.every((url) => url.includes(`client=${PUBLISHER}`))).toBe(true);
+  // A unit Google leaves unfilled folds away, label and reserved box included.
+  const labels = page.getByText(AD_LABEL, { exact: true });
+  await slots.nth(2).evaluate((node) => node.setAttribute("data-ad-status", "unfilled"));
+  await expect(labels.nth(2)).toBeHidden();
+  await expect(labels.nth(1)).toBeVisible();
+});
+
+test("an anchor ad pushes the mobile navigation up instead of covering it", async ({ browser, site }) => {
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
+  const page = await context.newPage();
+  await page.route("**/*", async (route) => {
+    const url = new URL(route.request().url());
+    if (url.origin === ADSENSE_SCRIPT_ORIGIN) {
+      return route.fulfill({ contentType: "application/javascript", body: "/* isolated inert AdSense fixture */" });
+    }
+    if (["mokaair.com", "www.mokaair.com"].includes(url.hostname) || url.origin === site.origin) {
+      return proxyToSite(route, site.origin);
+    }
+    return route.abort().catch(() => undefined);
+  });
+  await page.goto(`${canonical}${articlePath}`);
+  const nav = page.locator(".app-bottom-nav");
+  await expect(nav).toBeVisible();
+  const before = (await nav.boundingBox())!;
+  // What the tag inserts for an anchor: a fixed unit on the bottom edge, above everything.
+  await page.evaluate(() => {
+    const anchor = document.createElement("ins");
+    anchor.className = "adsbygoogle adsbygoogle-noablate";
+    anchor.setAttribute("style", "display:block; position:fixed; left:0; right:0; bottom:0; height:90px; z-index:2147483647;");
+    document.body.append(anchor);
+  });
+  await expect.poll(async () => (await nav.boundingBox())!.y).toBeLessThanOrEqual(before.y - 90);
+  const after = (await nav.boundingBox())!;
+  expect(after.y + after.height).toBeLessThanOrEqual(844 - 90);
+  // Gone again, and the navigation returns to the edge.
+  await page.evaluate(() => document.querySelector("ins.adsbygoogle-noablate")?.remove());
+  await expect.poll(async () => (await nav.boundingBox())!.y).toBe(before.y);
+  await page.unrouteAll({ behavior: "ignoreErrors" });
+  await context.close();
 });
 
 test("without a consent message the tag is told to serve non-personalised ads", async ({ page, site }) => {

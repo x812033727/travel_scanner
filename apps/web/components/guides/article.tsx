@@ -1,7 +1,7 @@
 import { Fragment, type ReactNode } from "react";
 import { ArticleAdSlot } from "@/components/ads/article-ad-slot";
 import { ContentBlocks, ImageCreditLine, type ContentBlockLabels } from "@/components/content-blocks";
-import { adsenseSplit, type AdsenseConfig } from "@/lib/adsense";
+import { adsensePlacements, type AdsenseConfig } from "@/lib/adsense";
 import { DestinationAffiliateOptions } from "@/components/destination-affiliate-options";
 import { PartnerLink, type PartnerLinkLabels } from "@/components/guides/partner-link";
 import { Link } from "@/i18n/navigation";
@@ -91,13 +91,16 @@ export function GuideArticle({
     return block && link ? [{ segment, block, link }] : [];
   });
 
-  // One in-article unit, in the first slice only: past the hero (the LCP element) and with a
-  // run of body left before the editor's first partner button or partner link, since the first
-  // slice ends at whichever comes first. `null` — a short article, or one with no level-2
-  // heading — simply carries no ad.
-  const adSplit = adsense?.enabled && segments.length
-    ? adsenseSplit(segments[0].blocks, { hasHero: Boolean(document.hero) })
-    : null;
+  // Up to three in-article units, each kept clear of the hero (the LCP element), of every
+  // partner button or partner link and of the end panel — `adsensePlacements` has the rules.
+  // With advertising off every segment stays a single piece, so nothing is reserved anywhere.
+  const pieces = adsense?.enabled
+    ? adsensePlacements(segments, { hasHero: Boolean(document.hero) })
+    : segments.map((segment) => [{ blocks: segment.blocks, headingStart: segment.headingStart }]);
+  // The page-wide number of the first unit in each segment: every piece after a segment's
+  // first is preceded by one.
+  const firstAd = pieces.map((_, index) =>
+    pieces.slice(0, index).reduce((count, segmentPieces) => count + segmentPieces.length - 1, 0));
 
   // Partner buttons only where they are contextual: a destination the article belongs to,
   // a module its topics point at, and a notice that still applies. An expired fare deal
@@ -183,28 +186,27 @@ export function GuideArticle({
 
       {segments.map((segment, index) => {
         const island = islands.find((entry) => entry.segment === segment);
-        const split = index === 0 ? adSplit : null;
         const partnerIsland = partnerIslands.find((entry) => entry.segment === segment);
         return (
           <Fragment key={index}>
-            {split ? (
-              <>
-                <ContentBlocks blocks={split.before} labels={labels.blocks} headingStart={segment.headingStart} />
-                <ArticleAdSlot
-                  publisherId={adsense?.publisher_id ?? ""}
-                  slotId={adsense?.slot_id ?? ""}
-                  label={labels.adLabel}
-                  cmpEnabled={Boolean(adsense?.cmp_enabled)}
-                />
-                <ContentBlocks
-                  blocks={split.after}
-                  labels={labels.blocks}
-                  headingStart={segment.headingStart + split.headingStart}
-                />
-              </>
-            ) : segment.blocks.length ? (
-              <ContentBlocks blocks={segment.blocks} labels={labels.blocks} headingStart={segment.headingStart} />
-            ) : null}
+            {pieces[index].map((piece, pieceIndex) => (
+              <Fragment key={pieceIndex}>
+                {pieceIndex > 0 ? (
+                  <ArticleAdSlot
+                    publisherId={adsense?.publisher_id ?? ""}
+                    slotId={adsense?.slot_id ?? ""}
+                    label={labels.adLabel}
+                    cmpEnabled={Boolean(adsense?.cmp_enabled)}
+                    // Only the page's first unit asks for an ad as soon as it mounts; the rest
+                    // wait until the reader scrolls near them.
+                    lazy={firstAd[index] + pieceIndex - 1 > 0}
+                  />
+                ) : null}
+                {piece.blocks.length ? (
+                  <ContentBlocks blocks={piece.blocks} labels={labels.blocks} headingStart={piece.headingStart} />
+                ) : null}
+              </Fragment>
+            ))}
             {partnerIsland ? (
               <PartnerLink
                 link={partnerIsland.link}

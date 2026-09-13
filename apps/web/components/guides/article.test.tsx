@@ -1,11 +1,11 @@
 import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { GuideArticle } from "./article";
-import type { AdsenseConfig } from "@/lib/adsense";
+import { AD_CLEARANCE_BLOCKS, MIN_BLOCKS_BETWEEN, type AdsenseConfig } from "@/lib/adsense";
 
 vi.mock("@/components/ads/article-ad-slot", () => ({
-  ArticleAdSlot: (props: { publisherId: string; slotId: string; label: string; cmpEnabled: boolean }) => (
-    <div data-testid="ad-slot" data-publisher={props.publisherId} data-slot={props.slotId} data-cmp={String(props.cmpEnabled)}>{props.label}</div>
+  ArticleAdSlot: (props: { publisherId: string; slotId: string; label: string; cmpEnabled: boolean; lazy?: boolean }) => (
+    <div data-testid="ad-slot" data-publisher={props.publisherId} data-slot={props.slotId} data-cmp={String(props.cmpEnabled)} data-lazy={String(Boolean(props.lazy))}>{props.label}</div>
   ),
 }));
 
@@ -361,21 +361,58 @@ describe("GuideArticle advertising", () => {
     expect(slot.textContent).toBe("廣告");
     expect(slot.getAttribute("data-cmp")).toBe("false");
     expect(screen.getAllByTestId("ad-slot")).toHaveLength(1);
+    // The only unit on the page asks for its ad straight away.
+    expect(slot.getAttribute("data-lazy")).toBe("false");
     // After the first heading and its paragraph, so the hero (the LCP element) is untouched.
     const rendered = Array.from(slot.parentElement!.children).map((node) => node.textContent);
     expect(rendered.indexOf("廣告")).toBeGreaterThan(rendered.indexOf("開頭"));
   });
 
+  it("gives a long article more units, spaced out, with only the first requested on load", () => {
+    const sections = Array.from({ length: 4 }, (_, s) => [
+      { type: "heading" as const, text: `第 ${s + 1} 節`, level: 2 as const },
+      ...Array.from({ length: 10 }, (_, i) => para(`${s + 1}-${i}`)),
+    ]).flat();
+    draw({ document: { ...longBody, blocks: sections } }, { adsense: enabled });
+    const slots = screen.getAllByTestId("ad-slot");
+    expect(slots).toHaveLength(3);
+    expect(slots.map((slot) => slot.getAttribute("data-lazy"))).toEqual(["false", "true", "true"]);
+    // Every block still drawn exactly once, and the table of contents still lines up.
+    expect(screen.getAllByRole("heading", { level: 2 }).map((node) => node.id))
+      .toEqual(["section-1", "section-2", "section-3", "section-4"]);
+    const rendered = Array.from(slots[0].parentElement!.children).map((node) => node.textContent);
+    const at = rendered.flatMap((text, index) => (text === "廣告" ? [index] : []));
+    at.slice(1).forEach((index, i) => expect(index - at[i]).toBeGreaterThan(MIN_BLOCKS_BETWEEN));
+  });
+
   it("keeps its distance from the editor's partner buttons", () => {
-    // The body ends at the offer block, leaving too little after the cut to qualify. Policy
-    // forbids an ad beside an interactive element, and those buttons are the revenue.
+    // The first section is too short to hold a unit clear of the button that ends it, so the
+    // unit moves past the button, and still leaves room after it. Policy forbids an ad beside
+    // an interactive element, and those buttons are the revenue.
+    const { container, unmount } = draw({
+      document: {
+        ...document,
+        blocks: [
+          heading, para("開頭"), para("一段"),
+          { type: "offer" as const, module: "connectivity", destination_id: null, heading: null },
+          ...Array.from({ length: 12 }, (_, i) => para(`後段 ${i}`)),
+        ],
+      },
+    }, { adsense: enabled });
+    const children = Array.from(container.querySelector("article")!.children);
+    const button = children.findIndex((node) => node.querySelector("[data-testid='affiliate']"));
+    const slot = children.findIndex((node) => node.getAttribute("data-testid") === "ad-slot");
+    expect(button).toBeGreaterThan(-1);
+    expect(slot - button - 1).toBe(AD_CLEARANCE_BLOCKS);
+    unmount();
+    // Too little body after the button and the unit is simply left out.
     draw({
       document: {
         ...document,
         blocks: [
           heading, para("開頭"), para("一段"),
           { type: "offer" as const, module: "connectivity", destination_id: null, heading: null },
-          ...Array.from({ length: 8 }, (_, i) => para(`後段 ${i}`)),
+          ...Array.from({ length: 8 }, (_, i) => para(`再一次 ${i}`)),
         ],
       },
     }, { adsense: enabled });
