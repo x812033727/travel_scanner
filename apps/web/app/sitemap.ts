@@ -98,8 +98,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
    * section publishing one locale at a time:
    *
    * - `lastModified` is real. The comment above is true of a city guide and false of an
-   *   article: the API returns the actual publication date, and for a dated notice that
-   *   signal is the point.
+   *   article: the API returns when the version readers see went live (falling back to the
+   *   first publication for an older API), and for a corrected notice that signal is the point.
    * - The alternates carry only the locales an article is genuinely published in, never the
    *   full five. Advertising a translation nobody wrote is the one thing per-locale
    *   publication exists to prevent, and the article page's own hreflang agrees with this.
@@ -119,7 +119,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         MetadataRoute.Sitemap[number]["changeFrequency"]
       >,
       priority: 0.5,
-      lastModified: new Date(entry.published_at),
+      lastModified: new Date(entry.modified_at ?? entry.published_at),
       alternates: {
         languages: {
           ...Object.fromEntries(entry.locales.map((locale) => [locale, localeUrl(locale, path)])),

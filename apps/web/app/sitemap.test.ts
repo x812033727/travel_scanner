@@ -233,6 +233,18 @@ describe("guide articles in the sitemap", () => {
     expect(notice!.lastModified).toEqual(new Date("2026-09-10T00:00:00Z"));
   });
 
+  it("moves lastmod to the republication when the API reports one, so a corrected notice is recrawled", async () => {
+    const corrected = rows.map((row) => (
+      row.slug === "jr-pass-sale" && row.locale === "en" ? { ...row, modified_at: "2026-09-12T09:00:00Z" } : row
+    ));
+    const guides = guideEntries(await build(corrected));
+    expect(guides.find((entry) => entry.url.endsWith("/en/guides/intel/jr-pass-sale"))!.lastModified)
+      .toEqual(new Date("2026-09-12T09:00:00Z"));
+    // The sibling without one keeps its first publication date.
+    expect(guides.find((entry) => entry.url.endsWith("/zh-TW/guides/intel/jr-pass-sale"))!.lastModified)
+      .toEqual(new Date("2026-09-10T00:00:00Z"));
+  });
+
   it("adds no duplicate URL alongside the static routes, even if a row repeats", async () => {
     // The fixture's four translations are already distinct, so without the repeated row this
     // assertion cannot fail and the property it names goes unchecked.
