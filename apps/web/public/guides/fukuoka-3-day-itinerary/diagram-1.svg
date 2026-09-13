@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">福岡三天路線示意圖：福岡空港、博多、天神、太宰府、柳川、門司港 / Fukuoka 3-day route map</title>
+  <desc id="desc">地下鐵空港線由左到右串起大濠公園、天神、博多與福岡空港：大濠公園到天神 2 站 210 日圓，天神到博多 3 站 210 日圓，博多到福岡空港 2 站 260 日圓，天神到福岡空港 260 日圓。西鐵天神大牟田線從天神往南到西鐵二日市，換太宰府線約 6 分鐘到太宰府，全程約 35 分鐘、480 日圓，二日市到太宰府有不加價的觀光列車旅人；天神大牟田線繼續往南到西鐵柳川，960 日圓。JR 鹿兒島本線從博多往東北到小倉，再到門司港，博多出發約 1 小時 30 分，小倉到門司港約 15 分。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="80" y="80" font-size="40" font-weight="700" fill="#102A2B">福岡 3 日路線図　福岡空港・博多・天神・太宰府・柳川・門司港</text>
+  <text x="80" y="120" font-size="22" fill="#5C6B6B">Fukuoka 3-day route map · 2026 年 9 月依官網查證，西鉄票價為 2026 年 4 月調整後、地下鉄為 2026 年 4 月 1 日版料金表</text>
+
+  <!-- Subway Kuko Line: Ohori Park - Tenjin - Hakata - Fukuoka Airport -->
+  <line x1="330" y1="470" x2="1080" y2="470" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"/>
+  <!-- Nishitetsu Tenjin-Omuta Line: Tenjin - Futsukaichi - Yanagawa -->
+  <path d="M 560 470 L 640 660 L 520 800" fill="none" stroke="#6B4A3A" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Nishitetsu Dazaifu Line: Futsukaichi - Dazaifu -->
+  <path d="M 640 660 L 880 750" fill="none" stroke="#6B4A3A" stroke-width="8" stroke-linecap="round"/>
+  <!-- JR Kagoshima Main Line: Hakata - Kokura - Mojiko -->
+  <path d="M 860 470 L 1150 290 L 1330 190" fill="none" stroke="#2F6F9F" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Airport box -->
+  <g>
+    <rect x="1080" y="420" width="230" height="100" rx="24" fill="#0D6B68"/>
+    <text x="1195" y="462" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle">福岡空港</text>
+    <text x="1195" y="496" font-size="18" fill="#E6F2F1" text-anchor="middle">Fukuoka Airport · FUK</text>
+  </g>
+
+  <!-- Subway stations -->
+  <g>
+    <circle cx="330" cy="470" r="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+    <circle cx="560" cy="470" r="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+    <circle cx="860" cy="470" r="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+    <text x="330" y="420" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">大濠公園 Ohori Park</text>
+    <text x="330" y="515" font-size="17" fill="#5C6B6B" text-anchor="middle">環湖步道 · 福岡城跡</text>
+    <text x="560" y="420" font-size="28" font-weight="700" fill="#102A2B" text-anchor="middle">天神 Tenjin</text>
+    <text x="540" y="545" font-size="17" fill="#5C6B6B" text-anchor="end">西鉄福岡（天神）駅</text>
+    <text x="860" y="420" font-size="28" font-weight="700" fill="#102A2B" text-anchor="middle">博多 Hakata</text>
+    <text x="860" y="515" font-size="17" fill="#5C6B6B" text-anchor="middle">JR 博多駅 · 新幹線 · 地下鉄</text>
+    <text x="445" y="450" font-size="18" font-weight="700" fill="#0D6B68" text-anchor="middle">2 駅 · 210 日圓</text>
+    <text x="710" y="450" font-size="18" font-weight="700" fill="#0D6B68" text-anchor="middle">3 駅 · 210 日圓</text>
+    <text x="940" y="450" font-size="18" font-weight="700" fill="#0D6B68">2 駅 · 260 日圓</text>
+    <text x="740" y="545" font-size="17" fill="#5C6B6B" text-anchor="middle">天神 ⇄ 福岡空港 5 駅 · 260 日圓</text>
+    <text x="300" y="462" font-size="22" font-weight="700" fill="#0D6B68" text-anchor="end">地下鉄 空港線</text>
+    <text x="300" y="488" font-size="18" fill="#0D6B68" text-anchor="end">Subway Airport Line</text>
+  </g>
+
+  <!-- Nishitetsu stations -->
+  <g>
+    <circle cx="640" cy="660" r="16" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"/>
+    <circle cx="880" cy="750" r="16" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"/>
+    <circle cx="520" cy="800" r="16" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"/>
+    <text x="590" y="590" font-size="22" font-weight="700" fill="#6B4A3A" text-anchor="end">西鉄 天神大牟田線</text>
+    <text x="590" y="616" font-size="17" fill="#6B4A3A" text-anchor="end">Nishitetsu Tenjin-Omuta Line</text>
+    <text x="665" y="630" font-size="22" font-weight="700" fill="#102A2B">西鉄二日市 Nishitetsu-Futsukaichi</text>
+    <text x="665" y="654" font-size="17" fill="#5C6B6B">太宰府線に乗り換え Transfer</text>
+    <text x="740" y="730" font-size="17" fill="#6B4A3A" text-anchor="middle">西鉄 太宰府線</text>
+    <text x="915" y="742" font-size="26" font-weight="700" fill="#102A2B">太宰府 Dazaifu</text>
+    <text x="915" y="770" font-size="18" fill="#5C6B6B">天神から約 35 分 · 480 日圓 · 徒歩 5 分で天満宮</text>
+    <text x="915" y="796" font-size="17" fill="#5C6B6B">二日市 ⇄ 太宰府 観光列車「旅人」約 6 分・追加料金なし</text>
+    <text x="488" y="792" font-size="24" font-weight="700" fill="#102A2B" text-anchor="end">西鉄柳川 Nishitetsu-Yanagawa</text>
+    <text x="488" y="820" font-size="17" fill="#5C6B6B" text-anchor="end">天神から特急 · 960 日圓 · 川下り</text>
+  </g>
+
+  <!-- JR stations -->
+  <g>
+    <circle cx="1150" cy="290" r="16" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="8"/>
+    <circle cx="1330" cy="190" r="16" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="8"/>
+    <text x="980" y="360" font-size="22" font-weight="700" fill="#2F6F9F" text-anchor="end">JR 鹿児島本線</text>
+    <text x="980" y="386" font-size="17" fill="#2F6F9F" text-anchor="end">Kagoshima Main Line</text>
+    <text x="1185" y="282" font-size="24" font-weight="700" fill="#102A2B">小倉 Kokura</text>
+    <text x="1185" y="310" font-size="17" fill="#5C6B6B">門司港まで JR 約 15 分</text>
+    <text x="1362" y="182" font-size="26" font-weight="700" fill="#102A2B">門司港 Mojiko</text>
+    <text x="1362" y="210" font-size="17" fill="#5C6B6B">博多から約 1 時間 30 分</text>
+  </g>
+
+  <!-- Legend -->
+  <g font-size="20" fill="#102A2B">
+    <line x1="80" y1="875" x2="140" y2="875" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+    <text x="152" y="882">地下鉄 Subway</text>
+    <line x1="400" y1="875" x2="460" y2="875" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round"/>
+    <text x="472" y="882">西鉄 Nishitetsu</text>
+    <line x1="760" y1="875" x2="820" y2="875" stroke="#2F6F9F" stroke-width="10" stroke-linecap="round"/>
+    <text x="832" y="882">JR 九州 JR Kyushu</text>
+    <text x="1300" y="882" font-size="16" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+  </g>
+</svg>
