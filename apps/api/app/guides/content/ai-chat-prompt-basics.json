@@ -1,0 +1,340 @@
+{
+  "slug": "ai-chat-prompt-basics",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+      "description": "要 ChatGPT、Claude、Gemini 給出能用的答案，靠的不是魔法咒語，而是把問題問清楚。這篇整理 OpenAI、Anthropic、Google 官方指南都寫到的五個原則：給背景與角色、說清楚格式長度語氣、給範例、大任務拆步驟或先要大綱、要它先問你缺什麼並允許說不知道。每個原則配台灣生活情境的改前改後範例，並說明怎麼在同一個對話裡追問修改、四種會失敗的問法，附五原則對照表。",
+      "hero": {
+        "src": "/guides/ai-chat-prompt-basics/hero.jpg",
+        "alt": "一個寫著「把問題問清楚」的白色輸入框，周圍圍著五個不同顏色的小標籤，各自用簡單圖案代表角色、任務、格式、範例與追問，並以虛線連到輸入框",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "要 AI 聊天工具給出能用的答案，關鍵不在背什麼「魔法咒語」，而是把問題問清楚：給背景與角色、說清楚要什麼、給範例、把大任務拆開、要它先問你缺什麼。OpenAI、Anthropic、Google 三家的官方提示指南講法各異，但這五件事全都寫在裡面，換哪一個工具都通用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇不談 API、不談程式，每個原則配一組台灣生活裡會遇到的情境，改前改後對照著看：寫信給房東、跟主管請假、幫小孩出數學題、排旅遊行程、比較兩台吸塵器。讀完你會知道一則提示詞該放哪五個部件、答案不對時怎麼在同一個對話裡修，以及四種一看就會失敗的問法。文中引用的原則全部來自三家在 2026 年 9 月的官方文件。還沒決定要用哪一個工具的人，可以先看總覽。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 工具全景：聊天、搜尋、寫作、圖片工具怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+        },
+        {
+          "type": "heading",
+          "text": "原則一：先給背景，再給角色",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 的官方文件把模型比喻成一位聰明但剛到職的新同事：它不知道你的處境、你的習慣、這件事要拿去做什麼，你交代得越精確，成品越好。文件還給了一條黃金法則：把你的提示詞拿給一個不清楚狀況的同事看，他若看不懂，模型也看不懂。Google 的指南把一則好提示詞拆成角色、任務、背景、格式四個部分，並說任務裡的動詞是最重要的成分；OpenAI 的說法則是講清楚你要什麼、給誰看、為什麼重要。背景是你的處境與目的，角色是你希望它站在誰的立場說話，兩者都不用長，但缺了它就只能猜。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "改前：幫我寫一封信給房東。",
+            "改後：我在台北租一間套房，租約年底到期，想續約一年並維持原本的房租，理由是這兩年我從沒遲繳，屋內的小故障也都是我自己找人修的。請你站在一個有禮貌但立場清楚的租客角度，幫我寫一則要用 LINE 傳給房東的訊息，不用太正式，最後留一句方便房東回覆的話。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "改後版本多出來的不是字數，而是模型原本猜不到的東西：地點、期限、要求、理由、管道、口吻。請它解釋一個名詞也一樣，先說「我完全不懂電腦」或「我是會計，要跟客戶說明」，深度才會對。"
+        },
+        {
+          "type": "heading",
+          "text": "原則二：說清楚要什麼：格式、長度、語氣",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "三家指南都把「說明想要的輸出」列為基本功。Google 的文件建議直接寫出限制，例如「用一句話摘要」，以及想要的格式是表格、條列還是段落；Anthropic 的文件提醒要講「該做什麼」而不是「不該做什麼」，與其寫「不要用 Markdown」，不如寫「用連貫的段落寫」；OpenAI 的教學則建議先講清楚語氣與格式，也可以說你最在乎的是準確還是速度。你沒說，它就用預設值，而聊天工具的預設常常是一長串標題加條列，貼到 LINE 裡誰都不會這樣講話。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "改前：幫我寫請假訊息。",
+            "改後：幫我寫一則要傳給主管的請假訊息：下週三要陪家人回診，請事假一天。用 LINE 傳，三句話以內，語氣客氣但不用一直道歉，結尾提一句當天的工作已經交接給同事。用一般口語的段落寫，不要標題，不要條列。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "heading",
+          "text": "原則三：給它一個範例，比形容十句更準",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 的文件說範例是引導輸出格式、語氣與結構最可靠的方法之一，建議放 3 到 5 個，而且範例要貼近你真正的用途、彼此有點變化，免得它學到你沒打算教的模式；Google 的文件更直接，建議一律附上範例，並提醒範例的格式要一致，因為模型會照著範例的樣子回，範例太多反而會讓它只會模仿。生活裡的用法很簡單：你想要什麼樣子，就貼一個給它看。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "改前：幫我出十題國小數學題。",
+            "改後：幫我出十題國小三年級的數學應用題，難度跟這題差不多：小美有 24 顆糖果，平分給 6 位同學，每人拿到幾顆。請照這個格式：第一行是題目，第二行寫「答：」加上算式與答案。題目用生活情境，例如買東西、分點心、排隊，不要出到分數與小數。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "同樣的做法可以用在任何有樣板的事：貼一封你以前寫得不錯的信，說「照這封的語氣」；貼一段你們家群組的對話，說「用這種口氣講」。"
+        },
+        {
+          "type": "heading",
+          "text": "原則四：大任務拆步驟，或先要一份大綱",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 的教學寫得很白：請求有很多部分時，拆開來問，它才能給清楚而集中的答案。Google 的文件列出三種拆法：把不同的指令分成不同的提示詞、把上一步的輸出當下一步的輸入串起來、或把同類的事分開做再合併。Anthropic 的文件則說最常用的串接模式是先寫草稿、再請它照標準檢查、最後依檢查結果修改。對一般使用者，最省力的版本是「先要大綱，確認方向，再一段一段展開」。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "改前：幫我排東京五天行程，要住哪、吃什麼、怎麼搭車、預算多少都寫出來。",
+            "改後：我們一家四口，其中一位是七十多歲的長輩，明年春天要去東京五天四夜，住新宿，想走輕鬆路線、每天只排一個區域。請先只列五天的大方向：每天一個區域、一句話說為什麼這樣排，先不要細節。我確認方向之後，再請你一天一天展開。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "方向確認後，接著問「請展開第一天，含交通方式與大約的停留時間」，再問餐廳、再問預算，每一步都在同一個對話裡進行，它記得前面定下的條件。真正的交通、票價與營業時間，還是要以官方資訊為準，Mokaair 的旅遊攻略有整理過的版本。"
+        },
+        {
+          "type": "link",
+          "text": "Mokaair 旅遊攻略：交通、票券、行程整理",
+          "url": "https://mokaair.com/zh-TW/guides"
+        },
+        {
+          "type": "heading",
+          "text": "原則五：要它先問你缺什麼，也允許它說不知道",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "模型拿到資訊不足的問題時，多半不會停下來問，而是直接猜一個看起來合理的答案。Google 的 Gemini 文件建議在提示詞裡定義什麼情況它可以自行假設、什麼情況必須停下來向你確認，並可以要求它只用你提供的資料回答，沒寫的就明說沒有；Anthropic 的文件把「明確允許它說我不知道」列為降低幻覺的第一個方法，還建議請它為每個主張找出處，找不到就撤回。你在提示詞的最後多加兩句話，就能把「猜」變成「問」。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "改前：A 牌跟 B 牌的無線吸塵器哪一台比較好？",
+            "改後：我在考慮兩台無線吸塵器，兩台的型號與官網規格我貼在下面。家裡約三十坪、有養貓、大部分是木地板，偶爾要吸沙發。請先根據這些條件列出你會比較的面向；如果還需要其他條件才能判斷，例如預算或有沒有地毯，先問我再分析。只用我貼的規格來比較，規格表裡沒有的項目就寫「沒有資料」，不要用你的印象補。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "這一招對任何牽涉事實的問題都適用：請它先列出它假設了什麼、還缺什麼，你補完再讓它答。它回你「沒有資料」不是壞事，那正是你該去官網查的地方。下面這張圖把五個原則收成一則提示詞的五個部件，前四個是送出前放進去的內容，第五個是送出後怎麼接著修。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-chat-prompt-basics/diagram-1.svg",
+          "alt": "一則好提示詞的五個部件結構圖。左邊是一個大框代表送出前的提示詞，裡面由上而下疊著四塊：一、角色與背景（我在台北租套房，租約年底到期，請站在有禮貌但立場清楚的租客角度）；二、任務（幫我寫一則傳給房東的續約訊息，希望房租維持原價；缺什麼條件先問我，不確定就說不知道）；三、格式限制（用 LINE 傳、不用太正式、三句話以內、最後留一句方便回覆的話）；四、範例（語氣像這封，貼上你以前寫得不錯的訊息",
+          "width": 1600,
+          "height": 900,
+          "caption": "左邊四塊是送出前放進提示詞的內容，用寫信給房東的例子示範；右邊的迴圈是送出後的追問，答案不對就在同一個對話裡接著修。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "追問比重寫重要：在同一個對話裡修",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一次的答案不對很正常，重點是接下來怎麼做。三家指南在這一點上的講法幾乎一樣：OpenAI 的教學建議在對話中直接釐清或調整，不要整個重來；Google 的指南說要把它當成一場對話，用追問一步一步修；Anthropic 的文件提到的「草稿、檢查、修改」也是同一個迴圈。原因很簡單，前面你給的背景、範例、限制都還在這個對話裡，重寫等於把這些全部丟掉。追問時最有效的四種寫法："
+        },
+        {
+          "type": "list",
+          "items": [
+            "指出哪裡不對、只改那裡：「第二段太客氣了，改成直接一點，其他不動。」",
+            "補上剛才漏掉的條件：「忘了說，房東是長輩，稱呼改成王媽媽，語氣再軟一點。」",
+            "要它自己檢查：「請對照我一開始給的條件，逐一確認這份行程有沒有漏掉或超出預算。」",
+            "要它給選項：「這句話給我三種不同語氣的版本，我來挑。」"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "什麼時候該開新對話：對話已經很長、模型開始忘記前面的條件，或是你發現方向從一開始就錯了。原因在這篇有解釋：模型只看得到這個對話視窗裡的文字，塞太滿反而會漏。"
+        },
+        {
+          "type": "link",
+          "text": "大型語言模型是什麼：用白話解釋 token、上下文與幻覺",
+          "url": "https://mokaair.com/zh-TW/life/what-is-a-large-language-model"
+        },
+        {
+          "type": "paragraph",
+          "text": "常用的背景不必每次重打。ChatGPT 與 Claude 都有「專案」（Projects）功能，可以把說明與檔案放進去，之後在專案裡開的每個對話都會先讀到；Gemini 的對應做法是建立自訂的 Gem，Google 的說明頁直接寫著：Gem 指令的寫法跟寫好提示詞一樣，就是角色、任務、背景、格式四個部分。各工具怎麼設定，看各自的入門篇。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 新手入門：註冊、方案與第一次對話",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+        },
+        {
+          "type": "link",
+          "text": "Claude 新手入門：專案、檔案與第一次對話",
+          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+        },
+        {
+          "type": "link",
+          "text": "Gemini 新手入門：Gem、Google 帳號整合與第一次對話",
+          "url": "https://mokaair.com/zh-TW/life/gemini-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "常見錯誤：四種一看就會失敗的問法",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "一句話丟過去：「幫我寫信」「幫我排行程」。Google 的提示指南統計過，效果好的提示詞平均約 21 個字並附有相關背景，而多數人打的不到 9 個字。字少不是問題，缺的是背景與要求。",
+            "一次要求太多件事：住宿、餐廳、交通、預算、購物清單一次全要，它每一項都只能給你最泛的版本。拆開問，或先要大綱。",
+            "不給原文：要它改信卻不貼原信、要它摘要卻只給標題、要它比較卻不貼規格。它看不到你螢幕上的東西，只看得到你貼進對話裡的字。Anthropic 的文件還建議長資料放在提示詞最前面、問題放最後，在它針對長文件的測試裡，這樣做最多能讓回答品質提升 30%。",
+            "把它當搜尋引擎：直接問票價、營業時間、法規條文、藥品劑量，然後照著做。它是在猜最像答案的句子，不是在查資料庫；就算工具有連網功能，也要看它引用的來源是不是官方網站。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "heading",
+          "text": "五原則對照表",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "原則",
+            "一句話",
+            "改前",
+            "改後（精簡版）"
+          ],
+          "rows": [
+            [
+              "一、給背景與角色",
+              "說你是誰、處境與目的，要它站在誰的立場",
+              "幫我寫一封信給房東",
+              "我租約年底到期，想續約不漲租；站在有禮貌但立場清楚的租客角度，寫一則 LINE 訊息"
+            ],
+            [
+              "二、說清楚要什麼",
+              "格式、長度、語氣一次講完，講該做什麼",
+              "幫我寫請假訊息",
+              "給主管的 LINE 請假訊息，三句話以內，客氣但不過度道歉，用段落不用條列"
+            ],
+            [
+              "三、給範例",
+              "貼一個你要的樣子，它照著做",
+              "幫我出十題國小數學題",
+              "十題三年級應用題，難度像「24 顆糖平分給 6 人」，一行題目、一行答案"
+            ],
+            [
+              "四、拆步驟或先要大綱",
+              "一次只做一步，方向對了再展開",
+              "幫我排東京五天行程，住吃行預算都要",
+              "一家四口含長輩、住新宿、輕鬆路線，先只列五天大方向，確認後再逐日展開"
+            ],
+            [
+              "五、要它問缺什麼、允許說不知道",
+              "資訊不夠先問你，沒有資料就明說",
+              "A 牌跟 B 牌吸塵器哪台好",
+              "貼上兩台規格與家裡條件，先列比較面向，缺條件先問，規格沒寫的就寫沒有資料"
+            ]
+          ],
+          "caption": "五原則對照（2026 年 9 月依 OpenAI、Anthropic、Google 官方提示指南整理）。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "牽涉事實的回答，一定要自己查證",
+          "text": "允許它說「不知道」、要它只用你給的資料，能大幅減少它亂編，但 Anthropic 的文件說得很清楚，這些方法只能減少、不能消除幻覺。任何它「從記憶裡」拿出來的具體事實，包括價格、營業時間、法規、藥物劑量、書名與網址，都要回到官方來源確認。怎麼查、查哪裡，另有一篇專門講。"
+        },
+        {
+          "type": "link",
+          "text": "AI 幻覺與查證：怎麼確認它說的是真的",
+          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic 官方文件：Prompting best practices（新同事比喻、黃金法則、加背景與動機、範例 3 到 5 個、給角色、講該做什麼而不是不該做什麼、串接：草稿、檢查、修改、長資料放前面問題放最後最多提升 30%）",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Prompt engineering overview（提示工程技巧總覽入口）",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Reduce hallucinations（允許說「我不知道」、逐字引用、為每個主張找出處否則撤回、只用提供的資料，且只能減少不能消除）",
+          "url": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 官方文件：Prompt engineering（提示詞結構：身分、指令、範例、背景；少量範例；把請求拆成子任務）",
+          "url": "https://developers.openai.com/api/docs/guides/prompt-engineering",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Academy：Prompting（講清楚要什麼、給誰、為什麼；給背景；描述理想輸出；大任務拆小；設定優先順序；引導語氣與格式；在對話中調整而不是重來）",
+          "url": "https://academy.openai.com/public/clubs/work-users-ynjqu/resources/prompting",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Academy：Projects（ChatGPT 的專案可放背景、檔案與指令）",
+          "url": "https://academy.openai.com/public/clubs/work-users-ynjqu/resources/projects",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google Gemini API 官方文件：Prompt design strategies（清楚具體的指令、限制與格式、一律附範例且格式一致、範例太多會過度模仿、加背景、三種拆法、定義何時該停下來問、只用提供的資料否則明說沒有）",
+          "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google Workspace 官方頁：Writing effective AI prompts（角色、任務、背景、格式四部分；用自然語言、具體並迭代、簡潔、當成一場對話用追問修）",
+          "url": "https://workspace.google.com/resources/ai/writing-effective-prompts/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google：Gemini for Google Workspace Prompting guide 101，2024 年 10 月版（四部分、動詞是最重要的成分、有效提示詞平均約 21 個字而多數人不到 9 個字）",
+          "url": "https://services.google.com/fh/files/misc/gemini_for_workspace_prompt_guide_october_2024_digital_final.pdf",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google Gemini Apps 說明：Tips for creating custom Gems（Gem 指令的寫法與寫好提示詞相同：角色、任務、背景、格式）",
+          "url": "https://support.google.com/gemini/answer/15235603",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：What are projects?（專案可放專案指令與知識檔案）",
+          "url": "https://support.claude.com/en/articles/9517075-what-are-projects",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}
