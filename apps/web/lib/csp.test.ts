@@ -3,6 +3,24 @@ import { resolve } from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { CSP_BASELINE, buildStrictContentSecurityPolicy, createNonce } from "./csp";
 
+/** What every response outside the two advertising article routes carries, in full. */
+const STRICT_PRODUCTION = [
+  "default-src 'self'",
+  "script-src 'self' 'nonce-abc123' 'strict-dynamic' https://www.googletagmanager.com https://oapi.map.naver.com https://emrldtp.cc",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob: https:",
+  "font-src 'self' data:",
+  "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://oapi.map.naver.com https://*.map.naver.com https://*.pstatic.net https://emrldtp.cc https://*.tp.media https://*.travelpayouts.com",
+  "frame-src https://www.google.com https://www.stay22.com https://www.youtube-nocookie.com",
+  "worker-src 'self' blob:",
+  "manifest-src 'self'",
+  "media-src 'self'",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self' https:",
+  "frame-ancestors 'none'",
+].join("; ");
+
 describe("content security policy", () => {
   it("permits the exact Stay22 frame origin without allowing its scripts or parent connections", () => {
     const directives = buildStrictContentSecurityPolicy({ nonce: "n", production: true }).split("; ");
@@ -52,28 +70,41 @@ describe("content security policy", () => {
     expect(development).not.toContain("upgrade-insecure-requests");
   });
 
-  it("leaves every non-article response untouched when advertising is on", () => {
-    // The whole point of scoping this to article routes: `proxy.ts` passes `adsense: true`
-    // for nothing else, so the policy above is still what the rest of the site receives.
+  it("serves every non-article response this exact policy", () => {
+    // Pinned in full on purpose. Advertising is meant to change the policy for two article
+    // routes and nothing else, and an assertion like
+    // `build({adsense: false}) === build({})` would only prove the default parameter works —
+    // it would still pass if both had been widened together. This is the string the rest of
+    // the site gets, so widening it anywhere has to be a deliberate edit here.
+    vi.stubEnv("COMMUNITY_MEDIA_ORIGIN", "");
+    expect(buildStrictContentSecurityPolicy({ nonce: "abc123", production: true })).toBe(STRICT_PRODUCTION);
     expect(buildStrictContentSecurityPolicy({ nonce: "abc123", production: true, adsense: false }))
-      .toBe(buildStrictContentSecurityPolicy({ nonce: "abc123", production: true }));
+      .toBe(STRICT_PRODUCTION);
+    // Outside production the only difference is eval, and it is added in place rather than
+    // dragging any other source along with it.
+    expect(buildStrictContentSecurityPolicy({ nonce: "abc123", production: false }))
+      .toBe(STRICT_PRODUCTION.replace("https://emrldtp.cc", "https://emrldtp.cc 'unsafe-eval'"));
   });
 
-  it("relaxes eval, frames and connections only for an article page carrying ads", () => {
+  it("relaxes exactly three directives for an article page carrying ads, and no others", () => {
+    vi.stubEnv("COMMUNITY_MEDIA_ORIGIN", "");
+    const strict = buildStrictContentSecurityPolicy({ nonce: "abc123", production: true });
     const ads = buildStrictContentSecurityPolicy({ nonce: "abc123", production: true, adsense: true });
-    const directives = ads.split("; ");
+    const byName = (policy: string) =>
+      new Map(policy.split("; ").map((directive) => [directive.split(" ")[0], directive]));
+    const before = byName(strict), after = byName(ads);
+    // No directive appears or disappears — the relaxation is only ever a widening of three.
+    expect([...after.keys()]).toEqual([...before.keys()]);
+    expect([...before.keys()].filter((name) => before.get(name) !== after.get(name)))
+      .toEqual(["script-src", "connect-src", "frame-src"]);
     // Google documents that the ad code needs eval and that the domains it reaches change
     // without notice, so host allowlists are unsupported for frames and connections.
-    expect(ads).toContain("'unsafe-eval'");
-    expect(directives.find((value) => value.startsWith("script-src"))).toContain("https:");
-    expect(directives.find((value) => value.startsWith("frame-src"))).toContain("https:");
-    expect(directives.find((value) => value.startsWith("connect-src"))).toContain("https:");
-    // Relaxed, not abandoned: the nonce still gates which scripts may start the chain.
+    expect(after.get("script-src")).toBe(`${before.get("script-src")} 'unsafe-eval' https:`);
+    expect(after.get("connect-src")).toBe(`${before.get("connect-src")} https:`);
+    expect(after.get("frame-src")).toBe(`${before.get("frame-src")} https:`);
+    // Relaxed, not abandoned: the nonce still gates which scripts may start the chain, and
+    // nothing about framing, plugins or form targets moves.
     expect(ads).toContain("script-src 'self' 'nonce-abc123' 'strict-dynamic'");
-    expect(ads).toContain("default-src 'self'");
-    expect(ads).toContain("object-src 'none'");
-    expect(ads).toContain("base-uri 'self'");
-    expect(ads).toContain("frame-ancestors 'none'");
     expect(ads).not.toContain("upgrade-insecure-requests");
   });
 
