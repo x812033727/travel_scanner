@@ -11,16 +11,26 @@ from __future__ import annotations
 import json
 import re
 from datetime import date, datetime
-from typing import Literal, Self
+from typing import Annotated, Literal, Self
 from urllib.parse import urlsplit
 from uuid import UUID
 
-from pydantic import BaseModel, Field, field_validator, model_validator
+from pydantic import AfterValidator, BaseModel, Field, field_validator, model_validator
 
 from app.admin.schemas import AdminAuditView
+from app.affiliates.schemas import AffiliateModule
 from app.guides.publication import ArticleStatus
 from app.i18n import Locale
-from app.site_pages.schemas import ContentBlock, NonemptyText, StrictModel, plain_text
+from app.site_pages.schemas import (
+    HeadingBlock,
+    LinkBlock,
+    ListBlock,
+    NonemptyText,
+    ParagraphBlock,
+    StrictModel,
+    plain_text,
+    safe_http_url,
+)
 
 Kind = Literal["intel", "howto", "life"]
 # The kinds in the order the admin facets list them. Kept beside the Literal because the
@@ -71,10 +81,143 @@ class SourceRef(StrictModel):
         return value
 
 
+# --- the guide-only blocks ----------------------------------------------------
+#
+# Managed site documents keep the four shared blocks (heading, paragraph, list, link). An
+# article needs more to be worth reading -- a photo with its licence, a fare table, a
+# warning box, a partner button next to the paragraph that made the reader want one -- and
+# those live here rather than in the shared union, so a legal page can never carry them and
+# the site-pages editor never meets a block it has no fields for.
+
+PlainText = Annotated[str, AfterValidator(plain_text)]
+
+# Self-hosted only: `apps/web/public/guides/<slug>/<name>.<ext>`. A path rather than a URL,
+# so an article can never make the reader's browser fetch an image from somewhere else.
+IMAGE_SRC_PATTERN = re.compile(
+    r"^/guides/[a-z0-9]+(?:-[a-z0-9]+)*/[a-z0-9]+(?:-[a-z0-9]+)*\.(?:webp|jpg|png|svg)$"
+)
+# The hero doubles as the social-card image, and those crawlers do not render SVG.
+HERO_SRC_PATTERN = re.compile(
+    r"^/guides/[a-z0-9]+(?:-[a-z0-9]+)*/[a-z0-9]+(?:-[a-z0-9]+)*\.(?:webp|jpg|png)$"
+)
+MAX_IMAGE_SIDE = 4000
+MAX_TABLE_COLUMNS = 6
+MAX_TABLE_ROWS = 30
+
+
+def image_src(value: str) -> str:
+    if not IMAGE_SRC_PATTERN.match(value):
+        raise ValueError("image src must be a self-hosted /guides/<slug>/<name>.<ext> path")
+    return value
+
+
+def hero_src(value: str) -> str:
+    if not HERO_SRC_PATTERN.match(value):
+        raise ValueError("hero src must be a self-hosted raster image under /guides/")
+    return value
+
+
+class ImageCredit(StrictModel):
+    """Who made the picture and under what terms. Required for every photograph the site did
+    not take itself; a self-drawn diagram credits the site."""
+
+    author: NonemptyText = Field(max_length=120)
+    license: NonemptyText = Field(max_length=60)
+    source_url: str | None = Field(default=None, max_length=2000)
+
+    @field_validator("source_url")
+    @classmethod
+    def safe_source(cls, value: str | None) -> str | None:
+        return None if value is None or not value.strip() else safe_http_url(value.strip())
+
+
+class HeroImage(StrictModel):
+    src: Annotated[str, AfterValidator(hero_src)] = Field(max_length=200)
+    alt: NonemptyText = Field(max_length=200)
+    width: int = Field(ge=1, le=MAX_IMAGE_SIDE, strict=True)
+    height: int = Field(ge=1, le=MAX_IMAGE_SIDE, strict=True)
+    credit: ImageCredit | None = None
+
+
+class ImageBlock(StrictModel):
+    type: Literal["image"]
+    src: Annotated[str, AfterValidator(image_src)] = Field(max_length=200)
+    alt: NonemptyText = Field(max_length=200)
+    # Both sides are stored so the reader's browser reserves the box before the bytes arrive.
+    width: int = Field(ge=1, le=MAX_IMAGE_SIDE, strict=True)
+    height: int = Field(ge=1, le=MAX_IMAGE_SIDE, strict=True)
+    caption: PlainText = Field(default="", max_length=300)
+    credit: ImageCredit | None = None
+
+
+class TableBlock(StrictModel):
+    type: Literal["table"]
+    header: list[Annotated[NonemptyText, Field(max_length=120)]] = Field(
+        min_length=1, max_length=MAX_TABLE_COLUMNS
+    )
+    rows: list[list[Annotated[PlainText, Field(max_length=300)]]] = Field(
+        min_length=1, max_length=MAX_TABLE_ROWS
+    )
+    caption: PlainText = Field(default="", max_length=200)
+
+    @model_validator(mode="after")
+    def rectangular(self) -> Self:
+        if any(len(row) != len(self.header) for row in self.rows):
+            raise ValueError("every table row needs one cell per header column")
+        return self
+
+
+class CalloutBlock(StrictModel):
+    type: Literal["callout"]
+    tone: Literal["tip", "warning", "info"] = "tip"
+    title: PlainText = Field(default="", max_length=80)
+    text: NonemptyText = Field(max_length=2000)
+
+
+class OfferBlock(StrictModel):
+    """A partner button placed by the editor, next to the paragraph that earns it.
+
+    Which brands show is still the catalog's decision (an approved, verified destination
+    offer for that destination and module); the block only says where and for which module.
+    `destination_id` overrides the article's own, which is what lets a cross-destination
+    notice ("autumn leaves in Tokyo and Kyoto") point each section at its own city. The
+    catalog check happens in ``admin_service`` on write, not here: this model also validates
+    every stored revision on the public read path, and a destination retired from the
+    catalog must degrade to "no button", never to a 500.
+    """
+
+    type: Literal["offer"]
+    module: AffiliateModule
+    destination_id: str | None = Field(default=None, max_length=64)
+    heading: PlainText = Field(default="", max_length=120)
+
+    @field_validator("destination_id")
+    @classmethod
+    def normalize_destination(cls, value: str | None) -> str | None:
+        normalized = (value or "").strip().casefold()
+        return normalized or None
+
+
+GuideBlock = Annotated[
+    HeadingBlock
+    | ParagraphBlock
+    | ListBlock
+    | LinkBlock
+    | ImageBlock
+    | TableBlock
+    | CalloutBlock
+    | OfferBlock,
+    Field(discriminator="type"),
+]
+
+
 class GuideDocument(StrictModel):
     title: NonemptyText = Field(max_length=200)
     description: NonemptyText = Field(max_length=500)
-    blocks: list[ContentBlock] = Field(min_length=1, max_length=200)
+    # Optional, and absent from every revision written before it existed: a missing key is
+    # not an unknown one, so ``extra="forbid"`` still accepts the old rows.
+    hero: HeroImage | None = None
+    blocks: list[GuideBlock] = Field(min_length=1, max_length=200)
     sources: list[SourceRef] = Field(default_factory=list, max_length=20)
 
     @model_validator(mode="after")
@@ -87,6 +230,10 @@ class GuideDocument(StrictModel):
 class PublishedDocument(GuideDocument):
     version: int
     published_at: datetime
+    # When the version readers currently see went live. Moves on every republication where
+    # ``published_at`` deliberately does not, so a corrected notice can say so and the
+    # sitemap's ``lastmod`` can tell a crawler to come back.
+    modified_at: datetime
 
 
 # --- taxonomy -----------------------------------------------------------------
@@ -283,6 +430,7 @@ class PublicSummary(BaseModel):
     topics: list[TopicOption]
     title: str
     description: str
+    hero: HeroImage | None = None
     published_at: datetime
     valid_until: date | None
     featured: bool
@@ -317,6 +465,9 @@ class SitemapEntry(BaseModel):
     slug: str
     locale: Locale
     published_at: datetime
+    # The current public version's own timestamp: the honest ``lastmod``. Optional on the
+    # wire so a web layer built against the older shape keeps parsing the file.
+    modified_at: datetime | None = None
 
 
 class SitemapList(BaseModel):

@@ -74,6 +74,23 @@ class ListBlock(StrictModel):
     ordered: bool = False
 
 
+def safe_http_url(value: str) -> str:
+    """An absolute http(s) URL with a host and no credentials, whitespace or control bytes.
+
+    Shared by the link block here and the guide image credits, so one tightened rule cannot
+    reach one surface and miss the other.
+    """
+    if re.search(r"\s|[\x00-\x1f\x7f-\x9f\\]", value):
+        raise ValueError("unsafe link")
+    parsed = urlsplit(value)
+    if parsed.scheme not in {"http", "https"}:
+        raise ValueError("only HTTP and HTTPS links are supported")
+    if not parsed.hostname or parsed.username is not None or parsed.password is not None:
+        raise ValueError("link requires a host and must not contain credentials")
+    _ = parsed.port  # Reject malformed ports, including out-of-range values.
+    return value
+
+
 class LinkBlock(StrictModel):
     type: Literal["link"]
     text: NonemptyText = Field(max_length=200)
@@ -86,19 +103,16 @@ class LinkBlock(StrictModel):
             raise ValueError("unsafe link")
         parsed = urlsplit(value)
         if parsed.scheme in {"http", "https"}:
-            if not parsed.hostname or parsed.username is not None or parsed.password is not None:
-                raise ValueError("link requires a host and must not contain credentials")
-            _ = parsed.port  # Reject malformed ports, including out-of-range values.
-        elif parsed.scheme == "mailto":
+            return safe_http_url(value)
+        if parsed.scheme == "mailto":
             if parsed.netloc or parsed.query or parsed.fragment:
                 raise ValueError("mail links must contain only an email address")
             address = unquote(parsed.path, encoding="utf-8", errors="strict")
             if re.search(r"[\x00-\x1f\x7f-\x9f]", address):
                 raise ValueError("mail links must not contain encoded control characters")
             TypeAdapter(EmailStr).validate_python(address)
-        else:
-            raise ValueError("only HTTP, HTTPS and mailto links are supported")
-        return value
+            return value
+        raise ValueError("only HTTP, HTTPS and mailto links are supported")
 
 
 ContentBlock = Annotated[

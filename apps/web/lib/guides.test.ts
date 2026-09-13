@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { guideHref, guideListHref, guideSection, isExpired, isGuideKind, isGuideSummary, isPublishedGuide, isTravelGuideKind } from "./guides";
+import {
+  guideHeadings, guideHref, guideListHref, guideSection, isExpired, isGuideKind, isGuideSummary,
+  isPublishedGuide, isTravelGuideKind, readingMinutes, splitGuideBlocks, type GuideBlock,
+} from "./guides";
 
 const summary = {
   slug: "narita-to-tokyo", kind: "howto", destination_id: "tokyo", destination_label: "東京",
@@ -97,5 +100,93 @@ describe("response guards", () => {
 
   it("rejects sources that are not titled links", () => {
     expect(isPublishedGuide({ ...document, sources: [{ url: "https://example.test/" }] })).toBe(false);
+  });
+
+  const hero = {
+    src: "/guides/narita-to-tokyo/hero.jpg", alt: "Skyliner", width: 1600, height: 900,
+    credit: { author: "Mokaair", license: "© Mokaair", source_url: null },
+  };
+
+  it("accepts a hero that is absent, null or a self-hosted raster", () => {
+    expect(isPublishedGuide(document)).toBe(true);
+    expect(isPublishedGuide({ ...document, hero: null })).toBe(true);
+    expect(isPublishedGuide({ ...document, hero })).toBe(true);
+    expect(isGuideSummary({ ...summary, hero })).toBe(true);
+    expect(isGuideSummary({ ...summary, hero: null })).toBe(true);
+  });
+
+  it("rejects a hero that is a vector or hosted elsewhere, which the share card could not use", () => {
+    expect(isPublishedGuide({ ...document, hero: { ...hero, src: "/guides/narita-to-tokyo/hero.svg" } })).toBe(false);
+    expect(isGuideSummary({ ...summary, hero: { ...hero, src: "https://example.test/hero.jpg" } })).toBe(false);
+  });
+
+  it("accepts the guide-only blocks, including the editor's partner buttons", () => {
+    const blocks = [
+      { type: "image", src: "/guides/narita-to-tokyo/map.svg", alt: "地圖", width: 1600, height: 900 },
+      { type: "table", header: ["a"], rows: [["b"]] },
+      { type: "callout", tone: "tip", text: "x" },
+      { type: "offer", module: "transport", destination_id: null, heading: "" },
+    ];
+    expect(isPublishedGuide({ ...document, blocks })).toBe(true);
+  });
+
+  it("rejects a partner block for a module the catalog does not sell", () => {
+    const blocks = [{ type: "offer", module: "insurance", destination_id: null }];
+    expect(isPublishedGuide({ ...document, blocks })).toBe(false);
+  });
+
+  it("tolerates a document from an API that predates modified_at", () => {
+    expect(isPublishedGuide({ ...document, modified_at: null })).toBe(true);
+    expect(isPublishedGuide({ ...document, modified_at: "2026-09-12T00:00:00Z" })).toBe(true);
+    expect(isPublishedGuide({ ...document, modified_at: 20260912 })).toBe(false);
+  });
+});
+
+describe("reading the body", () => {
+  const blocks: GuideBlock[] = [
+    { type: "heading", level: 2, text: "怎麼買票" },
+    { type: "paragraph", text: "先決定住哪一區。" },
+    { type: "offer", module: "transport", destination_id: null, heading: "先買車票" },
+    { type: "heading", level: 2, text: "怎麼搭" },
+    { type: "heading", level: 3, text: "從第二航廈" },
+    { type: "paragraph", text: "跟著指標走。" },
+    { type: "offer", module: "activities", destination_id: "osaka-kyoto", heading: "" },
+    { type: "paragraph", text: "結語。" },
+  ];
+
+  it("cuts the body at every partner block and numbers headings across the cuts", () => {
+    const segments = splitGuideBlocks(blocks);
+    expect(segments).toHaveLength(3);
+    expect(segments[0].blocks.map((block) => block.type)).toEqual(["heading", "paragraph"]);
+    expect(segments[0].headingStart).toBe(0);
+    expect(segments[0].offer?.module).toBe("transport");
+    expect(segments[1].blocks.map((block) => block.type)).toEqual(["heading", "heading", "paragraph"]);
+    // One level-2 heading precedes this slice, so its own heading must become section-2.
+    expect(segments[1].headingStart).toBe(1);
+    expect(segments[1].offer?.destination_id).toBe("osaka-kyoto");
+    expect(segments[2].blocks.map((block) => block.type)).toEqual(["paragraph"]);
+    expect(segments[2].offer).toBeNull();
+  });
+
+  it("leaves a body without partner blocks as one slice", () => {
+    const segments = splitGuideBlocks([{ type: "paragraph", text: "x" }]);
+    expect(segments).toHaveLength(1);
+    expect(segments[0].offer).toBeNull();
+  });
+
+  it("lists the level-2 headings with the ids the renderer gives them", () => {
+    expect(guideHeadings(blocks)).toEqual([
+      { id: "section-1", text: "怎麼買票" },
+      { id: "section-2", text: "怎麼搭" },
+    ]);
+  });
+
+  it("estimates reading time by character for CJK and by word for the rest, never below a minute", () => {
+    const short = { title: "t", description: "d", blocks: [{ type: "paragraph" as const, text: "短" }], sources: [] };
+    expect(readingMinutes(short)).toBe(1);
+    const long = { ...short, blocks: [{ type: "paragraph" as const, text: "字".repeat(1000) }] };
+    expect(readingMinutes(long)).toBe(3);
+    const english = { ...short, blocks: [{ type: "paragraph" as const, text: Array(450).fill("word").join(" ") }] };
+    expect(readingMinutes(english)).toBe(3);
   });
 });
