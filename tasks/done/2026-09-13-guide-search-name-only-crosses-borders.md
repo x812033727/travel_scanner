@@ -1,13 +1,13 @@
 ---
 id: 2026-09-13-guide-search-name-only-crosses-borders
 title: 景點介紹搜尋只丟景點名字，河內玉山祠收到台灣玉山的文章
-status: review
+status: done
 priority: P1
 area: api
 owner: claude-opus-5
 claimed_at: 2026-09-13T12:31:30Z
 created_at: 2026-09-13T12:31:25Z
-completed_at:
+completed_at: 2026-09-13T17:42:36Z
 branch: claude/beautiful-hamilton-xb2g9q
 depends_on: []
 scope:
