@@ -129,10 +129,10 @@ export default async function LocaleLayout({ children, params, ads }: Props) {
                     leaving the previous session's answers in client state. */}
                 <HeaderSessionProvider
                   key={anonymousDocument ? "ads" : hasSession ? "session" : "anonymous"}
-                  hasSession={hasSession}
+                  hasSession={!anonymousDocument && hasSession}
                 >
                   <CommunityProvider state={community}>
-                  <SavedItemsProvider hasSession={hasSession}>
+                  <SavedItemsProvider hasSession={!anonymousDocument && hasSession}>
                     <div className="public-app-shell">
                       {ads?.enabled ? <AdsenseLoader publisherId={ads.publisher_id} cmpEnabled={ads.cmp_enabled} /> : null}
                       {children}
