@@ -1,0 +1,369 @@
+{
+  "slug": "ai-model-tiers-explained",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
+      "description": "打開 ChatGPT、Claude、Gemini 的模型選單，同一家就有三四個名字，差別其實只有兩個軸：旗艦、中階、輕量三階對應能力、速度、價格的取捨，加上「要不要先想一下」的推理開關。這篇依三家 2026 年 9 月 13 日的官網整理家族名單與每百萬 token 的 API 價格，說明免費版拿到哪一階，並用五種日常任務示範怎麼選：多數事情先用中階就夠。",
+      "hero": {
+        "src": "/guides/ai-model-tiers-explained/hero.jpg",
+        "alt": "三個由小到大的圓角方塊排成階梯，右側有一個指針偏向中間的速度表",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "打開模型選單看到 GPT-6 Astra、GPT-5.6 Sol、Claude Opus 5、Claude Sonnet 5、Gemini 3.8 Flash 這一串名字，多數人的第一個問題是「差在哪」。答案比想像中簡單：每一家都把模型分成旗艦、中階、輕量三階，越上面能力越強、也越慢越貴；另外還有一個獨立的軸，叫「要不要先想一下再答」。日常任務多半選中階就夠，覺得不夠再往上換。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇先講為什麼一家公司要出好幾個模型，再依 2026 年 9 月 13 日查證的官網現況，把 OpenAI、Anthropic、Google 三家的家族各自對到三階，用每百萬 token 的 API 價格比一比各階差幾倍，說明聊天工具的免費版與付費版分別拿到哪一階，最後給五種常見任務各配一階。模型名稱、定位與價格全部來自三家的官網，這類資料換得很快，讀的時候請以官網當下的頁面為準。"
+        },
+        {
+          "type": "heading",
+          "text": "為什麼一家會出好幾個模型：能力、速度、價格是三角關係",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "大型語言模型的能力大致跟它的規模，以及每次回答願意花的運算量成正比，而運算量直接反映在兩件事上：你要等多久，還有付多少錢。同一家公司把最大的模型拿去回答「幫我把這句話改順一點」，就像開一台拖車去便利商店買飲料，做得到，但慢又貴。所以各家都做出一組大小不同的模型：旗艦負責最難的事，中階負責大多數事，輕量負責大量、簡單、要快的事。三個指標拉成一個三角形，你拿到更強的能力，就要用速度或價格去換，目前沒有哪一階三樣都贏。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這也解釋了為什麼 API 價格會分「輸入」與「輸出」兩個數字：模型讀你送進去的每一個 token 都要算，寫出來的每一個 token 也要算，而寫比讀貴得多，三家旗艦的輸出價格都是輸入的五到六倍。token 是模型眼中的字，一個中文字通常不等於一個 token；如果這個詞還不熟，先看下面這篇再回來。"
+        },
+        {
+          "type": "link",
+          "text": "大型語言模型是什麼：用白話解釋 token、上下文與幻覺",
+          "url": "https://mokaair.com/zh-TW/life/what-is-a-large-language-model"
+        },
+        {
+          "type": "heading",
+          "text": "三家目前的家族：把名字對到三階",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 的模型頁在「Flagship models」底下列了四個文字模型（2026 年 9 月 13 日查證）。最上面是 GPT-6 Astra，官網說明是「最有能力的模型，為最困難的端到端工作而生」，每百萬 token 輸入 10 美元、輸出 50 美元。接著是 GPT-5.6 家族的三個：Sol 被稱為「複雜專業工作的旗艦模型」，輸入 4 美元、輸出 20 美元，官網註明這是至少到 2026 年 11 月 21 日的優惠價；Terra 的定位是「平衡智慧與成本」，輸入 2 美元、輸出 12 美元；Luna 是「為成本敏感的工作最佳化」，輸入 0.20 美元、輸出 1.20 美元。對到三階：Astra 是旗艦、Terra 是中階、Luna 是輕量，Sol 夾在旗艦與中階之間。四個模型的上下文視窗都是 105 萬 token。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 的模型頁目前列四個模型。旗艦是 Claude Fable 5.1，定位是「高要求的推理與長時程的代理工作」，輸入 10 美元、輸出 50 美元，官網把它的相對速度標為「較慢」；Claude Opus 5 的定位是「複雜的代理式程式開發與企業工作」，輸入 5 美元、輸出 25 美元，速度「中等」，官網建議多數工作先從 Opus 5 開始；Claude Sonnet 5 是「速度與智慧的最佳組合」，輸入 2 美元、輸出 10 美元，速度「快」；Claude Haiku 4.5 是「最快、接近前沿智慧的模型」，輸入 1 美元、輸出 5 美元，速度「最快」。對到三階：Fable 5.1 是旗艦，Opus 5 夾在旗艦與中階之間，Sonnet 5 是中階，Haiku 4.5 是輕量。Sonnet 5 的 2 美元與 10 美元原本是上市優惠價，官網已註明改為正式價，原定 2026 年 9 月 1 日的調漲取消。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 的階層直接寫在名字上：Pro、Flash、Flash-Lite。不過在 2026 年 9 月 13 日的 Gemini API 模型頁上，三階的版本號並不同步。Pro 這一階是 Gemini 3.1 Pro，仍標為預覽版，定位是「進階智慧、複雜問題解決與強大的代理與程式能力」，輸入 2 美元、輸出 12 美元（提示在 20 萬 token 以內的價格）；Flash 這一階已經到 Gemini 3.8 Flash，官網稱它是「最聰明的 Flash 模型」，輸入 0.75 美元、輸出 3.75 美元，並註明這個價格到 2026 年 12 月 31 日為止，2027 年 1 月 1 日起改為 1.50 美元與 7.50 美元；Flash-Lite 這一階是 Gemini 3.5 Flash-Lite，定位是「最快、最省成本的 3.5 模型」，輸入 0.30 美元、輸出 2.50 美元。對到三階就是 Pro 旗艦、Flash 中階、Flash-Lite 輕量。下面這張圖把三家的名字放到對應的階，左邊是三階在能力、速度、價格上的取捨。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-model-tiers-explained/diagram-1.svg",
+          "alt": "三階梯圖解：左側三個由上而下縮短的階梯分別標示旗艦、中階、輕量在能力、速度、價格上的高低，右側三欄把 OpenAI、Anthropic、Google 目前的模型名稱與每百萬 token 的輸入輸出價格放在對應的階",
+          "width": 1600,
+          "height": 900,
+          "caption": "由上往下看三階：旗艦最強也最貴、輕量最快也最便宜；同一列的三個名字就是三家在那一階的現行模型，價格是 2026 年 9 月 13 日官網的每百萬 token 標價，與下方表格相同。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 工具全景：聊天、搜尋、寫作、圖片工具怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+        },
+        {
+          "type": "heading",
+          "text": "「推理」是另一個軸：同一階也可能先想再答",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "三階講的是模型多大，推理講的是它答之前要不要先想。OpenAI 的說明是推理模型會先產生內部的推理 token 再給出回覆，API 上用 reasoning effort 控制想多少，等級從 none、minimal、low、medium、high、xhigh 到 max，GPT-6 Astra 不接受 none，也就是一定會想。Anthropic 把這件事叫 thinking，Opus 5、Sonnet 5、Fable 5.1 預設都開著「自適應思考」，由模型自己決定要不要想、想多深，再用 effort 參數調整整體投入的力氣，Fable 5.1 的思考是常開的。Google 的說法是「使用思考模型時，Gemini 會先在內部推理再回應」，目前 Gemini 3 系列的 Pro、Flash、Flash-Lite 都支援，用 thinking level 從 minimal 到 high 調整，3.5 Flash-Lite 預設是 minimal。"
+        },
+        {
+          "type": "paragraph",
+          "text": "所以選模型其實是兩個決定：先選階（多大），再決定要不要開推理（想多久）。中階開推理，很多時候比旗艦不開推理更划算，因為思考用掉的 token 也是按輸出計價，開在便宜的模型上花得少。Anthropic 的選模指南直接寫：調整 effort 常常比換模型更好用。推理什麼時候值得開、開了會慢多少，另有一篇細講。"
+        },
+        {
+          "type": "link",
+          "text": "推理模型是什麼：什麼時候該讓 AI 多想一下",
+          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+        },
+        {
+          "type": "heading",
+          "text": "API 價格：用每百萬 token 比一比",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把三家的旗艦與輕量放在一起看，差距不是幾成，而是好幾倍。OpenAI 的 GPT-6 Astra 對 GPT-5.6 Luna，輸入是 50 倍、輸出約 42 倍；Anthropic 的 Claude Fable 5.1 對 Claude Haiku 4.5，輸入與輸出都是 10 倍；Google 的 Gemini 3.1 Pro 對 Gemini 3.5 Flash-Lite，輸入約 6.7 倍、輸出約 4.8 倍。中階則大致落在旗艦的五分之一到二分之一之間。這些倍數用官網標價算出來，各家另有批次處理與快取折扣，例如 Anthropic 的批次 API 打五折，實際帳單會再低一些。"
+        },
+        {
+          "type": "paragraph",
+          "text": "下表把三家各階的名稱、官網定位與標價整理在一起，價格是每百萬 token 的美元標準價，不含折扣。Sol 與 Opus 5 各自夾在旗艦與中階之間，一併列出方便對照。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "公司",
+            "階層",
+            "模型",
+            "官網定位",
+            "輸入（美元／百萬 token）",
+            "輸出（美元／百萬 token）"
+          ],
+          "rows": [
+            [
+              "OpenAI",
+              "旗艦",
+              "GPT-6 Astra",
+              "最有能力的模型，為最困難的端到端工作而生",
+              "10",
+              "50"
+            ],
+            [
+              "OpenAI",
+              "旗艦與中階之間",
+              "GPT-5.6 Sol",
+              "複雜專業工作的旗艦模型；優惠價至少到 2026 年 11 月 21 日",
+              "4",
+              "20"
+            ],
+            [
+              "OpenAI",
+              "中階",
+              "GPT-5.6 Terra",
+              "平衡智慧與成本",
+              "2",
+              "12"
+            ],
+            [
+              "OpenAI",
+              "輕量",
+              "GPT-5.6 Luna",
+              "為成本敏感的工作最佳化",
+              "0.20",
+              "1.20"
+            ],
+            [
+              "Anthropic",
+              "旗艦",
+              "Claude Fable 5.1",
+              "高要求的推理與長時程代理工作；相對速度較慢",
+              "10",
+              "50"
+            ],
+            [
+              "Anthropic",
+              "旗艦與中階之間",
+              "Claude Opus 5",
+              "複雜的代理式程式開發與企業工作；官網建議多數工作從這裡開始",
+              "5",
+              "25"
+            ],
+            [
+              "Anthropic",
+              "中階",
+              "Claude Sonnet 5",
+              "速度與智慧的最佳組合",
+              "2",
+              "10"
+            ],
+            [
+              "Anthropic",
+              "輕量",
+              "Claude Haiku 4.5",
+              "最快、接近前沿智慧的模型",
+              "1",
+              "5"
+            ],
+            [
+              "Google",
+              "旗艦",
+              "Gemini 3.1 Pro（預覽版）",
+              "進階智慧、複雜問題解決；此為提示 20 萬 token 以內的價格",
+              "2",
+              "12"
+            ],
+            [
+              "Google",
+              "中階",
+              "Gemini 3.8 Flash",
+              "最聰明的 Flash 模型；此價格至 2026 年 12 月 31 日，2027 年 1 月 1 日起 1.50／7.50",
+              "0.75",
+              "3.75"
+            ],
+            [
+              "Google",
+              "輕量",
+              "Gemini 3.5 Flash-Lite",
+              "最快、最省成本的 3.5 模型",
+              "0.30",
+              "2.50"
+            ]
+          ],
+          "caption": "三家 API 標準價（美元／每百萬 token），2026 年 9 月 13 日依 OpenAI、Anthropic、Google 官網整理；不含批次與快取折扣，實際請以官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "聊天工具裡的模型選單：免費版拿到哪一階",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPT 的說明中心寫明，免費版與 Go 方案的預設模型是 GPT-5.6 Luna，也就是輕量階；免費使用者可以按「Think」讓它多想一下，但用的仍然是 Luna。付費方案的 Instant 模式改由 GPT-5.6 Sol 驅動，並多了一條推理滑桿，可選 Medium、High、Extra High 三個等級；Pro 選項則是 GPT-5.6 Sol Pro，符合條件的方案還有 GPT-6 Pro。方案價格依 OpenAI 的官方公告，Go 每月 8 美元、Plus 每月 20 美元、Pro 每月 200 美元，另有每月 100 美元的 Pro 級距；官網在 2026 年 9 月 10 日公告暫停 200 美元 Pro 方案的新申請與升級，既有訂閱不受影響。換句話說，免費版拿到的是輕量，付費買的是中上階與推理等級。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude 的定價頁寫得很直接：免費方案可以用 Sonnet 與 Haiku，也就是中階與輕量；Pro 方案月繳每月 20 美元、年繳折合每月 17 美元，加上 Opus，Fable 模型則以用量點數另計；Max 方案每月 100 美元起，分 5 倍與 20 倍兩種用量，Fable 模型最多可用到每週額度的一半。也就是免費版就能用到中階，付費買的是旗艦與更多用量。Claude 的選單在介面上哪裡、怎麼切換，入門篇有說明。"
+        },
+        {
+          "type": "link",
+          "text": "Claude 新手入門：註冊、介面與第一次對話",
+          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemini 應用程式的訂閱頁（2026 年 9 月 13 日）寫免費版「可使用 3.6 Flash」並「不定量地使用 3.1 Pro」，也就是免費版就有中階，旗艦能用但額度不固定；Google AI Plus 每月 4.99 美元，用量是免費版的 2 倍；Google AI Pro 每月 19.99 美元，用量是免費版的 4 倍，對 Pro 模型有更高的使用額度；Google AI Ultra 每月 99.99 美元起，用量最高到 Pro 方案的 20 倍，並獨有 Deep Think 模式。Gemini 的說明中心另外寫到，用量上限每 5 小時刷新一次直到用完每週額度，付費方案用完額度時可以改用 Flash-Lite 繼續聊；上下文長度也依方案不同，免費版 3.2 萬 token、AI Plus 12.8 萬、AI Pro 與 AI Ultra 100 萬。訂閱頁上同時出現「3.1 Pro」與「Gemini 3 Pro」兩種寫法，實際拿到哪個版本以官網為準。三家免費與付費方案的完整差異，另有一篇整理。"
+        },
+        {
+          "type": "link",
+          "text": "AI 免費版與付費版差在哪：2026 年三家方案比較",
+          "url": "https://mokaair.com/zh-TW/life/ai-free-vs-paid-plans-2026"
+        },
+        {
+          "type": "heading",
+          "text": "怎麼選：五種常見任務各配一階",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把上面的規則收成一句話：先想這件事有多難、要多快、要做幾次，再對到一階。Anthropic 的選模指南提供了兩條路，一條是從 Haiku 4.5 這種快又便宜的模型開始、不夠再升級，一條是從 Opus 5 開始、之後再往下省；對一般使用者，從中階開始是這兩條路的折衷。下面五種日常任務是多數人最常遇到的情況。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "改信、潤稿、翻譯一段文字：中階。原料都在你貼進去的文字裡，模型只是重新組合，Sonnet 5、GPT-5.6 Terra、Gemini 3.8 Flash 這一階綽綽有餘，回得也快。",
+            "整理會議記錄、把長文件摘成重點：中階，文件很長或要交叉比對時把推理打開。要它引用原文、不要自己補內容，摘要才不會多出原文沒有的東西。",
+            "寫程式、除錯、分析一份試算表：中階先開推理試一次，卡住再換旗艦。程式與數學是推理最有感的領域，三家的推理說明都拿這兩類當例子。",
+            "多步驟的研究、要它自己跑很久的任務、一次讀幾十份文件：旗艦。這是三家對旗艦的共同定位，也是價格差距真正值回票價的地方。",
+            "大量、重複、每次都很簡單的事，例如幾百封信分類、上千筆資料貼標籤、抓固定格式：輕量。單價低、速度快，而且這類任務用旗艦也不會做得更好。查資料類的問題也一樣，可靠度看連網搜尋到的網頁，不看模型多大。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先用中階，覺得不夠再換旗艦",
+          "text": "打開選單先選中階：Sonnet 5、GPT-5.6 Terra、Gemini 3.8 Flash 這一階，能力夠、回得快、額度用得慢。同一個問題答得不理想，先開推理再問一次，還不行再換旗艦，換了之後把原本的對話貼過去即可。輕量模型留給大量、簡單、要快的事，例如分類、貼標籤、抓格式，這類任務用旗艦不會更好，只會更慢更貴。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 官方文件：Models（Flagship models 四個模型的名稱、定位與上下文視窗）",
+          "url": "https://developers.openai.com/api/docs/models",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 官方文件：Pricing（GPT-6 Astra、GPT-5.6 Sol／Terra／Luna 每百萬 token 價格、Sol 優惠價期限）",
+          "url": "https://developers.openai.com/api/docs/pricing",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 官方文件：Reasoning models（推理 token、reasoning effort 等級、GPT-6 Astra 不支援 none）",
+          "url": "https://developers.openai.com/api/docs/guides/reasoning",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：GPT-5.6 and GPT-6 Pro in ChatGPT（免費與 Go 預設 Luna、Think、付費方案 Sol 與推理滑桿、Pro 選項）",
+          "url": "https://help.openai.com/en/articles/20001354-gpt-56-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 官方公告：Introducing ChatGPT Go（Go 每月 8 美元、Plus 20 美元、Pro 200 美元）",
+          "url": "https://openai.com/index/introducing-chatgpt-go/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：About ChatGPT Pro plans（Pro 100 美元級距、2026 年 9 月 10 日起暫停 200 美元方案新申請）",
+          "url": "https://help.openai.com/en/articles/9793128-about-chatgpt-pro-plans",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Models overview（Fable 5.1、Opus 5、Sonnet 5、Haiku 4.5 的定位、相對速度、價格、思考模式）",
+          "url": "https://platform.claude.com/docs/en/models/overview",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Pricing（各模型每百萬 token 價格、批次 API 五折、Sonnet 5 優惠價改為正式價）",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Choosing the right model（效率優先與能力優先兩條路、調整 effort 常比換模型好用）",
+          "url": "https://platform.claude.com/docs/en/about-claude/models/choosing-a-model",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Thinking（自適應思考、預設開啟的模型、effort 參數）",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/thinking",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 官方定價頁（免費方案 Sonnet 與 Haiku、Pro 每月 17 或 20 美元、Max 每月 100 美元起）",
+          "url": "https://claude.com/pricing",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Choose a Claude plan（Pro 每月 20 美元或每年 200 美元、Max 5 倍與 20 倍）",
+          "url": "https://support.claude.com/en/articles/11049762-choose-a-claude-plan",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Claude Fable models on your plan（付費方案才有 Fable、Max 最多每週額度一半、Pro 以用量點數計費）",
+          "url": "https://support.claude.com/en/articles/15424964-claude-fable-models-on-your-plan",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google Gemini API 官方文件：Models（Gemini 3.1 Pro 預覽版、3.8 Flash、3.5 Flash-Lite 的定位）",
+          "url": "https://ai.google.dev/gemini-api/docs/models",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google Gemini API 官方文件：Pricing（3.1 Pro、3.8 Flash、3.5 Flash-Lite 每百萬 token 價格與 2027 年調價）",
+          "url": "https://ai.google.dev/gemini-api/docs/pricing",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google Gemini API 官方文件：Thinking（支援思考的模型、thinking level 等級與預設值）",
+          "url": "https://ai.google.dev/gemini-api/docs/thinking",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google Gemini 官方訂閱頁（免費版 3.6 Flash 與 3.1 Pro、AI Plus 4.99 美元、AI Pro 19.99 美元、AI Ultra 99.99 美元起、Deep Think）",
+          "url": "https://gemini.google/subscriptions/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Gemini 應用程式說明：Gemini Apps limits and upgrades（用量每 5 小時刷新、用完改用 Flash-Lite、各方案上下文長度）",
+          "url": "https://support.google.com/gemini/answer/16275805",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}
