@@ -1,7 +1,7 @@
 ---
 id: 2026-09-13-web-upstream-keepalive-502
 title: nginx 重用 Next.js 剛關掉的閒置連線，POST 零星回 502
-status: in-progress
+status: review
 priority: P1
 area: ops
 owner: claude-opus-5
@@ -149,6 +149,12 @@ zcat -f /var/log/nginx/error.log* | grep 'upstream: "http://127.0.0.1:8091' \
 沒有被 include，留著無害。compose 那半跟著部署腳本的回滾一起還原。
 
 ## Notes
+
+### 狀態與收尾
+
+- repo 端的修正在 PR #456（https://github.com/x812033727/travel_scanner/pull/456）。
+- 合併時正式機兩半都還沒上線。合併前的最後一個 commit 應該把這張票改成 `blocked`，理由寫「等站主同意部署與上 nginx」，
+  這樣它還留在 board 上，但不佔住 `ops/nginx`。上機並照 How to verify 驗證完，再執行 `done`。
 
 ### 正式機上查到的事（2026-09-13，唯讀）
 
