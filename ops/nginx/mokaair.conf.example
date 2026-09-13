@@ -10,7 +10,9 @@
 
 upstream mokaair_web {
     server 127.0.0.1:8091;
-    keepalive 32;
+    # Pool size and idle timeout. The timeout has to stay below the Next.js server's own, or
+    # POSTs fail with a 502 now and then; the snippet says why.
+    include /etc/nginx/snippets/mokaair-upstream-keepalive.conf;
 }
 
 # --- Canonical origin -------------------------------------------------------------------

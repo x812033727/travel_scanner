@@ -23,6 +23,16 @@ PROVIDER_LOCALES: dict[str, dict[Locale, str]] = {
         "zh-TW": "zh-tw",
         "zh-CN": "zh-cn",
     },
+    # Klook's own hreflang set on a product page, which keeps one slug per product and
+    # varies only this path segment. "en" has no unqualified form there -- every English
+    # alternate is a country edition -- so en-US stands in for the site's generic English.
+    "klook": {
+        "en": "en-US",
+        "ja": "ja",
+        "ko": "ko",
+        "zh-TW": "zh-TW",
+        "zh-CN": "zh-CN",
+    },
     "skyscanner": {locale: locale for locale in LOCALES},
 }
 

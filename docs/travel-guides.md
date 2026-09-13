@@ -630,9 +630,10 @@ unadvertised. Worth splitting only if the combined count approaches ~800.
 
 ## Advertising
 
-Article pages — and only article pages — can carry one Google AdSense unit. Everything about
-it is off by default; `docs/adsense-feasibility.md` is the full evaluation and records the
-owner's decisions.
+Article pages — and only article pages — can carry Google AdSense: up to three in-article
+units, plus whatever overlay formats (anchor, vignette, Multiplex) the AdSense account's Auto
+ads settings turn on for the same tag. Everything about it is off by default;
+`docs/adsense-feasibility.md` is the full evaluation and records the owner's decisions.
 
 - **Where.** `/{locale}/guides/{intel,howto}/{slug}` and `/{locale}/life/{slug}`, decided by
   `isAdsenseArticlePath` (`apps/web/lib/adsense.ts`). Hubs and listings are "no content"
@@ -648,16 +649,33 @@ owner's decisions.
   screen, and the layout decides whether to load the tag before the page gets to say so.
   Advertising on a no-content screen is exactly what the programme policies forbid.
   `getGuideArticle` is React-cached, so the layout and the page share one read.
-- **What.** One in-article unit, placed after the first level-2 heading and its first
-  paragraph, never above the hero (the LCP element) and never within
-  `MIN_BLOCKS_AFTER` blocks of an `offer` or `partner_link` block — both end the first slice,
-  so the same clearance applies to either. The placement policies forbid an ad beside an
-  interactive element, and those partner buttons and links are the revenue it must not eat;
-  an ad beside a partner link would also blur which of the two is the site's own
-  recommendation. A short article gets none. A hero is optional and is most of what separates
-  the headline from the first section, so an article without one needs
-  `MIN_BLOCKS_BEFORE_WITHOUT_HERO` of body above the slot instead — otherwise the ad can be
-  the first thing in the opening viewport.
+- **What.** In-article units, all sharing the one configured slot id, placed by
+  `adsensePlacements` (`apps/web/lib/adsense.ts`):
+  - The first is no earlier than after the first level-2 heading and its first paragraph,
+    so never above the hero (the LCP element). A hero is optional and is most of what
+    separates the headline from the first section, so an article without one needs
+    `MIN_BLOCKS_BEFORE_WITHOUT_HERO` of body above it instead — otherwise the ad can be the
+    first thing in the opening viewport.
+  - Every unit keeps `AD_CLEARANCE_BLOCKS` of body between itself and any `offer` or
+    `partner_link` block on either side, and before the end of the body, where the automatic
+    partner panel follows. The placement policies forbid an ad beside an interactive element,
+    and those partner buttons and links are the revenue it must not eat; an ad beside a
+    partner link would also blur which of the two is the site's own recommendation.
+  - A unit only follows a paragraph or a list, never a heading, an image or a table.
+  - `MIN_BLOCKS_AFTER` blocks must follow the first unit, so a short article gets none;
+    units are `MIN_BLOCKS_BETWEEN` blocks apart, one per `BLOCKS_PER_AD` blocks of body, at
+    most `MAX_ADS`.
+  - The first unit requests its ad on mount; the others wait until they are within about a
+    screen of the viewport (`ArticleAdSlot`'s `lazy`). A unit Google leaves unfilled
+    (`data-ad-status="unfilled"`) collapses instead of keeping an empty reserved box.
+- **Overlay formats.** Anchor, vignette and Multiplex come from the AdSense account's Auto
+  ads settings, not from this code; in-page Auto ads stay off there because they could land
+  beside a partner button and reserve no space. The tag is only loaded on article pages, so
+  nothing else can show them. An anchor sits above everything, so `AnchorAdOffset`
+  (`apps/web/components/ads/anchor-ad-offset.tsx`) measures how much of the top or bottom
+  edge it covers — from geometry, not the tag's undocumented attributes — and `globals.css`
+  moves the mobile bottom navigation, the sticky header and the page's bottom padding out
+  of its way.
 - **Personalisation.** Non-personalised ads unless `adsense_cmp_enabled` says a
   Google-certified consent message ("Privacy & messaging") is published in the AdSense
   account; then the reader's own answer decides, and the tag loads and shows that message

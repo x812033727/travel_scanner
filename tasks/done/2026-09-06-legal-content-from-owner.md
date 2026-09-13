@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-legal-content-from-owner
 title: 隱私權政策、服務條款與聯絡方式的內容要由擁有者提供
-status: review
+status: done
 priority: P1
 area: docs
 owner: claude-fable-5-1
 claimed_at: 2026-09-12T04:59:05Z
 created_at: 2026-09-06T19:44:10Z
-completed_at:
+completed_at: 2026-09-13T11:48:56Z
 branch: claude/legal-content-handling-71d3a2
 depends_on: []
 scope:
@@ -36,13 +36,13 @@ scope:
 
 ## Definition of done
 
-- [ ] `/privacy` 有真的隱私權政策，五個語系。
-- [ ] `/terms` 有真的服務條款，五個語系。
-- [ ] `/contact` 有一個真的可以聯絡到人的方式。
+- [x] `/privacy` 有真的隱私權政策，五個語系。
+- [x] `/terms` 有真的服務條款，五個語系。
+- [x] `/contact` 有一個真的可以聯絡到人的方式。
 - [x] 三個頁面都不再顯示 `footerPendingTitle` / `footerPendingBody` / `footerContactBody`，
       而且那三個 message 鍵被刪掉（留著就會爛掉）。
 
-前三格要等正式站發布才能打勾；條文本身已經寫好並經站主批准，見下一節。
+前三格在 2026-09-13 正式站發布後打勾（連同 `/about`，四頁五語系共 20 份），見「正式站發布結果」一節。
 
 ## Steps
 
@@ -89,6 +89,41 @@ scope:
 模型做不到的部分：auto mode 擋掉正式站的 psql `UPDATE`／`INSERT`、把腳本送進 api 容器、
 以及從瀏覽器頁面對 admin API 發 `fetch`；唯一開放的路是站主登入後由模型驅動後台表單，
 而 2026-09-12 Claude in Chrome 沒有連線。所以這 20 次要嘛站主自己按，要嘛登入後再叫模型按。
+
+## 正式站發布結果（2026-09-13，claude-opus-5）
+
+上面「表是空的」的盤點當天就過期了：20 筆在 **2026-09-12 12:14 UTC 已經初始化**，繁中四頁
+12:15–12:16 另存了生效日期 `2026-09-01`，但一份都沒發布。站主登入內建瀏覽器後，由模型驅動後台表單完成。
+
+- **初始化早於 #449 部署**，所以五語系隱私權政策都少了 #449 的「文章頁的廣告」三個區塊
+  （13 塊，草稿檔是 16 塊）。初始化不會覆蓋既有列，改 `drafts/*.json` 對正式站無效，跟
+  `2026-09-13-adsense-privacy-policy-section` 預告的一樣。
+- 核對方式：把後台表單的標題、摘要、營運資料、區塊內容排成固定順序算 SHA-256，跟
+  `apps/api/app/site_pages/drafts/*.json` 用同一套規則算的值比。條款、關於、聯絡 15 份逐字相同；
+  隱私權政策 5 份在拿掉草稿第 10–12 塊之後相同，也就是**差異只有那三塊**。
+- 補法：在最後新增標題、段落、清單，從草稿檔帶入文字，再按 9 次「上移」移到「保存、刪除與資料請求」之前。
+  儲存前雜湊值與草稿檔相同才繼續。
+- 20 份生效日期都設為 `2026-09-13`（發布日）。繁中的 `09-01` 早於站主批准日，也早於實際公開日，所以改掉。
+  系統不接受未來日期（`pending_requirements`）。
+- 站主 2026-09-13 確認兩件事：`support@mokaair.com` 收得到信；廣告揭露段落照草稿一起發布。
+- 發布後 20 份的 `published_version` 都等於草稿版本。前台 20 個網址都回 200，五語系都沒有
+  `sitePages.unpublished` 文案，都顯示 `2026-09-13` 與 `support@mokaair.com`，五語系隱私權政策都有
+  `adssettings.google.com`。
+
+下次驅動這個表單要知道的事：
+
+- 確認視窗是原生 `<dialog open>`，沒有 `role="dialog"`。開啟後焦點在「關閉」鈕。
+- 勾選框用 `form_input` 設 `checked` 不會更新 React state，「確認發布」會一直停用，要用真的點擊。
+  如果已經被 `form_input` 勾過，要點兩下才會同步。
+- 模型做到第 18 份時，auto mode 擋下了「按『發布』開視窗」的批次。之後三份的「發布」與「確認發布」
+  由站主按，模型只負責補區塊、核對、儲存草稿。除了第一份，「確認發布」本來就都是站主自己按的。
+- 兩次 502：
+  - 11:10 UTC：另一個 session 部署 #454，容器重建，約 8 秒連不上前端。
+  - 11:22 UTC：容器沒重啟，nginx 報 `upstream prematurely closed connection`。原因是 nginx upstream
+    `keepalive` 預設留 60 秒，而 Next standalone 在沒設 `KEEP_ALIVE_TIMEOUT` 時用 Node 預設的 5 秒，
+    POST 被送到剛關閉的連線上。這件事另開處理。
+  - 兩次失敗的發布都沒有寫入：韓文那次 API 紀錄只有重按的一個 POST，簡中關於頁失敗後仍是未發布的版本 2。
+    重按後各只產生一個發布版本。
 
 ## How to verify
 

@@ -1,10 +1,11 @@
 import type { MetadataRoute } from "next";
 import { PUBLIC_DESTINATIONS } from "@/components/travel-services/options";
-import { locales } from "@/i18n/routing";
-import { guideHref } from "@/lib/guides";
-import { languageAlternates, localeUrl } from "@/lib/seo";
+import { locales, type Locale } from "@/i18n/routing";
+import { guideHref, type GuideKind } from "@/lib/guides";
+import { HREFLANG_DEFAULT, languageAlternates, localeUrl } from "@/lib/seo";
 import { featureEnabled, type SiteFeature } from "@/lib/site-features";
 import { guideSitemapEntries } from "@/lib/guides.server";
+import { getDiscoveryStatus } from "@/lib/discovery-status.server";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
 
 // Evaluate public switches at request time, not while building without the API.
@@ -16,6 +17,13 @@ type SitemapRoute = {
   priority: number;
   changeFrequency: NonNullable<MetadataRoute.Sitemap[number]["changeFrequency"]>;
   feature?: SiteFeature;
+  /** An article hub, listed in a language only while one of these kinds has something
+   *  published there. Articles are published one language at a time, so the other four
+   *  hubs say "nothing here yet" -- a soft 404 to offer, and nothing to rank. */
+  hub?: readonly GuideKind[];
+  /** Listed only while the discovery switch is on. Behind it the route has server-rendered
+   *  content of its own; in front of it, the fallback link grid, which has nothing to rank. */
+  discovery?: true;
 };
 
 /**
@@ -26,9 +34,14 @@ type SitemapRoute = {
  *   an administrator publishes the managed document, so listing them now would only accumulate
  *   "Excluded by noindex" in Search Console. They are linked from the footer, so nothing is lost
  *   by waiting for 2026-09-06-legal-content-from-owner.
- * - /explore, /explore/collections, /pet-friendly and the community routes, which are `noindex`
+ * - /explore/collections, /pet-friendly and the community routes, which are `noindex`
  *   because their content is fetched after hydration and the server sends an empty shell.
+ *   /explore no longer sends one -- it is listed below, but only while discovery is on, since
+ *   with the switch off it falls back to a grid of links to pages already listed here.
  * - every member and token route, which carries `noindex`.
+ * - an article hub in a language that has nothing published in it. Those pages exist and
+ *   answer 200, but with one sentence saying the section is empty; `hub` below lists them
+ *   per language instead of per route, and their own `generateMetadata` agrees.
  * - /destinations/osaka/services and /destinations/kyoto/services. The services page accepts
  *   CITIES as well as PUBLIC_DESTINATIONS. Those legacy single-city service views are distinct
  *   from the combined guide, but are not part of this public destination directory.
@@ -41,16 +54,19 @@ export const SITEMAP_ROUTES: readonly SitemapRoute[] = [
   { path: "/pricing", priority: 0.5, changeFrequency: "monthly", feature: "pricing" },
   { path: "/labs/airlines", priority: 0.4, changeFrequency: "weekly", feature: "airline_fares" },
   { path: "/destinations", priority: 0.6, changeFrequency: "weekly" },
+  // Ranked below the directories it draws from: the feed reorders their rows, and an entry
+  // there is one of them rather than a page of its own.
+  { path: "/explore", priority: 0.5, changeFrequency: "daily", discovery: true },
   // No `feature`: the guides section is first-party content with no switch behind it, so it
   // is never one of the conditional routes. The two kind hubs resolve through the `[kind]`
   // folder; `/life` is its own folder, because `/guides/life/...` is deliberately a 404.
-  { path: "/guides", priority: 0.7, changeFrequency: "daily" },
-  { path: "/guides/intel", priority: 0.7, changeFrequency: "daily" },
-  { path: "/guides/howto", priority: 0.6, changeFrequency: "weekly" },
+  { path: "/guides", priority: 0.7, changeFrequency: "daily", hub: ["intel", "howto"] },
+  { path: "/guides/intel", priority: 0.7, changeFrequency: "daily", hub: ["intel"] },
+  { path: "/guides/howto", priority: 0.6, changeFrequency: "weekly", hub: ["howto"] },
   // Same shape as /guides/howto on purpose: a hub of evergreen articles that are themselves
   // listed as monthly below. Claiming daily for a page that changes when an editor publishes
   // would be the same invented signal the lastmod comment further down warns about.
-  { path: "/life", priority: 0.6, changeFrequency: "weekly" },
+  { path: "/life", priority: 0.6, changeFrequency: "weekly", hub: ["life"] },
   // The guides are the destination-scoped content; the services pages are an affiliate lodging
   // directory for the same city, so they rank below their own guide rather than beside it.
   ...PUBLIC_DESTINATIONS.map((id) => ({
@@ -75,11 +91,41 @@ export const SITEMAP_ROUTES: readonly SitemapRoute[] = [
  * if the settings service is unavailable. The canonical origin is still fixed at build time.
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [visibility, guides] = await Promise.all([getSiteVisibility(), guideSitemapEntries()]);
+  const [visibility, guides, discovery] = await Promise.all([
+    getSiteVisibility(), guideSitemapEntries(), getDiscoveryStatus(),
+  ]);
+
+  /**
+   * Which languages each hub has something to show, from the enumeration this route already
+   * reads -- no second API call, and the same source the article entries below come from, so
+   * a hub can never be listed while every article under it is absent.
+   *
+   * Only an answer known to be complete may remove anything. A failed or capped read leaves
+   * every hub listed for every language, which is the behaviour before this filter existed.
+   */
+  const published = new Set(guides.entries.map((entry) => `${entry.kind}:${entry.locale}`));
+  const hubLocales = (route: SitemapRoute): readonly Locale[] =>
+    !route.hub || !guides.complete
+      ? locales
+      : locales.filter((locale) => route.hub!.some((kind) => published.has(`${kind}:${locale}`)));
+
+  /** A hub advertises only the languages it is listed in, for the reason an article does:
+   *  hreflang pointing at a page this file just decided not to index is a contradiction, and
+   *  x-default belongs to English only while English has the section. */
+  const hubAlternates = (available: readonly Locale[], path: string): Record<string, string> => ({
+    ...Object.fromEntries(available.map((locale) => [locale, localeUrl(locale, path)])),
+    ...(available.includes(HREFLANG_DEFAULT) ? { "x-default": localeUrl(HREFLANG_DEFAULT, path) } : {}),
+  });
+
   const routes = SITEMAP_ROUTES.filter(
-    (route) => !route.feature || featureEnabled(visibility, route.feature),
-  ).flatMap((route) =>
-    locales.map((locale) => ({
+    (route) => (!route.feature || featureEnabled(visibility, route.feature))
+      && (!route.discovery || discovery.enabled),
+  ).flatMap((route) => {
+    const available = hubLocales(route);
+    const languages = available.length === locales.length
+      ? languageAlternates(route.path)
+      : hubAlternates(available, route.path);
+    return available.map((locale) => ({
       url: localeUrl(locale, route.path),
       // No `lastModified` on these. Google honours it only where it tracks real content
       // change, and nothing here knows when a city guide's places last moved -- that lives
@@ -87,9 +133,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       // missing signal; one that always says "now" teaches Google to distrust the whole file.
       changeFrequency: route.changeFrequency,
       priority: route.priority,
-      alternates: { languages: languageAlternates(route.path) },
-    })),
-  );
+      alternates: { languages },
+    }));
+  });
 
   /**
    * Guide articles, appended after the static routes so their exact order stays testable.
@@ -108,7 +154,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // the guard here makes "no duplicate URL" a property of this file rather than an assumption
   // about the query behind it -- and keeps the test of that name able to fail.
   const listed = new Set<string>();
-  const articles = guides.flatMap((entry) => {
+  const articles = guides.entries.flatMap((entry) => {
     const path = guideHref(entry.kind, entry.slug);
     const url = localeUrl(entry.locale, path);
     if (listed.has(url)) return [];

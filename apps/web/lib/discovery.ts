@@ -67,11 +67,43 @@ export function useDiscoveryStatus() {
   return useSyncExternalStore(subscribe, () => status, () => closed);
 }
 
-/** Abort and key responses by login identity as well as URL; never show stale private feeds. */
-export function useDiscoveryResource<T>(path: string | null, retainPages = false) {
+export type DiscoveryStatus = { enabled: boolean; loading: boolean };
+
+/**
+ * The status to render with, given what the server already resolved.
+ *
+ * `getServerSnapshot` above returns a fixed `loading: true`, because a module-level store on
+ * the server is shared by every request in the container and one failed read would then answer
+ * for all of them. The switch arrives as a prop instead, resolved per request by
+ * `lib/discovery-status.server.ts`, and stands in until the browser's own store answers.
+ *
+ * Both sides render the same thing on the first pass -- the store is still loading when
+ * hydration runs -- so this changes the response body, not the hydrated tree. A server read
+ * that failed says `false`, which is the marketing page, and the client store still corrects it.
+ */
+export function resolveDiscoveryStatus(live: DiscoveryStatus, initialEnabled?: boolean): DiscoveryStatus {
+  return live.loading && initialEnabled !== undefined ? { enabled: initialEnabled, loading: false } : live;
+}
+
+/**
+ * Abort and key responses by login identity as well as URL; never show stale private feeds.
+ *
+ * `initial` is a page the server already fetched for this exact path. It seeds the first
+ * render, so the first paint carries rows instead of a skeleton, and the effect below then
+ * replaces it with the browser's own answer for the same path.
+ *
+ * The request is deliberately still made. The two answers agree for the reader the server
+ * rendered for -- a signed-out one, since the server sends no cookies -- but they are not the
+ * same request: the browser goes through the BFF with whatever session it has, and that is
+ * the answer this component is supposed to be showing. Skipping it saved one GET and made the
+ * page show a stale, anonymous ranking to anyone whose session or data had moved on.
+ */
+export function useDiscoveryResource<T>(path: string | null, retainPages = false, initial?: { path: string; data: T } | null) {
   const { sessionIdentity } = useHeaderSession();
   const [attempt, setAttempt] = useState(0);
-  const [results, setResults] = useState<Array<{ path: string; identity: object | null; data?: T; error?: unknown }>>([]);
+  const [results, setResults] = useState<Array<{ path: string; identity: object | null; data?: T; error?: unknown }>>(
+    () => initial && initial.path === path ? [{ path: initial.path, identity: sessionIdentity, data: initial.data }] : [],
+  );
   useEffect(() => {
     if (!path) return;
     const controller = new AbortController();

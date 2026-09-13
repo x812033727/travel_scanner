@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">大阪到神戶三宮、再到有馬溫泉的路線圖 / Osaka to Kobe Sannomiya and Arima Onsen routes</title>
+  <desc id="desc">大阪梅田到神戶三宮有 JR 新快速約 20 到 21 分、阪急特急約 30 分、阪神特急約 30 分三條線；三宮往北到北野異人館、往南到南京町與美利堅公園都靠步行；三宮搭地鐵到谷上、換神戶電鐵到有馬口與有馬溫泉，谷上到有馬溫泉 440 日圓、全程約 30 分；JR 巴士有馬エクスプレス號從三宮 780 日圓、從大阪站 1,400 日圓直達有馬溫泉；有馬溫泉可搭六甲有馬纜車約 12 分上六甲山頂看夜景，再搭六甲登山纜車 800 日圓下山。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="80" y="82" font-size="40" font-weight="700" fill="#102A2B">大阪 → 神戸三宮 → 有馬温泉　一日路線</text>
+  <text x="80" y="122" font-size="22" fill="#5C6B6B">Osaka → Kobe Sannomiya → Arima Onsen · 車程為各官網的概略數字，以時刻表為準</text>
+
+  <!-- Osaka to Sannomiya: JR (top), Hankyu (middle), Hanshin (bottom) -->
+  <path d="M 300 430 C 450 430, 520 330, 700 350" fill="none" stroke="#6B4A3A" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 300 460 L 700 460" fill="none" stroke="#B8442D" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 300 490 C 450 490, 520 570, 700 560" fill="none" stroke="#2F6F9F" stroke-width="12" stroke-linecap="round"/>
+
+  <!-- Sannomiya hub -->
+  <rect x="700" y="330" width="16" height="250" rx="8" fill="#102A2B"/>
+  <text x="730" y="470" font-size="30" font-weight="700" fill="#102A2B">三宮 Sannomiya</text>
+  <text x="730" y="500" font-size="18" fill="#5C6B6B">JR 三ノ宮・阪急／阪神 神戸三宮</text>
+
+  <!-- Osaka box -->
+  <rect x="80" y="400" width="220" height="120" rx="24" fill="#0D6B68"/>
+  <text x="190" y="450" font-size="30" font-weight="700" fill="#FFFFFF" text-anchor="middle">大阪梅田</text>
+  <text x="190" y="488" font-size="20" fill="#E6F2F1" text-anchor="middle">Osaka-Umeda / JR 大阪</text>
+
+  <!-- line labels Osaka to Sannomiya -->
+  <text x="360" y="332" font-size="22" font-weight="700" fill="#6B4A3A">JR 新快速 Special Rapid 約 20〜21 分</text>
+  <text x="360" y="447" font-size="22" font-weight="700" fill="#B8442D">阪急 特急 Hankyu Ltd. Exp. 約 30 分</text>
+  <text x="360" y="606" font-size="22" font-weight="700" fill="#2F6F9F">阪神 特急 Hanshin Ltd. Exp. 約 30 分</text>
+  <text x="360" y="634" font-size="18" fill="#5C6B6B">三家都不加特急料金 · 票價以各官網為準</text>
+
+  <!-- Walk spots around Sannomiya -->
+  <path d="M 708 330 L 708 250" fill="none" stroke="#5C6B6B" stroke-width="4" stroke-dasharray="6 10" stroke-linecap="round"/>
+  <circle cx="708" cy="240" r="10" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="5"/>
+  <text x="730" y="247" font-size="20" fill="#102A2B">北野異人館 Kitano（徒歩・上坡）</text>
+  <path d="M 708 580 L 708 680" fill="none" stroke="#5C6B6B" stroke-width="4" stroke-dasharray="6 10" stroke-linecap="round"/>
+  <circle cx="708" cy="690" r="10" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="5"/>
+  <text x="730" y="697" font-size="20" fill="#102A2B">南京町 Nankinmachi → メリケンパーク Meriken Park（徒歩）</text>
+
+  <!-- Subway Sannomiya to Tanigami, Shintetsu to Arima -->
+  <path d="M 716 400 C 860 400, 920 300, 1040 260" fill="none" stroke="#2E7D5B" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 1040 260 L 1200 215 L 1340 190" fill="none" stroke="#0D6B68" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="1040" cy="260" r="16" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="8"/>
+  <text x="1010" y="305" font-size="24" font-weight="700" fill="#102A2B">谷上 Tanigami</text>
+  <text x="1010" y="331" font-size="18" fill="#5C6B6B">地下鉄 Subway → 神戸電鉄 Shintetsu 轉乘</text>
+  <circle cx="1200" cy="215" r="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+  <text x="1160" y="260" font-size="22" font-weight="700" fill="#102A2B">有馬口 Arima-guchi</text>
+  <rect x="1340" y="140" width="200" height="100" rx="24" fill="#B8442D"/>
+  <text x="1440" y="182" font-size="30" font-weight="700" fill="#FFFFFF" text-anchor="middle">有馬温泉</text>
+  <text x="1440" y="216" font-size="20" fill="#FBE9E4" text-anchor="middle">Arima Onsen</text>
+  <text x="760" y="372" font-size="20" font-weight="700" fill="#2E7D5B">地下鉄 三宮 → 谷上</text>
+  <text x="1090" y="160" font-size="20" font-weight="700" fill="#0D6B68">神戸電鉄 谷上 → 有馬温泉 440 円</text>
+  <text x="1090" y="130" font-size="18" fill="#5C6B6B">三宮から全程 約 30 分</text>
+
+  <!-- JR bus Arima Express (dashed) -->
+  <path d="M 716 520 C 900 520, 1150 420, 1400 250" fill="none" stroke="#D97A2B" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+  <path d="M 190 520 C 250 700, 700 760, 1120 740 C 1300 730, 1440 500, 1480 250" fill="none" stroke="#D97A2B" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+  <text x="1020" y="530" font-size="22" font-weight="700" fill="#D97A2B">JR バス 三宮 → 有馬温泉 780 円</text>
+  <text x="900" y="790" font-size="22" font-weight="700" fill="#D97A2B">JR バス 大阪駅 → 有馬温泉 1,400 円（直達）</text>
+
+  <!-- Rokko option -->
+  <path d="M 1440 240 L 1440 380" fill="none" stroke="#7E57C2" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="1440" cy="390" r="16" fill="#FFFFFF" stroke="#7E57C2" stroke-width="8"/>
+  <text x="1290" y="437" font-size="22" font-weight="700" fill="#102A2B">六甲山頂 Rokko-sancho</text>
+  <text x="1425" y="560" font-size="18" fill="#7E57C2" text-anchor="end">六甲有馬ロープウェー 約 12 分 1,400 円</text>
+  <path d="M 1440 406 L 1440 560" fill="none" stroke="#7E57C2" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="1440" cy="570" r="16" fill="#FFFFFF" stroke="#7E57C2" stroke-width="8"/>
+  <text x="1240" y="617" font-size="22" font-weight="700" fill="#102A2B">六甲ケーブル下 Rokko Cable</text>
+  <text x="1250" y="646" font-size="18" fill="#7E57C2">ケーブル 800 円 → 巴士回阪急六甲</text>
+
+  <!-- Legend -->
+  <g font-size="20" fill="#102A2B">
+    <line x1="80" y1="860" x2="140" y2="860" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round"/>
+    <text x="152" y="867">JR 西日本</text>
+    <line x1="270" y1="860" x2="330" y2="860" stroke="#B8442D" stroke-width="10" stroke-linecap="round"/>
+    <text x="342" y="867">阪急</text>
+    <line x1="420" y1="860" x2="480" y2="860" stroke="#2F6F9F" stroke-width="10" stroke-linecap="round"/>
+    <text x="492" y="867">阪神</text>
+    <line x1="570" y1="860" x2="630" y2="860" stroke="#2E7D5B" stroke-width="10" stroke-linecap="round"/>
+    <text x="642" y="867">地下鉄 · 神戸電鉄</text>
+    <line x1="830" y1="860" x2="890" y2="860" stroke="#D97A2B" stroke-width="8" stroke-dasharray="18 12" stroke-linecap="round"/>
+    <text x="902" y="867">巴士 Bus</text>
+    <line x1="1030" y1="860" x2="1090" y2="860" stroke="#7E57C2" stroke-width="10" stroke-linecap="round"/>
+    <text x="1102" y="867">六甲山（可選）</text>
+    <text x="1330" y="867" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+  </g>
+</svg>

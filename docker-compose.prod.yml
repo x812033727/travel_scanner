@@ -180,6 +180,11 @@ services:
       ANALYTICS_COUNTRY_HEADER: ${ANALYTICS_COUNTRY_HEADER:-}
       HOSTNAME: 0.0.0.0
       PORT: "3000"
+      # Nothing in apps/web reads this; Next's standalone server.js does. It must stay longer than
+      # nginx's idle timeout for this upstream (ops/nginx/upstream-keepalive.conf), so nginx is
+      # always the side that closes an idle connection. With Node's 5s default, nginx reuses
+      # connections the server has just closed and POSTs come back as 502.
+      KEEP_ALIVE_TIMEOUT: "65000"
     ports: ["127.0.0.1:8091:3000"]
     security_opt: ["no-new-privileges:true"]
     cap_drop: ["ALL"]
