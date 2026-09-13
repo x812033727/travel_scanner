@@ -31,6 +31,8 @@
 | `images.json` | 只有用到 Commons 照片時才需要（第 8 節） |
 | `notes.md` | 查證記錄：每一個數字、方案名、規則一行，`主張｜來源網址｜查證日` |
 
+**只准在工作區寫檔。** 想先驗證，只能用 `cd apps/api && uv run python -m app.guides.pack_cli ingest --from <workdir> --slug <slug> --dry-run`（`--dry-run` 不能省，它什麼都不會寫）；不要不加 `--dry-run` 執行、不要刪或改 repo 裡的任何檔案（`apps/api/app/guides/content/`、`apps/web/public/guides/` 都不要碰）——協調者會在你交件後自己 ingest，你事後「清理」等於刪掉協調者已經收進去的文章。
+
 **先寫 `pack.json`，再畫 SVG，最後寫 `notes.md`。** 你的 session 可能中途被切斷，落在磁碟上的檔案會留下來，
 結尾的報告不會。寫完每個檔案就存，不要等到最後一次寫。不要輸出結尾長篇報告，一句「完成」就好。
 

@@ -1,0 +1,332 @@
+{
+  "slug": "codex-beginner-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "OpenAI Codex 是什麼：從 ChatGPT 裡的寫程式代理到 Codex CLI",
+      "description": "Codex 是 OpenAI 的寫程式代理，有三種形態：ChatGPT 裡的雲端代理會讀你的 GitHub 專案、在沙盒裡改程式並開 PR，Codex CLI 在終端機裡跑，IDE 擴充裝在 VS Code 等編輯器裡。這篇依 2026 年 9 月官方文件說明它和聊天要程式碼的差別、哪些方案包含、API 怎麼計費，並用 Excel 轉 vCard 的小工具走完整個流程，附比較表與風險提醒。",
+      "hero": {
+        "src": "/guides/codex-beginner-guide/hero.jpg",
+        "alt": "自繪插圖：左邊一個終端機視窗、右邊一個對話泡泡，中間兩個齒輪相扣轉動，代表 Codex 把對話變成程式",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Codex 是 OpenAI 的寫程式代理（coding agent）：你用中文或英文描述要做什麼，它會自己讀專案裡的程式碼、動手修改、跑測試、看結果、再改到通過，最後把整份修改交給你審。它不是某一個模型的名字，而是同一個代理的三種形態：ChatGPT 裡的雲端代理、終端機裡的 Codex CLI，以及裝在 VS Code 等編輯器裡的 IDE 擴充。依 2026 年 9 月的官方文件，所有 ChatGPT 方案（含免費版）都能用到某個程度，差別在額度。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇寫給兩種人：不寫程式、但想知道「AI 幫人寫程式」現在到哪裡的讀者，以及想親手試一次的入門者。讀完你會分得清三種形態各在哪裡、適合誰，知道它和跟 ChatGPT 聊天要一段程式碼差在哪，看懂方案與計費，並用一個「把 Excel 名單轉成 vCard」的小工具走一遍從交代任務到收到結果的流程，最後是合併之前一定要做的幾件事。"
+        },
+        {
+          "type": "heading",
+          "text": "Codex 現在指什麼：一個代理、三種形態",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex 這個名字在 OpenAI 的產品裡出現過不只一次，容易混淆。現在官方詞彙表的定義很單純：Codex 是「OpenAI 用於軟體開發任務的寫程式代理」，文件集中在 learn.chatgpt.com（原本的 developers.openai.com/codex 網址會自動轉過去）。它背後是 GPT-6 Astra 與 GPT-5.6 Sol、Terra、Luna 這幾個通用模型，Pro 方案另外多一個專為即時改程式設計的 GPT-5.3 Codex Spark 研究預覽版；推理深度從 Low 到 Ultra 共六檔，小修改用低檔，難的除錯再往上調。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一種是 ChatGPT 裡的雲端代理，官方叫 Codex cloud。它住在 chatgpt.com/codex，也出現在 ChatGPT 網頁與桌面 App 的側欄。你先把 GitHub（或測試中的 GitLab）帳號連上，替一個專案建立「環境」，Codex 就會在 OpenAI 管理的隔離容器裡把你的程式庫抓下來、跑你設定的安裝腳本，然後照任務去改。任務可以同時開好幾個、在背景跑，還能從手機的 ChatGPT App 追進度。做完你會看到一份摘要和 diff（改了哪幾行的對照），可以要求再修，也可以直接開成 GitHub 的 pull request（PR）。它還能反過來當審查者：在 PR 底下留言 @codex review，它會標出最嚴重的 P0、P1 問題，開啟「Automatic reviews」之後每個新 PR 都會自動被看一遍。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二種是 Codex CLI，跑在你自己電腦的終端機裡，macOS、Linux、Windows 都支援。安裝方式有官方的一行安裝腳本、npm（npm install -g @openai/codex）或 Homebrew（brew install --cask codex），裝好後輸入 codex，第一次會問你要用「Sign in with ChatGPT」登入方案，還是用 API key。它讀的是你硬碟上的專案，改動直接寫進檔案，但預設關在沙盒裡：只能改目前的工作區、不能連網，要越界就得問你。CLI 的程式碼是開源的（Apache-2.0 授權），放在 GitHub 的 openai/codex；IDE 擴充與雲端版則不開源。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三種是 IDE 擴充，裝在你寫程式的編輯器裡：官方列出的有 VS Code、VS Code Insiders、Cursor、Windsurf、JetBrains 系列與 Xcode，在 VS Code 市集的識別名稱是 openai.chatgpt，裝好後從命令面板執行「Codex: Open Codex Sidebar」。它的長處是把你正開著的檔案、選取的那幾行直接帶進提示，改完的 diff 就顯示在原始碼旁邊，你可以只留想要的部分；短的修改在本機做，長任務可以從編輯器直接丟到雲端環境，做完再回來看。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另外還有一個 ChatGPT 桌面 App（macOS、Windows、Linux），產品選擇器可以在 Chat、Work、Codex 之間切換；選 Codex 之後，還能挑這次對話要在本機目錄（Local）、獨立的 Git worktree，還是雲端環境（Cloud）裡跑。對入門者來說，它是三種形態的共同入口，不想碰終端機的人從這裡開始最省事。"
+        },
+        {
+          "type": "link",
+          "text": "AI 代理是什麼：它和聊天機器人差在哪",
+          "url": "https://mokaair.com/zh-TW/life/ai-agents-explained"
+        },
+        {
+          "type": "table",
+          "header": [
+            "形態",
+            "在哪裡",
+            "適合誰",
+            "需要什麼"
+          ],
+          "rows": [
+            [
+              "Codex cloud（ChatGPT 裡的雲端代理）",
+              "chatgpt.com/codex、ChatGPT 側欄、手機 ChatGPT App",
+              "專案已放在 GitHub、想交辦長任務、不想在自己電腦裝東西的人",
+              "ChatGPT 帳號、連上 GitHub 或 GitLab、替專案設好環境"
+            ],
+            [
+              "Codex CLI（終端機）",
+              "macOS、Linux、Windows 的終端機",
+              "習慣命令列、專案在本機、想寫進腳本或 CI 的人",
+              "安裝 CLI，用 ChatGPT 方案登入或 API key"
+            ],
+            [
+              "IDE 擴充",
+              "VS Code、VS Code Insiders、Cursor、Windsurf、JetBrains、Xcode",
+              "每天在編輯器裡寫程式、想邊改邊看 diff 的人",
+              "裝擴充（VS Code 市集 openai.chatgpt）後登入"
+            ],
+            [
+              "ChatGPT 桌面 App 的 Codex 模式",
+              "macOS、Windows、Linux 桌面 App",
+              "不想碰終端機的入門者；想在本機、worktree、雲端之間切換的人",
+              "下載 App、登入 ChatGPT 帳號、選一個資料夾"
+            ]
+          ],
+          "caption": "2026 年 9 月依 OpenAI 官方文件整理；支援的編輯器與登入方式以官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "和「跟 ChatGPT 聊天要程式碼」差在哪",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "很多人已經會在 ChatGPT 裡說「幫我寫一段 Python 把 Excel 讀進來」，把回答貼進自己的檔案裡跑，出錯再貼回去問。這個流程裡，讀檔、執行、看錯誤訊息、決定下一步的人都是你，AI 只負責產生文字。Codex 把整個迴圈接過去：它在真實的專案目錄裡工作，看得到你所有的檔案，改完會自己執行測試或程式、讀輸出，沒過就回頭再改，直到通過或它判斷需要問你。官方的最佳實務講得很直接：叫它在需要時自己寫測試、跑相關檢查、確認結果，然後你再審查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一個差別是產出的形式。聊天給你的是一段貼在對話裡的程式碼；Codex 給你的是一份 diff、一段說明，以及（雲端版）一個可以直接合併的 PR。桌面 App 的產品選擇器也反映這個分工：Chat 是一問一答，Work 是交辦研究、文件、試算表這類成品，Codex 則是給想看技術細節（Git 指令、diff、審查畫面）的人。整個代理迴圈可以拆成五步："
+        },
+        {
+          "type": "list",
+          "items": [
+            "任務：你用一句話加上限制條件交代目標，例如「做一個把 Excel 名單轉成 vCard 的工具，只能用標準函式庫」。",
+            "讀程式：代理先看專案結構、既有的程式碼與 AGENTS.md 裡的規則，決定要動哪些檔案。",
+            "改程式：新增或修改檔案，有需要時順手補測試。",
+            "跑測試：執行測試與程式本身、讀輸出；失敗就回到第 3 步，直到通過或它決定要問你。",
+            "交出 PR：整理成 diff 與摘要，雲端版可以直接開成 pull request，等你審。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-beginner-guide/diagram-1.svg",
+          "alt": "Codex 的三種形態與代理迴圈：上排是 Codex cloud 雲端代理、Codex CLI 終端機、IDE 擴充三個框，各寫在哪裡與特點；中間是五步迴圈任務、讀程式、改程式、跑測試、交出 PR，跑測試失敗會回到改程式；下排是各 ChatGPT 方案價格與 API 計費，以及看 diff 再合併、雲端代理階段不連網、不給正式環境金鑰三條底線",
+          "width": 1600,
+          "height": 900,
+          "caption": "上排是三種形態，中間是它們共用的五步迴圈，下排是方案與安全底線（2026 年 9 月依官方文件查證）。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 新手入門：從註冊到把它用在生活裡",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+        },
+        {
+          "type": "link",
+          "text": "推理模型是什麼：為什麼 AI 要「想久一點」",
+          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+        },
+        {
+          "type": "heading",
+          "text": "誰能用、怎麼算錢",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "依官方定價頁（2026 年 9 月查證），Codex 包含在所有 ChatGPT 方案裡：Free（US$0，官方說法是「探索 Codex、做快速的小任務」）、Go（US$8／月，輕量的程式任務）、Plus（US$20／月，「每週幾次專注的寫程式時段」，網頁、CLI、IDE、iOS 都能用，額度用完可加購）、Pro（US$100／月起，上限是 Plus 的 5 倍；US$200／月是 20 倍並含無限制語音）、Business（每人每月 US$20，年繳、2 人起；月繳 US$25）、Enterprise 與 Edu 另議。額度的算法是每 5 小時一個區間可以送幾則訊息，依模型不同：Plus 用 GPT-5.6 Terra 是 25 到 200 則，用 GPT-6 Astra 是 5 到 45 則，Pro 依倍數放大，Business 與 Plus 相同；本機訊息與雲端任務共用同一份額度。Free 與 Go 的具體額度官網沒有列數字，以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "額度用完有兩條路。Plus 與 Pro 可以加購 credits，官方估 GPT-5.6 模型平均一則訊息消耗 5 到 30 credits，credits 的售價以官網為準。另一條是改用 API key 登入 CLI 或 IDE 擴充：這時走的是 OpenAI Platform 的用量計費，不吃 ChatGPT 方案額度，官方說適合 CI 這種共用環境。2026 年 9 月的 API 牌價，每百萬 token 輸入／輸出：GPT-5.6 Terra US$2／US$12，GPT-5.6 Luna US$0.20／US$1.20，GPT-5.6 Sol US$4／US$20，GPT-6 Astra US$10／US$50。要注意代理會反覆讀檔、跑測試，token 用量比一問一答高得多，用 API key 之前先確認帳號的用量上限設定。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 工具總覽：先搞懂哪些是聊天、哪些是代理",
+          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+        },
+        {
+          "type": "heading",
+          "text": "一個完整例子：把 Excel 名單轉成 vCard",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "假設你手上有一份活動報名的 Excel，欄位是姓名、公司、手機、Email，想一次匯進手機通訊錄。手機認的是 vCard（.vcf）檔，所以你需要一個小工具。你不用先想程式怎麼寫，只要把需求講清楚；官方最佳實務建議提示裡放四件事：目標、脈絡、限制、什麼叫完成。用 CLI 的話，先在一個空資料夾裡輸入 codex，然後這樣說："
+        },
+        {
+          "type": "paragraph",
+          "text": "「目標：寫一個命令列工具，把 contacts.xlsx 轉成 contacts.vcf。脈絡：Excel 第一列是欄位名稱，欄位有姓名、公司、手機、Email，手機是台灣的 09 開頭十碼。限制：用 Python，讀 Excel 可以裝 openpyxl，其他只用標準函式庫，不要動這個資料夾以外的東西。完成的定義：附一個含三筆假資料的測試檔，測試通過，README 說明怎麼跑。」"
+        },
+        {
+          "type": "list",
+          "items": [
+            "它先列出資料夾內容，確認是空的，然後規劃要建哪些檔案。預設的沙盒讓它在這個資料夾裡可以直接建檔，但安裝 openpyxl 需要連網，它會停下來請你核准這一步。",
+            "接著它寫出 convert.py：讀 Excel、逐列組成 vCard 格式的文字、寫成 .vcf，並處理手機號碼開頭的 0 被 Excel 當數字吃掉的問題。",
+            "它自己建 test_convert.py 與一個三筆假資料的 Excel，執行 pytest。第一次可能失敗，例如 Email 欄位是空的時候出錯；它讀錯誤訊息、補上空值處理、再跑一次，直到通過。",
+            "最後它回報做了什麼、列出 diff，並說明它假設了哪些事（例如欄位名稱的寫法）。你把真正的 contacts.xlsx 丟進去跑一次，匯進手機確認，不對就再交代一輪。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "同樣的任務交給雲端版，差別只在起點與終點：你要先把資料夾推上 GitHub、在 Codex cloud 替它建環境（安裝腳本寫 pip install openpyxl），任務結束時它交出的是一個 PR，你在手機上就能看 diff、決定要不要合併。這正是三種形態的關係：同一個代理、同一套迴圈，只是跑在哪裡、結果送到哪裡不同。"
+        },
+        {
+          "type": "heading",
+          "text": "風險與限制：看 diff 再合併、沙盒、金鑰",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex 會動真的檔案、跑真的指令，所以官方文件反覆強調三件事。第一，把它交出來的東西當成同事的 PR 來審：看 diff、跑你自己的檢查、在 commit 訊息裡寫下決定。它會自己跑測試，但測試多半也是它寫的，通過只代表它跟自己的理解一致，不代表符合你的需求。第二，先開分支、確認 git status 是乾淨的再交辦，改壞了才好退回。第三，別讓它看到不該看的東西。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本機的沙盒是作業系統層級的：macOS 用內建的 Seatbelt，Linux 用 bubblewrap，Windows 在 PowerShell 有原生沙盒、在 WSL2 則走 Linux 那套。預設模式是 workspace-write：能讀寫目前的工作區、能跑指令，但不能連網、不能碰工作區以外的檔案，要越界就會問你（on-request）。另外兩個模式是 read-only（只看不改）與 danger-full-access（完全不設限，名字裡就有 danger）。桌面 App 的對應選項叫「Ask for approval」「Approve for me」「Full access」，中間那個會把越界請求交給一個自動審查代理先看過；官方特別說明，換誰來核准並不會放大沙盒的範圍。"
+        },
+        {
+          "type": "paragraph",
+          "text": "雲端版的規則不同但更嚴。每次任務分兩段：先跑你設定的安裝腳本，這段可以連網、看得到你放的 Secrets；然後才進入代理階段，這時 Secrets 已經被移除，網路預設整個關閉，要開也只能挑「常見套件來源」的白名單或自己加網域，還能限制只准 GET、HEAD、OPTIONS。官方列出的理由是提示注入（網頁或 issue 裡藏指令，騙代理把程式或密鑰傳出去）、程式或 Secrets 外洩、下載到惡意套件，以及授權有問題的程式碼。容器狀態會快取最多 12 小時，用來加速後續任務。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "不要把正式環境的資料庫密碼、API 金鑰、雲端帳號憑證放進代理看得到的地方；雲端環境只放安裝套件需要的 Secrets，本機就用另一組只有測試權限的金鑰。",
+            "不要在正式環境的伺服器上跑 CLI；在自己的電腦、分支或雲端環境裡做完，經過審查再部署。",
+            "不要因為嫌它一直問就切到 Full access 或 danger-full-access；先想清楚它為什麼需要越界。",
+            "Free 與 Go 方案額度較低，長任務可能中途用完；額度與方案內容以官網為準。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "第一次用，先從自己的小專案開始",
+          "text": "找一個只有你在用、壞了也不痛的小東西：整理照片檔名的腳本、上面那個 vCard 轉檔、部落格的一個小修正。任務要小到一次做完、結果你自己驗得出來。先在本機或 worktree 模式跑，看它怎麼問、怎麼改、怎麼跑測試，習慣看 diff 之後，再把它接到公司的程式庫或開 PR。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI Codex 文件總覽（developers.openai.com/codex 轉址至此）",
+          "url": "https://learn.chatgpt.com/docs",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Codex 詞彙表：Codex、Codex cloud、Codex CLI、IDE extension 的官方定義",
+          "url": "https://learn.chatgpt.com/docs/glossary",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Codex cloud：雲端隔離環境、從 GitHub／GitLab／Linear／Slack 啟動、開 PR",
+          "url": "https://learn.chatgpt.com/docs/cloud",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Codex cloud 環境設定：容器、安裝腳本、Secrets 只在 setup 階段、快取 12 小時",
+          "url": "https://learn.chatgpt.com/docs/environments/cloud-environment",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Codex cloud 代理網路存取：預設關閉、白名單、HTTP 方法限制、提示注入風險",
+          "url": "https://learn.chatgpt.com/docs/cloud/internet-access",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Codex CLI：安裝指令、登入方式、/permissions、/model、/review",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Codex IDE 擴充：VS Code、Cursor、Windsurf、JetBrains、Xcode",
+          "url": "https://learn.chatgpt.com/docs/codex/ide",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "ChatGPT 桌面 App：macOS、Windows、Linux，Chat／Work／Codex 切換",
+          "url": "https://learn.chatgpt.com/docs/app",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Chat、ChatGPT Work 與 Codex 的分工",
+          "url": "https://learn.chatgpt.com/docs/use-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Codex 定價與各方案額度（Free、Go、Plus、Pro、Business、Enterprise、API key）",
+          "url": "https://learn.chatgpt.com/docs/pricing",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI API 定價（GPT-6 Astra、GPT-5.6 Sol／Terra／Luna 每百萬 token 牌價）",
+          "url": "https://developers.openai.com/api/docs/pricing",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Codex 可用模型與推理深度",
+          "url": "https://learn.chatgpt.com/docs/models",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Codex 沙盒：Seatbelt、bubblewrap、Windows 沙盒；read-only、workspace-write、danger-full-access",
+          "url": "https://learn.chatgpt.com/docs/sandboxing",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Codex 代理核准與安全：on-request、網路預設關閉、把建議當 PR 審",
+          "url": "https://learn.chatgpt.com/docs/agent-approvals-security",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "桌面 App 權限模式：Ask for approval、Approve for me、Full access",
+          "url": "https://learn.chatgpt.com/docs/permission-modes",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "GitHub 整合：@codex review、Automatic reviews、P0／P1 問題",
+          "url": "https://learn.chatgpt.com/docs/third-party/github",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Codex 最佳實務：目標、脈絡、限制、完成定義；讓它寫測試、跑檢查再審查",
+          "url": "https://learn.chatgpt.com/guides/best-practices",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "openai/codex GitHub README：Codex CLI 安裝、登入、Apache-2.0 授權",
+          "url": "https://github.com/openai/codex",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Codex 開源元件：CLI 開源，IDE 擴充與雲端版不開源",
+          "url": "https://learn.chatgpt.com/docs/open-source",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Codex Remote：從手機的 ChatGPT App 啟動、核准、審查任務",
+          "url": "https://learn.chatgpt.com/docs/remote",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}

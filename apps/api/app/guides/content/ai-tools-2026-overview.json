@@ -1,0 +1,374 @@
+{
+  "slug": "ai-tools-2026-overview",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "misc"
+  ],
+  "valid_until": null,
+  "featured": true,
+  "display_order": 10,
+  "locales": {
+    "zh-TW": {
+      "title": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+      "description": "第一次想弄清楚現在有哪些 AI、差在哪、該從哪個開始？這篇用 OpenAI、Anthropic、Google、MiniMax、DeepSeek 官網在 2026 年 9 月查證的資料，說明 ChatGPT、Claude、Gemini、Codex、MiniMax、DeepSeek 的定位、免費版能做什麼、入門付費方案叫什麼、在台灣能不能用與資料存放地，附比較表、比較矩陣圖與依需求挑第一個工具的建議。",
+      "hero": {
+        "src": "/guides/ai-tools-2026-overview/hero.jpg",
+        "alt": "六個顏色與形狀各異的對話泡泡聚在一起，象徵 2026 年的六個主要 AI 工具",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "現在最常被提到的 AI 工具可以先分成六個：OpenAI 的 ChatGPT、Anthropic 的 Claude、Google 的 Gemini 是三個通用聊天助理，免費版就能做大多數日常的事；OpenAI Codex 是專門寫程式的代理；上海的 MiniMax 以影片、語音與開放權重模型見長；杭州的 DeepSeek 完全免費、模型開源，但資料存放在中國，台灣公務機關已經全面禁用。一般使用者從 ChatGPT、Claude、Gemini 任一個的免費版開始就夠，真的碰到額度上限再付費。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇先用一段話講清楚每個工具的定位，再依 2026 年 9 月各家官網的資料整理免費版能做什麼、付費從哪一階開始、在台灣能不能用、資料放在哪裡，最後給你一張比較表、一張比較矩陣圖，以及依需求挑第一個工具的建議。方案與價格幾個月就會變，文中價格寫的是官網當天的幣別，之後以官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "先分清楚模型、工具、代理，再看三個通用助理",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "接下來會反覆出現三個詞。模型是背後那個經過訓練、會接話的大型語言模型，例如 GPT-5.6、Claude Opus 5、Gemini 3.6 Flash；聊天工具是你實際打開的網頁或 App，例如 ChatGPT、Claude、Gemini，同一個工具裡通常可以切換好幾個模型；代理則是能自己拆步驟、動手操作檔案或程式、跑上好幾分鐘才回報結果的工具，Codex、Claude Code、MiniMax Code 都屬於這一類。看方案時記得問三件事：免費版給哪個模型、額度多少、代理功能有沒有包含在內。"
+        },
+        {
+          "type": "link",
+          "text": "大型語言模型是什麼：用生活例子弄懂 AI 怎麼接話",
+          "url": "https://mokaair.com/zh-TW/life/what-is-a-large-language-model"
+        },
+        {
+          "type": "link",
+          "text": "AI 代理是什麼：跟聊天機器人差在哪",
+          "url": "https://mokaair.com/zh-TW/life/ai-agents-explained"
+        },
+        {
+          "type": "link",
+          "text": "推理模型是什麼：為什麼有些 AI 會先想再答",
+          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPT 是 OpenAI 的聊天工具，也是目前使用者最多、周邊功能最齊的一個：對話、網頁搜尋、檔案上傳、圖片生成、語音、資料分析都在同一個介面。官網的免費方案頁寫明，免費使用者的日常文字對話不限次數，只有防濫用機制；檔案上傳、圖片生成、語音與資料分析則各有額度。付費方案由低到高是 Go、Plus、Pro：Go 在美國是每月 8 美元，Plus 每月 20 美元，Pro 從每月 100 美元起，另有每月 200 美元的 20 倍額度版。目前的模型家族是 GPT-5.6，分成 Sol、Terra、Luna 三個等級，最強的 GPT-6 Astra 主打最難的推理與程式工作。OpenAI 的支援地區名單有台灣，付費以美元計。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 新手入門：註冊、選模型、第一次對話",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude 是 Anthropic 的聊天工具，長文件、寫作與程式是它被提得最多的用途。官網方案頁列出免費版就能在網頁、iOS、Android 與桌面版使用，含網頁搜尋、記憶、檔案建立、語音模式、Artifacts 與連接器，模型是 Sonnet 與 Haiku；Pro 每月 20 美元（年繳換算每月 17 美元）多了 Opus 模型、Claude Code、Cowork、Design 與 Research；Max 從每月 100 美元起，額度是 Pro 的 5 倍或 20 倍。目前的模型是 Claude Opus 5、Sonnet 5、Haiku 4.5，以及主打長時間代理工作的 Claude Fable 5.1。Anthropic 的支援名單有台灣，付費同樣以美元計。"
+        },
+        {
+          "type": "link",
+          "text": "Claude 新手入門：專案、Artifacts 與長文件怎麼用",
+          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemini 是 Google 的聊天工具，優勢是跟 Gmail、Google 文件、YouTube、地圖綁在一起，而且有台幣定價。免費版用 Gemini 3.6 Flash，含圖片生成、Deep Research、Gemini Live 語音與 Canvas，還有 15 GB 雲端空間。付費方案在台灣叫 Google AI Plus 每月 165 元、Google AI Pro 每月 650 元、Google AI Ultra 每月 3,300 元或 6,500 元；Pro 是多數人會考慮的一階，額度是免費版的 4 倍，附 5 TB 空間與 YouTube Premium Lite。Gemini App 的支援地區有台灣，語言含繁體中文。"
+        },
+        {
+          "type": "link",
+          "text": "Gemini 新手入門：跟 Gmail、文件、地圖一起用",
+          "url": "https://mokaair.com/zh-TW/life/gemini-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "寫程式的代理：OpenAI Codex",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex 不是另一個聊天機器人，而是 OpenAI 的寫程式代理：你用文字描述要做的事，它在你的專案裡讀檔案、改程式、跑測試，再把結果交回來。它有網頁版、終端機的 CLI、VS Code 等編輯器的擴充功能，以及 iOS App，全部用同一個 ChatGPT 帳號登入。依官方文件，Free、Go、Plus、Pro 四個方案都包含 Codex，差別在額度：免費版適合試幾個小任務，Plus 適合每週幾次專注的寫程式時段，Pro 的額度是 Plus 的 5 倍或 20 倍，並可用 GPT-5.3-Codex-Spark 這個快速模型；圖片生成不在免費版裡。開發者也可以改用 API 金鑰，按 API 用量付費。如果你不寫程式，可以先跳過這一段，知道它跟 Claude Code、MiniMax Code 是同一類工具就好。"
+        },
+        {
+          "type": "link",
+          "text": "OpenAI Codex 是什麼：不會寫程式也看得懂的說明",
+          "url": "https://mokaair.com/zh-TW/life/codex-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "兩家中國公司：MiniMax 與 DeepSeek",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "MiniMax 的公司全名是上海稀宇科技，在台灣最常被看到的產品是海螺 AI（Hailuo AI），一個做影片、圖片與音訊的生成工具。最新的模型 MiniMax H3 可以生成最長 15 秒、2K 解析度、帶原生立體聲的影片；免費使用者可以生成，但下載的影片會有浮水印，付費方案由低到高是 Standard、Pro、Master、Ultra、Max，每月配給的點數月底歸零，價格以官網為準。除了影片，MiniMax 還有語音模型 Speech 2.8、音樂模型 Music 3.0，以及開放權重的文字模型 M3：上下文長度 1M tokens，主打寫程式與代理任務，用它自家的社群授權，商用可以，年營收超過 2,000 萬美元要先取得書面授權。給寫程式的人與開發者的 Token Plan 分成 Plus 每月 22 美元、Max 每月 55 美元、Ultra 每月 132 美元。國際版海螺 AI 由新加坡公司營運，中國版的隱私協議則明寫資料存放在中國境內；國際版網站在台灣可以打開，帳號與付款細節以官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "MiniMax 是什麼：海螺 AI 影片、語音與開源模型",
+          "url": "https://mokaair.com/zh-TW/life/minimax-beginner-guide"
+        },
+        {
+          "type": "paragraph",
+          "text": "DeepSeek 的營運公司是杭州深度求索（Hangzhou DeepSeek Artificial Intelligence Co., Ltd.）。它的網頁版與 App 官方寫明完全免費、沒有廣告、沒有內購，有網頁搜尋、深度思考模式與檔案上傳；最新的模型 DeepSeek-V4.1-Flash 的權重用 MIT 授權開源，上下文長度同樣是 1M tokens，而且能看圖。免費與開源是它的兩大吸引力，但資料流向要先知道：DeepSeek 的隱私政策明寫，個人資料在中華人民共和國境內收集、處理與存放。台灣數位發展部在 2025 年初警示公務機關與關鍵基礎設施不得使用，行政院隨後宣布公務機關全面禁用，含雲端服務、App 與地端下載；資安署 2025 年 2 月 20 日的新聞稿寫明目前未限制一般民眾下載使用，但提醒注意資安與隱私風險。如果你在公部門、學校或公營事業工作，或處理任何不能外流的資料，直接不要用。"
+        },
+        {
+          "type": "link",
+          "text": "DeepSeek 是什麼：免費、開源與資料流向一次講清楚",
+          "url": "https://mokaair.com/zh-TW/life/deepseek-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "免費版能做什麼、付費從哪一階開始",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "下表把六個工具的公司、免費版、入門付費方案、強項、台灣可用性與隱私要點放在一起，價格是 2026 年 9 月 13 日各家官網的幣別與數字，台灣有台幣定價的只有 Google。圖解是同一份資料的濃縮版，看圖時記得三件事：入門方案的價格幾乎都落在每月 20 美元上下，免費版的差別主要在模型等級與額度而不是功能，資料存放在中國的兩家要另外考慮。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "工具（公司）",
+            "免費版",
+            "入門付費方案",
+            "強項",
+            "台灣可用性",
+            "資料存放地與隱私要點"
+          ],
+          "rows": [
+            [
+              "ChatGPT（OpenAI，美國）",
+              "文字對話不限次數；檔案、圖片、語音、資料分析各有額度",
+              "Go 每月 8 美元（美國定價）；Plus 每月 20 美元",
+              "功能最齊、使用者最多，帳號同時可用 Codex",
+              "支援名單有台灣",
+              "美國公司；可關閉「為所有人改善模型」，或用臨時聊天"
+            ],
+            [
+              "Claude（Anthropic，美國）",
+              "Sonnet、Haiku 模型；網頁搜尋、記憶、檔案建立、語音",
+              "Pro 每月 20 美元（年繳換算每月 17 美元）",
+              "長文件、寫作、程式；Pro 含 Claude Code",
+              "支援名單有台灣",
+              "美國公司；隱私設定可關模型改善，無痕對話不用於改善模型"
+            ],
+            [
+              "Gemini（Google，美國）",
+              "Gemini 3.6 Flash；圖片生成、Deep Research、Gemini Live；15 GB 空間",
+              "Google AI Plus 每月 165 元；Google AI Pro 每月 650 元",
+              "跟 Gmail、文件、YouTube 整合；有台幣定價",
+              "有台灣，語言含繁體中文",
+              "全球伺服器；可關「保留活動記錄」，關掉後只保留 72 小時"
+            ],
+            [
+              "Codex（OpenAI，美國）",
+              "Free 方案可試小任務；不含圖片生成",
+              "隨 ChatGPT Plus 每月 20 美元",
+              "寫程式代理；網頁、CLI、編輯器擴充、iOS",
+              "隨 ChatGPT",
+              "同 ChatGPT"
+            ],
+            [
+              "MiniMax 海螺 AI（上海稀宇科技，中國）",
+              "可生成影片，下載有浮水印",
+              "海螺 AI Standard（價格以官網為準）；Token Plan Plus 每月 22 美元",
+              "影片、語音、音樂；開放權重模型 M3",
+              "國際版網站可開，以官網為準",
+              "國際版由新加坡公司營運；中國版資料存放在中國境內"
+            ],
+            [
+              "DeepSeek（杭州深度求索，中國）",
+              "網頁與 App 全部免費，無廣告、無內購",
+              "沒有個人付費方案",
+              "免費、MIT 授權開源、能看圖",
+              "民眾可用；公務機關 2025 年起全面禁用",
+              "資料在中國境內收集、處理與存放"
+            ]
+          ],
+          "caption": "六個 AI 工具比較，2026 年 9 月 13 日依各家官網查證，價格為官網幣別"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-tools-2026-overview/diagram-1.svg",
+          "alt": "六個 AI 工具的比較矩陣：ChatGPT、Claude、Gemini、Codex、MiniMax、DeepSeek 各一列，欄位是免費版、入門付費方案、強項、台灣可用性與資料存放地；標出 Go 8 美元、Plus 與 Pro 20 美元、Google AI Plus 165 元與 AI Pro 650 元、Token Plan Plus 22 美元，以及兩家中國公司的資料存放在中國",
+          "width": 1600,
+          "height": 900,
+          "caption": "一列一個工具、一欄一個面向：先看第二欄免費版夠不夠，再看第三欄的入門價格，最後一欄是資料放哪裡。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "AI 免費版夠不夠用：什麼情況才需要付費",
+          "url": "https://mokaair.com/zh-TW/life/ai-free-vs-paid-plans-2026"
+        },
+        {
+          "type": "heading",
+          "text": "依你的需求先從哪個開始",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一次用不需要同時開三個帳號。依你最常做的事挑一個免費版，用兩週，碰到額度上限或功能不夠再考慮付費或換工具。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "只是想試試看、什麼都問一點：ChatGPT 或 Gemini 的免費版，兩個的免費文字對話都很夠用；已經重度用 Gmail 與 Google 文件的人先選 Gemini。",
+            "要讀長文件、改長文章、整理會議紀錄：Claude 免費版，覺得 Sonnet 不夠再升 Pro 用 Opus。",
+            "要寫程式：先用你已經有帳號的那家，ChatGPT 帳號就用 Codex，Claude Pro 就用 Claude Code；兩邊的免費額度都只夠試小任務。",
+            "要做影片、配音或音樂：海螺 AI 免費版先試，接受浮水印再決定要不要付 Standard。",
+            "想在自己的電腦跑模型或做研究：DeepSeek 與 MiniMax 的開放權重模型可以下載，但線上版的資料流向要自己評估。",
+            "每月預算大約 20 美元：ChatGPT Plus、Claude Pro、Google AI Pro 三選一，選你最常用的那個生態系。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "依任務選 AI 工具：寫作、翻譯、整理資料、寫程式各用哪個",
+          "url": "https://mokaair.com/zh-TW/life/ai-tools-choose-by-task"
+        },
+        {
+          "type": "link",
+          "text": "提示詞入門：把問題問清楚的五個習慣",
+          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+        },
+        {
+          "type": "link",
+          "text": "AI 幻覺與查證：怎麼確認它沒有亂編",
+          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+        },
+        {
+          "type": "heading",
+          "text": "把個資與公司機密留在 AI 之外",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "六個工具的隱私設定路徑不同，但原則一樣：預設值多半允許用你的對話改善模型，要自己關。ChatGPT 在設定的資料控制裡關閉「為所有人改善模型」，或直接開臨時聊天，臨時聊天不進歷史紀錄、不用來訓練；Claude 在隱私設定裡有模型改善的開關，無痕對話也不會用來改善模型；Gemini 在「Gemini 應用程式活動」裡關掉保留活動記錄，關掉後對話只保留 72 小時，但要知道開著時部分對話會由人工審閱，審閱過的最多保留 3 年。DeepSeek 與中國版海螺 AI 沒有任何設定可以讓資料離開中國。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "不要把這些東西貼進任何 AI",
+          "text": "身分證字號、健保卡號、信用卡號、住址與電話、密碼、公司內部文件、客戶名單、未公開的財務數字、病歷，六個工具都不要貼。就算關了模型改善，對話仍會在對方的伺服器上存放一段時間。先把要問的內容去識別化，用「某客戶」「某公司」代替真名，需要的欄位留空，得到答案再自己填回去。公務機關與學校的同仁另外要遵守行政院的生成式 AI 參考指引：機密文書由承辦人親自撰寫，不能給 AI，也不能把應保密或未經機關同意公開的資訊貼進去。"
+        },
+        {
+          "type": "link",
+          "text": "AI 隱私設定清單：ChatGPT、Claude、Gemini 一次關好",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 開發者文件：Codex 與 ChatGPT 方案定價（Free、Go、Plus、Pro、GPT-5.6 家族、GPT-5.3-Codex-Spark）",
+          "url": "https://learn.chatgpt.com/docs/pricing",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "ChatGPT 免費方案頁（免費文字對話與各項工具額度）",
+          "url": "https://chatgpt.com/plans/free/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 開發者文件：支援的國家與地區（含台灣）",
+          "url": "https://developers.openai.com/api/docs/supported-countries",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：資料控制常見問題（關閉「為所有人改善模型」、臨時聊天）",
+          "url": "https://help.openai.com/en/articles/7730893-data-controls-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 方案頁（Free、Pro、Max 價格與內容）",
+          "url": "https://claude.com/pricing",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 開發者文件：模型總覽（Opus 5、Sonnet 5、Haiku 4.5、Fable 5.1）",
+          "url": "https://platform.claude.com/docs/en/about-claude/models/overview",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic：支援的國家與地區（含台灣）",
+          "url": "https://www.anthropic.com/supported-countries",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 隱私中心：我的資料會用來訓練模型嗎（模型改善設定、無痕對話）",
+          "url": "https://privacy.claude.com/en/articles/10023580-is-my-data-used-for-model-training",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Gemini 台灣訂閱方案頁（免費版內容、Google AI Plus、Pro、Ultra 台幣定價）",
+          "url": "https://gemini.google/tw/subscriptions/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google 說明：Gemini App 支援的國家與語言（含台灣、繁體中文）",
+          "url": "https://support.google.com/gemini/answer/13575153?hl=en",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google 說明：Gemini 應用程式隱私中心（保留活動記錄、72 小時、人工審閱保留 3 年）",
+          "url": "https://support.google.com/gemini/answer/13594961?hl=en",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Hugging Face：MiniMax-M3 模型卡（開放權重、1M 上下文、MiniMax 社群授權與 2,000 萬美元營收門檻）",
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "MiniMax 官方部落格：MiniMax H3（影片最長 15 秒、2K、原生立體聲）",
+          "url": "https://www.minimax.io/blog/minimax-h3",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Hailuo AI 訂閱服務條款（Standard、Pro、Master、Ultra、Max、免費使用者浮水印、點數月底歸零）",
+          "url": "https://hailuoai.video/doc/payment-policy.html",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "海螺 AI 隱私協議（營運公司上海稀宇科技、資料存放在中國境內）",
+          "url": "https://www.hailuoai.com/doc/privacy.html",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "MiniMax 開放平台文件：Token Plan（Plus、Max、Ultra 價格）",
+          "url": "https://platform.minimax.io/docs/guides/pricing-token-plan",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "DeepSeek 官方公告：DeepSeek App（完全免費、無廣告、無內購、網頁搜尋、深度思考、檔案上傳）",
+          "url": "https://www.deepseek.com/en/news/deepseek-app/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Hugging Face：DeepSeek-V4.1-Flash 模型卡（MIT 授權、1M 上下文、多模態）",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "DeepSeek 隱私政策（資料控制者杭州深度求索、資料存放在中華人民共和國境內）",
+          "url": "https://cdn.deepseek.com/policies/en-US/deepseek-privacy-policy.html",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "數位發展部資通安全署新聞稿：公務機關全面禁用 DeepSeek AI 服務，未限制一般民間使用（2025-02-20）",
+          "url": "https://moda.gov.tw/ACS/press/news/press/15296",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}
