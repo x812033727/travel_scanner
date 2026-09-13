@@ -1,13 +1,13 @@
 ---
 id: 2026-09-13-launch-articles-batch-3-twenty-taiwan
 title: Launch articles batch 3: twenty Taiwan guides in en, ja, ko and zh-CN
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-fable-5-1
 claimed_at: 2026-09-13T04:45:54Z
 created_at: 2026-09-13T04:45:23Z
-completed_at:
+completed_at: 2026-09-13T10:41:38Z
 branch:
 depends_on: []
 scope:
@@ -27,13 +27,13 @@ each audience (entry rules, payment habits and language support differ), not tra
 
 ## Definition of done
 
-- [ ] Twenty packs under `apps/api/app/guides/content/`, each with `locales.en`, `.ja`, `.ko`
+- [x] Twenty packs under `apps/api/app/guides/content/`, each with `locales.en`, `.ja`, `.ko`
       and `.zh-CN`, a hero photo, a self-drawn SVG diagram (Traditional Chinese + English
       labels, so one file serves every locale), a table, a callout, sources with `checked_on`
       and partner blocks per `docs/travel-guides.md`; the packaged-content test passes.
-- [ ] Photographs from Wikimedia Commons only (CC0 / PD / CC BY / CC BY-SA), licence read
+- [x] Photographs from Wikimedia Commons only (CC0 / PD / CC BY / CC BY-SA), licence read
       from the Commons API; every number on a diagram appears in the article text.
-- [ ] Facts checked on official pages on the day of writing; audience-specific rules
+- [x] Facts checked on official pages on the day of writing; audience-specific rules
       (visa-free days, arrival card, payment) verified per locale, anything unverified
       written as "check the official site".
 
@@ -62,11 +62,11 @@ The twenty (slug · kind · destination · topics):
 19. `tainan-2-day-itinerary` · howto · tainan · itinerary, food, culture
 20. `taiwan-winter-events-2026-2027` · intel (2027-03-15) · none · season, culture
 
-- [ ] Ten writing agents, two articles each, from `article_brief_v3.md`: one meta file,
+- [x] Ten writing agents, two articles each, from `article_brief_v3.md`: one meta file,
       one document per locale, a Commons manifest and the SVG per article.
-- [ ] `ingest_pack3.py <slug>` per article: assemble the pack from the locale files, validate,
+- [x] `ingest_pack3.py <slug>` per article: assemble the pack from the locale files, validate,
       copy the SVG, fetch and licence-check photos, write sizes and credits, save.
-- [ ] Review diagrams (numbers vs text, labels >= 15 px), run the packaged-content test,
+- [x] Review diagrams (numbers vs text, labels >= 15 px), run the packaged-content test,
       commit, open the PR, merge when green, deploy, `guides-import --publish`.
 
 ## How to verify
@@ -83,3 +83,31 @@ uv run python -m app.cli guides-import --actor-email <admin> --dry-run
   city; hotel and connectivity modules likewise.
 - Hualien / Taroko is not a catalog destination, so it is not in this batch; a Taroko
   article would need the post-2024-earthquake reopening status verified first.
+
+## Outcome (2026-09-13)
+
+- Twenty packs, each with `en`, `ja`, `ko` and `zh-CN`; the packaged-content test passes for all fifty
+  articles in the directory.
+- Two writing rounds. The first ten agents hit the session rate limit after about thirty minutes;
+  every locale they had saved survived, six articles were complete. The second round used one agent
+  per remaining unit (smaller contexts cost less than two articles in one agent), with shared rules
+  in the session scratchpad (`taiwan_round2.md`).
+- Diagrams: the check script now renders each SVG with headless Edge and asks the author to look.
+  Before that, four of the first six diagrams had labels on their own route lines or piled together;
+  Taichung/Sun Moon Lake and Jiufen were redrawn, HSR's arcs became brackets.
+- Facts corrected across articles after one writer's research contradicted another's:
+  - TWAC is filed within 7 days before arrival, arrival day included (official TWAC site); the
+    2025 NIA launch notice said 3 days. Six articles fixed and cited to the TWAC site.
+  - The Xinyi Line eastern extension opened on 30 August 2026 (Department of Rapid Transit
+    Systems); Xiangshan is no longer the terminus.
+  - Japanese passports only need to be valid for the stay (BOCA), not six months.
+  - Undeclared foreign cash: only the excess over the limit is confiscated, and undeclared gold or
+    securities draw a fine (Money Laundering Control Act, Article 14).
+  - The Elephant Mountain trail is partly closed for works from 20 July 2026 to 13 April 2027
+    (Geotechnical Engineering Office); the Taipei 4-day article now says so and links the
+    viewpoints guide.
+- The food guide's hero was the same Commons photo as the night-markets guide; it now uses a
+  braised pork rice photo.
+
+Left for the back office after deploy: offers for Taichung, Kaohsiung and Tainan, and hotel /
+connectivity offers for Taipei, so those buttons render.
