@@ -93,6 +93,19 @@ async def add_usage_package(email: str, package_code: str, reference: str) -> No
         )
 
 
+async def _env_owner(session: Any, email: str) -> User | None:
+    """An owner listed in ADMIN_EMAILS is an administrator by configuration, exactly as the
+    admin bootstrap treats them, even when ``users.is_admin`` was never backfilled -- which is
+    the state of a production database bootstrapped before the column existed."""
+    normalized = email.strip().lower()
+    if normalized not in get_settings().admin_email_set:
+        return None
+    user: User | None = await session.scalar(
+        select(User).where(func.lower(User.email) == normalized)
+    )
+    return user if user is not None and user.is_active else None
+
+
 async def import_guides(
     *,
     directory: Path | None,
@@ -122,7 +135,9 @@ async def import_guides(
         if not dry_run:
             if not actor_email:
                 raise SystemExit("--actor-email is required unless --dry-run")
-            actor = await _admin_user(session, actor_email)
+            actor = await _admin_user(session, actor_email) or await _env_owner(
+                session, actor_email
+            )
             if actor is None:
                 raise SystemExit("The actor must be an active administrator")
         try:
