@@ -1,0 +1,310 @@
+{
+  "slug": "chatgpt-custom-instructions-memory",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "ChatGPT 自訂指令與記憶功能：讓它記住你的偏好，每次都用台灣繁體中文回答",
+      "description": "ChatGPT 有兩種讓它「記得你」的方法：自訂指令是你寫給它的固定說明，每個對話都會讀；記憶是它自己從對話、檔案與連接的 App 整理出來的摘要。這篇依 2026 年 9 月 OpenAI 說明中心與官方公告，說明自訂指令在哪裡設、兩塊內容各寫什麼，附三組可直接貼上、都包含一律用台灣繁體中文的範例，再講記憶的兩種來源、怎麼看與逐條刪、怎麼叫它記住或忘掉，以及免費版限制、記憶常出的錯與什麼時候該關。",
+      "hero": {
+        "src": "/guides/chatgpt-custom-instructions-memory/hero.jpg",
+        "alt": "一個深綠色的大對話泡泡，右邊貼著一張橘色便條紙，上方浮著一個藍色的大腦形狀圖示，插圖以簡單幾何形狀表現 ChatGPT 的自訂指令與記憶",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "想讓 ChatGPT 每次都用台灣的繁體中文回答、知道你是誰、記得你的偏好，靠的是兩個不同的功能：自訂指令（Custom instructions）是你寫給它的固定說明，設定一次、每個對話都會讀；記憶（Memory）是它自己從你的對話裡記下來的事，會隨著你聊得越多而累積、更新。結論先講：偏好與身分寫進自訂指令，記憶留給它自然累積，但每季開一次記憶清單，刪掉過時的，個資不要叫它記。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇依 2026 年 9 月 OpenAI 說明中心與官方公告整理：先分清楚兩個功能，再一步步設定自訂指令，附三組可以直接貼上的範例；接著講記憶記了什麼、在哪裡看、怎麼逐條刪、怎麼叫它記或忘；最後用一張圖說明自訂指令、專案指令與這個對話的三層關係，以及哪些方案有記憶、記憶常出的錯與什麼時候該關。"
+        },
+        {
+          "type": "heading",
+          "text": "兩個功能的差別：自訂指令是你寫的，記憶是它記的",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "自訂指令是一段固定文字，由你親手寫、你隨時改，內容不會自己變；ChatGPT 每次回答前都會讀一遍，所以最適合放「永遠成立」的事：你是誰、做什麼工作、要它用什麼語言與格式回答。記憶則相反，是 ChatGPT 在你聊天的過程中自己判斷「這件事以後用得到」而記下的：你說過在準備日本自助旅行、家裡有兩隻貓、不吃牛肉，之後開新對話它也會帶進來。依 OpenAI 說明中心，現在的記憶會從你的對話、上傳的檔案與連接的 App 自動整理成一份「記憶摘要」，並隨著對話更新。"
+        },
+        {
+          "type": "paragraph",
+          "text": "判斷方法：這件事你希望它一字不差照做，就寫進自訂指令；這件事你只是提過、之後可能會變，就交給記憶，但要定期檢查。兩者可以同時開，也可以只開自訂指令、關掉記憶，適合共用電腦或不想被累積偏好的人。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "自訂指令：在哪裡設、寫什麼、三組可以直接貼的範例",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "依 OpenAI 說明中心，網頁版與桌面版的路徑是：左下角頭像 → 設定（Settings）→ 個人化（Personalization），確認「啟用自訂（Enable customization）」是開的，再把內容填進自訂指令欄位；手機 App 是設定 → 自訂 ChatGPT（Customize ChatGPT）。免費版與 Go 最多 1,500 個字元，Plus、Pro、Business、Enterprise 與 Edu 最多 5,000 個字元；存檔後立即套用到所有對話，包括已經開著的舊對話。所有方案都有這個功能。分享對話連結時，看的人不會看到你的自訂指令。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2023 年 7 月推出時，自訂指令是兩個問題：「你希望 ChatGPT 知道你的哪些事」與「你希望 ChatGPT 怎麼回答」；現在的說明中心只寫一個自訂指令欄位，個人化頁面另外多了「個性（Personality）」的八種選項與「特質（Characteristics）」的四個滑桿（溫暖、熱情、標題與清單、表情符號），實際欄位以你看到的介面為準。不管介面是一格還是兩格，內容都照這兩塊寫：關於你，寫身分、常做的事、程度；希望它怎麼回答，寫語言、長度、格式、要不要先問清楚。下面三組範例可以直接貼，每組都把語言那一句放最前面。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "範例一（一般使用者）關於你：我住在台灣，平常用 ChatGPT 查生活資訊、規劃旅行、寫訊息給家人朋友。我不是專業人士，專有名詞請用白話解釋。",
+            "範例一 希望它怎麼回答：一律用台灣的繁體中文用語，不要用中國大陸的說法（寫「軟體」「網路」「資料」「影片」，不寫「軟件」「網絡」「數據」「視頻」）。先給結論再給理由，一次不要超過五點；不確定的事直接說不確定，不要編。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "list",
+          "items": [
+            "範例二（上班族）關於你：我在台灣的公司做行銷企劃，常用 ChatGPT 寫企劃書、整理會議紀錄、改英文 email。讀者多半是主管與客戶。",
+            "範例二 希望它怎麼回答：一律用台灣的繁體中文用語；商務文件用書面語、不要表情符號。改文章時只回傳改好的版本，不要逐句解釋；需要更多資訊時先問我，不要自己假設。英文 email 請附一句中文說明語氣。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "list",
+          "items": [
+            "範例三（學生）關於你：我是台灣的大學生，主修資工，用 ChatGPT 讀英文論文、練習寫程式、準備報告。我想學會，不是要答案。",
+            "範例三 希望它怎麼回答：一律用台灣的繁體中文用語，術語第一次出現時括號附英文。解題先給提示，我說「給答案」再給完整解答；程式碼要加註解，並說明可能出錯的地方。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "寫好之後開一個新對話，問一句「你知道我是誰、要怎麼回答我嗎」檢查它有沒有讀到；沒有生效就回設定頁看啟用開關。自訂指令的內容與對話一樣會用來改善模型，不希望的話到設定 → 資料控制（Data Controls）關掉「為所有人改善模型（Improve the model for everyone）」。"
+        },
+        {
+          "type": "link",
+          "text": "提示詞怎麼寫：讓 AI 一次聽懂的基本功",
+          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+        },
+        {
+          "type": "heading",
+          "text": "記憶：它記了什麼、在哪裡看、怎麼逐條刪、怎麼叫它記或忘",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "依 OpenAI 的官方公告，記憶有兩種來源：「已儲存的記憶（saved memories）」是你明確叫它記的一句話，例如「記住我吃素」；「聊天紀錄（chat history）」是它從過去的對話裡自己整理出來的理解。2026 年 6 月 4 日 OpenAI 公告了新一代的記憶系統，說明中心現在把自動整理的部分叫「記憶摘要（memory summary）」：來源包括對話、你上傳的檔案與連接的 App，會自動更新，官方舉的例子是「七月要去新加坡」在旅行結束後會自己改成「2026 年七月去過新加坡」；已儲存的記憶則保留為一份獨立清單。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "看：左下角頭像 → 設定 → 個人化 → 記憶（Memory），會看到記憶摘要與已儲存的記憶清單；摘要是可以直接編輯的文字框，選取其中一句就能修改或刪掉。",
+            "逐條刪：已儲存的記憶可以一條一條刪，也可以全部清空；要整個關掉時，從記憶頁的三點選單選「刪除並關閉記憶（Delete and turn off memory）」。刪記憶不會刪對話，之後重新開啟記憶，它可能從還在的對話再整理出來。",
+            "從對話裡改：每則回答下方的書本圖示會列出這次回答用了哪些來源（自訂指令、過去對話、檔案、記憶），旁邊的三點選單可以直接更正一條記憶。",
+            "徹底刪掉一件事：說明中心寫明要把每一個出現的地方都刪掉，包括過去的對話、封存的對話、檔案、記憶摘要，並中斷連接的 App；被刪的已儲存記憶為了安全與除錯會另外保留最多 30 天。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "在對話裡直接講也可以：「記住這件事：我的報告一律用 Word 格式」它會存成一條記憶；「忘掉我的公司名稱」它會刪掉；「你記得我什麼」它會列出來。不想留下任何痕跡時用暫時對話：開新對話，點右上角膠囊狀的「暫時（Temporary）」按鈕，開始時要選「個人化」或「未個人化」，開始後不能改。個人化的暫時對話會讀既有記憶與自訂指令，但不會新增或更新記憶；未個人化的連自訂指令與記憶都不讀。暫時對話不進歷史紀錄、不用來訓練模型，OpenAI 為了安全可能保留最多 30 天。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        },
+        {
+          "type": "heading",
+          "text": "三層設定怎麼疊：自訂指令、專案指令、這個對話",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把它想成三層，越下面越具體、越優先。第 1 層是自訂指令，整個帳號的每個對話都讀。第 2 層是專案指令：在專案右上角的三點選單 → 專案設定（Project settings）裡寫，只在那個專案內生效，說明中心寫明它會蓋過你的全域自訂指令，所以「這個專案的文件一律用英文」不必動第 1 層。第 3 層是這個對話裡你打的提示詞與貼上的資料，最具體，最後決定。記憶是從旁邊流進來的：每次回答前，ChatGPT 會把第 1、2 層與記憶摘要一起讀進來，對話結束後再把新學到的事更新回摘要。專案裡的記憶另有規則：專案可以設成「只用專案內的記憶（project-only memory）」，此時對話只參考同一個專案裡的其他對話，不用已儲存的記憶，專案外的對話也讀不到專案裡的內容；共用給別人的專案一律是這個模式。暫時對話則從這張圖的旁邊繞過去，內容不會寫進記憶。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/chatgpt-custom-instructions-memory/diagram-1.svg",
+          "alt": "三層設定的層次圖：第 1 層自訂指令、第 2 層專案指令、第 3 層這個對話由上往下疊，右側的記憶（已儲存的記憶與聊天紀錄整理成記憶摘要）在回答前讀進第 3 層，左下的暫時對話繞過記憶",
+          "width": 1600,
+          "height": 900,
+          "caption": "由上往下看三層：越下面越具體、越優先；右側是記憶怎麼流進來、流回去，左下的暫時對話與中間的專案記憶規則是兩個例外。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "還有一件事：OpenAI 的定價頁寫明系統指令與記憶會占掉共用上下文視窗的一部分，真正留給你貼資料的空間比總數小。自訂指令不要塞滿字數上限，寫必要的就好；長篇背景資料放進專案的檔案。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 專案功能：把檔案、指令與對話收在同一個地方",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-projects-guide"
+        },
+        {
+          "type": "link",
+          "text": "上下文視窗是什麼：AI 一次能記多少、為什麼聊久了會忘",
+          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+        },
+        {
+          "type": "heading",
+          "text": "哪些方案有記憶，免費版差在哪",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "自訂指令所有方案都有，差別只在字數。記憶依 OpenAI 的公告從 2024 年 9 月起開放給免費版與付費版，2025 年 4 月起會參考你所有的過去對話，免費版 2025 年 6 月才拿到輕量版，官方說法是免費版只有短期的連貫性，付費版才有長期理解；2026 年 6 月的新記憶系統先給美國的 Plus 與 Pro，再逐步擴到其他國家與免費版、Go。OpenAI 定價頁目前的寫法是：免費版「有限的記憶與上下文」（每月 0 美元）、Go「較長的記憶」（每月 8 美元）、Plus「擴充的記憶與上下文」（每月 20 美元）、Pro「最大的記憶與上下文」（每月 100 美元起），但沒有寫具體條數或天數，以官網為準。公司或學校配發的 Business、Enterprise 帳號，管理員可以決定整個工作區能不能用記憶，工作區的對話與記憶不會用來訓練模型，也不會轉給同事。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "自訂指令",
+            "記憶",
+            "專案指令"
+          ],
+          "rows": [
+            [
+              "誰寫的",
+              "你親手寫的固定文字",
+              "ChatGPT 從對話、檔案、連接的 App 自動整理；你也可以叫它記一句",
+              "你為某個專案寫的說明"
+            ],
+            [
+              "影響範圍",
+              "整個帳號的每個對話，存檔後立即套用，含舊對話",
+              "每個新對話都會參考；project-only 的專案與未個人化的暫時對話不讀",
+              "只在該專案內，且蓋過自訂指令"
+            ],
+            [
+              "在哪裡設",
+              "設定 → 個人化 → 自訂指令；手機是設定 → 自訂 ChatGPT",
+              "設定 → 個人化 → 記憶",
+              "專案右上角三點選單 → 專案設定"
+            ],
+            [
+              "怎麼改或刪",
+              "直接改文字，或關掉「啟用自訂」",
+              "編輯摘要、逐條刪已儲存的記憶、或「刪除並關閉記憶」；對話裡說「忘掉」也行",
+              "改專案設定裡的文字；刪專案就沒了"
+            ],
+            [
+              "方案限制",
+              "所有方案；免費與 Go 1,500 字元，Plus 以上 5,000 字元",
+              "所有方案；免費版較精簡，付費版較長，以官網為準",
+              "所有方案都能建專案"
+            ]
+          ],
+          "caption": "2026 年 9 月依 OpenAI 說明中心與定價頁整理；選單名稱與位置會隨版本調整，以官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "記憶會出的錯，以及什麼時候該關",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "記憶最常出三種錯。第一是記到過時的事：你三個月前說在找房子，它可能到現在還在每個回答裡提搬家；新的記憶系統會自動把過去的事改成過去式，但不保證每條都改到。第二是把別人的事記成你的：你幫同事貼一份履歷請它潤飾，或幫爸媽問病情，它可能把「有高血壓」「想轉職」記在你身上；幫別人問問題時用暫時對話，或問完立刻到記憶頁刪掉。第三是專案裡的記憶：專案設成 project-only 時，你在專案外叫它記的偏好在專案內不會生效，專案內聊的內容也不會流到外面，這是設計不是壞掉；「它明明記得卻在專案裡忘了」時先看專案設定。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "共用電腦或共用帳號：家裡的電腦、公司的公用帳號，任何人開新對話都會帶著你的記憶；關掉記憶，或至少每次用完登出。",
+            "幫別人問問題：親友的健康、同事的文件、客戶的需求，用未個人化的暫時對話，內容不會進記憶也不進紀錄。",
+            "處理客戶或公司資料：客戶名單、合約、財報，用公司採購的企業方案，個人帳號不要開著記憶處理這些；真的要用，先把姓名換代號、數字打碼。",
+            "帳號要借人或即將不用：先到記憶頁「刪除並關閉記憶」，再刪對話；刪記憶不會刪對話，兩件事要分開做。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "每季看一次記憶清單，刪掉過時的；個資不要叫它記",
+          "text": "把「設定 → 個人化 → 記憶」加進行事曆，每季開一次：過時的刪掉、記錯的當場改、別人的事整條刪。身分證字號、地址、電話、病歷、密碼這類個資不要叫它記，寫進自訂指令也不要；它需要知道的是你的偏好，不是你的身分證。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 說明中心：ChatGPT Custom Instructions（Settings → Personalization → Enable customization、手機 Customize ChatGPT、免費與 Go 1,500 字元、Plus 以上 5,000 字元、立即套用所有對話、分享連結看不到、用於改善模型）",
+          "url": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：Memory FAQ（記憶摘要來自對話、檔案、連接的 App；Settings → Personalization → Memory；Saved memories 逐條刪；Delete and turn off memory；刪記憶不刪對話；書本圖示；被刪的已儲存記憶保留最多 30 天；project-only memory）",
+          "url": "https://help.openai.com/en/articles/8590148-memory-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：Temporary Chat FAQ（右上角 Temporary 按鈕、個人化與未個人化開始時選、不新增或更新記憶、不進歷史、不用於訓練、保留最多 30 天）",
+          "url": "https://help.openai.com/en/articles/8914046-temporary-chat-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：Projects in ChatGPT（三點選單 → Project settings、專案指令蓋過全域自訂指令、project-only memory 與 default memory、共用專案一律 project-only、所有方案可用）",
+          "url": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 官方公告：Memory and new controls for ChatGPT（2024 年 9 月 5 日開放 Free、Plus、Team、Enterprise；2025 年 4 月 10 日參考所有過去對話、saved memories 與 chat history 兩種來源；2025 年 6 月 3 日免費版輕量版；對話裡可叫它忘掉）",
+          "url": "https://openai.com/index/memory-and-new-controls-for-chatgpt/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 官方公告：Dreaming: Better memory for a more helpful ChatGPT（2026 年 6 月 4 日；記憶摘要頁可看、可改、可刪；過時資訊自動更新的新加坡例子；先給美國 Plus 與 Pro，再擴到其他國家與 Free、Go）",
+          "url": "https://openai.com/index/chatgpt-memory-dreaming/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI：ChatGPT 定價頁（Free 0 美元 Limited memory and context、Go 8 美元 Longer memory、Plus 20 美元 Expanded memory and context、Pro 100 美元起 Maximum memory and context、系統指令與記憶占用共用的上下文視窗）",
+          "url": "https://openai.com/chatgpt/pricing/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：Characteristics in ChatGPT（Personalization → Characteristics：Warm、Enthusiastic、Headers & Lists、Emojis，與個性、自訂指令、已儲存的記憶並行）",
+          "url": "https://help.openai.com/en/articles/20001038-characteristics-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：Customizing Your ChatGPT Personality（Default、Conversational、Cynical、Efficient、Friendly、Professional、Quirky、Candid 八種個性）",
+          "url": "https://help.openai.com/en/articles/11899719-customizing-your-chatgpt-personality",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：Memory FAQ (Business Version)（工作區擁有者可控制個人化與記憶、工作區對話與記憶不用於訓練、記憶綁個人帳號不可轉移、2025 年 8 月 29 日 Team 更名 Business）",
+          "url": "https://help.openai.com/en/articles/9295112-memory-faq-business-version",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 官方公告：Custom instructions for ChatGPT（2023 年 7 月 20 日推出，原本的兩個問題：希望 ChatGPT 知道你的哪些事、希望 ChatGPT 怎麼回答）",
+          "url": "https://openai.com/index/custom-instructions-for-chatgpt/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Academy：Personalizing ChatGPT（自訂指令寫角色、風格、格式、規則；可問它記得什麼、叫它記住或忘掉）",
+          "url": "https://openai.com/academy/personalization/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：Data Controls FAQ（Settings → Data Controls → Improve the model for everyone；手機在側欄頭像 → Data Controls）",
+          "url": "https://help.openai.com/en/articles/7730893-data-controls-faq",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}
