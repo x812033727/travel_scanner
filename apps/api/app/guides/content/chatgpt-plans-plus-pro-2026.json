@@ -1,0 +1,364 @@
+{
+  "slug": "chatgpt-plans-plus-pro-2026",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "ChatGPT Plus、Pro 與其他方案差在哪：2026 年怎麼選",
+      "description": "決定付費給 ChatGPT，但該付 Go、Plus 還是 Pro？這篇依 OpenAI help center 與官方定價頁 2026 年 9 月的說明，把 Free、Go、Plus、Pro 兩級、Business、Enterprise 與 Edu 的美元價、模型（GPT-5.6 Luna、Sol、GPT-6 Pro）、額度倍數與多出的功能整理成一張表，說明台灣刷卡、App 內購、5% 營業稅與電子發票、升降級與退款規則，並給五種使用者建議。結論：多數人選 Plus，Pro 留給每天撞額度或需要 GPT-6 Pro 的人。",
+      "hero": {
+        "src": "/guides/chatgpt-plans-plus-pro-2026/hero.jpg",
+        "alt": "米色底上一道由左到右向上的五級階梯，每一級放一個顏色不同、越來越大的圓角方塊，代表 ChatGPT 由低到高的五個方案，下方一行字「付哪一階才划算」",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "已經決定要付費，卻不知道該付哪一階，這篇只回答這一件事。依 OpenAI help center 與官方定價頁在 2026 年 9 月的說明，ChatGPT 的階梯由低到高是 Free、Go、Plus、Pro（分 100 美元與 200 美元兩級）、Business（前身是 Team，分 Standard 與 Premium 兩種座位）、Enterprise 與 Edu。結論先講：多數個人使用者的甜蜜點是每月 20 美元的 Plus，因為 GPT-5.6 Sol、推理強度滑桿與完整的 Codex 都從這一階開始；Go 是給只想多一點額度、不需要 Sol 的人；Pro 是給每天撞額度、或工作上需要 GPT-6 Pro 的人；公司要共用帳單、管理成員才看 Business。"
+        },
+        {
+          "type": "paragraph",
+          "text": "讀完你會拿到一張完整的方案表（美元價、模型、額度要點、多出來的功能），知道台灣使用者在網頁刷卡與 App 內購各會被怎麼收費、5% 營業稅與電子發票怎麼來、年繳有沒有，也知道升級立刻生效、降級要等下一期、退款要走哪個窗口。最後用五種使用情境（偶爾用、每天寫作、寫程式、做研究、公司團隊）各給一個建議。同系列另有一篇比較 ChatGPT、Claude、Gemini 免費版夠不夠用，這篇只講 ChatGPT 自家的階梯。"
+        },
+        {
+          "type": "heading",
+          "text": "全部方案一覽：給誰、多少錢",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "個人方案有四階，全部按月計費，help center 明確寫 Go、Plus、Pro 目前都不提供年繳或預付多個月；團隊用的 Business 才有年繳價。下面的價格是官網列出的美元定價，台灣有沒有當地貨幣定價，以你登入 chatgpt.com 後看到的價格頁為準，付費章節會再細講。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Free：0 元。日常文字對話不限次數，只有防濫用機制；模型是 GPT-5.6 Luna，難題可以按 Think；檔案上傳每天 3 個；部分國家可能看到廣告。給偶爾問問題、改改文字的人。",
+            "Go：美國定價每月 8 美元，其他國家以官網為準。模型一樣是 Luna 加 Think，沒有 GPT-5.6 Sol，但產圖、檔案上傳、資料分析的上限都比免費版高，記憶更長，說明頁列出可以用專案、任務、自訂 GPT 與 Library。給常用免費版、老是卡在檔案與產圖上限的人。",
+            "Plus：每月 20 美元。從這一階開始有 GPT-5.6 Sol 與推理強度滑桿，官網寫的是高流量時段優先存取、更高的模型上限與更多模型選項、更快的回應；Codex 與 ChatGPT Work 的雲端功能也從這階算完整。給每天用、需要深入推理的人。",
+            "Pro 100 美元：官網稱 Pro $100，額度是 Plus 的 5 倍，多了 GPT-6 Pro 與 GPT-5.6 Sol Pro，語音每天最多 15 小時。",
+            "Pro 200 美元：官網稱 Pro $200 或 Pro 20X，額度是 Plus 的 20 倍，語音不限時。help center 寫明自 2026 年 9 月 10 日起暫停接受新訂閱與從其他方案升級到這一級，既有訂戶與 Pro 100 美元不受影響。",
+            "Business：每人每月 25 美元，年繳則每人每月 20 美元，工作區至少要 2 個座位；Premium 座位年繳每人每月 100 美元、月繳 125 美元。它在 2025 年 8 月 29 日以前叫 ChatGPT Team，改名後功能、價格與上限都沒變。",
+            "Enterprise 與 Edu：沒有公開定價，要聯絡 OpenAI 業務。Enterprise 在 Business 之上多了 SCIM、EKM、使用者分析、稽核紀錄、資料保存與存放地區的控制；Edu 是給學校整校導入的版本。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
+          "url": "https://mokaair.com/zh-TW/life/ai-free-vs-paid-plans-2026"
+        },
+        {
+          "type": "heading",
+          "text": "模型與額度：每一階差在哪",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "免費版與 Go 都是 GPT-5.6 Luna，遇到難題按 Think 讓 Luna 多想一下，兩者都拿不到 GPT-5.6 Sol。Plus 的預設是 GPT-5.6 Sol，並多了推理強度滑桿，可以在 Instant、Medium、High、Extra High 之間選；官網說明就算停在 Instant，遇到複雜的要求 ChatGPT 也會自動多推理一些。Plus 在 Chat 裡每個模型能送幾則訊息，help center 沒有列出固定數字，只寫依方案與模型而定，以畫面上的用量提示為準；能確定的是 Plus 沒有 GPT-6 Pro，但 GPT-6 Astra 會在 ChatGPT Work 與 Codex 裡逐步開放給 Plus。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Pro 兩級在滑桿上多了「Pro」這一檔，背後是 GPT-5.6 Sol Pro 或 GPT-6 Pro（由 GPT-6 Astra 驅動）。兩級的核心功能相同，差在額度：Pro 100 美元是 Plus 的 5 倍，GPT-6 Pro 與 Sol Pro 共用同一個每週額度，切換模型不會多出訊息；Pro 200 美元是 Plus 的 20 倍，GPT-6 Pro 的每週上限用完後會自動切到 GPT-5.6 Thinking 的 Medium 檔繼續回答。Sol Pro 另外有每日額度，用法是在模型選單選 GPT-5.6 Sol 再選 Pro。語音也分級：Go 每天最多 3 小時（GPT-Live-1 mini）、Plus 每天最多 3 小時（GPT-Live-1）、Pro 100 美元每天最多 15 小時、Pro 200 美元不限時，時數以連續 24 小時滾動計算；免費版用 GPT-Live-1 mini，每天有時數上限，數字以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Business 的 Standard 座位每月含 15 則 Pro 訊息（GPT-6 Pro 與 Sol Pro 共用）；Premium 座位用量是 Standard 的 5 倍、沒有 5 小時的短期上限，每週含 50 則 Pro 訊息。寫程式用的 Codex 與 ChatGPT Work 共用同一份額度，官方定價頁給的是每 5 小時的本機訊息估計值：Plus 用 GPT-5.6 Sol 約 10 到 100 則、用 Luna 約 250 到 2,000 則、用 GPT-6 Astra 約 5 到 45 則；Pro 100 美元用 Sol 約 50 到 500 則，Pro 200 美元約 200 到 2,000 則；Business Standard 與 Plus 相同，Premium 比照 Pro 100 美元。這些是估計值，工作越大、上下文視窗塞得越滿，每則訊息吃掉的額度越多。Plus 與 Pro 撞到上限可以買 credits 加購用量，不必升級整個方案；credits 除非法律要求否則不退。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/chatgpt-plans-plus-pro-2026/diagram-1.svg",
+          "alt": "ChatGPT 方案階梯圖：由左到右 Free、Go、Plus、Pro、Business 五個方塊，每格列出月費、模型、額度要點與適合的人，下方三行補充額度共用、台灣付費與 Enterprise 的注意事項。",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右價格與額度遞增，每一格是該方案的價格、模型與額度要點；Plus 那一格是多數人的甜蜜點，Pro 200 美元那一級目前暫停新訂閱。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "AI 模型分級怎麼看：旗艦、中階、輕量模型差在哪",
+          "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained"
+        },
+        {
+          "type": "heading",
+          "text": "每一階多出來的功能",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "模型之外，各階差的是工具。下面依 help center 逐項列出，沒查到明確方案別的功能就寫以官網為準。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "專案（Projects）與 Library：Go 的說明頁把專案、任務、自訂 GPT 與 Library 列為包含項目；免費版能不能開專案，以官網為準。專案可以把對話、參考檔案與自訂指令收在一起，是每天寫作或做研究最常用到的功能。",
+            "任務（Scheduled tasks）：所有方案都有，差在同時進行中的任務數：Free 與 Go 3 個、Plus 5 個、Business 與 Edu 10 個、Pro 與 Enterprise 15 個。免費版只能選早上、下午、晚上這種寬鬆時段，要指定確切時間或每小時執行需要付費方案。",
+            "自訂 GPT：Go 以上可以使用別人做好的 GPT，但 help center 寫明個人方案（Free、Go、Plus、Pro）目前不能建立或發布新的 GPT，只有 Business、Enterprise、Edu 工作區可以；OpenAI 也已預告自訂 GPT 會退場、改由 Plugins 接手，Enterprise 工作區預定 2026 年 12 月 11 日退場。不要為了「做自己的 GPT」付費。",
+            "Codex：所有方案都含，額度依方案；Plus 起有網頁、CLI、IDE 擴充與 iOS 版本，還有自動程式碼審查、Slack 整合這類雲端功能；Pro 多了研究預覽的 GPT-5.3-Codex-Spark，一個跑在低延遲硬體上的快速模型，另有獨立的用量上限。",
+            "ChatGPT Work 與代理模式：Work 是做長時間、多步驟工作的代理（Agent），會查資料、跨檔案與連結的 App 工作，產出文件、試算表、簡報。網頁與手機版正逐步開放給 Free 與 Go 以外的付費方案，Pro、Enterprise、Edu 先拿到，Plus 與 Business 隨後；過去叫代理模式（agent mode）的功能同樣是 Plus 以上才有，官網現在把這類需求導向 Work。",
+            "影片：Sora 的網頁與 App 已在 2026 年 4 月 26 日停止服務，API 也將在 2026 年 9 月 24 日停止，影片生成不再是各方案的差異。",
+            "記憶與上下文視窗：Go 起記憶更長、上下文視窗更大，Plus 以上又更長，官網沒有給各方案的數字。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "Codex 新手入門：用 ChatGPT 方案寫程式的第一步",
+          "url": "https://mokaair.com/zh-TW/life/codex-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "台灣怎麼付：刷卡、App 內購、稅與發票",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 chatgpt.com 訂閱是用信用卡以美元計價。help center 的多幣別計費頁只說少數國家提供當地貨幣結帳，沒有把台灣列進去，所以台灣是不是已經改成台幣，以你在價格頁底部選好國家後看到的幣別為準；已經在訂的帳號會維持原本的幣別，想換幣別要先取消、等本期結束再重新訂閱。2025 年 5 月 1 日起，帳號裡沒有填台灣統一編號的使用者會被加收 5% 營業稅，這是台灣法規要求的稅，不是 OpenAI 的加價；有統一編號的公司在帳單資訊填入，就不會被加收。被收稅的訂單會由 noreply@tax.openai.com 寄電子發票（eGUI）到帳號的 Email，主旨是「Your eGUI ... from OpenAI」，沒收到先翻垃圾郵件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用 iPhone 或 Android App 內購，訂閱由 App Store 或 Google Play 管理，會以當地貨幣顯示與扣款，之後取消也要回到 App Store 或 Google Play 操作。要注意三件事：Pro 必須從網頁訂閱，App 裡升不上去；不要在網頁與 App 各訂一次，會被扣兩次；透過 App 買的訂閱要幾分鐘才會出現在 ChatGPT 裡，沒看到先重開 App。年繳的部分再講一次：Go、Plus、Pro 都沒有年繳，只有 Business 有，年繳價是每人每月 20 美元。"
+        },
+        {
+          "type": "heading",
+          "text": "升級、降級與取消：怎麼從一階換到另一階",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "升級：網頁版點個人頭像 → Settings → My Plan（或直接開 Pricing 頁），選要升的方案。升級立刻生效，帳單週期從當天重算。Pro 100 美元可以從這裡升；Pro 200 美元自 2026 年 9 月 10 日起暫停新訂閱與升級，Free、Go、Plus、Pro 100 美元都升不上去，等官網解除再說。",
+            "降級：在 Settings → Billing 選較低的方案，會排程在下一次扣款日生效，這段期間原方案照用；改變主意可以在扣款日前回到帳單設定取消排程。從 Pro 200 美元降下來也一樣保留到本期結束，但降了之後現在升不回去。",
+            "取消：Settings → Billing → Cancel plan → Cancel。至少在下一次扣款日 24 小時前操作才不會被扣下一期，取消後付費功能保留到本期結束，取消排程也可以在扣款日前反悔。App Store 訂的到 iPhone 的訂閱設定取消，Google Play 訂的到 Play 商店 → 訂閱 → ChatGPT 取消。",
+            "退款：取消只停止續扣，不會自動退款。help center 寫明忘了取消、買錯、不滿意、換方案本身都不構成退款理由；歐盟、英國、土耳其的使用者購買後 14 天內取消可按比例退款，台灣沒有這條。要申請就登入 help.openai.com，用右下角的聊天視窗提出，系統會先顯示你的退款資格再轉客服，核准後 5 到 7 個工作天入帳；App Store 買的要向 Apple 申請，Google Play 買的一樣找 OpenAI 客服。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 常見錯誤排解：扣款失敗、額度用完、方案沒生效怎麼辦",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-troubleshooting-common-errors"
+        },
+        {
+          "type": "heading",
+          "text": "五種使用者怎麼選",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "偶爾用：Free 就夠，文字對話不限次數。一天要傳超過 3 個檔案、常產圖或想要更長的記憶再看 Go；Go 沒有 Sol，別期待推理品質變好。",
+            "每天寫作：Plus。GPT-5.6 Sol 加推理滑桿是寫長文、改稿最有感的差別，5 個任務可以排每天的固定工作，語音每天 3 小時夠口述草稿。撞到上限先買 credits，比升 Pro 便宜。",
+            "寫程式：Plus 起才有完整的 Codex 雲端功能，先用 Plus。每天都寫到 5 小時額度見底、或想用 GPT-6 Astra 跑更大的任務，再升 Pro 100 美元拿 5 倍額度；Pro 200 美元目前暫停新訂閱，不用等。",
+            "做研究：Plus 的 Extra High 檔加 ChatGPT Work 能處理多數文獻整理與長報告；真的需要 GPT-6 Pro 反覆驗算，才是 Pro 100 美元。偶爾才需要 Pro 訊息的公司使用者，Business Standard 每月含 15 則也可以。",
+            "公司團隊：2 人以上就能開 Business，每人每月 25 美元或年繳 20 美元，預設不用你們的資料訓練模型，有 SAML SSO、MFA 與集中帳單；重度成員給 Premium 座位，其他人維持 Standard，座位可以隨時重新指派。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "table",
+          "header": [
+            "方案",
+            "月費（美元）",
+            "模型",
+            "額度要點",
+            "多的功能"
+          ],
+          "rows": [
+            [
+              "Free",
+              "0",
+              "GPT-5.6 Luna＋Think",
+              "文字對話不限次數；檔案每天 3 個；語音 GPT-Live-1 mini 有每日上限",
+              "任務 3 個（寬鬆時段）；Codex 基本用量；部分國家有廣告"
+            ],
+            [
+              "Go",
+              "美國 8；台灣以官網為準",
+              "GPT-5.6 Luna＋Think",
+              "產圖、上傳、資料分析上限比 Free 高；語音每天 3 小時（GPT-Live-1 mini）",
+              "專案、任務 3 個、自訂 GPT、Library；記憶更長"
+            ],
+            [
+              "Plus",
+              "20",
+              "GPT-5.6 Sol＋推理滑桿（Instant 到 Extra High）",
+              "高流量時段優先；語音每天 3 小時（GPT-Live-1）；Codex 每 5 小時 Sol 約 10 到 100 則",
+              "完整 Codex 雲端功能；任務 5 個；Work 隨後開放；可買 credits"
+            ],
+            [
+              "Pro 100 美元",
+              "100",
+              "加 GPT-6 Pro、GPT-5.6 Sol Pro",
+              "Plus 的 5 倍；GPT-6 Pro 與 Sol Pro 共用每週額度；語音每天 15 小時",
+              "GPT-5.3-Codex-Spark；任務 15 個；Work 優先開放"
+            ],
+            [
+              "Pro 200 美元",
+              "200（2026 年 9 月 10 日起暫停新訂）",
+              "同 Pro 100 美元",
+              "Plus 的 20 倍；GPT-6 Pro 用完自動切 GPT-5.6 Thinking Medium；語音不限時",
+              "同 Pro 100 美元"
+            ],
+            [
+              "Business Standard",
+              "每人 25；年繳每人 20；至少 2 座位",
+              "GPT-5.6 Sol 系列；GPT-6 Pro 每月 15 則",
+              "Codex 額度與 Plus 相同；有 5 小時短期上限",
+              "工作區、SAML SSO、MFA、集中帳單；預設不訓練；任務 10 個"
+            ],
+            [
+              "Business Premium",
+              "每人月繳 125；年繳每人 100",
+              "同 Standard",
+              "Standard 的 5 倍；無 5 小時上限；每週 50 則 Pro 訊息",
+              "同 Standard，座位可混搭指派"
+            ],
+            [
+              "Enterprise／Edu",
+              "聯絡業務",
+              "含 GPT-6 Pro（Enterprise）",
+              "依合約；可用 credits 彈性計費",
+              "SCIM、EKM、稽核紀錄、資料存放地區；Enterprise 任務 15 個、Edu 10 個"
+            ]
+          ],
+          "caption": "2026 年 9 月依 OpenAI help center 與 learn.chatgpt.com 定價頁整理；美元為官網定價，台灣實際價格與幣別以登入後看到的為準。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Plus 通常是甜蜜點，Pro 留給撞額度的人",
+          "text": "每月 20 美元的 Plus 已經拿到 GPT-5.6 Sol、推理強度滑桿、完整的 Codex 與 5 個任務，多數寫作、學習、日常寫程式的需求到這裡就夠。Pro 是給每天撞額度、或工作上非用 GPT-6 Pro 不可的人：Pro 100 美元是 Plus 的 5 倍額度，Pro 200 美元是 20 倍但目前暫停新訂閱。判斷方式很簡單：一個月內被用量上限擋下來不到幾次，先買 credits；每週都被擋、而且擋的是 GPT-6 Pro 這種只有 Pro 才有的模型，再升 Pro。"
+        },
+        {
+          "type": "link",
+          "text": "小公司要不要買 ChatGPT Business：座位、管理與資料設定",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-team-for-small-business"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI Help Center：About ChatGPT Pro tiers（Pro $100 為 Plus 的 5 倍、Pro $200 為 20 倍、GPT-6 Pro、2026 年 9 月 10 日起暫停 Pro $200 新訂閱、從 Settings → My Plan 升級、Pro 需從網頁訂閱）",
+          "url": "https://help.openai.com/en/articles/9793128-about-chatgpt-pro-tiers",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：What is ChatGPT Plus（每月 20 美元、按月計費、Go／Plus／Pro 無年繳、優先存取與更高上限、GPT-6 Astra 在 Work 與 Codex）",
+          "url": "https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：What is ChatGPT Go（比免費版高的產圖、上傳、資料分析上限、記憶更長、專案／任務／自訂 GPT／Library、Think 用 Luna、沒有 GPT-5.6 Sol、App 內購生效時間）",
+          "url": "https://help.openai.com/en/articles/11989085-what-is-chatgpt-go",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Free Tier FAQ（文字對話不限次數、每天 3 個檔案、GPT-5.6 Luna、廣告、工具各有上限）",
+          "url": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：GPT-5.6 and GPT-6 Pro in ChatGPT（各方案模型、推理強度 Instant／Medium／High／Extra High／Pro、Pro $100 共用每週額度、Pro $200 用完自動切 GPT-5.6 Thinking Medium、Sol Pro 每日額度、Business 每月 15 則與每週 50 則 Pro 訊息）",
+          "url": "https://help.openai.com/en/articles/20001354-gpt-5-6-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "ChatGPT Learn：Pricing（Free 0、Go 8、Plus 20、Pro 100 起、Business 每人 20 美元年繳／25 美元月繳且至少 2 人、Enterprise 與 Edu 聯絡業務、Codex 每 5 小時訊息估計值、GPT-5.3-Codex-Spark、Plus 與 Pro 可買 credits）",
+          "url": "https://learn.chatgpt.com/docs/pricing",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Business Overview（Standard 與 Premium 座位、Premium 為 Standard 的 5 倍且無 5 小時上限、座位可混搭指派、SAML SSO 與 MFA、預設不訓練）",
+          "url": "https://help.openai.com/en/articles/8792828-what-is-chatgpt-business",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Managing billing and seats in ChatGPT Business（每人每月 25 美元月繳、20 美元年繳、Premium 100／125 美元、至少 2 個座位）",
+          "url": "https://help.openai.com/en/articles/8792536-managing-billing-and-seats-in-chatgpt-business",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Business models and limits（Standard 每月 15 則 Pro 訊息、Premium 每週 50 則、5 小時上限）",
+          "url": "https://help.openai.com/en/articles/12003714-chatgpt-business-models-limits",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Business Rename FAQ（2025 年 8 月 29 日 Team 改名 Business，功能、價格與上限不變）",
+          "url": "https://help.openai.com/en/articles/12111915-chatgpt-business-rename-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Work and Codex（Work 是多步驟工作的代理、網頁與手機版開放順序、Free 與 Go 不含 Work）",
+          "url": "https://help.openai.com/en/articles/20001275-chatgpt-work-and-codex",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Creating and editing GPTs（個人方案不能建立或發布新 GPT、自訂 GPT 退場改用 Plugins、Enterprise 預定 2026 年 12 月 11 日）",
+          "url": "https://help.openai.com/en/articles/8554397-creating-a-gpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Scheduled tasks in ChatGPT（同時進行的任務數 Free／Go 3、Plus 5、Business／Edu 10、Pro／Enterprise 15；免費版只能選寬鬆時段）",
+          "url": "https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Voice（Go 每天 3 小時 GPT-Live-1 mini、Plus 3 小時 GPT-Live-1、Pro $100 15 小時、Pro $200 不限時、以 24 小時滾動計算）",
+          "url": "https://help.openai.com/en/articles/8400625-voice-mode-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：What to know about the Sora discontinuation（Sora 網頁與 App 於 2026 年 4 月 26 日停止、API 於 2026 年 9 月 24 日停止）",
+          "url": "https://help.openai.com/en/articles/20001152-what-to-know-about-the-sora-discontinuation",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Taiwan VAT and eGUI（2025 年 5 月 1 日起未填統一編號加收 5% 營業稅、電子發票由 noreply@tax.openai.com 寄出）",
+          "url": "https://help.openai.com/en/articles/11173733-taiwan-vat-and-egui",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Multi-currency billing（當地貨幣結帳僅限少數國家、換幣別需取消後重訂、Apple 與 Google 內購另計）",
+          "url": "https://help.openai.com/en/articles/10421635-multicurrency-billing",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT iOS app: Upgrading to a paid subscription（App 內購由 App Store 或 Google Play 以當地貨幣收費、Pro 必須從網頁升級、價格頁底部選國家）",
+          "url": "https://help.openai.com/en/articles/7905739-chatgpt-ios-app-upgrading-to-a-paid-subscription",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Canceling your ChatGPT subscription（Settings → Billing → Cancel plan、扣款日前 24 小時、保留到本期結束、升級立即生效、降級下期生效並可反悔、App Store 與 Google Play 取消方式）",
+          "url": "https://help.openai.com/en/articles/7232927-how-do-i-cancel-my-chatgpt-subscription",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：How do I request a refund for my ChatGPT subscription（取消不自動退款、退款理由、歐盟／英國／土耳其 14 天、聊天視窗申請、5 到 7 個工作天、App Store 向 Apple 申請）",
+          "url": "https://help.openai.com/en/articles/7232895-how-do-i-request-a-refund-for-my-chatgpt-subscription",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}
