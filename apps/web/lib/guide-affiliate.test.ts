@@ -42,7 +42,7 @@ describe("guideAffiliateModules", () => {
   });
 
   it("keeps the lifestyle topics out of the travel sections", () => {
-    for (const slug of ["ai", "tutorial", "software", "gadgets", "productivity", "daily", "misc"]) {
+    for (const slug of ["ai", "tutorial", "software", "gadgets", "productivity", "daily", "misc", "finance"]) {
       expect(guideAffiliateModules(topics(slug), "howto")).toEqual([]);
       expect(guideAffiliateModules(topics(slug), "intel")).toEqual([]);
     }

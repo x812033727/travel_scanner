@@ -94,6 +94,11 @@ cd apps/api && uv run ruff check . && uv run mypy app
   或等它的認領超過 24 小時變成 stale。
 - `tasks/open/2026-09-14-pack-ingest-urlopen-scheme.md`（open）也要改同一個檔案。
   兩張 open 票可以並存，只是不能同時 active；先落地其中一張，或一起做。
+- **批次票不再依賴這張票。** 原本六張批次票把它寫進 `depends_on`，但那會死鎖：
+  這張票在 `pack_ingest.py` 合併前認領不了，批次票就永遠開不了工。而且 lint 規則本來就不是
+  ingest 的前提——`docs/life-finance-series.md` 一直是這樣寫的。
+  **規則落地時要回頭把已經寫好的財經內容包重跑一次 `lint --kind life`**：
+  照 brief 寫的文章帶著那段免責樣板，應該直接過，但要驗過才算。
 - **機器只擋得住樣板。** 「有沒有變相推薦個股」「風險講得夠不夠」是讀不出來的，
   那留在每張批次票的 Definition of done，由人逐篇看。不要試圖用正規表示式做這件事：
   會在這個系列賴以為生的教育性句子上大量誤判，還給人一種已經擋住了的錯覺。

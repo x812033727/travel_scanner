@@ -12,7 +12,6 @@ branch:
 depends_on:
   - 2026-09-14-life-finance-series-catalogue
   - 2026-09-14-life-finance-topic
-  - 2026-09-14-life-finance-lint-rules
   - 2026-09-14-life-finance-batch-01
   - 2026-09-14-life-finance-batch-05
 scope:
