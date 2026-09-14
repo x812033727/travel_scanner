@@ -55,7 +55,6 @@ from app.travel_services.schemas import (
     HotelOptionEdit,
     HotelOptionInput,
     HotelOptionReview,
-    HotelProvider,
     HotelQuotePolicy,
     Kind,
     OfferInput,
@@ -477,9 +476,7 @@ async def overview_data(
         "quote_providers": {
             code: {
                 "adapter_available": code in ADAPTERS,
-                **config.hotel_quote_policies.get(
-                    cast(HotelProvider, code), HotelQuotePolicy()
-                ).model_dump(),
+                **config.hotel_quote_policies.get(code, HotelQuotePolicy()).model_dump(),
             }
             for code in ("booking", "trip_com", "agoda", "expedia", "rakuten")
         },

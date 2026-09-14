@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Literal, cast
+from typing import Literal
 from uuid import UUID
 
 from pydantic import BaseModel, EmailStr, Field, model_validator
@@ -18,7 +18,7 @@ DEFAULT_CURRENCY: Currency = "TWD"
 def normalize_currency(value: str | None) -> Currency:
     """Fall back rather than 500 on a row written before this list existed."""
     if value in CURRENCIES:
-        return cast(Currency, value)
+        return value
     return DEFAULT_CURRENCY
 
 
