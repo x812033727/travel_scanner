@@ -1,13 +1,13 @@
 ---
 id: 2026-09-14-pack-ingest-urlopen-scheme
 title: Pack ingest urlopen accepts any scheme Commons hands back
-status: review
+status: done
 priority: P3
 area: api
 owner: claude-opus-5
 claimed_at: 2026-09-14T11:14:16Z
 created_at: 2026-09-14T04:01:21Z
-completed_at:
+completed_at: 2026-09-14T14:29:05Z
 branch: claude/security-check-o5zaj1
 depends_on: []
 scope:
@@ -105,3 +105,4 @@ an assertion:
   tasks the same agent happens to own.
 - Filed while working `2026-09-13-ruff-flake8-bandit`, which is where the `S310` suppression
   lives.
+- Merged to `main` in #496 as `88c2388` on 2026-09-14; all 14 CI jobs green on the merged head.

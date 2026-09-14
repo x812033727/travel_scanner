@@ -1,13 +1,13 @@
 ---
 id: 2026-09-14-airalo-feed-utf16-doctype
 title: Airalo feed XXE guard misses a UTF-16 encoded DOCTYPE
-status: review
+status: done
 priority: P3
 area: api
 owner: claude-opus-5
 claimed_at: 2026-09-14T11:14:43Z
 created_at: 2026-09-14T01:09:19Z
-completed_at:
+completed_at: 2026-09-14T14:29:05Z
 branch: claude/security-check-o5zaj1
 depends_on: []
 scope:
@@ -109,3 +109,4 @@ everything else. A test that cannot fail on the bug it names is not evidence.
   go in a new `tests/test_travel_services_jobs.py`. `parse_airalo` lives in
   `app/travel_services/jobs.py` and had no test module of its own, so that is where these
   belong anyway — the collision just made it obvious.
+- Merged to `main` in #496 as `88c2388` on 2026-09-14; all 14 CI jobs green on the merged head.
