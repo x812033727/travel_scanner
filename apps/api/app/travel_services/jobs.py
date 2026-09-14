@@ -24,8 +24,26 @@ AIRALO_FEED = "https://www.airalo.com/products.xml"
 FEED_LIMIT = 15_000_000
 
 
+def _declares_dtd(body: bytes) -> bool:
+    """Whether the feed carries a document type or entity declaration, in any XML encoding.
+
+    The scan used to run on ``body`` directly, which only works for UTF-8. ``bytes.upper()``
+    folds ASCII and nothing else, and in UTF-16 every ASCII character is interleaved with a
+    NUL byte -- ``<!DOCTYPE`` arrives as ``3C 00 21 00 44 00 ...`` and matched neither
+    literal. ``ElementTree`` honours the encoding in the XML declaration, so it would then
+    have parsed a document the guard believed it had rejected, and the entity expansion this
+    exists to stop would have run.
+
+    Dropping NUL bytes first folds UTF-16 and UTF-32 down to the ASCII the scan can read.
+    It cannot hide anything a legitimate feed contains, because NUL is not a valid XML
+    character in any encoding, so a UTF-8 body has none to drop.
+    """
+    flattened = body.replace(b"\x00", b"").upper()
+    return b"<!DOCTYPE" in flattened or b"<!ENTITY" in flattened
+
+
 def parse_airalo(body: bytes, now: datetime) -> list[ProductInput]:
-    if len(body) > FEED_LIMIT or b"<!DOCTYPE" in body.upper() or b"<!ENTITY" in body.upper():
+    if len(body) > FEED_LIMIT or _declares_dtd(body):
         raise ValueError("Unsafe feed")
     root = ElementTree.fromstring(body)
     result = []
