@@ -490,7 +490,7 @@ React 19.2.8（`react-dom-client.development.js`）在 commit 結束時，只有
 
 ### 這次做了什麼
 
-- 分支 `claude/ship-passive-effect-gap-flake`：從 main `53bd1b8a` cherry-pick `2bdd76c5`，沒有衝突。
+- 分支 `claude/ship-passive-effect-gap-flake`：從 main `4ba38e81`（#490）cherry-pick `2bdd76c5`，沒有衝突。
   修正的基準 `61fe8d83` 之後，main 沒有任何 commit 碰過那 8 個檔案，程式碼和 9/13 驗過的版本逐字相同。
 - 本機重驗（Windows、Node 24）：
   - 修正版：`planner-overlay`、`modal-sheet`、`route-mode-panel`、`travel-card-actions`、`trip-editor`
