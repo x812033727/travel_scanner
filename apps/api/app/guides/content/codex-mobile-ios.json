@@ -182,7 +182,7 @@
         },
         {
           "type": "paragraph",
-          "text": "這次追問檢查同一任務的上下文，回覆應預期 Completed 只顯示 Read，空白標題被拒絕；它也應分開列出已讀程式、真的跑過的測試與尚未操作的畫面。只分析原始碼就標成「預期行為」，不能改稱已在手機完成測試。你可在電腦的本機預覽親自做上述步驟，補上驗證。"
+          "text": "這是起初沒有待辦、只加入 Read 與 Build 的假設例；若本機預覽已有其他項目，請依現有資料判讀，不會因這段唯讀要求而清空資料。 這次追問檢查同一任務的上下文，回覆應預期 Completed 只顯示 Read，空白標題被拒絕；它也應分開列出已讀程式、真的跑過的測試與尚未操作的畫面。只分析原始碼就標成「預期行為」，不能改稱已在手機完成測試。你可在電腦的本機預覽親自做上述步驟，補上驗證。"
         },
         {
           "type": "paragraph",
@@ -509,7 +509,7 @@
         },
         {
           "type": "paragraph",
-          "text": "This follow-up tests continuity. Expect Completed to show only Read and blank titles to be rejected, with inspected code, executed tests and untested UI separated. Code analysis establishes expected behavior, not a completed phone test. Perform the steps in the computer's local preview to add hands-on verification."
+          "text": "With only Read and Build initially present, expect Completed to show only Read and blank titles to be rejected. Account for any other stored tasks; this read-only request leaves them unchanged. Separate inspected code, executed tests and pending UI checks. Verify the predicted behavior in the computer's local preview."
         },
         {
           "type": "paragraph",
@@ -836,7 +836,7 @@
         },
         {
           "type": "paragraph",
-          "text": "同じ課題の文脈を確認します。Completed は Read だけ、空白は拒否を予測し、読んだコード、実行済みテスト、未操作の画面を分けることが必要です。コード分析は予測であり、電話での実測ではありません。PC のプレビューで実際に操作して補います。"
+          "text": "この例は空の一覧に Read と Build だけを追加した場合です。ローカルプレビューに他の項目があればそのデータを踏まえて判断します。この読み取り依頼でデータは消去されません。 同じ課題の文脈を確認します。Completed は Read だけ、空白は拒否を予測し、読んだコード、実行済みテスト、未操作の画面を分けることが必要です。コード分析は予測であり、電話での実測ではありません。PC のプレビューで実際に操作して補います。"
         },
         {
           "type": "paragraph",
@@ -1163,7 +1163,7 @@
         },
         {
           "type": "paragraph",
-          "text": "같은 작업 맥락을 확인합니다. Completed는 Read만 보이고 공백은 거절되어야 하며 읽은 코드, 실행한 테스트, 미검증 화면을 나눠야 합니다. 코드 분석은 예상 동작이며 전화 실측이 아닙니다. 컴퓨터 로컬 미리 보기에서 직접 조작해 검증을 보탭니다."
+          "text": "이 예시는 빈 목록에 Read와 Build만 추가했다고 가정합니다. 로컬 미리 보기에 다른 항목이 있으면 해당 데이터를 기준으로 판단하며 이 읽기 요청은 데이터를 지우지 않습니다. 같은 작업 맥락을 확인합니다. Completed는 Read만 보이고 공백은 거절되어야 하며 읽은 코드, 실행한 테스트, 미검증 화면을 나눠야 합니다. 코드 분석은 예상 동작이며 전화 실측이 아닙니다. 컴퓨터 로컬 미리 보기에서 직접 조작해 검증을 보탭니다."
         },
         {
           "type": "paragraph",
@@ -1490,7 +1490,7 @@
         },
         {
           "type": "paragraph",
-          "text": "这次追问检查同一任务的上下文，回复应预期 Completed 只显示 Read，空白标题被拒绝；它也应分开列出已读程式、真的跑过的测试与尚未操作的画面。只分析原始码就标成「预期行为」，不能改称已在手机完成测试。你可在电脑的本机预览亲自做上述步骤，补上验证。"
+          "text": "这是起初没有待办、只加入 Read 与 Build 的假设例；若本机预览已有其他项目，请依现有资料判读，不会因这段唯读要求而清空资料。 这次追问检查同一任务的上下文，回复应预期 Completed 只显示 Read，空白标题被拒绝；它也应分开列出已读程式、真的跑过的测试与尚未操作的画面。只分析原始码就标成「预期行为」，不能改称已在手机完成测试。你可在电脑的本机预览亲自做上述步骤，补上验证。"
         },
         {
           "type": "paragraph",

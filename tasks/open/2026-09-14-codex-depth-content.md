@@ -320,3 +320,12 @@ Preview commands and full implementation history are in docs/codex-learning/READ
 - Original 32 code blocks across five lessons and all source arrays remain exact. Five-language metadata/projections match. Latest integrity 60/300, compiler 9, API 9, Ruff, catalogue and 412-task checks passed; audit 0 errors / 21 original advisories. A transient 22nd length warning was resolved by removing one redundant English sentence.
 - Existing preview and 03/06 edit denials remain in force; no retries or alternative route. No product model session, installation, new browser acceptance, PR, import or deployment.
 - Next: checkpoint 2 new lessons 14, 38, 39, 40, 15, 41, 09; reuse 03/04/10 representative results without double counting. Evidence: docs/codex-learning/evidence/full-text-checkpoint-1.json.
+
+
+## Full-text checkpoint 2 — 2026-09-14
+
+- Read 14, 38, 39, 40, 15, 41, 09 in all five locales plus metadata/captions and actual official source bodies; reuse unchanged 03/04/10 representative records. Unique totals: 22 read / 20 editorial passes / 03 and 06 changes required / 38 unread. Final accepted remains 0/60.
+- Added exact empty-list baselines in IDE/cloud exercises, clarified mobile sample data assumptions, corrected optional Git handoff file verification, and aligned Remote outcome descriptions with the documented separate access/pairing/task states. Corrected limited Japanese/Korean wording.
+- Original 29 code blocks across seven lessons, all image blocks and source arrays unchanged. All five metadata/projection contracts match. Integrity 60/300, compiler 9, API 9 and five catalogue checks passed. Audit 0 errors / 21 original advisories; two transient mobile English-length warnings resolved by removing repeated prose.
+- Existing preview and 03/06 edit denials remain; no retries, alternate route, actual product session, new browser acceptance, PR, import or deployment.
+- Next: checkpoint 3 new IDs 42, 43, 16, 44, 45, 22, 17, 08, 18; reuse 11. Evidence: docs/codex-learning/evidence/full-text-checkpoint-2.json.
