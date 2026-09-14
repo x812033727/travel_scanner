@@ -1,11 +1,11 @@
 ---
 id: 2026-09-11-modal-escape-flake-under-load
 title: 整套測試在負載下，有守門的 Escape 偶爾不生效
-status: open
+status: in-progress
 priority: P1
 area: web
-owner:
-claimed_at:
+owner: codex-modal-final-fc2e
+claimed_at: 2026-09-14T16:12:34Z
 created_at: 2026-09-11T21:23:54Z
 completed_at:
 branch: codex/codex-learning-complete
@@ -409,3 +409,12 @@ dump 有效率。
 - Evidence and source hashes: docs/codex-learning/evidence/planner-modal-registration-review.json. React timing references: https://react.dev/reference/react/useEffect and https://react.dev/reference/react/useLayoutEffect.
 - When whole-suite output was delayed beyond the previous run duration, ran the unchanged trip-editor file with verbose reporting: all 75 tests passed in 133.60 seconds, including the second-Close case. Existing asynchronous act warnings remain in the offline-day/route-reorder cases. One concurrent Windows sample had about 124 MiB physical memory free; no other tasks' processes were stopped. This diagnostic is separate from the complete-suite repetitions.
 - The complete run emitted only its startup banner for 19 minutes 34 seconds. Physical-memory samples were 127108 and 495048 KiB free out of 16364204 KiB. Stopped only the verified workspace Vitest process 7436; exit -1 is an operator interruption, not a failed assertion. The loop stopped before runs 2/3. Full-suite acceptance remains incomplete, and low memory is an observation rather than a proven cause. Raw run/log: docs/codex-learning/evidence/modal-validation-20260914/. Next: repeat with live verbose reporting and sufficient available resources to locate the last executed case; do not declare this task done from the focused passes.
+
+## Route result focus and modal commit timing — codex-modal-final-fc2e, 2026-09-15
+
+- Three complete frontend runs with unchanged baseline component/test source at 24c5662a: first two passed 260 files / 2815 tests (633.46s, 768.59s). Third failed route-mode-panel.test.tsx:96 (body focused instead of the visible detail section), with 2814 passes / 1 failure (655.89s). Complete logs and timestamps are preserved as gzip files, not discarded after a green rerun. The practice ZIP asset alone changed during runs 2 and 3.
+- Four deterministic Profiler cases failed before fixes: route result focus from either body or the query button, useModalSheet Escape registration at initial/reopened commit, and a current close callback at commit. This interval precedes passive effects and differs from the older after-flushSync probe. Original tests and assertions remain intact.
+- Result focus now runs in a layout effect and keeps the existing guard for a reader who moved focus while awaiting a response. useModalSheet updates its current close callback and installs/removes listeners/scroll locking in layout effects.
+- The first modal revision exposed a deterministic opener-focus regression (88 passed / 1 failed focused tests). A temporary focus spy proved React flushMutationEffects refocused the still-mounted form after layout cleanup. Opener focus restoration now runs in passive cleanup after that selection restoration; the probe was removed and its exact log retained.
+- Final focused checks: 89 tests / 4 files pass in 17.32s, including original focus return, nested layers, late attachment and travel-card Escape. Full lint plus final changed-file lint and TypeScript pass. No timeout increase, assertion relaxation or new skip. Three complete runs of the final source are next; the checkbox remains open until actual results exist.
+- Evidence: docs/codex-learning/evidence/frontend-commit-timing-review.json, including source/log hashes and primary React references. These establish specific timing defects, not a claim that every historical flake has one proven cause. No trip-editor files were changed.

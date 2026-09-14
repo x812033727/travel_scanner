@@ -15,7 +15,7 @@ import {
   TriangleAlert,
 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { useEffect, useId, useRef, useState, type KeyboardEvent } from "react";
+import { useEffect, useId, useLayoutEffect, useRef, useState, type KeyboardEvent } from "react";
 import { dayTimelineCopy } from "@/components/planner/day-timeline-copy";
 import { plannerOverlayCopy } from "@/components/planner/overlay-copy";
 import styles from "@/components/planner/route-panel.module.css";
@@ -270,11 +270,8 @@ export function RouteModePanel({
   const manualInputRef = useRef<HTMLInputElement>(null);
   const detailRef = useRef<HTMLElement>(null);
   const focusNextPreviewRef = useRef(false);
-  // Where focus was when the route was asked for. The effect below runs a commit after the
-  // answer lands, and in that gap the reader can have moved focus themselves — an arrow key
-  // on the options, a tab out of the panel. Taking it back then is the app arguing with the
-  // person using it, and it is what made the sibling test go red under load: it expected
-  // focus on a route option and found it on this panel's container.
+  // Preserve focus if the reader moves to another control while the request is pending.
+  // Otherwise, transfer it in the commit that displays the results, before the next paint.
   const previewFocusOriginRef = useRef<Element | null>(null);
   const [manualMinutes, setManualMinutes] = useState("");
   const [localError, setLocalError] = useState<string>();
@@ -298,7 +295,7 @@ export function RouteModePanel({
   }
   const preview = previews[requestKey];
   const providerPreview = isProviderPreview(preview) ? preview : undefined;
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!providerPreview || !focusNextPreviewRef.current || !detailRef.current) return;
     focusNextPreviewRef.current = false;
     const moved = document.activeElement !== previewFocusOriginRef.current

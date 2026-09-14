@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { useEffect, useState } from "react";
+import { Profiler, useEffect, useState } from "react";
 import { describe, expect, it, vi } from "vitest";
 import { modalFocusTargets, registerModalLayer, useModalSheet } from "./modal-sheet";
 
@@ -64,6 +64,46 @@ function LateSheet({ onClose }: { onClose: () => void }) {
 }
 
 describe("useModalSheet", () => {
+  function ControlledSheet({ open, onClose }: { open: boolean; onClose: () => void }) {
+    const ref = useModalSheet<HTMLElement>(open, onClose);
+    return open ? <section ref={ref} role="dialog" aria-label="Commit sheet"><button>Close</button></section> : null;
+  }
+
+  it("guards Escape and locks scrolling when an opened or reopened sheet commits", () => {
+    const close = vi.fn();
+    const locks: boolean[] = [];
+    const tree = (open: boolean) => <Profiler id="sheet-early-escape" onRender={() => {
+      const sheet = document.querySelector('[role="dialog"]');
+      if (!sheet) return;
+      locks.push(document.body.style.overflow === "hidden");
+      sheet.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true, cancelable: true }));
+    }}><ControlledSheet open={open} onClose={close} /></Profiler>;
+    const view = render(tree(true));
+    expect(close).toHaveBeenCalledOnce();
+    expect(locks).toEqual([true]);
+    view.rerender(tree(false));
+    expect(document.body.style.overflow).toBe("");
+    close.mockClear();
+    locks.length = 0;
+    view.rerender(tree(true));
+    expect(close).toHaveBeenCalledOnce();
+    expect(locks).toEqual([true]);
+  });
+
+  it("uses the current close callback before passive effects run", () => {
+    const previous = vi.fn();
+    const current = vi.fn();
+    let deliverEscape = false;
+    const tree = (onClose: () => void) => <Profiler id="sheet-current-close" onRender={() => {
+      if (deliverEscape) document.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true, cancelable: true }));
+    }}><ControlledSheet open onClose={onClose} /></Profiler>;
+    const view = render(tree(previous));
+    deliverEscape = true;
+    view.rerender(tree(current));
+    expect(previous).not.toHaveBeenCalled();
+    expect(current).toHaveBeenCalledOnce();
+  });
+
   it("includes the closed disclosure summary but excludes its hidden source link and hidden ancestors", () => {
     const { container } = render(<div><button>Close</button><details><summary>Sources</summary><a href="https://example.com">Hidden source</a></details><div hidden><button>Hidden ancestor</button></div><div style={{ display: "none" }}><button>Hidden style</button></div></div>);
     expect(modalFocusTargets(container).map((element) => element.textContent)).toEqual(["Close", "Sources"]);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 
 const layers: HTMLElement[] = [];
 let originalOverflow = "";
@@ -60,13 +60,13 @@ export function useModalSheet<T extends HTMLElement>(open: boolean, onClose: () 
   // Read through a ref so a caller passing an inline arrow does not re-run the effect on
   // every render, which would re-steal focus while somebody is typing in the sheet.
   const closeRef = useRef(onClose);
-  // Assigned in an effect rather than during render: React forbids touching a ref while
-  // rendering, and effects run in declaration order, so this lands before the one below.
-  useEffect(() => {
+  const restoreFocusRef = useRef<(() => void) | null>(null);
+  // Update the callback before the committed sheet can receive keyboard input.
+  useLayoutEffect(() => {
     closeRef.current = onClose;
   });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!open) return;
     const sheet = sheetRef.current;
     if (!sheet) {
@@ -130,8 +130,18 @@ export function useModalSheet<T extends HTMLElement>(open: boolean, onClose: () 
       if (previousTabIndex === null) sheet.removeAttribute("tabindex");
       // Escape used to leave focus on <body>, which returns a keyboard reader to the top of
       // the document, several tabs from the control they had just used.
-      if (wasTop && opener?.isConnected && (!layers.length || layers.at(-1)?.contains(opener))) opener.focus();
+      restoreFocusRef.current = () => {
+        if (wasTop && opener?.isConnected && (!layers.length || layers.at(-1)?.contains(opener))) opener.focus();
+      };
     };
+  }, [open, lateSheet]);
+
+  // React restores the pre-update selection after layout cleanups. Return focus
+  // after that mutation phase so a still-mounted inline form cannot reclaim it.
+  useEffect(() => () => {
+    const restore = restoreFocusRef.current;
+    restoreFocusRef.current = null;
+    restore?.();
   }, [open, lateSheet]);
 
   // Stable, so React does not detach and reattach the element on every render.
