@@ -1,0 +1,218 @@
+{
+  "slug": "dns-records-troubleshooting",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "DNS 設定怎麼查：從 A、CNAME 到郵件紀錄",
+      "description": "網站連不上，不一定是主機壞掉；DNS 管理位置、紀錄內容與快取都可能影響你看到的結果。本文用網站與信箱的常見情境說明 A、AAAA、CNAME、MX、TXT 和 NS 的用途，帶你在修改前保存現況，再以 Windows 的 nslookup 或供應商查詢工具逐層排查。你會學到如何區分解析錯誤與網站錯誤，以及該整理哪些資訊交給客服，避免只靠反覆改設定與等待解決問題。",
+      "hero": {
+        "src": "/guides/dns-records-troubleshooting/hero.jpg",
+        "alt": "查詢文件、DNS 伺服器與網站畫面組成的原創排查示意。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "DNS 可以幫使用者依名稱找到網路服務，但一個網域不只有一個「指向」。網站、郵件、服務驗證與名稱伺服器各有對應資料。若網站能開、信箱卻收不到信，應檢查與郵件相關的紀錄，不能只因首頁正常就排除所有解析問題。"
+        },
+        {
+          "type": "paragraph",
+          "text": "排查時，先把「系統儲存了什麼」與「查詢得到什麼」分開。管理畫面上的值可能位於已不生效的舊 DNS 服務，查詢結果也可能仍有快取。本文提供一套從名稱、管理位置、紀錄到實際服務的檢查順序，讓每次修改都有明確理由及可比較的結果。"
+        },
+        {
+          "type": "heading",
+          "text": "先確認查的是哪個完整名稱",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "example.com、www.example.com 與 shop.example.com 是不同名稱，可以使用不同設定。DNS 處理的名稱不包含 https 開頭、斜線後的文章路徑或查詢參數。回報問題前，先寫下受影響的完整名稱，再記錄實際瀏覽的網址，這樣才能區分網域解析與個別頁面錯誤。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著找出目前的權威名稱伺服器，也就是負責提供這個區域資料的服務。購買網域的註冊商和 DNS 代管者可能不同；換過主機或 CDN 後，尤其容易留下舊介面。請以目前委派的名稱伺服器為起點，確認自己正修改對外生效的區域，而不是看到熟悉的公司名稱就直接編輯。"
+        },
+        {
+          "type": "heading",
+          "text": "依用途閱讀常見紀錄",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A 把名稱連到 IPv4 位址，AAAA 用於 IPv6 位址；CNAME 則是名稱的別名，指向另一個名稱。網站商可能要求其中一種或多種設定，必須依自己的主機配置判斷。若同時有 A 與 AAAA，兩種路徑都值得檢查，避免其中一個仍指向舊環境，讓部分訪客遇到不同結果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "MX 指定接收郵件的伺服器，TXT 常用於所有權或寄信服務驗證，NS 則與區域的名稱伺服器有關。不要因為 TXT 看起來像亂碼就刪除，也不要把網站 IP 填進所有欄位。每種紀錄的資料格式與用途不同，先閱讀要求你新增它的服務文件，才能知道什麼結果才算正確。"
+        },
+        {
+          "type": "paragraph",
+          "text": "設定別名時也要考慮同一名稱的紀錄衝突與供應商限制。某些平台提供根網域別名展平或代理功能，對外查詢可能得到 IP，而非你在後台輸入的目標名稱。這屬於特定服務的行為，不能僅憑查到的值不同就判斷遭到修改，應先確認代理和別名功能是否開啟。"
+        },
+        {
+          "type": "heading",
+          "text": "先查詢，再做可回復的修改",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows 使用者可在終端機執行 nslookup，依紀錄類型查詢。例如 nslookup -type=A example.com 可查 A，將 A 改成 MX 或 NS 可查相應資料。這裡的 example.com 是示範名稱，實際排查請換成你的網域；不要期待範例結果會與自己的主機一致。"
+        },
+        {
+          "type": "paragraph",
+          "text": "查詢時記錄使用的 DNS 伺服器、時間與完整輸出。預設解析器、指定的公開解析器與權威伺服器，可能提供不同階段的資訊；比較時要說清楚問了誰。若不熟悉指令，可使用 DNS 供應商提供的查詢或診斷功能，但同樣要確認它查的是哪種紀錄，而非只看一個綠色勾號。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "保存現在的紀錄與需求單，圈出受影響的完整名稱及用途，不先清空整個區域。",
+            "查詢 NS 及對應的 A、AAAA、CNAME 或 MX，確認管理位置與實際回應。",
+            "依官方需求修正必要項目，保存原值、新值、修改時間及原本的 TTL。",
+            "再次查詢並實際使用網站或信箱；若結果不同，先定位差異，不連續切換多組設定。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "TTL 解釋快取，不能修正錯誤資料",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "TTL 描述解析器可快取紀錄的時間。你在後台改成較短 TTL，不代表先前已被其他解析器快取的舊紀錄會立刻消失。規劃變更時可提早依供應商建議調整，但不能把它當成即時更新所有使用者的按鈕，也不應承諾一定在某個固定分鐘數內全球一致。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若有效的權威服務仍回傳錯誤值，單純等待不會讓它自己變正確。先核對是否改到正確區域、是否儲存成功及名稱是否填錯；權威值正確，而部分解析器仍回舊值時，才進一步檢查快取及網路差異。更換 DNS 代管者還涉及委派等資訊，不能只拿單一 A 紀錄的 TTL 推算全部時程。"
+        },
+        {
+          "type": "heading",
+          "text": "解析正確後，改查服務本身",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "DNS 查到預期位置後，網站仍可能因網域未綁定、憑證不符、伺服器錯誤或程式問題而無法使用。請記錄瀏覽器顯示的是找不到名稱、連線失敗、憑證警告，還是網站回傳錯誤頁。這些現象分屬不同層次；把解析成功當作網站驗收完成，會漏掉真正的訪客流程。"
+        },
+        {
+          "type": "paragraph",
+          "text": "郵件也需要另外驗證。正確的 MX 不會替你建立收件帳號；寄信遭退回，還要閱讀退信原因、信箱狀態與郵件商要求的驗證資料。本文建議至少測試一封外部寄入與一封對外寄送，保存時間及錯誤訊息。不要只用同一家郵件服務互寄一次，就認定所有路徑都已正常。"
+        },
+        {
+          "type": "heading",
+          "text": "用最小資料集讓排查可以接手",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "客服需要的是能重現問題的資料：完整名稱、紀錄類型、預期值、查詢結果、查詢來源、異動時間與實際錯誤。若使用公司內網、VPN 或內部 DNS，也要註明，因為它們可能刻意提供不同答案。只要描述與問題有關的環境，不必交出帳號密碼或公開不必要的內部資訊。"
+        },
+        {
+          "type": "paragraph",
+          "text": "處理完成後，將最終紀錄與測試結果寫回管理表。下次換主機、增加子網域或改信箱時，就能比較前後差異。這份紀錄的價值不是讓你背下所有 DNS 類型，而是讓每一項設定都知道用途、負責人與驗證方式，遇到問題時可以從已知狀態開始。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/dns-records-troubleshooting/diagram-1.svg",
+          "alt": "從完整名稱、有效 DNS、實際紀錄到網站信箱四層依序確認，避免把全部故障當成快取。",
+          "width": 1600,
+          "height": 900,
+          "caption": "解析正確之後，仍要測試真正使用的服務。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "類型",
+            "主要用途",
+            "檢查方向"
+          ],
+          "rows": [
+            [
+              "A／AAAA",
+              "IPv4／IPv6 位址",
+              "是否仍有舊主機路徑"
+            ],
+            [
+              "CNAME",
+              "指向另一名稱的別名",
+              "目標、衝突與展平功能"
+            ],
+            [
+              "MX",
+              "郵件接收位置",
+              "郵件商要求及優先順序"
+            ],
+            [
+              "TXT",
+              "文字與服務驗證資料",
+              "來源服務與完整內容"
+            ],
+            [
+              "NS",
+              "區域名稱伺服器資訊",
+              "委派與實際管理位置"
+            ]
+          ],
+          "caption": "常見紀錄的用途不同；實際值依你使用的服務官方要求設定。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先保存原值，再改必要項目",
+          "text": "同一個 DNS 區域可能同時服務網站、郵件與驗證。不要為了排查單一頁面而刪除所有紀錄；若要還原整個區域，先確認會影響哪些後續變更。"
+        },
+        {
+          "type": "link",
+          "text": "買網域前先做的功課：名稱、持有人與續約管理",
+          "url": "https://mokaair.com/zh-TW/life/domain-registration-guide"
+        },
+        {
+          "type": "link",
+          "text": "讓網站使用 HTTPS：憑證、轉址與混合內容檢查",
+          "url": "https://mokaair.com/zh-TW/life/https-certificate-setup"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Cloudflare：DNS 紀錄類型",
+          "url": "https://www.cloudflare.com/learning/dns/dns-records/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare：DNS 紀錄欄位與平台功能",
+          "url": "https://developers.cloudflare.com/dns/manage-dns-records/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare：DNS 快取與代理常見問題",
+          "url": "https://developers.cloudflare.com/dns/faq/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft：nslookup 指令",
+          "url": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/nslookup",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

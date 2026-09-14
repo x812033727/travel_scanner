@@ -1,0 +1,207 @@
+{
+  "slug": "bluehost-wordpress-setup",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Bluehost 架站流程：購買前確認，到安裝後驗收",
+      "description": "準備使用 Bluehost 架設 WordPress 時，先確認方案內容與完整費用，再依目前 Portal 的 Websites 流程安裝網站。本文帶你區分新建與匯入網站、連接外部網域、整理初始內容及檢查 HTTPS，並提供上線驗收表。操作說明依官方公開文件整理，適合第一次架站或接手小型網站的人，幫你把安裝成功、內容可用和訪客流程正常分開核對，也保留後續維護與交接所需的資料。",
+      "hero": {
+        "src": "/guides/bluehost-wordpress-setup/hero.jpg",
+        "alt": "方案文件、WordPress 主機和網站畫面構成的原創示意，未使用品牌標誌。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Bluehost 的安裝工具可以建立 WordPress 環境，但網站要能正式使用，仍需要內容、網域、連線與維護安排。開始前先寫下網站的主要任務，例如讓訪客閱讀作品、了解服務並送出詢問。這會幫你判斷需要哪些功能，也能成為上線時的驗收依據。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文依 Bluehost 目前公開的 Portal 教學整理，沒有使用者帳戶的實際操作或效能測試。不同產品和帳戶可能有不同介面，尤其自行管理的 VPS，不應直接套用一般網站安裝流程。請先核對自己的產品名稱，再依對應文件操作，避免把重新安裝伺服器誤認為新增一個網站。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把購買條件寫成可以比較的清單"
+        },
+        {
+          "type": "paragraph",
+          "text": "先列出網站數量、資料量、是否需要商店、信箱、備份及測試環境，再查目前方案包含哪些項目。不要僅用「適合 WordPress」判斷全部需求已滿足。若你正在搬站，也要確認既有程式、資料庫、排程與外掛是否適用，並準備可取得的完整備份。"
+        },
+        {
+          "type": "paragraph",
+          "text": "結帳前分別記錄預付期間、首次總額、續約費用、網域與其他加購項目。畫面上的每月換算價格不一定代表按月付款；備份、郵件或安全服務也可能各有訂閱。本文不提供折扣碼或未經實測的推薦排名，請依你選的方案及當下條款確認完整成本。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "從 Websites 建立正確的 WordPress 網站"
+        },
+        {
+          "type": "paragraph",
+          "text": "依目前 Bluehost 安裝文件，登入 Portal 後進入左側 Websites，選擇 Add Website，再選 WordPress，系統會開始安裝。先確認你位於正確帳戶與可用方案，並使用能辨識用途的網站名稱。若已經有其他網站，不要選到刪除內容、移除 WordPress 或重建環境的功能。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件在安裝後提供 AI Site Creator 與 Import an Existing WordPress Site 等流程。新網站可以依引導整理初始頁面，既有網站則要依匯入流程處理來源及資料。兩者的目標不同：前者建立內容起點，後者涉及搬移既有資料。不要為了嘗試版型而覆蓋唯一的正式網站。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "登入官方 Portal，確認方案後進入 Websites，選擇 Add Website 與 WordPress。",
+            "依網站狀態選擇新建或匯入流程，填寫可辨識的名稱與用途，保存完成結果。",
+            "從該網站的 Manage 查看狀態並開啟 WordPress 後台，確認管理者與通知信箱。",
+            "先整理必要頁面與導覽，再依正式網域或暫時網址測試，不急著加入大量外掛。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把自動建立的內容當成待編輯稿"
+        },
+        {
+          "type": "paragraph",
+          "text": "若使用 AI 建站引導，輸入網站用途、語言、服務範圍與實際聯絡方式，接著逐頁檢查結果。系統產生的公司故事、數字、客戶評價或服務承諾，不能未經確認就公開。沒有真實依據的內容應移除或改成能驗證的說明，圖片與商標也要確認使用權。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先完成首頁、關於、主要服務或作品頁，以及必要的聯絡與資料使用說明。用台灣讀者容易理解的按鈕文字，讓導覽直接對應訪客的工作。測試時請從首頁走到聯絡頁，確認不是每個按鈕都通往同一個預設區塊，也沒有保留示範電話或空白價格。"
+        },
+        {
+          "type": "paragraph",
+          "text": "進入 WordPress 一般與閱讀設定，確認語言、時區、網站標題及首頁呈現方式。若使用靜態首頁，要分清首頁與文章列表頁。搜尋引擎可見性設定只是給搜尋引擎的索引訊號，不是限制訪客存取的保護機制；含未公開資料的測試站，應另使用適當的存取限制。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "外部網域需要網站綁定與 DNS 配合"
+        },
+        {
+          "type": "paragraph",
+          "text": "網域向其他註冊商購買，也可以依 Bluehost 的外部網域連接文件使用。從 Websites 選取網站的 Manage，再依網域連接引導填入名稱及完成所需設定。把網域加入網站與修改 DNS 是相關但不同的工作，單獨完成其中一項，未必已能讓外部訪客看到網站。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在修改名稱伺服器之前，先保存原 DNS，尤其是信箱使用的 MX 與驗證紀錄。請使用帳戶及官方文件提供的資料，不照抄多年前的 IP 或別人的截圖。若目前使用另一家 DNS 或代理服務，先確認對應路線；網域註冊不一定需要一起移轉，郵件也不應因換網站而被無意更動。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用訪客身分驗收正式入口"
+        },
+        {
+          "type": "paragraph",
+          "text": "正式網域解析完成後，測試根網域、www 與 HTTPS，核對憑證及轉址是否正常。網站管理介面顯示已連接，不代表所有路徑都已驗證。可以從未登入的瀏覽器視窗開啟首頁和一篇深層文章，確認訪客看到的是正式內容，而非管理者才看得到的預覽。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著使用手機檢查導覽、圖片、文字換行與按鈕，實際送出一筆不含敏感資料的測試詢問，確認通知是否抵達。若網站有搜尋或會員功能，也要走完必要流程。測試資料處理完再清除，並把結果記錄為這次網站的驗收；不要把供應商的功能介紹寫成你已測過的證據。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "交接時保留網站之外的管理資料"
+        },
+        {
+          "type": "paragraph",
+          "text": "請記錄 Portal 帳戶、WordPress 管理者、網域註冊商、DNS 位置、備份方式及續約負責人。密碼使用安全方式交付，不直接放在一般教學文件。協作者應取得完成工作所需的權限，合作結束後再檢查是否仍保留多餘的存取或通知設定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "上線後安排更新與備份檢查，也確認還原時要找哪個功能或支援窗口。若需要移除測試網站，先核對它與正式站是否共用資料或網域，再閱讀刪除範圍。第一次安裝可以很快，但能持續維護的網站，還需要清楚的責任與可用的資料保存方式。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/bluehost-wordpress-setup/diagram-1.svg",
+          "alt": "Bluehost 建站從方案、WordPress、網域到訪客驗收四個階段，各自列出必要檢查。",
+          "width": 1600,
+          "height": 900,
+          "caption": "安裝、連線與內容可用，分開驗證才完整。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "階段",
+            "完成什麼",
+            "驗收方式"
+          ],
+          "rows": [
+            [
+              "購買",
+              "方案與付款條件符合需求",
+              "完整訂單和需求清單"
+            ],
+            [
+              "安裝",
+              "正確網站已有 WordPress",
+              "Manage 狀態與後台登入"
+            ],
+            [
+              "內容",
+              "頁面、導覽及聯絡資料可用",
+              "逐頁檢查示範和 AI 內容"
+            ],
+            [
+              "網域",
+              "綁定、解析與 HTTPS 完成",
+              "正式入口和深層頁面測試"
+            ],
+            [
+              "交接",
+              "帳號、備份與續約有人負責",
+              "本人登入及管理表核對"
+            ]
+          ],
+          "caption": "安裝成功只是其中一階段；正式上線須完成後續驗收。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "新建網站前先辨認破壞性功能",
+          "text": "新增、刪除內容、移除 WordPress 與重建伺服器的影響不同。操作既有帳戶時，先確認網站名稱與功能範圍，並保有可還原的備份。"
+        },
+        {
+          "type": "link",
+          "text": "Bluehost 網域與帳務問題：加購、付款與續約逐項確認",
+          "url": "https://mokaair.com/zh-TW/life/bluehost-domain-billing"
+        },
+        {
+          "type": "link",
+          "text": "讓網站使用 HTTPS：憑證、轉址與混合內容檢查",
+          "url": "https://mokaair.com/zh-TW/life/https-certificate-setup"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Bluehost：Portal 安裝 WordPress",
+          "url": "https://www.bluehost.com/help/article/install-wordpress",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Bluehost：Websites 功能與刪除範圍",
+          "url": "https://www.bluehost.com/help/article/maestro-websites",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Bluehost：連接外部網域",
+          "url": "https://www.bluehost.com/help/article/dm-how-to-connect-an-external-domain-to-hosting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：閱讀設定",
+          "url": "https://wordpress.org/documentation/article/settings-reading-screen/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

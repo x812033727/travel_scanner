@@ -1,0 +1,252 @@
+{
+  "slug": "microsoft-clarity-review",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "misc"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Microsoft Clarity 看什麼：熱點圖、錄影與隱私設定",
+      "description": "Microsoft Clarity 的熱點圖與工作階段錄影，可以幫助網站經營者發現操作線索，但不能直接讀出使用者想法。本文以原創社區工具借用網站為例，整理資料遮罩、同意設定、篩選條件與回放觀察，說明如何把連續點擊、捲動及離開位置轉成可驗證的改善假設。附操作步驟、比較表與原創圖解，協助團隊在保護資料的前提下閱讀行為紀錄。",
+      "hero": {
+        "src": "/guides/microsoft-clarity-review/hero.jpg",
+        "alt": "Mokaair 原創資料保護盾牌、行為畫面及觀察文件，表達 Clarity 遮罩、熱點圖與假設驗證。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "社區工具借用網站有工具分類、可借日期與預約入口，管理者發現訪客不少，完成預約卻不多。Clarity 可以協助查看人們在哪裡點擊、如何捲動，但開始之前應先決定要觀察的任務，並確認借用者的姓名與地址不會出現在分析紀錄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文依 2026 年 9 月 14 日查閱的 Microsoft 官方文件整理，以網站版 Clarity 為範圍。工具借用網站、觀察情境與改善提案均為原創，沒有實際錄下訪客、查看私人工作階段或宣稱工具帶來的成效。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先分清楚熱點圖與工作階段回放"
+        },
+        {
+          "type": "paragraph",
+          "text": "熱點圖將所選頁面的點擊與捲動資料彙整，適合找出多次造訪中的位置分布；工作階段錄影則協助查看一段操作的前後過程。Microsoft 說明，網站錄影是依頁面內容與互動重建的動畫，不是攝影機影像，也不是使用者整台電腦的螢幕錄影。"
+        },
+        {
+          "type": "paragraph",
+          "text": "原創借用網站可先設定觀察題目：手機訪客能否找到工具的可借日期。先看日期區附近的熱點與捲動，再挑相關工作階段理解前後步驟。不要一開始就漫無目的播放大量錄影，最後只記得最特別或最令人困惑的一段。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Clarity 與 GA4 或借用管理系統各有不同角色。前者能提供行為線索，網站事件能確認預約流程，管理系統則記錄真正成立的借用。若三者數量不一致，先核對涵蓋範圍與量測條件，不要把任一工具當成所有使用者完整且無誤的行為清單。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "在收集之前規劃資料遮罩"
+        },
+        {
+          "type": "paragraph",
+          "text": "Clarity 預設 Balanced 模式遮蔽它辨識的敏感內容，官方舉例包含數字與電子郵件；Strict 遮蔽全部內容，Relaxed 則放寬一般內容。輸入框與下拉選單在各模式下仍會遮罩。這些模式是起點，不代表網站上的姓名、地址或其他資料都已被完整辨識。"
+        },
+        {
+          "type": "paragraph",
+          "text": "原創網站的借用確認頁可能把姓名與地址顯示成一般文字，而不是輸入框，因此要另外盤點這些區域。專案管理員可在 Settings 的 Masking 設定，依元素加入遮罩，或請維護者使用官方支援的標記方式。為了看清按鈕，不應直接解除整個含個資區塊的遮罩。"
+        },
+        {
+          "type": "paragraph",
+          "text": "遮罩設定變更只影響新錄影，不能回溯套用到舊紀錄，官方也說明生效可能需要時間。完成設定後用虛構測試資料產生新情境，檢查遮罩是否涵蓋動態出現的確認內容。網站改版或欄位移動後再次核對，不能只在首次安裝時檢查一次。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "同意訊號與觀看權限一起檢查"
+        },
+        {
+          "type": "paragraph",
+          "text": "Microsoft 自二○二五年十月三十一日起，對來自歐洲經濟區、英國與瑞士的造訪執行同意訊號要求，完整功能取決於有效訊號。這是依造訪來源判斷的產品規則，台灣管理的網站若有海外訪客，也不能只用自己的所在地推定不受影響。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Clarity 同意模式可調整 Cookie 使用，但網站仍要取得選擇、傳遞狀態並驗證實際行為。若使用 CMP 或自訂介面，先確認整合支援與更新流程，不能把已裝 Google 的同意功能當成所有工具都自動收到相同訊號。本篇不把 Cookie 狀態簡化為所有資料都絕對不會傳送。"
+        },
+        {
+          "type": "paragraph",
+          "text": "原創借用網站可讓負責改善流程的人取得必要存取權，對外報告則用去識別的問題描述與自繪示意。分享錄影或熱點圖前，先檢查內容與接收對象，尤其是登入後頁面。能產生分享連結，不代表應把每位借用者的操作公開給所有合作單位。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "看熱點圖先固定裝置、頁面與期間"
+        },
+        {
+          "type": "paragraph",
+          "text": "Clarity 的點擊圖協助觀察常被點選的元素，捲動圖協助查看到達頁面各區域的比例。先選正確頁面、日期與裝置，再看分布；手機上的按鈕位置、摺疊內容及畫面大小，不能直接用桌機截圖的熱區解釋。網站改版前後也應分開比較。"
+        },
+        {
+          "type": "paragraph",
+          "text": "原創工具頁若把可借日期放在較下方，捲動圖可提示有多少造訪到達附近，但捲到那裡不等於真的閱讀，也不等於看懂庫存狀態。可以搭配日期操作事件與相關回放，檢查使用者是否進一步選擇日期，或回到工具分類重新尋找。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若某處呈現大量點擊，先看它原本是否應可操作，再確認篩選範圍與顯示截圖。熱點圖是彙整結果，不能當作單一使用者的完整路徑。原創團隊應在觀察筆記記下頁面版本及條件，避免拿不同期間、不同裝置的圖直接宣稱設計變好或變差。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用回放釐清線索，別替使用者下情緒結論"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方的 Rage clicks 指短時間在相近區域重複點擊，Dead clicks 則指點擊後沒有回應的情境。它們適合協助挑出值得查看的操作，卻不能直接證明每位使用者生氣、放棄或遇到相同錯誤。分類名稱是線索，原因仍需回到操作流程驗證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "原創網站若有人反覆點日期欄位，可能是按鈕狀態不清楚，也可能是正在比較多個日期。觀看時記錄前一頁、點擊位置、可見回應與後續動作，另外寫下尚未確認的假設。不要把猜測混進事實欄，或只截取幾秒畫面就判斷問題已確診。"
+        },
+        {
+          "type": "paragraph",
+          "text": "挑選觀看的工作階段時，應涵蓋不同裝置、來源及成功與未完成情境，避免只看帶有異常標籤的一小群。這裡的樣本指團隊實際挑來閱讀的紀錄，不是在宣稱 Clarity 只收固定比例流量。缺少錄影也可能與功能、收集條件或保留範圍有關，不能補想像的行為。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "先定義可借日期等具體任務，列出要觀察的頁面與裝置。",
+            "設定並測試遮罩、同意狀態與存取權，使用虛構資料驗收。",
+            "固定條件查看熱點，再挑不同結果的工作階段閱讀前後操作。",
+            "分開記錄事實、假設與改動，搭配事件及實際任務重新驗證。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把觀察轉成小改動，並留意保留期限"
+        },
+        {
+          "type": "paragraph",
+          "text": "原創團隊可以形成這樣的待驗證假設：手機日期入口不夠容易辨識，可能讓部分訪客重複點擊。先調整入口文字與狀態提示，再用相同任務做操作檢查，並觀察後續預約事件。不要只因修改後連續點擊變少，就宣稱借用成功率一定提高。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Microsoft 現行資料保留頁說明，一般回放資料保留三十天，標記或加入最愛的工作階段可保留九個月，熱點資料保留九個月；逾期刪除後不可恢復。團隊應在需要時完成觀察摘要，而不是把服務當成永久保存所有網站操作的倉庫。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每次回顧留下條件、問題、佐證範圍及下一步，避免把個人資料複製進長期文件。當網站任務、欄位或受眾改變，也重新評估量測與遮罩。Clarity 最有用的地方，是讓團隊找到具體可驗證的問題；真正的改善仍要看讀者能否順利完成要做的事。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/microsoft-clarity-review/diagram-1.svg",
+          "alt": "四張卡片呈現遮罩與同意、熱點篩選、回放觀察及改善驗證，強調紀錄不是使用者內心想法。",
+          "width": 1600,
+          "height": 900,
+          "caption": "連續點擊是值得查看的線索，原因與成效仍需另外驗證。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "看到的線索",
+            "可以先問",
+            "還不能直接推論"
+          ],
+          "rows": [
+            [
+              "日期區很少被捲到",
+              "位置是否太後面、頁面是否太長",
+              "所有訪客都不需要借用日期"
+            ],
+            [
+              "同一處連續點擊",
+              "可操作狀態是否清楚",
+              "使用者一定生氣或按鈕一定故障"
+            ],
+            [
+              "點擊後看不到回應",
+              "是否原本就不能點、回應是否延遲",
+              "每一筆都屬於相同技術錯誤"
+            ],
+            [
+              "回放停在確認頁",
+              "是否已完成任務及事件",
+              "沒有下一頁就是失敗"
+            ],
+            [
+              "改版後熱點變少",
+              "裝置、期間與頁面版本是否一致",
+              "設計一定更好或更差"
+            ],
+            [
+              "個別錄影找不到",
+              "同意、收集與保留條件是否符合",
+              "補推使用者的完整行為"
+            ]
+          ],
+          "caption": "原創工具借用網站的觀察方法，將資料線索與尚待驗證的解釋分開。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "遮罩要用新資料驗收",
+          "text": "修改遮罩不會回溯改寫舊錄影。以虛構資料檢查新錄影及動態內容，確認後再依網站需求安排收集與觀察。"
+        },
+        {
+          "type": "link",
+          "text": "把 GA4 事件對應到成功操作",
+          "url": "https://mokaair.com/zh-TW/life/ga4-site-measurement"
+        },
+        {
+          "type": "link",
+          "text": "區分互動率與頁面離開的意義",
+          "url": "https://mokaair.com/zh-TW/life/ga4-sessions-engagement"
+        },
+        {
+          "type": "link",
+          "text": "用顧客旅程整理需要觀察的任務",
+          "url": "https://mokaair.com/zh-TW/life/customer-journey-funnel"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Microsoft Clarity：遮罩模式及變更限制",
+          "url": "https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-masking",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft Clarity：同意模式與適用造訪地區",
+          "url": "https://learn.microsoft.com/en-us/clarity/setup-and-installation/consent-mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft Clarity：熱點圖概覽",
+          "url": "https://learn.microsoft.com/en-us/clarity/heatmaps/heatmaps-overview",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft Clarity：工作階段錄影概覽",
+          "url": "https://learn.microsoft.com/en-us/clarity/session-recordings/recordings-overview",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft Clarity：篩選及行為線索",
+          "url": "https://learn.microsoft.com/en-us/clarity/filters/clarity-filters",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft Clarity：回放與熱點資料保留",
+          "url": "https://learn.microsoft.com/en-us/clarity/setup-and-installation/data-retention",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft Clarity：回放重建方式 FAQ",
+          "url": "https://learn.microsoft.com/en-us/clarity/faq",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

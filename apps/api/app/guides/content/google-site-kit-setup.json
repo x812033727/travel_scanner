@@ -1,0 +1,253 @@
+{
+  "slug": "google-site-kit-setup",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Site Kit 串接 Google 工具：權限、資料與驗證流程",
+      "description": "Site Kit 可以把 Google 搜尋與網站分析資料帶進 WordPress，但連接服務、放置追蹤碼和授予查看權限是不同工作。本文以小型烘焙教室網站為例，整理設定前的帳號盤點、Google Analytics 資源與資料串流選擇、既有標籤核對，以及分享儀表板的方式。附服務比較表、操作步驟與原創圖解，協助辨認沒有資料、權限不足及追蹤設定重複等問題。",
+      "hero": {
+        "src": "/guides/google-site-kit-setup/hero.jpg",
+        "alt": "原創盾牌、伺服器與螢幕圖像，呈現確認 Site Kit 權限、資料來源及網站分析畫面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "烘焙教室的網站交接後，新負責人想知道讀者從哪裡進來，卻在 Google 和 WordPress 之間切換了好幾次。Site Kit 能把部分資料放在熟悉的後台，但安裝前先確認資料屬於誰、選的是哪個網站，以及原本如何收集資料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇聚焦服務串接與交接驗收。Search Console 的曝光、Analytics 的網站互動和 PageSpeed 的效能診斷各有用途，不能因為放在同一個儀表板，就把它們當作相同的數字，或認為所有服務都已自動開通。"
+        },
+        {
+          "type": "heading",
+          "text": "先決定要看哪些資料",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "截至 2026 年 9 月 14 日查閱，Site Kit 初始設定會使用 Search Console，PageSpeed Insights 也預設啟用；Analytics 可在一開始選擇連接，或稍後再加。其他服務依需求連接，不必為了看課程文章流量就把所有選項打開。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Search Console 回答網站在 Google 搜尋中的曝光與點擊情況，Analytics 則協助理解進站後的使用情形。PageSpeed Insights 處理頁面效能。先把烘焙教室想知道的問題寫成一句話，再選擇對應服務，避免拿搜尋點擊直接代表所有網站訪客。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Tag Manager 可協助部署與管理標籤，但其容器內容仍需到 Tag Manager 端管理。AdSense 的網站核准也不是裝好 Site Kit 就完成。將串接、追蹤、廣告審核與報表分開，才能知道哪一步需要繼續處理。"
+        },
+        {
+          "type": "heading",
+          "text": "整理 WordPress 與 Google 的兩層權限",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "設定 Site Kit 需要 WordPress 管理員角色；Google 服務則有各自的資料存取權。能登入 WordPress 不代表已能查看正確的 Analytics 資源。先列出網站管理者、Google 帳號、Search Console 資源和 Analytics 資源，找出真正由教室持有的項目。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若由外包人員協助，使用個別帳號並授予所需服務權限。官方建議客戶持有 Analytics 資源與 Tag Manager 容器等服務項目，由協作者取得適當存取。不要因為建立方便，就讓所有資料只存在離職人員的私人帳號底下。"
+        },
+        {
+          "type": "paragraph",
+          "text": "其他 WordPress 管理員自行連接 Site Kit 後，要看既有 Analytics 資料，仍至少需要該資源的 Viewer 權限；建立新資源或資料串流另需相應較高權限。查不到清單時，先核對登入帳號與服務權限，不要立刻建立同名的新資源來繞過問題。"
+        },
+        {
+          "type": "heading",
+          "text": "依精靈連接，確認網站與資料來源",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先確認公開網站可以正常存取，WordPress 的 REST API 可用，並核對外掛當前系統要求。Site Kit 官方一般設定流程以正式公開網站為前提，測試環境另有專門方式；不要為了串接，把原本受保護的測試網站直接公開。"
+        },
+        {
+          "type": "paragraph",
+          "text": "從 WordPress 外掛目錄安裝 Google 的 Site Kit，啟用後開啟 Site Kit 儀表板，以預定帳號登入 Google。依畫面核對授權、網站所有權和 Search Console 設定。初始驗證可能新增驗證檔或標記，這是實際設定動作，不只是看一份公開報表。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若連接 Analytics，依序確認帳戶、資源與網站資料串流。教室舊站已在收資料時，優先找到現有項目及識別碼；只有確定需要新的資料範圍才建立新項目。完成後把連接名稱、網址及代碼保存到交接紀錄，避免兩個相近名稱日後難以分辨。"
+        },
+        {
+          "type": "heading",
+          "text": "查看資料與插入追蹤碼可以分開",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Site Kit 可以連接既有資源，僅顯示儀表板資料，而不再插入程式碼。官方文件指出，偵測到選定資源已有 Analytics 標籤時，會關閉放置程式碼的選項以避免重複。仍應確認現場設定，因為網站也可能透過佈景、其他外掛或 Tag Manager 部署。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先盤點目前的標籤來源與目標資料串流，再決定由哪一處管理。若選擇另一個 Analytics 資源，又保留原有標籤，資料可能同時傳往兩個資源；這與同一事件送出兩次是不同問題。不能只因看到兩段程式碼，就直接判定報表一定加倍。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若要把程式碼交給 Site Kit 放置，先確認原本部署還包含哪些事件與設定，再安排移交。不要看到 GTM 就整段移除，因為容器可能還管理其他必要功能。變更後以實際標籤和事件結果核對，而不是只看開關已經變成啟用。"
+        },
+        {
+          "type": "heading",
+          "text": "讓同事看報表，使用儀表板分享",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "只需要看資料的課程編輯，可以由管理員使用 Dashboard sharing 分享受限的唯讀儀表板。這樣不必把編輯升級成整站管理員，也不必為每位讀者都完成 Google 帳號串接。分享的是 Site Kit 裡的檢視，不應當成 Google 服務本身的完整存取權。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Site Kit 儀表板的分享圖示中，依服務選擇可查看的 WordPress 角色，再套用設定。分享通常以角色為單位；選擇編輯者時，應確認哪些人目前具有該角色，而不是以為只開放給眼前這一位同事。各服務可管理的項目可能不同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "服務連接的擁有者與誰能管理分享，也要在交接中列清楚。成員離開後，分別檢查 WordPress 帳號、儀表板分享與 Google 服務權限。單純取消某個角色的報表顯示，不代表對方在 Analytics 原平台的存取已經移除。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "列出需要回答的資料問題、網站網址與各服務持有人。",
+            "由有適當權限的管理員登入 Site Kit，核對所有權與連接資源。",
+            "盤點既有標籤，決定資料顯示及程式碼部署方式，再驗證結果。",
+            "依角色分享必要報表，保存識別碼、設定與人員交接紀錄。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "用三個層次找出資料沒有出現的原因",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一層看連接：登入帳號是否正確、資源與資料串流是否選對、服務是否仍授權。第二層看部署：目前由誰放置標籤、頁面是否實際載入。Site Health 的 Site Kit 區段可顯示 Analytics snippet placed，但它回答的是 Site Kit 是否放置，不代表其他工具有沒有部署。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三層看資料：新 Analytics 資源通常需要一至兩天開始顯示資料，既有資源則可核對原平台。官方也說明 Site Kit 可能使用與 Analytics 畫面不同的使用者指標；比較前先對齊日期、網站範圍與指標名稱，不因數字稍有差別就判定安裝錯誤。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自行測試時還要留意 Site Kit 預設排除已登入使用者的 Analytics 追蹤，以及網站的同意設定和瀏覽器阻擋情況。可以在符合網站設定的未登入情境核對收集流程。遇到異常先保存證據，別把重設全部服務當成第一步，因為重設會中斷其他使用者的連接。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/google-site-kit-setup/diagram-1.svg",
+          "alt": "四欄依序說明先確認服務持有人和管理權限，選定網站與資料串流，核對追蹤部署，再分享報表並保存交接資訊。",
+          "width": 1600,
+          "height": 900,
+          "caption": "連接成功、程式碼放置與收到正確資料，需要分別確認。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "想處理的工作",
+            "主要服務或設定",
+            "驗收重點"
+          ],
+          "rows": [
+            [
+              "查看搜尋曝光與點擊",
+              "Search Console",
+              "網站資源與查詢範圍"
+            ],
+            [
+              "理解網站互動",
+              "Analytics",
+              "資源、串流與事件"
+            ],
+            [
+              "查看頁面效能",
+              "PageSpeed Insights",
+              "量測類型與資料足量"
+            ],
+            [
+              "管理標籤部署",
+              "Tag Manager 或既有工具",
+              "容器內容與實際送出"
+            ],
+            [
+              "讓編輯看部分報表",
+              "Dashboard sharing",
+              "角色、服務與唯讀範圍"
+            ]
+          ],
+          "caption": "各服務處理的問題不同；成功連接不等於所有追蹤與資料都已驗收。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先核對識別碼，再新增資源",
+          "text": "找不到 Analytics 資源時，先確認 Google 帳號及權限。建立同名的新資源不會自動搬入舊資料，也可能讓後續報表來源更難辨識。"
+        },
+        {
+          "type": "link",
+          "text": "先理解 Search Console 的資料與權限",
+          "url": "https://mokaair.com/zh-TW/life/google-search-console-workflow"
+        },
+        {
+          "type": "link",
+          "text": "核對 WordPress 人員角色",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-user-roles"
+        },
+        {
+          "type": "link",
+          "text": "分辨 PageSpeed 的分數與量測",
+          "url": "https://mokaair.com/zh-TW/life/pagespeed-performance-review"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Site Kit 官方安裝與設定",
+          "url": "https://sitekit.withgoogle.com/documentation/getting-started/install/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Site Kit 可連接的 Google 服務",
+          "url": "https://sitekit.withgoogle.com/documentation/getting-started/connect-services/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Site Kit 與 Google 服務權限",
+          "url": "https://sitekit.withgoogle.com/documentation/using-site-kit/permissions/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "管理 Site Kit 放置的程式碼",
+          "url": "https://sitekit.withgoogle.com/documentation/using-site-kit/manage-site-kit-placed-code/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Site Kit Analytics 設定與驗證",
+          "url": "https://sitekit.withgoogle.com/documentation/supported-services/analytics/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Site Kit 儀表板分享",
+          "url": "https://sitekit.withgoogle.com/documentation/using-site-kit/dashboard-sharing/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
