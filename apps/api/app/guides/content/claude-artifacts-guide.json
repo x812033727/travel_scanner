@@ -1,0 +1,350 @@
+{
+  "slug": "claude-artifacts-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Artifacts 教學：不會寫程式也能在對話裡做出網頁、圖表與小工具",
+      "description": "Claude 的 Artifacts 會把夠大、可以獨立存在的內容放到對話右邊的視窗，免費版就能用。這篇依 2026 年 9 月 Claude 說明中心與官方公告查證，說明它何時出現、六種類型與哪些方案能用，帶不會寫程式的讀者做出家庭記帳小工具、把電費畫成圖表、整理可列印的行程表，再講發布連結、額度算誰的，以及不能連外部服務、資料只在瀏覽器等限制與常見問題。",
+      "hero": {
+        "src": "/guides/claude-artifacts-guide/hero.jpg",
+        "alt": "一個深綠色對話泡泡旁邊浮出一個白色小視窗，視窗裡有一張長條圖與一顆橘色按鈕，插圖以簡單幾何形狀表現用對話做出小工具",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Artifacts 是 Claude 把「夠大、可以獨立存在的內容」放到對話右邊另一個視窗的機制：文件、程式碼、單頁網頁、SVG 圖、流程圖與可互動的元件都算，免費版就能用，做出來的東西可以一直用對話改、切換版本、下載，還能發布成任何人有連結就能打開的頁面。它是目前最省事的「用講的做出小工具」方法，前提是把它當成原型與一次性工具，不是長期存資料的系統。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇依 2026 年 9 月在 Claude 說明中心、Claude Academy 與官方公告查到的內容，先講 Artifacts 什麼時候會出現、支援哪些類型、哪些方案能用，接著用三個示範帶你做出家庭記帳小工具、把自家電費畫成圖表、整理可列印的行程表，每個示範都附提示詞全文與追問修改的講法，最後是分享與發布、額度算誰的、它做不到的事，以及畫面空白、被截斷、手機怎麼看這些常見問題。"
+        },
+        {
+          "type": "heading",
+          "text": "Artifacts 是什麼、什麼時候會出現、哪些方案能用",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "說明中心對 Artifact 的定義有四個條件：內容夠大且自成一體，通常超過 15 行；是你之後會想修改、反覆調整或拿到對話外面用的東西；不需要對話裡的其他內容也看得懂；以及你之後會想回頭找的內容。符合的時候，Claude 會自動把它放到主對話右邊的獨立視窗；不符合就只是一般回覆，這時直接說「請做成 Artifact」就好。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官網列出的常見類型有六種：Markdown 或純文字的文件、程式碼片段、單頁 HTML 網站、SVG 圖、圖表與流程圖，以及可互動的 React 元件；Claude Academy 的課程另外提醒，Word、Excel、PowerPoint 與 PDF 不是 Artifact，那些是「建立檔案」功能做出來讓你下載的檔案。側欄的 Artifacts 專區與 AI 驅動的 Artifact 在免費版、Pro、Max、Team 與 Enterprise 都能用，定價頁的比較表也把 Artifacts 列在免費版。Claude Cowork 與 Claude Code 另有各自的用法，本文只講一般對話裡的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用之前先確認一個開關。說明中心寫明，沒有開啟「Code execution and file creation」（程式執行與檔案建立）就不再支援 Artifacts：點左下角的名字或頭像縮寫 → Settings → Capabilities，把它打開；Team 與 Enterprise 由 Owner 在 Organization settings → Capabilities 替整個組織開。Artifact 視窗右下角有三個動作：看程式碼、複製、下載；一個對話裡有好幾個 Artifact 時，用右上角的滑桿圖示切換，並指定要 Claude 更新哪一個。"
+        },
+        {
+          "type": "link",
+          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-artifacts-guide/diagram-1.svg",
+          "alt": "Claude Artifacts 流程圖：描述需求、Artifact 出現在右側視窗、追問修改、分享與發布四個步驟，下方列出官網的六種常見類型與各自適合做的東西",
+          "width": 1600,
+          "height": 900,
+          "caption": "從左到右是一個 Artifact 的一生：描述需求、出現在右側視窗、追問修改、發布成連結；下排是官網列出的六種類型。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "三個示範：記帳小工具、資料圖表、可列印行程表",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "三個示範各對應一種類型：互動元件、SVG 圖、單頁網頁。提示詞的共同原則：先講用途與使用者，再列欄位與畫面，最後講樣式與語言，一次只要求一個東西。Claude Academy 的建議是先把問題講出來、讓 Claude 反問你幾個問題，再說「可以開始做了」，做出來的版本會比一句話丟過去準得多。"
+        },
+        {
+          "type": "link",
+          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+        },
+        {
+          "type": "heading",
+          "text": "示範一：家庭記帳小工具（互動網頁）",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "提示詞全文：「請做一個家庭記帳小工具，做成可以互動的 Artifact。使用者是我們一家四口，手機和電腦都會用。畫面上方是輸入區：日期、項目、金額（新台幣）、分類（餐飲、交通、房租水電、教育、醫療、娛樂、其他）、付款人（爸爸、媽媽）。中間是本月明細表，每一筆可以刪除。右上角顯示本月總支出，以及各分類的小計與占比。資料存在瀏覽器裡，重新整理後還在，另外給一個匯出 CSV 的按鈕。介面用繁體中文，字體大一點。」"
+        },
+        {
+          "type": "paragraph",
+          "text": "它會做出什麼：一個可互動的元件出現在右側視窗，上面是表單、中間是明細表、角落是小計，可以直接輸入幾筆測試；視窗右下角能切到程式碼檢視，那是給你複製或下載用的。「資料存在瀏覽器裡」的意思是資料只留在這台裝置，換電腦或清掉瀏覽紀錄就沒了，這是 Artifacts 的天生限制。"
+        },
+        {
+          "type": "paragraph",
+          "text": "怎麼追問修改：改外觀就說「把分類的顏色改成柔和的綠色系，總支出的字放大」；加欄位就說「新增一欄『備註』，明細表也要顯示」；加功能就說「加一個月份切換」。遇到錯誤時，錯誤訊息旁邊有「Try fixing with Claude」按鈕，按下去會把錯誤細節複製成一則新訊息，送出讓它診斷；說明中心提醒這不保證修得好，修不好就用白話描述「輸入有小數點的金額時總計算錯」再試一次。每次修改都是一個新版本，視窗上方的版本選單可以隨時切回去。"
+        },
+        {
+          "type": "heading",
+          "text": "示範二：把自己的資料畫成圖表",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "提示詞全文：「下面是我家最近 12 個月的電費，每行一筆：月份、金額（新台幣）。請畫成一張長條圖的 Artifact：橫軸是月份，縱軸是金額、從 0 開始；每根長條上面直接標數字，用千分位；最高的那個月用橘色，其他用灰綠色；加一條平均線並標出平均金額；圖下方用一句話說哪個月最高、比平均高多少。用繁體中文，做成 SVG，我要放進家庭會議的簡報。」然後把 12 行資料貼在後面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "它會做出什麼：一張 SVG 圖出現在右側視窗，可以下載成 .svg 檔放進簡報；如果你說「做成互動網頁，滑鼠移上去顯示金額」，它會改成可互動的元件。資料多的時候，先貼 CSV 或上傳試算表，再請它「先把資料整理成表格給我確認，再畫圖」，圖上的數字才不會被它自己補出來；圖畫好之後至少核對一個月份，這是 Claude Academy 特別提醒的步驟：一張好看但數字錯的圖會誤導所有看到它的人。"
+        },
+        {
+          "type": "paragraph",
+          "text": "怎麼追問修改：「改成折線圖，每個點都標出來」「橫軸的月份改成民國年」「顏色換成藍色系，黑白列印也要分得出來」。如果它把某個月的數字看錯，就說「3 月的金額看錯了，請只改這一筆，其他不要動」，它才不會順手重排整張圖。"
+        },
+        {
+          "type": "heading",
+          "text": "示範三：可列印的行程表或文件",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "提示詞全文：「請把下面的東京 5 天自由行筆記整理成一份可以列印的行程表 Artifact，做成單頁網頁。最上面放旅行日期、航班、飯店地址與電話；每一天一個區塊，欄位是時間、地點、交通方式、預算（日圓）、備註，每天最後一列是當天預算小計；最後放緊急聯絡電話與注意事項。A4 直式，黑白列印也清楚，字不要小於 11 pt，用繁體中文。」接著貼上你的零散筆記，順序亂也沒關係。"
+        },
+        {
+          "type": "paragraph",
+          "text": "它會做出什麼：一份版面固定的單頁網頁，用瀏覽器的列印功能（Windows 是 Ctrl+P，Mac 是 Command+P）就能印成紙本或存成 PDF。如果你要的是純文字文件，請它「做成 Markdown 文件」：這種類型可以在視窗裡直接反白一段文字、按「Edit with Claude」輸入要改什麼，Claude 會就地修改那一段；說明中心 2026 年 6 月的更新把這個做法也帶到它自己寫的報告與計畫草稿。"
+        },
+        {
+          "type": "paragraph",
+          "text": "怎麼追問修改：「第 3 天下午改去淺草，交通方式與預算一起更新」「加一欄勾選框，去過就打勾」「把每天的預算小計加總放在最上面」。要 Word 或 PDF 檔而不是網頁時，直接說「另外存成 Word 檔給我下載」，這時做出來的是檔案不是 Artifact，兩者可以並存。"
+        },
+        {
+          "type": "link",
+          "text": "Mokaair 旅遊攻略：東京、大阪、首爾等地的行程與交通攻略，可以直接當筆記貼給 Claude",
+          "url": "https://mokaair.com/zh-TW/guides"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT Canvas 改版後怎麼改稿：用寫作區塊與程式區塊逐段修文章、改小腳本",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-canvas-writing"
+        },
+        {
+          "type": "table",
+          "header": [
+            "類型",
+            "適合做什麼",
+            "提示重點",
+            "限制"
+          ],
+          "rows": [
+            [
+              "文件（Markdown 或純文字）",
+              "行程注意事項、社團公告、報告草稿",
+              "說明用途與讀者、段落順序；改稿時反白一段按「Edit with Claude」",
+              "純文字排版，沒有互動；要 Word 或 PDF 得另外請它建立檔案"
+            ],
+            [
+              "程式碼片段",
+              "小腳本、Excel 公式、自動化範例",
+              "說清楚輸入與輸出、用什麼語言、跑在哪裡",
+              "視窗只供檢視、複製、下載，要執行得放到自己的環境"
+            ],
+            [
+              "單頁網頁（HTML）",
+              "可列印的行程表、報名表、簡單計算機",
+              "描述版面順序、欄位、列印需求、字級與語言",
+              "單一檔案；不能連外部服務，資料不會保存"
+            ],
+            [
+              "SVG 圖",
+              "放進簡報或文件的長條圖、示意圖",
+              "給完整資料、指定顏色與標註、說明用在哪裡",
+              "靜態圖；資料多時先整理成表格再畫，數字要自己核對"
+            ],
+            [
+              "圖表與流程圖",
+              "流程圖、組織圖、決策樹",
+              "把步驟或層級條列寫清楚，指定方向與分支",
+              "以流程示意為主，細節太多會擠在一起"
+            ],
+            [
+              "互動元件（React）",
+              "記帳工具、待辦清單、小遊戲、互動圖表",
+              "先講使用者與情境，再列欄位與功能；一次加一個",
+              "資料只在瀏覽器；功能越多越容易出錯、越容易被截斷"
+            ],
+            [
+              "AI 驅動的 Artifact",
+              "會出題的練習遊戲、客製問答助理、寫作幫手",
+              "明說「用 Claude」做什麼、輸出格式與語氣",
+              "只有文字問答的 API；用的人要登入，用量算各自的額度"
+            ]
+          ],
+          "caption": "2026 年 9 月依 Claude 說明中心與 Claude Academy 的類型清單整理；功能與方案會變，以官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "分享與發布：公開連結、Artifacts 專區、別人能不能改成自己的版本",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "免費版、Pro 與 Max 都能發布。步驟：打開要發布的 Artifact，確認版本選單停在你要的版本，按「Publish」，複製公開連結。任何人有連結就能打開並操作，不需要 Claude 帳號，只有用到 AI 驅動功能時才會被要求登入；Claude Academy 也寫明發布的頁面不會被搜尋引擎索引，原本的對話不會跟著公開。發布之後會多一個「Get embed code」按鈕，能產生嵌入其他網站的程式碼，但要先在「Allowed domains」欄位填上允許嵌入的網址。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Artifacts 專區是側欄裡的「Artifacts」分頁，集中放你的作品，可以從這裡直接開新的 Artifact，也可以管理與整理；要注意在對話裡做出來的 Artifact 不會自動出現在這裡，要先發布才會進來。Claude Academy 註明這個分頁只在免費版、Pro 與 Max 有，手機 App 目前沒有。取消發布按「Unpublish」，但說明中心特別標示：取消發布之後就不能再發布同一個，要重新做一個；如果它用了持久儲存，取消發布會把資料一併刪除。"
+        },
+        {
+          "type": "paragraph",
+          "text": "別人能不能改成自己的版本：可以，但不是按一顆鈕。以前的「Remix」按鈕已經拿掉，現在的做法是打開別人發布的 Artifact，按「Copy」複製程式碼，回到自己的新對話貼上並描述要改的地方，例如「這是猜謎遊戲的程式碼，請把題目換成台灣景點並加上計時器」，Claude 會做出一個屬於你的新 Artifact，原作不受影響。說明中心提醒只對信任的人這麼做，因為你等於把別人的程式碼帶進自己的對話。Team 與 Enterprise 則只能在組織內分享（「Share」→「Share & copy link」），看的人要登入同一個組織的帳號，也會一併看到那個對話裡的附件。"
+        },
+        {
+          "type": "heading",
+          "text": "在 Artifact 裡呼叫 Claude：AI 驅動的 Artifact 與額度算誰的",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Artifact 不只能是靜態的小工具，還可以自己去問 Claude，官網稱為 AI 驅動的 Artifact（AI-powered artifacts），所有方案都能做。做法是在提示詞裡說要「用 Claude」，例如：「做一個幫小學生練習九九乘法的問答小遊戲，題目與提示由 Claude 產生；答錯時請 Claude 用一句繁體中文解釋為什麼。」Claude 會把呼叫它自己的程式碼寫進去，程式跑在 Anthropic 的機器上，你不用申請 API 金鑰，也不用付 API 的錢。"
+        },
+        {
+          "type": "paragraph",
+          "text": "額度算誰的：說明中心寫得很清楚，你分享出去的 AI 驅動 Artifact，別人是用自己的 Claude 帳號登入、跟自己的那一份互動，用量算在每個使用者自己的方案上限裡，不算你的；不管幫到 10 個人還是 10,000 個人，分享本身不花你的錢。反過來說，你自己試玩時用的是你的額度。官方公告列出的限制是它只能用文字問答的 API。"
+        },
+        {
+          "type": "paragraph",
+          "text": "付費方案還有兩個延伸。MCP 整合（Pro、Max、Team、Enterprise，網頁版與桌面版）讓 Artifact 透過 MCP 連接 Asana、Google Calendar、Slack 這類服務或自己設定的 MCP 伺服器，第一次使用會跳出授權，而且每個使用者都要登入自己的帳號，不會借用作者的。持久儲存（同樣是 Pro 以上，網頁版與桌面版）讓 Artifact 把資料存起來，做成日記或追蹤表，分成個人儲存與共用儲存（大家看同一份，第一次進入會有確認視窗）；上限是每個 Artifact 20 MB、只能存文字，而且只有發布之後才會真的存進去。"
+        },
+        {
+          "type": "heading",
+          "text": "限制：不能連外部服務、資料只在瀏覽器、版本切換與回溯",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "不能連外部服務或存後端資料：Artifact 在封閉的環境裡執行，2025 年 7 月的官方公告列出的限制就是「不能呼叫外部 API」「沒有持久儲存」，後來付費方案才多了 MCP 與持久儲存。「抓某個網站的匯率」「連我家的 Google 試算表」這種需求，免費版做不到，付費方案也只能透過 MCP 走官方支援的服務。",
+            "資料只在瀏覽器：沒有用持久儲存的 Artifact，你輸入的每一筆資料都只存在當下這個瀏覽器，重新整理、換裝置、清瀏覽紀錄就會消失；別人從連結打開時看到的是自己那一份。記帳小工具要真的用，要嘛每次匯出 CSV，要嘛升級後請它改用持久儲存並發布。",
+            "版本切換與回溯：每次修改都會產生新版本，視窗上方的版本選單可以來回切換；你的修改不會改變 Claude 對原始內容的記憶；想走另一條路時，回去編輯先前的訊息，會分出一個帶著自己一套 Artifact 的新分支。發布前先確認版本選單停在你要的版本，取消發布之後同一個 Artifact 就不能再發布。",
+            "不是檔案、不是圖片產生器：Word、Excel、PowerPoint、PDF 是「建立檔案」功能做的下載檔，不是 Artifact；Artifact 能畫 SVG 與圖表，但不會生成照片或插圖。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Artifacts 適合一次性的小工具與原型",
+          "text": "要長期用、要存資料、要很多人一起用的東西，別硬撐在 Artifact 裡：請 Claude 幫你做成真正的網站（它可以把程式碼寫好，再教你放到主機上），或者乾脆用試算表加幾個公式，往往比一個會忘記資料的小工具實用。Artifact 的價值是十分鐘內做出能按的原型，可行之後再決定要不要投資做真的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另外，Artifact 也不是讓 Claude 記住你的資料的地方。要讓每次對話都帶著家庭預算的規則、旅行偏好、常用格式這類背景，放進 Projects 的知識庫與專案指令，之後在那個專案裡做 Artifact，它就會照你的規矩來。"
+        },
+        {
+          "type": "link",
+          "text": "Claude Projects 知識庫：把資料與指令放進專案，每次對話都帶著背景",
+          "url": "https://mokaair.com/zh-TW/life/claude-projects-knowledge-base"
+        },
+        {
+          "type": "link",
+          "text": "AI 工具怎麼挑：依任務選 ChatGPT、Claude、Gemini 與其他工具",
+          "url": "https://mokaair.com/zh-TW/life/ai-tools-choose-by-task"
+        },
+        {
+          "type": "heading",
+          "text": "常見問題：畫面空白、太長被截、改一處全變、手機上怎麼看",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "畫面空白或一直轉圈：先確認 Settings → Capabilities 的「Code execution and file creation」是開的；再切到程式碼檢視看有沒有內容，有錯誤訊息就按「Try fixing with Claude」；還是不行就說「請改用最單純的單頁 HTML 重做」。",
+            "太長被截、做到一半停住：一次要求太多功能，程式碼超過一則回覆能寫的長度就會停在半路。拆成幾步：先要骨架，確認後再逐一加功能；已經停住的話，說明中心的建議是把前一個提示詞和它做到一半的回覆一起貼回去，請它接著完成。開了程式執行之後，對話接近上下文視窗上限時 Claude 會自動摘要前面的內容。",
+            "改一處全變：Claude 重寫整個 Artifact 時可能順手改掉你沒要求的地方。追問時明講範圍，例如「只改標題的顏色，其他都不要動」；文件類型用反白加「Edit with Claude」就地改；被改壞就用版本選單切回上一版。",
+            "手機上怎麼看：官方公告 2025 年 7 月起 iOS 與 Android App 都能用 Artifacts，但側欄的 Artifacts 專區手機 App 目前沒有。最省事的做法是在電腦上發布成連結，手機用瀏覽器開；做記帳工具時記得在提示詞裡寫「手機也能操作」，版面才會為小螢幕排。",
+            "別人能不能把我的 Artifact 存到自己的專區：登入 Claude 的人可以儲存與整理他們發現的 Artifact，也能複製程式碼做自己的版本；沒有帳號的人只能看和用，改不了你發布的那一份。"
+          ],
+          "ordered": false
+        }
+      ],
+      "sources": [
+        {
+          "title": "Claude 說明中心：What are artifacts and how do I use them?（15 行門檻、六種類型、方案、Code execution and file creation 開關、版本選單、Try fixing with Claude、AI 驅動、MCP、持久儲存 20 MB）",
+          "url": "https://support.claude.com/en/articles/9487310-what-are-artifacts-and-how-do-i-use-them",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Publish and share artifacts（發布步驟、誰能看、Get embed code 與 Allowed domains、Unpublish 不能再發布、Remix 已移除改為複製程式碼、Team 與 Enterprise 只能組織內分享）",
+          "url": "https://support.claude.com/en/articles/9547008-publish-and-share-artifacts",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude Academy：Use artifacts to visualize and create AI apps without ever writing a line of code（先讓 Claude 反問、Fix with Claude、Artifacts 分頁只在免費版、Pro、Max 且手機沒有、分享前核對數字）",
+          "url": "https://academy.claude.com/tutorials/use-artifacts-to-visualize-and-create-ai-apps-without-ever-writing-a-line-of-code",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude Academy：Claude 101 – Creating with artifacts（六種格式、Word、Excel、PowerPoint、PDF 不是 Artifact、發布頁不被搜尋引擎索引、原對話不公開）",
+          "url": "https://academy.claude.com/courses/claude-101/creating-with-artifacts",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude Academy：Prototype AI-powered apps with Claude artifacts（在提示詞裡說「用 Claude」、使用者用自己的方案額度）",
+          "url": "https://academy.claude.com/tutorials/prototype-ai-powered-apps-with-claude-artifacts",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 官方部落格：Turn ideas into interactive AI-powered apps（2025 年 6 月 25 日；Artifacts 專區；更新：2025 年 7 月 21 日 iOS 與 Android、7 月 31 日 Team 與 Enterprise、10 月 21 日 MCP 與持久儲存）",
+          "url": "https://claude.com/blog/build-artifacts",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 官方部落格：Build and share AI-powered apps with Claude（2025 年 7 月 25 日；用量算使用者自己的；限制：不能呼叫外部 API、沒有持久儲存、只有文字問答的 API）",
+          "url": "https://claude.com/blog/claude-powered-artifacts",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 定價頁：方案比較表（Artifacts 與程式執行建檔在免費版、Pro、Max 都有）",
+          "url": "https://claude.com/pricing",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Release notes（2025 年 8 月 21 日發布的 Artifact 可嵌入；2026 年 6 月 12 日草稿就地編輯；2026 年 7 月 7 日對話與 Cowork 共用 Artifacts）",
+          "url": "https://support.claude.com/en/articles/12138966-release-notes",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Claude's response to my prompt is too brief（回覆做到一半時把前一個提示詞與回覆貼回去接著做）",
+          "url": "https://support.claude.com/en/articles/8114518-claude-s-response-to-my-prompt-is-too-brief",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：How do usage and length limits work?（開啟程式執行後接近上下文視窗上限會自動摘要）",
+          "url": "https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Use artifacts in Claude Cowork（Cowork 的 Artifact 另有規則、Pro 以上）",
+          "url": "https://support.claude.com/en/articles/14729249-use-artifacts-in-claude-cowork",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}
