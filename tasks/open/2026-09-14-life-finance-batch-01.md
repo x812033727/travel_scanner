@@ -13,6 +13,7 @@ depends_on:
   - 2026-09-14-life-finance-series-catalogue
   - 2026-09-14-life-finance-topic
 scope:
+  - docs/life-finance-series-brief.md
   - apps/api/app/guides/content/personal-finance-first-steps.json
   - apps/api/app/guides/content/finance-glossary-50-terms.json
   - apps/api/app/guides/content/expense-tracking-getting-started.json
