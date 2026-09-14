@@ -2,7 +2,7 @@
 
 import { ArrowLeft, X } from "lucide-react";
 import { useLocale } from "next-intl";
-import { useCallback, useEffect, useId, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
+import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { plannerOverlayCopy } from "@/components/planner/overlay-copy";
 import { isTopModalLayer, registerModalLayer } from "@/lib/modal-sheet";
@@ -114,7 +114,12 @@ function OpenPlannerOverlay({
   const onCloseRef = useRef(onClose);
   const [expanded, setExpanded] = useState(defaultExpanded);
   const mounted = useSyncExternalStore(subscribeToClient, () => true, () => false);
-  useEffect(() => { onCloseRef.current = onClose; }, [onClose]);
+  // Layout effects here and for the layer below, so both land in the commit that draws the
+  // sheet. A commit caused by a resolved promise runs its passive effects a scheduler task
+  // later, and a click or key in that gap met a sheet that was on screen but not yet a layer
+  // (關閉 did nothing), or one still holding the previous render's guard (the buttons said
+  // "busy" while 關閉 closed it anyway).
+  useLayoutEffect(() => { onCloseRef.current = onClose; }, [onClose]);
   const closeOverlay = useCallback(() => {
     if (panelRef.current && isTopModalLayer(panelRef.current)) onCloseRef.current();
   }, []);
@@ -140,7 +145,7 @@ function OpenPlannerOverlay({
     return () => observer.disconnect();
   }, [mounted]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const panel = panelRef.current;
     const container = containerRef.current;
     if (!mounted || !panel || !container) return;

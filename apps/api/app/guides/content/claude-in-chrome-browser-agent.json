@@ -1,0 +1,307 @@
+{
+  "slug": "claude-in-chrome-browser-agent",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude 在瀏覽器裡：Chrome 擴充功能替你操作網頁",
+      "description": "Claude in Chrome 是 Anthropic 的瀏覽器擴充功能，裝好之後 Claude 讀得到你正在看的那一個分頁，也能替你點連結、填欄位。這篇依 2026 年 9 月官網說明它支援哪些瀏覽器與方案、怎麼安裝、看得到什麼、每個網站怎麼授權，用比較保險條款、整理訂單、填重複表單三個情境示範它會停在哪裡等你，並說清楚提示詞注入為什麼是主要風險、哪些網站不該讓它碰。",
+      "hero": {
+        "src": "/guides/claude-in-chrome-browser-agent/hero.jpg",
+        "alt": "自繪插圖：一個瀏覽器視窗右上角浮著一個對話泡泡，頁面上有一個滑鼠游標停在按鈕上，代表 Claude 在你正看的那一頁上替你操作",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Claude in Chrome 是 Anthropic 的瀏覽器擴充功能：裝進 Chrome 之後，Claude 讀得到你正開著的那一個分頁，也能替你點連結、填欄位。它省下的是複製貼上與重複填表的時間，代價是你讓一個會照指令行動的程式，坐在一台登入了你所有帳號的瀏覽器裡。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇帶你把它裝起來、弄清楚哪些方案能用，再用三個台灣日常情境各試一次：比較三家保險條款、把訂單頁整理成表格、填重複的線上表單，最後把權限收回到你安心的範圍。功能與數字都在 2026 年 9 月依官網查證。"
+        },
+        {
+          "type": "heading",
+          "text": "它是什麼：和網頁版 Claude 差在「它看得到你螢幕上這一頁」",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官網對它的描述很直白：一個讓 Claude 讀網頁、點選、在網站之間移動的瀏覽器擴充功能。和網頁版 Claude 的差別就在這裡——網頁版要你把內容貼上或給網址，擴充功能直接接上你正在用的瀏覽器，沿用你已經登入的狀態，所以公司內部儀表板、沒有 API 的舊系統、廠商後台這些地方，它也進得去。"
+        },
+        {
+          "type": "paragraph",
+          "text": "方案與瀏覽器先對一下。官方公告寫 Claude in Chrome 在每一個付費方案上正式推出，免費方案沒有，說明中心列的是 Pro、Max、Team 與 Enterprise。瀏覽器只有 Chrome，官網寫它還沒支援其他 Chromium 瀏覽器與行動裝置；Claude Code 的文件則另外提到 Edge、Brave、Arc、Vivaldi、Opera 也接得上。Team 與 Enterprise 由管理員在 Organization Settings 決定開不開、能上哪些網域。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "用 Chrome 打開 Chrome 線上應用程式商店，找 Claude 擴充功能。",
+            "按 Add to Chrome 安裝。",
+            "依提示用你的 Claude 帳號登入，免費帳號到這一步會被擋下來。",
+            "點網址列右邊的拼圖圖示，再按 Claude 旁邊的圖釘，把它固定在工具列上。",
+            "按工具列的 Claude 圖示打開側邊欄，依畫面授予它需要的權限。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "link",
+          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "它看得到什麼：預設只有你正在看的那一個分頁",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "側邊欄預設讀的是你正在看的那一個分頁，不用額外設定，也不會自己去翻你其他的分頁。要它同時處理好幾頁，你得把那些分頁拖進 Claude 的分頁群組；沒拖進去的分頁就不在這次任務裡。"
+        },
+        {
+          "type": "paragraph",
+          "text": "它「看」的方式包含截圖與讀取頁面內容，官網的安全說明講得很白：截圖會拍下畫面上所有看得到的東西，包含敏感資料。它又沿用你的登入狀態，所以在那一頁上它就是「已經登入的你」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "授權是逐站給的。第一次要它在某個網站動手，畫面給你兩個選項：只允許這一個動作，或一律允許這個網站。就算給了一律允許，官網寫有三種動作它每次還是先問：下載檔案、輸入可能敏感的資訊、授予授權。"
+        },
+        {
+          "type": "heading",
+          "text": "三個台灣日常情境：做法、提示詞、它會停在哪裡",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "三個都在側邊欄操作。第一次玩先把模式切成每個動作都要核准，看清楚它想點什麼、想填什麼。提示詞有個共通寫法：範圍講死、不准做的動作講死、查不到時怎麼辦也講死。"
+        },
+        {
+          "type": "heading",
+          "text": "示範一：比較三家旅平險的條款",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "三家的條款頁各開一個分頁，一起拖進 Claude 的分頁群組。提示詞可以這樣寫：「這個分頁群組裡是三家旅平險的條款頁。整理成一張表：實支實付上限、海外突發疾病是否給付、不保事項裡跟登山與潛水有關的條文，每一格附上那一條在頁面上的標題。頁面上找不到的寫『條款未載明』，不要用你記得的內容補。」它會停在哪裡：換頁或開新分頁會先問；條款常掛在 PDF 裡，讀不到它就停下來要你自己開。投保它不做，購買與金融交易是官網清單上任何模式都不做的事。"
+        },
+        {
+          "type": "heading",
+          "text": "示範二：把訂單頁整理成表格",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "在你已經登入的購物或訂房網站打開訂單列表，直接在側邊欄問：「把這一頁的訂單整理成表格，欄位是訂單編號、日期、店家、金額、狀態。只用這一頁看得到的內容，需要翻下一頁先問我。」它會停在哪裡：翻頁、開新分頁會先問；要它把發票存下來也會先問，下載檔案官網明列一律要問。不要順手叫它去改地址或付款。"
+        },
+        {
+          "type": "heading",
+          "text": "示範三：填重複的線上表單",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "報名、廠商資料、報帳這種每次欄位都一樣的表單最適合交給它。把資料先整理好貼給它：「這一頁是活動報名表。照我貼的這份資料填入姓名、單位、聯絡信箱三個欄位，其他欄位不要動。填完停下來讓我檢查，不要按送出。」它會停在哪裡：輸入可能敏感的資訊、授予授權都會先問；信用卡與身分證件資料它不處理，遇到驗證碼也不會替你繞過。送出鍵自己按。"
+        },
+        {
+          "type": "heading",
+          "text": "權限模型：三種模式、每個網站的允許與封鎖清單",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "模式有三種，在側邊欄的下拉選單裡切。每個動作都要核准：Claude 每做一步都停下來問。自動核准：它持續做下去，自己檢查每個動作的安全性、判定不安全的就擋掉，需要你決定時才停，官網寫這是 Cowork 側邊欄的預設值。跳過所有核准：不問你，也沒有東西自動檢查它。"
+        },
+        {
+          "type": "paragraph",
+          "text": "網站層級有允許與封鎖兩份清單。個人在擴充功能設定裡管：點擴充功能圖示，按側邊欄右上角的三個點，選 Extension settings 就到 Permissions 頁，那裡列得出你核准過哪些網站，也能逐站收回。Team 與 Enterprise 由管理員在 Organization Settings 設這兩份清單，官網建議先嚴後寬；封鎖清單擋掉的不受允許清單影響。"
+        },
+        {
+          "type": "paragraph",
+          "text": "想一次全部收回？官網的權限頁只寫逐站收回，沒有「全部清空」的按鈕，這點以官網為準。最乾脆的是到 Chrome 的擴充功能管理頁把它停用或移除，組織則由管理員整個關掉。另外有兩類是 Anthropic 自己擋的：成人內容與已知的盜版網站，官網也說名單一定有漏。"
+        },
+        {
+          "type": "heading",
+          "text": "安全：提示詞注入是主要風險，不是理論上的風險",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "提示詞注入在官網的定義是：藏在網頁、電子郵件或文件裡的惡意指令，可能騙 Claude 做出你沒要求的動作。對瀏覽器代理來說這是最要緊的一條：它讀得到的每一頁都可能藏著白底白字或被動過手腳的圖片。官網列的「Claude 不會做的事」有一條正是為此：不照電子郵件或網頁內容裡的指令做事。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 公布過自己的測試。正式推出的公告寫，在一套由專業紅隊提供攻擊的評測裡，攻擊打到模型時，對 Opus 4.5 的成功率是 17.6%、對 Opus 5 是 3.8%，這是還沒加額外防護的數字；加上 2025 年 11 月當時最強的防護（探針）之後，對 Opus 4.5 仍有 16.7%。從 Opus 4.8 之後的模型，在探針加上安全分類器一起跑時，對 Claude Sonnet 5、Claude Opus 5 與 Claude Mythos 5 沒有攻擊成功，對 Claude Fable 5 是 0.3%。官網同時寫著攻擊手法一直在變，防護並非萬無一失。"
+        },
+        {
+          "type": "paragraph",
+          "text": "該做的是縮小它碰得到的範圍。官網明列不建議使用的場合：網路銀行與金融帳戶、醫療或健康資訊頁面、法律文件與合約、存有公司機密的工作帳號，以及有別人個資的頁面。官網另外建議從你信任的網站開始、敏感帳號用另一個瀏覽器設定檔、核准前把它提出的動作看過一遍。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-in-chrome-browser-agent/diagram-1.svg",
+          "alt": "圖解：左邊是一次瀏覽器代理任務的六個步驟，從你下指令到它讀分頁、提出動作、你核准、執行、回報；右邊是四類該放進封鎖清單的網站",
+          "width": 1600,
+          "height": 900,
+          "caption": "左邊由上往下讀一次任務的六步，橘色那格是你該停下來看清楚的核准畫面；右邊四類網站官網明列不建議，開始用之前先擋掉。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "和 ChatGPT 的瀏覽器代理、Claude 操作電腦有什麼不一樣",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "同一類的東西不只一個。OpenAI 那邊是 ChatGPT 的代理模式，官方說明寫它用 OpenAI 自己的虛擬瀏覽器、靠截圖看網頁，那台瀏覽器不在你電腦裡。Claude in Chrome 剛好相反，它在你自己的 Chrome 裡跑、用你自己的登入狀態，畫面上發生什麼你當場看得到。兩邊的風險面因此不同。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 代理模式：讓它替你上網比價、填表、訂位",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-agent-mode-guide"
+        },
+        {
+          "type": "paragraph",
+          "text": "再往外一層是操作電腦：Claude 直接看你的螢幕、控制應用程式。官方文件把先後順序寫得很清楚，Claude 會先挑最精準的工具，有 MCP 伺服器就走 MCP，是指令就用終端機，是瀏覽器上的事而且裝了 Claude in Chrome 就用擴充功能，都不行才動用螢幕控制。瀏覽器擴充功能是網頁專用的那一把，不是最大的那一把。"
+        },
+        {
+          "type": "link",
+          "text": "Claude 操作電腦是怎麼回事：能力、限制與安全",
+          "url": "https://mokaair.com/zh-TW/life/claude-computer-use-explained"
+        },
+        {
+          "type": "link",
+          "text": "MCP 是什麼：讓 Claude 連上你的檔案、日曆與資料庫",
+          "url": "https://mokaair.com/zh-TW/life/claude-mcp-explained"
+        },
+        {
+          "type": "table",
+          "header": [
+            "情境",
+            "值不值得用",
+            "風險",
+            "建議"
+          ],
+          "rows": [
+            [
+              "比較幾個分頁上的條款或規格",
+              "值得，省下最多來回捲動的時間",
+              "讀漏一條，或被頁面上的隱藏文字牽著走",
+              "先用每個動作都要核准，要它附上每一條的原文標題"
+            ],
+            [
+              "把訂單頁、後台清單整理成表格",
+              "值得",
+              "截圖會拍到同一頁上的個資",
+              "只讓它讀這一頁，翻頁與下載都先問過你"
+            ],
+            [
+              "填每次欄位都一樣的線上表單",
+              "值得",
+              "填錯欄位、被誤導按下送出",
+              "指定只填哪幾個欄位，填完停下來，送出鍵自己按"
+            ],
+            [
+              "網路銀行、轉帳、線上付款",
+              "不值得",
+              "官網明列不建議；購買與金融交易它本來就不做",
+              "把這些網域放進封鎖清單，別讓它有機會讀到"
+            ],
+            [
+              "公司後台、存有機密資料的工作帳號",
+              "看公司規定，不要自己決定",
+              "它沿用你的權限，出事範圍等於整個帳號",
+              "交給管理員在 Organization Settings 用允許清單控管"
+            ],
+            [
+              "醫療與法律文件、有別人個資的頁面",
+              "不值得",
+              "官網明列不建議，外洩的是別人的資料",
+              "換一個沒裝擴充功能的瀏覽器設定檔再處理"
+            ]
+          ],
+          "caption": "2026 年 9 月依 Claude 說明中心與 Anthropic 官方公告整理。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "它讀得到的網頁，網頁也「說得動」它",
+          "text": "把網銀、公司後台放進封鎖清單再開始用。提示詞注入的意思就是網頁上的隱藏文字可以直接對 Claude 下指令，而它讀得到的每一頁都可能藏著這種東西，Anthropic 自己也寫防護並非萬無一失。官網明列不建議的那幾類網站先擋掉，再從你信任的網站開始，核准畫面上的動作看過再按。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Claude 說明中心：Get started with Claude in Chrome（功能定義、支援方案、只支援 Chrome、安裝與固定步驟、預設讀目前分頁、分頁群組）",
+          "url": "https://support.claude.com/en/articles/12012173-get-started-with-claude-in-chrome",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Claude in Chrome permissions guide（三種核准模式、逐站允許、一律會先問的三種動作、Permissions 頁路徑、任何模式都不做的事）",
+          "url": "https://support.claude.com/en/articles/12902446-claude-in-chrome-permissions-guide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Use Claude in Chrome safely（提示詞注入定義、截圖會拍到敏感資料、不建議使用的網站類別、自動封鎖成人與盜版網站）",
+          "url": "https://support.claude.com/en/articles/12902428-use-claude-in-chrome-safely",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Claude in Chrome admin controls（Organization Settings、允許清單與封鎖清單、建議先嚴後寬、封鎖清單優先）",
+          "url": "https://support.claude.com/en/articles/13065128-claude-in-chrome-admin-controls",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 官方公告：Claude in Chrome is generally available（每個付費方案正式推出、尚未支援其他 Chromium 瀏覽器與行動裝置、提示詞注入測試數字）",
+          "url": "https://claude.com/blog/claude-in-chrome-generally-available",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic 研究：Mitigating the risk of prompt injections in browser use（防護分層、分類器掃描不可信內容、人力紅隊、沒有瀏覽器代理對注入免疫）",
+          "url": "https://www.anthropic.com/research/prompt-injection-defenses",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 官方公告：Piloting Claude in Chrome（試行期的紅隊測試、逐站權限、高風險動作需確認）",
+          "url": "https://claude.com/blog/claude-for-chrome",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 產品頁：Claude in Chrome（讀網頁、填表、跨分頁、內部工具與沒有 API 的舊系統、防護並非萬無一失）",
+          "url": "https://claude.com/claude-in-chrome",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude Code 文件：Use Claude Code with Chrome（擴充功能在 Edge 與 Brave、Arc、Vivaldi、Opera 也接得上，沿用瀏覽器登入狀態，遇到登入頁與驗證碼會停）",
+          "url": "https://code.claude.com/docs/en/chrome",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude Code 文件：Let Claude use your computer from the CLI（工具的優先順序：MCP、終端機、Claude in Chrome，都不行才用螢幕控制）",
+          "url": "https://code.claude.com/docs/en/computer-use",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 說明中心：ChatGPT agent（用 OpenAI 自己的虛擬瀏覽器、靠截圖看網頁、可用的付費方案）",
+          "url": "https://help.openai.com/en/articles/11752874-chatgpt-agent",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

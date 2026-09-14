@@ -1,0 +1,280 @@
+{
+  "slug": "claude-code-markdown-basics",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 119,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜Markdown 零基礎",
+      "description": "建立 MD 並使用標題、清單、連結及程式碼。Markdown 是用少量文字符號表達文件結構的格式，副檔名通常是 .md。你可以用一般文字編輯器建立它，再透過預覽看到標題、清單、連結與程式碼。本篇會從零寫一份待辦專案說明，讓你之後能看懂 CLAUDE.md、SKILL.md 和其他規則檔，而不必先學會網頁排版。",
+      "hero": {
+        "src": "/guides/claude-code-markdown-basics/hero.jpg",
+        "alt": "Markdown 零基礎：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Markdown 是用少量文字符號表達文件結構的格式，副檔名通常是 .md。你可以用一般文字編輯器建立它，再透過預覽看到標題、清單、連結與程式碼。本篇會從零寫一份待辦專案說明，讓你之後能看懂 CLAUDE.md、SKILL.md 和其他規則檔，而不必先學會網頁排版。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "準備一個純文字編輯器，例如 VS Code，以及"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-practice-project-setup",
+              "text": "練習專案"
+            },
+            {
+              "type": "text",
+              "text": "的副本。這篇只練習文件格式，尚不需要開啟 Claude Code。Markdown 本身不會自動執行命令；只有你把程式碼交給終端機或工具執行，才會產生對應動作。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "建立真正的 .md 檔案"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-markdown-basics/diagram-1.svg",
+          "alt": "建立真正的 .md 檔案 → 用標題和段落建立結構 → 清單、強調與行內程式碼",
+          "width": 1600,
+          "height": 900,
+          "caption": "建立真正的 .md 檔案 → 用標題和段落建立結構 → 清單、強調與行內程式碼",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "在練習資料夾建立 notes.md，以 UTF-8 保存。Windows 檔案總管可先開啟顯示副檔名，避免實際存成 notes.md.txt；macOS 使用文字工具時也要選純文字格式，不能把帶有字型與版面的富文字檔只改名稱當作 Markdown。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "檔名描述用途即可。README.md 常用來說明專案入口，CLAUDE.md 有工具特定的載入意義，而 notes.md 只是一般筆記。不要因為它們都有 .md，就以為 Claude Code 會自動把資料夾內所有文件當成永久規則；載入方式會在"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-claude-md-guide",
+              "text": "CLAUDE.md 教學"
+            },
+            {
+              "type": "text",
+              "text": "進一步說明。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用標題和段落建立結構"
+        },
+        {
+          "type": "paragraph",
+          "text": "一個井字號加空格是主要標題，兩個是次一層，三個是更細的章節。段落之間留空行，比用許多空格排版穩定。先把內容分成「用途」「操作」「驗證」，讓人與工具都能快速找到需要的資訊。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": "寫入 notes.md：標題與段落",
+          "code": "# 待辦清單練習紀錄\n\n這份文件記錄目前功能與手動檢查方法。\n\n## 已有功能\n\n可以新增待辦、切換完成狀態與刪除項目。\n\n### 本次練習目標\n\n確認文字輸入與三種基本操作都能使用。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預覽時應看到不同層級的標題，而不是把所有內容擠成一段。若井字號原樣顯示，先確認前面是否有多餘縮排、後面是否缺空格，或整段是否意外放入程式碼區塊。修改原始文字後再看預覽，學會把語法與畫面對照。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "清單、強調與行內程式碼"
+        },
+        {
+          "type": "paragraph",
+          "text": "步驟用有序清單，並列項目用無序清單。檔名和短命令可以用反引號包住，讓讀者知道它是精確文字；重要提醒可以使用粗體，但不要把整篇都加粗。Markdown 的價值在結構清楚，不需要模仿文書軟體逐字設計大小與顏色。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": "寫入 notes.md：清單與精確名稱",
+          "code": "## 檢查步驟\n\n1. 開啟網站。\n2. 新增兩筆不同的待辦。\n3. 勾選第一筆，刪除第二筆。\n\n## 需要保留\n\n- `model.js` 的資料操作以識別碼找項目。\n- **篩選只影響顯示**，不應刪掉原始資料。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "列表項目若需要很多子層，先思考是否可以拆成章節。過深的縮排容易在不同預覽器出現差異，也會讓日後維護的人看不清楚哪條規則屬於哪個條件。對專案規範，短而具體的一句話通常比長篇巢狀清單好用。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "加入可以追查的連結"
+        },
+        {
+          "type": "paragraph",
+          "text": "Markdown 連結由方括號中的顯示文字與括號中的位置組成。相對路徑會依目前文件所在位置解析，適合連到同一專案的文件；完整 HTTPS 網址適合官方參考資料。檔名大小寫與資料夾層級要一致，尤其跨到 Linux 或網站託管後更容易看出錯誤。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": "寫入 notes.md：連到專案文件與官方資料",
+          "code": "先閱讀 [專案說明](README.md)，再檢查 `package.json` 的 scripts。\n\nClaude Code 的規則載入方式請看 [官方記憶文件](https://code.claude.com/docs/en/memory)。\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "連結不是檔案匯入。一般 Markdown 的 README 連結只是提供讀者點閱；CLAUDE.md 中的 @ 檔案引用則有工具特定行為。兩種寫法長得不同，也解決不同問題。之後閱讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-rules-and-imports",
+              "text": "規則與引用"
+            },
+            {
+              "type": "text",
+              "text": "時，請特別保留這個區別。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用程式碼區塊保留原文"
+        },
+        {
+          "type": "paragraph",
+          "text": "多行命令與設定用成對的三個反引號包住，開頭可加語言名稱供預覽上色。下方外層展示的是應寫進 notes.md 的完整內容，其中 bash 是區塊語言；「在哪裡執行」則由前一段文字清楚交代。複製程式碼時，換行、引號和縮排都應保留。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": "寫入 notes.md：包含一個 Shell 範例",
+          "code": "## 執行測試\n\n在專案資料夾的終端機輸入：\n\n```bash\nnpm test\n```\n\n確認測試通過後，再進行瀏覽器操作檢查。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果程式碼後面的所有段落都變成等寬文字，通常是忘了補結尾反引號。反過來，JSON 中的引號或大括號被當成文章裝飾，可能是開頭 fence 沒有正確建立。先修正區塊邊界，再檢查裡面的命令本身，會比較容易定位。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "表格與可讀性檢查"
+        },
+        {
+          "type": "paragraph",
+          "text": "程式碼區塊裡的 HTML 標籤應當作文字顯示，不能為了預覽效果直接執行。當你要示範三個反引號本身，可以使用更長的外層 fence 包住，讓內層範例保持完整。這在撰寫 SKILL.md 教學、README 範本或文件中的文件時很常見，也能避免複製後少掉結尾標記。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "想呈現的內容",
+            "適合格式",
+            "檢查方式"
+          ],
+          "rows": [
+            [
+              "先後順序",
+              "有序清單",
+              "步驟能否依序完成"
+            ],
+            [
+              "並列條件",
+              "無序清單",
+              "每項是否有一致用途"
+            ],
+            [
+              "指令與設定",
+              "程式碼區塊",
+              "複製後是否保留原文"
+            ],
+            [
+              "幾種選項差異",
+              "小表格",
+              "手機是否仍能閱讀"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "表格適合少量欄位，不適合塞入整段命令或長篇規則。當內容需要很多換行，拆成小節通常更好維護。不同 Markdown 平台支援程度也不完全一樣；本系列使用基本語法，避免要求特殊外掛才能閱讀。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "文件預覽正常只代表格式可讀，不代表範例命令一定正確。驗證指令時，仍要到標示的執行環境實際測試，並記錄結果。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "小練習是完成自己的 notes.md，包含三個章節、一份操作清單、一個相對連結與一個多行命令區塊。逐個點連結、複製命令到暫存文字檔比較，再關閉重開確認 UTF-8 與副檔名正確。完成後，你就有足夠的 Markdown 基礎，能開始寫"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-claude-md-guide",
+              "text": "專案規則"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "How Claude remembers your project",
+          "url": "https://code.claude.com/docs/en/memory",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Extend Claude with skills",
+          "url": "https://code.claude.com/docs/en/skills",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

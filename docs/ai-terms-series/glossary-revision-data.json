@@ -1,0 +1,188 @@
+{
+  "groups": [
+    [
+      "大型語言模型（LLM）：在大量語言資料上訓練、能處理與產生文字的模型。許多生成式 LLM 以預測後續 token 為基礎，但助理的工具、記憶與操作能力還需要周邊系統。",
+      "token：模型處理內容時使用的單位，文字可能切成字、子詞或其他片段；同一段中文在不同分詞器下的數量可能不同，不能把 token 數直接當字數。",
+      "參數（parameter）：訓練時調整、推論時用來計算的數值，例如權重。參數數量可描述模型規模，但不能單獨代表品質、速度或執行所需記憶體。",
+      "預訓練（pretraining）：先用大量資料學習廣泛模式，作為後續任務的底座。訓練目標可包括預測 token 或重建被遮住的內容，並非只有一種做法。",
+      "微調（fine-tuning）：在既有模型上再訓練部分或全部參數，使其適應某種任務或行為；把文件附在提示中供它閱讀則不等於微調。",
+      "RLHF（人類回饋強化學習）：把人類對輸出的偏好等回饋用於強化學習，以調整模型行為。常見流程包含偏好資料與獎勵模型，但人類偏好不等於客觀正確。",
+      "基礎模型（foundation model）：在廣泛資料上訓練、可適應多種下游任務的模型；不只指文字模型，也不以單一參數門檻定義。",
+      "上下文視窗（context window）：一次模型計算可容納的內容範圍，通常以 token 計量。指令、對話、文件與工具結果都可能占用空間；容得下不保證用得好。",
+      "知識截止日（knowledge cutoff）：供應商用來說明模型訓練知識時間範圍的標示。它不保證之前所有事都知道；較新的資訊也可能由使用者或檢索工具提供。",
+      "temperature：控制取樣分布的一項參數，常用來調整輸出的變化程度。它不是正確率旋鈕，設為零也不應視為跨系統、跨版本完全一致的保證。",
+      "幻覺（hallucination）：產生與事實、指定資料或要求不符卻看似可信的內容，可能是錯誤細節或虛構引用。流暢語氣與附上連結都不能替代查證。",
+      "量化（quantization）：用較低精度表示模型中的數值，以減少部分儲存、記憶體或運算需求。速度與品質變化要看硬體、實作和任務，並非一律更快。",
+      "開源／開放權重（open source / open weights）：開放權重通常指可取得訓練後的參數，仍須看授權。OSI 的開源 AI 定義另要求相應自由，以及修改所需的資料資訊、程式碼與參數。",
+      "多模態（multimodal）：涉及文字、圖片、音訊或影片等多種資料型態。能讀圖不表示一定能生圖，應分別查看模型與產品支援的輸入、輸出。",
+      "蒸餾（distillation）：以教師模型提供的輸出或其他訊號教學生模型。學生常較小，但蒸餾的重點是知識轉移，不保證保留教師的全部能力。"
+    ],
+    [
+      "提示詞（prompt）：提供給模型的任務描述、指令或其他輸入內容。清楚的目標與相關資料通常更有幫助；加入無關、矛盾內容反而可能干擾回答。",
+      "系統提示（system prompt）：應用程式設定模型行為的一種指令位置。不同 API 有各自的訊息角色和優先順序，system 與 developer 不宜當作完全相同的名稱。",
+      "記憶（memory）：系統把資訊保存下來，在之後需要時取回供模型使用。保存、檢索、刪除與跨對話範圍由產品決定，不等於模型記住所有聊天內容。",
+      "專案（project）：集中管理相關對話、檔案與指令的工作空間。是否共享所有內容、能否引用其他對話、誰能存取，都要看產品設定與權限。",
+      "Artifacts／Canvas 類：讓使用者在對話旁編輯或預覽文件、程式等成果的工作介面。名稱與功能因產品而異，也不代表每種格式都能原樣匯出。",
+      "深入研究（deep research）：針對問題進行多步搜尋、閱讀與整理，通常輸出附來源的報告。頁數和耗時不是定義，引用是否真正支持結論仍要核對。",
+      "網頁搜尋（web search）：從網路取得資料供回答參考，可補充較新的資訊。搜尋結果也可能過期、錯誤或包含誤導內容，不能自動當成事實。",
+      "語音模式（voice mode）：以語音輸入與語音輸出互動的介面；底層可串接辨識、語言模型與合成，也可使用更直接的音訊模型。",
+      "暫時對話（temporary chat）：產品提供的特殊對話模式，通常限制對歷史紀錄或記憶的使用。是否保留安全紀錄、保留多久，須分別看該服務政策。",
+      "Gem／自訂 GPT（custom GPT）：將指令、參考資料與可用工具組合成可重複使用的助理設定。它不必然重新訓練模型，也不只是固定一句提示詞。"
+    ],
+    [
+      "推理模型（reasoning model）：設計成在複雜任務中投入額外推論計算的模型。推理內容是否顯示、如何計價與占用上下文，依模型與服務規格而定。",
+      "思考（thinking）：產品用來描述推論時額外處理的一類名稱。介面展示的思考摘要不應直接視為模型完整內部過程，也不能作為答案正確的證明。",
+      "代理（agent）：為了目標選擇動作、使用工具並根據結果調整後續步驟的系統。自主程度可以不同，重要動作仍可設人工核准與停止條件。",
+      "工具呼叫（tool use / function calling）：模型提出結構化的工具名稱與參數，由系統驗證和執行，再把結果送回。產生呼叫要求與成功完成外部操作是不同狀態。",
+      "MCP（Model Context Protocol）：讓 AI 應用程式以共同協定連接工具、資源與提示等能力。協定統一溝通方式，但授權、資料品質與安全仍需另外處理。",
+      "電腦操作（computer use）：透過畫面、滑鼠、鍵盤等介面操作應用程式或瀏覽器。應限制操作環境與權限，並對重要動作保留確認和結果驗證。",
+      "沙盒（sandbox）：以權限、檔案系統或網路規則等方式限制執行範圍的環境。限制強度取決於設定與隔離方式，不能保證任何錯誤都不影響外部。",
+      "提示詞注入（prompt injection）：不可信輸入中的指令誘導系統偏離原本任務。它可能出現在使用者輸入、網頁、文件或工具結果中，應區分資料與指令的信任來源。"
+    ],
+    [
+      "擴散模型（diffusion model）：常見做法是學習反轉逐步加雜訊的過程，再從雜訊生成新資料；也可在壓縮表示中運作，不一定直接處理圖片像素。",
+      "文生圖（text-to-image）：以文字條件生成圖片。用既有圖片配合指令修改則是相關的圖片編輯任務；生成品質、可控制性與標記方式依系統而異。",
+      "文生影（text-to-video）：以文字條件生成影片；若主要輸入是參考圖片，則常稱圖生影。畫面連貫、物理合理與聲音生成是不同能力，不能一併假設。",
+      "語音克隆（voice cloning）：以目標聲音資料調整或引導合成，使輸出具有近似聲音特徵。應取得適當授權，並避免把合成聲音冒充本人發言。",
+      "浮水印（watermark）：加入媒體的辨識標記，可以可見，也可以需要偵測工具讀取。不同方法對壓縮、裁切等修改的耐受性不同；未驗出也不等於不是 AI 生成。",
+      "C2PA：一套記錄及驗證數位內容來源資訊的技術標準，內容憑證可帶有簽署的製作與修改聲明。有效簽章不等於畫面敘述是真實事件，沒有憑證也不等於造假。"
+    ],
+    [
+      "API（application programming interface）：讓程式透過約定格式使用另一個系統功能的介面。AI API 可提供模型推論或工具等能力，並非只指聊天介面。",
+      "金鑰（API key）：用於識別或授權 API 存取的憑證。應保護其權限和使用範圍，不把私密金鑰放在公開原始碼、瀏覽器程式或可下載的前端中。",
+      "每百萬 token 計價（per million tokens，MTok）：部分 AI API 的用量計價單位，輸入、輸出與快取可能分別計價。實際帳單也可能含工具、儲存等費用，須查看當期價目。",
+      "速率限制（rate limit）：對一定時間內的請求數或處理量設上限，與付費額度不完全相同。遇到限制應依服務回應重試，避免無止境密集送出。",
+      "提示快取（prompt caching）：重用符合條件的輸入計算結果，減少重複處理。通常不是把最終答案存起來重播；命中條件、期限和費率各有規格。",
+      "延遲（latency）：從請求到某個回應里程碑的等待時間。首個 token 的等待與完整回答時間不同，還受網路、排隊、工具呼叫與輸出長度影響。",
+      "GPU／NPU：GPU 擅長平行運算；NPU 通常指針對神經網路運算設計的處理器。硬體宣稱的峰值算力不能直接換成某個模型的實際回應速度。",
+      "本機推論（local inference）：在自己的裝置上執行模型計算。仍要確認應用程式是否傳送遙測、呼叫雲端工具或同步資料，且需負擔本機硬體與電力成本。",
+      "RAG（檢索增強生成）：先檢索外部資訊，再讓模型利用取得的內容生成答案。可降低部分知識缺口，但檢索漏找、資料過期或誤用來源仍會造成錯誤。",
+      "向量資料庫（vector database）：儲存向量並支援相似度檢索等功能的資料系統，可用於 RAG，也有其他用途；RAG 並不一定需要獨立的向量資料庫。",
+      "embedding（嵌入向量）：以數值向量表示文字或其他資料，使模型學到的某些關係可由距離或相似度比較。相似不等於同一意思，更不等於事實正確。"
+    ]
+  ],
+  "rows": [
+    [
+      "token vs 字",
+      "token 的切分方式由模型的分詞器決定，可能跨字或小於一個字。計價與上下文限制要用該系統的計數方式核對。"
+    ],
+    [
+      "記憶 vs 上下文視窗",
+      "記憶負責保存和取回資訊；上下文視窗限制一次模型計算能用多少內容。對話紀錄可以仍在，但本次計算未必包含全部歷史。"
+    ],
+    [
+      "開源 vs 免費",
+      "開源談使用、研究、修改與分享等自由和所需材料；免費談收費方式。下載模型或使用免費方案都不能直接證明符合開源定義。"
+    ],
+    [
+      "代理 vs 聊天機器人",
+      "聊天介面也能連接代理。判斷重點是系統能否為目標選擇並執行動作、根據結果調整，而不是視窗看起來是否在聊天。"
+    ],
+    [
+      "推理模型 vs 一般模型",
+      "推理模型著重投入額外推論計算處理複雜任務。是否比較慢、比較貴或比較準，都要連同模型、設定與具體任務一起比較。"
+    ],
+    [
+      "微調 vs 提示詞",
+      "微調會訓練模型參數；提示詞在推論時提供任務與資料。兩者可以搭配，應先找出真正需要改善的行為。"
+    ],
+    [
+      "幻覺 vs 過期",
+      "過期資訊可能曾經正確；幻覺可包含虛構或不受來源支持的說法。搜尋可提供新資料，但仍須檢查日期、來源及答案是否誤讀。"
+    ],
+    [
+      "網頁搜尋 vs 深入研究",
+      "搜尋取得網頁資料；深入研究通常將多步搜尋、比較與統整組成流程。兩者都要驗證引用，不能用頁數或耗時判斷可信度。"
+    ],
+    [
+      "浮水印 vs C2PA",
+      "浮水印是加入媒體的標記；C2PA 著重可驗證的來源聲明與紀錄。兩者可搭配使用，都不直接證明媒體描述的事件真實。"
+    ],
+    [
+      "暫時對話 vs 關閉記憶",
+      "暫時對話改變某次對話的使用方式；關閉記憶改變記憶功能。刪除聊天、刪除既有記憶、停止訓練利用與保存期限是另外的控制。"
+    ]
+  ],
+  "sources": [
+    {
+      "title": "Anthropic：Glossary，語言模型、token、訓練與延遲",
+      "url": "https://platform.claude.com/docs/en/about-claude/glossary",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "Google：Machine Learning Glossary，模型、表示與生成概念",
+      "url": "https://developers.google.com/machine-learning/glossary",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "OpenAI：Prompt engineering，訊息角色與提示設計",
+      "url": "https://developers.openai.com/api/docs/guides/prompt-engineering",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "OpenAI：ChatGPT Capabilities Overview，工作介面的功能例子",
+      "url": "https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "OpenAI：Memory FAQ，記憶與對話控制",
+      "url": "https://help.openai.com/en/articles/8590148-memory-faq",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "OpenAI：Reasoning models，額外推論計算與摘要",
+      "url": "https://developers.openai.com/api/docs/guides/reasoning",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "MCP：What is MCP，連接工具與資料的協定",
+      "url": "https://modelcontextprotocol.io/docs/getting-started/intro",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "Anthropic：Computer use tool，操作環境與權限限制",
+      "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "Anthropic：Claude Code sandboxing，檔案與網路邊界",
+      "url": "https://www.anthropic.com/engineering/claude-code-sandboxing",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "C2PA：Explainer，內容來源聲明與信任範圍",
+      "url": "https://spec.c2pa.org/specifications/specifications/2.3/explainer/Explainer.html",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "Google DeepMind：SynthID，數位浮水印",
+      "url": "https://deepmind.google/models/synthid/",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "OSI：Open Source AI Definition，自由及必要材料",
+      "url": "https://opensource.org/ai/open-source-ai-definition",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "Lewis 等：Retrieval-Augmented Generation 原始論文",
+      "url": "https://arxiv.org/abs/2005.11401",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "Anthropic：Rate limits，請求與 token 限制",
+      "url": "https://platform.claude.com/docs/en/api/rate-limits",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "Anthropic：Pricing，費用類別與快取計價",
+      "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "Microsoft：Copilot+ PCs developer guide，NPU 運算定位",
+      "url": "https://learn.microsoft.com/en-us/windows/ai/npu-devices/",
+      "checked_on": "2026-09-14"
+    }
+  ]
+}

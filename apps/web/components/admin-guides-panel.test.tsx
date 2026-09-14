@@ -2,6 +2,7 @@ import { fireEvent, render, screen, waitFor, within } from "@testing-library/rea
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { AdminGuidesPanel } from "@/components/admin-guides-panel";
 import { ApiError } from "@/lib/api";
+import type { GuideDocument } from "@/lib/guides";
 
 const mocks = vi.hoisted(() => ({ api: vi.fn(), guard: vi.fn() }));
 vi.mock("@/lib/api", async () => {
@@ -228,6 +229,53 @@ describe("rich blocks", () => {
     const call = mocks.api.mock.calls.find(([path, init]) => String(path).endsWith("/zh-TW/draft") && init?.method === "PUT");
     return call ? JSON.parse(call[1].body).document : null;
   };
+
+  it("preserves inline links, spaces and literal code through save, reopen and preview", async () => {
+    let persisted = detail.draft as GuideDocument;
+    mocks.api.mockImplementation((path: string, init?: { method?: string; body?: string }) => {
+      if (path.endsWith("/zh-TW/draft") && init?.method === "PUT") {
+        persisted = JSON.parse(init.body!).document;
+        return Promise.resolve({ ...detail, draft: persisted });
+      }
+      if (path.startsWith(`/admin/guides/${id}?`)) return Promise.resolve({ ...detail, draft: persisted });
+      return route(path, init);
+    });
+    window.history.replaceState(null, "", `/zh-TW/admin/guides?article=${id}&lang=zh-TW`);
+    const view = render(<AdminGuidesPanel />);
+    await screen.findByDisplayValue("怎麼走");
+    fireEvent.click(screen.getByRole("button", { name: "新增區塊 · 段落與文字連結" }));
+    const part = (number: number) => within(screen.getByRole("group", { name: String(number) }));
+    fireEvent.change(part(1).getByLabelText("文字"), { target: { value: "先看 " } });
+    fireEvent.click(screen.getByRole("button", { name: "加入片段" }));
+    fireEvent.change(part(2).getByRole("combobox", { name: "文章類型 2" }), { target: { value: "link" } });
+    fireEvent.change(part(2).getByLabelText("文字"), { target: { value: "GEMINI.md" } });
+    const url = "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md#section-3";
+    fireEvent.change(part(2).getByLabelText("網址"), { target: { value: url } });
+    fireEvent.click(screen.getByRole("button", { name: "加入片段" }));
+    fireEvent.change(part(3).getByLabelText("文字"), { target: { value: "，再測試。" } });
+    fireEvent.click(screen.getByRole("button", { name: "新增區塊 · 程式碼範例" }));
+    fireEvent.change(screen.getByLabelText("範例語言"), { target: { value: "python" } });
+    fireEvent.change(screen.getByLabelText("輸入位置或檔名"), { target: { value: "example.py" } });
+    const code = 'if True:\n    print("<script>never execute</script>")\n';
+    fireEvent.change(screen.getByLabelText("程式碼範例"), { target: { value: code } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存草稿" }));
+    await waitFor(() => expect(savedDocument()?.blocks.slice(-2)).toEqual([
+      { type: "rich_paragraph", inlines: [{ type: "text", text: "先看 " }, { type: "link", text: "GEMINI.md", url }, { type: "text", text: "，再測試。" }] },
+      { type: "code", language: "python", label: "example.py", code },
+    ]));
+    view.unmount();
+    render(<AdminGuidesPanel />);
+    await screen.findByDisplayValue("example.py");
+    expect((screen.getByLabelText("程式碼範例") as HTMLTextAreaElement).value).toBe(code);
+    expect((part(1).getByLabelText("文字") as HTMLTextAreaElement).value).toBe("先看 ");
+    fireEvent.click(screen.getByRole("button", { name: "預覽" }));
+    const dialog = await screen.findByRole("dialog");
+    expect(new URL(within(dialog).getByRole("link", { name: "GEMINI.md" }).getAttribute("href")!, "https://mokaair.com").href).toBe(url);
+    expect(dialog.textContent).toContain("先看 GEMINI.md，再測試。");
+    expect(dialog.querySelector("pre code")?.textContent).toBe(code);
+    expect(dialog.querySelector("script")).toBeNull();
+    expect(within(dialog).getByRole("button", { name: "複製" })).toBeTruthy();
+  });
 
   it("adds a table typed as text and previews it as a table", async () => {
     await open();

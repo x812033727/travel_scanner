@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','Noto Sans KR','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">行動電源帶上飛機決策圖 / Power banks on flights: Wh, count and in-flight rules</title>
+  <desc id="desc">起點是看行動電源標籤上的 Wh，沒標 Wh 就用 mAh 乘以電壓再除以 1,000，例如 27,000mAh 乘 3.7V 等於 99.9Wh。依 Wh 分三條：100Wh 以下，手提可以、託運不行；超過 100Wh 到 160Wh，手提可以、託運不行、先問航空公司；超過 160Wh，禁止帶上飛機。前兩條匯到每人最多 2 個。上飛機後三條規則：不替行動電源充電、不拿它替手機充電、不放上方置物櫃。底部時間軸：ICAO 2026 年 3 月 27 日當天生效，台灣民航局 2026 年 4 月 8 日，韓國國土交通部 2026 年 4 月 20 日，日本國土交通省 2026 年 4 月 24 日。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">行動電源帶上飛機：先看 Wh，再數個數，上機後三件事不要做</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Power banks on flights: check the Wh rating, carry at most 2, and follow three in-flight rules (2026)</text>
+
+  <!-- start -->
+  <rect x="50" y="180" width="400" height="160" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="250" y="226" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">看標籤：Wh</text>
+  <text x="250" y="266" font-size="19" fill="#102A2B" text-anchor="middle">沒標 Wh：mAh×V÷1,000</text>
+  <text x="250" y="304" font-size="18" fill="#5C6B6B" text-anchor="middle">例 27,000mAh×3.7V＝99.9Wh</text>
+
+  <!-- branches -->
+  <path d="M 450 260 L 534 180" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 450 260 L 532 315" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 450 260 L 534 448" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+
+  <rect x="540" y="125" width="400" height="110" rx="14" fill="#E7F2EC" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="740" y="170" font-size="24" font-weight="700" fill="#1E5A40" text-anchor="middle">100Wh 以下</text>
+  <text x="740" y="208" font-size="19" fill="#1E5A40" text-anchor="middle">手提可以・託運不行</text>
+
+  <rect x="540" y="260" width="400" height="110" rx="14" fill="#FBEFE3" stroke="#D97A2B" stroke-width="4"/>
+  <text x="740" y="305" font-size="24" font-weight="700" fill="#8A4A14" text-anchor="middle">超過 100Wh～160Wh</text>
+  <text x="740" y="343" font-size="19" fill="#8A4A14" text-anchor="middle">手提可以・託運不行・先問航空公司</text>
+
+  <rect x="540" y="395" width="400" height="110" rx="14" fill="#FBE9E4" stroke="#B8442D" stroke-width="4"/>
+  <text x="740" y="440" font-size="24" font-weight="700" fill="#8A2E1D" text-anchor="middle">超過 160Wh</text>
+  <text x="740" y="478" font-size="19" fill="#8A2E1D" text-anchor="middle">禁止帶上飛機</text>
+
+  <!-- merge -->
+  <path d="M 940 180 L 1004 232" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 940 315 L 1004 268" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <rect x="1010" y="185" width="200" height="130" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1110" y="232" font-size="20" font-weight="700" fill="#0B4F4D" text-anchor="middle">每人最多</text>
+  <text x="1110" y="284" font-size="36" font-weight="700" fill="#0B4F4D" text-anchor="middle">2 個</text>
+  <path d="M 1210 250 L 1264 250" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- plane -->
+  <rect x="1270" y="125" width="290" height="380" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1415" y="172" font-size="22" font-weight="700" fill="#0D6B68" text-anchor="middle">上飛機後 In flight</text>
+  <rect x="1292" y="200" width="246" height="76" rx="12" fill="#E3F0EF"/>
+  <text x="1415" y="246" font-size="20" fill="#102A2B" text-anchor="middle">不替行動電源充電</text>
+  <rect x="1292" y="298" width="246" height="76" rx="12" fill="#E3F0EF"/>
+  <text x="1415" y="344" font-size="20" fill="#102A2B" text-anchor="middle">不拿它替手機充電</text>
+  <rect x="1292" y="396" width="246" height="76" rx="12" fill="#E3F0EF"/>
+  <text x="1415" y="442" font-size="20" fill="#102A2B" text-anchor="middle">不放上方置物櫃</text>
+
+  <!-- timeline -->
+  <rect x="50" y="560" width="1500" height="270" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="3"/>
+  <text x="80" y="600" font-size="22" font-weight="700" fill="#102A2B">實施日　Effective dates</text>
+  <line x1="130" y1="700" x2="1470" y2="700" stroke="#5C6B6B" stroke-width="4"/>
+  <circle cx="250" cy="700" r="12" fill="#0D6B68"/>
+  <circle cx="620" cy="700" r="12" fill="#0D6B68"/>
+  <circle cx="990" cy="700" r="12" fill="#0D6B68"/>
+  <circle cx="1360" cy="700" r="12" fill="#0D6B68"/>
+  <text x="250" y="670" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">ICAO 國際民航組織</text>
+  <text x="620" y="670" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">台灣 Taiwan</text>
+  <text x="990" y="670" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">대한민국 韓國</text>
+  <text x="1360" y="670" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">日本 Japan</text>
+  <text x="250" y="742" font-size="20" fill="#102A2B" text-anchor="middle">2026 年 3 月 27 日</text>
+  <text x="620" y="742" font-size="20" fill="#102A2B" text-anchor="middle">2026 年 4 月 8 日</text>
+  <text x="990" y="742" font-size="20" fill="#102A2B" text-anchor="middle">2026 年 4 月 20 日</text>
+  <text x="1360" y="742" font-size="20" fill="#102A2B" text-anchor="middle">2026 年 4 月 24 日</text>
+  <text x="250" y="774" font-size="17" fill="#5C6B6B" text-anchor="middle">當天生效</text>
+  <text x="620" y="774" font-size="17" fill="#5C6B6B" text-anchor="middle">民航局</text>
+  <text x="990" y="774" font-size="17" fill="#5C6B6B" text-anchor="middle">國土交通部</text>
+  <text x="1360" y="774" font-size="17" fill="#5C6B6B" text-anchor="middle">國土交通省</text>
+  <text x="80" y="812" font-size="16" fill="#5C6B6B">點的間距不照日期比例；航空公司可以訂得更嚴，以各家公告為準。</text>
+
+  <text x="1540" y="870" font-size="15" fill="#5C6B6B" text-anchor="end">© Mokaair 製圖 2026</text>
+</svg>

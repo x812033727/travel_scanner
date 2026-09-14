@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">Claude 專案的三層與使用流程 / How a Claude project is layered and used</title>
+  <desc id="desc">左半邊是專案的三層結構，由上往下用箭頭相連。第一層專案指令：寫「怎麼做」，角色、語氣、格式、以哪份檔案為準，資料不夠時先問，保持精簡，單次任務留在對話裡講。第二層知識檔案：放「事實」，價格表、規則、講義、考古題、貼上的文字；PDF、Word、Excel、純文字等，單檔 30 MB，只抽取文字；數量不限，但全部要放得進上下文視窗。第三層對話：每個新對話自動帶著上面兩層，不必重貼背景；對話之間不互通，結論要寫回知識檔案才會共用。左下註記：免費版最多 5 個專案，付費方案無上限，每個專案有獨立的記憶空間；知識超過上下文視窗時，Pro、Max、Team、Enterprise 自動切換檢索模式，容量最多 10 倍；免費版沒有檢索模式，到了門檻就不能再加，以官網為準。右半邊是從建立到日常使用的五個步驟：一、建立專案，到 claude.ai/projects 按 New Project，填名稱與描述，Claude 讀不到這兩項；二、寫專案指令，按 Set project instructions 貼上規則後按 Save instructions；三、放知識檔案，在知識區按加號上傳檔案、貼上文字或連結 Google 雲端硬碟的文件；四、在專案裡開對話，新對話自動帶著指令與知識，舊對話用 Add to project 移進來；五、維護與收尾，結論整理成文字放回知識，檔案改版就重傳，做完的專案封存。數字依 2026 年 9 月的 Claude 說明中心。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">Claude 專案的三層與使用流程（2026 年 9 月依官網查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Claude Projects: instructions, knowledge and chats, and the five steps from setup to daily use</text>
+
+  <!-- left column: the three layers -->
+  <text x="60" y="134" font-size="20" font-weight="700" fill="#102A2B">專案的三層結構　What a project is made of</text>
+
+  <rect x="60" y="154" width="680" height="146" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="400" y="194" font-size="20" font-weight="700" fill="#0B4F4D" text-anchor="middle">專案指令　Project instructions</text>
+  <text x="400" y="230" font-size="16" fill="#102A2B" text-anchor="middle">寫「怎麼做」：角色、語氣、格式、以哪份檔案為準</text>
+  <text x="400" y="264" font-size="16" fill="#102A2B" text-anchor="middle">資料不夠時先問；保持精簡，單次任務留在對話裡講</text>
+
+  <path d="M 400 300 L 400 338" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="342" width="680" height="176" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="400" y="382" font-size="20" font-weight="700" fill="#1F4E73" text-anchor="middle">知識檔案　Project knowledge</text>
+  <text x="400" y="418" font-size="16" fill="#102A2B" text-anchor="middle">放「事實」：價格表、規則、講義、考古題、貼上的文字</text>
+  <text x="400" y="450" font-size="16" fill="#102A2B" text-anchor="middle">PDF、Word、Excel、純文字等；單檔 30 MB，只抽取文字</text>
+  <text x="400" y="482" font-size="16" fill="#102A2B" text-anchor="middle">數量不限，但全部要放得進上下文視窗</text>
+
+  <path d="M 400 518 L 400 556" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="560" width="680" height="146" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="400" y="600" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">對話　Chats</text>
+  <text x="400" y="636" font-size="16" fill="#102A2B" text-anchor="middle">每個新對話自動帶著上面兩層，不必重貼背景</text>
+  <text x="400" y="670" font-size="16" fill="#102A2B" text-anchor="middle">對話之間不互通：結論要寫回知識檔案才會共用</text>
+
+  <text x="60" y="748" font-size="15" fill="#5C6B6B">免費版最多 5 個專案，付費方案無上限；每個專案有獨立的記憶空間</text>
+  <text x="60" y="776" font-size="15" fill="#B8442D">知識超過上下文視窗：Pro、Max、Team、Enterprise 自動切換檢索模式，容量最多 10 倍</text>
+  <text x="60" y="804" font-size="15" fill="#5C6B6B">免費版沒有檢索模式，到了門檻就不能再加，以官網為準</text>
+
+  <!-- right column: five steps -->
+  <text x="820" y="134" font-size="20" font-weight="700" fill="#102A2B">從建立到日常使用　From setup to daily use</text>
+
+  <rect x="820" y="154" width="720" height="86" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="850" y="190" font-size="18" font-weight="700" fill="#0B4F4D">① 建立專案</text>
+  <text x="850" y="222" font-size="16" fill="#102A2B">claude.ai/projects → + New Project，填名稱與描述（Claude 讀不到這兩項）</text>
+  <path d="M 1180 240 L 1180 274" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="820" y="278" width="720" height="86" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="850" y="314" font-size="18" font-weight="700" fill="#0B4F4D">② 寫專案指令</text>
+  <text x="850" y="346" font-size="16" fill="#102A2B">Set project instructions → 貼上規則 → Save instructions</text>
+  <path d="M 1180 364 L 1180 398" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="820" y="402" width="720" height="86" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="850" y="438" font-size="18" font-weight="700" fill="#1F4E73">③ 放知識檔案</text>
+  <text x="850" y="470" font-size="16" fill="#102A2B">知識區的「+」：上傳檔案、貼上文字、連結 Google 雲端硬碟的文件</text>
+  <path d="M 1180 488 L 1180 522" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="820" y="526" width="720" height="86" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="850" y="562" font-size="18" font-weight="700" fill="#102A2B">④ 在專案裡開對話</text>
+  <text x="850" y="594" font-size="16" fill="#102A2B">新對話自動帶著指令與知識；舊對話用 Add to project 移進來</text>
+  <path d="M 1180 612 L 1180 646" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="820" y="650" width="720" height="86" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="850" y="686" font-size="18" font-weight="700" fill="#245E45">⑤ 維護與收尾</text>
+  <text x="850" y="718" font-size="16" fill="#102A2B">結論整理成文字放回知識；檔案改版就重傳；做完的專案封存</text>
+
+  <text x="820" y="776" font-size="15" fill="#5C6B6B">步驟與介面名稱依 2026 年 9 月的 Claude 說明中心，以英文介面為準</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

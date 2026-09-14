@@ -1,0 +1,276 @@
+{
+  "slug": "claude-code-install-linux-wsl",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 109,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜Linux 與 WSL 安裝教學",
+      "description": "分清執行環境、檔案位置及 Windows 差異。Linux 與 WSL 都能執行 Claude Code，但安裝位置、檔案路徑及工具環境要保持一致。本篇會讓你確認自己正在操作哪套系統，在 Linux 終端機安裝 CLI，並用一個獨立練習資料夾完成登入和測試準備，避免 Windows 與 Linux 指令混用。",
+      "hero": {
+        "src": "/guides/claude-code-install-linux-wsl/hero.jpg",
+        "alt": "Linux 與 WSL 安裝教學：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Linux 與 WSL 都能執行 Claude Code，但安裝位置、檔案路徑及工具環境要保持一致。本篇會讓你確認自己正在操作哪套系統，在 Linux 終端機安裝 CLI，並用一個獨立練習資料夾完成登入和測試準備，避免 Windows 與 Linux 指令混用。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "適用於官方支援的 Linux 發行版或已啟用的 WSL 環境。若電腦尚未安裝 WSL，先依 Microsoft 官方說明完成作業系統層的設定；本篇從可以開啟發行版終端機開始。只想使用 Windows 原生工具的讀者，可直接採用"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-install-windows",
+              "text": "Windows 安裝篇"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "辨認目前的執行環境"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-install-linux-wsl/diagram-1.svg",
+          "alt": "辨認目前的執行環境 → 在 Linux 端執行安裝 → 建立清楚的練習位置",
+          "width": 1600,
+          "height": 900,
+          "caption": "辨認目前的執行環境 → 在 Linux 端執行安裝 → 建立清楚的練習位置",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "開啟 Ubuntu 等發行版的終端機，執行以下只讀命令。PowerShell 的 C:\\Users 路徑與 Linux 的 /home 路徑屬於不同表示法；即使視窗都在 Windows Terminal 中，也不代表分頁使用同一套工具。先知道目前位置，後續的安裝才有意義。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "Linux／WSL 終端機：查看系統與位置",
+          "code": "uname -a\ncat /etc/os-release\npwd\ncommand -v bash\ncommand -v curl\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "os-release 會提供發行版名稱與版本，可拿來對照官方系統需求。WSL 讀者也可以回到 PowerShell 執行 wsl --list --verbose，確認發行版與 WSL 版本；這個命令不要貼到正在執行的 Claude 對話中。若電腦有多個發行版，後續記錄應包含實際使用哪一個。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "使用環境",
+            "常見專案位置",
+            "工具應安裝在哪裡"
+          ],
+          "rows": [
+            [
+              "原生 Linux",
+              "/home/使用者/Projects",
+              "該 Linux 使用者環境"
+            ],
+            [
+              "WSL 的 Linux 專案",
+              "/home/使用者/Projects",
+              "該 WSL 發行版內"
+            ],
+            [
+              "Windows 原生專案",
+              "C:\\Projects",
+              "Windows 工具環境"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "WSL 能存取掛載的 Windows 磁碟，但初學時建議選一個環境完成整套練習。若專案放在 Linux 家目錄，就使用 Linux 的 Git、Node 與 CLI。不要從 Windows 複製整個 node_modules 過去當成完成安裝；本系列練習不使用第三方依賴，正好能先把路徑觀念學清楚。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "在 Linux 端執行安裝"
+        },
+        {
+          "type": "paragraph",
+          "text": "確認 bash 和 curl 可用後，核對官方安裝網址再執行。這個命令會取得並執行原生安裝程式，請在 Linux 終端機輸入。若缺少 curl 或必要系統套件，使用該發行版的套件管理方式處理，先閱讀它要安裝哪些項目。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "Linux／WSL 終端機：官方原生安裝",
+          "code": "curl -fsSL https://claude.ai/install.sh | bash\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ubuntu、Debian 與 Alpine 的套件名稱和底層函式庫不完全相同。尤其 Alpine 使用 musl，官方另外列出 bash、curl、libgcc、libstdc++、ripgrep 等需求與搜尋工具設定；如果你正在使用 Alpine，請按來源中的專節核對，不要直接照 Ubuntu 的套件命令操作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "安裝完成後開一個新的同發行版終端機，檢查指令路徑與版本。原生安裝有背景更新機制；若改用官方列出的 Linux 套件管理方式，更新責任則依該方式處理。先記錄自己的選擇，比日後猜測版本為何沒有變更可靠。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "Linux／WSL 終端機：驗證安裝",
+          "code": "command -v claude\nclaude --version\nclaude doctor\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "正常時會找到 Linux 端的執行路徑並輸出版本。如果結果意外指向 Windows 路徑，先檢查目前 PATH 與選用的分頁。doctor 可以協助指出安裝或設定問題，但不能代替所有專案測試；它主要回答工具本身的環境是否合理。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "建立清楚的練習位置"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先取得"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-practice-project-setup",
+              "text": "起始版練習專案"
+            },
+            {
+              "type": "text",
+              "text": "，解壓縮到你選定的 Linux 資料夾。以下路徑是示例，請改成實際解壓縮的位置；不要直接把下載的 ZIP 檔當成資料夾。列出的檔案應包含 README.md、model.js 和 tests。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "Linux／WSL 終端機：進入已解壓縮的專案",
+          "code": "cd \"$HOME/Projects/claude-todo\"\npwd\nls\nnode --version\nnpm test\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Node.js 的版本要求來自本系列練習工具，不是原生 Claude CLI 的安裝前提。如果這裡找不到 node，但 claude --version 正常，代表 CLI 安裝可能已完成，缺的是練習網站的執行環境。把這兩件事分開，你就不會為了補網站工具而重新安裝 Claude。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "登入並確認檔案真的在同一處"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在專案資料夾執行 claude，依登入引導完成授權。WSL 若無法自動開啟瀏覽器，可依畫面提供的官方登入連結處理；不要把登入碼貼到公開求助文章。帳號與組織設定可先參考"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-accounts-and-access",
+              "text": "使用資格"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：確認環境邊界",
+          "code": "請只讀檢查目前專案。\n回報工作目錄、package.json 中的 start 與 test 指令，以及 model.js 的功能。\n請指出這次工具實際在 Linux 還是 Windows 執行；無法確認的部分直接說明。\n先不要修改檔案或安裝套件。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "核對回報中的路徑是否與 pwd 一致。接著另開相同發行版的終端機，執行 npm start，依伺服器輸出的位址測試網站。WSL 的 localhost 存取會受網路設定影響；連不到時先確認程序仍在跑和監聽位置，再查 WSL 網路，別先改成對所有網路開放。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見錯誤與完成判準"
+        },
+        {
+          "type": "paragraph",
+          "text": "「同一份程式，另一個分頁找不到」常是開到了不同發行版；「改了檔案網站沒變」常是伺服器從另一份專案啟動；「有 Git 卻讀不到設定」可能是 Windows Git 與 Linux Git 使用不同家目錄。每一種都先從執行位置查起，再處理更深的設定。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "WSL 2 與原生 Windows 的沙箱支援條件不同。需要命令隔離功能時，請另外核對官方平台限制與權限文件，不要只看作業系統外觀就假定能力相同。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本篇的練習成果是一張你自己的環境紀錄：發行版、工作目錄、CLI 版本、Node 版本、測試結果。重新開啟終端機後，仍能從同一資料夾完成相同檢查，就表示基本路徑已理順。接下來可閱讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-permissions-plan-mode",
+              "text": "權限與 Plan Mode"
+            },
+            {
+              "type": "text",
+              "text": "，再進入實際修改任務。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Advanced setup",
+          "url": "https://code.claude.com/docs/en/setup",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Use Claude Code in VS Code",
+          "url": "https://code.claude.com/docs/en/vs-code",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
