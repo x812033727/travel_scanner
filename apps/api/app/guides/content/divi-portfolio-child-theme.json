@@ -1,0 +1,253 @@
+{
+  "slug": "divi-portfolio-child-theme",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Divi 作品集與子主題：整理作品並保留客製修改",
+      "description": "Divi 作品集要讓訪客看懂你做了什麼，也要讓管理者能持續新增案例。本文說明 Projects、作品分類與 Filterable Portfolio 的分工，從特色圖片、案例內頁到篩選分頁逐步驗收。另整理子主題適合保存哪些客製、哪些設定不必搬進程式碼，以及更新前的檔案比較與回復準備，協助保留作品內容並降低改版維護成本。",
+      "hero": {
+        "src": "/guides/divi-portfolio-child-theme/hero.jpg",
+        "alt": "原創封面以資料夾、螢幕和文件呈現作品保存、總覽展示與子主題修改。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "接案者整理作品時，常先花時間調整圖片格線，卻沒有讓每件作品說清楚需求、負責範圍與成果。使用 Divi 製作作品集，可以先把案例當成獨立內容整理，再由作品集模組提供入口。未來換排列方式時，就不必把每件作品重新貼一遍。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文依 2026 年 9 月 14 日查閱的 Divi 與 WordPress 官方文件，說明作品內容及子主題的維護分工。範例採用插畫接案者的案例網站，內容為原創規劃，沒有將展示圖或模擬成果寫成真實客戶經驗。"
+        },
+        {
+          "type": "heading",
+          "text": "先整理每件作品的內容資料",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Divi 以 Projects 這個自訂內容類型管理作品，它和一般文章、頁面及媒體圖片不同。在後台 Projects 新增項目，填入標題、正文、作品分類與特色圖片。作品集模組負責把這些項目呈現出來，不會替空白案例自動補上說明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "插畫作品可先記錄合作背景、交付形式、自己負責的部分與可公開的成果。若涉及團隊合作，清楚區分自己的工作和他人的貢獻；若只是個人練習，也直接標示。不要拿版型的示意品牌或數字當作已完成的商業案例。"
+        },
+        {
+          "type": "paragraph",
+          "text": "作品內頁宜保留可閱讀文字，讓訪客理解圖片背後的決策。特色圖片用於清單辨識，內頁則可放完整圖片和必要細節，兩者不必使用同一裁切比例。為關鍵畫面提供替代文字，避免重要資訊只存在於圖上的小字。"
+        },
+        {
+          "type": "heading",
+          "text": "分類依訪客需求，不依檔案夾名稱",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "作品分類應幫助訪客找到相關能力，例如編輯插畫、包裝圖像與活動視覺。每一類都要有明確定義，避免同時出現意思相近的名稱。分類太多但每類只有一件作品，通常不如少量清楚的入口容易瀏覽。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Project Categories 與一般文章分類是不同內容系統的分類，不要在文章區新增分類後就期待作品集自動出現。新增案例時回到 Projects 核對所屬分類；需要補充細節可使用作品標籤，但標籤不必全部做成首頁篩選按鈕。"
+        },
+        {
+          "type": "paragraph",
+          "text": "為同一案例指定多個合理分類沒有問題，但不要為了讓每個頁籤看起來都有內容而全部勾選。定期用訪客角度查看各分類是否有辨識價值，並在刪改分類前記錄既有網址與入口，避免外部分享連結失效。"
+        },
+        {
+          "type": "heading",
+          "text": "加入作品集模組並測試篩選",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在作品總覽頁開啟 Divi 5 Visual Builder，加入 Row 後選擇 Portfolio 或 Filterable Portfolio。前者提供作品展示，後者讓訪客依作品分類篩選。先決定需要的瀏覽方式，再調整外觀；作品很少時，不一定需要額外的篩選列。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Content 設定顯示數量與包含分類，並在 Elements 確認標題、分類和分頁是否顯示。圖片應能辨認作品，標題則說清楚名稱。不要把所有說明只放在滑鼠移入的覆蓋層，手機訪客沒有相同的指向操作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "作品集模組的整體連結設定不等於每件作品的內頁網址。除非確實要把整組導向單一頁面，否則先保留各案例自己的瀏覽路徑。測試時逐張開啟、返回清單、切換分類並翻頁，確認訪客能找到預期作品。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "先建立幾件具有不同分類和圖片比例的真實或明確標示的示例作品。",
+            "在總覽頁加入作品集模組，設定需要的分類與每頁數量。",
+            "確認每張卡片的標題、圖片與連結，並保留必要分頁。",
+            "用桌面、手機與鍵盤操作篩選及內頁，再核對新增作品是否出現。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "先分清可視設定與程式客製",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "改色、調字型、作品卡片留白或範本排版，通常先使用 Divi 的設計設定、預設與 Theme Builder。少量 CSS 也有元素、頁面及全站等設定位置。不是建立作品集就一定要安裝子主題，而是看有沒有需要維護的自訂檔案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "子主題適合把主題相關的程式、樣式或範本覆寫放在獨立目錄，避免直接修改父主題檔案後被更新覆蓋。它仍依賴父主題，也不會自動讓舊程式與新版相容。選用第三方子主題時，要核對支援的 Divi 版本與維護方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若某項功能應在更換主題後繼續存在，例如獨立內容類型或與外觀無關的業務流程，應由合適外掛或站點功能程式管理。將所有功能塞進子主題，可能讓切換外觀同時失去管理入口。內容保存與版型客製需要分別安排。"
+        },
+        {
+          "type": "heading",
+          "text": "建立子主題時保留最小修改",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "依 WordPress 子主題規則建立獨立目錄與 style.css，填入 Theme Name 及指向實際父主題目錄的 Template。安裝包中的父主題名稱不能只靠展示名稱猜測。先在測試站啟用，再確認原有頁首、作品和樣式仍能正常顯示。"
+        },
+        {
+          "type": "paragraph",
+          "text": "樣式載入方式要配合當前父主題的實作，不能對所有版本重複貼同一段載入程式。WordPress 官方說明不同主題可能自行載入父、子樣式，也可能需要另外安排。確認真正載入的檔案和順序，避免缺少父樣式或重複載入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "子主題的 functions.php 與父主題都會載入，不是用來整份取代父檔案。不要直接複製父檔全文，否則可能因函式名稱重複造成錯誤。需要覆寫範本時，只保留有必要修改的檔案，並記錄父版本、修改原因與影響頁面。"
+        },
+        {
+          "type": "heading",
+          "text": "更新驗收同時檢查內容與程式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "更新前保存資料庫、媒體、父子主題及外掛備份，也保留目前作品總覽和案例頁的畫面。Theme Builder 或 Library 匯出只涵蓋相應設計，不能當作完整作品資料備份。若作品量較大，先挑選長標題、無特色圖片及多分類案例做固定測試樣本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "更新 Divi 後，逐一比對子主題覆寫檔案與新版父檔差異。即使自訂檔沒有被覆蓋，也可能漏掉父主題新增的修正。測試作品篩選、下一頁、內頁正文及手機欄數，再確認後台仍能新增、編輯及修改分類。"
+        },
+        {
+          "type": "paragraph",
+          "text": "交接時留下作品新增規則、圖片規格、分類定義及客製檔案清單。停止使用 Divi 前，也要確認 Projects 的管理與前台呈現如何接續；不能把更換主題後入口消失，直接理解成資料一定已刪除。先查資料和依賴，再規劃搬移。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/divi-portfolio-child-theme/diagram-1.svg",
+          "alt": "原創圖解分為作品資料、作品總覽與客製檔案三區，說明不同變更應在哪裡維護及驗收。",
+          "width": 1600,
+          "height": 900,
+          "caption": "作品可以持續新增，版型可以調整，客製檔案仍需獨立追蹤。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "想改的項目",
+            "優先放置位置",
+            "維護注意"
+          ],
+          "rows": [
+            [
+              "作品文字與圖片",
+              "Projects 個別內容",
+              "保留分類及特色圖片"
+            ],
+            [
+              "清單篩選與分頁",
+              "Portfolio 模組設定",
+              "測試全部分類及後續頁"
+            ],
+            [
+              "一致字級與留白",
+              "Divi 預設或設計設定",
+              "避免每張卡片單獨覆寫"
+            ],
+            [
+              "主題相關檔案客製",
+              "子主題",
+              "記錄父版本與更新差異"
+            ],
+            [
+              "跨主題保留的功能",
+              "獨立外掛或站點功能",
+              "切換主題後仍能使用"
+            ]
+          ],
+          "caption": "先選對資料和設定的位置，再決定是否需要子主題。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "子主題保存修改，備份保存網站",
+          "text": "兩者解決不同問題。子主題不會自動保存作品資料，也不保證客製碼永遠相容；完整備份與固定驗收案例仍是更新前必須安排的工作。"
+        },
+        {
+          "type": "link",
+          "text": "Divi 共用範本與建站維護",
+          "url": "https://mokaair.com/zh-TW/life/divi-site-building"
+        },
+        {
+          "type": "link",
+          "text": "Divi 手機版文字與欄位順序",
+          "url": "https://mokaair.com/zh-TW/life/divi-mobile-type-layout"
+        },
+        {
+          "type": "link",
+          "text": "WordPress 完整網站備份",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-website-backup"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Divi：建立 Project",
+          "url": "https://help.elegantthemes.com/en/articles/8637740-how-to-create-a-new-project-in-divi",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Divi 5：Filterable Portfolio",
+          "url": "https://help.elegantthemes.com/en/articles/10315331-the-filterable-portfolio-module-in-divi-5",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Divi 5：Portfolio",
+          "url": "https://help.elegantthemes.com/en/articles/10358290-the-portfolio-module-in-divi-5",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Divi 5：自訂 CSS 位置",
+          "url": "https://help.elegantthemes.com/en/articles/13480630-where-to-add-custom-css-code-in-divi-5",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：子主題",
+          "url": "https://developer.wordpress.org/themes/advanced-topics/child-themes/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：主題功能與外掛分工",
+          "url": "https://developer.wordpress.org/themes/classic-themes/basics/theme-functions/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

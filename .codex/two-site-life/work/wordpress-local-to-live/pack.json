@@ -1,0 +1,237 @@
+{
+  "slug": "wordpress-local-to-live",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "把本機 WordPress 搬上網：檔案、資料庫與網址替換",
+      "description": "在電腦裡完成 WordPress 網站後，還要把檔案、資料庫與設定帶到正式主機。本篇比較內容匯出、整站移轉與支援主機同步的差異，整理 Local 匯出方式、正式環境準備、網址替換與媒體檢查，並說明寄信、帳號及上線驗收，讓個人作品網站從本機預覽走到真正可公開使用。",
+      "hero": {
+        "src": "/guides/wordpress-local-to-live/hero.jpg",
+        "alt": "原創螢幕、資料夾與主機插圖，表達從本機匯出網站並交付正式主機。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "在自己的電腦打開作品網站，文字、圖片與聯絡表單都很順利，分享網址給朋友卻完全連不上。這通常不是網站突然壞掉，而是 localhost 或本機自訂網域只在你的環境有意義。要公開使用，需要讓另一台可被訪客連線的主機提供內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本機上線最重要的交接有三件：搬走正確資料、換成正式環境設定、確認頁面不再依賴自己的電腦。以下以第一次發布的單一 WordPress 網站為例；如果正式站早已有人使用，就要另外處理現有資料，不能直接把較舊的本機資料庫覆蓋上去。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先選擇這次要帶走哪些東西"
+        },
+        {
+          "type": "paragraph",
+          "text": "只想把幾篇文章放到另一個已經做好版面的網站，可以使用 WordPress 的「工具 → 匯出」，取得 WXR 格式 XML，再於目的站匯入。這種方法適合內容交接，並不等於把主機設定、全部程式及實體媒體檔一起裝進同一個壓縮包。"
+        },
+        {
+          "type": "paragraph",
+          "text": "想保留整個作品網站的佈景、外掛、上傳圖片與資料庫設定，則要選整站移轉流程。另一種做法是使用本機工具對特定主機提供的同步功能。Local Connect 官方目前支援連接 Flywheel 與 WP Engine，不能假設所有主機都能直接按同一個推送按鈕。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "確認目的主機是空白新站，還是已有需要保留的內容。",
+            "選定內容匯入、整站移轉或相容主機同步其中一條流程。",
+            "在操作前保存本機副本；目的站已有資料時，也保存其目前狀態。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "從 Local 匯出完整網站資料"
+        },
+        {
+          "type": "paragraph",
+          "text": "依 Local 官方文件，先開啟並啟動要匯出的網站，在網站清單按右鍵選 Export，再選擇容易找到的保存位置。產生的壓縮檔包含 wp-content 與資料庫匯出；其中 wp-content 涵蓋媒體、外掛及佈景，但不應把它描述成整台電腦或正式主機的完整環境映像。"
+        },
+        {
+          "type": "paragraph",
+          "text": "匯出後記錄時間、檔名與網站版本，確認檔案已保存完成。可以保留一份原始匯出，不直接在唯一副本裡修改內容。若使用其他本機工具，依其文件找出網站檔案與 SQL 匯出位置，特別注意資料庫不能只靠複製看得到的圖片資料夾來代替。"
+        },
+        {
+          "type": "paragraph",
+          "text": "目的主機如何使用這份資料，取決於它支援的匯入方式。一般主機不一定認得 Local 的壓縮檔；先讀該主機的搬站入口或所選外掛文件，確認需要的格式、上傳限制與權限。看到副檔名都是 ZIP，不代表不同工具的備份格式能互換。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "準備正式主機的環境差異表"
+        },
+        {
+          "type": "paragraph",
+          "text": "把本機與正式環境的 WordPress、PHP、資料庫及必要擴充功能列在左右兩欄，參考目前 WordPress 官方需求和外掛要求選擇版本。能在本機執行不保證在不同版本的主機正常，尤其舊外掛或客製程式可能有相容性問題。"
+        },
+        {
+          "type": "paragraph",
+          "text": "資料庫主機、帳號、密碼與檔案路徑通常不同。移入資料後依正式主機提供的設定建立連線，不要保留本機的資料庫密碼或硬碟路徑。檔案名稱也使用一致大小寫；在某些本機環境看似正常的路徑，到不同作業系統可能找不到。"
+        },
+        {
+          "type": "paragraph",
+          "text": "正式網域先完成 DNS 與 HTTPS 準備，測試階段設定適當的存取限制。不要為了匯入方便而長期放寬整個網站權限。若工具顯示上傳超限，依主機提供的方法分段或改用受支援的傳輸方式，先找出限制來源，再調整對應設定。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "移入後，以正式網址核對內容"
+        },
+        {
+          "type": "paragraph",
+          "text": "先移入網站檔案與資料庫，再依工具的遷移功能把本機網址換成正式網址。若有技術人員操作 WP-CLI，可先用 search-replace 的 --dry-run 查看預計變更，而不直接寫入。要選能正確處理 WordPress 序列化資料的方法，避免用一般文字取代破壞設定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保留需要的內容路徑，同時檢查首頁、站內選單、文章圖片及背景圖是否還含 localhost、本機網域或電腦硬碟路徑。頁面編輯器產生的樣式檔與快取可能需要依該工具說明重新產生；只改「設定 → 一般」中的網址，不代表所有位置都已更新。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "從正式網址登入，確認編輯器可打開並儲存一篇測試草稿。",
+            "逐一檢查圖片、相簿、附件下載及中文檔名的實際連結。",
+            "清除適用的網站快取後，用另一台裝置重新開啟主要頁面。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "重新驗證寄信與對外整合"
+        },
+        {
+          "type": "paragraph",
+          "text": "Local 的 Mailpit 會攔收使用 PHP mail() 路徑發出的測試郵件，方便開發時檢查內容。這不等於正式收件者真的收到信，也不能推論所有透過外部 API 發送的郵件都被攔下。上線時應依正式寄信服務重新確認設定，並使用自己可控制的收件地址測試。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把聯絡表單、訂閱、付款及第三方登入列成表，分別記錄測試模式與正式模式。先確認回呼網址、帳號權限和寄件身分，再進行受控測試；不要把模擬付款成功畫面寫成已完成真正收款。表單若會保存詢問，也要同時檢查保存結果與通知收件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本機常用簡短測試密碼或一次性管理員，上線前更換並整理帳號權限。移除不需要的測試內容、範例使用者及開發用工具，但先確認它們沒有被正式頁面引用。把機密設定留在適合的管理位置，不放在可公開下載的匯出包或網站文章裡。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "關閉本機，再做一次公開驗收"
+        },
+        {
+          "type": "paragraph",
+          "text": "停止本機網站服務，用行動網路或另一台沒有本機設定的裝置打開正式網域。若圖片突然消失、連結跳回本機或表單失效，表示還有依賴未移走。這項測試能補足「我自己的電腦看起來正常」的盲點，但仍需要逐頁抽查和功能測試。"
+        },
+        {
+          "type": "paragraph",
+          "text": "準備公開時移除不應保留的測試用禁止索引設定，確認主要導覽、聯絡方式及錯誤頁清楚可用。最後在正式主機建立一份新的備份，記下主機、網域、外掛授權及日常維護負責人。以後日常更新在哪個環境進行，也要寫明，避免兩份網站各自改動而失去一致性。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若新站後續已收到真實資料，不要把本機再按一次整站推送當成一般更新。先辨識這次只要更新程式、版面還是內容，選擇不會覆寫新資料的方式。第一次上線與往後維護是不同任務，交接時就訂好規則會省去很多補救工作。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-local-to-live/diagram-1.svg",
+          "alt": "原創四階段圖解，從匯出檔案與資料庫、配置正式主機、替換網址，到關閉本機後驗證公開網站。",
+          "width": 1600,
+          "height": 900,
+          "caption": "自己的電腦不用開著，訪客也能完成網站的主要操作。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法",
+            "適用需求",
+            "移轉前要確認"
+          ],
+          "rows": [
+            [
+              "WordPress XML 匯出",
+              "把選定內容交給另一個網站",
+              "媒體、版面與設定需另行檢查"
+            ],
+            [
+              "完整檔案與資料庫移轉",
+              "首次發布整個本機網站",
+              "目的站資料、工具格式與環境設定"
+            ],
+            [
+              "Local Connect",
+              "使用官方支援的主機同步",
+              "目前支援主機與推送覆寫範圍"
+            ],
+            [
+              "後續局部更新",
+              "正式站已開始接收真實資料",
+              "只同步需要改動的部分"
+            ]
+          ],
+          "caption": "選擇依據是移轉範圍與目的環境，並非工具排名。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "公開網址要獨立於本機運作",
+          "text": "把電腦關機後，正式網站仍應由主機提供頁面與圖片。臨時分享連結或本機預覽可以用來討論設計，不能直接當成已完成正式上線的證據。"
+        },
+        {
+          "type": "link",
+          "text": "先建立本機 WordPress 開發環境",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-local-development"
+        },
+        {
+          "type": "link",
+          "text": "檔案與資料庫備份方法",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-website-backup"
+        },
+        {
+          "type": "link",
+          "text": "正式網站的 HTTPS 憑證",
+          "url": "https://mokaair.com/zh-TW/life/https-certificate-setup"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Local：匯入與匯出網站",
+          "url": "https://localwp.com/help-docs/getting-started/how-to-import-a-wordpress-site-into-local/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Local：Connect 支援與同步",
+          "url": "https://localwp.com/help-docs/local-features/local-connect/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Local：Mailpit 測試郵件",
+          "url": "https://localwp.com/help-docs/local-features/mailpit/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：Tools Export",
+          "url": "https://wordpress.org/documentation/article/tools-export-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP-CLI：search-replace",
+          "url": "https://developer.wordpress.org/cli/commands/search-replace/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：主機相容性參考",
+          "url": "https://make.wordpress.org/hosting/handbook/compatibility/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

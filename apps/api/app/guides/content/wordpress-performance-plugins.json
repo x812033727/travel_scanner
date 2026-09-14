@@ -1,0 +1,258 @@
+{
+  "slug": "wordpress-performance-plugins",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "WordPress 加速外掛怎麼用：快取、圖片與功能衝突",
+      "description": "WordPress 加速外掛要依網站現況調整，不能把所有選項一次打開。本文以台灣小型課程與商品網站為例，整理 WP Rocket、NitroPack 的設定思路、快取與圖片功能分工，以及 CSS、JavaScript 優化造成衝突時的排查方法。附比較表、分階段操作與原創圖解，協助管理者保留量測基準並驗證表單、選單和購物流程。",
+      "hero": {
+        "src": "/guides/wordpress-performance-plugins/hero.jpg",
+        "alt": "原創伺服器、螢幕與盾牌圖像，表示設定加速功能並驗證網站操作正常。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "網站加速後，首頁分數變好，手機選單卻點不開，這樣的結果還不能算完成。加速外掛會改變部分檔案的產生、載入或執行方式，設定必須和佈景、表單、會員及主機環境一起驗證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "選工具前先整理已經啟用的功能，再決定由誰負責快取、圖片和程式資源。用小範圍測試逐步加入設定，能讓速度與功能的變化都有來源可查，也比較容易在衝突時回到正常狀態。"
+        },
+        {
+          "type": "heading",
+          "text": "先盤點現有工具，避免同一工作重複做",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "列出目前的主機快取、CDN、圖片外掛、頁面編輯器與其他加速工具，逐項記下啟用功能。外掛名稱不同，仍可能同時處理延遲載入、CSS 或 JavaScript。相容性應看實際選項與服務整合，不是只數安裝了幾個外掛。"
+        },
+        {
+          "type": "paragraph",
+          "text": "NitroPack 官方明確指出，另一套工具若同時啟用頁面快取、圖片延遲載入或 CSS／JavaScript 優化，可能讓其機制無法工作。文件也把 WP Rocket 列在不建議同時使用的工具中，因此不應把兩者一起打開，當成效果可以疊加的方案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "有些衝突只涉及特定功能。例如 NitroPack 的相容文件對 Smush 指出要停用其延遲載入，而非必須把整個圖片外掛移除。依目前文件建立分工表，再在測試環境確認；主機內建快取則要查服務商的整合方式，不能一律照外掛停用清單處理。"
+        },
+        {
+          "type": "heading",
+          "text": "先建立基準與回復方法",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以同時提供課程介紹與商品販售的網站為例，挑首頁、課程頁、商品頁、聯絡頁和購物流程作代表。保存目前畫面、功能結果與同條件量測，再記下外掛和佈景版本。沒有基準，後來出現問題時就難以確認是否由新設定造成。"
+        },
+        {
+          "type": "paragraph",
+          "text": "備份網站與原本設定，優先在測試副本驗證會改變檔案處理的選項。若使用工具提供的測試模式，也要先了解它如何影響普通訪客。測試模式不是另一份資料庫備份，不能代替必要的還原準備。"
+        },
+        {
+          "type": "paragraph",
+          "text": "寫下回復步驟，包括關閉哪個選項、如何還原設定，以及是否需要重新產生優化檔案或清除特定快取。速度測試與功能檢查應使用明確的登入狀態，避免管理者畫面正常，卻漏掉一般訪客實際取得的版本。"
+        },
+        {
+          "type": "heading",
+          "text": "使用 WP Rocket 時，一次增加一個功能",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WP Rocket 啟用後會套用自動功能與預設設定，額外選項仍需要檢查。官方設定指南建議一次開啟一個功能，每次變更後用未登入的瀏覽環境確認關鍵頁面。部分處理是非同步的，要等產物完成後再比較，不能剛按儲存就急著判斷。"
+        },
+        {
+          "type": "paragraph",
+          "text": "檔案優化可涉及移除未使用 CSS、延後 JavaScript 載入或延遲執行；媒體相關功能則涵蓋延遲載入、圖片尺寸等。每次只處理有明確目的的項目，例如先修正首屏以外圖片的載入負擔，再檢查下一個瓶頸。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若需要排除某頁，可在 Advanced Rules 的 Never Cache URL(s) 依文件輸入對應網址或路徑。要注意這項排除同時會排除該頁的其他優化，不只是頁面快取。部分主機由自己的服務管理快取，還需在主機端同步確認排除規則。"
+        },
+        {
+          "type": "heading",
+          "text": "使用 NitroPack 時，先理解模式的切換",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "NitroPack 提供 Standard、Medium、Strong、Ludicrous 與 Custom 等模式，涵蓋不同程度的設定。官方入門文件目前記載預設是 Ludicrous，但預設不代表適合每個網站。先查看實際帳號設定，依功能檢查結果調整，不需要為追求模式名稱而忽略版面異常。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Test Mode 開啟時，普通網址以未啟用 NitroPack 優化的方式運作，測試者可用帶有 testnitro=1 參數的網址查看優化版本。這讓你能比較同一頁，但若原站已靠 NitroPack 加速，開啟此模式也會改變一般訪客取得的優化狀態，需安排合適的測試時段。"
+        },
+        {
+          "type": "paragraph",
+          "text": "關閉 Test Mode 後，保留下來的設定會套用到正式網址；不打算採用的變更要先還原。切換模式或調整後，依官方流程儲存、處理快取並等待重新優化。驗收紀錄需區分測試參數網址與正式網址，不能把其中一份結果直接替另一份簽收。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "盤點現有設定並確認測試環境，保留可回復的基準。",
+            "選一個待改善問題，使用對應功能或模式進行小範圍調整。",
+            "等待優化完成，先檢查畫面、選單、表單與購物操作。",
+            "以相同量測條件比較，確認採用或還原後再處理下一項。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "出現破版或按鈕失效，先縮小原因",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "假設課程大綱展開鈕在新設定後失效，先比較優化與未優化版本，確認原本功能是否正常。接著回復最近加入的相關設定，觀察問題是否消失。不要同時換佈景、刪外掛和清全部資料，否則即使恢復正常也不知道原因。"
+        },
+        {
+          "type": "paragraph",
+          "text": "移除未使用 CSS 可能影響稍後才出現的選單、彈窗或手機版樣式；JavaScript 的載入與執行調整也可能改變互動時機。NitroPack 官方排錯提供降低優化模式或檢查相關功能的方向。把異常頁面、裝置、操作步驟和設定差異一起保存，再依工具支援的排除方式處理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "排除範圍應以能解決問題為準，並保留理由。單一元件有衝突時，先調整對應資源或頁面；若無法清楚定位，就先回復正常設定並向支援窗口提供可重現資料。不要用強制快取覆蓋原本保護動態資料的設計。"
+        },
+        {
+          "type": "heading",
+          "text": "購物與會員流程要另外驗收",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WP Rocket 的 WooCommerce 文件說明，依商店設定辨認出的購物車、結帳、帳號頁和 WooCommerce REST API 會自動排除快取。這項自動處理有助於基本配置，但不保證每套客製願望清單、地區定價或會員元件都相容，仍需實際測試。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用測試商品與帳號確認數量變動、購物車內容、表單錯誤提示和會員資料各自正確。若驗證付款流程，使用服務商提供的測試環境與既有驗收方式，不應為了加速測試製造真實交易。內容更新後也要查看公開頁面是否取得正確版本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後比較改善前後的量測、功能與維護成本。記錄哪些設定啟用、哪些排除、為何保留，以及下次外掛或佈景更新要複查什麼。可維護的結果應讓下一位管理者看得懂；沒有必要把所有選項打開，或承諾安裝後必定達到滿分。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-performance-plugins/diagram-1.svg",
+          "alt": "四個區塊表示確認功能分工、建立測試基準、逐項調整，以及檢查功能和效能後決定採用。",
+          "width": 1600,
+          "height": 900,
+          "caption": "讓每個設定對應一個目的，並用功能與量測共同驗收。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "工作項目",
+            "先決定的分工",
+            "驗收重點"
+          ],
+          "rows": [
+            [
+              "頁面快取",
+              "主機或主要加速工具",
+              "更新與個人化資料正確"
+            ],
+            [
+              "圖片處理",
+              "壓縮與延遲載入各由誰做",
+              "清晰度與出現時機"
+            ],
+            [
+              "CSS 優化",
+              "避免兩套工具重複處理",
+              "手機、彈窗及展開狀態"
+            ],
+            [
+              "JavaScript 優化",
+              "依相容性調整載入與執行",
+              "按鈕、表單與回應結果"
+            ],
+            [
+              "測試模式",
+              "確認普通與測試網址行為",
+              "正式套用前清理試驗設定"
+            ]
+          ],
+          "caption": "依功能建立分工，不把工具數量當成優化程度。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "功能驗收先於分數簽收",
+          "text": "報表改善但選單、表單或購物流程壞掉，仍屬未完成。保存前後設定，先回復必要功能，再重新縮小優化範圍。"
+        },
+        {
+          "type": "link",
+          "text": "釐清網站與 CDN 快取分工",
+          "url": "https://mokaair.com/zh-TW/life/website-cache-cdn"
+        },
+        {
+          "type": "link",
+          "text": "用一致條件閱讀速度報表",
+          "url": "https://mokaair.com/zh-TW/life/pagespeed-performance-review"
+        },
+        {
+          "type": "link",
+          "text": "備份網站並準備還原",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-website-backup"
+        }
+      ],
+      "sources": [
+        {
+          "title": "WP Rocket 設定最佳做法",
+          "url": "https://docs.wp-rocket.me/article/1291-find-the-best-settings-for-your-site",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Rocket 頁面排除範圍",
+          "url": "https://docs.wp-rocket.me/article/54-exclude-pages-from-the-cache",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Rocket 與 WooCommerce",
+          "url": "https://docs.wp-rocket.me/article/1491-using-wp-rocket-on-your-woocommerce-site",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NitroPack 初始設定與模式",
+          "url": "https://support.nitropack.io/en/articles/10521601-how-to-set-up-nitropack",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NitroPack Test Mode 行為",
+          "url": "https://support.nitropack.io/en/articles/8390292-test-mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NitroPack 與其他快取外掛",
+          "url": "https://support.nitropack.io/en/articles/8390263-using-nitropack-and-another-page-caching-plugin-simultaneously",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NitroPack 版面異常排查",
+          "url": "https://support.nitropack.io/en/articles/8390442-what-to-do-if-your-site-appears-broken",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

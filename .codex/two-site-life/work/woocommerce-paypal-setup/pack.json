@@ -1,0 +1,242 @@
+{
+  "slug": "woocommerce-paypal-setup",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "WooCommerce 串接 PayPal：帳戶、測試付款與退款",
+      "description": "WooCommerce 串接 PayPal 前，先確認商家帳戶、顧客地區、交易幣別與可用付款方式。本文整理 PayPal Payments 的連接流程、Sandbox 買賣雙方測試、授權與請款差異、退款及銀行提領核對，協助台灣店主建立能交接的收款驗收紀錄，避免把測試成功或訂單狀態當成實際入帳。",
+      "hero": {
+        "src": "/guides/woocommerce-paypal-setup/hero.jpg",
+        "alt": "原創插畫，以安全盾牌、付款計算與交易文件呈現 PayPal 收款驗收。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "準備向海外顧客銷售商品時，PayPal 可以成為研究的付款選項。商店出現 PayPal 按鈕只是串接的起點，帳戶是否完成驗證、買家所在地能否使用、款項如何退款和提領，都需要另行確認。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下以 WooCommerce PayPal Payments 官方外掛為例。先在隔離環境完成買賣雙方測試，再安排正式啟用；文中的情境是驗收建議，沒有代替任何商家開戶，也沒有把沙盒交易視為真實收款。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先整理收款需求與商家帳戶"
+        },
+        {
+          "type": "paragraph",
+          "text": "寫下商店登記地、主要買家地區、商品類型與預計結帳幣別。PayPal 的付款能力受帳戶地區、審核及付款方式影響，同一套外掛不代表每個市場都有相同選項，尤其不能把國外教學中的卡片或在地付款按鈕直接當成台灣帳戶保證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "商業經營應優先依 PayPal 的商家帳戶流程準備資料，完成電子郵件、身分與業務所需驗證，再檢查帳戶是否有待處理限制。網站管理員與財務接收通知的窗口也要確認，避免外包人員離開後，店主無法登入實際收款帳戶。"
+        },
+        {
+          "type": "paragraph",
+          "text": "預算分開列交易手續費、換匯成本與提領條件。官方費用頁會更新，實際條件還要對照帳戶和交易類型；文章不套用單一費率。顧客支付的訂單總額與銀行最後收到的金額，可能因費用及匯率而不同。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "使用目前的外掛連接流程"
+        },
+        {
+          "type": "paragraph",
+          "text": "安裝並啟用 WooCommerce PayPal Payments 後，到 WooCommerce 的付款設定找到 PayPal，依設定精靈確認商品和需要的功能，再透過 PayPal 登入授權連接。若要使用需額外申請的進階卡片收款，應先確認資格，不能只在網站勾選就算開通。"
+        },
+        {
+          "type": "paragraph",
+          "text": "連接完成後，在設定中核對商家電子郵件、商家識別資料及環境標示。若由技術人員手動設定 REST 應用程式，Client ID 與 Secret 要來自正確環境，保存在受控位置；支援截圖遮蔽敏感內容，不能把整組資料貼到公開討論區。"
+        },
+        {
+          "type": "paragraph",
+          "text": "既有商店若仍使用 PayPal Standard，先盤點歷史訂單、定期付款與遷移說明。新舊整合可能影響付款方式的顯示和續訂處理，應依官方升級流程安排切換，保留可追查紀錄，而不是刪除舊外掛後才確認哪些訂單依賴它。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "記錄商店、帳戶地區、商品類型及目標付款方式。",
+            "在測試站安裝官方外掛，選定 Sandbox 連接流程。",
+            "核對帳戶與環境，再檢查購物車和結帳按鈕。",
+            "完成付款、失敗、退款及通知案例後，整理交接紀錄。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先決定幣別，再檢查實際結帳"
+        },
+        {
+          "type": "paragraph",
+          "text": "WooCommerce 的商店基本幣別與 PayPal 支援幣別需要一致核對。PayPal 文件將新台幣列為不使用小數的幣別，因此商品、折扣、稅額與總額都要檢查捨入結果，不能只在商品頁隱藏小數就假定送出的交易金額一定正確。"
+        },
+        {
+          "type": "paragraph",
+          "text": "需要多幣別商店時，必須確認所用多幣別工具與 PayPal Payments 相容，並逐一測試顯示、訂單儲存及實際送出的幣別。僅安裝付款外掛，不會自動完成整個網站的定價、匯率更新和會計換算。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以同一件商品搭配運費及折價券，記下商品頁、購物車、PayPal 確認畫面和訂單後台的總額。若允許商品頁快速付款，還要確認地址、配送方法與顧客最後同意的費用；快速流程不能略過商店必要的收件資料。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Sandbox 要有不同的買家與賣家"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方設定文件提供 Sandbox 連接方式，可在初始設定的進階選項找到測試環境入口。準備沙盒商家帳戶作為收款方，另用不同的沙盒買家帳戶付款；不要拿連接商店的賣家帳戶當買家，否則測到的是不正確的使用情境。"
+        },
+        {
+          "type": "paragraph",
+          "text": "沙盒帳戶、應用程式與正式帳戶資料分開管理，測試站也要隔離出貨、開票和正式顧客通知。沙盒能協助驗證外掛往返和訂單紀錄，但不代表真實帳戶審核、買家信用卡或銀行提領已通過。"
+        },
+        {
+          "type": "paragraph",
+          "text": "安排成功付款、取消返回、拒絕或中斷，以及付款完成後關閉瀏覽器等案例。外掛使用通知機制同步交易，應在設定的專家選項依文件檢查 Webhook 訂閱與測試結果；不能只依顧客回到成功頁面判斷款項。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "分清楚授權、請款和退款"
+        },
+        {
+          "type": "paragraph",
+          "text": "PayPal Payments 可設定立即請款或先授權。授權代表取得後續請款的條件，並不是款項已完成收取；若選先授權，接單流程必須指定誰在何時請款，並依帳戶規則處理未請款或失效情況。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件說明，授權訂單可用訂單動作請款，特定狀態變更也可能觸發請款。因此把保留中改成處理中，不能一律當成純文字整理。交接時要記下外掛的付款意圖設定，讓客服知道操作狀態可能有實際金流效果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "退款時進入原訂單，核對品項、金額與是否回補庫存，再使用外掛支援的 PayPal 退款動作。全額與部分退款都應比對訂單備註和 PayPal 交易紀錄；手動退款只是記錄外部退款，直接改訂單狀態也不等於款項已退回。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把收款與銀行提領分成兩次核對"
+        },
+        {
+          "type": "paragraph",
+          "text": "每筆交易保留 WooCommerce 訂單編號、PayPal 交易識別資料、幣別、總額、費用及退款結果，提供查帳的人能沿同一條紀錄追蹤。訂單處理中的意義還包含店務流程，不能用它取代 PayPal 端的交易核對。"
+        },
+        {
+          "type": "paragraph",
+          "text": "台灣使用者可查玉山全球通 PayPal 提領服務的申辦及帳戶條件，官方說明涵蓋玉山與其他國內銀行的提領安排；資格、帳戶幣別及名義仍需依申辦流程確認。PayPal 與銀行帳戶的姓名或公司名稱應一致，避免資料不符造成後續問題。"
+        },
+        {
+          "type": "paragraph",
+          "text": "正式啟用前再次確認已切換到預期帳戶與環境，安排可控的正式交易驗收並保留退款處理方式。之後定期比對 PayPal 收款與銀行入帳，分別處理待確認交易、費用、匯率和提領狀態，才算把網站付款交接到日常營運。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/woocommerce-paypal-setup/diagram-1.svg",
+          "alt": "原創四欄圖解，呈現商家帳戶確認、Sandbox 雙方測試、付款退款與銀行對帳的順序，區分網站訂單與實際資金結果。",
+          "width": 1600,
+          "height": 900,
+          "caption": "測試交易、付款請款、退款和銀行入帳，分別核對後才交接。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "階段",
+            "應保留的證據",
+            "不能直接推論"
+          ],
+          "rows": [
+            [
+              "Sandbox 測試",
+              "測試交易與訂單對應",
+              "正式帳戶已能收款"
+            ],
+            [
+              "授權完成",
+              "授權紀錄與請款安排",
+              "已完成請款"
+            ],
+            [
+              "退款操作",
+              "交易退款結果與金額",
+              "只改狀態就已退錢"
+            ],
+            [
+              "銀行提領",
+              "提領紀錄與銀行入帳",
+              "訂單總額等於淨入帳"
+            ]
+          ],
+          "caption": "各階段分別核對，讓店務與財務使用相同交易識別資料。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先確認付款意圖，再操作訂單",
+          "text": "採先授權模式時，訂單動作或狀態變更可能觸發請款。客服與財務應共用操作說明，退款後也要比對金流紀錄，不能只看網站標籤。"
+        },
+        {
+          "type": "link",
+          "text": "先完成 WooCommerce 商店與測試訂單設定",
+          "url": "https://mokaair.com/zh-TW/life/woocommerce-store-launch"
+        },
+        {
+          "type": "link",
+          "text": "金物流通知與訂單狀態如何核對",
+          "url": "https://mokaair.com/zh-TW/life/woocommerce-payments-shipping"
+        }
+      ],
+      "sources": [
+        {
+          "title": "PayPal Payments 帳戶連接與沙盒",
+          "url": "https://woocommerce.com/document/woocommerce-paypal-payments/account-setup-and-onboarding/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "外掛設定與 Webhook",
+          "url": "https://woocommerce.com/document/woocommerce-paypal-payments/plugin-settings-guide/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "授權請款與退款",
+          "url": "https://woocommerce.com/document/woocommerce-paypal-payments/managing-orders-and-refunds/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "支援幣別與小數限制",
+          "url": "https://woocommerce.com/document/woocommerce-paypal-payments/currencies/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WooCommerce 退款",
+          "url": "https://woocommerce.com/document/woocommerce-refunds/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "台灣 PayPal 商業費用",
+          "url": "https://www.paypal.com/tw/business/paypal-business-fees?locale.x=zh_TW",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "玉山全球通 PayPal 提領",
+          "url": "https://www.esunbank.com/zh-tw/business/e-commerce/cross-border/paypal",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "PayPal 升級前確認",
+          "url": "https://woocommerce.com/document/woocommerce-paypal-payments/upgrade-readiness-tool/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

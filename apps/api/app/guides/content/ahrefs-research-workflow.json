@@ -1,0 +1,268 @@
+{
+  "slug": "ahrefs-research-workflow",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Ahrefs 研究網站：從關鍵字、連結到內容機會",
+      "description": "Ahrefs 的報表很多，研究網站時可以先固定查詢範圍，再從關鍵字、熱門頁面與引用連結整理內容機會。本文以台灣手沖咖啡教學站為例，說明 Keywords Explorer 與 Site Explorer 的分工、KD 與估計搜尋流量的限制，以及如何把候選題目整理成可查證的文章工作單。附操作步驟、指標比較表與原創圖解，避免把工具估計值當成對方實際營收或自己的流量承諾。",
+      "hero": {
+        "src": "/guides/ahrefs-research-workflow/hero.jpg",
+        "alt": "原創螢幕、資料夾與文件圖像，呈現 Ahrefs 查詢、整理研究線索與撰寫原創文章工作單。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "打開 Ahrefs 後，看到搜尋量、KD、流量潛力與反向連結，常會不知道先看哪個。較有效的起點是先指定一項研究工作：要替手沖咖啡教學站找新的操作題目，還是想知道既有文章為什麼沒有接住讀者需求。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文把查詢整理成一次可完成的研究流程。咖啡案例屬於方法示意，沒有引用任何網站的即時排名，也沒有把 Ahrefs 的估計報表寫成已取得競爭網站的私人分析資料。最後的成果是一份有依據的工作單，而不只是下載大量關鍵字。"
+        },
+        {
+          "type": "heading",
+          "text": "研究前先固定市場與網址範圍",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Keywords Explorer 從關鍵字出發，Site Explorer 則從網站或頁面出發。服務台灣讀者時，先在相關報表選擇台灣資料，並記下查閱日與報表的更新時間。全球流量可能包含其他語言和市場，不能直接當作繁體中文文章的需求量。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Site Explorer 的 Subdomains、Domain、Path 和 Exact URL 會改變查詢範圍。研究某站的教學區時，可先確認教學所在路徑；研究單篇文章則用正確的完整網址。不要拿整個大型商店含子網域的數字，與自己的一篇咖啡入門文比較。"
+        },
+        {
+          "type": "paragraph",
+          "text": "也要核對 HTTP、HTTPS、www 與實際網址。範圍或網址不同可能使數字大幅變化，甚至看不到預期資料。先保存查詢設定，才有辦法下次重做同一比較；工具沒有結果時，先查範圍，而不是立刻宣稱對方沒有搜尋流量。"
+        },
+        {
+          "type": "heading",
+          "text": "從種子詞展開，再依操作目的分組",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先列出少量和網站能力直接相關的種子詞，例如手沖咖啡、磨豆機與濾杯。在 Keywords Explorer 查看 Matching terms 或 Related terms，分別找包含種子文字及概念相關的候選查詢，再加入與教學目的相符的字詞。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把候選詞分成準備器材、調整參數、清潔保養與問題排查等任務。這樣即使兩個詞搜尋量相近，也能看出要寫的答案是否不同。若兩種寫法都在問相同的研磨設定，就先放在同一工作單，避免一個詞就開一篇內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Volume 可協助了解需求規模，但它是估計值，常見呈現採過去十二個月的平均。季節或新產品可能被平均值掩蓋，所以同時看時間變化與實際問題。對新手常見但量小的操作問題，也可以因為能解決困難而保留，不必只挑最大數字。"
+        },
+        {
+          "type": "heading",
+          "text": "用 KD 和流量潛力篩選，不拿來保證成果",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "截至 2026 年 9 月 14 日查閱，Ahrefs 將 KD 定義為進入 Google 前十名難度的估計，主要依目前前十名自然搜尋頁面的引用網域數計算，不包含頁面內的 SEO 因素。它適合初步篩選，無法單獨判斷你的內容、品牌和讀者需求是否匹配。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Traffic Potential 以相關第一名頁面從多個關鍵字取得的估計自然搜尋流量作參考，因此可能大於某一個詞的搜尋量。查看時先確認對應的是哪個頁面和主題，不能把報表數字當作只要寫同題就會得到的流量，也不能把多個相關詞的潛力直接相加。"
+        },
+        {
+          "type": "paragraph",
+          "text": "工具內的 Organic Traffic 也不是網站實際訪客統計，而是根據它觀察到的排名、估計搜尋量與點擊模型計算。新頁面、小眾詞與更新不頻繁的查詢可能有落差。若評估自己的站，可搭配 Search Console 與已取得授權的分析資料，保留各自定義。"
+        },
+        {
+          "type": "heading",
+          "text": "從熱門頁面看需求組合，再回頭安排內容",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Site Explorer 的 Top pages 報表選定市場，查看哪些頁面承接較多估計自然搜尋流量，再從 Keywords 欄位查看該頁對應的查詢。目的不是照抄對方目錄，而是了解讀者可能把哪些問題視為同一件事，以及自己能補上什麼實用資訊。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如一篇器材文章可能同時承接尺寸、清潔和相容性問題。先以公開頁面的標題及必要的需求線索整理讀者任務，再為自己的文章建立獨立架構；產品規格回到製造商文件查證。別把來源站推薦的先後順序或未確認的測試感受帶進新稿。"
+        },
+        {
+          "type": "paragraph",
+          "text": "確認候選題目後，與既有文章逐篇對照：已有答案但資料老舊就更新，只有局部需求可以補段落，操作目的明顯不同再新增。工具顯示兩頁對應相似字詞，只是值得檢查的線索，不能不看內容就直接合併或轉址。"
+        },
+        {
+          "type": "heading",
+          "text": "連結報表用來理解引用情境",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Backlinks 列出指向目標的連結，Referring domains 則按來源網域整理。同一網站可以提供多個連結，因此兩個數字不能互換。研究時先看哪些來源與自己的領域有關，再看來源頁、連結文字和目標頁面，確認對方為什麼引用該內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "咖啡教學站若想製作可供引用的沖煮紀錄表，可以觀察相關公開資源通常如何被介紹，再設計自己的表格與使用說明。資料庫看見連結，不等於該來源願意合作，也不表示付費買到類似連結就能複製表現。引用機會應以內容用途與實際關係判斷。"
+        },
+        {
+          "type": "paragraph",
+          "text": "對新增或流失連結，也要注意工具觀察與重新抓取的時間。真正需要追蹤的項目，回到來源頁確認目前連結和目的地；不要只因報表標為流失就要求對方恢復。沒有核對過的清單先當研究線索，不直接當成待聯絡名單。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "確定台灣市場、讀者問題與要研究的網域、路徑或單頁範圍。",
+            "使用關鍵字建議整理候選詞，按操作目的分組並記錄估計指標。",
+            "核對熱門頁面的需求組合與引用情境，對照自己已有內容。",
+            "為保留題目建立查證來源、獨立切角、配圖與複查日期，再安排製作。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "把研究成果交成可執行的工作單",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "每個保留題目至少寫下讀者問題、目前文章是否已涵蓋、預計新增的價值、必須查證的事實與相關站內連結。指標放在附欄，並標示它的市場、日期和估計性質。這樣換人寫稿時，才知道為什麼選這個題目，而不是只看到一個高流量數字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ahrefs 的不同資料並非同步更新。官方說明 SERP 會依關鍵字熱度以不同頻率刷新，更新也可能改變 KD 和流量潛力。下載或分享報表時保留原始條件，重大決策前再核對最新狀態；不要將數月前的查詢截圖寫成現在仍精確成立。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若工作需要歷史資料、匯出或大量更新，先核對當前帳戶方案與額度，再決定使用方式。完成一次小範圍研究，確認團隊能將結果轉成文章，比先購買更大方案更有判斷依據。本文不提供優惠或固定價格，也不以購買工具作為內容成功的必要條件。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ahrefs-research-workflow/diagram-1.svg",
+          "alt": "四步展示固定市場及網址範圍、以關鍵字指標初篩、核對頁面需求與引用情境，最後交付具有獨立切角和查證來源的工作單。",
+          "width": 1600,
+          "height": 900,
+          "caption": "報表提供線索，工作單要寫出讀者問題與你能補上的內容。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "資料或報表",
+            "適合回答",
+            "不代表"
+          ],
+          "rows": [
+            [
+              "Volume",
+              "某市場的估計搜尋規模",
+              "可保證的進站人數"
+            ],
+            [
+              "KD",
+              "連結面向的初步難度",
+              "內容一定能否排名"
+            ],
+            [
+              "Traffic Potential",
+              "參考頁面的整體搜尋機會",
+              "自己未來一定的流量"
+            ],
+            [
+              "Top pages",
+              "哪些頁面承接需求",
+              "網站營收或所有流量"
+            ],
+            [
+              "Backlinks 與引用網域",
+              "連結來源與引用情境",
+              "合作承諾或購買清單"
+            ]
+          ],
+          "caption": "各項估計需搭配查詢範圍、更新時間及人工判讀。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先確認資料是哪一種",
+          "text": "搜尋量、估計自然搜尋流量與自己的實際訪客數，來源和定義都不同。報告要保留欄位名稱與條件，不能混成同一組成效數字。"
+        },
+        {
+          "type": "link",
+          "text": "理解第三方網站權重分數",
+          "url": "https://mokaair.com/zh-TW/life/seo-domain-authority"
+        },
+        {
+          "type": "link",
+          "text": "區分合理引用與不當連結",
+          "url": "https://mokaair.com/zh-TW/life/seo-backlinks-outreach"
+        },
+        {
+          "type": "link",
+          "text": "把候選詞整理成原創文章",
+          "url": "https://mokaair.com/zh-TW/life/seo-keyword-research"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Ahrefs Site Explorer 查詢範圍",
+          "url": "https://ahrefs.com/academy/how-to-use-ahrefs/site-explorer/intro",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ahrefs Keywords Explorer 指標與查詢",
+          "url": "https://ahrefs.com/academy/how-to-use-ahrefs/keywords-explorer/overview",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ahrefs KD 計算與限制",
+          "url": "https://help.ahrefs.com/en/articles/72265-what-does-kd-stand-for-in-keywords-explorer",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ahrefs 搜尋量資料來源",
+          "url": "https://help.ahrefs.com/en/articles/72571-how-accurate-is-keyword-search-volume-in-ahrefs",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ahrefs 自然搜尋流量估計",
+          "url": "https://help.ahrefs.com/en/articles/1115995-is-organic-traffic-a-monthly-figure-based-on-past-30-days",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ahrefs Top pages",
+          "url": "https://ahrefs.com/academy/how-to-use-ahrefs/site-explorer/top-pages",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ahrefs 引用網域與連結差別",
+          "url": "https://help.ahrefs.com/en/articles/2791107-what-s-the-difference-between-referring-domains-and-backlinks",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ahrefs Backlinks 報表",
+          "url": "https://ahrefs.com/academy/how-to-use-ahrefs/site-explorer/backlinks",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ahrefs 資料更新頻率",
+          "url": "https://help.ahrefs.com/en/articles/1077603-how-often-is-the-data-in-keywords-explorer-and-site-explorer-updated",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

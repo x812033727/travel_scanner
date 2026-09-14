@@ -1,0 +1,237 @@
+{
+  "slug": "woocommerce-theme-extension-choice",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "WooCommerce 主題與外掛：先畫購物流程再選工具",
+      "description": "WooCommerce 商店不一定需要很多外掛，先找出客人在哪一步卡住，才能選對主題與擴充。本文以生活用品店為例，說明商品篩選、比較、願望清單與 YITH 工具的使用時機，整理結帳區塊、HPOS、主題範本和外掛衝突的檢查方法，並提供購買前可直接使用的需求與驗收表。",
+      "hero": {
+        "src": "/guides/woocommerce-theme-extension-choice/hero.jpg",
+        "alt": "原創插畫，用需求文件、商店畫面與驗證盾牌呈現主題和外掛選擇。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "店裡有十款收納用品，是否需要篩選器、快速檢視、願望清單和商品比較？這些工具都可能有用，但如果客人只是看不懂尺寸，增加四個按鈕也不會解決問題。選 WooCommerce 工具時，先把「選商品到拿到商品」的路徑畫出來，再找出真正的缺口。"
+        },
+        {
+          "type": "paragraph",
+          "text": "主題主要影響呈現與操作方式，外掛則可能改變商品資料、訂單規則或外部服務。兩者不是完全互斥的分類，因此要查清楚每項功能由誰提供。本文不排列品牌名次，也不以外掛數量判斷好壞，而是建立可重複使用的選購流程。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用訪客任務寫需求，避免只有功能名詞"
+        },
+        {
+          "type": "paragraph",
+          "text": "先寫出三個具體任務，例如「找到能放進抽屜的收納盒」「比較兩款盒子的內徑」「把尚未決定的商品留下來」。接著查看目前網站在哪裡無法完成：是屬性沒填、分類不清，還是畫面確實缺少篩選或比較方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若只有少量商品，分類頁加上尺寸表可能就足夠。商品很多且屬性差異明確時，篩選才更有價值；若規格欄位各自使用不同單位，先統一資料再裝比較外掛。工具只能使用已提供的資料，不會自動修正店主沒有定義的商品資訊。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把需求分成開店必須、近期改善與暫時觀察，並為每項寫一個通過條件。像「手機選容量後只顯示相符商品，清除條件能回到完整清單」，就比「需要很強的 AJAX 功能」更適合拿來驗收。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "挑主題時，先看交易畫面而非展示首頁"
+        },
+        {
+          "type": "paragraph",
+          "text": "先檢查商品清單、單一商品、購物車、結帳和帳號頁。放入繁體中文長名稱、不同價格和缺貨狀態，看看按鈕、訊息與圖片是否仍清楚。主題的品牌色和大幅照片容易調整，交易流程裡被遮住的錯誤提示卻會直接阻擋購買。"
+        },
+        {
+          "type": "paragraph",
+          "text": "確認主題需要哪個編輯器，以及展示頁是否依賴付費版或另購外掛。若主題內建願望清單，後續另裝相同工具可能出現兩個收藏按鈕；先關閉重複來源，指定一個主要系統管理資料與畫面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "到 WooCommerce 系統狀態查看主題覆寫的範本及過期提示。若有客製範本，應由維護者比對新版差異、保留修改並測試，不能只改版本註記消除警告。購前也應確認作者如何處理 WooCommerce 更新，而不是只看最近一次更新日期。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "YITH 工具要依問題挑選，不能整包照單全裝"
+        },
+        {
+          "type": "paragraph",
+          "text": "YITH AJAX Product Filter 用篩選預設組合組織商品查找，適合有穩定分類或屬性的目錄。使用前先決定條件是容量、材質還是價格，再核對目前版本對商店頁及自訂頁的支援；網路上的 3.x 舊文件與新版設定方式不同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "YITH Compare 提供商品功能和價格的比較表，可用在顧客需要逐欄衡量差異的品類。比較前應統一欄位意義，例如外徑與內徑各自列出；若商品差異主要是照片風格，寬大的比較表未必比清楚圖片更好理解。"
+        },
+        {
+          "type": "paragraph",
+          "text": "YITH Wishlist 處理收藏需求，可讓顧客保留感興趣的商品。多清單、促銷郵件或其他進階功能需查所選版本與方案，不能把文件首頁描述的所有功能當成免費版都有。也應測試未登入收藏、登入後呈現及清單可見範圍，不要預設收藏就同意接收行銷信。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "相容性至少核對三個面向"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一是 WordPress、WooCommerce、PHP 與主題版本。第二是購物車及結帳究竟採區塊或短代碼；外掛能在傳統結帳顯示，不代表區塊版也有相同功能。第三是訂單儲存方式 HPOS，這與前台結帳畫面是不同的相容性項目。"
+        },
+        {
+          "type": "paragraph",
+          "text": "作者的相容聲明與更新紀錄是起點，仍需用自己的組合測試。外掛名稱相同也可能因免費版、付費版或版本不同而有差異；付款、快速付款、折扣與額外欄位最好逐項核對，避免只看到一個支援標記就推定全部功能通過。"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立一張工具表，列出版本、用途、資料保存位置、費用、續訂與移除方法。若工具存有收藏、商品選項或訂單資訊，購前就確認能否匯出，以及停用後前台和資料如何變化；不要等改版時才追查使用者資料放在哪裡。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "記錄測試站的主題、核心、PHP 與必要外掛版本。",
+            "確認目前結帳類型和訂單儲存設定。",
+            "依作者文件逐項對照所需功能與方案範圍。",
+            "把相容聲明、未知項目與實際驗收結果分開記錄。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "一次驗證一項新增能力"
+        },
+        {
+          "type": "paragraph",
+          "text": "複製網站到測試環境後，先確認原本購物流程正常，再啟用候選外掛。用同一批商品與同一組任務前後比較：篩選有無漏品、返回上一頁是否保留合理狀態、收藏能否移除、比較表在窄螢幕是否仍能閱讀。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每次新增後都重新完成一筆隔離的測試訂單，因為看似只改商品頁的工具，也可能影響加入購物車資料或價格。速度比較應使用相同環境與內容，記下實際測量條件；不要把作者展示站的分數當成自己的成效。"
+        },
+        {
+          "type": "paragraph",
+          "text": "發生問題時先在測試站排除快取，再切換基準主題或暫停非必要外掛，逐項縮小組合。保留 WooCommerce 與重現問題所必須的元件，記下哪個版本搭配會出錯。正式店面仍在接單時，不要直接大批停用外掛找答案。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "選擇能被團隊維護的組合"
+        },
+        {
+          "type": "paragraph",
+          "text": "以收納用品店為例，第一階段可能只需清楚分類和尺寸屬性；商品增加後再加入篩選；顧客確實常比較規格時才導入比較表。這種順序讓每個新增工具都有目的，也比較容易判斷成本是否值得。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把付費項目換算成整個維護週期：授權、續約、設定、測試與故障處理都要有人負責。若接案者交付的是特殊主題搭配五個相依工具，交接文件應說明每個工具負責哪一段，以及缺少授權時如何維護。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後讓日常上架人員實際編輯商品、修改篩選欄位並查看訂單。只有管理員熟悉的複雜組合，未必適合每天經營的團隊。保留未採用工具的理由，下一次面對新的推薦清單時，就能從既有需求出發。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/woocommerce-theme-extension-choice/diagram-1.svg",
+          "alt": "原創四欄圖，依序呈現顧客問題、資料準備、相容檢查與購物驗收，協助選擇 WooCommerce 主題及外掛。",
+          "width": 1600,
+          "height": 900,
+          "caption": "每增加一個工具，都應說明它解決哪個問題，以及如何確認有效。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "顧客問題",
+            "先整理的資料",
+            "可考慮的工具"
+          ],
+          "rows": [
+            [
+              "找不到符合尺寸的商品",
+              "一致的尺寸屬性",
+              "商品篩選器"
+            ],
+            [
+              "不懂兩款差別",
+              "可比較的規格欄位",
+              "商品比較表"
+            ],
+            [
+              "想稍後再決定",
+              "穩定商品與清單入口",
+              "願望清單"
+            ],
+            [
+              "無法完成付款",
+              "結帳錯誤與相容版本",
+              "先排查既有整合"
+            ]
+          ],
+          "caption": "工具必須對應具體問題；YITH 是可研究的實作選項之一，並非必裝組合。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "支援聲明不等於你的整套網站已通過",
+          "text": "保存作者的相容資訊，同時記錄自己使用的版本、結帳型態和驗收結果。換主題或更新關鍵外掛後，重做受影響的購物流程。"
+        },
+        {
+          "type": "link",
+          "text": "WooCommerce 開店：先完成一條訂單流程",
+          "url": "https://mokaair.com/zh-TW/life/woocommerce-store-launch"
+        },
+        {
+          "type": "link",
+          "text": "ThemeForest 主題購買與授權檢查",
+          "url": "https://mokaair.com/zh-TW/life/themeforest-license-purchase"
+        }
+      ],
+      "sources": [
+        {
+          "title": "相容性與實際測試",
+          "url": "https://developer.woocommerce.com/docs/best-practices/compatibility",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "結帳區塊擴充",
+          "url": "https://developer.woocommerce.com/docs/block-development/extensible-blocks/cart-and-checkout-blocks",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "主題範本更新",
+          "url": "https://developer.woocommerce.com/docs/theming/theme-development/fixing-outdated-woocommerce-templates",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "衝突檢查",
+          "url": "https://woocommerce.com/document/how-to-test-for-conflicts/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "YITH Product Filter",
+          "url": "https://docs.yithemes.com/yith-woocommerce-ajax-product-filter/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "YITH Compare",
+          "url": "https://docs.yithemes.com/yith-woocommerce-compare/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "YITH Wishlist",
+          "url": "https://docs.yithemes.com/yith-woocommerce-wishlist/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
