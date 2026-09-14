@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-09-14T08:48:58.959564+00:00",
+  "status": "passed",
+  "environment": "Windows; temporary Small Steps reference copy",
+  "nodeVersion": "v24.13.0",
+  "checks": [
+    "Custom role is valid TOML with required fields; activation and runtime permissions are not tested",
+    "The original complete reference has three passing tests",
+    "The exact one-line reproduction disproves the fictional duplicate-ID claim",
+    "All six original and added evidence tests pass without editing the application",
+    "Removing duplicate-ID validation is detected by two failures, with four other tests passing",
+    "Restoration passes six tests, then returns to the original three with all five files identical"
+  ],
+  "notTested": [
+    "Actual subagent spawning, steering, stopping or inspection",
+    "Custom role activation or runtime permission enforcement",
+    "macOS/Linux execution",
+    "Codex desktop/CLI/IDE UI"
+  ],
+  "authorHashes": {
+    "28": "831ef96ffe1c5402a5a0288a0fc325e74d6e4c521b2726e6d5f45bfdf9d3d912",
+    "53": "5920ef56410f13a346133012df2e96f68c7d276a6f3be0ff984bf5dd7d55e525"
+  }
+}

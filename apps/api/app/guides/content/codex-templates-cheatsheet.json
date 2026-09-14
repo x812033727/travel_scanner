@@ -44,6 +44,31 @@
           "text": "建立一個自己的範本資料夾，能依任務選對欄位、填入真實觀察、刪掉不適用的步驟。閱讀約 15 分鐘、操作約 20 分鐘。範本是普通文字，貼進任務後才成為要求；不是新的斜線指令，也不是安裝後自動執行的插件。先完成需求描述與Markdown即可開始。"
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教學與資源: "
+            },
+            {
+              "type": "article",
+              "text": "需求描述",
+              "kind": "life",
+              "slug": "codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "Markdown",
+              "kind": "life",
+              "slug": "codex-markdown-basics"
+            }
+          ]
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "步驟 1：建立範本庫並分清用途"
@@ -107,14 +132,14 @@
           "type": "code",
           "label": "templates/task.md",
           "language": "markdown",
-          "code": "# Task\nGoal: Add a filter for active tasks in the Small Steps practice app.\nContext: Use the complete reference copy in this practice folder.\nInspect first: README.md, app.js, model.js and the existing tests.\nScope: Only files needed for the filter and its focused tests.\nBehavior: All shows every task; Active shows tasks whose completed value is false.\nPreserve: Existing task IDs, titles, ordering and stored data format.\nAcceptance: With three tasks (two complete), Active shows exactly one.\nBoundary: An empty list shows a useful empty state and does not throw.\nValidation: Run the documented tests; report the exact command and exit status.\nDelivery: Explain changed behavior, tests actually run and remaining limitations.\n"
+          "code": "# Task\nGoal: Verify the active-task filter and repair it only if the acceptance case fails.\nContext: Use the complete reference copy in this practice folder.\nInspect first: index.html, app.js, core.mjs, style.css and core.test.mjs.\nScope: Only files needed for the filter and its focused tests.\nBehavior: All shows every task; Active shows tasks whose completed value is false.\nPreserve: Existing task IDs, titles, ordering and stored data format.\nAcceptance: With three tasks (two complete), Active shows exactly one.\nBoundary: An empty list shows a useful empty state and does not throw.\nValidation: Run node --test core.test.mjs and verify the browser behavior; report actual results.\nIf the existing behavior passes, report that evidence without unnecessary edits.\nDelivery: Explain changed behavior, tests actually run and remaining limitations.\n"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "這份填好的範例對應本系列的 Small Steps 練習，不是任何專案都能直接套用。先在自己的副本確認檔案存在；若測試指令與 README 不符，以實際專案為準再修改要求。想先討論可行性時，使用 "
+              "text": "這份填好的範例對應本系列的 Small Steps 練習，不是任何專案都能直接套用。先在自己的 expected 副本確認五份程式檔存在；操作說明在下載包根目錄的 README.md，不在 expected 裡。其他專案則依自己的 README 核對驗證指令。想先討論可行性時，使用 "
             },
             {
               "type": "article",
@@ -124,7 +149,7 @@
             },
             {
               "type": "text",
-              "text": " 並把交付改成「先提出步驟及待決定項目」。若這次已要實作，就清楚寫明可以修改的範圍，避免一份範本同時要求先停下及立刻完成。"
+              "text": " 並把交付改成「先提出步驟及待決定項目」。若已要實作，清楚寫明可以修改的範圍。"
             }
           ]
         },
@@ -230,7 +255,7 @@
           "type": "code",
           "label": "templates/rules.example.md：規則草稿",
           "language": "markdown",
-          "code": "# Practice project rules\nRead README.md before changing the practice app.\nPreserve task IDs and the existing data format.\nKeep changes within the requested behavior.\nUse the test command documented by this project and report actual results.\nDo not commit credentials or private practice data.\nIf required files are missing, report the missing paths before making assumptions.\n"
+          "code": "# Practice project rules\nRead index.html, app.js, core.mjs and core.test.mjs before changing this practice app.\nPreserve task IDs and the existing data format.\nKeep changes within the requested behavior.\nRun node --test core.test.mjs and report actual results.\nDo not commit credentials or private practice data.\nIf required files are missing, report the missing paths before making assumptions.\n"
         },
         {
           "type": "rich_paragraph",
@@ -401,6 +426,31 @@
           "text": "Create a personal template folder, choose fields appropriate to a task, fill in real observations and remove inapplicable steps. Allow 15 minutes to read and 20 to practice. Templates are ordinary text that becomes a request when submitted; they are neither new slash commands nor automatically executing plugins. Start with Prompting and Markdown."
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Lessons and resources mentioned here: "
+            },
+            {
+              "type": "article",
+              "text": "Prompting",
+              "kind": "life",
+              "slug": "codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "Markdown",
+              "kind": "life",
+              "slug": "codex-markdown-basics"
+            }
+          ]
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "Step 1: Create a library and separate purposes"
@@ -464,14 +514,14 @@
           "type": "code",
           "label": "templates/task.md",
           "language": "markdown",
-          "code": "# Task\nGoal: Add a filter for active tasks in the Small Steps practice app.\nContext: Use the complete reference copy in this practice folder.\nInspect first: README.md, app.js, model.js and the existing tests.\nScope: Only files needed for the filter and its focused tests.\nBehavior: All shows every task; Active shows tasks whose completed value is false.\nPreserve: Existing task IDs, titles, ordering and stored data format.\nAcceptance: With three tasks (two complete), Active shows exactly one.\nBoundary: An empty list shows a useful empty state and does not throw.\nValidation: Run the documented tests; report the exact command and exit status.\nDelivery: Explain changed behavior, tests actually run and remaining limitations.\n"
+          "code": "# Task\nGoal: Verify the active-task filter and repair it only if the acceptance case fails.\nContext: Use the complete reference copy in this practice folder.\nInspect first: index.html, app.js, core.mjs, style.css and core.test.mjs.\nScope: Only files needed for the filter and its focused tests.\nBehavior: All shows every task; Active shows tasks whose completed value is false.\nPreserve: Existing task IDs, titles, ordering and stored data format.\nAcceptance: With three tasks (two complete), Active shows exactly one.\nBoundary: An empty list shows a useful empty state and does not throw.\nValidation: Run node --test core.test.mjs and verify the browser behavior; report actual results.\nIf the existing behavior passes, report that evidence without unnecessary edits.\nDelivery: Explain changed behavior, tests actually run and remaining limitations.\n"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "This filled example targets the series' Small Steps practice app, not every repository. Verify the files in your own copy and align validation with its README. To discuss feasibility, use "
+              "text": "This filled example targets the Small Steps exercise, not every repository. Confirm the five code files in your expected copy. Instructions are in README.md at the download root, not inside expected; other projects use their own README to verify commands. To discuss feasibility, use "
             },
             {
               "type": "article",
@@ -481,7 +531,7 @@
             },
             {
               "type": "text",
-              "text": " and change the delivery to a proposed sequence and unresolved decisions. For implementation, state the editable scope clearly rather than asking both to pause first and finish immediately."
+              "text": " with a proposed sequence and unresolved decisions as the deliverable. For implementation, clearly state the editable scope."
             }
           ]
         },
@@ -587,7 +637,7 @@
           "type": "code",
           "label": "templates/rules.example.md: draft rules",
           "language": "markdown",
-          "code": "# Practice project rules\nRead README.md before changing the practice app.\nPreserve task IDs and the existing data format.\nKeep changes within the requested behavior.\nUse the test command documented by this project and report actual results.\nDo not commit credentials or private practice data.\nIf required files are missing, report the missing paths before making assumptions.\n"
+          "code": "# Practice project rules\nRead index.html, app.js, core.mjs and core.test.mjs before changing this practice app.\nPreserve task IDs and the existing data format.\nKeep changes within the requested behavior.\nRun node --test core.test.mjs and report actual results.\nDo not commit credentials or private practice data.\nIf required files are missing, report the missing paths before making assumptions.\n"
         },
         {
           "type": "rich_paragraph",
@@ -741,7 +791,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "Codex 教学目次に戻る",
+              "text": "Codex 学習目次に戻る",
               "kind": "life",
               "slug": "codex-learning-hub"
             }
@@ -756,6 +806,31 @@
           "type": "callout",
           "tone": "info",
           "text": "自分用の雛形フォルダーを作り、作業に合う欄を選び、観測値を記入し不要な手順を除きます。読む時間15分、実習20分。雛形は送信して初めて要求になる普通の文字で、新しい対話指令や自動実行プラグインではありません。依頼の書き方と Markdownから始めます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "この段落の教材・資料: "
+            },
+            {
+              "type": "article",
+              "text": "依頼の書き方",
+              "kind": "life",
+              "slug": "codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "Markdown",
+              "kind": "life",
+              "slug": "codex-markdown-basics"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -821,14 +896,14 @@
           "type": "code",
           "label": "templates/task.md",
           "language": "markdown",
-          "code": "# Task\nGoal: Add a filter for active tasks in the Small Steps practice app.\nContext: Use the complete reference copy in this practice folder.\nInspect first: README.md, app.js, model.js and the existing tests.\nScope: Only files needed for the filter and its focused tests.\nBehavior: All shows every task; Active shows tasks whose completed value is false.\nPreserve: Existing task IDs, titles, ordering and stored data format.\nAcceptance: With three tasks (two complete), Active shows exactly one.\nBoundary: An empty list shows a useful empty state and does not throw.\nValidation: Run the documented tests; report the exact command and exit status.\nDelivery: Explain changed behavior, tests actually run and remaining limitations.\n"
+          "code": "# Task\nGoal: Verify the active-task filter and repair it only if the acceptance case fails.\nContext: Use the complete reference copy in this practice folder.\nInspect first: index.html, app.js, core.mjs, style.css and core.test.mjs.\nScope: Only files needed for the filter and its focused tests.\nBehavior: All shows every task; Active shows tasks whose completed value is false.\nPreserve: Existing task IDs, titles, ordering and stored data format.\nAcceptance: With three tasks (two complete), Active shows exactly one.\nBoundary: An empty list shows a useful empty state and does not throw.\nValidation: Run node --test core.test.mjs and verify the browser behavior; report actual results.\nIf the existing behavior passes, report that evidence without unnecessary edits.\nDelivery: Explain changed behavior, tests actually run and remaining limitations.\n"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "これは Small Steps 用の記入例で、どのプロジェクトにも無修正で使えるものではありません。副本のファイルと README の検証方法を確認します。可能性の相談なら "
+              "text": "この記入例は Small Steps 用です。expected コピーに5つのコードファイルがあるか確認します。説明は expected 内ではなくダウンロードの根にある README.md にあります。他のプロジェクトでは各 README で検証命令を照合します。可能性の相談は "
             },
             {
               "type": "article",
@@ -838,7 +913,7 @@
             },
             {
               "type": "text",
-              "text": "で手順と未決事項を成果に変更します。実装なら編集範囲を明示し、停止と即完了を同時に求めません。"
+              "text": "で手順と未決事項を成果にし、実装なら編集範囲を明示します。"
             }
           ]
         },
@@ -912,7 +987,7 @@
             },
             {
               "type": "text",
-              "text": "を確認し main を仮定しません。引継ぎは現在地と状態を毎回更新します。以前の会話のコミット報告だけで現在の目録を未変更と判断せず、未コミット分と担当を残します。"
+              "text": "を確認し main を仮定しません。引継ぎは現在地と状態を毎回更新します。以前の会話のコミット報告だけで現在のディレクトリを未変更と判断せず、未コミット分と担当を残します。"
             }
           ]
         },
@@ -944,7 +1019,7 @@
           "type": "code",
           "label": "templates/rules.example.md：規則下書き",
           "language": "markdown",
-          "code": "# Practice project rules\nRead README.md before changing the practice app.\nPreserve task IDs and the existing data format.\nKeep changes within the requested behavior.\nUse the test command documented by this project and report actual results.\nDo not commit credentials or private practice data.\nIf required files are missing, report the missing paths before making assumptions.\n"
+          "code": "# Practice project rules\nRead index.html, app.js, core.mjs and core.test.mjs before changing this practice app.\nPreserve task IDs and the existing data format.\nKeep changes within the requested behavior.\nRun node --test core.test.mjs and report actual results.\nDo not commit credentials or private practice data.\nIf required files are missing, report the missing paths before making assumptions.\n"
         },
         {
           "type": "rich_paragraph",
@@ -1006,7 +1081,7 @@
             },
             {
               "type": "text",
-              "text": " は今回の入口と主機を記録し、他機の同名設定を同一視しません。"
+              "text": " は今回の入口とホストを記録し、他機の同名設定を同一視しません。"
             }
           ]
         },
@@ -1017,18 +1092,18 @@
         },
         {
           "type": "paragraph",
-          "text": "未記入の山括弧は送信前に < を検索し、記入または不要欄削除で直します。旧命令の流用は README と現在地の確認で防ぎます。読取り審査とついでの編集など競合する要求は一目的に絞ります。同名の既存雛形は別副本や Git 差分で保護し、復元も自分が変更した雛形に限定します。"
+          "text": "未記入の山括弧は送信前に < を検索し、記入または不要欄削除で直します。旧命令の流用は README と現在地の確認で防ぎます。読取り審査とついでの編集など競合する要求は一目的に絞ります。同名の既存雛形は別コピーや Git 差分で保護し、復元も自分が変更した雛形に限定します。"
         },
         {
           "type": "paragraph",
-          "text": "実習では観測済みの不具合を bug.md、次の一歩を handoff.md に書き、元の作業を知らない人に渡します。場所、再現、未確認が分かれば合格です。主機やデータを推測させるならその欄を足し、全雛形を長くしません。空の原本を保持し作業ごとに副本を保存して、前回結果を既定値にしません。"
+          "text": "実習では観測済みの不具合を bug.md、次の一歩を handoff.md に書き、元の作業を知らない人に渡します。場所、再現、未確認が分かれば合格です。ホストやデータを推測させるならその欄を足し、全雛形を長くしません。空の原本を保持し作業ごとにコピーを保存して、前回結果を既定値にしません。"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "原創教材であるこれらのファイルに実行権限はなく、アカウントも変えません。六つの読める雛形、記入済み報告と引継ぎ、特定した曖昧さ一件が検証成果です。モデルの特定表現は要求しません。次は "
+              "text": "オリジナル教材であるこれらのファイルに実行権限はなく、アカウントも変えません。六つの読める雛形、記入済み報告と引継ぎ、特定した曖昧さ一件が検証成果です。モデルの特定表現は要求しません。次は "
             },
             {
               "type": "article",
@@ -1047,7 +1122,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "Codex 教学目次に戻る",
+              "text": "Codex 学習目次に戻る",
               "kind": "life",
               "slug": "codex-learning-hub"
             }
@@ -1115,6 +1190,31 @@
           "text": "자신의 템플릿 폴더를 만들고 작업에 맞는 항목을 선택해 실제 관찰값을 채우며 불필요한 절차를 제거합니다. 읽기 15분, 실습 20분입니다. 템플릿은 제출하면 요청이 되는 일반 텍스트이며 새로운 슬래시 명령이나 자동 실행 플러그인이 아닙니다. 요청 작성과 Markdown을 먼저 읽으세요."
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "이 단락의 학습 자료: "
+            },
+            {
+              "type": "article",
+              "text": "요청 작성",
+              "kind": "life",
+              "slug": "codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "Markdown",
+              "kind": "life",
+              "slug": "codex-markdown-basics"
+            }
+          ]
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "1단계: 용도를 나눠 템플릿 저장"
@@ -1178,14 +1278,14 @@
           "type": "code",
           "label": "templates/task.md",
           "language": "markdown",
-          "code": "# Task\nGoal: Add a filter for active tasks in the Small Steps practice app.\nContext: Use the complete reference copy in this practice folder.\nInspect first: README.md, app.js, model.js and the existing tests.\nScope: Only files needed for the filter and its focused tests.\nBehavior: All shows every task; Active shows tasks whose completed value is false.\nPreserve: Existing task IDs, titles, ordering and stored data format.\nAcceptance: With three tasks (two complete), Active shows exactly one.\nBoundary: An empty list shows a useful empty state and does not throw.\nValidation: Run the documented tests; report the exact command and exit status.\nDelivery: Explain changed behavior, tests actually run and remaining limitations.\n"
+          "code": "# Task\nGoal: Verify the active-task filter and repair it only if the acceptance case fails.\nContext: Use the complete reference copy in this practice folder.\nInspect first: index.html, app.js, core.mjs, style.css and core.test.mjs.\nScope: Only files needed for the filter and its focused tests.\nBehavior: All shows every task; Active shows tasks whose completed value is false.\nPreserve: Existing task IDs, titles, ordering and stored data format.\nAcceptance: With three tasks (two complete), Active shows exactly one.\nBoundary: An empty list shows a useful empty state and does not throw.\nValidation: Run node --test core.test.mjs and verify the browser behavior; report actual results.\nIf the existing behavior passes, report that evidence without unnecessary edits.\nDelivery: Explain changed behavior, tests actually run and remaining limitations.\n"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "작성된 예시는 Small Steps 연습 앱용이며 모든 저장소에 그대로 쓸 수는 없습니다. 자신의 복사본에서 파일과 README의 검증 방법을 확인하세요. 타당성 논의는 "
+              "text": "이 작성 예시는 Small Steps용입니다. expected 복사본에 코드 파일 다섯 개가 있는지 확인하세요. 설명 README.md는 expected 안이 아니라 다운로드 루트에 있습니다. 다른 프로젝트는 각 README로 검증 명령을 확인합니다. 타당성 논의는 "
             },
             {
               "type": "article",
@@ -1195,7 +1295,7 @@
             },
             {
               "type": "text",
-              "text": "에서 단계와 미결정을 결과물로 바꿉니다. 구현이라면 수정 범위를 분명히 해 먼저 멈추기와 즉시 완료를 동시에 요청하지 않습니다."
+              "text": "에서 절차·미결정을 결과물로 정하고 구현이라면 수정 범위를 명시합니다."
             }
           ]
         },
@@ -1301,7 +1401,7 @@
           "type": "code",
           "label": "templates/rules.example.md: 규칙 초안",
           "language": "markdown",
-          "code": "# Practice project rules\nRead README.md before changing the practice app.\nPreserve task IDs and the existing data format.\nKeep changes within the requested behavior.\nUse the test command documented by this project and report actual results.\nDo not commit credentials or private practice data.\nIf required files are missing, report the missing paths before making assumptions.\n"
+          "code": "# Practice project rules\nRead index.html, app.js, core.mjs and core.test.mjs before changing this practice app.\nPreserve task IDs and the existing data format.\nKeep changes within the requested behavior.\nRun node --test core.test.mjs and report actual results.\nDo not commit credentials or private practice data.\nIf required files are missing, report the missing paths before making assumptions.\n"
         },
         {
           "type": "rich_paragraph",
@@ -1472,6 +1572,31 @@
           "text": "建立一个自己的范本资料夹，能依任务选对栏位、填入真实观察、删掉不适用的步骤。阅读约 15 分钟、操作约 20 分钟。范本是普通文字，贴进任务后才成为要求；不是新的斜线指令，也不是安装后自动执行的插件。先完成需求描述与Markdown即可开始。"
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教学与资源: "
+            },
+            {
+              "type": "article",
+              "text": "需求描述",
+              "kind": "life",
+              "slug": "codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "Markdown",
+              "kind": "life",
+              "slug": "codex-markdown-basics"
+            }
+          ]
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "步骤 1：建立范本库并分清用途"
@@ -1535,14 +1660,14 @@
           "type": "code",
           "label": "templates/task.md",
           "language": "markdown",
-          "code": "# Task\nGoal: Add a filter for active tasks in the Small Steps practice app.\nContext: Use the complete reference copy in this practice folder.\nInspect first: README.md, app.js, model.js and the existing tests.\nScope: Only files needed for the filter and its focused tests.\nBehavior: All shows every task; Active shows tasks whose completed value is false.\nPreserve: Existing task IDs, titles, ordering and stored data format.\nAcceptance: With three tasks (two complete), Active shows exactly one.\nBoundary: An empty list shows a useful empty state and does not throw.\nValidation: Run the documented tests; report the exact command and exit status.\nDelivery: Explain changed behavior, tests actually run and remaining limitations.\n"
+          "code": "# Task\nGoal: Verify the active-task filter and repair it only if the acceptance case fails.\nContext: Use the complete reference copy in this practice folder.\nInspect first: index.html, app.js, core.mjs, style.css and core.test.mjs.\nScope: Only files needed for the filter and its focused tests.\nBehavior: All shows every task; Active shows tasks whose completed value is false.\nPreserve: Existing task IDs, titles, ordering and stored data format.\nAcceptance: With three tasks (two complete), Active shows exactly one.\nBoundary: An empty list shows a useful empty state and does not throw.\nValidation: Run node --test core.test.mjs and verify the browser behavior; report actual results.\nIf the existing behavior passes, report that evidence without unnecessary edits.\nDelivery: Explain changed behavior, tests actually run and remaining limitations.\n"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "这份填好的范例对应本系列的 Small Steps 练习，不是任何专案都能直接套用。先在自己的副本确认档案存在；若测试指令与 README 不符，以实际专案为准再修改要求。想先讨论可行性时，使用 "
+              "text": "这份填好的范例对应本系列的 Small Steps 练习，不是任何专案都能直接套用。先在自己的 expected 副本确认五份程式档存在；操作说明在下载包根目录的 README.md，不在 expected 里。其他专案则依自己的 README 核对验证指令。想先讨论可行性时，使用 "
             },
             {
               "type": "article",
@@ -1552,7 +1677,7 @@
             },
             {
               "type": "text",
-              "text": " 并把交付改成「先提出步骤及待决定项目」。若这次已要实作，就清楚写明可以修改的范围，避免一份范本同时要求先停下及立刻完成。"
+              "text": " 并把交付改成「先提出步骤及待决定项目」。若已要实作，清楚写明可以修改的范围。"
             }
           ]
         },
@@ -1658,7 +1783,7 @@
           "type": "code",
           "label": "templates/rules.example.md：规则草稿",
           "language": "markdown",
-          "code": "# Practice project rules\nRead README.md before changing the practice app.\nPreserve task IDs and the existing data format.\nKeep changes within the requested behavior.\nUse the test command documented by this project and report actual results.\nDo not commit credentials or private practice data.\nIf required files are missing, report the missing paths before making assumptions.\n"
+          "code": "# Practice project rules\nRead index.html, app.js, core.mjs and core.test.mjs before changing this practice app.\nPreserve task IDs and the existing data format.\nKeep changes within the requested behavior.\nRun node --test core.test.mjs and report actual results.\nDo not commit credentials or private practice data.\nIf required files are missing, report the missing paths before making assumptions.\n"
         },
         {
           "type": "rich_paragraph",

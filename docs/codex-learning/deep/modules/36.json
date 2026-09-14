@@ -154,7 +154,7 @@
       "text": [
         "預期目前目錄是你的練習資料夾，有兩個文字檔，內容為 MAC-CLI-01。兩份檔案的 SHA-256 應相同；若不同，先查是否多了空格、不同換行或編碼，不要叫 Codex 猜哪一份才正確。記錄本機算出的值即可，本文不提供固定雜湊，因為不同編輯器的換行可能不同。",
         "Expect the practice directory, two text files and MAC-CLI-01. Their SHA-256 hashes should match. If not, check spaces, newlines and encoding instead of asking Codex to guess the intended original. Keep your locally computed hashes; no fixed published hash is required because editor newline choices can differ.",
-        "練習フォルダー、二つのテキスト、MAC-CLI-01 を確認します。二つの SHA-256 は一致するはずです。違う場合は Codex に正解を推測させず、空白、改行、文字コードを確認します。エディターの改行設定で値が変わるため、固定の掲載値ではなく本機の値を残します。",
+        "練習フォルダー、二つのテキスト、MAC-CLI-01 を確認します。二つの SHA-256 は一致するはずです。違う場合は Codex に正解を推測させず、空白、改行、文字コードを確認します。エディターの改行設定で値が変わるため、固定の掲載値ではなくローカルの値を残します。",
         "실습 폴더, 두 텍스트 파일, MAC-CLI-01을 확인합니다. 두 SHA-256은 같아야 합니다. 다르면 Codex에게 정답을 추측시키지 말고 공백, 줄바꿈, 인코딩을 점검하세요. 편집기 줄바꿈에 따라 값이 달라질 수 있어 고정 게시값 대신 로컬 값을 기록합니다."
       ]
     },
@@ -218,7 +218,7 @@
       "text": [
         "若新視窗才找不到 CLI，通常要查 shell 啟動環境：把安裝程式最後的 PATH 說明和 command -v 結果對照。只修改自己實際使用的 shell 設定檔，先備份原檔並保留原 PATH。不要把網路上的固定 /opt/homebrew 或 /usr/local 路徑當成每臺 Mac 都適用，也不要同時把設定複製進多個啟動檔來碰運氣。",
         "If only a fresh window cannot find CLI, compare the installer's PATH instructions with command -v and your shell startup environment. Back up the actual startup file before making a targeted change and retain the existing PATH. Do not assume /opt/homebrew or /usr/local is correct for every Mac, or duplicate configuration across several startup files without identifying which one applies.",
-        "新しいウィンドウだけ見つからない場合は、導入時の PATH 案内、command -v、シェル起動環境を比較します。実際に使う起動設定をバックアップし、既存 PATH を保ったうえで対象箇所だけ直します。/opt/homebrew や /usr/local が全 Mac に適用されるとは限りません。該当ファイルを特定せず複数へ設定を複製しないでください。",
+        "新しいウィンドウだけ見つからない場合は、導入時の PATH 案内、command -v、シェル起動環境を比較します。実際に使う起動設定をバックアップし、既存 PATH を保ったうえで対象箇所だけ直します。/opt/homebrew や /usr/local が全 Mac に適用されるとは限りません。該当ファイルを特定せず複数へ設定をコピーしないでください。",
         "새 창에서만 CLI를 찾지 못하면 설치 PATH 안내, command -v, 셸 시작 환경을 비교합니다. 실제 사용하는 시작 설정 파일을 백업하고 기존 PATH를 유지한 채 필요한 부분만 수정합니다. /opt/homebrew나 /usr/local이 모든 Mac에 맞는다고 가정하거나 적용 파일을 찾지 않은 채 여러 설정 파일에 복제하지 마세요."
       ]
     },

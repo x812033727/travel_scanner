@@ -26,7 +26,7 @@
       "text": [
         "MCP 是讓客戶端呼叫工具與取得上下文的協定。伺服器提供哪些能力，取決於該伺服器；接上文件服務不會自動取得你的 GitHub 或本機瀏覽器。OpenAI Docs MCP 提供文件搜尋與原文內容，不會代你呼叫 OpenAI API。本篇用它練習讀取驗收；日後換成會寫入資料的服務，仍須重新檢查工具與[權限範圍](article:codex-permissions)。",
         "MCP lets clients invoke tools and receive context. Capabilities depend on the server: connecting documentation does not grant GitHub or local browser access. OpenAI Docs MCP searches and retrieves documentation without calling the OpenAI API on your behalf. Use it to practice retrieval acceptance; a later service that writes data needs its own tool and [Permission](article:codex-permissions) review.",
-        "MCP はツール実行と文脈取得の協定です。能力はサーバー次第で、文書接続から GitHub や本機ブラウザーへの権限は生まれません。Docs MCP は文書検索・取得を行い、利用者の代わりに OpenAI API を実行しません。後で書込みサービスへ替える場合は[権限範囲](article:codex-permissions)を再確認します。",
+        "MCP はツール実行と文脈取得の協定です。能力はサーバー次第で、文書接続から GitHub やローカルブラウザーへの権限は生まれません。Docs MCP は文書検索・取得を行い、利用者の代わりに OpenAI API を実行しません。後で書込みサービスへ替える場合は[権限範囲](article:codex-permissions)を再確認します。",
         "MCP는 도구 호출과 맥락 수신을 위한 프로토콜입니다. 기능은 서버에 따라 다르며 문서 연결이 GitHub나 로컬 브라우저 접근을 주지는 않습니다. Docs MCP는 문서를 검색·조회하며 대신 OpenAI API를 호출하지 않습니다. 이후 쓰기 서비스로 바꾸면 도구와 [권한 범위](article:codex-permissions)를 다시 검토하세요."
       ]
     },
@@ -44,7 +44,7 @@
       "text": [
         "| 類型 | 你要提供的資料 | 執行位置 |\n| --- | --- | --- |\n| STDIO | 啟動程式與參數 | Codex 主機啟動本機程序 |\n| Streamable HTTP | MCP 服務網址 | 透過網路連到服務 |\n| 插件提供的 MCP | 插件安裝與必要連線 | 依插件與入口提供 |\n\n本篇只做 Streamable HTTP。一般網站首頁不等於 MCP 網址，必須使用服務官方列出的端點；也不能把 STDIO 的 command 貼到 URL 欄。",
         "| Type | Required information | Execution location |\n| --- | --- | --- |\n| STDIO | Program and arguments | Local process started by the Codex host |\n| Streamable HTTP | MCP endpoint URL | Network connection to the service |\n| Plugin-provided MCP | Plugin installation and required connection | Depends on plugin and surface |\n\nThis exercise uses only Streamable HTTP. A website homepage is not necessarily its MCP endpoint; use the provider's documented address, and do not paste a STDIO command into a URL field.",
-        "| 方式 | 必要情報 | 実行場所 |\n| --- | --- | --- |\n| STDIO | 程序と引数 | Codex 主機が本機プロセスを起動 |\n| Streamable HTTP | MCP 端点 URL | ネット経由のサービス |\n| プラグイン由来 | 導入と必要な接続 | 個別の提供条件による |\n\n今回は Streamable HTTP のみです。一般のホームページは MCP 端点とは限らず、公式の端点を使います。STDIO 命令を URL 欄へ貼りません。",
+        "| 方式 | 必要情報 | 実行場所 |\n| --- | --- | --- |\n| STDIO | 程序と引数 | Codex ホストがローカルプロセスを起動 |\n| Streamable HTTP | MCP 端点 URL | ネット経由のサービス |\n| プラグイン由来 | 導入と必要な接続 | 個別の提供条件による |\n\n今回は Streamable HTTP のみです。一般のホームページは MCP 端点とは限らず、公式の端点を使います。STDIO 命令を URL 欄へ貼りません。",
         "| 방식 | 필요 정보 | 실행 위치 |\n| --- | --- | --- |\n| STDIO | 프로그램과 인수 | Codex 호스트가 로컬 프로세스 시작 |\n| Streamable HTTP | MCP 주소 | 네트워크로 서비스 접속 |\n| 플러그인 제공 MCP | 설치와 필요한 연결 | 플러그인과 진입점에 따름 |\n\n이번에는 Streamable HTTP만 사용합니다. 웹사이트 첫 페이지가 MCP 주소는 아니므로 공식 주소를 사용하고 STDIO 명령을 URL 칸에 넣지 마세요."
       ]
     },
@@ -53,7 +53,7 @@
       "text": [
         "同一 Codex 主機的桌面版、CLI、IDE 共用 MCP 設定。預設使用者設定為 ~/.codex/config.toml；Windows 通常在使用者資料夾下的 .codex，macOS、Linux 同樣在自己的家目錄。若已設定自訂 CODEX_HOME，請依實際位置確認。可信任專案也能用 .codex/config.toml；本篇沿用使用者層設定，不在不明來源專案內調整。位置判斷見 [config.toml](article:codex-config-toml)。",
         "Desktop, CLI and IDE clients on the same Codex host share MCP configuration. The default user file is ~/.codex/config.toml: .codex under the user directory on Windows and the home directory on macOS/Linux. Honor an existing custom CODEX_HOME. Trusted projects can also use .codex/config.toml; this exercise uses the user configuration instead of editing an unfamiliar project. See [config.toml](article:codex-config-toml).",
-        "同じ Codex 主機のデスクトップ、CLI、IDE は設定を共有します。既定は ~/.codex/config.toml で、Windows の利用者フォルダー、macOS・Linux のホーム下の .codex にあります。既存の独自 CODEX_HOME があればその場所を確認します。信頼済みプロジェクト設定もありますが、今回は利用者層を使います。[config.toml](article:codex-config-toml)で場所を確認できます。",
+        "同じ Codex ホストのデスクトップ、CLI、IDE は設定を共有します。既定は ~/.codex/config.toml で、Windows の利用者フォルダー、macOS・Linux のホーム下の .codex にあります。既存の独自 CODEX_HOME があればその場所を確認します。信頼済みプロジェクト設定もありますが、今回は利用者層を使います。[config.toml](article:codex-config-toml)で場所を確認できます。",
         "같은 Codex 호스트의 데스크톱·CLI·IDE는 설정을 공유합니다. 기본은 ~/.codex/config.toml로 Windows 사용자 폴더와 macOS·Linux 홈의 .codex 아래입니다. 기존 사용자 지정 CODEX_HOME이 있으면 실제 위치를 확인하세요. 신뢰한 프로젝트 설정도 있지만 이번에는 사용자 설정을 씁니다. 위치는 [config.toml](article:codex-config-toml)을 참고하세요."
       ]
     },
@@ -91,7 +91,7 @@
       "text": [
         "若確定要新增，先在編輯器開啟實際使用者 config.toml，將現有檔案另存一份有日期且不覆蓋舊檔的備份。檔案原本不存在就記錄此狀態，不必自行建立空設定。只做這次單一變更，保存前後差異；備份可能含敏感值，放在自己的本機資料夾，不加入 Git。完成練習時優先移除新增的單一區段，避免用舊備份覆蓋其他任務剛加入的設定。",
         "Before adding, open the actual user config.toml in an editor and save a dated backup without replacing an older backup. If it does not exist, record that state without creating an empty file. Make one change and preserve the diff. Backups may contain sensitive values; keep them locally outside Git. At cleanup, remove only the new entry rather than overwriting settings another task may have added since the backup.",
-        "追加前に実際の利用者 config.toml を開き、以前の副本を上書きせず日付付きで保存します。存在しなければその状態を記録し空ファイルは不要です。一変更の前後差分を残し、機密を含み得る副本は Git 外の本機で保持します。復旧は追加区画だけを除き、他作業の新設定を古い副本で上書きしません。",
+        "追加前に実際の利用者 config.toml を開き、以前のコピーを上書きせず日付付きで保存します。存在しなければその状態を記録し空ファイルは不要です。一変更の前後差分を残し、機密を含み得るコピーは Git 外のローカルで保持します。復旧は追加区画だけを除き、他作業の新設定を古いコピーで上書きしません。",
         "추가 전 실제 사용자 config.toml을 열고 이전 백업을 덮어쓰지 않는 날짜 사본을 저장합니다. 파일이 없으면 그 상태만 기록하세요. 한 변경의 전후 차이를 남기고 민감값이 있을 수 있는 백업은 Git 밖 로컬에 둡니다. 정리 시 새 항목만 제거하여 다른 작업이 추가한 설정을 과거 백업으로 덮어쓰지 않습니다."
       ]
     },
@@ -149,7 +149,7 @@
       "text": [
         "上面是同一設定的檔案表示，CLI、UI、手動編輯三條路選一條即可。不要先用命令新增又把相同 TOML 表格貼一次，重複表格可能使設定無法解析。若要手動編輯，只合併該區段後重新啟動客戶端。ChatGPT 網頁與手機不讀取你電腦的本機 config.toml；網頁的外部能力走 [Plugins](article:codex-plugins)，不能因本機成功就宣稱手機也已設定。",
         "The snippet represents the same configuration: choose CLI, UI or manual editing, not all three. Adding through CLI and pasting the same TOML table again can create an invalid duplicate table. For manual editing, merge only that section and restart the client. ChatGPT web and mobile do not read your computer's local config.toml; hosted capabilities use [Plugins](article:codex-plugins). Local success does not configure the phone.",
-        "これは同じ設定のファイル表現で、CLI、UI、直接編集の一つを選びます。命令追加後に同じ表を貼ると重複エラーになり得ます。直接編集は区画のみ統合して再起動します。Web・携帯は PC の本機設定を読まず、ホスト側能力は [Plugins](article:codex-plugins) を使うため、本機成功を携帯設定済みとはしません。",
+        "これは同じ設定のファイル表現で、CLI、UI、直接編集の一つを選びます。命令追加後に同じ表を貼ると重複エラーになり得ます。直接編集は区画のみ統合して再起動します。Web・携帯は PC のローカル設定を読まず、ホスト側能力は [Plugins](article:codex-plugins) を使うため、ローカル成功を携帯設定済みとはしません。",
         "같은 설정의 파일 표현이므로 CLI·UI·직접 편집 중 하나만 선택하세요. 명령 추가 후 같은 TOML 표를 붙이면 중복 오류가 날 수 있습니다. 직접 편집은 그 구간만 합치고 재시작합니다. 웹과 모바일은 PC의 로컬 설정을 읽지 않으며 호스팅 기능은 [Plugins](article:codex-plugins)를 쓰므로 로컬 성공이 휴대폰 설정 완료는 아닙니다."
       ]
     },
@@ -254,7 +254,7 @@
       "text": [
         "找不到伺服器時先查設定層級、名稱、enabled 與是否重新啟動；出現 TOML 解析錯誤時看重複表格與引號，不要重置整檔；設定正確但連不上時核對完整 URL、目前主機網路與服務狀態，再保存遮蔽後錯誤。工具回覆沒有來源，則重問讀取原文並核對連結，不把模糊答案當通過。這四類問題分別有不同證據，全部改成放寬權限通常不能解釋原因。",
         "For a missing server, check configuration scope, name, enabled state and restart. For TOML parse errors, inspect duplicate tables and quotes without resetting the whole file. If configuration is correct but connection fails, verify the full URL, host network and service state, preserving a redacted error. If an answer lacks a source, request and verify the page. These four failures have different evidence; broadly relaxing permissions rarely explains them.",
-        "見えない場合は階層、名前、有効状態、再起動を確認します。TOML エラーは重複表と引用符を見て全体を初期化しません。接続失敗は URL、主機ネット、サービス状態と伏せたエラーを残します。出典なしは原文取得を再要求します。四種類の原因を全て権限緩和で扱いません。",
+        "見えない場合は階層、名前、有効状態、再起動を確認します。TOML エラーは重複表と引用符を見て全体を初期化しません。接続失敗は URL、ホストネット、サービス状態と伏せたエラーを残します。出典なしは原文取得を再要求します。四種類の原因を全て権限緩和で扱いません。",
         "서버 없음은 설정 계층·이름·활성 상태·재시작을 확인합니다. TOML 오류는 중복 표와 따옴표를 보고 전체 초기화하지 마세요. 연결 실패는 URL·호스트 네트워크·서비스 상태와 가린 오류를 기록합니다. 출처가 없으면 원문 조회를 재요청합니다. 서로 다른 네 오류를 전부 권한 완화로 처리하지 않습니다."
       ]
     },

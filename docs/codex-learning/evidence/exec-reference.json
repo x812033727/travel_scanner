@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-09-14T09:01:33.526987+00:00",
+  "status": "passed",
+  "checks": [
+    "Rendered lesson programs exactly match the reference sources",
+    "A synthetic single-turn JSONL stream and exact fixture answer are accepted",
+    "Eight invalid shapes, types, revisions and count combinations are rejected",
+    "Truncated JSONL, missing completion, failure events and duplicate or reversed turn boundaries are rejected",
+    "A valid-looking final answer cannot override unsuccessful or incorrectly typed process status",
+    "Unknown event kinds, blank lines and UTF-8 BOM do not break valid input",
+    "The documented verify-only command returns correct exit codes and original output remains valid",
+    "The wrapper uses an argument array, calls once and refuses to overwrite previous evidence",
+    "Simulated timeout and launch failure retain distinct status without retry or input edits",
+    "CI is manually triggered with pinned Actions, read-only permissions and a separate secret-free validation job",
+    "The exact CI validation script accepts the fixture, rejects changed counts and writes matching synthetic run identifiers"
+  ],
+  "environment": "Windows; temporary fictional files; mocked Codex process; exact local Python validator",
+  "sourceHashes": {
+    "run_summary.py": "95e5818e6502f4475cb2022278a0b109b487044abc42ddd723458ab8801ab984",
+    "practice-codex.yml": "7729b4db520f665bca575429c1587a3a0e198c4166840e1c41173b0bcbe1600e"
+  },
+  "notTested": [
+    "Actual model output or API authentication",
+    "GitHub-hosted workflow execution",
+    "macOS/Linux runtime",
+    "Publication or deployment"
+  ]
+}

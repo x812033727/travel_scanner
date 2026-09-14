@@ -44,6 +44,21 @@
           "text": "把插件問題縮小到可以驗證的一層，修正後用相同文件重新測試。閱讀約 15 分鐘、操作約 20 分鐘。先完成 Plugins 安裝與連線 的虛構文件；只檢查自己建立的練習連線，不改正式工作區。沒有可用插件也能照本篇完成環境與錯誤紀錄，但不能勾選讀取成功。"
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教學與資源: "
+            },
+            {
+              "type": "article",
+              "text": "Plugins 安裝與連線",
+              "kind": "life",
+              "slug": "codex-plugins"
+            }
+          ]
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "步驟 1：先保留失敗現場"
@@ -332,6 +347,21 @@
           "text": "Narrow a plugin failure to one testable layer and repeat the same document request after a repair. Allow 15 minutes to read and 20 to practice. Prepare the fictional document in Plugin setup. Inspect your practice connection without changing a production workspace. Without an available plugin, you can complete the environment and error record, but cannot mark retrieval as successful."
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Lessons and resources mentioned here: "
+            },
+            {
+              "type": "article",
+              "text": "Plugin setup",
+              "kind": "life",
+              "slug": "codex-plugins"
+            }
+          ]
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "Step 1: Preserve the failure record"
@@ -603,7 +633,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "Codex 教学目次に戻る",
+              "text": "Codex 学習目次に戻る",
               "kind": "life",
               "slug": "codex-learning-hub"
             }
@@ -618,6 +648,21 @@
           "type": "callout",
           "tone": "info",
           "text": "プラグイン障害を検証可能な層に絞り、修正後に同じ文書要求を再実行します。読む時間15分、実習20分。導入と接続の架空文書を用意し、正式な作業領域ではなく自分の実習接続を確認します。利用できるプラグインがなければ環境とエラーの記録まで行い、読取り成功にはしません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "この段落の教材・資料: "
+            },
+            {
+              "type": "article",
+              "text": "導入と接続",
+              "kind": "life",
+              "slug": "codex-plugins"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -751,7 +796,7 @@
             },
             {
               "type": "text",
-              "text": "を確認し、パスワードを config.toml に書いたり、OAuth のため全面許可へ変えたりしません。主機の沙盒と外部文書の権限は別なので、一方を緩めても他方の成功は保証されません。"
+              "text": "を確認し、パスワードを config.toml に書いたり、OAuth のため全面許可へ変えたりしません。ホストの沙盒と外部文書の権限は別なので、一方を緩めても他方の成功は保証されません。"
             }
           ]
         },
@@ -772,7 +817,7 @@
         },
         {
           "type": "paragraph",
-          "text": "原サイトで Revision と確認可能な件数を手動変更し、新件数は Codex に教えません。同じ要求を別の新規タスクで実行します。古ければ複製 URL、未保存、再取得手段を確認し、遅延を記録します。二回目の正解はこのケースの証拠であり、全入口・全文書の修復とはしません。"
+          "text": "原サイトで Revision と確認可能な件数を手動変更し、新件数は Codex に教えません。同じ要求を別の新規タスクで実行します。古ければコピー URL、未保存、再取得手段を確認し、遅延を記録します。二回目の正解はこのケースの証拠であり、全入口・全文書の修復とはしません。"
         },
         {
           "type": "heading",
@@ -841,7 +886,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "Codex 教学目次に戻る",
+              "text": "Codex 学習目次に戻る",
               "kind": "life",
               "slug": "codex-learning-hub"
             }
@@ -902,6 +947,21 @@
           "type": "callout",
           "tone": "info",
           "text": "플러그인 오류를 검증 가능한 한 계층으로 좁힌 뒤 같은 문서를 다시 요청합니다. 읽기 15분, 실습 20분입니다. 설치와 연결의 가상 문서를 준비하고 운영 작업 공간 대신 자신의 연습 연결만 확인하세요. 사용 가능한 플러그인이 없어도 환경과 오류 기록은 만들 수 있지만 읽기 성공으로 표시할 수는 없습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "이 단락의 학습 자료: "
+            },
+            {
+              "type": "article",
+              "text": "설치와 연결",
+              "kind": "life",
+              "slug": "codex-plugins"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1186,6 +1246,21 @@
           "type": "callout",
           "tone": "info",
           "text": "把插件问题缩小到可以验证的一层，修正后用相同文件重新测试。阅读约 15 分钟、操作约 20 分钟。先完成 Plugins 安装与连线 的虚构文件；只检查自己建立的练习连线，不改正式工作区。没有可用插件也能照本篇完成环境与错误纪录，但不能勾选读取成功。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教学与资源: "
+            },
+            {
+              "type": "article",
+              "text": "Plugins 安装与连线",
+              "kind": "life",
+              "slug": "codex-plugins"
+            }
+          ]
         },
         {
           "type": "heading",

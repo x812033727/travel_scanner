@@ -729,7 +729,7 @@
       "outcome": "检查 Android 应用程式、配对与通知设定，找到正确主机并核对任务成果。",
       "sources": [
         "https://learn.chatgpt.com/docs/remote-connections",
-        "https://support.google.com/camerafromgoogle/answer/12033278?hl=en"
+        "https://support.google.com/pixelphone/answer/16561572?hl=en"
       ],
       "number": 15,
       "group": "C",
@@ -1772,7 +1772,9 @@
       "slug": "codex-subagents",
       "title": "子代理与任务分工",
       "outcome": "子代理适合把能独立完成的工作分开处理，再由主要任务整合结果。分工会增加模型与工具用量；若工作互相依赖、都要改同一段程式，平行处理反而可能产生冲突。",
-      "sources": [],
+      "sources": [
+        "https://learn.chatgpt.com/docs/agent-configuration/subagents"
+      ],
       "number": 46,
       "group": "H",
       "level": "advanced",
@@ -1785,7 +1787,7 @@
         "delegate"
       ],
       "reading_minutes": 15,
-      "operation_minutes": null,
+      "operation_minutes": 20,
       "prerequisites": [
         "codex-worktrees"
       ],
@@ -1799,7 +1801,9 @@
       "slug": "codex-subagent-quality",
       "title": "子代理分工与品质检查",
       "outcome": "定义独立输入、修改范围与交付证据，审查子代理结果并处理缺项。",
-      "sources": [],
+      "sources": [
+        "https://learn.chatgpt.com/docs/agent-configuration/subagents"
+      ],
       "number": 47,
       "group": "H",
       "level": "advanced",
@@ -1816,7 +1820,7 @@
         "evidence"
       ],
       "reading_minutes": 15,
-      "operation_minutes": null,
+      "operation_minutes": 20,
       "prerequisites": [
         "codex-subagents"
       ],
@@ -1830,7 +1834,11 @@
       "slug": "codex-parallel-integration",
       "title": "平行工作后的整合与验收",
       "outcome": "依档案与介面契约整合独立修改，处理冲突，再验证合并后的整体行为。",
-      "sources": [],
+      "sources": [
+        "https://git-scm.com/docs/git-merge",
+        "https://git-scm.com/docs/git-worktree",
+        "https://learn.chatgpt.com/docs/environments/git-worktrees"
+      ],
       "number": 48,
       "group": "H",
       "level": "advanced",
@@ -1846,8 +1854,8 @@
         "conflicts",
         "integration"
       ],
-      "reading_minutes": 15,
-      "operation_minutes": null,
+      "reading_minutes": 20,
+      "operation_minutes": 30,
       "prerequisites": [
         "codex-subagent-quality"
       ],
@@ -1861,7 +1869,9 @@
       "slug": "codex-browser-images",
       "title": "浏览器、截图与图片协作",
       "outcome": "画面需求需要把参考、实际结果与修改条件放在一起。浏览器可以找资料与检视网站，截图能传达当下画面，生成图适合概念参考；三者提供的证据不同，不能用生成的介面当成操作成功。",
-      "sources": [],
+      "sources": [
+        "https://learn.chatgpt.com/docs/browser"
+      ],
       "number": 49,
       "group": "I",
       "level": "advanced",
@@ -1875,7 +1885,7 @@
         "image"
       ],
       "reading_minutes": 15,
-      "operation_minutes": null,
+      "operation_minutes": 20,
       "prerequisites": [
         "codex-permissions"
       ],
@@ -1889,7 +1899,9 @@
       "slug": "codex-automations",
       "title": "计划任务、自动化与提醒",
       "outcome": "排程让固定工作在指定时间执行，但要先确认使用哪个环境。需要本机档案的桌面排程，电脑与应用程式必须在执行时可用；云端任务不能直接读取未提供的本机资料。",
-      "sources": [],
+      "sources": [
+        "https://learn.chatgpt.com/docs/automations"
+      ],
       "number": 50,
       "group": "I",
       "level": "advanced",
@@ -1902,7 +1914,7 @@
         "reminder"
       ],
       "reading_minutes": 15,
-      "operation_minutes": null,
+      "operation_minutes": 20,
       "prerequisites": [
         "codex-browser-images"
       ],
@@ -1916,7 +1928,10 @@
       "slug": "codex-exec-scripting",
       "title": "codex exec 与脚本集成",
       "outcome": "codex exec 在非互动模式执行一次任务，适合脚本与 CI。预设一般输出把进度放 stderr、最后回答放 stdout；--json 改成逐行 JSON 事件，不能把整份输出当成单一 JSON 物件解析。",
-      "sources": [],
+      "sources": [
+        "https://learn.chatgpt.com/docs/non-interactive-mode",
+        "https://learn.chatgpt.com/docs/developer-commands?surface=cli"
+      ],
       "number": 51,
       "group": "I",
       "level": "advanced",
@@ -1930,7 +1945,7 @@
         "-o"
       ],
       "reading_minutes": 15,
-      "operation_minutes": null,
+      "operation_minutes": 20,
       "prerequisites": [
         "codex-automations"
       ],
@@ -1944,7 +1959,11 @@
       "slug": "codex-json-output",
       "title": "JSON 输出与结果验证",
       "outcome": "区分事件串流与最终结果，解析结构化输出并拒绝缺栏位或错误格式。",
-      "sources": [],
+      "sources": [
+        "https://learn.chatgpt.com/docs/non-interactive-mode",
+        "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+        "https://docs.python.org/3/library/subprocess.html"
+      ],
       "number": 52,
       "group": "I",
       "level": "advanced",
@@ -1960,8 +1979,8 @@
         "schema",
         "events"
       ],
-      "reading_minutes": 15,
-      "operation_minutes": null,
+      "reading_minutes": 20,
+      "operation_minutes": 25,
       "prerequisites": [
         "codex-exec-scripting"
       ],
@@ -1975,7 +1994,11 @@
       "slug": "codex-ci-workflows",
       "title": "把 Codex 接入 CI 工作流程",
       "outcome": "设计有明确输入、权限与退出状态的 CI 工作，保存产物并区分建议与正式套用。",
-      "sources": [],
+      "sources": [
+        "https://learn.chatgpt.com/docs/github-action",
+        "https://github.com/openai/codex-action/blob/86365089eb2b84e0a8fb0717b304f8bdcb13b20e/action.yml",
+        "https://github.com/openai/codex-action/blob/main/docs/security.md"
+      ],
       "number": 53,
       "group": "I",
       "level": "advanced",
@@ -1993,8 +2016,8 @@
         "secrets",
         "exit"
       ],
-      "reading_minutes": 15,
-      "operation_minutes": null,
+      "reading_minutes": 20,
+      "operation_minutes": 30,
       "prerequisites": [
         "codex-json-output"
       ],
@@ -2008,7 +2031,11 @@
       "slug": "codex-automation-recovery",
       "title": "自动化失败、重试与停止",
       "outcome": "从执行纪录判断是否已产生结果，避免重复操作，修正条件并确认排程停止。",
-      "sources": [],
+      "sources": [
+        "https://learn.chatgpt.com/docs/automations",
+        "https://learn.chatgpt.com/docs/non-interactive-mode",
+        "https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency"
+      ],
       "number": 54,
       "group": "I",
       "level": "advanced",
@@ -2025,7 +2052,7 @@
         "stop"
       ],
       "reading_minutes": 15,
-      "operation_minutes": null,
+      "operation_minutes": 20,
       "prerequisites": [
         "codex-ci-workflows"
       ],
@@ -2039,7 +2066,10 @@
       "slug": "codex-website-workshop",
       "title": "实战：制作小网站",
       "outcome": "这个实战把前面的需求、Plan、MD 规则、浏览器与验收串起来，完成一个三张卡片的虚构工作室网站。以单一 HTML 做出清楚的内容与自适应版面，练习完整交付，而不是追求一次加入很多功能。",
-      "sources": [],
+      "sources": [
+        "https://learn.chatgpt.com/docs/prompting",
+        "https://learn.chatgpt.com/docs/browser"
+      ],
       "number": 55,
       "group": "J",
       "level": "advanced",
@@ -2053,8 +2083,8 @@
         "CSS",
         "accessibility"
       ],
-      "reading_minutes": 45,
-      "operation_minutes": null,
+      "reading_minutes": 20,
+      "operation_minutes": 60,
       "prerequisites": [
         "codex-git-basics",
         "codex-testing-review"
@@ -2069,7 +2099,10 @@
       "slug": "codex-csv-workshop",
       "title": "实战：制作数据整理工具",
       "outcome": "这个实战制作 CSV 名单整理工具，保留原档并产生新结果。规则固定为修剪空白、将 email 转小写、同 email 保留第一笔、略过缺姓名或格式不合的 email，最后回报保留、重复与无效笔数。这是练习用格式检查，不保证信箱真实存在。",
-      "sources": [],
+      "sources": [
+        "https://learn.chatgpt.com/docs/prompting",
+        "https://docs.python.org/3/library/csv.html"
+      ],
       "number": 56,
       "group": "J",
       "level": "advanced",
@@ -2083,8 +2116,8 @@
         "Python",
         "unittest"
       ],
-      "reading_minutes": 45,
-      "operation_minutes": null,
+      "reading_minutes": 20,
+      "operation_minutes": 45,
       "prerequisites": [
         "codex-website-workshop"
       ],
@@ -2098,7 +2131,10 @@
       "slug": "codex-maintain-existing-project",
       "title": "实战：维护既有专案",
       "outcome": "建立现况基准，处理一项真实变更，以回归检查和交接纪录交付可追溯成果。",
-      "sources": [],
+      "sources": [
+        "https://learn.chatgpt.com/docs/prompting",
+        "https://learn.chatgpt.com/docs/environments/git-worktrees"
+      ],
       "number": 57,
       "group": "J",
       "level": "advanced",
@@ -2117,7 +2153,7 @@
         "handoff"
       ],
       "reading_minutes": 15,
-      "operation_minutes": null,
+      "operation_minutes": 30,
       "prerequisites": [
         "codex-csv-workshop"
       ],
@@ -2131,7 +2167,11 @@
       "slug": "codex-project-data-safety",
       "title": "专案资料、金钥与练习隔离",
       "outcome": "建立虚构测试资料与可还原副本，辨识不该进入提示词、截图或版本库的资讯。",
-      "sources": [],
+      "sources": [
+        "https://learn.chatgpt.com/docs/permissions",
+        "https://github.com/openai/codex-action/blob/main/docs/security.md",
+        "https://git-scm.com/docs/gitignore"
+      ],
       "number": 58,
       "group": "J",
       "level": "advanced",
@@ -2152,7 +2192,7 @@
         "privacy"
       ],
       "reading_minutes": 15,
-      "operation_minutes": null,
+      "operation_minutes": 20,
       "prerequisites": [
         "codex-maintain-existing-project"
       ],
@@ -2166,7 +2206,11 @@
       "slug": "codex-usage-efficiency",
       "title": "用量与效率：减少重工",
       "outcome": "记录任务条件、模型选项、时间与成果，找出能减少无效重试和过多上下文的调整。",
-      "sources": [],
+      "sources": [
+        "https://learn.chatgpt.com/docs/pricing",
+        "https://learn.chatgpt.com/docs/models",
+        "https://learn.chatgpt.com/docs/prompting"
+      ],
       "number": 59,
       "group": "J",
       "level": "advanced",
@@ -2187,7 +2231,7 @@
         "time"
       ],
       "reading_minutes": 15,
-      "operation_minutes": null,
+      "operation_minutes": 25,
       "prerequisites": [
         "codex-project-data-safety"
       ],
@@ -2200,7 +2244,11 @@
       "slug": "codex-troubleshooting",
       "title": "新手问题排查",
       "outcome": "排除问题先判断发生在哪一层：找不到程式是安装或 PATH；进不了帐号是登入；读不到档案是目录或权限；结果不对则可能是需求或专案程式。一次改一个条件，才能知道是哪个修正有效。",
-      "sources": [],
+      "sources": [
+        "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+        "https://learn.chatgpt.com/docs/auth",
+        "https://status.openai.com/"
+      ],
       "number": 60,
       "group": "J",
       "level": "beginner",
@@ -2215,7 +2263,7 @@
         "login"
       ],
       "reading_minutes": 15,
-      "operation_minutes": null,
+      "operation_minutes": 20,
       "prerequisites": [
         "codex-usage-efficiency"
       ],

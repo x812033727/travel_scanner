@@ -45,6 +45,21 @@
           "text": "審查一個「原測試仍通過」的錯誤修改，補出能抓到它的回歸測試，整理最終差異並準備 PR。閱讀約 15 分鐘，本機操作約 30 分鐘。需要 Git、Node.js 22 以上相容版本、編輯器及已登入的 Codex。先完成Git 入門；實際建立 GitHub PR 為最後可選步驟，需要自己的練習儲存庫。"
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教學與資源: "
+            },
+            {
+              "type": "article",
+              "text": "Git 入門",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            }
+          ]
+        },
+        {
           "type": "paragraph",
           "text": "測試回答已寫出的案例是否符合期待，Review 檢查修改是否帶來遺漏的風險與行為差異，PR 則讓指定分支的成果可以被其他人審閱。三者不能互相代替；沒有發現問題不是證明不可能有問題，PR 已開啟也不表示已合併、部署或公開。這次會讓你親自看見測試覆蓋範圍的空缺。"
         },
@@ -276,6 +291,21 @@
           "type": "callout",
           "tone": "info",
           "text": "审查一个「原测试仍通过」的错误修改，补出能抓到它的回归测试，整理最终差异并准备 PR。阅读约 15 分钟，本机操作约 30 分钟。需要 Git、Node.js 22 以上相容版本、编辑器及已登入的 Codex。先完成Git 入门；实际建立 GitHub PR 为最后可选步骤，需要自己的练习储存库。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教学与资源: "
+            },
+            {
+              "type": "article",
+              "text": "Git 入门",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -511,6 +541,21 @@
           "text": "Review a bad change that still passes existing tests, add regression coverage, inspect final scope and prepare a PR. Allow 15 minutes to read and 30 for local practice. Use Git, compatible Node.js 22 or later, an editor and authenticated Codex. Complete Git basics. Creating a GitHub PR is an optional final step using your own practice repository."
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Lessons and resources mentioned here: "
+            },
+            {
+              "type": "article",
+              "text": "Git basics",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            }
+          ]
+        },
+        {
           "type": "paragraph",
           "text": "Tests check written cases, review looks for overlooked effects and PRs expose a branch's work for review. They do not replace one another. No finding is not proof of no defect, and an open PR is not a merge, deployment or publication. This exercise makes a coverage gap observable."
         },
@@ -727,7 +772,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "Codex 教学目次に戻る",
+              "text": "Codex 学習目次に戻る",
               "kind": "life",
               "slug": "codex-learning-hub"
             }
@@ -741,7 +786,22 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "既存テスト成功でも誤った変更を審査し、回帰テスト、最終差分、PR 準備を行います。読む時間15分、本機30分。Git、対応 Node.js 22 以降、エディター、認証済み Codex とGit 基礎が前提です。自分の教材リポジトリでの GitHub PR は最後の任意段階です。"
+          "text": "既存テスト成功でも誤った変更を審査し、回帰テスト、最終差分、PR 準備を行います。読む時間15分、ローカル30分。Git、対応 Node.js 22 以降、エディター、認証済み Codex とGit 基礎が前提です。自分の教材リポジトリでの GitHub PR は最後の任意段階です。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "この段落の教材・資料: "
+            },
+            {
+              "type": "article",
+              "text": "Git 基礎",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -754,7 +814,7 @@
         },
         {
           "type": "paragraph",
-          "text": "新しい codex-review-lab に expected 5ファイルを置き、Git 基礎の本機練習身分で main 基準を commit します。無変更確認後、次の分岐を作ります。未完了変更のある庫を流用しません。"
+          "text": "新しい codex-review-lab に expected 5ファイルを置き、Git 基礎のローカル練習身分で main 基準を commit します。無変更確認後、次の分岐を作ります。未完了変更のある庫を流用しません。"
         },
         {
           "type": "code",
@@ -843,7 +903,7 @@
         },
         {
           "type": "paragraph",
-          "text": "本機成果は確認可能ですが PR はまだありません。任意練習は README なしの空 GitHub 庫を作り、実 URL へ占位値を置換します。remote -v が自分の新庫か確認後、二つの push で基準とテスト分岐を送ります。"
+          "text": "ローカル成果は確認可能ですが PR はまだありません。任意練習は README なしの空 GitHub 庫を作り、実 URL へ占位値を置換します。remote -v が自分の新庫か確認後、二つの push で基準とテスト分岐を送ります。"
         },
         {
           "type": "code",
@@ -902,7 +962,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "Codex 教学目次に戻る",
+              "text": "Codex 学習目次に戻る",
               "kind": "life",
               "slug": "codex-learning-hub"
             }
@@ -975,6 +1035,21 @@
           "type": "callout",
           "tone": "info",
           "text": "기존 테스트가 통과해도 잘못된 변경을 검토하고 회귀 테스트/최종 차이/PR 준비를 합니다. 읽기 15분, 로컬30분입니다. Git, 호환 Node.js 22 이상, 편집기, 로그인 Codex와 Git 기초가 전제입니다. 자신의 실습 저장소 GitHub PR은 마지막 선택 단계입니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "이 단락의 학습 자료: "
+            },
+            {
+              "type": "article",
+              "text": "Git 기초",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            }
+          ]
         },
         {
           "type": "paragraph",

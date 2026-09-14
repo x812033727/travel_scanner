@@ -164,7 +164,7 @@
       "text": [
         "建立成功才執行下一個區塊。若 mkdir 顯示 File exists，表示它保護了原資料，並不是需要加 sudo；先選新目錄。切入後應看到兩個檔案及 LINUX-CLI-01，兩份 SHA-256 相同。這個相同是本機兩份相同位元組的比對，不要求與 Windows 的檔案雜湊一致。",
         "Run the next block only after creation succeeds. A File exists error from mkdir protects prior data; it is not a reason to add sudo. Choose a new directory. After entering, expect two files, LINUX-CLI-01 and matching SHA-256 hashes. This compares identical local bytes, not a required match to Windows file hashes.",
-        "作成成功後だけ次へ進みます。mkdir の File exists は既存データを保護した結果で、sudo を付ける理由ではありません。新しい名前を選びます。移動後は二つのファイル、LINUX-CLI-01、一致する SHA-256 を確認します。本機のバイト比較であり、Windows のハッシュとの一致は要求しません。",
+        "作成成功後だけ次へ進みます。mkdir の File exists は既存データを保護した結果で、sudo を付ける理由ではありません。新しい名前を選びます。移動後は二つのファイル、LINUX-CLI-01、一致する SHA-256 を確認します。ローカルのバイト比較であり、Windows のハッシュとの一致は要求しません。",
         "생성 성공 후에만 다음 블록을 실행합니다. mkdir의 File exists는 기존 데이터를 보호한 결과이며 sudo를 붙일 이유가 아닙니다. 새 폴더를 선택하세요. 이동 후 두 파일, LINUX-CLI-01, 같은 SHA-256을 확인합니다. 같은 로컬 바이트를 비교하는 것이며 Windows 파일 해시와 일치할 필요는 없습니다."
       ]
     },

@@ -1,103 +1,73 @@
 # Codex 深入教學製作進度
 
-更新：2026-09-14。有效規格為[總目錄＋60 篇、五語](depth-plan.md)。目前是本機製作與驗證，尚未執行 PR、合併、匯入、正式發布或部署。
+更新：2026-09-14。有效規格為[總目錄＋60 篇、五語](depth-plan.md)。**60 篇五語深入稿已編譯，總目錄加分篇共 61 個內容包、305 份語言文件。最終預覽驗收仍未完成；沒有 push、PR、匯入、正式發布或部署。**
 
-依使用者「全部完成後再開 PR 部署」指示，先完成全套內容、共用功能與驗收，再進入 PR 和發布流程。不提前開部分內容 PR。
+依使用者「全部完成後再開 PR 部署」指示，完整驗收前不開部分 PR。ready 只表示內容包存在，正式公開狀態由 API 的當前語言發布資料決定。
 
-## 最新數量
+## 已完成的製作
 
-**45 篇五語深化草稿、7 篇短篇待深化、8 篇待撰寫；正式深入驗收 0/60。** 現有 53 個內容包、265 份語言文件（含目錄）；目標 61 個內容包、305 份語言文件。深化稿與正式驗收是不同狀態。
+- 60 個穩定 ID、十單元、三批各 20 篇，保留原 32 個網址；沒有短稿或待寫空篇。
+- 55 份四語平行作者模組，加原 5 份代表篇 Markdown；簡中轉換保留程式碼。
+- 上下返回目錄、同單元前後篇、相關文章及正文引用。表格／清單／提示框的作者連結另呈現可點擊的結構化引用，舊純文字不解析為 Markdown。
+- 目錄包含程度、平台、需求、單元、路線及指令別名搜尋，URL 保存篩選條件。
+- 待辦網站 start／broken／expected，CSV、Skills、Git、MCP、JSON 與 CI 的虛構材料及參考檢查。
+- 原創圖解、明確標示環境的參考網頁截圖，以及新增五檔 CSV 下載包。
 
-閱讀順序 01–45 的作者稿已編譯齊全。40 篇採四語平行作者模組，5 篇代表稿採原始 Markdown；簡中轉換保留程式碼原文。原有 32 篇網址保留，8 篇待寫項目沒有空白內容包。所有新內容維持草稿；ready 只表示材料存在，導覽仍檢查 API 的當前語言發布清單。
+最後一批已補齊子代理品質、平行整合、瀏覽器與圖片、排程、exec、JSON／JSONL、CI、恢復、網站／CSV 實戰、維護、資料安全、用量及排錯索引。
 
-## 已編入的深入稿
+## 本輪檢查
 
-| 閱讀順序 | 永久 ID | 主題及材料 |
+| 項目 | 結果 | 可支持的結論 |
 | --- | --- | --- |
-| 01–06 | 01、02、33、34、06、07 | 基本概念、帳號、平台選擇、終端機路徑、第一個網站、提示詞 |
-| 07–10 | 05、35、36、37 | CLI 總覽及 Windows、macOS、Linux／WSL；標記、備份、讀取與還原 |
-| 11–12 | 03、14 | 桌面及 IDE；待辦故障副本、帶入上下文、精確修正與測試 |
-| 13–16 | 04、38、39、40 | 手機總覽、iPhone、Android、Remote 主機設定與版本標記 |
-| 17–18 | 15、41 | 雲端環境、GitHub PR 準備；交接紀錄、舊內容辨識與 Handoff |
-| 19–20 | 09、10 | 互連 Markdown、巢狀程式碼；AGENTS.md 專案規則 |
-| 21–24 | 42、43、16、44 | 規則層級、文件分工、config.toml、四種設定故障與修正 |
-| 25、37 | 11、23 | 指令分類、完整 SKILL.md 與技能驗收材料 |
-| 26–30 | 45、22、17、08、18 | 續接、過期交接驗證、模型比較、Plan 篩選練習、權限 |
-| 31–33 | 13、46、47 | 任務整理、程式地圖、六項功能驗收與同名任務畫面 |
-| 34–36 | 20、19、21 | 最小 Bug 重現、Git 保留與撤回、Review 的測試缺口及 PR 草稿 |
-| 38–39 | 48、49 | 完整技能資源、八項程式測試、刻意故障與恢復、行為驗收矩陣 |
-| 40–44 | 24、50、51、25、52 | Plugins 安裝及分層排查、六份範本、公開文件 MCP 與停用／恢復 |
-| 45 | 27 | Git worktree 建立、隔離、分支占用、成果保存與清理 |
+| [全系列完整性](evidence/series-integrity.json) | 60 篇／300 份分篇通過 | 每個作者連結保留、目標存在、五語程式碼相同、來源與圖片存在 |
+| [內容稽核](evidence/content-audit.json) | 0 錯誤、24 個編輯提示 | 集合頁格式與語言篇幅提示保留，沒有 schema 或圖解錯誤 |
+| 作者編譯器 | 9 項通過 | 精確程式碼、巢狀 fence、用途標籤、全批驗證、過期內容、表格／提示框連結保留 |
+| API／系列／內容包相容性 | 59 passed／18 skipped | 本機未啟動 PostgreSQL 的案例略過；五語 SQLite 發布／撤回及格式檢查通過 |
+| 受影響前端 | 11 個檔案／168 項通過 | 分批 3＋50＋115；含目錄、文章、複製、管理編輯、系列及生活分享 |
+| lint／型別／建置 | 通過 | 全站 ESLint；Next.js 16.3.3 正式 build 含 TypeScript，產生 293 靜態路由 |
+| API 靜態檢查 | 通過 | Ruff；Mypy guides 12 個來源檔 |
+| i18n／工具／任務 | 通過 | 五語 25 命名空間；39 項工具測試；412 個任務檔，其他任務既有警告保留 |
+| [來源網址](evidence/source-health.json) | 65 個唯一來源回應通過 | Android 改引 Pixel 官方頁並更新操作文字；Google 的 HEAD 回覆 404、GET 正常，保留兩次回應並核對實際內容。另補 Python subprocess 官方來源；此檢查只證明網址回應 |
 
-作者稿在 [deep/zh-TW](deep/zh-TW)、[deep/en](deep/en)、[deep/ja](deep/ja)、[deep/ko](deep/ko)；來源在 [sources.json](deep/sources.json)。繁中編譯正文約 1,818–2,949 字；長度按編譯後正文計算，表格與程式碼另行呈現。日韓稿保有相同操作、限制、程式碼及驗收步驟。
+首次整批 Vitest 啟動後停滯，確認為本任務程序後中止；三個分批重跑均通過，中止執行不算成功。建置通過不是瀏覽器或發布通過。
 
-## 本輪可重現證據
+## 參考練習證據
 
-| 檢查 | 已確認結果 | 範圍與證據 |
+| 範圍 | 檢查數 | 證據 |
 | --- | --- | --- |
-| CLI 批次整頁 | 240 項通過 | [15 篇＋目錄](evidence/depth-browser-cli-batch.json)，五語 × 360／390／1280px |
-| IDE／手機／Markdown 整頁 | 90 項通過 | [5 篇＋目錄](evidence/depth-browser-platform-batch.json)，五語與三寬度；後續小幅校字另經編譯驗證 |
-| 雲端／跨裝置整頁 | 60 項通過 | [15、41、更新的 40 篇＋目錄](evidence/depth-browser-cloud-batch.json)，五語及三寬度 |
-| 網址篩選返回 | 12 回合通過 | [history-browser.json](evidence/history-browser.json)，4 倍 CPU 減速檢查 Next 路由歷史 |
-| Windows 終端機 | 4 項通過 | [terminal-basics.json](evidence/terminal-basics.json)，真實 PowerShell 路徑操作 |
-| Windows CLI 材料 | 7 項通過 | [cli-basics.json](evidence/cli-basics.json)，原檔保留、重複建立拒絕、標記讀取與還原；CLI 僅 version／help |
-| Markdown 材料 | 4 項通過 | [markdown-practice.json](evidence/markdown-practice.json)，雙向實檔、缺檔、缺結尾負面案例；非 VS Code UI 或模型執行 |
-| 網站指定修改 | 6 項通過 | [basics-browser.json](evidence/basics-browser.json)，實際開啟明確套用的參考修改 |
-| 範例網站操作 | 通過 | [practice-browser.json](evidence/practice-browser.json)，操作、焦點及儲存錯誤；expected 核心 3 項通過，空清單三種篩選另已核對 |
-| 刻意故障材料 | 符合預期 | start／broken 各 2 通過、1 預期失敗，保留為故障練習 |
-| 規則實際載入 | 5 項通過 | [rule-discovery.json](evidence/rule-discovery.json)，CLI 實際輸入診斷；沒有模型請求或遵從聲稱 |
-| 文件／設定材料 | 12 項通過 | [docs-config-practice.json](evidence/docs-config-practice.json)，原始程式不變、正常／錯誤／修正樣本 |
-| 規則與文件整頁 | 45 項通過 | [rules batch](evidence/depth-browser-rules-batch.json)，42 篇之後另修正實測差異並重驗 |
-| 設定與載入整頁 | 60 項通過 | [config batch](evidence/depth-browser-config-batch.json)，16、44、更新後 42 篇及目錄，含正文一致性與包雜湊 |
-| 工作階段與 Plan 材料 | 16 項通過 | [session-plan-practice.json](evidence/session-plan-practice.json)，精確範例、故障／修正／還原及唯讀比較；無模型呼叫 |
-| 工作階段批次整頁 | 90 項通過 | [session batch](evidence/depth-browser-session-batch.json)，45、22、17、08、18 與目錄，五語／三寬度；08 後續增加 HTTP 說明並於下一批重驗 |
-| 專案管理與閱讀整頁 | 60 項通過 | [project batch](evidence/depth-browser-project-batch.json)，13、46、更新 08 與目錄，五語／三寬度 |
-| 功能參考畫面 | 6 項通過 | [feature-browser.json](evidence/feature-browser.json)，精確 start 單函式修正；三寬度同名 ID、順序、取消完成、保存及空清單 |
-| Git 與 Review 材料 | 9 項通過 | [git-practice.json](evidence/git-practice.json)，獨立 Git 庫、精確指令、CSS 保留、revert；Review 前 3 過、新增 2 敗、修復 5 過 |
-| 功能篇整頁 | 30 項通過 | [feature batch](evidence/depth-browser-feature-batch.json)，47 篇和目錄，五語／三寬度，含真實參考圖片 |
-| Bug／Git／Review 整頁 | 60 項通過 | [review batch](evidence/depth-browser-review-batch.json)，20、19、21 篇與目錄，五語／三寬度，含正文及程式碼一致性 |
-| 作者編譯器 | 7 項通過 | test_compiler.py：精確程式碼、巢狀 fence、失敗不部分覆寫、過期內容 check 拒絕 |
-| API 與文章包 | 9 項通過 | test_codex_learning.py：五語結構、來源、圖片、連結、先備與程式碼一致 |
-| 內容稽核 | 0 錯誤、63 警告 | [content-audit.json](evidence/content-audit.json)，保留短稿與長文等編輯問題 |
-| 路由修正前端 | 11 項通過 | 獨立 Codex 元件兩個測試檔；ESLint、TypeScript、i18n 通過 |
-| 正式建置 | 通過 | 篩選路由修正後 build 成功、293 靜態頁；最終整合後仍須重新建置 |
+| 工作階段、Plan、模型及交接 | 16 | [session-plan-practice.json](evidence/session-plan-practice.json) |
+| Git 保留與還原 | 9 | [git-practice.json](evidence/git-practice.json) |
+| Worktree 隔離、占用及清理 | 7 | [worktree-practice.json](evidence/worktree-practice.json) |
+| Skills 與故意破壞後恢復 | 6 | [skill-practice.json](evidence/skill-practice.json) |
+| MCP 設定、公開服務與文件讀取 | 6 | [mcp-practice.json](evidence/mcp-practice.json) |
+| 子代理品質參考 | 6 | [subagent-reference.json](evidence/subagent-reference.json) |
+| 平行成果整合、真實受控衝突及 abort | 6 | [integration-practice.json](evidence/integration-practice.json) |
+| exec／JSON／CI 資料驗證 | 11 | [exec-reference.json](evidence/exec-reference.json) |
+| CSV、維護及路徑 | 7 | [workshop-reference.json](evidence/workshop-reference.json) |
 
-編譯器先解析全批並用真實 API schema 驗證，再寫入內容包；來源與內容包 SHA-256 核對後才計入深化稿。這確認編譯完整性，不能取代編輯審核。
+共 74 項參考檢查。Git 操作只在暫存庫，沒有改動網站正式分支；MCP 使用獨立 child-process 設定，真實使用者設定不變；exec 使用模擬程序，CI 的精確 Python 驗證器在本機執行。沒有呼叫付費模型、觸發 GitHub 工作流程、安裝帳號插件、建立排程或子代理。這些結果不證明每個讀者帳號或所有平台都已實測。
 
-瀏覽器使用 localhost 假發布 API，沒有資料庫寫入。檢查全部渲染程式碼、首個複製按鈕、五語網址、上下目錄連結與水平溢出；Windows 剪貼簿只正規化 CRLF。已目視檢查 [390px Markdown](evidence/deep-codex-markdown-basics-390.png) 與 [1280px IDE 教學](evidence/deep-codex-ide-getting-started-1280.png)。它們是文章頁，沒有冒充 Codex 或 VS Code 介面。
+CSV 的三項測試能抓到取消覆寫保護，還原後再次全過。維護練習是 3 pass → 新需求 3 pass／3 fail → 6 pass，刻意改錯計數再抓到失敗，最後還原五份檔案與原三項測試。
 
-## 仍需完成的驗收
+JSON 包裝器另拒絕布林／浮點退出碼及重複、倒序的回合邊界。Windows 明列獨立版 codex.exe 前提；本機 Python 呼叫 codex --version 成功，版本 0.154.0-alpha.6.2。這只驗證程序啟動，不代表已執行模型工作。
 
-CLI 0.154.0-alpha.6.2 的真實診斷發現：空 ui/AGENTS.override.md 沒有回退載入同層 AGENTS.md；改名後恢復。42 篇已記錄此版本差異和五種載入結果，原始私人輸入完全未保存。
+## 語言、圖片與篇幅
 
-五篇代表稿已具完整材料，但產品操作與編輯審核尚未全部完成：桌面平台安裝和介面、實體手機配對與停用、AGENTS.md 新工作階段載入、CLI 互動斜線操作、Skills 選擇與觸發。可取得的平台繼續補證據；無法實測的環境依核准規格標示「依官方文件查證」，不以其他平台畫面替代。
+五語程式碼逐區塊一致；日文已整理混用的中文術語。繁中操作正文大多約 1,800–3,000 字，表格與程式碼另外計算。ID 58（約 1,743）以完整新測試及兩檔重構為主；59（約 1,661）以虛構文件、來源界線及分享驗收為主；60（約 1,669）是兩次唯讀任務比較，避免填充價格與效能假數字。這三篇仍有輸入、操作、預期、失敗與還原。集合頁短正文由互動課程清單補足。
 
-原創 SVG 為流程示意圖，實作成果截圖來自 Windows／Edge 153.0.4234.32、2026-09-14、虛構資料。390px 是響應式視窗，不能稱為實體手機實測。參考修改、模型操作、雲端執行、發布和部署分開記錄。
+390px／1280px 附圖是 Windows Edge 響應式視窗，不是 iPhone／Android 實機。網站與圖片篇使用已存在的參考版畫面，不代表每次生成或最新重構成果。其他平台及產品限制依官方文件標記，代表篇產品操作證據與最後圖文終審仍待完成。
 
-## 與 Claude Code 系列的整合
+## 共用系統整合
 
-已對齊批准的 60 篇／十單元、同等深度、共用 Small Steps 主線及每十篇檢查點。唯讀確認「規劃 Claude Code 教學目錄」已完成，其 PR #485 合併提交為 35a2d258b51d2a1ac9aff91dc5f7ed5a8df823ec。未修改對方工作目錄或傳送任務訊息。
+已唯讀確認「規劃 Claude Code 教學目錄」的 PR #485 合併，沒有改動對方 1cff 工作目錄或傳送任務訊息。本機先保存 5f5b0b11，再以 7abe6057 將精確 main 3b8df68c693eb81ccde7793a2f89d71999dbb2c2 合入本分支。這不是本系列合併到 main。
 
-本機分支 codex/codex-learning-complete 已保存 checkpoint 5f5b0b11，再以 --no-commit 合併 origin/main 3b8df68c；衝突已解決，merge commit 尚待驗證。這是整合主分支到本機，沒有 push、PR、合併本系列到主分支、匯入、發布或部署。主分支保留其他任務的舊 review 記錄，造成任務工具的重疊警告；未擅改對方任務。
+共用 inlines、article 引用、必填 code label、系列 API、導覽及後台已統一；Shell／TOML／CSV 相容。正文撤回／缺語系／讀取失敗時不推測可公開，集合頁 ItemList 只列公開項目。
 
-Codex 已遷移至共用 inlines／article 引用與 code label，增加 Shell／TOML／CSV 語言；舊純文字維持原樣。五份 API 系列清單由單一課程資料產生，依語言解析已發布標題與連結，同單元上一篇／下一篇、桌面側欄、手機目錄、CollectionPage／ItemList 與閱讀／操作時間已接入。共用表格和圖片沿用已合併版本。
+## 尚未通過的最終關卡
 
-## 最新整合驗證
+1. 完整瀏覽器驗收未完成。早期 39 篇整頁測試在 572 項後，韓文 IDE 桌面頁等待程式碼區塊逾時；[報告保持 failed](evidence/depth-browser-shared-integration.json)，不當成最新 60 篇全過。
+2. 本機 Next 正式預覽啟動被自動核准審查拒絕，回覆 blocked by policy；限制到 127.0.0.1 仍被拒，未提供具體理由。沒有換啟動方式、服務或連接埠繞過拒絕。原 fixture API 是舊快照，最終驗收要在可用環境載入完整資料。
+3. 代表篇及圖文終審尚未簽核。需要以最終可見頁面核對 360／390／1280px、五語切換、複製、搜尋分享、前後篇、正文引用及產品介面證據。series-integrity.json 的 previewAccepted 全為 false，最終深入驗收維持 0/60。
+4. 全部關卡完成後才接續最新 main、確認差異與檢查、開 PR、核對精確 head 的 CI、合併，再進行有備份的匯入／發布／部署及公開頁驗證。既有授權的完成條件有效，不提前開部分 PR。
 
-- 45 篇編譯完成；53 個內容包通過正式 schema／圖片／來源稽核：零錯誤、54 個警告。警告尚待最終文章完成及目錄特殊呈現說明。
-- 作者編譯器 8 項通過，包含四語程式碼標籤及逐字內容保留；簡中不改寫 fenced code。
-- Skills 參考材料 6 項通過：八測試正常、刻意去重後七過一敗、還原八過、六個檔案保留與 ZIP 核對。未安裝技能或呼叫模型。
-- Worktree 參考材料 7 項通過：全新暫存儲存庫、檔案隔離、分支占用拒絕、dirty removal 拒絕、提交與清理後成果保留。沒有操作本網站的分支或 Handoff；見 evidence/worktree-practice.json。
-- MCP 參考材料 6 項通過：獨立 child-process 設定新增／停用／移除、保留其他設定、公開服務初始化及直接取得 AGENTS.md。真實使用者設定位元組不變；沒有模型或 OAuth 實測。見 evidence/mcp-practice.json。
-- 本輪共用前端 11 個測試檔／168 項通過（threads／單一 worker）；首次未正確傳遞 worker 選項而停滯的執行已中止，不列為通過。API／內容上一輪 30 項通過、13 項 PostgreSQL 案例未啟動服務略過；本輪 44 篇擴增後仍為 30 通過／13 略過。Ruff／Mypy 與型別上輪通過。
-- 初次整頁檢查在 260 項後抓到複製 hydration 時序問題，已修正並保留 failure 報告。第二次完成 572 項後，韓文 IDE 1280px 頁等待 code 區塊逾時；無 JS／hydration 錯誤，重讀該頁成功。保留 depth-browser-shared-integration.json 的 failed 狀態，不當作全程通過。
-- 本機 fixture 預先驗證不可變文件，避免每次導航重複解析整批內容。正式 build 通過型別與 293 頁產生；ESLint 聚焦檢查通過。啟動本機正式預覽時，自動核准審查回覆 blocked by policy；限制到 127.0.0.1 後仍被拒，沒有提供其他原因。未改用其他方式繞過拒絕；正式建置後整頁重跑仍待處理。i18n 待 merge commit 後重新比對。
-
-## 接續工作
-
-1. 正式建置、整頁重跑及共用系統檢查，保存本機 merge commit。
-2. 完成剩餘閱讀順序 46–60：子代理、整合、瀏覽器、自動化、exec、JSON、CI、復原與兩條實戰、維護、資料保護、用量、總排除問題。
-3. 逐篇編輯驗收，補代表稿與可取得的產品操作證據，核對五語、圖片、指令、發布狀態與閱讀路線。
-4. 全部完成後才開 PR、核對 CI 與合併，再匯入、正式發布、部署及公開網址驗證。
-
-主任務 tasks/open/2026-09-14-codex-learning-series 由 codex-integration-fc2e 認領；深度內容子任務已 release，範圍統一由主任務管理。初版短稿歷史驗證見 README，不作為目前深入稿驗收。
+主任務 tasks/open/2026-09-14-codex-learning-series.md 的本輪工作由 codex-integration-fc2e 完成。保存本機提交後，任務釋放持有並標記 blocked，等待可用預覽環境與操作證據；沒有標記 done。剩餘工作保存在任務與本文件。

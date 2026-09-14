@@ -124,6 +124,29 @@ def plain(nodes, locale):
     return "".join(span["text"] for span in inline(nodes, locale))
 
 
+def linked_references(nodes, locale, *, context=None):
+    """Keep authored references actionable beside legacy plain-text blocks.
+
+    Tables, lists and callouts remain compatible with the shared API/editor.
+    Only explicit author Markdown links become structured reference paragraphs;
+    stored legacy text is never reparsed as Markdown.
+    """
+    links = [span for span in inline(nodes, locale) if span["type"] in {"article", "link"}]
+    if not links:
+        return []
+    lead = context or {
+        "zh-TW": "本段提到的教學與資源", "zh-CN": "本段提到的教学与资源",
+        "en": "Lessons and resources mentioned here", "ja": "この段落の教材・資料",
+        "ko": "이 단락의 학습 자료",
+    }[locale]
+    spans = [{"type": "text", "text": lead + ": "}]
+    for index, link in enumerate(links):
+        if index:
+            spans.append({"type": "text", "text": " · "})
+        spans.append(link)
+    return [{"type": "rich_paragraph", "inlines": spans}]
+
+
 def compile_body(body, locale):
     blocks = []
     for node in parse(body):
@@ -150,20 +173,28 @@ def compile_body(body, locale):
             blocks.append({"type": "code", "label": label, "language": info[0] if info else "text", "code": node["raw"]})
         elif kind == "list":
             items = []
+            references = []
             for item in node["children"]:
                 if len(item["children"]) != 1 or item["children"][0]["type"] not in {"block_text", "paragraph"}:
                     raise ValueError("Use a flat list or separate prose paragraphs")
                 items.append(plain(item["children"][0]["children"], locale))
+                references.extend(linked_references(item["children"][0]["children"], locale))
             blocks.append({"type": "list", "ordered": node["attrs"].get("ordered", False), "items": items})
+            blocks.extend(references)
         elif kind == "block_quote":
             paragraphs = node["children"]
             if not all(child["type"] == "paragraph" for child in paragraphs):
                 raise ValueError("Callouts contain plain paragraphs")
             blocks.append({"type": "callout", "tone": "info", "text": "\n".join(plain(child["children"], locale) for child in paragraphs)})
+            for child in paragraphs:
+                blocks.extend(linked_references(child["children"], locale))
         elif kind == "table":
             head, body = node["children"]
             blocks.append({"type": "table", "header": [plain(c["children"], locale) for c in head["children"]],
                            "rows": [[plain(c["children"], locale) for c in row["children"]] for row in body["children"]]})
+            for row in body["children"]:
+                nodes = [child for cell in row["children"] for child in cell["children"]]
+                blocks.extend(linked_references(nodes, locale, context=plain(row["children"][0]["children"], locale)))
         else:
             raise ValueError(f"Unsupported block {kind}")
     return blocks
@@ -195,6 +226,7 @@ def main():
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
     catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
+    known_slugs = {row["slug"] for row in catalog} | {"codex-learning-hub"}
     source = AUTHORS / "sources.json"
     sources = json.loads(source.read_text(encoding="utf-8")) if source.exists() else {}
     results = []
@@ -215,6 +247,11 @@ def main():
         entry["sourceHashes"] = {locale: sha256(body.encode("utf-8")).hexdigest() for locale, body in texts.items()}
         # Parse partial drafts for author errors, but never replace a multilingual pack partially.
         compiled = {locale: compile_body(body, locale) for locale, body in texts.items()}
+        for locale, blocks in compiled.items():
+            missing = {span["slug"] for block in blocks for span in block.get("inlines", [])
+                       if span["type"] == "article" and span["slug"] not in known_slugs}
+            if missing:
+                raise ValueError(f"{id_text}/{locale}: unknown article references: {sorted(missing)}")
         # A translated command can be valid syntax while changing the example's behavior.
         reference_locale = "zh-TW" if "zh-TW" in compiled else next(iter(compiled))
         reference = [(b["language"], b["code"]) for b in compiled[reference_locale] if b["type"] == "code"]
@@ -230,7 +267,7 @@ def main():
                 # Keep original artwork and attribution; authored prose replaces every old paragraph.
                 pictures = [block for block in pack["locales"][locale]["blocks"] if block["type"] == "image"]
                 # Idempotently append real example screenshots with honest platform captions.
-                if row["id"] in {3, 6}:
+                if row["id"] in {3, 6, 26, 31}:
                     pictures = [picture for picture in pictures if "todo-" not in picture["src"]]
                     for width in [390, 1280]:
                         pictures.append({"type": "image", "src": f"/guides/codex-first-project/todo-{width}.png",

@@ -69,19 +69,19 @@
     {
       "type": "p",
       "text": [
-        "在主機桌面版開 Settings → Connections → Control this Mac or PC，選 Set up 或 Add，完成驗證並顯示 QR code。Android 使用該手機支援的內建相機或掃碼入口，讓完整碼進入畫面並點掃出的連結。Google 的相機文件提供一般拍照或 QR 模式，且明示只支援部分裝置；不要假定每個品牌都有同一顆按鈕。也不要把 QR 圖片上傳到聊天讓模型代配對。",
-        "On the host, open Settings → Connections → Control this Mac or PC, choose Set up or Add, complete verification and display the QR code. Use the Android phone's supported camera/scanner, frame the entire code and tap the detected link. Google documents photo or QR modes on selected devices, not a universal button across all brands. Do not upload the QR image to a chatbot for pairing.",
-        "ホストの Settings → Connections → Control this Mac or PC で Set up / Add と認証を済ませ QR を表示します。電話が対応するカメラやスキャン入口で全体を写してリンクを押します。Google 資料の写真 / QR モードは一部装置用で、全社共通ボタンではありません。QR 画像をチャットへ送ってペアリングさせないでください。",
-        "호스트 Settings → Connections → Control this Mac or PC에서 Set up/Add와 인증을 마쳐 QR을 표시합니다. 휴대전화가 지원하는 카메라/스캐너로 전체 코드를 잡고 링크를 누릅니다. Google 문서의 사진/QR 모드는 일부 기기 대상이며 모든 브랜드의 공통 버튼이 아닙니다. QR 이미지를 챗봇에 보내 페어링시키지 마세요."
+        "在主機桌面版開 Settings → Connections → Control this Mac or PC，選 Set up 或 Add，完成驗證並顯示 QR code。Android 使用自己手機支援的相機或掃碼入口，讓完整碼進入畫面並點掃出的連結。Google Pixel 官方文件以相機和快速設定掃碼為例；其他品牌按自己的說明操作，不假定按鈕相同。不要把 QR 圖片上傳到聊天讓模型代配對。",
+        "On the desktop host, open Settings → Connections → Control this Mac or PC, choose Set up or Add, authenticate and display the QR code. On Android, use a supported camera or scanner, frame the full code and open its detected link. Google documents Camera and Quick Settings scanning for Pixel; other brands follow their own instructions. Do not upload the QR image to a chat for model-assisted pairing.",
+        "ホストの Settings → Connections → Control this Mac or PC で Set up または Add を選び、認証して QR を表示します。Android の対応カメラやスキャナーで全体を写して検出リンクを開きます。Google の Pixel 文書はカメラとクイック設定を説明しますが、他社は各説明に従います。モデルに代わりのペアリングを頼むため画像を会話へ送信しません。",
+        "호스트 Settings → Connections → Control this Mac or PC에서 Set up 또는 Add를 선택하고 인증해 QR을 표시합니다. Android의 지원 카메라·스캐너로 전체 코드를 잡아 감지한 링크를 여세요. Google Pixel 문서는 카메라·빠른 설정을 설명하지만 다른 브랜드는 각 설명을 따릅니다. 모델에 페어링을 맡기려고 QR 이미지를 대화로 보내지 않습니다."
       ]
     },
     {
       "type": "p",
       "text": [
-        "若相機沒有識別，先確認模式、距離與反光；Google 的相機說明不使用人像或錄影模式掃碼。若 Android 詢問用哪個 App 開啟連結，選官方 ChatGPT，核對沒有進到另一個工作設定檔。連結停在瀏覽器時先確認 App 版本與登入，必要時從主機重新開始設定。不要為了一次連線就修改所有網址的預設開啟方式，也不要公開配對網址、碼或帳號截圖。",
-        "If recognition fails, check mode, distance and glare; Google's camera guidance excludes portrait/video modes for QR scanning. If Android asks which app should open the link, choose official ChatGPT and verify the profile. If the browser remains open, check app version and login, then restart host setup if needed. Do not change every link default for one connection, or publish pairing links, codes or account screenshots.",
-        "認識しなければモード、距離、反射を確認します。Google 資料ではポートレートと動画で QR を読みません。開くアプリの選択が出れば公式 ChatGPT とプロファイルを確認します。ブラウザーで止まるなら版と認証を調べ必要ならホストでやり直します。一度の接続で全 URL の既定を変えたり、認証情報を公開したりしません。",
-        "인식이 안 되면 모드, 거리, 반사를 확인합니다. Google 안내는 인물/동영상 모드에서 QR을 스캔하지 않습니다. Android가 연결 앱을 물으면 공식 ChatGPT와 프로필을 확인합니다. 브라우저에 머물면 버전과 로그인을 점검하고 필요할 때 호스트 설정을 다시 시작합니다. 한 번 연결하려고 모든 링크 기본값을 바꾸거나 페어링/인증 정보를 공개하지 마세요."
+        "若相機沒有識別，先確認碼完整、對焦與反光；Pixel 另核對相機的掃描建議是否開啟。Android 詢問用哪個 App 開啟連結時，選官方 ChatGPT，核對沒有進到另一個工作設定檔。連結停在瀏覽器時先確認 App 版本與登入，必要時從主機重新開始設定。不要為了一次連線就修改所有網址的預設開啟方式，也不要公開配對網址、碼或帳號截圖。",
+        "If detection fails, check framing, focus and glare; on Pixel also check Camera scan suggestions. If Android asks which app should open the link, choose official ChatGPT and verify the intended work profile. If the link stays in the browser, check app version and login before restarting setup from the host. Do not change all URL defaults for one pairing or publish pairing links, codes or account screenshots.",
+        "検出しなければ全体・焦点・反射を確認し、Pixel はカメラのスキャン候補設定も確認します。リンクを開くアプリを聞かれたら公式 ChatGPT と正しい仕事用プロファイルを選びます。ブラウザーに留まるなら版とログインを調べて必要時にホストから再設定します。全 URL の既定を変えたり、ペアリング情報やアカウント画面を公開したりしません。",
+        "감지하지 못하면 전체 코드·초점·반사를 확인하고 Pixel은 카메라 스캔 제안 설정도 확인합니다. 링크를 열 앱을 물으면 공식 ChatGPT와 올바른 업무 프로필을 선택하세요. 브라우저에 남으면 버전·로그인을 확인한 뒤 필요할 때 호스트에서 재설정합니다. 한 번의 연결로 모든 URL 기본값을 바꾸거나 페어링 정보·계정 화면을 공개하지 않습니다."
       ]
     },
     {

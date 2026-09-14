@@ -1,0 +1,195 @@
+{
+  "id": 57,
+  "readingMinutes": 15,
+  "operationMinutes": 20,
+  "blocks": [
+    {
+      "type": "h2",
+      "text": [
+        "目標與前置材料",
+        "Goal and prerequisites",
+        "目標と準備",
+        "목표와 준비"
+      ]
+    },
+    {
+      "type": "note",
+      "text": [
+        "從一次失敗的自動化判斷是否仍在執行、能否重試，以及哪份結果可以接受。閱讀約 15 分鐘、操作約 20 分鐘。準備 [JSON／JSONL 篇](article:codex-json-output)的 run_summary.py 與一份成功 run-01；若要操作排程，也先完成[排程篇](article:codex-automations)的虛構清單練習。本篇本機失敗演練只複製檔案及驗證，不需要重新呼叫模型。",
+        "Use a failed automation to determine whether work is still running, whether retry is appropriate and which result can be accepted. Allow 15 minutes to read and 20 to practice. Prepare run_summary.py and a successful run-01 from [JSON/JSONL](article:codex-json-output). For schedule operations, first complete the fictional checklist in [Automations](article:codex-automations). Local failure drills here only copy and validate files; they need no new model call.",
+        "失敗した自動化から、まだ実行中か、再試行できるか、どの結果を採用できるか判断します。読む時間15分、実習20分です。[JSON／JSONL](article:codex-json-output)の run_summary.py と成功 run-01 を用意し、予約操作をする場合は[予約編](article:codex-automations)の架空一覧も先に完成します。ローカルの失敗演習はコピーと検証のみでモデルを再要求しません。",
+        "실패한 자동화에서 실행이 남아 있는지, 재시도할 수 있는지, 어떤 결과를 채택할지 판단합니다. 읽기 15분, 실습 20분입니다. [JSON/JSONL](article:codex-json-output)의 run_summary.py와 성공한 run-01을 준비하고 예약을 조작하려면 [자동화](article:codex-automations)의 가상 목록도 완료하세요. 로컬 실패 실습은 복사·검증만 하며 모델을 다시 호출하지 않습니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 1：先辨認工作狀態",
+        "Step 1: Identify the run state first",
+        "手順1：先に実行状態を識別する",
+        "1단계: 실행 상태 먼저 구분"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "排程有保存的設定，每次觸發則有各自的 run；暫停設定不等於取消正在跑的那次，刪除排程也不代表回復它已造成的修改。本機腳本的 timeout 只表示包裝程式等到上限；網頁顯示離線只表示連線不可用。兩者都不足以斷言遠端或子程序完全停止。先記下任務／排程名稱、主機、資料夾、時區、輸入版本、最後一次開始時間與可見的執行編號，再決定下一步。",
+        "A schedule has saved configuration, while each trigger has its own run. Pausing configuration does not cancel an active run, and deleting a schedule does not undo previous changes. A local wrapper timeout only means its wait limit was reached; an offline UI only means the connection is unavailable. Neither proves every remote or child process has stopped. Record the task/schedule name, host, folder, timezone, input revision, last start time and visible run identifier before acting.",
+        "予約には保存設定があり、各起動は別の run です。設定の一時停止は実行中 run の取消ではなく、予約削除は既存変更の復元ではありません。ローカルラッパーの timeout は待機上限、画面の offline は接続不能を示すだけで、遠隔や全子プロセスの停止を証明しません。タスク・予約名、ホスト、フォルダー、タイムゾーン、入力版、最後の開始時刻、実行番号を先に記録します。",
+        "예약은 저장 설정이며 각 시작에는 별도 run이 있습니다. 설정 일시 중지는 실행 중인 run 취소가 아니며 예약 삭제는 이전 변경 복원이 아닙니다. 로컬 래퍼 timeout은 대기 한도 도달, 화면 offline은 연결 불가만 뜻하고 원격·모든 자식 프로세스 종료를 증명하지 않습니다. 작업·예약 이름, 호스트, 폴더, 시간대, 입력 버전, 최근 시작 시간, 실행 번호부터 기록하세요."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "| 現象 | 還缺的證據 | 下一個動作 |\n| --- | --- | --- |\n| 保存 Active，但沒有新 run | 主機、下次時間、實際觸發 | 檢查 Scheduled 及主機狀態 |\n| running 很久 | 程序或工作是否仍活動 | 看進度與最後紀錄，不直接重跑 |\n| timeout／連線中斷 | 是否留下執行與副作用 | 重新連線後核對原工作 |\n| 非零退出或 turn.failed | 具體錯誤與輸出完整度 | 保留紀錄、修正原因 |\n| 退出 0 但數值錯誤 | 資料版本與內容驗證 | 拒絕該結果並查來源 |\n\n成功回答可能已存在於舊檔案，所以檔案存在本身不是成功狀態。",
+        "| Symptom | Missing evidence | Next action |\n| --- | --- | --- |\n| Active saved, no new run | Host, next time, actual trigger | Inspect Scheduled and host state |\n| Long-running state | Whether the process/task is active | Inspect progress and last records before retry |\n| Timeout/disconnection | Remaining execution and side effects | Reconnect and inspect the original run |\n| Nonzero exit or turn.failed | Specific error and complete output | Retain records and correct the cause |\n| Exit 0 but wrong values | Revision and content verification | Reject the result and inspect its source |\n\nAn old file can already contain a successful answer, so existence alone is not success.",
+        "| 現象 | 不足する証拠 | 次の操作 |\n| --- | --- | --- |\n| Active 保存・新 run なし | ホスト・次回時刻・実起動 | Scheduled とホストを確認 |\n| 長い running | 実際のプロセス活動 | 再実行前に進行と最終記録を見る |\n| タイムアウト・切断 | 残る実行と副作用 | 再接続し元 run を確認 |\n| 非0・turn.failed | 原因と出力完全性 | 記録保存・原因修正 |\n| 0終了・値が誤り | 入力版と内容 | 不採用にして出典調査 |\n\n古いファイルに成功回答が残る場合があり、存在だけでは成功ではありません。",
+        "| 현상 | 부족한 증거 | 다음 동작 |\n| --- | --- | --- |\n| Active 저장·새 run 없음 | 호스트·다음 시간·실제 시작 | Scheduled·호스트 확인 |\n| 긴 running | 실제 프로세스·작업 활동 | 재실행 전 진행·최근 기록 확인 |\n| 시간 초과·단절 | 남은 실행·부수 효과 | 재연결 후 원래 run 확인 |\n| 0이 아닌 종료·turn.failed | 원인·출력 완전성 | 기록 보존·원인 수정 |\n| 종료 0·잘못된 값 | 입력 버전·내용 검증 | 결과 거부·출처 조사 |\n\n오래된 파일에 성공 답변이 남을 수 있으므로 존재만으로 성공은 아닙니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 2：重現『有答案，但沒有完成證據』",
+        "Step 2: Reproduce an answer without completion evidence",
+        "手順2：回答はあるが完了証拠がない状態を再現する",
+        "2단계: 답변은 있지만 완료 증거가 없는 상태 재현"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "用檔案管理員將成功的 run-01 完整複製成 recovery-running。只在副本 status.json 改成下方內容，保留原本正確的 final.json 與事件檔。這是明確標記的模擬中斷，不要修改真實失敗紀錄來假装成功。接著在原練習資料夾執行 verify-only；Windows 用 PowerShell，macOS／Linux 用各自終端機。預期 Not accepted: Process did not exit successfully，退出非 0。",
+        "Copy successful run-01 to recovery-running using the file manager. Change only the copy's status.json to the content below, retaining its correct final.json and events. This is a labeled simulated interruption; never alter real failure records to manufacture success. Run verify-only from the exercise folder using PowerShell on Windows or a terminal on macOS/Linux. Expect Not accepted: Process did not exit successfully and nonzero exit.",
+        "成功 run-01 をファイル管理画面で recovery-running にコピーし、コピー status.json だけ下記に変えて正しい final.json・イベントは残します。これは明示した模擬中断で、実際の失敗記録を成功に見せかけて編集しません。Windows は PowerShell、macOS／Linux は端末で教材場所から verify-only を実行します。Not accepted: Process did not exit successfully と非0終了を期待します。",
+        "성공 run-01을 파일 관리 화면에서 recovery-running으로 복사하고 status.json만 아래로 바꿉니다. 올바른 final.json과 이벤트는 유지하세요. 명시한 모의 중단이며 실제 실패 기록을 성공처럼 조작하지 않습니다. Windows PowerShell 또는 macOS/Linux 터미널에서 실습 폴더의 verify-only를 실행하면 Not accepted: Process did not exit successfully와 0이 아닌 종료가 나와야 합니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "json",
+      "label": [
+        "recovery-running/status.json（模擬狀態）",
+        "recovery-running/status.json (simulated state)",
+        "recovery-running/status.json（模擬状態）",
+        "recovery-running/status.json (모의 상태)"
+      ],
+      "code": "{\n  \"state\": \"running\"\n}\n"
+    },
+    {
+      "type": "code",
+      "language": "powershell",
+      "label": [
+        "Windows：驗證模擬中斷",
+        "Windows: validate a simulated interruption",
+        "Windows：模擬中断の検証",
+        "Windows: 모의 중단 검증"
+      ],
+      "code": "py -3 run_summary.py recovery-running --verify-only\n$LASTEXITCODE\n"
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "label": [
+        "macOS／Linux：驗證模擬中斷",
+        "macOS / Linux: validate a simulated interruption",
+        "macOS／Linux：模擬中断の検証",
+        "macOS / Linux: 모의 중단 검증"
+      ],
+      "code": "python3 run_summary.py recovery-running --verify-only\necho $?\n"
+    },
+    {
+      "type": "p",
+      "text": [
+        "另複製原始 run-01 成 recovery-timeout，只把 status.json 換成 {\"state\":\"timeout\"}，用新資料夾名稱再驗證，也必須失敗。這兩個案例證明即使回答看來正確，缺乏完成證據仍不能採用。最後對未變更的 run-01 執行同一條 verify-only，應重新通過。把三個結果寫入紀錄，明確註明是副本演練；這不等於真的讓主機離線或真的發生模型逾時。",
+        "Make another copy of original run-01 as recovery-timeout, change only status.json to {\"state\":\"timeout\"}, and validate that folder; it must also fail. Both cases show that a plausible answer without completion evidence is unacceptable. Verify unchanged run-01 again; it should pass. Record all three outcomes as copy-based drills. They do not prove an actual host outage or model timeout occurred.",
+        "元 run-01 を別に recovery-timeout にコピーし、status.json だけ {\"state\":\"timeout\"} に替えて検証するとこれも失敗します。回答が正しそうでも完了証拠がなければ採用できません。未変更 run-01 を再検証して合格へ戻し、3結果をコピー演習と明記します。実際のホスト停止やモデルタイムアウトを発生させた証拠ではありません。",
+        "원래 run-01을 recovery-timeout으로 별도 복사해 status.json만 {\"state\":\"timeout\"}으로 바꿔 검증하면 역시 실패해야 합니다. 답변이 맞아 보여도 완료 증거가 없으면 채택할 수 없음을 보여줍니다. 변경 없는 run-01을 재검증해 통과를 확인하고 세 결과를 복사본 실습으로 기록하세요. 실제 호스트 중단이나 모델 시간 초과를 발생시켰다는 증거는 아닙니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 3：處理真正的逾時或離線",
+        "Step 3: Handle a real timeout or disconnection",
+        "手順3：実際のタイムアウト・切断に対応する",
+        "3단계: 실제 시간 초과·단절 처리"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "若使用桌面排程，先到 Scheduled 暫停同一項，避免新的觸發，再打開已有 run 看是否仍活動。主機離線時先恢復電源、網路、程式與資料夾；回到原任務核對最後動作與結果，不立刻新建另一份相同排程。Windows、macOS、Linux 都使用自己那台主機的狀態，不以手機仍看得到聊天記錄判斷電腦在线。離線期間是否補跑依實際紀錄與產品行為確認，不假設會追補所有錯過的時間。",
+        "For a desktop schedule, pause that same entry in Scheduled to prevent new triggers, then open its existing run to check activity. Restore power, network, app and folder after a host outage. Revisit the original task's last actions and results before creating any duplicate schedule. On every OS, inspect the actual host rather than assuming visible phone history means the computer is online. Determine missed-run behavior from real records and product behavior, not an assumption that every missed time is replayed.",
+        "デスクトップ予約なら Scheduled の同じ項目を一時停止し、新しい起動を防いでから既存 run の活動を見ます。ホスト切断は電源・ネットワーク・アプリ・フォルダーを復旧し、重複予約を作る前に元タスクの最終操作と結果を確認します。各 OS で実ホストを調べ、携帯の履歴表示だけでオンラインとは判定しません。逃した回の補実行は実記録と製品挙動で確認し、全時刻が追補されると仮定しません。",
+        "데스크톱 예약이면 Scheduled에서 같은 항목을 일시 중지해 새 시작을 막고 기존 run의 활동을 확인합니다. 호스트 단절은 전원·네트워크·앱·폴더를 복구한 뒤 중복 예약을 만들기 전에 원래 작업의 마지막 동작과 결과를 확인하세요. 각 OS에서 실제 호스트를 조사하며 휴대전화에 대화 기록이 보인다고 PC가 온라인이라 판단하지 않습니다. 누락 실행 보충은 실제 기록·제품 동작으로 확인하며 모든 시간을 자동 보충한다고 가정하지 않습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "CLI 腳本則先保存 status、stderr 與事件檔，再在原終端機確認該程序是否已結束；需要中止時只針對已確認的工作，用 Ctrl+C 或該工具的取消入口，不終止所有 node、python 或 Codex 程序。GitHub Actions 到該 run 按取消後確認終止狀態；停用 workflow 管的是之後的觸發。若錯誤其實是需要互動授權、輸入路徑改名或 API 額度不足，延長 timeout 不會修好原因；分別回到[權限](article:codex-permissions)、路徑與帳號專篇。",
+        "For a CLI script, retain status, stderr and events, then check the original terminal for process completion. Cancel only the identified run using Ctrl+C or its tool's cancellation control, not every node, python or Codex process. In GitHub Actions, cancel the specific run and confirm its terminal state; disabling the workflow governs future triggers. A missing approval, renamed input path or exhausted API quota is not fixed by increasing timeout. Consult [Permissions](article:codex-permissions), paths or account lessons for the actual cause.",
+        "CLI は status・stderr・イベントを保存し、元端末で終了を確認します。中止は確認した処理だけに Ctrl+C または専用取消を使い、全 node・python・Codex を終了しません。GitHub Actions は該当 run を取り消して終了状態を確認し、workflow 無効化は将来の起動を止めます。承認待ち、入力名変更、API 利用枠不足は timeout 延長では直らず、[権限](article:codex-permissions)・パス・アカウントの各編で原因を調べます。",
+        "CLI는 status·stderr·이벤트를 보존하고 원래 터미널에서 종료를 확인합니다. 중단은 확인한 실행에만 Ctrl+C나 도구 취소를 쓰며 모든 node·python·Codex 프로세스를 종료하지 않습니다. GitHub Actions는 해당 run을 취소하고 종료 상태를 확인합니다. workflow 비활성화는 이후 시작을 막습니다. 승인 대기·입력 이름 변경·API 사용량 부족은 timeout 연장으로 고쳐지지 않으므로 [권한](article:codex-permissions)·경로·계정 편에서 원인을 확인하세요."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 4：重試同一需求，保留不同嘗試",
+        "Step 4: Retry one objective while keeping attempts distinct",
+        "手順4：同じ目的を再試行し、各試行を区別する",
+        "4단계: 같은 목표 재시도와 각 시도 구분"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "只有在原工作已停止或已確認不會造成重複副作用、原因已修正後，才決定是否重試。本篇的工作只讀虛構資料，但仍使用新的 run-02 資料夾保存新結果。先記下同一 input revision 與新的 attempt；修正的是輸入內容時要換 revision，不能把不同資料的答案混在同一版本下。如下紀錄是範本，請填自己觀察到的狀態，不把 accepted 範例直接當實際結果。",
+        "Retry only after the original has stopped or duplicate side effects have been ruled out, and the cause is fixed. Even this fictional read-only task uses a new run-02 output folder. Record the same input revision with a new attempt; when input content changes, change the revision instead of mixing different data under one version. The record below is a template: fill in observed states, not an assumed accepted result.",
+        "元処理が停止、または重複副作用がないと確認でき、原因を直した後に再試行を判断します。架空の読み取り専用処理でも新しい run-02 を使います。同じ入力版と新 attempt を記録し、入力を変えたなら revision も変えて異なるデータを混ぜません。下記は雛形であり、accepted を実結果と思わず観測状態を記入します。",
+        "원래 작업이 멈췄거나 중복 부수 효과가 없음을 확인하고 원인을 고친 뒤 재시도를 결정합니다. 가상 읽기 작업도 새 run-02를 사용합니다. 같은 입력 버전·새 attempt를 기록하며 입력 내용이 달라지면 revision도 바꿔 다른 데이터를 섞지 않습니다. 아래는 서식이므로 accepted를 실제 결과로 가정하지 말고 관측 상태를 적으세요."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "markdown",
+      "label": [
+        "recovery-notes.md（自行填寫）",
+        "recovery-notes.md (fill with observations)",
+        "recovery-notes.md（観測結果を記入）",
+        "recovery-notes.md (관측 결과 입력)"
+      ],
+      "code": "# Recovery record\n- Objective: summarize the fictional checklist\n- Input revision: exec-practice-1\n- Host and folder: fill in locally\n- Original run and state: fill in\n- Last observed action: fill in\n- Cause and correction: fill in\n- Retry output folder: run-02\n- Exit status and event validation: fill in\n- Manual counts: total 3, completed 1, pending 2\n- Accepted result path: fill in only after verification\n- Schedule state after practice: fill in\n"
+    },
+    {
+      "type": "p",
+      "text": [
+        "若要讓下游採用結果，先完整核對新 run 的退出狀態、事件、schema 與人工計數，再在紀錄填入唯一 accepted result path。不要把每一次重試都當成要寄信、上傳或扣款一次；外部動作需要接收服務提供的冪等鍵或明確去重策略，不能只靠模型答應不重複。本教材的目錄拒絕覆寫只能保護本機同名產物，不是跨主機鎖，也不能保證外部服務只做一次。涉及寫入的實際工作，先查已發生的副作用再補做。",
+        "Before downstream use, check the new run's exit status, events, schema and manual counts, then record one accepted result path. A retry is not a reason to send, upload or charge again: external actions need service-supported idempotency keys or an explicit deduplication strategy, not a model promise. Refusing an existing output folder protects local files, not a distributed lock or exactly-once external execution. For real write operations, inspect existing side effects before completing missing work.",
+        "下流で使う前に新 run の終了状態・イベント・schema・手計算を確認し、採用パスを1つ記録します。再試行ごとに送信・アップロード・課金を繰り返さず、外部操作はサービス対応の冪等キーや明確な重複除去が必要です。モデルの約束だけでは足りません。既存フォルダーの拒否はローカル保存の保護で、分散ロックや外部1回限り実行ではありません。実書込では既発生の副作用を調べて不足分を補います。",
+        "후속 사용 전에 새 run의 종료 상태·이벤트·schema·수동 개수를 확인하고 채택 경로 하나를 기록합니다. 재시도마다 발송·업로드·결제를 반복하지 마세요. 외부 동작에는 서비스가 지원하는 멱등 키나 명시적 중복 제거가 필요하며 모델의 약속만으로 충분하지 않습니다. 기존 출력 폴더 거부는 로컬 파일 보호일 뿐 분산 잠금이나 외부 작업의 정확히 한 번 실행 보장이 아닙니다. 실제 쓰기는 이미 발생한 부수 효과부터 확인하고 부족한 부분을 수행합니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "停止與完成判斷",
+        "Stopping and acceptance",
+        "停止と完了判定",
+        "중지와 완료 판단"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "演練結束保留成功原件與明確標記的失敗副本，用原件重新驗證一次即可，不必反覆跑模型。若實際排程已啟用，到 Scheduled 暫停並確認狀態，再查看是否還有活動 run；需要恢復時修改同一項並核對下一次時間、時區、主機及通知條件。只在狀態改變、完成或需要處理的失敗時通知，避免每次空檢查都寄出相同內容。完成標準是你能說清楚原工作狀態、失敗原因、修正、重試與採用哪份結果；官方功能查證、本機副本測試、主機離線實測與雲端 CI 執行應各自記錄。",
+        "Keep the successful original and labeled failed copies, and revalidate the original once instead of repeatedly running the model. If a real schedule is enabled, pause it in Scheduled, confirm the saved state and separately check active runs. To resume, edit the same entry and verify next time, timezone, host and notification conditions. Notify on changes, completion or actionable failures rather than repeating identical empty checks. You pass when you can explain original state, cause, correction, retry and accepted result. Record official feature research, local copy drills, real host-outage tests and cloud CI runs separately.",
+        "成功原本と明記した失敗コピーを残し、モデルを繰り返さず原本を1回再検証します。実予約が有効なら Scheduled で一時停止・保存状態を確認し、活動 run は別に調べます。再開は同じ項目を編集し、次回時刻・タイムゾーン・ホスト・通知条件を確認します。変化、完了、対処が必要な失敗を通知し、同じ空確認を繰り返し送りません。元状態、原因、修正、再試行、採用結果を説明できれば合格です。公式調査、ローカルコピー演習、実ホスト停止、クラウド CI 実行は別々に記録します。",
+        "성공 원본과 명시한 실패 복사본을 보관하고 모델 반복 실행 대신 원본만 한 번 재검증합니다. 실제 예약이 켜져 있으면 Scheduled에서 일시 중지·저장 상태를 확인하고 활동 run은 별도로 확인하세요. 재개할 때는 같은 항목을 수정하고 다음 시간·시간대·호스트·알림 조건을 확인합니다. 변화·완료·처리가 필요한 실패만 알리고 같은 빈 점검을 반복 발송하지 않습니다. 원래 상태·원인·수정·재시도·채택 결과를 설명할 수 있어야 완료입니다. 공식 조사·로컬 복사 실습·실제 호스트 중단·클라우드 CI는 따로 기록합니다."
+      ]
+    }
+  ]
+}

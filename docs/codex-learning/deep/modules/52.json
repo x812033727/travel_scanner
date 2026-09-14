@@ -46,7 +46,7 @@
       "text": [
         "確認輸出中的名稱、enabled、傳輸方式與 URL，並記下本機還是遠端主機、CLI 或桌面入口，以及最後一次重新啟動的時間。若 get 找不到名稱，回到實際 config.toml；拼字、使用者層與專案層，以及自訂 CODEX_HOME 都要逐項核對。桌面、CLI、IDE 只有在同一 Codex 主機下才共用設定，Windows 原生與 WSL 的家目錄也不能當成同一個位置。",
         "Check the name, enabled state, transport and URL. Record whether this is a local or remote host, CLI or desktop, and the last restart. If get cannot find the name, inspect the actual config.toml, spelling, user/project scope and custom CODEX_HOME. Desktop, CLI and IDE share settings only on the same Codex host; native Windows and WSL home directories are not interchangeable.",
-        "名前、有効状態、方式、URL と、本機・遠隔、CLI・デスクトップ、最終再起動時刻を記録します。get が見つけなければ実ファイル、綴り、利用者・プロジェクト層、独自 CODEX_HOME を確認します。同一主機だけが設定共有の対象で、Windows と WSL のホームも同じ場所とは扱いません。",
+        "名前、有効状態、方式、URL と、ローカル・遠隔、CLI・デスクトップ、最終再起動時刻を記録します。get が見つけなければ実ファイル、綴り、利用者・プロジェクト層、独自 CODEX_HOME を確認します。同一ホストだけが設定共有の対象で、Windows と WSL のホームも同じ場所とは扱いません。",
         "이름·활성 상태·방식·URL과 로컬/원격, CLI/데스크톱, 마지막 재시작을 기록합니다. get에서 이름을 찾지 못하면 실제 파일, 철자, 사용자/프로젝트 계층, 사용자 지정 CODEX_HOME을 확인하세요. 같은 호스트에서만 설정을 공유하며 Windows와 WSL 홈도 같은 위치가 아닙니다."
       ]
     },
@@ -55,7 +55,7 @@
       "text": [
         "設定檔解析失敗時，先處理行號附近的引號、重複表格或錯誤類型，再談網路。用[設定篇](article:codex-config-toml)的方法保存自己的修改前副本，只修改練習區段；不要把整份設定貼上公開求助。若檔案能解析但名稱仍不見，檢查可信任專案的載入與當前工作目錄，並確認編輯器保存的是實際檔案，不是另一份備份。",
         "For a parse error, fix quotes, duplicate tables or incorrect value types near the reported line before investigating networking. Preserve a before-copy as described in [Configuration](article:codex-config-toml) and edit only the practice section, keeping the full settings private. If parsing succeeds but the entry is missing, check trusted-project loading, working directory and whether the editor saved the actual file rather than a backup.",
-        "解析エラーは表示行付近の引用符、重複表、値の型から直し、その後でネットを調べます。[設定](article:codex-config-toml)に従い副本を保存して実習区画だけ編集し、全設定を公開しません。名前がまだなければ信頼済みプロジェクトの読込み、現在地、保存先が副本でないかを確認します。",
+        "解析エラーは表示行付近の引用符、重複表、値の型から直し、その後でネットを調べます。[設定](article:codex-config-toml)に従いコピーを保存して実習区画だけ編集し、全設定を公開しません。名前がまだなければ信頼済みプロジェクトの読込み、現在地、保存先がコピーでないかを確認します。",
         "구문 오류는 표시된 줄의 따옴표·중복 표·값 형식을 먼저 수정한 뒤 네트워크를 봅니다. [설정](article:codex-config-toml)에 따라 사본을 보존하고 연습 구간만 편집하며 전체 설정은 공개하지 않습니다. 이름이 없으면 신뢰 프로젝트 로드, 현재 폴더, 백업이 아닌 실제 파일 저장을 확인하세요."
       ]
     },
@@ -82,7 +82,7 @@
       "text": [
         "先用前篇的唯讀問題取得一次正常結果，保存原設定後，在既有練習區段加上 enabled = false。桌面按 MCP 設定中的 Restart，IDE 重新啟動擴充套件，CLI 結束後開新工作階段。不要只在舊對話重新問一句，因為它仍可能引用已讀過的內容。這個練習刻意讓伺服器不可用，不代表遠端官方服務真的壞了。",
         "Obtain a normal read with the previous lesson's question, save the configuration, then add enabled = false to the existing practice section. Use Restart in desktop MCP settings, restart the IDE extension, or open a fresh CLI session. Merely asking again in the old conversation can reuse earlier content. This exercise deliberately disables your entry; it does not indicate a remote service outage.",
-        "前記事の読取りで正常結果を得て設定を保存後、既存実習区画に enabled = false を加えます。デスクトップの Restart、IDE 拡張再起動、CLI 新規セッションを使います。旧会話への再質問は過去情報を再利用し得ます。意図した本機無効化であり公式側の障害ではありません。",
+        "前記事の読取りで正常結果を得て設定を保存後、既存実習区画に enabled = false を加えます。デスクトップの Restart、IDE 拡張再起動、CLI 新規セッションを使います。旧会話への再質問は過去情報を再利用し得ます。意図したローカル無効化であり公式側の障害ではありません。",
         "이전 글의 읽기 요청으로 정상 결과를 얻고 설정을 보존한 뒤 기존 연습 구간에 enabled = false를 추가합니다. 데스크톱 Restart, IDE 확장 재시작, CLI 새 세션을 사용하세요. 이전 대화에서 재질문하면 과거 내용을 쓸 수 있습니다. 의도적 로컬 비활성화이며 공식 서비스 장애가 아닙니다."
       ]
     },
@@ -171,7 +171,7 @@
       "text": [
         "HTTP 則先核對完整協定、主機、路徑，例如本篇必須是官方 /mcp 端點。瀏覽器能開網站首頁，只能證明部分網路可達，不能證明 MCP 請求、代理設定與驗證都成功。TLS 錯誤應檢查系統時間、公司代理與憑證信任設定；先向環境維護者確認，不把關閉憑證驗證當成教學預設。暫時連不上時保留時間與遮蔽後錯誤再重試。",
         "For HTTP, check scheme, host and full path, including the official /mcp endpoint here. A browser opening the homepage proves only partial reachability, not a successful MCP request, proxy setup or authentication. For TLS errors, inspect system time, organizational proxy and certificate trust with the environment maintainer; disabling certificate checks is not the default repair. Record time and a redacted error before retrying a temporary failure.",
-        "HTTP は協定、主機、全パスを確認し、今回は公式 /mcp を使います。ホームページを開けても MCP、代理、認証の成功証明ではありません。TLS は時刻、組織プロキシ、証明書信頼を管理者と確認し、検証無効化を既定修正にしません。一時失敗は時刻と伏せたエラーを残して再試行します。",
+        "HTTP は協定、ホスト、全パスを確認し、今回は公式 /mcp を使います。ホームページを開けても MCP、代理、認証の成功証明ではありません。TLS は時刻、組織プロキシ、証明書信頼を管理者と確認し、検証無効化を既定修正にしません。一時失敗は時刻と伏せたエラーを残して再試行します。",
         "HTTP는 스킴·호스트·전체 경로를 확인하며 이번에는 공식 /mcp입니다. 첫 페이지가 열려도 MCP 요청·프록시·인증 성공을 증명하지 않습니다. TLS는 시간·조직 프록시·인증서 신뢰를 관리자와 확인하고 검증 해제를 기본 해결로 쓰지 않습니다. 일시 실패는 시각과 가린 오류를 남긴 후 재시도하세요."
       ]
     },
@@ -245,7 +245,7 @@
       "text": [
         "完成標準是能解釋哪一層失敗、提供一次可重現的停用與恢復，以及新的唯讀工具證據；只看到程序、設定檔或正確答案都不夠。尚未取得連線時保留「未完成工具驗證」，不用把未測環境填成正常。本篇產品流程依官方文件查證，本機設定與直接 MCP 協定驗證另存紀錄；macOS、Linux、IDE、OAuth 與實體手機未因這些測試而自動取得實測標記。下一步進入 [Worktree 隔離](article:codex-worktrees)。",
         "Completion means identifying the failing layer, reproducing disable/restore and obtaining fresh read-only tool evidence. A process, file or correct answer alone is insufficient. If connection remains unavailable, mark tool verification incomplete. Product steps follow official documentation, with local configuration and direct MCP checks recorded separately; those do not establish macOS, Linux, IDE, OAuth or physical-phone testing. Continue to [Worktree isolation](article:codex-worktrees).",
-        "失敗層を説明し、無効化・復元を再現し、新しい読取り証拠を得ることが完了条件です。プロセス、ファイル、正答だけでは不十分で、未接続ならツール未検証と残します。公式確認、本機設定、直接協定試験を分け、他 OS、IDE、OAuth、電話の実測とはしません。次は [Worktree 分離](article:codex-worktrees)です。",
+        "失敗層を説明し、無効化・復元を再現し、新しい読取り証拠を得ることが完了条件です。プロセス、ファイル、正答だけでは不十分で、未接続ならツール未検証と残します。公式確認、ローカル設定、直接協定試験を分け、他 OS、IDE、OAuth、電話の実測とはしません。次は [Worktree 分離](article:codex-worktrees)です。",
         "실패 계층 설명·비활성화와 복원 재현·새 읽기 도구 증거가 완료 기준입니다. 프로세스·파일·정답만으로는 부족하며 미연결이면 도구 미검증으로 남깁니다. 공식 문서와 로컬 설정·직접 프로토콜 시험을 구분하고 다른 OS·IDE·OAuth·휴대폰 실측으로 보지 않습니다. 다음은 [Worktree 분리](article:codex-worktrees)입니다."
       ]
     }

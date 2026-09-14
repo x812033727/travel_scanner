@@ -1,0 +1,193 @@
+{
+  "id": 60,
+  "readingMinutes": 15,
+  "operationMinutes": 25,
+  "blocks": [
+    {
+      "type": "h2",
+      "text": [
+        "目標與準備",
+        "Goal and preparation",
+        "目標と準備",
+        "목표와 준비"
+      ]
+    },
+    {
+      "type": "note",
+      "text": [
+        "用兩次小型唯讀任務記錄需求範圍、設定、時間與品質，找出可以減少的重工。閱讀約 15 分鐘、操作約 25 分鐘，模型等待另計。準備[練習包](https://mokaair.com/guides/codex-first-project/todo-practice.zip)的兩份獨立 broken 副本，分別叫 efficiency-a、efficiency-b。比較會使用實際額度；不需要購買新方案，可先確認[帳號用量](article:codex-account-usage)。沒有可用額度時只準備紀錄表，不虛構測量數字。",
+        "Use two small read-only tasks to record scope, settings, time and quality, then identify avoidable rework. Allow 15 minutes to read and 25 to practice, plus model waiting. Prepare two independent broken copies from the [exercise pack](https://mokaair.com/guides/codex-first-project/todo-practice.zip), named efficiency-a and efficiency-b. Comparisons consume real usage but need no new subscription. Check [Account usage](article:codex-account-usage) first; if quota is unavailable, prepare the record without inventing measurements.",
+        "小さな読み取り専用タスク2回で範囲・設定・時間・品質を記録し、減らせる手戻りを見つけます。読む時間15分、実習25分にモデル待機が加わります。[教材](https://mokaair.com/guides/codex-first-project/todo-practice.zip)の独立 broken コピー efficiency-a・efficiency-b を用意します。実利用枠を使いますが新購読は不要です。[利用量](article:codex-account-usage)を確認し、枠がなければ記録表のみ準備して測定値を創作しません。",
+        "작은 읽기 전용 작업 두 번으로 범위·설정·시간·품질을 기록하고 줄일 재작업을 찾습니다. 읽기 15분, 실습 25분에 모델 대기가 추가됩니다. [자료](https://mokaair.com/guides/codex-first-project/todo-practice.zip)의 독립 broken 복사본 efficiency-a·efficiency-b를 준비하세요. 실제 사용량을 쓰지만 새 구독은 필요 없습니다. [계정 사용량](article:codex-account-usage)을 확인하고 한도가 없으면 기록표만 준비하며 측정값을 만들지 않습니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 1：先確認自己量的是什麼",
+        "Step 1: Identify what you are measuring",
+        "手順1：何を測るかを確認する",
+        "1단계: 무엇을 측정하는지 확인"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "ChatGPT／Codex 的方案額度與 API 金額是不同指標。介面顯示的可用比例可能是整個帳號共享視窗，會受其他任務、重置時間及方案影響；不能把前後差一個百分點當成這個任務的精確價格。API 的 token 與費用也要依當時模型、計價及實際 usage 紀錄核對，不把 CLI 印出的所有 token 直接乘單一單價。本文把模型與價格連回集中維護的帳號／模型篇，不重複固定可能改變的數字。",
+        "Plan quota in ChatGPT/Codex and API charges are different metrics. Available percentages can describe an account-wide shared window affected by other tasks, resets and plans; a one-point change is not this task's exact price. API tokens/cost require the actual model, pricing and usage record, not multiplying every CLI token by one rate. This lesson links to centrally maintained account/model guidance instead of repeating changing price figures.",
+        "ChatGPT／Codex の方案枠と API 金額は別指標です。利用可能百分率は他タスク・重置・方案に左右される共有視窓の場合があり、1ポイント差を単一タスクの正確な価格にしません。API も実モデル・料金・usage を照合し、CLI の全 token に単価1つを掛けません。変わる数字を重記せずアカウント・モデル編の集中情報へ繋ぎます。",
+        "ChatGPT/Codex 요금제 한도와 API 비용은 다른 지표입니다. 잔여 비율은 다른 작업·초기화·요금제에 영향을 받는 계정 공유 구간일 수 있어 1% 차이를 해당 작업의 정확한 가격으로 보지 않습니다. API도 실제 모델·요금·usage 기록을 확인하며 CLI의 모든 token에 단일 단가를 곱하지 않습니다. 변하는 숫자를 반복하지 않고 계정·모델 편의 통합 정보로 연결합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "| 指標 | 記錄方式 | 不能直接推論的事 |\n| --- | --- | --- |\n| 人的操作時間 | 從準備提示詞到核對結果 | 不等於模型處理時間 |\n| 回答等待時間 | 開始至最後回答的時間 | 不等於純推理速度 |\n| 重工次數 | 補充條件、改正誤解、重做的次數 | 少回答不保證正確 |\n| 驗收通過項目 | 對照事先定義的四項 | 不能只憑語氣判斷 |\n| 額度／usage | 抄下介面實際可見資訊 | 帳號比例不等於單次費用 |\n\n若無資料填 unavailable，若只是估計寫 estimated，並說明方法；不要用 0 代替沒有資訊。",
+        "| Metric | Record it as | Does not directly establish |\n| --- | --- | --- |\n| Human time | Prompt preparation through verification | Model processing time |\n| Waiting time | Start to final answer | Pure reasoning speed |\n| Rework count | Clarifications, corrections and repeats | Fewer replies do not guarantee correctness |\n| Acceptance coverage | Check four predefined criteria | Confidence of wording is not evidence |\n| Quota/usage | Actual visible information | Account percentages are not per-run cost |\n\nUse unavailable for missing data and estimated with a method for estimates. Do not substitute zero for unknown information.",
+        "| 指標 | 記録方法 | 直接は分からないこと |\n| --- | --- | --- |\n| 人の時間 | 依頼準備から検証まで | モデル処理時間 |\n| 待機 | 開始から最終回答まで | 純推論速度 |\n| 手戻り | 補足・誤解修正・繰返し | 少回答でも正しいとは限らない |\n| 合格項目 | 事前の4条件と照合 | 自信ある表現は証拠でない |\n| 利用枠・usage | 実際に見える情報 | アカウント比率は1回費用でない |\n\n欠如は unavailable、推定は estimated と方法を記し、不明を0にしません。",
+        "| 지표 | 기록 방법 | 바로 알 수 없는 것 |\n| --- | --- | --- |\n| 사람 시간 | 요청 준비부터 검증까지 | 모델 처리 시간 |\n| 대기 | 시작부터 최종 답변까지 | 순수 추론 속도 |\n| 재작업 | 보충·오해 수정·반복 | 답이 적어도 정확한 것은 아님 |\n| 승인 항목 | 사전 조건 네 개와 비교 | 자신 있는 표현은 증거 아님 |\n| 한도·usage | 실제 보이는 정보 | 계정 비율은 단일 비용 아님 |\n\n없으면 unavailable, 추정이면 estimated와 방법을 적고 모르는 값을 0으로 쓰지 않습니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 2：固定比較條件與正確答案",
+        "Step 2: Fix comparison conditions and ground truth",
+        "手順2：比較条件と正解を固定する",
+        "2단계: 비교 조건과 정답 고정"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "兩個資料夾都用相同 broken 原版，不在其中一份先修程式。各執行一次 node --test core.test.mjs，確認同樣是原三項中兩項通過、一項失敗；這個測試只用 Node，不消耗模型額度。缺陷是 visibleTasks 在 completed 分支仍挑選 !task.completed。自己先記住這個基準，但不把正確修法直接寫入待比較的提示詞。A、B 都要提出修正計畫，不實際修改或啟動服務。",
+        "Use identical untouched broken copies. Run node --test core.test.mjs once in each and confirm the same two passes and one failure; this Node-only check consumes no model quota. The defect is visibleTasks selecting !task.completed in the completed branch. Record that ground truth without inserting the solution into comparison prompts. Both A and B propose a fix plan without editing files or starting services.",
+        "同一未変更 broken を2つ使い、各 node --test core.test.mjs で同じ2合格・1失敗を確認します。Node だけなのでモデル枠は使いません。欠陥は visibleTasks の completed 分岐が !task.completed を選ぶことです。この基準を手元に記録し、比較依頼へ正解を直接書きません。A・B とも計画だけで編集・サービス起動はしません。",
+        "같은 미수정 broken을 두 개 쓰고 각각 node --test core.test.mjs로 같은 두 통과·한 실패를 확인합니다. Node만 써 모델 한도를 소비하지 않습니다. 결함은 visibleTasks의 completed 분기가 !task.completed를 고르는 것입니다. 기준을 따로 기록하되 비교 요청에 정답을 넣지 않습니다. A·B 모두 계획만 제안하며 수정·서비스 시작은 하지 않습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在同一入口、同一台主機各開一個新任務，A 指向 efficiency-a，B 指向 efficiency-b，使用同一模型與推理深度；若帳號沒有某個選項，就記錄目前預設，不猜型號。兩次依序執行，避免同時使用造成等待互相影響。新任務能減少對話答案互相污染，但快取、網路、服務負載仍不完全相同，因此這是自己的流程練習，不是可發表的模型效能排名。",
+        "Create a fresh task for each folder on the same surface and host, with the same model and reasoning setting. If a choice is unavailable, record the current default without guessing its name. Run sequentially to reduce contention. Fresh tasks reduce answer leakage between conversations, but caching, networking and service load still differ. This is a personal workflow exercise, not a publishable model-performance ranking.",
+        "同じ入口・ホストで各フォルダーに新規タスクを作り、モデル・推論設定を揃えます。選択肢がなければ型名を推測せず既定を記録します。同時競合を減らすため順番に実行します。新会話で回答混入は減りますがキャッシュ・ネットワーク・負荷は完全一致せず、個人の手順実習であって発表可能なモデル順位ではありません。",
+        "같은 진입점·호스트에서 각 폴더의 새 작업을 만들고 모델·추론 설정을 맞춥니다. 선택이 없으면 이름을 추측하지 말고 기본값을 기록하세요. 동시 경합을 줄이도록 순차 실행합니다. 새 대화는 답변 유입을 줄이지만 캐시·네트워크·부하는 같지 않으므로 개인 절차 실습이며 발표 가능한 모델 순위가 아닙니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 3：只改提示詞的具體程度",
+        "Step 3: Change only prompt specificity",
+        "手順3：依頼の具体性だけ変える",
+        "3단계: 요청의 구체성만 변경"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "A 是資訊較少但仍有目標的請求；B 加入可重現輸入、預期／實際與檔案範圍。兩者的最終目標相同，不同的是你提前提供多少可靠背景。記下各自撰寫提示詞花的時間，再送出一次。若代理追問，正常回答並計入補充次數；不為了讓 B 勝出而拒绝提供 A 所需要的資訊。",
+        "A provides less context but still has an objective; B adds reproducible input, expected/actual behavior and file scope. Both target the same outcome. The variable is how much reliable context you provide in advance. Record prompt-writing time and submit each once. Answer clarification questions normally and count them; do not withhold needed information from A to make B win.",
+        "A は情報が少なくても目的があり、B は再現入力・期待／実際・ファイル範囲を加えます。成果目標は同じで、先に渡す確かな背景量が違います。依頼作成時間を記録して各1回送信し、質問には普通に答えて補足回数へ数えます。B を勝たせるため A に必要情報を隠しません。",
+        "A는 정보가 적어도 목표가 있고 B는 재현 입력·예상/실제·파일 범위를 추가합니다. 결과 목표는 같으며 미리 주는 확실한 배경의 양이 다릅니다. 작성 시간을 기록하고 각각 한 번 보내세요. 질문에는 정상 답변하고 보충 횟수로 세며 B를 이기게 하려고 A에 필요한 정보를 숨기지 않습니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "label": [
+        "A：較少背景的請求",
+        "A: less contextual detail",
+        "A：背景が少ない依頼",
+        "A: 배경이 적은 요청"
+      ],
+      "code": "Find why Completed shows unfinished tasks in this project.\nExplain the cause, propose the smallest fix and give verification steps.\nRead only; do not edit files, run tests or start services.\n"
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "label": [
+        "B：提供重現與範圍",
+        "B: reproduction and scope",
+        "B：再現と範囲を提示",
+        "B: 재현과 범위 제공"
+      ],
+      "code": "Investigate the Completed filter in this Small Steps practice copy.\nReproduction: add Read and Build, complete Read, then choose Completed.\nExpected: only Read. Actual: only Build.\nInspect core.mjs, app.js and core.test.mjs as needed.\nExplain the cause, propose the smallest fix while preserving Active/All behavior,\nand give exact Node and browser verification steps.\nRead only; do not edit files, run tests or start services.\n"
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 4：用同一把尺驗收兩個結果",
+        "Step 4: Evaluate both results with the same criteria",
+        "手順4：同じ基準で両結果を判定する",
+        "4단계: 같은 기준으로 두 결과 평가"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "四項都要人工核對：是否定位 visibleTasks 的 completed 條件；是否建議只讓 completed 分支保留 task.completed 為真的資料；是否保留 Active／All 行為；是否提出 node --test core.test.mjs 及同一個 Read／Build 畫面重現。額外檢查它沒有聲稱已執行你禁止的測試，也沒有修改檔案。多寫一頁泛泛的風險清單不會加分，短答案若缺少驗證也不算完成。",
+        "Manually check four criteria: locate the completed condition in visibleTasks; propose selecting task.completed only in that branch; preserve Active/All behavior; and specify node --test core.test.mjs plus the same Read/Build UI reproduction. Also verify it neither claims to have run prohibited tests nor edits files. A long generic risk list earns no extra credit, while a short answer missing verification is incomplete.",
+        "4点を手で照合します。visibleTasks の completed 条件を特定し、その分岐だけ task.completed 真を選ぶ修正、Active／All の保持、node --test core.test.mjs と同じ Read／Build 画面再現を提案したかです。禁止した試験を実行済みと称したりファイルを変えたりしていないかも確認します。一般的な長い危険一覧は加点せず、短くても検証欠如なら未完了です。",
+        "네 항목을 수동 확인합니다. visibleTasks의 completed 조건 식별, 해당 분기만 task.completed 참을 고르는 수정, Active/All 유지, node --test core.test.mjs와 같은 Read/Build 화면 재현 제안입니다. 금지한 시험을 실행했다고 주장하거나 파일을 수정하지 않았는지도 확인하세요. 긴 일반 위험 목록은 가점이 아니며 짧아도 검증이 없으면 미완료입니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "markdown",
+      "label": [
+        "efficiency-notes.md（填入實際觀察）",
+        "efficiency-notes.md (observed values only)",
+        "efficiency-notes.md（実観測のみ）",
+        "efficiency-notes.md (실제 관측만)"
+      ],
+      "code": "# Workflow comparison\nDate / host / surface / CLI or app version:\nModel and reasoning setting:\nFixture: unchanged broken copy\n\n| Metric | A | B |\n| --- | --- | --- |\n| Prompt preparation time | | |\n| Wait until final answer | | |\n| Human verification time | | |\n| Clarification/correction turns | | |\n| Accepted criteria out of 4 | | |\n| Actual visible usage, or unavailable | | |\n| Files unchanged | | |\n| Remaining uncertainty | | |\n\nDecision and evidence:\nOne adjustment to try next:\n"
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 5：把結果變成可持續的習慣",
+        "Step 5: Turn observations into a repeatable habit",
+        "手順5：観測を継続できる習慣にする",
+        "5단계: 관측을 지속 가능한 습관으로 만들기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "比較人的準備＋驗證時間、等待與重工，而非只看最快的回答。B 若讓準備多花兩分鐘卻省下多次追問，可能適合日常流程；若 A 也能一次完整通過，就沒有證據說每個小任務都要寫長文件。將有效的重現格式存到[可複用範本](article:codex-templates-cheatsheet)，保留目標、來源、範圍與驗收即可，不把整段聊天歷史全部貼回每次任務。這能减少過期背景與相互矛盾的條件。",
+        "Compare preparation plus verification time, waiting and rework, not just the fastest answer. If B takes two more minutes to prepare but saves several clarifications, it may suit daily work. If A also passes completely in one turn, there is no evidence every small task needs a long brief. Save an effective reproduction format in [Reusable templates](article:codex-templates-cheatsheet), retaining objective, source, scope and acceptance instead of pasting entire chat histories. This reduces stale and contradictory context.",
+        "最速回答だけでなく準備＋検証時間、待機、手戻りを比較します。B の準備が2分増えて補足が減るなら日常に適すかもしれません。A も1回で全合格なら全小課題に長文が必要という証拠はありません。有効形式を[再利用雛形](article:codex-templates-cheatsheet)へ保存し、目的・出典・範囲・検証を残して全会話を毎回貼りません。古い文脈や矛盾を減らせます。",
+        "가장 빠른 답변뿐 아니라 준비+검증 시간·대기·재작업을 비교합니다. B 준비가 2분 늘어도 보충 여러 번을 줄이면 일상에 적합할 수 있습니다. A도 한 번에 모두 통과하면 모든 작은 작업에 긴 문서가 필요하다는 증거는 없습니다. 효과적인 형식을 [재사용 템플릿](article:codex-templates-cheatsheet)에 저장하고 목표·출처·범위·검증을 유지하되 전체 대화를 매번 붙이지 마세요. 오래되거나 충돌하는 맥락을 줄입니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "下一輪若要比較模型或推理深度，先固定已驗收的 B 提示詞與同一輸入，再只改一項可用設定，依[模型選擇](article:codex-model-selection)的方法記錄。不要同時換模型、增加子代理、改提示詞再把差異全部歸因於速度。大量平行工作與長時間重試也會產生用量；對單一小問題先把目標縮小通常比增加工具更容易驗證。需要長任務時用[交接紀錄](article:codex-context-handoff)保存已驗證狀態，避免下一次重做全部探索。",
+        "To compare models or reasoning next, hold the accepted B prompt and input fixed and change one available setting using [Model selection](article:codex-model-selection). Do not change model, delegation and prompt together and attribute everything to speed. Parallel tasks and prolonged retries also use quota. For a small problem, narrowing the objective is usually easier to verify than adding tools. For long work, retain verified state in a [Handoff record](article:codex-context-handoff) to avoid repeating all exploration.",
+        "次にモデル・推論を比べるなら合格 B と入力を固定し、[モデル選択](article:codex-model-selection)に沿って利用可能な設定1つだけを変えます。モデル・子代理・依頼を同時変更して全差異を速度へ帰属しません。平行作業・長い再試行も枠を使い、小問題はツール追加より目的を狭める方が検証しやすい場合があります。長期作業は[交接記録](article:codex-context-handoff)で検証済み状態を残して探索のやり直しを減らします。",
+        "다음에 모델·추론을 비교하려면 합격한 B 요청과 입력을 고정하고 [모델 선택](article:codex-model-selection)에 따라 사용 가능한 설정 하나만 바꿉니다. 모델·하위 에이전트·요청을 함께 바꾸고 모든 차이를 속도 탓으로 돌리지 마세요. 병렬 작업·긴 재시도도 사용량을 쓰며 작은 문제는 도구 추가보다 목표 축소가 검증하기 쉬울 수 있습니다. 긴 작업은 [인계 기록](article:codex-context-handoff)에 검증 상태를 남겨 탐색 반복을 줄입니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "完成與常見誤判",
+        "Completion and common misinterpretations",
+        "完了とよくある誤判定",
+        "완료와 흔한 오판"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "兩份副本應仍未改動，保存觀察表及兩次回答；若代理擅自修改，記錄為範圍失敗，先保存差異再還原自己的副本。一次比較只能支持本次條件下的選擇，不能推論某模型永久較省、某方案固定能做多少任務。額度畫面沒有更新、重置發生或其他任務同時使用時，該欄寫不可比較。完成標準是四項品質判斷有依據、時間有方法、未知用量沒有假數字，並選定下一個最小調整；不是讓統計看起來全部進步。",
+        "Both copies should remain unchanged. Save observations and both answers; if an agent edited files, record a scope failure, preserve the diff and restore your own copy. One comparison supports a choice only under those conditions, not permanent model economy or a fixed number of tasks per plan. Mark usage incomparable if the display is stale, a reset occurred or other tasks used the account. Completion requires evidenced quality judgments, a timing method, no invented usage and one next adjustment, not a table where every metric improves.",
+        "両コピーは不変のまま、観測表と回答を保存します。代理が編集したなら範囲違反と記録し差分保存後に自分のコピーを復元します。1回比較はその条件の判断だけで、恒久的な節約モデルや方案の固定課題数を示しません。利用画面遅延・重置・他課題使用があれば比較不能とします。品質4点の根拠、時間方法、架空利用量なし、次の小変更が完了条件で、全指標を改善に見せることではありません。",
+        "두 복사본은 그대로여야 하며 관측표·답변을 저장합니다. 에이전트가 수정했으면 범위 위반으로 기록하고 차이를 보존한 뒤 자신의 복사본을 복원하세요. 한 번 비교는 해당 조건의 선택만 지지하며 영구적으로 저렴한 모델·요금제별 고정 작업 수를 뜻하지 않습니다. 사용량 표시 지연·초기화·다른 작업 사용은 비교 불가로 적습니다. 품질 네 항목의 근거·시간 측정법·가짜 사용량 없음·다음 작은 조정이 완료 조건이며 모든 지표를 개선처럼 보이게 하는 것이 아닙니다."
+      ]
+    }
+  ]
+}

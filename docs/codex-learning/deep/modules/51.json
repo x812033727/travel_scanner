@@ -71,7 +71,7 @@
     {
       "type": "code",
       "language": "markdown",
-      "code": "# Task\nGoal: Add a filter for active tasks in the Small Steps practice app.\nContext: Use the complete reference copy in this practice folder.\nInspect first: README.md, app.js, model.js and the existing tests.\nScope: Only files needed for the filter and its focused tests.\nBehavior: All shows every task; Active shows tasks whose completed value is false.\nPreserve: Existing task IDs, titles, ordering and stored data format.\nAcceptance: With three tasks (two complete), Active shows exactly one.\nBoundary: An empty list shows a useful empty state and does not throw.\nValidation: Run the documented tests; report the exact command and exit status.\nDelivery: Explain changed behavior, tests actually run and remaining limitations.\n",
+      "code": "# Task\nGoal: Verify the active-task filter and repair it only if the acceptance case fails.\nContext: Use the complete reference copy in this practice folder.\nInspect first: index.html, app.js, core.mjs, style.css and core.test.mjs.\nScope: Only files needed for the filter and its focused tests.\nBehavior: All shows every task; Active shows tasks whose completed value is false.\nPreserve: Existing task IDs, titles, ordering and stored data format.\nAcceptance: With three tasks (two complete), Active shows exactly one.\nBoundary: An empty list shows a useful empty state and does not throw.\nValidation: Run node --test core.test.mjs and verify the browser behavior; report actual results.\nIf the existing behavior passes, report that evidence without unnecessary edits.\nDelivery: Explain changed behavior, tests actually run and remaining limitations.\n",
       "label": [
         "templates/task.md",
         "templates/task.md",
@@ -82,10 +82,10 @@
     {
       "type": "p",
       "text": [
-        "這份填好的範例對應本系列的 Small Steps 練習，不是任何專案都能直接套用。先在自己的副本確認檔案存在；若測試指令與 README 不符，以實際專案為準再修改要求。想先討論可行性時，使用 [Plan 模式](article:codex-plan-mode) 並把交付改成「先提出步驟及待決定項目」。若這次已要實作，就清楚寫明可以修改的範圍，避免一份範本同時要求先停下及立刻完成。",
-        "This filled example targets the series' Small Steps practice app, not every repository. Verify the files in your own copy and align validation with its README. To discuss feasibility, use [Plan mode](article:codex-plan-mode) and change the delivery to a proposed sequence and unresolved decisions. For implementation, state the editable scope clearly rather than asking both to pause first and finish immediately.",
-        "これは Small Steps 用の記入例で、どのプロジェクトにも無修正で使えるものではありません。副本のファイルと README の検証方法を確認します。可能性の相談なら [Plan モード](article:codex-plan-mode)で手順と未決事項を成果に変更します。実装なら編集範囲を明示し、停止と即完了を同時に求めません。",
-        "작성된 예시는 Small Steps 연습 앱용이며 모든 저장소에 그대로 쓸 수는 없습니다. 자신의 복사본에서 파일과 README의 검증 방법을 확인하세요. 타당성 논의는 [Plan 모드](article:codex-plan-mode)에서 단계와 미결정을 결과물로 바꿉니다. 구현이라면 수정 범위를 분명히 해 먼저 멈추기와 즉시 완료를 동시에 요청하지 않습니다."
+        "這份填好的範例對應本系列的 Small Steps 練習，不是任何專案都能直接套用。先在自己的 expected 副本確認五份程式檔存在；操作說明在下載包根目錄的 README.md，不在 expected 裡。其他專案則依自己的 README 核對驗證指令。想先討論可行性時，使用 [Plan 模式](article:codex-plan-mode) 並把交付改成「先提出步驟及待決定項目」。若已要實作，清楚寫明可以修改的範圍。",
+        "This filled example targets the Small Steps exercise, not every repository. Confirm the five code files in your expected copy. Instructions are in README.md at the download root, not inside expected; other projects use their own README to verify commands. To discuss feasibility, use [Plan mode](article:codex-plan-mode) with a proposed sequence and unresolved decisions as the deliverable. For implementation, clearly state the editable scope.",
+        "この記入例は Small Steps 用です。expected コピーに5つのコードファイルがあるか確認します。説明は expected 内ではなくダウンロードの根にある README.md にあります。他のプロジェクトでは各 README で検証命令を照合します。可能性の相談は [Plan モード](article:codex-plan-mode)で手順と未決事項を成果にし、実装なら編集範囲を明示します。",
+        "이 작성 예시는 Small Steps용입니다. expected 복사본에 코드 파일 다섯 개가 있는지 확인하세요. 설명 README.md는 expected 안이 아니라 다운로드 루트에 있습니다. 다른 프로젝트는 각 README로 검증 명령을 확인합니다. 타당성 논의는 [Plan 모드](article:codex-plan-mode)에서 절차·미결정을 결과물로 정하고 구현이라면 수정 범위를 명시합니다."
       ]
     },
     {
@@ -171,7 +171,7 @@
       "text": [
         "Review 的比較起點要能在目前 Git 儲存庫解析；如果分支不存在，先查[Git 與差異](article:codex-git-basics)，不要默認 main 一定存在。交接範本則描述「目前在哪裡」，每次交接重新讀取狀態。某人在舊任務說已提交，不代表這個工作目錄乾淨；把尚未提交的修改與歸屬列出，接手者才不會覆寫正在進行的工作。",
         "The review base must resolve in the current Git repository. If it does not, consult [Git and diffs](article:codex-git-basics) rather than assuming main exists. A handoff records the current location and state and must be refreshed each time. A commit reported in an earlier task does not establish a clean current directory; list uncommitted work and ownership to avoid overwriting active changes.",
-        "審査の比較元は現在の Git で解決できる必要があります。存在しなければ [Git と差分](article:codex-git-basics)を確認し main を仮定しません。引継ぎは現在地と状態を毎回更新します。以前の会話のコミット報告だけで現在の目録を未変更と判断せず、未コミット分と担当を残します。",
+        "審査の比較元は現在の Git で解決できる必要があります。存在しなければ [Git と差分](article:codex-git-basics)を確認し main を仮定しません。引継ぎは現在地と状態を毎回更新します。以前の会話のコミット報告だけで現在のディレクトリを未変更と判断せず、未コミット分と担当を残します。",
         "검토 기준은 현재 Git 저장소에서 찾을 수 있어야 합니다. 없으면 [Git과 차이](article:codex-git-basics)를 확인하고 main을 가정하지 마세요. 인계는 현재 위치와 상태를 매번 갱신합니다. 이전 작업의 커밋 보고가 현재 폴더의 깨끗함을 증명하지 않으므로 미커밋 변경과 담당자를 적어 덮어쓰기를 막습니다."
       ]
     },
@@ -196,7 +196,7 @@
     {
       "type": "code",
       "language": "markdown",
-      "code": "# Practice project rules\nRead README.md before changing the practice app.\nPreserve task IDs and the existing data format.\nKeep changes within the requested behavior.\nUse the test command documented by this project and report actual results.\nDo not commit credentials or private practice data.\nIf required files are missing, report the missing paths before making assumptions.\n",
+      "code": "# Practice project rules\nRead index.html, app.js, core.mjs and core.test.mjs before changing this practice app.\nPreserve task IDs and the existing data format.\nKeep changes within the requested behavior.\nRun node --test core.test.mjs and report actual results.\nDo not commit credentials or private practice data.\nIf required files are missing, report the missing paths before making assumptions.\n",
       "label": [
         "templates/rules.example.md：規則草稿",
         "templates/rules.example.md: draft rules",
@@ -229,7 +229,7 @@
       "text": [
         "外部工具驗收要依序填設定、認證、能力與實際呼叫，不適用的認證可填 not required，未查證的欄位填 not checked。不要把「有設定檔」推論為連線正常；也不要預先填 true 讓報告看起來完整。使用 [Plugins](article:codex-plugins) 或 [MCP](article:codex-mcp) 時，一次只填你這次檢查的那個入口與主機，同名伺服器在另一台電腦可能指向不同設定。",
         "Fill configured, authentication, capability and actual invocation separately. Use not required for inapplicable authentication and not checked for unverified fields. A configuration file does not prove a working connection, and prefilled true values make a report misleading. With [Plugins](article:codex-plugins) or [MCP](article:codex-mcp), record only the tested surface and host; an identically named server elsewhere can have different settings.",
-        "設定、認証、能力、実呼出しを別記します。不要な認証は not required、未確認は not checked とします。設定ファイルだけで接続成功とせず true を予記しません。[Plugins](article:codex-plugins) や [MCP](article:codex-mcp) は今回の入口と主機を記録し、他機の同名設定を同一視しません。",
+        "設定、認証、能力、実呼出しを別記します。不要な認証は not required、未確認は not checked とします。設定ファイルだけで接続成功とせず true を予記しません。[Plugins](article:codex-plugins) や [MCP](article:codex-mcp) は今回の入口とホストを記録し、他機の同名設定を同一視しません。",
         "설정·인증·기능·실제 호출을 따로 채웁니다. 불필요한 인증은 not required, 미확인은 not checked로 적으세요. 설정 파일만으로 연결 성공을 판단하거나 true를 미리 넣지 않습니다. [Plugins](article:codex-plugins)나 [MCP](article:codex-mcp)는 이번 진입점과 호스트만 기록하며 다른 PC의 같은 이름 설정을 동일하게 보지 않습니다."
       ]
     },
@@ -247,7 +247,7 @@
       "text": [
         "第一種錯誤是保留未填的尖括號：送出前搜尋 <，逐個換成實際資訊或刪掉不適用欄位。第二種是舊任務的命令套到新專案：先讀 README 並確認工作目錄。第三種是把範本寫成互相衝突的規則，例如只讀審查又要求順便改檔；選一個本次目標再提交。已存在同名範本時保存另一個副本或用 Git 看差異，回復只針對這次新寫的範本，不撤回正式專案其他修改。",
         "First, unresolved placeholders: search for < before submitting and replace each field or remove it if inapplicable. Second, stale commands copied into another project: read its README and verify the working directory. Third, conflicting instructions such as read-only review plus incidental edits: choose one goal. Preserve an existing same-name template as another copy or inspect its Git diff. Restore only the templates you changed, leaving other project work intact.",
-        "未記入の山括弧は送信前に < を検索し、記入または不要欄削除で直します。旧命令の流用は README と現在地の確認で防ぎます。読取り審査とついでの編集など競合する要求は一目的に絞ります。同名の既存雛形は別副本や Git 差分で保護し、復元も自分が変更した雛形に限定します。",
+        "未記入の山括弧は送信前に < を検索し、記入または不要欄削除で直します。旧命令の流用は README と現在地の確認で防ぎます。読取り審査とついでの編集など競合する要求は一目的に絞ります。同名の既存雛形は別コピーや Git 差分で保護し、復元も自分が変更した雛形に限定します。",
         "전송 전에 <를 검색해 미완성 항목을 채우거나 제거하세요. 다른 프로젝트의 오래된 명령은 README와 작업 폴더 확인으로 방지합니다. 읽기 전용 검토와 추가 수정처럼 충돌하는 요구는 한 목표로 정리합니다. 동명 템플릿은 별도 사본이나 Git 차이로 보존하고 복원도 자신이 바꾼 템플릿만 대상으로 합니다."
       ]
     },
@@ -256,7 +256,7 @@
       "text": [
         "小練習：選 bug.md 填入一個你已觀察到的練習錯誤，再選 handoff.md 交代下一步。把兩份交給沒有看過原任務的人閱讀：對方應能找到正確資料夾、重現相同現象、知道哪些還沒確認。若對方還必須猜你用哪台電腦或哪份資料，補那個欄位即可，不要加長所有範本。保留一份空白主範本，每次另存任務副本，避免上次的結果變成下次的預設答案。",
         "Exercise: fill bug.md with an observed practice failure and handoff.md with the next step. Give both to someone unfamiliar with the original task: they should locate the folder, reproduce the symptom and identify unchecked items. Add a missing host or data field where needed instead of lengthening every template. Keep a blank master and save a separate task copy so yesterday's result does not become tomorrow's default answer.",
-        "実習では観測済みの不具合を bug.md、次の一歩を handoff.md に書き、元の作業を知らない人に渡します。場所、再現、未確認が分かれば合格です。主機やデータを推測させるならその欄を足し、全雛形を長くしません。空の原本を保持し作業ごとに副本を保存して、前回結果を既定値にしません。",
+        "実習では観測済みの不具合を bug.md、次の一歩を handoff.md に書き、元の作業を知らない人に渡します。場所、再現、未確認が分かれば合格です。ホストやデータを推測させるならその欄を足し、全雛形を長くしません。空の原本を保持し作業ごとにコピーを保存して、前回結果を既定値にしません。",
         "연습으로 관찰한 오류를 bug.md에, 다음 단계를 handoff.md에 채워 원래 작업을 모르는 사람에게 전달하세요. 폴더·재현·미확인 사항을 알 수 있어야 합니다. 기기나 데이터를 추측해야 하면 그 항목만 추가하세요. 빈 원본을 보존하고 작업별 사본을 저장해 이전 결과가 다음 기본 답이 되지 않게 합니다."
       ]
     },
@@ -265,7 +265,7 @@
       "text": [
         "本篇檔案與範例為原創教材，沒有內建執行權限，也不會改動你的帳號。驗收是六份可閱讀的範本、一份填好的 Bug 回報與交接，以及至少一項被你找出的含糊條件；不要求模型回覆特定句型。下一單元從 [MCP 設定](article:codex-mcp) 開始，把 connection-check.md 用在真實的唯讀工具測試。",
         "These original teaching templates carry no execution privileges and do not change your account. Acceptance is six readable templates, a filled bug report and handoff, and at least one ambiguity you identified, without requiring a model to use a particular sentence. Continue with [MCP setup](article:codex-mcp) and apply connection-check.md to an actual read-only tool test.",
-        "原創教材であるこれらのファイルに実行権限はなく、アカウントも変えません。六つの読める雛形、記入済み報告と引継ぎ、特定した曖昧さ一件が検証成果です。モデルの特定表現は要求しません。次は [MCP 設定](article:codex-mcp)で接続雛形を実際の読取り試験に使います。",
+        "オリジナル教材であるこれらのファイルに実行権限はなく、アカウントも変えません。六つの読める雛形、記入済み報告と引継ぎ、特定した曖昧さ一件が検証成果です。モデルの特定表現は要求しません。次は [MCP 設定](article:codex-mcp)で接続雛形を実際の読取り試験に使います。",
         "이 원본 교육 템플릿에는 실행 권한이 없으며 계정을 바꾸지 않습니다. 읽을 수 있는 템플릿 여섯 개, 작성한 버그 보고와 인계, 찾은 모호한 조건 하나가 검증 결과입니다. 모델에 특정 문장을 요구하지 않습니다. 다음 [MCP 설정](article:codex-mcp)에서 연결 템플릿을 실제 읽기 전용 시험에 사용하세요."
       ]
     }

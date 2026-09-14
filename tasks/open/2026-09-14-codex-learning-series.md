@@ -1,11 +1,11 @@
 ---
 id: 2026-09-14-codex-learning-series
 title: Codex learning hub - 60 in-depth multilingual tutorials
-status: in-progress
+status: blocked
 priority: P2
 area: docs
-owner: codex-integration-fc2e
-claimed_at: 2026-09-14T06:50:58Z
+owner:
+claimed_at:
 created_at: 2026-09-14T01:13:26Z
 completed_at:
 branch: codex/codex-learning-complete
@@ -179,62 +179,56 @@ scope:
 
 # Codex learning hub and multilingual tutorial series
 
-2026-09-14 計畫已依使用者要求與「規劃 Claude Code 教學目錄」對齊。有效製作規格見 `docs/codex-learning/depth-plan.md` 與 `article-template.md`：一個總目錄、60 篇、五語，保留 32 篇既有 ID／slug，新增 28 篇；當前深入驗收為 0/60。以下已勾選項是前一輪的草稿與網站基礎，不等於深入教學完成。
+已依使用者要求對齊「規劃 Claude Code 教學目錄」的深入程度：總目錄＋60 篇、五語、十單元，保留原 32 篇 ID／slug。60 篇深入稿已編譯，加總目錄共 61 個內容包／305 份語言文件；正式深入驗收仍為 0/60。沒有 push、PR、匯入、正式發布或部署。
+
+有效規格見 docs/codex-learning/depth-plan.md 與 article-template.md。最新證據、精確測試範圍及剩餘關卡見 docs/codex-learning/progress.md。
 
 ## Why
 
-在生活分享建立五語 Codex 學習中心，將零散入門、CLI、雲端文章整合為可搜尋的 60 篇課程，提供相互連結、可複製程式碼與維護來源。
+在生活分享建立可搜尋的五語 Codex 學習中心，整合安裝、平台、MD 規則、指令、日常開發及進階整合，讓每篇都有獨立材料、成果、排錯與雙向導覽。
 
 ## Definition of done
 
-- [x] 總目錄與 32 篇的五語內容包、系列清單及公開路由整合。
-- [x] 程度／平台／需求篩選、指令索引、發布狀態守門及雙向導覽。
-- [x] 結構化文字連結、程式碼區塊、API 驗證、後台編輯和預覽，保持舊格式相容。
-- [x] 原創配圖、實戰 CSV 和網站範例、五語圖說及可重現驗證紀錄。
-- [ ] 依深入模板重寫／擴充既有 32 篇，新增規劃中的 28 篇；一般繁中操作篇約 1,800–3,000 字，五語步驟等義。
-- [ ] 先驗收原 ID 03／10／04／11／23 五篇代表篇，包含完整範例、成功／失敗案例、排錯與停止／還原。
-- [x] 將待辦網站補為可獨立起步的 HTML／CSS／JavaScript 共用練習，保留 CSV 第二實戰路線。
-- [ ] 核對 Claude Code 任務持有人後整合共用格式：spans／inlines 轉接、站內引用、行內 code、用途 label、TOML／CSV 相容。
-- [ ] 整合共用系列 API、五語資料、穩定 ID 與閱讀順序、推薦路線、先備文章、URL 篩選及目錄集合頁 SEO。
-- [ ] 補上桌面側欄章節目錄／手機可展開目錄與 360px 驗證。
-- [ ] 按新閱讀次序完成三批各 20 篇，每十篇一次五語、範例、連結與圖文驗收；共 60 篇＋目錄均可預覽。
-- [ ] 審查並合併工作目錄變更；未建立 PR、未合併。
-- [ ] 正式發布前補齊所需 Codex 介面截圖與跨平台實機審核；目前仅官方文件查證及 Windows 瀏覽器實測。
-- [ ] 後續明確批准後才可匯入、發布、部署與驗證公開網址。
+- [x] 60 個穩定 ID、十單元與五語總目錄，保留入門、CLI、雲端既有網址。
+- [x] 依程度／平台／需求／單元／路線篩選、指令別名搜尋及 URL 保存條件。
+- [x] 深化原 32 篇、補齊新增 28 篇，共 300 份分篇語言文件；作者稿 55 份四語 JSON 模組＋5 篇四語 Markdown。
+- [x] 結構化正文引用、上下返回目錄、同單元前後篇及相關／先備教學。
+- [x] 核對 Claude Code 任務已結案與 PR #485 合併後，整合共用 inlines／article、code label、Shell／TOML／CSV、API 與後台相容。
+- [x] 五語共用系列 API 與公開狀態守門；撤回、缺語系或讀取失敗不產生可點擊空頁。
+- [x] 桌面側欄／手機可展開目錄、集合頁 SEO 與公開 ItemList。
+- [x] 原創封面／圖解、五語圖說與明確標示環境的參考網站截圖。
+- [x] 待辦網站 start／broken／expected、CSV 五檔下載包及可重現成功／失敗／還原參考練習。
+- [x] 最終作者與內容完整性檢查：五語程式碼一致、每個作者連結保留、圖片與來源存在、60 篇 pack hash 符合編譯來源。
+- [ ] 五篇代表教學的產品介面操作證據與圖文終審，包含平台／版本／日期及未實測範圍。
+- [ ] 60 篇＋目錄最終五語整頁預覽：360／390／1280px、複製、搜尋分享、語言切換、前後篇、正文引用與圖文。
+- [ ] 完成所有驗收後，對齊最新 main、審查精確差異、開 PR、確認 exact head CI 並合併。
+- [ ] 依使用者既有「全部完成後再開 PR 部署」授權，備份後匯入／正式發布／部署，核對公開五語網址。無須另把已授權步驟當成尚未授權。
 
-## Steps
+## Checks and evidence
 
-- [x] 確認原 AI 第四批任務未被持有，將 CLI／雲端兩篇精確範圍移交，其他 18 篇未動。
-- [x] 第一批 01–12 ＋目錄五語內容包。
-- [x] 第二批 13–22 五語內容包。
-- [x] 第三批 23–32 五語內容包與實戰原始檔。
-- [x] API／前端／瀏覽器／內容與圖片驗證；見下列交接文件。
+截至 2026-09-14：
+- 60 篇／300 分篇的完整性檢查通過；總目錄在內共 305 份語言文件。
+- 受影響前端 168 項、編譯器 9 項、工具 39 項通過。
+- API／系列／內容包 59 passed／18 skipped；本機未啟動 PostgreSQL 的案例略過，SQLite 五語發布／撤回檢查通過。
+- ESLint、TypeScript／正式建置、API Ruff／Mypy、i18n 與任務檢查通過；其他任務既有警告保留。
+- 九組教材參考檢查共 74 項通過。exec 模型程序使用模擬；CI 僅本機驗證資料，未觸發付費模型或 GitHub 工作流程。
+- 內容稽核 0 錯誤、24 個編輯提示；不降低門檻或填充內容以消除提示。
+- 65 個官方來源網址經 HEAD／必要時 GET 檢查正常；回應狀態不代替內容查證。
 
-## How to verify
+指令與資料流見 docs/codex-learning/README.md。evidence/series-integrity.json 僅為靜態完整性，各篇 previewAccepted 均為 false；既有瀏覽器報告保存自己的範圍，不冒充最新全套通過。
 
-完整命令與資料流程見 `docs/codex-learning/README.md`。主要驗證：
+## Remaining blockers
 
-- `npm run lint:web`、`npm run typecheck:web`、`npm run build:web`
-- `npm exec --workspace @travel-scanner/web -- vitest run components/codex-learning components/content-blocks.test.tsx components/guides components/admin-guides-panel.test.tsx app/ --pool=threads --maxWorkers=1`
-- `npm run check:i18n`、`npm run check:tasks`、`npm run test:tools`
-- `uv run --directory apps/api pytest tests/test_codex_learning.py tests/test_guides_content_pack.py tests/test_guides_pack_ingest.py -q`
-- `uv run --directory apps/api python ../../tools/codex-learning/audit.py`
-- `node tools/codex-learning/browser-check.mjs`（須先啟動 README 記錄的唯讀假 API 與本機網站）
+1. 整合後的歷史 39 篇瀏覽器檢查在 572 項後，韓文 IDE 桌面頁等待程式碼逾時。depth-browser-shared-integration.json 保持 failed。
+2. 隨後本機 Next 正式預覽啟動被自動核准審查拒絕，縮限至只監聽本機後仍回覆 blocked by policy，未提供具體理由。沒有改用其他服務、啟動方式或連接埠繞過。舊 fixture 是過期快照，不能作為最終驗收。
+3. Codex 桌面／手機真實介面截圖尚缺。macOS、Linux、iOS、Android 依官方文件逐平台說明，沒有宣稱實機測試；Windows Edge 響應式截圖也不等同手機實測。
 
-## Notes
+上述條件尚未解除，因此不標 done、不開部分 PR、不匯入或部署。可用預覽環境與產品介面證據補齊後，從最終 60 篇快照繼續驗收。
 
-使用者要求開始執行後，拆出 `2026-09-14-codex-depth-content` 精確範圍，避免與活躍 Claude Code 任務共用檔案互相覆寫。本輪已落實 60 筆目錄、十單元、URL 篩選、先備與同單元導覽；五篇代表稿已編成 25 份深化文件，仍有 27 篇短稿及 28 篇新稿待完成。代表篇產品介面證據與共享系統整合仍未全部完成，不提升正式深入驗收。最新檢查與接手入口見 `docs/codex-learning/progress.md`。
+## Integration and ownership
 
-前一次對齊僅更新計畫，當時尚未插入 60 筆 runtime catalog；上述新一輪實作已取代該狀態。新增 28 篇的範圍已列在子任務；整合共用檔案前仍須確認 `1cff` 的持有人。兩邊 schema 同名但不相容，不能直接覆寫合併。對方任務仍在製作，不能把已批准規格稱為已完成成果。
+原 AI 第四批任務的 CLI／雲端兩篇已精確移交，其餘篇章未改動。使用者的五語及截圖要求取代舊 brief 的僅繁中／無截圖限制。
 
-使用者此次五語／截圖要求取代舊 brief 的繁中／無截圖限制。未使用正式專案私人資料，也未存取正式資料庫。
+Claude Code 的 PR #485 已唯讀核對合併；未修改對方 1cff 工作目錄或傳送訊息。先保存 5f5b0b11，再以 7abe6057 將 main 3b8df68c693eb81ccde7793a2f89d71999dbb2c2 合入本分支，統一共用文章格式與發布解析。這不是本系列已合入 main。
 
-公開目錄從 API 讀取實際發布清單，不以 `catalog.ready` 推定可公開。分頁失敗或循環均停止產生連結。正文撤回連結降為文字。第一個輸入曾在 hydration 前遺失，已讓搜尋框在互動準備完成後才啟用，瀏覽器驗證確認結果由 32 縮小為 2。
-
-`docs/codex-learning/evidence/` 留有五語 390／1280px 瀏覽器紀錄與內容稽核。短篇以可完成操作為目標，保留正文長度編輯警告，不填充字數；這不表示每篇已完成正式發布審核。所有 OS 仍需依文件逐項核對當時帳號與版本；不能把 Windows 模擬手機畫面稱為 iPhone／Android 實測。
-
-沒有發布、部署、開 PR 或合併。工作目錄的既有 `.codex/` 未納入內容交付；研究快取也放在該未追蹤目錄，不提交整份官方文件。
-
-最終驗證：build:web 成功；lint:web、TypeScript、Ruff、Mypy 成功；前端受影響頁面 485 項及新增集中測試 30 項通過；API 37 passed / 5 skipped；CSV 3 passed；tools 28 passed。內容稽核零錯誤、143 個保留的編輯警告。先交還任務供後續審核，不標為已合併或已發布。
-
-- 共用整合接續：Claude 系列 #485 已結案合併，將本地已完成 37 篇深化稿與既有共用元件修改先保存，再整合該主分支版本；不開部分 PR。接續統一 inlines、發布解析與五語系列資料，仍需完成剩餘 23 篇及全部驗收。
+本分支為 codex/codex-learning-complete。只提交本任務 scope，研究快取與既有 .codex/ 不提交。之後發布前仍要核對最新 main、精確 PR head、CI、備份與實際啟用版本；測試或建置通過不能當成上線。

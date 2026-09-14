@@ -1,0 +1,213 @@
+{
+  "id": 12,
+  "readingMinutes": 15,
+  "operationMinutes": 20,
+  "blocks": [
+    {
+      "type": "h2",
+      "text": [
+        "目標與使用方式",
+        "Goal and how to use this guide",
+        "目標と使い方",
+        "목표와 사용법"
+      ]
+    },
+    {
+      "type": "note",
+      "text": [
+        "從可觀察的症狀找到最小檢查，再進入對應深入篇，不從頭重裝全部工具。閱讀約 15 分鐘；下方路徑演練約 20 分鐘，實際故障處理另計。Windows、macOS、Linux 及手機各有自己的入口，先確認錯誤發生在哪裡。這篇提供可自行完成的診斷起點，也可作為整套 Codex 教學的排錯索引。",
+        "Start with an observable symptom, perform a minimal check and follow the relevant in-depth lesson instead of reinstalling every tool. Allow 15 minutes to read and 20 for the path drill; real incident work varies. Windows, macOS, Linux and mobile have distinct surfaces, so identify where the error occurs first. This provides independent diagnostic starting points and an index to the full series.",
+        "観測できる症状から最小確認を行い、全ツールの再導入ではなく対応する深入編へ進みます。読む時間15分、パス実習20分で実障害対応は別です。各 OS・携帯の入口を区別し、どこで発生したか確認します。自力で始められる診断と全系列のトラブルシューティング索引です。",
+        "관측 증상에서 최소 확인을 하고 모든 도구 재설치 대신 해당 심화 편으로 이동합니다. 읽기 15분, 경로 실습 20분이며 실제 장애 처리는 별도입니다. OS·모바일 진입점을 구분해 어디서 발생했는지 먼저 확인하세요. 독립 진단 시작점이자 전체 시리즈 문제 해결 색인입니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "示意圖的 01 是記錄症狀，02 是依表選一個最小檢查，03 是修正原因後重做原操作。不是遇到錯誤就立即重試；先保留輸入、狀態及原本可用的環境，再縮小問題。",
+        "The diagram maps 01 to recording symptoms, 02 to one minimal check and 03 to repeating the original action after correcting the cause. Do not retry immediately on every error: retain input, state and the working environment before narrowing the problem.",
+        "図の01は症状記録、02は最小確認1つ、03は原因修正後の元操作の再実行です。毎回すぐ再試行せず、入力・状態・利用可能環境を保存して問題を絞ります。",
+        "도식의 01은 증상 기록, 02는 최소 확인 하나, 03은 원인 수정 후 원래 동작 반복입니다. 오류마다 바로 재시도하지 말고 입력·상태·사용 가능한 환경을 보존한 뒤 문제를 좁힙니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "第一步：記錄現象與最後成功的動作",
+        "First: Record the symptom and last successful action",
+        "最初に：症状と最後の成功操作を記録",
+        "먼저: 증상과 마지막 성공 동작 기록"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "先記錄時間、平台、應用程式／CLI 版本、目前資料夾、完整命令或操作、預期結果及錯誤原文。只分享和問題有關的訊息，遮蔽帳號、私有路徑與金鑰。若是安裝成功後才找不到指令，保留安裝結果；若是另一個任務仍在跑，保留任務名稱與主機。不要把錯誤截成只剩紅字，因為上一行命令與工作目錄通常決定下一步。",
+        "Record time, platform, app/CLI version, current folder, exact command/action, expected result and original error. Share relevant details with accounts, private paths and credentials redacted. Preserve installation output if a command is missing afterward, or task/host identity if another run is active. Do not crop an error to red text alone: the preceding command and working directory often determine the next step.",
+        "時刻・プラットフォーム・版・現在場所・正確な命令／操作・期待・エラー原文を記録します。関係情報だけを共有しアカウント・私有パス・鍵を遮蔽します。導入後に命令がなければ導入結果、別 run が動けばタスク名・ホストを残します。赤字だけに切り取らず、直前の命令と場所を含めます。次の判断を左右するためです。",
+        "시간·플랫폼·버전·현재 폴더·정확한 명령/동작·예상·오류 원문을 기록합니다. 관련 정보만 공유하고 계정·비공개 경로·키를 가리세요. 설치 후 명령이 없으면 설치 결과, 다른 run이 활동하면 작업 이름·호스트를 보존합니다. 빨간 글씨만 잘라내지 말고 직전 명령·위치를 포함해야 다음 판단에 도움이 됩니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "markdown",
+      "label": [
+        "issue-notes.md 範本",
+        "issue-notes.md template",
+        "issue-notes.md 雛形",
+        "issue-notes.md 서식"
+      ],
+      "code": "# Troubleshooting record\n- Time and timezone:\n- Surface: desktop / CLI / IDE / mobile / web\n- OS and app or CLI version:\n- Working folder or execution host (redacted if shared):\n- Exact command or UI action:\n- Expected result:\n- Actual error and exit status:\n- Last successful action:\n- One change attempted:\n- Result after that change:\n- Files or settings to restore:\n"
+    },
+    {
+      "type": "h2",
+      "text": [
+        "安裝、登入與平台入口",
+        "Installation, login and platform surfaces",
+        "導入・ログイン・プラットフォーム入口",
+        "설치·로그인·플랫폼 진입점"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "| 症狀 | 先做的小檢查 | 詳細操作 |\n| --- | --- | --- |\n| codex 找不到或不是內外部命令 | 關閉舊終端機再開，查可執行檔位置 | [CLI 安裝](article:codex-cli-getting-started) |\n| PowerShell 阻擋腳本 | 記下被阻擋的檔名與執行方式 | [Windows CLI](article:codex-cli-windows) |\n| macOS／Linux 安裝位置不同 | 分辨 shell、PATH 及實際執行檔 | [macOS](article:codex-cli-macos)、[Linux／WSL](article:codex-cli-linux-wsl) |\n| 登入後還是未授權 | 同一終端機看 codex login status | [帳號與額度](article:codex-account-usage) |\n| 找不到桌面或手機的某按鈕 | 記錄版本、帳號、工作空間與入口 | [平台選擇](article:codex-platforms-guide) |\n\n同一台電腦上的 Windows、WSL、容器與遠端主機不一定共用登入或設定；先确认出錯的是哪個環境。",
+        "| Symptom | Small first check | Detailed guide |\n| --- | --- | --- |\n| codex not found | Reopen the terminal and locate the executable | [CLI setup](article:codex-cli-getting-started) |\n| PowerShell blocks a script | Record the blocked filename and invocation | [Windows CLI](article:codex-cli-windows) |\n| Different macOS/Linux install paths | Identify shell, PATH and executable | [macOS](article:codex-cli-macos), [Linux/WSL](article:codex-cli-linux-wsl) |\n| Unauthorized after login | Run codex login status in that terminal | [Account/usage](article:codex-account-usage) |\n| Missing desktop/mobile control | Record version, account, workspace and surface | [Platform selection](article:codex-platforms-guide) |\n\nWindows, WSL, containers and remote hosts need not share login/configuration even on one computer. Identify the failing environment.",
+        "| 症状 | 最小確認 | 詳細 |\n| --- | --- | --- |\n| codex がない | 端末を開き直し実行檔を探す | [CLI 導入](article:codex-cli-getting-started) |\n| PowerShell が阻止 | 檔名と起動方法を記録 | [Windows CLI](article:codex-cli-windows) |\n| macOS／Linux の導入場所違い | shell・PATH・実行檔を識別 | [macOS](article:codex-cli-macos)、[Linux／WSL](article:codex-cli-linux-wsl) |\n| ログイン後も無権限 | 同じ端末の codex login status | [アカウント・利用量](article:codex-account-usage) |\n| 桌面・携帯の操作がない | 版・アカウント・ワークスペース・入口を記録 | [プラットフォーム選択](article:codex-platforms-guide) |\n\n同じ PC の Windows・WSL・容器・遠隔も認証や設定を共有するとは限らず、失敗環境を識別します。",
+        "| 증상 | 최소 확인 | 상세 |\n| --- | --- | --- |\n| codex 없음 | 터미널 재열기·실행 파일 위치 | [CLI 설치](article:codex-cli-getting-started) |\n| PowerShell 차단 | 차단 파일명·호출법 기록 | [Windows CLI](article:codex-cli-windows) |\n| macOS/Linux 설치 위치 다름 | shell·PATH·실행 파일 구분 | [macOS](article:codex-cli-macos), [Linux/WSL](article:codex-cli-linux-wsl) |\n| 로그인 후 권한 없음 | 같은 터미널의 codex login status | [계정·사용량](article:codex-account-usage) |\n| 데스크톱·모바일 조작 없음 | 버전·계정·워크스페이스·진입점 기록 | [플랫폼 선택](article:codex-platforms-guide) |\n\n같은 PC의 Windows·WSL·컨테이너·원격도 인증·설정을 공유하지 않을 수 있으므로 실패 환경을 식별합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Windows 可以用 Get-Command codex 看找到的是哪個執行檔；macOS／Linux 用 command -v codex。看到多個安裝來源時先記錄，不立刻刪除舊版或更改全機安全政策。登入問題先分辨 ChatGPT 登入、API key 與組織限制；額度耗盡不會因重裝而增加。服務可能異常時查看官方狀態頁，對照你的錯誤時間與服務項目，不把網站整體正常視為自己的網路與權限都正常。",
+        "Use Get-Command codex on Windows or command -v codex on macOS/Linux to locate the executable. Record multiple installations before deleting versions or changing machine-wide security policy. Distinguish ChatGPT authentication, API keys and organization restrictions; reinstalling does not replenish quota. For possible service incidents, compare the official status page with your timestamp and affected service. Overall service health does not prove your network and permissions work.",
+        "Windows は Get-Command codex、macOS／Linux は command -v codex で実行檔を確認します。複数導入は記録し、直ちに版削除やシステム全体安全方針を変えません。ChatGPT 認証・API 鍵・組織制限を分け、再導入で利用枠は増えません。サービス異常は公式状態頁を時刻・項目と照合し、全体正常でも自分のネットワーク・権限正常とは断定しません。",
+        "Windows는 Get-Command codex, macOS/Linux는 command -v codex로 실행 파일을 확인합니다. 여러 설치는 기록하고 바로 버전을 지우거나 전체 보안 정책을 바꾸지 않습니다. ChatGPT 인증·API 키·조직 제한을 구분하며 재설치는 한도를 늘리지 않습니다. 서비스 장애는 공식 상태 페이지의 시간·대상을 비교하고 전체 정상이어도 자신의 네트워크·권한 정상으로 단정하지 않습니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "工作目錄、MD 與設定",
+        "Folders, MD files and configuration",
+        "作業場所・MD・設定",
+        "작업 폴더·MD·설정"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "| 症狀 | 先確認 | 深入篇 |\n| --- | --- | --- |\n| 改了程式但頁面沒變 | 正確資料夾、服務網址、檔案版本 | [路徑](article:codex-terminal-paths)、[瀏覽器](article:codex-browser-images) |\n| AGENTS.md 好像沒作用 | 真正檔名、所在層級、任務工作根目錄 | [规则層級](article:codex-agents-md-scopes) |\n| 把 README 當成永久規則 | 區分入口規則與任務資料 | [文件分工](article:codex-rules-and-context-files) |\n| config.toml 解析失敗 | 最後改動、引號、重複 table、有效設定位置 | [設定排錯](article:codex-config-troubleshooting) |\n| 續接後沿用舊結論 | 核對現有檔案與版本，不只讀交接文字 | [工作階段](article:codex-sessions-resume)、[交接](article:codex-context-handoff) |\n\n一次只改一個條件。設定恢復正常後保留必要改動，移走你自己加的診斷標記，不能把整份設定覆蓋成網路上的範本。",
+        "| Symptom | First check | In-depth lesson |\n| --- | --- | --- |\n| Edits do not appear | Folder, served URL and file version | [Paths](article:codex-terminal-paths), [Browser](article:codex-browser-images) |\n| AGENTS.md seems ignored | Filename, hierarchy and task root | [Rule scopes](article:codex-agents-md-scopes) |\n| README treated as permanent rules | Distinguish instruction entry points and task data | [Document roles](article:codex-rules-and-context-files) |\n| config.toml parse failure | Last edit, quotes, duplicate tables and active path | [Config troubleshooting](article:codex-config-troubleshooting) |\n| Resume repeats stale conclusions | Inspect current files/revision, not just notes | [Sessions](article:codex-sessions-resume), [Handoff](article:codex-context-handoff) |\n\nChange one condition at a time. After recovery, keep necessary changes and remove your diagnostic markers rather than replacing the full config with an online template.",
+        "| 症状 | 最初の確認 | 深入編 |\n| --- | --- | --- |\n| 編集が画面に出ない | 場所・提供 URL・版 | [パス](article:codex-terminal-paths)、[ブラウザー](article:codex-browser-images) |\n| AGENTS.md が効かない | 名・階層・作業根 | [規則範囲](article:codex-agents-md-scopes) |\n| README を永久規則扱い | 指示入口とタスク資料を分ける | [文書役割](article:codex-rules-and-context-files) |\n| TOML 解析失敗 | 最終編集・引用符・table 重複・有効場所 | [設定トラブルシューティング](article:codex-config-troubleshooting) |\n| 再開で古い結論 | 記録だけでなく現ファイル・版 | [セッション](article:codex-sessions-resume)、[交接](article:codex-context-handoff) |\n\n1条件ずつ変え、復旧後は必要変更を残して自分の診断標記を除き、全設定をインターネット上の雛形で上書きしません。",
+        "| 증상 | 첫 확인 | 심화 편 |\n| --- | --- | --- |\n| 수정이 화면에 없음 | 폴더·제공 URL·버전 | [경로](article:codex-terminal-paths), [브라우저](article:codex-browser-images) |\n| AGENTS.md 적용 안 됨 | 이름·계층·작업 루트 | [규칙 범위](article:codex-agents-md-scopes) |\n| README를 영구 규칙으로 취급 | 지시 진입점·작업 자료 구분 | [문서 역할](article:codex-rules-and-context-files) |\n| TOML 해석 실패 | 최근 수정·따옴표·table 중복·실제 위치 | [설정 문제](article:codex-config-troubleshooting) |\n| 재개 후 오래된 결론 | 기록뿐 아니라 현재 파일·버전 | [세션](article:codex-sessions-resume), [인계](article:codex-context-handoff) |\n\n한 조건씩 바꾸고 복구 후 필요한 변경은 유지하며 자신의 진단 표시만 제거하세요. 전체 설정을 인터넷 서식으로 덮어쓰지 않습니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "可重現演練：找到真正的資料夾",
+        "Reproducible drill: find the correct folder",
+        "再現実習：正しいフォルダーを見つける",
+        "재현 실습: 올바른 폴더 찾기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在檔案管理員建立全新的 path-trouble，裡面有 project 與 other 兩個空白資料夾。只在 project 裡建立 marker.md，內容為下方一行。先從 other 開終端機，故意嘗試讀 marker.md；這會重現檔案找不到，不需要 Codex 也不會動到正式專案。接著查目前目錄與檔案清單，再用明確相對路徑讀到 marker，最後 cd 進 project 並重做原讀檔命令。",
+        "Create a new path-trouble folder with empty project and other subfolders. Put marker.md only in project with the line below. Open a terminal in other and deliberately try reading marker.md to reproduce a missing file without Codex or production changes. Inspect the current directory and file list, read the marker through an explicit relative path, then cd into project and repeat the original read command.",
+        "新規 path-trouble に空 project・other を作り、project だけに下記 marker.md を置きます。other から端末を開き、わざと marker.md を読んでファイル欠如を再現します。Codex や正式変更は不要です。現在地・一覧を調べ、明確な相対パスで読み、project に cd して元の読取を再実行します。",
+        "새 path-trouble에 빈 project·other를 만들고 project에만 아래 marker.md를 둡니다. other에서 터미널을 열어 일부러 marker.md를 읽어 파일 누락을 재현하세요. Codex·운영 변경은 필요 없습니다. 현재 위치·목록을 확인하고 명시한 상대 경로로 읽은 뒤 project로 cd해 원래 읽기를 반복합니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "markdown",
+      "label": [
+        "project/marker.md",
+        "project/marker.md",
+        "project/marker.md",
+        "project/marker.md"
+      ],
+      "code": "# Correct folder: PATH-PRACTICE-1\n"
+    },
+    {
+      "type": "code",
+      "language": "powershell",
+      "label": [
+        "Windows：從 other 資料夾開始",
+        "Windows: start in other",
+        "Windows：other から開始",
+        "Windows: other에서 시작"
+      ],
+      "code": "Get-Content -LiteralPath .\\marker.md\nGet-Location\nGet-ChildItem\nGet-Content -LiteralPath ..\\project\\marker.md\nSet-Location -LiteralPath ..\\project\nGet-Content -LiteralPath .\\marker.md\n"
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "label": [
+        "macOS／Linux：從 other 開始",
+        "macOS / Linux: start in other",
+        "macOS／Linux：other から開始",
+        "macOS / Linux: other에서 시작"
+      ],
+      "code": "cat ./marker.md\npwd\nls\ncat ../project/marker.md\ncd ../project\ncat ./marker.md\n"
+    },
+    {
+      "type": "p",
+      "text": [
+        "第一個讀檔失敗，後面兩次應顯示相同 PATH-PRACTICE-1；marker 內容未改，修正的是操作位置。完成後回到原本工作目錄，練習資料可保留，不需要遞迴刪除。若套用到 Codex，先請它回報目前根目錄及指定檔案是否存在，再決定是否開錯專案。不要把桌面同名任務、另一個 worktree 或手機看到的舊內容當成同一資料夾。",
+        "The first read fails; the next two show the same PATH-PRACTICE-1. You corrected location, not file contents. Return to your original working folder afterward and retain the fixture without recursive deletion. In Codex, first ask for its working root and whether a specified file exists before deciding that the wrong project is open. Same-named desktop tasks, another worktree or old phone content are not proof of the same folder.",
+        "最初は失敗、後2回は同じ PATH-PRACTICE-1 で、内容ではなく操作場所を修正したと分かります。元場所に戻り教材は残せばよく、再帰削除は不要です。Codex でも先に根ディレクトリ・指定ファイルの存在を報告させてプロジェクト違いを判断します。同名タスク・別 worktree・携帯の古い内容は同じディレクトリの証拠ではありません。",
+        "처음은 실패하고 뒤 두 번은 같은 PATH-PRACTICE-1이며 내용을 고친 것이 아니라 위치를 고쳤음을 확인합니다. 원래 위치로 돌아가고 자료는 보관하며 재귀 삭제는 필요 없습니다. Codex에서도 작업 루트·지정 파일 존재부터 확인해 잘못 연 프로젝트인지 판단하세요. 같은 이름 작업·다른 worktree·휴대전화의 오래된 내용이 같은 폴더의 증거는 아닙니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "工具、遠端與自動化",
+        "Tools, remote work and automation",
+        "ツール・遠隔・自動化",
+        "도구·원격·자동화"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "| 症狀 | 先查哪一層 | 深入篇 |\n| --- | --- | --- |\n| Skill 出現但做錯 | 有沒有選中、指示與資源是否相符 | [技能驗收](article:codex-skill-testing) |\n| Plugin 已安裝但無法查資料 | 入口支援、啟用、連線帳號與來源權限 | [插件排錯](article:codex-plugin-troubleshooting) |\n| MCP 設定存在但工具不可用 | 程序／URL、握手、工具清單、授權 | [MCP 排錯](article:codex-mcp-troubleshooting) |\n| 手機讀到舊版本 | 主機連線、任務、檔案標記與 Handoff | [遠端設定](article:codex-remote-setup)、[跨裝置](article:codex-cross-device-workflow) |\n| 子代理說完成卻有衝突 | 修改責任與可重現證據 | [代理品質](article:codex-subagent-quality)、[平行整合](article:codex-parallel-integration) |\n| 排程逾時或重複 | 保存設定與活動 run 分開確認 | [自動化恢復](article:codex-automation-recovery) |\n| JSON 有答案但程序失敗 | 退出碼、事件與最後資料各自驗證 | [JSON／JSONL](article:codex-json-output) |\n\n依症狀只處理相關層，例如已安裝插件與來源帳號有權讀取是不同狀態。",
+        "| Symptom | Layer to inspect | In-depth lesson |\n| --- | --- | --- |\n| Skill visible but behaves wrongly | Selection, instructions and resources | [Skill acceptance](article:codex-skill-testing) |\n| Installed plugin cannot read data | Surface support, enablement, account and source permission | [Plugin troubleshooting](article:codex-plugin-troubleshooting) |\n| MCP configured but tools unavailable | Process/URL, handshake, tool list and authorization | [MCP troubleshooting](article:codex-mcp-troubleshooting) |\n| Phone shows stale data | Host, task, file marker and Handoff | [Remote setup](article:codex-remote-setup), [Cross-device](article:codex-cross-device-workflow) |\n| Agent reports done but results conflict | Ownership and reproducible evidence | [Agent quality](article:codex-subagent-quality), [Integration](article:codex-parallel-integration) |\n| Schedule times out or duplicates | Saved configuration versus active run | [Automation recovery](article:codex-automation-recovery) |\n| JSON answer despite failed process | Exit status, events and final data | [JSON/JSONL](article:codex-json-output) |\n\nAddress the relevant layer: plugin installation and source-account access are distinct states.",
+        "| 症状 | 調べる層 | 深入編 |\n| --- | --- | --- |\n| Skill 可視だが誤動作 | 選択・指示・資源 | [技能検証](article:codex-skill-testing) |\n| 導入 Plugin が読めない | 入口・有効化・アカウント・出典権限 | [插件トラブルシューティング](article:codex-plugin-troubleshooting) |\n| MCP 設定済みでツールなし | 程序／URL・握手・一覧・認証 | [MCP トラブルシューティング](article:codex-mcp-troubleshooting) |\n| 携帯の旧資料 | ホスト・タスク・標記・Handoff | [遠隔設定](article:codex-remote-setup)、[跨装置](article:codex-cross-device-workflow) |\n| 代理完了報告と結果衝突 | 責任・再現証拠 | [品質](article:codex-subagent-quality)、[統合](article:codex-parallel-integration) |\n| 予約タイムアウト・重複 | 保存設定と活動 run | [復旧](article:codex-automation-recovery) |\n| JSON 回答あり・程序失敗 | 終了・イベント・最終資料 | [JSON／JSONL](article:codex-json-output) |\n\n症状に関わる層を扱い、插件導入と出典アカウントの読取権限を分けます。",
+        "| 증상 | 확인 계층 | 심화 편 |\n| --- | --- | --- |\n| Skill은 보이나 오동작 | 선택·지시·자료 | [기술 검증](article:codex-skill-testing) |\n| 설치 Plugin 읽기 실패 | 진입점·활성·계정·원본 권한 | [플러그인 문제](article:codex-plugin-troubleshooting) |\n| MCP 설정 있지만 도구 없음 | 프로세스/URL·연결·목록·인증 | [MCP 문제](article:codex-mcp-troubleshooting) |\n| 휴대전화 오래된 자료 | 호스트·작업·표식·Handoff | [원격 설정](article:codex-remote-setup), [장치 이동](article:codex-cross-device-workflow) |\n| 에이전트 완료 주장·충돌 | 책임·재현 증거 | [품질](article:codex-subagent-quality), [통합](article:codex-parallel-integration) |\n| 예약 시간 초과·중복 | 저장 설정·활동 run | [자동화 복구](article:codex-automation-recovery) |\n| JSON 답변·프로세스 실패 | 종료·이벤트·최종 자료 | [JSON/JSONL](article:codex-json-output) |\n\n증상 관련 계층만 처리하며 플러그인 설치와 원본 계정 읽기 권한은 구분합니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "完成排錯與恢復工作",
+        "Close the incident and resume work",
+        "トラブルシューティングを終えて作業に戻る",
+        "문제 해결을 마치고 작업 복귀"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "修正後重做原本會失敗的操作，再加一個相鄰案例確認沒有破壞既有行為。例如修 Completed 後也測 Active；修改 config 後確認先前正常的設定還在；重連 MCP 後真的讀一份虛構文件，而非只看綠色連線圖示。把問題、原因、單一修正與驗證寫回 issue-notes.md，需要交給別人時提供最小可重現輸入及已試過的步驟。問題未解決就寫未解決，保留可用狀態與下一個要查的證據。",
+        "Repeat the originally failing action after fixing it, then test a nearby behavior: check Active after fixing Completed, preserve earlier working configuration after a config edit, or actually read a fictional document after reconnecting MCP rather than trusting a green icon. Record symptom, cause, one correction and verification in issue-notes.md. For handoff, provide minimal input and attempted steps. If unresolved, say so and preserve a usable state plus the next evidence to collect.",
+        "修正後に元失敗操作と隣接挙動を検証します。Completed 修正後は Active、設定変更後は以前の正常項目、MCP 再接続後は緑アイコンだけでなく架空文書の実読取です。症状・原因・単一修正・検証を issue-notes.md に記録し、交接は最小入力と試行手順を渡します。未解決ならそう記し、利用可能状態と次に取る証拠を残します。",
+        "수정 후 원래 실패 동작과 인접 동작을 검증합니다. Completed 수정 후 Active, 설정 수정 후 이전 정상 항목, MCP 재연결 후 초록 아이콘뿐 아니라 가상 문서 실제 읽기입니다. 증상·원인·단일 수정·검증을 issue-notes.md에 적고 인계에는 최소 입력·시도 절차를 제공합니다. 미해결이면 그대로 기록하고 사용 가능한 상태·다음 증거를 보존하세요."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "最後撤回自己加入的測試標記與暫時設定，保留必要修正、備份及錯誤紀錄。不要藉排錯一次清空所有設定、刪除工作階段或公開敏感內容。這個索引不要求照表從頭做完；從自己的症狀選一列即可，讀完專篇可由篇首或篇尾回到[教學總目錄](article:codex-learning-hub)，再用功能名、指令或 MD 檔名搜尋下一步。各平台未提供的功能應記為不支援或尚未開放，與安裝故障分開處理。",
+        "Remove your temporary markers/settings while keeping the necessary fix, backups and records. Troubleshooting is not a reason to clear all configuration, delete sessions or expose sensitive content. You do not need to execute this index from top to bottom: choose the row matching your symptom. Return to the [Learning hub](article:codex-learning-hub) from the top/bottom of any lesson and search a feature, command or MD filename. Record unavailable platform features separately from installation failures.",
+        "自分の暫定標記・設定を戻し、必要修正・バックアップ・記録を保持します。トラブルシューティングを理由に全設定消去・セッション削除・機密公開はしません。索引を最初から全実施する必要はなく症状の1行を選びます。各編の上下から[学習目次](article:codex-learning-hub)へ戻り、機能・命令・MD 名で次を探せます。プラットフォームの非対応・未開放は導入障害と分けます。",
+        "자신의 임시 표식·설정을 되돌리고 필요한 수정·백업·기록은 유지합니다. 문제 해결을 이유로 전체 설정 삭제·세션 제거·민감 내용 공개를 하지 않습니다. 색인을 처음부터 모두 수행하지 말고 증상에 맞는 한 행을 고르세요. 각 편 위아래에서 [학습 목차](article:codex-learning-hub)로 돌아가 기능·명령·MD 이름으로 다음을 찾습니다. 플랫폼 미지원·미개방은 설치 장애와 구분합니다."
+      ]
+    }
+  ]
+}

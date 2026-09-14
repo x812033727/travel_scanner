@@ -729,7 +729,7 @@
       "outcome": "Android アプリ、接続、通知を確認し、正しいホストを選んで成果を照合します。",
       "sources": [
         "https://learn.chatgpt.com/docs/remote-connections",
-        "https://support.google.com/camerafromgoogle/answer/12033278?hl=en"
+        "https://support.google.com/pixelphone/answer/16561572?hl=en"
       ],
       "number": 15,
       "group": "C",
@@ -1772,7 +1772,9 @@
       "slug": "codex-subagents",
       "title": "サブエージェントと作業分担",
       "outcome": "サブエージェントは独立した調査を分担し、主担当が統合する仕組みです。利用量が増え、依存や編集の重複があると競合します。",
-      "sources": [],
+      "sources": [
+        "https://learn.chatgpt.com/docs/agent-configuration/subagents"
+      ],
       "number": 46,
       "group": "H",
       "level": "advanced",
@@ -1785,7 +1787,7 @@
         "delegate"
       ],
       "reading_minutes": 15,
-      "operation_minutes": null,
+      "operation_minutes": 20,
       "prerequisites": [
         "codex-worktrees"
       ],
@@ -1799,7 +1801,9 @@
       "slug": "codex-subagent-quality",
       "title": "サブエージェントの範囲と品質確認",
       "outcome": "独立した入力、変更範囲、証拠を定義し、サブエージェントの結果と不足を確認します。",
-      "sources": [],
+      "sources": [
+        "https://learn.chatgpt.com/docs/agent-configuration/subagents"
+      ],
       "number": 47,
       "group": "H",
       "level": "advanced",
@@ -1816,7 +1820,7 @@
         "evidence"
       ],
       "reading_minutes": 15,
-      "operation_minutes": null,
+      "operation_minutes": 20,
       "prerequisites": [
         "codex-subagents"
       ],
@@ -1830,7 +1834,11 @@
       "slug": "codex-parallel-integration",
       "title": "並行作業の統合と確認",
       "outcome": "ファイルとインターフェースの契約に沿って変更を統合し、衝突と全体動作を確認します。",
-      "sources": [],
+      "sources": [
+        "https://git-scm.com/docs/git-merge",
+        "https://git-scm.com/docs/git-worktree",
+        "https://learn.chatgpt.com/docs/environments/git-worktrees"
+      ],
       "number": 48,
       "group": "H",
       "level": "advanced",
@@ -1846,8 +1854,8 @@
         "conflicts",
         "integration"
       ],
-      "reading_minutes": 15,
-      "operation_minutes": null,
+      "reading_minutes": 20,
+      "operation_minutes": 30,
       "prerequisites": [
         "codex-subagent-quality"
       ],
@@ -1861,7 +1869,9 @@
       "slug": "codex-browser-images",
       "title": "ブラウザー・スクリーンショット・画像の活用",
       "outcome": "画面の作業では参考、現状、変更条件を揃えます。スクリーンショットと生成図は証拠の意味が違い、生成した画面で動作成功を証明できません。",
-      "sources": [],
+      "sources": [
+        "https://learn.chatgpt.com/docs/browser"
+      ],
       "number": 49,
       "group": "I",
       "level": "advanced",
@@ -1875,7 +1885,7 @@
         "image"
       ],
       "reading_minutes": 15,
-      "operation_minutes": null,
+      "operation_minutes": 20,
       "prerequisites": [
         "codex-permissions"
       ],
@@ -1889,7 +1899,9 @@
       "slug": "codex-automations",
       "title": "スケジュール実行とリマインダー",
       "outcome": "定期実行には実行環境を決めます。ローカルファイルを読む場合、実行時にコンピューターとアプリが利用可能である必要があります。",
-      "sources": [],
+      "sources": [
+        "https://learn.chatgpt.com/docs/automations"
+      ],
       "number": 50,
       "group": "I",
       "level": "advanced",
@@ -1902,7 +1914,7 @@
         "reminder"
       ],
       "reading_minutes": 15,
-      "operation_minutes": null,
+      "operation_minutes": 20,
       "prerequisites": [
         "codex-browser-images"
       ],
@@ -1916,7 +1928,10 @@
       "slug": "codex-exec-scripting",
       "title": "codex exec とスクリプト連携",
       "outcome": "codex exec は非対話で一回のタスクを実行します。通常は stderr に進捗、stdout に最終回答、--json では一行ずつ JSON のイベントが出ます。",
-      "sources": [],
+      "sources": [
+        "https://learn.chatgpt.com/docs/non-interactive-mode",
+        "https://learn.chatgpt.com/docs/developer-commands?surface=cli"
+      ],
       "number": 51,
       "group": "I",
       "level": "advanced",
@@ -1930,7 +1945,7 @@
         "-o"
       ],
       "reading_minutes": 15,
-      "operation_minutes": null,
+      "operation_minutes": 20,
       "prerequisites": [
         "codex-automations"
       ],
@@ -1944,7 +1959,11 @@
       "slug": "codex-json-output",
       "title": "JSON 出力と結果の検証",
       "outcome": "イベント列と最終結果を区別し、構造化出力を解析して不足項目や不正形式を検出します。",
-      "sources": [],
+      "sources": [
+        "https://learn.chatgpt.com/docs/non-interactive-mode",
+        "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+        "https://docs.python.org/3/library/subprocess.html"
+      ],
       "number": 52,
       "group": "I",
       "level": "advanced",
@@ -1960,8 +1979,8 @@
         "schema",
         "events"
       ],
-      "reading_minutes": 15,
-      "operation_minutes": null,
+      "reading_minutes": 20,
+      "operation_minutes": 25,
       "prerequisites": [
         "codex-exec-scripting"
       ],
@@ -1975,7 +1994,11 @@
       "slug": "codex-ci-workflows",
       "title": "Codex を CI に組み込む",
       "outcome": "入力、権限、終了状態を明示する CI を設計し、成果を保存して提案と適用を分けます。",
-      "sources": [],
+      "sources": [
+        "https://learn.chatgpt.com/docs/github-action",
+        "https://github.com/openai/codex-action/blob/86365089eb2b84e0a8fb0717b304f8bdcb13b20e/action.yml",
+        "https://github.com/openai/codex-action/blob/main/docs/security.md"
+      ],
       "number": 53,
       "group": "I",
       "level": "advanced",
@@ -1993,8 +2016,8 @@
         "secrets",
         "exit"
       ],
-      "reading_minutes": 15,
-      "operation_minutes": null,
+      "reading_minutes": 20,
+      "operation_minutes": 30,
       "prerequisites": [
         "codex-json-output"
       ],
@@ -2008,7 +2031,11 @@
       "slug": "codex-automation-recovery",
       "title": "自動化の失敗、再試行、停止",
       "outcome": "実行記録で既存の結果を確認し、重複を避け、前提を直して停止を確かめます。",
-      "sources": [],
+      "sources": [
+        "https://learn.chatgpt.com/docs/automations",
+        "https://learn.chatgpt.com/docs/non-interactive-mode",
+        "https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency"
+      ],
       "number": 54,
       "group": "I",
       "level": "advanced",
@@ -2025,7 +2052,7 @@
         "stop"
       ],
       "reading_minutes": 15,
-      "operation_minutes": null,
+      "operation_minutes": 20,
       "prerequisites": [
         "codex-ci-workflows"
       ],
@@ -2039,7 +2066,10 @@
       "slug": "codex-website-workshop",
       "title": "実践：小さな Web サイトを作る",
       "outcome": "依頼、計画、MD 規則、ブラウザー確認をつなげ、三枚のカードを持つ架空のスタジオサイトを作ります。単一 HTML で検証まで完了する練習です。",
-      "sources": [],
+      "sources": [
+        "https://learn.chatgpt.com/docs/prompting",
+        "https://learn.chatgpt.com/docs/browser"
+      ],
       "number": 55,
       "group": "J",
       "level": "advanced",
@@ -2053,8 +2083,8 @@
         "CSS",
         "accessibility"
       ],
-      "reading_minutes": 45,
-      "operation_minutes": null,
+      "reading_minutes": 20,
+      "operation_minutes": 60,
       "prerequisites": [
         "codex-git-basics",
         "codex-testing-review"
@@ -2069,7 +2099,10 @@
       "slug": "codex-csv-workshop",
       "title": "実践：CSV 整理ツールを作る",
       "outcome": "入力を保って別ファイルに出す CSV 整理ツールを作ります。空白除去、email の小文字化、重複は最初を保持、空の名前や不正な形式を除外し、三種類の件数を報告します。実在するメールかは保証しません。",
-      "sources": [],
+      "sources": [
+        "https://learn.chatgpt.com/docs/prompting",
+        "https://docs.python.org/3/library/csv.html"
+      ],
       "number": 56,
       "group": "J",
       "level": "advanced",
@@ -2083,8 +2116,8 @@
         "Python",
         "unittest"
       ],
-      "reading_minutes": 45,
-      "operation_minutes": null,
+      "reading_minutes": 20,
+      "operation_minutes": 45,
       "prerequisites": [
         "codex-website-workshop"
       ],
@@ -2098,7 +2131,10 @@
       "slug": "codex-maintain-existing-project",
       "title": "実践：既存プロジェクトを保守する",
       "outcome": "現状を記録し、一つの変更を実施して回帰確認と引き継ぎを残します。",
-      "sources": [],
+      "sources": [
+        "https://learn.chatgpt.com/docs/prompting",
+        "https://learn.chatgpt.com/docs/environments/git-worktrees"
+      ],
       "number": 57,
       "group": "J",
       "level": "advanced",
@@ -2117,7 +2153,7 @@
         "handoff"
       ],
       "reading_minutes": 15,
-      "operation_minutes": null,
+      "operation_minutes": 30,
       "prerequisites": [
         "codex-csv-workshop"
       ],
@@ -2131,7 +2167,11 @@
       "slug": "codex-project-data-safety",
       "title": "プロジェクトデータと認証情報の分離",
       "outcome": "架空データと復元可能なコピーを作り、依頼、画像、リポジトリに含めない情報を見分けます。",
-      "sources": [],
+      "sources": [
+        "https://learn.chatgpt.com/docs/permissions",
+        "https://github.com/openai/codex-action/blob/main/docs/security.md",
+        "https://git-scm.com/docs/gitignore"
+      ],
       "number": 58,
       "group": "J",
       "level": "advanced",
@@ -2152,7 +2192,7 @@
         "privacy"
       ],
       "reading_minutes": 15,
-      "operation_minutes": null,
+      "operation_minutes": 20,
       "prerequisites": [
         "codex-maintain-existing-project"
       ],
@@ -2166,7 +2206,11 @@
       "slug": "codex-usage-efficiency",
       "title": "使用量と効率：やり直しを減らす",
       "outcome": "条件、モデル設定、時間、成果を記録し、不要な再試行と過剰な文脈を減らします。",
-      "sources": [],
+      "sources": [
+        "https://learn.chatgpt.com/docs/pricing",
+        "https://learn.chatgpt.com/docs/models",
+        "https://learn.chatgpt.com/docs/prompting"
+      ],
       "number": 59,
       "group": "J",
       "level": "advanced",
@@ -2187,7 +2231,7 @@
         "time"
       ],
       "reading_minutes": 15,
-      "operation_minutes": null,
+      "operation_minutes": 25,
       "prerequisites": [
         "codex-project-data-safety"
       ],
@@ -2200,7 +2244,11 @@
       "slug": "codex-troubleshooting",
       "title": "初心者のトラブルシューティング",
       "outcome": "まず失敗する層を見分けます。コマンド不在は導入や PATH、ログイン失敗は認証、ファイル不在は場所や権限、結果の誤りは依頼やコードを調べます。一度に一つだけ条件を変えます。",
-      "sources": [],
+      "sources": [
+        "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+        "https://learn.chatgpt.com/docs/auth",
+        "https://status.openai.com/"
+      ],
       "number": 60,
       "group": "J",
       "level": "beginner",
@@ -2215,7 +2263,7 @@
         "login"
       ],
       "reading_minutes": 15,
-      "operation_minutes": null,
+      "operation_minutes": 20,
       "prerequisites": [
         "codex-usage-efficiency"
       ],

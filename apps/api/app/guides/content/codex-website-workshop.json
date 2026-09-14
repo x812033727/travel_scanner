@@ -24,66 +24,276 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "這個實戰把前面的需求、Plan、MD 規則、瀏覽器與驗收串起來，完成一個三張卡片的虛構工作室網站。以單一 HTML 做出清楚的內容與自適應版面，練習完整交付，而不是追求一次加入很多功能。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "你會學到什麼"
+          "text": "目標與起點"
         },
         {
-          "type": "paragraph",
-          "text": "頁面有完整內容、可用的頁內導覽、手機單欄與桌面三欄。瀏覽器沒有頁面橫向溢出，鍵盤可操作，重新開啟檔案仍正常。"
-        },
-        {
-          "type": "paragraph",
-          "text": "預估操作時間: 45 分鐘"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "開始之前"
-        },
-        {
-          "type": "paragraph",
-          "text": "預留約 45 分鐘，準備空的練習資料夾、文字編輯器、Codex 與瀏覽器。下方是可直接儲存為 index.html 的完整參考成品；你可以先讓 Codex 做自己的版本，再用相同的驗收比較。"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "逐步操作"
-        },
-        {
-          "type": "paragraph",
-          "text": "1. 先寫簡短需求：主標、介紹、三張專案卡、頁內導覽、說明區。資料全為虛構，不需要表單、帳號、API 或外部字型。用 Plan 模式確認範圍後再實作。"
+          "type": "callout",
+          "tone": "info",
+          "text": "從一份需求文件做出可新增、完成、刪除、篩選及保存資料的 Small Steps 待辦網站。閱讀約 20 分鐘、實作約 60 分鐘，模型等待另計。準備 Codex 入門、Node.js、Python 3、編輯器與瀏覽器。使用公開可分享的虛構待辦，不連接帳號或後端。完成代表自己的本機功能與驗收通過，正式部署另有流程。"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "2. 建立 README 與簡短 "
+              "text": "本段提到的教學與資源: "
             },
             {
               "type": "article",
+              "text": "Codex 入門",
               "kind": "life",
-              "slug": "codex-agents-md",
-              "text": "AGENTS.md"
+              "slug": "codex-beginner-guide"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 1：準備空白工作區及參考版本"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "下載 "
+            },
+            {
+              "type": "link",
+              "text": "Small Steps 材料",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
             },
             {
               "type": "text",
-              "text": "，說明單檔限制、文字內容、手機排版與驗收。要求 Codex 只在練習資料夾建立頁面，保留所有已提供的內容。"
+              "text": "，解壓縮後將 expected 保留在另一個參考資料夾。這篇在自己新建的 website-lab 從 brief.md 開始，不把 start 或 broken 混入；它們是其他課程的受控練習。expected 有五個程式檔，可在卡住時比較完整參考成果。先在工作區終端機確認 node --version，Windows 用 py -3 --version、macOS／Linux 用 python3 --version。若找不到命令，先完成對應安裝及"
+            },
+            {
+              "type": "article",
+              "text": "路徑設定",
+              "kind": "life",
+              "slug": "codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": "。"
             }
           ]
         },
         {
           "type": "paragraph",
-          "text": "3. 開啟實際頁面：先以 390px 看單欄卡片，再以 1280px 看三欄；用 Tab 移動到兩個導覽連結，按 Enter 確認會到相應區塊，檢查焦點輪廓與文字對比。"
+          "text": "Windows、macOS、Linux 都以同一份 HTML／CSS／JavaScript 實作；Codex 桌面、CLI 或 IDE 可開啟 website-lab。桌面選這個資料夾，CLI 先 cd 進去再輸入 codex，IDE 開資料夾後確認帶入的專案。手機可追蹤電腦任務，但檔案與預覽仍在執行主機上；手機的 127.0.0.1 不是你的電腦。不要為了手機展示而把練習伺服器公開到網路，響應式檢查先在電腦完成。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 2：寫下成果與完成條件"
         },
         {
           "type": "paragraph",
-          "text": "4. 請 Codex 修正一項實際問題，重新跑同樣驗收，再檢查 diff。交付說明列出檔案、啟動方式、已測尺寸與尚未測的環境；此流程不包含公開部署。"
+          "text": "將以下內容保存為 brief.md。英文介面文字與共用參考一致，五語教學都用同樣按鈕名稱方便核對。新增後能看見資料就是讀取，勾選完成就是更新，因此本例已有 CRUD 的四種動作，不額外加入登入、同步或多人協作。重要的不只是外觀好看，還要說明資料壞掉、空白輸入與鍵盤操作會怎樣。"
+        },
+        {
+          "type": "code",
+          "label": "website-lab/brief.md",
+          "language": "markdown",
+          "code": "# Small Steps website brief\nBuild a local todo website using HTML, CSS and JavaScript only.\n\n## Files\n- index.html: accessible page and form\n- style.css: responsive layout\n- core.mjs: immutable data functions\n- app.js: DOM events and localStorage\n- core.test.mjs: Node built-in tests\n\n## Data contract\n- Task: {id: string, title: string, completed: boolean}\n- Trim titles; accept 1 to 100 non-blank characters. IDs must be unique.\n- Export addTask(tasks, title, id), toggleTask(tasks, id), removeTask(tasks, id),\n  visibleTasks(tasks, filter), decodeTasks(raw), encodeTasks(tasks).\n- Filters: all, active, completed. Missing toggle/delete IDs leave data unchanged.\n- Store {version: 1, tasks: [...]} under mokaair-codex-todo-v1.\n- Invalid stored data must remain untouched; warn and allow temporary work.\n\n## Interface and acceptance\n- Labels: New task, Add task, All tasks, Active, Completed, Delete.\n- Show active and total counts, including when a filter is selected.\n- Add, toggle, delete, filter and reload must work.\n- Render task text as text, not HTML.\n- Visible keyboard focus; preserve sensible focus after list updates.\n- Fit 360px, 390px and 1280px viewports without page overflow.\n- Reset practice data removes only this app's storage key.\n- No dependencies, account, backend, analytics or external requests.\n\n## Delivery\nExplain changes, run node --test core.test.mjs, and list actual browser checks.\nDo not claim checks that were not run. Do not publish or deploy.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 3：先檢查設計，再分段實作"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先用 "
+            },
+            {
+              "type": "article",
+              "text": "Plan 模式",
+              "kind": "life",
+              "slug": "codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": "請 Codex 閱讀 brief.md，列出五個檔案各自負責什麼、資料如何流動、需要哪些驗收。確認 core.mjs 不直接存取 DOM，app.js 才處理按鈕與儲存，沒有引進框架或額外服務。若計畫缺少資料損壞或還原，直接補進計畫；確認後再切換實作。分成資料與測試、畫面與互動兩段，每段都要求列出實際修改及未驗證事項。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "第一段實作提示詞",
+          "language": "text",
+          "code": "Implement core.mjs and core.test.mjs from the approved brief.md contract.\nKeep all data operations immutable. Test empty and long titles, Unicode,\nduplicate IDs, filters, missing IDs, storage round trips and invalid storage.\nRun node --test core.test.mjs and report the command, result and remaining work.\nDo not change the brief, publish anything or build the UI in this stage.\n"
+        },
+        {
+          "type": "code",
+          "label": "第二段實作提示詞",
+          "language": "text",
+          "code": "Implement index.html, style.css and app.js using the tested core.mjs.\nFollow the UI, storage, accessibility and responsive criteria in brief.md.\nDo not weaken the data tests to accommodate UI bugs.\nRun the data tests again. Give local preview instructions and list which\nbrowser interactions you actually verified and which still need verification.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "每段完成後自己開啟檔案並執行測試。參考版本的 core.test.mjs 有三個頂層測試，裡面含多個驗收斷言；Codex 自己寫的測試數量可能不同，不能只比較數字。若功能與測試一起寫错，綠色仍會漏掉需求，因此使用下一步的獨立畫面清單。卡住時只比較 expected 裡對應檔案，先找差異原因，不整包覆蓋自己尚未保存的工作。需要撤回先讀 "
+            },
+            {
+              "type": "article",
+              "text": "Git 與還原",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 4：啟動同一資料夾的預覽"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell",
+          "language": "powershell",
+          "code": "node --test core.test.mjs\npy -3 -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux",
+          "language": "sh",
+          "code": "node --test core.test.mjs\npython3 -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "瀏覽 http://127.0.0.1:4173，保留這個終端機運行；需要其他命令另開終端機。若 4173 已被使用，先確認是否自己的練習伺服器，不任意終止別人的工作；改用未占用連接埠時，網址與驗收紀錄一起改。雙擊 HTML 的 file 入口可能限制 ES module，不適合此材料。畫面不是預期版本時，先查服務啟動資料夾、網址及 Network 的 app.js 回應，不立刻請 Codex 重寫整個網站。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 5：逐項驗收功能與畫面"
+        },
+        {
+          "type": "paragraph",
+          "text": "先在 About this exercise 展開後，確認資料全是可丟棄的虛構項目，再用 Reset practice data 清除本例專用鍵。新增 Read 與 Build，完成 Read。All tasks 應有兩筆、Active 只有 Build、Completed 只有 Read，統計是 1 active / 2 total。重新整理後資料仍在；選回 All tasks 並刪除 Read，應剩 Build。以下表格接著測，別只拍一張首頁就判定完成。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "案例",
+            "操作",
+            "預期結果"
+          ],
+          "rows": [
+            [
+              "空白",
+              "輸入三個空格並新增",
+              "不新增，顯示可理解的錯誤"
+            ],
+            [
+              "Unicode",
+              "新增 寫作 ✨",
+              "原文保留，重新整理不損壞"
+            ],
+            [
+              "文字安全",
+              "新增 下方 HTML 測試字串",
+              "顯示文字，不產生圖片元素"
+            ],
+            [
+              "鍵盤",
+              "Tab、Enter、Space 操作",
+              "焦點可見，完成／刪除後仍可繼續"
+            ],
+            [
+              "手機寬度",
+              "360px、390px，長標題",
+              "內容換行，頁面不橫向溢出"
+            ],
+            [
+              "桌面寬度",
+              "1280px",
+              "清單、統計與操作都可讀"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "響應式模式不是實體 iOS／Android 實測；附圖是已存在的 Windows／Edge 參考版，不是你這次生成結果的證明。"
+        },
+        {
+          "type": "code",
+          "label": "文字安全測試：作為待辦名稱輸入",
+          "language": "text",
+          "code": "<img src=x>\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 6：資料損壞、修正與交付"
+        },
+        {
+          "type": "paragraph",
+          "text": "進階驗收只在本機虛構練習頁操作：先保存需要的測試紀錄，開啟瀏覽器開發工具的 Storage／Application → Local Storage，選目前 127.0.0.1 與連接埠。找到 mokaair-codex-todo-v1，把值改成 bad-json，重新整理。應顯示資料無法讀取的警告；新增暫存項目後檢查儲存值仍是 bad-json，不能默默覆蓋它。完成後用 Reset practice data 只移除這一鍵，再新增一筆並重整，確認恢復正常保存。不要對其他網站資料執行清空全部。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "驗收失敗時回報確切輸入、操作、預期與實際值，請 Codex 只修對應層並重跑相關檢查，參考 "
+            },
+            {
+              "type": "article",
+              "text": "Bug 流程",
+              "kind": "life",
+              "slug": "codex-debugging"
+            },
+            {
+              "type": "text",
+              "text": "。交付時保留 brief、五個檔案、Node 測試紀錄、桌面及窄版畫面、未實測平台與還原方法。伺服器用原終端機 Ctrl+C 停止。最後請 Codex 用"
+            },
+            {
+              "type": "article",
+              "text": "交接格式",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "說明如何重新啟動；若要改用框架、加入後端或正式上線，另開明確需求，不能把本機畫面可見視為已部署。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -97,28 +307,6 @@
             "license": "© Mokaair",
             "source_url": null
           }
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "練習需求"
-        },
-        {
-          "type": "code",
-          "language": "text",
-          "code": "製作單一 HTML 的虛構工作室網站，包含主標、介紹、三张卡片、頁內導覽與說明區。用原生 HTML/CSS，手機一欄、桌面三欄，不使用外部資源。先確認計畫，再實作，最後以鍵盤與兩種寬度驗證。",
-          "label": "本步驟範例"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "範例與驗證"
-        },
-        {
-          "type": "code",
-          "language": "html",
-          "code": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Small steps studio — practice website</title>\n  <style>\n    * { box-sizing: border-box; }\n    body { margin: 0; background: #f2f5ef; color: #173b39; font: 18px/1.7 system-ui, sans-serif; }\n    main { max-width: 1080px; margin: auto; padding: 64px 24px; }\n    h1 { font-size: clamp(2rem, 7vw, 4.8rem); line-height: 1.08; max-width: 800px; letter-spacing: -.045em; }\n    .label { text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; }\n    .intro { max-width: 650px; }\n    nav { display: flex; gap: 20px; flex-wrap: wrap; margin: 32px 0; }\n    a { color: inherit; text-underline-offset: .2em; padding: 10px 0; }\n    a:focus-visible { outline: 3px solid #c4602c; outline-offset: 4px; }\n    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }\n    article { background: #fff; border: 1px solid #cee0d5; border-radius: 20px; padding: 28px; overflow-wrap: anywhere; }\n    article h2 { font-size: 1.3rem; }\n    .number { color: #a54b26; font-size: .85rem; }\n    footer { margin-top: 48px; border-top: 1px solid #cee0d5; padding-top: 24px; }\n    @media (max-width: 680px) { .cards { grid-template-columns: 1fr; } main { padding-top: 36px; } }\n  </style>\n</head>\n<body>\n  <main>\n    <p class=\"label\">Small steps studio / practice only</p>\n    <h1>Build something small.<br>Check that it works.</h1>\n    <p class=\"intro\">A fictional studio learning to turn clear requests into useful, verifiable results. No account, form, tracker or external resource is used.</p>\n    <nav aria-label=\"Page sections\"><a href=\"#projects\">Explore projects</a><a href=\"#about\">About this exercise</a></nav>\n    <section class=\"cards\" id=\"projects\" aria-label=\"Practice projects\">\n      <article><p class=\"number\">01 / PLAN</p><h2>One clear request</h2><p>Define the outcome, context, constraints and checks before changing files.</p></article>\n      <article><p class=\"number\">02 / BUILD</p><h2>One focused change</h2><p>Keep the first version small enough to inspect and explain.</p></article>\n      <article><p class=\"number\">03 / VERIFY</p><h2>One real result</h2><p>Open the page, use the keyboard and test the layout at a narrow width.</p></article>\n    </section>\n    <footer id=\"about\"><h2>About this exercise</h2><p>This is a local practice page with fictional content. Opening it successfully does not publish it to the internet.</p></footer>\n  </main>\n</body>\n</html>\n",
-          "label": "本步驟範例"
         },
         {
           "type": "image",
@@ -145,81 +333,39 @@
           }
         },
         {
-          "type": "table",
-          "header": [
-            "檢查項目",
-            "驗收方式"
-          ],
-          "rows": [
-            [
-              "先確認環境",
-              "預留約 45 分鐘，準備空的練習資料夾、文字編輯器、Codex 與瀏覽器。下方是可直接儲存為 index.html 的完整參考成品；你可以先讓 Codex 做自己的版本，再用相同的驗收比較。"
-            ],
-            [
-              "完成一個操作",
-              "請 Codex 修正一項實際問題，重新跑同樣驗收，再檢查 diff。交付說明列出檔案、啟動方式、已測尺寸與尚未測的環境；此流程不包含公開部署。"
-            ],
-            [
-              "檢查真實結果",
-              "頁面有完整內容、可用的頁內導覽、手機單欄與桌面三欄。瀏覽器沒有頁面橫向溢出，鍵盤可操作，重新開啟檔案仍正常。"
-            ]
-          ]
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-390.png",
+          "alt": "Small Steps / 390px / Windows Edge",
+          "caption": "完整參考版的實際瀏覽器畫面，供修改前比對。Windows / Edge 153.0.4234.32，2026-09-14；使用虛構資料。390px 為響應式視窗，非實體手機。這不是 Codex 桌面介面截圖。",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
         },
         {
-          "type": "heading",
-          "level": 2,
-          "text": "完成結果"
-        },
-        {
-          "type": "paragraph",
-          "text": "頁面有完整內容、可用的頁內導覽、手機單欄與桌面三欄。瀏覽器沒有頁面橫向溢出，鍵盤可操作，重新開啟檔案仍正常。"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "常見問題"
-        },
-        {
-          "type": "paragraph",
-          "text": "如果代理加入依賴或後端，回到第一版限制。連結能看到不代表能使用，要真的按 Enter；本機打開成功也不等於已上線。不同系統依官方文件操作，沒有實测的環境保留標示。"
-        },
-        {
-          "type": "callout",
-          "tone": "info",
-          "title": "官方來源",
-          "text": "跨平台操作依官方文件查證；未在每個系統實測。介面與帳號提供的功能可能不同。"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "延伸閱讀"
-        },
-        {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "article",
-              "kind": "life",
-              "slug": "codex-learning-hub",
-              "text": "返回 Codex 教學總目錄"
-            }
-          ]
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-1280.png",
+          "alt": "Small Steps / 1280px / Windows Edge",
+          "caption": "完整參考版的實際瀏覽器畫面，供修改前比對。Windows / Edge 153.0.4234.32，2026-09-14；使用虛構資料。390px 為響應式視窗，非實體手機。這不是 Codex 桌面介面截圖。",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
         }
       ],
       "sources": [
         {
-          "title": "prompting",
+          "title": "Codex prompting",
           "url": "https://learn.chatgpt.com/docs/prompting",
           "checked_on": "2026-09-14"
         },
         {
-          "title": "browser",
+          "title": "Codex browser",
           "url": "https://learn.chatgpt.com/docs/browser",
-          "checked_on": "2026-09-14"
-        },
-        {
-          "title": "code-review",
-          "url": "https://learn.chatgpt.com/docs/code-review",
           "checked_on": "2026-09-14"
         }
       ]
@@ -240,66 +386,276 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "这个实战把前面的需求、Plan、MD 规则、浏览器与验收串起来，完成一个三张卡片的虚构工作室网站。以单一 HTML 做出清楚的内容与自适应版面，练习完整交付，而不是追求一次加入很多功能。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "你会学到什么"
+          "text": "目标与起点"
         },
         {
-          "type": "paragraph",
-          "text": "页面有完整内容、可用的页内导览、手机单栏与桌面三栏。浏览器没有页面横向溢出，键盘可操作，重新开启档案仍正常。"
-        },
-        {
-          "type": "paragraph",
-          "text": "预估操作时间: 45 分钟"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "开始之前"
-        },
-        {
-          "type": "paragraph",
-          "text": "预留约 45 分钟，准备空的练习资料夹、文字编辑器、Codex 与浏览器。下方是可直接储存为 index.html 的完整参考成品；你可以先让 Codex 做自己的版本，再用相同的验收比较。"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "逐步操作"
-        },
-        {
-          "type": "paragraph",
-          "text": "1. 先写简短需求：主标、介绍、三张专案卡、页内导览、说明区。资料全为虚构，不需要表单、帐号、API 或外部字型。用 Plan 模式确认范围后再实作。"
+          "type": "callout",
+          "tone": "info",
+          "text": "从一份需求文件做出可新增、完成、删除、筛选及保存资料的 Small Steps 待办网站。阅读约 20 分钟、实作约 60 分钟，模型等待另计。准备 Codex 入门、Node.js、Python 3、编辑器与浏览器。使用公开可分享的虚构待办，不连接帐号或后端。完成代表自己的本机功能与验收通过，正式部署另有流程。"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "2. 建立 README 与简短 "
+              "text": "本段提到的教学与资源: "
             },
             {
               "type": "article",
+              "text": "Codex 入门",
               "kind": "life",
-              "slug": "codex-agents-md",
-              "text": "AGENTS.md"
+              "slug": "codex-beginner-guide"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 1：准备空白工作区及参考版本"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "下载 "
+            },
+            {
+              "type": "link",
+              "text": "Small Steps 材料",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
             },
             {
               "type": "text",
-              "text": "，说明单档限制、文字内容、手机排版与验收。要求 Codex 只在练习资料夹建立页面，保留所有已提供的内容。"
+              "text": "，解压缩后将 expected 保留在另一个参考资料夹。这篇在自己新建的 website-lab 从 brief.md 开始，不把 start 或 broken 混入；它们是其他课程的受控练习。expected 有五个程式档，可在卡住时比较完整参考成果。先在工作区终端机确认 node --version，Windows 用 py -3 --version、macOS／Linux 用 python3 --version。若找不到命令，先完成对应安装及"
+            },
+            {
+              "type": "article",
+              "text": "路径设定",
+              "kind": "life",
+              "slug": "codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": "。"
             }
           ]
         },
         {
           "type": "paragraph",
-          "text": "3. 开启实际页面：先以 390px 看单栏卡片，再以 1280px 看三栏；用 Tab 移动到两个导览连结，按 Enter 确认会到相应区块，检查焦点轮廓与文字对比。"
+          "text": "Windows、macOS、Linux 都以同一份 HTML／CSS／JavaScript 实作；Codex 桌面、CLI 或 IDE 可开启 website-lab。桌面选这个资料夹，CLI 先 cd 进去再输入 codex，IDE 开资料夹后确认带入的专案。手机可追踪电脑任务，但档案与预览仍在执行主机上；手机的 127.0.0.1 不是你的电脑。不要为了手机展示而把练习伺服器公开到网路，响应式检查先在电脑完成。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 2：写下成果与完成条件"
         },
         {
           "type": "paragraph",
-          "text": "4. 请 Codex 修正一项实际问题，重新跑同样验收，再检查 diff。交付说明列出档案、启动方式、已测尺寸与尚未测的环境；此流程不包含公开部署。"
+          "text": "将以下内容保存为 brief.md。英文介面文字与共用参考一致，五语教学都用同样按钮名称方便核对。新增后能看见资料就是读取，勾选完成就是更新，因此本例已有 CRUD 的四种动作，不额外加入登入、同步或多人协作。重要的不只是外观好看，还要说明资料坏掉、空白输入与键盘操作会怎样。"
+        },
+        {
+          "type": "code",
+          "label": "website-lab/brief.md",
+          "language": "markdown",
+          "code": "# Small Steps website brief\nBuild a local todo website using HTML, CSS and JavaScript only.\n\n## Files\n- index.html: accessible page and form\n- style.css: responsive layout\n- core.mjs: immutable data functions\n- app.js: DOM events and localStorage\n- core.test.mjs: Node built-in tests\n\n## Data contract\n- Task: {id: string, title: string, completed: boolean}\n- Trim titles; accept 1 to 100 non-blank characters. IDs must be unique.\n- Export addTask(tasks, title, id), toggleTask(tasks, id), removeTask(tasks, id),\n  visibleTasks(tasks, filter), decodeTasks(raw), encodeTasks(tasks).\n- Filters: all, active, completed. Missing toggle/delete IDs leave data unchanged.\n- Store {version: 1, tasks: [...]} under mokaair-codex-todo-v1.\n- Invalid stored data must remain untouched; warn and allow temporary work.\n\n## Interface and acceptance\n- Labels: New task, Add task, All tasks, Active, Completed, Delete.\n- Show active and total counts, including when a filter is selected.\n- Add, toggle, delete, filter and reload must work.\n- Render task text as text, not HTML.\n- Visible keyboard focus; preserve sensible focus after list updates.\n- Fit 360px, 390px and 1280px viewports without page overflow.\n- Reset practice data removes only this app's storage key.\n- No dependencies, account, backend, analytics or external requests.\n\n## Delivery\nExplain changes, run node --test core.test.mjs, and list actual browser checks.\nDo not claim checks that were not run. Do not publish or deploy.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 3：先检查设计，再分段实作"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先用 "
+            },
+            {
+              "type": "article",
+              "text": "Plan 模式",
+              "kind": "life",
+              "slug": "codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": "请 Codex 阅读 brief.md，列出五个档案各自负责什么、资料如何流动、需要哪些验收。确认 core.mjs 不直接存取 DOM，app.js 才处理按钮与储存，没有引进框架或额外服务。若计划缺少资料损坏或还原，直接补进计划；确认后再切换实作。分成资料与测试、画面与互动两段，每段都要求列出实际修改及未验证事项。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "第一段实作提示词",
+          "language": "text",
+          "code": "Implement core.mjs and core.test.mjs from the approved brief.md contract.\nKeep all data operations immutable. Test empty and long titles, Unicode,\nduplicate IDs, filters, missing IDs, storage round trips and invalid storage.\nRun node --test core.test.mjs and report the command, result and remaining work.\nDo not change the brief, publish anything or build the UI in this stage.\n"
+        },
+        {
+          "type": "code",
+          "label": "第二段实作提示词",
+          "language": "text",
+          "code": "Implement index.html, style.css and app.js using the tested core.mjs.\nFollow the UI, storage, accessibility and responsive criteria in brief.md.\nDo not weaken the data tests to accommodate UI bugs.\nRun the data tests again. Give local preview instructions and list which\nbrowser interactions you actually verified and which still need verification.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "每段完成后自己开启档案并执行测试。参考版本的 core.test.mjs 有三个顶层测试，里面含多个验收断言；Codex 自己写的测试数量可能不同，不能只比较数字。若功能与测试一起写错，绿色仍会漏掉需求，因此使用下一步的独立画面清单。卡住时只比较 expected 里对应档案，先找差异原因，不整包覆盖自己尚未保存的工作。需要撤回先读 "
+            },
+            {
+              "type": "article",
+              "text": "Git 与还原",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 4：启动同一资料夹的预览"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell",
+          "language": "powershell",
+          "code": "node --test core.test.mjs\npy -3 -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux",
+          "language": "sh",
+          "code": "node --test core.test.mjs\npython3 -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "浏览 http://127.0.0.1:4173，保留这个终端机运行；需要其他命令另开终端机。若 4173 已被使用，先确认是否自己的练习伺服器，不任意终止别人的工作；改用未占用连接埠时，网址与验收纪录一起改。双击 HTML 的 file 入口可能限制 ES module，不适合此材料。画面不是预期版本时，先查服务启动资料夹、网址及 Network 的 app.js 回应，不立刻请 Codex 重写整个网站。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 5：逐项验收功能与画面"
+        },
+        {
+          "type": "paragraph",
+          "text": "先在 About this exercise 展开后，确认资料全是可丢弃的虚构项目，再用 Reset practice data 清除本例专用键。新增 Read 与 Build，完成 Read。All tasks 应有两笔、Active 只有 Build、Completed 只有 Read，统计是 1 active / 2 total。重新整理后资料仍在；选回 All tasks 并删除 Read，应剩 Build。以下表格接著测，别只拍一张首页就判定完成。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "案例",
+            "操作",
+            "预期结果"
+          ],
+          "rows": [
+            [
+              "空白",
+              "输入三个空格并新增",
+              "不新增，显示可理解的错误"
+            ],
+            [
+              "Unicode",
+              "新增 写作 ✨",
+              "原文保留，重新整理不损坏"
+            ],
+            [
+              "文字安全",
+              "新增 下方 HTML 测试字串",
+              "显示文字，不产生图片元素"
+            ],
+            [
+              "键盘",
+              "Tab、Enter、Space 操作",
+              "焦点可见，完成／删除后仍可继续"
+            ],
+            [
+              "手机宽度",
+              "360px、390px，长标题",
+              "内容换行，页面不横向溢出"
+            ],
+            [
+              "桌面宽度",
+              "1280px",
+              "清单、统计与操作都可读"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "响应式模式不是实体 iOS／Android 实测；附图是已存在的 Windows／Edge 参考版，不是你这次生成结果的证明。"
+        },
+        {
+          "type": "code",
+          "label": "文字安全测试：作为待办名称输入",
+          "language": "text",
+          "code": "<img src=x>\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 6：资料损坏、修正与交付"
+        },
+        {
+          "type": "paragraph",
+          "text": "进阶验收只在本机虚构练习页操作：先保存需要的测试纪录，开启浏览器开发工具的 Storage／Application → Local Storage，选目前 127.0.0.1 与连接埠。找到 mokaair-codex-todo-v1，把值改成 bad-json，重新整理。应显示资料无法读取的警告；新增暂存项目后检查储存值仍是 bad-json，不能默默覆盖它。完成后用 Reset practice data 只移除这一键，再新增一笔并重整，确认恢复正常保存。不要对其他网站资料执行清空全部。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "验收失败时回报确切输入、操作、预期与实际值，请 Codex 只修对应层并重跑相关检查，参考 "
+            },
+            {
+              "type": "article",
+              "text": "Bug 流程",
+              "kind": "life",
+              "slug": "codex-debugging"
+            },
+            {
+              "type": "text",
+              "text": "。交付时保留 brief、五个档案、Node 测试纪录、桌面及窄版画面、未实测平台与还原方法。伺服器用原终端机 Ctrl+C 停止。最后请 Codex 用"
+            },
+            {
+              "type": "article",
+              "text": "交接格式",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "说明如何重新启动；若要改用框架、加入后端或正式上线，另开明确需求，不能把本机画面可见视为已部署。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -313,28 +669,6 @@
             "license": "© Mokaair",
             "source_url": null
           }
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "练习需求"
-        },
-        {
-          "type": "code",
-          "language": "text",
-          "code": "制作单一 HTML 的虚构工作室网站，包含主标、介绍、三张卡片、页内导览与说明区。用原生 HTML/CSS，手机一栏、桌面三栏，不使用外部资源。先确认计划，再实作，最后以键盘与两种宽度验证。",
-          "label": "本步骤示例"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "范例与验证"
-        },
-        {
-          "type": "code",
-          "language": "html",
-          "code": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Small steps studio — practice website</title>\n  <style>\n    * { box-sizing: border-box; }\n    body { margin: 0; background: #f2f5ef; color: #173b39; font: 18px/1.7 system-ui, sans-serif; }\n    main { max-width: 1080px; margin: auto; padding: 64px 24px; }\n    h1 { font-size: clamp(2rem, 7vw, 4.8rem); line-height: 1.08; max-width: 800px; letter-spacing: -.045em; }\n    .label { text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; }\n    .intro { max-width: 650px; }\n    nav { display: flex; gap: 20px; flex-wrap: wrap; margin: 32px 0; }\n    a { color: inherit; text-underline-offset: .2em; padding: 10px 0; }\n    a:focus-visible { outline: 3px solid #c4602c; outline-offset: 4px; }\n    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }\n    article { background: #fff; border: 1px solid #cee0d5; border-radius: 20px; padding: 28px; overflow-wrap: anywhere; }\n    article h2 { font-size: 1.3rem; }\n    .number { color: #a54b26; font-size: .85rem; }\n    footer { margin-top: 48px; border-top: 1px solid #cee0d5; padding-top: 24px; }\n    @media (max-width: 680px) { .cards { grid-template-columns: 1fr; } main { padding-top: 36px; } }\n  </style>\n</head>\n<body>\n  <main>\n    <p class=\"label\">Small steps studio / practice only</p>\n    <h1>Build something small.<br>Check that it works.</h1>\n    <p class=\"intro\">A fictional studio learning to turn clear requests into useful, verifiable results. No account, form, tracker or external resource is used.</p>\n    <nav aria-label=\"Page sections\"><a href=\"#projects\">Explore projects</a><a href=\"#about\">About this exercise</a></nav>\n    <section class=\"cards\" id=\"projects\" aria-label=\"Practice projects\">\n      <article><p class=\"number\">01 / PLAN</p><h2>One clear request</h2><p>Define the outcome, context, constraints and checks before changing files.</p></article>\n      <article><p class=\"number\">02 / BUILD</p><h2>One focused change</h2><p>Keep the first version small enough to inspect and explain.</p></article>\n      <article><p class=\"number\">03 / VERIFY</p><h2>One real result</h2><p>Open the page, use the keyboard and test the layout at a narrow width.</p></article>\n    </section>\n    <footer id=\"about\"><h2>About this exercise</h2><p>This is a local practice page with fictional content. Opening it successfully does not publish it to the internet.</p></footer>\n  </main>\n</body>\n</html>\n",
-          "label": "本步骤示例"
         },
         {
           "type": "image",
@@ -361,81 +695,39 @@
           }
         },
         {
-          "type": "table",
-          "header": [
-            "检查项目",
-            "验收方式"
-          ],
-          "rows": [
-            [
-              "先确认环境",
-              "预留约 45 分钟，准备空的练习资料夹、文字编辑器、Codex 与浏览器。下方是可直接储存为 index.html 的完整参考成品；你可以先让 Codex 做自己的版本，再用相同的验收比较。"
-            ],
-            [
-              "完成一个操作",
-              "请 Codex 修正一项实际问题，重新跑同样验收，再检查 diff。交付说明列出档案、启动方式、已测尺寸与尚未测的环境；此流程不包含公开部署。"
-            ],
-            [
-              "检查真实结果",
-              "页面有完整内容、可用的页内导览、手机单栏与桌面三栏。浏览器没有页面横向溢出，键盘可操作，重新开启档案仍正常。"
-            ]
-          ]
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-390.png",
+          "alt": "Small Steps / 390px / Windows Edge",
+          "caption": "完整参考版的实际浏览器画面，供修改前比对。Windows / Edge 153.0.4234.32，2026-09-14；使用虚构数据。390px 为响应式窗口，非实体手机。这不是 Codex 桌面界面截图。",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
         },
         {
-          "type": "heading",
-          "level": 2,
-          "text": "完成结果"
-        },
-        {
-          "type": "paragraph",
-          "text": "页面有完整内容、可用的页内导览、手机单栏与桌面三栏。浏览器没有页面横向溢出，键盘可操作，重新开启档案仍正常。"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "常见问题"
-        },
-        {
-          "type": "paragraph",
-          "text": "如果代理加入依赖或后端，回到第一版限制。连结能看到不代表能使用，要真的按 Enter；本机打开成功也不等于已上线。不同系统依官方文件操作，没有实测的环境保留标示。"
-        },
-        {
-          "type": "callout",
-          "tone": "info",
-          "title": "官方来源",
-          "text": "跨平台操作依官方文件查证；未在每个系统实测。介面与帐号提供的功能可能不同。"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "延伸阅读"
-        },
-        {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "article",
-              "kind": "life",
-              "slug": "codex-learning-hub",
-              "text": "返回 Codex 教学总目录"
-            }
-          ]
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-1280.png",
+          "alt": "Small Steps / 1280px / Windows Edge",
+          "caption": "完整参考版的实际浏览器画面，供修改前比对。Windows / Edge 153.0.4234.32，2026-09-14；使用虚构数据。390px 为响应式窗口，非实体手机。这不是 Codex 桌面界面截图。",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
         }
       ],
       "sources": [
         {
-          "title": "prompting",
+          "title": "Codex prompting",
           "url": "https://learn.chatgpt.com/docs/prompting",
           "checked_on": "2026-09-14"
         },
         {
-          "title": "browser",
+          "title": "Codex browser",
           "url": "https://learn.chatgpt.com/docs/browser",
-          "checked_on": "2026-09-14"
-        },
-        {
-          "title": "code-review",
-          "url": "https://learn.chatgpt.com/docs/code-review",
           "checked_on": "2026-09-14"
         }
       ]
@@ -456,66 +748,276 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "This workshop connects clear requests, planning, MD instructions, browser checks and delivery. Build a fictional studio site with three cards in one HTML file. Practice a complete, inspectable result before expanding features."
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "What you will learn"
+          "text": "Goal and starting point"
         },
         {
-          "type": "paragraph",
-          "text": "The page has complete content, working anchor navigation and responsive columns without page-level overflow. Keyboard navigation works and reopening the file preserves behavior."
-        },
-        {
-          "type": "paragraph",
-          "text": "Estimated practice time: 45 min"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "Before you start"
-        },
-        {
-          "type": "paragraph",
-          "text": "Allow about 45 minutes and prepare an empty folder, editor, Codex and browser. The complete reference below can be saved as index.html. You can first ask Codex to build its own version, then compare both against the same criteria."
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "Step by step"
-        },
-        {
-          "type": "paragraph",
-          "text": "1. Define a headline, introduction, three project cards, in-page navigation and an about section. Use fictional content without forms, accounts, APIs or external fonts. Confirm scope in Plan mode before implementing."
+          "type": "callout",
+          "tone": "info",
+          "text": "Build a Small Steps todo website from a brief, with adding, completion, deletion, filtering and persistence. Allow 20 minutes to read and 60 to build, plus model waiting. Prepare Codex basics, Node.js, Python 3, an editor and a browser. Use shareable fictional tasks without accounts or a backend. Completion means local functionality and acceptance checks pass; deployment is a separate process."
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "2. Create README and concise "
+              "text": "Lessons and resources mentioned here: "
             },
             {
               "type": "article",
+              "text": "Codex basics",
               "kind": "life",
-              "slug": "codex-agents-md",
-              "text": "AGENTS.md"
+              "slug": "codex-beginner-guide"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: Prepare an empty workspace and reference"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Download the "
+            },
+            {
+              "type": "link",
+              "text": "Small Steps materials",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
             },
             {
               "type": "text",
-              "text": " instructions covering the single-file constraint, supplied wording, mobile layout and checks. Restrict edits to the practice folder."
+              "text": ", extract them and keep expected in a separate reference folder. Start this lesson in a new website-lab with brief.md; do not mix in start or broken, which are controlled exercises for other lessons. expected contains five code files for comparison if you get stuck. Check node --version in your workspace terminal, then py -3 --version on Windows or python3 --version on macOS/Linux. Resolve missing commands using installation and "
+            },
+            {
+              "type": "article",
+              "text": "Terminal paths",
+              "kind": "life",
+              "slug": "codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": " first."
             }
           ]
         },
         {
           "type": "paragraph",
-          "text": "3. Open the real page at 390px for one column and 1280px for three. Tab to both navigation links, press Enter and verify the correct section, visible focus and readable contrast."
+          "text": "Windows, macOS and Linux use the same HTML/CSS/JavaScript. Open website-lab in Codex desktop, CLI or IDE: choose the folder in desktop, cd into it before codex in CLI, or open it as the IDE project. A phone can follow a computer task, but files and preview remain on the execution host; the phone's 127.0.0.1 is not your computer. Do responsive checks on the computer before considering any public network exposure for a phone demo."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: Specify the deliverable and acceptance criteria"
         },
         {
           "type": "paragraph",
-          "text": "4. Request one observed correction, repeat the same checks and review the diff. Deliver files, opening instructions, tested widths and untested environments. Public deployment is outside this exercise."
+          "text": "Save the following as brief.md. English UI labels match the shared reference so all five language editions can verify the same buttons. Viewing added tasks supplies reading and toggling completion supplies updating, so the exercise covers all four CRUD operations without accounts, sync or collaboration. Define not only appearance, but corrupt-data behavior, blank input and keyboard use."
+        },
+        {
+          "type": "code",
+          "label": "website-lab/brief.md",
+          "language": "markdown",
+          "code": "# Small Steps website brief\nBuild a local todo website using HTML, CSS and JavaScript only.\n\n## Files\n- index.html: accessible page and form\n- style.css: responsive layout\n- core.mjs: immutable data functions\n- app.js: DOM events and localStorage\n- core.test.mjs: Node built-in tests\n\n## Data contract\n- Task: {id: string, title: string, completed: boolean}\n- Trim titles; accept 1 to 100 non-blank characters. IDs must be unique.\n- Export addTask(tasks, title, id), toggleTask(tasks, id), removeTask(tasks, id),\n  visibleTasks(tasks, filter), decodeTasks(raw), encodeTasks(tasks).\n- Filters: all, active, completed. Missing toggle/delete IDs leave data unchanged.\n- Store {version: 1, tasks: [...]} under mokaair-codex-todo-v1.\n- Invalid stored data must remain untouched; warn and allow temporary work.\n\n## Interface and acceptance\n- Labels: New task, Add task, All tasks, Active, Completed, Delete.\n- Show active and total counts, including when a filter is selected.\n- Add, toggle, delete, filter and reload must work.\n- Render task text as text, not HTML.\n- Visible keyboard focus; preserve sensible focus after list updates.\n- Fit 360px, 390px and 1280px viewports without page overflow.\n- Reset practice data removes only this app's storage key.\n- No dependencies, account, backend, analytics or external requests.\n\n## Delivery\nExplain changes, run node --test core.test.mjs, and list actual browser checks.\nDo not claim checks that were not run. Do not publish or deploy.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: Review the design, then implement in stages"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Use "
+            },
+            {
+              "type": "article",
+              "text": "Plan mode",
+              "kind": "life",
+              "slug": "codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": " to read brief.md and propose responsibilities for the five files, data flow and acceptance checks. Ensure core.mjs does not access the DOM, while app.js handles controls/storage, without frameworks or extra services. Add missing corrupt-data or recovery behavior before switching to implementation. Split implementation into data/tests and UI/interactions, requiring actual changes and unverified items after each stage."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "Stage one implementation prompt",
+          "language": "text",
+          "code": "Implement core.mjs and core.test.mjs from the approved brief.md contract.\nKeep all data operations immutable. Test empty and long titles, Unicode,\nduplicate IDs, filters, missing IDs, storage round trips and invalid storage.\nRun node --test core.test.mjs and report the command, result and remaining work.\nDo not change the brief, publish anything or build the UI in this stage.\n"
+        },
+        {
+          "type": "code",
+          "label": "Stage two implementation prompt",
+          "language": "text",
+          "code": "Implement index.html, style.css and app.js using the tested core.mjs.\nFollow the UI, storage, accessibility and responsive criteria in brief.md.\nDo not weaken the data tests to accommodate UI bugs.\nRun the data tests again. Give local preview instructions and list which\nbrowser interactions you actually verified and which still need verification.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "After each stage, inspect files and run tests yourself. The reference core.test.mjs has three top-level tests with several assertions; generated test counts may differ, so do not compare counts alone. Implementation and tests can share the same mistaken assumption, which is why the independent UI checklist follows. If stuck, compare the relevant expected file and understand the difference before overwriting any unsaved work. Consult "
+            },
+            {
+              "type": "article",
+              "text": "Git and recovery",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": " before reverting."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 4: Preview the same folder"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell",
+          "language": "powershell",
+          "code": "node --test core.test.mjs\npy -3 -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS / Linux",
+          "language": "sh",
+          "code": "node --test core.test.mjs\npython3 -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Open http://127.0.0.1:4173 and leave that terminal running; use another for commands. If the port is occupied, identify whether it is your own practice server before stopping anything. If choosing a free port, update both the URL and verification record. Double-clicking HTML uses file URLs that can restrict ES modules. If the wrong version appears, inspect the served folder, URL and app.js network response before asking Codex to rewrite the site."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 5: Verify behavior and layout"
+        },
+        {
+          "type": "paragraph",
+          "text": "Expand About this exercise, confirm all tasks are disposable fictional data, then use Reset practice data to clear only this app's key. Add Read and Build, and complete Read. All tasks shows two, Active only Build, Completed only Read, with 1 active / 2 total. Reload and confirm persistence; return to All tasks and delete Read, leaving Build. Continue with the table instead of accepting a single home-page screenshot."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Case",
+            "Action",
+            "Expected result"
+          ],
+          "rows": [
+            [
+              "Blank",
+              "Submit three spaces",
+              "No task; understandable error"
+            ],
+            [
+              "Unicode",
+              "Add 寫作 ✨",
+              "Preserved through reload"
+            ],
+            [
+              "Text safety",
+              "Add the HTML test string below",
+              "Literal text, no image element"
+            ],
+            [
+              "Keyboard",
+              "Tab, Enter and Space",
+              "Visible focus; usable after toggle/delete"
+            ],
+            [
+              "Phone widths",
+              "360px and 390px with long titles",
+              "Wrapping without page overflow"
+            ],
+            [
+              "Desktop width",
+              "1280px",
+              "Readable list, counts and controls"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Responsive emulation is not a physical iOS/Android test. Attached Windows/Edge reference images do not prove your generated result."
+        },
+        {
+          "type": "code",
+          "label": "Text safety: enter as a task title",
+          "language": "text",
+          "code": "<img src=x>\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 6: Corrupt data, fix and deliver"
+        },
+        {
+          "type": "paragraph",
+          "text": "Perform the advanced check only on the local fictional page. Save needed test records, open browser developer tools → Storage/Application → Local Storage and select the current 127.0.0.1 origin and port. Change mokaair-codex-todo-v1 to bad-json and reload. Expect a warning; add a temporary task and verify stored data remains bad-json rather than being silently overwritten. Use Reset practice data to remove only that key, then add and reload a task to confirm recovery. Do not clear all data for other sites."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "When acceptance fails, report exact input, actions, expected and actual values. Ask Codex to fix the relevant layer and rerun affected checks using the "
+            },
+            {
+              "type": "article",
+              "text": "Bug workflow",
+              "kind": "life",
+              "slug": "codex-debugging"
+            },
+            {
+              "type": "text",
+              "text": ". Deliver the brief, five files, Node test record, wide/narrow screenshots, untested platforms and recovery method. Stop the server with Ctrl+C in its original terminal. Ask for restart instructions in the "
+            },
+            {
+              "type": "article",
+              "text": "Handoff format",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": ". Frameworks, a backend or public hosting require a separate explicit scope; a visible local page is not a deployment."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -529,28 +1031,6 @@
             "license": "© Mokaair",
             "source_url": null
           }
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "Practice request"
-        },
-        {
-          "type": "code",
-          "language": "text",
-          "code": "Build one HTML file for a fictional studio with headline, introduction, three cards, anchor navigation and an about section. Use native HTML/CSS, one column on phones and three on desktop, with no external resources. Plan, implement, then verify by keyboard at both widths.",
-          "label": "Example for this step"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "Example and verification"
-        },
-        {
-          "type": "code",
-          "language": "html",
-          "code": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Small steps studio — practice website</title>\n  <style>\n    * { box-sizing: border-box; }\n    body { margin: 0; background: #f2f5ef; color: #173b39; font: 18px/1.7 system-ui, sans-serif; }\n    main { max-width: 1080px; margin: auto; padding: 64px 24px; }\n    h1 { font-size: clamp(2rem, 7vw, 4.8rem); line-height: 1.08; max-width: 800px; letter-spacing: -.045em; }\n    .label { text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; }\n    .intro { max-width: 650px; }\n    nav { display: flex; gap: 20px; flex-wrap: wrap; margin: 32px 0; }\n    a { color: inherit; text-underline-offset: .2em; padding: 10px 0; }\n    a:focus-visible { outline: 3px solid #c4602c; outline-offset: 4px; }\n    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }\n    article { background: #fff; border: 1px solid #cee0d5; border-radius: 20px; padding: 28px; overflow-wrap: anywhere; }\n    article h2 { font-size: 1.3rem; }\n    .number { color: #a54b26; font-size: .85rem; }\n    footer { margin-top: 48px; border-top: 1px solid #cee0d5; padding-top: 24px; }\n    @media (max-width: 680px) { .cards { grid-template-columns: 1fr; } main { padding-top: 36px; } }\n  </style>\n</head>\n<body>\n  <main>\n    <p class=\"label\">Small steps studio / practice only</p>\n    <h1>Build something small.<br>Check that it works.</h1>\n    <p class=\"intro\">A fictional studio learning to turn clear requests into useful, verifiable results. No account, form, tracker or external resource is used.</p>\n    <nav aria-label=\"Page sections\"><a href=\"#projects\">Explore projects</a><a href=\"#about\">About this exercise</a></nav>\n    <section class=\"cards\" id=\"projects\" aria-label=\"Practice projects\">\n      <article><p class=\"number\">01 / PLAN</p><h2>One clear request</h2><p>Define the outcome, context, constraints and checks before changing files.</p></article>\n      <article><p class=\"number\">02 / BUILD</p><h2>One focused change</h2><p>Keep the first version small enough to inspect and explain.</p></article>\n      <article><p class=\"number\">03 / VERIFY</p><h2>One real result</h2><p>Open the page, use the keyboard and test the layout at a narrow width.</p></article>\n    </section>\n    <footer id=\"about\"><h2>About this exercise</h2><p>This is a local practice page with fictional content. Opening it successfully does not publish it to the internet.</p></footer>\n  </main>\n</body>\n</html>\n",
-          "label": "Example for this step"
         },
         {
           "type": "image",
@@ -577,81 +1057,39 @@
           }
         },
         {
-          "type": "table",
-          "header": [
-            "Check",
-            "Acceptance method"
-          ],
-          "rows": [
-            [
-              "Confirm the environment",
-              "Allow about 45 minutes and prepare an empty folder, editor, Codex and browser. The complete reference below can be saved as index.html. You can first ask Codex to build its own version, then compare both against the same criteria."
-            ],
-            [
-              "Complete one action",
-              "Request one observed correction, repeat the same checks and review the diff. Deliver files, opening instructions, tested widths and untested environments. Public deployment is outside this exercise."
-            ],
-            [
-              "Inspect the actual result",
-              "The page has complete content, working anchor navigation and responsive columns without page-level overflow. Keyboard navigation works and reopening the file preserves behavior."
-            ]
-          ]
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-390.png",
+          "alt": "Small Steps / 390px / Windows Edge",
+          "caption": "Actual browser view of the complete reference version, before lesson edits. Windows / Edge 153.0.4234.32, 2026-09-14; fictional data. 390px is a responsive viewport, not a physical phone. This is not the Codex desktop interface.",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
         },
         {
-          "type": "heading",
-          "level": 2,
-          "text": "Expected result"
-        },
-        {
-          "type": "paragraph",
-          "text": "The page has complete content, working anchor navigation and responsive columns without page-level overflow. Keyboard navigation works and reopening the file preserves behavior."
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "Troubleshooting"
-        },
-        {
-          "type": "paragraph",
-          "text": "If unnecessary dependencies appear, restate the first-version boundary. Visible links still need interaction tests. A locally opened file is not a published website; report platforms that were not actually tested."
-        },
-        {
-          "type": "callout",
-          "tone": "info",
-          "title": "Official sources",
-          "text": "Cross-platform steps were checked against official documentation, not tested on every operating system. Interfaces and account availability can differ."
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "Continue learning"
-        },
-        {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "article",
-              "kind": "life",
-              "slug": "codex-learning-hub",
-              "text": "Back to the Codex learning hub"
-            }
-          ]
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-1280.png",
+          "alt": "Small Steps / 1280px / Windows Edge",
+          "caption": "Actual browser view of the complete reference version, before lesson edits. Windows / Edge 153.0.4234.32, 2026-09-14; fictional data. 390px is a responsive viewport, not a physical phone. This is not the Codex desktop interface.",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
         }
       ],
       "sources": [
         {
-          "title": "prompting",
+          "title": "Codex prompting",
           "url": "https://learn.chatgpt.com/docs/prompting",
           "checked_on": "2026-09-14"
         },
         {
-          "title": "browser",
+          "title": "Codex browser",
           "url": "https://learn.chatgpt.com/docs/browser",
-          "checked_on": "2026-09-14"
-        },
-        {
-          "title": "code-review",
-          "url": "https://learn.chatgpt.com/docs/code-review",
           "checked_on": "2026-09-14"
         }
       ]
@@ -672,66 +1110,268 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "依頼、計画、MD 規則、ブラウザー確認をつなげ、三枚のカードを持つ架空のスタジオサイトを作ります。単一 HTML で検証まで完了する練習です。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "学べること"
+          "text": "目標と開始地点"
         },
         {
-          "type": "paragraph",
-          "text": "内容、ページ内移動、レスポンシブ表示があり、横にはみ出さず、キー操作と再表示が正常なら完了です。"
-        },
-        {
-          "type": "paragraph",
-          "text": "練習時間の目安: 45 分"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "始める前に"
-        },
-        {
-          "type": "paragraph",
-          "text": "約 45 分、空フォルダー、エディター、Codex、ブラウザーを用意します。下の完成例は index.html として保存できます。まず自分の版を依頼して同じ基準で比較できます。"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "操作手順"
-        },
-        {
-          "type": "paragraph",
-          "text": "1. 主見出し、紹介、三枚のカード、ページ内移動、説明欄を定義します。架空情報だけを使い、フォーム、API、外部フォントなしで計画します。"
+          "type": "callout",
+          "tone": "info",
+          "text": "要求文書から追加・完了・削除・絞り込み・保存ができる Small Steps を作ります。読む時間20分、実装60分にモデル待機が加わります。Codex 入門、Node.js、Python 3、エディター、ブラウザーを用意します。共有可能な架空のタスクを使い、アカウントやバックエンドは接続しません。完了はローカルの機能と検証合格を意味し、配備は別工程です。"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "2. README と "
+              "text": "この段落の教材・資料: "
             },
             {
               "type": "article",
+              "text": "Codex 入門",
               "kind": "life",
-              "slug": "codex-agents-md",
-              "text": "AGENTS.md"
+              "slug": "codex-beginner-guide"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順1：空の作業場所と参考版を用意する"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "link",
+              "text": "Small Steps 教材",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
             },
             {
               "type": "text",
-              "text": " に単一ファイル、文章保持、モバイル表示、検証条件を書き、練習フォルダー内だけで作成させます。"
+              "text": "を展開し、expected は別の参考場所に保存します。本編は新規 website-lab の brief.md から始め、他編の制御教材 start・broken は混ぜません。expected の5ファイルは詰まった時の完成例です。作業端末で node --version、Windows は py -3 --version、macOS／Linux は python3 --version を確認し、不足命令は導入と"
+            },
+            {
+              "type": "article",
+              "text": "パス設定",
+              "kind": "life",
+              "slug": "codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": "で解決します。"
             }
           ]
         },
         {
           "type": "paragraph",
-          "text": "3. 390px で一列、1280px で三列を確認します。Tab と Enter で二つのリンクを使い、移動先、フォーカス、文字の見やすさを確認します。"
+          "text": "各 OS は同一 HTML／CSS／JavaScript を使います。デスクトップで website-lab を選び、CLI は cd 後に codex、IDE はそのフォルダーをプロジェクトとして開きます。携帯で PC タスクを追えても、ファイルとプレビューは実行ホストにあり、携帯の127.0.0.1は PC ではありません。携帯展示のために練習サーバーを公開せず、まず PC でレスポンシブを確認します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順2：成果と合格条件を書く"
         },
         {
           "type": "paragraph",
-          "text": "4. 実際の問題を一つ直し、同じ検証と差分確認を行います。ファイル、開き方、検証済み寸法、未検証環境を報告します。公開は含めません。"
+          "text": "下記を brief.md に保存します。英語の UI 名は参考版と一致させ、5言語で同じボタンを照合します。追加後の表示が Read、完了の切替が Update なので CRUD の4動作を満たし、ログイン・同期・共同作業は追加しません。見た目だけでなく損壊データ、空白入力、キーボード操作も定義します。"
+        },
+        {
+          "type": "code",
+          "label": "website-lab/brief.md",
+          "language": "markdown",
+          "code": "# Small Steps website brief\nBuild a local todo website using HTML, CSS and JavaScript only.\n\n## Files\n- index.html: accessible page and form\n- style.css: responsive layout\n- core.mjs: immutable data functions\n- app.js: DOM events and localStorage\n- core.test.mjs: Node built-in tests\n\n## Data contract\n- Task: {id: string, title: string, completed: boolean}\n- Trim titles; accept 1 to 100 non-blank characters. IDs must be unique.\n- Export addTask(tasks, title, id), toggleTask(tasks, id), removeTask(tasks, id),\n  visibleTasks(tasks, filter), decodeTasks(raw), encodeTasks(tasks).\n- Filters: all, active, completed. Missing toggle/delete IDs leave data unchanged.\n- Store {version: 1, tasks: [...]} under mokaair-codex-todo-v1.\n- Invalid stored data must remain untouched; warn and allow temporary work.\n\n## Interface and acceptance\n- Labels: New task, Add task, All tasks, Active, Completed, Delete.\n- Show active and total counts, including when a filter is selected.\n- Add, toggle, delete, filter and reload must work.\n- Render task text as text, not HTML.\n- Visible keyboard focus; preserve sensible focus after list updates.\n- Fit 360px, 390px and 1280px viewports without page overflow.\n- Reset practice data removes only this app's storage key.\n- No dependencies, account, backend, analytics or external requests.\n\n## Delivery\nExplain changes, run node --test core.test.mjs, and list actual browser checks.\nDo not claim checks that were not run. Do not publish or deploy.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：設計を確認して段階的に実装する"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Plan モード",
+              "kind": "life",
+              "slug": "codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": "で brief.md を読み、5ファイルの責務、データの流れ、検証を提案させます。core.mjs は DOM に触らず、app.js が操作と保存を担当し、framework や追加サービスがないか確認します。損壊や復元が欠ければ計画へ追加してから実装へ切替えます。データ・試験、画面・互動の2段階に分け、各回で実変更と未検証点を報告させます。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "第1段階の実装依頼",
+          "language": "text",
+          "code": "Implement core.mjs and core.test.mjs from the approved brief.md contract.\nKeep all data operations immutable. Test empty and long titles, Unicode,\nduplicate IDs, filters, missing IDs, storage round trips and invalid storage.\nRun node --test core.test.mjs and report the command, result and remaining work.\nDo not change the brief, publish anything or build the UI in this stage.\n"
+        },
+        {
+          "type": "code",
+          "label": "第2段階の実装依頼",
+          "language": "text",
+          "code": "Implement index.html, style.css and app.js using the tested core.mjs.\nFollow the UI, storage, accessibility and responsive criteria in brief.md.\nDo not weaken the data tests to accommodate UI bugs.\nRun the data tests again. Give local preview instructions and list which\nbrowser interactions you actually verified and which still need verification.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "各段階で自分でもファイルと試験を確認します。参考 core.test.mjs は複数断言を持つ3つの上位試験ですが、生成版の件数は異なり得るため数だけで比較しません。実装と試験が同じ勘違いを持つ場合もあり、次の独立した画面確認が必要です。詰まれば expected の該当ファイルを比べ、未保存作業を丸ごと上書きする前に原因を理解します。撤回は "
+            },
+            {
+              "type": "article",
+              "text": "Git と復元",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "を確認します。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順4：同じフォルダーをプレビューする"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell",
+          "language": "powershell",
+          "code": "node --test core.test.mjs\npy -3 -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux",
+          "language": "sh",
+          "code": "node --test core.test.mjs\npython3 -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "http://127.0.0.1:4173 を開き、その端末を維持し、他命令は別端末で実行します。占用時は自分の練習サーバーか確認してから停止を判断し、空きポートへ変えるなら URL と検証記録も変えます。HTML を直接開く file URL は ES module を制限し得ます。版違いなら全面再作成を頼む前に提供フォルダー、URL、Network の app.js を確認します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順5：機能と画面を順に検証する"
+        },
+        {
+          "type": "paragraph",
+          "text": "About this exercise を開き、全て捨てられる架空資料と確認して Reset practice data で専用鍵だけを消します。Read・Build を追加し Read を完了にします。All tasks は2件、Active は Build、Completed は Read、統計は1 active / 2 totalです。再読込で保持を確認し、All tasks に戻り Read を削除して Build を残します。首頁画像1枚で終わらず次の表を検証します。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "例",
+            "操作",
+            "期待結果"
+          ],
+          "rows": [
+            [
+              "空白",
+              "3空白を送信",
+              "追加せず理解可能なエラー"
+            ],
+            [
+              "Unicode",
+              "寫作 ✨ を追加",
+              "再読込でも保持"
+            ],
+            [
+              "文字安全",
+              "下記 HTML 試験文字列 を追加",
+              "文字表示、画像要素なし"
+            ],
+            [
+              "キーボード",
+              "Tab・Enter・Space",
+              "可視焦点、完了・削除後も操作可能"
+            ],
+            [
+              "携帯幅",
+              "360px・390px、長い題名",
+              "折返し、頁全体の横溢出なし"
+            ],
+            [
+              "デスクトップ幅",
+              "1280px",
+              "一覧・統計・操作が読める"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "レスポンシブ表示は実 iOS／Android 試験ではなく、添付 Windows／Edge 参考画像は今回の生成成果の証明ではありません。"
+        },
+        {
+          "type": "code",
+          "label": "文字安全：タスク題名として入力",
+          "language": "text",
+          "code": "<img src=x>\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順6：損壊データ・修正・引渡し"
+        },
+        {
+          "type": "paragraph",
+          "text": "進階確認はローカルの架空頁だけで行います。必要記録を保存後、開発ツールの Storage／Application → Local Storage で現在の127.0.0.1とポートを選び、mokaair-codex-todo-v1を bad-json にして再読込します。警告が出て、暫定追加後も保存値が bad-json のままか確認します。Reset practice data でその鍵だけを消し、新規追加・再読込で保存復旧を確認します。他サイトの全資料は消しません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "失敗時は入力・操作・期待・実際を正確に伝え、"
+            },
+            {
+              "type": "article",
+              "text": "Bug 手順",
+              "kind": "life",
+              "slug": "codex-debugging"
+            },
+            {
+              "type": "text",
+              "text": "で該当層だけ修正・再検証します。brief、5ファイル、Node 記録、広幅・狭幅画面、未実測プラットフォーム、復元方法を引渡します。元端末の Ctrl+C で停止し、"
+            },
+            {
+              "type": "article",
+              "text": "交接形式",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "で再起動法を説明させます。framework・バックエンド・公開は別の明確な範囲であり、ローカル表示を配備済みとしません。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -745,28 +1385,6 @@
             "license": "© Mokaair",
             "source_url": null
           }
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "練習用の依頼"
-        },
-        {
-          "type": "code",
-          "language": "text",
-          "code": "架空スタジオの単一 HTML を作ってください。見出し、紹介、三枚のカード、ページ内リンク、説明欄を含めます。外部資源なしでモバイル一列、デスクトップ三列にし、計画後に実装してキー操作と二つの幅を検証してください。",
-          "label": "この手順の例"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "例と確認方法"
-        },
-        {
-          "type": "code",
-          "language": "html",
-          "code": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Small steps studio — practice website</title>\n  <style>\n    * { box-sizing: border-box; }\n    body { margin: 0; background: #f2f5ef; color: #173b39; font: 18px/1.7 system-ui, sans-serif; }\n    main { max-width: 1080px; margin: auto; padding: 64px 24px; }\n    h1 { font-size: clamp(2rem, 7vw, 4.8rem); line-height: 1.08; max-width: 800px; letter-spacing: -.045em; }\n    .label { text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; }\n    .intro { max-width: 650px; }\n    nav { display: flex; gap: 20px; flex-wrap: wrap; margin: 32px 0; }\n    a { color: inherit; text-underline-offset: .2em; padding: 10px 0; }\n    a:focus-visible { outline: 3px solid #c4602c; outline-offset: 4px; }\n    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }\n    article { background: #fff; border: 1px solid #cee0d5; border-radius: 20px; padding: 28px; overflow-wrap: anywhere; }\n    article h2 { font-size: 1.3rem; }\n    .number { color: #a54b26; font-size: .85rem; }\n    footer { margin-top: 48px; border-top: 1px solid #cee0d5; padding-top: 24px; }\n    @media (max-width: 680px) { .cards { grid-template-columns: 1fr; } main { padding-top: 36px; } }\n  </style>\n</head>\n<body>\n  <main>\n    <p class=\"label\">Small steps studio / practice only</p>\n    <h1>Build something small.<br>Check that it works.</h1>\n    <p class=\"intro\">A fictional studio learning to turn clear requests into useful, verifiable results. No account, form, tracker or external resource is used.</p>\n    <nav aria-label=\"Page sections\"><a href=\"#projects\">Explore projects</a><a href=\"#about\">About this exercise</a></nav>\n    <section class=\"cards\" id=\"projects\" aria-label=\"Practice projects\">\n      <article><p class=\"number\">01 / PLAN</p><h2>One clear request</h2><p>Define the outcome, context, constraints and checks before changing files.</p></article>\n      <article><p class=\"number\">02 / BUILD</p><h2>One focused change</h2><p>Keep the first version small enough to inspect and explain.</p></article>\n      <article><p class=\"number\">03 / VERIFY</p><h2>One real result</h2><p>Open the page, use the keyboard and test the layout at a narrow width.</p></article>\n    </section>\n    <footer id=\"about\"><h2>About this exercise</h2><p>This is a local practice page with fictional content. Opening it successfully does not publish it to the internet.</p></footer>\n  </main>\n</body>\n</html>\n",
-          "label": "この手順の例"
         },
         {
           "type": "image",
@@ -793,81 +1411,39 @@
           }
         },
         {
-          "type": "table",
-          "header": [
-            "確認項目",
-            "確認方法"
-          ],
-          "rows": [
-            [
-              "環境を確かめる",
-              "約 45 分、空フォルダー、エディター、Codex、ブラウザーを用意します。下の完成例は index.html として保存できます。まず自分の版を依頼して同じ基準で比較できます。"
-            ],
-            [
-              "一つの操作を行う",
-              "実際の問題を一つ直し、同じ検証と差分確認を行います。ファイル、開き方、検証済み寸法、未検証環境を報告します。公開は含めません。"
-            ],
-            [
-              "実際の結果を調べる",
-              "内容、ページ内移動、レスポンシブ表示があり、横にはみ出さず、キー操作と再表示が正常なら完了です。"
-            ]
-          ]
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-390.png",
+          "alt": "Small Steps / 390px / Windows Edge",
+          "caption": "変更前の完成参考版を実際のブラウザで撮影。Windows / Edge 153.0.4234.32、2026-09-14。架空データを使用。390px はレスポンシブ表示で実物のスマートフォンではありません。Codex デスクトップ UI の画像ではありません。",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
         },
         {
-          "type": "heading",
-          "level": 2,
-          "text": "期待する結果"
-        },
-        {
-          "type": "paragraph",
-          "text": "内容、ページ内移動、レスポンシブ表示があり、横にはみ出さず、キー操作と再表示が正常なら完了です。"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "トラブル対応"
-        },
-        {
-          "type": "paragraph",
-          "text": "不要な依存があれば条件を伝え直します。リンクは実際に操作します。ローカル表示と公開を区別します。"
-        },
-        {
-          "type": "callout",
-          "tone": "info",
-          "title": "公式の出典",
-          "text": "各 OS の手順は公式文書で確認していますが、すべての環境で実機検証したわけではありません。画面や提供状況は異なる場合があります。"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "次に学ぶこと"
-        },
-        {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "article",
-              "kind": "life",
-              "slug": "codex-learning-hub",
-              "text": "Codex 学習ガイドに戻る"
-            }
-          ]
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-1280.png",
+          "alt": "Small Steps / 1280px / Windows Edge",
+          "caption": "変更前の完成参考版を実際のブラウザで撮影。Windows / Edge 153.0.4234.32、2026-09-14。架空データを使用。390px はレスポンシブ表示で実物のスマートフォンではありません。Codex デスクトップ UI の画像ではありません。",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
         }
       ],
       "sources": [
         {
-          "title": "prompting",
+          "title": "Codex prompting",
           "url": "https://learn.chatgpt.com/docs/prompting",
           "checked_on": "2026-09-14"
         },
         {
-          "title": "browser",
+          "title": "Codex browser",
           "url": "https://learn.chatgpt.com/docs/browser",
-          "checked_on": "2026-09-14"
-        },
-        {
-          "title": "code-review",
-          "url": "https://learn.chatgpt.com/docs/code-review",
           "checked_on": "2026-09-14"
         }
       ]
@@ -888,66 +1464,268 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "요청, 계획, MD 규칙과 브라우저 검사를 연결하여 카드 세 개가 있는 가상 스튜디오 사이트를 만듭니다. HTML 한 파일로 검증까지 완료하는 연습입니다."
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "학습 목표"
+          "text": "목표와 시작점"
         },
         {
-          "type": "paragraph",
-          "text": "내용, 페이지 내 이동과 반응형 배치가 있고 가로 넘침 없이 키보드와 다시 열기가 작동하면 완료입니다."
-        },
-        {
-          "type": "paragraph",
-          "text": "예상 실습 시간: 45 분"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "시작 전 준비"
-        },
-        {
-          "type": "paragraph",
-          "text": "약 45분, 빈 폴더, 편집기, Codex와 브라우저를 준비합니다. 아래 완성 예시는 index.html로 저장할 수 있습니다. 먼저 자신만의 버전을 요청한 뒤 같은 기준으로 비교할 수 있습니다."
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "단계별 작업"
-        },
-        {
-          "type": "paragraph",
-          "text": "1. 큰 제목, 소개, 카드 세 개, 페이지 내 이동과 설명 영역을 정의합니다. 가상 정보만 쓰고 폼, API와 외부 글꼴 없이 계획합니다."
+          "type": "callout",
+          "tone": "info",
+          "text": "요구 문서에서 추가·완료·삭제·필터·저장이 되는 Small Steps 할 일 사이트를 만듭니다. 읽기 20분, 구현 60분에 모델 대기가 추가됩니다. Codex 입문, Node.js, Python 3, 편집기, 브라우저를 준비하세요. 공유 가능한 가상 할 일만 쓰고 계정·백엔드는 연결하지 않습니다. 완료는 로컬 기능·검증 통과이며 배포는 별도 절차입니다."
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "2. README와 "
+              "text": "이 단락의 학습 자료: "
             },
             {
               "type": "article",
+              "text": "Codex 입문",
               "kind": "life",
-              "slug": "codex-agents-md",
-              "text": "AGENTS.md"
+              "slug": "codex-beginner-guide"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 빈 작업 공간과 참고 버전 준비"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "link",
+              "text": "Small Steps 자료",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
             },
             {
               "type": "text",
-              "text": "에 단일 파일, 문구 유지, 모바일 배치와 검증 조건을 적고 연습 폴더 안에서만 만들게 합니다."
+              "text": "를 풀고 expected는 별도 참고 폴더에 보관하세요. 새 website-lab의 brief.md부터 시작하며 다른 편의 통제 실습인 start·broken은 섞지 않습니다. expected의 코드 파일 다섯 개는 막힐 때 비교할 완성본입니다. 작업 터미널에서 node --version, Windows는 py -3 --version, macOS/Linux는 python3 --version을 확인하고 없는 명령은 설치와 "
+            },
+            {
+              "type": "article",
+              "text": "경로 설정",
+              "kind": "life",
+              "slug": "codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": "부터 해결하세요."
             }
           ]
         },
         {
           "type": "paragraph",
-          "text": "3. 390px에서 한 열, 1280px에서 세 열을 확인합니다. Tab과 Enter로 두 링크를 사용하고 이동 위치, 포커스와 글자 대비를 확인합니다."
+          "text": "모든 OS는 같은 HTML/CSS/JavaScript를 씁니다. 데스크톱에서 website-lab을 선택하고 CLI는 cd 후 codex, IDE는 해당 폴더를 프로젝트로 엽니다. 휴대전화로 PC 작업을 추적해도 파일·미리 보기는 실행 호스트에 있으며 휴대전화의 127.0.0.1은 PC가 아닙니다. 휴대전화 시연을 위해 연습 서버를 공개하지 말고 먼저 PC에서 반응형을 확인합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 결과물과 승인 조건 작성"
         },
         {
           "type": "paragraph",
-          "text": "4. 실제 문제 하나를 고치고 같은 검증과 diff 확인을 반복합니다. 파일, 여는 방법, 확인한 크기와 미검증 환경을 보고합니다. 공개 배포는 포함하지 않습니다."
+          "text": "아래를 brief.md로 저장하세요. 영어 UI 이름을 참고본과 맞춰 다섯 언어에서 같은 버튼을 확인합니다. 추가 후 표시가 Read, 완료 전환이 Update이므로 CRUD 네 동작을 충족하며 로그인·동기화·협업은 추가하지 않습니다. 외관뿐 아니라 손상 데이터·공백 입력·키보드 동작도 정의하세요."
+        },
+        {
+          "type": "code",
+          "label": "website-lab/brief.md",
+          "language": "markdown",
+          "code": "# Small Steps website brief\nBuild a local todo website using HTML, CSS and JavaScript only.\n\n## Files\n- index.html: accessible page and form\n- style.css: responsive layout\n- core.mjs: immutable data functions\n- app.js: DOM events and localStorage\n- core.test.mjs: Node built-in tests\n\n## Data contract\n- Task: {id: string, title: string, completed: boolean}\n- Trim titles; accept 1 to 100 non-blank characters. IDs must be unique.\n- Export addTask(tasks, title, id), toggleTask(tasks, id), removeTask(tasks, id),\n  visibleTasks(tasks, filter), decodeTasks(raw), encodeTasks(tasks).\n- Filters: all, active, completed. Missing toggle/delete IDs leave data unchanged.\n- Store {version: 1, tasks: [...]} under mokaair-codex-todo-v1.\n- Invalid stored data must remain untouched; warn and allow temporary work.\n\n## Interface and acceptance\n- Labels: New task, Add task, All tasks, Active, Completed, Delete.\n- Show active and total counts, including when a filter is selected.\n- Add, toggle, delete, filter and reload must work.\n- Render task text as text, not HTML.\n- Visible keyboard focus; preserve sensible focus after list updates.\n- Fit 360px, 390px and 1280px viewports without page overflow.\n- Reset practice data removes only this app's storage key.\n- No dependencies, account, backend, analytics or external requests.\n\n## Delivery\nExplain changes, run node --test core.test.mjs, and list actual browser checks.\nDo not claim checks that were not run. Do not publish or deploy.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 설계 확인 후 단계별 구현"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Plan 모드",
+              "kind": "life",
+              "slug": "codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": "로 brief.md를 읽고 다섯 파일의 책임·데이터 흐름·검증을 제안하게 합니다. core.mjs는 DOM을 접근하지 않고 app.js가 조작·저장을 맡으며 프레임워크·추가 서비스가 없는지 확인하세요. 손상·복원이 빠졌으면 계획에 보충하고 구현으로 전환합니다. 데이터·시험과 화면·상호작용 두 단계로 나눠 매번 실제 변경·미검증 항목을 보고하게 합니다."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "1단계 구현 요청",
+          "language": "text",
+          "code": "Implement core.mjs and core.test.mjs from the approved brief.md contract.\nKeep all data operations immutable. Test empty and long titles, Unicode,\nduplicate IDs, filters, missing IDs, storage round trips and invalid storage.\nRun node --test core.test.mjs and report the command, result and remaining work.\nDo not change the brief, publish anything or build the UI in this stage.\n"
+        },
+        {
+          "type": "code",
+          "label": "2단계 구현 요청",
+          "language": "text",
+          "code": "Implement index.html, style.css and app.js using the tested core.mjs.\nFollow the UI, storage, accessibility and responsive criteria in brief.md.\nDo not weaken the data tests to accommodate UI bugs.\nRun the data tests again. Give local preview instructions and list which\nbrowser interactions you actually verified and which still need verification.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "각 단계 후 직접 파일을 보고 시험을 실행하세요. 참고 core.test.mjs에는 여러 단언을 가진 상위 시험 세 개가 있지만 생성된 시험 수는 달라도 되므로 개수만 비교하지 않습니다. 구현·시험이 같은 오해를 공유할 수 있어 다음 독립 화면 점검이 필요합니다. 막히면 expected의 해당 파일을 비교해 원인을 이해하고 미저장 작업을 통째로 덮어쓰지 마세요. 되돌리기는 "
+            },
+            {
+              "type": "article",
+              "text": "Git과 복원",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "을 먼저 확인합니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4단계: 같은 폴더 미리 보기"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell",
+          "language": "powershell",
+          "code": "node --test core.test.mjs\npy -3 -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS / Linux",
+          "language": "sh",
+          "code": "node --test core.test.mjs\npython3 -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "http://127.0.0.1:4173을 열고 터미널을 유지하며 다른 명령은 별도 터미널을 씁니다. 포트가 사용 중이면 자신의 연습 서버인지 확인한 뒤 중단을 판단하고 빈 포트로 바꾸면 URL·검증 기록도 바꾸세요. HTML 직접 열기의 file URL은 ES module을 제한할 수 있습니다. 다른 버전이 보이면 전체 재작성을 요청하기 전에 제공 폴더·URL·Network의 app.js를 확인합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "5단계: 기능과 화면 검증"
+        },
+        {
+          "type": "paragraph",
+          "text": "About this exercise를 펼쳐 모두 버려도 되는 가상 데이터인지 확인한 뒤 Reset practice data로 전용 키만 지웁니다. Read·Build를 추가하고 Read를 완료하세요. All tasks는 두 개, Active는 Build, Completed는 Read, 통계는 1 active / 2 total이어야 합니다. 새로고침 후 유지되는지 확인하고 All tasks로 돌아와 Read를 삭제하면 Build가 남습니다. 첫 화면 한 장으로 끝내지 말고 다음 표를 검증하세요."
+        },
+        {
+          "type": "table",
+          "header": [
+            "사례",
+            "동작",
+            "예상 결과"
+          ],
+          "rows": [
+            [
+              "공백",
+              "공백 세 개 제출",
+              "추가 안 됨·이해 가능한 오류"
+            ],
+            [
+              "Unicode",
+              "寫作 ✨ 추가",
+              "새로고침 후 유지"
+            ],
+            [
+              "텍스트 안전",
+              "아래 HTML 시험 문자열 추가",
+              "문자 표시·이미지 요소 없음"
+            ],
+            [
+              "키보드",
+              "Tab·Enter·Space",
+              "초점 표시·완료/삭제 후 조작 가능"
+            ],
+            [
+              "휴대전화 폭",
+              "360px·390px, 긴 제목",
+              "줄바꿈·페이지 가로 넘침 없음"
+            ],
+            [
+              "데스크톱 폭",
+              "1280px",
+              "목록·통계·조작 읽기 가능"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "반응형 모드는 실제 iOS/Android 시험이 아니며 첨부 Windows/Edge 참고 화면은 이번 생성 결과의 증거가 아닙니다."
+        },
+        {
+          "type": "code",
+          "label": "텍스트 안전: 할 일 제목으로 입력",
+          "language": "text",
+          "code": "<img src=x>\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "6단계: 손상 데이터·수정·전달"
+        },
+        {
+          "type": "paragraph",
+          "text": "고급 확인은 로컬 가상 페이지에서만 합니다. 필요한 기록을 저장하고 개발자 도구 Storage/Application → Local Storage에서 현재 127.0.0.1과 포트를 선택하세요. mokaair-codex-todo-v1을 bad-json으로 바꿔 새로고침하면 경고가 나와야 합니다. 임시 항목 추가 후 저장값이 몰래 덮어써지지 않고 bad-json인지 확인합니다. Reset practice data로 해당 키만 지운 뒤 새 항목·새로고침으로 저장 복구를 확인하세요. 다른 사이트 전체 데이터를 지우지 않습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "실패하면 입력·동작·예상·실제 값을 정확히 전달하고 "
+            },
+            {
+              "type": "article",
+              "text": "버그 절차",
+              "kind": "life",
+              "slug": "codex-debugging"
+            },
+            {
+              "type": "text",
+              "text": "로 해당 계층만 수정·재검증하게 합니다. brief·파일 다섯 개·Node 기록·넓은/좁은 화면·미실측 플랫폼·복원 방법을 전달하세요. 원래 터미널 Ctrl+C로 서버를 중지하고 "
+            },
+            {
+              "type": "article",
+              "text": "인계 형식",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "으로 재시작법을 요청합니다. 프레임워크·백엔드·공개 호스팅은 별도 명시한 범위이며 로컬 표시를 배포 완료로 보지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -961,28 +1739,6 @@
             "license": "© Mokaair",
             "source_url": null
           }
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "연습 요청"
-        },
-        {
-          "type": "code",
-          "language": "text",
-          "code": "가상 스튜디오의 단일 HTML을 만드세요. 제목, 소개, 카드 세 개, 페이지 내 링크와 설명 영역을 포함합니다. 외부 자원 없이 모바일 한 열, 데스크톱 세 열로 만들고 계획 후 구현하여 키보드와 두 너비를 검증하세요.",
-          "label": "이 단계의 예제"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "예시와 검증"
-        },
-        {
-          "type": "code",
-          "language": "html",
-          "code": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Small steps studio — practice website</title>\n  <style>\n    * { box-sizing: border-box; }\n    body { margin: 0; background: #f2f5ef; color: #173b39; font: 18px/1.7 system-ui, sans-serif; }\n    main { max-width: 1080px; margin: auto; padding: 64px 24px; }\n    h1 { font-size: clamp(2rem, 7vw, 4.8rem); line-height: 1.08; max-width: 800px; letter-spacing: -.045em; }\n    .label { text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; }\n    .intro { max-width: 650px; }\n    nav { display: flex; gap: 20px; flex-wrap: wrap; margin: 32px 0; }\n    a { color: inherit; text-underline-offset: .2em; padding: 10px 0; }\n    a:focus-visible { outline: 3px solid #c4602c; outline-offset: 4px; }\n    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }\n    article { background: #fff; border: 1px solid #cee0d5; border-radius: 20px; padding: 28px; overflow-wrap: anywhere; }\n    article h2 { font-size: 1.3rem; }\n    .number { color: #a54b26; font-size: .85rem; }\n    footer { margin-top: 48px; border-top: 1px solid #cee0d5; padding-top: 24px; }\n    @media (max-width: 680px) { .cards { grid-template-columns: 1fr; } main { padding-top: 36px; } }\n  </style>\n</head>\n<body>\n  <main>\n    <p class=\"label\">Small steps studio / practice only</p>\n    <h1>Build something small.<br>Check that it works.</h1>\n    <p class=\"intro\">A fictional studio learning to turn clear requests into useful, verifiable results. No account, form, tracker or external resource is used.</p>\n    <nav aria-label=\"Page sections\"><a href=\"#projects\">Explore projects</a><a href=\"#about\">About this exercise</a></nav>\n    <section class=\"cards\" id=\"projects\" aria-label=\"Practice projects\">\n      <article><p class=\"number\">01 / PLAN</p><h2>One clear request</h2><p>Define the outcome, context, constraints and checks before changing files.</p></article>\n      <article><p class=\"number\">02 / BUILD</p><h2>One focused change</h2><p>Keep the first version small enough to inspect and explain.</p></article>\n      <article><p class=\"number\">03 / VERIFY</p><h2>One real result</h2><p>Open the page, use the keyboard and test the layout at a narrow width.</p></article>\n    </section>\n    <footer id=\"about\"><h2>About this exercise</h2><p>This is a local practice page with fictional content. Opening it successfully does not publish it to the internet.</p></footer>\n  </main>\n</body>\n</html>\n",
-          "label": "이 단계의 예제"
         },
         {
           "type": "image",
@@ -1009,81 +1765,39 @@
           }
         },
         {
-          "type": "table",
-          "header": [
-            "검사 항목",
-            "확인 방법"
-          ],
-          "rows": [
-            [
-              "환경 확인",
-              "약 45분, 빈 폴더, 편집기, Codex와 브라우저를 준비합니다. 아래 완성 예시는 index.html로 저장할 수 있습니다. 먼저 자신만의 버전을 요청한 뒤 같은 기준으로 비교할 수 있습니다."
-            ],
-            [
-              "작업 하나 완료",
-              "실제 문제 하나를 고치고 같은 검증과 diff 확인을 반복합니다. 파일, 여는 방법, 확인한 크기와 미검증 환경을 보고합니다. 공개 배포는 포함하지 않습니다."
-            ],
-            [
-              "실제 결과 확인",
-              "내용, 페이지 내 이동과 반응형 배치가 있고 가로 넘침 없이 키보드와 다시 열기가 작동하면 완료입니다."
-            ]
-          ]
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-390.png",
+          "alt": "Small Steps / 390px / Windows Edge",
+          "caption": "수정 전 완성 참고 버전의 실제 브라우저 화면. Windows / Edge 153.0.4234.32, 2026-09-14, 가상 데이터. 390px은 반응형 화면이며 실제 휴대전화가 아닙니다. Codex 데스크톱 UI 화면도 아닙니다.",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
         },
         {
-          "type": "heading",
-          "level": 2,
-          "text": "예상 결과"
-        },
-        {
-          "type": "paragraph",
-          "text": "내용, 페이지 내 이동과 반응형 배치가 있고 가로 넘침 없이 키보드와 다시 열기가 작동하면 완료입니다."
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "문제 해결"
-        },
-        {
-          "type": "paragraph",
-          "text": "불필요한 의존성이 생기면 조건을 다시 전달하세요. 링크는 실제 조작하고 로컬 표시와 공개 배포를 구분합니다."
-        },
-        {
-          "type": "callout",
-          "tone": "info",
-          "title": "공식 출처",
-          "text": "각 OS 절차는 공식 문서로 확인했으며 모든 환경에서 직접 시험한 것은 아닙니다. 화면과 계정별 제공 기능은 다를 수 있습니다."
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "이어서 학습하기"
-        },
-        {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "article",
-              "kind": "life",
-              "slug": "codex-learning-hub",
-              "text": "Codex 학습 목차로 돌아가기"
-            }
-          ]
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-1280.png",
+          "alt": "Small Steps / 1280px / Windows Edge",
+          "caption": "수정 전 완성 참고 버전의 실제 브라우저 화면. Windows / Edge 153.0.4234.32, 2026-09-14, 가상 데이터. 390px은 반응형 화면이며 실제 휴대전화가 아닙니다. Codex 데스크톱 UI 화면도 아닙니다.",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
         }
       ],
       "sources": [
         {
-          "title": "prompting",
+          "title": "Codex prompting",
           "url": "https://learn.chatgpt.com/docs/prompting",
           "checked_on": "2026-09-14"
         },
         {
-          "title": "browser",
+          "title": "Codex browser",
           "url": "https://learn.chatgpt.com/docs/browser",
-          "checked_on": "2026-09-14"
-        },
-        {
-          "title": "code-review",
-          "url": "https://learn.chatgpt.com/docs/code-review",
           "checked_on": "2026-09-14"
         }
       ]

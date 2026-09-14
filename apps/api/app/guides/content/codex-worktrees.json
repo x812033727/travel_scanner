@@ -45,6 +45,21 @@
           "text": "建立第二個工作目錄，確認兩邊修改互不覆蓋，保存成果後清理練習目錄。閱讀約 15 分鐘、操作約 20 分鐘。需要 Git 與文字編輯器；先讀分支與差異。本篇用一個全新的小型 Git 練習庫演示，沒有遠端儲存庫，不會推送或部署網站。"
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教學與資源: "
+            },
+            {
+              "type": "article",
+              "text": "分支與差異",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            }
+          ]
+        },
+        {
           "type": "paragraph",
           "text": "Worktree 是同一 Git 儲存庫的另一份 checkout：檔案與暫存區分開，提交與分支資料仍共用。它適合一邊修 Bug、一邊研究其他功能，但不是安全沙盒。兩個目錄若連到同一資料庫、同一雲端文件或相同 port，仍可能互相影響。多人任務要同時分清檔案範圍、外部資料與執行服務，不能只看資料夾名稱不同就認定完全隔離。"
         },
@@ -322,6 +337,21 @@
           "type": "callout",
           "tone": "info",
           "text": "建立第二个工作目录，确认两边修改互不覆盖，保存成果后清理练习目录。阅读约 15 分钟、操作约 20 分钟。需要 Git 与文字编辑器；先读分支与差异。本篇用一个全新的小型 Git 练习库演示，没有远端储存库，不会推送或部署网站。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教学与资源: "
+            },
+            {
+              "type": "article",
+              "text": "分支与差异",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -603,6 +633,21 @@
           "text": "Create a second checkout, verify that file edits remain separate, save the result and clean up the practice checkout. Allow 15 minutes to read and 20 to practice. Install Git and a text editor and read Branches and diffs. This lesson uses a new small repository without a remote; it does not push or deploy a website."
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Lessons and resources mentioned here: "
+            },
+            {
+              "type": "article",
+              "text": "Branches and diffs",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            }
+          ]
+        },
+        {
           "type": "paragraph",
           "text": "A worktree is another checkout of the same Git repository. Files and indexes are separate while commits and branch metadata are shared. It helps with a bug fix alongside another feature, but is not a security sandbox. Checkouts using the same database, cloud document or port can still interfere. Separate file ownership, external data and running services instead of assuming different folder names imply complete isolation."
         },
@@ -865,7 +910,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "Codex 教学目次に戻る",
+              "text": "Codex 学習目次に戻る",
               "kind": "life",
               "slug": "codex-learning-hub"
             }
@@ -879,11 +924,26 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "第二の作業目録を作り、編集の分離を確認、成果を保存して実習目録を片付けます。読む時間15分、実習20分。Git とエディターを用意し分岐と差分を読みます。遠隔なしの新規小リポジトリを使い、push や公開はしません。"
+          "text": "第二の作業ディレクトリを作り、編集の分離を確認、成果を保存して実習ディレクトリを片付けます。読む時間15分、実習20分。Git とエディターを用意し分岐と差分を読みます。遠隔なしの新規小リポジトリを使い、push や公開はしません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "この段落の教材・資料: "
+            },
+            {
+              "type": "article",
+              "text": "分岐と差分",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            }
+          ]
         },
         {
           "type": "paragraph",
-          "text": "Worktree は同一 Git の別 checkout で、ファイルと索引は別、提交と分岐情報は共通です。修正と調査の併行に適しても安全沙盒ではありません。同じ DB、雲文書、port は競合し得ます。フォルダー名だけでなく編集担当、外部データ、稼働サービスも分けます。"
+          "text": "Worktree は同一 Git の別 checkout で、ファイルと索引は別、コミットと分岐情報は共通です。修正と調査の併行に適しても安全沙盒ではありません。同じ DB、雲文書、port は競合し得ます。フォルダー名だけでなく編集担当、外部データ、稼働サービスも分けます。"
         },
         {
           "type": "heading",
@@ -902,7 +962,7 @@
         },
         {
           "type": "paragraph",
-          "text": "下記全内容で notes.md を作ります。固有 marker で Codex の説明によらず比較できます。UTF-8 の標準テキストと拡張子を確認後に提交します。周辺ファイルを巻き込まないよう git add . ではなく notes.md だけを追加します。"
+          "text": "下記全内容で notes.md を作ります。固有 marker で Codex の説明によらず比較できます。UTF-8 の標準テキストと拡張子を確認後にコミットします。周辺ファイルを巻き込まないよう git add . ではなく notes.md だけを追加します。"
         },
         {
           "type": "code",
@@ -912,13 +972,13 @@
         },
         {
           "type": "code",
-          "label": "実習端末：基準を提交",
+          "label": "実習端末：基準をコミット",
           "language": "sh",
           "code": "git add -- notes.md\ngit commit -m \"Add worktree practice baseline\"\ngit status --short\ngit branch --show-current\n"
         },
         {
           "type": "paragraph",
-          "text": "main と未提交なしを確認します。失敗はこの庫の作者設定を直し、組織の署名方針を教材のため変更しません。初回提交がなければ HEAD 基準もないため先に完了します。同名があれば未使用名に揃えて置換し、既存を強制上書きしません。"
+          "text": "main と未コミットなしを確認します。失敗はこの庫の作者設定を直し、組織の署名方針を教材のため変更しません。初回コミットがなければ HEAD 基準もないため先に完了します。同名があれば未使用名に揃えて置換し、既存を強制上書きしません。"
         },
         {
           "type": "heading",
@@ -927,7 +987,7 @@
         },
         {
           "type": "code",
-          "label": "worktree-lab 端末：同階層の副本を作成",
+          "label": "worktree-lab 端末：同階層のコピーを作成",
           "language": "sh",
           "code": "git worktree add -b codex/worktree-practice ../worktree-copy\ngit worktree list\n"
         },
@@ -956,13 +1016,13 @@
         },
         {
           "type": "code",
-          "label": "worktree-lab のまま両目録を比較",
+          "label": "worktree-lab のまま両ディレクトリを比較",
           "language": "sh",
           "code": "git status --short\ngit -C ../worktree-copy status --short\ngit -C ../worktree-copy diff -- notes.md\n"
         },
         {
           "type": "paragraph",
-          "text": "元の status は未変更、副本は notes.md 変更、差分は marker 一行のはずです。これはファイル分離であり main への統合ではありません。両方変われば窓の対象が同じか、手作業で両方変えたか確認し、原因が分かるまで提交しません。"
+          "text": "元の status は未変更、コピーは notes.md 変更、差分は marker 一行のはずです。これはファイル分離であり main への統合ではありません。両方変われば窓の対象が同じか、手作業で両方変えたか確認し、原因が分かるまでコミットしません。"
         },
         {
           "type": "heading",
@@ -971,17 +1031,17 @@
         },
         {
           "type": "code",
-          "label": "失敗確認：main は元目録で使用中",
+          "label": "失敗確認：main は元ディレクトリで使用中",
           "language": "sh",
           "code": "git -C ../worktree-copy switch main\n"
         },
         {
           "type": "paragraph",
-          "text": "Git は同じ分岐を二箇所で使うことを拒み、main 使用中を報告します。両方とも元分岐のままなのが保護動作で、強制や制限無視を加えません。確認済み marker を副本分岐へ提交し、元から比較します。提出は本機内にあり GitHub へ自動送信されません。"
+          "text": "Git は同じ分岐を二箇所で使うことを拒み、main 使用中を報告します。両方とも元分岐のままなのが保護動作で、強制や制限無視を加えません。確認済み marker をコピー分岐へコミットし、元から比較します。提出はローカル内にあり GitHub へ自動送信されません。"
         },
         {
           "type": "code",
-          "label": "元端末：副本成果を保存して分岐比較",
+          "label": "元端末：コピー成果を保存して分岐比較",
           "language": "sh",
           "code": "git -C ../worktree-copy add -- notes.md\ngit -C ../worktree-copy commit -m \"Change isolated practice marker\"\ngit -C ../worktree-copy status --short\ngit diff main...codex/worktree-practice -- notes.md\n"
         },
@@ -992,11 +1052,11 @@
         },
         {
           "type": "paragraph",
-          "text": "Git の新規タスク下で Worktree と開始分岐を選び要求を送ります。未提交変更を含める場合は対象作業に属するか確認し、無関係の私的資料を混ぜません。管理型は当初 detached HEAD の場合があり、長期保存には標頭の Create branch here で分岐を作って検証・提交します。"
+          "text": "Git の新規タスク下で Worktree と開始分岐を選び要求を送ります。未コミット変更を含める場合は対象作業に属するか確認し、無関係の私的資料を混ぜません。管理型は当初 detached HEAD の場合があり、長期保存には標頭の Create branch here で分岐を作って検証・コミットします。"
         },
         {
           "type": "paragraph",
-          "text": "同じタスクとコードを Local へ移すには Hand off を使い、移動後に場所、分岐、ファイルを確認します。移動は main 統合や公開ではありません。各 OS の利用可能な版で操作し、Linux に欄がなければ Git 手順との差を記録します。携帯 Remote でも worktree と Git は主機に残ります。"
+          "text": "同じタスクとコードを Local へ移すには Hand off を使い、移動後に場所、分岐、ファイルを確認します。移動は main 統合や公開ではありません。各 OS の利用可能な版で操作し、Linux に欄がなければ Git 手順との差を記録します。携帯 Remote でも worktree と Git はホストに残ります。"
         },
         {
           "type": "table",
@@ -1012,17 +1072,17 @@
               "編集中の実経路"
             ],
             [
-              "提交・分岐",
+              "コミット・分岐",
               "共通",
               "各 checkout の分岐"
             ],
             [
-              "依存・建置快取",
+              "依存・建置キャッシュ",
               "通常個別準備",
               "プロジェクト準備手順"
             ],
             [
-              "本機 port",
+              "ローカル port",
               "保証なし",
               "各プレビューの port"
             ],
@@ -1043,7 +1103,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "設定不足は .gitignore と README から実習用を準備し、正式 .env の丸ごとコピーで済ませません。管理型本機の .worktreeinclude は今回の手動 Git には適用されないため公式資料と"
+              "text": "設定不足は .gitignore と README から実習用を準備し、正式 .env の丸ごとコピーで済ませません。管理型ローカルの .worktreeinclude は今回の手動 Git には適用されないため公式資料と"
             },
             {
               "type": "article",
@@ -1059,11 +1119,11 @@
         },
         {
           "type": "paragraph",
-          "text": "副本を使う窓・端末・プレビューを閉じ、元に戻って list の全経路と副本の未変更を確認します。成果が codex/worktree-practice に提交済みになってから除去し、未提交があれば保存、拒否には --force を加えません。元庫と提交分岐を残し、今回の副本だけを除きます。"
+          "text": "コピーを使う窓・端末・プレビューを閉じ、元に戻って list の全経路とコピーの未変更を確認します。成果が codex/worktree-practice にコミット済みになってから除去し、未コミットがあれば保存、拒否には --force を加えません。元庫とコミット分岐を残し、今回のコピーだけを除きます。"
         },
         {
           "type": "code",
-          "label": "元目録：経路照合・副本除去・成果確認",
+          "label": "元ディレクトリ：経路照合・コピー除去・成果確認",
           "language": "sh",
           "code": "git worktree list\ngit -C ../worktree-copy status --short\ngit worktree remove ../worktree-copy\ngit worktree list\ngit show codex/worktree-practice:notes.md\n"
         },
@@ -1091,7 +1151,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "Codex 教学目次に戻る",
+              "text": "Codex 学習目次に戻る",
               "kind": "life",
               "slug": "codex-learning-hub"
             }
@@ -1159,6 +1219,21 @@
           "type": "callout",
           "tone": "info",
           "text": "두 번째 작업 폴더를 만들고 편집이 분리되는지 확인한 뒤 결과를 저장하고 정리합니다. 읽기 15분, 실습 20분입니다. Git과 편집기를 준비하고 브랜치와 차이를 읽으세요. 원격 없는 새 작은 저장소를 사용하며 push나 배포는 하지 않습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "이 단락의 학습 자료: "
+            },
+            {
+              "type": "article",
+              "text": "브랜치와 차이",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            }
+          ]
         },
         {
           "type": "paragraph",

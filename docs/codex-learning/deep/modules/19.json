@@ -17,7 +17,7 @@
       "text": [
         "在獨立 Git 練習庫建立分支、看懂差異，只暫存與提交指定檔案，再分別練習未提交還原和已提交撤回。閱讀約 15 分鐘，操作約 30 分鐘。需要 Git 2.28 以上、編輯器及 expected 教材；三種 OS 的 Git 命令相同。本篇只建立本機歷史，不需要 GitHub、遠端帳號或推送。",
         "In an isolated Git lab, create a branch, inspect diffs, stage/commit only selected files, restore uncommitted changes and revert a commit. Allow 15 minutes to read and 30 to practice. Use Git 2.28 or later, an editor and the expected fixture. Git commands are shared across OSes. This creates local history only; no GitHub, remote account or push is needed.",
-        "独立 Git 教材でブランチ、差分、指定ファイルのステージと commit、未確定復元、commit 撤回を練習します。読む時間15分、操作30分。Git 2.28 以降、エディター、expected 教材を使います。3 OS 共通で、本機履歴だけを作り GitHub や push は不要です。",
+        "独立 Git 教材でブランチ、差分、指定ファイルのステージと commit、未確定復元、commit 撤回を練習します。読む時間15分、操作30分。Git 2.28 以降、エディター、expected 教材を使います。3 OS 共通で、ローカル履歴だけを作り GitHub や push は不要です。",
         "독립 Git 실습에서 브랜치/차이/지정 파일 스테이지·commit/미커밋 복원/commit 취소를 연습합니다. 읽기 15분, 실습 30분입니다. Git 2.28 이상, 편집기, expected 실습을 씁니다. 세 OS 공통이며 로컬 기록만 만들고 GitHub/push는 필요 없습니다."
       ]
     },
@@ -174,7 +174,7 @@
       "text": [
         "撤回已提交修改前先處理工作目錄。本教材只有自己加的 CSS 註解：確認內容已保留核對後，現在明確決定結束這個保留練習，用下列第一行只丟棄它。status 必須乾淨，再檢查最新提交確實是 Update practice title，才對 HEAD 執行 revert。正式工作若仍有其他修改，不照搬這個清理步驟，先保存或另行處理。",
         "Before reverting, resolve working-tree changes. Here the only remaining change is your fictional CSS note. After verifying its preservation, explicitly finish that exercise and discard only it with the first command below. Require clean status and confirm HEAD is Update practice title before reverting HEAD. Do not apply this cleanup to real work with unrelated changes.",
-        "撤回前に作業ツリーを確認します。残る教材 CSS コメントの保持を検証後、今回は明示的にその練習を終えて最初の命令でそのファイルだけ戻します。無変更と HEAD のタイトル commit を確認してから revert します。実作業の別変更には流用しません。",
+        "撤回前に作業ツリーを確認します。残る教材 CSS コメントの保持を検証後、今回は明示的にその練習を終えて最初の命令でそのファイルだけ戻します。無変更と HEAD のタイトル commit を確認してから revert します。実装業の別変更には流用しません。",
         "취소 전 작업 트리를 확인합니다. 남은 실습 CSS 주석 보존을 검증한 뒤 이번에는 명시적으로 연습을 끝내 첫 명령으로 그 파일만 되돌립니다. 무변경과 HEAD 제목 commit을 확인해 revert합니다. 실제 별도 변경에는 그대로 적용하지 않습니다."
       ]
     },

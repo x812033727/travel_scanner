@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-09-14T08:49:08.678332+00:00",
+  "status": "passed",
+  "checks": [
+    "The deterministic CSV ZIP contains the exact article input, reference program, tests and Unicode fixture",
+    "CLI counts/output are correct; repeated output and same-input targets fail while preserving bytes",
+    "Quoted Unicode is preserved; missing/extra columns, reversed headers and malformed quoting produce no output",
+    "All three CSV tests pass, detect deliberately removed overwrite protection, then pass after restoration",
+    "Maintenance starts with 3 passing tests, exposes 3 missing-helper failures, then passes all 6 with only the planned code changes",
+    "The new tests catch incorrect active counts; targeted restoration returns all five original files and 3 passing tests",
+    "The path drill's missing and explicit-relative paths match its declared fixture"
+  ],
+  "environment": "Windows; local Python and Node; isolated fictional files; explicit reference edits",
+  "authorHashes": {
+    "12": "edf7c97b2abf6524176ed2487261058b667c3f04aa4cd99341d4f1bd58664fe0",
+    "31": "1fef9a9f22a6ce45df0eaab71e5288460b4931dd98578962ceaa0e0cabdb05bc",
+    "32": "406be668c76ceb04b57347c916866044ac63fe76d9fb027f632dc97cd600974a",
+    "58": "d4022581c8522651ffcfe84f525467edfe846bea9d958cdfec89d6d36d572de7",
+    "59": "1f6362657d1b93661f6bfeee81155c979b2fe734ef355e9785d8fb9628dad4d9",
+    "60": "14c78838cf576b075811fac292b3fb297bee81658d3ad12da695106db3c566f3"
+  },
+  "archiveHash": "6bdea5a49206d359f60da53b10dfb43dd6b8d31dc9312a2c0541d0f08acda527",
+  "notTested": [
+    "Generated model implementations",
+    "Actual Codex prompt-injection response",
+    "Live usage comparison",
+    "Post-refactor browser behavior",
+    "macOS/Linux execution",
+    "Publication or deployment"
+  ]
+}

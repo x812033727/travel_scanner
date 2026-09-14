@@ -7,7 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 AUTHORS = ROOT / "docs/codex-learning/deep"
 LOCALES = ["zh-TW", "en", "ja", "ko"]
-BACK = ["返回 Codex 教學總目錄", "Back to the Codex learning hub", "Codex 教学目次に戻る", "Codex 학습 목차로 돌아가기"]
+BACK = ["返回 Codex 教學總目錄", "Back to the Codex learning hub", "Codex 学習目次に戻る", "Codex 학습 목차로 돌아가기"]
 
 
 def render(module):

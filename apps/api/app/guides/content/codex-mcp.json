@@ -49,6 +49,21 @@
           "inlines": [
             {
               "type": "text",
+              "text": "本段提到的教學與資源: "
+            },
+            {
+              "type": "article",
+              "text": "安裝篇",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
               "text": "MCP 是讓客戶端呼叫工具與取得上下文的協定。伺服器提供哪些能力，取決於該伺服器；接上文件服務不會自動取得你的 GitHub 或本機瀏覽器。OpenAI Docs MCP 提供文件搜尋與原文內容，不會代你呼叫 OpenAI API。本篇用它練習讀取驗收；日後換成會寫入資料的服務，仍須重新檢查工具與"
             },
             {
@@ -339,6 +354,21 @@
           "type": "callout",
           "tone": "info",
           "text": "接上 OpenAI 的唯读文件 MCP，查一个问题、开启原文核对，再停用或移除自己的练习项目。阅读约 15 分钟、操作约 20 分钟。需要能上网的 Codex 桌面版、CLI 或 IDE；CLI 路线先完成安装篇。本篇不用私有文件、付费服务金钥或第三方 npm 伺服器套件。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教学与资源: "
+            },
+            {
+              "type": "article",
+              "text": "安装篇",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",
@@ -641,6 +671,21 @@
           "inlines": [
             {
               "type": "text",
+              "text": "Lessons and resources mentioned here: "
+            },
+            {
+              "type": "article",
+              "text": "Installation",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
               "text": "MCP lets clients invoke tools and receive context. Capabilities depend on the server: connecting documentation does not grant GitHub or local browser access. OpenAI Docs MCP searches and retrieves documentation without calling the OpenAI API on your behalf. Use it to practice retrieval acceptance; a later service that writes data needs its own tool and "
             },
             {
@@ -916,7 +961,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "Codex 教学目次に戻る",
+              "text": "Codex 学習目次に戻る",
               "kind": "life",
               "slug": "codex-learning-hub"
             }
@@ -937,7 +982,22 @@
           "inlines": [
             {
               "type": "text",
-              "text": "MCP はツール実行と文脈取得の協定です。能力はサーバー次第で、文書接続から GitHub や本機ブラウザーへの権限は生まれません。Docs MCP は文書検索・取得を行い、利用者の代わりに OpenAI API を実行しません。後で書込みサービスへ替える場合は"
+              "text": "この段落の教材・資料: "
+            },
+            {
+              "type": "article",
+              "text": "導入",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "MCP はツール実行と文脈取得の協定です。能力はサーバー次第で、文書接続から GitHub やローカルブラウザーへの権限は生まれません。Docs MCP は文書検索・取得を行い、利用者の代わりに OpenAI API を実行しません。後で書込みサービスへ替える場合は"
             },
             {
               "type": "article",
@@ -967,7 +1027,7 @@
             [
               "STDIO",
               "程序と引数",
-              "Codex 主機が本機プロセスを起動"
+              "Codex ホストがローカルプロセスを起動"
             ],
             [
               "Streamable HTTP",
@@ -990,7 +1050,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "同じ Codex 主機のデスクトップ、CLI、IDE は設定を共有します。既定は ~/.codex/config.toml で、Windows の利用者フォルダー、macOS・Linux のホーム下の .codex にあります。既存の独自 CODEX_HOME があればその場所を確認します。信頼済みプロジェクト設定もありますが、今回は利用者層を使います。"
+              "text": "同じ Codex ホストのデスクトップ、CLI、IDE は設定を共有します。既定は ~/.codex/config.toml で、Windows の利用者フォルダー、macOS・Linux のホーム下の .codex にあります。既存の独自 CODEX_HOME があればその場所を確認します。信頼済みプロジェクト設定もありますが、今回は利用者層を使います。"
             },
             {
               "type": "article",
@@ -1021,7 +1081,7 @@
         },
         {
           "type": "paragraph",
-          "text": "追加前に実際の利用者 config.toml を開き、以前の副本を上書きせず日付付きで保存します。存在しなければその状態を記録し空ファイルは不要です。一変更の前後差分を残し、機密を含み得る副本は Git 外の本機で保持します。復旧は追加区画だけを除き、他作業の新設定を古い副本で上書きしません。"
+          "text": "追加前に実際の利用者 config.toml を開き、以前のコピーを上書きせず日付付きで保存します。存在しなければその状態を記録し空ファイルは不要です。一変更の前後差分を残し、機密を含み得るコピーは Git 外のローカルで保持します。復旧は追加区画だけを除き、他作業の新設定を古いコピーで上書きしません。"
         },
         {
           "type": "code",
@@ -1053,7 +1113,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "これは同じ設定のファイル表現で、CLI、UI、直接編集の一つを選びます。命令追加後に同じ表を貼ると重複エラーになり得ます。直接編集は区画のみ統合して再起動します。Web・携帯は PC の本機設定を読まず、ホスト側能力は "
+              "text": "これは同じ設定のファイル表現で、CLI、UI、直接編集の一つを選びます。命令追加後に同じ表を貼ると重複エラーになり得ます。直接編集は区画のみ統合して再起動します。Web・携帯は PC のローカル設定を読まず、ホスト側能力は "
             },
             {
               "type": "article",
@@ -1063,7 +1123,7 @@
             },
             {
               "type": "text",
-              "text": " を使うため、本機成功を携帯設定済みとはしません。"
+              "text": " を使うため、ローカル成功を携帯設定済みとはしません。"
             }
           ]
         },
@@ -1133,7 +1193,7 @@
         },
         {
           "type": "paragraph",
-          "text": "見えない場合は階層、名前、有効状態、再起動を確認します。TOML エラーは重複表と引用符を見て全体を初期化しません。接続失敗は URL、主機ネット、サービス状態と伏せたエラーを残します。出典なしは原文取得を再要求します。四種類の原因を全て権限緩和で扱いません。"
+          "text": "見えない場合は階層、名前、有効状態、再起動を確認します。TOML エラーは重複表と引用符を見て全体を初期化しません。接続失敗は URL、ホストネット、サービス状態と伏せたエラーを残します。出典なしは原文取得を再要求します。四種類の原因を全て権限緩和で扱いません。"
         },
         {
           "type": "rich_paragraph",
@@ -1159,7 +1219,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "Codex 教学目次に戻る",
+              "text": "Codex 学習目次に戻る",
               "kind": "life",
               "slug": "codex-learning-hub"
             }
@@ -1227,6 +1287,21 @@
           "type": "callout",
           "tone": "info",
           "text": "OpenAI 읽기 전용 문서 MCP를 연결해 질문 하나를 조사하고 원문을 확인한 뒤 연습 항목을 끄거나 제거합니다. 읽기 15분, 실습 20분입니다. 인터넷에 연결된 데스크톱·CLI·IDE를 사용하며 CLI는 설치를 먼저 마치세요. 비공개 문서·유료 서비스 키·외부 npm 서버 패키지는 필요하지 않습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "이 단락의 학습 자료: "
+            },
+            {
+              "type": "article",
+              "text": "설치",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",

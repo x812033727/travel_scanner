@@ -107,6 +107,7 @@ def test_ready_lessons_have_five_locales_valid_images_and_existing_links():
                                 "guides/codex-first-project/todo-practice.zip",
                                 "guides/codex-skills/todo-acceptance.zip",
                                 "guides/codex-skill-resources/todo-summary-practice.zip",
+                                "guides/codex-csv-workshop/contacts-practice.zip",
                             }
                             assert (ROOT / "apps/web/public" / asset).is_file()
                             continue

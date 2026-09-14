@@ -24,51 +24,223 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "排程讓固定工作在指定時間執行，但要先確認使用哪個環境。需要本機檔案的桌面排程，電腦與應用程式必須在執行時可用；雲端任務不能直接讀取未提供的本機資料。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "你會學到什麼"
+          "text": "目標與準備"
         },
         {
-          "type": "paragraph",
-          "text": "排程設定與需求一致，有一次可核對的測試執行，並能找到暫停或移除入口。"
+          "type": "callout",
+          "tone": "info",
+          "text": "為一份虛構本機清單建立可追蹤的定期檢查，確認時間、結果、修改與暫停。閱讀約 15 分鐘、操作約 20 分鐘，實際等待排程觸發另計。需要提供 Scheduled 的帳號與桌面入口；先讀任務管理。本文範例是供你照做的提示詞，不表示網站作者已替你建立任何排程。"
         },
         {
-          "type": "paragraph",
-          "text": "預估操作時間: 15 分鐘"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教學與資源: "
+            },
+            {
+              "type": "article",
+              "text": "任務管理",
+              "kind": "life",
+              "slug": "codex-project-management"
+            }
+          ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "開始之前"
+          "text": "步驟 1：選擇正確的執行位置"
         },
         {
           "type": "paragraph",
-          "text": "選一項沒有副作用的練習，例如每週檢查練習專案的待辦。先決定時區、頻率、資料來源與通知條件，不從自動發布或刪除資料開始。"
+          "text": "本機文件必須由可存取它的桌面主機處理，電腦要開機、程式要持續運行，資料夾也要存在。Windows、macOS、Linux 都核對實際桌面版本是否提供 Scheduled；Linux 預覽缺少功能時記為目前不可用，不猜測已設定成功。CLI 與 IDE 沒有 Scheduled 管理介面，可以先準備腳本與提示詞，再到支援的桌面或網頁管理。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "需求",
+            "選擇",
+            "要確認的環境"
+          ],
+          "rows": [
+            [
+              "回到同一任務追蹤進展",
+              "任務內排程",
+              "原任務上下文與資料仍可用"
+            ],
+            [
+              "每次獨立產生一份報告",
+              "獨立排程",
+              "保存的提示詞與所選專案"
+            ],
+            [
+              "讀本機練習檔案",
+              "桌面主機",
+              "開機、應用程式、資料夾"
+            ],
+            [
+              "讀上傳或已連線資料",
+              "支援的網頁／手機入口",
+              "方案、工具與來源權限"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "網頁的排程不會自動取得電腦資料夾，本篇選桌面且回到同一任務。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "逐步操作"
+          "text": "步驟 2：先做一次普通任務"
         },
         {
           "type": "paragraph",
-          "text": "1. 在桌面版或支援的網頁介面描述排程需求。CLI 與 IDE 可準備提示詞，但官方目前不提供 Scheduled 管理介面。"
+          "text": "在自己的空白 practice-schedule 資料夾建立 daily-check.md，完整內容如下。用 UTF-8 純文字保存，並在桌面開啟這個資料夾作為專案。檔名叫 daily 只是教材名稱，不會讓它自動每天執行；是否執行與頻率由排程設定決定。這份清單不含客戶資料、連線金鑰或任何正式專案路徑。"
+        },
+        {
+          "type": "code",
+          "label": "practice-schedule/daily-check.md",
+          "language": "markdown",
+          "code": "# Practice check\nRevision: 1\n- [x] Read the task instructions\n- [ ] Review the practice report\n"
+        },
+        {
+          "type": "code",
+          "label": "普通任務輸入框：先手動驗證一次",
+          "language": "text",
+          "code": "Read daily-check.md from this practice project once now.\nReport its Revision, completed count and open count, using the current file contents.\nIf the file is missing or unreadable, report that exact limitation and stop.\nDo not edit files, create a schedule, send messages elsewhere or call external services.\n"
         },
         {
           "type": "paragraph",
-          "text": "2. 建立前核對工作環境、每週哪一天幾點、時區與要讀的資料。說清楚什麼時候通知，例如只有出現新的待辦或執行失敗。"
+          "text": "預期回報 Revision 1、已完成 1、未完成 1，且有實際讀檔活動。把來源完整路徑與結果記下，檢查文件沒有被修改。若普通任務已讀不到檔案，先修正工作目錄或權限，不能期待加上時間表就會自動成功。這一步只測動作本身，沒有驗證排程觸發、背景環境或通知。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 3：用自然語言建立可追蹤排程"
+        },
+        {
+          "type": "code",
+          "label": "桌面主任務：確認這就是你要建立的練習排程後送出",
+          "language": "text",
+          "code": "Create one recurring check named 'Practice list review' in this existing task.\nRun every Monday at 09:00 in the Asia/Taipei time zone.\nOn each run, reread daily-check.md from this local practice project.\nReport the current Revision, completed and open counts. Do not rely on an earlier report.\nIf the file or required access is unavailable, stop the run and report the limitation.\nKeep the source file unchanged and do not contact external services.\nNotify me on the first result, meaningful changes or failures; stay quiet when nothing changes.\nShow the saved schedule and next run time so I can verify them.\n"
         },
         {
           "type": "paragraph",
-          "text": "3. 建立後到 Scheduled 檢查保存的設定，先執行一次測試並查看近期執行結果。真的產出符合格式的報告後，再信任下一次排程。"
+          "text": "送出後開側欄 Scheduled，找到 Practice list review，核對它確實存在、狀態為 Active、時間與時區正確，且指向這個練習專案／任務。只有回覆「好的，會提醒」不代表建立完成；需要保存的排程項目與下一次時間。若你在週一九點之後建立，下一次可能是下週，請看介面計算結果，不把文字中的星期當成今天一定會執行。"
         },
         {
           "type": "paragraph",
-          "text": "4. 停止使用時暫停或刪除這個特定排程，確認清單狀態已變更。修改時間時更新既有排程，不再建立一個同名副本。"
+          "text": "第一次檢查可以使用介面有提供的立即執行動作；若沒有，就另選一個你能觀察的近期時間，儲存後等候實際觸發。不要另外建立一份同名排程來試，避免兩份一起執行。保存此項目的識別資訊、下一次時間與最近執行紀錄，分清建立成功、執行開始、執行結束與有結果四種狀態。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 4：驗證每次都有重讀來源"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一次排程結果應符合原本 1／1。接著由你手動把 Revision 改成 2，將第二個項目勾選完成；檔案變成已完成 2、未完成 0。不要把新數量寫進排程提示詞，而是再觸發或等待下一次執行，確認它透過讀檔取得新結果。這樣才能抓出只引用上次聊天摘要的問題，而不是模型從你剛提供的答案重述一次。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成一次變更後再跑相同狀態，核對「沒有變更時保持安靜」是否符合你的通知設定，同時仍能在 Scheduled 找到執行狀態。沒有推播不一定是沒有執行；系統通知、應用程式通知與這份排程的回報條件要分開查。若你希望每週固定收到報告，即使內容一樣，也應改成那個明確需求，不能同時要求永遠通知與無變更不通知。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 5：修改、暫停與停止範圍"
+        },
+        {
+          "type": "code",
+          "label": "同一主任務：更新既有排程",
+          "language": "text",
+          "code": "Update the existing 'Practice list review' schedule to Wednesday at 10:00 Asia/Taipei.\nKeep its task, project, read-only prompt and notification preference unchanged.\nShow the updated next run time. Do not create a second schedule.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "更新後再次開 Scheduled，確認同一項目只剩新時間，沒有多出第二份 Active 工作。排程名稱若重複，先依專案、提示詞與識別資訊選對那一份。若調整的是資料來源或動作，先以普通任務重新測試修改後的提示詞，再更新排程；只改星期與時間不必重做無關功能測試。"
+        },
+        {
+          "type": "code",
+          "label": "練習結束：暫停同一排程",
+          "language": "text",
+          "code": "Pause the existing 'Practice list review' schedule after this practice.\nConfirm it is Paused and show whether any run is already in progress.\nIf a run is in progress, report its state before stopping anything else.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Scheduled 中應顯示 Paused。暫停未來觸發不一定取消已開始的執行，必須另外查看最近那次是否仍在工作。若不需要保留排程，可使用項目提供的刪除或移除操作，再確認清單不再有此項；已產生的報告、外部變更或其他排程不會因此自動復原。恢復時只恢復這一份，確認下一次時間，不重建一份新名稱來代替。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見問題與失敗演練"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "任務沒執行先查 Active／Paused、時區與下一次時間，再確認主機開機、應用程式運行和專案存在。不要假設睡眠期間錯過的工作一定補跑；是否補跑看實際執行紀錄。只有本機檔案讀不到則核對路徑與"
+            },
+            {
+              "type": "article",
+              "text": "權限",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "；背景工具需要新授權時可能失敗，應回報那一步，不能把無人值守當成所有動作都已授權。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "失敗演練先暫停排程，將自己的 daily-check.md 暫時改名 daily-check.saved.md，確認原名稱確實不存在，再手動測試同一個讀取動作。預期明確回報缺檔，不能顯示上次的 2／0 或把缺檔當空清單。還原檔名後重測，應重新讀到 Revision 2。這只能驗證提示詞的缺檔分支；若未實際跑背景工作，就不能說已測背景錯誤通知。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "完成紀錄包括來源、時區、保存項目、一次真正排程結果、變更後的新讀取、修改時間及 Paused 狀態。若入口不可用或尚未等到排程，只填已完成部分。事件觸發排程另受方案與入口限制，本篇不把桌面定時任務當成 Gmail／Slack 事件監聽。產品流程依官方文件查證，未替讀者建立排程或宣稱各平台已實測；下一篇 "
+            },
+            {
+              "type": "article",
+              "text": "codex exec",
+              "kind": "life",
+              "slug": "codex-exec-scripting"
+            },
+            {
+              "type": "text",
+              "text": " 介紹非互動腳本。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -82,88 +254,11 @@
             "license": "© Mokaair",
             "source_url": null
           }
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "練習需求"
-        },
-        {
-          "type": "code",
-          "language": "text",
-          "code": "每週一上午 9 點，Asia/Taipei 時區，唯讀檢查練習專案的待辦。只有新待辦或執行失敗才通知，不修改檔案。先讓我核對保存的頻率與資料來源。",
-          "label": "本步驟範例"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "範例與驗證"
-        },
-        {
-          "type": "table",
-          "header": [
-            "檢查項目",
-            "驗收方式"
-          ],
-          "rows": [
-            [
-              "先確認環境",
-              "選一項沒有副作用的練習，例如每週檢查練習專案的待辦。先決定時區、頻率、資料來源與通知條件，不從自動發布或刪除資料開始。"
-            ],
-            [
-              "完成一個操作",
-              "停止使用時暫停或刪除這個特定排程，確認清單狀態已變更。修改時間時更新既有排程，不再建立一個同名副本。"
-            ],
-            [
-              "檢查真實結果",
-              "排程設定與需求一致，有一次可核對的測試執行，並能找到暫停或移除入口。"
-            ]
-          ]
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "完成結果"
-        },
-        {
-          "type": "paragraph",
-          "text": "排程設定與需求一致，有一次可核對的測試執行，並能找到暫停或移除入口。"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "常見問題"
-        },
-        {
-          "type": "paragraph",
-          "text": "排程存在不等於已執行。沒有通知先查最近執行記錄、通知設定與本機是否在線；不要反覆新增排程造成重複工作。"
-        },
-        {
-          "type": "callout",
-          "tone": "info",
-          "title": "官方來源",
-          "text": "跨平台操作依官方文件查證；未在每個系統實測。介面與帳號提供的功能可能不同。"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "延伸閱讀"
-        },
-        {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "article",
-              "kind": "life",
-              "slug": "codex-learning-hub",
-              "text": "返回 Codex 教學總目錄"
-            }
-          ]
         }
       ],
       "sources": [
         {
-          "title": "automations",
+          "title": "Scheduled tasks: creation, context, testing and permissions",
           "url": "https://learn.chatgpt.com/docs/automations",
           "checked_on": "2026-09-14"
         }
@@ -185,51 +280,223 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "排程让固定工作在指定时间执行，但要先确认使用哪个环境。需要本机档案的桌面排程，电脑与应用程式必须在执行时可用；云端任务不能直接读取未提供的本机资料。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "你会学到什么"
+          "text": "目标与准备"
         },
         {
-          "type": "paragraph",
-          "text": "排程设定与需求一致，有一次可核对的测试执行，并能找到暂停或移除入口。"
+          "type": "callout",
+          "tone": "info",
+          "text": "为一份虚构本机清单建立可追踪的定期检查，确认时间、结果、修改与暂停。阅读约 15 分钟、操作约 20 分钟，实际等待排程触发另计。需要提供 Scheduled 的帐号与桌面入口；先读任务管理。本文范例是供你照做的提示词，不表示网站作者已替你建立任何排程。"
         },
         {
-          "type": "paragraph",
-          "text": "预估操作时间: 15 分钟"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教学与资源: "
+            },
+            {
+              "type": "article",
+              "text": "任务管理",
+              "kind": "life",
+              "slug": "codex-project-management"
+            }
+          ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "开始之前"
+          "text": "步骤 1：选择正确的执行位置"
         },
         {
           "type": "paragraph",
-          "text": "选一项没有副作用的练习，例如每周检查练习专案的待办。先决定时区、频率、资料来源与通知条件，不从自动发布或删除资料开始。"
+          "text": "本机文件必须由可存取它的桌面主机处理，电脑要开机、程式要持续运行，资料夹也要存在。Windows、macOS、Linux 都核对实际桌面版本是否提供 Scheduled；Linux 预览缺少功能时记为目前不可用，不猜测已设定成功。CLI 与 IDE 没有 Scheduled 管理介面，可以先准备脚本与提示词，再到支援的桌面或网页管理。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "需求",
+            "选择",
+            "要确认的环境"
+          ],
+          "rows": [
+            [
+              "回到同一任务追踪进展",
+              "任务内排程",
+              "原任务上下文与资料仍可用"
+            ],
+            [
+              "每次独立产生一份报告",
+              "独立排程",
+              "保存的提示词与所选专案"
+            ],
+            [
+              "读本机练习档案",
+              "桌面主机",
+              "开机、应用程式、资料夹"
+            ],
+            [
+              "读上传或已连线资料",
+              "支援的网页／手机入口",
+              "方案、工具与来源权限"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "网页的排程不会自动取得电脑资料夹，本篇选桌面且回到同一任务。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "逐步操作"
+          "text": "步骤 2：先做一次普通任务"
         },
         {
           "type": "paragraph",
-          "text": "1. 在桌面版或支援的网页介面描述排程需求。CLI 与 IDE 可准备提示词，但官方目前不提供 Scheduled 管理介面。"
+          "text": "在自己的空白 practice-schedule 资料夹建立 daily-check.md，完整内容如下。用 UTF-8 纯文字保存，并在桌面开启这个资料夹作为专案。档名叫 daily 只是教材名称，不会让它自动每天执行；是否执行与频率由排程设定决定。这份清单不含客户资料、连线金钥或任何正式专案路径。"
+        },
+        {
+          "type": "code",
+          "label": "practice-schedule/daily-check.md",
+          "language": "markdown",
+          "code": "# Practice check\nRevision: 1\n- [x] Read the task instructions\n- [ ] Review the practice report\n"
+        },
+        {
+          "type": "code",
+          "label": "普通任务输入框：先手动验证一次",
+          "language": "text",
+          "code": "Read daily-check.md from this practice project once now.\nReport its Revision, completed count and open count, using the current file contents.\nIf the file is missing or unreadable, report that exact limitation and stop.\nDo not edit files, create a schedule, send messages elsewhere or call external services.\n"
         },
         {
           "type": "paragraph",
-          "text": "2. 建立前核对工作环境、每周哪一天几点、时区与要读的资料。说清楚什么时候通知，例如只有出现新的待办或执行失败。"
+          "text": "预期回报 Revision 1、已完成 1、未完成 1，且有实际读档活动。把来源完整路径与结果记下，检查文件没有被修改。若普通任务已读不到档案，先修正工作目录或权限，不能期待加上时间表就会自动成功。这一步只测动作本身，没有验证排程触发、背景环境或通知。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 3：用自然语言建立可追踪排程"
+        },
+        {
+          "type": "code",
+          "label": "桌面主任务：确认这就是你要建立的练习排程后送出",
+          "language": "text",
+          "code": "Create one recurring check named 'Practice list review' in this existing task.\nRun every Monday at 09:00 in the Asia/Taipei time zone.\nOn each run, reread daily-check.md from this local practice project.\nReport the current Revision, completed and open counts. Do not rely on an earlier report.\nIf the file or required access is unavailable, stop the run and report the limitation.\nKeep the source file unchanged and do not contact external services.\nNotify me on the first result, meaningful changes or failures; stay quiet when nothing changes.\nShow the saved schedule and next run time so I can verify them.\n"
         },
         {
           "type": "paragraph",
-          "text": "3. 建立后到 Scheduled 检查保存的设定，先执行一次测试并查看近期执行结果。真的产出符合格式的报告后，再信任下一次排程。"
+          "text": "送出后开侧栏 Scheduled，找到 Practice list review，核对它确实存在、状态为 Active、时间与时区正确，且指向这个练习专案／任务。只有回复「好的，会提醒」不代表建立完成；需要保存的排程项目与下一次时间。若你在周一九点之后建立，下一次可能是下周，请看介面计算结果，不把文字中的星期当成今天一定会执行。"
         },
         {
           "type": "paragraph",
-          "text": "4. 停止使用时暂停或删除这个特定排程，确认清单状态已变更。修改时间时更新既有排程，不再建立一个同名副本。"
+          "text": "第一次检查可以使用介面有提供的立即执行动作；若没有，就另选一个你能观察的近期时间，储存后等候实际触发。不要另外建立一份同名排程来试，避免两份一起执行。保存此项目的识别资讯、下一次时间与最近执行纪录，分清建立成功、执行开始、执行结束与有结果四种状态。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 4：验证每次都有重读来源"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一次排程结果应符合原本 1／1。接著由你手动把 Revision 改成 2，将第二个项目勾选完成；档案变成已完成 2、未完成 0。不要把新数量写进排程提示词，而是再触发或等待下一次执行，确认它透过读档取得新结果。这样才能抓出只引用上次聊天摘要的问题，而不是模型从你刚提供的答案重述一次。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成一次变更后再跑相同状态，核对「没有变更时保持安静」是否符合你的通知设定，同时仍能在 Scheduled 找到执行状态。没有推播不一定是没有执行；系统通知、应用程式通知与这份排程的回报条件要分开查。若你希望每周固定收到报告，即使内容一样，也应改成那个明确需求，不能同时要求永远通知与无变更不通知。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 5：修改、暂停与停止范围"
+        },
+        {
+          "type": "code",
+          "label": "同一主任务：更新既有排程",
+          "language": "text",
+          "code": "Update the existing 'Practice list review' schedule to Wednesday at 10:00 Asia/Taipei.\nKeep its task, project, read-only prompt and notification preference unchanged.\nShow the updated next run time. Do not create a second schedule.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "更新后再次开 Scheduled，确认同一项目只剩新时间，没有多出第二份 Active 工作。排程名称若重复，先依专案、提示词与识别资讯选对那一份。若调整的是资料来源或动作，先以普通任务重新测试修改后的提示词，再更新排程；只改星期与时间不必重做无关功能测试。"
+        },
+        {
+          "type": "code",
+          "label": "练习结束：暂停同一排程",
+          "language": "text",
+          "code": "Pause the existing 'Practice list review' schedule after this practice.\nConfirm it is Paused and show whether any run is already in progress.\nIf a run is in progress, report its state before stopping anything else.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Scheduled 中应显示 Paused。暂停未来触发不一定取消已开始的执行，必须另外查看最近那次是否仍在工作。若不需要保留排程，可使用项目提供的删除或移除操作，再确认清单不再有此项；已产生的报告、外部变更或其他排程不会因此自动复原。恢复时只恢复这一份，确认下一次时间，不重建一份新名称来代替。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常见问题与失败演练"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "任务没执行先查 Active／Paused、时区与下一次时间，再确认主机开机、应用程式运行和专案存在。不要假设睡眠期间错过的工作一定补跑；是否补跑看实际执行纪录。只有本机档案读不到则核对路径与"
+            },
+            {
+              "type": "article",
+              "text": "权限",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "；背景工具需要新授权时可能失败，应回报那一步，不能把无人值守当成所有动作都已授权。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "失败演练先暂停排程，将自己的 daily-check.md 暂时改名 daily-check.saved.md，确认原名称确实不存在，再手动测试同一个读取动作。预期明确回报缺档，不能显示上次的 2／0 或把缺档当空清单。还原档名后重测，应重新读到 Revision 2。这只能验证提示词的缺档分支；若未实际跑背景工作，就不能说已测背景错误通知。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "完成纪录包括来源、时区、保存项目、一次真正排程结果、变更后的新读取、修改时间及 Paused 状态。若入口不可用或尚未等到排程，只填已完成部分。事件触发排程另受方案与入口限制，本篇不把桌面定时任务当成 Gmail／Slack 事件监听。产品流程依官方文件查证，未替读者建立排程或宣称各平台已实测；下一篇 "
+            },
+            {
+              "type": "article",
+              "text": "codex exec",
+              "kind": "life",
+              "slug": "codex-exec-scripting"
+            },
+            {
+              "type": "text",
+              "text": " 介绍非互动脚本。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -243,88 +510,11 @@
             "license": "© Mokaair",
             "source_url": null
           }
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "练习需求"
-        },
-        {
-          "type": "code",
-          "language": "text",
-          "code": "每周一上午 9 点，Asia/Taipei 时区，唯读检查练习专案的待办。只有新待办或执行失败才通知，不修改档案。先让我核对保存的频率与资料来源。",
-          "label": "本步骤示例"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "范例与验证"
-        },
-        {
-          "type": "table",
-          "header": [
-            "检查项目",
-            "验收方式"
-          ],
-          "rows": [
-            [
-              "先确认环境",
-              "选一项没有副作用的练习，例如每周检查练习专案的待办。先决定时区、频率、资料来源与通知条件，不从自动发布或删除资料开始。"
-            ],
-            [
-              "完成一个操作",
-              "停止使用时暂停或删除这个特定排程，确认清单状态已变更。修改时间时更新既有排程，不再建立一个同名副本。"
-            ],
-            [
-              "检查真实结果",
-              "排程设定与需求一致，有一次可核对的测试执行，并能找到暂停或移除入口。"
-            ]
-          ]
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "完成结果"
-        },
-        {
-          "type": "paragraph",
-          "text": "排程设定与需求一致，有一次可核对的测试执行，并能找到暂停或移除入口。"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "常见问题"
-        },
-        {
-          "type": "paragraph",
-          "text": "排程存在不等于已执行。没有通知先查最近执行记录、通知设定与本机是否在线；不要反复新增排程造成重复工作。"
-        },
-        {
-          "type": "callout",
-          "tone": "info",
-          "title": "官方来源",
-          "text": "跨平台操作依官方文件查证；未在每个系统实测。介面与帐号提供的功能可能不同。"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "延伸阅读"
-        },
-        {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "article",
-              "kind": "life",
-              "slug": "codex-learning-hub",
-              "text": "返回 Codex 教学总目录"
-            }
-          ]
         }
       ],
       "sources": [
         {
-          "title": "automations",
+          "title": "Scheduled tasks: creation, context, testing and permissions",
           "url": "https://learn.chatgpt.com/docs/automations",
           "checked_on": "2026-09-14"
         }
@@ -346,51 +536,223 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Scheduled work needs a defined execution environment. A desktop task that reads local files requires the computer and app to be available at run time. Cloud work cannot directly read local data you have not supplied."
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "What you will learn"
+          "text": "Goal and preparation"
         },
         {
-          "type": "paragraph",
-          "text": "The saved schedule matches the request, a test run has evidence and you can locate pause/removal controls."
+          "type": "callout",
+          "tone": "info",
+          "text": "Create a traceable recurring check of a fictional local list and verify timing, results, edits and pause. Allow 15 minutes to read and 20 to practice, excluding waiting for a scheduled trigger. Use an account and desktop surface offering Scheduled, after Task management. Prompts here are exercises, not evidence that the author created a schedule on your account."
         },
         {
-          "type": "paragraph",
-          "text": "Estimated practice time: 15 min"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Lessons and resources mentioned here: "
+            },
+            {
+              "type": "article",
+              "text": "Task management",
+              "kind": "life",
+              "slug": "codex-project-management"
+            }
+          ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "Before you start"
+          "text": "Step 1: Choose the execution location"
         },
         {
           "type": "paragraph",
-          "text": "Choose a read-only exercise such as a weekly backlog check. Define time zone, frequency, source and notification conditions before scheduling anything that publishes or deletes."
+          "text": "Local files need a desktop host that can access them, with the computer on, app running and folder available. On Windows, macOS and Linux, check whether the installed desktop version offers Scheduled; record missing preview support as unavailable. CLI and IDE have no Scheduled management UI, though they can prepare scripts/prompts before management on a supported desktop or web surface."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Need",
+            "Choice",
+            "Environment to check"
+          ],
+          "rows": [
+            [
+              "Continue tracking in one task",
+              "In-chat schedule",
+              "Existing context and accessible data"
+            ],
+            [
+              "Independent report each time",
+              "Standalone schedule",
+              "Saved prompt and selected project"
+            ],
+            [
+              "Read local practice files",
+              "Desktop host",
+              "Power, app and folder"
+            ],
+            [
+              "Read uploads/connected data",
+              "Supported web/mobile surface",
+              "Plan, tools and source permissions"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A web schedule does not acquire access to a computer folder; this exercise uses a desktop schedule returning to the same task."
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "Step by step"
+          "text": "Step 2: Run an ordinary task first"
         },
         {
           "type": "paragraph",
-          "text": "1. Describe the schedule in desktop or a supported web interface. CLI and IDE can prepare prompts, but currently do not provide Scheduled management."
+          "text": "Create daily-check.md with the content below in an empty practice-schedule folder, save UTF-8 plain text and open that folder as a desktop project. The filename daily does not cause daily execution; the schedule controls whether and when it runs. This fixture contains no client data, credentials or production paths."
+        },
+        {
+          "type": "code",
+          "label": "practice-schedule/daily-check.md",
+          "language": "markdown",
+          "code": "# Practice check\nRevision: 1\n- [x] Read the task instructions\n- [ ] Review the practice report\n"
+        },
+        {
+          "type": "code",
+          "label": "Ordinary task composer: validate one manual read first",
+          "language": "text",
+          "code": "Read daily-check.md from this practice project once now.\nReport its Revision, completed count and open count, using the current file contents.\nIf the file is missing or unreadable, report that exact limitation and stop.\nDo not edit files, create a schedule, send messages elsewhere or call external services.\n"
         },
         {
           "type": "paragraph",
-          "text": "2. Verify environment, weekday, time, time zone and source. Specify meaningful notification conditions, such as new backlog items or failure."
+          "text": "Expect Revision 1, completed 1 and open 1, with actual file-read activity. Record the source path/result and verify no file change. Resolve path or permission failures in the ordinary task before scheduling. This tests the action only, not scheduling, the unattended environment or notifications."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: Create a traceable natural-language schedule"
+        },
+        {
+          "type": "code",
+          "label": "Desktop task: submit when this is the practice schedule you intend to create",
+          "language": "text",
+          "code": "Create one recurring check named 'Practice list review' in this existing task.\nRun every Monday at 09:00 in the Asia/Taipei time zone.\nOn each run, reread daily-check.md from this local practice project.\nReport the current Revision, completed and open counts. Do not rely on an earlier report.\nIf the file or required access is unavailable, stop the run and report the limitation.\nKeep the source file unchanged and do not contact external services.\nNotify me on the first result, meaningful changes or failures; stay quiet when nothing changes.\nShow the saved schedule and next run time so I can verify them.\n"
         },
         {
           "type": "paragraph",
-          "text": "3. Inspect the saved configuration in Scheduled, run a test and read the recent result. Verify the report before relying on the next run."
+          "text": "Open Scheduled and locate Practice list review. Confirm a saved Active entry, correct time/time zone and the intended practice project/task. A conversational promise is not creation evidence; inspect the stored entry and next run. If created after Monday 09:00, the next occurrence may be next week, so use the displayed calculation instead of assuming it runs today."
         },
         {
           "type": "paragraph",
-          "text": "4. Pause or remove that specific schedule when done and check its state. Update the existing schedule when changing time instead of creating a duplicate."
+          "text": "Use a Run now action when offered, or save a near-future time you can observe and wait for the actual trigger. Avoid creating another same-name schedule for testing. Record its identity, next occurrence and recent run, distinguishing saved, started, finished and produced-a-result states."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 4: Verify a fresh source read each run"
+        },
+        {
+          "type": "paragraph",
+          "text": "The first scheduled result should match 1/1. Manually change Revision to 2 and check the second item, yielding completed 2/open 0. Do not place the new counts in the saved prompt. Trigger or await the next run and verify it reads the new values from the file, detecting reuse of old summaries rather than repetition of an answer you supplied."
+        },
+        {
+          "type": "paragraph",
+          "text": "Run the unchanged state again and verify quiet-on-no-change behavior while checking run status in Scheduled. No push notification does not necessarily mean no execution; inspect OS notifications, app notifications and schedule reporting separately. If you want every weekly report even when unchanged, request that explicitly rather than asking both always-notify and silence-on-no-change."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 5: Edit, pause and understand stopping"
+        },
+        {
+          "type": "code",
+          "label": "Same parent task: update the existing schedule",
+          "language": "text",
+          "code": "Update the existing 'Practice list review' schedule to Wednesday at 10:00 Asia/Taipei.\nKeep its task, project, read-only prompt and notification preference unchanged.\nShow the updated next run time. Do not create a second schedule.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Verify the same entry now has the new time and no duplicate Active task was created. Disambiguate duplicate names by project, prompt and identity. For changes to source/action, manually test the revised prompt before updating. A day/time-only change does not require unrelated functional retesting."
+        },
+        {
+          "type": "code",
+          "label": "End the exercise: pause the same schedule",
+          "language": "text",
+          "code": "Pause the existing 'Practice list review' schedule after this practice.\nConfirm it is Paused and show whether any run is already in progress.\nIf a run is in progress, report its state before stopping anything else.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Confirm Paused in Scheduled. Pausing future triggers may not cancel an already started run, so inspect it separately. If the schedule is no longer needed, use its delete/remove action and verify it disappears. Existing reports, external changes and other schedules are not automatically reversed. Resume the same entry and inspect its next occurrence instead of creating a replacement under another name."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Common failures and a negative case"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "For a missing run, check Active/Paused, time zone and next occurrence, then host power, app and project availability. Do not assume missed runs during sleep are caught up; inspect actual history. For file access failures, verify path and "
+            },
+            {
+              "type": "article",
+              "text": "Permissions",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": ". Unattended actions requiring fresh authorization can fail and should report the step rather than treating background execution as blanket permission."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Pause the schedule, temporarily rename your file to daily-check.saved.md, verify the original name is absent and manually test the same read. Expect a missing-file report, not the earlier 2/0 or an empty-list assumption. Restore the name and verify Revision 2. This proves the prompt's missing-file branch only; without a background run it does not prove background failure notification."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Record source, time zone, saved entry, one real scheduled result, fresh reading after change, edited time and Paused state. Mark partial completion if unsupported or no trigger has occurred. Event triggers have separate plan/surface limits; desktop timing is not Gmail/Slack event monitoring. The flow is documented from official sources without creating reader schedules or claiming all-platform tests. Continue to "
+            },
+            {
+              "type": "article",
+              "text": "codex exec",
+              "kind": "life",
+              "slug": "codex-exec-scripting"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -404,88 +766,11 @@
             "license": "© Mokaair",
             "source_url": null
           }
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "Practice request"
-        },
-        {
-          "type": "code",
-          "language": "text",
-          "code": "Every Monday at 09:00 Asia/Taipei, read the practice-project backlog. Notify only for new items or execution failure. Do not edit files. Show the saved frequency and source for verification.",
-          "label": "Example for this step"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "Example and verification"
-        },
-        {
-          "type": "table",
-          "header": [
-            "Check",
-            "Acceptance method"
-          ],
-          "rows": [
-            [
-              "Confirm the environment",
-              "Choose a read-only exercise such as a weekly backlog check. Define time zone, frequency, source and notification conditions before scheduling anything that publishes or deletes."
-            ],
-            [
-              "Complete one action",
-              "Pause or remove that specific schedule when done and check its state. Update the existing schedule when changing time instead of creating a duplicate."
-            ],
-            [
-              "Inspect the actual result",
-              "The saved schedule matches the request, a test run has evidence and you can locate pause/removal controls."
-            ]
-          ]
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "Expected result"
-        },
-        {
-          "type": "paragraph",
-          "text": "The saved schedule matches the request, a test run has evidence and you can locate pause/removal controls."
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "Troubleshooting"
-        },
-        {
-          "type": "paragraph",
-          "text": "A schedule's existence is not proof of execution. Check run history, notification settings and host availability before creating another schedule."
-        },
-        {
-          "type": "callout",
-          "tone": "info",
-          "title": "Official sources",
-          "text": "Cross-platform steps were checked against official documentation, not tested on every operating system. Interfaces and account availability can differ."
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "Continue learning"
-        },
-        {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "article",
-              "kind": "life",
-              "slug": "codex-learning-hub",
-              "text": "Back to the Codex learning hub"
-            }
-          ]
         }
       ],
       "sources": [
         {
-          "title": "automations",
+          "title": "Scheduled tasks: creation, context, testing and permissions",
           "url": "https://learn.chatgpt.com/docs/automations",
           "checked_on": "2026-09-14"
         }
@@ -507,51 +792,223 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "定期実行には実行環境を決めます。ローカルファイルを読む場合、実行時にコンピューターとアプリが利用可能である必要があります。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "学べること"
+          "text": "目標と準備"
         },
         {
-          "type": "paragraph",
-          "text": "保存設定と試験結果を確認し、停止方法が分かれば完了です。"
+          "type": "callout",
+          "tone": "info",
+          "text": "架空のローカル一覧を定期確認し、時刻、結果、変更、停止を追跡します。読む時間15分、実習20分で待機時間は別です。Scheduled 対応のアカウント・デスクトップでタスク管理を先に読みます。記載の依頼文は教材で、利用者の予約を作成した証拠ではありません。"
         },
         {
-          "type": "paragraph",
-          "text": "練習時間の目安: 15 分"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "この段落の教材・資料: "
+            },
+            {
+              "type": "article",
+              "text": "タスク管理",
+              "kind": "life",
+              "slug": "codex-project-management"
+            }
+          ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "始める前に"
+          "text": "手順1：実行場所を選ぶ"
         },
         {
           "type": "paragraph",
-          "text": "読み取りだけの週次確認を選び、時刻、時区、頻度、通知条件を決めます。"
+          "text": "ローカル文書はアクセス可能なホスト、電源、稼働アプリ、存在するディレクトリが必要です。各 OS の実版で Scheduled を確認し、Linux プレビューでなければ利用不可と記録します。CLI・IDE は管理 UI がなく、準備後に対応入口で管理します。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "目的",
+            "選択",
+            "確認環境"
+          ],
+          "rows": [
+            [
+              "同じ会話で追跡",
+              "会話内予約",
+              "文脈とデータ"
+            ],
+            [
+              "毎回独立報告",
+              "独立予約",
+              "保存依頼とプロジェクト"
+            ],
+            [
+              "ローカル教材読取り",
+              "デスクトップホスト",
+              "電源・アプリ・ディレクトリ"
+            ],
+            [
+              "アップロードや接続情報",
+              "対応 Web・携帯",
+              "方案・ツール・権限"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Web は PC ディレクトリを自動取得しないので、今回は同じデスクトップ会話へ戻します。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "操作手順"
+          "text": "手順2：まず通常タスクで試す"
         },
         {
           "type": "paragraph",
-          "text": "1. 対応するデスクトップや Web で依頼します。CLI・IDE には現在 Scheduled 管理画面がありません。"
+          "text": "空の practice-schedule に下記文書を UTF-8 で作り、デスクトッププロジェクトとして開きます。daily という名で毎日実行されるわけではなく、予約設定が頻度を決めます。顧客、鍵、正式パスは含みません。"
+        },
+        {
+          "type": "code",
+          "label": "practice-schedule/daily-check.md",
+          "language": "markdown",
+          "code": "# Practice check\nRevision: 1\n- [x] Read the task instructions\n- [ ] Review the practice report\n"
+        },
+        {
+          "type": "code",
+          "label": "通常入力欄：一度手動検証",
+          "language": "text",
+          "code": "Read daily-check.md from this practice project once now.\nReport its Revision, completed count and open count, using the current file contents.\nIf the file is missing or unreadable, report that exact limitation and stop.\nDo not edit files, create a schedule, send messages elsewhere or call external services.\n"
         },
         {
           "type": "paragraph",
-          "text": "2. 曜日、時刻、時区、環境、資料を確認し、新規項目や失敗だけ通知するなど条件を指定します。"
+          "text": "Revision 1、完了1、未完1と読取り活動を確認し、全経路・結果・未変更を残します。通常でも読めなければ経路や権限を先に直します。動作試験だけで時刻起動、背景環境、通知を確認したことにはなりません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：追跡できる予約を依頼"
+        },
+        {
+          "type": "code",
+          "label": "デスクトップ：この実習予約を作る場合に送信",
+          "language": "text",
+          "code": "Create one recurring check named 'Practice list review' in this existing task.\nRun every Monday at 09:00 in the Asia/Taipei time zone.\nOn each run, reread daily-check.md from this local practice project.\nReport the current Revision, completed and open counts. Do not rely on an earlier report.\nIf the file or required access is unavailable, stop the run and report the limitation.\nKeep the source file unchanged and do not contact external services.\nNotify me on the first result, meaningful changes or failures; stay quiet when nothing changes.\nShow the saved schedule and next run time so I can verify them.\n"
         },
         {
           "type": "paragraph",
-          "text": "3. Scheduled で保存内容を確認して試験実行し、最近の結果を読みます。"
+          "text": "Scheduled で保存項目、Active、時刻・タイムゾーン、対象プロジェクトを確認します。口頭の約束だけでは作成証拠になりません。月曜九時後なら次週の場合があるため、今日必ず実行とせず次回表示を見ます。"
         },
         {
           "type": "paragraph",
-          "text": "4. 不要なら該当設定を停止・削除します。時刻変更は既存設定を更新し、重複を作りません。"
+          "text": "即時実行があれば使い、なければ観察できる近時刻へ保存して実起動を待ちます。同名をもう一つ作りません。識別情報、次回、実行履歴を残し、保存・開始・終了・結果ありを分けます。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順4：毎回の原本再取得を確認"
+        },
+        {
+          "type": "paragraph",
+          "text": "初回1／1の後、原本を手動で Revision 2・両完了へ変更します。新しい2／0を依頼文へ書かず、次実行が読取りで得ることを確認します。直前に答えを教えて復唱させる検証にはしません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同状態で再実行し、変化なしの通知条件と履歴を確認します。推播なしは未実行とは限らず、OS、アプリ、予約条件を分けて調べます。毎週同内容でも欲しいならそう指定し、常時通知と変化なし無通知を同時に求めません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順5：変更・一時停止・停止範囲"
+        },
+        {
+          "type": "code",
+          "label": "同じ親：既存予約を更新",
+          "language": "text",
+          "code": "Update the existing 'Practice list review' schedule to Wednesday at 10:00 Asia/Taipei.\nKeep its task, project, read-only prompt and notification preference unchanged.\nShow the updated next run time. Do not create a second schedule.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "同項目の新時刻と重複 Active がないことを確認します。同名はプロジェクト・依頼・識別で区別します。出所・動作変更は通常タスクで再検証してから更新し、曜日時刻だけなら無関係の再試験は不要です。"
+        },
+        {
+          "type": "code",
+          "label": "実習終了：同じ予約を一時停止",
+          "language": "text",
+          "code": "Pause the existing 'Practice list review' schedule after this practice.\nConfirm it is Paused and show whether any run is already in progress.\nIf a run is in progress, report its state before stopping anything else.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Paused を確認します。未来の停止と開始済み実行の中止は同じではないので最新実行も見ます。不要なら提供された削除後に一覧不在を確認し、既存報告や外部変更まで戻ったとはしません。再開は同じ一件の次時刻を確認します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "よくある問題と失敗演習"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "未実行は状態・タイムゾーン・次回、電源・アプリ・プロジェクトを確認します。睡眠中の取りこぼしが必ず補完されるとはせず履歴を見ます。読取り不可は経路と"
+            },
+            {
+              "type": "article",
+              "text": "権限",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "、新認可が必要ならその失敗を報告し、無人実行を全面認可としません。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "予約停止後に自分の文書を saved 名へ変え、元不在を確認して通常読取りを試します。欠落を報告し、旧2／0や空一覧にしないことを確認します。名前を戻して Revision 2 を再取得します。これだけでは背景通知の実測にはなりません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "出所、タイムゾーン、保存項目、実予約結果、変更後読取り、変更時刻、Paused を残し、未提供・未起動なら部分完了とします。事件起動は別制限があるため定時を Gmail・Slack 監視としません。公式確認であり利用者の予約作成や全 OS 実測を主張せず、次は "
+            },
+            {
+              "type": "article",
+              "text": "codex exec",
+              "kind": "life",
+              "slug": "codex-exec-scripting"
+            },
+            {
+              "type": "text",
+              "text": " です。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -565,88 +1022,11 @@
             "license": "© Mokaair",
             "source_url": null
           }
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "練習用の依頼"
-        },
-        {
-          "type": "code",
-          "language": "text",
-          "code": "毎週月曜 9 時、Asia/Taipei で練習プロジェクトの残件を読み取り、新規項目か失敗だけ通知してください。変更せず、保存設定を確認させてください。",
-          "label": "この手順の例"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "例と確認方法"
-        },
-        {
-          "type": "table",
-          "header": [
-            "確認項目",
-            "確認方法"
-          ],
-          "rows": [
-            [
-              "環境を確かめる",
-              "読み取りだけの週次確認を選び、時刻、時区、頻度、通知条件を決めます。"
-            ],
-            [
-              "一つの操作を行う",
-              "不要なら該当設定を停止・削除します。時刻変更は既存設定を更新し、重複を作りません。"
-            ],
-            [
-              "実際の結果を調べる",
-              "保存設定と試験結果を確認し、停止方法が分かれば完了です。"
-            ]
-          ]
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "期待する結果"
-        },
-        {
-          "type": "paragraph",
-          "text": "保存設定と試験結果を確認し、停止方法が分かれば完了です。"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "トラブル対応"
-        },
-        {
-          "type": "paragraph",
-          "text": "設定の存在と実行成功は別です。通知がなければ履歴とホストを確認します。"
-        },
-        {
-          "type": "callout",
-          "tone": "info",
-          "title": "公式の出典",
-          "text": "各 OS の手順は公式文書で確認していますが、すべての環境で実機検証したわけではありません。画面や提供状況は異なる場合があります。"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "次に学ぶこと"
-        },
-        {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "article",
-              "kind": "life",
-              "slug": "codex-learning-hub",
-              "text": "Codex 学習ガイドに戻る"
-            }
-          ]
         }
       ],
       "sources": [
         {
-          "title": "automations",
+          "title": "Scheduled tasks: creation, context, testing and permissions",
           "url": "https://learn.chatgpt.com/docs/automations",
           "checked_on": "2026-09-14"
         }
@@ -668,51 +1048,223 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "예약 작업에는 실행 환경을 정해야 합니다. 로컬 파일을 읽는 작업은 실행 시 컴퓨터와 앱을 사용할 수 있어야 합니다."
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "학습 목표"
+          "text": "목표와 준비"
         },
         {
-          "type": "paragraph",
-          "text": "저장 설정과 시험 결과를 확인하고 중지 방법을 알면 완료입니다."
+          "type": "callout",
+          "tone": "info",
+          "text": "가상 로컬 목록의 반복 점검을 만들어 시간·결과·수정·일시 중지를 추적합니다. 읽기 15분, 실습 20분이며 예약 대기는 별도입니다. Scheduled 지원 계정·데스크톱에서 작업 관리를 먼저 읽으세요. 요청 예시는 교육용이며 사용자 예약을 만들었다는 뜻은 아닙니다."
         },
         {
-          "type": "paragraph",
-          "text": "예상 실습 시간: 15 분"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "이 단락의 학습 자료: "
+            },
+            {
+              "type": "article",
+              "text": "작업 관리",
+              "kind": "life",
+              "slug": "codex-project-management"
+            }
+          ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "시작 전 준비"
+          "text": "1단계: 실행 위치 선택"
         },
         {
           "type": "paragraph",
-          "text": "읽기 전용 주간 점검을 선택하고 시간, 시간대, 빈도와 알림 조건을 정합니다."
+          "text": "로컬 문서는 접근 가능한 호스트·전원·실행 중인 앱·존재하는 폴더가 필요합니다. 각 OS의 실제 버전에서 Scheduled를 확인하고 Linux 미리 보기에 없으면 사용 불가로 기록하세요. CLI/IDE에는 관리 UI가 없으며 준비 후 지원 진입점에서 관리합니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "필요",
+            "선택",
+            "확인 환경"
+          ],
+          "rows": [
+            [
+              "같은 대화에서 추적",
+              "대화 내 예약",
+              "맥락과 접근 데이터"
+            ],
+            [
+              "매번 독립 보고",
+              "독립 예약",
+              "저장 요청과 프로젝트"
+            ],
+            [
+              "로컬 자료 읽기",
+              "데스크톱 호스트",
+              "전원·앱·폴더"
+            ],
+            [
+              "업로드·연결 자료",
+              "지원 웹·모바일",
+              "요금제·도구·권한"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "웹 예약이 PC 폴더를 자동 읽지는 않으므로 이번에는 같은 데스크톱 작업으로 돌아옵니다."
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "단계별 작업"
+          "text": "2단계: 일반 작업 먼저 실행"
         },
         {
           "type": "paragraph",
-          "text": "1. 지원 데스크톱이나 웹에서 요청합니다. CLI와 IDE에는 현재 Scheduled 관리 화면이 없습니다."
+          "text": "빈 practice-schedule에 아래 문서를 UTF-8로 만들고 데스크톱 프로젝트로 엽니다. daily라는 이름이 매일 실행하게 하는 것은 아니며 예약 설정이 빈도를 결정합니다. 고객 정보·키·운영 경로는 없습니다."
+        },
+        {
+          "type": "code",
+          "label": "practice-schedule/daily-check.md",
+          "language": "markdown",
+          "code": "# Practice check\nRevision: 1\n- [x] Read the task instructions\n- [ ] Review the practice report\n"
+        },
+        {
+          "type": "code",
+          "label": "일반 입력창: 수동 읽기 먼저 검증",
+          "language": "text",
+          "code": "Read daily-check.md from this practice project once now.\nReport its Revision, completed count and open count, using the current file contents.\nIf the file is missing or unreadable, report that exact limitation and stop.\nDo not edit files, create a schedule, send messages elsewhere or call external services.\n"
         },
         {
           "type": "paragraph",
-          "text": "2. 요일, 시간, 시간대, 환경과 자료를 확인하고 새 항목이나 실패만 알리는 조건을 지정합니다."
+          "text": "Revision 1·완료 1·미완료 1과 실제 읽기 활동을 확인하고 경로·결과·불변을 기록합니다. 일반 작업도 실패하면 경로·권한부터 수정하세요. 이는 동작 시험이며 시간 트리거·백그라운드 환경·알림 시험은 아닙니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 추적 가능한 예약 요청"
+        },
+        {
+          "type": "code",
+          "label": "데스크톱: 만들 연습 예약이 맞을 때 전송",
+          "language": "text",
+          "code": "Create one recurring check named 'Practice list review' in this existing task.\nRun every Monday at 09:00 in the Asia/Taipei time zone.\nOn each run, reread daily-check.md from this local practice project.\nReport the current Revision, completed and open counts. Do not rely on an earlier report.\nIf the file or required access is unavailable, stop the run and report the limitation.\nKeep the source file unchanged and do not contact external services.\nNotify me on the first result, meaningful changes or failures; stay quiet when nothing changes.\nShow the saved schedule and next run time so I can verify them.\n"
         },
         {
           "type": "paragraph",
-          "text": "3. Scheduled에서 저장 내용을 확인하고 시험 실행하여 최근 결과를 읽습니다."
+          "text": "Scheduled에서 저장 항목·Active·시간대·대상 프로젝트를 확인하세요. 대화상 약속은 생성 증거가 아닙니다. 월요일 9시 이후 생성하면 다음 주일 수 있으므로 오늘 실행을 가정하지 말고 다음 실행 표시를 봅니다."
         },
         {
           "type": "paragraph",
-          "text": "4. 필요 없으면 해당 설정을 중지하거나 삭제합니다. 시간 변경은 기존 설정을 업데이트하고 중복 생성하지 않습니다."
+          "text": "즉시 실행이 제공되면 사용하고 없으면 관찰 가능한 가까운 시간으로 저장해 실제 트리거를 기다립니다. 같은 이름을 새로 하나 더 만들지 마세요. 식별 정보·다음 시간·실행 기록을 남겨 저장·시작·종료·결과를 구분합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4단계: 매 실행 원본 재읽기 확인"
+        },
+        {
+          "type": "paragraph",
+          "text": "첫 1/1 이후 원본을 직접 Revision 2·둘 다 완료로 바꿉니다. 새 2/0을 예약 요청에 넣지 말고 다음 실행이 파일 읽기로 얻는지 확인하세요. 답을 알려주고 반복시키는 검증과 구분합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 상태로 다시 실행해 무변경 알림 조건과 기록을 확인합니다. 푸시 없음이 미실행은 아니므로 OS·앱·예약 조건을 따로 봅니다. 같은 내용도 매주 받으려면 명시하고 항상 알림과 무변경 무알림을 동시에 요청하지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "5단계: 수정·일시 중지·중지 범위"
+        },
+        {
+          "type": "code",
+          "label": "같은 부모: 기존 예약 수정",
+          "language": "text",
+          "code": "Update the existing 'Practice list review' schedule to Wednesday at 10:00 Asia/Taipei.\nKeep its task, project, read-only prompt and notification preference unchanged.\nShow the updated next run time. Do not create a second schedule.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 항목의 새 시간과 중복 Active가 없는지 확인합니다. 동명은 프로젝트·요청·식별로 구분하세요. 출처·동작 변경은 일반 작업에서 먼저 재시험하고 요일·시간만 변경할 때는 관련 없는 기능을 재시험할 필요가 없습니다."
+        },
+        {
+          "type": "code",
+          "label": "실습 종료: 같은 예약 일시 중지",
+          "language": "text",
+          "code": "Pause the existing 'Practice list review' schedule after this practice.\nConfirm it is Paused and show whether any run is already in progress.\nIf a run is in progress, report its state before stopping anything else.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Paused를 확인합니다. 미래 트리거 일시 중지가 이미 시작한 실행 취소는 아닐 수 있어 최근 실행도 확인하세요. 필요 없으면 제공되는 삭제 후 목록에서 사라졌는지 확인하며 이전 보고나 외부 변경이 복원됐다고 보지 않습니다. 같은 항목을 재개하고 다음 시간을 확인합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "흔한 문제와 실패 실습"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "미실행은 상태·시간대·다음 시간·전원·앱·프로젝트를 확인합니다. 절전 중 놓친 작업이 반드시 보충된다고 가정하지 말고 기록을 보세요. 파일 실패는 경로와 "
+            },
+            {
+              "type": "article",
+              "text": "권한",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "을 확인하고 새 승인이 필요하면 해당 실패를 보고하며 백그라운드를 전면 허가로 해석하지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "예약을 멈추고 자신의 파일을 saved 이름으로 바꿔 원래 이름이 없는지 확인한 뒤 일반 읽기를 시험합니다. 누락 보고가 나와야 하며 과거 2/0이나 빈 목록으로 처리하면 안 됩니다. 이름을 복구해 Revision 2를 읽고, 이것만으로 배경 오류 알림을 시험했다고 하지는 마세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "출처·시간대·저장 항목·실제 예약 결과·변경 후 읽기·수정 시간·Paused를 기록하고 미지원·미실행이면 부분 완료로 표시합니다. 이벤트 트리거는 별도 제한이 있어 시간 예약을 Gmail/Slack 감시로 보지 않습니다. 공식 확인이며 사용자 예약 생성이나 전 OS 실측을 주장하지 않고 다음은 "
+            },
+            {
+              "type": "article",
+              "text": "codex exec",
+              "kind": "life",
+              "slug": "codex-exec-scripting"
+            },
+            {
+              "type": "text",
+              "text": "입니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -726,88 +1278,11 @@
             "license": "© Mokaair",
             "source_url": null
           }
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "연습 요청"
-        },
-        {
-          "type": "code",
-          "language": "text",
-          "code": "매주 월요일 9시 Asia/Taipei에 연습 프로젝트의 남은 일을 읽고 새 항목이나 실패만 알리세요. 수정하지 말고 저장 설정을 확인하게 해 주세요.",
-          "label": "이 단계의 예제"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "예시와 검증"
-        },
-        {
-          "type": "table",
-          "header": [
-            "검사 항목",
-            "확인 방법"
-          ],
-          "rows": [
-            [
-              "환경 확인",
-              "읽기 전용 주간 점검을 선택하고 시간, 시간대, 빈도와 알림 조건을 정합니다."
-            ],
-            [
-              "작업 하나 완료",
-              "필요 없으면 해당 설정을 중지하거나 삭제합니다. 시간 변경은 기존 설정을 업데이트하고 중복 생성하지 않습니다."
-            ],
-            [
-              "실제 결과 확인",
-              "저장 설정과 시험 결과를 확인하고 중지 방법을 알면 완료입니다."
-            ]
-          ]
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "예상 결과"
-        },
-        {
-          "type": "paragraph",
-          "text": "저장 설정과 시험 결과를 확인하고 중지 방법을 알면 완료입니다."
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "문제 해결"
-        },
-        {
-          "type": "paragraph",
-          "text": "설정 존재와 실행 성공은 다릅니다. 알림이 없으면 이력과 호스트를 확인하세요."
-        },
-        {
-          "type": "callout",
-          "tone": "info",
-          "title": "공식 출처",
-          "text": "각 OS 절차는 공식 문서로 확인했으며 모든 환경에서 직접 시험한 것은 아닙니다. 화면과 계정별 제공 기능은 다를 수 있습니다."
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "이어서 학습하기"
-        },
-        {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "article",
-              "kind": "life",
-              "slug": "codex-learning-hub",
-              "text": "Codex 학습 목차로 돌아가기"
-            }
-          ]
         }
       ],
       "sources": [
         {
-          "title": "automations",
+          "title": "Scheduled tasks: creation, context, testing and permissions",
           "url": "https://learn.chatgpt.com/docs/automations",
           "checked_on": "2026-09-14"
         }

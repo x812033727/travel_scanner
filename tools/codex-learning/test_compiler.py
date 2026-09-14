@@ -12,6 +12,21 @@ spec.loader.exec_module(depth)
 
 
 class CompilerTests(unittest.TestCase):
+    def test_explicit_links_survive_plain_table_callout_and_list_lowering(self):
+        body = "> Start with [Setup](article:codex-cli-getting-started).\n\n" \
+               "| Symptom | Guide |\n| --- | --- |\n| Login fails | [Auth](article:codex-account-usage) |\n\n" \
+               "- Read [Official docs](https://learn.chatgpt.com/docs/auth).\n"
+        for locale in ["zh-TW", "zh-CN", "en", "ja", "ko"]:
+            blocks = depth.compile_body(body, locale)
+            references = [node for block in blocks for node in block.get("inlines", []) if node["type"] in {"article", "link"}]
+            self.assertEqual([node["text"] for node in references], ["Setup", "Auth", "Official docs"])
+            table = next(block for block in blocks if block["type"] == "table")
+            self.assertEqual(table["rows"], [["Login fails", "Auth"]])
+            reference = next(block for block in blocks if any(node.get("text") == "Auth" for node in block.get("inlines", [])))
+            self.assertEqual(reference["inlines"][0]["text"], "Login fails: ")
+            # The legacy plain-text cells and callout stay plain, without raw Markdown or URLs.
+            self.assertEqual(next(block for block in blocks if block["type"] == "callout")["text"], "Start with Setup.")
+
     def test_localized_code_labels_preserve_copyable_bytes(self):
         author_spec = importlib.util.spec_from_file_location("authors", Path(__file__).with_name("render-authors.py"))
         authors = importlib.util.module_from_spec(author_spec)

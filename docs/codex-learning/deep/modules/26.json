@@ -1,0 +1,253 @@
+{
+  "id": 26,
+  "readingMinutes": 15,
+  "operationMinutes": 20,
+  "blocks": [
+    {
+      "type": "h2",
+      "text": [
+        "目標與準備",
+        "Goal and preparation",
+        "目標と準備",
+        "목표와 준비"
+      ]
+    },
+    {
+      "type": "note",
+      "text": [
+        "用一張有環境資訊的截圖提出視覺需求，限制修改範圍，並回到真正的網頁驗收。閱讀約 15 分鐘、操作約 20 分鐘。準備[第一個專案](article:codex-first-project)的 expected 副本、Node.js、Python 與可用瀏覽器。文章附圖是原始參考版的實際 Windows／Edge 畫面，390px 代表響應式視窗，不能當成實體手機或本篇修改後的成果。",
+        "Use a screenshot with environment details to request a visual change, constrain edits and verify the actual page afterward. Allow 15 minutes to read and 20 to practice. Prepare the expected copy from [First project](article:codex-first-project), Node.js, Python and a browser. The attached images show the original reference in Windows/Edge; 390px is a responsive viewport, not a physical phone or the result of this lesson's edits.",
+        "環境情報付き画面で視覚要求を伝え、範囲を限定して実ページを検証します。読む時間15分、実習20分。[最初のプロジェクト](article:codex-first-project)の expected、Node.js、Python、ブラウザーを用意します。添付は変更前の Windows／Edge 参考画面で、390px は実電話や今回の変更後成果ではありません。",
+        "환경 정보가 있는 화면으로 시각적 요구를 전달하고 수정 범위를 제한한 뒤 실제 페이지를 검증합니다. 읽기 15분, 실습 20분입니다. [첫 프로젝트](article:codex-first-project)의 expected·Node.js·Python·브라우저를 준비하세요. 첨부는 수정 전 Windows/Edge 참고 화면이며 390px은 실제 휴대폰이나 이번 수정 결과가 아닙니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "| 圖片類型 | 能證明的事 | 使用方式 |\n| --- | --- | --- |\n| 真實操作截圖 | 指定環境當時可見的畫面 | 標示平台、日期、視窗與操作前後 |\n| 原創示意圖 | 概念與流程關係 | 標示示意，不代替實測 |\n| 生成插圖 | 視覺方向與概念 | 不冒充產品介面或驗收結果 |\n| 授權素材 | 來源允許的視覺內容 | 保存作者、來源、授權及署名 |",
+        "| Image type | What it establishes | Use |\n| --- | --- | --- |\n| Actual screenshot | Visible state in a specified environment | Label platform, date, viewport and before/after state |\n| Original diagram | Concepts and workflow relationships | Label as a diagram, not runtime evidence |\n| Generated illustration | Visual direction and concepts | Never present as product UI or acceptance evidence |\n| Licensed asset | Visual material permitted by its source | Retain creator, source, license and attribution |",
+        "| 画像の種類 | 示せること | 使い方 |\n| --- | --- | --- |\n| 実操作画像 | 指定環境でその時見えた状態 | プラットフォーム・日付・画面幅・操作前後を明記 |\n| オリジナル図解 | 概念と手順の関係 | 図解と記し実測の代用にしない |\n| 生成挿絵 | 視覚方向と概念 | 製品画面や合格証拠を装わない |\n| ライセンス素材 | 出典が利用を認める内容 | 作者・出典・ライセンス・署名を保存 |",
+        "| 이미지 종류 | 증명하는 내용 | 사용 방법 |\n| --- | --- | --- |\n| 실제 조작 화면 | 특정 환경에서 당시 보인 상태 | 플랫폼·날짜·화면 폭·전후 상태 명시 |\n| 직접 만든 도식 | 개념과 절차의 관계 | 도식으로 표시하고 실측 대신 쓰지 않음 |\n| 생성 삽화 | 시각 방향과 개념 | 제품 화면·검증 결과처럼 제시하지 않음 |\n| 허가된 자료 | 출처가 사용을 허용한 내용 | 제작자·출처·라이선스·표기 보존 |"
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 1：選擇瀏覽器入口",
+        "Step 1: Choose a browser surface",
+        "手順1：ブラウザー入口を選ぶ",
+        "1단계: 브라우저 진입점 선택"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Codex 桌面可用內建瀏覽器共同查看網頁，從工具列、網址連結或 @Browser 指定使用；macOS 的開啟快捷鍵是 Cmd＋Shift＋B，Windows 是 Ctrl＋Shift＋B。Linux 先依實際桌面版本的工具列與功能提供情形確認，不假定任何發行版快捷鍵都相同。內建 Browser 不提供給 CLI／IDE；這兩個入口若另有已設定的瀏覽器 MCP，應先按 [MCP](article:codex-mcp) 教學驗證，否則自行開網頁並附截圖。",
+        "Codex desktop can share a page through the built-in browser, opened from the toolbar, a URL or @Browser. The opening shortcut is Cmd+Shift+B on macOS and Ctrl+Shift+B on Windows. On Linux, inspect the actual desktop toolbar and available features rather than assuming every distribution uses the same shortcut. Built-in Browser is unavailable in CLI/IDE; verify a separately configured browser [MCP](article:codex-mcp) if present, otherwise open the page yourself and attach screenshots.",
+        "デスクトップはツールバー、URL、@Browser から内蔵ブラウザーを使えます。開く鍵は macOS の Cmd＋Shift＋B、Windows の Ctrl＋Shift＋B。Linux は実版のツールバーと提供を確認し同一鍵を仮定しません。CLI・IDE に内蔵 Browser はなく、別 [MCP](article:codex-mcp) があれば検証し、なければ自分で画面を添付します。",
+        "데스크톱은 도구 모음·URL·@Browser로 내장 브라우저를 쓸 수 있습니다. 열기 단축키는 macOS Cmd+Shift+B, Windows Ctrl+Shift+B입니다. Linux는 실제 버전 도구 모음과 제공 기능을 확인하세요. CLI/IDE에는 내장 Browser가 없으며 별도 [MCP](article:codex-mcp)가 있으면 검증하고 없으면 직접 페이지와 스크린샷을 준비합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "內建瀏覽器有獨立的個人資料與登入狀態，不會自動接管一般 Chrome／Edge 的分頁。要用平常瀏覽器的既有登入頁，依官方瀏覽器擴充功能的連線流程操作，不把兩個環境混在同一份驗收。網站權限允許互動，不代表頁面裡的指令可信；只處理你提出的工作，不因頁面要求就上傳其他專案檔案或更改帳號權限。",
+        "The built-in browser has separate profile/login state and does not automatically take over regular Chrome/Edge tabs. Follow the official browser-extension connection flow for an existing normal-browser session and record which environment was tested. Site permission permits interaction without making page instructions trustworthy; keep actions within your request instead of uploading unrelated project files or changing permissions at a page's direction.",
+        "内蔵は独立プロフィールで通常の Chrome・Edge 分頁を自動取得しません。普段の認証を使うなら公式拡張接続を行い環境を区別します。サイト操作許可は文中指示の信頼ではなく、無関係ファイルの送信や権限変更をページの要求だけで行いません。",
+        "내장은 별도 프로필이라 일반 Chrome/Edge 탭을 자동 가져오지 않습니다. 기존 로그인은 공식 확장 연결 절차를 쓰고 시험 환경을 구분하세요. 사이트 조작 권한이 페이지 지시를 신뢰한다는 뜻은 아니므로 관련 없는 파일 전송이나 계정 권한 변경을 페이지 요청만으로 하지 않습니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 2：啟動與確認正確頁面",
+        "Step 2: Start and identify the page",
+        "手順2：起動して正しいページを確認",
+        "2단계: 시작 후 올바른 페이지 확인"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "先在 expected 根目錄跑原三項測試，確認材料正常；再用下列平台命令啟動僅限本機的靜態伺服器，這個終端機保持開啟。若 4173 已被使用，選另一個未使用 port，同步修改後續網址，不停止其他人的服務。這是自己電腦的練習預覽，不是公開網站部署。",
+        "Run the reference's three tests from expected, then start a loopback-only static server using the platform command below and leave its terminal open. If 4173 is occupied, choose another free port and update all URLs without stopping another service. This is a local exercise preview, not public deployment.",
+        "expected の三試験を確認後、下記でローカル限定サーバーを起動し端末を残します。4173 使用中なら別番号と URL に揃え、他サービスを止めません。これはローカル実習で公開ではありません。",
+        "expected의 세 테스트를 확인하고 아래 명령으로 로컬 전용 서버를 시작해 터미널을 유지합니다. 4173이 사용 중이면 다른 번호와 URL로 맞추고 다른 서비스를 멈추지 마세요. 로컬 연습이며 공개 배포가 아닙니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "node --test core.test.mjs\n",
+      "label": [
+        "三種系統的終端機：確認 expected 材料",
+        "All three systems: verify the expected reference",
+        "3 OS の端末：expected を確認",
+        "세 OS 터미널: expected 확인"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "powershell",
+      "code": "py -m http.server 4173 --bind 127.0.0.1\n",
+      "label": [
+        "Windows PowerShell：位於 expected",
+        "Windows PowerShell: inside expected",
+        "Windows PowerShell：expected 内",
+        "Windows PowerShell: expected 안"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "python3 -m http.server 4173 --bind 127.0.0.1\n",
+      "label": [
+        "macOS／Linux 終端機：位於 expected",
+        "macOS/Linux terminal: inside expected",
+        "macOS／Linux 端末：expected 内",
+        "macOS/Linux 터미널: expected 안"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "打開 http://127.0.0.1:4173，確認標題、New task 表單及 Show 篩選都出現，新增 Build 與 Read the AGENTS.md rules，將 Build 設為完成。預期 1 active／2 total。不同瀏覽器設定檔可能各自有 localStorage，因此用同一個設定檔做前後比較；若已有資料，使用獨立練習設定檔或另一個 port，不清除整個日常瀏覽器的儲存內容。",
+        "Open http://127.0.0.1:4173 and verify the heading, New task form and Show filter. Add Build and Read the AGENTS.md rules, then complete Build; expect 1 active/2 total. Profiles can have separate localStorage, so compare before/after in the same profile. For existing data, use an isolated practice profile or another port instead of clearing your everyday browser's storage.",
+        "指定 URL で標題、フォーム、篩選を確認し、二つの指定タスクを追加して Build を完了すると 1 active／2 total です。localStorage はプロフィール別なので前後を同じ環境で比べます。既存データがあれば実習プロフィールか別 port を使い、日常の保存を全消去しません。",
+        "해당 URL에서 제목·양식·필터를 확인하고 지정 작업 둘을 추가해 Build를 완료하면 1 active/2 total입니다. localStorage는 프로필별일 수 있어 같은 환경에서 전후를 비교하세요. 기존 데이터가 있으면 실습 프로필이나 다른 포트를 쓰고 일상 브라우저 저장을 전부 지우지 않습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "若 Codex 執行在另一台遠端主機，127.0.0.1 指的是那台主機；ChatGPT 網頁的雲端工作也不能直接把自己的 localhost 當成你的電腦。先核對程式與瀏覽器所在主機，再使用環境正式提供的預覽或轉送方式。手機可透過 Remote 檢視連線電腦的工作，但本篇沒有教你把練習伺服器公開到網際網路，詳見[跨裝置工作](article:codex-cross-device-workflow)。",
+        "If Codex runs on another host, 127.0.0.1 refers to that host. A hosted web task's localhost is not your computer either. Verify where the app and browser run and use the environment's supported preview/forwarding flow. Mobile Remote can review connected-computer work; this lesson does not expose the practice server to the internet. See [Cross-device workflow](article:codex-cross-device-workflow).",
+        "遠隔 Codex の 127.0.0.1 は遠隔自身で、Web 雲タスクの localhost も利用者 PC ではありません。程序とブラウザーのホストを確認して正式なプレビュー経路を使います。携帯 Remote で確認できても本教材は外部公開を行いません。[端末間作業](article:codex-cross-device-workflow)を参照します。",
+        "원격 Codex의 127.0.0.1은 원격 자신이며 웹 클라우드 작업 localhost도 사용자 PC가 아닙니다. 앱과 브라우저의 호스트를 확인하고 지원 미리 보기 경로를 쓰세요. 모바일 Remote로 검토할 수 있지만 이 글은 인터넷 공개를 하지 않습니다. [기기 간 작업](article:codex-cross-device-workflow)을 참고하세요."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 3：準備截圖與文字條件",
+        "Step 3: Capture and describe the target",
+        "手順3：画面と文字条件を用意",
+        "3단계: 화면과 텍스트 조건 준비"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在瀏覽器的響應式模式依序使用 390×900 與 1280×900 CSS 像素，固定縮放與相同兩筆資料。用 Windows 截圖工具、macOS 區域截圖，或 Linux 所提供的截圖程式只擷取頁面內容，保存 before-390.png 與 before-1280.png。截圖檔本身的像素可能受裝置縮放影響，因此把 CSS viewport、縮放比例、瀏覽器版本與日期另外寫在文字紀錄，不單靠 PNG 尺寸猜測。",
+        "Use responsive mode at 390×900 and 1280×900 CSS pixels with fixed zoom and the same two tasks. Capture the page area with Windows Snipping Tool, macOS region capture or the Linux screenshot utility, saving before-390.png and before-1280.png. Device scaling can alter PNG pixel dimensions, so separately record CSS viewport, zoom, browser version and date instead of inferring them from image dimensions.",
+        "レスポンシブを二寸法の CSS 像素にし、倍率と二件データを固定します。各 OS の領域撮影でページだけを before 名に保存します。装置倍率で PNG 像素は変わるため、viewport、倍率、版、日付を別記し画像寸法から推測しません。",
+        "반응형 모드를 두 CSS 크기로 맞추고 배율과 두 데이터를 고정합니다. 각 OS 영역 캡처로 페이지 부분만 before 파일에 저장하세요. 장치 배율이 PNG 크기를 바꿀 수 있으므로 viewport·배율·버전·날짜를 별도 기록합니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "markdown",
+      "code": "# Visual check\nRoute: http://127.0.0.1:4173\nBrowser / version:\nOS / date:\nCSS viewport: 390 x 900, then 1280 x 900\nZoom:\nState: Build complete; Read the AGENTS.md rules active\nBefore images:\nRequested change: reduce header bottom spacing from 36px to 24px\nPreserve: task data, labels, focus outline and control sizes\nAfter images:\nBehavior checks:\nUnverified platforms:\n",
+      "label": [
+        "visual-check.md：填入實際環境",
+        "visual-check.md: record actual environment",
+        "visual-check.md：実環境を記入",
+        "visual-check.md: 실제 환경 기록"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "截圖之前先移開帳號區、私人分頁或通知，必要時重新擷取較小範圍。不要拿另一個平台的畫面改一個圖說就宣稱已測該平台；圖片含個人資料時由你先遮蔽再提供。概念圖與生成圖片可幫助說明外觀方向，但應寫「示意圖」，不能用它代替實際操作結果。採用別人的圖片時保存來源、作者、授權與必要署名，圖說與替代文字仍用文章的當前語言。",
+        "Remove account areas, private tabs and notifications from the capture, taking a smaller region if needed. Do not relabel another platform's screenshot as a test of your platform. Redact personal data before sharing. Concept/generated images can describe a visual direction when labeled illustrations, but cannot prove an operation. For others' images, preserve source, author, license and attribution, with captions and alt text in the article's language.",
+        "撮影からアカウント、私的分頁、通知を外し必要なら小領域を再撮影します。他 OS の図を改題して実測とせず、個人情報は共有前に伏せます。生成・概念図は示意と明記し操作証拠にしません。他人の図は出典、作者、ライセンス、署名を保存し説明と代替文を現言語にします。",
+        "계정·개인 탭·알림을 캡처에서 제외하고 필요하면 작은 영역을 다시 찍습니다. 다른 OS 화면의 제목만 바꿔 실측으로 쓰지 말고 개인정보는 공유 전에 가리세요. 생성·개념 이미지는 예시로 표시하며 조작 증거가 아닙니다. 타인 그림은 출처·작가·허가·표기를 보존하고 캡션과 대체 텍스트를 현재 언어로 씁니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 4：用標註要求一個具體修改",
+        "Step 4: Annotate one specific change",
+        "手順4：一変更を注釈で依頼",
+        "4단계: 주석으로 한 변경 요청"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "桌面內建瀏覽器若有 Annotation mode，開啟後選取標題與表單之間的區域，留言說明要縮小哪一段間距，再回到主任務送出要求。若沒有標註入口，附上兩張 before 圖並指出標題下方的空白，同樣有效；註解保存不代表模型已開始修改，仍須送出任務。不要只寫「更好看」，把要改的值、保留項目及兩種寬度的驗收說清楚。",
+        "If desktop Annotation mode is available, select the region between heading and form, describe the spacing change and submit a request in the parent task. Otherwise attach the two before images and identify the gap in text. Saving a comment does not itself start a model edit; submit the task. Replace vague aesthetic requests with the desired value, preserved behavior and both viewport checks.",
+        "Annotation mode があれば標題とフォーム間を選んで間隔を記し、親へ要求を送ります。なければ二 before 図と文字で場所を示します。注釈保存だけでは編集は始まらず送信が必要です。曖昧な美観でなく値、保全、二寸法の検証を指定します。",
+        "Annotation mode가 있으면 제목과 양식 사이를 선택해 간격을 적고 부모에게 요청을 보냅니다. 없으면 before 두 그림과 위치 설명을 첨부하세요. 주석 저장만으로 수정이 시작되지 않으므로 작업을 제출합니다. 막연한 미관 대신 값·보존·두 크기 검증을 명시하세요."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "Use the attached before screenshots and the local practice page at http://127.0.0.1:4173.\nIn style.css, reduce the existing header bottom margin from 36px to 24px.\nKeep the task data, labels, responsive form layout, 46px controls and visible focus outline unchanged.\nVerify the actual page at 390x900 and 1280x900 CSS pixels with the same two tasks.\nCheck no horizontal page overflow, usable filtering, keyboard focus and persistence after reload.\nReport the file diff and before/after evidence. If the browser is unavailable, identify that limitation instead of claiming visual verification.\n",
+      "label": [
+        "Codex 任務輸入框：附上兩張 before 截圖",
+        "Codex composer: attach both before screenshots",
+        "Codex 入力欄：二 before 図を添付",
+        "Codex 입력창: before 두 그림 첨부"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": "header { margin-bottom: 24px; }\n",
+      "label": [
+        "style.css 的目標區段：替換既有規則，不是完整檔案",
+        "Target section in style.css: replace the existing rule, not a full file",
+        "style.css の対象区画：既存規則を置換、全ファイルではない",
+        "style.css 대상 구간: 기존 규칙 교체, 전체 파일 아님"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "參考修改只把原本 36px 改為 24px，不追加一份可能被後面 CSS 蓋掉的同名規則。完成後查看 diff，確認 core.mjs 與 app.js 沒有被順便重構，也沒有把焦點外框移除。桌面開發模式或瀏覽器檢查工具可查看 header 的實際 computed margin-bottom；這種量測比只憑兩張圖的相似程度更明確。沒有工具可量測時記錄限制，仍可人工對照。",
+        "The reference edit replaces 36px with 24px in the existing rule instead of appending a duplicate that later CSS might override. Inspect the diff for unrelated changes to core.mjs/app.js or removed focus outlines. Desktop developer mode or browser inspection can check the computed header margin-bottom, providing more specific evidence than visual similarity alone. If unavailable, record the limitation and compare manually.",
+        "既存36pxを24pxへ置換し、後で上書きされ得る重複規則を足しません。差分で無関係の再構築や焦点枠除去を確認します。開発機能の computed 値は図の類似より明確な証拠です。測定不可なら制限を残して手動比較します。",
+        "기존 36px을 24px로 바꾸며 나중에 덮일 수 있는 중복 규칙을 추가하지 않습니다. 차이에서 관련 없는 리팩터링이나 초점선 제거를 확인하세요. 개발 기능의 computed 값이 그림 유사성보다 명확한 증거입니다. 측정 불가면 제한을 기록하고 수동 비교합니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 5：回到畫面驗收與恢復",
+        "Step 5: Verify in the page and restore",
+        "手順5：実画面で検証・復元",
+        "5단계: 실제 화면 검증과 복원"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "重新整理後在同兩個 viewport 保存 after 圖，檢查間距縮小、表單可輸入、篩選 Active 只剩一筆、Tab 焦點可見，以及重新整理後原兩筆資料還在。加入一筆接近 100 字元的長標題，確認文字能換行且頁面不橫向溢出；這是邊界案例，不能只看短標題正常就通過。最後再跑 core.test.mjs，程式測試與畫面驗收分兩欄記錄。",
+        "Reload and save after images at both viewports. Verify reduced spacing, input, Active showing one task, visible Tab focus and persistence of both original tasks. Add a near-100-character title and check wrapping without page overflow; short labels alone do not cover that boundary. Rerun core.test.mjs and record code tests separately from visual checks.",
+        "同二寸法で再読込・after 保存をし、間隔、入力、Active 一件、Tab 焦点、保存を確認します。100文字近い題名でも折返しと横溢れなしを確認し、短文だけで境界合格としません。core 試験は画面確認と別欄にします。",
+        "같은 두 크기에서 새로고침·after 저장 후 간격·입력·Active 한 개·Tab 초점·저장을 확인합니다. 100자 가까운 제목의 줄바꿈과 가로 넘침도 확인하고 짧은 제목만으로 경계를 통과시키지 마세요. core 테스트와 화면 검증을 따로 기록합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "畫面沒變先查網址、伺服器目錄與 CSS 是否真正保存，再確認快取或覆蓋規則；空白頁先看模組是否透過 HTTP 正確載入，不能拿 file:// 造成的模組限制當成程式回歸。瀏覽器不能操作時，回報已完成程式修改但未做畫面確認，不生成一張漂亮的 after 圖充當證據。要還原只將本次 margin 值改回 36px，核對 diff 後重讀頁面；按 Ctrl＋C 停止自己這個練習伺服器。",
+        "For unchanged appearance, check URL, server directory, saved CSS, cache and overrides. For a blank page, verify HTTP module loading rather than treating file:// restrictions as a regression. If browser operation is unavailable, report code edits with visual checks pending instead of generating an attractive after image as proof. Restore only the margin to 36px, inspect the diff and reload, then stop your practice server with Ctrl+C.",
+        "未反映は URL、配信ディレクトリ、保存、キャッシュ、上書きを見ます。空白は HTTP の模块読込みを確認し file:// 制限を回帰と混同しません。操作不能なら画面未確認と報告し、生成 after 図で代用しません。margin だけ36pxへ戻し再確認、自己サーバーを Ctrl＋C で止めます。",
+        "변화가 없으면 URL·서버 폴더·저장·캐시·덮어쓰기를 확인합니다. 빈 화면은 HTTP 모듈 로드를 보고 file:// 제한을 회귀로 오해하지 마세요. 조작 불가면 화면 미확인으로 보고하고 생성 after 이미지로 증명하지 않습니다. margin만 36px로 복원해 확인한 뒤 자신의 서버를 Ctrl+C로 중지합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "完成紀錄應能回答：哪個真實頁面、哪兩個尺寸、改哪個檔案、哪些行為已測、哪些平台未測。讀者自行截圖與文章已有參考圖分開保存，圖說標日期與來源。內建瀏覽器的開啟、標註與權限依官方文件查證；本文不宣稱已操作你的帳號或所有平台。下一步讀[排程與自動化](article:codex-automations)，理解背景執行需要哪些環境。",
+        "The record should identify the actual page, both sizes, edited file, tested behavior and untested platforms. Keep reader captures separate from existing reference images and label dates/sources. Built-in browser entry, annotations and permissions are documented from official sources without claiming operation of your account or every platform. Continue to [Scheduling and automation](article:codex-automations).",
+        "実ページ、二寸法、変更ファイル、確認動作、未測 OS が分かる記録を残します。自撮影と参考図を分け日付・出典を付けます。内蔵入口・注釈・権限は公式確認で、利用者アカウントや全 OS 操作を主張しません。次は[自動化](article:codex-automations)です。",
+        "실제 페이지·두 크기·수정 파일·검증 동작·미실행 OS가 드러나야 합니다. 직접 캡처와 참고 그림을 나눠 날짜·출처를 적으세요. 내장 진입점·주석·권한은 공식 문서 확인이며 사용자 계정이나 모든 OS 조작을 주장하지 않습니다. 다음은 [자동화](article:codex-automations)입니다."
+      ]
+    }
+  ]
+}

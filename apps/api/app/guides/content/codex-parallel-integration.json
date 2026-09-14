@@ -1,0 +1,1507 @@
+{
+  "slug": "codex-parallel-integration",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 148,
+  "locales": {
+    "zh-TW": {
+      "title": "平行工作後的整合與驗收",
+      "description": "依檔案與介面契約整合獨立修改，處理衝突，再驗證合併後的整體行為。",
+      "hero": {
+        "src": "/guides/codex-parallel-integration/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原創流程示意圖，非產品介面截圖。"
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標與準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "把兩條獨立分支的成果合到第三個檢查目錄，驗收組合結果，再演練衝突與中止。閱讀約 20 分鐘、操作約 30 分鐘。需要 Git、Node.js、編輯器，先讀 Worktree 與證據驗收。全程使用新建的 integration-lab，小型純文字材料不連正式專案、GitHub 或外部資料庫。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教學與資源: "
+            },
+            {
+              "type": "article",
+              "text": "Worktree",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "證據驗收",
+              "kind": "life",
+              "slug": "codex-subagent-quality"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "平行工作節省的是可以獨立完成的時間，最後的整合仍有順序。兩個工作者都說完成，可能只是各自的分支完成；同一頁同時用到兩個變更時，還要在相同版本與環境重跑驗收。這篇用標題與頁尾兩個文字檔代表兩份交付，不把簡單文字測試宣稱成整個網站測試。學會流程後，再套用到你專案真正的建置與瀏覽器檢查。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 1：建立共同驗收材料"
+        },
+        {
+          "type": "paragraph",
+          "text": "在自己練習區用檔案管理員建立全新 integration-lab，再於此目錄開啟終端機。Windows、macOS、Linux 的下列 Git／Node 命令相同；先核對路徑，並確認旁邊沒有本篇要用的 integration-heading、integration-footer、integration-review、integration-conflict 同名資料夾。若名稱已存在就另選一組名稱，所有後續步驟一致替換，不覆蓋原工作。"
+        },
+        {
+          "type": "code",
+          "label": "新 integration-lab 終端機：僅設定這個練習庫",
+          "language": "sh",
+          "code": "git init -b main\ngit config user.name \"Codex Learner\"\ngit config user.email \"learner@example.test\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "用編輯器建立下列三個完整檔案。heading.txt 初始為 Title: Small Steps，footer.txt 初始為 Footer: Local exercise，各自保留最後換行。測試描述的是兩項尚未完成的新要求，所以基準執行刻意是零通過、兩失敗；這是沒有遠端的獨立教材，不是在正式 main 上留下未說明的失敗。"
+        },
+        {
+          "type": "code",
+          "label": "integration-lab/heading.txt",
+          "language": "text",
+          "code": "Title: Small Steps\n"
+        },
+        {
+          "type": "code",
+          "label": "integration-lab/footer.txt",
+          "language": "text",
+          "code": "Footer: Local exercise\n"
+        },
+        {
+          "type": "code",
+          "label": "integration-lab/integration.test.mjs",
+          "language": "javascript",
+          "code": "import test from 'node:test';\nimport assert from 'node:assert/strict';\nimport { readFileSync } from 'node:fs';\n\nconst read = name => readFileSync(new URL(name, import.meta.url), 'utf8').trim();\ntest('heading includes the practice label', () => {\n  assert.equal(read('heading.txt'), 'Title: Small Steps Lab');\n});\ntest('footer identifies practice-only material', () => {\n  assert.equal(read('footer.txt'), 'Footer: Practice only');\n});\n"
+        },
+        {
+          "type": "code",
+          "label": "原目錄：記錄兩項預期失敗，再保存練習基準",
+          "language": "sh",
+          "code": "node --test integration.test.mjs\ngit add -- heading.txt footer.txt integration.test.mjs\ngit commit -m \"Add integration exercise and acceptance cases\"\ngit status --short\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 2：分配兩份互不覆寫的交付"
+        },
+        {
+          "type": "code",
+          "label": "仍在 integration-lab：三個 checkout 都從 main 基準建立",
+          "language": "sh",
+          "code": "git worktree add -b codex/heading ../integration-heading main\ngit worktree add -b codex/footer ../integration-footer main\ngit worktree add -b codex/integration ../integration-review main\ngit worktree list\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "A 只能改 integration-heading/heading.txt 為 Title: Small Steps Lab；B 只能改 integration-footer/footer.txt 為 Footer: Practice only。你可以手動完成這兩個明確編輯，或在支援子代理的 Codex 主任務中明確委派兩位工作者，分別提供完整路徑、分支、唯一可寫檔案與回報格式。本篇參考驗證使用手動等價編輯，不冒充已啟動兩個模型。"
+        },
+        {
+          "type": "code",
+          "label": "選用的主任務提示詞：先替換兩個完整路徑",
+          "language": "text",
+          "code": "Use two subagents with separate checkouts. Do not create more agents.\nAgent A owns only <ABSOLUTE_HEADING_CHECKOUT>/heading.txt on codex/heading.\nSet that file to 'Title: Small Steps Lab' with a final newline.\nAgent B owns only <ABSOLUTE_FOOTER_CHECKOUT>/footer.txt on codex/footer.\nSet that file to 'Footer: Practice only' with a final newline.\nNeither agent may edit tests, merge, push, deploy or touch the other checkout.\nReturn the actual file diff and blockers. Leave staging and integration to the parent.\nWait for both agents before reviewing their results.\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "工作",
+            "可寫入檔案",
+            "此時測試預期"
+          ],
+          "rows": [
+            [
+              "A 標題",
+              "heading.txt",
+              "標題通過、頁尾尚未通過"
+            ],
+            [
+              "B 頁尾",
+              "footer.txt",
+              "頁尾通過、標題尚未通過"
+            ],
+            [
+              "整合者",
+              "確認後的組合分支",
+              "合併兩份後兩項通過"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "任何人若改了 integration.test.mjs，先查看原因與差異，不讓工作者把驗收目標改低。"
+        },
+        {
+          "type": "code",
+          "label": "原目錄：逐一檢查 diff；兩次各一過一敗為預期",
+          "language": "sh",
+          "code": "git -C ../integration-heading diff -- heading.txt\ngit -C ../integration-footer diff -- footer.txt\nnode --test ../integration-heading/integration.test.mjs\nnode --test ../integration-footer/integration.test.mjs\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 3：保存後依序整合"
+        },
+        {
+          "type": "paragraph",
+          "text": "等兩份交付都停止修改後，查看完整 status，確認只改指定檔案，再用下列命令提交。若已有其他人或工作者提交，先核對提交與 diff，不再重複提交。記錄兩條分支的 SHA，讓整合對象具體；正式協作時若分支仍在變動，應使用已核對的提交或請持有人先停止寫入，不在不斷變更的目標上驗收。"
+        },
+        {
+          "type": "code",
+          "label": "原目錄：保存兩份已核對交付",
+          "language": "sh",
+          "code": "git -C ../integration-heading add -- heading.txt\ngit -C ../integration-heading commit -m \"Label the practice heading\"\ngit -C ../integration-footer add -- footer.txt\ngit -C ../integration-footer commit -m \"Label the practice footer\"\ngit rev-parse codex/heading codex/footer\n"
+        },
+        {
+          "type": "code",
+          "label": "原目錄：依序合到檢查分支並驗收",
+          "language": "sh",
+          "code": "git -C ../integration-review status --short\ngit -C ../integration-review merge --no-ff codex/heading -m \"Integrate practice heading\"\ngit -C ../integration-review merge --no-ff codex/footer -m \"Integrate practice footer\"\nnode --test ../integration-review/integration.test.mjs\ngit -C ../integration-review diff main...HEAD -- heading.txt footer.txt\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期整合目錄兩項通過，diff 同時包含標題與頁尾的新值，而原 integration-lab 的 main 仍是初始文字。若第一個 merge 已衝突，先停止，不執行第二個；不能用某條分支自己的綠燈代替組合驗收。這裡的 --no-ff 用於讓教材清楚保留兩次整合紀錄，真實儲存庫的合併策略仍依其規則決定。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 4：刻意製造衝突並中止"
+        },
+        {
+          "type": "code",
+          "label": "原目錄：建立另一個只供衝突練習的副本",
+          "language": "sh",
+          "code": "git worktree add -b codex/conflict ../integration-conflict main\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 integration-conflict/heading.txt 把初始文字改成 Title: Another direction，保存並只提交該檔。它從舊 main 起步，也改同一行，因此與整合分支的標題方向相衝突。先確認 integration-review 的 status 沒有未提交修改、兩項測試都通過，再嘗試合入衝突分支。這個前提讓 --abort 可以回到開始合併前的清楚狀態，不拿含未保存工作內容的目錄做演練。"
+        },
+        {
+          "type": "code",
+          "label": "原目錄：預期 merge 非零且 heading.txt 顯示衝突",
+          "language": "sh",
+          "code": "git -C ../integration-conflict add -- heading.txt\ngit -C ../integration-conflict commit -m \"Create a conflicting practice heading\"\ngit -C ../integration-review merge --no-ff codex/conflict -m \"Attempt conflicting integration\"\ngit -C ../integration-review status --short\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "查看衝突檔會看到兩種標題與 Git 標記。這次不選任一方，而是保存錯誤和 status，執行 merge --abort。中止後再跑測試，預期恢復先前兩項通過、status 乾淨。若工作目錄在合併前本來就有修改，abort 不保證能重建所有未提交狀態；因此不要省略前一步的檢查。真正要解衝突時逐段決定保留行為，再重跑測試，不能一律取 ours 或 theirs。"
+        },
+        {
+          "type": "code",
+          "label": "有合併衝突時：中止並驗證恢復",
+          "language": "sh",
+          "code": "git -C ../integration-review merge --abort\nnode --test ../integration-review/integration.test.mjs\ngit -C ../integration-review status --short\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "收尾、常見問題與交付"
+        },
+        {
+          "type": "paragraph",
+          "text": "測試找不到文字檔時，確認三個檔案都在同一份 checkout；此測試依自己的檔案 URL 讀資料，因此從原目錄執行也不會誤讀另一份文字。status 顯示未知修改時先問清來源；分支不存在時回看 worktree 建立與提交紀錄；合併成功但驗收失敗時查組合 diff，不讓工作者擅自改驗收條件。不要把需要先產出共同介面的工作硬拆成彼此不知道規格的兩個寫入任務。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成後停止練習工作者並關閉副本視窗，從原 integration-lab 核對 worktree list 的完整路徑與四份副本的 clean status。只有本篇新增、成果已提交且未在使用的副本才依序移除；任何拒絕都先檢查，不加 force。以下保留原庫及 codex/integration 分支，所以之後仍能用 git show 查到組合成果。沒有合併到正式 main，也沒有開 PR。"
+        },
+        {
+          "type": "code",
+          "label": "核對四個完整目標與 clean 狀態後：清理本篇副本",
+          "language": "sh",
+          "code": "git worktree list\ngit worktree remove ../integration-heading\ngit worktree remove ../integration-footer\ngit worktree remove ../integration-review\ngit worktree remove ../integration-conflict\ngit show codex/integration:heading.txt\ngit show codex/integration:footer.txt\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "交付紀錄包含兩個輸入 SHA、合併順序、整合 SHA、兩項測試結果、一次衝突與 abort 後的結果，以及保留原 main 的確認。參考 Git／Node 檢查不等於 Codex 模型真的分工，也不等於網站已完成整頁驗收；未操作平台依官方文件查證。接續"
+            },
+            {
+              "type": "article",
+              "text": "瀏覽器與圖片",
+              "kind": "life",
+              "slug": "codex-browser-images"
+            },
+            {
+              "type": "text",
+              "text": "，將程式與畫面驗證補齊後，才準備你的正式專案交付。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-parallel-integration/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原創流程示意圖，非產品介面截圖。",
+          "caption": "原創流程示意圖，非產品介面截圖。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Git merge and abort",
+          "url": "https://git-scm.com/docs/git-merge",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git worktree",
+          "url": "https://git-scm.com/docs/git-worktree",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex worktrees",
+          "url": "https://learn.chatgpt.com/docs/environments/git-worktrees",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Integrating parallel work",
+      "description": "Integrate independent edits using file and interface contracts, resolve conflicts and verify combined behavior.",
+      "hero": {
+        "src": "/guides/codex-parallel-integration/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "Original workflow illustration, not a product screenshot."
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Goal and preparation"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Combine two independent branches in a third review checkout, test the combined result, then practice a conflict and abort. Allow 20 minutes to read and 30 to practice. Use Git, Node.js and an editor after Worktrees and Evidence checks. A new integration-lab contains only small text fixtures, without production files, GitHub or an external database."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Lessons and resources mentioned here: "
+            },
+            {
+              "type": "article",
+              "text": "Worktrees",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "Evidence checks",
+              "kind": "life",
+              "slug": "codex-subagent-quality"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Parallel work saves time on independent parts; integration still has an order. Two completed workers may mean only that each branch is done. A page using both changes needs acceptance on their combined version and environment. This exercise represents the deliverables with heading and footer text files, without calling those checks full website tests. Apply the workflow to your project's real build/browser checks afterward."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: Prepare shared acceptance fixtures"
+        },
+        {
+          "type": "paragraph",
+          "text": "Create a new integration-lab in your practice area and open its terminal. The Git/Node commands below are the same on Windows, macOS and Linux. Verify the path and ensure sibling names integration-heading, integration-footer, integration-review and integration-conflict are unused. Choose and consistently substitute different names if necessary instead of overwriting existing work."
+        },
+        {
+          "type": "code",
+          "label": "New integration-lab terminal: repository-local setup only",
+          "language": "sh",
+          "code": "git init -b main\ngit config user.name \"Codex Learner\"\ngit config user.email \"learner@example.test\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Create the three complete files below. Initially heading.txt contains Title: Small Steps and footer.txt contains Footer: Local exercise, each with a final newline. The tests describe two new requirements that are not yet implemented, so the baseline deliberately has zero passes and two failures. This isolated, remote-free lab is not an unexplained failure on a production main branch."
+        },
+        {
+          "type": "code",
+          "label": "integration-lab/heading.txt",
+          "language": "text",
+          "code": "Title: Small Steps\n"
+        },
+        {
+          "type": "code",
+          "label": "integration-lab/footer.txt",
+          "language": "text",
+          "code": "Footer: Local exercise\n"
+        },
+        {
+          "type": "code",
+          "label": "integration-lab/integration.test.mjs",
+          "language": "javascript",
+          "code": "import test from 'node:test';\nimport assert from 'node:assert/strict';\nimport { readFileSync } from 'node:fs';\n\nconst read = name => readFileSync(new URL(name, import.meta.url), 'utf8').trim();\ntest('heading includes the practice label', () => {\n  assert.equal(read('heading.txt'), 'Title: Small Steps Lab');\n});\ntest('footer identifies practice-only material', () => {\n  assert.equal(read('footer.txt'), 'Footer: Practice only');\n});\n"
+        },
+        {
+          "type": "code",
+          "label": "Original checkout: record two expected failures, then commit the baseline",
+          "language": "sh",
+          "code": "node --test integration.test.mjs\ngit add -- heading.txt footer.txt integration.test.mjs\ngit commit -m \"Add integration exercise and acceptance cases\"\ngit status --short\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: Assign two separate deliverables"
+        },
+        {
+          "type": "code",
+          "label": "Still in integration-lab: create three checkouts from main",
+          "language": "sh",
+          "code": "git worktree add -b codex/heading ../integration-heading main\ngit worktree add -b codex/footer ../integration-footer main\ngit worktree add -b codex/integration ../integration-review main\ngit worktree list\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "A may change only integration-heading/heading.txt to Title: Small Steps Lab. B may change only integration-footer/footer.txt to Footer: Practice only. Make these exact edits manually, or explicitly delegate two workers in a supported Codex task with full paths, branches, exclusive writable files and report format. Reference verification uses equivalent deterministic edits without claiming two model runs."
+        },
+        {
+          "type": "code",
+          "label": "Optional parent prompt: replace both absolute paths",
+          "language": "text",
+          "code": "Use two subagents with separate checkouts. Do not create more agents.\nAgent A owns only <ABSOLUTE_HEADING_CHECKOUT>/heading.txt on codex/heading.\nSet that file to 'Title: Small Steps Lab' with a final newline.\nAgent B owns only <ABSOLUTE_FOOTER_CHECKOUT>/footer.txt on codex/footer.\nSet that file to 'Footer: Practice only' with a final newline.\nNeither agent may edit tests, merge, push, deploy or touch the other checkout.\nReturn the actual file diff and blockers. Leave staging and integration to the parent.\nWait for both agents before reviewing their results.\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "Work",
+            "Writable file",
+            "Expected tests at this stage"
+          ],
+          "rows": [
+            [
+              "A: heading",
+              "heading.txt",
+              "Heading passes; footer pending"
+            ],
+            [
+              "B: footer",
+              "footer.txt",
+              "Footer passes; heading pending"
+            ],
+            [
+              "Integrator",
+              "Reviewed combined branch",
+              "Both pass after both merges"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Inspect any change to integration.test.mjs before accepting it; workers must not weaken acceptance."
+        },
+        {
+          "type": "code",
+          "label": "Original terminal: inspect each diff; one pass/one failure per branch is expected",
+          "language": "sh",
+          "code": "git -C ../integration-heading diff -- heading.txt\ngit -C ../integration-footer diff -- footer.txt\nnode --test ../integration-heading/integration.test.mjs\nnode --test ../integration-footer/integration.test.mjs\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: Commit and integrate in sequence"
+        },
+        {
+          "type": "paragraph",
+          "text": "Wait until both writers stop, inspect full statuses and commit only the specified files. If a worker already committed, verify that commit/diff instead of duplicating it. Record both SHAs. For real collaboration, use verified commits or pause ongoing branch changes so acceptance does not target a moving result."
+        },
+        {
+          "type": "code",
+          "label": "Original checkout: commit both reviewed deliverables",
+          "language": "sh",
+          "code": "git -C ../integration-heading add -- heading.txt\ngit -C ../integration-heading commit -m \"Label the practice heading\"\ngit -C ../integration-footer add -- footer.txt\ngit -C ../integration-footer commit -m \"Label the practice footer\"\ngit rev-parse codex/heading codex/footer\n"
+        },
+        {
+          "type": "code",
+          "label": "Original terminal: merge sequentially into the review branch and test",
+          "language": "sh",
+          "code": "git -C ../integration-review status --short\ngit -C ../integration-review merge --no-ff codex/heading -m \"Integrate practice heading\"\ngit -C ../integration-review merge --no-ff codex/footer -m \"Integrate practice footer\"\nnode --test ../integration-review/integration.test.mjs\ngit -C ../integration-review diff main...HEAD -- heading.txt footer.txt\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Expect both checks to pass in the review checkout, both new values in its diff and unchanged baseline text on original main. If the first merge conflicts, stop before the second. A green individual branch does not replace combined acceptance. --no-ff preserves visible integration records for teaching; real repositories should follow their own merge policy."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 4: Create a deliberate conflict and abort"
+        },
+        {
+          "type": "code",
+          "label": "Original terminal: create a conflict-only checkout",
+          "language": "sh",
+          "code": "git worktree add -b codex/conflict ../integration-conflict main\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Change only integration-conflict/heading.txt to Title: Another direction and commit it. Starting from old main, it edits the same line differently from the integrated branch. Before merging it, confirm the review checkout is clean and both tests pass. That gives --abort a clear pre-merge state instead of practicing on unsaved work."
+        },
+        {
+          "type": "code",
+          "label": "Original terminal: expect a nonzero merge and conflict in heading.txt",
+          "language": "sh",
+          "code": "git -C ../integration-conflict add -- heading.txt\ngit -C ../integration-conflict commit -m \"Create a conflicting practice heading\"\ngit -C ../integration-review merge --no-ff codex/conflict -m \"Attempt conflicting integration\"\ngit -C ../integration-review status --short\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "The conflict file contains both headings and Git markers. For this exercise, record the error/status and abort instead of choosing a side. Tests should return to two passes with a clean status. With pre-existing uncommitted edits, abort may not reconstruct all earlier work, which is why the clean-state check matters. Real conflict resolution requires choosing behavior section by section and retesting rather than always taking ours or theirs."
+        },
+        {
+          "type": "code",
+          "label": "During the merge conflict: abort and verify recovery",
+          "language": "sh",
+          "code": "git -C ../integration-review merge --abort\nnode --test ../integration-review/integration.test.mjs\ngit -C ../integration-review status --short\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Cleanup, problems and delivery"
+        },
+        {
+          "type": "paragraph",
+          "text": "If tests cannot locate text files, confirm all three files belong to the same checkout. The test reads relative to its own file URL, preventing the caller's directory from selecting another copy. Identify unexpected changes, trace missing branches to creation/commits and inspect combined diffs after a merge that fails acceptance. Do not let workers weaken tests or split dependent interface work without a shared contract."
+        },
+        {
+          "type": "paragraph",
+          "text": "Stop practice workers and close checkout windows, then verify full paths and clean statuses for all four copies from integration-lab. Remove only the new, committed, unused copies, investigating refusals without force. The original repository and codex/integration branch remain, so git show can still retrieve the combined result. No production main merge or PR occurs."
+        },
+        {
+          "type": "code",
+          "label": "After checking all four paths and clean states: remove practice checkouts",
+          "language": "sh",
+          "code": "git worktree list\ngit worktree remove ../integration-heading\ngit worktree remove ../integration-footer\ngit worktree remove ../integration-review\ngit worktree remove ../integration-conflict\ngit show codex/integration:heading.txt\ngit show codex/integration:footer.txt\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Record both input SHAs, merge order, integrated SHA, two-test result, conflict/abort result and preserved main state. Reference Git/Node checks prove neither model delegation nor full website acceptance. Mark unoperated platforms as officially documented. Continue to "
+            },
+            {
+              "type": "article",
+              "text": "Browser and images",
+              "kind": "life",
+              "slug": "codex-browser-images"
+            },
+            {
+              "type": "text",
+              "text": " before preparing delivery for a real project."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-parallel-integration/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "Original workflow illustration, not a product screenshot.",
+          "caption": "Original workflow illustration, not a product screenshot."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Git merge and abort",
+          "url": "https://git-scm.com/docs/git-merge",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git worktree",
+          "url": "https://git-scm.com/docs/git-worktree",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex worktrees",
+          "url": "https://learn.chatgpt.com/docs/environments/git-worktrees",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "並行作業の統合と確認",
+      "description": "ファイルとインターフェースの契約に沿って変更を統合し、衝突と全体動作を確認します。",
+      "hero": {
+        "src": "/guides/codex-parallel-integration/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "独自の手順図です。製品画面の画像ではありません。"
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標と準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "独立二分岐を第三の確認ディレクトリへ統合して検証し、競合と中止を練習します。読む時間20分、実習30分。Worktreeと証拠確認の後、Git、Node.js、エディターを使います。新 integration-lab の小教材だけで、正式環境や外部サービスに接続しません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "この段落の教材・資料: "
+            },
+            {
+              "type": "article",
+              "text": "Worktree",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "証拠確認",
+              "kind": "life",
+              "slug": "codex-subagent-quality"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "並行で短縮できても統合には順序があります。二人完了は各分岐の完了にすぎず、両変更を使う同一画面は組合せ版で確認が必要です。今回は標題と頁脚の文書で交付を表し、全サイト試験とは呼びません。後で実際の建置・画面確認に適用します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順1：共通の検証教材を準備"
+        },
+        {
+          "type": "paragraph",
+          "text": "新 integration-lab を作って端末を開きます。全 OS で下記 Git・Node は共通です。経路と同階層四名称の不存在を確認し、既存なら一式を未使用名へ揃えて変更します。元作業を上書きしません。"
+        },
+        {
+          "type": "code",
+          "label": "新 integration-lab 端末：この庫だけ設定",
+          "language": "sh",
+          "code": "git init -b main\ngit config user.name \"Codex Learner\"\ngit config user.email \"learner@example.test\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "下記三ファイルを作り、標題と頁脚の初期値に末尾改行を残します。試験は未実装の新要件二つなので基準は意図した零通過・二失敗です。遠隔なしの独立教材であり、正式 main に説明なしの失敗を残すものではありません。"
+        },
+        {
+          "type": "code",
+          "label": "integration-lab/heading.txt",
+          "language": "text",
+          "code": "Title: Small Steps\n"
+        },
+        {
+          "type": "code",
+          "label": "integration-lab/footer.txt",
+          "language": "text",
+          "code": "Footer: Local exercise\n"
+        },
+        {
+          "type": "code",
+          "label": "integration-lab/integration.test.mjs",
+          "language": "javascript",
+          "code": "import test from 'node:test';\nimport assert from 'node:assert/strict';\nimport { readFileSync } from 'node:fs';\n\nconst read = name => readFileSync(new URL(name, import.meta.url), 'utf8').trim();\ntest('heading includes the practice label', () => {\n  assert.equal(read('heading.txt'), 'Title: Small Steps Lab');\n});\ntest('footer identifies practice-only material', () => {\n  assert.equal(read('footer.txt'), 'Footer: Practice only');\n});\n"
+        },
+        {
+          "type": "code",
+          "label": "元ディレクトリ：二つの想定失敗を記録して基準保存",
+          "language": "sh",
+          "code": "node --test integration.test.mjs\ngit add -- heading.txt footer.txt integration.test.mjs\ngit commit -m \"Add integration exercise and acceptance cases\"\ngit status --short\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順2：上書きしない二交付へ分担"
+        },
+        {
+          "type": "code",
+          "label": "integration-lab：三コピーとも main 基準で作成",
+          "language": "sh",
+          "code": "git worktree add -b codex/heading ../integration-heading main\ngit worktree add -b codex/footer ../integration-footer main\ngit worktree add -b codex/integration ../integration-review main\ngit worktree list\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "A は標題コピーの一文書だけ、B は頁脚コピーの一文書だけを指定値へ変えます。手動か、対応 Codex で全パス、分岐、唯一の編集対象、報告形式を明示して二代理へ依頼できます。参考検証は同等の明示編集でありモデル二実行とはしません。"
+        },
+        {
+          "type": "code",
+          "label": "任意の親依頼：二つの全パスを置換",
+          "language": "text",
+          "code": "Use two subagents with separate checkouts. Do not create more agents.\nAgent A owns only <ABSOLUTE_HEADING_CHECKOUT>/heading.txt on codex/heading.\nSet that file to 'Title: Small Steps Lab' with a final newline.\nAgent B owns only <ABSOLUTE_FOOTER_CHECKOUT>/footer.txt on codex/footer.\nSet that file to 'Footer: Practice only' with a final newline.\nNeither agent may edit tests, merge, push, deploy or touch the other checkout.\nReturn the actual file diff and blockers. Leave staging and integration to the parent.\nWait for both agents before reviewing their results.\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "作業",
+            "編集対象",
+            "その段階の試験"
+          ],
+          "rows": [
+            [
+              "A 標題",
+              "heading.txt",
+              "標題成功・頁脚未完"
+            ],
+            [
+              "B 頁脚",
+              "footer.txt",
+              "頁脚成功・標題未完"
+            ],
+            [
+              "統合者",
+              "確認済み組合せ",
+              "両統合後に二成功"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "試験変更があれば理由と差分を確認し、要件を弱めさせません。"
+        },
+        {
+          "type": "code",
+          "label": "元端末：各差分と一成功・一失敗を確認",
+          "language": "sh",
+          "code": "git -C ../integration-heading diff -- heading.txt\ngit -C ../integration-footer diff -- footer.txt\nnode --test ../integration-heading/integration.test.mjs\nnode --test ../integration-footer/integration.test.mjs\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：保存して順序統合"
+        },
+        {
+          "type": "paragraph",
+          "text": "両者の書込み終了後、全状態と対象一ファイルだけを確認してコミットします。既コミットなら差分を確認し二重コミットしません。両 SHA を記録し、実協作では確認済みコミットを使うか更新を止め、動く対象で検証しません。"
+        },
+        {
+          "type": "code",
+          "label": "元ディレクトリ：両交付を保存",
+          "language": "sh",
+          "code": "git -C ../integration-heading add -- heading.txt\ngit -C ../integration-heading commit -m \"Label the practice heading\"\ngit -C ../integration-footer add -- footer.txt\ngit -C ../integration-footer commit -m \"Label the practice footer\"\ngit rev-parse codex/heading codex/footer\n"
+        },
+        {
+          "type": "code",
+          "label": "元端末：確認分岐へ順に統合して検証",
+          "language": "sh",
+          "code": "git -C ../integration-review status --short\ngit -C ../integration-review merge --no-ff codex/heading -m \"Integrate practice heading\"\ngit -C ../integration-review merge --no-ff codex/footer -m \"Integrate practice footer\"\nnode --test ../integration-review/integration.test.mjs\ngit -C ../integration-review diff main...HEAD -- heading.txt footer.txt\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "統合先は二成功、差分は両新値、元 main は初期値のままです。最初の merge が競合したら二回目へ進みません。個別の成功で組合せ確認を代用しません。教材では履歴を示すため --no-ff を使い、実庫は自身の方針に従います。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順4：意図的競合と中止"
+        },
+        {
+          "type": "code",
+          "label": "元端末：競合練習専用のコピー作成",
+          "language": "sh",
+          "code": "git worktree add -b codex/conflict ../integration-conflict main\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "競合コピーの標題だけを Title: Another direction にしてコミットします。旧 main から同じ行を違う値へ変えるため統合先と競合します。確認ディレクトリの未変更と二成功を確認してから試し、未保存作業ではなく明確な開始状態へ abort で戻します。"
+        },
+        {
+          "type": "code",
+          "label": "元端末：非0の merge と標題競合を確認",
+          "language": "sh",
+          "code": "git -C ../integration-conflict add -- heading.txt\ngit -C ../integration-conflict commit -m \"Create a conflicting practice heading\"\ngit -C ../integration-review merge --no-ff codex/conflict -m \"Attempt conflicting integration\"\ngit -C ../integration-review status --short\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "競合文書の両値と Git 標記を見て、今回は選択せずエラー・状態を残して abort します。二成功と未変更へ戻るはずです。開始前に未コミットがあると完全復元を保証できないので確認を省略しません。実解消では部分ごとに動作を選び、全て ours/theirs にしません。"
+        },
+        {
+          "type": "code",
+          "label": "競合中：中止と復旧確認",
+          "language": "sh",
+          "code": "git -C ../integration-review merge --abort\nnode --test ../integration-review/integration.test.mjs\ngit -C ../integration-review status --short\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "片付け・問題・交付"
+        },
+        {
+          "type": "paragraph",
+          "text": "教材は試験自身の URL 基準で読むため、文書不在なら同じコピーに三つ揃うか確認します。不明変更は出所、分岐不在は作成・コミット、統合後失敗は組合せ差分を調べます。試験を弱めたり、共同介面が未定の依存作業を無理に独立分担したりしません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "作業者とコピー窓を閉じ、元から四経路と clean を確認します。追加・コミット済み・未使用のものだけ除去し、拒否は force で回避しません。元庫と統合分岐を残すため後で成果を読めます。正式 main の統合や PR はありません。"
+        },
+        {
+          "type": "code",
+          "label": "四経路と clean 確認後：今回のコピーだけ除去",
+          "language": "sh",
+          "code": "git worktree list\ngit worktree remove ../integration-heading\ngit worktree remove ../integration-footer\ngit worktree remove ../integration-review\ngit worktree remove ../integration-conflict\ngit show codex/integration:heading.txt\ngit show codex/integration:footer.txt\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "入力二 SHA、順序、統合 SHA、二試験、競合・abort、元 main 保全を記録します。Git・Node の参考試験はモデル分担や全画面検証ではなく、未操作 OS は公式確認とします。"
+            },
+            {
+              "type": "article",
+              "text": "ブラウザーと画像",
+              "kind": "life",
+              "slug": "codex-browser-images"
+            },
+            {
+              "type": "text",
+              "text": "で画面確認へ進みます。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-parallel-integration/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "独自の手順図です。製品画面の画像ではありません。",
+          "caption": "独自の手順図です。製品画面の画像ではありません。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Git merge and abort",
+          "url": "https://git-scm.com/docs/git-merge",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git worktree",
+          "url": "https://git-scm.com/docs/git-worktree",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex worktrees",
+          "url": "https://learn.chatgpt.com/docs/environments/git-worktrees",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "병렬 작업 통합과 검증",
+      "description": "파일과 인터페이스 계약에 따라 변경을 통합하고 충돌과 전체 동작을 검증합니다.",
+      "hero": {
+        "src": "/guides/codex-parallel-integration/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "목표와 준비"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "두 독립 브랜치를 세 번째 검토 폴더에 합쳐 검증하고 충돌과 중지를 연습합니다. 읽기 20분, 실습 30분입니다. Worktree와 증거 확인 후 Git·Node.js·편집기를 사용하세요. 새 integration-lab의 작은 자료만 쓰며 운영 환경이나 외부 서비스에 연결하지 않습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "이 단락의 학습 자료: "
+            },
+            {
+              "type": "article",
+              "text": "Worktree",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "증거 확인",
+              "kind": "life",
+              "slug": "codex-subagent-quality"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "독립 작업은 병렬로 시간을 줄여도 통합에는 순서가 있습니다. 두 완료는 각 브랜치만 끝난 것일 수 있어 같은 화면의 조합 버전에서 검증해야 합니다. 제목·푸터 텍스트로 결과물을 나타내며 전체 사이트 시험으로 부르지 않습니다. 이후 실제 빌드·브라우저 검증에 적용하세요."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 공통 검증 자료 준비"
+        },
+        {
+          "type": "paragraph",
+          "text": "새 integration-lab을 만들고 터미널을 엽니다. 각 OS에서 아래 Git·Node 명령은 같습니다. 경로와 같은 상위 폴더의 네 이름이 미사용인지 확인하고 이미 있으면 이름을 일관되게 교체하세요. 기존 작업을 덮어쓰지 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "새 integration-lab 터미널: 이 저장소만 설정",
+          "language": "sh",
+          "code": "git init -b main\ngit config user.name \"Codex Learner\"\ngit config user.email \"learner@example.test\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "아래 세 파일을 만들고 제목·푸터 초기값에 마지막 줄바꿈을 남깁니다. 테스트는 미구현 요구 두 가지이므로 기준은 의도적인 0 통과·2 실패입니다. 원격 없는 독립 자료이며 운영 main에 설명 없는 실패를 남기는 것이 아닙니다."
+        },
+        {
+          "type": "code",
+          "label": "integration-lab/heading.txt",
+          "language": "text",
+          "code": "Title: Small Steps\n"
+        },
+        {
+          "type": "code",
+          "label": "integration-lab/footer.txt",
+          "language": "text",
+          "code": "Footer: Local exercise\n"
+        },
+        {
+          "type": "code",
+          "label": "integration-lab/integration.test.mjs",
+          "language": "javascript",
+          "code": "import test from 'node:test';\nimport assert from 'node:assert/strict';\nimport { readFileSync } from 'node:fs';\n\nconst read = name => readFileSync(new URL(name, import.meta.url), 'utf8').trim();\ntest('heading includes the practice label', () => {\n  assert.equal(read('heading.txt'), 'Title: Small Steps Lab');\n});\ntest('footer identifies practice-only material', () => {\n  assert.equal(read('footer.txt'), 'Footer: Practice only');\n});\n"
+        },
+        {
+          "type": "code",
+          "label": "원본: 예상 실패 두 개 기록 후 기준 커밋",
+          "language": "sh",
+          "code": "node --test integration.test.mjs\ngit add -- heading.txt footer.txt integration.test.mjs\ngit commit -m \"Add integration exercise and acceptance cases\"\ngit status --short\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 겹치지 않는 두 결과물 배정"
+        },
+        {
+          "type": "code",
+          "label": "integration-lab: 세 사본을 main 기준으로 생성",
+          "language": "sh",
+          "code": "git worktree add -b codex/heading ../integration-heading main\ngit worktree add -b codex/footer ../integration-footer main\ngit worktree add -b codex/integration ../integration-review main\ngit worktree list\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "A는 제목 사본의 한 파일만, B는 푸터 사본의 한 파일만 지정값으로 바꿉니다. 직접 편집하거나 지원 Codex에서 전체 경로·브랜치·유일한 쓰기 파일·보고 형식을 주어 두 작업자에게 명시 위임할 수 있습니다. 참고 검증은 동등한 지정 편집이며 두 모델 실행으로 표시하지 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "선택 부모 요청: 두 전체 경로 교체",
+          "language": "text",
+          "code": "Use two subagents with separate checkouts. Do not create more agents.\nAgent A owns only <ABSOLUTE_HEADING_CHECKOUT>/heading.txt on codex/heading.\nSet that file to 'Title: Small Steps Lab' with a final newline.\nAgent B owns only <ABSOLUTE_FOOTER_CHECKOUT>/footer.txt on codex/footer.\nSet that file to 'Footer: Practice only' with a final newline.\nNeither agent may edit tests, merge, push, deploy or touch the other checkout.\nReturn the actual file diff and blockers. Leave staging and integration to the parent.\nWait for both agents before reviewing their results.\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "작업",
+            "쓰기 파일",
+            "해당 단계 시험"
+          ],
+          "rows": [
+            [
+              "A 제목",
+              "heading.txt",
+              "제목 통과·푸터 대기"
+            ],
+            [
+              "B 푸터",
+              "footer.txt",
+              "푸터 통과·제목 대기"
+            ],
+            [
+              "통합자",
+              "검토된 조합 브랜치",
+              "둘을 합친 뒤 두 통과"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "시험 파일이 바뀌면 이유와 차이를 확인하고 기준을 낮추게 하지 마세요."
+        },
+        {
+          "type": "code",
+          "label": "원본: 각 차이와 1 통과·1 실패 확인",
+          "language": "sh",
+          "code": "git -C ../integration-heading diff -- heading.txt\ngit -C ../integration-footer diff -- footer.txt\nnode --test ../integration-heading/integration.test.mjs\nnode --test ../integration-footer/integration.test.mjs\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 커밋 후 순서대로 통합"
+        },
+        {
+          "type": "paragraph",
+          "text": "두 작업자의 쓰기가 끝나면 전체 상태와 지정 파일만 바뀐 것을 확인해 커밋합니다. 이미 커밋됐다면 차이를 확인하고 중복 커밋하지 마세요. 두 SHA를 기록하며 실제 협업은 확인한 커밋을 쓰거나 변경을 멈춰 움직이는 대상을 검증하지 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "원본: 검토한 두 결과 커밋",
+          "language": "sh",
+          "code": "git -C ../integration-heading add -- heading.txt\ngit -C ../integration-heading commit -m \"Label the practice heading\"\ngit -C ../integration-footer add -- footer.txt\ngit -C ../integration-footer commit -m \"Label the practice footer\"\ngit rev-parse codex/heading codex/footer\n"
+        },
+        {
+          "type": "code",
+          "label": "원본: 검토 브랜치에 순서대로 병합 후 검증",
+          "language": "sh",
+          "code": "git -C ../integration-review status --short\ngit -C ../integration-review merge --no-ff codex/heading -m \"Integrate practice heading\"\ngit -C ../integration-review merge --no-ff codex/footer -m \"Integrate practice footer\"\nnode --test ../integration-review/integration.test.mjs\ngit -C ../integration-review diff main...HEAD -- heading.txt footer.txt\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "통합 폴더는 두 통과, 차이는 두 새 값, 원본 main은 초기값이어야 합니다. 첫 merge가 충돌하면 두 번째는 실행하지 마세요. 개별 브랜치 통과는 조합 검증을 대신하지 않습니다. --no-ff는 교육상 기록을 남기기 위한 것이며 실제 저장소 정책은 따로 따릅니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4단계: 의도적 충돌과 중지"
+        },
+        {
+          "type": "code",
+          "label": "원본: 충돌 연습 전용 사본 생성",
+          "language": "sh",
+          "code": "git worktree add -b codex/conflict ../integration-conflict main\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "충돌 사본의 제목만 Title: Another direction으로 바꿔 커밋합니다. 이전 main의 같은 줄을 다르게 바꾸므로 통합 브랜치와 충돌합니다. 검토 폴더가 깨끗하고 두 테스트가 통과하는지 확인한 뒤 시도해 미저장 작업 대신 명확한 시작 상태로 abort하게 합니다."
+        },
+        {
+          "type": "code",
+          "label": "원본: merge 비0과 heading.txt 충돌 예상",
+          "language": "sh",
+          "code": "git -C ../integration-conflict add -- heading.txt\ngit -C ../integration-conflict commit -m \"Create a conflicting practice heading\"\ngit -C ../integration-review merge --no-ff codex/conflict -m \"Attempt conflicting integration\"\ngit -C ../integration-review status --short\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "충돌 파일의 두 값과 Git 표식을 확인하고 이번에는 한쪽을 고르지 말고 오류·상태를 남겨 abort합니다. 두 통과와 깨끗한 상태로 돌아와야 합니다. 기존 미커밋이 있으면 완전 복구가 보장되지 않아 사전 확인이 필요합니다. 실제 해결은 구간별 동작을 선택하고 무조건 ours/theirs를 쓰지 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "병합 충돌 중: 중지와 복구 확인",
+          "language": "sh",
+          "code": "git -C ../integration-review merge --abort\nnode --test ../integration-review/integration.test.mjs\ngit -C ../integration-review status --short\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "정리·문제·전달"
+        },
+        {
+          "type": "paragraph",
+          "text": "테스트는 자신의 파일 URL 기준으로 읽으므로 파일이 없으면 같은 사본에 셋이 있는지 확인합니다. 알 수 없는 변경은 출처, 없는 브랜치는 생성·커밋, 병합 후 실패는 조합 차이를 보세요. 기준을 낮추거나 공통 인터페이스도 정하지 않은 의존 작업을 무리하게 독립 분담하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "작업자와 사본 창을 닫고 원본에서 네 전체 경로와 clean 상태를 확인합니다. 추가했고 커밋됐으며 미사용인 사본만 제거하고 거부는 force 없이 조사하세요. 원본과 통합 브랜치가 남아 결과를 읽을 수 있으며 운영 main 병합이나 PR은 없습니다."
+        },
+        {
+          "type": "code",
+          "label": "네 경로와 clean 확인 후: 연습 사본만 제거",
+          "language": "sh",
+          "code": "git worktree list\ngit worktree remove ../integration-heading\ngit worktree remove ../integration-footer\ngit worktree remove ../integration-review\ngit worktree remove ../integration-conflict\ngit show codex/integration:heading.txt\ngit show codex/integration:footer.txt\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "입력 두 SHA·병합 순서·통합 SHA·두 테스트·충돌/abort·원본 main 보존을 기록합니다. Git/Node 참고 검사는 모델 분담이나 전체 화면 검증이 아니며 미실행 OS는 공식 문서 확인으로 표시합니다. "
+            },
+            {
+              "type": "article",
+              "text": "브라우저와 이미지",
+              "kind": "life",
+              "slug": "codex-browser-images"
+            },
+            {
+              "type": "text",
+              "text": "로 이어가세요."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-parallel-integration/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다.",
+          "caption": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Git merge and abort",
+          "url": "https://git-scm.com/docs/git-merge",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git worktree",
+          "url": "https://git-scm.com/docs/git-worktree",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex worktrees",
+          "url": "https://learn.chatgpt.com/docs/environments/git-worktrees",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "平行工作后的整合与验收",
+      "description": "依档案与介面契约整合独立修改，处理冲突，再验证合并后的整体行为。",
+      "hero": {
+        "src": "/guides/codex-parallel-integration/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原创流程示意图，非产品界面截图。"
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目标与准备"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "把两条独立分支的成果合到第三个检查目录，验收组合结果，再演练冲突与中止。阅读约 20 分钟、操作约 30 分钟。需要 Git、Node.js、编辑器，先读 Worktree 与证据验收。全程使用新建的 integration-lab，小型纯文字材料不连正式专案、GitHub 或外部资料库。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教学与资源: "
+            },
+            {
+              "type": "article",
+              "text": "Worktree",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "证据验收",
+              "kind": "life",
+              "slug": "codex-subagent-quality"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "平行工作节省的是可以独立完成的时间，最后的整合仍有顺序。两个工作者都说完成，可能只是各自的分支完成；同一页同时用到两个变更时，还要在相同版本与环境重跑验收。这篇用标题与页尾两个文字档代表两份交付，不把简单文字测试宣称成整个网站测试。学会流程后，再套用到你专案真正的建置与浏览器检查。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 1：建立共同验收材料"
+        },
+        {
+          "type": "paragraph",
+          "text": "在自己练习区用档案管理员建立全新 integration-lab，再于此目录开启终端机。Windows、macOS、Linux 的下列 Git／Node 命令相同；先核对路径，并确认旁边没有本篇要用的 integration-heading、integration-footer、integration-review、integration-conflict 同名资料夹。若名称已存在就另选一组名称，所有后续步骤一致替换，不覆盖原工作。"
+        },
+        {
+          "type": "code",
+          "label": "新 integration-lab 终端机：仅设定这个练习库",
+          "language": "sh",
+          "code": "git init -b main\ngit config user.name \"Codex Learner\"\ngit config user.email \"learner@example.test\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "用编辑器建立下列三个完整档案。heading.txt 初始为 Title: Small Steps，footer.txt 初始为 Footer: Local exercise，各自保留最后换行。测试描述的是两项尚未完成的新要求，所以基准执行刻意是零通过、两失败；这是没有远端的独立教材，不是在正式 main 上留下未说明的失败。"
+        },
+        {
+          "type": "code",
+          "label": "integration-lab/heading.txt",
+          "language": "text",
+          "code": "Title: Small Steps\n"
+        },
+        {
+          "type": "code",
+          "label": "integration-lab/footer.txt",
+          "language": "text",
+          "code": "Footer: Local exercise\n"
+        },
+        {
+          "type": "code",
+          "label": "integration-lab/integration.test.mjs",
+          "language": "javascript",
+          "code": "import test from 'node:test';\nimport assert from 'node:assert/strict';\nimport { readFileSync } from 'node:fs';\n\nconst read = name => readFileSync(new URL(name, import.meta.url), 'utf8').trim();\ntest('heading includes the practice label', () => {\n  assert.equal(read('heading.txt'), 'Title: Small Steps Lab');\n});\ntest('footer identifies practice-only material', () => {\n  assert.equal(read('footer.txt'), 'Footer: Practice only');\n});\n"
+        },
+        {
+          "type": "code",
+          "label": "原目录：记录两项预期失败，再保存练习基准",
+          "language": "sh",
+          "code": "node --test integration.test.mjs\ngit add -- heading.txt footer.txt integration.test.mjs\ngit commit -m \"Add integration exercise and acceptance cases\"\ngit status --short\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 2：分配两份互不覆写的交付"
+        },
+        {
+          "type": "code",
+          "label": "仍在 integration-lab：三个 checkout 都从 main 基准建立",
+          "language": "sh",
+          "code": "git worktree add -b codex/heading ../integration-heading main\ngit worktree add -b codex/footer ../integration-footer main\ngit worktree add -b codex/integration ../integration-review main\ngit worktree list\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "A 只能改 integration-heading/heading.txt 为 Title: Small Steps Lab；B 只能改 integration-footer/footer.txt 为 Footer: Practice only。你可以手动完成这两个明确编辑，或在支援子代理的 Codex 主任务中明确委派两位工作者，分别提供完整路径、分支、唯一可写档案与回报格式。本篇参考验证使用手动等价编辑，不冒充已启动两个模型。"
+        },
+        {
+          "type": "code",
+          "label": "选用的主任务提示词：先替换两个完整路径",
+          "language": "text",
+          "code": "Use two subagents with separate checkouts. Do not create more agents.\nAgent A owns only <ABSOLUTE_HEADING_CHECKOUT>/heading.txt on codex/heading.\nSet that file to 'Title: Small Steps Lab' with a final newline.\nAgent B owns only <ABSOLUTE_FOOTER_CHECKOUT>/footer.txt on codex/footer.\nSet that file to 'Footer: Practice only' with a final newline.\nNeither agent may edit tests, merge, push, deploy or touch the other checkout.\nReturn the actual file diff and blockers. Leave staging and integration to the parent.\nWait for both agents before reviewing their results.\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "工作",
+            "可写入档案",
+            "此时测试预期"
+          ],
+          "rows": [
+            [
+              "A 标题",
+              "heading.txt",
+              "标题通过、页尾尚未通过"
+            ],
+            [
+              "B 页尾",
+              "footer.txt",
+              "页尾通过、标题尚未通过"
+            ],
+            [
+              "整合者",
+              "确认后的组合分支",
+              "合并两份后两项通过"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "任何人若改了 integration.test.mjs，先查看原因与差异，不让工作者把验收目标改低。"
+        },
+        {
+          "type": "code",
+          "label": "原目录：逐一检查 diff；两次各一过一败为预期",
+          "language": "sh",
+          "code": "git -C ../integration-heading diff -- heading.txt\ngit -C ../integration-footer diff -- footer.txt\nnode --test ../integration-heading/integration.test.mjs\nnode --test ../integration-footer/integration.test.mjs\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 3：保存后依序整合"
+        },
+        {
+          "type": "paragraph",
+          "text": "等两份交付都停止修改后，查看完整 status，确认只改指定档案，再用下列命令提交。若已有其他人或工作者提交，先核对提交与 diff，不再重复提交。记录两条分支的 SHA，让整合对象具体；正式协作时若分支仍在变动，应使用已核对的提交或请持有人先停止写入，不在不断变更的目标上验收。"
+        },
+        {
+          "type": "code",
+          "label": "原目录：保存两份已核对交付",
+          "language": "sh",
+          "code": "git -C ../integration-heading add -- heading.txt\ngit -C ../integration-heading commit -m \"Label the practice heading\"\ngit -C ../integration-footer add -- footer.txt\ngit -C ../integration-footer commit -m \"Label the practice footer\"\ngit rev-parse codex/heading codex/footer\n"
+        },
+        {
+          "type": "code",
+          "label": "原目录：依序合到检查分支并验收",
+          "language": "sh",
+          "code": "git -C ../integration-review status --short\ngit -C ../integration-review merge --no-ff codex/heading -m \"Integrate practice heading\"\ngit -C ../integration-review merge --no-ff codex/footer -m \"Integrate practice footer\"\nnode --test ../integration-review/integration.test.mjs\ngit -C ../integration-review diff main...HEAD -- heading.txt footer.txt\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "预期整合目录两项通过，diff 同时包含标题与页尾的新值，而原 integration-lab 的 main 仍是初始文字。若第一个 merge 已冲突，先停止，不执行第二个；不能用某条分支自己的绿灯代替组合验收。这里的 --no-ff 用于让教材清楚保留两次整合纪录，真实储存库的合并策略仍依其规则决定。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 4：刻意制造冲突并中止"
+        },
+        {
+          "type": "code",
+          "label": "原目录：建立另一个只供冲突练习的副本",
+          "language": "sh",
+          "code": "git worktree add -b codex/conflict ../integration-conflict main\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 integration-conflict/heading.txt 把初始文字改成 Title: Another direction，保存并只提交该档。它从旧 main 起步，也改同一行，因此与整合分支的标题方向相冲突。先确认 integration-review 的 status 没有未提交修改、两项测试都通过，再尝试合入冲突分支。这个前提让 --abort 可以回到开始合并前的清楚状态，不拿含未保存工作内容的目录做演练。"
+        },
+        {
+          "type": "code",
+          "label": "原目录：预期 merge 非零且 heading.txt 显示冲突",
+          "language": "sh",
+          "code": "git -C ../integration-conflict add -- heading.txt\ngit -C ../integration-conflict commit -m \"Create a conflicting practice heading\"\ngit -C ../integration-review merge --no-ff codex/conflict -m \"Attempt conflicting integration\"\ngit -C ../integration-review status --short\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "查看冲突档会看到两种标题与 Git 标记。这次不选任一方，而是保存错误和 status，执行 merge --abort。中止后再跑测试，预期恢复先前两项通过、status 干净。若工作目录在合并前本来就有修改，abort 不保证能重建所有未提交状态；因此不要省略前一步的检查。真正要解冲突时逐段决定保留行为，再重跑测试，不能一律取 ours 或 theirs。"
+        },
+        {
+          "type": "code",
+          "label": "有合并冲突时：中止并验证恢复",
+          "language": "sh",
+          "code": "git -C ../integration-review merge --abort\nnode --test ../integration-review/integration.test.mjs\ngit -C ../integration-review status --short\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "收尾、常见问题与交付"
+        },
+        {
+          "type": "paragraph",
+          "text": "测试找不到文字档时，确认三个档案都在同一份 checkout；此测试依自己的档案 URL 读资料，因此从原目录执行也不会误读另一份文字。status 显示未知修改时先问清来源；分支不存在时回看 worktree 建立与提交纪录；合并成功但验收失败时查组合 diff，不让工作者擅自改验收条件。不要把需要先产出共同介面的工作硬拆成彼此不知道规格的两个写入任务。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成后停止练习工作者并关闭副本视窗，从原 integration-lab 核对 worktree list 的完整路径与四份副本的 clean status。只有本篇新增、成果已提交且未在使用的副本才依序移除；任何拒绝都先检查，不加 force。以下保留原库及 codex/integration 分支，所以之后仍能用 git show 查到组合成果。没有合并到正式 main，也没有开 PR。"
+        },
+        {
+          "type": "code",
+          "label": "核对四个完整目标与 clean 状态后：清理本篇副本",
+          "language": "sh",
+          "code": "git worktree list\ngit worktree remove ../integration-heading\ngit worktree remove ../integration-footer\ngit worktree remove ../integration-review\ngit worktree remove ../integration-conflict\ngit show codex/integration:heading.txt\ngit show codex/integration:footer.txt\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "交付纪录包含两个输入 SHA、合并顺序、整合 SHA、两项测试结果、一次冲突与 abort 后的结果，以及保留原 main 的确认。参考 Git／Node 检查不等于 Codex 模型真的分工，也不等于网站已完成整页验收；未操作平台依官方文件查证。接续"
+            },
+            {
+              "type": "article",
+              "text": "浏览器与图片",
+              "kind": "life",
+              "slug": "codex-browser-images"
+            },
+            {
+              "type": "text",
+              "text": "，将程式与画面验证补齐后，才准备你的正式专案交付。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-parallel-integration/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原创流程示意图，非产品界面截图。",
+          "caption": "原创流程示意图，非产品界面截图。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Git merge and abort",
+          "url": "https://git-scm.com/docs/git-merge",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git worktree",
+          "url": "https://git-scm.com/docs/git-worktree",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex worktrees",
+          "url": "https://learn.chatgpt.com/docs/environments/git-worktrees",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

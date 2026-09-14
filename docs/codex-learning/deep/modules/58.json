@@ -1,0 +1,195 @@
+{
+  "id": 58,
+  "readingMinutes": 15,
+  "operationMinutes": 30,
+  "blocks": [
+    {
+      "type": "h2",
+      "text": [
+        "目標與起點",
+        "Goal and starting point",
+        "目標と開始地点",
+        "목표와 시작점"
+      ]
+    },
+    {
+      "type": "note",
+      "text": [
+        "接手既有 Small Steps，把畫面中的統計邏輯抽成可測試函式，同時保留全部既有行為。閱讀約 15 分鐘、實作約 30 分鐘。從[練習材料](https://mokaair.com/guides/codex-first-project/todo-practice.zip)全新的 expected 副本開始，命名 maintenance-lab；不用讀者上一篇生成的版本，避免把不同基準混在一起。需要 Codex、Node.js 與 Python 3，先理解[程式地圖](article:codex-understand-codebase)及[Git 還原](article:codex-git-basics)。",
+        "Take over existing Small Steps code, extract its UI counting logic into a testable function and preserve all behavior. Allow 15 minutes to read and 30 to practice. Start from a fresh expected copy of the [exercise materials](https://mokaair.com/guides/codex-first-project/todo-practice.zip), named maintenance-lab, rather than your previous generated version. This keeps the baseline consistent. Use Codex, Node.js and Python 3 after [Codebase mapping](article:codex-understand-codebase) and [Git recovery](article:codex-git-basics).",
+        "既存 Small Steps の画面内集計を試験可能な関数へ抽出し、全挙動を保ちます。読む時間15分、実習30分。[教材](https://mokaair.com/guides/codex-first-project/todo-practice.zip)の新しい expected コピー maintenance-lab から始め、前編の生成版とは基準を混ぜません。Codex、Node.js、Python 3 を用意し、[コード地図](article:codex-understand-codebase)と [Git 復元](article:codex-git-basics)を先に理解します。",
+        "기존 Small Steps 화면의 집계 로직을 시험 가능한 함수로 추출하고 모든 동작을 보존합니다. 읽기 15분, 실습 30분입니다. [자료](https://mokaair.com/guides/codex-first-project/todo-practice.zip)의 새 expected 복사본 maintenance-lab에서 시작하며 이전 생성본과 기준을 섞지 않습니다. Codex·Node.js·Python 3를 준비하고 [코드 지도](article:codex-understand-codebase)·[Git 복원](article:codex-git-basics)을 먼저 이해하세요."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 1：記錄基準，不先要求重寫",
+        "Step 1: Record the baseline before rewriting",
+        "手順1：書換え前に基準を記録する",
+        "1단계: 재작성 전에 기준 기록"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "開啟 maintenance-lab，應只有 index.html、style.css、app.js、core.mjs、core.test.mjs 五份程式檔。先執行 node --test core.test.mjs，預期三項通過，再記下 Node 版本、日期與資料夾。如果不是這個結果，先查是否拿到 start 或 broken，不把既有失敗算在這次重構。將副本納入自己的本機 Git 基準提交，或另存完整 baseline 副本；保存後才開始修改，確保能還原這次改動。",
+        "Open maintenance-lab and confirm the five code files: index.html, style.css, app.js, core.mjs and core.test.mjs. Run node --test core.test.mjs and expect three passing tests; record Node version, date and folder. If results differ, check whether you copied start or broken before attributing existing failures to the refactor. Create a local Git baseline commit or retain a complete baseline copy before editing so this change can be restored.",
+        "maintenance-lab の5ファイル index.html・style.css・app.js・core.mjs・core.test.mjs を確認し、node --test core.test.mjs の3合格と Node 版・日付・場所を記録します。異なれば start・broken を使っていないか調べ、既存失敗を今回の責任にしません。ローカル Git 基準コミットか完全 baseline コピーを保存してから変更し、復元点を確保します。",
+        "maintenance-lab의 index.html·style.css·app.js·core.mjs·core.test.mjs 다섯 파일을 확인하고 node --test core.test.mjs의 세 개 통과와 Node 버전·날짜·폴더를 기록합니다. 다르면 start·broken을 복사했는지 먼저 확인하며 기존 실패를 이번 리팩터링 탓으로 돌리지 않습니다. 로컬 Git 기준 커밋이나 전체 baseline 복사본을 저장한 뒤 변경해 복원 지점을 확보하세요."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "請 Codex 唯讀查看 app.js 中更新 #count 的地方，描述統計是全部任務還是篩選後清單。正確基準是全部任務，即使選 Completed，仍顯示所有任務的 active／total。接著確認儲存鍵 mokaair-codex-todo-v1、version 1、ID 與 completed 型別。重構只搬動計數責任，不改資料格式，不新增儲存遷移。這個先讀再改的步驟能避免把看似重複的程式碼合併後改變原本細節。",
+        "Ask Codex to read the #count update in app.js and explain whether it counts all tasks or only filtered results. The baseline counts all tasks, even under Completed. Confirm storage key mokaair-codex-todo-v1, version 1, IDs and boolean completed fields. This refactor moves counting responsibility without changing the data format or adding a migration. Reading before editing prevents apparently duplicate code from being combined in ways that change behavior.",
+        "Codex に app.js の #count 更新を読み取り専用で見せ、全件か絞込後か説明させます。基準は Completed 選択中も全件の active／total です。保存鍵 mokaair-codex-todo-v1、version 1、ID、completed の真偽値も確認します。集計責務だけを移し、形式変更・移行は追加しません。先に読むことで似たコードを統合して細部を変える事故を防ぎます。",
+        "Codex에 app.js의 #count 갱신을 읽기만 하게 하고 전체인지 필터 결과인지 설명하게 합니다. 기준은 Completed에서도 전체 active/total입니다. 저장 키 mokaair-codex-todo-v1·version 1·ID·completed 불리언도 확인하세요. 집계 책임만 옮기며 데이터 형식·마이그레이션은 바꾸지 않습니다. 먼저 읽으면 비슷한 코드를 합치다 세부 동작이 달라지는 문제를 막습니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 2：把範圍寫成可檢查的契約",
+        "Step 2: Define a checkable change boundary",
+        "手順2：確認可能な変更範囲を決める",
+        "2단계: 확인 가능한 변경 범위 정의"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "| 項目 | 本次要求 | 不變條件 |\n| --- | --- | --- |\n| core.mjs | 新增純函式 countTasks(tasks) | 不修改輸入，不碰 DOM／儲存 |\n| app.js | 呼叫 countTasks 更新 #count | 顯示文字與全部任務計數不變 |\n| maintenance.test.mjs | 新增計數與不變性案例 | 原 core.test.mjs 保留 |\n| HTML／CSS | 本次無修改需要 | 按鈕、版面、焦點樣式維持 |\n| 儲存資料 | 不做遷移 | 原 key、version、ID 與狀態保持 |\n\n小範圍不代表不驗收；它讓你能把新的失敗和少數修改連起來。",
+        "| Item | Requested change | Invariant |\n| --- | --- | --- |\n| core.mjs | Add pure countTasks(tasks) | No input mutation, DOM or storage |\n| app.js | Call countTasks for #count | Same text and all-task counts |\n| maintenance.test.mjs | Add count/immutability cases | Preserve original core.test.mjs |\n| HTML/CSS | No change needed | Keep controls, layout and focus style |\n| Stored data | No migration | Preserve key, version, IDs and states |\n\nA small scope still needs acceptance; it helps connect failures to a few changes.",
+        "| 項目 | 今回の変更 | 不変条件 |\n| --- | --- | --- |\n| core.mjs | 純 countTasks(tasks) を追加 | 入力変更・DOM・保存なし |\n| app.js | #count に新関数を使う | 表示文と全件計数は同じ |\n| maintenance.test.mjs | 計数・不変性試験 | 元 core.test.mjs は保持 |\n| HTML／CSS | 変更不要 | 操作・配置・焦点を保持 |\n| 保存資料 | 移行なし | key・version・ID・状態保持 |\n\n小範囲でも検証は必要で、失敗と変更を結び付けやすくします。",
+        "| 항목 | 요청 변경 | 불변 조건 |\n| --- | --- | --- |\n| core.mjs | 순수 countTasks(tasks) 추가 | 입력 수정·DOM·저장 없음 |\n| app.js | #count에 함수 사용 | 같은 문구·전체 개수 |\n| maintenance.test.mjs | 집계·불변성 시험 | 원래 core.test.mjs 유지 |\n| HTML/CSS | 변경 불필요 | 조작·배치·초점 유지 |\n| 저장 자료 | 마이그레이션 없음 | key·version·ID·상태 유지 |\n\n작은 범위도 검증이 필요하며 실패를 소수 변경과 연결하기 쉽게 합니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 3：加入會先失敗的新測試",
+        "Step 3: Add tests that initially fail",
+        "手順3：まず失敗する新試験を加える",
+        "3단계: 먼저 실패하는 새 시험 추가"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "把下方內容另存為 maintenance.test.mjs，與原測試並列。先跑兩份測試，新函式尚未存在時，新三項會失敗而原三項仍通過；保存這個預期失敗，確認測試真的會因缺少計數函式而報錯。不要因紅色結果就把教材當成壞版本，也不要讓 Codex 刪掉新測試來取得綠色。這裡輸入都符合既有 Task 契約，沒有擅自擴大成任意資料清理工具。",
+        "Save maintenance.test.mjs beside the original tests. Run both before implementation: the new three fail because the function is missing, while the original three pass. Retain this expected failure to show the tests detect missing behavior. Do not mistake it for a defective fixture or let Codex delete tests to get green. Inputs satisfy the existing Task contract; this does not expand the function into an arbitrary data-cleaning tool.",
+        "下記 maintenance.test.mjs を元試験の隣に保存して両方を先に実行します。関数未実装のため新3件は失敗し、元3件は合格します。欠如を検知できる証拠としてこの期待失敗を保存し、教材不良と思ったり試験削除で緑にしたりしません。入力は既存 Task 契約に従い、任意資料の整理へ範囲を拡げません。",
+        "아래 maintenance.test.mjs를 기존 시험 옆에 저장하고 구현 전 둘 다 실행합니다. 함수가 없어 새 세 개는 실패하고 원래 세 개는 통과합니다. 누락을 감지하는 증거로 예상 실패를 보존하며 자료 불량으로 보거나 시험을 지워 초록색을 만들지 않습니다. 입력은 기존 Task 계약을 따르며 임의 자료 정리기로 범위를 넓히지 않습니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "label": [
+        "maintenance.test.mjs",
+        "maintenance.test.mjs",
+        "maintenance.test.mjs",
+        "maintenance.test.mjs"
+      ],
+      "code": "import test from 'node:test';\nimport assert from 'node:assert/strict';\nimport * as core from './core.mjs';\n\ntest('empty list counts are zero', () => {\n  assert.deepEqual(core.countTasks([]), { active: 0, total: 0 });\n});\ntest('count all tasks without deduplicating equal titles', () => {\n  const tasks = [\n    { id: 'a', title: 'Read', completed: false },\n    { id: 'b', title: 'Read', completed: true },\n    { id: 'c', title: 'Build', completed: false },\n  ];\n  assert.deepEqual(core.countTasks(tasks), { active: 2, total: 3 });\n});\ntest('counting preserves frozen task data and storage compatibility', () => {\n  const task = Object.freeze({ id: 'a', title: 'Read', completed: true });\n  const tasks = Object.freeze([task]);\n  const before = core.encodeTasks(tasks);\n  assert.deepEqual(core.countTasks(tasks), { active: 0, total: 1 });\n  assert.equal(core.encodeTasks(tasks), before);\n  assert.deepEqual(core.decodeTasks(before), tasks);\n});\n"
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "label": [
+        "各平台相同的回歸命令",
+        "Same regression command on every OS",
+        "各 OS 共通の回帰命令",
+        "모든 OS의 같은 회귀 명령"
+      ],
+      "code": "node --test core.test.mjs maintenance.test.mjs\n"
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 4：實作並檢查差異",
+        "Step 4: Implement and inspect the diff",
+        "手順4：実装して差分を見る",
+        "4단계: 구현하고 차이 확인"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "label": [
+        "受限重構提示詞",
+        "Bounded refactoring prompt",
+        "範囲を限定した再構成依頼",
+        "범위를 제한한 리팩터링 요청"
+      ],
+      "code": "Add countTasks(tasks) to core.mjs, returning {active, total} for the full list.\nUse it in app.js when updating #count; keep the existing visible text.\nPreserve storage format, key, IDs, task behavior and original tests.\nDo not edit index.html, style.css or the new test expectations.\nRun node --test core.test.mjs maintenance.test.mjs.\nReport changed files, test results and remaining browser verification.\n"
+    },
+    {
+      "type": "p",
+      "text": [
+        "完成後應有六項測試通過。參考核心函式如下，app.js 需匯入它並在 render 裡先對 tasks 計數，再組出與原本相同的文字。特別檢查是否誤傳 shown，也就是目前篩選結果；那會讓 Completed 頁面錯顯示總數。查看 git diff 或編輯器差異，原測試、HTML、CSS、儲存讀写不應被改動。純函式的測試綠色，不能取代這個接線檢查。",
+        "Expect six passing tests afterward. The reference helper is below. app.js imports it and counts tasks in render before composing the unchanged text. Check that it receives tasks rather than shown, the filtered array, which would display wrong totals under Completed. Inspect git diff or editor changes: original tests, HTML, CSS and storage behavior should be unchanged. Passing pure-function tests does not replace checking the UI connection.",
+        "完了後は6試験合格です。参考関数は下記で、app.js が import して render 内の tasks を数え、元と同じ文字を作ります。絞込済み shown を渡すと Completed の総数が誤るため特に確認します。git diff や編集差分で元試験・HTML・CSS・保存処理が不変か見ます。純関数の合格だけでは画面との接続確認を代替しません。",
+        "완료 후 여섯 시험이 통과해야 합니다. 아래 참고 함수를 app.js에서 import하고 render의 tasks를 집계해 기존 문구를 만듭니다. 필터 결과 shown을 넘기면 Completed의 전체 수가 틀리므로 확인하세요. git diff나 편집기 차이에서 원래 시험·HTML·CSS·저장 동작이 그대로인지 봅니다. 순수 함수 시험 통과는 UI 연결 확인을 대신하지 않습니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "label": [
+        "core.mjs 的參考新增函式",
+        "Reference addition to core.mjs",
+        "core.mjs の参考追加関数",
+        "core.mjs 참고 추가 함수"
+      ],
+      "code": "export function countTasks(tasks) {\n  return {\n    active: tasks.filter((task) => !task.completed).length,\n    total: tasks.length,\n  };\n}\n"
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 5：回歸畫面與保存資料",
+        "Step 5: Recheck the UI and saved data",
+        "手順5：画面と保存資料の回帰確認",
+        "5단계: 화면·저장 데이터 회귀 확인"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在此資料夾啟動預覽：Windows 執行 py -3 -m http.server 4173 --bind 127.0.0.1；macOS／Linux 執行 python3 -m http.server 4173 --bind 127.0.0.1，瀏覽同一 http://127.0.0.1:4173。若已有人占用，先核對原服務，不直接終止它。在修改前後使用同一來源網址及虛構待辦，避免換連接埠後空白的 localStorage 被誤認為資料遺失。新增 Read、Build，完成 Read，依序選 All tasks、Active、Completed，三次統計都必須是 1 active / 2 total。",
+        "Start preview in this folder with py -3 -m http.server 4173 --bind 127.0.0.1 on Windows or python3 -m http.server 4173 --bind 127.0.0.1 on macOS/Linux, then open http://127.0.0.1:4173. If occupied, identify the existing service before stopping it. Use the same origin and fictional tasks before/after; a different port has different localStorage and can look like data loss. Add Read and Build, complete Read, and select All tasks, Active and Completed. All three must show 1 active / 2 total.",
+        "同じ場所で Windows は py -3 -m http.server 4173 --bind 127.0.0.1、macOS／Linux は python3 -m http.server 4173 --bind 127.0.0.1 を使い、同じ http://127.0.0.1:4173 を開きます。占用なら停止前に既存サービスを確認します。前後で同じ origin・架空タスクを使い、ポート違いの空 localStorage を資料消失と混同しません。Read・Build を追加し Read 完了後、All tasks・Active・Completed 全てで1 active / 2 totalを確認します。",
+        "같은 폴더에서 Windows는 py -3 -m http.server 4173 --bind 127.0.0.1, macOS/Linux는 python3 -m http.server 4173 --bind 127.0.0.1을 쓰고 같은 http://127.0.0.1:4173을 엽니다. 사용 중이면 중단 전에 기존 서비스를 확인하세요. 전후에 같은 origin·가상 할 일을 써 포트 변경의 빈 localStorage를 데이터 손실로 오인하지 않습니다. Read·Build를 추가하고 Read 완료 후 All tasks·Active·Completed 모두 1 active / 2 total인지 확인합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "重新整理確認兩筆資料、ID 與完成狀態保留，再刪除 Read，統計應是 1 active / 1 total；按 Tab 確認焦點仍可見。用 390px 與桌面寬度各走一次，這是回歸驗收，不需要新的設計圖。若數字隨篩選改變，就回到 app.js 查函式引數；若純函式本身不對，用新測試的實際失敗案例定位。只有在確實觀察過後才填寫瀏覽器通過，未操作的系統另外標記。",
+        "Reload and confirm both tasks, IDs and completion states survive. Delete Read and expect 1 active / 1 total; use Tab to check visible focus. Repeat at 390px and desktop width as regression checks, without a new design. If counts change with filtering, inspect app.js arguments. If the helper itself is wrong, use the new failing case to locate it. Mark browser checks passed only after observing them, and label untested systems separately.",
+        "再読込で2件・ID・完了状態を確認し、Read を消して1 active / 1 total、Tab の可視焦点を検証します。390px とデスクトップ幅で繰返す回帰で、新設計図は不要です。絞込で数が変われば app.js 引数、関数自体が誤れば新試験の失敗から調べます。実観察後だけブラウザー合格とし、未操作 OS は別記します。",
+        "새로고침으로 두 항목·ID·완료 상태를 확인하고 Read를 삭제해 1 active / 1 total, Tab의 보이는 초점을 검증합니다. 390px·데스크톱 폭에서 반복하는 회귀이며 새 디자인은 필요 없습니다. 필터에 따라 수가 바뀌면 app.js 인수, 함수가 틀리면 새 시험 실패로 조사하세요. 실제 관찰한 후에만 브라우저 통과를 기록하고 미조작 OS는 구분합니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "還原與交接",
+        "Recovery and handoff",
+        "復元と引継ぎ",
+        "복원과 인계"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "需要撤回時先保存當前差異，再只還原本次改動的 core.mjs、app.js，並移走自己新增的 maintenance.test.mjs；重新執行原本三項測試及統計畫面，應回到原基準。不要用整個專案強制重設來清掉其他人的修改。交接寫明基準、抽出的責任、未變的資料契約、六項測試、實際畫面驗收及還原位置；沒跑的測試不能寫通過。下一個維護需求另列範圍，參考[文件交接](article:codex-context-handoff)，不要在這次小重構順便重寫儲存層或更換框架。",
+        "To revert, save the current diff, restore only this change's core.mjs and app.js, and move aside your new maintenance.test.mjs. Rerun the original three tests and count UI to regain the baseline. Do not force-reset the entire project and erase others' edits. Handoff records the baseline, extracted responsibility, unchanged data contract, six tests, observed UI checks and recovery location; unrun tests are not passes. Give the next maintenance request its own scope using [Context handoff](article:codex-context-handoff), rather than expanding this refactor into storage or framework replacement.",
+        "撤回は差分保存後、今回の core.mjs・app.js だけを復元し、自分の新 maintenance.test.mjs を別保存します。元3試験と統計画面で基準に戻ったか確認し、プロジェクト全体の強制重設で他者の編集を消しません。交接には基準、抽出責務、不変契約、6試験、実画面検証、復元場所を記し、未実行を合格にしません。次の保守は[文脈交接](article:codex-context-handoff)で別範囲とし、保存層や framework 置換をついでに加えません。",
+        "되돌릴 때 현재 차이를 저장하고 이번 core.mjs·app.js만 복원하며 새 maintenance.test.mjs는 별도 보관합니다. 원래 세 시험·집계 화면으로 기준 복귀를 확인하고 전체 강제 초기화로 다른 사람 수정을 지우지 않습니다. 인계에 기준·추출 책임·불변 계약·여섯 시험·실제 UI 검증·복원 위치를 적고 미실행을 통과라 하지 않습니다. 다음 유지보수는 [맥락 인계](article:codex-context-handoff)로 별도 범위를 정하며 저장 계층·프레임워크 교체를 끼워 넣지 않습니다."
+      ]
+    }
+  ]
+}

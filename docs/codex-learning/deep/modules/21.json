@@ -17,7 +17,7 @@
       "text": [
         "審查一個「原測試仍通過」的錯誤修改，補出能抓到它的回歸測試，整理最終差異並準備 PR。閱讀約 15 分鐘，本機操作約 30 分鐘。需要 Git、Node.js 22 以上相容版本、編輯器及已登入的 Codex。先完成[Git 入門](article:codex-git-basics)；實際建立 GitHub PR 為最後可選步驟，需要自己的練習儲存庫。",
         "Review a bad change that still passes existing tests, add regression coverage, inspect final scope and prepare a PR. Allow 15 minutes to read and 30 for local practice. Use Git, compatible Node.js 22 or later, an editor and authenticated Codex. Complete [Git basics](article:codex-git-basics). Creating a GitHub PR is an optional final step using your own practice repository.",
-        "既存テスト成功でも誤った変更を審査し、回帰テスト、最終差分、PR 準備を行います。読む時間15分、本機30分。Git、対応 Node.js 22 以降、エディター、認証済み Codex と[Git 基礎](article:codex-git-basics)が前提です。自分の教材リポジトリでの GitHub PR は最後の任意段階です。",
+        "既存テスト成功でも誤った変更を審査し、回帰テスト、最終差分、PR 準備を行います。読む時間15分、ローカル30分。Git、対応 Node.js 22 以降、エディター、認証済み Codex と[Git 基礎](article:codex-git-basics)が前提です。自分の教材リポジトリでの GitHub PR は最後の任意段階です。",
         "기존 테스트가 통과해도 잘못된 변경을 검토하고 회귀 테스트/최종 차이/PR 준비를 합니다. 읽기 15분, 로컬30분입니다. Git, 호환 Node.js 22 이상, 편집기, 로그인 Codex와 [Git 기초](article:codex-git-basics)가 전제입니다. 자신의 실습 저장소 GitHub PR은 마지막 선택 단계입니다."
       ]
     },
@@ -44,7 +44,7 @@
       "text": [
         "建立新的 codex-review-lab，複製 expected 的五個檔案，依 Git 篇用本機練習身分初始化 main 並提交五檔基準。確認工作目錄乾淨後執行下面命令建立分支。不要使用剛才仍有未完成變更的庫；在新的副本操作才能判斷本次差異來自哪裡。",
         "Create codex-review-lab with the five expected files. Follow Git basics to initialize main and commit a baseline with a local practice identity. Verify clean status, then create the branch below. Use a fresh copy rather than a repository with unfinished edits so the change's origin is clear.",
-        "新しい codex-review-lab に expected 5ファイルを置き、Git 基礎の本機練習身分で main 基準を commit します。無変更確認後、次の分岐を作ります。未完了変更のある庫を流用しません。",
+        "新しい codex-review-lab に expected 5ファイルを置き、Git 基礎のローカル練習身分で main 基準を commit します。無変更確認後、次の分岐を作ります。未完了変更のある庫を流用しません。",
         "새 codex-review-lab에 expected 다섯 파일을 두고 Git 기초의 로컬 실습 신원으로 main 기준을 commit합니다. 무변경 확인 뒤 다음 브랜치를 만듭니다. 미완료 변경이 있는 저장소를 재사용하지 않습니다."
       ]
     },
@@ -178,7 +178,7 @@
       "text": [
         "這時本機交付已具體可審，還沒有 GitHub PR。若要練習外部 PR，在自己的 GitHub 建立空白練習庫，不預先加入 README，複製它實際顯示的遠端網址，再把下面第一行的占位符換成該網址後執行。先核對 remote -v 確實是自己的新庫；後面兩次 push 會把本機基準與測試分支傳到 GitHub。",
         "Local work is now reviewable but no GitHub PR exists yet. For optional practice, create an empty GitHub repository without an initial README, copy its actual remote URL and replace the placeholder before executing. Verify remote -v points to your new repository. The two pushes then upload baseline and test branches.",
-        "本機成果は確認可能ですが PR はまだありません。任意練習は README なしの空 GitHub 庫を作り、実 URL へ占位値を置換します。remote -v が自分の新庫か確認後、二つの push で基準とテスト分岐を送ります。",
+        "ローカル成果は確認可能ですが PR はまだありません。任意練習は README なしの空 GitHub 庫を作り、実 URL へ占位値を置換します。remote -v が自分の新庫か確認後、二つの push で基準とテスト分岐を送ります。",
         "로컬 결과는 검토 가능하지만 PR은 아직 없습니다. 선택 실습은 README 없는 빈 GitHub 저장소를 만들고 실제 URL로 자리표시자를 바꿉니다. remote -v가 자신의 새 저장소인지 확인한 뒤 두 push로 기준/테스트 브랜치를 보냅니다."
       ]
     },

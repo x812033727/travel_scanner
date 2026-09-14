@@ -24,51 +24,235 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "畫面需求需要把參考、實際結果與修改條件放在一起。瀏覽器可以找資料與檢視網站，截圖能傳達當下畫面，生成圖適合概念參考；三者提供的證據不同，不能用生成的介面當成操作成功。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "你會學到什麼"
+          "text": "目標與準備"
         },
         {
-          "type": "paragraph",
-          "text": "能把畫面問題轉成可驗證的修改，並用真實頁面與同尺寸截圖對照成果。"
+          "type": "callout",
+          "tone": "info",
+          "text": "用一張有環境資訊的截圖提出視覺需求，限制修改範圍，並回到真正的網頁驗收。閱讀約 15 分鐘、操作約 20 分鐘。準備第一個專案的 expected 副本、Node.js、Python 與可用瀏覽器。文章附圖是原始參考版的實際 Windows／Edge 畫面，390px 代表響應式視窗，不能當成實體手機或本篇修改後的成果。"
         },
         {
-          "type": "paragraph",
-          "text": "預估操作時間: 15 分鐘"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教學與資源: "
+            },
+            {
+              "type": "article",
+              "text": "第一個專案",
+              "kind": "life",
+              "slug": "codex-first-project"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "圖片類型",
+            "能證明的事",
+            "使用方式"
+          ],
+          "rows": [
+            [
+              "真實操作截圖",
+              "指定環境當時可見的畫面",
+              "標示平台、日期、視窗與操作前後"
+            ],
+            [
+              "原創示意圖",
+              "概念與流程關係",
+              "標示示意，不代替實測"
+            ],
+            [
+              "生成插圖",
+              "視覺方向與概念",
+              "不冒充產品介面或驗收結果"
+            ],
+            [
+              "授權素材",
+              "來源允許的視覺內容",
+              "保存作者、來源、授權及署名"
+            ]
+          ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "開始之前"
+          "text": "步驟 1：選擇瀏覽器入口"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Codex 桌面可用內建瀏覽器共同查看網頁，從工具列、網址連結或 @Browser 指定使用；macOS 的開啟快捷鍵是 Cmd＋Shift＋B，Windows 是 Ctrl＋Shift＋B。Linux 先依實際桌面版本的工具列與功能提供情形確認，不假定任何發行版快捷鍵都相同。內建 Browser 不提供給 CLI／IDE；這兩個入口若另有已設定的瀏覽器 MCP，應先按 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": " 教學驗證，否則自行開網頁並附截圖。"
+            }
+          ]
         },
         {
           "type": "paragraph",
-          "text": "準備練習頁面、參考圖片與明確問題。截圖前關閉私人分頁或遮蔽個資；外部圖片先確認使用授權。這篇練習只操作自己的頁面，不向他人帳號提交內容。"
+          "text": "內建瀏覽器有獨立的個人資料與登入狀態，不會自動接管一般 Chrome／Edge 的分頁。要用平常瀏覽器的既有登入頁，依官方瀏覽器擴充功能的連線流程操作，不把兩個環境混在同一份驗收。網站權限允許互動，不代表頁面裡的指令可信；只處理你提出的工作，不因頁面要求就上傳其他專案檔案或更改帳號權限。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "逐步操作"
+          "text": "步驟 2：啟動與確認正確頁面"
         },
         {
           "type": "paragraph",
-          "text": "1. 提供頁面網址或專案預覽位置，說明要看的區塊與螢幕尺寸。使用可用的內建瀏覽器或已連接瀏覽器，先確認載入的是正確頁面。"
+          "text": "先在 expected 根目錄跑原三項測試，確認材料正常；再用下列平台命令啟動僅限本機的靜態伺服器，這個終端機保持開啟。若 4173 已被使用，選另一個未使用 port，同步修改後續網址，不停止其他人的服務。這是自己電腦的練習預覽，不是公開網站部署。"
+        },
+        {
+          "type": "code",
+          "label": "三種系統的終端機：確認 expected 材料",
+          "language": "sh",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell：位於 expected",
+          "language": "powershell",
+          "code": "py -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux 終端機：位於 expected",
+          "language": "sh",
+          "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
         {
           "type": "paragraph",
-          "text": "2. 附上截圖並用數字標出問題，例如 1 是間距、2 是文字對比。描述期待行為，避免只說『照這張做』，讓代理猜測看不到的互動。"
+          "text": "打開 http://127.0.0.1:4173，確認標題、New task 表單及 Show 篩選都出現，新增 Build 與 Read the AGENTS.md rules，將 Build 設為完成。預期 1 active／2 total。不同瀏覽器設定檔可能各自有 localStorage，因此用同一個設定檔做前後比較；若已有資料，使用獨立練習設定檔或另一個 port，不清除整個日常瀏覽器的儲存內容。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "若 Codex 執行在另一台遠端主機，127.0.0.1 指的是那台主機；ChatGPT 網頁的雲端工作也不能直接把自己的 localhost 當成你的電腦。先核對程式與瀏覽器所在主機，再使用環境正式提供的預覽或轉送方式。手機可透過 Remote 檢視連線電腦的工作，但本篇沒有教你把練習伺服器公開到網際網路，詳見"
+            },
+            {
+              "type": "article",
+              "text": "跨裝置工作",
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 3：準備截圖與文字條件"
         },
         {
           "type": "paragraph",
-          "text": "3. 要求一次修改一組相關問題，實際重開頁面驗證。不能用靜態圖片證明按鈕、登入或儲存功能可用；互動需要真的操作。"
+          "text": "在瀏覽器的響應式模式依序使用 390×900 與 1280×900 CSS 像素，固定縮放與相同兩筆資料。用 Windows 截圖工具、macOS 區域截圖，或 Linux 所提供的截圖程式只擷取頁面內容，保存 before-390.png 與 before-1280.png。截圖檔本身的像素可能受裝置縮放影響，因此把 CSS viewport、縮放比例、瀏覽器版本與日期另外寫在文字紀錄，不單靠 PNG 尺寸猜測。"
+        },
+        {
+          "type": "code",
+          "label": "visual-check.md：填入實際環境",
+          "language": "markdown",
+          "code": "# Visual check\nRoute: http://127.0.0.1:4173\nBrowser / version:\nOS / date:\nCSS viewport: 390 x 900, then 1280 x 900\nZoom:\nState: Build complete; Read the AGENTS.md rules active\nBefore images:\nRequested change: reduce header bottom spacing from 36px to 24px\nPreserve: task data, labels, focus outline and control sizes\nAfter images:\nBehavior checks:\nUnverified platforms:\n"
         },
         {
           "type": "paragraph",
-          "text": "4. 交付時保存修改前後的同尺寸截圖，標出實測平台與未測環境。生成圖標為示意圖，授權圖記作者、來源與條款，所有圖提供文字替代說明。"
+          "text": "截圖之前先移開帳號區、私人分頁或通知，必要時重新擷取較小範圍。不要拿另一個平台的畫面改一個圖說就宣稱已測該平台；圖片含個人資料時由你先遮蔽再提供。概念圖與生成圖片可幫助說明外觀方向，但應寫「示意圖」，不能用它代替實際操作結果。採用別人的圖片時保存來源、作者、授權與必要署名，圖說與替代文字仍用文章的當前語言。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 4：用標註要求一個具體修改"
+        },
+        {
+          "type": "paragraph",
+          "text": "桌面內建瀏覽器若有 Annotation mode，開啟後選取標題與表單之間的區域，留言說明要縮小哪一段間距，再回到主任務送出要求。若沒有標註入口，附上兩張 before 圖並指出標題下方的空白，同樣有效；註解保存不代表模型已開始修改，仍須送出任務。不要只寫「更好看」，把要改的值、保留項目及兩種寬度的驗收說清楚。"
+        },
+        {
+          "type": "code",
+          "label": "Codex 任務輸入框：附上兩張 before 截圖",
+          "language": "text",
+          "code": "Use the attached before screenshots and the local practice page at http://127.0.0.1:4173.\nIn style.css, reduce the existing header bottom margin from 36px to 24px.\nKeep the task data, labels, responsive form layout, 46px controls and visible focus outline unchanged.\nVerify the actual page at 390x900 and 1280x900 CSS pixels with the same two tasks.\nCheck no horizontal page overflow, usable filtering, keyboard focus and persistence after reload.\nReport the file diff and before/after evidence. If the browser is unavailable, identify that limitation instead of claiming visual verification.\n"
+        },
+        {
+          "type": "code",
+          "label": "style.css 的目標區段：替換既有規則，不是完整檔案",
+          "language": "css",
+          "code": "header { margin-bottom: 24px; }\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "參考修改只把原本 36px 改為 24px，不追加一份可能被後面 CSS 蓋掉的同名規則。完成後查看 diff，確認 core.mjs 與 app.js 沒有被順便重構，也沒有把焦點外框移除。桌面開發模式或瀏覽器檢查工具可查看 header 的實際 computed margin-bottom；這種量測比只憑兩張圖的相似程度更明確。沒有工具可量測時記錄限制，仍可人工對照。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 5：回到畫面驗收與恢復"
+        },
+        {
+          "type": "paragraph",
+          "text": "重新整理後在同兩個 viewport 保存 after 圖，檢查間距縮小、表單可輸入、篩選 Active 只剩一筆、Tab 焦點可見，以及重新整理後原兩筆資料還在。加入一筆接近 100 字元的長標題，確認文字能換行且頁面不橫向溢出；這是邊界案例，不能只看短標題正常就通過。最後再跑 core.test.mjs，程式測試與畫面驗收分兩欄記錄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "畫面沒變先查網址、伺服器目錄與 CSS 是否真正保存，再確認快取或覆蓋規則；空白頁先看模組是否透過 HTTP 正確載入，不能拿 file:// 造成的模組限制當成程式回歸。瀏覽器不能操作時，回報已完成程式修改但未做畫面確認，不生成一張漂亮的 after 圖充當證據。要還原只將本次 margin 值改回 36px，核對 diff 後重讀頁面；按 Ctrl＋C 停止自己這個練習伺服器。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "完成紀錄應能回答：哪個真實頁面、哪兩個尺寸、改哪個檔案、哪些行為已測、哪些平台未測。讀者自行截圖與文章已有參考圖分開保存，圖說標日期與來源。內建瀏覽器的開啟、標註與權限依官方文件查證；本文不宣稱已操作你的帳號或所有平台。下一步讀"
+            },
+            {
+              "type": "article",
+              "text": "排程與自動化",
+              "kind": "life",
+              "slug": "codex-automations"
+            },
+            {
+              "type": "text",
+              "text": "，理解背景執行需要哪些環境。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -84,92 +268,34 @@
           }
         },
         {
-          "type": "heading",
-          "level": 2,
-          "text": "練習需求"
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-390.png",
+          "alt": "Small Steps / 390px / Windows Edge",
+          "caption": "完整參考版的實際瀏覽器畫面，供修改前比對。Windows / Edge 153.0.4234.32，2026-09-14；使用虛構資料。390px 為響應式視窗，非實體手機。這不是 Codex 桌面介面截圖。",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
         },
         {
-          "type": "code",
-          "language": "text",
-          "code": "開啟練習頁面，檢查 390px 下的卡片留白與文字對比。先描述實際畫面，再提出修改；完成後操作頁面並以同尺寸截圖驗證。",
-          "label": "本步驟範例"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "範例與驗證"
-        },
-        {
-          "type": "table",
-          "header": [
-            "檢查項目",
-            "驗收方式"
-          ],
-          "rows": [
-            [
-              "先確認環境",
-              "準備練習頁面、參考圖片與明確問題。截圖前關閉私人分頁或遮蔽個資；外部圖片先確認使用授權。這篇練習只操作自己的頁面，不向他人帳號提交內容。"
-            ],
-            [
-              "完成一個操作",
-              "交付時保存修改前後的同尺寸截圖，標出實測平台與未測環境。生成圖標為示意圖，授權圖記作者、來源與條款，所有圖提供文字替代說明。"
-            ],
-            [
-              "檢查真實結果",
-              "能把畫面問題轉成可驗證的修改，並用真實頁面與同尺寸截圖對照成果。"
-            ]
-          ]
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "完成結果"
-        },
-        {
-          "type": "paragraph",
-          "text": "能把畫面問題轉成可驗證的修改，並用真實頁面與同尺寸截圖對照成果。"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "常見問題"
-        },
-        {
-          "type": "paragraph",
-          "text": "截圖沒有變化先查頁面是否重新載入與預覽版本。瀏覽器沒登入時不要假定私人頁面可見；依官方登入流程處理，不提供密碼給提示詞。"
-        },
-        {
-          "type": "callout",
-          "tone": "info",
-          "title": "官方來源",
-          "text": "跨平台操作依官方文件查證；未在每個系統實測。介面與帳號提供的功能可能不同。"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "延伸閱讀"
-        },
-        {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "article",
-              "kind": "life",
-              "slug": "codex-learning-hub",
-              "text": "返回 Codex 教學總目錄"
-            }
-          ]
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-1280.png",
+          "alt": "Small Steps / 1280px / Windows Edge",
+          "caption": "完整參考版的實際瀏覽器畫面，供修改前比對。Windows / Edge 153.0.4234.32，2026-09-14；使用虛構資料。390px 為響應式視窗，非實體手機。這不是 Codex 桌面介面截圖。",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
         }
       ],
       "sources": [
         {
-          "title": "browser",
+          "title": "Browser: preview, comments and permissions",
           "url": "https://learn.chatgpt.com/docs/browser",
-          "checked_on": "2026-09-14"
-        },
-        {
-          "title": "prompting",
-          "url": "https://learn.chatgpt.com/docs/prompting",
           "checked_on": "2026-09-14"
         }
       ]
@@ -190,51 +316,235 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "画面需求需要把参考、实际结果与修改条件放在一起。浏览器可以找资料与检视网站，截图能传达当下画面，生成图适合概念参考；三者提供的证据不同，不能用生成的介面当成操作成功。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "你会学到什么"
+          "text": "目标与准备"
         },
         {
-          "type": "paragraph",
-          "text": "能把画面问题转成可验证的修改，并用真实页面与同尺寸截图对照成果。"
+          "type": "callout",
+          "tone": "info",
+          "text": "用一张有环境资讯的截图提出视觉需求，限制修改范围，并回到真正的网页验收。阅读约 15 分钟、操作约 20 分钟。准备第一个专案的 expected 副本、Node.js、Python 与可用浏览器。文章附图是原始参考版的实际 Windows／Edge 画面，390px 代表响应式视窗，不能当成实体手机或本篇修改后的成果。"
         },
         {
-          "type": "paragraph",
-          "text": "预估操作时间: 15 分钟"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教学与资源: "
+            },
+            {
+              "type": "article",
+              "text": "第一个专案",
+              "kind": "life",
+              "slug": "codex-first-project"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "图片类型",
+            "能证明的事",
+            "使用方式"
+          ],
+          "rows": [
+            [
+              "真实操作截图",
+              "指定环境当时可见的画面",
+              "标示平台、日期、视窗与操作前后"
+            ],
+            [
+              "原创示意图",
+              "概念与流程关系",
+              "标示示意，不代替实测"
+            ],
+            [
+              "生成插图",
+              "视觉方向与概念",
+              "不冒充产品介面或验收结果"
+            ],
+            [
+              "授权素材",
+              "来源允许的视觉内容",
+              "保存作者、来源、授权及署名"
+            ]
+          ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "开始之前"
+          "text": "步骤 1：选择浏览器入口"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Codex 桌面可用内建浏览器共同查看网页，从工具列、网址连结或 @Browser 指定使用；macOS 的开启快捷键是 Cmd＋Shift＋B，Windows 是 Ctrl＋Shift＋B。Linux 先依实际桌面版本的工具列与功能提供情形确认，不假定任何发行版快捷键都相同。内建 Browser 不提供给 CLI／IDE；这两个入口若另有已设定的浏览器 MCP，应先按 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": " 教学验证，否则自行开网页并附截图。"
+            }
+          ]
         },
         {
           "type": "paragraph",
-          "text": "准备练习页面、参考图片与明确问题。截图前关闭私人分页或遮蔽个资；外部图片先确认使用授权。这篇练习只操作自己的页面，不向他人帐号提交内容。"
+          "text": "内建浏览器有独立的个人资料与登入状态，不会自动接管一般 Chrome／Edge 的分页。要用平常浏览器的既有登入页，依官方浏览器扩充功能的连线流程操作，不把两个环境混在同一份验收。网站权限允许互动，不代表页面里的指令可信；只处理你提出的工作，不因页面要求就上传其他专案档案或更改帐号权限。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "逐步操作"
+          "text": "步骤 2：启动与确认正确页面"
         },
         {
           "type": "paragraph",
-          "text": "1. 提供页面网址或专案预览位置，说明要看的区块与萤幕尺寸。使用可用的内建浏览器或已连接浏览器，先确认载入的是正确页面。"
+          "text": "先在 expected 根目录跑原三项测试，确认材料正常；再用下列平台命令启动仅限本机的静态伺服器，这个终端机保持开启。若 4173 已被使用，选另一个未使用 port，同步修改后续网址，不停止其他人的服务。这是自己电脑的练习预览，不是公开网站部署。"
+        },
+        {
+          "type": "code",
+          "label": "三种系统的终端机：确认 expected 材料",
+          "language": "sh",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell：位于 expected",
+          "language": "powershell",
+          "code": "py -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux 终端机：位于 expected",
+          "language": "sh",
+          "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
         {
           "type": "paragraph",
-          "text": "2. 附上截图并用数字标出问题，例如 1 是间距、2 是文字对比。描述期待行为，避免只说『照这张做』，让代理猜测看不到的互动。"
+          "text": "打开 http://127.0.0.1:4173，确认标题、New task 表单及 Show 筛选都出现，新增 Build 与 Read the AGENTS.md rules，将 Build 设为完成。预期 1 active／2 total。不同浏览器设定档可能各自有 localStorage，因此用同一个设定档做前后比较；若已有资料，使用独立练习设定档或另一个 port，不清除整个日常浏览器的储存内容。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "若 Codex 执行在另一台远端主机，127.0.0.1 指的是那台主机；ChatGPT 网页的云端工作也不能直接把自己的 localhost 当成你的电脑。先核对程式与浏览器所在主机，再使用环境正式提供的预览或转送方式。手机可透过 Remote 检视连线电脑的工作，但本篇没有教你把练习伺服器公开到网际网路，详见"
+            },
+            {
+              "type": "article",
+              "text": "跨装置工作",
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 3：准备截图与文字条件"
         },
         {
           "type": "paragraph",
-          "text": "3. 要求一次修改一组相关问题，实际重开页面验证。不能用静态图片证明按钮、登入或储存功能可用；互动需要真的操作。"
+          "text": "在浏览器的响应式模式依序使用 390×900 与 1280×900 CSS 像素，固定缩放与相同两笔资料。用 Windows 截图工具、macOS 区域截图，或 Linux 所提供的截图程式只撷取页面内容，保存 before-390.png 与 before-1280.png。截图档本身的像素可能受装置缩放影响，因此把 CSS viewport、缩放比例、浏览器版本与日期另外写在文字纪录，不单靠 PNG 尺寸猜测。"
+        },
+        {
+          "type": "code",
+          "label": "visual-check.md：填入实际环境",
+          "language": "markdown",
+          "code": "# Visual check\nRoute: http://127.0.0.1:4173\nBrowser / version:\nOS / date:\nCSS viewport: 390 x 900, then 1280 x 900\nZoom:\nState: Build complete; Read the AGENTS.md rules active\nBefore images:\nRequested change: reduce header bottom spacing from 36px to 24px\nPreserve: task data, labels, focus outline and control sizes\nAfter images:\nBehavior checks:\nUnverified platforms:\n"
         },
         {
           "type": "paragraph",
-          "text": "4. 交付时保存修改前后的同尺寸截图，标出实测平台与未测环境。生成图标为示意图，授权图记作者、来源与条款，所有图提供文字替代说明。"
+          "text": "截图之前先移开帐号区、私人分页或通知，必要时重新撷取较小范围。不要拿另一个平台的画面改一个图说就宣称已测该平台；图片含个人资料时由你先遮蔽再提供。概念图与生成图片可帮助说明外观方向，但应写「示意图」，不能用它代替实际操作结果。采用别人的图片时保存来源、作者、授权与必要署名，图说与替代文字仍用文章的当前语言。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 4：用标注要求一个具体修改"
+        },
+        {
+          "type": "paragraph",
+          "text": "桌面内建浏览器若有 Annotation mode，开启后选取标题与表单之间的区域，留言说明要缩小哪一段间距，再回到主任务送出要求。若没有标注入口，附上两张 before 图并指出标题下方的空白，同样有效；注解保存不代表模型已开始修改，仍须送出任务。不要只写「更好看」，把要改的值、保留项目及两种宽度的验收说清楚。"
+        },
+        {
+          "type": "code",
+          "label": "Codex 任务输入框：附上两张 before 截图",
+          "language": "text",
+          "code": "Use the attached before screenshots and the local practice page at http://127.0.0.1:4173.\nIn style.css, reduce the existing header bottom margin from 36px to 24px.\nKeep the task data, labels, responsive form layout, 46px controls and visible focus outline unchanged.\nVerify the actual page at 390x900 and 1280x900 CSS pixels with the same two tasks.\nCheck no horizontal page overflow, usable filtering, keyboard focus and persistence after reload.\nReport the file diff and before/after evidence. If the browser is unavailable, identify that limitation instead of claiming visual verification.\n"
+        },
+        {
+          "type": "code",
+          "label": "style.css 的目标区段：替换既有规则，不是完整档案",
+          "language": "css",
+          "code": "header { margin-bottom: 24px; }\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "参考修改只把原本 36px 改为 24px，不追加一份可能被后面 CSS 盖掉的同名规则。完成后查看 diff，确认 core.mjs 与 app.js 没有被顺便重构，也没有把焦点外框移除。桌面开发模式或浏览器检查工具可查看 header 的实际 computed margin-bottom；这种量测比只凭两张图的相似程度更明确。没有工具可量测时记录限制，仍可人工对照。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 5：回到画面验收与恢复"
+        },
+        {
+          "type": "paragraph",
+          "text": "重新整理后在同两个 viewport 保存 after 图，检查间距缩小、表单可输入、筛选 Active 只剩一笔、Tab 焦点可见，以及重新整理后原两笔资料还在。加入一笔接近 100 字元的长标题，确认文字能换行且页面不横向溢出；这是边界案例，不能只看短标题正常就通过。最后再跑 core.test.mjs，程式测试与画面验收分两栏记录。"
+        },
+        {
+          "type": "paragraph",
+          "text": "画面没变先查网址、伺服器目录与 CSS 是否真正保存，再确认快取或覆盖规则；空白页先看模组是否透过 HTTP 正确载入，不能拿 file:// 造成的模组限制当成程式回归。浏览器不能操作时，回报已完成程式修改但未做画面确认，不生成一张漂亮的 after 图充当证据。要还原只将本次 margin 值改回 36px，核对 diff 后重读页面；按 Ctrl＋C 停止自己这个练习伺服器。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "完成纪录应能回答：哪个真实页面、哪两个尺寸、改哪个档案、哪些行为已测、哪些平台未测。读者自行截图与文章已有参考图分开保存，图说标日期与来源。内建浏览器的开启、标注与权限依官方文件查证；本文不宣称已操作你的帐号或所有平台。下一步读"
+            },
+            {
+              "type": "article",
+              "text": "排程与自动化",
+              "kind": "life",
+              "slug": "codex-automations"
+            },
+            {
+              "type": "text",
+              "text": "，理解背景执行需要哪些环境。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -250,92 +560,34 @@
           }
         },
         {
-          "type": "heading",
-          "level": 2,
-          "text": "练习需求"
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-390.png",
+          "alt": "Small Steps / 390px / Windows Edge",
+          "caption": "完整参考版的实际浏览器画面，供修改前比对。Windows / Edge 153.0.4234.32，2026-09-14；使用虚构数据。390px 为响应式窗口，非实体手机。这不是 Codex 桌面界面截图。",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
         },
         {
-          "type": "code",
-          "language": "text",
-          "code": "开启练习页面，检查 390px 下的卡片留白与文字对比。先描述实际画面，再提出修改；完成后操作页面并以同尺寸截图验证。",
-          "label": "本步骤示例"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "范例与验证"
-        },
-        {
-          "type": "table",
-          "header": [
-            "检查项目",
-            "验收方式"
-          ],
-          "rows": [
-            [
-              "先确认环境",
-              "准备练习页面、参考图片与明确问题。截图前关闭私人分页或遮蔽个资；外部图片先确认使用授权。这篇练习只操作自己的页面，不向他人帐号提交内容。"
-            ],
-            [
-              "完成一个操作",
-              "交付时保存修改前后的同尺寸截图，标出实测平台与未测环境。生成图标为示意图，授权图记作者、来源与条款，所有图提供文字替代说明。"
-            ],
-            [
-              "检查真实结果",
-              "能把画面问题转成可验证的修改，并用真实页面与同尺寸截图对照成果。"
-            ]
-          ]
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "完成结果"
-        },
-        {
-          "type": "paragraph",
-          "text": "能把画面问题转成可验证的修改，并用真实页面与同尺寸截图对照成果。"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "常见问题"
-        },
-        {
-          "type": "paragraph",
-          "text": "截图没有变化先查页面是否重新载入与预览版本。浏览器没登入时不要假定私人页面可见；依官方登入流程处理，不提供密码给提示词。"
-        },
-        {
-          "type": "callout",
-          "tone": "info",
-          "title": "官方来源",
-          "text": "跨平台操作依官方文件查证；未在每个系统实测。介面与帐号提供的功能可能不同。"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "延伸阅读"
-        },
-        {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "article",
-              "kind": "life",
-              "slug": "codex-learning-hub",
-              "text": "返回 Codex 教学总目录"
-            }
-          ]
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-1280.png",
+          "alt": "Small Steps / 1280px / Windows Edge",
+          "caption": "完整参考版的实际浏览器画面，供修改前比对。Windows / Edge 153.0.4234.32，2026-09-14；使用虚构数据。390px 为响应式窗口，非实体手机。这不是 Codex 桌面界面截图。",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
         }
       ],
       "sources": [
         {
-          "title": "browser",
+          "title": "Browser: preview, comments and permissions",
           "url": "https://learn.chatgpt.com/docs/browser",
-          "checked_on": "2026-09-14"
-        },
-        {
-          "title": "prompting",
-          "url": "https://learn.chatgpt.com/docs/prompting",
           "checked_on": "2026-09-14"
         }
       ]
@@ -356,51 +608,235 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Visual work needs a reference, the actual result and explicit change criteria. Browser inspection, screenshots and generated concepts provide different evidence. A generated interface is not proof that a workflow works."
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "What you will learn"
+          "text": "Goal and preparation"
         },
         {
-          "type": "paragraph",
-          "text": "You can turn a visual issue into a testable change and compare real results at matching viewport sizes."
+          "type": "callout",
+          "tone": "info",
+          "text": "Use a screenshot with environment details to request a visual change, constrain edits and verify the actual page afterward. Allow 15 minutes to read and 20 to practice. Prepare the expected copy from First project, Node.js, Python and a browser. The attached images show the original reference in Windows/Edge; 390px is a responsive viewport, not a physical phone or the result of this lesson's edits."
         },
         {
-          "type": "paragraph",
-          "text": "Estimated practice time: 15 min"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Lessons and resources mentioned here: "
+            },
+            {
+              "type": "article",
+              "text": "First project",
+              "kind": "life",
+              "slug": "codex-first-project"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "Image type",
+            "What it establishes",
+            "Use"
+          ],
+          "rows": [
+            [
+              "Actual screenshot",
+              "Visible state in a specified environment",
+              "Label platform, date, viewport and before/after state"
+            ],
+            [
+              "Original diagram",
+              "Concepts and workflow relationships",
+              "Label as a diagram, not runtime evidence"
+            ],
+            [
+              "Generated illustration",
+              "Visual direction and concepts",
+              "Never present as product UI or acceptance evidence"
+            ],
+            [
+              "Licensed asset",
+              "Visual material permitted by its source",
+              "Retain creator, source, license and attribution"
+            ]
+          ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "Before you start"
+          "text": "Step 1: Choose a browser surface"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Codex desktop can share a page through the built-in browser, opened from the toolbar, a URL or @Browser. The opening shortcut is Cmd+Shift+B on macOS and Ctrl+Shift+B on Windows. On Linux, inspect the actual desktop toolbar and available features rather than assuming every distribution uses the same shortcut. Built-in Browser is unavailable in CLI/IDE; verify a separately configured browser "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": " if present, otherwise open the page yourself and attach screenshots."
+            }
+          ]
         },
         {
           "type": "paragraph",
-          "text": "Prepare your practice page, a reference image and a specific problem. Remove personal information from screenshots and verify image rights. Work only on your own page in this exercise."
+          "text": "The built-in browser has separate profile/login state and does not automatically take over regular Chrome/Edge tabs. Follow the official browser-extension connection flow for an existing normal-browser session and record which environment was tested. Site permission permits interaction without making page instructions trustworthy; keep actions within your request instead of uploading unrelated project files or changing permissions at a page's direction."
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "Step by step"
+          "text": "Step 2: Start and identify the page"
         },
         {
           "type": "paragraph",
-          "text": "1. Provide the page or preview address, target section and viewport size. Open it in the available built-in or connected browser and verify the correct page loaded."
+          "text": "Run the reference's three tests from expected, then start a loopback-only static server using the platform command below and leave its terminal open. If 4173 is occupied, choose another free port and update all URLs without stopping another service. This is a local exercise preview, not public deployment."
+        },
+        {
+          "type": "code",
+          "label": "All three systems: verify the expected reference",
+          "language": "sh",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell: inside expected",
+          "language": "powershell",
+          "code": "py -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS/Linux terminal: inside expected",
+          "language": "sh",
+          "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
         {
           "type": "paragraph",
-          "text": "2. Attach a screenshot with numbered issues, such as spacing and contrast. Explain desired behavior instead of making the agent guess hidden interactions from an image."
+          "text": "Open http://127.0.0.1:4173 and verify the heading, New task form and Show filter. Add Build and Read the AGENTS.md rules, then complete Build; expect 1 active/2 total. Profiles can have separate localStorage, so compare before/after in the same profile. For existing data, use an isolated practice profile or another port instead of clearing your everyday browser's storage."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "If Codex runs on another host, 127.0.0.1 refers to that host. A hosted web task's localhost is not your computer either. Verify where the app and browser run and use the environment's supported preview/forwarding flow. Mobile Remote can review connected-computer work; this lesson does not expose the practice server to the internet. See "
+            },
+            {
+              "type": "article",
+              "text": "Cross-device workflow",
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: Capture and describe the target"
         },
         {
           "type": "paragraph",
-          "text": "3. Request one related group of changes, then reopen the real page. A static image cannot prove buttons, login or saving work; test those interactions directly."
+          "text": "Use responsive mode at 390×900 and 1280×900 CSS pixels with fixed zoom and the same two tasks. Capture the page area with Windows Snipping Tool, macOS region capture or the Linux screenshot utility, saving before-390.png and before-1280.png. Device scaling can alter PNG pixel dimensions, so separately record CSS viewport, zoom, browser version and date instead of inferring them from image dimensions."
+        },
+        {
+          "type": "code",
+          "label": "visual-check.md: record actual environment",
+          "language": "markdown",
+          "code": "# Visual check\nRoute: http://127.0.0.1:4173\nBrowser / version:\nOS / date:\nCSS viewport: 390 x 900, then 1280 x 900\nZoom:\nState: Build complete; Read the AGENTS.md rules active\nBefore images:\nRequested change: reduce header bottom spacing from 36px to 24px\nPreserve: task data, labels, focus outline and control sizes\nAfter images:\nBehavior checks:\nUnverified platforms:\n"
         },
         {
           "type": "paragraph",
-          "text": "4. Keep before/after screenshots at matching dimensions and record tested versus untested platforms. Label generated art as illustration, record image licenses and supply alternative text."
+          "text": "Remove account areas, private tabs and notifications from the capture, taking a smaller region if needed. Do not relabel another platform's screenshot as a test of your platform. Redact personal data before sharing. Concept/generated images can describe a visual direction when labeled illustrations, but cannot prove an operation. For others' images, preserve source, author, license and attribution, with captions and alt text in the article's language."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 4: Annotate one specific change"
+        },
+        {
+          "type": "paragraph",
+          "text": "If desktop Annotation mode is available, select the region between heading and form, describe the spacing change and submit a request in the parent task. Otherwise attach the two before images and identify the gap in text. Saving a comment does not itself start a model edit; submit the task. Replace vague aesthetic requests with the desired value, preserved behavior and both viewport checks."
+        },
+        {
+          "type": "code",
+          "label": "Codex composer: attach both before screenshots",
+          "language": "text",
+          "code": "Use the attached before screenshots and the local practice page at http://127.0.0.1:4173.\nIn style.css, reduce the existing header bottom margin from 36px to 24px.\nKeep the task data, labels, responsive form layout, 46px controls and visible focus outline unchanged.\nVerify the actual page at 390x900 and 1280x900 CSS pixels with the same two tasks.\nCheck no horizontal page overflow, usable filtering, keyboard focus and persistence after reload.\nReport the file diff and before/after evidence. If the browser is unavailable, identify that limitation instead of claiming visual verification.\n"
+        },
+        {
+          "type": "code",
+          "label": "Target section in style.css: replace the existing rule, not a full file",
+          "language": "css",
+          "code": "header { margin-bottom: 24px; }\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "The reference edit replaces 36px with 24px in the existing rule instead of appending a duplicate that later CSS might override. Inspect the diff for unrelated changes to core.mjs/app.js or removed focus outlines. Desktop developer mode or browser inspection can check the computed header margin-bottom, providing more specific evidence than visual similarity alone. If unavailable, record the limitation and compare manually."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 5: Verify in the page and restore"
+        },
+        {
+          "type": "paragraph",
+          "text": "Reload and save after images at both viewports. Verify reduced spacing, input, Active showing one task, visible Tab focus and persistence of both original tasks. Add a near-100-character title and check wrapping without page overflow; short labels alone do not cover that boundary. Rerun core.test.mjs and record code tests separately from visual checks."
+        },
+        {
+          "type": "paragraph",
+          "text": "For unchanged appearance, check URL, server directory, saved CSS, cache and overrides. For a blank page, verify HTTP module loading rather than treating file:// restrictions as a regression. If browser operation is unavailable, report code edits with visual checks pending instead of generating an attractive after image as proof. Restore only the margin to 36px, inspect the diff and reload, then stop your practice server with Ctrl+C."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "The record should identify the actual page, both sizes, edited file, tested behavior and untested platforms. Keep reader captures separate from existing reference images and label dates/sources. Built-in browser entry, annotations and permissions are documented from official sources without claiming operation of your account or every platform. Continue to "
+            },
+            {
+              "type": "article",
+              "text": "Scheduling and automation",
+              "kind": "life",
+              "slug": "codex-automations"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -416,92 +852,34 @@
           }
         },
         {
-          "type": "heading",
-          "level": 2,
-          "text": "Practice request"
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-390.png",
+          "alt": "Small Steps / 390px / Windows Edge",
+          "caption": "Actual browser view of the complete reference version, before lesson edits. Windows / Edge 153.0.4234.32, 2026-09-14; fictional data. 390px is a responsive viewport, not a physical phone. This is not the Codex desktop interface.",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
         },
         {
-          "type": "code",
-          "language": "text",
-          "code": "Open the practice page at 390px and inspect card spacing and text contrast. Describe the actual page before editing, then interact with it and verify with a same-size screenshot.",
-          "label": "Example for this step"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "Example and verification"
-        },
-        {
-          "type": "table",
-          "header": [
-            "Check",
-            "Acceptance method"
-          ],
-          "rows": [
-            [
-              "Confirm the environment",
-              "Prepare your practice page, a reference image and a specific problem. Remove personal information from screenshots and verify image rights. Work only on your own page in this exercise."
-            ],
-            [
-              "Complete one action",
-              "Keep before/after screenshots at matching dimensions and record tested versus untested platforms. Label generated art as illustration, record image licenses and supply alternative text."
-            ],
-            [
-              "Inspect the actual result",
-              "You can turn a visual issue into a testable change and compare real results at matching viewport sizes."
-            ]
-          ]
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "Expected result"
-        },
-        {
-          "type": "paragraph",
-          "text": "You can turn a visual issue into a testable change and compare real results at matching viewport sizes."
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "Troubleshooting"
-        },
-        {
-          "type": "paragraph",
-          "text": "For unchanged screenshots, check refresh and preview version. A browser without authentication cannot necessarily see private pages; use official sign-in instead of providing passwords in prompts."
-        },
-        {
-          "type": "callout",
-          "tone": "info",
-          "title": "Official sources",
-          "text": "Cross-platform steps were checked against official documentation, not tested on every operating system. Interfaces and account availability can differ."
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "Continue learning"
-        },
-        {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "article",
-              "kind": "life",
-              "slug": "codex-learning-hub",
-              "text": "Back to the Codex learning hub"
-            }
-          ]
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-1280.png",
+          "alt": "Small Steps / 1280px / Windows Edge",
+          "caption": "Actual browser view of the complete reference version, before lesson edits. Windows / Edge 153.0.4234.32, 2026-09-14; fictional data. 390px is a responsive viewport, not a physical phone. This is not the Codex desktop interface.",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
         }
       ],
       "sources": [
         {
-          "title": "browser",
+          "title": "Browser: preview, comments and permissions",
           "url": "https://learn.chatgpt.com/docs/browser",
-          "checked_on": "2026-09-14"
-        },
-        {
-          "title": "prompting",
-          "url": "https://learn.chatgpt.com/docs/prompting",
           "checked_on": "2026-09-14"
         }
       ]
@@ -522,51 +900,235 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "画面の作業では参考、現状、変更条件を揃えます。スクリーンショットと生成図は証拠の意味が違い、生成した画面で動作成功を証明できません。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "学べること"
+          "text": "目標と準備"
         },
         {
-          "type": "paragraph",
-          "text": "同条件の実画面で変更を比較できれば完了です。"
+          "type": "callout",
+          "tone": "info",
+          "text": "環境情報付き画面で視覚要求を伝え、範囲を限定して実ページを検証します。読む時間15分、実習20分。最初のプロジェクトの expected、Node.js、Python、ブラウザーを用意します。添付は変更前の Windows／Edge 参考画面で、390px は実電話や今回の変更後成果ではありません。"
         },
         {
-          "type": "paragraph",
-          "text": "練習時間の目安: 15 分"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "この段落の教材・資料: "
+            },
+            {
+              "type": "article",
+              "text": "最初のプロジェクト",
+              "kind": "life",
+              "slug": "codex-first-project"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "画像の種類",
+            "示せること",
+            "使い方"
+          ],
+          "rows": [
+            [
+              "実操作画像",
+              "指定環境でその時見えた状態",
+              "プラットフォーム・日付・画面幅・操作前後を明記"
+            ],
+            [
+              "オリジナル図解",
+              "概念と手順の関係",
+              "図解と記し実測の代用にしない"
+            ],
+            [
+              "生成挿絵",
+              "視覚方向と概念",
+              "製品画面や合格証拠を装わない"
+            ],
+            [
+              "ライセンス素材",
+              "出典が利用を認める内容",
+              "作者・出典・ライセンス・署名を保存"
+            ]
+          ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "始める前に"
+          "text": "手順1：ブラウザー入口を選ぶ"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "デスクトップはツールバー、URL、@Browser から内蔵ブラウザーを使えます。開く鍵は macOS の Cmd＋Shift＋B、Windows の Ctrl＋Shift＋B。Linux は実版のツールバーと提供を確認し同一鍵を仮定しません。CLI・IDE に内蔵 Browser はなく、別 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": " があれば検証し、なければ自分で画面を添付します。"
+            }
+          ]
         },
         {
           "type": "paragraph",
-          "text": "練習ページと問題を用意し、画像の個人情報と利用権を確認します。"
+          "text": "内蔵は独立プロフィールで通常の Chrome・Edge 分頁を自動取得しません。普段の認証を使うなら公式拡張接続を行い環境を区別します。サイト操作許可は文中指示の信頼ではなく、無関係ファイルの送信や権限変更をページの要求だけで行いません。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "操作手順"
+          "text": "手順2：起動して正しいページを確認"
         },
         {
           "type": "paragraph",
-          "text": "1. URL、対象箇所、画面幅を指定し、正しいページが開いたかを確認します。"
+          "text": "expected の三試験を確認後、下記でローカル限定サーバーを起動し端末を残します。4173 使用中なら別番号と URL に揃え、他サービスを止めません。これはローカル実習で公開ではありません。"
+        },
+        {
+          "type": "code",
+          "label": "3 OS の端末：expected を確認",
+          "language": "sh",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell：expected 内",
+          "language": "powershell",
+          "code": "py -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux 端末：expected 内",
+          "language": "sh",
+          "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
         {
           "type": "paragraph",
-          "text": "2. 余白やコントラストの問題へ番号を付け、期待する動作を文章で説明します。"
+          "text": "指定 URL で標題、フォーム、篩選を確認し、二つの指定タスクを追加して Build を完了すると 1 active／2 total です。localStorage はプロフィール別なので前後を同じ環境で比べます。既存データがあれば実習プロフィールか別 port を使い、日常の保存を全消去しません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "遠隔 Codex の 127.0.0.1 は遠隔自身で、Web 雲タスクの localhost も利用者 PC ではありません。程序とブラウザーのホストを確認して正式なプレビュー経路を使います。携帯 Remote で確認できても本教材は外部公開を行いません。"
+            },
+            {
+              "type": "article",
+              "text": "端末間作業",
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": "を参照します。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：画面と文字条件を用意"
         },
         {
           "type": "paragraph",
-          "text": "3. 関連する問題を一組ずつ修正し、実際のページで操作を試します。画像だけで保存やログインを検証しません。"
+          "text": "レスポンシブを二寸法の CSS 像素にし、倍率と二件データを固定します。各 OS の領域撮影でページだけを before 名に保存します。装置倍率で PNG 像素は変わるため、viewport、倍率、版、日付を別記し画像寸法から推測しません。"
+        },
+        {
+          "type": "code",
+          "label": "visual-check.md：実環境を記入",
+          "language": "markdown",
+          "code": "# Visual check\nRoute: http://127.0.0.1:4173\nBrowser / version:\nOS / date:\nCSS viewport: 390 x 900, then 1280 x 900\nZoom:\nState: Build complete; Read the AGENTS.md rules active\nBefore images:\nRequested change: reduce header bottom spacing from 36px to 24px\nPreserve: task data, labels, focus outline and control sizes\nAfter images:\nBehavior checks:\nUnverified platforms:\n"
         },
         {
           "type": "paragraph",
-          "text": "4. 同じ寸法の変更前後画像と実測環境を保存し、生成図は説明用と明記します。代替テキストと権利情報を残します。"
+          "text": "撮影からアカウント、私的分頁、通知を外し必要なら小領域を再撮影します。他 OS の図を改題して実測とせず、個人情報は共有前に伏せます。生成・概念図は示意と明記し操作証拠にしません。他人の図は出典、作者、ライセンス、署名を保存し説明と代替文を現言語にします。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順4：一変更を注釈で依頼"
+        },
+        {
+          "type": "paragraph",
+          "text": "Annotation mode があれば標題とフォーム間を選んで間隔を記し、親へ要求を送ります。なければ二 before 図と文字で場所を示します。注釈保存だけでは編集は始まらず送信が必要です。曖昧な美観でなく値、保全、二寸法の検証を指定します。"
+        },
+        {
+          "type": "code",
+          "label": "Codex 入力欄：二 before 図を添付",
+          "language": "text",
+          "code": "Use the attached before screenshots and the local practice page at http://127.0.0.1:4173.\nIn style.css, reduce the existing header bottom margin from 36px to 24px.\nKeep the task data, labels, responsive form layout, 46px controls and visible focus outline unchanged.\nVerify the actual page at 390x900 and 1280x900 CSS pixels with the same two tasks.\nCheck no horizontal page overflow, usable filtering, keyboard focus and persistence after reload.\nReport the file diff and before/after evidence. If the browser is unavailable, identify that limitation instead of claiming visual verification.\n"
+        },
+        {
+          "type": "code",
+          "label": "style.css の対象区画：既存規則を置換、全ファイルではない",
+          "language": "css",
+          "code": "header { margin-bottom: 24px; }\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "既存36pxを24pxへ置換し、後で上書きされ得る重複規則を足しません。差分で無関係の再構築や焦点枠除去を確認します。開発機能の computed 値は図の類似より明確な証拠です。測定不可なら制限を残して手動比較します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順5：実画面で検証・復元"
+        },
+        {
+          "type": "paragraph",
+          "text": "同二寸法で再読込・after 保存をし、間隔、入力、Active 一件、Tab 焦点、保存を確認します。100文字近い題名でも折返しと横溢れなしを確認し、短文だけで境界合格としません。core 試験は画面確認と別欄にします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "未反映は URL、配信ディレクトリ、保存、キャッシュ、上書きを見ます。空白は HTTP の模块読込みを確認し file:// 制限を回帰と混同しません。操作不能なら画面未確認と報告し、生成 after 図で代用しません。margin だけ36pxへ戻し再確認、自己サーバーを Ctrl＋C で止めます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "実ページ、二寸法、変更ファイル、確認動作、未測 OS が分かる記録を残します。自撮影と参考図を分け日付・出典を付けます。内蔵入口・注釈・権限は公式確認で、利用者アカウントや全 OS 操作を主張しません。次は"
+            },
+            {
+              "type": "article",
+              "text": "自動化",
+              "kind": "life",
+              "slug": "codex-automations"
+            },
+            {
+              "type": "text",
+              "text": "です。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -582,92 +1144,34 @@
           }
         },
         {
-          "type": "heading",
-          "level": 2,
-          "text": "練習用の依頼"
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-390.png",
+          "alt": "Small Steps / 390px / Windows Edge",
+          "caption": "変更前の完成参考版を実際のブラウザで撮影。Windows / Edge 153.0.4234.32、2026-09-14。架空データを使用。390px はレスポンシブ表示で実物のスマートフォンではありません。Codex デスクトップ UI の画像ではありません。",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
         },
         {
-          "type": "code",
-          "language": "text",
-          "code": "練習ページを 390px で開き、余白と文字のコントラストを確認してください。実画面を説明してから変更し、操作と同寸法画像で検証してください。",
-          "label": "この手順の例"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "例と確認方法"
-        },
-        {
-          "type": "table",
-          "header": [
-            "確認項目",
-            "確認方法"
-          ],
-          "rows": [
-            [
-              "環境を確かめる",
-              "練習ページと問題を用意し、画像の個人情報と利用権を確認します。"
-            ],
-            [
-              "一つの操作を行う",
-              "同じ寸法の変更前後画像と実測環境を保存し、生成図は説明用と明記します。代替テキストと権利情報を残します。"
-            ],
-            [
-              "実際の結果を調べる",
-              "同条件の実画面で変更を比較できれば完了です。"
-            ]
-          ]
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "期待する結果"
-        },
-        {
-          "type": "paragraph",
-          "text": "同条件の実画面で変更を比較できれば完了です。"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "トラブル対応"
-        },
-        {
-          "type": "paragraph",
-          "text": "更新されない場合は再読み込みと版を確認します。認証されていないブラウザーに私的ページが見えるとは限りません。"
-        },
-        {
-          "type": "callout",
-          "tone": "info",
-          "title": "公式の出典",
-          "text": "各 OS の手順は公式文書で確認していますが、すべての環境で実機検証したわけではありません。画面や提供状況は異なる場合があります。"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "次に学ぶこと"
-        },
-        {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "article",
-              "kind": "life",
-              "slug": "codex-learning-hub",
-              "text": "Codex 学習ガイドに戻る"
-            }
-          ]
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-1280.png",
+          "alt": "Small Steps / 1280px / Windows Edge",
+          "caption": "変更前の完成参考版を実際のブラウザで撮影。Windows / Edge 153.0.4234.32、2026-09-14。架空データを使用。390px はレスポンシブ表示で実物のスマートフォンではありません。Codex デスクトップ UI の画像ではありません。",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
         }
       ],
       "sources": [
         {
-          "title": "browser",
+          "title": "Browser: preview, comments and permissions",
           "url": "https://learn.chatgpt.com/docs/browser",
-          "checked_on": "2026-09-14"
-        },
-        {
-          "title": "prompting",
-          "url": "https://learn.chatgpt.com/docs/prompting",
           "checked_on": "2026-09-14"
         }
       ]
@@ -688,51 +1192,235 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "시각 작업에는 참고, 현재 화면과 변경 조건이 필요합니다. 스크린샷과 생성 그림은 증거의 의미가 다르며 생성 화면으로 동작 성공을 증명할 수 없습니다."
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "학습 목표"
+          "text": "목표와 준비"
         },
         {
-          "type": "paragraph",
-          "text": "같은 조건의 실제 화면에서 변경을 비교하면 완료입니다."
+          "type": "callout",
+          "tone": "info",
+          "text": "환경 정보가 있는 화면으로 시각적 요구를 전달하고 수정 범위를 제한한 뒤 실제 페이지를 검증합니다. 읽기 15분, 실습 20분입니다. 첫 프로젝트의 expected·Node.js·Python·브라우저를 준비하세요. 첨부는 수정 전 Windows/Edge 참고 화면이며 390px은 실제 휴대폰이나 이번 수정 결과가 아닙니다."
         },
         {
-          "type": "paragraph",
-          "text": "예상 실습 시간: 15 분"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "이 단락의 학습 자료: "
+            },
+            {
+              "type": "article",
+              "text": "첫 프로젝트",
+              "kind": "life",
+              "slug": "codex-first-project"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "이미지 종류",
+            "증명하는 내용",
+            "사용 방법"
+          ],
+          "rows": [
+            [
+              "실제 조작 화면",
+              "특정 환경에서 당시 보인 상태",
+              "플랫폼·날짜·화면 폭·전후 상태 명시"
+            ],
+            [
+              "직접 만든 도식",
+              "개념과 절차의 관계",
+              "도식으로 표시하고 실측 대신 쓰지 않음"
+            ],
+            [
+              "생성 삽화",
+              "시각 방향과 개념",
+              "제품 화면·검증 결과처럼 제시하지 않음"
+            ],
+            [
+              "허가된 자료",
+              "출처가 사용을 허용한 내용",
+              "제작자·출처·라이선스·표기 보존"
+            ]
+          ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "시작 전 준비"
+          "text": "1단계: 브라우저 진입점 선택"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "데스크톱은 도구 모음·URL·@Browser로 내장 브라우저를 쓸 수 있습니다. 열기 단축키는 macOS Cmd+Shift+B, Windows Ctrl+Shift+B입니다. Linux는 실제 버전 도구 모음과 제공 기능을 확인하세요. CLI/IDE에는 내장 Browser가 없으며 별도 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": "가 있으면 검증하고 없으면 직접 페이지와 스크린샷을 준비합니다."
+            }
+          ]
         },
         {
           "type": "paragraph",
-          "text": "연습 페이지와 문제를 준비하고 이미지의 개인정보와 사용 권한을 확인합니다."
+          "text": "내장은 별도 프로필이라 일반 Chrome/Edge 탭을 자동 가져오지 않습니다. 기존 로그인은 공식 확장 연결 절차를 쓰고 시험 환경을 구분하세요. 사이트 조작 권한이 페이지 지시를 신뢰한다는 뜻은 아니므로 관련 없는 파일 전송이나 계정 권한 변경을 페이지 요청만으로 하지 않습니다."
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "단계별 작업"
+          "text": "2단계: 시작 후 올바른 페이지 확인"
         },
         {
           "type": "paragraph",
-          "text": "1. URL, 대상 부분과 화면 너비를 지정하고 올바른 페이지가 열렸는지 확인합니다."
+          "text": "expected의 세 테스트를 확인하고 아래 명령으로 로컬 전용 서버를 시작해 터미널을 유지합니다. 4173이 사용 중이면 다른 번호와 URL로 맞추고 다른 서비스를 멈추지 마세요. 로컬 연습이며 공개 배포가 아닙니다."
+        },
+        {
+          "type": "code",
+          "label": "세 OS 터미널: expected 확인",
+          "language": "sh",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell: expected 안",
+          "language": "powershell",
+          "code": "py -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS/Linux 터미널: expected 안",
+          "language": "sh",
+          "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
         {
           "type": "paragraph",
-          "text": "2. 여백과 대비 문제에 번호를 붙이고 원하는 동작을 글로 설명합니다."
+          "text": "해당 URL에서 제목·양식·필터를 확인하고 지정 작업 둘을 추가해 Build를 완료하면 1 active/2 total입니다. localStorage는 프로필별일 수 있어 같은 환경에서 전후를 비교하세요. 기존 데이터가 있으면 실습 프로필이나 다른 포트를 쓰고 일상 브라우저 저장을 전부 지우지 않습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "원격 Codex의 127.0.0.1은 원격 자신이며 웹 클라우드 작업 localhost도 사용자 PC가 아닙니다. 앱과 브라우저의 호스트를 확인하고 지원 미리 보기 경로를 쓰세요. 모바일 Remote로 검토할 수 있지만 이 글은 인터넷 공개를 하지 않습니다. "
+            },
+            {
+              "type": "article",
+              "text": "기기 간 작업",
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": "을 참고하세요."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 화면과 텍스트 조건 준비"
         },
         {
           "type": "paragraph",
-          "text": "3. 관련 문제를 한 묶음씩 수정하고 실제 페이지에서 조작합니다. 이미지로만 저장이나 로그인을 검증하지 않습니다."
+          "text": "반응형 모드를 두 CSS 크기로 맞추고 배율과 두 데이터를 고정합니다. 각 OS 영역 캡처로 페이지 부분만 before 파일에 저장하세요. 장치 배율이 PNG 크기를 바꿀 수 있으므로 viewport·배율·버전·날짜를 별도 기록합니다."
+        },
+        {
+          "type": "code",
+          "label": "visual-check.md: 실제 환경 기록",
+          "language": "markdown",
+          "code": "# Visual check\nRoute: http://127.0.0.1:4173\nBrowser / version:\nOS / date:\nCSS viewport: 390 x 900, then 1280 x 900\nZoom:\nState: Build complete; Read the AGENTS.md rules active\nBefore images:\nRequested change: reduce header bottom spacing from 36px to 24px\nPreserve: task data, labels, focus outline and control sizes\nAfter images:\nBehavior checks:\nUnverified platforms:\n"
         },
         {
           "type": "paragraph",
-          "text": "4. 같은 크기의 전후 이미지와 실측 환경을 보관하고 생성 그림은 설명용으로 표시합니다. 대체 텍스트와 권한 정보를 남깁니다."
+          "text": "계정·개인 탭·알림을 캡처에서 제외하고 필요하면 작은 영역을 다시 찍습니다. 다른 OS 화면의 제목만 바꿔 실측으로 쓰지 말고 개인정보는 공유 전에 가리세요. 생성·개념 이미지는 예시로 표시하며 조작 증거가 아닙니다. 타인 그림은 출처·작가·허가·표기를 보존하고 캡션과 대체 텍스트를 현재 언어로 씁니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4단계: 주석으로 한 변경 요청"
+        },
+        {
+          "type": "paragraph",
+          "text": "Annotation mode가 있으면 제목과 양식 사이를 선택해 간격을 적고 부모에게 요청을 보냅니다. 없으면 before 두 그림과 위치 설명을 첨부하세요. 주석 저장만으로 수정이 시작되지 않으므로 작업을 제출합니다. 막연한 미관 대신 값·보존·두 크기 검증을 명시하세요."
+        },
+        {
+          "type": "code",
+          "label": "Codex 입력창: before 두 그림 첨부",
+          "language": "text",
+          "code": "Use the attached before screenshots and the local practice page at http://127.0.0.1:4173.\nIn style.css, reduce the existing header bottom margin from 36px to 24px.\nKeep the task data, labels, responsive form layout, 46px controls and visible focus outline unchanged.\nVerify the actual page at 390x900 and 1280x900 CSS pixels with the same two tasks.\nCheck no horizontal page overflow, usable filtering, keyboard focus and persistence after reload.\nReport the file diff and before/after evidence. If the browser is unavailable, identify that limitation instead of claiming visual verification.\n"
+        },
+        {
+          "type": "code",
+          "label": "style.css 대상 구간: 기존 규칙 교체, 전체 파일 아님",
+          "language": "css",
+          "code": "header { margin-bottom: 24px; }\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "기존 36px을 24px로 바꾸며 나중에 덮일 수 있는 중복 규칙을 추가하지 않습니다. 차이에서 관련 없는 리팩터링이나 초점선 제거를 확인하세요. 개발 기능의 computed 값이 그림 유사성보다 명확한 증거입니다. 측정 불가면 제한을 기록하고 수동 비교합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "5단계: 실제 화면 검증과 복원"
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 두 크기에서 새로고침·after 저장 후 간격·입력·Active 한 개·Tab 초점·저장을 확인합니다. 100자 가까운 제목의 줄바꿈과 가로 넘침도 확인하고 짧은 제목만으로 경계를 통과시키지 마세요. core 테스트와 화면 검증을 따로 기록합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "변화가 없으면 URL·서버 폴더·저장·캐시·덮어쓰기를 확인합니다. 빈 화면은 HTTP 모듈 로드를 보고 file:// 제한을 회귀로 오해하지 마세요. 조작 불가면 화면 미확인으로 보고하고 생성 after 이미지로 증명하지 않습니다. margin만 36px로 복원해 확인한 뒤 자신의 서버를 Ctrl+C로 중지합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "실제 페이지·두 크기·수정 파일·검증 동작·미실행 OS가 드러나야 합니다. 직접 캡처와 참고 그림을 나눠 날짜·출처를 적으세요. 내장 진입점·주석·권한은 공식 문서 확인이며 사용자 계정이나 모든 OS 조작을 주장하지 않습니다. 다음은 "
+            },
+            {
+              "type": "article",
+              "text": "자동화",
+              "kind": "life",
+              "slug": "codex-automations"
+            },
+            {
+              "type": "text",
+              "text": "입니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -748,92 +1436,34 @@
           }
         },
         {
-          "type": "heading",
-          "level": 2,
-          "text": "연습 요청"
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-390.png",
+          "alt": "Small Steps / 390px / Windows Edge",
+          "caption": "수정 전 완성 참고 버전의 실제 브라우저 화면. Windows / Edge 153.0.4234.32, 2026-09-14, 가상 데이터. 390px은 반응형 화면이며 실제 휴대전화가 아닙니다. Codex 데스크톱 UI 화면도 아닙니다.",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
         },
         {
-          "type": "code",
-          "language": "text",
-          "code": "연습 페이지를 390px로 열어 여백과 텍스트 대비를 확인하세요. 실제 화면을 설명한 뒤 수정하고 조작과 같은 크기 이미지로 검증하세요.",
-          "label": "이 단계의 예제"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "예시와 검증"
-        },
-        {
-          "type": "table",
-          "header": [
-            "검사 항목",
-            "확인 방법"
-          ],
-          "rows": [
-            [
-              "환경 확인",
-              "연습 페이지와 문제를 준비하고 이미지의 개인정보와 사용 권한을 확인합니다."
-            ],
-            [
-              "작업 하나 완료",
-              "같은 크기의 전후 이미지와 실측 환경을 보관하고 생성 그림은 설명용으로 표시합니다. 대체 텍스트와 권한 정보를 남깁니다."
-            ],
-            [
-              "실제 결과 확인",
-              "같은 조건의 실제 화면에서 변경을 비교하면 완료입니다."
-            ]
-          ]
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "예상 결과"
-        },
-        {
-          "type": "paragraph",
-          "text": "같은 조건의 실제 화면에서 변경을 비교하면 완료입니다."
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "문제 해결"
-        },
-        {
-          "type": "paragraph",
-          "text": "변화가 없으면 새로 고침과 버전을 확인하세요. 인증되지 않은 브라우저가 비공개 페이지를 볼 수 있다고 가정하지 않습니다."
-        },
-        {
-          "type": "callout",
-          "tone": "info",
-          "title": "공식 출처",
-          "text": "각 OS 절차는 공식 문서로 확인했으며 모든 환경에서 직접 시험한 것은 아닙니다. 화면과 계정별 제공 기능은 다를 수 있습니다."
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "text": "이어서 학습하기"
-        },
-        {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "article",
-              "kind": "life",
-              "slug": "codex-learning-hub",
-              "text": "Codex 학습 목차로 돌아가기"
-            }
-          ]
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-1280.png",
+          "alt": "Small Steps / 1280px / Windows Edge",
+          "caption": "수정 전 완성 참고 버전의 실제 브라우저 화면. Windows / Edge 153.0.4234.32, 2026-09-14, 가상 데이터. 390px은 반응형 화면이며 실제 휴대전화가 아닙니다. Codex 데스크톱 UI 화면도 아닙니다.",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
         }
       ],
       "sources": [
         {
-          "title": "browser",
+          "title": "Browser: preview, comments and permissions",
           "url": "https://learn.chatgpt.com/docs/browser",
-          "checked_on": "2026-09-14"
-        },
-        {
-          "title": "prompting",
-          "url": "https://learn.chatgpt.com/docs/prompting",
           "checked_on": "2026-09-14"
         }
       ]

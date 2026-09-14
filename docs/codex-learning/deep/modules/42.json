@@ -127,7 +127,7 @@
       "text": [
         "在實驗室根目錄的系統終端機先執行第一個啟動命令；它把這次 CLI 限制為唯讀。進入 Codex 後送出下方自然語言要求，不另外貼規則內容或指定應有前綴。預期回覆從 ROOT-LAB 開始並包含 KEEP-DATA。再用 /exit 回到系統終端機，不要用 resume 接續剛才任務，改執行第二個命令從 ui 開全新工作階段。",
         "From the lab-root terminal, run the first read-only CLI launch. Inside Codex, send the natural-language prompt below without pasting rules or prescribing a prefix. Expect ROOT-LAB and KEEP-DATA. Use /exit to return to the shell, then start a fresh ui session with the second launch command, rather than resuming the earlier task.",
-        "教材ルートで最初の唯読起動コマンドを実行し、Codex へ次の依頼を送ります。規則の全文や期待接頭辞は貼りません。ROOT-LAB と KEEP-DATA を期待します。/exit でシェルに戻り、resume せず二つ目のコマンドで ui の新規セッションを作ります。",
+        "教材ルートで最初の読み取り専用起動コマンドを実行し、Codex へ次の依頼を送ります。規則の全文や期待接頭辞は貼りません。ROOT-LAB と KEEP-DATA を期待します。/exit でシェルに戻り、resume せず二つ目のコマンドで ui の新規セッションを作ります。",
         "실습 루트에서 첫 읽기 전용 실행 명령을 쓰고 Codex에 다음 요청을 보냅니다. 규칙 전문이나 예상 접두사는 붙이지 않습니다. ROOT-LAB과 KEEP-DATA가 예상됩니다. /exit로 셸에 돌아와 resume 대신 둘째 명령으로 ui 새 세션을 시작합니다."
       ]
     },
@@ -183,7 +183,7 @@
       "text": [
         "多做一個邊界檢查：保留 override 備份後清空、儲存並開新工作階段，記錄實際載入結果。本機 codex-cli 0.154.0-alpha.6.2 的診斷輸入顯示，空 override 不提供內容，但也沒有接著載入同層 AGENTS.md，只留下根目錄規則；不要把空檔當作可靠的停用方法。要恢復 ui 規則，將 override 改名為不在備援清單內的 override.saved.md，再開全新工作階段確認 UI-LAB、UI-BASE、KEEP-DATA。不要刪除全域檔或整個設定目錄。",
         "For a boundary case, back up the override, empty it, save and start fresh, then record the actual discovery. Local diagnostic inputs from codex-cli 0.154.0-alpha.6.2 contain no override body but also do not load same-level AGENTS.md; root instructions remain. Do not rely on an empty file to disable an override. Rename it to override.saved.md, outside the configured fallback list, then start fresh and verify UI-LAB, UI-BASE and KEEP-DATA. Keep global files and the settings directory intact.",
-        "境界確認ではバックアップして override を空にし、新規起動の結果を記録します。本機 codex-cli 0.154.0-alpha.6.2 の診断入力は空の本文を含まず、同層 AGENTS.md も読まず、根の規則だけでした。空ファイルを確実な無効化方法とせず、代替名にない override.saved.md へ改名して新規起動し、UI-LAB、UI-BASE、KEEP-DATA を確認します。全域や設定全体は削除しません。",
+        "境界確認ではバックアップして override を空にし、新規起動の結果を記録します。ローカル codex-cli 0.154.0-alpha.6.2 の診断入力は空の本文を含まず、同層 AGENTS.md も読まず、根の規則だけでした。空ファイルを確実な無効化方法とせず、代替名にない override.saved.md へ改名して新規起動し、UI-LAB、UI-BASE、KEEP-DATA を確認します。全域や設定全体は削除しません。",
         "경계 확인은 override를 백업 후 비우고 새 시작의 실제 결과를 기록합니다. 이 컴퓨터의 codex-cli 0.154.0-alpha.6.2 진단 입력에는 빈 본문도 같은 층 AGENTS.md도 없고 루트 규칙만 남았습니다. 빈 파일을 확실한 비활성화로 믿지 말고 대체명 목록에 없는 override.saved.md로 바꾼 뒤 새로 시작해 UI-LAB, UI-BASE, KEEP-DATA를 확인합니다. 전역 파일/전체 설정은 삭제하지 않습니다."
       ]
     },
@@ -219,7 +219,7 @@
       "text": [
         "完成時保存根目錄、ui、override、空 override、改名還原五種情況的啟動位置、檔案狀態與實際標記。共同的 KEEP-DATA 應持續保留，移除 override 後可回到原 ui 行為。上述本機證據使用 debug prompt-input 檢查真正組成的輸入，沒有送出模型請求，也未聲稱模型一定遵從。官方來源與實際版本差異都要記錄；回覆行為需由新工作階段另行驗證。接著看[規則與文件分工](article:codex-rules-and-context-files)，把容易膨脹的 AGENTS.md 改成可維護的入口。",
         "Retain launch directory, file state and observed markers for root, ui, override, empty-override and renamed-override cases. KEEP-DATA should remain, and removing the override should restore ui behavior. Local evidence uses debug prompt-input to inspect actual constructed inputs without a model request or compliance claim. Record documented and version-specific behavior; verify response behavior separately in fresh sessions. Continue with [rules and context files](article:codex-rules-and-context-files) to keep AGENTS.md maintainable.",
-        "ルート、ui、override、空 override、改名復元の起動場所、ファイル状態、実際の印を残します。KEEP-DATA を維持し、override を外すと ui に戻ることを確認します。本機は debug prompt-input の実入力を確認し、モデル要求や遵守の主張はしていません。仕様と版の違いを記録し、返答動作は新規セッションで別途確認します。[規則と文書の分担](article:codex-rules-and-context-files)へ進めます。",
+        "ルート、ui、override、空 override、改名復元の起動場所、ファイル状態、実際の印を残します。KEEP-DATA を維持し、override を外すと ui に戻ることを確認します。ローカルは debug prompt-input の実入力を確認し、モデル要求や遵守の主張はしていません。仕様と版の違いを記録し、返答動作は新規セッションで別途確認します。[規則と文書の分担](article:codex-rules-and-context-files)へ進めます。",
         "루트/ui/override/빈 override/개명 복원의 시작 경로, 파일 상태, 실제 표식을 남깁니다. KEEP-DATA를 유지하고 override 제거 후 ui로 돌아가는지 확인합니다. 로컬은 debug prompt-input의 실제 입력을 확인했으며 모델 요청/준수 주장은 없습니다. 사양과 버전 차이를 기록하고 응답 동작은 새 세션에서 별도로 확인합니다. [규칙과 문서 분담](article:codex-rules-and-context-files)으로 이어 갑니다."
       ]
     }
