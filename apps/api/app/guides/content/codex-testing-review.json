@@ -98,7 +98,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "桌面版開啟本 Git 專案，先在 Review 面板選 Unstaged，確認看到剛改的 core.mjs，再於 Codex 輸入框使用 /review，核對所選差異。CLI 則在互動輸入框使用 /review，選 Review uncommitted changes；不要把 /review 打在系統 shell。此處還沒 commit，只審某個已提交版本會漏掉 reverse。入口與範圍依"
+              "text": "桌面版開啟本 Git 專案，先在 Review 面板選 Unstaged，確認看到剛改的 core.mjs，再於 Codex 輸入框使用 /review，核對所選差異。CLI 先從 codex-review-lab 的系統終端機執行 codex，確認工作目錄後，在互動輸入框使用 /review，選 Review uncommitted changes；不要把 /review 打在系統 shell。此處還沒 commit，只審某個已提交版本會漏掉 reverse。入口與範圍依"
             },
             {
               "type": "link",
@@ -412,7 +412,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "桌面版开启本 Git 专案，先在 Review 面板选 Unstaged，确认看到刚改的 core.mjs，再于 Codex 输入框使用 /review，核对所选差异。CLI 则在互动输入框使用 /review，选 Review uncommitted changes；不要把 /review 打在系统 shell。此处还没 commit，只审某个已提交版本会漏掉 reverse。入口与范围依"
+              "text": "桌面版开启本 Git 专案，先在 Review 面板选 Unstaged，确认看到刚改的 core.mjs，再于 Codex 输入框使用 /review，核对所选差异。CLI 先从 codex-review-lab 的系统终端机执行 codex，确认工作目录后，在互动输入框使用 /review，选 Review uncommitted changes；不要把 /review 打在系统 shell。此处还没 commit，只审某个已提交版本会漏掉 reverse。入口与范围依"
             },
             {
               "type": "link",
@@ -726,7 +726,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "In the desktop app, open this Git project and choose Unstaged in the Review pane. Confirm the edited core.mjs appears, then use /review in the Codex composer and check the selected diff. In the CLI interactive composer, use /review and choose Review uncommitted changes; do not enter it in the system shell. Nothing is committed yet, so reviewing a commit would miss reverse. See the "
+              "text": "In the desktop app, open this Git project and choose Unstaged in the Review pane. Confirm the edited core.mjs appears, then use /review in the Codex composer and check the selected diff. For CLI, run codex from codex-review-lab in your system terminal, verify the task directory, then use /review in the interactive composer and choose Review uncommitted changes; do not enter it in the system shell. Nothing is committed yet, so reviewing a commit would miss reverse. See the "
             },
             {
               "type": "link",
@@ -1040,7 +1040,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "デスクトップアプリでこの Git プロジェクトを開き、Review パネルの Unstaged を選んで変更した core.mjs を確認してから、Codex の入力欄で /review を使い、対象差分を確認します。CLI は対話入力欄で /review を使い、Review uncommitted changes を選択します。システムのシェルには入力しません。まだコミットしていないため、特定コミットの審査では reverse を見落とします。入口と範囲は"
+              "text": "デスクトップアプリでこの Git プロジェクトを開き、Review パネルの Unstaged を選んで変更した core.mjs を確認してから、Codex の入力欄で /review を使い、対象差分を確認します。CLI は codex-review-lab のシステム端末で codex を起動し、作業場所を確認してから対話入力欄で /review を使い、Review uncommitted changes を選択します。システムのシェルには入力しません。まだコミットしていないため、特定コミットの審査では reverse を見落とします。入口と範囲は"
             },
             {
               "type": "link",
@@ -1134,7 +1134,7 @@
         },
         {
           "type": "paragraph",
-          "text": "ローカル成果は確認可能ですが PR はまだありません。任意練習は README なしの空 GitHub 庫を作り、実 URL へ占位値を置換します。remote -v が自分の新庫か確認後、二つの push で基準とテスト分岐を送ります。"
+          "text": "ローカル成果は確認可能ですが PR はまだありません。任意練習は README なしの空 GitHub 庫を作り、実際の URL にプレースホルダーを置き換えます。remote -v が自分の新庫か確認後、二つの push で基準とテスト分岐を送ります。"
         },
         {
           "type": "code",
@@ -1350,7 +1350,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "데스크톱 앱에서 이 Git 프로젝트를 열고 Review 패널의 Unstaged를 선택해 수정한 core.mjs가 보이는지 확인한 다음 Codex 입력창에서 /review를 사용하고 선택된 차이를 확인합니다. CLI에서는 대화형 입력창에 /review를 입력하고 Review uncommitted changes를 선택합니다. 시스템 셸에 입력하지 마세요. 아직 커밋하지 않았으므로 특정 커밋만 검토하면 reverse를 놓칩니다. 진입점과 범위는 "
+              "text": "데스크톱 앱에서 이 Git 프로젝트를 열고 Review 패널의 Unstaged를 선택해 수정한 core.mjs가 보이는지 확인한 다음 Codex 입력창에서 /review를 사용하고 선택된 차이를 확인합니다. CLI에서는 codex-review-lab의 시스템 터미널에서 codex를 시작하고 작업 경로를 확인한 뒤 대화형 입력창에 /review를 입력하고 Review uncommitted changes를 선택합니다. 시스템 셸에 입력하지 마세요. 아직 커밋하지 않았으므로 특정 커밋만 검토하면 reverse를 놓칩니다. 진입점과 범위는 "
             },
             {
               "type": "link",

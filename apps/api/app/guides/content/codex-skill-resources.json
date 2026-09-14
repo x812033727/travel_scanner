@@ -282,7 +282,7 @@
         },
         {
           "type": "paragraph",
-          "text": "把 input-format.md 暫時改名為 input-format.saved.md，再請它使用技能。預期應指出必要規格缺少並停止依此流程產生已驗證報告，而不是自行補寫一份規格。還原檔名後開新任務重試，避免前次對話裡已讀過的內容掩蓋缺檔。若仍產出數字，檢查是否明確標示尚未驗證，並把這次列為技能失敗案例。"
+          "text": "把 input-format.md 暫時改名為 input-format.saved.md，接著開新任務、確認仍在 codex-skill-lab，再明確選用技能。新任務不要帶入前次讀過的規格或報告，才能觀察缺檔時的行為。預期應指出必要規格缺少並停止依此流程產生已驗證報告，而不是自行補寫一份規格。還原檔名後再開另一個新任務重試。若缺檔時仍產出數字，檢查是否明確標示尚未驗證，並把這次列為技能失敗案例。"
         },
         {
           "type": "paragraph",
@@ -613,7 +613,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Temporarily rename input-format.md to input-format.saved.md and request the skill. It should identify the missing required contract and stop short of a verified workflow report, rather than inventing a replacement. Restore the name and retry in a fresh task so previously read context cannot hide the missing file. If it produces counts anyway, inspect whether it labels them unverified and record a skill failure."
+          "text": "Temporarily rename input-format.md to input-format.saved.md, then start a fresh task, verify codex-skill-lab and explicitly select the skill. Do not supply previously read contracts or reports: this case must observe the missing file without cached conversation context. Expect the skill to identify the required contract as missing and stop before producing a verified workflow report, without inventing a replacement. Restore the name and retest in another fresh task. If the missing-file case produces counts anyway, inspect whether they are labeled unverified and record a skill failure."
         },
         {
           "type": "paragraph",
@@ -940,7 +940,7 @@
         },
         {
           "type": "paragraph",
-          "text": "input-format.md を一時的に input-format.saved.md に改名し、スキルを依頼します。必須仕様の欠落を報告して検証済み報告の作成を止め、代替仕様を創作しないことが期待です。名称を戻して新規タスクで再試行し、過去の読取り文脈が欠落を隠さないようにします。数値を出した場合は未検証表示を確認し、失敗例として記録します。"
+          "text": "input-format.md を一時的に input-format.saved.md に改名します。その後、新規タスクで作業場所が codex-skill-lab であることを確認し、スキルを明示的に選びます。過去に読んだ仕様や報告を渡さず、以前の会話内容が欠落を隠さない状態で観察します。必須仕様の欠落を報告して検証済み報告の作成を止め、代替仕様を創作しないことが期待されます。名前を戻した後、別の新規タスクで再確認します。欠落時にも数値を出した場合は未検証と表示しているか確認し、失敗例として記録します。"
         },
         {
           "type": "paragraph",
@@ -1267,7 +1267,7 @@
         },
         {
           "type": "paragraph",
-          "text": "input-format.md를 잠시 input-format.saved.md로 바꾸고 스킬을 요청하세요. 필요한 규격의 누락을 알리고 검증 완료 보고서를 중단해야 하며 대체 규격을 지어내면 안 됩니다. 이름을 복구하고 새 작업에서 재시도해 이전에 읽은 문맥이 누락을 가리지 않게 합니다. 수치를 출력했다면 미검증 표시를 확인하고 스킬 실패 사례로 기록하세요."
+          "text": "input-format.md를 잠시 input-format.saved.md로 바꿉니다. 그다음 새 작업을 열고 작업 폴더가 codex-skill-lab인지 확인한 뒤 스킬을 명시적으로 선택하세요. 이전에 읽은 규격이나 보고서를 전달하지 않아야 과거 대화 내용이 누락을 가리지 않는 상태에서 관찰할 수 있습니다. 필요한 규격이 없다고 알리고 검증 완료 보고서 작성을 중단해야 하며 대체 규격을 지어내면 안 됩니다. 이름을 복구한 뒤 또 다른 새 작업에서 재검사하세요. 누락 상태에서도 수치를 출력했다면 미검증 표시를 확인하고 스킬 실패 사례로 기록합니다."
         },
         {
           "type": "paragraph",
@@ -1598,7 +1598,7 @@
         },
         {
           "type": "paragraph",
-          "text": "把 input-format.md 暂时改名为 input-format.saved.md，再请它使用技能。预期应指出必要规格缺少并停止依此流程产生已验证报告，而不是自行补写一份规格。还原档名后开新任务重试，避免前次对话里已读过的内容掩盖缺档。若仍产出数字，检查是否明确标示尚未验证，并把这次列为技能失败案例。"
+          "text": "把 input-format.md 暂时改名为 input-format.saved.md，接著开新任务、确认仍在 codex-skill-lab，再明确选用技能。新任务不要带入前次读过的规格或报告，才能观察缺档时的行为。预期应指出必要规格缺少并停止依此流程产生已验证报告，而不是自行补写一份规格。还原档名后再开另一个新任务重试。若缺档时仍产出数字，检查是否明确标示尚未验证，并把这次列为技能失败案例。"
         },
         {
           "type": "paragraph",

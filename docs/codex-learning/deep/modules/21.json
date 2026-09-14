@@ -91,10 +91,10 @@
     {
       "type": "p",
       "text": [
-        "桌面版開啟本 Git 專案，先在 Review 面板選 Unstaged，確認看到剛改的 core.mjs，再於 Codex 輸入框使用 /review，核對所選差異。CLI 則在互動輸入框使用 /review，選 Review uncommitted changes；不要把 /review 打在系統 shell。此處還沒 commit，只審某個已提交版本會漏掉 reverse。入口與範圍依[官方 Code review 文件](https://learn.chatgpt.com/docs/code-review)核對。",
-        "In the desktop app, open this Git project and choose Unstaged in the Review pane. Confirm the edited core.mjs appears, then use /review in the Codex composer and check the selected diff. In the CLI interactive composer, use /review and choose Review uncommitted changes; do not enter it in the system shell. Nothing is committed yet, so reviewing a commit would miss reverse. See the [official Code review documentation](https://learn.chatgpt.com/docs/code-review) for surfaces and scopes.",
-        "デスクトップアプリでこの Git プロジェクトを開き、Review パネルの Unstaged を選んで変更した core.mjs を確認してから、Codex の入力欄で /review を使い、対象差分を確認します。CLI は対話入力欄で /review を使い、Review uncommitted changes を選択します。システムのシェルには入力しません。まだコミットしていないため、特定コミットの審査では reverse を見落とします。入口と範囲は[公式 Code review 文書](https://learn.chatgpt.com/docs/code-review)を参照してください。",
-        "데스크톱 앱에서 이 Git 프로젝트를 열고 Review 패널의 Unstaged를 선택해 수정한 core.mjs가 보이는지 확인한 다음 Codex 입력창에서 /review를 사용하고 선택된 차이를 확인합니다. CLI에서는 대화형 입력창에 /review를 입력하고 Review uncommitted changes를 선택합니다. 시스템 셸에 입력하지 마세요. 아직 커밋하지 않았으므로 특정 커밋만 검토하면 reverse를 놓칩니다. 진입점과 범위는 [공식 Code review 문서](https://learn.chatgpt.com/docs/code-review)를 참고합니다."
+        "桌面版開啟本 Git 專案，先在 Review 面板選 Unstaged，確認看到剛改的 core.mjs，再於 Codex 輸入框使用 /review，核對所選差異。CLI 先從 codex-review-lab 的系統終端機執行 codex，確認工作目錄後，在互動輸入框使用 /review，選 Review uncommitted changes；不要把 /review 打在系統 shell。此處還沒 commit，只審某個已提交版本會漏掉 reverse。入口與範圍依[官方 Code review 文件](https://learn.chatgpt.com/docs/code-review)核對。",
+        "In the desktop app, open this Git project and choose Unstaged in the Review pane. Confirm the edited core.mjs appears, then use /review in the Codex composer and check the selected diff. For CLI, run codex from codex-review-lab in your system terminal, verify the task directory, then use /review in the interactive composer and choose Review uncommitted changes; do not enter it in the system shell. Nothing is committed yet, so reviewing a commit would miss reverse. See the [official Code review documentation](https://learn.chatgpt.com/docs/code-review) for surfaces and scopes.",
+        "デスクトップアプリでこの Git プロジェクトを開き、Review パネルの Unstaged を選んで変更した core.mjs を確認してから、Codex の入力欄で /review を使い、対象差分を確認します。CLI は codex-review-lab のシステム端末で codex を起動し、作業場所を確認してから対話入力欄で /review を使い、Review uncommitted changes を選択します。システムのシェルには入力しません。まだコミットしていないため、特定コミットの審査では reverse を見落とします。入口と範囲は[公式 Code review 文書](https://learn.chatgpt.com/docs/code-review)を参照してください。",
+        "데스크톱 앱에서 이 Git 프로젝트를 열고 Review 패널의 Unstaged를 선택해 수정한 core.mjs가 보이는지 확인한 다음 Codex 입력창에서 /review를 사용하고 선택된 차이를 확인합니다. CLI에서는 codex-review-lab의 시스템 터미널에서 codex를 시작하고 작업 경로를 확인한 뒤 대화형 입력창에 /review를 입력하고 Review uncommitted changes를 선택합니다. 시스템 셸에 입력하지 마세요. 아직 커밋하지 않았으므로 특정 커밋만 검토하면 reverse를 놓칩니다. 진입점과 범위는 [공식 Code review 문서](https://learn.chatgpt.com/docs/code-review)를 참고합니다."
       ]
     },
     {
@@ -229,7 +229,7 @@
       "text": [
         "這時本機交付已具體可審，還沒有 GitHub PR。若要練習外部 PR，在自己的 GitHub 建立空白練習庫，不預先加入 README，複製它實際顯示的遠端網址，再把下面第一行的占位符換成該網址後執行。先核對 remote -v 確實是自己的新庫；後面兩次 push 會把本機基準與測試分支傳到 GitHub。",
         "Local work is now reviewable but no GitHub PR exists yet. For optional practice, create an empty GitHub repository without an initial README, copy its actual remote URL and replace the placeholder before executing. Verify remote -v points to your new repository. The two pushes then upload baseline and test branches.",
-        "ローカル成果は確認可能ですが PR はまだありません。任意練習は README なしの空 GitHub 庫を作り、実 URL へ占位値を置換します。remote -v が自分の新庫か確認後、二つの push で基準とテスト分岐を送ります。",
+        "ローカル成果は確認可能ですが PR はまだありません。任意練習は README なしの空 GitHub 庫を作り、実際の URL にプレースホルダーを置き換えます。remote -v が自分の新庫か確認後、二つの push で基準とテスト分岐を送ります。",
         "로컬 결과는 검토 가능하지만 PR은 아직 없습니다. 선택 실습은 README 없는 빈 GitHub 저장소를 만들고 실제 URL로 자리표시자를 바꿉니다. remote -v가 자신의 새 저장소인지 확인한 뒤 두 push로 기준/테스트 브랜치를 보냅니다."
       ]
     },

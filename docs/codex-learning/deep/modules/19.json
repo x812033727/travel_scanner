@@ -43,9 +43,9 @@
       "type": "p",
       "text": [
         "在不屬於其他專案的新資料夾 codex-git-lab 放入 expected 的五個檔案。用編輯器開該資料夾與終端機，PowerShell 用 Get-Location、macOS／Linux 用 pwd 核對位置，再跑 git --version。若系統找不到 git，先依平台的 Git 官方安裝說明完成，重開終端機；不要在原本工作庫執行接下來的初始化。",
-        "Place the five expected files in new codex-git-lab outside any other project. Open its editor terminal, verify Get-Location or pwd and run git --version. If Git is missing, use its official platform installation guidance and reopen the terminal. Do not initialize your existing work repository for this exercise.",
-        "他プロジェクト外の codex-git-lab に expected 5ファイルを置き、現在地と git --version を確認します。なければ公式 OS 別導入を行い端末を開き直します。既存仕事用リポジトリでこの初期化をしません。",
-        "다른 프로젝트 밖 codex-git-lab에 expected 다섯 파일을 두고 현재 경로/git --version을 확인합니다. 없으면 공식 OS 설치 후 터미널을 다시 엽니다. 기존 작업 저장소에서 이 초기화를 하지 않습니다."
+        "Place the five expected files in new codex-git-lab outside any other project. Open its editor terminal, verify the path with Get-Location in Windows PowerShell or pwd on macOS/Linux, then run git --version. If Git is missing, use its official platform installation guidance and reopen the terminal. Do not initialize your existing work repository for this exercise.",
+        "他プロジェクト外の codex-git-lab に expected 5ファイルを置き、Windows PowerShell は Get-Location、macOS／Linux は pwd で現在地を確認し、git --version を実行します。なければ公式 OS 別導入を行い端末を開き直します。既存仕事用リポジトリでこの初期化をしません。",
+        "다른 프로젝트 밖 codex-git-lab에 expected 다섯 파일을 두고 Windows PowerShell은 Get-Location, macOS/Linux는 pwd로 현재 경로를 확인하고 git --version을 실행합니다. 없으면 공식 OS 설치 후 터미널을 다시 엽니다. 기존 작업 저장소에서 이 초기화를 하지 않습니다."
       ]
     },
     {
@@ -93,8 +93,8 @@
       "text": [
         "確認分支是 codex/title-lab。用編輯器在 index.html 只把 h1 的 Make room for one small task. 改成 Plan one useful step.。另外在 style.css 最尾端加下面的註解，模擬另一份尚未提交的工作。這次要交付的是標題，CSS 註解必須保留在工作目錄但不能混入標題提交；兩個改動都是教材，無正式資料。",
         "Verify codex/title-lab. In index.html change only the h1 text Make room for one small task. to Plan one useful step. Append the comment below to style.css to represent separate uncommitted work. The title is the deliverable; preserve the CSS note without including it in the title commit. Both edits are fictional practice.",
-        "ブランチ確認後、h1 の指定文だけ Plan one useful step. にし、CSS 末尾へ次のコメントを加えて別の未確定作業を模します。成果はタイトルで、CSS は保持しつつタイトル commit に混ぜません。両方とも教材です。",
-        "브랜치 확인 후 h1 지정 문구만 Plan one useful step.으로 바꾸고 CSS 끝에 다음 주석으로 별도 미커밋 작업을 흉내 냅니다. 결과는 제목이며 CSS는 보존하되 제목 commit에 섞지 않습니다. 둘 다 실습입니다."
+        "codex/title-lab を確認後、index.html の h1 にある Make room for one small task. だけを Plan one useful step. にし、CSS 末尾へ次のコメントを加えて別の未確定作業を模します。成果はタイトルで、CSS は保持しつつタイトル commit に混ぜません。両方とも教材です。",
+        "codex/title-lab을 확인한 뒤 index.html의 h1 문구 Make room for one small task.만 Plan one useful step.으로 바꾸고 CSS 끝에 다음 주석으로 별도 미커밋 작업을 흉내 냅니다. 결과는 제목이며 CSS는 보존하되 제목 commit에 섞지 않습니다. 둘 다 실습입니다."
       ]
     },
     {
@@ -251,7 +251,7 @@
       "text": [
         "撤回已提交修改前先處理工作目錄。本教材只有自己加的 CSS 註解：確認內容已保留核對後，現在明確決定結束這個保留練習，用下列第一行只丟棄它。status 必須乾淨，再檢查最新提交確實是 Update practice title，才對 HEAD 執行 revert。正式工作若仍有其他修改，不照搬這個清理步驟，先保存或另行處理。",
         "Before reverting, resolve working-tree changes. Here the only remaining change is your fictional CSS note. After verifying its preservation, explicitly finish that exercise and discard only it with the first command below. Require clean status and confirm HEAD is Update practice title before reverting HEAD. Do not apply this cleanup to real work with unrelated changes.",
-        "撤回前に作業ツリーを確認します。残る教材 CSS コメントの保持を検証後、今回は明示的にその練習を終えて最初の命令でそのファイルだけ戻します。無変更と HEAD のタイトル commit を確認してから revert します。実装業の別変更には流用しません。",
+        "撤回前に作業ツリーを確認します。残る教材 CSS コメントの保持を検証後、今回は明示的にその練習を終えて最初の命令でそのファイルだけ戻します。無変更と HEAD のタイトル commit を確認してから revert します。実作業の別の変更には流用しません。",
         "취소 전 작업 트리를 확인합니다. 남은 실습 CSS 주석 보존을 검증한 뒤 이번에는 명시적으로 연습을 끝내 첫 명령으로 그 파일만 되돌립니다. 무변경과 HEAD 제목 commit을 확인해 revert합니다. 실제 별도 변경에는 그대로 적용하지 않습니다."
       ]
     },

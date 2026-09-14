@@ -44,8 +44,8 @@
       "text": [
         "從練習 ZIP 的 start 複製五個檔案到新的 codex-feature-lab，不沿用已完成的 expected，也不把前一篇修好的 core.mjs 帶進來。開啟資料夾後確認路徑；PowerShell 用 Get-Location，macOS／Linux 用 pwd。保留 start 原版，先跑下列既有測試，預期 2 項通過、1 項篩選失敗。",
         "Copy the five start files from the ZIP into new codex-feature-lab. Do not reuse expected or a previously fixed core.mjs. Confirm the path using Get-Location in PowerShell or pwd on macOS/Linux. Preserve original start files and run existing tests: expect two passes and one filter failure.",
-        "ZIP の start 5ファイルを新しい codex-feature-lab へコピーします。expected や前の修正を使わず、Get-Location/pwd で場所を確認します。原版を残し、既存テストの2成功1失敗を確認します。",
-        "ZIP start 다섯 파일을 새 codex-feature-lab으로 복사합니다. expected/이전 수정을 사용하지 않고 Get-Location/pwd로 경로를 확인합니다. 원본을 남기고 기존 테스트 2통과1실패를 확인합니다."
+        "ZIP の start 5ファイルを新しい codex-feature-lab へコピーします。expected や前の修正を使わず、Windows PowerShell は Get-Location、macOS／Linux は pwd で場所を確認します。原版を残し、既存テストの2成功1失敗を確認します。",
+        "ZIP start 다섯 파일을 새 codex-feature-lab으로 복사합니다. expected/이전 수정을 사용하지 않고 Windows PowerShell은 Get-Location, macOS/Linux는 pwd로 경로를 확인합니다. 원본을 남기고 기존 테스트 2통과1실패를 확인합니다."
       ]
     },
     {
@@ -129,10 +129,10 @@
     {
       "type": "p",
       "text": [
-        "在此練習資料夾建立 Codex 任務，貼上完整要求。這時原始程式只有 core.mjs 可修改，新增的 filter.test.mjs 內容也已經固定。若模型認為需要其他檔案，先請它指出具體原因；不要一開始就讓它把所有測試、畫面與設定一起「整理」。沒有讀到測試時，要求先讀，避免只照自然語言猜測。",
-        "Start a Codex task in this lab and send the complete request. Only core.mjs may change now; the new filter.test.mjs is also fixed. Ask for a concrete reason if other files are proposed. Avoid an unrestricted cleanup of tests, UI and settings. Ensure it reads the tests instead of guessing from prose alone.",
-        "教材で課題を始め、全文を送ります。今は core.mjs だけ変更可能で、新テストも固定です。他の変更案には具体的理由を求め、全体整理を任せません。文章だけで推測せずテストを読ませます。",
-        "실습에서 작업을 시작해 전체 요청을 보냅니다. 이제 core.mjs만 변경 가능하며 새 테스트도 고정입니다. 다른 변경은 구체적 이유를 요청하고 전체 정리를 맡기지 않습니다. 글만으로 추측하지 말고 테스트를 읽게 합니다."
+        "桌面版加入 codex-feature-lab 為本機專案並建立新任務；CLI 從此練習目錄執行 codex。確認任務路徑後，貼上完整要求。這時原始程式只有 core.mjs 可修改，新增的 filter.test.mjs 內容也已經固定。若模型認為需要其他檔案，先請它指出具體原因；不要一開始就讓它把所有測試、畫面與設定一起「整理」。沒有讀到測試時，要求先讀，避免只照自然語言猜測。",
+        "In desktop, add codex-feature-lab as a local project and start a task there; in CLI, run codex from that directory. Verify the task path and send the complete request. Only core.mjs may change now; the new filter.test.mjs is also fixed. Ask for a concrete reason if other files are proposed. Avoid an unrestricted cleanup of tests, UI and settings. Ensure it reads the tests instead of guessing from prose alone.",
+        "デスクトップは codex-feature-lab をローカルプロジェクトに追加して課題を作り、CLI は同じ教材ディレクトリから codex を起動します。場所を確認して全文を送ります。今は core.mjs だけ変更可能で、新テストも固定です。他の変更案には具体的理由を求め、全体整理を任せません。文章だけで推測せずテストを読ませます。",
+        "데스크톱은 codex-feature-lab을 로컬 프로젝트로 추가해 작업을 만들고, CLI는 같은 실습 경로에서 codex를 실행합니다. 경로를 확인한 뒤 전체 요청을 보냅니다. 이제 core.mjs만 변경 가능하며 새 테스트도 고정입니다. 다른 변경은 구체적 이유를 요청하고 전체 정리를 맡기지 않습니다. 글만으로 추측하지 말고 테스트를 읽게 합니다."
       ]
     },
     {
@@ -196,10 +196,10 @@
     {
       "type": "p",
       "text": [
-        "使用本教材 Reset practice data 後，依序加入 Read、Build、Read，勾選第一與第三項。照表切換，再回 All 確認三筆都在；同名項目以原先位置與勾選狀態辨認。取消第一項完成後，Completed 應只剩原第三項，Active 應保留原第一項與 Build。最後切回 All 重新整理，確認狀態仍在。",
-        "After Reset practice data, add Read, Build, Read in that order and complete the first/third. Check the table, return to All and verify all records remain. Distinguish equal titles by original position and checkbox state. Uncomplete the first: Completed should retain only the original third; Active the original first plus Build. Return to All and reload to verify persistence.",
-        "リセット後 Read、Build、Read を追加し1・3番目を完了します。表と All 全件を確認し、同名は元位置と状態で区別します。1番目を未完了に戻すと Completed は元3番目だけ、Active は元1番目と Build です。All と再読込で保存も確認します。",
-        "리셋 후 Read/Build/Read를 추가하고 첫째/셋째를 완료합니다. 표와 All 전체를 확인하고 동명은 원래 위치/상태로 구분합니다. 첫째 완료를 해제하면 Completed는 원래 셋째만, Active는 원래 첫째와 Build입니다. All과 새로 고침으로 저장도 확인합니다."
+        "先保留仍需要的舊練習紀錄，再於 About this exercise 使用 Reset practice data。選 All tasks 並確認空清單後，依序加入 Read、Build、Read，勾選第一與第三項。照表切換，再回 All 確認三筆都在；同名項目以原先位置與勾選狀態辨認。取消第一項完成後，Completed 應只剩原第三項，Active 應保留原第一項與 Build。最後切回 All 重新整理，確認狀態仍在。",
+        "Preserve any earlier practice records you need, then use Reset practice data under About this exercise. Select All tasks and confirm an empty list before adding Read, Build, Read in order and completing the first/third. Check the table, return to All and verify all records remain. Distinguish equal titles by original position and checkbox state. Uncomplete the first: Completed should retain only the original third; Active the original first plus Build. Return to All and reload to verify persistence.",
+        "必要な以前の教材記録を残し、About this exercise の Reset practice data を使います。All tasks で空一覧を確認してから Read、Build、Read を追加し1・3番目を完了します。表と All 全件を確認し、同名は元位置と状態で区別します。1番目を未完了に戻すと Completed は元3番目だけ、Active は元1番目と Build です。All と再読込で保存も確認します。",
+        "필요한 이전 실습 기록을 보존하고 About this exercise의 Reset practice data를 누릅니다. All tasks에서 빈 목록을 확인한 뒤 Read/Build/Read를 추가하고 첫째/셋째를 완료합니다. 표와 All 전체를 확인하고 동명은 원래 위치/상태로 구분합니다. 첫째 완료를 해제하면 Completed는 원래 셋째만, Active는 원래 첫째와 Build입니다. All과 새로 고침으로 저장도 확인합니다."
       ]
     },
     {
@@ -272,7 +272,7 @@
       "text": [
         "篩選時資料真的少了，先看是否錯把 filter 結果寫回 tasks 或保存；畫面數量對但同名任務不對，要檢查是否用 title 代替 id。核心全過但畫面無變，先讀 app.js 是否載入正確 core.mjs，並核對 HTTP 來源與瀏覽器快取。不要連續要求「再修一次」卻不提供哪個表格列失敗，先把重現順序與預期寫清楚。",
         "If records vanish, inspect whether filtered output was assigned back to tasks or persisted. Correct counts with wrong same-title records suggest title used instead of ID. Passing core tests with stale UI calls for import, HTTP origin and cache checks. Report the specific failing matrix row and reproduction instead of repeatedly requesting another fix.",
-        "消失なら選択結果を tasks や保存へ戻していないか、同名違いなら title を ID 代わりにしていないか確認します。核心成功で旧画面なら import、HTTP、キャッシュを確認し、表の失敗行と再現順序を伝えます。",
+        "消失なら選択結果を tasks や保存へ戻していないか、同名違いなら title を ID 代わりにしていないか確認します。コアのテストが成功しても古い画面なら import、HTTP、キャッシュを確認し、表の失敗行と再現順序を伝えます。",
         "사라지면 선택 결과를 tasks/저장에 다시 넣었는지, 동명 오류면 ID 대신 title을 썼는지 봅니다. 핵심 통과인데 화면이 오래되면 import/HTTP/캐시를 확인하고 표의 실패 행/재현 순서를 전달합니다."
       ]
     },

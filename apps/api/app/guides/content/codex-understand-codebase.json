@@ -82,6 +82,10 @@
           "text": "教材預期三項測試通過；先記錄實際結果，再請 Codex 做唯讀調查。若起點失敗，保留錯誤與版本資訊，不把不明故障夾在「理解架構」中順手修掉。正式專案若已有未提交修改，先記錄哪些是原有工作，讀程式階段不使用全目錄重設或自動格式化，避免把觀察變成修改。"
         },
         {
+          "type": "paragraph",
+          "text": "桌面版先加入 codex-read-lab 為本機專案，再在此專案建立新任務；CLI 從剛核對過的練習終端機執行 codex。確認任務工作路徑後，將下列要求送到 Codex 輸入框，不是在系統終端機執行。"
+        },
+        {
           "type": "code",
           "label": "Codex 提示詞：唯讀專案導覽",
           "language": "text",
@@ -190,7 +194,7 @@
         },
         {
           "type": "paragraph",
-          "text": "在本教材的瀏覽器來源用 Reset practice data 清掉先前虛構任務，再新增 Read 與 Build、勾選 Read。All 應顯示兩項，Active 只有 Build，Completed 只有 Read；切回 All 後重新整理，確認資料仍在。這一步驗證核心資料與畫面串接，不代表已測到每一種錯誤分支。完成後只清本例資料，不清整個瀏覽器。"
+          "text": "先保留仍需要的舊練習紀錄，再於 About this exercise 使用 Reset practice data。選 All tasks、確認空清單後，新增 Read 與 Build，只勾選 Read。All 應顯示兩項，Active 只有 Build，Completed 只有 Read；切回 All 重新整理，確認資料仍在。這是核心資料與畫面的串接驗證，未涵蓋每個錯誤分支。完成後只清本例資料，不清整個瀏覽器。"
         },
         {
           "type": "paragraph",
@@ -355,6 +359,10 @@
           "text": "Expect three passing tests; record actual results before the read-only investigation. If baseline fails, retain error and version rather than silently fixing an unknown defect during orientation. In a real project, record pre-existing uncommitted changes and avoid whole-directory resets or formatting while reading."
         },
         {
+          "type": "paragraph",
+          "text": "In desktop, add codex-read-lab as a local project and create a task there. In CLI, run codex from the verified lab terminal. Confirm the task directory, then send the prompt inside Codex, not the system shell."
+        },
+        {
           "type": "code",
           "label": "Codex prompt: read-only project map",
           "language": "text",
@@ -463,7 +471,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Use this fixture's Reset practice data for old fictional tasks, add Read/Build and complete Read. All shows both, Active only Build, Completed only Read. Return to All and reload to verify persistence. This checks integration between core data and UI, not every error branch. Clear only this fixture's data afterwards."
+          "text": "Preserve any earlier practice records you need, then use Reset practice data under About this exercise. Select All tasks and confirm an empty list before adding Read/Build and completing only Read. All shows both, Active only Build, Completed only Read. Return to All and reload to verify persistence. This checks core/UI integration, not every error branch. Clear only this fixture data afterwards."
         },
         {
           "type": "paragraph",
@@ -611,7 +619,7 @@
         },
         {
           "type": "paragraph",
-          "text": "ZIP の expected の5ファイルを新しい codex-read-lab にコピーし原本を残します。start/broken ではありません。Get-Location または pwd で、5ファイルが直下にある場所を確認します。見慣れた形にするためだけに package.json を追加しません。"
+          "text": "ZIP の expected の5ファイルを新しい codex-read-lab にコピーし原本を残します。start/broken ではありません。Windows PowerShell は Get-Location、macOS／Linux は pwd で、5ファイルが直下にある場所を確認します。見慣れた形にするためだけに package.json を追加しません。"
         },
         {
           "type": "code",
@@ -622,6 +630,10 @@
         {
           "type": "paragraph",
           "text": "3テスト成功を実測してから読取り調査へ進みます。失敗ならエラーと版を残し、構造理解のついでに不明な故障を直しません。実プロジェクトでは既存の未コミット変更を記録し、全体リセットや整形を避けます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "デスクトップでは codex-read-lab をローカルプロジェクトに追加し、そこで新規タスクを作ります。CLI は確認済みの教材端末から codex を起動します。タスクの場所を確認し、次の依頼をシェルではなく Codex の入力欄へ送ります。"
         },
         {
           "type": "code",
@@ -732,7 +744,7 @@
         },
         {
           "type": "paragraph",
-          "text": "教材の Reset practice data で架空データを消し、Read/Build と Read 完了を作ります。All は両方、Active は Build、Completed は Read。All に戻して再読込し保存を確認します。全エラー経路の証拠ではなく、終わったら本例だけ消します。"
+          "text": "必要な以前の教材記録を残してから、About this exercise の Reset practice data を使います。All tasks で空一覧を確認し、Read と Build を追加して Read だけ完了します。All は両方、Active は Build、Completed は Read です。All に戻して再読込し保存を確認します。コアと画面の接続の検証で、全エラー経路は含みません。最後は教材データだけを消します。"
         },
         {
           "type": "paragraph",
@@ -755,7 +767,7 @@
         },
         {
           "type": "paragraph",
-          "text": "「フィルター変更でデータを保存する」「3件のテスト通過でボタンの正常動作が証明できる」という誤った説明も確認します。filter の change は render だけを呼び、コア関数のテストは DOM を操作しません。次の節を project-map.md に追記し、未実施は NOT RUN のままにします。引用した関数が見つからなければ expected のコピーを開いたか確認し、5つのプログラムファイルを変えずに導覧を修正します。"
+          "text": "「フィルター変更でデータを保存する」「3件のテスト通過でボタンの正常動作が証明できる」という誤った説明も確認します。filter の change は render だけを呼び、コア関数のテストは DOM を操作しません。次の節を project-map.md に追記し、未実施は NOT RUN のままにします。引用した関数が見つからなければ expected のコピーを開いたか確認し、5つのプログラムファイルを変えずに案内文書を修正します。"
         },
         {
           "type": "code",
@@ -880,7 +892,7 @@
         },
         {
           "type": "paragraph",
-          "text": "ZIP expected의 다섯 파일을 새 codex-read-lab에 복사하고 원본을 남깁니다. start/broken이 아닙니다. Get-Location 또는 pwd로 다섯 파일이 바로 있는 경로를 확인합니다. 익숙한 형태로 보이게 하려고 package.json을 추가하지 않습니다."
+          "text": "ZIP expected의 다섯 파일을 새 codex-read-lab에 복사하고 원본을 남깁니다. start/broken이 아닙니다. Windows PowerShell은 Get-Location, macOS/Linux는 pwd로 다섯 파일이 바로 있는 경로를 확인합니다. 익숙한 형태로 보이게 하려고 package.json을 추가하지 않습니다."
         },
         {
           "type": "code",
@@ -891,6 +903,10 @@
         {
           "type": "paragraph",
           "text": "3개 통과를 실제 기록한 뒤 읽기 조사로 갑니다. 실패면 오류/버전을 남기고 구조 이해 중 불명확한 결함을 몰래 고치지 않습니다. 실제 프로젝트에서는 기존 미커밋 변경을 기록하고 전체 초기화/포맷을 피합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "데스크톱에서는 codex-read-lab을 로컬 프로젝트로 추가하고 그 안에서 새 작업을 만듭니다. CLI는 확인한 실습 터미널에서 codex를 실행합니다. 작업 경로를 확인하고 다음 요청을 시스템 셸이 아닌 Codex 입력창에 보내세요."
         },
         {
           "type": "code",
@@ -1001,7 +1017,7 @@
         },
         {
           "type": "paragraph",
-          "text": "실습 Reset practice data로 가상 데이터를 지우고 Read/Build와 Read 완료를 만듭니다. All은 둘, Active는 Build, Completed는 Read입니다. All로 돌아와 새로 고쳐 저장을 봅니다. 모든 오류 경로 증거는 아니며 끝나면 이 예시만 지웁니다."
+          "text": "필요한 이전 실습 기록을 먼저 보존한 뒤 About this exercise에서 Reset practice data를 누르세요. All tasks에서 빈 목록을 확인하고 Read와 Build를 추가해 Read만 완료합니다. All은 둘, Active는 Build, Completed는 Read입니다. All로 돌아가 새로 고쳐 저장을 확인합니다. 핵심 로직과 화면 연결 검증이며 모든 오류 경로를 포함하지 않습니다. 끝나면 실습 데이터만 지웁니다."
         },
         {
           "type": "paragraph",
@@ -1166,6 +1182,10 @@
           "text": "教材预期三项测试通过；先记录实际结果，再请 Codex 做唯读调查。若起点失败，保留错误与版本资讯，不把不明故障夹在「理解架构」中顺手修掉。正式专案若已有未提交修改，先记录哪些是原有工作，读程式阶段不使用全目录重设或自动格式化，避免把观察变成修改。"
         },
         {
+          "type": "paragraph",
+          "text": "桌面版先加入 codex-read-lab 为本机专案，再在此专案建立新任务；CLI 从刚核对过的练习终端机执行 codex。确认任务工作路径后，将下列要求送到 Codex 输入框，不是在系统终端机执行。"
+        },
+        {
           "type": "code",
           "label": "Codex 提示词：唯读专案导览",
           "language": "text",
@@ -1274,7 +1294,7 @@
         },
         {
           "type": "paragraph",
-          "text": "在本教材的浏览器来源用 Reset practice data 清掉先前虚构任务，再新增 Read 与 Build、勾选 Read。All 应显示两项，Active 只有 Build，Completed 只有 Read；切回 All 后重新整理，确认资料仍在。这一步验证核心资料与画面串接，不代表已测到每一种错误分支。完成后只清本例资料，不清整个浏览器。"
+          "text": "先保留仍需要的旧练习纪录，再于 About this exercise 使用 Reset practice data。选 All tasks、确认空清单后，新增 Read 与 Build，只勾选 Read。All 应显示两项，Active 只有 Build，Completed 只有 Read；切回 All 重新整理，确认资料仍在。这是核心资料与画面的串接验证，未涵盖每个错误分支。完成后只清本例资料，不清整个浏览器。"
         },
         {
           "type": "paragraph",
