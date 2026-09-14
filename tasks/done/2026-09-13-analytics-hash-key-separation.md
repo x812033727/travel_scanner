@@ -1,13 +1,13 @@
 ---
 id: 2026-09-13-analytics-hash-key-separation
 title: Analytics visitor hashing is keyed on APP_SECRET_KEY, so the signing key cannot be rotated alone
-status: review
+status: done
 priority: P2
 area: api
 owner: claude-opus-5
 claimed_at: 2026-09-14T00:41:24Z
 created_at: 2026-09-13T23:37:47Z
-completed_at:
+completed_at: 2026-09-14T05:16:09Z
 branch: claude/security-check-o5zaj1
 depends_on: []
 scope:
