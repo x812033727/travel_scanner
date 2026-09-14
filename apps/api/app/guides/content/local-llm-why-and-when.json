@@ -1,0 +1,353 @@
+{
+  "slug": "local-llm-why-and-when",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "為什麼要在自己電腦跑 AI：隱私、離線與成本",
+      "description": "在自己電腦跑 AI 換到三件事：資料不出電腦、模型下載後可離線使用、沒有月費；代價是硬體、速度與品質落差，還要自己維護。這篇整理 Ollama、LM Studio、Open WebUI 官方文件對「資料不會離開你的電腦」與離線條件的原文，用官方模型卡的評測數字說明小模型與旗艦的差距，並列出敏感文件摘要、離線翻譯、程式補全、批量處理適合本機，以及哪三種情況該留在雲端。",
+      "hero": {
+        "src": "/guides/local-llm-why-and-when/hero.jpg",
+        "alt": "插圖：一台螢幕造型的電腦被虛線圓圈包住，螢幕裡有一個對話框；右上角一朵雲和圓圈之間的點狀線在中途斷開，右下角一疊圓形代表一次性的硬體支出。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "在自己電腦跑 AI，換到的是三件具體的事：提示詞與檔案不離開這台機器、模型下載完成後可以離線使用、不必每個月付訂閱費。付出的則是硬體門檻、等待時間、品質落差，以及自己維護模型與軟體的工夫。這是一筆交易，不是升級，值不值得完全看你平常拿 AI 做什麼。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇把這筆交易攤開來算：官方文件到底怎麼寫「資料不會離開你的電腦」、離線可用的前提是什麼、費用結構跟雲端差在哪裡，再用官方模型卡上的數字說明小模型與旗艦的差距。最後會有一張用途對照表，還有指令列、圖形介面、網頁介面三條入門路線，你挑一條照著走就好。"
+        },
+        {
+          "type": "heading",
+          "text": "本機跑 AI 是什麼意思",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "本機跑 AI 指的是把模型的權重檔案下載到自己的電腦，由這台電腦的處理器、顯示卡與記憶體負責運算，過程不經過任何公司的伺服器。這件事做得到，是因為有一批模型把權重公開釋出讓人下載；Hugging Face 的模型庫是這些檔案最主要的發布地點，官方文件示範的下載方式就是一行 hf download 加上模型倉庫名稱。"
+        },
+        {
+          "type": "paragraph",
+          "text": "跟雲端服務的差別只在「運算發生在哪裡」。你在瀏覽器用雲端助理時，提示詞會送到對方的機房、由對方的硬體運算、再把答案送回來；本機模型則是提示詞從你的鍵盤進到同一台電腦的記憶體，答案也從那裡出來。這個位置差異同時決定了隱私、離線能力與費用三件事，下面三節分別談。"
+        },
+        {
+          "type": "link",
+          "text": "大型語言模型（Large Language Model）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/what-is-a-large-language-model"
+        },
+        {
+          "type": "link",
+          "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+        },
+        {
+          "type": "heading",
+          "text": "換到的第一件事：資料不出這台電腦",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這件事不用靠推論，官方文件寫得很直接。Ollama 的說明文件 FAQ 有一題就叫「Does Ollama send my prompts and answers back to ollama.com?」，答覆是「Ollama runs locally. We don't see your prompts or data when you run locally.」；同一份 FAQ 也說他們收集的是基本帳號資訊與有限的使用中繼資料，「does not include prompt or response content」。官網首頁的說法更短：「Nothing you run locally ever leaves your machine.」"
+        },
+        {
+          "type": "paragraph",
+          "text": "LM Studio 的隱私說明同樣具體：「If you download and run models locally, none of your messages, chat histories, and documents are ever transmitted from your system - everything is saved locally on your device.」官方文件另外寫明，把檔案拖進去做問答時「that document stays on your machine」。Open WebUI 則在官方文件首頁把自己描述成一個「built to run entirely offline」的自架 AI 平台。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要注意的是同一套軟體常常同時有本機與雲端兩種模式，上面的保證只涵蓋本機那一半。Ollama 的 FAQ 就把另一半分開寫：使用雲端託管的模型時「we process your prompts and responses to provide the service but do not store or log that content and never train on it」。想把雲端功能整個關掉，官方 FAQ 給的做法是設環境變數 OLLAMA_NO_CLOUD=1，或改設定檔。"
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": "關閉 Ollama 雲端功能：官方 FAQ 的設定檔寫法（~/.ollama/server.json）",
+          "code": "{\n  \"disable_ollama_cloud\": true\n}"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        },
+        {
+          "type": "link",
+          "text": "DeepSeek 資料去哪裡：隱私、審查與台灣使用者的取捨",
+          "url": "https://mokaair.com/zh-TW/life/deepseek-privacy-and-data-flow"
+        },
+        {
+          "type": "heading",
+          "text": "換到的第二件事：離線可用，但有前提",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "離線可用的前提只有一個：模型檔案要先在有網路的時候下載好。LM Studio 的官方離線說明寫的是「LM Studio does not require the internet in order to work」，聊天、跟文件問答、開本機伺服器這三件事都不需要網路。但同一頁也誠實列出仍然需要連線的部分：在 Discover 分頁搜尋模型、下載新模型、下載執行環境，以及 App 內建的更新檢查。模型本身則是從 Hugging Face 下載。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ollama 是一樣的邏輯：先用 pull 把模型抓下來，之後 run 就是在本機載入這份檔案。官方文件也寫了模型放在哪裡，macOS 在 ~/.ollama/models，Windows 在 C:\\Users\\%username%\\.ollama\\models，Linux 在 /usr/share/ollama/.ollama/models，要換位置就設 OLLAMA_MODELS 環境變數。出國前把要用的模型先抓好，飛機上、山上、收訊差的會議室都還能用。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "先下載、再執行：Ollama 官方文件的指令",
+          "code": "ollama pull gemma4\nollama run gemma4\nollama ls"
+        },
+        {
+          "type": "image",
+          "src": "/guides/local-llm-why-and-when/diagram-1.svg",
+          "alt": "左右對照圖：左邊雲端 AI 的提示詞送到外部機房並按月與按用量付費，右邊本機模型的提示詞留在同一台電腦、只在下載模型時連網。",
+          "width": 1600,
+          "height": 900,
+          "caption": "左右各看一次：上半是提示詞走到哪裡，下半是錢從哪裡出去。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "換到的第三件事：費用從月費變成一次性投資",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "雲端 AI 的費用是持續性的：訂閱按月或按年扣款，API 按用量計費，用多少算多少，停用才停止付費。本機模型的費用結構不一樣，主要是一次性的硬體支出加上跑起來的電費，模型本身多半免費下載。Ollama 官網把這件事直接寫成賣點：「Ollama lets you use open models with your coding agents so you can spend less while keeping your data private.」"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩種結構沒辦法用一個數字比高下，因為答案取決於用量：偶爾用幾次，雲端便宜得多；每天長時間重複同一種工作，一次性硬體才有機會攤平。這篇不列任何金額，各家的訂閱價、API 單價與硬體售價一律以官網當天的頁面為準，實際怎麼算同系列有一篇專門在算。"
+        },
+        {
+          "type": "link",
+          "text": "本機 vs 雲端 AI 成本試算：訂閱、API 與電費怎麼算",
+          "url": "https://mokaair.com/zh-TW/life/local-vs-cloud-ai-cost"
+        },
+        {
+          "type": "heading",
+          "text": "付出什麼：硬體、品質落差、速度與維護",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "硬體是第一道門檻，而且官方模型卡寫得很清楚。OpenAI 在 Hugging Face 上以 Apache 2.0 授權釋出的 gpt-oss 是個好例子：小的 gpt-oss-20b 是「21B parameters with 3.6B active parameters」，模型卡說它可以「run within 16GB of memory」，定位是「for lower latency, and local or specialized use cases」；大的 gpt-oss-120b 是「117B parameters with 5.1B active parameters」，要「fit into a single 80GB GPU」。一般家用電腦能碰的是前者那一類。"
+        },
+        {
+          "type": "paragraph",
+          "text": "品質落差也可以只看官方數字。Google 的 Gemma 4 模型卡把同一代不同尺寸放進同一張評測表：MMLU Pro 這一項，最小的 E2B 是 60.0%、最大的 31B 是 85.2%；GPQA Diamond 差距更大，E2B 是 43.4%、31B 是 84.3%。官方對尺寸的定位也不同，E2B 與 E4B 寫的是給手機、邊緣裝置與瀏覽器用，31B 才是「bridges the gap between server-grade performance and local execution」。你在自己電腦上跑的，通常是這張表裡尺寸較小的那幾顆。"
+        },
+        {
+          "type": "paragraph",
+          "text": "速度與維護是另外兩筆帳。同一顆模型放在自己的顯示卡上跑，吐字速度取決於你的硬體，跟機房的規格不是同一個等級；模型更新、量化版本怎麼挑、軟體升級、出問題自己查，也全都變成你的工作，沒有客服可以問。願意花這些時間的人，才適合把主力搬到本機。"
+        },
+        {
+          "type": "link",
+          "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
+          "url": "https://mokaair.com/zh-TW/life/local-llm-hardware-requirements"
+        },
+        {
+          "type": "link",
+          "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained"
+        },
+        {
+          "type": "link",
+          "text": "小型語言模型（Small Language Model）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-small-language-model"
+        },
+        {
+          "type": "heading",
+          "text": "哪些用途適合本機，哪些不適合",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把上面三筆帳合起來，適合本機的工作有共同特徵：資料敏感、重複性高、對「最新」沒有要求，而且用小模型就做得完。不適合的也有共同特徵：要最新資訊、要最強推理，或者手上的硬體根本不夠。程式補全是個典型的適合案例，Continue 的官方指南把搭配 Ollama 的做法描述成「privacy-focused offline coding assistance」，建議拿來跑補全的也是小尺寸的程式模型。批量處理則是靠本機 API：Ollama 的本機服務開在 localhost 的 11434 埠，寫腳本重複呼叫不會按 token 計費。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "用途",
+            "本機適合嗎",
+            "為什麼"
+          ],
+          "rows": [
+            [
+              "敏感文件摘要",
+              "適合",
+              "官方隱私說明寫明本機執行時訊息、對話紀錄與文件都不會離開裝置，拖進去的檔案留在你的機器上"
+            ],
+            [
+              "離線翻譯",
+              "適合",
+              "模型下載後聊天不需要網路，官方離線說明列出的連線需求只剩搜尋、下載與更新"
+            ],
+            [
+              "程式補全",
+              "適合",
+              "官方整合指南把本機模型定位成兼顧隱私與離線的寫程式協助，補全用的小模型硬體門檻低"
+            ],
+            [
+              "批量處理",
+              "適合",
+              "本機 API 開在 localhost 的 11434 埠，腳本重複呼叫不按 token 計費，只花電費"
+            ],
+            [
+              "查最新資訊",
+              "不適合",
+              "模型只知道訓練時的資料；Ollama 自己的網頁搜尋 API 要建立 API 金鑰並需要一個免費帳號，等於又回到網路"
+            ],
+            [
+              "需要最強推理",
+              "不適合",
+              "官方評測表上尺寸差距明確，GPQA Diamond 從 E2B 的 43.4% 到 31B 的 84.3%"
+            ],
+            [
+              "硬體不夠",
+              "不適合",
+              "模型卡寫的記憶體需求擺在那裡，硬塞只會慢到不能用，不如把錢留給雲端訂閱"
+            ]
+          ],
+          "caption": "用途與本機模型的適配度，依各官方文件與模型卡整理，2026 年 9 月查證。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "本機不等於自動安全",
+          "text": "官方保證的是「本機執行時」，不是「裝了這個軟體就安全」。同一套軟體多半同時提供雲端模型，選單裡切一下就送出去了；外掛、搜尋工具與同步功能也可能把內容帶出去。真的要處理敏感資料，先確認自己用的是本機模型、把雲端功能關掉，再把電腦本身的加密與備份做好。"
+        },
+        {
+          "type": "heading",
+          "text": "三條入門路線，挑一條開始",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "三條路線的差別只在你怎麼跟模型說話，底下跑的都是同一批開放權重模型，而且可以同時裝、之後再換。不確定要哪一條，就從圖形介面那條開始，習慣之後再往下走。下面的功能描述依各家官方文件整理，實際介面以官網當天版本為準。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Ollama：指令列。一行 pull 抓模型、一行 run 開始對話，另外提供本機 API 讓其他程式接進來，適合想寫腳本或接編輯器的人。",
+            "LM Studio：圖形介面。在 App 裡搜尋並下載模型、直接聊天、需要時再開本機伺服器，不必碰終端機。",
+            "Open WebUI：網頁介面。自架一個像聊天網站的介面接到本機模型，官方文件說它支援 Ollama 與 OpenAI 相容的 API，適合多人或多裝置共用一台主機。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "link",
+          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+        },
+        {
+          "type": "link",
+          "text": "LM Studio 入門：圖形介面跑本機模型",
+          "url": "https://mokaair.com/zh-TW/life/lm-studio-getting-started"
+        },
+        {
+          "type": "link",
+          "text": "Open WebUI：給本機模型一個像 ChatGPT 的介面",
+          "url": "https://mokaair.com/zh-TW/life/open-webui-chat-interface"
+        },
+        {
+          "type": "link",
+          "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
+          "url": "https://mokaair.com/zh-TW/life/deepseek-local-with-ollama"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Ollama FAQ（官方說明文件，含本機執行是否看得到提示詞、關閉雲端功能與模型存放位置）",
+          "url": "https://docs.ollama.com/faq",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 官網首頁（官方頁面，本機執行與隱私說法）",
+          "url": "https://ollama.com/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama CLI 指令（官方說明文件，pull／run／ls）",
+          "url": "https://docs.ollama.com/cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama API（官方說明文件，本機服務位址與端點）",
+          "url": "https://docs.ollama.com/api",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama Web search（官方說明文件，網頁搜尋 API 需要金鑰與帳號）",
+          "url": "https://docs.ollama.com/capabilities/web-search",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LM Studio 隱私政策（官方頁面，本機執行時訊息與文件不離開裝置）",
+          "url": "https://lmstudio.ai/app-privacy",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LM Studio Offline Operation（官方說明文件，離線可用與仍需連線的項目）",
+          "url": "https://lmstudio.ai/docs/app/offline",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LM Studio Download a model（官方說明文件，模型來源為 Hugging Face）",
+          "url": "https://lmstudio.ai/docs/app/basics/download-model",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open WebUI 官方說明文件首頁（自架、可完全離線執行的定位）",
+          "url": "https://docs.openwebui.com/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face Hub：Downloading models（官方說明文件，下載模型權重的方式）",
+          "url": "https://huggingface.co/docs/hub/models-downloading",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "openai/gpt-oss-20b 模型卡（官方模型卡，參數量、16GB 記憶體與授權）",
+          "url": "https://huggingface.co/openai/gpt-oss-20b",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "openai/gpt-oss-120b 模型卡（官方模型卡，參數量與單張 80GB GPU）",
+          "url": "https://huggingface.co/openai/gpt-oss-120b",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemma 4 model card（Google 官方模型卡與評測表）",
+          "url": "https://ai.google.dev/gemma/docs/core/model_card_4",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemma 4 model overview（Google 官方頁面，各尺寸定位）",
+          "url": "https://ai.google.dev/gemma/docs/core",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Using Ollama with Continue（Continue 官方說明文件，本機模型做程式補全）",
+          "url": "https://docs.continue.dev/guides/ollama-guide",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

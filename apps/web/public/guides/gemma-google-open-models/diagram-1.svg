@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">Gemma 與 Gemini 的關係 / How Gemma relates to Gemini</title>
+  <desc id="desc">結構圖。最上面一個框寫著 Google DeepMind 的同一套研究與技術，往下分成左右兩條路。左邊藍框是 Gemini 雲端服務：透過網站、App 或 API 使用，權重留在 Google 不提供下載，不必準備硬體、按方案或用量計費；它下面接一個白框，說明你拿到的是一個服務，開一個對話就能用，不能下載權重也不能離線執行，模型與方案由 Google 決定。右邊綠框是 Gemma 開放權重：下載權重檔案在自己的電腦執行，可離線、資料不離開你的機器，Ollama、LM Studio、AI Studio 都能跑；它下面再分成兩個授權框，左邊是 Gemma 4，授權為 Apache 2.0，屬於 OSI 核可的開源授權，沒有禁止用途政策；右邊是 Gemma 3 與 3n，授權為 Gemma Terms of Use，是 Google 自訂授權條款，並加上禁止用途政策。最底下一條白框寫上下文視窗：Gemma 4 的 E2B 與 E4B 是 128K token，12B、26B、31B 是 256K token；Gemma 3 是 32K 或 128K token，Gemma 3n 是 32K token；三代模型卡都寫訓練涵蓋 140 種以上語言。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 11 6 L 0 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">Gemma 與 Gemini 的關係</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Gemma and Gemini: open weights vs cloud service</text>
+
+  <rect x="520" y="110" width="560" height="76" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="800" y="157" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">Google DeepMind 的同一套研究與技術</text>
+
+  <path d="M 800 186 L 800 212 L 410 212 L 410 232" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 800 186 L 800 212 L 1190 212 L 1190 232" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="120" y="238" width="580" height="190" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="410" y="286" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">Gemini：雲端服務</text>
+  <text x="410" y="328" font-size="17" fill="#102A2B" text-anchor="middle">透過網站、App 或 API 使用</text>
+  <text x="410" y="362" font-size="17" fill="#102A2B" text-anchor="middle">權重留在 Google，不提供下載</text>
+  <text x="410" y="396" font-size="17" fill="#102A2B" text-anchor="middle">不必準備硬體，按方案或用量計費</text>
+
+  <rect x="900" y="238" width="580" height="190" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1190" y="286" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">Gemma：開放權重</text>
+  <text x="1190" y="328" font-size="17" fill="#102A2B" text-anchor="middle">下載權重檔案，在自己的電腦執行</text>
+  <text x="1190" y="362" font-size="17" fill="#102A2B" text-anchor="middle">可離線，資料不離開你的機器</text>
+  <text x="1190" y="396" font-size="17" fill="#102A2B" text-anchor="middle">Ollama、LM Studio、AI Studio 都能跑</text>
+
+  <path d="M 410 428 L 410 472" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 1190 428 L 1190 452 L 1031 452 L 1031 472" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 1190 428 L 1190 452 L 1349 452 L 1349 472" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="120" y="478" width="580" height="180" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+  <text x="410" y="524" font-size="20" font-weight="700" fill="#2F6F9F" text-anchor="middle">你拿到的是一個服務</text>
+  <text x="410" y="564" font-size="17" fill="#102A2B" text-anchor="middle">開一個對話就能用，不用管硬體</text>
+  <text x="410" y="598" font-size="17" fill="#102A2B" text-anchor="middle">不能下載權重，也不能離線執行</text>
+  <text x="410" y="632" font-size="17" fill="#102A2B" text-anchor="middle">模型與方案由 Google 決定</text>
+
+  <rect x="900" y="478" width="262" height="180" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1031" y="522" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">Gemma 4</text>
+  <text x="1031" y="558" font-size="20" font-weight="700" fill="#2E7D5B" text-anchor="middle">Apache 2.0</text>
+  <text x="1031" y="594" font-size="16" fill="#102A2B" text-anchor="middle">OSI 核可的開源授權</text>
+  <text x="1031" y="624" font-size="16" fill="#102A2B" text-anchor="middle">沒有禁止用途政策</text>
+
+  <rect x="1218" y="478" width="262" height="180" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1349" y="522" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">Gemma 3／3n</text>
+  <text x="1349" y="558" font-size="19" font-weight="700" fill="#D97A2B" text-anchor="middle">Gemma Terms of Use</text>
+  <text x="1349" y="594" font-size="16" fill="#102A2B" text-anchor="middle">Google 自訂授權條款</text>
+  <text x="1349" y="624" font-size="16" fill="#102A2B" text-anchor="middle">加上禁止用途政策</text>
+
+  <rect x="120" y="690" width="1360" height="108" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="150" y="732" font-size="17" fill="#102A2B">上下文視窗：Gemma 4 的 E2B／E4B 是 128K token，12B／26B／31B 是 256K token</text>
+  <text x="150" y="768" font-size="17" fill="#102A2B">Gemma 3 是 32K 或 128K token，Gemma 3n 是 32K token；三代模型卡都寫訓練涵蓋 140 種以上語言</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">F16、Q8_0、Q4_K_M 的大小梯度 / Size gradient from F16 to Q8_0 to Q4_K_M</title>
+  <desc id="desc">三欄並排比較同一批權重在三種量化下的大小。左欄 F16：每權重 16.0005 位元，llama.cpp 官方表上 Llama 3.1 8B 為 14.96 GiB，Ollama 的 gemma3:4b-it-fp16 標籤為 8.6GB，是原始精度與轉檔起點。中欄 Q8_0：每權重 8.5008 位元，Llama 3.1 8B 為 7.95 GiB，gemma3:4b-it-q8_0 為 5.0GB，適合記憶體充裕時使用。右欄 Q4_K_M：每權重 4.8944 位元，Llama 3.1 8B 為 4.58 GiB，gemma3:4b-it-q4_K_M 為 3.3GB，是 Ollama 與 Hugging Face 的預設量化。每一欄下方的橫條長度與檔案大小成比例，由左到右越來越短。最下方說明：官方文件只說量化會有精度損失，通常以困惑度或 KL 散度衡量，可用 imatrix 降低，沒有跨模型的品質分數表。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="90" y="52" font-size="30" font-weight="bold" fill="#102A2B">量化梯度：F16 → Q8_0 → Q4_K_M</text>
+  <text x="90" y="84" font-size="18" fill="#5C6B6B">Bits per weight and file size, from the official llama.cpp and Ollama pages</text>
+
+  <!-- F16 -->
+  <rect x="90" y="130" width="460" height="500" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="320" y="192" font-size="30" font-weight="bold" fill="#102A2B" text-anchor="middle">F16</text>
+  <text x="320" y="232" font-size="15" fill="#5C6B6B" text-anchor="middle">每權重位元</text>
+  <text x="320" y="268" font-size="24" font-weight="bold" fill="#2F6F9F" text-anchor="middle">16.0005</text>
+  <text x="320" y="316" font-size="15" fill="#5C6B6B" text-anchor="middle">Llama 3.1 8B 的檔案大小</text>
+  <text x="320" y="350" font-size="22" font-weight="bold" fill="#102A2B" text-anchor="middle">14.96 GiB</text>
+  <rect x="114" y="372" width="412" height="30" rx="6" fill="#2F6F9F"/>
+  <text x="320" y="446" font-size="15" fill="#5C6B6B" text-anchor="middle">Ollama 的 gemma3:4b 標籤</text>
+  <text x="320" y="480" font-size="22" font-weight="bold" fill="#102A2B" text-anchor="middle">8.6GB</text>
+  <text x="320" y="542" font-size="17" fill="#102A2B" text-anchor="middle">原始精度，轉檔的起點</text>
+  <text x="320" y="572" font-size="17" fill="#102A2B" text-anchor="middle">也是比較大小的基準</text>
+
+  <!-- Q8_0 -->
+  <rect x="570" y="130" width="460" height="500" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="800" y="192" font-size="30" font-weight="bold" fill="#102A2B" text-anchor="middle">Q8_0</text>
+  <text x="800" y="232" font-size="15" fill="#5C6B6B" text-anchor="middle">每權重位元</text>
+  <text x="800" y="268" font-size="24" font-weight="bold" fill="#2E7D5B" text-anchor="middle">8.5008</text>
+  <text x="800" y="316" font-size="15" fill="#5C6B6B" text-anchor="middle">Llama 3.1 8B 的檔案大小</text>
+  <text x="800" y="350" font-size="22" font-weight="bold" fill="#102A2B" text-anchor="middle">7.95 GiB</text>
+  <rect x="594" y="372" width="219" height="30" rx="6" fill="#2E7D5B"/>
+  <text x="800" y="446" font-size="15" fill="#5C6B6B" text-anchor="middle">Ollama 的 gemma3:4b 標籤</text>
+  <text x="800" y="480" font-size="22" font-weight="bold" fill="#102A2B" text-anchor="middle">5.0GB</text>
+  <text x="800" y="542" font-size="17" fill="#102A2B" text-anchor="middle">記憶體很充裕時</text>
+  <text x="800" y="572" font-size="17" fill="#102A2B" text-anchor="middle">的高位元選擇</text>
+
+  <!-- Q4_K_M -->
+  <rect x="1050" y="130" width="460" height="500" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1280" y="192" font-size="30" font-weight="bold" fill="#102A2B" text-anchor="middle">Q4_K_M</text>
+  <text x="1280" y="232" font-size="15" fill="#5C6B6B" text-anchor="middle">每權重位元</text>
+  <text x="1280" y="268" font-size="24" font-weight="bold" fill="#0D6B68" text-anchor="middle">4.8944</text>
+  <text x="1280" y="316" font-size="15" fill="#5C6B6B" text-anchor="middle">Llama 3.1 8B 的檔案大小</text>
+  <text x="1280" y="350" font-size="22" font-weight="bold" fill="#102A2B" text-anchor="middle">4.58 GiB</text>
+  <rect x="1074" y="372" width="126" height="30" rx="6" fill="#0D6B68"/>
+  <text x="1280" y="446" font-size="15" fill="#5C6B6B" text-anchor="middle">Ollama 的 gemma3:4b 標籤</text>
+  <text x="1280" y="480" font-size="22" font-weight="bold" fill="#102A2B" text-anchor="middle">3.3GB</text>
+  <text x="1280" y="542" font-size="17" fill="#102A2B" text-anchor="middle">Ollama 與 Hugging Face</text>
+  <text x="1280" y="572" font-size="17" fill="#102A2B" text-anchor="middle">不指定時的預設量化</text>
+
+  <text x="800" y="662" font-size="18" fill="#5C6B6B" text-anchor="middle">位元數減半，檔案大小跟著減半；往右越省記憶體，往左越接近原始權重</text>
+  <line x1="110" y1="684" x2="1486" y2="684" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="90" y="712" width="1420" height="122" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="120" y="762" font-size="18" fill="#102A2B">官方文件只說量化會有精度損失，通常以困惑度（ppl）或 KL 散度衡量，可用 imatrix 降低</text>
+  <text x="120" y="798" font-size="18" fill="#102A2B">沒有跨模型的品質分數表：同一組提示詞在兩個量化各跑一次，用自己的任務判斷</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
