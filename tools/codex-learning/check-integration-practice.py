@@ -1,22 +1,24 @@
 """Execute the parallel-integration lesson in isolated temporary Git worktrees."""
-from datetime import datetime, timezone
-from hashlib import sha256
 import json
 import os
-from pathlib import Path
 import re
 import subprocess
 import tempfile
+from datetime import datetime, timezone
+from hashlib import sha256
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 AUTHOR = ROOT / "docs/codex-learning/deep/modules/54.json"
 module = json.loads(AUTHOR.read_text(encoding="utf-8"))
-env = {**os.environ, "GIT_CONFIG_NOSYSTEM": "1", "GIT_CONFIG_GLOBAL": os.devnull}
+env = {key: value for key, value in os.environ.items() if not key.startswith("GIT_")}
+env.update(GIT_CONFIG_NOSYSTEM="1", GIT_CONFIG_GLOBAL=os.devnull, GIT_TERMINAL_PROMPT="0")
 checks = []
 
 with tempfile.TemporaryDirectory(prefix="codex-integration-practice-") as temporary:
     parent = Path(temporary).resolve()
     assert parent.parent == Path(tempfile.gettempdir()).resolve()
+    assert parent.name.startswith("codex-integration-practice-")
     primary = parent / "integration-lab"
     primary.mkdir()
     for name in ["heading.txt", "footer.txt", "integration.test.mjs"]:
@@ -24,13 +26,13 @@ with tempfile.TemporaryDirectory(prefix="codex-integration-practice-") as tempor
         (primary / name).write_text(code, encoding="utf-8")
 
     def git(*arguments, cwd=primary, expected=0):
-        result = subprocess.run(["git", *arguments], cwd=cwd, env=env, capture_output=True, encoding="utf-8", timeout=20)
+        result = subprocess.run(["git", *arguments], cwd=cwd, env=env, capture_output=True, encoding="utf-8", timeout=20, check=False)
         assert result.returncode == expected, result.stdout + result.stderr
         return result.stdout
 
     def tests(directory, passes, fails):
         # Match the lesson: call from the original directory with a path to the other test.
-        result = subprocess.run(["node", "--test", "--test-reporter=tap", str(directory / "integration.test.mjs")], cwd=primary, capture_output=True, encoding="utf-8", timeout=20)
+        result = subprocess.run(["node", "--test", "--test-reporter=tap", str(directory / "integration.test.mjs")], cwd=primary, capture_output=True, encoding="utf-8", timeout=20, check=False)
         assert result.returncode == (1 if fails else 0), result.stdout + result.stderr
         assert re.search(rf"# pass {passes}\b", result.stdout) and re.search(rf"# fail {fails}\b", result.stdout), result.stdout
 

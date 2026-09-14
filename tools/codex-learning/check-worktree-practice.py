@@ -1,28 +1,30 @@
 """Execute the worktree lesson in a new temporary repository, without remotes."""
-from datetime import datetime, timezone
-from hashlib import sha256
 import json
 import os
-from pathlib import Path
 import subprocess
 import tempfile
+from datetime import datetime, timezone
+from hashlib import sha256
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 AUTHOR = ROOT / "docs/codex-learning/deep/modules/27.json"
 module = json.loads(AUTHOR.read_text(encoding="utf-8"))
 sample = next(block["code"] for block in module["blocks"] if block["type"] == "code" and block.get("label", [None])[0] == "worktree-lab/notes.md")
 checks = []
-env = {**os.environ, "GIT_CONFIG_NOSYSTEM": "1", "GIT_CONFIG_GLOBAL": os.devnull}
+env = {key: value for key, value in os.environ.items() if not key.startswith("GIT_")}
+env.update(GIT_CONFIG_NOSYSTEM="1", GIT_CONFIG_GLOBAL=os.devnull, GIT_TERMINAL_PROMPT="0")
 
 with tempfile.TemporaryDirectory(prefix="codex-worktree-practice-") as temporary:
     parent = Path(temporary).resolve()
     assert parent.parent == Path(tempfile.gettempdir()).resolve()
+    assert parent.name.startswith("codex-worktree-practice-")
     primary = parent / "worktree-lab"
     secondary = parent / "worktree-copy"
     primary.mkdir()
 
     def git(*arguments, cwd=primary, expected=0):
-        result = subprocess.run(["git", *arguments], cwd=cwd, env=env, capture_output=True, encoding="utf-8", timeout=20)
+        result = subprocess.run(["git", *arguments], cwd=cwd, env=env, capture_output=True, encoding="utf-8", timeout=20, check=False)
         assert result.returncode == expected, result.stdout + result.stderr
         return result.stdout, result.stderr
 

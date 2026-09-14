@@ -262,3 +262,9 @@ F 13/46/47/20/19/21 now has targeted five-language revisions and evidence in doc
 ## Latest Unit G checkpoint
 
 G 48/49/24/50/51 now has targeted five-language revisions and evidence in docs/codex-learning/evidence/unit-g-depth-review.json. Coverage is 42 unique lessons, 18 pending (next H: 25/52/27/28/53/54). Ten skill/template reference checks, integrity 60/300, 9 API, 9 compiler, five shared catalogues and affected-tool Ruff pass. Final audit remains 0 errors/23 warnings after condensing repeated English wording. Original code, source metadata, images, the base skill ZIP and shared series_data remain unchanged. No actual skill invocation/policy, plugin authentication/service read or browser execution. Final acceptance remains 0/60; no partial PR or deployment.
+
+## Unit H checkpoint (2026-09-14)
+
+After 1cb4df54, revised all six H lessons in four author languages and five compiled locales. Corrected CLI-only /mcp versus desktop/IDE settings and task activity; added dirty-worktree removal refusal, checkout attribution, a separate duplicate-ID fault copy and exact integration SHA comparison. All 44 original copyable blocks remain in order; three labelled blocks added. Original images, sources and shared series_data unchanged.
+
+Evidence: docs/codex-learning/evidence/unit-h-depth-review.json. Twenty-five Windows reference checks pass (MCP 6, worktree 7, subagent reference 6, integration 6), alongside integrity 60/300, 9 API, 9 compiler, five catalogues and affected-tool Ruff. Audit is 0 errors/21 warnings. No model/subagent, role activation, OAuth, product UI or other-OS execution. Coverage is 48 unique lessons, 12 pending (I next). Final acceptance remains 0/60, with the preview restriction unresolved; no partial PR, publication or deployment.

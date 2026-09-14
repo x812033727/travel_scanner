@@ -3,15 +3,16 @@
 No model requests, user authentication, private files, or global settings writes.
 """
 import argparse
-from datetime import datetime, timezone
-from hashlib import sha256
 import json
 import os
-from pathlib import Path
 import subprocess
 import tempfile
-import tomllib
 import urllib.request
+from datetime import datetime, timezone
+from hashlib import sha256
+from pathlib import Path
+
+import tomllib
 
 ROOT = Path(__file__).resolve().parents[2]
 URL = "https://developers.openai.com/mcp"
@@ -26,13 +27,14 @@ before = actual_config.read_bytes() if actual_config.exists() else None
 with tempfile.TemporaryDirectory(prefix="codex-mcp-practice-") as folder:
     isolated = Path(folder).resolve()
     assert isolated.parent == Path(tempfile.gettempdir()).resolve()
+    assert isolated.name.startswith("codex-mcp-practice-")
     env = {**os.environ, "CODEX_HOME": str(isolated)}
     config = isolated / "config.toml"
     baseline = '[mcp_servers.preserved]\nurl = "https://example.invalid/mcp"\nenabled = false\n'
     config.write_text(baseline, encoding="utf-8")
 
     def cli(*commands, expected=0):
-        result = subprocess.run([args.codex, *commands], cwd=isolated, env=env, capture_output=True, encoding="utf-8", timeout=45)
+        result = subprocess.run([args.codex, *commands], cwd=isolated, env=env, capture_output=True, encoding="utf-8", timeout=45, check=False)
         assert result.returncode == expected, result.stderr
         return result.stdout
 

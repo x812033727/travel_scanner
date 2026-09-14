@@ -148,9 +148,13 @@
         },
         {
           "type": "code",
-          "label": "新 Codex 工作階段內：檢查可用工具",
+          "label": "新 Codex CLI 互動工作階段：檢查可用工具",
           "language": "text",
           "code": "/mcp\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "/mcp 這段只在 CLI 互動畫面使用。桌面版和 IDE 以 MCP servers 設定確認停用，重新啟動後在新任務檢查工具活動。記錄「客戶端未提供工具」即可，不必為了重現命令而改用其他入口；跨入口測試要另記主機與設定位置。"
         },
         {
           "type": "paragraph",
@@ -428,9 +432,13 @@
         },
         {
           "type": "code",
-          "label": "Inside a fresh Codex session: inspect available tools",
+          "label": "Fresh interactive Codex CLI session: inspect tools",
           "language": "text",
           "code": "/mcp\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "The /mcp block is for interactive CLI. In desktop or IDE, confirm disabling in MCP servers settings, restart and inspect tool activity in a new task. Record that the client did not expose the tool; switching surfaces is unnecessary. If you compare surfaces, record each host and configuration location."
         },
         {
           "type": "paragraph",
@@ -708,9 +716,13 @@
         },
         {
           "type": "code",
-          "label": "新 Codex セッション内：ツール確認",
+          "label": "新しい Codex CLI 対話セッション：ツール確認",
           "language": "text",
           "code": "/mcp\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "/mcp は CLI 対話画面用です。デスクトップと IDE は MCP servers 設定で無効化を確認し、再起動後の新規タスクで活動を見ます。「クライアントがツールを提供しなかった」と記録すればよく、命令再現のため入口を変える必要はありません。比較する場合は主機と設定場所を別記します。"
         },
         {
           "type": "paragraph",
@@ -988,9 +1000,13 @@
         },
         {
           "type": "code",
-          "label": "새 Codex 세션 안: 도구 확인",
+          "label": "새 Codex CLI 대화 세션: 도구 확인",
           "language": "text",
           "code": "/mcp\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "/mcp는 CLI 대화 화면용입니다. 데스크톱과 IDE는 MCP servers 설정에서 비활성화를 확인하고 재시작 후 새 작업의 도구 활동을 봅니다. 클라이언트가 도구를 제공하지 않았다고 기록하면 되며 명령 재현을 위해 화면을 바꿀 필요는 없습니다. 화면을 비교한다면 각각의 호스트와 설정 위치를 적으세요."
         },
         {
           "type": "paragraph",
@@ -1268,9 +1284,13 @@
         },
         {
           "type": "code",
-          "label": "新 Codex 工作阶段内：检查可用工具",
+          "label": "新 Codex CLI 互动工作阶段：检查可用工具",
           "language": "text",
           "code": "/mcp\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "/mcp 这段只在 CLI 互动画面使用。桌面版和 IDE 以 MCP servers 设定确认停用，重新启动后在新任务检查工具活动。记录「客户端未提供工具」即可，不必为了重现命令而改用其他入口；跨入口测试要另记主机与设定位置。"
         },
         {
           "type": "paragraph",

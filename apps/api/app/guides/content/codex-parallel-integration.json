@@ -197,6 +197,16 @@
           "text": "預期整合目錄兩項通過，diff 同時包含標題與頁尾的新值，而原 integration-lab 的 main 仍是初始文字。若第一個 merge 已衝突，先停止，不執行第二個；不能用某條分支自己的綠燈代替組合驗收。這裡的 --no-ff 用於讓教材清楚保留兩次整合紀錄，真實儲存庫的合併策略仍依其規則決定。"
         },
         {
+          "type": "code",
+          "label": "原目錄：記下已通過的整合 SHA",
+          "language": "sh",
+          "code": "git -C ../integration-review rev-parse HEAD\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "將這個完整 SHA 和兩項通過結果放在同一筆紀錄。完成下一步衝突與 abort 後，從原目錄再執行同一命令，結果必須與此刻相同，並且 status 乾淨、兩項仍通過；三者一起核對才能確認回到原狀。不要把標題分支或 main 的 SHA 誤填為整合 SHA。"
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "步驟 4：刻意製造衝突並中止"
@@ -494,6 +504,16 @@
         {
           "type": "paragraph",
           "text": "Expect both checks to pass in the review checkout, both new values in its diff and unchanged baseline text on original main. If the first merge conflicts, stop before the second. A green individual branch does not replace combined acceptance. --no-ff preserves visible integration records for teaching; real repositories should follow their own merge policy."
+        },
+        {
+          "type": "code",
+          "label": "Original checkout: record the passing integration SHA",
+          "language": "sh",
+          "code": "git -C ../integration-review rev-parse HEAD\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Record this full SHA with the two passing checks. After the conflict and abort below, run the same command from the original folder: require the identical SHA, clean status and both tests passing. Do not substitute the heading branch or main SHA for the integration commit."
         },
         {
           "type": "heading",
@@ -795,6 +815,16 @@
           "text": "統合先は二成功、差分は両新値、元 main は初期値のままです。最初の merge が競合したら二回目へ進みません。個別の成功で組合せ確認を代用しません。教材では履歴を示すため --no-ff を使い、実庫は自身の方針に従います。"
         },
         {
+          "type": "code",
+          "label": "元フォルダー：成功した統合 SHA を記録",
+          "language": "sh",
+          "code": "git -C ../integration-review rev-parse HEAD\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "この完全 SHA と二成功を同じ記録に残します。次の競合と abort 後、元フォルダーから同じ命令で同じ SHA、未変更状態、二成功を確認します。標題分岐や main の SHA を統合 SHA と取り違えません。"
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "手順4：意図的競合と中止"
@@ -1094,6 +1124,16 @@
           "text": "통합 폴더는 두 통과, 차이는 두 새 값, 원본 main은 초기값이어야 합니다. 첫 merge가 충돌하면 두 번째는 실행하지 마세요. 개별 브랜치 통과는 조합 검증을 대신하지 않습니다. --no-ff는 교육상 기록을 남기기 위한 것이며 실제 저장소 정책은 따로 따릅니다."
         },
         {
+          "type": "code",
+          "label": "원본 폴더: 통과한 통합 SHA 기록",
+          "language": "sh",
+          "code": "git -C ../integration-review rev-parse HEAD\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "이 전체 SHA를 두 항목 통과와 함께 기록합니다. 다음 충돌과 abort 후 원본 폴더에서 같은 명령으로 동일 SHA, 깨끗한 상태, 두 통과를 모두 확인하세요. 제목 브랜치나 main의 SHA를 통합 SHA로 적지 마세요."
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "4단계: 의도적 충돌과 중지"
@@ -1391,6 +1431,16 @@
         {
           "type": "paragraph",
           "text": "预期整合目录两项通过，diff 同时包含标题与页尾的新值，而原 integration-lab 的 main 仍是初始文字。若第一个 merge 已冲突，先停止，不执行第二个；不能用某条分支自己的绿灯代替组合验收。这里的 --no-ff 用于让教材清楚保留两次整合纪录，真实储存库的合并策略仍依其规则决定。"
+        },
+        {
+          "type": "code",
+          "label": "原目录：记下已通过的整合 SHA",
+          "language": "sh",
+          "code": "git -C ../integration-review rev-parse HEAD\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "将这个完整 SHA 和两项通过结果放在同一笔纪录。完成下一步冲突与 abort 后，从原目录再执行同一命令，结果必须与此刻相同，并且 status 干净、两项仍通过；三者一起核对才能确认回到原状。不要把标题分支或 main 的 SHA 误填为整合 SHA。"
         },
         {
           "type": "heading",

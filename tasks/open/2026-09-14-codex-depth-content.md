@@ -162,10 +162,17 @@ Complete the approved 60-lesson, five-language learning series while keeping edi
 - [x] Deepen Unit E (45, 22, 17, 08, 18), label 29 existing blocks, add six input/record examples and verify the 16-case reference suite (10 E-specific checks).
 - [x] Deepen Unit F (13, 46, 47, 20, 19, 21), label 38 existing blocks, add eight examples and verify 13 Git/review plus 20 reference checks (10 F-specific).
 - [x] Deepen Unit G (48, 49, 24, 50, 51), preserve 28 original code blocks, add seven examples and verify ten skill/template reference checks; lesson 23 retains representative evidence.
-- [ ] Continue targeted depth review for the remaining 18 lessons, starting with Unit H (25, 52, 27, 28, 53, 54).
+- [x] Deepen Unit H (25, 52, 27, 28, 53, 54), correct MCP surface usage, preserve 44 original code blocks, add three examples and verify 25 MCP/Git/Node reference checks.
+- [ ] Continue targeted depth review for the remaining 12 lessons, starting with Unit I (26, 29, 30, 55, 56, 57).
 - [ ] Complete remaining full-text five-language editorial acceptance and representative product UI evidence.
 - [ ] Complete final integrated browser acceptance for all 60 lessons and the hub. The preview-start restriction remains unresolved.
 - [ ] After all acceptance gates pass, proceed with the already authorized PR, exact-head CI/merge, guarded import/publication/deployment and public verification. No partial PR.
+
+## Unit H revision
+
+After 1cb4df54, revised all six H lessons in four author languages and five compiled locales. Corrected CLI-only /mcp versus desktop/IDE settings and task activity; added dirty-worktree removal refusal, checkout attribution, a separate duplicate-ID fault copy and exact integration SHA comparison. All 44 original copyable blocks remain in order; three labelled blocks added. Original images, sources and shared series_data unchanged.
+
+Evidence: docs/codex-learning/evidence/unit-h-depth-review.json. Twenty-five Windows reference checks pass (MCP 6, worktree 7, subagent reference 6, integration 6), alongside integrity 60/300, 9 API, 9 compiler, five catalogues and affected-tool Ruff. Audit is 0 errors/21 warnings. No model/subagent, role activation, OAuth, product UI or other-OS execution. Coverage is 48 unique lessons, 12 pending (I next). Final acceptance remains 0/60, with the preview restriction unresolved; no partial PR, publication or deployment.
 
 ## Unit G revision
 

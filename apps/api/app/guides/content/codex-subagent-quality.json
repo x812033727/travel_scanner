@@ -157,6 +157,25 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "選用：確認測試真的能抓到錯誤"
+        },
+        {
+          "type": "paragraph",
+          "text": "另用檔案管理員建立全新的 review-negative 副本，從剛通過六項的練習目錄複製五個原始檔與新增測試。先確認原目錄和副本的完整路徑不同，保留副本 core.mjs 的原始內容。只在這份可丟棄副本的 addTask 移除下面這一段一次，保留其他 ID 檢查；原本的唯讀審查目錄不要修改。"
+        },
+        {
+          "type": "code",
+          "label": "故障副本中要移除的確切片段；不是完整程式",
+          "language": "javascript",
+          "code": " || tasks.some((task) => task.id === id)\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 review-negative 重跑上面的六項測試，預期四過兩敗且 exit code 非零：重複 ID 被接受後，原本一項和新增一項都會抓到。若是語法錯誤、找不到檔案，或結果仍全綠，先核對目錄與刪除片段，不能當作故障已重現。把副本 core.mjs 恢復成保存的原文，再跑到六過零敗。這筆負面對照屬於主任務實驗，沒有啟動子代理，也不代表 UI 已驗收。"
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "步驟 4：處理矛盾、過期與未完成"
         },
@@ -404,6 +423,25 @@
         {
           "type": "paragraph",
           "text": "Check that the new filename is unused before saving. There are six top-level tests in total, retaining the original three. The new cases distinguish duplicate IDs, which are rejected, from identical titles with distinct IDs, which are valid, and reject string false as a boolean. If a worker confuses these concepts, ask it to revisit the case while leaving application code unchanged."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Optional: prove the tests detect the fault"
+        },
+        {
+          "type": "paragraph",
+          "text": "Create a fresh review-negative copy containing the five application files and added test from the six-pass lab. Confirm distinct absolute paths and preserve this copy's original core.mjs. Remove the exact fragment below once from addTask in this disposable copy only, retaining other ID checks. Keep the original read-only review folder unchanged."
+        },
+        {
+          "type": "code",
+          "label": "Exact fragment to remove in the fault copy; not a complete program",
+          "language": "javascript",
+          "code": " || tasks.some((task) => task.id === id)\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "In review-negative, rerun the same six tests: expect four passes, two failures and a nonzero exit status. Accepting duplicate IDs breaks one original and one added test. A syntax error, missing file or all-green result is not this reproduced fault; check the folder and edit. Restore the saved core.mjs and require six passes again. Record this as the parent's experiment, not delegated execution or UI acceptance."
         },
         {
           "type": "heading",
@@ -657,6 +695,25 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "任意：テストが故障を検出するか確認"
+        },
+        {
+          "type": "paragraph",
+          "text": "六成功の実習から元五ファイルと追加テストを、新規 review-negative コピーへ複製します。完全パスが元と異なることを確認し、このコピーの core.mjs 原文を保存します。この使い捨てコピーの addTask だけで次の断片を一度除き、他の ID 検査を残します。元の読取り審査フォルダーは変更しません。"
+        },
+        {
+          "type": "code",
+          "label": "故障コピーで除く正確な断片：完全なプログラムではない",
+          "language": "javascript",
+          "code": " || tasks.some((task) => task.id === id)\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "review-negative で同じ六テストを実行すると四成功・二失敗、終了値は非ゼロです。重複 ID を受理して元と追加の各一テストが失敗します。構文エラー、ファイル不在、全成功ならフォルダーと編集を確認し、目的の再現とは数えません。保存した core.mjs に戻して六成功を確認します。親の実験として記録し、代理実行や UI 検収とはしません。"
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "手順4：矛盾・旧情報・未完了の扱い"
         },
@@ -907,6 +964,25 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "선택: 테스트가 결함을 잡는지 확인"
+        },
+        {
+          "type": "paragraph",
+          "text": "여섯 항목이 통과한 실습의 원본 다섯 파일과 추가 테스트를 새 review-negative 폴더로 복사합니다. 전체 경로가 원본과 다른지 확인하고 이 사본의 core.mjs 원문을 보존하세요. 이 폐기 가능한 사본의 addTask에서만 아래 부분을 한 번 제거하고 다른 ID 검사는 남깁니다. 원래 읽기 전용 검토 폴더는 바꾸지 마세요."
+        },
+        {
+          "type": "code",
+          "label": "결함 사본에서 제거할 정확한 부분: 완전한 프로그램 아님",
+          "language": "javascript",
+          "code": " || tasks.some((task) => task.id === id)\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "review-negative에서 같은 여섯 테스트를 실행하면 네 통과·두 실패와 0이 아닌 종료 상태가 나와야 합니다. 중복 ID를 허용하면서 기존 한 항목과 추가 한 항목이 실패합니다. 구문 오류, 파일 누락, 모두 통과는 목표 결함 재현이 아니므로 폴더와 편집을 확인하세요. 보존한 core.mjs를 복원해 여섯 통과로 돌아옵니다. 이는 부모의 실험이며 실제 위임 실행이나 UI 검증이 아닙니다."
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "4단계: 모순·오래된 정보·미완료 처리"
         },
@@ -1154,6 +1230,25 @@
         {
           "type": "paragraph",
           "text": "先确认同名测试档不存在，再保存完整档案。这次总计六个顶层测试，原三项不能因新增验证而被删掉。新增案例特别区分重复 ID 与重复标题：前者拒绝，后者只要 ID 不同仍合法；还检查字串 false 不能冒充布林值。如果子代理把这两个重复概念混为一谈，让它回到该案例重新说明，主程式暂时维持原样。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "选用：确认测试真的能抓到错误"
+        },
+        {
+          "type": "paragraph",
+          "text": "另用档案管理员建立全新的 review-negative 副本，从刚通过六项的练习目录复制五个原始档与新增测试。先确认原目录和副本的完整路径不同，保留副本 core.mjs 的原始内容。只在这份可丢弃副本的 addTask 移除下面这一段一次，保留其他 ID 检查；原本的唯读审查目录不要修改。"
+        },
+        {
+          "type": "code",
+          "label": "故障副本中要移除的确切片段；不是完整程式",
+          "language": "javascript",
+          "code": " || tasks.some((task) => task.id === id)\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 review-negative 重跑上面的六项测试，预期四过两败且 exit code 非零：重复 ID 被接受后，原本一项和新增一项都会抓到。若是语法错误、找不到档案，或结果仍全绿，先核对目录与删除片段，不能当作故障已重现。把副本 core.mjs 恢复成保存的原文，再跑到六过零败。这笔负面对照属于主任务实验，没有启动子代理，也不代表 UI 已验收。"
         },
         {
           "type": "heading",

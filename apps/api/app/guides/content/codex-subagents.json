@@ -113,6 +113,10 @@
           "code": "Use exactly two subagents for a read-only review of this Small Steps reference copy.\nDo not spawn additional subagents or modify files.\n\nAgent A: Read core.mjs. Map addTask, visibleTasks and decodeTasks.\nFor each function, report its input, behavior, failure or boundary handling, and file/symbol evidence.\n\nAgent B: Read core.test.mjs. Map existing test coverage to those same functions.\nDistinguish covered cases from possible missing cases; do not invent a bug just because a test is absent.\n\nParent: Wait for both reports. Verify cited symbols and reconcile disagreements.\nRun node --test core.test.mjs once in the practice directory after collecting the reports.\nReturn a compact evidence table, actual test result and unverified claims.\nIf subagents are unavailable, say so; do not present a single-agent answer as delegated work.\n"
         },
         {
+          "type": "paragraph",
+          "text": "送出前，把目前副本的完整根路徑與基準結果一併提供，並要求兩份回報各自列出讀取路徑。兩份報告即使都寫 core.mjs，也可能讀到不同 checkout；主任務要將路徑對回同一份 expected 副本。把「三項基準通過」標成主任務先前的紀錄，不能算成 A 或 B 自己執行的測試。"
+        },
+        {
           "type": "table",
           "header": [
             "角色",
@@ -396,6 +400,10 @@
           "label": "主任务输入框：两个唯读子任务",
           "language": "text",
           "code": "Use exactly two subagents for a read-only review of this Small Steps reference copy.\nDo not spawn additional subagents or modify files.\n\nAgent A: Read core.mjs. Map addTask, visibleTasks and decodeTasks.\nFor each function, report its input, behavior, failure or boundary handling, and file/symbol evidence.\n\nAgent B: Read core.test.mjs. Map existing test coverage to those same functions.\nDistinguish covered cases from possible missing cases; do not invent a bug just because a test is absent.\n\nParent: Wait for both reports. Verify cited symbols and reconcile disagreements.\nRun node --test core.test.mjs once in the practice directory after collecting the reports.\nReturn a compact evidence table, actual test result and unverified claims.\nIf subagents are unavailable, say so; do not present a single-agent answer as delegated work.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "送出前，把目前副本的完整根路径与基准结果一并提供，并要求两份回报各自列出读取路径。两份报告即使都写 core.mjs，也可能读到不同 checkout；主任务要将路径对回同一份 expected 副本。把「三项基准通过」标成主任务先前的纪录，不能算成 A 或 B 自己执行的测试。"
         },
         {
           "type": "table",
@@ -683,6 +691,10 @@
           "code": "Use exactly two subagents for a read-only review of this Small Steps reference copy.\nDo not spawn additional subagents or modify files.\n\nAgent A: Read core.mjs. Map addTask, visibleTasks and decodeTasks.\nFor each function, report its input, behavior, failure or boundary handling, and file/symbol evidence.\n\nAgent B: Read core.test.mjs. Map existing test coverage to those same functions.\nDistinguish covered cases from possible missing cases; do not invent a bug just because a test is absent.\n\nParent: Wait for both reports. Verify cited symbols and reconcile disagreements.\nRun node --test core.test.mjs once in the practice directory after collecting the reports.\nReturn a compact evidence table, actual test result and unverified claims.\nIf subagents are unavailable, say so; do not present a single-agent answer as delegated work.\n"
         },
         {
+          "type": "paragraph",
+          "text": "Include the reference copy's absolute root and baseline result with the request, and ask each report to identify its read paths. Two reports naming core.mjs may concern different checkouts; match both to the same expected copy. Label the three-pass baseline as the parent's earlier record, not a test run by A or B."
+        },
+        {
           "type": "table",
           "header": [
             "Role",
@@ -968,6 +980,10 @@
           "code": "Use exactly two subagents for a read-only review of this Small Steps reference copy.\nDo not spawn additional subagents or modify files.\n\nAgent A: Read core.mjs. Map addTask, visibleTasks and decodeTasks.\nFor each function, report its input, behavior, failure or boundary handling, and file/symbol evidence.\n\nAgent B: Read core.test.mjs. Map existing test coverage to those same functions.\nDistinguish covered cases from possible missing cases; do not invent a bug just because a test is absent.\n\nParent: Wait for both reports. Verify cited symbols and reconcile disagreements.\nRun node --test core.test.mjs once in the practice directory after collecting the reports.\nReturn a compact evidence table, actual test result and unverified claims.\nIf subagents are unavailable, say so; do not present a single-agent answer as delegated work.\n"
         },
         {
+          "type": "paragraph",
+          "text": "依頼に参照コピーの完全ルートと基準結果を添え、各報告に読んだパスを記載させます。同じ core.mjs 名でも別 checkout の可能性があるため、親が同じ expected コピーへ照合します。三成功の基準は親の過去記録であり、A や B の実行結果とはしません。"
+        },
+        {
           "type": "table",
           "header": [
             "役割",
@@ -1251,6 +1267,10 @@
           "label": "부모 입력창: 읽기 전용 하위 작업 두 개",
           "language": "text",
           "code": "Use exactly two subagents for a read-only review of this Small Steps reference copy.\nDo not spawn additional subagents or modify files.\n\nAgent A: Read core.mjs. Map addTask, visibleTasks and decodeTasks.\nFor each function, report its input, behavior, failure or boundary handling, and file/symbol evidence.\n\nAgent B: Read core.test.mjs. Map existing test coverage to those same functions.\nDistinguish covered cases from possible missing cases; do not invent a bug just because a test is absent.\n\nParent: Wait for both reports. Verify cited symbols and reconcile disagreements.\nRun node --test core.test.mjs once in the practice directory after collecting the reports.\nReturn a compact evidence table, actual test result and unverified claims.\nIf subagents are unavailable, say so; do not present a single-agent answer as delegated work.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "요청에 참조 사본의 전체 루트와 기준 결과를 포함하고 각 보고서에 읽은 경로를 적게 하세요. core.mjs라는 이름이 같아도 다른 checkout일 수 있으므로 부모가 같은 expected 사본인지 맞춥니다. 세 항목 통과 기준은 부모의 이전 기록이며 A나 B가 실행한 테스트로 세지 않습니다."
         },
         {
           "type": "table",

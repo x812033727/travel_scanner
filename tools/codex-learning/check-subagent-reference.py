@@ -1,13 +1,14 @@
 """Check the reference evidence, not a subagent run or custom-role activation."""
-from datetime import datetime, timezone
-from hashlib import sha256
 import json
-from pathlib import Path
 import re
 import shlex
 import shutil
 import subprocess
 import tempfile
+from datetime import datetime, timezone
+from hashlib import sha256
+from pathlib import Path
+
 import tomllib
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -22,13 +23,14 @@ checks = ["Custom role is valid TOML with required fields; activation and runtim
 with tempfile.TemporaryDirectory(prefix="codex-subagent-reference-") as folder:
     lab = Path(folder).resolve()
     assert lab.parent == Path(tempfile.gettempdir()).resolve()
+    assert lab.name.startswith("codex-subagent-reference-")
     for source in reference.iterdir():
         if source.is_file():
             shutil.copy2(source, lab / source.name)
     before = {p.name: p.read_bytes() for p in lab.iterdir()}
 
     def run(args, passes=None, fails=0):
-        result = subprocess.run(args, cwd=lab, capture_output=True, encoding="utf-8", timeout=20)
+        result = subprocess.run(args, cwd=lab, capture_output=True, encoding="utf-8", timeout=20, check=False)
         assert result.returncode == (1 if fails else 0), result.stdout + result.stderr
         if passes is not None:
             assert re.search(rf"# pass {passes}\b", result.stdout), result.stdout
@@ -49,7 +51,7 @@ with tempfile.TemporaryDirectory(prefix="codex-subagent-reference-") as folder:
     run(args, passes=6)
     checks.append("All six original and added evidence tests pass without editing the application")
     core = lab / "core.mjs"
-    guard = " || tasks.some((task) => task.id === id)"
+    guard = next(b["code"] for b in quality["blocks"] if b["type"] == "code" and b["code"].startswith(" || tasks.some")).rstrip("\n")
     assert core.read_text(encoding="utf-8").count(guard) == 1
     core.write_text(core.read_text(encoding="utf-8").replace(guard, ""), encoding="utf-8")
     run(args, passes=4, fails=2)

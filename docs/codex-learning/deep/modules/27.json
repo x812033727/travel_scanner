@@ -187,6 +187,26 @@
       ]
     },
     {
+      "type": "p",
+      "text": [
+        "提交前再做一次移除失敗的對照。保持 COPY-B 尚未提交，先用 worktree list 核對 ../worktree-copy 的完整路徑確實是本篇副本，再執行下面命令。預期 Git 因修改尚未保存而拒絕，資料夾與 COPY-B 都仍在。若已先提交，就跳過這個對照，不再製造額外變更。確認後才執行下一段提交；不用 --force。",
+        "Before committing, test removal refusal while COPY-B is still uncommitted. Use worktree list to confirm that ../worktree-copy resolves to this lesson's checkout, then run the command below. Git should refuse; the folder and COPY-B must remain. If you already committed, skip this case without adding another change. Continue with the commit below after checking; do not use --force.",
+        "コミット前の COPY-B で削除拒否も確認します。worktree list の完全パスで ../worktree-copy が本篇のコピーと確認してから下を実行します。Git は未保存変更を理由に拒否し、フォルダーと COPY-B が残るはずです。既にコミットした場合は追加変更を作らず省略します。確認後に次のコミットへ進み、--force は使いません。",
+        "COPY-B를 커밋하기 전에 제거 거부도 확인합니다. worktree list의 전체 경로로 ../worktree-copy가 이번 사본인지 확인한 뒤 아래 명령을 실행합니다. Git이 미커밋 변경 때문에 거부하고 폴더와 COPY-B가 남아야 합니다. 이미 커밋했다면 추가 변경 없이 건너뛰세요. 확인 후 다음 커밋을 진행하고 --force는 쓰지 않습니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "git worktree list\ngit worktree remove ../worktree-copy\ngit -C ../worktree-copy status --short\n",
+      "label": [
+        "原目錄：提交前預期移除失敗",
+        "Original checkout: expect removal refusal before committing",
+        "元フォルダー：コミット前の削除拒否を確認",
+        "원본 폴더: 커밋 전 제거 거부 확인"
+      ]
+    },
+    {
       "type": "code",
       "language": "sh",
       "code": "git -C ../worktree-copy add -- notes.md\ngit -C ../worktree-copy commit -m \"Change isolated practice marker\"\ngit -C ../worktree-copy status --short\ngit diff main...codex/worktree-practice -- notes.md\n",

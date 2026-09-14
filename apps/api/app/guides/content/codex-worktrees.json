@@ -158,6 +158,16 @@
           "text": "Git 正常會拒絕把同一分支同時 checkout 到兩個 worktree，錯誤會指出 main 已被另一個 worktree 使用。這個失敗是保護機制，兩邊仍應留在原分支；不要加忽略占用或強制選項。回到自己的副本分支，把已核對的 marker 修改提交，再從原目錄比較兩個分支。提交仍保存在同一個本機儲存庫，不會自動出現在 GitHub。"
         },
         {
+          "type": "paragraph",
+          "text": "提交前再做一次移除失敗的對照。保持 COPY-B 尚未提交，先用 worktree list 核對 ../worktree-copy 的完整路徑確實是本篇副本，再執行下面命令。預期 Git 因修改尚未保存而拒絕，資料夾與 COPY-B 都仍在。若已先提交，就跳過這個對照，不再製造額外變更。確認後才執行下一段提交；不用 --force。"
+        },
+        {
+          "type": "code",
+          "label": "原目錄：提交前預期移除失敗",
+          "language": "sh",
+          "code": "git worktree list\ngit worktree remove ../worktree-copy\ngit -C ../worktree-copy status --short\n"
+        },
+        {
           "type": "code",
           "label": "原目錄終端機：保存副本成果並比較分支",
           "language": "sh",
@@ -450,6 +460,16 @@
         {
           "type": "paragraph",
           "text": "Git 正常会拒绝把同一分支同时 checkout 到两个 worktree，错误会指出 main 已被另一个 worktree 使用。这个失败是保护机制，两边仍应留在原分支；不要加忽略占用或强制选项。回到自己的副本分支，把已核对的 marker 修改提交，再从原目录比较两个分支。提交仍保存在同一个本机储存库，不会自动出现在 GitHub。"
+        },
+        {
+          "type": "paragraph",
+          "text": "提交前再做一次移除失败的对照。保持 COPY-B 尚未提交，先用 worktree list 核对 ../worktree-copy 的完整路径确实是本篇副本，再执行下面命令。预期 Git 因修改尚未保存而拒绝，资料夹与 COPY-B 都仍在。若已先提交，就跳过这个对照，不再制造额外变更。确认后才执行下一段提交；不用 --force。"
+        },
+        {
+          "type": "code",
+          "label": "原目录：提交前预期移除失败",
+          "language": "sh",
+          "code": "git worktree list\ngit worktree remove ../worktree-copy\ngit -C ../worktree-copy status --short\n"
         },
         {
           "type": "code",
@@ -746,6 +766,16 @@
           "text": "Git normally refuses the same branch in two worktrees and reports that main is already in use. This expected guard should leave both checkouts on their original branches; do not bypass it with force or ignore-in-use options. Commit the verified marker on the practice branch, then compare branches from the original checkout. The commit stays in the local repository and does not automatically appear on GitHub."
         },
         {
+          "type": "paragraph",
+          "text": "Before committing, test removal refusal while COPY-B is still uncommitted. Use worktree list to confirm that ../worktree-copy resolves to this lesson's checkout, then run the command below. Git should refuse; the folder and COPY-B must remain. If you already committed, skip this case without adding another change. Continue with the commit below after checking; do not use --force."
+        },
+        {
+          "type": "code",
+          "label": "Original checkout: expect removal refusal before committing",
+          "language": "sh",
+          "code": "git worktree list\ngit worktree remove ../worktree-copy\ngit -C ../worktree-copy status --short\n"
+        },
+        {
           "type": "code",
           "label": "Original terminal: commit the checkout result and compare branches",
           "language": "sh",
@@ -1040,6 +1070,16 @@
           "text": "Git は同じ分岐を二箇所で使うことを拒み、main 使用中を報告します。両方とも元分岐のままなのが保護動作で、強制や制限無視を加えません。確認済み marker をコピー分岐へコミットし、元から比較します。提出はローカル内にあり GitHub へ自動送信されません。"
         },
         {
+          "type": "paragraph",
+          "text": "コミット前の COPY-B で削除拒否も確認します。worktree list の完全パスで ../worktree-copy が本篇のコピーと確認してから下を実行します。Git は未保存変更を理由に拒否し、フォルダーと COPY-B が残るはずです。既にコミットした場合は追加変更を作らず省略します。確認後に次のコミットへ進み、--force は使いません。"
+        },
+        {
+          "type": "code",
+          "label": "元フォルダー：コミット前の削除拒否を確認",
+          "language": "sh",
+          "code": "git worktree list\ngit worktree remove ../worktree-copy\ngit -C ../worktree-copy status --short\n"
+        },
+        {
           "type": "code",
           "label": "元端末：コピー成果を保存して分岐比較",
           "language": "sh",
@@ -1332,6 +1372,16 @@
         {
           "type": "paragraph",
           "text": "Git은 같은 브랜치를 두 worktree에 checkout하는 것을 거부하고 main 사용 중이라고 알립니다. 두 폴더가 원래 브랜치에 남는 보호 동작이므로 강제나 제한 무시 옵션을 쓰지 마세요. 확인한 marker를 연습 브랜치에 커밋하고 원본에서 비교합니다. 커밋은 로컬에 있으며 GitHub에 자동 전송되지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "COPY-B를 커밋하기 전에 제거 거부도 확인합니다. worktree list의 전체 경로로 ../worktree-copy가 이번 사본인지 확인한 뒤 아래 명령을 실행합니다. Git이 미커밋 변경 때문에 거부하고 폴더와 COPY-B가 남아야 합니다. 이미 커밋했다면 추가 변경 없이 건너뛰세요. 확인 후 다음 커밋을 진행하고 --force는 쓰지 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "원본 폴더: 커밋 전 제거 거부 확인",
+          "language": "sh",
+          "code": "git worktree list\ngit worktree remove ../worktree-copy\ngit -C ../worktree-copy status --short\n"
         },
         {
           "type": "code",

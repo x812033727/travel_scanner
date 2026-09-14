@@ -6,7 +6,7 @@
 
 本系列有一個總目錄與 60 篇獨立教學，每篇提供繁中、簡中、英文、日文、韓文，共 61 個內容包、305 份語言文件。路由為 `/{locale}/life/codex-learning-hub` 與既有 `/life/<slug>`。**沒有 push、PR、匯入、正式發布或部署**。使用者已授權全部完成且驗收後，再開 PR、合併與部署；完成前不提前交付部分 PR。
 
-已補強 A 至 G 單元的 37 篇，加上原五篇代表稿，共 **42 篇有定向補強，18 篇待逐篇核對**。最新 [G 審核紀錄](evidence/unit-g-depth-review.json)包含技能相對路徑、雙輸入統計、明確選用政策、插件分層證據、排錯例題及範本修正；[F](evidence/unit-f-depth-review.json)、[E](evidence/unit-e-depth-review.json)、[C](evidence/unit-c-depth-review.json)、[D 紀錄](evidence/unit-d-depth-review.json)保留先前補強。下一單元為 H，全部仍待完整五語終審與最終頁面驗收。
+已補強 A 至 H 單元的 43 篇，加上原五篇代表稿，共 **48 篇有定向補強，12 篇待逐篇核對**。最新 [H 審核紀錄](evidence/unit-h-depth-review.json)包含 MCP 介面區分、worktree 移除保護、子代理證據歸屬、故障測試及整合版本核對；[G](evidence/unit-g-depth-review.json)、[F](evidence/unit-f-depth-review.json)、[E](evidence/unit-e-depth-review.json)保留先前補強。下一單元為 I，全部仍待完整五語終審與最終頁面驗收。
 
 ## 內容與發布來源
 
@@ -54,7 +54,7 @@ apps/api/.venv/Scripts/python.exe tools/codex-learning/check-session-plan-practi
 apps/api/.venv/Scripts/python.exe tools/codex-learning/check-git-practice.py
 apps/api/.venv/Scripts/python.exe tools/codex-learning/check-worktree-practice.py
 apps/api/.venv/Scripts/python.exe tools/codex-learning/check-skill-practice.py
-apps/api/.venv/Scripts/python.exe tools/codex-learning/check-mcp-practice.py
+apps/api/.venv/Scripts/python.exe tools/codex-learning/check-mcp-practice.py --codex (Get-Command codex).Source
 apps/api/.venv/Scripts/python.exe tools/codex-learning/check-subagent-reference.py
 apps/api/.venv/Scripts/python.exe tools/codex-learning/check-integration-practice.py
 apps/api/.venv/Scripts/python.exe tools/codex-learning/check-exec-practice.py

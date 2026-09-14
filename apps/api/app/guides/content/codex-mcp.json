@@ -201,13 +201,13 @@
         },
         {
           "type": "code",
-          "label": "Codex 互動輸入框：查看連線，非終端機命令",
+          "label": "Codex CLI 互動輸入框：查看連線，非終端機命令",
           "language": "text",
           "code": "/mcp\n"
         },
         {
           "type": "paragraph",
-          "text": "在新的 Codex 任務輸入 /mcp，查看練習伺服器與當下可用工具。若顯示需要認證，先核對是否確實是本篇公開端點；其他 OAuth 服務可能需要 Authenticate 或 codex mcp login 名稱，但不要為此公開文件服務隨意填入 API key。這些步驟要看目前客戶端實際提示，不能把別人服務的登入流程複製過來。"
+          "text": "CLI 在新的互動工作階段輸入 /mcp，查看練習伺服器與當下工具。桌面版和 IDE 則回到前述 MCP servers 設定頁確認狀態，再開新任務觀察實際工具活動；不要假定各入口都有 /mcp。若要求認證，先核對公開端點。其他 OAuth 服務可能需要 Authenticate 或 codex mcp login 名稱，本篇公開文件服務不需任意填入 API key。"
         },
         {
           "type": "code",
@@ -226,7 +226,7 @@
         },
         {
           "type": "paragraph",
-          "text": "失敗對照只對自己這次新增的項目操作：在原設定區段加入 enabled = false，或用客戶端可用的停用控制，保存並重新啟動。新任務再輸入 /mcp，確認該項不再作為可用工具；送出相同問題時，不能用舊對話的文字當成新的讀取結果。要恢復就把 enabled 改回 true 或移除自己新增的 false，再重新啟動並重做讀取。"
+          "text": "失敗對照只改自己新增的項目：在原區段加入 enabled = false，或使用停用控制，保存並重新啟動。CLI 在新工作階段用 /mcp；桌面和 IDE 依前述設定頁與新任務核對，確認不再提供該項工具。舊對話文字不算新讀取。恢復時把 enabled 改回 true 或移除自己加的 false，再重新啟動並重做讀取。"
         },
         {
           "type": "code",
@@ -512,13 +512,13 @@
         },
         {
           "type": "code",
-          "label": "Codex 互动输入框：查看连线，非终端机命令",
+          "label": "Codex CLI 互动输入框：查看连线，非终端机命令",
           "language": "text",
           "code": "/mcp\n"
         },
         {
           "type": "paragraph",
-          "text": "在新的 Codex 任务输入 /mcp，查看练习伺服器与当下可用工具。若显示需要认证，先核对是否确实是本篇公开端点；其他 OAuth 服务可能需要 Authenticate 或 codex mcp login 名称，但不要为此公开文件服务随意填入 API key。这些步骤要看目前客户端实际提示，不能把别人服务的登入流程复制过来。"
+          "text": "CLI 在新的互动工作阶段输入 /mcp，查看练习伺服器与当下工具。桌面版和 IDE 则回到前述 MCP servers 设定页确认状态，再开新任务观察实际工具活动；不要假定各入口都有 /mcp。若要求认证，先核对公开端点。其他 OAuth 服务可能需要 Authenticate 或 codex mcp login 名称，本篇公开文件服务不需任意填入 API key。"
         },
         {
           "type": "code",
@@ -537,7 +537,7 @@
         },
         {
           "type": "paragraph",
-          "text": "失败对照只对自己这次新增的项目操作：在原设定区段加入 enabled = false，或用客户端可用的停用控制，保存并重新启动。新任务再输入 /mcp，确认该项不再作为可用工具；送出相同问题时，不能用旧对话的文字当成新的读取结果。要恢复就把 enabled 改回 true 或移除自己新增的 false，再重新启动并重做读取。"
+          "text": "失败对照只改自己新增的项目：在原区段加入 enabled = false，或使用停用控制，保存并重新启动。CLI 在新工作阶段用 /mcp；桌面和 IDE 依前述设定页与新任务核对，确认不再提供该项工具。旧对话文字不算新读取。恢复时把 enabled 改回 true 或移除自己加的 false，再重新启动并重做读取。"
         },
         {
           "type": "code",
@@ -823,13 +823,13 @@
         },
         {
           "type": "code",
-          "label": "Codex composer: inspect connections, not a shell command",
+          "label": "Codex CLI composer: inspect connections, not a shell command",
           "language": "text",
           "code": "/mcp\n"
         },
         {
           "type": "paragraph",
-          "text": "Enter /mcp in a fresh Codex task to inspect the practice server and available tools. If authentication is requested, first verify that the entry really points to the public endpoint. Other OAuth services may require Authenticate or codex mcp login followed by the name, but do not supply an arbitrary API key for this public documentation service. Follow the current client's actual prompts instead of copying another provider's login flow."
+          "text": "In a fresh interactive CLI session, use /mcp to inspect the server and tools. In desktop or IDE, check the MCP servers settings described above, then observe tool activity in a new task; do not assume every surface has /mcp. If authentication is requested, verify the public endpoint first. Other OAuth services may require Authenticate or codex mcp login with their name; do not add an arbitrary API key for this public service."
         },
         {
           "type": "code",
@@ -848,7 +848,7 @@
         },
         {
           "type": "paragraph",
-          "text": "For the negative case, modify only the entry you created: add enabled = false to its existing section or use the client's disable control, then save and restart. Check /mcp in a new task to confirm the tool is unavailable. A previous conversation's text cannot count as fresh retrieval. Restore by setting enabled to true or removing your added false setting, restart and repeat the read."
+          "text": "For the negative case, disable only your new entry with enabled = false or the client control, save and restart. In a fresh CLI session use /mcp; in desktop or IDE use the settings and new-task checks above. Confirm its tools are unavailable. Old conversation text is not fresh retrieval. Restore enabled to true or remove your added false value, restart and repeat the read."
         },
         {
           "type": "code",
@@ -1134,13 +1134,13 @@
         },
         {
           "type": "code",
-          "label": "Codex 対話欄：端末命令ではない",
+          "label": "Codex CLI 対話欄：端末命令ではない",
           "language": "text",
           "code": "/mcp\n"
         },
         {
           "type": "paragraph",
-          "text": "新規タスクで /mcp を入力し、実習サーバーと利用可能なツールを確認します。認証要求があれば公開端点が正しいかを先に照合します。他の OAuth サービスは Authenticate や login が必要でも、この文書サービスへ任意の API key を渡しません。別サービスの手順を写さず現在の表示で判断します。"
+          "text": "CLI では新しい対話セッションの /mcp でサーバーとツールを確認します。デスクトップと IDE は前述の MCP servers 設定で状態を見て、新規タスクの実際のツール活動を確認します。全入口に /mcp があるとは限りません。認証要求時は公開端点を照合します。他の OAuth サービスでは Authenticate や codex mcp login が必要でも、本篇の公開サービスに任意の API key を入れません。"
         },
         {
           "type": "code",
@@ -1159,7 +1159,7 @@
         },
         {
           "type": "paragraph",
-          "text": "失敗対照は自分が追加した項目だけを対象に、既存区画の enabled = false または無効化操作で保存・再起動します。新規タスクの /mcp で利用不可を確認し、旧会話の文を新取得としません。true または自分が加えた false の除去で戻し、再起動後に再取得します。"
+          "text": "失敗対照は自分が追加した項目だけを enabled = false または無効化操作で保存・再起動します。CLI は新セッションの /mcp、デスクトップと IDE は前述の設定と新規タスクで利用不可を確認します。旧会話は新取得ではありません。true または追加した false の除去で戻し、再起動して再取得します。"
         },
         {
           "type": "code",
@@ -1445,13 +1445,13 @@
         },
         {
           "type": "code",
-          "label": "Codex 대화 입력창: 셸 명령 아님",
+          "label": "Codex CLI 대화 입력창: 셸 명령 아님",
           "language": "text",
           "code": "/mcp\n"
         },
         {
           "type": "paragraph",
-          "text": "새 작업에 /mcp를 입력해 연습 서버와 사용 가능한 도구를 확인합니다. 인증을 요구하면 먼저 공개 주소가 맞는지 보세요. 다른 OAuth 서비스에는 Authenticate나 login이 필요할 수 있지만 이 공개 문서 서비스에 임의의 API key를 넣지 않습니다. 다른 제공자의 로그인 절차를 복사하지 말고 현재 안내를 따르세요."
+          "text": "CLI의 새 대화 세션에서 /mcp로 서버와 도구를 확인합니다. 데스크톱과 IDE는 앞서 설명한 MCP servers 설정에서 상태를 확인한 뒤 새 작업의 실제 도구 활동을 봅니다. 모든 화면에 /mcp가 있다고 가정하지 마세요. 인증을 요구하면 공개 주소부터 확인합니다. 다른 OAuth 서비스에는 Authenticate나 codex mcp login이 필요할 수 있지만 이 공개 서비스에 임의의 API key를 넣지 않습니다."
         },
         {
           "type": "code",
@@ -1470,7 +1470,7 @@
         },
         {
           "type": "paragraph",
-          "text": "실패 대조는 자신이 만든 항목만 대상으로 기존 구간에 enabled = false를 넣거나 비활성화 기능을 쓰고 저장·재시작합니다. 새 작업의 /mcp에서 사용 불가를 확인하고 이전 대화 텍스트를 새 조회로 세지 마세요. true로 바꾸거나 추가한 false를 제거한 뒤 재시작하고 다시 읽습니다."
+          "text": "실패 대조는 자신이 추가한 항목만 enabled = false 또는 비활성화 기능으로 바꾸고 저장·재시작합니다. 새 CLI 세션은 /mcp, 데스크톱과 IDE는 앞서 설명한 설정과 새 작업에서 도구 사용 불가를 확인합니다. 이전 대화는 새 조회가 아닙니다. true로 복구하거나 추가한 false를 제거하고 재시작·재조회합니다."
         },
         {
           "type": "code",
