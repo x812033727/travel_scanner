@@ -1,0 +1,135 @@
+{
+  "slug": "ai-search-seo",
+  "status": "verified",
+  "checked_on": "2026-09-14",
+  "sources": [
+    {
+      "url": "https://developers.google.com/search/docs/fundamentals/how-search-works",
+      "title": "Google 搜尋中心：Google 搜尋的運作方式",
+      "access": "WebFetch 直接讀取，HTTP 200",
+      "claims": [
+        "Google 搜尋分成檢索、建立索引、提供搜尋結果三個階段。",
+        "即使頁面符合 Google Search Essentials，Google 也不保證會檢索、建立索引或提供該頁面。"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/essentials/technical",
+      "title": "Google 搜尋中心：搜尋基礎要素的技術需求",
+      "access": "WebFetch 直接讀取，HTTP 200",
+      "claims": [
+        "三項最低技術需求：Googlebot 沒有被擋、頁面回傳 HTTP 200 成功狀態碼、頁面有可索引的內容。",
+        "符合這三項只是讓網頁有資格被建立索引，不保證會被建立索引。"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/canonicalization",
+      "title": "Google 搜尋中心：什麼是標準化",
+      "access": "WebFetch 直接讀取，HTTP 200",
+      "claims": [
+        "指出標準網址的偏好是提示，不是規則；Google 可能選擇跟站方不同的網址。",
+        "該頁沒有規定每一頁都必須放自我指向的 canonical，因此正文把這個做法標為業界慣例。"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls",
+      "title": "Google 搜尋中心：合併重複網址",
+      "access": "WebFetch 直接讀取，HTTP 200",
+      "claims": [
+        "canonical 訊號強度：轉址最強、網頁上的連結註解次之、寫在網站地圖裡是弱訊號。"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview",
+      "title": "Google 搜尋中心：網站地圖總覽",
+      "access": "WebFetch 直接讀取，HTTP 200",
+      "claims": [
+        "網站地圖不保證裡面的每個項目都會被檢索與建立索引。"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap",
+      "title": "Google 搜尋中心：建立並提交網站地圖",
+      "access": "WebFetch 直接讀取，HTTP 200",
+      "claims": [
+        "Google 忽略 priority 與 changefreq 的值。",
+        "Google 只在 lastmod 一致且可驗證時才採用該值。"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/specialty/international/localized-versions",
+      "title": "Google 搜尋中心：告知 Google 網頁的在地化版本",
+      "access": "WebFetch 直接讀取，HTTP 200",
+      "claims": [
+        "兩個網頁如果沒有互相指向對方，hreflang 標記會被忽略；這是為了避免別的網站隨便宣稱自己是替代版本。"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/robots/intro",
+      "title": "Google 搜尋中心：robots.txt 簡介與指南",
+      "access": "WebFetch 直接讀取，HTTP 200",
+      "claims": [
+        "robots.txt 主要是為了避免網站被大量請求壓垮，不是用來讓網頁不出現在 Google 的機制。",
+        "被 robots.txt 擋住的網址如果有其他網站連過來，仍可能被建立索引，只是結果沒有說明文字。"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/block-indexing",
+      "title": "Google 搜尋中心：使用 noindex 禁止建立索引",
+      "access": "WebFetch 直接讀取，HTTP 200",
+      "claims": [
+        "要讓 noindex 生效，該網頁不能被 robots.txt 擋住；被擋住時爬蟲永遠看不到那條規則。"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/appearance/ai-features",
+      "title": "Google 搜尋中心：AI 功能與你的網站",
+      "access": "WebFetch 直接讀取，HTTP 200",
+      "claims": [
+        "要出現在 AI 摘要或 AI 模式沒有額外要求，也不需要其他特別的最佳化。",
+        "網頁必須已建立索引、符合搜尋的技術需求，而且有資格顯示摘要片段。",
+        "站長可用的控制項包含 nosnippet、data-nosnippet、max-snippet、noindex 與 robots.txt 對 Googlebot 的規則；AI 訓練用途為 Google-Extended。",
+        "該頁描述 AI 功能採用查詢展開（query fan-out），會同時發出多個相關搜尋；未公布挑選引用的排序規則。"
+      ]
+    },
+    {
+      "url": "https://support.google.com/webmasters/answer/7440203",
+      "title": "Google Search Console 說明：網頁索引報表的狀態",
+      "access": "WebFetch 直接讀取，HTTP 200",
+      "claims": [
+        "「已檢索，目前尚未建立索引」的官方描述是將來可能建立索引也可能不會，不需要重新提交。",
+        "網頁已建立索引不保證會出現在搜尋結果中；結果隨使用者的搜尋紀錄、位置等變數而不同。"
+      ]
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9309.html",
+      "title": "RFC 9309：Robots Exclusion Protocol",
+      "access": "WebFetch 直接讀取 RFC Editor 原文，HTTP 200",
+      "claims": [
+        "RFC 9309 於 2022 年 9 月發布，類別為 Standards Track。",
+        "作者為 Martijn Koster、Gary Illyes、Henner Zeller、Lizzi Sassman，後三位署名 Google LLC。",
+        "規範寫明這些規則不是一種存取授權，也不能代替真正的內容安全措施。"
+      ]
+    },
+    {
+      "url": "https://www.sitemaps.org/protocol.html",
+      "title": "sitemaps.org：Sitemap 協定 0.9 版原文",
+      "access": "WebFetch 直接讀取提案本身的網站，HTTP 200",
+      "claims": [
+        "Sitemap 協定命名空間版本為 0.9；loc 是必填，lastmod、changefreq、priority 為選填。",
+        "changefreq 的值是提示不是命令。",
+        "指定的 priority 不太可能影響網址在搜尋結果頁的位置。"
+      ]
+    },
+    {
+      "url": "https://blogs.bing.com/webmaster/July-2025/Keeping-Content-Discoverable-with-Sitemaps-in-AI-Powered-Search",
+      "title": "Bing 網站管理員部落格：在 AI 驅動的搜尋中用網站地圖維持可被發現",
+      "access": "WebFetch 直接讀取 Bing 官方部落格，HTTP 200；文章日期 2025-07-31",
+      "claims": [
+        "在 AI 驅動的搜尋裡，讓網站可被檢索、保持更新、完整建立索引比以往更重要。",
+        "網站地圖仍是確保網址完整涵蓋的基礎訊號，lastmod 仍是 Bing 排定重新檢索的重要訊號。"
+      ]
+    }
+  ],
+  "running_text_characters": 2978,
+  "notes": "全部 14 筆來源都是一手來源：搜尋引擎自己的開發者文件與說明中心、規範原文（RFC 9309）、提案本身的網站（sitemaps.org）與搜尋引擎官方部落格（Bing）。本次查證全部以 WebFetch 直接讀取成功，沒有遇到 Cloudflare 403，因此未使用 Wayback Machine 快照或限定官方網域的 WebSearch 交叉比對。沒有任何代理商部落格被當成事實依據；正文提到「SEO 已死」這類說法時只描述它是行銷內容裡常見的標題，不引用也不轉述任何一家業者的主張，對照依據是 Google AI 功能說明頁「沒有額外要求」那一句。正文沒有任何成效承諾、前後對照數字或案例成效，也沒有以第一人稱聲稱測試過任何東西。唯一標為「業界普遍做法，官方文件沒有要求」的條目是自我指向的 canonical。Bing Webmaster Guidelines 頁面（bing.com/webmasters/help/webmaster-guidelines-30fba23a）以 WebFetch 讀取只回傳頁面標題、沒有正文，無法取得可引用的原句，因此未列入 sources，改用 Bing 官方部落格那一篇；正文對 Bing 的引述全部來自該篇部落格。running_text_characters 以 pack_ingest 的 _body_length 算法（段落、rich_paragraph、清單項目、表格格子含表頭、callout 標題與內文，去除空白後計字）實際數出。dry-run（pack_cli ingest --dry-run）於 2026-09-14 執行，沒有 error 也沒有 warning。"
+}

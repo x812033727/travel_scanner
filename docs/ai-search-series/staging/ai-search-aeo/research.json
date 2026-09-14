@@ -1,0 +1,159 @@
+{
+  "slug": "ai-search-aeo",
+  "status": "verified",
+  "checked_on": "2026-09-14",
+  "sources": [
+    {
+      "url": "https://developers.google.com/search/docs/appearance/featured-snippets",
+      "title": "Google 搜尋中心：Featured snippets and your website（官方說明頁）",
+      "access": "curl 直接取得 HTTP 200（頁面標示 Last updated 2025-12-10 UTC）",
+      "claims": [
+        "精選摘要的官方定義：把一般搜尋結果的格式反過來，先顯示描述片段，內容取自某一個頁面",
+        "站長無法把頁面標成精選摘要，官方回答是「你不能」，由 Google 系統自行判斷",
+        "退出方式：nosnippet 擋掉所有摘要、data-nosnippet 擋特定文字、max-snippet 調短會降低出現機會但官方明寫不保證",
+        "點擊精選摘要會自動捲到頁面上出現在摘要裡的那一段；例外情況才帶到頁面最上方",
+        "官方不提供精選摘要所需的確切最短長度"
+      ]
+    },
+    {
+      "url": "https://support.google.com/websearch/answer/9351707",
+      "title": "Google 搜尋說明中心：How Google's featured snippets work（官方說明頁）",
+      "access": "curl 直接取得 HTTP 200",
+      "claims": [
+        "精選摘要會出現在搜尋結果最上方、「其他人也問」區塊與知識圖譜資訊旁",
+        "官方寫精選摘要在使用手機或對裝置說話時特別有用",
+        "精選摘要顯示的是網站上的一小段文字"
+      ]
+    },
+    {
+      "url": "https://blog.google/products-and-platforms/products/search/reintroduction-googles-featured-snippets/",
+      "title": "Google 官方部落格：A reintroduction to Google's featured snippets（2018-01-30）",
+      "access": "WebFetch 取得全文",
+      "claims": [
+        "精選摘要於 2014 年 1 月推出（Google 自述）",
+        "文章由 Danny Sullivan 於 2018 年 1 月 30 日發表",
+        "Google 自己稱精選摘要確實帶來流量（2018 年的說法）"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/appearance/visual-elements-gallery",
+      "title": "Google 搜尋中心：Visual Elements gallery（相關問題群組的官方定義）",
+      "access": "curl 直接取得 HTTP 200（頁面標示 Last updated 2026-02-04 UTC）",
+      "claims": [
+        "相關問題群組即 People Also Ask 的官方定義",
+        "使用者展開相關問題時看到的就是精選摘要"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/speakable",
+      "title": "Google 搜尋中心：speakable structured data（Google 助理與智慧音箱，官方文件）",
+      "access": "curl 直接取得 HTTP 200（頁面標示 Last updated 2026-09-08 UTC，beta 字樣仍在）",
+      "claims": [
+        "Google 助理使用 speakable 結構化資料在智慧音箱回答主題新聞查詢",
+        "唸出段落時會標示出處，並把完整文章網址送到使用者手機",
+        "文件仍標示為 beta，只適用美國、英文內容與 Google Home 裝置"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/appearance/ai-features",
+      "title": "Google 搜尋中心：AI features and your website（官方說明頁）",
+      "access": "curl 直接取得 HTTP 200（頁面標示 Last updated 2025-12-10 UTC）",
+      "claims": [
+        "AI 概覽與 AI 模式沒有額外的出現條件，也沒有專用的 schema.org 標記或機器可讀檔案",
+        "AI 概覽與 AI 模式可能使用查詢展開（query fan-out）",
+        "兩者可能使用不同模型與技術，顯示的回答與連結會不一樣",
+        "nosnippet、data-nosnippet、max-snippet、noindex 是官方列出的控制項"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+      "title": "Google 搜尋中心：Guide to Optimizing for Generative AI Features on Google Search（官方文件，含 AEO 與 GEO 的說明）",
+      "access": "curl 直接取得 HTTP 200（頁面標示 Last updated 2026-07-10 UTC）",
+      "claims": [
+        "官方說明 AEO 指答案引擎最佳化、GEO 指生成式引擎最佳化，都是外界用來描述提升 AI 搜尋能見度的說法",
+        "從 Google 搜尋的角度，為生成式 AI 搜尋最佳化就是為搜尋體驗最佳化，因此仍然是 SEO",
+        "官方提醒評估第三方 AEO 或 GEO 建議與服務時要對照官方指引",
+        "「你不需要做的事」：llms.txt 等特殊檔案與標記、切碎內容、為 AI 重寫內容、製造不真實的品牌提及、過度聚焦結構化資料",
+        "官方寫沒有理想的頁面長度",
+        "正面建議只到用段落、章節與標題整理內容，理由是讀者比較好讀",
+        "結構化資料不是生成式 AI 搜尋的必要條件，但仍與複合式搜尋結果的資格有關"
+      ]
+    },
+    {
+      "url": "https://support.google.com/webmasters/answer/7042828",
+      "title": "Search Console 說明：Performance report 的曝光、點擊與排名定義（官方說明頁）",
+      "access": "WebFetch 取得全文",
+      "claims": [
+        "曝光是有人看到你的連結，點擊是有人從 Google 點到你的網站",
+        "停留在 Google 平台內部的點擊不計為點擊",
+        "精選摘要通常佔第 1 個位置"
+      ]
+    },
+    {
+      "url": "https://blog.google/products-and-platforms/products/search/ai-search-driving-more-queries-higher-quality-clicks/",
+      "title": "Google 官方部落格：AI in Search is driving more queries and higher quality clicks（2025-08-06，Google 自己的內部資料）",
+      "access": "WebFetch 取得全文，確認作者與發表日期",
+      "claims": [
+        "2025 年 8 月 6 日由 Liz Reid 署名，稱整體自然點擊量年對年大致持平、點擊品質提升",
+        "Google 未公開底層數據，屬內部資料，並自行對比第三方報告"
+      ]
+    },
+    {
+      "url": "https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/",
+      "title": "Pew Research Center：Google users are less likely to click on links when an AI summary appears in the results（2025-07-22 原始研究）",
+      "access": "WebFetch 取得全文",
+      "claims": [
+        "出現 AI 摘要的造訪中點擊一般搜尋結果的比例是 8%，未出現時是 15%",
+        "點擊 AI 摘要內連結的比例是 1%",
+        "樣本為 900 位美國成人、68,879 次 Google 搜尋，其中 12,593 次出現 AI 摘要",
+        "瀏覽資料期間 2025 年 3 月，搜尋結果擷取期間 2025 年 4 月 7 日至 17 日，研究自述只涵蓋 Google"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2311.09735",
+      "title": "arXiv 2311.09735：GEO: Generative Engine Optimization（論文原文）",
+      "access": "WebFetch 取得摘要頁",
+      "claims": [
+        "GEO 這個詞出自這篇論文，作者為 Aggarwal 等人，2023 年 11 月 16 日投稿，v3 為 2024 年 6 月 28 日",
+        "論文提出 GEO-bench 做為自己的查詢集（細節留給 ai-search-geo 那一篇）"
+      ]
+    },
+    {
+      "url": "https://ahrefs.com/blog/geo-is-just-seo/",
+      "title": "Ahrefs 部落格：GEO, LLMO, AEO… It's All Just SEO（SEO 工具商的行銷內容，佐證混用派的用法）",
+      "access": "WebFetch 取得全文（廠商行銷內容，只作為用法佐證）",
+      "claims": [
+        "SEO 工具商的行銷內容：GEO、LLMO、AEO 是同一件事的三個名字（2025 年 4 月 7 日，Ryan Law）"
+      ]
+    },
+    {
+      "url": "https://blog.hubspot.com/marketing/aeo-vs-geo",
+      "title": "HubSpot 部落格：AEO vs. GEO explained（行銷軟體商的行銷內容，佐證區分派的用法與沒有共識）",
+      "access": "WebFetch 取得全文（廠商行銷內容，只作為用法佐證）",
+      "claims": [
+        "行銷軟體商的行銷內容：有人把 AEO 留給精選摘要那類直接答案、GEO 用在 AI 聊天機器人的引用",
+        "同一篇寫業界沒有共識標準，HubSpot 自己把 AEO 當成涵蓋全部的上位詞（更新於 2026 年 7 月 31 日）"
+      ]
+    },
+    {
+      "url": "https://kalicube.com/entity/answer-engine-optimization/",
+      "title": "Kalicube：Answer Engine Optimization（廠商自家網站，佐證提出者主張與年份不一致）",
+      "access": "WebFetch 取得全文（廠商行銷內容，只作為用法佐證）",
+      "claims": [
+        "廠商自家網站主張 Answer Engine Optimization 由 Jason Barnard 提出",
+        "同一頁一處寫 2017 年、圖上寫 2018 年，彼此不一致，因此正文不採用任何年份當事實",
+        "同頁把 Featured Snippets、People Also Ask、Voice Results 列為 AEO 的目標介面"
+      ]
+    },
+    {
+      "url": "https://news.microsoft.com/source/2009/05/28/microsofts-new-search-at-bing-com-helps-people-make-better-decisions/",
+      "title": "Microsoft 新聞稿：Microsoft's New Search at Bing.com Helps People Make Better Decisions（2009-05-28）",
+      "access": "curl 直接取得 HTTP 200",
+      "claims": [
+        "微軟 2009 年 5 月 28 日新聞稿把 Bing 稱為 Decision Engine，並說要超越搜尋（微軟自己的行銷用語）"
+      ]
+    }
+  ],
+  "running_text_characters": 2996,
+  "notes": "正文字數以工具的 _body_length 演算法自行計算（段落＋rich_paragraph＋清單項目＋表格格子＋callout 標題與內文，去空白後計字），為 2996 字，落在 1,800–3,000 的範圍內。全篇不承諾任何成效：每個主張都在句子裡標明是官方文件說明的機制、業界普遍做法但沒有官方確認，還是廠商的行銷主張。Ahrefs、HubSpot、Kalicube 三筆為行銷內容，只用來佐證「確實有人這樣用這個詞」，正文都寫明了是誰說的。定義有爭議之處（AEO 與 GEO 是不是同一件事）兩邊來源都收了，正文明說本文不替他們裁決。查不到而改寫的項目：AEO 的提出年份（來源自家頁面 2017 與 2018 並存，正文只陳述這個不一致，不採用年份）；「結論先寫、問答格式」與被選為答案之間的因果（官方文件沒有支持，改標為業界普遍做法但無官方確認）；精選摘要所需的最短文字長度（官方明寫不提供，正文不給字數）。本次所有來源都以 curl 或 WebFetch 直接取得 HTTP 200，沒有動用 Wayback Machine 快照。"
+}
