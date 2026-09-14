@@ -1,0 +1,251 @@
+{
+  "slug": "claude-code-accounts-and-access",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 102,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜帳號、登入與使用資格",
+      "description": "分清訂閱登入、API 計費與組織帳號。Claude Code 的登入方式會影響你可以使用的入口、費用來源與組織管理規則。一般讀者最需要先分清楚：Claude 帳號的訂閱使用方式，和 Claude Console／API 的計費方式是不同選擇。不要因為已經能在網頁聊天，就直接假設每個 Code 功能都已開通，也不要把 API 金鑰貼進對話來證明自己有帳號。",
+      "hero": {
+        "src": "/guides/claude-code-accounts-and-access/hero.jpg",
+        "alt": "帳號、登入與使用資格：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Claude Code 的登入方式會影響你可以使用的入口、費用來源與組織管理規則。一般讀者最需要先分清楚：Claude 帳號的訂閱使用方式，和 Claude Console／API 的計費方式是不同選擇。不要因為已經能在網頁聊天，就直接假設每個 Code 功能都已開通，也不要把 API 金鑰貼進對話來證明自己有帳號。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇帶你建立一份簡單的帳號檢查表，確認身分、使用入口和付款來源，再完成一次登入狀態驗證。你需要自己的合法帳號與能開啟登入頁面的瀏覽器；如果是公司或學校管理的帳號，還需要管理員已分配適當存取權。方案名稱、可用功能與額度會調整，實際資格以登入畫面和本文所附官方說明為準。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "分清帳號與費用"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-accounts-and-access/diagram-1.svg",
+          "alt": "分清帳號與費用 → 完成一次登入 → 檢查憑證來源",
+          "width": 1600,
+          "height": 900,
+          "caption": "分清帳號與費用 → 完成一次登入 → 檢查憑證來源",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "先把三個問題分開看。第一，你用哪個電子郵件或組織身分登入？第二，這次工作透過訂閱、Console，還是組織指定的雲端供應商？第三，費用由誰負責？同一位使用者可能同時有個人訂閱和公司 API 存取權；兩者存在並不表示每一次工作都會自動選到你心中預期的付款方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方登入文件列出 Claude 訂閱、Team／Enterprise、Console 與雲端供應商等途徑。入門練習先使用自己已確認有資格的其中一種，不必為了測試同時建立多套憑證。若組織提供固定登入流程，先依管理員說明處理，避免自行加入另一把金鑰，使原本受管理的工作改用個人 API 費用。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "使用情境",
+            "要確認的地方",
+            "常見誤會"
+          ],
+          "rows": [
+            [
+              "個人 Claude 訂閱",
+              "登入身分與 Code 使用資格",
+              "網頁聊天能用就代表所有功能都能用"
+            ],
+            [
+              "團隊或企業",
+              "工作區與管理員分配的權限",
+              "有公司信箱就已取得授權"
+            ],
+            [
+              "Console／API",
+              "組織、角色與費用來源",
+              "訂閱費已包含所有 API 使用"
+            ],
+            [
+              "雲端供應商",
+              "管理員指定的驗證流程",
+              "一般個人登入可以直接取代它"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成一次登入"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "CLI 使用者先依作業系統完成安裝，再在練習專案資料夾執行 "
+            },
+            {
+              "type": "code",
+              "text": "claude"
+            },
+            {
+              "type": "text",
+              "text": "。依畫面提示選擇相應登入方式，讓瀏覽器完成驗證，最後回到原終端機確認是否已進入可輸入任務的介面。桌面版則在應用程式內登入，確認 Code 頁籤和專案選擇是否可用。這兩個流程的按鈕位置不同，帳號身分仍應該由你自己核對。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "登入前的私人檢查筆記，不必貼到對話",
+          "code": "我準備使用的登入身分：自己的帳號或指定組織帳號\n本次預期的費用來源：訂閱／Console／組織提供\n工作入口：CLI／Desktop／Web\n若看到不符的組織或付費提示：先停止並確認\n"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "開啟官方登入流程，核對網址與目前瀏覽器中的帳號。",
+            "如有多個工作區，選擇這次練習真正要使用的工作區。",
+            "完成驗證後回到原應用程式，不要只停在瀏覽器的成功頁。",
+            "查看應用程式顯示的登入狀態及可用功能。",
+            "送出一個小型只讀請求，確認不是停在登入迴圈。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "登入時若瀏覽器自動選到另一個帳號，先登出或換一個清楚隔離的瀏覽器設定檔，再重新執行登入。不要把錯誤帳號先用下去，等產生用量或修改組織資源後才回頭處理；確認身分的成本通常只是一分鐘，修正混用的紀錄會麻煩很多。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "檢查憑證來源"
+        },
+        {
+          "type": "paragraph",
+          "text": "CLI 的執行環境可能已有先前設定的驗證變數，或由組織套用憑證設定。當你明明選了訂閱帳號，卻看到預期之外的計費或權限，先檢查是否混用了其他驗證來源。只需要確認變數是否存在，不需要把值印出來，也不必在求助訊息附上整份環境變數清單。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "Windows PowerShell：只檢查是否設定 API 金鑰",
+          "code": "Test-Path Env:ANTHROPIC_API_KEY\n"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "macOS／Linux 終端機：只檢查是否設定 API 金鑰",
+          "code": "if [ -n \"${ANTHROPIC_API_KEY:-}\" ]; then\n  echo \"API key is set\"\nelse\n  echo \"API key is not set\"\nfi\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "看到已設定，不代表它一定有問題，也不代表你應該直接刪除。先查"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-settings-json",
+              "text": "設定檔教學"
+            },
+            {
+              "type": "text",
+              "text": "與組織的登入規則，確認這個來源是否屬於目前工作環境。若確定是自己先前留下的設定，再在原設定位置調整；單純開新對話不一定會改變應用程式啟動時取得的環境。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "判斷登入問題"
+        },
+        {
+          "type": "paragraph",
+          "text": "登入成功但功能不能用，可能是資格、工作區權限或平台支援問題；登入流程反覆跳回去，則可能是瀏覽器與應用程式使用了不同身分，或驗證資訊尚未更新。遇到問題時，記錄入口、版本、錯誤文字與發生步驟。不要先重裝所有工具；重裝通常無法替帳號增加本來沒有的權限。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果在公司環境遇到存取拒絕，帶著「哪個工作區、哪個入口、哪個功能」詢問管理員，會比只問「我的 Claude 壞了」更容易確認。若已達用量上限，請前往"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-usage-cost-optimization",
+              "text": "用量與成本"
+            },
+            {
+              "type": "text",
+              "text": "辨別限制；驗證憑證失效與用量不足是不同問題，不應用反覆建立金鑰的方式處理。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "求助時可以提供錯誤代碼和操作步驟，但不要提供 API 金鑰、登入 token、驗證碼或完整憑證檔案。這些資料不是排錯所需的範例文字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "請把帳號資格與安裝完成分別記錄。電腦可以執行 claude --version，僅證明程式存在；能開啟一次模型工作，才證明該認證在當下可用。組織切換後也應重新確認，避免把另一個帳號的額度或權限當成目前狀態。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成判準與練習"
+        },
+        {
+          "type": "paragraph",
+          "text": "你的完成判準是能說出本次使用的帳號類型、入口與預期費用來源，應用程式也能完成一個簡短只讀任務。接著關閉再開啟同一入口，確認登入仍符合預期。最後把登入方式與組織規則寫在自己的私人筆記，避免下次切換裝置時重新猜測；公開專案的 CLAUDE.md 只寫團隊工作規則，不存個人憑證。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Authentication",
+          "url": "https://code.claude.com/docs/en/authentication",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Manage costs effectively",
+          "url": "https://code.claude.com/docs/en/costs",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

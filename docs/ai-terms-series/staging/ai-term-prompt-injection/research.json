@@ -1,0 +1,31 @@
+{
+  "slug": "ai-term-prompt-injection",
+  "status": "verified",
+  "checked_on": "2026-09-14",
+  "sources": [
+    {
+      "url": "https://arxiv.org/abs/2302.12173",
+      "title": "Greshake 等：Indirect Prompt Injection",
+      "access": "web search + web open",
+      "claims": [
+        "第三方資料可夾帶指令並影響讀取該資料的語言模型應用"
+      ]
+    },
+    {
+      "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+      "title": "OWASP：LLM01 Prompt Injection",
+      "access": "web search + web open",
+      "claims": [
+        "直接與間接注入、權限限制及外部內容分隔等風險控制"
+      ]
+    }
+  ],
+  "aliases": [
+    "Prompt Injection",
+    "提示詞注入"
+  ],
+  "existing_overlap": "新文；相鄰概念以站內連結分流。",
+  "running_text_characters": 1856,
+  "notes": "無害虛構郵件案例；未提供可直接套用的攻擊字串。防護效果以能力範圍說明，未聲稱可以完全阻止所有注入。",
+  "language_review": "OpenCC s2twp 0.1.7 全文轉換後，人工校正參數、權限、項目、通過、來源支持及文件等情境用語。"
+}

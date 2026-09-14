@@ -1,0 +1,879 @@
+{
+  "slug": "ai-news-gpt-56-price-cut-20260730",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "GPT-5.6 Luna、Terra 降價：哪些使用成本受到影響？",
+      "description": "OpenAI 在 2026 年 7 月 30 日調降 GPT-5.6 Luna 與 Terra 的使用價格，但訂閱月費和額度預算並未一起下修。這篇分清楚 API 單價、ChatGPT Work 與 Codex 的點數消耗，以及一般聊天訂閱三種不同費用，再用整理資料和批次工作情境說明怎麼比較成本，避免把模型降價理解成自己的帳單一定變便宜。",
+      "hero": {
+        "src": "/guides/ai-news-gpt-56-price-cut-20260730/hero.jpg",
+        "alt": "三個不同高度的工作平台旁放著計費圓點與一張帳單，呈現用量和月費分開計算的原創插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "OpenAI 在 2026 年 7 月 30 日宣布 GPT-5.6 Luna 與 Terra 降價。公告指出，Luna 價格降低 80%，Terra 降低 20%，並反映在 ChatGPT Work、Codex 的點數消耗；訂閱價格和額度預算保持不變。本文於 2026 年 9 月 14 日查核，整理的是這次調整的影響範圍，不把歷史公告當成今日所有產品的完整價目表。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這則新聞和一般使用者的關係，取決於你怎麼付費。自己透過 API 建立工具、在工作產品使用點數，以及每月訂閱聊天服務，是不同的計費情境。看見「降價」時，先辨認帳單中的項目，才知道變動是否會傳到自己身上。以下費用示例是解讀方式與編輯建議，並非替任何帳號估算的實際帳單。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先分清楚三種費用"
+        },
+        {
+          "type": "paragraph",
+          "text": "API 按使用量計費時，模型的輸入與輸出價格是成本的一部分。輸入可理解為交給模型閱讀的內容，輸出則是它產生的回答；服務也可能有工具、儲存或其他項目。若你的工具同時使用多種服務，單一模型降價只改變其中一部分，不會讓整張帳單按相同比例下降。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPT Work 與 Codex 的情況則是工作消耗多少點數或額度。這次公告說較便宜的模型消耗較少點數，但並沒有把訂閱月費一起調低。使用者可能感受到相同預算可以完成更多工作；能增加多少，仍受任務長度、重試次數與使用的功能影響。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若你只是每月付固定費用使用聊天功能，要檢查的是方案帳單與功能說明。不要因為某個模型的 API 價格下降，就自行推算訂閱會退費、下期月費會減少，或所有工具都變成不限量。這些都是不同的產品條件，需要各自有明確的公告支持。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "公告裡的單價，應該怎麼讀"
+        },
+        {
+          "type": "paragraph",
+          "text": "依這次發布時的 API 價格，Terra 每百萬輸入 token 為 2 美元，輸出為 12 美元；Luna 分別為 0.20 與 1.20 美元。這些是 2026 年 7 月 30 日公告的美元單價，不是每次問答的價格，也不是台灣訂閱方案的月費。要下單或設定預算，仍應再查當前定價頁。"
+        },
+        {
+          "type": "paragraph",
+          "text": "token 不是固定等於一個中文字或一個英文字。文字、格式和語言不同，實際計數也不同，因此不能只拿文章字數乘上一個想像中的固定比例。比較工具時，最好用同一組實際工作紀錄觀察用量，並把長附件、重複背景和反覆修稿所消耗的內容一起納入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一個常見誤會是只看輸入價。若任務要求很長的報告、反覆生成完整文件，輸出部分可能相當重要。編輯建議先要求模型列出提綱，確認方向再展開；修改時只改指定段落。這種工作方式是否真的省用量，應以你使用的產品紀錄確認，不能只因答案比較短就認定帳單一定下降。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "計費情境",
+            "本次調整怎麼理解",
+            "應查看的地方"
+          ],
+          "rows": [
+            [
+              "API 用量",
+              "Luna、Terra 公告單價下修",
+              "模型定價與實際用量"
+            ],
+            [
+              "Work／Codex",
+              "相關模型消耗較少點數",
+              "工作用量與方案條件"
+            ],
+            [
+              "固定訂閱",
+              "公告未調低訂閱月費",
+              "自己的續訂帳單"
+            ],
+            [
+              "完整工作流",
+              "還要算重試及人工核對",
+              "合格成果的總成本"
+            ]
+          ],
+          "caption": "2026 年 9 月 14 日查核；情境建議由 Mokaair 編輯整理。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把單價變成每件合格成果的成本"
+        },
+        {
+          "type": "paragraph",
+          "text": "假設一間小店每週要整理客戶詢問，先建立一批不含個人資料的範例，事先標好正確分類，再交給不同模型處理。除了總用量，也記錄錯分、漏列與需要人工補寫的地方。價格較低的模型如果已符合需求，就沒有必要為每一筆簡單資料都使用最高能力的模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "反過來說，若一份整理結果必須花很久才能修正，低單價不一定等於低成本。你可以把一次工作從輸入到交付的流程記下來：模型處理、人工檢查、重試、最後匯出。真正要比較的是完成同樣品質需要多少資源，以及失誤是否會影響後續工作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這樣的比較最好先限定用途。把雜亂備註改成固定格式，和閱讀合約後提出風險判斷，是不同的任務；後者不能只靠便宜或跑分決定。先寫清楚哪些答案可以自動採用、哪些必須回到原文核對，模型選擇才會有穩定的依據。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-56-price-cut-20260730/diagram-1.svg",
+          "alt": "從模型降價到自己的帳單",
+          "width": 1600,
+          "height": 900,
+          "caption": "先辨認付費方式，再比較用量、成果品質與完整工作成本。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用既有預算建立一次小規模比較"
+        },
+        {
+          "type": "paragraph",
+          "text": "開始時不用把整套工作流全部換掉。挑一個常重複、資料邊界清楚、出錯後容易修正的任務，例如替自有商品說明整理標籤。保留現在的版本，讓候選模型處理同一批材料，評估結果可以放在簡單表格中：完成率、修改量、等待時間與可取得的用量紀錄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "比較時保持輸入材料、輸出格式及驗收條件一致。若一邊只寫摘要，另一邊被要求附完整分析，花費差異就不能單純歸因於模型。遇到外部工具呼叫，也要記下工具是否成功，否則你可能把資料抓取失敗誤判成模型能力不足。"
+        },
+        {
+          "type": "paragraph",
+          "text": "確認效果後，再逐步增加工作量並設定你能接受的支出範圍。對需要持續執行的服務，應定期看用量是否因資料變長或重試增加而上升。單價下降與總支出上升可以同時發生，因為你可能在相同時間內交給工具更多事情。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "一般使用者現在可以做的檢查"
+        },
+        {
+          "type": "paragraph",
+          "text": "先打開自己的付款紀錄，辨認目前付的是固定訂閱、額外點數還是 API 用量。接著列出最常做的工作，看看問題是額度不夠、等待太久，還是答案需要重做。只有把瓶頸找出來，才知道這次價格調整是否值得你改變用法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果完全沒有使用 API，也沒有遇到工作額度限制，可以把這則消息當成產業趨勢，繼續使用已經熟悉的工具。若你正在建立大量重複任務，則可以用小規模、可核對的材料重新比較。保留日期與使用設定，往後價格再調整時，才有能延續的比較基準。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "降價幅度不等於整張帳單折扣",
+          "text": "本文單價屬於發布當天的 API 公告；訂閱、工具及其他服務費用須各自查證。"
+        },
+        {
+          "type": "link",
+          "text": "先理解免費與付費方案",
+          "url": "https://mokaair.com/zh-TW/life/ai-free-vs-paid-plans-2026"
+        },
+        {
+          "type": "link",
+          "text": "同一家模型的不同等級",
+          "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI：GPT-5.6 價格與效率調整，2026-07-30",
+          "url": "https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "GPT-5.6 Luna and Terra Price Cut: Which Usage Costs Are Affected?",
+      "description": "OpenAI lowered usage prices for GPT-5.6 Luna and Terra on July 30, 2026, but monthly subscription fees and credit budgets were not reduced alongside them. This article separates API unit prices, ChatGPT Work and Codex credit consumption, and standard chat subscriptions into three distinct costs, using data processing and batch workflows to explain cost comparisons so you don't assume your bill will automatically decrease.",
+      "hero": {
+        "src": "/guides/ai-news-gpt-56-price-cut-20260730/hero-en.jpg",
+        "alt": "An original illustration showing three work platforms at varying heights alongside billing dots and an invoice, depicting separate tracking for usage and monthly fees.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On July 30, 2026, OpenAI announced price cuts for GPT-5.6 Luna and Terra. The announcement indicated that Luna's price was reduced by 80% and Terra's by 20%, which is reflected in credit consumption across ChatGPT Work and Codex; subscription prices and credit budgets remain unchanged. Verified on September 14, 2026, this article outlines the scope of impact for this adjustment and does not treat historical announcements as a complete price list for all current products."
+        },
+        {
+          "type": "paragraph",
+          "text": "How this news relates to the average user depends on how you pay. Building your own tools via the API, consuming credits within workplace products, and paying a monthly subscription for chat services represent entirely different billing scenarios. When you see a \"price cut,\" first identify the line items on your bill to understand whether the change will carry over to you. The following cost examples are analytical methods and editorial suggestions, not actual billing estimates for any specific account."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "First, distinguish between the three types of fees"
+        },
+        {
+          "type": "paragraph",
+          "text": "When the API is billed based on usage, model input and output pricing constitutes a portion of the cost. Input can be understood as the content provided for the model to read, while output refers to the responses it generates; services may also incur charges for tools, storage, or other items. If your tool utilizes multiple services simultaneously, a price drop for a single model only changes one component and will not reduce your overall bill by the same proportion."
+        },
+        {
+          "type": "paragraph",
+          "text": "For ChatGPT Work and Codex, the scenario revolves around how many credits or how much quota a task consumes. This announcement stated that cheaper models consume fewer credits, but it did not lower the monthly subscription fees alongside that change. Users may find that the same budget allows them to accomplish more work; the exact increase still depends on task length, number of retries, and the features used."
+        },
+        {
+          "type": "paragraph",
+          "text": "If you simply pay a fixed monthly fee to use chat functionality, you should review your plan's billing statements and feature descriptions. Do not assume, simply because a specific model's API price dropped, that your subscription will receive a refund, your next monthly fee will decrease, or all tools will become unlimited. These are separate product conditions that require explicit supporting announcements of their own."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "How to interpret the unit prices in the announcement"
+        },
+        {
+          "type": "paragraph",
+          "text": "According to the API pricing at the time of this release, Terra is $2 per million input tokens and $12 for output; Luna is $0.20 and $1.20, respectively. These are US dollar unit prices announced on July 30, 2026—not per-query costs, nor monthly fees for subscription plans in Taiwan. To place orders or establish budgets, you should still check the current pricing page."
+        },
+        {
+          "type": "paragraph",
+          "text": "A token is not permanently equivalent to one Chinese character or one English word. Actual counts vary across different texts, formats, and languages, meaning you cannot simply multiply an article's word count by an imagined fixed ratio. When comparing tools, it is best to observe usage with the same set of actual work logs, incorporating the consumption from long attachments, repetitive background context, and iterative revisions."
+        },
+        {
+          "type": "paragraph",
+          "text": "Another common misconception is focusing solely on input pricing. If a task requires lengthy reports or repeatedly generates entire documents, the output component can become quite significant. Editors recommend first asking the model to provide an outline and confirming the direction before expanding; when revising, modify only specified sections. Whether this working method genuinely saves usage should be verified against your product logs—do not assume your bill will drop just because answers are shorter."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Billing Scenario",
+            "How to Interpret This Adjustment",
+            "Where to Check"
+          ],
+          "rows": [
+            [
+              "API Usage",
+              "Luna and Terra announced unit prices lowered",
+              "Model pricing and actual usage"
+            ],
+            [
+              "Work / Codex",
+              "Related models consume fewer credits",
+              "Task usage and plan conditions"
+            ],
+            [
+              "Fixed Subscription",
+              "Announcement did not reduce monthly subscription",
+              "Your own renewal bill"
+            ],
+            [
+              "Complete Workflow",
+              "Retries and manual review must also be counted",
+              "Total cost of qualified deliverables"
+            ]
+          ],
+          "caption": "Verified on September 14, 2026; scenario recommendations compiled by Mokaair editors."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Translating unit prices into cost per qualified deliverable"
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose a small shop compiles customer inquiries each week. First, create a batch of sample queries with personal data removed and correct classifications pre-labeled, then process them across different models. In addition to total consumption, record misclassifications, omitted items, and areas requiring manual rewrites. If a lower-priced model meets the criteria, there is no need to deploy the highest-capability model for every simple piece of data."
+        },
+        {
+          "type": "paragraph",
+          "text": "Conversely, if an aggregated result takes a long time to correct, a low unit price does not necessarily equal low cost. You can document the process of a task from input to delivery: model processing, human review, retries, and final export. What truly needs comparison is how many resources are required to reach the same quality, and whether errors disrupt subsequent workflows."
+        },
+        {
+          "type": "paragraph",
+          "text": "Such comparisons are best limited to specific use cases first. Converting messy notes into a fixed format and reviewing a contract to provide risk assessments are fundamentally different tasks; the latter cannot be decided merely by price or benchmark scores. Clearly defining which answers can be adopted automatically and which must be verified against source material will establish a stable foundation for model selection."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-56-price-cut-20260730/diagram-1-en.svg",
+          "alt": "From model price cuts to your own bill",
+          "width": 1600,
+          "height": 900,
+          "caption": "First identify the payment method, then compare usage, output quality, and total workflow costs.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Setting up a small-scale comparison within existing budgets"
+        },
+        {
+          "type": "paragraph",
+          "text": "You do not need to replace your entire workflow at the outset. Pick a recurring task with clear data boundaries that is easy to correct if errors occur, such as generating product tags for your own inventory descriptions. Keep your current version and let candidate models process the exact same batch of materials, evaluating results in a simple table: completion rate, volume of edits, latency, and accessible usage records."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep input materials, output formats, and acceptance criteria consistent throughout the comparison. If one side writes only a summary while the other is asked to provide a comprehensive analysis, the cost difference cannot simply be attributed to the model. When external tool calls are involved, record whether the tool succeeded, or you might mistake a data retrieval failure for a model capability shortcoming."
+        },
+        {
+          "type": "paragraph",
+          "text": "Once effectiveness is verified, gradually scale up task volume while setting acceptable spending boundaries. For continuously running services, regularly check whether usage rises due to longer data or increased retries. A dropping unit price and rising total expenditure can happen simultaneously, as you may be delegating more tasks to the tool within the same timeframe."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Checks general users can perform right now"
+        },
+        {
+          "type": "paragraph",
+          "text": "First, open your payment history to identify whether you are currently paying for a fixed subscription, extra credits, or API usage. Next, list your most frequent tasks to see whether your main bottleneck is insufficient quota, excessive latency, or answers requiring rework. Only by identifying bottlenecks will you know if this price adjustment warrants altering how you work."
+        },
+        {
+          "type": "paragraph",
+          "text": "If you do not use the API at all and have not encountered task credit limits, you can treat this news as an industry trend and continue using the tools you are already familiar with. If you are building high-volume repetitive workflows, you can benchmark anew using small-scale, verifiable materials. Document your test dates and configuration settings so you retain a continuous baseline when prices adjust again in the future."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Price Cut Rate Does Not Equal Total Bill Discount",
+          "text": "The unit prices in this article reflect the API announcement on release day; subscription, tool, and other service fees must be independently verified."
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT Free Tier and Thinking Feature Updates: What Changes in Daily Use?",
+          "url": "https://mokaair.com/en/life/ai-news-chatgpt-free-thinking-20260806"
+        },
+        {
+          "type": "link",
+          "text": "Gemini 3.8 Flash Launched: What Model Upgrades Mean for Everyday Tools",
+          "url": "https://mokaair.com/en/life/ai-news-gemini-38-flash-20260902"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI: GPT-5.6 Pricing and Efficiency Adjustments, 2026-07-30",
+          "url": "https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "GPT-5.6 Luna・Terra値下げ：どの利用コストに影響があるのか？",
+      "description": "OpenAIは2026年7月30日にGPT-5.6 LunaおよびTerraの利用価格を引き下げましたが、サブスクリプション月額料金やクォータ予算は同時に引き下げられていません。本稿では、API単価、ChatGPT WorkやCodexのクレジット消費、一般的なチャットのサブスクリプションという3つの異なる費用を整理し、データ整理やバッチ処理のシナリオを用いてコスト比較の方法を解説します。モデル値下げが自身の請求額の減少に直結するとは限らない理由を明確にします。",
+      "hero": {
+        "src": "/guides/ai-news-gpt-56-price-cut-20260730/hero-ja.jpg",
+        "alt": "高さの異なる3つの作業プラットフォームの傍らに課金ドットと請求書が置かれ、利用量と月額料金が個別に計算される様子を表したオリジナルイラスト",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "OpenAIは2026年7月30日、GPT-5.6 LunaおよびTerraの値下げを発表しました。告知によると、Lunaの価格は80％、Terraは20％引き下げられ、ChatGPT WorkやCodexのクレジット消費にも反映されますが、サブスクリプション料金およびクォータ予算は据え置きとなります。本文は2026年9月14日に確認された情報に基づき、今回の改定の影響範囲を整理したものであり、過去のアナウンスを今日の全製品に対する完全な料金表と見なすものではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "このニュースが一般ユーザーにどう関係するかは、支払い形態によって異なります。APIを通じて自作ツールを構築している場合、ワーク製品でクレジットを消費している場合、そして毎月チャットサービスのサブスクリプション料金を支払っている場合では、課金シナリオが異なります。「値下げ」を目にした際は、まず請求明細の項目を確認しなければ、その変化が自身に波及するかどうかはわかりません。以下の費用事例は読み解き方と編集部からの提案であり、特定のアカウントに対する実際の請求見積もりではありません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "まずは3つの費用形態を区別する"
+        },
+        {
+          "type": "paragraph",
+          "text": "APIが従量課金制の場合、モデルの入力および出力価格はコストの一部にすぎません。入力はモデルに読み込ませる内容、出力はモデルが生成した回答と理解できますが、サービスにはツール呼び出し、ストレージ、その他の項目が含まれることもあります。自社のツールが複数のサービスを併用している場合、単一モデルの値下げは一部の変更にとどまり、請求書全体が同じ比率で安くなるわけではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPT WorkやCodexの場合は、作業によって消費されるクレジットや枠の量が問題になります。今回の発表では、低価格モデルのクレジット消費が少なくなるとされていますが、サブスクリプション月額料金が同時に引き下げられたわけではありません。ユーザーは同じ予算内でより多くの作業をこなせると実感できる可能性がありますが、どれだけ増やせるかはタスクの長さ、再試行回数、使用する機能に左右されます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "単に毎月定額を支払ってチャット機能を利用しているだけであれば、確認すべきはプランの請求書と機能説明です。特定モデルのAPI価格が下がったからといって、サブスクリプション料金が返金されたり、翌月の月額が減額されたり、すべてのツールが無制限になったりすると独自に推測してはいけません。これらは別々の製品条件であり、それぞれ明確な公式発表の裏付けが必要です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "告知内の単価をどう読み解くべきか"
+        },
+        {
+          "type": "paragraph",
+          "text": "今回の発表時のAPI価格によれば、Terraは100万入力トークンあたり2米ドル、出力は12米ドルです。Lunaはそれぞれ0.20米ドルと1.20米ドルとなっています。これらは2026年7月30日に発表された米ドル単価であり、1回あたりのQ&A価格でも、台湾向けサブスクリプションプランの月額料金でもありません。発注や予算設定を行う際は、現在の公式料金ページを改めて確認する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "トークンは、中国語1文字や英単語1語と固定的に等しいわけではありません。テキスト、書式、言語の違いによって実際のカウントは異なるため、文章の文字数に想定上の固定倍率を掛けるだけでは計算できません。ツールを比較する際は、実際の同じ業務記録を用いて消費量を観察し、長い添付ファイルや重複する背景情報、繰り返しの修正によって消費される内容も併せて含めるのが最善です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "もう一つのよくある誤解は、入力価格しか見ないことです。長いレポートの作成や、完全なドキュメントの反復生成を求めるタスクの場合、出力部分の比重が非常に大きくなる可能性があります。編集部では、まずモデルにアウトラインを作成させ、方向性を確認してから詳細を展開すること、修正時は指定した段落のみを変更することを推奨します。この作業手法が実際に消費量を削減できるかは、ご利用の製品ログで確認すべきであり、回答が短くなったというだけで請求額が必ず下がると判断してはなりません。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "課金シナリオ",
+            "今回の改定の捉え方",
+            "確認すべき項目"
+          ],
+          "rows": [
+            [
+              "API利用量",
+              "Luna・Terraの公示単価が引き下げ",
+              "モデル価格と実際の利用量"
+            ],
+            [
+              "Work／Codex",
+              "対象モデルのクレジット消費が減少",
+              "作業消費量とプランの適用条件"
+            ],
+            [
+              "定額サブスクリプション",
+              "発表では月額料金の引き下げなし",
+              "自身の更新請求書"
+            ],
+            [
+              "ワークフロー全体",
+              "再試行や人的確認も含めて算出",
+              "合格基準を満たす成果の総コスト"
+            ]
+          ],
+          "caption": "2026年9月14日確認。シナリオ別の推奨事項はMokaair編集部によるまとめ。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "単価を「合格成果物あたりのコスト」に換算する"
+        },
+        {
+          "type": "paragraph",
+          "text": "例えば小規模な店舗が毎週顧客からの問い合わせを整理する場合、まずは個人情報を含まないサンプルデータを用意し、あらかじめ正しい分類ラベルを付与した上で、異なるモデルに処理させます。総利用量だけでなく、誤分類や抽出漏れ、人手による加筆が必要だった箇所も記録します。低価格のモデルで要件を十分に満たせるのであれば、すべての単純なデータに対して最高性能のモデルを使う必要はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "逆に、出力された整理結果の修正に長い時間を要するのであれば、単価の低さは必ずしも低コストを意味しません。入力から納品までの1回の一連のプロセス（モデルによる処理、人的チェック、再試行、最終エクスポート）を記録してみるとよいでしょう。真に比較すべきなのは、同等の品質を達成するためにどれだけの資源が必要か、そしてエラーが後続の業務に悪影響を及ぼさないかという点です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "このような比較を行う際は、まず用途を限定するのが賢明です。雑多なメモを定型フォーマットに整えることと、契約書を精読してリスク判断を下すこととでは、タスクの性質が異なります。後者は安さやベンチマークスコアだけで判断することはできません。どの回答であれば自動採用でき、どの回答は原文に戻って照合しなければならないのかを明確に定義してこそ、モデル選定にブレない基準が生まれます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-56-price-cut-20260730/diagram-1-ja.svg",
+          "alt": "モデルの値下げから自身の請求書まで",
+          "width": 1600,
+          "height": 900,
+          "caption": "まず支払い方式を特定し、利用量、成果物の品質、ワークフロー全体のコストを比較する。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "既存の予算内で小規模な比較検証を実施する"
+        },
+        {
+          "type": "paragraph",
+          "text": "開始時にワークフロー全体を一新する必要はありません。自社商品の説明文に対するタグラベル整理など、反復性が高く、データの境界が明確で、ミスが生じても修正が容易なタスクを1つ選びます。現行バージョンを維持したまま、候補となるモデルに同一のデータを処理させ、評価結果を簡単な表にまとめます（達成率、修正量、待機時間、取得可能な利用ログなど）。"
+        },
+        {
+          "type": "paragraph",
+          "text": "比較の際は、入力データ、出力フォーマット、検収条件を統一してください。片方に要約のみを出力させ、もう片方に完全な分析の添付を求めていては、費用の差を単純にモデルの違いによるものとは見なせません。外部ツールの呼び出しを伴う場合はツールが正常に成功したかも記録すべきであり、そうしなければデータ取得の失敗をモデルの能力不足と誤認してしまう恐れがあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "効果を確認できたら、作業量を段階的に増やし、許容可能な支出範囲を設定します。継続的に運用するサービスについては、データ量の増加や再試行の増加によって利用量が膨らんでいないか定期的に点検する必要があります。同じ時間内により多くのタスクをツールに委ねるようになることで、単価の低下と総支出の増加が同時に起きることもあり得ます。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "一般ユーザーが今すぐ実施できるチェック"
+        },
+        {
+          "type": "paragraph",
+          "text": "まずは自身の支払い履歴を開き、現在支払っているのが定額サブスクリプションなのか、追加クレジットなのか、それともAPI利用料なのかを確認します。次に、最も頻繁に行うタスクを洗い出し、問題がクォータ不足なのか、待ち時間の長さなのか、それとも回答の手直しが必要なことなのかを見極めます。ボトルネックを特定して初めて、今回の価格改定が自身の使い方を見直す価値があるかどうかを判断できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "APIを一切利用しておらず、作業枠の制限にも直面していないのであれば、このニュースを業界トレンドとして受け止め、すでに慣れ親しんだツールを使い続けて構いません。もし大量の反復タスクを構築中であるなら、検証可能な小規模の素材を用いて再比較するとよいでしょう。日付と使用設定を記録として残しておくことで、将来再び価格改定が行われた際にも一貫した比較基準を持つことができます。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "値下げ幅は請求書全体の割引率とは異なる",
+          "text": "本文記載の単価は発表当日のAPI告知に基づくものです。サブスクリプション、ツール、その他のサービス費用は個別に確認する必要があります。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT無料版と思考機能の更新：日常利用で何が変わるのか？",
+          "url": "https://mokaair.com/ja/life/ai-news-chatgpt-free-thinking-20260806"
+        },
+        {
+          "type": "link",
+          "text": "Gemini 3.8 Flash登場：モデル刷新は日常のツールに何をもたらすか？",
+          "url": "https://mokaair.com/ja/life/ai-news-gemini-38-flash-20260902"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI：GPT-5.6の価格および効率改定、2026-07-30",
+          "url": "https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "GPT-5.6 Luna·Terra 가격 인하: 어떤 사용 비용에 영향 미치나?",
+      "description": "OpenAI가 2026년 7월 30일 GPT-5.6 Luna와 Terra의 이용 요금을 인하했지만, 월간 구독료와 제공 한도 예산은 함께 낮아지지 않았습니다. 본 기사에서는 API 단가, ChatGPT Work 및 Codex의 크레딧 소모, 일반 챗 구독의 세 가지 비용 체계를 구분하고, 데이터 정리와 배치 작업 시나리오를 통해 비용을 비교하는 방법을 설명하여 모델 가격 인하가 청구서 할인으로 이어진다는 오해를 바로잡습니다.",
+      "hero": {
+        "src": "/guides/ai-news-gpt-56-price-cut-20260730/hero-ko.jpg",
+        "alt": "높이가 서로 다른 세 개의 작업대 옆에 과금용 도트와 청구서가 놓여 있어 사용량과 월정액이 별도로 계산됨을 나타내는 오리지널 일러스트",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "OpenAI는 2026년 7월 30일 GPT-5.6 Luna 및 Terra의 가격 인하를 발표했습니다. 공지에 따르면 Luna 가격은 80%, Terra는 20% 인하되었으며, 이는 ChatGPT Work와 Codex의 크레딧 소모량에도 반영되었습니다. 다만 구독 요금과 한도 예산은 그대로 유지됩니다. 본 기사는 2026년 9월 14일 확인된 내용을 바탕으로 이번 조정의 영향 범위를 정리한 것이며, 당시 공지를 오늘날 모든 제품의 전체 요금표로 간주해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 뉴스가 일반 사용자에게 어떤 의미가 있는지는 결제 방식에 따라 달라집니다. API를 통해 직접 도구를 구축하는 경우, 업무용 제품에서 크레딧을 차감해 쓰는 경우, 매월 구독료를 내고 챗 서비스를 이용하는 경우는 서로 다른 과금 시나리오입니다. '가격 인하'라는 문구를 보았을 때 먼저 자신의 청구서 항목을 식별해야 변동 사항이 본인에게 적용되는지 알 수 있습니다. 아래에 제시된 비용 예시는 해석 방식과 편집상의 조언일 뿐, 특정 계정을 위해 산정한 실제 청구서가 아닙니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "먼저 세 가지 비용 구분을 명확히 하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "API 종량제 과금 환경에서는 모델의 입력 및 출력 가격이 비용의 일부를 구성합니다. 입력은 모델이 읽도록 전달하는 내용이고, 출력은 모델이 생성한 답변으로 이해할 수 있습니다. 여기에 도구 사용료, 스토리지 혹은 기타 부가 항목이 추가될 수 있습니다. 귀하의 도구가 여러 서비스를 동시에 사용한다면, 단일 모델의 가격 인하는 전체 비용 중 일부만 바꿀 뿐 청구서 전체 금액이 동일한 비율로 줄어들지는 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPT Work 및 Codex의 상황은 작업에 소모되는 크레딧이나 할당량과 직결됩니다. 이번 공지에서는 더 저렴해진 모델이 더 적은 크레딧을 소모한다고 밝혔지만, 월 구독료 자체를 함께 낮추지는 않았습니다. 사용자는 동일한 예산으로 더 많은 작업을 처리할 수 있다고 느낄 수 있으나, 처리량이 얼마나 늘어날지는 작업 길이, 재시도 횟수 및 사용 기능에 따라 달라집니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "단지 매월 고정 요금을 내고 대화형 기능을 사용 중이라면, 요금제 청구 내역과 기능 설명을 확인해야 합니다. 특정 모델의 API 가격이 낮아졌다고 해서 구독료가 환급되거나, 다음 달 청구액이 줄어들거나, 모든 도구가 무제한으로 전환된다고 자의적으로 해석해서는 안 됩니다. 이들은 서로 다른 제품 조건이며, 각기 명확한 공식 공지가 뒷받침되어야 합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "공지 속 단가는 어떻게 읽어야 하는가"
+        },
+        {
+          "type": "paragraph",
+          "text": "이번 발표 시점의 API 가격 기준에 따르면 Terra는 100만 입력 토큰당 2달러, 출력은 12달러입니다. Luna는 각각 0.20달러와 1.20달러입니다. 이는 2026년 7월 30일에 공지된 미국 달러 단가일 뿐, 질의응답 1회당 요금도 아니며 대만 구독 요금제의 월회비도 아닙니다. 주문을 넣거나 예산을 책정할 때는 반드시 현재 가격 책정 페이지를 다시 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "토큰은 한자 한 자나 영어 단어 하나와 고정적으로 일치하지 않습니다. 문자, 서식 및 언어에 따라 실제 계산되는 토큰 수가 다르므로 글자 수에 임의의 고정 비율을 곱해 계산할 수 없습니다. 도구를 비교할 때는 동일한 실제 업무 기록을 바탕으로 사용량을 관찰하고, 긴 첨부 파일, 반복되는 배경 정보, 잦은 수정 작업으로 소모되는 내용까지 모두 포함해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "또 다른 흔한 오해는 입력 가격만 보는 것입니다. 작업에서 긴 보고서를 요구하거나 전체 문서를 반복 생성해야 한다면 출력 비용의 비중이 매우 커질 수 있습니다. 편집팀은 모델에 개요 작성을 먼저 요청해 방향을 확인한 뒤 본문을 확장하고, 수정 시에는 지정된 단락만 고치는 방식을 권장합니다. 이러한 업무 방식이 실제로 사용량을 줄이는지는 사용하는 제품의 기록으로 확인해야 하며, 단지 답변이 짧아졌다고 해서 청구액이 반드시 낮아진다고 단정할 수는 없습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "과금 시나리오",
+            "이번 가격 조정의 의미",
+            "확인해야 할 항목"
+          ],
+          "rows": [
+            [
+              "API 종량제",
+              "Luna·Terra 공시 단가 인하",
+              "모델 가격 및 실제 사용량"
+            ],
+            [
+              "Work / Codex",
+              "해당 모델의 크레딧 소모 감소",
+              "작업 소모량 및 플랜 조건"
+            ],
+            [
+              "정기 구독",
+              "공지상 구독 월회비 인하 없음",
+              "본인의 정기 결제 내역"
+            ],
+            [
+              "전체 워크플로",
+              "재시도 및 수작업 검토 반영 필요",
+              "합격 결과물 기준 총비용"
+            ]
+          ],
+          "caption": "2026년 9월 14일 확인 기준; 시나리오별 권장사항은 Mokaair 편집팀 정리."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "단가를 합격한 결과물당 비용으로 전환하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "작은 매장에서 매주 고객 문의를 정리한다고 가정해 보겠습니다. 먼저 개인정보가 포함되지 않은 예시 데이터를 모으고 정확한 분류를 사전 라벨링한 다음, 여러 모델에 처리를 맡겨봅니다. 총사용량뿐만 아니라 오분류, 누락 항목, 수작업으로 보완해야 했던 부분도 기록합니다. 가격이 저렴한 모델로도 요구 사항을 충족한다면, 굳이 모든 단순 데이터 처리에 최고 사양 모델을 쓸 필요는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "반대로 정리 결과를 수정하는 데 너무 오랜 시간이 걸린다면, 낮은 단가가 반드시 낮은 비용을 뜻하지는 않습니다. 입력부터 최종 전달까지의 업무 과정을 기록해 볼 수 있습니다: 모델 처리, 인적 검토, 재시도, 최종 내보내기 순입니다. 진정으로 비교해야 할 것은 동일한 품질을 달성하기 위해 투입되는 총자원과 실수가 후속 작업에 미치는 영향입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이러한 비교는 명확한 용도 범위를 먼저 정하고 진행하는 것이 좋습니다. 어수선한 메모를 정형화된 서식으로 바꾸는 일과 계약서를 읽고 위험 요소를 판단하는 일은 전혀 다른 작업입니다. 후자는 단순히 비용이 싸거나 벤치마크 점수만 보고 결정할 수 없습니다. 어떤 결과를 바로 채택하고 어떤 내용을 원문과 대조해야 하는지 명확히 규정해야 안정적인 모델 선택 기준이 마련됩니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-56-price-cut-20260730/diagram-1-ko.svg",
+          "alt": "모델 가격 인하부터 내 청구서까지",
+          "width": 1600,
+          "height": 900,
+          "caption": "결제 방식을 먼저 파악한 뒤 사용량, 결과 품질 및 전체 작업 비용을 비교하십시오.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "기존 예산으로 소규모 비교 체계 구축하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "처음부터 전체 워크플로를 바꿀 필요는 없습니다. 반복 빈도가 높고 데이터 경계가 명확하며 오류 발생 시 수정이 쉬운 작업(예: 자사 제품 설명 태그 정리)을 하나 선택하십시오. 현재 방식을 유지하면서 후보 모델들에 동일한 자료를 처리하게 하고, 완료율, 수정 분량, 대기 시간, 확인 가능한 사용량 기록 등을 간단한 표로 평가해 볼 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "비교할 때는 입력 데이터, 출력 형식, 검수 기준을 일관되게 유지해야 합니다. 한쪽에는 요약만 요청하고 다른 쪽에는 상세 분석까지 포함하도록 요구한다면 비용 차이를 모델 탓으로만 돌릴 수 없습니다. 외부 도구 호출이 포함되어 있다면 도구 호출 성공 여부도 기록해야 합니다. 그렇지 않으면 데이터 수집 실패를 모델 역량 부족으로 잘못 판단할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "효과를 검증한 후 작업량을 점진적으로 늘리면서 감당 가능한 지출 범위를 설정하십시오. 지속적으로 실행해야 하는 서비스의 경우 데이터가 길어지거나 재시도가 늘어 사용량이 증가하지 않는지 정기적으로 살펴봐야 합니다. 동일한 시간 안에 도구에 더 많은 일을 맡길 수 있게 되므로 단가 인하와 총지출 증가는 동시에 발생할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "일반 사용자가 지금 바로 점검해 볼 사항"
+        },
+        {
+          "type": "paragraph",
+          "text": "우선 결제 내역을 열어 현재 지출이 고정 구독료인지, 추가 크레딧인지, API 사용량인지 확인하십시오. 그런 다음 가장 자주 수행하는 작업을 나열해 한도 부족, 긴 대기 시간, 답변 재작업 중 무엇이 문제인지 살펴보십시오. 병목 지점을 명확히 짚어내야 이번 가격 조정이 사용 패턴을 바꿀 만한 가치가 있는지 판단할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "API를 전혀 쓰지 않고 업무 한도 제한도 겪지 않고 있다면, 이번 소식을 업계 동향으로 참고하며 익숙한 도구를 그대로 사용하면 됩니다. 대량의 반복 작업을 구축 중이라면 검증 가능한 소규모 데이터로 재비교를 진행해 보십시오. 작업 일자와 사용 설정을 기록해 두어야 향후 추가 가격 변동이 있을 때 일관된 비교 기준을 유지할 수 있습니다."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "가격 인하 폭이 전체 청구서 할인율은 아닙니다",
+          "text": "본문의 단가는 발표 당일 공지된 API 기준이며 구독, 연동 도구 및 기타 서비스 비용은 각각 별도로 확인해야 합니다."
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 무료 버전 및 생각하기 기능 업데이트: 일상적 사용은 어떻게 달라지나?",
+          "url": "https://mokaair.com/ko/life/ai-news-chatgpt-free-thinking-20260806"
+        },
+        {
+          "type": "link",
+          "text": "Gemini 3.8 Flash 출시: 모델 업그레이드가 일상 도구에 미치는 의미",
+          "url": "https://mokaair.com/ko/life/ai-news-gemini-38-flash-20260902"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI: GPT-5.6 가격 및 효율성 조정, 2026-07-30",
+          "url": "https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "GPT-5.6 Luna、Terra 降价：哪些使用成本受到影响？",
+      "description": "OpenAI 于 2026 年 7 月 30 日下调 GPT-5.6 Luna 与 Terra 的使用价格，但订阅月费与额度预算并未同步下调。本文厘清 API 单价、ChatGPT Work 与 Codex 的点数消耗，以及常规聊天订阅三种不同费用，并结合数据整理和批处理场景说明如何评估成本，避免将模型降价误以为自己的账单必然变便宜。",
+      "hero": {
+        "src": "/guides/ai-news-gpt-56-price-cut-20260730/hero-zh-cn.jpg",
+        "alt": "三个不同高度的工作平台旁放着计费圆点与一张账单，呈现用量与月费分开计算的原创插图",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "OpenAI 于 2026 年 7 月 30 日宣布 GPT-5.6 Luna 与 Terra 降价。公告指出，Luna 价格降低 80%，Terra 降低 20%，并体现在 ChatGPT Work、Codex 的点数消耗上；订阅价格和额度预算保持不变。本文于 2026 年 9 月 14 日核实，整理的是本次调整的影响范围，不把历史公告当作今日所有产品的完整价目表。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这条新闻与普通用户的关系，取决于你的付费方式。自行通过 API 构建工具、在工作产品中使用点数，以及按月订阅聊天服务，属于不同的计费场景。看到“降价”时，先辨别账单中的具体项目，才能明确变动是否会波及自身。以下费用示例属于解读方式与编辑建议，并非为任何具体账号预估的实际账单。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先厘清三种费用"
+        },
+        {
+          "type": "paragraph",
+          "text": "API 按使用量计费时，模型的输入与输出价格是成本的一部分。输入可理解为交由模型阅读的内容，输出则是其生成的回复；服务中还可能包含工具、存储或其他计费项。若你的工具同时调用多种服务，单一模型降价仅会改变其中一部分，不会让整张账单以相同比例下降。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPT Work 与 Codex 的情况则是任务消耗多少点数或额度。本次公告表示较便宜的模型消耗较少点数，但并未同步调低订阅月费。用户可能会感受到在相同预算下能完成更多工作；具体能增加多少，仍受任务长度、重试次数以及所用功能的影响。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若你只是每月支付固定费用使用聊天功能，需要核对的是套餐账单与功能说明。不要因为某个模型的 API 价格下调，就自行推断订阅会退费、下期月费会减少，或者所有工具都变成不限量。这些都是不同的产品条款，需要各自拥有明确的官方公告支持。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "公告中的单价，应该怎么读"
+        },
+        {
+          "type": "paragraph",
+          "text": "依照本次发布时的 API 价格，Terra 每百万输入 token 为 2 美元，输出为 12 美元；Luna 分别为 0.20 与 1.20 美元。这些是 2026 年 7 月 30 日公告的美元单价，不是每次问答的价格，也不是台湾订阅方案的月费。若要下单或设定预算，仍应再次查询当前定价页面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "token 并不固定等于一个中文字或一个英文字。文字、格式和语言不同，实际计数也不同，因此不能仅拿文章字数乘以一个臆想出来的固定比例。对比工具时，最好使用同一组实际工作记录观察用量，并将长附件、重复背景与反复修改所消耗的内容一同纳入考量。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一个常见误区是只看输入价格。若任务需要生成很长的报告或反复生成完整文档，输出部分可能相当可观。编辑建议先要求模型列出提纲，确认方向后再展开；修改时仅针对指定段落进行调整。这种工作方式是否确实节省用量，应以所用产品的记录进行确认，不能仅因回复较短就认定账单必然下降。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "计费场景",
+            "本次调整如何理解",
+            "应查看的位置"
+          ],
+          "rows": [
+            [
+              "API 用量",
+              "Luna、Terra 公告单价下调",
+              "模型定价与实际用量"
+            ],
+            [
+              "Work／Codex",
+              "相关模型消耗更少点数",
+              "工作用量与方案条款"
+            ],
+            [
+              "固定订阅",
+              "公告未下调订阅月费",
+              "个人的续费账单"
+            ],
+            [
+              "完整工作流",
+              "还需计入重试及人工核对",
+              "合格产出物的总成本"
+            ]
+          ],
+          "caption": "2026 年 9 月 14 日核实；场景建议由 Mokaair 编辑整理。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "将单价换算为每件合格产出物的成本"
+        },
+        {
+          "type": "paragraph",
+          "text": "假设一家小店每周需要整理客户咨询，先建立一批不含个人隐私信息的示例，事先标好正确分类，再交由不同模型处理。除了记录总用量，也需记下错分、遗漏以及需要人工补写的地方。若价格较低的模型已能满足需求，就没有必要对每一条简单数据都动用能力最高的模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "反过来说，若一份整理结果需要耗费大量时间来修正，低单价并不必然等同于低成本。你可以记录从输入到交付的整套工作流程：模型处理、人工检查、重试、最终导出。真正需要对比的是达到同等品质需要投入多少资源，以及失误是否会影响后续工作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "此类对比最好先限定具体用途。将杂乱备注整理为固定格式，与审阅合同后提出风险研判，属于截然不同的任务；后者绝不能仅凭低价或跑分来定夺。先明确划分哪些结果可以直接采纳、哪些必须对照原文核对，模型选型才会有稳固的依据。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-56-price-cut-20260730/diagram-1-zh-cn.svg",
+          "alt": "从模型降价到自身账单",
+          "width": 1600,
+          "height": 900,
+          "caption": "先辨别付费方式，再对比用量、产出品质与完整工作成本。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "利用既有预算建立一次小规模对比"
+        },
+        {
+          "type": "paragraph",
+          "text": "起步时无需将整套工作流全面推翻。挑选一个重复度高、数据边界清晰、出错后容易修正的任务，例如为自家商品说明整理标签。保留当前版本，让候选模型处理同一批素材，评估结果可归纳在简明表格中：完成率、修改量、耗费时长以及可调取的用量记录。"
+        },
+        {
+          "type": "paragraph",
+          "text": "对比时需保持输入素材、输出格式及验收条件一致。若一边仅要求简短摘要，另一边被要求附带详尽分析，两者的开销差异就不能单纯归咎于模型本身。如果涉及外部工具调用，也应记录工具是否调用成功，否则可能会将数据抓取失败误判为模型能力不足。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在确认实际效果后，再逐步提高工作量，并设定你能接受的开支上限。对于需要持续运行的服务，应定期监测用量是否因素材变长或重试增多而走高。单价下调与总开销上涨完全可能同时发生，因为你在相同时间内可能向工具指派了更多任务。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "普通用户当前可以执行的检查"
+        },
+        {
+          "type": "paragraph",
+          "text": "先打开自己的付款记录，确认当前支付的是固定订阅、额外点数还是 API 用量。随后列举最常处理的任务，观察瓶颈究竟是额度不足、等待过久，还是回复需要反复返工。只有找准瓶颈所在，才能判断本次价格调整是否值得你调整使用方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若完全不使用 API，也未曾遭遇工作额度受限，可将此条消息视作行业趋势动态，继续使用已经熟悉的工具。若正在搭建大量重复性任务，则可借助小规模、易核对的素材重新测试对比。妥善保留测试日期与使用配置，以便后续价格再度变动时，具备可持续参考的对比基准。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "降价幅度不等于整张账单折扣",
+          "text": "本文单价属于发布当天的 API 公告；订阅、工具及其他服务费用均须各自核实。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 免费版与思考功能更新：日常使用有什么不同？",
+          "url": "https://mokaair.com/zh-CN/life/ai-news-chatgpt-free-thinking-20260806"
+        },
+        {
+          "type": "link",
+          "text": "Gemini 3.8 Flash 推出：模型升级对日常工具意味着什么？",
+          "url": "https://mokaair.com/zh-CN/life/ai-news-gemini-38-flash-20260902"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI：GPT-5.6 价格与效率调整，2026-07-30",
+          "url": "https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

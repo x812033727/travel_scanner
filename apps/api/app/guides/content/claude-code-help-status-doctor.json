@@ -1,0 +1,273 @@
+{
+  "slug": "claude-code-help-status-doctor",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 126,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜說明、狀態與診斷",
+      "description": "利用說明和診斷找到環境問題。遇到 Claude Code 問題時，先取得能縮小原因的資訊，通常比直接重裝更有效。本篇會用 /help、/status 與 claude doctor 建立一份簡短診斷紀錄，分清楚指令用法、帳號狀態和安裝設定問題，並示範如何提出可處理的求助內容。",
+      "hero": {
+        "src": "/guides/claude-code-help-status-doctor/hero.jpg",
+        "alt": "說明、狀態與診斷：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "遇到 Claude Code 問題時，先取得能縮小原因的資訊，通常比直接重裝更有效。本篇會用 /help、/status 與 claude doctor 建立一份簡短診斷紀錄，分清楚指令用法、帳號狀態和安裝設定問題，並示範如何提出可處理的求助內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "請準備已安裝的 CLI 和一個你熟悉的練習資料夾。即使 Claude 無法完成登入，部分終端機診斷仍可先執行。這篇主要使用只讀工具；目前 /doctor 與 claude doctor 的功能分類不同，執行前務必看清楚有沒有斜線，以及目前輸入位置。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先把症狀寫成一句話"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-help-status-doctor/diagram-1.svg",
+          "alt": "先把症狀寫成一句話 → 用 help 查正確入口 → 用 status 確認工作階段",
+          "width": 1600,
+          "height": 900,
+          "caption": "先把症狀寫成一句話 → 用 help 查正確入口 → 用 status 確認工作階段",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "「不能用」可能代表找不到程式、登入失敗、某個設定沒生效，或只有專案測試失敗。先記錄你在哪個介面、做了什麼、第一個相關錯誤是什麼。例如「PowerShell 執行 claude --version 顯示找不到命令」，就能直接把焦點放在安裝與路徑。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "症狀",
+            "第一個檢查",
+            "主要判斷範圍"
+          ],
+          "rows": [
+            [
+              "找不到 claude",
+              "--version 與指令路徑",
+              "安裝、PATH、shell"
+            ],
+            [
+              "不認得參數",
+              "claude --help",
+              "版本與輸入格式"
+            ],
+            [
+              "登入或資格錯誤",
+              "/status",
+              "帳號、組織、供應商"
+            ],
+            [
+              "設定未套用",
+              "/status 與 doctor",
+              "設定來源、語法、支援值"
+            ],
+            [
+              "只有專案測試失敗",
+              "原始測試命令",
+              "專案程式與執行環境"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用 help 查正確入口"
+        },
+        {
+          "type": "paragraph",
+          "text": "在終端機輸入 claude --help，查看啟動命令與參數。進入 Claude 對話後輸入 /help，查看目前可用的對話指令。這兩份說明回答不同層次的問題，不能拿對話選單沒有某個參數，就判斷 CLI 不支援它。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "PowerShell／macOS／Linux 終端機：確認版本與用法",
+          "code": "claude --version\nclaude --help\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：查看目前可用指令",
+          "code": "/help\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "核對範例中的參數拼字、連字號數量與是否需要值。教學中的可選中括號不應原樣輸入。若查不到某個新功能，記下你的版本與官方文件的版本條件，再決定是否更新；不要用猜測替代查證。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用 status 確認工作階段"
+        },
+        {
+          "type": "paragraph",
+          "text": "在已開啟的 CLI 對話輸入 /status，查看目前版本、模型、帳號與連線等資訊。設定來源行能指出讀入了哪些範圍的檔案，對排查「我改了 JSON 卻沒作用」特別有用。它不會逐鍵列出每個最終值來自哪份檔案，仍需配合設定優先順序閱讀。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：查看狀態",
+          "code": "/status\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果本來想用訂閱，卻看見其他計費或供應商來源，先回到"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-accounts-and-access",
+              "text": "帳號教學"
+            },
+            {
+              "type": "text",
+              "text": "查清楚。不要把完整環境變數清單貼到公開討論區；通常只需說明登入類型、設定來源和是否有相關變數，就能開始排查。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用 claude doctor 做只讀診斷"
+        },
+        {
+          "type": "paragraph",
+          "text": "先離開或另開一個終端機，在相同專案環境執行 claude doctor。它會檢查安裝與設定狀態，包含可能的多份安裝、設定驗證問題或功能資格。閱讀第一個與症狀直接相關的項目，再依建議修正一個變因。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "專案終端機：只讀安裝與設定診斷",
+          "code": "claude doctor\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "目前官方把對話內 /doctor 列為附帶 Skill，可以整理問題並在確認後協助修改；它不是上述命令的完全等價寫法。如果你只是要收集資訊，本篇先用終端機命令即可。之後選擇使用修正流程，也要閱讀它提出的具體變更。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "依症狀做最小修正"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果提示找不到指令，Windows 可用 Get-Command claude，macOS／Linux 可用 command -v claude 檢查解析路徑。若 PATH 更新後舊視窗仍不認得，先開新終端機。若設定 JSON 有錯，依錯誤位置修正引號、逗號或資料型態，不必刪除整個設定目錄。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "PowerShell：查看所有匹配的 CLI 路徑",
+          "code": "Get-Command claude -All\n"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "macOS／Linux 終端機：查看目前匹配的 CLI 路徑",
+          "code": "command -v claude\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "修正後重跑原本失敗的命令，而不是只跑一個不相關檢查。假設原本錯的是 npm test，doctor 通過只能證明工具設定沒有指出問題，不能代替測試通過。把安裝診斷、登入測試、專案測試分開，才能誠實說明問題到底修到哪裡。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "寫一份有用的診斷紀錄"
+        },
+        {
+          "type": "paragraph",
+          "text": "若問題只在公司網路出現，可以比較同一命令在已允許的另一個網路環境是否重現，但不要繞過公司要求的代理或存取政策。先確認錯誤發生在 DNS、連線、授權還是模型回應階段，並把第一個相關訊息保留下來。網路能開一般網站，不代表所有 CLI 需要的端點都能正常使用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "修正過程一次改一個變因，並在紀錄標明修改前後的差異。若同時更新程式、換帳號又改 JSON，即使問題消失，也很難知道真正原因；之後同樣症狀再出現時，就無法沿用這次經驗。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "私人診斷筆記：填入實際結果",
+          "code": "介面與系統：例如 Windows PowerShell／macOS Terminal\nClaude Code 版本：填 claude --version 結果\n安裝方式：原生／Homebrew／WinGet／其他已確認方式\n專案位置：填可供自己辨認的位置，公開分享時隱去私人部分\n重現步驟：從哪個資料夾輸入哪個命令\n預期結果：應該看到什麼\n實際結果：第一個相關錯誤\n已做檢查：help、status、doctor 的必要摘要\n修正後驗證：重跑同一個命令的結果\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "紀錄要保留錯誤碼與必要訊息，但先移除憑證、私人網址參數和無關個人資訊。分享之前自己讀一遍，確認別人能用這些步驟理解問題，而不是只看到幾百行混雜日誌。若要使用產品內回報功能，也先閱讀將附上的內容與送出範圍。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "診斷工具提供線索，不是所有功能都已實測的保證。工具檢查通過後，仍要回到原任務完成一次真實操作。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "小練習是在正常環境建立一份基準紀錄，再於暫存設定檔故意留一個多餘逗號，觀察 JSON 檢查如何指出問題，修正後重新驗證。不要拿團隊正式設定做實驗。完成判準是能分辨症狀層級、找到相應工具、修正單一原因並重跑原步驟；更完整的症狀索引可看"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-troubleshooting",
+              "text": "常見問題排除"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Troubleshooting",
+          "url": "https://code.claude.com/docs/en/troubleshooting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Commands",
+          "url": "https://code.claude.com/docs/en/commands",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

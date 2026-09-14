@@ -1,0 +1,303 @@
+{
+  "slug": "claude-code-build-todo-app",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 155,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜完整實作：待辦清單網站",
+      "description": "從需求到功能、測試與瀏覽器成果檢查。這篇把前面的小練習串成一個完整待辦網站：需求、介面、資料操作、篩選、本機儲存與測試。你可以直接下載材料開始，不必先完成前五十四篇。最後交付的不只是一張畫面，而是可啟動的檔案、可重跑的測試，以及清楚記錄的限制。",
+      "hero": {
+        "src": "/guides/claude-code-build-todo-app/hero.jpg",
+        "alt": "完整實作：待辦清單網站：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "這篇把前面的小練習串成一個完整待辦網站：需求、介面、資料操作、篩選、本機儲存與測試。你可以直接下載材料開始，不必先完成前五十四篇。最後交付的不只是一張畫面，而是可啟動的檔案、可重跑的測試，以及清楚記錄的限制。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "準備 Node.js 22 以上與任一可用的 Claude Code 電腦端入口。下載"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/starter.zip",
+              "text": "起始專案"
+            },
+            {
+              "type": "text",
+              "text": "，解壓到獨立資料夾；需要核對結果時使用"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/complete.zip",
+              "text": "完整參考版"
+            },
+            {
+              "type": "text",
+              "text": "。兩份材料都不需資料庫或第三方套件。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先定義完成範圍"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-build-todo-app/diagram-1.svg",
+          "alt": "先定義完成範圍 → 啟動基準並保存狀態 → 請 Claude 先整理實作方案",
+          "width": 1600,
+          "height": 900,
+          "caption": "先定義完成範圍 → 啟動基準並保存狀態 → 請 Claude 先整理實作方案",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "這次網站要能新增、切換與刪除待辦，提供全部、未完成、已完成篩選，並在重新整理後保留本機資料。介面使用繁體中文，手機窄螢幕可操作，使用者文字不得被當成 HTML 執行。帳號、雲端同步與多人協作不在本次範圍。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "功能",
+            "驗收例子",
+            "失敗條件"
+          ],
+          "rows": [
+            [
+              "新增",
+              "輸入買牛奶後出現一項",
+              "空白文字也建立項目"
+            ],
+            [
+              "切換",
+              "只改指定項目的完成狀態",
+              "其他識別碼也被修改"
+            ],
+            [
+              "篩選",
+              "已完成只顯示完成項目",
+              "切換篩選後資料遺失"
+            ],
+            [
+              "本機保存",
+              "重新整理仍有原項目",
+              "讀到壞資料就整頁崩潰"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "本機保存使用瀏覽器 localStorage，同一瀏覽器與同一來源才讀得到。它不是跨裝置同步，也不是長期備份；清除網站資料、換瀏覽器或換連接埠可能看見不同資料。把這些限制寫在交付說明，讀者才不會期待不存在的功能。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "啟動基準並保存狀態"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "PowerShell 或 macOS／Linux 終端機：在解壓後專案根目錄",
+          "code": "npm test\nnpm start\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "起始材料應有四項測試通過。開啟終端機顯示的本機網址，人工確認新增、切換與刪除。記錄這是尚未加入篩選與儲存的版本；重新整理清空資料屬於此版本預期行為，不要先把它判為錯誤。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若使用 Git，建立一個乾淨的起始提交。先讀取 package.json，知道 start 與 test 真正執行什麼；這套材料沒有安裝步驟，不需要為了跟隨習慣而另外下載大量框架。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "請 Claude 先整理實作方案"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：先確認範圍與驗收",
+          "code": "請讀取目前待辦專案，先提出實作方案。\n加入全部、未完成、已完成篩選，並以 localStorage 保存資料。\n保留現有新增、切換與刪除功能，介面使用繁體中文。\n驗收包含空白輸入、不存在的識別碼、重新整理、損壞的儲存資料與 360px 手機寬度。\n使用現有 HTML/CSS/JavaScript，不加框架、不接外部服務。\n先列出預計修改檔案、資料格式及測試，再開始修改。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "核對方案是否把純資料逻輯與 DOM 操作分開。篩選應回傳要顯示的項目，不刪掉原始清單；儲存資料應有格式檢查，讀取失敗要回到合理空狀態。若方案直接把 localStorage 的內容交給 innerHTML，要求改成安全文字呈現。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "小步實作篩選與儲存"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第一步只加入 filterTodos 與測試，確認 all、active、completed 的結果。第二步加入 HTML 按鈕與 app.js 狀態，確認切換篩選不會改變 items。完整函式與操作細節可看"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-implement-feature",
+              "text": "新增小功能"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "第三步再加入本機儲存。寫入時處理瀏覽器儲存失敗，讀取時檢查 JSON 是否為陣列、每個項目是否有合理的 id、title 與 completed。不要因為資料原本是自己寫入，就假設永遠不會損壞或被其他版本更改。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：逐步實作並回報",
+          "code": "請先實作篩選函式與相關測試，通過後再接上介面。\n接著加入本機儲存與無效資料回復處理，補上對應測試。\n每一步回報實際修改的檔案與測試結果。\n完成後先不要提交、推送或部署，讓我檢查差異與畫面。\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "驗證模型邏輯與畫面"
+        },
+        {
+          "type": "paragraph",
+          "text": "先執行 npm test，完整參考版應有六項測試。測試數量只是確認材料版本的線索，真正重要的是每項驗證是否覆蓋預期行為。你自己的實作可以有不同數量，只要驗收條件有對應證據即可。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著在瀏覽器新增三項不同文字，完成其中一項，依序切換篩選。確認全部有三項、未完成有兩項、已完成有一項，切回全部仍保留所有資料。刪除一項後重新整理，剩餘項目及完成狀態應一致。"
+        },
+        {
+          "type": "paragraph",
+          "text": "輸入含尖括號與引號的文字，例如一段看起來像 HTML 的字串，應以普通文字顯示，不產生新元素或執行腳本。檢查長文字換行與 360–390px 寬度，頁面不應整體水平溢出；按鈕和輸入標籤應仍可辨認。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "參考成果如何使用"
+        },
+        {
+          "type": "paragraph",
+          "text": "完整參考版包含可直接執行的檔案與測試，你可以解壓到另一個資料夾比較。先停止原伺服器，避免兩份材料使用同一連接埠。比較時看實際行為與責任分配，不要求 Claude 產生逐字相同的程式。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果測試失敗，保存命令、錯誤與重現操作，依"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-debug-and-test",
+              "text": "除錯流程"
+            },
+            {
+              "type": "text",
+              "text": "修正。不要為了顯示綠燈而刪除測試或放寬驗收。若發現參考版沒有某個你新增的功能，也應清楚區分系列範圍與額外需求。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "保存功能還要檢查儲存空間不可用的情況，例如瀏覽器設定拒絕儲存。介面應讓使用者知道資料只暫時留在當前頁面，而不是顯示已永久保存。測試時使用專用瀏覽器資料，避免清除自己其他網站的內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "驗收表中的每個功能都要有輸入、操作與預期結果，不能只填一個勾。把三個待辦的文字與完成狀態記下來，重新整理前後逐項比較，能更容易發現少存一欄或讀取型別錯誤。"
+        },
+        {
+          "type": "paragraph",
+          "text": "參考版適合比較，不應直接覆蓋你的成果來掩蓋失敗。若選擇採用參考實作，先說明替換哪些檔案，再重新跑全部必要檢查，確保最後交付的證據對應實際檔案。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "整理交付與停止服務"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：完成交付紀錄",
+          "code": "請整理本次成果：功能、啟動命令、測試命令與實際結果。\n列出瀏覽器驗證過的操作、寬度與尚未驗證項目。\n說明 localStorage 的限制、修改檔案清單與已知問題。\n不要把本機可用寫成已公開部署，也不要自行提交或發布。\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "完成後看 Git diff，確認沒有多餘依賴、秘密或不相關改動。需要提交時依"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-git-review-pr",
+              "text": "Git 審查篇"
+            },
+            {
+              "type": "text",
+              "text": "保存，停止伺服器則回終端機按 Ctrl+C。正式公開網站需要另外的部署與資料處理規劃，本篇的本機完成不代表已發布。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "完成判準是功能與錯誤情境都經過核對，測試可重跑，手機能閱讀，交付說明誠實標示執行位置與限制。這份流程可以作為之後接手其他小專案的起點。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Common workflows",
+          "url": "https://code.claude.com/docs/en/common-workflows",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Best practices for Claude Code",
+          "url": "https://code.claude.com/docs/en/best-practices",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

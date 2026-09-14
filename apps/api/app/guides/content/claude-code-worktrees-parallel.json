@@ -1,0 +1,283 @@
+{
+  "slug": "claude-code-worktrees-parallel",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 147,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜Git Worktree 平行工作",
+      "description": "隔離多個任務的檔案與分支。Git Worktree 讓同一儲存庫擁有多個工作目錄，各自使用分支與檔案。本篇會把待辦篩選與文件整理分開，確認兩個 session 不會直接改到彼此的檔案，再把其中一個成果整合回主分支。你也會知道何時可以安全清理工作目錄。",
+      "hero": {
+        "src": "/guides/claude-code-worktrees-parallel/hero.jpg",
+        "alt": "Git Worktree 平行工作：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Git Worktree 讓同一儲存庫擁有多個工作目錄，各自使用分支與檔案。本篇會把待辦篩選與文件整理分開，確認兩個 session 不會直接改到彼此的檔案，再把其中一個成果整合回主分支。你也會知道何時可以安全清理工作目錄。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先完成"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-terminal-git-basics",
+              "text": "Git 基礎"
+            },
+            {
+              "type": "text",
+              "text": "，將"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-practice-project-setup",
+              "text": "練習專案"
+            },
+            {
+              "type": "text",
+              "text": "建立初始提交。沒有提交歷史時，先保存基準再使用 worktree。以下命令適用 PowerShell、macOS 或 Linux 終端機，所有操作限於你自己的練習儲存庫。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "分開檔案但共用歷史"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-worktrees-parallel/diagram-1.svg",
+          "alt": "分開檔案但共用歷史 → 先查看主目錄狀態 → 使用 Git 建立可觀察的工作目錄",
+          "width": 1600,
+          "height": 900,
+          "caption": "分開檔案但共用歷史 → 先查看主目錄狀態 → 使用 Git 建立可觀察的工作目錄",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "Worktree 的關係",
+            "需要另行安排"
+          ],
+          "rows": [
+            [
+              "工作檔案與目前分支",
+              "各自獨立",
+              "清楚的任務範圍"
+            ],
+            [
+              "Git 物件與歷史",
+              "同一儲存庫共用",
+              "整合與分支管理"
+            ],
+            [
+              "開發伺服器與資料庫",
+              "不會自動隔離",
+              "連接埠與測試資料"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Worktree 不是完整複製另一個獨立 Git 儲存庫。它與主目錄共用物件與歷史，但有自己的工作檔案、索引與目前分支。因此同一個分支通常不能同時在兩個 worktree 被正常檢出，建立時應為每項工作使用不同分支。"
+        },
+        {
+          "type": "paragraph",
+          "text": "未提交的主目錄修改不會自動成為新 worktree 的起點。先決定要從哪個已提交版本開始，再建立分支；若需要帶入尚未提交工作，必須明確保存與移轉，不能只看到相同儲存庫名稱就假設內容一致。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先查看主目錄狀態"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "PowerShell 或 macOS／Linux 終端機：在練習儲存庫根目錄",
+          "code": "git status --short\ngit branch --show-current\ngit log -1 --oneline\ngit worktree list\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "記下目前分支與提交，確認沒有不明變更。若已有其他 worktree，先核對路徑與負責人，不要刪除名稱陌生的目錄。這篇使用 todo-filter 分支與旁邊的 todo-filter-work 資料夾，若已存在就選另一個明確名稱。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "使用 Git 建立可觀察的工作目錄"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "PowerShell 或 macOS／Linux 終端機：從目前提交建立分支",
+          "code": "git worktree add -b todo-filter ../todo-filter-work\ngit worktree list\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在另一個終端機進入新目錄，確認實際路徑與分支後再啟動 Claude。主目錄保留原本的 session，可以只做 README 整理；新目錄負責篩選功能，兩者的責任先寫清楚。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "PowerShell 或 macOS／Linux 終端機：在新工作目錄啟動",
+          "code": "cd ../todo-filter-work\ngit branch --show-current\nclaude\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude Code 也提供 --worktree 入口，自動建立或進入它管理的工作目錄。這是另一種建立方式，與上面的手動 Git 範例擇一練習，不要在已建立的 worktree 裡再無意間建立第二層。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "PowerShell 或 macOS／Linux 終端機：另一種方式，從主儲存庫啟動",
+          "code": "claude --worktree todo-filter-session\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "指定責任與共享資源"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "新工作目錄的 Claude Code 對話框",
+          "code": "請先回報目前工作目錄與分支，確認位於 todo-filter 的工作副本。\n只實作待辦篩選所需的 model.js、app.js、index.html 與相關測試。\n不要修改主工作目錄，不要提交或推送。\n完成後回報差異、測試結果與尚未處理的項目。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "每個目錄若有依賴需要各自準備。這套練習沒有外部套件，執行 npm test 即可；真實專案的 node_modules、環境檔與建置輸出不一定會自動存在。不要把秘密檔案放入版本控制，只為了讓 worktree 可以啟動。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩個開發伺服器預設都想用相同連接埠時會衝突。請分配不同連接埠，並在每個瀏覽器頁面記錄對應目錄。看到正確畫面也要確認不是另一個 worktree 的伺服器，否則可能驗證到舊版本。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "驗證隔離與整合成果"
+        },
+        {
+          "type": "paragraph",
+          "text": "在新目錄修改主標題或篩選功能，回主目錄確認檔案沒有同步改變。兩邊各執行 git status，應只看到自己那邊的未提交修改。這個觀察能直接證明檔案隔離，不需要靠 session 名稱猜測。"
+        },
+        {
+          "type": "paragraph",
+          "text": "功能完成後，在新目錄審查差異、執行測試並建立本機提交。回到主目錄，先確認主目錄乾淨且位於預定接收分支，再選擇合併。這裡示範只允許快轉，遇到分歧會停止，讓你先理解歷史再決定處理方式。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "PowerShell 或 macOS／Linux 終端機：在乾淨的接收分支執行",
+          "code": "git merge --ff-only todo-filter\nnpm test\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "若快轉失敗，通常是兩邊都新增了提交。先查看圖形化歷史與差異，選擇適合的合併方式並處理衝突，不要用強制覆蓋把另一邊工作丟掉。完整 PR 審查方式可看"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-git-review-pr",
+              "text": "Git 與變更管理"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "整合之前，先把每個工作目錄的未追蹤檔案也納入檢查。git diff 通常只顯示已追蹤檔案的差異，新增測試或說明可能仍在未追蹤狀態；只看 diff 為空，就直接移除 worktree，仍可能失去重要材料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "共享 Git 歷史也表示某些儲存庫層級操作會影響其他工作目錄，例如修改遠端設定或清理共用物件。平行 session 應以自己的分支與檔案為範圍，不隨意執行全儲存庫維護。需要這類操作時，先協調其他工作是否仍在進行。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果 worktree 目錄被手動搬走或刪除，Git 的管理紀錄可能與磁碟不一致。先用 git worktree list 查看紀錄與實際路徑，再依 Git 文件修復；不要把看不到的目錄當成可以任意清理的暫存。必要成果可能還在另一個路徑或未合併分支。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成紀錄除了提交識別碼，也寫下哪個測試與瀏覽器網址對應哪個目錄。這樣審查者可以判斷你的證據是否來自整合後版本，而不是另一個尚未合併的工作副本。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "清理前確認成果已保存"
+        },
+        {
+          "type": "paragraph",
+          "text": "關閉該目錄的 Claude session 與伺服器，確認沒有未提交檔案，且必要提交已合併或保存在你要保留的分支。只有在確認不再需要工作副本時，才從其他目錄移除 worktree。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "PowerShell 或 macOS／Linux 終端機：確認路徑與保存狀態後",
+          "code": "git worktree remove ../todo-filter-work\ngit worktree list\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要加 --force 來跳過未提交變更。Claude 自建 worktree 的離開提示可能提供保留或移除，移除會連同工作一起刪除；非互動工作與不同版本的自動清理時機也不同，應讀取提示並自行核對。"
+        },
+        {
+          "type": "paragraph",
+          "text": "小練習是用兩個目錄各改一個互不相同檔案，證明檔案不互相影響，再整合其中一個分支。完成判準是能指出每個目錄、分支、提交與伺服器的對應關係，必要測試通過，並在不遺失工作下完成清理。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Run parallel sessions with worktrees",
+          "url": "https://code.claude.com/docs/en/worktrees",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Common workflows",
+          "url": "https://code.claude.com/docs/en/common-workflows",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

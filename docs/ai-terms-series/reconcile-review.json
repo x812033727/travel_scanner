@@ -1,0 +1,40 @@
+{
+  "reviewer": "root",
+  "reviewed_at": "2026-09-14",
+  "status": "code_review_and_mock_passed",
+  "sha256": "56336f91ab2ca04e5c2a4aa8cccb91d78fb6c8bd38ac126e5a2312b11f268038",
+  "scope": "Incident-specific baseline reconciliation only; no activation or publication.",
+  "checks": [
+    "success retains original, changes baseline only, never activates",
+    "wrong_image refused before state installation",
+    "env_change refused before state installation",
+    "postgres_change refused before state installation",
+    "restarts refused before state installation",
+    "tag_conflict refused before state installation",
+    "partial tag failure retains original state",
+    "existing activated_at rejected",
+    "existing failed_at rejected",
+    "existing backup rejected",
+    "existing external_baseline rejected"
+  ],
+  "operational_review": [
+    "Same four existing locks; clean environment for commands; exact target/manifest/prepared and observed image pins.",
+    "Source runtime original and copied hash equality; original rollback preserved.",
+    "Current environment equals prior baseline; PostgreSQL and Redis whole snapshots unchanged.",
+    "Original state saved exclusively and fsynced before tag creation; replacement checks unchanged state and atomic replace.",
+    "Partial tag failure leaves original state; directory fsync after replacement failure reports uncertain durability."
+  ],
+  "production_executed_during_review": false,
+  "documentation_exception": {
+    "main": "50591be5fc402fd4dd4ad55fb1af92cf0606f674",
+    "target": "3b8df68c693eb81ccde7793a2f89d71999dbb2c2",
+    "reviewed_diff": "34 documentation/task receipt files only; no app, packs, assets, runtime, or deployment changes",
+    "release_host_sha256": "37d45f0453d275b7557b128319ec16bdb34e7274b523f046eb04ed215cba1d7c",
+    "mock_passed": [
+      "same",
+      "reviewed_receipts",
+      "runtime",
+      "unknown"
+    ]
+  }
+}

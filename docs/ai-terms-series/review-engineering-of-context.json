@@ -1,0 +1,291 @@
+{
+  "reviewer": "engineering_foundations",
+  "checked_on": "2026-09-14",
+  "scope": "完整閱讀 context_agents 的 IDs 21–40 共20篇正文、表格、callout及research主張對應；另完整讀 Loop Engineering、索引及50詞速查更新稿。",
+  "method": "逐篇核對定義、相鄰概念、產品歸屬、案例邏輯、成功與失敗條件及來源主張。重要研究與最新協定另用web讀原始來源；其餘以已提交research紀錄與正文的對應檢查，不聲稱本審稿逐一重新開啟全部外部連結。未改動其他作者文章。",
+  "summary": {
+    "context_articles_reviewed": 20,
+    "context_content_blockers_remaining": 0,
+    "resolved_substantive_findings": 1,
+    "root_editorial_notes": 3
+  },
+  "reviews": [
+    {
+      "slug": "ai-term-token",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "完整正文與 research 主張對應已讀。區分 token、字數與存取權杖；不虛構指定分詞結果，輸入／輸出及服務計量皆保留產品差異。社團公告例子有必要欄位與失敗判準。",
+      "sources_reviewed": [
+        "Google token 文件：單位、計數與服務欄位",
+        "Hugging Face：子詞與詞彙表"
+      ]
+    },
+    {
+      "slug": "ai-term-tokenization",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "完整正文與 research 主張對應已讀。分清 BPE／Unigram 演算法與 SentencePiece 工具；正規化可能造成還原差異的限制交代正確。早餐菜單例子能區分抽取、編碼與語意錯誤。",
+      "sources_reviewed": [
+        "Hugging Face tokenization summary",
+        "SentencePiece 原始專案"
+      ]
+    },
+    {
+      "slug": "ai-context-window-explained",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "完整正文與 research 主張對應已讀。沿用既有網址，移除容量產品榜單；明確區分容量、實際帶入內容、摘要漏失與理解。Lost in the Middle 限定特定任務，沒有泛化到所有模型。會議核准狀態案例具體。",
+      "sources_reviewed": [
+        "Google tokens：容量計量",
+        "Lost in the Middle：位置效應的實驗範圍",
+        "LangChain Memory：當次狀態與長期保存"
+      ]
+    },
+    {
+      "slug": "ai-term-system-prompt",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "完整正文與 research 主張對應已讀。區分規則、當次問題、參考資料與程式權限；明確限定提供者角色層級差異。活動客服案例同時涵蓋越界要求與正常模糊問題，並否定提示詞能取代授權。",
+      "sources_reviewed": [
+        "Google 與 Anthropic 官方提示指引支持主要角色／限制用途；程式權限段落屬具體應用設計建議。"
+      ]
+    },
+    {
+      "slug": "ai-term-few-shot-prompting",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "完整正文與 research 主張對應已讀。少樣本明確是提示內示範，未宣稱更新權重或永久記憶。失物招領例子包含未提供、尋物與拾獲邊界，驗證集獨立且不虛構測試結果。",
+      "sources_reviewed": [
+        "Brown 等原始研究支持不更新參數的提示示範；Anthropic 指引支持相關、多樣與結構。"
+      ]
+    },
+    {
+      "slug": "ai-term-zero-shot-prompting",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "完整正文與 research 主張對應已讀。清楚區分沒有示範、沒有資料與模型未訓練；FLAN 研究範圍與日常提示設計分開。電器例子明示僅驗摘要忠實，未當成通用維護指示。",
+      "sources_reviewed": [
+        "FLAN 原論文支持指令微調與零樣本；Google 提示設計支持規則、限制與格式。"
+      ]
+    },
+    {
+      "slug": "ai-term-in-context-learning",
+      "verdict": "pass_after_revision",
+      "findings": [
+        {
+          "severity": "medium",
+          "location": "用自訂標籤看出它依賴的資訊／交換標籤段落",
+          "problem": "原規則葉＝短讀、山＝長讀，交換後山＝短讀應正確，現文卻把『一直把山當成短讀』當成失敗。",
+          "requested_change": "明確寫出交換後山＝短讀、葉＝長讀，失敗應是仍沿用舊對應。",
+          "status": "resolved",
+          "resolution": "作者已改為互換後短讀對應山、長讀對應葉；失敗定義為仍沿用舊標籤。2026-09-14已重新讀取現檔確認。"
+        }
+      ],
+      "assessment": "其餘完整正文與來源主張對應合理。ICL 與少樣本方法、外部記憶、微調分界清楚，Min 等特定分類結果沒有泛化。",
+      "sources_reviewed": [
+        "Brown 等少樣本原論文",
+        "Min 等2202.12837原摘要於本次審稿web讀取，與研究段落相符"
+      ]
+    },
+    {
+      "slug": "ai-term-context-compaction",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "完整正文與 research 主張對應已讀。壓縮是續作摘要而非無損壓縮或擴窗；提供者實作明確歸屬，搬家例子保留暫定、未完成與取消狀態。",
+      "sources_reviewed": [
+        "Anthropic Compaction官方文件本次web開啟",
+        "LangChain middleware摘要實作"
+      ]
+    },
+    {
+      "slug": "ai-term-context-rot",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "完整正文與 research 主張對應已讀。新詞明確採Chroma用法，排除訓練參數腐壞或通用字數門檻；活動備案對照控制問題、長度與位置，不虛構下降曲線。",
+      "sources_reviewed": [
+        "Chroma原技術報告本次web閱讀，長度、干擾與相似度主張相符",
+        "Lost in the Middle限定資訊位置與任務範圍"
+      ]
+    },
+    {
+      "slug": "ai-term-agent-memory",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "完整正文已讀（初次輸出截斷部分已另讀全篇）。記憶儲存、取回、使用、修改與刪除界線清楚；LangChain分類與Generative Agents模擬結果皆有明確歸屬，沒有推論所有產品自動保存。讀書計畫使用無敏感偏好並檢查更新。",
+      "sources_reviewed": [
+        "LangChain Memory overview與Generative Agents原研究的claims對應合理。"
+      ]
+    },
+    {
+      "slug": "ai-agents-explained",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "完整正文已讀。代理採Anthropic特定工程區分，沒有把單次工具呼叫或聊天介面當唯一標準。報名資料示例保留原始檔、同名不直接去重，完成須可驗收且工具逾時不冒稱未執行。",
+      "sources_reviewed": [
+        "Anthropic Building effective agents與LangChain Agents支持動態流程、環境回饋及工具執行。"
+      ]
+    },
+    {
+      "slug": "ai-term-agent-loop",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "完整正文已讀。迴圈的請求、程式執行、結果與停止分離，找檔案示例區分空結果與無權限；沒有把重試當進展，也保留外部寫入逾時的不確定性。與Loop Engineering的外層設計區分清楚。",
+      "sources_reviewed": [
+        "LangChain Agents與Anthropic Building effective agents支持模型工具循環、環境回饋與停止條件。"
+      ]
+    },
+    {
+      "slug": "ai-term-multi-agent-system",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "完整正文與 research 主張對應已讀。語言模型範圍與更廣義多代理研究分開；策展場地／交通／展品分工有共同日期依賴、證據整合與覆寫風險。明確否定多數一致等於獨立證據或更多代理必然更快。",
+      "sources_reviewed": [
+        "AutoGen原研究與Anthropic多代理工程文對應角色、平行查詢、上下文與成本。"
+      ]
+    },
+    {
+      "slug": "ai-term-subagent",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "完整正文與 research 主張對應已讀。子代理是委派角色而非小模型，是否有狀態與使用者互動均限定實作。刊物查核交辦包含期別、來源、未確認及不可越界，沒有把建立子任務當成果完成。",
+      "sources_reviewed": [
+        "LangChain Subagents與Anthropic多代理系統支持上下文隔離、交辦範圍與回報。"
+      ]
+    },
+    {
+      "slug": "ai-term-agent-orchestration",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "完整正文與 research 主張對應已讀。協調是功能而非協定，固定程式與模型可混用。手冊流程依賴景點資料與授權、欄位閘門及整體驗收；與代理迴圈、MCP、A2A分界清楚，未把任務全平行。",
+      "sources_reviewed": [
+        "Anthropic固定流程／路由／並行／主管模式與LangChain Multi-agent支持主張。"
+      ]
+    },
+    {
+      "slug": "ai-term-react-reasoning-acting",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "完整正文與 research 主張對應已讀。明確依Yao原論文談推理與行動交替，不與React前端框架、所有代理或工具介面混淆。展覽示例需要實際觀察才更新，無來源時留未知；不要求公開私有內部推理。",
+      "sources_reviewed": [
+        "ReAct原論文與作者專案支持推理文字、行動、外部觀察的交替研究方法。"
+      ]
+    },
+    {
+      "slug": "ai-term-tool-calling",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "完整正文與 research 主張對應已讀。工具請求、格式檢查、業務權限、服務狀態及答案分層正確；明示用戶端與服務端執行差異。器材查詢案例沒有誤把查詢當預約，也處理寫入逾時不確定。",
+      "sources_reviewed": [
+        "Google Function calling與Anthropic How tool use works支援核心往返與不同執行位置。"
+      ]
+    },
+    {
+      "slug": "ai-term-model-context-protocol",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "完整正文與 research 主張對應已讀。MCP角色、tools/resources/prompts、local/remote與能力相容說明正確，不承諾統一批准UI或自動協調。圖書室例子依設定→連線→能力發現→呼叫→核對分清狀態，沒有沿用過時初始化細節。",
+      "sources_reviewed": [
+        "本次web讀官方2026-07-28架構：scope、participants、primitives與能力探索均相符；A2A與Skills比較另有各自官方規格來源。"
+      ]
+    },
+    {
+      "slug": "ai-term-agent2agent-protocol",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "完整正文與 research 主張對應已讀。Agent Card是能力描述不是品質或授權保證，Task/Message/Artifact與可直接回Message的區分符合官方。場地查詢缺人數需補充，查詢完成不等預訂；A2A skill與Skills資料夾分流清楚。",
+      "sources_reviewed": [
+        "本次web完整讀A2A Core Concepts：opaque server、Agent Card、Task/Message/Artifact、polling/streaming/push與直接Message均支持正文；Skills官方規格支持比較。"
+      ]
+    },
+    {
+      "slug": "ai-term-agent-skills",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "完整正文與 research 主張對應已讀。明確限定agentskills.io格式；SKILL.md、metadata/指示/可選資源與逐步載入一致。月報例子檢查缺日期與舊版事件誤植，未把技能指示當工具能力或授權。",
+      "sources_reviewed": [
+        "本次web完整讀Agent Skills specification：必備SKILL.md、name/description、可選scripts/references/assets與progressive disclosure均相符；正文有產品相容及權限限制。"
+      ]
+    }
+  ],
+  "additional_reviews": [
+    {
+      "slug": "ai-term-loop-engineering",
+      "verdict": "pass_with_editorial_note",
+      "assessment": "完整正文與research已讀。依Osmani 2026-06-07定義外層工作循環，與Agent Loop/Harness有明確分工且註明各家用語不同。展覽表範例具體，來源無法開啟時不冒稱查證；驗收、發布、公開結果與停止/接手各自清楚。2026-08探索論文僅用於新詞與證據限制，沒有把採用研究誇大成效果保證。",
+      "findings": [
+        {
+          "severity": "low",
+          "location": "文末三個相關連結",
+          "problem": "連結文字仍是agent-loop、harness-engineering與evals的slug片段。",
+          "requested_change": "改為代理迴圈、代理執行環境工程與模型與代理評測等讀者可辨識名稱。",
+          "status": "root_fix_pending_recheck"
+        }
+      ]
+    },
+    {
+      "slug": "ai-terms-index",
+      "verdict": "pass_with_editorial_note",
+      "assessment": "完整正文、81個術語連結與research已讀；初次工具輸出省略的提示/上下文段已另讀全文。八組閱讀路徑與81詞清單相符；模型/訓練/輸入/工具/互通/來源/開放條款等層次分清。索引有日期與範圍，不宣稱窮盡全部名詞，並與50詞速查分流。",
+      "findings": [
+        {
+          "severity": "low",
+          "location": "AI工程方法與維運首句",
+          "problem": "『這組是你提到的Loop Engineering所在位置』依賴本次對話，不適合面向所有讀者的公開文章。",
+          "requested_change": "改為『這組收錄Loop Engineering等工程方法』。",
+          "status": "root_fix_pending_recheck"
+        }
+      ]
+    },
+    {
+      "slug": "ai-glossary-50-terms",
+      "verdict": "pass_with_editorial_note",
+      "assessment": "完整閱讀更新後50個list詞條、10組對照與所有段落，並檢視16項來源清單。核心定義沒有新增概念阻擋：參數與設定、記憶與視窗、開放權重與開源、工具請求與操作成功、C2PA與事件真實均分清。現行產品功能保留實作差異，無通用價格或容量承諾。本篇為既有速查更新，不套用本次長文篇幅規格。",
+      "findings": [
+        {
+          "severity": "low",
+          "location": "推理與代理分類導言",
+          "problem": "『最近最常出現的新詞幾乎都在這組』『風險也集中在這組』是未附證據的時效與風險分布概括。",
+          "requested_change": "改為直接說明本組介紹推理、代理、工具執行及相關權限與外部內容風險。",
+          "status": "root_fix_pending_recheck"
+        }
+      ]
+    }
+  ],
+  "web_rechecks": [
+    {
+      "url": "https://arxiv.org/abs/2202.12837",
+      "result": "Min等原摘要支持標籤空間、輸入分布及格式重要性，正文保留分類/選擇任務限制。"
+    },
+    {
+      "url": "https://www.trychroma.com/research/context-rot",
+      "result": "已讀原技術報告之受控長度、語意相似度與干擾研究；正文歸屬及限制正確。"
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/build-with-claude/compaction",
+      "result": "官方自動摘要、觸發、續作與自訂摘要說明支持正文。"
+    },
+    {
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/learn/architecture",
+      "result": "官方現行架構roles、scope、primitives與能力探索支持正文，未引用過時初始化機制。"
+    },
+    {
+      "url": "https://a2a-protocol.org/latest/topics/key-concepts/",
+      "result": "Agent Card/Task/Message/Artifact、opaque遠端代理、直接Message及更新方式均與正文相符。"
+    },
+    {
+      "url": "https://agentskills.io/specification",
+      "result": "SKILL.md必要欄位、可選資源與逐步載入支持正文，工具依賴與產品差異仍保留。"
+    },
+    {
+      "url": "https://addyosmani.com/blog/loop-engineering/",
+      "result": "原作者日期與外層工作發現/分派/檢查/持久狀態/接手定義核對相符。"
+    },
+    {
+      "url": "https://arxiv.org/abs/2608.21884",
+      "result": "已讀原摘要；為探索性文獻回顧與採用研究，效果研究仍在規劃。正文未誇大成效。"
+    }
+  ],
+  "language_recheck": "作者完成詞級還原後，針對20篇重掃引數、許可權、不是隻、檢查詢、待確認專案、清單專案、測試透過、裡麪，無命中；全部20篇重新計算正文仍在1800–3000字。這項字詞檢查不代替視覺渲染。",
+  "production_actions": 0,
+  "handoff": "工程/基礎/評測26篇已完成並保持唯讀，由根作者整合。context20篇來源與概念審查完成，ICL修正已覆驗；根作者3項編輯修正待覆驗。"
+}

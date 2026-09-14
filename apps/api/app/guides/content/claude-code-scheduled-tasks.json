@@ -1,0 +1,321 @@
+{
+  "slug": "claude-code-scheduled-tasks",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 152,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜排程與重複任務",
+      "description": "比較本機與雲端排程，設計可重複任務。排程之前，先決定工作在哪裡執行，以及電腦關閉後是否還應繼續。本篇比較 CLI 的 /loop、桌面本機排程與雲端 Routines，再建立一個只讀檢查待辦專案的短期循環。你會保存任務識別碼、觀察一次觸發，最後取消並確認停止。",
+      "hero": {
+        "src": "/guides/claude-code-scheduled-tasks/hero.jpg",
+        "alt": "排程與重複任務：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "排程之前，先決定工作在哪裡執行，以及電腦關閉後是否還應繼續。本篇比較 CLI 的 /loop、桌面本機排程與雲端 Routines，再建立一個只讀檢查待辦專案的短期循環。你會保存任務識別碼、觀察一次觸發，最後取消並確認停止。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先具備正常工作的 CLI 或"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-desktop-setup",
+              "text": "桌面版"
+            },
+            {
+              "type": "text",
+              "text": "，並使用"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-practice-project-setup",
+              "text": "練習專案"
+            },
+            {
+              "type": "text",
+              "text": "。雲端 Routines 另需符合資格的帳號、儲存庫與環境設定；三種排程都會使用模型額度，不是免費的作業系統鬧鐘。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "選擇執行位置"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-scheduled-tasks/diagram-1.svg",
+          "alt": "選擇執行位置 → 先手動跑通一次工作 → 建立短期 CLI 循環",
+          "width": 1600,
+          "height": 900,
+          "caption": "選擇執行位置 → 先手動跑通一次工作 → 建立短期 CLI 循環",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "選項",
+            "工作位置",
+            "電腦條件",
+            "典型用途"
+          ],
+          "rows": [
+            [
+              "CLI /loop",
+              "目前 session 的電腦",
+              "電腦與 session 保持運作",
+              "短期輪詢與工作中提醒"
+            ],
+            [
+              "Desktop Local routine",
+              "本機專案",
+              "App 開啟且電腦清醒",
+              "需要本機檔案的定時檢查"
+            ],
+            [
+              "Cloud routine",
+              "雲端環境",
+              "本機可關閉",
+              "使用雲端儲存庫的固定工作"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "雲端每次執行使用相應的儲存庫副本，不會自動取得你電腦未提交的檔案。本機排程則可能看到目前工作目錄的未提交狀態，是否使用 worktree 要在建立時明確選擇。兩者輸入不同，不能只比較時間設定。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先手動跑通一次工作"
+        },
+        {
+          "type": "paragraph",
+          "text": "排程提示先用人工執行確認可完成，例如讀取 README 並核對其中是否寫明 npm start 與 npm test。這是只讀檢查，不需要每分鐘改檔或執行完整測試。先讓輸入、輸出與正常結果固定，再加入時間觸發。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：先人工驗證排程提示",
+          "code": "請只讀取練習專案 README，確認是否包含啟動與測試命令。\n回報實際找到的命令及缺少項目，不修改檔案、不提交。\n如果檔案不存在，回報缺檔，不自行建立。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "若連人工操作都無法讀到檔案，先處理路徑與權限。把失敗工作放進循環只會重複產生失敗與用量，並不會自動解決前置條件。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "建立短期 CLI 循環"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：建立本 session 的短期練習循環",
+          "code": "/loop 5m 只讀取 README，確認啟動與測試命令是否仍存在。若有變化或錯誤才通知我，不修改檔案、不提交。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "確認回報的頻率與任務識別碼。固定間隔會轉成排程，並非保證精準到秒；某些間隔需調整為可表示的值。這裡選五分鐘，方便觀察一次觸發，不需要設定過密的循環。"
+        },
+        {
+          "type": "paragraph",
+          "text": "目前循環在回合間觸發，Claude 忙於長工作時會延後，錯過多次時間也不會逐次補跑。查證時固定循環在七天後到期；接續 session 可恢復部分尚未過期的任務，但自訂動態間隔等情況有例外，不能把關閉 session 當成永遠保留的可靠排程。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "查看並取消任務"
+        },
+        {
+          "type": "paragraph",
+          "text": "CronList、CronDelete 是 Claude 可使用的排程工具，不是要你在終端機執行的命令。用自然語言要求列出任務，再提供剛才識別碼取消，並再次列出確認它已消失。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：先列出，再以實際識別碼取消",
+          "code": "請列出目前 session 的排程任務與識別碼。\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：把括號換成前一步的識別碼",
+          "code": "請取消識別碼 [任務識別碼] 的 README 練習排程，其他任務保留。\n取消後再列出排程，確認該任務已移除。\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "只停止當下回應未必取消排程，必須確認排程記錄也移除。若建立時用了手動限定 Skill，排程觸發時可能無法自動呼叫；請依 "
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-skills-skill-md",
+              "text": "Skills 呼叫控制"
+            },
+            {
+              "type": "text",
+              "text": "核對，而不是將同名文字當成已執行技能。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "桌面 Local routine"
+        },
+        {
+          "type": "paragraph",
+          "text": "新版桌面 Code 的 Routines 頁可以建立 Local 或 Cloud。建立本機任務時選 Local，指定專案、提示、時間、模型與權限，並確認是否使用 worktree。舊版桌面可能沒有本機排程入口，先核對版本與官方需求。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先使用與上面相同的只讀提示，設定一次近期可觀察時間，保持 App 開啟與電腦清醒。查看新產生 session 的工作目錄和結果，確認使用預期檔案。如果電腦休眠或 App 關閉，不能假設每次錯過的時間都會完整補跑。"
+        },
+        {
+          "type": "paragraph",
+          "text": "驗證後在 Routines 管理介面停用或刪除練習任務，查看下次執行狀態。只關閉結果 session 不等於刪除排程定義，兩者應分別確認。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "雲端 Cloud routine"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 claude.ai/code/routines 或桌面 Routines 建立 Cloud，指定雲端儲存庫、環境與提示，再設定排程。也可使用 CLI /schedule 管理支援的雲端例行工作。查證時 Pro、Max、Team、Enterprise 可用，但組織管理者可以停用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "雲端工作沒有即時本機權限提示可供你補答，提示需要事先交代範圍、必要憑證及輸出位置。本篇只要求讀取 README 並在工作結果中回報，不自動建立 PR、發訊息或改設定。外部寫入應另有清楚的授權與驗收。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先手動觸發測試或設定可觀察的第一次執行，核對雲端 clone 的分支、文件版本與回報。成功後再調整正式頻率；測試完成不再需要時停用或刪除 routine，並另外收回不再需要的服務授權。"
+        },
+        {
+          "type": "paragraph",
+          "text": "請在任務筆記中記錄時區與下一次執行時間，並查看介面是否已換算成你預期的本地時間。跨裝置顯示可能不同，設定完應以實際下一次觸發時間核對，避免只看每天幾點的文字而漏掉時區差異。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "錯誤紀錄與小練習"
+        },
+        {
+          "type": "table",
+          "header": [
+            "問題",
+            "可能原因",
+            "驗證方式"
+          ],
+          "rows": [
+            [
+              "時間到了沒有立即執行",
+              "session 忙碌或本機休眠",
+              "查看實際觸發時間與電腦狀態"
+            ],
+            [
+              "雲端讀到舊內容",
+              "修改未提交或未推送",
+              "核對雲端儲存庫提交"
+            ],
+            [
+              "任務執行卻沒有結果",
+              "權限、環境或工具失敗",
+              "查看該次 session 紀錄"
+            ],
+            [
+              "以為取消仍再次觸發",
+              "只中止回應未刪排程",
+              "再次列出任務定義"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "完成判準是能指出執行位置、輸入版本、第一次觸發與取消證據。先用短期只讀任務學會整個生命週期，再考慮"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-github-actions",
+              "text": "GitHub Actions"
+            },
+            {
+              "type": "text",
+              "text": "等由 CI 管理的長期流程。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Run prompts on a schedule",
+          "url": "https://code.claude.com/docs/en/scheduled-tasks",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Desktop application",
+          "url": "https://code.claude.com/docs/en/desktop",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Automate work with routines",
+          "url": "https://code.claude.com/docs/en/routines",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Schedule recurring tasks in Claude Code Desktop",
+          "url": "https://code.claude.com/docs/en/desktop-scheduled-tasks",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

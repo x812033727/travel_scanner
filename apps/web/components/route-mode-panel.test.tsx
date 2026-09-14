@@ -1,6 +1,7 @@
 import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { RouteModePanel } from "./route-mode-panel";
+import { commitBeforePassiveEffects } from "@/lib/testing/commit-before-passive-effects";
 
 const items = [
   { id: "from", item_type: "suggestion", day_date: "2026-11-10", position: 0, title: "上野", latitude: 35.7, longitude: 139.7, locked: false, is_estimated: false, data: {} },
@@ -854,9 +855,9 @@ describe("route mode panel", () => {
     // `route-mode-panel.test.tsx`'s sibling case has gone red in full-suite runs while
     // passing on its own, always the same way: the assertion expects focus on a route
     // option and finds it on the `.route-panel-detail` container instead. The effect that
-    // moves focus to the results runs a commit after the preview lands, and anything the
-    // reader does in that gap loses its focus to it. Held here on purpose so the race is
-    // a fact rather than a coin toss.
+    // moves focus to the results runs when the preview lands, and anything the reader did
+    // while it was on its way would lose its focus to it. Held here on purpose so the race
+    // is a fact rather than a coin toss.
     let releasePreview!: () => void;
     const option = (rank: number, duration: number) => ({
       preview_id: `preview-${rank}`,
@@ -894,5 +895,28 @@ describe("route mode panel", () => {
     await act(async () => { releasePreview(); await Promise.resolve(); });
     await waitFor(() => expect(screen.getAllByRole("option").length).toBeGreaterThan(1));
     expect(document.activeElement, "the panel took focus back off the reader").toBe(first);
+  });
+
+  it("moves focus to a finished route in the commit that draws it", async () => {
+    // The Google fallback case went red in a loaded CI run with focus still on <body> beside
+    // a finished result: the answer arrives on a resolved request, focus moved in a passive
+    // effect a scheduler task after that commit, and `findByRole` returned in between.
+    let answer!: (response: Response) => void;
+    const fetchMock = vi.fn(async (url: string) => {
+      if (url.includes("/routes/navigation?")) return ok({ external_navigations: [], route_availability: { status: "available", provider: "google_routes", can_query: true } });
+      return new Promise<Response>((resolve) => { answer = resolve; });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    const { container } = render(<RouteModePanel trip={{ ...trip, destination_country_code: "KR" }} items={items} fromItemId="from" toItemId="to" onApplied={vi.fn()} onError={vi.fn()} />);
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
+    fireEvent.click(screen.getByRole("button", { name: "查詢交通方案" }));
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    await commitBeforePassiveEffects(
+      () => answer(ok({ kind: "provider", preview_id: "held", expires_at: "2100-01-01T00:00:00Z",
+        segment: { ...initialSegment, steps: [{ travel_mode: "TRANSIT", instruction: "搭乘1號線", departure_stop: "首爾站", arrival_stop: "市廳站", line_name: "1號線" }] },
+        schedule_impact: { affected_items: [], conflicts: [] } })),
+      () => screen.queryByRole("button", { name: "套用此路線" }) !== null,
+    );
+    expect(document.activeElement).toBe(container.querySelector(".route-panel-detail"));
   });
 });

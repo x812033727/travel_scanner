@@ -1,0 +1,320 @@
+{
+  "slug": "gemini-deep-research-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 113,
+  "locales": {
+    "zh-TW": {
+      "title": "Deep Research：研究計畫、來源與報告",
+      "description": "Deep Research 是 Gemini 的多步驟研究功能，會先提出研究計畫，再蒐集來源與整理報告。本篇示範如何把模糊問題縮成可研究的範圍、挑選資料來源，並逐項核對報告。學完後，你應能交出附來源與待確認事項的研究筆記，而不只是一段看似完整的摘要。",
+      "hero": {
+        "src": "/guides/gemini-deep-research-guide/hero.jpg",
+        "alt": "研究報告的來源鏈的原創插畫，以文件、裝置與流程等物件呼應研究計畫、來源與報告；非產品介面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Deep Research 是 Gemini 的多步驟研究功能，會先提出研究計畫，再蒐集來源與整理報告。本篇示範如何把模糊問題縮成可研究的範圍、挑選資料來源，並逐項核對報告。學完後，你應能交出附來源與待確認事項的研究筆記，而不只是一段看似完整的摘要。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-deep-research-guide/diagram-1.svg",
+          "alt": "研究計畫：限定問題與範圍；查找來源：分辨證據與推論；報告核對：逐項打開引用",
+          "width": 1600,
+          "height": 900,
+          "caption": "研究報告的來源鏈。此為原創教學圖解，並非產品畫面或實測輸出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "開始前：題目、帳號與來源範圍",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "官方目前要求登入 Gemini 且年滿十八歲，研究請求與同時執行數量另有用量限制。先確認自己的帳號是否提供 Deep Research，方案差異集中在"
+            },
+            {
+              "type": "link",
+              "text": "用量與訂閱",
+              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+            },
+            {
+              "type": "text",
+              "text": "。本篇依官方流程整理，沒有聲稱已在付費帳號完成此研究或測量耗時。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "準備一個不涉及私人資料的題目，例如比較兩座公共圖書館的自修空間使用規則。先列你真正需要知道的欄位：適用物件、開放時段、預約方式、休館例外與官方來源。範圍太大時，先限制地區與機構數量，避免報告很長卻回答不到你的實際需求。"
+        },
+        {
+          "type": "heading",
+          "text": "實作：先審閱研究計畫",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "開啟 Gemini，在輸入區的工具或新增檔案選單選擇 Deep Research。",
+            "檢視 Sources 來源選項。官方預設包含 Google 搜尋；本次只研究公開規則，先保留公開來源即可。",
+            "填入下方提示詞，把圖書館名稱替換成自己要比較的兩個機構，明確列出資料日期與欄位。",
+            "Gemini 提出研究計畫後，檢查它是否會找官方規則、最新公告及不同館舍的適用範圍；需要調整就先編輯計畫。",
+            "計畫符合需求後才開始研究，完成時開啟報告，再依後面的查核方式逐項確認。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "研究提示詞範本",
+          "code": "請研究「[圖書館甲]」與「[圖書館乙]」目前公開的自修空間使用規則。\n用途：安排一般成人的平日閱讀行程，不涉及代訂或報名。\n優先使用各機構官方網站，區分總館與分館，不要混用規則。\n欄位：適用物件、開放時段、預約方式、休館例外、規則更新日期。\n每項結論附來源連結與查證日期；資料缺漏或相互矛盾時明確標示。\n先提出研究計畫，確認範圍後再製作比較表與待確認清單。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "研究計畫的價值在於提早調整方向。若它準備比較借書證制度，但你的問題是自修座位預約，就先修正；若只列旅遊部落格，補上應查詢的機構官網。開始後才發現範圍不對，往往需要重新整理來源，因此這一步值得仔細看。"
+        },
+        {
+          "type": "heading",
+          "text": "來源選擇：公開網站與自己的檔案",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果研究需要參考自己的檔案，可透過當前提供的上傳或來源選項加入。使用 Gmail、Drive 等個人服務，須先符合"
+            },
+            {
+              "type": "link",
+              "text": "Connected Apps",
+              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+            },
+            {
+              "type": "text",
+              "text": "的連線條件；部分行動介面的來源選擇仍可能分批推出。沒有必要的來源就不加入，讓報告範圍保持清楚。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "需要只根據指定檔案研究時，除了在提示詞說明，也檢視是否能取消 Google 搜尋來源，並確認結果使用了哪些資料。提示詞是工作要求，來源選單則控制可選資料範圍，兩者都應核對。若主要是圍繞固定閱讀材料追查引用，可另看"
+            },
+            {
+              "type": "link",
+              "text": "NotebookLM",
+              "url": "https://mokaair.com/zh-TW/life/notebooklm-guide"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "預期結果：不是每個欄位都要填滿",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "本例應得到兩個機構的規則比較、官方連結、查證日期與仍需確認的專案。這是成果規格，不是本篇已執行的真實圖書館研究。如果某館沒有公佈預約細節，正確做法是標明缺漏，不能靠另一館的規則填滿表格。"
+        },
+        {
+          "type": "paragraph",
+          "text": "核對第一步是點開每個重要來源，看標題、機構、日期及適用館舍是否相符。第二步是找到支援結論的原文，確認「平日」是否排除國定假日、是否有臨時休館。第三步才是整理行程建議，並保留需要出發前再次查詢的資訊。"
+        },
+        {
+          "type": "paragraph",
+          "text": "多個網站重複同一則訊息，不等於有多份獨立證據。先追到原始公告，再看其他來源是否只是轉載。若報告提供兩個相反說法，要求並列原文與日期；在未找到更正或適用差異前，保留衝突，避免用流暢文字把不確定性藏起來。"
+        },
+        {
+          "type": "heading",
+          "text": "將報告變成可維護的筆記",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "為每個重要結論加上「已核對／待確認」狀態，並寫一句判斷理由。例如已開啟官網且規則適用總館，或來源沒有更新日期需要再確認。這份筆記可以比原始報告更短，但應保留回查連結，方便日後資料變動時只更新受影響的部分。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要修正報告時，指出具體來源與問題，例如「甲館頁面說的是分館，請重新核對總館自修室」。只說「多找幾個來源」可能讓材料變多卻沒有解決錯誤。必要時回到原始問題，刪除與決策無關的比較欄位，讓成果聚焦。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "研究完成後，可依介面分享與匯出選項複製內容或匯出到 Google 檔案。開啟匯出檔，檢查表格、引用與連結是否保留。想把報告轉成視覺摘要，可使用"
+            },
+            {
+              "type": "link",
+              "text": "Canvas",
+              "url": "https://mokaair.com/zh-TW/life/gemini-canvas-guide"
+            },
+            {
+              "type": "text",
+              "text": "；圖表與語音摘要仍需核對原始報告，轉換格式不會自動修正事實。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "等待、額度與工作安排",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "研究需要時間，複雜題目可能比一般對話長得多。開始後記下對話與題目，依介面提供的狀態檢視是否仍在進行。不要因為暫時沒有結果就連續建立多份相同研究，這會增加用量與版本混淆；先確認目前任務是否完成或失敗。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接近額度時，把真正需要深入研究的問題留給此功能。簡短定義或一頁公告摘要，可以用一般對話或"
+            },
+            {
+              "type": "link",
+              "text": "Chrome 閱讀協助",
+              "url": "https://mokaair.com/zh-TW/life/gemini-in-chrome-guide"
+            },
+            {
+              "type": "text",
+              "text": "完成。需要做長期追蹤時，另看"
+            },
+            {
+              "type": "link",
+              "text": "Spark 任務與排程",
+              "url": "https://mokaair.com/zh-TW/life/gemini-spark-workflows-guide"
+            },
+            {
+              "type": "text",
+              "text": "的資格及控制方式，不要假設單次 Deep Research 會自動持續監控。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「報告有引用就能直接發布嗎？」仍要確認引用真正支援結論、資料是否新鮮及適用範圍。尤其是日期、價格與規則，應回到官方頁面核對；報告是整理結果，不是替你完成所有編輯責任。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「找不到來源選擇按鈕？」先確認平臺與功能開放情況，部分手機選項可能尚未提供。可以用支援的網頁入口檢視；若仍無法限制來源，清楚記錄這項限制，不要把報告描述成只根據你的檔案生成。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「完成的報告和計畫不同？」列出未完成欄位與多出的範圍，請它針對缺口補查。不要只看篇幅判斷工作量；最後成果應回到原先的問題與驗收條件，保留沒有足夠資料回答的部分。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查證與範例",
+          "text": "本文於 2026-09-14 對照官方文件整理。畫面操作依官方說明，非所有裝置均經實機測試；範例輸出是驗收目標，實際內容依資料而異。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後的檢核",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "通過條件"
+          ],
+          "rows": [
+            [
+              "操作",
+              "能依正文重做一次，說明每一步使用的輸入。"
+            ],
+            [
+              "結果",
+              "能用原始資料或可重現測試核對輸出，而非只看語氣。"
+            ],
+            [
+              "延伸",
+              "知道下一篇教學解決的問題，以及什麼時候需要它。"
+            ]
+          ],
+          "caption": "完成實作後逐項確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著可以閱讀 "
+            },
+            {
+              "type": "link",
+              "text": "讀 PDF、圖片與表格",
+              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "NotebookLM 入門",
+              "url": "https://mokaair.com/zh-TW/life/notebooklm-guide"
+            },
+            {
+              "type": "text",
+              "text": "，把本篇的操作接到下一個工作流程。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gemini Deep Research：計畫、來源與匯出",
+          "url": "https://support.google.com/gemini/answer/15719111?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Deep Research 行動版與來源選擇",
+          "url": "https://support.google.com/gemini/answer/15719111?co=GENIE.Platform%3DAndroid&hl=en",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

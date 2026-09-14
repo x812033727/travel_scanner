@@ -1,0 +1,51 @@
+{
+  "reviewer": "root",
+  "reviewed_on": "2026-09-14",
+  "status": "complete",
+  "articles": [
+    {
+      "slug": "ai-term-multimodal-ai",
+      "verdict": "pass",
+      "rationale": "完整正文及研究記錄已讀；圖文、照片與說明書的互補，以及觀察與推論的區分成立。另開 Gemini image-understanding 與 Flamingo 原摘要核對。",
+      "pack_sha256": "52e5b0c0c51b31ac2e64b20b061f5531f833f4b4ecc2762c5e53b4edfeecb545"
+    },
+    {
+      "slug": "ai-term-diffusion-model",
+      "verdict": "pass",
+      "rationale": "完整正文及研究記錄已讀；DDPM 訓練加噪、生成反覆更新、latent diffusion 位置及採樣限制有區分。未將生成寫成找回訓練原圖。",
+      "pack_sha256": "5d5738150bedb07b16c681b7d291fd8d0a7ad937e22be6b01c6a1a9abc569c08"
+    },
+    {
+      "slug": "ai-term-text-to-image",
+      "verdict": "pass",
+      "rationale": "完整正文及研究記錄已讀；文字條件、候選與驗收分開，需求、構圖、局部編修及授權情境具體，未保證文字或幾何正確。",
+      "pack_sha256": "1805bcb15a7be6b2ccbf85a5540c74c478f9e17266c90de947b1d9a3da7acd0f"
+    },
+    {
+      "slug": "ai-term-text-to-video",
+      "verdict": "pass",
+      "rationale": "完整正文及研究記錄已讀；以陶杯轉動說明時序一致性及攝影機運動差別，未冒稱實測。另開 Video Diffusion Models 原摘要核對。",
+      "pack_sha256": "799d6c8376b1e4f5449c543daae9909aeba7a4e6933e1f596625288856b0e1de"
+    },
+    {
+      "slug": "ai-term-automatic-speech-recognition",
+      "verdict": "pass",
+      "rationale": "完整正文及研究記錄已讀；轉錄、翻譯、說話者辨識與摘要分清，否定詞、專名、人工回聽及時間戳有具體例子。另開 Transformers ASR 文件核對。",
+      "pack_sha256": "eda1521b96a297423b5ad7b2d73391f5b8900cffa36a52fa60cf8c8fb1b2d56a"
+    },
+    {
+      "slug": "ai-term-text-to-speech",
+      "verdict": "pass",
+      "rationale": "完整正文及研究記錄已讀；以明示架構示例解釋文字、聲學表示及聲碼器，不把一種流程泛化為全部 TTS。另開 Tacotron 2 原摘要及 Transformers TTS 文件核對。",
+      "pack_sha256": "3d7c11ddc91543ba55ca8617ecd9cac7ed98d9506ebe86eaf45267c3c9e9d360"
+    },
+    {
+      "slug": "ai-term-deepfake",
+      "verdict": "pass",
+      "rationale": "完整正文及研究記錄已讀；合成、身份與事件真偽分清，檢測訊號不是定論，來源鏈與具體主張分開核對。另開 FaceForensics++ 原摘要核對。",
+      "pack_sha256": "cbee080e668e783ae70ca1521ab78980916b1644fe76c87c2cd0408be7181ffb"
+    }
+  ],
+  "resolved": "字形轉换後已人工還原文件、局部、權限、連回音訊、項目、通過等詞義；不是把轉換器通過視為審稿完成。",
+  "substantive_blockers": 0
+}

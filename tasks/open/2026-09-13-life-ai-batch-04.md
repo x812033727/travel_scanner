@@ -8,21 +8,15 @@ owner:
 claimed_at:
 created_at: 2026-09-13T11:55:59Z
 completed_at:
-branch:
+branch: codex/claude-code-tutorial-center
 depends_on:
   - 2026-09-13-life-ai-series-tooling
   - 2026-09-13-life-ai-series-catalogue
   - 2026-09-13-life-ai-batch-01
 scope:
   - apps/api/app/guides/content/ai-coding-tools-overview-2026.json
-  - apps/api/app/guides/content/claude-code-getting-started.json
-  - apps/api/app/guides/content/claude-code-claude-md-guide.json
-  - apps/api/app/guides/content/claude-code-mcp-servers.json
-  - apps/api/app/guides/content/claude-code-hooks-and-skills.json
-  - apps/api/app/guides/content/claude-code-on-the-web.json
   - apps/api/app/guides/content/codex-cli-getting-started.json
   - apps/api/app/guides/content/codex-cloud-tasks-github.json
-  - apps/api/app/guides/content/gemini-cli-getting-started.json
   - apps/api/app/guides/content/cursor-editor-guide.json
   - apps/api/app/guides/content/github-copilot-guide.json
   - apps/api/app/guides/content/vibe-coding-first-website.json
@@ -35,14 +29,8 @@ scope:
   - apps/api/app/guides/content/ai-build-line-bot-tutorial.json
   - apps/api/app/guides/content/ai-build-personal-blog-tutorial.json
   - apps/web/public/guides/ai-coding-tools-overview-2026
-  - apps/web/public/guides/claude-code-getting-started
-  - apps/web/public/guides/claude-code-claude-md-guide
-  - apps/web/public/guides/claude-code-mcp-servers
-  - apps/web/public/guides/claude-code-hooks-and-skills
-  - apps/web/public/guides/claude-code-on-the-web
   - apps/web/public/guides/codex-cli-getting-started
   - apps/web/public/guides/codex-cloud-tasks-github
-  - apps/web/public/guides/gemini-cli-getting-started
   - apps/web/public/guides/cursor-editor-guide
   - apps/web/public/guides/github-copilot-guide
   - apps/web/public/guides/vibe-coding-first-website
@@ -116,3 +104,9 @@ npm run check:tasks
 ## Notes
 
 - 前三批旅遊文章的經驗：兩篇一個代理會在半小時左右撞到額度，一篇一個代理、先寫檔再寫報告最穩。
+
+## Claude Code 系列交接（2026-09-14）
+
+原列第 2–6 篇的五個 Claude Code slug 與素材範圍已轉交 2026-09-14-claude-code-tutorial-center；其內容改由完整 60 篇系列提供。這張票保留其餘十五篇，驗收篇數相應為十五篇，勿重建或覆蓋已轉交的五篇。
+
+2026-09-14: Gemini CLI introductory pack and artwork transferred to the complete Gemini series content task, preserving the original slug. Existing Claude Code transfers remain intact.

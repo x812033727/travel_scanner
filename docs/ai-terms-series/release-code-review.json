@@ -1,0 +1,249 @@
+{
+  "reviewer": "engineering_foundations",
+  "reviewed_at": "2026-09-14",
+  "verdict": "code_review_passed_with_operational_gates",
+  "reviewed_file": "docs/ai-terms-series/release_host.py",
+  "reviewed_sha256": "9bb7661a8fa65a4c1cfc310c70a5916bbbde4af8da35de3d82bfdecff7f996e7",
+  "scope": "先唯讀檢查 prepare、activate、回滾及現有流程；root 隨後明確授權修 release_host.py 的 runtime 副本、環境預檢、最佳化拒絕與失敗狀態。只修改該腳本及本報告，沒有正式環境操作。",
+  "execution_boundary": {
+    "ssh_used": false,
+    "docker_used": false,
+    "production_reads_or_writes": false,
+    "release_driver_imported_or_executed": false,
+    "mock_method": "只解析本機 Python AST；選出 compose 函式、CI assert 與 activation 尾段，在替代所有外部操作的記憶體 mock 中執行。未執行頂層初始化、檔案鎖、Git、Docker、HTTP 或正式檔案操作。",
+    "live_host_state_verified": false
+  },
+  "summary": {
+    "initial_P1": 2,
+    "initial_P2": 3,
+    "resolved_findings": 5,
+    "open_P1": 0,
+    "open_P2": 0,
+    "publication_handoff": "release_host 仍不發布內容；以下 index_last 等發布流程要求仍須由後續正式執行逐項核實。"
+  },
+  "findings": [
+    {
+      "id": "RH-01",
+      "priority": "P1",
+      "title": "啟動與回滾都讓 shell 環境覆蓋受檢查的 .env",
+      "location": {
+        "file": "docs/ai-terms-series/release_host.py",
+        "start": 80,
+        "end": 83
+      },
+      "related_lines": [
+        159,
+        176,
+        182,
+        185,
+        199,
+        200
+      ],
+      "trigger": "啟動 prepare 或 activate 的程序帶有 DATABASE_URL、REDIS_URL、INTERNAL_PROXY_TOKEN、NEXT_PUBLIC_SITE_URL 等同名環境變數。",
+      "evidence": "compose 使用 dict(os.environ, ...) 保留所有 shell 值；Docker Compose 的 shell 插值優先於 --env-file。docker-compose.prod.yml:50-53 又把插值結果寫入容器 environment。digest(ENV) 只證明檔案未改，不能證明解析後的環境與現行容器一致。",
+      "impact": "所有 API、worker、scheduler 在比對 env_hash 前已啟動，可能向另一個資料庫或 Redis 執行工作。偵測到差異後，回滾再呼叫相同 compose 函式，因此舊映像仍帶著錯誤環境；healthy 只檢查連通與 schema，不能證明回到原資料庫。建置時的 NEXT_PUBLIC_* 也可能被 shell 污染，且僅存在前端 bundle 的值未必能由執行期 env_hash 察覺。",
+      "reproduction": "對實際 compose AST 傳入假的 os.environ={DATABASE_URL:postgres://unexpected/other, NEXT_PUBLIC_SITE_URL:https://unexpected.example}，activation 與 tag=rollback 兩次 mock run 均收到相同覆蓋值。沒有執行 Docker。",
+      "fix": "清除不需要繼承的應用變數，使用受控 runtime 檔案解析 Compose，建置與啟動共用同一份已雜湊的設定。停止任何服務前，私下解析並比較每項服務的有效環境與基線，避免輸出秘密。回滾使用保存的有效設定，並逐服務核對映像、環境與掛載。",
+      "reference": "apps/api/deployment_agent/executor.py:298-341 已使用有限 inherited_names；Docker 官方文件確認 shell 優先順序。",
+      "source_url": "https://docs.docker.com/compose/how-tos/environment-variables/variable-interpolation/",
+      "confidence": "high",
+      "status": "resolved_and_mock_rechecked",
+      "original_location_note": "上方行號與重現描述保留初審203行版本作追溯；不是目前版本尚未修正的主張。",
+      "resolution": "compose 只繼承 PATH，固定 HOME、SHA 與 runtime 路徑。prepare 以排他建立保存原 .env 的0600複本、fsync 並比對兩份 hash；prepare 在建置前以現行映像、建置後以新映像合成有效環境，activate 停機前再驗證。Compose JSON 僅存在記憶體，不記錄值；None 刪除映像預設變數，保留含等號的值。回滾沿用此副本。"
+    },
+    {
+      "id": "RH-02",
+      "priority": "P1",
+      "title": "後段失敗只回滾容器，留下新的 Git HEAD 與 :local 標籤",
+      "location": {
+        "file": "docs/ai-terms-series/release_host.py",
+        "start": 186,
+        "end": 203
+      },
+      "trigger": "git merge --ff-only 已完成，之後標記映像、讀取 ci['url']、寫入 state.json 或記錄成功訊息失敗。",
+      "evidence": "188 行前移 HEAD，192 行前移兩個 :local；196-200 行例外處理只用 rollback_tag 啟動舊映像，沒有還原 HEAD 或 :local。ci['url'] 到193行才讀，前置檢查並未要求該欄位。",
+      "impact": "回滾後主機程式碼與 :local 仍指向新版本，實際容器卻是舊版。後續依 checkout 或 :local 執行的管理命令可能使用錯版；下一次基線檢查會失敗。若 rollback 本身失敗，201-202 行不會執行，亦沒有持久的 rollback_failed 狀態。",
+      "reproduction": "實際 CI guards 接受 headSha=TARGET、status=completed、conclusion=success、jobs 全成功但缺 url 的記錄。對實際 activation 尾段 AST 以 mock 執行，結果是 KeyError:'url'、HEAD=TARGET、兩個 :local=new image、running=rollback，state 只記 failed_at。",
+      "fix": "停止服務前完整驗證 CI receipt。保存 HEAD 與兩個 :local 原始映像，明確記錄切換階段；失敗時使 checkout、tag、容器與狀態一起回到一致的基線，或記 manual_intervention_required 並停止續跑。以暫存檔、fsync、原子替換保存狀態，且另外捕捉回滾失敗；不要自動還原資料庫。",
+      "reference": "apps/api/deployment_agent/executor.py:860-914 對 rolling_back、rolled_back、manual_intervention_required 與 rollback_status 分開記錄。",
+      "confidence": "high",
+      "status": "resolved_and_mock_rechecked",
+      "original_location_note": "上方行號與重現描述保留初審203行版本作追溯；不是目前版本尚未修正的主張。",
+      "resolution": "root 已增加切換旗標、乾淨 exact HEAD 防護與 reset，回滾核對映像/環境並恢復 :local；state 寫入改為暫存檔 fsync 後原子替換。此次補上清除 activated_at/after、rolling_back/rolled_back/manual_intervention_required 與 rollback_status。狀態寫入或輸出連線的 OSError 不會阻止嘗試回滾。"
+    },
+    {
+      "id": "RH-03",
+      "priority": "P2",
+      "title": "CI receipt 沒有限定實際必要的 CI 工作流程",
+      "location": {
+        "file": "docs/ai-terms-series/release_host.py",
+        "start": 153,
+        "end": 155
+      },
+      "trigger": "ci.json 取自同一 SHA 上另一個成功工作流程，或沒有記錄 repo、main push、workflow identity 的 receipt。",
+      "evidence": "只檢查 SHA、完成狀態與列出的 jobs 成功。沒有檢查 workflowName/name、repository、headBranch、event、工作流程識別或 receipt URL。",
+      "impact": "例如只做文件處理的成功工作流程，也能滿足現在的條件；實際必要 CI 失敗或未跑仍能停機並啟動版本。exact SHA 比對本身正確，但不等於該 SHA 的必要 CI 已通過。",
+      "reproduction": "在實際 CI assert AST 的 mock 中加入 workflowName=unrelated-workflow、headBranch=different-branch，仍通過。",
+      "fix": "從固定 repository 查詢指定 TARGET 的 main push CI，驗證工作流程識別與最新 run 的成功狀態；完整驗證 receipt schema，含 URL/ID，並保存該不可混淆的 run 記錄。若由外部流程取得 receipt，也必須在本腳本強制驗證相同欄位。",
+      "reference": "apps/api/deployment_agent/executor.py:132-159 的 API 查詢限定 github_repo、head_sha、branch、event=push，再比對 config.workflow_name。",
+      "confidence": "high",
+      "status": "resolved_and_mock_rechecked",
+      "original_location_note": "上方行號與重現描述保留初審203行版本作追溯；不是目前版本尚未修正的主張。",
+      "resolution": "CI receipt 現在於停止服務前檢查 workflowName=CI、event=push、headBranch=main、固定 repository 的 run URL，並保留 exact SHA、完成狀態及 jobs 成功條件。"
+    },
+    {
+      "id": "RH-04",
+      "priority": "P2",
+      "title": "首次由 root 建立共同鎖會阻擋部署代理",
+      "location": {
+        "file": "docs/ai-terms-series/release_host.py",
+        "start": 27,
+        "end": 34
+      },
+      "trigger": "/run/travel-scanner-deployer 已存在，但 deploy.lock 尚未由代理建立，例如重開機後尚未執行部署或資料庫操作。",
+      "evidence": "腳本先設 umask 077，再以 open(..., 'a+') 建檔，root 執行時新 deploy.lock 為 root 所有、0600。既有 systemd 服務以 travel-deployer 執行；executor.py:604、747 用 O_RDWR 開相同檔案。",
+      "impact": "本次鎖釋放後，travel-deployer 仍無法開啟該共同鎖，後續部署與資料庫維護會因 PermissionError 失敗。這是權限持續損壞，不是仍有人持鎖。",
+      "reproduction": "讀取 systemd User/Group 與 os.open 模式，並計算新檔案模式 0666 & ~0077 = 0600；未在本機或主機建立鎖檔。已存在且權限正確的鎖不受此觸發條件影響。",
+      "fix": "由安裝流程預建並維護適合 root 與 travel-deployer 共用的同一 inode，或以明確 owner/group/mode 安全建立及驗證鎖；不要在持鎖期間刪除再建立鎖檔。若鎖目錄不存在，應明確失敗或按既有安裝權限建立，而不是繞過該鎖。",
+      "reference": "ops/deployer/travel-scanner-deployer.service:9-15；apps/api/deployment_agent/executor.py:604-629、746-773。",
+      "confidence": "high",
+      "status": "resolved_and_mock_rechecked",
+      "original_location_note": "上方行號與重現描述保留初審203行版本作追溯；不是目前版本尚未修正的主張。",
+      "resolution": "鎖改成只以 r+ 開既有檔案，不會建立 root:0600 鎖。缺鎖明確停止，留待正式主機按既有 owner/group 安裝流程處理。"
+    },
+    {
+      "id": "RH-05",
+      "priority": "P2",
+      "title": "部署安全檢查全部以可被最佳化移除的 assert 實作",
+      "location": {
+        "file": "docs/ai-terms-series/release_host.py",
+        "start": 152,
+        "end": 159
+      },
+      "related_lines": [
+        20,
+        93,
+        101,
+        104,
+        115,
+        117,
+        119,
+        120,
+        123,
+        124,
+        134,
+        137,
+        138,
+        169,
+        180,
+        181,
+        182,
+        184,
+        185
+      ],
+      "trigger": "透過 python -O、-OO 或啟用 PYTHONOPTIMIZE 的環境執行腳本。",
+      "evidence": "目前 AST 有25個 assert，包含 main SHA、CI、基線一致性、驗證結果、備份狀態、映像與環境等條件。Python 在最佳化編譯時完全移除 assert 與其中的運算式。",
+      "impact": "腳本仍然執行 fetch、stop、backup、up 等正式操作，但跳過設計上必須阻擋錯版或異常環境的安全條件。這是條件式風險；此次未檢查主機是否啟用最佳化，也未聲稱已發生。",
+      "fix": "把正式操作的必要條件改成明確 if/raise 的 require 函式，讓最佳化模式也執行檢查；不可只在外層再加一個 assert。",
+      "source_url": "https://docs.python.org/3/reference/simple_stmts.html#the-assert-statement",
+      "confidence": "high",
+      "status": "resolved_and_mock_rechecked",
+      "original_location_note": "上方行號與重現描述保留初審203行版本作追溯；不是目前版本尚未修正的主張。",
+      "resolution": "新增非 assert 的 if sys.flags.optimize: raise，在 argv、mkdir、鎖或正式操作前拒絕最佳化模式。實際 guard AST 在 optimize=1 編譯下仍拒絕。"
+    }
+  ],
+  "checks_that_passed_with_limits": [
+    {
+      "area": "origin/main exact SHA",
+      "result": "prepare、activate 都 fetch 後要求 origin/main 等於完整 TARGET；activate 要求 previous HEAD、乾淨工作樹及無失敗紀錄。CI workflow/main push/repository 已限制；最佳化模式由明確 if/raise 拒絕。"
+    },
+    {
+      "area": "備份與資料庫回滾邊界",
+      "result": "停止八項應用服務後才 pg_dump -Fc；檢查回傳碼、非空、pg_restore --list，保存 checksum 與模式，再啟動應用。回滾不執行 migration、不還原 PostgreSQL、不碰 Redis volume；此邊界正確。沒有做真實還原演練，--list 只驗證可讀取的 archive 目錄，不能宣稱所有資料已成功試還原。"
+    },
+    {
+      "area": "容器與 runtime",
+      "result": "停止前完整比對容器基線，且先合成映像預設與 Compose 環境核對；啟動後逐服務核對映像 ID、running、零重啟與環境，postgres/redis 要完整不變。--no-deps 排除 migrate 與資料服務。回滾核對映像/環境，使用本次已驗證 runtime 副本。"
+    },
+    {
+      "area": "共同鎖",
+      "result": "使用現有代理共同鎖，保留 flock handle；只開啟既有鎖，避免改變建立權限。缺鎖即停止。仍須以正式主機證據確認 owner/group，且鎖不證明背景工作已全部排空。"
+    },
+    {
+      "area": "內容匯入失敗碼",
+      "result": "審查時 apps/api/app/cli.py:1023-1024 已在 outcome.failed 時 SystemExit(1)。沒有將 partial failure 誤列成 exit 0 缺陷。content_pack.py:364-376 仍明確為逐篇/逐管理操作提交，失敗前的已提交內容會保留。"
+    }
+  ],
+  "publication_handoff_requirements": {
+    "classification": "部署後的必要發布流程；不是 release_host 承諾但遺漏的隱性發布操作",
+    "evidence": [
+      "release_host.py:4、195 明確不做 content import/publication，程式中亦無該呼叫。",
+      "make_release_manifest.py:22 的 index_last 是純資料欄位，release_host 與 content_pack 不會讀取它來排序。",
+      "content_pack.py:88 依檔名排序，cli.py:1016 把 --slug 轉成 set，因此參數給定順序無效。",
+      "字母排序例：ai-term-token、ai-terms-index、what-is-a-large-language-model；單批匯入83篇會在 LLM 舊 slug 之前發布索引。",
+      "content_pack.py:351-358 逐語系 publish，364-376 明示部分提交；CLI 非零不能撤銷此前已公開的文章。"
+    ],
+    "required_sequence": [
+      "重新取得同一部署鎖並確認 TARGET、容器映像、有效環境與 manifest 檔案 hash；發布途中若版本改變就停止。",
+      "以 manifest 的明確 allowlist 和 zh-TW 進行 dry-run，避免無 --slug 的匯入意外修改其他文章或語系。",
+      "先處理排除 ai-terms-index 的82篇，保留每次匯入報告；任何 failed 或例外就停止，依已提交狀態重新評估。",
+      "核對82篇的公開內容與預期 hash、網址、必要圖檔；不能只看成功結束碼或 published 清單長度，重跑時已相同的文章可列 unchanged。",
+      "全部成功後只對 ai-terms-index 單篇發布，再驗證索引的全部連結和83篇公開內容。",
+      "若發生部分發布，保留診斷及已提交狀態；不要為了撤銷文章而自動還原整個資料庫備份，以免抹掉期間其他合法資料。"
+    ]
+  },
+  "operational_limits_to_verify_before_execution": [
+    "本次未連主機；/root/travel_scanner、travel_scanner 容器名與固定 DB 名稱只是腳本假設，須以既有授權主機狀態核實。現有部署代理設定採 /srv/releases、current 與可設定 project，不能把兩套控制面的設定當成天然一致。",
+    "45秒 docker stop 可能終止尚未完成的工作；先確認沒有需要繼續完成的 RQ/collector 任務及其他競爭寫入。本次沒有宣稱已排空佇列。",
+    "備份、狀態與回滾標籤必須留存；新腳本未納入既有 backup catalog，後續維運不能只查代理目錄便斷言沒有這份備份。",
+    "目前 code review 與 mock 綁定 reviewed_sha256；任何後續腳本修改須重驗相應控制流程。五項初審 finding 均已在本機修正並覆核，未執行主機部署。"
+  ],
+  "primary_sources_read": [
+    "https://docs.docker.com/compose/how-tos/environment-variables/variable-interpolation/",
+    "https://docs.python.org/3/reference/simple_stmts.html#the-assert-statement"
+  ],
+  "initial_reviewed_sha256": "59d6645b8e1fc71e6d65bc994d6260ca88756928dd51f41c1af6b046090d7a19",
+  "reviewed_file_lines": 296,
+  "recheck": {
+    "sha256": "9bb7661a8fa65a4c1cfc310c70a5916bbbde4af8da35de3d82bfdecff7f996e7",
+    "method": "Python 3.13；只編譯及執行選出的 AST 函式/控制片段，全部外部操作為記憶體 mock，沒有 import 完整 host driver。",
+    "passed": [
+      "語法編譯",
+      "最佳化模式在副作用前拒絕",
+      "呼叫者應用環境未傳入 compose",
+      "有效 Compose JSON 僅 capture",
+      "映像預設與服務覆蓋合成",
+      "None 正確刪除、含等號值保留",
+      "八項服務環境一致時接受",
+      "任一服務環境改變時拒絕且錯誤不含變數值",
+      "原始 runtime 改變時拒絕",
+      "副本 runtime 改變時拒絕",
+      "副本權限不是0600時拒絕",
+      "錯 workflow、branch、event、repository URL 全拒絕"
+    ],
+    "fault_probes": [
+      {
+        "fault": "merge 後第二個新 :local tag 失敗",
+        "result": "容器、HEAD、兩個 :local 回到基線；state=rolled_back，無 activated_at，保留原始錯誤。"
+      },
+      {
+        "fault": "成功狀態第一次 save 拋 OSError",
+        "result": "回滾到基線，清除已在記憶體設定的 activated_at，state=rolled_back。"
+      },
+      {
+        "fault": "rollback compose 失敗",
+        "result": "不宣稱回滾成功；保存 manual_intervention_required、rollback_status=failed，拒絕直接重跑失敗 release。"
+      },
+      {
+        "fault": "例外回滾訊息輸出拋 BrokenPipeError",
+        "result": "輸出斷線不阻止回滾，HEAD/:local/容器均恢復。"
+      }
+    ],
+    "snapshot_rejection_cases": [
+      "original_changed",
+      "snapshot_changed",
+      "snapshot_permissions"
+    ],
+    "production_execution": "未執行；此審查不能替代正式主機 exact SHA/CI、現場設定、排空工作、備份及公開文章驗證。"
+  }
+}

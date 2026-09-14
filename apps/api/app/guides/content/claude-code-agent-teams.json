@@ -1,0 +1,257 @@
+{
+  "slug": "claude-code-agent-teams",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 148,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜Agent Teams 協作",
+      "description": "拆分責任、交接依賴並整合多代理成果。Agent Teams 讓多個 Claude Code 工作階段共同處理任務，透過任務清單與訊息協調。本篇用兩個只讀角色檢查待辦網站，示範拆分責任、等待結果與最後整合。它是實驗功能，應先在小型練習專案驗證，不把多個代理同時啟動當成品質保證。",
+      "hero": {
+        "src": "/guides/claude-code-agent-teams/hero.jpg",
+        "alt": "Agent Teams 協作：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Agent Teams 讓多個 Claude Code 工作階段共同處理任務，透過任務清單與訊息協調。本篇用兩個只讀角色檢查待辦網站，示範拆分責任、等待結果與最後整合。它是實驗功能，應先在小型練習專案驗證，不把多個代理同時啟動當成品質保證。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先理解"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-subagents-guide",
+              "text": "Subagents"
+            },
+            {
+              "type": "text",
+              "text": "與 "
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-worktrees-parallel",
+              "text": "Worktree"
+            },
+            {
+              "type": "text",
+              "text": "。本篇以支援 Agent Teams 的 CLI 為範圍，記錄 claude --version、終端機及帳號可用模型。手機通常是查看或接續入口，團隊實際工作仍在相應執行環境進行。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先確認任務值得拆分"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-agent-teams/diagram-1.svg",
+          "alt": "先確認任務值得拆分 → 啟用實驗功能 → 交付清楚的團隊任務",
+          "width": 1600,
+          "height": 900,
+          "caption": "先確認任務值得拆分 → 啟用實驗功能 → 交付清楚的團隊任務",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "適合並行的是可以獨立得到證據的工作，例如一位檢查資料邏輯、一位檢查介面文字。若第二位必須等待第一位先改完整個功能，平行啟動只會增加等待與溝通。小到一兩行的修改通常由單一 session 完成更清楚。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "角色",
+            "這次責任",
+            "明確不做的事"
+          ],
+          "rows": [
+            [
+              "主代理",
+              "分配、核對與整合",
+              "不把回報直接當成驗收通過"
+            ],
+            [
+              "邏輯審查者",
+              "model.js 與相關測試",
+              "不修改介面或執行外部操作"
+            ],
+            [
+              "介面審查者",
+              "app.js、HTML 與樣式",
+              "不修改資料邏輯或提交"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "先使用只讀角色，能把協作機制與檔案衝突分開學習。之後需要多位代理實作時，另外分配檔案範圍或隔離 worktree；不同對話上下文不代表檔案自動隔離。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "啟用實驗功能"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件仍將 Agent Teams 標為實驗且預設停用。可以只在當前終端機設定環境變數，再啟動 Claude，讓練習不影響其他終端機。以下兩種 shell 語法擇一，不要把 Bash 的 export 貼入 PowerShell。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "PowerShell：只對目前終端機與其子程序啟用",
+          "code": "$env:CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS = '1'\nclaude\n"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "macOS／Linux 終端機：只對這次啟動啟用",
+          "code": "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 claude\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "也可在 settings.json 的 env 設定，但那會有較持久的影響，初次練習先用單次環境較容易收尾。若組織政策禁止或目前版本沒有功能，停止這個練習，改用獨立只讀 session，不透過不明套件模擬同名能力。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "交付清楚的團隊任務"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "已啟用 Agent Teams 的 Claude Code 對話框",
+          "code": "請安排兩位 teammate 只讀審查目前待辦練習專案。\n第一位檢查 model.js 與 tests，找出識別碼和資料變更問題。\n第二位檢查 app.js、index.html 與 style.css，檢查標籤、輸入呈現和手機排版風險。\n兩位都不修改檔案、不提交、不使用外部服務。\n每位交付最多三個有檔名、條件與影響的發現，清楚標示未執行的驗證。\n由主代理等待兩位完成，重新核對證據後合併去重，列出下一步。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "查證時的新版流程不再需要舊版 TeamCreate 與 TeamDelete 工具；啟用功能後可直接要求建立 teammate。不要照舊文章尋找必須先命名團隊的獨立步驟，實際行為應與使用版本及官方文件一致。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "查看工作與處理阻塞"
+        },
+        {
+          "type": "paragraph",
+          "text": "目前預設為 in-process，所有角色在同一終端機介面管理。分割面板需要 tmux 或相應 iTerm2 環境等額外條件，不應假設 Windows 原生終端機或 IDE 終端機都支援相同分割顯示。先用預設模式即可完成本篇。"
+        },
+        {
+          "type": "paragraph",
+          "text": "觀察每位 teammate 是否真的啟動、領取正確任務與交付結果。Idle 表示暫時沒有在工作，不等於工作已驗收；訊息已送出也不代表對方已執行內容。需要進度時詢問具體阻塞與下一個可完成步驟，避免頻繁要求空泛更新。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若兩位都想修改同一檔案，先停止修改並重新分配責任。若某項工作需要另一項結果，建立依賴關係，等前置成果可用再啟動。任務清單的狀態與實際檔案都要核對，不能只看標籤變成完成。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "主代理負責最後整合"
+        },
+        {
+          "type": "paragraph",
+          "text": "收齊報告後先去除重複項目，再依影響排序。每個發現都要對照檔案與可重現條件，必要時由主代理執行測試或開啟瀏覽器。兩位都讀過同一段程式，不等於做了兩種獨立的執行驗證。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "例如介面審查者指出手機可能水平溢出，主代理應在 360 或 390px 寬度實際查看。只讀程式能提出風險，但最後報告應寫「待瀏覽器驗證」，直到真的完成畫面檢查。需要一套完整流程可參考"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-implement-feature",
+              "text": "功能實作"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "建立團隊前先設定最多角色數與每位的交付上限。這次兩位各最多三項發現，能避免大量重複報告淹沒主代理。若某位沒有發現，也應說明檢查過哪些範圍與未執行的驗證，不能只回覆一個沒有證據的通過。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "限制、費用與正常結束"
+        },
+        {
+          "type": "paragraph",
+          "text": "多位 teammate 各自使用上下文與模型呼叫，會增加用量，也可能因溝通花費更多時間。先從兩位、小範圍、短交付開始，衡量是否真的縮短總工作時間。不要只看同時運作數量，忽略主代理整合所需成本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "目前功能對 session 接續、協調與關閉仍有已知限制。重新開啟主 session 不應假設所有原 teammate 都原樣恢復；先查看保留任務與當前活動角色，再決定是否重建。重要成果保存為檔案或提交，不只留在短暫訊息中。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成後請主代理要求各 teammate 正常關閉，確認仍在工作的角色已保存結果。新版會在 session 結束時清理團隊設定目錄，任務資料有自己的保留規則；這不等於刪除專案成果，也不需要使用舊的 TeamDelete 指令。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "PowerShell：退出 Claude 後取消本終端機的實驗開關",
+          "code": "Remove-Item Env:CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "小練習是完成兩份只讀報告與一份整合結果，記錄每項發現的驗證狀態，再正常關閉角色。完成判準是責任沒有重疊寫入、結果有可核對證據、用量與限制已記錄，而且能分清楚角色完成與整體驗收完成。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Orchestrate teams of Claude Code sessions",
+          "url": "https://code.claude.com/docs/en/agent-teams",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Create custom subagents",
+          "url": "https://code.claude.com/docs/en/sub-agents",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

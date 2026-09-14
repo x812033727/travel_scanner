@@ -1,0 +1,30 @@
+{
+  "slug": "ai-term-prompt-caching",
+  "status": "verified",
+  "checked_on": "2026-09-14",
+  "sources": [
+    {
+      "title": "Anthropic：Prompt caching",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
+      "access": "web open; term researched with web search",
+      "claims": [
+        "相同字首、快取邊界與命中條件",
+        "快取不取代輸出生成",
+        "平臺隔離與使用量檢查"
+      ]
+    },
+    {
+      "title": "vLLM：Automatic Prefix Caching",
+      "url": "https://docs.vllm.ai/en/latest/features/automatic_prefix_caching/",
+      "access": "web open; term researched with web search",
+      "claims": [
+        "重用共享字首的 KV 計算",
+        "只減少 prefill 工作，不直接減少 decoding"
+      ]
+    }
+  ],
+  "aliases": [],
+  "existing_overlap": "New term article; adjacent concepts linked and differentiated.",
+  "running_text_characters": 1873,
+  "notes": "Illustrative scenarios and schematic diagrams are original teaching examples, not reported experiments. No benchmark or price claims."
+}

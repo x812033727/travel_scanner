@@ -1,0 +1,219 @@
+{
+  "slug": "ai-term-model-context-protocol",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "模型上下文協定（MCP）是什麼：連接工具與資料的共同介面",
+      "description": "MCP 是讓 AI 應用程式與外部工具、資料和提示範本交換資訊的開放協定，不是模型本身，也不保證接上就能完成任務。本文用查詢社區圖書室資料的例子，說明主機、用戶端、伺服器及工具、資源、提示的分工，並比較 MCP、A2A 與 Agent Skills。附連線驗證與權限檢查方法，幫你區分已設定、已連接、可呼叫與真正取得結果。",
+      "hero": {
+        "src": "/guides/ai-term-model-context-protocol/hero.jpg",
+        "alt": "中央共通接口將左側的 AI 工作臺連到右側的書本、資料格與工具盒。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "模型上下文協定（Model Context Protocol，MCP）是讓 AI 應用程式與外部系統交換工具能力與資料的開放協定。它定義共同的互動方式，降低每個應用都要為每個服務各做一套接法的負擔。MCP 不是語言模型，也不是接上後就自動具備可靠工作的代理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文依官方架構文件與 VS Code 的實作說明，使用社區圖書室查詢作示意。你會分清工具、資源與提示範本，知道連接設定和實際成功之間還有哪些步驟，也能看懂 MCP 與 A2A、Agent Skills 為什麼可搭配而不相同。"
+        },
+        {
+          "type": "heading",
+          "text": "AI 應用、用戶端與伺服器各自做什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "使用者操作的是 AI 應用程式，也常稱主機；其中的 MCP 用戶端與提供能力的 MCP 伺服器互動。伺服器可以把資料庫、檔案或其他服務包裝成可發現與使用的能力，應用程式則決定如何把這些能力交給模型，以及如何呈現與控制操作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "伺服器可以位於本機或遠端。名字裡有 server 不代表一定要租一臺雲端主機，也不表示所有資料都會送給同一家公司。實際執行位置、驗證方式與資料流向，仍要看你連接的伺服器及應用程式設定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方協定會演進，版本與功能支援需要相容。某個用戶端認得工具，不代表它同時支援所有資源、提示或擴充功能。本文不要求讀者記住版本欄位，而是保留一個基本原則：宣稱支援 MCP，仍需要確認這次使用的具體能力是否可用。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-model-context-protocol/diagram-1.svg",
+          "alt": "AI 應用的用戶端透過 MCP 接到圖書室伺服器，伺服器分別提供查詢工具、借閱資源與書單提示。",
+          "width": 1600,
+          "height": 900,
+          "caption": "MCP 統一互動介面，任務安排與結果驗收仍由應用負責。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "工具、資源與提示是不同形式的能力",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "工具可以執行動作，例如查詢館藏或更新借閱紀錄；資源提供可讀取的內容，例如館藏清單或使用規則；提示則可提供預先整理的任務範本。實際伺服器可能只提供其中一部分，不必每個連接都同時具備三種。"
+        },
+        {
+          "type": "paragraph",
+          "text": "圖書室例子中，「查某本書是否可借」可以透過工具查詢即時狀態；「圖書室借閱辦法」可以作為資源；「整理一份主題書單」可以是一個提示範本。三者都可能幫助模型工作，但一份提示範本本身不等於已取得最新館藏。"
+        },
+        {
+          "type": "paragraph",
+          "text": "也不要把 resource 的名稱直接理解為網站連結。資源可以用特定識別方式表示，如何讀取由伺服器與用戶端處理。對一般使用者而言，重點是它能否提供可核對的內容，以及內容的更新時間和適用範圍是否清楚。"
+        },
+        {
+          "type": "heading",
+          "text": "一次圖書室查詢應如何驗證",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是原創示例。你已在 AI 應用中設定圖書室 MCP 伺服器，目標是查詢一份指定書單目前有哪些可借。先確認伺服器連接成功、需要的帳號已驗證，並查看是否真的提供館藏查詢工具。設定檔存在，不等於連線已成功。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著模型提出書名查詢，應用程式將呼叫送到伺服器，伺服器再向館藏系統取資料。預期回傳書籍識別碼、分館或書架資訊及可借狀態。若回應只有連線成功訊息，仍不能說已查到書；若回傳沒有權限，也不能把它解釋成所有書都不可借。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後逐項對照結果與書單，確認同名書是否需要作者或版本區分。模型應把「查到可借」「查無符合項目」「狀態未確認」分開列出。這份可回查清單，才是任務成果；安裝伺服器、列出工具或成功送出請求，都是中間狀態。"
+        },
+        {
+          "type": "heading",
+          "text": "協定標準化，不會自動替你判斷信任",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "MCP 提供共同介面，但伺服器仍是具體軟體，可能有缺陷或過大的權限。應確認它由誰提供、能讀寫哪些資料，以及登入授權包含什麼。資料只讀與可修改借閱紀錄，對使用者有不同影響，不能因為同樣叫連接器就視為一樣。"
+        },
+        {
+          "type": "paragraph",
+          "text": "主機也負責自己的操作控制。不同產品可採不同核准與限制方式，不能宣稱所有 MCP 工具每次都一定跳出同一種確認畫面。真正的安全邊界應在帳號、服務和程式規則上落實，提示文字只是其中一部分。"
+        },
+        {
+          "type": "paragraph",
+          "text": "伺服器回傳的內容也可能含有使用者輸入，例如書評或備註。這些是資料，不應因為經過 MCP 就取得更高指令權限。標準化傳輸不等於內容可信，模型使用外部文字時仍需區分任務指示與待閱讀資料。"
+        },
+        {
+          "type": "heading",
+          "text": "MCP、A2A 與 Skills 怎麼放在同一張圖裡",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "MCP 常用來讓應用接觸工具與資料；A2A 關注代理之間如何描述能力、交換任務與回報產物；Agent Skills 則把工作知識、指示與可能的腳本整理成可載入的資料夾格式。它們解決不同層次的問題，不是互相取代的同類服務。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如主代理可以載入「書單整理」技能，透過 MCP 查館藏，再委派另一個代理處理跨館資料；後者若位於不同系統，可能使用 A2A 交流。這是組合示意，不表示完成這個工作一定要三者全用，更不表示它們會自動協調你的任務。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果只需要讀一份本機文字檔，既有檔案工具可能已足夠。選擇 MCP 的理由通常是需要可重用的標準整合與相容生態，而不是每個 AI 工作都必須多裝一個伺服器。先確認所需能力和資料流，才能避免把連接本身誤當成成果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如館藏工具回覆查無資料，應分清是真正沒有符合條件的館藏，還是查詢欄位或館別設定不對。MCP 能把結果傳回來，但如何解讀空結果、要不要改條件重查，仍是宿主應用與代理流程需要負責的部分。"
+        },
+        {
+          "type": "paragraph",
+          "text": "看待 MCP 最實用的順序，是設定、連接、發現能力、實際呼叫、核對結果。每個階段各有證據，任何一步失敗都應清楚回報。這樣即使你不懂協定細節，也能知道問題出在連線、權限、工具功能，還是模型對資料的解讀。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "概念",
+            "主要交換內容",
+            "圖書室示例"
+          ],
+          "rows": [
+            [
+              "MCP",
+              "工具、資源、提示",
+              "查館藏"
+            ],
+            [
+              "A2A",
+              "代理任務、狀態、產物",
+              "委派跨館整理"
+            ],
+            [
+              "Agent Skills",
+              "工作指示與附屬資源",
+              "書單整理方法"
+            ]
+          ],
+          "caption": "概念與使用情境比較；查證於 2026 年 9 月。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "連上不等於查到",
+          "text": "至少核對實際工具結果與目標資料，才知道整合是否真的可用。"
+        },
+        {
+          "type": "link",
+          "text": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-tool-calling"
+        },
+        {
+          "type": "link",
+          "text": "代理互通協定（A2A）是什麼：跨系統交辦與回報任務",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-agent2agent-protocol"
+        },
+        {
+          "type": "link",
+          "text": "代理技能（Agent Skills）是什麼：可重用的工作方法包",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-agent-skills"
+        },
+        {
+          "type": "link",
+          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+        }
+      ],
+      "sources": [
+        {
+          "title": "MCP：Architecture overview",
+          "url": "https://modelcontextprotocol.io/docs/2026-07-28/learn/architecture",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "VS Code：Add and manage MCP servers",
+          "url": "https://code.visualstudio.com/docs/agent-customization/mcp-servers",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "A2A：Core Concepts",
+          "url": "https://a2a-protocol.org/latest/topics/key-concepts/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Agent Skills：Specification",
+          "url": "https://agentskills.io/specification",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

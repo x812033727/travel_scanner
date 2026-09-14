@@ -1,0 +1,493 @@
+{
+  "slug": "claude-code-templates-cheatsheet",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 160,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜指令速查與設定範本庫",
+      "description": "快速找到指令、提示詞與可複製設定範本。這一頁集中整理常用命令、提示詞與設定範本，適合學完後快速查找。每個範例都標示輸入位置，詳細條件與排錯連到專篇。範本中的路徑、識別碼與假值要先替換，不能直接把範例當作目前專案的真實狀態。",
+      "hero": {
+        "src": "/guides/claude-code-templates-cheatsheet/hero.jpg",
+        "alt": "指令速查與設定範本庫：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "這一頁集中整理常用命令、提示詞與設定範本，適合學完後快速查找。每個範例都標示輸入位置，詳細條件與排錯連到專篇。範本中的路徑、識別碼與假值要先替換，不能直接把範例當作目前專案的真實狀態。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "需要循序學習時，返回"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "完整總目錄"
+            },
+            {
+              "type": "text",
+              "text": "選擇路線。命令依官方文件於本系列查證日期核對，實際可用項目仍受版本、平台、登入方式與組織政策影響；先用目前環境的 help 查看支援情況。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "終端機命令速查"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-templates-cheatsheet/diagram-1.svg",
+          "alt": "終端機命令速查 → 對話內命令速查 → 需求提示範本",
+          "width": 1600,
+          "height": 900,
+          "caption": "終端機命令速查 → 對話內命令速查 → 需求提示範本",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "PowerShell 或 macOS／Linux 終端機：依用途逐行執行",
+          "code": "claude --version\nclaude --help\nclaude doctor\nclaude\nclaude --continue\nclaude --resume\nclaude --worktree my-task\nclaude mcp list\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "版本與診斷看"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-help-status-doctor",
+              "text": "說明與診斷"
+            },
+            {
+              "type": "text",
+              "text": "，繼續工作看"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-sessions-resume",
+              "text": "對話管理"
+            },
+            {
+              "type": "text",
+              "text": "，隔離分支看"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-worktrees-parallel",
+              "text": "Worktree"
+            },
+            {
+              "type": "text",
+              "text": "。continue 與 resume 接續對話，不會自動把別台電腦未提交檔案同步過來。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "對話內命令速查"
+        },
+        {
+          "type": "table",
+          "header": [
+            "命令",
+            "主要用途",
+            "先注意什麼"
+          ],
+          "rows": [
+            [
+              "/help",
+              "查看目前入口的功能",
+              "平台支援不一定相同"
+            ],
+            [
+              "/status",
+              "查看狀態與設定來源",
+              "不回顯秘密"
+            ],
+            [
+              "/context",
+              "觀察上下文使用",
+              "與磁碟檔案不同"
+            ],
+            [
+              "/compact",
+              "整理對話上下文",
+              "先保留重要決策"
+            ],
+            [
+              "/clear",
+              "開始新的對話內容",
+              "不會還原磁碟變更"
+            ],
+            [
+              "/model",
+              "選擇模型",
+              "以帳號可用選項為準"
+            ],
+            [
+              "/usage",
+              "查看使用狀態",
+              "估計與實際帳務分開"
+            ],
+            [
+              "/memory",
+              "管理記憶與規則入口",
+              "檔案列出不代表已載入"
+            ],
+            [
+              "/init",
+              "建立專案指引起點",
+              "產生後仍需審查"
+            ],
+            [
+              "/mcp",
+              "查看工具連線與認證",
+              "需完成一次實際操作"
+            ],
+            [
+              "/chrome",
+              "管理瀏覽器整合",
+              "有平台與登入條件"
+            ],
+            [
+              "/rewind",
+              "檢查點回復",
+              "不等同 Git 或外部還原"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "上下文差異看"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-context-compact-clear",
+              "text": "/context、/compact、/clear"
+            },
+            {
+              "type": "text",
+              "text": "，還原限制看"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-checkpoints-rewind",
+              "text": "Checkpoint"
+            },
+            {
+              "type": "text",
+              "text": "。不要把自訂 Skill 名稱當成所有人都有的內建命令；名稱來自你的安裝與專案檔案。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "需求提示範本"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：替換成你的實際需求",
+          "code": "目標：完成一個可驗證的小功能。\n範圍：只修改指定檔案與必要測試。\n限制：保留既有行為，不加入未要求的服務或套件。\n先讀：專案指引、入口與相關測試。\n驗收：列出具體輸入、操作與預期結果。\n交付：實際差異、執行過的檢查、未驗證項目與下一步。\n先不要提交、推送或部署，除非本次另有明確要求。\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把「做得更好」改成可觀察結果，例如篩選後有幾筆、重新整理是否保留資料。更完整的例子在"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-task-prompts",
+              "text": "需求交代"
+            },
+            {
+              "type": "text",
+              "text": "，除錯時則補上"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-debug-and-test",
+              "text": "重現步驟與錯誤"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "CLAUDE.md 起始範本"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": "寫入練習專案 CLAUDE.md",
+          "code": "# 專案說明\n這是 HTML、CSS、JavaScript 待辦網站，不使用資料庫。\n## 常用命令\n- 啟動：npm start\n- 測試：npm test\n## 實作規範\n介面使用繁體中文；使用者輸入以文字顯示。\n資料操作依識別碼處理，避免意外修改原陣列。\n## 驗收\n修改後執行受影響測試，必要時驗證瀏覽器操作。\n清楚區分已執行與未執行的檢查。\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "只有真的適用的命令才保留。這是指引，不能代替工具權限。需要共用 AGENTS.md 時，依"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-rules-and-imports",
+              "text": "引用規則"
+            },
+            {
+              "type": "text",
+              "text": "加入正確引用；不要假設一般 Markdown 連結就會自動載入內容。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手動 Skill 起始範本"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": "寫入 .claude/skills/todo-note/SKILL.md",
+          "code": "---\nname: todo-note\ndescription: 只讀檢查待辦專案並整理短報告。\ndisable-model-invocation: true\n---\n讀取 README 與 package.json，確認用途、啟動與測試方式。\n回報實際檔名與命令，不修改檔案。\n沒有執行測試就明確說明。\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：呼叫上面的專案技能",
+          "code": "/todo-note\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "加入參數與範本前，先確認這個最小呼叫真的載入並完成。"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-skill-arguments-resources",
+              "text": "技能參數"
+            },
+            {
+              "type": "text",
+              "text": "說明 $ARGUMENTS 與附屬材料，"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-custom-commands",
+              "text": "自訂指令移轉"
+            },
+            {
+              "type": "text",
+              "text": "說明舊 commands 格式。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "JSON 與程式碼範例怎麼保存"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "JSON 必須保留雙引號、逗號與合法型別，不支援一般註解。下面是空的專案設定起點，不含廣泛授權；依"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-settings-json",
+              "text": "settings.json 教學"
+            },
+            {
+              "type": "text",
+              "text": "逐項加入需要的欄位，不整份覆蓋已有設定。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": "寫入新的 .claude/settings.local.json：已有檔案請先閱讀再合併",
+          "code": "{}\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "需要 Hook 時使用"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-hooks-getting-started",
+              "text": "入門完整範例"
+            },
+            {
+              "type": "text",
+              "text": "，其中包含腳本、事件與停用驗證。需要 MCP 時使用"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-mcp-setup-troubleshooting",
+              "text": "設定排錯篇"
+            },
+            {
+              "type": "text",
+              "text": "，把伺服器宣告與認證分開保存。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "練習材料與交付範本"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "下載"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/starter.zip",
+              "text": "起始版"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/bug-toggle.zip",
+              "text": "故意錯誤版"
+            },
+            {
+              "type": "text",
+              "text": "或"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/complete.zip",
+              "text": "完整參考版"
+            },
+            {
+              "type": "text",
+              "text": "，各自解壓到獨立資料夾。錯誤版測試預期失敗，目的是練習定位 toggleTodo 的識別碼問題。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "填入本次交付紀錄",
+          "code": "完成的功能與修改檔案：\n實際執行的命令及結果：\n瀏覽器驗證操作與畫面寬度：\n尚未驗證與已知限制：\nGit 提交、PR、合併狀態：\n部署與公開發布狀態：\n停止服務或回復的方法：\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "使用複製按鈕後，先貼入正確工具或檔案，確認縮排、換行與特殊字元完整。範本是開始工作的材料，最後仍要按"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-build-todo-app",
+              "text": "完整實作篇"
+            },
+            {
+              "type": "text",
+              "text": "完成測試與畫面驗證，再把結果交給下一位讀者。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Commands",
+          "url": "https://code.claude.com/docs/en/commands",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "How Claude remembers your project",
+          "url": "https://code.claude.com/docs/en/memory",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Extend Claude with skills",
+          "url": "https://code.claude.com/docs/en/skills",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

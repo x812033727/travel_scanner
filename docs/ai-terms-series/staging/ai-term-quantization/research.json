@@ -1,0 +1,29 @@
+{
+  "slug": "ai-term-quantization",
+  "status": "verified",
+  "checked_on": "2026-09-14",
+  "sources": [
+    {
+      "title": "Hugging Face：Quantization Overview",
+      "url": "https://huggingface.co/docs/transformers/quantization/overview",
+      "access": "web open; term researched with web search",
+      "claims": [
+        "低精度權重降低載入與使用記憶體",
+        "量化方法具有不同硬體及校準要求"
+      ]
+    },
+    {
+      "title": "Frantar 等：GPTQ",
+      "url": "https://arxiv.org/html/2210.17323v1",
+      "access": "web open; term researched with web search",
+      "claims": [
+        "訓練後量化及誤差近似處理",
+        "量化品質與實際推論條件相關"
+      ]
+    }
+  ],
+  "aliases": [],
+  "existing_overlap": "New term article; adjacent concepts linked and differentiated.",
+  "running_text_characters": 1870,
+  "notes": "Illustrative scenarios and schematic diagrams are original teaching examples, not reported experiments. No benchmark or price claims."
+}

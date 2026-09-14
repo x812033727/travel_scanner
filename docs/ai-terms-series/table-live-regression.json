@@ -1,0 +1,589 @@
+{
+  "mode": "run",
+  "startedAt": "2026-09-14T07:29:23.357Z",
+  "finishedAt": "2026-09-14T07:35:44.154Z",
+  "status": "passed",
+  "origin": "https://mokaair.com",
+  "pages": [
+    {
+      "slug": "bangkok-airport-to-city",
+      "route": "/zh-TW/guides/howto/bangkok-airport-to-city",
+      "url": "https://mokaair.com/zh-TW/guides/howto/bangkok-airport-to-city",
+      "kind": "table_article",
+      "selector": "main article",
+      "expectedColumns": [
+        5
+      ],
+      "expectedImagePaths": [
+        "/guides/bangkok-airport-to-city/hero.jpg",
+        "/guides/bangkok-airport-to-city/diagram-1.svg",
+        "/guides/bangkok-airport-to-city/photo-1.webp",
+        "/guides/bangkok-airport-to-city/photo-2.webp"
+      ]
+    },
+    {
+      "slug": "ai-model-tiers-explained",
+      "route": "/zh-TW/life/ai-model-tiers-explained",
+      "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained",
+      "kind": "table_article",
+      "selector": "main article",
+      "expectedColumns": [
+        6
+      ],
+      "expectedImagePaths": [
+        "/guides/ai-model-tiers-explained/hero.jpg",
+        "/guides/ai-model-tiers-explained/diagram-1.svg"
+      ]
+    },
+    {
+      "slug": "privacy",
+      "route": "/zh-TW/privacy",
+      "url": "https://mokaair.com/zh-TW/privacy",
+      "kind": "shared_legal_page",
+      "selector": "main article",
+      "expectedColumns": null,
+      "expectedImagePaths": []
+    }
+  ],
+  "viewportChecks": 6,
+  "viewports": [
+    {
+      "name": "mobile",
+      "width": 375,
+      "height": 812
+    },
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1000
+    }
+  ],
+  "legal": {
+    "routes": [
+      {
+        "route": "/zh-TW/privacy",
+        "confirmed": true
+      },
+      {
+        "route": "/zh-TW/terms",
+        "confirmed": true
+      }
+    ],
+    "sharesContentBlocks": true,
+    "selected": "/zh-TW/privacy"
+  },
+  "sourceEvidence": [
+    {
+      "file": "apps/api/app/guides/content/bangkok-airport-to-city.json",
+      "sha256": "020599963b165cd0a2ed0759dd43021d30279f5083a529a45b228a00832d5be7"
+    },
+    {
+      "file": "apps/api/app/guides/content/ai-model-tiers-explained.json",
+      "sha256": "1fac11ab3d3aeb5907b2f071b4374dd0cf97068b96db19a2dddedbc9f3b99c35"
+    },
+    {
+      "file": "apps/web/components/content-blocks.tsx",
+      "sha256": "74830fd54796d409030a76bf0ce6f40fb69b13c3de7bb6359af1b34b322fc7a2"
+    },
+    {
+      "file": "apps/web/components/guides/article.tsx",
+      "sha256": "303423d07a0a1ffbc031f7cfc1659fccd4358351b338bc91aa8b9de8fc67e281"
+    },
+    {
+      "file": "apps/web/components/site-information-page.tsx",
+      "sha256": "6087a900c637fd6605b872bc5b529a2c631896263ccebc934eda9a60a91152df"
+    },
+    {
+      "file": "apps/web/components/site-page-content.tsx",
+      "sha256": "f5bd7071568dd89c19f7d436ee4eabf31844b29268e1a767eb8ecdba9bdabe11"
+    },
+    {
+      "file": "apps/web/app/[locale]/privacy/page.tsx",
+      "sha256": "635745f2719bcf241d331b835a158d5befd1b93401937f39f6437b8cf0128235"
+    },
+    {
+      "file": "apps/web/app/[locale]/terms/page.tsx",
+      "sha256": "b283d88e1bb391fd2c59465f258075172afbb847892925c6946a24c4bbf1c17a"
+    }
+  ],
+  "limits": {
+    "durationMs": 300000,
+    "requests": 1200,
+    "tablesPerPage": 8,
+    "imagesPerPage": 20
+  },
+  "assertions": [
+    "Nonempty document title, article H1, and article body; all expected article images loaded.",
+    "Every rendered table column is at least 112 CSS px (0.01px subpixel tolerance).",
+    "Tables wider than their mobile wrapper scroll internally while the page stays fixed horizontally.",
+    "document/body scrollWidth <= innerWidth before and during internal table scrolling.",
+    "Desktop tables fit their container, allowing 1px collapsed-border rounding.",
+    "The selected legal page must render its shared article content; tables are optional there."
+  ],
+  "scope": "Unauthenticated production browser layout observations for three fixed public pages; no login or site writes.",
+  "limitations": [
+    "Screenshots are capture evidence, not a claim of human visual review.",
+    "No assertion about legal accuracy, article factual accuracy, publication, or authenticated flows.",
+    "A legal fallback/status page does not exercise ContentBlocks and therefore cannot pass this check."
+  ],
+  "browserVersion": "152.0.7977.83",
+  "attemptedRequests": 53,
+  "blockedNonReadRequests": 2,
+  "blockedPrefetchRequests": 8,
+  "blockedNavigations": 0,
+  "fatalError": null,
+  "results": [
+    {
+      "slug": "bangkok-airport-to-city",
+      "kind": "table_article",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "url": "https://mokaair.com/zh-TW/guides/howto/bangkok-airport-to-city",
+      "checkedAt": "2026-09-14T07:29:47.610Z",
+      "status": "passed",
+      "failures": [],
+      "screenshots": [
+        {
+          "path": "qa/table-live/2026-09-14T07-29-23-357Z/bangkok-airport-to-city-desktop-top.png",
+          "sha256": "9c843aee60386af5bf389e2bbcf73688f0683062e1e594c07aeda1fa91683f84"
+        },
+        {
+          "path": "qa/table-live/2026-09-14T07-29-23-357Z/bangkok-airport-to-city-desktop-table-1-left.png",
+          "sha256": "c5367cd7e5bc814795fbff0321210df0914cec5c3991d4ffda7c6ebe78b5b177"
+        }
+      ],
+      "httpStatus": 200,
+      "finalUrl": "https://mokaair.com/zh-TW/guides/howto/bangkok-airport-to-city",
+      "documentTitle": "曼谷機場到市區交通攻略：蘇凡納布機場快線 ARL、廊曼 A1 巴士、Grab 與計程車",
+      "headings": [
+        "曼谷機場到市區交通攻略：蘇凡納布機場快線 ARL、廊曼 A1 巴士、Grab 與計程車"
+      ],
+      "bodyCharacters": 5072,
+      "images": [
+        {
+          "path": "/guides/bangkok-airport-to-city/hero.jpg",
+          "loaded": true,
+          "naturalWidth": 1600,
+          "naturalHeight": 900
+        },
+        {
+          "path": "/guides/bangkok-airport-to-city/diagram-1.svg",
+          "loaded": true,
+          "naturalWidth": 1600,
+          "naturalHeight": 900
+        },
+        {
+          "path": "/guides/bangkok-airport-to-city/photo-1.webp",
+          "loaded": true,
+          "naturalWidth": 1200,
+          "naturalHeight": 900
+        },
+        {
+          "path": "/guides/bangkok-airport-to-city/photo-2.webp",
+          "loaded": true,
+          "naturalWidth": 1200,
+          "naturalHeight": 900
+        }
+      ],
+      "layout": {
+        "innerWidth": 1440,
+        "pageScrollWidth": 1440,
+        "tables": [
+          {
+            "columns": [
+              {
+                "label": "方式",
+                "width": 122.75
+              },
+              {
+                "label": "上車處",
+                "width": 174.59375
+              },
+              {
+                "label": "票價",
+                "width": 147.53125
+              },
+              {
+                "label": "營運時間",
+                "width": 144.390625
+              },
+              {
+                "label": "適合誰",
+                "width": 138.734375
+              }
+            ],
+            "tableWidth": 728,
+            "wrapperWidth": 728,
+            "clientWidth": 728,
+            "scrollWidth": 728,
+            "overflowX": "auto",
+            "wrapperInsideContainer": true,
+            "requiresScroll": false,
+            "scrolledTo": 0,
+            "pageStayedFixed": true,
+            "pageWidthDuringScroll": 1440,
+            "internalScrollWorks": true,
+            "fitsContainer": true
+          }
+        ]
+      }
+    },
+    {
+      "slug": "ai-model-tiers-explained",
+      "kind": "table_article",
+      "viewport": "mobile",
+      "width": 375,
+      "height": 812,
+      "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained",
+      "checkedAt": "2026-09-14T07:29:53.799Z",
+      "status": "passed",
+      "failures": [],
+      "screenshots": [
+        {
+          "path": "qa/table-live/2026-09-14T07-29-23-357Z/ai-model-tiers-explained-mobile-top.png",
+          "sha256": "c02c0cf64072ae26a0643c30b645fc69bf0f47b883a1f3eb4a658b37cda28100"
+        },
+        {
+          "path": "qa/table-live/2026-09-14T07-29-23-357Z/ai-model-tiers-explained-mobile-table-1-left.png",
+          "sha256": "30b30487d9e9580e67f143c9bcb32f82c4e349945c674efffefb3b41891b7431"
+        },
+        {
+          "path": "qa/table-live/2026-09-14T07-29-23-357Z/ai-model-tiers-explained-mobile-table-1-right.png",
+          "sha256": "5f4dcbec8d38cc57f03917c6db408b5e8514e72819a2abedcad057d23fbffd6c"
+        }
+      ],
+      "httpStatus": 200,
+      "finalUrl": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained",
+      "documentTitle": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
+      "headings": [
+        "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選"
+      ],
+      "bodyCharacters": 7860,
+      "images": [
+        {
+          "path": "/guides/ai-model-tiers-explained/hero.jpg",
+          "loaded": true,
+          "naturalWidth": 1600,
+          "naturalHeight": 900
+        },
+        {
+          "path": "/guides/ai-model-tiers-explained/diagram-1.svg",
+          "loaded": true,
+          "naturalWidth": 1600,
+          "naturalHeight": 900
+        }
+      ],
+      "layout": {
+        "innerWidth": 375,
+        "pageScrollWidth": 375,
+        "tables": [
+          {
+            "columns": [
+              {
+                "label": "公司",
+                "width": 112
+              },
+              {
+                "label": "階層",
+                "width": 112
+              },
+              {
+                "label": "模型",
+                "width": 112
+              },
+              {
+                "label": "官網定位",
+                "width": 112
+              },
+              {
+                "label": "輸入（美元／百萬 token）",
+                "width": 112
+              },
+              {
+                "label": "輸出（美元／百萬 token）",
+                "width": 112
+              }
+            ],
+            "tableWidth": 672,
+            "wrapperWidth": 335,
+            "clientWidth": 335,
+            "scrollWidth": 672,
+            "overflowX": "auto",
+            "wrapperInsideContainer": true,
+            "requiresScroll": true,
+            "scrolledTo": 337,
+            "pageStayedFixed": true,
+            "pageWidthDuringScroll": 375,
+            "internalScrollWorks": true,
+            "fitsContainer": false
+          }
+        ]
+      }
+    },
+    {
+      "slug": "ai-model-tiers-explained",
+      "kind": "table_article",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained",
+      "checkedAt": "2026-09-14T07:30:07.000Z",
+      "status": "passed",
+      "failures": [],
+      "screenshots": [
+        {
+          "path": "qa/table-live/2026-09-14T07-29-23-357Z/ai-model-tiers-explained-desktop-top.png",
+          "sha256": "626109ee495535c488e92c5f734482b4fb6be0d4aff4c069eb50e14883f371aa"
+        },
+        {
+          "path": "qa/table-live/2026-09-14T07-29-23-357Z/ai-model-tiers-explained-desktop-table-1-left.png",
+          "sha256": "3ac44c2380c37acd5634f2f51232f442632a2c1ea05f05c241e1b19a8587c37b"
+        }
+      ],
+      "httpStatus": 200,
+      "finalUrl": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained",
+      "documentTitle": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
+      "headings": [
+        "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選"
+      ],
+      "bodyCharacters": 7860,
+      "images": [
+        {
+          "path": "/guides/ai-model-tiers-explained/hero.jpg",
+          "loaded": true,
+          "naturalWidth": 1600,
+          "naturalHeight": 900
+        },
+        {
+          "path": "/guides/ai-model-tiers-explained/diagram-1.svg",
+          "loaded": true,
+          "naturalWidth": 1600,
+          "naturalHeight": 900
+        }
+      ],
+      "layout": {
+        "innerWidth": 1440,
+        "pageScrollWidth": 1440,
+        "tables": [
+          {
+            "columns": [
+              {
+                "label": "公司",
+                "width": 112
+              },
+              {
+                "label": "階層",
+                "width": 112.8125
+              },
+              {
+                "label": "模型",
+                "width": 118.3125
+              },
+              {
+                "label": "官網定位",
+                "width": 147.625
+              },
+              {
+                "label": "輸入（美元／百萬 token）",
+                "width": 118.609375
+              },
+              {
+                "label": "輸出（美元／百萬 token）",
+                "width": 118.640625
+              }
+            ],
+            "tableWidth": 728,
+            "wrapperWidth": 728,
+            "clientWidth": 728,
+            "scrollWidth": 728,
+            "overflowX": "auto",
+            "wrapperInsideContainer": true,
+            "requiresScroll": false,
+            "scrolledTo": 0,
+            "pageStayedFixed": true,
+            "pageWidthDuringScroll": 1440,
+            "internalScrollWorks": true,
+            "fitsContainer": true
+          }
+        ]
+      }
+    },
+    {
+      "slug": "privacy",
+      "kind": "shared_legal_page",
+      "viewport": "mobile",
+      "width": 375,
+      "height": 812,
+      "url": "https://mokaair.com/zh-TW/privacy",
+      "checkedAt": "2026-09-14T07:30:13.754Z",
+      "status": "passed",
+      "failures": [],
+      "screenshots": [
+        {
+          "path": "qa/table-live/2026-09-14T07-29-23-357Z/privacy-mobile-top.png",
+          "sha256": "335d90068591d1e08f06bdc92f741da8c0c33fd4e853e4ab2f8c879564bc0077"
+        }
+      ],
+      "httpStatus": 200,
+      "finalUrl": "https://mokaair.com/zh-TW/privacy",
+      "documentTitle": "隱私權政策",
+      "headings": [
+        "隱私權政策"
+      ],
+      "bodyCharacters": 1964,
+      "images": [],
+      "layout": {
+        "innerWidth": 375,
+        "pageScrollWidth": 375,
+        "tables": []
+      }
+    },
+    {
+      "slug": "privacy",
+      "kind": "shared_legal_page",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "url": "https://mokaair.com/zh-TW/privacy",
+      "checkedAt": "2026-09-14T07:30:15.546Z",
+      "status": "passed",
+      "failures": [],
+      "screenshots": [
+        {
+          "path": "qa/table-live/2026-09-14T07-29-23-357Z/privacy-desktop-top.png",
+          "sha256": "3b511b57ab743e29f58d6945a8852e9711f5f6665b9723afc0e68c75887bb087"
+        }
+      ],
+      "httpStatus": 200,
+      "finalUrl": "https://mokaair.com/zh-TW/privacy",
+      "documentTitle": "隱私權政策",
+      "headings": [
+        "隱私權政策"
+      ],
+      "bodyCharacters": 1964,
+      "images": [],
+      "layout": {
+        "innerWidth": 1440,
+        "pageScrollWidth": 1440,
+        "tables": []
+      }
+    },
+    {
+      "slug": "bangkok-airport-to-city",
+      "kind": "table_article",
+      "viewport": "mobile",
+      "width": 375,
+      "height": 812,
+      "url": "https://mokaair.com/zh-TW/guides/howto/bangkok-airport-to-city",
+      "checkedAt": "2026-09-14T07:34:36.327Z",
+      "status": "passed",
+      "failures": [],
+      "screenshots": [
+        {
+          "path": "qa/table-live/2026-09-14T07-34-36-051Z/bangkok-airport-to-city-mobile-top.png",
+          "sha256": "8144c3f603825117a195002ea325dd53e85ac8ca11f8c1a2735d7f842edc404e"
+        },
+        {
+          "path": "qa/table-live/2026-09-14T07-34-36-051Z/bangkok-airport-to-city-mobile-table-1-left.png",
+          "sha256": "a89f7234d2d7208244e71334e5a725ea8d01da6ee38f038f0fdaf9a62380740f"
+        },
+        {
+          "path": "qa/table-live/2026-09-14T07-34-36-051Z/bangkok-airport-to-city-mobile-table-1-right.png",
+          "sha256": "7b323d2acca12a6aa040a799385ab4aca47fd10e3084ac761ee6704cc82f383f"
+        }
+      ],
+      "httpStatus": 200,
+      "finalUrl": "https://mokaair.com/zh-TW/guides/howto/bangkok-airport-to-city",
+      "documentTitle": "曼谷機場到市區交通攻略：蘇凡納布機場快線 ARL、廊曼 A1 巴士、Grab 與計程車",
+      "headings": [
+        "曼谷機場到市區交通攻略：蘇凡納布機場快線 ARL、廊曼 A1 巴士、Grab 與計程車"
+      ],
+      "bodyCharacters": 5072,
+      "images": [
+        {
+          "path": "/guides/bangkok-airport-to-city/hero.jpg",
+          "loaded": true,
+          "naturalWidth": 1600,
+          "naturalHeight": 900
+        },
+        {
+          "path": "/guides/bangkok-airport-to-city/diagram-1.svg",
+          "loaded": true,
+          "naturalWidth": 1600,
+          "naturalHeight": 900
+        },
+        {
+          "path": "/guides/bangkok-airport-to-city/photo-1.webp",
+          "loaded": true,
+          "naturalWidth": 1200,
+          "naturalHeight": 900
+        },
+        {
+          "path": "/guides/bangkok-airport-to-city/photo-2.webp",
+          "loaded": true,
+          "naturalWidth": 1200,
+          "naturalHeight": 900
+        }
+      ],
+      "layout": {
+        "innerWidth": 375,
+        "pageScrollWidth": 375,
+        "tables": [
+          {
+            "columns": [
+              {
+                "label": "方式",
+                "width": 112
+              },
+              {
+                "label": "上車處",
+                "width": 112
+              },
+              {
+                "label": "票價",
+                "width": 112
+              },
+              {
+                "label": "營運時間",
+                "width": 112
+              },
+              {
+                "label": "適合誰",
+                "width": 112
+              }
+            ],
+            "tableWidth": 560,
+            "wrapperWidth": 335,
+            "clientWidth": 335,
+            "scrollWidth": 560,
+            "overflowX": "auto",
+            "wrapperInsideContainer": true,
+            "requiresScroll": true,
+            "scrolledTo": 225,
+            "pageStayedFixed": true,
+            "pageWidthDuringScroll": 375,
+            "internalScrollWorks": true,
+            "fitsContainer": false
+          }
+        ]
+      }
+    }
+  ],
+  "resumedAt": "2026-09-14T07:34:36.051Z",
+  "previousAttempt": {
+    "sha256": "d8ffd2a310090966e77ff14bb66d561384be840a5582c773b91d0aa9996074db",
+    "report": "qa/table-live/2026-09-14T07-34-36-051Z/previous-report.json",
+    "finishedAt": "2026-09-14T07:31:05.081Z",
+    "summary": {
+      "passed": 5,
+      "failed": 1,
+      "notRun": 0
+    }
+  },
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "notRun": 0
+  }
+}

@@ -1,10 +1,11 @@
 import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import * as intl from "next-intl";
-import { StrictMode, useState, type CSSProperties } from "react";
+import { StrictMode, useEffect, useState, type CSSProperties } from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { plannerOverlayCopy } from "./planner/overlay-copy";
 import { PlannerOverlay } from "./planner-overlay";
 import { useModalSheet } from "@/lib/modal-sheet";
+import { commitBeforePassiveEffects } from "@/lib/testing/commit-before-passive-effects";
 import { Dialog } from "@/components/community/ui";
 
 function LegacyChild() {
@@ -25,6 +26,21 @@ function Harness() {
       <label>安排名稱<input value={value} onChange={(event) => setValue(event.target.value)} /></label>
     </PlannerOverlay>
   </>;
+}
+
+function OpenedByRequest({ request }: { request: Promise<void> }) {
+  const [open, setOpen] = useState(false);
+  useEffect(() => { void request.then(() => setOpen(true)); }, [request]);
+  return <PlannerOverlay open={open} onClose={() => setOpen(false)} title="編輯安排">Draft</PlannerOverlay>;
+}
+
+function BusyAfterRequest({ request }: { request: Promise<void> }) {
+  const [open, setOpen] = useState(true);
+  const [busy, setBusy] = useState(false);
+  useEffect(() => { void request.then(() => setBusy(true)); }, [request]);
+  return <PlannerOverlay open={open} onClose={() => { if (!busy) setOpen(false); }} title="AI 幫我安排">
+    <button type="button" disabled={busy}>調整現有行程</button>
+  </PlannerOverlay>;
 }
 
 async function nextFrame() {
@@ -231,6 +247,28 @@ describe("PlannerOverlay", () => {
     await waitFor(() => expect(layer.dataset.plannerTheme).toBe("sunset"));
     expect(layer.style.getPropertyValue("--teal")).toBe("#a94f38");
     expect(close).not.toHaveBeenCalled();
+  });
+
+  // Both went red only in loaded full-suite CI runs (trip-editor's AI sheet and stop editor).
+  // An update from a resolved request commits first and runs its passive effects a scheduler
+  // task later, and the click landed in between. The helper holds that gap open on purpose.
+  it("closes from its own button as soon as a resolved request has drawn it", async () => {
+    let respond!: () => void;
+    const request = new Promise<void>((resolve) => { respond = resolve; });
+    render(<OpenedByRequest request={request} />);
+    await commitBeforePassiveEffects(respond, () => screen.queryByRole("dialog") !== null);
+    fireEvent.click(screen.getByRole("button", { name: plannerOverlayCopy("zh-TW").close }));
+    expect(screen.queryByRole("dialog")).toBeNull();
+  });
+
+  it("keeps the guard its buttons show once a resolved request has made it busy", async () => {
+    let respond!: () => void;
+    const request = new Promise<void>((resolve) => { respond = resolve; });
+    render(<BusyAfterRequest request={request} />);
+    const adjust = screen.getByRole("button", { name: "調整現有行程" }) as HTMLButtonElement;
+    await commitBeforePassiveEffects(respond, () => adjust.disabled);
+    fireEvent.click(screen.getByRole("button", { name: plannerOverlayCopy("zh-TW").close }));
+    expect(screen.getByRole("dialog", { name: "AI 幫我安排" })).toBeTruthy();
   });
 
   it.each(["en", "ja", "ko", "zh-TW", "zh-CN"])("localizes all overlay controls for %s", (locale) => {
