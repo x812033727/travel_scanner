@@ -27,9 +27,10 @@ scope:
 not just crawl. What decides that is provenance — a claim that is dated and sourced — and this
 site has more of it than almost anything it competes with and publishes none of it to machines.
 
-Measured over `apps/api/app/guides/content/*.json`: **498 of 498 localized documents carry
-sources, 4,322 rows in total, averaging 8.7 per document, and every single row has a
-`checked_on` date.** `components/guides/article.tsx` renders the whole list with a
+Measured over `apps/api/app/guides/content/*.json`: **926 of 926 localized documents carry
+sources, 6,926 rows in total, averaging 7.5 per document, and every single row has a
+`checked_on` date.** (Re-measured after merging `main`, which grew the corpus from 398 packs to
+738; the ratio has held at 100% across both.) `components/guides/article.tsx` renders the whole list with a
 `<time dateTime>` per row. The JSON-LD said nothing about any of it.
 
 The graph was also the one on the site built outside `lib/structured-data.ts` — an object
@@ -94,8 +95,10 @@ reasoning is written into the foot of `lib/structured-data.ts` and into `docs/se
   `taoyuan-airport-departure-guide` holds *two*, one procedural and one enumerating who is
   barred from e-Gate, so "take the first ordered list" is a coin flip between a procedure and
   its inverse. Google retired HowTo rich results in 2023, so there is no payoff on offer either.
-- `FAQPage` — 10 of 498 documents hold two question-heading/answer pairs, and the matching
-  headings are section titles with colons. No FAQ member exists in `RichContentBlock` or the API
+- `FAQPage` — taking a heading that genuinely ends in `?`/`？` followed by a paragraph of 40
+  characters or more, **zero** of 926 documents reach two pairs. A looser detector (leading
+  怎麼/如何/為什麼) matches several hundred headings, but those are section titles with colons —
+  which is the reason not to use the loose form, not a reason to ship on it. No FAQ member exists in `RichContentBlock` or the API
   block union; a real FAQ needs an authored `faq: list[FaqItem]` on `GuideDocument`, not a
   scraper. (The `2026-09-10-seo-structured-data` ticket ticked `faqPage` in its DoD and its own
   note recorded it as skipped — the builder never existed.)
@@ -109,7 +112,7 @@ checked against schema.org directly: it does not exist. `lastReviewed`/`reviewed
 properties only, which is why they sit on `mainEntityOfPage` — the same trap `touristDestination`
 already records for `inLanguage`.
 
-**`lastReviewed` decays if nobody re-checks.** All 4,322 `checked_on` values are one of two dates,
+**`lastReviewed` decays if nobody re-checks.** All 6,926 `checked_on` values are one of two dates,
 so it currently reads as a bulk verification stamp. It is honest today because the page prints the
 same dates. It stops being honest the moment republication stops updating them.
 

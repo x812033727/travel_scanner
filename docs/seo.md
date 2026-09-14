@@ -216,11 +216,14 @@ Left out on purpose, each for a reason that is not "we ran out of time":
   lists, one procedural and one enumerating who is *barred* from self-registration -- as
   `HowToStep` that instructs a reader to obtain an exit ban. `ordered: true` in these packs means
   "numbered for reading". A step list needs an author to declare one, not a renderer to infer it.
-- **`FAQPage`.** No FAQ member exists in `RichContentBlock` or in the API's block union, and only
-  10 of 498 documents hold two question-heading-and-answer pairs -- where the matching headings
-  are section titles with colons, not questions. Google has restricted FAQ rich results to health
-  and government sites since 2023, so the only audience is machine readers, who are also the
-  audience that discounts a site whose markup does not match its page.
+- **`FAQPage`.** No FAQ member exists in `RichContentBlock` or in the API's block union, and
+  **no document** holds two question-heading-and-answer pairs: across 926 localized documents,
+  taking a heading that actually ends in `?`/`？` followed by a paragraph of 40 characters or
+  more, zero reach two. A looser detector -- a leading 怎麼/如何/為什麼 -- matches several hundred
+  headings, but they are section titles with colons (`怎麼去：JR 舞濱、迪士尼度假區線`), not
+  questions, which is exactly why the loose form must not be used. Google has restricted FAQ rich
+  results to health and government sites since 2023, so the only audience is machine readers --
+  who are also the audience that discounts a site whose markup does not match its page.
 - **`expires`, from an intel notice's `valid_until`.** schema.org reads `expires` as *stop
   serving this*, and the product deliberately keeps an expired notice online with its URL
   working; `components/guides/article.tsx` states that rule as "no expiry banner, no date it
@@ -231,8 +234,8 @@ Left out on purpose, each for a reason that is not "we ran out of time":
 - **`dateAccessed` on a citation.** Not a schema.org property. `checked_on` says when *we* read
   the source, which is `lastReviewed` on the WebPage node, not a claim about the source itself.
 
-`lastReviewed` is honest today -- the page prints the same dates -- but every `checked_on` in the
-corpus currently holds one of two dates, so it reads as a bulk verification stamp. It stays
+`lastReviewed` is honest today -- the page prints the same dates -- but all 6,926 `checked_on`
+values in the corpus hold one of two dates, so it reads as a bulk verification stamp. It stays
 truthful only while re-verification actually happens on republication; if it stops, the graph will
 keep asserting a review that no longer occurs.
 
