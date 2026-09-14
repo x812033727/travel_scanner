@@ -1,13 +1,13 @@
 ---
 id: 2026-09-14-gemini-series-content
 title: Gemini series additional tutorials and hub
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: codex-gemini-series
 claimed_at: 2026-09-14T06:01:04Z
 created_at: 2026-09-14T06:01:04Z
-completed_at:
+completed_at: 2026-09-14T08:57:59Z
 branch:
 depends_on: []
 scope:
@@ -86,7 +86,7 @@ Complete the additional Gemini tutorials and hub in the approved 1 + 50 series, 
 - [x] All 51 pages are complete, source-checked and illustrated; no empty or coming-soon articles.
 - [x] Every ordinary lesson has 1,800–3,000 body characters; the command lookup has a documented length exception.
 - [x] All links, code/config examples and images pass applicable checks.
-- [ ] Publish the exact series only after acceptance, with children verified before the hub.
+- [x] Publish the exact series only after acceptance, with children verified before the hub.
 
 ## Steps
 
@@ -95,7 +95,7 @@ Complete the additional Gemini tutorials and hub in the approved 1 + 50 series, 
 - [x] Finish manuscripts 09–28 and the hub.
 - [x] Create and visually review all topic-specific covers and instructional diagrams.
 - [x] Finish code/config execution checks, editorial review and cross-link validation.
-- [ ] Complete pack dry-run, scoped publication and public/browser/sitemap verification.
+- [x] Complete pack dry-run, scoped publication and public/browser/sitemap verification.
 
 ## How to verify
 
@@ -106,3 +106,5 @@ Compile manuscripts with `apps/api/.venv/Scripts/python.exe -X utf8 docs/gemini-
 2026-09-14: CLI 0.59.0 actual loader yields 45 stable built-ins with optional features enabled; `/memory reload` has `refresh` alias and `/tasks` replaces old documentation's `/shells`. Actual memory manager tests cover loading, reload and scope. API examples use google-genai 2.23.0 / @google/genai 2.22.0; four offline Python SDK/validation tests pass, no live Google API credentials are available. Taiwan Google One browser verification found Plus NT$165, Pro NT$650, Ultra 5x NT$3,300 and 20x NT$6,500 per month. Windows now has an official native download and is documented separately from web shortcuts and Mac. Apple Taiwan storefront currently requires iOS/iPadOS 17.4. All 51 packs and 102 original illustrations are complete and visually reviewed. Syntax checks cover 109 snippets. Full local import and desktop/mobile browser checks passed. Integration with latest main and production release remain pending.
 
 2026-09-14 integration acceptance: reconciled with main f5b814cb and preserved Claude Code shared blocks/series. The 51 complete packs and 102 reviewed illustrations pass catalogue, length, assets and links; 109 snippets and four deterministic executions pass. Final production-build Playwright: 8 passed (all 50 lessons on desktop/mobile, no-JavaScript 360px, copy, anchors, six searches, unpublished-hub gate). API: 32 passed / 16 PostgreSQL-dependent skipped locally; web integration: 68 passed plus final 34 UI tests; tools: 48 passed. Build, lint, typecheck, i18n, Ruff and mypy pass. CI and production publication are still pending. Existing twenty batch-05 slugs are reused; the comparison is labeled official-feature comparison and reproducible test procedure, without fabricated benchmark results.
+
+2026-09-14 completed: PR #490 merged as 4ba38e81cd48e2c3f8920b9dee1108b5cdba50d6; post-merge CI 34822723832 passed. Verified backup, deployed eight application services, preserved PostgreSQL/Redis containers and selected stable fingerprints. All 51 zh-TW pages are published at https://mokaair.com/zh-TW/life/gemini-guide . Hub read verification failed after its write; the stopped run was reconciled by exact read-only comparison of all 51 documents without another import. Public Chromium verification passed all 50 lessons on desktop and mobile (100 views), 12 search checks, eight groups, five routes, copy, anchors and 360px no-JavaScript. All 102 public images match reviewed bytes, all 51 sitemap URLs exist once, and all 127 source URLs respond successfully. Receipts and screenshots are under docs/gemini-series/. Paid Google API calls and live three-assistant benchmarking were not performed or claimed.

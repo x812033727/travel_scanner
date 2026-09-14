@@ -64,3 +64,13 @@ node tools/gemini-series.mjs publish --python <正式環境 Python> --actor-emai
 ## 與其他教學系列共存
 
 主線另有 Claude Code 教學中心。共用正文、後台與 API 區塊採用既有 `inlines` / `label` 格式，Gemini 的 TOML 語言支援及換行處理一併納入；保留其文章引用及系列 API。Gemini 搜尋與導航讀取 `guide-series.json`，專用輔助函式位於 `apps/web/lib/gemini-series.ts`，避免與通用系列型別混淆。介面文案儲存在五語系 `common.geminiSeries`；本系列仍只開放 zh-TW 內容。
+
+## 2026-09-14 正式推出
+
+完整系列已上線：https://mokaair.com/zh-TW/life/gemini-guide 。PR #490 合併為 `4ba38e81cd48e2c3f8920b9dee1108b5cdba50d6`；該合併提交的 CI 全數通過後，驗證備份並啟用八個應用服務，既有 PostgreSQL / Redis 容器維持原樣。部署收據記錄所選資料表的核對雜湊，不代表每個動態資料表都停止變動。
+
+51 頁 dry-run 通過：更新既有入門篇、新增其餘 50 頁。逐篇匯入並驗證全部子文章後才發布總目錄。最後一次總目錄讀回發生 Node fetch 錯誤，流程依設計停止；查明總目錄已成功寫入後，重新匿名讀取全部 51 頁、比對五個正文欄位，確認其他文章與所選設定資料未變，再補記最後的 verified 事件，沒有重複匯入。
+
+正式站 Chromium 驗收於 2026-09-14 完成：50 篇各跑桌面與手機，共 100 個文章檢查；每種裝置測六組關鍵字、八個分類、五條路線、上一篇／下一篇、指令章節及四篇複製範例。360px 停用 JavaScript 仍能找到全部 50 篇並閱讀 MD 圖解。另逐一核對 102 張公開圖片的原始位元組，以及 sitemap 的 51 個唯一網址。來源連線檢查 127 個網址均成功。瀏覽器驗收排除廣告與分析流量，正文、圖片、程式碼和網站 API 都來自正式站。
+
+證據：`acceptance.json`、`release-ci.json`、`deployment-receipt.json`、`publication.jsonl`、`publication-receipt.json`、`public-browser.json`、`public-assets.json`、`public-sitemap.json`、`source-links.json`，以及 `visual-review/public-*.png`。`verify-public-browser.cjs`、`verify-public-assets.py`、`verify-public-sitemap.py` 可從專案根目錄執行，僅執行公開頁面驗收，不發布文章。付費 Google API、所有真實裝置與三家助手 benchmark 的查證邊界仍依前文，正式站驗收不會改變這些邊界。

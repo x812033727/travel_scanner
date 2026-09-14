@@ -1,13 +1,13 @@
 ---
 id: 2026-09-14-gemini-series-platform
 title: Gemini series content blocks and navigation
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: codex-gemini-series
 claimed_at: 2026-09-14T05:57:47Z
 created_at: 2026-09-14T05:57:44Z
-completed_at:
+completed_at: 2026-09-14T08:57:57Z
 branch:
 depends_on: []
 scope:
@@ -77,7 +77,7 @@ The approved 50-lesson Gemini series needs one searchable server-rendered direct
 - [x] Add dry-run-first release orchestration and partial-failure tests.
 - [x] Verify editor save/reopen with new blocks and browser/mobile/no-JavaScript flows.
 - [x] Finish source/asset/content validation tools and documentation.
-- [ ] Run required checks and verify the released public pages and sitemap.
+- [x] Run required checks and verify the released public pages and sitemap.
 
 ## How to verify
 
@@ -90,3 +90,5 @@ Run focused web suites, `npm run typecheck:web`, `npm run check:i18n`, relevant 
 2026-09-14: Complete local suite passed: 115 related web tests, 18 API tests (8 PostgreSQL skips), 8 Playwright tests on production-mode Next with all 51 real packs, build, web lint/typecheck, API mypy (327 files), and i18n/task checks. The latest main now includes a separate Claude Code series with shared rich/code schemas and navigation; reconcile this before final acceptance and release.
 
 2026-09-14 integration acceptance: reconciled with main f5b814cb and preserved Claude Code shared blocks/series. The 51 complete packs and 102 reviewed illustrations pass catalogue, length, assets and links; 109 snippets and four deterministic executions pass. Final production-build Playwright: 8 passed (all 50 lessons on desktop/mobile, no-JavaScript 360px, copy, anchors, six searches, unpublished-hub gate). API: 32 passed / 16 PostgreSQL-dependent skipped locally; web integration: 68 passed plus final 34 UI tests; tools: 48 passed. Build, lint, typecheck, i18n, Ruff and mypy pass. CI and production publication are still pending. Existing twenty batch-05 slugs are reused; the comparison is labeled official-feature comparison and reproducible test procedure, without fabricated benchmark results.
+
+2026-09-14 completed: PR #490 merged as 4ba38e81cd48e2c3f8920b9dee1108b5cdba50d6; post-merge CI 34822723832 passed. Verified backup, deployed eight application services, preserved PostgreSQL/Redis containers and selected stable fingerprints. All 51 zh-TW pages are published at https://mokaair.com/zh-TW/life/gemini-guide . Hub read verification failed after its write; the stopped run was reconciled by exact read-only comparison of all 51 documents without another import. Public Chromium verification passed all 50 lessons on desktop and mobile (100 views), 12 search checks, eight groups, five routes, copy, anchors and 360px no-JavaScript. All 102 public images match reviewed bytes, all 51 sitemap URLs exist once, and all 127 source URLs respond successfully. Receipts and screenshots are under docs/gemini-series/. Paid Google API calls and live three-assistant benchmarking were not performed or claimed.
