@@ -5,7 +5,7 @@ status: review
 priority: P2
 area: docs
 owner: codex-claude-completion
-claimed_at: 2026-09-14T14:58:17Z
+claimed_at: 2026-09-14T15:15:19Z
 created_at: 2026-09-14T11:02:28Z
 completed_at:
 branch: codex/claude-code-advanced-tutorials

@@ -28,7 +28,7 @@ scope:
 - [x] 規則衝突、Skill 附屬材料／缺檔、Hook 故障、MCP 無效參數及不可信輸出
 - [x] 互動式 Teams：兩位具名隊友、任務分派、訊息回覆與後續訊息接續
 - [x] 第 89 篇完整雙角色功能整合、受控阻塞／決策、文案更新、10 項專案與 3 項獨立斷言、內建瀏覽器驗收
-- [ ] 支援平台 Bash sandbox
+- [x] 支援平台 Bash sandbox：WSL2 的指定檔案與主機 loopback 案例（不宣稱所有網域或 Unix socket）
 - [ ] 第 81 篇取得測試 MCP HTTP／OAuth 服務，完成授權、操作、撤銷與恢復
 - [ ] 第 90 篇在真實手機與電腦完成接續、斷線、休眠及恢復測試
 - [ ] 第 92 篇在明確授權的測試儲存庫執行 GitHub Actions，保存 run URL、輸入與產物；不在正式儲存庫任意觸發
@@ -85,3 +85,5 @@ SDK runner v2 已改為串流輸入，真實 PTY 在首段輸出後送出 Ctrl+C
 2026-09-14 PR #501 已建立，完成 Teams 功能實作與 CLI error_max_turns 補驗，版本因自動更新為 2.1.270；較早 2.1.233 結果保留。Teams 同兩位角色依範圍修改，實際回報阻塞後更新未知 mode 契約及指定文案。10 項專案測試、3 項獨立斷言及內建瀏覽器功能／360px 畫面通過，工作階段和測試伺服器已停止；見 team-feature-validation.json。
 
 CI 找到 Windows 封裝 CRLF 與 Linux Git 原稿 LF 的差異；已修正產生器為文字 LF，保留二進位內容，重新製作 42 ZIP 並補回歸驗證。這是封裝一致性修正，真實 Teams 原始 starter 與新版 starter 經換行正規化完全一致。CI 尚待最終提交完成，不能把初版 web 失敗算通過。
+
+2026-09-14 WSL2 已恢復回應，官方 Linux CLI 2.1.270 安裝與既有帳號登入完成，bubblewrap/socat 可用。實際 Bash 五個命令驗證專案內讀寫、指定路徑 Permission denied、專案外 Read-only file system，外部檔案仍為 UNCHANGED。主機 HTTP 前後控制皆成功、沙箱內 Connection refused；模型的代理歸因不作證據。保持 failIfUnavailable 與禁止沙箱外重試，伺服器與驗證工作已停止。見 sandbox-validation.json、sandbox-events.json；先前 WSL 阻塞是歷史狀態。

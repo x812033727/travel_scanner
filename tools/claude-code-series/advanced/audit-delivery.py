@@ -120,6 +120,9 @@ if real_operations.get('teams_feature',{}).get('passed'):
     local[89]='actual two-teammate feature development, controlled blocked contract decision, scoped label update, 10 project tests, 3 independent assertions and browser interaction/mobile layout passed; source versions and LF equivalence recorded'
 if real_operations.get('headless_boundary',{}).get('passed'):
     local[91]+='; actual one-turn CLI error_max_turns returned exit 1 and is_error=true'
+if real_operations.get('sandbox',{}).get('passed'):
+    local[64]='actual Read deny plus WSL2 Claude 2.1.270 Bash: inside read/write, denied read, readonly outside write and host-loopback isolation passed; no Unix-socket or general domain-allowlist claim'
+    boundary_lessons.add(64)
 if real_operations.get('workflow_comparison',{}).get('passed'):
     local[95]='one actual observation per workflow with versions/models/time recorded; different model mix and coordination, no comparative advantage inferred'
 lesson_rows=[]

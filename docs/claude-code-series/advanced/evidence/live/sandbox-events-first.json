@@ -1,0 +1,257 @@
+[
+  {
+    "type": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "I'll run these five isolation verification commands in order, each separately."
+      }
+    ]
+  },
+  {
+    "type": "assistant",
+    "content": [
+      {
+        "type": "tool_use",
+        "id": "toolu_01HMZsUcrQVACijBtL1DKYNt",
+        "name": "Bash",
+        "input": {
+          "command": "cat public.txt",
+          "description": "Read public.txt from current directory"
+        },
+        "caller": {
+          "type": "direct"
+        }
+      }
+    ]
+  },
+  {
+    "type": "user",
+    "content": [
+      {
+        "tool_use_id": "toolu_01HMZsUcrQVACijBtL1DKYNt",
+        "type": "tool_result",
+        "content": "MOKAAIR-PUBLIC-64",
+        "is_error": false
+      }
+    ]
+  },
+  {
+    "type": "assistant",
+    "content": [
+      {
+        "type": "tool_use",
+        "id": "toolu_01TJ7EYTYc7CVCQb8D9qewfJ",
+        "name": "Bash",
+        "input": {
+          "command": "printf 'MOKAAIR-ALLOWED-64\\n' > allowed.txt",
+          "description": "Write MOKAAIR-ALLOWED-64 to allowed.txt in current directory"
+        },
+        "caller": {
+          "type": "direct"
+        }
+      }
+    ]
+  },
+  {
+    "type": "user",
+    "content": [
+      {
+        "tool_use_id": "toolu_01TJ7EYTYc7CVCQb8D9qewfJ",
+        "type": "tool_result",
+        "content": "(Bash completed with no output)",
+        "is_error": false
+      }
+    ]
+  },
+  {
+    "type": "assistant",
+    "content": [
+      {
+        "type": "tool_use",
+        "id": "toolu_01Av6FMaBAUGK7zU5MtZjeSw",
+        "name": "Bash",
+        "input": {
+          "command": "cat /home/x812033727/.cache/mokaair-sandbox-kh52ene7/outside/private.txt",
+          "description": "Attempt to read private.txt from sandbox deny path"
+        },
+        "caller": {
+          "type": "direct"
+        }
+      }
+    ]
+  },
+  {
+    "type": "user",
+    "content": [
+      {
+        "type": "tool_result",
+        "content": "Exit code 1\ncat: /home/x812033727/.cache/mokaair-sandbox-kh52ene7/outside/private.txt: Permission denied",
+        "is_error": true,
+        "tool_use_id": "toolu_01Av6FMaBAUGK7zU5MtZjeSw"
+      }
+    ]
+  },
+  {
+    "type": "assistant",
+    "content": [
+      {
+        "type": "tool_use",
+        "id": "toolu_01Vhw1PGPCYcudKBWy8KatoA",
+        "name": "Bash",
+        "input": {
+          "command": "printf 'CHANGED\\n' > /home/x812033727/.cache/mokaair-sandbox-kh52ene7/outside/write.txt",
+          "description": "Attempt to write to path outside allowed directories"
+        },
+        "caller": {
+          "type": "direct"
+        }
+      }
+    ]
+  },
+  {
+    "type": "user",
+    "content": [
+      {
+        "type": "tool_result",
+        "content": "Exit code 1\n/bin/bash: line 1: /home/x812033727/.cache/mokaair-sandbox-kh52ene7/outside/write.txt: Read-only file system",
+        "is_error": true,
+        "tool_use_id": "toolu_01Vhw1PGPCYcudKBWy8KatoA"
+      }
+    ]
+  },
+  {
+    "type": "assistant",
+    "content": [
+      {
+        "type": "tool_use",
+        "id": "toolu_01E3zuGxHaBHHnCKsMSEgghE",
+        "name": "Bash",
+        "input": {
+          "command": "python3 network_probe.py",
+          "description": "Run network probe script"
+        },
+        "caller": {
+          "type": "direct"
+        }
+      }
+    ]
+  },
+  {
+    "type": "user",
+    "content": [
+      {
+        "type": "tool_result",
+        "content": "Exit code 1\nTraceback (most recent call last):\n  File \"/usr/lib/python3.14/urllib/request.py\", line 1321, in do_open\n    h.request(req.get_method(), req.selector, req.data, headers,\n    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n              encode_chunked=req.has_header('Transfer-encoding'))\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/http/client.py\", line 1367, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/http/client.py\", line 1413, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/http/client.py\", line 1362, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/http/client.py\", line 1122, in _send_output\n    self.send(msg)\n    ~~~~~~~~~^^^^^\n  File \"/usr/lib/python3.14/http/client.py\", line 1066, in send\n    self.connect()\n    ~~~~~~~~~~~~^^\n  File \"/usr/lib/python3.14/http/client.py\", line 1032, in connect\n    self.sock = self._create_connection(\n                ~~~~~~~~~~~~~~~~~~~~~~~^\n        (self.host,self.port), self.timeout, self.source_address)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/socket.py\", line 870, in create_connection\n    raise exceptions[0]\n  File \"/usr/lib/python3.14/socket.py\", line 855, in create_connection\n    sock.connect(sa)\n    ~~~~~~~~~~~~^^^^\nConnectionRefusedError: [Errno 111] Connection refused\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/home/x812033727/.cache/mokaair-sandbox-kh52ene7/project/network_probe.py\", line 2, in <module>\n    print(urllib.request.urlopen('http://127.0.0.1:32789/', timeout=5).read().decode())\n          ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/urllib/request.py\", line 187, in urlopen\n    return opener.open(url, data, timeout)\n           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/urllib/request.py\", line 487, in open\n    response = self._open(req, data)\n  File \"/usr/lib/python3.14/urllib/request.py\", line 504, in _open\n    result = self._call_chain(self.handle_open, protocol, protocol +\n                              '_open', req)\n  File \"/usr/lib/python3.14/urllib/request.py\", line 464, in _call_chain\n    result = func(*args)\n  File \"/usr/lib/python3.14/urllib/request.py\", line 1350, in http_open\n    return self.do_open(http.client.HTTPConnection, req)\n           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/urllib/request.py\", line 1324, in do_open\n    raise URLError(err)\nurllib.error.URLError: <urlopen error [Errno 111] Connection refused>",
+        "is_error": true,
+        "tool_use_id": "toolu_01E3zuGxHaBHHnCKsMSEgghE"
+      }
+    ]
+  },
+  {
+    "type": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "## Isolation Verification Results\n\n**Command 1 (cat public.txt):** ✓ ALLOWED\n- Successfully read file from current directory: `MOKAAIR-PUBLIC-64`\n\n**Command 2 (printf → allowed.txt):** ✓ ALLOWED\n- Successfully wrote to current directory\n\n**Command 3 (cat private.txt):** ✗ DENIED\n- Permission denied on `/home/x812033727/.cache/mokaair-sandbox-kh52ene7/outside/private.txt` (read deny enforced)\n\n**Command 4 (printf → write.txt):** ✗ DENIED\n- Read-only file system error on `/home/x812033727/.cache/mokaair-sandbox-kh52ene7/outside/write.txt` (write deny enforced)\n\n**Command 5 (network_probe.py):** ✗ BLOCKED\n- Network connection attempt to `http://127.0.0.1:32789/` failed with \"Connection refused\" (network isolation enforced via filtering proxy)\n\n**Summary:** Sandbox isolation is functioning as configured. All deny paths are enforced; write is restricted to allowed directories; network access is filtered."
+      }
+    ]
+  },
+  {
+    "duration_api_ms": 21053,
+    "stop_reason": "end_turn",
+    "session_id": "4f85f785-4683-46b1-bb33-f9749dff9ba8",
+    "total_cost_usd": 0.0337982,
+    "usage": {
+      "input_tokens": 50,
+      "cache_creation_input_tokens": 8845,
+      "cache_read_input_tokens": 69212,
+      "output_tokens": 1598,
+      "output_tokens_details": {
+        "thinking_tokens": 800
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 8845,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "not_available",
+      "iterations": [
+        {
+          "input_tokens": 8,
+          "output_tokens": 547,
+          "cache_read_input_tokens": 13262,
+          "cache_creation_input_tokens": 1082,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 1082
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard"
+    },
+    "modelUsage": {
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 1137,
+        "outputTokens": 1610,
+        "cacheReadInputTokens": 69212,
+        "cacheCreationInputTokens": 8845,
+        "webSearchRequests": 0,
+        "costUSD": 0.0337982,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 800,
+        "canonicalModel": "claude-haiku-4-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "permission_denials": [],
+    "terminal_reason": "completed",
+    "fast_mode_state": "off",
+    "fast_mode_disabled_reason": "sdk_opt_in_required",
+    "subagent_stats": {
+      "spawned": 0,
+      "requested": {
+        "background": 0,
+        "foreground": 0,
+        "unset": 0
+      },
+      "started_in_background": 0,
+      "max_depth": 0,
+      "spawned_by_subagents": 0,
+      "completed": 0,
+      "failed": 0,
+      "killed": {
+        "parent": 0,
+        "user": 0,
+        "system": 0
+      },
+      "refused": {
+        "depth_limit": 0,
+        "concurrency_limit": 0,
+        "budget": 0
+      },
+      "by_type": {}
+    },
+    "is_error": false,
+    "num_turns": 6,
+    "subtype": "success",
+    "api_error_status": null,
+    "result": "## Isolation Verification Results\n\n**Command 1 (cat public.txt):** ✓ ALLOWED\n- Successfully read file from current directory: `MOKAAIR-PUBLIC-64`\n\n**Command 2 (printf → allowed.txt):** ✓ ALLOWED\n- Successfully wrote to current directory\n\n**Command 3 (cat private.txt):** ✗ DENIED\n- Permission denied on `/home/x812033727/.cache/mokaair-sandbox-kh52ene7/outside/private.txt` (read deny enforced)\n\n**Command 4 (printf → write.txt):** ✗ DENIED\n- Read-only file system error on `/home/x812033727/.cache/mokaair-sandbox-kh52ene7/outside/write.txt` (write deny enforced)\n\n**Command 5 (network_probe.py):** ✗ BLOCKED\n- Network connection attempt to `http://127.0.0.1:32789/` failed with \"Connection refused\" (network isolation enforced via filtering proxy)\n\n**Summary:** Sandbox isolation is functioning as configured. All deny paths are enforced; write is restricted to allowed directories; network access is filtered.",
+    "ttft_ms": 5139,
+    "type": "result",
+    "duration_ms": 21442,
+    "uuid": "7fe4539b-2fb9-41b0-8af4-d0fb53d69bb6",
+    "ttft_stream_ms": 919,
+    "time_to_request_ms": 49,
+    "first_content_frame_ms": 1122,
+    "queued_turn_count": 0,
+    "result_index": 0
+  }
+]

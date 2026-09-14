@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-09-14T14:59:04.173594+00:00",
+  "checked_at": "2026-09-14T15:16:16.588561+00:00",
   "status": "local-preview-ready",
   "scope": "36 new lessons and the combined 97-page local preview; not release approval",
   "content": {
@@ -257,7 +257,6 @@
     "pending": [
       "Physical phone reconnection, sleep and recovery; browser Remote Control device verification",
       "A real remote MCP HTTP/OAuth service for authorization, revocation and recovery",
-      "Supported OS Bash sandbox; WSL setup could not complete",
       "Merge/register the manual Actions workflow and run baseline; paid model job awaits dedicated ANTHROPIC_API_KEY"
     ],
     "cli_boundaries": {
@@ -417,14 +416,17 @@
       "reason": "Browser required elevated device verification (device_key_missing). Google sign-in did not navigate in the in-app browser; no remote command or physical phone recovery is claimed."
     },
     "sandbox": {
-      "passed": false,
-      "environment": "WSL Ubuntu ARM64",
+      "passed": true,
+      "environment": "WSL2 Ubuntu ARM64",
+      "cli_version": "2.1.270",
+      "source": "sandbox-validation.json",
+      "scope": "Actual inside read/write, denied read, outside readonly write and host-loopback isolation; no domain-allowlist or Unix-socket claim",
       "preflight": {
         "bubblewrap_present": true,
-        "socat_present": false,
-        "linux_claude_present": false
-      },
-      "reason": "During dependency setup WSL became unresponsive, including a read-only process listing. Only the three owned Windows WSL client trees were stopped; Linux installation outcome is unconfirmed. No WSL shutdown or sandbox weakening was used."
+        "socat_present": true,
+        "linux_claude_present": true,
+        "linux_claude_logged_in": true
+      }
     },
     "teams_feature": {
       "passed": true,
@@ -435,6 +437,16 @@
       "passed": true,
       "source": "headless-turn-limit.json",
       "scope": "Real CLI max-turn error; do not parse an error result as an empty successful review"
+    },
+    "sandbox_history": {
+      "passed": false,
+      "environment": "WSL Ubuntu ARM64",
+      "preflight": {
+        "bubblewrap_present": true,
+        "socat_present": false,
+        "linux_claude_present": false
+      },
+      "reason": "During dependency setup WSL became unresponsive, including a read-only process listing. Only the three owned Windows WSL client trees were stopped; Linux installation outcome is unconfirmed. No WSL shutdown or sandbox weakening was used."
     }
   },
   "claude_smoke_source": "live/claude-live-all.json",
@@ -498,12 +510,13 @@
   ],
   "release": {
     "pull_request": {
-      "base": "88c23881898fa62f10cdbc59b9a639f5841c8423",
-      "head": "aea866cb1c434267089e9735814f9cd57e06a0a2",
+      "base": "f2567e51cc1ea0d0c3fc63005db21b2f44e5919c",
+      "head": "b16e017459ac7071aee70a1177115f7cbc537528",
       "merged": false,
       "number": 501,
       "state": "open",
-      "url": "https://github.com/x812033727/travel_scanner/pull/501"
+      "url": "https://github.com/x812033727/travel_scanner/pull/501",
+      "observation": "Remote PR before the sandbox evidence commit; current GitHub state is authoritative."
     },
     "deployment": "not-performed",
     "import": "not-performed",
@@ -512,7 +525,6 @@
   "limitations": [
     "Physical phone reconnection, sleep and recovery; browser Remote Control device verification",
     "A real remote MCP HTTP/OAuth service for authorization, revocation and recovery",
-    "Supported OS Bash sandbox; WSL setup could not complete",
     "Merge/register the manual Actions workflow and run baseline; paid model job awaits dedicated ANTHROPIC_API_KEY",
     "Not merged, deployed, imported or published"
   ],

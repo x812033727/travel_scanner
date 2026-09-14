@@ -135,6 +135,9 @@ if release_path.exists():
 if live.get('teams_feature',{}).get('passed'):
     readme=readme.replace('僅驗證所列範圍，未宣稱完整雙角色功能開發','另完成第 89 篇雙角色功能、阻塞回報、契約決策、文案變更及最終測試／瀏覽器驗收，見 [Teams 完整實作](evidence/live/team-feature-validation.json)')
 readme=readme.replace('Claude 帳號及外部環境的實測仍有待辦','部分裝置及外部環境實測仍有待辦')
+if live.get('sandbox',{}).get('passed'):
+    readme=readme.replace('、Bash sandbox 與 Actions','與 Actions')
+    readme=readme.replace('| 外部環境 |','| Bash sandbox | WSL2／CLI 2.1.270：專案內讀寫、指定路徑讀取拒絕、專案外寫入拒絕、主機 loopback 隔離通過；HTTP 在主機前後皆可連線。[紀錄](evidence/live/sandbox-validation.json)。未驗證所有網域規則或 Unix socket |\n| 外部環境 |')
 (DOC/'README.md').write_text(readme.replace('预覽','預覽'),encoding='utf-8')
 brief=DOC/'lesson-briefs.md'
 text=brief.read_text(encoding='utf-8')
@@ -204,6 +207,9 @@ if live.get('cli',{}).get('passed'):
         source_text=source_text.replace('完整 UI 團隊整合與 Bash sandbox 仍未通過','第 89 篇雙角色功能整合已另補測通過；Bash sandbox 仍未通過')
     if live.get('headless_boundary',{}).get('passed'):
         source_text+='\nCLI 自動更新後，另以 2.1.270 驗證一回合上限：真實 -p 執行退出 1，回傳 error_max_turns/is_error=true；保持錯誤結果，未當成空白成功。新舊版本的結果分開保存。\n'
+    if live.get('sandbox',{}).get('passed'):
+        source_text=source_text.replace('Bash sandbox 仍未通過','WSL2 Bash sandbox 的指定檔案及主機 loopback 案例已通過')
+        source_text+='\n沙箱补驗（2026-09-14）：使用官方 Linux CLI 2.1.270、bubblewrap 與 socat，保留 failIfUnavailable／禁止沙箱外重試。實際 Bash 顯示 Permission denied 與 Read-only file system，外部檔案保持原樣。HTTP 主機前後控制均成功，沙箱內 Connection refused；不採信模型自行歸因為網域代理，也不宣稱 Unix socket 或所有外連規則通過。原始工具結果見 sandbox-events.json。\n'.replace('补驗','補驗')
     source_path.write_text(source_text,encoding='utf-8')
 text=base.read_text(encoding='utf-8')
 notice='> 第二階段已新增 36 篇，現在可預覽 97 頁；請見[深入教學交付目錄](advanced/README.md)。下列 60／61 篇與驗證數量保留第一階段的歷史紀錄。\n\n'

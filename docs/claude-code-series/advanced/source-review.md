@@ -45,7 +45,7 @@ MCP 材料固定 @modelcontextprotocol/client、@modelcontextprotocol/server 2.0
 
 ## 發布前仍需補做
 
-五篇 CLI 主流程與網頁雲端工作已通過，SDK 原範例 query／resume 與另建串流取消探針通過；另通過七個 CLI 邊界案例，包含 Read 權限、Hook 寫入拒絕、Skill 自動選用、MCP 啟動失敗及只讀子代理。已另驗證兩位具名 Teams 隊友、任務與訊息、一次性 Cron 觸發及一組流程觀察；第 89 篇雙角色功能整合已另補測通過；Bash sandbox 仍未通過。第 81 篇需真正遠端服務授權，第 90 篇需手機與電腦，第 92 篇已指定 travel_scanner，但claude-lab 已建立並限制 main，仍缺 Anthropic CI 憑證；第 94 篇原 runner 已補測缺少／無效 session、執行檔啟動失敗與重新建立 query；runner v2 已用串流輸入完成終端機 Ctrl+C 取消，且同一中斷 session 恢復通過；輸入由驗收工具送進真實 PTY，不宣稱真人按鍵。記錄環境、版本、輸入、輸出、退出碼和停止方式；不保存憑證。
+五篇 CLI 主流程與網頁雲端工作已通過，SDK 原範例 query／resume 與另建串流取消探針通過；另通過七個 CLI 邊界案例，包含 Read 權限、Hook 寫入拒絕、Skill 自動選用、MCP 啟動失敗及只讀子代理。已另驗證兩位具名 Teams 隊友、任務與訊息、一次性 Cron 觸發及一組流程觀察；第 89 篇雙角色功能整合已另補測通過；WSL2 Bash sandbox 的指定檔案及主機 loopback 案例已通過。第 81 篇需真正遠端服務授權，第 90 篇需手機與電腦，第 92 篇已指定 travel_scanner，但claude-lab 已建立並限制 main，仍缺 Anthropic CI 憑證；第 94 篇原 runner 已補測缺少／無效 session、執行檔啟動失敗與重新建立 query；runner v2 已用串流輸入完成終端機 Ctrl+C 取消，且同一中斷 session 恢復通過；輸入由驗收工具送進真實 PTY，不宣稱真人按鍵。記錄環境、版本、輸入、輸出、退出碼和停止方式；不保存憑證。
 
 每個結果標示「官方文件核對」「本機程式／固定事件」「Claude 實際操作」「真實裝置／服務」其中一種。未測項目保持待測，預覽、PR 合併、部署、匯入及公開狀態分開記錄。
 
@@ -58,3 +58,5 @@ Hook 初測先被 Write 的讀檔前提拒絕，不能算 Hook 成功；更正�
 補驗六項：規則衝突、Skill 資料材料選用／缺檔、Hook 執行失敗、真正 MCP 不可信輸出與無效參數。手動輸入斜線 Skill 會直接展開，不以缺少另一筆 Skill 工具呼叫判成失敗；判讀修正與原始結果均保留。
 
 CLI 自動更新後，另以 2.1.270 驗證一回合上限：真實 -p 執行退出 1，回傳 error_max_turns/is_error=true；保持錯誤結果，未當成空白成功。新舊版本的結果分開保存。
+
+沙箱補驗（2026-09-14）：使用官方 Linux CLI 2.1.270、bubblewrap 與 socat，保留 failIfUnavailable／禁止沙箱外重試。實際 Bash 顯示 Permission denied 與 Read-only file system，外部檔案保持原樣。HTTP 主機前後控制均成功，沙箱內 Connection refused；不採信模型自行歸因為網域代理，也不宣稱 Unix socket 或所有外連規則通過。原始工具結果見 sandbox-events.json。

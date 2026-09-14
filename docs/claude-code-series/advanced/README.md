@@ -105,7 +105,8 @@ node --experimental-strip-types tools/claude-code-series/preview.mjs
 | CLI 邊界案例 | 另六項涵蓋規則衝突、Skill 材料與缺檔、Hook 程式失敗、MCP 不可信輸出及無效參數；原七項通過：子目錄規則、Skill 缺參數／自動選用、Read 權限拒絕、Hook 拒絕 Write、MCP 啟動失敗、只讀子代理。只涵蓋指定案例，不代表各功能所有情境 |
 | Claude CLI | 2.1.233 已透過內建瀏覽器重新授權；61、67、73、79、91 的五個主流程全部通過，故障情境另列待辦 |
 | 互動式產品 | 兩位 Teams 隊友的讀檔、任務、訊息與後續接續；一次性 Cron 真實觸發及清單清空。[紀錄](evidence/live/interactive-products.json)。另完成第 89 篇雙角色功能、阻塞回報、契約決策、文案變更及最終測試／瀏覽器驗收，見 [Teams 完整實作](evidence/live/team-feature-validation.json) |
-| 外部環境 | 真實手機、遠端 MCP OAuth、Bash sandbox 與 Actions 模型 job 尚未通過；Remote Control 瀏覽器要求裝置重新驗證。完整待辦見最新操作紀錄 |
+| Bash sandbox | WSL2／CLI 2.1.270：專案內讀寫、指定路徑讀取拒絕、專案外寫入拒絕、主機 loopback 隔離通過；HTTP 在主機前後皆可連線。[紀錄](evidence/live/sandbox-validation.json)。未驗證所有網域規則或 Unix socket |
+| 外部環境 | 真實手機、遠端 MCP OAuth與 Actions 模型 job 尚未通過；Remote Control 瀏覽器要求裝置重新驗證。完整待辦見最新操作紀錄 |
 | GitHub Actions | [儲存庫驗證流程](../../../.github/workflows/claude-tutorial-validation.yml)已備妥；12 項系列測試與 8 項基礎測試通過。尚未合併或遠端執行；[設定與驗證步驟](github-actions-validation.md) |
 | 第 96 篇實際開發 | Claude 從 starter 完成篩選、畫面與保存；9 項專案測試、3 項獨立斷言、10 個內建瀏覽器案例、故障紅綠與乾淨解壓重驗通過。[實際成果 ZIP](evidence/live/capstone-result.zip)；一處交接文字由驗收者更正，真實手機仍待測 |
 | 發布 | [PR #501](https://github.com/x812033727/travel_scanner/pull/501)：審查中；正式部署、資料庫匯入與公開發布未執行 |
