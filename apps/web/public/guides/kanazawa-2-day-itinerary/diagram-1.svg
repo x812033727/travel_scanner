@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">三條路線到金澤與市區周遊巴士示意 / Three ways to Kanazawa and the castle-town loop bus</title>
+  <desc id="desc">左半部：東京搭北陸新幹線かがやき直達金澤，最快 2 小時 24 分；大阪、京都搭雷鳥號到敦賀，在敦賀從 1 樓在來線特急月台換到 3 樓新幹線月台，再搭つるぎ到金澤；台北直飛小松機場，再搭機場巴士約 40 分到金澤站西口，大人 1,400 日圓。右半部：城下まち金沢周遊巴士右回り的示意環線，從金澤站東口 7 號乘車處出發，依序停武蔵ヶ辻・近江町市場、橋場町（東茶屋街）、兼六園下・金沢城、広坂・21世紀美術館、香林坊，再回金澤站；單程 220 日圓、一日券 800 日圓、右回り約 15 分一班，兼六園門票 320 日圓。環線不是實際路線形狀。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">金澤怎麼去、市區怎麼繞</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Getting to Kanazawa, and the castle-town loop bus · 2026 年 9 月查證，班次以官網為準</text>
+
+  <line x1="900" y1="120" x2="900" y2="830" stroke="#D8CFC2" stroke-width="3"/>
+
+  <!-- Tokyo: Hokuriku Shinkansen Kagayaki -->
+  <path d="M 130 200 L 740 200 L 740 380" fill="none" stroke="#0D6B68" stroke-width="10" stroke-linejoin="round"/>
+  <!-- Osaka / Kyoto: Thunderbird to Tsuruga -->
+  <path d="M 130 330 L 130 560 L 400 560" fill="none" stroke="#D97A2B" stroke-width="10" stroke-linejoin="round"/>
+  <!-- Tsuruga: Tsurugi to Kanazawa -->
+  <path d="M 400 560 L 700 560 L 700 490" fill="none" stroke="#2F6F9F" stroke-width="10" stroke-linejoin="round"/>
+  <!-- Taipei flight -->
+  <path d="M 130 780 L 400 780" fill="none" stroke="#5C6B6B" stroke-width="4" stroke-dasharray="4 10" stroke-linecap="round"/>
+  <!-- Airport bus -->
+  <path d="M 400 780 L 800 780 L 800 490" fill="none" stroke="#B8442D" stroke-width="8" stroke-dasharray="22 14" stroke-linejoin="round"/>
+
+  <g font-size="20" font-weight="700" fill="#102A2B">
+    <circle cx="130" cy="200" r="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="6"/>
+    <text x="96" y="165">東京 Tokyo</text>
+    <circle cx="130" cy="330" r="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="6"/>
+    <text x="160" y="337">大阪 Osaka</text>
+    <circle cx="130" cy="450" r="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="6"/>
+    <text x="160" y="457">京都 Kyoto</text>
+    <circle cx="400" cy="560" r="22" fill="#FFFFFF" stroke="#102A2B" stroke-width="5"/>
+    <circle cx="400" cy="560" r="10" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+    <text x="400" y="614" text-anchor="middle">敦賀 Tsuruga（轉乘）</text>
+    <text x="400" y="644" text-anchor="middle" font-size="17" font-weight="400" fill="#5C6B6B">3F 新幹線月台／1F 特急月台</text>
+    <circle cx="130" cy="780" r="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="6"/>
+    <text x="130" y="828" text-anchor="middle">台北 Taipei</text>
+    <circle cx="400" cy="780" r="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+    <text x="400" y="828" text-anchor="middle">小松空港 Komatsu</text>
+  </g>
+
+  <rect x="620" y="380" width="240" height="110" rx="14" fill="#0D6B68"/>
+  <text x="740" y="428" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle">金沢 Kanazawa</text>
+  <text x="740" y="464" font-size="18" fill="#E3F0EF" text-anchor="middle">金沢駅 Kanazawa Sta.</text>
+
+  <g font-size="18" font-weight="700">
+    <text x="260" y="184" fill="#0D6B68">北陸新幹線 かがやき Kagayaki</text>
+    <text x="260" y="236" font-size="20" fill="#102A2B">最快 2 小時 24 分，一車直達</text>
+    <text x="168" y="400" fill="#D97A2B">雷鳥號 サンダーバード</text>
+    <text x="168" y="545" fill="#D97A2B">大阪、京都 → 敦賀</text>
+    <text x="450" y="545" fill="#2F6F9F">北陸新幹線 つるぎ</text>
+    <text x="170" y="765" fill="#5C6B6B">直飛 Flight</text>
+    <text x="440" y="735" fill="#B8442D">機場巴士 → 金沢駅西口</text>
+    <text x="440" y="765" font-size="20" fill="#102A2B">約 40 分・1,400 円</text>
+  </g>
+
+  <!-- Right: schematic loop -->
+  <text x="960" y="150" font-size="20" font-weight="700" fill="#102A2B">周遊巴士 右回り（示意圖，不是實際路線形狀）</text>
+  <rect x="1030" y="240" width="440" height="420" rx="60" fill="none" stroke="#B8442D" stroke-width="8" stroke-dasharray="22 14"/>
+  <polygon points="1030,430 1016,458 1044,458" fill="#B8442D"/>
+  <polygon points="1470,470 1456,442 1484,442" fill="#B8442D"/>
+
+  <g font-size="18" font-weight="700" fill="#102A2B">
+    <circle cx="1030" cy="580" r="16" fill="#0D6B68" stroke="#FFFFFF" stroke-width="4"/>
+    <text x="1058" y="575" font-size="20">金沢駅（起點）</text>
+    <text x="1058" y="602" font-size="16" font-weight="400" fill="#5C6B6B">東口 7 號乘車處</text>
+
+    <circle cx="1030" cy="320" r="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+    <text x="1058" y="318">武蔵ヶ辻</text>
+    <text x="1058" y="344" font-size="16" font-weight="400" fill="#5C6B6B">近江町市場 Omicho</text>
+
+    <circle cx="1250" cy="240" r="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+    <text x="1250" y="208" text-anchor="middle">橋場町（ひがし茶屋街）</text>
+
+    <circle cx="1470" cy="340" r="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+    <text x="1444" y="338" text-anchor="end">兼六園下・金沢城</text>
+    <text x="1444" y="364" font-size="16" font-weight="400" fill="#0D6B68" text-anchor="end">兼六園門票 320 円</text>
+
+    <circle cx="1470" cy="580" r="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+    <text x="1444" y="586" text-anchor="end">広坂・21世紀美術館</text>
+
+    <circle cx="1250" cy="660" r="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+    <text x="1250" y="708" text-anchor="middle">香林坊 Korinbo</text>
+  </g>
+
+  <g text-anchor="middle" fill="#102A2B">
+    <text x="1250" y="432" font-size="22" font-weight="700">周遊巴士單程 220 円</text>
+    <text x="1250" y="468" font-size="22" font-weight="700">一日券 800 円</text>
+    <text x="1250" y="504" font-size="18" fill="#5C6B6B">右回り 約 15 分一班</text>
+  </g>
+
+  <!-- Legend -->
+  <g font-size="17" fill="#102A2B">
+    <line x1="960" y1="790" x2="1010" y2="790" stroke="#0D6B68" stroke-width="8"/>
+    <text x="1020" y="796">實線 JR 列車</text>
+    <line x1="1140" y1="790" x2="1190" y2="790" stroke="#B8442D" stroke-width="6" stroke-dasharray="14 8"/>
+    <text x="1200" y="796">虛線 巴士</text>
+    <circle cx="1320" cy="790" r="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+    <circle cx="1320" cy="790" r="5" fill="#FFFFFF" stroke="#102A2B" stroke-width="3"/>
+    <text x="1344" y="796">轉乘點</text>
+  </g>
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

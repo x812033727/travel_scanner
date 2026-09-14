@@ -1,0 +1,200 @@
+{
+  "description": "製作 WordPress 會員註冊時，表單出現只是第一步。本篇以 Ultimate Member 說明角色分配、電子郵件啟用、人工審核、密碼重設與資料顯示的串接方法，並介紹 LoginPress 適合處理的登入外觀需求，提供完整驗收順序與常見卡關比較，讓台灣站長能建立清楚、可復原且不過度蒐集資料的會員流程。",
+  "intro": [
+    "讀書會想讓參加者註冊後下載講義，最容易忽略的不是表單顏色，而是送出之後發生什麼。使用者沒收到啟用信、管理員不知道有人待審、忘記密碼的連結又回到登入頁，這些都會讓看似完成的會員網站無法使用。",
+    "先畫出註冊、確認身分、登入、修改資料與帳號復原的路徑，再選工具。本篇用 Ultimate Member 說明會員流程，以 LoginPress 補充登入頁外觀的分工；不預設兩個外掛必須同時安裝，也不把外觀美化當成會員規則已完成。"
+  ],
+  "sections": [
+    {
+      "title": "先決定誰能加入，以及需要哪些資料",
+      "paragraphs": [
+        "把加入條件寫成一句話，例如「任何讀者都可申請，確認電子郵件後取得一般會員資格」。若要由幹部審核，再列出審核人和依據。不要一開始就把所有申請者設成能管理網站的角色，會員資格和後台管理能力應分開處理。",
+        "欄位只保留支援流程所需的資訊。讀書會若只需寄送通知，未必需要住址、生日與公司名稱；暱稱也可與聯絡姓名分開。事先說明哪些資訊會出現在個人頁、哪些只供管理者處理，讓註冊者在送出前就能理解用途。"
+      ],
+      "steps": [
+        "列出加入條件、註冊後角色與需要取得的內容權限。",
+        "為每個欄位寫出用途、必填理由及可見對象。",
+        "選擇電子郵件啟用或人工審核等流程，安排處理窗口。"
+      ]
+    },
+    {
+      "title": "建立註冊表單與必要頁面",
+      "paragraphs": [
+        "Ultimate Member 可在 Forms 新增註冊表單，設定欄位後把產生的短代碼放到對應頁面。明確指定此表單的角色，或核對 Registration Default Role；設定位置可能隨版本調整，以目前後台及官方 General／Users 文件為準。",
+        "外掛需要對應的登入、註冊、帳號、個人資料與密碼重設等頁面，不能只留下註冊頁。依官方 Default Pages 說明建立並確認頁面對應，保留必要短代碼。若自訂了頁面網址，也要逐一檢查按鈕與信件連結是否仍指向正確位置。",
+        "會員相關頁面還要檢查快取。官方對 Account、Login、Password Reset、Register、User 頁面提醒不應快取；請同時核對快取外掛、主機及 CDN 設定。用不同帳號測試，不要讓上一人的資料或狀態被共用頁面快取帶給下一人。"
+      ]
+    },
+    {
+      "title": "把啟用或審核狀態寫清楚",
+      "paragraphs": [
+        "在 Ultimate Member 的使用者角色設定中，可選擇電子郵件啟用或管理員審核等註冊方式。電子郵件啟用還需啟用相應的 Account Activation Email 範本；人工審核則要確認使用者待審通知與管理員需要審核的通知。選了規則卻關掉信件，使用者可能不知道下一步。",
+        "電子郵件啟用頁可寫「申請已收到，請到信箱開啟啟用連結」，人工審核頁則應寫清楚等待審核及聯絡方式。只有真正核准後才顯示可登入的引導，不要在所有狀態都顯示相同的註冊成功訊息。確認信箱可用也不等於完成真實身分認證。",
+        "管理員直接在後台新增使用者，可能受另一項設定影響而自動核准。官方已提供忽略角色註冊規則的後台建帳選項，因此驗收必須由真正的前台表單開始。不能用後台新增一個帳號，就宣稱一般訪客的啟用與審核流程通過。"
+      ]
+    },
+    {
+      "title": "忘記密碼也要能走完",
+      "paragraphs": [
+        "從未登入視窗點選忘記密碼，輸入自己的測試帳號，確認重設信寄到預期信箱、連結開啟正確頁面、完成後可用新密碼登入。Ultimate Member 有密碼重設及密碼變更通知，應核對相應範本與頁面設定，而不是只測試一般歡迎信。",
+        "再測試重複申請、輸入錯誤、過期或已使用的連結等情境，記下畫面是否提供可理解的下一步。不同版本或客製設定的處理可能不同，應以實際結果修正文案。不要在客服回覆中索取使用者原密碼，也不要把啟用或重設連結貼到公開留言。",
+        "如果沒有收到信，先檢查外掛是否觸發通知、寄送服務是否接受，以及收件端的垃圾郵件匣。把寄出和收到分開判讀；畫面顯示已送出，無法單獨證明投遞成功。保留去識別的時間與錯誤摘要，方便交由維護者追查。"
+      ]
+    },
+    {
+      "title": "登入外觀與會員資料各自驗收",
+      "paragraphs": [
+        "LoginPress 可調整登入表單、忘記密碼表單、按鈕及訊息等外觀。若你的需求只是替既有 WordPress 登入頁換上品牌識別，可先評估這個範圍。若使用 Ultimate Member 的前台表單，則先使用它自己的版面設定，不預設 LoginPress 會同步控制所有第三方表單。",
+        "設計時讓欄位標籤、錯誤原因與返回連結容易看見，避免用過大的背景圖擠壓手機操作空間。註冊、登入、忘記密碼三個入口應使用一致名稱，讓新會員不用猜「帳號中心」和「會員登入」是否是同一件事。",
+        "在 Ultimate Member 表單欄位中，Visibility 與 Privacy 可控制不同模式及對象的顯示。請另外查看會員目錄及個人頁，用訪客、本人與其他會員各看一次。填寫在表單上的資料不必然都適合公開，顯示規則也不要只憑管理員自己的畫面判定。"
+      ]
+    },
+    {
+      "title": "用一份驗收表覆蓋整個生命週期",
+      "paragraphs": [
+        "完成一組全新的前台註冊，依所選流程啟用或核准，再登入、讀取專區、修改允許欄位、登出並重設密碼。另開一組未完成啟用或被拒絕的帳號，確認它不能取得不應開放的功能。測試資料使用可辨識的假名，避免混入正式會員名單。",
+        "若網站提供帳號刪除或資料申請，說清楚入口、負責人與處理範圍。會員外掛、表單紀錄、寄信服務與備份可能各保存不同資料，不能只刪除一個帳號就承諾所有系統立即沒有任何紀錄。依實際服務流程制定說明並定期檢查。",
+        "正式開放前保存設定摘要、信件範本、頁面對應及驗收日期。之後更換寄信服務、網址或登入工具時，重新走過這份流程；註冊數增加只能證明有人填表，真正可用的會員帳號仍要看啟用、登入與復原是否完整。"
+      ]
+    }
+  ],
+  "table": {
+    "header": [
+      "卡關位置",
+      "先查什麼",
+      "驗收結果"
+    ],
+    "rows": [
+      [
+        "表單送出後無法登入",
+        "帳號狀態與指定角色",
+        "提示清楚且符合所選規則"
+      ],
+      [
+        "收不到啟用信",
+        "範本、寄送與收件紀錄",
+        "連結能完成啟用"
+      ],
+      [
+        "人工審核沒有進度",
+        "管理員通知與待審清單",
+        "核准及拒絕流程均可追蹤"
+      ],
+      [
+        "忘記密碼一直繞回",
+        "重設頁面與信件網址",
+        "新密碼可以登入"
+      ],
+      [
+        "其他人看到個人資料",
+        "欄位隱私、目錄與快取",
+        "不同身分只見允許資訊"
+      ]
+    ],
+    "caption": "依流程階段定位，不把所有註冊問題都歸因於表單樣式。"
+  },
+  "callout": {
+    "title": "用前台新帳號測試",
+    "text": "管理員後台新增帳號可能走不同的核准規則。請使用未登入的瀏覽器及新的測試電子郵件，完整走過訪客實際看到的流程。"
+  },
+  "diagram": {
+    "title": "會員註冊的四個關卡",
+    "subtitle": "每個狀態都給使用者明確的下一步",
+    "description": "表單送出、啟用或審核、會員登入與帳號復原四步驟，分別列出需要驗證的項目。",
+    "nodes": [
+      {
+        "label": "申請",
+        "lines": [
+          "必要欄位",
+          "指定會員角色"
+        ]
+      },
+      {
+        "label": "確認",
+        "lines": [
+          "信箱啟用",
+          "或管理員審核"
+        ]
+      },
+      {
+        "label": "使用",
+        "lines": [
+          "登入與專區",
+          "個人資料顯示"
+        ]
+      },
+      {
+        "label": "復原",
+        "lines": [
+          "忘記密碼",
+          "通知與求助"
+        ]
+      }
+    ],
+    "takeaway": "送出表單成功，只完成會員流程的第一個關卡。"
+  },
+  "hero_art": {
+    "label": "把會員流程完整串起",
+    "alt": "表單文件、身分防護盾牌與會員頁螢幕構成的原創插圖，象徵從註冊到登入。",
+    "icons": [
+      "document",
+      "shield",
+      "screen"
+    ],
+    "color": "#235D82"
+  },
+  "sources": [
+    {
+      "title": "Ultimate Member 註冊表單",
+      "url": "https://docs.ultimatemember.com/article/87-adding-a-registration-form",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "Ultimate Member 核准與通知",
+      "url": "https://docs.ultimatemember.com/article/1652-how-to-enable-email-notification-on-activation-or-admin-review-upon-users-registration",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "Ultimate Member 預設頁面",
+      "url": "https://docs.ultimatemember.com/article/111-default-pages",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "Ultimate Member 郵件設定",
+      "url": "https://docs.ultimatemember.com/article/1916-emails-tab",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "Ultimate Member 後台建帳核准",
+      "url": "https://docs.ultimatemember.com/article/1650-auto-approve-a-user-on-registration-in-wp-admin",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "Ultimate Member 欄位可見性",
+      "url": "https://docs.ultimatemember.com/article/240-fields-visibility-mode",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "LoginPress 登入表單自訂",
+      "url": "https://loginpress.pro/doc/customize-your-first-login-form-with-loginpress/",
+      "checked_on": "2026-09-14"
+    }
+  ],
+  "notes": [
+    "- 2026-09-14 查閱 UM 表單、預設頁面與核准通知：表單角色、必要頁面、排除快取、啟用/審核對應信件。舊表單文件有設定位置混用，正文不沿用舊 Appearance 路徑。https://docs.ultimatemember.com/article/87-adding-a-registration-form https://docs.ultimatemember.com/article/111-default-pages https://docs.ultimatemember.com/article/1652-how-to-enable-email-notification-on-activation-or-admin-review-upon-users-registration",
+    "- 2026-09-14 確認後台建帳可選擇略過角色核准規則，不能取代前台驗收。https://docs.ultimatemember.com/article/1650-auto-approve-a-user-on-registration-in-wp-admin",
+    "- 2026-09-14 確認密碼重設/變更通知及欄位 Visibility/Privacy 控制。未採用 Deprecated Account Tab 文件。https://docs.ultimatemember.com/article/1916-emails-tab https://docs.ultimatemember.com/article/240-fields-visibility-mode",
+    "- 2026-09-14 LoginPress 官方說明確認表單與按鈕外觀功能；未宣稱和 UM 全面相容或提供相同會員規則。https://loginpress.pro/doc/customize-your-first-login-form-with-loginpress/",
+    "- 讀書會與驗收案例為原創，未建立實際會員或寄送信件；資料清除需按各系統實際範圍確認。"
+  ],
+  "links": [
+    {
+      "text": "設定 WordPress 會員與編輯角色",
+      "url": "https://mokaair.com/zh-TW/life/wordpress-user-roles"
+    },
+    {
+      "text": "安排 WordPress 登入安全與復原",
+      "url": "https://mokaair.com/zh-TW/life/wordpress-security-basics"
+    }
+  ]
+}

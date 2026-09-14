@@ -1,0 +1,273 @@
+{
+  "slug": "avada-business-site",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Avada 製作形象網站：模板匯入後該修改什麼",
+      "description": "Avada 預建網站能提供版面起點，但匯入後仍要重新整理服務資訊、聯絡入口與共用設定。本文以台灣木作工作室形象網站為例，說明必要外掛、整站與單頁匯入差別，以及 Global Options、Page Options 和 Layouts 的分工。也提供示範內容清理、手機驗收與 Performance Wizard 使用順序，避免改到一半才發現全站設定被覆蓋或自訂頁面被移除。",
+      "hero": {
+        "src": "/guides/avada-business-site/hero.jpg",
+        "alt": "原創封面以資料夾、文件與螢幕呈現 Avada 模板匯入、原創內容替換和網站展示。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "木作工作室可能喜歡某個 Avada 預建網站的圖片排列，卻不需要它的活動日曆、商店或訂閱彈窗。匯入版型之後，真正的工作是留下對客戶有用的資訊，並讓每個詢問入口連到正確的人。這需要先理解哪些資料會被匯入和修改。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文依 2026 年 9 月 14 日查閱的 Avada 官方文件，整理從版型到可維護形象網站的流程。案例、欄位清單與驗收安排均為原創，沒有借用預建網站的案例、評論或營業成果。"
+        },
+        {
+          "type": "heading",
+          "text": "先確認必要外掛和網站現況",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Avada 的完整功能需要 Avada Core 與 Avada Builder 兩款外掛。安裝並註冊主題後，可在 Avada、Plugins 檢查所需項目。它們與額外附贈或推薦的外掛不同，不能因不認識名稱就將 Core 當成可任意停用的展示工具。"
+        },
+        {
+          "type": "paragraph",
+          "text": "附贈外掛是否需要啟用，取決於版型和網站實際功能。若只做服務介紹，不必為展示站曾使用的商店、日曆或行銷工具全部建立帳號。先列必需功能、對應外掛和授權來源，再安裝相應項目，更新責任也比較清楚。"
+        },
+        {
+          "type": "paragraph",
+          "text": "已有文章和客戶資料的網站應先建立完整備份及測試環境。主題安裝成功不代表匯入版型不會影響現有外觀。先保存目前首頁、選單、全域選項與重要網址，讓測試過程有可以比較和回復的基準。"
+        },
+        {
+          "type": "heading",
+          "text": "整站匯入和單頁匯入影響不同",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Avada、Websites 提供預建網站匯入，也能透過 Setup Wizard 開始。官方建議在全新 WordPress 安裝使用整站匯入：它雖不直接取代原有文章或頁面，卻會切換使用中的選單、匯入其他內容，並替換 Avada Global Options 和部分 WordPress 設定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "只需要某個服務頁的構圖時，可先建立空白草稿，再從 Library 選擇預建網站的單頁。官方特別說明單頁匯入會取代目前頁面內容，並帶入相關版型、頁面選項及圖片；它不等於整站匯入，也不會帶入所有全域選項或其他內容類型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要在已編寫一半的正式服務頁直接試匯入。先在新草稿確認需要哪些元素，再搬移適合的結構和自己的內容。若畫面與展示站不同，可能是全域樣式或其他依賴不同，不應立刻把整站選項全部覆蓋來追求一致。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "確認要借用的是整站結構還是單頁區段，選擇對應匯入方式。",
+            "在測試站或空白草稿預覽，記錄新增內容與設定變動。",
+            "替換文字、圖片、表單收件者及連結，移除無用區段。",
+            "完成前台驗收後，再依已確認的內容與設定更新正式網站。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "先換資訊，再調整裝飾",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "木作服務頁應說清楚製作範圍、材質溝通、丈量方式、交期如何評估與詢問所需資料。將展示版型的籠統標語換成具體說明，例如詢問時可提供空間照片與預計尺寸。沒有固定售價時，不要保留模板的示意金額。"
+        },
+        {
+          "type": "paragraph",
+          "text": "逐一檢查頁首、頁尾、按鈕、地圖和表單，不只替換正文。常見遺漏包括示範電話、外國地址、按鈕仍連到主題展示站，以及客服表單寄到錯誤信箱。用前台真正點擊，比只在編輯器看文字可靠。"
+        },
+        {
+          "type": "paragraph",
+          "text": "案例圖片應是有權公開的作品，說明自己負責的工作。模板中的客戶標誌、五星評價或業績數字不能直接沿用。若暫時沒有可公開案例，可以用清楚標示的製作流程圖或材料示例，不必假裝有大量完工紀錄。"
+        },
+        {
+          "type": "heading",
+          "text": "設定要放在正確層級",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Global Options 提供網站整體配置，Page Options 處理個別頁面的例外，元素設定則控制區段細節。先設定共用內容寬度、色彩和字型，再檢查局部覆寫。如果只有一頁特別窄，先查該頁選項，不必調大全站寬度來補救。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Avada Layouts 可組合 Header、Page Title Bar、Content 和 Footer 等區段，再透過條件套用到不同內容。若網站已使用自訂頁首 Layout，舊版 Global Options 的頁首或選單設定可能不是實際生效位置。修改前先查看目前頁面使用哪個 Layout。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Avada Live 以 Container、Column 與 Element 組織頁面。先調整容器和欄位，再處理文字及圖片，避免用許多負間距堆出桌面畫面。完成修改後使用頁面層級的 Save 保存，再到前台核對；能即時預覽不代表變更已存入網站。"
+        },
+        {
+          "type": "heading",
+          "text": "共用樣式與示範內容要有管理方式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "建立 Global Typography Sets，讓正文、標題和常用元素引用共用規則，再保留少量有目的的例外。中文服務名稱、英文材質名與數字會有不同長度，應用真實文案測試。把文字全部轉成圖片雖能固定外觀，卻降低閱讀和維護彈性。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可重用的服務流程區段可以保存到 Library。一般保存項目作為重用起點，Global Element 則會讓多處實例一起更新，因此命名時說明是否共用。修改一處前先確認影響範圍，不要在未察覺全域狀態時改掉所有頁面的內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "刪除預建網站內容尤其需要小心。官方移除工具會處理原本匯入的項目，其中可能包含你已修改的頁面。改過的內容不是自動免於移除；先備份及保留必要成果，或逐項清理不需要的示範頁，不要把重新匯入當作日常整理方式。"
+        },
+        {
+          "type": "heading",
+          "text": "完工後才進行效能精簡",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方 Performance Wizard 建議在網站內容完成後執行，可從 Avada 的 Performance 或相應維護入口開啟。它會針對功能、圖示、字型與元素等提供建議，但部分項目需要人判斷。不要一開始就關閉所有目前還沒放上的功能，導致後續製作時找不到元素。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每次關閉一組功能，重新檢查服務頁、表單、選單及手機畫面。尚在使用的元素若被停用，可能造成內容失效。對圖片、影片和字型也應先減少不必要負擔，再比較同頁、同條件的載入結果，不把單次分數當成所有訪客的體驗。"
+        },
+        {
+          "type": "paragraph",
+          "text": "交付前保留主題及必要外掛版本、Layout 條件、授權持有人與回復步驟。更新後重跑詢問流程和案例頁檢查，包含前台收件測試及長標題。形象網站完成的標準，是訪客能理解服務並聯絡到你，而不是畫面與模板預覽完全相同。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/avada-business-site/diagram-1.svg",
+          "alt": "原創流程圖將 Avada 版型處理分成匯入、替換、共用設定及驗收四階段，提醒各階段的保留和檢查項目。",
+          "width": 1600,
+          "height": 900,
+          "caption": "模板提供排列起點；服務資訊、資料流與維護方式仍需自己完成。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "操作",
+            "主要影響",
+            "適合做法"
+          ],
+          "rows": [
+            [
+              "整站預建網站匯入",
+              "內容、選單、全域與部分網站設定",
+              "先在全新或測試環境試做"
+            ],
+            [
+              "單頁預建內容匯入",
+              "目前頁面內容及相關頁面設定",
+              "使用新的空白草稿"
+            ],
+            [
+              "修改 Global Options",
+              "多數網站共用預設",
+              "先確認局部覆寫"
+            ],
+            [
+              "修改 Layout",
+              "符合條件的網站部位",
+              "核對條件及動態內容"
+            ],
+            [
+              "移除匯入內容",
+              "原匯入項目可能包含已修改頁面",
+              "先保留成果再逐項清理"
+            ]
+          ],
+          "caption": "匯入、修改與移除不是同一種影響範圍，操作前先確認目標。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "別在已修改的版型上直接按移除",
+          "text": "先保存完整備份與必要的頁面成果，再處理展示內容。匯入工具知道哪些項目原本由它建立，未必知道哪些已經變成你要保留的正式內容。"
+        },
+        {
+          "type": "link",
+          "text": "形象網站的服務頁與合作流程",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-business-site"
+        },
+        {
+          "type": "link",
+          "text": "WordPress 網站備份與驗收準備",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-website-backup"
+        },
+        {
+          "type": "link",
+          "text": "WordPress 主題與擴充的選擇方法",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-theme-selection"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Avada 必要外掛",
+          "url": "https://avada.com/documentation/avadas-required-plugins/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Avada 外掛安裝與維護",
+          "url": "https://avada.com/documentation/plugin-installation-and-maintenance/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Avada 預建網站匯入",
+          "url": "https://avada.com/documentation/how-to-import-a-prebuilt-avada-website/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Avada Library 與單頁匯入",
+          "url": "https://avada.com/documentation/how-to-use-the-avada-builder-library/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Avada Global Options",
+          "url": "https://avada.com/documentation/avada-global-options/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Avada Layouts",
+          "url": "https://avada.com/documentation/how-to-use-avada-layouts/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Avada Live 介面",
+          "url": "https://avada.com/documentation/the-avada-live-workspace/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Avada 移除匯入內容",
+          "url": "https://avada.com/documentation/how-to-remove-prebuilt-website-content-after-import/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Avada 字型設定",
+          "url": "https://avada.com/documentation/typography-options-in-avada/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Avada Performance Wizard",
+          "url": "https://avada.com/documentation/how-to-use-the-performance-wizard/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

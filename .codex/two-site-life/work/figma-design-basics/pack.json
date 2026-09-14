@@ -1,0 +1,257 @@
+{
+  "slug": "figma-design-basics",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Figma 設計入門：Frame、元件與協作交接",
+      "description": "Figma 入門可以先從一張能修改、能說明的畫面開始，不必立即建立完整設計系統。本文以原創寵物用品借用頁為例，整理 Frame、圖層、Auto layout、主要元件與實例的關係，示範內容變長時如何檢查版面，並說明檔案分享、基本檢視與 Dev Mode 的差異。附操作步驟、比較表和原創圖解，協助完成清楚的設計交接，而不把原型當成已運作的網站。",
+      "hero": {
+        "src": "/guides/figma-design-basics/hero.jpg",
+        "alt": "Mokaair 原創設計畫面、元件文件與交接資料夾插圖，代表 Figma 的畫面組織和協作交付。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "剛打開 Figma，畫布、圖層、Frame 和元件名稱可能讓人不知道從哪裡開始。可以先選一個小任務：讓讀者查看一件可借用的寵物用品，讀到使用條件，再找到提出申請的入口。把這個畫面整理清楚，比一次畫很多頁更容易理解基本結構。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是原創練習流程，功能依 2026 年 9 月 14 日查閱的 Figma 官方說明整理。本文沒有實際建立借用服務、收集申請資料或替讀者開通付費席位；配圖是自繪概念圖，並非 Figma 操作截圖。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "建立一個 Frame，讓畫面有清楚的邊界"
+        },
+        {
+          "type": "paragraph",
+          "text": "先在 Figma Design 建立設計檔，替檔案取能辨識用途的名稱，再建立要練習的畫面。Frame 是容納文字、形狀、圖片和其他 Frame 的容器，既能代表整個頁面，也能代表卡片或按鈕等較小區塊。"
+        },
+        {
+          "type": "paragraph",
+          "text": "選擇 Frame 工具或按 F，可以在畫布拖出尺寸，也能選擇預設尺寸。預設只是起點，不表示你的網站只需要支援那個裝置。將畫面命名為借用詳情，比保留自動產生的名稱更方便討論；後續再增加較窄的版本觀察內容變化。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把用品名稱、示意圖、借用條件及申請按鈕放入 Frame 後，查看左側圖層是否確實縮排在容器下方。視覺上位於框內，不一定代表圖層關係正確。理解父層與子層，才能在移動、縮放或輸出時知道哪些物件會一起受到影響。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "圖層命名要說用途，文字要接近真實內容"
+        },
+        {
+          "type": "paragraph",
+          "text": "用用品名稱、借用條件、申請按鈕等名稱標示圖層，讓自己和協作者知道物件的角色。裝飾圖形可以另行整理，避免和操作入口混在一起。選取錯誤時，先看圖層階層，而不是反覆在畫布上拖曳，導致其他內容被移動。"
+        },
+        {
+          "type": "paragraph",
+          "text": "試排時使用接近真實長度的繁體中文，例如較長的用品名稱與完整借用提醒。只放短標題和一行假文，可能看不到日後換行、截斷或間距失衡的問題。圖片也要標清楚是占位或已確認素材，避免把暫用圖當成正式交付。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先整理標題、內文和操作入口的層級，再調整裝飾。對文字與背景做對比檢查，按鈕不能只靠顏色表示可否使用。這些閱讀需求應留在設計說明中，方便實作端理解，不能期待對方僅靠畫面外觀猜出規則。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用 Auto layout 處理文字變長與間距"
+        },
+        {
+          "type": "paragraph",
+          "text": "選取要排列的內容後，可按 Shift + A 加入 Auto layout。它依方向、間距、內距和對齊方式安排子物件，內容增加或尺寸變化時能跟著調整。借用條件可以先做成垂直排列，再把整張卡片與按鈕組合起來。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hug contents 讓 Auto layout 容器依內容與內距調整大小；Fill container 則讓其子物件填滿可用空間；Fixed width 或 height 保持指定尺寸。設定要看目前選的是容器還是子物件，以及寬度或高度哪一軸，不能只記一個選項名稱就套用全部。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把用品名稱換成更長文字，加入第二段條件，再拉窄外層 Frame，觀察按鈕是否被擠掉、內文是否合理換行。若出了問題，逐層檢查尺寸與排列設定。Auto layout 可表達版面規則，但設計檔本身不會自動替正式網站完成響應式程式。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把重複元素做成元件，保留可追蹤的關係"
+        },
+        {
+          "type": "paragraph",
+          "text": "當相同按鈕或用品卡片開始重複出現，可以將設計建立為元件。主要元件定義共用結構與外觀，實例則是連結到它、可放進不同畫面的使用版本。這比每次複製一組互不相連的圖層，更容易維持一致。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如借用按鈕在詳情頁與清單頁使用同一元件，但文案或允許的屬性可依需求調整。修改主要元件時，要查看實例的更新及覆寫狀況，不能假設每個已被局部修改的屬性都會照原樣同步。解除實例連結前，先想清楚是否真的需要獨立維護。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一檔案內使用元件可以先滿足入門練習。跨檔案分享則涉及發布為 Library、使用者權限與方案；目前官方將 Library 功能列於付費方案。先把少量元件命名與用途寫清楚，再決定是否需要擴大共享，避免建立沒有人知道怎麼用的元件庫。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "建立原型流程，再用明確問題收集意見"
+        },
+        {
+          "type": "paragraph",
+          "text": "將借用詳情與申請提示等 Frame 串成原型，可以討論使用者按下入口後會看到什麼。練習至少保留返回方式和必要提示，並標出尚未設計的部分。原型展示的是互動想法，不表示資料已保存、付款已串接或權限已驗證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "檢查時可以請參與者找出借用條件，再說明如何提出申請，觀察是否找得到必要資訊。不要只問畫面好不好看，也別先指著按鈕教對方操作。把觀察、對方說法和自己的推測分開記錄，修改時才知道要解決哪個問題。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇流程可先在自己的草稿完成：從單張畫面、可變動的內容，進展到元件與互動。每做一個變更就檢查它影響的地方。若只增加頁數卻沒有確認內容關係，後續交接仍可能缺少成功、錯誤或沒有資料的狀態。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "建立設計檔與 Frame，確認文字、圖片及按鈕的圖層關係。",
+            "用真實長度內容試排，再設定 Auto layout 和尺寸行為。",
+            "將重複元素整理成主要元件與實例，補上必要狀態。",
+            "串連原型、記錄待確認問題，核對分享權限後準備交接。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "交接要包含狀態與權限，不只有一個連結"
+        },
+        {
+          "type": "paragraph",
+          "text": "分享前確認接收者需要檢視、留言還是編輯，並檢查檔案或原型的連結設定。能取得連結不代表一定有存取權，也不能把公開連結當成限制特定人的方式。請接收者用實際帳號確認能開啟正確畫面，避免交接當天才發現權限不足。"
+        },
+        {
+          "type": "paragraph",
+          "text": "具檢視權限的使用者仍可在允許範圍做基本檢查，例如查看屬性與尺寸；進階 Dev Mode 目前需付費方案及 Full 或 Dev 席位，部分檢視情境另有規則。它可協助比對版本、查看開發狀態和規格，但不代表自動交付完整且已測試的產品。"
+        },
+        {
+          "type": "paragraph",
+          "text": "交接內容應列出目前版本、可實作的畫面、尚未決定的問題、各狀態行為，以及圖片和字型來源。把載入中、失敗、空白與內容過長的處理方式寫明，並確認輸出檔可用。真正完成交接，是接收者知道要做什麼、有哪些待確認事項及如何回查。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/figma-design-basics/diagram-1.svg",
+          "alt": "四張卡片整理 Frame 結構、內容變化、元件重用與交接狀態，說明 Figma 入門流程。",
+          "width": 1600,
+          "height": 900,
+          "caption": "設計不只要能看；還要能修改、能解釋，並讓實作端知道未完成的部分。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "概念",
+            "在練習中的用途",
+            "需要留意"
+          ],
+          "rows": [
+            [
+              "Frame",
+              "容納畫面與區塊",
+              "圖層是否真的位於其中"
+            ],
+            [
+              "Auto layout",
+              "依內容維持排列間距",
+              "父子層與尺寸設定"
+            ],
+            [
+              "主要元件",
+              "定義共用按鈕或卡片",
+              "命名、用途與更新影響"
+            ],
+            [
+              "實例",
+              "重用元件並調整允許屬性",
+              "覆寫與解除連結"
+            ],
+            [
+              "原型",
+              "討論畫面之間的互動",
+              "不等於正式資料處理"
+            ],
+            [
+              "Dev Mode",
+              "進階檢視與開發交接",
+              "方案、席位及實作責任"
+            ]
+          ],
+          "caption": "先理解各功能的工作範圍，再增加元件庫或進階交接工具。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "可點擊的原型仍需要正式實作與測試",
+          "text": "把原型連結、可實作版本與待確認事項分清楚。設計檔中的排版和互動，還需要在網站中實作，並檢查鍵盤操作、資料狀態及不同裝置。"
+        },
+        {
+          "type": "link",
+          "text": "先確定原型要驗證的任務",
+          "url": "https://mokaair.com/zh-TW/life/wireframe-prototype-testing"
+        },
+        {
+          "type": "link",
+          "text": "練習介面層級與閱讀順序",
+          "url": "https://mokaair.com/zh-TW/life/web-layout-hierarchy"
+        },
+        {
+          "type": "link",
+          "text": "整理設計交付與驗收範圍",
+          "url": "https://mokaair.com/zh-TW/life/web-design-project-workflow"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Figma：Frame 與圖層容器",
+          "url": "https://help.figma.com/hc/en-us/articles/360041539473-Frames-in-Figma-Design",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：Auto layout 與尺寸行為",
+          "url": "https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：主要元件與實例",
+          "url": "https://help.figma.com/hc/en-us/articles/360038662654-Guide-to-components-in-Figma",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：Library 與跨檔案共享",
+          "url": "https://help.figma.com/hc/en-us/articles/360041051154-Guide-to-libraries-in-Figma",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：分享與存取權限",
+          "url": "https://help.figma.com/hc/en-us/articles/1500007609322-Guide-to-sharing-and-permissions",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：Dev Mode 使用範圍",
+          "url": "https://help.figma.com/hc/en-us/articles/15023124644247-Guide-to-Dev-Mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：席位與基本檢視",
+          "url": "https://help.figma.com/hc/en-us/articles/19813618057623-Dev-Mode-for-admins",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：實例屬性修改與重設",
+          "url": "https://help.figma.com/hc/en-us/articles/360039150733-Apply-changes-to-instances",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

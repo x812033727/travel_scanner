@@ -1,0 +1,244 @@
+{
+  "slug": "wordpress-domain-migration",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "WordPress 換網域：轉址、搜尋訊號與郵件一起檢查",
+      "description": "WordPress 換網域需要同時處理網站內部網址、舊連結轉址、搜尋訊號與電子郵件。本篇從網址對照表開始，說明資料庫取代前的預覽、永久轉址檢查、新網域收發信測試及上線後觀察方式，幫助個人品牌與工作室安排改名交接，也避免只改後台網址就以為整個網站已經搬好。",
+      "hero": {
+        "src": "/guides/wordpress-domain-migration/hero.jpg",
+        "alt": "原創文件、網站畫面及檢查盾牌，表達換網域時的網址對照與驗收。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "品牌名稱改了，新網域也註冊好了，下一步往往不是直接修改 WordPress 的網站網址。文章裡的圖片、舊社群貼文、搜尋結果、表單通知及工作信箱，都可能仍指向原來的名稱。這次改動需要一張對照表，讓每個舊入口都有明確去處。"
+        },
+        {
+          "type": "paragraph",
+          "text": "假設一個手作工作室要改用更容易記的網域，原本的教學文章仍然保留。最實際的目標是：讀者點舊文章時能到同一篇新文章，編輯登入後能繼續工作，客戶寄到舊信箱的詢問也有人接收。以下用這三條路徑安排切換。"
+        },
+        {
+          "type": "heading",
+          "text": "先整理舊網址，決定每一頁的新去處",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "從網站地圖、文章清單、常用導覽與實際有人造訪的頁面建立清單，圖片和下載檔也要包含。若只是更換網域，原路徑可以先保留，讓對照比較容易；若同時要調整分類或刪除文章，就逐筆記錄新目的地及處理原因。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如原本的 /workshop/ 應到新站的課程介紹，不宜和所有舊文章一起導向首頁。把數篇內容整併時，可以導向真正涵蓋那些資訊的新頁；已刪除且沒有合理替代內容的頁面，則由網站正確回應不存在狀態。讀者能否找到原本要的資訊，是判斷對照是否合理的基準。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "整理文章、頁面、媒體、下載檔及重要外部連結的舊網址。",
+            "逐一指定新網址，標記保留、整併或移除的原因。",
+            "抽查首頁、熱門內頁、中文路徑及帶查詢參數的連結。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "備份之後，預覽資料庫網址取代",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 的網站位址只是其中一個設定，文章內容、外掛選項與頁面編輯器可能另外儲存絕對網址。先保存檔案與資料庫，在受限副本上使用能處理 WordPress 資料格式的遷移工具。單純用文字編輯器把整份 SQL 裡的網域全部替換，可能破壞序列化資料的結構。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若由技術人員使用 WP-CLI，官方 search-replace 支援處理序列化資料，也提供 --dry-run，只產生報告而不寫入。先核對資料表範圍、舊網址與新網址，再看預計變更數量；不要直接把所有資料表都納入，尤其同一資料庫還有其他網站時。"
+        },
+        {
+          "type": "paragraph",
+          "text": "取代範圍應是需要變動的網站 URL。裸網域字串也可能出現在電子郵件、歷史紀錄或外部服務設定中，不能不加判斷地全部改名。完成後檢查自訂佈景檔、CSS、選單及外掛產生的快取，讓實際畫面不再向舊站抓取資源。"
+        },
+        {
+          "type": "heading",
+          "text": "新舊網域都要能正常處理 HTTPS",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "新網域需要正確的 DNS 指向與有效憑證，舊網域如果曾使用 HTTPS，也要在轉址期間持續提供有效連線。瀏覽器是在取得網站的轉址回應之前建立安全連線；舊憑證失效時，讀者可能先看到警告，根本還沒有走到新站。"
+        },
+        {
+          "type": "paragraph",
+          "text": "由主機或網站管理者依已確認的對照表設定永久轉址，再測試舊網址的回應與最終目的地。Google 建議使用伺服器端永久轉址，例如 301 或 308，並盡量直接到達最終頁面。不要讓根網域、www、HTTP 與 HTTPS 規則互相轉來轉去。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "確認新網域的根網域與 www 採用一致的主要網址策略。",
+            "測試各種舊網址是否到達預期新頁，而不是只看有沒有跳轉。",
+            "檢查圖片、下載與表單，確認沒有迴圈、遺失路徑或安全警告。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "更新搜尋訊號，也更新自己能控制的連結",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "新頁的 canonical、網站地圖及站內連結要指向新網址。準備公開時，移除測試階段不應繼續保留的禁止索引設定。Search Console 的網址變更工具適用範圍有條件，真正從一個網域搬到另一個網域時，依官方要求驗證舊站與新站並完成工具檢查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "工具不會代替你建立轉址，也不代表搜尋結果立刻全數更新。Google 建議轉址盡可能長期保留，一般至少一年；對仍有人使用的名片、書籤或外部連結，可以安排更長的支援。網站搬遷可能有暫時波動，不應承諾幾天內恢復原排名。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把能自行更改的入口另外排程：社群簡介、電子報頁尾、商家資訊、合作網站及文件裡的 QR Code。先更新點擊量高或影響交易的項目，保留負責人與完成日期。即使舊網址會轉址，直接連到新網址仍能減少讀者等待與日後維護。"
+        },
+        {
+          "type": "heading",
+          "text": "把郵件當成另一個需要驗收的服務",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "網站轉址不會把 old.example 的信箱自動變成 new.example。先向郵件服務確認新網域加入方式、帳號或別名規則，再設定該服務要求的 MX 與寄件驗證。以 Google Workspace 為例，官方另有更換主要網域及保留舊網域別名的流程，不能用 WordPress 後台設定取代。"
+        },
+        {
+          "type": "paragraph",
+          "text": "列出日常信箱、表單寄件者、回覆地址與帳號復原信箱。保留舊地址的接收安排，向客戶公告新地址，再用外部信箱分別寄到新舊地址，確認收件、回覆與寄件顯示符合預期。若有郵件轉寄，也要確認目的信箱確實收到，而不只是系統接受了設定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要在同一天又更換所有員工登入帳號而沒有交接表。某些第三方服務用電子郵件作為身分識別，改名後可能需要重新驗證或由管理者調整。先確認誰依賴舊地址，避免網站搬好了，管理網站所需的帳號卻無法登入。"
+        },
+        {
+          "type": "heading",
+          "text": "用實際問題追蹤切換結果",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "上線後固定檢查失敗網址、表單通知與新舊信箱，將每個問題連回網址對照表。某篇文章流量降低時，先確認原網址是否轉到正確頁、該頁能否索引，以及圖片與內容是否完整，再討論其他可能原因。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保留舊網域的續約與憑證維護責任，轉址服務也要有人負責。若需要回復，先保存新站已新增的內容與詢問，再決定哪些設定改回，不能直接用舊備份覆蓋所有新資料。把切換紀錄、帳號入口與驗收結果放在同一份交接文件，下一位管理者才知道哪些舊服務仍不可停用。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-domain-migration/diagram-1.svg",
+          "alt": "原創四欄比較圖：舊新網址對照、網站內部資料取代、搜尋轉址訊號及郵件收發確認。",
+          "width": 1600,
+          "height": 900,
+          "caption": "舊入口找得到新去處，網站改名才算交接完整。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "驗收路徑",
+            "要檢查什麼",
+            "常見遺漏"
+          ],
+          "rows": [
+            [
+              "舊文章到新文章",
+              "目的地與內容相符",
+              "全部轉到首頁"
+            ],
+            [
+              "新站內部瀏覽",
+              "連結、圖片、下載及 canonical",
+              "仍載入舊網址資源"
+            ],
+            [
+              "搜尋與索引",
+              "新網站地圖、驗證與可索引狀態",
+              "留下測試用 noindex"
+            ],
+            [
+              "工作信箱",
+              "新舊地址收件、回覆與驗證",
+              "以為網站轉址會轉寄郵件"
+            ],
+            [
+              "長期維護",
+              "舊網域、憑證及轉址服務",
+              "新站正常就停掉舊入口"
+            ]
+          ],
+          "caption": "網站、搜尋與郵件分別記錄驗收，不以單一成功畫面代替。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "保留舊網域的管理責任",
+          "text": "舊網域仍可能接收連結、郵件或帳號復原信件。決定停止續約前，先查清楚依賴與保留期限，並確認已無需要延續的轉址或收信安排。"
+        },
+        {
+          "type": "link",
+          "text": "只換主機而保留原網址",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-host-migration"
+        },
+        {
+          "type": "link",
+          "text": "網站備份與還原驗收",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-website-backup"
+        },
+        {
+          "type": "link",
+          "text": "網域與主機續約管理",
+          "url": "https://mokaair.com/zh-TW/life/domain-hosting-renewal"
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：遷移設定",
+          "url": "https://developer.wordpress.org/advanced-administration/upgrade/migrating/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP-CLI：search-replace 與 dry-run",
+          "url": "https://developer.wordpress.org/cli/commands/search-replace/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Search Central：網址變更遷移",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console：網址變更工具",
+          "url": "https://support.google.com/webmasters/answer/9370220",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Workspace：更換主要網域",
+          "url": "https://knowledge.workspace.google.com/admin/domains/change-your-primary-domain-for-google-workspace",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,238 @@
+{
+  "slug": "woocommerce-wishlist",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "WooCommerce 願望清單：收藏、分享與庫存提示",
+      "description": "WooCommerce 願望清單能讓顧客保存待考慮商品，但收藏、購物車與庫存保留是不同流程。本文以 TI WooCommerce Wishlist 為例，整理免費與進階功能、收藏頁設定、訪客和會員保存、分享可見範圍及價格庫存提示，並提供跨裝置與商品變更的驗收方法，協助店主建立容易找回也說明清楚的收藏體驗。",
+      "hero": {
+        "src": "/guides/woocommerce-wishlist/hero.jpg",
+        "alt": "原創插畫，以商品收藏資料夾、清單畫面與商品文件呈現稍後選購的流程。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "顧客比較兩種顏色的背包，暫時還沒決定購買，可以先放進願望清單。這份清單幫忙記住商品，卻不應讓人誤以為店家已保留庫存或承諾原價。頁面的用字和後續操作，應讓顧客知道自己做的是收藏。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下以 TI WooCommerce Wishlist 官方資料規劃設定，先完成單一收藏清單，再視需求加入分享與通知。付費功能需依實際方案確認，本文沒有將作者宣傳的銷售成效當成自己的實測結果。"
+        },
+        {
+          "type": "heading",
+          "text": "先決定願望清單替顧客解決什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一般收藏、禮物清單和多人分享的需求不一樣。若主要讓顧客比較商品，一份容易找回的清單就可能足夠；若是分別準備搬家用品與生日禮物，才需要研究多份清單、命名和分享權限。"
+        },
+        {
+          "type": "paragraph",
+          "text": "TI 的 WordPress 外掛頁把收藏按鈕、清單頁、欄位和加入購物車後移除列在基本功能；多份清單、隱私設定、追蹤與行銷郵件則列為 Premium 範圍。先核對所用版本，避免照進階文件尋找免費版不存在的設定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "列出這次需要的三個動作，例如收藏、回到清單、移到購物車。不要一開始就同時啟用全部通知與公開搜尋功能；每增加一種功能，就多一段需要向顧客說明和維護的資料流程。"
+        },
+        {
+          "type": "heading",
+          "text": "設定收藏頁和一致的按鈕入口",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 WordPress 外掛目錄確認作者為 TemplateInvaders，再於測試站安裝並啟用 TI WooCommerce Wishlist。依設定精靈指定收藏頁；若需手動建立，免費版文件使用 ti_wishlistsview 短代碼呈現清單，建立後仍須在外掛設定指定該頁。"
+        },
+        {
+          "type": "paragraph",
+          "text": "商品頁和商品列表的收藏按鈕應使用一致名稱，例如「加入願望清單」。愛心圖示最好搭配清楚文字或可理解的名稱，加入後也有成功提示及前往清單的入口，避免顧客重複點擊卻不知道是否完成。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把收藏入口放在手機和電腦都找得到的位置，再測主題或頁面編輯器是否已內建另一套願望清單。若同時出現兩顆功能不同的愛心，先確認各自來自哪個工具，選定主要系統並整理重複入口。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "先確認需要單一清單或進階多清單功能。",
+            "安裝正確外掛並指定可正常開啟的收藏頁。",
+            "設定商品頁與列表按鈕，再加入網站導覽。",
+            "測試收藏、移除、返回商品與加入購物車。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "訪客與會員保存方式要說清楚",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "訪客的收藏可能依賴暫時識別資訊，不能未經驗證就承諾永久保存或跨裝置同步。用全新瀏覽器建立一份清單，再關閉、重新開啟與清除網站資料，觀察實際行為，將限制寫在收藏頁或登入提示旁。"
+        },
+        {
+          "type": "paragraph",
+          "text": "進階版文件說明可允許未登入使用者使用暫時清單，登入後把商品加入預設清單。這項流程仍需用實際版本測試，尤其原帳號本來已有相同商品時，要看是否合併、重複或保留特定規格。"
+        },
+        {
+          "type": "paragraph",
+          "text": "使用會員帳號保存時，測試同一帳號從手機與電腦登入後能否看到預期清單，再確認登出和另一位會員登入時的隔離。不要因同一台測試電腦一直看得到商品，就認定已完成跨裝置與帳號驗收。"
+        },
+        {
+          "type": "heading",
+          "text": "分享連結要符合顧客理解的可見範圍",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "TI 進階版區分公開、私人和持連結可看等可見範圍。持有連結才能看到，不等於只有指定親友能看到，連結仍可能被轉傳；顧客分享前應知道收件者可以看到哪些商品和名稱。"
+        },
+        {
+          "type": "paragraph",
+          "text": "免費版有分享功能，但不能把進階版的完整隱私控制當成免費版保證。先以登出瀏覽器開啟分享連結，檢查清單標題、作者顯示名稱和商品資訊；如果不符合預期，調整設定或暫停提供該分享入口。"
+        },
+        {
+          "type": "paragraph",
+          "text": "禮物清單名稱也避免包含住址、電話或其他不需要公開的資料。若提供可搜尋的公開清單，應特別確認搜尋結果呈現內容；私人清單應用不同帳號與未登入狀態測試，不能只從擁有者畫面判斷權限。"
+        },
+        {
+          "type": "heading",
+          "text": "價格和庫存必須回到當下購買條件",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "收藏的背包可能之後調價、停售，或只剩不同顏色。WooCommerce 可變商品的各規格可以有不同庫存和價格，因此驗收應確認收藏的是一般商品還是特定規格，移到購物車時也要保留正確選擇。"
+        },
+        {
+          "type": "paragraph",
+          "text": "清單上的價格和庫存狀態應協助顧客重新判斷，不要寫成保留庫存或鎖定價格的承諾。加入購物車後仍要依實際結帳條件確認可購數量、運費與優惠；若售完，提供回到商品頁或尋找替代品的清楚入口。"
+        },
+        {
+          "type": "paragraph",
+          "text": "免費版提供加入購物車後移除收藏的選項，但加入購物車不等於已付款。若顧客常先試算再決定購買，可考慮保留收藏；想要購買完成後才移除，則核對所用版本是否支援該條件，不把兩種時點混為一談。"
+        },
+        {
+          "type": "heading",
+          "text": "通知與收藏數據從小範圍開始驗收",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "進階郵件文件提供降價、恢復庫存和清單追蹤等通知設定。啟用前先確認適用方案、收件對象與通知條件，再用測試商品改價或補庫存，觀察信件是否只在預期事件發生時寄送。收藏商品本身不應被當成無限制行銷寄信的同意。"
+        },
+        {
+          "type": "paragraph",
+          "text": "驗收時加入長商品名稱、缺圖商品和多個規格，在手機上檢查表格是否能閱讀、移除按鈕是否容易操作。也要測快取開啟後不同買家的清單和數量，避免把某一位顧客的個人化內容快取給其他人。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後記錄版本、保存限制、分享政策與通知方式。收藏次數可作為研究商品需求的線索，但不能直接等同銷量；顧客可能只是比較、等折扣或替朋友收集。搭配實際購買和缺貨情況分析，再決定是否需要更多功能。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/woocommerce-wishlist/diagram-1.svg",
+          "alt": "原創四欄圖解，呈現收藏商品、保存清單、確認分享及回到購買四步驟，說明帳號、可見範圍與價格庫存的檢查重點。",
+          "width": 1600,
+          "height": 900,
+          "caption": "先做好收藏與找回，再按實際需求加入分享和通知。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "功能",
+            "要釐清的意思",
+            "驗收案例"
+          ],
+          "rows": [
+            [
+              "訪客收藏",
+              "暫時保存的限制",
+              "清除資料及重新登入"
+            ],
+            [
+              "會員清單",
+              "帳號歸屬與同步",
+              "兩個裝置與不同會員"
+            ],
+            [
+              "分享連結",
+              "誰能看到內容",
+              "登出及轉傳情境"
+            ],
+            [
+              "庫存提示",
+              "目前可購狀態",
+              "售完、補貨及規格變更"
+            ]
+          ],
+          "caption": "收藏、分享、通知與購買各有不同的完成條件。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "收藏不是庫存保留承諾",
+          "text": "確認清單能正確顯示商品與規格，並讓顧客在購物車和結帳重新核對價格、數量及配送條件。加入購物車後移除收藏，也不代表訂單已完成。"
+        },
+        {
+          "type": "link",
+          "text": "商品規格與庫存應如何建立",
+          "url": "https://mokaair.com/zh-TW/life/woocommerce-product-types"
+        },
+        {
+          "type": "link",
+          "text": "訪客與會員結帳的取捨",
+          "url": "https://mokaair.com/zh-TW/life/woocommerce-member-checkout"
+        }
+      ],
+      "sources": [
+        {
+          "title": "TI Wishlist 免費與 Premium 功能",
+          "url": "https://wordpress.org/plugins/ti-woocommerce-wishlist/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "TI Wishlist 免費版設定",
+          "url": "https://templateinvaders.com/documentation/ti-woocommerce-wishlist-free/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "TI Wishlist 進階保存與隱私",
+          "url": "https://templateinvaders.com/documentation/ti-woocommerce-wishlist/general-settings/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "TI Wishlist 通知條件",
+          "url": "https://templateinvaders.com/documentation/ti-woocommerce-wishlist/email-settings/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WooCommerce 商品與規格管理",
+          "url": "https://woocommerce.com/document/managing-products/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

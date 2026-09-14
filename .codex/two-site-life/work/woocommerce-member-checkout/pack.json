@@ -1,0 +1,242 @@
+{
+  "slug": "woocommerce-member-checkout",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "WooCommerce 要不要強制登入：訪客結帳與會員體驗",
+      "description": "WooCommerce 是否要求登入，要從商品、售後與回購需求決定。本文比較訪客結帳、選擇性註冊及必須登入的使用情境，整理帳號與隱私設定、訂閱和下載商品的限制、密碼復原及歷史訪客訂單連結方式，並提供新客、舊客與忘記密碼的驗收案例，讓台灣店主建立可完成購買也方便查單的流程。",
+      "hero": {
+        "src": "/guides/woocommerce-member-checkout/hero.jpg",
+        "alt": "原創插畫，以購物畫面、帳號盾牌與訂單文件呈現訪客和會員的購買流程。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "第一次來買一本筆記本的顧客，可能只想付款後離開；每月訂購耗材的顧客，則需要日後修改地址與查看續訂。兩者對帳號的需求不同，商店應先說清楚帳號能幫忙什麼，再決定購物前是否必須建立。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WooCommerce 可以提供訪客結帳，也可以讓買家在適合的階段建立帳號。這些選項會受到訂閱、會員或下載設定影響。本文以實際流程的取捨來規劃，不把任何一種選擇宣稱為必然增加營收的方法。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先從買完之後需要做什麼判斷"
+        },
+        {
+          "type": "paragraph",
+          "text": "若商品是一次性實體購買，售後主要透過訂單通知與客服處理，可以先評估訪客結帳。顧客仍需留下完成付款與配送所需資料，只是這筆訂單未必綁定 WordPress 使用者帳號，並不等於匿名購買或完全不保存訂單。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果常有回購，帳號可以集中訂單、地址和可用下載，讓顧客下次找得到自己的資料。把這些好處放在註冊提示旁，例如「登入後可查看歷次訂單」，會比只寫「請先加入會員」更容易理解用途。"
+        },
+        {
+          "type": "paragraph",
+          "text": "需要持續管理的服務則應另看商品規則。WooCommerce Subscriptions 要求訂閱者有帳號，Memberships 也把會員權限綁在帳號上。商店即使開啟一般訪客結帳，這類擴充仍可能要求買家註冊或登入，不宜用隱藏欄位繞過。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "設定訪客與註冊時機"
+        },
+        {
+          "type": "paragraph",
+          "text": "到 WooCommerce 設定的帳號與隱私分頁，分別檢查訪客結帳、結帳時登入，以及建立帳號的位置。這些是不同選項：允許舊客登入，不代表新客一定要註冊；允許建立帳號，也不等於關閉訪客結帳。"
+        },
+        {
+          "type": "paragraph",
+          "text": "目前官方文件列出結帳時、結帳後與我的帳號頁等建立帳號時機，實際畫面依安裝版本及結帳型態確認。若想讓一次性買家先完成購買，再邀請建立帳號，應測試該版本支援的結帳後流程及其提示，不能只照舊教學找同名勾選框。"
+        },
+        {
+          "type": "paragraph",
+          "text": "帳號選項也包含寄送密碼設定連結及以電子郵件作登入資訊。區塊結帳對部分選項會自行設定並隱藏，這是相容性安排；先核對官方文件與前台結果，避免以為少了一個設定就必須修改程式。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "列出一般商品與需要帳號的特殊商品。",
+            "分別決定訪客結帳、登入提示與註冊時機。",
+            "用新的買家資料完成一般和特殊商品流程。",
+            "檢查訂單歸屬、帳號通知與重新登入結果。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "訪客也需要清楚的查單入口"
+        },
+        {
+          "type": "paragraph",
+          "text": "訪客完成訂單後，應收到可識別商店、訂單編號與後續聯絡方式的通知。顧客不一定會保存付款成功頁，不能把所有售後資訊只放在那個短暫畫面；通知是否能抵達，也要納入驗收。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若提供 WooCommerce 的訂單追蹤表單，可讓顧客依訂單編號與帳單電子郵件查詢。這個入口與我的帳號頁用途不同：前者協助找到指定訂單，後者集中已連結帳號的資訊。網站導覽和客服說明應使用容易區分的名稱。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要為了讓客服查單方便，就把含有私人資訊的訂單連結公開貼到文章或社群。客服處理遺失通知時，應使用商店既定的確認方式，核對後再協助查詢；只知道姓名或商品名稱，不足以任意搬移帳號和訂單歸屬。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "帳號復原要當成購物流程的一部分"
+        },
+        {
+          "type": "paragraph",
+          "text": "用一般買家帳號測試忘記密碼，從登入頁提出重設、收到信件、建立新密碼，再回到原本購物流程。若寄信失敗，要求登入就可能讓舊客無法買東西；不能以管理員一直保持登入的狀態判斷會員流程正常。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新帳號使用密碼設定連結時，還要確認首次設定和連結失效後的處理。目前我的帳號文件提供重新寄送連結的流程，畫面與限制依版本核對。客服可以引導顧客重新申請，但不應索取原密碼或要求轉寄有效的重設連結。"
+        },
+        {
+          "type": "paragraph",
+          "text": "郵件問題先確認通知設定、收件地址及寄送紀錄，再查垃圾郵件與寄信服務。網站顯示已寄出，不代表對方收件匣已收到；將帳號通知與訂單通知都納入測試，並確認信中的網址回到正確商店網域。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "歷史訂單與數位內容另行驗證"
+        },
+        {
+          "type": "paragraph",
+          "text": "訪客之後建立帳號，不應僅憑相同文字的電子郵件就假定所有歷史訂單立即出現。WooCommerce 11.0 起提供電子郵件確認及訪客訂單連結機制；使用這項功能時，顧客需完成當前帳號的信箱確認，再依規則連結仍屬訪客的相符訂單。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新版文件另說明，確認連結本身不會自動登入，已歸屬其他註冊帳號的訂單也不會被搬走。實際提示會隨版本及通知設定改變，因此測試應涵蓋未確認、確認後與換信箱等狀態，不把後台人工勾選確認當成一般顧客驗收。"
+        },
+        {
+          "type": "paragraph",
+          "text": "數位商品還要決定下載是否要求登入。官方文件指出，啟用下載需登入時必須停用訪客結帳，否則兩個政策不一致。是否付費後即提供下載、何時授予權限，也要跟商品和訂單狀態一起測試，不能只看會員頁有下載分頁。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用三種顧客角色比較結果"
+        },
+        {
+          "type": "paragraph",
+          "text": "準備新訪客、已註冊舊客及忘記密碼的舊客，分別完成同一筆購買。觀察每一步需要填什麼、錯誤時能否返回、付款後訂單在哪裡；若販售訂閱或會員商品，再加上混合購物車案例，確認要求帳號的提示出現在合理時機。"
+        },
+        {
+          "type": "paragraph",
+          "text": "記錄結帳中斷位置、帳號復原求助及查單問題，作為之後調整依據。比較前後結果時，保留相近商品、期間和流量條件；只看到註冊數增加，不能推論購買體驗已改善，也不要引用未在自己商店驗證的成效百分比。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後把帳號用途、客服復原流程與資料保存安排交接給營運者。帳號刪除或資料清除屬於另一套流程，涉及訂單和下載權限，應先確認保存需求再設定，不能為了整理使用者清單就大量刪除仍有售後需求的帳號。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/woocommerce-member-checkout/diagram-1.svg",
+          "alt": "原創三欄圖解，比較一般購買、回購服務和持續權限三種需求，對應訪客、選擇註冊及必要帳號的驗收重點。",
+          "width": 1600,
+          "height": 900,
+          "caption": "帳號政策必須讓新客買得到，也讓舊客回得來、查得到。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方式",
+            "適合評估的需求",
+            "必須驗收"
+          ],
+          "rows": [
+            [
+              "訪客結帳",
+              "一次性購買",
+              "通知與指定訂單查詢"
+            ],
+            [
+              "自行選擇註冊",
+              "回購但不強制",
+              "註冊時機與訂單連結"
+            ],
+            [
+              "需要帳號",
+              "訂閱與會員服務",
+              "新客建立及舊客復原"
+            ],
+            [
+              "登入後下載",
+              "受控數位交付",
+              "結帳政策與下載權限"
+            ]
+          ],
+          "caption": "按商品及售後需求選擇，不能只依註冊人數判斷體驗。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "管理員登入不能代表顧客驗收",
+          "text": "使用全新的買家、既有買家和忘記密碼的買家分別測試。確認郵件實際收到、訂單歸屬正確，並且復原帳號後仍能完成原本購買。"
+        },
+        {
+          "type": "link",
+          "text": "設計必要的結帳欄位",
+          "url": "https://mokaair.com/zh-TW/life/woocommerce-checkout-fields"
+        },
+        {
+          "type": "link",
+          "text": "檢查 WordPress 郵件是否能送達",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-smtp-delivery"
+        }
+      ],
+      "sources": [
+        {
+          "title": "帳號與隱私設定",
+          "url": "https://woocommerce.com/document/configuring-woocommerce-settings/accounts-and-privacy/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "我的帳號與密碼設定連結",
+          "url": "https://woocommerce.com/document/the-my-account-page/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "電子郵件確認與訪客訂單連結",
+          "url": "https://woocommerce.com/document/the-my-account-page/customer-email-confirmation/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "頁面短代碼及訂單追蹤",
+          "url": "https://woocommerce.com/document/woocommerce-shortcodes/page-shortcodes/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "訂閱者帳號要求",
+          "url": "https://woocommerce.com/document/subscriptions/store-manager-guide/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Memberships 帳號要求",
+          "url": "https://woocommerce.com/document/woocommerce-memberships-faq/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "下載商品登入要求",
+          "url": "https://woocommerce.com/document/digital-downloadable-product-handling/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "電子郵件疑難排解",
+          "url": "https://woocommerce.com/document/email-faq/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

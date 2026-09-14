@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">樟宜機場航廈到 MRT 站與進市區路線 / Changi Airport terminals to MRT and the city</title>
+  <desc id="desc">樟宜機場 MRT 站 CG2 直接連 T2 與 T3。T1 經 Jewel 3 樓連通橋或免費 Skytrain（5:00 到 2:00）到 T2、T3。T4 沒有連 MRT，要在 T4 Arrival Bus Lounge 搭免費接駁車到 T2 Arrival Pick-up Door 1，6:00 到 24:00 約 5 分鐘一班、車程約 10 分鐘，00:00 到 6:00 改環狀線約 19 分鐘一班。MRT 從 CG2 經 Expo（CG1／DT35，轉濱海市區線往 Bukit Panjang）到 Tanah Merah（EW4，轉東西線往 Tuas Link，經 Bugis、City Hall、Raffles Place）。出機場首班週一到六 5:31、週日與國定假日 5:59，接往 Tuas Link 末班 23:18、接往 Pasir Ris 末班 00:06；回機場末班 Tanah Merah 23:50、Expo 23:53。外國發行的 Visa、Mastercard 每個使用日加收 0.60 新幣。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#102A2B"/>
+    </marker>
+    <marker id="arrowTeal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="2.6" markerHeight="2.6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#0D6B68"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="2.6" markerHeight="2.6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2F6F9F"/>
+    </marker>
+  </defs>
+
+  <text x="55" y="52" font-size="30" font-weight="700" fill="#102A2B">樟宜機場：航廈怎麼到 MRT 站、怎麼進市區</text>
+  <text x="55" y="84" font-size="18" fill="#5C6B6B">Changi Airport terminals, MRT CG2 and trains to the city · 2026 年 9 月查證</text>
+
+  <!-- ===== Left: terminals ===== -->
+  <text x="55" y="140" font-size="20" font-weight="700" fill="#0D6B68">航廈到 MRT 站 Terminals → MRT</text>
+
+  <!-- connectors (drawn first, under boxes) -->
+  <path d="M160 244 V420 M160 330 H680 V420" fill="none" stroke="#2F6F9F" stroke-width="5" stroke-dasharray="3 10" stroke-linecap="round"/>
+  <path d="M265 202 H315" fill="none" stroke="#0D6B68" stroke-width="6"/>
+  <path d="M420 244 V410" fill="none" stroke="#0D6B68" stroke-width="6"/>
+  <path d="M265 465 H315 M525 465 H575" fill="none" stroke="#0D6B68" stroke-width="10"/>
+  <path d="M680 670 V514" fill="none" stroke="#D97A2B" stroke-width="6" stroke-dasharray="18 12" marker-end="url(#arrow)"/>
+
+  <text x="445" y="315" font-size="17" font-weight="700" fill="#2F6F9F">Skytrain 免費 5:00–2:00</text>
+
+  <!-- T1 -->
+  <rect x="55" y="160" width="210" height="84" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="160" y="196" font-size="26" font-weight="700" fill="#102A2B" text-anchor="middle">T1</text>
+  <text x="160" y="226" font-size="17" fill="#5C6B6B" text-anchor="middle">第一航廈</text>
+
+  <!-- Jewel -->
+  <rect x="315" y="160" width="210" height="84" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="420" y="196" font-size="24" font-weight="700" fill="#2E7D5B" text-anchor="middle">Jewel</text>
+  <text x="420" y="226" font-size="17" fill="#102A2B" text-anchor="middle">3 樓連通橋接 T2／T3</text>
+
+  <!-- T3 -->
+  <rect x="55" y="420" width="210" height="90" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="160" y="458" font-size="26" font-weight="700" fill="#102A2B" text-anchor="middle">T3</text>
+  <text x="160" y="490" font-size="17" fill="#5C6B6B" text-anchor="middle">第三航廈</text>
+
+  <!-- CG2 -->
+  <rect x="315" y="410" width="210" height="110" rx="14" fill="#0D6B68" stroke="#0D6B68" stroke-width="4"/>
+  <text x="420" y="446" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">樟宜機場站 CG2</text>
+  <text x="420" y="474" font-size="17" fill="#E3F0EF" text-anchor="middle">Changi Airport</text>
+  <text x="420" y="502" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">直連 T2／T3</text>
+
+  <!-- T2 -->
+  <rect x="575" y="420" width="210" height="90" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="680" y="458" font-size="26" font-weight="700" fill="#102A2B" text-anchor="middle">T2</text>
+  <text x="680" y="490" font-size="17" fill="#5C6B6B" text-anchor="middle">第二航廈</text>
+
+  <!-- T4 shuttle labels -->
+  <g text-anchor="end">
+    <text x="655" y="580" font-size="18" font-weight="700" fill="#D97A2B">免費接駁車 T4 → T2</text>
+    <text x="655" y="608" font-size="17" fill="#102A2B">6:00–24:00 約 5 分鐘一班</text>
+    <text x="655" y="634" font-size="17" fill="#102A2B">車程約 10 分鐘</text>
+  </g>
+  <g text-anchor="end">
+    <text x="550" y="700" font-size="16" fill="#5C6B6B">00:00–6:00 環狀線</text>
+    <text x="550" y="724" font-size="16" fill="#5C6B6B">約 19 分鐘一班</text>
+  </g>
+
+  <!-- T4 -->
+  <rect x="575" y="670" width="210" height="90" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="680" y="708" font-size="26" font-weight="700" fill="#102A2B" text-anchor="middle">T4</text>
+  <text x="680" y="740" font-size="17" fill="#5C6B6B" text-anchor="middle">沒有連 MRT</text>
+
+  <text x="55" y="806" font-size="16" fill="#5C6B6B">T4 Arrival Bus Lounge 上車，T2 Arrival Pick-up Door 1 下車</text>
+  <text x="55" y="834" font-size="16" fill="#5C6B6B">哪家航空在哪個航廈，以航空公司通知為準</text>
+
+  <!-- ===== Right: rail ===== -->
+  <text x="850" y="140" font-size="20" font-weight="700" fill="#0D6B68">MRT 進市區 Changi Airport → City</text>
+
+  <path d="M1000 196 V386" fill="none" stroke="#0D6B68" stroke-width="10"/>
+  <path d="M1000 286 H1500" fill="none" stroke="#2F6F9F" stroke-width="10" marker-end="url(#arrowBlue)"/>
+  <path d="M1000 386 H1500" fill="none" stroke="#0D6B68" stroke-width="10" marker-end="url(#arrowTeal)"/>
+
+  <text x="1030" y="266" font-size="17" font-weight="700" fill="#2F6F9F">濱海市區線 Downtown Line，往 Bukit Panjang</text>
+  <text x="1030" y="360" font-size="17" font-weight="700" fill="#0D6B68">東西線 East West Line，往 Tuas Link</text>
+
+  <g fill="#FFFFFF" stroke-width="6">
+    <circle cx="1000" cy="196" r="13" stroke="#0D6B68"/>
+    <circle cx="1000" cy="286" r="13" stroke="#2F6F9F"/>
+    <circle cx="1000" cy="386" r="13" stroke="#0D6B68"/>
+    <circle cx="1170" cy="386" r="9" stroke="#0D6B68"/>
+    <circle cx="1300" cy="386" r="9" stroke="#0D6B68"/>
+    <circle cx="1430" cy="386" r="9" stroke="#0D6B68"/>
+  </g>
+  <g font-size="17" font-weight="700" fill="#102A2B" text-anchor="end">
+    <text x="975" y="202">樟宜機場 Changi Airport CG2</text>
+    <text x="975" y="292">Expo CG1／DT35</text>
+    <text x="975" y="392">Tanah Merah EW4</text>
+  </g>
+  <g font-size="16" fill="#102A2B" text-anchor="middle">
+    <text x="1170" y="424">Bugis</text>
+    <text x="1300" y="424">City Hall</text>
+    <text x="1430" y="424">Raffles Place</text>
+  </g>
+
+  <!-- time boxes -->
+  <rect x="840" y="470" width="340" height="206" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1010" y="508" font-size="20" font-weight="700" fill="#0D6B68" text-anchor="middle">出機場（CG2 發車）</text>
+  <g font-size="17" fill="#102A2B">
+    <text x="865" y="546">首班 5:31 週一到六</text>
+    <text x="865" y="576">首班 5:59 週日、國定假日</text>
+    <text x="865" y="618" font-weight="700" fill="#B8442D">接往 Tuas Link 末班 23:18</text>
+    <text x="865" y="650">接往 Pasir Ris 末班 00:06</text>
+  </g>
+
+  <rect x="1210" y="470" width="340" height="206" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1380" y="508" font-size="20" font-weight="700" fill="#2F6F9F" text-anchor="middle">回機場（往 CG2）</text>
+  <g font-size="17" fill="#102A2B">
+    <text x="1235" y="546">每天末班</text>
+    <text x="1235" y="584" font-weight="700" fill="#B8442D">Tanah Merah 發車 23:50</text>
+    <text x="1235" y="618" font-weight="700" fill="#B8442D">Expo 發車 23:53</text>
+  </g>
+
+  <rect x="840" y="706" width="710" height="76" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="1195" y="752" font-size="20" font-weight="700" fill="#B8442D" text-anchor="middle">外國發行的 Visa／Mastercard 刷卡搭車：每個使用日 +0.60 新幣</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
