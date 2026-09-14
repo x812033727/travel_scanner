@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">你是哪種人，就先裝哪個 / Pick your first AI coding tool</title>
+  <desc id="desc">一張兩層的決策樹。第一個問題是你會不會寫程式。答「幾乎沒寫過程式」的人往左，第二個問題是想在哪裡工作：想在一個視窗裡做完就選 Cursor，獨立編輯器，用 Cursor 帳號，Hobby 方案免費；已經在用 VS Code 就選 GitHub Copilot，編輯器擴充，用個人 GitHub 帳號，Free 方案每月兩千次補全。答「已經會寫一點程式」的人往右，同樣問想在哪裡工作，三個終端機代理依手上的帳號分：有 Google 帳號選 Gemini CLI，免費額度每天一千次請求；有 ChatGPT 帳號選 Codex CLI，Free 方案就能試；已在付費方案選 Claude Code，Pro 月繳二十美元。最底下提醒：五個都能在 Windows、macOS 與 Linux 上用，價格是官網美元標價，額度與方案以官網為準；代理會直接改你電腦上的檔案，第一次請用練習專案，並讓它每一步都先問過你。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">你是哪種人，就先裝哪個</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Pick your first AI coding tool</text>
+
+  <rect x="580" y="110" width="440" height="70" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="800" y="154" font-size="26" font-weight="700" fill="#102A2B" text-anchor="middle">第一個問題：你會不會寫程式？</text>
+
+  <path d="M 800 180 L 800 212 L 420 212 L 420 236" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M 800 180 L 800 212 L 1180 212 L 1180 236" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="110" y="240" width="620" height="96" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="420" y="282" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">幾乎沒寫過程式</text>
+  <text x="420" y="316" font-size="19" fill="#5C6B6B" text-anchor="middle">第二個問題：想在哪裡工作？</text>
+
+  <rect x="870" y="240" width="620" height="96" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1180" y="282" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">已經會寫一點程式</text>
+  <text x="1180" y="316" font-size="19" fill="#5C6B6B" text-anchor="middle">第二個問題：想在哪裡工作？</text>
+
+  <path d="M 420 336 L 420 376 L 196 376 L 196 410" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M 420 336 L 420 376 L 498 376 L 498 410" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M 1180 336 L 1180 376 L 800 376 L 800 410" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M 1180 336 L 1180 376 L 1102 376 L 1102 410" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M 1180 336 L 1180 376 L 1404 376 L 1404 410" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="56" y="414" width="280" height="206" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="196" y="450" font-size="17" fill="#D97A2B" text-anchor="middle">想在一個視窗裡做完</text>
+  <text x="196" y="492" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">Cursor</text>
+  <text x="196" y="528" font-size="17" fill="#5C6B6B" text-anchor="middle">獨立編輯器</text>
+  <text x="196" y="560" font-size="17" fill="#5C6B6B" text-anchor="middle">Cursor 帳號</text>
+  <text x="196" y="598" font-size="19" font-weight="700" fill="#D97A2B" text-anchor="middle">Hobby 免費</text>
+
+  <rect x="358" y="414" width="280" height="206" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="498" y="450" font-size="17" fill="#D97A2B" text-anchor="middle">已經在用 VS Code</text>
+  <text x="498" y="492" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">GitHub Copilot</text>
+  <text x="498" y="528" font-size="17" fill="#5C6B6B" text-anchor="middle">編輯器擴充</text>
+  <text x="498" y="560" font-size="17" fill="#5C6B6B" text-anchor="middle">個人 GitHub 帳號</text>
+  <text x="498" y="598" font-size="19" font-weight="700" fill="#D97A2B" text-anchor="middle">每月 2,000 次補全</text>
+
+  <rect x="660" y="414" width="280" height="206" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="800" y="450" font-size="17" fill="#0D6B68" text-anchor="middle">終端機＋Google 帳號</text>
+  <text x="800" y="492" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">Gemini CLI</text>
+  <text x="800" y="528" font-size="17" fill="#5C6B6B" text-anchor="middle">終端機代理</text>
+  <text x="800" y="560" font-size="17" fill="#5C6B6B" text-anchor="middle">Google 帳號登入</text>
+  <text x="800" y="598" font-size="19" font-weight="700" fill="#2E7D5B" text-anchor="middle">每天 1,000 次請求</text>
+
+  <rect x="962" y="414" width="280" height="206" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1102" y="450" font-size="17" fill="#0D6B68" text-anchor="middle">終端機＋ChatGPT 帳號</text>
+  <text x="1102" y="492" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">Codex CLI</text>
+  <text x="1102" y="528" font-size="17" fill="#5C6B6B" text-anchor="middle">終端機代理</text>
+  <text x="1102" y="560" font-size="17" fill="#5C6B6B" text-anchor="middle">ChatGPT 帳號</text>
+  <text x="1102" y="598" font-size="19" font-weight="700" fill="#2E7D5B" text-anchor="middle">Free 方案可試</text>
+
+  <rect x="1264" y="414" width="280" height="206" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1404" y="450" font-size="17" fill="#0D6B68" text-anchor="middle">終端機＋已在付費</text>
+  <text x="1404" y="492" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">Claude Code</text>
+  <text x="1404" y="528" font-size="17" fill="#5C6B6B" text-anchor="middle">終端機代理</text>
+  <text x="1404" y="560" font-size="17" fill="#5C6B6B" text-anchor="middle">Anthropic 付費方案</text>
+  <text x="1404" y="598" font-size="19" font-weight="700" fill="#B8442D" text-anchor="middle">Pro 月繳 20 美元</text>
+
+  <rect x="56" y="666" width="1488" height="110" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="712" font-size="20" fill="#102A2B" text-anchor="middle">五個都能在 Windows、macOS 與 Linux 上用；價格是官網美元標價，額度與方案以官網為準。</text>
+  <text x="800" y="750" font-size="19" fill="#B8442D" text-anchor="middle">代理會直接改你電腦上的檔案：第一次請用練習專案，並讓它每一步都先問過你。</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

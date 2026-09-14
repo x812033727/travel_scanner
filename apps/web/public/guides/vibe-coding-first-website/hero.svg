@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">一句話變成一個網址 / From a sentence to a website</title>
+  <desc id="desc">簡單幾何插圖。左邊是一個深綠色邊框的對話框，裡面有四條橫線代表你寫下的需求。一個箭頭指向中間的瀏覽器視窗：視窗上方有三個小圓點與一條分隔線，下方是一條標題色塊、兩張圓角卡片與一條文字線，代表 AI 產生的單頁網站。第二個箭頭指向右邊的地球圖形，圓形加上經緯線，代表這一頁已經放上網、拿到自己的網址。畫面下方有一行標題文字「一句話變成一個網址」。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- prompt bubble -->
+  <path d="M 178 250 H 462 A 28 28 0 0 1 490 278 V 452 A 28 28 0 0 1 462 480 H 286 L 212 552 V 480 H 178 A 28 28 0 0 1 150 452 V 278 A 28 28 0 0 1 178 250 Z" fill="#E3F0EF" stroke="#0D6B68" stroke-width="8" stroke-linejoin="round"/>
+  <rect x="205" y="300" width="250" height="18" rx="9" fill="#0D6B68"/>
+  <rect x="205" y="345" width="210" height="18" rx="9" fill="#0D6B68"/>
+  <rect x="205" y="390" width="240" height="18" rx="9" fill="#0D6B68"/>
+  <rect x="205" y="435" width="150" height="18" rx="9" fill="#D97A2B"/>
+
+  <line x1="520" y1="380" x2="605" y2="380" stroke="#5C6B6B" stroke-width="8" marker-end="url(#arrow)"/>
+
+  <!-- browser window -->
+  <rect x="620" y="230" width="430" height="340" rx="20" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="8"/>
+  <line x1="624" y1="288" x2="1046" y2="288" stroke="#2F6F9F" stroke-width="6"/>
+  <circle cx="662" cy="259" r="10" fill="#2F6F9F"/>
+  <circle cx="696" cy="259" r="10" fill="#2F6F9F"/>
+  <circle cx="730" cy="259" r="10" fill="#2F6F9F"/>
+  <rect x="660" y="322" width="210" height="24" rx="12" fill="#0D6B68"/>
+  <rect x="660" y="374" width="165" height="110" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="5"/>
+  <rect x="845" y="374" width="165" height="110" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="5"/>
+  <rect x="660" y="510" width="350" height="18" rx="9" fill="#C2D4D3"/>
+
+  <line x1="1080" y1="380" x2="1140" y2="380" stroke="#5C6B6B" stroke-width="8" marker-end="url(#arrow)"/>
+
+  <!-- the live site on the internet -->
+  <circle cx="1310" cy="380" r="150" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+  <ellipse cx="1310" cy="380" rx="70" ry="150" fill="none" stroke="#0D6B68" stroke-width="5"/>
+  <line x1="1160" y1="380" x2="1460" y2="380" stroke="#0D6B68" stroke-width="5"/>
+  <line x1="1183" y1="300" x2="1437" y2="300" stroke="#0D6B68" stroke-width="5"/>
+  <line x1="1183" y1="460" x2="1437" y2="460" stroke="#0D6B68" stroke-width="5"/>
+
+  <text x="800" y="730" text-anchor="middle" font-size="56" font-weight="700" fill="#102A2B">一句話變成一個網址</text>
+</svg>
