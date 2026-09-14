@@ -54,8 +54,10 @@ node --test tools/gemini-series.test.mjs
 
 ```text
 node tools/gemini-series.mjs dry-run --python <正式環境 Python>
-node tools/gemini-series.mjs publish --python <正式環境 Python> --actor-email <管理員信箱> --api-origin https://mokaair.com --journal <持久保存的 JSONL 路徑>
+node tools/gemini-series.mjs publish --python <正式環境 Python> --actor-email <管理員信箱> --api-origin http://127.0.0.1:8090 --journal <持久保存的 JSONL 路徑>
 ```
+
+`--api-origin` 指向可匿名讀取指南的 FastAPI 服務；正式站的 `/api/` 由 Next BFF 接收，不能直接假設網站網域會轉送 `/api/v1/guides`。在主機上使用已確認的 localhost API 位址，逐篇比對後仍須另驗公開網站頁面。`reviewed-files.json` 記錄 Git 正規化後的 LF 位元組，應對照 release archive，不對照 Windows 的 CRLF 工作副本。
 
 總目錄和生活分享入口由總目錄的已發布狀態控制。搜尋是互動增強；所有分類及文章連結在伺服器首次輸出的 HTML 中已存在。站內文章使用同一分頁；手機導覽與程式區塊在容器內換行或捲動。
 
