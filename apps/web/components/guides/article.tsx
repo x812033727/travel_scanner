@@ -1,5 +1,6 @@
 import { Fragment, type ReactNode } from "react";
 import { GuideImage } from "./guide-image";
+import { SeriesStart, SeriesEnd } from "./series-navigation";
 import { ArticleAdSlot } from "@/components/ads/article-ad-slot";
 import { ContentBlocks, ImageCreditLine, type ContentBlockLabels } from "@/components/content-blocks";
 import { adsensePlacements, type AdsenseConfig } from "@/lib/adsense";
@@ -53,11 +54,12 @@ export const CONTENTS_MIN_HEADINGS = 3;
  * synchronous and renders directly under React Testing Library.
  */
 export function GuideArticle({
-  state, labels, related, readingTime, adsense,
+  state, labels, related, readingTime, adsense, seriesHub,
 }: {
   state: GuideArticleState & { document: NonNullable<GuideArticleState["document"]> };
   labels: GuideArticleLabels;
   related?: ReactNode;
+  seriesHub?: ReactNode;
   /** Already worded by the page ("about 5 min"); omitted when the page does not want it. */
   readingTime?: string | null;
   /** Disabled, or absent, means no slot AND no reserved space anywhere in the body. */
@@ -169,7 +171,9 @@ export function GuideArticle({
         </p>
       ) : null}
 
-      {headings.length >= CONTENTS_MIN_HEADINGS ? (
+      {state.series?.current ? <SeriesStart series={state.series} locale={state.locale} /> : null}
+      {seriesHub}
+      {headings.length >= CONTENTS_MIN_HEADINGS && !state.series ? (
         <nav aria-label={labels.contents} className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] px-4 py-3">
           <p className="text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">{labels.contents}</p>
           <ol className="mt-2 space-y-1 leading-7">
@@ -181,6 +185,10 @@ export function GuideArticle({
           </ol>
         </nav>
       ) : null}
+      {state.series?.current && headings.length >= CONTENTS_MIN_HEADINGS ? <details className="rounded-2xl border border-[var(--line)] p-4 lg:hidden">
+        <summary className="min-h-11 cursor-pointer font-semibold">{labels.contents}</summary>
+        <ol className="space-y-2">{headings.map(heading => <li key={heading.id}><a className="underline" href={`#${heading.id}`}>{heading.text}</a></li>)}</ol>
+      </details> : null}
 
       {segments.map((segment, index) => {
         const island = islands.find((entry) => entry.segment === segment);
@@ -201,7 +209,7 @@ export function GuideArticle({
                   />
                 ) : null}
                 {piece.blocks.length ? (
-                  <ContentBlocks blocks={piece.blocks} labels={labels.blocks} headingStart={piece.headingStart} />
+                  <ContentBlocks blocks={piece.blocks} labels={labels.blocks} headingStart={piece.headingStart} articleLinks={state.article_links} locale={state.locale} />
                 ) : null}
               </Fragment>
             ))}
@@ -240,6 +248,7 @@ export function GuideArticle({
         />
       ) : null}
 
+      {state.series?.current ? <SeriesEnd series={state.series} locale={state.locale} /> : null}
       {related}
 
       {state.topics.length ? (

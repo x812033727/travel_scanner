@@ -33,7 +33,27 @@ export const calloutTones = ["tip", "warning", "info"] as const;
 export type CalloutTone = typeof calloutTones[number];
 export type CalloutBlock = { type: "callout"; tone: CalloutTone; title?: string; text: string };
 
-export type RichContentBlock = ContentBlock | ImageBlock | TableBlock | CalloutBlock;
+export type InlineNode =
+  | { type: "text" | "code"; text: string }
+  | { type: "link"; text: string; url: string }
+  | { type: "article"; text: string; kind: "life" | "intel" | "howto"; slug: string };
+export type RichParagraphBlock = { type: "rich_paragraph"; inlines: InlineNode[] };
+export const codeLanguages = ["text", "powershell", "bash", "json", "markdown", "html", "css", "javascript", "typescript", "python", "yaml"] as const;
+export type CodeBlock = { type: "code"; label: string; language: typeof codeLanguages[number]; code: string };
+export type RichContentBlock = ContentBlock | ImageBlock | TableBlock | CalloutBlock | RichParagraphBlock | CodeBlock;
+
+export function isInlineNode(value: unknown): value is InlineNode {
+  if (!value || typeof value !== "object") return false;
+  const node = value as Record<string, unknown>;
+  if (typeof node.text !== "string") return false;
+  if (node.type === "text" || node.type === "code") return true;
+  if (node.type === "link") {
+    const href = contentBlockLink(node.url);
+    return href !== null && /^https?:/.test(href);
+  }
+  return node.type === "article" && ["life", "intel", "howto"].includes(String(node.kind))
+    && typeof node.slug === "string" && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(node.slug);
+}
 
 export function contentBlockLink(raw: unknown): string | null {
   if (typeof raw !== "string" || !raw.trim() || /[\s\\\u0000-\u001f\u007f-\u009f]/.test(raw)) return null;
@@ -108,6 +128,9 @@ export function isRichContentBlock(block: unknown): block is RichContentBlock {
   if (isContentBlock(block)) return true;
   if (!block || typeof block !== "object") return false;
   const entry = block as Record<string, unknown>;
+  if (entry.type === "rich_paragraph") return Array.isArray(entry.inlines) && entry.inlines.length > 0 && entry.inlines.every(isInlineNode);
+  if (entry.type === "code") return typeof entry.code === "string" && typeof entry.label === "string"
+    && codeLanguages.includes(entry.language as CodeBlock["language"]);
   if (entry.type === "image") {
     return contentImageSrc(entry.src) !== null && typeof entry.alt === "string"
       && isImageSize(entry.width) && isImageSize(entry.height) && isOptionalText(entry.caption)

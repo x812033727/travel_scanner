@@ -1,0 +1,41 @@
+{
+  "checked_on": "2026-09-14",
+  "web": {
+    "files": 256,
+    "passed": 2778,
+    "failed": 0,
+    "exit_code": 0
+  },
+  "api": {
+    "passed": 163,
+    "skipped": 99,
+    "skip_reason": "optional PostgreSQL test connection not configured"
+  },
+  "tools": {
+    "passed": 36
+  },
+  "browser": {
+    "passed": 7,
+    "additional_filter_case_passed": 1
+  },
+  "content": {
+    "pages": 61,
+    "errors": 0,
+    "warnings": 0
+  },
+  "checks_passed": [
+    "lint:web",
+    "typecheck:web",
+    "check:i18n",
+    "build:web",
+    "ruff check .",
+    "mypy app",
+    "check:tasks",
+    "git diff --check"
+  ],
+  "production": {
+    "deployed": false,
+    "imported": false,
+    "published": false
+  }
+}

@@ -1,0 +1,265 @@
+{
+  "slug": "claude-code-usage-cost-optimization",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 158,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜用量、成本與效率調整",
+      "description": "縮小任務、整理上下文與選擇模型。提升 Claude Code 效率，先減少不必要的工作，再考慮模型與設定。本篇用同一個待辦功能比較任務範圍、上下文與驗證方式，建立一份用量觀察表。你會分清楚訂閱額度、API 費用估計與實際帳務，不用單一數字判斷整個工作是否划算。",
+      "hero": {
+        "src": "/guides/claude-code-usage-cost-optimization/hero.jpg",
+        "alt": "用量、成本與效率調整：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "提升 Claude Code 效率，先減少不必要的工作，再考慮模型與設定。本篇用同一個待辦功能比較任務範圍、上下文與驗證方式，建立一份用量觀察表。你會分清楚訂閱額度、API 費用估計與實際帳務，不用單一數字判斷整個工作是否划算。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先閱讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-accounts-and-access",
+              "text": "帳號與資格"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-models-usage-config",
+              "text": "模型與用量"
+            },
+            {
+              "type": "text",
+              "text": "和"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-context-compact-clear",
+              "text": "上下文整理"
+            },
+            {
+              "type": "text",
+              "text": "。方案、模型名稱、價格與額度會變動，本篇不固定列出金額，執行時以帳號當下可見的官方資料為準。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先確認你在看哪一種用量"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-usage-cost-optimization/diagram-1.svg",
+          "alt": "先確認你在看哪一種用量 → 用一個具體工作作比較 → 控制上下文的品質",
+          "width": 1600,
+          "height": 900,
+          "caption": "先確認你在看哪一種用量 → 用一個具體工作作比較 → 控制上下文的品質",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "訂閱登入通常受到相應方案的使用限制，API 認證則有獨立帳務與用量。對話中顯示的成本估計不一定是最後發票，也不能把訂閱中的估算直接當成額外扣款。先記錄認證方式，再讀取對應的用量頁面。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：查看目前用量資訊",
+          "code": "/usage\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "目前部分舊命令名稱已成為 /usage 的別名，畫面可能整合使用狀態與估算。請記錄實際欄位含義，不只截取一個百分比。組織限制、模型可用範圍與重設時間，也可能影響下一個工作能否啟動。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用一個具體工作作比較"
+        },
+        {
+          "type": "paragraph",
+          "text": "選擇「加入已完成篩選」作為實驗，固定起始提交、驗收條件與測試。第一輪先記錄你原本的提示與結果，第二輪只改進提示或上下文其中一項，才能看出改進來自哪裡。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：縮小一次任務的範圍",
+          "code": "請在目前待辦網站加入已完成篩選。\n先讀取 model.js、app.js、index.html 與相關測試。\n保持新增、切換、刪除與原有儲存行為，使用現有技術。\n完成條件：篩選不刪除原資料，切回全部仍顯示所有項目，相關測試通過。\n不要加入登入、雲端同步、套件或重做整體樣式。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "這份提示把目標、檔案與驗收一次交代清楚，減少來回猜測。它不要求 Claude 先讀整個硬碟或重寫所有程式，也沒有把容易分開的工作綁成巨大任務。若任務需要更多資料，Claude 可指出具體缺口再補讀。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "控制上下文的品質"
+        },
+        {
+          "type": "paragraph",
+          "text": "長對話會累積工具輸出、過時方案與重複資料。使用 /context 了解哪些內容占用空間，再用 /compact 保存仍有用的決策與狀態。壓縮不是刪除所有細節，而是讓下一步能找到目前版本、已做工作與未完成項目。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：整理前先保存交接重點",
+          "code": "請整理目前工作：目標、修改檔案、已確認決策、測試命令與結果、下一步。\n把已放棄的方案清楚標示，不當成接下來要執行的要求。\n不要把未執行的驗證寫成通過。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "對長期有效的專案規則，放進精簡的 CLAUDE.md；對可重用流程，使用 Skill。不要把每次聊天的完整逐字稿塞入規則，否則每次啟動都讀取大量已過時內容。自動記憶也應定期核對，移除錯誤或不再適用的資訊。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "模型選擇跟著工作難度"
+        },
+        {
+          "type": "paragraph",
+          "text": "使用 /model 查看帳號目前允許的選項。簡單說明、局部修正與架構決策需要的能力不同，可以用同一驗收任務比較模型的完成品質與重試次數。較快的單次回覆如果造成大量返工，總成本未必更低。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要只比較生成速度。記錄從提出需求到測試與畫面驗證完成的總時間，包含你閱讀差異與修正錯誤的時間。模型建議也應以具體工作證據為依據，不用「永遠選最大」或「永遠選最便宜」作為通用規則。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "減少工具與並行的浪費"
+        },
+        {
+          "type": "paragraph",
+          "text": "先執行受影響的測試，再依變更範圍擴大。若測試已通過且沒有新修改，不必為了多一份紀錄反覆跑完全相同的檢查。工具輸出過長時，保存原始紀錄並只讀取相關段落，避免同一份巨大 log 被多次塞回上下文。"
+        },
+        {
+          "type": "paragraph",
+          "text": "多代理、Agent Teams、排程與背景工作都會增加模型與工具使用。先確認每個角色能獨立推進，再分派；完成後正常停止。把同一個小問題交給多位代理並要求頻繁狀態更新，可能花更多時間在整合，而沒有更多有效證據。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "建立簡單觀察表"
+        },
+        {
+          "type": "table",
+          "header": [
+            "欄位",
+            "要記錄什麼",
+            "比較用途"
+          ],
+          "rows": [
+            [
+              "任務與起始版本",
+              "相同需求與提交",
+              "避免比較不同難度工作"
+            ],
+            [
+              "認證與模型",
+              "訂閱或 API、實際模型",
+              "正確理解用量來源"
+            ],
+            [
+              "時間與重試",
+              "到驗收完成的總時間",
+              "包含返工成本"
+            ],
+            [
+              "上下文與工具",
+              "主要輸入、工具次數",
+              "找出重複讀取"
+            ],
+            [
+              "驗證結果",
+              "測試與畫面是否通過",
+              "品質不能只看回覆速度"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "不要把觀察表當成精確帳務計算器。API 實際費用、快取、不同模型與組織設定可能影響結果；需要核帳時，使用官方帳務資料。這份表主要幫你找出可改善的工作方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "比較不同提示時，盡量使用相同起始版本與獨立工作副本，避免第二輪直接受益於第一輪已完成的修改。若保留舊對話，模型也可能已知道答案，應在紀錄中註明這個差異，不能把它全部歸功於新提示。"
+        },
+        {
+          "type": "paragraph",
+          "text": "對很慢的工作先分段計時：讀取與理解、模型回應、測試執行、瀏覽器驗證。若大部分時間花在安裝依賴或外部服務等待，換模型未必有明顯幫助；改善快取、縮小測試或修正環境才可能解決主要瓶頸。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後保留一個品質門檻，例如相關測試通過且核心畫面操作正常。任何節省時間的方法都要在這個門檻下比較，否則只是減少驗證而不是提高完成工作的效率。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見誤區與小練習"
+        },
+        {
+          "type": "paragraph",
+          "text": "額度不足時，先確認重設時間與認證方式，不要盲目切換到可能另外計費的 API。對話太長時也不要直接 /clear 丟掉尚未保存的決策，先整理交接與確認檔案狀態。速度慢則分辨模型等待、工具執行與外部服務延遲。"
+        },
+        {
+          "type": "paragraph",
+          "text": "小練習是固定同一個功能，改善提示範圍後比較完成時間、重試與驗收結果。完成判準是找到一項有證據的改進，例如少讀不相關目錄、減少一次返工或更快定位失敗，而不是只得到「感覺比較快」。保留可重用的提示與規則，移除沒有收益的自動化。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Manage costs effectively",
+          "url": "https://code.claude.com/docs/en/costs",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Explore the context window",
+          "url": "https://code.claude.com/docs/en/context-window",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

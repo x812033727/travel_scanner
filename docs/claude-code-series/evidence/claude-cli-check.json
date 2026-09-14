@@ -1,0 +1,36 @@
+{
+  "checked_on": "2026-09-14",
+  "platform": "Windows",
+  "version_output": "2.1.233 (Claude Code)",
+  "commands_executed": [
+    "claude --version",
+    "claude --help"
+  ],
+  "both_exit_codes": 0,
+  "captured_output_sha256": "0b134935392ae5c9ac493345c2baa77475ff42add25feeb66aca654f7fa6be69",
+  "flags_found": {
+    "--add-dir": true,
+    "--agent": true,
+    "--agents": true,
+    "--chrome": true,
+    "--cloud": true,
+    "--continue": true,
+    "--json-schema": true,
+    "--model": true,
+    "--output-format": true,
+    "--permission-mode": true,
+    "--print": true,
+    "--remote-control": true,
+    "--resume": true,
+    "--settings": true,
+    "--teleport": true,
+    "--worktree": true
+  },
+  "subcommands_found": {
+    "agents": true,
+    "doctor": true,
+    "mcp": true,
+    "plugin": true
+  },
+  "verification_scope": "Version and help parsing only; no authentication, agent run, project mutation, remote service operation or paid request."
+}
