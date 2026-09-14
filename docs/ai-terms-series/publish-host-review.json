@@ -1,0 +1,116 @@
+{
+  "reviewer": "engineering_foundations",
+  "reviewed_at": "2026-09-14",
+  "verdict": "code_review_and_mock_passed_no_host_execution",
+  "file": "docs/ai-terms-series/publish_host.py",
+  "initial_sha256": "22f53ca36c0adb4b1644e3daae4a997b4a2f1059263198e8780aca791d1bdfcb",
+  "reviewed_sha256": "ca5c89824e32b91219049c8363016891cca30dcea39f232be3e424a53617f5bc",
+  "scope": "初始唯讀接線審查；root 後續明確授權修正三項問題並執行 AST/mock。只修改 publish_host.py 與本報告，未呼叫 SSH、Docker 或正式資料庫。",
+  "findings": [
+    {
+      "id": "PH-01",
+      "priority": "P1",
+      "title": "Compose client 逾時退出不能證明伺服器端 publisher 已停止",
+      "initial_location": "publish_host.py:39-43、86-98",
+      "status": "resolved_with_verified_target_cleanup",
+      "evidence": "原本 subprocess.run 逾時只終止直接子程序；未命名一次性容器，也沒有例外清理。Docker --rm 是在容器退出時移除，不能拿它當成 client 結束即停止容器的保證。",
+      "resolution": "一次性容器有固定 release/phase 名稱及 manifest SHA256 label；啟動前拒絕同名既有容器。run、輸出解析或結果檢查失敗時，在 host flock handles 仍持有期間，依名稱找到容器，核對不可變映像 ID、manifest label、完整名稱，再只以該容器 ID stop；必要時 kill，重新核對同一 ID 與停止狀態。保留 durable journal，讓 batch reconcile 不確定提交。",
+      "mock_evidence": [
+        "正常 running publisher 只對已核對 ID 發出 stop，之後確認不存在。",
+        "stop timeout 時只對同一 ID 發出 kill，再確認不存在。",
+        "錯誤 image 或 label：零 stop/kill 操作。",
+        "stop 後容器 ID 被替換：拒絕，不 kill 替代容器。",
+        "stop/kill 後仍 running：明確報 manual intervention，不宣稱停止。",
+        "容器不存在或已停止：不發送破壞性命令。"
+      ],
+      "operational_limit": "若 Docker 本身無法檢查或停止 publisher，腳本會失敗而不是聲稱成功；操作人必須先解決該 one-off，再進行部署或發布。不可把 cleanup 失敗後的 host 程序退出當成 publisher 已停止。SIGKILL、主機故障等不可捕捉中斷也仍需要重新檢查固定容器名稱與 journal。",
+      "sources": [
+        "https://docs.python.org/3/library/subprocess.html#subprocess.run",
+        "https://docs.docker.com/reference/cli/docker/compose/run/"
+      ]
+    },
+    {
+      "id": "PH-02",
+      "priority": "P1",
+      "title": "檢查及備份可能與 publisher 使用不同 Docker 環境",
+      "initial_location": "publish_host.py:39-41、59-62、76、84-95",
+      "status": "resolved",
+      "evidence": "原版只有 compose run 傳受控 env，docker inspect、pg_restore 與直接 subprocess 的 pg_dump 都繼承 shell。DOCKER_HOST/DOCKER_CONTEXT 可讓這些命令指向與 compose 不同的 daemon。",
+      "resolution": "提前建立唯一 environment，只含 PATH、固定 HOME、RELEASE_SHA、RUNTIME_ENV_FILE。run 的所有呼叫及直接 pg_dump subprocess 都使用該 environment，清除 shell 的 DOCKER_HOST、DOCKER_CONTEXT 與應用變數。",
+      "mock_evidence": "對實際 run AST 注入 shell 的錯誤 Docker endpoint 與 DATABASE_URL，三類 Docker 呼叫全部收到同一組受控鍵；亦檢查檔內每個直接 subprocess.run 都明確傳 environment。"
+    },
+    {
+      "id": "PH-03",
+      "priority": "P2",
+      "title": "已存在的 journal 目錄沒有重新收緊權限",
+      "initial_location": "publish_host.py:65-67",
+      "status": "resolved",
+      "evidence": "mkdir(mode=0700, exist_ok=True) 不會修正既有目錄的 mode。原本只重新 chown。",
+      "resolution": "每次明確 chown 10001:10001 後 chmod 0700。journal 以主機 bind mount 保存，沒有 docker cp 或容器刪除即遺失的狀態。",
+      "mock_evidence": "AST 確認 state_dir 必定執行 os.chmod(..., 0700)；本次未在主機實際 chown/chmod。"
+    }
+  ],
+  "reviewed_invariants": [
+    {
+      "area": "現行 release SHA、env、image",
+      "result": "通過程式檢查：完整 TARGET、已 activated 且無 failed_at、主機 HEAD 等於 TARGET、原 .env 與0600 runtime 副本 hash 一致、manifest bytes hash 一致、release.after 每項服務 running/image/env_hash 一致，以及 publisher tag 的 immutable image ID 等於已部署 API。不是只用 tag 名稱當版本證明。"
+    },
+    {
+      "area": "常駐八項服務",
+      "result": "正常路徑只 compose run --rm --no-deps -T api，沒有 up/restart/down，也沒有 --service-ports；會產生獨立容器而不替換 API，且不啟動 migrate、postgres 或其他依賴。例外路徑僅 stop/kill 經名稱、映像、label、ID 核對的 one-off；固定名稱與常駐服務命名不同。",
+      "limit": "這是命令與 mock 證據；沒有實際主機容器 ID/restart count 前後量測，不能宣稱完成 live 無重啟驗證。"
+    },
+    {
+      "area": "持久 journal 與唯讀來源",
+      "result": "state_dir 在 release BASE 下由 host 保存，0700、owner10001:10001，對應 API Dockerfile 的 USER 10001:10001；掛至 /publication-state 可寫。/batch 與 /public bind 為 ro，並將精確 manifest SHA 傳給已審 publish_batch。BASE 在 release prepare 已設為私有目錄；read-only mount 不依賴容器存活保存 journal。"
+    },
+    {
+      "area": "第一個 drafts 前備份",
+      "result": "只有 drafts 會建立 prepublish.dump，且在執行一次性 publisher 前先以 xb 排他建立 pg_dump -Fc、檢查成功/非空、pg_restore --list、保存 bytes/hash/index_verified receipt。重跑若有 receipt 先比對原備份 hash；不會覆寫既有備份。失敗留下未完成 dump 或 receipt 時會停止，需要檢查，沒有直接跨過備份繼續。",
+      "limit": "pg_restore --list 是 archive 目錄可讀取檢查，不是完整還原演練。未在此審查實際備份。"
+    },
+    {
+      "area": "階段不越界",
+      "result": "host 只接受四個白名單 phase，單次只把該 phase 原樣傳給 publish_batch。完整 dry-run/drafts/82篇發布/index單篇的順序與未知提交 reconciliation 由已審 publish_batch 的 durable journal 強制執行。host 不自動切至下一階段、不對全部文章做隱性 publish。"
+    },
+    {
+      "area": "Python 及 app 匯入接線",
+      "result": "API Dockerfile 以 uv sync 安裝 app package，pyproject 的 hatch wheel packages=[app]，PATH 指向 /app/.venv/bin。執行 /batch/publish_batch.py 能使用同一 API 映像的 app 模組與 content；不是只仰賴 script directory 恰好等於 /app。"
+    }
+  ],
+  "validation": {
+    "syntax_compile": "passed without executing the host driver",
+    "ruff_selected_checks": "passed (E9,F63,F7,F82)",
+    "ast_and_mock": "passed",
+    "mock_cases": 8,
+    "actual_docker_or_ssh_calls": 0,
+    "production_writes": 0,
+    "mock_scope": "選出實際函式/命令 AST，所有 Path、os、subprocess、Docker 查詢及狀態均由記憶體替代；未執行頂層 lock、備份或容器動作。",
+    "additional_probes": {
+      "exact_name_lookup_ignores_substrings": true,
+      "outer_exception_path": {
+        "timeout": {
+          "outcome": "TimeoutExpired",
+          "cleanup_calls": 1
+        },
+        "bad_json": {
+          "outcome": "JSONDecodeError",
+          "cleanup_calls": 1
+        },
+        "wrong_phase": {
+          "outcome": "RuntimeError",
+          "cleanup_calls": 1
+        },
+        "success": {
+          "outcome": "accepted",
+          "cleanup_calls": 0
+        }
+      }
+    }
+  },
+  "primary_sources_read": [
+    "https://docs.docker.com/reference/cli/docker/compose/run/",
+    "https://docs.python.org/3/library/subprocess.html#subprocess.run"
+  ],
+  "final_boundary": "三項問題已修正並經本機 mock；正式執行、備份、發布、公開頁面驗證仍未進行。"
+}

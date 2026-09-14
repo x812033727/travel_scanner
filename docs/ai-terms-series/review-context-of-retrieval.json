@@ -1,0 +1,284 @@
+{
+  "reviewer": "context_agents",
+  "reviewed_on": "2026-09-14",
+  "scope": "retrieval_training 27 篇，IDs 41–61、69–71、79–81；全文、表格、提示框與 research 主張映射，唯讀審稿。",
+  "method": "全部正文與研究記錄完整閱讀；選擇性重新開啟主要來源核對疑點，未聲稱逐一重新訪問所有作者來源，也未執行文中的示範實驗。修正狀態以目前 staging 檔案再次讀取核對。",
+  "personally_rechecked_sources": [
+    {
+      "url": "https://docs.langchain.com/oss/python/deepagents/retrieval",
+      "check": "RAG 兩階段、代理查詢、檢索與生成的適用範圍"
+    },
+    {
+      "url": "https://microsoft.github.io/graphrag/query/local_search/",
+      "check": "局部搜尋結合知識圖結構與原始文字"
+    },
+    {
+      "url": "https://opensource.org/ai/open-source-ai-definition",
+      "check": "OSI 1.0 資料資訊、程式碼、參數要求及個別 weights 定義"
+    },
+    {
+      "url": "https://arxiv.org/html/1606.07947",
+      "check": "§3.2 教師生成序列與學生監督學習"
+    },
+    {
+      "url": "https://spec.c2pa.org/specifications/specifications/2.2/explainer/Explainer.html",
+      "check": "來源歷程不必完整，簽署不等於真偽判斷，浮水印/指紋軟綁定"
+    }
+  ],
+  "summary": {
+    "articles": 27,
+    "major_concept_errors": 0,
+    "fabricated_experiments_found": 0,
+    "source_gap_resolved": 1,
+    "remaining_editorial_notes": 1,
+    "near_synonym_review": "RAG/Agentic RAG/GraphRAG、Embedding/語意/混合/重排、預訓練/微調/SFT/RLHF/DPO/LoRA、推理模型/推論時計算、Open Weights/Open Source 的文章重點有實質區分。重排篇僅有同篇截斷提醒重述。"
+  },
+  "articles": [
+    {
+      "slug": "ai-term-retrieval-augmented-generation",
+      "verdict": "pass",
+      "findings": [],
+      "rationale": "全文區分原論文訓練架構與現代應用管線、檢索與解讀、資料日期與權限；退費案例明確為虛構，未提供真實法律結論。來源主張映射合理。"
+    },
+    {
+      "slug": "ai-term-agentic-rag",
+      "verdict": "pass",
+      "findings": [],
+      "rationale": "把 Agentic RAG 限定為可操作的官方教學用法，與 Self-RAG 特定訓練方法分開；補查條件、相關性與充分性、停止與失敗狀態均準確，例子未宣稱實測。"
+    },
+    {
+      "slug": "ai-term-graph-rag",
+      "verdict": "pass_after_revision",
+      "findings": [
+        {
+          "severity": "low",
+          "issue": "區域性搜尋／區域性回應為轉換器用詞，建議局部搜尋／局部回應，與全域對應較自然。",
+          "status": "fixed",
+          "verification": "已重新讀取 staging pack，原問題用語已修正。"
+        }
+      ],
+      "rationale": "正確限定 Microsoft GraphRAG、實體關係、社群摘要與局部/全域查詢，明確排除圖連線等於因果及摘要等於精確統計。"
+    },
+    {
+      "slug": "ai-term-embedding",
+      "verdict": "pass",
+      "findings": [],
+      "rationale": "區分表示產生、相似度與應用判斷；未將維度視為可直接命名語意，強調向量空間相容、否定與精確識別的限制。Sentence-BERT 與官方相似度文件映射合理。"
+    },
+    {
+      "slug": "ai-term-vector-database",
+      "verdict": "pass",
+      "findings": [],
+      "rationale": "資料庫、索引、向量欄位區分清楚；精確近鄰不等於語意正確，近似篩選順序明確限於 pgvector，版本更新與權限未做普遍保證。"
+    },
+    {
+      "slug": "ai-term-semantic-search",
+      "verdict": "pass_after_revision",
+      "findings": [
+        {
+          "severity": "low",
+          "issue": "適用物件指使用者類別，建議還原為適用對象。",
+          "status": "fixed",
+          "verification": "已重新讀取 staging pack，原問題用語已修正。"
+        }
+      ],
+      "rationale": "不把全文搜尋簡化成逐字匹配，正確區分對稱/非對稱檢索、相關分數與正確機率、檢索與即時帳號狀態。"
+    },
+    {
+      "slug": "ai-term-hybrid-search",
+      "verdict": "pass_after_revision",
+      "findings": [
+        {
+          "severity": "low",
+          "issue": "共同支援相關候選宜改共同提供相關候選；callout 的排名連線訊號宜改融合訊號。",
+          "status": "fixed",
+          "verification": "已重新讀取 staging pack，原問題用語已修正。"
+        },
+        {
+          "severity": "low",
+          "status": "fixed",
+          "issue": "description 仍寫 RRF 用名次連線不同分數系統，建議以融合不同搜尋結果表達。",
+          "verification": "已重新讀取 staging description，現為用名次融合不同搜尋結果。"
+        }
+      ],
+      "rationale": "RRF 以排名融合異尺度結果的機制正確，原候選邊界、去重、混合與重排分工清楚，無通用提升保證。"
+    },
+    {
+      "slug": "ai-term-reranking",
+      "verdict": "pass_with_editorial_note",
+      "findings": [
+        {
+          "severity": "low",
+          "issue": "末段新補的輸入截斷檢查與前文過長文件段重複，可刪末尾重述並重算字數；適用物件宜改對象。",
+          "status": "partially_fixed",
+          "verification": "適用物件已更正；末段輸入截斷與前文仍重複，屬可選精簡，尚未修。"
+        }
+      ],
+      "rationale": "雙編碼器與交叉編碼器、候選召回與排序品質分開，對模型分數、資料充分性與無答案題的限制準確。"
+    },
+    {
+      "slug": "ai-term-chunking",
+      "verdict": "pass",
+      "findings": [],
+      "rationale": "分塊大小、結構、重疊與取回粒度的取捨準確，token 與字數有分開；廚房例外與表格解析案例具體，沒有固定最佳長度宣稱。"
+    },
+    {
+      "slug": "ai-term-knowledge-graph",
+      "verdict": "pass",
+      "findings": [],
+      "rationale": "RDF 與屬性圖有來源限定；身分消歧、關係類型/方向/時間、來源撤回均清楚，與 GraphRAG 的生成架構層次不同。"
+    },
+    {
+      "slug": "ai-term-pretraining",
+      "verdict": "pass_after_revision",
+      "findings": [
+        {
+          "severity": "low",
+          "issue": "人類意圖示籤疑為誤轉，應是人類意圖標籤。",
+          "status": "fixed",
+          "verification": "已重新讀取 staging pack，原問題用語已修正。"
+        }
+      ],
+      "rationale": "因果與遮罩目標、自我監督、參數更新與當次上下文區分正確；資料涵蓋、污染、後訓練與資料政策界線均有交代。"
+    },
+    {
+      "slug": "ai-term-fine-tuning",
+      "verdict": "pass",
+      "findings": [],
+      "rationale": "訓練目標與更新方式分成正交選項，SFT/LoRA 可組合；分類示例含混合需求、泛化/資料洩漏及部署相容，微調與即時事實管道分開。"
+    },
+    {
+      "slug": "ai-term-supervised-fine-tuning",
+      "verdict": "pass",
+      "findings": [],
+      "rationale": "示範監督、角色模板與 loss mask 取決於資料/模板支援的說法準確；未指定日期保持未知，與 few-shot、LoRA、偏好學習區分明確。"
+    },
+    {
+      "slug": "ai-term-rlhf",
+      "verdict": "pass_after_revision",
+      "findings": [
+        {
+          "severity": "low",
+          "issue": "很多工應改很多工作；論文字身應改論文本身。",
+          "status": "fixed",
+          "verification": "已重新讀取 staging pack，原問題用語已修正。"
+        }
+      ],
+      "rationale": "明確限定 InstructGPT 典型路徑而非唯一配方，PPO 不等同 RLHF；獎勵代理指標、偏好群體及即時按讚不更新參數的界線正確。"
+    },
+    {
+      "slug": "ai-term-direct-preference-optimization",
+      "verdict": "pass_after_revision",
+      "findings": [
+        {
+          "severity": "low",
+          "issue": "推匯出直接最佳化方式應改推導出直接最佳化方式。",
+          "status": "fixed",
+          "verification": "已重新讀取 staging pack，原問題用語已修正。"
+        }
+      ],
+      "rationale": "參考策略、偏好配對與序列機率的相對目標有準確範圍；不混用 DPOTrainer 變體理論，不宣稱較佳回答等於完美或 DPO 普遍優於 RLHF。"
+    },
+    {
+      "slug": "ai-term-lora",
+      "verdict": "pass_after_revision",
+      "findings": [
+        {
+          "severity": "low",
+          "issue": "文件尺寸與 LoRA 文件在此指 adapter 檔，宜改檔案大小、LoRA 檔案。",
+          "status": "fixed",
+          "verification": "已重新讀取 staging pack，原問題用語已修正。"
+        }
+      ],
+      "rationale": "低秩增量、凍結基礎、相容版本與合併條件有界線；SFT 為目標而 LoRA 為更新方式，QLoRA 與 LoRA/量化分開，未保證零部署成本。"
+    },
+    {
+      "slug": "ai-term-knowledge-distillation",
+      "verdict": "pass_after_revision",
+      "findings": [
+        {
+          "severity": "medium",
+          "issue": "正文延伸到教師生成回答後做 SFT 的序列層級蒸餾，目前 research 只列 Hinton 分布蒸餾與 PyTorch 分類/隱藏表示教學。建議補 Kim & Rush 原始 Sequence-Level Knowledge Distillation，讓此重要延伸有直接主要來源。",
+          "suggested_source": "https://arxiv.org/abs/1606.07947",
+          "status": "fixed",
+          "verification": "pack 與 research 已補 Kim、Rush 原始論文；審稿者另以 web 閱讀 HTML §3.2，確認教師生成序列作監督目標。"
+        }
+      ],
+      "rationale": "教師學生關係、soft targets、溫度與蒸餾範圍、教師錯誤及學生獨立評估的概念正確；資料來源範圍需補強序列生成部分。"
+    },
+    {
+      "slug": "ai-term-quantization",
+      "verdict": "pass_after_revision",
+      "findings": [
+        {
+          "severity": "low",
+          "issue": "啟用值是 activation 的誤譯，建議活化值並於首次加 activation，避免理解成啟用功能。",
+          "status": "fixed",
+          "verification": "已重新讀取 staging pack，原問題用語已修正。"
+        }
+      ],
+      "rationale": "權重/中間值/快取、PTQ/QAT、校準與引擎支援分開；檔案、峰值記憶體與速度不混算，與LoRA/蒸餾互補關係正確。"
+    },
+    {
+      "slug": "ai-reasoning-models-explained",
+      "verdict": "pass",
+      "findings": [],
+      "rationale": "沒有統一認證式定義，訓練/推論/檢索三方面分清；Google摘要明確非完整內部計算，排程使用可見限制驗收，重寫保留舊slug且無舊價格比較。"
+    },
+    {
+      "slug": "ai-term-test-time-compute",
+      "verdict": "pass_after_revision",
+      "findings": [
+        {
+          "severity": "low",
+          "issue": "限製造成衝突應改限制造成衝突。",
+          "status": "fixed",
+          "verification": "已重新讀取 staging pack，原問題用語已修正。"
+        }
+      ],
+      "rationale": "順序修正、平行候選與驗證的資源分工準確；難度估計成本、延遲/總計算及無解停止有範圍，與推理模型篇重點不同。"
+    },
+    {
+      "slug": "ai-term-prompt-caching",
+      "verdict": "pass",
+      "findings": [],
+      "rationale": "共享字首 prefill 與新 token decoding、答案快取/記憶/壓縮區分完整；命中條件和隔離依服務而異，未宣稱快取必然省費或等於永久學習。"
+    },
+    {
+      "slug": "ai-term-sandbox",
+      "verdict": "pass",
+      "findings": [],
+      "rationale": "明確為模型外的系統限制，容器/虛擬機/gVisor 不等同沙盒保證；已授權資源、外部工具影響及產物驗證界線準確，測試僅為無敏感的防守驗證設計。"
+    },
+    {
+      "slug": "ai-term-human-in-the-loop",
+      "verdict": "pass",
+      "findings": [],
+      "rationale": "人的角色、具體版本授權、暫停/恢復副作用及執行結果分清；即時介入與事後抽查、HITL 與 RLHF 不混同，未把無回覆視為批准。"
+    },
+    {
+      "slug": "ai-term-red-teaming",
+      "verdict": "pass",
+      "findings": [],
+      "rationale": "模型與完整系統、嘗試/拒絕/實際外洩、發現/修補/回歸驗證/部署狀態分清；攻擊成功率有測試分母界線，防守案例明確為原創測試設計，沒有安全百分之百或實測宣稱。"
+    },
+    {
+      "slug": "ai-term-open-weights",
+      "verdict": "pass",
+      "findings": [],
+      "rationale": "常用開放權重用語與 OSI 正式 Open Source weights 定義分清；下載能力不等於授權自由，模型/分詞器/執行器相容及本機網路行為有交代，重現推論不等於重現訓練。"
+    },
+    {
+      "slug": "ai-term-open-source-ai",
+      "verdict": "pass",
+      "findings": [],
+      "rationale": "明確限定 OSI 1.0，四項自由與資料資訊/程式碼/參數三部分準確；未誤稱必須公開全部原始資料，也未把 OLMo 例子寫成官方認證或完全位元重現保證。"
+    },
+    {
+      "slug": "ai-term-content-credentials",
+      "verdict": "pass",
+      "findings": [],
+      "rationale": "簽署、內容綁定、信任與現實真偽分清；沒有憑證不等於偽造，來源歷程可不完整，軟綁定不等於任意浮水印；例子未冒稱實際驗證或通用支援。"
+    }
+  ]
+}

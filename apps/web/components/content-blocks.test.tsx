@@ -258,6 +258,19 @@ describe("rendering the rich blocks", () => {
     expect(note.textContent).toContain("23:30 之後只剩計程車。");
   });
 
+  it("keeps every column readable in a wide table without inheriting arbitrary character breaks", () => {
+    render(<ContentBlocks blocks={[{
+      type: "table", header: ["方案", "價格", "休館日", "注意事項", "來源"],
+      rows: [["交通方案", "3,000 韓元", "星期一", "請確認當日時間", "官方"]],
+    }]} />);
+    const table = screen.getByRole("table");
+    expect(table.className).toContain("[overflow-wrap:normal]");
+    expect(table.parentElement!.className).toContain("overflow-x-auto");
+    for (const cell of [...screen.getAllByRole("columnheader"), ...screen.getAllByRole("cell")]) {
+      expect(cell.className).toContain("min-w-28");
+    }
+  });
+
   it("numbers level-2 headings from the start it is given, so sliced bodies keep one sequence", () => {
     render(<ContentBlocks blocks={blocks} labels={labels} headingStart={2} />);
     const headings = screen.getAllByRole("heading", { level: 2 });

@@ -1,14 +1,14 @@
 ---
 id: 2026-09-14-guide-tables-squeezed-on-phones
 title: 文章表格在手機上把每一欄擠到兩三個字寬
-status: open
+status: in-progress
 priority: P2
 area: web
-owner:
-claimed_at:
+owner: codex-ai-terms
+claimed_at: 2026-09-14T05:51:01Z
 created_at: 2026-09-14T00:49:21Z
 completed_at:
-branch:
+branch: codex/ai-terms-series
 depends_on: []
 scope:
   - apps/web/components/content-blocks.tsx
@@ -52,6 +52,17 @@ scope:
 `document.documentElement.scrollWidth === innerWidth`，表格可以在框內左右滑。
 
 ## Notes
+
+- 2026-09-14 codex-ai-terms: Set minimum cell width to 7rem and table overflow-wrap
+  to normal, preserving the existing scroll container and desktop full width.
+  Related tests: 87 passed across ContentBlocks and GuideArticle. Production
+  build, ESLint, i18n and tools checks passed. Offline rendering of the real
+  ContentBlocks with compiled production CSS at 375px measured five/six-column
+  cells at 112px with page scrollWidth exactly 375px; at desktop tables fit the
+  728px article body. Screenshots inspected for Bangkok transit, AI model tiers,
+  Loop Engineering, index and quick reference. Receipt:
+  docs/ai-terms-series/table-layout-regression.json. Live verification remains
+  part of the full-series release.
 
 - 本機不必起 Postgres：第五批用過的 mock API 讀 `apps/api/app/guides/content` 當已發布文章，見
   `tasks/done/2026-09-13-launch-articles-batch-5-twenty-more.md` 的 Notes。

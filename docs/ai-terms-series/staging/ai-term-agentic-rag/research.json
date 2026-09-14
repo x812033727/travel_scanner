@@ -1,0 +1,29 @@
+{
+  "slug": "ai-term-agentic-rag",
+  "status": "verified",
+  "checked_on": "2026-09-14",
+  "sources": [
+    {
+      "title": "LangGraph：Build a custom RAG agent",
+      "url": "https://docs.langchain.com/oss/python/langgraph/agentic-rag",
+      "access": "web open; term researched with web search",
+      "claims": [
+        "模型決定是否使用檢索工具",
+        "文件評分與問題改寫的範例流程"
+      ]
+    },
+    {
+      "title": "Asai 等：Self-RAG",
+      "url": "https://arxiv.org/abs/2310.11511",
+      "access": "web open; term researched with web search",
+      "claims": [
+        "按需檢索與反思 token 為特定訓練方法",
+        "固定取回文件未必有益"
+      ]
+    }
+  ],
+  "aliases": [],
+  "existing_overlap": "New term article; adjacent concepts linked and differentiated.",
+  "running_text_characters": 1819,
+  "notes": "Agentic RAG definition is explicitly scoped to LangGraph tutorial. Self-RAG is a related research contrast, not a synonym. LlamaIndex old tutorial redirected to a generic landing page and is not used as evidence."
+}
