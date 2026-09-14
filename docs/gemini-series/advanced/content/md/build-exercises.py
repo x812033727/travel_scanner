@@ -163,6 +163,9 @@ SOFTWARE.
     for number in range(69, 75):
         folder = EXAMPLES / str(number)
         put(f"{number}/LICENSE.txt", license_text)
+        if number == 73:
+            for name in ("native-cli-followup-20260914.json", "native-cli-powershell-20260914.json", "native-followup.md"):
+                put(f"{number}/{name}", (HERE / "verification" / name).read_text(encoding="utf-8"))
         if (HERE / "verification/native-cli-limitations.json").exists():
             put(f"{number}/native-cli-limitations.json", (HERE / "verification/native-cli-limitations.json").read_text(encoding="utf-8"))
         with zipfile.ZipFile(EXAMPLES / f"lesson-{number}.zip", "w", zipfile.ZIP_DEFLATED) as archive:
@@ -172,7 +175,10 @@ SOFTWARE.
                     info.compress_type = zipfile.ZIP_DEFLATED
                     archive.writestr(info, file.read_bytes())
     with zipfile.ZipFile(EXAMPLES / "md-verification.zip", "w", zipfile.ZIP_DEFLATED) as archive:
-        files = [(HERE / "verify-cli.mjs", "verify-cli.mjs"), (HERE / "verification/README.md", "README.md")]
+        files = [(HERE / "verify-cli.mjs", "verify-cli.mjs"), (HERE / "verification/README.md", "README.md"),
+                 (HERE / "verify-native.py", "verify-native.py")]
+        files += [(HERE / "verification" / name, "verification/" + name) for name in
+                  ("native-cli-followup-20260914.json", "native-cli-powershell-20260914.json", "native-followup.md")]
         files += [(file, "examples/" + str(file.relative_to(EXAMPLES)).replace("\\", "/"))
                   for number in range(69, 75) for file in sorted((EXAMPLES / str(number)).rglob("*")) if file.is_file()]
         for file, name in files:

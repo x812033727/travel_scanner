@@ -16,7 +16,7 @@ node verify-cli.mjs "你的 @google/gemini-cli 套件資料夾絕對路徑"
 
 以下仍未通過完整驗收，不能用本地 PASS 取代：
 
-- Windows 終端 `gemini extensions` 曾顯示成功後以 libuv 斷言異常退出；見各包 native-cli-limitations.json。ExtensionManager 模組生命週期通過，終端入口仍須複驗。
+- Windows／Node 24 的 `gemini extensions` 仍會在成功訊息後異常退出。追加測試已驗 Node 22.23.2 的原 CLI 與 PowerShell gemini.cmd 入口各十四步，見 native-followup.md（綜合 ZIP 內為 verification/native-followup.md）。原有 JSON 保存當時限制，不抹除失敗紀錄。
 - 模型是否遵循指示、三個命令的回答品質、是否實際觸發技能，尚未進行雲端對話測試。
 - 已登入會話的 `/resume` 與壓縮流程尚未實測。
 - macOS／Linux 執行與不同 CLI 版本的升級比較尚未實測。
