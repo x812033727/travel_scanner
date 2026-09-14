@@ -1,0 +1,304 @@
+{
+  "slug": "claude-mcp-explained",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "MCP 是什麼：讓 Claude 連上你的檔案、日曆與資料庫",
+      "description": "MCP（Model Context Protocol）是讓 AI 應用連上外部系統的開放標準，官網比喻成 AI 應用的 USB-C 接頭。這篇講你、Claude、MCP 伺服器三個角色在一次往返裡各做什麼，依 2026 年 9 月官方文件說明在 Claude 裡怎麼加連接器與桌面版擴充功能、遠端與本機怎麼選，並用讀資料夾與查行事曆兩個示範帶出授權畫面該看哪幾行。",
+      "hero": {
+        "src": "/guides/claude-mcp-explained/hero.jpg",
+        "alt": "自繪插圖：一個對話泡泡用一條線接上資料夾、日曆與資料庫三個方塊，代表 MCP 是讓 AI 連上自己資料的共通接頭",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "MCP 是 Model Context Protocol 的縮寫，一個讓 AI 應用連上外部系統的開放標準，官網的比喻是 AI 應用的 USB-C 接頭：一種接法就接上你的檔案、日曆與資料庫。在 Claude 裡它通常不叫 MCP，而叫「連接器」與「桌面版擴充功能」。點幾下、登入一次、按下同意，Claude 就多了一組能讀你的資料、能替你動手的工具。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇講三件事：MCP 到底做了什麼、在 Claude 的哪裡加、授權畫面該看哪幾行，示範用讀一個資料夾與查行事曆兩個例子。介面名稱與方案依 2026 年 9 月官方文件，官網沒寫的寫「以官網為準」。"
+        },
+        {
+          "type": "heading",
+          "text": "MCP 是什麼：讓每個工具只要接一次的共通接頭",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 MCP 之前，每個 AI 應用要接每個服務都得各寫一套。MCP 把它變成一種接法：服務那端做一個 MCP 伺服器，AI 應用那端支援 MCP，兩邊就通了。所以它必須是共通標準，官網列出的支援名單包含 Claude、ChatGPT 與 Visual Studio Code。"
+        },
+        {
+          "type": "paragraph",
+          "text": "標準由誰管也有答案。Anthropic 在 2025 年 12 月 9 日把 MCP 捐給 Linux Foundation 底下新成立的 Agentic AI Foundation，治理模式不變。同一篇公告寫公開的 MCP 伺服器超過 10,000 個，Claude 的連接器目錄超過 75 個。規格以日期編號，目前是 2026-07-28 版。"
+        },
+        {
+          "type": "link",
+          "text": "AI 代理（Agent）是什麼：從回答問題到替你完成任務",
+          "url": "https://mokaair.com/zh-TW/life/ai-agents-explained"
+        },
+        {
+          "type": "heading",
+          "text": "三個角色：你、Claude、MCP 伺服器，一次往返發生什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "規格把參與者分成三個：host 是 AI 應用本身，例如 Claude Desktop；client 是 host 為每個伺服器各開一條的專屬連線；server 是資料那一端的程式，可能在你的電腦上，也可能在某個服務的機房裡。你只會看到兩端：你和 Claude 講話，它背後接著伺服器。"
+        },
+        {
+          "type": "paragraph",
+          "text": "伺服器交出來的有三種：工具是可以執行的動作，資源是可以讀的資料，提示是現成的任務範本。反過來，伺服器也可以反問你一句，例如請你補一個日期。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Claude 先向伺服器要工具清單，讀進每個工具的名稱、說明與需要的參數。",
+            "你問一句「我下週有哪些會議」，模型讀問題和清單，決定用哪個工具、帶什麼參數。",
+            "呼叫前 Claude 停下來要你核准。規格寫得很硬：工具等同於執行任意程式碼，呼叫前必須取得明確同意。",
+            "你同意後 Claude 送出呼叫，伺服器查真正的資料再回傳，資料到這一步才離開服務。",
+            "Claude 拿回結果用中文回答你，需要時再跑下一輪。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-mcp-explained/diagram-1.svg",
+          "alt": "圖解：左邊是一次 MCP 往返的五個步驟，從你提問到 Claude 讀工具清單、停下來要你核准、伺服器回傳資料、Claude 作答；右邊是加裝一個連接器的流程與三個權限檢查點",
+          "width": 1600,
+          "height": 900,
+          "caption": "左邊由上往下讀一次往返的五步，橘色那格是必經的核准；右邊是加裝流程，橘色標記是你該停下來看的權限檢查點。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "在 Claude 裡怎麼加：連接器、桌面版擴充功能、遠端與本機",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "介面上有兩個入口：對話裡按輸入框左下角的「+」，移到 Connectors 選 Manage connectors；設定裡進 Customize > Connectors。同一個地方列三類：Anthropic 做好的官方整合（Google 日曆、Gmail、GitHub、Slack 等）、目錄裡的第三方連接器，以及你自己貼網址加的自訂連接器。"
+        },
+        {
+          "type": "paragraph",
+          "text": "方案差別官方寫得明確：網頁連接器對 Claude、Claude Desktop 與手機版的所有使用者開放；自訂連接器免費方案限一個，Pro、Max、Team、Enterprise 可以多個，Team 與 Enterprise 要由 Owner 先在組織設定加好，成員再各自連。自己加是按 Add custom connector，貼上遠端伺服器的 HTTPS 網址。"
+        },
+        {
+          "type": "paragraph",
+          "text": "遠端還是本機，判準是工具在哪裡跑。工具是你登入的雲端服務，或你想在網頁、手機、桌面版都能用，就選遠端的網頁連接器。工具跑在你自己的電腦上，或需要作業系統層級的存取，就選桌面版擴充功能：它其實是本機 MCP 伺服器，只在 Claude Desktop 與 Claude Code 能用，安裝路徑是 Settings > Extensions，按 Browse extensions 從目錄裝。"
+        },
+        {
+          "type": "link",
+          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+        },
+        {
+          "type": "paragraph",
+          "text": "要和另外兩件事分清楚。瀏覽器擴充功能讓 Claude 在瀏覽器畫面上讀網頁、點按鈕，走的是畫面；MCP 走資料介面，回傳的是結構化結果，不必模擬點擊。代理模式是上面那一層：代理自己規劃、用工具、看結果、修正，MCP 只負責把工具接上來。"
+        },
+        {
+          "type": "link",
+          "text": "Claude 操作電腦與瀏覽器：它看得到什麼、能點什麼、怎麼喊停",
+          "url": "https://mokaair.com/zh-TW/life/claude-computer-use-explained"
+        },
+        {
+          "type": "heading",
+          "text": "示範一：讓 Claude 讀我電腦裡的資料夾",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "加之前準備三件事：裝好 Claude Desktop、想清楚只開哪一個資料夾、把重要檔案先備份。最省事的做法是從 Settings > Extensions 裝一個檔案系統類的擴充功能。自己接本機伺服器則要先裝 Node.js，在 Settings 的 Developer 分頁按 Edit Config，於設定檔寫下允許存取的資料夾路徑，存檔後完全結束再重開。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方的檔案系統伺服器提供讀檔案內容與目錄結構、建立檔案與資料夾、搬移更名、依檔名或內容搜尋。裝好可以問「我的下載資料夾裡有哪些和工作有關的檔案」，每個動作執行前都會先要你核准。失敗時依序看：重開、檢查設定檔語法、確認路徑是絕對且存在，再看紀錄檔，macOS 在 Library 的 Logs 底下，Windows 在 %APPDATA% 的 Claude 底下。官方提醒：伺服器用你的帳號權限在跑，只開你願意讓它讀寫的資料夾。"
+        },
+        {
+          "type": "heading",
+          "text": "示範二：讓 Claude 查我的行事曆",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這個例子走遠端連接器，不用碰設定檔。官方寫 Gmail、Google 日曆與 Google 雲端硬碟這組連接器對 Claude 與 Claude Desktop 的所有使用者開放。步驟是進 Customize > Connectors，找到 Google 日曆按 Connect，登入後在授權畫面按同意。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接好可以問「我下週有哪些會議」。官方對權限有兩句值得記住：Claude 沿用你原本的權限，你在 Google Workspace 看不到的它也看不到；而且只在你明確要求時取用，只取需要的最少資訊。寄信、搬檔案這類會改動東西的動作，預設每次先問過你。連不上就先中斷再重連，還是不行就到 Google 帳號的已連結應用程式頁面解除授權再來一次。"
+        },
+        {
+          "type": "link",
+          "text": "Claude 專案（Projects）怎麼用：把常用資料變成它的知識庫",
+          "url": "https://mokaair.com/zh-TW/life/claude-projects-knowledge-base"
+        },
+        {
+          "type": "heading",
+          "text": "權限與安全：授權畫面要看的不是「同意」那顆鈕",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先認清楚一個連接器能做什麼。官方寫三件事：讀取資料；建立、修改或刪除資料；以你的名義採取行動。所以授權畫面該看的是中間那幾行小字：要的權限是檢視還是管理、是一個行事曆還是全部、有沒有包含刪除。官方最佳實務直接說，看起來不必要的就拒絕。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三方伺服器的風險是真的。Claude 的說明寫著，惡意的 MCP 伺服器可能夾帶隱藏指令，讓 Claude 做出你沒要求的動作，這就是提示詞注入，只是藏在工具說明或回傳的內容裡。Anthropic 的工程文章補一句：本機工具可以稽核，遠端伺服器卻可能在你核准之後改變行為，目錄之外一律視為不可信；「已驗證」標籤也不是安全稽核。"
+        },
+        {
+          "type": "link",
+          "text": "提示詞注入是什麼：藏在網頁和信件裡的指令怎麼騙走你的 AI",
+          "url": "https://mokaair.com/zh-TW/life/ai-prompt-injection-explained"
+        },
+        {
+          "type": "paragraph",
+          "text": "能收的權限就收。官方列了四個做法：只對信任的伺服器按 Always allow；沒在用的連接器在對話的 Connectors 裡關掉；不需要的工具到 Customize > Connectors 設成 Blocked；留意工具行為有沒有非預期的變化。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "常見用途",
+            "需要什麼",
+            "風險",
+            "建議"
+          ],
+          "rows": [
+            [
+              "讀電腦裡某個資料夾",
+              "桌面版擴充功能或本機伺服器",
+              "用你的帳號權限跑，能改能刪",
+              "只開專用資料夾，先列清單不動手"
+            ],
+            [
+              "查行事曆、找空檔",
+              "Google 日曆連接器",
+              "會議標題與參與者被讀走",
+              "先只用查詢，修改維持每次先問"
+            ],
+            [
+              "讀信箱、擬草稿",
+              "Gmail 連接器",
+              "信件裡可能藏著給 AI 的指令",
+              "只准寫草稿，寄出自己按"
+            ],
+            [
+              "接公司內部系統",
+              "自訂連接器與 OAuth 設定",
+              "未驗證服務，權限常含寫入",
+              "由管理員統一加，不自己貼網址"
+            ],
+            [
+              "接不認識的第三方伺服器",
+              "查不到來源的網址",
+              "可藏指令操縱 Claude",
+              "先不要，要試就用假資料"
+            ],
+            [
+              "用不到的連接器",
+              "不需要什麼",
+              "多一個就多一個入口",
+              "關掉，或設成 Blocked"
+            ]
+          ],
+          "caption": "2026 年 9 月依 MCP 官網、Claude 說明中心與 Claude 文件整理。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "MCP 伺服器等於把一把鑰匙交出去",
+          "text": "只裝你看得懂來源的，權限能給讀就不要給寫。連接器接上去之後，它讀得到的資料、改得動的東西，都會以你的名義發生；目錄的驗證標籤只代表審查過，不代表替你擔保。授權畫面上那幾行權限範圍，才是你真正簽下去的東西。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "MCP 官網：What is the Model Context Protocol（開放標準、USB-C 比喻、支援 MCP 的應用）",
+          "url": "https://modelcontextprotocol.io/docs/getting-started/intro",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MCP 規格 2026-07-28：Security and Trust & Safety（明確同意、工具等同執行任意程式碼、工具說明視為不可信）",
+          "url": "https://modelcontextprotocol.io/specification/latest",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MCP 架構總覽：host、client、server 三個角色，工具、資源、提示，本機 stdio 與遠端 Streamable HTTP",
+          "url": "https://modelcontextprotocol.io/docs/2026-07-28/learn/architecture",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MCP：Connect to local MCP servers（Claude Desktop 設定檔、檔案系統伺服器的工具、每個動作要核准、紀錄檔位置）",
+          "url": "https://modelcontextprotocol.io/docs/2026-07-28/develop/connect-local-servers",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic 新聞：Donating the Model Context Protocol and establishing the Agentic AI Foundation（Linux Foundation、治理不變、規模數字）",
+          "url": "https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Use connectors to extend Claude's capabilities（介面路徑、連接器類型、方案與免費限一個）",
+          "url": "https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Get started with custom connectors using remote MCP（加自訂連接器的步驟、只連信任的伺服器、惡意伺服器可夾帶隱藏指令）",
+          "url": "https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：When to use desktop and web connectors（遠端與本機怎麼選、桌面版擴充功能只在桌面版與 Claude Code）",
+          "url": "https://support.claude.com/en/articles/11725091-when-to-use-desktop-and-web-connectors",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Getting Started with Local MCP Servers on Claude Desktop（Settings 底下 Extensions、Browse extensions、.mcpb 檔、開發者設定看紀錄）",
+          "url": "https://support.claude.com/en/articles/10949351-getting-started-with-local-mcp-servers-on-claude-desktop",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Use Google Workspace connectors（方案、設定路徑、沿用你原本的權限、只取最少資訊、改動前先問、疑難排解）",
+          "url": "https://support.claude.com/en/articles/10166901-use-google-workspace-connectors",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 文件：Third party connectors with remote MCP（授權欄位、檢視權限範圍、Always allow、把工具設成 Blocked、回報惡意伺服器）",
+          "url": "https://claude.com/docs/connectors/custom/remote-mcp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 文件：Connectors directory（已驗證與社群標籤的差別、驗證不是安全稽核、瀏覽與管理路徑）",
+          "url": "https://claude.com/docs/connectors/directory",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 文件：Connectors overview（MCP 是 Anthropic 提出的開放標準、官方整合清單、各產品支援範圍）",
+          "url": "https://claude.com/docs/connectors/overview",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic 工程部落格：How we contain Claude across products（本機工具可稽核、遠端工具可能事後改行為、目錄之外視為不可信）",
+          "url": "https://www.anthropic.com/engineering/how-we-contain-claude",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
