@@ -1,0 +1,830 @@
+{
+  "schema": 1,
+  "status": "published_and_verified",
+  "exported_at": "2026-09-14T07:43:40.395484+00:00",
+  "locale": "zh-TW",
+  "manifest_sha256": "96ad2cb050c0b31a678e446c08e428746d1e3e873343a9a72ae0353f48ca7d59",
+  "publication_completed_at": "2026-09-14T07:36:30.652912+00:00",
+  "totals": {
+    "pages": 83,
+    "new": 77,
+    "updated": 6,
+    "concepts": 81,
+    "excluded": 0,
+    "indexes": 1,
+    "glossaries": 1,
+    "assets": 166
+  },
+  "deployment": {
+    "release_sha": "3b8df68c693eb81ccde7793a2f89d71999dbb2c2",
+    "activated_at": "2026-09-14T07:23:04.420011+00:00",
+    "ci_url": "https://github.com/x812033727/travel_scanner/actions/runs/34815324935",
+    "images": {
+      "api": "sha256:0c8466ae242ef94e18f2dcf4979cabc7d51aab1f2d06fa96c9f5bf54988a8e7a",
+      "web": "sha256:65cf8f61552e84ea0ef0f80a51fbe38adba624d059b96c2628410007d6ca5745"
+    },
+    "backups": {
+      "predeployment": {
+        "bytes": 28685147,
+        "sha256": "989d6895386705d3cfc84296a87390c06c69cfe71bce9ff3821f69ec25068242",
+        "index_readable": true,
+        "restore_tested": false
+      },
+      "prepublication": {
+        "bytes": 28685157,
+        "sha256": "0402e67124e24073c7adeec639be6499f004f10eef8b0f65aa5750df0b2d2f39",
+        "index_readable": true,
+        "restore_tested": false,
+        "created_at": "2026-09-14T07:26:14.623969+00:00"
+      }
+    }
+  },
+  "verification": {
+    "public_articles": 83,
+    "assets": 166,
+    "sitemap_present": 83,
+    "browser_pages": 83,
+    "browser_viewports": 166,
+    "table_regression_checks": 6,
+    "drafts_hidden": 77,
+    "drafts_preserved": 6,
+    "preindex_public_articles": 82,
+    "preindex_hidden": 1,
+    "postgresql": {
+      "status": "passed",
+      "postgresql_passed": 4,
+      "local_passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "server_version": "17.11",
+      "index_lock_sqlstate": "55P03",
+      "cleanup_complete": true,
+      "tested_source_sha": "daf64eddb784688b2d48bee2799681037d11245f",
+      "driver_sha256": "44f3b061153c1c0458231e2f90c1a5422067a53a833c86a1b5156d048641abc2",
+      "tests_sha256": "63a209756b91fa0495b5d1e4d9a0ee7d2a0ce8433168123185dbb84096906048"
+    }
+  },
+  "evidence_sha256": {
+    "public-verification.json": "690c8c08475337c254b616fed9e83b7c99e85a6ad338fc71bcb0a81823f1979b",
+    "live-browser-check.json": "b9080769f05effa73593fec83e8084c9ea840746db2a8acc41be9a70b12f6418",
+    "table-live-regression.json": "049984d73a4336f21cca5066d49a8963aa0bf140a36e21b3bf85cefc846a9415",
+    "draft-public-verification.json": "eb8d0f93a8024d5f99cf9d6c589dbda4410c4815ffe806a1ba40e0a8c575b303",
+    "preindex-public-verification.json": "4e06cb35fde23f892d379d821c5b5605e530a35432cc142709ddc911754cf50f",
+    "postgresql-validation.json": "28007f905eaedb54470ff7d6b7df136553baf811b9a2fdcde6b3125b3b64e882"
+  },
+  "articles": [
+    {
+      "title": "提示詞工程（Prompt Engineering）是什麼",
+      "slug": "ai-term-prompt-engineering",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-engineering",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:11.215767+00:00",
+      "document_sha256": "ac9a6565f1222008437deb1b138e87869fa7cac514f8489d004198a6b197db37"
+    },
+    {
+      "title": "上下文工程（Context Engineering）是什麼",
+      "slug": "ai-term-context-engineering",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-context-engineering",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:11.565069+00:00",
+      "document_sha256": "1a3b40a1bec1b3f92e09c9c1643407cdc0c70c4a94d362bdea336666aaa78913"
+    },
+    {
+      "title": "代理執行環境工程（Harness Engineering）是什麼",
+      "slug": "ai-term-harness-engineering",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-harness-engineering",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:11.862640+00:00",
+      "document_sha256": "6cc3ae475a805d941dfa62ca24a598124fcc052ba14959440100098d50d2d74d"
+    },
+    {
+      "title": "Loop Engineering 是什麼：讓 AI 持續工作，也知道何時停止",
+      "slug": "ai-term-loop-engineering",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-loop-engineering",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:12.167841+00:00",
+      "document_sha256": "1cede956e816a0b263d56efd55c7267912d92d1afed2567cc07952a2304810be"
+    },
+    {
+      "title": "代理式工程（Agentic Engineering）是什麼",
+      "slug": "ai-term-agentic-engineering",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-agentic-engineering",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:12.468897+00:00",
+      "document_sha256": "c2930a2473f33059370599cdff25bf4d34853f3902c0ec8e2382b09a3bc01a15"
+    },
+    {
+      "title": "氛圍編碼（Vibe Coding）是什麼",
+      "slug": "ai-term-vibe-coding",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-vibe-coding",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:12.816776+00:00",
+      "document_sha256": "33ca6b486736404e19b30cfbcd31e83e8aa22028f48f56fce3b16f63827ba4b4"
+    },
+    {
+      "title": "規格驅動開發（Spec-driven Development）是什麼",
+      "slug": "ai-term-spec-driven-development",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-spec-driven-development",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:13.175533+00:00",
+      "document_sha256": "7f5106c40f0133cf89c0e1bdf731432cdff43a852f5567817bfbc4885ac7c9f2"
+    },
+    {
+      "title": "大型語言模型維運（LLMOps）是什麼",
+      "slug": "ai-term-llmops",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-llmops",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:13.466736+00:00",
+      "document_sha256": "e002880a93aa34d19721f8fb5cd32aa36fbd7d420979f09a4e50fc1968df6d6b"
+    },
+    {
+      "title": "代理系統維運（AgentOps）是什麼",
+      "slug": "ai-term-agentops",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-agentops",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:13.888223+00:00",
+      "document_sha256": "6d806aaacb429dec7e9ec3204aadddde92157a3705e646b184283408936709f5"
+    },
+    {
+      "title": "提示詞串接（Prompt Chaining）是什麼",
+      "slug": "ai-term-prompt-chaining",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-chaining",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:14.190953+00:00",
+      "document_sha256": "da8a87f4bfdab0df2cd46c90982207acf98626a7e99c080798a18fecede43e67"
+    },
+    {
+      "title": "人工智慧（Artificial Intelligence）是什麼",
+      "slug": "ai-term-artificial-intelligence",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-artificial-intelligence",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:14.479140+00:00",
+      "document_sha256": "fb8794185e519b7f5e9b945641c46961a5f88084718da0f19b2d9ded7a1352a2"
+    },
+    {
+      "title": "機器學習（Machine Learning）是什麼",
+      "slug": "ai-term-machine-learning",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-machine-learning",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:14.793439+00:00",
+      "document_sha256": "ca20727889893e70b2365b95074dea08bfb2e09e7ff29d4e050976b0ea92279c"
+    },
+    {
+      "title": "深度學習（Deep Learning）是什麼",
+      "slug": "ai-term-deep-learning",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-deep-learning",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:15.114590+00:00",
+      "document_sha256": "60bd3800c05b7478b6e5c5376b851be08ec372d7247124b3f28c5a9d006c4e9c"
+    },
+    {
+      "title": "生成式 AI（Generative AI）是什麼",
+      "slug": "ai-term-generative-ai",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-generative-ai",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:15.434580+00:00",
+      "document_sha256": "390a437497fbc8d5e7deed3af5e4cb4251df872d23c7729ce84ef93d5a497cc6"
+    },
+    {
+      "title": "大型語言模型（Large Language Model）是什麼",
+      "slug": "what-is-a-large-language-model",
+      "url": "https://mokaair.com/zh-TW/life/what-is-a-large-language-model",
+      "publication_action": "updated",
+      "published_version": 4,
+      "published_at": "2026-09-14T00:24:10.910282+00:00",
+      "document_sha256": "a65364bb1827901d03e511a45ce310ffb5300a6f5a9658a9f2d912b7d2728942"
+    },
+    {
+      "title": "基礎模型（Foundation Model）是什麼",
+      "slug": "ai-term-foundation-model",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-foundation-model",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:15.990403+00:00",
+      "document_sha256": "a6a073bd4bc782fc966c5781dc52f89bb434cfd7291222bf7a67f4c97f515dd6"
+    },
+    {
+      "title": "Transformer 架構（Transformer）是什麼",
+      "slug": "ai-term-transformer",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-transformer",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:16.267999+00:00",
+      "document_sha256": "15c1996f3d7fd32a0b58eb8251f0fb704e4533b64ba3856781996f324853d85b"
+    },
+    {
+      "title": "混合專家模型（Mixture of Experts）是什麼",
+      "slug": "ai-term-mixture-of-experts",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-mixture-of-experts",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:16.555031+00:00",
+      "document_sha256": "f5796708e3088e9a5a359b1be71343ad836dc201fc898183c6cd2ef56983df75"
+    },
+    {
+      "title": "小型語言模型（Small Language Model）是什麼",
+      "slug": "ai-term-small-language-model",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-small-language-model",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:16.948209+00:00",
+      "document_sha256": "f0d3138ddc4c27d563c3b00a8ccdc887778cbdafd72aa2ee135d2033ffa3bced"
+    },
+    {
+      "title": "模型參數（Model Parameters）是什麼",
+      "slug": "ai-term-model-parameters",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-model-parameters",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:17.241577+00:00",
+      "document_sha256": "3b8d0b8bfac29d879151c205c233079ccbb095c097fabdf3ab799cfdca04a92c"
+    },
+    {
+      "title": "token（Token）是什麼：AI 如何計算文字長度",
+      "slug": "ai-term-token",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-token",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:17.535106+00:00",
+      "document_sha256": "5c3ba028d496bb0e915dd28b29ecda562ba012f7b4494aba01fde385aec34a21"
+    },
+    {
+      "title": "分詞（Tokenization）是什麼：文字進入模型前的切分",
+      "slug": "ai-term-tokenization",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-tokenization",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:17.820792+00:00",
+      "document_sha256": "107f33de98f909776c3029bce2a3b36ca4a9e4de3f33b761b07dad136949b200"
+    },
+    {
+      "title": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+      "slug": "ai-context-window-explained",
+      "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained",
+      "publication_action": "updated",
+      "published_version": 4,
+      "published_at": "2026-09-14T00:24:08.924345+00:00",
+      "document_sha256": "101b4ea454db078c5621ce24191230a00c8207b2e183273f87c6280a3e94f242"
+    },
+    {
+      "title": "系統提示詞（System Prompt）是什麼：設定助理的工作規則",
+      "slug": "ai-term-system-prompt",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-system-prompt",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:18.497849+00:00",
+      "document_sha256": "be8682294a852645a2c7c9495a22d9af45490e06ac0ad5f7fd82a176b857adc7"
+    },
+    {
+      "title": "少樣本提示（Few-shot Prompting）是什麼：用例子教清楚格式",
+      "slug": "ai-term-few-shot-prompting",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-few-shot-prompting",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:18.844528+00:00",
+      "document_sha256": "5aa35579425d63c559a047dd027294c8f60ff60f516ffe25661c53d7c88fb16d"
+    },
+    {
+      "title": "零樣本提示（Zero-shot Prompting）是什麼：先把任務說清楚",
+      "slug": "ai-term-zero-shot-prompting",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-zero-shot-prompting",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:19.151652+00:00",
+      "document_sha256": "6fffddd9b07dea2bd90d1000261df15f044213b48121ec6c99ca0fc031d31e32"
+    },
+    {
+      "title": "上下文學習（In-context Learning）是什麼：當場適應新規則",
+      "slug": "ai-term-in-context-learning",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-in-context-learning",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:19.451841+00:00",
+      "document_sha256": "bddd6ee31a450646bd64b2b94537a2384e810ce855536fed42bb82f22a58672e"
+    },
+    {
+      "title": "上下文壓縮（Context Compaction）是什麼：讓長任務接得下去",
+      "slug": "ai-term-context-compaction",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-context-compaction",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:19.866628+00:00",
+      "document_sha256": "dad699f5669dfe98f798b01f8bd14dee457865bd4038d4d0fe49a0a4d0a87111"
+    },
+    {
+      "title": "上下文品質衰退（Context Rot）是什麼：長文為何不一定更準",
+      "slug": "ai-term-context-rot",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-context-rot",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:20.186447+00:00",
+      "document_sha256": "e07f770b17ab8ba319dcd09c4cd28962762836de23cbf80a69cf3e8502f9d1b7"
+    },
+    {
+      "title": "代理記憶（Agent Memory）是什麼：保存、取回與更新資訊",
+      "slug": "ai-term-agent-memory",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-agent-memory",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:20.510362+00:00",
+      "document_sha256": "5dfc63874aa75b93b9e98c5d3084e239f5e03a9fac619fd100099212a966ee1a"
+    },
+    {
+      "title": "AI 代理（AI Agent）是什麼：從回答問題到完成任務",
+      "slug": "ai-agents-explained",
+      "url": "https://mokaair.com/zh-TW/life/ai-agents-explained",
+      "publication_action": "updated",
+      "published_version": 4,
+      "published_at": "2026-09-14T00:24:08.805994+00:00",
+      "document_sha256": "2fd4065c53bbe0aba18375137d4c8cca81239506fd242374f01f8b0822ccbd19"
+    },
+    {
+      "title": "代理迴圈（Agent Loop）是什麼：判斷、操作與回饋",
+      "slug": "ai-term-agent-loop",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-agent-loop",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:21.144383+00:00",
+      "document_sha256": "c97bcdd326bcdc917da61ba8f5ddb9cc64b9a907cb7d5bab9d293c4045a5b0c1"
+    },
+    {
+      "title": "多代理系統（Multi-agent System）是什麼：分工與協作的代價",
+      "slug": "ai-term-multi-agent-system",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-multi-agent-system",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:21.440093+00:00",
+      "document_sha256": "e0738189b11f5c6d815afaa121a340e2d11f0faeaa83c9537f34b80cf9a2dc98"
+    },
+    {
+      "title": "子代理（Subagent）是什麼：把有邊界的工作交出去",
+      "slug": "ai-term-subagent",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-subagent",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:21.754466+00:00",
+      "document_sha256": "5d48006029dcab67e1d039149573b639bfb06863778db5efd5bc222fbc029363"
+    },
+    {
+      "title": "代理協調（Agent Orchestration）是什麼：安排分工與交付順序",
+      "slug": "ai-term-agent-orchestration",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-agent-orchestration",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:22.056462+00:00",
+      "document_sha256": "6820c5d50a7c718fc6633a52126635cb658e066657468266b79e95e826c94186"
+    },
+    {
+      "title": "ReAct 是什麼：讓推理與行動交替補足資訊",
+      "slug": "ai-term-react-reasoning-acting",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-react-reasoning-acting",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:22.492061+00:00",
+      "document_sha256": "e95d72662d4305f635a61da214fe01a95dad4a15ada145c60e0c7325492faede"
+    },
+    {
+      "title": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
+      "slug": "ai-term-tool-calling",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-tool-calling",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:22.831677+00:00",
+      "document_sha256": "8b7372fe9e5423e0700f2dd6010977d77399367ac0813e33662dce9db4c294e7"
+    },
+    {
+      "title": "模型上下文協定（MCP）是什麼：連接工具與資料的共同介面",
+      "slug": "ai-term-model-context-protocol",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-model-context-protocol",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:23.141647+00:00",
+      "document_sha256": "dfc862168f811ee7db59ce9f51dcb2edfca00b17f081884d838cff5fd626219a"
+    },
+    {
+      "title": "代理互通協定（A2A）是什麼：跨系統交辦與回報任務",
+      "slug": "ai-term-agent2agent-protocol",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-agent2agent-protocol",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:23.451189+00:00",
+      "document_sha256": "1fac1b23994e3eaf5314e0926c10348592943dcd4cc59cb44870d3e0bc1c9e6a"
+    },
+    {
+      "title": "代理技能（Agent Skills）是什麼：可重用的工作方法包",
+      "slug": "ai-term-agent-skills",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-agent-skills",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:23.768473+00:00",
+      "document_sha256": "3e99b02a839322e6e45ec610660c3a5a5f8e86a5d756fb46ed41f3321d6e4778"
+    },
+    {
+      "title": "檢索增強生成（RAG）是什麼：讓回答附上可查的依據",
+      "slug": "ai-term-retrieval-augmented-generation",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-retrieval-augmented-generation",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:24.075837+00:00",
+      "document_sha256": "099e82ee23970540cbc9a70c47c852290fc48eac670490ea2e6650c1d4e5cdcc"
+    },
+    {
+      "title": "代理式檢索增強生成（Agentic RAG）：何時需要再查一次",
+      "slug": "ai-term-agentic-rag",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-agentic-rag",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:24.390978+00:00",
+      "document_sha256": "7a9bc94a6c2a4e4da8c70d088bae9ef66d9117719eb6ce55bc3918cf2528e621"
+    },
+    {
+      "title": "圖譜檢索增強生成（GraphRAG）：從關係看懂整批文件",
+      "slug": "ai-term-graph-rag",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-graph-rag",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:24.700297+00:00",
+      "document_sha256": "a6c92b930a06907f0217f7d7d28fb1e7018b8051385f7b7dbd191d7169ea8fd2"
+    },
+    {
+      "title": "嵌入向量（Embedding）是什麼：把內容放進可比較的空間",
+      "slug": "ai-term-embedding",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-embedding",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:25.002992+00:00",
+      "document_sha256": "1c044b1839629f2f403d1f2dc100187b8c8c08eebd2ceee6421410091a62f864"
+    },
+    {
+      "title": "向量資料庫（Vector Database）：相似內容怎麼存、怎麼找",
+      "slug": "ai-term-vector-database",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-vector-database",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:25.403975+00:00",
+      "document_sha256": "9d95367229c1929e7a6317a7ceb762ff8887c1e3aa54eb593bedcbae7e374465"
+    },
+    {
+      "title": "語意搜尋（Semantic Search）：用不同說法找到相關內容",
+      "slug": "ai-term-semantic-search",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-semantic-search",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:25.754327+00:00",
+      "document_sha256": "e8d7874b4e462d92eba61207a992c5067fe121804e28b6b7313751ac21b45032"
+    },
+    {
+      "title": "混合搜尋（Hybrid Search）：兼顧精確字詞與語意",
+      "slug": "ai-term-hybrid-search",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-hybrid-search",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:26.092811+00:00",
+      "document_sha256": "54c02c66ae2639d611ec9a5c66c92bc9c60e79bf9269abfd85c771bbc18cd1b3"
+    },
+    {
+      "title": "重新排序（Reranking）：從找得到到把好答案排在前面",
+      "slug": "ai-term-reranking",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-reranking",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:26.431133+00:00",
+      "document_sha256": "f332bfdfdf75b0718f2391ce9ed08cc9d60ff951ed78b1d24ae2f8f80eb17188"
+    },
+    {
+      "title": "文件分塊（Chunking）：切多長，才不會把答案切斷",
+      "slug": "ai-term-chunking",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-chunking",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:26.764074+00:00",
+      "document_sha256": "47d3d0ef920d0d14be419eb87e5421a00c5ea79990fbbc18e7151f0c255778b3"
+    },
+    {
+      "title": "知識圖譜（Knowledge Graph）：把事物與關係說清楚",
+      "slug": "ai-term-knowledge-graph",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-knowledge-graph",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:27.076459+00:00",
+      "document_sha256": "9fa2812231402103411eb5518ebaa0babc4306352c020b18ff2b37fa2133f163"
+    },
+    {
+      "title": "預訓練（Pretraining）：模型的基礎能力從哪裡來",
+      "slug": "ai-term-pretraining",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-pretraining",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:27.406218+00:00",
+      "document_sha256": "a962a79b38704e320360541c288eae7730f8fb9ed9b4e5253e381966c1006aca"
+    },
+    {
+      "title": "微調（Fine-tuning）：讓既有模型更適合你的任務",
+      "slug": "ai-term-fine-tuning",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-fine-tuning",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:27.747702+00:00",
+      "document_sha256": "e56e4c181eebc74612867dd6b5e05872caef3f8608d9578b18a3a8f527f914ef"
+    },
+    {
+      "title": "監督式微調（SFT）：用好示範教模型完成任務",
+      "slug": "ai-term-supervised-fine-tuning",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-supervised-fine-tuning",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:28.190360+00:00",
+      "document_sha256": "a5762827b58e2de2c0e22c5e25ea163f6d0c54a37f88141cea0beb8251aaa41e"
+    },
+    {
+      "title": "人類回饋強化學習（RLHF）：把偏好變成訓練訊號",
+      "slug": "ai-term-rlhf",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-rlhf",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:28.508322+00:00",
+      "document_sha256": "271dabed834e9da1ed1d3ed91c75cca05f96dc4470ffa0fa9d99a5f07c0f0544"
+    },
+    {
+      "title": "直接偏好最佳化（DPO）：用回答比較直接調整模型",
+      "slug": "ai-term-direct-preference-optimization",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-direct-preference-optimization",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:28.826920+00:00",
+      "document_sha256": "6aa78495174b66d78324f1dec47d2bd374974fc9b4bab3de5e0d155df2ad7a37"
+    },
+    {
+      "title": "低秩適應（LoRA）：少量可訓練參數如何調整模型",
+      "slug": "ai-term-lora",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-lora",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:29.168236+00:00",
+      "document_sha256": "2959f95c144fb72473194ccb0e41b1dc94f3d00542fb2182ae90ee1c507f6d28"
+    },
+    {
+      "title": "知識蒸餾（Knowledge Distillation）：讓學生模型學教師",
+      "slug": "ai-term-knowledge-distillation",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-knowledge-distillation",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:29.531698+00:00",
+      "document_sha256": "c5b4f065f194c25f91f7fd5dc121bf291d72a494b37ea170625297712701c376"
+    },
+    {
+      "title": "量化（Quantization）：用較少位元執行模型的取捨",
+      "slug": "ai-term-quantization",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-quantization",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:29.912568+00:00",
+      "document_sha256": "3fc7ac5848d5db16244f72f30bda7e6fd056b1bbf3d717510ac31c1d0b99e8c2"
+    },
+    {
+      "title": "推理模型（Reasoning Model）：多想幾步能解決什麼",
+      "slug": "ai-reasoning-models-explained",
+      "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained",
+      "publication_action": "updated",
+      "published_version": 4,
+      "published_at": "2026-09-14T00:24:09.341836+00:00",
+      "document_sha256": "4481984e8689c612ff3df77695ee11461ac9db838bcac1f382e6d53513f02ac1"
+    },
+    {
+      "title": "推論時計算（Test-time Compute）：把算力花在這一道題",
+      "slug": "ai-term-test-time-compute",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-test-time-compute",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:30.580859+00:00",
+      "document_sha256": "a5f52735f9c443b2ecbac6b84a09bc51e7a28a83ebf1b635d527a912f9cc051b"
+    },
+    {
+      "title": "提示詞快取（Prompt Caching）：重用相同字首的計算",
+      "slug": "ai-term-prompt-caching",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-caching",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:30.999107+00:00",
+      "document_sha256": "7866bbcc6f893fa9cf9ad1bd4391f990e660ab02f92516010695cdf638ab8540"
+    },
+    {
+      "title": "模型與代理評測（Evals）是什麼",
+      "slug": "ai-term-evals",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-evals",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:31.348401+00:00",
+      "document_sha256": "5e3f98020dbd1fc4328a70c2539143030dec39ebf5b460076b5ed56debe97283"
+    },
+    {
+      "title": "基準測試（Benchmark）是什麼",
+      "slug": "ai-term-benchmark",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-benchmark",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:31.704262+00:00",
+      "document_sha256": "06d4faa52b0eba37e842a0d6fb9b1f2cee96edf09ba22747eccfdd61a95d8ab2"
+    },
+    {
+      "title": "以語言模型擔任評審（LLM-as-a-Judge）是什麼",
+      "slug": "ai-term-llm-as-a-judge",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-llm-as-a-judge",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:32.050004+00:00",
+      "document_sha256": "2be84695477c83aefb41c2e36069f845a1cc1d7f07870b5ef510b1513f4235ea"
+    },
+    {
+      "title": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+      "slug": "ai-hallucination-fact-check",
+      "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check",
+      "publication_action": "updated",
+      "published_version": 4,
+      "published_at": "2026-09-14T00:24:09.191803+00:00",
+      "document_sha256": "dc2d87fd8e863f0fb01143a5644b10e2c79e106341a367bd65b276ff35ac7460"
+    },
+    {
+      "title": "提示詞注入（Prompt Injection）是什麼",
+      "slug": "ai-term-prompt-injection",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-injection",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:32.754644+00:00",
+      "document_sha256": "7cb3dd85008e7c3b851412b43a168c47c6c121d0631867110850ab99520a50f6"
+    },
+    {
+      "title": "越獄提示（Jailbreak）是什麼",
+      "slug": "ai-term-jailbreak",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-jailbreak",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:33.110891+00:00",
+      "document_sha256": "09d441f59010447224b7ba72263f68b22374eab6da4c66002106fc9b457408d3"
+    },
+    {
+      "title": "安全防護機制（Guardrails）是什麼",
+      "slug": "ai-term-guardrails",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-guardrails",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:33.573593+00:00",
+      "document_sha256": "801807ad402f1cee0445ec1625bd50b91abf2a5f4df083c3a747252ceb7244b2"
+    },
+    {
+      "title": "沙盒（Sandbox）：讓 AI 執行工具時有明確邊界",
+      "slug": "ai-term-sandbox",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-sandbox",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:33.915384+00:00",
+      "document_sha256": "6eabcaa37a5f0fa0c17fec692eb1856c077acd770be1e81a37f52e14a2a75c4a"
+    },
+    {
+      "title": "人工介入（Human-in-the-loop）：讓人有資訊也有決定權",
+      "slug": "ai-term-human-in-the-loop",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-human-in-the-loop",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:34.281834+00:00",
+      "document_sha256": "5bb807ad5bdb99680532ee4d51443117779b09bc20fc155417a49e7a53d223c4"
+    },
+    {
+      "title": "紅隊測試（Red Teaming）：主動找出 AI 系統會怎樣失敗",
+      "slug": "ai-term-red-teaming",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-red-teaming",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:34.611605+00:00",
+      "document_sha256": "51f91726d4c706fd2a6aacb5dbf815250242d0abce7f3b3184a57775beb8edb4"
+    },
+    {
+      "title": "多模態 AI（Multimodal AI）是什麼：把圖像、聲音與文字一起理解",
+      "slug": "ai-term-multimodal-ai",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-multimodal-ai",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:34.944774+00:00",
+      "document_sha256": "44b369aced8405c4022e6600cc73dc1a12bfb99680785cbdc84af3e56f41c8e1"
+    },
+    {
+      "title": "擴散模型（Diffusion Model）是什麼：從雜訊逐步生成影像",
+      "slug": "ai-term-diffusion-model",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-diffusion-model",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:35.292581+00:00",
+      "document_sha256": "6ef75bd0a7a360fb25aedfababdacaf11746ed35b3ea2792912e555133dd88bf"
+    },
+    {
+      "title": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
+      "slug": "ai-term-text-to-image",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-image",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:35.614624+00:00",
+      "document_sha256": "246ce10519e6509a97a8d86e4aa99fcd4d6347f13605a6265fa0298ac35d99d4"
+    },
+    {
+      "title": "文字生影片（Text-to-Video）是什麼：讓畫面在時間裡保持連貫",
+      "slug": "ai-term-text-to-video",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-video",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:36.077256+00:00",
+      "document_sha256": "6f74a6a646b6cd0c534262a1e3e7c44cfcfa3ea95532dbe5efeb2c2ff12879f6"
+    },
+    {
+      "title": "自動語音辨識（ASR）是什麼：把錄音轉成可核對的文字",
+      "slug": "ai-term-automatic-speech-recognition",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-automatic-speech-recognition",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:36.403861+00:00",
+      "document_sha256": "49859f28bb829f523301b87c1354297e763cdc8e76672821fa92b9ded2625f91"
+    },
+    {
+      "title": "語音合成（TTS）是什麼：讓文字成為聽得懂、聽得對的聲音",
+      "slug": "ai-term-text-to-speech",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-speech",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:36.736872+00:00",
+      "document_sha256": "1839cac076f189dd7e2fb9706a9f21f595f311ee7c02b8a77e486eb4061354d2"
+    },
+    {
+      "title": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
+      "slug": "ai-term-deepfake",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-deepfake",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:37.062425+00:00",
+      "document_sha256": "8980cd080aafe98d5b7a9550f7fc55ce57773f48e9efe0e07ac49976bf5f787c"
+    },
+    {
+      "title": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+      "slug": "ai-term-open-weights",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:37.397316+00:00",
+      "document_sha256": "dad744a21d9cc9c42d03dcf2c1f3194fd90d7abda805b2619ce8bd0d636d25d8"
+    },
+    {
+      "title": "開源 AI（Open Source AI）：公開哪些東西才算完整",
+      "slug": "ai-term-open-source-ai",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-open-source-ai",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:37.749299+00:00",
+      "document_sha256": "a2e01d29ef5e7fb1f9c55829b4e155e43cc06eb7784a5a84a50dc7dd018c7f86"
+    },
+    {
+      "title": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
+      "slug": "ai-term-content-credentials",
+      "url": "https://mokaair.com/zh-TW/life/ai-term-content-credentials",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:30:38.126469+00:00",
+      "document_sha256": "18033e7023e0b54ec58a5f73d77fc254f56652f3838055b416984a4ebda40211"
+    },
+    {
+      "title": "AI 名詞速查：50 個常見詞彙一次搞懂",
+      "slug": "ai-glossary-50-terms",
+      "url": "https://mokaair.com/zh-TW/life/ai-glossary-50-terms",
+      "publication_action": "updated",
+      "published_version": 4,
+      "published_at": "2026-09-14T00:24:09.134359+00:00",
+      "document_sha256": "e213ea1616f1c85f52fcf5386a9ca1baefeae70f257b5ac7da3516a9de9b9da1"
+    },
+    {
+      "title": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+      "slug": "ai-terms-index",
+      "url": "https://mokaair.com/zh-TW/life/ai-terms-index",
+      "publication_action": "new",
+      "published_version": 2,
+      "published_at": "2026-09-14T07:36:30.511544+00:00",
+      "document_sha256": "5eea5f274de87f0a960c8557a2bcc9acc36eaf0f4bfe4d162f5c50fce3ef3389"
+    }
+  ],
+  "limitations": [
+    "This receipt summarizes completed local evidence snapshots; it does not perform a new live verification.",
+    "Backup index readability was verified; a database restore was not tested.",
+    "published_at is the original publication timestamp; updated pages may retain an earlier date.",
+    "Sitemap presence is not proof that a search engine has indexed a page."
+  ]
+}

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">三種讀法與六個提問順序 / Three reading passes and the six questions to ask a paper</title>
+  <desc id="desc">左半邊由上往下是三種讀法與各自的時間，一份 40 頁的論文合計大約 20 分鐘。第一段是掃描，大約 3 分鐘，目的是決定該不該細讀，核對的方式是翻到它標的那三頁。第二段是精讀，大約 10 分鐘，弄清楚方法、數字與限制，核對方法那一節與表格。第三段是批判，大約 7 分鐘，問它哪裡最可能被推翻，核對作者自己寫的限制。右半邊由上往下是精讀時固定的六個提問順序，一題答完再問下一題，每一格下面那行灰字是你要回頭核對原文的地方。第一，研究問題：它想回答什麼、宣稱什麼貢獻，核對摘要以及前言的最後一段。第二，資料與樣本：誰、多少人、哪個國家、哪幾年，核對資料那一節與樣本描述的表。第三，方法：實驗、觀察還是模擬，有沒有對照組，核對方法那一節，看有沒有換算法。第四，主要結論與數字：數值、單位、在哪一張表，回那張表先看單位再看小數點。第五，限制：作者自己承認了哪些，照抄原文，核對討論的最後幾段。第六，和其他研究的關係：和誰一致、和誰不一致，核對前言與討論裡的比較段落。左下角的紅字提醒，凡是你要寫進報告的句子，都要回原文看過那一段，摘要可以外包，引用不行。功能名稱與方案依 2026 年 9 月的 Anthropic 官網。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">讀一份 40 頁的論文：三種讀法與六個提問順序</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Three reading passes and the six questions to ask a paper</text>
+
+  <!-- left column: the three passes -->
+  <text x="60" y="134" font-size="20" font-weight="700" fill="#102A2B">三種讀法與時間：一份 40 頁的論文共 20 分鐘</text>
+
+  <rect x="60" y="155" width="500" height="185" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="310" y="210" font-size="20" font-weight="700" fill="#1F4E73" text-anchor="middle">掃描 3 分鐘</text>
+  <text x="310" y="256" font-size="17" fill="#102A2B" text-anchor="middle">決定該不該細讀</text>
+  <text x="310" y="300" font-size="15" fill="#5C6B6B" text-anchor="middle">核對：翻到它標的那三頁</text>
+  <path d="M 310 342 L 310 381" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="385" width="500" height="185" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="310" y="440" font-size="20" font-weight="700" fill="#0B4F4D" text-anchor="middle">精讀 10 分鐘</text>
+  <text x="310" y="486" font-size="17" fill="#102A2B" text-anchor="middle">弄清楚方法、數字與限制</text>
+  <text x="310" y="530" font-size="15" fill="#5C6B6B" text-anchor="middle">核對：方法那一節與表格</text>
+  <path d="M 310 572 L 310 611" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="615" width="500" height="185" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="310" y="670" font-size="20" font-weight="700" fill="#A8571B" text-anchor="middle">批判 7 分鐘</text>
+  <text x="310" y="716" font-size="17" fill="#102A2B" text-anchor="middle">問它哪裡最可能被推翻</text>
+  <text x="310" y="760" font-size="15" fill="#5C6B6B" text-anchor="middle">核對：作者自己寫的限制</text>
+
+  <!-- right column: the six questions, in order -->
+  <text x="610" y="134" font-size="20" font-weight="700" fill="#102A2B">六個提問順序：一題答完再問下一題</text>
+  <path d="M 592 152 L 592 826" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="610" y="150" width="930" height="95" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="640" y="190" font-size="18" font-weight="700" fill="#1F4E73">① 研究問題：它想回答什麼、宣稱什麼貢獻</text>
+  <text x="640" y="222" font-size="15" fill="#5C6B6B">核對：摘要，以及前言的最後一段</text>
+
+  <rect x="610" y="265" width="930" height="95" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="640" y="305" font-size="18" font-weight="700" fill="#1F4E73">② 資料與樣本：誰、多少人、哪個國家、哪幾年</text>
+  <text x="640" y="337" font-size="15" fill="#5C6B6B">核對：資料那一節與樣本描述的表</text>
+
+  <rect x="610" y="380" width="930" height="95" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="640" y="420" font-size="18" font-weight="700" fill="#1F4E73">③ 方法：實驗、觀察還是模擬？有沒有對照組</text>
+  <text x="640" y="452" font-size="15" fill="#5C6B6B">核對：方法那一節，看有沒有換算法</text>
+
+  <rect x="610" y="495" width="930" height="95" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="640" y="535" font-size="18" font-weight="700" fill="#0B4F4D">④ 主要結論與數字：數值、單位、在哪一張表</text>
+  <text x="640" y="567" font-size="15" fill="#5C6B6B">核對：回那張表，先看單位再看小數點</text>
+
+  <rect x="610" y="610" width="930" height="95" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="640" y="650" font-size="18" font-weight="700" fill="#A8571B">⑤ 限制：作者自己承認了哪些？照抄原文</text>
+  <text x="640" y="682" font-size="15" fill="#5C6B6B">核對：討論的最後幾段</text>
+
+  <rect x="610" y="725" width="930" height="95" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="640" y="765" font-size="18" font-weight="700" fill="#245E45">⑥ 和其他研究的關係：和誰一致、和誰不一致</text>
+  <text x="640" y="797" font-size="15" fill="#5C6B6B">核對：前言與討論裡的比較段落</text>
+
+  <text x="60" y="848" font-size="15" fill="#B8442D">凡是你要寫進報告的句子，都要回原文看過那一段；摘要可以外包，引用不行</text>
+  <text x="60" y="876" font-size="15" fill="#5C6B6B">功能名稱與方案依 2026 年 9 月的 Anthropic 官網，以官網為準</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

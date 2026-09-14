@@ -1,0 +1,313 @@
+{
+  "slug": "claude-projects-knowledge-base",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Projects：把資料與指令放進專案，越用越懂你",
+      "description": "Claude Projects（專案）把專案指令、知識檔案與多個對話收在同一個工作區。這篇依 Anthropic 說明中心 2026 年 9 月的說明，用「民宿訂房問答」與「證照讀書」兩個專案示範建立、寫指令、放檔案與日常使用，講清楚免費版最多 5 個專案、知識檔案單檔 30 MB、超過上下文視窗時付費方案自動改用檢索模式、每個專案有獨立記憶、只有 Team 與 Enterprise 能分享，並用一張表分清楚專案、一般對話與記憶。",
+      "hero": {
+        "src": "/guides/claude-projects-knowledge-base/hero.jpg",
+        "alt": "米色底上一個打開的藍色資料夾，裡面疊著三張白色文件，資料夾前面貼著一張橘色便條，右上方浮著一個深青色的對話泡泡，下方一行字「越用越懂你的專案」。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Claude 的 Projects（專案）是一個獨立的工作區：一段只在這裡生效的專案指令、一組所有對話都讀得到的知識檔案，加上任意多個對話，用來解決「同一件事每次都要重講背景」的問題。依 Anthropic 說明中心 2026 年 9 月的說明，免費帳號也能建，最多 5 個，付費方案沒有上限。結論是：同一批資料會被問超過三次，就值得開一個專案，之後每個對話都從已經懂你的狀態開始。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇用兩個專案貫穿：民宿經營者的「訂房問答」專案，放房型、價格表與退訂規則，讓 Claude 幫忙草擬給客人的回覆；準備證照考試的「讀書」專案，放講義與考古題，請它出題與講解。讀完你會分清楚專案、一般對話與記憶各記什麼，知道哪些方案能建與分享、專案指令與知識檔案怎麼放、知識超過容量時怎麼運作，以及哪些資料不該放進去。"
+        },
+        {
+          "type": "heading",
+          "text": "專案是什麼：和一般對話、記憶差在哪",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一般對話只記得自己這一串，關掉再開新的，房型與價格都得重貼。記憶（Memory）跟著整個帳號走，Claude 會在聊天時把你提過的事存成一條條主題帶進之後的對話，但它存的是「你是誰、偏好什麼」這類摘要，不會把整份價格表背下來。專案介於兩者之間：指令與知識由你放進去、隨時可改，每個在專案裡開的新對話都自動帶著它們；說明中心特別註明，專案裡各個對話之間並不互通，除非你把內容寫進知識庫。分工因此很清楚：固定的規則與事實放專案，會變的細節放對話，跨專案都適用的個人偏好交給記憶。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "面向",
+            "專案 Projects",
+            "一般對話",
+            "記憶 Memory"
+          ],
+          "rows": [
+            [
+              "資料放哪",
+              "專案指令與知識檔案，由你手動放進去、隨時可改；專案內所有對話共用",
+              "只在這一串對話裡，靠你貼上或上傳",
+              "帳號層級的主題清單，Claude 自動存，也可以說「記住這件事」；在 Settings → Memory 逐條改或刪"
+            ],
+            [
+              "記多久",
+              "直到你改掉或刪除；封存後也保留",
+              "只到這串對話結束，新對話讀不到",
+              "持續累積；可以暫停，或整個重設（重設會連專案記憶一起刪）"
+            ],
+            [
+              "適合什麼",
+              "會問很多次的同一件事：一家店的問答、一張證照、一個客戶",
+              "一次性的問題；不想留紀錄的事可在專案外開無痕對話",
+              "你的角色、偏好、常用格式，所有對話都適用"
+            ],
+            [
+              "誰能用",
+              "所有方案；免費版最多 5 個，付費無上限；分享限 Team 與 Enterprise",
+              "所有方案",
+              "Free、Pro、Max 預設開啟；Team、Enterprise 由擁有者開啟"
+            ]
+          ],
+          "caption": "2026 年 9 月依 Claude 說明中心整理；方案與上限之後可能變動，以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用過 ChatGPT 的 Projects 的話，兩邊骨架相同，都是指令、檔案、對話三層；差別在 Claude 的知識不以檔案數計，而是看放不放得進上下文視窗，每個專案的記憶自動分開、不用自己選模式，分享專案則只有 Team 與 Enterprise 有。ChatGPT 各方案的差異與檔案上限，請看本站另一篇的整理。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT Projects：把檔案、指令與對話收在一個工作區",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-projects-guide"
+        },
+        {
+          "type": "link",
+          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "哪些方案能建：免費版 5 個、付費無上限、Team 與 Enterprise 能分享",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "說明中心寫專案開放給所有使用者，免費帳號最多 5 個，Pro、Max、Team、Enterprise 無上限；但 claude.com 定價頁的功能比較表把 Projects 列在付費方案，兩邊寫法不一致，免費帳號實際能不能建，以你登入後側欄有沒有「Projects」為準。付費方案多兩件事：知識超過上下文視窗時自動切換檢索模式（下一節），以及搜尋過去的對話。定價頁也寫明降級或取消訂閱後，對話、專案與檔案都留在帳號裡，只是部分功能不能用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "分享只有 Team 與 Enterprise 有。建立時選「Keep it private」（只有你和受邀的人能用）或「Share with your broader organization」（整個組織都能用，前提是管理者沒有關閉公開專案）；分享時每個成員選「Can view」（能看指令與知識、在專案裡開對話，不能改）或「Can edit」（能改指令與知識、管理成員）。就算專案公開，你在裡面開的對話仍是私人的，別人看不到，除非你另外分享那則對話。Enterprise 還能分享給整個群組（測試版），管理者要先在群組設定開啟「Share resources with this group」。"
+        },
+        {
+          "type": "heading",
+          "text": "建立第一個專案：名稱、描述、專案指令、知識檔案",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以下用網頁版 claude.ai 說明，桌面版相同，手機 App 以 App 的側欄為準。兩個範例專案一起建。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "滑鼠移到畫面左側的側欄點「Projects」，或直接開 claude.ai/projects，按右上角的「+ New Project」（新專案）。",
+            "填名稱與描述，例如「民宿訂房問答」與「回覆客人的房型、價格、退訂問題」。說明中心註明 Claude 讀不到名稱與描述，要給 Claude 看的話得寫進指令。Team 與 Enterprise 在這一步選公開或私人。",
+            "進入專案後，在右側的知識區點「Set project instructions」貼上規則（範例在下面），按「Save instructions」存檔，之後隨時可以改。",
+            "在知識區點「+」放知識：從電腦上傳檔案、貼上一段文字，或連結 Google 雲端硬碟的文件（只有私人專案能連，Google 文件會同步最新版；會寫程式的人還能連 GitHub 儲存庫）。民宿專案放房型價格表、訂房規則、常見問答；讀書專案放考試大綱、講義、考古題。",
+            "在專案裡按新對話開始用。以前在專案外聊過的對話，點對話名稱旁的下拉箭頭選「Add to project」移進來，之後就套用專案的指令與知識。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "專案指令是專案裡所有對話的固定規則。說明中心建議只寫一般性的背景、關鍵原則與 Claude 的角色，保持精簡，單次任務的要求留在對話裡講；Claude Academy 的課程也提醒，模糊的指令會得到不一致的結果。兩份完整範例："
+        },
+        {
+          "type": "list",
+          "items": [
+            "民宿訂房問答：「你是『山邊民宿』的訂房小幫手，負責幫老闆草擬回覆客人的訊息。房型、價格、退訂與入住規則一律以知識檔案裡的『房型價格表』與『訂房規則』為準，檔案裡沒寫的事不要自己補，改成告訴我要向客人確認什麼。回覆用繁體中文、口語但有禮，每則不超過 150 字，先回答客人的問題，再附一句下一步（例如請客人提供入住日期與人數）。客人問空房只能說『請稍等我確認』，不要承諾有房。每次先給我草稿，等我說可以再整理成能直接貼給客人的版本。」",
+            "證照讀書：「我在準備不動產經紀人考試，範圍以知識檔案裡的『考試大綱』為準，講義與考古題也在知識檔案裡。你是我的家教：我說『出題』時，從大綱裡出 5 題單選，一次一題，我答完再公布答案，並解釋錯的選項為什麼錯、引用講義的章節名稱；我說『講解』時，先用 3 句話講概念，再舉一個台灣的實際例子。用繁體中文與台灣的法規名稱，不確定的條文標明『請查最新條文』，不要編造條號。」"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "兩份都把「以哪個檔案為準」和「資料不夠就先問」寫進去了，幻覺最常出現在 Claude 想幫忙填空的時候。指令改了之後，已經產生的回答不會回頭改，之後送出的訊息才照新規則走。"
+        },
+        {
+          "type": "link",
+          "text": "系統提示詞入門：讓 Claude 穩定扮演一種角色",
+          "url": "https://mokaair.com/zh-TW/life/claude-system-prompt-basics"
+        },
+        {
+          "type": "paragraph",
+          "text": "知識檔案接受的文件格式與一般上傳相同：PDF、DOCX、CSV、TXT、HTML、ODT、RTF、EPUB、JSON、XLSX（XLSX 要先在設定開啟程式執行與檔案建立），圖片也可以；但專案檔案單檔上限 30 MB（一般對話是 500 MB），數量不限，前提是全部內容放得進上下文視窗，而且只抽取文字（說明中心註明多模態 PDF 例外），Word 裡嵌的圖片、掃描成圖片的價格表都讀不到，先轉成文字再放。檔名要有意義，例如「2026 房型價格表」而不是「scan001」，說明中心說 Claude 會靠檔名判斷該讀哪一份。"
+        },
+        {
+          "type": "paragraph",
+          "text": "容量沒有一個固定的檔案總數，看的是上下文視窗：付費方案依模型是 1M、500K 或 200K token（官網換算 200K 約 500 頁文字），免費版的數字官網沒有分開寫。超過怎麼辦：Pro、Max、Team、Enterprise 在知識接近或超過上下文視窗時自動切換 RAG（檢索增強生成）模式，專案上會出現已啟用 RAG 的標示，容量最多擴大 10 倍。這時 Claude 不再把整個知識庫讀進對話，而是用「專案知識搜尋」工具找出相關段落來回答，你會在對話裡看到它在搜尋；網頁搜尋、延伸思考與 Research 照常可用，知識減到門檻以下會自動切回整份讀入。免費版沒有 RAG，說明中心寫的是到了門檻就不能再加內容，以官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "給 Claude 讀 PDF 與試算表：摘要、比對與抓數字",
+          "url": "https://mokaair.com/zh-TW/life/claude-file-analysis-pdf-excel"
+        },
+        {
+          "type": "link",
+          "text": "上下文視窗是什麼：為什麼聊久了 AI 會忘記前面說的話，六個做法讓它記住",
+          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-projects-knowledge-base/diagram-1.svg",
+          "alt": "圖解：左邊是專案的三層結構，專案指令在上、知識檔案在中、對話在下，上面兩層自動帶進每個對話；右邊是從建立專案到日常使用的五個步驟。",
+          "width": 1600,
+          "height": 900,
+          "caption": "左邊看專案怎麼組成：上面兩層由你放進去，每個新對話自動帶著；右邊照步驟做一遍就能建好第一個專案。圖上的數字依 2026 年 9 月的說明中心。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "專案指令寫「怎麼做」，知識檔案放「事實」，兩者別混在一起",
+          "text": "指令是行為規則：語氣、格式、角色、以哪份檔案為準、資料不夠時先問。知識是事實：價格表、規則、講義、考古題。把價格寫進指令，改價時你會忘了改；把「回覆不超過 150 字」放進檔案，Claude 在檢索模式下可能漏掉它。說明中心也建議指令保持精簡，只放一般性的背景與關鍵原則，單次任務的要求在對話裡講就好。"
+        },
+        {
+          "type": "heading",
+          "text": "在專案裡工作：專案內對話、把結論放回知識、專案記憶",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在專案裡開的每個對話一開始就帶著指令與知識，直接貼客人的訊息或說「出題」即可。但對話之間不互通：昨天在 A 對話裡決定「連住三晚九折」，今天的 B 對話不知道。想讓所有對話都知道，就把結論放回知識：請 Claude 把這串對話的決定整理成一段文字，在知識區按「+」貼上成新的文字內容，或更新原本的規則檔重傳。不小心在專案裡開了不相關的對話，用對話名稱旁的下拉箭頭選「Remove from project」移出去。"
+        },
+        {
+          "type": "paragraph",
+          "text": "專案記憶是另一層。記憶在 Free、Pro、Max 預設開啟，Team 與 Enterprise 要由擁有者在組織設定開啟；說明中心寫明每個專案有自己獨立的記憶空間與專案摘要，專案裡聊到的事不會流到專案外或其他專案，反過來也一樣，所以民宿專案談過的客人狀況不會出現在讀書專案，把對話移出專案後，它就改算進專案外的記憶。要看或改，走 Settings（設定）→ Memory，所有主題列在 Topics 下，可逐條編輯或刪除，也可以在對話裡直接說「記住這件事」；關閉時有 Pause（暫停，保留現有記憶但不再新增）與 Reset（重設，連專案記憶一起永久刪除，無法復原）兩個選項。付費方案還能請 Claude 搜尋過去的對話，在專案裡搜尋只限這個專案。"
+        },
+        {
+          "type": "link",
+          "text": "Claude 的記憶與隱私：什麼會被記住、怎麼清除、對話會不會拿去訓練",
+          "url": "https://mokaair.com/zh-TW/life/claude-memory-and-privacy"
+        },
+        {
+          "type": "heading",
+          "text": "好用的用法：固定語氣與格式、常用資料、跨多天的工作",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "固定語氣與格式：「每次都要一樣」的東西放指令，例如民宿回覆的語氣、字數與結尾的下一步，或讀書專案的出題格式與解釋長度；定好之後每次只要貼訊息或說一個詞，不必再描述要怎麼回。"
+        },
+        {
+          "type": "paragraph",
+          "text": "常用資料：會反覆引用的事實放知識，而且用檔案不用口頭講。說明中心的用量建議寫明專案內容會被快取，重複引用時只有新增的部分計入用量，比每次在新對話重新上傳同一份檔案划算。價格改了就重傳新版檔案，不要在對話裡口頭更正，其他對話讀不到那句話。"
+        },
+        {
+          "type": "paragraph",
+          "text": "跨多天的工作：讀書專案每一章開一個對話，考前請 Claude 搜尋這個專案裡所有對話中答錯的題目，整理成錯題清單再貼回知識；民宿專案每個月把新出現的問題補進常見問答檔。做完的專案用右上角的「…」封存，知識與分享設定都保留，之後可以取消封存；確定不要了再從「…」選「Delete」並按「Yes, delete」，封存中的專案要先取消封存才能刪。"
+        },
+        {
+          "type": "heading",
+          "text": "限制與注意：知識不是即時資料、個資與客戶名單、分享給誰",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "知識檔案不是即時資料。價格表停在你上傳的那一刻，Claude 不會自己去看官網或訂房系統，只有連結進來的 Google 文件會同步最新版；「今天還有沒有空房」這種問題不該交給專案回答，指令裡要明寫它只能請客人稍等確認。"
+        },
+        {
+          "type": "paragraph",
+          "text": "個資與客戶名單。訂房紀錄裡的姓名、電話、身分證字號不該整份放進知識，問答需要的是規則與範例而不是名單，範例裡的客人寫成「王小姐」就好。記憶那一側，說明中心寫明預設不存健康、族群、宗教、政治等敏感主題，身分證字號、金融帳號即使你要求也不會存，但這是記憶的規則，知識檔案你放什麼它就讀什麼。對話會不會用於訓練模型是另一個設定，見記憶與隱私那一篇。"
+        },
+        {
+          "type": "paragraph",
+          "text": "分享給誰。個人方案沒有分享，專案只有自己看得到；Team 與 Enterprise 分享前想清楚給「Can view」還是「Can edit」，能編輯的人可以改指令、換檔案、移除成員，設成整個組織公開則所有人都能用它開對話。已分享的專案不能連結 Google 雲端硬碟，成員被移除或離開群組後就看不到內容。最後，指令改了只影響之後的訊息，換做法時開一個新對話最乾淨。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Claude 說明中心：What are projects?（所有方案可建、免費 5 個、知識庫與專案指令、RAG 限付費、Team 與 Enterprise 的分享權限）",
+          "url": "https://support.claude.com/en/articles/9517075-what-are-projects",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：How can I create and manage projects?（+ New Project、名稱與描述、Set project instructions、知識區的 +、對話間不互通、Add to project、封存與刪除）",
+          "url": "https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Retrieval augmented generation (RAG) for projects（付費方案、接近上下文視窗自動啟用、最多 10 倍、專案知識搜尋工具、標示、與網頁搜尋等相容）",
+          "url": "https://support.claude.com/en/articles/11473015-retrieval-augmented-generation-rag-for-projects",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Upload files to Claude（文件格式、專案檔案單檔 30 MB、數量不限但須放進上下文視窗、只抽取文字、一般對話 500 MB）",
+          "url": "https://support.claude.com/en/articles/8241126-upload-files-to-claude",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Use Claude's chat search and memory（記憶預設狀態、每個專案獨立記憶空間與摘要、Settings → Memory、Topics、Pause 與 Reset、敏感主題、搜尋限專案內）",
+          "url": "https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Manage project visibility and sharing（Team 與 Enterprise、公開與私人、Share 按鈕、Can view 與 Can edit、群組分享測試版、對話不隨專案分享）",
+          "url": "https://support.claude.com/en/articles/9519189-manage-project-visibility-and-sharing",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Use Google Workspace connectors（Google 雲端硬碟只能加進私人專案的 Files、Google 文件同步最新版）",
+          "url": "https://support.claude.com/en/articles/10166901-use-google-workspace-connectors",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Use the GitHub integration（專案知識區的 + 選 GitHub、同步儲存庫）",
+          "url": "https://support.claude.com/en/articles/10167454-use-the-github-integration",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：How large is the context window on paid Claude plans?（1M、500K、200K token、200K 約 500 頁、專案用 RAG、指令保持精簡）",
+          "url": "https://support.claude.com/en/articles/8606394-how-large-is-the-context-window-on-paid-claude-plans",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：How do usage and length limits work?（指令精簡、單次任務放對話、清掉不用的檔案）",
+          "url": "https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Usage limit best practices（專案內容快取、重複引用只計新增部分）",
+          "url": "https://support.claude.com/en/articles/9797557-usage-limit-best-practices",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 定價頁（比較表把 Projects 列在付費方案、Pro 無限專案、Project sharing 限 Team 與 Enterprise、降級後專案保留）",
+          "url": "https://claude.com/pricing",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude Academy：Introduction to projects（指令範例、模糊指令結果不一致、檔名有意義、指令與知識的分工）",
+          "url": "https://academy.claude.com/courses/claude-101/introduction-to-projects",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Projects in ChatGPT（只用於對照：檔案數依方案設上限、記憶模式可選、分享開放所有方案）",
+          "url": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}

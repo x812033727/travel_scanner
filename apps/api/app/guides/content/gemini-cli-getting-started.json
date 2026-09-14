@@ -1,0 +1,348 @@
+{
+  "slug": "gemini-cli-getting-started",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 129,
+  "locales": {
+    "zh-TW": {
+      "title": "Gemini CLI 安裝：第一次在終端機對話",
+      "description": "Gemini CLI 是在終端機使用的 AI 工具，可以讀取專案檔案、協助修改程式與執行工作流程。本篇帶你在 Windows、macOS 或 Linux 完成安裝，確認版本，建立獨立練習資料夾並完成第一次對話。它與 Gemini 網頁、手機 App 的入口不同，適合需要處理本機檔案與程式的人。",
+      "hero": {
+        "src": "/guides/gemini-cli-getting-started/hero.jpg",
+        "alt": "CLI 安裝的完成條件的原創插畫，以文件、裝置與流程等物件呼應第一次在終端機對話；非產品介面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Gemini CLI 是在終端機使用的 AI 工具，可以讀取專案檔案、協助修改程式與執行工作流程。本篇帶你在 Windows、macOS 或 Linux 完成安裝，確認版本，建立獨立練習資料夾並完成第一次對話。它與 Gemini 網頁、手機 App 的入口不同，適合需要處理本機檔案與程式的人。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-cli-getting-started/diagram-1.svg",
+          "alt": "檢查環境：確認 Node 與終端機；安裝啟動：核對 gemini 版本；首次對話：在練習資料夾執行",
+          "width": 1600,
+          "height": 900,
+          "caption": "CLI 安裝的完成條件。此為原創教學圖解，並非產品畫面或實測輸出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "開始前：確認系統與終端機",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方安裝檔案目前列出的建議系統包括 Windows 11 24H2 以上、macOS 15 以上及 Ubuntu 20.04 以上，執行環境需要 Node.js 20 以上，並支援 PowerShell、Bash 或 Zsh。本篇本機核對版本為 Gemini CLI 0.59.0、Windows 與 Node.js 24.13.0；其他平臺步驟依官方文件整理，並非全部經實機測試。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先選一種安裝方式即可。跨平臺可用 npm，macOS 與 Linux 也可依官方文件使用 Homebrew。混用多個安裝方式時，可能出現同名命令指向不同版本的情況。若只是日常聊天，"
+            },
+            {
+              "type": "link",
+              "text": "電腦網頁版",
+              "url": "https://mokaair.com/zh-TW/life/gemini-web-desktop-guide"
+            },
+            {
+              "type": "text",
+              "text": "已足夠；不要因為 CLI 聽起來較進階就認為它一定比較適合你的工作。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "準備一個空白練習資料夾，裡面只放虛構文字。CLI 可以接觸本機工具，因此第一次啟動前要看清楚所在目錄，避免直接在含有大量私人檔案的家目錄練習。認證與費用另見"
+            },
+            {
+              "type": "link",
+              "text": "CLI 登入篇",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-authentication"
+            },
+            {
+              "type": "text",
+              "text": "，本篇先把安裝與第一次啟動做好。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "第一步：確認 Node.js 與安裝版本",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "開啟 Windows Terminal 的 PowerShell，或 macOS／Linux 的終端機，先執行版本檢查。若找不到 node 或 npm，先從 Node.js 官方入口安裝受支援版本，完成後重新開啟終端機。能顯示版本，再安裝本篇核對的 CLI 版本。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "終端機命令",
+          "code": "node --version\nnpm --version\nnpm install -g @google/gemini-cli@0.59.0\ngemini --version\ngemini --help\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "預期 gemini --version 顯示 0.59.0，help 顯示啟動方式與可用引數。這證明目前入口可以執行，還不代表 Google 登入或模型服務已成功。若你採最新穩定版，先把版本記錄下來，後面的指令差異以"
+            },
+            {
+              "type": "link",
+              "text": "版本化指令總表",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-command-reference"
+            },
+            {
+              "type": "text",
+              "text": "核對。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "不想做永久全域安裝時，官方也提供 npx 啟動方式。npx 仍會下載並執行套件，並非完全不在本機留下快取；第一次使用時應確認套件名稱與來源。下方命令只顯示版本，適合快速確認範例版本是否能啟動。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "終端機命令",
+          "code": "npx --package=@google/gemini-cli@0.59.0 gemini --version\n"
+        },
+        {
+          "type": "heading",
+          "text": "第二步：建立練習工作區",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows 可用檔案總管建立 gemini-practice，進入後在該位置開啟終端機；也可使用下方 PowerShell 命令。macOS 或 Linux 用 mkdir gemini-practice，再 cd gemini-practice。資料夾名稱只是範例，已存在時先確認內容，不要為了重做練習刪除舊檔。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "PowerShell",
+          "code": "New-Item -ItemType Directory -Path gemini-practice\nSet-Location gemini-practice\nGet-Location\ngemini\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "啟動後閱讀資料夾信任提示，確認畫面所列路徑確實是練習資料夾，再依流程選擇登入方式。信任專案可能讓它的自訂指令、設定與擴充生效，所以不是看到提示就一律按同意。你自己建立的空資料夾最容易理解，也方便之後逐步加入功能。"
+        },
+        {
+          "type": "heading",
+          "text": "第三步：完成一個不使用工具的對話",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "完成登入後，先輸入下方純文字提示詞，確認基本對話可以回覆。",
+            "檢查結果是否保留原文資訊，並把未提供日期列為待確認。",
+            "輸入 /help 看指令說明，確認這些斜線指令是在 CLI 內使用。",
+            "輸入 /about 檢視版本資訊，將它與終端機版本檢查對照。",
+            "輸入 /quit 結束，回到一般終端機提示符號。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Gemini CLI 內輸入",
+          "code": "只整理下面的文字，不使用任何工具：\n青葉讀書會在社群中心舉辦，日期稍後公告。\n請列出已知資訊，以及應向主辦單位確認的一個問題。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期回覆包含活動地點與日期尚未確定的說明。這是示範驗收條件，不是保證每次回覆都完全相同。若能正常回答，表示基本登入與模型呼叫流程已連通；下一步再加入檔案，較容易判斷之後的失敗是資料或工具造成。"
+        },
+        {
+          "type": "heading",
+          "text": "平臺差異與更新習慣",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Windows 的 PowerShell 與 Bash 指令不完全相同，例如列檔案可用 Get-ChildItem，而 Unix 類系統通常用 ls。看到教學標籤再複製，不要把每段命令都貼進同一個視窗。"
+            },
+            {
+              "type": "link",
+              "text": "檔案與 shell 教學",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-files-and-shell"
+            },
+            {
+              "type": "text",
+              "text": "會進一步區分 CLI 提示詞、斜線指令與作業系統命令。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "更新前先記錄目前版本、已安裝的擴充與常用設定，閱讀官方發布說明，再使用原本的安裝方式更新。新版本可能改變命令名稱或預設值，尤其是標示實驗性的功能。若只是要重現本系列，可先保留固定版本，再在另一個練習環境測試升級。"
+        },
+        {
+          "type": "heading",
+          "text": "常見問題與下一步",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「安裝完成卻找不到 gemini」重新開啟終端機，確認 npm 全域執行目錄有加入 PATH。若有多個 Node.js 安裝來源，先檢視目前命令指向哪裡。不要反覆用系統管理員權限重灌，卻忽略實際使用的是另一個入口。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「啟動後一直要求登入」確認登入完成的帳號與 CLI 選擇的認證方式一致，並檢視是否有地區或組織資格錯誤。安裝命令成功與登入成功是不同階段；詳細處理方式在"
+            },
+            {
+              "type": "link",
+              "text": "認證篇",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-authentication"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「第一次就能修改整個專案嗎」工具可能具備這種能力，但練習應從一個檔案開始。先理解讀取、修改與核准畫面，再加入"
+            },
+            {
+              "type": "link",
+              "text": "GEMINI.md 規則",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "link",
+              "text": "權限控制",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "。若遇到 PATH、憑證或設定不生效，儲存原始錯誤後沿"
+            },
+            {
+              "type": "link",
+              "text": "疑難排解",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "逐層確認。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查證與範例",
+          "text": "本文於 2026-09-14 對照官方文件整理。畫面操作依官方說明，非所有裝置均經實機測試；範例輸出是驗收目標，實際內容依資料而異。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後的檢核",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "通過條件"
+          ],
+          "rows": [
+            [
+              "操作",
+              "能依正文重做一次，說明每一步使用的輸入。"
+            ],
+            [
+              "結果",
+              "能用原始資料或可重現測試核對輸出，而非只看語氣。"
+            ],
+            [
+              "延伸",
+              "知道下一篇教學解決的問題，以及什麼時候需要它。"
+            ]
+          ],
+          "caption": "完成實作後逐項確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著可以閱讀 "
+            },
+            {
+              "type": "link",
+              "text": "CLI 認證",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-authentication"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "CLI 指令總表",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-command-reference"
+            },
+            {
+              "type": "text",
+              "text": "，把本篇的操作接到下一個工作流程。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gemini CLI：安裝與版本",
+          "url": "https://geminicli.com/docs/get-started/installation/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini CLI：認證",
+          "url": "https://geminicli.com/docs/get-started/authentication/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

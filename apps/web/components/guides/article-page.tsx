@@ -1,6 +1,9 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
+import { SeriesHub } from "./series-hub";
+import { seriesCopy } from "@/lib/guide-series-copy";
+import { geminiSeries, seriesMember } from "@/lib/gemini-series";
 import { GuideArticle, type GuideArticleLabels } from "@/components/guides/article";
 import type { GuideCardLabels } from "@/components/guides/card";
 import { TravelCrosslinks, type TravelCrosslinksLabels } from "@/components/guides/travel-crosslinks";
@@ -11,11 +14,11 @@ import { localeLabels, type Locale } from "@/i18n/routing";
 import { citiesForCountry, countryKeys, destinationSeeds, type CatalogTranslator } from "@/lib/destinations";
 import { guideAffiliateDestination } from "@/lib/guide-affiliate";
 import {
-  guideHref, guideListHref, readingMinutes,
+  guideHeadings, guideHref, guideListHref, readingMinutes,
   type GuideArticleState, type GuideKind, type GuideSummary, type PublishedGuide,
 } from "@/lib/guides";
 import { getAdsenseSlot } from "@/lib/adsense.server";
-import { getGuideArticle, getGuideList } from "@/lib/guides.server";
+import { getGuideArticle, getGuideList, getGuideSeries } from "@/lib/guides.server";
 import { localeUrl, siteUrl } from "@/lib/seo";
 import { breadcrumbs, type Crumb } from "@/lib/structured-data";
 
@@ -224,7 +227,7 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
     updated: t("guides.updated"),
     sources: t("guides.sources"), checkedOn: t("guides.checkedOn"),
     destination: t("guides.destination"), otherLanguages: t("guides.otherLanguages"),
-    contents: t("guides.contents"),
+    contents: state.series?.current ? seriesCopy(locale).contents : t("guides.contents"),
     adLabel: t("guides.adLabel"),
     disclosure: ts("disclosure"),
     partnerDisclosure: t("guides.partnerDisclosure"),
@@ -235,6 +238,17 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
     },
   };
   const hero = state.document.hero;
+  const copy = seriesCopy(locale);
+  const belongsToGemini = locale === geminiSeries.locale && kind === "life" && (slug === geminiSeries.hubSlug || Boolean(seriesMember(slug, locale, kind)));
+  const geminiHub = belongsToGemini ? (slug === geminiSeries.hubSlug ? state : await getGuideArticle("life", geminiSeries.hubSlug, locale)) : null;
+  const geminiEnabled = geminiHub?.status === "published" && Boolean(geminiHub.document);
+  labels.blocks.code = copy;
+  const isHub = Boolean(state.series && !state.series.current && state.series.hub.slug === slug);
+  const series = isHub && state.series ? await getGuideSeries(state.series.slug, locale) : null;
+  if (state.series?.current) trail.push({ name: state.series.hub.title, path: guideHref(state.series.hub.kind, state.series.hub.slug) });
+  const headings = guideHeadings(state.document.blocks);
+  const seriesDirectory = isHub ? series ? <SeriesHub series={series} />
+    : <div role="alert"><p>{copy.unavailable}</p><a href={`/${locale}${guideHref(kind, slug)}`} className="inline-flex min-h-11 items-center underline">{copy.retry}</a></div> : null;
 
   return (
     <>
@@ -246,7 +260,7 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
           // real body, a real publication date, and an image only when the article has one.
           {
             "@context": "https://schema.org",
-            "@type": "Article",
+            "@type": isHub ? "CollectionPage" : "Article",
             headline: state.document.title,
             description: state.document.description,
             inLanguage: locale,
@@ -256,17 +270,34 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
             mainEntityOfPage: localeUrl(locale, guideHref(kind, slug)),
             author: { "@type": "Organization", name: "Mokaair" },
             publisher: { "@type": "Organization", name: "Mokaair" },
+            ...(series ? { mainEntity: { "@type": "ItemList", itemListElement: series.entries.map((entry, index) => ({
+              "@type": "ListItem", position: index + 1, name: entry.title, url: localeUrl(locale, guideHref(entry.kind, entry.slug)),
+            })) } } : {}),
           },
         ]}
       />
-      <main className="mx-auto max-w-3xl px-5 py-10 md:py-14">
+      <main className={`mx-auto px-5 py-10 md:py-14 ${state.series ? "max-w-6xl" : "max-w-3xl"}`}>
+        {state.series ? <nav aria-label="Breadcrumb" className="mb-6 text-sm leading-7 text-[var(--muted)]"><ol className="flex flex-wrap gap-2">
+          {trail.filter(crumb => crumb.path !== "/").map(crumb => <li key={crumb.path}><Link className="underline" href={crumb.path}>{crumb.name}</Link><span aria-hidden="true"> / </span></li>)}
+          <li aria-current="page">{state.document.title}</li>
+        </ol></nav> : null}
+        <div className={state.series?.current ? "grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_15rem]" : ""}>
+        <div className="min-w-0">
         <GuideArticle
+          geminiEnabled={geminiEnabled}
           state={{ ...state, document: state.document }}
           related={related}
           readingTime={t("guides.readingTime", { minutes: readingMinutes(state.document) })}
           labels={labels}
           adsense={adsense}
+          seriesHub={seriesDirectory}
         />
+        </div>
+        {state.series?.current ? <aside className="hidden lg:block"><nav aria-label={labels.contents} className="sticky top-24 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4">
+          <a href={`/${locale}${guideHref(state.series.hub.kind, state.series.hub.slug)}`} className="inline-flex min-h-11 items-center text-[var(--teal)] underline">{copy.back}</a>
+          <h2 className="mt-2 font-semibold">{labels.contents}</h2><ol className="mt-3 space-y-2 text-sm leading-6">{headings.map(heading => <li key={heading.id}><a href={`#${heading.id}`} className="underline">{heading.text}</a></li>)}</ol>
+        </nav></aside> : null}
+        </div>
         <p className="mt-10">
           <Link className="inline-flex min-h-11 items-center text-[var(--teal)] underline" href={listing.path}>
             {listing.name}

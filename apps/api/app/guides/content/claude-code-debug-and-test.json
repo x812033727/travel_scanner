@@ -1,0 +1,267 @@
+{
+  "slug": "claude-code-debug-and-test",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 134,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜除錯與補測試",
+      "description": "從重現問題走到修正與回歸測試。這篇用一個刻意準備的待辦錯誤，示範如何把症狀轉成重現步驟、定位原因、補測試並驗證修正。材料中的問題是勾選一筆待辦時改到其他項目；你會先看到預期失敗，再確認修正後同一案例通過，避免只憑「看起來正常」就結束除錯。",
+      "hero": {
+        "src": "/guides/claude-code-debug-and-test/hero.jpg",
+        "alt": "除錯與補測試：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "這篇用一個刻意準備的待辦錯誤，示範如何把症狀轉成重現步驟、定位原因、補測試並驗證修正。材料中的問題是勾選一筆待辦時改到其他項目；你會先看到預期失敗，再確認修正後同一案例通過，避免只憑「看起來正常」就結束除錯。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "下載"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/bug-toggle.zip",
+              "text": "刻意錯誤版"
+            },
+            {
+              "type": "text",
+              "text": "，在新的資料夾解壓縮。這份材料本來就應有測試失敗，不要拿它覆蓋自己的完成版。啟動方式與"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-practice-project-setup",
+              "text": "練習專案準備"
+            },
+            {
+              "type": "text",
+              "text": "相同，不需要資料庫或第三方套件。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先重現，不急著猜原因"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-debug-and-test/diagram-1.svg",
+          "alt": "先重現，不急著猜原因 → 寫出完整重現步驟 → 沿呼叫關係定位",
+          "width": 1600,
+          "height": 900,
+          "caption": "先重現，不急著猜原因 → 寫出完整重現步驟 → 沿呼叫關係定位",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "在錯誤版資料夾執行 npm test，保留第一次失敗的測試名稱與預期、實際值。再執行 npm start，新增兩筆待辦並勾選第一筆，觀察是否第二筆反而改變。這兩種證據分別來自資料測試與使用者介面，能互相對照。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "刻意錯誤版的終端機：先取得失敗基準",
+          "code": "npm test\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "測試失敗不是這個練習沒裝好，而是指定的起點。若所有測試都通過，先確認是不是開到 starter 或 complete 資料夾；若錯誤是找不到 Node，則先補齊執行環境，還沒進入程式除錯階段。把兩種問題分開處理，才不會修錯方向。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "寫出完整重現步驟"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：提供可重現錯誤",
+          "code": "這是 bug-toggle 練習材料，勾選項目會改到其他待辦。\n重現：新增 A 與 B，勾選 A；預期只有 A 完成，實際狀態不符合。\n請先執行 npm test，讀取第一個相關失敗與 model.js、app.js。\n先說明根因與最小修正，不要把整個介面重寫，也不要刪除失敗測試。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "好的錯誤描述包含起始狀態、操作、預期與實際結果。不要只貼最後一行 AssertionError，也不要直接指示把測試期待改成目前錯誤輸出。測試的用途是守住正確行為，修改它之前應先確認原本期待是否合理。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "沿呼叫關係定位"
+        },
+        {
+          "type": "paragraph",
+          "text": "先查 app.js 在勾選時傳入什麼，確認它使用 item.id；再查 model.js 如何比對 id。錯誤版故意把相等條件改成不相等，導致選中項目保持原狀，其他項目反而切換。根因在資料選擇條件，不是瀏覽器顏色或勾選圖示。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "證據",
+            "能確認什麼",
+            "不能單獨證明什麼"
+          ],
+          "rows": [
+            [
+              "畫面勾選異常",
+              "使用者可重現問題",
+              "錯誤一定在 CSS"
+            ],
+            [
+              "app.js 傳入 id",
+              "呼叫端使用穩定識別",
+              "資料函式一定正確"
+            ],
+            [
+              "model.js 比對條件",
+              "哪些項目會被改動",
+              "修正後所有介面已驗證"
+            ],
+            [
+              "測試期待與實際值",
+              "指定行為不符",
+              "全部功能都失敗"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "如果是自己的真實專案，根因可能不同。不要因為這篇範例修一個符號，就把所有勾選錯誤都歸類為同一原因。沿實際輸入與呼叫關係查證，才能知道應改哪一層。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "做最小修正並保留其他資料"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是正確的切換函式。它建立新陣列，只替符合 id 的項目建立更新物件，其他項目保持原樣。把這個結果與原差異對照，確認只修正必要條件，沒有順便改資料結構或刪除驗證。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "label": "修正 model.js 的 toggleTodo",
+          "code": "export function toggleTodo(items, id) {\n  return items.map(item => item.id === id\n    ? { ...item, completed: !item.completed }\n    : item);\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "請 Claude 實作後重跑原本失敗的測試，再跑整套 npm test。單一案例通過能證明原錯誤已被修到；整套測試則確認新增、輸入驗證與刪除沒有回歸。兩次檢查都有目的，不需要在沒有新變更時反覆跑同一組命令湊紀錄。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "補一個邊界測試"
+        },
+        {
+          "type": "paragraph",
+          "text": "原測試已涵蓋指定項目與其他項目不變，可以再補「不存在的 id」情境，確認不會誤改任何資料。這個案例與根因直接相關，比只測試函式存在更有價值。下例可存成獨立檔，不需要改原本測試內容。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "label": "寫入 tests/toggle-missing.test.mjs",
+          "code": "import { test } from 'node:test';\nimport assert from 'node:assert/strict';\nimport { toggleTodo } from '../model.js';\n\ntest('不存在的識別碼不會切換任何項目', () => {\n  const items = [\n    { id: 'a', title: '讀書', completed: false },\n    { id: 'b', title: '運動', completed: true },\n  ];\n  assert.deepEqual(toggleTodo(items, 'missing'), items);\n});\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "這個測試也能在錯誤版失敗，因此確實能區分正確與錯誤行為。若你補的測試無論條件寫相等或不相等都通過，就要檢查輸入是否足以觸發差異。好的回歸測試應該能防止同類問題再次出現。"
+        },
+        {
+          "type": "paragraph",
+          "text": "修正前先保存最小輸入與實際輸出，例如兩個不同識別碼、只有其中一個應切換。這比提供整張畫面更容易定位條件判斷。接著補一個不存在識別碼的案例，確認程式不會在找不到目標時誤改全部項目。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果某個測試只在單獨執行時通過，完整執行卻失敗，先查看共享狀態、測試順序與環境依賴。不要把測試次數增加到偶爾出現綠燈就交付，應找出造成不穩定的條件並保存證據。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後比較修正前後的差異，確認只改了造成問題的判斷與必要測試。順手重排整份檔案、改變命名或加入新功能，都會增加審查負擔。若確實發現其他問題，另列下一步，不讓本次小修正失去清楚的完成界線。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "回到瀏覽器驗證"
+        },
+        {
+          "type": "paragraph",
+          "text": "重新啟動或重新整理同一份修正後網站，新增 A、B、C，分別勾選與取消不同項目，確認每次只有目標改變。再刪除其中一筆，繼續切換剩下項目，驗證刪除造成的顯示位置變化不會影響識別。若你同時開著多份材料，核對伺服器工作目錄與埠號。"
+        },
+        {
+          "type": "paragraph",
+          "text": "記錄修正前的失敗名稱、根因、修改檔案、修正後測試與瀏覽器結果。若只完成自動測試，清楚列出尚未操作的畫面案例，不能把它們寫成已通過。這份紀錄能讓下一位審查者快速理解為什麼修改是必要的。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "不要用刪除測試、吞掉例外或增加任意等待來掩蓋失敗。先確認症狀與根因，再用能區分正誤的案例驗證修正。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "小練習是加入兩筆相同標題但不同 id 的資料，確認操作仍以 id 為準。完成判準是原失敗可重現、修正範圍清楚、相關測試通過，且瀏覽器中不再改錯項目。接著用"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-git-review-pr",
+              "text": "Git 與 PR"
+            },
+            {
+              "type": "text",
+              "text": "整理可供審查的成果。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Common workflows",
+          "url": "https://code.claude.com/docs/en/common-workflows",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Best practices for Claude Code",
+          "url": "https://code.claude.com/docs/en/best-practices",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

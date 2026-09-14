@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">一次瀏覽器代理任務的流程與該關掉的四類網站 / One browser-agent task, and the four site categories to block first</title>
+  <desc id="desc">左半邊由上往下是一次瀏覽器代理任務的六個步驟。第一，你下指令：在側邊欄說清楚範圍與不准做的動作。第二，它讀你正在看的這個分頁；沒有拖進 Claude 分頁群組的分頁它看不到。第三，它提出要做的動作，例如要點哪個按鈕、要填哪個欄位。第四是橘色的檢查點：你核准；就算已經一律允許這個網站，下載檔案、輸入可能敏感的資訊、授予授權這三種動作官網寫它每次都會先問。第五，執行；動作發生在你自己的 Chrome 裡，用的是你自己的登入狀態。第六，回報結果，你自己檢查，送出鍵自己按。右半邊是官網明列不建議使用、應該先放進封鎖清單的四類網站。第一類是網路銀行與金融帳戶，購買與金融交易它在任何模式下都不做。第二類是公司後台與存有機密資料的工作帳號，它沿用你的權限，出事範圍等於整個帳號。第三類是醫療與法律文件、合約，內容一被讀走就收不回來。第四類是有別人個資的頁面，外洩的不是你的資料而是別人的。左下角註記官網公布的測試數字：加上二零二五年十一月當時最強的防護之後，對 Opus 4.5 仍有 16.7% 的攻擊成功率；從 Opus 4.8 之後的模型加上探針與安全分類器，對 Sonnet 5、Opus 5 與 Mythos 5 沒有攻擊成功。功能與數字依二零二六年九月的官方頁面，以官網為準。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">一次瀏覽器代理任務的流程與該關掉的四類網站（2026 年 9 月依官網查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">One browser-agent task, step by step, and the four site categories to block first</text>
+
+  <!-- left column: one browser-agent task -->
+  <text x="60" y="134" font-size="20" font-weight="700" fill="#102A2B">一次任務：從你下指令到它回報</text>
+
+  <rect x="60" y="154" width="700" height="84" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="410" y="188" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">① 你下指令</text>
+  <text x="410" y="218" font-size="16" fill="#102A2B" text-anchor="middle">在側邊欄說清楚範圍，以及不准做的動作</text>
+  <path d="M 410 238 L 410 260" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="264" width="700" height="84" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="410" y="298" font-size="18" font-weight="700" fill="#1F4E73" text-anchor="middle">② 它讀你正在看的這個分頁</text>
+  <text x="410" y="328" font-size="16" fill="#102A2B" text-anchor="middle">沒拖進分頁群組的分頁，它看不到</text>
+  <path d="M 410 348 L 410 370" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="374" width="700" height="84" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="410" y="408" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">③ 它提出要做的動作</text>
+  <text x="410" y="438" font-size="16" fill="#102A2B" text-anchor="middle">要點哪個按鈕、要填哪個欄位</text>
+  <path d="M 410 458 L 410 480" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="484" width="700" height="84" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="410" y="518" font-size="18" font-weight="700" fill="#A8571B" text-anchor="middle">④ 你核准，這一格別按太快</text>
+  <text x="410" y="548" font-size="16" fill="#102A2B" text-anchor="middle">下載檔案、輸入敏感資訊、授予授權一律先問</text>
+  <path d="M 410 568 L 410 590" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="594" width="700" height="84" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="410" y="628" font-size="18" font-weight="700" fill="#0B4F4D" text-anchor="middle">⑤ 執行</text>
+  <text x="410" y="658" font-size="16" fill="#102A2B" text-anchor="middle">在你自己的 Chrome 裡，用你自己的登入狀態</text>
+  <path d="M 410 678 L 410 700" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="704" width="700" height="84" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="410" y="738" font-size="18" font-weight="700" fill="#245E45" text-anchor="middle">⑥ 回報結果</text>
+  <text x="410" y="768" font-size="16" fill="#102A2B" text-anchor="middle">你自己檢查，送出鍵自己按</text>
+
+  <!-- right column: four site categories to block -->
+  <text x="820" y="134" font-size="20" font-weight="700" fill="#102A2B">先放進封鎖清單的四類網站</text>
+
+  <rect x="820" y="154" width="720" height="136" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="850" y="194" font-size="18" font-weight="700" fill="#B8442D">網路銀行與金融帳戶</text>
+  <text x="850" y="230" font-size="16" fill="#102A2B">官網明列不建議使用；購買與金融交易，</text>
+  <text x="850" y="260" font-size="16" fill="#102A2B">它在任何核准模式下都不會做</text>
+
+  <rect x="820" y="320" width="720" height="136" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="850" y="360" font-size="18" font-weight="700" fill="#B8442D">公司後台與存有機密的工作帳號</text>
+  <text x="850" y="396" font-size="16" fill="#102A2B">它沿用你的權限，出事範圍等於整個帳號；</text>
+  <text x="850" y="426" font-size="16" fill="#102A2B">公司帳號交給管理員用允許清單控管</text>
+
+  <rect x="820" y="486" width="720" height="136" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="850" y="526" font-size="18" font-weight="700" fill="#B8442D">醫療與法律文件、合約</text>
+  <text x="850" y="562" font-size="16" fill="#102A2B">官網明列不建議使用；截圖會拍下畫面上</text>
+  <text x="850" y="592" font-size="16" fill="#102A2B">所有看得到的東西，讀走了就收不回來</text>
+
+  <rect x="820" y="652" width="720" height="136" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="850" y="692" font-size="18" font-weight="700" fill="#B8442D">有別人個資的頁面</text>
+  <text x="850" y="728" font-size="16" fill="#102A2B">外洩的不是你的資料，是別人的；</text>
+  <text x="850" y="758" font-size="16" fill="#102A2B">敏感帳號另外開一個瀏覽器設定檔</text>
+
+  <text x="60" y="848" font-size="15" fill="#B8442D">官網數字：加上 2025 年 11 月當時最強的防護之後，對 Opus 4.5 仍有 16.7% 的攻擊成功率</text>
+  <text x="60" y="876" font-size="15" fill="#5C6B6B">Opus 4.8 之後加上探針與安全分類器，對 Sonnet 5、Opus 5、Mythos 5 沒有攻擊成功；以官網為準</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

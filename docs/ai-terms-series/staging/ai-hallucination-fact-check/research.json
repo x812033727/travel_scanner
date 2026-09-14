@@ -1,0 +1,31 @@
+{
+  "slug": "ai-hallucination-fact-check",
+  "status": "verified",
+  "checked_on": "2026-09-14",
+  "sources": [
+    {
+      "url": "https://arxiv.org/abs/2305.14251",
+      "title": "Min 等：FActScore",
+      "access": "web search + web open",
+      "claims": [
+        "將長回答拆成原子事實，判斷可信來源是否支持個別主張"
+      ]
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations",
+      "title": "Anthropic：Reduce hallucinations",
+      "access": "web search + web open",
+      "claims": [
+        "允許不知道、限制來源與引用有助核對，但不消除全部幻覺"
+      ]
+    }
+  ],
+  "aliases": [
+    "Hallucination",
+    "幻覺"
+  ],
+  "existing_overlap": "沿用 ai-hallucination-fact-check 既有網址，完整重寫原文；移除單一成因、不能計算、跨模型一致即可增加可信度等過度概括。",
+  "running_text_characters": 1862,
+  "notes": "既有網址保留。所有展覽、人物、書名及出版單位均為明示虛構的教學情境；不以搜尋不到推論不存在。",
+  "language_review": "OpenCC s2twp 0.1.7 全文轉換後，人工校正參數、權限、項目、通過、來源支持及文件等情境用語。"
+}

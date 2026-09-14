@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">延伸思考：一般回答與延伸思考的流程對比，五類題目該不該開 / Extended thinking: standard vs thinking flow, and which tasks to turn it on for</title>
+  <desc id="desc">上半部並排兩條流程。左邊是一般回答（不開）：問題直接到答案，一次寫到底，沒有草稿、不回頭檢查，快而且省額度，改信、翻譯、查天氣這類題目用這條就夠。右邊是延伸思考（開）：問題先進入一格「思考」，模型重述題目、試做法、檢查、換路，再根據推理寫答案；畫面上會看到帶計時器的 Thinking 指示與可展開的摘要，代價是慢一些、更耗額度，而且摘要不是原始思路，也不是正確保證。下半部五張卡片是五類題目的建議：數學與邏輯（開：分攤費用、算利息、邏輯題，一步錯全錯，讓它列式驗算，提示裡把例外條件寫清楚）、多步驟規劃（開：有前後相依的準備清單，誰卡住誰、誰有等待期，提示先列相依關係再排）、程式除錯（開：錯誤訊息找原因，假設、驗證、逐一排除，貼完整錯誤與程式碼）、長文分析（看情況：摘要、翻譯、抓重點不開，找矛盾、交叉比對才開，說清楚要重組還是判斷）、日常問答（不開：改信、翻譯、查天氣沒有中間步驟，開了只是慢，調低 Effort 更省額度）。底部兩行：開關位置是送出鍵旁的模型名稱、Effort、Thinking 或 Extended，Fable 5.1 與 Opus 5 關不掉，想省額度就調低 Effort；原則是先不開試一次，答案不穩再開，開了也要驗算。2026 年 9 月依官網查證。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">延伸思考：流程差在哪、五類題目該不該開（2026 年 9 月依官網查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Extended thinking in Claude: standard vs thinking flow, and which tasks to turn it on for</text>
+
+  <!-- top-left: standard answer flow -->
+  <text x="60" y="134" font-size="20" font-weight="700" fill="#1F4E73">一般回答（不開）　Standard answer</text>
+  <rect x="60" y="150" width="220" height="120" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="170" y="204" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">問題</text>
+  <text x="170" y="238" font-size="16" fill="#5C6B6B" text-anchor="middle">你的提示詞</text>
+  <path d="M 280 210 L 352 210" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="360" y="150" width="220" height="120" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="470" y="204" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">答案</text>
+  <text x="470" y="238" font-size="16" fill="#5C6B6B" text-anchor="middle">一次寫到底</text>
+  <text x="60" y="312" font-size="16" fill="#102A2B">沒有草稿、不回頭檢查；快、省額度</text>
+  <text x="60" y="342" font-size="16" fill="#5C6B6B">改信、翻譯、查天氣這類題目用這條就夠</text>
+
+  <!-- top-right: extended thinking flow -->
+  <text x="800" y="134" font-size="20" font-weight="700" fill="#0B4F4D">延伸思考（開）　Extended thinking</text>
+  <rect x="800" y="150" width="170" height="120" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="885" y="204" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">問題</text>
+  <text x="885" y="238" font-size="16" fill="#5C6B6B" text-anchor="middle">你的提示詞</text>
+  <path d="M 970 210 L 1022 210" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="1030" y="150" width="300" height="120" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1180" y="190" font-size="20" font-weight="700" fill="#0B4F4D" text-anchor="middle">思考</text>
+  <text x="1180" y="220" font-size="16" fill="#102A2B" text-anchor="middle">重述題目、試幾種做法</text>
+  <text x="1180" y="248" font-size="16" fill="#102A2B" text-anchor="middle">檢查中間結果、換一條路</text>
+  <path d="M 1330 210 L 1382 210" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="1390" y="150" width="150" height="120" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1465" y="204" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">答案</text>
+  <text x="1465" y="238" font-size="16" fill="#5C6B6B" text-anchor="middle">根據推理寫</text>
+  <text x="800" y="312" font-size="16" fill="#102A2B">畫面上：帶計時器的 Thinking 指示，加一段可展開的摘要</text>
+  <text x="800" y="342" font-size="16" fill="#5C6B6B">慢一些、更耗額度；摘要不是原始思路，也不是正確保證</text>
+
+  <!-- divider -->
+  <line x1="60" y1="386" x2="1540" y2="386" stroke="#5C6B6B" stroke-width="2"/>
+
+  <!-- bottom: five task cards -->
+  <text x="60" y="428" font-size="20" font-weight="700" fill="#102A2B">五類題目該不該開　Which tasks to turn it on for</text>
+
+  <!-- card 1: math and logic -->
+  <rect x="60" y="450" width="276" height="250" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="198" y="490" font-size="19" font-weight="700" fill="#245E45" text-anchor="middle">數學與邏輯</text>
+  <rect x="148" y="508" width="100" height="34" rx="17" fill="#2E7D5B"/>
+  <text x="198" y="532" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">開</text>
+  <text x="198" y="585" font-size="16" fill="#102A2B" text-anchor="middle">分攤費用、算利息、邏輯題</text>
+  <text x="198" y="615" font-size="16" fill="#102A2B" text-anchor="middle">一步錯全錯，讓它列式驗算</text>
+  <text x="198" y="645" font-size="16" fill="#5C6B6B" text-anchor="middle">提示：例外條件寫清楚</text>
+
+  <!-- card 2: multi-step planning -->
+  <rect x="361" y="450" width="276" height="250" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="499" y="490" font-size="19" font-weight="700" fill="#245E45" text-anchor="middle">多步驟規劃</text>
+  <rect x="449" y="508" width="100" height="34" rx="17" fill="#2E7D5B"/>
+  <text x="499" y="532" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">開</text>
+  <text x="499" y="585" font-size="16" fill="#102A2B" text-anchor="middle">有前後相依的準備清單</text>
+  <text x="499" y="615" font-size="16" fill="#102A2B" text-anchor="middle">誰卡住誰、誰有等待期</text>
+  <text x="499" y="645" font-size="16" fill="#5C6B6B" text-anchor="middle">提示：先列相依關係再排</text>
+
+  <!-- card 3: debugging -->
+  <rect x="662" y="450" width="276" height="250" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="800" y="490" font-size="19" font-weight="700" fill="#245E45" text-anchor="middle">程式除錯</text>
+  <rect x="750" y="508" width="100" height="34" rx="17" fill="#2E7D5B"/>
+  <text x="800" y="532" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">開</text>
+  <text x="800" y="585" font-size="16" fill="#102A2B" text-anchor="middle">錯誤訊息、找出原因</text>
+  <text x="800" y="615" font-size="16" fill="#102A2B" text-anchor="middle">假設、驗證、逐一排除</text>
+  <text x="800" y="645" font-size="16" fill="#5C6B6B" text-anchor="middle">提示：貼完整錯誤與程式碼</text>
+
+  <!-- card 4: long document analysis -->
+  <rect x="963" y="450" width="276" height="250" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1101" y="490" font-size="19" font-weight="700" fill="#8A4A15" text-anchor="middle">長文分析</text>
+  <rect x="1051" y="508" width="100" height="34" rx="17" fill="#D97A2B"/>
+  <text x="1101" y="532" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">看情況</text>
+  <text x="1101" y="585" font-size="16" fill="#102A2B" text-anchor="middle">摘要、翻譯、抓重點：不開</text>
+  <text x="1101" y="615" font-size="16" fill="#102A2B" text-anchor="middle">找矛盾、交叉比對：開</text>
+  <text x="1101" y="645" font-size="16" fill="#5C6B6B" text-anchor="middle">提示：說清楚要重組還是判斷</text>
+
+  <!-- card 5: everyday questions -->
+  <rect x="1264" y="450" width="276" height="250" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1402" y="490" font-size="19" font-weight="700" fill="#1F4E73" text-anchor="middle">日常問答</text>
+  <rect x="1352" y="508" width="100" height="34" rx="17" fill="#2F6F9F"/>
+  <text x="1402" y="532" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">不開</text>
+  <text x="1402" y="585" font-size="16" fill="#102A2B" text-anchor="middle">改信、翻譯、查天氣</text>
+  <text x="1402" y="615" font-size="16" fill="#102A2B" text-anchor="middle">沒有中間步驟，開了只是慢</text>
+  <text x="1402" y="645" font-size="16" fill="#5C6B6B" text-anchor="middle">調低 Effort 更省額度</text>
+
+  <!-- footer notes -->
+  <text x="60" y="756" font-size="16" fill="#102A2B">開關位置：送出鍵旁的模型名稱 → Effort → Thinking／Extended；Fable 5.1、Opus 5 關不掉，想省額度就調低 Effort</text>
+  <text x="60" y="788" font-size="16" fill="#5C6B6B">原則：先不開試一次，答案不穩再開；開了也要驗算</text>
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

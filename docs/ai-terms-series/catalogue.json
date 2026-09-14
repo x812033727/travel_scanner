@@ -1,0 +1,3181 @@
+{
+  "cutoff": "2026-09-14",
+  "locale": "zh-TW",
+  "publication_policy": "Publish the complete verified series together; index last. No partial-series release.",
+  "terms": [
+    {
+      "id": 1,
+      "category": "engineering",
+      "english": "Prompt Engineering",
+      "chinese": "提示詞工程",
+      "slug": "ai-term-prompt-engineering",
+      "action": "new",
+      "title": "提示詞工程（Prompt Engineering）是什麼",
+      "aliases": [
+        "Prompt Engineering",
+        "提示工程",
+        "提示詞工程"
+      ],
+      "sources": [
+        {
+          "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
+          "title": "Google：Prompt design strategies",
+          "access": "web search + web open",
+          "claims": [
+            "清楚指令、範例、限制與反覆評估"
+          ]
+        },
+        {
+          "url": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/prompt-templates-and-variables",
+          "title": "Anthropic：Prompting best practices",
+          "access": "web search + web open",
+          "claims": [
+            "清楚表達任務與提供上下文"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [
+        "ai-chat-prompt-basics"
+      ],
+      "decision_reason": "收錄獨立概念及可核對的一手資料；相近既有／規劃文章偏向特定工具操作，本篇解釋通用概念。"
+    },
+    {
+      "id": 2,
+      "category": "engineering",
+      "english": "Context Engineering",
+      "chinese": "上下文工程",
+      "slug": "ai-term-context-engineering",
+      "action": "new",
+      "title": "上下文工程（Context Engineering）是什麼",
+      "aliases": [
+        "Context Engineering",
+        "上下文工程",
+        "情境工程"
+      ],
+      "sources": [
+        {
+          "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "title": "Anthropic：Effective context engineering for AI agents",
+          "access": "web search + web open",
+          "claims": [
+            "上下文工程包含指令、工具、外部資料與歷史的動態選擇"
+          ]
+        },
+        {
+          "url": "https://docs.langchain.com/oss/python/langchain/context-engineering",
+          "title": "LangChain：Context engineering in agents",
+          "access": "web search + web open",
+          "claims": [
+            "區分當次模型上下文、持續狀態與工具上下文"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 3,
+      "category": "engineering",
+      "english": "Harness Engineering",
+      "chinese": "代理執行環境工程",
+      "slug": "ai-term-harness-engineering",
+      "action": "new",
+      "title": "代理執行環境工程（Harness Engineering）是什麼",
+      "aliases": [
+        "Harness Engineering",
+        "代理執行框架工程",
+        "代理執行環境工程"
+      ],
+      "sources": [
+        {
+          "url": "https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents",
+          "title": "Anthropic：Effective harnesses for long-running agents",
+          "access": "web search + web open",
+          "claims": [
+            "初始化、進度紀錄與功能驗證支援跨工作階段"
+          ]
+        },
+        {
+          "url": "https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent",
+          "title": "GitHub：About Copilot cloud agent",
+          "access": "web search + web open",
+          "claims": [
+            "代理可在環境中修改程式、執行檢查並交付供審查的變更"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 4,
+      "category": "engineering",
+      "english": "Loop Engineering",
+      "chinese": "迴圈工程",
+      "slug": "ai-term-loop-engineering",
+      "action": "new",
+      "title": "Loop Engineering 是什麼：讓 AI 持續工作，也知道何時停止",
+      "aliases": [
+        "循環工程",
+        "迴圈工程"
+      ],
+      "sources": [
+        {
+          "title": "Addy Osmani：Loop Engineering（實作者對名詞的說明）",
+          "url": "https://addyosmani.com/blog/loop-engineering/",
+          "checked_on": "2026-09-14",
+          "access": "web open",
+          "claims": [
+            "作者界定的外層工作循環，持久狀態與人工接手"
+          ]
+        },
+        {
+          "title": "IBM：What is loop engineering?（代理工作流與驗證）",
+          "url": "https://www.ibm.com/think/topics/loop-engineering",
+          "checked_on": "2026-09-14",
+          "access": "web open",
+          "claims": [
+            "新興實作方法，動作觀察與回饋"
+          ]
+        },
+        {
+          "title": "Loop Engineering: Building Blocks, Adoption, and Impact（探索性研究）",
+          "url": "https://arxiv.org/abs/2608.21884",
+          "checked_on": "2026-09-14",
+          "access": "web open",
+          "claims": [
+            "定義仍發展中，實際採用與效果需研究"
+          ]
+        },
+        {
+          "title": "Anthropic：Demystifying evals for AI agents（區分代理回報與環境結果）",
+          "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+          "checked_on": "2026-09-14",
+          "access": "web open",
+          "claims": [
+            "代理回報與環境結果不同，評測需校準"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 5,
+      "category": "engineering",
+      "english": "Agentic Engineering",
+      "chinese": "代理式工程",
+      "slug": "ai-term-agentic-engineering",
+      "action": "new",
+      "title": "代理式工程（Agentic Engineering）是什麼",
+      "aliases": [
+        "Agentic Engineering",
+        "代理工程",
+        "代理式工程"
+      ],
+      "sources": [
+        {
+          "url": "https://simonwillison.net/guides/agentic-engineering-patterns/what-is-agentic-engineering/",
+          "title": "Simon Willison：What is agentic engineering?",
+          "access": "web search + web open",
+          "claims": [
+            "作者以編碼代理輔助開發定義此詞，強調執行與驗證"
+          ]
+        },
+        {
+          "url": "https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent",
+          "title": "GitHub：About Copilot cloud agent",
+          "access": "web search + web open",
+          "claims": [
+            "代理可在環境中修改程式、執行檢查並交付供審查的變更"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 6,
+      "category": "engineering",
+      "english": "Vibe Coding",
+      "chinese": "氛圍編碼",
+      "slug": "ai-term-vibe-coding",
+      "action": "new",
+      "title": "氛圍編碼（Vibe Coding）是什麼",
+      "aliases": [
+        "Vibe Coding",
+        "氛圍式編程",
+        "氛圍編碼"
+      ],
+      "sources": [
+        {
+          "url": "https://simonwillison.net/2025/Mar/19/vibe-coding/",
+          "title": "Simon Willison：Not all AI-assisted programming is vibe coding",
+          "access": "web search + web open",
+          "claims": [
+            "作者以是否閱讀審查產出區分其氛圍編碼用法"
+          ]
+        },
+        {
+          "url": "https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent",
+          "title": "GitHub：About Copilot cloud agent",
+          "access": "web search + web open",
+          "claims": [
+            "代理可在環境中修改程式、執行檢查並交付供審查的變更"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [
+        "vibe-coding-first-website"
+      ],
+      "decision_reason": "收錄獨立概念及可核對的一手資料；相近既有／規劃文章偏向特定工具操作，本篇解釋通用概念。"
+    },
+    {
+      "id": 7,
+      "category": "engineering",
+      "english": "Spec-driven Development",
+      "chinese": "規格驅動開發",
+      "slug": "ai-term-spec-driven-development",
+      "action": "new",
+      "title": "規格驅動開發（Spec-driven Development）是什麼",
+      "aliases": [
+        "SDD",
+        "Spec-driven Development",
+        "規格驅動開發"
+      ],
+      "sources": [
+        {
+          "url": "https://github.com/github/spec-kit",
+          "title": "GitHub：Spec Kit 官方儲存庫",
+          "access": "web search + web open",
+          "claims": [
+            "規格驅動開發把規格、計畫與任務形成可追蹤產物"
+          ]
+        },
+        {
+          "url": "https://kiro.dev/docs/specs/",
+          "title": "Kiro：Specs 官方文件",
+          "access": "web search + web open",
+          "claims": [
+            "需求、設計與任務清單的規格工作流程"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 8,
+      "category": "engineering",
+      "english": "LLMOps",
+      "chinese": "大型語言模型維運",
+      "slug": "ai-term-llmops",
+      "action": "new",
+      "title": "大型語言模型維運（LLMOps）是什麼",
+      "aliases": [
+        "LLM Operations",
+        "LLMOps",
+        "大型語言模型維運"
+      ],
+      "sources": [
+        {
+          "url": "https://learn.microsoft.com/en-us/ai/playbook/technology-guidance/generative-ai/mlops-in-openai/",
+          "title": "Microsoft：LLMOps operational management",
+          "access": "web search + web open",
+          "claims": [
+            "LLM 應用生命週期涵蓋資料、實驗、評估、部署、監測與回饋"
+          ]
+        },
+        {
+          "url": "https://mlflow.org/docs/latest/genai/",
+          "title": "MLflow：AI Engineering Platform for LLMs and Agents",
+          "access": "web search + web open",
+          "claims": [
+            "追蹤、提示詞管理、評估與監測是可實作的維運能力"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 9,
+      "category": "engineering",
+      "english": "AgentOps",
+      "chinese": "代理系統維運",
+      "slug": "ai-term-agentops",
+      "action": "new",
+      "title": "代理系統維運（AgentOps）是什麼",
+      "aliases": [
+        "Agent Operations",
+        "AgentOps",
+        "代理系統維運"
+      ],
+      "sources": [
+        {
+          "url": "https://opentelemetry.io/blog/2025/ai-agent-observability/",
+          "title": "OpenTelemetry：AI Agent Observability",
+          "access": "web search + web open",
+          "claims": [
+            "代理可觀測性需要涵蓋模型、工具與框架活動的關聯"
+          ]
+        },
+        {
+          "url": "https://docs.agentops.ai/v2/concepts/core-concepts",
+          "title": "AgentOps：Core Concepts",
+          "access": "web search + web open",
+          "claims": [
+            "此產品以階層式 spans 紀錄 session、代理、工具與模型"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 10,
+      "category": "engineering",
+      "english": "Prompt Chaining",
+      "chinese": "提示詞串接",
+      "slug": "ai-term-prompt-chaining",
+      "action": "new",
+      "title": "提示詞串接（Prompt Chaining）是什麼",
+      "aliases": [
+        "Prompt Chaining",
+        "提示詞串接"
+      ],
+      "sources": [
+        {
+          "url": "https://www.anthropic.com/engineering/building-effective-agents",
+          "title": "Anthropic：Building effective agents",
+          "access": "web search + web open",
+          "claims": [
+            "提示詞串接讓前一步輸出成為後一步輸入，可加程式檢查"
+          ]
+        },
+        {
+          "url": "https://docs.langchain.com/oss/python/langgraph/workflows-agents",
+          "title": "LangGraph：Workflows and agents",
+          "access": "web search + web open",
+          "claims": [
+            "固定工作流程與代理的差別，以及可驗證步驟串接"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 11,
+      "category": "foundation",
+      "english": "Artificial Intelligence",
+      "chinese": "人工智慧",
+      "slug": "ai-term-artificial-intelligence",
+      "action": "new",
+      "title": "人工智慧（Artificial Intelligence）是什麼",
+      "aliases": [
+        "AI",
+        "Artificial Intelligence",
+        "人工智慧"
+      ],
+      "sources": [
+        {
+          "url": "https://www.oecd.org/en/publications/explanatory-memorandum-on-the-updated-oecd-definition-of-an-ai-system_623da898-en.html",
+          "title": "OECD：AI system definition explanatory memorandum",
+          "access": "web search + web open publication and linked PDF",
+          "claims": [
+            "AI 系統從輸入推導預測、內容、建議或決策，自治與適應程度各異"
+          ]
+        },
+        {
+          "url": "https://csrc.nist.gov/glossary/term/artificial_intelligence",
+          "title": "NIST CSRC：Artificial intelligence glossary",
+          "access": "web search + web open",
+          "claims": [
+            "人工智慧存在依檔案及使用目的不同的定義"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 12,
+      "category": "foundation",
+      "english": "Machine Learning",
+      "chinese": "機器學習",
+      "slug": "ai-term-machine-learning",
+      "action": "new",
+      "title": "機器學習（Machine Learning）是什麼",
+      "aliases": [
+        "ML",
+        "Machine Learning",
+        "機器學習"
+      ],
+      "sources": [
+        {
+          "url": "https://developers.google.com/machine-learning/intro-to-ml/what-is-ml",
+          "title": "Google：What is Machine Learning?",
+          "access": "web search + web open",
+          "claims": [
+            "從資料訓練模型，監督與非監督學習等基本概念"
+          ]
+        },
+        {
+          "url": "https://scikit-learn.org/stable/common_pitfalls.html",
+          "title": "scikit-learn：Common pitfalls and recommended practices",
+          "access": "web search + web open",
+          "claims": [
+            "資料洩漏與前處理不一致使測試失真"
+          ]
+        },
+        {
+          "url": "https://developers.google.com/machine-learning/crash-course/linear-regression",
+          "title": "Google：Linear regression",
+          "access": "web search + web open",
+          "claims": [
+            "模型以權重與偏差把特徵轉為預測"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 13,
+      "category": "foundation",
+      "english": "Deep Learning",
+      "chinese": "深度學習",
+      "slug": "ai-term-deep-learning",
+      "action": "new",
+      "title": "深度學習（Deep Learning）是什麼",
+      "aliases": [
+        "DL",
+        "Deep Learning",
+        "深度學習"
+      ],
+      "sources": [
+        {
+          "url": "https://www.nature.com/articles/nature14539",
+          "title": "LeCun、Bengio、Hinton：Deep learning",
+          "access": "web search + web open",
+          "claims": [
+            "多層運算學習不同抽象程度的表徵"
+          ]
+        },
+        {
+          "url": "https://developers.google.com/machine-learning/crash-course/neural-networks",
+          "title": "Google：Neural networks",
+          "access": "web search + web open",
+          "claims": [
+            "隱藏層、非線性與反向傳播的基本角色"
+          ]
+        },
+        {
+          "url": "https://scikit-learn.org/stable/common_pitfalls.html",
+          "title": "scikit-learn：Common pitfalls and recommended practices",
+          "access": "web search + web open",
+          "claims": [
+            "資料洩漏與前處理不一致使測試失真"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 14,
+      "category": "foundation",
+      "english": "Generative AI",
+      "chinese": "生成式 AI",
+      "slug": "ai-term-generative-ai",
+      "action": "new",
+      "title": "生成式 AI（Generative AI）是什麼",
+      "aliases": [
+        "GenAI",
+        "Generative AI",
+        "生成式 AI",
+        "生成式人工智慧"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/1406.2661",
+          "title": "Goodfellow 等：Generative Adversarial Networks",
+          "access": "web search + web open",
+          "claims": [
+            "生成模型可透過對抗訓練學習資料分佈"
+          ]
+        },
+        {
+          "url": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf",
+          "title": "NIST：Generative Artificial Intelligence Profile",
+          "access": "web search + web open",
+          "claims": [
+            "生成式 AI 的內容產生與虛構資訊、隱私等風險"
+          ]
+        },
+        {
+          "url": "https://developers.google.com/machine-learning/crash-course/llm",
+          "title": "Google：Introduction to Large Language Models",
+          "access": "web search + web open",
+          "claims": [
+            "語言模型建模 token 的條件機率及上下文作用"
+          ]
+        },
+        {
+          "url": "https://arxiv.org/abs/2006.11239",
+          "title": "Ho、Jain、Abbeel：Denoising Diffusion Probabilistic Models",
+          "access": "web search + web open",
+          "claims": [
+            "擴散機率模型以去噪程式進行影像生成"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 15,
+      "category": "foundation",
+      "english": "Large Language Model",
+      "chinese": "大型語言模型",
+      "slug": "what-is-a-large-language-model",
+      "action": "reuse",
+      "title": "大型語言模型（Large Language Model）是什麼",
+      "aliases": [
+        "LLM",
+        "Large Language Model",
+        "大型語言模型"
+      ],
+      "sources": [
+        {
+          "url": "https://developers.google.com/machine-learning/crash-course/llm",
+          "title": "Google：Introduction to Large Language Models",
+          "access": "web search + web open",
+          "claims": [
+            "語言模型建模 token 的條件機率及上下文作用"
+          ]
+        },
+        {
+          "url": "https://arxiv.org/abs/2005.14165",
+          "title": "Brown 等：Language Models are Few-Shot Learners",
+          "access": "web search + web open",
+          "claims": [
+            "大規模語言模型能依文字任務說明與範例做多種任務"
+          ]
+        },
+        {
+          "url": "https://developers.google.com/machine-learning/crash-course/llm/transformers",
+          "title": "Google：What's a large language model?",
+          "access": "web search + web open",
+          "claims": [
+            "語言模型、Transformer 變體與幻覺等限制"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [
+        "what-is-a-large-language-model"
+      ],
+      "decision_reason": "保留既有網址，重新查核並補足獨立概念、案例、比較與限制。"
+    },
+    {
+      "id": 16,
+      "category": "foundation",
+      "english": "Foundation Model",
+      "chinese": "基礎模型",
+      "slug": "ai-term-foundation-model",
+      "action": "new",
+      "title": "基礎模型（Foundation Model）是什麼",
+      "aliases": [
+        "Foundation Model",
+        "基礎模型"
+      ],
+      "sources": [
+        {
+          "url": "https://crfm.stanford.edu/report",
+          "title": "Stanford CRFM：On the Opportunities and Risks of Foundation Models",
+          "access": "web search + web open",
+          "claims": [
+            "廣泛資料訓練並可調適至多種下游任務的基礎模型定義"
+          ]
+        },
+        {
+          "url": "https://ai.google.dev/gemma/docs/core",
+          "title": "Google：Gemma model overview",
+          "access": "web search + web open",
+          "claims": [
+            "開放模型提供通用能力並可調適於應用，模型不是完整產品"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 17,
+      "category": "foundation",
+      "english": "Transformer",
+      "chinese": "Transformer 架構",
+      "slug": "ai-term-transformer",
+      "action": "new",
+      "title": "Transformer 架構（Transformer）是什麼",
+      "aliases": [
+        "Transformer",
+        "Transformer 架構"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/1706.03762",
+          "title": "Vaswani 等：Attention Is All You Need",
+          "access": "web search + web open",
+          "claims": [
+            "注意力、位置訊息與前饋網路構成原始 Transformer"
+          ]
+        },
+        {
+          "url": "https://www.tensorflow.org/text/tutorials/transformer",
+          "title": "TensorFlow：Neural machine translation with a Transformer",
+          "access": "web search + web open",
+          "claims": [
+            "編碼器、解碼器、遮罩注意力的官方實作教學"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 18,
+      "category": "foundation",
+      "english": "Mixture of Experts",
+      "chinese": "混合專家模型",
+      "slug": "ai-term-mixture-of-experts",
+      "action": "new",
+      "title": "混合專家模型（Mixture of Experts）是什麼",
+      "aliases": [
+        "Mixture of Experts",
+        "MoE",
+        "混合專家模型"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2101.03961",
+          "title": "Fedus 等：Switch Transformers",
+          "access": "web search + web open",
+          "claims": [
+            "稀疏路由選部分參數運算，並涉及訓練與通訊取捨"
+          ]
+        },
+        {
+          "url": "https://huggingface.co/docs/transformers/model_doc/switch_transformers",
+          "title": "Hugging Face：Switch Transformers 官方實作",
+          "access": "web search + web open",
+          "claims": [
+            "路由器、專家層與容量等模型元件"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 19,
+      "category": "foundation",
+      "english": "Small Language Model",
+      "chinese": "小型語言模型",
+      "slug": "ai-term-small-language-model",
+      "action": "new",
+      "title": "小型語言模型（Small Language Model）是什麼",
+      "aliases": [
+        "SLM",
+        "Small Language Model",
+        "小型語言模型"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2404.14219",
+          "title": "Abdin 等：Phi-3 Technical Report",
+          "access": "web search + web open",
+          "claims": [
+            "小型語言模型可在資源限制環境部署，效能須依任務判讀"
+          ]
+        },
+        {
+          "url": "https://learn.microsoft.com/en-us/windows/ai/apis/phi-silica-transparency-note",
+          "title": "Microsoft：Phi Silica transparency note",
+          "access": "web search + web open",
+          "claims": [
+            "裝置端小型語言模型的預期用途與限制"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 20,
+      "category": "foundation",
+      "english": "Model Parameters",
+      "chinese": "模型參數",
+      "slug": "ai-term-model-parameters",
+      "action": "new",
+      "title": "模型參數（Model Parameters）是什麼",
+      "aliases": [
+        "Model Parameters",
+        "parameters",
+        "參數",
+        "模型參數"
+      ],
+      "sources": [
+        {
+          "url": "https://docs.pytorch.org/tutorials/beginner/nlp/deep_learning_tutorial.html",
+          "title": "PyTorch：Deep Learning with PyTorch",
+          "access": "web search + web open",
+          "claims": [
+            "權重、偏差、梯度與參數更新"
+          ]
+        },
+        {
+          "url": "https://developers.google.com/machine-learning/crash-course/linear-regression",
+          "title": "Google：Linear regression",
+          "access": "web search + web open",
+          "claims": [
+            "模型以權重與偏差把特徵轉為預測"
+          ]
+        },
+        {
+          "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
+          "title": "Google：Prompt design strategies",
+          "access": "web search + web open",
+          "claims": [
+            "清楚指令、範例、限制與反覆評估"
+          ]
+        },
+        {
+          "url": "https://arxiv.org/abs/2101.03961",
+          "title": "Fedus 等：Switch Transformers",
+          "access": "web search + web open",
+          "claims": [
+            "稀疏路由選部分參數運算，並涉及訓練與通訊取捨"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 21,
+      "category": "context",
+      "english": "Token",
+      "chinese": "token",
+      "slug": "ai-term-token",
+      "action": "new",
+      "title": "token（Token）是什麼：AI 如何計算文字長度",
+      "aliases": [
+        "標記",
+        "詞元"
+      ],
+      "sources": [
+        {
+          "url": "https://ai.google.dev/gemini-api/docs/tokens",
+          "title": "Google：Understand and count tokens",
+          "access": "web open",
+          "claims": [
+            "文字 token 單位與輸入輸出計數",
+            "系統指示及工具可納入輸入",
+            "計數與用量欄位依服務定義"
+          ]
+        },
+        {
+          "url": "https://huggingface.co/docs/transformers/main/tokenizer_summary",
+          "title": "Hugging Face：Tokenization algorithms",
+          "access": "web open",
+          "claims": [
+            "子詞切分與詞彙表影響 token 邊界"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 22,
+      "category": "context",
+      "english": "Tokenization",
+      "chinese": "分詞",
+      "slug": "ai-term-tokenization",
+      "action": "new",
+      "title": "分詞（Tokenization）是什麼：文字進入模型前的切分",
+      "aliases": [
+        "分詞",
+        "詞元化"
+      ],
+      "sources": [
+        {
+          "url": "https://huggingface.co/docs/transformers/main/tokenizer_summary",
+          "title": "Hugging Face：Tokenization algorithms",
+          "access": "web open",
+          "claims": [
+            "BPE、Unigram、WordPiece 與子詞表示",
+            "常見與少見片段可能採不同切法"
+          ]
+        },
+        {
+          "url": "https://github.com/google/sentencepiece",
+          "title": "SentencePiece 原始專案",
+          "access": "web open",
+          "claims": [
+            "SentencePiece 是可支援 BPE 與 Unigram 的分詞工具",
+            "直接處理原始文字、編碼及還原流程"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 23,
+      "category": "context",
+      "english": "Context Window",
+      "chinese": "上下文視窗",
+      "slug": "ai-context-window-explained",
+      "action": "reuse",
+      "title": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+      "aliases": [
+        "context length",
+        "上下文長度"
+      ],
+      "sources": [
+        {
+          "url": "https://ai.google.dev/gemini-api/docs/tokens",
+          "title": "Google：Understand and count tokens",
+          "access": "web open",
+          "claims": [
+            "上下文視窗與輸入輸出限制",
+            "計量以 token 為單位"
+          ]
+        },
+        {
+          "url": "https://arxiv.org/abs/2307.03172",
+          "title": "Liu 等：Lost in the Middle",
+          "access": "web open",
+          "claims": [
+            "特定長上下文任務受資訊位置影響"
+          ]
+        },
+        {
+          "url": "https://docs.langchain.com/oss/python/concepts/memory",
+          "title": "LangChain：Memory overview",
+          "access": "web open",
+          "claims": [
+            "對話狀態與跨對話記憶不同",
+            "長歷史需選擇與管理"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [
+        "ai-context-window-explained"
+      ],
+      "decision_reason": "保留既有網址，重新查核並補足獨立概念、案例、比較與限制。"
+    },
+    {
+      "id": 24,
+      "category": "context",
+      "english": "System Prompt",
+      "chinese": "系統提示詞",
+      "slug": "ai-term-system-prompt",
+      "action": "new",
+      "title": "系統提示詞（System Prompt）是什麼：設定助理的工作規則",
+      "aliases": [
+        "系統提示詞"
+      ],
+      "sources": [
+        {
+          "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
+          "title": "Google：Prompt design strategies",
+          "access": "web open",
+          "claims": [
+            "系統指示可配置角色、限制與回覆形式"
+          ]
+        },
+        {
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
+          "title": "Anthropic：Prompting best practices",
+          "access": "web open",
+          "claims": [
+            "系統角色與清楚行為指示",
+            "範例和任務結構須清楚區分"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 25,
+      "category": "context",
+      "english": "Few-shot Prompting",
+      "chinese": "少樣本提示",
+      "slug": "ai-term-few-shot-prompting",
+      "action": "new",
+      "title": "少樣本提示（Few-shot Prompting）是什麼：用例子教清楚格式",
+      "aliases": [
+        "few-shot",
+        "少樣本提示"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2005.14165",
+          "title": "Brown 等：Language Models are Few-Shot Learners",
+          "access": "web open",
+          "claims": [
+            "用提示內示範處理任務而不更新參數"
+          ]
+        },
+        {
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
+          "title": "Anthropic：Prompting best practices",
+          "access": "web open",
+          "claims": [
+            "範例應相關、多樣、結構清楚"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 26,
+      "category": "context",
+      "english": "Zero-shot Prompting",
+      "chinese": "零樣本提示",
+      "slug": "ai-term-zero-shot-prompting",
+      "action": "new",
+      "title": "零樣本提示（Zero-shot Prompting）是什麼：先把任務說清楚",
+      "aliases": [
+        "zero-shot",
+        "零樣本提示"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2109.01652",
+          "title": "Wei 等：Finetuned Language Models Are Zero-Shot Learners",
+          "access": "web open",
+          "claims": [
+            "指令微調可改善未見任務的零樣本表現",
+            "不表示模型未受訓練"
+          ]
+        },
+        {
+          "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
+          "title": "Google：Prompt design strategies",
+          "access": "web open",
+          "claims": [
+            "以清楚指示、限制及輸出形式表達任務"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 27,
+      "category": "context",
+      "english": "In-context Learning",
+      "chinese": "上下文學習",
+      "slug": "ai-term-in-context-learning",
+      "action": "new",
+      "title": "上下文學習（In-context Learning）是什麼：當場適應新規則",
+      "aliases": [
+        "ICL",
+        "情境學習"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2005.14165",
+          "title": "Brown 等：Language Models are Few-Shot Learners",
+          "access": "web open",
+          "claims": [
+            "以推論上下文而非參數更新適應任務"
+          ]
+        },
+        {
+          "url": "https://arxiv.org/abs/2202.12837",
+          "title": "Min 等：Rethinking the Role of Demonstrations",
+          "access": "web open",
+          "claims": [
+            "特定分類研究中標籤空間、輸入分佈與格式的重要性",
+            "不能將錯標籤結果無條件泛化"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 28,
+      "category": "context",
+      "english": "Context Compaction",
+      "chinese": "上下文壓縮",
+      "slug": "ai-term-context-compaction",
+      "action": "new",
+      "title": "上下文壓縮（Context Compaction）是什麼：讓長任務接得下去",
+      "aliases": [
+        "context compression",
+        "上下文壓縮"
+      ],
+      "sources": [
+        {
+          "url": "https://platform.claude.com/docs/en/build-with-claude/compaction",
+          "title": "Anthropic：Compaction",
+          "access": "web open",
+          "claims": [
+            "觸發摘要後以壓縮上下文續作",
+            "可指定摘要保留內容"
+          ]
+        },
+        {
+          "url": "https://docs.langchain.com/oss/python/langchain/middleware/built-in",
+          "title": "LangChain：Prebuilt middleware",
+          "access": "web open",
+          "claims": [
+            "摘要歷史訊息作為上下文管理實作"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 29,
+      "category": "context",
+      "english": "Context Rot",
+      "chinese": "上下文品質衰退",
+      "slug": "ai-term-context-rot",
+      "action": "new",
+      "title": "上下文品質衰退（Context Rot）是什麼：長文為何不一定更準",
+      "aliases": [
+        "上下文腐化"
+      ],
+      "sources": [
+        {
+          "url": "https://www.trychroma.com/research/context-rot",
+          "title": "Chroma：Context Rot 原始技術報告",
+          "access": "web open",
+          "claims": [
+            "長度、語意匹配與幹擾因素的受控實驗",
+            "表現變化不均勻且受任務設定限制"
+          ]
+        },
+        {
+          "url": "https://arxiv.org/abs/2307.03172",
+          "title": "Liu 等：Lost in the Middle",
+          "access": "web open",
+          "claims": [
+            "長上下文相關資訊位置影響特定任務表現"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 30,
+      "category": "context",
+      "english": "Agent Memory",
+      "chinese": "代理記憶",
+      "slug": "ai-term-agent-memory",
+      "action": "new",
+      "title": "代理記憶（Agent Memory）是什麼：保存、取回與更新資訊",
+      "aliases": [
+        "AI memory",
+        "代理記憶"
+      ],
+      "sources": [
+        {
+          "url": "https://docs.langchain.com/oss/python/concepts/memory",
+          "title": "LangChain：Memory overview",
+          "access": "web open",
+          "claims": [
+            "短期狀態和跨對話記憶",
+            "記憶可依命名空間保存與取回"
+          ]
+        },
+        {
+          "url": "https://arxiv.org/abs/2304.03442",
+          "title": "Park 等：Generative Agents",
+          "access": "web open",
+          "claims": [
+            "記錄經驗、反思與動態檢索的原始研究架構",
+            "結果限於研究模擬情境"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [
+        "chatgpt-custom-instructions-memory",
+        "claude-memory-and-privacy"
+      ],
+      "decision_reason": "收錄獨立概念及可核對的一手資料；相近既有／規劃文章偏向特定工具操作，本篇解釋通用概念。"
+    },
+    {
+      "id": 31,
+      "category": "agents",
+      "english": "AI Agent",
+      "chinese": "AI 代理",
+      "slug": "ai-agents-explained",
+      "action": "reuse",
+      "title": "AI 代理（AI Agent）是什麼：從回答問題到完成任務",
+      "aliases": [
+        "AI Agent",
+        "AI 代理",
+        "AI 智慧代理"
+      ],
+      "sources": [
+        {
+          "url": "https://www.anthropic.com/engineering/building-effective-agents",
+          "title": "Anthropic：Building effective agents",
+          "access": "web open",
+          "claims": [
+            "該文對固定工作流程與動態代理的區分",
+            "代理依環境回饋調整行動"
+          ]
+        },
+        {
+          "url": "https://docs.langchain.com/oss/python/langchain/agents",
+          "title": "LangChain：Agents",
+          "access": "web open",
+          "claims": [
+            "模型、工具迴圈與周圍 harness 的實作關係",
+            "重要政策可由程式控制"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [
+        "ai-agents-explained"
+      ],
+      "decision_reason": "保留既有網址，重新查核並補足獨立概念、案例、比較與限制。"
+    },
+    {
+      "id": 32,
+      "category": "agents",
+      "english": "Agent Loop",
+      "chinese": "代理迴圈",
+      "slug": "ai-term-agent-loop",
+      "action": "new",
+      "title": "代理迴圈（Agent Loop）是什麼：判斷、操作與回饋",
+      "aliases": [
+        "代理循環"
+      ],
+      "sources": [
+        {
+          "url": "https://docs.langchain.com/oss/python/langchain/agents",
+          "title": "LangChain：Agents",
+          "access": "web open",
+          "claims": [
+            "代理工具迴圈與外層執行控制"
+          ]
+        },
+        {
+          "url": "https://www.anthropic.com/engineering/building-effective-agents",
+          "title": "Anthropic：Building effective agents",
+          "access": "web open",
+          "claims": [
+            "代理需依環境結果評估進度並設停止條件"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 33,
+      "category": "agents",
+      "english": "Multi-agent System",
+      "chinese": "多代理系統",
+      "slug": "ai-term-multi-agent-system",
+      "action": "new",
+      "title": "多代理系統（Multi-agent System）是什麼：分工與協作的代價",
+      "aliases": [
+        "MAS",
+        "多代理"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2308.08155",
+          "title": "Wu 等：AutoGen",
+          "access": "web open",
+          "claims": [
+            "以多代理對話協作的研究架構"
+          ]
+        },
+        {
+          "url": "https://www.anthropic.com/engineering/multi-agent-research-system",
+          "title": "Anthropic：How we built our multi-agent research system",
+          "access": "web open",
+          "claims": [
+            "主代理與平行子代理的工程實作",
+            "分工邊界、上下文與協調成本"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 34,
+      "category": "agents",
+      "english": "Subagent",
+      "chinese": "子代理",
+      "slug": "ai-term-subagent",
+      "action": "new",
+      "title": "子代理（Subagent）是什麼：把有邊界的工作交出去",
+      "aliases": [
+        "sub-agent",
+        "子代理"
+      ],
+      "sources": [
+        {
+          "url": "https://docs.langchain.com/oss/python/langchain/multi-agent/subagents",
+          "title": "LangChain：Subagents",
+          "access": "web open",
+          "claims": [
+            "主管委派、上下文隔離、同步與背景執行的具體模式"
+          ]
+        },
+        {
+          "url": "https://www.anthropic.com/engineering/multi-agent-research-system",
+          "title": "Anthropic：How we built our multi-agent research system",
+          "access": "web open",
+          "claims": [
+            "子代理任務需要目標、格式、來源及邊界"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 35,
+      "category": "agents",
+      "english": "Agent Orchestration",
+      "chinese": "代理協調",
+      "slug": "ai-term-agent-orchestration",
+      "action": "new",
+      "title": "代理協調（Agent Orchestration）是什麼：安排分工與交付順序",
+      "aliases": [
+        "orchestration",
+        "代理編排"
+      ],
+      "sources": [
+        {
+          "url": "https://www.anthropic.com/engineering/building-effective-agents",
+          "title": "Anthropic：Building effective agents",
+          "access": "web open",
+          "claims": [
+            "固定流程、路由、並行及主管工作者模式"
+          ]
+        },
+        {
+          "url": "https://docs.langchain.com/oss/python/langchain/multi-agent",
+          "title": "LangChain：Multi-agent",
+          "access": "web open",
+          "claims": [
+            "多種協作模式與上下文安排"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 36,
+      "category": "agents",
+      "english": "ReAct",
+      "chinese": "推理與行動交替",
+      "slug": "ai-term-react-reasoning-acting",
+      "action": "new",
+      "title": "ReAct 是什麼：讓推理與行動交替補足資訊",
+      "aliases": [
+        "ReAct"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2210.03629",
+          "title": "Yao 等：ReAct 原始論文",
+          "access": "web open",
+          "claims": [
+            "推理文字與任務行動交替的研究方法"
+          ]
+        },
+        {
+          "url": "https://react-lm.github.io/",
+          "title": "ReAct 作者專案與原始程式",
+          "access": "web open",
+          "claims": [
+            "行動取得外部資訊、推理維持與更新計畫",
+            "原研究與實作範例入口"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 37,
+      "category": "agents",
+      "english": "Tool Calling",
+      "chinese": "工具呼叫",
+      "slug": "ai-term-tool-calling",
+      "action": "new",
+      "title": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
+      "aliases": [
+        "function calling",
+        "tool use",
+        "函式呼叫",
+        "工具使用"
+      ],
+      "sources": [
+        {
+          "url": "https://ai.google.dev/gemini-api/docs/function-calling",
+          "title": "Google：Function calling with the Gemini API",
+          "access": "web open",
+          "claims": [
+            "模型依函式定義產生請求、外部執行後回傳",
+            "結構化參數與多步工具流程"
+          ]
+        },
+        {
+          "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/how-tool-use-works",
+          "title": "Anthropic：How tool use works",
+          "access": "web open",
+          "claims": [
+            "用戶端與服務端工具的區分",
+            "工具使用與結果回傳流程"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 38,
+      "category": "agents",
+      "english": "Model Context Protocol",
+      "chinese": "模型上下文協定",
+      "slug": "ai-term-model-context-protocol",
+      "action": "new",
+      "title": "模型上下文協定（MCP）是什麼：連接工具與資料的共同介面",
+      "aliases": [
+        "MCP"
+      ],
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/docs/2026-07-28/learn/architecture",
+          "title": "MCP：Architecture overview",
+          "access": "web open",
+          "claims": [
+            "應用用戶端與伺服器互動",
+            "工具、資源、提示的能力與呼叫"
+          ]
+        },
+        {
+          "url": "https://code.visualstudio.com/docs/agent-customization/mcp-servers",
+          "title": "VS Code：Add and manage MCP servers",
+          "access": "web open",
+          "claims": [
+            "實際應用中的 MCP 伺服器管理與能力使用"
+          ]
+        },
+        {
+          "url": "https://a2a-protocol.org/latest/topics/key-concepts/",
+          "title": "A2A：Core Concepts",
+          "access": "web open",
+          "claims": [
+            "A2A 任務與產物的比較界線"
+          ]
+        },
+        {
+          "url": "https://agentskills.io/specification",
+          "title": "Agent Skills：Specification",
+          "access": "web open",
+          "claims": [
+            "Skills 封裝指示與資源的比較界線"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [
+        "claude-mcp-explained",
+        "claude-code-mcp-servers",
+        "mcp-servers-for-everyone"
+      ],
+      "decision_reason": "收錄獨立概念及可核對的一手資料；相近既有／規劃文章偏向特定工具操作，本篇解釋通用概念。"
+    },
+    {
+      "id": 39,
+      "category": "agents",
+      "english": "Agent2Agent Protocol",
+      "chinese": "代理互通協定",
+      "slug": "ai-term-agent2agent-protocol",
+      "action": "new",
+      "title": "代理互通協定（A2A）是什麼：跨系統交辦與回報任務",
+      "aliases": [
+        "A2A"
+      ],
+      "sources": [
+        {
+          "url": "https://a2a-protocol.org/latest/topics/key-concepts/",
+          "title": "A2A：Core Concepts",
+          "access": "web open",
+          "claims": [
+            "Agent Card、Task、Message、Artifact 的定義",
+            "遠端代理內部不需公開",
+            "可透過輪詢、串流或推播取得更新"
+          ]
+        },
+        {
+          "url": "https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/",
+          "title": "Google：Announcing the Agent2Agent Protocol",
+          "access": "web open",
+          "claims": [
+            "A2A 的跨系統協作定位及與 MCP 互補"
+          ]
+        },
+        {
+          "url": "https://agentskills.io/specification",
+          "title": "Agent Skills：Specification",
+          "access": "web open",
+          "claims": [
+            "SKILL.md 技能格式與 A2A 能力描述的區別"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 40,
+      "category": "agents",
+      "english": "Agent Skills",
+      "chinese": "代理技能",
+      "slug": "ai-term-agent-skills",
+      "action": "new",
+      "title": "代理技能（Agent Skills）是什麼：可重用的工作方法包",
+      "aliases": [
+        "Skills",
+        "代理技能"
+      ],
+      "sources": [
+        {
+          "url": "https://agentskills.io/specification",
+          "title": "Agent Skills：Specification",
+          "access": "web open",
+          "claims": [
+            "SKILL.md、名稱描述與附屬資料夾",
+            "逐步載入指示與資源"
+          ]
+        },
+        {
+          "url": "https://code.visualstudio.com/docs/agent-customization/agent-skills",
+          "title": "VS Code：Use Agent Skills",
+          "access": "web open",
+          "claims": [
+            "相容產品使用技能的實作與設定"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 41,
+      "category": "retrieval",
+      "english": "Retrieval-Augmented Generation",
+      "chinese": "檢索增強生成",
+      "slug": "ai-term-retrieval-augmented-generation",
+      "action": "new",
+      "title": "檢索增強生成（RAG）是什麼：讓回答附上可查的依據",
+      "aliases": [
+        "RAG",
+        "檢索增強生成"
+      ],
+      "sources": [
+        {
+          "title": "Lewis 等：Retrieval-Augmented Generation",
+          "url": "https://arxiv.org/abs/2005.11401",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "原始 RAG 結合參數與非參數記憶",
+            "原論文包含檢索與生成的微調架構"
+          ]
+        },
+        {
+          "title": "LangChain：Retrieval",
+          "url": "https://docs.langchain.com/oss/python/deepagents/retrieval",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "RAG 應用檢索流程",
+            "外部資料提供當次上下文"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [
+        "local-rag-chat-with-your-documents"
+      ],
+      "decision_reason": "收錄獨立概念及可核對的一手資料；相近既有／規劃文章偏向特定工具操作，本篇解釋通用概念。"
+    },
+    {
+      "id": 42,
+      "category": "retrieval",
+      "english": "Agentic RAG",
+      "chinese": "代理式檢索增強生成",
+      "slug": "ai-term-agentic-rag",
+      "action": "new",
+      "title": "代理式檢索增強生成（Agentic RAG）：何時需要再查一次",
+      "aliases": [
+        "代理式 RAG"
+      ],
+      "sources": [
+        {
+          "title": "LangGraph：Build a custom RAG agent",
+          "url": "https://docs.langchain.com/oss/python/langgraph/agentic-rag",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "模型決定是否使用檢索工具",
+            "文件評分與問題改寫的範例流程"
+          ]
+        },
+        {
+          "title": "Asai 等：Self-RAG",
+          "url": "https://arxiv.org/abs/2310.11511",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "按需檢索與反思 token 為特定訓練方法",
+            "固定取回文件未必有益"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 43,
+      "category": "retrieval",
+      "english": "GraphRAG",
+      "chinese": "圖譜檢索增強生成",
+      "slug": "ai-term-graph-rag",
+      "action": "new",
+      "title": "圖譜檢索增強生成（GraphRAG）：從關係看懂整批文件",
+      "aliases": [
+        "GraphRAG",
+        "圖譜 RAG"
+      ],
+      "sources": [
+        {
+          "title": "Edge 等：From Local to Global",
+          "url": "https://arxiv.org/abs/2404.16130",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "使用實體知識圖譜與社群摘要進行全域問答",
+            "原始方法聚焦跨文件主題摘要"
+          ]
+        },
+        {
+          "title": "Microsoft GraphRAG 官方文件",
+          "url": "https://microsoft.github.io/graphrag/",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "索引的文字單位、抽取、分群與摘要流程",
+            "局部與全域查詢的不同角色"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 44,
+      "category": "retrieval",
+      "english": "Embedding",
+      "chinese": "嵌入向量",
+      "slug": "ai-term-embedding",
+      "action": "new",
+      "title": "嵌入向量（Embedding）是什麼：把內容放進可比較的空間",
+      "aliases": [
+        "embeddings",
+        "嵌入向量"
+      ],
+      "sources": [
+        {
+          "title": "Reimers、Gurevych：Sentence-BERT",
+          "url": "https://arxiv.org/abs/1908.10084",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "句子分別編碼後比較的架構",
+            "嵌入可支援語意相似度任務"
+          ]
+        },
+        {
+          "title": "Sentence Transformers：Semantic Textual Similarity",
+          "url": "https://sbert.net/docs/sentence_transformer/usage/semantic_textual_similarity.html",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "不同相似度函式及模型設定",
+            "先編碼再計算文字相似度"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 45,
+      "category": "retrieval",
+      "english": "Vector Database",
+      "chinese": "向量資料庫",
+      "slug": "ai-term-vector-database",
+      "action": "new",
+      "title": "向量資料庫（Vector Database）：相似內容怎麼存、怎麼找",
+      "aliases": [
+        "vector DB",
+        "向量資料庫"
+      ],
+      "sources": [
+        {
+          "title": "pgvector 官方專案文件",
+          "url": "https://github.com/pgvector/pgvector",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "PostgreSQL 可加入向量相似度搜尋",
+            "精確與近似索引的取捨",
+            "近似索引篩選的行為"
+          ]
+        },
+        {
+          "title": "Elastic：Semantic search for text",
+          "url": "https://www.elastic.co/docs/solutions/search/semantic-search",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "資料庫可整合向量欄位與語意檢索",
+            "文字轉換及檢索為不同步驟"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 46,
+      "category": "retrieval",
+      "english": "Semantic Search",
+      "chinese": "語意搜尋",
+      "slug": "ai-term-semantic-search",
+      "action": "new",
+      "title": "語意搜尋（Semantic Search）：用不同說法找到相關內容",
+      "aliases": [
+        "語意檢索"
+      ],
+      "sources": [
+        {
+          "title": "Sentence Transformers：Semantic Search",
+          "url": "https://sbert.net/examples/sentence_transformer/applications/semantic-search/README.html",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "典型查詢與文件嵌入檢索",
+            "對稱與非對稱搜尋的差別"
+          ]
+        },
+        {
+          "title": "Elastic：Semantic search for text",
+          "url": "https://www.elastic.co/docs/solutions/search/semantic-search",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "語意搜尋利用 NLP 與向量表示",
+            "語意與其他搜尋方式可結合"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 47,
+      "category": "retrieval",
+      "english": "Hybrid Search",
+      "chinese": "混合搜尋",
+      "slug": "ai-term-hybrid-search",
+      "action": "new",
+      "title": "混合搜尋（Hybrid Search）：兼顧精確字詞與語意",
+      "aliases": [
+        "混合檢索"
+      ],
+      "sources": [
+        {
+          "title": "Elastic：Hybrid search",
+          "url": "https://www.elastic.co/docs/solutions/search/hybrid-search",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "全文與向量搜尋可在請求中組合",
+            "RRF 是其建議融合方法"
+          ]
+        },
+        {
+          "title": "Microsoft：Hybrid Search Overview",
+          "url": "https://learn.microsoft.com/en-us/azure/search/hybrid-search-overview",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "並行全文與向量查詢後合併結果",
+            "融合排名與後續語意排序分工"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 48,
+      "category": "retrieval",
+      "english": "Reranking",
+      "chinese": "重新排序",
+      "slug": "ai-term-reranking",
+      "action": "new",
+      "title": "重新排序（Reranking）：從找得到到把好答案排在前面",
+      "aliases": [
+        "rerank",
+        "重排序"
+      ],
+      "sources": [
+        {
+          "title": "Sentence Transformers：Retrieve and Re-Rank",
+          "url": "https://sbert.net/examples/sentence_transformer/applications/retrieve_rerank/README.html",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "檢索後對候選做交叉編碼評分",
+            "雙編碼器與交叉編碼器的速度分工"
+          ]
+        },
+        {
+          "title": "Elastic：Ranking and reranking",
+          "url": "https://www.elastic.co/docs/solutions/search/ranking",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "初階候選交給較昂貴的重新排序",
+            "語意排序與學習排序的不同實作"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 49,
+      "category": "retrieval",
+      "english": "Chunking",
+      "chinese": "文件分塊",
+      "slug": "ai-term-chunking",
+      "action": "new",
+      "title": "文件分塊（Chunking）：切多長，才不會把答案切斷",
+      "aliases": [
+        "文件分塊"
+      ],
+      "sources": [
+        {
+          "title": "Microsoft：Chunk large documents for RAG",
+          "url": "https://learn.microsoft.com/en-us/azure/search/vector-search-how-to-chunk-documents",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "分塊兼顧輸入限制與內容表示",
+            "固定、結構與語意分塊及重疊取捨"
+          ]
+        },
+        {
+          "title": "LangChain：Splitting recursively",
+          "url": "https://docs.langchain.com/oss/python/integrations/splitters/recursive_text_splitter",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "遞迴分隔符切割",
+            "中文等語言應選合適標點分隔符"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 50,
+      "category": "retrieval",
+      "english": "Knowledge Graph",
+      "chinese": "知識圖譜",
+      "slug": "ai-term-knowledge-graph",
+      "action": "new",
+      "title": "知識圖譜（Knowledge Graph）：把事物與關係說清楚",
+      "aliases": [
+        "KG",
+        "知識圖譜"
+      ],
+      "sources": [
+        {
+          "title": "W3C：RDF 1.1 Concepts and Abstract Syntax",
+          "url": "https://www.w3.org/TR/rdf11-concepts/",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "RDF 圖與主體述詞受詞陳述",
+            "RDF 識別與資料模型"
+          ]
+        },
+        {
+          "title": "Neo4j：Graph database concepts",
+          "url": "https://neo4j.com/docs/getting-started/appendix/graphdb-concepts/",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "屬性圖的節點、關係及屬性",
+            "有方向及類型的關係表示"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 51,
+      "category": "training",
+      "english": "Pretraining",
+      "chinese": "預訓練",
+      "slug": "ai-term-pretraining",
+      "action": "new",
+      "title": "預訓練（Pretraining）：模型的基礎能力從哪裡來",
+      "aliases": [
+        "pre-training",
+        "預訓練"
+      ],
+      "sources": [
+        {
+          "title": "Devlin 等：BERT",
+          "url": "https://arxiv.org/abs/1810.04805",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "遮罩預訓練與雙向表示",
+            "預訓練後可對下游任務微調"
+          ]
+        },
+        {
+          "title": "Hugging Face：Causal language modeling",
+          "url": "https://huggingface.co/docs/transformers/tasks/language_modeling",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "下一個 token 預測的因果語言建模",
+            "訓練資料處理與模型訓練步驟"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 52,
+      "category": "training",
+      "english": "Fine-tuning",
+      "chinese": "微調",
+      "slug": "ai-term-fine-tuning",
+      "action": "new",
+      "title": "微調（Fine-tuning）：讓既有模型更適合你的任務",
+      "aliases": [
+        "finetuning",
+        "微調"
+      ],
+      "sources": [
+        {
+          "title": "Hugging Face：Fine-tuning",
+          "url": "https://huggingface.co/docs/transformers/training",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "從預訓練權重繼續訓練",
+            "tokenization、資料切分與 Trainer 訓練流程"
+          ]
+        },
+        {
+          "title": "Howard、Ruder：ULMFiT",
+          "url": "https://arxiv.org/abs/1801.06146",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "語言模型微調可移轉到分類任務",
+            "以既有模型承接可重用能力"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 53,
+      "category": "training",
+      "english": "Supervised Fine-tuning",
+      "chinese": "監督式微調",
+      "slug": "ai-term-supervised-fine-tuning",
+      "action": "new",
+      "title": "監督式微調（SFT）：用好示範教模型完成任務",
+      "aliases": [
+        "SFT",
+        "監督式微調"
+      ],
+      "sources": [
+        {
+          "title": "Hugging Face TRL：SFT Trainer",
+          "url": "https://huggingface.co/docs/trl/sft_trainer",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "支援對話與提示完成資料",
+            "助理或完成內容的損失計算範圍",
+            "可結合 PEFT"
+          ]
+        },
+        {
+          "title": "Ouyang 等：Training language models to follow instructions",
+          "url": "https://arxiv.org/html/2203.02155v1",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "用人工期望行為示範進行 SFT",
+            "SFT 與偏好回饋階段分開"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 54,
+      "category": "training",
+      "english": "RLHF",
+      "chinese": "人類回饋強化學習",
+      "slug": "ai-term-rlhf",
+      "action": "new",
+      "title": "人類回饋強化學習（RLHF）：把偏好變成訓練訊號",
+      "aliases": [
+        "Reinforcement Learning from Human Feedback",
+        "人類回饋強化學習"
+      ],
+      "sources": [
+        {
+          "title": "Christiano 等：Deep reinforcement learning from human preferences",
+          "url": "https://arxiv.org/abs/1706.03741",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "利用人類比較資料學習獎勵",
+            "人類偏好可用於代理強化學習"
+          ]
+        },
+        {
+          "title": "Ouyang 等：Training language models to follow instructions",
+          "url": "https://arxiv.org/html/2203.02155v1",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "SFT、偏好比較、獎勵模型及 PPO 的典型流程",
+            "對齊特定標註者偏好且仍有錯誤"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 55,
+      "category": "training",
+      "english": "Direct Preference Optimization",
+      "chinese": "直接偏好最佳化",
+      "slug": "ai-term-direct-preference-optimization",
+      "action": "new",
+      "title": "直接偏好最佳化（DPO）：用回答比較直接調整模型",
+      "aliases": [
+        "DPO",
+        "直接偏好最佳化"
+      ],
+      "sources": [
+        {
+          "title": "Rafailov 等：Direct Preference Optimization",
+          "url": "https://arxiv.org/html/2305.18290v3",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "由偏好目標推導直接策略最佳化",
+            "原始 DPO 不需獨立獎勵模型及 RL 訓練環節"
+          ]
+        },
+        {
+          "title": "Hugging Face TRL：DPO Trainer",
+          "url": "https://huggingface.co/docs/trl/dpo_trainer",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "偏好配對與參考模型",
+            "實作提供不同目標與變體，需辨識設定"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 56,
+      "category": "training",
+      "english": "LoRA",
+      "chinese": "低秩適應",
+      "slug": "ai-term-lora",
+      "action": "new",
+      "title": "低秩適應（LoRA）：少量可訓練參數如何調整模型",
+      "aliases": [
+        "Low-Rank Adaptation",
+        "低秩調適"
+      ],
+      "sources": [
+        {
+          "title": "Hu 等：LoRA",
+          "url": "https://arxiv.org/html/2106.09685v2",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "凍結基礎權重並加入低秩可訓練矩陣",
+            "低秩適應與可合併更新的機制"
+          ]
+        },
+        {
+          "title": "Hugging Face PEFT：LoRA",
+          "url": "https://huggingface.co/docs/peft/developer_guides/lora",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "秩、目標模組與附加參數設定",
+            "LoRA 變體、合併與相容性選擇"
+          ]
+        },
+        {
+          "title": "Dettmers 等：QLoRA",
+          "url": "https://arxiv.org/abs/2305.14314",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "量化基礎權重配合 LoRA 是另一種組合方法"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 57,
+      "category": "training",
+      "english": "Knowledge Distillation",
+      "chinese": "知識蒸餾",
+      "slug": "ai-term-knowledge-distillation",
+      "action": "new",
+      "title": "知識蒸餾（Knowledge Distillation）：讓學生模型學教師",
+      "aliases": [
+        "distillation",
+        "知識蒸餾"
+      ],
+      "sources": [
+        {
+          "title": "Hinton 等：Distilling the Knowledge in a Neural Network",
+          "url": "https://arxiv.org/abs/1503.02531",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "教師軟目標包含非最高類別資訊",
+            "使用溫度調整的蒸餾目標"
+          ]
+        },
+        {
+          "title": "PyTorch：Knowledge Distillation Tutorial",
+          "url": "https://docs.pytorch.org/tutorials/beginner/knowledge_distillation_tutorial.html",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "教師與學生訓練及軟目標",
+            "輸出與中間表示的蒸餾方法"
+          ]
+        },
+        {
+          "title": "Kim、Rush：Sequence-Level Knowledge Distillation",
+          "url": "https://arxiv.org/abs/1606.07947",
+          "access": "Two independent reviewers read HTML section 3.2 on 2026-09-14",
+          "claims": [
+            "教師生成的序列可作為學生的監督訓練目標；不將論文的翻譯實驗速度推廣為一般效果"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 58,
+      "category": "training",
+      "english": "Quantization",
+      "chinese": "量化",
+      "slug": "ai-term-quantization",
+      "action": "new",
+      "title": "量化（Quantization）：用較少位元執行模型的取捨",
+      "aliases": [
+        "模型量化"
+      ],
+      "sources": [
+        {
+          "title": "Hugging Face：Quantization Overview",
+          "url": "https://huggingface.co/docs/transformers/quantization/overview",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "低精度權重降低載入與使用記憶體",
+            "量化方法具有不同硬體及校準要求"
+          ]
+        },
+        {
+          "title": "Frantar 等：GPTQ",
+          "url": "https://arxiv.org/html/2210.17323v1",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "訓練後量化及誤差近似處理",
+            "量化品質與實際推論條件相關"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [
+        "gguf-quantization-explained"
+      ],
+      "decision_reason": "收錄獨立概念及可核對的一手資料；相近既有／規劃文章偏向特定工具操作，本篇解釋通用概念。"
+    },
+    {
+      "id": 59,
+      "category": "training",
+      "english": "Reasoning Model",
+      "chinese": "推理模型",
+      "slug": "ai-reasoning-models-explained",
+      "action": "reuse",
+      "title": "推理模型（Reasoning Model）：多想幾步能解決什麼",
+      "aliases": [
+        "reasoning model",
+        "推理模型"
+      ],
+      "sources": [
+        {
+          "title": "DeepSeek-AI：DeepSeek-R1",
+          "url": "https://arxiv.org/abs/2501.12948",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "強化學習可促進推理及驗證行為",
+            "具體研究不代表所有推理模型同一訓練方法"
+          ]
+        },
+        {
+          "title": "Google：Gemini thinking",
+          "url": "https://ai.google.dev/gemini-api/docs/thinking",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "推論思考與最終輸出",
+            "思考摘要可獨立提供且可能為空"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [
+        "ai-reasoning-models-explained"
+      ],
+      "decision_reason": "保留既有網址，重新查核並補足獨立概念、案例、比較與限制。"
+    },
+    {
+      "id": 60,
+      "category": "training",
+      "english": "Test-time Compute",
+      "chinese": "推論時計算",
+      "slug": "ai-term-test-time-compute",
+      "action": "new",
+      "title": "推論時計算（Test-time Compute）：把算力花在這一道題",
+      "aliases": [
+        "inference-time compute",
+        "推論時計算",
+        "測試時計算"
+      ],
+      "sources": [
+        {
+          "title": "Snell 等：Scaling LLM Test-Time Compute Optimally",
+          "url": "https://arxiv.org/html/2408.03314v1",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "計算分配取決於問題難度與策略",
+            "難度估計有額外計算成本與部署限制"
+          ]
+        },
+        {
+          "title": "Wang 等：Self-Consistency",
+          "url": "https://arxiv.org/html/2203.11171v4",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "多條推導取樣與答案一致性選擇",
+            "推論時計算的一種具體方法"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 61,
+      "category": "training",
+      "english": "Prompt Caching",
+      "chinese": "提示詞快取",
+      "slug": "ai-term-prompt-caching",
+      "action": "new",
+      "title": "提示詞快取（Prompt Caching）：重用相同字首的計算",
+      "aliases": [
+        "提示詞快取"
+      ],
+      "sources": [
+        {
+          "title": "Anthropic：Prompt caching",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "相同字首、快取邊界與命中條件",
+            "快取不取代輸出生成",
+            "平臺隔離與使用量檢查"
+          ]
+        },
+        {
+          "title": "vLLM：Automatic Prefix Caching",
+          "url": "https://docs.vllm.ai/en/latest/features/automatic_prefix_caching/",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "重用共享字首的 KV 計算",
+            "只減少 prefill 工作，不直接減少 decoding"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 62,
+      "category": "evaluation",
+      "english": "Evals",
+      "chinese": "模型與代理評測",
+      "slug": "ai-term-evals",
+      "action": "new",
+      "title": "模型與代理評測（Evals）是什麼",
+      "aliases": [
+        "Evals",
+        "evaluation",
+        "模型與代理評測",
+        "評測"
+      ],
+      "sources": [
+        {
+          "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+          "title": "Anthropic：Demystifying evals for AI agents",
+          "access": "web search + web open",
+          "claims": [
+            "評測以任務、嘗試、評分器及外部結果組成，應區分過程紀錄與最終狀態"
+          ]
+        },
+        {
+          "url": "https://mlflow.org/docs/latest/genai/eval-monitor/",
+          "title": "MLflow：LLM and Agent Evaluation",
+          "access": "web search + web open",
+          "claims": [
+            "以資料集、評分器與追蹤資料評估模型及代理，並校準語意評分"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 63,
+      "category": "evaluation",
+      "english": "Benchmark",
+      "chinese": "基準測試",
+      "slug": "ai-term-benchmark",
+      "action": "new",
+      "title": "基準測試（Benchmark）是什麼",
+      "aliases": [
+        "Benchmark",
+        "基準測試"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2211.09110",
+          "title": "Liang 等：Holistic Evaluation of Language Models",
+          "access": "web search + web open",
+          "claims": [
+            "以多場景與多面向指標呈現模型能力和取捨"
+          ]
+        },
+        {
+          "url": "https://crfm-helm.readthedocs.io/en/latest/",
+          "title": "Stanford CRFM：HELM 官方文件",
+          "access": "web search + web open",
+          "claims": [
+            "可重現且透明的模型評測框架"
+          ]
+        },
+        {
+          "url": "https://arxiv.org/abs/2009.03300",
+          "title": "Hendrycks 等：Measuring Massive Multitask Language Understanding",
+          "access": "web search + web open",
+          "claims": [
+            "固定多工題集作為模型知識與能力比較的一種基準"
+          ]
+        },
+        {
+          "url": "https://arxiv.org/abs/2306.05685",
+          "title": "Zheng 等：Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena",
+          "access": "web search + web open",
+          "claims": [
+            "模型評審可支援開放回答評估，也有位置、冗長與自我偏好等偏差"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 64,
+      "category": "evaluation",
+      "english": "LLM-as-a-Judge",
+      "chinese": "以語言模型擔任評審",
+      "slug": "ai-term-llm-as-a-judge",
+      "action": "new",
+      "title": "以語言模型擔任評審（LLM-as-a-Judge）是什麼",
+      "aliases": [
+        "LLM judge",
+        "LLM-as-a-Judge",
+        "以語言模型擔任評審",
+        "模型評審"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2306.05685",
+          "title": "Zheng 等：Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena",
+          "access": "web search + web open",
+          "claims": [
+            "模型評審可支持開放回答評估，也有位置、冗長與自我偏好等偏差"
+          ]
+        },
+        {
+          "url": "https://mlflow.org/docs/latest/genai/eval-monitor/",
+          "title": "MLflow：LLM and Agent Evaluation",
+          "access": "web search + web open",
+          "claims": [
+            "以資料集、評分器與追蹤資料評估模型及代理，並校準語意評分"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 65,
+      "category": "evaluation",
+      "english": "Hallucination",
+      "chinese": "幻覺",
+      "slug": "ai-hallucination-fact-check",
+      "action": "reuse",
+      "title": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+      "aliases": [
+        "AI 幻覺",
+        "Hallucination",
+        "hallucination",
+        "幻覺"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2305.14251",
+          "title": "Min 等：FActScore",
+          "access": "web search + web open",
+          "claims": [
+            "將長回答拆成原子事實，判斷可信來源是否支持個別主張"
+          ]
+        },
+        {
+          "url": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations",
+          "title": "Anthropic：Reduce hallucinations",
+          "access": "web search + web open",
+          "claims": [
+            "允許不知道、限制來源與引用有助核對，但不消除全部幻覺"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [
+        "ai-hallucination-fact-check"
+      ],
+      "decision_reason": "保留既有網址，重新查核並補足獨立概念、案例、比較與限制。"
+    },
+    {
+      "id": 66,
+      "category": "evaluation",
+      "english": "Prompt Injection",
+      "chinese": "提示詞注入",
+      "slug": "ai-term-prompt-injection",
+      "action": "new",
+      "title": "提示詞注入（Prompt Injection）是什麼",
+      "aliases": [
+        "Prompt Injection",
+        "提示注入",
+        "提示詞注入"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2302.12173",
+          "title": "Greshake 等：Indirect Prompt Injection",
+          "access": "web search + web open",
+          "claims": [
+            "第三方資料可夾帶指令並影響讀取該資料的語言模型應用"
+          ]
+        },
+        {
+          "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+          "title": "OWASP：LLM01 Prompt Injection",
+          "access": "web search + web open",
+          "claims": [
+            "直接與間接注入、權限限制及外部內容分隔等風險控制"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 67,
+      "category": "evaluation",
+      "english": "Jailbreak",
+      "chinese": "越獄提示",
+      "slug": "ai-term-jailbreak",
+      "action": "new",
+      "title": "越獄提示（Jailbreak）是什麼",
+      "aliases": [
+        "Jailbreak",
+        "越獄",
+        "越獄提示"
+      ],
+      "sources": [
+        {
+          "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+          "title": "OWASP：LLM01 Prompt Injection",
+          "access": "web search + web open",
+          "claims": [
+            "直接與間接注入、權限限制及外部內容分隔等風險控制"
+          ]
+        },
+        {
+          "url": "https://www.anthropic.com/research/many-shot-jailbreaking",
+          "title": "Anthropic：Many-shot jailbreaking",
+          "access": "web search + web open",
+          "claims": [
+            "研究以大量上下文示例影響安全行為，說明越獄與防禦仍需評測"
+          ]
+        },
+        {
+          "url": "https://arxiv.org/abs/2307.15043",
+          "title": "Zou 等：Universal and Transferable Adversarial Attacks on Aligned Language Models",
+          "access": "web search + web open",
+          "claims": [
+            "對齊模型仍可能受對抗輸入影響，跨模型轉移是研究觀察而非普遍保證"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 68,
+      "category": "evaluation",
+      "english": "Guardrails",
+      "chinese": "安全防護機制",
+      "slug": "ai-term-guardrails",
+      "action": "new",
+      "title": "安全防護機制（Guardrails）是什麼",
+      "aliases": [
+        "Guardrails",
+        "安全護欄",
+        "安全防護機制"
+      ],
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nemo/guardrails/about-nemo-guardrails-library/overview",
+          "title": "NVIDIA：NeMo Guardrails Overview",
+          "access": "web search + web open",
+          "claims": [
+            "可在輸入、輸出與對話流程等位置配置可程式化防護"
+          ]
+        },
+        {
+          "url": "https://learn.microsoft.com/en-us/azure/ai-services/content-safety/concepts/jailbreak-detection",
+          "title": "Microsoft：Prompt Shields",
+          "access": "web search + web open",
+          "claims": [
+            "針對使用者提示與檔案內容的攻擊偵測，屬防護的一部分"
+          ]
+        },
+        {
+          "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+          "title": "OWASP：LLM01 Prompt Injection",
+          "access": "web search + web open",
+          "claims": [
+            "直接與間接注入、權限限制及外部內容分隔等風險控制"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 69,
+      "category": "evaluation",
+      "english": "Sandbox",
+      "chinese": "沙盒",
+      "slug": "ai-term-sandbox",
+      "action": "new",
+      "title": "沙盒（Sandbox）：讓 AI 執行工具時有明確邊界",
+      "aliases": [
+        "沙箱"
+      ],
+      "sources": [
+        {
+          "title": "gVisor：Introduction to security",
+          "url": "https://gvisor.dev/docs/architecture_guide/intro/",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "工作負載隔離與應用核心機制",
+            "沙盒不能保護已授予環境的資源"
+          ]
+        },
+        {
+          "title": "Docker：Engine security",
+          "url": "https://docs.docker.com/engine/security/",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "容器安全依賴核心機制與配置",
+            "能力及主機存取影響隔離邊界"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 70,
+      "category": "evaluation",
+      "english": "Human-in-the-loop",
+      "chinese": "人工介入",
+      "slug": "ai-term-human-in-the-loop",
+      "action": "new",
+      "title": "人工介入（Human-in-the-loop）：讓人有資訊也有決定權",
+      "aliases": [
+        "HITL",
+        "人類參與迴圈"
+      ],
+      "sources": [
+        {
+          "title": "LangGraph：Interrupts",
+          "url": "https://docs.langchain.com/oss/python/langgraph/interrupts",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "中斷、儲存與恢復流程",
+            "人工審閱、修改與批准的應用模式"
+          ]
+        },
+        {
+          "title": "NIST：AI Risk Management Framework",
+          "url": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "人機互動與角色會影響風險",
+            "監督與責任需納入系統設計"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 71,
+      "category": "evaluation",
+      "english": "Red Teaming",
+      "chinese": "紅隊測試",
+      "slug": "ai-term-red-teaming",
+      "action": "new",
+      "title": "紅隊測試（Red Teaming）：主動找出 AI 系統會怎樣失敗",
+      "aliases": [
+        "red team",
+        "紅隊測試"
+      ],
+      "sources": [
+        {
+          "title": "NIST：Generative AI Profile",
+          "url": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "AI 紅隊為受控環境中的風險探索",
+            "結果應進一步分析後用於治理與決策"
+          ]
+        },
+        {
+          "title": "Ganguli 等：Red Teaming Language Models to Reduce Harms",
+          "url": "https://arxiv.org/abs/2209.07858",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "人工對抗測試方法及經驗",
+            "紅隊的範圍、限制與模型比較條件"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 72,
+      "category": "multimodal",
+      "english": "Multimodal AI",
+      "chinese": "多模態 AI",
+      "slug": "ai-term-multimodal-ai",
+      "action": "new",
+      "title": "多模態 AI（Multimodal AI）是什麼：把圖像、聲音與文字一起理解",
+      "aliases": [
+        "multimodal",
+        "多模態"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2204.14198",
+          "title": "Alayrac 等：Flamingo",
+          "access": "web open",
+          "claims": [
+            "視覺語言整合與交錯輸入的原始研究"
+          ]
+        },
+        {
+          "url": "https://ai.google.dev/gemini-api/docs/image-understanding",
+          "title": "Google：Image understanding",
+          "access": "web open",
+          "claims": [
+            "圖像與文字共同輸入、描述及視覺問答"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 73,
+      "category": "multimodal",
+      "english": "Diffusion Model",
+      "chinese": "擴散模型",
+      "slug": "ai-term-diffusion-model",
+      "action": "new",
+      "title": "擴散模型（Diffusion Model）是什麼：從雜訊逐步生成影像",
+      "aliases": [
+        "擴散模型"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2006.11239",
+          "title": "Denoising Diffusion Probabilistic Models",
+          "access": "web open",
+          "claims": [
+            "去噪擴散機率模型為生成方法",
+            "訓練與生成的原始研究脈絡"
+          ]
+        },
+        {
+          "url": "https://huggingface.co/learn/diffusion-course/en/unit1/1",
+          "title": "Hugging Face Diffusion Course：Introduction",
+          "access": "web open",
+          "claims": [
+            "訓練時加入不同程度雜訊與更新模型",
+            "生成從隨機輸入反覆更新；取樣方法影響步數"
+          ]
+        },
+        {
+          "url": "https://arxiv.org/abs/2112.10752",
+          "title": "High-Resolution Image Synthesis with Latent Diffusion Models",
+          "access": "web open",
+          "claims": [
+            "在自動編碼器潛在表示中進行擴散",
+            "條件式影像生成與運算負擔的設計考量"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 74,
+      "category": "multimodal",
+      "english": "Text-to-Image",
+      "chinese": "文生圖",
+      "slug": "ai-term-text-to-image",
+      "action": "new",
+      "title": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
+      "aliases": [
+        "T2I",
+        "文生圖"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2112.10752",
+          "title": "High-Resolution Image Synthesis with Latent Diffusion Models",
+          "access": "web open",
+          "claims": [
+            "文字等條件可引導潛在擴散影像生成",
+            "擴散為文字生圖可採用的方法"
+          ]
+        },
+        {
+          "url": "https://huggingface.co/docs/diffusers/using-diffusers/conditional_image_generation",
+          "title": "Diffusers：Text-to-image",
+          "access": "web open",
+          "claims": [
+            "文字提示到影像的條件式生成",
+            "負面提示、引導程度與額外控制依管線而異"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [
+        "chatgpt-image-generation-guide",
+        "nano-banana-image-editing"
+      ],
+      "decision_reason": "收錄獨立概念及可核對的一手資料；相近既有／規劃文章偏向特定工具操作，本篇解釋通用概念。"
+    },
+    {
+      "id": 75,
+      "category": "multimodal",
+      "english": "Text-to-Video",
+      "chinese": "文生影片",
+      "slug": "ai-term-text-to-video",
+      "action": "new",
+      "title": "文字生影片（Text-to-Video）是什麼：讓畫面在時間裡保持連貫",
+      "aliases": [
+        "T2V",
+        "文生影",
+        "文生影片"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2204.03458",
+          "title": "Video Diffusion Models",
+          "access": "web open",
+          "claims": [
+            "影片生成涉及時間連貫性",
+            "影像擴散延伸到影片與文字條件生成的研究"
+          ]
+        },
+        {
+          "url": "https://huggingface.co/docs/diffusers/using-diffusers/text-img2vid",
+          "title": "Diffusers：Video generation",
+          "access": "web open",
+          "claims": [
+            "文字、空間與時間跨影格一致性的挑戰",
+            "影片生成與匯出相關設定依實作而異"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 76,
+      "category": "multimodal",
+      "english": "Automatic Speech Recognition",
+      "chinese": "語音辨識",
+      "slug": "ai-term-automatic-speech-recognition",
+      "action": "new",
+      "title": "自動語音辨識（ASR）是什麼：把錄音轉成可核對的文字",
+      "aliases": [
+        "ASR",
+        "STT",
+        "speech-to-text",
+        "語音轉文字"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2212.04356",
+          "title": "Robust Speech Recognition via Large-Scale Weak Supervision",
+          "access": "web open",
+          "claims": [
+            "以音訊與文字資料進行語音辨識訓練的研究",
+            "多語言與多任務辨識的能力脈絡"
+          ]
+        },
+        {
+          "url": "https://huggingface.co/docs/transformers/tasks/asr",
+          "title": "Transformers：Automatic speech recognition",
+          "access": "web open",
+          "claims": [
+            "ASR 由語音訊號產生文字",
+            "模型相關音訊前處理與 WER 評估"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 77,
+      "category": "multimodal",
+      "english": "Text-to-Speech",
+      "chinese": "語音合成",
+      "slug": "ai-term-text-to-speech",
+      "action": "new",
+      "title": "語音合成（TTS）是什麼：讓文字成為聽得懂、聽得對的聲音",
+      "aliases": [
+        "TTS",
+        "語音合成"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/1712.05884",
+          "title": "Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions",
+          "access": "web open",
+          "claims": [
+            "Tacotron 2 文字表示到梅爾頻譜再到波形的架構",
+            "該架構作為實例而非所有 TTS 定義"
+          ]
+        },
+        {
+          "url": "https://huggingface.co/docs/transformers/tasks/text-to-speech",
+          "title": "Transformers：Text to speech",
+          "access": "web open",
+          "claims": [
+            "文字轉語音實作與音色條件",
+            "頻譜與聲碼器的範例流程；冒用聲音的考量"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [
+        "minimax-speech-tts-guide"
+      ],
+      "decision_reason": "收錄獨立概念及可核對的一手資料；相近既有／規劃文章偏向特定工具操作，本篇解釋通用概念。"
+    },
+    {
+      "id": 78,
+      "category": "multimodal",
+      "english": "Deepfake",
+      "chinese": "深度偽造",
+      "slug": "ai-term-deepfake",
+      "action": "new",
+      "title": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
+      "aliases": [
+        "deep fake",
+        "深偽",
+        "深度偽造"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/1901.08971",
+          "title": "FaceForensics++: Learning to Detect Manipulated Facial Images",
+          "access": "web open",
+          "claims": [
+            "多種臉部操弄方法的偵測基準",
+            "壓縮與資料條件是偵測評估的一部分"
+          ]
+        },
+        {
+          "url": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-4.pdf",
+          "title": "NIST AI 100-4：Reducing Risks Posed by Synthetic Content",
+          "access": "web open PDF + find，閱讀來源追蹤、偵測與不確定性相關段落",
+          "claims": [
+            "來源追蹤、浮水印、內容偵測是不同且可互補的技術",
+            "偵測錯誤、不確定性與標籤解讀限制"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    },
+    {
+      "id": 79,
+      "category": "multimodal",
+      "english": "Open Weights",
+      "chinese": "開放權重",
+      "slug": "ai-term-open-weights",
+      "action": "new",
+      "title": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+      "aliases": [
+        "open-weight",
+        "開放權重"
+      ],
+      "sources": [
+        {
+          "title": "Hugging Face：Downloading models",
+          "url": "https://huggingface.co/docs/hub/models-downloading",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "模型儲存庫檔案下載及版本取得",
+            "取得檔案與可執行組合需區分"
+          ]
+        },
+        {
+          "title": "Hugging Face：Licenses",
+          "url": "https://huggingface.co/docs/hub/repositories-licenses",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "模型卡授權標示與對應檔案"
+          ]
+        },
+        {
+          "title": "OSI：Open Source AI Definition 1.0",
+          "url": "https://opensource.org/ai/open-source-ai-definition",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "權重與完整開源 AI 的條件不同",
+            "OSI 定義的自由與資料資訊、程式、參數要求"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [
+        "ai-open-vs-closed-models"
+      ],
+      "decision_reason": "收錄獨立概念及可核對的一手資料；相近既有／規劃文章偏向特定工具操作，本篇解釋通用概念。"
+    },
+    {
+      "id": 80,
+      "category": "multimodal",
+      "english": "Open Source AI",
+      "chinese": "開源 AI",
+      "slug": "ai-term-open-source-ai",
+      "action": "new",
+      "title": "開源 AI（Open Source AI）：公開哪些東西才算完整",
+      "aliases": [
+        "開源 AI"
+      ],
+      "sources": [
+        {
+          "title": "OSI：Open Source AI Definition 1.0",
+          "url": "https://opensource.org/ai/open-source-ai-definition",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "使用研究修改分享的自由",
+            "資料資訊、程式與參數的修改形式",
+            "公開與無法分享資料的資訊要求"
+          ]
+        },
+        {
+          "title": "OSI：OSAID FAQ",
+          "url": "https://opensource.org/ai/faq",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "訓練資料資訊不等於所有原始資料必須公開",
+            "AI 修改形式與資料角色的說明"
+          ]
+        },
+        {
+          "title": "Ai2：Olmo 官方發布頁",
+          "url": "https://allenai.org/olmo",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "模型、資料、訓練及評估工具的公開入口"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [
+        "ai-open-vs-closed-models"
+      ],
+      "decision_reason": "收錄獨立概念及可核對的一手資料；相近既有／規劃文章偏向特定工具操作，本篇解釋通用概念。"
+    },
+    {
+      "id": 81,
+      "category": "multimodal",
+      "english": "Content Credentials",
+      "chinese": "內容憑證",
+      "slug": "ai-term-content-credentials",
+      "action": "new",
+      "title": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
+      "aliases": [
+        "內容憑證"
+      ],
+      "sources": [
+        {
+          "title": "C2PA：Technical Specification 2.0",
+          "url": "https://spec.c2pa.org/specifications/specifications/2.0/specs/C2PA_Specification.html",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "內容主張、簽署與媒體綁定",
+            "來源紀錄與驗證架構"
+          ]
+        },
+        {
+          "title": "C2PA：Explainer 2.2",
+          "url": "https://spec.c2pa.org/specifications/specifications/2.2/explainer/Explainer.html",
+          "access": "web open; term researched with web search",
+          "claims": [
+            "憑證不對內容真假作價值判斷",
+            "缺少憑證不等於不可信",
+            "資料可被移除及軟綁定的角色"
+          ]
+        }
+      ],
+      "checked_on": "2026-09-14",
+      "status": "verified",
+      "existing_articles": [],
+      "decision_reason": "收錄獨立概念及具體使用情境，清單中尚無同義專文。"
+    }
+  ],
+  "counts": {
+    "candidate_concepts": 81,
+    "accepted_concepts": 81,
+    "new_concept_articles": 76,
+    "revised_concept_articles": 5,
+    "new_indexes": 1,
+    "revised_quick_references": 1,
+    "excluded_concepts": 0
+  },
+  "deduplication": "縮寫、拼字變體與中文別名歸入同一詞條，不各自建立文章。C2PA 是支援內容憑證的標準，並非與內容憑證完全同義。",
+  "scope_statement": "首輪截至 2026-09-14，共查核並收錄 81 個獨立概念；不宣稱涵蓋所有 AI 用語。"
+}

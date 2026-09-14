@@ -7,7 +7,7 @@ area: ops
 owner: claude-opus-5
 claimed_at: 2026-09-14T00:38:04Z
 created_at: 2026-09-13T23:37:46Z
-completed_at: 2026-09-14T05:16:08Z
+completed_at: 2026-09-14T06:20:48Z
 branch: claude/security-check-o5zaj1
 depends_on: []
 scope:
@@ -50,11 +50,13 @@ which is the good time to automate it rather than the bad one.
       human-readable version in a trailing comment.
 - [x] Dependabot opens pull requests for npm, uv and GitHub Actions, and the actions
       ecosystem is included so the pins stay current rather than frozen.
-- [x] CI is green on the pinned workflows. Confirmed on GitHub rather than assumed: every
-      job on #472's head `a8661be` resolved its pinned actions and passed — the job logs
-      name `actions/checkout@11d5960a…` and `astral-sh/setup-uv@d0cc045d…` at the
-      `Download action repository` step. Locally only `tools/workflow-pins.test.mjs` and a
-      YAML parse can be checked, and both pass.
+- [x] CI is green on the pinned workflows, confirmed twice rather than assumed. On the PR:
+      every job on #472's head `a8661be` resolved its pinned actions and passed — the job
+      logs name `actions/checkout@11d5960a…` and `astral-sh/setup-uv@d0cc045d…` at the
+      `Download action repository` step. On `main` after the merge (`24af149`): CI run
+      34808942136 completed successfully. Locally only `tools/workflow-pins.test.mjs` and a
+      YAML parse can be checked, and both pass. Dependabot then opened its first actions
+      bump within the day (#475), which is the pairing this task existed to set up.
 
 ## Steps
 
@@ -102,3 +104,6 @@ immediately and loudly, before any step runs.
 - Only `apps/api` gets a `uv` entry. The npm workspace has one lock file at the root that
   covers `apps/web`, so a second npm entry pointing there would find nothing to update.
 - Filed by the 2026-09-13 security review (`docs/security-review-2026-09-13.md`).
+- Closed the stale review state after verifying merged PR and exact-main green CI.
+  A Windows-only file-URL parsing defect discovered during AI-series integration is
+  tracked separately in 2026-09-14-workflow-pin-tests-use-file-url.

@@ -1,0 +1,360 @@
+{
+  "slug": "gemini-vs-chatgpt-vs-claude-daily",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 127,
+  "locales": {
+    "zh-TW": {
+      "title": "三大助手日常比較：同題操作與評分方法",
+      "description": "Gemini、ChatGPT 與 Claude 都能協助處理日常文字和資料，但選擇時要比較自己會做的任務、資料入口與核對成本。本篇提供同一套摘要、回信與搜尋題目，並整理官方確認的功能差異。這是一篇官方功能比較與可重做的練習，不是三款模型的實測排行榜。",
+      "hero": {
+        "src": "/guides/gemini-vs-chatgpt-vs-claude-daily/hero.jpg",
+        "alt": "同題比較要固定條件的原創插畫，以文件、裝置與流程等物件呼應同題操作與評分方法；非產品介面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Gemini、ChatGPT 與 Claude 都能協助處理日常文字和資料，但選擇時要比較自己會做的任務、資料入口與核對成本。本篇提供同一套摘要、回信與搜尋題目，並整理官方確認的功能差異。這是一篇官方功能比較與可重做的練習，不是三款模型的實測排行榜。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-vs-chatgpt-vs-claude-daily/diagram-1.svg",
+          "alt": "記錄環境：模型、方案與工具；保存結果：保留每一輪原文；同一標準：看事實與修改成本",
+          "width": 1600,
+          "height": 900,
+          "caption": "同題比較要固定條件。此為原創教學圖解，並非產品畫面或實測輸出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "查證範圍與結果狀態",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "查證日期為 2026 年 9 月 14 日，使用 Windows 電腦查閱三家官方文件。這次沒有在三個登入帳號中選定模型、執行同題或測量速度，因此沒有生成結果、分數與耗時排名。下方的預期答案均由題目原文人工整理，用來驗收，不冒充任何產品的回覆。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方功能比較能回答「可從哪裡加入資料、如何要求搜尋、如何保存共用指示」，不能回答「哪個中文一定最好」或「哪個永遠最準」。功能還受方案、平臺、地區與工作區設定影響，正式採用前應在自己的帳號重做代表性任務。"
+        },
+        {
+          "type": "heading",
+          "text": "開始前：固定條件纔有可比性",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "準備三個產品的合法可用帳號與相同測試檔案，先記下日期、時區、產品入口、方案、畫面顯示模型及工具設定。若某產品不公開模型名稱，寫未顯示，不根據答案風格猜測。沒有某個功能時記為該帳號不可用，不能直接評為模型答錯。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每題開新對話，先停用會影響結果的自訂指示或記錄其內容；關閉不需要的資料連接。摘要與回信題只使用給定文字，搜尋題才明確要求查網路。若一邊使用研究工具、另一邊只用普通聊天，應把它寫成不同工作流程，而不是相同條件比較。"
+        },
+        {
+          "type": "heading",
+          "text": "官方功能比較：資料與工作空間",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Gemini 可在對話加入支援檔案，並透過 Gems 保存指示與參考資料；資料位於 Google 服務時，可檢查 Connected Apps 或 Workspace 原生整合。這有助於減少某些工作中的複製步驟，但不保證答案較正確。操作細節見"
+            },
+            {
+              "type": "link",
+              "text": "檔案分析",
+              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "link",
+              "text": "Gems",
+              "url": "https://mokaair.com/zh-TW/life/gemini-gems-custom-assistants"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPT 可附加檔案，Projects「專案」可集中聊天、來源和專案指示。官方文件也區分一般 Chat 與處理完整成果的 Work。網頁專案不等於直接存取你電腦整個資料夾，仍需上傳或連接資料；用本篇短題練習時先選一般聊天，避免混入不同工作模式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude 可將檔案加到單次對話或專案知識，Projects 也能設定專案指示。官方上傳文件另指出 XLSX 需要啟用程式執行與檔案建立能力。若題目只是純文字摘要，先直接貼相同文字，更容易排除上傳解析方式造成的差異。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "三者的共用指示都應寫明來源與缺漏規則，但不用假設它們讀取相同本機檔案。尤其"
+            },
+            {
+              "type": "link",
+              "text": "GEMINI.md",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+            },
+            {
+              "type": "text",
+              "text": "是 Gemini CLI 的工作環境指示，不是所有聊天產品都會自動載入的通用設定檔。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "題目一：摘要與缺漏處理",
+          "level": 2
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "三款產品使用相同提示詞",
+          "code": "只根據下列資料回答，使用繁體中文，不搜尋網路。\n整理成活動日期、地點、名額、費用、報名截止日期五個欄位。\n沒有提供的資訊寫「未提供」，保留暫定狀態，不自行推算。\n資料：社區講座暫定 2026 年 10 月 10 日下午 2 點舉行，\n地點尚未確認，名額 24 人，免費參加，尚未提供報名截止日期。\n最後列出兩個需要向主辦人確認的問題。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "人工參考答案是暫定十月十日下午兩點、地點未確認、二十四人、免費、截止日期未提供。核對五欄是否全部存在，是否把暫定改成確定，以及是否編造報名網址。文字長短先不評分，因為最重要的是事實和狀態沒有被改寫。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若某答案錯了，保存第一次完整回覆，再用相同追問要求它指出資料依據。記錄需要幾輪才修正，不能只拿某款第三輪最佳答案，對比另一款第一輪答案。最後一次結果與原始結果都保留，才能看出返工成本。"
+        },
+        {
+          "type": "heading",
+          "text": "題目二：回信與承諾控制",
+          "level": 2
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "回信練習",
+          "code": "請把以下內容改成禮貌、清楚的繁體中文回信，約 120 字內。\n對方詢問能否加開講座名額，目前主辦人尚未決定。\n我能做的是先登記意願，再於確認後通知；不能承諾一定有名額。\n請保留這個限制，不增加優惠、優先權或回覆期限。\n只輸出回信草稿，不寄出。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "檢查回信是否承諾了題目未授權的事，例如「一定為您保留」或「明天通知」。語氣好不好可以由兩位讀者各自評分，但限制有沒有保留應直接看文字。若要比較字數，先約定是否包含標點與英文，避免使用不同計算方法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "此題的可用成果不是一封最華麗的信，而是一封不用刪掉錯誤承諾的草稿。記下自己實際修改的句子，以及修改是出於事實、語氣還是格式。這能幫助你選適合工作習慣的工具，不能推出所有寫作任務的普遍排名。"
+        },
+        {
+          "type": "heading",
+          "text": "題目三：搜尋與來源查核",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "三者都有官方文件說明的網路搜尋能力，但入口和開啟條件不同。ChatGPT 可明確要求查詢最新資訊並查看搜尋與引用；Claude 可在加號選單啟用 Web search，團隊帳號可能先需管理者開放；Gemini 的搜尋與資料連線另見"
+            },
+            {
+              "type": "link",
+              "text": "Connected Apps",
+              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "搜尋練習",
+          "code": "請搜尋 Google 官方文件，說明 Gemini CLI 的 GEMINI.md 有什麼用途。\n提供三個可開啟的官方來源連結，並把文件直接支持的事實與你的推論分開。\n指出資料查詢日期，以及哪些版本或平臺條件尚未確認。\n不要把 Gems 的介面指示當成會自動讀取本機 GEMINI.md。\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這題檢查來源是否真的來自官方、能否開啟、是否支持旁邊的說法，以及有沒有混淆產品。不要只計算連結數量；三個無關首頁比一個精準章節更難核對。對版本相關說法，可用本系列"
+            },
+            {
+              "type": "link",
+              "text": "記憶載入與作用範圍",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-memory-hierarchy"
+            },
+            {
+              "type": "text",
+              "text": "作為深入閱讀入口。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "如何保存實際比較紀錄",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "每一輪建立一列紀錄，包含完整提示詞、原始回覆檔名、模型、工具、耗時、錯誤與人工修改。搜尋題還要存來源網址與查閱日期，因為網站可能改版。以下是本篇目前的真實狀態範例，不是等待填滿的成績表。"
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": "comparison-status.json",
+          "code": "{\n  \"checked_on\": \"2026-09-14\",\n  \"method\": \"official_documentation_comparison\",\n  \"platform\": \"Windows, official documentation review\",\n  \"gemini_live_test\": false,\n  \"chatgpt_live_test\": false,\n  \"claude_live_test\": false,\n  \"performance_ranking\": null,\n  \"expected_answers\": \"human-authored from the supplied exercise text\"\n}\n"
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「哪個最適合我？」選自己最常做的三種工作，按事實正確、指示遵守、來源可查和修改成本比較，再考慮資料入口。單一題目的最高分不代表所有任務都最適合。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「免費和付費可以直接比嗎？」可以比較自己的使用選擇，但要公開方案與限制，不能把結果描述成相同能力條件下的模型比較。費用與額度也要以實際地區和當時方案為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「為什麼同一產品重做會不同？」生成內容可能變動，模型和工具也可能更新。保留日期與設定，多題重做再判斷穩定性；不要只截取一次特別好或特別差的結果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「可以用本文說某款勝出嗎？」不行。本文完成的是官方功能與測試方法整理，沒有三款同題實測證據；實際排名必須由保存的結果和一致評分規則支持。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查證與範例",
+          "text": "本文於 2026-09-14 對照官方文件整理。畫面操作依官方說明，非所有裝置均經實機測試；範例輸出是驗收目標，實際內容依資料而異。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後的檢核",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "通過條件"
+          ],
+          "rows": [
+            [
+              "操作",
+              "能依正文重做一次，說明每一步使用的輸入。"
+            ],
+            [
+              "結果",
+              "能用原始資料或可重現測試核對輸出，而非只看語氣。"
+            ],
+            [
+              "延伸",
+              "知道下一篇教學解決的問題，以及什麼時候需要它。"
+            ]
+          ],
+          "caption": "完成實作後逐項確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著可以閱讀 "
+            },
+            {
+              "type": "link",
+              "text": "提示詞怎麼寫",
+              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-writing-guide"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "讀 PDF、圖片與表格",
+              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+            },
+            {
+              "type": "text",
+              "text": "，把本篇的操作接到下一個工作流程。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gemini 檔案分析",
+          "url": "https://support.google.com/gemini/answer/14903178?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini Gems",
+          "url": "https://support.google.com/gemini/answer/15146780?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "使用 ChatGPT 與檔案",
+          "url": "https://learn.chatgpt.com/docs/use-chatgpt",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "ChatGPT 專案",
+          "url": "https://learn.chatgpt.com/docs/projects",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "ChatGPT 網路搜尋",
+          "url": "https://learn.chatgpt.com/docs/web-search",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 上傳檔案",
+          "url": "https://support.claude.com/en/articles/8241126-upload-files-to-claude",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 專案",
+          "url": "https://support.claude.com/en/articles/9517075-what-are-projects",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 網路搜尋",
+          "url": "https://support.claude.com/en/articles/10684626-enable-and-use-web-search",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

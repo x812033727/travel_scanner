@@ -1,0 +1,119 @@
+{
+  "pr": "https://github.com/x812033727/travel_scanner/pull/473",
+  "merge_sha": "2123edbd2e1fc53adef0b89952ead60deef31feb",
+  "merged_at": "2026-09-14T06:18:31Z",
+  "head_sha": "56d806139078c4001248bbc11f64c3acc180ae5e",
+  "checks": [
+    {
+      "name": "api",
+      "conclusion": "SUCCESS"
+    },
+    {
+      "name": "api",
+      "conclusion": "SUCCESS"
+    },
+    {
+      "name": "food-map-reservations",
+      "conclusion": "SUCCESS"
+    },
+    {
+      "name": "food-map-reservations",
+      "conclusion": "SUCCESS"
+    },
+    {
+      "name": "planner-browser",
+      "conclusion": "SUCCESS"
+    },
+    {
+      "name": "planner-browser",
+      "conclusion": "SUCCESS"
+    },
+    {
+      "name": "discovery-browser",
+      "conclusion": "SUCCESS"
+    },
+    {
+      "name": "discovery-browser",
+      "conclusion": "SUCCESS"
+    },
+    {
+      "name": "web",
+      "conclusion": "SUCCESS"
+    },
+    {
+      "name": "web",
+      "conclusion": "SUCCESS"
+    },
+    {
+      "name": "containers",
+      "conclusion": "SUCCESS"
+    },
+    {
+      "name": "containers",
+      "conclusion": "SUCCESS"
+    },
+    {
+      "name": "full-stack-smoke",
+      "conclusion": "SUCCESS"
+    },
+    {
+      "name": "full-stack-smoke",
+      "conclusion": "SUCCESS"
+    }
+  ],
+  "post_merge_ci": {
+    "url": "https://github.com/x812033727/travel_scanner/actions/runs/34812907836",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "full-stack-smoke",
+        "conclusion": "success"
+      },
+      {
+        "name": "api",
+        "conclusion": "success"
+      },
+      {
+        "name": "containers",
+        "conclusion": "success"
+      },
+      {
+        "name": "web",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "post_merge_workflows": [
+    {
+      "conclusion": "skipped",
+      "databaseId": 34813995266,
+      "name": "Red main",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 34812908048,
+      "name": "Planner UX",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 34812907849,
+      "name": "Travel discovery acceptance",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 34812907919,
+      "name": "Food map and reservations",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 34812907836,
+      "name": "CI",
+      "status": "completed"
+    }
+  ],
+  "notes": "Red main is the failure-monitor workflow and was skipped; all four required workflows succeeded."
+}

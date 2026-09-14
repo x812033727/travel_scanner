@@ -1,0 +1,327 @@
+{
+  "slug": "claude-code-skills-skill-md",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 138,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜建立第一個 SKILL.md",
+      "description": "用 SKILL.md 包裝可重用的專案檢查。本篇會建立一個名為 todo-review 的 Skill，讓你在 Claude Code 對話輸入斜線名稱，就能重用同一套待辦專案審查流程。成果是一個可讀、可修改、可移除的 SKILL.md，以及一次包含具體檔名與驗證狀態的審查報告。",
+      "hero": {
+        "src": "/guides/claude-code-skills-skill-md/hero.jpg",
+        "alt": "建立第一個 SKILL.md：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "本篇會建立一個名為 todo-review 的 Skill，讓你在 Claude Code 對話輸入斜線名稱，就能重用同一套待辦專案審查流程。成果是一個可讀、可修改、可移除的 SKILL.md，以及一次包含具體檔名與驗證狀態的審查報告。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "請先準備"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-practice-project-setup",
+              "text": "待辦練習專案"
+            },
+            {
+              "type": "text",
+              "text": "，並閱讀 "
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-markdown-basics",
+              "text": "Markdown 基礎"
+            },
+            {
+              "type": "text",
+              "text": "。以下路徑都相對於專案根目錄，示範的是 Claude Code 專案 Skill；其他產品的技能上傳欄位與可用設定可能不同，不能直接假設完全相容。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "了解資料夾與 frontmatter"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-skills-skill-md/diagram-1.svg",
+          "alt": "了解資料夾與 frontmatter → 建立第一份技能 → 在正確的對話呼叫",
+          "width": 1600,
+          "height": 900,
+          "caption": "了解資料夾與 frontmatter → 建立第一份技能 → 在正確的對話呼叫",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "一個 Skill 至少有一份 SKILL.md，放在 "
+            },
+            {
+              "type": "code",
+              "text": ".claude/skills/技能名稱/"
+            },
+            {
+              "type": "text",
+              "text": "。檔案開頭兩段三連字元之間是 YAML frontmatter，用來描述名稱、用途及呼叫方式；後面的 Markdown 才是實際工作步驟。檔案名稱的大寫與副檔名應完整保留。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "本例使用專案範圍，方便和練習材料一起管理。如果要讓所有專案都可用，可以放在使用者的 ~/.claude/skills/，但先在單一專案驗證較容易排錯。同名的個人、專案與外掛技能可能發生覆蓋，應避免用過於通用的名稱。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "建立第一份技能"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在編輯器建立 "
+            },
+            {
+              "type": "code",
+              "text": ".claude/skills/todo-review/SKILL.md"
+            },
+            {
+              "type": "text",
+              "text": "，貼入以下完整內容。這個範例刻意採手動觸發，讓每次啟動時機可控；它也沒有預先授予 shell 或寫檔權限。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": "寫入 .claude/skills/todo-review/SKILL.md",
+          "code": "---\nname: todo-review\ndescription: 審查待辦清單專案的程式與目前差異，回報證據和未驗證事項。\ndisable-model-invocation: true\n---\n# 待辦專案審查\n先確認目前資料夾，讀取 package.json、model.js 與 app.js。\n若存在 Git 儲存庫，查看目前差異；不存在時明確說明。\n檢查新增、切換完成狀態與刪除是否依照識別碼操作。\n檢查使用者輸入是否透過 textContent 等安全方式顯示。\n只讀取與分析，不修改檔案，不提交、推送或連接外部服務。\n輸出以下三部分：\n1. 發現：具體檔名、可重現條件與影響。\n2. 驗證：實際執行過的檢查；沒有執行測試就明確標示。\n3. 下一步：最多三個按影響排序的建議。\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "description 應回答「什麼情況使用」，不能只寫「很棒的工具」。步驟則要指出讀什麼、觀察什麼、交付什麼。這裡的只讀要求是流程指引；若需要技術上限制可用工具，仍要查看"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-permissions-plan-mode",
+              "text": "權限設定"
+            },
+            {
+              "type": "text",
+              "text": "與技能欄位的實際作用。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "在正確的對話呼叫"
+        },
+        {
+          "type": "paragraph",
+          "text": "從專案根目錄啟動 Claude Code，在輸入框鍵入技能名稱。一般本機 SKILL.md 文字變更支援偵測更新；如果清單沒有刷新，先確認檔案位置與格式，再重新啟動 session。不要為了找不到名稱，立刻把整份檔案複製到多個範圍。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：啟動自訂 Skill",
+          "code": "/todo-review\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期 Claude 會載入技能並讀取指定材料，報告應包含 model.js 或 app.js 的具體觀察。只有「技能已建立」的回覆不算完成驗證，因為那可能只是描述檔案存在。請確認真正發生一次呼叫，並把輸出與磁碟內容對照。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若原始專案沒有 Git，報告應說明無法取得 Git 差異，繼續做可行的檔案審查，而不是自行初始化或捏造提交紀錄。若尚未執行測試，也應寫「未執行」，不能把閱讀測試程式當成測試已通過。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "分清楚兩個呼叫開關"
+        },
+        {
+          "type": "paragraph",
+          "text": "disable-model-invocation 設為 true，表示不讓 Claude 自動選用，使用者仍可手動呼叫。user-invocable 設為 false，則隱藏使用者斜線入口並阻止手動呼叫，適合只由 Claude 選用的背景知識。兩者的用途不同，別為了「不要自動執行」而關掉手動入口。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "設定",
+            "使用者手動呼叫",
+            "Claude 自動選用"
+          ],
+          "rows": [
+            [
+              "預設值",
+              "可以",
+              "可以"
+            ],
+            [
+              "disable-model-invocation: true",
+              "可以",
+              "不可以"
+            ],
+            [
+              "user-invocable: false",
+              "不可以",
+              "可以"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "目前文件也提醒，手動限定的技能不能直接作為排程自動觸發的技能提示。若之後要做"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-scheduled-tasks",
+              "text": "排程"
+            },
+            {
+              "type": "text",
+              "text": "，需重新審查觸發條件，不能只把同一斜線名稱塞進排程就認定會執行。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "調整內容並再次驗證"
+        },
+        {
+          "type": "paragraph",
+          "text": "把輸出要求加上一欄「證據位置」，重新呼叫技能，確認第二次報告真的引用檔名與可辨認內容。已載入對話的技能指引會留在上下文中，修改磁碟不會回頭改寫舊訊息；測試重大修改時可開新 session，減少舊指引干擾。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "不要把整個團隊知識庫塞入同一份檔案。主檔保留決策步驟，長範本與說明放到附屬材料，並在需要時明確指定讀取。"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-skill-arguments-resources",
+              "text": "參數與材料篇"
+            },
+            {
+              "type": "text",
+              "text": "會把此範例改為能指定檔案的版本。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "把技能檔與一份實際輸出放在同一次版本審查中，讓別人能看到規則與效果是否一致。輸出使用假資料，並註明這是測試紀錄，避免被誤讀成目前專案的最新狀態。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "找不到技能時如何排查"
+        },
+        {
+          "type": "table",
+          "header": [
+            "症狀",
+            "先檢查",
+            "處理方式"
+          ],
+          "rows": [
+            [
+              "輸入名稱沒有選項",
+              "啟動資料夾和檔名",
+              "確認位於專案內且是 SKILL.md"
+            ],
+            [
+              "顯示格式錯誤",
+              "frontmatter 縮排與冒號",
+              "先還原上面的最小範例"
+            ],
+            [
+              "執行了另一套步驟",
+              "同名技能或外掛",
+              "改成專案專用名稱並重啟"
+            ],
+            [
+              "要求工具授權",
+              "沒有預先授權該操作",
+              "閱讀請求後決定，不盲目加廣泛權限"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "停用練習技能時，把整個 todo-review 資料夾移出 .claude/skills/ 掃描位置並保留備份，再開新 session 確認名稱消失。只改 description 不會等於停用；而已經進入對話的舊指引也不會因為移檔自動消失。"
+        },
+        {
+          "type": "paragraph",
+          "text": "小練習是為報告加入「可重現操作」欄，呼叫兩次並核對輸出差異。完成判準是名稱能找到、步驟真正被套用、結果有檔案證據，而且知道如何移除及恢復。這比累積大量從未驗證的技能更容易長期維護。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Extend Claude with skills",
+          "url": "https://code.claude.com/docs/en/skills",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Extend Claude Code",
+          "url": "https://code.claude.com/docs/en/features-overview",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

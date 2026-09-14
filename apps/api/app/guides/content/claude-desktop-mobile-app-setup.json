@@ -1,0 +1,398 @@
+{
+  "slug": "claude-desktop-mobile-app-setup",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude 桌面版與手機 App：安裝、快捷鍵與語音",
+      "description": "已經在用 Claude 網頁版，還要不要多裝桌面版與手機 App？這篇依 Anthropic 官方說明整理三個版本的差別：桌面版要 macOS 11 或 Windows 10 以上，Mac 連點兩下 Option 就能隨叫隨用，還有擴充功能、本機檔案與內建瀏覽器；手機 App 補上語音、拍照與鎖定畫面入口。附功能對照表、五個實際用法，以及怎麼認明官方下載來源。",
+      "hero": {
+        "src": "/guides/claude-desktop-mobile-app-setup/hero.jpg",
+        "alt": "白色桌面上並排放著一支螢幕暗著的手機、一本攤開的空白筆記本、一支鉛筆與眼鏡，右上角是一台筆電的鍵盤一角。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "JESHOOTS.COM jeshoots",
+          "license": "CC0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:White_work_table_with_notes,_smartphone_and_laptop_(Unsplash).jpg"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Claude 的網頁版、桌面版與手機 App 用的是同一個帳號、同一份對話紀錄，差別不在能問什麼，而在「怎麼叫出來」和「碰得到你電腦裡的什麼」。結論先講：用 Mac 的人桌面版值得裝，因為連點兩下 Option 鍵就能讓 Claude 浮在你正在做的事情上面，還能拖一塊螢幕直接問，這是網頁版做不到的；Windows 的桌面版目前沒有這組快捷鍵，價值主要在擴充功能與本機檔案。手機 App 則補上電腦沒有的三件事：相機、語音，以及鎖定畫面與小工具這種「掏出來就能用」的入口。純聊天免費方案在三個版本上都能用，桌面版的 Claude Code 與 Cowork 要付費方案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇會帶你做完四件事：從官方網域把桌面版裝起來、設定好全域快捷鍵、在 iPhone 或 Android 上認出正版 App 並打開語音與拍照，以及搞清楚對話、專案與記憶在不同裝置上各自的行為。功能名稱、系統需求與方案限制在 2026 年 9 月依 Anthropic 說明中心與官方下載頁查證；App 常改版，設定選項的名稱以你手上的版本為準。還沒有帳號、沒用過 Claude 的話，先看新手入門那篇再回來裝。"
+        },
+        {
+          "type": "link",
+          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "網頁、桌面版、手機 App：同一個帳號，差在怎麼叫出來",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "三個版本共用同一個帳號與同一份對話紀錄，所以「在哪一台開」不影響你問得到什麼，真正的差別有三層。第一層是入口：網頁版要先開瀏覽器、找到那個分頁；桌面版在 Mac 上有全域快捷鍵，隨時蓋在你正在做的事情上面；手機 App 有小工具、鎖定畫面與分享選單，掏出手機就能丟問題。第二層是感官：只有手機有相機，語音模式雖然四個介面都有，官方說明也直接寫它是為手機設計的。第三層是電腦上的東西：讀寫本機檔案、桌面擴充功能、內建瀏覽器與操作電腦畫面，都需要桌面版在跑。"
+        },
+        {
+          "type": "paragraph",
+          "text": "反過來說，網頁版並沒有被少給什麼核心功能。對話、專案、記憶、上傳檔案、網頁搜尋都在，而且換一台電腦、借別人的機器登入就能接著用，不用安裝、不用管更新。如果你的使用情境就是坐在電腦前打字問問題，網頁版完全夠用；桌面版與手機 App 是把「隨手就能問」跟「碰得到你電腦裡的檔案」這兩件事補起來，不是另一套更強的 Claude。"
+        },
+        {
+          "type": "heading",
+          "text": "桌面版：支援的系統、從哪裡下載、裝完的第一件事",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方說明列的系統需求是 macOS 11（Big Sur）以上、Windows 10 以上；Linux 還是測試版，支援 Ubuntu 22.04 LTS 以上或 Debian 12 以上的 x64 與 arm64。下載只認官方網域 claude.com 的下載頁，Mac 選 macOS、Windows 選 Windows。方案方面，官方的對照表寫得很清楚：聊天（Chat）免費方案就有，Claude Code 與 Claude Cowork 要 Pro、Max、Team 或 Enterprise。Linux 官方建議改用 apt 套件庫安裝而不是直接下載 .deb，這樣更新會跟著系統一起來；Linux 版目前沒有電腦操作，也沒有聽寫。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "到官方下載頁，選你的作業系統，按下載。",
+            "開啟下載回來的檔案完成安裝。",
+            "Mac 從應用程式資料夾、Windows 從開始功能表打開 Claude。",
+            "用你原本的帳號登入，對話紀錄會自己出現，不用搬家、不用匯出匯入。",
+            "Mac 使用者裝完的第一件事：第一次開啟會跳出快捷鍵設定的提示，勾起「Turn on shortcut」再按 Continue，先把全域快捷鍵打開再說；之後要調整都在 Settings 的 General 裡面。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "全域快捷鍵：連點兩下 Option 就叫得出來，也可以自己改",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Mac 桌面版有一個叫 quick entry（官方中文頁譯作快速輸入）的功能：預設連點兩下 Option 鍵，Claude 就會浮在你正在用的任何 App 上面，打一句話送出就是一則新對話，也可以點 New chat 看最近五則對話。這個小視窗不只能打字。叫出來之後游標旁邊會出現「Drag to take a screenshot」，按著拖出一塊螢幕，那張截圖就會當成附件跟著問題送出；直接點某個應用程式的視窗，也會把那個視窗的內容附上去。官方寫明免費方案也能用，需要 macOS 12 以上（語音聽寫要 macOS 14 以上），而且 Claude 桌面版要在背景跑著，不必把視窗開在前面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要改快捷鍵，到桌面版的 Settings，進 General，在 Desktop app 底下找 Quick access shortcut，三個選項是連點兩下 Option（預設）、Option 加 Space、自訂快捷鍵；旁邊的 Voice shortcut 可以把語音聽寫綁在 Caps Lock、換成自訂快捷鍵，或整個關掉。語音那一組預設是關的，因為它會整個佔用 Caps Lock 鍵。第一次使用會跟你要 macOS 的螢幕錄製、輔助使用與語音辨識權限，之後在系統設定的隱私權與安全性裡可以隨時收回。Windows 的桌面版目前沒有 quick entry，官方問答直接寫「目前只有 macOS」；Linux 版在 X11 環境可用，Wayland 要靠桌面環境自己的 GlobalShortcuts。"
+        },
+        {
+          "type": "heading",
+          "text": "只有桌面版才有的：擴充功能、本機檔案、內建瀏覽器",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "桌面擴充功能（desktop extensions）是桌面版獨有的東西：像瀏覽器擴充一樣一鍵安裝本機 MCP 伺服器，讓 Claude 接上你電腦裡的檔案、行事曆、郵件與訊息 App，入口在 Settings 的 Extensions。設定裡標成敏感的欄位（例如 API 金鑰）會用作業系統的安全儲存區加密，Mac 是鑰匙圈、Windows 是認證管理員。MCP 到底是什麼、加裝連接器時要看哪些權限，另一篇有完整說明。"
+        },
+        {
+          "type": "link",
+          "text": "MCP 是什麼：讓 Claude 連上你的檔案、日曆與資料庫",
+          "url": "https://mokaair.com/zh-TW/life/claude-mcp-explained"
+        },
+        {
+          "type": "paragraph",
+          "text": "付費方案在桌面版還有 Cowork。官方說明寫它在桌面版可以直接讀寫你的本機檔案、不必手動上傳下載，任務跑在你電腦上的一個獨立虛擬機裡，讀寫範圍限制在你連進去的那些資料夾。Cowork 預設也內建了瀏覽器，不必另外裝東西就能讓它上網查資料，想改用自己的 Chrome 也可以接 Claude in Chrome。另外從 2026 年 3 月起有「電腦操作」的研究預覽，讓它自己點畫面、開檔案、跑工具，官方寫的是 Pro 與 Max 方案、macOS 與 Windows，要自己到桌面版設定裡打開。網頁版與手機上也看得到 Cowork，但只要那個工作階段要碰本機檔案、用瀏覽器或操作電腦，就得有那台電腦的桌面版開著。"
+        },
+        {
+          "type": "link",
+          "text": "Claude 在瀏覽器裡：Chrome 擴充功能替你操作網頁",
+          "url": "https://mokaair.com/zh-TW/life/claude-in-chrome-browser-agent"
+        },
+        {
+          "type": "heading",
+          "text": "手機 App：認明正版、語音、拍照與分享選單",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "iPhone 與 iPad 到 App Store 搜「Claude by Anthropic」，開發者要顯示 Anthropic、App 名稱就叫 Claude，系統需求是 iOS 18.0 以上與 iPadOS 18.0 以上。Android 到 Google Play 搜同一組字，發行者一樣是 Anthropic，需要 Android 8.0（Oreo）以上。兩邊的官方說明都提醒：找不到通常是所在地區、裝置或系統版本不支援，台灣在 Anthropic 的支援地區清單裡。還有一件常被忽略的事：在 App 內訂閱付費方案之後，把 App 刪掉不等於取消訂閱，要自己到帳號裡取消。"
+        },
+        {
+          "type": "paragraph",
+          "text": "手機上的語音有兩種，不要搞混。輸入框右邊的麥克風圖示是聽寫，把你講的話轉成文字放進輸入框，可以改完再送出，所有方案都能用，目前支援 11 種語言，官方說明寫轉成文字之後就會刪掉錄音、不會拿去訓練模型。旁邊的聲波圖示才是語音模式，你講它也講，同一個對話裡可以隨時切回打字，逐字稿會像一般對話一樣留在紀錄裡。語音模式免費、Pro、Max、Team、Enterprise 都能用，網頁版與桌面版也有，但官方直說它「最適合從手機上用」；英文以外的語言還在測試階段，語音會照方案的一般額度計算，而且不能跟 Cowork 或 Claude Code 一起用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "拍照與入口這一段則是手機才有的。iOS 與 Android 的桌面小工具都有三顆鍵：開新對話、拍照、語音聽寫，長按桌面空白處就能加上去。iPhone 另外可以把「Open Claude」放進鎖定畫面、控制中心或動作按鈕，把「Analyze Photo with Claude」放進鎖定畫面與控制中心，不解鎖就能問眼前這張照片，需要 iOS 18 以上。從別的 App 把內容丟進來也是 iOS 先有：「Ask Claude」這個 App Intent 會出現在 Spotlight、Siri 與分享選單，也能在捷徑 App 裡串成一串自動化流程。Android 的官方說明目前只寫 Claude 從對話裡去開訊息、郵件、行事曆這些 App，沒有寫分享功能表，這部分以官網為準。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-desktop-mobile-app-setup/diagram-1.svg",
+          "alt": "三欄對照圖，左到右是網頁、桌面版、手機 App，各列出系統需求、最順手的用法與碰不到的事，下方一條橫帶建議什麼情境用哪一個。",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右是網頁、桌面版、手機 App：上半列各自的系統需求與強項，下方橫帶是四個常見情境該用哪一個。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "跨裝置：對話、專案與記憶怎麼跟著你走",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "對話紀錄跟著帳號，登入哪一台都是同一份，不用手動同步。專案（Projects）所有方案都能建，免費方案最多 5 個，每個專案有自己的對話紀錄與知識庫；付費方案的專案知識多了 RAG 檢索。記憶在免費、Pro、Max 方案預設是開的，網頁、桌面版、手機都一樣，開關在 Settings 的 Memory，選項叫 Generate memory from chats，可以暫停或整個重設，而且每個專案有自己獨立的記憶空間，不會跟別的專案或一般對話混在一起；Team 與 Enterprise 則預設關閉，由管理者決定要不要開。"
+        },
+        {
+          "type": "paragraph",
+          "text": "有兩個差別要記住。第一，用自然語言叫它去翻你以前的對話（chat search）是付費方案才有的功能，免費方案沒有，這三個版本都一樣。第二，Cowork 的工作階段在雲端跑的時候會跟著帳號走，可以在電腦上起頭、通勤時用手機看進度；但只要那個階段需要碰本機檔案，它就綁在當初起頭的那台電腦上，而且那台的桌面版要開著才連得上。"
+        },
+        {
+          "type": "link",
+          "text": "Claude 免費、Pro、Max 方案比較：額度怎麼算、值不值得",
+          "url": "https://mokaair.com/zh-TW/life/claude-plans-free-pro-max-2026"
+        },
+        {
+          "type": "heading",
+          "text": "五個實際用法：哪一台做哪件事最順",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "電腦上邊看資料邊問：Mac 上連點兩下 Option，拖一塊螢幕把看不懂的表格、錯誤訊息或英文條款圈起來，直接在浮出來的框裡問，不用切分頁、不用先存檔再上傳。",
+            "手機上拍照問：超市裡看不懂的成分表、藥袋上的說明、家電面板上的符號，用小工具的相機鍵直接拍了就問；iPhone 更快的做法是把「Analyze Photo with Claude」放進控制中心，滑下來就拍。",
+            "通勤時用語音：戴著耳機開語音模式，把今天要處理的事講一遍請它整理成待辦；車廂裡不方便講話就改用聽寫，講完先變成文字，自己刪掉不想送出的部分再按送出。",
+            "平板上讀長文件：iPad 裝的是同一個 App，螢幕大、適合讀。把 PDF 丟進去（單檔上限 500MB、一個對話最多 20 個檔案、PDF 最多 1000 頁，其中前 100 頁連圖表都會看），請它先列出整份的結構，再挑你要的章節逐段問。",
+            "桌面版處理本機檔案：付費方案在 Cowork 裡把一個資料夾連給它，請它整理檔名、或把散在好幾份文件裡的數字彙整成一張表；它只碰你連進去的那個資料夾，其他地方讀不到。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 手機 App 十個技巧：拍照提問、Siri、鎖定畫面語音與排程通知",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-mobile-app-tips"
+        },
+        {
+          "type": "table",
+          "header": [
+            "功能",
+            "網頁版",
+            "桌面版",
+            "手機 App"
+          ],
+          "rows": [
+            [
+              "系統需求",
+              "有瀏覽器就好，不用安裝",
+              "macOS 11 以上、Windows 10 以上；Linux 測試版",
+              "iOS 與 iPadOS 18.0 以上、Android 8.0 以上"
+            ],
+            [
+              "文字對話",
+              "所有方案，含免費",
+              "所有方案，含免費",
+              "所有方案，含免費"
+            ],
+            [
+              "全域快捷鍵叫出視窗",
+              "沒有",
+              "Mac 連點兩下 Option；Windows 目前沒有",
+              "沒有，改用小工具或鎖定畫面入口"
+            ],
+            [
+              "拖曳截圖直接問",
+              "要自己截圖再上傳",
+              "Mac 在快捷鍵視窗裡拖一塊就附上",
+              "要自己截圖再上傳"
+            ],
+            [
+              "相機拍照提問",
+              "沒有相機，只能上傳",
+              "沒有相機，只能上傳",
+              "小工具的相機鍵；iPhone 另有控制中心的分析照片"
+            ],
+            [
+              "語音模式",
+              "有，聲波圖示在右下角",
+              "有，聲波圖示在右下角",
+              "有，官方說最適合從手機用"
+            ],
+            [
+              "聽寫（講話轉文字）",
+              "官方說明未提及",
+              "Mac 按 Caps Lock，需 macOS 14 以上",
+              "輸入框的麥克風鍵，支援 11 種語言"
+            ],
+            [
+              "從別的 App 丟內容進來",
+              "沒有",
+              "沒有",
+              "iOS 的 Ask Claude 在分享選單；Android 官方未提及"
+            ],
+            [
+              "桌面擴充功能（本機 MCP）",
+              "沒有",
+              "有，Settings 的 Extensions",
+              "沒有"
+            ],
+            [
+              "讀寫電腦上的檔案",
+              "要那台電腦的桌面版開著",
+              "有，Cowork，付費方案",
+              "要那台電腦的桌面版開著"
+            ],
+            [
+              "內建瀏覽器",
+              "要那台電腦的桌面版開著",
+              "有，Cowork 預設內建",
+              "要那台電腦的桌面版開著"
+            ],
+            [
+              "操作電腦畫面",
+              "要那台電腦的桌面版開著",
+              "研究預覽，Pro 與 Max，macOS 與 Windows",
+              "要那台電腦的桌面版開著"
+            ],
+            [
+              "對話紀錄",
+              "跟著帳號，三邊同一份",
+              "跟著帳號，三邊同一份",
+              "跟著帳號，三邊同一份"
+            ],
+            [
+              "專案",
+              "所有方案，免費最多 5 個",
+              "同網頁版",
+              "同網頁版"
+            ],
+            [
+              "記憶",
+              "免費、Pro、Max 預設開啟",
+              "同網頁版",
+              "同網頁版"
+            ],
+            [
+              "翻舊對話（chat search）",
+              "付費方案才有",
+              "付費方案才有",
+              "付費方案才有"
+            ]
+          ],
+          "caption": "2026 年 9 月依 Anthropic 說明中心與官方下載頁整理；介面名稱以你手上的版本為準，官方中文頁的譯名可能不同。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "只從官方網域下載，桌面版與手機 App 的搜尋結果都有仿冒品",
+          "text": "桌面版只從 Anthropic 自己的網域下載，也就是 claude.com 的官方下載頁；搜尋引擎上打「Claude 下載」跑出來的第三方載點、整理站、破解版一律不要碰，桌面版本來就有讀寫本機檔案與擴充功能的能力，裝到假的等於把電腦交出去。手機也一樣：App Store 與 Google Play 上搜「Claude by Anthropic」，只裝開發者顯示為 Anthropic、名稱就叫 Claude 的那一個；名稱多了 AI Chat、Pro、Assistant 之類字眼，或要你先付費才能下載的，都不是官方 App。訂閱一律在 App 內或官方網站辦，付款前先確認畫面上的網域。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Claude 說明中心：Install Claude Desktop（macOS 11、Windows 10、Linux 測試版需求；安裝步驟；方案對照表 Chat 全方案、Claude Code 與 Cowork 付費；Settings 的 Extensions；Linux 無電腦操作與聽寫）",
+          "url": "https://support.claude.com/en/articles/10065433-install-claude-desktop",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Use quick entry with Claude Desktop on Mac（連點兩下 Option、Option 加 Space、自訂；Settings 的 General 底下 Desktop app；Caps Lock 聽寫；macOS 12 與 14；所有方案；Windows 沒有）",
+          "url": "https://support.claude.com/en/articles/12626668-use-quick-entry-with-claude-desktop-on-mac",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 官方下載頁（macOS、Windows x64 與 arm64、Linux 測試版、ChromeOS、iOS 與 Android 的官方下載入口）",
+          "url": "https://claude.com/download",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Getting Started with Local MCP Servers on Claude Desktop（桌面擴充功能一鍵安裝本機 MCP、Settings 的 Extensions、敏感欄位用鑰匙圈與認證管理員加密）",
+          "url": "https://support.claude.com/en/articles/10949351-getting-started-with-local-mcp-servers-on-claude-desktop",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Get started with Claude Cowork（付費方案；桌面版直接讀寫本機檔案；預設內建瀏覽器；桌面版要開著）",
+          "url": "https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Use Claude Cowork on web, desktop, and mobile（桌面版才有完整本機檔案、瀏覽器與電腦操作；網頁與手機要透過桌面版；雲端階段跟著帳號換裝置）",
+          "url": "https://support.claude.com/en/articles/15520349-use-claude-cowork-on-web-desktop-and-mobile",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic：Put Claude to work on your computer（電腦操作研究預覽、2026 年 3 月、Pro 與 Max、macOS 與 Windows、要在桌面版設定裡開啟）",
+          "url": "https://claude.com/blog/dispatch-and-computer-use",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Install Claude for iOS（App Store 搜 Claude by Anthropic、開發者 Anthropic、iOS 與 iPadOS 18.0 以上、地區限制、刪 App 不等於取消訂閱）",
+          "url": "https://support.claude.com/en/articles/9266462-install-claude-for-ios",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Install Claude for Android（Google Play 搜 Claude by Anthropic、發行者 Anthropic、Android 8.0 Oreo 以上、地區限制、刪 App 不等於取消訂閱）",
+          "url": "https://support.claude.com/en/articles/9612887-install-claude-for-android",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Use Claude app intents, shortcuts, and widgets on iOS（Ask Claude 出現在 Spotlight、Siri 與分享選單、需 iOS 18；捷徑 App 可串接；小工具三顆鍵）",
+          "url": "https://support.claude.com/en/articles/10263469-use-claude-app-intents-shortcuts-and-widgets-on-ios",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Access Claude for iOS on your Lock Screen, Control Center, and Action button（Open Claude 與 Analyze Photo with Claude 的加入步驟、需 iOS 18 以上）",
+          "url": "https://support.claude.com/en/articles/10302511-access-claude-for-ios-on-your-lock-screen-control-center-and-action-button",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Use the Claude widget on Android（小工具的對話、相機、麥克風三顆鍵、Android 8.0 以上、長按桌面加入、計入用量）",
+          "url": "https://support.claude.com/en/articles/10534883-use-the-claude-widget-on-android",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Use voice mode（iOS、Android、桌面版與網頁都有；所有方案；為手機設計；聲波圖示位置；逐字稿留在紀錄；計入額度；不能與 Cowork 或 Claude Code 併用）",
+          "url": "https://support.claude.com/en/articles/11101966-use-voice-mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Use dictation on Claude Mobile（輸入框右側麥克風鍵、所有方案、11 種語言、轉成文字後刪除錄音且不用於訓練）",
+          "url": "https://support.claude.com/en/articles/10065434-use-dictation-on-claude-mobile",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Use Claude's chat search and memory to build on previous context（chat search 付費方案限定；記憶在免費、Pro、Max 預設開啟；Settings 的 Memory；專案各自獨立的記憶空間）",
+          "url": "https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：What are projects?（所有方案都能建、免費方案最多 5 個、專案知識的 RAG 檢索限付費方案）",
+          "url": "https://support.claude.com/en/articles/9517075-what-are-projects",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Upload files to Claude（加號的 Add files or photos、單檔 500MB、一個對話最多 20 個檔案、PDF 最多 1000 頁、前 100 頁連圖表一起看）",
+          "url": "https://support.claude.com/en/articles/8241126-upload-files-to-claude",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Use Claude with Android apps（Claude 從對話裡開訊息、郵件、行事曆等系統 App；未提及分享功能表）",
+          "url": "https://support.claude.com/en/articles/11869629-use-claude-with-android-apps",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 定價頁（Free、Pro、Max、Team、Enterprise 的方案名稱，以及各方案都能在網頁、iOS、Android 與桌面版聊天）",
+          "url": "https://claude.com/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic：Supported countries and regions（台灣在 Claude 的支援地區清單內）",
+          "url": "https://www.anthropic.com/supported-countries",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
