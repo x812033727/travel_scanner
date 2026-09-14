@@ -1,11 +1,11 @@
 ---
 id: 2026-09-13-life-ai-batch-05
 title: 生活分享 AI 系列批次 05：Gemini 與 Google 生態（20 篇）
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-gemini-series
+claimed_at: 2026-09-14T05:59:17Z
 created_at: 2026-09-13T11:55:59Z
 completed_at:
 branch:
@@ -116,3 +116,5 @@ npm run check:tasks
 ## Notes
 
 - 前三批旅遊文章的經驗：兩篇一個代理會在半小時左右撞到額度，一篇一個代理、先寫檔再寫報告最穩。
+
+2026-09-14 integration acceptance: reconciled with main f5b814cb and preserved Claude Code shared blocks/series. The 51 complete packs and 102 reviewed illustrations pass catalogue, length, assets and links; 109 snippets and four deterministic executions pass. Final production-build Playwright: 8 passed (all 50 lessons on desktop/mobile, no-JavaScript 360px, copy, anchors, six searches, unpublished-hub gate). API: 32 passed / 16 PostgreSQL-dependent skipped locally; web integration: 68 passed plus final 34 UI tests; tools: 48 passed. Build, lint, typecheck, i18n, Ruff and mypy pass. CI and production publication are still pending. Existing twenty batch-05 slugs are reused; the comparison is labeled official-feature comparison and reproducible test procedure, without fabricated benchmark results.

@@ -1,0 +1,335 @@
+{
+  "slug": "gemini-connected-apps-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 119,
+  "locales": {
+    "zh-TW": {
+      "title": "Connected Apps：Drive、日曆與地圖整合",
+      "description": "Connected Apps「已連結的應用程式」讓 Gemini 在獲得所需權限後，使用其他服務的資料或執行支援的動作。本篇從讀取一份 Drive 文件開始，再練習建立可核對的日曆事件。學完應能判斷資料從哪裡來、動作是否真的完成，以及如何關閉不再需要的連線。",
+      "hero": {
+        "src": "/guides/gemini-connected-apps-guide/hero.jpg",
+        "alt": "連線不等於動作完成的原創插畫，以文件、裝置與流程等物件呼應Drive、日曆與地圖整合；非產品介面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Connected Apps「已連結的應用程式」讓 Gemini 在獲得所需權限後，使用其他服務的資料或執行支援的動作。本篇從讀取一份 Drive 文件開始，再練習建立可核對的日曆事件。學完應能判斷資料從哪裡來、動作是否真的完成，以及如何關閉不再需要的連線。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-connected-apps-guide/diagram-1.svg",
+          "alt": "連線授權：核對帳號與服務；執行請求：限定資料與操作；回到原服務：確認事件或檔案",
+          "width": 1600,
+          "height": 900,
+          "caption": "連線不等於動作完成。此為原創教學圖解，並非產品畫面或實測輸出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "開始前：公開資訊與私人資料分開看",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "準備已登入的 Google 帳號、電腦瀏覽器，以及自己建立的測試文件和日曆。依 2026 年 9 月 14 日官方文件，應用程式清單會隨裝置、地區、語言、帳號和 Gemini 入口改變。本篇依文件整理，未連接私人信箱或實際新增讀者的事件。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google 搜尋等公開資料、授權讀取的私人檔案、個人化資訊是不同來源。Gemini 能回答地圖或影片相關問題，不一定代表它已讀取你的私人地點清單或觀看紀錄。看來源與設定比從答案猜測權限可靠；"
+            },
+            {
+              "type": "link",
+              "text": "活動與隱私教學",
+              "url": "https://mokaair.com/zh-TW/life/gemini-privacy-activity-settings"
+            },
+            {
+              "type": "text",
+              "text": "說明相關保留與刪除設定。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "個人帳號在網頁及 iOS 使用 Connected Apps 通常需要開啟保留活動記錄；Android 關閉時只有特定裝置、通話、訊息等功能例外。公司或學校帳號則要符合 Workspace 版本、活動設定及管理員授權。不要為了看見更多工具就改用另一個帳號上傳公司資料。"
+        },
+        {
+          "type": "heading",
+          "text": "第一步：檢查並連接需要的服務",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "在 Gemini 電腦網頁開啟設定，選 Connected Apps；若未直接出現，先進入 Personal Intelligence「個人智慧」再找該項目。",
+            "找到需要的服務，開啟詳細說明，閱讀支援動作與限制。",
+            "開啟連線開關，依畫面完成必要授權，確認登入帳號正確。",
+            "回到對話輸入 @，從顯示的清單選取服務。清單不存在的項目不要自行拼出名稱當成已啟用。",
+            "先做範圍很小的讀取請求，等資料對上再進行修改操作。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "若在網頁看不到手機限定的通話或裝置功能，這通常是平臺差異。"
+            },
+            {
+              "type": "link",
+              "text": "Android 操作",
+              "url": "https://mokaair.com/zh-TW/life/gemini-on-android-assistant"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "link",
+              "text": "iPhone 操作",
+              "url": "https://mokaair.com/zh-TW/life/gemini-ios-app-guide"
+            },
+            {
+              "type": "text",
+              "text": "會分別說明入口，不適合把 Android 的支援清單當成所有裝置的清單。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "第二步：用測試文件驗證 Drive 讀取",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在自己的 Drive 建立文件「連線練習－社區講座」，寫入活動暫定十月十日、地點尚未確認、預估二十人。在 Gemini 選取可用的 Drive 或 Workspace 服務後，再送出下方提示詞。這份小文件能讓你明確知道哪些答案應該存在。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Drive 讀取測試",
+          "code": "請找到我 Drive 裡標題為「連線練習－社區講座」的文件。\n先列出你找到的檔名與可開啟的來源連結，再整理活動日期、地點、人數。\n內容沒有提供就寫「未提供」，暫定事項要保留暫定。\n不要搜尋網頁補上地點，不要建立或修改其他文件。\n若有多份同名文件，先列出讓我選擇，不要自行挑一份。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期答案應保留暫定日期，地點為尚未確認，人數是預估二十人。點開來源，核對它確實是剛才建立的文件。這是練習的成功條件，不是我們已透過 Gemini 取得的實測結果。若模型只說「已找到」卻沒有足夠辨認資訊，要求提供實際來源再繼續。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "搜尋不到時，先在 Drive 自己開啟檔案，確認權限及帳號；再檢查文件是否屬於支援類型，或剛建立仍需等待同步。不要不停擴大成「查我全部資料」。若只是要分析單一檔案，也可採"
+            },
+            {
+              "type": "link",
+              "text": "手動上傳檔案",
+              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+            },
+            {
+              "type": "text",
+              "text": "，但上傳的副本與持續連線的資料更新方式不同。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "第三步：建立一個日曆測試事件",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先在 Google 日曆選好可刪除測試事件的練習日曆，明確決定日期、時區與時間。第一次不要加入其他參與者或會議通知；避免練習內容真的寄給同事。請先列出欄位讓你確認，再要求執行建立，會更容易辨認理解與寫入各自的狀態。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "日曆欄位確認",
+          "code": "我要在自己的練習日曆建立「Gemini 連線測試」。\n日期：[填入完整年月日]，時間：14:00 到 14:15，時區：Asia/Taipei。\n不加參與者，不加入會議連結，不設重複事件。\n請先列出將建立的欄位，等我確認後才建立。\n若找不到指定日曆或不支援該動作，請說明，不要改用其他日曆。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "欄位正確後再送出確認建立的指示。完成時直接打開 Google 日曆，檢查事件是否存在、屬於哪個日曆、開始結束時間與時區是否正確。對話中的「完成了」不能取代實際事件。測試結束後手動刪除事件，並確認沒有誤建的第二份。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "需要提醒時，注意 Calendar 事件與 Tasks 工作可能是不同服務。有多個動作的請求，如果其中一個必要服務未啟用，整個請求可能無法完成。先拆成建立事件與設定提醒，逐一核對；對排程型代理另見"
+            },
+            {
+              "type": "link",
+              "text": "Spark 任務與排程",
+              "url": "https://mokaair.com/zh-TW/life/gemini-spark-workflows-guide"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "第四步：結合地圖與文件，但保留來源界線",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "假設講座地點後來確定，可以先從文件讀出地址，再要求查公開地圖的交通選項。讓它分別標出「文件提供的地點」與「地圖查到的交通」，並點開路線確認起點、日期和大眾運輸時段。地圖估計時間是參考，不能當成保證到達時間。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果答案引用了並未指定的個人資訊，查看 Personal Intelligence 和 Connected Apps 的設定，確認哪些來源正被使用。官方對個人化資料、互動摘要與模型改進另有說明，不應把「不直接使用整個信箱訓練」誤讀成所有對話衍生內容都完全排除。依自己的需要管理連線與活動。"
+        },
+        {
+          "type": "heading",
+          "text": "停用連線與常見問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "不需要某服務時，回到 Connected Apps 關閉該項，重新開啟設定確認狀態。停用是關閉後續連線；它不會自動刪除 Gemini 活動，也不會刪掉原服務中的事件、文件或已完成操作。整理資料時要到各服務分別處理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「找不到 Google Maps 開關？」部分 Google 服務可提供公開資訊，未必有和私人資料相同的連線項目。先看目前服務清單與官方說明，不要用不存在的開關位置排除問題。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「換手機後工具變少？」確認相同帳號，再核對 Android、iOS、網頁的支援差異。可用清單本來就可能不同，重新安裝不一定能改變資格。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「我看得到檔案，Gemini 卻讀不到？」核對登入帳號、原始檔權限、檔案格式和同步狀態。公司帳號還需管理員確認設定；不要為了繞過問題而把公司文件改成任何人可檢視。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「可以連自己的 MCP 嗎？」查證時自訂 Connected Apps 透過 MCP 連線的入口限定具 Spark 資格並用於 Spark 任務；它與"
+            },
+            {
+              "type": "link",
+              "text": "Gemini CLI 的 MCP 設定",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-mcp-extensions"
+            },
+            {
+              "type": "text",
+              "text": "分屬不同產品，不能直接共用一份設定就推定連線完成。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查證與範例",
+          "text": "本文於 2026-09-14 對照官方文件整理。畫面操作依官方說明，非所有裝置均經實機測試；範例輸出是驗收目標，實際內容依資料而異。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後的檢核",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "通過條件"
+          ],
+          "rows": [
+            [
+              "操作",
+              "能依正文重做一次，說明每一步使用的輸入。"
+            ],
+            [
+              "結果",
+              "能用原始資料或可重現測試核對輸出，而非只看語氣。"
+            ],
+            [
+              "延伸",
+              "知道下一篇教學解決的問題，以及什麼時候需要它。"
+            ]
+          ],
+          "caption": "完成實作後逐項確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著可以閱讀 "
+            },
+            {
+              "type": "link",
+              "text": "活動記錄與隱私",
+              "url": "https://mokaair.com/zh-TW/life/gemini-privacy-activity-settings"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Gemini Spark",
+              "url": "https://mokaair.com/zh-TW/life/gemini-spark-workflows-guide"
+            },
+            {
+              "type": "text",
+              "text": "，把本篇的操作接到下一個工作流程。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "使用與管理 Connected Apps",
+          "url": "https://support.google.com/gemini/answer/13695044?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "公司或學校帳號的 Connected Apps",
+          "url": "https://support.google.com/gemini/answer/14959807?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Connected Apps 的個人化與資料使用",
+          "url": "https://support.google.com/gemini/answer/16836988?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini 隱私權中心",
+          "url": "https://support.google.com/gemini/answer/13594961?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

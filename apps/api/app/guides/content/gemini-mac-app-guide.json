@@ -1,0 +1,331 @@
+{
+  "slug": "gemini-mac-app-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 105,
+  "locales": {
+    "zh-TW": {
+      "title": "Mac 桌面版：安裝、快捷鍵與視窗分享",
+      "description": "Mac 版 Gemini 是可安裝的原生應用程式，適合經常在檔案、瀏覽器與對話間切換的使用者。本篇帶你檢查相容性、安裝、設定快捷鍵，並以自己準備的文字視窗練習分享內容。操作依 2026 年 9 月 14 日官方文件整理，本次未在實體 Mac 執行驗證。",
+      "hero": {
+        "src": "/guides/gemini-mac-app-guide/hero.jpg",
+        "alt": "Mac 安裝到視窗分享的原創插畫，以文件、裝置與流程等物件呼應安裝、快捷鍵與視窗分享；非產品介面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Mac 版 Gemini 是可安裝的原生應用程式，適合經常在檔案、瀏覽器與對話間切換的使用者。本篇帶你檢查相容性、安裝、設定快捷鍵，並以自己準備的文字視窗練習分享內容。操作依 2026 年 9 月 14 日官方文件整理，本次未在實體 Mac 執行驗證。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-mac-app-guide/diagram-1.svg",
+          "alt": "安裝：移入應用程式資料夾；快捷鍵：Option + Space 開啟；分享視窗：確認選擇與停止狀態",
+          "width": 1600,
+          "height": 900,
+          "caption": "Mac 安裝到視窗分享。此為原創教學圖解，並非產品畫面或實測輸出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "開始前：確認 Mac 與帳號",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "官方桌面下載頁列出 Apple Silicon Mac 與 macOS Sequoia 15.0 以上的需求；說明中心另列至少 8 GB 記憶體及 200 MB 可用安裝空間。先在「關於這臺 Mac」核對晶片、系統與記憶體，再檢查儲存空間。Intel Mac 或不符合條件的裝置，先使用"
+            },
+            {
+              "type": "link",
+              "text": "Gemini 網頁入口",
+              "url": "https://mokaair.com/zh-TW/life/gemini-web-desktop-guide"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "準備個人 Google 帳號，或管理員已啟用 Gemini 的公司／學校帳號，並維持網路連線。安裝應用程式不會替帳號新增付費功能；模型與工具權益仍依"
+            },
+            {
+              "type": "link",
+              "text": "方案條件",
+              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+            },
+            {
+              "type": "text",
+              "text": "及地區決定。已有工作資料的 Mac，先看公司允許使用哪些帳號及分享方式。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "安裝：從官方下載到第一次開啟",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "用瀏覽器前往 gemini.google/mac；目前可能導向官方 desktop 頁面，確認仍是 Google 的 Gemini 網域。",
+            "選擇下載 macOS 版。若頁面同時列出 Windows，請確認下載的是 Mac 的 .dmg 檔案。",
+            "開啟下載的 .dmg，將 Gemini 圖示拖入「應用程式」資料夾，再從該資料夾開啟 Gemini。",
+            "依畫面登入準備好的 Google 帳號，檢視個人資料區確認身分。不要把瀏覽器登入帳號與應用程式帳號視為必然相同。",
+            "先送出一句繁體中文文字問題，確認有回覆，再進行快捷鍵、麥克風及視窗分享的練習。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "第一次使用不必一次開啟所有權限。文字對話能運作後，只有在要分享視窗或說話時，再閱讀相應的系統提示。若公司裝置不允許安裝，保留目前狀態並向管理員確認；網頁版可作為另一個符合組織規範時的入口。"
+        },
+        {
+          "type": "heading",
+          "text": "快捷鍵與更新",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "預設按 Option 加空白鍵可叫出 Gemini 對話視窗；官方桌面頁另列 Option 加 Shift 加空白鍵開啟完整對話介面。快捷鍵可在應用程式設定調整。若你已用同一組按鍵開啟搜尋或其他工具，先記錄原設定，替 Gemini 選一組不衝突的組合，再實際按一次確認。"
+        },
+        {
+          "type": "paragraph",
+          "text": "更新時，從 Mac 頂端選單列的「Gemini」選取「檢查更新」，有更新就依畫面安裝。先儲存草稿，再讓應用程式重新啟動。遇到某功能缺少時，先確認版本及帳號條件，無須為了一個分批推出的選項反覆刪除重灌。"
+        },
+        {
+          "type": "heading",
+          "text": "實作：分享一個練習視窗",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先在文字編輯器準備下方三行資料，把視窗調整到文字清楚可見。這是虛構的物品清單；不要直接以顯示完整信箱、客戶名單或私人通知的視窗練習。分享之前也檢查其他浮動視窗，避免把與問題無關的內容一起提供。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "練習視窗內容",
+          "code": "閱讀角整理：書架 2 座、椅子 6 張、檯燈 1 盞。\n問題：目前沒有標示物品尺寸，也沒有標示房間長寬。\n任務：整理已知物品，列出安排位置之前需要補問的資訊。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Gemini 選取新增檔案與工具，再選分享視窗，挑選剛才的文字編輯器。依系統提示授予完成此步驟所需的權限，回到 Gemini 確認選到的視窗後，提問「請列出視窗裡的物品與數量，另外列出兩個尚缺的空間資料」。分享選擇器是控制來源的關鍵，請看清楚後再送出。"
+        },
+        {
+          "type": "heading",
+          "text": "預期結果與核對方式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "預期結果應是書架二座、椅子六張、檯燈一盞，並指出房間與物品尺寸未知。這是原文可直接核對的示範答案；若回覆自行假設房間大小或建議精確配置，請要求把推測改成待確認。視窗擷取能提供當下畫面脈絡，不能當成已完整讀取整份檔案。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "若文字太小或只顯示一部分，先放大來源視窗、移到相關段落，再重新分享。需要完整檔案分析時，改用"
+            },
+            {
+              "type": "link",
+              "text": "檔案上傳與核對",
+              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+            },
+            {
+              "type": "text",
+              "text": "比較適合。練習結束後，依介面停止或移除分享，並確認 Gemini 沒有繼續使用你已不打算提供的視窗內容。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "語音輸入與工作界線",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一般麥克風輸入用來把說出的問題送給 Gemini；可以先講一小段，再檢查文字是否正確。官方另提供「視窗語音輸入」，可結合目前視窗處理文字，但查證當日仍標示只支援英文且分批推出。不要把普通語音輸入能說繁體中文，推論成每一種桌面語音功能都支援相同語言。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果使用可在其他視窗插入文字的功能，先把遊標放到新的草稿，核對目標視窗，再開始說話。產出後檢查原文是否被取代、插入位置是否正確；整理好了也仍是草稿，需要自己確認才適合寄送或分享。持續語音、鏡頭及螢幕互動則可接著閱讀"
+            },
+            {
+              "type": "link",
+              "text": "Gemini Live",
+              "url": "https://mokaair.com/zh-TW/life/gemini-live-voice-camera"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「找不到分享視窗怎麼辦？」先更新 Gemini，確認帳號及目前介面的工具選單，再查 macOS 的隱私權與安全性設定。只處理此功能需要的權限，不必為了找按鈕而開啟所有存取；如果仍沒有入口，可先用小檔案上傳完成相同的內容練習。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「Mac 上看不到本機 GEMINI.md 的規則？」桌面應用程式與"
+            },
+            {
+              "type": "link",
+              "text": "Gemini CLI 的 GEMINI.md",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+            },
+            {
+              "type": "text",
+              "text": "是不同設定入口。本機規則檔不會因為安裝桌面版就自動載入；需要可重複的介面助手，請使用"
+            },
+            {
+              "type": "link",
+              "text": "Gems",
+              "url": "https://mokaair.com/zh-TW/life/gemini-gems-custom-assistants"
+            },
+            {
+              "type": "text",
+              "text": "的指示設定方式。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「關閉視窗就是登出嗎？」不一定，應用程式可能仍保留帳號或在選單列提供入口。共用電腦上請檢查真正的登入狀態；要處理已儲存的對話，則另外檢視"
+            },
+            {
+              "type": "link",
+              "text": "活動記錄",
+              "url": "https://mokaair.com/zh-TW/life/gemini-privacy-activity-settings"
+            },
+            {
+              "type": "text",
+              "text": "。關閉視窗、登出和刪除記錄應分別確認結果。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查證與範例",
+          "text": "本文於 2026-09-14 對照官方文件整理。畫面操作依官方說明，非所有裝置均經實機測試；範例輸出是驗收目標，實際內容依資料而異。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後的檢核",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "通過條件"
+          ],
+          "rows": [
+            [
+              "操作",
+              "能依正文重做一次，說明每一步使用的輸入。"
+            ],
+            [
+              "結果",
+              "能用原始資料或可重現測試核對輸出，而非只看語氣。"
+            ],
+            [
+              "延伸",
+              "知道下一篇教學解決的問題，以及什麼時候需要它。"
+            ]
+          ],
+          "caption": "完成實作後逐項確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著可以閱讀 "
+            },
+            {
+              "type": "link",
+              "text": "電腦網頁版",
+              "url": "https://mokaair.com/zh-TW/life/gemini-web-desktop-guide"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "活動記錄與隱私",
+              "url": "https://mokaair.com/zh-TW/life/gemini-privacy-activity-settings"
+            },
+            {
+              "type": "text",
+              "text": "，把本篇的操作接到下一個工作流程。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Mac 版 Gemini 官方操作說明",
+          "url": "https://support.google.com/gemini/answer/17011627?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini Mac 官方下載",
+          "url": "https://gemini.google/mac/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini 台灣桌面下載與硬體條件",
+          "url": "https://gemini.google/tw/desktop/?hl=zh-TW",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

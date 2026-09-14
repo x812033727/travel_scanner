@@ -1,0 +1,294 @@
+{
+  "slug": "gemini-canvas-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 112,
+  "locales": {
+    "zh-TW": {
+      "title": "Canvas：編輯文章、簡報與製作小工具",
+      "description": "Canvas 是 Gemini 中用來編輯成果的工作區，適合把對話中的構想變成文章、簡報或小型互動工具。本篇先做一份活動說明，再把同一份已核對內容改成簡報與清單工具。學完後，你會知道如何局部區域修改、檢查結果，以及分清楚預覽、匯出與公開分享。",
+      "hero": {
+        "src": "/guides/gemini-canvas-guide/hero.jpg",
+        "alt": "Canvas 作品驗收的原創插畫，以文件、裝置與流程等物件呼應編輯文章、簡報與製作小工具；非產品介面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Canvas 是 Gemini 中用來編輯成果的工作區，適合把對話中的構想變成文章、簡報或小型互動工具。本篇先做一份活動說明，再把同一份已核對內容改成簡報與清單工具。學完後，你會知道如何局部區域修改、檢查結果，以及分清楚預覽、匯出與公開分享。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-canvas-guide/diagram-1.svg",
+          "alt": "建立草稿：決定文件或小工具；逐段編輯：保留已確認內容；預覽匯出：打開實際成果檢查",
+          "width": 1600,
+          "height": 900,
+          "caption": "Canvas 作品驗收。此為原創教學圖解，並非產品畫面或實測輸出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "開始前：先決定成果形式",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "登入 Gemini，準備一份已確認的短資料，例如活動目的、地點、已知日期及待決定事項。先完成"
+            },
+            {
+              "type": "link",
+              "text": "提示詞寫作",
+              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-writing-guide"
+            },
+            {
+              "type": "text",
+              "text": "；如果材料來自 PDF，先依"
+            },
+            {
+              "type": "link",
+              "text": "檔案分析",
+              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+            },
+            {
+              "type": "text",
+              "text": "核對原文。Canvas 能協助編排內容，但不會因為進入編輯模式就讓缺少的資料自動變成事實。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇以電腦網頁的官方流程整理，未以實際帳號測試 Canvas。手機也有相應入口，但選單與匯出位置可能不同。某些把檔案轉成其他形式或加入 AI 的功能有年齡、方案與帳號條件，請檢視目前介面，不把所有示範都當成每個帳號的標準配備。"
+        },
+        {
+          "type": "heading",
+          "text": "實作：建立一份可編輯說明",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "在 Gemini 開啟新對話，從輸入區的新增檔案或工具選單選擇 Canvas。",
+            "貼上下方提示詞，清楚指定要產生檔案，而不是只回答一串建議。",
+            "產出後開啟 Canvas，逐段核對活動資訊，確認仍標示日期待公告。",
+            "選取需要改寫的段落，透過選取並提問或對話要求局部區域修改；明確說出其他段落應保持的內容。",
+            "修改完成後重新從頭閱讀，保留一份文字備份，再進行簡報或工具的延伸練習。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Canvas 檔案提示詞",
+          "code": "請在 Canvas 建立「社群閱讀下午」的一頁活動說明檔案。\n已知資料：二樓閱讀區；自備水壺與筆記本；現場提供共讀書籍。\n日期與報名方式尚未公告。\n讀者是第一次參加的家長，使用繁體中文。\n結構：活動目的、現場流程、準備清單、待確認事項。\n現場流程請標為建議草案，不要寫成已確定安排。\n"
+        },
+        {
+          "type": "heading",
+          "text": "預期結果：內容先於排版",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "預期檔案有四個清楚區塊，已知資訊與建議草案分開，沒有自行補上日期或報名連結。這是教學驗收條件，實際版面與文字會不同。若某段看起來太長，先指定要服務的讀者與重點，再要求縮短，而不是只說「更專業」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Canvas 變更可能自動儲存，因此每次大型改寫前，先保留已確認的內容。局部區域修改後檢查其他段落有沒有跟著變動；如果工具顯示版本或近期變更，也可以用來追查。自動儲存方便接續工作，但不能取代自己可辨認版本的成果備份。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文字中的日期、金額與連結應一項一項確認。視覺上有漂亮的標題或卡片，不代表每個段落都可靠。當你準備把內容匯出到其他工具時，先把不確定資訊標清楚，避免下一步把草案排成像正式公告的成品。"
+        },
+        {
+          "type": "heading",
+          "text": "延伸一：把檔案改成簡報",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在對話中要求以目前已確認檔案製作四頁簡報：目的、流程、準備事項、待確認專案。每頁只放一個重點，流程仍保留草案標記。指定台灣讀者與投影閱讀情境，要求字型清楚、避免一頁塞滿長段落；若需要講者備註，也另外說明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "產出後逐頁核對，有些資訊可能在濃縮時被省略。尤其是日期未知、適用物件與限制，不能因為版面簡化而消失。簡報是否能匯出成特定格式，依當前提供的選項確認；在 Canvas 中看得到投影片，不等於已建立可由同事編輯的 Google Slides 檔案。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "需要正式協作與版面修訂時，可接著看"
+            },
+            {
+              "type": "link",
+              "text": "Docs 與 Slides 工作流程",
+              "url": "https://mokaair.com/zh-TW/life/gemini-in-gmail-docs-sheets"
+            },
+            {
+              "type": "text",
+              "text": "。先確定內容、再選交付格式，比反覆在不同工具重新生成整份簡報更容易維持一致資料。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "延伸二：製作不含個資的清單工具",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "可以請 Canvas 以活動準備事項建立簡單的勾選清單，這適合練習互動而不必接外部服務。先要求只在目前頁面處理資料，不加入登入、雲端資料庫、寄信或付費服務。若結果加入你沒要求的功能，先請它移除，再測試基本行為。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Canvas 小工具提示詞",
+          "code": "以目前的活動準備清單製作簡單互動工具。\n固定三項：水壺、筆記本、確認日期。\n提供勾選、已完成數量與重設按鈕。\n初始為 0/3；全勾選為 3/3；重設後回到 0/3。\n使用繁體中文，手機單欄，不需要登入或外部連線。\n不儲存跨工作階段資料；重新載入後回到初始狀態。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "測試時依序只勾一項、勾滿三項，再按重設；核對數字是否為一、三、零。重新載入也要符合原先指定的儲存方式。若預覽出錯，可開啟 Code 檢視程式，並使用顯示主控臺找錯誤訊息；把具體操作與錯誤內容交給 Gemini 修正，避免只說「壞了」。"
+        },
+        {
+          "type": "heading",
+          "text": "匯出與分享：確認真正的目的地",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "檔案可透過分享與匯出中的複製內容或匯出到 Google 檔案等選項帶走。匯出後開啟目的檔案，確認文字、段落、表格及來源是否完整。這是另外一份需要確認的成果，不應只看 Canvas 的成功提示就認為同事已經取得存取權。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公開分享 Canvas 應用程式前，閱讀應用程式資訊與資料使用說明。部分應用程式可能共享資料或儲存跨工作階段內容，持有公開連結的人可有哪些行為要看清楚。練習清單不需要公開分享；如果要分享，先去掉個人資料、金鑰及未授權素材，再確認連結能開啟的實際內容。"
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「只有一般對話，沒有 Canvas？」先確認已選 Canvas 工具及指定成果形式，並檢視帳號是否提供此功能。介面更新可能移動入口；沒有按鈕時依官方條件檢查，不必把同一句提示詞重送很多次。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「預覽正常就可以當正式系統嗎？」還不行。練習只檢查三項清單的簡單行為，沒有證明多人使用、資料儲存與存取控制都正常。需要正式工具時，請依"
+            },
+            {
+              "type": "link",
+              "text": "程式工作流程",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-coding-workflow"
+            },
+            {
+              "type": "text",
+              "text": "建立明確測試與交付要求。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "「分享連結在手機 App 開不了？」查證當日官方說明指出共享 Canvas 內容需在 Gemini 網頁開啟。請使用瀏覽器檢視並核對帳號條件；不要把行動應用程式無法開啟，直接判斷成內容已被刪除。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查證與範例",
+          "text": "本文於 2026-09-14 對照官方文件整理。畫面操作依官方說明，非所有裝置均經實機測試；範例輸出是驗收目標，實際內容依資料而異。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後的檢核",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "通過條件"
+          ],
+          "rows": [
+            [
+              "操作",
+              "能依正文重做一次，說明每一步使用的輸入。"
+            ],
+            [
+              "結果",
+              "能用原始資料或可重現測試核對輸出，而非只看語氣。"
+            ],
+            [
+              "延伸",
+              "知道下一篇教學解決的問題，以及什麼時候需要它。"
+            ]
+          ],
+          "caption": "完成實作後逐項確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著可以閱讀 "
+            },
+            {
+              "type": "link",
+              "text": "提示詞怎麼寫",
+              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-writing-guide"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Gmail、Docs 與 Slides",
+              "url": "https://mokaair.com/zh-TW/life/gemini-in-gmail-docs-sheets"
+            },
+            {
+              "type": "text",
+              "text": "，把本篇的操作接到下一個工作流程。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gemini Canvas：文件、簡報與應用程式",
+          "url": "https://support.google.com/gemini/answer/16047321?hl=en-GB",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canvas：iPhone 與 iPad 操作",
+          "url": "https://support.google.com/gemini/answer/16047321?co=GENIE.Platform%3DiOS&hl=en",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,335 @@
+{
+  "slug": "gemini-in-chrome-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 108,
+  "locales": {
+    "zh-TW": {
+      "title": "Chrome 裡的 Gemini：網頁摘要與分頁",
+      "description": "Chrome 內建 Gemini 可以在瀏覽網頁時提供協助，適合摘要正在閱讀的頁面、比較幾個分頁及整理下一步問題。本篇先分清楚網址列捷徑與分頁分享，再用兩篇公開資料練習來源比較。操作依官方文件整理，未在本次環境以符合資格的 Gemini 帳號實測。",
+      "hero": {
+        "src": "/guides/gemini-in-chrome-guide/hero.jpg",
+        "alt": "Chrome 分頁分享界線的原創插畫，以文件、裝置與流程等物件呼應網頁摘要與分頁；非產品介面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Chrome 內建 Gemini 可以在瀏覽網頁時提供協助，適合摘要正在閱讀的頁面、比較幾個分頁及整理下一步問題。本篇先分清楚網址列捷徑與分頁分享，再用兩篇公開資料練習來源比較。操作依官方文件整理，未在本次環境以符合資格的 Gemini 帳號實測。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-in-chrome-guide/diagram-1.svg",
+          "alt": "目前分頁：確認正在分享哪頁；新增分頁：從清單選所需來源；停止分享：再核對面板狀態",
+          "width": 1600,
+          "height": 900,
+          "caption": "Chrome 分頁分享界線。此為原創教學圖解，並非產品畫面或實測輸出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "開始前：確認功能是否已開放",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方列出的電腦條件包括更新的 Chrome、已登入的瀏覽器設定檔，以及支援的 Chromebook Plus、Mac 或 Windows。無痕模式不能使用這項內建功能。帳號還要符合年齡、裝置語言與地區規定；公司／學校帳號另需管理員開啟，功能也可能分批推出。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先在 Chrome 設定中檢查版本並完成更新，再確認目前瀏覽器設定檔是要使用的帳號。不要為了找不到某個功能而變更不實年齡或地區。官方支援清單與你的帳號畫面應一起看；如果條件不符，仍可使用"
+            },
+            {
+              "type": "link",
+              "text": "Gemini 網頁版",
+              "url": "https://mokaair.com/zh-TW/life/gemini-web-desktop-guide"
+            },
+            {
+              "type": "text",
+              "text": "進行一般文字練習。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "三種入口不要混淆",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一種是直接開啟 gemini.google.com，這是一般 Gemini 網頁。第二種是在 Chrome 網址列輸入 @gemini，使用瀏覽器提供的 Gemini 搜尋捷徑；它會把問題帶到網頁應用程式，不能因此假設已分享目前分頁的全文。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第三種是瀏覽器頂端的「問問 Gemini」或 Gemini 內建入口，會在瀏覽工作旁提供對話及分頁脈絡。下列步驟使用第三種。"
+            },
+            {
+              "type": "link",
+              "text": "Mac 原生應用程式",
+              "url": "https://mokaair.com/zh-TW/life/gemini-mac-app-guide"
+            },
+            {
+              "type": "text",
+              "text": "及 Windows 原生版則是另一種桌面入口，與 Chrome 的分頁管理不能直接互套快捷鍵及權限設定。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "實作：比較兩份公開公告",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "在兩個分頁各開一份自己有權閱讀的公開活動公告，先記下各自標題、發布單位及日期。",
+            "停在第一份公告，點 Chrome 頂端的 Gemini 入口，首次使用依畫面閱讀與啟用功能。",
+            "檢視目前分享的分頁。官方說明指出預設會使用目前分頁內容，請先確認該頁沒有與任務無關的私人資訊。",
+            "在提示詞中輸入 @，從開啟的分頁選擇第二份公告。先選兩頁即可，不必把所有分頁都加入。",
+            "送出下方提示詞，逐項回到原始頁面核對；完成後從分享分頁控制移除不再需要的頁面。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "分頁比較提示詞",
+          "code": "請比較這次分享的兩個活動公告分頁，使用繁體中文。\n欄位：活動名稱、適用物件、日期、地點、報名期限、原始來源。\n每項資訊註明來自哪個分頁；頁面沒寫的欄位標示未提供。\n若兩頁日期不同，先判斷是否為不同活動或不同更新版本。\n不要自行報名，也不要把其他沒有分享的分頁當成來源。\n"
+        },
+        {
+          "type": "heading",
+          "text": "預期結果：每個結論都能回到頁面",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一份可用的比較表應能指出每個欄位來自哪個公告，並保留「未提供」的專案。若第二頁只有活動介紹、沒有報名截止，不能用第一頁的期限補進去。這是判讀示範，實際結果應以你選定的兩份公告為準；本篇沒有宣稱已實測某兩個真實網站。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先檢查活動是否同名但不同場次，再看頁面更新日期、附件與例外條件。如果一頁是過期訊息、另一頁是新公告，應明確記錄採用哪份資料及理由。模型提供的連結也要開啟確認，不能只因為引用看起來完整就跳過原文。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "若回覆顯示無法讀取某分頁，先檢視該頁是否需要登入、內容是否位於特殊檢視器，或分享範圍是否正確。必要時改用自己有權處理的短段落或下載檔案，接著依"
+            },
+            {
+              "type": "link",
+              "text": "檔案分析",
+              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+            },
+            {
+              "type": "text",
+              "text": "的流程核對。不要把「頁面存在」和「內容已成功讀入」當成同一件事。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "管理分頁與後續閱讀",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件列出最多可分享十個開啟的分頁，實際仍受功能可用性影響。先控制在兩三個明確來源，能減少同名活動、舊資料及無關文章混在一起。從對話或已分享分頁開啟的新頁面也可能加入分享範圍，工作中應留意分頁清單是否改變。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "關閉一個 Chrome 分頁，不代表對話中已提供的資訊全部消失。要停止把某頁當作後續脈絡，使用介面上的分享管理控制並檢視目前狀態；要處理儲存的對話或活動，另看"
+            },
+            {
+              "type": "link",
+              "text": "隱私與記錄",
+              "url": "https://mokaair.com/zh-TW/life/gemini-privacy-activity-settings"
+            },
+            {
+              "type": "text",
+              "text": "。不要用「我看不到分頁了」推論所有資料都已刪除。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "想擴大成多來源研究，可以把已核對的問題交給"
+            },
+            {
+              "type": "link",
+              "text": "Deep Research",
+              "url": "https://mokaair.com/zh-TW/life/gemini-deep-research-guide"
+            },
+            {
+              "type": "text",
+              "text": "，先審閱研究計畫及來源範圍。Chrome 摘要適合陪伴當前閱讀，研究報告則需要更清楚的問題與證據整理。至於 Google 搜尋結果中的 AI 模式與 AI 摘要，請看"
+            },
+            {
+              "type": "link",
+              "text": "搜尋 AI 教學",
+              "url": "https://mokaair.com/zh-TW/life/google-ai-mode-search"
+            },
+            {
+              "type": "text",
+              "text": "，它們是不同入口。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "自動瀏覽與一般協助的差別",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "部分地區與方案另有自動瀏覽等功能，不能把它們當成台灣所有帳號的標準配備。本篇示範讀取與比較資訊，不需要請 Gemini 登入服務、填寫表單或送出報名。若使用可採取行動的功能，先明確指定目標，再檢查畫面是否真的出現完成結果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "常用提示詞可儲存到筆記，但每次都重新確認分頁與日期。昨天的對話可能包含昨天的活動條件；重新整理網頁後，仍應檢視本次分享的是哪個狀態。養成在成果旁保留來源標題與查核日期的習慣，會比只留一份結論表更容易維護。"
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「登入 Gemini 網站後，Chrome 按鈕還是沒出現？」網站登入與 Chrome 設定檔登入不是完全相同的步驟，還要符合裝置、語言、地區及帳號開放條件。先確認版本與官方清單，不要直接套用其他人的實驗旗標或不明擴充套件。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「@gemini 和對話中的 @ 一樣嗎？」不一樣。網址列的 @gemini 是 Gemini 網頁捷徑；本篇內建對話中的 @ 用來選取分頁。"
+            },
+            {
+              "type": "link",
+              "text": "CLI 的 @ 檔案引用",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-files-and-shell"
+            },
+            {
+              "type": "text",
+              "text": "又屬於終端機環境，三者需要看輸入位置才能判斷含義。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "「摘要沒有提到重要段落？」回到頁面確認那段是否在本次分享內容中，指出標題或段落再追問。若資料很多，先要求它列出能讀到的章節，再逐段整理；不能只靠增加回覆字數就認為所有內容都已被涵蓋。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查證與範例",
+          "text": "本文於 2026-09-14 對照官方文件整理。畫面操作依官方說明，非所有裝置均經實機測試；範例輸出是驗收目標，實際內容依資料而異。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後的檢核",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "通過條件"
+          ],
+          "rows": [
+            [
+              "操作",
+              "能依正文重做一次，說明每一步使用的輸入。"
+            ],
+            [
+              "結果",
+              "能用原始資料或可重現測試核對輸出，而非只看語氣。"
+            ],
+            [
+              "延伸",
+              "知道下一篇教學解決的問題，以及什麼時候需要它。"
+            ]
+          ],
+          "caption": "完成實作後逐項確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著可以閱讀 "
+            },
+            {
+              "type": "link",
+              "text": "電腦網頁版",
+              "url": "https://mokaair.com/zh-TW/life/gemini-web-desktop-guide"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Google 搜尋 AI 模式",
+              "url": "https://mokaair.com/zh-TW/life/google-ai-mode-search"
+            },
+            {
+              "type": "text",
+              "text": "，把本篇的操作接到下一個工作流程。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Chrome 內建 Gemini 操作說明",
+          "url": "https://support.google.com/gemini/answer/16283624?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Chrome 內建 Gemini 支援條件",
+          "url": "https://support.google.com/gemini/answer/17140089?hl=en-GB",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Chrome 網址列 Gemini 捷徑",
+          "url": "https://support.google.com/gemini/answer/14886647?hl=en",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
