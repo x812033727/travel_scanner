@@ -1,0 +1,280 @@
+{
+  "slug": "claude-for-research-summaries",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "productivity"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "用 Claude 讀論文與長報告：摘要、提問與批判",
+      "description": "一份 40 頁的論文或法說會簡報，怎麼在 20 分鐘內看出它主張什麼、證據夠不夠、能不能引用。把讀的動作拆成掃描、精讀、批判三段，附六個提問順序的提示詞全文、三句批判性問法、多份文獻做成比較表格的做法，以及它最會出錯的五件事：編頁碼、把相關講成因果、抓錯單位、把摘要當全文、順著你的問法走。功能與上下文視窗依 Anthropic 官網 2026 年 9 月查證。",
+      "hero": {
+        "src": "/guides/claude-for-research-summaries/hero.jpg",
+        "alt": "米色底上疊著三本裝訂好的報告，最上面那本的內文被橘色與綠色的螢光筆劃了三段，右邊浮著一個深青色的對話泡泡，泡泡裡有一個白色問號，下方一行字寫著「先問對問題，再回原文」",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "一份 40 頁的論文或法說會簡報，丟給 Claude 問一句「幫我摘要」，拿回來的多半是一段很順、你卻不敢寫進報告的文字。這篇回答的是另一個問題：怎麼在 20 分鐘內看出它主張什麼、證據夠不夠、你該不該引用。做法是把讀的動作拆成掃描、精讀、批判三段，每一段問不同的問題，每一段結束都回原文核對一次。"
+        },
+        {
+          "type": "paragraph",
+          "text": "你會拿到三種讀法的提示詞、六個提問順序、三句批判性問法、多份文獻做成比較表格的方法，以及它最會出錯的五個地方。功能名稱、上下文視窗與方案可用性都在 2026 年 9 月依 Anthropic 官網查證；上傳格式與檔案上限這篇不重講，看檔案分析那一篇。"
+        },
+        {
+          "type": "link",
+          "text": "給 Claude 讀 PDF 與試算表：摘要、比對與抓數字",
+          "url": "https://mokaair.com/zh-TW/life/claude-file-analysis-pdf-excel"
+        },
+        {
+          "type": "heading",
+          "text": "三種讀法先分清楚：掃描、精讀、批判",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "問題不在提示詞太短，而在你還沒決定要讀到多深。順序固定：掃描決定要不要往下讀，大約 3 分鐘；精讀弄清楚它怎麼得到結論，大約 10 分鐘；批判找出它哪裡站不住腳，大約 7 分鐘。一份 40 頁的論文三段加起來大約 20 分鐘，掃描完發現不是你要的就直接停。"
+        },
+        {
+          "type": "paragraph",
+          "text": "掃描的目的只有一個：判斷該不該細讀。照抄這段：「這份文件的研究問題與結論各是什麼？用三句話回答，每一句標出在第幾頁。另外回答：樣本是誰、樣本數多少、資料涵蓋哪幾年、方法屬於哪一類。文件裡沒寫的寫『未提及』，不要推測。」翻到它標的那三頁，看那三句在不在；有一句查無此文，整份不要用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "精讀與批判值得把思考打開。官網寫模型與 effort（努力程度）設在送出鍵旁邊，點模型名稱可改，分成 Low、Medium、High、Extra high 與 Max，High 是建議預設；另有獨立的思考切換，決定它要不要先把推理攤在可展開的區塊裡。要看它有沒有跳步就點開那一塊。"
+        },
+        {
+          "type": "link",
+          "text": "Claude 延伸思考：什麼時候該開、開了差在哪",
+          "url": "https://mokaair.com/zh-TW/life/claude-extended-thinking-guide"
+        },
+        {
+          "type": "table",
+          "header": [
+            "讀法",
+            "花多久",
+            "提示詞重點",
+            "你要核對什麼"
+          ],
+          "rows": [
+            [
+              "掃描",
+              "約 3 分鐘",
+              "研究問題與結論三句話各標頁碼，再問樣本與資料年份",
+              "翻到那三頁，看那三句在不在"
+            ],
+            [
+              "精讀",
+              "約 10 分鐘",
+              "六題依序問：問題、資料、方法、結論與數字、限制、與其他研究的關係",
+              "方法那一節，以及數字所在的那張表"
+            ],
+            [
+              "批判",
+              "約 7 分鐘",
+              "最可能被推翻的地方、作者承認的限制、能不能外推到台灣",
+              "限制段落；要它標明哪些是推測"
+            ],
+            [
+              "多份比較",
+              "每多一份約 5 分鐘",
+              "先給代號，欄位固定，每一格標代號與頁碼",
+              "抽兩格回原檔，看代號有沒有串行"
+            ]
+          ],
+          "caption": "三種讀法的分工與時間是建議值，不是規定；功能名稱與方案可用性依 2026 年 9 月的 Anthropic 官網查證。"
+        },
+        {
+          "type": "heading",
+          "text": "精讀：一份論文的六個提問順序",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "精讀不是把全文讀一遍，是照固定順序問六個問題，一題答完再問下一題。每一題後面的核對動作是你自己要做的。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "研究問題：問「用一句話寫出研究問題與作者宣稱的主要貢獻，各標頁碼」。核對摘要與前言最後一段；它寫得比原文更響亮就是第一個警訊。",
+            "資料與樣本：問「用了什麼資料？樣本數、國家或機構、涵蓋哪幾年？有沒有排除樣本、為什麼？照抄一句原文」。核對資料那一節與樣本描述的表。",
+            "方法：問「用五句話以內說明方法：這是實驗、觀察還是模擬？有沒有對照組？用什麼統計方法？」核對方法那一節，看它有沒有把好幾種算法說成一種。",
+            "主要結論與數字：問「列出三個最重要的量化結果，寫出數值、單位、信賴區間或標準誤，並標明在第幾頁哪一張表」。核對那張表，先看單位再看小數點。",
+            "限制：問「作者自己承認了哪些限制？逐條照抄原文，不要加上你的判斷」。核對討論的最後幾段；它常把作者沒說的疑慮混進來，要另外放。",
+            "和其他研究的關係：問「結論和哪些研究一致、和哪些不一致？作者怎麼解釋？」核對前言與討論的比較段落，作者與年份對回參考文獻。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-for-research-summaries/diagram-1.svg",
+          "alt": "左邊是三種讀法的時間分配：掃描 3 分鐘、精讀 10 分鐘、批判 7 分鐘；右邊由上而下是一份論文的六個提問順序，每一格下面標出該回頭核對原文的哪一段。",
+          "width": 1600,
+          "height": 900,
+          "caption": "左邊由上往下是三種讀法與各自的時間，右邊是精讀時固定的六個提問順序；每一格下面那行灰字，是你自己要翻回原文看的地方。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "批判：問它最可能在哪裡被推翻",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "問法跟前面相反：前面要它忠實轉述，這裡要它站到對立面。三句照抄。「這份研究最可能被推翻的地方是什麼？請從樣本、測量方式、統計方法、時間範圍各講一點，每一點指出文中哪一段讓你這樣判斷。」「作者自己承認的限制有哪些？照抄原文，再另外列一份『作者沒提到、但可能影響結論』的清單，兩份分開。」「這份研究的樣本能不能外推到台灣？說明國家、年齡層、產業或制度背景跟台灣差在哪；資訊不足就說不知道。」"
+        },
+        {
+          "type": "paragraph",
+          "text": "答案是清單，不是結論。它說樣本只涵蓋單一國家的都會區，你要翻到樣本那一節確認。最後補一句：「上面每一點，分別標明是文中寫到的，還是你的推測。」"
+        },
+        {
+          "type": "heading",
+          "text": "多份文獻一起比：表格與避免混淆來源",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "比較好幾份研究時，一次丟三到五份，在訊息裡先給每份一個代號。提示詞：「以下檔案依上傳順序是 A、B、C。做一張表格，欄位為代號與作者年份、樣本（人數、國家、年份）、方法、主要結論（含數值與單位）、作者承認的限制。每一格用括號標出代號與頁碼；那份文件裡找不到就寫『未提及』，不要用別份補。」"
+        },
+        {
+          "type": "paragraph",
+          "text": "最常見的錯不是內容錯，是串行：把 B 的樣本數填進 A 那一列。防法一是先讓它各做一張單篇表，確認無誤再合併；二是抽兩格回原檔看那一頁。最後追一句「這幾份最大的分歧是什麼？是結論不同，還是樣本與方法不同造成的？」"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一個主題讀很久，就把文獻放進專案（Projects）。官網寫所有方案都能用、免費帳號最多五個，付費方案在內容接近上下文視窗上限時會自動改用檢索增強生成（RAG），把容量擴大最多 10 倍；代價是它改用搜尋工具撈片段，不是整份讀進去，所以它回「沒有」只代表沒搜到。官網也寫付費方案最新的模型在對話中支援到 1M token，另一批 500K，其餘 200K；對話接近上限時它會摘要前面的訊息，所以比較表做完先複製出來存檔。"
+        },
+        {
+          "type": "link",
+          "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
+          "url": "https://mokaair.com/zh-TW/life/claude-projects-knowledge-base"
+        },
+        {
+          "type": "heading",
+          "text": "它最會出錯的五個地方",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "下面這五種錯它不會報錯，只會給你一個看起來很專業的答案。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "編出處與頁碼：你問的那一點文件裡沒有時，它會掛一個位置接近的頁數上去。對策是每次抽兩個頁碼實際翻開。",
+            "把相關講成因果：原文寫「有關聯」，摘要寫成「導致」。要它照抄原文的動詞，並問「這篇有沒有宣稱因果關係？」",
+            "抓錯數字的單位：百分點與百分比、千元與元、月與年、對數值與原始值混起來，結論就反了。先問「這張表的單位是什麼、寫在哪？」",
+            "把摘要當全文：長文件與走 RAG 的專案特別容易只答到摘要與前言。要求每個答案附頁碼，頁碼全集中在前三頁就是這個症狀。",
+            "順著你的問法走：你問「這篇是不是證明了某件事」，它容易答「是」。改問「支持與反對這個說法的證據各有哪些？標頁碼。」"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
+          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+        },
+        {
+          "type": "heading",
+          "text": "引用紀律：摘要可以外包，引用不行",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "規則一句話：AI 的摘要可以決定你要讀哪一段，不能決定你引用什麼。要寫進報告或論文的每一句，都要回原文把那一段自己看過。引用的意思本來就是「我讀過，我負責」；你引用的是那篇論文，不是 Claude 的回答，把 AI 摘要寫進參考文獻，格式與內容都錯。"
+        },
+        {
+          "type": "paragraph",
+          "text": "網頁搜尋與 Research 會附引用連結，最容易讓人誤以為查證過了。官網寫網頁搜尋不是預設開啟，要從輸入框左下角的「+」勾選，每則回答附來源連結讓你自己驗證；Research 只有付費方案（Pro、Max、Team、Enterprise）能用，且必須先開網頁搜尋，適合需要五次以上工具呼叫、花 1 到 3 分鐘的題目。但連結只證明網頁存在，不證明那句話寫在裡面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要把回答扣在同儕審查的文獻上，Claude 的連接器目錄裡有 John Wiley & Sons 提供的 Scholar Gateway，官網寫它附可驗證的引用與 DOI 連結，目前只涵蓋 Wiley 的內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "各校對生成式 AI 的規定不同，有的要求揭露用了哪些工具、用在哪一段，有的科目完全禁止，動筆前先看系上與課程的規定。可以外包的是「幫我看出這篇在講什麼」「幫我列出該核對哪幾頁」，不能外包的是判斷、引用，以及你自己寫的那段話。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "摘要可以外包，引用不行",
+          "text": "凡是你要寫進報告的句子，都要回原文看過那一段。提問時就把規則講在前面：每一句都要標出第幾頁、哪一張表，找不到出處就寫「無法確認」。它報不出頁碼，或報了卻對不上，那句話就不要用，更不要掛上引用。"
+        },
+        {
+          "type": "link",
+          "text": "學生用 AI 的誠實用法：哪些可以、哪些會出事",
+          "url": "https://mokaair.com/zh-TW/life/ai-for-students-honest-use"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Claude 說明中心：Use research on Claude（Research 只有 Pro、Max、Team、Enterprise 付費方案、需先開網頁搜尋、從輸入框左下角的「+」開啟、附可查證的引用）",
+          "url": "https://support.claude.com/en/articles/11088861-use-research-on-claude",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：When should I use web search, extended thinking, and research（網頁搜尋一到兩次工具呼叫、Research 五次以上、耗時 1 到 3 分鐘）",
+          "url": "https://support.claude.com/en/articles/11095361-when-should-i-use-web-search-extended-thinking-and-research",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Enable and use web search（不是預設開啟、從「+」勾選、每則回答附來源連結、支援的模型清單）",
+          "url": "https://support.claude.com/en/articles/10684626-enable-and-use-web-search",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Change the model, effort, and thinking settings（設定在送出鍵旁邊、effort 分 Low 到 Max、High 為建議預設、獨立的思考切換與可展開的推理區塊）",
+          "url": "https://support.claude.com/en/articles/10574485-using-extended-thinking",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：How large is the context window on paid Claude plans（1M、500K、200K 各對應哪些模型，200K 相當於 500 頁以上的文字）",
+          "url": "https://support.claude.com/en/articles/8606394-how-large-is-the-context-window-on-paid-claude-plans",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Understanding usage and length limits（付費方案最新模型最多 1M token、接近上限時自動摘要前面的訊息）",
+          "url": "https://support.claude.com/en/articles/11647753-understanding-usage-and-length-limits",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：What are Projects（所有方案都能用、免費帳號最多五個專案、付費方案自動用 RAG 把容量擴大最多 10 倍）",
+          "url": "https://support.claude.com/en/articles/9517075-what-are-projects",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Retrieval augmented generation (RAG) for projects（接近上下文上限時啟動、用知識庫搜尋工具取回片段而非整份讀入、限付費方案）",
+          "url": "https://support.claude.com/en/articles/11473015-retrieval-augmented-generation-rag-for-projects",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Upload files to Claude（支援格式、單檔 500 MB、每個對話 20 個檔案、PDF 100 頁與 1000 頁的規則）",
+          "url": "https://support.claude.com/en/articles/8241126-upload-files-to-claude",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 連接器目錄：Scholar Gateway（John Wiley & Sons 提供、同儕審查來源與 DOI 連結、目前只涵蓋 Wiley 內容）",
+          "url": "https://claude.com/connectors/scholar-gateway",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
