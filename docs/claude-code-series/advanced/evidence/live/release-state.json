@@ -1,14 +1,102 @@
 {
+  "checked_at": "2026-09-14T15:34:53.868230+00:00",
   "pull_request": {
-    "base": "f2567e51cc1ea0d0c3fc63005db21b2f44e5919c",
-    "head": "b16e017459ac7071aee70a1177115f7cbc537528",
-    "merged": false,
     "number": 501,
-    "state": "open",
     "url": "https://github.com/x812033727/travel_scanner/pull/501",
-    "observation": "Remote PR before the sandbox evidence commit; current GitHub state is authoritative."
+    "state": "merged",
+    "merged": true,
+    "merged_at": "2026-09-14T15:33:48Z",
+    "head": "556efbcc85bdb6a329aea42b2b602b8a08b850fa",
+    "base": "96ee71d6e17d09d44c32c0939cacf378c9217055",
+    "merge_commit": "3e7f377237f36215f0fb3bac63d02c344dbe60e6"
   },
+  "pre_merge_checks": [
+    {
+      "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861106738/job/104033235186",
+      "name": "full-stack-smoke",
+      "state": "SUCCESS"
+    },
+    {
+      "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861106606/job/104033233688",
+      "name": "food-map-reservations",
+      "state": "SUCCESS"
+    },
+    {
+      "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861106738/job/104033235211",
+      "name": "api",
+      "state": "SUCCESS"
+    },
+    {
+      "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861106740/job/104033233923",
+      "name": "planner-browser",
+      "state": "SUCCESS"
+    },
+    {
+      "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861106738/job/104033234946",
+      "name": "containers",
+      "state": "SUCCESS"
+    },
+    {
+      "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861106773/job/104033234385",
+      "name": "discovery-browser",
+      "state": "SUCCESS"
+    },
+    {
+      "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861106738/job/104033235251",
+      "name": "web",
+      "state": "SUCCESS"
+    },
+    {
+      "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861100776/job/104033212819",
+      "name": "food-map-reservations",
+      "state": "SUCCESS"
+    },
+    {
+      "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861100814/job/104033213379",
+      "name": "web",
+      "state": "SUCCESS"
+    },
+    {
+      "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861100814/job/104033213500",
+      "name": "containers",
+      "state": "SUCCESS"
+    },
+    {
+      "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861100814/job/104033213600",
+      "name": "api",
+      "state": "SUCCESS"
+    },
+    {
+      "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861100892/job/104033213630",
+      "name": "discovery-browser",
+      "state": "SUCCESS"
+    },
+    {
+      "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861100821/job/104033213366",
+      "name": "planner-browser",
+      "state": "SUCCESS"
+    },
+    {
+      "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861100814/job/104033213192",
+      "name": "full-stack-smoke",
+      "state": "SUCCESS"
+    }
+  ],
   "deployment": "not-performed",
   "import": "not-performed",
-  "publication": "not-performed"
+  "publication": "not-performed",
+  "baseline_workflow": {
+    "id": 34862981734,
+    "url": "https://github.com/x812033727/travel_scanner/actions/runs/34862981734",
+    "sha": "3e7f377237f36215f0fb3bac63d02c344dbe60e6",
+    "conclusion": "success",
+    "input": {
+      "run_model": false
+    },
+    "jobs": {
+      "baseline": "success",
+      "model-review": "skipped"
+    },
+    "scope": "Actual GitHub hosted baseline only; paid Claude model job skipped."
+  }
 }

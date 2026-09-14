@@ -89,6 +89,8 @@ node --experimental-strip-types tools/claude-code-series/preview.mjs
 
 ## 驗證狀態
 
+**PR 合併前的最終 CI：** 14 個工作全部成功。Linux Web 為 258 檔／2,809 項測試，另有 497 項瀏覽器測試；API 為 4,182 通過／16 跳過，Ruff、mypy 及必要整站檢查通過。[CI 紀錄與適用提交](evidence/live/final-ci-summary.json)。下列本機與歷史結果分別保留。
+
 同步 main 後，Node.js 24.15.0 的建置、lint、i18n、型別、52 項工具測試、Ruff 與 mypy 通過；9 類瀏覽器案例重跑通過。相關前端共 73 項斷言通過：第一輪有工作程序逾時，缺少的 23 項以 forks 單獨補跑。API 本次 18 通過、12 項 PostgreSQL 跳過，完整資料庫紀錄屬較早快照。[目前檢查與失敗重試紀錄](evidence/live/post-main-checks.json)。
 
 較早來源快照的本機補驗：整站前端 258 個測試檔、2809 項通過。執行環境與原始結果見[補充驗收紀錄](evidence/live/verification-summary.json)；此前未完成的執行保留於歷史紀錄。
@@ -107,9 +109,9 @@ node --experimental-strip-types tools/claude-code-series/preview.mjs
 | 互動式產品 | 兩位 Teams 隊友的讀檔、任務、訊息與後續接續；一次性 Cron 真實觸發及清單清空。[紀錄](evidence/live/interactive-products.json)。另完成第 89 篇雙角色功能、阻塞回報、契約決策、文案變更及最終測試／瀏覽器驗收，見 [Teams 完整實作](evidence/live/team-feature-validation.json) |
 | Bash sandbox | WSL2／CLI 2.1.270：專案內讀寫、指定路徑讀取拒絕、專案外寫入拒絕、主機 loopback 隔離通過；HTTP 在主機前後皆可連線。[紀錄](evidence/live/sandbox-validation.json)。未驗證所有網域規則或 Unix socket |
 | 外部環境 | 真實手機、遠端 MCP OAuth與 Actions 模型 job 尚未通過；Remote Control 瀏覽器要求裝置重新驗證。完整待辦見最新操作紀錄 |
-| GitHub Actions | [儲存庫驗證流程](../../../.github/workflows/claude-tutorial-validation.yml)已備妥；12 項系列測試與 8 項基礎測試通過。尚未合併或遠端執行；[設定與驗證步驟](github-actions-validation.md) |
+| GitHub Actions | [基礎工作流程](https://github.com/x812033727/travel_scanner/actions/runs/34862981734)：success，run_model=false；模型 job 未執行，不能當作模型審查通過。詳見[執行與設定](github-actions-validation.md) |
 | 第 96 篇實際開發 | Claude 從 starter 完成篩選、畫面與保存；9 項專案測試、3 項獨立斷言、10 個內建瀏覽器案例、故障紅綠與乾淨解壓重驗通過。[實際成果 ZIP](evidence/live/capstone-result.zip)；一處交接文字由驗收者更正，真實手機仍待測 |
-| 發布 | [PR #501](https://github.com/x812033727/travel_scanner/pull/501)：審查中；正式部署、資料庫匯入與公開發布未執行 |
+| 發布 | [PR #501](https://github.com/x812033727/travel_scanner/pull/501)：已合併；正式部署、資料庫匯入與公開發布未執行 |
 
 [內容檢查](evidence/content-validation.json) · [封面與圖解檢查](evidence/art-validation.json) · [36 包核心測試](evidence/downloads-quick-tests.json) · [六篇試作完整工具測試](evidence/downloads-tests.json) · [瀏覽器結果與重驗紀錄](evidence/browser-verification.json) · [最新真實操作](evidence/live/real-operations-summary.json) · [首輪 OAuth 失敗歷史](evidence/claude-live-all.json)
 

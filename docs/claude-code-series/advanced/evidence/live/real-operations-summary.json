@@ -64,19 +64,35 @@
     "required_example_environment": "claude-lab",
     "required_example_secret": "ANTHROPIC_API_KEY",
     "live_model_workflow_run": false,
-    "reason": "Dedicated claude-lab environment exists with a main-only branch policy. Manual workflow awaits merge and baseline dispatch; the model job requires the user to add ANTHROPIC_API_KEY.",
+    "reason": "Actual baseline workflow passed; paid model review requires the user-managed ANTHROPIC_API_KEY in claude-lab.",
     "registered_claude_workflows": [],
     "local_workflow_prepared": true,
     "workflow_path": ".github/workflows/claude-tutorial-validation.yml",
     "local_validation_source": "ci-workflow-validation.json",
     "environment_created": true,
     "branch_policy": "main only",
-    "environment_secret_count": 0
+    "environment_secret_count": 0,
+    "workflow_merged": true,
+    "workflow_merge_commit": "3e7f377237f36215f0fb3bac63d02c344dbe60e6",
+    "baseline_workflow": {
+      "id": 34862981734,
+      "url": "https://github.com/x812033727/travel_scanner/actions/runs/34862981734",
+      "sha": "3e7f377237f36215f0fb3bac63d02c344dbe60e6",
+      "conclusion": "success",
+      "input": {
+        "run_model": false
+      },
+      "jobs": {
+        "baseline": "success",
+        "model-review": "skipped"
+      },
+      "scope": "Actual GitHub hosted baseline only; paid Claude model job skipped."
+    }
   },
   "pending": [
     "Physical phone reconnection, sleep and recovery; browser Remote Control device verification",
     "A real remote MCP HTTP/OAuth service for authorization, revocation and recovery",
-    "Merge/register the manual Actions workflow and run baseline; paid model job awaits dedicated ANTHROPIC_API_KEY"
+    "Paid Actions model job awaits dedicated ANTHROPIC_API_KEY"
   ],
   "cli_boundaries": {
     "passed": true,
@@ -266,5 +282,10 @@
       "linux_claude_present": false
     },
     "reason": "During dependency setup WSL became unresponsive, including a read-only process listing. Only the three owned Windows WSL client trees were stopped; Linux installation outcome is unconfirmed. No WSL shutdown or sandbox weakening was used."
+  },
+  "remote_control_linux": {
+    "passed": false,
+    "source": "remote-control-linux.json",
+    "reason": "A fresh Linux CLI login and Remote Control connection succeeded; browser device verification still prevented the remote command. No remote execution, disconnect recovery or phone test is claimed."
   }
 }

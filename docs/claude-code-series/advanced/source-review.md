@@ -60,3 +60,5 @@ Hook 初測先被 Write 的讀檔前提拒絕，不能算 Hook 成功；更正�
 CLI 自動更新後，另以 2.1.270 驗證一回合上限：真實 -p 執行退出 1，回傳 error_max_turns/is_error=true；保持錯誤結果，未當成空白成功。新舊版本的結果分開保存。
 
 沙箱補驗（2026-09-14）：使用官方 Linux CLI 2.1.270、bubblewrap 與 socat，保留 failIfUnavailable／禁止沙箱外重試。實際 Bash 顯示 Permission denied 與 Read-only file system，外部檔案保持原樣。HTTP 主機前後控制均成功，沙箱內 Connection refused；不採信模型自行歸因為網域代理，也不宣稱 Unix socket 或所有外連規則通過。原始工具結果見 sandbox-events.json。
+
+合併後狀態：PR #501 已合併，適用提交與 14 個成功 CI 工作見 evidence/live/release-state.json。手動 GitHub Actions baseline 成功，model-review 依 run_model=false 跳過；付費模型審查、真實手機與遠端 MCP OAuth 尚未完成。先前「待合併／未遠端執行」敘述為歷史紀錄。

@@ -123,6 +123,8 @@ if real_operations.get('headless_boundary',{}).get('passed'):
 if real_operations.get('sandbox',{}).get('passed'):
     local[64]='actual Read deny plus WSL2 Claude 2.1.270 Bash: inside read/write, denied read, readonly outside write and host-loopback isolation passed; no Unix-socket or general domain-allowlist claim'
     boundary_lessons.add(64)
+if release.get('baseline_workflow',{}).get('conclusion') == 'success':
+    local[92]='actual workflow_dispatch on the merged main SHA passed baseline; model-review intentionally skipped with run_model=false; paid Claude model execution still pending'
 if real_operations.get('workflow_comparison',{}).get('passed'):
     local[95]='one actual observation per workflow with versions/models/time recorded; different model mix and coordination, no comparative advantage inferred'
 lesson_rows=[]
