@@ -128,9 +128,13 @@ def check_pack(slug: str, entry: dict, batch: set[str], shipped: set[str]) -> li
     if not low <= length <= high:
         found.append(f"{length} characters of prose; the series asks for {low:,}-{high:,}")
 
-    headings = [b for b in document.blocks if getattr(b, "type", None) == "heading" and b.level == 2]
+    headings = [
+        b for b in document.blocks if getattr(b, "type", None) == "heading" and b.level == 2
+    ]
     if len(headings) < MIN_LEVEL_2_HEADINGS:
-        found.append(f"{len(headings)} level-2 headings; the series asks for {MIN_LEVEL_2_HEADINGS}")
+        found.append(
+            f"{len(headings)} level-2 headings; the series asks for {MIN_LEVEL_2_HEADINGS}"
+        )
 
     tables = [b for b in document.blocks if getattr(b, "type", None) == "table"]
     if len(tables) != TABLE_COUNT:
