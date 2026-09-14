@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">新宿到河口湖三種走法與河口湖駅周邊路線圖 / Shinjuku to Kawaguchiko routes and the sightseeing bus lines</title>
+  <desc id="desc">左半：新宿到河口湖駅的三種走法：高速巴士約 1 小時 45 分、2,000 到 2,200 日圓、全席預約制；JR 特急富士回遊約 1 小時 54 分、4,200 日圓、全車指定席；JR 中央線快速約 1 小時 40 分到大月轉富士急行線普通列車約 55 分、2,580 日圓。右半：從河口湖駅出發，周遊巴士紅線約 15 分到遊覽船與纜車入口、約 30 分到大石公園，綠線到西湖，藍線到精進湖與本栖湖，ふじっ湖号到忍野八海，富士急行線到下吉田駅走約 25 分上 398 階到新倉山淺間公園忠靈塔。周遊巴士 2 日券成人 2,000 日圓、兒童 1,000 日圓。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- title -->
+  <text x="80" y="82" font-size="40" font-weight="700" fill="#102A2B">新宿 → 河口湖 Kawaguchiko：怎麼去、到了怎麼走</text>
+  <text x="80" y="122" font-size="22" fill="#5C6B6B">Shinjuku → Lake Kawaguchi · 時間與票價 2026 年 9 月查證，實際以官網時刻表為準</text>
+
+  <!-- section headings -->
+  <text x="80" y="190" font-size="26" font-weight="700" fill="#0D6B68">怎麼去 · 三種走法 Getting there</text>
+  <text x="1010" y="190" font-size="26" font-weight="700" fill="#B8442D">到了怎麼走 Getting around</text>
+
+  <!-- Route A: highway bus (dashed) -->
+  <path d="M 270 408 C 390 285, 560 285, 680 408" fill="none" stroke="#D97A2B" stroke-width="10" stroke-dasharray="22 14" stroke-linecap="round"/>
+  <!-- Route B: Fuji Excursion (solid teal) -->
+  <path d="M 270 452 L 680 452" fill="none" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"/>
+  <!-- Route C: Chuo line + Fujikyu via Otsuki (solid mocha) -->
+  <path d="M 270 480 C 390 604, 560 604, 680 480" fill="none" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="475" cy="573" r="14" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="7"/>
+
+  <g text-anchor="middle">
+    <text x="475" y="256" font-size="22" font-weight="700" fill="#D97A2B">高速バス Highway bus · 富士急バス／京王バス</text>
+    <text x="475" y="288" font-size="18" fill="#5C6B6B">約 1 小時 45 分 · 2,000〜2,200 日圓 · 全席預約制</text>
+    <text x="475" y="404" font-size="22" font-weight="700" fill="#0D6B68">JR 特急 富士回遊 Fuji Excursion</text>
+    <text x="475" y="432" font-size="18" fill="#5C6B6B">約 1 小時 54 分 · 4,200 日圓 · 全車指定席</text>
+    <text x="475" y="620" font-size="22" font-weight="700" fill="#6B4A3A">JR 中央線＋富士急行線 · 大月 Otsuki 轉車</text>
+    <text x="475" y="648" font-size="18" fill="#5C6B6B">快速約 1 小時 40 分＋普通約 55 分 · 2,580 日圓 · 最便宜</text>
+  </g>
+
+  <!-- Shinjuku box -->
+  <rect x="40" y="390" width="230" height="100" rx="22" fill="#0D6B68"/>
+  <text x="155" y="432" font-size="26" font-weight="700" fill="#FFFFFF" text-anchor="middle">新宿 Shinjuku</text>
+  <text x="155" y="466" font-size="17" fill="#E6F2F1" text-anchor="middle">バスタ新宿 · JR 新宿駅</text>
+
+  <!-- Kawaguchiko hub box -->
+  <rect x="680" y="390" width="300" height="100" rx="22" fill="#6B4A3A"/>
+  <text x="830" y="432" font-size="24" font-weight="700" fill="#FFFFFF" text-anchor="middle">河口湖駅 Kawaguchiko</text>
+  <text x="830" y="466" font-size="17" fill="#F3E9E3" text-anchor="middle">周遊バス・ふじっ湖号 起點</text>
+
+  <!-- fan from the hub: sightseeing buses (dashed) and the Fujikyu line (solid) -->
+  <path d="M 980 420 C 1060 420, 1060 250, 1140 250" fill="none" stroke="#B8442D" stroke-width="8" stroke-dasharray="16 12" stroke-linecap="round"/>
+  <path d="M 980 428 C 1060 428, 1060 340, 1140 340" fill="none" stroke="#B8442D" stroke-width="8" stroke-dasharray="16 12" stroke-linecap="round"/>
+  <path d="M 980 436 C 1060 436, 1060 430, 1140 430" fill="none" stroke="#2E7D5B" stroke-width="8" stroke-dasharray="16 12" stroke-linecap="round"/>
+  <path d="M 980 444 C 1060 444, 1060 520, 1140 520" fill="none" stroke="#2F6F9F" stroke-width="8" stroke-dasharray="16 12" stroke-linecap="round"/>
+  <path d="M 980 452 C 1060 452, 1060 610, 1140 610" fill="none" stroke="#7E57C2" stroke-width="8" stroke-dasharray="16 12" stroke-linecap="round"/>
+  <path d="M 980 462 C 1060 462, 1060 700, 1140 700" fill="none" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round"/>
+
+  <circle cx="1140" cy="250" r="13" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+  <circle cx="1140" cy="340" r="13" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+  <circle cx="1140" cy="430" r="13" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="6"/>
+  <circle cx="1140" cy="520" r="13" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="6"/>
+  <circle cx="1140" cy="610" r="13" fill="#FFFFFF" stroke="#7E57C2" stroke-width="6"/>
+  <circle cx="1140" cy="700" r="13" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="6"/>
+
+  <g fill="#102A2B">
+    <text x="1165" y="256" font-size="20" font-weight="700">遊覧船・ロープウェイ Ropeway / Cruise</text>
+    <text x="1165" y="280" font-size="17" fill="#5C6B6B">周遊バス約 15 分 · 纜車往返 1,000 日圓</text>
+    <text x="1165" y="302" font-size="17" fill="#5C6B6B">遊覧船一周約 20 分 · 1,000 日圓 · 每 30 分一班</text>
+
+    <text x="1165" y="346" font-size="20" font-weight="700">大石公園 Oishi Park · 河口湖自然生活館</text>
+    <text x="1165" y="370" font-size="17" fill="#5C6B6B">レッドライン約 30 分 · 免費 · 常時開放</text>
+    <text x="1165" y="392" font-size="17" fill="#5C6B6B">薰衣草 6 月下旬〜7 月中旬 · 掃帚草 10 月中下旬</text>
+
+    <text x="1165" y="436" font-size="20" font-weight="700">西湖 Saiko · いやしの里根場・鳴沢氷穴</text>
+    <text x="1165" y="460" font-size="17" fill="#5C6B6B">グリーンライン Green Line · 從河口湖駅發車</text>
+
+    <text x="1165" y="526" font-size="20" font-weight="700">精進湖・本栖湖 Shoji / Motosu</text>
+    <text x="1165" y="550" font-size="17" fill="#5C6B6B">ブルーライン Blue Line · 春天富士芝桜まつり会場</text>
+
+    <text x="1165" y="616" font-size="20" font-weight="700">忍野八海 Oshino Hakkai（富士山駅轉乘）</text>
+    <text x="1165" y="640" font-size="17" fill="#5C6B6B">ふじっ湖号 · 富士山駅から路線バス約 25 分</text>
+    <text x="1165" y="662" font-size="17" fill="#5C6B6B">ふじっ湖号 2 日券 2,200 日圓 · 與紅綠藍券不通用</text>
+
+    <text x="1165" y="706" font-size="20" font-weight="700">下吉田駅 Shimoyoshida → 新倉山浅間公園</text>
+    <text x="1165" y="730" font-size="17" fill="#5C6B6B">富士急行線 230 日圓 · 富士回遊也停</text>
+    <text x="1165" y="752" font-size="17" fill="#5C6B6B">走約 25 分・398 階到忠霊塔 · 免費 24 小時</text>
+  </g>
+
+  <!-- 2-day pass note -->
+  <rect x="80" y="690" width="780" height="100" rx="16" fill="#FFFFFF" stroke="#B8442D" stroke-width="3"/>
+  <text x="100" y="728" font-size="20" font-weight="700" fill="#B8442D">河口湖周遊バス 2 日券 2Day Pass · 成人 2,000 日圓、兒童 1,000 日圓</text>
+  <text x="100" y="760" font-size="17" fill="#102A2B">紅綠藍三線通用 · 河口湖駅巴士窗口或線上買，車上只賣 1 日券 · 單程最低 180 日圓</text>
+
+  <!-- legend -->
+  <g font-size="18" fill="#102A2B">
+    <line x1="80" y1="860" x2="140" y2="860" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+    <text x="152" y="866">JR 特急富士回遊</text>
+    <line x1="300" y1="860" x2="360" y2="860" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round"/>
+    <text x="372" y="866">JR 中央線＋富士急行線</text>
+    <line x1="600" y1="860" x2="660" y2="860" stroke="#D97A2B" stroke-width="8" stroke-dasharray="18 12" stroke-linecap="round"/>
+    <text x="672" y="866">高速バス Bus</text>
+    <line x1="810" y1="860" x2="828" y2="860" stroke="#B8442D" stroke-width="8" stroke-linecap="round"/>
+    <line x1="834" y1="860" x2="852" y2="860" stroke="#2E7D5B" stroke-width="8" stroke-linecap="round"/>
+    <line x1="858" y1="860" x2="876" y2="860" stroke="#2F6F9F" stroke-width="8" stroke-linecap="round"/>
+    <text x="888" y="866">周遊バス 紅／綠／藍線</text>
+    <line x1="1090" y1="860" x2="1150" y2="860" stroke="#7E57C2" stroke-width="8" stroke-dasharray="18 12" stroke-linecap="round"/>
+    <text x="1162" y="866">ふじっ湖号</text>
+    <text x="1330" y="866" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+  </g>
+</svg>

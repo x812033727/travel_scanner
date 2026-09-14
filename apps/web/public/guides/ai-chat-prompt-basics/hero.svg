@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">提示詞入門：一個輸入框被五個小標籤圍著 / Prompt basics: an input box surrounded by five tags</title>
+  <desc id="desc">米色底上，正中央是一個白色的大輸入框，裡面寫著「把問題問清楚」，字後面有一條綠色的游標，右端有一顆綠色圓形的送出按鈕。輸入框周圍有五個不同顏色的圓角標籤，各自以虛線連到輸入框：左上角綠色標籤畫著一個人形與幾條文字線，代表角色與背景；右上角藍色標籤畫著一個打勾的方框，代表任務；左邊橘色標籤畫著三條長短不一的線與一個方框，代表格式限制；右邊綠色標籤畫著一張文件，代表範例；下方深色標籤畫著一個繞圈的箭頭，代表追問迴圈。背景有幾個淡色圓形裝飾。整張圖只有「把問題問清楚」這一行字。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <circle cx="1370" cy="230" r="170" fill="#E3F0EF"/>
+  <circle cx="230" cy="700" r="130" fill="#E6F0F7"/>
+  <circle cx="1480" cy="800" r="30" fill="#0D6B68" opacity="0.25"/>
+  <circle cx="120" cy="150" r="18" fill="#2F6F9F" opacity="0.3"/>
+
+  <!-- dashed connectors from tags to the input box -->
+  <line x1="330" y1="228" x2="440" y2="348" stroke="#5C6B6B" stroke-width="4" stroke-dasharray="10 12" stroke-linecap="round" opacity="0.6"/>
+  <line x1="1270" y1="228" x2="1160" y2="348" stroke="#5C6B6B" stroke-width="4" stroke-dasharray="10 12" stroke-linecap="round" opacity="0.6"/>
+  <line x1="302" y1="450" x2="358" y2="450" stroke="#5C6B6B" stroke-width="4" stroke-dasharray="10 12" stroke-linecap="round" opacity="0.6"/>
+  <line x1="1298" y1="450" x2="1242" y2="450" stroke="#5C6B6B" stroke-width="4" stroke-dasharray="10 12" stroke-linecap="round" opacity="0.6"/>
+  <line x1="800" y1="658" x2="800" y2="554" stroke="#5C6B6B" stroke-width="4" stroke-dasharray="10 12" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- the input box -->
+  <rect x="360" y="350" width="880" height="200" rx="36" fill="#FFFFFF" stroke="#102A2B" stroke-width="6"/>
+  <text x="420" y="473" font-size="64" font-weight="700" fill="#102A2B">把問題問清楚</text>
+  <rect x="818" y="404" width="8" height="92" rx="4" fill="#0D6B68"/>
+  <circle cx="1160" cy="450" r="46" fill="#0D6B68"/>
+  <path d="M 1138 450 L 1180 450 M 1166 436 L 1180 450 L 1166 464" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- tag 1: role and context (top left, teal) -->
+  <rect x="170" y="130" width="260" height="96" rx="48" fill="#E3F0EF" stroke="#0D6B68" stroke-width="6"/>
+  <circle cx="222" cy="168" r="14" fill="#0D6B68"/>
+  <path d="M 198 204 a 24 24 0 0 1 48 0 Z" fill="#0D6B68"/>
+  <rect x="262" y="158" width="120" height="9" rx="4.5" fill="#0D6B68" opacity="0.55"/>
+  <rect x="262" y="176" width="90" height="9" rx="4.5" fill="#0D6B68" opacity="0.55"/>
+  <rect x="262" y="194" width="110" height="9" rx="4.5" fill="#0D6B68" opacity="0.55"/>
+
+  <!-- tag 2: task (top right, blue) -->
+  <rect x="1170" y="130" width="260" height="96" rx="48" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="6"/>
+  <rect x="1206" y="160" width="36" height="36" rx="8" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="5"/>
+  <path d="M 1215 178 L 1223 186 L 1237 170" fill="none" stroke="#2F6F9F" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="1262" y="164" width="120" height="9" rx="4.5" fill="#2F6F9F" opacity="0.55"/>
+  <rect x="1262" y="182" width="90" height="9" rx="4.5" fill="#2F6F9F" opacity="0.55"/>
+
+  <!-- tag 3: format constraints (left, orange) -->
+  <rect x="40" y="402" width="260" height="96" rx="48" fill="#FFFFFF" stroke="#D97A2B" stroke-width="6"/>
+  <rect x="80" y="428" width="70" height="10" rx="5" fill="#D97A2B"/>
+  <rect x="80" y="445" width="130" height="10" rx="5" fill="#D97A2B"/>
+  <rect x="80" y="462" width="100" height="10" rx="5" fill="#D97A2B"/>
+  <rect x="226" y="428" width="44" height="44" rx="8" fill="none" stroke="#D97A2B" stroke-width="5"/>
+
+  <!-- tag 4: example (right, green) -->
+  <rect x="1300" y="402" width="260" height="96" rx="48" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="6"/>
+  <path d="M 1340 424 h 40 l 16 16 v 56 h -56 Z" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M 1380 424 v 16 h 16" fill="none" stroke="#2E7D5B" stroke-width="5" stroke-linejoin="round"/>
+  <rect x="1350" y="452" width="32" height="6" rx="3" fill="#2E7D5B"/>
+  <rect x="1350" y="466" width="24" height="6" rx="3" fill="#2E7D5B"/>
+  <rect x="1350" y="480" width="28" height="6" rx="3" fill="#2E7D5B"/>
+  <rect x="1412" y="436" width="110" height="9" rx="4.5" fill="#2E7D5B" opacity="0.55"/>
+  <rect x="1412" y="454" width="80" height="9" rx="4.5" fill="#2E7D5B" opacity="0.55"/>
+  <rect x="1412" y="472" width="100" height="9" rx="4.5" fill="#2E7D5B" opacity="0.55"/>
+
+  <!-- tag 5: follow-up loop (bottom, dark) -->
+  <rect x="670" y="660" width="260" height="96" rx="48" fill="#FFFFFF" stroke="#102A2B" stroke-width="6"/>
+  <path d="M 758 686 A 30 30 0 1 1 720 730" fill="none" stroke="#102A2B" stroke-width="7" stroke-linecap="round"/>
+  <path d="M 704 736 L 728 740 L 720 716 Z" fill="#102A2B"/>
+  <rect x="790" y="692" width="110" height="9" rx="4.5" fill="#102A2B" opacity="0.45"/>
+  <rect x="790" y="710" width="80" height="9" rx="4.5" fill="#102A2B" opacity="0.45"/>
+  <rect x="790" y="728" width="100" height="9" rx="4.5" fill="#102A2B" opacity="0.45"/>
+</svg>

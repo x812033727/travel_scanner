@@ -289,7 +289,13 @@ function NewTripFormForAccount({ accountId }: { accountId: string }) {
       // Only a definitive rejection can unlock editing and retire the old key.
       if (!pending && reason instanceof ApiError && [400, 401, 403, 422, 429].includes(reason.status)) {
         setPending(undefined);
-        clearDraft(storageKey);
+        // Retire only the rejected attempt. React may batch pending -> undefined into
+        // one render, so the autosave effect is not guaranteed to run again afterward.
+        try {
+          window.sessionStorage.setItem(storageKey, JSON.stringify({
+            nameEdited, lodgingMode, selectedInterests, selectedShopThemes, form,
+          } satisfies DraftSnapshot));
+        } catch { /* Storage is best-effort; keep the existing snapshot if unavailable. */ }
       }
       if (reason instanceof ApiError && reason.status === 409) setRecoveryBlocked(true);
       showError(reason instanceof ApiError && reason.code?.startsWith("trip_create_")

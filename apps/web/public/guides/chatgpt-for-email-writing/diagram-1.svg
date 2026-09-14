@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">寫信提示詞的七個部件，與寫、追問、貼回的三步 / Seven parts of an email prompt, and the write, ask, paste-back loop</title>
+  <desc id="desc">左邊是一個大框，代表送出前的提示詞，以英文詢價信為例，由上而下疊著七塊。一、我是誰：台灣消費電子品牌的採購專員。二、收件人是誰：越南線材廠 C 公司的業務團隊，從沒聯絡過。三、目的：拿到 USB-C 線的報價與交期。四、一定要包含的三個點：要多少、要哪些資訊（單價、最低訂購量、交期）、規格表可提供。五、語氣：有禮但直接，不要恭維。六、長度：120 個英文字以內。七、格式：一行主旨、開頭一句講目的、結尾要對方哪天前回覆、簽名檔留空。前四塊是它猜不到的事實，後三塊是它預設值常常不對的偏好。右邊是送出後的三步。一、寫：送出，拿到第一版，七塊都在同一則提示詞裡。二、追問：在同一個對話裡修，只改那一句其他不動、縮到幾個字以內並刪掉客套句、給三個主旨或三種結尾我來挑、貼上對方的信照同一個禮貌層級回；背景、三個點、範例都還在對話裡，不用重打。一條箭頭從追問繞回第一版，標示不滿意就再追問，不要整封重來。三、貼回自己的版本：自己讀一遍，刪掉萬用句，加一句只有你知道的細節；核對日期、金額與附件名稱；滿意的版本存進專案，當下次的範例。底下註明：客戶名稱、金額、發票號一律用代號，寫好再自己填回去。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">寫信提示詞的七個部件，與寫、追問、貼回的三步</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Seven parts of an email prompt, and the write, ask, paste-back loop</text>
+
+  <!-- left: the prompt before sending -->
+  <rect x="60" y="116" width="900" height="650" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="510" y="152" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">送出前的提示詞（以英文詢價信為例）</text>
+
+  <!-- parts 1-4: facts it cannot guess (teal) -->
+  <rect x="84" y="172" width="852" height="72" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="108" y="216" font-size="18" font-weight="700" fill="#0B4F4D">一　我是誰</text>
+  <text x="300" y="215" font-size="16" fill="#102A2B">台灣消費電子品牌的採購專員</text>
+
+  <rect x="84" y="254" width="852" height="72" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="108" y="298" font-size="18" font-weight="700" fill="#0B4F4D">二　收件人是誰</text>
+  <text x="300" y="297" font-size="16" fill="#102A2B">越南線材廠 C 公司的業務團隊，從沒聯絡過</text>
+
+  <rect x="84" y="336" width="852" height="72" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="108" y="380" font-size="18" font-weight="700" fill="#0B4F4D">三　目的</text>
+  <text x="300" y="379" font-size="16" fill="#102A2B">拿到 USB-C 線的報價與交期</text>
+
+  <rect x="84" y="418" width="852" height="72" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="108" y="462" font-size="18" font-weight="700" fill="#0B4F4D">四　三個點</text>
+  <text x="300" y="461" font-size="16" fill="#102A2B">要多少、要哪些資訊（單價、最低訂購量、交期）、規格表可提供</text>
+
+  <!-- parts 5-7: preferences whose defaults are usually wrong (blue) -->
+  <rect x="84" y="500" width="852" height="72" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="108" y="544" font-size="18" font-weight="700" fill="#1F4E73">五　語氣</text>
+  <text x="300" y="543" font-size="16" fill="#102A2B">有禮但直接，不要恭維</text>
+
+  <rect x="84" y="582" width="852" height="72" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="108" y="626" font-size="18" font-weight="700" fill="#1F4E73">六　長度</text>
+  <text x="300" y="625" font-size="16" fill="#102A2B">120 個英文字以內</text>
+
+  <rect x="84" y="664" width="852" height="72" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="108" y="708" font-size="18" font-weight="700" fill="#1F4E73">七　格式</text>
+  <text x="300" y="707" font-size="16" fill="#102A2B">一行主旨、開頭一句講目的、結尾要對方哪天前回覆、簽名檔留空</text>
+
+  <!-- right: the three steps after sending -->
+  <text x="1270" y="152" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">送出後的三步</text>
+
+  <rect x="1000" y="180" width="540" height="100" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="1270" y="220" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">一　寫：送出，拿到第一版</text>
+  <text x="1270" y="254" font-size="15" fill="#5C6B6B" text-anchor="middle">七塊都在同一則提示詞裡</text>
+  <path d="M 1270 282 L 1270 318" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="1000" y="322" width="540" height="200" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1270" y="360" font-size="19" font-weight="700" fill="#0B4F4D" text-anchor="middle">二　追問：在同一個對話裡修</text>
+  <text x="1028" y="394" font-size="16" fill="#102A2B">・只改那一句，其他不動</text>
+  <text x="1028" y="422" font-size="16" fill="#102A2B">・縮到幾個字以內，刪掉客套句</text>
+  <text x="1028" y="450" font-size="16" fill="#102A2B">・給三個主旨或三種結尾，我來挑</text>
+  <text x="1028" y="478" font-size="16" fill="#102A2B">・貼上對方的信，照同一個禮貌層級回</text>
+  <text x="1028" y="506" font-size="15" fill="#5C6B6B">背景、三個點、範例都還在對話裡，不用重打</text>
+
+  <!-- loop back from step 2 to step 1 -->
+  <path d="M 1542 470 L 1570 470 L 1570 230 L 1544 230" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <path d="M 1270 526 L 1270 596" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="1290" y="566" font-size="15" fill="#5C6B6B">不滿意就再追問，不要整封重來</text>
+
+  <rect x="1000" y="600" width="540" height="150" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1270" y="638" font-size="19" font-weight="700" fill="#1F4E73" text-anchor="middle">三　貼回自己的版本</text>
+  <text x="1028" y="672" font-size="16" fill="#102A2B">・自己讀一遍，刪掉萬用句，加一句只有你知道的細節</text>
+  <text x="1028" y="700" font-size="16" fill="#102A2B">・核對日期、金額與附件名稱</text>
+  <text x="1028" y="728" font-size="16" fill="#102A2B">・滿意的版本存進專案，當下次的範例</text>
+
+  <text x="60" y="802" font-size="15" fill="#5C6B6B">前四塊是它猜不到的事實，後三塊是它預設值常常不對的偏好；資訊不夠，要它先問你。</text>
+  <text x="60" y="830" font-size="15" fill="#5C6B6B">客戶名稱、金額、發票號一律用代號，寫好再自己填回去。</text>
+  <text x="1540" y="870" font-size="15" fill="#5C6B6B" text-anchor="end">© Mokaair 製圖 2026</text>
+</svg>

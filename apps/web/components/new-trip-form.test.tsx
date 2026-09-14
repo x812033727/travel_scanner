@@ -195,15 +195,25 @@ it("shows one page with editable default travelers and optional preferences coll
     });
   });
 
-  it("keeps the draft after authentication failure and does not navigate", async () => {
-    stubFetch(vi.fn().mockResolvedValue(new Response(JSON.stringify({ detail: "請先登入" }), { status: 401 })));
-    await renderReady();
+  it.each([400, 401, 403, 422, 429])("keeps the editable draft after definitive rejection %s and does not navigate", async (status) => {
+    const removeDraft = vi.spyOn(Storage.prototype, "removeItem");
+    stubFetch(vi.fn().mockResolvedValue(new Response(JSON.stringify({ detail: "建立被拒絕" }), { status })));
+    const view = await renderReady();
     fillRequiredFields();
     await waitFor(() => expect(window.sessionStorage.getItem("mokaair-new-trip-draft:member-a")).toContain("東京"));
     submit();
-    expect(await screen.findByRole("alert")).toHaveTextContent("請先登入");
-    expect(window.sessionStorage.getItem("mokaair-new-trip-draft:member-a")).toContain("2026-11-10");
+    expect(await screen.findByRole("alert")).toHaveTextContent("建立被拒絕");
+    // Rejecting a request retires its idempotency key, never the member's form. Do not
+    // depend on a later autosave effect to recreate a deleted draft.
+    expect(removeDraft).not.toHaveBeenCalledWith("mokaair-new-trip-draft:member-a");
+    const saved = JSON.parse(window.sessionStorage.getItem("mokaair-new-trip-draft:member-a")!);
+    expect(saved.form.start_date).toBe("2026-11-10");
+    expect(saved.pending).toBeUndefined();
     expect(push).not.toHaveBeenCalled();
+    view.unmount();
+    await renderReady();
+    expect(screen.getByLabelText("旅程名稱")).toHaveValue(" 東京五日賞楓 ");
+    expect(screen.getByLabelText("目的地")).toHaveValue("東京");
   });
 
   it("sends only one request when duplicate submits occur while the first is pending", async () => {
@@ -247,6 +257,7 @@ it("shows one page with editable default travelers and optional preferences coll
     vi.setSystemTime(new Date("2026-09-05T12:00:00"));
   });
   afterEach(() => {
+    vi.restoreAllMocks();
     vi.useRealTimers();
     vi.unstubAllGlobals();
     window.sessionStorage.clear();

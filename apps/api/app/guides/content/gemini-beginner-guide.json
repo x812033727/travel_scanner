@@ -1,0 +1,377 @@
+{
+  "slug": "gemini-beginner-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Gemini 新手入門：有 Google 帳號就能用，Gmail、Docs 裡怎麼叫出來",
+      "description": "Gemini 是 Google 的 AI 助理，用原本的 Google 帳號登入就能免費使用。這篇依 2026 年 9 月的 Google 官網整理：網頁版、手機 App、Gmail、文件、試算表側邊欄與 Chrome 各在哪裡叫出來，免費版與 Google AI Plus、Pro 的台灣定價與差別，示範請它整理一封 Gmail 長信並擬回覆，並說明 Gemini Live 與活動記錄的設定。",
+      "hero": {
+        "src": "/guides/gemini-beginner-guide/hero.jpg",
+        "alt": "一顆青綠色的星芒，用線連到信封、文件與手機三個圖形，象徵 Gemini 在 Gmail、Google 文件與手機裡的入口",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Gemini 是 Google 的 AI 助理，不用另外註冊：只要有一個 Google 帳號，打開 gemini.google.com 或手機上的 Gemini App 就能免費使用，模型是 Gemini 3.6 Flash，還附 Gemini Live 語音對話、Deep Research 與圖像生成；要在 Gmail、Google 文件裡直接叫出側邊欄幫忙，才需要 Google AI Plus（每月 NT$165）或 Google AI Pro（每月 NT$650）方案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇寫給本來就在用 Gmail、Google 文件與 Android 手機的人。讀完你會知道 Gemini 在網頁、手機、Gmail、文件、試算表、Chrome 各在哪裡叫出來、免費能用到什麼、付費多了什麼，並跟著做第一個對話：請它整理一封社區管委會寄來的長信並擬回覆；最後說明 Gemini Live 怎麼用講的、開鏡頭，以及「Gemini 系列應用程式活動記錄」的設定在哪裡。方案名與價格都是 2026 年 9 月從 Google 官網查證，之後有變動以官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "Gemini 是什麼：一個帳號、一個助理、Flash 與 Pro 兩種模型",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemini 這個名字同時指 Google 的 AI 模型家族，與拿這些模型做成的助理產品。你在對話框看到的模型主要分兩個等級：Flash 走速度與日常任務，Pro 走複雜推理、數學與程式。Google 的方案頁寫明免費版用的是 3.6 Flash，3.1 Pro 的存取權限「可能會變動」，付費方案則把 Pro 的用量與權限往上加。3.6 Flash 是 2026 年 7 月 21 日在 Gemini 應用程式版本資訊裡發布、對所有使用者開放的版本；模型名稱更新得很快，寫這篇時的名字以官網方案頁為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "對一般使用者來說，更重要的是它跟 Google 帳號綁在一起：同一個帳號在網頁、手機 App、Gmail 側邊欄、Chrome 裡看到的是同一個 Gemini，對話記錄也集中存在帳號的「Gemini 系列應用程式活動記錄」裡。說明頁寫明個人帳號要年滿 13 歲（或所在國家規定的年齡），支援語言包含中文（繁體），台灣在支援的國家清單裡；公司或學校帳號能不能用，由管理員決定。如果你還在比較各家 AI 工具，先看總覽篇再回來。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+        },
+        {
+          "type": "heading",
+          "text": "Gemini 在哪裡：網頁、手機 App、Gmail 與文件側邊欄、Chrome",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "下面這張入口地圖把 Gemini 出現的位置編成 1 到 7 號，每一個都是用同一個 Google 帳號登入。先記住：1、2、3、7 號免費就能用；4 號要 Google AI Plus 以上；5、6 號要 Google AI Pro 以上，其中 Plus 的權益列表只寫 Gmail 與 Vids，Pro 寫 Gmail、文件、Vids「等」，試算表以官網為準。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "入口 1　網頁版：在電腦瀏覽器打開 gemini.google.com，登入 Google 帳號，畫面底部的文字框就是對話框。",
+            "入口 2　手機 App：Android 從 Google Play、iPhone 與 iPad 從 App Store 安裝 Gemini，畫面底部有「Live」圖示可以直接開語音對話。",
+            "入口 3　Android 的助理：把 Gemini 設成手機的主要助理後，按住電源鍵、說「Ok Google」或從螢幕底部角落向上滑動，叫出來的就是 Gemini，取代原本的 Google 助理。",
+            "入口 4　Gmail：電腦版 Gmail 右上角的「詢問 Gemini」按鈕會打開側邊欄；手機 Gmail App 則在右上角搜尋列旁的 Gemini 圖示。",
+            "入口 5　Google 文件：右上角同樣是「詢問 Gemini」，文件裡還有「幫我寫」按鈕。",
+            "入口 6　Google 試算表：右上角「詢問 Gemini」，可以請它建表格、寫公式、畫圖表、分析資料。",
+            "入口 7　Chrome：電腦版 Chrome 工具列上的「問問 Gemini」圖示，第一次點會先請你啟用。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "網頁版是最完整的入口。說明頁寫支援 Chrome、Safari、Firefox、Opera 與 Edge，登入後在文字框裡點模型名稱就能切換，選項分成 Flash-Lite（快，適合摘要與腦力激盪）、Flash（速度與推理的平衡）與 Pro（最強，擅長數學與程式）三類；文字框旁的附件圖示可以上傳檔案或照片一起問。2026 年 9 月 10 日的版本資訊還多了 Windows 桌面 App，Windows 10 以上按 Alt 加空白鍵就能叫出來。"
+        },
+        {
+          "type": "paragraph",
+          "text": "手機 App 在 Android 與 iPhone 上都有，說明頁列出 Android 的最低需求是 Android 9 以上、至少 2 GB RAM。Android 上比較特別的是它可以取代 Google 助理：Google 在 2025 年 3 月的官方部落格宣布，符合條件的手機會陸續從 Google 助理升級成 Gemini，舊版助理將不再提供，不符合最低需求的手機則維持 Google 助理不變。升級後，按住電源鍵或說「Ok Google」回應你的就是 Gemini。說明頁同時列出它還做不到的事：Podcast、新聞、電台與部分第三方音樂串流、翻譯模式，以及需要來回追問的多步驟動作，所以設定裡保留了改回 Google 助理的選項。iPhone 上的 Gemini 是獨立 App，不會取代 Siri，說明頁只提醒部分 AirPods 與 Apple Watch 型號可能無法搭配使用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Gmail、文件、試算表裡的 Gemini 是側邊欄：點右上角的「詢問 Gemini」，右邊會滑出一欄對話框，它看得到你正在開的那封信或那份文件。說明頁列出 Gmail 側邊欄能做的事：摘要電子郵件會話群組、建議回覆、草擬電子郵件、從先前的郵件找資訊，也能翻雲端硬碟裡的檔案；文件裡除了側邊欄還有「幫我寫」可以直接生一段草稿；試算表能建表格、寫公式、畫圖表與分析資料，但只支援原生的 Google 試算表檔案，Excel 檔要先轉換。這三個側邊欄都寫著「需要符合資格的 Google Workspace 或 Google AI 方案」，也就是免費個人帳號看不到這顆按鈕；側邊欄支援的語言另有清單，繁體中文能不能用以那份清單為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Chrome 內建 Gemini 是最新的入口。說明頁寫它能生成網頁重點摘要、比較多個分頁的資訊、解釋看不懂的內容，條件是最新版 Chrome、登入 Google 帳號（無痕模式不支援）、使用 Chromebook Plus、Mac 或 Windows 電腦，適用地區有台灣，語言清單有中文，部分功能要年滿 18 歲。文字框裡還有「啟用 Live 模式」圖示，允許麥克風後可以用講的問目前這個分頁。說明頁沒有寫需要付費方案，但 Google AI 方案頁把「Chrome 內建 Gemini」列在 Plus（搶先體驗）與 Pro 的權益裡，登入後看到的功能可能依方案不同。不想用就到 Chrome 設定的「AI 創新功能」→「Chrome 內建 Gemini」關閉。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-beginner-guide/diagram-1.svg",
+          "alt": "Gemini 入口地圖：中央是同一個 Google 帳號與免費、Plus、Pro 三級方案的台灣月費；左側綠框是免費入口 1 網頁版、2 手機 App、3 Android 助理，右側藍框是要付費方案的 4 Gmail、5 文件、6 試算表側邊欄，下方 7 是 Chrome 工具列",
+          "width": 1600,
+          "height": 900,
+          "caption": "同一個 Google 帳號的 7 個 Gemini 入口：綠框免費就能用，藍框要 Google AI 方案（2026 年 9 月依 Google 官網查證）。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "免費版、Google AI Plus、Google AI Pro：台灣定價與差別",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 把 Gemini 的訂閱叫 Google AI 方案，台灣方案頁列出四級：免費、Google AI Plus 每月 NT$165、Google AI Pro 每月 NT$650、Google AI Ultra 每月 NT$3,300 或 NT$6,500；美國站的定價分別是 US$4.99、US$19.99、US$99.99 與 US$199.99。免費版已經包含 3.6 Flash、圖像生成與編輯、Deep Research、Gemini Live、Canvas、Gem，加上 Gmail、雲端硬碟、相簿共用的 15 GB 儲存空間；只是想問問題、整理文字、查資料，先用免費版就夠。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Plus 與 Pro 買的主要是三件事。第一是用量：免費版有用量上限，方案頁只寫 Plus 是免費版的 2 倍、Pro 是 4 倍，沒有公布確切題數。第二是入口與模型：Plus 開放在 Gmail 與 Vids 裡直接使用 Gemini，Pro 才寫到文件與更多應用程式，也多了 Gemini 3.1 Pro，以及在 Google 搜尋裡更高權限的 Gemini 3 Pro、深度搜尋與代理功能。第三是儲存空間與附加服務：Plus 給 400 GB，Pro 給 5 TB 加 YouTube Premium Lite，兩者都有影片生成、Daily Brief 與 Google Flow 點數（Plus 200 點、Pro 1,000 點）。Ultra 是給大量生成影片、需要最高用量的人，一般使用者不用考慮。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "免費",
+            "Google AI Plus",
+            "Google AI Pro"
+          ],
+          "rows": [
+            [
+              "台灣月費",
+              "NT$0",
+              "NT$165",
+              "NT$650"
+            ],
+            [
+              "美國月費",
+              "US$0",
+              "US$4.99",
+              "US$19.99"
+            ],
+            [
+              "模型",
+              "3.6 Flash；3.1 Pro 的存取權限可能變動",
+              "同免費版，用量上限 2 倍",
+              "加 Gemini 3.1 Pro，用量上限 4 倍"
+            ],
+            [
+              "Gmail 側邊欄",
+              "無",
+              "有",
+              "有"
+            ],
+            [
+              "文件、試算表側邊欄",
+              "無",
+              "方案頁未列出，以官網為準",
+              "文件有；試算表以官網為準"
+            ],
+            [
+              "Chrome 內建 Gemini",
+              "說明頁未要求方案",
+              "搶先體驗",
+              "有"
+            ],
+            [
+              "Gemini Live、Deep Research、Canvas、Gem",
+              "有",
+              "有",
+              "有"
+            ],
+            [
+              "影片生成、Daily Brief",
+              "無",
+              "有",
+              "有"
+            ],
+            [
+              "Google Flow 點數",
+              "無",
+              "200 點",
+              "1,000 點"
+            ],
+            [
+              "雲端儲存空間",
+              "15 GB",
+              "400 GB",
+              "5 TB"
+            ],
+            [
+              "其他",
+              "無",
+              "無",
+              "YouTube Premium Lite"
+            ]
+          ],
+          "caption": "2026 年 9 月 13 日依 Google AI 方案台灣頁與美國頁整理；權益細項與價格以官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
+          "url": "https://mokaair.com/zh-TW/life/ai-free-vs-paid-plans-2026"
+        },
+        {
+          "type": "heading",
+          "text": "第一個對話：請 Gemini 整理一封 Gmail 長信並擬回覆",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "拿一個大家都遇過的情境來練：社區管理委員會寄來一封很長的信，講電梯更新工程的時程、住戶分攤費用與意見回覆期限，你想知道重點與自己該做什麼，然後回一封信。免費版就做得到，用的是 Gemini 應用程式裡的「連結的應用程式」讓 Gemini 讀你的 Gmail，不必付費版的 Gmail 側邊欄。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "打開 gemini.google.com 或手機 Gemini App，點畫面底部的「設定與說明」圖示 → 「連結的應用程式」，確認 Gmail 已連結。說明頁提醒：關閉「保留活動記錄」後，在 gemini.google.com、iOS 裝置與智慧手錶上就無法使用連結的應用程式，所以活動記錄要先開著。",
+            "在對話框輸入 @，選 Gmail，把要求講清楚：「@Gmail 幫我找管委會這週寄來關於電梯更新工程的那封信，條列整理：工程時間、每戶要分攤多少、回覆期限，以及需要我做的事。」",
+            "看完整理結果，對照原信確認數字與日期沒有抄錯，這一步不能省。",
+            "在同一個對話接著說：「請用禮貌但明確的語氣幫我擬一封回信，說明我同意工程時程，但想確認分攤費用是否可以分期，150 字以內。」",
+            "把草稿複製到 Gmail，改成自己的語氣再寄出。有 Google AI Plus 以上方案的人，也可以直接在 Gmail 打開那封信，點右上角「詢問 Gemini」，請它摘要電子郵件會話群組再建議回覆，一步完成。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "三件事值得注意。第一，Gemini 找信靠的是你的描述，講清楚寄件人、主題關鍵字與大概時間才找得準；找不到就換個關鍵字，或直接把信件內容貼進對話框。第二，整理出來的金額、日期一律回原信核對，AI 摘要偶爾會漏掉但書或把數字對調。第三，用 @Gmail 讀信的內容會進入你的活動記錄，後面會講怎麼設定。想把要求寫得更準，可以看提示詞基本功那篇。"
+        },
+        {
+          "type": "link",
+          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+        },
+        {
+          "type": "heading",
+          "text": "Gemini Live：用講的，還能開鏡頭與分享螢幕",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemini Live 是手機 App 裡的語音對話模式：輕觸畫面底部的「Live」圖示或向左滑動就開始，Android 也可以說「Ok Google，來 Live 對話吧」。它跟一般語音輸入的差別是可以隨時打斷、追問、換題，像講電話；Google 台灣部落格在 2025 年 1 月 20 日宣布 Gemini Live 支援繁體中文，用國語直接講就行。對話中輕觸「啟用影片串流」圖示會打開相機，把鏡頭對著看不懂的說明書、菜單或故障的家電問它；輕觸「開啟分享螢幕畫面功能」則把手機畫面分享給它，說明頁提醒這要先允許 Gemini Live 的通知。想只聽不講可以把麥克風靜音，結束時輕觸「結束」圖示或向右滑動，之後會留下一份文字轉錄稿。"
+        },
+        {
+          "type": "paragraph",
+          "text": "說明頁寫明 Gemini Live「現階段並不支援 Gemini 網頁應用程式」，電腦上要用講的，走的是 Chrome 內建 Gemini 的 Live 模式。Gemini Live 列在免費方案的權益裡，不用付費就能用。好用的場景是走路時問路線、下廚時問步驟，或用鏡頭對著外文標示請它翻譯；需要精確數字或引用來源的事，還是回到文字對話比較穩。"
+        },
+        {
+          "type": "heading",
+          "text": "「Gemini 系列應用程式活動記錄」：對話存在哪裡、拿去做什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemini 的對話預設會存進 Google 帳號的「Gemini 系列應用程式活動記錄」，控制它的開關叫「保留活動記錄」。開著的時候，Google 會保存你的對話、上傳的檔案與照片、Gemini Live 的音訊與影片、螢幕分享，預設 18 個月後自動刪除，可以改成 3 個月、36 個月或不自動刪除；隱私權專區也寫明人工審查員可能會看部分對話來評估回覆品質，經人工審查的資料在跟帳號脫鉤後最長保留 3 年。關掉之後，對話仍會短暫存在帳號裡最多 72 小時，用來提供服務與處理意見回饋，之後就不會拿來改善模型；代價是連結的應用程式在網頁版與 iOS 上不能用。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "設定路徑：保留活動記錄",
+          "text": "電腦版：打開 gemini.google.com，點畫面底部的「設定與說明」圖示 → 「活動記錄」，就會到「Gemini 系列應用程式活動記錄」頁，開關與自動刪除期限都在這裡。Android App：輕觸左側的「選單」圖示 → 個人資料相片或姓名縮寫 → 「Gemini 系列應用程式活動記錄」。也可以從 Google 帳戶的「我的活動」找到 Gemini 那一項。同一頁還有一個預設關閉的選項：是否允許 Google 使用你的音訊、Gemini Live 影片與螢幕分享來改良服務與訓練生成式 AI 模型，沒有主動打開就不會被用。建議留著活動記錄以便連結 Gmail，但把自動刪除改成 3 個月，並養成刪掉含個資對話的習慣。"
+        },
+        {
+          "type": "paragraph",
+          "text": "隱私設定不只 Gemini 一家，其他 AI 工具的開關位置整理在檢查清單那篇。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google AI 方案台灣頁：免費、Google AI Plus、Pro、Ultra 的 NT$ 定價與權益",
+          "url": "https://gemini.google/tw/subscriptions/?hl=zh-TW",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google AI 方案美國頁：US$ 定價、3.6 Flash、3.1 Pro、Gemini in Gmail/Docs/Chrome 權益",
+          "url": "https://gemini.google/subscriptions/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Gemini 應用程式版本資訊：2026-07-21 Gemini 3.6 Flash、2026-09-10 Windows App",
+          "url": "https://gemini.google/release-notes/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Gemini 說明：使用 Gemini 系列應用程式（電腦）：瀏覽器、選擇模型、附件、年齡與語言",
+          "url": "https://support.google.com/gemini/answer/13275745?hl=zh-Hant&co=GENIE.Platform%3DDesktop",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Gemini 說明：開始使用 Gemini 行動應用程式（Android）：取代 Google 助理、按住電源鍵、改回 Google 助理",
+          "url": "https://support.google.com/gemini/answer/14554984?hl=zh-Hant&co=GENIE.Platform%3DAndroid",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Gemini 說明：開始使用 Gemini 行動應用程式（iPhone 與 iPad）：Live、AirPods 與 Apple Watch 限制",
+          "url": "https://support.google.com/gemini/answer/14554984?hl=zh-Hant&co=GENIE.Platform%3DiOS",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Gemini 說明：Gemini 行動應用程式支援情形：Android 9 以上、2 GB RAM、台灣、中文（繁體）",
+          "url": "https://support.google.com/gemini/answer/14579026?hl=zh-Hant&co=GENIE.Platform%3DAndroid",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Gemini 說明：認識 Gemini 行動應用程式的功能：行動助理能做與尚不支援的事",
+          "url": "https://support.google.com/gemini/answer/14579631?hl=zh-Hant&co=GENIE.Platform%3DAndroid",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google 官方部落格：The Assistant experience on mobile is upgrading to Gemini（2025-03-14）",
+          "url": "https://blog.google/products/gemini/google-assistant-gemini-mobile/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Gmail 說明：在 Gmail 中使用 Gemini：右上角「詢問 Gemini」、摘要會話群組、建議回覆、方案需求",
+          "url": "https://support.google.com/mail/answer/14199860?hl=zh-Hant",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google 文件說明：在 Google 文件中使用 Gemini：「詢問 Gemini」、「幫我寫」、方案需求",
+          "url": "https://support.google.com/docs/answer/14206696?hl=zh-Hant",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google 試算表說明：在 Google 試算表中使用 Gemini：表格、公式、圖表、分析、方案需求",
+          "url": "https://support.google.com/docs/answer/14218565?hl=zh-Hant",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Chrome 說明：使用 Chrome 內建 Gemini：「問問 Gemini」圖示、需求、適用地區與語言、關閉方式",
+          "url": "https://support.google.com/chrome/answer/16283624?hl=zh-Hant&co=GENIE.Platform%3DDesktop",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Gemini 說明：使用 Chrome 內建 Gemini 開始 Live 模式",
+          "url": "https://support.google.com/gemini/answer/16363185?hl=zh-Hant",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Gemini 說明：和 Gemini Live 自然對話（Android）：啟動方式、影片串流、分享螢幕、不支援網頁版",
+          "url": "https://support.google.com/gemini/answer/15274899?hl=zh-Hant&co=GENIE.Platform%3DAndroid",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google 台灣官方部落格：Gemini Live 與更多擴充功能支援繁體中文（2025-01-20）",
+          "url": "https://blog.google/intl/zh-tw/products/explore-get-answers/gemini-live-zhtw/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Gemini 說明：使用連結的應用程式：Gmail 等應用程式、@ 呼叫、需開啟保留活動記錄",
+          "url": "https://support.google.com/gemini/answer/13695044?hl=zh-Hant",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Gemini 說明：管理及刪除 Gemini 系列應用程式活動記錄（電腦）：設定路徑、3/18/36 個月、72 小時",
+          "url": "https://support.google.com/gemini/answer/13278892?hl=zh-Hant&co=GENIE.Platform%3DDesktop",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Gemini 說明：管理及刪除 Gemini 系列應用程式活動記錄（Android）：App 內設定路徑",
+          "url": "https://support.google.com/gemini/answer/13278892?hl=zh-Hant&co=GENIE.Platform%3DAndroid",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Gemini 說明：Gemini 系列應用程式隱私權專區：保留活動記錄、人工審查、保留期限",
+          "url": "https://support.google.com/gemini/answer/13594961?hl=zh-Hant",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}

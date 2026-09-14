@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">ChatGPT Work 一次上網任務的流程與三個入口 / One ChatGPT Work browsing task and the three entry points</title>
+  <desc id="desc">上排是 ChatGPT Work 替你上網做一件事的六步，從左到右：你下指令（型號、網站、欄位、遇到什麼就停）、開瀏覽器（雲端或桌面版）、讀頁（讀價格、欄位、時段）、動作（點按、填表、選日期）、停下來確認（橘色框，登入、驗證碼、送出、付款）、完成回報（表格、頁面網址、它做了什麼）。讀頁與動作之間有一條迴圈箭頭，表示還沒做完就讀下一頁再動作；停下來確認之後，你核准或接手，再回到動作繼續。中排左邊的橘色框列出它會停下來的時機：第一次用某個網站（Always ask 模式每個網站都問）、需要登入、驗證碼或兩步驟驗證（要你接手）、送出表單、付款、改權限、刪資料（先問你）、被網站擋住（它做不到，換你自己來）。中排右邊的藍色框列出你要檢查的東西：型號與欄位是不是同一個、價格有沒有含運費、日期時間人數對不對、它去過哪些網站，出現你沒提到的網站就是警訊。下排是三個入口。入口一 Work 切換器：網頁版在新對話頁上方的 Chat／Work 切換器，桌面版在輸入框上方，手機版接續雲端任務，付費方案可用，Free 與 Go 不含。入口二 雲端瀏覽器：Work 的工具，跑在 OpenAI 雲端，網頁版與手機版也能用，設定的 Cloud browser 裡有 Always ask、Auto approve、Always allow 三種核准模式，Free 與 Go 不含。入口三 桌面版瀏覽器與擴充功能：內建瀏覽器在 macOS 與 Windows，快捷鍵 Cmd+Shift+B，擴充功能支援 Chrome、Edge、Brave、Opera、Vivaldi，在設定的 Computer Use 裝外掛，對話裡用 @ 提到瀏覽器。2026 年 9 月依 OpenAI 官方文件整理。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+    <marker id="arrowTeal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0D6B68"/></marker>
+    <marker id="arrowOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#D97A2B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">ChatGPT Work 一次上網任務的流程與三個入口（2026 年 9 月查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">One ChatGPT Work browsing task, where it stops, and the three entry points</text>
+
+  <!-- top row: six steps -->
+  <rect x="60" y="130" width="200" height="120" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="160" y="176" font-size="20" font-weight="700" fill="#1F4E73" text-anchor="middle">你下指令</text>
+  <text x="160" y="206" font-size="15" fill="#1F4E73" text-anchor="middle">型號、網站、欄位</text>
+  <text x="160" y="230" font-size="15" fill="#1F4E73" text-anchor="middle">遇到什麼就停</text>
+  <path d="M 262 190 L 312 190" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="316" y="130" width="200" height="120" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="416" y="176" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">開瀏覽器</text>
+  <text x="416" y="206" font-size="15" fill="#5C6B6B" text-anchor="middle">雲端或桌面版</text>
+  <text x="416" y="230" font-size="15" fill="#5C6B6B" text-anchor="middle">新網站先問你</text>
+  <path d="M 518 190 L 568 190" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="572" y="130" width="200" height="120" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="672" y="176" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">讀頁</text>
+  <text x="672" y="206" font-size="15" fill="#5C6B6B" text-anchor="middle">價格、欄位、時段</text>
+  <text x="672" y="230" font-size="15" fill="#5C6B6B" text-anchor="middle">記下看到什麼</text>
+  <path d="M 774 190 L 824 190" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="828" y="130" width="200" height="120" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="928" y="176" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">動作</text>
+  <text x="928" y="206" font-size="15" fill="#5C6B6B" text-anchor="middle">點按、填表、選日期</text>
+  <text x="928" y="230" font-size="15" fill="#5C6B6B" text-anchor="middle">一次做一步</text>
+  <path d="M 1030 190 L 1080 190" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="1084" y="130" width="200" height="120" rx="14" fill="#FBEEE2" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1184" y="176" font-size="20" font-weight="700" fill="#7A4415" text-anchor="middle">停下來確認</text>
+  <text x="1184" y="206" font-size="15" fill="#7A4415" text-anchor="middle">登入、驗證碼</text>
+  <text x="1184" y="230" font-size="15" fill="#7A4415" text-anchor="middle">送出、付款</text>
+  <path d="M 1286 190 L 1336 190" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="1340" y="130" width="200" height="120" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1440" y="176" font-size="20" font-weight="700" fill="#0B4F4D" text-anchor="middle">完成回報</text>
+  <text x="1440" y="206" font-size="15" fill="#0B4F4D" text-anchor="middle">表格、頁面網址</text>
+  <text x="1440" y="230" font-size="15" fill="#0B4F4D" text-anchor="middle">它做了什麼</text>
+
+  <!-- loop: read page and act again -->
+  <path d="M 928 252 L 928 290 L 672 290 L 672 256" fill="none" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrowTeal)"/>
+  <text x="800" y="318" font-size="16" font-weight="700" fill="#0D6B68" text-anchor="middle">還沒做完：讀下一頁，再動作</text>
+
+  <!-- after confirmation: back to action -->
+  <path d="M 1184 252 L 1184 344 L 1000 344 L 1000 256" fill="none" stroke="#D97A2B" stroke-width="4" stroke-dasharray="10 8" marker-end="url(#arrowOrange)"/>
+  <text x="1092" y="370" font-size="16" font-weight="700" fill="#D97A2B" text-anchor="middle">你核准或接手後，回到動作繼續</text>
+
+  <!-- middle row: when it stops -->
+  <rect x="60" y="400" width="740" height="180" rx="14" fill="#FBEEE2" stroke="#D97A2B" stroke-width="4"/>
+  <text x="430" y="436" font-size="20" font-weight="700" fill="#7A4415" text-anchor="middle">它會停下來的時機（每一輪都可能觸發）</text>
+  <text x="430" y="470" font-size="16" fill="#7A4415" text-anchor="middle">第一次用某個網站：Always ask 模式每個網站都問</text>
+  <text x="430" y="498" font-size="16" fill="#7A4415" text-anchor="middle">需要登入、驗證碼、兩步驟驗證：要你接手（take over）</text>
+  <text x="430" y="526" font-size="16" fill="#7A4415" text-anchor="middle">送出表單、付款、改權限、刪資料：先問你</text>
+  <text x="430" y="554" font-size="16" fill="#B8442D" text-anchor="middle">被網站擋住：它做不到，換你自己來</text>
+
+  <!-- middle row: what you check -->
+  <rect x="840" y="400" width="700" height="180" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1190" y="436" font-size="20" font-weight="700" fill="#1F4E73" text-anchor="middle">你要檢查的東西（回報之後）</text>
+  <text x="1190" y="470" font-size="16" fill="#1F4E73" text-anchor="middle">型號與欄位是不是同一個，它有沒有自己猜答案</text>
+  <text x="1190" y="498" font-size="16" fill="#1F4E73" text-anchor="middle">價格有沒有含運費，日期、時間、人數對不對</text>
+  <text x="1190" y="526" font-size="16" fill="#1F4E73" text-anchor="middle">自己點開它給的網址看一眼</text>
+  <text x="1190" y="554" font-size="16" fill="#B8442D" text-anchor="middle">它去過哪些網站：出現你沒提到的網站就是警訊</text>
+
+  <!-- bottom row: three entry points -->
+  <text x="60" y="622" font-size="18" font-weight="700" fill="#102A2B">三個入口在哪　Three entry points</text>
+
+  <rect x="60" y="638" width="460" height="190" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="290" y="674" font-size="20" font-weight="700" fill="#0B4F4D" text-anchor="middle">入口一：Work 切換器</text>
+  <text x="290" y="708" font-size="16" fill="#0B4F4D" text-anchor="middle">網頁版：新對話頁上方 Chat／Work</text>
+  <text x="290" y="736" font-size="16" fill="#0B4F4D" text-anchor="middle">桌面版：輸入框上方切到 Work</text>
+  <text x="290" y="764" font-size="16" fill="#0B4F4D" text-anchor="middle">手機版：接續雲端執行的任務</text>
+  <text x="290" y="792" font-size="16" fill="#0B4F4D" text-anchor="middle">付費方案可用，Free 與 Go 不含</text>
+
+  <rect x="570" y="638" width="460" height="190" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="674" font-size="20" font-weight="700" fill="#1F4E73" text-anchor="middle">入口二：雲端瀏覽器</text>
+  <text x="800" y="708" font-size="16" fill="#1F4E73" text-anchor="middle">Work 的工具，跑在 OpenAI 雲端</text>
+  <text x="800" y="736" font-size="16" fill="#1F4E73" text-anchor="middle">網頁版與手機版也能用</text>
+  <text x="800" y="764" font-size="16" fill="#1F4E73" text-anchor="middle">設定 → Cloud browser：三種核准模式</text>
+  <text x="800" y="792" font-size="16" fill="#1F4E73" text-anchor="middle">付費方案可用，Free 與 Go 不含</text>
+
+  <rect x="1080" y="638" width="460" height="190" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1310" y="674" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">入口三：桌面版瀏覽器與擴充功能</text>
+  <text x="1310" y="708" font-size="16" fill="#5C6B6B" text-anchor="middle">內建瀏覽器：macOS、Windows，Cmd+Shift+B</text>
+  <text x="1310" y="736" font-size="16" fill="#5C6B6B" text-anchor="middle">擴充功能：Chrome、Edge、Brave、Opera、Vivaldi</text>
+  <text x="1310" y="764" font-size="16" fill="#5C6B6B" text-anchor="middle">設定 → Computer Use 裝外掛</text>
+  <text x="1310" y="792" font-size="16" fill="#5C6B6B" text-anchor="middle">對話裡用 @ 提到瀏覽器，新網域先問你</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">上下文視窗：它只看得到最近的一段，前面的會被推出去 / The context window slides: older turns fall out, and three ways to keep what matters</title>
+  <desc id="desc">上半部是一條由九段組成的對話紙帶，從左到右依序是：開場說明需求、貼上背景資料、第一版草稿、你的修改意見、第二版草稿、追問細節、換一個角度、第三版草稿、現在這一問。右邊四段被一個粗框框住，標示為「上下文視窗：這次能看到的全部」；左邊五段變灰，標示為「已被推出視窗：模型看不到了」。紙帶下方一條箭頭說明：對話越聊越長，框往右滑，最左邊的段落最先掉出去，被摘要壓縮的也只剩重點。再下方一個說明框寫著：視窗裡裝的是你的問題、這個對話之前所有往返、貼進來的檔案、它自己寫過的回覆、正在寫的這一則；單位是 token，塞滿時最早的先被推出去或被自動摘要，越滿準確度與回想能力越差，這叫 context rot。下半部「怎麼延長：三招」三個框。第一招開新對話貼摘要：請它把目前的結論、還沒解決的問題、你提過的限制條件整理成一段，複製到新對話當第一則訊息，新視窗只裝這段摘要，貼上前先讀一遍改掉它寫錯的。第二招分段貼，先做索引：長文件依章節切開，每次只貼跟問題有關的那一段，問完再貼下一段；不能切的檔案先請它做一頁索引，列出有哪些章節、各講什麼、數字在哪，之後先貼索引再貼要問的那一章。第三招背景放外面，偏好交給記憶：每次都要重講的背景放進專案、Gems、自訂指令類功能，回覆語言與格式等偏好交給記憶功能，開新對話它會自動帶著這些；專案裡的檔案仍算進視窗，別塞滿。圖中的九段對話只是示意，各家視窗大小與功能名稱見正文，以官網為準。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">上下文視窗：它只看得到最近的一段，前面的會被推出去</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">The context window slides: older turns fall out, and three ways to keep what matters</text>
+
+  <!-- section labels -->
+  <text x="462" y="150" font-size="19" font-weight="700" fill="#8C8C8C" text-anchor="middle">已被推出視窗：模型看不到了</text>
+  <text x="1206" y="150" font-size="19" font-weight="700" fill="#0B4F4D" text-anchor="middle">上下文視窗：這次能看到的全部</text>
+
+  <!-- the window frame -->
+  <rect x="870" y="166" width="672" height="148" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="6"/>
+
+  <!-- conversation strip: 9 segments, x = 60 + i*164, width 148 -->
+  <rect x="60" y="180" width="148" height="120" rx="10" fill="#ECE7DE" stroke="#B9B3A9" stroke-width="3"/>
+  <text x="134" y="234" font-size="16" fill="#8C8C8C" text-anchor="middle">開場</text>
+  <text x="134" y="262" font-size="16" fill="#8C8C8C" text-anchor="middle">說明需求</text>
+
+  <rect x="224" y="180" width="148" height="120" rx="10" fill="#ECE7DE" stroke="#B9B3A9" stroke-width="3"/>
+  <text x="298" y="234" font-size="16" fill="#8C8C8C" text-anchor="middle">貼上</text>
+  <text x="298" y="262" font-size="16" fill="#8C8C8C" text-anchor="middle">背景資料</text>
+
+  <rect x="388" y="180" width="148" height="120" rx="10" fill="#ECE7DE" stroke="#B9B3A9" stroke-width="3"/>
+  <text x="462" y="234" font-size="16" fill="#8C8C8C" text-anchor="middle">第一版</text>
+  <text x="462" y="262" font-size="16" fill="#8C8C8C" text-anchor="middle">草稿</text>
+
+  <rect x="552" y="180" width="148" height="120" rx="10" fill="#ECE7DE" stroke="#B9B3A9" stroke-width="3"/>
+  <text x="626" y="234" font-size="16" fill="#8C8C8C" text-anchor="middle">你的</text>
+  <text x="626" y="262" font-size="16" fill="#8C8C8C" text-anchor="middle">修改意見</text>
+
+  <rect x="716" y="180" width="148" height="120" rx="10" fill="#ECE7DE" stroke="#B9B3A9" stroke-width="3"/>
+  <text x="790" y="234" font-size="16" fill="#8C8C8C" text-anchor="middle">第二版</text>
+  <text x="790" y="262" font-size="16" fill="#8C8C8C" text-anchor="middle">草稿</text>
+
+  <rect x="880" y="180" width="148" height="120" rx="10" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="954" y="234" font-size="16" fill="#102A2B" text-anchor="middle">追問</text>
+  <text x="954" y="262" font-size="16" fill="#102A2B" text-anchor="middle">細節</text>
+
+  <rect x="1044" y="180" width="148" height="120" rx="10" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="1118" y="234" font-size="16" fill="#102A2B" text-anchor="middle">換一個</text>
+  <text x="1118" y="262" font-size="16" fill="#102A2B" text-anchor="middle">角度</text>
+
+  <rect x="1208" y="180" width="148" height="120" rx="10" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="1282" y="234" font-size="16" fill="#102A2B" text-anchor="middle">第三版</text>
+  <text x="1282" y="262" font-size="16" fill="#102A2B" text-anchor="middle">草稿</text>
+
+  <rect x="1372" y="180" width="148" height="120" rx="10" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+  <text x="1446" y="234" font-size="16" font-weight="700" fill="#1F4E73" text-anchor="middle">現在</text>
+  <text x="1446" y="262" font-size="16" font-weight="700" fill="#1F4E73" text-anchor="middle">這一問</text>
+
+  <!-- direction arrow -->
+  <path d="M 60 340 L 1536 340" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="800" y="372" font-size="16" fill="#5C6B6B" text-anchor="middle">對話越聊越長，框往右滑：最左邊的段落最先掉出去，被摘要壓縮的也只剩重點</text>
+
+  <!-- what is inside the window -->
+  <rect x="60" y="400" width="1480" height="96" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="800" y="436" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">視窗裡裝的是：你的問題＋這個對話之前所有往返＋貼進來的檔案＋它自己寫過的回覆＋正在寫的這一則</text>
+  <text x="800" y="470" font-size="17" fill="#102A2B" text-anchor="middle">單位是 token；塞滿時最早的先被推出去或被自動摘要；越滿，準確度與回想能力越差（context rot）</text>
+
+  <!-- three ways -->
+  <text x="60" y="540" font-size="20" font-weight="700" fill="#102A2B">怎麼延長：三招　How to make it last</text>
+
+  <rect x="60" y="560" width="460" height="250" rx="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="290" y="596" font-size="19" font-weight="700" fill="#0B4F4D" text-anchor="middle">第一招　開新對話，貼摘要</text>
+  <text x="88" y="636" font-size="16" fill="#102A2B">請它把目前的結論、還沒解決的問題、</text>
+  <text x="88" y="664" font-size="16" fill="#102A2B">你提過的限制條件整理成一段</text>
+  <text x="88" y="692" font-size="16" fill="#102A2B">複製到新對話當第一則訊息</text>
+  <text x="88" y="720" font-size="16" fill="#102A2B">新視窗只裝這段摘要，乾淨又準</text>
+  <text x="88" y="748" font-size="16" fill="#5C6B6B">貼上前先讀一遍，改掉它寫錯的</text>
+
+  <rect x="570" y="560" width="460" height="250" rx="16" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="596" font-size="19" font-weight="700" fill="#1F4E73" text-anchor="middle">第二招　分段貼，先做索引</text>
+  <text x="598" y="636" font-size="16" fill="#102A2B">長文件依章節切開，每次只貼</text>
+  <text x="598" y="664" font-size="16" fill="#102A2B">跟問題有關的那一段，問完再貼下一段</text>
+  <text x="598" y="692" font-size="16" fill="#102A2B">不能切的檔案先請它做一頁索引：</text>
+  <text x="598" y="720" font-size="16" fill="#102A2B">有哪些章節、各講什麼、數字在哪</text>
+  <text x="598" y="748" font-size="16" fill="#5C6B6B">之後先貼索引，再貼要問的那一章</text>
+
+  <rect x="1080" y="560" width="460" height="250" rx="16" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1310" y="596" font-size="19" font-weight="700" fill="#2E7D5B" text-anchor="middle">第三招　背景放外面，偏好交給記憶</text>
+  <text x="1108" y="636" font-size="16" fill="#102A2B">每次都要重講的背景放進</text>
+  <text x="1108" y="664" font-size="16" fill="#102A2B">專案、Gems、自訂指令類功能</text>
+  <text x="1108" y="692" font-size="16" fill="#102A2B">回覆語言、格式等偏好交給記憶功能</text>
+  <text x="1108" y="720" font-size="16" fill="#102A2B">開新對話它會自動帶著這些</text>
+  <text x="1108" y="748" font-size="16" fill="#5C6B6B">專案裡的檔案仍算進視窗，別塞滿</text>
+
+  <text x="60" y="852" font-size="15" fill="#5C6B6B">圖中的九段對話只是示意；各家視窗大小與功能名稱見正文，以官網為準。</text>
+  <text x="1540" y="870" font-size="15" fill="#5C6B6B" text-anchor="end">© Mokaair 製圖 2026</text>
+</svg>

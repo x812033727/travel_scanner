@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">從自己的版本改起 / Start from your own draft</title>
+  <desc id="desc">米色底上，畫面中央偏左是一張直式的履歷文件：白底、深青色粗邊框，左上角一個淺灰色的圓代表大頭照的位置，旁邊兩條深色橫條代表姓名與聯絡方式，下面用淺灰色橫條表示段落，其中一段被反白成淺青色並加上深青色外框。右上方有一個淺藍色的對話泡泡，裡面三條藍色橫條代表指令，泡泡的尾巴接著一條橘色的箭頭指向反白的那一段。右下方一枝橘色的筆斜放著，筆尖朝向文件。四周散布幾個橘色、藍色與綠色的小圓點。底部一行字：從自己的版本改起。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- soft background shapes -->
+  <circle cx="240" cy="180" r="150" fill="#E3F0EF"/>
+  <circle cx="1400" cy="150" r="90" fill="#E6F0F7"/>
+  <circle cx="1460" cy="760" r="120" fill="#FCEFE4"/>
+
+  <!-- resume document -->
+  <rect x="330" y="90" width="560" height="680" rx="36" fill="#FFFFFF" stroke="#0D6B68" stroke-width="12"/>
+  <circle cx="420" cy="190" r="50" fill="#CFD6D6"/>
+  <rect x="500" y="162" width="280" height="22" rx="11" fill="#102A2B" opacity="0.75"/>
+  <rect x="500" y="204" width="200" height="14" rx="7" fill="#5C6B6B" opacity="0.5"/>
+  <rect x="390" y="270" width="440" height="6" rx="3" fill="#E3F0EF"/>
+  <!-- paragraph 1 -->
+  <rect x="390" y="306" width="440" height="14" rx="7" fill="#CFD6D6"/>
+  <rect x="390" y="338" width="380" height="14" rx="7" fill="#CFD6D6"/>
+  <rect x="390" y="370" width="410" height="14" rx="7" fill="#CFD6D6"/>
+  <!-- highlighted paragraph -->
+  <rect x="372" y="410" width="476" height="150" rx="20" fill="#E3F0EF" stroke="#0D6B68" stroke-width="8"/>
+  <rect x="400" y="440" width="420" height="14" rx="7" fill="#0D6B68" opacity="0.55"/>
+  <rect x="400" y="476" width="340" height="14" rx="7" fill="#0D6B68" opacity="0.55"/>
+  <rect x="400" y="512" width="390" height="14" rx="7" fill="#0D6B68" opacity="0.55"/>
+  <!-- paragraph 3 -->
+  <rect x="390" y="600" width="430" height="14" rx="7" fill="#CFD6D6"/>
+  <rect x="390" y="632" width="360" height="14" rx="7" fill="#CFD6D6"/>
+  <rect x="390" y="664" width="400" height="14" rx="7" fill="#CFD6D6"/>
+  <rect x="390" y="696" width="240" height="14" rx="7" fill="#CFD6D6"/>
+
+  <!-- chat bubble with tail -->
+  <path d="M 1036 150 H 1384 A 36 36 0 0 1 1420 186 V 304 A 36 36 0 0 1 1384 340 H 1120 L 1060 400 L 1072 340 H 1036 A 36 36 0 0 1 1000 304 V 186 A 36 36 0 0 1 1036 150 Z" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="10" stroke-linejoin="round"/>
+  <rect x="1044" y="196" width="300" height="14" rx="7" fill="#2F6F9F" opacity="0.55"/>
+  <rect x="1044" y="232" width="240" height="14" rx="7" fill="#2F6F9F" opacity="0.55"/>
+  <rect x="1044" y="268" width="280" height="14" rx="7" fill="#2F6F9F" opacity="0.55"/>
+
+  <!-- arrow from the bubble to the highlighted paragraph -->
+  <path d="M 1050 420 C 1030 500, 990 490, 905 486" stroke="#D97A2B" stroke-width="12" fill="none" stroke-linecap="round"/>
+  <polygon points="906,452 860,486 906,520" fill="#D97A2B"/>
+
+  <!-- pen -->
+  <g transform="translate(940 620) rotate(30)">
+    <polygon points="-70,0 0,-22 0,22" fill="#102A2B"/>
+    <rect x="0" y="-28" width="340" height="56" rx="28" fill="#D97A2B"/>
+    <rect x="40" y="-12" width="230" height="8" rx="4" fill="#FFFFFF" opacity="0.5"/>
+    <rect x="280" y="-28" width="26" height="56" fill="#B8442D"/>
+  </g>
+
+  <!-- small accents -->
+  <circle cx="180" cy="620" r="18" fill="#D97A2B"/>
+  <circle cx="1520" cy="470" r="14" fill="#2F6F9F"/>
+  <circle cx="940" cy="80" r="12" fill="#2E7D5B"/>
+  <circle cx="250" cy="800" r="10" fill="#2F6F9F"/>
+  <circle cx="1240" cy="560" r="10" fill="#2E7D5B"/>
+
+  <!-- one line of text -->
+  <text x="800" y="846" font-size="48" font-weight="700" fill="#102A2B" text-anchor="middle">從自己的版本改起</text>
+</svg>

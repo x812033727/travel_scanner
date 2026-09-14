@@ -109,7 +109,7 @@ server {
 
     location / {
         include /etc/nginx/snippets/mokaair-proxy-headers.conf;
-        limit_req zone=mokaair_pages burst=20 nodelay;
+        limit_req zone=mokaair_content_pages burst=20 nodelay;
         proxy_pass http://mokaair_web;
     }
 }

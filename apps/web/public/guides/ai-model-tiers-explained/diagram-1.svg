@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">旗艦、中階、輕量：三階的取捨與三家現行模型 / Flagship, mid-tier, lightweight: the trade-off and each vendor's current line-up</title>
+  <desc id="desc">左側是三層由上往下加寬的階梯，代表旗艦、中階、輕量三階。旗艦：能力最強、速度較慢、價格最高，留給最難、最長的任務。中階：能力夠用、速度快、價格中等，日常任務先從這階開始。輕量：能力基本、速度最快、價格最低，適合大量、簡單、要快的事。右側三欄依序是 OpenAI 的 GPT 家族、Anthropic 的 Claude 家族、Google 的 Gemini 家族，每欄三格對應三階，格內是模型名稱、官網定位與每百萬 token 的美元標價（輸入／輸出）。OpenAI：旗艦 GPT-6 Astra，最困難的端到端工作，輸入 10、輸出 50，Sol 介於此階與中階之間，輸入 4、輸出 20；中階 GPT-5.6 Terra，平衡智慧與成本，輸入 2、輸出 12，上下文視窗 105 萬 token；輕量 GPT-5.6 Luna，為成本敏感的工作最佳化，輸入 0.20、輸出 1.20，是 ChatGPT 免費版的預設模型。Anthropic：旗艦 Claude Fable 5.1，高要求推理與長時程代理工作，輸入 10、輸出 50，Opus 5 介於此階與中階之間，輸入 5、輸出 25；中階 Claude Sonnet 5，速度與智慧的最佳組合，輸入 2、輸出 10，官網相對速度為快；輕量 Claude Haiku 4.5，最快、接近前沿智慧，輸入 1、輸出 5，官網相對速度為最快。Google：旗艦 Gemini 3.1 Pro 預覽版，進階智慧、複雜問題解決，輸入 2、輸出 12，為提示 20 萬 token 以內的價格；中階 Gemini 3.8 Flash，最聰明的 Flash 模型，輸入 0.75、輸出 3.75，此價格至 2026 年 12 月 31 日，2027 年 1 月 1 日起改為 1.50 與 7.50；輕量 Gemini 3.5 Flash-Lite，最快、最省成本的 3.5 模型，輸入 0.30、輸出 2.50，是付費方案用完額度時的備用模型。底部註記：價格為 2026 年 9 月 13 日各官網標價，不含批次與快取折扣；推理（先想再答）是另一個軸，同一階可以開或關。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">旗艦、中階、輕量：三階的取捨與三家現行模型</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Flagship, mid-tier and lightweight: the trade-off, and where each vendor's current models sit</text>
+
+  <!-- column headers -->
+  <text x="60" y="130" font-size="18" font-weight="700" fill="#102A2B">三階的取捨（能力、速度、價格）</text>
+  <text x="750" y="130" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">OpenAI（GPT 家族）</text>
+  <text x="1070" y="130" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">Anthropic（Claude 家族）</text>
+  <text x="1390" y="130" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">Google（Gemini 家族）</text>
+
+  <!-- staircase: flagship (top, narrowest) -->
+  <rect x="260" y="145" width="300" height="185" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="284" y="183" font-size="20" font-weight="700" fill="#1F4E73">旗艦　Flagship</text>
+  <text x="284" y="219" font-size="16" fill="#102A2B">能力</text>
+  <circle cx="330" cy="214" r="7" fill="#102A2B"/><circle cx="350" cy="214" r="7" fill="#102A2B"/><circle cx="370" cy="214" r="7" fill="#102A2B"/>
+  <text x="392" y="219" font-size="16" fill="#102A2B">最強</text>
+  <text x="284" y="247" font-size="16" fill="#102A2B">速度</text>
+  <circle cx="330" cy="242" r="7" fill="#102A2B"/><circle cx="350" cy="242" r="7" fill="none" stroke="#102A2B" stroke-width="2"/><circle cx="370" cy="242" r="7" fill="none" stroke="#102A2B" stroke-width="2"/>
+  <text x="392" y="247" font-size="16" fill="#102A2B">較慢</text>
+  <text x="284" y="275" font-size="16" fill="#102A2B">價格</text>
+  <circle cx="330" cy="270" r="7" fill="#102A2B"/><circle cx="350" cy="270" r="7" fill="#102A2B"/><circle cx="370" cy="270" r="7" fill="#102A2B"/>
+  <text x="392" y="275" font-size="16" fill="#102A2B">最高</text>
+  <text x="284" y="309" font-size="15" font-weight="700" fill="#1F4E73">留給最難、最長的任務</text>
+
+  <!-- staircase: mid-tier -->
+  <rect x="160" y="350" width="400" height="185" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="284" y="388" font-size="20" font-weight="700" fill="#0B4F4D">中階　Mid-tier</text>
+  <text x="284" y="424" font-size="16" fill="#102A2B">能力</text>
+  <circle cx="330" cy="419" r="7" fill="#102A2B"/><circle cx="350" cy="419" r="7" fill="#102A2B"/><circle cx="370" cy="419" r="7" fill="none" stroke="#102A2B" stroke-width="2"/>
+  <text x="392" y="424" font-size="16" fill="#102A2B">夠用</text>
+  <text x="284" y="452" font-size="16" fill="#102A2B">速度</text>
+  <circle cx="330" cy="447" r="7" fill="#102A2B"/><circle cx="350" cy="447" r="7" fill="#102A2B"/><circle cx="370" cy="447" r="7" fill="none" stroke="#102A2B" stroke-width="2"/>
+  <text x="392" y="452" font-size="16" fill="#102A2B">快</text>
+  <text x="284" y="480" font-size="16" fill="#102A2B">價格</text>
+  <circle cx="330" cy="475" r="7" fill="#102A2B"/><circle cx="350" cy="475" r="7" fill="#102A2B"/><circle cx="370" cy="475" r="7" fill="none" stroke="#102A2B" stroke-width="2"/>
+  <text x="392" y="480" font-size="16" fill="#102A2B">中等</text>
+  <text x="284" y="514" font-size="15" font-weight="700" fill="#0B4F4D">日常任務先從這階開始</text>
+
+  <!-- staircase: lightweight (bottom, widest) -->
+  <rect x="60" y="555" width="500" height="185" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="284" y="593" font-size="20" font-weight="700" fill="#2E7D5B">輕量　Lightweight</text>
+  <text x="284" y="629" font-size="16" fill="#102A2B">能力</text>
+  <circle cx="330" cy="624" r="7" fill="#102A2B"/><circle cx="350" cy="624" r="7" fill="none" stroke="#102A2B" stroke-width="2"/><circle cx="370" cy="624" r="7" fill="none" stroke="#102A2B" stroke-width="2"/>
+  <text x="392" y="629" font-size="16" fill="#102A2B">基本</text>
+  <text x="284" y="657" font-size="16" fill="#102A2B">速度</text>
+  <circle cx="330" cy="652" r="7" fill="#102A2B"/><circle cx="350" cy="652" r="7" fill="#102A2B"/><circle cx="370" cy="652" r="7" fill="#102A2B"/>
+  <text x="392" y="657" font-size="16" fill="#102A2B">最快</text>
+  <text x="284" y="685" font-size="16" fill="#102A2B">價格</text>
+  <circle cx="330" cy="680" r="7" fill="#102A2B"/><circle cx="350" cy="680" r="7" fill="none" stroke="#102A2B" stroke-width="2"/><circle cx="370" cy="680" r="7" fill="none" stroke="#102A2B" stroke-width="2"/>
+  <text x="392" y="685" font-size="16" fill="#102A2B">最低</text>
+  <text x="284" y="719" font-size="15" font-weight="700" fill="#2E7D5B">大量、簡單、要快的事</text>
+
+  <!-- OpenAI column -->
+  <rect x="600" y="145" width="300" height="185" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="3"/>
+  <text x="750" y="185" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">GPT-6 Astra</text>
+  <text x="750" y="215" font-size="15" fill="#5C6B6B" text-anchor="middle">最困難的端到端工作</text>
+  <text x="750" y="251" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">輸入 10 ／ 輸出 50</text>
+  <text x="750" y="281" font-size="15" fill="#5C6B6B" text-anchor="middle">Sol 介於此階與中階：4 ／ 20</text>
+
+  <rect x="600" y="350" width="300" height="185" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="750" y="390" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">GPT-5.6 Terra</text>
+  <text x="750" y="420" font-size="15" fill="#5C6B6B" text-anchor="middle">平衡智慧與成本</text>
+  <text x="750" y="456" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">輸入 2 ／ 輸出 12</text>
+  <text x="750" y="486" font-size="15" fill="#5C6B6B" text-anchor="middle">上下文視窗 105 萬 token</text>
+
+  <rect x="600" y="555" width="300" height="185" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="3"/>
+  <text x="750" y="595" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">GPT-5.6 Luna</text>
+  <text x="750" y="625" font-size="15" fill="#5C6B6B" text-anchor="middle">為成本敏感的工作最佳化</text>
+  <text x="750" y="661" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">輸入 0.20 ／ 輸出 1.20</text>
+  <text x="750" y="691" font-size="15" fill="#5C6B6B" text-anchor="middle">ChatGPT 免費版的預設模型</text>
+
+  <!-- Anthropic column -->
+  <rect x="920" y="145" width="300" height="185" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="3"/>
+  <text x="1070" y="185" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">Claude Fable 5.1</text>
+  <text x="1070" y="215" font-size="15" fill="#5C6B6B" text-anchor="middle">高要求推理與長時程代理工作</text>
+  <text x="1070" y="251" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">輸入 10 ／ 輸出 50</text>
+  <text x="1070" y="281" font-size="15" fill="#5C6B6B" text-anchor="middle">Opus 5 介於此階與中階：5 ／ 25</text>
+
+  <rect x="920" y="350" width="300" height="185" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="1070" y="390" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">Claude Sonnet 5</text>
+  <text x="1070" y="420" font-size="15" fill="#5C6B6B" text-anchor="middle">速度與智慧的最佳組合</text>
+  <text x="1070" y="456" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">輸入 2 ／ 輸出 10</text>
+  <text x="1070" y="486" font-size="15" fill="#5C6B6B" text-anchor="middle">官網相對速度：快</text>
+
+  <rect x="920" y="555" width="300" height="185" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="3"/>
+  <text x="1070" y="595" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">Claude Haiku 4.5</text>
+  <text x="1070" y="625" font-size="15" fill="#5C6B6B" text-anchor="middle">最快、接近前沿智慧</text>
+  <text x="1070" y="661" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">輸入 1 ／ 輸出 5</text>
+  <text x="1070" y="691" font-size="15" fill="#5C6B6B" text-anchor="middle">官網相對速度：最快</text>
+
+  <!-- Google column -->
+  <rect x="1240" y="145" width="300" height="185" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="3"/>
+  <text x="1390" y="185" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">Gemini 3.1 Pro（預覽版）</text>
+  <text x="1390" y="215" font-size="15" fill="#5C6B6B" text-anchor="middle">進階智慧、複雜問題解決</text>
+  <text x="1390" y="251" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">輸入 2 ／ 輸出 12</text>
+  <text x="1390" y="281" font-size="15" fill="#5C6B6B" text-anchor="middle">提示 20 萬 token 以內的價格</text>
+
+  <rect x="1240" y="350" width="300" height="185" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="1390" y="390" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">Gemini 3.8 Flash</text>
+  <text x="1390" y="420" font-size="15" fill="#5C6B6B" text-anchor="middle">最聰明的 Flash 模型</text>
+  <text x="1390" y="456" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">輸入 0.75 ／ 輸出 3.75</text>
+  <text x="1390" y="486" font-size="15" fill="#5C6B6B" text-anchor="middle">此價格至 2026 年 12 月 31 日</text>
+
+  <rect x="1240" y="555" width="300" height="185" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="3"/>
+  <text x="1390" y="595" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">Gemini 3.5 Flash-Lite</text>
+  <text x="1390" y="625" font-size="15" fill="#5C6B6B" text-anchor="middle">最快、最省成本的 3.5 模型</text>
+  <text x="1390" y="661" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">輸入 0.30 ／ 輸出 2.50</text>
+  <text x="1390" y="691" font-size="15" fill="#5C6B6B" text-anchor="middle">付費方案用完額度時的備用模型</text>
+
+  <!-- notes -->
+  <text x="60" y="774" font-size="15" fill="#5C6B6B">價格：美元／每百萬 token（輸入／輸出），2026 年 9 月 13 日各官網標價，不含批次與快取折扣。</text>
+  <text x="60" y="800" font-size="15" fill="#5C6B6B">Gemini 3.8 Flash 自 2027 年 1 月 1 日起改為 1.50 ／ 7.50；Sol 與 Opus 5 介於旗艦與中階之間，正文表格有完整列表。</text>
+  <text x="60" y="826" font-size="15" fill="#5C6B6B">推理（先想再答）是另一個軸：同一階可以開或關，見正文。</text>
+  <text x="1540" y="870" font-size="15" fill="#5C6B6B" text-anchor="end">© Mokaair 製圖 2026</text>
+</svg>

@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">一段對話從私人到公開的路徑，以及收回的兩步 / How a ChatGPT chat goes public, and the two steps to take it back</title>
+  <desc id="desc">上排四個階段由左到右用箭頭串起。階段一私人對話：只有你的帳號看得到，記憶與自訂指令在背後運作，上傳的檔案也在這段對話裡，一切都還在你的帳號內。階段二建立分享連結：按 Share 再按 Create link，內容是建立當下的快照、之後不同步，預設匿名但寄出前要看預覽，上傳的檔案與圖片一起出去，沒有到期日、只能手動刪。階段三有連結的人：任何拿到網址的人都能看，不能限定對象、不能設密碼，可以轉傳、可以截圖，按 Continue 會複製成他自己的對話，那份副本你刪不掉。階段四被轉貼或索引：貼到社群、群組或網頁後搜尋引擎可能收錄分享頁，2025 年 7 月曾有約 4,500 筆分享對話被 Google 收錄，從這裡開始就收不回了。下排是收回的兩步。第一步刪除連結：Settings、Data controls、Shared links、Manage，單筆按 Delete shared link，或 More actions 裡的 Delete all shared links 一次全刪，連結立刻失效，原對話與別人的副本不受影響。第二步請搜尋引擎移除：Google 的移除過時內容工具任何 Google 帳號都可提交，條件是頁面已不存在或內容大幅改變，審核需要幾天；Bing 有 Bing Webmaster Tools 的內容移除工具；實際時間以搜尋引擎為準，摘要可能先留一陣子。右下角灰框列出收不回的東西：別人 Continue 過的副本、已經截下的圖與轉貼、送到第三方 API 的資料、對方已經看過的內容。最下面三行註記：刪除連結後搜尋結果裡的標題與摘要可能還會留一陣子，等搜尋引擎重新抓取才會消失；Business、Enterprise、Edu 工作區的連結只有同工作區成員能開，但可以包含分享後新增的訊息；OpenAI 說明中心 2026 年 9 月寫明分享頁不打算讓搜尋引擎索引，但這不代表連結是私密的，能打開的人都能轉傳。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">一段對話從私人到公開的路徑，以及收回的兩步（2026 年 9 月查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">How a ChatGPT chat goes public: private chat, shared link, anyone with the link, reposted or indexed, and the two steps to take it back</text>
+
+  <!-- 一 私人對話 -->
+  <rect x="66" y="120" width="340" height="250" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="106" cy="160" r="22" fill="#0D6B68"/>
+  <text x="106" y="168" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">一</text>
+  <text x="140" y="168" font-size="20" font-weight="700" fill="#0B4F4D">私人對話</text>
+  <text x="140" y="194" font-size="15" fill="#5C6B6B">Private chat</text>
+  <text x="90" y="236" font-size="16" fill="#102A2B">只有你的帳號看得到</text>
+  <text x="90" y="264" font-size="16" fill="#102A2B">記憶與自訂指令在背後運作</text>
+  <text x="90" y="292" font-size="16" fill="#102A2B">上傳的檔案也在這段對話裡</text>
+  <text x="90" y="320" font-size="16" fill="#102A2B">一切都還在你的帳號內</text>
+  <path d="M 410 245 L 436 245" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- 二 建立分享連結 -->
+  <rect x="442" y="120" width="340" height="250" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <circle cx="482" cy="160" r="22" fill="#2F6F9F"/>
+  <text x="482" y="168" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">二</text>
+  <text x="516" y="168" font-size="20" font-weight="700" fill="#1F4E73">建立分享連結</text>
+  <text x="516" y="194" font-size="15" fill="#5C6B6B">Create a shared link</text>
+  <text x="466" y="236" font-size="16" fill="#102A2B">按 Share → Create link</text>
+  <text x="466" y="264" font-size="16" fill="#102A2B">建立當下的快照，之後不同步</text>
+  <text x="466" y="292" font-size="16" fill="#102A2B">預設匿名，寄出前先看預覽</text>
+  <text x="466" y="320" font-size="16" fill="#102A2B">上傳的檔案與圖片一起出去</text>
+  <text x="466" y="348" font-size="16" fill="#102A2B">沒有到期日，只能手動刪</text>
+  <path d="M 786 245 L 812 245" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- 三 有連結的人 -->
+  <rect x="818" y="120" width="340" height="250" rx="14" fill="#FCEFE4" stroke="#D97A2B" stroke-width="4"/>
+  <circle cx="858" cy="160" r="22" fill="#D97A2B"/>
+  <text x="858" y="168" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">三</text>
+  <text x="892" y="168" font-size="20" font-weight="700" fill="#8A4A16">有連結的人</text>
+  <text x="892" y="194" font-size="15" fill="#5C6B6B">Anyone with the link</text>
+  <text x="842" y="236" font-size="16" fill="#102A2B">任何拿到網址的人都能看</text>
+  <text x="842" y="264" font-size="16" fill="#102A2B">不能限定對象、不能設密碼</text>
+  <text x="842" y="292" font-size="16" fill="#102A2B">可以轉傳、可以截圖</text>
+  <text x="842" y="320" font-size="16" fill="#102A2B">按 Continue 複製成他的對話</text>
+  <text x="842" y="348" font-size="16" fill="#B8442D">那份副本你刪不掉</text>
+  <path d="M 1162 245 L 1188 245" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- 四 被轉貼或索引 -->
+  <rect x="1194" y="120" width="340" height="250" rx="14" fill="#FBE9E5" stroke="#B8442D" stroke-width="4"/>
+  <circle cx="1234" cy="160" r="22" fill="#B8442D"/>
+  <text x="1234" y="168" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">四</text>
+  <text x="1268" y="168" font-size="20" font-weight="700" fill="#8A2E1F">被轉貼或索引</text>
+  <text x="1268" y="194" font-size="15" fill="#5C6B6B">Reposted or indexed</text>
+  <text x="1218" y="236" font-size="16" fill="#102A2B">貼到社群、群組或網頁</text>
+  <text x="1218" y="264" font-size="16" fill="#102A2B">搜尋引擎可能收錄分享頁</text>
+  <text x="1218" y="292" font-size="16" fill="#102A2B">2025 年 7 月曾有約 4,500 筆</text>
+  <text x="1218" y="320" font-size="16" fill="#102A2B">分享對話被 Google 收錄</text>
+  <text x="1218" y="348" font-size="16" fill="#B8442D">從這裡開始就收不回了</text>
+
+  <!-- 收回的兩步 -->
+  <text x="66" y="440" font-size="20" font-weight="700" fill="#102A2B">收回的兩步　How to take it back</text>
+
+  <rect x="66" y="470" width="520" height="210" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="90" y="510" font-size="20" font-weight="700" fill="#0B4F4D">第一步：刪除連結</text>
+  <text x="90" y="536" font-size="15" fill="#5C6B6B">Delete the shared link</text>
+  <text x="90" y="574" font-size="16" fill="#102A2B">Settings → Data controls → Shared links → Manage</text>
+  <text x="90" y="602" font-size="16" fill="#102A2B">單筆按 Delete shared link，或 More actions</text>
+  <text x="90" y="630" font-size="16" fill="#102A2B">裡的 Delete all shared links 一次全刪</text>
+  <text x="90" y="658" font-size="16" fill="#102A2B">連結立刻失效；原對話與別人的副本不受影響</text>
+  <path d="M 590 575 L 616 575" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="626" y="470" width="520" height="210" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="650" y="510" font-size="20" font-weight="700" fill="#1F4E73">第二步：請搜尋引擎移除</text>
+  <text x="650" y="536" font-size="15" fill="#5C6B6B">Ask the search engines to drop it</text>
+  <text x="650" y="574" font-size="16" fill="#102A2B">Google「移除過時內容」工具，任何 Google 帳號可提交</text>
+  <text x="650" y="602" font-size="16" fill="#102A2B">條件：頁面已不存在或內容大幅改變；審核需要幾天</text>
+  <text x="650" y="630" font-size="16" fill="#102A2B">Bing：Bing Webmaster Tools 的內容移除工具</text>
+  <text x="650" y="658" font-size="16" fill="#102A2B">實際時間以搜尋引擎為準；摘要可能先留一陣子</text>
+
+  <rect x="1194" y="470" width="340" height="210" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+  <text x="1218" y="510" font-size="20" font-weight="700" fill="#102A2B">收不回的</text>
+  <text x="1218" y="536" font-size="15" fill="#5C6B6B">Cannot be undone</text>
+  <text x="1218" y="574" font-size="16" fill="#B8442D">別人 Continue 過的副本</text>
+  <text x="1218" y="602" font-size="16" fill="#B8442D">已經截下的圖與轉貼</text>
+  <text x="1218" y="630" font-size="16" fill="#B8442D">送到第三方 API 的資料</text>
+  <text x="1218" y="658" font-size="16" fill="#B8442D">對方已經看過的內容</text>
+
+  <text x="66" y="740" font-size="15" fill="#5C6B6B">刪除連結後，搜尋結果裡的標題與摘要可能還會留一陣子，等搜尋引擎重新抓取才會消失。</text>
+  <text x="66" y="768" font-size="15" fill="#5C6B6B">Business、Enterprise、Edu 工作區的連結只有同工作區成員能開，但可以包含分享後新增的訊息。</text>
+  <text x="66" y="796" font-size="15" fill="#5C6B6B">OpenAI 說明中心（2026 年 9 月）：分享頁不打算讓搜尋引擎索引，但這不代表連結是私密的，能打開的人都能轉傳。</text>
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

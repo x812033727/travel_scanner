@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">AI 回答之後怎麼查證：事實類找一手來源，對照後再決定 / After the AI answers: verify factual claims against a primary source</title>
+  <desc id="desc">這是一張由上往下走的查證流程圖。起點是「AI 給了一個答案」，提醒語氣肯定不代表正確。第一個判斷是「這句話是事實類，還是創作類？」，判斷方法是問自己：答案是我給的資料，還是它想起來的。創作類，例如改寫、摘要、翻譯、初稿，原料在對話裡，自己讀一遍就能用。事實類則要找一手來源，做法有四個：要它附來源然後自己點開、開網頁搜尋或深入研究功能、把原始資料貼進去只准根據資料回答、換一家再問一次看有沒有不一致。接著對照：一手來源上有這句話嗎？看網站、看原句、看日期。對照有三種結果。對得上：可以用，記下來源網址與查證日期，之後規則改了還找得到出處。對不上：以官方頁面為準不用 AI 的版本，細節不清楚就問機關或專業人士，把原文貼回對話再問一次。找不到：當作沒有這件事，網址、電話、條號不確認就不用，書名與判決字號找不到就是編的。圖的右側有兩個補充框。上面是原則：它從記憶裡拿出來的具體事實，一律當線索、不當結論。下面列出一開口就該懷疑的情境：法規與判決字號、醫療與用藥劑量、金額、稅率與補助、營業時間與地址、引用文獻與書名、歷史日期與人物、程式指令的參數、網址與電話；並提醒越冷門、越在地、越新，越要查。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">AI 回答之後怎麼查證：事實類找一手來源，對照後再決定</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">After the AI answers: verify factual claims against a primary source, then decide</text>
+
+  <!-- A: AI answer -->
+  <rect x="60" y="130" width="340" height="100" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="230" y="172" font-size="19" font-weight="700" fill="#1F4E73" text-anchor="middle">AI 給了一個答案</text>
+  <text x="230" y="205" font-size="15" fill="#5C6B6B" text-anchor="middle">語氣肯定不代表正確</text>
+  <path d="M 402 180 L 456 180" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- B: decision -->
+  <rect x="460" y="130" width="360" height="100" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="640" y="172" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">這句話是事實類，還是創作類？</text>
+  <text x="640" y="205" font-size="15" fill="#5C6B6B" text-anchor="middle">問自己：答案是我給的資料，還是它想起來的</text>
+  <path d="M 822 180 L 876 180" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="849" y="168" font-size="15" fill="#5C6B6B" text-anchor="middle">創作類</text>
+
+  <!-- C: creative branch -->
+  <rect x="880" y="130" width="360" height="100" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1060" y="170" font-size="18" font-weight="700" fill="#2E7D5B" text-anchor="middle">創作類：改寫、摘要、翻譯、初稿</text>
+  <text x="1060" y="205" font-size="15" fill="#5C6B6B" text-anchor="middle">原料在對話裡，自己讀一遍就能用</text>
+
+  <!-- B -> D -->
+  <path d="M 640 232 L 640 286" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="656" y="266" font-size="15" fill="#5C6B6B">事實類</text>
+
+  <!-- D: factual branch -->
+  <rect x="460" y="290" width="360" height="170" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="640" y="322" font-size="19" font-weight="700" fill="#0B4F4D" text-anchor="middle">事實類：找一手來源</text>
+  <text x="484" y="356" font-size="16" fill="#102A2B">・要它附來源，然後自己點開</text>
+  <text x="484" y="384" font-size="16" fill="#102A2B">・開網頁搜尋或深入研究功能</text>
+  <text x="484" y="412" font-size="16" fill="#102A2B">・把原始資料貼進去，只准根據資料答</text>
+  <text x="484" y="440" font-size="16" fill="#102A2B">・換一家再問一次，看有沒有不一致</text>
+
+  <!-- D -> E -->
+  <path d="M 640 462 L 640 516" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- E: compare -->
+  <rect x="460" y="520" width="360" height="80" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="640" y="553" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">對照：一手來源上有這句話嗎？</text>
+  <text x="640" y="583" font-size="15" fill="#5C6B6B" text-anchor="middle">看網站、看原句、看日期</text>
+
+  <!-- E -> F1 / F2 / F3 -->
+  <path d="M 458 560 L 230 560 L 230 636" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 640 602 L 640 636" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 822 560 L 1060 560 L 1060 636" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- F1: match -->
+  <rect x="60" y="640" width="340" height="160" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="230" y="674" font-size="19" font-weight="700" fill="#2E7D5B" text-anchor="middle">對得上</text>
+  <text x="84" y="710" font-size="16" fill="#102A2B">・可以用</text>
+  <text x="84" y="738" font-size="16" fill="#102A2B">・記下來源網址與查證日期</text>
+  <text x="84" y="766" font-size="16" fill="#102A2B">・之後規則改了還找得到出處</text>
+
+  <!-- F2: mismatch -->
+  <rect x="460" y="640" width="360" height="160" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="640" y="674" font-size="19" font-weight="700" fill="#B8442D" text-anchor="middle">對不上</text>
+  <text x="484" y="710" font-size="16" fill="#102A2B">・以官方頁面為準，不用 AI 的版本</text>
+  <text x="484" y="738" font-size="16" fill="#102A2B">・細節不清楚就問機關或專業人士</text>
+  <text x="484" y="766" font-size="16" fill="#102A2B">・把原文貼回對話，再問一次</text>
+
+  <!-- F3: not found -->
+  <rect x="880" y="640" width="360" height="160" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1060" y="674" font-size="19" font-weight="700" fill="#D97A2B" text-anchor="middle">找不到</text>
+  <text x="904" y="710" font-size="16" fill="#102A2B">・當作沒有這件事</text>
+  <text x="904" y="738" font-size="16" fill="#102A2B">・網址、電話、條號不確認就不用</text>
+  <text x="904" y="766" font-size="16" fill="#102A2B">・書名、判決字號找不到就是編的</text>
+
+  <!-- Right column: principle -->
+  <rect x="1280" y="130" width="260" height="130" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="3"/>
+  <text x="1410" y="164" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">原則</text>
+  <text x="1410" y="194" font-size="15" fill="#102A2B" text-anchor="middle">它從記憶裡拿出來的具體事實</text>
+  <text x="1410" y="218" font-size="15" fill="#102A2B" text-anchor="middle">一律當線索，不當結論</text>
+  <text x="1410" y="242" font-size="15" fill="#5C6B6B" text-anchor="middle">錯了你看不出來的，就要查</text>
+
+  <!-- Right column: high-risk list -->
+  <rect x="1280" y="290" width="260" height="510" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+  <text x="1410" y="324" font-size="18" font-weight="700" fill="#1F4E73" text-anchor="middle">一開口就該懷疑</text>
+  <text x="1304" y="360" font-size="16" fill="#102A2B">・法規與判決字號</text>
+  <text x="1304" y="390" font-size="16" fill="#102A2B">・醫療與用藥劑量</text>
+  <text x="1304" y="420" font-size="16" fill="#102A2B">・金額、稅率與補助</text>
+  <text x="1304" y="450" font-size="16" fill="#102A2B">・營業時間與地址</text>
+  <text x="1304" y="480" font-size="16" fill="#102A2B">・引用文獻與書名</text>
+  <text x="1304" y="510" font-size="16" fill="#102A2B">・歷史日期與人物</text>
+  <text x="1304" y="540" font-size="16" fill="#102A2B">・程式指令的參數</text>
+  <text x="1304" y="570" font-size="16" fill="#102A2B">・網址與電話</text>
+  <line x1="1304" y1="600" x2="1516" y2="600" stroke="#2F6F9F" stroke-width="2"/>
+  <text x="1410" y="640" font-size="15" fill="#5C6B6B" text-anchor="middle">越冷門、越在地、越新，</text>
+  <text x="1410" y="664" font-size="15" fill="#5C6B6B" text-anchor="middle">越要查</text>
+  <text x="1410" y="720" font-size="15" fill="#5C6B6B" text-anchor="middle">沒開搜尋的模型只知道</text>
+  <text x="1410" y="744" font-size="15" fill="#5C6B6B" text-anchor="middle">訓練截止日以前的規則</text>
+
+  <text x="60" y="850" font-size="15" fill="#5C6B6B">圖上的動作對應正文的五個查證動作，右欄對應高風險情境清單；搜尋與深入研究的功能名稱以各家官方說明頁為準。</text>
+  <text x="1540" y="870" font-size="15" fill="#5C6B6B" text-anchor="end">© Mokaair 製圖 2026</text>
+</svg>

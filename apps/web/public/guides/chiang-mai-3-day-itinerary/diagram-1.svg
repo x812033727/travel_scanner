@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans Thai','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">清邁三天兩夜分區示意圖 / Chiang Mai 3-day area map</title>
+  <desc id="desc">簡化的清邁示意地圖。中央是 Day 1 的古城：帕辛寺（門票 50 泰銖）、三王紀念碑、契迪龍寺（門票 50 泰銖）、塔佩門，週日夜市沿 Ratchadamnoen 路 17:00 到 22:00 封街，古城南門外是週六夜市 Wualai 路，東邊是 Night Bazaar（天天 17:00 到 24:00，雙條車約 10 分）與湄平河。左上是 Day 2：尼曼路（咖啡、One Nimman、Maya），清邁動物園前搭紅色雙條車上素帖山雙龍寺（門票 30 泰銖、05:00 到 21:00、306 階或纜車 50 泰銖、市中心開車約 40 分、蒲屏宮開放以官網為準）。左下是清邁機場，計程車或 Grab 十來分鐘到古城，接駁巴士 A1 到尼曼 40 泰銖。三個箭頭是 Day 3 的方向：北邊大象保護區（半日 2,500、一日 3,500 泰銖起）、西南茵他儂（開車約 2 小時、門票 300 泰銖、2,565 公尺）、東北清萊（巴士約 3 小時 20 分、白廟 200 泰銖）。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrowDay3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6B4A3A"/></marker>
+  </defs>
+
+  <text x="60" y="66" font-size="36" font-weight="700" fill="#102A2B">清邁三天兩夜　三個分區與三個郊區方向</text>
+  <text x="60" y="100" font-size="20" fill="#5C6B6B">Chiang Mai 3 days · เชียงใหม่ · 示意圖，非精確比例 · 票價為外國成人，2026 年 9 月查證</text>
+
+  <!-- Ping river -->
+  <path d="M 1440 262 C 1472 400, 1420 550, 1452 700 C 1472 800, 1438 860, 1450 900" fill="none" stroke="#BFD9E3" stroke-width="26" stroke-linecap="round"/>
+  <text x="1455" y="296" font-size="15" font-weight="700" fill="#3F6C7A" text-anchor="middle">湄平河 แม่น้ำปิง Ping River</text>
+
+  <!-- Day 3 arrows -->
+  <line x1="820" y1="358" x2="820" y2="202" stroke="#6B4A3A" stroke-width="5" marker-end="url(#arrowDay3)"/>
+  <text x="820" y="150" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">Day 3 選項 A　大象保護區 แม่แตง Mae Taeng 方向</text>
+  <text x="820" y="178" font-size="15" fill="#5C6B6B" text-anchor="middle">不騎象的園區 · 半日 2,500 · 一日 3,500 泰銖起 · 含飯店接送</text>
+
+  <line x1="1042" y1="358" x2="1208" y2="216" stroke="#6B4A3A" stroke-width="5" marker-end="url(#arrowDay3)"/>
+  <text x="1225" y="205" font-size="18" font-weight="700" fill="#102A2B">Day 3 選項 C　清萊 เชียงราย Chiang Rai</text>
+  <text x="1225" y="231" font-size="15" fill="#5C6B6B">巴士約 3 小時 20 分 · 白廟 200 泰銖 · 藍廟免費</text>
+
+  <line x1="598" y1="702" x2="402" y2="828" stroke="#6B4A3A" stroke-width="5" marker-end="url(#arrowDay3)"/>
+  <text x="60" y="856" font-size="18" font-weight="700" fill="#102A2B">Day 3 選項 B　茵他儂 ดอยอินทนนท์ Doi Inthanon</text>
+  <text x="60" y="882" font-size="15" fill="#5C6B6B">開車約 2 小時 · 門票 300 泰銖 · 泰國最高峰 2,565 公尺</text>
+
+  <!-- Airport links: taxi (solid) and A1 shuttle (dashed) -->
+  <line x1="340" y1="728" x2="600" y2="650" stroke="#5C6B6B" stroke-width="4" stroke-linecap="round"/>
+  <text x="505" y="630" font-size="15" fill="#5C6B6B" text-anchor="middle">計程車／Grab 十來分鐘</text>
+  <path d="M 300 700 C 330 560, 480 470, 500 345" fill="none" stroke="#D97A2B" stroke-width="5" stroke-dasharray="14 10"/>
+  <text x="425" y="560" font-size="15" font-weight="700" fill="#9A4F12">A1 接駁巴士 40 泰銖</text>
+
+  <!-- Zoo and songthaew up the mountain (dashed) -->
+  <path d="M 420 400 L 300 440" fill="none" stroke="#B8442D" stroke-width="5" stroke-dasharray="14 10"/>
+  <circle cx="420" cy="400" r="9" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="420" y="382" font-size="15" fill="#5C6B6B" text-anchor="middle">清邁動物園 Zoo</text>
+
+  <!-- Doi Suthep (Day 2 morning) -->
+  <polygon points="90,430 170,330 250,430" fill="#2E7D5B" opacity="0.25"/>
+  <rect x="40" y="440" width="260" height="172" rx="18" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="5"/>
+  <text x="170" y="468" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">Day 2 上午　素帖山雙龍寺</text>
+  <text x="170" y="492" font-size="15" fill="#5C6B6B" text-anchor="middle">ดอยสุเทพ Doi Suthep</text>
+  <text x="170" y="516" font-size="15" fill="#5C6B6B" text-anchor="middle">門票 30 泰銖 · 05:00 到 21:00</text>
+  <text x="170" y="540" font-size="15" fill="#5C6B6B" text-anchor="middle">306 階龍梯或纜車 50 泰銖</text>
+  <text x="170" y="564" font-size="15" fill="#5C6B6B" text-anchor="middle">市中心開車約 40 分</text>
+  <text x="170" y="588" font-size="15" fill="#5C6B6B" text-anchor="middle">蒲屏宮 開放狀況以官網為準</text>
+  <text x="170" y="638" font-size="15" fill="#8A3320" text-anchor="middle">紅色雙條車：動物園前湊滿人發車</text>
+  <text x="170" y="660" font-size="15" fill="#8A3320" text-anchor="middle">車資以現場公告為準</text>
+
+  <!-- Nimman (Day 2 afternoon) -->
+  <rect x="360" y="250" width="280" height="95" rx="18" fill="#FFFFFF" stroke="#7E57C2" stroke-width="5"/>
+  <text x="500" y="282" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">Day 2 下午　尼曼路 Nimman</text>
+  <text x="500" y="306" font-size="15" fill="#5C6B6B" text-anchor="middle">นิมมาน · 咖啡館、One Nimman、Maya</text>
+  <text x="500" y="330" font-size="15" fill="#5C6B6B" text-anchor="middle">到古城雙條車或 Grab 十來分鐘</text>
+
+  <!-- Airport -->
+  <rect x="40" y="700" width="300" height="120" rx="18" fill="#0D6B68"/>
+  <text x="190" y="728" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">清邁機場 CNX</text>
+  <text x="190" y="754" font-size="15" fill="#E6F2F1" text-anchor="middle">ท่าอากาศยานเชียงใหม่</text>
+  <text x="190" y="778" font-size="15" fill="#E6F2F1" text-anchor="middle">計程車櫃台固定價 · Grab 指定上車點</text>
+  <text x="190" y="802" font-size="15" fill="#E6F2F1" text-anchor="middle">接駁巴士 A1／A2 40 泰銖 · A3 60 泰銖</text>
+
+  <!-- Old city (Day 1) -->
+  <rect x="600" y="360" width="440" height="340" rx="10" fill="#FFFFFF" opacity="0.7" stroke="#0D6B68" stroke-width="6"/>
+  <text x="615" y="390" font-size="19" font-weight="700" fill="#0D6B68">Day 1　古城 เมืองเก่า Old City</text>
+  <line x1="710" y1="535" x2="1040" y2="535" stroke="#B8442D" stroke-width="6" stroke-linecap="round"/>
+  <line x1="840" y1="445" x2="840" y2="535" stroke="#B8442D" stroke-width="6" stroke-linecap="round"/>
+  <text x="850" y="517" font-size="15" font-weight="700" fill="#8A3320">週日夜市 17:00 到 22:00</text>
+  <circle cx="840" cy="445" r="9" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="856" y="440" font-size="15" fill="#102A2B">三王紀念碑</text>
+  <text x="856" y="462" font-size="15" fill="#5C6B6B">Three Kings</text>
+  <circle cx="710" cy="535" r="10" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="710" y="565" font-size="15" fill="#102A2B" text-anchor="middle">帕辛寺 Wat Phra Singh</text>
+  <text x="710" y="587" font-size="15" fill="#5C6B6B" text-anchor="middle">門票 50 泰銖</text>
+  <circle cx="840" cy="620" r="10" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="840" y="650" font-size="15" fill="#102A2B" text-anchor="middle">契迪龍寺 Wat Chedi Luang</text>
+  <text x="840" y="672" font-size="15" fill="#5C6B6B" text-anchor="middle">門票 50 泰銖</text>
+  <circle cx="1040" cy="535" r="11" fill="#FFFFFF" stroke="#0D6B68" stroke-width="5"/>
+  <text x="1058" y="541" font-size="16" font-weight="700" fill="#102A2B">塔佩門 ท่าแพ Tha Phae Gate</text>
+
+  <!-- Saturday market -->
+  <line x1="900" y1="700" x2="900" y2="728" stroke="#B8442D" stroke-width="6" stroke-linecap="round"/>
+  <text x="900" y="752" font-size="15" font-weight="700" fill="#8A3320" text-anchor="middle">週六夜市 วัวลาย Wualai 17:00 到 22:00</text>
+
+  <!-- Night Bazaar -->
+  <path d="M 1052 542 L 1120 600" fill="none" stroke="#5C6B6B" stroke-width="3" stroke-dasharray="3 7"/>
+  <text x="1130" y="585" font-size="15" fill="#5C6B6B">雙條車約 10 分</text>
+  <rect x="1100" y="600" width="270" height="92" rx="18" fill="#FFFFFF" stroke="#D97A2B" stroke-width="5"/>
+  <text x="1235" y="628" font-size="16" font-weight="700" fill="#102A2B" text-anchor="middle">Night Bazaar 夜市</text>
+  <text x="1235" y="652" font-size="15" fill="#5C6B6B" text-anchor="middle">天天 17:00 到 24:00</text>
+  <text x="1235" y="676" font-size="15" fill="#5C6B6B" text-anchor="middle">ถนนช้างคลาน Chang Klan Rd</text>
+
+  <!-- legend -->
+  <g font-size="15" fill="#102A2B">
+    <line x1="900" y1="880" x2="950" y2="880" stroke="#5C6B6B" stroke-width="4"/><text x="960" y="885">計程車／Grab</text>
+    <line x1="1080" y1="880" x2="1130" y2="880" stroke="#D97A2B" stroke-width="5" stroke-dasharray="14 10"/><text x="1140" y="885">接駁巴士</text>
+    <line x1="1230" y1="880" x2="1280" y2="880" stroke="#B8442D" stroke-width="5" stroke-dasharray="14 10"/><text x="1290" y="885">雙條車</text>
+    <text x="1540" y="885" fill="#8A8F8F" text-anchor="end">© Mokaair 製圖 2026</text>
+  </g>
+</svg>

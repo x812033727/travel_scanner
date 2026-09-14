@@ -1,0 +1,309 @@
+{
+  "slug": "ai-privacy-settings-checklist",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+      "description": "ChatGPT 個人帳號的對話預設會用來訓練模型，Claude 在註冊時問你一次，Gemini 的活動記錄預設開啟；三家都能關掉，但關掉不等於對話不會存在對方伺服器，保留期限從 30 天到 5 年不等。這篇依 2026 年 9 月各家官方說明整理成檢查清單：每家四件事，訓練開關在哪裡、暫時或無痕對話怎麼開、記憶怎麼看與刪、對話怎麼匯出與刪除，最後列出不該貼的資料與公司帳號的差別。",
+      "hero": {
+        "src": "/guides/ai-privacy-settings-checklist/hero.jpg",
+        "alt": "一個深綠色的對話泡泡，上面掛著一個橘色鎖頭與一個切到關閉的開關，插圖以簡單幾何形狀表現 AI 對話的隱私設定",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "用 ChatGPT、Claude、Gemini 之前先檢查四件事：對話會不會拿去訓練模型、暫時（無痕）對話怎麼開、記憶記了什麼、對話怎麼匯出與刪除。三家都能把訓練關掉，ChatGPT 與 Gemini 的個人帳號預設是開的、Claude 在註冊時問你一次；但不管怎麼關，對話都會依各家的保留期限留在對方伺服器一段時間。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇依 2026 年 9 月 OpenAI、Anthropic 與 Google 的官方說明頁整理成一張照著做的清單：每家一節、固定四件事，寫出預設值與設定路徑，再用一張表濃縮，最後講不該貼的資料與公司帳號的差別。"
+        },
+        {
+          "type": "heading",
+          "text": "「關掉訓練」不等於「不會存在對方伺服器」",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "關掉「用我的對話改善模型」之後，新對話不會進訓練資料，但對話仍會送到對方伺服器處理，並依各家規則保留：刪掉的對話，ChatGPT 與 Claude 都寫明 30 天內從系統移除；Claude 允許訓練時去識別化資料最長保留 5 年，不允許則維持 30 天；Gemini 關掉活動記錄後，對話仍與帳號一起保存 72 小時，人工審閱過的對話另外保留最長 3 年。開關做得到「不進訓練資料」，做不到「對方從來沒收到」。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+        },
+        {
+          "type": "heading",
+          "text": "ChatGPT：Data Controls、Temporary Chat、Memory、匯出與刪除",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 說明中心寫明，個人帳號的 Free、Plus 與 Pro 預設會把對話用來訓練（Improve the model for everyone 預設開啟），Business、Enterprise、Edu 與 API 預設不會。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "關掉訓練：左下角頭像 → Settings（設定）→ Data Controls→ 關掉 Improve the model for everyone；整個帳號生效，只影響之後的新對話。",
+            "開暫時對話：開新對話，點右上角的 Temporary（暫時）按鈕。不進歷史、不用也不建立記憶、不用於訓練，但 OpenAI 為了安全可能保留最多 30 天。",
+            "看與刪記憶：Settings → Personalization → Memory 看記憶摘要、逐條刪，或從三點選單選 Delete and turn off memory；刪記憶不會刪對話。",
+            "匯出與刪除：Settings → Data Controls → Export data，連結寄到信箱、24 小時內有效，最久 7 天寄達。刪掉的對話 30 天內永久刪除；刪帳號在 Settings → Account → Delete account，同樣 30 天內刪除。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "Claude：隱私設定、無痕對話、記憶、匯出",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 在 2025 年更新消費者條款後，Free、Pro、Max 的對話可以用於訓練，前提是你允許：新帳號註冊時會被問一次，之後隨時可改；被安全系統標記或自願加入測試計畫的對話是例外。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "關掉訓練：左下角名字 → Settings → Privacy（隱私）→ 關掉 Help improve our AI models。允許時去識別化資料最長保留 5 年，不允許時維持 30 天；刪掉的對話 30 天內從後端刪除。",
+            "開無痕對話：在 Projects 之外開新對話，點右上角的幽靈圖示。不進歷史、不讀寫記憶、即使開著改善模型也不用於訓練，但仍保留 30 天；關掉後不能再打開。",
+            "看與刪記憶：Free、Pro、Max 預設開啟。Settings → Memory 列出 Claude 記得的每個主題（Topics），點進去可編輯或刪除；關掉時會問你要 Pause（暫停）還是 Reset（重設，永久刪除）。",
+            "匯出與刪除：Settings → Privacy → Export data，下載連結寄到信箱、24 小時後失效，限網頁版與桌面版。刪帳號在 Settings → Account → Delete Account。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "link",
+          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "Gemini：活動記錄、暫時對話、記憶、Google 匯出",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 把 Gemini 的對話存放叫「Gemini 系列應用程式活動記錄」，開關名稱是 Keep Activity：年滿 18 歲的個人帳號預設開啟，開著時對話與上傳的檔案會用來改善 Google 的產品與機器學習技術，一部分由人工審閱。說明頁提醒：不要輸入不希望審閱員看到的機密資訊。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "關掉訓練：gemini.google.com → Settings & help→ Activity（活動記錄），關掉 Keep Activity（可選同時刪除活動記錄）。自動刪除預設 18 個月，可改 3 或 36 個月。關掉後對話仍保存 72 小時；人工審閱過的對話不隨活動記錄刪除，另外保留最長 3 年。",
+            "開暫時對話：在 New chat 旁點 Temporary chat（暫時對話），只有個人 Google 帳號能用。不進活動記錄，離開就找不回來，不用於訓練，同樣保留 72 小時。",
+            "看與刪記憶：Settings & help → Personal Intelligence（個人智慧）→ Memory，需要年滿 18 歲、個人帳號並且 Keep Activity 開著。記憶來自過去的對話，要刪就到活動記錄刪對話。",
+            "匯出與刪除：到 takeout.google.com，Deselect all 後勾 Gemini 與 My Activity 裡的 Gemini Apps，連結 7 天內有效；下載不會刪除資料，刪除在活動記錄頁。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "Gmail 與文件側邊欄裡的 Gemini 是另一套規則：Gmail 說明頁寫明它會讀你在 Workspace 裡的內容來回答，但不用這些內容訓練 Gemini 或其他生成式 AI 模型，未經你允許不儲存提示與產出，也不用於廣告；你主動把 Workspace 資料分享給 Gemini 應用程式做個人化時是例外，以 support 頁為準。"
+        },
+        {
+          "type": "link",
+          "text": "Gemini 新手入門：有 Google 帳號就能用，Gmail、Docs 裡怎麼叫出來",
+          "url": "https://mokaair.com/zh-TW/life/gemini-beginner-guide"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-privacy-settings-checklist/diagram-1.svg",
+          "alt": "三欄檢查清單：ChatGPT、Claude、Gemini 各四個開關的位置，關掉訓練、暫時或無痕對話、記憶、匯出與刪除，附各家的保留期限",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右三家、由上到下四件事，照著編號逐一檢查；底下兩行是關掉之後仍要記得的保留期限與公司帳號的差別。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "這件事",
+            "ChatGPT",
+            "Claude",
+            "Gemini"
+          ],
+          "rows": [
+            [
+              "關掉訓練",
+              "Data Controls（預設開）",
+              "Privacy（註冊時選）",
+              "Activity → Keep Activity（預設開）"
+            ],
+            [
+              "暫時／無痕對話",
+              "新對話右上角 Temporary；30 天",
+              "新對話右上角幽靈圖示；30 天",
+              "New chat 旁 Temporary chat；72 小時"
+            ],
+            [
+              "記憶",
+              "Personalization → Memory",
+              "Memory → Topics",
+              "Personal Intelligence → Memory"
+            ],
+            [
+              "匯出與刪除",
+              "Data Controls → Export data；Account → Delete account",
+              "Privacy → Export data；Account → Delete Account",
+              "takeout.google.com；活動記錄頁刪除"
+            ]
+          ],
+          "caption": "2026 年 9 月依 OpenAI 說明中心、Anthropic 隱私中心與 Google 的 Gemini 說明頁整理；選單名稱與位置會隨版本調整，以官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "不管設定怎麼關，都不該貼的東西",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "前面的開關解決「會不會拿去訓練」與「留多久」，解決不了「貼出去就是貼出去了」：對話會離開你的裝置，可能被安全系統標記或人工審閱，帳號被盜或分享連結外流時也一起流出去。判斷方式：出現在別人螢幕上會出事的就不要貼，改用代號、遮掉數字。整份合約或病歷要用公司採購的企業方案。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "絕對不要貼進 AI 對話的東西",
+          "text": "身分證字號、護照號碼、健保卡號；信用卡號、銀行帳號、密碼與一次性驗證碼；公司內部文件、未公開的合約與財報、原始碼與 API 金鑰；客戶名單、員工名冊與他人的姓名加電話或地址；病歷、檢驗報告與用藥紀錄。真的要處理就先去識別化：姓名換代號、號碼打碼。"
+        },
+        {
+          "type": "link",
+          "text": "DeepSeek 是什麼：免費、開源與資料流向，用之前先知道的事",
+          "url": "https://mokaair.com/zh-TW/life/deepseek-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "公司或學校帳號：預設不訓練，但管理員看得到",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "公司或學校配發的帳號規則相反：OpenAI 的 Business、Enterprise、Edu 與 API，Anthropic 的 Team 與 Enterprise，Google Workspace 授權帳號的 Gemini，預設都不用你的對話訓練模型。但管理員看得到：ChatGPT Enterprise 的管理員可以透過 Compliance API 取得對話的稽核記錄，Claude Team 與 Enterprise 的主要擁有者可以匯出成員的對話（含無痕對話），Workspace 管理員可以開關 Gemini、設定保留期限（最長 36 個月）並查看稽核記錄。公司帳號處理公司資料，私事換回個人帳號，以各家官網與公司規範為準。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 說明中心：Data Controls FAQ（Free、Plus、Pro 預設開啟、Settings → Data Controls → Improve the model for everyone、刪帳號 30 天內刪除）",
+          "url": "https://help.openai.com/en/articles/7730893-data-controls-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：Temporary Chat FAQ（右上角 Temporary、不進歷史與記憶、保留最多 30 天）",
+          "url": "https://help.openai.com/en/articles/8914046-temporary-chat-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：Memory FAQ（Settings → Personalization → Memory、Delete and turn off memory、刪記憶不刪對話）",
+          "url": "https://help.openai.com/en/articles/8590148-memory-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：Chat and File Retention Policies in ChatGPT（刪除的對話與帳號 30 天內永久刪除、暫時對話 30 天）",
+          "url": "https://help.openai.com/en/articles/8983778-chat-and-file-retention-policies-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：Exporting your ChatGPT history and data（Data Controls → Export data、連結 24 小時、最久 7 天寄達）",
+          "url": "https://help.openai.com/en/articles/7260999-how-do-i-export-my-chatgpt-history-and-data",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI：Enterprise privacy（Business、Enterprise、Edu 與 API 預設不訓練、Compliance API 的對話稽核記錄）",
+          "url": "https://openai.com/enterprise-privacy/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 隱私中心：Is my data used for model training?（預設不用、安全標記與自願加入的例外、無痕對話不用於訓練）",
+          "url": "https://privacy.claude.com/en/articles/10023580-is-my-data-used-for-model-training",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 隱私中心：How do I change my model improvement privacy settings?（Settings → Privacy → Help improve our AI models、手機路徑相同）",
+          "url": "https://privacy.claude.com/en/articles/12109829-how-do-i-change-my-model-improvement-privacy-settings",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方公告：Updates to Consumer Terms and Privacy Policy（Free、Pro、Max 適用、註冊時選擇、保留 5 年或 30 天、商業條款不適用）",
+          "url": "https://www.anthropic.com/news/updates-to-our-consumer-terms",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 隱私中心：How long do you store my data?（刪除的對話 30 天內從後端刪除、去識別化資料最長 5 年）",
+          "url": "https://privacy.claude.com/en/articles/10023548-how-long-do-you-store-my-data",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Use incognito chats（右上角幽靈圖示、不進歷史與記憶、保留 30 天、所有方案、Projects 之外、企業匯出範圍）",
+          "url": "https://support.claude.com/en/articles/12260368-use-incognito-chats",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Use Claude's chat search and memory（Settings → Memory、Topics 逐條編輯刪除、Pause 與 Reset、Team 與 Enterprise 預設關閉）",
+          "url": "https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 隱私中心：Export your Claude data（Settings → Privacy → Export data、連結 24 小時、限網頁與桌面版、Team 與 Enterprise 只有主要擁有者）",
+          "url": "https://privacy.claude.com/en/articles/9450526-how-can-i-export-my-claude-data",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google Gemini 應用程式說明：Gemini Apps Privacy Hub（Keep Activity、資料用途、人工審閱保留 3 年、關閉後 72 小時、機密資訊提醒、暫時對話不用於訓練）",
+          "url": "https://support.google.com/gemini/answer/13594961",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google Gemini 應用程式說明：Manage & delete your activity in Gemini Apps（18 歲以上預設開啟、Turn off 與 Turn off and delete activity、自動刪除 3、18、36 個月、關閉後 72 小時）",
+          "url": "https://support.google.com/gemini/answer/13278892",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google Gemini 應用程式說明：Use Gemini Apps（New chat 旁的 Temporary chat、限個人帳號、離開後找不回來、不能用 Gems 與個人化）",
+          "url": "https://support.google.com/gemini/answer/13275745",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google Gemini 應用程式說明：Get personalization with memory of your past Gemini chats（Settings & help → Personal Intelligence → Memory、18 歲以上個人帳號、到活動記錄刪除）",
+          "url": "https://support.google.com/gemini/answer/16598469",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google Gemini 應用程式說明：Download your Gemini Apps data（Takeout 勾 Gemini 與 Gemini Apps、連結 7 天有效、下載不會刪除）",
+          "url": "https://support.google.com/gemini/answer/16920332",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google Gmail 說明：Learn how Gemini in Gmail, Calendar, Chat, Docs, Drive, Sheets, Slides, Meet & Vids protects your data（不用於訓練、未經允許不儲存、不用於廣告）",
+          "url": "https://support.google.com/mail/answer/14615114",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google Workspace 說明：Generative AI in Google Workspace Privacy Hub（Workspace 資料不用於訓練、不經人工審閱、管理員開關、保留期限最長 36 個月、稽核記錄）",
+          "url": "https://knowledge.workspace.google.com/admin/generative-ai/generative-ai-in-google-workspace-privacy-hub",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}

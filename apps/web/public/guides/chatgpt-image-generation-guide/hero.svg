@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">用一句話畫出一張圖 / Describe it in one line, get a picture</title>
+  <desc id="desc">米色底上有一個深綠色邊框的白色畫框，畫框左下方有一個淡藍色的調色盤，盤上有紅、橘、綠、藍、深綠五個顏料圓點和一個拇指孔；畫框右上方有一個白色對話泡泡，泡泡裡有三行深色的文字線條，代表用文字描述就能畫圖。畫框右下角外側斜放著一支橘色的筆。畫面下方寫著「用一句話畫出一張圖」。沒有任何產品標誌或真人。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- soft background shapes -->
+  <circle cx="300" cy="200" r="120" fill="#E3F0EF"/>
+  <circle cx="1330" cy="640" r="150" fill="#E6F0F7"/>
+
+  <!-- picture frame -->
+  <rect x="400" y="120" width="800" height="560" rx="28" fill="#FFFFFF" stroke="#0D6B68" stroke-width="16"/>
+  <rect x="448" y="168" width="704" height="464" rx="14" fill="none" stroke="#E3F0EF" stroke-width="8"/>
+
+  <!-- palette -->
+  <path d="M 700 560 C 700 440 560 380 520 420 C 470 470 500 520 470 560 C 440 600 470 640 560 640 C 640 640 700 620 700 560 Z" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="10"/>
+  <circle cx="560" cy="580" r="26" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="6"/>
+  <circle cx="530" cy="470" r="20" fill="#B8442D"/>
+  <circle cx="590" cy="450" r="20" fill="#D97A2B"/>
+  <circle cx="645" cy="500" r="20" fill="#2E7D5B"/>
+  <circle cx="650" cy="565" r="20" fill="#2F6F9F"/>
+  <circle cx="610" cy="605" r="20" fill="#0D6B68"/>
+
+  <!-- speech bubble with three text lines -->
+  <path d="M 720 220 H 1090 A 24 24 0 0 1 1114 244 V 396 A 24 24 0 0 1 1090 420 H 820 L 770 470 L 780 420 H 720 A 24 24 0 0 1 696 396 V 244 A 24 24 0 0 1 720 220 Z" fill="#FFFFFF" stroke="#102A2B" stroke-width="10"/>
+  <rect x="740" y="262" width="320" height="22" rx="11" fill="#102A2B"/>
+  <rect x="740" y="308" width="250" height="22" rx="11" fill="#5C6B6B"/>
+  <rect x="740" y="354" width="180" height="22" rx="11" fill="#5C6B6B"/>
+  <rect x="930" y="354" width="22" height="22" rx="4" fill="#0D6B68"/>
+
+  <!-- pen beside the frame -->
+  <g transform="rotate(-40 1230 640)">
+    <rect x="1180" y="620" width="240" height="44" rx="22" fill="#D97A2B"/>
+    <rect x="1180" y="620" width="60" height="44" rx="22" fill="#B8442D"/>
+    <path d="M 1420 620 L 1470 642 L 1420 664 Z" fill="#102A2B"/>
+  </g>
+
+  <!-- caption -->
+  <text x="800" y="820" font-size="48" font-weight="700" fill="#102A2B" text-anchor="middle">用一句話畫出一張圖</text>
+</svg>

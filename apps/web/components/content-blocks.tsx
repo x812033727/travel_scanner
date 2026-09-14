@@ -7,6 +7,7 @@ import {
   type RichContentBlock,
 } from "@/lib/content-blocks";
 import { siteUrl } from "@/lib/seo";
+import { GuideImage } from "@/components/guides/guide-image";
 
 /** The words the renderer cannot invent: a credit prefix and one name per callout tone. A
  *  caller that renders only the four shared blocks (the legal pages) passes nothing. */
@@ -87,9 +88,7 @@ export function ContentBlocks({
       const caption = block.caption?.trim() ?? "";
       return (
         <figure key={index} className="my-2">
-          {/* Plain <img>: no image optimizer in the standalone build; the stored size reserves the box. */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={src} alt={block.alt} width={block.width} height={block.height} loading="lazy" decoding="async" className="h-auto w-full rounded-2xl" />
+          <GuideImage src={src} alt={block.alt} width={block.width} height={block.height} loading="lazy" decoding="async" className="h-auto w-full rounded-2xl" />
           {caption || block.credit ? (
             <figcaption className="mt-2 text-sm leading-6 text-[var(--muted)]">
               {caption}

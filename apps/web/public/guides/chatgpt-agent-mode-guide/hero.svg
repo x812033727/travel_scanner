@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">ChatGPT 替你上網比價、填表、訂位 / A cursor and a chat bubble operating a web page for you</title>
+  <desc id="desc">自繪插圖：畫面中央是一個白色的網頁框，上緣有三個小圓點代表瀏覽器視窗，框裡有幾條代表文字的灰色橫線與一個綠色的「送出」按鈕；一個藍色的對話泡泡從左上方靠近網頁框，泡泡裡有三個點代表正在說話，一個深色的箭頭游標從對話泡泡延伸出來、停在網頁框裡的按鈕旁邊，代表 AI 代理照著你的指令在網頁上操作。網頁框右邊有一台橘色的購物車與一張列著勾選格的表單，代表比價與填表兩種任務。底色是米白色，下方有一行字「替你比價、填表、訂位」。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- soft background shapes -->
+  <circle cx="1240" cy="220" r="150" fill="#E3F0EF"/>
+  <circle cx="330" cy="680" r="120" fill="#E6F0F7"/>
+
+  <!-- browser window -->
+  <rect x="470" y="170" width="660" height="470" rx="24" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+  <rect x="470" y="170" width="660" height="70" rx="24" fill="#E3F0EF"/>
+  <rect x="470" y="216" width="660" height="24" fill="#E3F0EF"/>
+  <line x1="470" y1="240" x2="1130" y2="240" stroke="#0D6B68" stroke-width="6"/>
+  <circle cx="516" cy="205" r="12" fill="#B8442D"/>
+  <circle cx="556" cy="205" r="12" fill="#D97A2B"/>
+  <circle cx="596" cy="205" r="12" fill="#2E7D5B"/>
+  <rect x="640" y="190" width="440" height="30" rx="15" fill="#FFFFFF"/>
+
+  <!-- page content lines -->
+  <rect x="530" y="290" width="360" height="22" rx="11" fill="#5C6B6B"/>
+  <rect x="530" y="340" width="520" height="16" rx="8" fill="#C9D3D3"/>
+  <rect x="530" y="378" width="460" height="16" rx="8" fill="#C9D3D3"/>
+  <rect x="530" y="416" width="500" height="16" rx="8" fill="#C9D3D3"/>
+  <!-- input field -->
+  <rect x="530" y="470" width="340" height="52" rx="12" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="5"/>
+  <rect x="548" y="490" width="200" height="12" rx="6" fill="#2F6F9F" opacity="0.5"/>
+  <!-- submit button -->
+  <rect x="900" y="470" width="170" height="52" rx="26" fill="#2E7D5B"/>
+  <rect x="950" y="490" width="70" height="12" rx="6" fill="#FFFFFF"/>
+
+  <!-- chat bubble -->
+  <path d="M 200 150 h 330 a 40 40 0 0 1 40 40 v 130 a 40 40 0 0 1 -40 40 h -190 l -70 60 v -60 h -70 a 40 40 0 0 1 -40 -40 v -130 a 40 40 0 0 1 40 -40 z" fill="#2F6F9F"/>
+  <circle cx="300" cy="255" r="16" fill="#FFFFFF"/>
+  <circle cx="365" cy="255" r="16" fill="#FFFFFF"/>
+  <circle cx="430" cy="255" r="16" fill="#FFFFFF"/>
+
+  <!-- path from bubble to cursor -->
+  <path d="M 540 300 C 640 320, 700 400, 800 470" fill="none" stroke="#2F6F9F" stroke-width="8" stroke-dasharray="18 16" stroke-linecap="round"/>
+
+  <!-- cursor -->
+  <path d="M 800 470 l 0 96 l 26 -24 l 20 46 l 26 -12 l -20 -46 l 34 -4 z" fill="#102A2B" stroke="#F7F1E8" stroke-width="6" stroke-linejoin="round"/>
+
+  <!-- shopping cart -->
+  <g transform="translate(1180 300)">
+    <path d="M 0 0 h 40 l 36 130 h 160 l 34 -100 h -210" fill="none" stroke="#D97A2B" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="84" y="46" width="140" height="70" rx="10" fill="#D97A2B" opacity="0.25"/>
+    <circle cx="100" cy="176" r="18" fill="#D97A2B"/>
+    <circle cx="214" cy="176" r="18" fill="#D97A2B"/>
+  </g>
+
+  <!-- form sheet -->
+  <g transform="translate(1180 520)">
+    <rect x="0" y="0" width="230" height="200" rx="18" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="8"/>
+    <rect x="28" y="36" width="34" height="34" rx="8" fill="none" stroke="#2E7D5B" stroke-width="6"/>
+    <path d="M 36 54 l 10 10 l 18 -20" fill="none" stroke="#2E7D5B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="80" y="45" width="120" height="16" rx="8" fill="#C9D3D3"/>
+    <rect x="28" y="92" width="34" height="34" rx="8" fill="none" stroke="#2E7D5B" stroke-width="6"/>
+    <path d="M 36 110 l 10 10 l 18 -20" fill="none" stroke="#2E7D5B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="80" y="101" width="100" height="16" rx="8" fill="#C9D3D3"/>
+    <rect x="28" y="148" width="34" height="34" rx="8" fill="none" stroke="#D97A2B" stroke-width="6"/>
+    <rect x="80" y="157" width="110" height="16" rx="8" fill="#C9D3D3"/>
+  </g>
+
+  <!-- one line of text -->
+  <text x="800" y="790" font-size="52" font-weight="700" fill="#102A2B" text-anchor="middle">替你比價、填表、訂位</text>
+</svg>

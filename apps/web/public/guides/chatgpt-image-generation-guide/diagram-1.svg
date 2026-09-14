@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">提示詞的四個部件與修圖四步 / Four parts of an image prompt and the four-step edit loop</title>
+  <desc id="desc">上半部是提示詞的四個部件，由左到右用加號連起來。部件 1 主體：畫什麼、幾個、在哪裡、正在做什麼，用具體名詞，例如一杯珍珠奶茶放在木桌上。部件 2 風格：攝影或插畫、水彩或扁平向量、色調與光線，一次只講一種。部件 3 構圖與比例：橫式或直式，比例 1:1、4:3、16:9 或 3:4，主體放哪裡，哪裡留白放字。部件 4 文字內容：要不要有字，要就字少、字大、寫清楚，不要就明說不放任何文字，中文字另外加最穩。下半部是修圖四步，由左到右用箭頭串起。步驟 1 上傳照片：按加號選 Add photos and files，支援 PNG、JPEG、GIF，單張最大 20 MB。步驟 2 說要改什麼：一次只改一件事，例如背景換成咖啡店窗邊，要改特定位置就把位置寫出來。步驟 3 說要保留什麼：人物、商品、字樣、比例，例如桌子與商品完全不要動，光線方向跟原圖一致。步驟 4 看結果再修：在同一個對話接著說，放大檢查臉與字樣，走樣了就回到步驟 2 重講，圖上用一條回頭的箭頭表示。最下面兩行補充：圖上的中文字常缺筆畫或出現不存在的字，先請它留白，字用簡報軟體另外加；不能畫未經同意的真人肖像、他人商標與版權角色、暴力色情，產出帶 C2PA 中繼資料與 SynthID 隱形浮水印。2026 年 9 月依 OpenAI help center 查證。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+    <marker id="arrowred" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#B8442D"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">提示詞的 4 個部件與修圖 4 步（2026 年 9 月查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Four parts of an image prompt, and the four-step edit loop that keeps what matters</text>
+
+  <!-- section label: prompt parts -->
+  <text x="48" y="128" font-size="19" font-weight="700" fill="#102A2B">提示詞的 4 個部件　Prompt parts</text>
+
+  <!-- part 1 主體 -->
+  <rect x="48" y="142" width="340" height="236" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="88" cy="182" r="22" fill="#0D6B68"/>
+  <text x="88" y="190" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+  <text x="122" y="190" font-size="20" font-weight="700" fill="#0B4F4D">主體</text>
+  <text x="122" y="214" font-size="15" fill="#5C6B6B">Subject</text>
+  <text x="72" y="256" font-size="16" fill="#102A2B">畫什麼、幾個、在哪裡</text>
+  <text x="72" y="284" font-size="16" fill="#102A2B">正在做什麼，用具體名詞</text>
+  <text x="72" y="312" font-size="16" fill="#102A2B">例：一杯珍珠奶茶</text>
+  <text x="72" y="340" font-size="16" fill="#102A2B">放在木桌上</text>
+  <text x="412" y="270" font-size="30" font-weight="700" fill="#5C6B6B" text-anchor="middle">+</text>
+
+  <!-- part 2 風格 -->
+  <rect x="436" y="142" width="340" height="236" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <circle cx="476" cy="182" r="22" fill="#2F6F9F"/>
+  <text x="476" y="190" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+  <text x="510" y="190" font-size="20" font-weight="700" fill="#1F4E73">風格</text>
+  <text x="510" y="214" font-size="15" fill="#5C6B6B">Style</text>
+  <text x="460" y="256" font-size="16" fill="#102A2B">攝影或插畫</text>
+  <text x="460" y="284" font-size="16" fill="#102A2B">水彩或扁平向量</text>
+  <text x="460" y="312" font-size="16" fill="#102A2B">色調、光線、氣氛</text>
+  <text x="460" y="340" font-size="16" fill="#102A2B">一次只講一種風格</text>
+  <text x="800" y="270" font-size="30" font-weight="700" fill="#5C6B6B" text-anchor="middle">+</text>
+
+  <!-- part 3 構圖與比例 -->
+  <rect x="824" y="142" width="340" height="236" rx="14" fill="#FCEFE4" stroke="#D97A2B" stroke-width="4"/>
+  <circle cx="864" cy="182" r="22" fill="#D97A2B"/>
+  <text x="864" y="190" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+  <text x="898" y="190" font-size="20" font-weight="700" fill="#8A4A16">構圖與比例</text>
+  <text x="898" y="214" font-size="15" fill="#5C6B6B">Composition and ratio</text>
+  <text x="848" y="256" font-size="16" fill="#102A2B">橫式或直式</text>
+  <text x="848" y="284" font-size="16" fill="#102A2B">1:1、4:3、16:9、3:4</text>
+  <text x="848" y="312" font-size="16" fill="#102A2B">主體放哪裡</text>
+  <text x="848" y="340" font-size="16" fill="#102A2B">哪裡留白給你放字</text>
+  <text x="1188" y="270" font-size="30" font-weight="700" fill="#5C6B6B" text-anchor="middle">+</text>
+
+  <!-- part 4 文字內容 -->
+  <rect x="1212" y="142" width="340" height="236" rx="14" fill="#E6F2EC" stroke="#2E7D5B" stroke-width="4"/>
+  <circle cx="1252" cy="182" r="22" fill="#2E7D5B"/>
+  <text x="1252" y="190" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+  <text x="1286" y="190" font-size="20" font-weight="700" fill="#1F5A40">文字內容</text>
+  <text x="1286" y="214" font-size="15" fill="#5C6B6B">Text on the image</text>
+  <text x="1236" y="256" font-size="16" fill="#102A2B">要：字少、字大、寫清楚</text>
+  <text x="1236" y="284" font-size="16" fill="#102A2B">不要：明說「不放任何文字」</text>
+  <text x="1236" y="312" font-size="16" fill="#B8442D">中文字常出錯</text>
+  <text x="1236" y="340" font-size="16" fill="#B8442D">另外用其他工具加上去最穩</text>
+
+  <!-- section label: edit loop -->
+  <text x="48" y="436" font-size="19" font-weight="700" fill="#102A2B">修圖 4 步　Edit loop</text>
+
+  <!-- step 1 上傳照片 -->
+  <rect x="48" y="450" width="340" height="200" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="88" cy="490" r="22" fill="#0D6B68"/>
+  <text x="88" y="498" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+  <text x="122" y="498" font-size="20" font-weight="700" fill="#0B4F4D">上傳照片</text>
+  <text x="122" y="522" font-size="15" fill="#5C6B6B">Upload</text>
+  <text x="72" y="562" font-size="16" fill="#102A2B">「+」→ Add photos &amp; files</text>
+  <text x="72" y="590" font-size="16" fill="#102A2B">PNG、JPEG、GIF</text>
+  <text x="72" y="618" font-size="16" fill="#102A2B">單張最大 20 MB</text>
+  <path d="M 392 550 L 430 550" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- step 2 說要改什麼 -->
+  <rect x="436" y="450" width="340" height="200" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <circle cx="476" cy="490" r="22" fill="#2F6F9F"/>
+  <text x="476" y="498" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+  <text x="510" y="498" font-size="20" font-weight="700" fill="#1F4E73">說要改什麼</text>
+  <text x="510" y="522" font-size="15" fill="#5C6B6B">What to change</text>
+  <text x="460" y="562" font-size="16" fill="#102A2B">一次只改一件事</text>
+  <text x="460" y="590" font-size="16" fill="#102A2B">例：背景換成咖啡店窗邊</text>
+  <text x="460" y="618" font-size="16" fill="#102A2B">要改特定位置就寫出位置</text>
+  <path d="M 780 550 L 818 550" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- step 3 說要保留什麼 -->
+  <rect x="824" y="450" width="340" height="200" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <circle cx="864" cy="490" r="22" fill="#D97A2B"/>
+  <text x="864" y="498" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+  <text x="898" y="498" font-size="20" font-weight="700" fill="#8A4A16">說要保留什麼</text>
+  <text x="898" y="522" font-size="15" fill="#5C6B6B">What to keep</text>
+  <text x="848" y="562" font-size="16" fill="#102A2B">人物、商品、字樣、比例</text>
+  <text x="848" y="590" font-size="16" fill="#102A2B">例：桌子與商品完全不要動</text>
+  <text x="848" y="618" font-size="16" fill="#102A2B">光線方向跟原圖一致</text>
+  <path d="M 1168 550 L 1206 550" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- step 4 看結果再修 -->
+  <rect x="1212" y="450" width="340" height="200" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <circle cx="1252" cy="490" r="22" fill="#2E7D5B"/>
+  <text x="1252" y="498" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+  <text x="1286" y="498" font-size="20" font-weight="700" fill="#1F5A40">看結果再修</text>
+  <text x="1286" y="522" font-size="15" fill="#5C6B6B">Check, then refine</text>
+  <text x="1236" y="562" font-size="16" fill="#102A2B">在同一個對話接著說</text>
+  <text x="1236" y="590" font-size="16" fill="#102A2B">放大檢查臉與字樣</text>
+  <text x="1236" y="618" font-size="16" fill="#102A2B">走樣了就回到上一版</text>
+
+  <!-- loop back from step 4 to step 2 -->
+  <path d="M 1382 654 L 1382 700 L 606 700 L 606 662" fill="none" stroke="#B8442D" stroke-width="4" stroke-dasharray="12 8" marker-end="url(#arrowred)"/>
+  <text x="994" y="732" font-size="16" fill="#B8442D" text-anchor="middle">走樣了就回到步驟 2，只講要改的那一件事，不要重頭描述整張圖</text>
+
+  <!-- notes -->
+  <text x="48" y="790" font-size="15" fill="#5C6B6B">圖上的中文字常缺筆畫或出現不存在的字：先請它留白，字用簡報軟體或修圖 App 另外加上去。</text>
+  <text x="48" y="818" font-size="15" fill="#5C6B6B">不能畫：未經同意的真人肖像、他人的商標與版權角色、暴力色情；產出帶 C2PA 中繼資料與 SynthID 隱形浮水印。</text>
+  <text x="48" y="846" font-size="15" fill="#5C6B6B">入口、格式與上限依 OpenAI help center 查證，之後可能變動；免費版的每日張數官網沒有寫死，以官網為準。</text>
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

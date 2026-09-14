@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">一般回答與推理回答的流程，以及三家的推理開關在哪 / Plain answers vs. reasoning answers, and where each vendor's switch lives</title>
+  <desc id="desc">上半部左右並排兩條流程。左邊是一般回答：問題直接連到答案，一次寫到底，沒有草稿、沒有回頭檢查，快而便宜，適合改寫、翻譯、閒聊、簡單查詢。右邊是推理回答：問題先進入一個「內部思考（推理 token）」的方框，裡面依序是規劃（拆題、試幾種做法）、檢查（對照每一個條件）、修正（放棄走不通的路），再連到答案；你在畫面上看到的是「思考中」指示與可展開的思考摘要，代價是推理 token 按輸出計價，慢、貴、偶爾想太多，適合多步驟數學、規劃、程式除錯、多條件決策。下半部是三家在聊天工具裡的名稱與開關位置，依 2026 年 9 月 13 日官網整理。OpenAI（ChatGPT）：名稱是 reasoning effort（推理強度）；免費版與 Go 方案用輸入框的 Think 按鈕，由 GPT-5.6 Luna 多想一下；付費方案用推理滑桿 Medium、High、Extra High，由 GPT-5.6 Sol 回答；自動加推理的開關在設定 → 一般 → Higher intelligence；API 的等級從 none 到 max，GPT-6 Astra 不能關。Anthropic（Claude）：名稱是 thinking，深淺用 effort 調；開關在送出鈕旁的模型名稱 → Effort → Thinking 開關；Opus 5、Sonnet 5、Fable 5.1 預設開，Fable 5.1 關不掉，Haiku 4.5 要手動開；effort 分 Low、Medium、High、Extra high、Max；畫面上有 Thinking 指示與計時器、可展開的摘要。Google（Gemini）：名稱是 thinking level；開關在文字框下方的模型名稱 → 再點一次 → Thinking level，分 Standard（預設）、Extended、Deep Think；Deep Think 只給 AI Ultra 方案、需先選 Pro 模型、要等幾分鐘、好了會通知；API 的等級從 minimal 到 high，3.1 Pro 預設 high。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">一般回答與推理回答：多了哪一段，開關在哪</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Plain answer vs. reasoning answer: the extra step in the middle, and where each vendor's switch lives</text>
+
+  <!-- left flow: plain answer -->
+  <text x="60" y="132" font-size="20" font-weight="700" fill="#1F4E73">一般回答　Plain answer</text>
+  <rect x="60" y="205" width="180" height="90" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="150" y="258" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">問題</text>
+  <line x1="250" y1="250" x2="560" y2="250" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="405" y="238" font-size="15" fill="#5C6B6B" text-anchor="middle">一次寫到底</text>
+  <rect x="570" y="205" width="180" height="90" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="660" y="258" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">答案</text>
+  <text x="60" y="368" font-size="16" fill="#102A2B">沒有草稿、沒有回頭檢查、也不會換一條路</text>
+  <text x="60" y="396" font-size="16" fill="#2E7D5B">快、便宜；簡單的題目不會因為不想而變差</text>
+  <text x="60" y="424" font-size="16" fill="#102A2B">適合：改寫、翻譯、閒聊、簡單查詢、分類</text>
+
+  <!-- right flow: reasoning answer -->
+  <text x="840" y="132" font-size="20" font-weight="700" fill="#0B4F4D">推理回答　Reasoning answer</text>
+  <rect x="840" y="205" width="150" height="90" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="915" y="258" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">問題</text>
+  <line x1="1000" y1="250" x2="1052" y2="250" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="1060" y="165" width="270" height="170" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1195" y="200" font-size="18" font-weight="700" fill="#0B4F4D" text-anchor="middle">內部思考（推理 token）</text>
+  <text x="1195" y="240" font-size="16" fill="#102A2B" text-anchor="middle">規劃：拆題、試幾種做法</text>
+  <text x="1195" y="270" font-size="16" fill="#102A2B" text-anchor="middle">檢查：對照每一個條件</text>
+  <text x="1195" y="300" font-size="16" fill="#102A2B" text-anchor="middle">修正：放棄走不通的路</text>
+  <line x1="1340" y1="250" x2="1382" y2="250" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="1390" y="205" width="150" height="90" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1465" y="258" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">答案</text>
+  <text x="840" y="368" font-size="16" fill="#102A2B">你看到的：「思考中」指示與可展開的思考摘要</text>
+  <text x="840" y="396" font-size="16" fill="#B8442D">代價：推理 token 按輸出計價，慢、貴、偶爾想太多</text>
+  <text x="840" y="424" font-size="16" fill="#102A2B">適合：多步驟數學、規劃、程式除錯、多條件決策</text>
+
+  <line x1="60" y1="456" x2="1540" y2="456" stroke="#5C6B6B" stroke-width="2" stroke-dasharray="8 8"/>
+
+  <!-- bottom: three vendors -->
+  <text x="60" y="492" font-size="20" font-weight="700" fill="#102A2B">三家在聊天工具裡的名稱與開關位置（2026 年 9 月 13 日官網）</text>
+
+  <rect x="60" y="512" width="480" height="320" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="84" y="550" font-size="18" font-weight="700" fill="#1F4E73">OpenAI（ChatGPT）</text>
+  <text x="84" y="586" font-size="16" fill="#102A2B">名稱：reasoning effort（推理強度）</text>
+  <text x="84" y="614" font-size="16" fill="#102A2B">免費、Go：輸入框的 Think 按鈕</text>
+  <text x="84" y="642" font-size="16" fill="#5C6B6B">　（由 GPT-5.6 Luna 多想一下）</text>
+  <text x="84" y="670" font-size="16" fill="#102A2B">付費：推理滑桿 Medium／High／Extra High</text>
+  <text x="84" y="698" font-size="16" fill="#5C6B6B">　（由 GPT-5.6 Sol 回答）</text>
+  <text x="84" y="726" font-size="16" fill="#102A2B">自動加推理：設定 → 一般 → Higher intelligence</text>
+  <text x="84" y="754" font-size="16" fill="#102A2B">API：none 到 max；GPT-6 Astra 不能關</text>
+  <text x="84" y="782" font-size="15" fill="#5C6B6B">推理 token 按輸出計價</text>
+
+  <rect x="560" y="512" width="480" height="320" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="584" y="550" font-size="18" font-weight="700" fill="#0B4F4D">Anthropic（Claude）</text>
+  <text x="584" y="586" font-size="16" fill="#102A2B">名稱：thinking，深淺用 effort 調</text>
+  <text x="584" y="614" font-size="16" fill="#102A2B">送出鈕旁的模型名稱 → Effort → Thinking 開關</text>
+  <text x="584" y="642" font-size="16" fill="#102A2B">預設開：Opus 5、Sonnet 5、Fable 5.1</text>
+  <text x="584" y="670" font-size="16" fill="#5C6B6B">　（Fable 5.1 關不掉；Haiku 4.5 要手動開）</text>
+  <text x="584" y="698" font-size="16" fill="#102A2B">effort：Low／Medium／High／Extra high／Max</text>
+  <text x="584" y="726" font-size="16" fill="#102A2B">畫面：Thinking 指示＋計時器、可展開摘要</text>
+  <text x="584" y="754" font-size="16" fill="#102A2B">Low、Medium 較省額度；High 是建議值</text>
+  <text x="584" y="782" font-size="15" fill="#5C6B6B">思考 token 按輸出計價</text>
+
+  <rect x="1060" y="512" width="480" height="320" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1084" y="550" font-size="18" font-weight="700" fill="#2E7D5B">Google（Gemini）</text>
+  <text x="1084" y="586" font-size="16" fill="#102A2B">名稱：thinking level</text>
+  <text x="1084" y="614" font-size="16" fill="#102A2B">文字框下方的模型名稱 → 再點一次 → Thinking level</text>
+  <text x="1084" y="642" font-size="16" fill="#102A2B">Standard（預設）／Extended／Deep Think</text>
+  <text x="1084" y="670" font-size="16" fill="#102A2B">Deep Think：AI Ultra 方案、需先選 Pro 模型</text>
+  <text x="1084" y="698" font-size="16" fill="#5C6B6B">　（等幾分鐘，好了會通知）</text>
+  <text x="1084" y="726" font-size="16" fill="#102A2B">API：minimal 到 high；3.1 Pro 預設 high</text>
+  <text x="1084" y="754" font-size="16" fill="#102A2B">越高的思考等級用掉越多額度</text>
+  <text x="1084" y="782" font-size="15" fill="#5C6B6B">輸出價格含思考 token</text>
+
+  <text x="1540" y="870" font-size="15" fill="#5C6B6B" text-anchor="end">© Mokaair 製圖 2026</text>
+</svg>

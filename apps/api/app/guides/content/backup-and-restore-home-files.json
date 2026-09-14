@@ -1,0 +1,149 @@
+{
+  "slug": "backup-and-restore-home-files",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "software",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "家庭檔案備份別只看同步完成：做一次還原，才知道能不能找回",
+      "description": "把原檔、同步副本與可恢復版本分清楚。從重要檔案清單、備份位置，到抽樣還原的檢查，建立自己真的能使用的資料保護方式。",
+      "hero": {
+        "src": "/guides/backup-and-restore-home-files/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "alt": "筆電、外接硬碟、資料夾副本與紙雕雲朵（AI 生成示意插畫，非實拍）",
+        "credit": {
+          "author": "Mokaair · AI 生成示意圖",
+          "license": "AI 生成，非實拍"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "檔案旁邊有同步圖示，容易讓人以為已經萬無一失。但同步的用途是讓位置之間保持一致，備份則要回答另一個問題：原檔不見或內容改錯時，有沒有一份可以找回。這篇聚焦個人與家庭檔案，不處理公司備份政策，也不把雲端容量大小當作安全程度的保證。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先列出不能重新取得的資料"
+        },
+        {
+          "type": "paragraph",
+          "text": "從自己寫的檔案、家庭照片和重要紀錄開始，區分哪些可重新下載、哪些只有自己手上這一份。記下它們目前在哪裡、使用什麼帳號、是否有其他人需要取得。備份不用等資料夾完全整理好才開始；只要能辨識重要原檔，就可以先建立第二份可核對的副本，再逐步改善分類。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Microsoft 的備份說明區分 Windows Backup、File History 與系統恢復等用途。選工具前要讀它實際保護哪些資料、存到哪裡以及如何還原，不把設定備份或系統還原點當成所有檔案都有副本。若檔案只在雲端、裝置上是按需下載狀態，也要確認選定工具是否真的取得內容，而非只看到檔案名稱。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/backup-and-restore-home-files/diagram-1.svg",
+          "alt": "四步驟流程：列重要資料、確認副本、還原抽查、定期再查",
+          "width": 1600,
+          "height": 900,
+          "caption": "圖中步驟：01 列重要資料 → 02 確認副本 → 03 還原抽查 → 04 定期再查。編輯建議的處理順序；示意圖不代表地理距離、服務保證或效果實測。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把位置、版本與帳號分開檢查"
+        },
+        {
+          "type": "table",
+          "header": [
+            "問題",
+            "要確認的內容",
+            "常見誤解"
+          ],
+          "rows": [
+            [
+              "存在哪裡",
+              "另一個裝置或服務是否有完整資料",
+              "同硬碟另一個資料夾就足夠"
+            ],
+            [
+              "可回到哪一版",
+              "版本與刪除保留條件",
+              "同步成功就永遠能撤回"
+            ],
+            [
+              "誰能讀取",
+              "帳號與必要解鎖方式",
+              "記得登入就代表其他人也能取得"
+            ],
+            [
+              "如何還原",
+              "實際操作與目的位置",
+              "有備份畫面就不用試"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "text": "不同副本如果都依賴同一臺裝置或同一個帳號，裝置故障、失竊或無法登入時，仍可能一起失去取得能力。可以依需求安排不同位置的副本，並儲存必要的恢復方式。涉及敏感資料時，權限與加密也要一起考慮；不要為了方便備份，就把私密資料放進公開共享資料夾。具體保留期限以所用產品與帳號方案為準。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "抽樣還原到另一個資料夾"
+        },
+        {
+          "type": "paragraph",
+          "text": "先選沒有敏感內容的測試檔案，讓它經過正常備份，再把副本還原到獨立資料夾，避免覆蓋原檔。開啟檢查文字、圖片或附件是否完整；照片可以檢視尺寸和拍攝資訊是否符合需要。接著再從真正重要資料中抽樣驗證，記下測試日期、備份來源與還原結果。這些紀錄比「應該有備份」更有用。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "別用唯一原檔做刪除演練",
+          "text": "測試恢復時用新建測試檔，或先確認有可讀的獨立副本。還原到新位置核對內容，不要直接把正在使用的資料全部覆蓋。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把檢查排成可維持的習慣"
+        },
+        {
+          "type": "paragraph",
+          "text": "每次增加新裝置、搬移資料夾或變更帳號後，重新確認它是否仍在備份範圍。備份磁碟要能辨識，不和臨時交換檔案的隨身碟混用；使用外接裝置時按工具指引完成與退出。家庭共同使用的資料，可寫一份簡短取得說明，但不要把所有密碼直接放在同一份未保護檔案裡。"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "列出重要資料與原始位置。",
+            "讀清工具範圍、保留條件與還原方式。",
+            "在獨立位置還原並開啟核對。",
+            "裝置或資料結構變動後重新檢查。"
+          ]
+        },
+        {
+          "type": "link",
+          "text": "照片整理前，先確認副本再刪重複",
+          "url": "https://mokaair.com/zh-TW/life/phone-photo-declutter-workflow"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Microsoft：Windows 備份、還原與復原方式",
+          "url": "https://support.microsoft.com/en-US/Windows/Experience/Backup-Recovery/backup-restore-and-recovery-in-windows",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft：File History 備份及還原",
+          "url": "https://support.microsoft.com/en-au/windows/backup-and-restore-with-file-history-7bf065bf-f1ea-0a78-c1cf-7dcf51cc8bfc",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

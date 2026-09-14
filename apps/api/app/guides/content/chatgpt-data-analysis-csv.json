@@ -1,0 +1,361 @@
+{
+  "slug": "chatgpt-data-analysis-csv",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "ChatGPT 資料分析：上傳 CSV 讓它跑程式畫圖表",
+      "description": "不會寫程式也能讓 ChatGPT 的資料分析（Data analysis）自己寫 Python 算數字、畫圖表。依 2026 年 9 月的官網說明整理方案、試算表約 50 MB 與免費版每天 3 個檔案的上限、互動圖表與下載 CSV、PNG、xlsx 的做法；教你把 Big5 存成 UTF-8、統一日期與民國年，用五個示範任務從描述資料做到找異常，並要它列出程式碼與假設來驗證。",
+      "hero": {
+        "src": "/guides/chatgpt-data-analysis-csv/hero.jpg",
+        "alt": "一個白色檔案圖示的上緣長出三根不同顏色的長條與一條帶圓點的藍色折線，右側有一個墨綠色對話泡泡，米色底，下方寫著「讓它跑程式畫圖」",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "手上有門市銷售、班級成績、家庭記帳或問卷的 CSV 或 Excel，想知道每月每家分店賣了多少、哪個月特別低，但不會寫程式，這篇回答的就是這件事：把檔案交給 ChatGPT 的資料分析功能，用白話描述任務，讓它自己寫 Python 跑出表格與圖。結論是三句話：檔案先整理成第一列是標題、一格一個值、UTF-8 編碼；任務一次描述一件事，先問資料長什麼樣再問結論；每個數字都要它列出用到的程式碼與假設，再自己抽幾筆對照。"
+        },
+        {
+          "type": "paragraph",
+          "text": "功能名稱、方案、檔案上限、互動圖表與下載方式，都在 2026 年 9 月依 OpenAI help center 與官方公告查證。讀完你會用同一份檔案做完五個任務：描述資料、清理與缺值處理、分組加總與樞紐、畫圖、找異常值與相關性，每個都附提示詞全文、它會做什麼、怎麼驗證；最後是它最常錯的五種地方與上傳前的去識別化。PDF 摘要與檔案上傳的基本規則在檔案上傳那一篇。"
+        },
+        {
+          "type": "heading",
+          "text": "功能在哪、怎麼開、哪些方案能用、上限在哪",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這個功能在 help center 叫「資料分析」（Data analysis），前身是 Code Interpreter，後來改名 Advanced Data Analysis，三個名字指的是同一件事。它不用另外開：在輸入框按「+」加入試算表，或直接用文字要它算數字、畫圖，需要時它就自己寫 Python，在一個有狀態的 Jupyter 環境裡執行，把結果用表格或圖回給你。help center 特別寫了兩件事：這個 Python 環境不能連網，資料要先上傳或透過連接器加進來；它第一次選的分析方法或圖表類型可能不是你要的，直接說「改用折線圖」讓它重跑就好。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官網的方案比較表把資料分析列為免費版「有限」、Go、Plus、Pro「有」；免費版的上限各自獨立且較嚴，尖峰時段還可能再調低；Go 的上限比免費版高，確切數字以官網為準；Business 與 Enterprise 也都有。檔案上限依 File Uploads FAQ：單檔最大 512 MB，CSV 與試算表約 50 MB 以內；免費版每天 3 個檔案，付費方案每 3 小時最多 80 個。格式支援 XLSX、XLS、CSV、TSV；Google 試算表先下載成 XLSX 或 CSV，或開連接器從 Google Drive、OneDrive 直接挑，.gdoc 不支援。同一個對話裡追問不用重傳，五個任務在同一個對話做完，免費版的額度才夠用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "整個流程是 7 步：準備檔案、上傳、描述任務、它寫程式並執行、看圖與程式碼、驗證、下載；下面的圖解把這 7 步與上傳前的檢查清單畫在一起，後面各節對應其中幾步。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+        },
+        {
+          "type": "link",
+          "text": "上傳 PDF、Excel 給 ChatGPT：分析、摘要與抓重點",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-file-upload-analysis"
+        },
+        {
+          "type": "heading",
+          "text": "上傳前先整理檔案：UTF-8、標題列、日期、民國年、合併儲存格",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "資料分析出錯，一半以上出在檔案本身。程式把第一列當欄位名稱、每一欄猜一種型別、每一格當一個值，不符合這個假設的地方它不會報錯，只會安靜地算錯。上傳前花幾分鐘做完下面這份清單。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "編碼存成 UTF-8：台灣的 Excel 用「另存新檔 → CSV (逗號分隔)」存出來的是 Big5 編碼，上傳後中文變成亂碼或問號。另存時改選「CSV UTF-8 (逗號分隔)」；Google 試算表下載的 CSV 本來就是 UTF-8；或者直接傳 XLSX，沒有編碼問題。",
+            "第一列是標題，而且只有一列：表頭佔了兩三列、上方還有「2026 年上半年銷售統計」這種大標題的表，先另存一份只留一列欄名的版本；欄名短、不換行。",
+            "一格一個值：「1,250 元」「約 300」「NT$1,200」在程式眼裡都是文字。金額欄只留數字，去掉千分位逗號、幣別與「元」，全形數字改半形，備註另開一欄。",
+            "日期一種寫法：同一欄混用「2026/1/5」「1 月 5 日」「20260105」，程式只認得其中一種，其餘變成空值。統一成 2026-01-05 這種年-月-日的寫法，它不會猜錯日與月。",
+            "民國年先換西元：「115/01/05」多半會被當成文字或猜成別的年份。西元年等於民國年加 1911，民國 115 年就是 2026 年；用 Excel 公式整欄換好再存，做法在 Excel 公式那一篇。",
+            "合併儲存格先拆：用合併儲存格做分組標題的表，存成 CSV 後只有第一列有店名，其餘是空白，分店加總會全歸到空白店。取消合併後往下填滿。",
+            "個資先去識別化：姓名改成編號，電話、地址、身分證字號整欄刪掉，細節在最後一節。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "用 ChatGPT 寫 Excel 公式與 VBA：從問題描述到可貼上的公式",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-for-excel-formulas"
+        },
+        {
+          "type": "image",
+          "src": "/guides/chatgpt-data-analysis-csv/diagram-1.svg",
+          "alt": "資料分析七步流程圖：1 準備檔案、2 上傳、3 描述任務、4 它寫程式並執行、5 看圖與程式碼、6 驗證、7 下載；右側是上傳前的檔案檢查清單與它常錯的地方，下方是驗證與隱私提醒。",
+          "width": 1600,
+          "height": 900,
+          "caption": "左邊七個步驟由上往下做；右上是上傳前的檢查清單，右下是它最常錯的地方；數字都以正文為準，2026 年 9 月查證。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "五個示範任務：從描述資料做到找異常",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "下面用一份門市銷售的 CSV 示範，欄位是日期、分店、品項、數量、單價、金額、付款方式，一列一筆交易；成績、記帳、問卷把欄名換掉就是同一套做法。提示詞複製後改成你的欄名，「列出你用的程式碼與假設」這句每次都留著。"
+        },
+        {
+          "type": "heading",
+          "text": "任務 1：先描述資料，不要分析",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "提示詞：「這是門市銷售的 CSV。請先描述它：有哪些欄位、每欄的型別（數字、文字、日期）、共幾列、日期從哪天到哪天、每一欄有幾格空白或格式不一致；列出前 5 列讓我對照。先不要做任何分析或結論，並列出你用的程式碼與假設。」它會回一張欄位摘要表與前 5 列的預覽。驗證：打開原檔看列數（Excel 最後一列的列號減 1）與日期範圍對不對；它說「金額欄有 12 格是文字」，就找一格看是不是真的。列數或欄名對不上，多半是編碼或表頭的問題，回上一節修好重傳。"
+        },
+        {
+          "type": "heading",
+          "text": "任務 2：清理與缺值處理",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "提示詞：「請清理這份資料：把金額欄轉成數字（去掉逗號與「元」），把日期欄轉成日期型別並統一成年-月-日，列出轉換失敗的列與原因。缺值的處理：分店空白的列用上一列的分店補上，金額空白的列先保留並另外列給我看，不要自己補平均值。最後告訴我清理前後各幾列、你做了哪些假設，附程式碼。」它會回清理後的表格、轉換失敗清單與假設列表。驗證：先看假設列表，最常見的越界是它主動把缺值填成平均或 0，或刪掉它認為重複的列，你沒要求的處理就要它還原；再抽 3 筆它說轉換成功的列對照原檔。"
+        },
+        {
+          "type": "heading",
+          "text": "任務 3：分組加總與樞紐",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "提示詞：「用清理後的資料做一張樞紐表：列是月份（依日期欄取年月），欄是分店，值是金額加總；最右邊加每月合計，最下面加每店合計。列出你用了哪些列、排除了哪些列，以及金額是用哪一欄算的，附程式碼。」它會回一張月份乘分店的表格。驗證：挑一格用 Excel 篩選自己算，例如篩出日期在 3 月且分店是 A 店的列，把金額欄加總跟它對，再對一個合計。對不上時先看它的排除清單，常見原因是它排掉了退貨的負數列，或丟掉了日期轉換失敗的列。"
+        },
+        {
+          "type": "heading",
+          "text": "任務 4：畫圖，要它標軸與單位",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "提示詞：「畫三張圖：第一張長條圖，各分店的總金額，由高到低排；第二張折線圖，每月總金額的走勢，x 軸是月份、y 軸是金額（新台幣元），y 軸從 0 開始；第三張散布圖，每筆交易的數量對金額。每張圖都要有標題、軸名稱與單位，圖例用中文，畫完告訴我每張圖用了幾筆資料。」驗證：看 y 軸是不是真的從 0 開始、沒有交易的月份有沒有被跳過、圖例的分店數跟任務 1 一不一樣；把游標移到長條上看數值，跟任務 3 的樞紐表對。"
+        },
+        {
+          "type": "heading",
+          "text": "任務 5：找異常值與相關性",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "提示詞：「找出這些異常：金額最高的 10 筆、金額為負或為 0 的列、同一天同分店同品項同金額重複出現的列、單價超過該品項中位數 3 倍的列，每一項附列號。另外算數量與金額的相關係數，用白話說明這個係數代表什麼、樣本有幾筆、能不能說明因果。」它會回四張清單與一個相關係數。驗證：異常清單的列號回原檔翻一下；相關係數很高不代表誰造成誰，數量乘單價本來就等於金額，這種相關是算式造成的，講成「數量帶動營收」就是相關當因果。樣本只有幾十筆時，任何相關都先當作看看就好。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "任務",
+            "提示詞重點",
+            "產出",
+            "驗證動作"
+          ],
+          "rows": [
+            [
+              "1 描述資料",
+              "欄位、型別、列數、日期範圍、每欄空白數；先不要分析",
+              "欄位摘要表、前 5 列預覽",
+              "列數與日期範圍對原檔；它說有問題的格子去看一格"
+            ],
+            [
+              "2 清理與缺值",
+              "金額轉數字、日期統一；缺值怎麼處理由你指定",
+              "清理後的表、轉換失敗清單、假設列表",
+              "看假設列表有沒有你沒要求的處理；抽 3 筆對原檔"
+            ],
+            [
+              "3 分組加總與樞紐",
+              "列月份、欄分店、值金額加總；列出用了與排除了哪些列",
+              "月份乘分店的樞紐表，含合計",
+              "用 Excel 篩選自己算一格與一個合計"
+            ],
+            [
+              "4 畫圖",
+              "指定圖類、軸名、單位、y 軸從 0 開始；說明每張圖用了幾筆",
+              "長條、折線、散布圖，可切換互動",
+              "看軸起點與月份是否齊全；游標看數值對樞紐表"
+            ],
+            [
+              "5 異常值與相關性",
+              "前 10 筆、負數與 0、重複列、超過中位數 3 倍；相關係數附樣本數",
+              "異常清單與相關係數的白話說明",
+              "列號回原檔翻；相關不當因果；樣本太小不外推"
+            ]
+          ],
+          "caption": "五個示範任務的提示詞重點、產出與驗證動作；2026 年 9 月依 OpenAI help center 的資料分析說明整理。"
+        },
+        {
+          "type": "heading",
+          "text": "互動圖表、換圖類、下載成 CSV、PNG 或 xlsx",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "上傳試算表後，ChatGPT 會先給一張可以捲動的互動表格，點右上角的雙箭頭放大看全部欄列；在放大的表格裡選一欄或一列，可以直接對選到的範圍提問。help center 寫明長條、折線、圓餅、散布四種可以切換成互動圖表，圖下方有「切換為互動圖表」與「切換為靜態圖表」的選項；互動圖表可以把游標移到資料點上看數值、改顏色。直方圖、盒鬚圖、熱圖也畫得出來，只是靜態的。2026 年 6 月的更新之後，就算沒有上傳檔案，一般回答裡也能直接產生這四種互動圖表。"
+        },
+        {
+          "type": "paragraph",
+          "text": "下載：表格右上角的下載鈕存成 CSV；圖表右上角可以放大或下載，預設存成 PNG。要 Excel 檔就直接說「把清理後的資料與樞紐表分別存成兩個工作表的 xlsx，給我下載連結」，它會用程式寫出檔案並附連結；資料分析環境裡的檔案保存多久，官網只說依方案不同，連結不會永久有效，拿到就下載。想換圖類不用重傳，說「第二張改成堆疊長條圖，依付款方式分色」就好。"
+        },
+        {
+          "type": "heading",
+          "text": "它會錯的地方：文字當數字、日月顛倒、相關當因果、軸不從零",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "下面五種錯它都不會報錯，只會給你一個看起來合理的答案。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "把文字當數字：「1,250」「約 300」「1200 元」在程式眼裡是文字，加總時整欄被略過，總額小得離譜。任務 1 要它報每欄的型別就是為了抓這個。",
+            "猜錯日期格式：「01/02/2026」是 1 月 2 日還是 2 月 1 日，程式預設偏向月在前，台灣人的習慣是日在前，一整欄反了，月份分組就全錯。用年-月-日，或明講「日期是日/月/年」。",
+            "把相關講成因果：兩欄一起漲不代表一個造成另一個，尤其是本來就有算式關係的欄位，數量乘單價等於金額。要它只描述相關，因果留給你判斷。",
+            "圖表軸不從零開始：折線圖的 y 軸從 980 開始畫到 1,020，小小的波動看起來像暴漲暴跌。提示詞裡寫「y 軸從 0 開始」，或畫完檢查軸的起點。",
+            "小樣本外推：一家店三個月的資料，它可能算出下一季的預測還附成長率。要它說明樣本大小，樣本只有幾十筆就只描述，不預測。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "要它把程式碼與假設列出來，結論才站得住",
+          "text": "每個任務的提示詞都留著「列出你用的程式碼與假設」這一句。它跑完會把 Python 程式碼放在可以展開的區塊裡，看不懂程式碼沒關係，看它條列的假設：篩選了哪些列、怎麼處理缺值與重複、金額是哪一欄、日期用什麼格式解讀。假設裡有一條跟你的資料不合，結論就整個重來；假設都對，再抽 3 筆手算對照。"
+        },
+        {
+          "type": "link",
+          "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
+          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+        },
+        {
+          "type": "heading",
+          "text": "隱私：先去識別化，再決定關訓練或用暫時對話",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "銷售明細、成績單、問卷幾乎都含別人的個資，原則是分析用不到的欄位就不要傳：姓名改成編號（加一欄流水號，刪掉姓名欄），電話、地址、身分證字號、Email 整欄刪掉，成績只留座號與分數，問卷刪掉能辨識個人的自由填答。別人的資料沒有取得同意就不要上傳。"
+        },
+        {
+          "type": "paragraph",
+          "text": "個人方案（Free、Go、Plus、Pro）預設會把對話內容用來改善模型，help center 明確說內容包含上傳的檔案。不想被拿去訓練，點個人頭像 → Settings → Data Controls，關掉「Improve the model for everyone」，整個帳號都會套用。只做一次分析就用暫時對話（Temporary chat，右上角的圖示）：不進歷史紀錄、不建立記憶、不用於訓練，檔案不會存進帳號或 Library，OpenAI 基於安全理由最多保留 30 天。Business 與 Enterprise 預設不訓練。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI Help Center：Data analysis with ChatGPT（功能名、Python 與 Jupyter 環境、不能連網、先看程式碼與假設、第一次選的方法可能不合意、欄名清楚一列一筆、連接器）",
+          "url": "https://help.openai.com/en/articles/8437071-data-analysis-with-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Extracting Insights with ChatGPT Data Analysis（互動表格放大與選欄列提問、長條折線圓餅散布互動圖表、切換靜態、改顏色、表格下載 CSV、圖表下載 PNG）",
+          "url": "https://help.openai.com/en/articles/9213685-extracting-insights-with-chatgpt-data-analysis",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：File Uploads FAQ（單檔 512 MB、試算表約 50 MB、免費版每天 3 個、付費每 3 小時 80 個、資料分析檔案刪除時間依方案）",
+          "url": "https://help.openai.com/en/articles/8555545-file-uploads-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：What types of files are supported?（XLSX、XLS、CSV、TSV；.gdoc 不支援）",
+          "url": "https://help.openai.com/en/articles/8983675-what-types-of-files-are-supported",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Free Tier FAQ（資料分析與檔案上傳有獨立且較嚴的上限、尖峰時段可能調低）",
+          "url": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：What is ChatGPT Go?（資料分析與檔案上傳上限比免費版高）",
+          "url": "https://help.openai.com/en/articles/11989085-what-is-chatgpt-go",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI：ChatGPT Pricing（方案比較表：資料分析免費版有限，Go、Plus、Pro 有）",
+          "url": "https://openai.com/chatgpt/pricing/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI：Improvements to data analysis in ChatGPT（互動表格與圖表、自訂與下載圖表、Google Drive 與 OneDrive 加檔）",
+          "url": "https://openai.com/index/improvements-to-data-analysis-in-chatgpt/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT — Release Notes（2026 年 6 月 8 日：一般回答可直接產生長條、折線、圓餅、散布互動圖表）",
+          "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI：Introducing ChatGPT Enterprise（Advanced Data Analysis 的前身是 Code Interpreter）",
+          "url": "https://openai.com/index/introducing-chatgpt-enterprise/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Troubleshooting GPTs（資料分析功能才能產生並回傳可下載的檔案）",
+          "url": "https://help.openai.com/en/articles/11325361-troubleshooting-gpts",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Working with writing blocks and code blocks in ChatGPT（程式碼放在標示語言的程式碼區塊，可複製與全螢幕）",
+          "url": "https://help.openai.com/en/articles/20001246",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Temporary Chat FAQ（右上角圖示、不進歷史、不建記憶、不用於訓練、檔案不存進帳號或 Library、最多保留 30 天）",
+          "url": "https://help.openai.com/en/articles/8914046-temporary-chat-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Data Controls FAQ（個人頭像 → Settings → Data Controls → Improve the model for everyone，整個帳號套用）",
+          "url": "https://help.openai.com/en/articles/7730893-data-controls-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：How your data is used to improve model performance（訓練內容包含上傳的檔案；Business 與 Enterprise 預設不訓練）",
+          "url": "https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Microsoft 支援：Opening CSV UTF-8 files correctly in Excel（Excel 有「CSV UTF-8 (逗號分隔)」存檔類型）",
+          "url": "https://support.microsoft.com/en-us/excel/opening-csv-utf-8-files-correctly-in-excel",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Microsoft 支援：Save a workbook to text format (.txt or .csv)（另存新檔選 CSV 類型；存成文字格式會丟掉格式）",
+          "url": "https://support.microsoft.com/en-us/office/save-a-workbook-to-text-format-txt-or-csv-3e9a9d6c-70da-4255-aa28-fcacf1f081e6",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Microsoft 支援：Choose text encoding when you open and save files（編碼不對會顯示亂碼或問號、Big5 是繁體中文的傳統編碼、Unicode 涵蓋各語言）",
+          "url": "https://support.microsoft.com/en-us/office/choose-text-encoding-when-you-open-and-save-files-60d59c21-88b5-4006-831c-d536d42fd861",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "pandas 文件：pandas.to_datetime（dayfirst 預設 False 即月在前；「10/11/12」的解讀順序）",
+          "url": "https://pandas.pydata.org/docs/reference/api/pandas.to_datetime.html",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}
