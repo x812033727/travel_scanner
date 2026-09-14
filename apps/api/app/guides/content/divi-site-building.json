@@ -1,0 +1,253 @@
+{
+  "slug": "divi-site-building",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Divi 建站流程：全域樣式、範本與維護方式",
+      "description": "Divi 建站可以從空白頁或版型開始，但長期好不好維護，取決於全域樣式、共用範本與頁面內容的分工。本文以台灣居家整理工作室為例，說明 Divi 5 安裝、頁面結構、Design Variables 與 Presets，以及 Divi Library 和 Cloud 的差別。也整理 Divi 4 遷移、第三方模組相容性和更新驗收，避免只完成漂亮首頁就交付網站。",
+      "hero": {
+        "src": "/guides/divi-site-building/hero.jpg",
+        "alt": "原創封面以螢幕、文件與資料夾象徵 Divi 頁面設計、共用規則和版型管理。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "居家整理工作室需要的網站，不只是放幾張前後對照照片。訪客還要知道服務地區、合作流程與如何預約。使用 Divi 時，先把這些問題安排成頁面，再設定可重複使用的設計，會比先挑最華麗的展示版型更容易完成。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文依 2026 年 9 月 14 日的官方資料，以 Divi 5 主題的新站流程為主，並交代 Divi 4 舊站的遷移差異。網站案例為自行設計，沒有借用廠商示範網站內容，也不宣稱已在特定主機測得效能提升。"
+        },
+        {
+          "type": "heading",
+          "text": "安裝前先整理頁面與版本",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先列首頁、服務介紹、合作流程、常見問題與聯絡頁，每頁只保留一個主要目的。首頁協助理解服務，流程頁處理時間與配合事項，聯絡頁承接詢問。準備自己的文字、照片與可公開資訊，匯入版型後才不會留下別人的地址或示意案例。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新站可從 Elegant Themes 帳號下載 Divi 5 ZIP，在 WordPress 外觀、佈景主題、新增與上傳主題中安裝啟用。接著依引導連結授權，或使用官方提供的使用者名稱及 API key 方式。主題檔、帳號授權與主機空間各有用途，買主題不等於已備妥整個網站。"
+        },
+        {
+          "type": "paragraph",
+          "text": "舊 Divi 4 網站則先做完整備份與測試站，盤點第三方模組，再查看 Migrator 相容性報告。不要把直接覆蓋主題當成已完成遷移，也不要在還沒跑 Migrator 時先逐頁開啟編輯。遷移後新增的內容會影響回復安排，因此先安排維護時段與驗收範圍。"
+        },
+        {
+          "type": "heading",
+          "text": "先用一頁建立清楚的內容結構",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 WordPress 新增頁面並開啟 Visual Builder，可從空白或既有版型開始。Section 組織大區段，Row 與 Column 安排內容位置，Module 放文字、圖片或按鈕。先在 Layers 或 Wireframe 檢查結構與命名，長頁面才不會只靠滑鼠找小圖示。"
+        },
+        {
+          "type": "paragraph",
+          "text": "工作室首頁可依序放服務一句話、適合情境、合作步驟及詢問入口。每段先寫完整內容，再決定需要幾欄；不要因版型預設三個圖示，就硬湊第三項服務。重複的空白區段和展示數字要刪除，特別是未經證實的客戶數或滿意度。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Content 管理文字、連結與圖片，Design 處理字體、顏色和間距，Advanced 才處理進一步客製。先使用可視設定完成基本頁面，必要時再加入程式。每做完一段就儲存並開前台預覽，確認訪客看見的結果與編輯畫面一致。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "建立一份頁面用途清單，準備各頁真正需要的文字及素材。",
+            "完成一個包含標題、正文、圖片與按鈕的示範區段。",
+            "檢查段落順序和手機顯示，再保存可重用的設計。",
+            "沿用已驗證的規則製作其餘頁面，最後核對所有連結。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "用變數與預設管理一致設計",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Divi 5 的 Design Variables 可以集中保存顏色、字型、數字、圖片、文字或連結，再於支援的欄位引用。Presets 則保存元素或選項群組的設定。可把品牌色視為共用數值，把主按鈕的字級、邊框和留白視為一組使用方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如先定義主要文字色、輔助底色、正文與標題字型，再建立「主要預約按鈕」和「次要了解按鈕」的預設。命名描述用途，比「綠色一」更有助於交接。按鈕文字仍依頁面任務撰寫，不必為了共用外觀連內容也全部相同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "修改變數會影響所有引用它的地方，修改預設則影響使用該預設的元素。若某處沒有跟著改，先查是否有單獨覆寫，而非立即再增加一個新預設。保留一頁設計樣本，集中展示長短標題、按鈕及表單狀態，改版時便能快速比較。"
+        },
+        {
+          "type": "heading",
+          "text": "Theme Builder 決定哪些地方共用",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Divi、Theme Builder 可建立頁首、主體及頁尾範本，並指派到整站或指定內容。一般頁面可以共用品牌導覽，活動頁則有獨立需求。先列出例外再設定指派，避免同一類頁面因不同人建立範本而出現不一致導覽。"
+        },
+        {
+          "type": "paragraph",
+          "text": "單一服務頁的內容可直接在頁面編輯；需要多篇文章使用同一閱讀版型時，再建立文章範本。自訂主體必須放入能顯示原文章內容的 Post Content，不能把一篇文章全文寫死在共用範本。範本解決呈現方式，正文仍要由各篇內容提供。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成編輯後，確認範本本身與 Theme Builder 的變更都已儲存。用首頁、內頁、文章及不存在的網址檢查結果，避免只測編輯中的一頁。若套用不符預期，先核對指派與排除範圍，再看快取及個別頁面設定。"
+        },
+        {
+          "type": "heading",
+          "text": "Library 與 Cloud 用於重用設計",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Divi Library 的本機項目屬於目前這個 WordPress 網站；Divi Cloud 的項目則跟著 Elegant Themes 帳號，可在登入的其他 Divi 網站取用。Cloud 是版型與設計元素的儲存空間，不能替代資料庫、媒體與外掛都包含在內的完整網站備份。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Divi 5 的 Add Layout 開啟版型視窗，可找到 Saved Layout 並登入 Cloud。保存時替項目加上用途名稱和分類，例如「服務流程四步驟」。跨站取用前，檢查圖片授權、原網站網址與聯絡資訊，不要把其他客戶資料一起帶到新站。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方目前為 Elegant Themes 會員提供有限的免費 Cloud 儲存項目，額外訂閱可擴充；本文不把所有會員方案都說成雲端無限。需要取消服務時先匯出必要設計。即使能再次匯入，也仍要確認字型、變數及外掛依賴在目的網站存在。"
+        },
+        {
+          "type": "heading",
+          "text": "擴充與更新要留下可接手的紀錄",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先列出現有模組無法完成的需求，再比較擴充的 Divi 版本支援、維護狀態與授權。新版原生功能可能已涵蓋早期外掛用途，不能照多年以前的必裝清單全部安裝。對居家整理網站而言，清楚的案例與穩定詢問流程通常比大量動畫更接近訪客目的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Divi 5 可用相容模式承接部分舊模組，但一頁只要仍含舊模組，就可能載入 Divi 4 框架。這不是保證所有第三方功能都正常，也不代表整站已取得新版全部效能收益。以實際頁面和互動驗收，逐步替換有問題的依賴。"
+        },
+        {
+          "type": "paragraph",
+          "text": "交接文件記錄授權持有人、頁面與範本分工、共用變數及更新前備份方式。每次更新後至少檢查導覽、聯絡表單、圖片、手機排版和關鍵連結。若使用測試站，發布前還要核對網址與寄件設定，避免把測試環境的限制帶到正式網站。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/divi-site-building/diagram-1.svg",
+          "alt": "原創圖解展示全域值、樣式預設、網站範本與頁面內容四層分工，提醒修改時確認共用與個別範圍。",
+          "width": 1600,
+          "height": 900,
+          "caption": "要改多處時先找共用設定，要改一處時先確認影響範圍。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "管理範圍",
+            "適合工具",
+            "修改前先確認"
+          ],
+          "rows": [
+            [
+              "單頁文字與區段",
+              "Visual Builder",
+              "是否只影響目前頁面"
+            ],
+            [
+              "品牌色與共用值",
+              "Design Variables",
+              "哪些欄位引用同一變數"
+            ],
+            [
+              "按鈕與元素樣式",
+              "Presets",
+              "是否存在個別覆寫"
+            ],
+            [
+              "頁首與文章版型",
+              "Theme Builder",
+              "指派及排除的內容"
+            ],
+            [
+              "跨網站重用設計",
+              "Divi Cloud",
+              "帳號、素材與外掛依賴"
+            ]
+          ],
+          "caption": "依修改範圍選擇設定位置，減少重複頁面與不必要的例外。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先完成一條訪客動線",
+          "text": "從首頁理解服務、查看流程到送出詢問，先讓這條路徑完整成立，再擴充更多頁面。維護文件應能讓下一位管理者找到正確設定位置，而不是只留下版型名稱。"
+        },
+        {
+          "type": "link",
+          "text": "先規劃形象網站的頁面與服務資訊",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-business-site"
+        },
+        {
+          "type": "link",
+          "text": "WordPress 網站備份與還原準備",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-website-backup"
+        },
+        {
+          "type": "link",
+          "text": "比較 WordPress 頁面編輯器的選擇方式",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-page-builder-choice"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Divi 5 安裝與授權",
+          "url": "https://help.elegantthemes.com/en/articles/12951730-install-and-activate-divi-5",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Divi 5 編輯器介面",
+          "url": "https://help.elegantthemes.com/en/articles/12991185-divi-5-visual-builder-interface",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Divi 5 全域變數",
+          "url": "https://help.elegantthemes.com/en/articles/13348842-global-variables-in-divi-5",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Divi 5 Theme Builder",
+          "url": "https://help.elegantthemes.com/en/articles/13644980-build-custom-templates-using-the-theme-builder-in-divi-5",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Divi 5 Cloud 入門",
+          "url": "https://help.elegantthemes.com/en/articles/14816467-getting-started-with-divi-cloud-in-divi-5",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Divi 4 到 Divi 5 遷移",
+          "url": "https://help.elegantthemes.com/en/articles/12767407-how-to-safely-migrate-from-divi-4-to-divi-5",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

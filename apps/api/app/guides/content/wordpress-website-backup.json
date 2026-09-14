@@ -1,0 +1,240 @@
+{
+  "slug": "wordpress-website-backup",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "WordPress 備份怎麼做：檔案、資料庫與還原演練",
+      "description": "WordPress 備份不能只看成功訊息。本篇用檔案、資料庫與異地保存建立備份清單，說明 UpdraftPlus、WPvivid 的操作入口、還原限制及隔離演練，幫你確認網站資料真的拿得回來。也整理排程、保留版本、設定檔與驗收紀錄，讓個人網站或工作室有人能接手復原。",
+      "hero": {
+        "src": "/guides/wordpress-website-backup/hero.jpg",
+        "alt": "三張原創圖卡依序呈現資料夾、異地主機與驗收盾牌，表達網站備份與復原流程。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "更新外掛前按一次備份，看到綠色成功訊息，並不代表網站壞掉時一定能恢復。檔案可能只留在同一台主機，資料庫可能沒有一起保存，甚至備份帳號也只能靠已經停擺的網站登入。真正需要準備的是一條能走完的還原路徑。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可以把備份想成整理搬家箱：文章與設定是內容清單，圖片與程式是箱子，異地儲存是另一個倉庫，還原演練則是打開箱子確認東西能用。本篇以一般單一 WordPress 網站為例，建立每天能檢查、出事時有人能接手的流程。"
+        },
+        {
+          "type": "heading",
+          "text": "先寫清楚可以損失多少資料",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "每週更新的個人網站與每天收到預約的工作室，能接受的資料落差不同。先寫下「最多可以重做多久的內容」，再安排頻率。例如每天晚上保存一次，下午發生問題時，當天新增的詢問仍可能不在備份裡。這是排程設計的限制，不能靠事後按還原補回。"
+        },
+        {
+          "type": "paragraph",
+          "text": "網站檔案通常包含佈景、外掛與上傳媒體；資料庫包含文章、使用者及許多設定。完整恢復經常需要兩者處於相近時間點。信箱、DNS、第三方表單資料與外部儲存空間，則要向各自的服務確認保存方法，不能假設網站外掛會全部帶走。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "列出文章、媒體、會員、表單、外部服務及負責人。",
+            "記錄可接受的資料落差，以及出事後希望多久恢復服務。",
+            "決定一般排程、重大修改前的額外備份與保留份數。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "讓異地副本真的離開原主機",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "存進網站自己的資料夾，方便快速取用，但主機帳號失效、磁碟損壞或整站遭刪除時，副本可能一起消失。至少安排一個不同服務的儲存位置，並確認能直接登入該服務取得檔案；把雲端帳號的復原方式交給合適的管理者。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一次連接雲端後，手動跑一次備份，再到雲端查看同一時間的檔案。檔案存在仍不是最後驗收，還要確認分割壓縮檔沒有少一部分、資料庫檔案可下載、保留規則沒有立刻刪掉需要的版本。備份可能含個人資料與金鑰，分享連結應限制存取。"
+        },
+        {
+          "type": "heading",
+          "text": "UpdraftPlus：分別確認範圍、排程與還原項目",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "依查證時的官方文件，可從「設定」進入 UpdraftPlus Backups，在 Settings 設定檔案及資料庫排程、保留份數與遠端儲存。選好雲端目的地後完成授權並儲存，再回 Backup / Restore 執行 Backup Now，確認包含檔案、資料庫及送往遠端的選項。"
+        },
+        {
+          "type": "paragraph",
+          "text": "還原時在 Existing backups 選定日期；沒有列出的副本，可依來源重新掃描遠端或上傳備份檔。按 Restore 後選擇要恢復的元件，閱讀預檢結果再繼續。一般同網址還原與搬到新網址是不同情境，不要為了讓畫面繼續就任意啟用網址取代。"
+        },
+        {
+          "type": "paragraph",
+          "text": "免費版與 Premium 的涵蓋範圍不同，例如 WordPress 核心檔案備份屬於付費功能。不要把外掛顯示的一組副本直接稱為整台主機映像；還原環境、核心版本及自訂設定都應寫進紀錄。本文沒有實際執行這些操作，流程依官方文件整理。"
+        },
+        {
+          "type": "heading",
+          "text": "WPvivid：備份完成與還原完成要分開看",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 WPvivid Backup Plugin 的 Backup & Restore，可選資料庫加檔案、只有檔案或只有資料庫。需要異地保存時，先於 Remote Storage 設定並連接儲存服務，再在備份選項選遠端目的地，按 Backup Now。完成後核對清單、日誌與可下載檔案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要恢復遠端副本，官方流程會先把副本取回網站伺服器，再執行 Restore。這裡的取回不是代表已下載到自己的電腦。還原會覆寫目前資料，較新內容可能因此消失；官方也提醒還原執行期間不要關閉、重新整理或離開該頁。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WPvivid 官方特別說明，免費版與 Pro 還原均不覆寫 wp-config.php 和 .htaccess，避免設定衝突。自訂資料庫連線、環境設定或重新導向規則要另存並逐項核對。若備份分成多個壓縮檔，保留完整的一組，不能只選看起來最大的那份。"
+        },
+        {
+          "type": "heading",
+          "text": "先在隔離環境演練，再相信還原能力",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "找一個有存取限制的測試環境，使用工具支援的還原或遷移方式建立副本。不同網址可能需要額外處理，不能直接把一般還原當成搬家。演練前停用正式付款、通知及對外同步，避免複製站重新寄出訂單或把測試資料送回原服務。"
+        },
+        {
+          "type": "paragraph",
+          "text": "挑一個容易辨識的時間點，例如某篇文章新增圖片後的備份。恢復後檢查該圖片、文章內容及相關設定是否同時出現，再以受限測試帳號登入。首頁能打開只證明部分路徑正常，搜尋、文章內頁、選單與表單仍要逐一操作。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "記錄備份時間、工具版本、還原目的地與預計覆寫範圍。",
+            "確認測試環境隔離與外部整合設定，保存目前狀態後才還原。",
+            "驗證內容、媒體、登入及主要功能，記下實際耗時與遇到的問題。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "把備份變成有人負責的例行工作",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "指定一位主要負責人與一位可接手的人，定期查看最後成功時間及異地副本。若網站流量少，依賴 WordPress 排程的任務可能延遲；發現時間落差時查外掛日誌與主機排程，不要只把備份頻率調得更密。"
+        },
+        {
+          "type": "paragraph",
+          "text": "重大改版前保留可辨識的舊版本，改版後再做一份新版本，避免只有出問題之後的副本。每次演練把失敗原因補進紀錄：缺少哪個設定、誰有雲端權限、哪個表單需要重新連接。下次出事時，這份紀錄比一張成功畫面更有幫助。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-website-backup/diagram-1.svg",
+          "alt": "原創流程圖：先確認檔案與資料庫，再保存完整異地副本，於隔離環境還原，最後操作網站功能並記錄結果。",
+          "width": 1600,
+          "height": 900,
+          "caption": "能取得副本、能完成還原，才有可用的復原路徑。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "需要保存",
+            "驗收方法"
+          ],
+          "rows": [
+            [
+              "內容與設定",
+              "相近時間的資料庫與網站檔案",
+              "比對文章、媒體、帳號及設定"
+            ],
+            [
+              "主機與外部服務",
+              "環境設定、DNS、信箱或外部資料清單",
+              "確認各項復原入口與負責人"
+            ],
+            [
+              "異地副本",
+              "完整壓縮分檔與資料庫",
+              "直接從另一個服務取得副本"
+            ],
+            [
+              "還原紀錄",
+              "範圍、時間、結果與例外",
+              "在隔離環境實際操作主要功能"
+            ]
+          ],
+          "caption": "備份範圍依版本與服務而異，先盤點再選工具。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "還原前先保護目前資料",
+          "text": "還原不是把舊檔案加回來而已，資料庫與設定可能被覆寫。先保存目前狀態、確認要回到的時間點，再評估備份之後新增的資料如何保留或補回。"
+        },
+        {
+          "type": "link",
+          "text": "網站日常維護的安排方式",
+          "url": "https://mokaair.com/zh-TW/life/website-maintenance-routine"
+        },
+        {
+          "type": "link",
+          "text": "在本機建立 WordPress 測試環境",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-local-development"
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：Backups",
+          "url": "https://developer.wordpress.org/advanced-administration/security/backup/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "UpdraftPlus：備份操作與免費版、Premium 範圍",
+          "url": "https://teamupdraft.com/documentation/updraftplus/topics/backing-up/faqs/how-to-backup-with-updraftplus/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "UpdraftPlus：還原至相同位置與網址",
+          "url": "https://teamupdraft.com/documentation/updraftplus/topics/restoration/faqs/how-to-restore-a-wordpress-site-with-updraftplus/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WPvivid：免費版手動備份",
+          "url": "https://docs.wpvivid.com/create-a-manual-backup-free.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WPvivid：免費版還原",
+          "url": "https://docs.wpvivid.com/restore-site-from-a-backup-free.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WPvivid：還原範圍與設定檔排除",
+          "url": "https://docs.wpvivid.com/wpvivid-backup-pro-backups-restore-overview.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WPvivid：免費版排程與 WordPress 排程限制",
+          "url": "https://docs.wpvivid.com/overview-schedule-free.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

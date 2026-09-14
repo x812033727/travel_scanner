@@ -1,0 +1,238 @@
+{
+  "slug": "woocommerce-loyalty-points",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "WooCommerce 紅利積分：累積、折抵與退款規則",
+      "description": "WooCommerce 紅利積分要先訂清楚累積、折抵與退款規則，再選擇相容外掛。本文以 WooCommerce Points and Rewards 與 YITH 的官方說明為參考，整理點數換算、商品例外、有效期、促銷併用及負數餘額的處理思路，並提供完整訂單驗收案例，協助台灣店主把會員獎勵變成能查帳、能交接的日常流程。",
+      "hero": {
+        "src": "/guides/woocommerce-loyalty-points/hero.jpg",
+        "alt": "原創插畫，以點數計算、會員紀錄及安全盾牌呈現可追查的積分制度。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "顧客買完商品得到點數，下次折抵後又退回原本商品，剩餘點數應該是多少？如果活動只寫「消費送點」，客服遇到這種情況就很難說明。完整制度要同時處理累積、使用、失效與退回，而不只是增加會員頁上的數字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WooCommerce 點數功能通常透過擴充加入。以下比較設定觀念與驗收方法，使用的金額和點數都是原創範例；不同外掛的名稱、規則和儲存方式不能互換，也不保證安裝後就會提高回購。"
+        },
+        {
+          "type": "heading",
+          "text": "先寫一份顧客能自行計算的規則",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把累積比例與折抵比例分成兩句話，例如「每消費 50 元累積 1 點」以及「10 點折抵 5 元」。在不考慮商品例外和取整時，消費 1,000 元得到 20 點，未來可折 10 元；先用這種小例子確認店主沒有把點數和新台幣當成同一單位。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再寫清楚計算基礎是否含稅、運費、折價，以及不足一個單位如何取整。不要只按總付款金額估算，因為外掛可能按個別商品處理，再套用商品或分類規則；多件低價商品的結果可能與一件同總額商品不同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "制定規則時也估算可負擔的折抵成本。若低毛利商品不能使用點數，要提前列明範圍；顧客已累積的權益、有效期與變更安排應有一致說明，不能等到退款或活動結束才臨時決定如何扣除。"
+        },
+        {
+          "type": "heading",
+          "text": "依需求選一套主要點數系統",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WooCommerce Points and Rewards 提供累積與兌換比例、折抵上限及點數紀錄。使用這套擴充時需啟用折價券功能，點數也要歸屬登入帳號，訪客購買不會照一般會員方式累積。因此先確認商店的訪客政策和加入會員提示。"
+        },
+        {
+          "type": "paragraph",
+          "text": "YITH WooCommerce Points and Rewards 另提供角色、等級、點數到期通知及與折價券併用等規劃選項。是否需要這些功能應由營運需求決定，並核對目前方案、版本和相容性；不能把某產品頁的功能名稱當成另一套外掛也有的選單。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要同時開兩套系統獎勵同一筆訂單。搬移既有點數時，先保存會員識別資料、餘額、有效期與異動來源，再研究匯出匯入方式。把畫面上的總點數抄到新系統，可能遺失有效期或已使用的紀錄，後續退款也會難以追查。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "列出累積比例、折抵比例、例外商品與有效期。",
+            "確認帳號需求，選定一套相容的主要擴充。",
+            "在測試環境建立小額點數和代表性商品。",
+            "跑完累積、折抵、取消、退款與到期案例再公告。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "累積時點要對上真正的訂單流程",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "商品頁顯示可得點數，通常是購買前的預估提示，不代表已存入帳戶。以 WooCommerce Points and Rewards 為例，付款完成或特定訂單狀態轉換會觸發累積；店主應記下實際設定和外掛規則，再確認何時可以使用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "貨到付款、轉帳與信用卡的狀態路徑不一定相同。若客服習慣提早修改訂單狀態，就要檢查是否也提早發點。不能只用一筆信用卡成功案例，推論所有付款方式都會在相同時機累積。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先測一般商品，再測有特別比例的商品、不同規格和混合購物車。若另送註冊點、生日點或評論點，為每種獎勵建立獨立紀錄與條件；評論獎勵應依合適的參與規則處理，不把給好評當成獲得點數的必要條件。"
+        },
+        {
+          "type": "heading",
+          "text": "折抵上限與其他促銷一起驗收",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "顧客有足夠點數，不表示本單能全部使用。先決定最低可折抵額、單筆上限、單品限制及是否允許自行輸入部分點數。以原創範例來說，會員有可折 100 元的點數，但本次上限 30 元，前台就應清楚告知能使用的範圍。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把一般券、特價商品、會員價與免運逐項列入併用表。YITH 官方說明提供點數和 WooCommerce 券的併用選項，但仍需在自己的購物車驗收；其他工具則依其文件確認，不能沿用一個通用的「不得併用」勾選教學。"
+        },
+        {
+          "type": "paragraph",
+          "text": "折抵完成後，比對前台折扣、訂單總額、使用點數與帳戶餘額。WooCommerce Points and Rewards 會在結帳時扣除用於折扣的點數，以避免同一餘額反覆使用；因此付款未完成或返回重試，也必須列入測試，而不是只看成功頁。"
+        },
+        {
+          "type": "heading",
+          "text": "退款要處理兩個方向的點數",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一個方向是退回本單花掉的點數，第二個方向是收回本單原本賺到的點數。以 WooCommerce Points and Rewards 的官方規則，取消或退款會對這兩種紀錄作相應調整；實際部分退款、金額退款與品項退款的結果，仍應按版本逐項核對。"
+        },
+        {
+          "type": "paragraph",
+          "text": "假設某筆訂單獲得 50 點，顧客後來花掉 30 點，餘額剩 20 點，原單再被取消。收回原先的 50 點後可能變成負 30 點。官方文件說明這套外掛允許此類負數餘額，已給出的另一筆折扣不會自動被追回成現金。"
+        },
+        {
+          "type": "paragraph",
+          "text": "客服應先對照原單、後續折抵單與點數異動，再向顧客說明。不要看到負數就直接加點歸零，也不要以修改點數取代金流退款；款項退回、庫存回補與點數復原各自保留結果，才能避免重複退款或重複補點。"
+        },
+        {
+          "type": "heading",
+          "text": "有效期、人工調整與每日查帳",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "有效期應說明從何時起算、到期如何扣除，以及折抵退回後怎麼處理。需要到期提醒時，選擇支援通知的工具，再測試寄信與會員頁顯示；郵件已排程不等於顧客收到，不能只靠提醒信取代清楚的規則頁。"
+        },
+        {
+          "type": "paragraph",
+          "text": "人工加減點時，記錄原因、經手人、關聯訂單和調整前後數字。WooCommerce Points and Rewards 有點數異動紀錄可供比對；它也有不可逆的大量補發及清除工具，日常排錯不應把這些工具當成一般重試按鈕。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成驗收後，定期檢查異常負數、重複獎勵、失敗訂單占用及到期處理。觀察點數使用量時，也一起看退款和折抵成本，才能判斷制度是否符合原先目的。把這些案例留給接手者，比只交出一個點數餘額畫面更完整。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/woocommerce-loyalty-points/diagram-1.svg",
+          "alt": "原創四欄圖解，呈現點數累積、兌換、取消退款與有效期管理，提醒退回使用點和收回獎勵點是兩種異動。",
+          "width": 1600,
+          "height": 900,
+          "caption": "點數是持續維護的紀錄，累積、折抵與退款都要可追查。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "事件",
+            "要核對的方向",
+            "保留證據"
+          ],
+          "rows": [
+            [
+              "訂單完成條件",
+              "新增賺得點數",
+              "訂單與異動時間"
+            ],
+            [
+              "使用點數",
+              "扣除兌換點數",
+              "折扣額與剩餘點數"
+            ],
+            [
+              "取消或退款",
+              "退使用點、收回獎勵",
+              "兩種異動分開核對"
+            ],
+            [
+              "到期或人工調整",
+              "依規則增減",
+              "原因、期限與經手人"
+            ]
+          ],
+          "caption": "點數和金流分別查帳，再以訂單建立對應。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先驗收退款，再正式送點",
+          "text": "至少測全額退款、部分退款、點數已花掉才退款，以及付款失敗後重試。不要用歸零或大量補發消除表面差異，先查原始異動紀錄。"
+        },
+        {
+          "type": "link",
+          "text": "先決定會員與訪客結帳流程",
+          "url": "https://mokaair.com/zh-TW/life/woocommerce-member-checkout"
+        },
+        {
+          "type": "link",
+          "text": "折價券與其他促銷如何併用",
+          "url": "https://mokaair.com/zh-TW/life/woocommerce-promotions-coupons"
+        }
+      ],
+      "sources": [
+        {
+          "title": "WooCommerce Points and Rewards 操作與退款",
+          "url": "https://woocommerce.com/document/woocommerce-points-and-rewards/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WooCommerce Points and Rewards 商品與相容資訊",
+          "url": "https://woocommerce.com/nl/products/woocommerce-points-and-rewards/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "YITH Points and Rewards 功能與常見問題",
+          "url": "https://yithemes.com/themes/plugins/yith-woocommerce-points-and-rewards/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "帳號與訪客結帳設定",
+          "url": "https://woocommerce.com/document/configuring-woocommerce-settings/accounts-and-privacy/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WooCommerce 金流退款說明",
+          "url": "https://woocommerce.com/document/woocommerce-refunds/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

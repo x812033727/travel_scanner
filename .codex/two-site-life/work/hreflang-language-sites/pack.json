@@ -1,0 +1,237 @@
+{
+  "slug": "hreflang-language-sites",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "多語系網站的 hreflang：語言對照、canonical 與錯誤檢查",
+      "description": "多語系網站不是把語言代碼加進網址就完成。本文整理 hreflang 的頁面對照、語言與地區代碼、雙向連結及 x-default 備用版本，並說明它與 HTML lang、canonical 的分工。透過台灣課程網站的原創例子，建立翻譯完成度清單與逐頁驗證步驟，避免缺頁、錯誤回首頁和互相矛盾的搜尋標記，讓不同語言讀者找到相應內容。",
+      "hero": {
+        "src": "/guides/hreflang-language-sites/hero.jpg",
+        "alt": "原創文件、資料夾與螢幕圖像，表示不同語言內容、逐頁對照及切換檢查。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "讀者在中文課程頁切換英文，卻回到英文首頁，通常不是他想要的結果。網站雖然有兩種語言，仍可能缺少逐頁的對應關係。hreflang 是把這些本地化版本告訴 Google 的方式之一，前提是網站確實有可使用的對應內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "開始前先選一組重要頁面，例如同一堂課的中文、英文介紹和報名說明。不要從全站批次加標記開始，而是先確認內容、網址和切換行為，再把驗證過的規則延伸到其他文章。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "三種標記各有工作，不能互相代替"
+        },
+        {
+          "type": "paragraph",
+          "text": "hreflang 用來表達同一內容的語言或地區替代版本，協助 Google 為搜尋者找到適合的頁面。它不會自動翻譯正文，也不等於瀏覽器的語言切換按鈕。Google 主要根據可見內容判斷頁面語言，不能只改代碼就把中文文章變成英文版本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "HTML 的 lang 則是宣告文件文字所使用的語言。W3C 建議在 html 元素設定頁面的預設語言，必要時對不同語言的段落另行標記。它和 hreflang 的目的不同，因此網站已有 html lang，仍需要處理各頁面間的語言對照。"
+        },
+        {
+          "type": "paragraph",
+          "text": "canonical 回答的是重複或相似內容中偏好的代表網址。主要內容已完整翻譯的語言頁，通常不應全部指向原始中文頁來合併；若是同語言、不同地區但高度相似的內容，則要依實際關係安排標準化與語言對照，而不是套一條全站規則。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用內容對照表確認每個版本真的存在"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立一列一個主題的表格，欄位包含內容識別、繁中網址、英文網址、其他語言、翻譯狀態與負責人。以「週末木工入門」為例，各版本都應介紹同一堂課，即使日期寫法、交通說明或在地用語有調整，主要目的仍要對得上。"
+        },
+        {
+          "type": "paragraph",
+          "text": "某篇文章尚未翻譯時，先把缺口記在表上，不要虛構一個網址，或把所有缺漏版本都標成英文首頁。首頁與單篇文章不是同一份內容。若提供一般語言首頁作為導覽入口，應讓讀者知道那是回到首頁，而不是假裝已切換到文章譯文。"
+        },
+        {
+          "type": "paragraph",
+          "text": "發布標記前也要逐一打開對應頁，確認正文完整、沒有測試用文字、沒有意外登入限制或失效回應。翻譯完成不是只換選單與頁尾；課程條件、注意事項和行動按鈕都應符合該語言讀者的實際需求。這份品質檢查需要內容人員參與。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "語言、文字與地區代碼，按需求選擇"
+        },
+        {
+          "type": "paragraph",
+          "text": "常見的 en 表示英文，ja 表示日文；需要地區差異時才加入適合的地區代碼，例如 en-GB 表示英國英文。對台灣使用者設計的中文版本可使用 zh-TW；若目的只是區分繁體文字，zh-Hant 表達的是文字版本，不應把它誤解成只限台灣。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要使用 TW 單獨代表中文，也不要自行創造 zh-TW-Taiwan 之類組合。Google 的 hreflang 支援範圍有自己的規定，並不等於所有 BCP 47 語言標籤都可直接使用。先依官方清單確認，再記錄每個代碼代表的內容範圍。"
+        },
+        {
+          "type": "paragraph",
+          "text": "x-default 可提供未符合已列語言或地區時的備用網址，常見用途是語言選擇入口；它不是「主要語言」的替代代碼，也不是每個網站都必須建立一個空白頁。是否需要備用頁，應由讀者沒有匹配版本時實際能做什麼來決定。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "選一種可靠輸出方式，維持雙向與自我對照"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 支援用 HTML、HTTP 標頭或 Sitemap 指定語言版本，三種方式對等，不需要為了加強效果全部重複設定。一般網站可先確認多語系平台或外掛能提供哪一種，再選維護最清楚的方式。非 HTML 文件則可能需要伺服器配合。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以 HTML 為例，應在 head 中提供 rel 為 alternate、hreflang 為語言代碼、href 為完整網址的 link 元素。每個版本要列自己及同組其他版本，中文指向英文時，英文也要回指中文。只有單向宣告，相關標記可能被忽略。"
+        },
+        {
+          "type": "paragraph",
+          "text": "假設同一課程有 zh-TW、en 和 ja 三個版本，三頁都應輸出這一組一致的對照，而不是每頁只放一個「下一種語言」。網址可以跨網域，但必須實際對應。不要把 canonical、hreflang 和其他用途硬塞成同一個 link，讓一個標記同時表達不同事情。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "選一組完整翻譯的頁面，固定各版本的最終公開網址。",
+            "依平台支援方式輸出語言對照，確認包括頁面本身。",
+            "逐頁反向核對，確保每個配對都能找到回指。",
+            "把同樣規則套到下一組內容，再檢查缺頁與例外。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "從頁面回應與實際切換一起驗證"
+        },
+        {
+          "type": "paragraph",
+          "text": "先檢查對照網址能否正常開啟，是否直接到預期語言與主題，再看 HTML、回應標頭或 Sitemap 中的實際輸出。不要只看後台語言欄位已選取。若使用外掛自動產生，仍應抽查首頁、文章、分類和自訂內容，因為不同頁型可能走不同規則。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同時核對 canonical 的目的地。若英文頁在 hreflang 組中出現，卻又被標成中文頁的複本，就需要重新確認內容與設定是否矛盾。已搬移的語言頁也要更新為目前的網址，避免對照長期指向轉址鏈、404 或測試站。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再從讀者角度點選語言切換：是否留在相應內容、是否能返回原語言、是否被自動導向打斷。Google 建議避免依推測語言強制轉走，並提供可點選的其他版本。搜尋工具可協助查看索引狀態，但單次測試通過不等於所有地區都已顯示預期結果。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "翻譯新增與下架，要同步維護整組關係"
+        },
+        {
+          "type": "paragraph",
+          "text": "新增日文版本時，不只新頁要有標記，既有中文與英文頁的對照也要更新。建立發布清單，將正文審閱、語言切換、標準網址和 hreflang 放在同一次驗收裡，才不會出現內容上線了、其他版本仍不知道它存在的情況。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若某語言內容下架，回到同組頁面移除失效關係，並依實際內容安排舊網址處理。翻譯延遲則保留待辦與負責人，不用空白頁填滿表格。對服務條件常變的網站，也要追蹤哪一版還停在舊資訊，避免不同語言讀者收到矛盾說明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "定期抽查一組多語內容，記錄各頁網址、回應、語言代碼、回指與 canonical。發現問題時先修正具體關係，再追蹤重新處理的結果。多語系做得完整，應讓每個版本都能獨立幫助讀者，也能清楚連回同一件事的其他語言版本。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/hreflang-language-sites/diagram-1.svg",
+          "alt": "四個區塊依序說明確認譯文、選擇代碼、檢查互相指向及發布後同步，呈現多語內容的一組式維護流程。",
+          "width": 1600,
+          "height": 900,
+          "caption": "完整翻譯、正確對照與可用的語言切換，需要一起驗收。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "主要用途",
+            "常見誤用"
+          ],
+          "rows": [
+            [
+              "HTML lang",
+              "宣告文件文字語言",
+              "以為它自動建立語言對照"
+            ],
+            [
+              "hreflang",
+              "描述語言或地區替代頁",
+              "缺少回指、指向無關首頁"
+            ],
+            [
+              "canonical",
+              "表達偏好的代表版本",
+              "把完整譯文全部合併回中文"
+            ],
+            [
+              "x-default",
+              "提供不匹配時的備用頁",
+              "當成語言代碼或虛構空白頁"
+            ],
+            [
+              "語言切換連結",
+              "讓讀者選擇其他版本",
+              "切換後失去目前內容位置"
+            ]
+          ],
+          "caption": "不同設定需配合，但每一項都應有自己的驗證依據。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "對照的是同一內容",
+          "text": "沒有完成的譯文就記為缺口，不要用不存在的網址或無關首頁補齊。先讓每個版本內容可用，再維護雙向且一致的語言關係。"
+        },
+        {
+          "type": "link",
+          "text": "規劃 WordPress 多語系網站",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-multilingual-site"
+        },
+        {
+          "type": "link",
+          "text": "檢查 canonical 指向是否一致",
+          "url": "https://mokaair.com/zh-TW/life/canonical-url-guide"
+        },
+        {
+          "type": "link",
+          "text": "選擇子網域或子目錄",
+          "url": "https://mokaair.com/zh-TW/life/website-www-subdomains"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 指定網頁本地化版本",
+          "url": "https://developers.google.com/search/docs/specialty/international/localized-versions?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 管理多地區和多語網站",
+          "url": "https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C HTML 語言宣告",
+          "url": "https://www.w3.org/International/questions/qa-html-language-declarations",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C 語言、文字與地區標籤",
+          "url": "https://www.w3.org/International/articles/language-tags/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 指定標準網址",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

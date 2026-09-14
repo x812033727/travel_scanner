@@ -1,0 +1,268 @@
+{
+  "slug": "css-layout-basics",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "CSS 入門：選取器、盒模型與版面安排",
+      "description": "剛學 CSS 時，最常遇到的問題是樣式沒有生效、卡片比預期更寬，或文字一變長就重疊。本文以原創工作坊活動卡片為例，從選取器與宣告讀法開始，說明 content、padding、border、margin 和 box-sizing 的關係，再整理正常流、Flexbox 與 Grid 的使用方向。附寬度計算、步驟、比較表及自繪圖解，協助建立能在瀏覽器確認的版面練習。",
+      "hero": {
+        "src": "/guides/css-layout-basics/hero.jpg",
+        "alt": "Mokaair 原創規則文件、版面畫面與結構文件插圖，代表 CSS 宣告如何控制卡片的盒模型與排列。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "CSS 負責網頁的呈現方式，包含文字、色彩、間距與排列。學習時不必先背下所有屬性，可以從一張活動卡片開始：讓標題清楚、內容不貼邊、卡片彼此有距離，再理解每一條規則改變了什麼。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下工作坊活動卡片與數值均為自行設計的練習。語法與盒模型依 2026 年 9 月 14 日查閱的 MDN 文件整理；本篇提供讀者可執行的檢查方法，沒有宣稱已在所有瀏覽器完成相容性測試。"
+        },
+        {
+          "type": "heading",
+          "text": "讀懂一條 CSS 規則，再決定要選誰",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "例如 .workshop-card { padding: 16px; }，前面的 .workshop-card 是選取器，會找出具有 workshop-card 類別的元素；大括號內是宣告，padding 是屬性，16px 是值。冒號隔開屬性和值，分號隔開宣告，拼字及符號需要正確。"
+        },
+        {
+          "type": "paragraph",
+          "text": "p 這類元素選取器會影響符合名稱的段落；.workshop-card 是類別選取器，可重複套用到多張卡片；#workshop-list 則選擇指定 ID，HTML 文件中的 ID 應保持唯一。要重複使用的視覺樣式，通常用類別比替每張卡片建立 ID 更方便。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先讓 HTML 具有合理內容順序，例如活動名稱、時間、說明與報名連結，再加入樣式。CSS 將段落放大並不會自動把它變成語意上的標題；把普通容器畫成按鈕，也不會自動取得真正按鈕的鍵盤操作能力。外觀和元素用途需要一起安排。"
+        },
+        {
+          "type": "heading",
+          "text": "沒有生效時，先查載入與規則競爭",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "外部樣式表通常由 HTML 的 link 元素載入，需設定 rel 為 stylesheet，href 指向正確檔案。若整份樣式都沒出現，先查路徑、回應及是否真的載入；若只有某個屬性沒變，則選取目標元素檢查套用中的規則，不急著增加更多 CSS。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一個元素可能同時符合多條選取器。瀏覽器會依層疊規則處理來源、重要性、層級及優先權等因素；在其他相關條件相同時，才以出現較後的宣告決定結果。不能把最後寫的永遠優先當成通則，也不宜只靠不斷加入 !important 排除衝突。"
+        },
+        {
+          "type": "paragraph",
+          "text": "瀏覽器開發工具中的 Styles 和 Computed 可協助查看哪些宣告被覆蓋、實際計算值是多少。文字色彩等屬性常會由父元素繼承，邊框和內距則不是一概照父元素複製。找出值的來源後再修改，避免修好一張卡片卻影響整個網站。"
+        },
+        {
+          "type": "heading",
+          "text": "盒模型分清內距、邊框與外距",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "對一般區塊盒而言，content 是放置內容的區域；padding 是內容與邊框之間的內距；border 包圍內容及內距；margin 是邊框外與其他盒子之間的空間。想讓文字不要貼住底色邊緣，通常調整 padding；想讓卡片與旁邊物件分開，則檢查 margin 或容器間距。"
+        },
+        {
+          "type": "paragraph",
+          "text": "採 content-box 時，width 指定內容寬度。原創算例設定 width 為 280px、左右 padding 各 16px、左右 border 各 2px，則邊框外緣寬度為 280＋16＋16＋2＋2＝316px。兩側內距與邊框合計 36px。margin 不包含在這個邊框尺寸中，但會影響周圍留白。"
+        },
+        {
+          "type": "paragraph",
+          "text": "改成 box-sizing: border-box 後，同樣 width 為 280px，就已包含左右內距及邊框，內容寬度在本例為 244px。這個設定有助於預估卡片尺寸，但不會自動解決長網址、圖片或子元素造成的溢出；它也沒有把 margin 算進 width。"
+        },
+        {
+          "type": "heading",
+          "text": "從正常流開始，再選擇排列方法",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一般橫排文件中的區塊會依內容順序往下排列，文字行內元素則隨文字流動。先讓單張卡片在正常流中可讀，再處理多張並排。不要為了對齊每個位置就全部使用絕對定位，否則文字增加時，其他內容可能不會跟著讓出空間。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Flexbox 主要處理一個方向的排列，適合卡片內的按鈕列、標籤或工具列；Grid 同時規劃欄與列，適合需要對齊的活動卡片網格。Flexbox 也能換行，但換行後各列的分配不等於 Grid 的共同欄軌，應依實際對齊需求選擇。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如為操作列設定 display: flex、flex-wrap: wrap 和 gap: 12px，讓直接子元素以彈性項目排列並允許換行。gap 控制項目之間的間距，容器內緣留白仍可用 padding。這個例子是練習起點，按鈕寬度與文字長度仍需放進實際畫面查看。"
+        },
+        {
+          "type": "heading",
+          "text": "用變長的內容找出版面問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先放入短標題，再改成包含活動名稱、對象及地點的長標題。若卡片寫死高度，內容可能被裁切或壓住按鈕；多數文字區域可以讓高度隨內容增加，再視需求設定合理的最小高度。不要單靠縮小字體來塞進原本尺寸。"
+        },
+        {
+          "type": "paragraph",
+          "text": "圖片也要檢查原始比例與可用寬度。常見練習是限制圖片 max-width: 100%，搭配 height: auto，讓圖片不超過容器並保留比例；若使用固定裁切框，則另外決定裁切位置，確認人物、文字或重要資訊沒有被遮掉。"
+        },
+        {
+          "type": "paragraph",
+          "text": "普通區塊在特定條件下，相鄰垂直 margin 會摺疊，留白未必等於兩個數字相加；Flexbox 與 Grid 項目則不採這種相鄰外距摺疊方式。當間距與預期不同，先查看盒模型及容器 display，不以負 margin 到處拉回位置。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "建立有語意與合理順序的活動內容，再載入練習樣式表。",
+            "以類別設定字色、內距及邊框，查看實際匹配的規則。",
+            "比較 content-box 和 border-box 的尺寸，確認外距另計。",
+            "加入多張卡片及長文字，檢查窄畫面、放大與鍵盤操作。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "把驗收建立在實際計算值上",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "開啟開發工具選取卡片，確認盒模型中的內容、內距、邊框及外距，再與手算結果比對。如果畫面寬度不符，留意 max-width、父容器、彈性縮減或其他規則是否影響最終尺寸。宣告中寫了某個值，不代表排版結果只受那個值控制。"
+        },
+        {
+          "type": "paragraph",
+          "text": "將視窗逐漸縮窄，再放大文字，查看是否出現不必要的水平捲動、重疊或不可見的操作。用鍵盤走過真正的連結和按鈕，保留可見焦點；若只檢查滑鼠停留效果，就可能漏掉鍵盤使用者看不出目前位置的情況。"
+        },
+        {
+          "type": "paragraph",
+          "text": "練習完成後保留 HTML、CSS 與簡短說明，記錄哪個選取器負責什麼、哪些尺寸只是示例。日後接觸框架或前處理器時，仍可回到這些規則理解結果。能定位是哪個盒子、哪條宣告造成問題，比一次記住很多排版技巧更有用。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/css-layout-basics/diagram-1.svg",
+          "alt": "三張卡片比較 content-box 的外框 316px、border-box 的內容 244px，以及不列入兩者 width 的 margin。",
+          "width": 1600,
+          "height": 900,
+          "caption": "本例未加入其他尺寸限制；實際畫面還要查看父容器與最終計算值。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "設定",
+            "控制的位置或功能",
+            "常見誤解"
+          ],
+          "rows": [
+            [
+              "padding",
+              "內容到邊框的內距",
+              "不能用負值"
+            ],
+            [
+              "border",
+              "包圍內容與內距",
+              "寬度是否外加取決於盒模型"
+            ],
+            [
+              "margin",
+              "盒子外部留白",
+              "不包含在 border-box 的 width"
+            ],
+            [
+              "content-box",
+              "width 對應內容",
+              "本例 280px 形成 316px 外框"
+            ],
+            [
+              "border-box",
+              "width 包含內距與邊框",
+              "本例 280px 中內容為 244px"
+            ],
+            [
+              "Flexbox／Grid",
+              "排列直接子項目",
+              "選用方式依對齊需求"
+            ]
+          ],
+          "caption": "數值例子均為左右內距各 16px、左右邊框各 2px，不含外距與其他排版限制。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "不要用 !important 取代理解衝突",
+          "text": "先確認樣式有載入、選取器有匹配，再查看哪條規則被覆蓋與最終計算值。尺寸問題則回到父容器、盒模型和內容檢查。"
+        },
+        {
+          "type": "link",
+          "text": "安排不同螢幕的響應式版面",
+          "url": "https://mokaair.com/zh-TW/life/responsive-layout-basics"
+        },
+        {
+          "type": "link",
+          "text": "建立文字與內容的視覺層級",
+          "url": "https://mokaair.com/zh-TW/life/web-layout-hierarchy"
+        },
+        {
+          "type": "link",
+          "text": "檢查網站配色與文字對比",
+          "url": "https://mokaair.com/zh-TW/life/website-color-system"
+        }
+      ],
+      "sources": [
+        {
+          "title": "MDN：Basic CSS selectors",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Basic_selectors",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：The box model",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Box_model",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：Handling conflicts",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Handling_conflicts",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：Introduction to CSS layout",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Introduction",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：Basic concepts of flexbox",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Flexible_box_layout/Basic_concepts",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：Margin collapsing",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Box_model/Margin_collapsing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：HTML link element",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/link",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：Images, media, and form elements",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Images_media_forms",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

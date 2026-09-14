@@ -1,0 +1,226 @@
+{
+  "slug": "wordpress-social-embeds",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "WordPress 社群嵌入：Instagram 與 Facebook 內容失效怎麼辦",
+      "description": "WordPress 的 Instagram 或 Facebook 貼文突然無法顯示，可能與嵌入方式、帳號連線、來源可見性或前台載入有關。本篇整理單則嵌入與動態牆的差異、外掛連線的檢查步驟，以及手機和隱私設定的驗收方式，協助網站保留可用的社群入口，同時避免重要資訊只存在容易失效的外部區塊。",
+      "hero": {
+        "src": "/guides/wordpress-social-embeds/hero.jpg",
+        "alt": "原創螢幕、盾牌與文件插畫，象徵嵌入顯示、帳號授權與備援資訊。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "工作室首頁的社群照片牆一直正常，某天卻剩下空白框；另一篇文章貼上 Facebook 網址，也沒有自動變成貼文卡片。這兩個現象看起來相似，背後可能使用不同功能，應先辨識來源與連線方式，再開始排查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "社群內容可以補充近況與作品，但活動日期、報名方式和服務說明仍應寫在網站正文。以下以網站維護者的角度，建立能定位失效原因、保留替代連結及交接帳號的操作流程。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先區分單則嵌入與整個動態牆"
+        },
+        {
+          "type": "paragraph",
+          "text": "單則嵌入是把特定貼文放進文章，通常希望保留作者、文字與平台互動入口。動態牆則按帳號或篩選條件持續讀取多則內容，會多出排序、快取、帳號來源與更新頻率的設定。不要因為兩者都顯示圖片，就假設使用相同授權或外掛。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 核心文件記錄 Facebook 與 Instagram 的原生 oEmbed 支援已被移除，因此不能把舊教學中的貼上網址即自動轉換當作目前的通用做法。現有網站若仍能使用，可能是佈景、外掛或其他整合補上了功能，先確認實際提供者。"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立簡單清單：所在頁面、社群原始網址、顯示方式、負責外掛、連線帳號與最後正常日期。若只有一個區塊壞掉，就從該來源開始；若全站同平台一起失效，再檢查共用連線或載入程式，避免直接重做整個網站。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "選擇可以維護的整合方式"
+        },
+        {
+          "type": "paragraph",
+          "text": "若只需要提供出處，清楚的文字連結通常已足夠；若希望在頁面內閱讀，則確認平台或整合工具目前支持的嵌入方式。不要把一般分享網址自行塞進任意 iframe，也不要從不明網站複製含追蹤或金鑰的嵌入程式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Smash Balloon 的現行文件提供以 Social Photo Feed 與 Social Post Feed 處理 Instagram、Facebook oEmbed 的方式。它使用外掛的連線流程，站長仍需依指示授權帳號；這與另外建立整個照片牆是不同操作，應先選定本次要修復的功能。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若使用自己的開發者應用程式，帳號資格、權限、審查與憑證維護都需要另外管理。一般站長可以先選有維護中的整合工具，用一則代表性內容驗證；不要因為安裝免費版本，就假設所有媒體類型、帳號來源及進階排版都包含。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "以最小範圍重新建立連線"
+        },
+        {
+          "type": "paragraph",
+          "text": "以 Smash Balloon 文件中的 oEmbed 流程為例，先安裝或更新對應平台外掛，在其 oEmbeds 頁面按連線，依授權畫面選擇正確帳號並完成返回。過程中核對網站與帳號名稱，避免同時登入多個品牌帳號時連到錯誤來源。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若要建立動態牆，則依該外掛的 Feed 建立流程新增來源、選擇版型，再用提供的區塊或短代碼放入頁面。先顯示少量內容，確認圖片、文字、原始貼文連結與載入更多按鈕的行為，再擴大範圍。"
+        },
+        {
+          "type": "paragraph",
+          "text": "重新連線前先保存原設定與錯誤訊息。由有權限管理品牌帳號的人完成授權，不要索取同事的社群密碼貼進一般表單。交接時記下誰能重新授權，以及帳號離職或權限變動時由誰接手。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "確認失效區塊使用哪個平台、哪套外掛與哪種嵌入方式。",
+            "在對應功能頁更新或重建必要連線，核對選取的帳號。",
+            "先用測試頁的一則內容驗收，再處理其他使用同連線的頁面。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "從來源、連線與前台分段找原因"
+        },
+        {
+          "type": "paragraph",
+          "text": "先直接開啟社群原始網址，觀察內容是否還存在，以及未登入者能看到什麼。若來源已刪除、可見性改變或不再提供適用的嵌入選項，重新貼同一段程式通常無法解決；應由內容擁有者確認設定，或改用其他合適內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再看外掛後台有沒有權限、來源或連線錯誤。若後台預覽也無法取得內容，先處理連線；若後台正常、只有訪客端空白，則查看快取、延遲載入、Cookie 同意設定或腳本衝突。每次只改一項，記錄是否改善，才能找到實際原因。"
+        },
+        {
+          "type": "paragraph",
+          "text": "修復來源後再清除相關快取，避免一開始就把所有快取與安全功能全部關掉。向支援提供外掛版本、頁面網址、發生時間與已遮蔽敏感資料的錯誤，不要公開 access token、完整除錯資料或使用者私人訊息。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "讓外部內容不妨礙網站閱讀"
+        },
+        {
+          "type": "paragraph",
+          "text": "照片牆第一屏不必放很多則。先確保主標題、服務介紹及聯絡入口可讀，再載入補充的社群內容。手機上檢查圖片比例、文字截斷、橫向溢出及按鈕大小，不要讓點開貼文的動作被其他浮動控制遮住。"
+        },
+        {
+          "type": "paragraph",
+          "text": "社群整合可能向外部服務取用內容，也可能有本機快取及同意工具整合。依實際設定檢查未同意與已同意兩種狀態，清楚告知讀者如何載入或前往原始內容；不能只因外掛頁寫有隱私功能，就認定你的網站已完成所有設定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果外掛暫時無法工作，保留帳號或貼文的直接連結與你自行撰寫的必要說明。需要圖片時，使用自己有權使用的原檔或另行取得授權，不要把社群上看得到的圖片直接下載當作永久替代素材。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把失效處理放進內容維護"
+        },
+        {
+          "type": "paragraph",
+          "text": "每次社群帳號權限、外掛或網站快取設定變更後，抽查首頁動態牆與幾篇舊文章。用未登入視窗測試，確認不只是管理員自己看得到。不同嵌入方式應分別驗證，不能以一個區塊正常推論全站都已恢復。"
+        },
+        {
+          "type": "paragraph",
+          "text": "重要文章可以記錄社群引用的用途：作品案例、活動花絮或資訊出處。若來源失效，依用途決定改連結、補正文、換素材或移除；不要留下沒有說明的空白框，也不要把已過期貼文繼續當成目前活動資訊。"
+        },
+        {
+          "type": "paragraph",
+          "text": "停用外掛前先找出所有相關區塊與短代碼，安排替代內容，再移除連線。保留必要文字與原始網址，網站才能在平台政策或工具改變時繼續讓讀者理解，而不被單一社群服務的顯示方式綁住。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-social-embeds/diagram-1.svg",
+          "alt": "四格圖解依序檢查社群來源、帳號連線、前台載入與備援內容。",
+          "width": 1600,
+          "height": 900,
+          "caption": "讓社群內容提供補充，也讓網站本身維持可讀與可用。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "情況",
+            "先檢查",
+            "可採取的處理"
+          ],
+          "rows": [
+            [
+              "只有單一貼文失效",
+              "原始內容及可見性",
+              "更新來源或保留出處連結"
+            ],
+            [
+              "同平台全部失效",
+              "共用連線與外掛狀態",
+              "依錯誤重新授權或更新整合"
+            ],
+            [
+              "後台正常、訪客端空白",
+              "快取、同意流程與腳本",
+              "逐項測試前台載入條件"
+            ],
+            [
+              "工具不再適用",
+              "使用範圍及替代內容",
+              "先替換區塊，再移除依賴"
+            ]
+          ],
+          "caption": "從影響範圍縮小原因，避免一次修改整個網站。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "必要資訊放在網站正文",
+          "text": "活動時間、服務範圍與聯絡方式不應只藏在社群嵌入裡。即使外部區塊失效，讀者仍應能理解內容並找到可用入口。"
+        },
+        {
+          "type": "link",
+          "text": "檢查地圖與表單的外部嵌入",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-map-form-embeds"
+        },
+        {
+          "type": "link",
+          "text": "安排網站外掛安裝與更新",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-themes-plugins-install"
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：oEmbed 支援實作",
+          "url": "https://developer.wordpress.org/reference/classes/wp_oembed/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：嵌入內容說明",
+          "url": "https://wordpress.org/documentation/article/embeds/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Smash Balloon：Facebook 與 Instagram oEmbed 修復",
+          "url": "https://smashballoon.com/doc/how-to-fix-the-broken-facebook-and-instagram-oembed-issue-in-wordpress/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Social Photo Feed 作者公開文件",
+          "url": "https://wordpress.org/plugins/instagram-feed/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Social Post Feed 作者公開文件",
+          "url": "https://wordpress.org/plugins/custom-facebook-feed/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
