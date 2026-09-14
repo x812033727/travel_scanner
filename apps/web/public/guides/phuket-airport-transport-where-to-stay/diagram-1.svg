@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans Thai','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">普吉機場到各海灘與老城的巴士路線與分區 / Phuket Airport to the beaches and Old Town</title>
+  <desc id="desc">普吉機場在島的北端。Smart Bus Route 1 從機場沿西岸南下，單一票價 100 泰銖，機場發車 08:15 到 23:30：經 Cherngtalay 一帶（旁邊是邦濤 Laguna 度假村區，巴士不進度假村區），到卡馬拉約 1 小時、芭東約 80 分、卡隆約 90 分、卡塔約 100 分、終點拉威約 130 分。奈函在拉威西邊，Smart Bus 沒有站，靠近以夕陽聞名的神仙半島。共乘廂型車也到芭東、卡隆、卡塔。機場巴士往東南到普吉老城，約 1 小時 30 分，50 到 100 泰銖。Smart Bus Route 2 從老城到芭東 50 泰銖，老城有免費的 Dragon Line 循環線。回程往機場：首班 05:20 從 Kata Palm 發車，07:32 到機場；末班 19:30 從拉威發車，21:52 到機場。時刻依 2026 年 1 月 16 日起的班表，均為約略值。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">普吉機場到海灘與老城：巴士路線與住宿分區</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Phuket Airport to the beaches and Old Town · Smart Bus, Airport Bus and where to stay</text>
+
+  <!-- sea panel -->
+  <rect x="40" y="110" width="1040" height="750" rx="14" fill="#E6F0F7"/>
+  <text x="1060" y="146" font-size="15" fill="#2F6F9F" text-anchor="end">示意圖，不按比例</text>
+
+  <!-- island -->
+  <path d="M 610 128 C 680 150, 720 220, 740 290 C 770 380, 810 460, 800 540 C 790 620, 740 690, 700 760 C 670 810, 620 850, 570 852 C 520 850, 480 820, 470 780 C 465 740, 490 700, 490 660 C 480 600, 470 540, 470 480 C 465 420, 460 360, 475 300 C 495 220, 545 140, 610 128 Z" fill="#F2E8D5" stroke="#C9B99A" stroke-width="3"/>
+
+  <!-- Airport Bus (mocha) -->
+  <path d="M 610 175 C 690 220, 740 330, 745 420 C 748 460, 745 490, 740 520" fill="none" stroke="#6B4A3A" stroke-width="8" stroke-dasharray="18 12" stroke-linecap="round"/>
+  <!-- Route 2 (coral) -->
+  <path d="M 740 520 C 680 480, 590 470, 510 480" fill="none" stroke="#B8442D" stroke-width="8" stroke-dasharray="18 12" stroke-linecap="round"/>
+  <!-- Route 1 (teal) -->
+  <path d="M 610 175 C 570 210, 530 250, 515 300 L 505 400 L 510 480 L 515 560 L 525 630 C 545 700, 580 760, 610 815" fill="none" stroke="#0D6B68" stroke-width="8" stroke-dasharray="18 12" stroke-linecap="round"/>
+
+  <!-- Route 1 label inside island -->
+  <g font-size="17" fill="#0D6B68" text-anchor="middle">
+    <text x="615" y="330" font-weight="700">Smart Bus Route 1</text>
+    <text x="615" y="356">100 泰銖</text>
+    <text x="615" y="382">08:15–23:30</text>
+  </g>
+  <!-- Route 2 label -->
+  <text x="635" y="452" font-size="16" font-weight="700" fill="#B8442D" text-anchor="middle">Route 2．50 泰銖</text>
+
+  <!-- airport -->
+  <line x1="420" y1="172" x2="596" y2="175" stroke="#5C6B6B" stroke-width="2"/>
+  <rect x="70" y="128" width="350" height="88" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="245" y="164" font-size="18" fill="#5C6B6B" text-anchor="middle">สนามบินภูเก็ต</text>
+  <text x="245" y="196" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">普吉機場 Phuket Airport (HKT)</text>
+  <circle cx="610" cy="175" r="14" fill="#0D6B68" stroke="#FFFFFF" stroke-width="4"/>
+
+  <!-- Laguna / Cherngtalay -->
+  <line x1="455" y1="300" x2="503" y2="300" stroke="#5C6B6B" stroke-width="2"/>
+  <rect x="110" y="258" width="345" height="84" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="282" y="292" font-size="18" font-weight="700" fill="#2E7D5B" text-anchor="middle">邦濤 Laguna：度假村</text>
+  <text x="282" y="322" font-size="15" fill="#5C6B6B" text-anchor="middle">Cherngtalay 站．巴士不進度假村區</text>
+  <circle cx="515" cy="300" r="10" fill="#FFFFFF" stroke="#0D6B68" stroke-width="5"/>
+
+  <!-- west coast stops -->
+  <g fill="#102A2B" text-anchor="end">
+    <line x1="455" y1="400" x2="493" y2="400" stroke="#5C6B6B" stroke-width="2"/>
+    <circle cx="505" cy="400" r="10" fill="#FFFFFF" stroke="#0D6B68" stroke-width="5"/>
+    <text x="445" y="394" font-size="18" font-weight="700">卡馬拉 กมลา Kamala</text>
+    <text x="445" y="420" font-size="16" fill="#0D6B68">約 1 小時</text>
+
+    <line x1="455" y1="480" x2="498" y2="480" stroke="#5C6B6B" stroke-width="2"/>
+    <circle cx="510" cy="480" r="10" fill="#FFFFFF" stroke="#0D6B68" stroke-width="5"/>
+    <text x="445" y="474" font-size="18" font-weight="700">芭東 ป่าตอง Patong</text>
+    <text x="445" y="500" font-size="16" fill="#0D6B68">約 80 分．夜生活．廂型車也到</text>
+
+    <line x1="455" y1="560" x2="503" y2="560" stroke="#5C6B6B" stroke-width="2"/>
+    <circle cx="515" cy="560" r="10" fill="#FFFFFF" stroke="#0D6B68" stroke-width="5"/>
+    <text x="445" y="554" font-size="18" font-weight="700">卡隆 กะรน Karon</text>
+    <text x="445" y="580" font-size="16" fill="#0D6B68">約 90 分．廂型車也到</text>
+
+    <line x1="455" y1="630" x2="513" y2="630" stroke="#5C6B6B" stroke-width="2"/>
+    <circle cx="525" cy="630" r="10" fill="#FFFFFF" stroke="#0D6B68" stroke-width="5"/>
+    <text x="445" y="624" font-size="18" font-weight="700">卡塔 กะตะ Kata</text>
+    <text x="445" y="650" font-size="16" fill="#0D6B68">約 100 分．海水清．廂型車也到</text>
+
+    <line x1="455" y1="790" x2="500" y2="805" stroke="#5C6B6B" stroke-width="2"/>
+    <circle cx="510" cy="808" r="10" fill="#FFFFFF" stroke="#8A9696" stroke-width="4" stroke-dasharray="4 3"/>
+    <text x="445" y="784" font-size="18" font-weight="700">奈函 Nai Harn：近神仙半島看夕陽</text>
+    <text x="445" y="810" font-size="16" fill="#B8442D">Smart Bus 沒有站</text>
+  </g>
+
+  <!-- Rawai -->
+  <circle cx="610" cy="815" r="13" fill="#0D6B68" stroke="#FFFFFF" stroke-width="4"/>
+  <text x="680" y="806" font-size="18" font-weight="700" fill="#102A2B">拉威 ราไวย์ Rawai</text>
+  <text x="680" y="832" font-size="16" fill="#0D6B68">約 130 分．Route 1 終點</text>
+
+  <!-- Old Town -->
+  <circle cx="740" cy="520" r="30" fill="none" stroke="#2E7D5B" stroke-width="3" stroke-dasharray="6 5"/>
+  <circle cx="740" cy="520" r="13" fill="#6B4A3A" stroke="#FFFFFF" stroke-width="4"/>
+  <text x="826" y="512" font-size="18" font-weight="700" fill="#102A2B">普吉老城 Phuket Old Town</text>
+  <text x="826" y="538" font-size="16" fill="#6B4A3A">中葡街屋．不在海邊</text>
+  <text x="826" y="566" font-size="16" font-weight="700" fill="#2E7D5B">Dragon Line 免費</text>
+
+  <!-- Airport Bus label -->
+  <g font-size="16" fill="#6B4A3A">
+    <text x="800" y="250" font-size="18" font-weight="700">機場巴士 Airport Bus</text>
+    <text x="800" y="276">約 1 小時 30 分</text>
+    <text x="800" y="300">50–100 泰銖</text>
+  </g>
+
+  <!-- legend -->
+  <rect x="1110" y="110" width="450" height="330" rx="14" fill="#FFFFFF" stroke="#C9B99A" stroke-width="3"/>
+  <text x="1140" y="150" font-size="20" font-weight="700" fill="#102A2B">路線 Routes</text>
+  <line x1="1140" y1="192" x2="1210" y2="192" stroke="#0D6B68" stroke-width="8" stroke-dasharray="18 12" stroke-linecap="round"/>
+  <text x="1230" y="186" font-size="17" font-weight="700" fill="#0D6B68">Smart Bus Route 1</text>
+  <text x="1230" y="210" font-size="15" fill="#5C6B6B">機場 → 西岸各海灘 → 拉威</text>
+  <line x1="1140" y1="252" x2="1210" y2="252" stroke="#6B4A3A" stroke-width="8" stroke-dasharray="18 12" stroke-linecap="round"/>
+  <text x="1230" y="246" font-size="17" font-weight="700" fill="#6B4A3A">機場巴士 Airport Bus</text>
+  <text x="1230" y="270" font-size="15" fill="#5C6B6B">機場 → 普吉老城</text>
+  <line x1="1140" y1="312" x2="1210" y2="312" stroke="#B8442D" stroke-width="8" stroke-dasharray="18 12" stroke-linecap="round"/>
+  <text x="1230" y="306" font-size="17" font-weight="700" fill="#B8442D">Smart Bus Route 2</text>
+  <text x="1230" y="330" font-size="15" fill="#5C6B6B">普吉老城 → 芭東</text>
+  <circle cx="1175" cy="380" r="10" fill="#FFFFFF" stroke="#8A9696" stroke-width="4" stroke-dasharray="4 3"/>
+  <text x="1230" y="386" font-size="16" fill="#5C6B6B">虛線圈：沒有 Smart Bus 站</text>
+
+  <!-- return box -->
+  <rect x="1110" y="470" width="450" height="270" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1140" y="512" font-size="20" font-weight="700" fill="#102A2B">回程往機場 To the airport</text>
+  <text x="1140" y="562" font-size="17" font-weight="700" fill="#0D6B68">首班 05:20 Kata Palm</text>
+  <text x="1140" y="590" font-size="17" fill="#102A2B">→ 07:32 到機場</text>
+  <text x="1140" y="642" font-size="17" font-weight="700" fill="#0D6B68">末班 19:30 Rawai</text>
+  <text x="1140" y="670" font-size="17" fill="#102A2B">→ 21:52 到機場</text>
+  <text x="1140" y="716" font-size="15" fill="#B8442D">時刻為約略值，以官網班表為準</text>
+
+  <text x="1540" y="870" font-size="15" fill="#5C6B6B" text-anchor="end">© Mokaair 製圖 2026</text>
+</svg>
