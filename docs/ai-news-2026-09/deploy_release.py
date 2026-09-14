@@ -20,14 +20,17 @@ PREVIOUS = os.environ['NEWS_PREVIOUS_SHA']
 CONTENT_BASE = os.environ.get('NEWS_CONTENT_BASE_SHA', PREVIOUS)
 assert re.fullmatch(r'[0-9a-f]{40}', TARGET) and re.fullmatch(r'[0-9a-f]{40}', PREVIOUS)
 assert re.fullmatch(r'[0-9a-f]{40}', CONTENT_BASE)
-# PR #472 reached main while this batch's CI was running. Its deployment impact was
-# reviewed: no migration, compose change or new secret; existing accounts stay intact.
-# Only this exact reviewed integration may precede the news delta in one activation.
+# PRs #472 and #474 reached main while this batch's CI was running. Reviewed impact:
+# no migration, compose change or new secret; #474 only adds/edits other content packs,
+# artwork and documentation. The scoped publisher will not import those other packs.
+# Only these exact reviewed integrations may precede the news delta in one activation.
 if CONTENT_BASE != PREVIOUS:
-    assert (PREVIOUS, CONTENT_BASE) == (
-        'a4ee0f50770334051c7e2618a2138617875a1b40',
-        '24af149062dd99aad3f4c2bb16cea70f8edf164c',
-    ), 'unreviewed changes between live release and content base'
+    reviewed_bases = {
+        ('a4ee0f50770334051c7e2618a2138617875a1b40', '24af149062dd99aad3f4c2bb16cea70f8edf164c'),
+        ('a4ee0f50770334051c7e2618a2138617875a1b40', 'ef6bcfd1d1ced8ee50dda366ea897fb403e8b3c7'),
+        ('24af149062dd99aad3f4c2bb16cea70f8edf164c', 'ef6bcfd1d1ced8ee50dda366ea897fb403e8b3c7'),
+    }
+    assert (PREVIOUS, CONTENT_BASE) in reviewed_bases, 'unreviewed changes between live release and content base'
 ROOT = Path('/root/travel_scanner')
 BASE = Path('/root/mokaair-release-ai-news-' + TARGET[:8])
 SOURCE = BASE / 'source'

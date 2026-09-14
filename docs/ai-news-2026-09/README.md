@@ -28,6 +28,8 @@ PR #473 合併且合併 SHA 的 CI 全綠後，依 deploy_release.py 的 prepare
 
 等待 CI 時，主分支另合併資安 PR #472（24af1490），並同步進本 PR。已核對它沒有遷移、compose 變更或新增必要密鑰；內容差異仍以這個確切主分支為界。部署工具只允許已檢視的 a4ee0f50 → 24af1490 整合，不接受其他未核對的程式變更。此次正式版本將包含已合併的密碼政策、分析雜湊金鑰分離及 script CSP；既有設定、帳戶與文章保持不變。
 
+其後主分支合併 Claude 教學 PR #474（ef6bcfd1），已同步並核對僅有其他內容包、圖片與文件變更。部署工具亦列明這個確切整合基線；匯入仍限本批十個 slug，不會順帶刊登或更新 #474 的其他文章。正式機若先由其他任務更新，會重新確認實際基線再部署。
+
 部署後使用既有 app.cli guides-import，**逐一列出 manifest 的十個 --slug，並明列五個 --locale**。先核對 dry-run 僅包含十篇、五十個新翻譯，再以既有管理員與 --publish 刊登。核對五十筆發布結果，重跑應全部 unchanged；既有文章、翻譯、主題、修訂紀錄、站點頁面與供應商設定的指紋必須保持相同。
 
 node docs/ai-news-2026-09/verify_public.mjs 使用未登入的 Chromium，在桌面與手機檢查五十份完整正文、圖片、表格、提醒、來源、內鏈、canonical、Open Graph、JSON-LD、五語 hreflang 與 x-default、五個生活列表及五十筆 sitemap 網址。正式結果另記於 public-verification.json，本地截圖在忽略的 browser/。
