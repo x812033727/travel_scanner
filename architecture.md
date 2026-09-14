@@ -69,7 +69,13 @@ their original-script name (`app/localized_names.py`). A stop copied into a
 trip keeps that map, and trip responses resolve titles for the request locale,
 so switching language re-labels a saved plan without touching the catalog.
 
-Initial planning is free and persisted with the trip in one transaction. AI
+Initial planning is free and persisted with the trip in one transaction, but not
+unbounded: every user-facing path onto the planner goes through `plan_within_budget`,
+which skips the roster when no candidate could survive normalization, when the
+planner is switched off, and when the caller has spent their per-account or
+per-address budget. Spending it degrades to the catalog planner rather than
+refusing, and the count is never refunded, which is what bounds a caller who can
+provoke a provider failure. AI
 regeneration uses the usage reservation ledger and optimistic trip version.
 Only unlocked `generated_by=ai_planner` rows are replaceable; manual, provider,
 locked, and fixed-time rows are copied into the AI context without database IDs

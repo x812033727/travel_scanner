@@ -20,6 +20,7 @@ from app.ai.structured_output import (
     responses_output_text,
 )
 from app.config import Settings
+from app.infra import budget_spent, record_rate_limit_hit
 from app.localized_names import item_names, join_localized_names
 from app.search.schemas import SearchPreferences, Travelers, TripPace
 from app.trips.hours import open_slot
@@ -42,9 +43,13 @@ PLANNER_WARNING_PARTIAL_DAYS = "planner_partial_days"
 PLANNER_WARNING_PROVIDER_FAILED = "planner_provider_failed"
 PLANNER_WARNING_TIMED_OUT = "planner_timed_out"
 PLANNER_WARNING_FALLBACK_USED = "planner_fallback_used"
+PLANNER_WARNING_BUDGET_REACHED = "planner_budget_reached"
 PLANNER_WARNING_BLANK_SLOTS = "planner_blank_slots"
 PLANNER_WARNING_PLACES_UNCONFIRMED = "planner_places_unconfirmed"
 PLANNER_WARNING_PLACES_NEED_REVIEW = "planner_places_need_review"
+
+_PLANNER_BUDGET_NAMESPACE = "ai-planner-llm-user"
+_PLANNER_IP_BUDGET_NAMESPACE = "ai-planner-llm-ip"
 
 
 AIProviderName = Literal["openai", "anthropic", "minimax", "gemini", "catalog"]
@@ -1053,6 +1058,105 @@ def _unscheduled_slots(
     return missing
 
 
+def catalog_result(
+    request: AIItineraryRequest,
+    warnings: list[str],
+    generated_at: datetime,
+) -> AIPlanningResult:
+    """The deterministic catalogue plan, in the shape a live provider would have returned.
+
+    Two different things end up here and the difference matters to the traveller: every
+    provider on the roster failed, or there was no budget left to ask one. They produce the
+    same itinerary and differ only in the warning they arrive carrying, which is why the
+    warning is the caller's to supply rather than this function's to assume.
+    """
+    itinerary = draft_to_itinerary(request, fallback_draft(request), "catalog", None)
+    missing = _unscheduled_slots(request, itinerary)
+    if missing:
+        warnings = [*warnings, f"{PLANNER_WARNING_BLANK_SLOTS}:{len(missing)}"]
+    return AIPlanningResult(
+        itinerary=itinerary,
+        planning=PlanningMetadata(
+            status="fallback",
+            readiness=(
+                "needs_setup"
+                if not any(day.items for day in itinerary)
+                else "partial"
+                if missing
+                else "fallback"
+            ),
+            provider="catalog",
+            model=None,
+            generated_at=generated_at,
+            warnings=warnings,
+            exact_item_count=sum(len(day.items) for day in itinerary),
+            candidate_count=len(request.candidates),
+        ),
+        unscheduled_slots=missing,
+    )
+
+
+async def plan_within_budget(
+    settings: Settings,
+    request: AIItineraryRequest,
+    *,
+    user_id: UUID,
+    source_ip: str | None = None,
+) -> AIPlanningResult:
+    """Plan for a traveller, spending the roster only while their budget lasts.
+
+    The single door every user-facing planning path goes through, because the thing being
+    bounded is one account's share of a provider bill and not any one feature's fair use.
+    Creating a trip, previewing a replan and refining one by sentence all arrive here, and
+    the saved-trip cap does not bound any of them: a trip can be deleted and made again.
+
+    Spent, this degrades instead of refusing. The traveller still gets an itinerary from
+    the reviewed catalogue and is told so, which is the same trade
+    ``app.ai.trip_parser`` already makes when its own gate closes.
+
+    The count is never given back. The limiters around this one refund a slot when every
+    provider failed, which is right -- but it also means a caller who can provoke a failure
+    is never actually charged, and a budget that can be handed back is not a ceiling.
+    """
+    if not request.candidates:
+        # No candidate, no provider call, ever -- and this one is not about budget at all.
+        # Every item a provider may return has to name a ``candidate_key`` from this set or
+        # ``normalize_draft`` drops it, so an empty set can only come back empty, after the
+        # whole roster has been asked and billed. A destination the catalogue does not know
+        # is the ordinary way to arrive here: ``_load_ai_planner_candidates`` returns an
+        # empty list the moment ``match_destination`` misses, which makes a typed place
+        # name the cheapest way there has ever been to spend four vendors at once.
+        return catalog_result(request, [PLANNER_WARNING_FALLBACK_USED], datetime.now(UTC))
+    if not planner_providers(settings):
+        # Nothing to spend: the roster is empty, so ``generate`` goes straight to the
+        # catalogue on its own. Counting here would let an administrator switching the
+        # planner off also spend the traveller's hour, the way the intent path is careful
+        # not to when it refuses before either of its limiters counts.
+        return await AIItineraryPlanner(settings).generate(request)
+    # The account is counted first and the address only if the account is still inside its
+    # own budget, because the loop stops at the first spent one. Counting both regardless
+    # would let one caller on an office network spend their colleagues' share on requests
+    # that were never going to reach a provider anyway -- narrow before shared, the same
+    # ordering trips/intents.py keeps between its own two limiters.
+    identifiers = [(_PLANNER_BUDGET_NAMESPACE, str(user_id), settings.ai_planner_user_budget)]
+    if source_ip is not None:
+        identifiers.append(
+            (_PLANNER_IP_BUDGET_NAMESPACE, source_ip, settings.ai_planner_ip_budget)
+        )
+    for namespace, identifier, limit in identifiers:
+        if await budget_spent(
+            namespace,
+            identifier,
+            limit=limit,
+            window_seconds=settings.ai_planner_user_budget_window_seconds,
+        ):
+            # Kept for a week, per source, so the number can be judged against real traffic
+            # before anyone argues about whether it is the right one.
+            await record_rate_limit_hit(namespace, identifier)
+            return catalog_result(request, [PLANNER_WARNING_BUDGET_REACHED], datetime.now(UTC))
+    return await AIItineraryPlanner(settings).generate(request)
+
+
 class AIItineraryPlanner:
     def __init__(self, settings: Settings) -> None:
         self.settings = settings
@@ -1113,29 +1217,6 @@ class AIItineraryPlanner:
                             warnings.append(PLANNER_WARNING_PROVIDER_FAILED)
         except TimeoutError:
             warnings.append(PLANNER_WARNING_TIMED_OUT)
-        fallback = fallback_draft(request)
-        warnings.append(PLANNER_WARNING_FALLBACK_USED)
-        itinerary = draft_to_itinerary(request, fallback, "catalog", None)
-        missing = _unscheduled_slots(request, itinerary)
-        if missing:
-            warnings.append(f"{PLANNER_WARNING_BLANK_SLOTS}:{len(missing)}")
-        return AIPlanningResult(
-            itinerary=itinerary,
-            planning=PlanningMetadata(
-                status="fallback",
-                readiness=(
-                    "needs_setup"
-                    if not any(day.items for day in itinerary)
-                    else "partial"
-                    if missing
-                    else "fallback"
-                ),
-                provider="catalog",
-                model=None,
-                generated_at=generated_at,
-                warnings=warnings,
-                exact_item_count=sum(len(day.items) for day in itinerary),
-                candidate_count=len(request.candidates),
-            ),
-            unscheduled_slots=missing,
+        return catalog_result(
+            request, [*warnings, PLANNER_WARNING_FALLBACK_USED], generated_at
         )

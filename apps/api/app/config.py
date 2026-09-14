@@ -213,6 +213,22 @@ class Settings(BaseSettings):
     ai_planner_timeout_seconds: float = Field(default=15.0, gt=0, le=60)
     ai_planner_total_timeout_seconds: float = Field(default=35.0, gt=0, le=120)
     ai_planner_max_output_tokens: int = Field(default=12_000, ge=1_000, le=32_000)
+    # One account's share of the planner's provider bill. Spent, planning falls back to the
+    # reviewed catalogue rather than refusing: the itinerary still arrives, it just stops
+    # costing per call, and the traveller is told which of the two happened.
+    #
+    # Counted per attempt on the roster and never refunded, which is the part that bounds a
+    # caller who can provoke a failure. The fair-use limiters beside it do give their slot
+    # back on a real outage, and should -- but a budget that can be handed back is not a
+    # ceiling. Deliberately looser than any of them, so it binds an abuser and not a
+    # traveller having an intense afternoon.
+    ai_planner_user_budget: int = Field(default=40, ge=1, le=1_000)
+    # Per address as well, because an account costs nothing to mint: /auth/register hands
+    # back a token immediately, and AUTH_REGISTER_IP_LIMIT lets thirty through an hour. Per
+    # account alone, that is thirty times the budget above from one machine. Set well clear
+    # of the per-account number so a household, an office or a carrier NAT never meets it.
+    ai_planner_ip_budget: int = Field(default=120, ge=1, le=10_000)
+    ai_planner_user_budget_window_seconds: int = Field(default=3_600, ge=60, le=86_400)
     openai_api_base_url: str = "https://api.openai.com/v1"
     openai_model: str = "gpt-5.6-terra"
     openai_api_key: str | None = None
