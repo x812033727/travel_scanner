@@ -1,13 +1,13 @@
 ---
 id: 2026-09-14-ai-news-july-september
 title: Publish ten AI news analyses July to September 2026
-status: review
+status: done
 priority: P2
 area: docs
 owner: codex-ai-news
 claimed_at: 2026-09-14T04:24:18Z
 created_at: 2026-09-14T04:23:52Z
-completed_at:
+completed_at: 2026-09-14T06:52:58Z
 branch: codex/ai-news-july-september-2026
 depends_on: []
 scope:
@@ -44,14 +44,14 @@ Publish ten original AI news analyses covering 2026-07-14 through 2026-09-14 in 
 
 - [x] Ten sourced articles, each with all five complete locale documents, localized hero illustrations and diagrams, tables, callouts and public internal links; zh-TW body is 1800-3000 characters.
 - [x] Lint, packaged-content tests and isolated 50-document import/publication/idempotence checks pass.
-- [ ] Content PR merged with green CI; fresh verified backup and deployment completed.
-- [ ] Only the ten slugs published in all five locales; all 50 documents checked on desktop/mobile, listing, metadata and sitemap.
+- [x] Content PR merged with green CI; fresh verified backup and deployment completed.
+- [x] Only the ten slugs published in all five locales; all 50 documents checked on desktop/mobile, listing, metadata and sitemap.
 
 ## Steps
 
 - [x] Verify existing public titles, reserve precise scopes and inspect current production release.
 - [x] Research, write, translate and inspect the complete five-language batch.
-- [ ] Validate, merge, deploy, publish and record public evidence.
+- [x] Validate, merge, deploy, publish and record public evidence.
 
 ## How to verify
 
@@ -70,3 +70,9 @@ During CI, security PR #472 reached main at 24af149062dd99aad3f4c2bb16cea70f8edf
 Then Claude tutorial PR #474 reached main at ef6bcfd1d1ced8ee50dda366ea897fb403e8b3c7. Merged the latest base and reviewed its content/artwork/documentation-only delta. The deploy helper records this exact additional integration, while the publisher remains limited to the ten news slugs. A production dry-run against the still-live a4ee0f50 release validated ten new articles and all 50 locale creations without database writes (predeploy-dry-run.json).
 
 Synced Claude Code series PR #485 at 35a2d258b51d2a1ac9aff91dc5f7ed5a8df823ec. Reviewed its optional series/rich-text/code additions: existing news block formats remain compatible, no database migration/compose/new required secret. Batch verification against this base passed all 50 drafts, publications, unchanged replays and public reads; content-pack tests passed 9 with 5 PostgreSQL-only skips. Production import still excludes all other series packs. GitHub main protection requires strict up-to-date checks, so each concurrent main merge has required a new CI run.
+
+Completed 2026-09-14: PR #473 merged at 2123edbd2e1fc53adef0b89952ead60deef31feb with 14 successful PR checks and four successful post-merge workflows (CI run 34812907836). Deployed the immutable release after a verified fresh 27,301,727-byte PostgreSQL backup; all eight application services are on the expected images, readiness passes, selected data fingerprints and existing environment remain unchanged. Evidence: docs/ai-news-2026-09/deployment.json and release-verification.json.
+
+At 06:39 UTC, the exact ten slugs and five locales were created and published (50 documents); replay returned unchanged for all 50. Seven protected existing editorial datasets retained identical hashes. The initial helper event-loop error happened before writes and was fixed before repeating the dry-run and successful import. Correct helper and dry-run/publication receipts are saved in the batch documentation directory.
+
+Signed-out production QA passed 100 desktop/mobile full-text page checks, ten locale-listing checks, all 50 sitemap entries, 100 released asset hashes/sizes, and 53 unique internal-link destinations. Reviewed 20 public screenshot contact sheets covering all five languages and 50 mobile tables. Desktop Chromium and iPhone 13 emulation were used; physical devices were not tested. Detailed receipts: public-verification.json, asset-link-verification.json, visual-verification.json. Formal article URLs are in manifest.json. Completion receipts are maintained on codex/ai-news-publication-receipt after the content PR's production release.

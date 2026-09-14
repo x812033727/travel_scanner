@@ -24,18 +24,18 @@ validation.json 記錄五十份文件的結構、字數、圖片、來源、內�
 
 ## 正式部署與刊登
 
-PR #473 合併且合併 SHA 的 CI 全綠後，依 deploy_release.py 的 prepare／activate 程序建立不可變映像、保留舊映像、取得部署鎖、暫停應用程式寫入、產生及驗證新的 PostgreSQL 備份，核對資料指紋與健康狀態後啟用。此批次不修改 nginx 或額外修補資料庫內容。
+[PR #473](https://github.com/x812033727/travel_scanner/pull/473) 已於 2026-09-14 06:18 UTC 合併為 `2123edbd2e1fc53adef0b89952ead60deef31feb`，十四項 PR 檢查及四個必要合併後工作流程皆成功。主要 [CI 執行紀錄](https://github.com/x812033727/travel_scanner/actions/runs/34812907836) 包含 API、web、容器與完整堆疊 smoke test。
 
-等待 CI 時，主分支另合併資安 PR #472（24af1490），並同步進本 PR。已核對它沒有遷移、compose 變更或新增必要密鑰；內容差異仍以這個確切主分支為界。部署工具只允許已檢視的 a4ee0f50 → 24af1490 整合，不接受其他未核對的程式變更。此次正式版本將包含已合併的密碼政策、分析雜湊金鑰分離及 script CSP；既有設定、帳戶與文章保持不變。
+合併前已同步並檢視資安 PR #472（24af1490）、Claude 教學 PR #474（ef6bcfd1）與 Claude Code 教學中心 PR #485（35a2d258）。其密碼政策、CSP 與可選系列／rich_paragraph／code 支援一併進入正式映像；沒有資料庫遷移、compose 或新增必要密鑰變更。本批新聞在最終基線通過驗證，匯入範圍未擴及其他教學文章。
 
-其後主分支合併 Claude 教學 PR #474（ef6bcfd1），已同步並核對僅有其他內容包、圖片與文件變更。部署工具亦列明這個確切整合基線；匯入仍限本批十個 slug，不會順帶刊登或更新 #474 的其他文章。正式機若先由其他任務更新，會重新確認實際基線再部署。
+依 deploy_release.py 建立不可變映像、保留回滾映像、取得鎖並暫停八個應用服務寫入後，產生新的 27,301,727 位元組 PostgreSQL 備份，檢查 0600 權限、SHA-256 與 pg_restore 目錄。2026-09-14 06:36 UTC 啟用正式版本，八個服務均使用目標映像且零重啟，資料庫與 Redis 健康，九組部署前後資料指紋一致。部署與備份證據見 deployment.json；未修改 nginx 或還原資料庫。
 
-再同步已合併的 Claude Code 教學中心 PR #485（35a2d258）。它增加系列 API 與 rich_paragraph／code 的可選渲染支援，但沒有資料庫遷移、compose 或必要密鑰變更，既有段落格式仍相容。本批新聞不使用新增區塊或系列 API，也不匯入該系列文章；已在這個版本重驗五十份新聞的匯入、發布與公開讀取。
+2026-09-14 **14:39 台灣時間**已使用既有 app.cli guides-import 刊登。publish_batch.py **逐一列出 manifest 的十個 --slug 與五個 --locale**，dry-run 確認僅建立本批五十份新語言文件，正式結果為 **created 50 / published 50**，重跑 **unchanged 50**。既有文章、翻譯、主題、修訂、站點頁面與供應商設定的七組受保護指紋一致。證據見 import-dry-run.json 與 publication.json。
 
-部署後使用既有 app.cli guides-import，**逐一列出 manifest 的十個 --slug，並明列五個 --locale**。先核對 dry-run 僅包含十篇、五十個新翻譯，再以既有管理員與 --publish 刊登。核對五十筆發布結果，重跑應全部 unchanged；既有文章、翻譯、主題、修訂紀錄、站點頁面與供應商設定的指紋必須保持相同。
+第一次執行刊登輔助程式時，管理員查詢遇到 async 資料庫連線跨事件迴圈錯誤；當時尚未呼叫正式匯入。已將資料查核與管理員查詢放入同一事件迴圈，重新確認 dry-run 五十份皆為新增後成功刊登。publish_batch.py 保存修正後的可重現程式；publication.json 保存成功結果。
 
-node docs/ai-news-2026-09/verify_public.mjs 使用未登入的 Chromium，在桌面與手機檢查五十份完整正文、圖片、表格、提醒、來源、內鏈、canonical、Open Graph、JSON-LD、五語 hreflang 與 x-default、五個生活列表及五十筆 sitemap 網址。正式結果另記於 public-verification.json，本地截圖在忽略的 browser/。
+verify_public.mjs 使用未登入的 Chromium，完成五十篇語言文件各一次桌面及手機檢查，共 **100 次全文檢查**；段落、標題、表格、提醒、來源、兩個內鏈、兩張圖片、canonical、Open Graph、JSON-LD、五語 hreflang 與 x-default 均通過。十個列表檢查及五十筆 sitemap 網址通過，見 public-verification.json。
 
-verify_assets_links.mjs 另核對一百張公開圖片的雜湊與檔案大小，並實際開啟所有延伸閱讀網址，確認是已刊登文章且 canonical 正確。
+verify_assets_links.mjs 核對一百張公開圖片與正式 Git 版本的 SHA-256、HTTP 狀態及 300 KB 上限。新文章的內鏈沿用已完成的桌面／手機全文證據，其他既有教學連結另以未登入瀏覽器開啟，避免重複密集請求；曾遇到的 429 已透過降低頻率與遵守重試等待處理。最終結果見 asset-link-verification.json。
 
-目前狀態：五語內容與本地驗證完成，正式發布尚待 PR、CI、部署與匯入。只有正式驗證成功後才能宣告刊登完成。
+build_public_sheets.py 保存十張正式桌面／手機首頁 contact sheet，及十張手機表格 contact sheet，逐張檢視記錄見 visual-verification.json。表格截圖若因自動捲動被固定導覽列遮住，crop_public_tables.py 以文字像素列定位，從正常完整頁面截圖裁出原表格；不移除網站元件或重繪內容，定位證據見 table-crop-verification.json。完整原始截圖保留於忽略的 browser/ 目錄。
