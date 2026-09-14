@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">該不該開延伸思考 / Should you turn on extended thinking</title>
+  <desc id="desc">插圖：米色底上有一個白色的大對話泡泡，深綠色邊框，泡泡尾巴在左下方。泡泡裡一條藍色的蜿蜒路徑從左下角的起點出發，經過三個白色小圓點的轉折，一路往右上通到一顆亮起的燈泡；燈泡是白色玻璃、橘色邊框，裡面有橘色的燈絲，周圍有幾道短短的橘色光芒，底座是灰色。泡泡下方一行深色文字：該不該開延伸思考。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- soft ground shadow -->
+  <ellipse cx="800" cy="740" rx="560" ry="26" fill="#E3DDD2"/>
+
+  <!-- speech bubble -->
+  <path d="M 300 110 H 1300 A 40 40 0 0 1 1340 150 V 600 A 40 40 0 0 1 1300 640 H 560 L 430 745 L 460 640 H 300 A 40 40 0 0 1 260 600 V 150 A 40 40 0 0 1 300 110 Z" fill="#FFFFFF" stroke="#0D6B68" stroke-width="10" stroke-linejoin="round"/>
+
+  <!-- winding thinking path from the start dot to the bulb -->
+  <path d="M 360 560 C 420 440, 500 440, 560 530 C 610 605, 700 605, 740 510 C 780 420, 860 400, 910 460 C 960 520, 1030 545, 1080 525 C 1120 510, 1140 500, 1140 470" fill="none" stroke="#2F6F9F" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="360" cy="560" r="18" fill="#2F6F9F"/>
+  <circle cx="560" cy="530" r="15" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="8"/>
+  <circle cx="740" cy="510" r="15" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="8"/>
+  <circle cx="910" cy="460" r="15" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="8"/>
+
+  <!-- light bulb: rays -->
+  <line x1="1140" y1="165" x2="1140" y2="128" stroke="#D97A2B" stroke-width="10" stroke-linecap="round"/>
+  <line x1="1228" y1="202" x2="1254" y2="176" stroke="#D97A2B" stroke-width="10" stroke-linecap="round"/>
+  <line x1="1052" y1="202" x2="1026" y2="176" stroke="#D97A2B" stroke-width="10" stroke-linecap="round"/>
+  <line x1="1265" y1="290" x2="1302" y2="290" stroke="#D97A2B" stroke-width="10" stroke-linecap="round"/>
+  <line x1="1015" y1="290" x2="978" y2="290" stroke="#D97A2B" stroke-width="10" stroke-linecap="round"/>
+
+  <!-- light bulb: glass, glow and filament -->
+  <circle cx="1140" cy="290" r="100" fill="#FFFFFF" stroke="#D97A2B" stroke-width="10"/>
+  <circle cx="1140" cy="290" r="66" fill="#D97A2B" fill-opacity="0.18"/>
+  <line x1="1112" y1="330" x2="1112" y2="392" stroke="#5C6B6B" stroke-width="6"/>
+  <line x1="1168" y1="330" x2="1168" y2="392" stroke="#5C6B6B" stroke-width="6"/>
+  <path d="M 1112 330 L 1122 298 L 1140 330 L 1158 298 L 1168 330" fill="none" stroke="#D97A2B" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- light bulb: base -->
+  <rect x="1095" y="392" width="90" height="52" rx="10" fill="#5C6B6B"/>
+  <rect x="1110" y="448" width="60" height="18" rx="8" fill="#102A2B"/>
+
+  <!-- one line of text -->
+  <text x="800" y="836" font-size="56" font-weight="700" fill="#102A2B" text-anchor="middle">該不該開延伸思考</text>
+</svg>

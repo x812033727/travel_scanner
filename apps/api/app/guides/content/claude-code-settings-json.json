@@ -1,0 +1,282 @@
+{
+  "slug": "claude-code-settings-json",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 124,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜settings.json 設定教學",
+      "description": "修改 JSON、理解設定範圍並驗證生效。settings.json 用來設定 Claude Code 的行為，例如個人偏好、權限與 Hooks。本篇會先教你讀懂最少必要的 JSON，再用一個可逆的小設定示範作用範圍、載入確認與恢復方式。你會知道「檔案存好了」和「設定真的生效」之間，還需要哪些檢查。",
+      "hero": {
+        "src": "/guides/claude-code-settings-json/hero.jpg",
+        "alt": "settings.json 設定教學：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "settings.json 用來設定 Claude Code 的行為，例如個人偏好、權限與 Hooks。本篇會先教你讀懂最少必要的 JSON，再用一個可逆的小設定示範作用範圍、載入確認與恢復方式。你會知道「檔案存好了」和「設定真的生效」之間，還需要哪些檢查。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "請準備可用的本機 CLI 與"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-practice-project-setup",
+              "text": "練習專案"
+            },
+            {
+              "type": "text",
+              "text": "。如果已有設定，先閱讀內容並保存原本版本；以下範例只展示需要調整的鍵，不能直接覆蓋包含權限、環境變數或組織要求的整份檔案。尚未理解 MD 與設定差別時，先讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-claude-md-guide",
+              "text": "CLAUDE.md"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "看懂 JSON 的基本規則"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-settings-json/diagram-1.svg",
+          "alt": "看懂 JSON 的基本規則 → 選擇影響範圍 → 加入一個可逆設定",
+          "width": 1600,
+          "height": 900,
+          "caption": "看懂 JSON 的基本規則 → 選擇影響範圍 → 加入一個可逆設定",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "JSON 用大括號表示物件，鍵與字串值使用雙引號，鍵值中間是冒號，多個欄位以逗號分隔。布林值 true、false 不加引號；最後一個欄位後面不留多餘逗號。Claude Code 的 settings 檔使用嚴格 JSON，不能把 // 註解直接放進範例中。"
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": "JSON 語法示例：先在暫存文字檔閱讀",
+          "code": "{\n  \"language\": \"繁體中文\",\n  \"spinnerTipsEnabled\": false\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "這裡 language 是字串，spinnerTipsEnabled 是布林值。字串 \"false\" 與布林值 false 是不同資料型態；全形引號也不是 JSON 的雙引號。用有 JSON 檢查功能的編輯器保存，可以在啟動 Claude 前先看到語法錯誤，但工具自己的語意驗證仍然必要。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "選擇影響範圍"
+        },
+        {
+          "type": "table",
+          "header": [
+            "設定位置",
+            "影響對象",
+            "適合用途"
+          ],
+          "rows": [
+            [
+              "~/.claude/settings.json",
+              "自己跨專案使用",
+              "個人偏好"
+            ],
+            [
+              ".claude/settings.json",
+              "使用這個專案的人",
+              "團隊共享設定"
+            ],
+            [
+              ".claude/settings.local.json",
+              "自己在這個專案",
+              "本機實驗與個人調整"
+            ],
+            [
+              "管理設定",
+              "組織控制的使用者",
+              "團隊政策"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇使用專案 local 檔做練習，避免把個人偏好推給全體隊友。如果手動建立這個檔案，要確認 Git 忽略設定，不能只因名稱有 local 就假設一定不會提交。共享設定則需要正常版本審查，因為其他人打開專案也可能受影響。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "加入一個可逆設定"
+        },
+        {
+          "type": "paragraph",
+          "text": "先檢查 .claude/settings.local.json 是否存在。存在時在原物件中加入或修改 spinnerTipsEnabled；不存在才建立新檔。這個練習關閉等待時的提示，不涉及放寬工具權限，適合先學會檔案位置與設定優先順序。"
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": "寫入 .claude/settings.local.json：合併到現有物件",
+          "code": "{\n  \"spinnerTipsEnabled\": false\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "若原本已有其他鍵，保留它們並注意逗號。不要把兩個各自完整的大括號物件直接接在同一個檔案，因為那不是一份有效 JSON。保存後先用編輯器檢查，再在專案終端機執行 doctor 查看 Claude Code 的診斷。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "專案終端機：檢查設定語法與被拒絕的項目",
+          "code": "claude doctor\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：確認設定來源",
+          "code": "/status\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Status 的 Setting sources 可以幫你確認讀入哪些設定來源，但不會逐鍵說明每個值來自哪份檔案。不要看到 Project local settings 就認定所有鍵都採用 local 值；仍要結合鍵本身的支援條件與優先順序判斷。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "理解優先順序與合併"
+        },
+        {
+          "type": "paragraph",
+          "text": "一般情況下，管理設定最高，其次是啟動命令列覆寫、專案 local、共享專案、使用者設定。較高層只會覆寫它有設定的對應鍵，不會因為有一個 local 檔就整份丟掉較低層。清單類設定可能採合併，而不是簡單取代；權限規則另有判斷順序，不能只套用單值概念。"
+        },
+        {
+          "type": "paragraph",
+          "text": "環境變數也不能粗略塞進同一條排名。某個變數與設定鍵如何互動，要查該項目的官方說明。診斷模型或供應商選擇時尤其如此：即使 settings.json 沒寫，shell 仍可能帶入相關環境變數。檢查時只列必要名稱與是否存在，不要把金鑰內容印出來。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用單次設定做比較"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果想試某個值而不修改持久設定，可將設定寫入獨立 JSON，再透過 --settings 指定。使用檔案能減少 Windows 與 Bash 引號跳脫的差異。以下用一個專門的練習檔，完成後移除它即可；不要把它和真正的團隊設定混在一起。"
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": "寫入 practice-settings.json：單次練習設定",
+          "code": "{\n  \"spinnerTipsEnabled\": true\n}\n"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "專案終端機：啟動一次使用指定設定的 session",
+          "code": "claude --settings practice-settings.json\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "比較有無這個啟動參數的 session，並記錄實際來源與可觀察行為。這個示例不表示 --settings 能超越組織管理限制；遇到管理政策控制的值，先查管理設定。若不確定鍵是否支援，查看當前版本的官方參考與 doctor 診斷，不要只以編輯器上色判斷。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "設定何時生效與如何恢復"
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude Code 會重新載入許多設定變更，但部分項目只在 session 啟動時讀取；模型等設定也有對話內專用控制方式。為了讓第一次實驗容易比較，可以每次保存後開一個新 session，再查看狀態。這是驗證方法，不代表所有設定都必須重啟才能生效。"
+        },
+        {
+          "type": "paragraph",
+          "text": "恢復時，只移除本次加入的鍵或還原原值，再跑 doctor 並確認來源。若整份檔案只為練習建立，先確認裡面沒有後來新增的內容，才決定是否移除。遇到 Settings Error，依錯誤指向的檔案與位置修正；不要直接刪除整個 .claude 目錄。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "JSON 能被解析，只證明語法有效；鍵是否支援、值是否被其他來源覆寫，以及操作是否符合預期，都需要分別確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "小練習是完成「保存原值 → 修改 local 設定 → doctor 與 status 核對 → 單次覆寫 → 恢復」一個循環。完成判準是你能指出每次修改的檔案、影響範圍與驗證結果。之後加入"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-permissions-plan-mode",
+              "text": "權限規則"
+            },
+            {
+              "type": "text",
+              "text": "或"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-hooks-getting-started",
+              "text": "Hooks"
+            },
+            {
+              "type": "text",
+              "text": "時，也沿用這個流程逐項檢查。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Settings files and precedence",
+          "url": "https://code.claude.com/docs/en/settings",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Configure permissions",
+          "url": "https://code.claude.com/docs/en/permissions",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

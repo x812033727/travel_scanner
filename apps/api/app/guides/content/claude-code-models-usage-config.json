@@ -1,0 +1,270 @@
+{
+  "slug": "claude-code-models-usage-config",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 129,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜模型、用量與偏好設定",
+      "description": "切換模型、查看用量與調整偏好。模型、用量與偏好設定分別影響回答能力、帳號使用狀態與操作習慣。本篇會用 /model、/usage、/status 與 /config 完成一次可逆調整，讓你知道目前使用什麼、哪些選擇會保存，以及看到的用量數字能說明到哪裡。範例以介面提供的可用選項為準，不把特定模型版本或價格寫死。",
+      "hero": {
+        "src": "/guides/claude-code-models-usage-config/hero.jpg",
+        "alt": "模型、用量與偏好設定：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "模型、用量與偏好設定分別影響回答能力、帳號使用狀態與操作習慣。本篇會用 /model、/usage、/status 與 /config 完成一次可逆調整，讓你知道目前使用什麼、哪些選擇會保存，以及看到的用量數字能說明到哪裡。範例以介面提供的可用選項為準，不把特定模型版本或價格寫死。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "請準備可用的 CLI 帳號，先閱讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-accounts-and-access",
+              "text": "登入與計費來源"
+            },
+            {
+              "type": "text",
+              "text": "。不同訂閱、API 或組織設定能看到的模型與用量欄位可能不同。沒有某個選項不一定是安裝問題，也可能是資格、供應商或管理政策的差異。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先看目前的模型與來源"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-models-usage-config/diagram-1.svg",
+          "alt": "先看目前的模型與來源 → 開啟模型選擇器 → 調整推理投入程度",
+          "width": 1600,
+          "height": 900,
+          "caption": "先看目前的模型與來源 → 開啟模型選擇器 → 調整推理投入程度",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "在對話輸入 /status，記下當前模型、帳號與設定來源。這是調整前的基準，能避免之後忘記原本用什麼。若你有從命令列或環境變數指定模型，也應一併記錄；只看某份 JSON 沒寫，不代表沒有其他來源影響。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code CLI 對話框：記錄目前狀態",
+          "code": "/status\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "模型別名，例如 sonnet 或 opus，會依供應商與產品更新對應到不同實際版本。別名適合一般日常選擇；需要嚴格重現時，要記錄當時解析出的完整模型與 CLI 版本。不要只寫「用 Opus」就認為不同日期、不同平台的條件完全一致。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "開啟模型選擇器"
+        },
+        {
+          "type": "paragraph",
+          "text": "使用 /model 查看自己實際可用的模型。選擇前先看任務需要：只讀解釋小函式、處理複雜除錯或規劃大範圍變更，可能需要不同能力與時間。不要把選最強模型當成唯一技巧，清楚需求與適當測試仍然重要。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code CLI 對話框：查看模型選單",
+          "code": "/model\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "目前 CLI 的模型切換一般會保存為後續 session 的預設；官方也提供只對本次切換的操作方式。若只是實驗，可以依選擇器提示使用單次選擇，或在啟動時透過 --model 指定，不修改持久偏好。切換後再次查看 status，確認實際套用。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "終端機：只在這次啟動選擇可用別名",
+          "code": "claude --model sonnet\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "這個示例假設帳號允許 sonnet；若選單或管理設定不允許，改用已確認可用的選項。模型切換可能需要重新處理上下文，也可能影響快取與等待時間。對同一個長任務反覆切換前，先判斷是否真的能改善成果。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "調整推理投入程度"
+        },
+        {
+          "type": "paragraph",
+          "text": "部分模型支援 effort 等投入程度設定，用來調整推理的工作量。它不是保證答案正確的開關，也不等於文字一定更長。先完成一個小任務基準，再比較不同設定下的解釋品質、遺漏情境與耗時，會比憑名稱猜測更有幫助。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "任務情況",
+            "可以觀察的面向",
+            "驗證重點"
+          ],
+          "rows": [
+            [
+              "解釋小函式",
+              "是否精確對上程式",
+              "輸入、輸出與邊界"
+            ],
+            [
+              "除錯",
+              "是否定位根因",
+              "原重現情境通過"
+            ],
+            [
+              "跨檔案變更",
+              "是否保留原行為",
+              "測試與差異審查"
+            ],
+            [
+              "文件整理",
+              "是否保留來源與結構",
+              "引用與內容核對"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "實際 effort 選項與可保存範圍依模型、版本及組織政策而異。使用目前介面的提示與官方參考核對，不要把別篇文章的數值直接套到所有模型。對第一次練習，可以先保留預設，把注意力放在結果是否符合需求。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用 /usage 查看使用狀態"
+        },
+        {
+          "type": "paragraph",
+          "text": "在對話輸入 /usage，查看 session、方案用量與活動資訊中可用的欄位。現在 /cost 與 /stats 是相關別名，但舊版本可能有不同畫面。請依本機顯示理解它是在談本次 token、方案限制，還是本機歷史統計。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code CLI 對話框：查看用量",
+          "code": "/usage\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "訂閱包含的使用量與 API 費用不是同一件事。介面顯示的 session 成本估算不應直接當成訂閱帳單；API 的正式計費應以 Console 或供應商帳務資料為準。若欄位缺資料，記錄不可用，不要當成零使用或免費。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用量資料也可能暫時無法更新，畫面可能顯示先前快照與取得時間。先看是否有這類提示，再決定等待或重試。把舊快照當成即時剩餘量，容易對能否完成接下來的長任務做出錯誤判斷。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用 /config 調整個人習慣"
+        },
+        {
+          "type": "paragraph",
+          "text": "比較模型結果時，保留同一份輸入材料與驗收清單，避免第一個模型只讀一個檔案，第二個卻已拿到完整調查結果。若任務有測試，就比較是否找到同樣的邊界案例與是否實際通過；不要只用回答長短評分。單次結果也不一定代表所有任務的普遍表現。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "CLI 的 /config 提供部分常用偏好選單，例如主題與輸出顯示；它不是完整 settings.json 檢視器。桌面與 VS Code 面板使用各自設定介面，不一定打開同樣的 CLI 選單。更完整的設定範圍與優先順序，請看"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-settings-json",
+              "text": "settings.json"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code CLI 對話框：查看偏好選單",
+          "code": "/config\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一次只調整一個容易辨認的偏好，記錄原值，保存後看畫面是否符合預期，再恢復。不要為了觀察主題而順便更改權限、供應商與模型，否則結果變化時很難知道是哪個設定造成的。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "模型與用量選單是了解現況的工具。比較品質時用相同需求與驗收條件，比較費用時先確認計費來源，才不會把不同條件混在一起。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "小練習是選一個只讀函式解釋任務，記錄模型、投入設定、結果品質與用量欄位，再恢復原本偏好。完成判準是能說清楚哪個選擇只影響本次、哪個會保存，並知道哪些用量資訊只是估計或快照。需要更完整的工作效率方法，再閱讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-usage-cost-optimization",
+              "text": "用量與成本調整"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Model configuration",
+          "url": "https://code.claude.com/docs/en/model-config",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Manage costs effectively",
+          "url": "https://code.claude.com/docs/en/costs",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

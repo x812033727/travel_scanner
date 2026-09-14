@@ -1,0 +1,92 @@
+{
+  "target": "4ba38e81cd48e2c3f8920b9dee1108b5cdba50d6",
+  "previous": "3b8df68c693eb81ccde7793a2f89d71999dbb2c2",
+  "schema": "0074_lifestyle_guides",
+  "started_at": "2026-09-14T08:27:04.805605+00:00",
+  "built_at": "2026-09-14T08:28:18.168359+00:00",
+  "activated_at": "2026-09-14T08:44:05.415444+00:00",
+  "ci_run": "https://github.com/x812033727/travel_scanner/actions/runs/34822723832",
+  "backup": {
+    "path": "/root/mokaair-gemini-4ba38e81cd48/predeploy.dump",
+    "bytes": 30458872,
+    "sha256": "94602191605c5e8af607f043e8eb247c868448c5a1ed6c499e896a1bb486f5bc",
+    "index_verified": true,
+    "mode": "0o600"
+  },
+  "data_before": {
+    "guide_articles": "27842d668f94b2e98e50aa77c66fc9c42d0a9855451baf1e6cf61ef798016452",
+    "guide_article_locales": "240a76a89fb50a934673a7c8e0b39f815a6399d5b9dd771cd21d5d2ecda8701a",
+    "guide_article_revisions": "4be3eea72caa80f9970500be4d483d6f566f1023020a00faeba68d880441ae09",
+    "guide_article_topics": "1aa13cc3cdf99e3a6d921fb5fcf35ad577e22b3c70ccec2a237f46ff92c57b26",
+    "guide_topics": "7c9b608792244baa1a4a8d42f6d1030709edd814fce22d0465cd875c578ec6a8",
+    "travel_service_products": "5a48d336118cc4af4511d1cbae225ea1a9385c0be36fc242bcedbc95f76bd6c2",
+    "hotel_booking_options": "d85d92783bde512dbf564a61f1373205713184173a6ab63859c3ab359969bbfc",
+    "travel_service_config": "af6f48ad467e297db7d14cded0f8f041e026f462bfed9804dc144ff319ad1379",
+    "provider_configs": "6eb784a17a61a0b1aa28d857ece997739ed7763ff65c9761e00842c356d1249b"
+  },
+  "data_after": {
+    "guide_articles": "27842d668f94b2e98e50aa77c66fc9c42d0a9855451baf1e6cf61ef798016452",
+    "guide_article_locales": "240a76a89fb50a934673a7c8e0b39f815a6399d5b9dd771cd21d5d2ecda8701a",
+    "guide_article_revisions": "4be3eea72caa80f9970500be4d483d6f566f1023020a00faeba68d880441ae09",
+    "guide_article_topics": "1aa13cc3cdf99e3a6d921fb5fcf35ad577e22b3c70ccec2a237f46ff92c57b26",
+    "guide_topics": "7c9b608792244baa1a4a8d42f6d1030709edd814fce22d0465cd875c578ec6a8",
+    "travel_service_products": "5a48d336118cc4af4511d1cbae225ea1a9385c0be36fc242bcedbc95f76bd6c2",
+    "hotel_booking_options": "d85d92783bde512dbf564a61f1373205713184173a6ab63859c3ab359969bbfc",
+    "travel_service_config": "af6f48ad467e297db7d14cded0f8f041e026f462bfed9804dc144ff319ad1379",
+    "provider_configs": "6eb784a17a61a0b1aa28d857ece997739ed7763ff65c9761e00842c356d1249b"
+  },
+  "services": {
+    "api": {
+      "image": "travel-scanner-api:4ba38e81cd48e2c3f8920b9dee1108b5cdba50d6",
+      "running": true,
+      "restarts": 0
+    },
+    "web": {
+      "image": "travel-scanner-web:4ba38e81cd48e2c3f8920b9dee1108b5cdba50d6",
+      "running": true,
+      "restarts": 0
+    },
+    "worker": {
+      "image": "travel-scanner-api:4ba38e81cd48e2c3f8920b9dee1108b5cdba50d6",
+      "running": true,
+      "restarts": 0
+    },
+    "alert-worker": {
+      "image": "travel-scanner-api:4ba38e81cd48e2c3f8920b9dee1108b5cdba50d6",
+      "running": true,
+      "restarts": 0
+    },
+    "alert-scheduler": {
+      "image": "travel-scanner-api:4ba38e81cd48e2c3f8920b9dee1108b5cdba50d6",
+      "running": true,
+      "restarts": 0
+    },
+    "hotspot-collector": {
+      "image": "travel-scanner-api:4ba38e81cd48e2c3f8920b9dee1108b5cdba50d6",
+      "running": true,
+      "restarts": 0
+    },
+    "analytics-scheduler": {
+      "image": "travel-scanner-api:4ba38e81cd48e2c3f8920b9dee1108b5cdba50d6",
+      "running": true,
+      "restarts": 0
+    },
+    "community-sweeper": {
+      "image": "travel-scanner-api:4ba38e81cd48e2c3f8920b9dee1108b5cdba50d6",
+      "running": true,
+      "restarts": 0
+    },
+    "postgres": {
+      "image": "postgres:17-alpine",
+      "running": true,
+      "restarts": 0
+    },
+    "redis": {
+      "image": "redis:7.4-alpine",
+      "running": true,
+      "restarts": 0
+    }
+  },
+  "dataContainersPreserved": true,
+  "stableDataUnchanged": true
+}

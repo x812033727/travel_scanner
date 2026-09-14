@@ -709,3 +709,9 @@ ads settings turn on for the same tag. Everything about it is off by default;
   `2026-09-13-google-ads-conversion-measurement` would both need this relaxed first. It is
   one condition in `app/(ads-public)/[locale]/layout.tsx` if the owner decides the trade is
   the wrong way round.
+
+## Article inline links and code (2026-09-14)
+
+Article-only `rich_paragraph` stores 1–80 text/link children and preserves meaningful spaces between them; a link uses the existing ordinary URL validator and affiliate checks. The public renderer keeps same-site links in the current tab. `code` stores literal code (up to 24,000 characters), an optional language and filename, preserving indentation and line endings after CRLF normalization. It renders escaped text with a copy button; no evaluation or Markdown/HTML execution occurs. Both blocks round-trip through the existing admin draft, preview, publication and pack import paths. Existing paragraph/list/heading documents remain readable.
+
+The Gemini directory and all article navigation share `apps/web/lib/guide-series.json`; publication of the hub gates its site entry. See [the series maintenance and release procedure](gemini-series/README.md). No series database table or new article URL scheme is introduced.

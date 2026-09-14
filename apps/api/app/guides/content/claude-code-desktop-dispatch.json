@@ -1,0 +1,264 @@
+{
+  "slug": "claude-code-desktop-dispatch",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 117,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜Dispatch：從手機派送桌面任務",
+      "description": "完成手機與桌面配對並派送可驗證的任務。Dispatch 是 Claude Cowork 中用來派送工作的持續對話。你可以從手機交代任務，由桌面端判斷使用 Cowork 或建立 Claude Code 工作階段。本篇會帶你核對資格、完成目前官方的連接設定，再派送一個待辦專案的只讀檢查，最後到 Code 側欄確認實際產出。",
+      "hero": {
+        "src": "/guides/claude-code-desktop-dispatch/hero.jpg",
+        "alt": "Dispatch：從手機派送桌面任務：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Dispatch 是 Claude Cowork 中用來派送工作的持續對話。你可以從手機交代任務，由桌面端判斷使用 Cowork 或建立 Claude Code 工作階段。本篇會帶你核對資格、完成目前官方的連接設定，再派送一個待辦專案的只讀檢查，最後到 Code 側欄確認實際產出。"
+        },
+        {
+          "type": "paragraph",
+          "text": "目前官方 Help Center 將 Dispatch 列為部分 Pro／Max 帳號的限量 beta；有訂閱也不保證立刻看得到入口。它需要最新桌面 App、手機 App、可用網路，以及保持喚醒的電腦。官方列出的桌面支援與 Code 的其他功能不一定完全相同，請以本篇來源的最新條件核對。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先確認它與其他手機入口的差別"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-desktop-dispatch/diagram-1.svg",
+          "alt": "先確認它與其他手機入口的差別 → 完成目前的連接與存取設定 → 準備一個可辨認的本機專案",
+          "width": 1600,
+          "height": 900,
+          "caption": "先確認它與其他手機入口的差別 → 完成目前的連接與存取設定 → 準備一個可辨認的本機專案",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果你已經在 CLI 做一件事，想從手機接續那個原有對話，通常選"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-remote-control",
+              "text": "Remote Control"
+            },
+            {
+              "type": "text",
+              "text": "更直接。Dispatch 則適合從一個持續的派工入口提出目標，再查看它建立的工作階段。若你的電腦會關機，應選擇雲端工作，因為 Dispatch 的本機任務仍需要桌面 App 運作。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "入口",
+            "開始時手上有什麼",
+            "後續要檢查什麼"
+          ],
+          "rows": [
+            [
+              "Remote Control",
+              "一個既有本機 session",
+              "是否接到同一個工作"
+            ],
+            [
+              "Dispatch",
+              "一個待派送的需求",
+              "派到哪種工作與哪個目錄"
+            ],
+            [
+              "雲端 Code",
+              "儲存庫與雲端環境",
+              "遠端版本、分支與產出"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成目前的連接與存取設定"
+        },
+        {
+          "type": "paragraph",
+          "text": "先更新電腦和手機的 Claude App，以同一帳號登入。進入 Cowork，從側欄尋找 Dispatch，開啟介紹頁後選 Get started。依畫面檢查檔案存取與保持電腦喚醒的選項，再完成 Finish setup。設定後在手機與桌面確認能看到同一段 Dispatch 對話。"
+        },
+        {
+          "type": "paragraph",
+          "text": "早期畫面可能使用 QR 配對，但目前官方步驟不把掃 QR code 列為每次必經流程。若你的版本仍出現配對引導，就依該版本畫面處理；沒有出現時，不必到非官方網站找配對碼。查證時記錄 App 版本與當天看見的入口，才方便與更新後介面比較。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "看不到 Dispatch 時，先核對限量開放資格與 App 版本。官方目前建議這類情況使用 Cowork 雲端；如果你的需求是程式儲存庫工作，也可依"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-on-the-web",
+              "text": "Claude Code 網頁版"
+            },
+            {
+              "type": "text",
+              "text": "準備雲端 session。替代入口的執行位置不同，重新選擇時要一起調整檔案與環境前提。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "準備一個可辨認的本機專案"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-practice-project-setup",
+              "text": "共用練習專案"
+            },
+            {
+              "type": "text",
+              "text": "解壓縮到專用資料夾，在桌面 Code 中先確認能讀取 README 與 package.json。記下完整路徑，例如自己的 Projects 目錄中的 claude-todo。派工時使用這個已核對的位置，避免只說「幫我看看那個網站」。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "練習的第一個任務不需要檔案修改、訊息發送或外部服務操作。你要驗證的是路由與執行環境：手機需求是否建立預期 Code session，該 session 是否能讀到指定材料，結果是否回到派工對話。用只讀任務可以把這三件事看得很清楚。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "手機 Claude App 的 Dispatch 對話：路徑請換成自己的專案",
+          "code": "請在桌面建立 Claude Code 工作階段，檢查 C:\\Projects\\claude-todo。\n只讀取 README.md、package.json 與 model.js，整理網站功能和測試方式。\n不要修改檔案、安裝套件、推送 Git 或建立 PR。\n完成後回報工作階段名稱與實際工作目錄，方便我到桌面核對。\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "到 Code 側欄檢查派送結果"
+        },
+        {
+          "type": "paragraph",
+          "text": "回到桌面 App 的 Code 分頁，找出帶有 Dispatch 標示的工作階段，閱讀收到的目標與工具紀錄。不是所有 Dispatch 任務都會進 Code：文件整理等工作可能留在 Cowork。因此需要程式工作時，在提示詞明確指出建立 Code session，並核對實際結果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "比較 Dispatch 回報的工作名稱、Code 側欄名稱與實際目錄。若名稱相似但檔案不同，先補充正確位置，不要繼續要求修改。等只讀檢查成功，再派一個改主標題的小任務，要求測試並保留差異供你審查。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Dispatch 對話：確認只讀檢查正確後再派送",
+          "code": "請接續剛才的待辦專案工作，把頁面可見主標題改成「手機派工練習」。\n保留原有功能，執行既有測試，列出差異與尚未驗證的項目。\n完成後告訴我應開啟哪個 Code 工作階段審查；先不推送或部署。\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "閱讀通知與審查成果"
+        },
+        {
+          "type": "paragraph",
+          "text": "Dispatch 可以在任務完成或需要你決定時通知手機。打開通知後先辨認狀態：等待授權、測試失敗與真正完成需要不同處理。完成後仍到 Code session 逐檔看差異，再開啟本機預覽驗證主標題和基本新增、勾選、刪除。"
+        },
+        {
+          "type": "paragraph",
+          "text": "你可以把派工對話當成總覽，但詳細原因應回到執行工作查看。例如摘要說測試失敗，要檢查實際命令與錯誤；摘要說產出檔案，要確認路徑與內容。這種雙層閱讀方式，也能防止把「已派出去」誤認成「已驗收完成」。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "先學會停止正在執行的工作，再擴大派工範圍。回到該 Code 或 Cowork session 使用停止控制，檢查已產生的差異；關閉手機通知並不會停止桌面任務。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見問題與小練習"
+        },
+        {
+          "type": "paragraph",
+          "text": "任務一直沒有結果，先查桌面是否睡眠、App 是否仍開啟，以及工作是否卡在等待回答。找不到素材，先查完整路徑和已授權的檔案範圍。需要操作桌面 App 的任務還有額外 Computer Use 支援條件，不能因為 Dispatch 能派工，就假設每個平台都能控制所有應用程式。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "小練習是完成「只讀檢查 → 手機派小修改 → 桌面差異審查」三步，記錄手機訊息、被建立的 Code session 與最終檔案。完成判準是能追溯同一份需求如何落到具體專案，並自己確認測試與預覽結果。需要較長期的定時工作，再前往"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-scheduled-tasks",
+              "text": "排程教學"
+            },
+            {
+              "type": "text",
+              "text": "，另行確認執行與停止條件。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Desktop application",
+          "url": "https://code.claude.com/docs/en/desktop",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude Code on mobile",
+          "url": "https://code.claude.com/docs/en/mobile",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Assign tasks from anywhere in Claude Cowork | Claude Help Center",
+          "url": "https://support.claude.com/en/articles/13947068-assign-tasks-from-anywhere-in-claude-cowork",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

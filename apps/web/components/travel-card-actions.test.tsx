@@ -62,13 +62,12 @@ describe("travel card actions", () => {
     close.focus(); fireEvent.keyDown(document, { key: "Tab", shiftKey: true });
     expect(dialog.contains(document.activeElement)).toBe(true);
     fireEvent.keyDown(document, { key: "Escape" });
-    // Red once under a loaded full run, never since: not in three full runs at four-way
-    // load, nor four more with the file order shuffled. The assertion is left exactly as
-    // strict as it was; what is added is the state at the moment it fails. On its own,
-    // "expected <section> to be null" cannot tell apart the three early returns in
-    // useModalSheet's keydown handler, and two of them have already been ruled out here --
-    // this file registers no listener of its own, and the app's only native <dialog> lives
-    // in another, isolated file. That leaves isTopModalLayer, so print it.
+    // Red once under a loaded full run. The sheet opens on a resolved request, and
+    // useModalSheet used to attach its Escape listener in a passive effect, which React runs
+    // a scheduler task after that commit; `findByRole` could hand back control in between,
+    // and this Escape then reached no listener at all. It attaches in a layout effect now,
+    // and `lib/modal-sheet.test.tsx` holds that gap open on purpose. The state printed below
+    // stays, so anything else that ever fails here says what it saw.
     expect(screen.queryByRole("dialog"), [
       `dialogs in DOM: ${document.querySelectorAll('[role="dialog"]').length}`,
       `sheet still the top layer: ${isTopModalLayer(dialog)}`,

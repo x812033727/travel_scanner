@@ -1,0 +1,345 @@
+{
+  "slug": "gemini-cli-coding-workflow",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 134,
+  "locales": {
+    "zh-TW": {
+      "title": "CLI 寫程式：理解、規劃、修改與測試",
+      "description": "用 Gemini CLI 寫程式，可靠的流程是先理解專案與重現問題，再規劃小範圍修改、檢查差異並執行相關測試。本篇用一個簡單的活動人數函式示範完整工作順序。你不需要一開始就交出整個應用程式，也能學會如何給資料、判斷修改是否對題，以及儲存驗證結果。",
+      "hero": {
+        "src": "/guides/gemini-cli-coding-workflow/hero.jpg",
+        "alt": "寫程式的驗收循環的原創插畫，以文件、裝置與流程等物件呼應理解、規劃、修改與測試；非產品介面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "用 Gemini CLI 寫程式，可靠的流程是先理解專案與重現問題，再規劃小範圍修改、檢查差異並執行相關測試。本篇用一個簡單的活動人數函式示範完整工作順序。你不需要一開始就交出整個應用程式，也能學會如何給資料、判斷修改是否對題，以及儲存驗證結果。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-cli-coding-workflow/diagram-1.svg",
+          "alt": "重現問題：先讓原始測試失敗；修改程式：檢視實際變更；相同測試：確認修正後通過",
+          "width": 1600,
+          "height": 900,
+          "caption": "寫程式的驗收循環。此為原創教學圖解，並非產品畫面或實測輸出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "開始前：建立可恢復的練習專案",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "完成"
+            },
+            {
+              "type": "link",
+              "text": "CLI 安裝",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "link",
+              "text": "檔案操作",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-files-and-shell"
+            },
+            {
+              "type": "text",
+              "text": "，準備 Node.js 和獨立資料夾。本篇以 CLI 0.59.0 為基準，範例函式與測試可在本機直接執行；模型實際修改的品質，需依你的執行結果核對。若使用既有 Git 專案，先檢視工作目錄差異，不要覆蓋原本未提交的內容。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先讀專案已有的 README、套件腳本與"
+            },
+            {
+              "type": "link",
+              "text": "GEMINI.md",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+            },
+            {
+              "type": "text",
+              "text": "。你要讓 CLI 知道工作範圍、不能改的部分及完成條件，而不是直接要求「把專案變好」。如果只是修一個計算錯誤，就不應順便更換框架、重排整個目錄或改動無關頁面。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "本次需求是「將成人與兒童人數相加，並拒絕負數或非整數」。先把輸入與預期結果寫清楚：兩位成人加一位兒童應為三；負一位成人不合理；小數人數也應拒絕。這些案例來自需求，並非等程式寫完後才照著實作抄一份測試。"
+        },
+        {
+          "type": "heading",
+          "text": "理解問題：先請它讀，不急著改",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在專案建立 people.mjs 與 people.test.mjs，使用下面有缺陷的函式與需求測試。先在終端機執行測試，確認它真的失敗，再請 CLI 說明原因。若測試根本沒有啟動，應先修正執行方式，而不是立刻修改函式。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "label": "people.mjs：待修正範例",
+          "code": "export function totalPeople(adults, children) {\n  return adults + children + 1;\n}\n"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "label": "people.test.mjs",
+          "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { totalPeople } from \"./people.mjs\";\n\ntest(\"加總成人與兒童\", () => assert.equal(totalPeople(2, 1), 3));\ntest(\"拒絕負數\", () => assert.throws(() => totalPeople(-1, 1)));\ntest(\"拒絕小數\", () => assert.throws(() => totalPeople(1.5, 1)));\n"
+        },
+        {
+          "type": "heading",
+          "text": "實作：規劃、修改與測試",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "執行 node --test people.test.mjs，儲存原始失敗結果。",
+            "啟動 Gemini CLI，引用兩個檔案，要求先解釋失敗原因與最小修改計畫。",
+            "核對計畫是否只處理加總與輸入驗證，再讓 CLI 進行修改。",
+            "檢視檔案差異，確認沒有改動測試預期值來配合錯誤程式。",
+            "重跑同一組測試，最後手動檢查空值、字串等額外輸入是否需列入正式需求。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Gemini CLI 內輸入",
+          "code": "@people.mjs @people.test.mjs\n請先說明測試失敗原因，提出只修改 people.mjs 的最小計畫。\n需求：成人與兒童都必須是非負整數，回傳兩者相加。\n不要修改測試預期值，不新增外部套件。\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "可使用 /plan 進入規劃模式，或啟動時指定 --approval-mode plan；操作前先確認當前版本與功能開關。規劃模式的目的，是先把方法與影響說清楚，不是保證所有讀取與工具行為完全相同。權限細節請搭配"
+            },
+            {
+              "type": "link",
+              "text": "政策與沙箱",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "核對。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "預期結果：測試通過也要看差異",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "合理修正應先驗證兩個輸入都是非負整數，再回傳相加結果。下面是人工整理的參考解答，方便你核對邏輯，並非宣稱某次模型必然產生完全相同的程式。錯誤訊息可以不同，但有效輸入與拒絕條件必須符合需求。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "label": "people.mjs：參考解答",
+          "code": "export function totalPeople(adults, children) {\n  if (![adults, children].every((value) => Number.isInteger(value) && value >= 0)) {\n    throw new TypeError(\"人數必須是非負整數\");\n  }\n  return adults + children;\n}\n"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "終端機命令",
+          "code": "node --test people.test.mjs\ngit diff -- people.mjs people.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二行只適用於 Git 專案，尚未使用 Git 時可用編輯器比較檔案。預期三個測試通過，差異只包含需要的函式修正。若 CLI 修改了測試、刪掉輸入檢查或加入不必要套件，即使某次測試變綠，也要重新檢查是否違反原始需求。"
+        },
+        {
+          "type": "heading",
+          "text": "從練習移到真正專案",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "真正專案通常有多層測試與型別檢查。先跑與修改直接相關的檢查，透過後再依專案規範完成必要驗證。不要把「編譯通過」當成「使用者流程正常」，也不要在沒有瀏覽器驗證時宣稱畫面已完成。交付時寫清楚改了什麼、怎麼測、還有哪些限制。"
+        },
+        {
+          "type": "paragraph",
+          "text": "提交前再看一次變更檔案清單，確認沒有把下載資料、個人設定或測試產物混入。若測試需要外部服務而無法執行，記錄缺少的環境與尚未驗證的行為，讓接手者知道要補哪一項證據。"
+        },
+        {
+          "type": "paragraph",
+          "text": "需要編輯器整合時，先檢視 /ide 與官方整合檔案，確認實際連線狀態；設定檔存在不代表編輯器已連上。/setup-github 會開始 GitHub Actions 設定流程，與單純本機測試不同，只有在你要建立該工作流程並理解專案權限時才使用。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "若任務變大，先把唯讀調查與具體修改拆開，再考慮"
+            },
+            {
+              "type": "link",
+              "text": "子代理",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-subagents"
+            },
+            {
+              "type": "text",
+              "text": "。多個代理不應同時修改同一批檔案；整合者仍要核對差異與測試證據。重複的工作方法可整理成"
+            },
+            {
+              "type": "link",
+              "text": "技能",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": "，但每次需求與驗收標準仍要明確提供。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "常見問題與交付方式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「模型說測試通過，但我看不到結果」要求列出實際執行命令、退出狀態與重點輸出。沒有工具結果時，只能算建議或預期，不算已驗證。你也可以在自己的終端機重跑相同命令交叉確認。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「一次改太多怎麼辦」先停止擴大範圍，檢視差異，把修改拆成對應需求的小部分。保留原本未提交的內容，再決定撤回或重做哪些檔案；不要用一條全域重設命令清掉整個工作目錄。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「測試一直失敗要讓它反覆修嗎」先判斷是環境、既有錯誤還是本次修改造成。保留第一個可重現失敗，讓修正有明確目標；如果需要換方向，先更新計畫。完成後用"
+            },
+            {
+              "type": "link",
+              "text": "交接摘要",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-sessions-context"
+            },
+            {
+              "type": "text",
+              "text": "儲存成果，讓下一次工作能從已核對的狀態繼續。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查證與範例",
+          "text": "本文於 2026-09-14 對照官方文件整理。畫面操作依官方說明，非所有裝置均經實機測試；範例輸出是驗收目標，實際內容依資料而異。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後的檢核",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "通過條件"
+          ],
+          "rows": [
+            [
+              "操作",
+              "能依正文重做一次，說明每一步使用的輸入。"
+            ],
+            [
+              "結果",
+              "能用原始資料或可重現測試核對輸出，而非只看語氣。"
+            ],
+            [
+              "延伸",
+              "知道下一篇教學解決的問題，以及什麼時候需要它。"
+            ]
+          ],
+          "caption": "完成實作後逐項確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著可以閱讀 "
+            },
+            {
+              "type": "link",
+              "text": "GEMINI.md 入門",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "CLI 權限",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "，把本篇的操作接到下一個工作流程。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gemini CLI：規劃模式",
+          "url": "https://geminicli.com/docs/cli/plan-mode/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini CLI：shell 工作流程",
+          "url": "https://geminicli.com/docs/cli/tutorials/shell-commands/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini CLI：指令參考",
+          "url": "https://geminicli.com/docs/reference/commands/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,409 @@
+{
+  "schema": 1,
+  "started_at": "2026-09-14T06:38:22.396Z",
+  "scope": "Disposable PostgreSQL 17 via saved PuTTY hostinger2; no production DSN, volumes, network, application containers, deployment locks or .env changes.",
+  "status": "passed",
+  "commands": [
+    {
+      "command": "& 'C:\\Program Files\\PuTTY\\plink.exe' -load hostinger2 -l root -batch 'id -u && free -m && df -m /var/lib/docker && docker ps --format \"{{.ID}}|{{.Names}}|{{.Status}}\" && docker image ls postgres:17-alpine --format \"{{.ID}}|{{.Size}}\" && ss -ltn'",
+      "exit_code": 0,
+      "summary": "root UID 0; 13887 MiB available; 110753 MiB Docker filesystem available; baseline 8 application + production postgres/redis captured; PostgreSQL17 image present; chosen remote port absent"
+    },
+    {
+      "command": "Get-Content apps/api/app/config.py | Select-Object -Skip 90 -First 36\nGet-NetTCPConnection -State Listen -LocalPort 55438 -ErrorAction SilentlyContinue | Select-Object LocalAddress,LocalPort,OwningProcess\n& 'C:\\Program Files\\PuTTY\\plink.exe' -load hostinger2 -l root -batch 'docker ps -a --filter name=codex-ai-terms-pg17 --format \"{{.ID}}|{{.Names}}|{{.Labels}}\"; ss -ltn sport = :55437'",
+      "exit_code": 0,
+      "output": "    model_config = SettingsConfigDict(env_file=\"../../.env\", extra=\"ignore\")\r\n\r\n    app_env: str = \"development\"\r\n    # A placeholder, and the one value production refuses by name:\r\n    # `validate_deployment_security` rejects it and anything under 32 characters.\r\n    app_secret_key: str = \"development-secret-change-me-please-32\"  # noqa: S105\r\n    settings_encryption_key: str | None = None\r\n    admin_emails: str = \"\"\r\n    community_enabled: bool = False\r\n    discovery_enabled: bool = False\r\n    community_s3_endpoint: str | None = None\r\n    community_s3_public_endpoint: str | None = None\r\n    community_s3_region: str = \"us-east-1\"\r\n    community_s3_bucket: str = \"mokaair-community\"\r\n    community_s3_access_key: str | None = None\r\n    community_s3_secret_key: str | None = None\r\n    community_smtp_host: str | None = None\r\n    community_smtp_port: int = Field(default=587, ge=1, le=65535)\r\n    community_smtp_starttls: bool = True\r\n    community_smtp_username: str | None = None\r\n    community_smtp_password: str | None = None\r\n    community_mail_from: str = \"\"\r\n    deployments_enabled: bool = False\r\n    deploy_admin_emails: str = \"\"\r\n    database_admin_emails: str = \"\"\r\n    admin_database_maintenance_enabled: bool = False\r\n    deploy_agent_socket: str = \"/run/travel-scanner-deployer/deployer.sock\"\r\n    deploy_agent_hmac_key: str | None = None\r\n    deploy_agent_timeout_seconds: float = Field(default=10.0, gt=0, le=30)\r\n    deploy_cooldown_seconds: int = Field(default=300, ge=0, le=3_600)\r\n    database_url: str = \"postgresql+asyncpg://travel:travel@localhost:5432/travel_scanner\"\r\n    redis_url: str = \"redis://localhost:6379/0\"\r\n    api_cors_origins: str = \"http://localhost:3000\"\r\n    access_token_expire_minutes: int = Field(default=60, ge=5, le=1440)\r\n    # Cookie sessions renew on activity once past half their lifetime, but\r\n    # never beyond this many days after the original sign-in.\r\nState Recv-Q Send-Q Local Address:Port Peer Address:Port\n"
+    },
+    {
+      "command": "& 'C:\\Program Files\\PuTTY\\plink.exe' -load hostinger2 -l root -batch 'test -z \"$(docker ps -aq --filter name=^/codex-ai-terms-pg-mu0vh6o7-37b2d4$)\" && test -z \"$(ss -H -ltn sport = :55437)\" && docker run -d --name codex-ai-terms-pg-mu0vh6o7-37b2d4 --label codex.task=ai-terms-postgresql-validation --label codex.run=ai-terms-pg-mu0vh6o7-37b2d4 --label codex.disposable=true --network bridge --publish 127.0.0.1:55437:5432 --memory 512m --memory-swap 512m --cpus 0.5 --pids-limit 128 --tmpfs /var/lib/postgresql/data:rw,noexec,nosuid,size=384m --env POSTGRES_USER=codex_ai_terms_qa --env POSTGRES_PASSWORD=disposable_3urg4pcsj6 --env POSTGRES_DB=ai_terms_qa postgres:17-alpine postgres -c shared_buffers=64MB -c max_connections=20'",
+      "exit_code": 0,
+      "output": "e2b28e321c12f425613752227adde08c436cdd07ed9808d08be9129abe3d4ee8\n"
+    },
+    {
+      "command": "& 'C:\\Program Files\\PuTTY\\plink.exe' -load hostinger2 -l root -batch 'docker inspect --format ''{\"Id\":{{json .Id}},\"Labels\":{{json .Config.Labels}},\"Memory\":{{.HostConfig.Memory}},\"MemorySwap\":{{.HostConfig.MemorySwap}},\"NetworkMode\":{{json .HostConfig.NetworkMode}},\"Mounts\":{{json .Mounts}},\"PortBindings\":{{json .HostConfig.PortBindings}},\"Running\":{{.State.Running}}}'' e2b28e321c12f425613752227adde08c436cdd07ed9808d08be9129abe3d4ee8 && docker exec e2b28e321c12f425613752227adde08c436cdd07ed9808d08be9129abe3d4ee8 pg_isready -U codex_ai_terms_qa -d ai_terms_qa'",
+      "exit_code": 0,
+      "output": "{\"Id\":\"e2b28e321c12f425613752227adde08c436cdd07ed9808d08be9129abe3d4ee8\",\"Labels\":{\"codex.disposable\":\"true\",\"codex.run\":\"ai-terms-pg-mu0vh6o7-37b2d4\",\"codex.task\":\"ai-terms-postgresql-validation\"},\"Memory\":536870912,\"MemorySwap\":536870912,\"NetworkMode\":\"bridge\",\"Mounts\":[],\"PortBindings\":{\"5432/tcp\":[{\"HostIp\":\"127.0.0.1\",\"HostPort\":\"55437\"}]},\"Running\":true}\n/var/run/postgresql:5432 - accepting connections\n"
+    },
+    {
+      "command": "if (Get-NetTCPConnection -State Listen -LocalPort 55438 -ErrorAction SilentlyContinue) { throw 'Local test port is occupied' }\n$qaTunnel = Start-Process -FilePath 'C:\\Program Files\\PuTTY\\plink.exe' -ArgumentList @('-load','hostinger2','-l','root','-batch','-N','-L','127.0.0.1:55438:127.0.0.1:55437') -WindowStyle Hidden -PassThru\n[pscustomobject]@{pid=$qaTunnel.Id;start_time=$qaTunnel.StartTime.ToString('o');path=$qaTunnel.Path;has_exited=$qaTunnel.HasExited} | ConvertTo-Json",
+      "exit_code": 0,
+      "output": "{\r\n  \"pid\": 33044,\r\n  \"start_time\": \"2026-09-14T14:39:43.4693789+08:00\",\r\n  \"path\": \"C:\\\\Program Files\\\\PuTTY\\\\plink.exe\",\r\n  \"has_exited\": false\r\n}\r\n"
+    },
+    {
+      "command": "& 'C:\\Program Files\\PuTTY\\plink.exe' -load hostinger2 -l root -batch 'docker inspect --format ''{{json .HostConfig.Tmpfs}}'' e2b28e321c12f425613752227adde08c436cdd07ed9808d08be9129abe3d4ee8 && docker exec e2b28e321c12f425613752227adde08c436cdd07ed9808d08be9129abe3d4ee8 df -T /var/lib/postgresql/data && docker exec e2b28e321c12f425613752227adde08c436cdd07ed9808d08be9129abe3d4ee8 psql -U codex_ai_terms_qa -d ai_terms_qa -Atc ''SELECT version(), current_database(), current_user, inet_server_port()'''\nGet-NetTCPConnection -State Listen -LocalPort 55438 | Select-Object LocalAddress,LocalPort,OwningProcess | ConvertTo-Json",
+      "exit_code": 0,
+      "output": "{\"/var/lib/postgresql/data\":\"rw,noexec,nosuid,size=384m\"}\nFilesystem           Type       1K-blocks      Used Available Use% Mounted on\ntmpfs                tmpfs         393216     46916    346300  12% /var/lib/postgresql/data\nPostgreSQL 17.11 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit|ai_terms_qa|codex_ai_terms_qa|\n[\r\n  {\r\n    \"LocalAddress\": \"::1\",\r\n    \"LocalPort\": 55438,\r\n    \"OwningProcess\": 33044\r\n  },\r\n  {\r\n    \"LocalAddress\": \"127.0.0.1\",\r\n    \"LocalPort\": 55438,\r\n    \"OwningProcess\": 33044\r\n  }\r\n]\r\n"
+    },
+    {
+      "command": "$env:DATABASE_URL = 'postgresql+asyncpg://codex_ai_terms_qa:disposable_3urg4pcsj6@127.0.0.1:55438/ai_terms_qa'\n$env:RUN_INTEGRATION_TESTS = '1'\n$env:APP_ENV = 'test'\n$env:REDIS_URL = 'redis://127.0.0.1:1/15'\n@'\nimport os,sys,asyncio,json\nfrom pathlib import Path\nsys.path.insert(0,str(Path('apps/api').resolve()))\nfrom app.config import Settings,get_settings\nSettings.model_config['env_file']=None\nget_settings.cache_clear()\nfrom sqlalchemy.engine import make_url\nurl=make_url(get_settings().database_url)\nassert url.host=='127.0.0.1' and url.port==55438 and url.database=='ai_terms_qa' and url.username=='codex_ai_terms_qa'\nassert os.environ['RUN_INTEGRATION_TESTS']=='1'\nimport asyncpg\nasync def inspect():\n connection=await asyncpg.connect(host=url.host,port=url.port,user=url.username,password=url.password,database=url.database,timeout=15)\n try:\n  row=await connection.fetchrow('SELECT version() AS version, current_database() AS database, current_user AS username, inet_server_port() AS port')\n  assert row['version'].startswith('PostgreSQL 17.') and row['database']=='ai_terms_qa'\n  print(json.dumps(dict(row)))\n finally: await connection.close()\nasyncio.run(inspect())\nprint('DSN and PostgreSQL identity verified; no dotenv or production DSN used.')\n'@ | apps/api/.venv/Scripts/python.exe -",
+      "exit_code": 0,
+      "output": "{\"version\": \"PostgreSQL 17.11 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit\", \"database\": \"ai_terms_qa\", \"username\": \"codex_ai_terms_qa\", \"port\": 5432}\r\nDSN and PostgreSQL identity verified; no dotenv or production DSN used.\r\n"
+    },
+    {
+      "command": "$env:DATABASE_URL = 'postgresql+asyncpg://codex_ai_terms_qa:disposable_3urg4pcsj6@127.0.0.1:55438/ai_terms_qa'\n$env:RUN_INTEGRATION_TESTS = '1'\n$env:APP_ENV = 'test'\n$env:REDIS_URL = 'redis://127.0.0.1:1/15'\n$env:PYTHONUNBUFFERED = '1'\n@'\nimport os,sys,json,hashlib\nfrom pathlib import Path\nsys.stdout.reconfigure(encoding='utf-8')\nsys.path.insert(0,str(Path('apps/api').resolve()))\nfrom app.config import Settings,get_settings\nSettings.model_config['env_file']=None\nget_settings.cache_clear()\nfrom sqlalchemy.engine import make_url\nurl=make_url(get_settings().database_url)\nassert url.host=='127.0.0.1' and url.port==55438 and url.database=='ai_terms_qa' and url.username=='codex_ai_terms_qa'\nassert os.environ['RUN_INTEGRATION_TESTS']=='1'\npaths=['docs/ai-terms-series/publish_batch.py','docs/ai-terms-series/test_publish_batch.py','apps/api/tests/test_guides.py','apps/api/pyproject.toml']\nprint(json.dumps({'source_hashes':{p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in paths},'database_host':url.host,'database_port':url.port,'database_name':url.database,'dotenv_disabled':True}),flush=True)\nimport pytest\nraise SystemExit(pytest.main(['-c','apps/api/pyproject.toml','docs/ai-terms-series/test_publish_batch.py','-vv','-ra','-x','--tb=short']))\n'@ | apps/api/.venv/Scripts/python.exe -",
+      "status": "interrupted_for_same_host_runner",
+      "exit_code": 1,
+      "output": "{\"source_hashes\": {\"docs/ai-terms-series/publish_batch.py\": \"649a97be9171537157ab3ea259828fdb50de478a18adb8e2825f68191eb3eb97\", \"docs/ai-terms-series/test_publish_batch.py\": \"63a209756b91fa0495b5d1e4d9a0ee7d2a0ce8433168123185dbb84096906048\", \"apps/api/tests/test_guides.py\": \"d5279dfa71c9ce032ddf1615f92f02f9fe1c3228db6c0017a4f0ff2a0181e9e3\", \"apps/api/pyproject.toml\": \"6d4310e3b1427e15079e394e9b55ce0a54a9e938d75942b36b366135497c55cb\"}, \"database_host\": \"127.0.0.1\", \"database_port\": 55438, \"database_name\": \"ai_terms_qa\", \"dotenv_disabled\": true}\r\n============================= test session starts =============================\r\nplatform win32 -- Python 3.13.15, pytest-9.1.1, pluggy-1.6.0 -- C:\\Users\\x8120\\.codex\\worktrees\\5272\\travel_scanㄐ\\apps\\api\\.venv\\Scripts\\python.exe\r\ncachedir: .pytest_cache\r\nrootdir: C:\\Users\\x8120\\.codex\\worktrees\\5272\\travel_scanㄐ\\apps\\api\r\nconfigfile: pyproject.toml\r\nplugins: anyio-4.14.2, asyncio-1.4.0, cov-6.3.0\r\nasyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\r\ncollecting ... collected 9 items\r\n\r\napps\\api::test_resume_preserves_publications_and_publishes_index_last[sqlite-False] <- ..\\..\\docs\\ai-terms-series\\test_publish_batch.py PASSED [ 11%]\r\napps\\api::test_resume_preserves_publications_and_publishes_index_last[sqlite-True] <- ..\\..\\docs\\ai-terms-series\\test_publish_batch.py PASSED [ 22%]\r\napps\\api::test_resume_preserves_publications_and_publishes_index_last[postgresql-False] <- ..\\..\\docs\\ai-terms-series\\test_publish_batch.py "
+    },
+    {
+      "command": "& 'C:\\Program Files\\PuTTY\\plink.exe' -load hostinger2 -l root -batch 'docker stats --no-stream --format ''{{.ID}}|{{.MemUsage}}|{{.CPUPerc}}'' e2b28e321c12f425613752227adde08c436cdd07ed9808d08be9129abe3d4ee8 && docker exec e2b28e321c12f425613752227adde08c436cdd07ed9808d08be9129abe3d4ee8 psql -U codex_ai_terms_qa -d ai_terms_qa -Atc \"SELECT current_database(), nspname FROM pg_namespace WHERE nspname LIKE ''guides_test_%''\"'",
+      "exit_code": 0,
+      "output": "e2b28e321c12|71.77MiB / 512MiB|0.39%\nai_terms_qa|guides_test_7e27495facd94d8fb7fa3aa0bfd246e2\n"
+    },
+    {
+      "command": "& 'C:\\Program Files\\PuTTY\\plink.exe' -load hostinger2 -l root -batch 'docker exec e2b28e321c12f425613752227adde08c436cdd07ed9808d08be9129abe3d4ee8 psql -U codex_ai_terms_qa -d ai_terms_qa -Atc \"SELECT current_database(), nspname FROM pg_namespace WHERE nspname LIKE ''guides_test_%''; SELECT count(*) AS articles FROM guides_test_7e27495facd94d8fb7fa3aa0bfd246e2.guide_articles; SELECT count(*) FILTER (WHERE published_version IS NOT NULL) AS published, count(*) AS locales FROM guides_test_7e27495facd94d8fb7fa3aa0bfd246e2.guide_article_locales\"'",
+      "exit_code": 0,
+      "output": "ai_terms_qa|guides_test_7e27495facd94d8fb7fa3aa0bfd246e2\n9\n6|9\n",
+      "at": "2026-09-14T06:46:08.151Z"
+    },
+    {
+      "command": "& 'C:\\Program Files\\PuTTY\\plink.exe' -load hostinger2 -l root -batch 'docker image inspect 2123edbd --format ''{{.Id}}|{{json .Config.User}}|{{json .Config.Entrypoint}}|{{json .Config.Cmd}}|{{json .Config.WorkingDir}}'''",
+      "exit_code": 1,
+      "output": "Error response from daemon: No such image: 2123edbd:latest\n\n"
+    },
+    {
+      "command": "& 'C:\\Program Files\\PuTTY\\plink.exe' -load hostinger2 -l root -batch 'docker inspect --format ''{{.Image}}'' 56a2f2975bfc && docker image ls --no-trunc --format ''{{.ID}}|{{.Repository}}:{{.Tag}}'''\nGet-CimInstance Win32_Process -Filter \"Name='python.exe'\" | Where-Object { $_.CommandLine -like '*test_publish_batch*' } | Select-Object ProcessId,ExecutablePath,CommandLine | ConvertTo-Json",
+      "exit_code": 0,
+      "output": "Warning: truncated output (original token count: 3560)\nTotal output lines: 112\n\nsha256:1de16ffa6c47f11611f77281678664313c6dd178f6c3c8e3de07005ebef9f8d6\nsha256:5faff3a1174e19db5e5428129a84fc15e79cbb8391c4d78d45c7fa3aa8a694bb|travel-scanner-web:2123edbd2e1fc53adef0b89952ead60deef31feb\nsha256:5faff3a1174e19db5e5428129a84fc15e79cbb8391c4d78d45c7fa3aa8a694bb|travel-scanner-web:local\nsha256:1de16ffa6c47f11611f77281678664313c6dd178f6c3c8e3de07005ebef9f8d6|travel-scanner-api:2123edbd2e1fc53adef0b89952ead60deef31feb\nsha256:1de16ffa6c47f11611f77281678664313c6dd178f6c3c8e3de07005ebef9f8d6|travel-scanner-api:local\nsha256:01eb5af6860c05e0864a9de2fa01cf3417327053d07bc1bd2ffb5c00a4ecac93|travel-scanner-web:a4ee0f50770334051c7e2618a2138617875a1b40\nsha256:01eb5af6860c05e0864a9de2fa01cf3417327053d07bc1bd2ffb5c00a4ecac93|travel-scanner-web:rollback-ai-news-2123edbd\nsha256:5ca4e2c2a492ec4ffe507d40ce029f8bb7e076327871825af3d2f89b460d57fb|travel-scanner-api:a4ee0f50770334051c7e2618a2138617875a1b40\nsha256:5ca4e2c2a492ec4ffe507d40ce029f8bb7e076327871825af3d2f89b460d57fb|travel-scanner-api:rollback-ai-news-2123edbd\nsha256:f45ed624197a22777dd5cfcda1e059da317a0eb5bfc73251ecdfbaa79df2ec6c|travel-scanner-web:rollback-20260914-a4ee0f50\nsha256:043481ff4386bd59e0db4f32e0a85a59ee8e8858d95219b8cd8089c44b04f57f|travel-scanner-api:rollback-20260914-a4ee0f50\nsha256:6f8ca8cd876ff36bf2aa85cacb623deed5e42c8e894423d6a2c4f750a9aadf50|travel-scanner-web:19a94294c71503cfba29d1cb1f1f57776fd3ce46\nsha256:e48b61ba0d4d606218ae69e10d01de5c4530a3e88142ce39754ab9e68acb659c|travel-scanner-api:19a94294c71503cfba29d1cb1f1f57776fd3ce46\nsha256:04e24eb9b796b3609f9ef7f78e3cada6586aa24fd98423404f58666add410771|travel-scanner-web:28ca9d70548db61d3e63a218ef965f6ec267f99f\nsha256:3beb44b612a832d38b51bfbfac24a05f100c3bcdcdd56e0896613e7b2a017818|travel-scanner-web:52e3ecfec0e88505f4d8fbdf6962b41857bcbc0d\nsha256:16288f5163e5ed29a689a6c6832fc78ea2a5de03fcda66ce5b1ee2b24fc12ccc|travel-scanner-web:5e3168e18174427c9ce4ed5b7219517ad3d1f4aa\nsha256:f3ec6e8cbd1882bb0399f2ffe7eb383f7325d1df39083409b38f54fcb059d6d1|travel-scanner-api:52e3ecfec0e88505f4d8fbdf6962b41857bcbc0d\nsha256:95864cc8f0b710755bf3d1a8600f9c6df042870d266183b02d3c89f0bd6ae74f|travel-scanner-api:28ca9d70548db61d3e63a218ef965f6ec267f99f\nsha256:2a3b59c958cf3e5e884b93faef6667da02a1232e78dff3d56fe4b8b8b7d47b06|travel-scanner-api:5e3168e18174427c9ce4ed5b7219517ad3d1f4aa\nsha256:d8b0f2dc6db95ef5699f3ab8e20e3b98a91c481a06212ff269b7238dc65eb6f4|travel-scanner-web:a044e4cc04f27107b68f7a198482ea000ca5e982\nsha256:d9083e7f2bdb6a0ae4e216c539e0ea91f642c723090c8d5faedb080e52380cb0|travel-scanner-api:a044e4cc04f27107b68f7a198482ea000ca5e982\nsha256:fdb90e06c05eeed33ed807e27fde005eeef13950fac086d4567896a3af5b42dc|travel-scanner-web:1aefd59bfc2688b6fa8fbaf3be62d2727e24da7d\nsha256:fece78044e0ba68f0fbe760bbb395a45cd49cb2a0ba4bbd11bac7c4e8ef5e500|travel-scanner-api:1aefd59bfc2688b6fa8fbaf3be62d2727e24da7d\nsha256:039496776586f0effaa0ed53d96ecc10156a8fd2d07b320abc3c6cc037aca3b2|travel-scanner-web:fe26ff8c9fa7ee8fccdd6f317e389d4260adc4f5\nsha256:cf028c74856fd2df208ba539d513d633a1b1b618c046ac48d41bf138bfe16ea3|travel-scanner-api:fe26ff8c9fa7ee8fccdd6f317e389d4260adc4f5\nsha256:033c79f0a0eacdcaaba5a39d6f5909ee8d397edfc22332080216dafb7c6c861f|travel-scanner-web:daa71684167aafcaea9d1f44505132a0b3ace749\nsha256:545bc54dbe4f17783fdca16c70b370a4836a8167e3065b832db0bfac09450e1f|travel-scanner-web:30a8e06ad003c177c46e487d2075cde09f496529\nsha256:ac31b043b52258a2fbc2418b6aaf03646bef98ddf3f9ff5a6cc74d36ecb21ec2|travel-scanner-api:daa71684167aafcaea9d1f44505132a0b3ace749\nsha256:42839494f392b1420823873585be8f9b7d9dc2312eff4c91c197fbfefedf6918|travel-scanner-api:30a8e06ad003c177c46e487d2075cde09f496529\nsha256:77074f4ff569d6ef64e87f2ec9912baa714a08dd82bc9c1025417f823cf82101|travel-scanner-web:584dd4385d42578524cc095a1ab49d1bba18a4a7\nsha256:86e2cfdd00afa87160375f1328c485e0dc6f0f0935cf73dcccf52c670b627bf2|travel-scanner-api:584dd4385d42578524cc095a1ab49d1bba18a4a7\nsha256:9b36a927688c9857bd003b48e4e927520625dbdc48580c8932e64a9717afff2c|travel-scanner-web:d9ef8fcd3565ae3ddd02751d334e662e20412a99\nsha256:ee30fdae6067a778cfdeeff5dbe1431a92f27de381a2b2ce01ce290441a835fc|travel-scanner-api:d9ef8fcd3565ae3ddd02751d334e662e20412a99\nsha256:6ecef5892e0e6747e6e432d4cec6d86d66d8bd8861315df43b18053028c635b5|travel-scanner-web:a8be96cd5bc0fca3f35c1f13fe5086fb2b0b219d\nsha256:08c1aee37c561e9b0a861a4e6b99937e4972e2b8a94b57b831944adb6eb03d39|travel-scanner-api:a8be96cd5bc0fca3f35c1f13fe5086fb2b0b219d\nsha256:02a06fb132deb3753f2ca76bfdb094ce15ecc8578f777ef5516b960901fb773c|travel-scanner-web:9512236288d961913aa6c8404221708ad6fb142f\nsha256:a2ee92cd29e3111bc610551592e930124d44424306566bc3a81e8b204c3ae3f6|travel-scanner-api:9512236288d961913aa6c8404221708ad6fb142f\nsha256:fac66d955b6f130f3a06a74a2e7f93b450dd0367b6e447059bb3ccfeb442a33d|travel-scanner-web:59c86438e3100129bbff554f9dce3df95e25a2ac\nsha256:dfff8327d7fc98e6721380c46a77fe484ab5c1104f82fe2f77362506dc9e0ca6|travel-scanner-api:59c86438e3100129bbff554f9dce3df95e25a2ac\nsha256:01962b6b4b40e60fa170618174df667b1…1060 tokens truncated…0061b0ceb77da7b7|travel-scanner-web:aaa33f008c82c56e5c541dede8205097102193e1\nsha256:51761c1b71ae9634cb3439582af11003cbaedaa49eb0b4b3e6b0f9ed4577b62f|travel-scanner-api:aaa33f008c82c56e5c541dede8205097102193e1\nsha256:7a540b60e16018c944cc19bd556ea982c40606a18e967a7cc91482f11d260e6e|travel-scanner-web:b3e49a325edcc41e167653e9fe13619403248507\nsha256:a9ef03ea4bf1f4698cfde926ae1eb5a61c2e98981b71cba52f127293a649ded4|travel-scanner-api:b3e49a325edcc41e167653e9fe13619403248507\nsha256:2a311967c79f52f683febfc973ed786d184c4d65b044dbe964b4f848c80171ce|travel-scanner-web:7f21d7eb2af223a561bc04519ce67021198b1068\nsha256:0b543ca0e9ece2004ee242744bd021d0c0733b397432072a1888491794d445b0|travel-scanner-api:7f21d7eb2af223a561bc04519ce67021198b1068\nsha256:fbd9b7933984e61b18ef79af4fabbd02b7deff51e69a69fb5d26425fbf24b974|travel-scanner-web:fd160ff55a32185e97e24f9a4e0e10c2ab07e900\nsha256:72e8f71ddfd28b374acd84562f2395f3df65f12f662e0d4b76b3fa24ff0016ad|travel-scanner-api:fd160ff55a32185e97e24f9a4e0e10c2ab07e900\nsha256:910ae023b9be2ec1df7173f89c0303c3bda648a25343a0e0eeb9f66165e84863|travel-scanner-web:54009ba6530dec52f8ba91d74b8ab61875242b4e\nsha256:8d605f3040a32d2d2da62d4f973d94778522d1b7fe5e84c87aa5c52741dce6c1|travel-scanner-api:54009ba6530dec52f8ba91d74b8ab61875242b4e\nsha256:912acc47066b903b223929225e9df99316c8f693d1c9260fb3f0d6c75263ebca|travel-scanner-web:7fd8ba2aa0055f5fbff236937a369323f67ae17e\nsha256:912acc47066b903b223929225e9df99316c8f693d1c9260fb3f0d6c75263ebca|travel-scanner-web:before-54009ba\nsha256:34c0f6913d2101603c572d1398cf36c3057ced13dd74d32b9e56e316b98a4dbf|travel-scanner-api:7fd8ba2aa0055f5fbff236937a369323f67ae17e\nsha256:34c0f6913d2101603c572d1398cf36c3057ced13dd74d32b9e56e316b98a4dbf|travel-scanner-api:before-54009ba\nsha256:7f7b766f56c1dbb9e5458d5997b06376b216415eeffe721abc19caf2c5876996|travel-scanner-web:885369588362edcb27bb7ae86e9a345d15214722\nsha256:d2cc99cdcae5fe9d6ead5190357f397f098d4140ac3ac304638d6202eb32ad9d|travel-scanner-api:885369588362edcb27bb7ae86e9a345d15214722\nsha256:3ceedf0ebdf607d6b51f77a1841e9c532b43a93aa26de32112775740490be046|travel-scanner-web:before-8853695\nsha256:41dfd03b7944e884d77273f5310a0a9b3cff0ed6c081040976d9311cf7a9a645|travel-scanner-api:before-8853695\nsha256:bfb13ed7b7b4b3762bc4b1a433b33cd066f9bdefcd0b802b769cbe78f188b615|travel-scanner-web:640bdacc4cc7ea9c281b3f29d3ca2057eef8a7ec\nsha256:0e4d2e85a7587f08d0bba51e5968b2fda4ef483ae971fb5e4c18600ce638cc03|travel-scanner-api:640bdacc4cc7ea9c281b3f29d3ca2057eef8a7ec\nsha256:09bfd250e15b41a5a1fbe8565e5732d1a7c7646f1528dc37575e6af4c8e4ce02|travel-scanner-api:63fee0c40367f0956cae8997d01f3b74f4b92714\nsha256:9504398c618089732aaa9d036a518908ffd024f1b3cf652dc3814a03895cc21e|travel-scanner-api:119985552a691607d1cc05c3b96707366513a345\nsha256:29c56b352e6246cb2c633a67b49de5f353388bbf39352e80726ba69ed62e9ed3|travel-scanner-api:31293e71c0b73ae6097806c2e3330854865079ab\nsha256:f7c4eb945ba1baa63f39cb617daa5bb512eec43be9840a4c3283b016f0105dda|travel-scanner-web:31293e71c0b73ae6097806c2e3330854865079ab\nsha256:b8ad0740f6883281be8612f4440274f18fd55981b12bc8ba1966e6f94bf095b4|travel-scanner-web:119985552a691607d1cc05c3b96707366513a345\nsha256:0a6d6eb4cf71ad0d14d11728d8e3fa1da59bc1e6eea9ab6d82e14a416f92be88|travel-scanner-web:63fee0c40367f0956cae8997d01f3b74f4b92714\nsha256:25f4f49486222820294e10922ab724c04e2e27a435a6c0e05bec508ec362fa60|travel-scanner-web:d1995cadf4cb2814b2dfbc6a1f68d4aec49886d6\nsha256:b293a8639c98bb9763a46fba6a7cb4f4baaee813e38e41f84cfba4eed813154b|travel-scanner-api:d1995cadf4cb2814b2dfbc6a1f68d4aec49886d6\nsha256:b1d3871f76a8c0f29c8970a199a7efe5a64151a5b0e92ee9a2f53fe3441fdee2|travel-scanner-web:3b6c225b950fea3935e2c4a164f0b11288297b2d\nsha256:b1d3871f76a8c0f29c8970a199a7efe5a64151a5b0e92ee9a2f53fe3441fdee2|travel-scanner-web:pre-catalog-3b6c225\nsha256:af7ed9498b4db8e6a95525b5cfd86fd04b6cf65ddf721003f5d6a5a6fc1ea2a4|travel-scanner-api:3b6c225b950fea3935e2c4a164f0b11288297b2d\nsha256:af7ed9498b4db8e6a95525b5cfd86fd04b6cf65ddf721003f5d6a5a6fc1ea2a4|travel-scanner-api:pre-catalog-3b6c225\nsha256:8854c5d8514f013bbf62e1c6c4852fad9e1837efd8cd2718b9af79d9cd76d9cc|travel-scanner-web:a817003829235a54f12f68b4bcc99c652548fdee\nsha256:8854c5d8514f013bbf62e1c6c4852fad9e1837efd8cd2718b9af79d9cd76d9cc|travel-scanner-web:pre-catalog-a817003\nsha256:b579ccb8133ddd1afeaf9ec8e5e5fb65fe899227754165bce0607361b47fce57|travel-scanner-api:a817003829235a54f12f68b4bcc99c652548fdee\nsha256:b579ccb8133ddd1afeaf9ec8e5e5fb65fe899227754165bce0607361b47fce57|travel-scanner-api:pre-catalog-a817003\nsha256:e38478ad32041c77ce9c74c179cddd861f884f1b822acf90b3691362fe12b779|travel-scanner-web:pre-catalog-ba50331\nsha256:520cab33001a00382582e2b77d8cad83a3b45d7382b46e4c770fc8f7a6053cde|travel-scanner-api:pre-catalog-ba50331\nsha256:881d80734ee05dca6f7f42dcb080975652a53c7eda9ba1f03bb8da31aa6a6ec2|python:3.13-slim\nsha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf|redis:7.4-alpine\nsha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73|postgres:17-alpine\n"
+    },
+    {
+      "command": "@'\nimport subprocess,json,hashlib,sys\nref=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()\nfiles=subprocess.check_output(['git','ls-tree','-r','--name-only',ref],text=True).splitlines()\nassert not any(p.rsplit('/',1)[-1]=='.env' for p in files)\narchive=subprocess.Popen(['git','archive','--format=tar',ref],stdout=subprocess.PIPE)\nssh=subprocess.Popen(['C:/Program Files/PuTTY/plink.exe','-load','hostinger2','-l','root','-batch',\"test ! -e /var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4 && install -d -m 700 /var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4 && install -d -m 755 /var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/source && tar -xf - -C /var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/source\"],stdin=archive.stdout,stdout=subprocess.PIPE,stderr=subprocess.PIPE)\narchive.stdout.close()\nout,err=ssh.communicate()\narchive_code=archive.wait()\nprint(json.dumps({'git_ref':ref,'git_archive_exit':archive_code,'ssh_extract_exit':ssh.returncode,'remote_source':\"/var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/source\",'tracked_env_files':0,'stdout':out.decode(),'stderr':err.decode()}))\nraise SystemExit(archive_code or ssh.returncode)\n'@ | apps/api/.venv/Scripts/python.exe -",
+      "exit_code": 0,
+      "output": "{\"git_ref\": \"daf64eddb784688b2d48bee2799681037d11245f\", \"git_archive_exit\": 0, \"ssh_extract_exit\": 0, \"remote_source\": \"/var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/source\", \"tracked_env_files\": 0, \"stdout\": \"\", \"stderr\": \"\"}\r\n",
+      "status": "finished"
+    },
+    {
+      "command": "$qaTunnelProcess = Get-Process -Id 33044 -ErrorAction Stop\n$qaTunnelCommand = Get-CimInstance Win32_Process -Filter 'ProcessId = 33044'\nif ($qaTunnelProcess.StartTime.ToString('o') -ne '2026-09-14T14:39:43.4693789+08:00' -or $qaTunnelProcess.Path -ne 'C:\\Program Files\\PuTTY\\plink.exe' -or $qaTunnelCommand.CommandLine -notlike '*127.0.0.1:55438:127.0.0.1:55437*') { throw 'Tunnel identity mismatch; refusing to stop' }\nStop-Process -Id 33044 -Force\n[pscustomobject]@{stopped_pid=33044;remaining_listener=[bool](Get-NetTCPConnection -State Listen -LocalPort 55438 -ErrorAction SilentlyContinue)} | ConvertTo-Json",
+      "exit_code": 0,
+      "output": "{\r\n  \"stopped_pid\": 33044,\r\n  \"remaining_listener\": false\r\n}\r\n"
+    },
+    {
+      "command": "& 'C:\\Program Files\\PuTTY\\plink.exe' -load hostinger2 -l root -batch 'test \"$(docker inspect --format ''{{index .Config.Labels \"codex.run\"}}'' e2b28e321c12f425613752227adde08c436cdd07ed9808d08be9129abe3d4ee8)\" = \"ai-terms-pg-mu0vh6o7-37b2d4\" && docker network create --internal --label codex.task=ai-terms-postgresql-validation --label codex.run=ai-terms-pg-mu0vh6o7-37b2d4 --label codex.disposable=true codex-ai-terms-pg-mu0vh6o7-37b2d4-net && docker network connect --alias postgres codex-ai-terms-pg-mu0vh6o7-37b2d4-net e2b28e321c12f425613752227adde08c436cdd07ed9808d08be9129abe3d4ee8 && docker network disconnect bridge e2b28e321c12f425613752227adde08c436cdd07ed9808d08be9129abe3d4ee8 && docker inspect --format ''{{json .NetworkSettings.Networks}}'' e2b28e321c12f425613752227adde08c436cdd07ed9808d08be9129abe3d4ee8'",
+      "exit_code": 0,
+      "output": "327694c1c40f5fb97c9b47cd10ac1dcaf99cf935267514610f6eb1adb5b47084\n{\"codex-ai-terms-pg-mu0vh6o7-37b2d4-net\":{\"IPAMConfig\":{\"IPv4Address\":\"\",\"IPv6Address\":\"\"},\"Links\":null,\"Aliases\":[\"postgres\"],\"DriverOpts\":{},\"GwPriority\":0,\"NetworkID\":\"327694c1c40f5fb97c9b47cd10ac1dcaf99cf935267514610f6eb1adb5b47084\",\"EndpointID\":\"8fecfe819278ebb0abd356a1553f50512defd6d3300d7054308b69962c040dce\",\"Gateway\":\"\",\"IPAddress\":\"172.19.0.2\",\"MacAddress\":\"aa:0d:ed:7a:e9:69\",\"IPPrefixLen\":16,\"IPv6Gateway\":\"\",\"GlobalIPv6Address\":\"\",\"GlobalIPv6PrefixLen\":0,\"DNSNames\":[\"codex-ai-terms-pg-mu0vh6o7-37b2d4\",\"postgres\",\"e2b28e321c12\"]}}\n"
+    },
+    {
+      "command": "$env:DATABASE_URL = 'postgresql+asyncpg://codex_ai_terms_qa:disposable_3urg4pcsj6@127.0.0.1:55438/ai_terms_qa'\n$env:RUN_INTEGRATION_TESTS = '0'\n$env:APP_ENV = 'test'\n$env:REDIS_URL = 'redis://127.0.0.1:1/15'\n$env:PYTHONUNBUFFERED = '1'\n@'\nimport os,sys,json\nfrom pathlib import Path\nsys.path.insert(0,str(Path('apps/api').resolve()))\nfrom app.config import Settings,get_settings\nSettings.model_config['env_file']=None\nget_settings.cache_clear()\nfrom sqlalchemy.engine import make_url\nurl=make_url(get_settings().database_url)\nassert url.host=='127.0.0.1' and url.port==55438 and url.database=='ai_terms_qa'\nassert os.environ['RUN_INTEGRATION_TESTS']=='0'\nprint(json.dumps({'runner_pid':os.getpid(),'scope':'remaining SQLite and source hash only','dotenv_disabled':True}),flush=True)\nimport pytest\nraise SystemExit(pytest.main(['-c','apps/api/pyproject.toml','docs/ai-terms-series/test_publish_batch.py','-k','(test_unexpected_old_draft_and_later_change_stop and sqlite) or test_hash_and_exact_scope_guards','-vv','-ra','-x','--tb=short']))\n'@ | apps/api/.venv/Scripts/python.exe -",
+      "exit_code": 0,
+      "status": "finished",
+      "output": "{\"runner_pid\": 8752, \"scope\": \"remaining SQLite and source hash only\", \"dotenv_disabled\": true}\r\n============================= test session starts =============================\r\nplatform win32 -- Python 3.13.15, pytest-9.1.1, pluggy-1.6.0 -- C:\\\\Users\\\\x8120\\\\.codex\\\\worktrees\\\\5272\\\\travel_scan\\u3110\\\\apps\\\\api\\\\.venv\\\\Scripts\\\\python.exe\r\ncachedir: .pytest_cache\r\nrootdir: C:\\\\Users\\\\x8120\\\\.codex\\\\worktrees\\\\5272\\\\travel_scan\\u3110\\\\apps\\\\api\r\nconfigfile: pyproject.toml\r\nplugins: anyio-4.14.2, asyncio-1.4.0, cov-6.3.0\r\nasyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\r\ncollecting ... collected 9 items / 7 deselected / 2 selected\r\n\r\napps\\api::test_unexpected_old_draft_and_later_change_stop[sqlite] <- ..\\..\\docs\\ai-terms-series\\test_publish_batch.py PASSED [ 50%]\r\napps\\api::test_hash_and_exact_scope_guards <- ..\\..\\docs\\ai-terms-series\\test_publish_batch.py PASSED [100%]\r\n\r\n======================= 2 passed, 7 deselected in 9.03s =======================\r\n"
+    },
+    {
+      "command": "& 'C:\\Program Files\\PuTTY\\plink.exe' -load hostinger2 -l root -batch 'du -sm /var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/source && docker image inspect travel-scanner-api:2123edbd2e1fc53adef0b89952ead60deef31feb --format ''{{.Id}}|{{json .Config.User}}|{{json .Config.WorkingDir}}'' && docker network inspect 327694c1c40f5fb97c9b47cd10ac1dcaf99cf935267514610f6eb1adb5b47084 --format ''{{.Id}}|{{.Internal}}|{{json .Labels}}'''",
+      "exit_code": 0,
+      "output": "53\t/var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/source\nsha256:1de16ffa6c47f11611f77281678664313c6dd178f6c3c8e3de07005ebef9f8d6|\"10001:10001\"|\"/app\"\n327694c1c40f5fb97c9b47cd10ac1dcaf99cf935267514610f6eb1adb5b47084|true|{\"codex.disposable\":\"true\",\"codex.run\":\"ai-terms-pg-mu0vh6o7-37b2d4\",\"codex.task\":\"ai-terms-postgresql-validation\"}\n"
+    },
+    {
+      "command": "& 'C:\\Program Files\\PuTTY\\plink.exe' -load hostinger2 -l root -batch 'set -eu\ntest \"$(docker image inspect travel-scanner-api:2123edbd2e1fc53adef0b89952ead60deef31feb --format ''{{.Id}}'')\" = \"sha256:1de16ffa6c47f11611f77281678664313c6dd178f6c3c8e3de07005ebef9f8d6\"\ntest \"$(sha256sum /var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/source/apps/api/pyproject.toml | cut -d '' '' -f 1)\" = \"6d4310e3b1427e15079e394e9b55ce0a54a9e938d75942b36b366135497c55cb\"\ntest \"$(sha256sum /var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/source/apps/api/uv.lock | cut -d '' '' -f 1)\" = \"0471a4a273903c29342f40fbd4cd2601212f4cf5206412314485a70c8a675293\"\ninstall -d -m 700 /var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/build\ncp /var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/source/apps/api/pyproject.toml /var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/source/apps/api/uv.lock /var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/build/\ncat > /var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/build/Dockerfile <<''DOCKERFILE''\nFROM travel-scanner-api:2123edbd2e1fc53adef0b89952ead60deef31feb\nUSER root\nWORKDIR /app\nCOPY pyproject.toml uv.lock /app/\nRUN test ! -e /app/.env && uv sync --frozen --group dev --no-install-project\nUSER 10001:10001\nDOCKERFILE\ndocker build --network default --memory 2g --label codex.task=ai-terms-postgresql-validation --label codex.run=ai-terms-pg-mu0vh6o7-37b2d4 --label codex.disposable=true --tag codex-ai-terms-qa:ai-terms-pg-mu0vh6o7-37b2d4 /var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/build'",
+      "exit_code": 0,
+      "status": "finished",
+      "output": "DEPRECATED: The legacy builder is deprecated and will be removed in a future release.\n            Install the buildx component to build images with BuildKit:\n            https://docs.docker.com/go/buildx/\n\nSending build context to Docker daemon    194kB\r\r\nStep 1/9 : FROM travel-scanner-api:2123edbd2e1fc53adef0b89952ead60deef31feb\n ---> 1de16ffa6c47\nStep 2/9 : USER root\n ---> Running in 960ec960fa67\n ---> Removed intermediate container 960ec960fa67\n ---> 8af916a518bb\nStep 3/9 : WORKDIR /app\n ---> Running in fde2792cf4aa\n ---> Removed intermediate container fde2792cf4aa\n ---> cc32095a9416\nStep 4/9 : COPY pyproject.toml uv.lock /app/\n ---> 5412d0064091\nStep 5/9 : RUN test ! -e /app/.env && uv sync --frozen --group dev --no-install-project\n ---> Running in 82dc240fecbe\n\u001b[91mDownloading pygments (1.2MiB)\n\u001b[0m\u001b[91mDownloading\u001b[0m\u001b[91m pip (1.7MiB)\n\u001b[0m\u001b[91mDownloading ruff (9.8MiB)\n\u001b[0m\u001b[91mDownloading\u001b[0m\u001b[91m mypy (14.0MiB)\n\u001b[0m\u001b[91m Downloaded pygments\n\u001b[0m\u001b[91m Downloaded pip\n\u001b[0m\u001b[91m Downloaded ruff\n\u001b[0m\u001b[91m Downloaded mypy\n\u001b[0m\u001b[91mPrepared 39 packages in 911ms\n\u001b[0m\u001b[91mUninstalled 1 package in 1ms\n\u001b[0m\u001b[91mInstalled 42 packages in 162ms\n\u001b[0m\u001b[91m + aiosqlite==0.22.1\n + boolean-py==5.0\n + boto3-stubs==1.43.89\u001b[0m\u001b[91m\n + botocore-stubs==1.43.67\n +\u001b[0m\u001b[91m cachecontrol==0.14.4\n + charset-normalizer==\u001b[0m\u001b[91m3.5.1\n + coverage==7.\u001b[0m\u001b[91m16.0\n + cyclonedx-python-lib==11.12.\u001b[0m\u001b[91m0\n + defusedxml==0.7.\u001b[0m\u001b[91m1\n + fakeredis==2.37.\u001b[0m\u001b[91m1\n + filelock==3.32\u001b[0m\u001b[91m.4\n + iniconfig==2\u001b[0m\u001b[91m.3.0\n + librt\u001b[0m\u001b[91m==0.15.0\n + \u001b[0m\u001b[91mlicense-expression==30.4.4\n + markdown-it-py==4\u001b[0m\u001b[91m.2.0\n + mdurl==0.1.2\n \u001b[0m\u001b[91m+ msgpack==1.2.2\n \u001b[0m\u001b[91m+ mypy==1.20.2\n +\u001b[0m\u001b[91m mypy-boto3-s3==1.43.66\n + mypy-extensions==\u001b[0m\u001b[91m1.1.0\n + packageurl-python==0.17.6\n + \u001b[0m\u001b[91mpackaging==26.3\n + pathspec==\u001b[0m\u001b[91m1.1.1\n + pip==\u001b[0m\u001b[91m26.2.1\n + pip-api==0\u001b[0m\u001b[91m.0.34\n + pip-audit==2\u001b[0m\u001b[91m.10.1\n + pip-requirements-parser==32\u001b[0m\u001b[91m.0.1\n + platformdirs==4.11.5\n + pluggy==1.6.0\u001b[0m\u001b[91m\n + py-serializable==2.1.0\n + pygments==2.21.0\n + pyparsing==3.3.2\u001b[0m\u001b[91m\n + pytest==9.1.1\n\u001b[0m\u001b[91m + pytest-asyncio==1\u001b[0m\u001b[91m.4.0\n\u001b[0m\u001b[91m + pytest-cov==6.\u001b[0m\u001b[91m3.0\n + requests\u001b[0m\u001b[91m==2.34.2\u001b[0m\u001b[91m\n + rich==15.0.0\n + ruff==0.16.5\n \u001b[0m\u001b[91m+ sortedcontainers\u001b[0m\u001b[91m==2.4.0\n\u001b[0m\u001b[91m + tomli\u001b[0m\u001b[91m==2.4\u001b[0m\u001b[91m.1\n\u001b[0m\u001b[91m + \u001b[0m\u001b[91mtomli-w==1.\u001b[0m\u001b[91m2.0\n - travel-scanner-api==0.1.0 (from file:///app)\n + types-s3transfer==0.16.0\n\u001b[0m ---> Removed intermediate container 82dc240fecbe\n ---> 74bdc70263cb\nStep 6/9 : USER 10001:10001\n ---> Running in ccd7e69265fe\n ---> Removed intermediate container ccd7e69265fe\n ---> 1ddfff030cc9\nStep 7/9 : LABEL codex.disposable=true\n ---> Running in ec023191474d\n ---> Removed intermediate container ec023191474d\n ---> f8eca28adfbd\nStep 8/9 : LABEL codex.run=ai-terms-pg-mu0vh6o7-37b2d4\n ---> Running in 2ad02cff5666\n ---> Removed intermediate container 2ad02cff5666\n ---> f3d2047c7671\nStep 9/9 : LABEL codex.task=ai-terms-postgresql-validation\n ---> Running in 2b2f412e13db\n ---> Removed intermediate container 2b2f412e13db\n ---> 859552d2c1fd\nSuccessfully built 859552d2c1fd\nSuccessfully tagged codex-ai-terms-qa:ai-terms-pg-mu0vh6o7-37b2d4\n"
+    },
+    {
+      "command": "& 'C:\\Program Files\\PuTTY\\plink.exe' -load hostinger2 -l root -batch 'set -eu\ntest -d /var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/source\ncat > /var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/runner.py <<''PYTHON''\nimport os, sys, json, hashlib, importlib.util\nfrom pathlib import Path\nassert os.getuid() == 10001\nsys.path.insert(0, \"/repo/apps/api\")\nfrom app.config import Settings, get_settings\nSettings.model_config[\"env_file\"] = None\nget_settings.cache_clear()\nfrom sqlalchemy.engine import make_url\nurl = make_url(get_settings().database_url)\nassert (url.host, url.port, url.database, url.username) == (\"postgres\", 5432, \"ai_terms_qa\", \"codex_ai_terms_qa\")\nassert os.environ[\"RUN_INTEGRATION_TESTS\"] == \"1\"\nassert not Path(\"/app/.env\").exists() and not Path(\"/repo/.env\").exists()\nexpected = {\n \"docs/ai-terms-series/publish_batch.py\": \"649a97be9171537157ab3ea259828fdb50de478a18adb8e2825f68191eb3eb97\",\n \"docs/ai-terms-series/test_publish_batch.py\": \"63a209756b91fa0495b5d1e4d9a0ee7d2a0ce8433168123185dbb84096906048\",\n \"apps/api/tests/test_guides.py\": \"d5279dfa71c9ce032ddf1615f92f02f9fe1c3228db6c0017a4f0ff2a0181e9e3\",\n \"docs/ai-terms-series/release-manifest.json\": \"96ad2cb050c0b31a678e446c08e428746d1e3e873343a9a72ae0353f48ca7d59\",\n \"apps/api/pyproject.toml\": \"6d4310e3b1427e15079e394e9b55ce0a54a9e938d75942b36b366135497c55cb\",\n \"apps/api/uv.lock\": \"0471a4a273903c29342f40fbd4cd2601212f4cf5206412314485a70c8a675293\",\n}\nfor relative, digest in expected.items():\n assert hashlib.sha256((Path(\"/repo\") / relative).read_bytes()).hexdigest() == digest, relative\nprint(json.dumps({\"source_hashes_verified\": expected, \"uid\": os.getuid(), \"database_host\": url.host, \"database_name\": url.database, \"dotenv_disabled\": True}), flush=True)\nspec = importlib.util.spec_from_file_location(\"validation_driver\", \"/repo/docs/ai-terms-series/publish_batch.py\")\ndriver = importlib.util.module_from_spec(spec)\nspec.loader.exec_module(driver)\npacks = driver.verify_bundle(Path(\"/repo/docs/ai-terms-series/release-manifest.json\"), expected[\"docs/ai-terms-series/release-manifest.json\"], Path(\"/repo/apps/web/public\"))\nassert len(packs) == 83\nprint(\"Verified the exact 83-pack manifest and all article/asset bytes.\", flush=True)\nimport asyncio, asyncpg\nasync def identity():\n conn = await asyncpg.connect(host=url.host, port=url.port, user=url.username, password=url.password, database=url.database)\n try:\n  row = await conn.fetchrow(\"SELECT current_database() AS db, version() AS version\")\n  assert row[\"db\"] == \"ai_terms_qa\" and row[\"version\"].startswith(\"PostgreSQL 17.\")\n  print(json.dumps(dict(row)), flush=True)\n finally:\n  await conn.close()\nasyncio.run(identity())\nimport pytest\nraise SystemExit(pytest.main([\"-c\", \"/repo/apps/api/pyproject.toml\", \"/repo/docs/ai-terms-series/test_publish_batch.py\", \"-k\", \"postgresql and not sqlite\", \"-vv\", \"-ra\", \"-x\", \"--tb=short\", \"-p\", \"no:cacheprovider\", \"--basetemp=/tmp/pytest\"]))\nPYTHON\nchmod 644 /var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/runner.py\ndocker image inspect codex-ai-terms-qa:ai-terms-pg-mu0vh6o7-37b2d4 --format ''{{.Id}}|{{json .Config.Labels}}|{{.Config.User}}''\nsha256sum /var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/runner.py /var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/source/docs/ai-terms-series/publish_batch.py /var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/source/docs/ai-terms-series/test_publish_batch.py /var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/source/docs/ai-terms-series/release-manifest.json\n'",
+      "exit_code": 0,
+      "output": "sha256:859552d2c1fd7a713ed063a7ec1b7f318aadfd03fa2a1cbe6d41617841d5a12b|{\"codex.disposable\":\"true\",\"codex.run\":\"ai-terms-pg-mu0vh6o7-37b2d4\",\"codex.task\":\"ai-terms-postgresql-validation\",\"com.docker.compose.project\":\"travel_scanner\",\"com.docker.compose.service\":\"api\",\"com.docker.compose.version\":\"2.40.3\"}|10001:10001\nf5c33c555c22298e6d9bb4fbd603ff4a51ec2ccc3ce5df22ce804646fe57b542  /var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/runner.py\n44f3b061153c1c0458231e2f90c1a5422067a53a833c86a1b5156d048641abc2  /var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/source/docs/ai-terms-series/publish_batch.py\n63a209756b91fa0495b5d1e4d9a0ee7d2a0ce8433168123185dbb84096906048  /var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/source/docs/ai-terms-series/test_publish_batch.py\n96ad2cb050c0b31a678e446c08e428746d1e3e873343a9a72ae0353f48ca7d59  /var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/source/docs/ai-terms-series/release-manifest.json\n"
+    },
+    {
+      "command": "& 'C:\\Program Files\\PuTTY\\plink.exe' -load hostinger2 -l root -batch 'set -eu\ncat > /var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/runner.py <<''PYTHON''\nimport os, sys, json, hashlib, importlib.util\nfrom pathlib import Path\nassert os.getuid() == 10001\nsys.path.insert(0, \"/repo/apps/api\")\nfrom app.config import Settings, get_settings\nSettings.model_config[\"env_file\"] = None\nget_settings.cache_clear()\nfrom sqlalchemy.engine import make_url\nurl = make_url(get_settings().database_url)\nassert (url.host, url.port, url.database, url.username) == (\"postgres\", 5432, \"ai_terms_qa\", \"codex_ai_terms_qa\")\nassert os.environ[\"RUN_INTEGRATION_TESTS\"] == \"1\"\nassert not Path(\"/app/.env\").exists() and not Path(\"/repo/.env\").exists()\nexpected = {\n \"docs/ai-terms-series/publish_batch.py\": \"44f3b061153c1c0458231e2f90c1a5422067a53a833c86a1b5156d048641abc2\",\n \"docs/ai-terms-series/test_publish_batch.py\": \"63a209756b91fa0495b5d1e4d9a0ee7d2a0ce8433168123185dbb84096906048\",\n \"apps/api/tests/test_guides.py\": \"d5279dfa71c9ce032ddf1615f92f02f9fe1c3228db6c0017a4f0ff2a0181e9e3\",\n \"docs/ai-terms-series/release-manifest.json\": \"96ad2cb050c0b31a678e446c08e428746d1e3e873343a9a72ae0353f48ca7d59\",\n \"apps/api/pyproject.toml\": \"6d4310e3b1427e15079e394e9b55ce0a54a9e938d75942b36b366135497c55cb\",\n \"apps/api/uv.lock\": \"0471a4a273903c29342f40fbd4cd2601212f4cf5206412314485a70c8a675293\",\n}\nfor relative, digest in expected.items():\n assert hashlib.sha256((Path(\"/repo\") / relative).read_bytes()).hexdigest() == digest, relative\nprint(json.dumps({\"source_hashes_verified\": expected, \"uid\": os.getuid(), \"database_host\": url.host, \"database_name\": url.database, \"dotenv_disabled\": True}), flush=True)\nspec = importlib.util.spec_from_file_location(\"validation_driver\", \"/repo/docs/ai-terms-series/publish_batch.py\")\ndriver = importlib.util.module_from_spec(spec)\nspec.loader.exec_module(driver)\npacks = driver.verify_bundle(Path(\"/repo/docs/ai-terms-series/release-manifest.json\"), expected[\"docs/ai-terms-series/release-manifest.json\"], Path(\"/repo/apps/web/public\"))\nassert len(packs) == 83\nprint(\"Verified the exact 83-pack manifest and all article/asset bytes.\", flush=True)\nimport asyncio, asyncpg\nasync def identity():\n conn = await asyncpg.connect(host=url.host, port=url.port, user=url.username, password=url.password, database=url.database)\n try:\n  row = await conn.fetchrow(\"SELECT current_database() AS db, version() AS version\")\n  assert row[\"db\"] == \"ai_terms_qa\" and row[\"version\"].startswith(\"PostgreSQL 17.\")\n  print(json.dumps(dict(row)), flush=True)\n finally:\n  await conn.close()\nasyncio.run(identity())\nimport pytest\nraise SystemExit(pytest.main([\"-c\", \"/repo/apps/api/pyproject.toml\", \"/repo/docs/ai-terms-series/test_publish_batch.py\", \"-k\", \"postgresql and not sqlite\", \"-vv\", \"-ra\", \"-x\", \"--tb=short\", \"-p\", \"no:cacheprovider\", \"--basetemp=/tmp/pytest\"]))\nPYTHON\nchmod 644 /var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/runner.py\ntest \"$(docker image inspect codex-ai-terms-qa:ai-terms-pg-mu0vh6o7-37b2d4 --format ''{{.Id}}'')\" = \"sha256:859552d2c1fd7a713ed063a7ec1b7f318aadfd03fa2a1cbe6d41617841d5a12b\"\ntest \"$(docker network inspect 327694c1c40f5fb97c9b47cd10ac1dcaf99cf935267514610f6eb1adb5b47084 --format ''{{.Internal}}'')\" = \"true\"\ntest \"$(docker network inspect 327694c1c40f5fb97c9b47cd10ac1dcaf99cf935267514610f6eb1adb5b47084 --format ''{{index .Labels \"codex.run\"}}'')\" = \"ai-terms-pg-mu0vh6o7-37b2d4\"\ndocker create --name codex-ai-terms-pg-mu0vh6o7-37b2d4-runner --label codex.task=ai-terms-postgresql-validation --label codex.run=ai-terms-pg-mu0vh6o7-37b2d4 --label codex.disposable=true --label com.docker.compose.project=codex-ai-terms-qa --label com.docker.compose.service=validation --network 327694c1c40f5fb97c9b47cd10ac1dcaf99cf935267514610f6eb1adb5b47084 --memory 2g --memory-swap 2g --cpus 1 --pids-limit 128 --read-only --cap-drop ALL --security-opt no-new-privileges --tmpfs /tmp:rw,nosuid,size=512m,mode=1777 --mount type=bind,source=/var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/source,target=/repo,readonly --mount type=bind,source=/var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/runner.py,target=/qa-runner.py,readonly --workdir /tmp --env PYTHONPATH=/repo/apps/api --env RUN_INTEGRATION_TESTS=1 --env DATABASE_URL=postgresql+asyncpg://codex_ai_terms_qa:disposable_3urg4pcsj6@postgres:5432/ai_terms_qa --env APP_ENV=test --env REDIS_URL=redis://127.0.0.1:1/15 --env PYTHONUNBUFFERED=1 --env PYTHONDONTWRITEBYTECODE=1 sha256:859552d2c1fd7a713ed063a7ec1b7f318aadfd03fa2a1cbe6d41617841d5a12b python /qa-runner.py\n'",
+      "exit_code": 0,
+      "output": "b5f764a486f57a92f112404e6ed3c95a4d40b0914735d1c114c866ba53cd8745\n"
+    },
+    {
+      "command": "& 'C:\\Program Files\\PuTTY\\plink.exe' -load hostinger2 -l root -batch 'docker inspect b5f764a486f57a92f112404e6ed3c95a4d40b0914735d1c114c866ba53cd8745 --format ''{{.Id}}|{{.Image}}|{{.Config.User}}|{{.HostConfig.ReadonlyRootfs}}|{{.HostConfig.Memory}}|{{.HostConfig.MemorySwap}}|{{json .Config.Labels}}|{{json .NetworkSettings.Networks}}|{{json .Mounts}}|{{json .HostConfig.Tmpfs}}'''",
+      "exit_code": 0,
+      "output": "b5f764a486f57a92f112404e6ed3c95a4d40b0914735d1c114c866ba53cd8745|sha256:859552d2c1fd7a713ed063a7ec1b7f318aadfd03fa2a1cbe6d41617841d5a12b|10001:10001|true|2147483648|2147483648|{\"codex.disposable\":\"true\",\"codex.run\":\"ai-terms-pg-mu0vh6o7-37b2d4\",\"codex.task\":\"ai-terms-postgresql-validation\",\"com.docker.compose.project\":\"codex-ai-terms-qa\",\"com.docker.compose.service\":\"validation\",\"com.docker.compose.version\":\"2.40.3\"}|{\"codex-ai-terms-pg-mu0vh6o7-37b2d4-net\":{\"Aliases\":null,\"DNSNames\":null,\"DriverOpts\":null,\"EndpointID\":\"\",\"Gateway\":\"\",\"GlobalIPv6Address\":\"\",\"GlobalIPv6PrefixLen\":0,\"GwPriority\":0,\"IPAMConfig\":null,\"IPAddress\":\"\",\"IPPrefixLen\":0,\"IPv6Gateway\":\"\",\"Links\":null,\"MacAddress\":\"\",\"NetworkID\":\"\"}}|[{\"Destination\":\"/repo\",\"Mode\":\"\",\"Propagation\":\"rprivate\",\"RW\":false,\"Source\":\"/var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/source\",\"Type\":\"bind\"},{\"Destination\":\"/qa-runner.py\",\"Mode\":\"\",\"Propagation\":\"rprivate\",\"RW\":false,\"Source\":\"/var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/runner.py\",\"Type\":\"bind\"}]|{\"/tmp\":\"rw,nosuid,size=512m,mode=1777\"}\n"
+    },
+    {
+      "command": "& 'C:\\Program Files\\PuTTY\\plink.exe' -load hostinger2 -l root -batch 'docker start b5f764a486f57a92f112404e6ed3c95a4d40b0914735d1c114c866ba53cd8745 && docker logs --follow b5f764a486f57a92f112404e6ed3c95a4d40b0914735d1c114c866ba53cd8745'",
+      "exit_code": 0,
+      "output": "b5f764a486f57a92f112404e6ed3c95a4d40b0914735d1c114c866ba53cd8745\n{\"source_hashes_verified\": {\"docs/ai-terms-series/publish_batch.py\": \"44f3b061153c1c0458231e2f90c1a5422067a53a833c86a1b5156d048641abc2\", \"docs/ai-terms-series/test_publish_batch.py\": \"63a209756b91fa0495b5d1e4d9a0ee7d2a0ce8433168123185dbb84096906048\", \"apps/api/tests/test_guides.py\": \"d5279dfa71c9ce032ddf1615f92f02f9fe1c3228db6c0017a4f0ff2a0181e9e3\", \"docs/ai-terms-series/release-manifest.json\": \"96ad2cb050c0b31a678e446c08e428746d1e3e873343a9a72ae0353f48ca7d59\", \"apps/api/pyproject.toml\": \"6d4310e3b1427e15079e394e9b55ce0a54a9e938d75942b36b366135497c55cb\", \"apps/api/uv.lock\": \"0471a4a273903c29342f40fbd4cd2601212f4cf5206412314485a70c8a675293\"}, \"uid\": 10001, \"database_host\": \"postgres\", \"database_name\": \"ai_terms_qa\", \"dotenv_disabled\": true}\nVerified the exact 83-pack manifest and all article/asset bytes.\n{\"db\": \"ai_terms_qa\", \"version\": \"PostgreSQL 17.11 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit\"}\n============================= test session starts ==============================\nplatform linux -- Python 3.13.15, pytest-9.1.1, pluggy-1.6.0 -- /app/.venv/bin/python\nrootdir: /repo/apps/api\nconfigfile: pyproject.toml\nplugins: anyio-4.14.2, cov-6.3.0, asyncio-1.4.0\nasyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollecting ... collected 9 items / 5 deselected / 4 selected\n\n../repo/apps/api::test_resume_preserves_publications_and_publishes_index_last[postgresql-False] <- ../../docs/ai-terms-series/test_publish_batch.py PASSED [ 25%]\n../repo/apps/api::test_resume_preserves_publications_and_publishes_index_last[postgresql-True] <- ../../docs/ai-terms-series/test_publish_batch.py PASSED [ 50%]\n../repo/apps/api::test_unexpected_old_draft_and_later_change_stop[postgresql] <- ../../docs/ai-terms-series/test_publish_batch.py PASSED [ 75%]\n../repo/apps/api::test_postgresql_index_commit_blocks_concurrent_dependency_withdrawal[postgresql] <- ../../docs/ai-terms-series/test_publish_batch.py PASSED [100%]\n\n=============================== warnings summary ===============================\n../app/.venv/lib/python3.13/site-packages/_pytest/config/__init__.py:1345\n  /app/.venv/lib/python3.13/site-packages/_pytest/config/__init__.py:1345: PytestAssertRewriteWarning: Module already imported so cannot be rewritten; anyio\n    self._mark_plugins_for_rewrite(hook, disable_autoload)\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n============ 4 passed, 5 deselected, 1 warning in 107.67s (0:01:47) ============\n",
+      "status": "finished"
+    },
+    {
+      "command": "& 'C:\\Program Files\\PuTTY\\plink.exe' -load hostinger2 -l root -batch 'docker stats --no-stream --format ''{{.ID}}|{{.Name}}|{{.CPUPerc}}|{{.MemUsage}}'' b5f764a486f57a92f112404e6ed3c95a4d40b0914735d1c114c866ba53cd8745 e2b28e321c12f425613752227adde08c436cdd07ed9808d08be9129abe3d4ee8\ndocker inspect b5f764a486f57a92f112404e6ed3c95a4d40b0914735d1c114c866ba53cd8745 --format ''{{.State.Status}}|{{.State.StartedAt}}|{{.State.ExitCode}}|{{.State.OOMKilled}}''\ndocker exec e2b28e321c12f425613752227adde08c436cdd07ed9808d08be9129abe3d4ee8 psql -U codex_ai_terms_qa -d ai_terms_qa -Atc \"SELECT state, wait_event_type, wait_event, count(*) FROM pg_stat_activity WHERE datname=''ai_terms_qa'' GROUP BY state, wait_event_type, wait_event;\"\n'",
+      "exit_code": 0,
+      "output": "b5f764a486f5|codex-ai-terms-pg-mu0vh6o7-37b2d4-runner|91.66%|122.2MiB / 2GiB\ne2b28e321c12|codex-ai-terms-pg-mu0vh6o7-37b2d4|29.95%|102.1MiB / 512MiB\nrunning|2026-09-14T06:55:59.920591166Z|0|false\nactive|||2\n"
+    },
+    {
+      "command": "& 'C:\\Program Files\\PuTTY\\plink.exe' -load hostinger2 -l root -batch 'docker inspect b5f764a486f57a92f112404e6ed3c95a4d40b0914735d1c114c866ba53cd8745 --format ''{{.Id}}|{{.State.Status}}|{{.State.ExitCode}}|{{.State.OOMKilled}}|{{.State.StartedAt}}|{{.State.FinishedAt}}''\ndocker exec e2b28e321c12f425613752227adde08c436cdd07ed9808d08be9129abe3d4ee8 psql -U codex_ai_terms_qa -d ai_terms_qa -Atc \"SELECT schema_name FROM information_schema.schemata WHERE schema_name LIKE ''guides_test_%'' ORDER BY schema_name;\"\ndocker network inspect 327694c1c40f5fb97c9b47cd10ac1dcaf99cf935267514610f6eb1adb5b47084 --format ''{{.Id}}|{{.Internal}}|{{json .Containers}}''\n'",
+      "exit_code": 0,
+      "output": "b5f764a486f57a92f112404e6ed3c95a4d40b0914735d1c114c866ba53cd8745|exited|0|false|2026-09-14T06:55:59.920591166Z|2026-09-14T06:57:52.327677239Z\nguides_test_7e27495facd94d8fb7fa3aa0bfd246e2\n327694c1c40f5fb97c9b47cd10ac1dcaf99cf935267514610f6eb1adb5b47084|true|{\"e2b28e321c12f425613752227adde08c436cdd07ed9808d08be9129abe3d4ee8\":{\"EndpointID\":\"8fecfe819278ebb0abd356a1553f50512defd6d3300d7054308b69962c040dce\",\"IPv4Address\":\"172.19.0.2/16\",\"IPv6Address\":\"\",\"MacAddress\":\"aa:0d:ed:7a:e9:69\",\"Name\":\"codex-ai-terms-pg-mu0vh6o7-37b2d4\"}}\n"
+    },
+    {
+      "command": "& 'C:\\Program Files\\PuTTY\\plink.exe' -load hostinger2 -l root -batch 'set -eu\nfor id in b5f764a486f57a92f112404e6ed3c95a4d40b0914735d1c114c866ba53cd8745 e2b28e321c12f425613752227adde08c436cdd07ed9808d08be9129abe3d4ee8; do\n test \"$(docker inspect \"$id\" --format ''{{index .Config.Labels \"codex.task\"}}'')\" = \"ai-terms-postgresql-validation\"\n test \"$(docker inspect \"$id\" --format ''{{index .Config.Labels \"codex.run\"}}'')\" = \"ai-terms-pg-mu0vh6o7-37b2d4\"\n test \"$(docker inspect \"$id\" --format ''{{index .Config.Labels \"codex.disposable\"}}'')\" = \"true\"\ndone\ntest \"$(docker inspect b5f764a486f57a92f112404e6ed3c95a4d40b0914735d1c114c866ba53cd8745 --format ''{{.State.Status}}|{{.State.ExitCode}}'')\" = \"exited|0\"\ntest \"$(docker network inspect 327694c1c40f5fb97c9b47cd10ac1dcaf99cf935267514610f6eb1adb5b47084 --format ''{{index .Labels \"codex.run\"}}'')\" = \"ai-terms-pg-mu0vh6o7-37b2d4\"\ntest \"$(docker network inspect 327694c1c40f5fb97c9b47cd10ac1dcaf99cf935267514610f6eb1adb5b47084 --format ''{{.Internal}}'')\" = \"true\"\ntest \"$(docker image inspect codex-ai-terms-qa:ai-terms-pg-mu0vh6o7-37b2d4 --format ''{{.Id}}'')\" = \"sha256:859552d2c1fd7a713ed063a7ec1b7f318aadfd03fa2a1cbe6d41617841d5a12b\"\ntest \"$(docker image inspect codex-ai-terms-qa:ai-terms-pg-mu0vh6o7-37b2d4 --format ''{{index .Config.Labels \"codex.run\"}}'')\" = \"ai-terms-pg-mu0vh6o7-37b2d4\"\ndocker rm b5f764a486f57a92f112404e6ed3c95a4d40b0914735d1c114c866ba53cd8745\ndocker stop --time 15 e2b28e321c12f425613752227adde08c436cdd07ed9808d08be9129abe3d4ee8\ndocker rm e2b28e321c12f425613752227adde08c436cdd07ed9808d08be9129abe3d4ee8\ntest \"$(docker network inspect 327694c1c40f5fb97c9b47cd10ac1dcaf99cf935267514610f6eb1adb5b47084 --format ''{{len .Containers}}'')\" = \"0\"\ndocker network rm 327694c1c40f5fb97c9b47cd10ac1dcaf99cf935267514610f6eb1adb5b47084\ndocker image rm codex-ai-terms-qa:ai-terms-pg-mu0vh6o7-37b2d4\ntest -z \"$(docker ps -aq --filter label=codex.run=ai-terms-pg-mu0vh6o7-37b2d4)\"\ntest -z \"$(docker network ls -q --filter label=codex.run=ai-terms-pg-mu0vh6o7-37b2d4)\"\ntest -z \"$(docker image ls -q --filter reference=codex-ai-terms-qa:ai-terms-pg-mu0vh6o7-37b2d4)\"\ntest -z \"$(ss -H -ltn ''sport = :55437'')\"\nprintf ''%s\\n'' ''OWN_RESOURCES_REMOVED_AND_PORT_CLOSED''\nstat -c ''%a|%n'' /var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4\ndocker ps --format ''{{.ID}}|{{.Names}}|{{.Status}}'' --filter name=travel_scanner-\n'",
+      "exit_code": 0,
+      "output": "b5f764a486f57a92f112404e6ed3c95a4d40b0914735d1c114c866ba53cd8745\nFlag --time has been deprecated, use --timeout instead\ne2b28e321c12f425613752227adde08c436cdd07ed9808d08be9129abe3d4ee8\ne2b28e321c12f425613752227adde08c436cdd07ed9808d08be9129abe3d4ee8\n327694c1c40f5fb97c9b47cd10ac1dcaf99cf935267514610f6eb1adb5b47084\nUntagged: codex-ai-terms-qa:ai-terms-pg-mu0vh6o7-37b2d4\nDeleted: sha256:859552d2c1fd7a713ed063a7ec1b7f318aadfd03fa2a1cbe6d41617841d5a12b\nDeleted: sha256:f3d2047c7671f2da9d07b1fe79d7a002f8f628fcdc74306e50d9bda3b0344c50\nDeleted: sha256:f8eca28adfbde866f913192a1411caf7c39c50ba64e9335383a3bc4c5f4d0cb9\nDeleted: sha256:1ddfff030cc95307900ce17b04c84efc8fe560be342e3db6562bdc585546e10d\nDeleted: sha256:74bdc70263cbe4725991ecb3cbf4ebb01ae1358b958c05ff38a93e5dbdc61d37\nDeleted: sha256:5412d006409154bcaf1aa57abb9735f283abadb41ea090a5ffdbe033fcf7655c\nDeleted: sha256:cc32095a94161c3a4f28b7ca113b29f9a22dd0f933a72479391bb63a99a00e84\nDeleted: sha256:8af916a518bbac240da824cea928f4797bfeb361078a0fc57d3307424c3b4267\nOWN_RESOURCES_REMOVED_AND_PORT_CLOSED\n700|/var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4\nbcf969395d3f|travel_scanner-web-1|Up 22 minutes\n56a2f2975bfc|travel_scanner-api-1|Up 22 minutes\nc25f92ed1bc2|travel_scanner-alert-worker-1|Up 22 minutes\ne9b00a2a3a74|travel_scanner-alert-scheduler-1|Up 22 minutes\nfc9bf7289258|travel_scanner-hotspot-collector-1|Up 22 minutes\nde28d5418020|travel_scanner-analytics-scheduler-1|Up 22 minutes\n1123436f78e6|travel_scanner-worker-1|Up 22 minutes\n9aae0f607c47|travel_scanner-community-sweeper-1|Up 22 minutes\nb2629309bcb6|travel_scanner-postgres-1|Up 13 days (healthy)\ne9728f707491|travel_scanner-redis-1|Up 13 days (healthy)\n"
+    },
+    {
+      "command": "$listeners = @(Get-NetTCPConnection -LocalPort 55438 -State Listen -ErrorAction SilentlyContinue)\nif ($listeners.Count -ne 0) { throw 'Disposable tunnel port remains open' }\n@'\nimport hashlib, json, subprocess\nfrom pathlib import Path\nfiles = [\"docs/ai-terms-series/publish_batch.py\", \"docs/ai-terms-series/test_publish_batch.py\", \"apps/api/tests/test_guides.py\", \"docs/ai-terms-series/release-manifest.json\", \"apps/api/pyproject.toml\", \"apps/api/uv.lock\"]\nresult = {}\nfor name in files:\n data = Path(name).read_bytes()\n archived = subprocess.check_output([\"git\", \"show\", \"daf64eddb784688b2d48bee2799681037d11245f:\" + name])\n assert data.replace(b\"\\r\\n\", b\"\\n\") == archived, name\n result[name] = {\"local_sha256\": hashlib.sha256(data).hexdigest(), \"git_sha256\": hashlib.sha256(archived).hexdigest(), \"equal_after_lf_normalization\": True}\nprint(json.dumps({\"local_port_55438_closed\": True, \"source_checks\": result}))\n'@ | & apps/api/.venv/Scripts/python.exe -",
+      "exit_code": 0,
+      "output": "{\"local_port_55438_closed\": true, \"source_checks\": {\"docs/ai-terms-series/publish_batch.py\": {\"local_sha256\": \"649a97be9171537157ab3ea259828fdb50de478a18adb8e2825f68191eb3eb97\", \"git_sha256\": \"44f3b061153c1c0458231e2f90c1a5422067a53a833c86a1b5156d048641abc2\", \"equal_after_lf_normalization\": true}, \"docs/ai-terms-series/test_publish_batch.py\": {\"local_sha256\": \"63a209756b91fa0495b5d1e4d9a0ee7d2a0ce8433168123185dbb84096906048\", \"git_sha256\": \"63a209756b91fa0495b5d1e4d9a0ee7d2a0ce8433168123185dbb84096906048\", \"equal_after_lf_normalization\": true}, \"apps/api/tests/test_guides.py\": {\"local_sha256\": \"d5279dfa71c9ce032ddf1615f92f02f9fe1c3228db6c0017a4f0ff2a0181e9e3\", \"git_sha256\": \"d5279dfa71c9ce032ddf1615f92f02f9fe1c3228db6c0017a4f0ff2a0181e9e3\", \"equal_after_lf_normalization\": true}, \"docs/ai-terms-series/release-manifest.json\": {\"local_sha256\": \"96ad2cb050c0b31a678e446c08e428746d1e3e873343a9a72ae0353f48ca7d59\", \"git_sha256\": \"96ad2cb050c0b31a678e446c08e428746d1e3e873343a9a72ae0353f48ca7d59\", \"equal_after_lf_normalization\": true}, \"apps/api/pyproject.toml\": {\"local_sha256\": \"6d4310e3b1427e15079e394e9b55ce0a54a9e938d75942b36b366135497c55cb\", \"git_sha256\": \"6d4310e3b1427e15079e394e9b55ce0a54a9e938d75942b36b366135497c55cb\", \"equal_after_lf_normalization\": true}, \"apps/api/uv.lock\": {\"local_sha256\": \"0471a4a273903c29342f40fbd4cd2601212f4cf5206412314485a70c8a675293\", \"git_sha256\": \"0471a4a273903c29342f40fbd4cd2601212f4cf5206412314485a70c8a675293\", \"equal_after_lf_normalization\": true}}}\r\n"
+    }
+  ],
+  "fixture_review": {
+    "file": "apps/api/tests/test_guides.py",
+    "postgres_enabled_only_if": "RUN_INTEGRATION_TESTS=1",
+    "host_allowlist": [
+      "localhost",
+      "127.0.0.1",
+      "::1",
+      "postgres",
+      "db"
+    ],
+    "schema": "guides_test_<uuid>",
+    "cleanup": "DROP only its random schema CASCADE in disposable DB",
+    "pytest_config": "apps/api/pyproject.toml: asyncio_mode=auto; explicit target limits test collection",
+    "settings": "DATABASE_URL explicitly replaced before importing app.db; runner will disable dotenv reads with Settings.model_config env_file=None before imports"
+  },
+  "preflight": {
+    "ssh_session": "hostinger2",
+    "ssh_user": "root",
+    "memory_available_mib": 13887,
+    "docker_available_mib": 110753,
+    "existing_postgres17_image": "18cfe3ef5e68",
+    "remote_port": 55437,
+    "local_port": 55438,
+    "ports_free": true,
+    "production_container_baseline": [
+      "bcf969395d3f|travel_scanner-web-1",
+      "56a2f2975bfc|travel_scanner-api-1",
+      "c25f92ed1bc2|travel_scanner-alert-worker-1",
+      "e9b00a2a3a74|travel_scanner-alert-scheduler-1",
+      "fc9bf7289258|travel_scanner-hotspot-collector-1",
+      "de28d5418020|travel_scanner-analytics-scheduler-1",
+      "1123436f78e6|travel_scanner-worker-1",
+      "9aae0f607c47|travel_scanner-community-sweeper-1",
+      "b2629309bcb6|travel_scanner-postgres-1",
+      "e9728f707491|travel_scanner-redis-1"
+    ]
+  },
+  "run_label": "ai-terms-pg-mu0vh6o7-37b2d4",
+  "container_name": "codex-ai-terms-pg-mu0vh6o7-37b2d4",
+  "container_id": "e2b28e321c12f425613752227adde08c436cdd07ed9808d08be9129abe3d4ee8",
+  "isolation_verified": {
+    "Id": "e2b28e321c12f425613752227adde08c436cdd07ed9808d08be9129abe3d4ee8",
+    "Labels": {
+      "codex.disposable": "true",
+      "codex.run": "ai-terms-pg-mu0vh6o7-37b2d4",
+      "codex.task": "ai-terms-postgresql-validation"
+    },
+    "Memory": 536870912,
+    "MemorySwap": 536870912,
+    "NetworkMode": "bridge",
+    "Mounts": [],
+    "PortBindings": {
+      "5432/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "55437"
+        }
+      ]
+    },
+    "Running": true
+  },
+  "tunnel": {
+    "pid": 33044,
+    "start_time": "2026-09-14T14:39:43.4693789+08:00",
+    "path": "C:\\Program Files\\PuTTY\\plink.exe",
+    "has_exited": false,
+    "cleaned": true
+  },
+  "tmpfs_and_port_verified": true,
+  "executor_change": {
+    "reason": "SSH SQL latency; first PG case about 3 minutes with only 3 new drafts, PG CPU 0.39% and 71.77 MiB",
+    "approved": "Root explicitly authorized same-host isolated runner",
+    "preserved_passes": [
+      "sqlite-False full resume flow",
+      "sqlite-True full resume flow"
+    ]
+  },
+  "network_id": "327694c1c40f5fb97c9b47cd10ac1dcaf99cf935267514610f6eb1adb5b47084",
+  "local_remaining_result": {
+    "exit_code": 0,
+    "scope": "2 selected tests: unexpected old draft / later change SQLite; hash and exact scope"
+  },
+  "dependency_hashes": {
+    "apps/api/pyproject.toml": "6d4310e3b1427e15079e394e9b55ce0a54a9e938d75942b36b366135497c55cb",
+    "apps/api/uv.lock": "0471a4a273903c29342f40fbd4cd2601212f4cf5206412314485a70c8a675293"
+  },
+  "same_host_plan": {
+    "network_id": "327694c1c40f5fb97c9b47cd10ac1dcaf99cf935267514610f6eb1adb5b47084",
+    "internal": true,
+    "source_directory": "/var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4/source",
+    "source_from_git_archive": "daf64eddb784688b2d48bee2799681037d11245f",
+    "source_mount": "/repo:read-only",
+    "base_image": "sha256:1de16ffa6c47f11611f77281678664313c6dd178f6c3c8e3de07005ebef9f8d6",
+    "base_tag": "travel-scanner-api:2123edbd2e1fc53adef0b89952ead60deef31feb",
+    "test_tag": "codex-ai-terms-qa:ai-terms-pg-mu0vh6o7-37b2d4",
+    "runner_memory_bytes": 2147483648,
+    "remaining_postgresql_variants": 4,
+    "remaining_local_tests_passed": 2
+  },
+  "runner_image_id": "sha256:859552d2c1fd7a713ed063a7ec1b7f318aadfd03fa2a1cbe6d41617841d5a12b",
+  "source_archive": {
+    "git_ref": "daf64eddb784688b2d48bee2799681037d11245f",
+    "completed": true,
+    "driver_git_sha256": "44f3b061153c1c0458231e2f90c1a5422067a53a833c86a1b5156d048641abc2",
+    "driver_local_sha256": "649a97be9171537157ab3ea259828fdb50de478a18adb8e2825f68191eb3eb97",
+    "driver_difference": "822 CRLF local lines normalized to LF by git; exact normalized bytes equal archived git source",
+    "no_tracked_dotenv": true
+  },
+  "runner_container_id": "b5f764a486f57a92f112404e6ed3c95a4d40b0914735d1c114c866ba53cd8745",
+  "runner_isolation_verified": true,
+  "postgresql_started_at": "2026-09-14T06:56:03.322Z",
+  "runner_test_exit_code": 0,
+  "postgresql_finished_at": "2026-09-14T06:58:12.201Z",
+  "remote_cleanup_verified": true,
+  "final_local_verification": {
+    "local_port_55438_closed": true,
+    "source_checks": {
+      "docs/ai-terms-series/publish_batch.py": {
+        "local_sha256": "649a97be9171537157ab3ea259828fdb50de478a18adb8e2825f68191eb3eb97",
+        "git_sha256": "44f3b061153c1c0458231e2f90c1a5422067a53a833c86a1b5156d048641abc2",
+        "equal_after_lf_normalization": true
+      },
+      "docs/ai-terms-series/test_publish_batch.py": {
+        "local_sha256": "63a209756b91fa0495b5d1e4d9a0ee7d2a0ce8433168123185dbb84096906048",
+        "git_sha256": "63a209756b91fa0495b5d1e4d9a0ee7d2a0ce8433168123185dbb84096906048",
+        "equal_after_lf_normalization": true
+      },
+      "apps/api/tests/test_guides.py": {
+        "local_sha256": "d5279dfa71c9ce032ddf1615f92f02f9fe1c3228db6c0017a4f0ff2a0181e9e3",
+        "git_sha256": "d5279dfa71c9ce032ddf1615f92f02f9fe1c3228db6c0017a4f0ff2a0181e9e3",
+        "equal_after_lf_normalization": true
+      },
+      "docs/ai-terms-series/release-manifest.json": {
+        "local_sha256": "96ad2cb050c0b31a678e446c08e428746d1e3e873343a9a72ae0353f48ca7d59",
+        "git_sha256": "96ad2cb050c0b31a678e446c08e428746d1e3e873343a9a72ae0353f48ca7d59",
+        "equal_after_lf_normalization": true
+      },
+      "apps/api/pyproject.toml": {
+        "local_sha256": "6d4310e3b1427e15079e394e9b55ce0a54a9e938d75942b36b366135497c55cb",
+        "git_sha256": "6d4310e3b1427e15079e394e9b55ce0a54a9e938d75942b36b366135497c55cb",
+        "equal_after_lf_normalization": true
+      },
+      "apps/api/uv.lock": {
+        "local_sha256": "0471a4a273903c29342f40fbd4cd2601212f4cf5206412314485a70c8a675293",
+        "git_sha256": "0471a4a273903c29342f40fbd4cd2601212f4cf5206412314485a70c8a675293",
+        "equal_after_lf_normalization": true
+      }
+    }
+  },
+  "completed_at": "2026-09-14T06:59:12.253Z",
+  "checks": {
+    "postgresql": {
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "deselected": 5,
+      "duration_seconds": 107.67,
+      "server_version": "17.11",
+      "cases": [
+        {
+          "nodeid": "docs/ai-terms-series/test_publish_batch.py::test_resume_preserves_publications_and_publishes_index_last[postgresql-False]",
+          "status": "passed"
+        },
+        {
+          "nodeid": "docs/ai-terms-series/test_publish_batch.py::test_resume_preserves_publications_and_publishes_index_last[postgresql-True]",
+          "status": "passed"
+        },
+        {
+          "nodeid": "docs/ai-terms-series/test_publish_batch.py::test_unexpected_old_draft_and_later_change_stop[postgresql]",
+          "status": "passed"
+        },
+        {
+          "nodeid": "docs/ai-terms-series/test_publish_batch.py::test_postgresql_index_commit_blocks_concurrent_dependency_withdrawal[postgresql]",
+          "status": "passed"
+        }
+      ]
+    },
+    "local": {
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "nodeid": "docs/ai-terms-series/test_publish_batch.py::test_resume_preserves_publications_and_publishes_index_last[sqlite-False]",
+          "status": "passed"
+        },
+        {
+          "nodeid": "docs/ai-terms-series/test_publish_batch.py::test_resume_preserves_publications_and_publishes_index_last[sqlite-True]",
+          "status": "passed"
+        },
+        {
+          "nodeid": "docs/ai-terms-series/test_publish_batch.py::test_unexpected_old_draft_and_later_change_stop[sqlite]",
+          "status": "passed"
+        },
+        {
+          "nodeid": "docs/ai-terms-series/test_publish_batch.py::test_hash_and_exact_scope_guards",
+          "status": "passed"
+        }
+      ]
+    },
+    "index_lock_race": {
+      "passed": true,
+      "sqlstate": "55P03",
+      "description": "Separate READ COMMITTED editor withdrawal was blocked during index transaction; index committed once and exact 83 published documents were verified."
+    },
+    "bundle": {
+      "passed": true,
+      "pack_count": 83,
+      "manifest_sha256": "96ad2cb050c0b31a678e446c08e428746d1e3e873343a9a72ae0353f48ca7d59"
+    },
+    "source": {
+      "git_ref": "daf64eddb784688b2d48bee2799681037d11245f",
+      "driver_git_sha256": "44f3b061153c1c0458231e2f90c1a5422067a53a833c86a1b5156d048641abc2",
+      "test_sha256": "63a209756b91fa0495b5d1e4d9a0ee7d2a0ce8433168123185dbb84096906048",
+      "fixture_sha256": "d5279dfa71c9ce032ddf1615f92f02f9fe1c3228db6c0017a4f0ff2a0181e9e3",
+      "dependency_hashes": {
+        "apps/api/pyproject.toml": "6d4310e3b1427e15079e394e9b55ce0a54a9e938d75942b36b366135497c55cb",
+        "apps/api/uv.lock": "0471a4a273903c29342f40fbd4cd2601212f4cf5206412314485a70c8a675293"
+      }
+    }
+  },
+  "interrupted_runs": [
+    {
+      "command_index": 7,
+      "status": "interrupted",
+      "exit_code": 1,
+      "reason": "SSH SQL latency; first PG case about 3 minutes with only 3 new drafts, PG CPU 0.39% and 71.77 MiB",
+      "completed_cases": [
+        "docs/ai-terms-series/test_publish_batch.py::test_resume_preserves_publications_and_publishes_index_last[sqlite-False]",
+        "docs/ai-terms-series/test_publish_batch.py::test_resume_preserves_publications_and_publishes_index_last[sqlite-True]"
+      ],
+      "incomplete_case": "docs/ai-terms-series/test_publish_batch.py::test_resume_preserves_publications_and_publishes_index_last[postgresql-False]",
+      "completion_claimed": false,
+      "disposable_orphan_schema_destroyed_with_container": true
+    }
+  ],
+  "not_run_cases": [
+    {
+      "nodeid": "docs/ai-terms-series/test_publish_batch.py::test_postgresql_index_commit_blocks_concurrent_dependency_withdrawal[sqlite]",
+      "status": "not_run",
+      "reason": "Excluded by selection; SQLite cannot prove PostgreSQL row locking. Not counted as skipped."
+    }
+  ],
+  "warnings": [
+    {
+      "source": "same-host pytest",
+      "count": 1,
+      "type": "PytestAssertRewriteWarning",
+      "message": "anyio had already been imported before pytest plugin rewriting; all selected cases passed."
+    }
+  ],
+  "cleanup": {
+    "complete": true,
+    "runner_removed": true,
+    "postgres_container_removed": true,
+    "internal_network_removed": true,
+    "test_image_tag_removed": true,
+    "tunnel_stopped": true,
+    "local_port_closed": true,
+    "remote_port_closed": true,
+    "production_containers_unchanged": true,
+    "retained_private_source_directory": "/var/tmp/codex-ai-terms-pg-mu0vh6o7-37b2d4",
+    "retained_directory_mode": "700",
+    "retained_source_reason": "Exact git archive, runner script and two-file build context retained for traceability as authorized; no live containers, networks or test image tag remain."
+  }
+}

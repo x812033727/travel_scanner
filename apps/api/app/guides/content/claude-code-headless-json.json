@@ -1,0 +1,274 @@
+{
+  "slug": "claude-code-headless-json",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 151,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜非互動執行與 JSON 輸出",
+      "description": "用單次指令、管線與結構化輸出建立腳本。claude -p 讓你把一次任務放進腳本，由程序輸入提示並接收結果。本篇會先取得文字輸出，再保存 JSON 結果，最後使用 JSON Schema 要求固定欄位。你會同時檢查退出碼與結果內容，避免把一份存在的輸出檔誤認為執行成功。",
+      "hero": {
+        "src": "/guides/claude-code-headless-json/hero.jpg",
+        "alt": "非互動執行與 JSON 輸出：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "claude -p 讓你把一次任務放進腳本，由程序輸入提示並接收結果。本篇會先取得文字輸出，再保存 JSON 結果，最後使用 JSON Schema 要求固定欄位。你會同時檢查退出碼與結果內容，避免把一份存在的輸出檔誤認為執行成功。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先完成"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-cli-command-guide",
+              "text": "CLI 基礎"
+            },
+            {
+              "type": "text",
+              "text": "，準備已登入的 CLI 與只含假資料的工作目錄。本篇前兩個範例使用目前正常登入方式；API 與訂閱用量依認證方式不同，執行前先理解"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-accounts-and-access",
+              "text": "帳號計費"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "非互動不代表沒有副作用"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-headless-json/diagram-1.svg",
+          "alt": "非互動不代表沒有副作用 → 先執行一次純文字任務 → 保存 JSON 回應",
+          "width": 1600,
+          "height": 900,
+          "caption": "非互動不代表沒有副作用 → 先執行一次純文字任務 → 保存 JSON 回應",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "-p 是非互動執行入口，並不等於沙盒或只讀模式。正常模式仍會載入工作目錄及使用者設定中的部分規則、Hooks、Skills、外掛與 MCP，且不會出現一般互動式工作區信任提示。因此先選乾淨練習目錄並檢查設定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "--bare 可用於減少自動載入，但查證時它不使用訂閱登入，需另備 API 認證。不要只為了省事加上 --bare，卻不知道為何突然登入失敗。本篇用 --tools 限制可用工具，並清楚說明這不會替代對啟動設定的審查。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先執行一次純文字任務"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "PowerShell 或 macOS／Linux 終端機：不開啟工具",
+          "code": "claude -p \"請用一句繁體中文解釋待辦清單，不使用工具。\" --tools \"\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期程序輸出一句說明後退出。若出現認證錯誤，先回互動 CLI 確認登入；若參數不支援，查看 claude --help 與版本。非互動模式沒有等你在對話中補充資訊的正常流程，所以提示要一次提供必要背景。"
+        },
+        {
+          "type": "paragraph",
+          "text": "成功退出碼應為零，失敗為非零。錯誤可能出現在標準錯誤，也可能以結果訊息出現在標準輸出；不能只搜尋 stderr 是否為空。後續腳本應保留兩個通道，並明確檢查退出狀態。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "保存 JSON 回應"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "PowerShell：保存輸出與錯誤，立即檢查退出碼",
+          "code": "claude -p \"將買牛奶、整理桌面整理成簡短清單，不使用工具。\" --tools \"\" --output-format json 1> result.json 2> error.log\n$runExit = $LASTEXITCODE\nif ($runExit -ne 0) { throw \"Claude 執行失敗，請查看 result.json 與 error.log\" }\n$response = Get-Content -Raw result.json | ConvertFrom-Json\n$response.result\n"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "macOS／Linux 終端機：保存輸出與錯誤",
+          "code": "claude -p '將買牛奶、整理桌面整理成簡短清單，不使用工具。' --tools '' --output-format json > result.json 2> error.log\nrun_exit=$?\nif [ \"$run_exit\" -ne 0 ]; then\n  echo 'Claude 執行失敗，請查看 result.json 與 error.log'\nfi\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "--output-format json 回傳外層結果與 metadata，文字通常放在 result 欄位，不代表 result 本身一定是 JSON 物件。要固定業務欄位，下一步才加入 --json-schema。session ID、用量等外層欄位也應保留供診斷。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "加入結構化輸出要求"
+        },
+        {
+          "type": "paragraph",
+          "text": "下面 Bash 範例要求 tasks 是字串陣列。它把完整資料直接放在提示中，不讀取檔案，因此 --tools 保持空值。JSON Schema 定義欄位結構，不能保證文字內容符合所有商業規則，仍需程式核對。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "macOS／Linux 終端機：要求固定輸出欄位",
+          "code": "claude -p '將買牛奶與整理桌面整理成 tasks，保留原文字，不使用工具。' --tools '' --output-format json --json-schema '{\"type\":\"object\",\"properties\":{\"tasks\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}}},\"required\":[\"tasks\"],\"additionalProperties\":false}' > structured.json\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Windows 不同 PowerShell 與原生程式參數傳遞方式，可能影響含雙引號的 JSON。若複雜 schema 反覆被 shell 改寫，先使用"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-agent-sdk",
+              "text": "Agent SDK"
+            },
+            {
+              "type": "text",
+              "text": "的結構化參數，或以程式的參數陣列啟動 CLI，不要靠不斷加入反斜線猜測。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "成功時讀取外層 structured_output，而不是只解析 result 字串。檢查 tasks 長度為二、兩個項目都存在、沒有多餘欄位。格式合法仍可能內容錯誤，例如少一項待辦；這就是需要另外驗證業務條件的原因。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "透過輸入管線提供文字"
+        },
+        {
+          "type": "paragraph",
+          "text": "先建立 notes.txt，放入可公開的練習文字，再以管線傳入。標準輸入是任務資料，不應混入權杖或整份私人資料夾輸出。內容中若出現命令文字，提示也要要求把它當成資料而不是新的操作指示。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "PowerShell：從練習文字檔提供輸入",
+          "code": "Get-Content -Raw notes.txt | claude -p \"摘要輸入文字，保留待辦項目；不使用工具。\" --tools \"\"\n"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "macOS／Linux 終端機：從練習文字檔提供輸入",
+          "code": "cat notes.txt | claude -p '摘要輸入文字，保留待辦項目；不使用工具。' --tools ''\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "需要讀取檔案工具時，可以明確設定 --tools 與 --allowedTools；前者控制可用工具，後者是預先授權，不能當成只允許清單的同義詞。不要用跳過所有權限的參數處理一般自動化排錯。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自動化程式也應限制輸入大小，避免不小心把巨大紀錄或整份資料庫輸出送入模型。先統計需要的段落與欄位，再傳遞最小材料；保存輸入版本或摘要識別資訊，讓結果可以對應回當時資料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "需要多次處理時，為每次執行產生自己的輸出檔名與工作識別碼，不覆蓋上一份尚未審查的結果。遇到失敗先保存原始回應，再重試；如果只留下最後一次成功檔，可能失去最有用的錯誤證據。"
+        },
+        {
+          "type": "paragraph",
+          "text": "結構化輸出中的字串仍是模型產生內容，不能直接拼成命令或資料庫查詢。即使 schema 通過，也要使用程式自己的允許值與業務驗證，確認結果符合下一個操作的輸入條件。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "停止、限制與錯誤紀錄"
+        },
+        {
+          "type": "paragraph",
+          "text": "互動終端機中可用 Ctrl+C 中止，腳本或工作管理器則應有合理逾時並處理子程序。被中止的執行可能沒有完整結果，不能把部分文字當成最終答案。需要長期執行服務時，也不應依賴 -p 產生的背景 shell 永遠存活。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "症狀",
+            "檢查重點",
+            "處理方式"
+          ],
+          "rows": [
+            [
+              "JSON 檔存在但解析失敗",
+              "程序退出碼與輸出內容",
+              "先判斷失敗結果，不直接匯入"
+            ],
+            [
+              "result 不是物件",
+              "只使用 output-format",
+              "加入 schema 並讀 structured_output"
+            ],
+            [
+              "schema 不合法",
+              "引號或 schema 結構",
+              "用最小範例驗證，再逐欄增加"
+            ],
+            [
+              "非互動工作卡住",
+              "工具權限或背景工作",
+              "查看紀錄、縮小範圍並設定逾時"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "小練習是用兩項待辦產生 JSON，程式檢查退出碼、欄位與內容，再故意使用不合法 schema 觀察失敗。完成判準是成功與失敗有不同處理路徑，原始紀錄被保存，而且沒有因輸出格式需求而擴大工具權限。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Run Claude Code programmatically",
+          "url": "https://code.claude.com/docs/en/headless",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI reference",
+          "url": "https://code.claude.com/docs/en/cli-reference",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

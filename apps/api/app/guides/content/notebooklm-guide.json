@@ -1,0 +1,319 @@
+{
+  "slug": "notebooklm-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 120,
+  "locales": {
+    "zh-TW": {
+      "title": "NotebookLM 入門：資料、筆記本與引用",
+      "description": "NotebookLM 適合把一組有明確範圍的資料整理成可追查引用的筆記本。本篇從兩份短公告開始，練習上傳、限定來源、找出差異和檢查引用。完成後，你應能分辨「來源真的有寫」與「回答看起來合理」，並知道何時該補資料，而不是反覆要求 AI 猜答案。",
+      "hero": {
+        "src": "/guides/notebooklm-guide/hero.jpg",
+        "alt": "筆記本的引用核對的原創插畫，以文件、裝置與流程等物件呼應資料、筆記本與引用；非產品介面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "NotebookLM 適合把一組有明確範圍的資料整理成可追查引用的筆記本。本篇從兩份短公告開始，練習上傳、限定來源、找出差異和檢查引用。完成後，你應能分辨「來源真的有寫」與「回答看起來合理」，並知道何時該補資料，而不是反覆要求 AI 猜答案。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/notebooklm-guide/diagram-1.svg",
+          "alt": "兩份公告：標清楚原始版本；限定來源：勾選需要的資料；打開引用：核對更正與缺漏",
+          "width": 1600,
+          "height": 900,
+          "caption": "筆記本的引用核對。此為原創教學圖解，並非產品畫面或實測輸出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "開始前：入口與名稱更新",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "本系列沿用 NotebookLM 名稱與既定網址；2026 年 9 月 14 日查證時，部分官方說明已改稱 Gemini Notebook，來源頁也指向 notebook.google.com。讀者可從原本 NotebookLM 官方入口或 Gemini 的筆記本入口進入，先確認網站屬於 Google，再登入自己的帳號。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "準備電腦瀏覽器、符合使用資格的 Google 帳號，以及自己撰寫或有權使用的資料。公司、學校與未成年帳號的可用功能不同，來源數量和產出額度依方案而定，先看"
+            },
+            {
+              "type": "link",
+              "text": "方案與額度教學",
+              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+            },
+            {
+              "type": "text",
+              "text": "。本文操作依官方文件整理，未在登入帳號內實測整個流程。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第一次請用下方虛構資料，不要直接丟進整學期講義或所有工作文件。短資料能讓你逐句比對，之後才逐步增加內容。如果還不熟悉檔案、頁碼與引用的基本核對方式，可先讀"
+            },
+            {
+              "type": "link",
+              "text": "檔案分析",
+              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "第一步：建立筆記本與兩個來源",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "在筆記本首頁選建立新筆記本，命名為「社區講座資料核對練習」。",
+            "在 Sources「來源」面板選新增來源，以貼上文字方式新增公告甲，命名時保留版本。",
+            "用同樣方式新增公告乙。兩份分開加入，方便觀察回答引用的是哪一個版本。",
+            "打開每份來源，確認標題、完整文字和日期都正確；來源沒有讀進去之前先不要問摘要。",
+            "只勾選這兩份來源，再開始下面的問答。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "公告甲－初稿",
+          "code": "社區講座初稿，更新日期為 2026 年 9 月 1 日。\n暫定 2026 年 10 月 10 日下午 2 點開始，預估參加人數 20 人。\n場地尚未確認；是否收費也尚未決定。\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "公告乙－修正版",
+          "code": "社區講座修正版，更新日期為 2026 年 9 月 8 日。\n日期改為 2026 年 10 月 11 日下午 2 點，地點為社區教室。\n免費參加，名額改為 24 人。\n目前未提供報名截止日期。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "這些文字是本文編寫的練習素材，不是實際活動公告。正式使用時，可改用 PDF、Google 文件或支援的網頁等來源，並在名稱加入日期與版本，避免三個「活動資料」混在一起。若資料太短，工具可能引用整份來源而不是其中某一句，仍應打開來源查看。"
+        },
+        {
+          "type": "heading",
+          "text": "第二步：問有範圍、可驗收的問題",
+          "level": 2
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "來源比對提示詞",
+          "code": "只根據目前勾選的公告甲與公告乙回答，使用繁體中文。\n整理日期、開始時間、地點、名額、費用、報名截止日期六個欄位。\n每個欄位分別列出兩份公告的說法，附上引用。\n再指出哪些欄位被較新的公告更正，以及哪些資訊仍未提供。\n不要替活動推算報名截止日期，不使用外部常識補空白。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期日期會從十月十日改成十一日，名額從預估二十人改為二十四人；兩份都沒給出截止日期。這是人依原文整理的驗收答案，不是模型測試結果。若回答把時間也說成更改，應點回兩份來源確認都是下午兩點，再要求修正比較。"
+        },
+        {
+          "type": "paragraph",
+          "text": "引用標記的功能是讓你追查支持內容，不代表每個結論自動正確。點開引用後，看它是否真的支持該欄，還是隻出現在同一段附近。對數字、否定詞和條件要多看前後句，例如「未提供日期」不能簡化成「沒有截止期限」。"
+        },
+        {
+          "type": "heading",
+          "text": "第三步：控制來源與資料版本",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "取消勾選公告乙，重新問活動名額，再重新勾選兩份提問。第一種應只根據甲回答預估二十人，第二種則應說明版本差異。這個操作讓你確認勾選範圍的影響，也提醒你在產生報告前檢查是否漏掉重要來源。"
+        },
+        {
+          "type": "paragraph",
+          "text": "來源不是所有情況都固定不變。查證時官方文件指出，支援的 Drive 匯入來源可自動同步，也有手動同步入口；失去原檔權限後，來源可能變成無法使用。本機上傳和一般網頁來源不能一概當成相同同步方式。正式研究要記下原始資料的版本與核對日期。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Drive 修改內容後，先開啟筆記本來源確認更新，再產生新的答案。先前生成的筆記、語音或影片不應推定會自動重做；需要更新時重新產生並核對。匯出到 Docs 或 Sheets 的內容也是另一份檔案，後續編輯不會自動回寫原筆記本。"
+        },
+        {
+          "type": "heading",
+          "text": "第四步：加入網頁與影片來源",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "新增網頁時，檢查匯入的是該頁文字，並非整個網站、嵌入影片或所有子頁。登入牆、付費牆或動態內容可能無法完整取得，應查看來源內文是否缺少關鍵表格。需要的資料沒有匯入，就先補正來源，不要讓模型以不完整內容下結論。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "YouTube 來源主要依可用字幕逐字稿處理，不能假設它看見全部畫面細節。圖上的數字若沒有出現在語音中，應另加可讀資料。若你的目標是生成讀書用語音、測驗和影片摘要，接著閱讀"
+            },
+            {
+              "type": "link",
+              "text": "NotebookLM 進階練習",
+              "url": "https://mokaair.com/zh-TW/life/notebooklm-for-study-notes"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "與 Gemini 筆記本有什麼差別",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "同一筆記本可能在 Gemini 出現，名稱、來源和自訂指示也可跨產品同步。但 NotebookLM 的回答以筆記本來源為依據，Gemini 還可能使用網路搜尋或其他工具。想做嚴格的來源比對時，要先確認自己目前在哪個入口、選了哪些資料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Studio「工作室」裡的語音、影片、資訊圖等產出，仍應在 NotebookLM 對應入口建立；不能看到筆記本在 Gemini 就以為每個 Studio 功能都搬過去。Gemini 對話若加入筆記本上下文，也會影響資料範圍，練習時先維持只有兩份原始公告。"
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「有引用就不用再查嗎？」仍要看引用是否支持結論。遇到不同版本、缺漏欄位或推論語句，應保留待確認，而不是因有來源編號就直接採用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「刪掉 Gemini 活動會一起刪掉筆記本嗎？」不會自動等同。不同產品有各自的資料保留及刪除行為，請分別檢查設定；分享筆記本前也要確認收件人能看到的來源與產出。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「筆記本沒有出現在 Gemini？」檢查帳號、地區、分享狀態與整合資格，必要時重新整理。共享筆記本與包含 Gemini 對話的筆記本另有規則，先從原 NotebookLM 入口存取，不必重複建立多份。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「來源越多越好嗎？」先保留與問題直接相關、版本清楚的資料。多一百篇來源不代表多一百份獨立證據；重複轉載、過時公告和不完整逐字稿都應辨識後再加入。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查證與範例",
+          "text": "本文於 2026-09-14 對照官方文件整理。畫面操作依官方說明，非所有裝置均經實機測試；範例輸出是驗收目標，實際內容依資料而異。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後的檢核",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "通過條件"
+          ],
+          "rows": [
+            [
+              "操作",
+              "能依正文重做一次，說明每一步使用的輸入。"
+            ],
+            [
+              "結果",
+              "能用原始資料或可重現測試核對輸出，而非只看語氣。"
+            ],
+            [
+              "延伸",
+              "知道下一篇教學解決的問題，以及什麼時候需要它。"
+            ]
+          ],
+          "caption": "完成實作後逐項確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著可以閱讀 "
+            },
+            {
+              "type": "link",
+              "text": "讀 PDF、圖片與表格",
+              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "NotebookLM 進階",
+              "url": "https://mokaair.com/zh-TW/life/notebooklm-for-study-notes"
+            },
+            {
+              "type": "text",
+              "text": "，把本篇的操作接到下一個工作流程。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "建立筆記本",
+          "url": "https://support.google.com/gemininotebook/answer/16206563?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "新增來源與同步規則",
+          "url": "https://support.google.com/gemininotebook/answer/16215270?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "筆記本中的聊天",
+          "url": "https://support.google.com/gemininotebook/answer/16179559?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini 與筆記本的整合差異",
+          "url": "https://support.google.com/gemininotebook/answer/17003757?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "筆記本的隱私與使用條款",
+          "url": "https://support.google.com/gemininotebook/answer/17004255?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google One 使用資格",
+          "url": "https://support.google.com/googleone/answer/16105039?hl=en",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -15,8 +15,9 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const WORKFLOWS = new URL("../.github/workflows/", import.meta.url).pathname;
+const WORKFLOWS = fileURLToPath(new URL("../.github/workflows/", import.meta.url));
 const USES = /^\s*-?\s*uses:\s*(\S+)/gm;
 
 function actionReferences() {

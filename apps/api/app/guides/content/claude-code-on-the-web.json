@@ -1,0 +1,244 @@
+{
+  "slug": "claude-code-on-the-web",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 113,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code 網頁版教學",
+      "description": "連接儲存庫、建立雲端任務及取回成果。Claude Code 網頁版把工作放到雲端環境執行，適合希望關閉瀏覽器後仍能繼續處理的程式任務。本篇帶你連接測試儲存庫、建立一次只讀檢查，再完成小修改與差異審查。你會學會區分雲端產出、本機檔案和 GitHub 分支，避免以為對話同步就代表所有資料自動同步。",
+      "hero": {
+        "src": "/guides/claude-code-on-the-web/hero.jpg",
+        "alt": "Claude Code 網頁版教學：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Claude Code 網頁版把工作放到雲端環境執行，適合希望關閉瀏覽器後仍能繼續處理的程式任務。本篇帶你連接測試儲存庫、建立一次只讀檢查，再完成小修改與差異審查。你會學會區分雲端產出、本機檔案和 GitHub 分支，避免以為對話同步就代表所有資料自動同步。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "請先準備符合目前官方資格的 claude.ai 帳號，以及自己能管理的 GitHub 測試儲存庫。官方目前將此功能標為研究預覽，組織席次與管理政策可能影響開放範圍。先讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-accounts-and-access",
+              "text": "帳號與使用資格"
+            },
+            {
+              "type": "text",
+              "text": "，並用"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-practice-project-setup",
+              "text": "練習專案"
+            },
+            {
+              "type": "text",
+              "text": "材料建立測試儲存庫，內容不要包含私人金鑰。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "連接儲存庫與確認授權"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-on-the-web/diagram-1.svg",
+          "alt": "連接儲存庫與確認授權 → 選定雲端環境 → 送出第一次只讀任務",
+          "width": 1600,
+          "height": 900,
+          "caption": "連接儲存庫與確認授權 → 選定雲端環境 → 送出第一次只讀任務",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "在瀏覽器開啟官方 Claude Code 網頁入口，依引導登入並連接 GitHub。選擇要授權的帳號或組織，閱讀 GitHub App 可存取的儲存庫範圍。第一次練習只選專用測試儲存庫，完成後回到 Claude 確認能在選單找到它。"
+        },
+        {
+          "type": "paragraph",
+          "text": "儲存庫出現在清單，只表示連接設定的一部分完成；接著還要確認選到正確分支，以及雲端能取得你預期的檔案。若剛在本機新增內容但還沒推到遠端，透過 GitHub 複製的雲端環境不會憑空看到那些變更。開始前用 GitHub 頁面核對 README 和 package.json。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "選定雲端環境"
+        },
+        {
+          "type": "paragraph",
+          "text": "雲端環境保存網路存取、環境變數與啟動設定。介面可能提供預設環境，也可能要求建立新環境；組織還可能把任務導向自行管理的環境。先看清楚此次 session 的環境名稱，不能只因為在同一個網站下指示，就假設執行機器永遠相同。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "要確認的項目",
+            "為什麼需要",
+            "練習專案預期"
+          ],
+          "rows": [
+            [
+              "儲存庫與分支",
+              "決定讀到哪個版本",
+              "自己的 Todo 測試儲存庫"
+            ],
+            [
+              "執行環境",
+              "決定工具與網路能力",
+              "能執行 Node.js 的環境"
+            ],
+            [
+              "啟動設定",
+              "決定任務前準備工作",
+              "本練習不需第三方套件"
+            ],
+            [
+              "外部資料",
+              "決定是否需要額外授權",
+              "不需要資料庫或金鑰"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "本系列起始專案沒有第三方 npm 依賴，可以降低第一次雲端練習的變數。若它要求你先建立資料庫或提供正式 API 金鑰，請重新確認是不是選到別的儲存庫。遇到工具版本不符，先記錄雲端實際版本，再依環境設定調整，避免把錯誤誤歸因於程式碼。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "送出第一次只讀任務"
+        },
+        {
+          "type": "paragraph",
+          "text": "在新 session 輸入需求，先讓 Claude 列出程式結構與測試結果。送出後觀察環境建立、取得程式碼和執行工具的紀錄。若停在準備階段，打開該階段的錯誤，分辨是儲存庫授權、分支不存在，還是環境啟動失敗。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 網頁版對話框：雲端基準檢查",
+          "code": "請確認目前儲存庫、分支與工作目錄。\n閱讀 README.md 和 package.json，回報 Node.js 版本並執行 npm test。\n整理待辦清單目前的功能與測試涵蓋範圍。\n這次不要修改檔案、建立 PR 或調整環境權限。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期回覆能對上練習專案的新增、切換完成與刪除操作，並附真實測試輸出摘要。若它只回答「應該能通過」，代表還沒有執行證據。可以追問是哪個命令、在什麼目錄執行，以及結束結果，讓判斷建立在紀錄上。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "做一次範圍很小的修改"
+        },
+        {
+          "type": "paragraph",
+          "text": "基準確認後，要求修改頁面主標題並保留其他功能。這個任務不需要完整網站重設計，產出的差異應該很容易閱讀。你可以關閉瀏覽器稍後回來，但仍要留意 session 是否停在待回答或待授權狀態；在雲端執行不代表永遠不需要你的輸入。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 網頁版對話框：雲端小修改",
+          "code": "把頁面可見主標題改成「雲端練習待辦」。\n只做這項文字修改，保留原有功能。\n請執行既有測試，列出實際變更，讓我先審查差異。\n若無法做瀏覽器操作驗證，清楚列出待檢查的步驟。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "回到 session 時，閱讀最終摘要與逐檔差異，確認不是只改瀏覽器分頁名稱。測試紀錄能證明資料操作仍符合測試條件；使用者看得到的主標題則要靠預覽或之後的本機瀏覽器檢查。這兩種證據應分開記錄。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把成果帶回本機"
+        },
+        {
+          "type": "paragraph",
+          "text": "雲端成果可能保存在工作分支，或由介面建立 Pull Request。建立 PR 是送交審查，尚未代表合併到主分支。先確認目標儲存庫、來源分支與差異內容，再依你的流程處理；對練習專案，可以保留 PR 作為檢查材料。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "若要接續到終端機，官方提供 teleport 流程，但前提仍包含相同帳號、可取得的儲存庫與合適的本機狀態。請先讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-cross-device-workflow",
+              "text": "跨裝置接續"
+            },
+            {
+              "type": "text",
+              "text": "，避免在有未保存修改的工作目錄直接切換分支。接續對話後仍要重新檢查 Node 版本與本機測試。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "雲端 session 能在關閉瀏覽器後繼續；Remote Control 則由你的電腦執行。需要本機工具或未送到雲端的檔案時，請改用 Remote Control 的工作方式。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見問題與完成判準"
+        },
+        {
+          "type": "paragraph",
+          "text": "找不到儲存庫時，檢查登入的 GitHub 帳號、組織核准與 App 安裝範圍。找得到儲存庫卻沒有最新檔案，檢查選定分支和遠端提交。命令不能存取網路時，先看雲端環境允許的存取層級，而不是把所有限制一次放寬。這些檢查都應以目前 session 的實際設定為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成本篇時，保留一份簡短紀錄：選定儲存庫與分支、雲端執行版本、修改差異、測試結果及後續審查位置。小練習是從手機打開同一個 session，補充一個只讀問題，再回到電腦確認訊息與成果。你應能清楚指出對話在哪裡看、程式在哪裡跑，以及最終檔案目前保存在哪裡。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Use Claude Code on the web",
+          "url": "https://code.claude.com/docs/en/claude-code-on-the-web",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Platforms and integrations",
+          "url": "https://code.claude.com/docs/en/platforms",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

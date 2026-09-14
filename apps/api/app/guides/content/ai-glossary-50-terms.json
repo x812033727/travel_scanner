@@ -4,7 +4,7 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "misc"
+    "tutorial"
   ],
   "valid_until": null,
   "featured": false,
@@ -12,7 +12,7 @@
   "locales": {
     "zh-TW": {
       "title": "AI 名詞速查：50 個常見詞彙一次搞懂",
-      "description": "把 2026 年 9 月最常遇到的 50 個 AI 名詞整理成一張可收藏的速查表：分成模型與訓練、使用與功能、推理與代理、生成與媒體、基礎設施與費用五組，每個詞一到兩句白話、附英文原文，定義以 Anthropic、OpenAI、Google 的官方名詞表與文件為準。另附十組最常混淆的詞對（token 與字、記憶與上下文、開源與免費、代理與聊天機器人）與名詞地圖，之後看到不懂的詞回來查就好。",
+      "description": "把常見的 50 個 AI 名詞整理成可收藏的速查表，分為模型與訓練、使用與功能、推理與代理、生成與媒體、基礎設施與費用五組。每個詞附英文與白話定義，另以十組比較釐清上下文、記憶、開源、推理、搜尋和內容憑證的差異。本次依官方文件於 2026 年 9 月 14 日重新查核，並連到 81 詞專文總索引，方便從簡短解釋繼續深入閱讀。",
       "hero": {
         "src": "/guides/ai-glossary-50-terms/hero.jpg",
         "alt": "一本打開的字典躺在桌上，右側書頁邊緣伸出五個顏色不同的標籤，旁邊疊著幾張索引卡",
@@ -27,11 +27,16 @@
       "blocks": [
         {
           "type": "paragraph",
-          "text": "token、RAG、MCP、代理、開放權重，AI 工具的說明頁每季都在長出新名詞。這篇把 2026 年 9 月最常遇到的 50 個整理成一張可以收藏的速查表：每個詞一到兩句白話、附英文原文，定義以 Anthropic、OpenAI、Google 的官方文件與名詞表為準，功能名稱以各家說明中心的現況為準。"
+          "text": "token、RAG、MCP、代理、開放權重，讀 AI 工具的說明時常會遇到這些名字。本篇保留原有 50 詞速查架構，於 2026 年 9 月 14 日重新查核定義，說明一般概念與容易誤解之處；產品功能只作示例，實際設定、供應範圍和費率應回到當期官方文件核對。這是本次整理範圍，不宣稱涵蓋所有新詞。"
         },
         {
           "type": "paragraph",
           "text": "這份表不照字母序，而是照你會遇到它們的場景分成五組：模型與訓練、使用與功能、推理與代理、生成與媒體、基礎設施與費用。第一次讀從頭掃一遍；之後遇到不懂的詞，用瀏覽器的搜尋功能（Ctrl+F 或 Cmd+F）跳到那一條就好。每組結尾都有連結，想把某個概念弄透再點進本系列的深入文章；文末另有十組最常被混用的詞對。"
+        },
+        {
+          "type": "link",
+          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
         },
         {
           "type": "paragraph",
@@ -62,32 +67,32 @@
         {
           "type": "list",
           "items": [
-            "大型語言模型（LLM）：用海量文字訓練、參數極多的語言模型，做的事只有一件：看著前文猜下一個 token。ChatGPT、Claude、Gemini 底下都是這種模型。",
-            "token：模型處理文字的最小單位，可能是一個單字、半個單字、一個標點或一個中文字的一部分。Anthropic 說 Claude 一個 token 約 3.5 個英文字元，中文依各家分詞方式不同。",
-            "參數（parameter）：模型在訓練中學到的權重與偏差，數量常以 B（十億）計，例如 OpenAI 的開放權重模型 gpt-oss-120b 有 1,170 億個參數。",
-            "預訓練（pretraining）：第一階段訓練，讓模型在大量未標註的文字上學會「給定前文、預測下一個字」；預訓練完的模型還不擅長回答問題或聽指令。",
-            "微調（fine-tuning）：在預訓練好的模型上用額外資料再訓練一次，讓它模仿那批資料的風格，或適應特定領域與任務。",
-            "RLHF（人類回饋強化學習）：請人替多個回覆排名，再用強化學習讓模型偏好排名高的那種回答；助理會「好好聊天」多半是這一步的結果。",
-            "基礎模型（foundation model）：在極大且多樣的資料上預訓練的超大模型，本身就能應付很多要求，也能當底座再微調成特定用途。",
-            "上下文視窗（context window）：模型產生回覆時能回頭參考的全部文字量，等於它的工作記憶，以 token 計算。2026 年 9 月的官方文件裡，Claude Opus 5 是 100 萬 token，OpenAI 的 GPT-6 Astra 是 105 萬 token。",
-            "知識截止日（knowledge cutoff）：訓練資料停止的時間點，之後發生的事沒接搜尋工具就不知道；例如 Claude Opus 5 的可靠知識截止日是 2026 年 5 月。",
-            "temperature：控制挑字隨機程度的參數，調高更有變化、調低更保守；Anthropic 註明即使設為 0，同樣的輸入也不保證每次結果相同。",
-            "幻覺（hallucination）：模型講出聽起來合理、其實錯誤的內容，而且語氣跟講對時一樣。Google 的名詞表註明 confabulation（虛構）其實是更精確的用詞，只是幻覺先流行起來。",
-            "量化（quantization）：把模型參數從 32 位元浮點數壓成 4、8 或 16 位元來儲存，換到更少的記憶體與更快的推論，代價是準確度可能略降。",
-            "開源／開放權重（open source / open weights）：開放權重是把訓練好的參數檔公開讓人下載執行，例如 OpenAI 的 gpt-oss 與 Google 的 Gemma；OSI 的開源 AI 定義還要求公開訓練程式碼與資料資訊，兩者不能畫等號。",
-            "多模態（multimodal）：輸入或輸出不只一種型態的模型，例如同時讀圖片與文字，或能聽音訊、看影片。",
-            "蒸餾（distillation）：把大模型（老師）的行為壓進一個小模型（學生），讓小模型盡量重現老師的輸出，換取更低的成本與延遲。"
+            "大型語言模型（LLM）：在大量語言資料上訓練、能處理與產生文字的模型。許多生成式 LLM 以預測後續 token 為基礎，但助理的工具、記憶與操作能力還需要周邊系統。",
+            "token：模型處理內容時使用的單位，文字可能切成字、子詞或其他片段；同一段中文在不同分詞器下的數量可能不同，不能把 token 數直接當字數。",
+            "參數（parameter）：訓練時調整、推論時用來計算的數值，例如權重。參數數量可描述模型規模，但不能單獨代表品質、速度或執行所需記憶體。",
+            "預訓練（pretraining）：先用大量資料學習廣泛模式，作為後續任務的底座。訓練目標可包括預測 token 或重建被遮住的內容，並非只有一種做法。",
+            "微調（fine-tuning）：在既有模型上再訓練部分或全部參數，使其適應某種任務或行為；把文件附在提示中供它閱讀則不等於微調。",
+            "RLHF（人類回饋強化學習）：把人類對輸出的偏好等回饋用於強化學習，以調整模型行為。常見流程包含偏好資料與獎勵模型，但人類偏好不等於客觀正確。",
+            "基礎模型（foundation model）：在廣泛資料上訓練、可適應多種下游任務的模型；不只指文字模型，也不以單一參數門檻定義。",
+            "上下文視窗（context window）：一次模型計算可容納的內容範圍，通常以 token 計量。指令、對話、文件與工具結果都可能占用空間；容得下不保證用得好。",
+            "知識截止日（knowledge cutoff）：供應商用來說明模型訓練知識時間範圍的標示。它不保證之前所有事都知道；較新的資訊也可能由使用者或檢索工具提供。",
+            "temperature：控制取樣分布的一項參數，常用來調整輸出的變化程度。它不是正確率旋鈕，設為零也不應視為跨系統、跨版本完全一致的保證。",
+            "幻覺（hallucination）：產生與事實、指定資料或要求不符卻看似可信的內容，可能是錯誤細節或虛構引用。流暢語氣與附上連結都不能替代查證。",
+            "量化（quantization）：用較低精度表示模型中的數值，以減少部分儲存、記憶體或運算需求。速度與品質變化要看硬體、實作和任務，並非一律更快。",
+            "開源／開放權重（open source / open weights）：開放權重通常指可取得訓練後的參數，仍須看授權。OSI 的開源 AI 定義另要求相應自由，以及修改所需的資料資訊、程式碼與參數。",
+            "多模態（multimodal）：涉及文字、圖片、音訊或影片等多種資料型態。能讀圖不表示一定能生圖，應分別查看模型與產品支援的輸入、輸出。",
+            "蒸餾（distillation）：以教師模型提供的輸出或其他訊號教學生模型。學生常較小，但蒸餾的重點是知識轉移，不保證保留教師的全部能力。"
           ],
           "ordered": false
         },
         {
           "type": "link",
-          "text": "大型語言模型是什麼：用白話解釋 token、上下文與幻覺",
+          "text": "大型語言模型（Large Language Model）是什麼",
           "url": "https://mokaair.com/zh-TW/life/what-is-a-large-language-model"
         },
         {
           "type": "link",
-          "text": "上下文視窗是什麼：為什麼聊久了 AI 會忘記前面說的話，六個做法讓它記住",
+          "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
           "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
         },
         {
@@ -97,21 +102,21 @@
         },
         {
           "type": "paragraph",
-          "text": "三家聊天工具的功能大同小異，名字卻各叫各的。這一組用功能本身當詞條，句尾註明各家的叫法。"
+          "text": "不同聊天工具會用不同名稱呈現相近能力。這一組介紹功能的共同用途，實際資料共享、權限、保存期限與可用方案仍以該產品說明為準。"
         },
         {
           "type": "list",
           "items": [
-            "提示詞（prompt）：你輸入給模型的任何文字，從一個問句到整本小說都算；描述越具體、給的資料越多，它猜得越準。",
-            "系統提示（system prompt）：由開發者或應用程式在對話開始前設定的指令，用來指定角色、語氣與規則；OpenAI 的文件叫它 developer message，優先權高於使用者訊息。",
-            "記憶（memory）：工具把你在不同對話裡說過的偏好與背景存起來，之後自動帶進新對話；ChatGPT、Claude、Gemini 都有，也都能在設定裡檢視或清除。",
-            "專案（project）：把相關對話、上傳的檔案與自訂指令收在同一個工作區，該專案裡的每個對話都看得到這些資料；ChatGPT 與 Claude 都叫 Projects。",
-            "Artifacts／Canvas 類：把程式碼、文件或小程式放在對話旁邊的獨立視窗裡，方便反覆修改、預覽與匯出；Claude 叫 Artifacts，ChatGPT 與 Gemini 都叫 Canvas。",
-            "深入研究（deep research）：模型自動拆解問題、連續讀幾十到幾百個網頁，再整理成附引用的報告，通常要等幾分鐘；ChatGPT 與 Gemini 叫 deep research，Claude 叫 Research。",
-            "網頁搜尋（web search）：讓模型即時查網頁並附上來源，用來補知識截止日之後的資訊；有些工具會自動判斷要不要查，有些要在輸入框旁的選單手動打開。",
-            "語音模式（voice mode）：用說的跟模型對話、聽它用語音回答；Gemini 的版本叫 Gemini Live，還能打開相機或分享螢幕讓它看。",
-            "暫時對話（temporary chat）：不存進對話紀錄、也不寫入記憶的一次性對話，Claude 叫 incognito chat（無痕對話）；廠商仍可能基於安全需求保留一段時間。",
-            "Gem／自訂 GPT（custom GPT）：把一套指令、參考檔案與人設存成可重複開啟的專屬助理，Gemini 叫 Gem，ChatGPT 叫 GPT；本質上是幫你把提示詞固定下來。"
+            "提示詞（prompt）：提供給模型的任務描述、指令或其他輸入內容。清楚的目標與相關資料通常更有幫助；加入無關、矛盾內容反而可能干擾回答。",
+            "系統提示（system prompt）：應用程式設定模型行為的一種指令位置。不同 API 有各自的訊息角色和優先順序，system 與 developer 不宜當作完全相同的名稱。",
+            "記憶（memory）：系統把資訊保存下來，在之後需要時取回供模型使用。保存、檢索、刪除與跨對話範圍由產品決定，不等於模型記住所有聊天內容。",
+            "專案（project）：集中管理相關對話、檔案與指令的工作空間。是否共享所有內容、能否引用其他對話、誰能存取，都要看產品設定與權限。",
+            "Artifacts／Canvas 類：讓使用者在對話旁編輯或預覽文件、程式等成果的工作介面。名稱與功能因產品而異，也不代表每種格式都能原樣匯出。",
+            "深入研究（deep research）：針對問題進行多步搜尋、閱讀與整理，通常輸出附來源的報告。頁數和耗時不是定義，引用是否真正支持結論仍要核對。",
+            "網頁搜尋（web search）：從網路取得資料供回答參考，可補充較新的資訊。搜尋結果也可能過期、錯誤或包含誤導內容，不能自動當成事實。",
+            "語音模式（voice mode）：以語音輸入與語音輸出互動的介面；底層可串接辨識、語言模型與合成，也可使用更直接的音訊模型。",
+            "暫時對話（temporary chat）：產品提供的特殊對話模式，通常限制對歷史紀錄或記憶的使用。是否保留安全紀錄、保留多久，須分別看該服務政策。",
+            "Gem／自訂 GPT（custom GPT）：將指令、參考資料與可用工具組合成可重複使用的助理設定。它不必然重新訓練模型，也不只是固定一句提示詞。"
           ],
           "ordered": false
         },
@@ -132,30 +137,30 @@
         },
         {
           "type": "paragraph",
-          "text": "最近最常出現的新詞幾乎都在這組：模型不再只是回答，而是先想、再呼叫工具、再自己操作電腦。風險也集中在這組，最後兩條請一定看。"
+          "text": "這組介紹推理、代理與工具執行，並說明權限及外部內容風險。模型提出工具操作之後，仍需要外部程式執行與驗證；授權範圍和人工確認方式也應事先定義。"
         },
         {
           "type": "list",
           "items": [
-            "推理模型（reasoning model）：回答前先產生一段內部的「推理 token」，用來規劃、檢查不同做法與處理多步驟問題。OpenAI 說明這些 token 你看不到，但佔上下文視窗、也照輸出 token 計費。",
-            "思考（thinking）：Anthropic 對同一件事的叫法：模型先用自己的話把問題想過一遍再作答。Claude Opus 5 與 Sonnet 5 用的是自適應思考（adaptive thinking），由模型自己決定要不要想、想多久。",
-            "代理（agent）：拿到目標後能自己規劃步驟、呼叫工具、看結果再決定下一步的系統；Google 的名詞表定義是「能推理使用者輸入、代替使用者規劃並執行動作的軟體」。",
-            "工具呼叫（tool use / function calling）：模型判斷需要時，回傳一個結構化的「請執行這個功能」要求，由應用程式或供應商執行後把結果送回給它；搜尋、查天氣、跑程式都是這樣接上的。",
-            "MCP（Model Context Protocol）：讓 AI 應用程式接上外部資料與工具的開放標準，官方比喻是「AI 應用程式的 USB-C 接口」；Claude、ChatGPT、VS Code 等都支援。",
-            "電腦操作（computer use）：讓模型看螢幕截圖、移動滑鼠、打字，自己操作桌面或瀏覽器完成任務；Anthropic 的文件要求在專用的虛擬機或容器裡跑。",
-            "沙盒（sandbox）：與你的電腦和網路隔離的執行環境，模型在裡面跑程式或操作電腦，出錯也影響不到外面；Anthropic 的程式執行工具就在沒有網路連線的容器裡執行。",
-            "提示詞注入（prompt injection）：把指令藏在網頁、文件或圖片裡，讓讀到它的模型改變行為、甚至蓋過你的指令；這是代理與電腦操作最主要的風險。"
+            "推理模型（reasoning model）：設計成在複雜任務中投入額外推論計算的模型。推理內容是否顯示、如何計價與占用上下文，依模型與服務規格而定。",
+            "思考（thinking）：產品用來描述推論時額外處理的一類名稱。介面展示的思考摘要不應直接視為模型完整內部過程，也不能作為答案正確的證明。",
+            "代理（agent）：為了目標選擇動作、使用工具並根據結果調整後續步驟的系統。自主程度可以不同，重要動作仍可設人工核准與停止條件。",
+            "工具呼叫（tool use / function calling）：模型提出結構化的工具名稱與參數，由系統驗證和執行，再把結果送回。產生呼叫要求與成功完成外部操作是不同狀態。",
+            "MCP（Model Context Protocol）：讓 AI 應用程式以共同協定連接工具、資源與提示等能力。協定統一溝通方式，但授權、資料品質與安全仍需另外處理。",
+            "電腦操作（computer use）：透過畫面、滑鼠、鍵盤等介面操作應用程式或瀏覽器。應限制操作環境與權限，並對重要動作保留確認和結果驗證。",
+            "沙盒（sandbox）：以權限、檔案系統或網路規則等方式限制執行範圍的環境。限制強度取決於設定與隔離方式，不能保證任何錯誤都不影響外部。",
+            "提示詞注入（prompt injection）：不可信輸入中的指令誘導系統偏離原本任務。它可能出現在使用者輸入、網頁、文件或工具結果中，應區分資料與指令的信任來源。"
           ],
           "ordered": false
         },
         {
           "type": "link",
-          "text": "推理模型是什麼：o 系列、延伸思考、Deep Think 的差別",
+          "text": "推理模型（Reasoning Model）：多想幾步能解決什麼",
           "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
         },
         {
           "type": "link",
-          "text": "AI 代理（Agent）是什麼：從回答問題到替你完成任務",
+          "text": "AI 代理（AI Agent）是什麼：從回答問題到完成任務",
           "url": "https://mokaair.com/zh-TW/life/ai-agents-explained"
         },
         {
@@ -165,17 +170,17 @@
         },
         {
           "type": "paragraph",
-          "text": "文字以外的生成用的是另一套技術，也帶來另一套問題：怎麼證明一張圖是 AI 做的、怎麼防止聲音被冒用。前三條講怎麼做出來，後三條講怎麼標記。"
+          "text": "文字以外的生成涉及不同資料型態，也帶來聲音授權與內容來源的問題。生成方法、生成任務，以及事後的標記與查驗應分開理解。"
         },
         {
           "type": "list",
           "items": [
-            "擴散模型（diffusion model）：先把圖片一步步加雜訊到面目全非，再學會反過來一步步去噪；生成時就從一團雜訊「還原」出一張新圖。",
-            "文生圖（text-to-image）：用文字描述生成圖片，或用文字指示修改現有圖片；Google 的 Gemini API 說明所有生成的圖片都帶 SynthID 浮水印。",
-            "文生影（text-to-video）：用文字或參考圖片生成短片，例如 Google 的 Veo 3.1 一次生成 8 秒、720p 到 4K 並附帶聲音的影片，OpenAI 的 Sora 2 也是同類。",
-            "語音克隆（voice cloning）：從幾段錄音擷取一個人的音色、語速與口音，再合成他沒說過的話；正規服務會要求你確認有權使用那個聲音。",
-            "浮水印（watermark）：在 AI 生成的圖片、影片、音訊或文字裡嵌入人看不出來、機器能偵測的記號；Google 的 SynthID 是一例，Gemini 生成的圖片與 Veo 影片都帶。",
-            "C2PA：內容來源與真實性聯盟訂的開放標準，用「內容憑證（Content Credentials）」把檔案的來源與修改紀錄簽進中繼資料；Anthropic 說明 Claude API 產出的圖片與影音檔會帶這種憑證。"
+            "擴散模型（diffusion model）：常見做法是學習反轉逐步加雜訊的過程，再從雜訊生成新資料；也可在壓縮表示中運作，不一定直接處理圖片像素。",
+            "文生圖（text-to-image）：以文字條件生成圖片。用既有圖片配合指令修改則是相關的圖片編輯任務；生成品質、可控制性與標記方式依系統而異。",
+            "文生影（text-to-video）：以文字條件生成影片；若主要輸入是參考圖片，則常稱圖生影。畫面連貫、物理合理與聲音生成是不同能力，不能一併假設。",
+            "語音克隆（voice cloning）：以目標聲音資料調整或引導合成，使輸出具有近似聲音特徵。應取得適當授權，並避免把合成聲音冒充本人發言。",
+            "浮水印（watermark）：加入媒體的辨識標記，可以可見，也可以需要偵測工具讀取。不同方法對壓縮、裁切等修改的耐受性不同；未驗出也不等於不是 AI 生成。",
+            "C2PA：一套記錄及驗證數位內容來源資訊的技術標準，內容憑證可帶有簽署的製作與修改聲明。有效簽章不等於畫面敘述是真實事件，沒有憑證也不等於造假。"
           ],
           "ordered": false
         },
@@ -196,17 +201,17 @@
         {
           "type": "list",
           "items": [
-            "API（application programming interface）：讓程式直接呼叫模型的介面，你用的聊天網頁背後也是靠它；開發者要把模型接進自己的產品，走的就是 API。",
-            "金鑰（API key）：呼叫 API 時證明「是你在用、記在你帳上」的一串密碼；官方文件都提醒不要寫進程式碼、不要放到網頁或 App 裡。",
-            "每百萬 token 計價（per million tokens，MTok）：API 的收費單位，輸入與輸出分開算。2026 年 9 月的官方價目，Claude Sonnet 5 每百萬輸入 token 2 美元、輸出 10 美元，OpenAI 的 GPT-6 Astra 是 10 美元與 50 美元。",
-            "速率限制（rate limit）：每分鐘能送幾次請求、幾個 token 的上限，超過會收到 429 錯誤要你稍後再試；Anthropic 依用量分成幾個層級逐步放寬。",
-            "提示快取（prompt caching）：重複送同一段長內容時讓 API 從快取讀取、不重新處理；Anthropic 的快取讀取價是基本輸入價的一成，部分模型更低。",
-            "延遲（latency）：從送出提示詞到收到回覆的等待時間，第一個 token 出現的時間另有專名 TTFT；模型越大、輸出越長，通常越慢。",
-            "GPU／NPU：GPU 原本為繪圖設計，因為擅長平行運算而成為訓練與推論的主力晶片；NPU 是專為 AI 運算設計的省電晶片，微軟的 Copilot+ PC 要求 NPU 達到每秒 40 兆次運算（40 TOPS）以上。",
-            "本機推論（local inference）：把開放權重模型下載到自己的電腦或手機上跑，資料不出門也不用付 API 費用；Google 說 Gemma 能在筆電甚至手機上執行。",
-            "RAG（檢索增強生成）：先從你的文件或資料庫撈出相關段落，塞進上下文視窗再讓模型作答，用來補模型沒學過或已過期的知識。",
-            "向量資料庫（vector database）：專門儲存 embedding、能依「語意相近」快速找出鄰居的資料庫，是 RAG 系統負責檢索的那一層。",
-            "embedding（嵌入向量）：把一段文字、圖片或音訊轉成一串數字，意思相近的內容數字也相近；語意搜尋、RAG 與分類都靠它。"
+            "API（application programming interface）：讓程式透過約定格式使用另一個系統功能的介面。AI API 可提供模型推論或工具等能力，並非只指聊天介面。",
+            "金鑰（API key）：用於識別或授權 API 存取的憑證。應保護其權限和使用範圍，不把私密金鑰放在公開原始碼、瀏覽器程式或可下載的前端中。",
+            "每百萬 token 計價（per million tokens，MTok）：部分 AI API 的用量計價單位，輸入、輸出與快取可能分別計價。實際帳單也可能含工具、儲存等費用，須查看當期價目。",
+            "速率限制（rate limit）：對一定時間內的請求數或處理量設上限，與付費額度不完全相同。遇到限制應依服務回應重試，避免無止境密集送出。",
+            "提示快取（prompt caching）：重用符合條件的輸入計算結果，減少重複處理。通常不是把最終答案存起來重播；命中條件、期限和費率各有規格。",
+            "延遲（latency）：從請求到某個回應里程碑的等待時間。首個 token 的等待與完整回答時間不同，還受網路、排隊、工具呼叫與輸出長度影響。",
+            "GPU／NPU：GPU 擅長平行運算；NPU 通常指針對神經網路運算設計的處理器。硬體宣稱的峰值算力不能直接換成某個模型的實際回應速度。",
+            "本機推論（local inference）：在自己的裝置上執行模型計算。仍要確認應用程式是否傳送遙測、呼叫雲端工具或同步資料，且需負擔本機硬體與電力成本。",
+            "RAG（檢索增強生成）：先檢索外部資訊，再讓模型利用取得的內容生成答案。可降低部分知識缺口，但檢索漏找、資料過期或誤用來源仍會造成錯誤。",
+            "向量資料庫（vector database）：儲存向量並支援相似度檢索等功能的資料系統，可用於 RAG，也有其他用途；RAG 並不一定需要獨立的向量資料庫。",
+            "embedding（嵌入向量）：以數值向量表示文字或其他資料，使模型學到的某些關係可由距離或相似度比較。相似不等於同一意思，更不等於事實正確。"
           ],
           "ordered": false
         },
@@ -233,154 +238,134 @@
           "rows": [
             [
               "token vs 字",
-              "token 是模型切出來的單位，一個中文字可能是一個或好幾個 token；計價與上下文視窗算的是 token，不是字數。"
+              "token 的切分方式由模型的分詞器決定，可能跨字或小於一個字。計價與上下文限制要用該系統的計數方式核對。"
             ],
             [
               "記憶 vs 上下文視窗",
-              "上下文視窗是這一個對話裡看得到的內容，對話結束就沒了；記憶是工具另外存起來、跨對話帶進去的摘要。"
+              "記憶負責保存和取回資訊；上下文視窗限制一次模型計算能用多少內容。對話紀錄可以仍在，但本次計算未必包含全部歷史。"
             ],
             [
               "開源 vs 免費",
-              "開放權重是可以下載模型檔自己跑，硬體與電費自己出；免費方案是廠商代管但限制用量，兩者沒有關係。"
+              "開源談使用、研究、修改與分享等自由和所需材料；免費談收費方式。下載模型或使用免費方案都不能直接證明符合開源定義。"
             ],
             [
               "代理 vs 聊天機器人",
-              "聊天機器人一問一答；代理拿到目標後自己規劃步驟、呼叫工具、看結果再決定下一步，可以跑很久。"
+              "聊天介面也能連接代理。判斷重點是系統能否為目標選擇並執行動作、根據結果調整，而不是視窗看起來是否在聊天。"
             ],
             [
               "推理模型 vs 一般模型",
-              "推理模型回答前先產生看不見的推理 token，較慢也較貴，適合多步驟問題；日常問答與改寫用一般模型就夠。"
+              "推理模型著重投入額外推論計算處理複雜任務。是否比較慢、比較貴或比較準，都要連同模型、設定與具體任務一起比較。"
             ],
             [
               "微調 vs 提示詞",
-              "微調是拿資料重新訓練、改變模型參數；提示詞只是在對話裡下指令，模型本身沒變，多數人需要的是後者。"
+              "微調會訓練模型參數；提示詞在推論時提供任務與資料。兩者可以搭配，應先找出真正需要改善的行為。"
             ],
             [
               "幻覺 vs 過期",
-              "幻覺是編出從沒存在的東西；過期是曾經對、但截止日之後變了，接搜尋工具能解決後者，解決不了前者。"
+              "過期資訊可能曾經正確；幻覺可包含虛構或不受來源支持的說法。搜尋可提供新資料，但仍須檢查日期、來源及答案是否誤讀。"
             ],
             [
               "網頁搜尋 vs 深入研究",
-              "搜尋是查幾個網頁馬上回答；深入研究是自動連查幾十到幾百頁，幾分鐘後給一份附引用的報告。"
+              "搜尋取得網頁資料；深入研究通常將多步搜尋、比較與統整組成流程。兩者都要驗證引用，不能用頁數或耗時判斷可信度。"
             ],
             [
               "浮水印 vs C2PA",
-              "浮水印藏在像素或聲音裡，只有機器讀得出；C2PA 憑證放在檔案的中繼資料裡，記錄來源與修改史，兩者常一起用。"
+              "浮水印是加入媒體的標記；C2PA 著重可驗證的來源聲明與紀錄。兩者可搭配使用，都不直接證明媒體描述的事件真實。"
             ],
             [
               "暫時對話 vs 關閉記憶",
-              "暫時對話不留紀錄也不寫記憶，關掉就找不回來；關閉記憶只是不再寫入新記憶，對話紀錄照樣保存。"
+              "暫時對話改變某次對話的使用方式；關閉記憶改變記憶功能。刪除聊天、刪除既有記憶、停止訓練利用與保存期限是另外的控制。"
             ]
           ],
-          "caption": "十組常混淆的詞對（2026 年 9 月依 Anthropic、OpenAI、Google 官方文件整理）。"
+          "caption": "十組常混淆的概念，查核日期：2026 年 9 月 14 日。"
         },
         {
           "type": "callout",
           "tone": "tip",
-          "title": "看到不認識的功能名，先查該工具的官方說明中心，名稱每季都在改",
-          "text": "本文的功能名稱是 2026 年 9 月各家說明中心的用語，但名稱每季都在改：同一個「先想再答」在 OpenAI 叫 reasoning、在 Anthropic 叫 thinking；同一個「旁邊開視窗」在 Claude 叫 Artifacts、在 ChatGPT 與 Gemini 叫 Canvas。遇到沒看過的名字，先開該工具的官方說明中心（OpenAI Help Center、Claude Help Center、Gemini Apps Help）搜尋那個詞，比查第三方文章準；設定路徑與方案限制也以說明中心為準。"
+          "title": "先分清楚概念，再查產品設定",
+          "text": "相同名稱在不同工具中可能有不同範圍。需要決定是否上傳資料、開啟記憶或支付費用時，請查看該服務當期的官方說明。本文的速查定義可用來理解問題；若要看原理、情境和限制，請從 AI 名詞總索引進入各詞專文。"
         }
       ],
       "sources": [
         {
-          "title": "Anthropic 官方文件：Glossary（LLM、token 約 3.5 個英文字元、上下文視窗、預訓練、微調、RLHF、RAG、temperature、latency 與 TTFT、MCP）",
+          "title": "Anthropic：Glossary，語言模型、token、訓練與延遲",
           "url": "https://platform.claude.com/docs/en/about-claude/glossary",
-          "checked_on": "2026-09-13"
+          "checked_on": "2026-09-14"
         },
         {
-          "title": "Anthropic 官方文件：Models overview（Claude Opus 5 上下文視窗 1M token、可靠知識截止日與訓練資料截止日 2026 年 5 月、自適應思考）",
-          "url": "https://platform.claude.com/docs/en/models/overview",
-          "checked_on": "2026-09-13"
-        },
-        {
-          "title": "Anthropic 官方文件：Pricing（每百萬 token 計價、Claude Sonnet 5 每百萬 token 輸入 2 美元／輸出 10 美元、快取讀取為基本輸入價 0.1 倍、1 token 約 4 個字元或 0.75 個英文單字）",
-          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
-          "checked_on": "2026-09-13"
-        },
-        {
-          "title": "Anthropic 官方文件：Rate limits（RPM、ITPM、OTPM，超過回傳 429，依用量分層）",
-          "url": "https://platform.claude.com/docs/en/api/rate-limits",
-          "checked_on": "2026-09-13"
-        },
-        {
-          "title": "Anthropic 官方文件：Tool use overview（工具呼叫的定義與流程、client tools 與 server tools）",
-          "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview",
-          "checked_on": "2026-09-13"
-        },
-        {
-          "title": "Anthropic 官方文件：Computer use tool（截圖、滑鼠、鍵盤；提示詞注入警告；要求在專用虛擬機或容器內執行並限制網域）",
-          "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool",
-          "checked_on": "2026-09-13"
-        },
-        {
-          "title": "Anthropic 官方文件：Code execution tool（沙盒容器、無網路連線、產出的圖片與影音檔帶 C2PA Content Credentials）",
-          "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/code-execution-tool",
-          "checked_on": "2026-09-13"
-        },
-        {
-          "title": "OpenAI 官方文件：Models（GPT-6 Astra 上下文視窗 1.05M token、知識截止日 2026 年 4 月 30 日）",
-          "url": "https://developers.openai.com/api/docs/models",
-          "checked_on": "2026-09-13"
-        },
-        {
-          "title": "OpenAI 官方文件：Reasoning models（推理 token 不可見、佔上下文視窗、以輸出 token 計費）",
-          "url": "https://developers.openai.com/api/docs/guides/reasoning",
-          "checked_on": "2026-09-13"
-        },
-        {
-          "title": "OpenAI 官方文件：Pricing（每百萬 token 計價、GPT-6 Astra 輸入 10 美元／輸出 50 美元）",
-          "url": "https://developers.openai.com/api/docs/pricing",
-          "checked_on": "2026-09-13"
-        },
-        {
-          "title": "OpenAI 官方文件：gpt-oss-120b（開放權重、Apache 2.0、117B 參數）",
-          "url": "https://developers.openai.com/api/docs/models/gpt-oss-120b",
-          "checked_on": "2026-09-13"
-        },
-        {
-          "title": "OpenAI Help Center：ChatGPT Capabilities Overview（canvas、deep research、voice mode、projects、custom GPTs 的官方描述）",
-          "url": "https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview",
-          "checked_on": "2026-09-13"
-        },
-        {
-          "title": "OpenAI Help Center：Memory FAQ（saved memories 與 chat history、設定中可關閉、Temporary Chat 不建立記憶也不進紀錄）",
-          "url": "https://help.openai.com/en/articles/8590148-memory-faq",
-          "checked_on": "2026-09-13"
-        },
-        {
-          "title": "Google Machine Learning Glossary（parameter、hallucination 與 confabulation、quantization 32 位元壓至 4／8／16 位元、multimodal model、distillation、foundation model、prompt、agent、accelerator chips 與 GPU）",
+          "title": "Google：Machine Learning Glossary，模型、表示與生成概念",
           "url": "https://developers.google.com/machine-learning/glossary",
-          "checked_on": "2026-09-13"
+          "checked_on": "2026-09-14"
         },
         {
-          "title": "Google Gemini API 官方文件：Image generation（文生圖與圖片編輯、所有生成圖片都帶 SynthID 浮水印）",
-          "url": "https://ai.google.dev/gemini-api/docs/image-generation",
-          "checked_on": "2026-09-13"
+          "title": "OpenAI：Prompt engineering，訊息角色與提示設計",
+          "url": "https://developers.openai.com/api/docs/guides/prompt-engineering",
+          "checked_on": "2026-09-14"
         },
         {
-          "title": "Google Gemini API 官方文件：Generate videos with Veo 3.1（8 秒影片、720p／1080p／4K、原生音訊、文生影與圖生影、SynthID 浮水印）",
-          "url": "https://ai.google.dev/gemini-api/docs/veo",
-          "checked_on": "2026-09-13"
+          "title": "OpenAI：ChatGPT Capabilities Overview，工作介面的功能例子",
+          "url": "https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview",
+          "checked_on": "2026-09-14"
         },
         {
-          "title": "Google DeepMind：Gemma（開放模型、可在雲端、筆電到手機上執行）",
-          "url": "https://deepmind.google/models/gemma",
-          "checked_on": "2026-09-13"
+          "title": "OpenAI：Memory FAQ，記憶與對話控制",
+          "url": "https://help.openai.com/en/articles/8590148-memory-faq",
+          "checked_on": "2026-09-14"
         },
         {
-          "title": "Open Source Initiative：The Open Source AI Definition（開源 AI 須公開資料資訊、程式碼與參數，權重單獨公開不算開源）",
-          "url": "https://opensource.org/ai/open-source-ai-definition",
-          "checked_on": "2026-09-13"
+          "title": "OpenAI：Reasoning models，額外推論計算與摘要",
+          "url": "https://developers.openai.com/api/docs/guides/reasoning",
+          "checked_on": "2026-09-14"
         },
         {
-          "title": "Microsoft Learn：Copilot+ PCs developer guide（NPU 定義、40+ TOPS 要求、比 CPU 與 GPU 省電）",
-          "url": "https://learn.microsoft.com/en-us/windows/ai/npu-devices/",
-          "checked_on": "2026-09-13"
-        },
-        {
-          "title": "Model Context Protocol 官方文件：What is MCP（開放標準、USB-C 比喻、Claude、ChatGPT、VS Code 支援）",
+          "title": "MCP：What is MCP，連接工具與資料的協定",
           "url": "https://modelcontextprotocol.io/docs/getting-started/intro",
-          "checked_on": "2026-09-13"
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic：Computer use tool，操作環境與權限限制",
+          "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic：Claude Code sandboxing，檔案與網路邊界",
+          "url": "https://www.anthropic.com/engineering/claude-code-sandboxing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "C2PA：Explainer，內容來源聲明與信任範圍",
+          "url": "https://spec.c2pa.org/specifications/specifications/2.3/explainer/Explainer.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google DeepMind：SynthID，數位浮水印",
+          "url": "https://deepmind.google/models/synthid/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OSI：Open Source AI Definition，自由及必要材料",
+          "url": "https://opensource.org/ai/open-source-ai-definition",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Lewis 等：Retrieval-Augmented Generation 原始論文",
+          "url": "https://arxiv.org/abs/2005.11401",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic：Rate limits，請求與 token 限制",
+          "url": "https://platform.claude.com/docs/en/api/rate-limits",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic：Pricing，費用類別與快取計價",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft：Copilot+ PCs developer guide，NPU 運算定位",
+          "url": "https://learn.microsoft.com/en-us/windows/ai/npu-devices/",
+          "checked_on": "2026-09-14"
         }
       ]
     }

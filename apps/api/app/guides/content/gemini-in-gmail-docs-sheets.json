@@ -1,0 +1,309 @@
+{
+  "slug": "gemini-in-gmail-docs-sheets",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 117,
+  "locales": {
+    "zh-TW": {
+      "title": "Gmail、Docs 與 Slides：信件、文件與簡報",
+      "description": "同一場活動的信件、企劃文件與簡報，經常因來回複製而出現不同版本。本篇用虛構的社區講座練習：先從 Gmail 找出確定事項，在 Docs 整理工作稿，再把核對後的內容放進 Slides。學完可完成一份有來源、能交接的活動提案，而不是只有三份看起來相似的摘要。",
+      "hero": {
+        "src": "/guides/gemini-in-gmail-docs-sheets/hero.jpg",
+        "alt": "從信件到簡報的交接的原創插畫，以文件、裝置與流程等物件呼應信件、文件與簡報；非產品介面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "同一場活動的信件、企劃文件與簡報，經常因來回複製而出現不同版本。本篇用虛構的社區講座練習：先從 Gmail 找出確定事項，在 Docs 整理工作稿，再把核對後的內容放進 Slides。學完可完成一份有來源、能交接的活動提案，而不是只有三份看起來相似的摘要。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-in-gmail-docs-sheets/diagram-1.svg",
+          "alt": "Gmail：核對已知與待確認；Docs：整理可交接工作稿；Slides：逐張檢查事實與狀態",
+          "width": 1600,
+          "height": 900,
+          "caption": "從信件到簡報的交接。此為原創教學圖解，並非產品畫面或實測輸出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "開始前：帳號、語言與原始資料",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "準備可使用 Gemini 功能的 Google AI 或 Workspace 帳號，以及電腦瀏覽器。公司帳號要先確認管理員設定，個人訂閱可看"
+            },
+            {
+              "type": "link",
+              "text": "方案教學",
+              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+            },
+            {
+              "type": "text",
+              "text": "。本篇依 2026 年 9 月 14 日官方文件整理，未登入讀者的 Workspace 環境操作；功能按鈕可能依帳號逐步開放。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "介面支援中文，不代表每個寫作功能都支援中文。查證時 Gmail 的 Gemini 側邊面板列有中文，但 Help me write「幫我寫」和部分原生 AI 摘要另有語言與地區限制。本文以可用的提問面板和手動插入為主，沒有該入口時先確認資格，不必把整個帳號改成其他地區。"
+        },
+        {
+          "type": "paragraph",
+          "text": "練習前建立一份自己的測試資料：講座暫定十月十日十四時，地點為社區教室，預估二十人；後續補充信表示時間仍待講師確認、預算尚未核定。這些都是虛構情境。正式工作時應換成有權使用的信件，不把示範日期當成真實活動公告。"
+        },
+        {
+          "type": "heading",
+          "text": "第一步：在 Gmail 整理已知與待確認",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "開啟與講座有關的郵件串，先自行看最新一封信的日期及寄件人。",
+            "在可用的 Ask Gemini「詢問 Gemini」入口開啟面板，要求只整理這個郵件串，並把確定、暫定和缺漏分開。",
+            "檢視回覆中提到的信件，點回原文核對日期、時間及更正內容。",
+            "要寫回信時，請它先產生草稿，確認收件人、語氣與承諾事項後，再手動放入回覆。",
+            "把確認過的事實另存到工作文件，避免只留在可能隨面板關閉或重新整理而消失的對話中。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "郵件整理提示詞",
+          "code": "請整理目前這個講座郵件串，使用繁體中文。\n分成「已確認」「尚未確認」「需要我回覆」三段。\n每個日期、地點、金額旁註明出自哪封信。\n較晚的信若推翻先前內容，請並列原因，不要自行選一個版本。\n最後擬一封詢問講師可用時間的短回信，只產生草稿。\n不要把暫定日期寫成已確定，也不要替我寄出。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期結果應將十月十日列為暫定，而不是寫成「活動確定於十月十日舉行」。如果回覆漏掉最後一封信，補上信件主旨或日期，再請它重整。讀到關鍵訊息纔算完成這一步，文字流暢並不能證明已涵蓋完整往返。"
+        },
+        {
+          "type": "heading",
+          "text": "第二步：在 Docs 建立可交接的企劃稿",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "建立一份新的 Google 文件，命名為「社區講座工作稿」。目前 Docs 的 Gemini 可由文件底部輸入列協助寫作與編輯，部分入口也可移到側邊面板。先貼入核對後的事實，再要求整理段落；不要讓它從空白狀態自行補出活動細節。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "文件編排提示詞",
+          "code": "請把下方已核對資料整理成一頁企劃稿。\n段落依序為目的、參加對象、流程草案、分工、待確認事項。\n保留「暫定」「尚未核定」等狀態，不替我增加預算或講師姓名。\n流程只能使用已提供的時段；空白欄位填「待確認」。\n每段不超過五行，讓同事能快速檢查。\n[貼上已核對資料與來源說明]\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如需模仿既有文件樣式，可在支援的來源選取中使用 @ 指定那份文件，先看清檔名與內容。參考版型只代表沿用結構，不能將去年活動的日期、合作單位或金額一起帶入。這類資料引用與"
+            },
+            {
+              "type": "link",
+              "text": "Connected Apps",
+              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+            },
+            {
+              "type": "text",
+              "text": "有關，是否可讀仍取決於實際帳號權限。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "將回覆套用前，逐段檢查它會新增還是改寫現有內容。若原稿已有同事的正式用語，先複製測試文件再操作。套用後比對前後版本，特別留意「規劃邀請」是否被改成「已邀請」、「預估」是否變成肯定承諾。最後把需要人決定的事項保留成清楚清單。"
+        },
+        {
+          "type": "heading",
+          "text": "第三步：把企劃稿改成 Slides",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Google 簡報建立空白簡報並選好主題，開啟 Gemini 面板，指定剛才的企劃稿作為來源。初次練習先產生一張「活動目的與待確認事項」投影片，檢查內容和版面後再插入，較容易找出資料遺漏發生在哪一步。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著要求三張投影片：活動概覽、流程與分工、待確認事項。若帳號有整份簡報產生功能，可先檢視大綱再繼續；不同實驗功能不一定全部開放。沒有整份產生入口，也能逐張建立。圖片只是輔助說明，不應遮住時間、地點與決策狀態。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "完成後以簡報模式檢查每張的字級和截行，在最後一張列出內部工作稿連結。匯出的檔案不一定保留原本分享限制；寄送之前應開啟實際匯出檔確認內容，並讓資料負責人檢閱。需要公式、名單分類或預算核對時，接著看"
+            },
+            {
+              "type": "link",
+              "text": "Sheets 教學",
+              "url": "https://mokaair.com/zh-TW/life/gemini-for-google-sheets-formulas"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "預期成果與核對方法",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這次應得到郵件確認清單、一頁工作稿和三張簡報，三者的日期與狀態一致。自行抽查三個欄位：活動日期是否仍標示暫定，講師姓名是否沒有被編造，未核定預算是否沒有變成確定金額。另請同事只看簡報回答「還要決定什麼」，若答不出來，就要調整資訊順序。"
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「訂閱後仍看不到 Gemini？」確認目前登入的帳號、產品入口、管理員設定及該功能的語言條件。Gmail、Docs、Slides 的開放範圍不完全相同，看到其中一個按鈕不能推定另外兩個一定存在。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「AI 找到別份同名文件？」重新指定來源並開啟核對，不只看搜尋結果的檔名。可以將工作稿加上日期或活動代號，讓後續引用較容易辨認；不要靠更多形容詞去修補錯誤來源。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「回覆看似正確，可以直接寄出嗎？」先確認收件人、附件和承諾事項。這份練習的最後一步是人工確認後寄送，面板中的草稿、插入文件和真正發送是三個不同狀態。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「想每次沿用相同格式？」把欄位與核對規則整理成"
+            },
+            {
+              "type": "link",
+              "text": "Gems 自訂助手",
+              "url": "https://mokaair.com/zh-TW/life/gemini-gems-custom-assistants"
+            },
+            {
+              "type": "text",
+              "text": "，或保留團隊工作稿範本。先測試不同資料是否仍保留缺漏標記，再交給其他人重複使用。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查證與範例",
+          "text": "本文於 2026-09-14 對照官方文件整理。畫面操作依官方說明，非所有裝置均經實機測試；範例輸出是驗收目標，實際內容依資料而異。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後的檢核",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "通過條件"
+          ],
+          "rows": [
+            [
+              "操作",
+              "能依正文重做一次，說明每一步使用的輸入。"
+            ],
+            [
+              "結果",
+              "能用原始資料或可重現測試核對輸出，而非只看語氣。"
+            ],
+            [
+              "延伸",
+              "知道下一篇教學解決的問題，以及什麼時候需要它。"
+            ]
+          ],
+          "caption": "完成實作後逐項確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著可以閱讀 "
+            },
+            {
+              "type": "link",
+              "text": "Google Sheets",
+              "url": "https://mokaair.com/zh-TW/life/gemini-for-google-sheets-formulas"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "小團隊使用 Workspace AI",
+              "url": "https://mokaair.com/zh-TW/life/google-workspace-ai-for-small-business"
+            },
+            {
+              "type": "text",
+              "text": "，把本篇的操作接到下一個工作流程。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gmail 的 Gemini 面板",
+          "url": "https://support.google.com/mail/answer/14355636?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Docs 的 Gemini 寫作與編輯",
+          "url": "https://support.google.com/docs/answer/13447609?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Slides 產生投影片",
+          "url": "https://support.google.com/a/users/answer/10665800?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Workspace Gemini 的語言支援",
+          "url": "https://support.google.com/docs/answer/14925782?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Docs Gemini 面板與簡報",
+          "url": "https://support.google.com/docs/answer/14206696?hl=en",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

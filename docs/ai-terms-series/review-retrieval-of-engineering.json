@@ -1,0 +1,620 @@
+{
+  "reviewer": "retrieval_training",
+  "reviewed_on": "2026-09-14",
+  "scope": "engineering_foundations 26 篇，IDs 1–3、5–20、62–68。作者檔唯讀；review artifact 可寫。",
+  "status": "complete",
+  "method": "逐篇完整閱讀正文與 research 主張映射，檢查概念、來源支持、術語共識邊界、產品泛化與偽實測；各篇 source_checks 記錄此次實際另開 web 核對的主要來源，非宣稱所有連結或付費全文均已重新閱讀。",
+  "summary": {
+    "articles": 26,
+    "substantive_blockers": 0,
+    "resolved_minor_findings": 13,
+    "open_minor_findings": 6,
+    "notes": "26 篇概念與來源映射通過。所有已回報的硬錯詞與 Transformer 語意清晰度問題均由 root 修正並已核對；保留 6 項文件／檔案的可選用詞建議，非發布阻擋。",
+    "open_required_fixes": 0
+  },
+  "articles": [
+    {
+      "slug": "ai-term-prompt-engineering",
+      "verdict": "pass",
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "copy",
+          "status": "resolved",
+          "text": "社群交誼廳／社群志工應依住戶情境寫社區。",
+          "resolution_evidence": "作者已改為社區；五份作者檔案皆無社群字樣。"
+        }
+      ],
+      "assessment": "定義、可測試指令、格式與內容驗證的區分正確；案例清楚標為原創預期，無偽實測或通用效果保證。",
+      "source_checks": [
+        {
+          "url": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/prompt-templates-and-variables",
+          "result": "重導向至 Prompting best practices；清楚指令、限制、相關且多樣範例均有直接支持。"
+        }
+      ],
+      "content_verdict": "pass",
+      "reviewed_materials": [
+        "pack.json 全文（含表格、callout、圖片說明與來源列表）",
+        "research.json 來源與主張映射"
+      ]
+    },
+    {
+      "slug": "ai-term-context-engineering",
+      "verdict": "pass_with_optional_localization_suggestions",
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "copy",
+          "status": "resolved",
+          "text": "住戶與交誼廳情境的社群應寫社區。",
+          "resolution_evidence": "作者已改為社區；五份作者檔案皆無社群字樣。"
+        },
+        {
+          "severity": "minor",
+          "kind": "optional_localization",
+          "status": "open",
+          "text": "一般文件內容可將「外部檔案」及舊規章等文字材料改稱「文件」；實際檔案操作語境保留檔案。",
+          "resolution_evidence": "截至本次只讀核對，staging/pack.json 仍可見原用詞；由 root 統一收尾。"
+        }
+      ],
+      "assessment": "準確區分儲存存在與當次模型可見、查詢空檔與真正完成預約，並聲明 Anthropic/LangChain 為實務觀點而非統一標準。",
+      "source_checks": [
+        {
+          "url": "https://docs.langchain.com/oss/python/langchain/context-engineering",
+          "result": "已開啟核對模型、工具及 runtime context 分類；來源主張與文章一致。"
+        }
+      ],
+      "content_verdict": "pass",
+      "reviewed_materials": [
+        "pack.json 全文（含表格、callout、圖片說明與來源列表）",
+        "research.json 來源與主張映射"
+      ]
+    },
+    {
+      "slug": "ai-term-harness-engineering",
+      "verdict": "pass",
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "copy",
+          "status": "resolved",
+          "text": "報名錶→報名表；狀態列位→狀態欄位；住戶網站的社群→社區。",
+          "resolution_evidence": "作者已修；五份作者檔案均不再含上述錯詞。"
+        }
+      ],
+      "assessment": "明確限定新興實務用語與長任務編碼範圍，未冒稱共識；工具請求與執行、跨階段狀態、單元/整合/瀏覽器驗證以及部署狀態邊界均合理。",
+      "source_checks": [
+        {
+          "url": "https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents",
+          "result": "已開啟核對初始化、進度檔案、增量開發與測試；支持文中受限範圍的概述。"
+        }
+      ],
+      "content_verdict": "pass",
+      "reviewed_materials": [
+        "pack.json 全文（含表格、callout、圖片說明與來源列表）",
+        "research.json 來源與主張映射"
+      ]
+    },
+    {
+      "slug": "ai-term-agentic-engineering",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "準確採用 Willison 的編碼代理協作範圍，承认別種用法；借用並行衝突、規格與驗證區分具體正確，不保證工具天然可靠。",
+      "source_checks": [
+        {
+          "url": "https://simonwillison.net/guides/agentic-engineering-patterns/what-is-agentic-engineering/",
+          "result": "已 web open 核對編碼代理能寫、執行程式及人類責任的作者用法。"
+        }
+      ],
+      "content_verdict": "pass",
+      "reviewed_materials": [
+        "pack.json 全文（含表格、callout、圖片說明與來源列表）",
+        "research.json 來源與主張映射"
+      ]
+    },
+    {
+      "slug": "ai-term-vibe-coding",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "狹義用法明確歸於 Willison，未假稱直接讀到 Karpathy 原貼；操作原型、持久儲存與生產服務的驗證邊界清楚。",
+      "source_checks": [
+        {
+          "url": "https://simonwillison.net/2025/Mar/19/vibe-coding/",
+          "result": "已 web open 核對不閱讀生成程式與經審查 AI 輔助開發的作者區分。"
+        }
+      ],
+      "content_verdict": "pass",
+      "reviewed_materials": [
+        "pack.json 全文（含表格、callout、圖片說明與來源列表）",
+        "research.json 來源與主張映射"
+      ]
+    },
+    {
+      "slug": "ai-term-spec-driven-development",
+      "verdict": "pass",
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "copy",
+          "status": "resolved",
+          "text": "callout 再寫程序式→再寫程式；住戶場地情境社群→社區。",
+          "resolution_evidence": "作者已修；五份作者檔案均不再含上述錯詞。"
+        }
+      ],
+      "assessment": "需求、設計、任務、驗收與重試冪等的區分合理；Spec Kit/Kiro 被表述為具体實務而非唯一規格或自動正確保障。",
+      "source_checks": [
+        {
+          "url": "https://kiro.dev/docs/specs/",
+          "result": "已 web open 核對需求、設計、任務三產物，文章採其一般流程而非固定產品版本。"
+        }
+      ],
+      "content_verdict": "pass",
+      "reviewed_materials": [
+        "pack.json 全文（含表格、callout、圖片說明與來源列表）",
+        "research.json 來源與主張映射"
+      ]
+    },
+    {
+      "slug": "ai-term-llmops",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "將維運界定為應用生命週期而非模型部署，版本、資料更新、評測及監測分流合理；未把成功傳輸等同答案品質。",
+      "source_checks": [
+        {
+          "url": "https://learn.microsoft.com/en-us/ai/playbook/technology-guidance/generative-ai/mlops-in-openai/",
+          "result": "已 web open 核對 LLMOps 全生命週期範圍。"
+        }
+      ],
+      "content_verdict": "pass",
+      "reviewed_materials": [
+        "pack.json 全文（含表格、callout、圖片說明與來源列表）",
+        "research.json 來源與主張映射"
+      ]
+    },
+    {
+      "slug": "ai-term-agentops",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "實務範圍與同名商用產品明確分開；逾時後外部寫入不確定及重試查核、權限與trace關聯均正確；未把 SDK 等同自動治理。",
+      "source_checks": [
+        {
+          "url": "https://docs.agentops.ai/v2/concepts/core-concepts",
+          "result": "已 web open 核對產品 span/session/agent/tool 概念，無泛化成唯一標準。"
+        }
+      ],
+      "content_verdict": "pass",
+      "reviewed_materials": [
+        "pack.json 全文（含表格、callout、圖片說明與來源列表）",
+        "research.json 來源與主張映射"
+      ]
+    },
+    {
+      "slug": "ai-term-prompt-chaining",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "固定多階段流程與代理動態控制、多代理分工區分清楚；會議決議例子保留來源與未決狀態，中間檢查可停流程。無多次呼叫自然更準之聲稱。",
+      "source_checks": [
+        {
+          "url": "https://www.anthropic.com/engineering/building-effective-agents",
+          "result": "已 web open 核對 prompt chaining 與 workflows/agents 的來源用法。"
+        }
+      ],
+      "content_verdict": "pass",
+      "reviewed_materials": [
+        "pack.json 全文（含表格、callout、圖片說明與來源列表）",
+        "research.json 來源與主張映射"
+      ]
+    },
+    {
+      "slug": "ai-term-artificial-intelligence",
+      "verdict": "pass_with_optional_localization_suggestions",
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "copy",
+          "status": "resolved",
+          "text": "從輸入推匯出預測→從輸入推導出預測。",
+          "resolution_evidence": "作者已修；五份作者檔案均無推匯出字樣。"
+        },
+        {
+          "severity": "minor",
+          "kind": "optional_localization",
+          "status": "open",
+          "text": "NIST 詞彙頁「列出來自不同檔案的人工智慧定義」宜稱「文件」。",
+          "resolution_evidence": "截至本次只讀核對，staging/pack.json 仍可見原用詞；由 root 統一收尾。"
+        }
+      ],
+      "assessment": "OECD用途、自治與部署後適應程度、AI與自動化/ML/生成能力的不同分類角度正確；未以有意識擬人化來定義系統。",
+      "source_checks": [
+        {
+          "url": "https://www.oecd.org/en/publications/explanatory-memorandum-on-the-updated-oecd-definition-of-an-ai-system_623da898-en.html",
+          "result": "已 web open 核對機器系統依明示或隱含目標從輸入推導輸出及自治/適應差异。"
+        }
+      ],
+      "content_verdict": "pass",
+      "reviewed_materials": [
+        "pack.json 全文（含表格、callout、圖片說明與來源列表）",
+        "research.json 來源與主張映射"
+      ]
+    },
+    {
+      "slug": "ai-term-machine-learning",
+      "verdict": "pass",
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "copy",
+          "status": "resolved",
+          "text": "強化學習關心繫統→強化學習關心系統。",
+          "resolution_evidence": "正文已讀到正確的「強化學習關心系統」；五份作者檔案無原錯詞。"
+        }
+      ],
+      "assessment": "特徵/標籤、銷量被缺貨截尾、事後資訊洩漏、訓練前處理隔離與時間評測說明合理；三種學習方式和生成內容的驗證差別清楚。",
+      "source_checks": [
+        {
+          "url": "https://scikit-learn.org/stable/common_pitfalls.html",
+          "result": "已 web open 核對測試資料不得參與訓練或前處理擬合及 Pipeline 用途。"
+        }
+      ],
+      "content_verdict": "pass",
+      "reviewed_materials": [
+        "pack.json 全文（含表格、callout、圖片說明與來源列表）",
+        "research.json 來源與主張映射"
+      ]
+    },
+    {
+      "slug": "ai-term-deep-learning",
+      "verdict": "pass",
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "copy",
+          "status": "resolved",
+          "text": "區域性邊緣→局部邊緣。",
+          "resolution_evidence": "已修正；五份作者檔案不再含區域性邊緣。"
+        }
+      ],
+      "assessment": "多層表示、非線性、反向傳播與最佳化的角色區分正確；背景捷徑為假設範例，沒有虛構模型成績，也未把注意區域當完整因果解釋。",
+      "source_checks": [
+        {
+          "url": "https://www.nature.com/articles/nature14539",
+          "result": "已 web open 核對多層表示、抽象層次的基本說明。"
+        }
+      ],
+      "content_verdict": "pass",
+      "reviewed_materials": [
+        "pack.json 全文（含表格、callout、圖片說明與來源列表）",
+        "research.json 來源與主張映射"
+      ]
+    },
+    {
+      "slug": "ai-term-generative-ai",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "生成與分類/搜尋不同，LLM/擴散/GAN 機制概述有相應一手研究；可變創意與不可編造的事實分開，無原創性或正確性保證。",
+      "source_checks": [
+        {
+          "url": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf",
+          "result": "沿用本次研究已讀 NIST 原文件作風險範圍核對；來源不被當成架構論文。"
+        }
+      ],
+      "content_verdict": "pass",
+      "reviewed_materials": [
+        "pack.json 全文（含表格、callout、圖片說明與來源列表）",
+        "research.json 來源與主張映射"
+      ]
+    },
+    {
+      "slug": "what-is-a-large-language-model",
+      "verdict": "pass",
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "copy",
+          "status": "resolved",
+          "text": "導言「保留原文章網址並重新整理核心概念」屬編輯歷程，應移出讀者正文。",
+          "resolution_evidence": "導言已改為直接介紹原創失物招領例子；五份作者檔案均無原句。"
+        }
+      ],
+      "assessment": "LLM與產品、參數與上下文、ICL與永久更新、工具請求與執行均準確區分；沒有把next-token訓練化約為不能推理，也不誇大計算可靠性。",
+      "source_checks": [
+        {
+          "url": "https://arxiv.org/abs/2005.14165",
+          "result": "已 web open 核對任務說明與範例的few-shot研究，文章未泛化單一研究成所有模型的保證。"
+        }
+      ],
+      "content_verdict": "pass",
+      "reviewed_materials": [
+        "pack.json 全文（含表格、callout、圖片說明與來源列表）",
+        "research.json 來源與主張映射"
+      ]
+    },
+    {
+      "slug": "ai-term-foundation-model",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "CRFM廣泛資料及下游調適角色準確，不單靠參數量；分類/摘要/搜尋各自驗證、共用失敗模式、權重取得與開放權利分離清楚。",
+      "source_checks": [
+        {
+          "url": "https://crfm.stanford.edu/report",
+          "result": "已 web open 核對 broad data、adaptability、incomplete character 與下游共同繼承缺陷。"
+        }
+      ],
+      "content_verdict": "pass",
+      "reviewed_materials": [
+        "pack.json 全文（含表格、callout、圖片說明與來源列表）",
+        "research.json 來源與主張映射"
+      ]
+    },
+    {
+      "slug": "ai-term-transformer",
+      "verdict": "pass_with_optional_localization_suggestions",
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "clarity",
+          "status": "resolved",
+          "text": "「注意力負責交換位置資訊」宜改「注意力在不同位置之間交換資訊」，避免誤讀成只交換位置編碼。",
+          "resolution_evidence": "root 統一修正後已只讀核對正文：注意力在不同位置之間交換資訊；原錯詞已消失。",
+          "rechecked_on": "2026-09-14"
+        },
+        {
+          "severity": "minor",
+          "kind": "optional_localization",
+          "status": "open",
+          "text": "社區規章語境的「長檔案」可改「長文件」。",
+          "resolution_evidence": "截至本次只讀核對，staging/pack.json 仍可見原用詞；由 root 統一收尾。"
+        }
+      ],
+      "assessment": "原始encoder-decoder與後續變體、QKV、自注意力、因果遮罩及平行訓練/循序生成區分正確；沒有把注意力圖當完整因果解釋或普遍成本公式。",
+      "source_checks": [
+        {
+          "url": "https://www.tensorflow.org/text/tutorials/transformer",
+          "result": "已 web open/find 核對遮罩與原始翻譯架構的教學範圍。"
+        }
+      ],
+      "content_verdict": "pass",
+      "reviewed_materials": [
+        "pack.json 全文（含表格、callout、圖片說明與來源列表）",
+        "research.json 來源與主張映射"
+      ]
+    },
+    {
+      "slug": "ai-term-mixture-of-experts",
+      "verdict": "pass_with_optional_localization_suggestions",
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "optional_localization",
+          "status": "open",
+          "text": "「具體定義要看模型檔案」此處意為模型說明文件；部分段落文字材料可稱文件。真正模型權重檔案語境仍保留檔案。",
+          "resolution_evidence": "截至本次只讀核對，staging/pack.json 仍可見原用詞；由 root 統一收尾。"
+        }
+      ],
+      "assessment": "明確聚焦稀疏MoE、逐token路由與模型子網路；總/啟用參數、儲存與運算、負載及跨裝置通訊取捨正確，未比喻成固定科別代理。",
+      "source_checks": [
+        {
+          "url": "https://huggingface.co/docs/transformers/model_doc/switch_transformers",
+          "result": "已 web open 核對路由器、expert capacity與稀疏層，文章明示該實作不是所有MoE通則。"
+        }
+      ],
+      "content_verdict": "pass",
+      "reviewed_materials": [
+        "pack.json 全文（含表格、callout、圖片說明與來源列表）",
+        "research.json 來源與主張映射"
+      ]
+    },
+    {
+      "slug": "ai-term-small-language-model",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "相對規模、無統一門檻與Phi個別案例範圍清楚；量化不減參數數目，本機模型不等於整個應用離線，記憶體與檔案大小也正確分開。",
+      "source_checks": [
+        {
+          "url": "https://learn.microsoft.com/en-us/windows/ai/apis/phi-silica-transparency-note",
+          "result": "已 web open 核對裝置端任務/限制，未將某硬體或型號說明擴大為所有SLM。"
+        }
+      ],
+      "content_verdict": "pass",
+      "reviewed_materials": [
+        "pack.json 全文（含表格、callout、圖片說明與來源列表）",
+        "research.json 來源與主張映射"
+      ]
+    },
+    {
+      "slug": "ai-term-model-parameters",
+      "verdict": "pass",
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "copy",
+          "status": "resolved",
+          "text": "Google 教材的「線性迴歸」應為「線性回歸」。",
+          "resolution_evidence": "root 統一修正後已只讀核對正文：線性回歸；原錯詞已消失。",
+          "rechecked_on": "2026-09-14"
+        }
+      ],
+      "assessment": "原創算式2×3+1=7正確且清楚標示教學；模型參數、超參數、提示與生成設定、精度及總/啟用參數區分適當，無參數即知識條目或智力的誤導。",
+      "source_checks": [
+        {
+          "url": "https://docs.pytorch.org/tutorials/beginner/nlp/deep_learning_tutorial.html",
+          "result": "已 web open 核對權重、偏差及梯度更新基本角色。"
+        }
+      ],
+      "content_verdict": "pass",
+      "reviewed_materials": [
+        "pack.json 全文（含表格、callout、圖片說明與來源列表）",
+        "research.json 來源與主張映射"
+      ]
+    },
+    {
+      "slug": "ai-term-evals",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "任務/嘗試/評分器/軌跡/外部結果正確區分；硬性排班限制不被語氣分數抵銷、無解可為合格結果、工具環境失敗需分流均合理。",
+      "source_checks": [
+        {
+          "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+          "result": "已 web open 核對task、trial、grader、transcript、outcome來源分類。"
+        }
+      ],
+      "content_verdict": "pass",
+      "reviewed_materials": [
+        "pack.json 全文（含表格、callout、圖片說明與來源列表）",
+        "research.json 來源與主張映射"
+      ]
+    },
+    {
+      "slug": "ai-term-benchmark",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "題集/協定/評分器、模型與整體代理系統、少量差距不確定性、偏好非事實正確及資料汙染均說明清楚；未引用波動排行榜或暗示實測優勝。",
+      "source_checks": [
+        {
+          "url": "https://arxiv.org/abs/2211.09110",
+          "result": "已 web open 核對HELM多場景及準確性以外多指標取捨。"
+        }
+      ],
+      "content_verdict": "pass",
+      "reviewed_materials": [
+        "pack.json 全文（含表格、callout、圖片說明與來源列表）",
+        "research.json 來源與主張映射"
+      ]
+    },
+    {
+      "slug": "ai-term-llm-as-a-judge",
+      "verdict": "pass",
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "copy",
+          "status": "resolved",
+          "text": "末段「可擴充套件的語意訊號」應改「可擴充的語意訊號」或「能擴大處理量的語意評估」，scalable 不指軟體擴充套件。",
+          "resolution_evidence": "root 統一修正後已只讀核對正文：可擴充的語意訊號；原錯詞已消失。",
+          "rechecked_on": "2026-09-14"
+        }
+      ],
+      "assessment": "忠實性/完整性/可讀性與事實/偏好區分正確，順序/冗長偏差、人工校準、版本與評審注入風險完整且未給通用可靠性保證。",
+      "source_checks": [
+        {
+          "url": "https://arxiv.org/abs/2306.05685",
+          "result": "已 web open 核對位置、冗長、自我偏好偏差與開放回答評估研究。"
+        }
+      ],
+      "content_verdict": "pass",
+      "reviewed_materials": [
+        "pack.json 全文（含表格、callout、圖片說明與來源列表）",
+        "research.json 來源與主張映射"
+      ]
+    },
+    {
+      "slug": "ai-hallucination-fact-check",
+      "verdict": "pass_with_optional_localization_suggestions",
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "optional_localization",
+          "status": "open",
+          "text": "來源資料的「指定檔案／參考檔案／原始檔案」可按文意改「文件」；實際檔案讀取失敗語境保留檔案。",
+          "resolution_evidence": "截至本次只讀核對，staging/pack.json 仍可見原用詞；由 root 統一收尾。"
+        }
+      ],
+      "assessment": "世界事實與來源忠實性、原子主張查證、查無不等於不存在、引用存在不等於支持、跨模型一致非獨立證據，全部表述準確。",
+      "source_checks": [
+        {
+          "url": "https://arxiv.org/abs/2305.14251",
+          "result": "已 web open 核對 FActScore 將長文拆原子事實並量化可信來源支持。"
+        }
+      ],
+      "content_verdict": "pass",
+      "reviewed_materials": [
+        "pack.json 全文（含表格、callout、圖片說明與來源列表）",
+        "research.json 來源與主張映射"
+      ]
+    },
+    {
+      "slug": "ai-term-prompt-injection",
+      "verdict": "pass_with_optional_localization_suggestions",
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "optional_localization",
+          "status": "open",
+          "text": "外部文字資料語境的「檔案」可按文意改「文件」；真實檔案讀寫或檔案系統處保留檔案。",
+          "resolution_evidence": "截至本次只讀核對，staging/pack.json 仍可見原用詞；由 root 統一收尾。"
+        }
+      ],
+      "assessment": "直接/間接入口與角色混淆清楚，正常祈使句不一概視為攻擊；摘要污染與外部寫入、欄位格式與內容正確、授權與來源角色正確分離。",
+      "source_checks": [
+        {
+          "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+          "result": "已 web open 核對 direct/indirect、RAG與finetuning未完全解決、最小權限與內容分隔控制。"
+        }
+      ],
+      "content_verdict": "pass",
+      "reviewed_materials": [
+        "pack.json 全文（含表格、callout、圖片說明與來源列表）",
+        "research.json 來源與主張映射"
+      ]
+    },
+    {
+      "slug": "ai-term-jailbreak",
+      "verdict": "pass",
+      "findings": [],
+      "assessment": "將 jailbreak 定位為繞過安全限制，並與一般提示注入的操控目的分開；OWASP 分類明確歸因，未宣稱唯一共識。虛構退款測試明說不代表所有內容安全越獄，區分引述句子、實際聲稱與外部付款狀態。研究結果限於各自模型與設定，沒有萬用攻擊或偽實測聲稱。",
+      "source_checks": [
+        {
+          "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+          "result": "已 web open/find 核對 OWASP 將 jailbreak 視為 prompt injection 一種的分類，以及 RAG/微調不能完全消除注入。文章保留術語使用差異。"
+        },
+        {
+          "url": "https://www.anthropic.com/research/many-shot-jailbreaking",
+          "result": "已 web open 閱讀機制、研究設定與緩解段落；支持長上下文示範可能繞過安全訓練，文章未將報告時結果泛化為所有現行模型。"
+        }
+      ],
+      "content_verdict": "pass",
+      "reviewed_materials": [
+        "pack.json 全文（含表格、callout、圖片說明與來源列表）",
+        "research.json 來源與主張映射"
+      ]
+    },
+    {
+      "slug": "ai-term-guardrails",
+      "verdict": "pass",
+      "findings": [
+        {
+          "severity": "minor",
+          "kind": "copy",
+          "status": "resolved",
+          "text": "導言「單一演演算法」應為「單一演算法」。",
+          "resolution_evidence": "root 統一修正後已只讀核對正文：單一演算法；原錯詞已消失。",
+          "rechecked_on": "2026-09-14"
+        },
+        {
+          "severity": "minor",
+          "kind": "copy",
+          "status": "resolved",
+          "text": "「為瞭解釋攔截原因」應為「為了解釋攔截原因」。",
+          "resolution_evidence": "root 統一修正後已只讀核對正文：為了解釋攔截原因；原錯詞已消失。",
+          "rechecked_on": "2026-09-14"
+        }
+      ],
+      "assessment": "將護欄呈現為跨輸入、檢索、工具執行與輸出的控制方法；NeMo 與 Microsoft 分別作產品實例而非通用定義。二手檯燈情境具體區分確定性驗證、語意檢查與授權，含誤攔、漏放、失效處理及正常完成率；沒有保證安全或虛構實測。",
+      "source_checks": [
+        {
+          "url": "https://docs.nvidia.com/nemo/guardrails/about-nemo-guardrails-library/overview",
+          "result": "已 web open/find 核對 Core Building Blocks 中 input、retrieval、dialog、execution、output rails 與應用層控制位置。"
+        },
+        {
+          "url": "https://learn.microsoft.com/en-us/azure/ai-services/content-safety/concepts/jailbreak-detection",
+          "result": "已 web open/find 核對 user prompts/document attacks、誤判與漏判限制；文章沒有採用來源宣傳段的絕對安全保證。"
+        }
+      ],
+      "content_verdict": "pass",
+      "reviewed_materials": [
+        "pack.json 全文（含表格、callout、圖片說明與來源列表）",
+        "research.json 來源與主張映射"
+      ]
+    }
+  ]
+}

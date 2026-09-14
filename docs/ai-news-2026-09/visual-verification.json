@@ -1,0 +1,38 @@
+{
+  "checked_at": "2026-09-14T06:52:07.533641+00:00",
+  "authenticated": false,
+  "method": "Human visual review of contact sheets assembled from actual signed-out public Chromium screenshots; table crops taken from unmodified full-page captures.",
+  "desktop_articles_reviewed": 50,
+  "mobile_articles_reviewed": 50,
+  "mobile_tables_reviewed": 50,
+  "sheets": [
+    "public-layout-desktop-zh-TW.jpg",
+    "public-layout-desktop-en.jpg",
+    "public-layout-desktop-ja.jpg",
+    "public-layout-desktop-ko.jpg",
+    "public-layout-desktop-zh-CN.jpg",
+    "public-layout-mobile-zh-TW.jpg",
+    "public-layout-mobile-en.jpg",
+    "public-layout-mobile-ja.jpg",
+    "public-layout-mobile-ko.jpg",
+    "public-layout-mobile-zh-CN.jpg",
+    "public-tables-mobile-zh-TW-1.jpg",
+    "public-tables-mobile-zh-TW-2.jpg",
+    "public-tables-mobile-en-1.jpg",
+    "public-tables-mobile-en-2.jpg",
+    "public-tables-mobile-ja-1.jpg",
+    "public-tables-mobile-ja-2.jpg",
+    "public-tables-mobile-ko-1.jpg",
+    "public-tables-mobile-ko-2.jpg",
+    "public-tables-mobile-zh-CN-1.jpg",
+    "public-tables-mobile-zh-CN-2.jpg"
+  ],
+  "findings": {
+    "titles_and_localized_typography": "pass",
+    "hero_illustrations": "pass",
+    "mobile_title_wrapping": "pass",
+    "table_headers_cells_and_captions": "pass",
+    "unintended_page_overflow": "none in 100 DOM checks"
+  },
+  "limits": "Chromium desktop and iPhone 13 emulation; not a physical-device test. Full text and metadata covered by public-verification.json."
+}

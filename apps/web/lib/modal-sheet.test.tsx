@@ -2,6 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { useEffect, useState } from "react";
 import { describe, expect, it, vi } from "vitest";
 import { modalFocusTargets, registerModalLayer, useModalSheet } from "./modal-sheet";
+import { commitBeforePassiveEffects } from "./testing/commit-before-passive-effects";
 
 /**
  * Measured on the live site before this hook existed: the filter panel on /hotspots reported
@@ -61,6 +62,23 @@ function LateSheet({ onClose }: { onClose: () => void }) {
       </button>
     </div>
   );
+}
+
+/** A sheet a request opens: it appears when the request resolves, outside any event. */
+function OpenedByRequest({ request }: { request: Promise<void> }) {
+  const [open, setOpen] = useState(false);
+  useEffect(() => { void request.then(() => setOpen(true)); }, [request]);
+  const ref = useModalSheet<HTMLDivElement>(open, () => setOpen(false));
+  return open ? <div ref={ref} role="dialog" aria-modal="true" aria-label="Choose a trip"><button type="button" aria-label="Close">×</button></div> : null;
+}
+
+/** A sheet that refuses to close while it saves, and saving ends when the request resolves. */
+function SavingSheet({ request }: { request: Promise<void> }) {
+  const [open, setOpen] = useState(true);
+  const [saving, setSaving] = useState(true);
+  useEffect(() => { void request.then(() => setSaving(false)); }, [request]);
+  const ref = useModalSheet<HTMLDivElement>(open, () => { if (!saving) setOpen(false); });
+  return open ? <div ref={ref} role="dialog" aria-modal="true" aria-label="Saving"><button type="button" disabled={saving}>Save</button></div> : null;
 }
 
 describe("useModalSheet", () => {
@@ -175,5 +193,27 @@ describe("useModalSheet", () => {
     expect(document.body.style.overflow).toBe("hidden");
     fireEvent.keyDown(document, { key: "Escape" });
     expect(onClose).toHaveBeenCalledTimes(1);
+  });
+
+  // A request that opens a sheet, or ends the work a sheet was waiting on, commits before its
+  // passive effects run. travel-card-actions went red in a loaded full run on the first case:
+  // the sheet was on screen and its Escape listener was not attached yet.
+  it("answers Escape as soon as a resolved request has drawn it", async () => {
+    let respond!: () => void;
+    const request = new Promise<void>((resolve) => { respond = resolve; });
+    render(<OpenedByRequest request={request} />);
+    await commitBeforePassiveEffects(respond, () => screen.queryByRole("dialog") !== null);
+    fireEvent.keyDown(document, { key: "Escape" });
+    expect(screen.queryByRole("dialog")).toBeNull();
+  });
+
+  it("closes by the guard it shows once a resolved request has lifted it", async () => {
+    let respond!: () => void;
+    const request = new Promise<void>((resolve) => { respond = resolve; });
+    render(<SavingSheet request={request} />);
+    const save = screen.getByRole("button", { name: "Save" }) as HTMLButtonElement;
+    await commitBeforePassiveEffects(respond, () => !save.disabled);
+    fireEvent.keyDown(document, { key: "Escape" });
+    expect(screen.queryByRole("dialog")).toBeNull();
   });
 });
