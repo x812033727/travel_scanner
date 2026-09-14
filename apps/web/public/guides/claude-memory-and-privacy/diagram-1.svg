@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">Claude 的三條資料路徑：記憶、訓練、保留，以及開始用之前的設定清單 / Where a Claude chat goes: memory, training, retention</title>
+  <desc id="desc">資料流圖。左邊是「你的一段對話」（文字、上傳內容、自訂風格），三支箭頭往右分成三條路。第一條記憶：Free、Pro、Max 預設開，Team、Enterprise 預設關，刪對話不會刪記憶條目；邊聊邊存成主題，包含你的角色、專案、人與地點、偏好，健康、宗教、政治等敏感主題預設不存；開關在 Settings → Memory → Generate memory from chats，關掉時選 Pause 保留現有或 Reset 全部刪除且不能復原。第二條訓練：註冊時選一次，官網未寫預設值，Team、Enterprise、API 不在此範圍；開關在 Settings → Privacy → Help improve our AI models，手機 App 路徑相同；允許時去識別化資料最長保留 5 年，只算打開後的新對話，不允許則維持 30 天，關掉後已訓練的模型不倒回。第三條保留：不管前兩條開不開，對話都會先存在 Anthropic 的伺服器直到你刪除；刪掉的對話立即從歷史消失、30 天內從後端刪除，無痕對話不進歷史、不進記憶、不訓練，仍保留 30 天；例外是被安全系統標記的對話 2 年、分類分數 7 年、按讚或倒讚的回饋 5 年，刪帳號後的清除天數官網未寫。底部一排六個框是開始用之前照順序決定的設定：1 訓練開關在 Settings → Privacy，先決定再開始用；2 記憶在 Settings → Memory，留著、Pause 或 Reset；3 敏感主題預設不存，沒必要就維持關閉；4 無痕對話用右上角幽靈圖示，個資、他人資料用它；5 分享，公開連結等於公開發表，改用信箱邀請並定期 Unshare；6 匯出後再刪帳號，Export data 連結 24 小時有效，Pro、Max 先退訂再刪。2026 年 9 月依官網查證。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">Claude 的三條資料路徑：記憶、訓練、保留（2026 年 9 月依官網查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Where a Claude chat goes: memory, training and retention, each with its own switch and time limit</text>
+
+  <!-- source -->
+  <rect x="60" y="290" width="270" height="140" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="195" y="338" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">你的一段對話</text>
+  <text x="195" y="370" font-size="16" fill="#5C6B6B" text-anchor="middle">Your chat</text>
+  <text x="195" y="404" font-size="15" fill="#102A2B" text-anchor="middle">文字、上傳內容、自訂風格</text>
+
+  <!-- arrows to the three lanes -->
+  <path d="M 330 335 L 392 195" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 330 360 L 392 360" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 330 385 L 392 525" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- lane 1: memory -->
+  <rect x="400" y="115" width="1140" height="150" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="430" y="156" font-size="19" font-weight="700" fill="#0B4F4D">1  記憶 Memory</text>
+  <text x="790" y="156" font-size="16" fill="#102A2B">Free、Pro、Max 預設開；Team、Enterprise 預設關；刪對話不會刪記憶條目</text>
+  <text x="430" y="194" font-size="16" fill="#102A2B">邊聊邊存成主題（Topics）：你的角色、專案、人與地點、偏好；健康、宗教、政治等敏感主題預設不存</text>
+  <text x="430" y="230" font-size="16" fill="#102A2B">開關：Settings → Memory → Generate memory from chats，關掉時選 Pause（保留現有）或 Reset（全部刪除，不能復原）</text>
+
+  <!-- lane 2: training -->
+  <rect x="400" y="285" width="1140" height="150" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="430" y="326" font-size="19" font-weight="700" fill="#8A4A15">2  訓練 Model improvement</text>
+  <text x="790" y="326" font-size="16" fill="#102A2B">註冊時選一次（官網未寫預設值）；Team、Enterprise、API 不在此範圍</text>
+  <text x="430" y="364" font-size="16" fill="#102A2B">開關：Settings → Privacy → Help improve our AI models（手機 App 路徑相同）</text>
+  <text x="430" y="400" font-size="16" fill="#102A2B">允許：去識別化資料最長保留 5 年（只算打開後的新對話）　不允許：維持 30 天　關掉後已訓練的模型不倒回</text>
+
+  <!-- lane 3: retention -->
+  <rect x="400" y="455" width="1140" height="150" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="430" y="496" font-size="19" font-weight="700" fill="#1F4E73">3  保留 Retention</text>
+  <text x="790" y="496" font-size="16" fill="#102A2B">不管前兩條開不開，對話都會先存在 Anthropic 的伺服器，直到你刪除</text>
+  <text x="430" y="534" font-size="16" fill="#102A2B">刪掉的對話：立即從歷史消失，30 天內從後端刪除；無痕對話不進歷史、不進記憶、不訓練，仍保留 30 天</text>
+  <text x="430" y="570" font-size="16" fill="#102A2B">例外：被安全系統標記的對話 2 年、分類分數 7 年；按讚或倒讚的回饋 5 年；刪帳號後的清除天數官網未寫</text>
+
+  <!-- checklist -->
+  <text x="60" y="656" font-size="19" font-weight="700" fill="#102A2B">開始用之前，照這個順序決定；之後每季回來看記憶與分享清單</text>
+
+  <rect x="60" y="675" width="225" height="130" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="172" y="711" font-size="17" font-weight="700" fill="#8A4A15" text-anchor="middle">1 訓練開關</text>
+  <text x="172" y="743" font-size="15" fill="#102A2B" text-anchor="middle">Settings → Privacy</text>
+  <text x="172" y="773" font-size="15" fill="#102A2B" text-anchor="middle">先決定，再開始用</text>
+
+  <rect x="311" y="675" width="225" height="130" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="423" y="711" font-size="17" font-weight="700" fill="#0B4F4D" text-anchor="middle">2 記憶</text>
+  <text x="423" y="743" font-size="15" fill="#102A2B" text-anchor="middle">Settings → Memory</text>
+  <text x="423" y="773" font-size="15" fill="#102A2B" text-anchor="middle">留著、Pause 或 Reset</text>
+
+  <rect x="562" y="675" width="225" height="130" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="674" y="711" font-size="17" font-weight="700" fill="#0B4F4D" text-anchor="middle">3 敏感主題</text>
+  <text x="674" y="743" font-size="15" fill="#102A2B" text-anchor="middle">預設不存</text>
+  <text x="674" y="773" font-size="15" fill="#102A2B" text-anchor="middle">沒必要就維持關閉</text>
+
+  <rect x="813" y="675" width="225" height="130" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="925" y="711" font-size="17" font-weight="700" fill="#1F4E73" text-anchor="middle">4 無痕對話</text>
+  <text x="925" y="743" font-size="15" fill="#102A2B" text-anchor="middle">右上角幽靈圖示</text>
+  <text x="925" y="773" font-size="15" fill="#102A2B" text-anchor="middle">個資、他人資料用它</text>
+
+  <rect x="1064" y="675" width="225" height="130" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="1176" y="711" font-size="17" font-weight="700" fill="#B8442D" text-anchor="middle">5 分享</text>
+  <text x="1176" y="743" font-size="15" fill="#102A2B" text-anchor="middle">公開連結＝公開發表</text>
+  <text x="1176" y="773" font-size="15" fill="#102A2B" text-anchor="middle">信箱邀請；定期 Unshare</text>
+
+  <rect x="1315" y="675" width="225" height="130" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1427" y="711" font-size="17" font-weight="700" fill="#245E45" text-anchor="middle">6 匯出後再刪帳號</text>
+  <text x="1427" y="743" font-size="15" fill="#102A2B" text-anchor="middle">Export data 連結 24 小時</text>
+  <text x="1427" y="773" font-size="15" fill="#102A2B" text-anchor="middle">Pro、Max 先退訂再刪</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

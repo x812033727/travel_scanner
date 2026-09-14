@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">Claude 技能的組成與被叫用的時機 / What a Claude Skill contains and when it loads</title>
+  <desc id="desc">左半邊由上往下是一個技能資料夾的四個部分。第一部分名稱 name：最多 64 個字元，只能用小寫英文字母、數字與連字號，不能用 anthropic 或 claude 這兩個保留字。第二部分描述 description：寫這個技能做什麼、什麼時候用它，應用程式上限 200 個字元；名稱與描述開機就載入，每個技能大約 100 個 token。第三部分步驟正文，也就是 SKILL.md 的本體：工作流程與可以勾選的檢查清單，建議 500 行以內，Claude 判斷用得上才整份讀進上下文視窗。第四部分附帶檔案：範本、對照表、參考檔與 scripts 資料夾裡的腳本，用到哪一份才讀哪一份，沒讀到就不佔上下文視窗。左下角註記：會變的東西放附帶檔案，不要寫死在 SKILL.md 裡。右半邊上方是被叫用的四個步驟，用箭頭相連：第一，你提問，例如「整理這個月的月結」；第二，Claude 比對每個技能的描述，判斷這次用不用得上；第三，用得上才讀 SKILL.md，照步驟做，需要時才開附帶檔案；第四，產出，每次都照同一套規則。右半邊下方是三個並排的框，說明誰管哪一件事：技能放怎麼做的步驟說明，由 Claude 判斷後載入；專案放這件事的背景資料，只在專案裡生效；MCP 連接器負責連到外部的工具與資料，你授權後才呼叫。數字依 2026 年 9 月的 Claude 官方文件與說明中心。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">技能的組成與被叫用的時機（2026 年 9 月依官網查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">What a Claude Skill contains, when it gets loaded, and how it divides work with projects and MCP</text>
+
+  <!-- left column: what a skill contains -->
+  <text x="60" y="134" font-size="20" font-weight="700" fill="#102A2B">一個技能裡有什麼　What a Skill contains</text>
+
+  <rect x="60" y="154" width="700" height="120" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="410" y="196" font-size="20" font-weight="700" fill="#0B4F4D" text-anchor="middle">名稱 name　最多 64 個字元</text>
+  <text x="410" y="232" font-size="16" fill="#102A2B" text-anchor="middle">小寫英文字母、數字與連字號，不能用 anthropic 或 claude</text>
+
+  <path d="M 410 274 L 410 306" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="290" width="700" height="150" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="410" y="332" font-size="20" font-weight="700" fill="#0B4F4D" text-anchor="middle">描述 description　什麼時候用它</text>
+  <text x="410" y="368" font-size="16" fill="#102A2B" text-anchor="middle">同時寫做什麼與什麼時候用；應用程式上限 200 個字元</text>
+  <text x="410" y="402" font-size="16" fill="#102A2B" text-anchor="middle">名稱與描述開機就載入，每個技能約 100 個 token</text>
+
+  <path d="M 410 440 L 410 472" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="456" width="700" height="150" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="410" y="498" font-size="20" font-weight="700" fill="#1F4E73" text-anchor="middle">步驟正文　SKILL.md 的本體</text>
+  <text x="410" y="534" font-size="16" fill="#102A2B" text-anchor="middle">工作流程與可以勾選的檢查清單，建議 500 行以內</text>
+  <text x="410" y="568" font-size="16" fill="#102A2B" text-anchor="middle">用得上才整份讀進上下文視窗</text>
+
+  <path d="M 410 606 L 410 638" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="622" width="700" height="150" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="410" y="664" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">附帶檔案　Bundled files</text>
+  <text x="410" y="700" font-size="16" fill="#102A2B" text-anchor="middle">範本、對照表、參考檔、scripts 資料夾裡的腳本</text>
+  <text x="410" y="734" font-size="16" fill="#102A2B" text-anchor="middle">用到哪一份才讀哪一份，沒讀到就不佔上下文視窗</text>
+
+  <text x="60" y="812" font-size="15" fill="#B8442D">會變的東西放附帶檔案，不要寫死在 SKILL.md 裡</text>
+
+  <!-- right column, top: when a skill is loaded -->
+  <text x="820" y="134" font-size="20" font-weight="700" fill="#102A2B">什麼時候被叫用　When a Skill is loaded</text>
+
+  <rect x="820" y="154" width="720" height="72" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="850" y="198" font-size="18" fill="#102A2B">① 你提問：「整理這個月的月結」</text>
+  <path d="M 1180 226 L 1180 256" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="820" y="260" width="720" height="72" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="850" y="304" font-size="18" fill="#102A2B">② Claude 比對每個技能的描述，判斷用不用得上</text>
+  <path d="M 1180 332 L 1180 362" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="820" y="366" width="720" height="72" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="850" y="410" font-size="18" fill="#102A2B">③ 用得上才讀 SKILL.md，照步驟做，需要時才開檔案</text>
+  <path d="M 1180 438 L 1180 468" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="820" y="472" width="720" height="72" rx="14" fill="#E3F0EF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="850" y="516" font-size="18" font-weight="700" fill="#245E45">④ 產出：每次都照同一套規則</text>
+
+  <!-- right column, bottom: who handles what -->
+  <text x="820" y="598" font-size="20" font-weight="700" fill="#102A2B">誰管哪一件事　Skills, projects and MCP</text>
+
+  <rect x="820" y="618" width="230" height="170" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="935" y="662" font-size="20" font-weight="700" fill="#0B4F4D" text-anchor="middle">技能</text>
+  <text x="935" y="700" font-size="16" fill="#102A2B" text-anchor="middle">怎麼做的</text>
+  <text x="935" y="730" font-size="16" fill="#102A2B" text-anchor="middle">步驟說明</text>
+  <text x="935" y="760" font-size="16" fill="#5C6B6B" text-anchor="middle">判斷後載入</text>
+
+  <rect x="1065" y="618" width="230" height="170" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1180" y="662" font-size="20" font-weight="700" fill="#1F4E73" text-anchor="middle">專案</text>
+  <text x="1180" y="700" font-size="16" fill="#102A2B" text-anchor="middle">這件事的</text>
+  <text x="1180" y="730" font-size="16" fill="#102A2B" text-anchor="middle">背景資料</text>
+  <text x="1180" y="760" font-size="16" fill="#5C6B6B" text-anchor="middle">只在專案裡</text>
+
+  <rect x="1310" y="618" width="230" height="170" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1425" y="662" font-size="20" font-weight="700" fill="#A85B18" text-anchor="middle">MCP 連接器</text>
+  <text x="1425" y="700" font-size="16" fill="#102A2B" text-anchor="middle">連到外部的</text>
+  <text x="1425" y="730" font-size="16" fill="#102A2B" text-anchor="middle">工具與資料</text>
+  <text x="1425" y="760" font-size="16" fill="#5C6B6B" text-anchor="middle">授權後才呼叫</text>
+
+  <text x="820" y="830" font-size="15" fill="#5C6B6B">介面名稱與方案依 Claude 官方文件與說明中心，以英文介面為準</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
