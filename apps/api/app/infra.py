@@ -23,7 +23,7 @@ def get_redis() -> Redis:
     return cast(Redis, Redis.from_url(get_settings().redis_url, decode_responses=True))
 
 
-PROXY_TOKEN_HEADER = "X-Travel-Proxy-Token"
+PROXY_TOKEN_HEADER = "X-Travel-Proxy-Token"  # noqa: S105 -- a header name, not its value
 
 
 def _from_our_proxy(headers: Mapping[str, str]) -> bool:

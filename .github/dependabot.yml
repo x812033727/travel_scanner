@@ -1,0 +1,46 @@
+# Automated dependency updates.
+#
+# This file is the other half of pinning every action to a commit SHA. A pin without
+# updates is a dependency frozen at whatever was current the day someone pinned it, which
+# trades a supply-chain risk for a staleness one; the two only work as a pair.
+#
+# `npm audit` and `pip-audit` already run daily and fail on a known advisory, but they only
+# ever say that something is wrong. These pull requests are what makes the fix a review
+# rather than an investigation.
+version: 2
+updates:
+  # The npm workspace root. `apps/web` has no lock file of its own — `package-lock.json`
+  # here covers both, so a second entry pointing at /apps/web would find nothing to update.
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      # One pull request for the safe half, so a week of patch bumps is one CI run and one
+      # review. Majors stay separate: `latest` ranges once let a major land silently here
+      # (WEB-05 in docs/security-audit-2026-09.md), and that is exactly the change that
+      # deserves to arrive on its own.
+      minor-and-patch:
+        update-types: [minor, patch]
+
+  # apps/api is a uv project: pyproject.toml plus uv.lock, installed frozen in CI and in
+  # the image. Dependabot updates both together.
+  - package-ecosystem: uv
+    directory: /apps/api
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      minor-and-patch:
+        update-types: [minor, patch]
+
+  # The pins in .github/workflows/*.yml. Dependabot rewrites the SHA and the trailing
+  # version comment together, so the comment cannot drift away from what actually runs.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns: ["*"]

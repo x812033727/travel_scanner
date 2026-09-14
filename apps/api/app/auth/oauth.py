@@ -31,13 +31,13 @@ from app.problems import AppError
 from app.usage.service import create_usage_account
 
 GOOGLE_AUTHORIZE = "https://accounts.google.com/o/oauth2/v2/auth"
-GOOGLE_TOKEN = "https://oauth2.googleapis.com/token"
+GOOGLE_TOKEN = "https://oauth2.googleapis.com/token"  # noqa: S105 -- endpoint URL, not a secret
 GOOGLE_JWKS = "https://www.googleapis.com/oauth2/v3/certs"
 LINE_AUTHORIZE = "https://access.line.me/oauth2/v2.1/authorize"
-LINE_TOKEN = "https://api.line.me/oauth2/v2.1/token"
+LINE_TOKEN = "https://api.line.me/oauth2/v2.1/token"  # noqa: S105 -- endpoint URL, not a secret
 LINE_VERIFY = "https://api.line.me/oauth2/v2.1/verify"
 APPLE_AUTHORIZE = "https://appleid.apple.com/auth/authorize"
-APPLE_TOKEN = "https://appleid.apple.com/auth/token"
+APPLE_TOKEN = "https://appleid.apple.com/auth/token"  # noqa: S105 -- endpoint URL, not a secret
 APPLE_REVOKE = "https://appleid.apple.com/auth/revoke"
 APPLE_JWKS = "https://appleid.apple.com/auth/keys"
 

@@ -15,6 +15,7 @@ from starlette.routing import Route
 
 import app.auth.router as auth_router
 import app.auth.service as auth_service
+from app.auth.passwords import weak_password_reason
 from app.auth.service import (
     create_access_token,
     current_user,
@@ -24,6 +25,7 @@ from app.auth.service import (
 )
 from app.config import get_settings
 from app.db import escape_like, get_session
+from app.i18n import GENERIC_DETAILS
 from app.main import app
 from app.middleware import RequestBodyLimitMiddleware
 from app.models import ProviderConfig, User
@@ -456,3 +458,98 @@ async def test_request_body_limit_rejects_declared_and_streamed_oversized_bodies
 def test_api_installs_the_request_body_limit() -> None:
     assert any(item.cls is RequestBodyLimitMiddleware for item in app.user_middleware)
     assert get_settings().api_max_request_bytes == 5_242_880
+
+
+def test_weak_password_rules_refuse_what_gets_guessed_and_admit_a_real_passphrase() -> None:
+    # The whole point: every one of these cleared the old `min_length=10` policy.
+    for password in [
+        "1234567890",  # length was the only rule, and ten digits satisfied it
+        "password12",
+        "qwertyuiop",  # one keyboard row, typed straight across
+        "Password123",  # what a composition rule ("add a capital and a digit") produces
+        "password!!!",
+        "aaaaaaaaaa",
+        "abcabcabcabc",  # one unit repeated until long enough
+        "0987654321",  # a run is a run backwards too
+        "１２３４５６７８９０",  # full-width digits are the same password to a person
+    ]:
+        assert weak_password_reason(password) is not None, password
+
+    # A long, ordinary, memorable passphrase has to survive, or people go back to
+    # `Password1!` and the policy has made things worse.
+    for password in [
+        "correct horse battery staple",
+        "tuesday-market-lemon-pier",
+        "私の犬は毎朝六時に吠える",
+        "9f3Kq-tunnel-rain",
+    ]:
+        assert weak_password_reason(password) is None, password
+
+
+def test_weak_password_refuses_a_password_built_from_the_account_email() -> None:
+    assert weak_password_reason("tuesday-market-lemon", email="chihiro@example.com") is None
+    assert weak_password_reason("chihiro-yamada-99", email="chihiro-yamada@example.com") == (
+        "contains_email"
+    )
+    # The local part on its own is enough; it does not have to be the whole password.
+    assert weak_password_reason("chihiro-market-lemon", email="chihiro@example.com") == (
+        "contains_email"
+    )
+    # Short local parts are left alone: refusing every password containing "amy" would be a
+    # rule about the string, not about the account.
+    assert weak_password_reason("amy-tuesday-lemon-pier", email="amy@example.com") is None
+
+
+@pytest.mark.asyncio
+async def test_registration_refuses_a_common_password_without_creating_an_account(
+    guarded_session: GuardedSession,
+    session_override: None,
+    open_registration: None,
+) -> None:
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        response = await client.post(
+            "/api/v1/auth/register",
+            json={"email": "new@example.com", "password": "qwertyuiop"},
+        )
+    assert response.status_code == 422
+    assert response.json()["code"] == "password_too_common"
+    # No session, and nothing written: a refused password must not leave a half-made account.
+    assert "set-cookie" not in response.headers
+    assert not guarded_session.mutated
+
+
+@pytest.mark.asyncio
+async def test_common_password_refusal_is_localized_for_other_locales(
+    session_override: None,
+    open_registration: None,
+) -> None:
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        response = await client.post(
+            "/api/v1/auth/register",
+            json={"email": "new@example.com", "password": "qwertyuiop"},
+            headers={"X-Travel-Locale": "ja"},
+        )
+    assert response.status_code == 422
+    detail = response.json()["detail"]
+    # Not the generic one-sentence fallback: a reader told only "something is wrong" cannot
+    # act on it, and 193 codes already land there.
+    assert detail != GENERIC_DETAILS["ja"]
+    assert "パスワード" in detail
+
+
+def test_every_password_entry_point_goes_through_the_same_gate() -> None:
+    """A policy that holds at registration and not at reset is not a policy.
+
+    Asserted against the source rather than by exercising three endpoints, because what can
+    go wrong is a fourth entry point being added later without the call — which no test of
+    the existing three would notice.
+    """
+    import inspect
+
+    import app.community.accounts as accounts_module
+
+    register = inspect.getsource(auth_router.register)
+    change = inspect.getsource(auth_router.change_password)
+    reset = inspect.getsource(accounts_module.reset_password)
+    for source in (register, change, reset):
+        assert "reject_weak_password(" in source
