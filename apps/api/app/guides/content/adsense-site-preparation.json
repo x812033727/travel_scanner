@@ -1,0 +1,278 @@
+{
+  "slug": "adsense-site-preparation",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "misc"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "網站申請 AdSense 前：內容、政策與版位準備",
+      "description": "AdSense 申請前，先確認網站有自己的內容、清楚導覽與可供審查的公開頁面。本文以原創生活收納網站為例，整理帳戶資格、內容盤點、網站驗證、ads.txt、隱私告知與廣告設定，並區分已連接、審查中、Ready 和實際顯示廣告的不同狀態。附操作步驟、比較表與原創圖解，協助站長準備申請及持續管理，避免誤信篇數保證或點擊換收入的說法。",
+      "hero": {
+        "src": "/guides/adsense-site-preparation/hero.jpg",
+        "alt": "Mokaair 原創內容文件、網站畫面與審查盾牌，呈現 AdSense 網站準備和狀態核對。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "生活收納網站累積了一些衣櫃整理與工具使用文章，想用廣告收入分攤維護成本。站長首先要確認的是網站是否已經能讓讀者完成任務，而不是找到一份號稱寫滿幾篇就能過關的清單。AdSense 審查與後續投放都有各自的條件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文依 2026 年 9 月 14 日查閱的 Google 官方文件整理，收納網站與檢查情境為原創示例。沒有送出申請、測試真實廣告或取得核准，也不提供保證通過、固定收入或指定審查天數。網站變現應建立在可持續的內容與閱讀體驗上。"
+        },
+        {
+          "type": "heading",
+          "text": "先確認申請人、網站與產品是否對得上",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 的資格頁要求申請人年滿 18 歲，並擁有符合政策的原創內容。未滿 18 歲者可由家長或監護人用其自己的帳號申請，核准後款項支付給負責的成人。不能為了跨過年齡條件填寫不實生日或借用陌生人的帳戶。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一般網站還要能控制提交網站的程式碼或相關驗證設定。只有在別人的平台發表文章，卻無權加入必要驗證內容，未必適用同一條申請路徑。Blogger、YouTube 等合作產品有自己的流程，尤其 YouTube 創作者應經 YouTube Studio 處理相應帳戶。"
+        },
+        {
+          "type": "paragraph",
+          "text": "申請前整理實際負責人、網站網址與可登入的管理帳號，檢查 AdSense 首頁要求完成的設定。這份官方資格文件沒有提供所有網站通用的固定文章篇數或流量保證門檻；不應把坊間某次成功經驗改寫成 Google 對所有站長的承諾。"
+        },
+        {
+          "type": "heading",
+          "text": "盤點能解決問題的頁面，不靠改寫湊數",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "原創收納網站可以逐頁確認：讀者看完是否知道如何量衣櫃、選擇收納盒或安排換季順序。若多篇只把同一段建議換標題重複發布，應合併或補上不同的操作需求。Google 的準備指南重視獨特、相關內容與使用體驗，不能只計算篇數。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自己的觀點與說明要有可理解的依據。操作步驟可用自行設計的例子與圖解，引用資料保留來源，照片確認授權；沒有實際使用過的產品，不寫成親身測試結論。把別人的文章換句話說，或把沒有核實的 AI 文字大量上傳，都不能替代內容責任。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再檢查網站導覽是否能找到文章與相關主題，頁面是否有空白內容、失效連結、遮住正文的元件或手機無法操作的選單。作者介紹與聯絡方式可協助讀者理解網站由誰維護，但不能宣稱只要新增幾個制式頁面，就一定符合全部審查條件。"
+        },
+        {
+          "type": "heading",
+          "text": "網站可公開讀取，再選擇適合的驗證方式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 AdSense 新增準備顯示廣告的網站，核對網址後依帳戶提供的方式完成連接。目前官方列有 AdSense 程式碼、ads.txt 片段與 meta 標籤等驗證方法。採用程式碼或 meta 標籤時要放在正確的網頁 head 區段，並使用自己帳戶提供的內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "驗證之前，先以登出狀態確認公開內容能正常開啟，並檢查 robots.txt 或防火牆是否阻擋審查所需的爬蟲。若網站還只有密碼保護的草稿，應先完成預計對外的內容；不為了審查把訂單、會員資料或其他私人頁面直接解除保護。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成指定設定後按 Verify，再依介面提出 Request review。能找到驗證碼代表連接有進展，並不等於網站政策審查通過。使用 meta 標籤驗證也不會自動替頁面安裝完整的廣告顯示功能，後續仍要依選用形式設定廣告。"
+        },
+        {
+          "type": "heading",
+          "text": "把網站審查與 ads.txt 狀態分開看",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Sites 裡的 Requires review、Getting ready、Needs attention 與 Ready 有不同意思。需要審查就完成必要設定後提出；需要注意則先查看問題；Ready 才表示網站已準備好顯示廣告。帳戶設定未完成時，即使提出審查，也可能還沒有真正進入網站審查程序。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方說審查通常需要幾天，部分情況可能需要 2 至 4 週，這是一般說明而不是期限保證。等待時不要反覆刪掉網站再送出，因為可能延誤。原創站長可以記錄提交日、當前狀態與官方要求處理的項目，避免把同一件事一直重做。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ads.txt 是廣告銷售授權資訊，Authorized 與網站 Ready 是分開的狀態。一般自行管理網站應依帳戶提供的發佈者 ID 檢查根路徑的 ads.txt；已有其他廣告網路資料時，先確認必要項目再更新，不盲目覆蓋整份檔案。某些平台代管或特殊帳戶另有處理方式，以實際狀態說明為準。"
+        },
+        {
+          "type": "heading",
+          "text": "隱私說明與廣告設定一起完成",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 要求網站清楚呈現相關隱私資訊，包括第三方廣告與 Cookie 使用，以及個人化廣告的選擇方式。站長應先盤點實際使用的廣告與資料服務，再寫符合自己網站的說明；複製一份與實際工具不符的隱私政策，無法讓讀者知道資料會怎麼使用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若向歐洲經濟區、英國或瑞士使用者提供個人化廣告，Google 要求使用通過其認證且整合 IAB TCF 的同意管理平台。判斷要看流量與投放情境，不是只看站長住在台灣。CMP 認證也不代表 Google 已替整個網站確認所有適用法律。"
+        },
+        {
+          "type": "paragraph",
+          "text": "核准後可以選 Auto ads，或自行放置廣告單元；前者由系統在設定範圍內安排，後者需要自己管理版位。先從少量且清楚分隔的位置開始，檢查文章、選單及手機畫面。若需要逐一控制 WordPress 版位，可再閱讀站內的廣告配置指南。"
+        },
+        {
+          "type": "heading",
+          "text": "驗收顯示與收入時，不以點擊自己的廣告測試",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "廣告未出現時，先查網站與帳戶狀態、程式碼、ads.txt 提示及政策中心，再確認是否已儲存所需設定。審查完成與畫面立即出現廣告仍是不同結果；也可能受到使用者選擇、廣告供應或瀏覽器條件影響，不要只因某次空白就立刻重複插入程式碼。"
+        },
+        {
+          "type": "paragraph",
+          "text": "站長不能點自己的真實廣告來測試，也不能請朋友點擊支持網站。無效流量包括人為增加的曝光、點擊與誤觸等情況，可能造成收益調整或投放限制。查看廣告素材應使用官方提供的 Ad review center 等管理方式，而不是進入廣告主網站驗證能否算錢。"
+        },
+        {
+          "type": "paragraph",
+          "text": "上線後將內容更新、頁面體驗與流量來源一起管理。突然增加的流量不必然是成果，要確認從哪裡來、是否有異常重複行為。預估收益也不等於最終可支付款項；原創收納網站應持續檢查真實讀者是否仍能順利閱讀，再評估廣告配置是否值得保留。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "核對申請人與網站管理權，盤點原創內容、導覽及公開可讀取性。",
+            "依帳戶提供的方法連接網站，完成必要設定後提出審查。",
+            "分別追蹤網站狀態、ads.txt 與政策提示，依具體原因修正。",
+            "完成隱私與廣告配置，檢查手機閱讀及顯示，持續觀察流量品質。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/adsense-site-preparation/diagram-1.svg",
+          "alt": "四步圖呈現內容準備、網站連接、審查狀態與投放維護，說明 AdSense 申請與後續管理的不同驗收點。",
+          "width": 1600,
+          "height": 900,
+          "caption": "審查通過後，內容品質、隱私設定與流量仍需持續管理。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "看到的狀態",
+            "代表什麼",
+            "接下來確認"
+          ],
+          "rows": [
+            [
+              "驗證連接成功",
+              "能確認所需網站連接資訊",
+              "是否已提出且具備審查條件"
+            ],
+            [
+              "Getting ready",
+              "檢查中或仍有帳戶設定待完成",
+              "首頁任務與網站狀態"
+            ],
+            [
+              "Needs attention",
+              "有需要處理的問題",
+              "依實際問題修正"
+            ],
+            [
+              "Ready",
+              "網站已準備好顯示廣告",
+              "廣告配置與持續政策遵循"
+            ],
+            [
+              "ads.txt Authorized",
+              "發佈者 ID 在授權檔案中",
+              "網站審查是否另已 Ready"
+            ],
+            [
+              "預估收益",
+              "尚未等同最終可支付款項",
+              "調整、付款與帳戶要求"
+            ]
+          ],
+          "caption": "原創申請狀態對照，網站核准、授權檔案與收益不應混為同一結果。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "不要用自己點廣告來驗證安裝",
+          "text": "驗收應查看設定、顯示及管理報表。點自己的真實廣告、請朋友支持點擊或購買造假流量，都不是合適的測試方式。"
+        },
+        {
+          "type": "link",
+          "text": "檢查文章是否解決讀者問題",
+          "url": "https://mokaair.com/zh-TW/life/seo-content-quality"
+        },
+        {
+          "type": "link",
+          "text": "在 WordPress 配置並驗收廣告版位",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-ad-placement"
+        },
+        {
+          "type": "link",
+          "text": "建立網站事件與流量量測",
+          "url": "https://mokaair.com/zh-TW/life/ga4-site-measurement"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google：AdSense 資格要求",
+          "url": "https://support.google.com/adsense/answer/9724?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：網站內容與導覽準備",
+          "url": "https://support.google.com/adsense/answer/7299563?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：連接網站及申請審查",
+          "url": "https://support.google.com/adsense/answer/7584263?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：網站與 ads.txt 狀態",
+          "url": "https://support.google.com/adsense/answer/12170222?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：ads.txt 管理指南",
+          "url": "https://support.google.com/adsense/answer/12171612?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：隱私政策必要內容",
+          "url": "https://support.google.com/adsense/answer/1348695?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：歐洲流量個人化廣告 CMP 要求",
+          "url": "https://support.google.com/adsense/answer/13554116?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：Auto ads 與廣告單元管理",
+          "url": "https://support.google.com/adsense/answer/1059480?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：無效流量及收益調整",
+          "url": "https://support.google.com/adsense/answer/16737?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：預防無效流量與查看廣告",
+          "url": "https://support.google.com/adsense/answer/1112983?hl=en",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

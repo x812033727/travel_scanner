@@ -1,0 +1,242 @@
+{
+  "slug": "amp-website-decision",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "網站還需要 AMP 嗎：先比較維護成本與讀者體驗",
+      "description": "網站是否保留 AMP，應看讀者體驗、功能需求與維護資源。本文整理查證日的 Google 搜尋指南與 WordPress AMP 外掛相容性提醒，說明新網站如何比較一般響應式頁面，既有網站如何盤點 AMP 流量、網址與功能。附保留、改善及退場的比較表、操作步驟和原創圖解，避免只為舊 SEO 說法安裝外掛，或停用後留下失效連結。",
+      "hero": {
+        "src": "/guides/amp-website-decision/hero.jpg",
+        "alt": "原創文件、螢幕與盾牌圖像，呈現確認 AMP 網站現況、比較讀者體驗與驗證切換。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "網站後台還有 AMP 外掛，卻沒有人記得當初為什麼安裝，是否該立刻刪掉？先確認網站目前如何提供內容，以及是否仍有人使用 AMP 網址。保留與移除都會影響維護工作，不能只憑技術名稱的新舊決定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "對一般新網站，可以先把響應式版面、圖片與互動效能做好，再評估是否有明確理由採用 AMP。既有網站則應把讀者入口、功能差異和退場方式列清楚，讓決策有資料可查，也有完整的後續驗收。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "AMP 是頁面技術，不只是手機加速按鈕"
+        },
+        {
+          "type": "paragraph",
+          "text": "AMP 使用一套受規範的 HTML 與元件，由其執行環境管理部分資源和版面行為。它可以用來建立內容頁，也可在手機和桌機瀏覽。安裝相關外掛並不表示網站所有功能都自動相容，仍需檢查輸出的標記與元件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "網站可能只有一個以 AMP 製作的主要版本，也可能同時提供一般版和 AMP 版。這個差別會影響網址、內容同步與移除方式。不要一看到路徑帶 amp 就認定一定有可替代的正常版本，應先核對實際頁面與主要網址關係。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如一個手作活動資訊站，文章閱讀可能簡單，但報名表、地圖、相簿和會員功能各有需求。AMP 版本若缺少讀者完成報名所需的內容，就不能只因載入較輕而稱為完整改善；必須把必要操作一起納入比較。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把舊搜尋說法與目前指南分開"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 在 2021 年的官方公告中，已說明 Top Stories 不再要求一定使用 AMP。這是有時間背景的政策變更，不能把早期教學中的必要條件繼續當作新網站的安裝理由，也不能把資格解讀成任何文章都保證進入該版位。"
+        },
+        {
+          "type": "paragraph",
+          "text": "截至 2026 年 9 月 14 日查閱的 Google AMP 指南，搜尋仍以與其他網頁相同的標準處理 AMP。若使用結構化資料，仍需符合相應規則，也沒有保證顯示特別搜尋外觀。技術格式本身不應成為排名或流量的承諾。"
+        },
+        {
+          "type": "paragraph",
+          "text": "評估時把可量測問題寫出來：主要內容是否及時出現、讀者能否完成操作，以及維護是否有清楚負責人。搜尋功能、AMP 規格和特定外掛的支援狀態是不同層次；其中一項改變，不代表可以推論所有層次都已停止或都無限制可用。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先盤點目前網址、入口與功能差異"
+        },
+        {
+          "type": "paragraph",
+          "text": "列出一般版和 AMP 版的代表網址，記下哪一個是主要版本，以及它們如何互相連結。若網站以外掛產生頁面，也記下外掛名稱、來源、版本與模式。同名或名稱接近的 AMP 工具不一定是同一產品，文件不能混用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "從網站現有流量與伺服器紀錄確認 AMP 入口是否仍被造訪，並查看使用者如何從文章前往下一步。沒有細分資料時，先標為未知，再安排必要觀察。不能因為管理者自己很少看到 AMP，就推論所有舊網址已經沒有人使用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "挑資訊文章、活動詳情和報名入口做功能對照，逐項確認正文、圖片、影片、表單、同意提示與站內連結。Google 指南要求 AMP 與對應主要頁面的內容和可執行動作盡量一致，驗收不能只比兩份頁面的第一屏。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "WordPress 先核對維護與相容性"
+        },
+        {
+          "type": "paragraph",
+          "text": "本次查閱 WordPress.org 的官方 AMP 外掛頁，頁面顯示未針對最近三個主要 WordPress 版本測試的提醒。這代表選用前需要額外確認相容與支援現況；它本身不等於已證實存在漏洞，也不能直接推論 AMP 規格停止運作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "該外掛提供 Standard、Transitional 和 Reader 等模式，不同模式涉及不同網站版本與佈景安排。既有站應先確認目前模式與功能，再在測試副本檢查變更。不要因為看到網站首頁仍可開啟，就略過文章模板或特定外掛產生的內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方 Site Scan 文件提供檢查佈景與外掛 AMP 相容性的方向，並提醒更換模式、佈景或影響前台的設定後要重新掃描。掃描是技術線索，仍要由人檢查讀者操作；即使移除不相容標記後通過驗證，也可能同時少掉必要功能。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "比較保留、改善一般版與移除的成本"
+        },
+        {
+          "type": "paragraph",
+          "text": "若既有 AMP 入口穩定、必要功能完整，且有人能持續維護，可以先保留並建立更新驗收。決策應有下次複查日期，尤其網站加入新的表單、追蹤或廣告服務時，要確認 AMP 版本同樣能正常處理，而不是讓兩版逐漸分離。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若主要問題是一般頁面圖片過大、腳本過重或版面不穩，這些問題也能直接在一般響應式網站上調整。先以代表頁面做改善與量測，再比較維護成本，不必為解決單一圖片問題就增加另一套頁面輸出。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若工具相容性難以維持、兩版功能差異大，或沒有足夠人力處理，可以規劃退場。比較項目包括改版工時、持續測試、舊連結處理、資料觀察與回復方式。不要只把外掛價格當作全部成本，也不要用來源網站的實測排名替自己的站做決定。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "整理網站目前的 AMP 模式、主要網址與對應頁面。",
+            "確認實際入口資料、必要功能及工具相容性，未知處留下標記。",
+            "以代表頁比較保留與改善一般版的工作量，選定可維護方案。",
+            "若退場，先完成替代頁、網址對照與回復方案，再分批驗收。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "退場時讓舊網址仍能抵達對應內容"
+        },
+        {
+          "type": "paragraph",
+          "text": "若是同時有 AMP 與一般版，而且要保留一般版，Google 的移除流程包含移除一般頁上的 rel=amphtml 連結，並讓舊 AMP 網址轉向對應的非 AMP 主要頁面。永久退場可依實際網站設定適當的永久轉址，逐頁保留內容關係。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要把 AMP 頁清成空白，也不要把所有舊文章一律導向首頁。若原本唯一主要版本就是 AMP，應先準備可用的一般頁面，再安排轉換，不能套用雙版本網站的停用步驟。使用 CMS 或外掛的移除方式時，也要確認它到底刪除哪些版本、是否處理轉址。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成後抽查舊網址的回應、最後目的地、正文與圖片，並核對主要網址、站內連結、Sitemap 和快取。持續觀察舊入口及錯誤紀錄，保留修改日期與回復方法。搜尋端重新處理需要時間；後台停用成功，只是其中一步，不是整個退場工作已驗收。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/amp-website-decision/diagram-1.svg",
+          "alt": "四步列出盤點 AMP 模式和網址、查閱入口與功能資料、比較保留或替代方案，以及完成網址和頁面驗收。",
+          "width": 1600,
+          "height": 900,
+          "caption": "依網站證據做決定，並把舊連結與必要功能一起照顧好。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "目前情況",
+            "可考慮方向",
+            "需要的依據"
+          ],
+          "rows": [
+            [
+              "新站沒有特定 AMP 需求",
+              "先做好一般響應式網站",
+              "功能與效能驗收"
+            ],
+            [
+              "AMP 入口穩定且有人維護",
+              "保留並定期複查",
+              "流量、功能及相容紀錄"
+            ],
+            [
+              "一般版有明確效能瓶頸",
+              "先改善對應資源",
+              "同條件量測與工作量"
+            ],
+            [
+              "兩版難同步或支援不明",
+              "規劃整理或退場",
+              "替代內容與網址對照"
+            ],
+            [
+              "唯一主要頁面是 AMP",
+              "先完成替代輸出",
+              "完整頁面與切換方案"
+            ]
+          ],
+          "caption": "這是原創決策表，適用方向需依自己網站的證據判斷。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "別把停用外掛當成退場完成",
+          "text": "先確認一般版可用，再驗證舊網址、內容和轉址。主要版本只有 AMP 的網站，需要另行規劃完整頁面轉換。"
+        },
+        {
+          "type": "link",
+          "text": "安排永久轉址與舊連結驗收",
+          "url": "https://mokaair.com/zh-TW/life/redirects-301-302"
+        },
+        {
+          "type": "link",
+          "text": "辨認網站效能的實際瓶頸",
+          "url": "https://mokaair.com/zh-TW/life/core-web-vitals-diagnosis"
+        },
+        {
+          "type": "link",
+          "text": "核對主要網址與內容版本",
+          "url": "https://mokaair.com/zh-TW/life/canonical-url-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 搜尋目前的 AMP 指南",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/amp?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 2021 年 Top Stories 與 AMP 公告",
+          "url": "https://developers.google.com/search/blog/2021/04/more-details-page-experience",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AMP HTML 規格",
+          "url": "https://amp.dev/documentation/guides-and-tutorials/learn/spec/amphtml",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress.org 官方 AMP 外掛",
+          "url": "https://wordpress.org/plugins/amp/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AMP for WordPress Site Scan",
+          "url": "https://amp-wp.org/documentation/getting-started/settings-screen/site-scan/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google AMP 移除與保留一般版流程",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/amp/remove-amp?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

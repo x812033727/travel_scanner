@@ -1,0 +1,179 @@
+{
+  "description": "長篇 WordPress 文章可以用目錄協助讀者找到需要的段落，但標題結構與跳轉結果都要一起整理。本篇介紹手動錨點和 Easy Table of Contents 的設定方式，說明固定頁首遮擋、手機目錄、重複標題與文章更新後的檢查重點，幫助內容網站建立真正好用的閱讀導覽，而不是只在文章前多放一個框。",
+  "intro": [
+    "讀者打開一篇搬家教學，可能只想找網址轉址的段落。若只能一直滑動，即使內容完整也不容易使用。文章目錄的價值，是讓人先看懂內容範圍，再直接前往需要的位置；它應該反映文章的思考順序。",
+    "以下以一篇有準備事項、操作步驟、檢查與常見問題的長文為例，介紹 WordPress 錨點及 Easy Table of Contents。先把章節寫清楚，再決定自動生成或手動維護，最後用桌面和手機驗收。"
+  ],
+  "sections": [
+    {
+      "title": "先讓章節名稱能回答讀者問題",
+      "paragraphs": [
+        "先抽出文章的所有小標題單獨閱讀。若連續出現介紹、更多介紹、其他事項，讀者很難從目錄判斷內容；可以改成開始前要準備哪些資料、如何搬移檔案、搬家後怎麼驗收等具體問題。目錄不用把每一句話都列出來，而是呈現主要閱讀路線。",
+        "在編輯器中使用真正的標題區塊，依內容層級安排 H2 與 H3。不要只把一般段落放大加粗，也不要為了字體大小任意跳用層級。主要步驟用 H2，該步驟底下的補充用 H3；視覺大小再交給佈景樣式調整。",
+        "重複的常見問題或注意事項可以加上主題，例如搬移前注意事項與更換網址注意事項。這樣讀者在目錄與正文間跳轉時能知道自己在哪裡，也方便日後客服或編輯引用特定段落。"
+      ]
+    },
+    {
+      "title": "少量重點可以先用手動錨點",
+      "paragraphs": [
+        "在標題區塊的 Advanced 設定填入 HTML Anchor，例如 prepare-files。接著在文章開頭的清單或按鈕建立 #prepare-files 連結，即可跳到同頁對應位置。若要從另一篇文章連過來，就用完整頁面網址加上這個片段。",
+        "WordPress 官方提醒錨點在同一文件內要唯一，大小寫也有差異，不能含空白。對需要長期引用的章節，可以選擇短而清楚的名稱，並在編輯紀錄中保留。正文標題即使修改用語，也不一定要同時變更已被引用的錨點。",
+        "手動方式適合章節少、結構穩定的服務說明或專題頁。缺點是新增與刪除章節時，需要自己更新目錄連結。不要建立好開頭清單後就忘了它，驗收時仍需逐一點開，確認沒有指到不存在或同名的錯誤段落。"
+      ]
+    },
+    {
+      "title": "用 Easy Table of Contents 產生文章目錄",
+      "paragraphs": [
+        "啟用 Easy Table of Contents 後，先在設定中指定要支援的內容類型，再決定哪些類型自動插入。支援與自動插入是不同設定；初次使用可以先選一般文章，避免首頁、結帳頁或精簡公告也出現不需要的目錄。",
+        "依內容安排位置與顯示門檻，例如只有足夠章節的文章才出現。目錄可放在簡短前言之後，讓讀者先知道這篇能解決什麼。設定清楚的標籤及標題層級，通常先列主要段落與必要子段落就足夠，不必把全部 H1 到 H6 都塞進清單。"
+      ],
+      "steps": [
+        "啟用所需內容類型，先以代表性長文測試自動插入。",
+        "設定位置、顯示條件與要收錄的標題層級。",
+        "檢查是否已由佈景或其他外掛產生目錄，避免同頁出現兩份。"
+      ]
+    },
+    {
+      "title": "刪除雜訊，保留可讀的目錄",
+      "paragraphs": [
+        "目錄若混入相關文章、頁尾或廣告標題，先查這些區塊為何被納入正文。外掛有標題排除設定，可以針對不適合收錄的項目處理；若需要依 CSS class 排除，官方將這項列在 Pro 功能，選型時應確認版本差異。",
+        "某些版面編輯器或短代碼會動態輸出標題，因此編輯器看起來正常，前台生成結果卻可能不同。用實際公開版面測試，而不是只看編輯器側欄。外掛更新後也要重新檢查代表頁，尤其是重複標題、折疊內容與動態區塊。",
+        "目錄本身的文字不要縮得太小。長標題允許自然換行，階層縮排保持可辨識；若文章太長，可以先顯示主要章節或提供清楚的展開控制。讀者應能找到入口，不能因預設折疊而看不出這裡有可操作的目錄。"
+      ]
+    },
+    {
+      "title": "固定目錄與固定頁首要一起驗收",
+      "paragraphs": [
+        "Easy Table of Contents 官方將 Fixed／Sticky TOC 列在 Pro 功能中。選擇固定目錄之前，先確認網站真的需要滑動時持續顯示。桌面側欄有空間，不代表手機右下角也適合放一整份清單；聯絡按鈕、Cookie 提示與返回頂端控制都可能佔用同一位置。",
+        "點選目錄後，如果章節標題被固定頁首蓋住，要調整跳轉時的預留距離。可以先查目前外掛或佈景是否提供對應設定；需要客製 CSS 時，維護者可評估 scroll-margin-top 等方式，並依頁首實際高度驗證，不要套用一個數字後就假設所有裝置一致。",
+        "平滑捲動是視覺效果，不能代替正確跳轉。測試較長頁面與較慢裝置，觀察圖片載入後版面是否移動，導致原先位置偏掉。若效果干擾閱讀，可以簡化動畫，保留清楚的連結與穩定的章節定位。"
+      ]
+    },
+    {
+      "title": "把目錄檢查加入編輯流程",
+      "paragraphs": [
+        "發布前依序點第一個、中間與最後一個目錄項目，再完整逐項檢查。用鍵盤操作展開與連結，確認焦點可見；在窄螢幕上檢查是否超出畫面、是否擋住正文，旋轉手機後也要重新觀察固定元素。",
+        "分享帶錨點的連結到新的未登入視窗，確認能直接到指定章節。若網站會等圖片或廣告載入後改變高度，特別注意直接開啟深層連結的結果。這種測試與先等頁面載完再點目錄不同，兩者都值得保留。",
+        "更新文章時，先看是否刪除、改名或移動了被引用章節，再同步目錄。若必須更改錨點，整理相關站內連結與客服常用連結，避免留下能開頁面卻找不到位置的引用。目錄應隨內容一起維護，才能持續幫讀者省下尋找時間。"
+      ]
+    }
+  ],
+  "table": {
+    "header": [
+      "方式",
+      "適用內容",
+      "後續工作"
+    ],
+    "rows": [
+      [
+        "手動錨點與清單",
+        "少量且穩定的章節",
+        "增刪章節時同步連結"
+      ],
+      [
+        "自動文章目錄",
+        "經常編輯的長文",
+        "核對層級、排除項及重複生成"
+      ],
+      [
+        "固定目錄",
+        "閱讀時需要反覆跳轉",
+        "檢查付費功能與不同螢幕遮擋"
+      ]
+    ],
+    "caption": "依閱讀需求選擇目錄形式，再驗證真實跳轉結果。"
+  },
+  "callout": {
+    "title": "一個可分享的章節位置，也是一項內容資產",
+    "text": "重要錨點盡量保持穩定。文章更新時同步檢查相關引用，並用未登入視窗直接開啟帶錨點網址，確認讀者真的能到達目標段落。"
+  },
+  "diagram": {
+    "title": "文章目錄從結構到驗收",
+    "subtitle": "先整理內容，再檢查每一次跳轉",
+    "description": "四格原創圖解說明整理章節、設定目錄、確認跳轉位置與手機驗收。",
+    "nodes": [
+      {
+        "label": "結構",
+        "lines": [
+          "標題說明問題",
+          "層級保持一致"
+        ]
+      },
+      {
+        "label": "生成",
+        "lines": [
+          "選擇插入範圍",
+          "排除無關標題"
+        ]
+      },
+      {
+        "label": "跳轉",
+        "lines": [
+          "錨點不可重複",
+          "頁首不要遮住"
+        ]
+      },
+      {
+        "label": "維護",
+        "lines": [
+          "手機逐項點選",
+          "更新引用連結"
+        ]
+      }
+    ],
+    "takeaway": "目錄能看懂、能點選、能到達，才真正改善長文閱讀。"
+  },
+  "hero_art": {
+    "label": "讓長文章容易找到重點",
+    "alt": "原創文件與螢幕圖像呈現文章章節整理及目錄跳轉。",
+    "icons": [
+      "document",
+      "screen",
+      "document"
+    ]
+  },
+  "sources": [
+    {
+      "title": "WordPress：頁面錨點",
+      "url": "https://wordpress.org/documentation/article/page-jumps/",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "Easy Table of Contents 官方外掛頁",
+      "url": "https://wordpress.org/plugins/easy-table-of-contents/",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "Easy Table of Contents 設定說明",
+      "url": "https://tocwp.com/docs/knowledge-base/step-by-step-explanation-of-options-in-easy-table-of-content/",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "依 Class 排除標題的 Pro 功能",
+      "url": "https://tocwp.com/docs/knowledge-base/excluding-headings-by-class-in-easy-table-of-contents/",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "MDN：scroll-margin-top",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/scroll-margin-top",
+      "checked_on": "2026-09-14"
+    }
+  ],
+  "notes": [
+    "- 2026-09-14 WordPress Page Jumps 核對 HTML Anchor 與 # 連結、唯一性和大小寫。https://wordpress.org/documentation/article/page-jumps/",
+    "- 2026-09-14 外掛作者公開頁與設定文件核對 Enable Support/Auto Insert、位置、門檻、層級、展開；Fixed/Sticky TOC 屬 Pro。https://wordpress.org/plugins/easy-table-of-contents/ ； https://tocwp.com/docs/knowledge-base/step-by-step-explanation-of-options-in-easy-table-of-content/",
+    "- 2026-09-14 依 class 排除需要 Pro，未與一般排除功能混淆。https://tocwp.com/docs/knowledge-base/excluding-headings-by-class-in-easy-table-of-contents/",
+    "- 2026-09-14 MDN 核對 scroll-margin-top 屬性；正文僅提供維護者可評估方向，沒有假裝存在已驗證通用數值。https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/scroll-margin-top",
+    "- 文章結構與跨裝置測試為原創建議。未安裝外掛或宣稱特定佈景相容、SEO 排名提升。"
+  ],
+  "links": [
+    {
+      "text": "整理 WordPress 文章與頁面",
+      "url": "https://mokaair.com/zh-TW/life/wordpress-posts-pages"
+    },
+    {
+      "text": "規劃網站分類與導覽",
+      "url": "https://mokaair.com/zh-TW/life/wordpress-taxonomy-navigation"
+    }
+  ]
+}
