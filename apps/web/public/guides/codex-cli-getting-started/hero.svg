@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">終端機裡的程式代理 / A coding agent working in the terminal</title>
+  <desc id="desc">左邊是一個白色圓角的終端機視窗，上緣有三個彩色小圓點，裡面畫著一個綠色的提示符號箭頭和一條輸入游標的橫條，下面兩條淺灰橫條代表輸出的文字。視窗右邊有一條線往右延伸，經過三個綠色圓圈組成的步驟節點，中間節點上方有一面藍色盾牌，代表核准與沙盒的邊界。最右邊是一張白色卡片，上面兩條淺灰橫條代表被修改過的檔案，下方有一個大大的綠色打勾符號，代表檢查過的結果。畫面下方有一行中文字：終端機裡的第一個任務。</desc>
+
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- terminal window -->
+  <rect x="140" y="170" width="520" height="450" rx="28" fill="#FFFFFF" stroke="#102A2B" stroke-width="8"/>
+  <line x1="144" y1="236" x2="656" y2="236" stroke="#102A2B" stroke-width="6"/>
+  <circle cx="190" cy="203" r="11" fill="#D97A2B"/>
+  <circle cx="228" cy="203" r="11" fill="#2E7D5B"/>
+  <circle cx="266" cy="203" r="11" fill="#2F6F9F"/>
+
+  <path d="M 205 331 L 258 371 L 205 411" fill="none" stroke="#0D6B68" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="288" y="357" width="150" height="18" rx="9" fill="#0D6B68"/>
+  <rect x="205" y="467" width="330" height="18" rx="9" fill="#C9D8D7"/>
+  <rect x="205" y="517" width="215" height="18" rx="9" fill="#C9D8D7"/>
+
+  <!-- flow from the terminal to the reviewed result -->
+  <line x1="672" y1="395" x2="734" y2="395" stroke="#5C6B6B" stroke-width="8"/>
+  <line x1="786" y1="395" x2="854" y2="395" stroke="#5C6B6B" stroke-width="8"/>
+  <line x1="906" y1="395" x2="974" y2="395" stroke="#5C6B6B" stroke-width="8"/>
+  <line x1="1026" y1="395" x2="1098" y2="395" stroke="#5C6B6B" stroke-width="8"/>
+
+  <circle cx="760" cy="395" r="26" fill="#E3F0EF" stroke="#0D6B68" stroke-width="8"/>
+  <circle cx="880" cy="395" r="26" fill="#E3F0EF" stroke="#0D6B68" stroke-width="8"/>
+  <circle cx="1000" cy="395" r="26" fill="#E3F0EF" stroke="#0D6B68" stroke-width="8"/>
+
+  <!-- the approval and sandbox boundary -->
+  <path d="M 880 231 L 928 251 L 928 297 Q 928 333 880 349 Q 832 333 832 297 L 832 251 Z" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="8" stroke-linejoin="round"/>
+
+  <!-- reviewed result -->
+  <rect x="1112" y="221" width="348" height="348" rx="26" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="8"/>
+  <rect x="1164" y="271" width="244" height="18" rx="9" fill="#E0DAD0"/>
+  <rect x="1164" y="313" width="164" height="18" rx="9" fill="#E0DAD0"/>
+  <path d="M 1190 421 L 1254 485 L 1388 359" fill="none" stroke="#2E7D5B" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <text x="800" y="730" font-size="48" font-weight="700" fill="#102A2B" text-anchor="middle">終端機裡的第一個任務</text>
+</svg>

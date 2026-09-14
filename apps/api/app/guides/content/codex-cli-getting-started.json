@@ -1,0 +1,378 @@
+{
+  "slug": "codex-cli-getting-started",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Codex CLI 入門：在終端機裡讓 OpenAI 幫你改程式",
+      "description": "Codex CLI 是 OpenAI 的終端機程式代理，裝好之後可以在你自己的專案裡讀檔、改檔、跑指令。這篇依官方文件帶你走完安裝（標準安裝程式、npm、Homebrew）、用 ChatGPT 帳號或 API key 登入、下第一個任務、核准與檢查結果五個步驟，並說清楚核准政策與沙盒模式、設定檔與 AGENTS.md 各管什麼、常用的斜線指令與 codex exec 非互動用法，附一張流程圖與一張步驟對照表。",
+      "hero": {
+        "src": "/guides/codex-cli-getting-started/hero.jpg",
+        "alt": "插圖：終端機視窗裡的提示符號連到一條分成五段的路徑，終點是一個打勾的檔案方塊",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Codex CLI 是 OpenAI 的終端機程式代理（Agent）：在專案資料夾裡輸入 codex，用自然語言說要改什麼，它會自己讀檔、改檔、跑你機器上已經裝好的工具，只有在要跨出沙盒邊界時才停下來問你。它不是雲端服務的網頁介面，改的就是你硬碟上的檔案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇依 OpenAI 官方文件當天的說法，帶你走完安裝、登入、第一個任務、核准、檢查結果這條路，順便把最容易搞混的幾件事講清楚：哪些 ChatGPT 方案能用、額度怎麼算、核准政策與沙盒模式分別管什麼、設定檔和 AGENTS.md 的差別，以及什麼時候該改用非互動的 codex exec。你只要會開終端機、會用 cd 切換資料夾就能跟著做。"
+        },
+        {
+          "type": "heading",
+          "text": "Codex CLI 是什麼，和雲端版差在哪",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex 是 OpenAI 的寫程式代理，同一套代理有好幾個入口：瀏覽器上的 Codex、ChatGPT 桌面應用程式、編輯器的 IDE 擴充套件，以及這篇要講的終端機版 Codex CLI。官方文件給 CLI 的定位是「對著你的本機儲存庫工作」：讓它檢查檔案、做修改、執行你機器上既有的工具，並且由你決定模型、推理強度、權限與可以跑哪些指令。"
+        },
+        {
+          "type": "paragraph",
+          "text": "雲端版正好相反。雲端任務跑在 OpenAI 管理的隔離容器裡，要先連好 GitHub 或 GitLab、建一個環境，再把任務丟進去；它可以同時跑好幾個任務、跑完看摘要與差異，滿意就直接開 PR。官方文件建議在「工作需要在背景跑」「想同時比較好幾種做法」「人不在開發機旁邊」這幾種情況用雲端版。兩邊共用同一個帳號，CLI 裡也有 codex cloud 可以把工作送上去、之後再把結果套回本機。"
+        },
+        {
+          "type": "link",
+          "text": "Codex 雲端任務：連 GitHub、平行跑多個任務、開 PR",
+          "url": "https://mokaair.com/zh-TW/life/codex-cloud-tasks-github"
+        },
+        {
+          "type": "link",
+          "text": "OpenAI Codex 是什麼：從 ChatGPT 裡的寫程式代理到 Codex CLI",
+          "url": "https://mokaair.com/zh-TW/life/codex-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "安裝：官方列出的四種方式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件列出的安裝方式有四種：macOS 與 Linux 的標準安裝程式、Windows 的 PowerShell 安裝程式、npm、Homebrew。挑一種就好。前三種的更新指令和安裝指令一模一樣，再跑一次即可；Homebrew 的更新才換成 brew upgrade。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "在 macOS 或 Linux 安裝與更新 Codex CLI（三選一）",
+          "code": "# 標準安裝程式：安裝與更新同一條指令\ncurl -fsSL https://chatgpt.com/codex/install.sh | sh\n\n# npm：安裝與更新同一條指令\nnpm install -g @openai/codex\n\n# Homebrew：安裝與更新分開\nbrew install --cask codex\nbrew upgrade --cask codex"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "在 Windows 安裝與更新（PowerShell）",
+          "code": "powershell -ExecutionPolicy ByPass -c \"irm https://chatgpt.com/codex/install.ps1 | iex\""
+        },
+        {
+          "type": "paragraph",
+          "text": "系統需求方面，官方文件說 macOS 與 Linux 是原生支援，Windows 有專用安裝程式。真正會卡住新手的是沙盒的前置條件：macOS 直接用系統內建的 Seatbelt，不用另外裝；Linux 與 WSL2 要先自己裝 bubblewrap（Ubuntu 與 Debian 用 apt、Fedora 用 dnf），沒裝的話 Codex 啟動時會跳警告；Windows 原生則走 Windows 沙盒。官方的 Windows 沙盒文件把 Windows 11 列為建議版本，更新到最新的 Windows 10 屬於盡力支援、實務上要 1809 以後的版本，更舊的版本不建議。用 npm 安裝前要先有 Node.js 與 npm，官方的 Codex CLI 文件沒有列出最低 Node.js 版本，這一項以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "標準安裝程式預設把 codex 指令放在 macOS 與 Linux 的家目錄下的 .local/bin，Windows 則放在 LOCALAPPDATA 下的 Programs 資料夾。裝完打 codex 卻說「找不到指令」，八成是這個目錄不在 PATH 裡。裝好之後可以先跑一次 codex doctor，它會產生一份本機診斷報告，檢查安裝、設定、登入、執行環境、Git 與終端機的狀態。"
+        },
+        {
+          "type": "heading",
+          "text": "登入：ChatGPT 帳號或 API key",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一次在專案資料夾執行 codex 時，它會請你選登入方式。官方文件寫的是兩條路：用 ChatGPT 帳號登入，走訂閱方案的額度與工作區權限；或用 API key 登入，走 API 組織的標準計費與資料政策。CLI、IDE 擴充套件與桌面應用程式共用同一份快取的登入資料，其中一個登出，另一個下次也要重新登入。登入資訊存在家目錄的 .codex 資料夾裡的 auth.json，或作業系統的憑證管理員。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "四種登入相關指令",
+          "code": "# 用 ChatGPT 帳號登入，會開瀏覽器完成\ncodex login\n\n# 遠端或沒有瀏覽器的機器：改用裝置碼登入\ncodex login --device-auth\n\n# 用 API key 登入（把金鑰從環境變數餵進去）\nprintenv OPENAI_API_KEY | codex login --with-api-key\n\n# 查目前是哪一種登入方式\ncodex login status"
+        },
+        {
+          "type": "paragraph",
+          "text": "哪些方案能用？OpenAI 說明中心的〈Using Codex with your ChatGPT plan〉寫得很直接：Codex 包含在各個 ChatGPT 方案裡，含 Free 與 Go，用量上限依方案而異。官方定價頁的方案卡列出 Free 每月 $0、Go 每月 $8、Plus 每月 $20、Pro 從每月 $100 起（分 5x 與 20x 兩種級距，20x 是每月 $200），Business 年繳時每人每月 $20、月繳時每人每月 $25，Enterprise 與 Edu 要聯絡業務。用 API key 登入時就不吃訂閱額度，改依標準 API 價格計費，而且用不到雲端才有的功能。"
+        },
+        {
+          "type": "paragraph",
+          "text": "額度怎麼算？官方定價頁說本機訊息與雲端任務共用同一份方案額度，估算值以每五小時為一個區間，依模型不同而不同，另外可能還有每週上限。同樣長度的提示詞消耗可能差很多，因為模型、上下文、推理、工具呼叫與快取都會影響用量，所以用字數估不準。要注意的是，那張估算表只列了 Plus、Pro 5x、Pro 20x、Standard Business 與 API Key 這幾欄，Free 與 Go 的實際額度以官網為準。想知道自己還剩多少，在 CLI 裡打 /status 看這一次工作階段，或打 /usage 看帳號的 token 用量，也可以到官網的用量儀表板查。"
+        },
+        {
+          "type": "link",
+          "text": "token（Token）是什麼：AI 如何計算文字長度",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-token"
+        },
+        {
+          "type": "heading",
+          "text": "第一個任務：在小專案裡加一個功能",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "找一個小專案來練手，最好是已經用 Git 管好的自己的專案。用 cd 進到專案根目錄，輸入 codex 按 Enter 啟動終端機介面。官方文件建議的第一個任務不是叫它改東西，而是先問一句「Tell me about this project」，讓它把專案讀過一遍、也讓你確認它讀的是對的目錄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "確認方向沒錯，再交代真正的改動。官方最佳實務建議提示詞裡放四件事：目標（要改什麼或做什麼）、背景（哪些檔案、文件、範例或錯誤訊息相關，可以用 @ 挑檔案帶進來）、限制（要遵守哪些慣例、架構或安全要求）、完成條件（什麼情況才算做完，例如測試通過、行為改變、錯誤不再重現）。把這四件事寫清楚，它就不容易自己補設定，產出的改動也比較好審。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "第一個任務的提示詞範例（四件事都寫進去）",
+          "code": "目標：在這個待辦清單專案加一個「標記已完成」的功能。\n背景：清單元件在 src/components/TodoList.tsx，資料存取在 src/store/todos.ts。\n限制：沿用現有的 TypeScript 型別與樣式寫法，不要新增第三方套件。\n完成條件：點一下項目會切換完成狀態、重新整理後狀態還在、npm test 全部通過。"
+        },
+        {
+          "type": "paragraph",
+          "text": "送出之後它會開始讀檔、提計畫、改檔、跑指令，過程都印在終端機裡。它工作時你還能插手：按 Enter 把新指示塞進這一輪、按 Tab 把下一個提示詞或斜線指令排進佇列、在空白輸入框連按兩次 Esc 回到上一則訊息重新分岔。跑完先打 /diff 看 Git 差異（連還沒被 Git 追蹤的新檔都會列出來），再打 /review 請它針對工作目錄的改動做一次審查，最後自己跑一次測試。官方文件特別提醒：任務前後各做一次 Git 檢查點，才有辦法乾淨地還原。"
+        },
+        {
+          "type": "link",
+          "text": "給程式代理的提示模式：先規劃、再實作、最後驗證",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-prompt-patterns"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 寫程式前該懂的 Git：分支、提交與還原",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-git-basics"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-cli-getting-started/diagram-1.svg",
+          "alt": "流程圖：安裝、登入、第一個任務、核准、檢查結果五個步驟，每一步標出指令與注意事項",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右看：每個方塊是一個步驟，下面那行是該步驟真正要打的指令或要看的位置。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "核准與沙盒：它什麼時候會停下來問你",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex 的安全邊界由兩層組成，官方文件分得很清楚：沙盒模式決定它技術上做得到什麼，例如能寫哪些目錄、指令能不能連網；核准政策決定它什麼時候必須停下來問你。預設狀態下代理沒有網路存取權，本機用作業系統層級的機制把可寫範圍限制在目前的工作區。沙盒管的是所有被它叫起來的指令，不只是內建的檔案操作，所以它跑 git、套件管理器或測試工具時，一樣受同一組邊界限制。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "read-only：只能檢查檔案，要改檔或執行指令都得先取得核准。",
+            "workspace-write：可以讀檔、在工作區裡改檔、在邊界內跑常用的本機指令，是官方說的本機低摩擦預設。",
+            "danger-full-access：完全不受沙盒限制，檔案系統與網路邊界都移除，只有在你確實要給它全部權限時才用。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "核准政策現在常用的是兩個值：on-request 讓它預設在沙盒裡工作、要跨出邊界時才問；never 則完全不跳核准提示。官方文件另外註明 untrusted 這個舊值已經退場，設定檔裡留著可能讓程式起不來，要主動拿掉。在 CLI 裡隨時可以打 /permissions 換模式，例如從 Auto 切到 Read Only，讓它只看不改。"
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "label": "設定檔裡的核准與沙盒（家目錄下的 .codex/config.toml）",
+          "code": "model = \"gpt-5.6\"\napproval_policy = \"on-request\"\nsandbox_mode = \"workspace-write\"\n\n# 只有在指令真的需要連網時才打開\n[sandbox_workspace_write]\nnetwork_access = true"
+        },
+        {
+          "type": "paragraph",
+          "text": "也可以用旗標做一次性覆寫。官方文件的對照表寫得很好記：加上 --sandbox read-only --ask-for-approval on-request 是安全的唯讀瀏覽；加上 --sandbox workspace-write --ask-for-approval on-request 就是官方稱作 Auto 的預設組合，不加旗標也是這個效果。最危險的那個組合叫 --dangerously-bypass-approvals-and-sandbox，別名 --yolo，官方把它標成高風險、不建議，除非你人在專用的沙盒虛擬機裡。要讓它多寫一個目錄時，官方建議用 --add-dir，而不是索性把沙盒關掉。"
+        },
+        {
+          "type": "link",
+          "text": "沙盒（Sandbox）：讓 AI 執行工具時有明確邊界",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-sandbox"
+        },
+        {
+          "type": "heading",
+          "text": "設定檔與 AGENTS.md：一個管工具，一個管專案",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這兩個檔案常被搞混，分工其實很乾淨。家目錄下的 .codex/config.toml 管的是工具行為：預設模型、核准政策、沙盒模式、網頁搜尋模式、推理強度、MCP 伺服器這些。要針對單一專案調整，就在儲存庫裡放一份 .codex/config.toml；官方文件說專案層的設定只有在你信任該專案時才會載入。優先順序由高到低是：命令列旗標與 -c 覆寫、專案設定檔、用 --profile 選的設定檔、使用者設定檔、雲端管理的預設值、系統設定檔、內建預設值。"
+        },
+        {
+          "type": "paragraph",
+          "text": "AGENTS.md 則是寫給代理看的專案說明，官方形容它是「給代理的 README」：專案怎麼跑、用什麼指令建置與測試、有哪些工程慣例與禁止事項、什麼情況叫做完。Codex 每次開始工作前會先組出一條指令鏈，先讀 Codex 家目錄（預設是家目錄下的 .codex）裡的全域檔，再從專案根目錄往下走到你目前的目錄，每層最多收一個檔；越靠近目前目錄的檔案排在越後面，也就越優先。合併後的大小上限預設是 32 KiB。在 CLI 裡打 /init 會在目前目錄生出一份 AGENTS.md 骨架，再照團隊真正的做法改。官方的建議是「短而準確」勝過「長而空泛」，等到它重複犯同一個錯，再把規則補進去。"
+        },
+        {
+          "type": "heading",
+          "text": "常用斜線指令與 codex exec",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "互動介面裡按下斜線會跳出指令選單，官方內建的指令有幾十個，日常真正會用到的大概是這幾個："
+        },
+        {
+          "type": "list",
+          "items": [
+            "/permissions：改它不用問就能做的事，例如在 Auto 與 Read Only 之間切換。",
+            "/status：看目前的模型、核准政策、可寫目錄與 token 用量。",
+            "/diff：看 Git 差異，包含還沒被追蹤的新檔。",
+            "/review：請它審查工作目錄的改動，重點放在行為變化與漏掉的測試。",
+            "/init：在目前目錄產生 AGENTS.md 骨架。",
+            "/model：換模型與推理強度。",
+            "/plan：切到計畫模式，讓它先問清楚、擬好計畫再動手。",
+            "/compact：把過長的對話摘要掉，省下上下文視窗的空間。",
+            "/resume：接回之前存下來的對話；/new 則是在同一個工作階段裡重開一段。",
+            "/usage：看帳號的 token 用量，可加 daily、weekly 或 cumulative。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "不想進互動介面、想寫進腳本或 CI 的時候用 codex exec，短寫法是 codex e。它把進度輸出到標準錯誤、只把最後一則訊息印到標準輸出，所以可以直接接管線或導進檔案。預設跑在唯讀沙盒裡，要讓它改檔就明確加 --sandbox workspace-write；要機器可讀的輸出就加 --json，標準輸出會變成一行一個事件的 JSON Lines。官方也建議在 CI 裡把 --json 和 --output-last-message 一起用，一邊留下機器可讀的過程、一邊留下最後的總結。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "codex exec 的三種常見用法",
+          "code": "# 讀完儲存庫，只印出最後結論\ncodex exec \"摘要這個儲存庫的結構，列出風險最高的幾個地方\"\n\n# 允許改檔的自動化執行（預設是唯讀沙盒）\ncodex exec --sandbox workspace-write \"把 README 的安裝章節更新成目前的指令\"\n\n# 機器可讀輸出，接給其他工具處理\ncodex exec --json \"列出沒有被用到的相依套件\" | jq"
+        },
+        {
+          "type": "table",
+          "header": [
+            "步驟",
+            "指令或位置",
+            "要注意什麼"
+          ],
+          "rows": [
+            [
+              "1 安裝",
+              "curl -fsSL https://chatgpt.com/codex/install.sh | sh",
+              "也可以用 npm install -g @openai/codex 或 brew install --cask codex；Linux 與 WSL2 要先裝 bubblewrap"
+            ],
+            [
+              "2 登入",
+              "codex login",
+              "ChatGPT 帳號走訂閱額度，API key 走 API 計費；遠端機器改用 codex login --device-auth"
+            ],
+            [
+              "3 第一個任務",
+              "在專案資料夾執行 codex",
+              "先請它說明專案，再給目標、背景、限制、完成條件四件事"
+            ],
+            [
+              "4 核准與沙盒",
+              "/permissions，或家目錄下的 .codex/config.toml",
+              "預設沒有網路；workspace-write 只能改工作區，danger-full-access 要很有理由才開"
+            ],
+            [
+              "5 檢查結果",
+              "/diff、/review，加上你自己的測試",
+              "任務前後各做一次 Git 檢查點；用 /status 順便看還剩多少額度"
+            ]
+          ],
+          "caption": "安裝到驗收的五個步驟，依 OpenAI 官方文件 2026 年 9 月整理。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "先給最小權限，再慢慢放寬",
+          "text": "新手最常踩的坑是一開始就把權限開到全滿，結果它在你沒注意時動了不該動的目錄。官方文件的建議剛好相反：先用預設權限，把核准與沙盒收緊，等到某個儲存庫或某個流程確實需要才放寬。實際做法是第一次先用唯讀模式看它怎麼理解專案，確認方向對了再切到 workspace-write 讓它改檔，真的要裝套件時再單獨打開網路存取，而不是為了省事直接跳到 danger-full-access。另外，Codex 家目錄裡的 auth.json 存的是存取權杖，官方要你把它當密碼看待：不要提交進儲存庫、不要貼進工單或聊天室。"
+        },
+        {
+          "type": "paragraph",
+          "text": "跑順第一個任務之後，值得花時間的是三件事：把重複交代的規則寫進 AGENTS.md、把常用的權限組合寫進設定檔、把固定流程改成 codex exec。還在比較該用哪一個工具，或想看別家的終端機代理怎麼運作，可以接著讀這兩篇。"
+        },
+        {
+          "type": "link",
+          "text": "AI 寫程式工具總覽：Claude Code、Codex、Gemini CLI、Cursor、Copilot",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-tools-overview-2026"
+        },
+        {
+          "type": "link",
+          "text": "Claude Code 入門：認識工具與第一條學習路線",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-getting-started"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex CLI（OpenAI 官方文件：安裝方式、登入與第一個任務）",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Authentication（OpenAI 官方文件：ChatGPT 帳號與 API key 登入、登入快取）",
+          "url": "https://learn.chatgpt.com/docs/auth",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Pricing（OpenAI 官方文件：Codex 方案價格、用量估算與功能對照）",
+          "url": "https://learn.chatgpt.com/docs/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Using Codex with your ChatGPT plan（OpenAI 說明中心：Codex 包含在哪些方案）",
+          "url": "https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Agent approvals & security（OpenAI 官方文件：核准政策與沙盒組合）",
+          "url": "https://learn.chatgpt.com/docs/agent-approvals-security",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Sandbox（OpenAI 官方文件：沙盒模式、前置需求與 bubblewrap）",
+          "url": "https://learn.chatgpt.com/docs/sandboxing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Config basics（OpenAI 官方文件：config.toml 位置與優先順序）",
+          "url": "https://learn.chatgpt.com/docs/config-file/config-basic",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Custom instructions with AGENTS.md（OpenAI 官方文件：探索順序與大小上限）",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Developer commands（OpenAI 官方文件：CLI 指令、旗標與內建斜線指令）",
+          "url": "https://learn.chatgpt.com/docs/developer-commands",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Non-interactive mode（OpenAI 官方文件：codex exec 與 JSON 輸出）",
+          "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex cloud（OpenAI 官方文件：雲端任務與適用情境）",
+          "url": "https://learn.chatgpt.com/docs/cloud",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Best practices（OpenAI 官方文件：提示詞四件事與 AGENTS.md 建議）",
+          "url": "https://learn.chatgpt.com/guides/best-practices",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Environment variables（OpenAI 官方文件：安裝目錄與 CODEX_HOME 預設值）",
+          "url": "https://learn.chatgpt.com/docs/config-file/environment-variables",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Windows sandbox（OpenAI 官方文件：Windows 版本支援表）",
+          "url": "https://learn.chatgpt.com/docs/windows/windows-sandbox",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

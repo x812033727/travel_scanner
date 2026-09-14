@@ -1,14 +1,14 @@
 ---
 id: 2026-09-13-life-ai-batch-04
 title: 生活分享 AI 系列批次 04：AI 寫程式：Claude Code、Codex、Gemini CLI、Cursor、Copilot（20 篇）
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-14T13:36:43Z
 created_at: 2026-09-13T11:55:59Z
 completed_at:
-branch: codex/claude-code-tutorial-center
+branch: claude/travel-guides-tutorials-59j1dv
 depends_on:
   - 2026-09-13-life-ai-series-tooling
   - 2026-09-13-life-ai-series-catalogue
