@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">旗艦、中階、輕量三階與速度表 / Three model tiers as stepped blocks beside a speed gauge</title>
+  <desc id="desc">米色底上，三個由小到大的圓角方塊從左到右排成上升的階梯：最小的綠色方塊代表輕量模型，中等大小的深青色方塊代表中階模型，最大的藍色方塊代表旗艦模型，三個方塊都站在同一條地平線上。右側是一個半圓形的速度表，刻度弧由左到右分成綠、深青、藍三段，紅色指針指向中間偏左的位置。左上角有一行字：旗艦・中階・輕量。整張圖只有幾何形狀，沒有任何產品標誌。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- one line of text -->
+  <text x="120" y="170" font-size="60" font-weight="700" fill="#102A2B">旗艦・中階・輕量</text>
+
+  <!-- ground line -->
+  <path d="M 100 720 L 1100 720" stroke="#102A2B" stroke-width="8" stroke-linecap="round"/>
+
+  <!-- three stepped blocks: lightweight, mid-tier, flagship -->
+  <rect x="150" y="560" width="160" height="160" rx="28" fill="#2E7D5B"/>
+  <rect x="380" y="460" width="260" height="260" rx="36" fill="#0D6B68"/>
+  <rect x="710" y="340" width="380" height="380" rx="44" fill="#2F6F9F"/>
+
+  <!-- small highlight dots inside blocks to suggest size -->
+  <circle cx="230" cy="640" r="22" fill="#F7F1E8" opacity="0.9"/>
+  <circle cx="510" cy="590" r="36" fill="#F7F1E8" opacity="0.9"/>
+  <circle cx="900" cy="530" r="54" fill="#F7F1E8" opacity="0.9"/>
+
+  <!-- speed gauge -->
+  <path d="M 1160 620 A 170 170 0 0 1 1245 473" fill="none" stroke="#2E7D5B" stroke-width="30"/>
+  <path d="M 1245 473 A 170 170 0 0 1 1415 473" fill="none" stroke="#0D6B68" stroke-width="30"/>
+  <path d="M 1415 473 A 170 170 0 0 1 1500 620" fill="none" stroke="#2F6F9F" stroke-width="30"/>
+  <path d="M 1120 620 L 1540 620" stroke="#102A2B" stroke-width="8" stroke-linecap="round"/>
+  <!-- ticks -->
+  <path d="M 1174 583 L 1196 592" stroke="#102A2B" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 1330 428 L 1330 452" stroke="#102A2B" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 1486 583 L 1464 592" stroke="#102A2B" stroke-width="6" stroke-linecap="round"/>
+  <!-- needle -->
+  <path d="M 1330 620 L 1276 470" stroke="#B8442D" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="1330" cy="620" r="22" fill="#102A2B"/>
+  <circle cx="1330" cy="620" r="9" fill="#F7F1E8"/>
+</svg>

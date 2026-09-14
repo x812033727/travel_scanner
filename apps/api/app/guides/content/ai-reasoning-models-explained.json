@@ -1,0 +1,328 @@
+{
+  "slug": "ai-reasoning-models-explained",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "推理模型是什麼：o 系列、延伸思考、Deep Think 的差別",
+      "description": "推理模型不是另一種 AI，而是同一個模型多了「先想再答」的開關：回答前先產生一段內部推理 token，拆題、檢查、修正，再寫答案。這篇依 2026 年 9 月 13 日的官網整理 OpenAI、Anthropic、Google 三家對這個功能的名稱（推理強度、thinking 與 effort、thinking level 與 Deep Think）、預設值與開關位置，說明哪些題目值得開、代價是慢、貴、偶爾想太多，並用排三天行程示範開與不開的差別。",
+      "hero": {
+        "src": "/guides/ai-reasoning-models-explained/hero.jpg",
+        "alt": "一個大對話泡泡裡，左半邊是一團打結的線，往右逐漸被理順成一條直線，泡泡外有三個小齒輪",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "ChatGPT 的 Think 按鈕、Claude 的 Thinking 開關、Gemini 的 Thinking level，講的都是同一件事：讓模型在回答前先花一段看不見的力氣「想」，再寫答案。它不是另一種比較聰明的 AI，而是同一個模型多出來的一個開關；開了之後，多步驟的數學、規劃、除錯與多條件決策明顯變好，改寫、翻譯、閒聊這類題目則只會變慢變貴。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇先解釋「先想再答」在機器裡發生了什麼、你在畫面上會看到什麼，再依 2026 年 9 月 13 日查證的官網現況，把 OpenAI、Anthropic、Google 對這個功能的名稱、預設值與開關位置對應起來，用一張表整理哪些任務該開，最後用排一個三天行程示範開與不開的差別。功能名稱與方案歸屬變動很快，請以官網當下的頁面為準。"
+        },
+        {
+          "type": "heading",
+          "text": "「先想再答」在做什麼：推理 token 與你看得到的摘要",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一般回答是一次寫到底：模型讀完你的問題，從第一個字開始直接產生答案，途中沒有草稿、沒有回頭檢查、也沒有換一條路的機會。推理回答則在答案之前多了一段內部產出，OpenAI 稱為推理 token（reasoning tokens），模型用它們來拆解題目、考慮多種做法；Anthropic 的描述是模型會先重述題目、試幾種做法、檢查中間結果、放棄走不通的路，再根據這段推理寫答案；Google 的說法是「使用思考模型時，Gemini 會先在內部推理再回應」。名稱不同，做的事一樣：把原本被壓縮進答案裡、或直接被跳過的中間工作，搬到答案前面先做完。"
+        },
+        {
+          "type": "paragraph",
+          "text": "你在畫面上看到的不是那段原始思路，而是一個「思考中」的指示（Claude 會附計時器），以及答案上方一個可以展開的思考摘要。三家都明講給你看的是摘要：Anthropic 說任何設定都不會回傳原始思路，摘要由另一個模型整理；OpenAI 的 API 要另外指定才附推理摘要；Google 的思考摘要在簡單的問題上可能是空的，因為模型判斷不需要想。摘要可以拿來檢查它有沒有漏掉你的條件，但不必當成逐字的解題過程。token、上下文這些詞如果還不熟，先看下面這篇。"
+        },
+        {
+          "type": "link",
+          "text": "大型語言模型是什麼：用白話解釋 token、上下文與幻覺",
+          "url": "https://mokaair.com/zh-TW/life/what-is-a-large-language-model"
+        },
+        {
+          "type": "paragraph",
+          "text": "順帶交代名稱的來歷：OpenAI 早期把會先想再答的模型獨立成 o 系列（o1、o3、o4-mini），所以很多人把「推理模型」當成特別的一種；到 2026 年 9 月 13 日，OpenAI 的淘汰頁已排定 o1、o3-mini、o4-mini 在 2026 年 10 月 23 日下架、o3 在 12 月 11 日下架，建議改用 GPT-5.6 系列。現在三家做法一致：推理是每個主力模型都有的開關與強度設定，不再是另一條產品線。"
+        },
+        {
+          "type": "heading",
+          "text": "三家現在怎麼叫、開關在哪",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 在 API 上叫它 reasoning effort（推理強度），等級從 none、minimal、low、medium、high、xhigh 到 max，模型會依題目難易自適應；GPT-6 Astra 不接受 none，也就是一定會想，GPT-5.6 的 Sol、Terra、Luna 從 none 到 max 都可以選。ChatGPT 裡依方案不同：免費版與 Go 方案在輸入框有一個 Think 按鈕，按了會讓 GPT-5.6 Luna 多花時間想；付費方案改成一條推理滑桿，可選 Medium、High、Extra High 三級，由 GPT-5.6 Sol 回答；付費方案選著 Instant 時也可以讓 ChatGPT 對複雜問題自動多想，開關在「設定 → 一般 → Higher intelligence」。Pro 與企業方案另有 GPT-6 Astra 驅動的 GPT-6 Pro。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 叫它 thinking，深淺用 effort 調。Claude Opus 5、Claude Sonnet 5、Claude Fable 5.1 預設就開著「自適應思考」，由模型自己決定要不要想、想多深；Fable 5.1 的思考常開、關不掉，Opus 5 在 xhigh 與 max 也關不掉；Claude Haiku 4.5 用舊式的「延伸思考」，要手動開並指定思考的 token 預算。effort 分 low、medium、high、xhigh、max 五級，API 預設 high。在 Claude 聊天介面，點送出鈕旁的模型名稱可以換模型、點「Effort」選等級，滑到 Effort 上還有「Thinking」或「Extended」開關；說明中心建議 Low 與 Medium 給例行任務、也比較省額度，High 是多數模型的建議值，Max 留給需要最深推理的題目。回答時會看到帶計時器的 Thinking 指示與可展開的 Thinking 區塊。"
+        },
+        {
+          "type": "link",
+          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 在 API 上叫它 thinking level，分 minimal、low、medium、high 四級，Gemini 3 系列的 Pro、Flash、Flash-Lite 都支援；多數預設 medium，Gemini 3.1 Pro 預設 high，Gemini 3.5 Flash-Lite 預設 minimal。Gemini 應用程式是先選模型再選思考等級：點文字框下方的模型名稱選 Flash-Lite、Flash 或 Pro，再點一次選 Thinking level，有 Standard（預設，回得較快）、Extended（複雜問題，想更久）與 Deep Think 三種。Deep Think 只給 Google AI Ultra 方案，且必須先選 Pro 模型；它用平行推理同時探索多個假設，一次回答可能要等幾分鐘，好了會通知你；DeepMind 的模型頁目前叫它 Gemini 3.1 Deep Think，說明中心註明限 18 歲以上。說明中心也提醒，越進階的模型與越高的思考等級，用掉的額度越多。下面這張圖把兩條流程並排，底下是三家開關位置的對照。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-reasoning-models-explained/diagram-1.svg",
+          "alt": "上半部並排兩條流程：一般回答從問題直接到答案，推理回答在問題與答案之間多一段內部思考；下半部三欄對照 OpenAI、Anthropic、Google 在聊天工具裡的推理名稱與開關位置",
+          "width": 1600,
+          "height": 900,
+          "caption": "上半部左右對照：一般回答從問題直接到答案，推理回答在中間多一段內部思考（規劃、檢查、修正），這段推理 token 按輸出計價、你看到的是可展開的摘要；下半部是三家在聊天工具裡的名稱與開關位置，2026 年 9 月 13 日依官網整理。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained"
+        },
+        {
+          "type": "heading",
+          "text": "什麼題目值得開、什麼不用",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "判斷方法只有一條：這題的答案是不是取決於中間步驟。步驟一步接一步、後面的結果會推翻前面的假設、或者要同時滿足好幾個條件，就值得開；答案的原料已經全在你貼進去的文字裡、模型只是重新組合，就不用。三家文件的例子高度重疊：OpenAI 說推理模型適合複雜的問題解決、程式、科學推理與多步驟的代理工作；Anthropic 說思考對數學、程式、分析與長時間的代理任務有幫助，說明中心舉的例子是解數學題、程式除錯、多角度分析一個議題，並提醒它適合「不需要最新資訊」的題目；Google 建議進階的程式、數學或多步驟規劃用最高的思考等級，查事實與分類用 minimal 或 low。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "任務",
+            "開不開",
+            "為什麼"
+          ],
+          "rows": [
+            [
+              "排三天行程，有預算與時間限制",
+              "開",
+              "時間、金額、順序要同時成立，中間步驟決定答案"
+            ],
+            [
+              "算分期、旅費加手續費",
+              "開",
+              "一步錯全錯，讓模型自己檢查一遍"
+            ],
+            [
+              "程式跑出錯誤訊息，找原因",
+              "開",
+              "要假設、驗證、換假設，典型的多步驟"
+            ],
+            [
+              "三個方案各有六個條件，選一個",
+              "開",
+              "條件要逐一比對，不能憑印象"
+            ],
+            [
+              "讀一份長報告，找前後矛盾",
+              "看情況",
+              "只要摘要不用開；要交叉比對就開"
+            ],
+            [
+              "把一封信改得客氣一點",
+              "不開",
+              "原料都在信裡，重組即可"
+            ],
+            [
+              "中翻英一段介紹文",
+              "不開",
+              "沒有中間步驟，開了只是慢"
+            ],
+            [
+              "問某地今天的天氣或匯率",
+              "不開",
+              "靠搜尋，不靠推理"
+            ],
+            [
+              "幾百筆資料貼標籤、分類",
+              "不開",
+              "官網建議最低思考等級，快又省"
+            ],
+            [
+              "閒聊、打招呼",
+              "不開",
+              "一句話答完"
+            ]
+          ],
+          "caption": "任務與是否開推理的對照，依 OpenAI、Anthropic、Google 三家 2026 年 9 月 13 日的文件建議整理；「看情況」表示先不開，答案不對再開。"
+        },
+        {
+          "type": "link",
+          "text": "AI 代理（Agent）是什麼：從回答問題到替你完成任務",
+          "url": "https://mokaair.com/zh-TW/life/ai-agents-explained"
+        },
+        {
+          "type": "heading",
+          "text": "代價：慢、貴、有時想太多",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一個代價是慢。推理 token 要一個一個產生，題目越難想得越久；Anthropic 的文件寫思考開著時預期回應時間更長，模型總覽也把常開思考的 Fable 5.1 標成相對速度「較慢」；Google 的 Deep Think 以分鐘計。對一句話就能答的問題，這段等待是純粹的浪費。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二個代價是貴，而且貴在看不見的地方。三家都把推理 token 算成輸出：OpenAI 說推理 token 在 API 裡看不到，但仍占用上下文視窗、按輸出 token 計費；Anthropic 說思考用掉的 token 按輸出計費，即使思考文字沒有回傳給你，付的是完整思考的 token 數而不是摘要的長度；Google 的定價頁在輸出價格旁註明「含思考 token」。輸出又是最貴的一欄：以 2026 年 9 月 13 日的官網標價，GPT-6 Astra 每百萬 token 輸入 10 美元、輸出 50 美元，Claude Sonnet 5 輸入 2 美元、輸出 10 美元，Gemini 3.1 Pro 輸入 2 美元、輸出 12 美元。用聊天訂閱的人看不到帳單，但看得到額度：Gemini 說明中心寫越進階的模型與越高的思考等級用掉越多額度，Claude 說明中心則說 Low 與 Medium 能讓額度撐得更久。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三個代價比較隱性：想太多有時反而囉嗦或走偏。Anthropic 的 effort 文件對最高等級的提醒是，在多數工作上 max 會大幅增加成本、品質只有小幅提升，在結構化輸出或不太需要智慧的任務上可能導致過度思考；建議從預設的 high 開始，例行的事往下調。三家都讓模型自適應，簡單的題目會自己少想，但這只是減輕，不是免疫。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先用中階模型加開推理，通常比旗艦不開推理更划算",
+          "text": "推理 token 按輸出計價，開在便宜的模型上花得少。Anthropic 的選模指南寫「調整 effort 常常是比換模型更好的槓桿」，並把 Claude Haiku 4.5 列為延遲與價格最低、又有延伸思考的選擇；OpenAI 的推理文件也把 GPT-5.6 Terra 列為較低成本的推理選項。實際順序：先用中階（Sonnet 5、GPT-5.6 Terra、Gemini 3.8 Flash 這一階）開推理問一次，答案不對再換旗艦。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+        },
+        {
+          "type": "heading",
+          "text": "對照示範：排一個有預算與時間限制的三天行程",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "拿旅遊的題目來看差別最清楚。假設你問：三天兩夜，住固定的一間旅館，總預算有上限，第二天下午已訂了一個不能改的活動，第三天傍晚要到機場趕飛機，請排一份行程，交通費與門票都算進預算。難度不在知識，而在四個條件要同時成立。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不開推理時，回答來得快、讀起來順，三天各列幾個景點、附餐廳建議，看起來很完整。問題出在條件的交叉：常見的是第三天排得跟前兩天一樣滿，沒留出去機場的時間；或預算只列項目沒有加總，加起來已超過上限；或第二天的安排和你訂好的活動撞在同一時段。這不是知識錯誤，而是模型沒有回頭對照每一個條件，你要自己逐項檢查、再追問一兩輪才會收斂。"
+        },
+        {
+          "type": "paragraph",
+          "text": "開推理時，展開思考摘要多半會看到它先列出四個條件，先扣掉不能動的活動與趕飛機的時段，再把剩下的時段分配給景點，途中若發現預算超出或時間不夠，會回頭調整，最後的答案通常附上為什麼這樣排與剩餘預算。代價是多等一段時間；如果你只想要幾個景點名稱、自己再安排，這段等待就沒有必要。行程本身怎麼排，本站的旅遊攻略有各城市的範例。"
+        },
+        {
+          "type": "link",
+          "text": "Mokaair 旅遊攻略：各城市的行程範例",
+          "url": "https://mokaair.com/zh-TW/guides"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 官方文件：Reasoning models（推理 token 按輸出計費、reasoning effort 等級、GPT-6 Astra 不支援 none、推理摘要需另外指定、適用任務）",
+          "url": "https://developers.openai.com/api/docs/guides/reasoning",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 官方文件：Models（GPT-6 Astra、GPT-5.6 Sol／Terra／Luna 的定位與各自支援的 reasoning effort 等級）",
+          "url": "https://developers.openai.com/api/docs/models",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 官方文件：Pricing（GPT-6 Astra 每百萬 token 輸入 10 美元、輸出 50 美元）",
+          "url": "https://developers.openai.com/api/docs/pricing",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 官方文件：Deprecations（o1、o3-mini、o4-mini 於 2026 年 10 月 23 日下架、o3 於 12 月 11 日下架，建議改用 GPT-5.6）",
+          "url": "https://developers.openai.com/api/docs/deprecations",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：GPT-5.6 and GPT-6 Pro in ChatGPT（免費與 Go 的 Think 按鈕用 Luna、付費推理滑桿 Medium／High／Extra High 用 Sol、設定 → 一般 → Higher intelligence、GPT-6 Pro）",
+          "url": "https://help.openai.com/en/articles/20001354-gpt-56-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Thinking（先想再答的機制、思考 token 按輸出計費、摘要由另一個模型整理、預設開啟與關不掉的模型、回應時間更長）",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/thinking",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Effort（low／medium／high／xhigh／max 五級、預設 high、max 在多數工作上成本大增品質小增、可能過度思考）",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/effort",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Choosing the right model（調整 effort 常比換模型更好的槓桿、Haiku 4.5 延遲與價格最低又有延伸思考）",
+          "url": "https://platform.claude.com/docs/en/about-claude/models/choosing-a-model",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Models overview（Fable 5.1 常開自適應思考且相對速度較慢、Opus 5 與 Sonnet 5 自適應思考、Haiku 4.5 延伸思考、各模型價格）",
+          "url": "https://platform.claude.com/docs/en/models/overview",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Pricing（Claude Sonnet 5 每百萬 token 輸入 2 美元、輸出 10 美元）",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Change the model, effort, and thinking settings（送出鈕旁的模型名稱、Effort 等級與建議、Thinking／Extended 開關、帶計時器的 Thinking 指示與可展開區塊）",
+          "url": "https://support.claude.com/en/articles/8664678-change-the-model-effort-and-thinking-settings",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：When should I use web search, extended thinking, and research（延伸思考適合不需要最新資訊的複雜推理：數學、除錯、多角度分析）",
+          "url": "https://support.claude.com/en/articles/11095361-when-should-i-use-web-search-extended-thinking-and-research",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google Gemini API 官方文件：Thinking（先在內部推理再回應、thinking level 四級與各模型預設、回應價格為輸出與思考 token 總和、思考摘要可能為空、任務建議）",
+          "url": "https://ai.google.dev/gemini-api/docs/thinking",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google Gemini API 官方文件：Pricing（Gemini 3.1 Pro 每百萬 token 輸入 2 美元、輸出 12 美元，輸出價格含思考 token）",
+          "url": "https://ai.google.dev/gemini-api/docs/pricing",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Gemini 應用程式說明：Use Deep Think in Gemini Apps（限 AI Ultra、需先選 Pro 模型、模型名稱 → Thinking Level → Deep Think、需等幾分鐘、通知、18 歲以上）",
+          "url": "https://support.google.com/gemini/answer/16345172",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Gemini 應用程式說明：Gemini Apps limits and upgrades（Standard／Extended／Deep think 三種思考等級、越高等級用掉越多額度）",
+          "url": "https://support.google.com/gemini/answer/16275805",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Gemini 應用程式說明：Use Gemini Apps（文字框下方的模型名稱、Flash-Lite／Flash／Pro 三個選項）",
+          "url": "https://support.google.com/gemini/answer/13275745",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google Gemini 官方訂閱頁（Deep Think 列在 Google AI Ultra 方案）",
+          "url": "https://gemini.google/subscriptions/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google 官方部落格：Gemini 3 Deep Think is now available in the Gemini app（平行推理同時探索多個假設、限 AI Ultra）",
+          "url": "https://blog.google/products-and-platforms/products/gemini/gemini-3-deep-think/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google DeepMind 模型頁：Gemini 3.1 Deep Think（目前名稱、建立在 Gemini 3.1 Pro 之上）",
+          "url": "https://deepmind.google/models/gemini/deep-think/",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}

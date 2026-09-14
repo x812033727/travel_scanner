@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">Claude 功能地圖：對話、Projects、Artifacts、檔案、思考模式、App / Claude feature map</title>
+  <desc id="desc">結構圖。中央是「對話」：送出鍵旁邊可以換模型、調 Effort、開關 Thinking，免費版就有網頁搜尋與記憶，用量以工作階段計、每 5 小時重置。從對話連出五個功能。左上 Projects：知識庫加專案指令，每個對話都帶著背景，免費版最多 5 個、付費無上限，知識庫單檔 30 MB 只抽文字。右上 Artifacts：約 15 行以上的文件、程式、網頁、SVG、圖表放在旁邊的視窗，可以繼續改、切版本、下載，免費版也能發布成連結。左下 檔案上傳：用加號或拖進對話，支援 PDF、Word、Excel、圖片，一個對話 20 個檔案、單檔 500 MB，PDF 最多 1000 頁、前 100 頁看得到圖。右下 思考模式：先拆解、規劃再回答，有可展開的摘要，數學、規劃、多步驟分析時開，Fable 5.1 與 Opus 5 關不掉。下方 桌面版與手機 App：macOS 11、Windows 10、Linux 測試版，iOS 18.0、Android 8.0 以上，語音模式按聲波圖示。底部兩行：模型家族 Fable 5.1 最難的推理、Opus 5 複雜程式與企業工作、Sonnet 5 速度與能力平衡、Haiku 4.5 最快；免費版所有功能都能用，Pro 每月 20 美元、用量至少 5 倍，2026 年 9 月依官網查證。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">Claude 功能地圖：從對話出發的五個功能（2026 年 9 月依官網查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Claude feature map: chat at the centre, Projects, Artifacts, files, thinking and apps around it</text>
+
+  <!-- arrows from centre box (580..1020 x 350..520) -->
+  <path d="M 580 350 L 486 286" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 1020 350 L 1114 286" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 580 520 L 486 584" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 1020 520 L 1114 584" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 800 520 L 800 584" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- centre: chat -->
+  <rect x="580" y="350" width="440" height="170" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="800" y="388" font-size="20" font-weight="700" fill="#0B4F4D" text-anchor="middle">對話　Chat</text>
+  <text x="800" y="426" font-size="16" fill="#102A2B" text-anchor="middle">送出鍵旁：換模型、調 Effort、開關 Thinking</text>
+  <text x="800" y="460" font-size="16" fill="#102A2B" text-anchor="middle">免費版就有網頁搜尋與記憶</text>
+  <text x="800" y="494" font-size="16" fill="#102A2B" text-anchor="middle">用量以工作階段計，每 5 小時重置</text>
+
+  <!-- top-left: Projects -->
+  <rect x="60" y="110" width="420" height="170" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="270" y="150" font-size="19" font-weight="700" fill="#1F4E73" text-anchor="middle">Projects　專案工作區</text>
+  <text x="270" y="188" font-size="16" fill="#102A2B" text-anchor="middle">知識庫 + 專案指令，每個對話都帶著背景</text>
+  <text x="270" y="222" font-size="16" fill="#102A2B" text-anchor="middle">免費版最多 5 個，付費方案無上限</text>
+  <text x="270" y="256" font-size="16" fill="#102A2B" text-anchor="middle">知識庫單檔 30 MB，只抽取文字</text>
+
+  <!-- top-right: Artifacts -->
+  <rect x="1120" y="110" width="420" height="170" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1330" y="150" font-size="19" font-weight="700" fill="#1F4E73" text-anchor="middle">Artifacts　旁邊的視窗</text>
+  <text x="1330" y="188" font-size="16" fill="#102A2B" text-anchor="middle">約 15 行以上的文件、程式、網頁、SVG、圖表</text>
+  <text x="1330" y="222" font-size="16" fill="#102A2B" text-anchor="middle">對話裡繼續改、切換版本、下載</text>
+  <text x="1330" y="256" font-size="16" fill="#102A2B" text-anchor="middle">免費版也能發布成連結</text>
+
+  <!-- bottom-left: files -->
+  <rect x="60" y="580" width="420" height="170" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="270" y="620" font-size="19" font-weight="700" fill="#245E45" text-anchor="middle">檔案上傳　Files</text>
+  <text x="270" y="658" font-size="16" fill="#102A2B" text-anchor="middle">加號或拖進對話；PDF、Word、Excel、圖片</text>
+  <text x="270" y="692" font-size="16" fill="#102A2B" text-anchor="middle">一個對話 20 個檔案、單檔 500 MB</text>
+  <text x="270" y="726" font-size="16" fill="#102A2B" text-anchor="middle">PDF 最多 1000 頁，前 100 頁看得到圖</text>
+
+  <!-- bottom-right: thinking -->
+  <rect x="1120" y="580" width="420" height="170" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1330" y="620" font-size="19" font-weight="700" fill="#8A4A15" text-anchor="middle">思考模式　Thinking</text>
+  <text x="1330" y="658" font-size="16" fill="#102A2B" text-anchor="middle">先拆解、規劃再回答，有可展開的摘要</text>
+  <text x="1330" y="692" font-size="16" fill="#102A2B" text-anchor="middle">數學、規劃、多步驟分析時開</text>
+  <text x="1330" y="726" font-size="16" fill="#102A2B" text-anchor="middle">Fable 5.1、Opus 5 關不掉</text>
+
+  <!-- bottom-centre: apps -->
+  <rect x="580" y="590" width="440" height="160" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="800" y="628" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">桌面版與手機 App</text>
+  <text x="800" y="664" font-size="16" fill="#102A2B" text-anchor="middle">macOS 11、Windows 10、Linux 測試版</text>
+  <text x="800" y="696" font-size="16" fill="#102A2B" text-anchor="middle">iOS 18.0、Android 8.0 以上</text>
+  <text x="800" y="728" font-size="16" fill="#102A2B" text-anchor="middle">語音模式：按聲波圖示用講的</text>
+
+  <!-- footer notes -->
+  <text x="60" y="790" font-size="15" fill="#5C6B6B">模型家族：Fable 5.1 最難的推理與長任務、Opus 5 複雜程式與企業工作、Sonnet 5 速度與能力平衡、Haiku 4.5 最快</text>
+  <text x="60" y="818" font-size="15" fill="#5C6B6B">免費版五個功能都能用，Projects 最多 5 個；Pro 每月 20 美元、用量至少 5 倍；Fable 系列只在付費方案</text>
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

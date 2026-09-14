@@ -1,0 +1,362 @@
+{
+  "slug": "claude-beginner-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+      "description": "Claude 是 Anthropic 的 AI 助手，免費版就有 Projects、Artifacts、檔案上傳、延伸思考與桌面、手機 App，Pro 方案每月 20 美元。這篇用 2026 年 9 月官網查證的資訊，帶你註冊、看懂免費版與 Pro 的差別、認識六個主要功能、只講官網能確認的 Claude 與 ChatGPT 差異，示範把會議記錄整理成待辦清單，說明對話是否用於訓練的設定路徑。",
+      "hero": {
+        "src": "/guides/claude-beginner-guide/hero.jpg",
+        "alt": "一本打開的筆記本，旁邊有一個深綠色對話泡泡，插圖以簡單幾何形狀表現用 AI 助手整理筆記",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Claude 是 Anthropic 開發的 AI 助手，和 ChatGPT 一樣能聊天、寫作、讀檔案，差別在它把「放資料與指令的 Projects」「在對話旁邊直接做出網頁與圖表的 Artifacts」和「可以自己開關的思考模式」做成主要功能，而且免費版就能用到大部分；如果你已經有 ChatGPT 帳號，再開一個 Claude 免費帳號試一到兩週，成本只是一支能收簡訊的手機號碼。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇依 2026 年 9 月在 Anthropic 官網、claude.com 定價頁、Claude 說明中心與隱私中心查到的內容，帶你認識 Anthropic 與 Claude 的模型家族、完成註冊、看懂免費版與 Pro 方案的差別、逐一試過六個主要功能，再用一份台灣辦公室的會議記錄示範第一個對話，最後確認你的對話會不會被拿去訓練模型。"
+        },
+        {
+          "type": "heading",
+          "text": "Anthropic 是誰，Claude 有哪些模型",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 在官網把自己定義為「AI 安全與研究公司」，法律形式是公益公司（Public Benefit Corporation），章程寫明目的是負責任地開發與維護先進 AI；Claude 是它把研究成果變成產品的主要出口，同一套模型同時供應給一般使用者的 claude.ai、企業方案與開發者用的 API。Anthropic 也公開了一份說明 Claude 應該如何行事的文件，官網稱為 Claude 的憲法（Claude's Constitution），這在其他聊天工具比較少見。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude 不是單一模型，而是一個家族。2026 年 9 月官方文件列出的現役模型有四個：Fable 5.1 的定位是最艱難的推理與長時間自主任務；Opus 5 針對複雜的程式與企業工作；Sonnet 5 是速度與能力的平衡點；Haiku 4.5 最快、能力接近前緣。名稱後面的數字是世代，每一代都會換，本文其他地方只用系列名。一般使用者不用背這些，在 claude.ai 的模型選單裡挑一個就好；說明中心另外提醒，Fable 系列只在付費方案提供，而且消耗用量比其他模型快。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+        },
+        {
+          "type": "heading",
+          "text": "註冊 claude.ai：免費版能做什麼、Pro 多少錢",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "註冊只需要三樣東西：年滿 18 歲、一個電子郵件或 Google、Apple 帳號，以及一支能收簡訊的手機號碼。Anthropic 官網的支援地區清單列有台灣，claude.ai 與 API 都在內；說明中心寫明不接受網路電話、App 產生的號碼與市話，因為驗證碼是用簡訊寄的六位數字。步驟如下。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "打開 claude.ai，用電子郵件登入連結、Google 帳號或 Apple 帳號建立帳號；用 Apple 的「隱藏我的電子郵件」也可以，之後登入時改點「Continue with email」。",
+            "輸入手機號碼，收到六位數簡訊驗證碼後填入。",
+            "註冊流程會問你要不要讓對話用於改善模型，這一步的意義在最後一節說明，看清楚再選。",
+            "進到對話畫面後，左側是對話與 Projects 的側欄，輸入框左下角的加號用來上傳檔案，送出鍵旁邊是模型與思考模式的選單。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "免費版沒有訊息總數的公開數字，說明中心的寫法是「以工作階段計算的用量上限，每 5 小時重置」，而且可用訊息數會隨當時的流量變動；超過就等重置，或者升級。定價頁列出免費版能做的事：在網頁、iOS、Android 與桌面版聊天、寫程式與資料視覺化、寫作與編輯、網頁搜尋、跨對話的記憶、建立檔案與執行程式、延伸思考。Pro 方案官網定價為每月 20 美元，年繳換算每月 17 美元，台灣是否有當地幣別定價以升級頁為準；Pro 的用量是免費版的至少 5 倍，另有每週上限，還包含 Claude Code、Cowork、無限個 Projects、Research 功能與更多模型。要注意 Pro 不含 API 用量，寫程式串接是另外計費的。再往上是 Max 方案，從每月 100 美元起，用量是 Pro 的 5 倍或 20 倍，一般使用者不需要。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "免費版",
+            "Pro 方案"
+          ],
+          "rows": [
+            [
+              "價格",
+              "0 美元",
+              "每月 20 美元；年繳換算每月 17 美元"
+            ],
+            [
+              "用量",
+              "以工作階段計，每 5 小時重置，隨流量變動",
+              "免費版的至少 5 倍，另有每週上限"
+            ],
+            [
+              "Projects",
+              "最多 5 個",
+              "無上限"
+            ],
+            [
+              "模型",
+              "以官網為準；Fable 系列不提供",
+              "更多模型；Fable 系列以用量額度計費"
+            ],
+            [
+              "延伸思考",
+              "有",
+              "有"
+            ],
+            [
+              "Artifacts、建立檔案與執行程式",
+              "有",
+              "有"
+            ],
+            [
+              "檔案上傳、網頁搜尋、記憶",
+              "有",
+              "有"
+            ],
+            [
+              "Claude Code、Cowork、Research",
+              "無",
+              "有"
+            ],
+            [
+              "API 用量",
+              "不含",
+              "不含，另外計費"
+            ]
+          ],
+          "caption": "2026 年 9 月依 claude.com 定價頁與 Claude 說明中心整理；用量上限會隨流量與模型調整，以官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "六個主要功能：對話、Projects、Artifacts、檔案、思考模式、App",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "對話是一切的起點。送出鍵旁邊的模型名稱點開，可以換模型、調 Effort（低、中、高、特高、最高，各模型會標示 Default 的建議值）、開關 Thinking，改了之後從下一則回覆生效。免費版就有網頁搜尋，問到近期的事它會自己去查；記憶功能在 設定 → Memory 開啟後，Claude 會把你聊過的主題存成一條條可編輯的項目帶到新對話裡，不想要的可以逐條刪除或整個重設，健康、信仰這類敏感主題預設不存。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Projects 是每個主題一個獨立工作區，有自己的對話紀錄與知識庫。把合約範本、公司簡介、常用格式上傳進去，再寫一段「專案指令」（例如一律用繁體中文、回覆用條列），之後這個專案裡的每個對話都會帶著這些背景，不用每次重貼。免費版最多 5 個 Projects，付費方案無上限；知識庫每個檔案上限 30 MB，只抽取文字；付費方案在資料超過對話容量時會自動改用檢索模式，官網說容量最多可擴大 10 倍。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Artifacts 是 Claude 把「夠大、可以獨立存在的東西」放到對話旁邊另一個視窗的機制，官網的門檻是大約 15 行以上、你之後會想修改或重複使用的內容：文件、程式碼、單頁網站、SVG 圖、圖表、可互動的 React 元件都算。你可以直接說「把這份行程表做成可以勾選的網頁」，做出來之後繼續用對話改、切換版本、複製、下載，免費版也能「發布」成任何人有連結就能打開的頁面。用之前先到設定裡確認「Code execution and file creation」（程式執行與檔案建立）是開著的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "檔案上傳走輸入框左下角的加號，或直接把檔案拖進對話；支援 PDF、DOCX、CSV、TXT、HTML、ODT、RTF、EPUB、JSON、XLSX 與 JPEG、PNG、GIF、WebP 圖片，一個對話最多 20 個檔案、單檔 500 MB，圖片最大 8000 × 8000 像素。PDF 最多 1000 頁，前 100 頁會連圖表版面一起看，101 頁以後只讀文字。單一對話能裝多少內容取決於模型的脈絡視窗：付費方案上 Fable 5.1、Opus 5、Sonnet 5 是 1M token，Opus 4.8、4.7、4.6 與 Sonnet 4.6 是 500K，其餘 200K（官網換算約 500 頁文字）；免費版的數字官網沒有分開寫，以官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "上下文視窗是什麼：為什麼聊久了 AI 會忘記前面說的話，六個做法讓它記住",
+          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+        },
+        {
+          "type": "paragraph",
+          "text": "延伸思考（介面上叫 Thinking 或 Extended）開啟後，Claude 會先花時間拆解問題、規劃步驟再回答，畫面上會出現帶計時器的 Thinking 指示，回答上方有一段可展開的思考摘要。免費版就能用，適合數學、規劃、多步驟分析；日常問答關掉比較快。要注意用 Fable 5.1 或 Opus 5 時思考模式關不掉，Fable 5.1 在每個 Effort 等級都會思考。"
+        },
+        {
+          "type": "link",
+          "text": "推理模型是什麼：o 系列、延伸思考、Deep Think 的差別",
+          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+        },
+        {
+          "type": "paragraph",
+          "text": "桌面版支援 macOS 11 以上、Windows 10 以上與 Linux（測試版），從官網的下載頁取得，多了全域快捷鍵的 Quick Entry 與可安裝的桌面擴充；Claude Code 與 Cowork 只給付費方案。手機 App 在 App Store 與 Play 商店搜尋「Claude by Anthropic」，需要 iOS 或 iPadOS 18.0 以上、Android 8.0 以上；語音模式（測試版）所有方案都能用，按輸入框旁的聲波圖示就能用講的，而且可以在同一個對話裡切回打字。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-beginner-guide/diagram-1.svg",
+          "alt": "Claude 功能地圖：中央是對話（換模型、調 Effort、開關 Thinking、網頁搜尋與記憶、每 5 小時重置的用量），周圍五格分別是 Projects（知識庫與專案指令、免費版最多 5 個、單檔 30 MB）、Artifacts（15 行以上的文件、程式、網頁、SVG、圖表，可發布成連結）、檔案上傳（一個對話 20 個檔案、單檔 500 MB、PDF 1000 頁、前 100 頁看圖）",
+          "width": 1600,
+          "height": 900,
+          "caption": "從中央的對話出發，五個功能各自解決一件事；數字是 2026 年 9 月官網查證的上限。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "和 ChatGPT 差在哪：只講官網能確認的",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這一節只列 Anthropic 官網功能頁寫得出來的差別，不做沒實測的優劣評比；ChatGPT 那邊對應的功能請看另一篇入門。如果你已經習慣 ChatGPT，換到 Claude 會先注意到這幾件事。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "寫作風格：官方模型文件把 Claude 的回應描述為偏向豐富、接近人與人對話的寫法，想要精簡就在提示裡直接要求字數或格式，這在 Claude 是預期中的用法。",
+            "長文件：付費方案的新模型單一對話可以放 1M token，PDF 上限 1000 頁，再用 Projects 把常用資料固定下來；讀長合約、整本手冊是 Claude 的主場。",
+            "做出來的東西放在旁邊：Artifacts 讓網頁、圖表、文件在對話旁邊的視窗裡持續修改，而且能發布成連結。",
+            "思考模式可以自己開關：想快就關，想深就開，還能調 Effort；只有 Fable 5.1 與 Opus 5 例外。",
+            "不做的事：Claude 不產生照片或插圖，官網說明是它會用 HTML 與 SVG 畫圖表與示意圖，能看懂你上傳的圖片，但不是生圖工具；另外 Pro 方案不含 API 用量。",
+            "資料使用是明確的選項：對話要不要用於訓練，註冊時就會問你，設定路徑見最後一節。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "第一個對話：把會議記錄整理成待辦清單",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "拿一份真的會出現在台灣辦公室的東西來試：一段用 LINE 或 Google Meet 記下來的會議記錄，裡面混著決議、待辦與閒聊。目標是讓 Claude 整理成一張有負責人與期限的待辦清單，整個過程大約五分鐘。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "開新對話，模型用預設的即可，Thinking 先關掉，這種整理不需要。",
+            "把會議記錄貼進輸入框，或用加號上傳 DOCX、TXT；如果是白板照片，直接拍照上傳也讀得到。",
+            "在紀錄前面加一段說明，例如：「下面是 9 月 12 日產品會議的記錄，請整理成待辦清單，每一項列出負責人、期限與來源句子，沒有寫期限的標成『待確認』，用繁體中文與台灣用語，最後用表格呈現。」",
+            "看結果，針對錯的地方接著講：「第三項的負責人是小陳不是小林」「期限改成民國年格式」，Claude 會只改那一部分。",
+            "滿意後說「做成可以勾選的網頁」，它會產生一個 Artifact，你可以下載或發布給同事。",
+            "如果每週都要做同一件事，開一個 Project，把成員名單與待辦格式放進知識庫、規則寫進專案指令，之後貼上記錄就好。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "link",
+          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+        },
+        {
+          "type": "heading",
+          "text": "你的對話會不會拿去訓練？",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 在 2025 年更新消費者條款後，免費、Pro、Max 帳號的對話與 Claude Code 工作階段可以用來訓練新模型，但前提是你允許：隱私中心的說法是，除非你開啟這個設定、對話被安全系統標記，或你自願加入測試計畫，否則對話不會用於模型改善。新帳號在註冊流程中選一次，之後改變只影響往後的對話；刪除的對話會在 30 天內從後端移除，不會拿去訓練；無痕對話一律不用。開啟時資料會去識別化後保存最長 5 年，關閉時維持 30 天的一般保存期。Team、Enterprise 與 API 是另一套規則，不在這裡。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "「協助改善模型」的開關在哪裡",
+          "text": "網頁與桌面版：點左下角的帳號名稱 → Settings（設定）→ Privacy（隱私）→ Help improve our AI models（協助改善我們的 AI 模型），把開關切掉就好；手機 App 走同一條路徑。關掉後新的對話不再用於訓練，但已經開始訓練的模型不會倒回去。開關名稱與預設狀態以說明中心為準，註冊時那一步請看清楚再按。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Claude 定價頁：Free、Pro、Max 方案價格與功能（claude.com/pricing）",
+          "url": "https://claude.com/pricing",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：What is the Pro plan?（每月 20 美元、用量至少 5 倍、不含 API）",
+          "url": "https://support.claude.com/en/articles/8325606-what-is-the-pro-plan",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Get started with Claude（年滿 18 歲、免費版每 5 小時重置）",
+          "url": "https://support.claude.com/en/articles/8114491-get-started-with-claude",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：What are projects?（免費版 5 個、知識庫、專案指令、RAG 擴大 10 倍）",
+          "url": "https://support.claude.com/en/articles/9517075-what-are-projects",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：What are artifacts and how do I use them?（15 行門檻、類型、發布、設定開關）",
+          "url": "https://support.claude.com/en/articles/9487310-what-are-artifacts-and-how-do-i-use-them",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Change the model, effort, and thinking settings（模型選單、Effort 等級、Thinking 限制）",
+          "url": "https://support.claude.com/en/articles/8664678-change-the-model-effort-and-thinking-settings",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Upload files to Claude（檔案類型、20 個檔案、500 MB、PDF 1000 頁、Projects 單檔 30 MB）",
+          "url": "https://support.claude.com/en/articles/8241126-upload-files-to-claude",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：How large is the context window on paid Claude plans?（1M、500K、200K）",
+          "url": "https://support.claude.com/en/articles/8606394-how-large-is-the-context-window-on-paid-claude-plans",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Install Claude Desktop（macOS 11、Windows 10、Linux 測試版、Quick Entry）",
+          "url": "https://support.claude.com/en/articles/10065433-install-claude-desktop",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Install Claude for iOS（iOS 與 iPadOS 18.0 以上）",
+          "url": "https://support.claude.com/en/articles/9266462-install-claude-for-ios",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Install Claude for Android（Android 8.0 以上）",
+          "url": "https://support.claude.com/en/articles/9612887-install-claude-for-android",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Use voice mode（所有方案、測試版、聲波圖示）",
+          "url": "https://support.claude.com/en/articles/11101966-use-voice-mode",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Use Claude's chat search and memory（設定 → Memory、逐條編輯、敏感主題）",
+          "url": "https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Can Claude produce images?（不產生照片或插圖，用 HTML 與 SVG 畫圖）",
+          "url": "https://support.claude.com/en/articles/9002504-can-claude-produce-images",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic：Supported countries and regions（台灣在 claude.ai 與 API 支援清單內）",
+          "url": "https://www.anthropic.com/supported-countries",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic：Company（AI 安全與研究公司、公益公司）",
+          "url": "https://www.anthropic.com/company",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 隱私中心：Is my data used for model training?（預設不用、例外情形、無痕對話）",
+          "url": "https://privacy.claude.com/en/articles/10023580-is-my-data-used-for-model-training",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 隱私中心：How do I change my model improvement privacy settings?（Settings → Privacy → Help improve our AI models）",
+          "url": "https://privacy.claude.com/en/articles/12109829-how-do-i-change-my-model-improvement-privacy-settings",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方公告：Updates to Consumer Terms and Privacy Policy（保存 5 年或 30 天、註冊時選擇、適用方案）",
+          "url": "https://www.anthropic.com/news/updates-to-our-consumer-terms",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude Platform Docs：Models overview（Fable 5.1、Opus 5、Sonnet 5、Haiku 4.5 定位）",
+          "url": "https://platform.claude.com/docs/en/about-claude/models/overview",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}

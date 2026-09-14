@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">AI 代理的迴圈：目標、模型規劃、選工具、執行、觀察、完成或再來一輪 / The agent loop: goal, plan, pick a tool, act, observe, finish or loop again</title>
+  <desc id="desc">上排是代理處理一個任務的一輪：最左邊是你交辦目標（一句話加上限制條件），接著模型規劃（決定下一步做什麼）、選工具（從清單裡挑一個）、執行（真的動手做）、觀察結果（成功、失敗、缺什麼），完成了就交回給你審，附記錄與它假設了什麼；還沒完成就帶著結果回到模型規劃再來一輪。模型規劃有一條虛線連到中間橘色的「停下來問你」檢查點，每一輪都可能觸發：需要你補資料（帳號、地址、預算）、即將做不可逆的事（付款、寄信、刪檔）、要跨出你給的範圍（登入新網站、裝套件、連網）；你回答或核准之後回到模型規劃繼續。右邊藍色框是工具清單，也就是代理的手腳：搜尋與瀏覽器（開網頁、點按、填表）、檔案（讀、寫、改名、刪除）與程式執行、行事曆、信箱、資料庫（多半經由 MCP 或連接器接上）、付款（最敏感，第一次先不要給）。下排是三個零件的分工。模型：決定下一步，讀目標與上一步的結果，輸出要呼叫哪個工具、帶什麼參數，或判斷任務完成該回報，本身不上網、不改檔案，只產生文字。工具：動手做事，每個工具是一件具體的事，權限等於它拿得到哪些工具，工具越多能做的越多、能錯的也越多，每個工具能不能不問就用由你設定。迴圈：做、看、改，模型決定、工具執行、結果回到模型，直到完成或碰到檢查點停下來，每一輪都再送一次目前狀況給模型，所以額度與時間比聊天高得多。2026 年 9 月依官方文件整理。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+    <marker id="arrowTeal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0D6B68"/></marker>
+    <marker id="arrowOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#D97A2B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">AI 代理怎麼運作：一輪迴圈、檢查點與三個零件（2026 年 9 月查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">How an agent works: goal, plan, pick a tool, act, observe, then finish or loop again</text>
+
+  <!-- top row: one round of the loop -->
+  <rect x="60" y="150" width="200" height="110" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="160" y="200" font-size="20" font-weight="700" fill="#1F4E73" text-anchor="middle">你交辦目標</text>
+  <text x="160" y="232" font-size="15" fill="#1F4E73" text-anchor="middle">一句話＋限制條件</text>
+  <path d="M 262 205 L 312 205" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="316" y="150" width="200" height="110" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="416" y="200" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">模型規劃</text>
+  <text x="416" y="232" font-size="15" fill="#5C6B6B" text-anchor="middle">決定下一步做什麼</text>
+  <path d="M 518 205 L 568 205" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="572" y="150" width="200" height="110" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="672" y="200" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">選工具</text>
+  <text x="672" y="232" font-size="15" fill="#5C6B6B" text-anchor="middle">從清單裡挑一個</text>
+  <path d="M 774 205 L 824 205" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="828" y="150" width="200" height="110" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="928" y="200" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">執行</text>
+  <text x="928" y="232" font-size="15" fill="#5C6B6B" text-anchor="middle">真的動手做</text>
+  <path d="M 1030 205 L 1080 205" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="1084" y="150" width="200" height="110" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1184" y="200" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">觀察結果</text>
+  <text x="1184" y="232" font-size="15" fill="#5C6B6B" text-anchor="middle">成功、失敗、缺什麼</text>
+  <text x="1312" y="188" font-size="15" fill="#2E7D5B" text-anchor="middle">完成了</text>
+  <path d="M 1286 205 L 1336 205" stroke="#2E7D5B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="1340" y="150" width="200" height="110" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1440" y="200" font-size="20" font-weight="700" fill="#0B4F4D" text-anchor="middle">交回給你審</text>
+  <text x="1440" y="232" font-size="15" fill="#0B4F4D" text-anchor="middle">附記錄與它假設了什麼</text>
+
+  <!-- loop back: not done yet -->
+  <path d="M 1184 262 L 1184 300 L 470 300 L 470 266" fill="none" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrowTeal)"/>
+  <text x="827" y="335" font-size="16" font-weight="700" fill="#0D6B68" text-anchor="middle">還沒完成：帶著結果回到模型規劃，再來一輪</text>
+
+  <!-- checkpoint: stop and ask -->
+  <path d="M 360 262 L 360 394" fill="none" stroke="#D97A2B" stroke-width="4" stroke-dasharray="10 8" marker-end="url(#arrowOrange)"/>
+  <text x="372" y="365" font-size="15" fill="#D97A2B">該問就問</text>
+  <rect x="300" y="400" width="560" height="160" rx="14" fill="#FBEEE2" stroke="#D97A2B" stroke-width="4"/>
+  <text x="580" y="436" font-size="20" font-weight="700" fill="#7A4415" text-anchor="middle">停下來問你（檢查點，每一輪都可能觸發）</text>
+  <text x="580" y="470" font-size="16" fill="#7A4415" text-anchor="middle">需要你補資料：帳號、地址、預算</text>
+  <text x="580" y="497" font-size="16" fill="#7A4415" text-anchor="middle">即將做不可逆的事：付款、寄信、刪檔</text>
+  <text x="580" y="524" font-size="16" fill="#7A4415" text-anchor="middle">要跨出你給的範圍：登入新網站、裝套件、連網</text>
+  <text x="580" y="548" font-size="15" fill="#5C6B6B" text-anchor="middle">你回答或核准之後，回到模型規劃繼續</text>
+
+  <!-- tools list -->
+  <rect x="900" y="400" width="640" height="160" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1220" y="436" font-size="20" font-weight="700" fill="#1F4E73" text-anchor="middle">工具清單（代理的手腳）</text>
+  <text x="1220" y="470" font-size="16" fill="#1F4E73" text-anchor="middle">搜尋、瀏覽器（開網頁、點按、填表）</text>
+  <text x="1220" y="497" font-size="16" fill="#1F4E73" text-anchor="middle">檔案（讀、寫、改名、刪除）、程式執行</text>
+  <text x="1220" y="524" font-size="16" fill="#1F4E73" text-anchor="middle">行事曆、信箱、資料庫（多半經由 MCP 或連接器接上）</text>
+  <text x="1220" y="548" font-size="15" fill="#B8442D" text-anchor="middle">付款：最敏感，第一次先不要給</text>
+
+  <!-- bottom row: three parts -->
+  <text x="60" y="596" font-size="18" font-weight="700" fill="#102A2B">拆開來看：三個零件　Model, tools, loop</text>
+
+  <rect x="60" y="612" width="460" height="190" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="290" y="648" font-size="20" font-weight="700" fill="#0B4F4D" text-anchor="middle">模型：決定下一步</text>
+  <text x="290" y="683" font-size="16" fill="#0B4F4D" text-anchor="middle">讀目標與上一步的結果</text>
+  <text x="290" y="711" font-size="16" fill="#0B4F4D" text-anchor="middle">輸出：呼叫哪個工具、帶什麼參數</text>
+  <text x="290" y="739" font-size="16" fill="#0B4F4D" text-anchor="middle">或判斷任務完成、該回報</text>
+  <text x="290" y="767" font-size="16" fill="#0B4F4D" text-anchor="middle">本身不上網、不改檔案，只產生文字</text>
+
+  <rect x="570" y="612" width="460" height="190" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="648" font-size="20" font-weight="700" fill="#1F4E73" text-anchor="middle">工具：動手做事</text>
+  <text x="800" y="683" font-size="16" fill="#1F4E73" text-anchor="middle">每個工具是一件具體的事</text>
+  <text x="800" y="711" font-size="16" fill="#1F4E73" text-anchor="middle">權限＝它拿得到哪些工具</text>
+  <text x="800" y="739" font-size="16" fill="#1F4E73" text-anchor="middle">工具越多，能做的越多、能錯的也越多</text>
+  <text x="800" y="767" font-size="16" fill="#1F4E73" text-anchor="middle">每個工具能不能不問就用，由你設定</text>
+
+  <rect x="1080" y="612" width="460" height="190" rx="14" fill="#FBEEE2" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1310" y="648" font-size="20" font-weight="700" fill="#7A4415" text-anchor="middle">迴圈：做 → 看 → 改</text>
+  <text x="1310" y="683" font-size="16" fill="#7A4415" text-anchor="middle">模型決定、工具執行、結果回到模型</text>
+  <text x="1310" y="711" font-size="16" fill="#7A4415" text-anchor="middle">直到完成，或碰到檢查點停下來</text>
+  <text x="1310" y="739" font-size="16" fill="#7A4415" text-anchor="middle">每一輪都再送一次目前狀況給模型</text>
+  <text x="1310" y="767" font-size="16" fill="#7A4415" text-anchor="middle">所以額度與時間比聊天高得多</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

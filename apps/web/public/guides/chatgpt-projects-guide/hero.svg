@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">把背景收進一個專案 / Keep the context in one project</title>
+  <desc id="desc">米色底上畫著一個打開的深青色資料夾，資料夾的標籤在左上角。資料夾裡露出三樣東西：左邊一個白色的對話泡泡，裡面有兩條淺青色的文字線條；中間一張藍色邊的白色檔案，上面有幾條藍色線條與一個折角；右邊一張橘色的便條紙，上面有兩條深色線條。資料夾周圍散布幾個藍色與橘色的小圓點。下方一行字：把背景收進一個專案。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- soft background shapes -->
+  <circle cx="220" cy="210" r="140" fill="#E3F0EF"/>
+  <circle cx="1400" cy="170" r="90" fill="#E6F0F7"/>
+  <circle cx="1440" cy="740" r="110" fill="#E6F2EC"/>
+
+  <!-- folder back -->
+  <path d="M 360 250 H 560 L 610 200 H 820 A 24 24 0 0 1 844 224 V 250 H 1240 A 40 40 0 0 1 1280 290 V 640 A 40 40 0 0 1 1240 680 H 400 A 40 40 0 0 1 360 640 Z" fill="#0D6B68"/>
+
+  <!-- items inside the folder -->
+  <!-- speech bubble -->
+  <path d="M 440 250 H 700 A 30 30 0 0 1 730 280 V 400 A 30 30 0 0 1 700 430 H 540 L 480 480 L 495 430 H 440 A 30 30 0 0 1 410 400 V 280 A 30 30 0 0 1 440 250 Z" fill="#FFFFFF" stroke="#102A2B" stroke-width="8" stroke-linejoin="round"/>
+  <rect x="450" y="300" width="220" height="18" rx="9" fill="#E3F0EF"/>
+  <rect x="450" y="350" width="150" height="18" rx="9" fill="#E3F0EF"/>
+
+  <!-- document -->
+  <path d="M 740 225 H 900 L 960 285 V 520 A 16 16 0 0 1 944 536 H 740 A 16 16 0 0 1 724 520 V 241 A 16 16 0 0 1 740 225 Z" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M 900 225 V 285 H 960" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="8" stroke-linejoin="round"/>
+  <rect x="760" y="325" width="160" height="14" rx="7" fill="#2F6F9F" opacity="0.5"/>
+  <rect x="760" y="365" width="120" height="14" rx="7" fill="#2F6F9F" opacity="0.5"/>
+  <rect x="760" y="405" width="140" height="14" rx="7" fill="#2F6F9F" opacity="0.5"/>
+
+  <!-- sticky note -->
+  <g transform="rotate(8 1090 380)">
+    <rect x="990" y="270" width="200" height="200" rx="12" fill="#D97A2B"/>
+    <rect x="1015" y="315" width="150" height="14" rx="7" fill="#F7F1E8" opacity="0.85"/>
+    <rect x="1015" y="355" width="100" height="14" rx="7" fill="#F7F1E8" opacity="0.85"/>
+  </g>
+
+  <!-- folder front -->
+  <path d="M 340 440 H 1300 A 40 40 0 0 1 1340 480 L 1300 660 A 40 40 0 0 1 1260 700 H 380 A 40 40 0 0 1 340 660 Z" fill="#2E9C97"/>
+  <path d="M 340 440 H 1300 A 40 40 0 0 1 1340 480 L 1300 660 A 40 40 0 0 1 1260 700 H 380 A 40 40 0 0 1 340 660 Z" fill="none" stroke="#0D6B68" stroke-width="10" stroke-linejoin="round"/>
+
+  <!-- small accents -->
+  <circle cx="180" cy="620" r="18" fill="#D97A2B"/>
+  <circle cx="250" cy="720" r="12" fill="#2F6F9F"/>
+  <circle cx="1380" cy="330" r="14" fill="#D97A2B"/>
+  <circle cx="1060" cy="120" r="10" fill="#2F6F9F"/>
+
+  <!-- one line of text -->
+  <text x="800" y="830" font-size="48" font-weight="700" fill="#102A2B" text-anchor="middle">把背景收進一個專案</text>
+</svg>

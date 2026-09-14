@@ -275,6 +275,21 @@ Deploy-time sequence: deploy, then on the host
 `docker compose exec api python -m app.cli guides-import --actor-email <admin> --dry-run`,
 read the plan, run it again with `--publish`.
 
+Producing a pack is tooled too, since the third batch rewrote the same scratchpad script for
+the third time: `app/guides/pack_ingest.py`, run as `uv run python -m app.guides.pack_cli`.
+`ingest --from <workdir> --slug <slug>` turns a writing agent's workspace (`pack.json`,
+`diagram-N.svg`, a `hero.svg` or an `images.json` naming Commons files, `notes.md`) into the
+pack and its pictures — validating with `ArticlePack` and the write path's own rules, rendering
+`hero.svg` with headless Chromium, fetching photographs through the Commons API with the licence
+gate, writing sizes and credits — and writes nothing if anything is wrong. `lint [--kind life]
+[--render-dir …] [--catalogue …]` runs the rules below over the packs that ship, renders every
+SVG to PNG for the reviewer's eyes, and compares a series catalogue with the packs.
+`tests/test_guides_content_pack.py` holds every `life` pack to its errors; the travel packs
+predate it and were reviewed by hand (running `lint` over them shows what that review let
+through: a few 14 px labels and diagram numbers the non-zh-TW texts do not carry). The
+生活分享 AI series is planned in `docs/life-ai-series.md`, and its writing brief is
+`docs/life-ai-series-brief.md`.
+
 ### Editorial rules (the review standard for a pack)
 
 Images:
@@ -299,6 +314,15 @@ Images:
   running out of a box and labels piled on each other all passed the mechanical checks.
 - `alt` describes the picture; it does not repeat the caption. The hero is a photograph,
   not a diagram, because it doubles as the share card.
+- A 生活分享 article about software has no photograph to take. Its hero is then a self-drawn
+  illustration — `hero.svg`, committed next to it — rendered to `hero.jpg` by
+  `python -m app.guides.pack_cli ingest`, or a Commons photograph of generic hardware (a
+  keyboard, a phone in a hand, a desk) under the same licences. A product's logo, wordmark,
+  icon, mascot or interface screenshot never appears in a hero, a diagram or an inline photo:
+  trademarks and interface copyright are not ours to license, so the product is named in
+  plain text. An illustration hero carries at most one short line of text, because the fonts
+  of the machine that rendered it decide its look; labels belong on the diagram, which stays
+  SVG and renders in the reader's own fonts.
 
 Partner buttons:
 

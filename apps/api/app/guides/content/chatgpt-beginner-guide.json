@@ -1,0 +1,371 @@
+{
+  "slug": "chatgpt-beginner-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+      "description": "第一次打開 ChatGPT 該做什麼？這篇依 OpenAI 官網 2026 年 9 月的說明，帶你用 Email、Google、Apple 或 Microsoft 帳號註冊，弄懂 13 歲門檻、免費版 GPT-5.6 Luna 與每天 3 個檔案的限制、入門方案 ChatGPT Go 的美國定價，認識新對話、模型、附件、語音與暫時對話，並示範一個台灣生活情境的提問與追問，附免費版與 Go 比較表和該關掉的隱私設定。",
+      "hero": {
+        "src": "/guides/chatgpt-beginner-guide/hero.jpg",
+        "alt": "一個白色對話泡泡裡有三行文字線條和一個游標，右下角是一顆綠色的圓形起始按鈕，米色底，寫著「從第一個對話開始」",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "ChatGPT 是 OpenAI 推出的聊天式 AI 工具，第一次用不需要付錢，也不一定要先註冊：打開 chatgpt.com 就能輸入問題，註冊帳號之後才會保存對話紀錄。這篇回答新手最常問的三件事：怎麼註冊、免費版夠不夠用、付費入門方案叫什麼要多少錢。結論是先用免費版把第一個對話做完，真的撞到上限再考慮升級。"
+        },
+        {
+          "type": "paragraph",
+          "text": "整篇的方案名、價格、額度與模型名稱都在 2026 年 9 月依 OpenAI 官網與 help center 查證。讀完你會知道四種登入方式與年齡規定、免費版跟入門方案 ChatGPT Go 的差別、介面上每個按鈕在哪裡，並跟著示範完成第一個有用的對話：把一封中文訊息改成客氣的英文，再追問到滿意為止。"
+        },
+        {
+          "type": "heading",
+          "text": "註冊：四種登入方式與年齡規定",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "打開 chatgpt.com 或手機 App，登入頁會出現「Continue with Google」「Continue with Apple」「Continue with Microsoft」三顆按鈕，以及用 Email 加密碼註冊的欄位。help center 說明，用 Google、Apple 或 Microsoft 註冊的帳號之後要一直用同一種方式登入；用 Email 加密碼註冊的，只要 Email 相同，之後也可以改用這三種登入。只用手機號碼註冊目前在美國與印度逐步開放，其他地區只是有限度的試驗，而且綁定後的手機號碼不能更換，台灣使用者用 Email 或既有的 Google、Apple 帳號最省事。"
+        },
+        {
+          "type": "paragraph",
+          "text": "年齡規定寫在 OpenAI 的使用條款（適用台灣的 Rest of World 版本，2026 年 1 月 1 日生效）：至少 13 歲，未滿 18 歲要有父母或監護人同意。help center 另外說明，OpenAI 會依帳號存在時間、活動時段等訊號推測使用者是否未滿 18 歲，判定為青少年的帳號會自動套用 ChatGPT for Teens 的內容保護與功能限制；成年人如果被誤判，可以透過 Persona 用自拍或證件驗證年齡，證件與自拍在驗證後 7 天內刪除。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "打開 chatgpt.com，或安裝官方 App：iOS 在 App Store、Android 在 Google Play 搜尋「OpenAI ChatGPT」，認明發行者是 OpenAI。",
+            "選一種登入方式：Google、Apple、Microsoft 或 Email 加密碼。Android App 登入時會叫出 Chrome 或 Brave 瀏覽器，沒有安裝會出錯。",
+            "填名字與生日，同意使用條款；未滿 18 歲請先取得家長同意。",
+            "登入後先進設定把「Improve the model for everyone」關掉（做法見文末提醒），再開始第一個對話。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "免費版能做什麼、卡在哪裡",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "免費版目前的預設模型是 GPT-5.6 Luna。OpenAI 在 2026 年 8 月 6 日的公告把它擴大給免費使用者，並宣布日常文字對話不設次數上限，只保留防濫用的保護機制。遇到比較難的問題可以按 Think 讓 Luna 多想一下：手機 App 在輸入框的「+」選單裡，網頁版正在逐步推出。免費版拿不到 GPT-5.6 Sol，那是 Plus 以上的付費方案才有的模型。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "檔案上傳：每天 3 個檔案，單張圖片最大 20 MB，Library 檔案庫容量 500 MB。",
+            "產圖、語音、資料分析：各有獨立的用量上限，達到上限時畫面會提示；免費版每天能產幾張圖官網沒有寫死數字，以官網為準。",
+            "語音：免費版由 GPT-Live-1 mini 提供，每天有時數上限，數字以官網為準。",
+            "廣告：官網寫明免費版在部分國家可能出現廣告，OpenAI 已宣布先在美國測試。",
+            "記憶：免費版也有記憶功能，但 Go 與 Plus 的記憶更長、能參考的對話更多。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
+          "url": "https://mokaair.com/zh-TW/life/ai-free-vs-paid-plans-2026"
+        },
+        {
+          "type": "heading",
+          "text": "付費入門方案是 ChatGPT Go：多少錢、多了什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPT 的個人方案由低到高是 Free、Go、Plus、Pro。入門付費方案叫 ChatGPT Go，OpenAI 官方公告寫的是美國定價每月 8 美元，並開放給所有支援 ChatGPT 的國家；再上一級的 Plus 每月 20 美元。台灣有沒有台幣定價，help center 的多幣別計費頁只說在少數國家提供當地貨幣計費，沒有列出台灣，所以以你登入 chatgpt.com 後看到的價格為準。透過 iOS 或 Android App 內購訂閱的話，由 App Store 或 Google Play 扣款，會以當地貨幣顯示，訂閱綁在購買當下登入的 ChatGPT 帳號上。另外從 2025 年 5 月 1 日起，沒有在帳號填台灣統一編號的使用者會被加收 5% 營業稅，電子發票（eGUI）會寄到帳號的 Email。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Go 多了什麼？官方公告寫的是訊息、檔案上傳、產圖額度都是免費版的 10 倍，記憶更長、上下文更大，並能用專案、任務、自訂 GPT 與 Library。但 Go 一樣只有 GPT-5.6 Luna（含 Think），沒有 GPT-5.6 Sol；要 Sol 與推理強度滑桿（Instant、Medium、High、Extra High）就要到 Plus。新手的判斷方式很簡單：一天只是問問題、改改文字，免費版夠；一天要傳超過 3 個檔案或常常產圖，再看 Go。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "免費版 Free",
+            "ChatGPT Go",
+            "ChatGPT Plus"
+          ],
+          "rows": [
+            [
+              "月費",
+              "0",
+              "美國 8 美元；台灣以官網為準",
+              "20 美元"
+            ],
+            [
+              "預設模型",
+              "GPT-5.6 Luna",
+              "GPT-5.6 Luna",
+              "GPT-5.6 Sol"
+            ],
+            [
+              "深入思考",
+              "Think 按鈕（Luna）",
+              "Think 按鈕（Luna）",
+              "推理強度滑桿（Sol）"
+            ],
+            [
+              "日常文字對話",
+              "不限次數，有防濫用機制",
+              "不限次數",
+              "上限比 Go 高"
+            ],
+            [
+              "檔案上傳",
+              "每天 3 個",
+              "免費版的 10 倍",
+              "上限比 Go 高"
+            ],
+            [
+              "產圖",
+              "有上限，以官網為準",
+              "免費版的 10 倍",
+              "上限比 Go 高"
+            ],
+            [
+              "語音",
+              "GPT-Live-1 mini，有每日時數上限",
+              "GPT-Live-1 mini，每天最多 3 小時",
+              "GPT-Live-1，每天最多 3 小時"
+            ],
+            [
+              "記憶與上下文",
+              "基本",
+              "更長",
+              "比 Go 更長"
+            ],
+            [
+              "廣告",
+              "部分國家可能出現",
+              "官方表示未來可能測試",
+              "官網未提及"
+            ]
+          ],
+          "caption": "2026 年 9 月依 OpenAI 官網與 help center 整理；價格為美國定價，台灣實際價格以登入後看到的為準。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+        },
+        {
+          "type": "heading",
+          "text": "介面導覽：新對話、模型、附件、語音、暫時對話",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "網頁版登入後，左側是側欄，最上面是 New chat（新對話），下面依時間列出你所有的對話；手機 App 的側欄藏在左上角的漢堡選單裡，對話列在 Recents 底下。畫面中央下方是輸入框，官方叫它 composer，新手會用到的按鈕都在它周圍。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "新對話：每換一個題目就開一個新對話，之後從側欄找回來比較容易；貼進輸入框的文字超過 10,000 個字元時會自動變成附件。",
+            "模型選擇：畫面上方顯示目前的模型。免費版與 Go 只有 GPT-5.6 Luna，難題按 Think；Plus 以上才會看到 Sol 與推理強度選項。先把提問練好，比換模型有用。",
+            "附件與拍照：按輸入框左邊的「+」，選加入照片與檔案；手機 App 可以直接開相機拍照上傳。支援 PNG、JPEG 與非動態 GIF，單張最大 20 MB。",
+            "語音：輸入框右側的語音圖示，第一次使用會請你挑一個聲音；手機 App 的 Settings → Voice 裡有 Start with Voice，打開後新對話會直接進入語音。",
+            "暫時對話：在新對話頁面右上角按膠囊狀的 Temporary 按鈕。暫時對話不會出現在側欄、不會產生新的記憶，但 OpenAI 基於安全理由最多保留 30 天；覺得有用可以事後存進對話紀錄。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "heading",
+          "text": "第一個對話：把一封中文訊息改成客氣的英文",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一次提問最容易犯的錯是只丟一句「幫我翻譯」。把背景、對象、語氣、格式一次講清楚，回答的品質差很多。以下用一個台灣旅客常遇到的情境示範，分成 5 步：你訂了東京的民宿，想請房東讓你提早入住。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "開一個新對話，貼上這段提示詞：「我是台灣旅客，下週去東京住你們的民宿。請把下面這段話改成客氣但不卑微的英文訊息給房東，長度 3 句以內，不要用太正式的商業用語：『我們的班機早上 7 點到，請問可以中午 12 點先入住嗎？如果不行，行李可以先寄放嗎？』」",
+            "看回答時檢查三件事：意思有沒有跑掉、語氣像不像你、有沒有多出你沒說的內容，例如自作主張加了折扣要求。",
+            "追問一：「太長了，縮成 2 句，把行李寄放放在第一句。」在同一個對話裡追問，它記得前面的內容，不必重貼原文。",
+            "追問二：「再給我一個更輕鬆的版本，然後用一句話說明兩個版本的差別。」比較兩個版本，你就知道哪些用字讓語氣變輕鬆。",
+            "存下來：滿意的版本直接複製到你的訊息 App；這個對話會留在左側欄，下次改別的訊息可以回來接著問。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "同樣的做法可以套到所有文字工作：先給角色與情境（我是誰、對象是誰），再給限制（長度、語氣、格式），最後附原文。追問時只講要改的地方，不要每次重寫整段；多數人做到第 2 步就停了，第 3 步與第 4 步的追問才是把回答改到能用的關鍵。牽涉到事實的回答，例如營業時間、價格、規定，一定另外查證，ChatGPT 會把不確定的內容寫得很肯定。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/chatgpt-beginner-guide/diagram-1.svg",
+          "alt": "第一次使用 ChatGPT 的五個步驟流程圖：1 註冊、2 選模型、3 提問、4 追問、5 存下來，每一步下面列出要做的事，下方另有隱私設定與免費版夠不夠用的提醒。",
+          "width": 1600,
+          "height": 900,
+          "caption": "從註冊到把結果存下來的五個步驟，每一步對應正文的章節；下方兩格是第一次就該做的設定與升級判斷。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+        },
+        {
+          "type": "link",
+          "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
+          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+        },
+        {
+          "type": "heading",
+          "text": "手機 App 與網頁的差別",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "核心功能一樣：同一個帳號在網頁、iOS、Android 之間，對話紀錄、記憶與訂閱都同步。差別在操作習慣與幾個平台限制。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "拍照與語音：手機 App 拍照上傳最順手，語音也能設成一開新對話就啟動；網頁版適合貼長文、整理檔案。",
+            "訂閱：App 內購由 App Store 或 Google Play 收費、以當地貨幣顯示；在網頁訂的要回 chatgpt.com 管理。help center 提醒，升級到 Pro 必須從網頁操作，也不要在兩個平台重複訂閱，以免被扣兩次。",
+            "Android：登入流程需要 Chrome 或 Brave，官方建議把 Chrome 設成預設瀏覽器。",
+            "iPhone：可以在 iOS 設定裡把 ChatGPT 接到 Apple Intelligence 與 Siri，Siri 遇到適合的問題會先詢問你，再轉給 ChatGPT。",
+            "匯出資料：網頁與 Android App 都能在 Settings → Data controls 匯出全部對話，壓縮檔會寄到 Email，最多 7 天送達，下載連結 24 小時內有效。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "第一次用就該檢查的隱私設定",
+          "text": "登入後點個人頭像（Profile）→ Settings → Data Controls，把「Improve the model for everyone」關掉，之後的新對話就不會拿去訓練模型；這個設定套用整個帳號，不分裝置。再到 Settings → Personalization → Memory 看記憶是開的還是關的，不想被記住的事用暫時對話問。身分證字號、信用卡號、別人的個資不要貼進對話，就算關掉訓練，對話仍會留在你的帳號紀錄裡。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI Help Center：The ChatGPT home page（不註冊也能用、New chat、側欄、帳號能解鎖的功能）",
+          "url": "https://help.openai.com/en/articles/9125172-the-chatgpt-home-page",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Can I change how I log into my account（Email、Google、Microsoft、Apple 登入方式）",
+          "url": "https://help.openai.com/en/articles/4936824-can-i-change-how-i-log-into-my-account-authentication-method",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Phone-only signups（手機號碼註冊的開放地區與限制）",
+          "url": "https://help.openai.com/en/articles/10388702-phone-only-signups",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Terms of Use（Rest of World，2026 年 1 月 1 日生效；13 歲與 18 歲規定）",
+          "url": "https://openai.com/policies/row-terms-of-use/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Is ChatGPT safe for all ages（未滿 13 歲不適用、13 到 18 歲需家長同意）",
+          "url": "https://help.openai.com/en/articles/8313401-is-chatgpt-safe-for-all-ages",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Age prediction in ChatGPT（年齡推測、ChatGPT for Teens、Persona 驗證）",
+          "url": "https://help.openai.com/en/articles/12652064-age-prediction-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Free Tier FAQ（不限次數文字對話、Think、GPT-5.6 Luna、廣告、各項用量上限）",
+          "url": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI：Improving GPT-5.6 Sol in ChatGPT and expanding access to GPT-5.6 Luna for free users（2026 年 8 月 6 日公告）",
+          "url": "https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：GPT-5.6 and GPT-6 Pro in ChatGPT（各方案模型與推理強度選項）",
+          "url": "https://help.openai.com/en/articles/20001354-gpt-5-6-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：File Uploads FAQ（免費版每天 3 個檔案、20 MB、500 MB Library）",
+          "url": "https://help.openai.com/en/articles/8555545-file-uploads-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI：Introducing ChatGPT Go, now available worldwide（美國 8 美元、免費版 10 倍額度、廣告測試）",
+          "url": "https://openai.com/index/introducing-chatgpt-go/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：What is ChatGPT Go（Go 的功能、Think、無 GPT-5.6 Sol）",
+          "url": "https://help.openai.com/en/articles/11989085-what-is-chatgpt-go",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：What is ChatGPT Plus（每月 20 美元與內容）",
+          "url": "https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Multi-currency billing（當地貨幣計費僅限少數國家）",
+          "url": "https://help.openai.com/en/articles/10421635-multicurrency-billing",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Taiwan VAT and eGUI（2025 年 5 月 1 日起 5% 營業稅與電子發票）",
+          "url": "https://help.openai.com/en/articles/11173733-taiwan-vat-and-egui",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Release Notes（GPT-Live-1 語音時數、Think、10,000 字元轉附件等更新）",
+          "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Image Inputs FAQ（「+」加入照片與檔案、支援格式）",
+          "url": "https://help.openai.com/en/articles/8400551-image-inputs-for-chatgpt-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Temporary Chat FAQ（Temporary 按鈕、不留紀錄、最多保留 30 天）",
+          "url": "https://help.openai.com/en/articles/8914046-temporary-chat-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Data Controls FAQ（Settings → Data Controls → Improve the model for everyone）",
+          "url": "https://help.openai.com/en/articles/7730893-data-controls-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Android App FAQ 與 iOS App FAQ（Chrome 登入、App 內購、Apple Intelligence、匯出資料）",
+          "url": "https://help.openai.com/en/articles/8142208-chatgpt-android-app-faq",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">六個 AI 工具比較矩陣：免費版、入門價格、強項、資料放哪裡 / Six AI tools compared: free tier, entry plan, strengths, data location</title>
+  <desc id="desc">六列六個工具、四個面向的比較矩陣。ChatGPT（OpenAI，美國）：免費版文字對話不限次數，檔案、圖片、語音另有額度；入門付費 Go 8 美元（美國定價）、Plus 20 美元；強項是功能最齊、使用者最多，同帳號可用 Codex；支援名單有台灣，美國公司，可關「為所有人改善模型」或用臨時聊天。Claude（Anthropic，美國）：免費版有 Sonnet、Haiku 模型與搜尋、記憶、檔案、語音；Pro 20 美元，年繳換算 17 美元；強項是長文件、寫作、程式，Pro 含 Claude Code；支援名單有台灣，美國公司，隱私設定可關模型改善，無痕對話不用於改善。Gemini（Google，美國）：免費版 Gemini 3.6 Flash、圖片生成、Deep Research、15 GB 雲端空間；Google AI Plus 165 元、AI Pro 650 元台幣；強項是與 Gmail、文件、YouTube 整合並有台幣定價；有台灣、含繁體中文，全球伺服器，可關「保留活動記錄」，關掉後只保留 72 小時。Codex（OpenAI，美國）：Free 方案可試小任務，不含圖片生成；隨 ChatGPT Plus 20 美元；寫程式代理，有網頁、CLI、編輯器、iOS；台灣與資料隨 ChatGPT。MiniMax 海螺 AI（上海稀宇科技，中國）：免費可生成影片但下載有浮水印；海螺 Standard 價格以官網為準，Token Plan Plus 22 美元；強項是影片、語音、音樂與開放權重模型 M3；國際版網站可開，由新加坡公司營運，中國版資料存放在中國境內。DeepSeek（杭州深度求索，中國）：網頁與 App 全部免費、無廣告、無內購；沒有個人付費方案；免費、MIT 授權開源、能看圖；民眾可用，公務機關 2025 年起全面禁用，資料在中國境內存放。底注：價格為 2026 年 9 月 13 日各家官網幣別，Google 有台幣定價，其餘以美元計。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">六個 AI 工具比較矩陣：免費版、入門價格、強項、資料放哪裡（2026 年 9 月查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">ChatGPT / Claude / Gemini / Codex / MiniMax / DeepSeek: free tier, entry plan, strengths, availability and data location</text>
+
+  <!-- header row -->
+  <rect x="60" y="106" width="1480" height="44" rx="10" fill="#E3F0EF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="80" y="136" font-size="17" font-weight="700" fill="#102A2B">工具（公司）</text>
+  <text x="310" y="136" font-size="17" font-weight="700" fill="#102A2B">免費版能做什麼</text>
+  <text x="600" y="136" font-size="17" font-weight="700" fill="#102A2B">入門付費方案（每月）</text>
+  <text x="890" y="136" font-size="17" font-weight="700" fill="#102A2B">強項</text>
+  <text x="1180" y="136" font-size="17" font-weight="700" fill="#102A2B">台灣可用性與資料存放地</text>
+
+  <!-- row 1 ChatGPT y=160 -->
+  <rect x="60" y="160" width="1480" height="100" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="80" y="198" font-size="18" font-weight="700" fill="#1F4E73">ChatGPT</text>
+  <text x="80" y="226" font-size="15" fill="#5C6B6B">OpenAI・美國</text>
+  <text x="310" y="194" font-size="16" fill="#102A2B">文字對話不限次數</text>
+  <text x="310" y="220" font-size="16" fill="#102A2B">檔案、圖片、語音另有額度</text>
+  <text x="600" y="194" font-size="16" fill="#102A2B">Go 8 美元（美國定價）</text>
+  <text x="600" y="220" font-size="16" fill="#102A2B">Plus 20 美元</text>
+  <text x="890" y="194" font-size="16" fill="#102A2B">功能最齊、使用者最多</text>
+  <text x="890" y="220" font-size="16" fill="#102A2B">同帳號可用 Codex</text>
+  <text x="1180" y="188" font-size="16" fill="#102A2B">支援名單有台灣；美國公司</text>
+  <text x="1180" y="214" font-size="16" fill="#102A2B">可關「為所有人改善模型」</text>
+  <text x="1180" y="240" font-size="16" fill="#102A2B">或用臨時聊天</text>
+
+  <!-- row 2 Claude y=270 -->
+  <rect x="60" y="270" width="1480" height="100" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="80" y="308" font-size="18" font-weight="700" fill="#1F4E73">Claude</text>
+  <text x="80" y="336" font-size="15" fill="#5C6B6B">Anthropic・美國</text>
+  <text x="310" y="304" font-size="16" fill="#102A2B">Sonnet、Haiku 模型</text>
+  <text x="310" y="330" font-size="16" fill="#102A2B">搜尋、記憶、檔案、語音</text>
+  <text x="600" y="304" font-size="16" fill="#102A2B">Pro 20 美元</text>
+  <text x="600" y="330" font-size="16" fill="#102A2B">（年繳換算 17 美元）</text>
+  <text x="890" y="304" font-size="16" fill="#102A2B">長文件、寫作、程式</text>
+  <text x="890" y="330" font-size="16" fill="#102A2B">Pro 含 Claude Code</text>
+  <text x="1180" y="298" font-size="16" fill="#102A2B">支援名單有台灣；美國公司</text>
+  <text x="1180" y="324" font-size="16" fill="#102A2B">隱私設定可關模型改善</text>
+  <text x="1180" y="350" font-size="16" fill="#102A2B">無痕對話不用於改善</text>
+
+  <!-- row 3 Gemini y=380 -->
+  <rect x="60" y="380" width="1480" height="100" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="80" y="418" font-size="18" font-weight="700" fill="#1F4E73">Gemini</text>
+  <text x="80" y="446" font-size="15" fill="#5C6B6B">Google・美國</text>
+  <text x="310" y="408" font-size="16" fill="#102A2B">Gemini 3.6 Flash</text>
+  <text x="310" y="434" font-size="16" fill="#102A2B">圖片生成、Deep Research</text>
+  <text x="310" y="460" font-size="16" fill="#102A2B">15 GB 雲端空間</text>
+  <text x="600" y="414" font-size="16" fill="#102A2B">Google AI Plus 165 元</text>
+  <text x="600" y="440" font-size="16" fill="#102A2B">Google AI Pro 650 元（台幣）</text>
+  <text x="890" y="414" font-size="16" fill="#102A2B">Gmail、文件、YouTube 整合</text>
+  <text x="890" y="440" font-size="16" fill="#102A2B">有台幣定價</text>
+  <text x="1180" y="408" font-size="16" fill="#102A2B">有台灣，含繁體中文；全球伺服器</text>
+  <text x="1180" y="434" font-size="16" fill="#102A2B">可關「保留活動記錄」</text>
+  <text x="1180" y="460" font-size="16" fill="#102A2B">關掉後只保留 72 小時</text>
+
+  <!-- row 4 Codex y=490 -->
+  <rect x="60" y="490" width="1480" height="100" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="80" y="528" font-size="18" font-weight="700" fill="#0B4F4D">Codex</text>
+  <text x="80" y="556" font-size="15" fill="#5C6B6B">OpenAI・美國</text>
+  <text x="310" y="524" font-size="16" fill="#102A2B">Free 方案可試小任務</text>
+  <text x="310" y="550" font-size="16" fill="#102A2B">不含圖片生成</text>
+  <text x="600" y="524" font-size="16" fill="#102A2B">隨 ChatGPT Plus</text>
+  <text x="600" y="550" font-size="16" fill="#102A2B">20 美元</text>
+  <text x="890" y="524" font-size="16" fill="#102A2B">寫程式代理</text>
+  <text x="890" y="550" font-size="16" fill="#102A2B">網頁、CLI、編輯器、iOS</text>
+  <text x="1180" y="524" font-size="16" fill="#102A2B">隨 ChatGPT，同上</text>
+  <text x="1180" y="550" font-size="16" fill="#5C6B6B">同一個帳號、同一套設定</text>
+
+  <!-- row 5 MiniMax y=600 -->
+  <rect x="60" y="600" width="1480" height="100" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="80" y="630" font-size="18" font-weight="700" fill="#8A4A14">MiniMax</text>
+  <text x="80" y="654" font-size="18" font-weight="700" fill="#8A4A14">海螺 AI</text>
+  <text x="80" y="682" font-size="15" fill="#5C6B6B">上海稀宇科技・中國</text>
+  <text x="310" y="634" font-size="16" fill="#102A2B">可生成影片</text>
+  <text x="310" y="660" font-size="16" fill="#102A2B">下載有浮水印</text>
+  <text x="600" y="634" font-size="16" fill="#102A2B">海螺 Standard（官網為準）</text>
+  <text x="600" y="660" font-size="16" fill="#102A2B">Token Plan Plus 22 美元</text>
+  <text x="890" y="634" font-size="16" fill="#102A2B">影片、語音、音樂</text>
+  <text x="890" y="660" font-size="16" fill="#102A2B">開放權重模型 M3</text>
+  <text x="1180" y="628" font-size="16" fill="#102A2B">國際版網站可開，以官網為準</text>
+  <text x="1180" y="654" font-size="16" fill="#102A2B">國際版由新加坡公司營運</text>
+  <text x="1180" y="680" font-size="16" fill="#B8442D">中國版資料存放在中國境內</text>
+
+  <!-- row 6 DeepSeek y=710 -->
+  <rect x="60" y="710" width="1480" height="100" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="80" y="748" font-size="18" font-weight="700" fill="#8A4A14">DeepSeek</text>
+  <text x="80" y="776" font-size="15" fill="#5C6B6B">杭州深度求索・中國</text>
+  <text x="310" y="744" font-size="16" fill="#102A2B">網頁與 App 全部免費</text>
+  <text x="310" y="770" font-size="16" fill="#102A2B">無廣告、無內購</text>
+  <text x="600" y="744" font-size="16" fill="#102A2B">沒有個人付費方案</text>
+  <text x="890" y="744" font-size="16" fill="#102A2B">免費、MIT 授權開源</text>
+  <text x="890" y="770" font-size="16" fill="#102A2B">能看圖</text>
+  <text x="1180" y="738" font-size="16" fill="#102A2B">民眾可用；公務機關</text>
+  <text x="1180" y="764" font-size="16" fill="#102A2B">2025 年起全面禁用</text>
+  <text x="1180" y="790" font-size="16" fill="#B8442D">資料在中國境內存放</text>
+
+  <text x="60" y="850" font-size="15" fill="#5C6B6B">價格為 2026 年 9 月 13 日各家官網幣別：Google 有台幣定價，其餘以美元計；海螺 AI 各方案價格以官網為準。</text>
+  <text x="1540" y="870" font-size="15" fill="#5C6B6B" text-anchor="end">© Mokaair 製圖 2026</text>
+</svg>

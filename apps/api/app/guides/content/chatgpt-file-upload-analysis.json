@@ -1,0 +1,339 @@
+{
+  "slug": "chatgpt-file-upload-analysis",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "上傳 PDF、Excel 給 ChatGPT：分析、摘要與抓重點",
+      "description": "把租屋合約 PDF、信用卡帳單 PDF、社團收支 Excel 丟給 ChatGPT，它能摘要、找條款、比對兩份、算總和與畫圖。依 OpenAI help center 2026 年 9 月的說明整理支援的檔案類型、單檔 512 MB 與免費版每天 3 個檔案的上限、資料分析怎麼讀試算表，給你先問結構、再針對問、要頁碼與儲存格、最後自己抽查的提問模板，以及掃描檔、合併儲存格、太長檔案這些盲點與該遮的個資。",
+      "hero": {
+        "src": "/guides/chatgpt-file-upload-analysis/hero.jpg",
+        "alt": "一份白色文件與一張帶綠色網格的試算表沿著一條虛線箭頭被送進一個大的墨綠色對話泡泡，泡泡裡有三行文字線，米色底，寫著「把檔案交給對話」",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "把一份 PDF 或 Excel 拖進 ChatGPT，然後問「幫我整理重點」，是很多人第一次覺得它真的有用的時刻，也是最容易被它帶錯方向的時刻。這篇回答的問題是：檔案上傳到底能傳什麼、怎麼問才會抓到重點、它看不到什麼。結論是三句話：文字型的 PDF 與乾淨的試算表它讀得好，掃描檔與合併儲存格它讀不好；先問檔案的結構再問細節，要它附頁碼或儲存格；數字類的結論一定自己抽查一格。"
+        },
+        {
+          "type": "paragraph",
+          "text": "整篇的檔案類型、大小與數量上限、保存期限與訓練規則，都在 2026 年 9 月依 OpenAI help center 查證。讀完你會用三個台灣情境把這件事練熟：租屋合約 PDF 找押金與提前解約條款、信用卡帳單 PDF 抓出年費與分期利息、社團收支 Excel 算每月結餘並找出可疑的一筆；也會知道它出錯時長什麼樣子，以及合約與帳單上傳前該先遮掉哪些個資。"
+        },
+        {
+          "type": "heading",
+          "text": "怎麼上傳：三種方式、能傳什麼、上限在哪",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "網頁版與手機 App 的做法一樣：按輸入框左邊的「+」，選「加入照片與檔案」（Add photos & files），從電腦或手機挑檔案；網頁版也可以把檔案直接拖進輸入框，或把複製的圖片貼上；手機 App 按「+」之後可以直接開相機，把紙本合約或帳單拍下來上傳。帳號有開放連接器的話，「+」選單裡還能從 Google Drive、OneDrive、SharePoint 挑檔案。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "支援的類型：help center 列出 XLSX、XLS、CSV、TSV、DOCX、PPTX、PDF、TXT，以及 JSON、XML、YAML、Markdown 這類文字檔；圖片支援 PNG、JPEG 與非動態 GIF。Google 文件（.gdoc）不支援，要先另存成 DOCX 或 PDF。",
+            "單檔大小：任何檔案最大 512 MB；文字與文件類每個檔案最多 200 萬 token；CSV 與試算表大約 50 MB 以內，視每一列的大小而定；圖片每張最大 20 MB。",
+            "數量：免費版每天 3 個檔案，官網說尖峰時段可能再調低；付費方案是每 3 小時最多 80 個檔案，Go 的說法是上限比免費版高，確切數字以官網為準。一個對話能放幾個檔案，官網說依上傳類型、模型與方案而異，沒有寫死。",
+            "檔案庫（Library）：上傳過的檔案會存進 Library 方便重複使用，容量免費版 500 MB、Go 4 GB、Plus 20 GB、Pro 100 GB。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "免費版一天 3 個檔案的意思是：租屋合約、帳單、收支表各傳一次就用完了。同一個對話裡追問不用重傳，所以把要問的事在同一個對話裡問完；要反覆用同一批檔案，可以放進專案（Projects）。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT Projects：把檔案、指令與對話收在一個工作區",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-projects-guide"
+        },
+        {
+          "type": "heading",
+          "text": "PDF：摘要、找條款、比對兩份",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPT 讀 PDF 的方式是把檔案裡的數位文字抽出來，圖片一律丟掉；只有 Enterprise 方案有讀 PDF 內嵌圖片的 Visual Retrieval，個人方案都沒有。所以判斷一份 PDF 讀不讀得好，只看一件事：用滑鼠能不能在 PDF 裡選取文字。房仲或代書用 Word 轉出來的合約、銀行 App 下載的電子帳單，都是文字型，讀得好；影印後掃描的合約、手機拍的帳單照片存成的 PDF，裡面只有圖片，它抽不到字，回答會是空的或亂編的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "租屋合約的用法。上傳後第一句先問：「這份合約有幾條、各條標題是什麼？先不要解讀。」確認它讀到了全文，再問：「押金幾個月、提前解約的違約金怎麼算、修繕責任怎麼分，每一項都附條號與頁碼。」拿到答案後翻到它說的那一條核對，條號對不上就是它在編。比對兩份合約（例如房東改過的新版）就把兩份一起上傳，問：「以第一份為準，列出第二份新增、刪除、改了金額或天數的條文，做成表格。」"
+        },
+        {
+          "type": "paragraph",
+          "text": "信用卡帳單的用法一樣。先問：「這份帳單有哪些區塊、消費明細有幾筆？」再問：「找出年費、分期付款利息、循環利息、逾期費用這幾項，各是多少錢、在哪一頁。」要看兩個月的變化就上傳兩份帳單，請它列出金額差最大的五筆。帳單裡的表格如果是圖片，它同樣看不到，改用下一段的做法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "掃描檔怎麼辦。help center 明白寫著，圖片型的表格、掃描檔與版面複雜的檔案，它可能無法可靠抽出正確數值。有三條路：一是用手機 App 直接拍照上傳，圖片輸入可以辨識照片裡的文件，但只適合一兩頁，而且要它先逐字念出金額，再核對每個數字；二是先用手機的掃描功能或掃描 App 做文字辨識（OCR），存成有文字層的 PDF 再上傳；三是把關鍵段落自己打字貼進對話。"
+        },
+        {
+          "type": "heading",
+          "text": "Excel／CSV：它會寫程式讀，能算能畫",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "試算表跟 PDF 走的是不同的路。上傳 XLSX 或 CSV 後，ChatGPT 會啟動官網叫做「資料分析」（Data analysis，舊稱 Advanced Data Analysis）的功能：它不是用眼睛看表格，而是寫 Python 程式在一個 Jupyter 環境裡執行，把檔案讀成資料表再計算。上傳完它會先秀出一張可以捲動的互動表格，右上角的雙箭頭可以放大看全部欄列；圖表方面長條、折線、圓餅、散佈四種可以切換成互動圖表，直方圖、盒鬚圖、熱圖這些也畫得出來，只是靜態的。這個功能免費版也能用，只是額度比付費方案緊。"
+        },
+        {
+          "type": "paragraph",
+          "text": "拿一份社團收支表示範，欄位是日期、項目、類別、收入、支出、經手人。先問：「這份表有哪些欄位、共幾列、日期從哪天到哪天？有沒有空白或格式不一致的儲存格？」它會順手告訴你日期有兩種寫法、金額欄有幾格是文字。接著問：「依月份算收入、支出、結餘，做成表格並畫折線圖。」再問：「列出支出金額最大的十筆，以及同一天同金額重複出現的列，附列號。」最後問：「把類別為餐飲的列加總，並列出你用了哪些列。」這四個問題涵蓋了它最擅長的四件事：總和、分組、找異常、畫圖。兩張表（例如上下學期各一份）一起上傳，它會依共同的欄位合併後再算。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官網對試算表的建議只有一句：欄名清楚、一列一筆資料。第一列是標題、每一欄只放一種東西、金額欄不要夾雜「約」「元」這類文字，它算出來的結果就穩；表頭佔了三列、右邊另外放一塊備註的那種表，先另存一份乾淨的再傳。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "數字類的結論，要它列出算法，自己抽查一格",
+          "text": "只要答案裡有金額、筆數、百分比，就加一句「列出你怎麼算的：篩選了哪些列、相加的是哪一欄、排除了什麼」。它寫出來的算法可能跟你想的不一樣，例如把退款那幾列也加進支出。然後打開原檔挑一格對：一個月的結餘、一筆最大的支出，對得上再用它的結論；對不上就把那一格指給它看，要它重算並說明差在哪裡。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 資料分析：上傳 CSV 讓它跑程式畫圖表",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-data-analysis-csv"
+        },
+        {
+          "type": "heading",
+          "text": "提問模板：先問結構，再針對問，最後要出處",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "不管是 PDF 還是試算表，會出錯的提問幾乎都是同一種：檔案一上傳就問「幫我分析」。下面分成 5 步依序做，每一步都在同一個對話裡進行，免費版一天 3 個檔案的額度才不會白花。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "第 1 步，先問結構：「這份檔案有哪些章節或欄位、共幾頁或幾列？先列出來，不要分析。」它列的東西跟你打開檔案看到的對不上，就是沒讀到全文，先解決這個問題再往下。",
+            "第 2 步，針對問並限定範圍：「只看第 5 條到第 8 條」「只用 2026 年 1 到 6 月的列」。範圍越窄，答案越準，也越不容易被太長的檔案截斷影響。",
+            "第 3 步，要出處：PDF 要它附條號與頁碼，試算表要它附列號或儲存格位置，例如「每個數字後面標它來自哪一列」。沒有出處的結論不要直接用。",
+            "第 4 步，要算法：數字類的問題加一句「列出你怎麼算的：篩選條件、相加的是哪幾列」。它會把程式邏輯用白話寫出來，你才有東西可以核對。",
+            "第 5 步，抽查：打開原檔，挑一條條款、一格數字對一次。對得上再往下問，對不上就把錯的地方指給它看，要它重算。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/chatgpt-file-upload-analysis/diagram-1.svg",
+          "alt": "上傳檔案到得出結論的五步流程圖：1 上傳、2 先問結構、3 針對問、4 要出處與算法、5 抽查，右側列出支援的檔案類型、單檔 512 MB、免費版每天 3 個檔案等上限，以及它看不到的東西，下方是隱私與抽查提醒。",
+          "width": 1600,
+          "height": 900,
+          "caption": "左邊五個步驟由上往下做，對應正文的提問模板；右邊兩格是能傳什麼與它看不到什麼，下方是上傳前的隱私與抽查提醒，數字都以正文為準。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "它看不到的東西，以及出錯時長什麼樣子",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "下面四種情況它不會報錯，只會給你一個看起來很合理的答案。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "合併儲存格：程式讀試算表時，合併過的儲存格只有左上角那一格有值，其餘都是空白。「類別」欄用合併儲存格做成分組標題的表，分組加總會把後面的列全歸到空白類別。上傳前取消合併並往下填滿，或直接告訴它「A 欄的空白代表跟上一列相同」。",
+            "圖片裡的文字：PDF 內嵌的圖片、掃描頁、Word 裡貼的截圖，在文字型讀取下全部被丟掉。它會根據前後文猜圖裡寫什麼，這是幻覺最常出現的地方。",
+            "太長的檔案：單檔上限是 200 萬 token，但能一次讀進上下文視窗的只有前面一部分，剩下的會放進搜尋索引，問到相關內容時才撈片段回來；help center 用 Enterprise 版說明了這個機制，個人方案沒有公布確切數字。症狀是後半本的條款「找不到」或答得很籠統，做法是拆檔、指定頁數範圍，或先請它列目錄再逐章問。",
+            "格式混雜：日期同時有「2026/1/5」與「1 月 5 日」兩種寫法、金額欄有逗號或全形數字，程式會把它們當成文字，月份分組與加總就會漏掉那些列。第 1 步問結構時要它順便檢查格式，就是為了這個。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "出錯的樣子通常有四種：條號或頁碼對不上原檔、引用了一段原檔裡找不到的文字、總和跟你用計算機加起來的不同、把表頭那一列當成資料算進去。看到任何一種，把錯的地方指出來要它重讀，或開新對話重傳乾淨的檔案。"
+        },
+        {
+          "type": "link",
+          "text": "上下文視窗是什麼：為什麼聊久了 AI 會忘記前面說的話，六個做法讓它記住",
+          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+        },
+        {
+          "type": "link",
+          "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
+          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+        },
+        {
+          "type": "table",
+          "header": [
+            "檔案類型",
+            "能做什麼",
+            "常見錯",
+            "怎麼問"
+          ],
+          "rows": [
+            [
+              "文字型 PDF（合約、電子帳單）",
+              "摘要、找條款、比對兩份、抓費用項目",
+              "頁碼條號對不上、後半本找不到",
+              "先問有幾條幾頁，再要它附條號與頁碼"
+            ],
+            [
+              "掃描 PDF、紙本照片",
+              "只能靠圖片辨識，適合一兩頁",
+              "數字讀錯、整段憑空補上",
+              "先做 OCR 再傳；或要它逐字念出來再算"
+            ],
+            [
+              "Excel、CSV",
+              "總和、分組、找異常、畫圖、合併兩張表",
+              "合併儲存格變空白、日期與金額格式混雜",
+              "先問欄位與格式，再要它列算法與列號"
+            ],
+            [
+              "Word、PPT、TXT",
+              "摘要、改寫、抓待辦事項",
+              "內嵌圖片與圖表被丟掉",
+              "要它列出讀到的章節，圖裡的內容自己補成文字"
+            ],
+            [
+              "圖片（PNG、JPEG）",
+              "看單張表格、收據、告示",
+              "模糊或斜拍時數字讀錯",
+              "一張一問，要它先轉成文字再回答"
+            ]
+          ],
+          "caption": "2026 年 9 月依 OpenAI help center 的檔案上傳與資料分析說明整理；掃描檔與圖片的辨識品質依原檔而異。"
+        },
+        {
+          "type": "heading",
+          "text": "隱私：存多久、會不會拿去訓練、上傳前先遮什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "上傳的檔案跟著那個對話一起保存；刪掉對話後，檔案會在 30 天內從 OpenAI 的系統刪除。Library 跟對話分開管理：刪對話不會刪掉 Library 裡的檔案，要另外去刪。暫時對話（Temporary chat）裡上傳的檔案不會存進帳號或 Library，但 OpenAI 基於安全理由最多保留 30 天。資料分析環境裡的檔案多久清掉，官網只說依方案不同，以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "會不會拿去訓練：個人方案（Free、Go、Plus、Pro）預設會把對話內容用來改善模型，help center 明確說內容包含上傳的檔案。關掉的方法是點個人頭像 → Settings → Data Controls，把「Improve the model for everyone」關掉，整個帳號的裝置都會套用；暫時對話在保持暫時的期間也不會拿去訓練。Business 與 Enterprise 方案預設不訓練。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "合約：遮掉雙方姓名、身分證字號、地址、電話與簽名，留條文就好。用 PDF 編輯軟體塗黑，或列印後塗黑再拍照。",
+            "帳單：遮掉卡號、姓名、地址，只留消費明細與費用欄；銀行 App 通常可以只匯出交易明細。",
+            "收支表：把經手人姓名改成代號，帳號欄整欄刪掉再上傳。",
+            "別人的資料：社團成員名冊、客戶資料這類含他人個資的檔案，沒有取得同意就不要上傳。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI Help Center：File Uploads FAQ（單檔 512 MB、200 萬 token、試算表約 50 MB、圖片 20 MB、免費版每天 3 個、每 3 小時 80 個、文字型讀取丟掉圖片）",
+          "url": "https://help.openai.com/en/articles/8555545-file-uploads-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Free Tier FAQ（免費版每天 3 個檔案、尖峰時段可能調低、資料分析有獨立上限）",
+          "url": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：What types of files are supported?（XLSX、XLS、CSV、TSV、DOCX、PPTX、PDF、TXT、JSON、XML、YAML、Markdown；.gdoc 不支援）",
+          "url": "https://help.openai.com/en/articles/8983675-what-types-of-files-are-supported",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：File storage and Library in ChatGPT（Library 容量免費版 500 MB、Go 4 GB、Plus 20 GB、Pro 100 GB）",
+          "url": "https://help.openai.com/en/articles/20001052-file-storage-and-library-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Data analysis with ChatGPT（Python 與 Jupyter 環境、互動表格、互動圖表類型、連接器、掃描檔與圖片型表格的限制、欄名清楚一列一筆）",
+          "url": "https://help.openai.com/en/articles/8437071-data-analysis-with-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Extracting Insights with ChatGPT Data Analysis（圖表類型、合併資料集、選取欄列提問、放大表格）",
+          "url": "https://help.openai.com/en/articles/9213685-extracting-insights-with-chatgpt-data-analysis",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Image Inputs FAQ（「+」加入照片與檔案、拖曳、貼上、PNG、JPEG、非動態 GIF）",
+          "url": "https://help.openai.com/en/articles/8400551-chatgpt-image-inputs-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Visual Retrieval with PDFs FAQ（只有 Enterprise 讀 PDF 內嵌圖片）",
+          "url": "https://help.openai.com/en/articles/10416312-visual-retrieval-with-pdfs-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Optimizing File Uploads in ChatGPT Enterprise（長檔案只有前段進上下文，其餘進搜尋索引的機制）",
+          "url": "https://help.openai.com/en/articles/10029836-optimizing-file-uploads-in-chatgpt-enterprise",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Chat and File Retention Policies in ChatGPT（檔案跟著對話保存、刪除後 30 天內清除、暫時對話 30 天、資料分析檔案依方案）",
+          "url": "https://help.openai.com/en/articles/8983778-chat-and-file-retention-policies-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：How do I delete files I upload?（Library 與對話分開管理、到 Library 刪檔）",
+          "url": "https://help.openai.com/en/articles/8983762-how-do-i-delete-files-i-upload",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Temporary Chat FAQ（暫時對話的檔案不存進帳號或 Library、不拿去訓練、最多保留 30 天）",
+          "url": "https://help.openai.com/en/articles/8914046-temporary-chat-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Data Controls FAQ（Settings → Data Controls → Improve the model for everyone）",
+          "url": "https://help.openai.com/en/articles/7730893-data-controls-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：How your data is used to improve model performance（訓練內容包含上傳的檔案、Business 與 Enterprise 預設不訓練）",
+          "url": "https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：What is ChatGPT Go?（檔案上傳與資料分析上限比免費版高）",
+          "url": "https://help.openai.com/en/articles/11989085-what-is-chatgpt-go",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Projects in ChatGPT（專案裡的檔案可跨對話使用、專案內容與訓練設定）",
+          "url": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}

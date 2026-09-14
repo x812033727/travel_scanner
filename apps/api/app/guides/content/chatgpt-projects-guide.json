@@ -1,0 +1,336 @@
+{
+  "slug": "chatgpt-projects-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "ChatGPT Projects：把檔案、指令與對話收在一個工作區",
+      "description": "ChatGPT Projects（專案）把指令、檔案與對話收在同一個工作區，免費版也能用。這篇依 OpenAI 官網 2026 年 9 月的說明，用「日本自助旅行」與「接案客戶」兩個情境建立第一個專案、寫專案指令，弄懂每個專案 Free 5 個、Go 與 Plus 25 個、Pro 40 個的檔案上限、預設記憶與專案限定記憶的差別，並用一張表分清楚專案、自訂 GPT 與記憶怎麼分工。",
+      "hero": {
+        "src": "/guides/chatgpt-projects-guide/hero.jpg",
+        "alt": "米色底上一個打開的深青色資料夾，裡面露出一個白色對話泡泡、一張藍色檔案與一張橘色便條，下方一行字「把背景收進一個專案」。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "ChatGPT Projects（專案）是把一段指令、幾個檔案和多個對話收在同一個工作區的功能，用來解決每開一個新對話就得重貼背景的問題。依 OpenAI help center 2026 年 9 月的說明，專案在免費版、Go、Plus、Pro 都能用，數量不限，差別只在每個專案能放幾個檔案。結論是：只要同一件事會問超過三次，就值得開一個專案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇用兩個情境貫穿：準備一趟日本自助旅行，以及接一個接案客戶。讀完你會照著側欄的 New project 建立第一個專案、寫出一段好用的專案指令、知道檔案該放什麼與各方案的上限、弄懂專案裡的對話和外面的對話差在哪、記憶會不會跨專案，最後用一張表分清楚專案、自訂 GPT 與記憶各自適合什麼。"
+        },
+        {
+          "type": "heading",
+          "text": "專案是什麼、解決什麼問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "沒有專案的時候，你每次問東京行程都要重講一次：幾月幾號去、幾個人、預算多少、要用繁體中文回答。對話一多，哪一個才是最新版也找不到。專案把三樣東西綁在一起：一段只在這個專案裡生效的指令、一組所有對話都能讀的檔案、以及任意多個對話。help center 把它叫做 smart workspace，適合寫作、研究、規劃這類會重複、會演進的工作，在手機開始的對話可以到網頁接著做。"
+        },
+        {
+          "type": "paragraph",
+          "text": "誰能用？help center 寫明專案開放給所有免費與付費方案，但必須登入帳號；專案數量沒有上限，付費與否影響的是每個專案能放幾個檔案。網頁、iOS、Android 都有，2026 年 7 月起新版桌面 App 也看得到既有的專案。本文的兩個情境會一路用到最後：一個叫「日本自助旅行」的專案，放訂房與航班資料，負責排行程與翻譯訊息；一個叫「客戶 A 接案」的專案，放需求文件與報價單，負責回信與整理待辦。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/chatgpt-projects-guide/diagram-1.svg",
+          "alt": "ChatGPT 專案的結構圖：左邊一個專案框裡有專案指令、檔案與三個對話，指令與檔案用箭頭接到每個對話；右邊對照沒有專案時，每個對話都要各自重貼背景；下方列出各方案每個專案的檔案上限。",
+          "width": 1600,
+          "height": 900,
+          "caption": "左邊是一個專案的結構：指令與檔案由所有對話共用；右邊是沒有專案時每個對話各自重貼背景的樣子。下方的檔案上限依 2026 年 9 月的 help center。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "建立第一個專案：從側欄的 New project 開始",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以下用網頁版說明；手機 App 的側欄藏在左上角的選單裡，項目名稱相同，免費版照著做就能完成。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "在左側欄找到 New project（新專案）並點下去；手機 App 先打開左上角的側欄。",
+            "輸入名稱，例如「日本自助旅行 2026 秋」，順手挑一個圖示與顏色，之後在側欄一眼就找得到。",
+            "進入專案後，點右上角的三個點 → Project settings，在指令欄位寫下這個專案的規則（下一節有範例），存檔。",
+            "在同一個設定畫面選記憶模式：Default memory（預設記憶）或 Project-only memory（專案限定記憶），差別見「記憶」那一節；建立後也能回來改，改動可能要幾個小時才生效。",
+            "回到專案首頁按 Add files 上傳檔案：PDF、試算表、文件、圖片都可以，也可以直接貼一段文字當來源；一次最多選 10 個檔案。",
+            "在專案裡按新對話開始問。已經在專案外聊過的對話，可以直接拖進專案，或在該對話的選單選 Move to project，移入後就會套用專案的指令與檔案。用自訂 GPT 開的對話與暫時對話不能移入。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "建好之後，專案會出現在側欄；常用的專案可以釘選，做完的對話可以封存。要整個刪掉時，在專案名稱旁的選單選 Delete project，裡面的檔案、對話、指令會一起永久刪除，無法復原，刪之前先把要留的對話移出去。"
+        },
+        {
+          "type": "heading",
+          "text": "專案指令怎麼寫：旅行與接案兩個範例",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "專案指令只在這個專案裡生效，而且會蓋過你在 Settings → Personalization 設定的全域自訂指令。help center 給的範例是「Act like my marketing mentor. Be concise. Use bullet points. Ask clarifying questions.」，四句話分別講角色、長度、格式、什麼時候要先問。照這個骨架用中文寫就好，一段 5 到 8 句最剛好，太長反而每次都被稀釋。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "旅行專案：「這是我和家人 2026 年 11 月的日本自助旅行。一律用繁體中文回答；金額用日圓與台幣並列；排行程之前先問清楚日期、人數與住宿地點再開始；每天的行程控制在三個景點以內；不確定的營業時間或票價要標明「請自行查證」，不要編一個數字。」",
+            "接案專案：「我是接案的平面設計師，客戶是 A 公司，回覆一律稱呼對方為 A 公司窗口。所有回覆用條列，每點不超過兩行；報價與交期以我上傳的報價單為準，不要自己估；幫我寫給客戶的訊息時用客氣但不卑微的語氣，先給中文版再給英文版。」"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "兩段範例都把「先問什麼」寫進去了，這是專案指令最值得放的一句：它讓 ChatGPT 在資料不夠時停下來問你，而不是自己補一個假設。指令改了之後，已經產生的回答不會回頭改寫，只有之後送出的訊息才照新規則走；想換一種做法時，開一個新對話再試最乾淨。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 自訂指令與記憶功能：讓它記住你的偏好，每次都用台灣繁體中文回答",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-custom-instructions-memory"
+        },
+        {
+          "type": "link",
+          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+        },
+        {
+          "type": "heading",
+          "text": "檔案：支援類型、每個專案的上限、免費版限制",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "專案接受 PDF、試算表、文件、圖片，也接受直接貼上的文字；2026 年 2 月起還能貼 Google Drive 檔案或資料夾、Slack 頻道的連結當來源，並把某一則回答存成專案來源（在回答的選單選 Save to project）。要注意的是，除了 Enterprise 之外，其他方案讀 PDF 只抓文字，夾在裡面的圖片會被丟掉，所以掃描成圖片的訂房確認單要先轉成文字，或直接把內容貼上去。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "每個專案的檔案數：Free 5 個、Go 與 Plus 25 個、Pro（以及 Business、Enterprise、Edu）40 個；一次最多上傳 10 個；專案數量不限。",
+            "單檔大小：一律 512 MB 以內；文字與文件類每個檔案最多 2M（200 萬）token；試算表約 50 MB；圖片 20 MB。",
+            "免費版另有每天 3 個檔案的上傳次數限制，所有方案每 3 小時最多 80 個；Library 檔案庫容量 Free 500 MB、Go 4 GB、Plus 20 GB、Pro 100 GB。",
+            "檔案滿了怎麼辦：help center 的建議是刪掉舊檔、把多個檔案合併成一個，或拆成兩個專案。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "以旅行專案為例，5 個檔案的免費額度可以這樣配：航班與訂房確認合併成一個 PDF、想去的店與景點清單一個、交通票券資訊一個、保險與緊急聯絡一個，剩一個留給臨時加的東西。接案專案則放客戶的需求文件、報價單、品牌規範與過去往來的重點；合約金額這種會變的數字，改了就重傳新版，不要在對話裡口頭更正。"
+        },
+        {
+          "type": "link",
+          "text": "上傳 PDF、Excel 給 ChatGPT：分析、摘要與抓重點",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-file-upload-analysis"
+        },
+        {
+          "type": "link",
+          "text": "上下文視窗是什麼：為什麼聊久了 AI 會忘記前面說的話，六個做法讓它記住",
+          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+        },
+        {
+          "type": "heading",
+          "text": "專案裡的對話跟外面差在哪：記憶會不會跨專案",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在專案裡開的每個對話，一開始就帶著專案指令與檔案，你不必再貼。help center 說專案有內建記憶，會記得這個專案裡建立過的對話和檔案；Plus 與 Pro 在專案裡提問時，ChatGPT 會優先參考專案內的對話與檔案。專案裡一樣能用 canvas、產圖、語音與網頁搜尋，2026 年 8 月起語音對話也能讀到專案的來源與指令；付費方案多了 Deep research 與代理模式。Study Mode 不適用於專案內的對話。"
+        },
+        {
+          "type": "paragraph",
+          "text": "記憶會不會跨專案，取決於你選的模式。Default memory（預設記憶）：對話可以參考你的記憶，也可以參考專案外與其他專案的對話，反過來專案裡的內容也會被外面的對話參考。Project-only memory（專案限定記憶）：不參考你原本的記憶，只參考同一個專案內的對話，專案內的內容也不會流到外面；代價是 ChatGPT Work（付費方案的代理功能）在這種專案裡不能用。兩種模式都要先在 Settings → Personalization → Memory 打開 Reference saved memories 與 Reference chat history 才會運作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "什麼時候用專案限定記憶？接案客戶就是典型：你不會希望 A 公司的報價出現在給 B 公司的信裡。把接案專案設成專案限定，切換後這個專案的資訊會從外面的記憶移除，過幾個小時生效。旅行專案用預設記憶就好，讓它知道你偏好的旅行步調反而省事。專案記憶沒有清單可以看，想讓它忘掉某個對話，只能刪掉或移出那個對話。另外，Free、Plus、Pro 帳號如果開著「Improve the model for everyone」，專案內容也可能被用於訓練模型，接案資料敏感的話先到 Settings → Data Controls 關掉。"
+        },
+        {
+          "type": "heading",
+          "text": "專案、自訂 GPT、記憶怎麼分工",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "三個功能都在做同一件事：讓 ChatGPT 不必每次從零開始，差別在放的位置與生效範圍。專案是「一件事」的工作區，指令、檔案、對話都在裡面，自己用之外也能分享給別人一起用，2025 年 10 月起所有方案都能分享，Free 最多 5 位、Go 與 Plus 10 位、Pro 100 位協作者。自訂 GPT 是「一個角色」的固定設定，帶著指令與最多 20 個知識檔案，但 help center 寫明 GPT 不使用你的記憶、自訂指令與過去的對話，每次對話都從頭開始；而且 2026 年 8 月起，Free、Go、Plus、Pro 這些個人帳號已經不能建立或發布新的自訂 GPT，只能繼續用既有的，OpenAI 並表示計畫讓自訂 GPT 退場、建議改用 Plugins，時程以官網為準。記憶則跟著整個帳號走，自動從對話累積，在 Settings → Personalization → Memory 看摘要與修改；全域自訂指令是它的固定版，Free 與 Go 可以寫 1,500 字元、Plus 與 Pro 5,000 字元。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "面向",
+            "專案 Projects",
+            "自訂 GPT",
+            "記憶與自訂指令"
+          ],
+          "rows": [
+            [
+              "適合什麼",
+              "一件會持續一陣子、有多個對話與檔案的事，例如一趟旅行、一個客戶",
+              "固定角色的工具，例如翻譯機或商品問答；現在只能用既有的",
+              "你是誰、偏好什麼，所有對話都適用"
+            ],
+            [
+              "誰能用",
+              "所有方案，需登入；免費版也能建立與分享",
+              "所有方案能用既有 GPT；個人帳號不能再建新的，Business、Enterprise、Edu 依工作區設定",
+              "所有方案；Free 與 Go 的記憶較短"
+            ],
+            [
+              "資料放哪",
+              "專案裡的指令、檔案（Free 5、Go 與 Plus 25、Pro 40 個）與對話",
+              "GPT 設定裡的指令與最多 20 個知識檔案",
+              "帳號層級的記憶摘要與自訂指令（Free、Go 1,500 字元；Plus、Pro 5,000 字元）"
+            ],
+            [
+              "指令的範圍",
+              "只在該專案生效，蓋過全域自訂指令",
+              "只在該 GPT 的對話生效",
+              "所有對話；專案內以專案指令為準"
+            ],
+            [
+              "記得先前的對話嗎",
+              "記得同專案的對話；跨不跨專案看記憶模式",
+              "不記得，每次從頭開始",
+              "記得，需開啟 Reference chat history"
+            ],
+            [
+              "改了之後",
+              "之後送出的訊息套用新指令",
+              "更新 GPT 後的新對話套用",
+              "立即套用到之後的對話"
+            ]
+          ],
+          "caption": "2026 年 9 月依 OpenAI help center 整理；自訂 GPT 的退場時程與各方案上限之後可能變動，以官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "自製 GPT：不用寫程式做出自己的專用助手（2026 年誰能建、怎麼替代）",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-custom-gpts-build"
+        },
+        {
+          "type": "heading",
+          "text": "五個常見用法：旅行、接案、讀書、家庭事務、求職",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "旅行：一趟旅行一個專案。指令寫語言、幣別、步調與「先問日期」；檔案放航班、訂房、想去清單；對話分成排行程、找交通、翻譯訊息三條線，回國前把最後定案的行程存成專案來源，下次去同一個城市直接沿用。營業時間與票價一定另外查證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接案：一個客戶一個專案，設成專案限定記憶。指令寫客戶名稱、回覆格式與語氣；檔案放需求、報價單、品牌規範；每次往來開一個新對話，請它先列出這封信要回的三個重點再寫全文。結案後把專案封存或刪除，避免下一個客戶的對話撈到舊資料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "讀書：一門課或一張證照一個專案。檔案放講義與自己的筆記，指令寫「先出題考我，答錯才解釋」與你的程度；每一章開一個對話，考前把所有對話裡的錯題整理成一份清單。help center 自己舉的例子就是把課程 PDF 放進專案，請它出練習題。"
+        },
+        {
+          "type": "paragraph",
+          "text": "家庭事務：把家裡的固定資料放成一個專案，例如成員的過敏與飲食限制、常用的學校與保母聯絡方式、每月固定支出。指令寫「金額用台幣、日期用民國與西元並列」；對話用來排一週菜單、比較補習班、準備搬家清單。身分證字號與帳號密碼不要放進去。"
+        },
+        {
+          "type": "paragraph",
+          "text": "求職：一次求職一個專案。檔案放最新履歷、作品集摘要與想投的職缺說明；指令寫「用我履歷裡真的有的經歷，不要編造」與希望的語氣；每投一家開一個對話，請它比對職缺與履歷、列出落差，再改出客製化的求職信。面試前用同一個專案模擬問答，回答會扣著你的實際經歷。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "指令改了只影響之後的對話；重要背景放檔案，不要靠對話記住",
+          "text": "改動專案指令不會回頭改寫已經產生的回答，只有之後送出的訊息才套用新規則，所以換做法時開一個新對話最乾淨。日期、金額、客戶名稱、聯絡方式這些會被用到很多次的背景，一律寫進檔案或貼成文字來源，因為專案記憶會參考哪些對話你看不到也控制不了；靠檔案的話，每個對話都一定讀得到最新版。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI Help Center：Projects in ChatGPT（所有方案可用、New project、Project settings、指令範例、檔案上限 5/25/40、一次 10 個、記憶模式、分享、刪除）",
+          "url": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Release Notes（2025-09-03 專案開放免費版、2025-10-23 分享、2026-02-25 來源、2026-07-16 桌面 App、2026-08 語音與記憶設定）",
+          "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Memory FAQ（Settings → Personalization → Memory、記憶摘要、與自訂指令的差別）",
+          "url": "https://help.openai.com/en/articles/8590148-memory-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Is memory different from Custom Instructions",
+          "url": "https://help.openai.com/en/articles/8983151-is-memory-different-from-custom-instructions",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Custom Instructions（所有方案可用、Free 與 Go 1,500 字元、Plus 與 Pro 5,000 字元、更新只影響之後的對話）",
+          "url": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：File Uploads FAQ（512 MB、2M token、試算表 50 MB、圖片 20 MB、免費版每天 3 個、每 3 小時 80 個、PDF 只抓文字）",
+          "url": "https://help.openai.com/en/articles/8555545-file-uploads-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：File storage and Library in ChatGPT（Library 容量 Free 500 MB、Go 4 GB、Plus 20 GB、Pro 100 GB）",
+          "url": "https://help.openai.com/en/articles/20001052-file-storage-and-library-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：GPTs in ChatGPT（GPT 不使用記憶、自訂指令與過去對話；個人帳號不能建立新 GPT）",
+          "url": "https://help.openai.com/en/articles/8554407-gpts-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Creating and editing GPTs（個人帳號不能建立或發布新 GPT、最多 20 個知識檔案、每個 512 MB、退場與 Plugins 說明）",
+          "url": "https://help.openai.com/en/articles/8554397-creating-and-editing-gpts",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Free Tier FAQ（免費版可用既有 GPT、不能建立新 GPT、各工具有獨立上限）",
+          "url": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：What is ChatGPT Go（Go 含專案、自訂 GPT、Library，記憶較長）",
+          "url": "https://help.openai.com/en/articles/11989085-what-is-chatgpt-go",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Academy：Projects（專案與 GPT 的差別、專案限定記憶的用途）",
+          "url": "https://academy.openai.com/public/clubs/work-users-ynjqu/resources/projects",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI learn.chatgpt.com：Projects and chats（何時該開專案、Chats 與 Sources 區、釘選與封存）",
+          "url": "https://learn.chatgpt.com/docs/projects",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}

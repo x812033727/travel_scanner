@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">一則好提示詞的五個部件：四塊放進去、一個接著修 / Five parts of a good prompt: four go in, the fifth is the follow-up loop</title>
+  <desc id="desc">左邊是一個大框，代表送出前的提示詞，以寫信給房東為例，由上而下疊著四塊。一、角色與背景：說你是誰、處境、目的，要它站在誰的立場；例句是我在台北租一間套房，租約年底到期，想續約一年並維持原本的房租；請站在一個有禮貌但立場清楚的租客角度。二、任務：一個動詞、一件事，缺什麼先問我；例句是幫我寫一則要用 LINE 傳給房東的續約訊息；如果還需要其他條件，先問我再寫；不確定的地方直接說不知道。三、格式限制：格式、長度、語氣，講該做什麼；例句是用 LINE 傳，不用太正式，三句話以內，用口語的段落寫；最後留一句方便房東回覆的話。四、範例：貼一個你要的樣子，3 到 5 個最好；例句是語氣像這封：貼上你以前寫給房東、寫得不錯的一則訊息；範例要貼近這次的用途，格式彼此一致。右邊是第五個部件追問迴圈，發生在送出之後：你送出提示詞，左邊四塊都在這一則裡；它回答，或先問你缺什麼，資訊不夠就問你，資料裡沒有的就說沒有資料，牽涉事實的內容回官網查證；你在同一個對話裡追問：指出哪裡不對、只改那裡、其他不動，補上剛才漏掉的條件，要它照一開始的條件自己檢查一遍，背景、範例、限制都還在對話裡，不用重打。一條箭頭從追問繞回它回答，標示答案不對就接著修，不要整段重來；方向全錯或對話太長，才開新對話。底下註明：五個部件不必每次都齊，但你沒給的，它只能用猜的；牽涉事實的答案一律回官網查。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">一則好提示詞的五個部件：四塊放進去、一個接著修</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Five parts of a good prompt: four go in before you send, the fifth is the follow-up loop</text>
+
+  <!-- left: the prompt before sending -->
+  <rect x="60" y="116" width="880" height="650" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="500" y="152" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">送出前的提示詞（以寫信給房東為例）</text>
+
+  <!-- block 1: role and context -->
+  <rect x="84" y="172" width="832" height="132" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="108" y="206" font-size="19" font-weight="700" fill="#0B4F4D">一　角色與背景</text>
+  <text x="892" y="206" font-size="15" fill="#5C6B6B" text-anchor="end">說你是誰、處境、目的，要它站在誰的立場</text>
+  <text x="108" y="242" font-size="16" fill="#102A2B">我在台北租一間套房，租約年底到期，想續約一年並維持原本的房租；</text>
+  <text x="108" y="270" font-size="16" fill="#102A2B">請站在一個有禮貌但立場清楚的租客角度。</text>
+
+  <!-- block 2: task -->
+  <rect x="84" y="318" width="832" height="132" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="108" y="352" font-size="19" font-weight="700" fill="#1F4E73">二　任務</text>
+  <text x="892" y="352" font-size="15" fill="#5C6B6B" text-anchor="end">一個動詞、一件事；缺什麼先問我</text>
+  <text x="108" y="388" font-size="16" fill="#102A2B">幫我寫一則要用 LINE 傳給房東的續約訊息；</text>
+  <text x="108" y="416" font-size="16" fill="#102A2B">如果還需要其他條件，先問我再寫；不確定的地方直接說不知道。</text>
+
+  <!-- block 3: format constraints -->
+  <rect x="84" y="464" width="832" height="132" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="108" y="498" font-size="19" font-weight="700" fill="#D97A2B">三　格式限制</text>
+  <text x="892" y="498" font-size="15" fill="#5C6B6B" text-anchor="end">格式、長度、語氣，講該做什麼</text>
+  <text x="108" y="534" font-size="16" fill="#102A2B">用 LINE 傳，不用太正式，三句話以內，用口語的段落寫；</text>
+  <text x="108" y="562" font-size="16" fill="#102A2B">最後留一句方便房東回覆的話。</text>
+
+  <!-- block 4: examples -->
+  <rect x="84" y="610" width="832" height="132" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="108" y="644" font-size="19" font-weight="700" fill="#2E7D5B">四　範例</text>
+  <text x="892" y="644" font-size="15" fill="#5C6B6B" text-anchor="end">貼一個你要的樣子，3 到 5 個最好</text>
+  <text x="108" y="680" font-size="16" fill="#102A2B">語氣像這封：（貼上你以前寫給房東、寫得不錯的一則訊息）</text>
+  <text x="108" y="708" font-size="16" fill="#102A2B">範例要貼近這次的用途，格式彼此一致。</text>
+
+  <!-- right: the follow-up loop -->
+  <text x="1265" y="152" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">五　追問迴圈（送出之後）</text>
+
+  <rect x="1010" y="180" width="510" height="96" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="1265" y="218" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">你送出提示詞</text>
+  <text x="1265" y="250" font-size="15" fill="#5C6B6B" text-anchor="middle">左邊四塊都在這一則裡</text>
+  <path d="M 1265 278 L 1265 314" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="1010" y="318" width="510" height="120" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1265" y="356" font-size="19" font-weight="700" fill="#0B4F4D" text-anchor="middle">它回答，或先問你缺什麼</text>
+  <text x="1265" y="388" font-size="16" fill="#102A2B" text-anchor="middle">資訊不夠就問你，資料裡沒有的就說「沒有資料」</text>
+  <text x="1265" y="416" font-size="15" fill="#5C6B6B" text-anchor="middle">牽涉事實的內容，回官網查證</text>
+  <path d="M 1265 440 L 1265 476" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="1010" y="480" width="510" height="176" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1265" y="518" font-size="19" font-weight="700" fill="#1F4E73" text-anchor="middle">你在同一個對話裡追問</text>
+  <text x="1040" y="552" font-size="16" fill="#102A2B">・指出哪裡不對，只改那裡，其他不動</text>
+  <text x="1040" y="580" font-size="16" fill="#102A2B">・補上剛才漏掉的條件</text>
+  <text x="1040" y="608" font-size="16" fill="#102A2B">・要它照一開始的條件自己檢查一遍</text>
+  <text x="1040" y="636" font-size="15" fill="#5C6B6B">背景、範例、限制都還在對話裡，不用重打</text>
+
+  <!-- loop back from follow-up to answer -->
+  <path d="M 1522 568 L 1556 568 L 1556 378 L 1524 378" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="1265" y="692" font-size="16" font-weight="700" fill="#102A2B" text-anchor="middle">答案不對就接著修，不要整段重來</text>
+  <text x="1265" y="718" font-size="15" fill="#5C6B6B" text-anchor="middle">方向全錯或對話太長，才開新對話</text>
+
+  <text x="60" y="806" font-size="15" fill="#5C6B6B">五個部件不必每次都齊，但你沒給的，它只能用猜的；牽涉事實的答案一律回官網查。</text>
+  <text x="1540" y="870" font-size="15" fill="#5C6B6B" text-anchor="end">© Mokaair 製圖 2026</text>
+</svg>

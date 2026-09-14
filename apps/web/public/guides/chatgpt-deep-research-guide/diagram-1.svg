@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">Deep Research 怎麼跑：從你出題到你驗證，題目寫好五個部件 / How a ChatGPT deep research task runs, and the five parts of a good prompt</title>
+  <desc id="desc">這是一張分成左右兩欄的圖。左欄是一次 Deep Research 的六個步驟，前三步在第一列由左到右，後三步折到第二列再由左到右。第一步「你出題」：把右欄的五個部件寫齊，附上檔案或指定網站。第二步「它先問或擬計畫」：題目不清楚時先問澄清問題，例如預算、地區、格式；擬好的計畫你可以改。第三步「自己規劃」：決定搜什麼、讀哪些頁，可以限定網域，只讀不寫。第四步「讀網頁」：官方說一次 5 到 30 分鐘，會讀上百個來源，中途可以打斷、補條件。第五步「交報告」：全螢幕開啟，有目錄、使用的來源清單、活動記錄，可下載 Markdown、Word、PDF。第六步「你驗證」，用紅框標出：先看來源清單的網域與日期，抽查 3 個最影響結論的引用，把沒有來源的數字圈出來當作它的假設。左欄下方有兩個補充框：左邊「時間與額度」寫著一次 5 到 30 分鐘、做完會通知；額度依方案而異，看輸入框旁的計數器，每 30 天重置；預設來源是公開網頁與你上傳的檔案，付費牆後面的資料看不到。右邊是原則「報告是起點不是結論；引用一定自己點開」。右欄是「好題目的 5 個部件」：範圍（比什麼、幾個、哪些條件）、時間（只看哪一年以後）、地區（台灣、新台幣、通路）、輸出格式（表格、章節、附來源）、排除條件（不要哪類來源、查不到就標未查到）；五個都寫到，它幾乎不用再問你。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">Deep Research 怎麼跑：從你出題到你驗證，題目寫好五個部件</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">How a ChatGPT deep research task runs, and the five parts of a good prompt</text>
+
+  <!-- Row 1 -->
+  <!-- 1 你出題 -->
+  <rect x="60" y="130" width="360" height="150" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="240" y="168" font-size="19" font-weight="700" fill="#0B4F4D" text-anchor="middle">1 你出題</text>
+  <text x="240" y="204" font-size="16" fill="#102A2B" text-anchor="middle">把右欄的 5 個部件寫齊</text>
+  <text x="240" y="232" font-size="15" fill="#5C6B6B" text-anchor="middle">有檔案就上傳，有信任的網站就指定</text>
+  <text x="240" y="258" font-size="15" fill="#5C6B6B" text-anchor="middle">工具選單「+」→ Deep research</text>
+  <path d="M 422 205 L 466 205" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- 2 它先問或擬計畫 -->
+  <rect x="470" y="130" width="360" height="150" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="650" y="168" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">2 它先問，或擬一份計畫</text>
+  <text x="650" y="204" font-size="16" fill="#102A2B" text-anchor="middle">題目不清就問澄清問題</text>
+  <text x="650" y="232" font-size="15" fill="#5C6B6B" text-anchor="middle">例如預算、地區、想要的輸出格式</text>
+  <text x="650" y="258" font-size="15" fill="#5C6B6B" text-anchor="middle">擬好的研究計畫你可以改</text>
+  <path d="M 832 205 L 876 205" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- 3 自己規劃 -->
+  <rect x="880" y="130" width="360" height="150" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1060" y="168" font-size="19" font-weight="700" fill="#1F4E73" text-anchor="middle">3 自己規劃</text>
+  <text x="1060" y="204" font-size="16" fill="#102A2B" text-anchor="middle">決定搜什麼、讀哪些頁</text>
+  <text x="1060" y="232" font-size="15" fill="#5C6B6B" text-anchor="middle">Sites → Manage sites 可限定網域</text>
+  <text x="1060" y="258" font-size="15" fill="#5C6B6B" text-anchor="middle">已連接的應用程式只讀不寫</text>
+
+  <!-- wrap-around connector: 3 -> 4 -->
+  <path d="M 1060 282 L 1060 330 L 240 330 L 240 376" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- Row 2 -->
+  <!-- 4 讀網頁 -->
+  <rect x="60" y="380" width="360" height="150" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="240" y="418" font-size="19" font-weight="700" fill="#1F4E73" text-anchor="middle">4 讀網頁</text>
+  <text x="240" y="454" font-size="16" fill="#102A2B" text-anchor="middle">官方說一次 5 到 30 分鐘</text>
+  <text x="240" y="482" font-size="15" fill="#5C6B6B" text-anchor="middle">讀上百個來源，側欄看得到進度</text>
+  <text x="240" y="508" font-size="15" fill="#5C6B6B" text-anchor="middle">中途可以打斷、補條件、縮小範圍</text>
+  <path d="M 422 455 L 466 455" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- 5 交報告 -->
+  <rect x="470" y="380" width="360" height="150" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="650" y="418" font-size="19" font-weight="700" fill="#2E7D5B" text-anchor="middle">5 交報告</text>
+  <text x="650" y="454" font-size="16" fill="#102A2B" text-anchor="middle">全螢幕開啟，每句主張附引用</text>
+  <text x="650" y="482" font-size="15" fill="#5C6B6B" text-anchor="middle">有目錄、使用的來源清單、活動記錄</text>
+  <text x="650" y="508" font-size="15" fill="#5C6B6B" text-anchor="middle">可下載 Markdown、Word、PDF</text>
+  <path d="M 832 455 L 876 455" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- 6 你驗證 -->
+  <rect x="880" y="380" width="360" height="150" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="1060" y="418" font-size="19" font-weight="700" fill="#B8442D" text-anchor="middle">6 你驗證</text>
+  <text x="904" y="454" font-size="16" fill="#102A2B">・先看來源清單的網域與日期</text>
+  <text x="904" y="482" font-size="16" fill="#102A2B">・抽查 3 個最影響結論的引用</text>
+  <text x="904" y="510" font-size="16" fill="#102A2B">・沒有來源的數字，當作它的假設</text>
+
+  <!-- Bottom left: time and allowance -->
+  <rect x="60" y="600" width="760" height="200" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="440" y="636" font-size="18" font-weight="700" fill="#1F4E73" text-anchor="middle">時間、額度、來源</text>
+  <text x="84" y="674" font-size="16" fill="#102A2B">・時間：官方公告寫一次 5 到 30 分鐘，做完會通知你</text>
+  <text x="84" y="706" font-size="16" fill="#102A2B">・額度：依方案而異，看輸入框旁的計數器；固定月額度每 30 天重置</text>
+  <text x="84" y="738" font-size="16" fill="#102A2B">・來源：預設只讀公開網頁和你上傳的檔案</text>
+  <text x="84" y="770" font-size="16" fill="#102A2B">・付費牆後面的資料它看不到，手上有 PDF 就直接上傳</text>
+
+  <!-- Bottom right: principle -->
+  <rect x="850" y="600" width="390" height="200" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="1045" y="636" font-size="18" font-weight="700" fill="#B8442D" text-anchor="middle">原則</text>
+  <text x="1045" y="680" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">報告是起點不是結論</text>
+  <text x="1045" y="712" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">引用一定自己點開</text>
+  <text x="1045" y="750" font-size="15" fill="#5C6B6B" text-anchor="middle">簽證、稅務、用藥這類事</text>
+  <text x="1045" y="774" font-size="15" fill="#5C6B6B" text-anchor="middle">最後一步永遠是官方頁面或專業人士</text>
+
+  <!-- Right column: five parts of a good prompt -->
+  <rect x="1280" y="130" width="260" height="670" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="1410" y="166" font-size="18" font-weight="700" fill="#0B4F4D" text-anchor="middle">好題目的 5 個部件</text>
+  <line x1="1304" y1="184" x2="1516" y2="184" stroke="#0D6B68" stroke-width="2"/>
+
+  <text x="1304" y="222" font-size="17" font-weight="700" fill="#102A2B">範圍</text>
+  <text x="1304" y="248" font-size="15" fill="#5C6B6B">比什麼、幾個、哪些條件</text>
+
+  <text x="1304" y="296" font-size="17" font-weight="700" fill="#102A2B">時間</text>
+  <text x="1304" y="322" font-size="15" fill="#5C6B6B">只看哪一年以後的資料</text>
+
+  <text x="1304" y="370" font-size="17" font-weight="700" fill="#102A2B">地區</text>
+  <text x="1304" y="396" font-size="15" fill="#5C6B6B">台灣、新台幣、哪些通路</text>
+
+  <text x="1304" y="444" font-size="17" font-weight="700" fill="#102A2B">輸出格式</text>
+  <text x="1304" y="470" font-size="15" fill="#5C6B6B">表格、章節、每個數字附來源</text>
+
+  <text x="1304" y="518" font-size="17" font-weight="700" fill="#102A2B">排除條件</text>
+  <text x="1304" y="544" font-size="15" fill="#5C6B6B">不要哪類來源</text>
+  <text x="1304" y="568" font-size="15" fill="#5C6B6B">查不到就標「未查到」</text>
+
+  <line x1="1304" y1="604" x2="1516" y2="604" stroke="#0D6B68" stroke-width="2"/>
+  <text x="1410" y="642" font-size="15" fill="#102A2B" text-anchor="middle">五個都寫到，</text>
+  <text x="1410" y="666" font-size="15" fill="#102A2B" text-anchor="middle">它幾乎不用再問你，</text>
+  <text x="1410" y="690" font-size="15" fill="#102A2B" text-anchor="middle">報告也比較不會偏</text>
+  <text x="1410" y="736" font-size="15" fill="#5C6B6B" text-anchor="middle">兩個完整範例在正文：</text>
+  <text x="1410" y="760" font-size="15" fill="#5C6B6B" text-anchor="middle">空氣清淨機、簽證與入境</text>
+
+  <text x="60" y="850" font-size="15" fill="#5C6B6B">步驟、時間與額度的說法以 OpenAI 說明中心與官方公告為準；功能名稱依帳號語言設定顯示。</text>
+  <text x="1540" y="870" font-size="15" fill="#5C6B6B" text-anchor="end">© Mokaair 製圖 2026</text>
+</svg>

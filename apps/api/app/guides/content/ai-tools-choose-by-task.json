@@ -1,0 +1,347 @@
+{
+  "slug": "ai-tools-choose-by-task",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "productivity"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "依任務選 AI 工具：寫作、翻譯、程式、圖片、研究各用哪一個",
+      "description": "不想比較工具，只想知道「我要做這件事，該打開哪個 AI」？這篇依 2026 年 9 月 Anthropic、Google、OpenAI 官網與說明中心查證的功能與免費額度，替中文寫作潤稿、中英日翻譯、讀長文件、寫程式做小工具、做圖片修圖、做研究、語音口說練習、在 Gmail 與 Google 文件裡直接用這八種任務各給首選與備選，附可直接貼上的提示句、總表、矩陣圖與「先用兩週再決定」的建議。",
+      "hero": {
+        "src": "/guides/ai-tools-choose-by-task/hero.jpg",
+        "alt": "一根路標柱上有四塊方向牌，分別指向筆、對話框、圖片與程式碼四個圖示，象徵依任務選 AI 工具",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "這篇只回答一個問題：我現在要做某件事，該打開哪一個 AI。答案依任務不同：中文寫作與潤稿、讀長文件、做小工具先開 Claude；翻譯、做圖片、查資料、語音口說練習先開 Gemini；會寫程式的人多一個 Codex；要在 Gmail 與 Google 文件裡直接用，Gemini 得買 Google AI 方案，Claude 的免費連接器反而可以先頂著用。以上全部依 2026 年 9 月 13 日各家官網與說明中心查到的「功能有沒有、免費版有沒有」來排，沒有做誰比較聰明的評比。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接下來先講選工具的三個原則，再把八種常見任務逐一列出首選、備選與理由，每一種附一句可以直接貼上去用的提示句，最後用一張總表、一張矩陣圖和一個「先用兩週再決定」的建議收尾。六個工具各是什麼、方案叫什麼，本站的總覽篇已經寫過，這裡不重複介紹。"
+        },
+        {
+          "type": "heading",
+          "text": "選工具的三個原則：先看功能、再看免費、最後看工作流",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "挑工具的順序建議固定成三步，每一步只看一件事，就不會被「哪家模型比較強」的討論帶著走。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "先看功能有沒有。你要的東西（圖片生成、深入研究、語音、讀檔案、在 Gmail 裡用）在那個工具裡是不是一個正式存在的功能，官網說明中心查得到操作步驟才算有；靠模型「順便」做出來的，品質不穩，本文不列入。",
+            "再看免費版有沒有。同一個功能常常是免費版有但額度較小，或免費版沒有、要付費才開。免費版就能做的任務，先不要付錢。",
+            "最後看它在不在你已經在用的工具裡。重度用 Gmail 與 Google 文件的人，同樣的功能放在 Gemini 裡少開一個視窗；已經付 ChatGPT Plus 的人，寫程式就用同一個帳號的 Codex，不必另外辦帳號。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "依這三步排出來的「首選」，是免費就能做、功能是正式功能、而且跟多數台灣使用者的工作流最合的那一個；「備選」是功能同樣存在、但要付費或工作流稍微繞一點的。你手上如果已經有另一家的付費帳號，把備選當首選完全合理。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+        },
+        {
+          "type": "heading",
+          "text": "文字類任務：中文寫作、中英日翻譯、讀長文件",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "中文寫作與潤稿：首選 Claude，備選 Gemini。Claude 免費版的方案頁就列出「寫作、編輯與建立內容」，而且有 Artifacts：大約超過 15 行的稿子會自動放到右側面板，你可以在面板裡逐段改，不用整篇重貼；在設定的「功能」裡開啟「程式執行與檔案建立」後，改好的稿子能直接輸出成 Word 或 PDF。Gemini 的 Canvas 也能建立與編輯文件，免費版就有，改完可以匯出到 Google 文件，本來就在 Google 文件裡寫東西的人會更順。提示句：「這是一封要寄給客戶的信，請保留原意，把語氣改得客氣但不卑微，句子縮短，用台灣的用語，改完後列出你改了哪三處。」"
+        },
+        {
+          "type": "paragraph",
+          "text": "中英日翻譯：首選 Gemini，備選 Claude。翻譯這件事三個通用助理都做得到，差別在檔案與語言。Gemini 的支援語言清單明列中文（繁體）、日本語與英文，免費版一個提示最多能上傳 10 個檔案、每個 100 MB，整份 PDF 或 Word 丟進去翻完，再用 Canvas 匯出到 Google 文件。Claude 的做法是把檔案上傳（同一個對話最多 20 個檔案），翻完直接產出 .docx 交回給你，適合要保留格式再交給別人的情況。兩邊都不會自動用台灣用語，提示句裡要講明。提示句：「把這份日文文件翻成台灣用語的繁體中文，專有名詞第一次出現時附原文，不確定的地方用括號標註，翻完另外用英文寫一段 100 字摘要。」"
+        },
+        {
+          "type": "paragraph",
+          "text": "讀長文件與摘要：首選 Claude，備選 Gemini。Claude 的說明中心把限制寫得很清楚：對話裡每個檔案最大 500 MB，PDF 在 100 頁以內連圖表一起看，101 到 1,000 頁只讀文字，超過 1,000 頁不能上傳；同一個對話最多 20 個檔案，支援 PDF、Word、Excel、CSV、EPUB 等格式。常要回頭問同一批文件的話，把它們放進「專案」，免費帳號可以建 5 個專案，文件會被快取，不用每次重傳。Gemini 免費版一次最多 10 個檔案、每個 100 MB，還能直接丟影片與音訊（免費版影片總長 5 分鐘、音訊 10 分鐘，付費方案分別放寬到 1 小時與 3 小時），適合會議錄音與教學影片；Google AI Pro 以上有 100 萬 token 的上下文窗口。提示句：「先用 200 字說這份 PDF 的結論，再列出五個重點，每個重點附頁碼，最後告訴我哪些地方你不確定。」"
+        },
+        {
+          "type": "link",
+          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+        },
+        {
+          "type": "link",
+          "text": "Gemini 新手入門：有 Google 帳號就能用，Gmail、Docs 裡怎麼叫出來",
+          "url": "https://mokaair.com/zh-TW/life/gemini-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "產出類任務：寫程式、做圖片、做研究",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "寫程式與做小工具：首選 Claude，備選 Codex。不會寫程式、只想要一個能用的小工具（匯率換算、行程表、抽籤器）的人，Claude 免費版的 Artifacts 就夠：它能直接產出單頁網站、React 元件與 SVG 圖，做好就在旁邊的面板跑起來，還可以發布成連結給別人用。會寫程式的人再往上一階用 Claude Code，在終端機或 VS Code、JetBrains 等編輯器裡改整個專案，這個要 Pro（每月 20 美元，年繳換算每月 17 美元）以上。Codex 是 OpenAI 的寫程式代理，用 ChatGPT 帳號登入，官方定價頁把 Free 方案定位成「在小型程式任務上試試 Codex 的能力」，每月 0 美元；Plus 每月 20 美元才有網頁、CLI、編輯器擴充與 iOS 四個完整入口。已經付 ChatGPT Plus 的人，直接用 Codex 比再開一個 Claude Pro 划算。Gemini 的 Canvas 同樣能寫 app 與程式並分享連結，免費就有，當第三個選項。提示句：「做一個網頁小工具：輸入日圓金額與匯率，顯示台幣，數字要有千分位，可以在手機上用，不需要後端，做完告訴我怎麼分享給朋友。」"
+        },
+        {
+          "type": "link",
+          "text": "OpenAI Codex 是什麼：從 ChatGPT 裡的寫程式代理到 Codex CLI",
+          "url": "https://mokaair.com/zh-TW/life/codex-beginner-guide"
+        },
+        {
+          "type": "paragraph",
+          "text": "做圖片與修圖：首選 Gemini，備選 ChatGPT。Gemini 免費版就內建圖片生成與編輯，模型叫 Nano Banana 2，可以從文字生圖，也可以上傳自己的照片要求局部修改，或一次上傳多張圖合成新圖；沒有 Google AI 方案的帳號下載 1K 解析度，有方案的可以下載 2K。年齡限制要記得：生成要 13 歲以上，編輯要 18 歲以上。ChatGPT 的 App Store 官方說明寫它能「依描述建立原創圖片，或編輯既有圖片」，功能是確定有的；但免費方案能不能用、額度多少，官方方案頁今天打不開，以官網為準，開發者定價文件則明寫圖片生成會讓額度消耗得比一般對話快 3 到 5 倍。要做影片或配音而不是靜態圖，去看 MiniMax 那一篇。提示句：「把這張照片的背景換成乾淨的白色，人物、衣服與手上的東西都不要動，不要加任何文字，輸出直式。」"
+        },
+        {
+          "type": "link",
+          "text": "MiniMax 是什麼：海螺 AI、影片與語音生成，台灣使用者怎麼用",
+          "url": "https://mokaair.com/zh-TW/life/minimax-beginner-guide"
+        },
+        {
+          "type": "paragraph",
+          "text": "做研究與查資料：首選 Gemini 的 Deep Research，備選 Claude 的 Research。Gemini 的 Deep Research 免費版就能用，條件是年滿 18 歲並登入；它會先給你一份研究計畫，你確認後大約 5 到 10 分鐘產出附來源的報告，來源可以勾選加入 Gmail 或雲端硬碟；每天的次數與同時進行的數量有上限，Google AI Pro 與 Ultra 的上限較高。Claude 的 Research 只在 Pro 以上的付費方案有，從輸入框旁的「+」開啟，幾分鐘內產出報告，連上 Gmail、日曆與 Google 文件之後也會一起查。ChatGPT 也有 deep research，在工具選單或輸入 /deep research 開啟，哪些方案能用以官網為準。不管用哪一個，報告裡的來源要自己點開核對。規劃旅遊時，Deep Research 適合查簽證、交通與淡旺季這類要跨很多網頁的題目，查完再對照本站攻略裡的目的地整理。提示句：「研究 2026 年冬天從台北到福岡的機票價格趨勢與便宜的訂票時機，只用航空公司與官方觀光網站的資料，每個結論附來源網址與日期。」"
+        },
+        {
+          "type": "link",
+          "text": "Mokaair 旅遊攻略：目的地、簽證與交通整理",
+          "url": "https://mokaair.com/zh-TW/guides"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "貼著工作流的任務：語音口說練習、在 Gmail 與文件裡直接用",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "語音對話與口說練習：首選 Gemini Live，備選 Claude 的語音模式。Gemini Live 在免費版裡，但只在手機 App（Android、iPhone 與 iPad）裡有，網頁版目前沒有；打開 App 點下方的 Live 或向左滑就能開始，用任何支援的語言講都行，中文（繁體）與日本語都在清單上，只是部分語音音色不是每種語言都有。Claude 的語音模式標示為 beta，所有方案含免費版都能用，手機、桌面版與網頁都有，按輸入框旁的聲波圖示開啟，英文以外的語言也在 beta；它的好處是同一個對話可以在打字與語音之間來回切換，脈絡不會斷，適合先打字設定情境、再開口練。ChatGPT 的 App 說明列了進階語音模式，功能存在，但免費版的額度今天查不到官方頁面；桌面版的 ChatGPT Voice 依開發者定價文件是 Plus 以上才有，已經付 Plus 的人可以直接用。提示句：「請用日文跟我對話，扮演東京拉麵店的店員，我點餐時如果文法或用字錯了，先用中文提醒我，再用日文繼續。」"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Gmail、文件、試算表裡直接用：首選 Gemini，備選 Claude 的 Google Workspace 連接器。在 Gmail 側邊欄摘要信件、在 Google 文件裡按「幫我寫」、在試算表裡請 AI 建公式與圖表，這些是 Gemini 內建在 Google 應用程式裡的功能，個人帳號要有 Google AI 方案才開得起來，台灣的定價從 Google AI Plus 每月 165 元起，AI Pro 每月 650 元；沒有付費方案的個人帳號，目前只有美國能用少數功能。還有一個坑：Gmail 裡「幫我寫」的支援語言清單是英文、法文、德文、義大利文、日文、韓文、葡萄牙文、西班牙文，沒有中文，各項功能在哪一階、支援哪些語言，以官網清單為準。Claude 的 Gmail、Google 日曆與雲端硬碟連接器所有使用者都能用，免費版也在內：它能搜尋與讀信、草擬與寄信、查行事曆與安排會議、讀雲端硬碟裡的文件、試算表與簡報，每個動作執行前預設會先問你。差別是你得在 Claude 的視窗裡做，而不是在 Gmail 裡。提示句：「找出我上個月跟旅行社往來的所有信，整理成一張表：日期、對方、事項、我還沒回覆的打勾，先不要寄任何東西。」"
+        },
+        {
+          "type": "heading",
+          "text": "總表：八種任務的首選、備選與免費版能不能做",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "下表把八種任務的首選、備選與免費版能不能做放在一起，資料是 2026 年 9 月 13 日各家官網與說明中心的內容，之後以官網為準。看表時先看第四欄：寫著「免費可以」的任務，今天就用免費帳號做；寫著要付費的，才需要看方案比較那一篇。矩陣圖是同一份資料的濃縮版，一列一個任務，左邊綠框是首選、右邊藍框是備選。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "任務",
+            "首選",
+            "備選",
+            "免費版能不能做",
+            "備註"
+          ],
+          "rows": [
+            [
+              "中文寫作與潤稿",
+              "Claude（Artifacts 面板逐段改）",
+              "Gemini（Canvas，可匯出 Google 文件）",
+              "免費可以",
+              "輸出 Word／PDF 要先在設定裡開「程式執行與檔案建立」"
+            ],
+            [
+              "中英日翻譯",
+              "Gemini（上傳檔案翻完匯出）",
+              "Claude（翻完直接產出 .docx）",
+              "免費可以",
+              "提示句要寫明「台灣用語」"
+            ],
+            [
+              "讀長文件與摘要",
+              "Claude（PDF 100 頁內含圖表，20 個檔案）",
+              "Gemini（10 個檔案、可丟影片與音訊）",
+              "免費可以，有頁數與長度限制",
+              "Claude 免費 5 個專案；Gemini 免費影片 5 分鐘、音訊 10 分鐘"
+            ],
+            [
+              "寫程式與做小工具",
+              "Claude（Artifacts 免費；Claude Code 要 Pro）",
+              "Codex（Free 只夠試，Plus 每月 20 美元）",
+              "小工具免費可以；整個專案要付費",
+              "已付 ChatGPT Plus 就用 Codex"
+            ],
+            [
+              "做圖片與修圖",
+              "Gemini（Nano Banana 2，可上傳照片修）",
+              "ChatGPT（能生成與編輯）",
+              "Gemini 免費可以，下載 1K；ChatGPT 以官網為準",
+              "Gemini 生成 13 歲以上、編輯 18 歲以上"
+            ],
+            [
+              "做研究與查資料",
+              "Gemini Deep Research",
+              "Claude Research（Pro 以上）",
+              "Gemini 免費可以，18 歲以上、每日有上限",
+              "來源自己核對；旅遊題先查再對照本站攻略"
+            ],
+            [
+              "語音對話與口說練習",
+              "Gemini Live（手機 App）",
+              "Claude 語音模式（beta，全平台）",
+              "免費可以",
+              "Gemini Live 網頁版沒有；ChatGPT 免費額度以官網為準"
+            ],
+            [
+              "在 Gmail／文件／試算表裡直接用",
+              "Gemini（要 Google AI 方案）",
+              "Claude 連接器（免費，在 Claude 視窗裡）",
+              "Gemini 要付費，Plus 每月 165 元起；Claude 免費可以",
+              "Gmail「幫我寫」支援語言沒有中文"
+            ]
+          ],
+          "caption": "八種任務的首選與備選，2026 年 9 月 13 日依 Anthropic、Google、OpenAI 官網與說明中心查證，價格為官網幣別"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-tools-choose-by-task/diagram-1.svg",
+          "alt": "任務對工具的矩陣圖：八個任務各一列，每列左邊綠框是首選、右邊藍框是備選，最右欄標示免費版能不能做",
+          "width": 1600,
+          "height": 900,
+          "caption": "一列一個任務：先看左邊綠框的首選，免費做不到或你已經付了另一家的錢，再看右邊藍框的備選。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "同一個帳號用兩週再決定要不要換",
+          "text": "兩週足夠讓你碰到額度上限、發現某個功能其實用不到、也發現哪個工具你會自然而然打開。多數人一個免費帳號加一個付費就夠：免費的那個負責它免費就做得好的任務（例如 Gemini 的圖片、研究與語音，或 Claude 的寫作與讀文件），付費的那個選你最常做的事所在的生態系。三家都付費的人，通常是工作需要交叉驗證，不是一般使用者的情況。"
+        },
+        {
+          "type": "link",
+          "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
+          "url": "https://mokaair.com/zh-TW/life/ai-free-vs-paid-plans-2026"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Claude 方案頁（Free 與 Pro 包含的功能、Pro 每月 20 美元／年繳換算 17 美元、Research 與 Claude Code 在 Pro）",
+          "url": "https://claude.com/pricing",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：什麼是 artifacts（超過 15 行自動建立、支援文件、程式、單頁網站、SVG、React；Free 到 Enterprise 都有）",
+          "url": "https://support.claude.com/en/articles/9487310-what-are-artifacts-and-how-do-i-use-them",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：建立與編輯檔案（可產出 .xlsx、.pptx、.docx、PDF；所有方案含 Free；設定 → 功能開啟）",
+          "url": "https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：上傳檔案（對話每檔 500 MB、專案每檔 30 MB、PDF 100 頁內含圖表、101–1,000 頁只讀文字、每對話 20 個檔案）",
+          "url": "https://support.claude.com/en/articles/8241126-upload-files-to-claude",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：什麼是專案（所有使用者可用，免費帳號最多 5 個專案）",
+          "url": "https://support.claude.com/en/articles/9517075-what-are-projects",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：使用語音模式（beta，所有方案，手機、桌面與網頁，聲波圖示開啟，非英文語言為 beta）",
+          "url": "https://support.claude.com/en/articles/11101966-use-voice-mode",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Google Workspace 連接器（Gmail、日曆、雲端硬碟；所有使用者可用；搜尋、讀信、寄信、讀文件與試算表；動作前先詢問）",
+          "url": "https://support.claude.com/en/articles/10166901-use-google-workspace-connectors",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：使用 Research（僅付費方案 Pro、Max、Team、Enterprise；從「+」開啟；可連 Gmail、日曆、Google 文件）",
+          "url": "https://support.claude.com/en/articles/11088861-use-research-on-claude",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：用 Pro 或 Max 方案使用 Claude Code（終端機與 VS Code、Cursor、JetBrains 編輯器）",
+          "url": "https://support.claude.com/en/articles/11145838-use-claude-code-with-your-pro-or-max-plan",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Gemini 台灣訂閱方案頁（免費版含圖片生成與編輯、Deep Research、Gemini Live、Canvas；Google AI Plus 每月 165 元、AI Pro 每月 650 元含 Gemini 在 Gmail／文件）",
+          "url": "https://gemini.google/tw/subscriptions/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google 說明：在 Gemini 應用程式使用 Deep Research（18 歲以上、需登入、每日與同時進行有上限、Pro 與 Ultra 上限較高、約 5–10 分鐘、可加入 Gmail 或雲端硬碟來源）",
+          "url": "https://support.google.com/gemini/answer/15719111?hl=en",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google 說明：上傳檔案到 Gemini 應用程式（每提示 10 個檔案、每檔 100 MB、免費影片 5 分鐘與音訊 10 分鐘、付費 1 小時與 3 小時、Pro／Ultra 100 萬 token）",
+          "url": "https://support.google.com/gemini/answer/14903178?hl=en",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google 說明：用 Gemini 應用程式生成與編輯圖片（Nano Banana 2、可上傳圖片編輯、無方案下載 1K、有方案 2K、生成 13 歲以上、編輯 18 歲以上）",
+          "url": "https://support.google.com/gemini/answer/14286560?hl=en",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google 說明：用 Gemini Live 自然對話（手機 App 點 Live 或向左滑、網頁版尚未提供）",
+          "url": "https://support.google.com/gemini/answer/15274899?hl=en",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google 說明：用 Canvas 建立文件、應用程式與程式（可匯出到 Google 文件、分享連結、加 AI 功能需 18 歲以上）",
+          "url": "https://support.google.com/gemini/answer/16047321?hl=en",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google 說明：變更 Gemini 的語言（支援語言含中文（繁體）、日本語、English；Gemini Live 可用任何支援語言、部分語音音色不是每種語言都有）",
+          "url": "https://support.google.com/gemini/answer/15984485?hl=en",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google 說明：Gmail 的 Gemini 功能（個人帳號需 Google AI 方案、無付費方案僅限美國、「幫我寫」支援英法德義日韓葡西八種語言）",
+          "url": "https://support.google.com/mail/answer/16831098?hl=en",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 開發者文件：ChatGPT 與 Codex 定價（Free 每月 0 美元試小型程式任務、Plus 每月 20 美元含網頁／CLI／編輯器／iOS、桌面版 ChatGPT Voice 為 Plus 以上、圖片生成額度消耗快 3–5 倍）",
+          "url": "https://learn.chatgpt.com/docs/pricing",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "App Store：ChatGPT 官方 App 說明（列出進階語音模式、依描述建立或編輯圖片、上傳照片）",
+          "url": "https://apps.apple.com/tw/app/chatgpt/id6448311069",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Academy：ChatGPT 的 deep research（從工具選單或輸入 /deep research 開啟）",
+          "url": "https://academy.openai.com/public/clubs/work-users-ynjqu/resources/deep-research",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}

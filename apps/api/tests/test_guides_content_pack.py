@@ -18,6 +18,7 @@ from app.guides.content_pack import (
     load_packs,
     plan_import,
 )
+from app.guides.pack_ingest import errors, lint_all
 from app.guides.schemas import ImageBlock
 from tests import test_guides as guides
 
@@ -202,6 +203,21 @@ def test_the_packaged_content_validates_and_its_images_exist() -> None:
                 assert file.is_file(), f"{pack.slug} ({locale}): missing {src}"
                 assert file.stat().st_size <= 300_000, f"{pack.slug} ({locale}): {src} is too large"
             assert doc.sources, f"{pack.slug} ({locale}): an article must cite its sources"
+
+
+def test_the_packaged_life_content_passes_lint() -> None:
+    """The 生活分享 series is written to the review standard `guides-pack lint` encodes (three
+    headings, a table, a callout, a hero, checked sources, sound diagrams whose numbers the
+    text carries). Errors fail; warnings are for the reviewer. The travel packs predate the
+    tool and are linted by hand, so only `life` is held to it here."""
+    web_public = Path(__file__).resolve().parents[2] / "web" / "public"
+    if not web_public.is_dir():
+        pytest.skip("the web app is not checked out next to the API")
+    findings = lint_all(default_directory(), web_public, kind="life")
+    failures = {slug: errors(problems) for slug, problems in findings.items() if errors(problems)}
+    assert not failures, "\n".join(
+        f"{slug}: {problem}" for slug, problems in failures.items() for problem in problems
+    )
 
 
 def test_the_default_directory_is_inside_the_package() -> None:
