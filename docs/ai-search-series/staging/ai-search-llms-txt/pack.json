@@ -1,0 +1,393 @@
+{
+  "slug": "ai-search-llms-txt",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "llms.txt 是什麼：一份社群提案，以及 robots.txt 真正能做的事",
+      "description": "這篇說明 llms.txt 的現況：它是 2024 年提出的社群提案，到 2026 年 9 月 14 日為止，只有 Google 在官方文件裡明講搜尋不使用它，其餘幾家的爬蟲說明頁沒有提到它。文中同時寫清楚 robots.txt 真正管得到的事——它擋抓取不擋索引，被擋的網址連 noindex 都讀不到，而且不是授權控制——並把訓練用爬蟲、搜尋索引爬蟲、代使用者即時取用的擷取器分成三件事。文末附本站 robots.txt 的做法與理由。本文不承諾任何曝光或引用結果。",
+      "hero": {
+        "src": "/guides/ai-search-llms-txt/hero.jpg",
+        "alt": "原創插畫：網站根目錄上放著一個實線檔案與一個虛線檔案，三條路徑從網站分別通往三個不同形狀的終點；非產品介面。",
+        "width": 1,
+        "height": 1
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "這篇回答一個問題：網站根目錄到底要不要放一個 llms.txt。結論是，它是一份社群提案，不是任何搜尋引擎或 AI 服務承諾會讀取的檔案；到 2026 年 9 月 14 日為止，唯一在官方文件裡明確表態的大型搜尋引擎是 Google，而它寫的是搜尋本身不使用這類檔案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇會把三組常被混在一起的東西分開：一份提案與一個已經部署的機制、擋抓取與擋索引、訓練用爬蟲與搜尋索引爬蟲與代使用者即時取用的擷取器。最後附上本站自己 robots.txt 的做法與理由，那是一個帶日期的選擇，不是通則。以下引用的提案原文與官方文件都在 2026 年 9 月 14 日查證。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "llms.txt 是誰提的，說要解決什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "提案本身的網站標明作者是 Jeremy Howard，發表日期是 2024 年 9 月 3 日，頁面標示的最後修改日期是 2026 年 8 月 10 日，現在掛的標題是第二版。它的一句話定義是：提議大家統一用一個 llms.txt 檔案，提供資訊協助代理（Agent）使用這個網站。這是提案方自己的說法，屬於提案，不是任何引擎的承諾。"
+        },
+        {
+          "type": "paragraph",
+          "text": "提案寫出的問題是：網頁是為人做的，一個 HTML 頁面把資訊包在導覽列、廣告與 JavaScript 裡，要還原成乾淨的文字既困難又不精確；上下文視窗雖然比以前大，仍然裝不下整個網站，而且每一個浪費掉的 token 都是時間與金錢。它主張把一份精簡的索引放在固定位置，細節留在連結後面，需要時才取用。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "提案原文也把自己跟 robots.txt 的分工寫清楚：robots.txt 是讓自動化工具知道對網站的哪些存取是可接受的，llms.txt 的資訊則是在代理協助使用者、需要某個主題的資訊時按需使用。原文還寫，作者原本的預期是這個檔案主要用於推論而不是訓練，實際上也是這樣被使用——這句話是提案作者的觀察，不是引擎公布的資料。名詞之間怎麼分工，整個系列的地圖放在"
+            },
+            {
+              "type": "article",
+              "text": "這個系列的總覽",
+              "kind": "life",
+              "slug": "ai-search-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "格式：只有一個區塊是必填"
+        },
+        {
+          "type": "paragraph",
+          "text": "規格本身很短。檔名是 llms.txt，可以放在網站根目錄，也可以放在任何子路徑，一份檔案涵蓋它所在路徑底下的網址；同時有多份適用時，代理應該用最精確的那一份。內容依序是：可選的位元組順序記號、一個 H1 標題、一段引文格式的摘要、零到多段不含標題的補充說明，最後是零到多個以 H2 分隔的檔案清單。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "整份規格裡唯一必填的區塊是那個 H1 標題，其餘全部可以是零個。",
+            "每個檔案清單是一個 markdown 清單，每一項必須是一個 markdown 超連結，後面可以接一個冒號與說明文字。",
+            "依慣例，名為 Optional 的那一節放次要資訊，代理在需要較短上下文時可以跳過。",
+            "第二版另外建議同一個網址提供 markdown 版本，在網址後面加上 .md，或把副檔名換成 .md。",
+            "第二版也建議用標準的連結關係讓客戶端找到這些檔案，可以寫在 HTML 的連結元素裡，也可以放在 HTTP 回應標頭。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": "提案原文給的範例骨架（依 llmstxt.org 第二版整理）",
+          "code": "# 網站或專案名稱\n\n> 一句話摘要，放理解後面內容所需的關鍵資訊\n\n這裡可以放幾段補充說明，但不能用標題。\n\n## 章節名稱\n\n- [連結標題](https://example.com/page.md): 選填的說明\n\n## Optional\n\n- [次要連結](https://example.com/extra.md)\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "值得注意的是規格沒有寫的那一半：它沒有規定任何引擎必須讀這個檔案，也沒有定義任何「讀了之後會怎樣」的行為。它規定的只有檔案長什麼樣。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "哪些引擎表態過，哪些沒有"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 是唯一在官方文件裡寫清楚的。Google 搜尋中心的生成式 AI 最佳化指南在破除迷思那一節，把 llms.txt 檔案與其他特殊標記列在一起，寫的是：你不需要為了出現在 Google 搜尋（包含它的生成式 AI 功能）而建立新的機器可讀檔案、AI 文字檔、標記或 Markdown，因為 Google 搜尋本身不使用它們；要維護這些檔案給其他服務用完全沒問題，這麼做不會傷害也不會幫助你在 Google 搜尋的能見度或排名，因為 Google 搜尋會忽略它們。這是官方文件說明的機制。"
+        },
+        {
+          "type": "paragraph",
+          "text": "日期可以查。Google 的文件更新記錄把加上這段註記的日期寫成 2026 年 6 月 15 日，那份指南本身標示的最後更新日期是 2026 年 7 月 10 日，指南最初發布的日期是 2025 年 5 月 15 日。同一份指南在結語又寫了一次：對 Google 搜尋來說，可以忽略像是建立不必要的 AI 文字檔這類做法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "其他幾家沒有表態。到 2026 年 9 月 14 日為止，OpenAI 的爬蟲總覽頁、Anthropic 說明中心的爬蟲說明、Perplexity 的爬蟲文件，通篇都沒有把 llms.txt 寫成自家系統會讀取或使用的檔案。沒有表態不等於否認，但也不能當成證據：沒有任何一家公布過「我們的系統會消費你的 llms.txt」這種說明或資料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "有一件事很容易被當成證據，但不成立：OpenAI、Anthropic、Perplexity 的開發者文件站自己都放了 llms.txt，提案原文也把這件事寫進背景，點名 OpenAI、Anthropic 與 Gemini 為自家開發者文件發布了這個檔案。但那是它們作為發布者的行為，說明的是文件平台的功能，不是它們的爬蟲會去讀別人的 llms.txt。發布一份和消費一份是兩件事。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一個相關的一手事實是 Chrome 的 Lighthouse。它在代理式瀏覽的檢查裡有一項 llms.txt 稽核，官方文件寫的是：取用這個檔案時如果伺服器回傳錯誤，Lighthouse 會標記該頁；如果回傳 404，這項稽核標為不適用，因為目前提供這個檔案是選用的。該頁把 llms.txt 描述成一種新興的慣例。稽核工具會去讀它，跟引擎會用它來挑答案的來源，仍然是兩件事。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這個題目的中文與英文搜尋結果，絕大多數是代理商或工具商的行銷內容，常見的標題是「AI 時代的新標準」或「放了就能增加 AI 曝光」。那些句子屬於廠商行銷主張這一級，通常沒有指出是誰在保證、依據是什麼。要判斷一個「AI 能見度」說法能不能被稽核，判準寫在"
+            },
+            {
+              "type": "article",
+              "text": "量測引用那一篇",
+              "kind": "life",
+              "slug": "ai-search-measuring-citations"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "robots.txt 擋的是抓取，不是索引"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "對照組是 robots.txt：一個已經部署很久、而且有規範原文的機制。它管得到的事比多數人以為的窄。Google 的官方說明寫得很直接：robots.txt 主要用來避免網站被大量請求壓垮，它不是讓網頁不出現在 Google 的機制；被擋住的網址如果有其他網站連過來，仍然可能被建立索引。抓取、索引、出現在結果裡是三層不同的狀態，這四層的分法寫在"
+            },
+            {
+              "type": "article",
+              "text": "SEO 那一篇",
+              "kind": "life",
+              "slug": "ai-search-seo"
+            },
+            {
+              "type": "text",
+              "text": "，本篇直接沿用。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "關鍵的一層在這裡：Google 的 noindex 說明寫著，要讓 noindex 生效，該網頁不能被 robots.txt 擋住，而且必須是爬蟲能存取的；如果被擋住，爬蟲永遠看不到那條 noindex 規則，頁面仍可能出現在搜尋結果裡。兩條規則放在一起就是本篇最實用的一句話：想把一頁移出搜尋結果，要讓爬蟲讀得到頁面上的 noindex；用 robots.txt 擋住它，反而保證那條指令永遠不會被讀到。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "擋住它，等於保證那句 noindex 永遠讀不到",
+          "text": "最常見的一個反效果是：想讓某一頁不出現在搜尋結果，於是同時在頁面上放 noindex、又在 robots.txt 把那個路徑擋掉。依 Google 官方說明，被 robots.txt 擋住的網址不會被抓取，爬蟲因此永遠讀不到那條 noindex，該網址如果有外部連結，仍可能以沒有說明文字的形式留在結果裡。要移除的頁面應該保持可被抓取，讓爬蟲讀到 noindex；robots.txt 留給那些本來就不該被抓的機器端點。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同樣的形狀也出現在別家。Apple 的官方說明寫，停用 Applebot-Extended 的網頁仍然可以出現在搜尋結果裡，因為那個 token 只決定 Applebot 抓到的資料可以怎麼用。OpenAI 的爬蟲頁寫，退出 OAI-SearchBot 的網站不會出現在 ChatGPT 的搜尋答案裡，但仍可能以導覽連結的形式出現。擋掉抓取與從結果裡消失，從來不是同一件事。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "robots 指令不是授權控制"
+        },
+        {
+          "type": "paragraph",
+          "text": "robots.txt 的規範原文是 RFC 9309，2022 年 9 月以標準軌發布。規範自己寫明：這些規則不是一種存取授權，而且 Robots Exclusion Protocol 不能取代有效的內容安全措施。換句話說，一行 Disallow 是一張告示，不是一道鎖；遵不遵守靠慣例。規範裡幾條實際會影響行為的規定也值得記住。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "user-agent 的比對是大小寫不分的，而且必須採用最精確的匹配，也就是匹配到最多位元組的那一組；所以一個有自己名字的爬蟲會用自己那一組，忽略寫給星號的那一組。",
+            "剖析上限至少要有 500 KiB，超過的部分規範不要求處理。",
+            "爬蟲不應該使用快取的 robots.txt 超過 24 小時，除非那個檔案讀不到。",
+            "robots.txt 回傳 400 到 499 的狀態碼時，爬蟲可以存取伺服器上的任何資源；回傳 500 到 599 時，必須假設完全禁止。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "還有一個常被忽略的副作用，規範自己提醒過：把路徑寫進 robots.txt 等於公開那些路徑。真正要保護的東西應該用 HTTP 驗證或密碼保護，而不是寫進一個所有人都讀得到的檔案。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "三種爬蟲，三個 user-agent"
+        },
+        {
+          "type": "paragraph",
+          "text": "這是本篇對網站經營者最有用的一段。訓練用爬蟲、搜尋索引爬蟲、代使用者即時取用的擷取器是三件事，各家用不同的 user-agent 名稱把它們分開。你在 robots.txt 裡寫下哪一個名字，後果完全不同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "訓練那一類，官方文件寫得最清楚的是 Google-Extended：Google 說發布者可以用這個 token 管理Google 從網站抓到的內容是否可用於訓練未來的 Gemini 模型，而且明寫 Google-Extended 不影響網站在 Google 搜尋的收錄，也不是排名訊號。OpenAI 的 GPTBot 用來抓取可能用於訓練生成式 AI 基礎模型的內容；Anthropic 的 ClaudeBot 官方描述是收集可能有助於模型訓練的網頁內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "搜尋索引那一類，目的是讓網站出現在該服務的搜尋結果裡。OAI-SearchBot 的官方描述是用於搜尋，讓網站出現在 ChatGPT 搜尋功能的結果中；Anthropic 的 Claude-SearchBot 官方描述是為了改善搜尋結果品質而索引內容；Perplexity 的官方文件寫 PerplexityBot 是為了在它的搜尋結果中呈現並連結網站，而且明說這個爬蟲不用於為 AI 基礎模型抓取內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三類是使用者當下觸發的取用，也是最容易被誤解的一類。Google 把自家的爬蟲與擷取器分成一般爬蟲、特例爬蟲、使用者觸發的擷取器三類，並寫明使用者觸發的擷取器通常會忽略 robots.txt 規則，理由是這次取用是使用者要求的。OpenAI 對 ChatGPT-User 寫的是同一個意思：它不是用來自動抓取網路，因為這些動作由使用者發起，robots.txt 規則可能不適用。Perplexity 對 Perplexity-User 也寫了這個擷取器通常忽略 robots.txt。所以對這一類，robots.txt 裡的一行比較接近你的表態，而不是一道閘門。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "這一類是什麼",
+            "官方文件寫的用途",
+            "各家的 user-agent 例子",
+            "在 robots.txt 擋掉會怎樣"
+          ],
+          "rows": [
+            [
+              "訓練用爬蟲",
+              "抓取內容，可能用於訓練生成式基礎模型",
+              "Google-Extended、GPTBot、ClaudeBot、Applebot-Extended",
+              "官方文件說會遵守。Google 與 Apple 都另外寫明，擋掉訓練 token 不影響網站在它們搜尋結果裡的收錄"
+            ],
+            [
+              "搜尋索引爬蟲",
+              "建立索引，讓網站出現在該服務的搜尋結果並被連結",
+              "Googlebot、OAI-SearchBot、Claude-SearchBot、PerplexityBot",
+              "OpenAI 明寫退出 OAI-SearchBot 的網站不會出現在 ChatGPT 搜尋答案裡，但仍可能以導覽連結出現"
+            ],
+            [
+              "代使用者即時取用的擷取器",
+              "使用者當下提問時去讀那一頁，並在回答裡附上連結",
+              "ChatGPT-User、Claude-User、Perplexity-User、Google 的使用者觸發擷取器",
+              "Google 與 Perplexity 都寫通常忽略 robots.txt，OpenAI 寫規則可能不適用；這一行比較接近表態"
+            ]
+          ],
+          "caption": "三類爬蟲的官方描述對照，依 2026 年 9 月查證的各家官方文件整理；同一家的設定彼此獨立。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-search-llms-txt/diagram-1.svg",
+          "alt": "圖解：左邊比較 robots.txt 與 llms.txt 兩個檔案的地位，右邊把爬蟲分成訓練、搜尋索引、代使用者取用三條線。",
+          "width": 1,
+          "height": 1,
+          "caption": "左半邊看兩個檔案的地位差別，右半邊看三類爬蟲各自對應哪一種 user-agent 與哪一種後果。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "本站目前的做法（2026 年 9 月 14 日查證）"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是 Mokaair 自己 robots.txt 的內容與理由，寫出來是因為它剛好把上面幾條規則用在同一個檔案裡。這是本站在這個日期的選擇，不是建議你照抄的清單；本站沒有做過任何量測，也不主張這樣設定改變了本站在任何地方的曝光。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "給所有爬蟲的那一組允許整站，只擋住機器用的端點與不該被猜到的 token 網址：API 路徑、後台、分享與轉址用的路徑、帳號確認網址。這些本來就沒有要被索引。",
+            "會員頁面（登入、帳號、行程、提醒、搜尋、我的）刻意保持可被抓取，改用頁面上的 noindex。理由就是上一節那一條：被 robots.txt 擋住的網址，爬蟲永遠讀不到那句 noindex。",
+            "後台路徑兩邊都放：它沒有索引項要清，擋在門口純粹是省抓取預算。",
+            "拒絕的抓取式爬蟲名單目前有 11 個 user-agent，包含 GPTBot、ClaudeBot、CCBot、Google-Extended、Applebot-Extended、PerplexityBot 等。",
+            "ChatGPT-User 與 OAI-SearchBot 刻意不在名單上。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "取捨的理由寫在程式碼註解裡：被拒絕的是收集頁面拿去訓練、或把內容轉售成一個答案的爬蟲，放行的是代使用者即時取用、並在答案裡附上出處的那一類，因為後者提供的交換條件跟搜尋引擎一樣。拒絕訓練 token 的代價也算得出來：Google-Extended 與 Applebot-Extended 是訓練專用的 token，Googlebot 與 Applebot 在抓取與排名時不會參考它們，所以拒絕它們不影響搜尋。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這份名單有兩處值得讀者自己判斷，不該當成範本照抄。第一，PerplexityBot 依 Perplexity 官方文件的描述屬於搜尋索引那一類、而且會連結網站，本站仍然把它放進拒絕名單，那是本站自己的分類判斷，不是官方文件的分類。第二，OpenAI 官方文件已經寫明 ChatGPT-User 這類使用者觸發的請求可能不適用 robots.txt 規則，所以放行它實際上更接近一種表態。程式碼註解自己也寫了同一句話：這是一份宣告，不是一道防禦，它只擋得住誠實到會去讀它的爬蟲。至於引擎拿到內容之後怎麼組成答案、怎麼挑出處，那條線寫在"
+            },
+            {
+              "type": "article",
+              "text": "生成式答案那一篇",
+              "kind": "life",
+              "slug": "ai-search-generated-answers"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "所以要不要放一個 llms.txt"
+        },
+        {
+          "type": "paragraph",
+          "text": "回到最初的問題。建立一份 llms.txt 的成本很低，維護成本則是另一回事：它是一份手寫的索引，網站改了它就會過期，而過期的索引會把代理帶到不存在的網址。到查證日為止，可以確定的只有兩句話：Google 官方文件說搜尋會忽略它，其他幾家沒有表態。任何超過這兩句話的說法，目前都沒有一手來源可以指。"
+        },
+        {
+          "type": "paragraph",
+          "text": "反過來說，robots.txt 那一側幾乎每一條都有官方文件或規範原文可查，而且效果是明確的：它決定誰可以抓，不決定誰會被索引，更不決定誰會被引用。如果只想花一次力氣在這個題目上，先把 robots.txt 的三類 user-agent 想清楚，比先寫一份沒有引擎承諾會讀的索引檔更站得住腳。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "llms.txt 提案原文（提案本身的網站，第二版）",
+          "url": "https://llmstxt.org/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "llms.txt 提案的版本變更說明（第一版到第二版）",
+          "url": "https://llmstxt.org/changes.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：生成式 AI 功能最佳化指南（含 llms.txt 說明）",
+          "url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：搜尋文件更新記錄（llms.txt 註記的加入日期）",
+          "url": "https://developers.google.com/search/updates",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Chrome for Developers：Lighthouse 的 llms.txt 稽核",
+          "url": "https://developer.chrome.com/docs/lighthouse/agentic-browsing/llms-txt",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "RFC 9309：Robots Exclusion Protocol（規範原文）",
+          "url": "https://www.rfc-editor.org/rfc/rfc9309.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：robots.txt 簡介與指南",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/robots/intro",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：使用 noindex 禁止建立索引",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/block-indexing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：Google 的常見爬蟲（含 Google-Extended）",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：使用者觸發的擷取器",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/google-user-triggered-fetchers",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 開發者文件：OpenAI 爬蟲總覽（GPTBot、OAI-SearchBot、ChatGPT-User）",
+          "url": "https://developers.openai.com/api/docs/bots",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic 說明中心：Anthropic 是否抓取網路資料，站方如何封鎖（ClaudeBot、Claude-User、Claude-SearchBot）",
+          "url": "https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Perplexity 開發者文件：Perplexity 的爬蟲（PerplexityBot、Perplexity-User）",
+          "url": "https://docs.perplexity.ai/docs/resources/perplexity-crawlers",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Apple 支援：關於 Applebot 與 Applebot-Extended",
+          "url": "https://support.apple.com/en-us/119829",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Common Crawl：CCBot 說明頁",
+          "url": "https://commoncrawl.org/ccbot",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
