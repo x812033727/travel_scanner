@@ -1,0 +1,252 @@
+{
+  "slug": "premiere-editing-basics",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Premiere 影片剪輯：素材整理、時間軸與輸出",
+      "description": "第一次使用 Premiere 剪影片，可以從整理素材、建立序列和完成一版粗剪開始。本文以原創自行車維修店形象短片為例，說明專案檔與原始素材的差別、時間軸剪輯、代理檔、聲音及字幕檢查，最後整理輸出與交接流程。附操作步驟、檔案用途比較表和自繪圖解，並提醒試用轉訂閱及方案條件，協助你完成可回放、可修改的剪輯成果。",
+      "hero": {
+        "src": "/guides/premiere-editing-basics/hero.jpg",
+        "alt": "Mokaair 原創資料夾、螢幕與文件插圖，代表素材整理、時間軸剪輯和交付驗收。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "自行車維修店拍了開門、整理工具與修車手部特寫，想剪成一支簡短介紹影片。素材很多時，最容易花時間的未必是特效，而是找不到剛才那段畫面、旁白和配樂互相蓋住，或只寄出專案檔後，別人開啟卻全是離線素材。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文採原創維修店情境，依 2026 年 9 月 14 日查閱的 Adobe 官方文件介紹 Premiere 桌面版。沒有安裝軟體、訂閱試用或剪輯實測影片；重點是建立一個能保存素材、修改內容並驗收輸出的基礎流程。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "開始試用前，先安排一次完整練習"
+        },
+        {
+          "type": "paragraph",
+          "text": "Adobe 台灣頁面目前提供 Premiere 的 7 天試用，試用結束後會開始計費。啟用前先確認電腦符合當前版本需求，準備幾段自己的影片、旁白和可使用的配樂。把匯入、剪輯、字幕與輸出排成一個小練習，才能在試用期間判斷工具是否適合。"
+        },
+        {
+          "type": "paragraph",
+          "text": "方案頁上的每月金額可能對應不同付款及承諾期間，不能只看數字就推定隨時取消都沒有費用。核對結帳頁的計費起點、方案期間及取消條件，並保留確認紀錄。本篇不列固定售價或折扣，也不把台灣頁的退款說明改寫成任何購買管道都適用的保證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Premiere 桌面版和行動版的使用方式及權益不同，這裡的專案、序列與面板流程以桌面版為主。先用基本功能完成一支可看的片，再決定是否需要其他應用程式、範本或雲端協作服務，避免把帳戶中出現的每一項功能都當成必要前置工作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "專案檔記錄剪輯，原始素材要另外保存"
+        },
+        {
+          "type": "paragraph",
+          "text": "在硬碟建立專案資料夾，分放原始影片、音訊、圖片、專案與輸出版本。本例可用店面、工具、維修、訪談作素材分類。先將記憶卡或暫存位置中的素材複製到固定位置，再開始整理；避免剪到一半拔掉外接裝置，才發現專案仍依賴那裡的檔案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Premiere 的 .pproj 保存序列、素材參照與剪輯設定，時間軸編輯通常不直接改動原始媒體。把影片拖入專案面板或 Bin，主要是在整理參照，並不等於已將全部影片嵌入專案檔。專案能開啟和素材齊全，是兩件要分別確認的事。"
+        },
+        {
+          "type": "paragraph",
+          "text": "選 New Project，設定名稱及保存位置，再匯入需要的素材。現行匯入流程把 Organize Media 和 Copy media 分開，前者建立分類，後者才複製媒體。確認目前選項與目的相符，再建立粗剪序列；版本名稱保持一致，例如序列和輸出都使用 v01，方便對照回饋。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "建立序列，先把故事剪通順"
+        },
+        {
+          "type": "paragraph",
+          "text": "一個專案可以有多個序列，每個序列可有不同設定與多條影像、音訊軌。可將代表性素材拖到 Project 面板的 New Item 圖示建立序列，再確認畫面尺寸、比例與影格率。第一段素材可能不是最終交付規格，因此不能建立後就完全略過設定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本例先安排店面外觀、維修過程和取車畫面，讓觀眾知道店在哪裡、提供什麼服務與完成後的樣子。先選素材的可用範圍，放進時間軸，修掉開拍前等待和不需要的段落。暫時以乾淨切接檢查內容，避免轉場效果掩蓋資訊順序不清楚的問題。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一般刪除可能在時間軸留下空隙，Ripple Delete 則會移除片段並收合間隔。操作前看清楚已選取的片段、連動音訊和軌道設定；收合後回放前後幾秒，確認旁白、配樂及字幕沒有意外失去同步。需要大幅改順序時先另存一版，保留可以比較的剪輯。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把聲音、文字與畫面放在同一個驗收範圍"
+        },
+        {
+          "type": "paragraph",
+          "text": "先聽清楚旁白或訪談，再調整配樂，不以畫面看起來熱鬧取代聲音可理解。維修特寫中的工具聲若有助於理解，可保留適量；若蓋過店主說話，就調整片段音量或重新安排。剪掉一段畫面後，檢查聲音接縫是否突然跳動，必要時做平順的銜接。"
+        },
+        {
+          "type": "paragraph",
+          "text": "標題和字幕要在預計播放的尺寸下檢查。店名、聯絡方式與服務內容使用清楚字型，避開重要手部動作，也不要只靠顏色區分資訊。自動轉寫若用來製作字幕，仍需核對店名、專業用語及斷句，確認字幕時間沒有超前或落後於說話。"
+        },
+        {
+          "type": "paragraph",
+          "text": "畫面色彩先追求相鄰鏡頭合理一致，再決定風格。手機與相機素材混用時，留意亮度、白平衡及來源色彩設定，不能因為一個濾鏡看起來漂亮就全片套用。特別檢查工具細節和白色招牌是否失去層次，並保留原始素材供日後調整。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "代理檔協助剪輯，正式輸出仍要查來源"
+        },
+        {
+          "type": "paragraph",
+          "text": "高解析度素材播放不順時，可評估代理檔工作流，用較輕量的媒體協助剪輯，同時保留與原始素材的連結。代理檔的用途是改善工作流程，不是替代原檔備份。若只留下低解析度代理，之後就可能無法輸出原本希望保留的畫質。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Adobe 文件說明，正常輸出預設使用完整解析度媒體，即使剪輯時已啟用代理；輸出設定也另有 Use Proxies，可刻意使用代理產生檔案。因此正式交付前仍要確認原始媒體在線、輸出選項正確，不把預覽模式直接當成最終品質的判斷依據。"
+        },
+        {
+          "type": "paragraph",
+          "text": "選定要輸出的序列，開啟 File、Export、Media，設定檔名與位置，再核對格式及預設。一般分享可評估 H.264 的 MP4，但仍依接收平台需求決定。逐項確認畫面尺寸、影格率、聲道和輸出範圍；Match Source 只是一個起點，並不保證符合所有交付條件。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "確認試用與系統條件，將原始素材複製到固定位置。",
+            "建立專案和序列，先以基本切接完成故事順序。",
+            "整理旁白、配樂及字幕，檢查鏡頭和聲音的接縫。",
+            "核對來源及輸出設定，完整回放成品，再整理可修改專案。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "輸出成功之後，還要檢查成品與交接"
+        },
+        {
+          "type": "paragraph",
+          "text": "可直接在 Premiere 輸出，或送到 Adobe Media Encoder 排程處理。無論用哪一種，等檔案完成後用播放器從頭看一次，檢查黑格、漏字、音量突變與結尾多餘空白。若只輸出時間軸中的一段，確認這是有意選定的範圍，而不是忘了清除先前測試用的起迄點。"
+        },
+        {
+          "type": "paragraph",
+          "text": "需要交給別人繼續剪輯時，可用 File、Project Manager，選定序列並使用 Collect Files and Copy to New Location 收集媒體。留意 Exclude Unused Clips 等選項會影響帶走哪些素材；本例若客戶可能要求換鏡頭，就要另外考慮保留未用素材，而不是只帶目前片中出現的部分。"
+        },
+        {
+          "type": "paragraph",
+          "text": "收集完成後從新位置開啟專案，確認媒體連結及需要的字型、外掛或外部依賴。成品檔、可編輯專案與原始素材各有用途，交付清單應寫清楚版本和內容。本例最後同時保留核准的輸出、對應序列及素材紀錄，日後修改店址或服務項目時才容易找到正確版本。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/premiere-editing-basics/diagram-1.svg",
+          "alt": "四張卡片顯示保存素材、安排序列、檢查聲畫與交付版本，區分專案檔和完成影片。",
+          "width": 1600,
+          "height": 900,
+          "caption": "剪輯是可修改的安排；完整素材、正確輸出與清楚版本，讓成果可以繼續使用。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "檔案或項目",
+            "保存內容",
+            "不能取代什麼"
+          ],
+          "rows": [
+            [
+              ".pproj 專案",
+              "序列、剪輯及媒體參照",
+              "原始影片和錄音"
+            ],
+            [
+              "原始素材",
+              "拍攝或錄製的媒體",
+              "已完成的時間軸編排"
+            ],
+            [
+              "代理檔",
+              "供工作流使用的較輕媒體",
+              "完整品質的來源備份"
+            ],
+            [
+              "輸出影片",
+              "目前版本的畫面與聲音",
+              "可自由修改的完整專案"
+            ],
+            [
+              "Project Manager 收集",
+              "選定序列與指定媒體",
+              "未勾選素材和所有外部依賴"
+            ]
+          ],
+          "caption": "原創交付比較表；保存成品與保存可修改專案，需要不同的檔案安排。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先寄一份能開啟的交付，再談檔案已備份",
+          "text": "複製完成後從新位置開啟專案，檢查素材是否在線；輸出影片則另外完整播放。只看到檔名存在，還不足以確認可用。"
+        },
+        {
+          "type": "link",
+          "text": "先用 OBS 錄好畫面與分離音軌",
+          "url": "https://mokaair.com/zh-TW/life/obs-screen-recording"
+        },
+        {
+          "type": "link",
+          "text": "剪輯前比較語音降噪的效果",
+          "url": "https://mokaair.com/zh-TW/life/adobe-podcast-audio"
+        },
+        {
+          "type": "link",
+          "text": "確認影片素材與字型授權",
+          "url": "https://mokaair.com/zh-TW/life/licensed-assets-workflow"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Adobe 台灣：Premiere 試用說明",
+          "url": "https://www.adobe.com/tw/products/premiere/free-trial-download.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe：Premiere 專案概念",
+          "url": "https://helpx.adobe.com/premiere/desktop/organize-media/create-projects/start-projects.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe：建立專案與複製媒體",
+          "url": "https://helpx.adobe.com/premiere/desktop/organize-media/create-projects/create-new-project.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe：建立序列",
+          "url": "https://helpx.adobe.com/premiere/desktop/edit-projects/change-clip-sequence/create-a-sequence.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe：刪除片段與 Ripple Delete",
+          "url": "https://helpx.adobe.com/premiere/desktop/edit-projects/change-clip-sequence/remove-clips-from-a-sequence.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe：代理檔與輸出設定",
+          "url": "https://helpx.adobe.com/premiere/desktop/organize-media/ingest-proxy-workflow/export-proxies.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe：輸出影像與音訊",
+          "url": "https://helpx.adobe.com/premiere/desktop/render-and-export/export-files/export-video-and-audio-files.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe：Project Manager 收集專案",
+          "url": "https://helpx.adobe.com/premiere/desktop/organize-media/create-projects/copy-project.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

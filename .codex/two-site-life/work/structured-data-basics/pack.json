@@ -1,0 +1,242 @@
+{
+  "slug": "structured-data-basics",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "結構化資料怎麼加：從可見內容到搜尋驗證",
+      "description": "結構化資料能協助搜尋引擎理解頁面，但不是貼上一段程式碼就保證出現特殊搜尋外觀。本文從 Schema.org 類型與 JSON-LD 分工開始，整理可見內容對照、文章欄位、平台輸出來源，以及 Schema Markup Validator 和複合式搜尋結果測試的使用差異。附上原創欄位表與驗證流程，讓台灣網站管理者依真實內容建立可維護的標記。",
+      "hero": {
+        "src": "/guides/structured-data-basics/hero.jpg",
+        "alt": "原創文件、螢幕與盾牌圖像，呈現內容欄位、資料輸出與驗證。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "文章明明有標題、作者和發布日期，為什麼還要另外提供結構化資料？因為人閱讀排版就能理解的關係，系統未必能同樣清楚辨認。結構化資料把這些資訊用一致的名稱與格式表達，讓頁面內容更容易被處理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "開始之前先確認內容本身正確。如果作者不明、圖片不相關，或頁面沒有實際的商品價格，補幾個欄位不能解決根本問題。先從一種常見頁型整理資料，再測試輸出，比一次替全站開啟所有標記更容易維護。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Schema.org 是詞彙，JSON-LD 是表達方式"
+        },
+        {
+          "type": "paragraph",
+          "text": "Schema.org 提供類型與屬性等共用詞彙，例如用 Article 表示文章，再用合適屬性描述它。JSON-LD、Microdata 和 RDFa 則是把資訊放進頁面的不同方式。這兩層需要分清楚：選擇 JSON-LD，不等於已經決定頁面描述的是文章、人物還是產品。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 一般建議使用容易維護的 JSON-LD，通常放在 type 為 application/ld+json 的 script 元素中。這段資料不會像正文一樣直接排版顯示，但描述的內容仍應與使用者可看到的資訊相符。不要因此把不存在的評分或作者塞進隱藏資料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "也要區分詞彙有效和 Google 搜尋功能支援。Schema.org 的範圍比 Google 的複合式搜尋結果更廣；某個類型可以合法描述內容，不代表 Google 目前有相應特殊外觀。若目的是搜尋功能，應閱讀 Google 該功能的最新專用文件。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先看頁面主要用途，再選合適類型"
+        },
+        {
+          "type": "paragraph",
+          "text": "以整理居家工作空間的教學文章為例，可先評估 Article 或 BlogPosting，根據真實內容表達標題、作者、圖片與日期。若頁面其實是商品購買入口，就需要另一套適合商品的資料安排，不能只因都有一張圖片，就套相同模板。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先為網站列出文章、服務介紹、人物簡介和其他主要頁型，記錄每一類由誰提供內容、目前是否已有標記。單頁可以合理描述多種事物，但每一項都應有內容依據。沒有必要為了增加項目數，把文章裡偶然提到的每個名詞都變成獨立主體。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 通用指南要求標記反映頁面內容，並遵循類型自己的規定。因此在選擇評分、活動或其他可能有特殊資格的功能前，先查適用範圍。不要看到競爭網站有某種搜尋外觀，就推論自己的頁面只差一段相同程式碼。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "建立可見內容與欄位的對照"
+        },
+        {
+          "type": "paragraph",
+          "text": "文章類型可以先整理 headline、author、image、datePublished 和適用時的 dateModified。這些是 Google 文章文件列出的建議屬性，並不是所有結構化資料類型共用的一組必填欄位。每種功能的必要與建議項目，仍需分別確認。"
+        },
+        {
+          "type": "paragraph",
+          "text": "標題應反映文章本身；作者要對應實際署名，個人與機構使用適當類型。若有多位作者，應分開記錄，而不是把整串姓名、職稱和「發文者」文字全部當成一個名字。日期分清首次發布與後續修改，使用適合格式並提供時區資訊。"
+        },
+        {
+          "type": "paragraph",
+          "text": "圖片要能代表文章內容，網址也要能正常被存取。不要用網站標誌代替每篇文章的內容圖片，或留下測試環境路徑。建立一張欄位表，把每個資料值對應到後台欄位與頁面位置；未來編輯修改文章時，就知道哪裡需要同步更新。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "選一篇資料完整的文章，確認署名、圖片與日期。",
+            "查閱適合類型的官方屬性規定，分清必要與建議項目。",
+            "記錄每個標記欄位的內容來源與可見位置。",
+            "檢查缺漏資料，不用虛構值讓表格看起來完整。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "確認平台已輸出什麼，避免多套資料矛盾"
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 佈景、SEO 外掛或其他內容功能可能已經輸出結構化資料。先檢視頁面原始碼並搜尋 application/ld+json，再用工具查看擷取出的類型。沒有看到這個字串也不表示完全沒有標記，因為網站可能使用 Microdata 或 RDFa。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若兩套功能都描述同一篇文章，檢查作者、圖片、日期和網址是否一致。多個資料項目本身不一定錯，但相互矛盾會增加排查難度。先決定哪一套負責主要文章資料，再依平台支援的方式調整，不要直接刪除所有看不懂的 script。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自行產生 JSON-LD 時，應使用能正確處理引號與特殊字元的序列化方式。把讀者輸入的標題直接拼成程式碼容易出錯；範例裡的註解、虛構作者與測試網址也不能原封不動上線。設定完成後仍要檢查實際頁面，不能只驗證編輯器裡的一份草稿。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "兩種測試分工，再加上人工內容檢查"
+        },
+        {
+          "type": "paragraph",
+          "text": "Schema Markup Validator 可以擷取頁面上的 Schema.org 資料、呈現資料關係並找出語法問題。Google 的複合式搜尋結果測試則聚焦能辨識的搜尋功能與相關錯誤、建議。前者沒有報錯，不等於後者一定支援該類型的特殊外觀。"
+        },
+        {
+          "type": "paragraph",
+          "text": "複合式搜尋結果測試可輸入完整網址，也可以切到程式碼模式貼入待測內容。尚未公開的草稿可先用程式碼模式檢查，正式頁面準備好後再測網址，確認部署後真的有輸出。網址測試需要能取得所需資源，私有頁面不應為了測試而隨意解除保護。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先修正重大錯誤，再閱讀其他建議是否適用；若缺少某項資訊，回到內容來源處理。即使工具通過，也要人工核對標記是否描述可見內容、有無過期日期或不實評論。工具無法替你保證內容真實、所有政策都符合，或一定出現在搜尋結果。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "發布後持續核對，避免內容與標記分家"
+        },
+        {
+          "type": "paragraph",
+          "text": "上線後抽查實際網址、重要圖片與資料值，必要時用 Search Console 查看 Google 處理的頁面。把本機程式碼檢查、公開網址測試和後續搜尋狀態分開記錄，才能知道問題發生在產生、部署還是重新處理階段。"
+        },
+        {
+          "type": "paragraph",
+          "text": "更新文章作者、封面或實質修改日期時，也要檢查結構化資料有沒有同步。若換佈景或停用外掛，先確認原來由它負責的標記會由誰接手。只要資料來源不清楚，短期看似正常的設定也容易在下一次改版失效。"
+        },
+        {
+          "type": "paragraph",
+          "text": "評估效果時先固定頁面與觀察條件，並記錄期間其他改動。搜尋外觀與流量會受多種因素影響，不能把一週的上升全部歸功於標記。值得保留的是清楚的資料來源、正確輸出及可複查流程，讓頁面資訊長期一致。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/structured-data-basics/diagram-1.svg",
+          "alt": "四個區塊顯示可見內容盤點、欄位產生、工具檢查及公開後複查，強調特殊搜尋外觀無法保證。",
+          "width": 1600,
+          "height": 900,
+          "caption": "資料正確與功能符合條件，仍不保證特殊搜尋外觀會出現。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "文章資料",
+            "可用欄位",
+            "核對內容"
+          ],
+          "rows": [
+            [
+              "文章標題",
+              "headline",
+              "與該文主題及標題一致"
+            ],
+            [
+              "實際署名",
+              "author",
+              "個人或機構、多作者分開"
+            ],
+            [
+              "內容代表圖片",
+              "image",
+              "相關圖片與可存取網址"
+            ],
+            [
+              "首次發布時間",
+              "datePublished",
+              "真實發布日期與時區"
+            ],
+            [
+              "適用的修改時間",
+              "dateModified",
+              "反映修改而非每天固定更新"
+            ]
+          ],
+          "caption": "以 Google 文章類型建議屬性為例，其他功能的規定需另查。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "測試通過仍需核對正文",
+          "text": "語法正確無法證明內容真實。請逐一對照作者、圖片、日期和其他標記資訊；沒有資料時回到內容流程補齊，不用假評分或虛構身分填欄位。"
+        },
+        {
+          "type": "link",
+          "text": "先整理文章內容品質",
+          "url": "https://mokaair.com/zh-TW/life/seo-content-quality"
+        },
+        {
+          "type": "link",
+          "text": "辨識作者與敏感資訊的可信度",
+          "url": "https://mokaair.com/zh-TW/life/seo-trust-sensitive-topics"
+        },
+        {
+          "type": "link",
+          "text": "用 Search Console 核對頁面狀態",
+          "url": "https://mokaair.com/zh-TW/life/google-search-console-workflow"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Schema.org 詞彙與格式入門",
+          "url": "https://schema.org/docs/gs.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 結構化資料簡介",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 結構化資料通用指南",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/sd-policies?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 文章類型與建議屬性",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/article?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Schema Markup Validator 說明",
+          "url": "https://schema.org/docs/validator.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 複合式搜尋結果測試",
+          "url": "https://support.google.com/webmasters/answer/7445569?hl=en",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

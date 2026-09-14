@@ -270,8 +270,11 @@ export function RouteModePanel({
   const manualInputRef = useRef<HTMLInputElement>(null);
   const detailRef = useRef<HTMLElement>(null);
   const focusNextPreviewRef = useRef(false);
-  // Preserve focus if the reader moves to another control while the request is pending.
-  // Otherwise, transfer it in the commit that displays the results, before the next paint.
+  // Where focus was when the route was asked for. The effect below runs when the answer
+  // lands, and while the request was out the reader can have moved focus themselves — an
+  // arrow key on the options, a tab out of the panel. Taking it back then is the app arguing
+  // with the person using it, and it is what made the sibling test go red under load: it
+  // expected focus on a route option and found it on this panel's container.
   const previewFocusOriginRef = useRef<Element | null>(null);
   const [manualMinutes, setManualMinutes] = useState("");
   const [localError, setLocalError] = useState<string>();
@@ -295,6 +298,9 @@ export function RouteModePanel({
   }
   const preview = previews[requestKey];
   const providerPreview = isProviderPreview(preview) ? preview : undefined;
+  // In the commit that shows the result, not a scheduler task after it: the answer arrives on
+  // a resolved promise, and a passive effect from that commit could still be pending when the
+  // reader (or a test) looked, leaving focus on <body> beside a finished result.
   useLayoutEffect(() => {
     if (!providerPreview || !focusNextPreviewRef.current || !detailRef.current) return;
     focusNextPreviewRef.current = false;

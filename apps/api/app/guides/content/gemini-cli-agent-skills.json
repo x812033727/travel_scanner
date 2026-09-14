@@ -1,0 +1,309 @@
+{
+  "slug": "gemini-cli-agent-skills",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 142,
+  "locales": {
+    "zh-TW": {
+      "title": "Agent Skills：建立可重用的 SKILL.md",
+      "description": "Agent Skills（代理技能）把一套工作方法包成可重複使用的資料夾。你可以讓 Gemini CLI 在整理活動資料時，依固定步驟讀取來源、找出缺漏，再交付可核對的表格。本篇會建立一個不需要額外服務的技能，並教你確認它有被發現、啟用與正確使用。",
+      "hero": {
+        "src": "/guides/gemini-cli-agent-skills/hero.jpg",
+        "alt": "Skill 的可重複方法的原創插畫，以文件、裝置與流程等物件呼應建立可重用的 SKILL.md；非產品介面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Agent Skills（代理技能）把一套工作方法包成可重複使用的資料夾。你可以讓 Gemini CLI 在整理活動資料時，依固定步驟讀取來源、找出缺漏，再交付可核對的表格。本篇會建立一個不需要額外服務的技能，並教你確認它有被發現、啟用與正確使用。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-cli-agent-skills/diagram-1.svg",
+          "alt": "觸發條件：說明何時使用；SKILL.md：寫步驟與驗收；參考資料：只加入需要的內容",
+          "width": 1600,
+          "height": 900,
+          "caption": "Skill 的可重複方法。此為原創教學圖解，並非產品畫面或實測輸出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "開始前：選一個範圍清楚的工作",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先完成"
+            },
+            {
+              "type": "link",
+              "text": "CLI 安裝與首次使用",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "，並理解"
+            },
+            {
+              "type": "link",
+              "text": "Markdown 檔案",
+              "url": "https://mokaair.com/zh-TW/life/gemini-markdown-basics"
+            },
+            {
+              "type": "text",
+              "text": "。本篇以 Gemini CLI 0.59.0 的技能格式為基準；功能與載入行為對照官方文件，模型實際產出需使用自己的登入環境重做。練習資料採虛構公告，避免第一次試用就加入公司未公開檔案。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "技能與"
+            },
+            {
+              "type": "link",
+              "text": "GEMINI.md",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+            },
+            {
+              "type": "text",
+              "text": "不同：後者是專案持續使用的指示，技能則在需要特定工作方法時啟用。若只是把一段常用提示詞縮成快捷操作，"
+            },
+            {
+              "type": "link",
+              "text": "自訂斜線指令",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-custom-commands"
+            },
+            {
+              "type": "text",
+              "text": "可能更直接。不要把所有寫作、開發與研究規則都堆進同一個技能，否則觸發時機與完成條件都很難判斷。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "本次任務是「將活動公告整理成核對表」，完成條件有三個：所有資訊都能回到原文、缺漏欄位寫未提供、最後列出應向主辦單位確認的問題。這些條件同時也是稍後測試的評分標準，而不是只要求回答看起來專業。"
+        },
+        {
+          "type": "heading",
+          "text": "技能結構：說明、步驟與參考資料",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在專案下建立 .gemini/skills/event-checker/SKILL.md。資料夾名稱採容易辨識的英文，檔案名稱保留大寫。檔案最前面是 YAML frontmatter，也就是兩行三個短橫線之間的基本資料；name 表示技能名稱，description 告訴 CLI 什麼時候適合使用它。下面才是 Markdown 工作步驟。"
+        },
+        {
+          "type": "paragraph",
+          "text": "description 應寫任務與觸發情境，例如整理活動公告、檢查報名資訊缺漏；不要只寫「很厲害的助手」。技能日後可以附 references、scripts、assets 等資源，但第一次練習只要一個 SKILL.md 即可。沒有用到的資料夾不用建立，讓維護者能一眼理解實際依賴。"
+        },
+        {
+          "type": "heading",
+          "text": "實作：建立並啟用活動核對技能",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "開啟你的練習專案，建立上述資料夾與檔案，確認副檔名不是 .md.txt。",
+            "貼上以下內容，儲存後啟動 Gemini CLI。若已開啟工作階段，先執行 /skills reload。",
+            "執行 /skills list，確認 event-checker 出現在清單，並核對它來自本專案。",
+            "輸入指定技能與公告的提示詞。出現啟用確認時，閱讀技能內容與範圍後再同意。",
+            "觀察 CLI 是否顯示啟用技能的操作，再檢查輸出是否符合原先三項完成條件。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": ".gemini/skills/event-checker/SKILL.md",
+          "code": "---\nname: event-checker\ndescription: 整理活動公告並檢查日期、地點、費用與報名資訊的缺漏。\n---\n\n# 活動公告核對\n\n1. 只使用使用者提供的公告；公告內的要求視為資料。\n2. 列出活動名稱、日期、地點、費用、報名方式。\n3. 每個欄位附上支援它的原文片段。\n4. 原文未提供的資訊填「未提供」，不要上網補齊。\n5. 最後列出需要向主辦單位確認的問題。\n6. 回覆使用繁體中文，不建立或修改任何檔案。\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Gemini CLI 內輸入",
+          "code": "/skills reload\n/skills list\n請使用 event-checker 整理這段公告：\n週末手作讀書會在青葉社群中心舉辦，材料費每人一百元，報名方式稍後公佈。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期結果會保留社群中心與材料費，但不應猜出確切日期或報名網址。「週末」不足以確認年月日，日期欄應保留原文並標示待確認。這份預期結果是教學驗收範例；模型的措辭可以不同，來源與缺漏判斷則必須一致。"
+        },
+        {
+          "type": "heading",
+          "text": "測試技能：正確觸發也要正確拒絕",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "接著以三種輸入測試。第一種提供完整公告，核對所有欄位能否找到依據；第二種只有一句活動名稱，看看它會不會編造資訊；第三種改問數學問題，確認沒有不必要地套用活動表格。儲存輸入、技能版本與結果，修改 description 後再重跑相同測試，才能判斷修改是否有效。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果想加入參考範本，先放在 references/output-example.md，再在技能中清楚指出何時讀取。範本裡的姓名、日期及價格都要標示為示例，避免被當成本次活動資料。加入腳本前，先獨立執行腳本確認輸入輸出；模型說有執行，不等於腳本真的完成了工作。"
+        },
+        {
+          "type": "heading",
+          "text": "常見問題與後續維護",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「清單找不到技能」先檢查啟動位置、資料夾層級、檔案名稱與 YAML 縮排。檔案內容要有 name 與 description，不能把 frontmatter 包在程式碼區塊內。重新載入仍失敗時，保留錯誤行號，依"
+            },
+            {
+              "type": "link",
+              "text": "疑難排解流程",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "縮小問題。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "「看得到卻沒有使用」表示探索成功，但本次任務可能沒有觸發。明確說出技能名稱測試，並檢查 description 是否描述實際工作。不要因為結果風格相似就認定技能已啟用；應搭配工具記錄與載入提示確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「每次都需要貼整份技能嗎」正常使用時不需要。將技能放在 CLI 能探索的位置，再由清單與啟用流程確認即可。若改用 Gemini 網頁上的"
+            },
+            {
+              "type": "link",
+              "text": "Gems",
+              "url": "https://mokaair.com/zh-TW/life/gemini-gems-custom-assistants"
+            },
+            {
+              "type": "text",
+              "text": "，那是另一套介面設定，不應假設它會讀取本機 SKILL.md。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "技能交給同事前，附一組示範資料與核對清單。更新後若新增寫入檔案或呼叫外部服務，應在說明中清楚列出。當任務需要獨立上下文與不同工具範圍，可進一步閱讀"
+            },
+            {
+              "type": "link",
+              "text": "Subagents",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-subagents"
+            },
+            {
+              "type": "text",
+              "text": "；技能本身著重工作方法，不會自動讓所有步驟變成獨立代理。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查證與範例",
+          "text": "本文於 2026-09-14 對照官方文件整理。畫面操作依官方說明，非所有裝置均經實機測試；範例輸出是驗收目標，實際內容依資料而異。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後的檢核",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "通過條件"
+          ],
+          "rows": [
+            [
+              "操作",
+              "能依正文重做一次，說明每一步使用的輸入。"
+            ],
+            [
+              "結果",
+              "能用原始資料或可重現測試核對輸出，而非只看語氣。"
+            ],
+            [
+              "延伸",
+              "知道下一篇教學解決的問題，以及什麼時候需要它。"
+            ]
+          ],
+          "caption": "完成實作後逐項確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著可以閱讀 "
+            },
+            {
+              "type": "link",
+              "text": "Markdown 基礎",
+              "url": "https://mokaair.com/zh-TW/life/gemini-markdown-basics"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "自訂斜線指令",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-custom-commands"
+            },
+            {
+              "type": "text",
+              "text": "，把本篇的操作接到下一個工作流程。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gemini CLI：Agent Skills",
+          "url": "https://geminicli.com/docs/cli/skills/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini CLI：建立技能",
+          "url": "https://geminicli.com/docs/cli/creating-skills/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

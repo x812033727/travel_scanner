@@ -1,6 +1,6 @@
 """Publication boundaries are identical for the directory, navigation and inline links."""
 
-from datetime import date, timedelta
+from datetime import timedelta
 
 import pytest
 from pydantic import ValidationError
@@ -18,9 +18,9 @@ actor = guides.actor
 
 def test_catalogue_is_complete_and_references_are_valid():
     catalogue = next(item for item in catalogues() if item.slug == "claude-code")
-    assert len(catalogue.entries) == 60
-    assert len(catalogue.groups) == 10
-    assert len(catalogue.paths) == 5
+    assert len(catalogue.entries) == 96
+    assert len(catalogue.groups) == 16
+    assert len(catalogue.paths) == 12
     assert catalogue.hub == "claude-code-tutorials"
 
 
@@ -169,16 +169,22 @@ async def test_series_route_precedes_kind_route_and_requires_published_hub(datab
 
 
 @pytest.mark.parametrize("state", ["hidden", "withdrawn", "expired", "other-locale"])
+@pytest.mark.parametrize("numbers", [(1, 2), (60, 61)])
 async def test_unavailable_targets_leave_no_public_navigation_or_inline_link(
-    database, actor, state
+    database, actor, state, numbers
 ):
+    catalogue = catalogues()[0]
+    source_slug = catalogue.entries[numbers[0] - 1].slug
+    target_slug = catalogue.entries[numbers[1] - 1].slug
+    document = rich_document()
+    document["blocks"][-2]["inlines"][1]["slug"] = target_slug
     async with guides.client(guides.make_app(database, actor)) as api:
         await create(api, "claude-code-tutorials")
-        await create(api, "claude-code-getting-started", doc=rich_document())
-        target = await create(api, "claude-code-accounts-and-access")
-        before = (await api.get("/guides/life/claude-code-getting-started")).json()
-        assert before["article_links"][0]["slug"] == "claude-code-accounts-and-access"
-        assert before["series"]["next"]["slug"] == "claude-code-accounts-and-access"
+        await create(api, source_slug, doc=document)
+        target = await create(api, target_slug)
+        before = (await api.get(f"/guides/life/{source_slug}")).json()
+        assert before["article_links"][0]["slug"] == target_slug
+        assert before["series"]["next"]["slug"] == target_slug
         async with database() as session:
             from uuid import UUID
 
@@ -193,7 +199,7 @@ async def test_unavailable_targets_leave_no_public_navigation_or_inline_link(
                 await session.execute(
                     update(GuideArticle)
                     .where(GuideArticle.id == identifier)
-                    .values(valid_until=date.today() - timedelta(days=1))
+                    .values(valid_until=guides.today() - timedelta(days=1))
                 )
             elif state == "withdrawn":
                 await session.execute(
@@ -208,13 +214,13 @@ async def test_unavailable_targets_leave_no_public_navigation_or_inline_link(
                     .values(locale="en")
                 )
             await session.commit()
-        after = (await api.get("/guides/life/claude-code-getting-started")).json()
+        after = (await api.get(f"/guides/life/{source_slug}")).json()
         assert after["article_links"] == []
         assert after["series"]["next"] is None
         directory = (await api.get("/guides/series/claude-code")).json()
-        assert [entry["number"] for entry in directory["entries"]] == [1]
+        assert [entry["number"] for entry in directory["entries"]] == [numbers[0]]
         assert all(
-            "claude-code-accounts-and-access" not in path["slugs"] for path in directory["paths"]
+            target_slug not in path["slugs"] for path in directory["paths"]
         )
 
 

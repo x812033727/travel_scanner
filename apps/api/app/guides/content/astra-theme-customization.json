@@ -1,0 +1,249 @@
+{
+  "slug": "astra-theme-customization",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Astra 佈景主題怎麼設定：版型、導覽與付費功能的取捨",
+      "description": "Astra 可以負責網站整體外觀，Starter Templates 提供可匯入的頁面與示範內容，兩者的功能與授權並不相同。本文從小型工作室網站出發，帶你安排版型匯入、全域字體與配色、頁首導覽、手機選單及頁尾資訊，並說明免費版、Astra Pro 與付費版型的取捨，讓改版建立在可維護的設定上，也避免既有內容被示範設定干擾。",
+      "hero": {
+        "src": "/guides/astra-theme-customization/hero.jpg",
+        "alt": "原創三格插圖以文件、頁面與設定費用清單表示 Astra 的設定與選擇。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "選到喜歡的示範網站，只是開始。真正上線後，需要修改的是自己的服務、作品與聯絡方式，也要讓下一位維護者知道到哪裡調整。Astra 的價值應該用這些日常工作來評估，而非只比較展示頁有多少動畫。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下以提供三項服務的工作室為例，先建立首頁、服務說明、作品與聯絡頁。本文依 2026 年 9 月 14 日的官方文件整理操作路徑，沒有宣稱實測效能，也不沿用來源網站的優惠或推薦順序。不同版本的選單文字可能略有差異。"
+        },
+        {
+          "type": "heading",
+          "text": "分清佈景主題、版型與編輯器",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Astra 是佈景主題，處理網站容器、導覽與整體外觀；Starter Templates 是匯入工具，提供預先設計的網站或頁面。選擇 Elementor 版型時，頁面通常需用 Elementor 修改；選區塊編輯器的版型，則依該版型使用的區塊工具維護。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先決定往後由誰改內容，再選編輯方式。如果同事平常熟悉區塊編輯器，為了某張漂亮首頁突然加入另一套建構器，可能增加交接成本。先預覽首頁以外的服務頁與手機畫面，確認版型適合實際資訊量，而不是打算永遠保留示範字數。"
+        },
+        {
+          "type": "paragraph",
+          "text": "免費 Astra 與 Astra Pro 外掛是不同安裝項目，Pro 需要 Astra 主題配合使用。購買 Pro 也不代表拿到所有付費 Starter Templates；官方目前將付費版型列在對應 Toolkit 授權內，結帳前應逐項核對需要的工具。"
+        },
+        {
+          "type": "heading",
+          "text": "匯入前先決定範圍",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "已有文章與導覽的網站，優先在測試站試匯入。完整網站匯入可能加入頁面、示範文章、選單、外觀設定，以及版型需要的外掛；電商或課程版型也可能帶入示範項目。這些變更遠超過換一張首頁背景。"
+        },
+        {
+          "type": "paragraph",
+          "text": "只需要服務頁時，可以考慮單頁匯入，官方文件說明它會建立草稿頁。仍需檢查該頁依賴的編輯器與擴充元件。匯入選項若提供保留既有資料或略過特定設定，先讀清楚範圍，不要以為保留文章就代表整站視覺完全不受影響。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "備份檔案與資料庫，記錄原本首頁、選單位置與啟用外掛。",
+            "在 Starter Templates 選定編輯器與版型，預覽內頁及手機版。",
+            "檢查將安裝的外掛及匯入內容，選擇完整網站或單頁範圍。",
+            "完成後先整理草稿與示範資料，再逐頁替換成自己的內容。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "先設定全域外觀，再做單頁例外",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "進入外觀的自訂介面，從 Global 調整字體、色彩、容器與按鈕。先確定正文閱讀寬度、標題層級與主要按鈕樣式，再修改細部頁面。工作室可使用一種主要強調色，讓聯絡按鈕有一致的辨識方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要只用英文示範字確認字體。放入實際繁體中文服務名稱、較長地址與數字，檢查換行、行距和按鈕高度。全域設定通常提供預設外觀，但頁面編輯器或單一元件的自訂設定可能覆蓋它；改了沒效果時，先找出該元件由哪個設定控制。"
+        },
+        {
+          "type": "paragraph",
+          "text": "容器決定內容可使用的寬度。文章頁可以保留舒適閱讀範圍，作品頁則按圖片需求調整；不必為了首頁大圖把所有長文都拉滿螢幕。保留少數有理由的例外，並記錄位置，比逐頁手動調整全部文字更容易維護。"
+        },
+        {
+          "type": "heading",
+          "text": "建立可操作的頁首與頁尾",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "目前 Astra 自訂介面把 Header Builder 顯示為 Header，Footer Builder 顯示為 Footer。頁首的拖曳編輯功能同時提供於免費版與 Pro，不必因為找不到舊名稱就購買升級。舊網站若仍用舊式頁首頁尾，需先確認 Astra 設定中的模式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Header 放入標誌、主選單與主要聯絡入口，再切到手機預覽調整。三項服務不一定要全部塞進第一層導覽；可以由「服務」頁集中說明。確認手機選單能開啟、關閉、進入子選單，且文字不會被標誌擠到看不清楚。"
+        },
+        {
+          "type": "paragraph",
+          "text": "透明頁首會讓內容延伸到頁首後方，照片背景不一定都能襯托導覽文字。測試明暗不同的內頁，必要時只在適合的頁面啟用。頁尾則放真實聯絡方式、必要政策與常用連結，刪除版型原有公司的地址、社群帳號與年份。"
+        },
+        {
+          "type": "heading",
+          "text": "用缺少的功能決定是否升級",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "若免費版已能完成品牌配色、基本導覽與內容版面，就先把內容做完整。需要依頁面套用不同自訂頁首等較進階設計時，再查看 Astra Pro 的 Site Builder 與顯示規則；該模組建立的自訂頁首會取代原本頁首，不能預期兩套設定同時生效。"
+        },
+        {
+          "type": "paragraph",
+          "text": "購買前做一張需求表，寫出要解決的問題、對應功能、授權站數、續約條件與負責帳號。不要只比較促銷第一年的總價，也不要把 Pro 主題、頁面建構器 Pro、付費版型包視為同一授權。本文不列固定價格，避免把當次活動金額當成長期成本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "版型匯入時若安裝了付費擴充，能顯示不一定代表更新授權已啟用。官方匯入文件特別提醒部分付費外掛仍需另外啟用授權。交接時應確認持有人、更新方式與到期日，讓往後維護有明確負責者。"
+        },
+        {
+          "type": "heading",
+          "text": "以真實內容完成改版驗收",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先將示範文案、照片、表單收件者、電話與連結全部換成正式內容，再測試。照片需有使用權，模板可以匯入不表示每張素材都適合直接當品牌作品。把服務介紹寫成自己實際能提供的範圍，尤其不要保留示範的客戶評價或成效數字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "檢查首頁、文章、搜尋結果與找不到頁面的情境，確認全域改動沒有只照顧首頁。使用手機與鍵盤操作選單及按鈕，測試聯絡表單是否送到正確信箱。若某個問題只發生在單頁，先檢查單頁設定，再考慮改全站。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後保存一份外觀設定說明，列出主要顏色、字體、選單位置、首頁指向，以及哪些頁面使用哪個編輯器。更新 Astra、Pro 或相關擴充後，依這份清單檢查核心頁面。能穩定修改服務內容，才是版型選擇真正帶來的便利。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/astra-theme-customization/diagram-1.svg",
+          "alt": "四個方框依序呈現選擇版型、設定全域、調整導覽與驗收真實內容。",
+          "width": 1600,
+          "height": 900,
+          "caption": "升級應對應明確缺少的功能，版型與主題的授權要分別確認。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "主要用途",
+            "購買或啟用前確認"
+          ],
+          "rows": [
+            [
+              "免費 Astra",
+              "全站外觀與基本頁首頁尾",
+              "現有設定是否已滿足需求"
+            ],
+            [
+              "Astra Pro",
+              "延伸主題與進階模組",
+              "所需模組、站數與更新授權"
+            ],
+            [
+              "Starter Templates",
+              "匯入網站或單頁設計",
+              "編輯器、附帶外掛與匯入範圍"
+            ],
+            [
+              "付費版型授權",
+              "使用 Premium 版型",
+              "對應 Toolkit 內容，不等同 Astra Pro"
+            ]
+          ],
+          "caption": "功能邊界依 2026-09-14 官方文件整理；實際方案以購買時明細為準。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先選維護方式，再選示範外觀",
+          "text": "選用一套主要頁面編輯方式，先用真實中文內容測試。如果需要改動首頁以外的頁首、導覽與文章版面，先判斷控制來源，避免在多套設定中反覆覆蓋。"
+        },
+        {
+          "type": "link",
+          "text": "比較佈景主題時先檢查哪些項目",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-theme-selection"
+        },
+        {
+          "type": "link",
+          "text": "規劃工作室的形象網站",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-business-site"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Astra：方案與版型常見問題",
+          "url": "https://wpastra.com/faq/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Starter Templates：匯入範圍與外掛",
+          "url": "https://startertemplates.com/docs/starter-templates-importing/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Starter Templates：既有網站匯入",
+          "url": "https://startertemplates.com/docs/import-templates-on-existing-site/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Astra：全域樣式",
+          "url": "https://wpastra.com/docs/style-with-global-settings/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Astra：自訂介面更新",
+          "url": "https://wpastra.com/docs/astra-customizer-refined-ui/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Astra：頁首設定",
+          "url": "https://wpastra.com/docs/header-builder-options/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Astra：Pro 自訂頁首",
+          "url": "https://wpastra.com/docs/custom-header/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Astra：方案明細",
+          "url": "https://wpastra.com/pricing/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

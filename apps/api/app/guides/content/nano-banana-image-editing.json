@@ -1,0 +1,311 @@
+{
+  "slug": "nano-banana-image-editing",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 123,
+  "locales": {
+    "zh-TW": {
+      "title": "Gemini 圖片生成與修圖：提示詞與參考圖",
+      "description": "這篇用一張自製杯子商品概念圖，練習 Gemini 的圖片生成、參考圖與局部修改。學完可以把主體、背景、構圖和要保留的細節寫清楚，並用前後對照檢查修改是否符合需求。本篇的提示詞與預期結果是教學範例，沒有冒充實際由 Gemini 生成的作品。",
+      "hero": {
+        "src": "/guides/nano-banana-image-editing/hero.jpg",
+        "alt": "修圖前先固定主體的原創插畫，以文件、裝置與流程等物件呼應提示詞與參考圖；非產品介面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "這篇用一張自製杯子商品概念圖，練習 Gemini 的圖片生成、參考圖與局部修改。學完可以把主體、背景、構圖和要保留的細節寫清楚，並用前後對照檢查修改是否符合需求。本篇的提示詞與預期結果是教學範例，沒有冒充實際由 Gemini 生成的作品。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/nano-banana-image-editing/diagram-1.svg",
+          "alt": "參考圖：說明形狀與顏色用途；單次修改：只改一類問題；前後比對：檢查輪廓與留白",
+          "width": 1600,
+          "height": 900,
+          "caption": "修圖前先固定主體。此為原創教學圖解，並非產品畫面或實測輸出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "開始前：圖片模型與入口",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "依 2026 年 9 月 14 日官方文件，Flash-Lite 的圖片請求對應 Nano Banana 2 Lite，Flash 或 Pro 的一般圖片請求對應 Nano Banana 2；符合條件的訂閱者可再用 Nano Banana Pro 重新生成。文字對話模型的選擇會影響圖片路線，詳見"
+            },
+            {
+              "type": "link",
+              "text": "模型選擇",
+              "url": "https://mokaair.com/zh-TW/life/gemini-model-lineup-flash-pro"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本篇採電腦網頁，手機介面請對照實際可用控制。圖片編輯目前不適用未滿十八歲使用者，個人與 Workspace 帳號還有各自的功能條件。先準備自己拍攝或有權使用的圖片，並確認"
+            },
+            {
+              "type": "link",
+              "text": "生成額度",
+              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+            },
+            {
+              "type": "text",
+              "text": "，不要一次提交很多變體後才發現用量不足。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Nano Banana 2 Lite 不適合多張參考圖與多輪修改，因此本篇的參考圖練習應使用支援的圖片模型。名稱相似不代表每個版本都能完成同樣工作；遇到限制時先檢查目前模型，再調整提示詞。"
+        },
+        {
+          "type": "heading",
+          "text": "第一步：把需求寫成構圖說明",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先決定圖片的用途，例如網站文章的橫式封面。寫出一個主體、一個場景、一種光線和需要留白的位置；這比堆疊十幾個風格詞更容易檢查。若圖片將來需要活動日期或產品尺寸，先把字留給後續排版，避免在視覺草稿階段反覆校正文字。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "第一張概念圖",
+          "code": "生成一張橫式 16:9 的商品概念插圖。\n主體是一隻沒有商標的霧面奶油白陶瓷杯，放在淺木色桌面。\n杯子位於畫面右側，左側保留乾淨留白，供後續加入標題。\n採柔和自然窗光，背景只有淡米色牆面，不加入其他杯子或餐具。\n這是概念插圖，不要加價格、促銷標語、品牌或浮水印文字。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Gemini 網頁側邊欄的圖片入口輸入提示詞，送出後查看構圖。成功的判斷是杯子數量、位置、留白和背景符合要求，不是只看細緻程度。若比例或主體位置不對，先修這些基本問題，再增加裝飾。"
+        },
+        {
+          "type": "heading",
+          "text": "第二步：用參考圖約束主體",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "若想保留實際杯子外形，上傳自己拍攝的正面與側面照片，分別說明哪張負責形狀、哪張負責顏色。照片最好主體清楚、背景簡單，避免模型把旁邊其他物品也當成產品的一部分。上傳後看縮圖確認沒有選錯檔案。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "參考圖說明",
+          "code": "使用附件一作為杯子外形參考，附件二隻參考釉面顏色。\n保留杯口輪廓、把手方向與杯身比例。\n把背景改成乾淨的淺木桌面，柔和窗光從左上方照入。\n不要增加圖案或文字；不要把兩張照片中的杯子合成兩只。\n若無法準確保留某個細節，請說明可能變動之處。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期會得到以參考主體為基礎的新圖，但細節仍可能改變。把杯把、底部、紋理和邊緣放大檢查，不要把生成圖當成商品尺寸、材質或真實外觀的證明。正式商品頁若需要忠實展示，應保留實拍照片並標示概念圖用途。"
+        },
+        {
+          "type": "heading",
+          "text": "第三步：每次只修改一類問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在媒體庫找到要改的圖片，開啟後使用對話入口；也可直接上傳圖片要求編輯。先指明目標位置和變更，再列出需保持的項目。例如只改背景顏色，就不要同時要求換角度、移動光源和加道具，否則很難辨認哪些變更是意外發生。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "局部修改提示詞",
+          "code": "請只把杯子後方牆面改為淡灰綠色。\n保留杯子的形狀、把手、位置、大小、桌面與原本光影。\n左側留白維持乾淨，不加入植物、文字或其他物品。\n這次不改杯子本身，也不改成另一種攝影角度。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "「只修改」是需求描述，不是保證每個像素都不變。把修改前後放在相同大小比較，至少檢查主體輪廓、光影和物件數量。如果杯子也被改了，回到原始圖片重新下更明確的指示，不必在已偏離的版本上一直追加修補。"
+        },
+        {
+          "type": "paragraph",
+          "text": "對多輪修改，可以自行命名為原圖、背景版、構圖版和最終版，記下每次改什麼。版本名稱不要只寫最新，否則下次不知道最新保留的是哪個主體。如果要套用到多張圖片，先用一張完成整套驗收，再決定是否擴大處理。"
+        },
+        {
+          "type": "heading",
+          "text": "第四步：文字、圖解與高細節重做",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "需要圖片含文字時，先提供完整字串並限制字數；生成後逐字對照，不只看遠處是否像中文。日期、網址、價格和電話錯一個字就可能造成誤解，適合在一般排版工具中另加可編輯文字。圖解中的箭頭、單位和順序也需人工核對。"
+        },
+        {
+          "type": "paragraph",
+          "text": "符合資格時可在圖片的更多選單使用「用 Pro 重新生成」，再比對細節是否改善。這是重新生成，不應當成完全無損放大；也不代表額度用完後可以無限切換版本。是否可用與剩餘用量應看當下介面。"
+        },
+        {
+          "type": "heading",
+          "text": "第五步：下載並檢查實際檔案",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "電腦網頁可將遊標移到圖片，選下載原尺寸。下載後打開檔案，確認實際像素、比例和背景；分享連結與圖片檔案是不同成果。若要放網站，應另外製作適當檔案大小與替代文字，並用手機查看主體是否被裁切。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文網站配圖是原創教學示意，不是 Gemini 介面截圖或模型實測圖。若你將生成圖用在作品集，建議保留提示詞、來源圖片授權與輸出日期；真實人物、商標和商品也要依實際使用情境檢查，不應只因工具能生成就推定可任意使用。"
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「上傳多張圖卻只用了其中一張？」先確認模型支援多圖，再逐張描述用途。把兩張都稱為參考圖，沒有交代應保留哪一張的形狀與風格，容易導致混合錯誤。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「局部修圖改到整張？」回到原始圖，縮小一次修改的範圍，明確說明位置及保留項目。若需要精準像素級選取或完全保留其他區域，應搭配能直接編輯圖層或遮罩的工具。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「為什麼沒有 Google 相簿連接？」查證時圖片個人化與相簿相關入口有美國、年齡及帳號限制；台灣讀者不能把那些步驟當成普遍可用。一般手動上傳和"
+            },
+            {
+              "type": "link",
+              "text": "Connected Apps",
+              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+            },
+            {
+              "type": "text",
+              "text": "授權是不同路線。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「想讓杯子動起來？」先保留已核對的主體圖，再閱讀"
+            },
+            {
+              "type": "link",
+              "text": "影片生成與分鏡",
+              "url": "https://mokaair.com/zh-TW/life/veo-video-generation-guide"
+            },
+            {
+              "type": "text",
+              "text": "。影片還要控制動作、鏡頭與時間連續性，靜態圖正確不代表每一格都會一致。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查證與範例",
+          "text": "本文於 2026-09-14 對照官方文件整理。畫面操作依官方說明，非所有裝置均經實機測試；範例輸出是驗收目標，實際內容依資料而異。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後的檢核",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "通過條件"
+          ],
+          "rows": [
+            [
+              "操作",
+              "能依正文重做一次，說明每一步使用的輸入。"
+            ],
+            [
+              "結果",
+              "能用原始資料或可重現測試核對輸出，而非只看語氣。"
+            ],
+            [
+              "延伸",
+              "知道下一篇教學解決的問題，以及什麼時候需要它。"
+            ]
+          ],
+          "caption": "完成實作後逐項確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著可以閱讀 "
+            },
+            {
+              "type": "link",
+              "text": "提示詞怎麼寫",
+              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-writing-guide"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Veo 與 Google Flow",
+              "url": "https://mokaair.com/zh-TW/life/veo-video-generation-guide"
+            },
+            {
+              "type": "text",
+              "text": "，把本篇的操作接到下一個工作流程。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gemini 圖片生成、編輯與模型選擇",
+          "url": "https://support.google.com/gemini/answer/14286560?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini 的模型選擇",
+          "url": "https://support.google.com/gemini/answer/16275805?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "圖片、影片生成的使用規範",
+          "url": "https://policies.google.com/terms/generative-ai/use-policy",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

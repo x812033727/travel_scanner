@@ -2,6 +2,11 @@
 
 搜尋截止：2026-09-14。81 個獨立概念全部收錄；76 篇新增、5 篇保留網址補強，另新增總索引及更新 50 詞速查。別名合併於各詞，不重複計篇。
 
+正式發表：2026-09-14 15:36（台灣時間，索引最後公開）。全批 83 個頁面為 77 新增、6 更新、0 排除。
+
+- [AI 名詞總索引：81 個概念](https://mokaair.com/zh-TW/life/ai-terms-index)
+- [保留原網址並更新的 50 詞速查](https://mokaair.com/zh-TW/life/ai-glossary-50-terms)
+
 | 分類 | 名稱 | 最終標題 | 處理 | 網址 |
 | --- | --- | --- | --- | --- |
 | engineering | 提示詞工程 / Prompt Engineering | 提示詞工程（Prompt Engineering）是什麼 | 新增 | [閱讀](https://mokaair.com/zh-TW/life/ai-term-prompt-engineering) |
@@ -86,6 +91,6 @@
 | multimodal | 開源 AI / Open Source AI | 開源 AI（Open Source AI）：公開哪些東西才算完整 | 新增 | [閱讀](https://mokaair.com/zh-TW/life/ai-term-open-source-ai) |
 | multimodal | 內容憑證 / Content Credentials | 內容憑證（Content Credentials）：查來源歷程，不替真假背書 | 新增 | [閱讀](https://mokaair.com/zh-TW/life/ai-term-content-credentials) |
 
-此清單的閱讀網址為預定永久網址；是否已公開以 publication.json 與公開驗證紀錄為準。
+以上 81 篇專文連同索引、速查共 83 頁，已逐頁通過正式 HTTP 正文雜湊、canonical、索引指令及 sitemap 核對。完整發布收據以 publication.json 為準；搜尋引擎實際收錄未測量。
 
 來源、別名、既有文章對應及個別理由見 catalogue.json。既有 220 篇 AI 教學規劃偏向工具與情境；本批以通用概念為主。進行中的 Claude／Codex／Gemini 教學與近期 AI 新聞使用不同 slug。

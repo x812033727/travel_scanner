@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">桃園機場出國動線與時間倒推 / Taoyuan Airport departure flow and countdown</title>
+  <desc id="desc">上排是出國動線，分兩條路。路線 A：從家到機捷 A1 台北車站（B1，06:00–21:30）或 A3 新北產業園區站（1F，09:00–16:00）預辦登機，再搭機捷到機場。路線 B：從家直接到第一或第二航廈報到託運。兩條路在安檢會合，接著走自動查驗通關 e-Gate，最後到登機門。下排是起飛前倒數，刻度未按比例：起飛前 3 小時預辦登機停止受理，0 是起飛；機場報到截止與登機門關閉依航空公司，不標數字。下方三個資訊框：預辦登機 A1 可辦華航、華信、長榮、立榮、國泰、星宇，A3 可辦華航、華信、長榮、立榮、台灣虎航，兩站都在起飛前 3 小時停止受理，推算 A1 要 09:00 以後起飛才用得到；安檢液體每個容器 100 毫升以內，裝進 1 公升透明夾鏈袋、每人 1 袋，行動電源最多 2 個、只能手提，不能託運，機上不能使用也不能充電；e-Gate 年滿 10 歲、身高 120 公分以上，第一次可在閘道自助註冊，註冊加通關約 30 秒，註冊後永久有效。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+    <marker id="arrowdark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#102A2B"/></marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">桃園機場出國動線與時間倒推</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Taoyuan Airport departure: in-town check-in, security, e-Gate, and the countdown to take-off</text>
+
+  <!-- Home and branches -->
+  <rect x="50" y="230" width="140" height="110" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="120" y="280" font-size="28" font-weight="700" fill="#102A2B" text-anchor="middle">家</text>
+  <text x="120" y="312" font-size="18" fill="#5C6B6B" text-anchor="middle">Home</text>
+  <path d="M 190 285 L 222 285" fill="none" stroke="#5C6B6B" stroke-width="4"/>
+  <path d="M 222 193 L 222 445" fill="none" stroke="#5C6B6B" stroke-width="4"/>
+  <path d="M 222 193 L 246 193" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 222 317 L 246 317" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 222 445 L 246 445" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- Route A -->
+  <text x="250" y="124" font-size="18" font-weight="700" fill="#0D6B68">路線 A　預辦登機 In-Town Check-in</text>
+  <rect x="250" y="138" width="380" height="110" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="440" y="172" font-size="21" font-weight="700" fill="#0B4F4D" text-anchor="middle">A1 台北車站</text>
+  <text x="440" y="200" font-size="17" fill="#0B4F4D" text-anchor="middle">Taipei Main Station · B1</text>
+  <text x="440" y="232" font-size="21" font-weight="700" fill="#0B4F4D" text-anchor="middle">06:00–21:30</text>
+
+  <rect x="250" y="262" width="380" height="110" rx="14" fill="#F1E8E2" stroke="#6B4A3A" stroke-width="4"/>
+  <text x="440" y="296" font-size="21" font-weight="700" fill="#4E3428" text-anchor="middle">A3 新北產業園區站</text>
+  <text x="440" y="324" font-size="17" fill="#4E3428" text-anchor="middle">New Taipei Industrial Park · 1F</text>
+  <text x="440" y="356" font-size="21" font-weight="700" fill="#4E3428" text-anchor="middle">09:00–16:00</text>
+
+  <path d="M 630 193 L 686 193" fill="none" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 630 317 L 686 317" fill="none" stroke="#6B4A3A" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="690" y="138" width="200" height="234" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="790" y="236" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">搭機捷到機場</text>
+  <text x="790" y="266" font-size="17" fill="#5C6B6B" text-anchor="middle">Airport MRT</text>
+  <text x="790" y="294" font-size="16" fill="#5C6B6B" text-anchor="middle">只帶隨身行李</text>
+
+  <!-- Route B -->
+  <rect x="250" y="400" width="640" height="90" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="570" y="438" font-size="20" font-weight="700" fill="#1F4E73" text-anchor="middle">路線 B　直接到第一或第二航廈報到託運</text>
+  <text x="570" y="470" font-size="17" fill="#1F4E73" text-anchor="middle">Direct to Terminal 1/2 Check-in</text>
+
+  <!-- Merge -->
+  <path d="M 890 255 L 946 255" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 890 445 L 1045 445 L 1045 386" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="950" y="230" width="190" height="150" rx="14" fill="#FBE9E4" stroke="#B8442D" stroke-width="4"/>
+  <text x="1045" y="296" font-size="26" font-weight="700" fill="#8A2E1D" text-anchor="middle">安檢</text>
+  <text x="1045" y="328" font-size="18" fill="#8A2E1D" text-anchor="middle">Security</text>
+
+  <path d="M 1140 305 L 1186 305" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="1190" y="230" width="170" height="150" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1275" y="296" font-size="19" font-weight="700" fill="#1F4E73" text-anchor="middle">自動查驗通關</text>
+  <text x="1275" y="328" font-size="20" fill="#1F4E73" text-anchor="middle">e-Gate</text>
+
+  <path d="M 1360 305 L 1406 305" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="1410" y="230" width="150" height="150" rx="14" fill="#E6F2EC" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1485" y="296" font-size="24" font-weight="700" fill="#1E5A40" text-anchor="middle">登機門</text>
+  <text x="1485" y="328" font-size="18" fill="#1E5A40" text-anchor="middle">Gate</text>
+
+  <text x="1290" y="430" font-size="16" fill="#5C6B6B" text-anchor="middle">兩條路在安檢會合，再走 e-Gate 出境</text>
+
+  <!-- Countdown -->
+  <text x="60" y="524" font-size="20" font-weight="700" fill="#102A2B">起飛前倒數　Countdown to take-off</text>
+  <text x="1540" y="524" font-size="15" fill="#5C6B6B" text-anchor="end">刻度未按比例 Not to scale</text>
+  <path d="M 160 580 L 1510 580" fill="none" stroke="#102A2B" stroke-width="4" marker-end="url(#arrowdark)"/>
+
+  <circle cx="520" cy="580" r="11" fill="#0D6B68"/>
+  <text x="520" y="556" font-size="24" font-weight="700" fill="#0D6B68" text-anchor="middle">3 小時</text>
+  <text x="520" y="616" font-size="17" font-weight="700" fill="#0D6B68" text-anchor="middle">預辦登機停止受理</text>
+  <text x="520" y="640" font-size="16" fill="#0B4F4D" text-anchor="middle">In-Town Check-in closes</text>
+
+  <path d="M 960 562 L 960 598" fill="none" stroke="#8A8F8F" stroke-width="3" stroke-dasharray="6 5"/>
+  <text x="960" y="616" font-size="16" fill="#5C6B6B" text-anchor="middle">報到截止：依航空公司</text>
+  <text x="960" y="640" font-size="15" fill="#5C6B6B" text-anchor="middle">Check-in cutoff: see airline</text>
+
+  <path d="M 1210 562 L 1210 598" fill="none" stroke="#8A8F8F" stroke-width="3" stroke-dasharray="6 5"/>
+  <text x="1210" y="616" font-size="16" fill="#5C6B6B" text-anchor="middle">登機門關閉：依航空公司</text>
+  <text x="1210" y="640" font-size="15" fill="#5C6B6B" text-anchor="middle">Gate closes: see airline</text>
+
+  <circle cx="1440" cy="580" r="11" fill="#102A2B"/>
+  <text x="1440" y="556" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">0</text>
+  <text x="1440" y="616" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">起飛</text>
+  <text x="1440" y="640" font-size="16" fill="#5C6B6B" text-anchor="middle">Take-off</text>
+
+  <!-- Info boxes -->
+  <rect x="50" y="672" width="485" height="180" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="74" y="706" font-size="19" font-weight="700" fill="#102A2B">預辦登機 In-Town Check-in</text>
+  <text x="74" y="738" font-size="17" fill="#0B4F4D">A1　06:00–21:30　華航 華信 長榮 立榮 國泰 星宇</text>
+  <text x="74" y="766" font-size="17" fill="#4E3428">A3　09:00–16:00　華航 華信 長榮 立榮 台灣虎航</text>
+  <text x="74" y="794" font-size="17" fill="#102A2B">兩站都在起飛前 3 小時停止受理</text>
+  <text x="74" y="822" font-size="17" font-weight="700" fill="#0D6B68">A1 可用：09:00 以後起飛（推算）</text>
+
+  <rect x="557" y="672" width="485" height="180" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="581" y="706" font-size="19" font-weight="700" fill="#102A2B">安檢 Security</text>
+  <text x="581" y="738" font-size="17" fill="#102A2B">液體每個容器 100 毫升以內</text>
+  <text x="581" y="766" font-size="17" fill="#102A2B">裝進 1 公升透明夾鏈袋，每人 1 袋</text>
+  <text x="581" y="794" font-size="17" font-weight="700" fill="#8A2E1D">行動電源最多 2 個，只能手提</text>
+  <text x="581" y="822" font-size="17" fill="#102A2B">不能託運，機上不能使用也不能充電</text>
+
+  <rect x="1064" y="672" width="485" height="180" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1088" y="706" font-size="19" font-weight="700" fill="#102A2B">自動查驗通關 e-Gate</text>
+  <text x="1088" y="738" font-size="17" fill="#102A2B">年滿 10 歲、身高 120 公分以上</text>
+  <text x="1088" y="766" font-size="17" fill="#102A2B">第一次可在閘道自助註冊</text>
+  <text x="1088" y="794" font-size="17" font-weight="700" fill="#1F4E73">註冊加通關約 30 秒</text>
+  <text x="1088" y="822" font-size="17" fill="#102A2B">註冊後永久有效，換護照不用重辦</text>
+
+  <text x="1540" y="884" font-size="15" fill="#5C6B6B" text-anchor="end">© Mokaair 製圖 2026</text>
+</svg>

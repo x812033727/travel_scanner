@@ -1,0 +1,2046 @@
+{
+  "checked_on": "2026-09-14",
+  "base_sha": "0b120251a0dcd71af50b3db49eca1dc370569ff0",
+  "original_authored_count": 232,
+  "active_new_article_count": 228,
+  "upstream_pack_count": 398,
+  "upstream_articles": [
+    {
+      "slug": "ai-agents-explained",
+      "title": "AI 代理（AI Agent）是什麼：從回答問題到完成任務",
+      "path": "apps/api/app/guides/content/ai-agents-explained.json"
+    },
+    {
+      "slug": "ai-chat-prompt-basics",
+      "title": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+      "path": "apps/api/app/guides/content/ai-chat-prompt-basics.json"
+    },
+    {
+      "slug": "ai-context-window-explained",
+      "title": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+      "path": "apps/api/app/guides/content/ai-context-window-explained.json"
+    },
+    {
+      "slug": "ai-for-seniors-first-steps",
+      "title": "長輩的第一堂 AI 課：用語音跟 AI 聊天、查資料、寫訊息",
+      "path": "apps/api/app/guides/content/ai-for-seniors-first-steps.json"
+    },
+    {
+      "slug": "ai-for-students-honest-use",
+      "title": "學生怎麼用 AI 不踩線：學習、整理筆記與學術誠信",
+      "path": "apps/api/app/guides/content/ai-for-students-honest-use.json"
+    },
+    {
+      "slug": "ai-free-vs-paid-plans-2026",
+      "title": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
+      "path": "apps/api/app/guides/content/ai-free-vs-paid-plans-2026.json"
+    },
+    {
+      "slug": "ai-glossary-50-terms",
+      "title": "AI 名詞速查：50 個常見詞彙一次搞懂",
+      "path": "apps/api/app/guides/content/ai-glossary-50-terms.json"
+    },
+    {
+      "slug": "ai-hallucination-fact-check",
+      "title": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+      "path": "apps/api/app/guides/content/ai-hallucination-fact-check.json"
+    },
+    {
+      "slug": "ai-model-tiers-explained",
+      "title": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
+      "path": "apps/api/app/guides/content/ai-model-tiers-explained.json"
+    },
+    {
+      "slug": "ai-news-chatgpt-free-thinking-20260806",
+      "title": "ChatGPT 免費版與思考功能更新：日常使用有什麼不同？",
+      "path": "apps/api/app/guides/content/ai-news-chatgpt-free-thinking-20260806.json"
+    },
+    {
+      "slug": "ai-news-chatgpt-images-25-20260908",
+      "title": "ChatGPT Images 2.5：圖片生成、局部修改與草圖功能更新",
+      "path": "apps/api/app/guides/content/ai-news-chatgpt-images-25-20260908.json"
+    },
+    {
+      "slug": "ai-news-claude-fable-51-20260901",
+      "title": "Claude Fable 5.1 與 Mythos 5.1：功能、開放對象與限制",
+      "path": "apps/api/app/guides/content/ai-news-claude-fable-51-20260901.json"
+    },
+    {
+      "slug": "ai-news-claude-opus-5-20260724",
+      "title": "Claude Opus 5 推出：一般工作使用者值得注意哪些改變？",
+      "path": "apps/api/app/guides/content/ai-news-claude-opus-5-20260724.json"
+    },
+    {
+      "slug": "ai-news-eu-transparency-20260802",
+      "title": "歐盟 AI 透明度規則上路：聊天機器人與生成內容如何標示？",
+      "path": "apps/api/app/guides/content/ai-news-eu-transparency-20260802.json"
+    },
+    {
+      "slug": "ai-news-gemini-38-flash-20260902",
+      "title": "Gemini 3.8 Flash 推出：模型升級對日常工具意味著什麼？",
+      "path": "apps/api/app/guides/content/ai-news-gemini-38-flash-20260902.json"
+    },
+    {
+      "slug": "ai-news-gemini-live-20260826",
+      "title": "Gemini Live 生產力更新：用語音處理郵件與待辦",
+      "path": "apps/api/app/guides/content/ai-news-gemini-live-20260826.json"
+    },
+    {
+      "slug": "ai-news-gpt-56-price-cut-20260730",
+      "title": "GPT-5.6 Luna、Terra 降價：哪些使用成本受到影響？",
+      "path": "apps/api/app/guides/content/ai-news-gpt-56-price-cut-20260730.json"
+    },
+    {
+      "slug": "ai-news-gpt-6-astra-20260903",
+      "title": "GPT-6 Astra 發布：從回答問題到完成電腦工作",
+      "path": "apps/api/app/guides/content/ai-news-gpt-6-astra-20260903.json"
+    },
+    {
+      "slug": "ai-news-lyria-35-gemini-20260904",
+      "title": "Lyria 3.5 進入 Gemini：AI 音樂創作有哪些新選擇？",
+      "path": "apps/api/app/guides/content/ai-news-lyria-35-gemini-20260904.json"
+    },
+    {
+      "slug": "ai-privacy-settings-checklist",
+      "title": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+      "path": "apps/api/app/guides/content/ai-privacy-settings-checklist.json"
+    },
+    {
+      "slug": "ai-reasoning-models-explained",
+      "title": "推理模型（Reasoning Model）：多想幾步能解決什麼",
+      "path": "apps/api/app/guides/content/ai-reasoning-models-explained.json"
+    },
+    {
+      "slug": "ai-term-agent-loop",
+      "title": "代理迴圈（Agent Loop）是什麼：判斷、操作與回饋",
+      "path": "apps/api/app/guides/content/ai-term-agent-loop.json"
+    },
+    {
+      "slug": "ai-term-agent-memory",
+      "title": "代理記憶（Agent Memory）是什麼：保存、取回與更新資訊",
+      "path": "apps/api/app/guides/content/ai-term-agent-memory.json"
+    },
+    {
+      "slug": "ai-term-agent-orchestration",
+      "title": "代理協調（Agent Orchestration）是什麼：安排分工與交付順序",
+      "path": "apps/api/app/guides/content/ai-term-agent-orchestration.json"
+    },
+    {
+      "slug": "ai-term-agent-skills",
+      "title": "代理技能（Agent Skills）是什麼：可重用的工作方法包",
+      "path": "apps/api/app/guides/content/ai-term-agent-skills.json"
+    },
+    {
+      "slug": "ai-term-agent2agent-protocol",
+      "title": "代理互通協定（A2A）是什麼：跨系統交辦與回報任務",
+      "path": "apps/api/app/guides/content/ai-term-agent2agent-protocol.json"
+    },
+    {
+      "slug": "ai-term-agentic-engineering",
+      "title": "代理式工程（Agentic Engineering）是什麼",
+      "path": "apps/api/app/guides/content/ai-term-agentic-engineering.json"
+    },
+    {
+      "slug": "ai-term-agentic-rag",
+      "title": "代理式檢索增強生成（Agentic RAG）：何時需要再查一次",
+      "path": "apps/api/app/guides/content/ai-term-agentic-rag.json"
+    },
+    {
+      "slug": "ai-term-agentops",
+      "title": "代理系統維運（AgentOps）是什麼",
+      "path": "apps/api/app/guides/content/ai-term-agentops.json"
+    },
+    {
+      "slug": "ai-term-artificial-intelligence",
+      "title": "人工智慧（Artificial Intelligence）是什麼",
+      "path": "apps/api/app/guides/content/ai-term-artificial-intelligence.json"
+    },
+    {
+      "slug": "ai-term-automatic-speech-recognition",
+      "title": "自動語音辨識（ASR）是什麼：把錄音轉成可核對的文字",
+      "path": "apps/api/app/guides/content/ai-term-automatic-speech-recognition.json"
+    },
+    {
+      "slug": "ai-term-benchmark",
+      "title": "基準測試（Benchmark）是什麼",
+      "path": "apps/api/app/guides/content/ai-term-benchmark.json"
+    },
+    {
+      "slug": "ai-term-chunking",
+      "title": "文件分塊（Chunking）：切多長，才不會把答案切斷",
+      "path": "apps/api/app/guides/content/ai-term-chunking.json"
+    },
+    {
+      "slug": "ai-term-content-credentials",
+      "title": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
+      "path": "apps/api/app/guides/content/ai-term-content-credentials.json"
+    },
+    {
+      "slug": "ai-term-context-compaction",
+      "title": "上下文壓縮（Context Compaction）是什麼：讓長任務接得下去",
+      "path": "apps/api/app/guides/content/ai-term-context-compaction.json"
+    },
+    {
+      "slug": "ai-term-context-engineering",
+      "title": "上下文工程（Context Engineering）是什麼",
+      "path": "apps/api/app/guides/content/ai-term-context-engineering.json"
+    },
+    {
+      "slug": "ai-term-context-rot",
+      "title": "上下文品質衰退（Context Rot）是什麼：長文為何不一定更準",
+      "path": "apps/api/app/guides/content/ai-term-context-rot.json"
+    },
+    {
+      "slug": "ai-term-deep-learning",
+      "title": "深度學習（Deep Learning）是什麼",
+      "path": "apps/api/app/guides/content/ai-term-deep-learning.json"
+    },
+    {
+      "slug": "ai-term-deepfake",
+      "title": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
+      "path": "apps/api/app/guides/content/ai-term-deepfake.json"
+    },
+    {
+      "slug": "ai-term-diffusion-model",
+      "title": "擴散模型（Diffusion Model）是什麼：從雜訊逐步生成影像",
+      "path": "apps/api/app/guides/content/ai-term-diffusion-model.json"
+    },
+    {
+      "slug": "ai-term-direct-preference-optimization",
+      "title": "直接偏好最佳化（DPO）：用回答比較直接調整模型",
+      "path": "apps/api/app/guides/content/ai-term-direct-preference-optimization.json"
+    },
+    {
+      "slug": "ai-term-embedding",
+      "title": "嵌入向量（Embedding）是什麼：把內容放進可比較的空間",
+      "path": "apps/api/app/guides/content/ai-term-embedding.json"
+    },
+    {
+      "slug": "ai-term-evals",
+      "title": "模型與代理評測（Evals）是什麼",
+      "path": "apps/api/app/guides/content/ai-term-evals.json"
+    },
+    {
+      "slug": "ai-term-few-shot-prompting",
+      "title": "少樣本提示（Few-shot Prompting）是什麼：用例子教清楚格式",
+      "path": "apps/api/app/guides/content/ai-term-few-shot-prompting.json"
+    },
+    {
+      "slug": "ai-term-fine-tuning",
+      "title": "微調（Fine-tuning）：讓既有模型更適合你的任務",
+      "path": "apps/api/app/guides/content/ai-term-fine-tuning.json"
+    },
+    {
+      "slug": "ai-term-foundation-model",
+      "title": "基礎模型（Foundation Model）是什麼",
+      "path": "apps/api/app/guides/content/ai-term-foundation-model.json"
+    },
+    {
+      "slug": "ai-term-generative-ai",
+      "title": "生成式 AI（Generative AI）是什麼",
+      "path": "apps/api/app/guides/content/ai-term-generative-ai.json"
+    },
+    {
+      "slug": "ai-term-graph-rag",
+      "title": "圖譜檢索增強生成（GraphRAG）：從關係看懂整批文件",
+      "path": "apps/api/app/guides/content/ai-term-graph-rag.json"
+    },
+    {
+      "slug": "ai-term-guardrails",
+      "title": "安全防護機制（Guardrails）是什麼",
+      "path": "apps/api/app/guides/content/ai-term-guardrails.json"
+    },
+    {
+      "slug": "ai-term-harness-engineering",
+      "title": "代理執行環境工程（Harness Engineering）是什麼",
+      "path": "apps/api/app/guides/content/ai-term-harness-engineering.json"
+    },
+    {
+      "slug": "ai-term-human-in-the-loop",
+      "title": "人工介入（Human-in-the-loop）：讓人有資訊也有決定權",
+      "path": "apps/api/app/guides/content/ai-term-human-in-the-loop.json"
+    },
+    {
+      "slug": "ai-term-hybrid-search",
+      "title": "混合搜尋（Hybrid Search）：兼顧精確字詞與語意",
+      "path": "apps/api/app/guides/content/ai-term-hybrid-search.json"
+    },
+    {
+      "slug": "ai-term-in-context-learning",
+      "title": "上下文學習（In-context Learning）是什麼：當場適應新規則",
+      "path": "apps/api/app/guides/content/ai-term-in-context-learning.json"
+    },
+    {
+      "slug": "ai-term-jailbreak",
+      "title": "越獄提示（Jailbreak）是什麼",
+      "path": "apps/api/app/guides/content/ai-term-jailbreak.json"
+    },
+    {
+      "slug": "ai-term-knowledge-distillation",
+      "title": "知識蒸餾（Knowledge Distillation）：讓學生模型學教師",
+      "path": "apps/api/app/guides/content/ai-term-knowledge-distillation.json"
+    },
+    {
+      "slug": "ai-term-knowledge-graph",
+      "title": "知識圖譜（Knowledge Graph）：把事物與關係說清楚",
+      "path": "apps/api/app/guides/content/ai-term-knowledge-graph.json"
+    },
+    {
+      "slug": "ai-term-llm-as-a-judge",
+      "title": "以語言模型擔任評審（LLM-as-a-Judge）是什麼",
+      "path": "apps/api/app/guides/content/ai-term-llm-as-a-judge.json"
+    },
+    {
+      "slug": "ai-term-llmops",
+      "title": "大型語言模型維運（LLMOps）是什麼",
+      "path": "apps/api/app/guides/content/ai-term-llmops.json"
+    },
+    {
+      "slug": "ai-term-loop-engineering",
+      "title": "Loop Engineering 是什麼：讓 AI 持續工作，也知道何時停止",
+      "path": "apps/api/app/guides/content/ai-term-loop-engineering.json"
+    },
+    {
+      "slug": "ai-term-lora",
+      "title": "低秩適應（LoRA）：少量可訓練參數如何調整模型",
+      "path": "apps/api/app/guides/content/ai-term-lora.json"
+    },
+    {
+      "slug": "ai-term-machine-learning",
+      "title": "機器學習（Machine Learning）是什麼",
+      "path": "apps/api/app/guides/content/ai-term-machine-learning.json"
+    },
+    {
+      "slug": "ai-term-mixture-of-experts",
+      "title": "混合專家模型（Mixture of Experts）是什麼",
+      "path": "apps/api/app/guides/content/ai-term-mixture-of-experts.json"
+    },
+    {
+      "slug": "ai-term-model-context-protocol",
+      "title": "模型上下文協定（MCP）是什麼：連接工具與資料的共同介面",
+      "path": "apps/api/app/guides/content/ai-term-model-context-protocol.json"
+    },
+    {
+      "slug": "ai-term-model-parameters",
+      "title": "模型參數（Model Parameters）是什麼",
+      "path": "apps/api/app/guides/content/ai-term-model-parameters.json"
+    },
+    {
+      "slug": "ai-term-multi-agent-system",
+      "title": "多代理系統（Multi-agent System）是什麼：分工與協作的代價",
+      "path": "apps/api/app/guides/content/ai-term-multi-agent-system.json"
+    },
+    {
+      "slug": "ai-term-multimodal-ai",
+      "title": "多模態 AI（Multimodal AI）是什麼：把圖像、聲音與文字一起理解",
+      "path": "apps/api/app/guides/content/ai-term-multimodal-ai.json"
+    },
+    {
+      "slug": "ai-term-open-source-ai",
+      "title": "開源 AI（Open Source AI）：公開哪些東西才算完整",
+      "path": "apps/api/app/guides/content/ai-term-open-source-ai.json"
+    },
+    {
+      "slug": "ai-term-open-weights",
+      "title": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+      "path": "apps/api/app/guides/content/ai-term-open-weights.json"
+    },
+    {
+      "slug": "ai-term-pretraining",
+      "title": "預訓練（Pretraining）：模型的基礎能力從哪裡來",
+      "path": "apps/api/app/guides/content/ai-term-pretraining.json"
+    },
+    {
+      "slug": "ai-term-prompt-caching",
+      "title": "提示詞快取（Prompt Caching）：重用相同字首的計算",
+      "path": "apps/api/app/guides/content/ai-term-prompt-caching.json"
+    },
+    {
+      "slug": "ai-term-prompt-chaining",
+      "title": "提示詞串接（Prompt Chaining）是什麼",
+      "path": "apps/api/app/guides/content/ai-term-prompt-chaining.json"
+    },
+    {
+      "slug": "ai-term-prompt-engineering",
+      "title": "提示詞工程（Prompt Engineering）是什麼",
+      "path": "apps/api/app/guides/content/ai-term-prompt-engineering.json"
+    },
+    {
+      "slug": "ai-term-prompt-injection",
+      "title": "提示詞注入（Prompt Injection）是什麼",
+      "path": "apps/api/app/guides/content/ai-term-prompt-injection.json"
+    },
+    {
+      "slug": "ai-term-quantization",
+      "title": "量化（Quantization）：用較少位元執行模型的取捨",
+      "path": "apps/api/app/guides/content/ai-term-quantization.json"
+    },
+    {
+      "slug": "ai-term-react-reasoning-acting",
+      "title": "ReAct 是什麼：讓推理與行動交替補足資訊",
+      "path": "apps/api/app/guides/content/ai-term-react-reasoning-acting.json"
+    },
+    {
+      "slug": "ai-term-red-teaming",
+      "title": "紅隊測試（Red Teaming）：主動找出 AI 系統會怎樣失敗",
+      "path": "apps/api/app/guides/content/ai-term-red-teaming.json"
+    },
+    {
+      "slug": "ai-term-reranking",
+      "title": "重新排序（Reranking）：從找得到到把好答案排在前面",
+      "path": "apps/api/app/guides/content/ai-term-reranking.json"
+    },
+    {
+      "slug": "ai-term-retrieval-augmented-generation",
+      "title": "檢索增強生成（RAG）是什麼：讓回答附上可查的依據",
+      "path": "apps/api/app/guides/content/ai-term-retrieval-augmented-generation.json"
+    },
+    {
+      "slug": "ai-term-rlhf",
+      "title": "人類回饋強化學習（RLHF）：把偏好變成訓練訊號",
+      "path": "apps/api/app/guides/content/ai-term-rlhf.json"
+    },
+    {
+      "slug": "ai-term-sandbox",
+      "title": "沙盒（Sandbox）：讓 AI 執行工具時有明確邊界",
+      "path": "apps/api/app/guides/content/ai-term-sandbox.json"
+    },
+    {
+      "slug": "ai-term-semantic-search",
+      "title": "語意搜尋（Semantic Search）：用不同說法找到相關內容",
+      "path": "apps/api/app/guides/content/ai-term-semantic-search.json"
+    },
+    {
+      "slug": "ai-term-small-language-model",
+      "title": "小型語言模型（Small Language Model）是什麼",
+      "path": "apps/api/app/guides/content/ai-term-small-language-model.json"
+    },
+    {
+      "slug": "ai-term-spec-driven-development",
+      "title": "規格驅動開發（Spec-driven Development）是什麼",
+      "path": "apps/api/app/guides/content/ai-term-spec-driven-development.json"
+    },
+    {
+      "slug": "ai-term-subagent",
+      "title": "子代理（Subagent）是什麼：把有邊界的工作交出去",
+      "path": "apps/api/app/guides/content/ai-term-subagent.json"
+    },
+    {
+      "slug": "ai-term-supervised-fine-tuning",
+      "title": "監督式微調（SFT）：用好示範教模型完成任務",
+      "path": "apps/api/app/guides/content/ai-term-supervised-fine-tuning.json"
+    },
+    {
+      "slug": "ai-term-system-prompt",
+      "title": "系統提示詞（System Prompt）是什麼：設定助理的工作規則",
+      "path": "apps/api/app/guides/content/ai-term-system-prompt.json"
+    },
+    {
+      "slug": "ai-term-test-time-compute",
+      "title": "推論時計算（Test-time Compute）：把算力花在這一道題",
+      "path": "apps/api/app/guides/content/ai-term-test-time-compute.json"
+    },
+    {
+      "slug": "ai-term-text-to-image",
+      "title": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
+      "path": "apps/api/app/guides/content/ai-term-text-to-image.json"
+    },
+    {
+      "slug": "ai-term-text-to-speech",
+      "title": "語音合成（TTS）是什麼：讓文字成為聽得懂、聽得對的聲音",
+      "path": "apps/api/app/guides/content/ai-term-text-to-speech.json"
+    },
+    {
+      "slug": "ai-term-text-to-video",
+      "title": "文字生影片（Text-to-Video）是什麼：讓畫面在時間裡保持連貫",
+      "path": "apps/api/app/guides/content/ai-term-text-to-video.json"
+    },
+    {
+      "slug": "ai-term-token",
+      "title": "token（Token）是什麼：AI 如何計算文字長度",
+      "path": "apps/api/app/guides/content/ai-term-token.json"
+    },
+    {
+      "slug": "ai-term-tokenization",
+      "title": "分詞（Tokenization）是什麼：文字進入模型前的切分",
+      "path": "apps/api/app/guides/content/ai-term-tokenization.json"
+    },
+    {
+      "slug": "ai-term-tool-calling",
+      "title": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
+      "path": "apps/api/app/guides/content/ai-term-tool-calling.json"
+    },
+    {
+      "slug": "ai-term-transformer",
+      "title": "Transformer 架構（Transformer）是什麼",
+      "path": "apps/api/app/guides/content/ai-term-transformer.json"
+    },
+    {
+      "slug": "ai-term-vector-database",
+      "title": "向量資料庫（Vector Database）：相似內容怎麼存、怎麼找",
+      "path": "apps/api/app/guides/content/ai-term-vector-database.json"
+    },
+    {
+      "slug": "ai-term-vibe-coding",
+      "title": "氛圍編碼（Vibe Coding）是什麼",
+      "path": "apps/api/app/guides/content/ai-term-vibe-coding.json"
+    },
+    {
+      "slug": "ai-term-zero-shot-prompting",
+      "title": "零樣本提示（Zero-shot Prompting）是什麼：先把任務說清楚",
+      "path": "apps/api/app/guides/content/ai-term-zero-shot-prompting.json"
+    },
+    {
+      "slug": "ai-terms-index",
+      "title": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+      "path": "apps/api/app/guides/content/ai-terms-index.json"
+    },
+    {
+      "slug": "ai-tools-2026-overview",
+      "title": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+      "path": "apps/api/app/guides/content/ai-tools-2026-overview.json"
+    },
+    {
+      "slug": "ai-tools-choose-by-task",
+      "title": "依任務選 AI 工具：寫作、翻譯、程式、圖片、研究各用哪一個",
+      "path": "apps/api/app/guides/content/ai-tools-choose-by-task.json"
+    },
+    {
+      "slug": "ayutthaya-day-trip-from-bangkok",
+      "title": "曼谷出發大城一日遊：火車兩個起站怎麼選、七處聯票 300 泰銖、寺廟環線與回程末班",
+      "path": "apps/api/app/guides/content/ayutthaya-day-trip-from-bangkok.json"
+    },
+    {
+      "slug": "backup-and-restore-home-files",
+      "title": "家庭檔案備份別只看同步完成：做一次還原，才知道能不能找回",
+      "path": "apps/api/app/guides/content/backup-and-restore-home-files.json"
+    },
+    {
+      "slug": "bangkok-4-day-itinerary",
+      "title": "曼谷四天三夜攻略：大皇宮、臥佛寺、鄭王廟、昭披耶河船、暹羅、恰圖恰、唐人街，BTS 與 MRT 怎麼搭",
+      "path": "apps/api/app/guides/content/bangkok-4-day-itinerary.json"
+    },
+    {
+      "slug": "bangkok-airport-to-city",
+      "title": "曼谷機場到市區交通攻略：蘇凡納布機場快線 ARL、廊曼 A1 巴士、Grab 與計程車",
+      "path": "apps/api/app/guides/content/bangkok-airport-to-city.json"
+    },
+    {
+      "slug": "bangkok-bts-mrt-boat-guide",
+      "title": "曼谷 BTS、MRT、昭披耶河船與計程車攻略：票價、Rabbit 卡、刷卡進站、20 泰銖均一票價真相",
+      "path": "apps/api/app/guides/content/bangkok-bts-mrt-boat-guide.json"
+    },
+    {
+      "slug": "browser-bookmark-project-folders",
+      "title": "瀏覽器書籤太多怎麼辦：用正在做的事整理，讓收藏能再次開啟",
+      "path": "apps/api/app/guides/content/browser-bookmark-project-folders.json"
+    },
+    {
+      "slug": "busan-3-day-itinerary",
+      "title": "釜山三天兩夜行程範例：海雲台廣安里夜景、甘川洞南浦洞、松島纜車與 Blueline Park 海岸列車",
+      "path": "apps/api/app/guides/content/busan-3-day-itinerary.json"
+    },
+    {
+      "slug": "chatgpt-agent-mode-guide",
+      "title": "ChatGPT 代理模式：讓它替你上網比價、填表、訂位",
+      "path": "apps/api/app/guides/content/chatgpt-agent-mode-guide.json"
+    },
+    {
+      "slug": "chatgpt-beginner-guide",
+      "title": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+      "path": "apps/api/app/guides/content/chatgpt-beginner-guide.json"
+    },
+    {
+      "slug": "chatgpt-canvas-writing",
+      "title": "ChatGPT Canvas 改版後怎麼改稿：用寫作區塊與程式區塊逐段修文章、改小腳本",
+      "path": "apps/api/app/guides/content/chatgpt-canvas-writing.json"
+    },
+    {
+      "slug": "chatgpt-custom-gpts-build",
+      "title": "自製 GPT：不用寫程式做出自己的專用助手（2026 年誰能建、怎麼替代）",
+      "path": "apps/api/app/guides/content/chatgpt-custom-gpts-build.json"
+    },
+    {
+      "slug": "chatgpt-custom-instructions-memory",
+      "title": "ChatGPT 自訂指令與記憶功能：讓它記住你的偏好，每次都用台灣繁體中文回答",
+      "path": "apps/api/app/guides/content/chatgpt-custom-instructions-memory.json"
+    },
+    {
+      "slug": "chatgpt-data-analysis-csv",
+      "title": "ChatGPT 資料分析：上傳 CSV 讓它跑程式畫圖表",
+      "path": "apps/api/app/guides/content/chatgpt-data-analysis-csv.json"
+    },
+    {
+      "slug": "chatgpt-deep-research-guide",
+      "title": "ChatGPT Deep Research：讓 AI 花十分鐘幫你做一份完整研究",
+      "path": "apps/api/app/guides/content/chatgpt-deep-research-guide.json"
+    },
+    {
+      "slug": "chatgpt-file-upload-analysis",
+      "title": "上傳 PDF、Excel 給 ChatGPT：分析、摘要與抓重點",
+      "path": "apps/api/app/guides/content/chatgpt-file-upload-analysis.json"
+    },
+    {
+      "slug": "chatgpt-for-email-writing",
+      "title": "用 ChatGPT 寫 Email：中英文商務信件範本與提示詞",
+      "path": "apps/api/app/guides/content/chatgpt-for-email-writing.json"
+    },
+    {
+      "slug": "chatgpt-for-english-learning",
+      "title": "用 ChatGPT 學英文：對話練習、糾錯與單字卡，每天 20 分鐘的六種練法與提示詞",
+      "path": "apps/api/app/guides/content/chatgpt-for-english-learning.json"
+    },
+    {
+      "slug": "chatgpt-for-excel-formulas",
+      "title": "用 ChatGPT 寫 Excel 公式與 VBA：從問題描述到可貼上的公式",
+      "path": "apps/api/app/guides/content/chatgpt-for-excel-formulas.json"
+    },
+    {
+      "slug": "chatgpt-for-resume-cover-letter",
+      "title": "用 ChatGPT 改履歷與求職信：改得像自己寫的做法",
+      "path": "apps/api/app/guides/content/chatgpt-for-resume-cover-letter.json"
+    },
+    {
+      "slug": "chatgpt-image-generation-guide",
+      "title": "ChatGPT 畫圖教學：圖片生成、修圖與風格提示詞怎麼寫",
+      "path": "apps/api/app/guides/content/chatgpt-image-generation-guide.json"
+    },
+    {
+      "slug": "chatgpt-mobile-app-tips",
+      "title": "ChatGPT 手機 App 十個技巧：拍照提問、Siri、鎖定畫面語音與排程通知",
+      "path": "apps/api/app/guides/content/chatgpt-mobile-app-tips.json"
+    },
+    {
+      "slug": "chatgpt-plans-plus-pro-2026",
+      "title": "ChatGPT Plus、Pro 與其他方案差在哪：2026 年怎麼選",
+      "path": "apps/api/app/guides/content/chatgpt-plans-plus-pro-2026.json"
+    },
+    {
+      "slug": "chatgpt-projects-guide",
+      "title": "ChatGPT Projects：把檔案、指令與對話收在一個工作區",
+      "path": "apps/api/app/guides/content/chatgpt-projects-guide.json"
+    },
+    {
+      "slug": "chatgpt-search-vs-google",
+      "title": "ChatGPT 搜尋 vs Google：六類問題什麼時候該用哪一個",
+      "path": "apps/api/app/guides/content/chatgpt-search-vs-google.json"
+    },
+    {
+      "slug": "chatgpt-shared-links-privacy",
+      "title": "ChatGPT 分享連結與隱私：哪些對話可能被搜尋到",
+      "path": "apps/api/app/guides/content/chatgpt-shared-links-privacy.json"
+    },
+    {
+      "slug": "chatgpt-team-for-small-business",
+      "title": "小公司要不要買 ChatGPT Business（原 Team）：資料不訓練、共用專案、集中管理",
+      "path": "apps/api/app/guides/content/chatgpt-team-for-small-business.json"
+    },
+    {
+      "slug": "chatgpt-troubleshooting-common-errors",
+      "title": "ChatGPT 常見問題排解：登不進、額度用完、回應中斷",
+      "path": "apps/api/app/guides/content/chatgpt-troubleshooting-common-errors.json"
+    },
+    {
+      "slug": "chatgpt-voice-mode-guide",
+      "title": "ChatGPT 語音模式：練英文、口說翻譯與免手打的完整做法",
+      "path": "apps/api/app/guides/content/chatgpt-voice-mode-guide.json"
+    },
+    {
+      "slug": "cheung-chau-walking-day",
+      "title": "長洲一日慢走：從碼頭、海旁到街巷，先留回程再選支線",
+      "path": "apps/api/app/guides/content/cheung-chau-walking-day.json"
+    },
+    {
+      "slug": "chiang-mai-3-day-itinerary",
+      "title": "清邁三天兩夜攻略：古城寺廟與夜市、素帖山雙龍寺、大象保護區或茵他儂怎麼選，機場交通與住哪一區",
+      "path": "apps/api/app/guides/content/chiang-mai-3-day-itinerary.json"
+    },
+    {
+      "slug": "chiang-mai-old-city-slow-day",
+      "title": "清邁古城慢遊一天：寺院、咖啡與街巷，留白比多跑幾站更重要",
+      "path": "apps/api/app/guides/content/chiang-mai-old-city-slow-day.json"
+    },
+    {
+      "slug": "claude-api-first-call",
+      "title": "第一次呼叫 Claude API：金鑰、費用與十行 Python",
+      "path": "apps/api/app/guides/content/claude-api-first-call.json"
+    },
+    {
+      "slug": "claude-api-prompt-caching-cost",
+      "title": "Claude API 省錢：提示快取與批次處理怎麼用",
+      "path": "apps/api/app/guides/content/claude-api-prompt-caching-cost.json"
+    },
+    {
+      "slug": "claude-artifacts-guide",
+      "title": "Claude Artifacts 教學：不會寫程式也能在對話裡做出網頁、圖表與小工具",
+      "path": "apps/api/app/guides/content/claude-artifacts-guide.json"
+    },
+    {
+      "slug": "claude-beginner-guide",
+      "title": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+      "path": "apps/api/app/guides/content/claude-beginner-guide.json"
+    },
+    {
+      "slug": "claude-code-accounts-and-access",
+      "title": "Claude Code｜帳號、登入與使用資格",
+      "path": "apps/api/app/guides/content/claude-code-accounts-and-access.json"
+    },
+    {
+      "slug": "claude-code-agent-sdk",
+      "title": "Claude Agent SDK 入門",
+      "path": "apps/api/app/guides/content/claude-code-agent-sdk.json"
+    },
+    {
+      "slug": "claude-code-agent-teams",
+      "title": "Claude Code｜Agent Teams 協作",
+      "path": "apps/api/app/guides/content/claude-code-agent-teams.json"
+    },
+    {
+      "slug": "claude-code-auto-memory",
+      "title": "Claude Code｜自動記憶與 /memory",
+      "path": "apps/api/app/guides/content/claude-code-auto-memory.json"
+    },
+    {
+      "slug": "claude-code-build-todo-app",
+      "title": "Claude Code｜完整實作：待辦清單網站",
+      "path": "apps/api/app/guides/content/claude-code-build-todo-app.json"
+    },
+    {
+      "slug": "claude-code-checkpoints-rewind",
+      "title": "Claude Code｜Checkpoint 與 /rewind",
+      "path": "apps/api/app/guides/content/claude-code-checkpoints-rewind.json"
+    },
+    {
+      "slug": "claude-code-chrome-browser",
+      "title": "Claude Code｜Chrome 瀏覽器整合",
+      "path": "apps/api/app/guides/content/claude-code-chrome-browser.json"
+    },
+    {
+      "slug": "claude-code-claude-md-guide",
+      "title": "Claude Code｜CLAUDE.md 完整教學",
+      "path": "apps/api/app/guides/content/claude-code-claude-md-guide.json"
+    },
+    {
+      "slug": "claude-code-claude-md-scopes",
+      "title": "Claude Code｜個人、專案與子目錄規則",
+      "path": "apps/api/app/guides/content/claude-code-claude-md-scopes.json"
+    },
+    {
+      "slug": "claude-code-cli-command-guide",
+      "title": "Claude Code｜CLI 指令入門與分類索引",
+      "path": "apps/api/app/guides/content/claude-code-cli-command-guide.json"
+    },
+    {
+      "slug": "claude-code-computer-use",
+      "title": "Claude Code｜Computer Use 教學",
+      "path": "apps/api/app/guides/content/claude-code-computer-use.json"
+    },
+    {
+      "slug": "claude-code-context-compact-clear",
+      "title": "Claude Code｜上下文整理：context、compact 與 clear",
+      "path": "apps/api/app/guides/content/claude-code-context-compact-clear.json"
+    },
+    {
+      "slug": "claude-code-cross-device-workflow",
+      "title": "Claude Code｜跨裝置接續工作的完整流程",
+      "path": "apps/api/app/guides/content/claude-code-cross-device-workflow.json"
+    },
+    {
+      "slug": "claude-code-custom-commands",
+      "title": "Claude Code｜自訂斜線指令與舊格式移轉",
+      "path": "apps/api/app/guides/content/claude-code-custom-commands.json"
+    },
+    {
+      "slug": "claude-code-debug-and-test",
+      "title": "Claude Code｜除錯與補測試",
+      "path": "apps/api/app/guides/content/claude-code-debug-and-test.json"
+    },
+    {
+      "slug": "claude-code-desktop-dispatch",
+      "title": "Claude Code｜Dispatch：從手機派送桌面任務",
+      "path": "apps/api/app/guides/content/claude-code-desktop-dispatch.json"
+    },
+    {
+      "slug": "claude-code-desktop-setup",
+      "title": "Claude Code｜桌面版安裝與第一個任務",
+      "path": "apps/api/app/guides/content/claude-code-desktop-setup.json"
+    },
+    {
+      "slug": "claude-code-desktop-workflow",
+      "title": "Claude Code｜桌面版日常工作流程",
+      "path": "apps/api/app/guides/content/claude-code-desktop-workflow.json"
+    },
+    {
+      "slug": "claude-code-files-and-context",
+      "title": "Claude Code｜提供檔案與專案上下文",
+      "path": "apps/api/app/guides/content/claude-code-files-and-context.json"
+    },
+    {
+      "slug": "claude-code-getting-started",
+      "title": "Claude Code 入門：認識工具與第一條學習路線",
+      "path": "apps/api/app/guides/content/claude-code-getting-started.json"
+    },
+    {
+      "slug": "claude-code-git-review-pr",
+      "title": "Claude Code｜Git、差異審查與 PR",
+      "path": "apps/api/app/guides/content/claude-code-git-review-pr.json"
+    },
+    {
+      "slug": "claude-code-github-actions",
+      "title": "Claude Code｜GitHub Actions 整合",
+      "path": "apps/api/app/guides/content/claude-code-github-actions.json"
+    },
+    {
+      "slug": "claude-code-headless-json",
+      "title": "Claude Code｜非互動執行與 JSON 輸出",
+      "path": "apps/api/app/guides/content/claude-code-headless-json.json"
+    },
+    {
+      "slug": "claude-code-help-status-doctor",
+      "title": "Claude Code｜說明、狀態與診斷",
+      "path": "apps/api/app/guides/content/claude-code-help-status-doctor.json"
+    },
+    {
+      "slug": "claude-code-hooks-and-skills",
+      "title": "Claude Code｜Hooks 與 Skills 怎麼選",
+      "path": "apps/api/app/guides/content/claude-code-hooks-and-skills.json"
+    },
+    {
+      "slug": "claude-code-hooks-getting-started",
+      "title": "Claude Code｜建立第一個 Hook",
+      "path": "apps/api/app/guides/content/claude-code-hooks-getting-started.json"
+    },
+    {
+      "slug": "claude-code-hooks-recipes",
+      "title": "Claude Code｜Hooks 實用案例",
+      "path": "apps/api/app/guides/content/claude-code-hooks-recipes.json"
+    },
+    {
+      "slug": "claude-code-ide-integration",
+      "title": "Claude Code｜VS Code 與 JetBrains 整合",
+      "path": "apps/api/app/guides/content/claude-code-ide-integration.json"
+    },
+    {
+      "slug": "claude-code-implement-feature",
+      "title": "Claude Code｜新增一個小功能",
+      "path": "apps/api/app/guides/content/claude-code-implement-feature.json"
+    },
+    {
+      "slug": "claude-code-install-linux-wsl",
+      "title": "Claude Code｜Linux 與 WSL 安裝教學",
+      "path": "apps/api/app/guides/content/claude-code-install-linux-wsl.json"
+    },
+    {
+      "slug": "claude-code-install-macos",
+      "title": "Claude Code｜macOS CLI 安裝教學",
+      "path": "apps/api/app/guides/content/claude-code-install-macos.json"
+    },
+    {
+      "slug": "claude-code-install-windows",
+      "title": "Claude Code｜Windows CLI 安裝教學",
+      "path": "apps/api/app/guides/content/claude-code-install-windows.json"
+    },
+    {
+      "slug": "claude-code-maintain-existing-project",
+      "title": "Claude Code｜接手舊專案與逐步重構",
+      "path": "apps/api/app/guides/content/claude-code-maintain-existing-project.json"
+    },
+    {
+      "slug": "claude-code-markdown-basics",
+      "title": "Claude Code｜Markdown 零基礎",
+      "path": "apps/api/app/guides/content/claude-code-markdown-basics.json"
+    },
+    {
+      "slug": "claude-code-mcp-servers",
+      "title": "Claude Code 接 MCP 入門",
+      "path": "apps/api/app/guides/content/claude-code-mcp-servers.json"
+    },
+    {
+      "slug": "claude-code-mcp-setup-troubleshooting",
+      "title": "Claude Code｜MCP 安裝、設定與排錯",
+      "path": "apps/api/app/guides/content/claude-code-mcp-setup-troubleshooting.json"
+    },
+    {
+      "slug": "claude-code-mobile-android",
+      "title": "Claude Code｜Android 使用教學",
+      "path": "apps/api/app/guides/content/claude-code-mobile-android.json"
+    },
+    {
+      "slug": "claude-code-mobile-ios",
+      "title": "Claude Code｜iPhone 與 iPad 使用教學",
+      "path": "apps/api/app/guides/content/claude-code-mobile-ios.json"
+    },
+    {
+      "slug": "claude-code-models-usage-config",
+      "title": "Claude Code｜模型、用量與偏好設定",
+      "path": "apps/api/app/guides/content/claude-code-models-usage-config.json"
+    },
+    {
+      "slug": "claude-code-on-the-web",
+      "title": "Claude Code 網頁版教學",
+      "path": "apps/api/app/guides/content/claude-code-on-the-web.json"
+    },
+    {
+      "slug": "claude-code-permissions-plan-mode",
+      "title": "Claude Code｜Plan Mode 與權限模式",
+      "path": "apps/api/app/guides/content/claude-code-permissions-plan-mode.json"
+    },
+    {
+      "slug": "claude-code-platforms-guide",
+      "title": "Claude Code｜桌面、CLI、網頁、手機怎麼選",
+      "path": "apps/api/app/guides/content/claude-code-platforms-guide.json"
+    },
+    {
+      "slug": "claude-code-plugins-guide",
+      "title": "Claude Code｜Plugins 安裝與管理",
+      "path": "apps/api/app/guides/content/claude-code-plugins-guide.json"
+    },
+    {
+      "slug": "claude-code-practice-project-setup",
+      "title": "Claude Code｜準備第一個練習專案",
+      "path": "apps/api/app/guides/content/claude-code-practice-project-setup.json"
+    },
+    {
+      "slug": "claude-code-project-data-safety",
+      "title": "Claude Code｜專案資料與操作安全",
+      "path": "apps/api/app/guides/content/claude-code-project-data-safety.json"
+    },
+    {
+      "slug": "claude-code-remote-control",
+      "title": "Claude Code｜Remote Control：接續電腦上的工作",
+      "path": "apps/api/app/guides/content/claude-code-remote-control.json"
+    },
+    {
+      "slug": "claude-code-rules-and-imports",
+      "title": "Claude Code｜拆分規則與引用其他 MD",
+      "path": "apps/api/app/guides/content/claude-code-rules-and-imports.json"
+    },
+    {
+      "slug": "claude-code-scheduled-tasks",
+      "title": "Claude Code｜排程與重複任務",
+      "path": "apps/api/app/guides/content/claude-code-scheduled-tasks.json"
+    },
+    {
+      "slug": "claude-code-sessions-resume",
+      "title": "Claude Code｜繼續、找回與管理對話",
+      "path": "apps/api/app/guides/content/claude-code-sessions-resume.json"
+    },
+    {
+      "slug": "claude-code-settings-json",
+      "title": "Claude Code｜settings.json 設定教學",
+      "path": "apps/api/app/guides/content/claude-code-settings-json.json"
+    },
+    {
+      "slug": "claude-code-skill-arguments-resources",
+      "title": "Claude Code｜Skill 參數與附屬材料",
+      "path": "apps/api/app/guides/content/claude-code-skill-arguments-resources.json"
+    },
+    {
+      "slug": "claude-code-skills-skill-md",
+      "title": "Claude Code｜建立第一個 SKILL.md",
+      "path": "apps/api/app/guides/content/claude-code-skills-skill-md.json"
+    },
+    {
+      "slug": "claude-code-subagents-guide",
+      "title": "Claude Code｜Subagents 與代理 MD 設定",
+      "path": "apps/api/app/guides/content/claude-code-subagents-guide.json"
+    },
+    {
+      "slug": "claude-code-task-prompts",
+      "title": "Claude Code｜如何把需求交代清楚",
+      "path": "apps/api/app/guides/content/claude-code-task-prompts.json"
+    },
+    {
+      "slug": "claude-code-templates-cheatsheet",
+      "title": "Claude Code｜指令速查與設定範本庫",
+      "path": "apps/api/app/guides/content/claude-code-templates-cheatsheet.json"
+    },
+    {
+      "slug": "claude-code-terminal-git-basics",
+      "title": "Claude Code｜終端機、路徑與 Git 基礎",
+      "path": "apps/api/app/guides/content/claude-code-terminal-git-basics.json"
+    },
+    {
+      "slug": "claude-code-troubleshooting",
+      "title": "Claude Code｜常見問題排除大全",
+      "path": "apps/api/app/guides/content/claude-code-troubleshooting.json"
+    },
+    {
+      "slug": "claude-code-tutorials",
+      "title": "Claude Code 完整教學目錄：從入門到自動化",
+      "path": "apps/api/app/guides/content/claude-code-tutorials.json"
+    },
+    {
+      "slug": "claude-code-understand-codebase",
+      "title": "Claude Code｜快速讀懂陌生專案",
+      "path": "apps/api/app/guides/content/claude-code-understand-codebase.json"
+    },
+    {
+      "slug": "claude-code-usage-cost-optimization",
+      "title": "Claude Code｜用量、成本與效率調整",
+      "path": "apps/api/app/guides/content/claude-code-usage-cost-optimization.json"
+    },
+    {
+      "slug": "claude-code-worktrees-parallel",
+      "title": "Claude Code｜Git Worktree 平行工作",
+      "path": "apps/api/app/guides/content/claude-code-worktrees-parallel.json"
+    },
+    {
+      "slug": "claude-computer-use-explained",
+      "title": "Claude 操作電腦是怎麼回事：能力、限制與安全",
+      "path": "apps/api/app/guides/content/claude-computer-use-explained.json"
+    },
+    {
+      "slug": "claude-desktop-mobile-app-setup",
+      "title": "Claude 桌面版與手機 App：安裝、快捷鍵與語音",
+      "path": "apps/api/app/guides/content/claude-desktop-mobile-app-setup.json"
+    },
+    {
+      "slug": "claude-extended-thinking-guide",
+      "title": "Claude 延伸思考模式：什麼題目該開、怎麼看它的推理",
+      "path": "apps/api/app/guides/content/claude-extended-thinking-guide.json"
+    },
+    {
+      "slug": "claude-file-analysis-pdf-excel",
+      "title": "給 Claude 讀 PDF 與試算表：摘要、比對與抓數字",
+      "path": "apps/api/app/guides/content/claude-file-analysis-pdf-excel.json"
+    },
+    {
+      "slug": "claude-for-research-summaries",
+      "title": "用 Claude 讀論文與長報告：摘要、提問與批判",
+      "path": "apps/api/app/guides/content/claude-for-research-summaries.json"
+    },
+    {
+      "slug": "claude-for-teachers-lesson-plans",
+      "title": "老師用 Claude：出題、教案與批改回饋",
+      "path": "apps/api/app/guides/content/claude-for-teachers-lesson-plans.json"
+    },
+    {
+      "slug": "claude-for-translation-zh-tw",
+      "title": "用 Claude 做中英日翻譯：語氣、專有名詞與術語表",
+      "path": "apps/api/app/guides/content/claude-for-translation-zh-tw.json"
+    },
+    {
+      "slug": "claude-in-chrome-browser-agent",
+      "title": "Claude 在瀏覽器裡：Chrome 擴充功能替你操作網頁",
+      "path": "apps/api/app/guides/content/claude-in-chrome-browser-agent.json"
+    },
+    {
+      "slug": "claude-mcp-explained",
+      "title": "MCP 是什麼：讓 Claude 連上你的檔案、日曆與資料庫",
+      "path": "apps/api/app/guides/content/claude-mcp-explained.json"
+    },
+    {
+      "slug": "claude-memory-and-privacy",
+      "title": "Claude 的記憶與隱私：什麼會被記住、怎麼清除、對話會不會拿去訓練",
+      "path": "apps/api/app/guides/content/claude-memory-and-privacy.json"
+    },
+    {
+      "slug": "claude-model-lineup-2026",
+      "title": "Claude 模型家族：Fable、Opus、Sonnet、Haiku 怎麼選",
+      "path": "apps/api/app/guides/content/claude-model-lineup-2026.json"
+    },
+    {
+      "slug": "claude-plans-free-pro-max-2026",
+      "title": "Claude 免費、Pro、Max 方案比較：額度怎麼算、值不值得",
+      "path": "apps/api/app/guides/content/claude-plans-free-pro-max-2026.json"
+    },
+    {
+      "slug": "claude-projects-knowledge-base",
+      "title": "Claude Projects：把資料與指令放進專案，越用越懂你",
+      "path": "apps/api/app/guides/content/claude-projects-knowledge-base.json"
+    },
+    {
+      "slug": "claude-skills-explained",
+      "title": "Claude Skills 是什麼：把重複流程包成可重用的技能",
+      "path": "apps/api/app/guides/content/claude-skills-explained.json"
+    },
+    {
+      "slug": "claude-system-prompt-basics",
+      "title": "系統提示詞入門：讓 Claude 穩定扮演一種角色",
+      "path": "apps/api/app/guides/content/claude-system-prompt-basics.json"
+    },
+    {
+      "slug": "claude-vs-chatgpt-writing-test",
+      "title": "Claude 與 ChatGPT 寫作自測法：五道題、五個面向，結論自己測出來",
+      "path": "apps/api/app/guides/content/claude-vs-chatgpt-writing-test.json"
+    },
+    {
+      "slug": "claude-writing-style-guide",
+      "title": "用 Claude 寫作：設定風格、長文結構與潤稿，寫出像自己寫的中文",
+      "path": "apps/api/app/guides/content/claude-writing-style-guide.json"
+    },
+    {
+      "slug": "codex-beginner-guide",
+      "title": "OpenAI Codex 是什麼：從 ChatGPT 裡的寫程式代理到 Codex CLI",
+      "path": "apps/api/app/guides/content/codex-beginner-guide.json"
+    },
+    {
+      "slug": "da-nang-hoi-an-4-day-itinerary",
+      "title": "峴港會安四天三夜攻略：機場到市區與會安、巴拿山黃金橋、會安古鎮門票與五行山怎麼排",
+      "path": "apps/api/app/guides/content/da-nang-hoi-an-4-day-itinerary.json"
+    },
+    {
+      "slug": "deepseek-beginner-guide",
+      "title": "DeepSeek 是什麼：免費、開源與資料流向，用之前先知道的事",
+      "path": "apps/api/app/guides/content/deepseek-beginner-guide.json"
+    },
+    {
+      "slug": "desk-cable-charging-organization",
+      "title": "桌面線材整理不只要好看：把用途、規格與取用位置標清楚",
+      "path": "apps/api/app/guides/content/desk-cable-charging-organization.json"
+    },
+    {
+      "slug": "digital-receipt-archive",
+      "title": "收據拍完就找不到？建立購買憑證的搜尋與保固資料夾",
+      "path": "apps/api/app/guides/content/digital-receipt-archive.json"
+    },
+    {
+      "slug": "dmz-day-trip-from-seoul",
+      "title": "首爾出發 DMZ 一日遊：坡州 DMZ 和平觀光自己去還是跟團、第三地道與都羅展望台的票價場次、護照規定與板門店 JSA 現況",
+      "path": "apps/api/app/guides/content/dmz-day-trip-from-seoul.json"
+    },
+    {
+      "slug": "email-triage-three-actions",
+      "title": "收件匣不必清到零：用待辦、等待與歸檔處理電子郵件",
+      "path": "apps/api/app/guides/content/email-triage-three-actions.json"
+    },
+    {
+      "slug": "everland-lotte-world-guide",
+      "title": "愛寶樂園 vs 樂天世界怎麼選：門票、交通、必玩設施與快速通關，第一次去首爾樂園的完整攻略",
+      "path": "apps/api/app/guides/content/everland-lotte-world-guide.json"
+    },
+    {
+      "slug": "file-naming-system-for-home",
+      "title": "檔案總是找不到？用用途、日期與狀態建立簡單命名規則",
+      "path": "apps/api/app/guides/content/file-naming-system-for-home.json"
+    },
+    {
+      "slug": "fuji-kawaguchiko-day-trip",
+      "title": "東京出發河口湖一日遊攻略：新宿高速巴士 vs 特急富士回遊、周遊巴士 2 日券、纜車遊覽船到新倉山忠靈塔怎麼排",
+      "path": "apps/api/app/guides/content/fuji-kawaguchiko-day-trip.json"
+    },
+    {
+      "slug": "fukuoka-3-day-itinerary",
+      "title": "福岡三天兩夜行程範例：博多、天神、太宰府、屋台，機場地鐵兩站就到",
+      "path": "apps/api/app/guides/content/fukuoka-3-day-itinerary.json"
+    },
+    {
+      "slug": "fukuoka-airport-to-hakata-tenjin",
+      "title": "福岡機場國際線到博多、天神交通攻略：免費接駁轉地下鐵、西鐵直達巴士、計程車與深夜早班怎麼走",
+      "path": "apps/api/app/guides/content/fukuoka-airport-to-hakata-tenjin.json"
+    },
+    {
+      "slug": "gadget-purchase-needs-checklist",
+      "title": "買新 3C 前先寫需求：從真實問題、相容性到維修與退場成本",
+      "path": "apps/api/app/guides/content/gadget-purchase-needs-checklist.json"
+    },
+    {
+      "slug": "gemini-api-ai-studio-first-call",
+      "title": "AI Studio 與第一個 Gemini API 呼叫",
+      "path": "apps/api/app/guides/content/gemini-api-ai-studio-first-call.json"
+    },
+    {
+      "slug": "gemini-api-cost-errors-guide",
+      "title": "API 額度與錯誤：費用、重試與成本控制",
+      "path": "apps/api/app/guides/content/gemini-api-cost-errors-guide.json"
+    },
+    {
+      "slug": "gemini-api-document-assistant",
+      "title": "完整實作：文件摘要與資料擷取工具",
+      "path": "apps/api/app/guides/content/gemini-api-document-assistant.json"
+    },
+    {
+      "slug": "gemini-api-files-structured-output",
+      "title": "API 檔案與 JSON：結構化輸出及驗證",
+      "path": "apps/api/app/guides/content/gemini-api-files-structured-output.json"
+    },
+    {
+      "slug": "gemini-beginner-guide",
+      "title": "Gemini 新手入門：帳號、介面與第一個對話",
+      "path": "apps/api/app/guides/content/gemini-beginner-guide.json"
+    },
+    {
+      "slug": "gemini-canvas-guide",
+      "title": "Canvas：編輯文章、簡報與製作小工具",
+      "path": "apps/api/app/guides/content/gemini-canvas-guide.json"
+    },
+    {
+      "slug": "gemini-cli-agent-skills",
+      "title": "Agent Skills：建立可重用的 SKILL.md",
+      "path": "apps/api/app/guides/content/gemini-cli-agent-skills.json"
+    },
+    {
+      "slug": "gemini-cli-authentication",
+      "title": "CLI 認證：Google 帳號、API Key 與計費",
+      "path": "apps/api/app/guides/content/gemini-cli-authentication.json"
+    },
+    {
+      "slug": "gemini-cli-coding-workflow",
+      "title": "CLI 寫程式：理解、規劃、修改與測試",
+      "path": "apps/api/app/guides/content/gemini-cli-coding-workflow.json"
+    },
+    {
+      "slug": "gemini-cli-command-reference",
+      "title": "CLI 指令總表：語法、範例與深入教學",
+      "path": "apps/api/app/guides/content/gemini-cli-command-reference.json"
+    },
+    {
+      "slug": "gemini-cli-custom-commands",
+      "title": "自訂斜線指令：TOML、參數與重新載入",
+      "path": "apps/api/app/guides/content/gemini-cli-custom-commands.json"
+    },
+    {
+      "slug": "gemini-cli-files-and-shell",
+      "title": "CLI 檔案與命令：@、! 與路徑",
+      "path": "apps/api/app/guides/content/gemini-cli-files-and-shell.json"
+    },
+    {
+      "slug": "gemini-cli-gemini-md",
+      "title": "GEMINI.md 入門：建立規則與 /init",
+      "path": "apps/api/app/guides/content/gemini-cli-gemini-md.json"
+    },
+    {
+      "slug": "gemini-cli-getting-started",
+      "title": "Gemini CLI 安裝：第一次在終端機對話",
+      "path": "apps/api/app/guides/content/gemini-cli-getting-started.json"
+    },
+    {
+      "slug": "gemini-cli-headless-automation",
+      "title": "Headless 模式：批次、JSON 與腳本",
+      "path": "apps/api/app/guides/content/gemini-cli-headless-automation.json"
+    },
+    {
+      "slug": "gemini-cli-hooks",
+      "title": "Hooks：在指定事件執行檢查",
+      "path": "apps/api/app/guides/content/gemini-cli-hooks.json"
+    },
+    {
+      "slug": "gemini-cli-mcp-extensions",
+      "title": "MCP 與 Extensions：安裝、驗證與停用",
+      "path": "apps/api/app/guides/content/gemini-cli-mcp-extensions.json"
+    },
+    {
+      "slug": "gemini-cli-memory-hierarchy",
+      "title": "GEMINI.md 進階：範圍、匯入與 /memory",
+      "path": "apps/api/app/guides/content/gemini-cli-memory-hierarchy.json"
+    },
+    {
+      "slug": "gemini-cli-permissions-sandbox",
+      "title": "CLI 權限：忽略檔案、可信任資料夾與沙箱",
+      "path": "apps/api/app/guides/content/gemini-cli-permissions-sandbox.json"
+    },
+    {
+      "slug": "gemini-cli-sessions-context",
+      "title": "CLI 對話管理：恢復、壓縮與匯出",
+      "path": "apps/api/app/guides/content/gemini-cli-sessions-context.json"
+    },
+    {
+      "slug": "gemini-cli-settings",
+      "title": "settings.json：全域、專案與環境變數",
+      "path": "apps/api/app/guides/content/gemini-cli-settings.json"
+    },
+    {
+      "slug": "gemini-cli-subagents",
+      "title": "Subagents：拆分任務與整合結果",
+      "path": "apps/api/app/guides/content/gemini-cli-subagents.json"
+    },
+    {
+      "slug": "gemini-cli-troubleshooting",
+      "title": "CLI 疑難排解：登入、PATH 與設定失效",
+      "path": "apps/api/app/guides/content/gemini-cli-troubleshooting.json"
+    },
+    {
+      "slug": "gemini-connected-apps-guide",
+      "title": "Connected Apps：Drive、日曆與地圖整合",
+      "path": "apps/api/app/guides/content/gemini-connected-apps-guide.json"
+    },
+    {
+      "slug": "gemini-deep-research-guide",
+      "title": "Deep Research：研究計畫、來源與報告",
+      "path": "apps/api/app/guides/content/gemini-deep-research-guide.json"
+    },
+    {
+      "slug": "gemini-file-analysis-guide",
+      "title": "讀 PDF、圖片與表格：摘要、比對與驗證",
+      "path": "apps/api/app/guides/content/gemini-file-analysis-guide.json"
+    },
+    {
+      "slug": "gemini-for-google-sheets-formulas",
+      "title": "Google Sheets：公式、整理與資料核對",
+      "path": "apps/api/app/guides/content/gemini-for-google-sheets-formulas.json"
+    },
+    {
+      "slug": "gemini-for-travel-planning",
+      "title": "用 Gemini 規劃旅行：需求、資料與行程",
+      "path": "apps/api/app/guides/content/gemini-for-travel-planning.json"
+    },
+    {
+      "slug": "gemini-gems-custom-assistants",
+      "title": "Gems 自訂助手：指令、資料與測試",
+      "path": "apps/api/app/guides/content/gemini-gems-custom-assistants.json"
+    },
+    {
+      "slug": "gemini-guide",
+      "title": "Gemini 完整教學：電腦、手機、CLI 與 Google AI 應用",
+      "path": "apps/api/app/guides/content/gemini-guide.json"
+    },
+    {
+      "slug": "gemini-in-chrome-guide",
+      "title": "Chrome 裡的 Gemini：網頁摘要與分頁",
+      "path": "apps/api/app/guides/content/gemini-in-chrome-guide.json"
+    },
+    {
+      "slug": "gemini-in-gmail-docs-sheets",
+      "title": "Gmail、Docs 與 Slides：信件、文件與簡報",
+      "path": "apps/api/app/guides/content/gemini-in-gmail-docs-sheets.json"
+    },
+    {
+      "slug": "gemini-ios-app-guide",
+      "title": "iPhone 與 iPad：安裝、語音與照片",
+      "path": "apps/api/app/guides/content/gemini-ios-app-guide.json"
+    },
+    {
+      "slug": "gemini-live-voice-camera",
+      "title": "Gemini Live：語音、鏡頭與螢幕分享",
+      "path": "apps/api/app/guides/content/gemini-live-voice-camera.json"
+    },
+    {
+      "slug": "gemini-mac-app-guide",
+      "title": "Mac 桌面版：安裝、快捷鍵與視窗分享",
+      "path": "apps/api/app/guides/content/gemini-mac-app-guide.json"
+    },
+    {
+      "slug": "gemini-markdown-basics",
+      "title": "Markdown 基礎：建立 MD、標題與程式碼",
+      "path": "apps/api/app/guides/content/gemini-markdown-basics.json"
+    },
+    {
+      "slug": "gemini-model-lineup-flash-pro",
+      "title": "Gemini 模型怎麼選：速度、能力與情境",
+      "path": "apps/api/app/guides/content/gemini-model-lineup-flash-pro.json"
+    },
+    {
+      "slug": "gemini-on-android-assistant",
+      "title": "Android 版：安裝、助理設定與手機操作",
+      "path": "apps/api/app/guides/content/gemini-on-android-assistant.json"
+    },
+    {
+      "slug": "gemini-plans-ai-pro-ultra-2026",
+      "title": "免費與付費方案：功能、額度與訂閱選擇",
+      "path": "apps/api/app/guides/content/gemini-plans-ai-pro-ultra-2026.json"
+    },
+    {
+      "slug": "gemini-privacy-activity-settings",
+      "title": "活動記錄與隱私：查看、刪除與設定",
+      "path": "apps/api/app/guides/content/gemini-privacy-activity-settings.json"
+    },
+    {
+      "slug": "gemini-prompt-writing-guide",
+      "title": "提示詞怎麼寫：目標、背景與輸出格式",
+      "path": "apps/api/app/guides/content/gemini-prompt-writing-guide.json"
+    },
+    {
+      "slug": "gemini-spark-workflows-guide",
+      "title": "Gemini Spark：任務、排程與 Skills",
+      "path": "apps/api/app/guides/content/gemini-spark-workflows-guide.json"
+    },
+    {
+      "slug": "gemini-vs-chatgpt-vs-claude-daily",
+      "title": "三大助手日常比較：同題操作與評分方法",
+      "path": "apps/api/app/guides/content/gemini-vs-chatgpt-vs-claude-daily.json"
+    },
+    {
+      "slug": "gemini-web-desktop-guide",
+      "title": "電腦網頁版：Windows、檔案與瀏覽器捷徑",
+      "path": "apps/api/app/guides/content/gemini-web-desktop-guide.json"
+    },
+    {
+      "slug": "gimhae-airport-to-busan",
+      "title": "金海機場到釜山市區交通攻略：輕軌轉地鐵、機場利木津巴士、計程車與深夜落地怎麼辦",
+      "path": "apps/api/app/guides/content/gimhae-airport-to-busan.json"
+    },
+    {
+      "slug": "google-ai-mode-search",
+      "title": "Google 搜尋 AI 模式：追問與來源判讀",
+      "path": "apps/api/app/guides/content/google-ai-mode-search.json"
+    },
+    {
+      "slug": "google-ai-overviews-for-site-owners",
+      "title": "網站經營者看 AI 摘要：引用與成效",
+      "path": "apps/api/app/guides/content/google-ai-overviews-for-site-owners.json"
+    },
+    {
+      "slug": "google-workspace-ai-for-small-business",
+      "title": "小團隊使用 Workspace AI：帳號與管理",
+      "path": "apps/api/app/guides/content/google-workspace-ai-for-small-business.json"
+    },
+    {
+      "slug": "gyeongju-day-trip-from-busan",
+      "title": "釜山出發慶州一日遊：KTX 還是市外巴士、大陵苑到佛國寺的公車路線、門票與東宮月池夜景怎麼排",
+      "path": "apps/api/app/guides/content/gyeongju-day-trip-from-busan.json"
+    },
+    {
+      "slug": "hakone-day-trip-free-pass",
+      "title": "箱根一日遊與兩天一夜攻略：箱根周遊券 2 日 7,100 日圓包什麼、浪漫特快加多少、登山電車、纜車、空中纜車、海賊船的黃金路線一圈怎麼走",
+      "path": "apps/api/app/guides/content/hakone-day-trip-free-pass.json"
+    },
+    {
+      "slug": "hanoi-4-day-itinerary",
+      "title": "河內四天三夜攻略：內排機場 86 路巴士進城、老城區與水上木偶戲、文廟與火爐監獄，第三天下龍灣或寧平怎麼選",
+      "path": "apps/api/app/guides/content/hanoi-4-day-itinerary.json"
+    },
+    {
+      "slug": "hanoi-old-quarter-walking-guide",
+      "title": "河內老城區散步攻略：從還劍湖定位，挑街巷而不是追滿景點",
+      "path": "apps/api/app/guides/content/hanoi-old-quarter-walking-guide.json"
+    },
+    {
+      "slug": "himeji-castle-day-trip",
+      "title": "姬路城一日遊攻略：大阪、京都、神戶出發的新快速、新幹線與山陽電鐵比較，2026 年新入城料、大天守排隊、好古園、書寫山圓教寺與順道明石",
+      "path": "apps/api/app/guides/content/himeji-castle-day-trip.json"
+    },
+    {
+      "slug": "hiroshima-miyajima-2-day",
+      "title": "廣島宮島兩天一夜行程：機場利木津、廣電路面電車、JR 宮島渡輪與宮島訪問稅，和平公園到嚴島神社怎麼排",
+      "path": "apps/api/app/guides/content/hiroshima-miyajima-2-day.json"
+    },
+    {
+      "slug": "ho-chi-minh-city-4-day-itinerary",
+      "title": "胡志明市四天三夜攻略：新山一機場進市區、地鐵 1 號線票價、統一宮與戰爭遺跡博物館、古芝地道或湄公河怎麼排",
+      "path": "apps/api/app/guides/content/ho-chi-minh-city-4-day-itinerary.json"
+    },
+    {
+      "slug": "hong-kong-4-day-itinerary",
+      "title": "香港四天三夜行程範例：中環太平山、西九故宮與 M+、尖沙咀夜景、昂坪 360 天壇大佛，港鐵與八達通這樣排",
+      "path": "apps/api/app/guides/content/hong-kong-4-day-itinerary.json"
+    },
+    {
+      "slug": "hong-kong-airport-to-city",
+      "title": "香港機場到市區交通攻略：機場快綫票價與團體票、A21／A11 巴士、S1 轉東涌綫、紅綠藍計程車怎麼選",
+      "path": "apps/api/app/guides/content/hong-kong-airport-to-city.json"
+    },
+    {
+      "slug": "hong-kong-entry-2026",
+      "title": "2026 台灣旅客入境香港：網上預辦入境登記免費、2 個月內入境 2 次各停留 30 天，電子菸不能帶、菸酒免稅額與 12 萬港元現金申報",
+      "path": "apps/api/app/guides/content/hong-kong-entry-2026.json"
+    },
+    {
+      "slug": "hong-kong-ferry-tram-day",
+      "title": "香港天星小輪加叮叮車：把過海與港島街景排成慢遊一天",
+      "path": "apps/api/app/guides/content/hong-kong-ferry-tram-day.json"
+    },
+    {
+      "slug": "household-inventory-spreadsheet",
+      "title": "家裡用品一直重複買？用簡單庫存表記位置、數量與補貨狀態",
+      "path": "apps/api/app/guides/content/household-inventory-spreadsheet.json"
+    },
+    {
+      "slug": "incheon-airport-to-seoul",
+      "title": "仁川機場到首爾市區交通攻略：AREX 直達／一般列車、機場巴士、深夜抵達怎麼辦",
+      "path": "apps/api/app/guides/content/incheon-airport-to-seoul.json"
+    },
+    {
+      "slug": "japan-autumn-leaves-2026",
+      "title": "2026 日本紅葉最前線：東京、京都、大阪見頃預測與賞楓行程",
+      "path": "apps/api/app/guides/content/japan-autumn-leaves-2026.json"
+    },
+    {
+      "slug": "japan-car-rental-expressway-guide",
+      "title": "日本本島自駕總整理：駕照日文譯本、租車保險、ETC 與高速公路周遊券、雪季與違規（2026 年版）",
+      "path": "apps/api/app/guides/content/japan-car-rental-expressway-guide.json"
+    },
+    {
+      "slug": "japan-cherry-blossom-2027",
+      "title": "2027 日本櫻花季提早規劃：氣象庁平年值與 2021–2026 年開花、滿開實績，連假撞期與預測出來前怎麼訂",
+      "path": "apps/api/app/guides/content/japan-cherry-blossom-2027.json"
+    },
+    {
+      "slug": "japan-drugstore-shopping-list",
+      "title": "日本藥妝店必買清單與省錢技巧：免稅新制後怎麼買（2026 年版）",
+      "path": "apps/api/app/guides/content/japan-drugstore-shopping-list.json"
+    },
+    {
+      "slug": "japan-entry-2026-visit-japan-web",
+      "title": "2026 台灣旅客入境日本：Visit Japan Web 怎麼填、入境卡電子化、海關規定與 JESTA 進度",
+      "path": "apps/api/app/guides/content/japan-entry-2026-visit-japan-web.json"
+    },
+    {
+      "slug": "japan-esim-sim-wifi",
+      "title": "日本上網怎麼選：eSIM、實體 SIM、WiFi 分享器比較，2026 年這樣挑",
+      "path": "apps/api/app/guides/content/japan-esim-sim-wifi.json"
+    },
+    {
+      "slug": "japan-hotel-room-plan-guide",
+      "title": "日本訂房方案怎麼讀：床型、人數、餐食與取消條件逐項核對",
+      "path": "apps/api/app/guides/content/japan-hotel-room-plan-guide.json"
+    },
+    {
+      "slug": "japan-ic-card-suica-icoca-guide",
+      "title": "日本交通 IC 卡總整理：Welcome Suica、手機 Suica／PASMO、ICOCA 怎麼選，全國十卡互通、儲值上限與退卡手續費一次講清楚",
+      "path": "apps/api/app/guides/content/japan-ic-card-suica-icoca-guide.json"
+    },
+    {
+      "slug": "japan-luggage-forwarding-guide",
+      "title": "日本行李宅配怎麼安排：跨城輕裝、飯店代收與機場取件",
+      "path": "apps/api/app/guides/content/japan-luggage-forwarding-guide.json"
+    },
+    {
+      "slug": "japan-onsen-ryokan-guide",
+      "title": "第一次住日本溫泉旅館：看懂一泊二食與入湯稅、入住流程、浴衣穿法、泡湯規矩與刺青對策",
+      "path": "apps/api/app/guides/content/japan-onsen-ryokan-guide.json"
+    },
+    {
+      "slug": "japan-restaurant-reservation-etiquette",
+      "title": "日本餐廳訂位前後要做什麼：預約成立、遲到與取消的處理方式",
+      "path": "apps/api/app/guides/content/japan-restaurant-reservation-etiquette.json"
+    },
+    {
+      "slug": "japan-shinkansen-ticket-guide",
+      "title": "新幹線車票怎麼買：smartEX、EX早特21、車站售票機，JR Pass 什麼時候才划算（2026 年版）",
+      "path": "apps/api/app/guides/content/japan-shinkansen-ticket-guide.json"
+    },
+    {
+      "slug": "japan-ski-season-2026-2027",
+      "title": "2026–27 日本雪季情報：二世谷、留壽都、富良野、札幌近郊、白馬、GALA 湯澤的開放日、纜車票價與交通",
+      "path": "apps/api/app/guides/content/japan-ski-season-2026-2027.json"
+    },
+    {
+      "slug": "japan-station-locker-guide",
+      "title": "日本車站置物櫃使用攻略：閘內外、付款憑證與找回行李",
+      "path": "apps/api/app/guides/content/japan-station-locker-guide.json"
+    },
+    {
+      "slug": "japan-tax-free-refund-2026",
+      "title": "2026 年 11 月起日本免稅改成「先付稅、離境退款」：買藥妝、電器前要知道的變化",
+      "path": "apps/api/app/guides/content/japan-tax-free-refund-2026.json"
+    },
+    {
+      "slug": "japan-train-disruption-plan",
+      "title": "日本電車停駛時怎麼改行程：查官方資訊、保留車票與備案順序",
+      "path": "apps/api/app/guides/content/japan-train-disruption-plan.json"
+    },
+    {
+      "slug": "japan-travel-laundry-guide",
+      "title": "日本旅行洗衣怎麼安排：飯店洗衣房、自助店與退房前的乾衣時間",
+      "path": "apps/api/app/guides/content/japan-travel-laundry-guide.json"
+    },
+    {
+      "slug": "japan-winter-illumination-2026",
+      "title": "2026 日本冬季燈飾情報：東京、大阪、京都與神戶的點燈日期與怎麼排",
+      "path": "apps/api/app/guides/content/japan-winter-illumination-2026.json"
+    },
+    {
+      "slug": "japan-year-end-new-year-2026-2027",
+      "title": "2026 到 2027 日本跨年情報：12 月 26 日到 1 月 4 日哪些休、のぞみ全席指定席、初売り與初詣怎麼排",
+      "path": "apps/api/app/guides/content/japan-year-end-new-year-2026-2027.json"
+    },
+    {
+      "slug": "jeju-3-day-itinerary",
+      "title": "濟州島三天兩夜怎麼排：東線城山日出峰與牛島、西歸浦瀑布或漢拿山、租車還是巴士",
+      "path": "apps/api/app/guides/content/jeju-3-day-itinerary.json"
+    },
+    {
+      "slug": "jeju-car-rental-guide",
+      "title": "濟州島租車自駕攻略：台灣國際駕照能用、機場接駁到租車村、保險與押金、加油還車一次講清楚",
+      "path": "apps/api/app/guides/content/jeju-car-rental-guide.json"
+    },
+    {
+      "slug": "jiufen-shifen-yehliu-day-trip",
+      "title": null,
+      "path": "apps/api/app/guides/content/jiufen-shifen-yehliu-day-trip.json"
+    },
+    {
+      "slug": "kamakura-enoshima-day-trip",
+      "title": "東京出發鎌倉、江之島一日遊攻略：小田急江之島鎌倉周遊券還是 JR、江之電一日券、大佛長谷江之島怎麼排、週末怎麼避開人潮",
+      "path": "apps/api/app/guides/content/kamakura-enoshima-day-trip.json"
+    },
+    {
+      "slug": "kanazawa-2-day-itinerary",
+      "title": "金澤兩天一夜怎麼排：東京搭北陸新幹線、關西在敦賀轉車、台灣直飛小松，兼六園、東茶屋街與周遊巴士",
+      "path": "apps/api/app/guides/content/kanazawa-2-day-itinerary.json"
+    },
+    {
+      "slug": "kansai-airport-to-osaka-kyoto",
+      "title": "關西機場到大阪、京都交通攻略：HARUKA、Rapi:t、關空快速、利木津巴士怎麼選",
+      "path": "apps/api/app/guides/content/kansai-airport-to-osaka-kyoto.json"
+    },
+    {
+      "slug": "kansai-rail-passes-guide",
+      "title": "關西交通票券怎麼選：JR 關西地區鐵路周遊券、大阪周遊パス、KANSAI RAILWAY PASS LITE 與各家一日券（2026 年 9 月票價與決策圖）",
+      "path": "apps/api/app/guides/content/kansai-rail-passes-guide.json"
+    },
+    {
+      "slug": "kaohsiung-3-day-itinerary",
+      "title": null,
+      "path": "apps/api/app/guides/content/kaohsiung-3-day-itinerary.json"
+    },
+    {
+      "slug": "kobe-arima-day-trip",
+      "title": "大阪出發神戶一日遊加有馬溫泉：三宮、北野異人館、南京町、神戶港到金湯銀湯怎麼排",
+      "path": "apps/api/app/guides/content/kobe-arima-day-trip.json"
+    },
+    {
+      "slug": "korea-entry-2026-k-eta-e-arrival",
+      "title": "2026 台灣旅客入境韓國：K-ETA 免申請延長到年底、e-Arrival Card 電子入境卡怎麼填",
+      "path": "apps/api/app/guides/content/korea-entry-2026-k-eta-e-arrival.json"
+    },
+    {
+      "slug": "korea-esim-sim-wifi",
+      "title": "韓國上網怎麼選：eSIM、實體 SIM、WiFi 分享器與台灣電信漫遊比較，仁川機場電信櫃檯位置與時間",
+      "path": "apps/api/app/guides/content/korea-esim-sim-wifi.json"
+    },
+    {
+      "slug": "korea-food-guide-must-eat",
+      "title": "韓國必吃與點餐規矩：烤肉兩人份起、小菜免費續、一個人怎麼吃、市場與訂位（2026 年版）",
+      "path": "apps/api/app/guides/content/korea-food-guide-must-eat.json"
+    },
+    {
+      "slug": "korea-ktx-srt-ticket-guide",
+      "title": "首爾釜山 KTX 與 SRT 買票攻略：首爾站還是水西站、Korail Talk 與 SRT app 怎麼訂、KORAIL PASS 划不划算",
+      "path": "apps/api/app/guides/content/korea-ktx-srt-ticket-guide.json"
+    },
+    {
+      "slug": "korea-money-exchange-wowpass-guide",
+      "title": "韓國錢怎麼帶：台灣換韓元、明洞換錢所、WOWPASS、刷卡與 ATM 提款怎麼選（2026 年版）",
+      "path": "apps/api/app/guides/content/korea-money-exchange-wowpass-guide.json"
+    },
+    {
+      "slug": "korea-naver-map-kakao-t-guide",
+      "title": "韓國地圖與叫車 App 攻略：Naver Map、Kakao Map 查路線，k.ride 與 Kakao T 怎麼選、怎麼付，首爾計程車費與深夜加成",
+      "path": "apps/api/app/guides/content/korea-naver-map-kakao-t-guide.json"
+    },
+    {
+      "slug": "korea-olive-young-tax-refund-shopping",
+      "title": "Olive Young 必買與韓國退稅攻略：即時退稅門檻、仁川機場退稅流程、超市退稅與台灣入境免稅額",
+      "path": "apps/api/app/guides/content/korea-olive-young-tax-refund-shopping.json"
+    },
+    {
+      "slug": "korea-ski-resorts-2026-2027",
+      "title": "2026–27 韓國滑雪情報：首爾出發 Elysian 江村、Vivaldi Park、龍平、Phoenix、High1 怎麼去、開放日與票價",
+      "path": "apps/api/app/guides/content/korea-ski-resorts-2026-2027.json"
+    },
+    {
+      "slug": "korea-winter-events-2026",
+      "title": "2026 韓國冬季活動情報：首爾冬季慶典與燈節、光化門市集、釜山跨年與海雲台燈節、雪季開放日",
+      "path": "apps/api/app/guides/content/korea-winter-events-2026.json"
+    },
+    {
+      "slug": "kuala-lumpur-airport-transfer-plan",
+      "title": "吉隆坡機場到住宿怎麼接：KLIA Ekspres、Transit 與最後一段轉乘",
+      "path": "apps/api/app/guides/content/kuala-lumpur-airport-transfer-plan.json"
+    },
+    {
+      "slug": "kyoto-bus-subway-guide",
+      "title": "京都市巴士、地鐵怎麼搭：一日券 2026 價格、觀光特急巴士、避開塞車的走法",
+      "path": "apps/api/app/guides/content/kyoto-bus-subway-guide.json"
+    },
+    {
+      "slug": "kyoto-cycling-parking-guide",
+      "title": "京都租腳踏車之前：用停車點規劃路線，別把騎車當成萬用捷徑",
+      "path": "apps/api/app/guides/content/kyoto-cycling-parking-guide.json"
+    },
+    {
+      "slug": "meeting-notes-action-template",
+      "title": "會議筆記怎麼寫才有人接手：把決定、負責人與下一步留下來",
+      "path": "apps/api/app/guides/content/meeting-notes-action-template.json"
+    },
+    {
+      "slug": "minimax-beginner-guide",
+      "title": "MiniMax 是什麼：海螺 AI、影片與語音生成，台灣使用者怎麼用",
+      "path": "apps/api/app/guides/content/minimax-beginner-guide.json"
+    },
+    {
+      "slug": "nagoya-3-day-itinerary",
+      "title": "名古屋三天兩夜行程範例：中部國際機場名鐵 μ-SKY 28 分進城，名古屋城、大須、熱田神宮、磁浮鐵道館與名古屋飯",
+      "path": "apps/api/app/guides/content/nagoya-3-day-itinerary.json"
+    },
+    {
+      "slug": "nami-island-petite-france-day-trip",
+      "title": "南怡島、小法國、晨靜樹木園一日遊：ITX-청춘 與加平循環巴士怎麼搭、門票與江村鐵道自行車",
+      "path": "apps/api/app/guides/content/nami-island-petite-france-day-trip.json"
+    },
+    {
+      "slug": "nano-banana-image-editing",
+      "title": "Gemini 圖片生成與修圖：提示詞與參考圖",
+      "path": "apps/api/app/guides/content/nano-banana-image-editing.json"
+    },
+    {
+      "slug": "narita-haneda-to-tokyo",
+      "title": "成田・羽田機場到東京市區交通全攻略：Skyliner、N'EX、京急、利木津巴士怎麼選",
+      "path": "apps/api/app/guides/content/narita-haneda-to-tokyo.json"
+    },
+    {
+      "slug": "new-chitose-airport-to-sapporo",
+      "title": "新千歲機場到札幌交通攻略：JR 快速 Airport 與 u 指定席、機場巴士到札幌站前與薄野、計程車、雪天延誤與早班機怎麼抓",
+      "path": "apps/api/app/guides/content/new-chitose-airport-to-sapporo.json"
+    },
+    {
+      "slug": "nikko-day-trip-from-tokyo",
+      "title": "日光一日遊攻略：淺草搭東武特急、NIKKO PASS 怎麼選、東照宮到中禪寺湖華嚴瀑布的巴士走法",
+      "path": "apps/api/app/guides/content/nikko-day-trip-from-tokyo.json"
+    },
+    {
+      "slug": "notebooklm-for-study-notes",
+      "title": "NotebookLM 進階：測驗、語音與影片摘要",
+      "path": "apps/api/app/guides/content/notebooklm-for-study-notes.json"
+    },
+    {
+      "slug": "notebooklm-guide",
+      "title": "NotebookLM 入門：資料、筆記本與引用",
+      "path": "apps/api/app/guides/content/notebooklm-guide.json"
+    },
+    {
+      "slug": "notification-focus-boundaries",
+      "title": "通知一直打斷你？先分例外，再設定真正用得上的專注時段",
+      "path": "apps/api/app/guides/content/notification-focus-boundaries.json"
+    },
+    {
+      "slug": "okinawa-4-day-itinerary",
+      "title": "沖繩四天三夜行程攻略：第一天單軌逛那霸與首里城，之後自駕美國村、美麗海水族館、古宇利島到瀨長島",
+      "path": "apps/api/app/guides/content/okinawa-4-day-itinerary.json"
+    },
+    {
+      "slug": "okinawa-car-rental-guide",
+      "title": "沖繩租車攻略：台灣駕照日文譯本、保險、ETC、加油、還車，第一次自駕要知道的事",
+      "path": "apps/api/app/guides/content/okinawa-car-rental-guide.json"
+    },
+    {
+      "slug": "osaka-kyoto-nara-4-day-itinerary",
+      "title": "大阪、京都、奈良四天三夜行程範例：第一次去關西這樣排",
+      "path": "apps/api/app/guides/content/osaka-kyoto-nara-4-day-itinerary.json"
+    },
+    {
+      "slug": "osaka-kyoto-where-to-stay",
+      "title": "大阪、京都住哪一區：難波、梅田、天王寺、京都站、河原町、祇園比較",
+      "path": "apps/api/app/guides/content/osaka-kyoto-where-to-stay.json"
+    },
+    {
+      "slug": "otaru-day-trip-from-sapporo",
+      "title": "小樽一日遊攻略：札幌出發 JR 怎麼搭、三角市場到運河與堺町通的走法、天狗山夜景與余市威士忌",
+      "path": "apps/api/app/guides/content/otaru-day-trip-from-sapporo.json"
+    },
+    {
+      "slug": "phone-document-scanning-workflow",
+      "title": "手機掃描檔案怎麼更清楚：光線、裁切、頁序與送出前檢查",
+      "path": "apps/api/app/guides/content/phone-document-scanning-workflow.json"
+    },
+    {
+      "slug": "phone-photo-declutter-workflow",
+      "title": "手機照片整理順序：先保留，再刪重複，最後做真正會翻的相簿",
+      "path": "apps/api/app/guides/content/phone-photo-declutter-workflow.json"
+    },
+    {
+      "slug": "phuket-airport-transport-where-to-stay",
+      "title": "普吉機場到芭東、卡隆、卡塔與老城交通攻略：Smart Bus、機場巴士、Grab 與計程車比較，第一次去住哪一區",
+      "path": "apps/api/app/guides/content/phuket-airport-transport-where-to-stay.json"
+    },
+    {
+      "slug": "power-bank-flight-rules-2026",
+      "title": "2026 行動電源帶上飛機新規定：每人 2 個、機上禁止充電與使用，台灣、韓國、日本實施日與 100Wh、160Wh 怎麼算",
+      "path": "apps/api/app/guides/content/power-bank-flight-rules-2026.json"
+    },
+    {
+      "slug": "reading-notes-that-you-reuse",
+      "title": "讀完就忘怎麼整理筆記：用問題、自己的解釋與來源留下可用內容",
+      "path": "apps/api/app/guides/content/reading-notes-that-you-reuse.json"
+    },
+    {
+      "slug": "return-to-taiwan-customs-duty-free-guide",
+      "title": "出國回台灣行李規定：免稅額 3 萬 5 千元、酒 1.5 公升、菸 200 支，肉乾、水果、藥品、現金怎麼申報（2026 年版）",
+      "path": "apps/api/app/guides/content/return-to-taiwan-customs-duty-free-guide.json"
+    },
+    {
+      "slug": "sapporo-3-day-itinerary",
+      "title": "札幌三天兩夜行程範例：新千歲機場交通、小樽一日、冬天怎麼穿",
+      "path": "apps/api/app/guides/content/sapporo-3-day-itinerary.json"
+    },
+    {
+      "slug": "sapporo-snow-festival-2027",
+      "title": "2027 札幌雪祭情報：第 77 屆 2 月 4 日到 11 日，三會場時段與交通、住宿機票、同期冬季活動與旭山動物園",
+      "path": "apps/api/app/guides/content/sapporo-snow-festival-2027.json"
+    },
+    {
+      "slug": "seoul-4-day-itinerary",
+      "title": "首爾四天三夜行程範例：景福宮韓服免門票、北村時段限制、南怡島一日、弘大聖水漢江",
+      "path": "apps/api/app/guides/content/seoul-4-day-itinerary.json"
+    },
+    {
+      "slug": "seoul-palaces-hanbok-guide",
+      "title": "首爾五大宮與韓服攻略：門票休館日、中文免費導覽、穿韓服免票的官方標準、昌德宮後苑預約、北村紅區時段與一日步行路線",
+      "path": "apps/api/app/guides/content/seoul-palaces-hanbok-guide.json"
+    },
+    {
+      "slug": "seoul-subway-t-money-guide",
+      "title": "首爾地鐵與 T-money 完全攻略：怎麼買、怎麼儲值、Climate Card 值不值得",
+      "path": "apps/api/app/guides/content/seoul-subway-t-money-guide.json"
+    },
+    {
+      "slug": "seoul-where-to-stay",
+      "title": "首爾住哪一區：明洞、弘大、江南、東大門、鐘路比較，機場交通、深夜入住與行李配送",
+      "path": "apps/api/app/guides/content/seoul-where-to-stay.json"
+    },
+    {
+      "slug": "shared-household-calendar",
+      "title": "家庭共用行事曆怎麼用：讓誰出門、誰接手與時間異動都看得懂",
+      "path": "apps/api/app/guides/content/shared-household-calendar.json"
+    },
+    {
+      "slug": "singapore-4-day-itinerary",
+      "title": "新加坡四天三夜行程：濱海灣花園與擎天大樹燈光秀、牛車水與甘榜格南、熟食中心規矩、夜間野生動物園還是聖淘沙",
+      "path": "apps/api/app/guides/content/singapore-4-day-itinerary.json"
+    },
+    {
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "title": "樟宜機場到新加坡市區交通攻略：MRT 轉車、T1／T4 怎麼到捷運站、台灣卡刷卡搭車與遊客通划不划算",
+      "path": "apps/api/app/guides/content/singapore-changi-airport-mrt-simplygo-guide.json"
+    },
+    {
+      "slug": "singapore-entry-2026-sg-arrival-card",
+      "title": "2026 台灣旅客入境新加坡：SG Arrival Card 抵達前 3 天內免費填，香菸沒有免稅額、電子菸最高罰 10,000 新幣",
+      "path": "apps/api/app/guides/content/singapore-entry-2026-sg-arrival-card.json"
+    },
+    {
+      "slug": "singapore-gardens-indoor-outdoor",
+      "title": "新加坡濱海灣花園怎麼選：花穹、雲霧林與戶外花園的取捨",
+      "path": "apps/api/app/guides/content/singapore-gardens-indoor-outdoor.json"
+    },
+    {
+      "slug": "singapore-hawker-first-visit",
+      "title": "第一次逛新加坡熟食中心：找座位、點餐與收餐盤的實用順序",
+      "path": "apps/api/app/guides/content/singapore-hawker-first-visit.json"
+    },
+    {
+      "slug": "suwon-hwaseong-day-trip",
+      "title": "首爾出發水原華城一日遊：地鐵 1 號線與直行巴士怎麼去、華城行宮門票與穿韓服免費、城牆 5.7 公里怎麼走、華城御車與國弓射箭",
+      "path": "apps/api/app/guides/content/suwon-hwaseong-day-trip.json"
+    },
+    {
+      "slug": "taichung-sun-moon-lake-2-day",
+      "title": null,
+      "path": "apps/api/app/guides/content/taichung-sun-moon-lake-2-day.json"
+    },
+    {
+      "slug": "tainan-2-day-itinerary",
+      "title": null,
+      "path": "apps/api/app/guides/content/tainan-2-day-itinerary.json"
+    },
+    {
+      "slug": "taipei-4-day-itinerary",
+      "title": null,
+      "path": "apps/api/app/guides/content/taipei-4-day-itinerary.json"
+    },
+    {
+      "slug": "taipei-hot-springs-beitou-wulai",
+      "title": null,
+      "path": "apps/api/app/guides/content/taipei-hot-springs-beitou-wulai.json"
+    },
+    {
+      "slug": "taipei-metro-easycard-guide",
+      "title": null,
+      "path": "apps/api/app/guides/content/taipei-metro-easycard-guide.json"
+    },
+    {
+      "slug": "taipei-night-markets-guide",
+      "title": null,
+      "path": "apps/api/app/guides/content/taipei-night-markets-guide.json"
+    },
+    {
+      "slug": "taipei-viewpoints-101-elephant-mountain",
+      "title": null,
+      "path": "apps/api/app/guides/content/taipei-viewpoints-101-elephant-mountain.json"
+    },
+    {
+      "slug": "taipei-where-to-stay",
+      "title": null,
+      "path": "apps/api/app/guides/content/taipei-where-to-stay.json"
+    },
+    {
+      "slug": "taiwan-convenience-store-guide",
+      "title": null,
+      "path": "apps/api/app/guides/content/taiwan-convenience-store-guide.json"
+    },
+    {
+      "slug": "taiwan-entry-2026-arrival-card",
+      "title": null,
+      "path": "apps/api/app/guides/content/taiwan-entry-2026-arrival-card.json"
+    },
+    {
+      "slug": "taiwan-esim-sim-wifi",
+      "title": null,
+      "path": "apps/api/app/guides/content/taiwan-esim-sim-wifi.json"
+    },
+    {
+      "slug": "taiwan-etiquette-safety-tips",
+      "title": null,
+      "path": "apps/api/app/guides/content/taiwan-etiquette-safety-tips.json"
+    },
+    {
+      "slug": "taiwan-food-guide-must-eat",
+      "title": null,
+      "path": "apps/api/app/guides/content/taiwan-food-guide-must-eat.json"
+    },
+    {
+      "slug": "taiwan-hsr-tra-ticket-guide",
+      "title": null,
+      "path": "apps/api/app/guides/content/taiwan-hsr-tra-ticket-guide.json"
+    },
+    {
+      "slug": "taiwan-long-weekends-2027-flight-planning",
+      "title": "2027 台灣連假一覽與請假攻略：春節 2 月 4 日到 10 日放 7 天，9 個連假怎麼接成長假、哪幾天日本韓國也放假",
+      "path": "apps/api/app/guides/content/taiwan-long-weekends-2027-flight-planning.json"
+    },
+    {
+      "slug": "taiwan-payment-easycard-cash-cards",
+      "title": null,
+      "path": "apps/api/app/guides/content/taiwan-payment-easycard-cash-cards.json"
+    },
+    {
+      "slug": "taiwan-tax-refund-shopping-2026",
+      "title": null,
+      "path": "apps/api/app/guides/content/taiwan-tax-refund-shopping-2026.json"
+    },
+    {
+      "slug": "taiwan-winter-events-2026-2027",
+      "title": null,
+      "path": "apps/api/app/guides/content/taiwan-winter-events-2026-2027.json"
+    },
+    {
+      "slug": "takayama-shirakawago-day-trip",
+      "title": "名古屋出發高山＋白川鄉攻略：JR 特急ひだ 或高速巴士、濃飛巴士全班預約、一日二選一還是兩天一夜、2027 年點燈規則",
+      "path": "apps/api/app/guides/content/takayama-shirakawago-day-trip.json"
+    },
+    {
+      "slug": "taoyuan-airport-departure-guide",
+      "title": "桃園機場出國流程攻略：機捷 A1／A3 預辦登機、報到託運、液體與行動電源安檢、自動通關 e-Gate 註冊，幾點出門怎麼倒推（2026 年版）",
+      "path": "apps/api/app/guides/content/taoyuan-airport-departure-guide.json"
+    },
+    {
+      "slug": "taoyuan-airport-to-taipei",
+      "title": null,
+      "path": "apps/api/app/guides/content/taoyuan-airport-to-taipei.json"
+    },
+    {
+      "slug": "thailand-entry-2026-tdac",
+      "title": "2026 台灣旅客入境泰國：9 月 15 日起免簽改 30 天、TDAC 數位入境卡抵達前 3 天內填、海關與電子菸規定",
+      "path": "apps/api/app/guides/content/thailand-entry-2026-tdac.json"
+    },
+    {
+      "slug": "thailand-esim-sim-wifi",
+      "title": "泰國上網怎麼選：機場 AIS、True 旅客 SIM、eSIM、台灣電信漫遊與 WiFi 分享器，2026 年這樣挑",
+      "path": "apps/api/app/guides/content/thailand-esim-sim-wifi.json"
+    },
+    {
+      "slug": "tokyo-5-day-itinerary",
+      "title": "東京五天四夜行程範例：第一次去的人這樣排最順",
+      "path": "apps/api/app/guides/content/tokyo-5-day-itinerary.json"
+    },
+    {
+      "slug": "tokyo-disney-guide",
+      "title": "東京迪士尼樂園、海洋攻略：票價、夢幻泉鄉 Fantasy Springs、尊享卡 DPA 與預約等候卡怎麼用，第一次去選哪個園",
+      "path": "apps/api/app/guides/content/tokyo-disney-guide.json"
+    },
+    {
+      "slug": "tokyo-rainy-day-museum-plan",
+      "title": "東京雨天博物館怎麼排：上野或六本木選一區，常設與特展分開看",
+      "path": "apps/api/app/guides/content/tokyo-rainy-day-museum-plan.json"
+    },
+    {
+      "slug": "tokyo-transit-passes",
+      "title": "東京交通票券怎麼選：Suica／Welcome Suica、Tokyo Subway Ticket、JR Pass 值不值得",
+      "path": "apps/api/app/guides/content/tokyo-transit-passes.json"
+    },
+    {
+      "slug": "tokyo-where-to-stay",
+      "title": "東京住哪一區：新宿、上野、東京車站、澀谷、淺草、池袋、銀座七區比較，機場交通、宿泊稅、行李寄送一次看",
+      "path": "apps/api/app/guides/content/tokyo-where-to-stay.json"
+    },
+    {
+      "slug": "usj-guide",
+      "title": "日本環球影城攻略：票種、快速通關、超級任天堂世界入場、一天怎麼玩",
+      "path": "apps/api/app/guides/content/usj-guide.json"
+    },
+    {
+      "slug": "veo-video-generation-guide",
+      "title": "Veo 與 Google Flow：影片、分鏡與匯出",
+      "path": "apps/api/app/guides/content/veo-video-generation-guide.json"
+    },
+    {
+      "slug": "vietnam-entry-2026-evisa",
+      "title": "2026 年台灣人入境越南：e-visa 官網單次 25 美元、多次 50 美元，富國島免簽限制、入境前 PAI 申報與海關現金、電子菸規定",
+      "path": "apps/api/app/guides/content/vietnam-entry-2026-evisa.json"
+    },
+    {
+      "slug": "vietnam-money-sim-grab-guide",
+      "title": "越南上網、換錢、叫車攻略：三大電信 SIM 與 eSIM、美金去哪換越南盾、沒有授權的金店與路邊換錢會被罰、Grab／Xanh SM／Be 怎麼叫（2026 年版）",
+      "path": "apps/api/app/guides/content/vietnam-money-sim-grab-guide.json"
+    },
+    {
+      "slug": "weekly-review-reset-routine",
+      "title": "每週回顧怎麼開始：整理承諾、刪減待辦，為下週留出空間",
+      "path": "apps/api/app/guides/content/weekly-review-reset-routine.json"
+    },
+    {
+      "slug": "what-is-a-large-language-model",
+      "title": "大型語言模型（Large Language Model）是什麼",
+      "path": "apps/api/app/guides/content/what-is-a-large-language-model.json"
+    },
+    {
+      "slug": "yokohama-day-trip-from-tokyo",
+      "title": "東京出發橫濱一日遊攻略：東急東橫線還是 JR、みなとみらい線一日券要不要買、港未來・紅磚倉庫・杯麵博物館到中華街怎麼排",
+      "path": "apps/api/app/guides/content/yokohama-day-trip-from-tokyo.json"
+    },
+    {
+      "slug": "yufuin-beppu-2-day-from-fukuoka",
+      "title": "福岡出發湯布院、別府兩天一夜攻略：由布院之森搶票、ゆふいん号巴士、亀の井巴士轉別府、地獄めぐり與竹瓦砂湯怎麼排",
+      "path": "apps/api/app/guides/content/yufuin-beppu-2-day-from-fukuoka.json"
+    }
+  ],
+  "semantic_review": "與新增主分支文章依主題、讀者問題、操作目的重查。四組同需求改為既有涵蓋；其餘仍以選題表指定的操作任務區分。",
+  "superseded": [
+    {
+      "slug": "small-language-models",
+      "replacement_slug": "ai-term-small-language-model",
+      "reason": "同為小型語言模型的適用工作、限制與是否採用的入門判斷。",
+      "archive": "docs/content-research/two-site-life/superseded/small-language-models",
+      "source_keys": [
+        "F60725"
+      ]
+    },
+    {
+      "slug": "rag-retrieval-explained",
+      "replacement_slug": "ai-term-retrieval-augmented-generation",
+      "reason": "同為 RAG 檢索、引用與資料更新限制的入門解說。",
+      "archive": "docs/content-research/two-site-life/superseded/rag-retrieval-explained",
+      "source_keys": [
+        "F52954"
+      ]
+    },
+    {
+      "slug": "generative-ai-basics",
+      "replacement_slug": "ai-term-generative-ai",
+      "reason": "同為生成式 AI 的生成方式、用途與輸出查核入門。",
+      "archive": "docs/content-research/two-site-life/superseded/generative-ai-basics",
+      "source_keys": [
+        "F50163"
+      ]
+    },
+    {
+      "slug": "claude-code-plugin-management",
+      "replacement_slug": "claude-code-plugins-guide",
+      "reason": "同為 Claude Code 外掛的來源、安裝、更新與移除操作。",
+      "archive": "docs/content-research/two-site-life/superseded/claude-code-plugin-management",
+      "source_keys": [
+        "F57096"
+      ]
+    }
+  ],
+  "related_link_redirects": [
+    {
+      "slug": "claude-cowork-evaluation",
+      "from": "https://mokaair.com/zh-TW/life/generative-ai-basics",
+      "to": "https://mokaair.com/zh-TW/life/ai-term-generative-ai"
+    }
+  ],
+  "evidence_note": "原始批次 SHA 保留不改寫；pr-evidence.json 保存可逆的 LF 正規化、封存路徑與單一站內連結替換。"
+}

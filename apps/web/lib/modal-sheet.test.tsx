@@ -1,7 +1,8 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { Profiler, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { describe, expect, it, vi } from "vitest";
 import { modalFocusTargets, registerModalLayer, useModalSheet } from "./modal-sheet";
+import { commitBeforePassiveEffects } from "./testing/commit-before-passive-effects";
 
 /**
  * Measured on the live site before this hook existed: the filter panel on /hotspots reported
@@ -63,47 +64,24 @@ function LateSheet({ onClose }: { onClose: () => void }) {
   );
 }
 
+/** A sheet a request opens: it appears when the request resolves, outside any event. */
+function OpenedByRequest({ request }: { request: Promise<void> }) {
+  const [open, setOpen] = useState(false);
+  useEffect(() => { void request.then(() => setOpen(true)); }, [request]);
+  const ref = useModalSheet<HTMLDivElement>(open, () => setOpen(false));
+  return open ? <div ref={ref} role="dialog" aria-modal="true" aria-label="Choose a trip"><button type="button" aria-label="Close">×</button></div> : null;
+}
+
+/** A sheet that refuses to close while it saves, and saving ends when the request resolves. */
+function SavingSheet({ request }: { request: Promise<void> }) {
+  const [open, setOpen] = useState(true);
+  const [saving, setSaving] = useState(true);
+  useEffect(() => { void request.then(() => setSaving(false)); }, [request]);
+  const ref = useModalSheet<HTMLDivElement>(open, () => { if (!saving) setOpen(false); });
+  return open ? <div ref={ref} role="dialog" aria-modal="true" aria-label="Saving"><button type="button" disabled={saving}>Save</button></div> : null;
+}
+
 describe("useModalSheet", () => {
-  function ControlledSheet({ open, onClose }: { open: boolean; onClose: () => void }) {
-    const ref = useModalSheet<HTMLElement>(open, onClose);
-    return open ? <section ref={ref} role="dialog" aria-label="Commit sheet"><button>Close</button></section> : null;
-  }
-
-  it("guards Escape and locks scrolling when an opened or reopened sheet commits", () => {
-    const close = vi.fn();
-    const locks: boolean[] = [];
-    const tree = (open: boolean) => <Profiler id="sheet-early-escape" onRender={() => {
-      const sheet = document.querySelector('[role="dialog"]');
-      if (!sheet) return;
-      locks.push(document.body.style.overflow === "hidden");
-      sheet.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true, cancelable: true }));
-    }}><ControlledSheet open={open} onClose={close} /></Profiler>;
-    const view = render(tree(true));
-    expect(close).toHaveBeenCalledOnce();
-    expect(locks).toEqual([true]);
-    view.rerender(tree(false));
-    expect(document.body.style.overflow).toBe("");
-    close.mockClear();
-    locks.length = 0;
-    view.rerender(tree(true));
-    expect(close).toHaveBeenCalledOnce();
-    expect(locks).toEqual([true]);
-  });
-
-  it("uses the current close callback before passive effects run", () => {
-    const previous = vi.fn();
-    const current = vi.fn();
-    let deliverEscape = false;
-    const tree = (onClose: () => void) => <Profiler id="sheet-current-close" onRender={() => {
-      if (deliverEscape) document.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true, cancelable: true }));
-    }}><ControlledSheet open onClose={onClose} /></Profiler>;
-    const view = render(tree(previous));
-    deliverEscape = true;
-    view.rerender(tree(current));
-    expect(previous).not.toHaveBeenCalled();
-    expect(current).toHaveBeenCalledOnce();
-  });
-
   it("includes the closed disclosure summary but excludes its hidden source link and hidden ancestors", () => {
     const { container } = render(<div><button>Close</button><details><summary>Sources</summary><a href="https://example.com">Hidden source</a></details><div hidden><button>Hidden ancestor</button></div><div style={{ display: "none" }}><button>Hidden style</button></div></div>);
     expect(modalFocusTargets(container).map((element) => element.textContent)).toEqual(["Close", "Sources"]);
@@ -215,5 +193,27 @@ describe("useModalSheet", () => {
     expect(document.body.style.overflow).toBe("hidden");
     fireEvent.keyDown(document, { key: "Escape" });
     expect(onClose).toHaveBeenCalledTimes(1);
+  });
+
+  // A request that opens a sheet, or ends the work a sheet was waiting on, commits before its
+  // passive effects run. travel-card-actions went red in a loaded full run on the first case:
+  // the sheet was on screen and its Escape listener was not attached yet.
+  it("answers Escape as soon as a resolved request has drawn it", async () => {
+    let respond!: () => void;
+    const request = new Promise<void>((resolve) => { respond = resolve; });
+    render(<OpenedByRequest request={request} />);
+    await commitBeforePassiveEffects(respond, () => screen.queryByRole("dialog") !== null);
+    fireEvent.keyDown(document, { key: "Escape" });
+    expect(screen.queryByRole("dialog")).toBeNull();
+  });
+
+  it("closes by the guard it shows once a resolved request has lifted it", async () => {
+    let respond!: () => void;
+    const request = new Promise<void>((resolve) => { respond = resolve; });
+    render(<SavingSheet request={request} />);
+    const save = screen.getByRole("button", { name: "Save" }) as HTMLButtonElement;
+    await commitBeforePassiveEffects(respond, () => !save.disabled);
+    fireEvent.keyDown(document, { key: "Escape" });
+    expect(screen.queryByRole("dialog")).toBeNull();
   });
 });

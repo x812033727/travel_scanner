@@ -1,0 +1,48 @@
+{
+  "checked_at": "2026-09-14T14:15:40.078727+00:00",
+  "cli_version": "2.1.233",
+  "environment": "Windows ARM64 interactive terminal; experimental Teams flag set only on this process",
+  "teams": {
+    "passed": true,
+    "scope": "Two named in-process teammates, independent reads, task assignment, mailbox replies and a follow-up in the same teammate; not the full UI feature integration exercise",
+    "names": [
+      "count-reviewer",
+      "ids-reviewer"
+    ],
+    "models_observed": [
+      "claude-haiku-4-5-20251001",
+      "claude-opus-5"
+    ],
+    "child_read_counts": {
+      "agent-acount-reviewer-e58bba17af2db73e": 1,
+      "agent-aids-reviewer-03c7518f942c7286": 1
+    },
+    "mailbox_reply_count": 6,
+    "followup": [
+      "Acknowledged — MOKAAIR-FOLLOWUP-89 matches my finding: 3 total tasks, 1 completed. No further action taken."
+    ],
+    "seconds_to_first_combined_result": 42.63,
+    "verifier_corrections": [
+      "Lead model called these ordinary subagents because they do not survive exit. That classification conflicts with the current official Teams documentation: named Agent calls in an interactive flagged session create in-process teammates. Actual mailbox routing and reuse were observed.",
+      "Lead redundantly completed tasks already completed by teammates and received Task not found; retained in trace."
+    ]
+  },
+  "schedule": {
+    "passed": true,
+    "scope": "Session CronCreate/CronList with a real one-shot trigger reading local synthetic data; not cloud/desktop scheduling, sleep recovery or the lesson job runner",
+    "created": {
+      "cron": "6 22 14 9 *",
+      "recurring": false,
+      "prompt": "Read C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-teams-live-d7295d31\\synthetic.json and reply with MOKAAIR-CRON-93: report the total number of tasks and the number of completed tasks."
+    },
+    "final_reply": "**MOKAAIR-CRON-93:**\n- **Total tasks:** 3\n- **Completed tasks:** 1",
+    "final_list": "No scheduled jobs."
+  },
+  "session_stopped": true,
+  "exit_code": 0,
+  "trace": "interactive-products-events.json",
+  "official_sources": [
+    "https://code.claude.com/docs/en/agent-teams",
+    "https://code.claude.com/docs/en/scheduled-tasks"
+  ]
+}

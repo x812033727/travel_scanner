@@ -114,7 +114,11 @@ function OpenPlannerOverlay({
   const onCloseRef = useRef(onClose);
   const [expanded, setExpanded] = useState(defaultExpanded);
   const mounted = useSyncExternalStore(subscribeToClient, () => true, () => false);
-  // The visible controls and their close guard must belong to the same commit.
+  // Layout effects here and for the layer below, so both land in the commit that draws the
+  // sheet. A commit caused by a resolved promise runs its passive effects a scheduler task
+  // later, and a click or key in that gap met a sheet that was on screen but not yet a layer
+  // (Close did nothing), or one still holding the previous render's guard (the buttons said
+  // "busy" while Close closed it anyway).
   useLayoutEffect(() => { onCloseRef.current = onClose; }, [onClose]);
   const closeOverlay = useCallback(() => {
     if (panelRef.current && isTopModalLayer(panelRef.current)) onCloseRef.current();
@@ -147,8 +151,6 @@ function OpenPlannerOverlay({
     if (!mounted || !panel || !container) return;
     const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     const layer = { container, panel };
-    // Register before paint so the first click/Escape cannot arrive at an
-    // unregistered panel. Async openings need not flush passive effects first.
     // Own the shared overflow lock before taking the planner's fixed-position snapshot.
     // Native/custom children may unmount after this parent during a route change.
     const unregister = registerModalLayer(panel);

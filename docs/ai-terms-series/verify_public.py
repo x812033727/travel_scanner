@@ -6,6 +6,8 @@ from html.parser import HTMLParser
 import json
 from pathlib import Path
 import sys
+import threading
+import time
 import urllib.error
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -18,9 +20,16 @@ from app.guides.service import document_hash
 
 BASE = "https://mokaair.com"
 manifest = json.loads((HERE / "release-manifest.json").read_text(encoding="utf-8"))
+_read_lock = threading.Lock()
+_next_read = 0.0
 
 
 def get(path):
+    global _next_read
+    # Keep the shared four-worker reader below the public page request budget.
+    with _read_lock:
+        time.sleep(max(0.0, _next_read - time.monotonic()))
+        _next_read = time.monotonic() + 0.26
     request = urllib.request.Request(BASE + path, headers={
         "User-Agent": "Mozilla/5.0 (compatible; MokaairPublicationCheck/1.0)",
         "Cache-Control": "no-cache",

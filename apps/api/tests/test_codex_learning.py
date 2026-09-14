@@ -209,10 +209,12 @@ def document(block):
     return GuideDocument.model_validate({"title": "Test", "description": "Test", "blocks": [block]})
 
 
-def test_code_preserves_markup_whitespace_and_line_endings():
+def test_code_preserves_markup_and_whitespace_with_canonical_line_endings():
     code = "<script>alert(1)</script>\r\n\tvalue = 1\n"
     parsed = document({"type": "code", "language": "html", "label": "HTML", "code": code})
-    assert parsed.blocks[0].code == code
+    # The shared article API canonicalizes line endings; markup, indentation and
+    # the trailing newline must otherwise survive unchanged for copy/paste.
+    assert parsed.blocks[0].code == "<script>alert(1)</script>\n\tvalue = 1\n"
 
 
 @pytest.mark.parametrize(

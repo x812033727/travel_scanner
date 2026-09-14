@@ -1,0 +1,64 @@
+
+> test:tools
+> node --test tools/*.test.mjs
+
+✔ normalizes local and hosted API roots safely (1.2449ms)
+✔ parses a bounded airline query for the Chrome bridge (1.3864ms)
+✔ rejects arbitrary airline codes and unsafe remote HTTP APIs (0.3474ms)
+✔ the tutorial catalogue keeps stable slugs, complete ordering and resolvable paths (2.2794ms)
+✔ all 97 native packs exist with source dates, code labels and valid references (22.796ms)
+✔ downloadable starter has the documented test outcome (292.7348ms)
+✔ downloadable complete has the documented test outcome (274.7632ms)
+✔ downloadable bug-toggle has the documented test outcome (287.7884ms)
+✔ published JSON examples parse and JavaScript examples pass native syntax checking (2198.2224ms)
+✔ article filter and refactoring examples pass their own tests against the downloadable starter (349.7703ms)
+✔ actual authored Hook scripts handle success, malformed input, syntax errors and repeated Stop events (837.2252ms)
+✔ advanced TDD lesson reproduces the bug and the identical authored assertions pass on the reference (660.165ms)
+✔ all advanced archives contain the authored lesson and installed reference materials (4236.9192ms)
+✔ tutorial CI workflow parses and isolates secrets from pull request inputs (9.1078ms)
+✔ repository Claude validation is opt-in, pinned to the dispatched commit, and read-only (1.2118ms)
+✔ catalogue is one ordered, acyclic, complete series (2.4009ms)
+✔ all reviewed pages, assets and cross-links exist in the repository (304.4331ms)
+✔ invalid destinations and prerequisite cycles fail (0.8226ms)
+✔ body length counts rich prose but excludes code and labels (0.1222ms)
+✔ dry-run and publication stay in the supplied whitelist (0.4214ms)
+✔ hub is imported only after all children are verified twice (1.2016ms)
+✔ partial import failure stops before the next child or hub (0.5506ms)
+✔ failed public verification stops publication (0.8817ms)
+✔ dry-run partial failure prevents every write (0.2134ms)
+✔ finds nothing in a file with unique keys (1.8602ms)
+✔ finds the duplicate that shipped in trips.json (0.1659ms)
+✔ reports a key repeated more than twice once per extra occurrence (0.0756ms)
+✔ does not confuse a value that looks like a key (0.1576ms)
+✔ does not confuse an escaped quote inside a value (0.0875ms)
+✔ scopes keys to their own object (0.0659ms)
+✔ finds a duplicate inside an object nested in an array (0.1646ms)
+✔ attributes a nested object to its own key, not to the previous scalar (0.0745ms)
+✔ handles a key whose text needs unescaping (0.1203ms)
+✔ reads and rewrites a task file without changing it (2.3615ms)
+✔ rejects front matter a later reader could not trust (0.448ms)
+✔ builds short ids and refuses titles with nothing to slug (13.5074ms)
+✔ two tasks filed the same day never collide on an id (23.4947ms)
+✔ hands out work that does not touch files another agent is changing (44.6626ms)
+✔ a claim nobody comes back to is reclaimable after a day (43.4855ms)
+✔ a task waits for the tasks it depends on (41.6762ms)
+✔ finishing a task archives it and keeps the board honest (26.6998ms)
+✔ a committed board that no longer matches the task files fails the check (16.5975ms)
+✔ a stale board that is not committed is not the check's business (3.2124ms)
+✔ check names every way a task file can be wrong (0.4051ms)
+✔ check refuses two files claiming the same id and a dependency cycle (0.1205ms)
+✔ the board is a pure function of the task files (5.0107ms)
+✔ a pipe in a title cannot break the board table (12.1707ms)
+✔ release puts a task back and status moves it without losing the owner (20.8447ms)
+✔ an empty backlog says so instead of blaming another agent (14.7231ms)
+✔ every action is pinned to a full commit SHA (59.0049ms)
+✔ each pin records which version it is, so a reader is not left with a bare SHA (2.219ms)
+✔ the same action is the same SHA everywhere (1.1796ms)
+ℹ tests 52
+ℹ suites 0
+ℹ pass 52
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9380.048

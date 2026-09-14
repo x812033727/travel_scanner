@@ -1,0 +1,366 @@
+{
+  "slug": "ai-coding-prompt-patterns",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "給程式代理的提示模式：先規劃、再實作、最後驗證",
+      "description": "和程式代理合作，關鍵不是把需求丟出去，而是把一次任務拆成規劃、實作、驗證三段。這篇依 Anthropic、OpenAI 與 Google 三家官方文件，說明一則好提示詞的四個要素（目標、背景、限制、完成條件）、規劃階段的 Plan Mode 與 /plan、實作階段怎麼限制範圍並要它自己跑測試、驗證階段怎麼看 diff 與逐條核對，附五則可直接複製的範本、常見失敗的追問方式與一張三段式流程圖。",
+      "hero": {
+        "src": "/guides/ai-coding-prompt-patterns/hero.jpg",
+        "alt": "插圖：一條路徑分成三個方塊，最後一個方塊有回圈箭頭繞回前面兩個方塊",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "和程式代理（Agent）合作最常見的失敗，不是模型不夠聰明，而是把一整包需求丟出去就直接看結果。比較穩的做法是把一次任務切成三段：先規劃，讓它讀專案、提計畫、由你確認；再實作，小步進行、限制範圍、要它自己跑測試；最後驗證，看 diff、看測試輸出、逐條對驗收條件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這三段不是個人心得，而是 Anthropic、OpenAI 與 Google 三家官方文件都寫進去的做法，也都做成了介面上的功能。這篇給你五則可以直接複製的提示詞範本，說明每一段為什麼有效，並整理常見的失敗與追問方式。功能名稱與規則以三家官網當天的文件為準。"
+        },
+        {
+          "type": "heading",
+          "text": "一則好的任務提示：目標、背景、限制、完成條件",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 的 Codex 最佳實務把一則夠強的任務提示拆成四個要素，也就是四個你不寫、代理就得自己猜的欄位："
+        },
+        {
+          "type": "list",
+          "items": [
+            "目標（Goal）：你想改什麼或做出什麼。",
+            "背景（Context）：哪些檔案、資料夾、文件、範例或錯誤訊息跟這次任務有關。",
+            "限制（Constraints）：要遵守哪些標準、架構、安全需求或既有慣例。",
+            "完成條件（Done when）：任務結束前有哪些事必須成立，例如測試通過、行為改變、某個問題不再重現。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 的 Claude Code 最佳實務用另一種方式講同一件事：一整排「改寫前／改寫後」的對照。「幫 foo.py 加測試」要寫成「幫 foo.py 寫一個測試，涵蓋使用者已登出的邊界情況，不要用 mock」；「修一下登入的問題」要寫成「使用者回報閒置逾時後登入失敗，去看 src/auth/ 的驗證流程，特別是權杖更新那一段，先寫一個會失敗的測試重現問題，再修」。結論是：指令愈精確，你要花在修正上的力氣愈少。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "任務提示範本：四個要素一次寫齊",
+          "code": "目標：在結帳頁加上「輸入折扣碼」的欄位，送出後顯示折抵後金額。\n背景：前端在 src/checkout/、折扣規則在 src/pricing/discount.ts，\n      表單元件請照 src/checkout/AddressForm.tsx 既有的寫法。\n限制：不要新增第三方套件；沿用現有的錯誤訊息元件；不要改動 API 介面。\n完成條件：\n  1. 輸入有效折扣碼會顯示折抵後金額。\n  2. 輸入無效折扣碼會顯示既有樣式的錯誤訊息。\n  3. npm test 全部通過，npm run lint 沒有新的警告。"
+        },
+        {
+          "type": "link",
+          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+        },
+        {
+          "type": "link",
+          "text": "Claude Code｜如何把需求交代清楚",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-task-prompts"
+        },
+        {
+          "type": "heading",
+          "text": "第一段：先規劃，讓它讀懂專案再提計畫",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "規劃的目的只有一個：把「解錯問題」擋在動手之前。Anthropic 的建議是把研究、規劃與實作分開，整條流程分成探索、規劃、實作、提交四個階段；先讓代理讀檔案、回答你的問題，再讓它寫計畫。"
+        },
+        {
+          "type": "paragraph",
+          "text": "三家都把這件事做成了固定模式，名稱不同，效果一樣："
+        },
+        {
+          "type": "list",
+          "items": [
+            "Claude Code 的 Plan Mode：按 Shift+Tab 直到狀態列顯示 plan mode on，或在單一則提示詞前加上 /plan，也可以用 claude --permission-mode plan 啟動。它會讀檔、執行探索用的指令、寫出計畫，但不改你的原始碼；計畫寫好會問你怎麼走，選項是核准後開始改、核准但每次編輯仍要你同意、或留在規劃模式繼續改。按 Ctrl+G 可以把計畫丟進文字編輯器直接修。",
+            "Codex 的 /plan：輸入 /plan 就切進 plan mode，後面可以直接接一句話當成第一個規劃請求。官方最佳實務把「難的任務先規劃」寫成三種做法：用 Plan mode、請 Codex 反過來訪談你、或用 PLANS.md 範本處理跑比較久的工作。",
+            "Gemini CLI 的 Plan Mode：按 Shift+Tab 在 Default、Auto-Edit、Plan 之間循環，或用 gemini --approval-mode=plan 啟動，也可以輸入 /plan 加上目標。它是唯讀模式，寫檔只允許把計畫寫成 Markdown 放進指定的計畫資料夾。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "規劃要有用，前提是它真的讀過你的專案：這次相關的檔案，以及專案的長期規則。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Claude Code：用 @ 指向檔案，它會先讀再回答；長期規則寫進 CLAUDE.md，每次對話開頭都會讀，放在專案根目錄或 .claude/ 底下都可以。",
+            "Codex：用 /mention 把檔案附進對話；長期規則寫進 AGENTS.md，官方文件形容它是「給代理的開放格式 README」，會自動載入上下文。",
+            "Gemini CLI：用 @ 加路徑把檔案或整個資料夾帶進提示詞；長期規則寫進 GEMINI.md，這是預設的上下文檔名，CLI 會把找到的多個檔案串起來、每次送提示詞時一起帶上，用 /memory show 看目前載入了什麼。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "規劃階段：先讀再提計畫，不要動手",
+          "code": "先不要改任何檔案。\n讀 @src/checkout/ 和 @src/pricing/discount.ts，先回答我兩個問題：\n  折扣碼現在在哪裡驗證？結帳金額是在前端算還是後端算？\n然後提一份實作計畫：要改哪些檔案、每個檔案改什麼、測試怎麼加、\n以及有哪些你不確定的地方。\n計畫我確認之後你再動手。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不是每件事都要規劃。Anthropic 特別提醒規劃有成本：改錯字、加一行紀錄、改個變數名稱這種小事直接叫它做就好，你能用一句話描述這個 diff 就跳過規劃。划算的時機是你不確定做法、改動橫跨多個檔案、或你不熟這段程式。"
+        },
+        {
+          "type": "link",
+          "text": "Claude Code｜Plan Mode 與權限模式",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-permissions-plan-mode"
+        },
+        {
+          "type": "link",
+          "text": "Claude Code｜CLAUDE.md 完整教學",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-claude-md-guide"
+        },
+        {
+          "type": "link",
+          "text": "CLI 寫程式：理解、規劃、修改與測試",
+          "url": "https://mokaair.com/zh-TW/life/gemini-cli-coding-workflow"
+        },
+        {
+          "type": "heading",
+          "text": "第二段：再實作，小步、限制範圍、要它自己跑測試",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "計畫確認之後才進實作，這一段最重要的兩個字是「範圍」。一次只交代計畫裡的一個步驟，明講可以動哪些檔案、哪些不准動，做完先停下來讓你看。小步的好處不只是 diff 好讀，而是每一步都能單獨回退，出錯時不必整包重來。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一件一定要寫進提示詞的事，是「做完自己跑測試」。Anthropic 把它當成核心主張：代理會在「看起來做完」的時候停下來，沒有一個它自己跑得動的檢查，「看起來做完」就是它唯一的訊號，你就變成那個驗證迴圈。給它一個會回傳通過或失敗的東西，測試套件、建置的結束碼、程式碼檢查工具，迴圈就會自己收斂：它做、它跑、它讀結果、它改到過為止。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "實作階段：一次一步，做完自己跑測試",
+          "code": "照計畫做第一步：只改 src/pricing/discount.ts，加上折扣碼的驗證函式。\n不要動 src/checkout/ 底下的檔案，也不要改 API 介面。\n寫完之後跑 npm test -- discount，把你實際下的指令和完整輸出貼給我。\n測試沒過就自己修到過，不要把失敗的測試跳過或把斷言改寬。\n這一步做完先停下來，我看過再進下一步。"
+        },
+        {
+          "type": "paragraph",
+          "text": "還有一件常被忽略的事：一個對話只做一件事。OpenAI 的常見錯誤清單就有「整個專案共用同一個對話」，建議每個完整的成果各開一個對話。Anthropic 說的是同一件事的另一面：不相關的任務之間用 /clear 清掉上下文，因為上下文視窗塞滿無關內容之後，代理的表現會下降。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 寫程式前該懂的 Git：分支、提交與還原",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-git-basics"
+        },
+        {
+          "type": "link",
+          "text": "上下文工程（Context Engineering）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-context-engineering"
+        },
+        {
+          "type": "heading",
+          "text": "第三段：最後驗證，看 diff、跑測試、逐條對驗收條件",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "驗證不是再問一次「這樣對嗎」。Anthropic 的建議寫得很白：要它拿出證據，而不是宣稱成功，包括測試的實際輸出、它跑了哪一行指令與回傳了什麼。理由很現實：讀證據比你自己重跑一次快，你沒在旁邊盯著的那幾輪也適用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 的最佳實務把驗證列成一張可以照抄的清單，你可以直接貼進提示詞裡："
+        },
+        {
+          "type": "list",
+          "items": [
+            "為這次改動寫或更新測試。",
+            "跑對的測試套件。",
+            "檢查程式碼檢查工具、格式與型別。",
+            "確認最後的行為符合當初的需求。",
+            "審視 diff，找出錯誤、退步與危險的寫法。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "兩邊都有現成的審查入口。Claude Code 內建 /code-review，會在全新的子代理上下文裡審目前的 diff 再回報；Codex 輸入 /review 會開一個專門的審查者，讓你選擇比對基準分支或審未提交的改動，回報排好優先序的發現，而且不會動你的工作目錄。用新的上下文審查的好處是：審的那一方沒看過寫的那一方的推理過程，比較不會替自己剛寫的程式辯護。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "驗證階段：逐條對驗收條件，要它貼出實際輸出",
+          "code": "把你這次的改動完整列出來，一個檔案一段，說明你改了什麼、為什麼。\n然後逐條對我一開始寫的完成條件，每一條回答：做到了／沒做到／不確定。\n做到的附上證據（測試名稱與實際輸出），沒做到的說明卡在哪裡。\n最後回答兩個問題：有沒有改到我沒要求的檔案？\n有沒有為了讓測試通過而放寬條件或跳過測試？"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-coding-prompt-patterns/diagram-1.svg",
+          "alt": "三段式流程圖：規劃、實作、驗證各一個方塊，驗證方塊有兩條回圈箭頭分別指回實作與規劃",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左至右看三段：每一段列出你要給的東西與你要檢查的東西；驗證沒過時，依照失敗的性質沿回圈箭頭退回實作或規劃。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "AI 寫的程式能信嗎：審查、測試與安全檢查清單",
+          "url": "https://mokaair.com/zh-TW/life/ai-code-review-safety"
+        },
+        {
+          "type": "heading",
+          "text": "失敗時怎麼追問",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "代理做錯的時候，最沒效率的回應是「還是不對，再試一次」。它看不到你的螢幕，你要把它看不到的東西補給它。最直接的做法是把錯誤訊息原封不動貼上去，並要求它處理根因。Anthropic 的對照表示範了這個改寫：「建置壞了」要寫成「建置失敗，錯誤訊息是：（貼上錯誤）。修好它並確認建置成功。處理根本原因，不要把錯誤壓掉」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另外兩種追問在方向不明時特別有用。一種是「先解釋再改」：要它先說問題在哪、為什麼，你確認過再讓它動手，要退掉的就只是一個判斷，不是一整包 diff。另一種是「列出假設」：要它把這次改動預設成立、但你沒明講的前提列出來，通常一列就會冒出兩三個它猜錯的地方。官方文件裡最接近的做法是請代理反過來訪談你：Codex 把「請 Codex 訪談你」列為規劃的做法之一，Claude Code 則建議較大的功能先讓它用提問工具問完，把結論寫成規格檔，再開新對話照著實作。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "追問範本：貼錯誤、先解釋、列假設",
+          "code": "（一）貼錯誤\nnpm test 跑出這個錯誤：\n（原封不動貼上完整錯誤訊息與堆疊）\n先找出根本原因再修，不要用例外處理或跳過測試把它蓋掉。\n修完把重跑的完整輸出貼給我。\n\n（二）先解釋再改\n先不要改程式。用三句話說明：問題出在哪個檔案的哪一段、為什麼會這樣、\n你打算怎麼修。我回覆「可以」之後你再動手。\n\n（三）列出假設\n動手前，列出你為了完成這個需求而假設成立、但我沒有明講的前提，\n每一條後面標上你有多確定。我逐條回覆之後你再開始。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一個問題在同一個對話裡修正超過兩次，Anthropic 的建議是停下來：上下文裡已經堆滿失敗的做法，清掉上下文、把這幾輪學到的東西寫成一則更具體的提示詞重開，通常比繼續修快。"
+        },
+        {
+          "type": "heading",
+          "text": "不要做的事",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "最後是幾個會直接拉低成功率的做法，前四項出自 OpenAI 的常見錯誤清單："
+        },
+        {
+          "type": "list",
+          "items": [
+            "把長期規則塞進每次的提示詞裡，而不是寫進 AGENTS.md、CLAUDE.md 或 GEMINI.md。",
+            "沒告訴它建置與測試指令，等於不讓它看到自己做出來的東西。",
+            "多步驟、複雜的任務跳過規劃直接做。",
+            "還沒搞清楚流程就先把權限全開。",
+            "一次丟多個需求：「順便把登入也改一改，還有那個排版」。其他的寫成待辦。",
+            "模糊的「好一點」：換成可以驗的句子，例如「這三個欄位空白時要擋下來並顯示錯誤訊息」。",
+            "讓它自己補需求：沒寫完成條件，它就會自己猜一個，然後很有信心地告訴你做完了。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "table",
+          "header": [
+            "階段",
+            "你要給什麼",
+            "你要檢查什麼"
+          ],
+          "rows": [
+            [
+              "1 規劃",
+              "目標、背景、限制、完成條件；相關檔案與專案規則檔",
+              "計畫有沒有指到對的檔案、有沒有漏掉限制、範圍會不會太大"
+            ],
+            [
+              "2 實作",
+              "已確認的計畫、這一步只做哪一件事、建置與測試指令",
+              "有沒有動到範圍外的檔案、有沒有自己跑測試、每一步能不能單獨回退"
+            ],
+            [
+              "3 驗證",
+              "驗收條件逐條列出、要求附上實際指令與輸出",
+              "diff 逐檔看過、測試輸出是真的、每條完成條件都對得上"
+            ]
+          ],
+          "caption": "三段式提示要給什麼、要檢查什麼（依三家官方文件整理，2026 年 9 月查證）"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "「測試都過了」不等於測試真的跑過",
+          "text": "代理很會用肯定的語氣描述它沒做過的事。要求它把實際下的指令與完整輸出貼出來，你自己掃一眼測試數量與檔案名稱：差一個字母的測試檔名、被改寬的斷言、根本沒跑到的測試，都是在這一步才看得出來。真的要進版本庫之前自己再跑一次測試、自己看一次 diff。"
+        },
+        {
+          "type": "paragraph",
+          "text": "三段跑順之後，值得投資的是把重複交代的東西沉澱下來：每次都要講的規則寫進專案規則檔，固定的驗收條件整理成清單，跑得久的工作先寫成規格再開新對話實作。提示詞會愈寫愈短，因為該讓代理知道的事，已經不必每次重講。"
+        },
+        {
+          "type": "link",
+          "text": "規格驅動開發（Spec-driven Development）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-spec-driven-development"
+        },
+        {
+          "type": "link",
+          "text": "Codex CLI 入門：在終端機裡讓 OpenAI 幫你改程式",
+          "url": "https://mokaair.com/zh-TW/life/codex-cli-getting-started"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Best practices for Claude Code（Anthropic 官方文件：規劃與實作分開、給它可執行的檢查、追問與失敗模式）",
+          "url": "https://code.claude.com/docs/en/best-practices",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Choose a permission mode（Anthropic 官方文件：Plan Mode 的進入方式、限制與計畫核准選項）",
+          "url": "https://code.claude.com/docs/en/permission-modes",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "How Claude remembers your project（Anthropic 官方文件：CLAUDE.md 的位置與載入方式）",
+          "url": "https://code.claude.com/docs/en/memory",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Best practices（OpenAI 官方文件：任務提示的四個要素、規劃、測試與審查、常見錯誤）",
+          "url": "https://learn.chatgpt.com/guides/best-practices",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Custom instructions with AGENTS.md（OpenAI 官方文件：AGENTS.md 的作用、搜尋順序與內容）",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Command line options and slash commands（OpenAI 官方文件：/plan 與 /mention 的用法）",
+          "url": "https://learn.chatgpt.com/docs/developer-commands",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Code review（OpenAI 官方文件：/review 審查未提交改動或比對基準分支）",
+          "url": "https://learn.chatgpt.com/docs/code-review",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Plan Mode（Gemini CLI 官方文件：進入與離開方式、唯讀限制、計畫檔位置）",
+          "url": "https://geminicli.com/docs/cli/plan-mode/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Provide context with GEMINI.md files（Gemini CLI 官方文件：上下文檔的載入與合併）",
+          "url": "https://geminicli.com/docs/cli/gemini-md/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Commands（Gemini CLI 官方文件：@ 帶入檔案內容與 /memory 子指令）",
+          "url": "https://geminicli.com/docs/reference/commands",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

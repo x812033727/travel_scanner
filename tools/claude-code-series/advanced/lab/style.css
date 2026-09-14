@@ -1,0 +1,20 @@
+:root { font-family: system-ui, "Microsoft JhengHei", sans-serif; color: #102a2b; background: #f7f1e8; }
+* { box-sizing: border-box; }
+body { margin: 0; padding: 28px 18px; }
+main { max-width: 720px; margin: 36px auto; padding: clamp(20px, 5vw, 48px); border: 1px solid #d2d9d4; border-radius: 24px; background: #fff; }
+h1 { font-size: clamp(28px, 5vw, 40px); }
+.eyebrow { color: #0d6b68; font-size: 12px; letter-spacing: .14em; }
+p { line-height: 1.8; }
+form > label { display: block; margin: 24px 0 8px; }
+.input-row { display: flex; gap: 10px; }
+.input-row input { flex: 1; min-width: 0; padding: 12px; border: 1px solid #899f9c; border-radius: 10px; font: inherit; }
+button { min-height: 44px; border-radius: 10px; border: 1px solid #0d6b68; padding: 8px 16px; font: inherit; cursor: pointer; background: #e3f0ef; color: #102a2b; }
+button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid #d97a2b; outline-offset: 3px; }
+ul { padding: 0; list-style: none; }
+li { display: flex; justify-content: space-between; gap: 12px; align-items: center; border-top: 1px solid #dde4df; padding: 12px 0; }
+li label { display: flex; align-items: center; gap: 12px; min-width: 0; }
+li span { overflow-wrap: anywhere; }
+li input { width: 20px; height: 20px; flex-shrink: 0; }
+.completed { text-decoration: line-through; color: #5c6b6b; }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.filters button[aria-pressed="true"] { background: #0d6b68; color: white; }

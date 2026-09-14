@@ -1,4 +1,4 @@
-# 生活分享：AI 工具介紹與教學系列（220 篇總表）
+# 生活分享：AI 工具介紹與教學系列（249 篇總表）
 
 這份文件是「生活分享」（`kind: "life"`，`/{locale}/life/{slug}`）AI 系列的**編輯總表**：每一篇
 的 slug、標題、主題、配圖方式與合作連結在這裡定死，批次任務票的 `scope` 才能精確到檔案。
@@ -165,7 +165,7 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 | 70 | `cursor-editor-guide` | Cursor 編輯器入門：Tab 補全、Chat 與代理模式 | ai, software | 插 |  | ✓ |
 | 71 | `github-copilot-guide` | GitHub Copilot 入門：VS Code 裡的補全、Chat 與代理 | ai, software | 插 |  | ✓ |
 | 72 | `vibe-coding-first-website` | Vibe coding：不會寫程式也能做出第一個網站 | ai, tutorial | 插 | H |  |
-| 73 | `ai-coding-agents-compared` | AI 寫程式代理實測比較：同一個需求三個工具怎麼做 | ai | 插 |  | ✓ |
+| 73 | `ai-coding-agents-compared` | AI 寫程式代理操作步驟比較：同一個需求在三個工具怎麼做 | ai | 插 |  | ✓ |
 | 74 | `deploy-ai-built-site-to-vps` | 把 AI 幫你寫的網站放上網：VPS、網域與 HTTPS 一次搞定 | tutorial, software | 插 | H |  |
 | 75 | `ai-coding-git-basics` | 用 AI 寫程式前該懂的 Git：分支、提交與還原 | tutorial, software | 插 |  |  |
 | 76 | `ai-code-review-safety` | AI 寫的程式能信嗎：審查、測試與安全檢查清單 | ai, tutorial | 插 |  |  |
@@ -364,4 +364,41 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
   本批列了批次 04／10／11 的篇名，八篇共 13 個連結指向不存在的文章，收尾時才由 `normalise_links.py` 的 missing target 抓到並移除。
   撰稿代理會繼承 session 的 plan mode，開著時代理只寫計畫檔；`ExitPlanMode` 後用 SendMessage 讓同一個代理接著執行即可，查證不用重做。
   總表標題以實際篇名為準（本批同步 5 列，其中「兩家寫作比一比」因為我們無法真的實測，改寫成讀者自測法）。
+- 批次 04（2026-09-14，`tasks/open/2026-09-13-life-ai-batch-04.md`）：教學文很需要 `code` 區塊（指令、設定檔、範例提示詞），撰稿補充要明寫可用；連結文字直接取目標文章標題（同批會寫的篇用指派給的標題，收完後再統一一次）；無法實測的「比較」題改寫成操作步驟比較與讀者自測法。官方文件會搬家（Codex 文件轉到 learn.chatgpt.com），sources 記實際生效的網址。合作連結沒有聯盟網址就不放，總表的 H 標記只是允許。
 - Commons 照片：工具的 User-Agent 要有聯絡信箱，而且請求要走 urllib（httpx 的連線被 Wikimedia 擋 403）；十個代理同時搜 Commons 會被 429，工具會退避重試。
+
+## Gemini 完整系列補充（2026-09-14）
+
+原批次 01 的入門篇、批次 04 的 CLI 入門及批次 05 的 Gemini 主題沿用原 slug；以下僅列新增項目，避免重複指派。完整篇序、五條路線及驗收程序以 [Gemini 系列維護說明](gemini-series/README.md) 和 `apps/web/lib/guide-series.json` 為準。發布以 51 頁整套驗收為單位，不按原批次單獨發布。
+
+| # | slug | 標題 | topics | 圖 | 合作 | 易變 |
+|---|---|---|---|---|---|---|
+| 221 | `gemini-guide` | Gemini 完整教學：電腦、手機、CLI 與 Google AI 應用 | ai, tutorial | 插 |  | ✓ |
+| 222 | `gemini-web-desktop-guide` | 電腦網頁版：Windows、檔案與瀏覽器捷徑 | ai, tutorial | 插 |  | ✓ |
+| 223 | `gemini-mac-app-guide` | Mac 桌面版：安裝、快捷鍵與視窗分享 | ai, tutorial | 插 |  | ✓ |
+| 224 | `gemini-ios-app-guide` | iPhone 與 iPad：安裝、語音與照片 | ai, tutorial | 插 |  | ✓ |
+| 225 | `gemini-prompt-writing-guide` | 提示詞怎麼寫：目標、背景與輸出格式 | ai, tutorial | 插 |  | ✓ |
+| 226 | `gemini-file-analysis-guide` | 讀 PDF、圖片與表格：摘要、比對與驗證 | ai, tutorial | 插 |  | ✓ |
+| 227 | `gemini-canvas-guide` | Canvas：編輯文章、簡報與製作小工具 | ai, tutorial | 插 |  | ✓ |
+| 228 | `gemini-spark-workflows-guide` | Gemini Spark：任務、排程與 Skills | ai, tutorial | 插 |  | ✓ |
+| 229 | `gemini-connected-apps-guide` | Connected Apps：Drive、日曆與地圖整合 | ai, tutorial | 插 |  | ✓ |
+| 230 | `gemini-cli-authentication` | CLI 認證：Google 帳號、API Key 與計費 | ai, tutorial | 插 |  | ✓ |
+| 231 | `gemini-cli-command-reference` | CLI 指令總表：語法、範例與深入教學 | ai, tutorial | 插 |  | ✓ |
+| 232 | `gemini-cli-files-and-shell` | CLI 檔案與命令：@、! 與路徑 | ai, tutorial | 插 |  | ✓ |
+| 233 | `gemini-cli-sessions-context` | CLI 對話管理：恢復、壓縮與匯出 | ai, tutorial | 插 |  | ✓ |
+| 234 | `gemini-cli-coding-workflow` | CLI 寫程式：理解、規劃、修改與測試 | ai, tutorial | 插 |  | ✓ |
+| 235 | `gemini-markdown-basics` | Markdown 基礎：建立 MD、標題與程式碼 | ai, tutorial | 插 |  | ✓ |
+| 236 | `gemini-cli-gemini-md` | GEMINI.md 入門：建立規則與 /init | ai, tutorial | 插 |  | ✓ |
+| 237 | `gemini-cli-memory-hierarchy` | GEMINI.md 進階：範圍、匯入與 /memory | ai, tutorial | 插 |  | ✓ |
+| 238 | `gemini-cli-settings` | settings.json：全域、專案與環境變數 | ai, tutorial | 插 |  | ✓ |
+| 239 | `gemini-cli-permissions-sandbox` | CLI 權限：忽略檔案、可信任資料夾與沙箱 | ai, tutorial | 插 |  | ✓ |
+| 240 | `gemini-cli-custom-commands` | 自訂斜線指令：TOML、參數與重新載入 | ai, tutorial | 插 |  | ✓ |
+| 241 | `gemini-cli-mcp-extensions` | MCP 與 Extensions：安裝、驗證與停用 | ai, tutorial | 插 |  | ✓ |
+| 242 | `gemini-cli-agent-skills` | Agent Skills：建立可重用的 SKILL.md | ai, tutorial | 插 |  | ✓ |
+| 243 | `gemini-cli-hooks` | Hooks：在指定事件執行檢查 | ai, tutorial | 插 |  | ✓ |
+| 244 | `gemini-cli-subagents` | Subagents：拆分任務與整合結果 | ai, tutorial | 插 |  | ✓ |
+| 245 | `gemini-cli-headless-automation` | Headless 模式：批次、JSON 與腳本 | ai, tutorial | 插 |  | ✓ |
+| 246 | `gemini-cli-troubleshooting` | CLI 疑難排解：登入、PATH 與設定失效 | ai, tutorial | 插 |  | ✓ |
+| 247 | `gemini-api-files-structured-output` | API 檔案與 JSON：結構化輸出及驗證 | ai, tutorial | 插 |  | ✓ |
+| 248 | `gemini-api-cost-errors-guide` | API 額度與錯誤：費用、重試與成本控制 | ai, tutorial | 插 |  | ✓ |
+| 249 | `gemini-api-document-assistant` | 完整實作：文件摘要與資料擷取工具 | ai, tutorial | 插 |  | ✓ |

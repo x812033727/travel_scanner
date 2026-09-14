@@ -1,0 +1,273 @@
+{
+  "slug": "social-chatbot-workflow",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "misc"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "社群聊天機器人：Manychat、Chatfuel 與真人接手流程",
+      "description": "社群聊天機器人應先處理清楚的常見問題，再安排真人接手。本文以原創陶土小物工作室為例，整理 Manychat 與 Chatfuel 的 Instagram 連接、留言觸發、訊息時間窗、AI 資料設定和客服權限，說明模擬測試與真實通道驗收的差別。附流程步驟、比較表及原創圖解，協助小型團隊減少漏接，也避免機器人與真人同時承諾不同內容。",
+      "hero": {
+        "src": "/guides/social-chatbot-workflow/hero.jpg",
+        "alt": "Mokaair 原創社群對話畫面、資料文件與權限盾牌圖像，呈現自動回覆與真人服務的合作。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "陶土小物工作室常在 Instagram 收到客製尺寸與取件方式的問題。聊天機器人可以先提供公開資訊，但遇到特殊造型、交期變更或作品瑕疵時，仍需要知道誰來處理。只設定留言後自動私訊，還不算建立完整的服務流程。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下依 2026 年 9 月 14 日查閱的 Manychat 與 Chatfuel 官方說明整理；工作室及對話情境均為原創。沒有連接社群帳號、向顧客發送訊息或實測轉換率。兩家服務都持續調整介面與方案，選擇時應以實際帳戶可用的通道、規則和人員權限確認。"
+        },
+        {
+          "type": "heading",
+          "text": "先界定機器人能回答到哪裡",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "原創工作室可先讓機器人回答標準尺寸、公開取件地點與如何提出客製需求；是否接受特殊尺寸、能否趕在指定日期完成，則由店主確認。把允許回答、必須轉交與不能收集的資料寫成清單，比直接要求 AI 盡量成交更容易驗收。"
+        },
+        {
+          "type": "paragraph",
+          "text": "資料庫應放上有負責人及更新日期的服務資訊。已結束的活動、舊交期與停售品項要移除或明確標示，避免同一問題找到互相衝突的答案。若當前資訊不足，預設回覆應說明需要確認，不自行拼出折扣、庫存或退款承諾。"
+        },
+        {
+          "type": "paragraph",
+          "text": "規則式流程適合固定選項和明確入口，AI 回覆則需要額外檢查對不同問法的理解。兩者都應讓使用者容易要求真人服務。正文提供的是選型與驗收方式，不把某平台的功能清單排成適合所有店家的推薦名次。"
+        },
+        {
+          "type": "heading",
+          "text": "連接專業帳號並核對目前的設定位置",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Instagram 自動化先確認帳號為商業或創作者等專業帳號，以及授權人有管理權。Manychat 提供不同連接方式，其中經 Meta Business Suite 的方式有 Facebook 粉絲專頁連接要求；不能因此認為所有連接路徑都必須先照同一套舊教學建立粉專。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Chatfuel 的官方連接說明同樣要求專業帳號與訊息存取授權。連接後先核對帳號名稱與來源，避免代管多個品牌時接到另一個工作室。若連線失效，先在官方設定重新連接並確認必要權限，不把帳號密碼傳給外包人員共同登入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "查證時，Chatfuel 新文件已把 Tasks 移至 Fuely AI 的 Automations，按通道與來源管理；Manychat 的客服介面則使用 Inbox 名稱。遇到舊文章的 Tasks 或 Live Chat 選單，先對照現行官方文件，不因按鈕找不到就額外安裝來路不明的整合工具。"
+        },
+        {
+          "type": "heading",
+          "text": "留言觸發不代表可以無限追蹤私訊",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "原創工作室先選一則介紹作品尺寸的貼文，只在使用者詢問尺寸資訊時提供相關私訊，不把全部留言都當成促銷名單。Manychat 的貼文與 Reels 留言觸發可限定內容及關鍵字；同一人在同一貼文重複留言，不應預期每次都重新觸發同一流程。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一則私密回覆送出後，不能直接推定對方已加入後續對話。Manychat 說明必須有回覆或合適的互動才會開啟 24 小時訊息窗；只點選 Open website 網站按鈕不算該流程的加入互動。工作室應把對方取得資料與願意繼續聊天，當成不同狀態。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Instagram 與 Messenger 超過一般訊息窗後，真人支援有自己的適用條件與時間限制，不是把排程換成手動就能長期發促銷。Manychat 的 Human Agent 支援窗按最後互動起算，最長 7 天，用於繼續處理問題。WhatsApp 等其他通道規則不同，不能直接套用這個期限。"
+        },
+        {
+          "type": "heading",
+          "text": "真人接手要同時處理暫停與恢復",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "工作室可把要求真人、特殊客製與爭議問題導向待處理佇列，指定店主並附上已詢問的尺寸和需求。對外只承諾實際能做到的回覆時間；若當天沒有人值班，就清楚說明預計處理時段，不讓機器人宣稱客服已在線上。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Manychat Inbox 可分派對話並暫停自動化，但暫停不表示正在執行的流程每一步都立即中止。官方說明既有流程可能持續到結束或下一個延遲等中斷點，而且從 Inbox 主動發送自動化會解除暫停。驗收時要連同已在流程中的測試對話一起檢查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Chatfuel 支援將對話指派給自己或直接回覆來接手，也可設定 Chat Timeout，在真人最後發話後經過指定閒置時間交回 AI。因此不能只看到已指派真人就認為機器人永久停止。特殊交期仍在協調時，應核對恢復條件，避免 AI 太早重新接話。"
+        },
+        {
+          "type": "heading",
+          "text": "客服角色、資料與測試帳號分開管理",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "需要回覆的人不一定需要修改整套自動化。Manychat Inbox 要有可用席位，並由管理者分配；Chatfuel 的 Agent 角色可處理顧客與對話，但不能改 AI 設定、自動化或帳務。以實際工作配置權限，也要確認訂閱方案是否足夠容納當班人員。"
+        },
+        {
+          "type": "paragraph",
+          "text": "顧客只想知道陶土杯容量時，不應先要求手機、電子郵件或完整地址。若下一步確實需要訂單資料，可導向適合核對身分的服務流程；公開留言不適合留下付款或配送細節。內部備註與對外訊息也要區分，避免把客服交接內容直接送給顧客。"
+        },
+        {
+          "type": "paragraph",
+          "text": "測試可使用虛構姓名與作品需求，不放真實付款資訊。人員離職或合作結束時移除成員權限，並重新確認還有哪些系統能存取訊息。這些是工作室的管理建議，不表示聊天平台的連接成功就已替商家完成全部隱私義務。"
+        },
+        {
+          "type": "heading",
+          "text": "先測答案，再測通道與交接結果",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Chatfuel 的 Test chat 會使用選定自動化的設定、資料庫與接手規則，但不會真的向顧客發訊息，也不模擬 Instagram 等通道的訊息時間窗。因此在模擬視窗能連續回答，只能證明該設定下的對話表現，不能證明正式私訊一定可送達。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先用正常問法、模糊問法、錯字、超出服務範圍與要求真人等案例檢查內容，再用自己控制且同意測試的帳號驗證實際留言、私訊入口、時間窗和人員接手。測不到的帳號類型或情境應留下紀錄，不把一次成功擴大成全面相容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "上線後可以抽查是否答對、是否漏接、交接後有沒有重複回覆，以及顧客是否完成真正需要的動作。原創工作室的成果是取得足夠資訊並完成客製確認，而不是聊天句數增加。每次改交期、作品資料或分派規則後，再重跑對應案例。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "列出常見問題、可回答範圍、需要真人的條件與負責人。",
+            "核對專業帳號、連接授權、現行介面及客服席位。",
+            "先設定單一留言入口，檢查回覆互動、訊息窗與交接暫停。",
+            "分開驗證模擬答案和真實通道，再追蹤是否解決顧客的問題。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/social-chatbot-workflow/diagram-1.svg",
+          "alt": "四張卡片呈現社群入口、回覆邊界、真人分派與驗收，提醒測試應包含暫停恢復和真實訊息通道。",
+          "width": 1600,
+          "height": 900,
+          "caption": "自動回覆的成果，是顧客完成任務與順利取得必要協助。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查面向",
+            "Manychat",
+            "Chatfuel"
+          ],
+          "rows": [
+            [
+              "設定入口",
+              "Automation 與 Inbox",
+              "Fuely AI 的 Automations"
+            ],
+            [
+              "留言處理",
+              "貼文、關鍵字與訊息節點",
+              "依通道來源及自訂規則設定"
+            ],
+            [
+              "真人協作",
+              "分派對話、席位與暫停",
+              "指派真人、接手與恢復規則"
+            ],
+            [
+              "需要留意",
+              "執行中的流程與暫停中斷點",
+              "Chat Timeout 可能交回 AI"
+            ],
+            [
+              "驗收目的",
+              "確認觸發、互動及後續交接",
+              "模擬答案後另驗證通道限制"
+            ]
+          ],
+          "caption": "依查證日官方功能整理的作業對照，不代表方案價格或全功能排名。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "模擬測試通過，還要驗證訊息通道",
+          "text": "Test chat 能檢查回覆設定，但不會套用所有平台訊息限制。正式使用前，以自控帳號驗證留言入口、時間窗與真人接手。"
+        },
+        {
+          "type": "link",
+          "text": "先規劃社群內容與回覆分工",
+          "url": "https://mokaair.com/zh-TW/life/social-media-planning"
+        },
+        {
+          "type": "link",
+          "text": "整理顧客旅程中的服務問題",
+          "url": "https://mokaair.com/zh-TW/life/customer-journey-funnel"
+        },
+        {
+          "type": "link",
+          "text": "評估行銷工具的整合與資料責任",
+          "url": "https://mokaair.com/zh-TW/life/martech-tool-stack"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Manychat：Instagram 連接方式",
+          "url": "https://help.manychat.com/hc/en-us/articles/14281290924444-How-to-connect-Instagram-to-Manychat",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Manychat：貼文與 Reels 留言觸發",
+          "url": "https://help.manychat.com/hc/en-us/articles/14281316989724-Instagram-Post-and-Reel-Comments-trigger",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Manychat：Inbox 席位、分派與暫停",
+          "url": "https://help.manychat.com/hc/en-us/articles/14281070478748-Manychat-Inbox",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Manychat：真人支援時間窗",
+          "url": "https://help.manychat.com/hc/en-us/articles/14281199732892-How-to-send-messages-outside-the-24-hour-and-7-day-windows-in-Messenger-and-Instagram",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Chatfuel：連接 Instagram 帳號",
+          "url": "https://help.chatfuel.com/connect-your-instagram-account-24134b06ecf880eab3d2e78394d326f8",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Chatfuel：Tasks 已改為 Automations",
+          "url": "https://chatfuel.com/docs/ai-features/tasks",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Chatfuel：真人停止 AI 對話",
+          "url": "https://chatfuel.com/docs/ai-features/how-to-stop-ai-during-active-conversations",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Chatfuel：Chat Timeout 恢復規則",
+          "url": "https://chatfuel.com/docs/ai-features/how-to-automatically-return-chat-to-ai",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Chatfuel：測試自動化的範圍",
+          "url": "https://chatfuel.com/docs/ai-features/how-to-test-your-automation",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Chatfuel：Agent 角色權限",
+          "url": "https://chatfuel.com/docs/account/what-can-agent-role-do",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

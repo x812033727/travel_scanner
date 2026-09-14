@@ -1,0 +1,369 @@
+{
+  "slug": "gemini-cli-files-and-shell",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 132,
+  "locales": {
+    "zh-TW": {
+      "title": "CLI 檔案與命令：@、! 與路徑",
+      "description": "Gemini CLI 可以引用檔案，也能執行作業系統命令，但這兩種輸入的效果完全不同。本篇用一份虛構公告示範 @ 檔案引用、! shell 命令、路徑與工具結果核對。學完後，你能清楚知道資料有沒有被讀取、命令有沒有執行，以及下一步應檢查哪個結果。",
+      "hero": {
+        "src": "/guides/gemini-cli-files-and-shell/hero.jpg",
+        "alt": "檔案引用與命令執行的原創插畫，以文件、裝置與流程等物件呼應@、! 與路徑；非產品介面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Gemini CLI 可以引用檔案，也能執行作業系統命令，但這兩種輸入的效果完全不同。本篇用一份虛構公告示範 @ 檔案引用、! shell 命令、路徑與工具結果核對。學完後，你能清楚知道資料有沒有被讀取、命令有沒有執行，以及下一步應檢查哪個結果。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-cli-files-and-shell/diagram-1.svg",
+          "alt": "@ 檔案：加入要讀取的內容；! 命令：執行前確認影響；工具結果：核對輸出與實際檔案",
+          "width": 1600,
+          "height": 900,
+          "caption": "檔案引用與命令執行。此為原創教學圖解，並非產品畫面或實測輸出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "開始前：準備一個小型練習資料夾",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先完成"
+            },
+            {
+              "type": "link",
+              "text": "CLI 安裝",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "link",
+              "text": "登入",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-authentication"
+            },
+            {
+              "type": "text",
+              "text": "，本篇指令以 0.59.0 為基準。建立 notes 資料夾，新增 event.txt，內容只放虛構活動資訊。先用文字編輯器開啟一次，確定檔案有儲存、編碼正常，而且你知道實際位置。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "練習時先不要引用整個家目錄或大型專案。檔案越多，不代表模型越容易抓到重點；不相關內容也會增加上下文與核對成本。需要固定專案規則時用"
+            },
+            {
+              "type": "link",
+              "text": "GEMINI.md",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+            },
+            {
+              "type": "text",
+              "text": "，需要排除不應探索的檔案時閱讀"
+            },
+            {
+              "type": "link",
+              "text": "忽略與權限",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "，不要只靠提示詞說「請別看某個檔案」。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "notes/event.txt",
+          "code": "青葉社群讀書會在活動中心舉辦。\n活動日期尚未公告，報名方式將另行通知。\n這份檔案只供教學練習。\n"
+        },
+        {
+          "type": "heading",
+          "text": "檔案引用：把來源放進具體任務",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 CLI 輸入 @ 後，使用自動補全找到 notes/event.txt，接著說明你要如何處理它。相對路徑以目前工作區為準，與你在檔案總管最後看過哪個資料夾無關。若檔案名稱含空格，優先使用補全選取正確路徑，並核對送出前的引用內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "@ 可以用來指定檔案或目錄；目錄引用可能帶入多份資料，還會受到忽略規則與可讀範圍影響。第一次練習先指定一個檔案，檢視 CLI 顯示的工具或載入結果，再決定是否擴大。文字裡提到檔名，不一定等於檔案真的被讀入。"
+        },
+        {
+          "type": "heading",
+          "text": "實作：引用公告，再核對工具結果",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "從練習資料夾啟動 gemini，確認工作區路徑正確。",
+            "輸入下面的提示詞，以自動補全選取公告檔案。",
+            "檢視 CLI 是否成功載入檔案，留意找不到路徑、被忽略或拒絕讀取等訊息。",
+            "核對摘要中的地點與缺漏欄位，確認沒有把日期猜成某個週末。",
+            "修改原檔的一句話，再重新指定檔案提問，確認本次結果依據的是新內容。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Gemini CLI 內輸入",
+          "code": "@notes/event.txt 請只依這份公告列出已知資訊與待確認事項。\n每個已知專案附原文片段，不要修改檔案，也不要上網補日期。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期回覆保留「活動中心」，並指出日期與報名方式還沒提供。這是教學驗收結果；真正操作時仍需看工具記錄與原文，不以模型一句「已讀取」取代檢查。若工具只讀到部分內容或輸出遭截斷，應縮小範圍、分段處理，再彙整結果。"
+        },
+        {
+          "type": "heading",
+          "text": "Shell 命令：! 後面是會執行的程式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "! 字首會把後面的命令交給 shell，與請模型解釋命令不同。例如 !git status 是實際檢視 Git 工作狀態。要學一條命令的意思，請用自然語言問「說明這條命令」，不要加上 ! 再送出。執行前看清楚是否會寫入檔案或對外連線。"
+        },
+        {
+          "type": "paragraph",
+          "text": "下方列出 Windows PowerShell 的唯讀範例；macOS 或 Linux 可使用 pwd、ls 與 cat notes/event.txt。它們列出目前位置、檔案與內容，適合與 @ 引用結果對照。不同 shell 的引數與引號規則不同，不要假設每一行都能跨平臺直接使用。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Gemini CLI 內輸入：PowerShell 環境",
+          "code": "!Get-Location\n!Get-ChildItem -LiteralPath notes\n!Get-Content -LiteralPath notes/event.txt\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "直接 ! 命令與模型自行提出工具呼叫的流程也有差異。模型提出的執行請求可能需要核准，依當前政策與"
+            },
+            {
+              "type": "link",
+              "text": "沙箱設定",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "決定；不能假設每次都有相同確認視窗。即使命令執行成功，也要看退出狀態與輸出內容，不能只看到終端機沒有紅字就認定任務完成。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "路徑、工具與背景工作",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "需要加入另一個目錄時，先檢視 /directory show，再依說明使用 /directory add。加入工作區會擴大可處理的範圍，應明確知道為什麼需要那個目錄。不要為了找一份檔案就把整個磁碟加入；可以先複製一份允許使用的樣本到練習區，確認流程可行。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "用 /tools desc 可以看目前工具用途；MCP 工具還需依"
+            },
+            {
+              "type": "link",
+              "text": "連線教學",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-mcp-extensions"
+            },
+            {
+              "type": "text",
+              "text": "確認外部服務。長時間命令或開發伺服器可能在背景執行，0.59.0 的指令清單使用 /tasks 檢視背景工作，另有 bg 與 background 別名。部分較舊檔案寫 /shells，遇到差異時請以版本清單核對。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "命令執行結果會成為模型後續判斷的一部分。若輸出很長，先要求摘要錯誤位置與關鍵行，再回到原始記錄確認。不要把「測試失敗」的長記錄全部忽略，只要求模型直接修到透過；應先知道測試是否真的啟動、在哪一步停止。"
+        },
+        {
+          "type": "heading",
+          "text": "常見問題與操作習慣",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「檔案存在卻讀不到」檢查目前目錄、大小寫、含空格路徑、忽略模式與權限。Windows 常見的另一個原因是檔案實際叫 event.txt.txt。先用 shell 列出檔名，再以自動補全引用，能快速排除輸入錯誤。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「引用了資料夾，為什麼少了一些檔案」可能受到忽略規則、工具限制或檔案型態影響。先列出實際讀取清單，必要時直接指定檔案；但忽略規則不是所有工具的安全邊界，詳細差異請看"
+            },
+            {
+              "type": "link",
+              "text": "存取控制篇",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "「命令卡住後可以直接關視窗嗎」先檢查是否等待互動輸入或在背景執行。關閉視窗不一定能交代已完成與未完成的工作；應檢視任務狀態，停止本次啟動的程式，再儲存需要的輸出。排查時不要結束所有同名程式，其他專案可能也在使用它們。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "完成後，把常用且已驗證的操作寫進"
+            },
+            {
+              "type": "link",
+              "text": "自訂指令",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-custom-commands"
+            },
+            {
+              "type": "text",
+              "text": "或"
+            },
+            {
+              "type": "link",
+              "text": "技能",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": "，但保留輸入範圍與完成條件。對需要多步修改的工作，接著閱讀"
+            },
+            {
+              "type": "link",
+              "text": "寫程式流程",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-coding-workflow"
+            },
+            {
+              "type": "text",
+              "text": "，把讀取、修改與測試接成可核對的順序。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查證與範例",
+          "text": "本文於 2026-09-14 對照官方文件整理。畫面操作依官方說明，非所有裝置均經實機測試；範例輸出是驗收目標，實際內容依資料而異。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後的檢核",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "通過條件"
+          ],
+          "rows": [
+            [
+              "操作",
+              "能依正文重做一次，說明每一步使用的輸入。"
+            ],
+            [
+              "結果",
+              "能用原始資料或可重現測試核對輸出，而非只看語氣。"
+            ],
+            [
+              "延伸",
+              "知道下一篇教學解決的問題，以及什麼時候需要它。"
+            ]
+          ],
+          "caption": "完成實作後逐項確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著可以閱讀 "
+            },
+            {
+              "type": "link",
+              "text": "CLI 權限",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "CLI 寫程式",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-coding-workflow"
+            },
+            {
+              "type": "text",
+              "text": "，把本篇的操作接到下一個工作流程。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gemini CLI：檔案管理",
+          "url": "https://geminicli.com/docs/cli/tutorials/file-management/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini CLI：執行 shell",
+          "url": "https://geminicli.com/docs/cli/tutorials/shell-commands/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini CLI：指令參考",
+          "url": "https://geminicli.com/docs/reference/commands/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

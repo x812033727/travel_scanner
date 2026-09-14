@@ -11,7 +11,7 @@
   "locales": {
     "zh-TW": {
       "title": "Claude Code 完整教學目錄：從入門到自動化",
-      "description": "依平台、程度與功能找到需要的教學，從 60 篇文章與共用練習專案逐步完成操作。這個教學中心把 Claude Code 分成 60 個可以獨立閱讀的小題目，從桌面、CLI、網頁與手機開始，再學 MD 規則、常用指令、Skills、MCP 與自動化。你可以依推薦路線循序學習，也可以直接搜尋正在遇到的功能、命令或檔名。",
+      "description": "依平台、程度與功能找到需要的教學，從 96 篇文章與共用練習專案逐步完成操作。這個教學中心把 Claude Code 分成 96 個可以獨立閱讀的小題目，從桌面、CLI、網頁與手機開始，再學 MD 規則、常用指令、Skills、MCP 與自動化。你可以依推薦路線循序學習，也可以直接搜尋正在遇到的功能、命令或檔名。目錄依目前公開狀態顯示可閱讀文章。",
       "hero": {
         "src": "/guides/claude-code-tutorials/hero.jpg",
         "alt": "Claude Code 完整教學目錄：從入門到自動化：文件、螢幕與完成記號的幾何插圖",
@@ -25,7 +25,7 @@
       "blocks": [
         {
           "type": "paragraph",
-          "text": "這個教學中心把 Claude Code 分成 60 個可以獨立閱讀的小題目，從桌面、CLI、網頁與手機開始，再學 MD 規則、常用指令、Skills、MCP 與自動化。你可以依推薦路線循序學習，也可以直接搜尋正在遇到的功能、命令或檔名。"
+          "text": "這個教學中心把 Claude Code 分成 96 個可以獨立閱讀的小題目，從桌面、CLI、網頁與手機開始，再學 MD 規則、常用指令、Skills、MCP 與自動化。你可以依推薦路線循序學習，也可以直接搜尋正在遇到的功能、命令或檔名。目錄依目前公開狀態顯示可閱讀文章。"
         },
         {
           "type": "paragraph",
@@ -45,10 +45,10 @@
         {
           "type": "image",
           "src": "/guides/claude-code-tutorials/diagram-1.svg",
-          "alt": "選擇你的第一條路線 → 使用搜尋與組合篩選 → 下載共用練習專案",
+          "alt": "選擇你的第一條路線 → 已會基礎，接著做深入實驗 → 使用搜尋與組合篩選",
           "width": 1600,
           "height": 900,
-          "caption": "選擇你的第一條路線 → 使用搜尋與組合篩選 → 下載共用練習專案",
+          "caption": "選擇你的第一條路線 → 已會基礎，接著做深入實驗 → 使用搜尋與組合篩選",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair"
@@ -119,6 +119,143 @@
             {
               "type": "text",
               "text": "，再依連結補足背景。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "已會基礎，接著做深入實驗"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第 61–96 篇提供六個深入單元與七條專題路線。從"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-project-rules-workshop",
+              "text": "專案規則工作坊"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-skill-sop-workshop",
+              "text": "Skill SOP"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-hook-event-test-lab",
+              "text": "Hook 事件"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-mcp-local-server-workshop",
+              "text": "自建 MCP"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-worktree-integration-workshop",
+              "text": "Worktree 衝突整合"
+            },
+            {
+              "type": "text",
+              "text": "或"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-structured-cli-pipeline",
+              "text": "JSON 流程"
+            },
+            {
+              "type": "text",
+              "text": "選一個目標；每篇都有獨立起點、故障材料與參考成果。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "深入練習可整組下載："
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/advanced/config-lab.zip",
+              "text": "規則材料"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/advanced/skill-kit.zip",
+              "text": "Skills 材料"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/advanced/hook-lab.zip",
+              "text": "Hooks 材料"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/advanced/mcp-lab.zip",
+              "text": "MCP 材料"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/advanced/todo-workbench.zip",
+              "text": "協作工作台"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/advanced/automation-lab.zip",
+              "text": "自動化材料"
+            },
+            {
+              "type": "text",
+              "text": "。各組內每個 lesson ZIP 都能獨立解壓縮，不必把不同篇章的 starter 覆蓋在一起。"
             }
           ]
         },
@@ -225,7 +362,7 @@
             },
             {
               "type": "text",
-              "text": "。學習的目標不是背完 60 篇，而是能找到正確入口，完成一個有清楚結果的小任務，並逐步擴展到自己的真實專案。"
+              "text": "。學習的目標不是背完 96 篇，而是能找到正確入口，完成一個有清楚結果的小任務，並逐步擴展到自己的真實專案。"
             }
           ]
         }

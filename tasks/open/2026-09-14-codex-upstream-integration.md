@@ -15,6 +15,7 @@ scope:
   - apps/api/app/guides/content/codex-cloud-tasks-github.json
   - apps/api/app/guides/schemas.py
   - apps/api/tests/test_guide_series.py
+  - apps/api/tests/test_codex_learning.py
   - apps/web/components/planner-overlay.tsx
   - apps/web/components/planner-overlay.test.tsx
   - apps/web/components/route-mode-panel.tsx

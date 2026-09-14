@@ -1,0 +1,312 @@
+{
+  "slug": "gemini-file-analysis-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 110,
+  "locales": {
+    "zh-TW": {
+      "title": "讀 PDF、圖片與表格：摘要、比對與驗證",
+      "description": "Gemini 能協助閱讀 PDF、圖片與試算表，但檔案成功上傳不代表每個字、每張表都已理解正確。本篇用一份簡短活動資料示範摘要、跨檔比對及數字核對，讓你知道如何把原文與模型產出連在一起。操作依官方文件整理，示例內容為教學自建資料。",
+      "hero": {
+        "src": "/guides/gemini-file-analysis-guide/hero.jpg",
+        "alt": "檔案分析的三道檢查的原創插畫，以文件、裝置與流程等物件呼應摘要、比對與驗證；非產品介面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Gemini 能協助閱讀 PDF、圖片與試算表，但檔案成功上傳不代表每個字、每張表都已理解正確。本篇用一份簡短活動資料示範摘要、跨檔比對及數字核對，讓你知道如何把原文與模型產出連在一起。操作依官方文件整理，示例內容為教學自建資料。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-file-analysis-guide/diagram-1.svg",
+          "alt": "原始檔案：確認頁面與數字；模型摘要：要求欄位和依據；回查來源：核對單位與缺漏",
+          "width": 1600,
+          "height": 900,
+          "caption": "檔案分析的三道檢查。此為原創教學圖解，並非產品畫面或實測輸出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "開始前：先知道檔案裡有什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "準備自己有權處理的檔案，先用原本的閱讀器開啟一次。PDF 可能含可選取的文字，也可能只是掃描圖片；照片可能有反光或裁切；試算表可能有多張工作表、公式和隱藏列。先確認原始資料，才能判斷問題來自檔案本身還是模型的理解。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "登入 Gemini 後，依"
+            },
+            {
+              "type": "link",
+              "text": "電腦網頁",
+              "url": "https://mokaair.com/zh-TW/life/gemini-web-desktop-guide"
+            },
+            {
+              "type": "text",
+              "text": "或手機教學找到新增檔案入口。從 Drive 選檔還需要相應帳號與連線權限，詳見"
+            },
+            {
+              "type": "link",
+              "text": "Connected Apps",
+              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+            },
+            {
+              "type": "text",
+              "text": "。上傳大小、數量及用量依當下支援條件與"
+            },
+            {
+              "type": "link",
+              "text": "方案",
+              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+            },
+            {
+              "type": "text",
+              "text": "核對；第一次先用小檔案，不必刻意測試最大限制。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "建立練習資料：保留可核對答案",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把下方資料貼到檔案編輯器，另存或匯出成一頁 PDF，檔名寫 activity-v1.pdf。另做一份第二版，把地點改成三樓教室，並在檔案中明寫「第二版：地點調整」，其餘內容保留。兩份檔案要能從檔名與內文判斷版本，避免完全依賴上傳順序。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "activity-v1.pdf 的原始文字",
+          "code": "活動：社群閱讀練習\n版本：第一版\n地點：二樓閱讀區\n日期：尚未公告\n一般票：12 人，每人 NT$100\n學生票：8 人，每人 NT$50\n備註：以上為虛構教學資料，不代表真實售票活動。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "這份資料的人工答案是一般票 1,200 元、學生票 400 元，合計 1,600 元；總人數二十人。先在筆記記下答案，再進行上傳。若要練習圖片辨識，可以把同一頁拍成照片，但仍保留原始文字與數字，方便核對。"
+        },
+        {
+          "type": "heading",
+          "text": "實作：先摘要，再比較版本",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "新建對話，上傳第一版 PDF，確認附件名稱後，請 Gemini 列出活動、版本、地點、日期及票種。",
+            "要求每項資訊附上頁碼或原文短句，沒有提供的日期保留未知。",
+            "上傳第二版，要求逐項比較兩個檔案，指出哪些欄位變更、哪些相同。",
+            "核對結果是否只有地點與版本說明改變，不應把新地點寫回第一版來源。",
+            "最後才要求以第二版整理通知；儲存結果時標記使用的檔名、版本與核對日期。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "跨檔核對提示詞",
+          "code": "比較本次上傳的 activity-v1.pdf 與 activity-v2.pdf。\n請用「欄位／第一版／第二版／變更判斷／來源位置」整理。\n至少包含活動名稱、地點、日期、票種與人數。\n不要把兩個版本混成同一份來源；未寫的資料標為未提供。\n如果無法讀到某頁，先指出缺少的範圍，再繼續可確認的部分。\n"
+        },
+        {
+          "type": "heading",
+          "text": "預期結果：來源位置也要驗證",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "預期比較會指出第一版為二樓、第二版為三樓，日期均尚未公告，票種與人數相同。頁碼與原文引用是方便回查的線索，仍要自己開啟檔案確認；模型可能引用錯誤位置，不能只因為附了頁碼就直接採用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "掃描檔案如果有缺字，先看解析度、方向與對比，必要時提供較清楚的頁面。若用 OCR 光學字元辨識轉成文字，也要抽查數字、表格欄位與標點；「100」被讀成「1OO」時，後續計算可能出問題。保留原圖與辨識結果，才能找出哪一階段出錯。"
+        },
+        {
+          "type": "paragraph",
+          "text": "長檔案可以先請它列出可辨識的章節，再指定頁面範圍處理。不要把「請完整分析」當成已覆蓋所有頁數的證據。對包含附件、註腳或圖中標籤的資料，明確列出要核對的位置，成果也要保留尚未處理的部分。"
+        },
+        {
+          "type": "heading",
+          "text": "試算表：計算和解讀分開驗證",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把票種、人數、單價整理成三欄，再在試算表自行計算小計與合計。讓 Gemini 先說明每個欄位的意思、空白與零的差別，再請它整理數字。必要時指明工作表名稱及範圍，避免它只看第一張表或把合計列再加一次。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本例合計應是 12 乘 100 加 8 乘 50，得到 1,600 元。如果回答不同，先追查讀取的人數與單價，再看計算式。模型生成的圖表也要核對軸標、單位與資料範圍；想把方法直接放進 Google Sheets，接著看"
+            },
+            {
+              "type": "link",
+              "text": "公式與資料整理",
+              "url": "https://mokaair.com/zh-TW/life/gemini-for-google-sheets-formulas"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "不要把格式正確的表格當成已通過驗算。貨幣、百分比、千位逗號與小數點常需要額外確認；缺值應保留缺值，不能一律補零。對外使用前，至少抽查所有關鍵數字以及一筆正常資料、一筆缺漏資料和一筆例外資料。"
+        },
+        {
+          "type": "heading",
+          "text": "儲存成果與下一步",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一份可追溯的成果應有摘要、來源清單、版本、核對過的欄位與仍待確認的資訊。原始檔另行儲存，對話不應是唯一備份。若之後更新檔案，重新上傳或重新選取當前版本，再說明要比較的差異；不要假設本機修改會自動同步到過去的附件。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "主要需求是圍繞固定資料讀書、追查引用，可以使用"
+            },
+            {
+              "type": "link",
+              "text": "NotebookLM",
+              "url": "https://mokaair.com/zh-TW/life/notebooklm-guide"
+            },
+            {
+              "type": "text",
+              "text": "。需要用程式批次讀檔案、驗證 JSON，則看"
+            },
+            {
+              "type": "link",
+              "text": "API 檔案與結構化輸出",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-files-structured-output"
+            },
+            {
+              "type": "text",
+              "text": "；一般介面上傳與 API 的檔案儲存、限制及計費是不同流程。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「PDF 有密碼可以直接讀嗎？」先確認自己有權開啟與處理，再使用合法可讀取的版本。不要把解密失敗當成模型推論問題，也不要把密碼貼進不必要的對話；重要資料先依組織規範處理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「兩份檔案說法不同，要信哪一份？」先看來源權威性、發布日期、適用範圍與更正說明。要求 Gemini 並列差異，自己回查官方更新；在沒有足夠依據時保留衝突，不能只選比較完整或比較新的檔名。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「它說沒有收到附件？」檢查輸入區是否真的出現附件，必要時重新選擇一份小檔案測試。再確認格式、網路與帳號條件。先解決檔案讀取，再要求摘要，避免以提示詞讓模型猜測不存在的內容。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查證與範例",
+          "text": "本文於 2026-09-14 對照官方文件整理。畫面操作依官方說明，非所有裝置均經實機測試；範例輸出是驗收目標，實際內容依資料而異。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後的檢核",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "通過條件"
+          ],
+          "rows": [
+            [
+              "操作",
+              "能依正文重做一次，說明每一步使用的輸入。"
+            ],
+            [
+              "結果",
+              "能用原始資料或可重現測試核對輸出，而非只看語氣。"
+            ],
+            [
+              "延伸",
+              "知道下一篇教學解決的問題，以及什麼時候需要它。"
+            ]
+          ],
+          "caption": "完成實作後逐項確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著可以閱讀 "
+            },
+            {
+              "type": "link",
+              "text": "Deep Research",
+              "url": "https://mokaair.com/zh-TW/life/gemini-deep-research-guide"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "NotebookLM 入門",
+              "url": "https://mokaair.com/zh-TW/life/notebooklm-guide"
+            },
+            {
+              "type": "text",
+              "text": "，把本篇的操作接到下一個工作流程。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gemini：上傳與分析文件",
+          "url": "https://support.google.com/gemini/answer/14903178?hl=en-CA",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini：用量與升級",
+          "url": "https://support.google.com/gemini/answer/16275805?hl=en",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

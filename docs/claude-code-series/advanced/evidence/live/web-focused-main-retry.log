@@ -1,0 +1,44 @@
+
+ RUN  v5.0.0 C:/Users/x8120/.codex/worktrees/1cff/travel_scanㄐ/apps/web
+
+ ✓ components/guides/series.test.tsx (11 tests) 4007ms
+   ✓ Gemini learning series (11)
+     ✓ finds lessons for MD 1247ms
+     ✓ finds lessons for GEMINI.md 466ms
+     ✓ finds lessons for CLI 549ms
+     ✓ combines filters, handles empty results, and resets 615ms
+ ✓ components/guide-rich-editor.test.tsx (2 tests) 795ms
+   ✓ guide rich editing and shared preview (2)
+     ✓ edits raw code without converting markup or whitespace 325ms
+     ✓ keeps article identity separate from display text and supports reordering 466ms
+ ✓ lib/guides.test.ts (34 tests) 12ms
+ ✓ lib/guide-series.test.ts (3 tests) 27ms
+⎯⎯⎯⎯⎯⎯ Unhandled Errors ⎯⎯⎯⎯⎯⎯
+
+Vitest caught 1 unhandled error during the test run.
+This might cause false positive tests. Resolve unhandled errors to make sure your tests are not affected.
+
+⎯⎯⎯⎯⎯⎯ Unhandled Error ⎯⎯⎯⎯⎯⎯⎯
+Error: [vitest-pool]: Failed to start threads worker for test files C:/Users/x8120/.codex/worktrees/1cff/travel_scanㄐ/apps/web/lib/guides.server.test.ts.
+ ❯ ../../../travel_scan%E3%84%90/node_modules/vitest/dist/chunks/index.B89dZ0-N.js:11469:94
+ ❯ Pool.schedule ../../../travel_scan%E3%84%90/node_modules/vitest/dist/chunks/index.B89dZ0-N.js:11469:5
+
+Caused by: Error: [vitest-pool-runner]: Timeout waiting for worker to respond
+ ❯ Timeout.<anonymous> ../../../travel_scan%E3%84%90/node_modules/vitest/dist/chunks/index.B89dZ0-N.js:10968:58
+ ❯ listOnTimeout node:internal/timers:605:17
+ ❯ processTimers node:internal/timers:541:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+
+ Test Files  4 passed (4)
+      Tests  50 passed (50)
+     Errors  1 error
+   Start at  22:24:30
+   Duration  106.33s (environment 34%, transform 28%, import 23%, tests 11%, setup 4%)
+
+  Transform  transforming modules took 12.15s · 28% of tracked time, re-done on every run
+             persist transforms across runs with fsModuleCache: true
+             learn more: https://vitest.dev/guide/improving-performance#caching-between-reruns
+
+JSON report written to C:/Users/x8120/.codex/worktrees/1cff/travel_scanㄐ/docs/claude-code-series/advanced/evidence/live/web-focused-main-retry.json

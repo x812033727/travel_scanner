@@ -1,0 +1,991 @@
+{
+  "slug": "gemini-cli-command-reference",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 131,
+  "locales": {
+    "zh-TW": {
+      "title": "CLI 指令總表：語法、範例與深入教學",
+      "description": "這份指令總表整理 Gemini CLI 0.59.0 的內建操作，讓你先找到用途，再跳到負責講解的文章。清單由本機已安裝版本的指令載入器核對，並對照官方文件；自訂命令、MCP 提示詞與開發版專用命令不混入固定內建清單。部分專案必須先開啟功能或符合登入條件。",
+      "hero": {
+        "src": "/guides/gemini-cli-command-reference/hero.jpg",
+        "alt": "三種指令輸入位置的原創插畫，以文件、裝置與流程等物件呼應語法、範例與深入教學；非產品介面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "這份指令總表整理 Gemini CLI 0.59.0 的內建操作，讓你先找到用途，再跳到負責講解的文章。清單由本機已安裝版本的指令載入器核對，並對照官方文件；自訂命令、MCP 提示詞與開發版專用命令不混入固定內建清單。部分專案必須先開啟功能或符合登入條件。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-cli-command-reference/diagram-1.svg",
+          "alt": "提示詞：輸入自然語言需求；斜線指令：在 CLI 裡輸入 /help；終端機命令：在 shell 執行 gemini",
+          "width": 1600,
+          "height": 900,
+          "caption": "三種指令輸入位置。此為原創教學圖解，並非產品畫面或實測輸出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "開始前：辨識三種輸入位置",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先完成"
+            },
+            {
+              "type": "link",
+              "text": "安裝",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "link",
+              "text": "認證",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-authentication"
+            },
+            {
+              "type": "text",
+              "text": "。gemini --version 是在 PowerShell 或 shell 執行的終端機命令；/memory list 是在 Gemini CLI 裡輸入的斜線指令；「幫我摘要這份公告」則是交給模型的提示詞。若放錯位置，即使文字完全正確，也不會得到同樣結果。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "本文核對時，將可選的使用者功能開啟以取得完整清單，但沒有執行每個指令的動作，也沒有替讀者安裝服務或更改帳號。你的 /help 若少了某一項，先檢查版本、功能開關與管理者政策，不要直接認定安裝損壞。詳細差異請回到對應教學檢視。"
+        },
+        {
+          "type": "heading",
+          "text": "常用操作：先學會看狀態",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先輸入 /help 與 /about，確認可用命令和版本。接著用 /tools desc 看工具說明；這可以告訴你 CLI 現在有哪些能力，但不代表所有工具都已獲得外部服務授權。要確認專案指示，用 /memory list、/memory show；改檔後再 reload，詳見"
+            },
+            {
+              "type": "link",
+              "text": "記憶載入",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-memory-hierarchy"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Gemini CLI 內輸入",
+          "code": "/help\n/about\n/tools desc\n/memory list\n/memory show\n/memory reload\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "0.59.0 的 /memory reload 保留 refresh 別名；/compress 也有 compact 與 summarize 別名。這些別名都指向同一類操作，不需要建立多份設定。官方不同頁面可能尚未使用相同名稱，本篇以實際版本清單為準，升級後再重新核對。"
+        },
+        {
+          "type": "heading",
+          "text": "完整內建指令：依名稱找到深入教學",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "每一行列出指令、用途、直接子指令及負責說明的文章。子指令後仍可能需要名稱、檔案或其他引數，請先看 CLI 補全提示與深入教學。具有刪除、還原、登入或安裝效果的命令，不應為了測試清單而全部執行一次。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/about：查看 CLI 版本資訊。延伸："
+            },
+            {
+              "type": "link",
+              "text": "CLI 疑難排解",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/agents：管理子代理；需啟用代理功能；子指令：list、reload、enable、disable、config。延伸："
+            },
+            {
+              "type": "link",
+              "text": "Subagents",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-subagents"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/auth：登入、登出與切換認證；子指令：signin、signout。延伸："
+            },
+            {
+              "type": "link",
+              "text": "CLI 認證",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-authentication"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/bug：準備問題回報；送出前檢查包含的資料。延伸："
+            },
+            {
+              "type": "link",
+              "text": "CLI 疑難排解",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/bug-memory：將記憶體快照寫入磁碟供除錯；可能包含工作資料。延伸："
+            },
+            {
+              "type": "link",
+              "text": "CLI 疑難排解",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/chat：瀏覽對話與管理命名檢查點；子指令：list、save、resume、delete、share、checkpoints。延伸："
+            },
+            {
+              "type": "link",
+              "text": "CLI 對話管理",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-sessions-context"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/clear（別名：/new）：清除畫面並開始新工作階段。延伸："
+            },
+            {
+              "type": "link",
+              "text": "CLI 對話管理",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-sessions-context"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/commands：列出與重新載入自訂指令；子指令：list、reload。延伸："
+            },
+            {
+              "type": "link",
+              "text": "自訂斜線指令",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-custom-commands"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/compress（別名：/summarize、/compact）：以摘要壓縮目前上下文。延伸："
+            },
+            {
+              "type": "link",
+              "text": "CLI 對話管理",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-sessions-context"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/copy：將最近結果或程式碼複製到剪貼簿。延伸："
+            },
+            {
+              "type": "link",
+              "text": "CLI 對話管理",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-sessions-context"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "/corgi：切換柯基趣味顯示模式，不改變工作資料。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/docs：在瀏覽器開啟官方文件。延伸："
+            },
+            {
+              "type": "link",
+              "text": "CLI 疑難排解",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/export-session：將目前對話匯出成 JSON 檔案。延伸："
+            },
+            {
+              "type": "link",
+              "text": "CLI 對話管理",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-sessions-context"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/directory（別名：/dir）：查看或加入工作區目錄；子指令：add、show。延伸："
+            },
+            {
+              "type": "link",
+              "text": "CLI 檔案與命令",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-files-and-shell"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/editor：設定外部編輯器偏好。延伸："
+            },
+            {
+              "type": "link",
+              "text": "CLI 寫程式",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-coding-workflow"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/extensions：探索、安裝、更新與管理擴充套件；子指令：list、update、explore、reload、disable、enable、install、uninstall、link、config。延伸："
+            },
+            {
+              "type": "link",
+              "text": "MCP 與 Extensions",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-mcp-extensions"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "/help：查看目前 CLI 的指令說明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "/footer（別名：/statusline）：調整底部狀態列顯示項目。"
+        },
+        {
+          "type": "paragraph",
+          "text": "/shortcuts：切換輸入區上方的快捷鍵提示。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/hooks：查看與啟停事件掛鉤；需啟用 Hooks 介面；子指令：panel、enable、disable、enable-all、disable-all。延伸："
+            },
+            {
+              "type": "link",
+              "text": "Hooks",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-hooks"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/rewind：選擇較早的對話與檔案還原點。延伸："
+            },
+            {
+              "type": "link",
+              "text": "CLI 對話管理",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-sessions-context"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/ide：查看編輯器整合；依實際連線環境提供操作。延伸："
+            },
+            {
+              "type": "link",
+              "text": "CLI 寫程式",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-coding-workflow"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/init：分析專案並建立 GEMINI.md。延伸："
+            },
+            {
+              "type": "link",
+              "text": "GEMINI.md 入門",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/mcp：查看工具伺服器、結構、認證與連線狀態；子指令：list、desc、schema、auth、reload、enable、disable。延伸："
+            },
+            {
+              "type": "link",
+              "text": "MCP 與 Extensions",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-mcp-extensions"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/memory：檢查與重新載入專案記憶；inbox 需 Auto Memory；子指令：show、reload、list、inbox。延伸："
+            },
+            {
+              "type": "link",
+              "text": "GEMINI.md 進階",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-memory-hierarchy"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "/model：選擇模型或設定模型識別名稱；子指令：manage、set。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/permissions：管理資料夾信任與權限；子指令：trust。延伸："
+            },
+            {
+              "type": "link",
+              "text": "CLI 權限",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/plan：進入規劃模式與查看計畫；需啟用功能；子指令：copy。延伸："
+            },
+            {
+              "type": "link",
+              "text": "CLI 寫程式",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-coding-workflow"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/policies：列出適用的工具政策；子指令：list。延伸："
+            },
+            {
+              "type": "link",
+              "text": "CLI 權限",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/privacy：顯示 CLI 隱私說明。延伸："
+            },
+            {
+              "type": "link",
+              "text": "CLI 認證",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-authentication"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/quit（別名：/exit）：離開 CLI 工作階段。延伸："
+            },
+            {
+              "type": "link",
+              "text": "Gemini CLI 安裝",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/restore：恢復工具檢查點；需有可用的檢查點紀錄。延伸："
+            },
+            {
+              "type": "link",
+              "text": "CLI 對話管理",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-sessions-context"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/resume：尋找先前工作階段與命名檢查點；子指令：list、save、resume、delete、share、checkpoints。延伸："
+            },
+            {
+              "type": "link",
+              "text": "CLI 對話管理",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-sessions-context"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/stats（別名：/usage）：查看工作階段、模型或工具使用統計；子指令：session、model、tools。延伸："
+            },
+            {
+              "type": "link",
+              "text": "CLI 對話管理",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-sessions-context"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "/theme：變更終端機介面主題。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/tools：列出目前可用工具與用途；子指令：list、desc。延伸："
+            },
+            {
+              "type": "link",
+              "text": "CLI 檔案與命令",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-files-and-shell"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/skills：查看、連結、啟停與重載技能；子指令：list、link、disable、enable、reload。延伸："
+            },
+            {
+              "type": "link",
+              "text": "Agent Skills",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/settings：開啟 CLI 設定介面。延伸："
+            },
+            {
+              "type": "link",
+              "text": "settings.json",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-settings"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "/gemma：查看本機 Gemma 模型路由狀態，非雲端 Gemini 方案。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/tasks（別名：/bg、/background）：查看背景工作；別名 bg、background。延伸："
+            },
+            {
+              "type": "link",
+              "text": "CLI 檔案與命令",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-files-and-shell"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "/vim：切換 Vim 風格輸入模式。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/setup-github：啟動 GitHub Actions 設定流程，需另查專案權限。延伸："
+            },
+            {
+              "type": "link",
+              "text": "CLI 寫程式",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-coding-workflow"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "/terminal-setup：設定支援的編輯器終端機多行輸入快捷鍵。"
+        },
+        {
+          "type": "paragraph",
+          "text": "/voice：切換 CLI 語音輸入；需啟用對應功能；子指令：model。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/upgrade：查看 Code Assist 升級入口；Google 登入條件適用。延伸："
+            },
+            {
+              "type": "link",
+              "text": "CLI 認證",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-authentication"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "模型與對話：操作後確認影響",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "模型選擇可從 /model manage 開啟介面，或用 /model set 加上你帳號可用的模型識別字；需要持續儲存時，先檢視該版本提供的 persist 行為。不要把網頁版模式名稱當成 API 或 CLI 模型識別字，也不要把切換成功當成所有工具都已支援新模型。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "對話太長時用 /compress 整理上下文，但重要需求仍應儲存在你可查閱的檔案。要找舊工作用 /resume，要另開新工作階段用 /clear；這些操作與清除本機檔案不同。完整恢復、匯出與還原範例見"
+            },
+            {
+              "type": "link",
+              "text": "對話管理",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-sessions-context"
+            },
+            {
+              "type": "text",
+              "text": "，執行還原前先讀清楚會影響對話、檔案或兩者。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "終端機引數與語法速查",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "終端機命令以 gemini 開頭。單次非互動提問使用 -p，選輸出格式用 -o；恢復最近工作階段可用 --resume latest。先用 --help 檢視當前版本，再把需要的引數放入腳本，不要從不同年代文章各抄一段組合。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "終端機命令",
+          "code": "gemini --version\ngemini --help\ngemini --resume latest\ngemini -p \"請列出公告摘要應核對的欄位，不使用工具。\" -o json\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "@ 是檔案與資源引用入口，! 是 shell 命令入口；兩者都不是一般的文字裝飾。需要路徑、引號與背景工作說明時閱讀"
+            },
+            {
+              "type": "link",
+              "text": "檔案與 shell",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-files-and-shell"
+            },
+            {
+              "type": "text",
+              "text": "。要把短提示詞存成自己的 /summary，閱讀"
+            },
+            {
+              "type": "link",
+              "text": "TOML 自訂指令",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-custom-commands"
+            },
+            {
+              "type": "text",
+              "text": "，不要把自訂名稱誤列為所有讀者都有的內建命令。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "常見問題與版本更新",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「官方文件有 /shells，我卻找不到」這份 0.59.0 載入器清單提供 /tasks，另有 bg 與 background 別名。遇到檔案差異時，以本機 help 與版本化清單交叉核對。不要為了讓舊指令可用，就任意安裝不明套件。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「/extensions install 能不能在 CLI 裡用」0.59.0 在啟用對應功能時提供互動子指令，但部分官方文件仍以終端機管理為主。本系列完整安裝範例採 gemini extensions，讀者比較容易辨識輸入位置；"
+            },
+            {
+              "type": "link",
+              "text": "擴充教學",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-mcp-extensions"
+            },
+            {
+              "type": "text",
+              "text": "會帶你完成安裝、重啟與連線驗證。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "「/bug-memory 可以當一般記憶功能嗎」不適合，它是寫出程式記憶體快照供除錯的功能，可能包含工作資料。專案規則請使用 GEMINI.md 與 /memory；需要回報問題時先檢查資料內容與儲存位置，不把診斷檔直接當作普通教學附件公開。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "新增命令前，先記錄來源屬於內建、專案 TOML、擴充套件或 MCP。把這四種來源分清楚，才知道更新或停用應到哪裡操作。若清單與預期不同，依"
+            },
+            {
+              "type": "link",
+              "text": "疑難排解",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "從版本、目錄與功能狀態開始查。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查證與範例",
+          "text": "本文於 2026-09-14 對照官方文件整理。畫面操作依官方說明，非所有裝置均經實機測試；範例輸出是驗收目標，實際內容依資料而異。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後的檢核",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "通過條件"
+          ],
+          "rows": [
+            [
+              "操作",
+              "能依正文重做一次，說明每一步使用的輸入。"
+            ],
+            [
+              "結果",
+              "能用原始資料或可重現測試核對輸出，而非只看語氣。"
+            ],
+            [
+              "延伸",
+              "知道下一篇教學解決的問題，以及什麼時候需要它。"
+            ]
+          ],
+          "caption": "完成實作後逐項確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著可以閱讀 "
+            },
+            {
+              "type": "link",
+              "text": "CLI 檔案與命令",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-files-and-shell"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "CLI 對話管理",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-sessions-context"
+            },
+            {
+              "type": "text",
+              "text": "，把本篇的操作接到下一個工作流程。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gemini CLI：官方指令參考",
+          "url": "https://geminicli.com/docs/reference/commands/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini CLI 官方程式碼",
+          "url": "https://github.com/google-gemini/gemini-cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

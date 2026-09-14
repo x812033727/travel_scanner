@@ -9,6 +9,7 @@ import type { Locale } from "@/i18n/routing";
 import { guideHref, guideListHref } from "@/lib/guides";
 import { getGuideList, getGuideTopics, getGuideArticle, hubIsEmpty } from "@/lib/guides.server";
 import { seriesCopy } from "@/lib/guide-series-copy";
+import { geminiSeries, seriesHref } from "@/lib/gemini-series";
 import { breadcrumbs, itemList } from "@/lib/structured-data";
 import { HUB_SLUG } from "@/lib/codex-learning";
 import { learningCopy } from "@/lib/codex-learning/copy";
@@ -62,6 +63,7 @@ export default async function LifeHubPage(
   };
   const listing = guideListHref("life", search.topic);
   const tutorialHub = await getGuideArticle("life", "claude-code-tutorials", locale);
+  const geminiHub = locale === geminiSeries.locale ? await getGuideArticle("life", geminiSeries.hubSlug, locale) : null;
   const tutorialCopy = seriesCopy(locale);
   const next = `${listing}${listing.includes("?") ? "&" : "?"}cursor=`;
   const learningHub = await getGuideArticle("life", HUB_SLUG, locale);
@@ -83,6 +85,11 @@ export default async function LifeHubPage(
         <h1 className="text-4xl font-bold tracking-tight">{t("guides.lifeHubTitle")}</h1>
         <p className="mt-4 max-w-2xl text-lg leading-8 text-[var(--muted)]">{t("guides.lifeHubIntro")}</p>
         {learningHub.status === "published" && <aside className="mt-6 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-5"><Link href={`/life/${HUB_SLUG}`} className="inline-flex min-h-11 items-center text-lg font-bold text-[var(--teal)] underline">{learning.title} →</Link><p className="leading-7">{learning.intro}</p></aside>}
+
+        {geminiHub?.status === "published" && geminiHub.document ? <aside className="mt-6 rounded-2xl border border-[var(--teal)] bg-[var(--paper)] p-5">
+          <a href={seriesHref(geminiSeries.hubSlug)} className="text-xl font-semibold text-[var(--teal)] underline">{geminiSeries.title}</a>
+          <p className="mt-2 leading-7">{t("geminiSeries.entry")}</p>
+        </aside> : null}
 
         <GuideFilters
           kind="life"

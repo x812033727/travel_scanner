@@ -60,11 +60,20 @@ export function useModalSheet<T extends HTMLElement>(open: boolean, onClose: () 
   // Read through a ref so a caller passing an inline arrow does not re-run the effect on
   // every render, which would re-steal focus while somebody is typing in the sheet.
   const closeRef = useRef(onClose);
-  const restoreFocusRef = useRef<(() => void) | null>(null);
-  // Update the callback before the committed sheet can receive keyboard input.
+  // Assigned in an effect rather than during render: React forbids touching a ref while
+  // rendering, and effects run in declaration order, so this lands before the one below.
+  // Both are layout effects so they land in the commit that draws the sheet. A commit caused
+  // by a resolved promise runs its passive effects a scheduler task later; a sheet a fetch had
+  // just opened ignored Escape in that gap, because its listener was not attached yet, and a
+  // sheet whose guard had just changed ran the previous render's handler.
   useLayoutEffect(() => {
     closeRef.current = onClose;
   });
+  // Where focus goes back to once the sheet lets go. Handed from the layout cleanup below to a
+  // passive one: within the commit, React puts focus back on whatever held it before, and a
+  // sheet that stays in the page as a filter bar still holds it, so focusing any earlier is
+  // undone.
+  const returnFocusRef = useRef<HTMLElement | null>(null);
 
   useLayoutEffect(() => {
     if (!open) return;
@@ -130,19 +139,17 @@ export function useModalSheet<T extends HTMLElement>(open: boolean, onClose: () 
       if (previousTabIndex === null) sheet.removeAttribute("tabindex");
       // Escape used to leave focus on <body>, which returns a keyboard reader to the top of
       // the document, several tabs from the control they had just used.
-      restoreFocusRef.current = () => {
-        if (wasTop && opener?.isConnected && (!layers.length || layers.at(-1)?.contains(opener))) opener.focus();
-      };
+      if (wasTop && opener?.isConnected && (!layers.length || layers.at(-1)?.contains(opener))) returnFocusRef.current = opener;
     };
   }, [open, lateSheet]);
 
-  // React restores the pre-update selection after layout cleanups. Return focus
-  // after that mutation phase so a still-mounted inline form cannot reclaim it.
+  // No dependency list, so this cleanup runs in the passive phase of every commit and on
+  // unmount -- after React's own focus restore in both cases.
   useEffect(() => () => {
-    const restore = restoreFocusRef.current;
-    restoreFocusRef.current = null;
-    restore?.();
-  }, [open, lateSheet]);
+    const opener = returnFocusRef.current;
+    returnFocusRef.current = null;
+    if (opener?.isConnected) opener.focus();
+  });
 
   // Stable, so React does not detach and reattach the element on every render.
   return useCallback((node: T | null) => {

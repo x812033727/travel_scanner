@@ -1,0 +1,248 @@
+{
+  "slug": "woocommerce-product-types",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "WooCommerce 商品怎麼建：實體、數位與可變商品",
+      "description": "WooCommerce 商品類型會影響選項、庫存、配送和下載權限，建立前先確認實際交付方式。本文用手作材料店的實體材料包、不同規格與電子圖樣，說明簡單商品、可變商品、Virtual 和 Downloadable 的差異，整理分類屬性、SKU、庫存設定與購物驗收步驟，減少上架後的資料混亂。",
+      "hero": {
+        "src": "/guides/woocommerce-product-types/hero.jpg",
+        "alt": "原創插畫，以實物資料夾、規格文件與庫存畫面代表商品資料建置。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "同一家手作材料店可能賣固定內容的材料包、可選尺寸的布料，也賣電子圖樣。它們都能放在同一間 WooCommerce 商店，但建立方式不同：有人要選規格，有人需要配送，有人付款後應取得檔案。先釐清交付內容，後面的價格和庫存才有一致的依據。"
+        },
+        {
+          "type": "paragraph",
+          "text": "建商品前可先做一張資料表，逐項寫下名稱、實際貨品、是否有選項、每種選項的價格與存量，以及是否附帶下載。以下聚焦 WooCommerce 核心商品功能；訂閱、預約和複雜套組應另查對應擴充，不能只靠商品名稱暗示系統會自動處理。"
+        },
+        {
+          "type": "heading",
+          "text": "用簡單商品建立第一筆標準資料",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "沒有可選變化的單一材料包，可先用 Simple product。進入商品新增頁，填寫名稱，在商品資料選擇簡單商品，設定一般售價，再補上描述、圖片與庫存。技術上能用少量欄位建立商品，不代表那些資訊已足以讓顧客決定購買。"
+        },
+        {
+          "type": "paragraph",
+          "text": "商品名稱應辨識這一項貨品，SKU 則供你在採購、庫存與訂單中追蹤。可以用固定且不含價格的內部編碼，避免促銷改價後編碼也跟著改。相同實物若出現在不同展示分類，不必為了分類多複製數個庫存互不連動的商品。"
+        },
+        {
+          "type": "paragraph",
+          "text": "實體商品填寫重量、尺寸與配送相關設定時，先確認商店使用的單位。產品尺寸與包裝後的寄送尺寸可能不同，應配合所使用的運費計算工具決定欄位含義，並在內部上架規則寫明，避免有人填公分、有人填毫米。"
+        },
+        {
+          "type": "heading",
+          "text": "分類、標籤與屬性各自負責一件事",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "商品分類有階層，適合讓顧客從「手作材料」進入「布料」或「工具」。標籤沒有父子層級，可用於跨分類的整理，但不應每次上架就新增含義相近的詞。分類過深或標籤過多，會讓選單難以維護。"
+        },
+        {
+          "type": "paragraph",
+          "text": "屬性用來描述共同特徵，也能定義規格變化，例如尺寸、顏色或材質。若多個商品共用，先在商品屬性管理建立全域屬性與選項；某一件商品專用的資訊，也可以使用個別屬性。需要跨商品篩選時，統一全域詞彙通常更好管理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把「米白」「奶油白」「原色」是否相同先決定，尺寸也應有一致表示方式。不要把只有展示用途的材質說明，全都變成客人必選的規格；畫面顯示屬性和以屬性建立可購買變化，是兩個需要分別確認的用途。"
+        },
+        {
+          "type": "heading",
+          "text": "有尺寸與顏色差異時，建立可變商品",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Variable product 適合每種選項需要不同價格、SKU、圖片或庫存的商品。以布料為例，先列實際販售的顏色和長度，再建立屬性與變化；如果某個顏色沒有長版，就不要留下看似可買、實際無法出貨的組合。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在商品資料選可變商品，加入並儲存屬性，再進入 Variations 產生組合或手動新增。逐一填入售價和必要資料；沒有價格的變化不會正常顯示為可購買選項。使用批次設定前，也應確認是不是每個尺寸都真的同價。"
+        },
+        {
+          "type": "paragraph",
+          "text": "假設三種顏色各有兩種長度，最多會形成六個組合。生成全部組合能省下點擊，卻不能取代核對：每項都要確認存在、價格正確、庫存來源明確。之後改動屬性名稱或選項，還應重新檢查既有變化對應是否正常。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "列出實際販售的規格矩陣，標記不存在的組合。",
+            "新增商品屬性，確認哪些屬性用於變化。",
+            "建立需要的變化，填入價格、圖片與庫存。",
+            "儲存後逐組選取，確認加入購物車的是正確規格。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "決定共用庫存，還是每個規格分開扣",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "商品層級庫存可讓不同變化共用一個數量；變化層級則能各自追蹤存量。若黑色和白色布料是不同實物，通常需要分開管理，否則總庫存還很多，客人卻可能買到已賣完的顏色。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若「材料包」和「材料包加電子圖樣」使用的是同一批實體材料，共用數量可能更符合需求。WooCommerce 也容許混合方式，但設定越複雜越需要寫清楚來源，不能在不知道扣哪一層的情況下，同時填滿父商品和所有變化的數量。"
+        },
+        {
+          "type": "paragraph",
+          "text": "允許缺貨預訂代表可能在沒有現貨時繼續接單，應依真實補貨能力決定。驗收時把某規格設成低存量或缺貨，觀察購買提示與可選項，並在測試訂單後核對扣庫存；取消訂單後也應確認數量回復符合預期。"
+        },
+        {
+          "type": "heading",
+          "text": "Virtual 與 Downloadable 依交付方式搭配",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Virtual 表示不需要實體配送，會移除相關配送欄位並影響運費計算。Downloadable 表示提供可下載檔案，會出現檔案、次數限制與有效天數等設定。純電子圖樣通常兩項都需要；實體材料包附電子說明，則不能因為有檔案就標成不需寄送。"
+        },
+        {
+          "type": "paragraph",
+          "text": "提供下載時，填入清楚的檔案名稱並核對正確版本，讓顧客知道收到的是 PDF 圖樣還是壓縮素材。下載次數與期限應符合商品頁承諾；實體與數位混合訂單，則需確認何時開放下載，避免把文件交付延後到實體商品完全出貨後。"
+        },
+        {
+          "type": "paragraph",
+          "text": "下載方式與儲存位置也影響保護程度。WordPress 媒體庫的一般檔案可能可用直接網址讀取；付費檔案應依 WooCommerce 的產品上傳和下載保護設定處理，並請維護者確認主機規則。不要把一般公開雲端連結誤當成購買權限控管。"
+        },
+        {
+          "type": "heading",
+          "text": "用三種購物組合檢查交付結果",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先測單買實體材料，應要求必要配送資料；再測純電子圖樣，確認運費與下載入口；最後混合購買，核對實體部分的運費，以及數位檔案的存取時間。不同組合比單看商品編輯頁更能發現設定錯誤。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若使用 Grouped product，它主要把其他商品集中展示，價格和庫存仍由個別商品負責，不會自動變成固定價格或連動庫存的折扣套組。External/Affiliate product 則把購買導向外部網站，不能拿自己的訂單後台當作外部成交結果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "上架確認表最後應由另一個人拿實物或原始檔核對：名稱、規格、單位、照片、數量和下載版本是否一致。商品資料一旦成為訂單來源，就需要穩定維護；複製舊商品省時之餘，也別忘了替換舊價格、SKU 和已不適用的檔案。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/woocommerce-product-types/diagram-1.svg",
+          "alt": "原創四欄圖解，以交付內容、規格選項、庫存來源與購物結果呈現 WooCommerce 商品建立順序。",
+          "width": 1600,
+          "height": 900,
+          "caption": "同一筆商品資料，要能一致地回答買什麼、扣哪份庫存，以及如何交付。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "販售內容",
+            "核心設定方向",
+            "重點驗收"
+          ],
+          "rows": [
+            [
+              "固定實體材料包",
+              "簡單商品",
+              "重量、庫存與運費"
+            ],
+            [
+              "多種顏色尺寸",
+              "可變商品",
+              "每組售價與存量"
+            ],
+            [
+              "純電子圖樣",
+              "Virtual＋Downloadable",
+              "無配送、檔案權限"
+            ],
+            [
+              "實體附電子說明",
+              "Downloadable，仍需配送",
+              "混合交付時間"
+            ],
+            [
+              "多項商品展示",
+              "Grouped product",
+              "個別價格與庫存"
+            ]
+          ],
+          "caption": "Virtual 與 Downloadable 是交付設定，不是彼此排斥的商品種類。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "改屬性後，要重新驗收變化",
+          "text": "欄位改名、刪除選項或調整規格後，逐一確認前台選單、價格、購物車和訂單內容。不要只因後台儲存成功，就認定每個組合都仍可正常購買。"
+        },
+        {
+          "type": "link",
+          "text": "WooCommerce 開店與訂單驗收",
+          "url": "https://mokaair.com/zh-TW/life/woocommerce-store-launch"
+        },
+        {
+          "type": "link",
+          "text": "WooCommerce 工具：先整理資料再選外掛",
+          "url": "https://mokaair.com/zh-TW/life/woocommerce-theme-extension-choice"
+        }
+      ],
+      "sources": [
+        {
+          "title": "商品管理總覽",
+          "url": "https://woocommerce.com/document/managing-products/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "新增商品與群組",
+          "url": "https://woocommerce.com/document/managing-products/add-product/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "分類標籤與屬性",
+          "url": "https://woocommerce.com/document/managing-product-taxonomies/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "可變商品",
+          "url": "https://woocommerce.com/document/variable-product/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "虛擬與下載商品",
+          "url": "https://woocommerce.com/document/managing-products/virtual-downloadable/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "下載檔案保護與交付",
+          "url": "https://woocommerce.com/document/digital-downloadable-product-handling/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

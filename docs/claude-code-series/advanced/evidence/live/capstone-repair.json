@@ -1,0 +1,88 @@
+{
+  "checked_at": "2026-09-14T13:45:10.803816+00:00",
+  "scope": "Intentional ID inversion in an isolated synthetic project, real Claude repair, identical independent test before and after",
+  "model_override": "haiku",
+  "assertions_sha256": "be67092194bb91a08f56c6450cfb2a03af78c8688529d4cbc25546c651b2852c",
+  "red": {
+    "exit": 1,
+    "output": "✔ three filters preserve full source and handle unknown mode (2.8474ms)\n✔ empty filters are valid for every mode (0.4764ms)\n✖ duplicate titles remain independent when toggling inside a filtered view (3.2285ms)\nℹ tests 3\nℹ suites 0\nℹ pass 2\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 148.942\n\n✖ failing tests:\n\ntest at ..\\..\\..\\..\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\live\\capstone-acceptance.test.mjs:26:1\n✖ duplicate titles remain independent when toggling inside a filtered view (3.2285ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n  + actual - expected\n  \n    [\n      [\n        'a',\n  +     false\n  -     true\n      ],\n      [\n        'b',\n  +     false\n  -     true\n      ],\n      [\n        'c',\n  +     true\n  -     false\n      ]\n    ]\n  \n      at TestContext.<anonymous> (file:///C:/Users/x8120/.codex/worktrees/1cff/travel_scan%E3%84%90/docs/claude-code-series/advanced/evidence/live/capstone-acceptance.test.mjs:29:10)\n      at Test.runInAsyncScope (node:async_hooks:214:14)\n      at Test.run (node:internal/test_runner/test:1106:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)\n      at Test.postRun (node:internal/test_runner/test:1235:19)\n      at Test.run (node:internal/test_runner/test:1163:12)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {\n    generatedMessage: true,\n    code: 'ERR_ASSERTION',\n    actual: [ [ 'a', false ], [ 'b', false ], [ 'c', true ] ],\n    expected: [ [ 'a', true ], [ 'b', true ], [ 'c', false ] ],\n    operator: 'deepStrictEqual',\n    diff: 'simple'\n  }\n"
+  },
+  "repair": {
+    "exit": 0,
+    "result": {
+      "is_error": false,
+      "duration_api_ms": 16542,
+      "num_turns": 4,
+      "stop_reason": "end_turn",
+      "session_id": "f6d633f3-89eb-438c-9d79-0aaffcee5890",
+      "total_cost_usd": 0.033936100000000004,
+      "usage": {
+        "input_tokens": 26,
+        "cache_creation_input_tokens": 11085,
+        "cache_read_input_tokens": 18551,
+        "output_tokens": 1822,
+        "output_tokens_details": {
+          "thinking_tokens": 1113
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 11085,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 8,
+            "output_tokens": 331,
+            "cache_read_input_tokens": 9867,
+            "cache_creation_input_tokens": 1218,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 1218
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "modelUsage": {
+        "claude-haiku-4-5-20251001": {
+          "inputTokens": 661,
+          "outputTokens": 1850,
+          "cacheReadInputTokens": 18551,
+          "cacheCreationInputTokens": 11085,
+          "webSearchRequests": 0,
+          "costUSD": 0.033936100000000004,
+          "contextWindow": 200000,
+          "maxOutputTokens": 32000,
+          "canonicalModel": "claude-haiku-4-5",
+          "provider": "firstParty"
+        }
+      },
+      "permission_denials": [],
+      "terminal_reason": "completed",
+      "fast_mode_state": "off",
+      "fast_mode_disabled_reason": "sdk_opt_in_required",
+      "subtype": "success",
+      "api_error_status": null,
+      "result": "**实际修正：**\n- model.js 第 7 行：`toggleTodo` 的条件从 `item.id !== id` 改为 `item.id === id`\n- 现在当 id 匹配时切换 completed，id 不匹配时保持原项不变\n\n**未执行的检查：**\n- 按用户要求未执行命令验证（`node --test tests/model.test.mjs`），但逻辑修正与测试期望完全对应：目标 id 的项现在会被正确切换，其他 id 的项保持不变",
+      "ttft_ms": 2141,
+      "ttft_stream_ms": 973,
+      "time_to_request_ms": 46,
+      "type": "result",
+      "duration_ms": 15552,
+      "uuid": "9cc2d930-aca3-4ba0-8518-97bceee9adeb"
+    }
+  },
+  "green": {
+    "exit": 0,
+    "output": "✔ three filters preserve full source and handle unknown mode (1.5719ms)\n✔ empty filters are valid for every mode (0.1025ms)\n✔ duplicate titles remain independent when toggling inside a filtered view (0.1521ms)\nℹ tests 3\nℹ suites 0\nℹ pass 3\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 129.3209\n"
+  },
+  "diff_against_prefault_feature": "",
+  "changed_tracked_files_after_repair": "",
+  "passed": true
+}

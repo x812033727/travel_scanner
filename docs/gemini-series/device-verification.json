@@ -1,0 +1,76 @@
+{
+  "checkedDate": "2026-09-14",
+  "method": "Official help and product pages; Taiwan Google One public page additionally inspected in a browser after client-side prices loaded. No subscription purchased and no signed-in Gemini product operation tested.",
+  "taiwanPlans": {
+    "url": "https://one.google.com/intl/zh-TW_tw/about/google-ai-plans/",
+    "observedRegion": "台灣",
+    "currency": "TWD",
+    "billingPeriod": "monthly",
+    "plans": [
+      {
+        "name": "Google AI Plus",
+        "price": 165,
+        "storage": "400 GB",
+        "geminiLimitBasis": "2x standard",
+        "flowCredits": 200
+      },
+      {
+        "name": "Google AI Pro",
+        "price": 650,
+        "storage": "5 TB",
+        "geminiLimitBasis": "4x standard",
+        "flowCredits": 1000
+      },
+      {
+        "name": "Google AI Ultra 5x",
+        "price": 3300,
+        "storage": "20 TB",
+        "geminiLimitBasis": "5x Pro",
+        "flowCredits": 10000
+      },
+      {
+        "name": "Google AI Ultra 20x",
+        "price": 6500,
+        "storage": "30 TB",
+        "geminiLimitBasis": "20x Pro",
+        "flowCredits": 25000
+      }
+    ],
+    "boundary": "Public list prices, not account checkout or promotion eligibility. Browser AX tree explicitly exposed monthly TWD amounts and comparison table. Older official Plus launch price is historical and intentionally not reused."
+  },
+  "appleStore": {
+    "url": "https://apps.apple.com/tw/app/google-gemini/id6477489729",
+    "provider": "Google LLC",
+    "minimumIOS": "17.4",
+    "minimumIPadOS": "17.4",
+    "boundary": "Current Taiwan App Store compatibility takes precedence over older generic help text mentioning iOS 16."
+  },
+  "modelSelection": {
+    "source": "https://support.google.com/gemini/answer/16275805?hl=en",
+    "modelFamilies": [
+      "Flash-Lite",
+      "Flash",
+      "Pro"
+    ],
+    "thinkingLevels": [
+      "Standard",
+      "Extended",
+      "Deep Think"
+    ],
+    "boundary": "Product capabilities from official help; no empirical cross-model ranking. Deep Think needs eligible Ultra and Pro. API model identifiers are separate."
+  },
+  "mac": {
+    "source": "https://support.google.com/gemini/answer/17011627?hl=zh-Hant",
+    "requirements": "macOS 15+, 8 GB RAM, 200 MB storage per help page; check download page for hardware compatibility",
+    "quickAccess": "Option+Space",
+    "windowDictation": "English only and gradual rollout; distinct from ordinary microphone input",
+    "boundary": "Documented, not tested on a Mac in this workspace."
+  },
+  "windows": {
+    "source": "https://support.google.com/gemini/answer/18263854?hl=en",
+    "requirements": "Windows 10+, 8 GB RAM, 200 MB disk",
+    "installer": "GeminiSetup.exe",
+    "shortcut": "Alt+Space",
+    "boundary": "Official Windows desktop app exists as of verification; article 04 retains web focus and adds independent native setup. Not installed/tested in this workspace."
+  }
+}

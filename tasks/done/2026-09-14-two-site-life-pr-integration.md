@@ -1,0 +1,516 @@
+---
+id: 2026-09-14-two-site-life-pr-integration
+title: Integrate two-site life content delivery for PR
+status: done
+priority: P2
+area: docs
+owner: codex-two-site-life
+claimed_at: 2026-09-14T13:11:42Z
+created_at: 2026-09-14T13:08:03Z
+completed_at: 2026-09-14T13:15:53Z
+branch: codex/two-site-life-content
+depends_on: []
+scope:
+  - docs/content-research/two-site-life
+  - .codex/two-site-life/work
+  - apps/api/app/guides/content/website-cms-choice.json
+  - apps/web/public/guides/website-cms-choice
+  - apps/api/app/guides/content/wordpress-first-site.json
+  - apps/web/public/guides/wordpress-first-site
+  - apps/api/app/guides/content/wordpress-com-org-choice.json
+  - apps/web/public/guides/wordpress-com-org-choice
+  - apps/api/app/guides/content/website-budget-worksheet.json
+  - apps/web/public/guides/website-budget-worksheet
+  - apps/api/app/guides/content/website-maintenance-routine.json
+  - apps/web/public/guides/website-maintenance-routine
+  - apps/api/app/guides/content/hosting-types-explained.json
+  - apps/web/public/guides/hosting-types-explained
+  - apps/api/app/guides/content/domain-registration-guide.json
+  - apps/web/public/guides/domain-registration-guide
+  - apps/api/app/guides/content/namecheap-domain-setup.json
+  - apps/web/public/guides/namecheap-domain-setup
+  - apps/api/app/guides/content/gandi-domain-management.json
+  - apps/web/public/guides/gandi-domain-management
+  - apps/api/app/guides/content/dns-records-troubleshooting.json
+  - apps/web/public/guides/dns-records-troubleshooting
+  - apps/api/app/guides/content/https-certificate-setup.json
+  - apps/web/public/guides/https-certificate-setup
+  - apps/api/app/guides/content/domain-hosting-renewal.json
+  - apps/web/public/guides/domain-hosting-renewal
+  - apps/api/app/guides/content/bluehost-wordpress-setup.json
+  - apps/web/public/guides/bluehost-wordpress-setup
+  - apps/api/app/guides/content/bluehost-domain-billing.json
+  - apps/web/public/guides/bluehost-domain-billing
+  - apps/api/app/guides/content/cloudways-wordpress-setup.json
+  - apps/web/public/guides/cloudways-wordpress-setup
+  - apps/api/app/guides/content/cloudways-ssl-setup.json
+  - apps/web/public/guides/cloudways-ssl-setup
+  - apps/api/app/guides/content/hostinger-wordpress-setup.json
+  - apps/web/public/guides/hostinger-wordpress-setup
+  - apps/api/app/guides/content/hosting-com-wordpress-setup.json
+  - apps/web/public/guides/hosting-com-wordpress-setup
+  - apps/api/app/guides/content/siteground-wordpress-setup.json
+  - apps/web/public/guides/siteground-wordpress-setup
+  - apps/api/app/guides/content/hostgator-wordpress-setup.json
+  - apps/web/public/guides/hostgator-wordpress-setup
+  - apps/api/app/guides/content/fastcomet-wordpress-setup.json
+  - apps/web/public/guides/fastcomet-wordpress-setup
+  - apps/api/app/guides/content/managed-hosting-comparison.json
+  - apps/web/public/guides/managed-hosting-comparison
+  - apps/api/app/guides/content/wordpress-local-development.json
+  - apps/web/public/guides/wordpress-local-development
+  - apps/api/app/guides/content/wordpress-admin-basics.json
+  - apps/web/public/guides/wordpress-admin-basics
+  - apps/api/app/guides/content/wordpress-posts-pages.json
+  - apps/web/public/guides/wordpress-posts-pages
+  - apps/api/app/guides/content/wordpress-taxonomy-navigation.json
+  - apps/web/public/guides/wordpress-taxonomy-navigation
+  - apps/api/app/guides/content/wordpress-widgets-sidebar.json
+  - apps/web/public/guides/wordpress-widgets-sidebar
+  - apps/api/app/guides/content/wordpress-themes-plugins-install.json
+  - apps/web/public/guides/wordpress-themes-plugins-install
+  - apps/api/app/guides/content/wordpress-blog-build.json
+  - apps/web/public/guides/wordpress-blog-build
+  - apps/api/app/guides/content/wordpress-business-site.json
+  - apps/web/public/guides/wordpress-business-site
+  - apps/api/app/guides/content/wordpress-theme-selection.json
+  - apps/web/public/guides/wordpress-theme-selection
+  - apps/api/app/guides/content/wordpress-page-builder-choice.json
+  - apps/web/public/guides/wordpress-page-builder-choice
+  - apps/api/app/guides/content/wordpress-website-backup.json
+  - apps/web/public/guides/wordpress-website-backup
+  - apps/api/app/guides/content/wordpress-host-migration.json
+  - apps/web/public/guides/wordpress-host-migration
+  - apps/api/app/guides/content/wordpress-domain-migration.json
+  - apps/web/public/guides/wordpress-domain-migration
+  - apps/api/app/guides/content/wordpress-local-to-live.json
+  - apps/web/public/guides/wordpress-local-to-live
+  - apps/api/app/guides/content/wordpress-com-migration.json
+  - apps/web/public/guides/wordpress-com-migration
+  - apps/api/app/guides/content/domain-registrar-transfer.json
+  - apps/web/public/guides/domain-registrar-transfer
+  - apps/api/app/guides/content/wordpress-migration-aftercare.json
+  - apps/web/public/guides/wordpress-migration-aftercare
+  - apps/api/app/guides/content/wordpress-reset-safely.json
+  - apps/web/public/guides/wordpress-reset-safely
+  - apps/api/app/guides/content/wordpress-500-error.json
+  - apps/web/public/guides/wordpress-500-error
+  - apps/api/app/guides/content/wordpress-security-basics.json
+  - apps/web/public/guides/wordpress-security-basics
+  - apps/api/app/guides/content/wordpress-user-roles.json
+  - apps/web/public/guides/wordpress-user-roles
+  - apps/api/app/guides/content/wordpress-member-registration.json
+  - apps/web/public/guides/wordpress-member-registration
+  - apps/api/app/guides/content/wordpress-social-login.json
+  - apps/web/public/guides/wordpress-social-login
+  - apps/api/app/guides/content/wordpress-multilingual-site.json
+  - apps/web/public/guides/wordpress-multilingual-site
+  - apps/api/app/guides/content/wordpress-plugin-theme-translation.json
+  - apps/web/public/guides/wordpress-plugin-theme-translation
+  - apps/api/app/guides/content/wordpress-contact-forms.json
+  - apps/web/public/guides/wordpress-contact-forms
+  - apps/api/app/guides/content/wordpress-smtp-delivery.json
+  - apps/web/public/guides/wordpress-smtp-delivery
+  - apps/api/app/guides/content/wordpress-comment-spam.json
+  - apps/web/public/guides/wordpress-comment-spam
+  - apps/api/app/guides/content/wordpress-table-of-contents.json
+  - apps/web/public/guides/wordpress-table-of-contents
+  - apps/api/app/guides/content/wordpress-map-form-embeds.json
+  - apps/web/public/guides/wordpress-map-form-embeds
+  - apps/api/app/guides/content/wordpress-social-embeds.json
+  - apps/web/public/guides/wordpress-social-embeds
+  - apps/api/app/guides/content/wordpress-chat-contact-buttons.json
+  - apps/web/public/guides/wordpress-chat-contact-buttons
+  - apps/api/app/guides/content/wordpress-fonts-self-hosting.json
+  - apps/web/public/guides/wordpress-fonts-self-hosting
+  - apps/api/app/guides/content/wordpress-ftp-file-management.json
+  - apps/web/public/guides/wordpress-ftp-file-management
+  - apps/api/app/guides/content/astra-theme-customization.json
+  - apps/web/public/guides/astra-theme-customization
+  - apps/api/app/guides/content/astra-portfolio-extensions.json
+  - apps/web/public/guides/astra-portfolio-extensions
+  - apps/api/app/guides/content/elementor-first-page.json
+  - apps/web/public/guides/elementor-first-page
+  - apps/api/app/guides/content/elementor-pro-theme-builder.json
+  - apps/web/public/guides/elementor-pro-theme-builder
+  - apps/api/app/guides/content/elementor-forms-addons.json
+  - apps/web/public/guides/elementor-forms-addons
+  - apps/api/app/guides/content/divi-site-building.json
+  - apps/web/public/guides/divi-site-building
+  - apps/api/app/guides/content/divi-mobile-type-layout.json
+  - apps/web/public/guides/divi-mobile-type-layout
+  - apps/api/app/guides/content/divi-portfolio-child-theme.json
+  - apps/web/public/guides/divi-portfolio-child-theme
+  - apps/api/app/guides/content/divi-subscription-sharing.json
+  - apps/web/public/guides/divi-subscription-sharing
+  - apps/api/app/guides/content/blocksy-theme-setup.json
+  - apps/web/public/guides/blocksy-theme-setup
+  - apps/api/app/guides/content/avada-business-site.json
+  - apps/web/public/guides/avada-business-site
+  - apps/api/app/guides/content/newspaper-editorial-site.json
+  - apps/web/public/guides/newspaper-editorial-site
+  - apps/api/app/guides/content/themeforest-license-purchase.json
+  - apps/web/public/guides/themeforest-license-purchase
+  - apps/api/app/guides/content/woocommerce-store-launch.json
+  - apps/web/public/guides/woocommerce-store-launch
+  - apps/api/app/guides/content/woocommerce-theme-extension-choice.json
+  - apps/web/public/guides/woocommerce-theme-extension-choice
+  - apps/api/app/guides/content/woocommerce-product-types.json
+  - apps/web/public/guides/woocommerce-product-types
+  - apps/api/app/guides/content/woocommerce-product-information.json
+  - apps/web/public/guides/woocommerce-product-information
+  - apps/api/app/guides/content/woocommerce-payments-shipping.json
+  - apps/web/public/guides/woocommerce-payments-shipping
+  - apps/api/app/guides/content/woocommerce-paypal-setup.json
+  - apps/web/public/guides/woocommerce-paypal-setup
+  - apps/api/app/guides/content/woocommerce-shipping-rules.json
+  - apps/web/public/guides/woocommerce-shipping-rules
+  - apps/api/app/guides/content/woocommerce-checkout-fields.json
+  - apps/web/public/guides/woocommerce-checkout-fields
+  - apps/api/app/guides/content/woocommerce-member-checkout.json
+  - apps/web/public/guides/woocommerce-member-checkout
+  - apps/api/app/guides/content/woocommerce-promotions-coupons.json
+  - apps/web/public/guides/woocommerce-promotions-coupons
+  - apps/api/app/guides/content/woocommerce-loyalty-points.json
+  - apps/web/public/guides/woocommerce-loyalty-points
+  - apps/api/app/guides/content/woocommerce-wishlist.json
+  - apps/web/public/guides/woocommerce-wishlist
+  - apps/api/app/guides/content/woocommerce-quote-request.json
+  - apps/web/public/guides/woocommerce-quote-request
+  - apps/api/app/guides/content/woocommerce-order-email.json
+  - apps/web/public/guides/woocommerce-order-email
+  - apps/api/app/guides/content/woocommerce-order-operations.json
+  - apps/web/public/guides/woocommerce-order-operations
+  - apps/api/app/guides/content/woocommerce-tax-settings.json
+  - apps/web/public/guides/woocommerce-tax-settings
+  - apps/api/app/guides/content/online-course-platform-choice.json
+  - apps/web/public/guides/online-course-platform-choice
+  - apps/api/app/guides/content/wordpress-booking-system.json
+  - apps/web/public/guides/wordpress-booking-system
+  - apps/api/app/guides/content/independent-store-marketplace.json
+  - apps/web/public/guides/independent-store-marketplace
+  - apps/api/app/guides/content/seo-learning-roadmap.json
+  - apps/web/public/guides/seo-learning-roadmap
+  - apps/api/app/guides/content/search-crawlers-explained.json
+  - apps/web/public/guides/search-crawlers-explained
+  - apps/api/app/guides/content/crawl-budget-diagnosis.json
+  - apps/web/public/guides/crawl-budget-diagnosis
+  - apps/api/app/guides/content/technical-seo-checklist.json
+  - apps/web/public/guides/technical-seo-checklist
+  - apps/api/app/guides/content/on-page-seo-workflow.json
+  - apps/web/public/guides/on-page-seo-workflow
+  - apps/api/app/guides/content/seo-search-intent.json
+  - apps/web/public/guides/seo-search-intent
+  - apps/api/app/guides/content/seo-keyword-research.json
+  - apps/web/public/guides/seo-keyword-research
+  - apps/api/app/guides/content/seo-content-cannibalization.json
+  - apps/web/public/guides/seo-content-cannibalization
+  - apps/api/app/guides/content/seo-title-writing.json
+  - apps/web/public/guides/seo-title-writing
+  - apps/api/app/guides/content/seo-content-quality.json
+  - apps/web/public/guides/seo-content-quality
+  - apps/api/app/guides/content/seo-trust-sensitive-topics.json
+  - apps/web/public/guides/seo-trust-sensitive-topics
+  - apps/api/app/guides/content/seo-agency-selection.json
+  - apps/web/public/guides/seo-agency-selection
+  - apps/api/app/guides/content/web-design-agency-brief.json
+  - apps/web/public/guides/web-design-agency-brief
+  - apps/api/app/guides/content/seo-backlinks-outreach.json
+  - apps/web/public/guides/seo-backlinks-outreach
+  - apps/api/app/guides/content/seo-domain-authority.json
+  - apps/web/public/guides/seo-domain-authority
+  - apps/api/app/guides/content/google-ranking-history.json
+  - apps/web/public/guides/google-ranking-history
+  - apps/api/app/guides/content/google-search-console-workflow.json
+  - apps/web/public/guides/google-search-console-workflow
+  - apps/api/app/guides/content/sitemap-website-submission.json
+  - apps/web/public/guides/sitemap-website-submission
+  - apps/api/app/guides/content/canonical-url-guide.json
+  - apps/web/public/guides/canonical-url-guide
+  - apps/api/app/guides/content/redirects-301-302.json
+  - apps/web/public/guides/redirects-301-302
+  - apps/api/app/guides/content/website-www-subdomains.json
+  - apps/web/public/guides/website-www-subdomains
+  - apps/api/app/guides/content/hreflang-language-sites.json
+  - apps/web/public/guides/hreflang-language-sites
+  - apps/api/app/guides/content/structured-data-basics.json
+  - apps/web/public/guides/structured-data-basics
+  - apps/api/app/guides/content/open-graph-sharing.json
+  - apps/web/public/guides/open-graph-sharing
+  - apps/api/app/guides/content/image-seo-workflow.json
+  - apps/web/public/guides/image-seo-workflow
+  - apps/api/app/guides/content/core-web-vitals-diagnosis.json
+  - apps/web/public/guides/core-web-vitals-diagnosis
+  - apps/api/app/guides/content/pagespeed-performance-review.json
+  - apps/web/public/guides/pagespeed-performance-review
+  - apps/api/app/guides/content/website-cache-cdn.json
+  - apps/web/public/guides/website-cache-cdn
+  - apps/api/app/guides/content/wordpress-performance-plugins.json
+  - apps/web/public/guides/wordpress-performance-plugins
+  - apps/api/app/guides/content/lazy-loading-images.json
+  - apps/web/public/guides/lazy-loading-images
+  - apps/api/app/guides/content/amp-website-decision.json
+  - apps/web/public/guides/amp-website-decision
+  - apps/api/app/guides/content/seo-plugin-selection.json
+  - apps/web/public/guides/seo-plugin-selection
+  - apps/api/app/guides/content/google-site-kit-setup.json
+  - apps/web/public/guides/google-site-kit-setup
+  - apps/api/app/guides/content/google-trends-research.json
+  - apps/web/public/guides/google-trends-research
+  - apps/api/app/guides/content/ahrefs-research-workflow.json
+  - apps/web/public/guides/ahrefs-research-workflow
+  - apps/api/app/guides/content/semrush-research-workflow.json
+  - apps/web/public/guides/semrush-research-workflow
+  - apps/api/app/guides/content/ubersuggest-keyword-workflow.json
+  - apps/web/public/guides/ubersuggest-keyword-workflow
+  - apps/api/app/guides/content/similarweb-traffic-estimates.json
+  - apps/web/public/guides/similarweb-traffic-estimates
+  - apps/api/app/guides/content/dataforseo-api-basics.json
+  - apps/web/public/guides/dataforseo-api-basics
+  - apps/api/app/guides/content/seo-tool-selection.json
+  - apps/web/public/guides/seo-tool-selection
+  - apps/api/app/guides/content/search-results-clickthrough.json
+  - apps/web/public/guides/search-results-clickthrough
+  - apps/api/app/guides/content/yahoo-search-visibility.json
+  - apps/web/public/guides/yahoo-search-visibility
+  - apps/api/app/guides/content/ai-search-geo-content.json
+  - apps/web/public/guides/ai-search-geo-content
+  - apps/api/app/guides/content/ai-search-tools-measurement.json
+  - apps/web/public/guides/ai-search-tools-measurement
+  - apps/api/app/guides/content/llms-txt-evaluation.json
+  - apps/web/public/guides/llms-txt-evaluation
+  - apps/api/app/guides/content/zero-click-search-strategy.json
+  - apps/web/public/guides/zero-click-search-strategy
+  - apps/api/app/guides/content/knowledge-graph-entities.json
+  - apps/web/public/guides/knowledge-graph-entities
+  - apps/api/app/guides/content/ecommerce-product-seo.json
+  - apps/web/public/guides/ecommerce-product-seo
+  - apps/api/app/guides/content/marketing-plan-small-business.json
+  - apps/web/public/guides/marketing-plan-small-business
+  - apps/api/app/guides/content/marketing-mix-models.json
+  - apps/web/public/guides/marketing-mix-models
+  - apps/api/app/guides/content/stp-persona-research.json
+  - apps/web/public/guides/stp-persona-research
+  - apps/api/app/guides/content/customer-journey-funnel.json
+  - apps/web/public/guides/customer-journey-funnel
+  - apps/api/app/guides/content/swot-tows-action-plan.json
+  - apps/web/public/guides/swot-tows-action-plan
+  - apps/api/app/guides/content/pestle-business-scan.json
+  - apps/web/public/guides/pestle-business-scan
+  - apps/api/app/guides/content/ansoff-growth-options.json
+  - apps/web/public/guides/ansoff-growth-options
+  - apps/api/app/guides/content/bcg-portfolio-review.json
+  - apps/web/public/guides/bcg-portfolio-review
+  - apps/api/app/guides/content/porter-five-forces.json
+  - apps/web/public/guides/porter-five-forces
+  - apps/api/app/guides/content/business-models-b2b-d2c.json
+  - apps/web/public/guides/business-models-b2b-d2c
+  - apps/api/app/guides/content/omo-channel-integration.json
+  - apps/web/public/guides/omo-channel-integration
+  - apps/api/app/guides/content/martech-tool-stack.json
+  - apps/web/public/guides/martech-tool-stack
+  - apps/api/app/guides/content/content-marketing-calendar.json
+  - apps/web/public/guides/content-marketing-calendar
+  - apps/api/app/guides/content/marketing-copywriting.json
+  - apps/web/public/guides/marketing-copywriting
+  - apps/api/app/guides/content/brand-tone-vibe-marketing.json
+  - apps/web/public/guides/brand-tone-vibe-marketing
+  - apps/api/app/guides/content/social-media-planning.json
+  - apps/web/public/guides/social-media-planning
+  - apps/api/app/guides/content/ugc-word-of-mouth.json
+  - apps/web/public/guides/ugc-word-of-mouth
+  - apps/api/app/guides/content/influencer-collaboration.json
+  - apps/web/public/guides/influencer-collaboration
+  - apps/api/app/guides/content/short-video-marketing.json
+  - apps/web/public/guides/short-video-marketing
+  - apps/api/app/guides/content/marketing-agency-contract.json
+  - apps/web/public/guides/marketing-agency-contract
+  - apps/api/app/guides/content/paid-vs-organic-marketing.json
+  - apps/web/public/guides/paid-vs-organic-marketing
+  - apps/api/app/guides/content/google-ads-first-campaign.json
+  - apps/web/public/guides/google-ads-first-campaign
+  - apps/api/app/guides/content/google-ads-budget.json
+  - apps/web/public/guides/google-ads-budget
+  - apps/api/app/guides/content/google-pmax-evaluation.json
+  - apps/web/public/guides/google-pmax-evaluation
+  - apps/api/app/guides/content/meta-ads-first-campaign.json
+  - apps/web/public/guides/meta-ads-first-campaign
+  - apps/api/app/guides/content/dcard-advertising-basics.json
+  - apps/web/public/guides/dcard-advertising-basics
+  - apps/api/app/guides/content/line-ads-basics.json
+  - apps/web/public/guides/line-ads-basics
+  - apps/api/app/guides/content/chatgpt-ads-status.json
+  - apps/web/public/guides/chatgpt-ads-status
+  - apps/api/app/guides/content/marketing-metrics-roi-roas.json
+  - apps/web/public/guides/marketing-metrics-roi-roas
+  - apps/api/app/guides/content/ga4-site-measurement.json
+  - apps/web/public/guides/ga4-site-measurement
+  - apps/api/app/guides/content/ga4-sessions-engagement.json
+  - apps/web/public/guides/ga4-sessions-engagement
+  - apps/api/app/guides/content/google-tag-manager-setup.json
+  - apps/web/public/guides/google-tag-manager-setup
+  - apps/api/app/guides/content/utm-link-conventions.json
+  - apps/web/public/guides/utm-link-conventions
+  - apps/api/app/guides/content/short-url-management.json
+  - apps/web/public/guides/short-url-management
+  - apps/api/app/guides/content/microsoft-clarity-review.json
+  - apps/web/public/guides/microsoft-clarity-review
+  - apps/api/app/guides/content/google-business-profile.json
+  - apps/web/public/guides/google-business-profile
+  - apps/api/app/guides/content/email-newsletter-planning.json
+  - apps/web/public/guides/email-newsletter-planning
+  - apps/api/app/guides/content/kit-newsletter-setup.json
+  - apps/web/public/guides/kit-newsletter-setup
+  - apps/api/app/guides/content/mailchimp-wordpress-newsletter.json
+  - apps/web/public/guides/mailchimp-wordpress-newsletter
+  - apps/api/app/guides/content/brevo-newsletter-account.json
+  - apps/web/public/guides/brevo-newsletter-account
+  - apps/api/app/guides/content/sms-marketing-consent.json
+  - apps/web/public/guides/sms-marketing-consent
+  - apps/api/app/guides/content/social-chatbot-workflow.json
+  - apps/web/public/guides/social-chatbot-workflow
+  - apps/api/app/guides/content/adsense-site-preparation.json
+  - apps/web/public/guides/adsense-site-preparation
+  - apps/api/app/guides/content/wordpress-ad-placement.json
+  - apps/web/public/guides/wordpress-ad-placement
+  - apps/api/app/guides/content/youtube-payment-tax-info.json
+  - apps/web/public/guides/youtube-payment-tax-info
+  - apps/api/app/guides/content/affiliate-marketing-basics.json
+  - apps/web/public/guides/affiliate-marketing-basics
+  - apps/api/app/guides/content/website-income-models.json
+  - apps/web/public/guides/website-income-models
+  - apps/api/app/guides/content/taiwan-company-registration.json
+  - apps/web/public/guides/taiwan-company-registration
+  - apps/api/app/guides/content/web-design-project-workflow.json
+  - apps/web/public/guides/web-design-project-workflow
+  - apps/api/app/guides/content/website-information-architecture.json
+  - apps/web/public/guides/website-information-architecture
+  - apps/api/app/guides/content/responsive-layout-basics.json
+  - apps/web/public/guides/responsive-layout-basics
+  - apps/api/app/guides/content/web-layout-hierarchy.json
+  - apps/web/public/guides/web-layout-hierarchy
+  - apps/api/app/guides/content/portfolio-case-study.json
+  - apps/web/public/guides/portfolio-case-study
+  - apps/api/app/guides/content/ui-ux-learning.json
+  - apps/web/public/guides/ui-ux-learning
+  - apps/api/app/guides/content/design-thinking-practice.json
+  - apps/web/public/guides/design-thinking-practice
+  - apps/api/app/guides/content/wireframe-prototype-testing.json
+  - apps/web/public/guides/wireframe-prototype-testing
+  - apps/api/app/guides/content/website-color-system.json
+  - apps/web/public/guides/website-color-system
+  - apps/api/app/guides/content/rgb-cmyk-export.json
+  - apps/web/public/guides/rgb-cmyk-export
+  - apps/api/app/guides/content/brand-identity-logo-brief.json
+  - apps/web/public/guides/brand-identity-logo-brief
+  - apps/api/app/guides/content/logo-design-tools-budget.json
+  - apps/web/public/guides/logo-design-tools-budget
+  - apps/api/app/guides/content/font-license-web-typography.json
+  - apps/web/public/guides/font-license-web-typography
+  - apps/api/app/guides/content/licensed-assets-workflow.json
+  - apps/web/public/guides/licensed-assets-workflow
+  - apps/api/app/guides/content/image-formats-compression.json
+  - apps/web/public/guides/image-formats-compression
+  - apps/api/app/guides/content/figma-design-basics.json
+  - apps/web/public/guides/figma-design-basics
+  - apps/api/app/guides/content/figma-plugin-assets.json
+  - apps/web/public/guides/figma-plugin-assets
+  - apps/api/app/guides/content/figma-ai-design-workflow.json
+  - apps/web/public/guides/figma-ai-design-workflow
+  - apps/api/app/guides/content/ai-design-prompt-workflow.json
+  - apps/web/public/guides/ai-design-prompt-workflow
+  - apps/api/app/guides/content/css-layout-basics.json
+  - apps/web/public/guides/css-layout-basics
+  - apps/api/app/guides/content/sass-scss-workflow.json
+  - apps/web/public/guides/sass-scss-workflow
+  - apps/api/app/guides/content/lottie-web-animation.json
+  - apps/web/public/guides/lottie-web-animation
+  - apps/api/app/guides/content/website-404-recovery.json
+  - apps/web/public/guides/website-404-recovery
+  - apps/api/app/guides/content/landing-page-cta.json
+  - apps/web/public/guides/landing-page-cta
+  - apps/api/app/guides/content/canva-design-workflow.json
+  - apps/web/public/guides/canva-design-workflow
+  - apps/api/app/guides/content/eagle-asset-library.json
+  - apps/web/public/guides/eagle-asset-library
+  - apps/api/app/guides/content/wix-first-website.json
+  - apps/web/public/guides/wix-first-website
+  - apps/api/app/guides/content/lovable-first-project.json
+  - apps/web/public/guides/lovable-first-project
+  - apps/api/app/guides/content/ai-site-search-design.json
+  - apps/web/public/guides/ai-site-search-design
+  - apps/api/app/guides/content/immersive-translate-guide.json
+  - apps/web/public/guides/immersive-translate-guide
+  - apps/api/app/guides/content/transcription-desktop-tools.json
+  - apps/web/public/guides/transcription-desktop-tools
+  - apps/api/app/guides/content/adobe-podcast-audio.json
+  - apps/web/public/guides/adobe-podcast-audio
+  - apps/api/app/guides/content/obs-screen-recording.json
+  - apps/web/public/guides/obs-screen-recording
+  - apps/api/app/guides/content/premiere-editing-basics.json
+  - apps/web/public/guides/premiere-editing-basics
+  - apps/api/app/guides/content/course-video-editing.json
+  - apps/web/public/guides/course-video-editing
+  - apps/api/app/guides/content/frameio-video-review.json
+  - apps/web/public/guides/frameio-video-review
+  - apps/api/app/guides/content/envato-music-license.json
+  - apps/web/public/guides/envato-music-license
+  - apps/api/app/guides/content/wise-transfer-checklist.json
+  - apps/web/public/guides/wise-transfer-checklist
+  - apps/api/app/guides/content/saas-paas-iaas-responsibility.json
+  - apps/web/public/guides/saas-paas-iaas-responsibility
+  - apps/api/app/guides/content/small-language-models.json
+  - apps/web/public/guides/small-language-models
+  - apps/api/app/guides/content/rag-retrieval-explained.json
+  - apps/web/public/guides/rag-retrieval-explained
+  - apps/api/app/guides/content/generative-ai-basics.json
+  - apps/web/public/guides/generative-ai-basics
+  - apps/api/app/guides/content/agent-service-evaluation.json
+  - apps/web/public/guides/agent-service-evaluation
+  - apps/api/app/guides/content/claude-cowork-evaluation.json
+  - apps/web/public/guides/claude-cowork-evaluation
+  - apps/api/app/guides/content/claude-design-evaluation.json
+  - apps/web/public/guides/claude-design-evaluation
+  - apps/api/app/guides/content/claude-code-plugin-management.json
+  - apps/web/public/guides/claude-code-plugin-management
+  - apps/api/app/guides/content/four-hour-workweek-reflection.json
+  - apps/web/public/guides/four-hour-workweek-reflection
+  - apps/api/app/guides/content/woocommerce-catalog-mode.json
+  - apps/web/public/guides/woocommerce-catalog-mode
+---
+
+# Integrate two-site life content delivery for PR
+
+## Why
+
+The completed 232-article delivery was authored against an older main. The latest
+main contains four articles answering the same reader questions. Archive the four
+superseded drafts and deliver 228 new packs with complete source dispositions.
+Git LF normalization must retain an explicit lineage to the original batch hashes.
+
+## Definition of done
+
+- [x] Latest-main title inventory and semantic deduplication are recorded.
+- [x] All 474 source titles resolve to a documented disposition; only 228 new packs are importable.
+- [x] Original 232 authored drafts and all 1,624 batch evidence hashes have verifiable PR lineage.
+- [x] Scoped content, links, image metadata and task checks pass for a reviewable PR.
+
+## Steps
+
+- [x] Archive four duplicates and redirect the one related-article link.
+- [x] Record normalized-file evidence and run the delivery audit on the integration base.
+- [x] Verify the staged path boundary and prepare the scoped PR.
+
+## How to verify
+
+Run final_audit.py, guides.pack_cli lint restricted to the active catalogue slugs,
+apps/api/tests/test_guides_content_pack.py, npm run check:tasks, and git diff --cached --check.
+Verify the PR base, exact head and required CI before the user-authorized merge.
+
+## Notes
+
+This task covers PR preparation of the previously completed batches. Publishing,
+production import and deployment are outside this request. Public ArticlePacks
+and images contain no inspiration-site names or URLs; those remain internal records.
+
+Validation: 228 entries checked; content-pack tests 9 passed / 5 skipped; 432 task files checked. Final audit verified all 1,624 original hashes through reversible transformations and all 1,624 staged Git blobs. The scoped PR includes 228 active packs and four preserved drafts. Main integration base: 0b120251a0dcd71af50b3db49eca1dc370569ff0.

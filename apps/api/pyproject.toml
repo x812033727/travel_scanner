@@ -30,11 +30,11 @@ dev = [
   "aiosqlite>=0.22,<1",
   "boto3-stubs[s3]>=1.43,<2",
   "fakeredis>=2.31,<3",
-  "mypy>=1.17,<2",
+  "mypy>=2.3,<3",
   "pip-audit>=2.10,<3",
   "pytest>=9.0.3,<10",
   "pytest-asyncio>=1.1,<2",
-  "pytest-cov>=6.2,<7",
+  "pytest-cov>=6.2,<8",
   "ruff>=0.12,<1"
 ]
 
@@ -79,9 +79,12 @@ ignore = ["S101"]
 # attacker benefits from predicting.
 "app/providers/mock.py" = ["S311"]
 "app/hotspots/wikimedia.py" = ["S311"]
-# One documented feed on a hardcoded official URL, parsed only after the body is rejected
-# for containing `<!DOCTYPE` or `<!ENTITY` and for exceeding 15 MB. See the note in
-# tasks/open/2026-09-13-ruff-flake8-bandit.md about the UTF-16 gap in that guard.
+# One documented feed on a hardcoded official URL, parsed only after `_declares_dtd` rejects
+# a body carrying `<!DOCTYPE` or `<!ENTITY` in any XML encoding, and after a 15 MB cap. The
+# rule objects to `ElementTree` itself rather than to that guard, and the alternative is
+# promoting `defusedxml` from a transitive dev dependency to a runtime one for a single feed
+# — weighed and declined in tasks/done/2026-09-14-airalo-feed-utf16-doctype.md. Revisit this
+# entry if a second XML source ever arrives.
 "app/travel_services/jobs.py" = ["S314"]
 # The content-pack CLI (`python -m app.guides.pack_cli`). Nothing here is reachable from an
 # HTTP request: a person or a writing agent runs it over a workspace directory in this
@@ -90,10 +93,11 @@ ignore = ["S101"]
     # `_parse_svg` reads a diagram from that workspace, and `check_svg` exists to refuse the
     # dangerous shapes (external `url()`, `<script>`) rather than to trust them.
     "S314",
-    # `UrllibTransport` exists because Wikimedia's edge refuses httpx's own connections. The
-    # URL is the Commons API endpoint or an `imageinfo` URL Commons itself returned — never
-    # anything a request supplied. See tasks/open/2026-09-14-pack-ingest-urlopen-scheme.md
-    # for the remaining scheme question, which is filed rather than assumed away.
+    # `UrllibTransport` exists because Wikimedia's edge refuses httpx's own connections, and
+    # it now refuses any scheme but http and https — on the first URL and on every redirect
+    # hop, since it hands 3xx back to httpx instead of letting urllib follow them. The rule
+    # objects to `urlopen` at all, which is the part that cannot change: the whole point of
+    # the transport is that httpx's own connections are blocked.
     "S310",
     # `render_svg` runs headless Chromium with a fixed argument list and `shell=False`; the
     # only variable parts are the resolved binary path and a temporary file this module wrote.
