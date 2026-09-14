@@ -212,6 +212,43 @@
           "text": "參考修改只把原本 36px 改為 24px，不追加一份可能被後面 CSS 蓋掉的同名規則。完成後查看 diff，確認 core.mjs 與 app.js 沒有被順便重構，也沒有把焦點外框移除。桌面開發模式或瀏覽器檢查工具可查看 header 的實際 computed margin-bottom；這種量測比只憑兩張圖的相似程度更明確。沒有工具可量測時記錄限制，仍可人工對照。"
         },
         {
+          "type": "paragraph",
+          "text": "在自己的練習頁開啟瀏覽器開發者工具，選 Console，先確認目前頁面網址，再執行下面的唯讀量測。修改前 headerMarginBottom 應為 36px，修改後為 24px；兩個尺寸都要分別記錄。若 header 不存在會顯示 null，代表應先核對頁面與元素，不能當成 0px 或通過。"
+        },
+        {
+          "type": "code",
+          "label": "瀏覽器 DevTools Console：唯讀量測自己的練習頁",
+          "language": "javascript",
+          "code": "(() => {\n  const header = document.querySelector('header');\n  const page = document.documentElement;\n  return {\n    url: location.href,\n    viewportWidth: page.clientWidth,\n    headerMarginBottom: header ? getComputedStyle(header).marginBottom : null,\n    horizontalOverflow: page.scrollWidth > page.clientWidth,\n  };\n})()\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "horizontalOverflow 預期為 false，但它只檢查整頁寬度，不能證明每個按鈕都可操作、文字都可讀或焦點可見。量測後仍依下一步做鍵盤、長標題與保存測試；沒有實際開啟 Console 的環境只記未量測，不把這段程式的預期值抄成觀察結果。 數值定義見 "
+            },
+            {
+              "type": "link",
+              "text": "getComputedStyle",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle"
+            },
+            {
+              "type": "text",
+              "text": " 與 "
+            },
+            {
+              "type": "link",
+              "text": "scrollWidth",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollWidth"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "步驟 5：回到畫面驗收與恢復"
@@ -502,6 +539,43 @@
         {
           "type": "paragraph",
           "text": "参考修改只把原本 36px 改为 24px，不追加一份可能被后面 CSS 盖掉的同名规则。完成后查看 diff，确认 core.mjs 与 app.js 没有被顺便重构，也没有把焦点外框移除。桌面开发模式或浏览器检查工具可查看 header 的实际 computed margin-bottom；这种量测比只凭两张图的相似程度更明确。没有工具可量测时记录限制，仍可人工对照。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在自己的练习页开启浏览器开发者工具，选 Console，先确认目前页面网址，再执行下面的唯读量测。修改前 headerMarginBottom 应为 36px，修改后为 24px；两个尺寸都要分别记录。若 header 不存在会显示 null，代表应先核对页面与元素，不能当成 0px 或通过。"
+        },
+        {
+          "type": "code",
+          "label": "浏览器 DevTools Console：唯读量测自己的练习页",
+          "language": "javascript",
+          "code": "(() => {\n  const header = document.querySelector('header');\n  const page = document.documentElement;\n  return {\n    url: location.href,\n    viewportWidth: page.clientWidth,\n    headerMarginBottom: header ? getComputedStyle(header).marginBottom : null,\n    horizontalOverflow: page.scrollWidth > page.clientWidth,\n  };\n})()\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "horizontalOverflow 预期为 false，但它只检查整页宽度，不能证明每个按钮都可操作、文字都可读或焦点可见。量测后仍依下一步做键盘、长标题与保存测试；没有实际开启 Console 的环境只记未量测，不把这段程式的预期值抄成观察结果。 数值定义见 "
+            },
+            {
+              "type": "link",
+              "text": "getComputedStyle",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle"
+            },
+            {
+              "type": "text",
+              "text": " 与 "
+            },
+            {
+              "type": "link",
+              "text": "scrollWidth",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollWidth"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -796,6 +870,43 @@
           "text": "The reference edit replaces 36px with 24px in the existing rule instead of appending a duplicate that later CSS might override. Inspect the diff for unrelated changes to core.mjs/app.js or removed focus outlines. Desktop developer mode or browser inspection can check the computed header margin-bottom, providing more specific evidence than visual similarity alone. If unavailable, record the limitation and compare manually."
         },
         {
+          "type": "paragraph",
+          "text": "On your practice page, open browser developer tools and select Console. Confirm the current URL before running this read-only measurement. Record both viewport sizes: headerMarginBottom should change from 36px to 24px. A missing header returns null; verify the page and element instead of treating it as zero or a pass."
+        },
+        {
+          "type": "code",
+          "label": "Browser DevTools Console: read-only practice-page measurement",
+          "language": "javascript",
+          "code": "(() => {\n  const header = document.querySelector('header');\n  const page = document.documentElement;\n  return {\n    url: location.href,\n    viewportWidth: page.clientWidth,\n    headerMarginBottom: header ? getComputedStyle(header).marginBottom : null,\n    horizontalOverflow: page.scrollWidth > page.clientWidth,\n  };\n})()\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Expect horizontalOverflow to be false. It checks page width, not control usability, text readability or visible focus. Still perform the keyboard, long-title and persistence checks below. If Console was unavailable, record no measurement rather than copying expected values as observations. See "
+            },
+            {
+              "type": "link",
+              "text": "getComputedStyle",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle"
+            },
+            {
+              "type": "text",
+              "text": " and "
+            },
+            {
+              "type": "link",
+              "text": "scrollWidth",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollWidth"
+            },
+            {
+              "type": "text",
+              "text": " for the value definitions."
+            }
+          ]
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "Step 5: Verify in the page and restore"
@@ -1088,6 +1199,43 @@
           "text": "既存36pxを24pxへ置換し、後で上書きされ得る重複規則を足しません。差分で無関係の再構築や焦点枠除去を確認します。開発機能の computed 値は図の類似より明確な証拠です。測定不可なら制限を残して手動比較します。"
         },
         {
+          "type": "paragraph",
+          "text": "実習ページでブラウザー開発者ツールの Console を開き、現在の URL を確認して次の読取り計測を実行します。両画面幅で headerMarginBottom が変更前 36px、変更後 24px と記録します。header 不在の null は 0px や成功ではなく、ページと要素の再確認が必要です。"
+        },
+        {
+          "type": "code",
+          "label": "ブラウザー DevTools Console：実習ページの読取り計測",
+          "language": "javascript",
+          "code": "(() => {\n  const header = document.querySelector('header');\n  const page = document.documentElement;\n  return {\n    url: location.href,\n    viewportWidth: page.clientWidth,\n    headerMarginBottom: header ? getComputedStyle(header).marginBottom : null,\n    horizontalOverflow: page.scrollWidth > page.clientWidth,\n  };\n})()\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "horizontalOverflow は false が期待値ですが、全ページ幅だけの検査です。操作性、可読性、フォーカスは次のキーボード・長い題名・保存の手順で確認します。Console を実際に開けない場合は未計測とし、期待値を観察結果に転記しません。 値の定義は "
+            },
+            {
+              "type": "link",
+              "text": "getComputedStyle",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle"
+            },
+            {
+              "type": "text",
+              "text": " と "
+            },
+            {
+              "type": "link",
+              "text": "scrollWidth",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollWidth"
+            },
+            {
+              "type": "text",
+              "text": " を参照します。"
+            }
+          ]
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "手順5：実画面で検証・復元"
@@ -1378,6 +1526,43 @@
         {
           "type": "paragraph",
           "text": "기존 36px을 24px로 바꾸며 나중에 덮일 수 있는 중복 규칙을 추가하지 않습니다. 차이에서 관련 없는 리팩터링이나 초점선 제거를 확인하세요. 개발 기능의 computed 값이 그림 유사성보다 명확한 증거입니다. 측정 불가면 제한을 기록하고 수동 비교합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "연습 페이지에서 브라우저 개발자 도구의 Console을 열고 현재 URL을 확인한 뒤 아래 읽기 전용 측정을 실행합니다. 두 화면 크기에서 headerMarginBottom이 변경 전 36px, 후 24px인지 기록하세요. header가 없으면 null이므로 0px나 통과로 해석하지 말고 페이지와 요소를 확인합니다."
+        },
+        {
+          "type": "code",
+          "label": "브라우저 DevTools Console: 연습 페이지 읽기 전용 측정",
+          "language": "javascript",
+          "code": "(() => {\n  const header = document.querySelector('header');\n  const page = document.documentElement;\n  return {\n    url: location.href,\n    viewportWidth: page.clientWidth,\n    headerMarginBottom: header ? getComputedStyle(header).marginBottom : null,\n    horizontalOverflow: page.scrollWidth > page.clientWidth,\n  };\n})()\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "horizontalOverflow의 기대값은 false이지만 전체 페이지 너비만 검사합니다. 조작 가능성, 가독성, 포커스는 다음 키보드·긴 제목·저장 검사로 확인해야 합니다. Console을 실제로 열지 못했다면 미측정으로 기록하고 기대값을 관찰 결과로 옮기지 마세요. 값의 정의는 "
+            },
+            {
+              "type": "link",
+              "text": "getComputedStyle",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle"
+            },
+            {
+              "type": "text",
+              "text": "와 "
+            },
+            {
+              "type": "link",
+              "text": "scrollWidth",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollWidth"
+            },
+            {
+              "type": "text",
+              "text": "를 참고하세요."
+            }
+          ]
         },
         {
           "type": "heading",

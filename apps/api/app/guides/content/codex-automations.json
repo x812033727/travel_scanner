@@ -156,6 +156,12 @@
           "text": "第一次排程結果應符合原本 1／1。接著由你手動把 Revision 改成 2，將第二個項目勾選完成；檔案變成已完成 2、未完成 0。不要把新數量寫進排程提示詞，而是再觸發或等待下一次執行，確認它透過讀檔取得新結果。這樣才能抓出只引用上次聊天摘要的問題，而不是模型從你剛提供的答案重述一次。"
         },
         {
+          "type": "code",
+          "label": "手動保存為 daily-check.md 的第二版",
+          "language": "markdown",
+          "code": "# Practice check\nRevision: 2\n- [x] Read the task instructions\n- [x] Review the practice report\n"
+        },
+        {
           "type": "paragraph",
           "text": "完成一次變更後再跑相同狀態，核對「沒有變更時保持安靜」是否符合你的通知設定，同時仍能在 Scheduled 找到執行狀態。沒有推播不一定是沒有執行；系統通知、應用程式通知與這份排程的回報條件要分開查。若你希望每週固定收到報告，即使內容一樣，也應改成那個明確需求，不能同時要求永遠通知與無變更不通知。"
         },
@@ -210,7 +216,7 @@
         },
         {
           "type": "paragraph",
-          "text": "失敗演練先暫停排程，將自己的 daily-check.md 暫時改名 daily-check.saved.md，確認原名稱確實不存在，再手動測試同一個讀取動作。預期明確回報缺檔，不能顯示上次的 2／0 或把缺檔當空清單。還原檔名後重測，應重新讀到 Revision 2。這只能驗證提示詞的缺檔分支；若未實際跑背景工作，就不能說已測背景錯誤通知。"
+          "text": "失敗演練前先暫停排程，確認沒有執行仍在讀檔，再核對 daily-check.saved.md 不存在；有同名備份就另選未使用名稱，不能覆蓋。把自己的 daily-check.md 改名，確認原名稱不存在，再手動測試相同讀取動作。預期回報缺檔，不能沿用 2／0 或當成空清單。還原檔名後重測，應讀到 Revision 2。這只驗證提示詞的缺檔分支，未跑背景工作就不能宣稱背景通知已測。"
         },
         {
           "type": "rich_paragraph",
@@ -412,6 +418,12 @@
           "text": "第一次排程结果应符合原本 1／1。接著由你手动把 Revision 改成 2，将第二个项目勾选完成；档案变成已完成 2、未完成 0。不要把新数量写进排程提示词，而是再触发或等待下一次执行，确认它透过读档取得新结果。这样才能抓出只引用上次聊天摘要的问题，而不是模型从你刚提供的答案重述一次。"
         },
         {
+          "type": "code",
+          "label": "手动保存为 daily-check.md 的第二版",
+          "language": "markdown",
+          "code": "# Practice check\nRevision: 2\n- [x] Read the task instructions\n- [x] Review the practice report\n"
+        },
+        {
           "type": "paragraph",
           "text": "完成一次变更后再跑相同状态，核对「没有变更时保持安静」是否符合你的通知设定，同时仍能在 Scheduled 找到执行状态。没有推播不一定是没有执行；系统通知、应用程式通知与这份排程的回报条件要分开查。若你希望每周固定收到报告，即使内容一样，也应改成那个明确需求，不能同时要求永远通知与无变更不通知。"
         },
@@ -466,7 +478,7 @@
         },
         {
           "type": "paragraph",
-          "text": "失败演练先暂停排程，将自己的 daily-check.md 暂时改名 daily-check.saved.md，确认原名称确实不存在，再手动测试同一个读取动作。预期明确回报缺档，不能显示上次的 2／0 或把缺档当空清单。还原档名后重测，应重新读到 Revision 2。这只能验证提示词的缺档分支；若未实际跑背景工作，就不能说已测背景错误通知。"
+          "text": "失败演练前先暂停排程，确认没有执行仍在读档，再核对 daily-check.saved.md 不存在；有同名备份就另选未使用名称，不能覆盖。把自己的 daily-check.md 改名，确认原名称不存在，再手动测试相同读取动作。预期回报缺档，不能沿用 2／0 或当成空清单。还原档名后重测，应读到 Revision 2。这只验证提示词的缺档分支，未跑背景工作就不能宣称背景通知已测。"
         },
         {
           "type": "rich_paragraph",
@@ -668,6 +680,12 @@
           "text": "The first scheduled result should match 1/1. Manually change Revision to 2 and check the second item, yielding completed 2/open 0. Do not place the new counts in the saved prompt. Trigger or await the next run and verify it reads the new values from the file, detecting reuse of old summaries rather than repetition of an answer you supplied."
         },
         {
+          "type": "code",
+          "label": "Second version to save manually as daily-check.md",
+          "language": "markdown",
+          "code": "# Practice check\nRevision: 2\n- [x] Read the task instructions\n- [x] Review the practice report\n"
+        },
+        {
           "type": "paragraph",
           "text": "Run the unchanged state again and verify quiet-on-no-change behavior while checking run status in Scheduled. No push notification does not necessarily mean no execution; inspect OS notifications, app notifications and schedule reporting separately. If you want every weekly report even when unchanged, request that explicitly rather than asking both always-notify and silence-on-no-change."
         },
@@ -722,7 +740,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Pause the schedule, temporarily rename your file to daily-check.saved.md, verify the original name is absent and manually test the same read. Expect a missing-file report, not the earlier 2/0 or an empty-list assumption. Restore the name and verify Revision 2. This proves the prompt's missing-file branch only; without a background run it does not prove background failure notification."
+          "text": "Pause the schedule and confirm no run is still reading the file. Check that daily-check.saved.md is unused; choose another name if needed, without overwriting a backup. Rename your daily-check.md, confirm the original name is absent and test the same read manually. Expect a missing-file report, not reused 2/0 counts or an empty list. Restore the filename and require Revision 2. This tests the prompt's missing-file branch, not background notifications."
         },
         {
           "type": "rich_paragraph",
@@ -924,6 +942,12 @@
           "text": "初回1／1の後、原本を手動で Revision 2・両完了へ変更します。新しい2／0を依頼文へ書かず、次実行が読取りで得ることを確認します。直前に答えを教えて復唱させる検証にはしません。"
         },
         {
+          "type": "code",
+          "label": "daily-check.md に手動保存する第 2 版",
+          "language": "markdown",
+          "code": "# Practice check\nRevision: 2\n- [x] Read the task instructions\n- [x] Review the practice report\n"
+        },
+        {
           "type": "paragraph",
           "text": "同状態で再実行し、変化なしの通知条件と履歴を確認します。推播なしは未実行とは限らず、OS、アプリ、予約条件を分けて調べます。毎週同内容でも欲しいならそう指定し、常時通知と変化なし無通知を同時に求めません。"
         },
@@ -978,7 +1002,7 @@
         },
         {
           "type": "paragraph",
-          "text": "予約停止後に自分の文書を saved 名へ変え、元不在を確認して通常読取りを試します。欠落を報告し、旧2／0や空一覧にしないことを確認します。名前を戻して Revision 2 を再取得します。これだけでは背景通知の実測にはなりません。"
+          "text": "失敗演習前に予定を一時停止し、読取り中の実行がないことと daily-check.saved.md の不在を確認します。既存バックアップは上書きせず別名を選びます。自分の daily-check.md を改名して元名の不在を確認し、同じ読取りを手動で試します。欠落を報告し、2／0 再利用や空一覧にしません。名前を戻して Revision 2 を確認します。背景通知の実測とは区別します。"
         },
         {
           "type": "rich_paragraph",
@@ -1180,6 +1204,12 @@
           "text": "첫 1/1 이후 원본을 직접 Revision 2·둘 다 완료로 바꿉니다. 새 2/0을 예약 요청에 넣지 말고 다음 실행이 파일 읽기로 얻는지 확인하세요. 답을 알려주고 반복시키는 검증과 구분합니다."
         },
         {
+          "type": "code",
+          "label": "daily-check.md로 직접 저장할 두 번째 버전",
+          "language": "markdown",
+          "code": "# Practice check\nRevision: 2\n- [x] Read the task instructions\n- [x] Review the practice report\n"
+        },
+        {
           "type": "paragraph",
           "text": "같은 상태로 다시 실행해 무변경 알림 조건과 기록을 확인합니다. 푸시 없음이 미실행은 아니므로 OS·앱·예약 조건을 따로 봅니다. 같은 내용도 매주 받으려면 명시하고 항상 알림과 무변경 무알림을 동시에 요청하지 않습니다."
         },
@@ -1234,7 +1264,7 @@
         },
         {
           "type": "paragraph",
-          "text": "예약을 멈추고 자신의 파일을 saved 이름으로 바꿔 원래 이름이 없는지 확인한 뒤 일반 읽기를 시험합니다. 누락 보고가 나와야 하며 과거 2/0이나 빈 목록으로 처리하면 안 됩니다. 이름을 복구해 Revision 2를 읽고, 이것만으로 배경 오류 알림을 시험했다고 하지는 마세요."
+          "text": "오류 실습 전에 일정을 일시 중지하고 아직 파일을 읽는 실행이 없는지 확인합니다. daily-check.saved.md가 이미 있으면 덮어쓰지 말고 다른 이름을 쓰세요. 자신의 daily-check.md를 바꾸고 원래 이름이 없는지 확인한 뒤 같은 읽기를 수동으로 시험합니다. 2/0 재사용이나 빈 목록 대신 파일 누락을 보고해야 합니다. 이름을 복원하고 Revision 2를 확인하세요. 이는 프롬프트의 누락 분기 시험이며 백그라운드 알림 시험은 아닙니다."
         },
         {
           "type": "rich_paragraph",

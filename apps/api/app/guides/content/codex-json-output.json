@@ -158,7 +158,7 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "步驟 4：執行並核对內容"
+          "text": "步驟 4：執行並核對內容"
         },
         {
           "type": "code",
@@ -174,7 +174,7 @@
         },
         {
           "type": "paragraph",
-          "text": "若 Windows 沒有 py，但 python --version 顯示 Python 3，可把 py -3 換成 python。預期終端機輸出一個物件，revision 為 exec-practice-1，數值為 total 3、completed 1、pending 2，退出 0。開啟 run-01，核對五份檔案。驗證器會拒絕缺欄、多欄、負数、以 true 冒充整數及數學不一致；但 3／2／1 雖然總和正確仍是錯誤內容，因此最後還要和清單核對。結構符合 schema 不等於事實正確。"
+          "text": "若 Windows 沒有 py，但 python --version 顯示 Python 3，可把 py -3 換成 python。預期終端機輸出一個物件，revision 為 exec-practice-1，數值為 total 3、completed 1、pending 2，退出 0。開啟 run-01，核對五份檔案。驗證器會拒絕缺欄、多欄、負數、以 true 冒充整數及數學不一致；但 3／2／1 雖然總和正確仍是錯誤內容，因此最後還要和清單核對。結構符合 schema 不等於事實正確。"
         },
         {
           "type": "heading",
@@ -196,6 +196,25 @@
           "label": "macOS／Linux：只驗證副本",
           "language": "sh",
           "code": "python3 run_summary.py run-bad-fields --verify-only\necho $?\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "延伸：格式通過，但內容不符"
+        },
+        {
+          "type": "paragraph",
+          "text": "再從原始 run-01 複製出未使用的 run-wrong-counts，只把 final.json 換成下方完整物件。保留 status 與 events 原樣，使用相同 verify-only 命令但改為這個資料夾。預期程式退出 0，因為型別、版本和總和都符合；人工比對 tasks.md 則必須拒絕這份答案。它沒有重讀輸入，也沒有核對最終檔與事件中的回答是否相同，不能作為通用事實驗證器。"
+        },
+        {
+          "type": "code",
+          "label": "run-wrong-counts/final.json：刻意錯誤的計數",
+          "language": "json",
+          "code": "{\n  \"revision\": \"exec-practice-1\",\n  \"total\": 3,\n  \"completed\": 2,\n  \"pending\": 1\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "把此例記成「結構通過／內容拒絕」，不改原始成功紀錄，也不自動提交或使用答案。回到未改動 run-01 驗證並人工核對，應仍為 3／1／2。下一篇 CI 會對固定教材加上精確數值檢查，展示如何把這個人工判斷寫成可執行條件。"
         },
         {
           "type": "heading",
@@ -473,6 +492,25 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "Extension: valid structure, incorrect content"
+        },
+        {
+          "type": "paragraph",
+          "text": "Copy original run-01 to an unused run-wrong-counts folder and replace only final.json with the object below. Keep status and events; run verify-only with this folder name. Expect exit 0: types, revision and arithmetic satisfy the validator. Comparing tasks.md must still reject the answer. The verifier neither rereads the input nor checks that final.json matches the answer in events; it is not a general factual verifier."
+        },
+        {
+          "type": "code",
+          "label": "run-wrong-counts/final.json: deliberately incorrect counts",
+          "language": "json",
+          "code": "{\n  \"revision\": \"exec-practice-1\",\n  \"total\": 3,\n  \"completed\": 2,\n  \"pending\": 1\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Record structure passed/content rejected without altering the original result or using this answer downstream. Recheck untouched run-01 and its 3/1/2 counts. The next CI lesson adds exact fixture comparison to make this acceptance condition executable."
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "Recovery, limits and next steps"
         },
@@ -744,6 +782,25 @@
           "label": "macOS／Linux：コピーだけ検証",
           "language": "sh",
           "code": "python3 run_summary.py run-bad-fields --verify-only\necho $?\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "応用：形式は合格、内容は不一致"
+        },
+        {
+          "type": "paragraph",
+          "text": "元の run-01 を未使用の run-wrong-counts に複製し、final.json だけ次のオブジェクトへ置き換えます。status と events を保ち、同フォルダーで verify-only を実行します。型・版・合計が適合するので終了 0 でも、tasks.md との照合では拒否します。この検証器は入力を再読せず、最終ファイルとイベント内回答の同一性も照合しないため、一般的な事実検証器ではありません。"
+        },
+        {
+          "type": "code",
+          "label": "run-wrong-counts/final.json：意図的に誤った件数",
+          "language": "json",
+          "code": "{\n  \"revision\": \"exec-practice-1\",\n  \"total\": 3,\n  \"completed\": 2,\n  \"pending\": 1\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "「構造合格／内容拒否」と記録し、元の記録や後続処理に反映しません。未変更 run-01 の検証と 3／1／2 を再確認します。次の CI 篇では固定教材の正確な値を比較して、この採用条件を実行可能にします。"
         },
         {
           "type": "heading",
@@ -1021,6 +1078,25 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "확장: 형식은 통과하지만 내용은 틀림"
+        },
+        {
+          "type": "paragraph",
+          "text": "원본 run-01을 비어 있는 이름 run-wrong-counts로 복사하고 final.json만 아래 객체로 바꿉니다. status와 events는 유지하고 해당 폴더에 verify-only를 실행하세요. 타입·버전·합계가 맞아 종료 0이지만 tasks.md와 비교하면 답을 거부해야 합니다. 이 검증기는 입력을 다시 읽거나 최종 파일과 이벤트 답의 일치를 확인하지 않으므로 일반적인 사실 검증기가 아닙니다."
+        },
+        {
+          "type": "code",
+          "label": "run-wrong-counts/final.json: 의도적으로 틀린 개수",
+          "language": "json",
+          "code": "{\n  \"revision\": \"exec-practice-1\",\n  \"total\": 3,\n  \"completed\": 2,\n  \"pending\": 1\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "구조 통과/내용 거부로 기록하고 원본 기록이나 후속 처리에 적용하지 않습니다. 미변경 run-01과 3/1/2를 다시 확인하세요. 다음 CI 글은 고정 실습값을 정확히 비교해 이 승인 조건을 실행 가능한 검사로 만듭니다."
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "복원·제한·다음 단계"
         },
@@ -1292,6 +1368,25 @@
           "label": "macOS／Linux：只验证副本",
           "language": "sh",
           "code": "python3 run_summary.py run-bad-fields --verify-only\necho $?\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "延伸：格式通过，但内容不符"
+        },
+        {
+          "type": "paragraph",
+          "text": "再从原始 run-01 复制出未使用的 run-wrong-counts，只把 final.json 换成下方完整物件。保留 status 与 events 原样，使用相同 verify-only 命令但改为这个资料夹。预期程式退出 0，因为型别、版本和总和都符合；人工比对 tasks.md 则必须拒绝这份答案。它没有重读输入，也没有核对最终档与事件中的回答是否相同，不能作为通用事实验证器。"
+        },
+        {
+          "type": "code",
+          "label": "run-wrong-counts/final.json：刻意错误的计数",
+          "language": "json",
+          "code": "{\n  \"revision\": \"exec-practice-1\",\n  \"total\": 3,\n  \"completed\": 2,\n  \"pending\": 1\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "把此例记成「结构通过／内容拒绝」，不改原始成功纪录，也不自动提交或使用答案。回到未改动 run-01 验证并人工核对，应仍为 3／1／2。下一篇 CI 会对固定教材加上精确数值检查，展示如何把这个人工判断写成可执行条件。"
         },
         {
           "type": "heading",

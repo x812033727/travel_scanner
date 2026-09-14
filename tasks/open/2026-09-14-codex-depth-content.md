@@ -163,10 +163,17 @@ Complete the approved 60-lesson, five-language learning series while keeping edi
 - [x] Deepen Unit F (13, 46, 47, 20, 19, 21), label 38 existing blocks, add eight examples and verify 13 Git/review plus 20 reference checks (10 F-specific).
 - [x] Deepen Unit G (48, 49, 24, 50, 51), preserve 28 original code blocks, add seven examples and verify ten skill/template reference checks; lesson 23 retains representative evidence.
 - [x] Deepen Unit H (25, 52, 27, 28, 53, 54), correct MCP surface usage, preserve 44 original code blocks, add three examples and verify 25 MCP/Git/Node reference checks.
-- [ ] Continue targeted depth review for the remaining 12 lessons, starting with Unit I (26, 29, 30, 55, 56, 57).
+- [x] Deepen Unit I (26, 29, 30, 55, 56, 57), add three examples, correct one YAML comment and verify 14 local exec/JSON/CI checks.
+- [ ] Continue targeted depth review for the final six lessons in Unit J (31, 32, 58, 59, 60, 12).
 - [ ] Complete remaining full-text five-language editorial acceptance and representative product UI evidence.
 - [ ] Complete final integrated browser acceptance for all 60 lessons and the hub. The preview-start restriction remains unresolved.
 - [ ] After all acceptance gates pass, proceed with the already authorized PR, exact-head CI/merge, guarded import/publication/deployment and public verification. No partial PR.
+
+## Unit I revision
+
+After 78477de6, revised 26/29/30/55/56/57 in four author languages and five compiled locales. Added Console measurement and limitations, complete schedule Revision 2 and rename guards, previous-versus-current exec evidence, valid-shaped incorrect JSON, pinned-action tag clarification, queue behavior and precise timeout scope. Of 30 original code blocks, 29 are unchanged; one only corrects the YAML comment. Three labelled examples added. Original images, sources and shared series_data unchanged.
+
+Evidence: docs/codex-learning/evidence/unit-i-depth-review.json. Fourteen Windows reference checks pass: real CLI help/invalid-argument parsing only, synthetic model events/processes, exact Python and CI validators, and JavaScript syntax without a browser. Integrity 60/300, 9 API, 9 compiler, five catalogues and affected-tool Ruff pass. Audit caught an accidentally removed CI table; restored all four author tables and rebuilt, final 0 errors/21 warnings. No model, schedule, GitHub workflow, browser or other-platform execution. Coverage 54 unique lessons, six pending (J next). Final acceptance 0/60; preview restriction unresolved; no partial PR or publication/deployment.
 
 ## Unit H revision
 

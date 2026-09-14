@@ -118,7 +118,7 @@
     {
       "type": "h2",
       "text": [
-        "步驟 4：執行並核对內容",
+        "步驟 4：執行並核對內容",
         "Step 4: Run and check the content",
         "手順4：実行して内容を確認する",
         "4단계: 실행하고 내용 확인"
@@ -149,7 +149,7 @@
     {
       "type": "p",
       "text": [
-        "若 Windows 沒有 py，但 python --version 顯示 Python 3，可把 py -3 換成 python。預期終端機輸出一個物件，revision 為 exec-practice-1，數值為 total 3、completed 1、pending 2，退出 0。開啟 run-01，核對五份檔案。驗證器會拒絕缺欄、多欄、負数、以 true 冒充整數及數學不一致；但 3／2／1 雖然總和正確仍是錯誤內容，因此最後還要和清單核對。結構符合 schema 不等於事實正確。",
+        "若 Windows 沒有 py，但 python --version 顯示 Python 3，可把 py -3 換成 python。預期終端機輸出一個物件，revision 為 exec-practice-1，數值為 total 3、completed 1、pending 2，退出 0。開啟 run-01，核對五份檔案。驗證器會拒絕缺欄、多欄、負數、以 true 冒充整數及數學不一致；但 3／2／1 雖然總和正確仍是錯誤內容，因此最後還要和清單核對。結構符合 schema 不等於事實正確。",
         "If Windows lacks py but python --version reports Python 3, replace py -3 with python. Expect one object with revision exec-practice-1 and total 3, completed 1, pending 2, followed by exit 0. Inspect the five files in run-01. The validator rejects missing/extra fields, negatives, booleans masquerading as integers and inconsistent arithmetic. But 3/2/1 has valid arithmetic and is still wrong, so compare with the list. Schema compliance does not prove factual accuracy.",
         "Windows に py がなく python --version が Python 3 なら py -3 を python に替えます。版 exec-practice-1、total 3、completed 1、pending 2 のオブジェクトと0終了を期待し、run-01 の5ファイルを確認します。検証器は欄の不足・追加、負数、整数の代わりの true、計算不一致を拒否します。ただし3／2／1は合計が合っても内容が誤りなので、一覧との照合も必要です。schema 適合だけで事実の正しさは証明できません。",
         "Windows에 py가 없고 python --version이 Python 3이면 py -3를 python으로 바꿉니다. 버전 exec-practice-1, total 3, completed 1, pending 2인 객체와 종료 0을 기대하고 run-01의 다섯 파일을 확인하세요. 검증기는 필드 누락·추가, 음수, 정수 대신 true, 산술 불일치를 거부합니다. 그러나 3/2/1은 합이 맞아도 틀린 내용이므로 목록과 비교해야 합니다. schema 준수만으로 사실 정확성을 증명하지 못합니다."
@@ -194,6 +194,44 @@
         "macOS / Linux: 복사본만 검증"
       ],
       "code": "python3 run_summary.py run-bad-fields --verify-only\necho $?\n"
+    },
+    {
+      "type": "h3",
+      "text": [
+        "延伸：格式通過，但內容不符",
+        "Extension: valid structure, incorrect content",
+        "応用：形式は合格、内容は不一致",
+        "확장: 형식은 통과하지만 내용은 틀림"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "再從原始 run-01 複製出未使用的 run-wrong-counts，只把 final.json 換成下方完整物件。保留 status 與 events 原樣，使用相同 verify-only 命令但改為這個資料夾。預期程式退出 0，因為型別、版本和總和都符合；人工比對 tasks.md 則必須拒絕這份答案。它沒有重讀輸入，也沒有核對最終檔與事件中的回答是否相同，不能作為通用事實驗證器。",
+        "Copy original run-01 to an unused run-wrong-counts folder and replace only final.json with the object below. Keep status and events; run verify-only with this folder name. Expect exit 0: types, revision and arithmetic satisfy the validator. Comparing tasks.md must still reject the answer. The verifier neither rereads the input nor checks that final.json matches the answer in events; it is not a general factual verifier.",
+        "元の run-01 を未使用の run-wrong-counts に複製し、final.json だけ次のオブジェクトへ置き換えます。status と events を保ち、同フォルダーで verify-only を実行します。型・版・合計が適合するので終了 0 でも、tasks.md との照合では拒否します。この検証器は入力を再読せず、最終ファイルとイベント内回答の同一性も照合しないため、一般的な事実検証器ではありません。",
+        "원본 run-01을 비어 있는 이름 run-wrong-counts로 복사하고 final.json만 아래 객체로 바꿉니다. status와 events는 유지하고 해당 폴더에 verify-only를 실행하세요. 타입·버전·합계가 맞아 종료 0이지만 tasks.md와 비교하면 답을 거부해야 합니다. 이 검증기는 입력을 다시 읽거나 최종 파일과 이벤트 답의 일치를 확인하지 않으므로 일반적인 사실 검증기가 아닙니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "json",
+      "code": "{\n  \"revision\": \"exec-practice-1\",\n  \"total\": 3,\n  \"completed\": 2,\n  \"pending\": 1\n}\n",
+      "label": [
+        "run-wrong-counts/final.json：刻意錯誤的計數",
+        "run-wrong-counts/final.json: deliberately incorrect counts",
+        "run-wrong-counts/final.json：意図的に誤った件数",
+        "run-wrong-counts/final.json: 의도적으로 틀린 개수"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "把此例記成「結構通過／內容拒絕」，不改原始成功紀錄，也不自動提交或使用答案。回到未改動 run-01 驗證並人工核對，應仍為 3／1／2。下一篇 CI 會對固定教材加上精確數值檢查，展示如何把這個人工判斷寫成可執行條件。",
+        "Record structure passed/content rejected without altering the original result or using this answer downstream. Recheck untouched run-01 and its 3/1/2 counts. The next CI lesson adds exact fixture comparison to make this acceptance condition executable.",
+        "「構造合格／内容拒否」と記録し、元の記録や後続処理に反映しません。未変更 run-01 の検証と 3／1／2 を再確認します。次の CI 篇では固定教材の正確な値を比較して、この採用条件を実行可能にします。",
+        "구조 통과/내용 거부로 기록하고 원본 기록이나 후속 처리에 적용하지 않습니다. 미변경 run-01과 3/1/2를 다시 확인하세요. 다음 CI 글은 고정 실습값을 정확히 비교해 이 승인 조건을 실행 가능한 검사로 만듭니다."
+      ]
     },
     {
       "type": "h2",

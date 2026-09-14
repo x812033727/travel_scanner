@@ -123,7 +123,7 @@
         },
         {
           "type": "paragraph",
-          "text": "用檔案管理員將成功的 run-01 完整複製成 recovery-running。只在副本 status.json 改成下方內容，保留原本正確的 final.json 與事件檔。這是明確標記的模擬中斷，不要修改真實失敗紀錄來假装成功。接著在原練習資料夾執行 verify-only；Windows 用 PowerShell，macOS／Linux 用各自終端機。預期 Not accepted: Process did not exit successfully，退出非 0。"
+          "text": "用檔案管理員將成功的 run-01 完整複製成 recovery-running。只在副本 status.json 改成下方內容，保留原本正確的 final.json 與事件檔。這是明確標記的模擬中斷，不要修改真實失敗紀錄來假裝成功。接著在原練習資料夾執行 verify-only；Windows 用 PowerShell，macOS／Linux 用各自終端機。預期 Not accepted: Process did not exit successfully，退出非 0。"
         },
         {
           "type": "code",
@@ -154,7 +154,7 @@
         },
         {
           "type": "paragraph",
-          "text": "若使用桌面排程，先到 Scheduled 暫停同一項，避免新的觸發，再打開已有 run 看是否仍活動。主機離線時先恢復電源、網路、程式與資料夾；回到原任務核對最後動作與結果，不立刻新建另一份相同排程。Windows、macOS、Linux 都使用自己那台主機的狀態，不以手機仍看得到聊天記錄判斷電腦在线。離線期間是否補跑依實際紀錄與產品行為確認，不假設會追補所有錯過的時間。"
+          "text": "若使用桌面排程，先到 Scheduled 暫停同一項，避免新的觸發，再打開已有 run 看是否仍活動。主機離線時先恢復電源、網路、程式與資料夾；回到原任務核對最後動作與結果，不立刻新建另一份相同排程。Windows、macOS、Linux 都使用自己那台主機的狀態，不以手機仍看得到聊天記錄判斷電腦在線。離線期間是否補跑依實際紀錄與產品行為確認，不假設會追補所有錯過的時間。"
         },
         {
           "type": "rich_paragraph",
@@ -172,6 +172,24 @@
             {
               "type": "text",
               "text": "、路徑與帳號專篇。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本系列的 run_summary.py 使用 subprocess.run(timeout=120)。依 "
+            },
+            {
+              "type": "link",
+              "text": "Python 官方說明",
+              "url": "https://docs.python.org/3/library/subprocess.html#subprocess.run"
+            },
+            {
+              "type": "text",
+              "text": "，逾時時會終止並等待它直接啟動的子程序，再拋出 TimeoutExpired；初始程序建立可能使等待超過指定秒數。這不代表孫程序、其他主機或已送出的外部請求全部停止。調查時分別列出直接程序狀態與尚未確認的其他工作，保留原 timeout 記錄。"
             }
           ]
         },
@@ -413,6 +431,24 @@
           ]
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "The supplied run_summary.py uses subprocess.run(timeout=120). "
+            },
+            {
+              "type": "link",
+              "text": "Python documents",
+              "url": "https://docs.python.org/3/library/subprocess.html#subprocess.run"
+            },
+            {
+              "type": "text",
+              "text": " that a timeout kills and waits for its direct child before raising TimeoutExpired; initial process creation can extend elapsed time. This does not prove descendants, remote work or already-sent requests stopped. Record the direct process separately from unverified work and preserve the timeout record."
+            }
+          ]
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "Step 4: Retry one objective while keeping attempts distinct"
@@ -646,6 +682,24 @@
             {
               "type": "text",
               "text": "・パス・アカウントの各編で原因を調べます。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "run_summary.py は subprocess.run(timeout=120) を使います。"
+            },
+            {
+              "type": "link",
+              "text": "Python 公式",
+              "url": "https://docs.python.org/3/library/subprocess.html#subprocess.run"
+            },
+            {
+              "type": "text",
+              "text": "では、時間切れ時に直接の子プロセスを終了・待機してから TimeoutExpired を送出し、初期生成により指定秒数を超える場合があります。子孫、別主機、送信済み要求の全停止は証明しません。直接プロセスと未確認作業を分け、timeout 記録を保持します。"
             }
           ]
         },
@@ -887,6 +941,24 @@
           ]
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "run_summary.py는 subprocess.run(timeout=120)을 사용합니다. "
+            },
+            {
+              "type": "link",
+              "text": "Python 공식 문서",
+              "url": "https://docs.python.org/3/library/subprocess.html#subprocess.run"
+            },
+            {
+              "type": "text",
+              "text": "에 따르면 시간 초과 시 직접 자식 프로세스를 종료하고 기다린 뒤 TimeoutExpired를 발생시키며 초기 생성 때문에 지정 시간을 넘길 수 있습니다. 자손 프로세스·원격 작업·전송한 요청까지 멈췄다는 뜻은 아닙니다. 직접 프로세스와 미확인 작업을 나누고 timeout 기록을 보존하세요."
+            }
+          ]
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "4단계: 같은 목표 재시도와 각 시도 구분"
@@ -1120,6 +1192,24 @@
             {
               "type": "text",
               "text": "、路径与帐号专篇。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本系列的 run_summary.py 使用 subprocess.run(timeout=120)。依 "
+            },
+            {
+              "type": "link",
+              "text": "Python 官方说明",
+              "url": "https://docs.python.org/3/library/subprocess.html#subprocess.run"
+            },
+            {
+              "type": "text",
+              "text": "，逾时时会终止并等待它直接启动的子程序，再抛出 TimeoutExpired；初始程序建立可能使等待超过指定秒数。这不代表孙程序、其他主机或已送出的外部请求全部停止。调查时分别列出直接程序状态与尚未确认的其他工作，保留原 timeout 记录。"
             }
           ]
         },

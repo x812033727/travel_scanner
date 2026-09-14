@@ -1,16 +1,17 @@
 """Verify authored exec/JSON/CI examples without calling a model or GitHub workflow."""
-from contextlib import redirect_stdout, redirect_stderr
-from hashlib import sha256
+import argparse
 import importlib.util
 import io
 import json
 import os
-from pathlib import Path
 import subprocess
 import sys
 import tempfile
-from unittest.mock import patch
+from contextlib import redirect_stdout
 from datetime import datetime, timezone
+from hashlib import sha256
+from pathlib import Path
+from unittest.mock import patch
 
 import yaml
 
@@ -20,6 +21,11 @@ spec = importlib.util.spec_from_file_location("practice_summary", SOURCE)
 summary = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(summary)
 checks = []
+parser = argparse.ArgumentParser()
+parser.add_argument("--codex", help="Optional real CLI path; only help/version and an invalid flag are run")
+args = parser.parse_args()
+cli_probe = None
+authors = {key: json.loads((ROOT / f"docs/codex-learning/deep/modules/{key}.json").read_text(encoding="utf-8")) for key in [26, 29, 30, 55, 56, 57]}
 expected = {"revision": "exec-practice-1", "total": 3, "completed": 1, "pending": 2}
 events = [{"type": "thread.started", "thread_id": "fictional-reference"}, {"type": "turn.started"},
           {"type": "item.completed", "item": {"type": "agent_message", "text": json.dumps(expected)}},
@@ -34,6 +40,7 @@ checks.append("Rendered lesson programs exactly match the reference sources")
 with tempfile.TemporaryDirectory(prefix="codex-exec-reference-") as temporary:
     root = Path(temporary).resolve()
     assert root.parent == Path(tempfile.gettempdir()).resolve()
+    assert root.name.startswith("codex-exec-reference-")
     baseline = root / "run-01"
     baseline.mkdir()
 
@@ -53,6 +60,32 @@ with tempfile.TemporaryDirectory(prefix="codex-exec-reference-") as temporary:
     write_case(baseline)
     assert summary.verify(baseline) == expected
     checks.append("A synthetic single-turn JSONL stream and exact fixture answer are accepted")
+    wrong = json.loads(next(b["code"] for b in authors[55]["blocks"] if b.get("label", [None])[0] == "run-wrong-counts/final.json：刻意錯誤的計數"))
+    wrong_path = root / "run-wrong-counts"
+    write_case(wrong_path, result=wrong)
+    assert summary.verify(wrong_path) == wrong and wrong != expected
+    verify_wrong = subprocess.run([sys.executable, str(SOURCE), wrong_path.name, "--verify-only"], cwd=root, capture_output=True, timeout=10, check=False)
+    assert verify_wrong.returncode == 0 and json.loads(verify_wrong.stdout) == wrong
+    assert summary.verify(baseline) == expected
+    checks.append("The exact authored wrong-count answer passes structural verify-only but fails fixture truth; original evidence stays valid")
+    browser_code = next(b["code"] for b in authors[26]["blocks"] if b.get("language") == "javascript")
+    syntax = subprocess.run(["node", "--check", "--input-type=commonjs"], input=browser_code, text=True, capture_output=True, timeout=10, check=False)
+    assert syntax.returncode == 0, syntax.stderr
+    checks.append("The browser measurement parses as JavaScript only; no DOM, page, browser or preview was executed")
+    if args.codex:
+        version = subprocess.run([args.codex, "--version"], cwd=root, capture_output=True, text=True, timeout=20, check=False)
+        help_result = subprocess.run([args.codex, "exec", "--help"], cwd=root, capture_output=True, text=True, timeout=20, check=False)
+        assert version.returncode == help_result.returncode == 0
+        for flag in ["--sandbox", "--ephemeral", "--json", "--output-schema", "--output-last-message"]:
+            assert flag in help_result.stdout
+        old_report = root / "report-01.md"
+        old_report.write_text("Fictional previous answer; never a new model result.\n", encoding="utf-8")
+        prior = {p.name: p.read_bytes() for p in root.iterdir() if p.is_file()}
+        invalid = subprocess.run([args.codex, "exec", "--sandbox", "invalid", "Read tasks.md"], cwd=root, capture_output=True, text=True, timeout=20, check=False)
+        assert invalid.returncode == 2 and "invalid value" in invalid.stderr and "sandbox" in invalid.stderr
+        assert {p.name: p.read_bytes() for p in root.iterdir() if p.is_file()} == prior
+        cli_probe = {"version": version.stdout.strip(), "helpSha256": sha256(help_result.stdout.encode()).hexdigest(), "invalidFlagExit": invalid.returncode, "oldReportPreserved": True, "modelInvoked": False}
+        checks.append("Real CLI help confirms flags; an invalid sandbox exits during parsing and leaves old output unchanged without a model call")
     invalid_results = [
         {k: v for k, v in expected.items() if k != "pending"},
         {**expected, "extra": "not permitted"}, {**expected, "total": True},
@@ -88,7 +121,7 @@ with tempfile.TemporaryDirectory(prefix="codex-exec-reference-") as temporary:
     assert summary.verify(extra) == expected
     checks.append("Unknown event kinds, blank lines and UTF-8 BOM do not break valid input")
     for name, code in [("run-01", 0), ("fields-0", 1), ("malformed", 1), ("status-0", 1)]:
-        run = subprocess.run([sys.executable, str(SOURCE), name, "--verify-only"], cwd=root, capture_output=True, timeout=10)
+        run = subprocess.run([sys.executable, str(SOURCE), name, "--verify-only"], cwd=root, capture_output=True, timeout=10, check=False)
         assert run.returncode == code, run.stderr
     assert summary.verify(baseline) == expected
     checks.append("The documented verify-only command returns correct exit codes and original output remains valid")
@@ -151,16 +184,18 @@ with tempfile.TemporaryDirectory(prefix="codex-exec-reference-") as temporary:
     ci = root / "ci-validation"
     ci.mkdir()
     ci_env = {**os.environ, "PRACTICE_SHA": "fictional-sha", "PRACTICE_RUN_ID": "fixture-run", "PRACTICE_ATTEMPT": "1"}
-    for number, result in enumerate([expected, {**expected, "completed": 2, "pending": 1}, {**expected, "completed": True}, {**expected, "extra": "unexpected"}]):
+    for number, result in enumerate([expected, wrong, {**expected, "completed": True}, {**expected, "extra": "unexpected"}]):
         target = ci / str(number)
         target.mkdir()
-        run = subprocess.run([sys.executable, "-c", script], cwd=target, env={**ci_env, "PRACTICE_RESULT": json.dumps(result)}, capture_output=True, timeout=10)
+        run = subprocess.run([sys.executable, "-c", script], cwd=target, env={**ci_env, "PRACTICE_RESULT": json.dumps(result)}, capture_output=True, timeout=10, check=False)
         assert run.returncode == (0 if number == 0 else 1), run.stderr
         assert (target / "report.json").exists() == (number == 0)
     assert json.loads((ci / "0/run-info.json").read_text()) == {"sha": "fictional-sha", "run_id": "fixture-run", "attempt": "1"}
     checks.append("The exact CI validation script accepts the fixture, rejects changed counts and writes matching synthetic run identifiers")
 
 report = {"checkedAt": datetime.now(timezone.utc).isoformat(), "status": "passed", "checks": checks,
+          "cliProbe": cli_probe,
+          "authorHashes": {key: sha256((ROOT / f"docs/codex-learning/deep/modules/{key}.json").read_bytes()).hexdigest() for key in authors},
           "environment": "Windows; temporary fictional files; mocked Codex process; exact local Python validator",
           "sourceHashes": {p.name: sha256(p.read_bytes()).hexdigest() for p in [SOURCE, workflow_path]},
           "notTested": ["Actual model output or API authentication", "GitHub-hosted workflow execution", "macOS/Linux runtime", "Publication or deployment"]}
