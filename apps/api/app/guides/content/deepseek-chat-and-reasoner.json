@@ -1,0 +1,352 @@
+{
+  "slug": "deepseek-chat-and-reasoner",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "DeepSeek 對話與深度思考：哪些題目該開推理模式",
+      "description": "DeepSeek 網頁版與 App 的操作篇：一般對話與「深度思考」差在哪、哪些題目值得多等那段推理、聯網搜尋與檔案上傳官方寫了什麼限制、官網現在列的模型版本與 1M 上下文視窗，以及 API 的最小呼叫範例與峰谷、快取命中的計價方式。數字全部在 2026 年 9 月 14 日查自官網。",
+      "hero": {
+        "src": "/guides/deepseek-chat-and-reasoner/hero.jpg",
+        "alt": "插圖：一個問題分成兩條路線，一條直達答案，一條先繞過幾個思考節點再到答案",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "DeepSeek 的網頁版與 App 只有一個輸入框，真正影響回答的是旁邊那兩個開關：「深度思考」與「智慧搜尋」。結論先說：要多步推導、要前後比對的題目才開深度思考，要今天的資訊才開搜尋，其餘用一般對話最快。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇帶你做到四件事：從台灣能用哪幾種方式註冊、這題該開哪個模式、官網現在列的模型版本，以及發出第一次 API 呼叫。背景另有入門篇，這裡只講操作。"
+        },
+        {
+          "type": "link",
+          "text": "DeepSeek 是什麼：免費、開源與資料流向，用之前先知道的事",
+          "url": "https://mokaair.com/zh-TW/life/deepseek-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "註冊與登入：從台灣可以用哪幾種",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "服務條款第 2.2 條寫「以 Email 或第三方帳號依頁面指引註冊」，隱私政策把帳號資料列為出生日期、使用者名稱、Email 及／或電話號碼與密碼，並說明可用 Apple 或 Google 登入。官方常見問題再補了幾條限制。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "「微信登入功能暫不支援海外 IP 位址使用」：從台灣走不了這條路。",
+            "「Google 登入功能暫不支援大陸地區 IP 位址使用」：從台灣連線可以用 Google 登入。",
+            "Email 有網域支援清單，被擋時官方建議改用 Gmail、Outlook、Hotmail、Yahoo 等國際信箱。",
+            "台灣區 App Store 上架「DeepSeek - AI 智能助手」，免費、分級 12+、需 iOS 15.0 以上；Google Play 台灣也有。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "網頁版 chat.deepseek.com 在本站撰稿時，從台灣以外的機房讀取會被防機器人驗證擋下，無法代表台灣瀏覽器的結果，以官網為準。條款也寫服務主要提供成年人使用，未滿 18 歲要由法定代理人一起閱讀。"
+        },
+        {
+          "type": "heading",
+          "text": "一般對話與深度思考差在哪",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官網首頁把兩個功能並排寫成「深度思考」與「智能搜索」（英文頁是 DeepThink 與 Search），介面上是輸入框附近的兩顆按鈕，送出前點亮才生效，可以同時開。兩顆都不開就是一般對話，模型收到問題直接寫答案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "深度思考就是官方文件說的思考模式：輸出答案前，模型會先輸出一段推理過程，提高最終回答的正確率。API 這側把它放在 reasoning_content 欄位、答案放在 content；網頁版則是答案上方先跑出一段可展開的思考過程。它比較慢，因為那段字同樣要生成。"
+        },
+        {
+          "type": "paragraph",
+          "text": "力道也不只兩檔。官網 2026 年 8 月 13 日的更新日誌寫思考模式支援 low、high、max 三級，建議簡單任務用 low、日常代理（Agent）任務用 high、複雜情境用 max；API 文件補充預設開啟思考、力道預設 high。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/deepseek-chat-and-reasoner/diagram-1.svg",
+          "alt": "決策樹：依題目類型決定開一般對話、深度思考或智慧搜尋",
+          "width": 1600,
+          "height": 900,
+          "caption": "從左邊的題目出發，答完兩個問題就會落到該用的那一個模式；最下面一條橫幅是三種模式共通的收尾動作。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "推理模型（Reasoning Model）：多想幾步能解決什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+        },
+        {
+          "type": "heading",
+          "text": "哪些題目該開，哪些不用",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "判斷標準不是題目難不難，而是答案需不需要中間步驟。需要的，多等的時間換得回正確率。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "值得開：多步計算與推導、程式除錯、長文件前後對照找矛盾。",
+            "不用開：翻譯、改寫、摘要、格式轉換、閒聊，這些沒有中間步驟，一般對話就夠。",
+            "改開搜尋：問的是會過期的事，例如今天的票價或剛改的規定。",
+            "兩個都開：既要最新資料又要推導，例如用三家現價算總成本。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "還有一件事比選模式更有效：把背景、限制與想要的格式寫進提示詞。問清楚的一般對話，往往勝過含糊提問加深度思考。"
+        },
+        {
+          "type": "link",
+          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+        },
+        {
+          "type": "link",
+          "text": "推論時計算（Test-time Compute）：把算力花在這一道題",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-test-time-compute"
+        },
+        {
+          "type": "heading",
+          "text": "聯網搜尋與檔案上傳能到哪裡",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "聯網搜尋就是首頁列的「智能搜索」，開啟後回答會帶上找到的網頁。它找得到不等於讀懂了，重要數字仍要自己核對。"
+        },
+        {
+          "type": "paragraph",
+          "text": "檔案上傳的規格，官網沒有給網頁版與 App 的格式清單與大小上限。官方常見問題只列圖片上傳失敗的原因：格式暫不支援、未偵測到可擷取的文字、大小超過上傳限制、內容不符合平台規範。確切數字以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "有公開數字的是 API 這側：支援 JPEG、PNG、GIF、WebP；單次請求主體最大 48 MiB，單張圖片用 base64 或外部網址最多 32 MiB、改走 Files API 最多 64 MiB，單張最多換算成 1024 token。要備份，網頁版走「設定」→「資料管理」→「匯出所有歷史對話」。"
+        },
+        {
+          "type": "heading",
+          "text": "官網現在列的是哪幾個模型",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先講一個會被舊教學誤導的地方：deepseek-chat 與 deepseek-reasoner 這兩個模型名已經不是現役。官網 2026 年 4 月 24 日的更新日誌寫，兩個舊名將在 2026 年 7 月 24 日停止服務，在那之前分別指向非思考模式與思考模式。對話模型與推理模型已合併成同一個模型、改用參數切換，網頁版那顆按鈕就是這個切換。"
+        },
+        {
+          "type": "paragraph",
+          "text": "定價頁目前只列 deepseek-flash 與 deepseek-v4-pro，模型版本是 DeepSeek-V4.1-Flash 與 DeepSeek-V4-Pro-0813，上下文視窗都是 1M token（官網寫「上下文長度」），輸出最長 384K。舊名 deepseek-v4-flash 還收得到請求，但已改由 V4.1-Flash 服務。V3.2、V3.1、R1 在透明度中心還查得到，但不在定價頁上。網頁版與 App 用哪一版，官網最後一次明說三端同步是 2026 年 8 月 13 日的公告，之後未再說明，以官網為準。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "API 模型名",
+            "模型版本與用途",
+            "上下文視窗／輸出上限",
+            "每百萬 token 價格（離峰／高峰，美元）"
+          ],
+          "rows": [
+            [
+              "deepseek-flash",
+              "DeepSeek-V4.1-Flash；文字與圖像",
+              "1M／384K",
+              "命中 0.003／0.006；未命中 0.15／0.3；輸出 0.6／1.2"
+            ],
+            [
+              "deepseek-v4-pro",
+              "DeepSeek-V4-Pro-0813；純文字",
+              "1M／384K",
+              "命中 0.022／0.044；未命中 0.66／1.32；輸出 1.98／3.96"
+            ],
+            [
+              "網頁版與 App",
+              "以官網為準",
+              "官網未列",
+              "App 免費，網頁版以官網為準"
+            ]
+          ],
+          "caption": "整理自官網英文定價頁，查證日 2026 年 9 月 14 日；中文定價頁同一張表用人民幣報價。"
+        },
+        {
+          "type": "heading",
+          "text": "API 怎麼呼叫、怎麼算錢",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件寫 DeepSeek API 相容 OpenAI 與 Anthropic 格式，改設定就能沿用原本的 SDK；OpenAI 格式的 base_url 是 api.deepseek.com。下面是官方文件的最小範例。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "最小呼叫範例（OpenAI 相容格式，取自官方文件）",
+          "code": "curl https://api.deepseek.com/chat/completions \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Authorization: Bearer ${DEEPSEEK_API_KEY}\" \\\n  -d '{\n        \"model\": \"deepseek-flash\",\n        \"messages\": [\n          {\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},\n          {\"role\": \"user\", \"content\": \"Hello!\"}\n        ],\n        \"thinking\": {\"type\": \"enabled\"},\n        \"reasoning_effort\": \"high\",\n        \"stream\": false\n      }'"
+        },
+        {
+          "type": "paragraph",
+          "text": "要關掉思考模式，把 thinking 的 type 換成 disabled；用 Python SDK 時，thinking 要放進 extra_body 才傳得出去。"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "用 OpenAI Python SDK 切換思考模式",
+          "code": "from openai import OpenAI\n\nclient = OpenAI(api_key=\"your-key\", base_url=\"https://api.deepseek.com\")\n\nresponse = client.chat.completions.create(\n    model=\"deepseek-flash\",\n    messages=[{\"role\": \"user\", \"content\": \"9.11 and 9.8, which is greater?\"}],\n    reasoning_effort=\"high\",\n    extra_body={\"thinking\": {\"type\": \"enabled\"}},\n)\n\nprint(response.choices[0].message.reasoning_content)\nprint(response.choices[0].message.content)"
+        },
+        {
+          "type": "paragraph",
+          "text": "計價以每百萬 token 為單位，分離峰與高峰兩價，離峰是高峰的一半。中文定價頁寫高峰是北京時間週一至週五 9:00 到 12:00 與 14:00 到 18:00（台灣時間相同），英文頁寫 01:00 到 04:00 與 06:00 到 10:00 UTC，是同一段時間的兩種寫法。輸入再分快取命中與未命中：deepseek-flash 命中每百萬 token 0.003 美元、未命中 0.15 美元，相差 50 倍。"
+        },
+        {
+          "type": "link",
+          "text": "提示詞快取（Prompt Caching）：重用相同字首的計算",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-caching"
+        },
+        {
+          "type": "paragraph",
+          "text": "中文定價頁同一張表用人民幣：deepseek-flash 命中 0.02 元與 0.04 元、未命中 1 元與 2 元、輸出 4 元與 8 元；兩種幣別都是官網數字。付款方式要先看清楚：官方常見問題寫線上儲值用支付寶或微信支付，對公匯款只開放給以 +86 手機號碼註冊的企業使用者。"
+        },
+        {
+          "type": "heading",
+          "text": "用之前要知道的三個限制",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一是內容審核。服務條款第 3.3 條寫：為履行法律與合規要求，DeepSeek 有權以技術手段審查使用者的使用行為，包含但不限於建立風險過濾機制與違法內容特徵資料庫。哪些題目會被擋下，官方沒有列清單。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二是資料的位置。隱私政策寫明：為了提供服務，DeepSeek 直接在中華人民共和國境內蒐集、處理並儲存你的個人資料。同一份政策也給了兩個你能自己做的動作：拒絕把資料用於訓練，以及在設定裡刪除對話紀錄。"
+        },
+        {
+          "type": "link",
+          "text": "DeepSeek 資料去哪裡：隱私、審查與台灣使用者的取捨",
+          "url": "https://mokaair.com/zh-TW/life/deepseek-privacy-and-data-flow"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三是幻覺，這點官方寫在隱私政策裡：這類服務靠預測最可能出現的字來產生回答，最可能的字不一定最正確，因此不應依賴輸出的事實正確性。服務條款第 3.1 條更要求你在發布輸出前主動查證，並標示內容由人工智慧生成。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "思考過程看起來合理，不等於答案正確",
+          "text": "深度思考多印出來的那一段是模型生成的文字，不是查詢紀錄，它可以推得很順卻從一個錯的前提出發。把它當檢查清單：挑出關鍵事實，逐一到官方頁面核對，核不到就當成還沒有答案。"
+        },
+        {
+          "type": "link",
+          "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+        },
+        {
+          "type": "paragraph",
+          "text": "這三點有你不能接受的，還有兩條路：把開源蒸餾版下載到自己的電腦跑，內容就不離開這台機器；或先比較同一批中國系模型再決定。"
+        },
+        {
+          "type": "link",
+          "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
+          "url": "https://mokaair.com/zh-TW/life/deepseek-local-with-ollama"
+        },
+        {
+          "type": "link",
+          "text": "中國系 AI 模型比較：DeepSeek、Qwen、Kimi、豆包、MiniMax",
+          "url": "https://mokaair.com/zh-TW/life/chinese-ai-models-comparison"
+        }
+      ],
+      "sources": [
+        {
+          "title": "DeepSeek API 文件：模型與價格（英文版，模型名稱、上下文長度、峰谷價格）",
+          "url": "https://api-docs.deepseek.com/quick_start/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DeepSeek API 文件：模型 & 價格（中文版，人民幣報價與北京時間高峰時段）",
+          "url": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DeepSeek API 文件：首次呼叫 API（相容格式、base_url 與最小範例）",
+          "url": "https://api-docs.deepseek.com/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DeepSeek API 文件：思考模式（開關、力道三級、reasoning_content 與不支援的參數）",
+          "url": "https://api-docs.deepseek.com/guides/thinking_mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DeepSeek API 文件：圖像理解（支援格式與上傳大小上限）",
+          "url": "https://api-docs.deepseek.com/guides/vision",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DeepSeek API 文件：更新日誌（舊模型名下線時程、思考力道三級、峰谷定價）",
+          "url": "https://api-docs.deepseek.com/updates",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DeepSeek 官方公告：DeepSeek V4.1 Flash 發布（2026 年 9 月 10 日）",
+          "url": "https://www.deepseek.com/news/deepseek-v4-1-flash/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DeepSeek 官網首頁（深度思考與智能搜索兩個功能名稱）",
+          "url": "https://www.deepseek.com/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DeepSeek 官方常見問題（登入限制、信箱網域、上傳失敗原因、儲值與退款）",
+          "url": "https://static.deepseek.com/faq/index.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DeepSeek 服務條款（註冊方式、未成年規定、審查權利、發布輸出前的查證義務）",
+          "url": "https://cdn.deepseek.com/policies/en-US/deepseek-terms-of-use.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DeepSeek 隱私政策（帳號資料、第三方登入、資料儲存在中國、訓練退出與準確性說明）",
+          "url": "https://cdn.deepseek.com/policies/en-US/deepseek-privacy-policy.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DeepSeek 透明度中心（歷代模型與模型卡列表）",
+          "url": "https://www.deepseek.com/transparency/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DeepSeek App 官方下載頁",
+          "url": "https://download.deepseek.com/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "App Store 台灣區：DeepSeek - AI 智能助手（開發者、系統需求與年齡分級）",
+          "url": "https://apps.apple.com/tw/app/id6737597349",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

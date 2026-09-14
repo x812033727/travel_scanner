@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+<title id="title">Apple Intelligence 的三層資料流向 / Three layers a request can travel</title>
+<desc id="desc">由左至右三個區塊。第 1 層裝置端：系統先判斷要求能不能在裝置上算完，官網寫即時翻譯完全在裝置上執行，資料不離開這支裝置，關掉 Apple Intelligence 後裝置端模型會從裝置移除。第 2 層私密雲端運算：複雜的要求送到 Apple 晶片伺服器，只處理與這次要求相關的資料，處理完移除、不儲存，Apple 也不取用，獨立研究者可檢查伺服器上執行的程式碼。第 3 層 ChatGPT 整合：延伸功能預設關閉，開啟後送出前會先問你同意，不連帳號時不儲存也不拿去訓練，連了帳號就套用 OpenAI 的帳號政策，可能記錄要求並用於訓練。下方一排寫每一層的開關位置：總開關在設定裡的 Apple Intelligence 與 Siri，私密雲端運算的紀錄在設定的隱私權與安全性裡的 Apple Intelligence 報告，ChatGPT 在同一頁關閉使用 ChatGPT。</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+<path d="M 0 1 L 11 6 L 0 11 z" fill="#5C6B6B"/>
+</marker>
+</defs>
+<rect width="1600" height="900" fill="#F7F1E8"/>
+
+<text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">Apple Intelligence 的三層資料流向</text>
+<text x="60" y="84" font-size="18" fill="#5C6B6B">Where your request goes: on-device, Private Cloud Compute, ChatGPT</text>
+<text x="60" y="126" font-size="17" fill="#5C6B6B">一句要求先問裝置能不能自己算完；愈往右走，資料離你愈遠，開關也不同。</text>
+
+<rect x="62" y="152" width="456" height="60" rx="14" fill="#0D6B68"/>
+<rect x="62" y="186" width="456" height="26" fill="#0D6B68"/>
+<rect x="60" y="150" width="460" height="390" rx="14" fill="none" stroke="#0D6B68" stroke-width="4"/>
+<text x="290" y="194" font-size="22" font-weight="bold" fill="#FFFFFF" text-anchor="middle">第 1 層 · 裝置端</text>
+<text x="290" y="248" font-size="15" fill="#5C6B6B" text-anchor="middle">On-device processing</text>
+<text x="88" y="300" font-size="17" fill="#102A2B">先判斷要求能不能在裝置上算完</text>
+<text x="88" y="338" font-size="17" fill="#102A2B">「即時翻譯」官網寫完全在裝置執行</text>
+<text x="88" y="376" font-size="17" fill="#102A2B">資料不離開這支裝置</text>
+<text x="88" y="452" font-size="17" fill="#2E7D5B">關掉 Apple Intelligence 後，</text>
+<text x="88" y="490" font-size="17" fill="#2E7D5B">裝置端模型會從裝置移除</text>
+
+<line x1="524" y1="345" x2="572" y2="345" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+<rect x="582" y="152" width="456" height="60" rx="14" fill="#2F6F9F"/>
+<rect x="582" y="186" width="456" height="26" fill="#2F6F9F"/>
+<rect x="580" y="150" width="460" height="390" rx="14" fill="none" stroke="#2F6F9F" stroke-width="4"/>
+<text x="810" y="194" font-size="22" font-weight="bold" fill="#FFFFFF" text-anchor="middle">第 2 層 · 私密雲端運算</text>
+<text x="810" y="248" font-size="15" fill="#5C6B6B" text-anchor="middle">Private Cloud Compute</text>
+<text x="608" y="300" font-size="17" fill="#102A2B">複雜的要求送到 Apple 晶片伺服器</text>
+<text x="608" y="338" font-size="17" fill="#102A2B">只處理與這次要求相關的資料</text>
+<text x="608" y="376" font-size="17" fill="#102A2B">處理完移除、不儲存</text>
+<text x="608" y="414" font-size="17" fill="#102A2B">Apple 也不取用</text>
+<text x="608" y="490" font-size="17" fill="#2F6F9F">獨立研究者可檢查伺服器程式碼</text>
+
+<line x1="1044" y1="345" x2="1092" y2="345" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+<rect x="1102" y="152" width="436" height="60" rx="14" fill="#D97A2B"/>
+<rect x="1102" y="186" width="436" height="26" fill="#D97A2B"/>
+<rect x="1100" y="150" width="440" height="390" rx="14" fill="none" stroke="#D97A2B" stroke-width="4"/>
+<text x="1320" y="194" font-size="22" font-weight="bold" fill="#FFFFFF" text-anchor="middle">第 3 層 · ChatGPT 整合</text>
+<text x="1320" y="248" font-size="15" fill="#5C6B6B" text-anchor="middle">ChatGPT extension</text>
+<text x="1128" y="300" font-size="17" fill="#102A2B">延伸功能預設關閉</text>
+<text x="1128" y="338" font-size="17" fill="#102A2B">開啟後，送出前會先問你同意</text>
+<text x="1128" y="376" font-size="17" fill="#2E7D5B">不連帳號：不儲存、不訓練</text>
+<text x="1128" y="452" font-size="17" fill="#B8442D">連帳號：套用 OpenAI 帳號政策</text>
+<text x="1128" y="490" font-size="17" fill="#B8442D">可能記錄要求並用於訓練</text>
+
+<text x="60" y="622" font-size="20" font-weight="bold" fill="#102A2B">每一層的開關在哪裡</text>
+
+<rect x="60" y="650" width="460" height="150" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+<text x="88" y="700" font-size="18" font-weight="bold" fill="#0D6B68">總開關</text>
+<text x="88" y="740" font-size="16" fill="#102A2B">設定 → Apple Intelligence 與 Siri</text>
+<text x="88" y="774" font-size="16" fill="#5C6B6B">Mac 走「系統設定」同一位置</text>
+
+<rect x="580" y="650" width="460" height="150" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+<text x="608" y="700" font-size="18" font-weight="bold" fill="#2F6F9F">查有沒有上雲端</text>
+<text x="608" y="740" font-size="16" fill="#102A2B">設定 → 隱私權與安全性</text>
+<text x="608" y="774" font-size="16" fill="#102A2B">→ Apple Intelligence 報告</text>
+
+<rect x="1100" y="650" width="440" height="150" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+<text x="1128" y="700" font-size="18" font-weight="bold" fill="#D97A2B">關掉 ChatGPT</text>
+<text x="1128" y="740" font-size="16" fill="#102A2B">同一頁 → ChatGPT</text>
+<text x="1128" y="774" font-size="16" fill="#102A2B">→ 關閉「使用 ChatGPT」</text>
+
+<text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

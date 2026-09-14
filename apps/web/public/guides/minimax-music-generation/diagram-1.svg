@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">MiniMax 音樂生成的流程 / How a MiniMax song is made</title>
+  <desc id="desc">流程圖分成五個方塊。左側兩個輸入方塊：音樂描述 prompt 寫風格、情緒、樂器與人聲，長度 0 到 2,000 個字元，純演奏曲時改為必填；歌詞 lyrics 用 14 種段落標記，每個標記各占一行，長度 1 到 3,500 個字元，也可以讓 API 代寫。兩者一起進入中間的模型與音檔設定方塊：模型選 music-3.0，取樣率 44100，位元率 256000，格式可選 mp3、wav 或 pcm。接著到右上的生成與取回方塊：模型卡寫原生最長 5 分鐘，output_format 選 url 時連結 24 小時後失效，也可以改用 hex 直接取回。最後往下到右下的發布前檢查方塊：標示這是 AI 生成、投入的聲音要先取得授權、商用範圍以官網條款為準、浮水印與識別資訊不要移除。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#0D6B68"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">MiniMax 音樂生成：從描述與歌詞到成品</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">From a music description and lyrics to a finished song</text>
+
+  <!-- input A: music description -->
+  <rect x="60" y="150" width="440" height="250" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="280" y="207" text-anchor="middle" font-size="22" font-weight="700" fill="#102A2B">音樂描述 prompt</text>
+  <text x="280" y="258" text-anchor="middle" font-size="17" fill="#102A2B">風格・情緒・樂器・人聲</text>
+  <text x="280" y="300" text-anchor="middle" font-size="17" fill="#102A2B">0 到 2,000 個字元</text>
+  <text x="280" y="342" text-anchor="middle" font-size="17" fill="#5C6B6B">純演奏曲時改為必填</text>
+
+  <!-- input B: lyrics -->
+  <rect x="60" y="460" width="440" height="250" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="280" y="517" text-anchor="middle" font-size="22" font-weight="700" fill="#102A2B">歌詞 lyrics</text>
+  <text x="280" y="568" text-anchor="middle" font-size="17" fill="#102A2B">14 種段落標記各占一行</text>
+  <text x="280" y="610" text-anchor="middle" font-size="17" fill="#102A2B">1 到 3,500 個字元</text>
+  <text x="280" y="652" text-anchor="middle" font-size="17" fill="#5C6B6B">也可以讓 API 代寫</text>
+
+  <!-- settings -->
+  <rect x="580" y="265" width="400" height="350" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="780" y="349" text-anchor="middle" font-size="22" font-weight="700" fill="#102A2B">模型與音檔設定</text>
+  <text x="780" y="405" text-anchor="middle" font-size="17" fill="#102A2B">模型 music-3.0</text>
+  <text x="780" y="449" text-anchor="middle" font-size="17" fill="#102A2B">取樣率 44100</text>
+  <text x="780" y="493" text-anchor="middle" font-size="17" fill="#102A2B">位元率 256000</text>
+  <text x="780" y="537" text-anchor="middle" font-size="17" fill="#5C6B6B">格式 mp3・wav・pcm</text>
+
+  <!-- generate and fetch -->
+  <rect x="1060" y="150" width="480" height="250" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1300" y="207" text-anchor="middle" font-size="22" font-weight="700" fill="#102A2B">生成與取回音檔</text>
+  <text x="1300" y="258" text-anchor="middle" font-size="17" fill="#102A2B">模型卡：原生最長 5 分鐘</text>
+  <text x="1300" y="300" text-anchor="middle" font-size="17" fill="#102A2B">url 連結 24 小時後失效</text>
+  <text x="1300" y="342" text-anchor="middle" font-size="17" fill="#5C6B6B">或改用 hex 直接取回</text>
+
+  <!-- checks before publishing -->
+  <rect x="1060" y="460" width="480" height="270" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1300" y="517" text-anchor="middle" font-size="22" font-weight="700" fill="#102A2B">發布前的檢查</text>
+  <text x="1300" y="568" text-anchor="middle" font-size="17" fill="#102A2B">標示這是 AI 生成</text>
+  <text x="1300" y="610" text-anchor="middle" font-size="17" fill="#102A2B">投入的聲音要先取得授權</text>
+  <text x="1300" y="652" text-anchor="middle" font-size="17" fill="#B8442D">商用範圍以官網條款為準</text>
+  <text x="1300" y="692" text-anchor="middle" font-size="15" fill="#5C6B6B">浮水印與識別資訊不要移除</text>
+
+  <!-- arrows -->
+  <path d="M 500 275 H 540 V 380 H 570" fill="none" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 500 585 H 540 V 500 H 570" fill="none" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 980 440 H 1020 V 275 H 1050" fill="none" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 1300 400 V 450" fill="none" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

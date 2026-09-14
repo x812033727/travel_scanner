@@ -1,0 +1,345 @@
+{
+  "slug": "kimi-moonshot-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Kimi（月之暗面）：長文件與 K 系列模型",
+      "description": "Kimi 是月之暗面（Moonshot AI）的 AI 助手，入口在 kimi.com，台灣兩大商店都下載得到。照當天官網整理：單檔 100 MB、一次 50 個檔案，K2.6 約 128K token、K3 是 100 萬 token；K 系列權重公開在 Hugging Face，K3 與 K2.6 的授權條件不同；API 分國際站與中國站兩套價目；隱私政策寫資料存於中華人民共和國境內。",
+      "hero": {
+        "src": "/guides/kimi-moonshot-guide/hero.jpg",
+        "alt": "插圖：一疊文件沿著箭頭進入一個大圓角視窗，視窗右側分出兩條線，一條通向雲端方塊，一條通向硬碟",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Kimi 是北京月之暗面科技（Moonshot AI）做的 AI 助手，強項是長文件與代理（Agent）任務。聊天入口收在 kimi.com，原本的 kimi.moonshot.cn 會轉到同一個地方；開發者的 API 平台仍分國際站與中國站，模型清單一樣，價目與免費額度不同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇整理 2026 年 9 月 14 日當天在官網說明中心、API 文件、Hugging Face 模型卡與授權條款讀到的內容：註冊、台灣可用性、長文件上限、K 系列規格與商用條件、兩站價格與隱私政策。官網沒寫的就標成以官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "入口、註冊與台灣可用性",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "聊天只有一個入口，網頁版、手機 App 與桌面版共用同一個帳號；開發者的入口分兩站，選錯站會把成本算錯。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "聊天：kimi.com，網頁、iOS、Android 與桌面版同一個帳號",
+            "國際 API：platform.kimi.ai，網域 api.moonshot.ai，用美元",
+            "中國 API：platform.kimi.com，網域 api.moonshot.cn，用人民幣",
+            "註冊：手機號碼加簡訊驗證碼、電信商一鍵登入、App 掃碼或第三方帳號"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "註冊方式照隱私政策與服務條款寫的以手機號碼加驗證碼為主。說明中心另外註明目前只支援部分地區的手機號碼，VoIP 號碼與市話不支援，但沒有列出支援地區清單，台灣門號收不收得到驗證碼以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "台灣這邊當天實查：App Store 台灣區找得到 Kimi，開發者顯示 Moonshot AI，標價免費、幣別新台幣，版本 3.1.2、更新日 2026 年 9 月 11 日，需要 iOS 15.0 以上；Google Play 台灣區頁面也打得開，標示有應用程式內購。介面語言在設定的一般分頁切換，官網列的清單包含繁體中文。"
+        },
+        {
+          "type": "heading",
+          "text": "長文件怎麼讀：格式、上限與一次能吃多少",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官網寫的檔案支援範圍是 PDF、Word、Excel、PPT、圖片、TXT 與影片等常見格式，單一檔案不超過 100 MB，一次最多上傳 50 個。上傳後直接問就好，要它引用哪一段，在提示詞裡指名檔名與章節會比叫它整份摘要精準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一次能吃多少看模型：K2.6 單輪的上下文視窗約 128K token，大約 5 萬到 6 萬個中文字；K3 是 100 萬 token，官網註明要最高階會員權益，撰寫時還要把對話長度選成超長。官網把踩線寫成「對話超過 20 萬個中文字怎麼辦」：單檔太大就拆檔分批送，多輪累積到上限就先請它整理成交接文件再貼進新對話，刪舊訊息並不會把上下文視窗空出來。"
+        },
+        {
+          "type": "link",
+          "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+        },
+        {
+          "type": "paragraph",
+          "text": "要不要上網查由 Kimi 自己依問題判斷，介面上沒有聯網開關。內建官方工具有網頁搜尋、指定網址抓取、以圖搜圖、執行 Python 做分析與圖表，以及記憶。思考模式已經和聊天、代理合成同一個體驗，想多想幾步改選模型與推理強度：K2.6 有標準與進階，K3 與 K3 叢集多一級極致，強度越高用掉的 token 越多。"
+        },
+        {
+          "type": "link",
+          "text": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-tool-calling"
+        },
+        {
+          "type": "image",
+          "src": "/guides/kimi-moonshot-guide/diagram-1.svg",
+          "alt": "圖解：Kimi 長文件工作流，從上傳、讀取、提問、引用到匯出五步，每一步標出官網寫的上限與做法",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右五步。上排是官網寫的檔案與上下文視窗上限，下排是頂到上限時官網建議的做法。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "K 系列模型：規格、開放權重與授權",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "權重放在 Hugging Face 的 moonshotai 官方組織，當天由新到舊是 Kimi-K3（2026 年 6 月 13 日）、Kimi-K2.7-Code、Kimi-K2.6、Kimi-K2.5 與 Kimi-K2-Thinking。站上名詞篇把權重可下載、授權另有條件的做法叫開放權重（Open Weights），也有人寫成開源權重。"
+        },
+        {
+          "type": "link",
+          "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+        },
+        {
+          "type": "paragraph",
+          "text": "K3 的模型卡寫混合專家（MoE）架構，總參數 2.8T、啟用參數 104B、共 93 層，896 個專家每個 token 只選 16 個，上下文長度 1,048,576 個 token，官網稱它是第一個開放的 3T 級模型。K2.6 與 K2.7 Code 是前一代：總參數 1T、啟用 32B、384 個專家選 8 個、上下文 256K。"
+        },
+        {
+          "type": "link",
+          "text": "混合專家模型（Mixture of Experts）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-mixture-of-experts"
+        },
+        {
+          "type": "paragraph",
+          "text": "授權有兩種。K2.6 的檔案叫 Modified MIT License，唯一的修改是商用產品月活躍使用者超過 1 億或月營收超過 2,000 萬美元，要在介面顯著標示 Kimi K2.6。K3 的檔案叫 Kimi K3 License，多一條：若你或關係企業經營 Model as a Service，且連續 12 個月合計營收超過 2,000 萬美元，商用前要先另簽協議；內部使用或透過官方產品與認證推論夥伴取用不受限。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "版本",
+            "規格與上下文",
+            "授權與價格（美元）"
+          ],
+          "rows": [
+            [
+              "Kimi K3",
+              "2.8T／啟用 104B，896 選 16，1,048,576 token",
+              "Kimi K3 License；進 3.00、出 15.00"
+            ],
+            [
+              "Kimi K2.7 Code",
+              "1T／啟用 32B，384 選 8，262,144 token",
+              "Modified MIT；進 0.95、出 4.00"
+            ],
+            [
+              "Kimi K2.6",
+              "1T／啟用 32B，384 選 8，262,144 token",
+              "Modified MIT；進 0.95、出 4.00"
+            ],
+            [
+              "Kimi K2.5",
+              "1T／啟用 32B，262,144 token",
+              "Modified MIT；2026 年 8 月 31 日下架"
+            ]
+          ],
+          "caption": "Hugging Face moonshotai 組織與 Kimi API 平台頁面，2026 年 9 月 14 日查證；價格是國際站每百萬 token 未命中快取的輸入價與輸出價。"
+        },
+        {
+          "type": "heading",
+          "text": "API 與會員方案：兩個幣別，兩種免費額度",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "API 以每百萬 token 計價，輸入分快取命中與未命中。國際站 kimi-k3 是 0.30、3.00、15.00 美元，kimi-k2.7-code 是 0.19、0.95、4.00 美元，kimi-k2.6 是 0.16、0.95、4.00 美元；中國站同樣三個模型是人民幣 2.00、20.00、100.00 元，1.30、6.50、27.00 元與 1.10、6.50、27.00 元。兩邊不是匯率換算。"
+        },
+        {
+          "type": "paragraph",
+          "text": "免費額度也分兩套。國際站要先儲值至少 1 美元才能開始用，累計到 5 美元送 5 美元代金券，Tier0 限同時 1 個請求、每分鐘 3 次、每分鐘 50 萬 token、每天 150 萬 token。中國站 Tier0 是 0 元就能用，新用戶以中國大陸手機號碼註冊並完成實名認證送 15 元代金券、3 個月內有效，官網註明不能用在 Kimi K3。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "用 OpenAI 相容格式呼叫國際站的 Kimi API（中國站把網域換成 api.moonshot.cn）",
+          "code": "curl https://api.moonshot.ai/v1/chat/completions \\\n  -H \"Authorization: Bearer $MOONSHOT_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"model\": \"kimi-k3\", \"messages\": [{\"role\": \"user\", \"content\": \"你好\"}]}'"
+        },
+        {
+          "type": "paragraph",
+          "text": "會員這邊說明中心列四個方案，價格是人民幣：Andante 每月 49 元、Moderato 99 元、Allegretto 199 元、Allegro 699 元，年繳最多省 1,680 元。四個方案共用同一個額度池，依實際 token 消耗扣、每月刷新不累積，Kimi Code 另有每週 5 小時的單獨限制。K3 的 100 萬 token 長對話官網寫只有 Allegro 有。免費帳號沒有列成方案，台幣定價官網也沒列，以官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "AI 代理（AI Agent）是什麼：從回答問題到完成任務",
+          "url": "https://mokaair.com/zh-TW/life/ai-agents-explained"
+        },
+        {
+          "type": "heading",
+          "text": "隱私政策寫的資料流向",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "隱私政策標的版本更新日期是 2026 年 8 月 24 日。第 5.1 條寫個人資料儲存於中華人民共和國境內，除非取得你的單獨同意並符合國家相關法律法規，不會向境外提供；5.2 條的留存期間只寫僅在為實現服務目的所必需的時間內保留，沒有給天數。"
+        },
+        {
+          "type": "paragraph",
+          "text": "訓練用途照原文是：在經安全加密技術處理、嚴格去識別化且無法重新識別特定個人的前提下，會將你輸入輸出的內容用來優化模型。退出沒有介面開關，要寄信給客服，說明中心寫驗證身分後 5 到 7 個工作天完成登記，只能整個帳號一起退，不支援單篇對話或單一檔案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "API 那條線不同：說明中心寫透過 API 提交的輸入與模型輸出不會用於訓練或改進模型，只用來完成當次請求，處理完不會為了訓練目的持久化儲存。刪帳號寫在隱私政策第 7.4 條，App 端在設定的帳號安全、網頁端在設定的帳號設定裡選刪除帳號，註銷不可逆；服務條款第十二條寫適用中華人民共和國大陸地區法律。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "把三條線分開看：聊天、API、自己跑權重",
+          "text": "同一個 Kimi，三種用法的資料流向不一樣。網頁與 App 的聊天內容官方寫會在去識別化後用來優化模型，退出要寄信、只能整個帳號退；API 提交的內容官方寫不會用於訓練；下載 K 系列權重在自己的機器上跑，資料不會離開你的機器，但商用前要先讀完授權。交出公司資料或客戶個資之前，先確認自己走哪一條線。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要把設定與檢查一次做完，或想看同一批模型怎麼比，可以接著看下面幾篇。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        },
+        {
+          "type": "link",
+          "text": "使用中國系 AI App 前的資安檢查清單",
+          "url": "https://mokaair.com/zh-TW/life/chinese-ai-apps-security-checklist"
+        },
+        {
+          "type": "link",
+          "text": "中國系 AI 模型比較：DeepSeek、Qwen、Kimi、豆包、MiniMax",
+          "url": "https://mokaair.com/zh-TW/life/chinese-ai-models-comparison"
+        },
+        {
+          "type": "link",
+          "text": "通義千問 Qwen：開放權重模型家族與 Qwen Studio",
+          "url": "https://mokaair.com/zh-TW/life/qwen-alibaba-models-guide"
+        },
+        {
+          "type": "link",
+          "text": "給 Claude 讀 PDF 與試算表：摘要、比對與抓數字",
+          "url": "https://mokaair.com/zh-TW/life/claude-file-analysis-pdf-excel"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Kimi 說明中心：Kimi 總覽（檔案格式、單檔 100 MB、一次 50 個、產品與模型列表）",
+          "url": "https://www.kimi.com/en/help/new-user-guide/overview",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kimi 說明中心：開始使用 Kimi（K3 參數與上下文、內建官方工具、多模態輸入格式）",
+          "url": "https://www.kimi.com/en/help/new-user-guide/agentic-chat",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kimi 說明中心：Kimi 能做什麼（自動聯網、可處理的檔案、單輪可處理內容量、介面語言）",
+          "url": "https://www.kimi.com/en/help/others/capability",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kimi 說明中心：K2.6 與 K3 怎麼選（推理強度標準、進階、極致；思考模式已合併）",
+          "url": "https://www.kimi.com/en/help/others/model-mode-selection",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kimi 說明中心：對話常見問題（超過 20 萬中文字的處理、刪舊訊息不會釋放上下文視窗）",
+          "url": "https://www.kimi.com/en/help/others/chat-issues",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kimi 說明中心：資料使用與共享（訓練用途、退出流程與工作天、資料存放於中國大陸境內）",
+          "url": "https://www.kimi.com/en/help/others/data-usage",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kimi 說明中心：手機號碼與個人資料（僅支援部分地區門號、不支援 VoIP 與市話）",
+          "url": "https://www.kimi.com/en/help/others/phone-profile",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kimi 說明中心：會員方案與計費（四個方案的人民幣月費、年繳折扣、額度池與刷新規則）",
+          "url": "https://www.kimi.com/en/help/membership/membership-pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kimi 隱私政策（存放地、留存期間、模型優化用途、刪除帳號路徑）",
+          "url": "https://www.kimi.com/user/agreement/userPrivacy?version=v2",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kimi API 平台：模型清單（現行模型與已下架模型的日期）",
+          "url": "https://platform.kimi.ai/docs/models",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kimi API 平台：模型推理價格（美元，含快取命中價與上下文長度）",
+          "url": "https://platform.kimi.ai/docs/pricing/chat",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kimi 開放平台：模型推理價格（人民幣，含快取命中價與上下文長度）",
+          "url": "https://platform.kimi.com/docs/pricing/chat",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kimi API 平台：儲值與限速（最低儲值門檻、代金券、Tier0 到 Tier5 的速率限制）",
+          "url": "https://platform.kimi.ai/docs/pricing/limits",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kimi 說明中心：免費測試權益（中國站新用戶 15 元代金券的條件與有效期）",
+          "url": "https://www.kimi.com/help/kimi-api/api-free-trial",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kimi 說明中心：API 資料處理與安全（API 資料不用於訓練、刪除已上傳檔案）",
+          "url": "https://www.kimi.com/help/kimi-api/api-data-security",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face：moonshotai/Kimi-K3 模型卡（架構、參數、專家數、上下文長度、授權名稱）",
+          "url": "https://huggingface.co/moonshotai/Kimi-K3",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face：moonshotai/Kimi-K2.6 模型卡與 Modified MIT License 條文",
+          "url": "https://huggingface.co/moonshotai/Kimi-K2.6",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub：MoonshotAI/Kimi-K3 的 Kimi K3 License 全文（商用門檻與標示條件）",
+          "url": "https://github.com/MoonshotAI/Kimi-K3/blob/main/LICENSE",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "App Store 台灣區：Kimi（開發者、版本、更新日期、價格與系統需求）",
+          "url": "https://apps.apple.com/tw/app/kimi/id6474233312",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Play 台灣區：Kimi（開發者資訊與應用程式內購標示）",
+          "url": "https://play.google.com/store/apps/details?id=com.moonshot.kimichat",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
