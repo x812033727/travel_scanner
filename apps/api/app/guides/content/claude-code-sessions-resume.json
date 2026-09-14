@@ -1,0 +1,283 @@
+{
+  "slug": "claude-code-sessions-resume",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 127,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜繼續、找回與管理對話",
+      "description": "命名、恢復與匯出工作階段。工作做一半離開後，Claude Code 可以找回本機對話，讓你接續原本需求。本篇會用 continue、resume、命名與匯出完成一個可重現流程，也說明找回對話不會自動還原程式檔案。讀完後，你能在多個任務之間辨認正確 session，而不是每次重新描述整個專案。",
+      "hero": {
+        "src": "/guides/claude-code-sessions-resume/hero.jpg",
+        "alt": "繼續、找回與管理對話：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "工作做一半離開後，Claude Code 可以找回本機對話，讓你接續原本需求。本篇會用 continue、resume、命名與匯出完成一個可重現流程，也說明找回對話不會自動還原程式檔案。讀完後，你能在多個任務之間辨認正確 session，而不是每次重新描述整個專案。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "請先完成"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-cli-command-guide",
+              "text": "CLI 指令分類"
+            },
+            {
+              "type": "text",
+              "text": "，並在練習專案操作。本篇主要介紹本機 CLI 歷史；桌面 App 有自己的工作階段介面，雲端任務帶回本機則使用"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-cross-device-workflow",
+              "text": "跨裝置流程"
+            },
+            {
+              "type": "text",
+              "text": "。不同來源的對話不要只靠相同名稱混用。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先為工作取一個可辨認名稱"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-sessions-resume/diagram-1.svg",
+          "alt": "先為工作取一個可辨認名稱 → 繼續最近一次對話 → 用 resume 指定或搜尋",
+          "width": 1600,
+          "height": 900,
+          "caption": "先為工作取一個可辨認名稱 → 繼續最近一次對話 → 用 resume 指定或搜尋",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "開始只讀任務後，用 /rename 指定用途明確的名稱。名稱不必很長，但最好包含專案與目標，例如 todo-filter-plan。它不會建立 Git 分支，也不會重新命名資料夾；作用是讓你在對話清單中找到這段工作。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：命名本次規劃",
+          "code": "/rename todo-filter-plan\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：留下清楚接續點",
+          "code": "請閱讀待辦專案，規劃全部、未完成、已完成三種篩選。\n這一輪只讀取與提出方案，不修改檔案。\n最後用三點列出已確認事實、待決定事項與下一步。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "確認回覆後退出 Claude，保留原本的終端機工作目錄。記下 session 名稱與專案位置，接著練習不同的找回方式。若你還沒先送過任何實質訊息，對話可能沒有足夠內容供日後辨認，所以先完成上面的只讀問題。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "繼續最近一次對話"
+        },
+        {
+          "type": "paragraph",
+          "text": "在相同資料夾執行 claude --continue，會接續該目錄最近的適用對話，短寫是 -c。它適合剛剛只做一件事、很確定最近 session 是哪個的情況。如果同時開過多個工作，使用明確名稱或選擇器更容易避免接錯。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "專案終端機：接續最近的對話",
+          "code": "claude --continue\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "回來後先看最近訊息和工作名稱，再問一個只讀確認問題。continue 有自己的歷史篩選規則，例如一般互動清單不會與所有非互動或 SDK 工作完全相同；如果你要找的是自動化 session，應依其 ID 與專篇流程處理，不要假設最近執行過的程序一定會被選中。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用 resume 指定或搜尋"
+        },
+        {
+          "type": "paragraph",
+          "text": "不確定最近一筆是不是目標時，執行 claude --resume 開啟選擇器；已知名稱時可直接附在後面。進入對話後也能用 /resume 選擇歷史，但那是對話內命令。選擇器中的時間、訊息摘要與專案位置都能幫助你消除同名混淆。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "專案終端機：用名稱找回",
+          "code": "claude --resume todo-filter-plan\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：開啟本機歷史選擇器",
+          "code": "/resume\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "需求",
+            "使用方式",
+            "先檢查什麼"
+          ],
+          "rows": [
+            [
+              "接續剛才的工作",
+              "claude --continue",
+              "目前資料夾與最近 session"
+            ],
+            [
+              "找特定命名工作",
+              "claude --resume 名稱",
+              "名稱是否唯一"
+            ],
+            [
+              "查看可選對話",
+              "claude --resume",
+              "時間與訊息摘要"
+            ],
+            [
+              "對話內切換",
+              "/resume",
+              "切換後目前工作脈絡"
+            ],
+            [
+              "取得雲端工作",
+              "--teleport",
+              "帳號、儲存庫與分支"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "同名或未命名對話很多時，不要隨便選一筆後立刻要求修改。先問它摘要原目標，再核對磁碟現況。如果知道精確 session ID，可以依官方支援方式使用；不要自己拼一個看起來像 ID 的字串。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "找回後檢查檔案現況"
+        },
+        {
+          "type": "paragraph",
+          "text": "resume 恢復對話脈絡，不會把你的專案自動變回對話當時的版本。離開期間別人可能提交新程式，你自己也可能在編輯器改過檔案。因此接續後先檢查路徑、分支與差異，再決定原方案是否仍適用。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "找回後的 Claude Code 對話框：重新對照現況",
+          "code": "請先摘要這個 session 原本的篩選需求。\n重新讀取相關檔案，檢查目前工作目錄、分支與既有變更。\n指出與上次方案相比有哪些條件已改變，先不要覆蓋任何檔案。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "權限模式也應重新確認。不同找回方式與版本可能有不同的恢復規則，不能只憑上次使用 Plan Mode 就認定這次仍在相同模式。先看目前指示與 /status，需要時明確切換，尤其在接續含有工具操作的工作之前。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "匯出可閱讀的對話紀錄"
+        },
+        {
+          "type": "paragraph",
+          "text": "使用 /export 可把目前對話輸出成純文字，附檔名時寫入指定位置。這適合保存需求、檢查紀錄或交接摘要，但匯出文字不是可直接還原所有工具狀態的專案備份，也不會包含一份完整 Git 儲存庫。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：匯出本次練習紀錄",
+          "code": "/export todo-filter-session.txt\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "開啟輸出的檔案，確認包含預期對話且文字可讀。匯出內容可能帶有檔案路徑、工具輸出與私人資訊，對外分享前先自行檢查。不要把完整對話當成公開文章附件，卻沒有看過其中是否包含帳號或內部專案資料。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見問題與小練習"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果原對話很長，找回後可能以已整理的摘要接續，而不是重新載入所有逐字細節。需要精確錯誤或程式片段時，請重新讀取檔案或保存的測試紀錄。保留清楚的收尾摘要與可追查來源，會讓 resume 更有用，也降低把舊推測當成現況的機會。"
+        },
+        {
+          "type": "paragraph",
+          "text": "找不到歷史時，先查是否換了電腦、設定目錄或工作來源，再查本機保留政策。若 session 正在背景執行，可能要從背景工作管理入口附加，而不是再次 resume 成另一個互動工作。看到載入失敗時保留錯誤與 session 資訊，先別手動改寫歷史檔。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "對話紀錄保存脈絡，Git 保存程式版本。需要回復檔案時，另看差異、Checkpoint 或 Git 還原，不要把 resume 當成復原命令。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "小練習是命名一個只讀規劃、退出、用 continue 接續，再退出並用名稱 resume，最後匯出純文字紀錄。完成判準是每次都找回同一目標、能重新核對檔案現況，而且知道匯出保存了什麼。下一篇"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-context-compact-clear",
+              "text": "上下文整理"
+            },
+            {
+              "type": "text",
+              "text": "會說明同一 session 太長時如何繼續工作。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Manage sessions",
+          "url": "https://code.claude.com/docs/en/sessions",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI reference",
+          "url": "https://code.claude.com/docs/en/cli-reference",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

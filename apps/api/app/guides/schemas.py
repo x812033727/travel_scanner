@@ -48,6 +48,7 @@ RevisionAction = Literal["created", "draft_saved", "published", "unpublished", "
 def section_of(kind: Kind) -> Section:
     return "life" if kind == "life" else "travel"
 
+
 SLUG_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 
 
@@ -175,6 +176,77 @@ class CalloutBlock(StrictModel):
     text: NonemptyText = Field(max_length=2000)
 
 
+def code_text(value: str) -> str:
+    """Code is displayed as escaped text, never interpreted as HTML or Markdown."""
+    if re.search(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f]", value):
+        raise ValueError("unsupported control character in code")
+    return value
+
+
+class TextInline(StrictModel):
+    type: Literal["text"]
+    text: str = Field(min_length=1, max_length=4000)
+
+    @field_validator("text")
+    @classmethod
+    def safe_text(cls, value: str) -> str:
+        plain_text(value)
+        return value  # preserve spaces between adjacent inline nodes
+
+
+class CodeInline(StrictModel):
+    type: Literal["code"]
+    text: Annotated[str, AfterValidator(code_text)] = Field(min_length=1, max_length=1000)
+
+
+class LinkInline(StrictModel):
+    type: Literal["link"]
+    text: NonemptyText = Field(max_length=500)
+    url: Annotated[str, AfterValidator(safe_http_url)] = Field(max_length=2000)
+
+
+class ArticleInline(StrictModel):
+    type: Literal["article"]
+    text: NonemptyText = Field(max_length=500)
+    kind: Kind = "life"
+    slug: Annotated[str, AfterValidator(article_slug)] = Field(max_length=120)
+
+
+Inline = Annotated[
+    TextInline | CodeInline | LinkInline | ArticleInline, Field(discriminator="type")
+]
+
+
+class RichParagraphBlock(StrictModel):
+    type: Literal["rich_paragraph"]
+    inlines: list[Inline] = Field(min_length=1, max_length=80)
+
+    @model_validator(mode="after")
+    def limit_text(self) -> Self:
+        if sum(len(node.text) for node in self.inlines) > 4000:
+            raise ValueError("paragraph exceeds 4000 characters")
+        return self
+
+
+class CodeBlock(StrictModel):
+    type: Literal["code"]
+    language: Literal[
+        "text",
+        "powershell",
+        "bash",
+        "json",
+        "markdown",
+        "html",
+        "css",
+        "javascript",
+        "typescript",
+        "python",
+        "yaml",
+    ] = "text"
+    label: NonemptyText = Field(max_length=160)
+    code: Annotated[str, AfterValidator(code_text)] = Field(min_length=1, max_length=20000)
+
+
 class OfferBlock(StrictModel):
     """A partner button placed by the editor, next to the paragraph that earns it.
 
@@ -233,7 +305,9 @@ GuideBlock = Annotated[
     | TableBlock
     | CalloutBlock
     | OfferBlock
-    | PartnerLinkBlock,
+    | PartnerLinkBlock
+    | RichParagraphBlock
+    | CodeBlock,
     Field(discriminator="type"),
 ]
 
@@ -493,6 +567,52 @@ class PublicPartnerLink(BaseModel):
     url: str
 
 
+class ArticleReference(BaseModel):
+    kind: Kind
+    slug: str
+    title: str
+
+
+class SeriesEntry(ArticleReference):
+    number: int
+    group: str
+    level: str
+    platforms: list[str]
+    aliases: list[str]
+    description: str
+    minutes: int
+
+
+class SeriesGroup(BaseModel):
+    id: str
+    title: str
+
+
+class SeriesPath(BaseModel):
+    id: str
+    title: str
+    slugs: list[str]
+
+
+class PublicSeries(BaseModel):
+    slug: str
+    locale: Locale
+    hub: ArticleReference
+    groups: list[SeriesGroup]
+    paths: list[SeriesPath]
+    entries: list[SeriesEntry]
+
+
+class SeriesNavigation(BaseModel):
+    slug: str
+    hub: ArticleReference
+    current: SeriesEntry | None = None
+    previous: ArticleReference | None = None
+    next: ArticleReference | None = None
+    prerequisites: list[ArticleReference] = Field(default_factory=list)
+    related: list[ArticleReference] = Field(default_factory=list)
+
+
 class PublicArticle(BaseModel):
     slug: str
     kind: Kind
@@ -513,6 +633,8 @@ class PublicArticle(BaseModel):
     # Empty under an expired notice, for the reason offers disappear there: a purchase link
     # beneath advice that no longer applies reads as bait.
     partner_links: list[PublicPartnerLink] = Field(default_factory=list)
+    article_links: list[ArticleReference] = Field(default_factory=list)
+    series: SeriesNavigation | None = None
 
 
 class SitemapEntry(BaseModel):

@@ -1,0 +1,269 @@
+{
+  "slug": "claude-code-implement-feature",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 133,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜新增一個小功能",
+      "description": "為待辦清單加入篩選並驗證功能。這篇會把待辦清單加入「全部、未完成、已完成」三種篩選，走完需求、資料邏輯、介面、測試與瀏覽器驗證。篩選只改變看得到的項目，原始資料仍要保留；這個小功能能讓你練習把一句需求拆成清楚的驗收條件。",
+      "hero": {
+        "src": "/guides/claude-code-implement-feature/hero.jpg",
+        "alt": "新增一個小功能：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "這篇會把待辦清單加入「全部、未完成、已完成」三種篩選，走完需求、資料邏輯、介面、測試與瀏覽器驗證。篩選只改變看得到的項目，原始資料仍要保留；這個小功能能讓你練習把一句需求拆成清楚的驗收條件。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "下載"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-practice-project-setup",
+              "text": "練習專案起始版"
+            },
+            {
+              "type": "text",
+              "text": "，在獨立資料夾解壓縮，確認 npm test 通過。若想對照結果，可另下載"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/complete.zip",
+              "text": "參考完成版"
+            },
+            {
+              "type": "text",
+              "text": "，放在另一個資料夾；完成版還包含保存功能，本篇只做篩選，不必先完成前面所有文章。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先寫出使用者行為"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-implement-feature/diagram-1.svg",
+          "alt": "先寫出使用者行為 → 建立純資料篩選函式 → 把模式接到頁面",
+          "width": 1600,
+          "height": 900,
+          "caption": "先寫出使用者行為 → 建立純資料篩選函式 → 把模式接到頁面",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "建立兩筆待辦，將其中一筆完成。按「未完成」應只看到尚未完成的項目；按「已完成」看到完成項目；切回「全部」仍有兩筆。這個例子明確說明篩選不能把不符合的資料刪掉，也不能因顯示順序改變而操作錯誤項目。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：規劃本次功能",
+          "code": "請在起始版加入全部、未完成、已完成三種篩選。\n限制：不增加套件，不改項目資料結構，篩選只影響顯示。\n勾選與刪除仍依 id 進行，切回全部不能遺失原始資料。\n先讀現有程式與測試，提出最小修改與驗收方案。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "閱讀方案時，預期主要改 model.js、app.js、index.html 與測試。style.css 已有基本按鈕風格，可依需要做小調整；不應因此遷移框架或加入資料庫。確認方案後明確要求實作，並保留每一步差異供審查。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "建立純資料篩選函式"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下函式接收原始陣列和模式，回傳要顯示的項目。它不改變原始陣列，也不重新建立識別碼。使用純函式能讓測試不依賴瀏覽器畫面，先確認資料規則正確，再接上 DOM。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "label": "加入 model.js：不要重複加入已存在的同名函式",
+          "code": "export function filterTodos(items, mode) {\n  if (mode === 'active') return items.filter(item => !item.completed);\n  if (mode === 'completed') return items.filter(item => item.completed);\n  return items;\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "這個範例把未知模式視為全部；你也可以選擇明確拒絕，但要讓介面與測試一致。本篇採用簡單的回退方式，重點是不要把 items 直接改成篩選結果。若這麼做，切回全部時就找不回被排除的項目。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把模式接到頁面"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 index.html 的篩選預留註解處加入三個按鈕，用 data-filter 表示模式。按鈕需指定 type=\"button\"，避免日後移入表單時意外送出。aria-pressed 表示目前選中狀態，讓視覺以外的操作方式也能辨認。"
+        },
+        {
+          "type": "code",
+          "language": "html",
+          "label": "寫入 index.html：取代篩選預留註解",
+          "code": "<nav class=\"filters\" aria-label=\"待辦篩選\">\n  <button type=\"button\" data-filter=\"all\" aria-pressed=\"true\">全部</button>\n  <button type=\"button\" data-filter=\"active\" aria-pressed=\"false\">未完成</button>\n  <button type=\"button\" data-filter=\"completed\" aria-pressed=\"false\">已完成</button>\n</nav>\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "app.js 匯入 filterTodos，保留 items 作為原始資料，另以 mode 保存目前篩選。點按鈕時只更新 mode 並重畫；render 迴圈改讀 filterTodos(items, mode)。每次重畫也更新按鈕的 aria-pressed，不能只改顏色卻留下錯誤的狀態資訊。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：整合 app.js",
+          "code": "請匯入 filterTodos，新增預設為 all 的 mode。\n替 data-filter 按鈕加入事件，只更新 mode 並呼叫 render。\nrender 以 filterTodos(items, mode) 產生顯示項目，items 保留完整資料。\n同步更新 aria-pressed，保留原有以 item.id 進行勾選與刪除的邏輯。\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "補上行為測試"
+        },
+        {
+          "type": "paragraph",
+          "text": "新增一份獨立測試檔，使用與起始版相同的 Node.js 內建工具。測試不必模仿每一行實作，而應確認重要行為：兩種篩選的結果、切回全部與原始資料保留。下例可以直接放到 tests 目錄。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "label": "寫入 tests/filter.test.mjs",
+          "code": "import { test } from 'node:test';\nimport assert from 'node:assert/strict';\nimport { filterTodos } from '../model.js';\n\ntest('篩選只影響顯示，原始項目保持不變', () => {\n  const items = [\n    { id: 'a', title: '讀書', completed: false },\n    { id: 'b', title: '運動', completed: true },\n  ];\n  assert.deepEqual(filterTodos(items, 'active').map(x => x.id), ['a']);\n  assert.deepEqual(filterTodos(items, 'completed').map(x => x.id), ['b']);\n  assert.deepEqual(filterTodos(items, 'all').map(x => x.id), ['a', 'b']);\n  assert.equal(items.length, 2);\n  assert.equal(items[0].completed, false);\n});\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在專案終端機執行 npm test，確認原有四項加上新測試都通過。若新測試找不到函式，先查匯出與路徑；若全部測試變少，查是否意外改壞測試搜尋命令。不能只看最後顯示綠色，就忽略本來應該執行的測試被跳過。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "在瀏覽器完成驗收"
+        },
+        {
+          "type": "paragraph",
+          "text": "檢查差異時特別看事件監聽是否被重複加入。篩選按鈕的監聽可以在初始化時設定一次；如果每次 render 都重複註冊，使用者點一次可能觸發多次工作。資料列會重建則有不同生命週期，應理解哪些 DOM 被保留、哪些被替換，而不是把所有事件都塞到同一個函式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一個細節是新增資料時的篩選行為。當目前選「已完成」而新待辦預設未完成，新增成功後它暫時不出現在清單是合理結果，但使用者應能從狀態資訊或切回全部確認資料存在。不要為了讓新項目立刻出現而偷偷把它設為已完成，這會改變原本的資料含義。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇先保留全體待辦的總數提示；若你希望顯示「目前篩選共幾筆」，要明確區分顯示數與資料總數。可以作為下一個小任務新增，例如「顯示 1／3 筆」，再補上三種模式與空結果的檢查。這樣不會在不知不覺間改掉既有統計的意思。"
+        },
+        {
+          "type": "paragraph",
+          "text": "執行 npm start，開啟實際輸出的本機網址。先新增三筆不同待辦，再完成其中一筆，依表格逐項操作。測試資料用自己的練習文字即可，不需要真實私人工作事項。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "操作",
+            "預期結果",
+            "失敗時先查"
+          ],
+          "rows": [
+            [
+              "選未完成",
+              "只見未完成項目",
+              "mode 與 filterTodos"
+            ],
+            [
+              "選已完成",
+              "只見已完成項目",
+              "completed 條件"
+            ],
+            [
+              "切回全部",
+              "三筆都還在",
+              "是否覆寫 items"
+            ],
+            [
+              "篩選中勾選",
+              "正確項目改變狀態",
+              "是否依 id 操作"
+            ],
+            [
+              "篩選中刪除",
+              "只刪指定項目",
+              "是否誤用畫面索引"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "再調成 390px 寬度，確認按鈕能操作、長文字不撐寬頁面，並用鍵盤 Tab 走一次。這些是瀏覽器層的檢查，資料函式測試無法完全代替。起始版重新整理會清空資料，仍屬既有設計；本篇不把保存功能混進驗收。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "先讓功能通過明確驗收，再考慮額外美化與保存。一次只增加一個可驗證行為，較容易知道錯誤從哪一步出現。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "小練習是加入空清單情境，確認某個篩選沒有結果時仍可切回其他模式。完成判準是測試通過、三種篩選與勾選刪除正常、資料不丟失且手機可讀。最後請 Claude 整理實際差異與未驗證部分，接著用"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-git-review-pr",
+              "text": "Git 審查"
+            },
+            {
+              "type": "text",
+              "text": "準備交付。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Common workflows",
+          "url": "https://code.claude.com/docs/en/common-workflows",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Best practices for Claude Code",
+          "url": "https://code.claude.com/docs/en/best-practices",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

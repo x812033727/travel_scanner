@@ -1,0 +1,268 @@
+{
+  "slug": "claude-code-hooks-getting-started",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 141,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜建立第一個 Hook",
+      "description": "設定事件與條件，確認 Hook 實際觸發。本篇會建立第一個 Hook：Claude 使用檔案編輯工具後，將事件名稱與工具名稱寫入練習專案的本機紀錄。你會先人工測試腳本，再接上 PostToolUse，最後用真實編輯確認觸發。這個起點能分清楚「程式可跑」與「Claude 真的呼叫過它」。",
+      "hero": {
+        "src": "/guides/claude-code-hooks-getting-started/hero.jpg",
+        "alt": "建立第一個 Hook：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "本篇會建立第一個 Hook：Claude 使用檔案編輯工具後，將事件名稱與工具名稱寫入練習專案的本機紀錄。你會先人工測試腳本，再接上 PostToolUse，最後用真實編輯確認觸發。這個起點能分清楚「程式可跑」與「Claude 真的呼叫過它」。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先準備"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-practice-project-setup",
+              "text": "練習專案"
+            },
+            {
+              "type": "text",
+              "text": "、Node.js 22 以上與可正常啟動的 CLI。設定使用"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-settings-json",
+              "text": "settings.json"
+            },
+            {
+              "type": "text",
+              "text": "；以下 args 執行形式依查證時官方文件撰寫，舊版若不支援，先更新並核對當前 Hooks 參考文件，不要直接改成未加引號的 shell 字串。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先定義事件與輸出"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-hooks-getting-started/diagram-1.svg",
+          "alt": "先定義事件與輸出 → 建立接收事件的程式 → 人工測試標準輸入",
+          "width": 1600,
+          "height": 900,
+          "caption": "先定義事件與輸出 → 建立接收事件的程式 → 人工測試標準輸入",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查階段",
+            "輸入",
+            "成功證據"
+          ],
+          "rows": [
+            [
+              "人工測試",
+              "自建 JSON 事件",
+              "程式正常退出且新增紀錄"
+            ],
+            [
+              "真實觸發",
+              "Claude 的 Write 或 Edit",
+              "編輯差異與新的事件時間"
+            ],
+            [
+              "停用測試",
+              "移除 handler 後再編輯",
+              "紀錄行數不再增加"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "PostToolUse 表示工具已執行完畢。matcher 用來比對工具名稱，本例只關心 Write 與 Edit；讀檔、一般聊天及手動在編輯器改檔不會因此觸發。Hook 不是檔案監控服務，也無法在事後撤銷已完成的工具操作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "輸出選擇專案內的 .claude/hook-events.jsonl，每行是一個 JSON 物件，只保存時間、事件與工具。刻意不記錄完整提示、檔案內容或工具參數，讓新手能查看觸發證據而不累積不必要資料。請把此紀錄加入專案的 Git 忽略清單。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "建立接收事件的程式"
+        },
+        {
+          "type": "paragraph",
+          "text": "在專案建立 scripts/log-edit.mjs。Hook 將 JSON 事件透過標準輸入交給程式，腳本讀取完再解析。cwd 來自事件，輸出位置固定在該專案的 .claude 資料夾；若缺少必要欄位，程式會清楚失敗。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "label": "寫入 scripts/log-edit.mjs",
+          "code": "import { readFileSync, mkdirSync, appendFileSync } from 'node:fs';\nimport { join } from 'node:path';\ntry {\n  const event = JSON.parse(readFileSync(0, 'utf8'));\n  if (typeof event.cwd !== 'string') throw new Error('missing cwd');\n  const directory = join(event.cwd, '.claude');\n  mkdirSync(directory, { recursive: true });\n  const record = {\n    at: new Date().toISOString(),\n    event: event.hook_event_name,\n    tool: event.tool_name,\n  };\n  appendFileSync(join(directory, 'hook-events.jsonl'), JSON.stringify(record) + '\\n');\n} catch (error) {\n  console.error(String(error));\n  process.exitCode = 1;\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "這段程式只負責最小事件紀錄，不保證其他同時寫入程式的完整排序。第一個練習保持單一 session，先學會追蹤一次事件。需要大量並行紀錄時，再使用適合的儲存與輪替機制。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "人工測試標準輸入"
+        },
+        {
+          "type": "paragraph",
+          "text": "在專案根目錄建立 hook-input.json，cwd 請換成你實際的絕對路徑。Windows JSON 中的反斜線要寫成兩個，或使用正斜線。這份檔案是人工測試材料，不能當作真實 Claude 觸發證據。"
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": "寫入 hook-input.json：把 cwd 改成你的練習專案",
+          "code": "{\"cwd\":\"C:/practice/todo\",\"hook_event_name\":\"PostToolUse\",\"tool_name\":\"Edit\"}\n"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "PowerShell：在專案根目錄人工測試",
+          "code": "Get-Content -Raw hook-input.json | node scripts/log-edit.mjs\nGet-Content .claude/hook-events.jsonl\n"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "macOS／Linux 終端機：在專案根目錄人工測試",
+          "code": "node scripts/log-edit.mjs < hook-input.json\ncat .claude/hook-events.jsonl\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "看到一行合法 JSON 後，記下目前行數與時間。接下來要確認真實事件會新增另一行，而不是把這一行誤認成設定已生效。若這一步失敗，先解決 Node、路徑或 JSON 格式問題。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "接上專案 Hook 設定"
+        },
+        {
+          "type": "paragraph",
+          "text": "把以下 hooks 欄位合併到 .claude/settings.local.json。若已有其他設定，保留原欄位並正確合併 JSON，不要整份覆蓋。local 檔適合先做個人練習，驗證後才考慮是否成為團隊共享設定。"
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": "合併至 .claude/settings.local.json",
+          "code": "{\n  \"hooks\": {\n    \"PostToolUse\": [\n      {\n        \"matcher\": \"Write|Edit\",\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"node\",\n            \"args\": [\"${CLAUDE_PROJECT_DIR}/scripts/log-edit.mjs\"],\n            \"timeout\": 10\n          }\n        ]\n      }\n    ]\n  }\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "args 會直接傳遞參數，不經 shell 解讀，路徑中的空白不需要另行拆分。Windows 要能找到真正的 node.exe；npm.cmd 等包裝檔不能直接套用同一規則。新增後確認設定已載入，必要時重啟 session，並依產品提示檢視新增 Hook。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要讓 Hook 程式在成功時任意輸出除錯文字。本例只寫本機紀錄，因此成功可以沒有 stdout；需要向 Claude 回饋時，改用官方定義的 JSON 欄位。一般診斷文字放在 stderr，才能避免與協定輸出混在一起。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接上設定前，另用一份缺少 cwd 的人工輸入測試失敗分支。預期退出碼為非零，且不新增紀錄。這能證明腳本不只在正常情況有效，也能在事件資料不完整時留下可辨認的錯誤。分享錯誤前仍要檢查其中是否包含私人路徑。"
+        },
+        {
+          "type": "paragraph",
+          "text": "真實觸發測試可以連續做兩次不同主標題修改，每次都記錄差異與新增行數。若一個工具呼叫產生多個事件或重試，應查看實際紀錄，不能先假設一次提示只會對應一行。這份紀錄是工具事件清單，不是完整任務清單。"
+        },
+        {
+          "type": "paragraph",
+          "text": "準備團隊共享時，把腳本與設定一併審查，附上 Node 前提、輸出位置與停用方法。只提交 JSON 卻漏掉腳本，會讓其他人的每次編輯都遇到找不到檔案的錯誤。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用真正編輯驗證觸發"
+        },
+        {
+          "type": "paragraph",
+          "text": "要求 Claude 透過檔案編輯工具，把 index.html 的主標題改為「Hook 練習」，只改這一段文字。完成後看差異與紀錄，新行的時間應晚於人工測試，工具名稱應對應實際工具。若 Claude 用 shell 改檔，Write|Edit matcher 不會因此匹配。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：驗證真實工具事件",
+          "code": "請使用檔案編輯工具，只把 index.html 的主標題改成「Hook 練習」。\n完成後列出差異；先不要執行其他修改或提交。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "成功判準同時需要檔案差異與新增事件紀錄。只有設定檔存在、腳本退出碼為零，或 Claude 說「已設定」都不足以證明 Hook 已觸發。若沒有新行，查看 /hooks 與偵錯紀錄，核對事件名稱、matcher 大小寫及腳本路徑。"
+        },
+        {
+          "type": "paragraph",
+          "text": "停用時從 settings.local.json 移除這一個 Hook handler，保留其他設定；重新載入後再做一次小編輯，紀錄行數應不再增加。移除腳本卻留下 handler 只會造成每次觸發都報錯，不是完整停用。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "小練習是記錄人工測試、真實觸發與停用後測試三個結果。完成後可前往"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-hooks-recipes",
+              "text": "實用 Hook 案例"
+            },
+            {
+              "type": "text",
+              "text": "，在同樣可觀察的基礎上加入檢查與提醒。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Automate actions with hooks",
+          "url": "https://code.claude.com/docs/en/hooks-guide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hooks reference",
+          "url": "https://code.claude.com/docs/en/hooks",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
