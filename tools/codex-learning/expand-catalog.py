@@ -70,26 +70,6 @@ for id_, row in catalog.items():
         row["minutes"] = pilots[id_][0]
 catalog_path.write_text(json.dumps([catalog[id_] for id_ in sorted(catalog)], ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-hub_path = ROOT / "apps/api/app/guides/content/codex-learning-hub.json"
-hub = json.loads(hub_path.read_text(encoding="utf-8"))
-intro = {
-    "zh-TW": "從安裝、第一個任務到 MD 規則與進階整合，規劃 60 篇 Codex 教學、十個單元。依程度、平台、需求或指令搜尋下一篇；尚未公開的教學會標示狀態，方便安排學習路線。",
-    "zh-CN": "从安装、第一个任务到 MD 规则与进阶集成，规划 60 篇 Codex 教程、十个单元。按程度、平台、需求或命令搜索下一篇；尚未公开的教程会标示状态，方便安排学习路线。",
-    "en": "A planned 60-lesson, ten-unit Codex curriculum, from setup and your first task to MD instructions and advanced integrations. Find your next lesson by experience, platform, goal or command; unpublished entries show their status.",
-    "ja": "導入と最初のタスクから MD の指示、高度な連携まで、60 レッスン・十単元を予定しています。習熟度、環境、目的、コマンドで次の記事を探せます。未公開の記事には状態を表示します。",
-    "ko": "설치와 첫 작업부터 MD 지침과 고급 연동까지 60개 강의, 열 개 단원을 계획합니다. 수준, 환경, 목표, 명령으로 다음 글을 찾고 미게시 항목의 상태를 확인할 수 있습니다.",
-}
-for locale, document in hub["locales"].items():
-    document["description"] = intro[locale]
-    for block in document["blocks"]:
-        if block["type"] == "paragraph" and (block["text"].startswith("32 /") or block["text"].startswith("60 /")):
-            block["text"] = "60 / 10 / Windows · macOS · Linux · iOS · Android / CLI · IDE · Cloud"
-        if block["type"] == "table":
-            for i, label in enumerate(["01–20", "21–40", "41–60"]):
-                block["rows"][i][0] = label
-    if document["blocks"][0].get("type") == "paragraph":
-        document["blocks"][0]["text"] = intro[locale]
-    else:
-        document["blocks"].insert(0, {"type": "paragraph", "text": intro[locale]})
-hub_path.write_text(json.dumps(hub, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+# The hub is an independently authored content pack. Updating lesson order or
+# readiness must preserve its introductions, links and tables without rewriting it.
 print(f'60 catalog entries; {sum(row["ready"] for row in catalog.values())} draft packs / {sum(row["deepDraft"] for row in catalog.values())} deep drafts; no publication implied')

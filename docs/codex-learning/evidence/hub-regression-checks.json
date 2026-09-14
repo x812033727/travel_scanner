@@ -1,0 +1,107 @@
+{
+  "checked_on": "2026-09-14",
+  "recorded_at": "2026-09-14T15:29:36.065691+00:00",
+  "reviewer": "codex-finalchecks-fc2e",
+  "base_commit": "fd368fe4876f4b02960f8dc4167ddd7018860ba1",
+  "scope": "Two additional implementation defects in the command index and catalogue generator. This does not replace full-text review checkpoints or the pending hub editorial rewrite.",
+  "source_hashes": {
+    "apps/web/components/codex-learning/hub.tsx": "79d5968f94863a9e9bbc29e0a772a344ddecf645ca2550822ca1d16af57855c8",
+    "apps/web/components/codex-learning/learning.test.tsx": "0503c0ed8056aa16e1fd02fe1237f4b7d5c2a0ce7a5c362fd57888d6978fa667",
+    "tools/codex-learning/expand-catalog.py": "96ed0709dde06ffba9bbd544b0e772454337e9ecca32aa54fa5ddcc2393d2243",
+    "tools/codex-learning/test_catalog.py": "0e71e586460b3abd0753f335a51c036c19ce948fd15163a7d3221875be03a24b"
+  },
+  "hash_convention": "LF-normalized UTF-8 source; native hub pack hash uses raw bytes.",
+  "fixes": [
+    {
+      "topic": "Publication state in command targets",
+      "before": "Failed lookups and planned targets were both labelled unpublished.",
+      "after": "Command targets share the cards' localized unavailable/planned/unpublished rule. Published targets remain links.",
+      "regression": "Five language cases failed before the fix and passed after; each covers unavailable ready and planned entries, successful planned and draft lookups, and published links."
+    },
+    {
+      "topic": "Preserve independently authored hub content",
+      "before": "expand-catalog.py rewrote descriptions, introductions and every table's first three rows; a two-row table or missing hub crashed the catalogue update.",
+      "after": "Catalogue maintenance neither reads nor writes the native hub pack.",
+      "regression": "An isolated fixture with a five-language authored two-row table, and a fixture with no hub, both failed before the fix and passed afterward. Stable lesson IDs and reading order remain 1 through 60."
+    }
+  ],
+  "native_hub_pack": {
+    "sha256": "bef257d6f398c23f283d73bb2a90be9dd4d402e85250c670840d9215b9c1cac7",
+    "changed": false,
+    "editorial_result": "changes-required"
+  },
+  "checks": [
+    {
+      "command": "npm run test --workspace @travel-scanner/web -- components/codex-learning/learning.test.tsx components/codex-learning/publication.test.ts --pool=threads --maxWorkers=1",
+      "result": "passed",
+      "files": 2,
+      "tests": 14,
+      "environment": "jsdom; no live browser"
+    },
+    {
+      "command": "uv run --with mistune==3.1.3 --with opencc-python-reimplemented==0.1.7 python -m unittest discover -s tools/codex-learning -p 'test_*.py'",
+      "result": "passed",
+      "tests": 10
+    },
+    {
+      "command": "npm run lint:web",
+      "result": "passed"
+    },
+    {
+      "command": "npm run typecheck:web",
+      "result": "passed"
+    },
+    {
+      "command": "npm run test:tools",
+      "result": "passed",
+      "tests": 39
+    },
+    {
+      "command": "npm run check:i18n",
+      "result": "passed",
+      "locales": 5,
+      "namespaces": 25
+    },
+    {
+      "command": "npm run check:tasks",
+      "result": "passed",
+      "files": 412,
+      "warnings": "Existing stale claims and unrelated overlapping task scopes remain."
+    }
+  ],
+  "full_frontend_suite": {
+    "command": "npm run test:web -- --pool=threads --maxWorkers=1",
+    "effective_command": "vitest run",
+    "configuration": "npm warned that root-level forwarded flags were ignored; vitest.config.ts already sets threads, maxWorkers 1 and fileParallelism false.",
+    "result": "failed",
+    "exit_code": 1,
+    "files_passed": 259,
+    "files_failed": 1,
+    "tests_passed": 2811,
+    "tests_failed": 1,
+    "duration_seconds": 796.79
+  },
+  "observed_failure": {
+    "file": "apps/web/components/trip-editor.test.tsx",
+    "test": "opens editing from the stop title and exposes move only through its dismissible More menu",
+    "targeted_rerun": {
+      "command": "npm run test --workspace @travel-scanner/web -- components/trip-editor.test.tsx -t 'opens editing from the stop title' --pool=threads --maxWorkers=1",
+      "result": "passed",
+      "tests": 1,
+      "not_selected": 74
+    },
+    "related_existing_task": "tasks/open/2026-09-11-modal-escape-flake-under-load.md",
+    "relationship": "Similar suite-only behaviour; a shared root cause is not established. No trip-editor or shared dialog code was changed.",
+    "line": 197,
+    "assertion": "Expected the edit dialog to be null after the second Close click, but it remained mounted.",
+    "observed_dom": "The edit dialog remained visible; body scrolling was still locked.",
+    "resolved": false
+  },
+  "limitations": [
+    "Final page/browser acceptance remains pending; no preview service was started.",
+    "Earlier rejected tutorial and hub-body edits were not retried.",
+    "No cumulative checkpoint-3/progress rewrite.",
+    "No PR, push, merge, import, publication or deployment."
+  ],
+  "accepted": false
+}

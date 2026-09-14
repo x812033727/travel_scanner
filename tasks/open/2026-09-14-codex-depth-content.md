@@ -305,7 +305,7 @@ Run from the repository root:
 - python tools/codex-learning/render-authors.py --check
 - uv run --with mistune==3.1.3 --with opencc-python-reimplemented==0.1.7 python tools/codex-learning/build-depth.py --check
 - uv run --with mistune==3.1.3 --with opencc-python-reimplemented==0.1.7 python tools/codex-learning/check-series.py
-- uv run --with mistune==3.1.3 --with opencc-python-reimplemented==0.1.7 python -m unittest discover -s tools/codex-learning -p test_compiler.py
+- uv run --with mistune==3.1.3 --with opencc-python-reimplemented==0.1.7 python -m unittest discover -s tools/codex-learning -p 'test_*.py'
 - apps/api/.venv/Scripts/python.exe -m pytest apps/api/tests/test_codex_learning.py -q
 - apps/api/.venv/Scripts/python.exe tools/codex-learning/audit.py
 - npm run check:tasks
@@ -329,3 +329,11 @@ Preview commands and full implementation history are in docs/codex-learning/READ
 - Original 29 code blocks across seven lessons, all image blocks and source arrays unchanged. All five metadata/projection contracts match. Integrity 60/300, compiler 9, API 9 and five catalogue checks passed. Audit 0 errors / 21 original advisories; two transient mobile English-length warnings resolved by removing repeated prose.
 - Existing preview and 03/06 edit denials remain; no retries, alternate route, actual product session, new browser acceptance, PR, import or deployment.
 - Next: checkpoint 3 new IDs 42, 43, 16, 44, 45, 22, 17, 08, 18; reuse 11. Evidence: docs/codex-learning/evidence/full-text-checkpoint-2.json.
+
+## Hub component and rebuild fixes — 2026-09-14
+
+- [x] Fixed command-index targets that labelled failed publication lookups and planned lessons as unpublished. The index now uses the same localized status rule as lesson cards; only published targets become links.
+- [x] Removed the catalogue generator's unrelated hub rewrite. A rebuild preserves independently authored descriptions, introductions and tables, and does not require a hub pack to exist. The actual native hub pack remains unchanged; this is not completion of its pending editorial rewrite.
+- Added five-locale status transition tests and an isolated catalogue rebuild regression. The new cases failed on the previous implementation and passed after the fixes: 14 focused frontend tests and 10 Python compiler/catalogue tests. The test instructions above now include both Python test files.
+- These changes concern two additional implementation defects only. They do not replace earlier full-text checkpoints, retry blocked article edits or establish final browser acceptance.
+- Evidence: docs/codex-learning/evidence/hub-regression-checks.json. Full-site ESLint, TypeScript, i18n, tool and task checks passed. The complete frontend run finished with 2,811 tests passed and 1 failed (259 files passed / 1 failed). At trip-editor.test.tsx:197, the second Close click left the edit dialog mounted. The selected case passed alone without edits; retain the failed suite result and investigate before release. A related existing issue is tasks/open/2026-09-11-modal-escape-flake-under-load.md, but the common cause is unconfirmed. No shared dialog or trip-editor files were changed.

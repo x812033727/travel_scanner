@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { useEffect, useState, type ReactNode } from "react";
 import { SearchParamsContext } from "next/dist/shared/lib/hooks-client-context.shared-runtime";
@@ -8,6 +8,7 @@ import { lessons, learningEntries, filterLessons } from "@/lib/codex-learning";
 import type { GuideSummary } from "@/lib/guides";
 import { ContentBlocks } from "@/components/content-blocks";
 import { learningFilterUrl, readLearningFilters } from "@/lib/codex-learning/filters";
+import type { Locale } from "@/i18n/routing";
 
 const published = (index: number): GuideSummary => ({ slug: lessons[index].slug, kind: "life", title: lessons[index].locales.en.title, description: lessons[index].locales.en.description, destination_id: null, destination_label: null, topics: [], published_at: "2026-09-14T00:00:00Z", valid_until: null, featured: false });
 
@@ -42,6 +43,24 @@ describe("Codex learning", () => {
     expect(screen.getByText("No matching tutorials")).toBeTruthy();
     fireEvent.click(screen.getByRole("button", { name: "Clear filters" }));
     expect(screen.getByRole("link", { name: published(0).title })).toBeTruthy();
+  });
+  it.each([
+    ["zh-TW", "指令索引", "規劃中", "尚未發布", "暫時無法確認發布狀態"],
+    ["zh-CN", "命令索引", "规划中", "尚未发布", "暂时无法确认发布状态"],
+    ["en", "Command index", "Planned", "Not published", "Publication status temporarily unavailable"],
+    ["ja", "コマンド索引", "企画中", "未公開", "公開状況を一時的に確認できません"],
+    ["ko", "명령 색인", "기획 중", "미게시", "게시 상태를 일시적으로 확인할 수 없습니다"],
+  ])("distinguishes unavailable, planned and unpublished command targets in %s", (locale, name, planned, unpublished, unavailable) => {
+    const row = learningEntries(locale as Locale, []).find((entry) => entry.id === 10)!;
+    const { rerender } = render(<LearningHub locale={locale as Locale} entries={[row]} available={false} />, { wrapper: RouterHarness });
+    for (const [available, ready, expected] of [[false, true, unavailable], [false, false, unavailable], [true, false, planned], [true, true, unpublished]] as const) {
+      rerender(<LearningHub locale={locale as Locale} entries={[{ ...row, ready }]} available={available} />);
+      const commands = within(screen.getByRole("region", { name }));
+      expect(commands.getByText(`${row.title} · ${expected}`)).toBeTruthy();
+      expect(commands.queryAllByRole("link")).toEqual([]);
+    }
+    rerender(<LearningHub locale={locale as Locale} entries={[{ ...row, published: true, updated: "2026-09-14" }]} available />);
+    expect(within(screen.getByRole("region", { name })).getByRole("link", { name: row.title })).toBeTruthy();
   });
   it("hydrates shared filters, keeps them in URLs, and responds to browser history", () => {
     window.history.replaceState(null, "", "/en/life/codex-learning-hub?unit=D&q=AGENTS.md&utm_source=shared#lessons");

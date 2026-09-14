@@ -33,6 +33,7 @@ function FilteredHub({ entries, locale, available }: HubProps) {
     else window.history.pushState(null, "", url);
   }
   const results = filterLessons(entries, query, level, platform, goal, unit);
+  const unpublishedStatus = (entry: LearningEntry) => available ? (entry.ready ? c.unpublished : c.planned) : c.unavailable;
   const field = "mt-1 min-h-11 w-full rounded-lg border border-[var(--line)] bg-[var(--paper)] px-3";
   return <section aria-label={c.title} className="my-8 space-y-6">
     <details className="rounded-xl border border-[var(--line)] p-4">
@@ -54,7 +55,7 @@ function FilteredHub({ entries, locale, available }: HubProps) {
         <h2 className="text-lg font-semibold">{entry.published ? <Link href={`/life/${entry.slug}`} className="text-[var(--teal)] underline">{entry.title}</Link> : entry.title}</h2>
         <p className="mt-2 leading-7">{entry.description}</p>
         <p className="mt-3 text-sm text-[var(--muted)]">{entry.platforms.map((p) => c.platforms[p]).join(" · ")}</p>
-        {entry.published ? <p className="mt-2 text-xs">{c.updated}: {entry.updated}</p> : <p className="mt-2 text-sm">{available ? (entry.ready ? c.unpublished : c.planned) : c.unavailable}</p>}
+        {entry.published ? <p className="mt-2 text-xs">{c.updated}: {entry.updated}</p> : <p className="mt-2 text-sm">{unpublishedStatus(entry)}</p>}
       </li>)}
     </ol>
     <section aria-label={c.commands} className="border-t border-[var(--line)] pt-6">
@@ -68,7 +69,7 @@ function FilteredHub({ entries, locale, available }: HubProps) {
         return <li key={item.example} className="min-w-0 rounded-xl border border-[var(--line)] p-4">
           <p>{item.purpose} · <span className="text-sm text-[var(--muted)]">{item.surface}</span></p>
           <pre className="mt-2 overflow-x-auto text-sm"><code>{item.example}</code></pre>
-          {row.published ? <Link className="inline-flex min-h-11 items-center text-[var(--teal)] underline" href={`/life/${row.slug}`}>{row.title}</Link> : <span>{row.title} · {c.unpublished}</span>}
+          {row.published ? <Link className="inline-flex min-h-11 items-center text-[var(--teal)] underline" href={`/life/${row.slug}`}>{row.title}</Link> : <span>{row.title} · {unpublishedStatus(row)}</span>}
         </li>;
       })}</ul>
     </section>

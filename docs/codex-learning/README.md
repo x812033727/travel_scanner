@@ -101,7 +101,7 @@ node tools/codex-learning/browser-check.mjs
 node tools/codex-learning/depth-browser.mjs
 node tools/codex-learning/practice-browser.mjs
 node --test docs/codex-learning/practice/expected/core.test.mjs
-uv run --with mistune==3.1.3 --with opencc-python-reimplemented==0.1.7 python -m unittest discover -s tools/codex-learning -p test_compiler.py
+uv run --with mistune==3.1.3 --with opencc-python-reimplemented==0.1.7 python -m unittest discover -s tools/codex-learning -p 'test_*.py'
 apps/api/.venv/Scripts/python.exe -m unittest discover -s docs/codex-learning/examples -v
 ```
 
