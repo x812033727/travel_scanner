@@ -1,0 +1,207 @@
+{
+  "slug": "cloudways-ssl-setup",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Cloudways 的 HTTPS 檢查：DNS、憑證與續期",
+      "description": "Cloudways 的 HTTPS 設定需要網域綁定、DNS 與憑證相互配合，網站經過代理服務時更要分清楚每段連線。本文以 Flexible 應用程式的官方流程為主，整理安裝 Let's Encrypt 憑證前的檢查、根網域與 www 的涵蓋方式、自動續期和 HTTP 轉址，並提供常見錯誤的排查順序。你可以逐項確認安裝、對外連線與訪客功能，避免只看到控制台成功訊息就結束設定。",
+      "hero": {
+        "src": "/guides/cloudways-ssl-setup/hero.jpg",
+        "alt": "應用畫面、保護盾牌與伺服器連接，代表 HTTPS 與來源主機檢查。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "在 Cloudways 按下安裝憑證前，先確認目前選到正確應用程式，以及所有要使用的網域都已準備好。根網域可連線，不代表 www 也已正確解析；平台顯示安裝成功，也不代表訪客目前看到的每一段連線都使用了預期憑證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文以 Cloudways Flexible 的應用管理流程說明，依官方公開文件查證，沒有登入帳戶操作。若你使用 Autonomous、外部代理或自訂憑證，請先核對對應產品文件。以下把 DNS、安裝、轉址與續期分開，方便你在出現錯誤時找到真正需要檢查的地方。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先列出應用程式與網域的對應"
+        },
+        {
+          "type": "paragraph",
+          "text": "從平台選取目標伺服器與應用程式，核對正式網站名稱，再檢查 Domain Management。請列出根網域、www 和其他實際入口，確認它們應連到同一個網站，或各有不同用途。這份清單會決定憑證需要涵蓋哪些名稱，也能避免對錯誤的測試應用安裝正式憑證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "到有效 DNS 服務核對每個名稱的解析，使用平台提供的資料，而非舊教學的固定 IP。若 www 尚未設定，先完成它的解析，不要期待在憑證欄位新增名稱就會自動建立 DNS。修改前保存原紀錄，確認沒有誤動信箱、驗證或其他應用仍在使用的項目。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "確認代理服務與既有憑證的影響"
+        },
+        {
+          "type": "paragraph",
+          "text": "若網站經過 Cloudflare、Sucuri 或其他代理，訪客可能先連到代理，再由代理連到 Cloudways。瀏覽器顯示的是對外那一段的憑證，不一定是主機上的那張。請先確認兩段連線的加密模式與驗證需求，再依各平台文件設定，不能只看網址列正常就推定來源主機的 HTTPS 也正常。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Cloudways 文件提醒，對同一應用安裝另一張憑證會覆蓋既有憑證。若目前使用自訂憑證，先確認替換後的名稱涵蓋、續期責任與回復方式。遇到驗證被代理或防火牆阻擋時，應查對應驗證路徑與官方要求，不把永久關閉整體保護當成通用解法。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "依 Flexible 的 SSL 管理流程安裝"
+        },
+        {
+          "type": "paragraph",
+          "text": "依官方文件，從 Servers 選取伺服器，再進入需要處理的應用，在 Application Management 找到 SSL Certificate。於 SSL Management 選擇 Let's Encrypt，填入通知用電子郵件與要使用的網域，再依需要加入其他名稱，最後提交 Install Certificate。實際介面若有差異，先確認產品類型與當前文件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "常用根網域及 www 的網站，兩個名稱都應在需要的涵蓋範圍內。即使 www 最後會轉到根網域，訪客可能先以 HTTPS 連上 www，因此仍要先建立有效連線。萬用字元的驗證程序則有不同要求，請依平台專屬流程處理，不以一般單一網域步驟直接替代。"
+        },
+        {
+          "type": "paragraph",
+          "text": "提交後保存結果，若失敗，記錄完整錯誤與時間，再檢查解析、名稱及驗證條件。不要連續重複安裝，希望其中一次碰巧成功。憑證服務有使用限制，反覆送出相同失敗需求不會修正 DNS，也可能讓後續處理更複雜；先找到可說明的原因再重試。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "核對目標應用、Domain Management 與所有需要涵蓋的網域，查詢 DNS 是否符合要求。",
+            "確認既有憑證及代理路徑，保存替換前資料與必要的回復方式。",
+            "進入 SSL Certificate，選擇 Let's Encrypt，填入自己的信箱與網域後提交安裝。",
+            "查看安裝結果並測試每個 HTTPS 入口，再安排 HTTP 轉址、頁面資源及續期檢查。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "轉址只在清楚的責任位置設定"
+        },
+        {
+          "type": "paragraph",
+          "text": "憑證可正常使用後，再依應用設定啟用 HTTP 到 HTTPS 的轉址。Cloudways 的安裝後建議也提醒，代理、伺服器及 WordPress 外掛若同時設定互相衝突的規則，可能造成反覆跳轉。請記錄哪一層負責統一網址，避免出現問題時又在另一層新增一組規則。"
+        },
+        {
+          "type": "paragraph",
+          "text": "驗證時輸入根網域和 www 的 HTTP、HTTPS 入口，確認落到預期位置，且文章路徑與必要參數沒有遺失。若只測首頁，可能漏掉舊連結全部跳回首頁的情況。對已經公開的網站，請選幾篇既有文章與主要功能頁逐一測試，保留修改前後的差異。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "檢查憑證之外的圖片與互動功能"
+        },
+        {
+          "type": "paragraph",
+          "text": "HTTPS 頁面仍可能引用 HTTP 圖片、字型、腳本或其他資源。MDN 的混合內容說明指出，瀏覽器會依類型升級或阻擋部分資源；你仍應從開發者工具查出問題網址，回到內容或外掛設定修正。不要要求訪客放寬瀏覽器保護來遷就舊資源。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 網站若需要批次更新舊網址，先取得備份並使用適用的工具或平台程序，避免直接改壞結構化資料。修改後清除相應快取，再以未登入的視窗測試圖片、搜尋、表單及登入登出。若有付款或外部回呼，依服務提供的測試方式核對，確定功能沒有因網址變更而失效。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "自動續期開啟後仍要查看對外結果"
+        },
+        {
+          "type": "paragraph",
+          "text": "Cloudways 文件提供 Auto-Renewal 與 Renew Now 等續期方式。請在自己的應用確認自動續期狀態，並記錄目前對外服務呈現的憑證有效期間。本文不把固定效期天數寫成長期不變的規則；憑證及平台政策會更新，維護時應以當前文件與實際憑證資訊核對。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若續期失敗，重新檢查網域、DNS、代理及驗證路徑是否在上次安裝後改變。手動按下續期不會自動修復這些前置條件。完成後再測試對外憑證與網站流程，把結果寫入管理紀錄，並確認有人能收到失敗通知。這樣下次換主機或代理時，才知道需要一併維護哪些設定。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/cloudways-ssl-setup/diagram-1.svg",
+          "alt": "以解析、安裝、轉址及續期四欄說明 Cloudways HTTPS 的檢查重點。",
+          "width": 1600,
+          "height": 900,
+          "caption": "控制台成功後，仍要確認訪客真正看到的連線。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "問題",
+            "先檢查",
+            "驗收資料"
+          ],
+          "rows": [
+            [
+              "安裝失敗",
+              "DNS、網域綁定及驗證路徑",
+              "錯誤訊息與解析結果"
+            ],
+            [
+              "www 顯示警告",
+              "解析及憑證是否涵蓋 www",
+              "該名稱的實際 HTTPS 連線"
+            ],
+            [
+              "看到不同簽發者",
+              "是否經過外部代理",
+              "訪客到代理及代理到主機兩段"
+            ],
+            [
+              "網站反覆跳轉",
+              "各層轉址及加密設定",
+              "完整跳轉路徑"
+            ],
+            [
+              "續期未完成",
+              "自動續期及驗證前提",
+              "目前對外憑證的有效期間"
+            ]
+          ],
+          "caption": "依問題定位層級，避免反覆替換憑證卻沒有修正原因。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "換憑證之前先確認涵蓋範圍",
+          "text": "同一應用的新憑證會取代原憑證。請確認所有仍在使用的網域名稱及連線路徑，並保存必要的回復資料。"
+        },
+        {
+          "type": "link",
+          "text": "Cloudways 建站：伺服器、應用程式與帳戶驗證",
+          "url": "https://mokaair.com/zh-TW/life/cloudways-wordpress-setup"
+        },
+        {
+          "type": "link",
+          "text": "DNS 設定怎麼查：從 A、CNAME 到郵件紀錄",
+          "url": "https://mokaair.com/zh-TW/life/dns-records-troubleshooting"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Cloudways：安裝與續期 Let's Encrypt 憑證",
+          "url": "https://support.cloudways.com/en/articles/5129591-how-to-install-let-s-encrypt-ssl-certificate",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudways：安裝憑證後的設定",
+          "url": "https://support.cloudways.com/en/articles/5129567-recommended-measures-after-installing-ssl-certificate",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudways：憑證種類與驗證",
+          "url": "https://support.cloudways.com/en/articles/5129583-guide-to-installing-ssl-certificates-at-cloudways",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：混合內容",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Mixed_content",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
