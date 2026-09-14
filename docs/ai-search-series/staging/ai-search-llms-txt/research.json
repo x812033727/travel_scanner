@@ -1,0 +1,124 @@
+{
+  "slug": "ai-search-llms-txt",
+  "status": "verified",
+  "checked_on": "2026-09-14",
+  "sources": [
+    {
+      "url": "https://llmstxt.org/",
+      "title": "llms.txt 提案原文（提案本身的網站，第二版）",
+      "access": "WebFetch 直接讀取原始網址（2026-09-14 本輪收尾重讀）",
+      "claims": [
+        "作者 Jeremy Howard，發表日期 2024 年 9 月 3 日，頁面現在掛的是第二版",
+        "定義：提議統一用一個 llms.txt 檔案，提供資訊協助代理使用這個網站",
+        "問題陳述：網頁為人而做，還原成乾淨文字困難，每個浪費掉的 token 都是成本",
+        "格式：唯一必填的區塊是網站或專案名稱的 H1，其餘可以是零個",
+        "分工：robots.txt 讓自動化工具知道哪些存取可接受，llms.txt 由代理按需使用",
+        "作者觀察：原本預期主要用於推論而不是訓練（提案作者的說法，不是引擎資料）",
+        "背景一節點名 OpenAI、Anthropic、Gemini 的開發者文件站自己發布了這個檔案"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+      "title": "Google 搜尋中心：生成式 AI 功能最佳化指南（含 llms.txt 說明）",
+      "access": "WebFetch 直接讀取原始網址（2026-09-14 本輪收尾重讀）",
+      "claims": [
+        "破除迷思：不需要為了出現在 Google 搜尋而建立機器可讀檔案、AI 文字檔或 Markdown，Google 搜尋不使用它們",
+        "這麼做不會傷害也不會幫助在 Google 搜尋的能見度或排名",
+        "頁面標示的最後更新日期 2026-07-10（正文未使用）"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/updates",
+      "title": "Google 搜尋中心：搜尋文件更新記錄（llms.txt 註記的加入日期）",
+      "access": "WebFetch 直接讀取原始網址（2026-09-14 本輪收尾重讀）",
+      "claims": [
+        "加入該 llms.txt 註記的日期是 2026 年 6 月 15 日"
+      ]
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9309.html",
+      "title": "RFC 9309：Robots Exclusion Protocol（規範原文）",
+      "access": "WebFetch 直接讀取原始網址（2026-09-14 本輪收尾重讀）",
+      "claims": [
+        "RFC 9309，2022 年 9 月，標準軌",
+        "這些規則不是一種存取授權",
+        "不能取代有效的內容安全措施"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/robots/intro",
+      "title": "Google 搜尋中心：robots.txt 簡介與指南",
+      "access": "沿用前一位代理 2026-09-14 的查證；本輪只刪節、未新增主張，故未重新抓取",
+      "claims": [
+        "robots.txt 主要用來避免網站被大量請求壓垮，不是讓網頁不出現在 Google 的機制",
+        "被擋住的網址如果有其他網站連過來，仍可能被建立索引"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/block-indexing",
+      "title": "Google 搜尋中心：使用 noindex 禁止建立索引",
+      "access": "沿用前一位代理 2026-09-14 的查證；本輪只刪節、未新增主張，故未重新抓取",
+      "claims": [
+        "noindex 要生效，該網頁不能被 robots.txt 擋住，必須是爬蟲能存取的"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers",
+      "title": "Google 搜尋中心：Google 的常見爬蟲（含 Google-Extended）",
+      "access": "沿用前一位代理 2026-09-14 的查證；本輪只刪節、未新增主張，故未重新抓取",
+      "claims": [
+        "Google-Extended：發布者用來管理抓到的內容是否可用於訓練未來的 Gemini 模型",
+        "Google-Extended 不影響網站在 Google 搜尋的收錄，也不是排名訊號"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/google-user-triggered-fetchers",
+      "title": "Google 搜尋中心：使用者觸發的擷取器",
+      "access": "沿用前一位代理 2026-09-14 的查證；本輪只刪節、未新增主張，故未重新抓取",
+      "claims": [
+        "使用者觸發的擷取器通常會忽略 robots.txt 規則，因為取用由使用者要求"
+      ]
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/bots",
+      "title": "OpenAI 開發者文件：OpenAI 爬蟲總覽（GPTBot、OAI-SearchBot、ChatGPT-User）",
+      "access": "沿用前一位代理 2026-09-14 的查證；本輪只刪節、未新增主張，故未重新抓取",
+      "claims": [
+        "GPTBot 抓取可能用於訓練生成式 AI 基礎模型的內容",
+        "OAI-SearchBot 用於搜尋，退出的網站不會出現在 ChatGPT 的搜尋答案裡",
+        "ChatGPT-User 由使用者發起，robots.txt 規則可能不適用",
+        "整頁沒有把 llms.txt 寫成自家系統會讀取的檔案"
+      ]
+    },
+    {
+      "url": "https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler",
+      "title": "Anthropic 說明中心：Anthropic 是否抓取網路資料，站方如何封鎖（ClaudeBot、Claude-User、Claude-SearchBot）",
+      "access": "沿用前一位代理 2026-09-14 的查證；本輪只刪節、未新增主張，故未重新抓取",
+      "claims": [
+        "ClaudeBot 收集可能有助於模型訓練的網頁內容",
+        "Claude-SearchBot 為改善搜尋結果品質而索引內容；Claude-User 代使用者取用",
+        "整頁沒有把 llms.txt 寫成自家系統會讀取的檔案"
+      ]
+    },
+    {
+      "url": "https://docs.perplexity.ai/docs/resources/perplexity-crawlers",
+      "title": "Perplexity 開發者文件：Perplexity 的爬蟲（PerplexityBot、Perplexity-User）",
+      "access": "沿用前一位代理 2026-09-14 的查證；本輪只刪節、未新增主張，故未重新抓取",
+      "claims": [
+        "PerplexityBot 為了在 Perplexity 的結果中呈現並連結網站，且不用於為 AI 基礎模型抓取內容",
+        "Perplexity-User 通常忽略 robots.txt",
+        "整頁沒有把 llms.txt 寫成自家系統會讀取的檔案"
+      ]
+    },
+    {
+      "url": "https://support.apple.com/en-us/119829",
+      "title": "Apple 支援：關於 Applebot 與 Applebot-Extended",
+      "access": "沿用前一位代理 2026-09-14 的查證；本輪只刪節、未新增主張，故未重新抓取",
+      "claims": [
+        "停用 Applebot-Extended 的網頁仍可出現在搜尋結果裡：擋訓練 token 不影響收錄"
+      ]
+    }
+  ],
+  "running_text_characters": 2835,
+  "notes": "本輪是收尾：正文從 5,836 字刪到 2,835 字（依 pack_ingest._body_length 的算法實際數出），沒有新增任何主張。刪節後失去支撐的三筆來源已移除：llmstxt.org/changes.html（第二版差異的清單項刪除）、developer.chrome.com 的 Lighthouse llms.txt 稽核頁（整段刪除）、commoncrawl.org/ccbot（CCBot 現在只以名字出現在本站自己的拒絕名單，由 apps/web/app/robots.ts 支撐），15 筆剩 12 筆。本輪以 WebFetch 重讀 llmstxt.org、Google 生成式 AI 最佳化指南、Google 搜尋文件更新記錄與 RFC 9309 四份，數字全部相符；其餘八份沿用前查。本站自己的做法（拒絕名單 11 個 user-agent、ChatGPT-User 與 OAI-SearchBot 不在名單上、取捨理由）由 apps/web/app/robots.ts 本輪直接讀檔核對，只讀未改。全文沒有任何一句承諾排名、索引、引用或曝光結果；本站沒有做過相關量測。"
+}
