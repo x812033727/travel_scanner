@@ -1,5 +1,5 @@
 from contextvars import ContextVar, Token
-from typing import Annotated, Literal, cast
+from typing import Annotated, Literal
 
 from fastapi import Header
 
@@ -1890,7 +1890,7 @@ def active_locale() -> Locale:
 
 def normalize_locale(value: str | None) -> Locale:
     if value in LOCALES:
-        return cast(Locale, value)
+        return value
     return DEFAULT_LOCALE
 
 
