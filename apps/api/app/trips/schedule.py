@@ -558,7 +558,7 @@ def ensure_system_slots(session: AsyncSession, trip: TripPlan, rows: list[TripPl
     days = _days(trip, rows)
     changed = _promote_legacy_flights(trip, rows, days) or changed
     by_role = {
-        (item.day_date, cast(SystemRole, item.system_role)): item
+        (item.day_date, item.system_role): item
         for item in rows
         if item.day_date is not None and item.system_role in SYSTEM_ROLES
     }
