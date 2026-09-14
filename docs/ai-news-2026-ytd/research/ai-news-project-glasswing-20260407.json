@@ -1,0 +1,170 @@
+{
+  "slug": "ai-news-project-glasswing-20260407",
+  "event_date": "2026-04-07",
+  "title": "Project Glasswing 與 Mythos Preview：AI 找到漏洞後，真正的工作才開始",
+  "sources": [
+    {
+      "title": "Anthropic：Project Glasswing",
+      "url": "https://www.anthropic.com/glasswing",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "Anthropic：Glasswing 初期進展",
+      "url": "https://www.anthropic.com/research/glasswing-initial-update",
+      "checked_on": "2026-09-14"
+    }
+  ],
+  "checked_on": "2026-09-14",
+  "verified_facts": [
+    "4 月 7 日 Anthropic 發表 Project Glasswing，讓維護重要軟體的合作夥伴以 Claude Mythos Preview 做防禦性安全工作。",
+    "Mythos Preview 是受限研究預覽，沒有對一般使用者全面開放。",
+    "官方將漏洞發現能力歸因於更強的程式理解；漏洞數與能力描述是廠商報告。",
+    "5 月 22 日後續公告強調發現後仍須驗證、揭露與修補；不要把候選漏洞直接當成已修復的事件。"
+  ],
+  "editorial_brief": "面向一般讀者和網站管理者，使用不含攻擊細節的維護流程：資產盤點、確認受影響版本、廠商更新、備份、安裝後檢查。區分掃描提示、已確認漏洞、修補發布和使用者完成更新。不要生成漏洞利用方式或把未公開弱點猜成特定服務已被入侵。",
+  "hero_label": "發現到修補的流程",
+  "diagram_nodes": [
+    [
+      "發現線索",
+      "尚待人工確認"
+    ],
+    [
+      "驗證影響",
+      "版本與範圍"
+    ],
+    [
+      "協調修補",
+      "維護者處理"
+    ],
+    [
+      "完成更新",
+      "再檢查服務"
+    ]
+  ],
+  "source_policy": "Facts only from listed official sources checked on 2026-09-14. Benchmarks belong to vendors. Editorial examples are hypothetical, not hands-on product tests. Announcement access and future promises must be dated.",
+  "status": "researched-not-written",
+  "diagram": {
+    "title": "發現到修補的流程",
+    "caption": "發現線索：尚待人工確認、驗證影響：版本與範圍、協調修補：維護者處理、完成更新：再檢查服務。",
+    "nodes": [
+      [
+        "發現線索",
+        "尚待人工確認"
+      ],
+      [
+        "驗證影響",
+        "版本與範圍"
+      ],
+      [
+        "協調修補",
+        "維護者處理"
+      ],
+      [
+        "完成更新",
+        "再檢查服務"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "diagram": {
+        "title": "The Discovery-to-Patching Process",
+        "caption": "Spotting clues: Awaiting manual confirmation; Verifying impact: Version and scope; Coordinating patches: Handled by maintainers; Completing updates: Re-checking services.",
+        "nodes": [
+          [
+            "Spotting Clues",
+            "Awaiting manual confirmation"
+          ],
+          [
+            "Verifying Impact",
+            "Version and scope"
+          ],
+          [
+            "Coordinating Patches",
+            "Handled by maintainers"
+          ],
+          [
+            "Completing Updates",
+            "Re-checking services"
+          ]
+        ]
+      },
+      "hero_label": "Discovery-to-Patching Process"
+    },
+    "ja": {
+      "diagram": {
+        "title": "発見から修正までのフロー",
+        "caption": "手がかりの発見：人手による確認待ち、影響の検証：バージョンと範囲、パッチの調整：メンテナー対応、更新完了：サービス再点検。",
+        "nodes": [
+          [
+            "手がかりの発見",
+            "人手による確認待ち"
+          ],
+          [
+            "影響の検証",
+            "バージョンと範囲"
+          ],
+          [
+            "パッチの調整",
+            "メンテナー対応"
+          ],
+          [
+            "更新完了",
+            "サービス再点検"
+          ]
+        ]
+      },
+      "hero_label": "発見から修正までのフロー"
+    },
+    "ko": {
+      "diagram": {
+        "title": "발견부터 패치까지의 프로세스",
+        "caption": "단서 발견: 수동 확인 대기, 영향 검증: 버전 및 범위, 패치 조율: 유지보수자 처리, 업데이트 완료: 서비스 재점검.",
+        "nodes": [
+          [
+            "단서 발견",
+            "수동 확인 대기"
+          ],
+          [
+            "영향 검증",
+            "버전 및 범위"
+          ],
+          [
+            "패치 조율",
+            "유지보수자 처리"
+          ],
+          [
+            "업데이트 완료",
+            "서비스 재점검"
+          ]
+        ]
+      },
+      "hero_label": "발견부터 패치까지의 프로세스"
+    },
+    "zh-CN": {
+      "diagram": {
+        "title": "发现到修补的流程",
+        "caption": "发现线索：尚待人工确认、验证影响：版本与范围、协调修补：维护者处理、完成更新：再检查服务。",
+        "nodes": [
+          [
+            "发现线索",
+            "尚待人工确认"
+          ],
+          [
+            "验证影响",
+            "版本与范围"
+          ],
+          [
+            "协调修补",
+            "维护者处理"
+          ],
+          [
+            "完成更新",
+            "再检查服务"
+          ]
+        ]
+      },
+      "hero_label": "发现到修补的流程"
+    }
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "slug": "ai-news-claude-opus-46-20260205",
+  "event_date": "2026-02-05",
+  "title": "Claude Opus 4.6 與長上下文：大量資料讀得進去，也要找得回來",
+  "sources": [
+    {
+      "title": "Anthropic：Claude Opus 4.6",
+      "url": "https://www.anthropic.com/news/claude-opus-4-6",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "Anthropic：模型狀態與淘汰時程",
+      "url": "https://docs.anthropic.com/en/docs/about-claude/model-deprecations",
+      "checked_on": "2026-09-14"
+    }
+  ],
+  "checked_on": "2026-09-14",
+  "verified_facts": [
+    "2 月 5 日 Opus 4.6 發布，強調程式、研究與文件工作；Opus 首次提供 1M token 上下文 beta。",
+    "公告同時介紹 adaptive thinking、effort 與 API context compaction。",
+    "首發列 Claude、API 與主要雲端平台；1M beta 並非所有聊天帳號共同上限。",
+    "基準成績是 Anthropic 評測，長上下文容量不能等同沒有遺漏或理解錯誤。"
+  ],
+  "editorial_brief": "原創場景：社區管委會比較歷年維修報價，先製作文件清單、頁碼、日期，再抽查模型說法。解釋 token 不是固定中文字數，摘要壓縮可能失去細节。用長文件流程、資料分組及抽樣回原文的具體做法支撐文章，不做無來源數字比較。",
+  "hero_label": "讀得進也找得回",
+  "diagram_nodes": [
+    [
+      "列出文件",
+      "日期與版本"
+    ],
+    [
+      "分組閱讀",
+      "標示問題範圍"
+    ],
+    [
+      "附上出處",
+      "回到段落頁碼"
+    ],
+    [
+      "抽查結論",
+      "核對遺漏與矛盾"
+    ]
+  ],
+  "source_policy": "Facts only from listed official sources checked on 2026-09-14. Benchmarks belong to vendors. Editorial examples are hypothetical, not hands-on product tests. Announcement access and future promises must be dated.",
+  "status": "researched-not-written",
+  "diagram": {
+    "title": "讀得進也找得回",
+    "caption": "列出文件：日期與版本、分組閱讀：標示問題範圍、附上出處：回到段落頁碼、抽查結論：核對遺漏與矛盾。",
+    "nodes": [
+      [
+        "列出文件",
+        "日期與版本"
+      ],
+      [
+        "分組閱讀",
+        "標示問題範圍"
+      ],
+      [
+        "附上出處",
+        "回到段落頁碼"
+      ],
+      [
+        "抽查結論",
+        "核對遺漏與矛盾"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "diagram": {
+        "title": "Read In, Retrieve Out",
+        "caption": "List documents: dates and versions; group reading: mark question scopes; attach sources: trace to page numbers; spot-check conclusions: cross-examine omissions and contradictions.",
+        "nodes": [
+          [
+            "List Documents",
+            "Dates and versions"
+          ],
+          [
+            "Group Reading",
+            "Mark question scopes"
+          ],
+          [
+            "Attach Sources",
+            "Trace to page numbers"
+          ],
+          [
+            "Spot-Check Output",
+            "Check gaps & conflicts"
+          ]
+        ]
+      },
+      "hero_label": "Read In, Retrieve Out"
+    },
+    "ja": {
+      "diagram": {
+        "title": "読み込めて引き出せる",
+        "caption": "文書目録の作成：日付とバージョン、分割読解：質問範囲の明示、出典の添付：該当箇所のページ番号へ戻る、結論のサンプリング：抜け漏れと矛盾の照合。",
+        "nodes": [
+          [
+            "文書目録の作成",
+            "日付とバージョン"
+          ],
+          [
+            "分割読解",
+            "質問範囲の明示"
+          ],
+          [
+            "出典の添付",
+            "該当箇所の頁へ"
+          ],
+          [
+            "結論のサンプリング",
+            "漏れと矛盾の照合"
+          ]
+        ]
+      },
+      "hero_label": "読み込めて引き出せる"
+    },
+    "ko": {
+      "diagram": {
+        "title": "읽어 들이고 다시 찾아내기",
+        "caption": "문서 목록화: 날짜와 버전, 그룹별 읽기: 질문 범위 표시, 출처 첨부: 문단 및 페이지 번호 확인, 결론 표본 조사: 누락과 모순 대조.",
+        "nodes": [
+          [
+            "문서 목록화",
+            "날짜와 버전"
+          ],
+          [
+            "그룹별 읽기",
+            "질문 범위 표시"
+          ],
+          [
+            "출처 첨부",
+            "문단 및 페이지 확인"
+          ],
+          [
+            "결론 표본 조사",
+            "누락과 모순 대조"
+          ]
+        ]
+      },
+      "hero_label": "읽어 들이고 다시 찾아내기"
+    },
+    "zh-CN": {
+      "diagram": {
+        "title": "读得进也找得回",
+        "caption": "列出文件：日期与版本、分组阅读：标示问题范围、附上出处：回到段落页码、抽查结论：核对遗漏与矛盾。",
+        "nodes": [
+          [
+            "列出文件",
+            "日期与版本"
+          ],
+          [
+            "分组阅读",
+            "标示问题范围"
+          ],
+          [
+            "附上出处",
+            "回到段落页码"
+          ],
+          [
+            "抽查结论",
+            "核对遗漏与矛盾"
+          ]
+        ]
+      },
+      "hero_label": "读得进也找得回"
+    }
+  }
+}
