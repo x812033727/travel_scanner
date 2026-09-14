@@ -1,7 +1,7 @@
 # 旅遊情報攻略第六批：二十篇規格與撰稿指令
 
 第六批的二十篇 zh-TW 旅遊文章，一篇一個規格檔。這份 README 有三部分：清單、給撰稿者的通用規則、給協調者的收件步驟。
-任務票是 `tasks/open/2026-09-14-launch-articles-batch-6-twenty-more.md`。
+任務票是 `tasks/done/2026-09-14-launch-articles-batch-6-twenty-more.md`。二十篇 2026-09-14 已上線；規格有錯的地方列在 [ERRATA.md](ERRATA.md)，正式內容以 `apps/api/app/guides/content/<slug>.json` 為準。
 
 規格在 2026-09-14 定稿，流程如下：
 - 六個分區提出 55 個候選，三位評審打分，選出 20 篇。
@@ -83,6 +83,8 @@ CHROMIUM_BIN="C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe" uv r
 ```
 
 只在工作區寫檔，不改 repo 裡的檔案、不跑 git，不用共用的瀏覽器分頁。撰稿的 session 可能中途被切斷：落在磁碟上的檔案會留下來，結尾的報告不會。
+
+**不要把任何個人資料送出去。** 用 curl 或腳本呼叫 Commons 等外部網站時，User-Agent 一律寫 repo 工具用的 `Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)`，不要放使用者或自己的 email、姓名。第六批有六篇的查核者把使用者的個人 email 放進 User-Agent 送給 Wikimedia。
 
 ### `pack.json`
 
