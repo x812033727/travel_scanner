@@ -115,6 +115,10 @@ GENERIC_DETAILS: dict[Locale, str] = {
 OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     "en": {
         "password_not_set": "This account does not have a password yet",
+        "password_too_common": (
+            "That password is too easy to guess. Choose one that is not a common string "
+            "and is unrelated to your email address."
+        ),
         "oauth_cancelled": "Sign-in was cancelled",
         "oauth_state_invalid": "This sign-in request expired. Please try again.",
         "oauth_state_unavailable": "Sign-in verification is temporarily unavailable",
@@ -310,6 +314,10 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     },
     "ja": {
         "password_not_set": "このアカウントにはまだパスワードがありません",
+        "password_too_common": (
+            "このパスワードは推測されやすすぎます。よくある文字列ではなく、"
+            "メールアドレスとも関係のないものを設定してください。"
+        ),
         "oauth_cancelled": "ログインをキャンセルしました",
         "oauth_state_invalid": "ログイン操作の有効期限が切れました。もう一度お試しください",
         "oauth_state_unavailable": "ログイン確認を一時的に利用できません",
@@ -491,6 +499,10 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     },
     "ko": {
         "password_not_set": "이 계정에는 아직 비밀번호가 없습니다",
+        "password_too_common": (
+            "이 비밀번호는 너무 쉽게 추측됩니다. 흔한 문자열이 아니고 "
+            "이메일 주소와도 관련 없는 비밀번호로 바꿔 주세요."
+        ),
         "oauth_cancelled": "로그인을 취소했습니다",
         "oauth_state_invalid": "로그인 요청이 만료되었습니다. 다시 시도하세요",
         "oauth_state_unavailable": "로그인 확인을 일시적으로 사용할 수 없습니다",
@@ -690,6 +702,9 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     },
     "zh-CN": {
         "password_not_set": "这个账号尚未设置密码",
+        "password_too_common": (
+            "这个密码太容易被猜到，请换一个不是常见字符串、也和 Email 无关的密码。"
+        ),
         "oauth_cancelled": "已取消登录",
         "oauth_state_invalid": "登录验证已失效，请重新操作",
         "oauth_state_unavailable": "登录验证服务暂时无法使用",
