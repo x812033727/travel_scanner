@@ -15,8 +15,8 @@
 - 完整內容 lint/schema：0 錯誤、0 警告。
 - 真實匯入流程在可拋棄的 SQLite 資料庫驗證：77 個新增草稿隱藏；6 個更新草稿保留舊公開文；83 個發布後可讀取；83 個未翻譯英文路徑隱藏；重跑 83 個內容全部 unchanged。
 - 既有內容包與圖片匯入測試：29 passed、5 PostgreSQL-dependent skipped。
-- 發布器測試：4 passed、3 skipped；包含完整 83 篇流程、寫入前中斷、提交後未記錄的續跑、既有草稿及並行變更拒絕、精確範圍與檔案雜湊。
-- 索引最後提交前會鎖住相依文章資料列；已補 PostgreSQL 競態測例並完成獨立程式審查，本機沒有 PostgreSQL，因此沒有宣稱這個競態測例已實跑。
+- 發布器測試：本機 SQLite／檔案範圍 4 項及隔離 PostgreSQL 17.11 的 4 項全部通過；包含完整 83 篇流程、寫入前中斷、提交後未記錄的續跑、既有草稿及並行變更拒絕、精確範圍與檔案雜湊。跨 SSH 的未完成測試另列 interrupted，未冒充通過；沒有把未選取的 SQLite 競態版本列成 skipped。
+- 索引最後提交前鎖住相依文章資料列的測例已在隔離 PostgreSQL 實跑：另一個 READ COMMITTED 交易撤下文章時得到 SQLSTATE 55P03，之後索引正常提交且 83 篇公開 hash 一致。測試容器、專屬網路、映像標籤及 SSH tunnel 均已清理，正式十項容器 ID 與運作狀態未變。詳見 postgresql-validation.json。
 - 相關網頁測試：90 passed。工具測試：39 passed。網頁建置、ESLint、5 語系翻譯鍵檢查與任務格式檢查通過。
 - 整合主分支後修正 tools/workflow-pins.test.mjs 的 Windows file URL 路徑解析；使用 fileURLToPath，沒有改動 Actions 的固定版本。
 
