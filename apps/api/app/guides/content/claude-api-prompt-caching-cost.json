@@ -1,0 +1,283 @@
+{
+  "slug": "claude-api-prompt-caching-cost",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude API 省錢：提示快取與批次處理怎麼用",
+      "description": "用 Claude API 做小工具，帳單多半是被同一段長前綴重送幾千次吃掉的。這篇依 2026 年 9 月 14 日的 Anthropic 官方文件，講三個省錢手段：提示快取讓重複的前綴只算一次，讀取只收基礎輸入價的 0.1 倍、寫入 1.25 倍；批次處理的輸入與輸出照標價的 50% 計費；簡單的工作換輕一階的模型。含主控台看用量分佈、參數寫法、每天呼叫 200 次的試算與四個常見錯誤。",
+      "hero": {
+        "src": "/guides/claude-api-prompt-caching-cost/hero.jpg",
+        "alt": "兩疊高度不同的方塊並排放在同一條地面線上，左邊那疊有七層、右邊那疊只有兩層，矮的那疊旁邊有一個粗的向下箭頭，底下一行字寫著 API 帳單瘦身",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "用 Claude API 寫一個小工具，第一個月的帳單常常比預期高一截。原因多半只有一個：模型沒有記憶，每次呼叫都要把整段系統提示與背景知識重送一遍，輸入 token 一天就累積幾百萬個。結論可以先講：先到主控台看用量分佈，找出被重送最多次的那段長前綴，標成提示快取。依 Anthropic 官方文件，快取讀取只收基礎輸入價的 0.1 倍，寫入 1.25 倍，讀一次就回本；不急的工作再丟批次，輸入與輸出照標價的 50% 計費。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇依 2026 年 9 月 14 日查證的 Anthropic 官方文件，把三個省錢手段由易到難講一遍：提示快取、批次處理、選對模型。每一個都寫清楚它砍掉帳單的哪一塊、代價是什麼、什麼情況反而更貴，參數名稱照官方文件。最後用一個每天呼叫 200 次的小工具做試算，看三個手段各砍掉多少，再列四個常見錯誤。價格與規則換得很快，動手前以官網當下的頁面為準。"
+        },
+        {
+          "type": "heading",
+          "text": "帳單為什麼會高：同一段前綴被重送幾千次",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "API 的計價單位是 token，而且每一次呼叫都是獨立的：系統提示、工具定義、背景文件、前面的對話要整包重送，模型才知道上下文是什麼。一個問答式的小工具，系統提示加上一份固定的產品說明可能就有 20,000 個 token，使用者真正打的那句話只有 200 個。也就是說，每次呼叫有 99% 的輸入是「上次送過、這次一模一樣」的內容，而這份重複的內容預設每次都照基礎輸入價重算。三個手段都在這一塊上做文章。"
+        },
+        {
+          "type": "paragraph",
+          "text": "動手前先看用量分佈，不要憑感覺猜。Claude 主控台左邊的導覽有 Usage 與 Cost 兩頁，開發者、帳務與管理員三種角色看得到。Usage 頁把輸入與輸出 token 畫成長條圖，可按小時或分鐘看，能依 workspace、模型、API 金鑰與日期篩選，還有一張標題是 Rate Limit Use + Caching - Input Tokens 的圖，直接顯示每小時未快取的輸入 token 尖峰與目前的快取率；Cost 頁是每日花費圖。兩頁都能匯出 CSV，但說明中心註明目前沒辦法把用量拆到個別使用者。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要更細的數字，每一次呼叫的回應裡都有一個 usage 物件：input_tokens 是沒被快取的輸入，cache_creation_input_tokens 是這次寫進快取的量，cache_read_input_tokens 是從快取讀回來的量，三個相加才是總輸入。組織層級另有 Usage and Cost Admin API，可以用 1 分鐘、1 小時或 1 天的區間，依模型與 API 金鑰分組拉出同一份數字。"
+        },
+        {
+          "type": "link",
+          "text": "AI 寫程式的費用怎麼算：token 是什麼、錢到底花在哪",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-cost-tokens-explained"
+        },
+        {
+          "type": "heading",
+          "text": "手段一：提示快取，重複的前綴只算一次",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "提示快取的原理是在提示詞前面切一刀：斷點以前的內容如果和前一次呼叫一字不差，模型就直接讀已經算好的結果，不重算。可以快取的東西有三類，順序固定是工具定義、系統提示、訊息，官方文件寫成 tools、system、messages，比對照這個順序從頭往後比，前面有一個位元不同，後面全部算沒中。這也是為什麼要快取的東西得放在提示詞最前面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "價錢分三種。寫進快取的那一次，5 分鐘版收基礎輸入價的 1.25 倍，1 小時版收 2 倍；之後每次讀到快取只收 0.1 倍，Fable 5.1 更只收 0.025 倍。官方文件直接把回本點寫出來：5 分鐘版讀一次就回本，1 小時版讀兩次回本。存活時間預設 5 分鐘，每讀一次就免費續命，所以只要呼叫沒斷超過 5 分鐘，同一份前綴可以一直接力用下去。要注意這段時間是從發出請求那一刻算起，不是從回答結束算。想撐久一點就用 1 小時的選項，寫法是在 cache_control 裡多一個 ttl 欄位、值填 1h；官方文件寫明沒有更長的選項。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最小可快取長度依模型不同：Opus 5 與 Fable 5.1 是 512 個 token，Sonnet 5 與 Opus 4.8 是 1,024，Opus 4.7 是 2,048，Haiku 4.5 與 Opus 4.6、4.5 是 4,096。不到門檻不會報錯，只是靜靜地不快取，要確認有沒有中，就看回應裡的 cache_creation_input_tokens 與 cache_read_input_tokens 是不是都是 0。標記用的參數叫 cache_control，值是一個物件，type 填 ephemeral。有兩種用法：放在請求最上層是自動快取，系統會把斷點放在最後一個可快取的區塊，對話變長時自動往後移，官方建議多數情況從這個開始；放在個別內容區塊上是明確斷點，一個請求最多 4 個，超過會回 400 錯誤。快取不會跨組織共用，在 Claude API 上還按 workspace 隔離。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "最划算：同一份長文件被問很多次。整本手冊、整份規格、整張資料表放進系統提示，斷點放在文件結尾，之後每一個問題都只付 0.1 倍。",
+            "最划算：固定不動的長系統提示。角色設定、輸出格式、20 個以上的範例，官方文件把這幾樣列為最適合快取的內容，還有常用的工具定義。",
+            "划算：多輪對話。前面的對話會一路往後累積，用最上層的自動快取，斷點會自己跟著往後移，不用自己算位置。",
+            "不划算：每次內容都不同。前綴只要有一個字不一樣就算沒中，你付了 1.25 倍的寫入價，卻連一次讀取都拿不到，比不快取還貴。",
+            "不划算：間隔太久。呼叫零零星星、一小時才一次，5 分鐘的快取早就過期，等於每次都在付寫入價；這種情況要嘛改用 1 小時版，要嘛乾脆不快取。",
+            "不用試：前綴太短。不到模型的最小可快取長度就是不會快取，標了也沒用，而且系統不會提醒你。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "動手前先估一次：AI 專案的 token 用量與費用怎麼算",
+          "url": "https://mokaair.com/zh-TW/life/ai-token-cost-estimation"
+        },
+        {
+          "type": "heading",
+          "text": "手段二：批次處理，不急的工作打五折",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Message Batches API 是把一疊請求包成一包送出去、晚點再回來拿結果。所有用量照標價的 50% 計費，輸入與輸出都算。送出的格式是一個 requests 陣列，每一筆有自己的 custom_id 與一個 params 物件，裡面就是平常 Messages API 的參數；送出後輪詢批次的 processing_status，從 in_progress 變成 ended 就可以下載結果。每一筆結果有四種狀態：succeeded、errored、canceled、expired。幾乎所有平常能送的東西都能放進批次，同一包裡也可以混不同類型的請求。"
+        },
+        {
+          "type": "paragraph",
+          "text": "代價是等待與幾條限制。官方文件寫多數批次一小時內跑完，但正式的說法是：全部跑完或滿 24 小時，以先到的為準，才能取結果；24 小時內沒跑完的請求會過期，過期的不收費。一個批次最多 100,000 筆請求或 256 MB，結果保留 29 天。所有現役模型都支援批次，但有三個參數不能用：stream 設成 true、快速模式的 speed，以及 max_tokens 設成 0。官方另外提醒，批次可能跑超過 5 分鐘，同一批共用前綴時建議搭 1 小時的快取，命中率才高。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "適合：整批分類貼標籤、整批摘要、離線的資料處理、大規模的評測。官方文件給的例子就是內容審核、資料分析與大量產生文案。",
+            "適合：每天固定跑一次的排程工作，反正結果隔天早上才要看。",
+            "不適合：要即時回覆的聊天介面，或使用者按了按鈕站在畫面前等的功能。",
+            "不適合：要逐字串流出來的畫面，批次的結果是一個檔案，不是串流。",
+            "不適合：一次就要跑滿的高風險工作。先用一小批試過再放大，不然整批跑完才發現提示詞寫錯。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "heading",
+          "text": "手段三：選對模型，長對話定期重開",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "前兩個手段是把同一件事做得便宜，第三個是換一個更便宜的人來做。官方的成本建議第一條就是選對模型：簡單的工作用 Haiku、多數線上工作用 Sonnet、最複雜的推理才用 Opus。以每百萬 token 的標價看，Sonnet 5 是輸入 2 美元、輸出 10 美元，Haiku 4.5 是輸入 1 美元、輸出 5 美元，正好是一半；Opus 5 則是 5 與 25 美元。分類、抽欄位、判斷格式這種每次都很簡單的工作，換成輕一階的模型，那一塊的帳單直接砍半，品質常看不出差別。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一個容易忽略的是對話長度。每送一則訊息，模型都要把前面整段對話重讀一次，對話越長每一則越貴，而思考用掉的 token 還是按輸出計價。換了主題就開新對話，或把前面的內容濃縮成一段摘要再接下去，比一路聊到底便宜很多。要注意換模型會讓快取失效：官方的快取診斷把 model_changed 列為第一種沒中的原因，快取按模型隔離，同一段對話中途換模型，前綴得整段重寫。"
+        },
+        {
+          "type": "link",
+          "text": "Claude 模型家族：Fable、Opus、Sonnet、Haiku 怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/claude-model-lineup-2026"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-api-prompt-caching-cost/diagram-1.svg",
+          "alt": "圖解：左半部上下對比同一次呼叫在沒快取與有快取時各算多少，下方是四階段的試算；右半部三格列出提示快取、批次處理、選對模型三個手段省在哪與適合的情況",
+          "width": 1600,
+          "height": 900,
+          "caption": "左上與左中是同一次呼叫的兩種算法，左下是四個階段的每日費用推算；右邊三格由上到下是三個手段的倍率、適合與不適合的情況。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "實際試算：每天 200 次、前綴 20,000 token 的小工具",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "假設一個工具每天被呼叫 200 次，每次都送同一段 20,000 token 的系統提示與知識，使用者輸入 200 token，回答 500 token，模型用 Sonnet 5。快取那幾列假設用 1 小時版、一天寫 10 次讀 190 次；批次那列假設整批在同一包裡跑，寫 1 次讀 199 次。下面的金額是拿官網標價推算的，不是官方公布的數字，換成自己的長度與次數，方向不會變。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "做法",
+            "每天輸入端",
+            "每天輸出端",
+            "每天合計",
+            "和基準比"
+          ],
+          "rows": [
+            [
+              "什麼都不做，全部照標價",
+              "8.08 美元",
+              "1.00 美元",
+              "9.08 美元",
+              "基準"
+            ],
+            [
+              "加 1 小時提示快取",
+              "1.64 美元",
+              "1.00 美元",
+              "2.64 美元",
+              "約省 71%"
+            ],
+            [
+              "只丟批次、不快取",
+              "4.04 美元",
+              "0.50 美元",
+              "4.54 美元",
+              "省 50%"
+            ],
+            [
+              "批次加 1 小時快取",
+              "0.48 美元",
+              "0.50 美元",
+              "0.98 美元",
+              "約省 89%"
+            ],
+            [
+              "再把模型換成 Haiku 4.5",
+              "0.24 美元",
+              "0.25 美元",
+              "0.49 美元",
+              "約省 95%"
+            ]
+          ],
+          "caption": "依 2026 年 9 月 14 日 Anthropic 官網標價推算（Sonnet 5 輸入 2、輸出 10 美元；Haiku 4.5 輸入 1、輸出 5 美元；1 小時寫入 2 倍、讀取 0.1 倍、批次五折），非官方公布數字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "三個手段各砍掉不同的一塊。快取砍的是「重複的長前綴」那一塊輸入，輸入端從 8.08 美元掉到 1.64 美元，輸出完全沒動；批次是整張帳單對半砍，輸入與輸出都算，但它一個 token 也不會幫你少送；換模型是把每個單價降一階。三個可以疊起來，官方文件寫明批次折扣與快取折扣可以合併計算，疊完每天從 9.08 美元掉到 0.49 美元。要注意 Haiku 4.5 的最小可快取長度是 4,096 個 token，這例子的 20,000 token 前綴過得了門檻，前綴短的工具換到 Haiku 就可能快取不到。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先看用量分佈再動手",
+          "text": "多數人的帳單是被同一段長前綴重送幾千次吃掉的，不是被哪一次特別貴的呼叫吃掉的。改程式之前先到主控台的 Usage 頁，依模型與 API 金鑰看一天的輸入 token 分佈，再看 Rate Limit Use + Caching - Input Tokens 那張圖的快取率。如果快取率接近 0、而且輸入 token 遠大於輸出 token，那就是提示快取的標準情況，加一個 cache_control 參數就看得到效果。反過來，如果輸出 token 才是大宗，快取幫不上忙，該做的是把回答變短或換模型。"
+        },
+        {
+          "type": "heading",
+          "text": "四個把快取弄丟的常見錯誤",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "把斷點標在會變動的內容上。系統提示裡插了目前時間、請求編號或使用者名字，前綴每次都不一樣，於是你每次都在付 1.25 倍的寫入價、永遠讀不到。官方的修法是把系統提示做成一個字都不會動的常數，會變的資料移到斷點後面的第一則使用者訊息。",
+            "把使用者輸入放進快取前綴。使用者打的字每次都不同，放在斷點以前等於自己把快取砸掉。斷點要放在「每次都一模一樣的最後一塊」，不是整段提示詞的最後一塊。官方文件點名這個誤解：快取不會往回找穩定的內容，它只找得到前一次在斷點寫下的那份。",
+            "以為快取永久有效。預設只有 5 分鐘，最長的選項是 1 小時，沒有更久的；呼叫間隔比存活時間長，快取就是過期，而且那段時間是從發出請求開始算，不是從你收到回答開始算。",
+            "其他讓前綴對不上的小動作。中途換模型、工具清單加減或換順序、某些語言序列化 JSON 時鍵的順序是隨機的、改了思考或 effort 設定、多送或少送一張圖片，都會讓快取整段失效。查不出原因時，官方有一個 beta 的快取診斷：帶上 cache-diagnosis-2026-04-07 這個 beta 標頭，並在請求裡傳 diagnostics 的 previous_message_id，回應會告訴你 cache_miss_reason 是 model_changed、system_changed、tools_changed 還是 messages_changed。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "link",
+          "text": "Claude API 第一次呼叫：金鑰怎麼拿、第一支程式怎麼寫",
+          "url": "https://mokaair.com/zh-TW/life/claude-api-first-call"
+        },
+        {
+          "type": "paragraph",
+          "text": "三個手段的順序也是建議的順序：先看用量、再做快取，把不急的搬去批次，最後才檢討模型選得對不對。要再往下壓可以回頭比各家的單價，但換供應商之前，先確認那段長前綴沒有被重送幾千次，通常這一步就夠了。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI API 價格比較：各家每百萬 token 收多少",
+          "url": "https://mokaair.com/zh-TW/life/ai-api-pricing-comparison-2026"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic 官方文件：Prompt caching（1.25 倍與 2 倍寫入、0.1 倍讀取、5 分鐘與 1 小時存活、各模型最小可快取長度、cache_control 與 ttl 寫法、4 個斷點上限、快取失效原因）",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic 官方文件：Pricing（各模型每百萬 token 標價、5 分鐘與 1 小時快取寫入價、快取讀取價、批次五折、折扣可合併、成本最佳化建議）",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic 官方文件：Batch processing（50% 折扣、多數一小時內完成、24 小時過期、100,000 筆或 256 MB 上限、結果保留 29 天、不支援的參數、requests 與 custom_id）",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/batch-processing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic 官方文件：Cache diagnostics（beta 標頭 cache-diagnosis-2026-04-07、diagnostics 的 previous_message_id、cache_miss_reason 的四種類型）",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/cache-diagnostics",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic 官方文件：Usage and Cost API（1 分鐘、1 小時、1 天區間，依模型、workspace、API 金鑰與 service tier 分組，未快取與快取 token 分開計）",
+          "url": "https://platform.claude.com/docs/en/manage-claude/usage-cost-api",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Cost and Usage Reporting in the Claude Console（Usage 與 Cost 兩頁、Rate Limit Use + Caching - Input Tokens 圖、篩選與 CSV 匯出、無法拆到個別使用者）",
+          "url": "https://support.claude.com/en/articles/9534590-cost-and-usage-reporting-in-the-claude-console",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 官方定價頁（API 分頁的各模型輸入、輸出、快取讀取與寫入標價，以及批次省 50% 的說明）",
+          "url": "https://claude.com/pricing",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
