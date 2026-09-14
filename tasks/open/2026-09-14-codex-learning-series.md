@@ -242,3 +242,7 @@ Current targeted depth coverage is 16 unique lessons including the earlier five 
 Claude Code 的 PR #485 已唯讀核對合併；未修改對方 1cff 工作目錄或傳送訊息。先保存 5f5b0b11，再以 7abe6057 將 main 3b8df68c693eb81ccde7793a2f89d71999dbb2c2 合入本分支，統一共用文章格式與發布解析。這不是本系列已合入 main。
 
 本分支為 codex/codex-learning-complete。只提交本任務 scope，研究快取與既有 .codex/ 不提交。之後發布前仍要核對最新 main、精確 PR head、CI、備份與實際啟用版本；測試或建置通過不能當成上線。
+
+## Latest Unit C checkpoint
+
+Unit C 38/39/40/15/41 now has targeted five-language depth revisions, with local Git/Node reference evidence in docs/codex-learning/evidence/unit-c-depth-review.json. Current coverage is 21 unique lessons, 39 pending (next D: 09/42/43/16/44). Integrity 60/300, 9 API, 9 compiler and five shared catalogue checks pass; audit is 0 errors/26 warnings. No shared series_data edits. Full final acceptance remains 0/60, including the unresolved preview-start restriction; no product Remote/cloud/Handoff execution or new screenshots. The user’s all-complete-before-PR/deployment condition remains in force.

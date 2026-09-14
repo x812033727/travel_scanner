@@ -100,6 +100,25 @@
           "text": "在 App Store 核對發行者 OpenAI，安裝或更新官方 ChatGPT。完成 SSO、多因素驗證或通行金鑰等畫面要求，再回來設定 Remote。組織帳號可能需要管理員啟用 Remote Control；功能也可能依帳號逐步提供。沒有 Remote 時先記錄版本與工作區，不要以更換 Safari 或重裝 CLI 作為已取得入口的證據。"
         },
         {
+          "type": "paragraph",
+          "text": "本篇以 iPhone 為操作示例。若使用 iPad，先在自己的 ChatGPT App 確認 Remote 實際可見且能選主機，再沿同一個讀檔練習操作；官方此處以 iOS 說明入口，沒有提供可直接套用的 iPad 獨立版面保證。不要用 iPhone 的畫面位置推定 iPad 按鈕位置，也不要把本篇當成 iPad 已實測紀錄。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "先在主機加上自己的辨識檔"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 codex-iphone-lab 根目錄新增 remote-check.txt，使用下方一行，儲存前把尾端 01 改成自己選的代號。若同名檔案已存在，先讀內容，不覆寫其他工作的檔案。這是五個網站程式檔之外的第六個練習檔；每個副本用不同代號，不填帳號、密碼或配對碼。在私人筆記記下代號與完整路徑，稍後不要把代號貼進提示詞。"
+        },
+        {
+          "type": "code",
+          "label": "主機檔案內容：remote-check.txt；先自行更換尾端代號",
+          "language": "text",
+          "code": "IOS-PRACTICE-01\n"
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "步驟一：從相機掃碼進入 Remote"
@@ -127,7 +146,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "自然語言提示詞：在同一個手機 Remote 任務輸入",
           "language": "text",
           "code": "Read this Small Steps project without changing files. Confirm the working directory and inspect app.js and core.mjs. Identify the localStorage key, the field that records completion, and the function that rejects blank task titles. Cite the file for each answer. If a file is unavailable, report that instead of guessing.\n"
         },
@@ -137,12 +156,27 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "再讀一次只有這份副本才有的標記"
+        },
+        {
+          "type": "code",
+          "label": "自然語言提示詞：在同一個手機 Remote 任務輸入",
+          "language": "text",
+          "code": "Read remote-check.txt from this task's project now.\nQuote its exact content and report the absolute file path and the tool used to read it.\nDo not edit files or infer the marker from earlier messages.\nIf the file is missing or cannot be read, report that limitation.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "把回覆與你在主機筆記留下的代號、路徑及讀檔紀錄比對。主機清單中的名稱與這個檔案代號是兩種資料；不要把代號當成電腦名稱。要查是否讀到新內容，可等任務完成後只在主機改代號、存檔，再送同一個讀檔要求，不先提供新代號。結果仍舊、沒有工具紀錄或路徑不符時，保留「尚未確認」，先查儲存狀態、所選主機與副本。"
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "步驟三：追問、核准與查看進度"
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "自然語言提示詞：在同一個手機 Remote 任務輸入",
           "language": "text",
           "code": "In the same project, explain what happens when I add Read and Build, complete Read, and choose Completed. Then explain an empty task title. Separate code you inspected, tests actually run, and checks still pending. Do not edit or clear stored data.\n"
         },
@@ -259,6 +293,10 @@
               "text": "完成同等驗收。"
             }
           ]
+        },
+        {
+          "type": "paragraph",
+          "text": "練習結束，回主機只移除這次由你新增的 remote-check.txt，保留五個網站程式檔。原本就存在的檔案不刪除、不覆寫。新增的標記練習與前面的程式分析都只要求讀取；未實際配對或操作的部分，要在紀錄中保留未實測。"
         },
         {
           "type": "rich_paragraph",
@@ -389,6 +427,25 @@
           "text": "Install or update the official ChatGPT app from App Store, verifying OpenAI as publisher. Complete SSO, MFA or passkey requirements before Remote setup. Organization access may need administrator enablement and rollout can vary. If Remote is absent, record app version and workspace; switching Safari or reinstalling CLI does not establish feature access."
         },
         {
+          "type": "paragraph",
+          "text": "This lesson uses iPhone as the example. On iPad, first confirm that Remote is actually available in your ChatGPT app and that you can select a host before following the same file-reading exercise. The official page describes iOS access without guaranteeing a separate iPad layout. Do not infer iPad button positions from iPhone screens or treat this lesson as evidence of an iPad test."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Add your own identification file on the host"
+        },
+        {
+          "type": "paragraph",
+          "text": "Create remote-check.txt in codex-iphone-lab, replacing 01 below with your own marker. Inspect any existing file; do not overwrite another task's file. This sixth file supplements the five website files. Use a unique marker per copy, never an account, password or pairing code. Privately note the marker and full path; omit the marker from the later prompt."
+        },
+        {
+          "type": "code",
+          "label": "Host file content: remote-check.txt; replace the marker suffix first",
+          "language": "text",
+          "code": "IOS-PRACTICE-01\n"
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "Step 1: scan into Remote with Camera"
@@ -416,7 +473,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Natural-language prompt: enter in the same mobile Remote task",
           "language": "text",
           "code": "Read this Small Steps project without changing files. Confirm the working directory and inspect app.js and core.mjs. Identify the localStorage key, the field that records completion, and the function that rejects blank task titles. Cite the file for each answer. If a file is unavailable, report that instead of guessing.\n"
         },
@@ -426,12 +483,27 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "Read a marker unique to this copy"
+        },
+        {
+          "type": "code",
+          "label": "Natural-language prompt: enter in the same mobile Remote task",
+          "language": "text",
+          "code": "Read remote-check.txt from this task's project now.\nQuote its exact content and report the absolute file path and the tool used to read it.\nDo not edit files or infer the marker from earlier messages.\nIf the file is missing or cannot be read, report that limitation.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Compare the reply with the marker and path in your host-side note and with the tool read record. The host's displayed name and this file marker are different facts. To check freshness, wait for the task to finish, change and save only the marker on the host, then send the same read request without supplying the new value. A stale value, missing tool evidence or mismatched path remains unverified; check saved state, host and copy first."
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "Step 3: follow up, review approvals and inspect progress"
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Natural-language prompt: enter in the same mobile Remote task",
           "language": "text",
           "code": "In the same project, explain what happens when I add Read and Build, complete Read, and choose Completed. Then explain an empty task title. Separate code you inspected, tests actually run, and checks still pending. Do not edit or clear stored data.\n"
         },
@@ -548,6 +620,10 @@
               "text": " for equivalent verification on another phone."
             }
           ]
+        },
+        {
+          "type": "paragraph",
+          "text": "On the host, remove only the remote-check.txt created in this exercise. Keep the five website files and never delete or overwrite pre-existing files. The marker and code requests are read-only. Record pairing or product operations you did not perform as untested."
         },
         {
           "type": "rich_paragraph",
@@ -678,6 +754,25 @@
           "text": "App Store で OpenAI を確認して公式 ChatGPT を更新します。SSO、MFA、パスキーなどを済ませて設定へ戻ります。組織管理者の有効化や段階提供が関係する場合があります。Remote がなければ版とワークスペースを記録し、Safari の変更や CLI 再導入を機能取得の証拠にしません。"
         },
         {
+          "type": "paragraph",
+          "text": "本記事の操作例は iPhone です。iPad では自分の ChatGPT アプリに Remote が表示され、ホストを選べることを先に確認してから同じ読み取り練習を行います。公式ページは iOS の入口を説明していますが、iPad 専用レイアウトの保証ではありません。iPhone の画面位置から iPad のボタン位置を決めつけたり、この記事を iPad の実機検証記録と扱ったりしないでください。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "ホストに自分の識別ファイルを用意する"
+        },
+        {
+          "type": "paragraph",
+          "text": "codex-iphone-lab のルートに remote-check.txt を作り、次の行の 01 を自分の識別コードに変えて保存します。同名ファイルがあれば先に読み、別作業の内容を上書きしません。これは五つのサイトファイルに追加する六つ目の練習ファイルです。コピーごとに違う識別コードを使い、アカウント、パスワード、ペアリングコードは入れません。識別コードと完全なパスは個人用メモに残し、後の依頼には識別コードを書きません。"
+        },
+        {
+          "type": "code",
+          "label": "ホスト上のファイル内容：remote-check.txt。先に末尾の識別コードを変える",
+          "language": "text",
+          "code": "IOS-PRACTICE-01\n"
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "手順1：カメラで Remote の設定を開く"
@@ -705,7 +800,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "自然言語の依頼：同じモバイル Remote タスクに入力する",
           "language": "text",
           "code": "Read this Small Steps project without changing files. Confirm the working directory and inspect app.js and core.mjs. Identify the localStorage key, the field that records completion, and the function that rejects blank task titles. Cite the file for each answer. If a file is unavailable, report that instead of guessing.\n"
         },
@@ -715,12 +810,27 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "このコピー固有の目印を読み直す"
+        },
+        {
+          "type": "code",
+          "label": "自然言語の依頼：同じモバイル Remote タスクに入力する",
+          "language": "text",
+          "code": "Read remote-check.txt from this task's project now.\nQuote its exact content and report the absolute file path and the tool used to read it.\nDo not edit files or infer the marker from earlier messages.\nIf the file is missing or cannot be read, report that limitation.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "ホスト側のメモにある識別コードとパス、ツールの読み取り記録を返答と照合します。ホスト表示名とファイルの目印は別の情報です。新しい内容か確かめるにはタスク完了後にホストで識別コードだけ変更して保存し、新しい値を教えずに同じ読み取り依頼を送ります。古い値、ツール記録の欠落、パスの不一致は未確認のままにし、保存状態、ホスト、コピーを先に調べます。"
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "手順3：追問、承認内容、進捗を確認する"
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "自然言語の依頼：同じモバイル Remote タスクに入力する",
           "language": "text",
           "code": "In the same project, explain what happens when I add Read and Build, complete Read, and choose Completed. Then explain an empty task title. Separate code you inspected, tests actually run, and checks still pending. Do not edit or clear stored data.\n"
         },
@@ -837,6 +947,10 @@
               "text": "へ進みます。"
             }
           ]
+        },
+        {
+          "type": "paragraph",
+          "text": "終了時は今回自分が追加した remote-check.txt だけをホストから取り除き、五つのサイトファイルは残します。元からあるファイルは削除も上書きもしません。目印確認もコード分析も読み取りだけです。実施していないペアリングや製品操作は未検証として記録します。"
         },
         {
           "type": "rich_paragraph",
@@ -967,6 +1081,25 @@
           "text": "App Store에서 OpenAI를 확인해 공식 ChatGPT를 설치하거나 업데이트합니다. SSO, MFA, 패스키 요구를 마친 뒤 Remote를 설정합니다. 관리자 활성화와 단계적 제공이 관련될 수 있습니다. Remote가 없으면 버전과 워크스페이스를 기록하고 Safari 변경이나 CLI 재설치를 기능 접근 증거로 삼지 않습니다."
         },
         {
+          "type": "paragraph",
+          "text": "이 글의 조작 예시는 iPhone입니다. iPad에서는 자신의 ChatGPT 앱에 Remote가 실제로 표시되고 호스트를 선택할 수 있는지 먼저 확인한 뒤 같은 파일 읽기 실습을 진행하세요. 공식 페이지는 iOS 접근을 설명하지만 별도의 iPad 화면 배치를 보장하지 않습니다. iPhone 화면으로 iPad 버튼 위치를 추정하거나 이 글을 iPad 실기기 검증 기록으로 보지 마세요."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "호스트에 자신의 식별 파일 준비하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "codex-iphone-lab 루트에 remote-check.txt를 만들고 아래 줄의 01을 자신만의 표식으로 바꿔 저장합니다. 같은 이름이 있으면 먼저 읽고 다른 작업의 파일을 덮어쓰지 마세요. 다섯 웹사이트 파일에 추가하는 여섯 번째 실습 파일입니다. 사본마다 다른 표식을 쓰며 계정, 비밀번호, 페어링 코드는 넣지 않습니다. 표식과 전체 경로는 개인 메모에 남기고 나중 요청에는 표식 값을 넣지 마세요."
+        },
+        {
+          "type": "code",
+          "label": "호스트 파일 내용: remote-check.txt, 표식 끝부분을 먼저 바꾸기",
+          "language": "text",
+          "code": "IOS-PRACTICE-01\n"
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "1단계: 카메라로 Remote 설정 열기"
@@ -994,7 +1127,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "자연어 요청: 같은 모바일 Remote 작업에 입력",
           "language": "text",
           "code": "Read this Small Steps project without changing files. Confirm the working directory and inspect app.js and core.mjs. Identify the localStorage key, the field that records completion, and the function that rejects blank task titles. Cite the file for each answer. If a file is unavailable, report that instead of guessing.\n"
         },
@@ -1004,12 +1137,27 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "이 복사본만의 표식을 다시 읽기"
+        },
+        {
+          "type": "code",
+          "label": "자연어 요청: 같은 모바일 Remote 작업에 입력",
+          "language": "text",
+          "code": "Read remote-check.txt from this task's project now.\nQuote its exact content and report the absolute file path and the tool used to read it.\nDo not edit files or infer the marker from earlier messages.\nIf the file is missing or cannot be read, report that limitation.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "답변을 호스트에 적어 둔 표식과 경로, 도구 읽기 기록과 비교합니다. 표시된 호스트 이름과 파일 표식은 서로 다른 정보입니다. 최신 내용을 읽는지 확인하려면 작업 완료 후 호스트에서 표식만 바꾸어 저장하고 새 값을 알려 주지 않은 채 같은 읽기 요청을 보냅니다. 값이 오래되었거나 도구 증거가 없거나 경로가 다르면 미확인으로 남기고 저장 상태, 호스트, 사본부터 확인하세요."
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "3단계: 후속 질문, 승인 내용, 진행 상황 확인하기"
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "자연어 요청: 같은 모바일 Remote 작업에 입력",
           "language": "text",
           "code": "In the same project, explain what happens when I add Read and Build, complete Read, and choose Completed. Then explain an empty task title. Separate code you inspected, tests actually run, and checks still pending. Do not edit or clear stored data.\n"
         },
@@ -1126,6 +1274,10 @@
               "text": "로 이어갑니다."
             }
           ]
+        },
+        {
+          "type": "paragraph",
+          "text": "마치면 호스트에서 이번 실습 중 자신이 만든 remote-check.txt만 제거하고 다섯 웹사이트 파일은 남깁니다. 원래 있던 파일은 삭제하거나 덮어쓰지 않습니다. 표식 검사와 코드 분석 모두 읽기만 요청하며 실제로 수행하지 않은 페어링이나 제품 조작은 미검증으로 기록합니다."
         },
         {
           "type": "rich_paragraph",
@@ -1256,6 +1408,25 @@
           "text": "在 App Store 核对发行者 OpenAI，安装或更新官方 ChatGPT。完成 SSO、多因素验证或通行金钥等画面要求，再回来设定 Remote。组织帐号可能需要管理员启用 Remote Control；功能也可能依帐号逐步提供。没有 Remote 时先记录版本与工作区，不要以更换 Safari 或重装 CLI 作为已取得入口的证据。"
         },
         {
+          "type": "paragraph",
+          "text": "本篇以 iPhone 为操作示例。若使用 iPad，先在自己的 ChatGPT App 确认 Remote 实际可见且能选主机，再沿同一个读档练习操作；官方此处以 iOS 说明入口，没有提供可直接套用的 iPad 独立版面保证。不要用 iPhone 的画面位置推定 iPad 按钮位置，也不要把本篇当成 iPad 已实测纪录。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "先在主机加上自己的辨识档"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 codex-iphone-lab 根目录新增 remote-check.txt，使用下方一行，储存前把尾端 01 改成自己选的代号。若同名档案已存在，先读内容，不覆写其他工作的档案。这是五个网站程式档之外的第六个练习档；每个副本用不同代号，不填帐号、密码或配对码。在私人笔记记下代号与完整路径，稍后不要把代号贴进提示词。"
+        },
+        {
+          "type": "code",
+          "label": "主机档案内容：remote-check.txt；先自行更换尾端代号",
+          "language": "text",
+          "code": "IOS-PRACTICE-01\n"
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "步骤一：从相机扫码进入 Remote"
@@ -1283,7 +1454,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "自然语言提示词：在同一个手机 Remote 任务输入",
           "language": "text",
           "code": "Read this Small Steps project without changing files. Confirm the working directory and inspect app.js and core.mjs. Identify the localStorage key, the field that records completion, and the function that rejects blank task titles. Cite the file for each answer. If a file is unavailable, report that instead of guessing.\n"
         },
@@ -1293,12 +1464,27 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "再读一次只有这份副本才有的标记"
+        },
+        {
+          "type": "code",
+          "label": "自然语言提示词：在同一个手机 Remote 任务输入",
+          "language": "text",
+          "code": "Read remote-check.txt from this task's project now.\nQuote its exact content and report the absolute file path and the tool used to read it.\nDo not edit files or infer the marker from earlier messages.\nIf the file is missing or cannot be read, report that limitation.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "把回复与你在主机笔记留下的代号、路径及读档纪录比对。主机清单中的名称与这个档案代号是两种资料；不要把代号当成电脑名称。要查是否读到新内容，可等任务完成后只在主机改代号、存档，再送同一个读档要求，不先提供新代号。结果仍旧、没有工具纪录或路径不符时，保留「尚未确认」，先查储存状态、所选主机与副本。"
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "步骤三：追问、核准与查看进度"
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "自然语言提示词：在同一个手机 Remote 任务输入",
           "language": "text",
           "code": "In the same project, explain what happens when I add Read and Build, complete Read, and choose Completed. Then explain an empty task title. Separate code you inspected, tests actually run, and checks still pending. Do not edit or clear stored data.\n"
         },
@@ -1415,6 +1601,10 @@
               "text": "完成同等验收。"
             }
           ]
+        },
+        {
+          "type": "paragraph",
+          "text": "练习结束，回主机只移除这次由你新增的 remote-check.txt，保留五个网站程式档。原本就存在的档案不删除、不覆写。新增的标记练习与前面的程式分析都只要求读取；未实际配对或操作的部分，要在纪录中保留未实测。"
         },
         {
           "type": "rich_paragraph",

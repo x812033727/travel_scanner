@@ -90,13 +90,13 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "主機檔案內容：存入 host-marker.txt",
           "language": "text",
           "code": "REMOTE-LAB-A\nRevision: 1\n"
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "主機檔案內容：存入 request.txt，不是在手機直接執行",
           "language": "text",
           "code": "Read the host marker and report it. Keep both files unchanged.\n"
         },
@@ -132,7 +132,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "自然語言提示詞：在同一個手機 Remote 任務輸入",
           "language": "text",
           "code": "In this host project, read host-marker.txt and request.txt without changing files. Report the host/environment name if available, the actual working directory, and both files' exact contents. Do not infer unavailable information or use other services. If either file is missing, stop and report that.\n"
         },
@@ -156,6 +156,21 @@
         {
           "type": "paragraph",
           "text": "官方文件明確說明：登出會關閉 Remote Control，但不移除既有配對；重新登入後可能需要再啟用。因此不要把登出當作永久撤銷裝置。要管理個別配對，回主機 Settings → Connections 檢查當版裝置清單及可用管理動作，操作後從原裝置驗證已失去控制能力。文件未固定列出所有版本的移除按鈕名稱，本篇不虛構一個通用選單。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "把連線、配對與任務狀態分開記錄"
+        },
+        {
+          "type": "paragraph",
+          "text": "判讀案例：你關閉 Remote Control 後，手機暫時無法控制主機，但主機的任務仍顯示執行中。能確認的是遠端存取已停用，不能寫成任務已取消或裝置已解除配對。若目的是停止任務，另到該任務使用停止控制並查看結果；若目的是解除裝置，另核對 Connections 的管理操作與原裝置是否仍可控制。若當版沒有明確的移除操作，就記「尚未確認解除」，不要以登出代替永久撤銷。"
+        },
+        {
+          "type": "code",
+          "label": "私人狀態筆記：填寫觀察結果，不是指令",
+          "language": "text",
+          "code": "Checked at: [time and timezone]\nController and execution host: [your private labels]\nRemote Control: [on / off / unknown]\nDevice pairing: [present / removed / unknown]\nTask execution: [running / stopped / completed / unknown]\nLast fresh file read: [time, path and revision / not verified]\nAction taken: [exact control used / none]\nNext verification: [what remains to check]\n"
         },
         {
           "type": "table",
@@ -365,13 +380,13 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Host file content: save as host-marker.txt",
           "language": "text",
           "code": "REMOTE-LAB-A\nRevision: 1\n"
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Host file content: save as request.txt; do not execute on the phone",
           "language": "text",
           "code": "Read the host marker and report it. Keep both files unchanged.\n"
         },
@@ -407,7 +422,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Natural-language prompt: enter in the same mobile Remote task",
           "language": "text",
           "code": "In this host project, read host-marker.txt and request.txt without changing files. Report the host/environment name if available, the actual working directory, and both files' exact contents. Do not infer unavailable information or use other services. If either file is missing, stop and report that.\n"
         },
@@ -431,6 +446,21 @@
         {
           "type": "paragraph",
           "text": "Official documentation states that sign-out turns off Remote Control but retains pairings; re-enabling may be needed after sign-in. Do not treat logout as permanent device revocation. For an individual pairing, inspect the host's current Connections device list and available management actions, then verify loss of control from the original device. The documentation does not establish one removal-button label across all versions."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Record connection, pairing and task state separately"
+        },
+        {
+          "type": "paragraph",
+          "text": "Worked case: after Remote Control is turned off, the phone cannot control the host, but the host still shows a running task. You have established disabled remote access, not cancellation or removal of a device pairing. To stop the task, separately use its stop control and inspect the result. To remove a device, separately inspect Connections management and whether the original device retains control. If your version offers no clear removal action, record removal as unverified rather than treating sign-out as permanent revocation."
+        },
+        {
+          "type": "code",
+          "label": "Private state note: fill in observations; not a command",
+          "language": "text",
+          "code": "Checked at: [time and timezone]\nController and execution host: [your private labels]\nRemote Control: [on / off / unknown]\nDevice pairing: [present / removed / unknown]\nTask execution: [running / stopped / completed / unknown]\nLast fresh file read: [time, path and revision / not verified]\nAction taken: [exact control used / none]\nNext verification: [what remains to check]\n"
         },
         {
           "type": "table",
@@ -640,13 +670,13 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "ホスト上のファイル内容：host-marker.txt に保存する",
           "language": "text",
           "code": "REMOTE-LAB-A\nRevision: 1\n"
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "ホスト上のファイル内容：request.txt に保存し、電話で実行しない",
           "language": "text",
           "code": "Read the host marker and report it. Keep both files unchanged.\n"
         },
@@ -682,7 +712,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "自然言語の依頼：同じモバイル Remote タスクに入力する",
           "language": "text",
           "code": "In this host project, read host-marker.txt and request.txt without changing files. Report the host/environment name if available, the actual working directory, and both files' exact contents. Do not infer unavailable information or use other services. If either file is missing, stop and report that.\n"
         },
@@ -706,6 +736,21 @@
         {
           "type": "paragraph",
           "text": "公式ではログアウトで Remote Control は無効になりますが、ペアリングは残り、再ログイン後に再有効化が必要な場合があります。永久取消と扱わないでください。個別管理はホストの Connections の装置一覧とその版の操作を確認し、元の装置から制御できなくなったか検証します。全版共通の削除ボタン名は資料で確立されていません。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "接続、ペアリング、タスクの状態を分けて記録する"
+        },
+        {
+          "type": "paragraph",
+          "text": "例：Remote Control をオフにして電話から操作できなくなっても、ホストのタスクが実行中なら、確認できたのは遠隔アクセスの停止だけです。タスクの取消やペアリング解除とは書けません。タスクを止めるならその停止操作と結果を別に確認し、装置を解除するなら Connections の管理操作と元の装置の操作可否を別に確認します。明確な削除操作がない版では解除は未確認と記録し、ログアウトを永久解除の代わりにしません。"
+        },
+        {
+          "type": "code",
+          "label": "個人用の状態メモ：観察結果を記入する。コマンドではありません",
+          "language": "text",
+          "code": "Checked at: [time and timezone]\nController and execution host: [your private labels]\nRemote Control: [on / off / unknown]\nDevice pairing: [present / removed / unknown]\nTask execution: [running / stopped / completed / unknown]\nLast fresh file read: [time, path and revision / not verified]\nAction taken: [exact control used / none]\nNext verification: [what remains to check]\n"
         },
         {
           "type": "table",
@@ -915,13 +960,13 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "호스트 파일 내용: host-marker.txt로 저장",
           "language": "text",
           "code": "REMOTE-LAB-A\nRevision: 1\n"
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "호스트 파일 내용: request.txt로 저장하며 휴대전화에서 실행하지 않음",
           "language": "text",
           "code": "Read the host marker and report it. Keep both files unchanged.\n"
         },
@@ -957,7 +1002,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "자연어 요청: 같은 모바일 Remote 작업에 입력",
           "language": "text",
           "code": "In this host project, read host-marker.txt and request.txt without changing files. Report the host/environment name if available, the actual working directory, and both files' exact contents. Do not infer unavailable information or use other services. If either file is missing, stop and report that.\n"
         },
@@ -981,6 +1026,21 @@
         {
           "type": "paragraph",
           "text": "공식 문서는 로그아웃이 Remote Control을 끄지만 페어링은 남고 재로그인 후 다시 켜야 할 수 있다고 설명합니다. 영구 장치 해제로 간주하지 마세요. 개별 페어링은 호스트 Connections의 현재 장치 목록과 관리 동작을 확인하고 원래 장치에서 제어가 사라졌는지 검증합니다. 모든 버전의 공통 삭제 버튼명은 문서에서 확정하지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "연결, 페어링, 작업 상태를 나누어 기록하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "사례: Remote Control을 끈 후 휴대전화로 제어할 수 없지만 호스트의 작업은 실행 중으로 표시됩니다. 확인한 것은 원격 접근 중지이며 작업 취소나 기기 페어링 해제가 아닙니다. 작업을 멈추려면 해당 작업의 중지 동작과 결과를 따로 확인하세요. 기기를 해제하려면 Connections의 관리 동작과 원래 기기의 제어 가능 여부를 따로 확인합니다. 해당 버전에 명확한 제거 동작이 없으면 해제는 미확인으로 기록하며 로그아웃을 영구 해제로 대신하지 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "개인 상태 메모: 관찰 결과를 작성하며 명령으로 실행하지 않음",
+          "language": "text",
+          "code": "Checked at: [time and timezone]\nController and execution host: [your private labels]\nRemote Control: [on / off / unknown]\nDevice pairing: [present / removed / unknown]\nTask execution: [running / stopped / completed / unknown]\nLast fresh file read: [time, path and revision / not verified]\nAction taken: [exact control used / none]\nNext verification: [what remains to check]\n"
         },
         {
           "type": "table",
@@ -1190,13 +1250,13 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "主机档案内容：存入 host-marker.txt",
           "language": "text",
           "code": "REMOTE-LAB-A\nRevision: 1\n"
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "主机档案内容：存入 request.txt，不是在手机直接执行",
           "language": "text",
           "code": "Read the host marker and report it. Keep both files unchanged.\n"
         },
@@ -1232,7 +1292,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "自然语言提示词：在同一个手机 Remote 任务输入",
           "language": "text",
           "code": "In this host project, read host-marker.txt and request.txt without changing files. Report the host/environment name if available, the actual working directory, and both files' exact contents. Do not infer unavailable information or use other services. If either file is missing, stop and report that.\n"
         },
@@ -1256,6 +1316,21 @@
         {
           "type": "paragraph",
           "text": "官方文件明确说明：登出会关闭 Remote Control，但不移除既有配对；重新登入后可能需要再启用。因此不要把登出当作永久撤销装置。要管理个别配对，回主机 Settings → Connections 检查当版装置清单及可用管理动作，操作后从原装置验证已失去控制能力。文件未固定列出所有版本的移除按钮名称，本篇不虚构一个通用选单。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "把连线、配对与任务状态分开记录"
+        },
+        {
+          "type": "paragraph",
+          "text": "判读案例：你关闭 Remote Control 后，手机暂时无法控制主机，但主机的任务仍显示执行中。能确认的是远端存取已停用，不能写成任务已取消或装置已解除配对。若目的是停止任务，另到该任务使用停止控制并查看结果；若目的是解除装置，另核对 Connections 的管理操作与原装置是否仍可控制。若当版没有明确的移除操作，就记「尚未确认解除」，不要以登出代替永久撤销。"
+        },
+        {
+          "type": "code",
+          "label": "私人状态笔记：填写观察结果，不是指令",
+          "language": "text",
+          "code": "Checked at: [time and timezone]\nController and execution host: [your private labels]\nRemote Control: [on / off / unknown]\nDevice pairing: [present / removed / unknown]\nTask execution: [running / stopped / completed / unknown]\nLast fresh file read: [time, path and revision / not verified]\nAction taken: [exact control used / none]\nNext verification: [what remains to check]\n"
         },
         {
           "type": "table",

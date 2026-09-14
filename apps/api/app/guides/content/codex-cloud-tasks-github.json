@@ -137,7 +137,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "雲端環境設定：貼入 setup script 的版本檢查",
           "language": "sh",
           "code": "node --version\n"
         },
@@ -156,7 +156,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "自然語言提示詞：在選定環境的雲端任務輸入",
           "language": "text",
           "code": "Inspect this Small Steps practice repository without changing files. Report the working directory, git commit, branch if available, and the five source filenames. Run node --test core.test.mjs. Explain the failing behavior from the test and core.mjs. Keep files unchanged and do not open a pull request yet.\n"
         },
@@ -166,7 +166,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "自然語言提示詞：在同一個雲端任務要求修正",
           "language": "text",
           "code": "Fix only the reversed completed filter in core.mjs. Completed must return only finished tasks, Active only unfinished tasks, and All every task. Preserve order, input immutability and all existing tests. Remove any now-obsolete exercise comment. Run node --test core.test.mjs and show the final diff. Do not merge, deploy or open a PR until I review the result.\n"
         },
@@ -210,6 +210,21 @@
           "text": "合格結果應為三項測試通過，core.mjs 的 completed 分支改為保留 completed 為真的項目，並移除過期的故障註解。Active 與 All 不變；core.test.mjs 不應被修改。檢查的是最終 diff 與最後一次測試，不是較早那段「我已完成」摘要。若回覆省略退出狀態或只說應該通過，要求補實際輸出。"
         },
         {
+          "type": "heading",
+          "level": 3,
+          "text": "用起始 commit 比較，不只看現在還沒提交的差異"
+        },
+        {
+          "type": "paragraph",
+          "text": "把步驟三第一次唯讀檢查記下的 commit 當作比較基準。若代理已在任務內提交修改，現在的 git diff 可能空白，但本次工作仍有變更；因此要比較起點到最終結果的完整差異。找不到起始紀錄時先補查任務日誌，不猜一個分支名稱當基準。下面要求只作審查，不會自動替你建立或合併 PR。"
+        },
+        {
+          "type": "code",
+          "label": "自然語言提示詞：在同一個雲端任務核對完整修改",
+          "language": "text",
+          "code": "Use the commit recorded in our initial read-only inspection as the baseline.\nIf you cannot identify it, stop and ask me to recover that record.\nCompare the final tracked tree against that baseline, including committed, staged and unstaged changes.\nList untracked files separately. Confirm whether core.test.mjs is unchanged and explain every changed file.\nReport the latest actual test command and result, or say not run.\nDo not modify files, open a PR, merge or deploy.\n"
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -230,16 +245,16 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "PR 草稿範本：先填入實際結果，再送出審查",
           "language": "markdown",
-          "code": "Title: Fix Completed filtering in Small Steps\n\nCompleted previously displayed unfinished tasks. It now displays only finished tasks while preserving Active, All, order and input data.\n\nValidation: node --test core.test.mjs — 3 passed.\nBrowser verification: not run in this cloud exercise.\nDeployment: not performed.\n"
+          "code": "Title: Fix Completed filtering in Small Steps\n\nCompleted previously displayed unfinished tasks. It now displays only finished tasks while preserving Active, All, order and input data.\n\nBaseline commit: [fill in the commit from the initial inspection]\nResult checked: [fill in the final commit or task diff identifier]\nValidation: [fill in command, exit code and actual pass/fail counts]\nBrowser verification: [performed / not run, with scope or reason]\nDeployment: not performed.\n"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "說明中的三項通過只能在你的實際結果一致時保留；若還沒測，改為未執行並說原因。需要畫面驗收時，把 PR 的確切分支或 commit 取得到另一個獨立資料夾，再按"
+              "text": "先用自己的實際紀錄替換所有方括號；只有真的跑出三項通過時才能這樣填寫。未跑的項目填「未執行」及原因，PR 的標題與結果敘述也要符合最終差異。需要畫面驗收時，把 PR 的確切分支或 commit 取得到另一個獨立資料夾，再按"
             },
             {
               "type": "article",
@@ -448,7 +463,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "云端环境设定：贴入 setup script 的版本检查",
           "language": "sh",
           "code": "node --version\n"
         },
@@ -467,7 +482,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "自然语言提示词：在选定环境的云端任务输入",
           "language": "text",
           "code": "Inspect this Small Steps practice repository without changing files. Report the working directory, git commit, branch if available, and the five source filenames. Run node --test core.test.mjs. Explain the failing behavior from the test and core.mjs. Keep files unchanged and do not open a pull request yet.\n"
         },
@@ -477,7 +492,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "自然语言提示词：在同一个云端任务要求修正",
           "language": "text",
           "code": "Fix only the reversed completed filter in core.mjs. Completed must return only finished tasks, Active only unfinished tasks, and All every task. Preserve order, input immutability and all existing tests. Remove any now-obsolete exercise comment. Run node --test core.test.mjs and show the final diff. Do not merge, deploy or open a PR until I review the result.\n"
         },
@@ -521,6 +536,21 @@
           "text": "合格结果应为三项测试通过，core.mjs 的 completed 分支改为保留 completed 为真的项目，并移除过期的故障注解。Active 与 All 不变；core.test.mjs 不应被修改。检查的是最终 diff 与最后一次测试，不是较早那段「我已完成」摘要。若回复省略退出状态或只说应该通过，要求补实际输出。"
         },
         {
+          "type": "heading",
+          "level": 3,
+          "text": "用起始 commit 比较，不只看现在还没提交的差异"
+        },
+        {
+          "type": "paragraph",
+          "text": "把步骤三第一次唯读检查记下的 commit 当作比较基准。若代理已在任务内提交修改，现在的 git diff 可能空白，但本次工作仍有变更；因此要比较起点到最终结果的完整差异。找不到起始纪录时先补查任务日志，不猜一个分支名称当基准。下面要求只作审查，不会自动替你建立或合并 PR。"
+        },
+        {
+          "type": "code",
+          "label": "自然语言提示词：在同一个云端任务核对完整修改",
+          "language": "text",
+          "code": "Use the commit recorded in our initial read-only inspection as the baseline.\nIf you cannot identify it, stop and ask me to recover that record.\nCompare the final tracked tree against that baseline, including committed, staged and unstaged changes.\nList untracked files separately. Confirm whether core.test.mjs is unchanged and explain every changed file.\nReport the latest actual test command and result, or say not run.\nDo not modify files, open a PR, merge or deploy.\n"
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -541,16 +571,16 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "PR 草稿范本：先填入实际结果，再送出审查",
           "language": "markdown",
-          "code": "Title: Fix Completed filtering in Small Steps\n\nCompleted previously displayed unfinished tasks. It now displays only finished tasks while preserving Active, All, order and input data.\n\nValidation: node --test core.test.mjs — 3 passed.\nBrowser verification: not run in this cloud exercise.\nDeployment: not performed.\n"
+          "code": "Title: Fix Completed filtering in Small Steps\n\nCompleted previously displayed unfinished tasks. It now displays only finished tasks while preserving Active, All, order and input data.\n\nBaseline commit: [fill in the commit from the initial inspection]\nResult checked: [fill in the final commit or task diff identifier]\nValidation: [fill in command, exit code and actual pass/fail counts]\nBrowser verification: [performed / not run, with scope or reason]\nDeployment: not performed.\n"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "说明中的三项通过只能在你的实际结果一致时保留；若还没测，改为未执行并说原因。需要画面验收时，把 PR 的确切分支或 commit 取得到另一个独立资料夹，再按"
+              "text": "先用自己的实际纪录替换所有方括号；只有真的跑出三项通过时才能这样填写。未跑的项目填「未执行」及原因，PR 的标题与结果叙述也要符合最终差异。需要画面验收时，把 PR 的确切分支或 commit 取得到另一个独立资料夹，再按"
             },
             {
               "type": "article",
@@ -759,7 +789,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Cloud environment settings: version check for the setup script",
           "language": "sh",
           "code": "node --version\n"
         },
@@ -778,7 +808,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Natural-language prompt: enter in a cloud task using the selected environment",
           "language": "text",
           "code": "Inspect this Small Steps practice repository without changing files. Report the working directory, git commit, branch if available, and the five source filenames. Run node --test core.test.mjs. Explain the failing behavior from the test and core.mjs. Keep files unchanged and do not open a pull request yet.\n"
         },
@@ -788,7 +818,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Natural-language prompt: request the fix in the same cloud task",
           "language": "text",
           "code": "Fix only the reversed completed filter in core.mjs. Completed must return only finished tasks, Active only unfinished tasks, and All every task. Preserve order, input immutability and all existing tests. Remove any now-obsolete exercise comment. Run node --test core.test.mjs and show the final diff. Do not merge, deploy or open a PR until I review the result.\n"
         },
@@ -832,6 +862,21 @@
           "text": "Expect all three tests to pass. The completed branch keeps tasks whose completed value is true, and the obsolete exercise comment is removed. Active and All remain unchanged; core.test.mjs should have no diff. Inspect the final diff and latest test run, not an earlier completion sentence. Request actual output if the answer only predicts success or omits the execution result."
         },
         {
+          "type": "heading",
+          "level": 3,
+          "text": "Compare with the starting commit, not just uncommitted changes"
+        },
+        {
+          "type": "paragraph",
+          "text": "Use the commit recorded in the first read-only inspection as the baseline. If the agent already committed changes within the task, a plain git diff can now be empty even though the task changed files. Review the complete difference from the starting point to the final result. If the baseline is missing, recover it from the task log rather than guessing a branch name. The request below is for inspection and does not itself create or merge a PR."
+        },
+        {
+          "type": "code",
+          "label": "Natural-language prompt: inspect all changes in the same cloud task",
+          "language": "text",
+          "code": "Use the commit recorded in our initial read-only inspection as the baseline.\nIf you cannot identify it, stop and ask me to recover that record.\nCompare the final tracked tree against that baseline, including committed, staged and unstaged changes.\nList untracked files separately. Confirm whether core.test.mjs is unchanged and explain every changed file.\nReport the latest actual test command and result, or say not run.\nDo not modify files, open a PR, merge or deploy.\n"
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -852,26 +897,26 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "PR draft template: fill in actual results before submitting for review",
           "language": "markdown",
-          "code": "Title: Fix Completed filtering in Small Steps\n\nCompleted previously displayed unfinished tasks. It now displays only finished tasks while preserving Active, All, order and input data.\n\nValidation: node --test core.test.mjs — 3 passed.\nBrowser verification: not run in this cloud exercise.\nDeployment: not performed.\n"
+          "code": "Title: Fix Completed filtering in Small Steps\n\nCompleted previously displayed unfinished tasks. It now displays only finished tasks while preserving Active, All, order and input data.\n\nBaseline commit: [fill in the commit from the initial inspection]\nResult checked: [fill in the final commit or task diff identifier]\nValidation: [fill in command, exit code and actual pass/fail counts]\nBrowser verification: [performed / not run, with scope or reason]\nDeployment: not performed.\n"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "Keep “3 passed” only if your actual run agrees; otherwise record the real status and reason. For visual verification, obtain the exact PR branch or commit in a separate folder and use the "
+              "text": "Replace every bracketed field with your actual record. Report three passing tests only if that is what you ran, and mark unperformed checks as not run with a reason. The PR title and result description must match the final diff too. For visual acceptance, obtain the exact PR branch or commit in a separate folder and follow "
             },
             {
               "type": "article",
-              "text": "first project preview",
+              "text": "your first project",
               "kind": "life",
               "slug": "codex-first-project"
             },
             {
               "type": "text",
-              "text": ". Add Read and Build, complete only Read, and verify each filter. A working view from an old local folder does not validate the new cloud revision."
+              "text": ": add Read and Build, complete only Read, and verify Completed shows Read while Active shows Build. A working older local copy does not validate the new cloud changes."
             }
           ]
         },
@@ -1058,7 +1103,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "クラウド環境設定：setup script に入れるバージョン確認",
           "language": "sh",
           "code": "node --version\n"
         },
@@ -1077,7 +1122,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "自然言語の依頼：選択した環境のクラウドタスクに入力する",
           "language": "text",
           "code": "Inspect this Small Steps practice repository without changing files. Report the working directory, git commit, branch if available, and the five source filenames. Run node --test core.test.mjs. Explain the failing behavior from the test and core.mjs. Keep files unchanged and do not open a pull request yet.\n"
         },
@@ -1087,7 +1132,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "自然言語の依頼：同じクラウドタスクで修正を求める",
           "language": "text",
           "code": "Fix only the reversed completed filter in core.mjs. Completed must return only finished tasks, Active only unfinished tasks, and All every task. Preserve order, input immutability and all existing tests. Remove any now-obsolete exercise comment. Run node --test core.test.mjs and show the final diff. Do not merge, deploy or open a PR until I review the result.\n"
         },
@@ -1131,6 +1176,21 @@
           "text": "三件成功し、completed が真の項目を残す条件と不要な故障コメントの削除を確認します。Active、All、core.test.mjs は変わりません。以前の完了文ではなく最終差分と最新の実行を読みます。予測だけなら実出力を求めます。"
         },
         {
+          "type": "heading",
+          "level": 3,
+          "text": "未コミット差分だけでなく開始時のコミットと比べる"
+        },
+        {
+          "type": "paragraph",
+          "text": "最初の読み取り確認で記録したコミットを基準にします。タスク内で変更が既にコミットされていると、git diff が空でも今回の変更がある場合があります。開始点から最終結果までの差分を確認してください。開始記録がなければログで調べ、推測したブランチ名を基準にしません。次の依頼は確認だけで、PR の作成やマージは行いません。"
+        },
+        {
+          "type": "code",
+          "label": "自然言語の依頼：同じクラウドタスクで変更全体を確認する",
+          "language": "text",
+          "code": "Use the commit recorded in our initial read-only inspection as the baseline.\nIf you cannot identify it, stop and ask me to recover that record.\nCompare the final tracked tree against that baseline, including committed, staged and unstaged changes.\nList untracked files separately. Confirm whether core.test.mjs is unchanged and explain every changed file.\nReport the latest actual test command and result, or say not run.\nDo not modify files, open a PR, merge or deploy.\n"
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -1151,26 +1211,26 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "PR 下書き：実際の結果を記入してからレビューに出す",
           "language": "markdown",
-          "code": "Title: Fix Completed filtering in Small Steps\n\nCompleted previously displayed unfinished tasks. It now displays only finished tasks while preserving Active, All, order and input data.\n\nValidation: node --test core.test.mjs — 3 passed.\nBrowser verification: not run in this cloud exercise.\nDeployment: not performed.\n"
+          "code": "Title: Fix Completed filtering in Small Steps\n\nCompleted previously displayed unfinished tasks. It now displays only finished tasks while preserving Active, All, order and input data.\n\nBaseline commit: [fill in the commit from the initial inspection]\nResult checked: [fill in the final commit or task diff identifier]\nValidation: [fill in command, exit code and actual pass/fail counts]\nBrowser verification: [performed / not run, with scope or reason]\nDeployment: not performed.\n"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "三件成功は実測と一致する場合だけ残します。未実行なら理由を記録します。画面確認は PR の正確な版を独立フォルダーに取得し、"
+              "text": "角括弧の項目はすべて自分の実際の記録に置き換えます。三つ成功と書けるのは実行で確認した場合だけで、未実施の確認には理由を添えます。PR の題名と結果の説明も最終差分に合わせます。画面検証では PR の正確なブランチかコミットを別フォルダーに取得し、"
             },
             {
               "type": "article",
-              "text": "初回プレビュー",
+              "text": "最初のプロジェクト",
               "kind": "life",
               "slug": "codex-first-project"
             },
             {
               "type": "text",
-              "text": "で Read と Build を追加、Read だけ完了にして各フィルターを確認します。古いローカル版の成功画面はクラウド修正版の証拠になりません。"
+              "text": "に従って Read と Build を追加、Read だけを完了にします。Completed は Read、Active は Build が期待値です。古いローカル版の正常画面で新しいクラウド変更を合格にしないでください。"
             }
           ]
         },
@@ -1357,7 +1417,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "클라우드 환경 설정: setup script에 넣는 버전 확인",
           "language": "sh",
           "code": "node --version\n"
         },
@@ -1376,7 +1436,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "자연어 요청: 선택한 환경의 클라우드 작업에 입력",
           "language": "text",
           "code": "Inspect this Small Steps practice repository without changing files. Report the working directory, git commit, branch if available, and the five source filenames. Run node --test core.test.mjs. Explain the failing behavior from the test and core.mjs. Keep files unchanged and do not open a pull request yet.\n"
         },
@@ -1386,7 +1446,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "자연어 요청: 같은 클라우드 작업에서 수정 요청",
           "language": "text",
           "code": "Fix only the reversed completed filter in core.mjs. Completed must return only finished tasks, Active only unfinished tasks, and All every task. Preserve order, input immutability and all existing tests. Remove any now-obsolete exercise comment. Run node --test core.test.mjs and show the final diff. Do not merge, deploy or open a PR until I review the result.\n"
         },
@@ -1430,6 +1490,21 @@
           "text": "테스트 세 개가 성공하고 completed가 참인 항목을 남기는 조건과 불필요한 오류 주석 제거를 확인합니다. Active, All, core.test.mjs는 바뀌지 않아야 합니다. 이전 완료 문구 대신 최종 diff와 최신 실행을 읽고 예상만 있다면 실제 출력을 요청합니다."
         },
         {
+          "type": "heading",
+          "level": 3,
+          "text": "미커밋 변경뿐 아니라 시작 커밋과 비교하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "첫 읽기 전용 점검에서 기록한 커밋을 기준으로 삼습니다. 에이전트가 작업 중 변경을 이미 커밋했다면 일반 git diff는 비어 있어도 이번 작업의 변경은 남아 있을 수 있습니다. 시작점부터 최종 결과까지 전체 차이를 검토하세요. 시작 기록이 없다면 브랜치 이름을 추측하지 말고 작업 로그에서 확인합니다. 아래 요청은 점검용이며 PR을 만들거나 병합하지 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "자연어 요청: 같은 클라우드 작업에서 전체 변경 확인",
+          "language": "text",
+          "code": "Use the commit recorded in our initial read-only inspection as the baseline.\nIf you cannot identify it, stop and ask me to recover that record.\nCompare the final tracked tree against that baseline, including committed, staged and unstaged changes.\nList untracked files separately. Confirm whether core.test.mjs is unchanged and explain every changed file.\nReport the latest actual test command and result, or say not run.\nDo not modify files, open a PR, merge or deploy.\n"
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -1450,26 +1525,26 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "PR 초안 양식: 실제 결과를 작성한 뒤 검토 요청",
           "language": "markdown",
-          "code": "Title: Fix Completed filtering in Small Steps\n\nCompleted previously displayed unfinished tasks. It now displays only finished tasks while preserving Active, All, order and input data.\n\nValidation: node --test core.test.mjs — 3 passed.\nBrowser verification: not run in this cloud exercise.\nDeployment: not performed.\n"
+          "code": "Title: Fix Completed filtering in Small Steps\n\nCompleted previously displayed unfinished tasks. It now displays only finished tasks while preserving Active, All, order and input data.\n\nBaseline commit: [fill in the commit from the initial inspection]\nResult checked: [fill in the final commit or task diff identifier]\nValidation: [fill in command, exit code and actual pass/fail counts]\nBrowser verification: [performed / not run, with scope or reason]\nDeployment: not performed.\n"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "세 개 성공은 실제 결과와 일치할 때만 남깁니다. 미실행이면 이유를 적습니다. 화면 검증은 PR의 정확한 버전을 독립 폴더로 받아 "
+              "text": "대괄호 필드를 모두 실제 기록으로 바꾸세요. 실제 실행에서 세 테스트가 통과했을 때만 그렇게 적고, 실행하지 않은 검사는 미실행과 이유를 기록합니다. PR 제목과 결과 설명도 최종 diff와 맞아야 합니다. 화면 검증은 정확한 PR 브랜치나 커밋을 별도 폴더에 가져와 "
             },
             {
               "type": "article",
-              "text": "첫 프로젝트 미리 보기",
+              "text": "첫 프로젝트",
               "kind": "life",
               "slug": "codex-first-project"
             },
             {
               "type": "text",
-              "text": "에서 Read/Build를 추가하고 Read만 완료한 뒤 필터를 확인합니다. 예전 로컬 화면 성공은 클라우드 수정 버전의 증거가 아닙니다."
+              "text": "를 따릅니다. Read와 Build를 추가하고 Read만 완료하면 Completed에는 Read, Active에는 Build가 보여야 합니다. 오래된 로컬 사본의 정상 화면으로 새 클라우드 수정을 검증하지 마세요."
             }
           ]
         },

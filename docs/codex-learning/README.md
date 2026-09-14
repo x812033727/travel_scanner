@@ -6,7 +6,7 @@
 
 本系列有一個總目錄與 60 篇獨立教學，每篇提供繁中、簡中、英文、日文、韓文，共 61 個內容包、305 份語言文件。路由為 `/{locale}/life/codex-learning-hub` 與既有 `/life/<slug>`。**沒有 push、PR、匯入、正式發布或部署**。使用者已授權全部完成且驗收後，再開 PR、合併與部署；完成前不提前交付部分 PR。
 
-最新已接續補強 A 單元六篇與 B 單元五篇，包含命令輸入位置、判讀例題、檔案保護、IDE 上下文及恢復練習，詳見 [A 單元紀錄](evidence/unit-a-depth-review.json)、[B 單元紀錄](evidence/unit-b-depth-review.json)。加上原五篇代表稿，共 16 篇有定向補強，44 篇待逐篇核對；全部仍待完整終審與最終頁面驗收。
+已補強 A 單元六篇、B 單元五篇及 C 單元五篇，詳見 [A](evidence/unit-a-depth-review.json)、[B](evidence/unit-b-depth-review.json)、[C 審核紀錄](evidence/unit-c-depth-review.json)。最新 C 單元加入手機主機辨識、Remote 狀態判讀、雲端完整差異與跨裝置 Git 核對。加上原五篇代表稿，共 21 篇有定向補強，39 篇待逐篇核對，下一單元為 D；全部仍待完整終審與最終頁面驗收。
 
 ## 內容與發布來源
 

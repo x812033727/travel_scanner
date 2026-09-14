@@ -58,6 +58,44 @@
       ]
     },
     {
+      "type": "p",
+      "text": [
+        "本篇以 iPhone 為操作示例。若使用 iPad，先在自己的 ChatGPT App 確認 Remote 實際可見且能選主機，再沿同一個讀檔練習操作；官方此處以 iOS 說明入口，沒有提供可直接套用的 iPad 獨立版面保證。不要用 iPhone 的畫面位置推定 iPad 按鈕位置，也不要把本篇當成 iPad 已實測紀錄。",
+        "This lesson uses iPhone as the example. On iPad, first confirm that Remote is actually available in your ChatGPT app and that you can select a host before following the same file-reading exercise. The official page describes iOS access without guaranteeing a separate iPad layout. Do not infer iPad button positions from iPhone screens or treat this lesson as evidence of an iPad test.",
+        "本記事の操作例は iPhone です。iPad では自分の ChatGPT アプリに Remote が表示され、ホストを選べることを先に確認してから同じ読み取り練習を行います。公式ページは iOS の入口を説明していますが、iPad 専用レイアウトの保証ではありません。iPhone の画面位置から iPad のボタン位置を決めつけたり、この記事を iPad の実機検証記録と扱ったりしないでください。",
+        "이 글의 조작 예시는 iPhone입니다. iPad에서는 자신의 ChatGPT 앱에 Remote가 실제로 표시되고 호스트를 선택할 수 있는지 먼저 확인한 뒤 같은 파일 읽기 실습을 진행하세요. 공식 페이지는 iOS 접근을 설명하지만 별도의 iPad 화면 배치를 보장하지 않습니다. iPhone 화면으로 iPad 버튼 위치를 추정하거나 이 글을 iPad 실기기 검증 기록으로 보지 마세요."
+      ]
+    },
+    {
+      "type": "h3",
+      "text": [
+        "先在主機加上自己的辨識檔",
+        "Add your own identification file on the host",
+        "ホストに自分の識別ファイルを用意する",
+        "호스트에 자신의 식별 파일 준비하기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在 codex-iphone-lab 根目錄新增 remote-check.txt，使用下方一行，儲存前把尾端 01 改成自己選的代號。若同名檔案已存在，先讀內容，不覆寫其他工作的檔案。這是五個網站程式檔之外的第六個練習檔；每個副本用不同代號，不填帳號、密碼或配對碼。在私人筆記記下代號與完整路徑，稍後不要把代號貼進提示詞。",
+        "Create remote-check.txt in codex-iphone-lab, replacing 01 below with your own marker. Inspect any existing file; do not overwrite another task's file. This sixth file supplements the five website files. Use a unique marker per copy, never an account, password or pairing code. Privately note the marker and full path; omit the marker from the later prompt.",
+        "codex-iphone-lab のルートに remote-check.txt を作り、次の行の 01 を自分の識別コードに変えて保存します。同名ファイルがあれば先に読み、別作業の内容を上書きしません。これは五つのサイトファイルに追加する六つ目の練習ファイルです。コピーごとに違う識別コードを使い、アカウント、パスワード、ペアリングコードは入れません。識別コードと完全なパスは個人用メモに残し、後の依頼には識別コードを書きません。",
+        "codex-iphone-lab 루트에 remote-check.txt를 만들고 아래 줄의 01을 자신만의 표식으로 바꿔 저장합니다. 같은 이름이 있으면 먼저 읽고 다른 작업의 파일을 덮어쓰지 마세요. 다섯 웹사이트 파일에 추가하는 여섯 번째 실습 파일입니다. 사본마다 다른 표식을 쓰며 계정, 비밀번호, 페어링 코드는 넣지 않습니다. 표식과 전체 경로는 개인 메모에 남기고 나중 요청에는 표식 값을 넣지 마세요."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "IOS-PRACTICE-01\n",
+      "label": [
+        "主機檔案內容：remote-check.txt；先自行更換尾端代號",
+        "Host file content: remote-check.txt; replace the marker suffix first",
+        "ホスト上のファイル内容：remote-check.txt。先に末尾の識別コードを変える",
+        "호스트 파일 내용: remote-check.txt, 표식 끝부분을 먼저 바꾸기"
+      ]
+    },
+    {
       "type": "h2",
       "text": [
         "步驟一：從相機掃碼進入 Remote",
@@ -114,7 +152,13 @@
     {
       "type": "code",
       "language": "text",
-      "code": "Read this Small Steps project without changing files. Confirm the working directory and inspect app.js and core.mjs. Identify the localStorage key, the field that records completion, and the function that rejects blank task titles. Cite the file for each answer. If a file is unavailable, report that instead of guessing.\n"
+      "code": "Read this Small Steps project without changing files. Confirm the working directory and inspect app.js and core.mjs. Identify the localStorage key, the field that records completion, and the function that rejects blank task titles. Cite the file for each answer. If a file is unavailable, report that instead of guessing.\n",
+      "label": [
+        "自然語言提示詞：在同一個手機 Remote 任務輸入",
+        "Natural-language prompt: enter in the same mobile Remote task",
+        "自然言語の依頼：同じモバイル Remote タスクに入力する",
+        "자연어 요청: 같은 모바일 Remote 작업에 입력"
+      ]
     },
     {
       "type": "p",
@@ -123,6 +167,35 @@
         "Expect mokaair-codex-todo-v1 from app.js, completed and addTask's blank-title check from core.mjs, and the actual working directory. Generic todo-app advice is insufficient; ask which file was inspected. For a wrong directory, stop and select the correct host/project. A plausible explanation alone does not prove the connection reached your files.",
         "app.js の mokaair-codex-todo-v1、core.mjs の completed と addTask の空白確認、実際の場所を確認します。一般論だけなら読んだファイルを追問します。場所が違えば止めて正しいホストとプロジェクトを選びます。もっともらしい説明だけでは接続の証拠になりません。",
         "app.js의 mokaair-codex-todo-v1, core.mjs의 completed와 addTask 공백 검사, 실제 경로를 확인합니다. 일반적인 할 일 앱 설명뿐이면 읽은 파일을 묻습니다. 경로가 틀리면 멈추고 올바른 호스트/프로젝트를 선택하세요. 그럴듯한 설명만으로 파일에 연결됐다고 볼 수 없습니다."
+      ]
+    },
+    {
+      "type": "h3",
+      "text": [
+        "再讀一次只有這份副本才有的標記",
+        "Read a marker unique to this copy",
+        "このコピー固有の目印を読み直す",
+        "이 복사본만의 표식을 다시 읽기"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "Read remote-check.txt from this task's project now.\nQuote its exact content and report the absolute file path and the tool used to read it.\nDo not edit files or infer the marker from earlier messages.\nIf the file is missing or cannot be read, report that limitation.\n",
+      "label": [
+        "自然語言提示詞：在同一個手機 Remote 任務輸入",
+        "Natural-language prompt: enter in the same mobile Remote task",
+        "自然言語の依頼：同じモバイル Remote タスクに入力する",
+        "자연어 요청: 같은 모바일 Remote 작업에 입력"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "把回覆與你在主機筆記留下的代號、路徑及讀檔紀錄比對。主機清單中的名稱與這個檔案代號是兩種資料；不要把代號當成電腦名稱。要查是否讀到新內容，可等任務完成後只在主機改代號、存檔，再送同一個讀檔要求，不先提供新代號。結果仍舊、沒有工具紀錄或路徑不符時，保留「尚未確認」，先查儲存狀態、所選主機與副本。",
+        "Compare the reply with the marker and path in your host-side note and with the tool read record. The host's displayed name and this file marker are different facts. To check freshness, wait for the task to finish, change and save only the marker on the host, then send the same read request without supplying the new value. A stale value, missing tool evidence or mismatched path remains unverified; check saved state, host and copy first.",
+        "ホスト側のメモにある識別コードとパス、ツールの読み取り記録を返答と照合します。ホスト表示名とファイルの目印は別の情報です。新しい内容か確かめるにはタスク完了後にホストで識別コードだけ変更して保存し、新しい値を教えずに同じ読み取り依頼を送ります。古い値、ツール記録の欠落、パスの不一致は未確認のままにし、保存状態、ホスト、コピーを先に調べます。",
+        "답변을 호스트에 적어 둔 표식과 경로, 도구 읽기 기록과 비교합니다. 표시된 호스트 이름과 파일 표식은 서로 다른 정보입니다. 최신 내용을 읽는지 확인하려면 작업 완료 후 호스트에서 표식만 바꾸어 저장하고 새 값을 알려 주지 않은 채 같은 읽기 요청을 보냅니다. 값이 오래되었거나 도구 증거가 없거나 경로가 다르면 미확인으로 남기고 저장 상태, 호스트, 사본부터 확인하세요."
       ]
     },
     {
@@ -137,7 +210,13 @@
     {
       "type": "code",
       "language": "text",
-      "code": "In the same project, explain what happens when I add Read and Build, complete Read, and choose Completed. Then explain an empty task title. Separate code you inspected, tests actually run, and checks still pending. Do not edit or clear stored data.\n"
+      "code": "In the same project, explain what happens when I add Read and Build, complete Read, and choose Completed. Then explain an empty task title. Separate code you inspected, tests actually run, and checks still pending. Do not edit or clear stored data.\n",
+      "label": [
+        "自然語言提示詞：在同一個手機 Remote 任務輸入",
+        "Natural-language prompt: enter in the same mobile Remote task",
+        "自然言語の依頼：同じモバイル Remote タスクに入力する",
+        "자연어 요청: 같은 모바일 Remote 작업에 입력"
+      ]
     },
     {
       "type": "p",
@@ -218,6 +297,15 @@
         "Finish by asking for host/directory, inspected content, unrun tests and next steps, excluding account details and codes. Compare that handoff on the computer so future phone progress checks distinguish completed work. Continue to [cross-device work](article:codex-cross-device-workflow) and [context handoff](article:codex-context-handoff), or use the [Android lesson](article:codex-mobile-android) for equivalent verification on another phone.",
         "最後にホストと場所、確認済み内容、未実行テスト、次の操作を認証情報なしでまとめさせ、PC で照合します。次回の進捗確認で完了範囲を判断できます。[装置間作業](article:codex-cross-device-workflow)と[文脈引き継ぎ](article:codex-context-handoff)、別の電話なら [Android 編](article:codex-mobile-android)へ進みます。",
         "마지막에 인증 정보 없이 호스트/폴더, 확인한 내용, 미실행 테스트, 다음 단계를 정리하게 하고 컴퓨터에서 대조합니다. 다음 전화 진행 확인 때 완료 범위를 알 수 있습니다. [기기 간 작업](article:codex-cross-device-workflow), [맥락 인계](article:codex-context-handoff), 다른 전화는 [Android 강의](article:codex-mobile-android)로 이어갑니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "練習結束，回主機只移除這次由你新增的 remote-check.txt，保留五個網站程式檔。原本就存在的檔案不刪除、不覆寫。新增的標記練習與前面的程式分析都只要求讀取；未實際配對或操作的部分，要在紀錄中保留未實測。",
+        "On the host, remove only the remote-check.txt created in this exercise. Keep the five website files and never delete or overwrite pre-existing files. The marker and code requests are read-only. Record pairing or product operations you did not perform as untested.",
+        "終了時は今回自分が追加した remote-check.txt だけをホストから取り除き、五つのサイトファイルは残します。元からあるファイルは削除も上書きもしません。目印確認もコード分析も読み取りだけです。実施していないペアリングや製品操作は未検証として記録します。",
+        "마치면 호스트에서 이번 실습 중 자신이 만든 remote-check.txt만 제거하고 다섯 웹사이트 파일은 남깁니다. 원래 있던 파일은 삭제하거나 덮어쓰지 않습니다. 표식 검사와 코드 분석 모두 읽기만 요청하며 실제로 수행하지 않은 페어링이나 제품 조작은 미검증으로 기록합니다."
       ]
     }
   ]

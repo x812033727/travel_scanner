@@ -1,11 +1,11 @@
 ---
 id: 2026-09-14-codex-depth-content
 title: Codex deep content and isolated learning components
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-unit-c-fc2e
+claimed_at: 2026-09-14T11:52:25Z
 created_at: 2026-09-14T02:33:43Z
 completed_at:
 branch: codex/codex-learning-complete
@@ -157,10 +157,19 @@ Complete the approved 60-lesson, five-language learning series while keeping edi
 - [x] Visually inspect six existing 390/1280px practice screenshots and provide accurate five-language alternative text and dimension captions.
 - [x] Deepen five representative drafts with independent comparison, host identification, rule-condition checks, CLI input/resume details and skill missing-material recovery; compile matching five-language packs and record the exact targeted review scope.
 - [x] Deepen Unit A (01, 02, 33, 34, 06, 07) and the remaining Unit B drafts (05, 35, 36, 37, 14), label 58 existing code blocks, add two path examples, and verify isolated Windows/Node reference exercises.
-- [ ] Continue targeted depth review for the remaining 44 lessons, starting with Unit C (38, 39, 40, 15, 41); representative 04 already has a targeted record.
+- [x] Deepen Unit C (38, 39, 40, 15, 41), label 15 existing code blocks, add six examples, and verify isolated Git/Node cases for complete diffs and incomplete handoffs.
+- [ ] Continue targeted depth review for the remaining 39 lessons, starting with Unit D (09, 42, 43, 16, 44); representative 10 already has a targeted record.
 - [ ] Complete remaining full-text five-language editorial acceptance and representative product UI evidence.
 - [ ] Complete final integrated browser acceptance for all 60 lessons and the hub. The preview-start restriction remains unresolved.
 - [ ] After all acceptance gates pass, proceed with the already authorized PR, exact-head CI/merge, guarded import/publication/deployment and public verification. No partial PR.
+
+## Unit C revision
+
+After 07761788, revised five mobile/Remote/cloud/handoff drafts and all five locale packs. Evidence: docs/codex-learning/evidence/unit-c-depth-review.json. Host markers require a fresh read without leaking the expected value; remote access, pairing and task state are separate. The cloud PR template records actual results, and final inspection includes already committed changes. Seven handoff queries cover staged, unstaged and untracked work; ignored material requires separate handling.
+
+Independent temporary Git/Node reference checks passed: same HEAD can coexist with missing source work; a committed fix leaves plain git diff empty while baseline comparison identifies core.mjs. Tests change from 2 pass/1 fail to 3 pass/0 fail with the original test unchanged. No physical mobile, Remote, cloud task, Handoff, new image or browser execution is claimed. Official source body hashes, exact review scope, code preservation and two intentional code replacements are recorded.
+
+Latest integrity (60/300), API content (9), compiler (9), and five shared catalogue checks pass. Audit remains 0 errors/26 warnings after trimming redundant English mobile prose without losing conditions. Source metadata and shared series_data remain unchanged. Targeted coverage is 21 unique lessons; 39 pending, next Unit D. Full-text five-language and final browser acceptance remain open (0/60). No partial PR, import, publication or deployment.
 
 ## Unit A and B revision
 

@@ -107,7 +107,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "主機檔案範本：填妥後存為 handoff.md",
           "language": "markdown",
           "code": "# Remote reading handoff\n\nGoal: read this practice folder without modifying files.\nController: record the device currently sending requests.\nExecution host: record the host shown by Remote.\nProject: codex-remote-lab\nWorking directory: record the actual directory reported by the host.\nTask: record the exact task title or identifier.\nMarker: REMOTE-LAB-A / Revision: 1\nGit state: not initialized for this basic Remote exercise.\nVerified: record only checks actually performed, with time.\nPending: fresh read from the second controller.\nNext action: read host-marker.txt again and compare the revision.\n"
         },
@@ -130,7 +130,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "自然語言提示詞：從接手的控制裝置送到原任務",
           "language": "text",
           "code": "Continue this exact Remote reading task. Read handoff.md and host-marker.txt from disk now, without modifying files. Report the current working directory and both marker lines. Identify the execution host if the tools expose it; otherwise state that it is unverified. Distinguish this fresh read from facts copied from earlier messages.\n"
         },
@@ -145,7 +145,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "自然語言提示詞：在同一個手機 Remote 任務輸入",
           "language": "text",
           "code": "Read host-marker.txt and handoff.md again from the current project. Compare their revision values. Report any disagreement; do not assume the handoff note is newer than the file. Do not edit either file.\n"
         },
@@ -183,9 +183,22 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "主機終端機：在真正執行工作的 Git 練習儲存庫查詢",
           "language": "sh",
-          "code": "git rev-parse --show-toplevel\ngit rev-parse HEAD\ngit branch --show-current\ngit status --short\ngit diff --stat\n"
+          "code": "git rev-parse --show-toplevel\ngit rev-parse HEAD\ngit branch --show-current\ngit status --short\ngit diff --stat\ngit diff --cached --stat\ngit ls-files --others --exclude-standard\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "同一個 commit，不代表交接內容完整"
+        },
+        {
+          "type": "paragraph",
+          "text": "上面的查詢分別記錄 Git 根目錄、commit、分支、狀態、未暫存差異、已暫存差異及未追蹤檔案。git diff --stat 不包含已暫存或未追蹤內容；只記這一行會漏掉工作。若有 ignored 檔案、資料庫或外部資料，也要依本次需求另記需要的項目；這組查詢不會把它們列成已移交。"
+        },
+        {
+          "type": "paragraph",
+          "text": "判讀案例：來源主機有已暫存的 note.md、未暫存的 core.mjs，以及未追蹤的 local-note.txt；目的主機的 commit 相同但狀態乾淨，而且缺少 local-note.txt。結論是版本基準相同，三份本次工作尚未獲得完整核對，不能宣稱交接完成。先停止兩端新增修改，比較原交接紀錄與需要保留的內容，再處理缺口。只有手機改用筆電控制同一主機時，也要重新讀檔確認，但不應多做一次檔案搬移。"
         },
         {
           "type": "paragraph",
@@ -374,7 +387,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Host file template: complete it and save as handoff.md",
           "language": "markdown",
           "code": "# Remote reading handoff\n\nGoal: read this practice folder without modifying files.\nController: record the device currently sending requests.\nExecution host: record the host shown by Remote.\nProject: codex-remote-lab\nWorking directory: record the actual directory reported by the host.\nTask: record the exact task title or identifier.\nMarker: REMOTE-LAB-A / Revision: 1\nGit state: not initialized for this basic Remote exercise.\nVerified: record only checks actually performed, with time.\nPending: fresh read from the second controller.\nNext action: read host-marker.txt again and compare the revision.\n"
         },
@@ -397,7 +410,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Natural-language prompt: send from the next controller to the original task",
           "language": "text",
           "code": "Continue this exact Remote reading task. Read handoff.md and host-marker.txt from disk now, without modifying files. Report the current working directory and both marker lines. Identify the execution host if the tools expose it; otherwise state that it is unverified. Distinguish this fresh read from facts copied from earlier messages.\n"
         },
@@ -412,7 +425,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Natural-language prompt: enter in the same mobile Remote task",
           "language": "text",
           "code": "Read host-marker.txt and handoff.md again from the current project. Compare their revision values. Report any disagreement; do not assume the handoff note is newer than the file. Do not edit either file.\n"
         },
@@ -450,9 +463,22 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Host terminal: inspect the Git practice repository that actually runs the work",
           "language": "sh",
-          "code": "git rev-parse --show-toplevel\ngit rev-parse HEAD\ngit branch --show-current\ngit status --short\ngit diff --stat\n"
+          "code": "git rev-parse --show-toplevel\ngit rev-parse HEAD\ngit branch --show-current\ngit status --short\ngit diff --stat\ngit diff --cached --stat\ngit ls-files --others --exclude-standard\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "The same commit does not prove a complete handoff"
+        },
+        {
+          "type": "paragraph",
+          "text": "The queries record the Git root, commit, branch, status, unstaged diff, staged diff and untracked files. git diff --stat excludes staged and untracked work, so recording only that command can omit changes. Note any required ignored files, databases or external data separately; these queries do not establish that such material was transferred."
+        },
+        {
+          "type": "paragraph",
+          "text": "Worked case: the source has staged note.md, unstaged core.mjs and untracked local-note.txt. The destination has the same commit but a clean status and no local-note.txt. The version baseline matches, but the three pieces of work have not been fully verified; do not mark handoff complete. Pause new edits on both sides, compare the handoff record and required content, then resolve the gaps. Switching from phone to laptop merely to control the same host still calls for a fresh read, not an extra file transfer."
         },
         {
           "type": "paragraph",
@@ -637,7 +663,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "ホスト上のファイルひな型：記入して handoff.md に保存する",
           "language": "markdown",
           "code": "# Remote reading handoff\n\nGoal: read this practice folder without modifying files.\nController: record the device currently sending requests.\nExecution host: record the host shown by Remote.\nProject: codex-remote-lab\nWorking directory: record the actual directory reported by the host.\nTask: record the exact task title or identifier.\nMarker: REMOTE-LAB-A / Revision: 1\nGit state: not initialized for this basic Remote exercise.\nVerified: record only checks actually performed, with time.\nPending: fresh read from the second controller.\nNext action: read host-marker.txt again and compare the revision.\n"
         },
@@ -660,7 +686,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "自然言語の依頼：次の操作端末から元のタスクに送信する",
           "language": "text",
           "code": "Continue this exact Remote reading task. Read handoff.md and host-marker.txt from disk now, without modifying files. Report the current working directory and both marker lines. Identify the execution host if the tools expose it; otherwise state that it is unverified. Distinguish this fresh read from facts copied from earlier messages.\n"
         },
@@ -675,7 +701,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "自然言語の依頼：同じモバイル Remote タスクに入力する",
           "language": "text",
           "code": "Read host-marker.txt and handoff.md again from the current project. Compare their revision values. Report any disagreement; do not assume the handoff note is newer than the file. Do not edit either file.\n"
         },
@@ -713,9 +739,22 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "ホストの端末：実際の作業先である練習 Git リポジトリを確認する",
           "language": "sh",
-          "code": "git rev-parse --show-toplevel\ngit rev-parse HEAD\ngit branch --show-current\ngit status --short\ngit diff --stat\n"
+          "code": "git rev-parse --show-toplevel\ngit rev-parse HEAD\ngit branch --show-current\ngit status --short\ngit diff --stat\ngit diff --cached --stat\ngit ls-files --others --exclude-standard\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "同じコミットでも引き継ぎが完全とは限りません"
+        },
+        {
+          "type": "paragraph",
+          "text": "上の確認は Git ルート、コミット、ブランチ、状態、未ステージ差分、ステージ済み差分、未追跡ファイルを記録します。git diff --stat だけではステージ済みや未追跡の作業が漏れます。必要な ignored ファイル、データベース、外部データも別に記録してください。この確認でそれらの転送が証明されるわけではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例：元ホストにステージ済み note.md、未ステージの core.mjs、未追跡の local-note.txt があり、先ホストは同じコミットでもクリーンで local-note.txt がありません。基準版は同じでも三つの作業は確認できておらず、引き継ぎ完了にはできません。両側の新規編集を止め、元の記録と必要な内容を比べて不足を解決します。電話からノート PC に替えて同じホストを操作するだけなら、新しい読み取りは必要ですが追加のファイル転送は不要です。"
         },
         {
           "type": "paragraph",
@@ -900,7 +939,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "호스트 파일 양식: 작성한 뒤 handoff.md로 저장",
           "language": "markdown",
           "code": "# Remote reading handoff\n\nGoal: read this practice folder without modifying files.\nController: record the device currently sending requests.\nExecution host: record the host shown by Remote.\nProject: codex-remote-lab\nWorking directory: record the actual directory reported by the host.\nTask: record the exact task title or identifier.\nMarker: REMOTE-LAB-A / Revision: 1\nGit state: not initialized for this basic Remote exercise.\nVerified: record only checks actually performed, with time.\nPending: fresh read from the second controller.\nNext action: read host-marker.txt again and compare the revision.\n"
         },
@@ -923,7 +962,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "자연어 요청: 다음 제어 장치에서 원래 작업으로 전송",
           "language": "text",
           "code": "Continue this exact Remote reading task. Read handoff.md and host-marker.txt from disk now, without modifying files. Report the current working directory and both marker lines. Identify the execution host if the tools expose it; otherwise state that it is unverified. Distinguish this fresh read from facts copied from earlier messages.\n"
         },
@@ -938,7 +977,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "자연어 요청: 같은 모바일 Remote 작업에 입력",
           "language": "text",
           "code": "Read host-marker.txt and handoff.md again from the current project. Compare their revision values. Report any disagreement; do not assume the handoff note is newer than the file. Do not edit either file.\n"
         },
@@ -976,9 +1015,22 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "호스트 터미널: 실제 작업이 실행되는 Git 실습 저장소 조회",
           "language": "sh",
-          "code": "git rev-parse --show-toplevel\ngit rev-parse HEAD\ngit branch --show-current\ngit status --short\ngit diff --stat\n"
+          "code": "git rev-parse --show-toplevel\ngit rev-parse HEAD\ngit branch --show-current\ngit status --short\ngit diff --stat\ngit diff --cached --stat\ngit ls-files --others --exclude-standard\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "같은 커밋이라고 인계가 완전한 것은 아니에요"
+        },
+        {
+          "type": "paragraph",
+          "text": "위 조회는 Git 루트, 커밋, 브랜치, 상태, 스테이징하지 않은 차이, 스테이징한 차이, 추적하지 않는 파일을 기록합니다. git diff --stat에는 스테이징한 변경과 미추적 파일이 포함되지 않으므로 이것만 기록하면 작업이 빠질 수 있습니다. 필요한 ignored 파일, 데이터베이스, 외부 데이터는 따로 기록하며 이 조회로 해당 자료가 전송되었다고 판단하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "사례: 원본 호스트에는 스테이징한 note.md, 스테이징하지 않은 core.mjs, 미추적 local-note.txt가 있습니다. 대상 호스트는 커밋이 같지만 상태가 깨끗하고 local-note.txt가 없습니다. 기준 버전은 같아도 세 작업 내용은 완전히 확인되지 않았으므로 인계 완료로 표시할 수 없습니다. 양쪽의 새 수정을 멈추고 기존 기록과 보존할 내용을 비교한 뒤 누락을 처리하세요. 휴대전화 대신 노트북으로 같은 호스트를 제어하는 경우에도 새로 읽어 확인하되 파일을 다시 옮길 필요는 없습니다."
         },
         {
           "type": "paragraph",
@@ -1167,7 +1219,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "主机档案范本：填妥后存为 handoff.md",
           "language": "markdown",
           "code": "# Remote reading handoff\n\nGoal: read this practice folder without modifying files.\nController: record the device currently sending requests.\nExecution host: record the host shown by Remote.\nProject: codex-remote-lab\nWorking directory: record the actual directory reported by the host.\nTask: record the exact task title or identifier.\nMarker: REMOTE-LAB-A / Revision: 1\nGit state: not initialized for this basic Remote exercise.\nVerified: record only checks actually performed, with time.\nPending: fresh read from the second controller.\nNext action: read host-marker.txt again and compare the revision.\n"
         },
@@ -1190,7 +1242,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "自然语言提示词：从接手的控制装置送到原任务",
           "language": "text",
           "code": "Continue this exact Remote reading task. Read handoff.md and host-marker.txt from disk now, without modifying files. Report the current working directory and both marker lines. Identify the execution host if the tools expose it; otherwise state that it is unverified. Distinguish this fresh read from facts copied from earlier messages.\n"
         },
@@ -1205,7 +1257,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "自然语言提示词：在同一个手机 Remote 任务输入",
           "language": "text",
           "code": "Read host-marker.txt and handoff.md again from the current project. Compare their revision values. Report any disagreement; do not assume the handoff note is newer than the file. Do not edit either file.\n"
         },
@@ -1243,9 +1295,22 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "主机终端机：在真正执行工作的 Git 练习储存库查询",
           "language": "sh",
-          "code": "git rev-parse --show-toplevel\ngit rev-parse HEAD\ngit branch --show-current\ngit status --short\ngit diff --stat\n"
+          "code": "git rev-parse --show-toplevel\ngit rev-parse HEAD\ngit branch --show-current\ngit status --short\ngit diff --stat\ngit diff --cached --stat\ngit ls-files --others --exclude-standard\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "同一个 commit，不代表交接内容完整"
+        },
+        {
+          "type": "paragraph",
+          "text": "上面的查询分别记录 Git 根目录、commit、分支、状态、未暂存差异、已暂存差异及未追踪档案。git diff --stat 不包含已暂存或未追踪内容；只记这一行会漏掉工作。若有 ignored 档案、资料库或外部资料，也要依本次需求另记需要的项目；这组查询不会把它们列成已移交。"
+        },
+        {
+          "type": "paragraph",
+          "text": "判读案例：来源主机有已暂存的 note.md、未暂存的 core.mjs，以及未追踪的 local-note.txt；目的主机的 commit 相同但状态干净，而且缺少 local-note.txt。结论是版本基准相同，三份本次工作尚未获得完整核对，不能宣称交接完成。先停止两端新增修改，比较原交接纪录与需要保留的内容，再处理缺口。只有手机改用笔电控制同一主机时，也要重新读档确认，但不应多做一次档案搬移。"
         },
         {
           "type": "paragraph",
