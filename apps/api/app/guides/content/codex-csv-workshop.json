@@ -10,7 +10,7 @@
   "locales": {
     "zh-TW": {
       "title": "實戰：製作資料整理工具",
-      "description": "這個實戰製作 CSV 名單整理工具，保留原檔並產生新結果。規則固定為修剪空白、將 email 轉小寫、同 email 保留第一筆、略過缺姓名或格式不合的 email，最後回報保留、重複與無效筆數。這是練習用格式檢查，不保證信箱真實存在。",
+      "description": "這個實戰製作 CSV 名單整理工具，保留原檔並產生新結果。規則固定為修剪空白、將 email 轉小寫、同 email 保留第一筆有效資料、略過缺姓名或格式不合的 email，最後回報保留、重複與無效筆數。這是練習用格式檢查，不保證信箱真實存在。",
       "hero": {
         "src": "/guides/codex-csv-workshop/hero.jpg",
         "alt": "實作順序示意圖，非產品介面截圖。",
@@ -42,7 +42,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "做出一個保留原始資料的 CSV 整理工具：修剪空白、統一 email 大小寫、保留第一筆有效資料、統計重複與無效列，拒絕覆寫既有檔案。閱讀約 20 分鐘、實作約 45 分鐘。準備 Python 3、Codex 與自己的空白 csv-lab；只使用下方虛構姓名及 example.test 地址。這是格式整理，不會寄信，也不能證明 email 真正存在。"
+          "text": "做出一個保留原始資料的 CSV 整理工具：修剪空白、統一 email 大小寫、保留第一筆有效資料、統計重複與無效列，拒絕覆寫既有檔案。閱讀約 20 分鐘、實作約 45 分鐘。準備 Python 3.9 以上版本、Codex 與自己的空白 csv-lab；只使用下方虛構姓名及 example.test 地址。這是格式整理，不會寄信，也不能證明 email 真正存在。"
         },
         {
           "type": "heading",
@@ -51,7 +51,7 @@
         },
         {
           "type": "paragraph",
-          "text": "在編輯器開啟 csv-lab，以 UTF-8 建立 contacts.csv，完整內容如下。第一列欄名必須正好是 name,email，順序也相同。保留 Alice 前後與第一筆 email 的空白，它們是測試條件。使用純文字編輯器檢查原文，避免試算表另存時換編碼或改值。Windows 執行 py -3 --version，macOS／Linux 執行 python3 --version，確認 Python 3 可用；本例不需要 pip、pandas 或資料庫。"
+          "text": "在編輯器開啟 csv-lab，以 UTF-8 建立 contacts.csv，完整內容如下。第一列欄名必須正好是 name,email，順序也相同。保留 Alice 前後與第一筆 email 的空白，它們是測試條件。使用純文字編輯器檢查原文，避免試算表另存時換編碼或改值。Windows 執行 py -3 --version，macOS／Linux 執行 python3 --version，確認版本至少為 Python 3.9；本例不需要 pip、pandas 或資料庫。"
         },
         {
           "type": "code",
@@ -293,7 +293,7 @@
     },
     "zh-CN": {
       "title": "实战：制作数据整理工具",
-      "description": "这个实战制作 CSV 名单整理工具，保留原档并产生新结果。规则固定为修剪空白、将 email 转小写、同 email 保留第一笔、略过缺姓名或格式不合的 email，最后回报保留、重复与无效笔数。这是练习用格式检查，不保证信箱真实存在。",
+      "description": "这个实战制作 CSV 名单整理工具，保留原档并产生新结果。规则固定为修剪空白、将 email 转小写、同 email 保留第一笔有效资料、略过缺姓名或格式不合的 email，最后回报保留、重复与无效笔数。这是练习用格式检查，不保证信箱真实存在。",
       "hero": {
         "src": "/guides/codex-csv-workshop/hero.jpg",
         "alt": "实作顺序示意图，非产品介面截图。",
@@ -325,7 +325,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "做出一个保留原始资料的 CSV 整理工具：修剪空白、统一 email 大小写、保留第一笔有效资料、统计重复与无效列，拒绝覆写既有档案。阅读约 20 分钟、实作约 45 分钟。准备 Python 3、Codex 与自己的空白 csv-lab；只使用下方虚构姓名及 example.test 地址。这是格式整理，不会寄信，也不能证明 email 真正存在。"
+          "text": "做出一个保留原始资料的 CSV 整理工具：修剪空白、统一 email 大小写、保留第一笔有效资料、统计重复与无效列，拒绝覆写既有档案。阅读约 20 分钟、实作约 45 分钟。准备 Python 3.9 以上版本、Codex 与自己的空白 csv-lab；只使用下方虚构姓名及 example.test 地址。这是格式整理，不会寄信，也不能证明 email 真正存在。"
         },
         {
           "type": "heading",
@@ -334,7 +334,7 @@
         },
         {
           "type": "paragraph",
-          "text": "在编辑器开启 csv-lab，以 UTF-8 建立 contacts.csv，完整内容如下。第一列栏名必须正好是 name,email，顺序也相同。保留 Alice 前后与第一笔 email 的空白，它们是测试条件。使用纯文字编辑器检查原文，避免试算表另存时换编码或改值。Windows 执行 py -3 --version，macOS／Linux 执行 python3 --version，确认 Python 3 可用；本例不需要 pip、pandas 或资料库。"
+          "text": "在编辑器开启 csv-lab，以 UTF-8 建立 contacts.csv，完整内容如下。第一列栏名必须正好是 name,email，顺序也相同。保留 Alice 前后与第一笔 email 的空白，它们是测试条件。使用纯文字编辑器检查原文，避免试算表另存时换编码或改值。Windows 执行 py -3 --version，macOS／Linux 执行 python3 --version，确认版本至少为 Python 3.9；本例不需要 pip、pandas 或资料库。"
         },
         {
           "type": "code",
@@ -576,7 +576,7 @@
     },
     "en": {
       "title": "Workshop: build a CSV cleanup tool",
-      "description": "Build a CSV cleaner that preserves its input and writes a new output. The exercise trims whitespace, lowercases email, keeps the first occurrence of an address and skips blank names or malformed addresses. It reports kept, duplicate and invalid counts. Its format check does not prove a mailbox exists.",
+      "description": "Build a CSV cleaner that preserves its input and writes a new output. The exercise trims whitespace, lowercases email, keeps the first valid occurrence of an address and skips blank names or malformed addresses. It reports kept, duplicate and invalid counts. Its format check does not prove a mailbox exists.",
       "hero": {
         "src": "/guides/codex-csv-workshop/hero.jpg",
         "alt": "Workflow illustration, not a product screenshot.",
@@ -608,7 +608,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "Build a CSV cleaner that preserves input, trims whitespace, normalizes email case, keeps the first valid record, counts duplicate/invalid rows and refuses existing output files. Allow 20 minutes to read and 45 to practice. Prepare Python 3, Codex and your own empty csv-lab. Use only the fictional names and example.test addresses below. This cleans formatting; it neither sends mail nor proves an address exists."
+          "text": "Build a CSV cleaner that preserves input, trims whitespace, normalizes email case, keeps the first valid record, counts duplicate/invalid rows and refuses existing output files. Allow 20 minutes to read and 45 to practice. Prepare Python 3.9 or later, Codex and your own empty csv-lab. Use only the fictional names and example.test addresses below. This cleans formatting; it neither sends mail nor proves an address exists."
         },
         {
           "type": "heading",
@@ -617,7 +617,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Open csv-lab in an editor and create UTF-8 contacts.csv exactly below. The header must be name,email in that order. Preserve the spaces around Alice and the first email as test conditions. Inspect with a text editor so spreadsheet re-saving does not change encoding or values. Check py -3 --version on Windows or python3 --version on macOS/Linux. This example needs no pip packages, pandas or database."
+          "text": "Open csv-lab in an editor and create UTF-8 contacts.csv exactly below. The header must be name,email in that order. Preserve the spaces around Alice and the first email as test conditions. Inspect with a text editor so spreadsheet re-saving does not change encoding or values. Check py -3 --version on Windows or python3 --version on macOS/Linux. Confirm Python 3.9 or later. This example needs no pip packages, pandas or database."
         },
         {
           "type": "code",
@@ -859,7 +859,7 @@
     },
     "ja": {
       "title": "実践：CSV 整理ツールを作る",
-      "description": "入力を保って別ファイルに出す CSV 整理ツールを作ります。空白除去、email の小文字化、重複は最初を保持、空の名前や不正な形式を除外し、三種類の件数を報告します。実在するメールかは保証しません。",
+      "description": "入力を保って別ファイルに出す CSV 整理ツールを作ります。空白除去、email の小文字化、重複は最初の有効行を保持、空の名前や不正な形式を除外し、三種類の件数を報告します。実在するメールかは保証しません。",
       "hero": {
         "src": "/guides/codex-csv-workshop/hero.jpg",
         "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
@@ -891,7 +891,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "入力を保存したまま空白除去、email の小文字化、最初の有効行の保持、重複・無効行の集計、既存出力の上書き拒否を行う CSV 整理器を作ります。読む時間20分、実習45分です。Python 3、Codex、自分の空 csv-lab と下記架空名・example.test だけを使います。形式整理であり、送信や住所の実在確認ではありません。"
+          "text": "入力を保存したまま空白除去、email の小文字化、最初の有効行の保持、重複・無効行の集計、既存出力の上書き拒否を行う CSV 整理器を作ります。読む時間20分、実習45分です。Python 3.9 以降、Codex、自分の空 csv-lab と下記架空名・example.test だけを使います。形式整理であり、送信や住所の実在確認ではありません。"
         },
         {
           "type": "heading",
@@ -900,7 +900,7 @@
         },
         {
           "type": "paragraph",
-          "text": "csv-lab を開き、下記を UTF-8 contacts.csv に保存します。表頭は順序も含め name,email と完全一致させ、Alice と最初の email の前後空白を試験条件として残します。試算表の再保存でエンコードや値が変わらないよう純文字で確認します。Windows は py -3 --version、macOS／Linux は python3 --version で Python 3 を確認し、pip・pandas・資料庫は不要です。"
+          "text": "csv-lab を開き、下記を UTF-8 contacts.csv に保存します。ヘッダーは順序も含め name,email と完全一致させ、Alice と最初の email の前後空白を試験条件として残します。スプレッドシートの再保存でエンコードや値が変わらないようテキストエディターで確認します。Windows は py -3 --version、macOS／Linux は python3 --version で Python 3.9 以降を確認し、pip・pandas・データベースは不要です。"
         },
         {
           "type": "code",
@@ -962,7 +962,7 @@
             },
             {
               "type": "text",
-              "text": "で入出力・例外・検証を確認してから実装します。出力は毎回新規で、構造損壊は成功に見える部分結果を残さず全体を失敗させます。無効 email は集計可能な資料問題ですが、欄不足・余分・表頭誤りは契約違反です。下流で使えるかに関わるため、単に CSV 整理と頼むだけにしません。"
+              "text": "で入出力・例外・検証を確認してから実装します。出力は毎回新規で、構造損壊は成功に見える部分結果を残さず全体を失敗させます。無効 email は集計可能な資料問題ですが、欄不足・余分・ヘッダー誤りは契約違反です。下流で使えるかに関わるため、単に CSV 整理と頼むだけにしません。"
             }
           ]
         },
@@ -979,7 +979,7 @@
         },
         {
           "type": "paragraph",
-          "text": "下記は clean_contacts.py として単独実行できる全文です。生成版があれば先に別保存して比較します。csv 模組は引用符・カンマ・改行を扱い、split(',') では代替できません。全入力を読んだ後 x で新規出力を作り、既存目標を拒否します。入力誤りでは出力を残しませんが、書込途中のディスク障害なら部分ファイルが残り得るため失敗と記録して調査します。完全なトランザクションシステムとは称しません。"
+          "text": "下記は clean_contacts.py として単独実行できる全文です。生成版があれば先に別保存して比較します。csv モジュールは引用符・カンマ・改行を扱い、split(',') では代替できません。全入力を読んだ後 x で新規出力を作り、既存目標を拒否します。入力誤りでは出力を残しませんが、書込途中のディスク障害なら部分ファイルが残り得るため失敗と記録して調査します。完全なトランザクションシステムとは称しません。"
         },
         {
           "type": "code",
@@ -1061,7 +1061,7 @@
         },
         {
           "type": "paragraph",
-          "text": "下記を程式と contacts.csv の横に test_clean_contacts.py として保存します。一時場所で入力位元組不変、上書き拒否、Unicode、引用符、構造エラーを検証し、練習ディレクトリに産物を溜めません。Windows は py -3 -m unittest -v test_clean_contacts.py、macOS／Linux は python3 -m unittest -v test_clean_contacts.py で参考3試験全合格を確認します。生成版の介面が違えば clean 契約を揃え、失敗例を削除しません。"
+          "text": "下記をプログラムと contacts.csv の横に test_clean_contacts.py として保存します。一時場所で入力のバイト列が変わらないこと、上書き拒否、Unicode、引用符、構造エラーを検証し、練習ディレクトリに産物を溜めません。Windows は py -3 -m unittest -v test_clean_contacts.py、macOS／Linux は python3 -m unittest -v test_clean_contacts.py で参考3試験全合格を確認します。生成版のインターフェースが違えば clean 契約を揃え、失敗例を削除しません。"
         },
         {
           "type": "code",
@@ -1079,7 +1079,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "架空入力、程式、試験、命令、計数、原本保持の証拠を引渡します。"
+              "text": "架空入力、プログラム、試験、命令、計数、原本保持の証拠を引渡します。"
             },
             {
               "type": "link",
@@ -1088,7 +1088,7 @@
             },
             {
               "type": "text",
-              "text": "には参考コードがあり前のプロジェクトなしで比較できます。再整理は新しい出力名、整理は確認済み産物だけです。実名簿、大ファイル、試算表インポートは権限・ストリーミング・公式文字の規則を別設計します。本編は文字として保存し外部内容を命令実行しません。この基準と検証法で"
+              "text": "には参考コードがあり前のプロジェクトなしで比較できます。再整理は新しい出力名、整理は確認済み産物だけです。実名簿、大ファイル、スプレッドシートインポートは権限・ストリーミング・数式として解釈される文字列の扱いの規則を別設計します。本編は文字として保存し外部内容を命令実行しません。この基準と検証法で"
             },
             {
               "type": "article",
@@ -1142,7 +1142,7 @@
     },
     "ko": {
       "title": "실습: CSV 정리 도구 만들기",
-      "description": "입력을 보존하고 새 파일로 내보내는 CSV 정리 도구를 만듭니다. 공백 제거, email 소문자화, 중복 첫 행 유지, 빈 이름이나 잘못된 형식 제외 후 세 종류의 건수를 보고합니다. 실제 이메일 존재를 보장하지는 않습니다.",
+      "description": "입력을 보존하고 새 파일로 내보내는 CSV 정리 도구를 만듭니다. 공백 제거, email 소문자화, 중복 중 첫 유효 행 유지, 빈 이름이나 잘못된 형식 제외 후 세 종류의 건수를 보고합니다. 실제 이메일 존재를 보장하지는 않습니다.",
       "hero": {
         "src": "/guides/codex-csv-workshop/hero.jpg",
         "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
@@ -1174,7 +1174,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "입력을 보존하면서 공백 제거·email 소문자화·첫 유효 행 유지·중복/무효 집계·기존 출력 덮어쓰기 거부를 하는 CSV 정리기를 만듭니다. 읽기 20분, 실습 45분입니다. Python 3·Codex·자신의 빈 csv-lab과 아래 가상 이름·example.test만 사용하세요. 형식 정리이며 메일을 보내거나 주소 실재를 증명하지 않습니다."
+          "text": "입력을 보존하면서 공백 제거·email 소문자화·첫 유효 행 유지·중복/무효 집계·기존 출력 덮어쓰기 거부를 하는 CSV 정리기를 만듭니다. 읽기 20분, 실습 45분입니다. Python 3.9 이상·Codex·자신의 빈 csv-lab과 아래 가상 이름·example.test만 사용하세요. 형식 정리이며 메일을 보내거나 주소 실재를 증명하지 않습니다."
         },
         {
           "type": "heading",
@@ -1183,7 +1183,7 @@
         },
         {
           "type": "paragraph",
-          "text": "csv-lab을 열어 아래를 UTF-8 contacts.csv로 저장합니다. 헤더는 순서까지 name,email과 같아야 하며 Alice와 첫 email 앞뒤 공백을 시험 조건으로 유지하세요. 스프레드시트 재저장으로 인코딩·값이 바뀌지 않게 텍스트 편집기로 확인합니다. Windows는 py -3 --version, macOS/Linux는 python3 --version으로 Python 3를 확인하며 pip·pandas·데이터베이스는 필요 없습니다."
+          "text": "csv-lab을 열어 아래를 UTF-8 contacts.csv로 저장합니다. 헤더는 순서까지 name,email과 같아야 하며 Alice와 첫 email 앞뒤 공백을 시험 조건으로 유지하세요. 스프레드시트 재저장으로 인코딩·값이 바뀌지 않게 텍스트 편집기로 확인합니다. Windows는 py -3 --version, macOS/Linux는 python3 --version으로 Python 3.9 이상을 확인하며 pip·pandas·데이터베이스는 필요 없습니다."
         },
         {
           "type": "code",

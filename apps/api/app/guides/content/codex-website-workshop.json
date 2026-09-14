@@ -10,7 +10,7 @@
   "locales": {
     "zh-TW": {
       "title": "實戰：製作小網站",
-      "description": "這個實戰把前面的需求、Plan、MD 規則、瀏覽器與驗收串起來，完成一個三張卡片的虛構工作室網站。以單一 HTML 做出清楚的內容與自適應版面，練習完整交付，而不是追求一次加入很多功能。",
+      "description": "從 brief.md 規劃並製作 Small Steps 待辦網站，完成新增、完成、刪除、篩選與本機資料保存。將 HTML、CSS、資料函式、畫面事件與測試分開，以 Node 測試和瀏覽器操作驗收，並留下可重新啟動與還原的交接紀錄。",
       "hero": {
         "src": "/guides/codex-website-workshop/hero.jpg",
         "alt": "實作順序示意圖，非產品介面截圖。",
@@ -109,7 +109,7 @@
           "type": "code",
           "label": "website-lab/brief.md",
           "language": "markdown",
-          "code": "# Small Steps website brief\nBuild a local todo website using HTML, CSS and JavaScript only.\n\n## Files\n- index.html: accessible page and form\n- style.css: responsive layout\n- core.mjs: immutable data functions\n- app.js: DOM events and localStorage\n- core.test.mjs: Node built-in tests\n\n## Data contract\n- Task: {id: string, title: string, completed: boolean}\n- Trim titles; accept 1 to 100 non-blank characters. IDs must be unique.\n- Export addTask(tasks, title, id), toggleTask(tasks, id), removeTask(tasks, id),\n  visibleTasks(tasks, filter), decodeTasks(raw), encodeTasks(tasks).\n- Filters: all, active, completed. Missing toggle/delete IDs leave data unchanged.\n- Store {version: 1, tasks: [...]} under mokaair-codex-todo-v1.\n- Invalid stored data must remain untouched; warn and allow temporary work.\n\n## Interface and acceptance\n- Labels: New task, Add task, All tasks, Active, Completed, Delete.\n- Show active and total counts, including when a filter is selected.\n- Add, toggle, delete, filter and reload must work.\n- Render task text as text, not HTML.\n- Visible keyboard focus; preserve sensible focus after list updates.\n- Fit 360px, 390px and 1280px viewports without page overflow.\n- Reset practice data removes only this app's storage key.\n- No dependencies, account, backend, analytics or external requests.\n\n## Delivery\nExplain changes, run node --test core.test.mjs, and list actual browser checks.\nDo not claim checks that were not run. Do not publish or deploy.\n"
+          "code": "# Small Steps website brief\nBuild a local todo website using HTML, CSS and JavaScript only.\n\n## Files\n- index.html: accessible page and form\n- style.css: responsive layout\n- core.mjs: immutable data functions\n- app.js: DOM events and localStorage\n- core.test.mjs: Node built-in tests\n\n## Data contract\n- Task: {id: string, title: string, completed: boolean}\n- Trim titles; accept 1 to 100 non-blank characters. IDs must be unique.\n- Export addTask(tasks, title, id), toggleTask(tasks, id), removeTask(tasks, id),\n  visibleTasks(tasks, filter), decodeTasks(raw), encodeTasks(tasks).\n- Filters: all, active, completed. Missing toggle/delete IDs leave data unchanged.\n- Store {version: 1, tasks: [...]} under mokaair-codex-todo-v1.\n- Invalid stored data must remain untouched; warn and allow temporary work.\n\n## Interface and acceptance\n- Labels: New task, Add task, Show, All tasks, Active, Completed, Delete.\n- Show active and total counts, including when a filter is selected.\n- Add, toggle, delete, filter and reload must work.\n- Render task text as text, not HTML.\n- Visible keyboard focus; preserve sensible focus after list updates.\n- Fit 360px, 390px and 1280px viewports without page overflow.\n- Include an About this exercise disclosure with a Reset practice data button.\n- Reset practice data removes only this app's storage key.\n- No dependencies, account, backend, analytics or external requests.\n\n## Delivery\nExplain changes, run node --test core.test.mjs, and list actual browser checks.\nDo not claim checks that were not run. Do not publish or deploy.\n"
         },
         {
           "type": "heading",
@@ -152,7 +152,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "每段完成後自己開啟檔案並執行測試。參考版本的 core.test.mjs 有三個頂層測試，裡面含多個驗收斷言；Codex 自己寫的測試數量可能不同，不能只比較數字。若功能與測試一起寫错，綠色仍會漏掉需求，因此使用下一步的獨立畫面清單。卡住時只比較 expected 裡對應檔案，先找差異原因，不整包覆蓋自己尚未保存的工作。需要撤回先讀 "
+              "text": "每段完成後自己開啟檔案並執行測試。參考版本的 core.test.mjs 有三個頂層測試，裡面含多個驗收斷言；Codex 自己寫的測試數量可能不同，不能只比較數字。若功能與測試一起寫錯，綠色仍會漏掉需求，因此使用下一步的獨立畫面清單。卡住時只比較 expected 裡對應檔案，先找差異原因，不整包覆蓋自己尚未保存的工作。需要撤回先讀 "
             },
             {
               "type": "article",
@@ -194,7 +194,7 @@
         },
         {
           "type": "paragraph",
-          "text": "先在 About this exercise 展開後，確認資料全是可丟棄的虛構項目，再用 Reset practice data 清除本例專用鍵。新增 Read 與 Build，完成 Read。All tasks 應有兩筆、Active 只有 Build、Completed 只有 Read，統計是 1 active / 2 total。重新整理後資料仍在；選回 All tasks 並刪除 Read，應剩 Build。以下表格接著測，別只拍一張首頁就判定完成。"
+          "text": "先在 About this exercise 展開後，確認資料全是可丟棄的虛構項目，再用 Reset practice data 清除本例專用鍵。將 Show 選回 All tasks，確認 0 active / 0 total，再新增 Read 與 Build，完成 Read。All tasks 應有兩筆、Active 只有 Build、Completed 只有 Read，統計是 1 active / 2 total。重新整理後資料仍在；選回 All tasks 並刪除 Read，應剩 Build。以下表格接著測，別只拍一張首頁就判定完成。"
         },
         {
           "type": "table",
@@ -263,7 +263,7 @@
           "type": "code",
           "label": "website-lab/handoff.md：預期不是實測結果",
           "language": "markdown",
-          "code": "# Website handoff\nRoot / source version:\nNode test command / exit status:\nBrowser / version / viewport / date:\n\n| Step | Expected active / total | Observed |\n| --- | --- | --- |\n| Reset fictional practice data | 0 / 0 | |\n| Add Read, then Build | 2 / 2 | |\n| Complete Read | 1 / 2 | |\n| Select Active; only Build visible | 1 / 2 | |\n| Select Completed; only Read visible | 1 / 2 | |\n| Select All tasks, delete Read | 1 / 1 | |\n\nInput/storage recovery evidence:\nKeyboard and narrow-layout evidence:\nActual changed files:\nUnverified requirements:\nHow to restart / restore:\n"
+          "code": "# Website handoff\nRoot / source version:\nNode test command / exit status:\nBrowser / version / viewport / date:\n\n| Step | Expected active / total | Observed |\n| --- | --- | --- |\n| Reset fictional practice data; select All tasks | 0 / 0 | |\n| Add Read, then Build | 2 / 2 | |\n| Complete Read | 1 / 2 | |\n| Select Active; only Build visible | 1 / 2 | |\n| Select Completed; only Read visible | 1 / 2 | |\n| Select All tasks, delete Read | 1 / 1 | |\n\nInput/storage recovery evidence:\nKeyboard and narrow-layout evidence:\nActual changed files:\nUnverified requirements:\nHow to restart / restore:\n"
         },
         {
           "type": "rich_paragraph",
@@ -320,30 +320,6 @@
         },
         {
           "type": "image",
-          "src": "/guides/codex-website-workshop/workshop-390.png",
-          "alt": "實戰：製作小網站 — 390px / Windows Edge",
-          "caption": "Windows 上的 Edge 153.0.4234.32 實際瀏覽器截圖，2026-09-14；使用公開虛構練習 HTML。數字 01／02／03 對應規劃、製作與驗證。390px 為模擬手機寬度，非 iPhone 或 Android 實機測試。橘框是 Tab 鍵的焦點提示。",
-          "width": 390,
-          "height": 1589,
-          "credit": {
-            "author": "Mokaair",
-            "license": "© Mokaair"
-          }
-        },
-        {
-          "type": "image",
-          "src": "/guides/codex-website-workshop/workshop-1280.png",
-          "alt": "實戰：製作小網站 — 1280px / Windows Edge",
-          "caption": "Windows 上的 Edge 153.0.4234.32 實際瀏覽器截圖，2026-09-14；使用公開虛構練習 HTML。數字 01／02／03 對應規劃、製作與驗證。390px 為模擬手機寬度，非 iPhone 或 Android 實機測試。橘框是 Tab 鍵的焦點提示。",
-          "width": 1280,
-          "height": 1092,
-          "credit": {
-            "author": "Mokaair",
-            "license": "© Mokaair"
-          }
-        },
-        {
-          "type": "image",
           "src": "/guides/codex-first-project/todo-390.png",
           "alt": "待辦練習網站：Build 已完成，Read the AGENTS.md rules 尚未完成，共兩項任務。",
           "caption": "完整參考版的實際瀏覽器畫面，供修改前比對。Windows / Edge 153.0.4234.32，2026-09-14；使用虛構資料。390px 為響應式視窗，非實體手機。這不是 Codex 桌面介面截圖。",
@@ -382,7 +358,7 @@
     },
     "zh-CN": {
       "title": "实战：制作小网站",
-      "description": "这个实战把前面的需求、Plan、MD 规则、浏览器与验收串起来，完成一个三张卡片的虚构工作室网站。以单一 HTML 做出清楚的内容与自适应版面，练习完整交付，而不是追求一次加入很多功能。",
+      "description": "从 brief.md 规划并制作 Small Steps 待办网站，完成新增、完成、删除、筛选与本机资料保存。将 HTML、CSS、资料函式、画面事件与测试分开，以 Node 测试和浏览器操作验收，并留下可重新启动与还原的交接纪录。",
       "hero": {
         "src": "/guides/codex-website-workshop/hero.jpg",
         "alt": "实作顺序示意图，非产品介面截图。",
@@ -481,7 +457,7 @@
           "type": "code",
           "label": "website-lab/brief.md",
           "language": "markdown",
-          "code": "# Small Steps website brief\nBuild a local todo website using HTML, CSS and JavaScript only.\n\n## Files\n- index.html: accessible page and form\n- style.css: responsive layout\n- core.mjs: immutable data functions\n- app.js: DOM events and localStorage\n- core.test.mjs: Node built-in tests\n\n## Data contract\n- Task: {id: string, title: string, completed: boolean}\n- Trim titles; accept 1 to 100 non-blank characters. IDs must be unique.\n- Export addTask(tasks, title, id), toggleTask(tasks, id), removeTask(tasks, id),\n  visibleTasks(tasks, filter), decodeTasks(raw), encodeTasks(tasks).\n- Filters: all, active, completed. Missing toggle/delete IDs leave data unchanged.\n- Store {version: 1, tasks: [...]} under mokaair-codex-todo-v1.\n- Invalid stored data must remain untouched; warn and allow temporary work.\n\n## Interface and acceptance\n- Labels: New task, Add task, All tasks, Active, Completed, Delete.\n- Show active and total counts, including when a filter is selected.\n- Add, toggle, delete, filter and reload must work.\n- Render task text as text, not HTML.\n- Visible keyboard focus; preserve sensible focus after list updates.\n- Fit 360px, 390px and 1280px viewports without page overflow.\n- Reset practice data removes only this app's storage key.\n- No dependencies, account, backend, analytics or external requests.\n\n## Delivery\nExplain changes, run node --test core.test.mjs, and list actual browser checks.\nDo not claim checks that were not run. Do not publish or deploy.\n"
+          "code": "# Small Steps website brief\nBuild a local todo website using HTML, CSS and JavaScript only.\n\n## Files\n- index.html: accessible page and form\n- style.css: responsive layout\n- core.mjs: immutable data functions\n- app.js: DOM events and localStorage\n- core.test.mjs: Node built-in tests\n\n## Data contract\n- Task: {id: string, title: string, completed: boolean}\n- Trim titles; accept 1 to 100 non-blank characters. IDs must be unique.\n- Export addTask(tasks, title, id), toggleTask(tasks, id), removeTask(tasks, id),\n  visibleTasks(tasks, filter), decodeTasks(raw), encodeTasks(tasks).\n- Filters: all, active, completed. Missing toggle/delete IDs leave data unchanged.\n- Store {version: 1, tasks: [...]} under mokaair-codex-todo-v1.\n- Invalid stored data must remain untouched; warn and allow temporary work.\n\n## Interface and acceptance\n- Labels: New task, Add task, Show, All tasks, Active, Completed, Delete.\n- Show active and total counts, including when a filter is selected.\n- Add, toggle, delete, filter and reload must work.\n- Render task text as text, not HTML.\n- Visible keyboard focus; preserve sensible focus after list updates.\n- Fit 360px, 390px and 1280px viewports without page overflow.\n- Include an About this exercise disclosure with a Reset practice data button.\n- Reset practice data removes only this app's storage key.\n- No dependencies, account, backend, analytics or external requests.\n\n## Delivery\nExplain changes, run node --test core.test.mjs, and list actual browser checks.\nDo not claim checks that were not run. Do not publish or deploy.\n"
         },
         {
           "type": "heading",
@@ -566,7 +542,7 @@
         },
         {
           "type": "paragraph",
-          "text": "先在 About this exercise 展开后，确认资料全是可丢弃的虚构项目，再用 Reset practice data 清除本例专用键。新增 Read 与 Build，完成 Read。All tasks 应有两笔、Active 只有 Build、Completed 只有 Read，统计是 1 active / 2 total。重新整理后资料仍在；选回 All tasks 并删除 Read，应剩 Build。以下表格接著测，别只拍一张首页就判定完成。"
+          "text": "先在 About this exercise 展开后，确认资料全是可丢弃的虚构项目，再用 Reset practice data 清除本例专用键。将 Show 选回 All tasks，确认 0 active / 0 total，再新增 Read 与 Build，完成 Read。All tasks 应有两笔、Active 只有 Build、Completed 只有 Read，统计是 1 active / 2 total。重新整理后资料仍在；选回 All tasks 并删除 Read，应剩 Build。以下表格接著测，别只拍一张首页就判定完成。"
         },
         {
           "type": "table",
@@ -635,7 +611,7 @@
           "type": "code",
           "label": "website-lab/handoff.md：预期不是实测结果",
           "language": "markdown",
-          "code": "# Website handoff\nRoot / source version:\nNode test command / exit status:\nBrowser / version / viewport / date:\n\n| Step | Expected active / total | Observed |\n| --- | --- | --- |\n| Reset fictional practice data | 0 / 0 | |\n| Add Read, then Build | 2 / 2 | |\n| Complete Read | 1 / 2 | |\n| Select Active; only Build visible | 1 / 2 | |\n| Select Completed; only Read visible | 1 / 2 | |\n| Select All tasks, delete Read | 1 / 1 | |\n\nInput/storage recovery evidence:\nKeyboard and narrow-layout evidence:\nActual changed files:\nUnverified requirements:\nHow to restart / restore:\n"
+          "code": "# Website handoff\nRoot / source version:\nNode test command / exit status:\nBrowser / version / viewport / date:\n\n| Step | Expected active / total | Observed |\n| --- | --- | --- |\n| Reset fictional practice data; select All tasks | 0 / 0 | |\n| Add Read, then Build | 2 / 2 | |\n| Complete Read | 1 / 2 | |\n| Select Active; only Build visible | 1 / 2 | |\n| Select Completed; only Read visible | 1 / 2 | |\n| Select All tasks, delete Read | 1 / 1 | |\n\nInput/storage recovery evidence:\nKeyboard and narrow-layout evidence:\nActual changed files:\nUnverified requirements:\nHow to restart / restore:\n"
         },
         {
           "type": "rich_paragraph",
@@ -692,30 +668,6 @@
         },
         {
           "type": "image",
-          "src": "/guides/codex-website-workshop/workshop-390.png",
-          "alt": "实战：制作小网站 — 390px / Windows Edge",
-          "caption": "Windows 上的 Edge 153.0.4234.32 实际浏览器截图，2026-09-14；使用公开虚构练习 HTML。数字 01／02／03 对应规划、制作与验证。390px 为模拟手机宽度，非 iPhone 或 Android 实机测试。橘框是 Tab 键的焦点提示。",
-          "width": 390,
-          "height": 1589,
-          "credit": {
-            "author": "Mokaair",
-            "license": "© Mokaair"
-          }
-        },
-        {
-          "type": "image",
-          "src": "/guides/codex-website-workshop/workshop-1280.png",
-          "alt": "实战：制作小网站 — 1280px / Windows Edge",
-          "caption": "Windows 上的 Edge 153.0.4234.32 实际浏览器截图，2026-09-14；使用公开虚构练习 HTML。数字 01／02／03 对应规划、制作与验证。390px 为模拟手机宽度，非 iPhone 或 Android 实机测试。橘框是 Tab 键的焦点提示。",
-          "width": 1280,
-          "height": 1092,
-          "credit": {
-            "author": "Mokaair",
-            "license": "© Mokaair"
-          }
-        },
-        {
-          "type": "image",
           "src": "/guides/codex-first-project/todo-390.png",
           "alt": "待办练习网站：Build 已完成，Read the AGENTS.md rules 尚未完成，共两项任务。",
           "caption": "完整参考版的实际浏览器画面，供修改前比对。Windows / Edge 153.0.4234.32，2026-09-14；使用虚构数据。390px 为响应式窗口，非实体手机。这不是 Codex 桌面界面截图。",
@@ -754,7 +706,7 @@
     },
     "en": {
       "title": "Workshop: build a small website",
-      "description": "This workshop connects clear requests, planning, MD instructions, browser checks and delivery. Build a fictional studio site with three cards in one HTML file. Practice a complete, inspectable result before expanding features.",
+      "description": "Plan and build the Small Steps task website from brief.md, with adding, completing, deleting, filtering and local persistence. Separate HTML, CSS, data functions, UI events and tests, verify with Node and browser checks, and document restart and recovery steps.",
       "hero": {
         "src": "/guides/codex-website-workshop/hero.jpg",
         "alt": "Workflow illustration, not a product screenshot.",
@@ -853,7 +805,7 @@
           "type": "code",
           "label": "website-lab/brief.md",
           "language": "markdown",
-          "code": "# Small Steps website brief\nBuild a local todo website using HTML, CSS and JavaScript only.\n\n## Files\n- index.html: accessible page and form\n- style.css: responsive layout\n- core.mjs: immutable data functions\n- app.js: DOM events and localStorage\n- core.test.mjs: Node built-in tests\n\n## Data contract\n- Task: {id: string, title: string, completed: boolean}\n- Trim titles; accept 1 to 100 non-blank characters. IDs must be unique.\n- Export addTask(tasks, title, id), toggleTask(tasks, id), removeTask(tasks, id),\n  visibleTasks(tasks, filter), decodeTasks(raw), encodeTasks(tasks).\n- Filters: all, active, completed. Missing toggle/delete IDs leave data unchanged.\n- Store {version: 1, tasks: [...]} under mokaair-codex-todo-v1.\n- Invalid stored data must remain untouched; warn and allow temporary work.\n\n## Interface and acceptance\n- Labels: New task, Add task, All tasks, Active, Completed, Delete.\n- Show active and total counts, including when a filter is selected.\n- Add, toggle, delete, filter and reload must work.\n- Render task text as text, not HTML.\n- Visible keyboard focus; preserve sensible focus after list updates.\n- Fit 360px, 390px and 1280px viewports without page overflow.\n- Reset practice data removes only this app's storage key.\n- No dependencies, account, backend, analytics or external requests.\n\n## Delivery\nExplain changes, run node --test core.test.mjs, and list actual browser checks.\nDo not claim checks that were not run. Do not publish or deploy.\n"
+          "code": "# Small Steps website brief\nBuild a local todo website using HTML, CSS and JavaScript only.\n\n## Files\n- index.html: accessible page and form\n- style.css: responsive layout\n- core.mjs: immutable data functions\n- app.js: DOM events and localStorage\n- core.test.mjs: Node built-in tests\n\n## Data contract\n- Task: {id: string, title: string, completed: boolean}\n- Trim titles; accept 1 to 100 non-blank characters. IDs must be unique.\n- Export addTask(tasks, title, id), toggleTask(tasks, id), removeTask(tasks, id),\n  visibleTasks(tasks, filter), decodeTasks(raw), encodeTasks(tasks).\n- Filters: all, active, completed. Missing toggle/delete IDs leave data unchanged.\n- Store {version: 1, tasks: [...]} under mokaair-codex-todo-v1.\n- Invalid stored data must remain untouched; warn and allow temporary work.\n\n## Interface and acceptance\n- Labels: New task, Add task, Show, All tasks, Active, Completed, Delete.\n- Show active and total counts, including when a filter is selected.\n- Add, toggle, delete, filter and reload must work.\n- Render task text as text, not HTML.\n- Visible keyboard focus; preserve sensible focus after list updates.\n- Fit 360px, 390px and 1280px viewports without page overflow.\n- Include an About this exercise disclosure with a Reset practice data button.\n- Reset practice data removes only this app's storage key.\n- No dependencies, account, backend, analytics or external requests.\n\n## Delivery\nExplain changes, run node --test core.test.mjs, and list actual browser checks.\nDo not claim checks that were not run. Do not publish or deploy.\n"
         },
         {
           "type": "heading",
@@ -938,7 +890,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Expand About this exercise, confirm all tasks are disposable fictional data, then use Reset practice data to clear only this app's key. Add Read and Build, and complete Read. All tasks shows two, Active only Build, Completed only Read, with 1 active / 2 total. Reload and confirm persistence; return to All tasks and delete Read, leaving Build. Continue with the table instead of accepting a single home-page screenshot."
+          "text": "Expand About this exercise, confirm all tasks are disposable fictional data, then use Reset practice data to clear only this app's key. Select All tasks under Show, confirm 0 active / 0 total, then add Read and Build, and complete Read. All tasks shows two, Active only Build, Completed only Read, with 1 active / 2 total. Reload and confirm persistence; return to All tasks and delete Read, leaving Build. Continue with the table instead of accepting a single home-page screenshot."
         },
         {
           "type": "table",
@@ -1007,7 +959,7 @@
           "type": "code",
           "label": "website-lab/handoff.md: expectations are not observations",
           "language": "markdown",
-          "code": "# Website handoff\nRoot / source version:\nNode test command / exit status:\nBrowser / version / viewport / date:\n\n| Step | Expected active / total | Observed |\n| --- | --- | --- |\n| Reset fictional practice data | 0 / 0 | |\n| Add Read, then Build | 2 / 2 | |\n| Complete Read | 1 / 2 | |\n| Select Active; only Build visible | 1 / 2 | |\n| Select Completed; only Read visible | 1 / 2 | |\n| Select All tasks, delete Read | 1 / 1 | |\n\nInput/storage recovery evidence:\nKeyboard and narrow-layout evidence:\nActual changed files:\nUnverified requirements:\nHow to restart / restore:\n"
+          "code": "# Website handoff\nRoot / source version:\nNode test command / exit status:\nBrowser / version / viewport / date:\n\n| Step | Expected active / total | Observed |\n| --- | --- | --- |\n| Reset fictional practice data; select All tasks | 0 / 0 | |\n| Add Read, then Build | 2 / 2 | |\n| Complete Read | 1 / 2 | |\n| Select Active; only Build visible | 1 / 2 | |\n| Select Completed; only Read visible | 1 / 2 | |\n| Select All tasks, delete Read | 1 / 1 | |\n\nInput/storage recovery evidence:\nKeyboard and narrow-layout evidence:\nActual changed files:\nUnverified requirements:\nHow to restart / restore:\n"
         },
         {
           "type": "rich_paragraph",
@@ -1064,30 +1016,6 @@
         },
         {
           "type": "image",
-          "src": "/guides/codex-website-workshop/workshop-390.png",
-          "alt": "Workshop: build a small website — 390px / Windows Edge",
-          "caption": "Actual browser capture: Edge 153.0.4234.32 on Windows, 2026-09-14, using fictional practice HTML. 01/02/03 identify planning, building and verification. 390px simulates a mobile viewport, not an iPhone or Android device test. The orange outline shows keyboard focus after Tab.",
-          "width": 390,
-          "height": 1589,
-          "credit": {
-            "author": "Mokaair",
-            "license": "© Mokaair"
-          }
-        },
-        {
-          "type": "image",
-          "src": "/guides/codex-website-workshop/workshop-1280.png",
-          "alt": "Workshop: build a small website — 1280px / Windows Edge",
-          "caption": "Actual browser capture: Edge 153.0.4234.32 on Windows, 2026-09-14, using fictional practice HTML. 01/02/03 identify planning, building and verification. 390px simulates a mobile viewport, not an iPhone or Android device test. The orange outline shows keyboard focus after Tab.",
-          "width": 1280,
-          "height": 1092,
-          "credit": {
-            "author": "Mokaair",
-            "license": "© Mokaair"
-          }
-        },
-        {
-          "type": "image",
           "src": "/guides/codex-first-project/todo-390.png",
           "alt": "Practice task website: Build is complete and Read the AGENTS.md rules is pending, with two tasks in total.",
           "caption": "Actual browser view of the complete reference version, before lesson edits. Windows / Edge 153.0.4234.32, 2026-09-14; fictional data. 390px is a responsive viewport, not a physical phone. This is not the Codex desktop interface.",
@@ -1126,7 +1054,7 @@
     },
     "ja": {
       "title": "実践：小さな Web サイトを作る",
-      "description": "依頼、計画、MD 規則、ブラウザー確認をつなげ、三枚のカードを持つ架空のスタジオサイトを作ります。単一 HTML で検証まで完了する練習です。",
+      "description": "brief.md から Small Steps のタスクサイトを計画・制作し、追加、完了、削除、絞り込み、ローカル保存を実装します。HTML、CSS、データ関数、画面イベント、テストを分け、Node とブラウザーで検証して再起動・復元の手順を残します。",
       "hero": {
         "src": "/guides/codex-website-workshop/hero.jpg",
         "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
@@ -1221,7 +1149,7 @@
           "type": "code",
           "label": "website-lab/brief.md",
           "language": "markdown",
-          "code": "# Small Steps website brief\nBuild a local todo website using HTML, CSS and JavaScript only.\n\n## Files\n- index.html: accessible page and form\n- style.css: responsive layout\n- core.mjs: immutable data functions\n- app.js: DOM events and localStorage\n- core.test.mjs: Node built-in tests\n\n## Data contract\n- Task: {id: string, title: string, completed: boolean}\n- Trim titles; accept 1 to 100 non-blank characters. IDs must be unique.\n- Export addTask(tasks, title, id), toggleTask(tasks, id), removeTask(tasks, id),\n  visibleTasks(tasks, filter), decodeTasks(raw), encodeTasks(tasks).\n- Filters: all, active, completed. Missing toggle/delete IDs leave data unchanged.\n- Store {version: 1, tasks: [...]} under mokaair-codex-todo-v1.\n- Invalid stored data must remain untouched; warn and allow temporary work.\n\n## Interface and acceptance\n- Labels: New task, Add task, All tasks, Active, Completed, Delete.\n- Show active and total counts, including when a filter is selected.\n- Add, toggle, delete, filter and reload must work.\n- Render task text as text, not HTML.\n- Visible keyboard focus; preserve sensible focus after list updates.\n- Fit 360px, 390px and 1280px viewports without page overflow.\n- Reset practice data removes only this app's storage key.\n- No dependencies, account, backend, analytics or external requests.\n\n## Delivery\nExplain changes, run node --test core.test.mjs, and list actual browser checks.\nDo not claim checks that were not run. Do not publish or deploy.\n"
+          "code": "# Small Steps website brief\nBuild a local todo website using HTML, CSS and JavaScript only.\n\n## Files\n- index.html: accessible page and form\n- style.css: responsive layout\n- core.mjs: immutable data functions\n- app.js: DOM events and localStorage\n- core.test.mjs: Node built-in tests\n\n## Data contract\n- Task: {id: string, title: string, completed: boolean}\n- Trim titles; accept 1 to 100 non-blank characters. IDs must be unique.\n- Export addTask(tasks, title, id), toggleTask(tasks, id), removeTask(tasks, id),\n  visibleTasks(tasks, filter), decodeTasks(raw), encodeTasks(tasks).\n- Filters: all, active, completed. Missing toggle/delete IDs leave data unchanged.\n- Store {version: 1, tasks: [...]} under mokaair-codex-todo-v1.\n- Invalid stored data must remain untouched; warn and allow temporary work.\n\n## Interface and acceptance\n- Labels: New task, Add task, Show, All tasks, Active, Completed, Delete.\n- Show active and total counts, including when a filter is selected.\n- Add, toggle, delete, filter and reload must work.\n- Render task text as text, not HTML.\n- Visible keyboard focus; preserve sensible focus after list updates.\n- Fit 360px, 390px and 1280px viewports without page overflow.\n- Include an About this exercise disclosure with a Reset practice data button.\n- Reset practice data removes only this app's storage key.\n- No dependencies, account, backend, analytics or external requests.\n\n## Delivery\nExplain changes, run node --test core.test.mjs, and list actual browser checks.\nDo not claim checks that were not run. Do not publish or deploy.\n"
         },
         {
           "type": "heading",
@@ -1239,7 +1167,7 @@
             },
             {
               "type": "text",
-              "text": "で brief.md を読み、5ファイルの責務、データの流れ、検証を提案させます。core.mjs は DOM に触らず、app.js が操作と保存を担当し、framework や追加サービスがないか確認します。損壊や復元が欠ければ計画へ追加してから実装へ切替えます。データ・試験、画面・互動の2段階に分け、各回で実変更と未検証点を報告させます。"
+              "text": "で brief.md を読み、5ファイルの責務、データの流れ、検証を提案させます。core.mjs は DOM に触らず、app.js が操作と保存を担当し、framework や追加サービスがないか確認します。損壊や復元が欠ければ計画へ追加してから実装へ切替えます。データ・試験、画面・操作の2段階に分け、各回で実変更と未検証点を報告させます。"
             }
           ]
         },
@@ -1302,7 +1230,7 @@
         },
         {
           "type": "paragraph",
-          "text": "About this exercise を開き、全て捨てられる架空資料と確認して Reset practice data で専用鍵だけを消します。Read・Build を追加し Read を完了にします。All tasks は2件、Active は Build、Completed は Read、統計は1 active / 2 totalです。再読込で保持を確認し、All tasks に戻り Read を削除して Build を残します。首頁画像1枚で終わらず次の表を検証します。"
+          "text": "About this exercise を開き、全て捨てられる架空資料と確認して Reset practice data で専用キーだけを消します。Show で All tasks を選び、0 active / 0 total を確認してから Read・Build を追加し Read を完了にします。All tasks は2件、Active は Build、Completed は Read、統計は1 active / 2 totalです。再読込で保持を確認し、All tasks に戻り Read を削除して Build を残します。トップページの画像1枚で終わらず次の表を検証します。"
         },
         {
           "type": "table",
@@ -1335,7 +1263,7 @@
             [
               "携帯幅",
               "360px・390px、長い題名",
-              "折返し、頁全体の横溢出なし"
+              "折返し、ページ全体の横方向のはみ出しなし"
             ],
             [
               "デスクトップ幅",
@@ -1361,7 +1289,7 @@
         },
         {
           "type": "paragraph",
-          "text": "進階確認はローカルの架空頁だけで行います。必要記録を保存後、開発ツールの Storage／Application → Local Storage で現在の127.0.0.1とポートを選び、mokaair-codex-todo-v1を bad-json にして再読込します。警告が出て、暫定追加後も保存値が bad-json のままか確認します。Reset practice data でその鍵だけを消し、新規追加・再読込で保存復旧を確認します。他サイトの全資料は消しません。"
+          "text": "高度な確認はローカルの架空データの練習ページだけで行います。必要記録を保存後、開発ツールの Storage／Application → Local Storage で現在の127.0.0.1とポートを選び、mokaair-codex-todo-v1を bad-json にして再読込します。警告が出て、暫定追加後も保存値が bad-json のままか確認します。Reset practice data でその鍵だけを消し、新規追加・再読込で保存復旧を確認します。他サイトの全資料は消しません。"
         },
         {
           "type": "paragraph",
@@ -1371,7 +1299,7 @@
           "type": "code",
           "label": "website-lab/handoff.md：期待値と実測を区別",
           "language": "markdown",
-          "code": "# Website handoff\nRoot / source version:\nNode test command / exit status:\nBrowser / version / viewport / date:\n\n| Step | Expected active / total | Observed |\n| --- | --- | --- |\n| Reset fictional practice data | 0 / 0 | |\n| Add Read, then Build | 2 / 2 | |\n| Complete Read | 1 / 2 | |\n| Select Active; only Build visible | 1 / 2 | |\n| Select Completed; only Read visible | 1 / 2 | |\n| Select All tasks, delete Read | 1 / 1 | |\n\nInput/storage recovery evidence:\nKeyboard and narrow-layout evidence:\nActual changed files:\nUnverified requirements:\nHow to restart / restore:\n"
+          "code": "# Website handoff\nRoot / source version:\nNode test command / exit status:\nBrowser / version / viewport / date:\n\n| Step | Expected active / total | Observed |\n| --- | --- | --- |\n| Reset fictional practice data; select All tasks | 0 / 0 | |\n| Add Read, then Build | 2 / 2 | |\n| Complete Read | 1 / 2 | |\n| Select Active; only Build visible | 1 / 2 | |\n| Select Completed; only Read visible | 1 / 2 | |\n| Select All tasks, delete Read | 1 / 1 | |\n\nInput/storage recovery evidence:\nKeyboard and narrow-layout evidence:\nActual changed files:\nUnverified requirements:\nHow to restart / restore:\n"
         },
         {
           "type": "rich_paragraph",
@@ -1392,7 +1320,7 @@
             },
             {
               "type": "article",
-              "text": "交接形式",
+              "text": "引き継ぎ形式",
               "kind": "life",
               "slug": "codex-context-handoff"
             },
@@ -1424,30 +1352,6 @@
             "author": "Mokaair",
             "license": "© Mokaair",
             "source_url": null
-          }
-        },
-        {
-          "type": "image",
-          "src": "/guides/codex-website-workshop/workshop-390.png",
-          "alt": "実践：小さな Web サイトを作る — 390px / Windows Edge",
-          "caption": "Windows の Edge 153.0.4234.32 による実際のブラウザー画像、2026-09-14。公開可能な架空の練習 HTML を使用。01／02／03 は計画・制作・確認です。390px はモバイル幅の模擬表示で、iPhone・Android の実機試験ではありません。オレンジ枠は Tab キーによるフォーカスです。",
-          "width": 390,
-          "height": 1589,
-          "credit": {
-            "author": "Mokaair",
-            "license": "© Mokaair"
-          }
-        },
-        {
-          "type": "image",
-          "src": "/guides/codex-website-workshop/workshop-1280.png",
-          "alt": "実践：小さな Web サイトを作る — 1280px / Windows Edge",
-          "caption": "Windows の Edge 153.0.4234.32 による実際のブラウザー画像、2026-09-14。公開可能な架空の練習 HTML を使用。01／02／03 は計画・制作・確認です。390px はモバイル幅の模擬表示で、iPhone・Android の実機試験ではありません。オレンジ枠は Tab キーによるフォーカスです。",
-          "width": 1280,
-          "height": 1092,
-          "credit": {
-            "author": "Mokaair",
-            "license": "© Mokaair"
           }
         },
         {
@@ -1490,7 +1394,7 @@
     },
     "ko": {
       "title": "실습: 작은 웹사이트 만들기",
-      "description": "요청, 계획, MD 규칙과 브라우저 검사를 연결하여 카드 세 개가 있는 가상 스튜디오 사이트를 만듭니다. HTML 한 파일로 검증까지 완료하는 연습입니다.",
+      "description": "brief.md에서 Small Steps 할 일 사이트를 계획하고 추가·완료·삭제·필터·로컬 저장을 구현합니다. HTML·CSS·데이터 함수·화면 이벤트·시험을 분리하고 Node와 브라우저로 검증한 뒤 재시작·복원 인계 기록을 남깁니다.",
       "hero": {
         "src": "/guides/codex-website-workshop/hero.jpg",
         "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
@@ -1585,7 +1489,7 @@
           "type": "code",
           "label": "website-lab/brief.md",
           "language": "markdown",
-          "code": "# Small Steps website brief\nBuild a local todo website using HTML, CSS and JavaScript only.\n\n## Files\n- index.html: accessible page and form\n- style.css: responsive layout\n- core.mjs: immutable data functions\n- app.js: DOM events and localStorage\n- core.test.mjs: Node built-in tests\n\n## Data contract\n- Task: {id: string, title: string, completed: boolean}\n- Trim titles; accept 1 to 100 non-blank characters. IDs must be unique.\n- Export addTask(tasks, title, id), toggleTask(tasks, id), removeTask(tasks, id),\n  visibleTasks(tasks, filter), decodeTasks(raw), encodeTasks(tasks).\n- Filters: all, active, completed. Missing toggle/delete IDs leave data unchanged.\n- Store {version: 1, tasks: [...]} under mokaair-codex-todo-v1.\n- Invalid stored data must remain untouched; warn and allow temporary work.\n\n## Interface and acceptance\n- Labels: New task, Add task, All tasks, Active, Completed, Delete.\n- Show active and total counts, including when a filter is selected.\n- Add, toggle, delete, filter and reload must work.\n- Render task text as text, not HTML.\n- Visible keyboard focus; preserve sensible focus after list updates.\n- Fit 360px, 390px and 1280px viewports without page overflow.\n- Reset practice data removes only this app's storage key.\n- No dependencies, account, backend, analytics or external requests.\n\n## Delivery\nExplain changes, run node --test core.test.mjs, and list actual browser checks.\nDo not claim checks that were not run. Do not publish or deploy.\n"
+          "code": "# Small Steps website brief\nBuild a local todo website using HTML, CSS and JavaScript only.\n\n## Files\n- index.html: accessible page and form\n- style.css: responsive layout\n- core.mjs: immutable data functions\n- app.js: DOM events and localStorage\n- core.test.mjs: Node built-in tests\n\n## Data contract\n- Task: {id: string, title: string, completed: boolean}\n- Trim titles; accept 1 to 100 non-blank characters. IDs must be unique.\n- Export addTask(tasks, title, id), toggleTask(tasks, id), removeTask(tasks, id),\n  visibleTasks(tasks, filter), decodeTasks(raw), encodeTasks(tasks).\n- Filters: all, active, completed. Missing toggle/delete IDs leave data unchanged.\n- Store {version: 1, tasks: [...]} under mokaair-codex-todo-v1.\n- Invalid stored data must remain untouched; warn and allow temporary work.\n\n## Interface and acceptance\n- Labels: New task, Add task, Show, All tasks, Active, Completed, Delete.\n- Show active and total counts, including when a filter is selected.\n- Add, toggle, delete, filter and reload must work.\n- Render task text as text, not HTML.\n- Visible keyboard focus; preserve sensible focus after list updates.\n- Fit 360px, 390px and 1280px viewports without page overflow.\n- Include an About this exercise disclosure with a Reset practice data button.\n- Reset practice data removes only this app's storage key.\n- No dependencies, account, backend, analytics or external requests.\n\n## Delivery\nExplain changes, run node --test core.test.mjs, and list actual browser checks.\nDo not claim checks that were not run. Do not publish or deploy.\n"
         },
         {
           "type": "heading",
@@ -1666,7 +1570,7 @@
         },
         {
           "type": "paragraph",
-          "text": "About this exercise를 펼쳐 모두 버려도 되는 가상 데이터인지 확인한 뒤 Reset practice data로 전용 키만 지웁니다. Read·Build를 추가하고 Read를 완료하세요. All tasks는 두 개, Active는 Build, Completed는 Read, 통계는 1 active / 2 total이어야 합니다. 새로고침 후 유지되는지 확인하고 All tasks로 돌아와 Read를 삭제하면 Build가 남습니다. 첫 화면 한 장으로 끝내지 말고 다음 표를 검증하세요."
+          "text": "About this exercise를 펼쳐 모두 버려도 되는 가상 데이터인지 확인한 뒤 Reset practice data로 전용 키만 지웁니다. Show에서 All tasks를 선택하고 0 active / 0 total을 확인한 뒤 Read·Build를 추가하고 Read를 완료하세요. All tasks는 두 개, Active는 Build, Completed는 Read, 통계는 1 active / 2 total이어야 합니다. 새로고침 후 유지되는지 확인하고 All tasks로 돌아와 Read를 삭제하면 Build가 남습니다. 첫 화면 한 장으로 끝내지 말고 다음 표를 검증하세요."
         },
         {
           "type": "table",
@@ -1735,7 +1639,7 @@
           "type": "code",
           "label": "website-lab/handoff.md: 기대값은 관찰 결과가 아님",
           "language": "markdown",
-          "code": "# Website handoff\nRoot / source version:\nNode test command / exit status:\nBrowser / version / viewport / date:\n\n| Step | Expected active / total | Observed |\n| --- | --- | --- |\n| Reset fictional practice data | 0 / 0 | |\n| Add Read, then Build | 2 / 2 | |\n| Complete Read | 1 / 2 | |\n| Select Active; only Build visible | 1 / 2 | |\n| Select Completed; only Read visible | 1 / 2 | |\n| Select All tasks, delete Read | 1 / 1 | |\n\nInput/storage recovery evidence:\nKeyboard and narrow-layout evidence:\nActual changed files:\nUnverified requirements:\nHow to restart / restore:\n"
+          "code": "# Website handoff\nRoot / source version:\nNode test command / exit status:\nBrowser / version / viewport / date:\n\n| Step | Expected active / total | Observed |\n| --- | --- | --- |\n| Reset fictional practice data; select All tasks | 0 / 0 | |\n| Add Read, then Build | 2 / 2 | |\n| Complete Read | 1 / 2 | |\n| Select Active; only Build visible | 1 / 2 | |\n| Select Completed; only Read visible | 1 / 2 | |\n| Select All tasks, delete Read | 1 / 1 | |\n\nInput/storage recovery evidence:\nKeyboard and narrow-layout evidence:\nActual changed files:\nUnverified requirements:\nHow to restart / restore:\n"
         },
         {
           "type": "rich_paragraph",
@@ -1788,30 +1692,6 @@
             "author": "Mokaair",
             "license": "© Mokaair",
             "source_url": null
-          }
-        },
-        {
-          "type": "image",
-          "src": "/guides/codex-website-workshop/workshop-390.png",
-          "alt": "실습: 작은 웹사이트 만들기 — 390px / Windows Edge",
-          "caption": "Windows의 Edge 153.0.4234.32 실제 브라우저 캡처, 2026-09-14. 공개 가능한 가상 연습 HTML을 사용했습니다. 01/02/03은 계획·제작·검증입니다. 390px은 모바일 화면 폭 시뮬레이션이며 iPhone·Android 실기기 시험이 아닙니다. 주황색 테두리는 Tab 키 포커스입니다.",
-          "width": 390,
-          "height": 1589,
-          "credit": {
-            "author": "Mokaair",
-            "license": "© Mokaair"
-          }
-        },
-        {
-          "type": "image",
-          "src": "/guides/codex-website-workshop/workshop-1280.png",
-          "alt": "실습: 작은 웹사이트 만들기 — 1280px / Windows Edge",
-          "caption": "Windows의 Edge 153.0.4234.32 실제 브라우저 캡처, 2026-09-14. 공개 가능한 가상 연습 HTML을 사용했습니다. 01/02/03은 계획·제작·검증입니다. 390px은 모바일 화면 폭 시뮬레이션이며 iPhone·Android 실기기 시험이 아닙니다. 주황색 테두리는 Tab 키 포커스입니다.",
-          "width": 1280,
-          "height": 1092,
-          "credit": {
-            "author": "Mokaair",
-            "license": "© Mokaair"
           }
         },
         {

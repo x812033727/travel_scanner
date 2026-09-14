@@ -15,10 +15,10 @@
     {
       "type": "note",
       "text": [
-        "做出一個保留原始資料的 CSV 整理工具：修剪空白、統一 email 大小寫、保留第一筆有效資料、統計重複與無效列，拒絕覆寫既有檔案。閱讀約 20 分鐘、實作約 45 分鐘。準備 Python 3、Codex 與自己的空白 csv-lab；只使用下方虛構姓名及 example.test 地址。這是格式整理，不會寄信，也不能證明 email 真正存在。",
-        "Build a CSV cleaner that preserves input, trims whitespace, normalizes email case, keeps the first valid record, counts duplicate/invalid rows and refuses existing output files. Allow 20 minutes to read and 45 to practice. Prepare Python 3, Codex and your own empty csv-lab. Use only the fictional names and example.test addresses below. This cleans formatting; it neither sends mail nor proves an address exists.",
-        "入力を保存したまま空白除去、email の小文字化、最初の有効行の保持、重複・無効行の集計、既存出力の上書き拒否を行う CSV 整理器を作ります。読む時間20分、実習45分です。Python 3、Codex、自分の空 csv-lab と下記架空名・example.test だけを使います。形式整理であり、送信や住所の実在確認ではありません。",
-        "입력을 보존하면서 공백 제거·email 소문자화·첫 유효 행 유지·중복/무효 집계·기존 출력 덮어쓰기 거부를 하는 CSV 정리기를 만듭니다. 읽기 20분, 실습 45분입니다. Python 3·Codex·자신의 빈 csv-lab과 아래 가상 이름·example.test만 사용하세요. 형식 정리이며 메일을 보내거나 주소 실재를 증명하지 않습니다."
+        "做出一個保留原始資料的 CSV 整理工具：修剪空白、統一 email 大小寫、保留第一筆有效資料、統計重複與無效列，拒絕覆寫既有檔案。閱讀約 20 分鐘、實作約 45 分鐘。準備 Python 3.9 以上版本、Codex 與自己的空白 csv-lab；只使用下方虛構姓名及 example.test 地址。這是格式整理，不會寄信，也不能證明 email 真正存在。",
+        "Build a CSV cleaner that preserves input, trims whitespace, normalizes email case, keeps the first valid record, counts duplicate/invalid rows and refuses existing output files. Allow 20 minutes to read and 45 to practice. Prepare Python 3.9 or later, Codex and your own empty csv-lab. Use only the fictional names and example.test addresses below. This cleans formatting; it neither sends mail nor proves an address exists.",
+        "入力を保存したまま空白除去、email の小文字化、最初の有効行の保持、重複・無効行の集計、既存出力の上書き拒否を行う CSV 整理器を作ります。読む時間20分、実習45分です。Python 3.9 以降、Codex、自分の空 csv-lab と下記架空名・example.test だけを使います。形式整理であり、送信や住所の実在確認ではありません。",
+        "입력을 보존하면서 공백 제거·email 소문자화·첫 유효 행 유지·중복/무효 집계·기존 출력 덮어쓰기 거부를 하는 CSV 정리기를 만듭니다. 읽기 20분, 실습 45분입니다. Python 3.9 이상·Codex·자신의 빈 csv-lab과 아래 가상 이름·example.test만 사용하세요. 형식 정리이며 메일을 보내거나 주소 실재를 증명하지 않습니다."
       ]
     },
     {
@@ -33,10 +33,10 @@
     {
       "type": "p",
       "text": [
-        "在編輯器開啟 csv-lab，以 UTF-8 建立 contacts.csv，完整內容如下。第一列欄名必須正好是 name,email，順序也相同。保留 Alice 前後與第一筆 email 的空白，它們是測試條件。使用純文字編輯器檢查原文，避免試算表另存時換編碼或改值。Windows 執行 py -3 --version，macOS／Linux 執行 python3 --version，確認 Python 3 可用；本例不需要 pip、pandas 或資料庫。",
-        "Open csv-lab in an editor and create UTF-8 contacts.csv exactly below. The header must be name,email in that order. Preserve the spaces around Alice and the first email as test conditions. Inspect with a text editor so spreadsheet re-saving does not change encoding or values. Check py -3 --version on Windows or python3 --version on macOS/Linux. This example needs no pip packages, pandas or database.",
-        "csv-lab を開き、下記を UTF-8 contacts.csv に保存します。表頭は順序も含め name,email と完全一致させ、Alice と最初の email の前後空白を試験条件として残します。試算表の再保存でエンコードや値が変わらないよう純文字で確認します。Windows は py -3 --version、macOS／Linux は python3 --version で Python 3 を確認し、pip・pandas・資料庫は不要です。",
-        "csv-lab을 열어 아래를 UTF-8 contacts.csv로 저장합니다. 헤더는 순서까지 name,email과 같아야 하며 Alice와 첫 email 앞뒤 공백을 시험 조건으로 유지하세요. 스프레드시트 재저장으로 인코딩·값이 바뀌지 않게 텍스트 편집기로 확인합니다. Windows는 py -3 --version, macOS/Linux는 python3 --version으로 Python 3를 확인하며 pip·pandas·데이터베이스는 필요 없습니다."
+        "在編輯器開啟 csv-lab，以 UTF-8 建立 contacts.csv，完整內容如下。第一列欄名必須正好是 name,email，順序也相同。保留 Alice 前後與第一筆 email 的空白，它們是測試條件。使用純文字編輯器檢查原文，避免試算表另存時換編碼或改值。Windows 執行 py -3 --version，macOS／Linux 執行 python3 --version，確認版本至少為 Python 3.9；本例不需要 pip、pandas 或資料庫。",
+        "Open csv-lab in an editor and create UTF-8 contacts.csv exactly below. The header must be name,email in that order. Preserve the spaces around Alice and the first email as test conditions. Inspect with a text editor so spreadsheet re-saving does not change encoding or values. Check py -3 --version on Windows or python3 --version on macOS/Linux. Confirm Python 3.9 or later. This example needs no pip packages, pandas or database.",
+        "csv-lab を開き、下記を UTF-8 contacts.csv に保存します。ヘッダーは順序も含め name,email と完全一致させ、Alice と最初の email の前後空白を試験条件として残します。スプレッドシートの再保存でエンコードや値が変わらないようテキストエディターで確認します。Windows は py -3 --version、macOS／Linux は python3 --version で Python 3.9 以降を確認し、pip・pandas・データベースは不要です。",
+        "csv-lab을 열어 아래를 UTF-8 contacts.csv로 저장합니다. 헤더는 순서까지 name,email과 같아야 하며 Alice와 첫 email 앞뒤 공백을 시험 조건으로 유지하세요. 스프레드시트 재저장으로 인코딩·값이 바뀌지 않게 텍스트 편집기로 확인합니다. Windows는 py -3 --version, macOS/Linux는 python3 --version으로 Python 3.9 이상을 확인하며 pip·pandas·데이터베이스는 필요 없습니다."
       ]
     },
     {
@@ -73,7 +73,7 @@
       "text": [
         "讓 Codex 開啟 csv-lab，先用 [Plan 模式](article:codex-plan-mode)確認輸入、輸出、例外及驗收，再交付實作。每次只輸出新檔案；結構壞掉要整次失敗，不留下看似成功的半份資料。一般無效 email 是可計數的資料問題，但缺欄、多欄或錯誤表頭是契約錯誤。這個區分會直接影響下游是否敢使用結果，不能只寫一句幫我清理 CSV。",
         "Open csv-lab in Codex and use [Plan mode](article:codex-plan-mode) to agree on input, output, exceptions and acceptance before implementing. Write only a new output file. Structural corruption must fail the run without a misleading partial result. An invalid email is countable bad data, while missing/extra columns or a wrong header violate the contract. Downstream use depends on that distinction, so ask for more than simply cleaning a CSV.",
-        "Codex で csv-lab を開き、[Plan モード](article:codex-plan-mode)で入出力・例外・検証を確認してから実装します。出力は毎回新規で、構造損壊は成功に見える部分結果を残さず全体を失敗させます。無効 email は集計可能な資料問題ですが、欄不足・余分・表頭誤りは契約違反です。下流で使えるかに関わるため、単に CSV 整理と頼むだけにしません。",
+        "Codex で csv-lab を開き、[Plan モード](article:codex-plan-mode)で入出力・例外・検証を確認してから実装します。出力は毎回新規で、構造損壊は成功に見える部分結果を残さず全体を失敗させます。無効 email は集計可能な資料問題ですが、欄不足・余分・ヘッダー誤りは契約違反です。下流で使えるかに関わるため、単に CSV 整理と頼むだけにしません。",
         "Codex에서 csv-lab을 열고 [Plan 모드](article:codex-plan-mode)로 입출력·예외·검증을 확인한 뒤 구현합니다. 출력은 매번 새 파일이며 구조 손상은 성공처럼 보이는 일부 결과를 남기지 않고 전체 실패해야 합니다. 무효 email은 집계 가능한 자료 문제지만 필드 부족·추가·헤더 오류는 계약 위반입니다. 후속 사용 가능성에 영향을 주므로 단순히 CSV 정리라고만 요청하지 마세요."
       ]
     },
@@ -102,7 +102,7 @@
       "text": [
         "以下是完整參考程式，存為 clean_contacts.py 可獨立執行；若你已讓 Codex 生成版本，先另存備份，再比較差異。csv 模組負責引號、逗號與換行，不能用 split(',') 替代。程式在全部輸入讀完後才用 x 模式建立輸出；已有目標檔就失敗。這能避免輸入格式錯誤時留下輸出，但磁碟在寫到一半失敗仍可能留下不完整檔案，該次必須標記失敗並檢查產物，不能聲稱這是完整交易系統。",
         "The complete reference below can run independently as clean_contacts.py. Back up your generated version before comparing. The csv module handles quotes, commas and newlines; split(',') cannot replace it. After reading all input, the program creates output with x mode, refusing existing targets. This avoids output on malformed input, but a disk failure during writing can still leave a partial file. Mark that run failed and inspect its artifacts; this is not a transactional system.",
-        "下記は clean_contacts.py として単独実行できる全文です。生成版があれば先に別保存して比較します。csv 模組は引用符・カンマ・改行を扱い、split(',') では代替できません。全入力を読んだ後 x で新規出力を作り、既存目標を拒否します。入力誤りでは出力を残しませんが、書込途中のディスク障害なら部分ファイルが残り得るため失敗と記録して調査します。完全なトランザクションシステムとは称しません。",
+        "下記は clean_contacts.py として単独実行できる全文です。生成版があれば先に別保存して比較します。csv モジュールは引用符・カンマ・改行を扱い、split(',') では代替できません。全入力を読んだ後 x で新規出力を作り、既存目標を拒否します。入力誤りでは出力を残しませんが、書込途中のディスク障害なら部分ファイルが残り得るため失敗と記録して調査します。完全なトランザクションシステムとは称しません。",
         "아래는 clean_contacts.py로 독립 실행하는 전체 참고 코드입니다. 생성본은 별도 보관한 뒤 비교하세요. csv 모듈이 따옴표·쉼표·줄바꿈을 처리하며 split(',')로 대체할 수 없습니다. 전체 입력을 읽은 뒤 x로 새 출력을 만들고 기존 대상은 거부합니다. 입력 오류에는 출력이 없지만 쓰는 도중 디스크 오류는 일부 파일을 남길 수 있어 실패로 기록하고 조사해야 합니다. 완전한 트랜잭션 시스템이라고 부르지 않습니다."
       ]
     },
@@ -260,7 +260,7 @@
       "text": [
         "把下方完整測試存為 test_clean_contacts.py，放在程式與 contacts.csv 旁邊。它使用暫存資料夾，會核對輸入位元組未變、既有輸出拒絕覆寫、Unicode、引號與結構錯誤；不在你的練習目錄累積測試產物。Windows 執行 py -3 -m unittest -v test_clean_contacts.py；macOS／Linux 執行 python3 -m unittest -v test_clean_contacts.py。參考版本應有三項測試全部通過；若生成版本的介面不同，先對齊 clean 函式契約，不隨意刪除失敗案例。",
         "Save the complete test as test_clean_contacts.py beside the program and contacts.csv. It uses temporary folders to check byte-preserved input, overwrite refusal, Unicode, quoting and structural errors without accumulating test outputs in your practice folder. Run py -3 -m unittest -v test_clean_contacts.py on Windows or python3 -m unittest -v test_clean_contacts.py on macOS/Linux. All three reference tests should pass. If your generated interface differs, align the clean function contract rather than deleting failing cases.",
-        "下記を程式と contacts.csv の横に test_clean_contacts.py として保存します。一時場所で入力位元組不変、上書き拒否、Unicode、引用符、構造エラーを検証し、練習ディレクトリに産物を溜めません。Windows は py -3 -m unittest -v test_clean_contacts.py、macOS／Linux は python3 -m unittest -v test_clean_contacts.py で参考3試験全合格を確認します。生成版の介面が違えば clean 契約を揃え、失敗例を削除しません。",
+        "下記をプログラムと contacts.csv の横に test_clean_contacts.py として保存します。一時場所で入力のバイト列が変わらないこと、上書き拒否、Unicode、引用符、構造エラーを検証し、練習ディレクトリに産物を溜めません。Windows は py -3 -m unittest -v test_clean_contacts.py、macOS／Linux は python3 -m unittest -v test_clean_contacts.py で参考3試験全合格を確認します。生成版のインターフェースが違えば clean 契約を揃え、失敗例を削除しません。",
         "아래를 프로그램·contacts.csv 옆의 test_clean_contacts.py로 저장합니다. 임시 폴더에서 입력 바이트 불변·덮어쓰기 거부·Unicode·따옴표·구조 오류를 검증해 연습 폴더에 결과를 쌓지 않습니다. Windows는 py -3 -m unittest -v test_clean_contacts.py, macOS/Linux는 python3 -m unittest -v test_clean_contacts.py로 참고 시험 세 개 통과를 확인하세요. 생성본 인터페이스가 다르면 clean 계약을 맞추고 실패 사례를 삭제하지 않습니다."
       ]
     },
@@ -289,7 +289,7 @@
       "text": [
         "交付時提供原始虛構 CSV、程式、測試、執行指令、計數及未修改原件的證據。可以下載[完整 CSV 練習檔](https://mokaair.com/guides/codex-csv-workshop/contacts-practice.zip)比對；壓縮檔包含參考程式，不需要先完成其他專案。重新整理用新的輸出名稱，清理時只選自己已確認的產物。若要讀真正名單、處理超大檔案或匯入試算表，另設計權限、串流及公式文字的處理規則；本篇把資料當文字保存，不自動把外部內容當命令執行。下一篇練習[接手既有專案](article:codex-maintain-existing-project)，保留這裡建立的基準與驗證方法。",
         "Deliver the fictional source CSV, program, tests, command, counts and evidence of preserved input. Download the [complete CSV exercise](https://mokaair.com/guides/codex-csv-workshop/contacts-practice.zip) for comparison; it includes reference code and needs no earlier project. Use new output names for reruns and clean only identified artifacts. Real contacts, very large files or spreadsheet imports need separate access, streaming and formula-text rules. This lesson saves data as text and never executes external content as commands. Continue to [Maintaining an existing project](article:codex-maintain-existing-project) with the same baseline and verification discipline.",
-        "架空入力、程式、試験、命令、計数、原本保持の証拠を引渡します。[CSV 教材一式](https://mokaair.com/guides/codex-csv-workshop/contacts-practice.zip)には参考コードがあり前のプロジェクトなしで比較できます。再整理は新しい出力名、整理は確認済み産物だけです。実名簿、大ファイル、試算表インポートは権限・ストリーミング・公式文字の規則を別設計します。本編は文字として保存し外部内容を命令実行しません。この基準と検証法で[既存プロジェクトの保守](article:codex-maintain-existing-project)へ進みます。",
+        "架空入力、プログラム、試験、命令、計数、原本保持の証拠を引渡します。[CSV 教材一式](https://mokaair.com/guides/codex-csv-workshop/contacts-practice.zip)には参考コードがあり前のプロジェクトなしで比較できます。再整理は新しい出力名、整理は確認済み産物だけです。実名簿、大ファイル、スプレッドシートインポートは権限・ストリーミング・数式として解釈される文字列の扱いの規則を別設計します。本編は文字として保存し外部内容を命令実行しません。この基準と検証法で[既存プロジェクトの保守](article:codex-maintain-existing-project)へ進みます。",
         "가상 입력·프로그램·시험·명령·집계·원본 보존 증거를 전달합니다. [CSV 전체 자료](https://mokaair.com/guides/codex-csv-workshop/contacts-practice.zip)는 참고 코드가 있어 이전 프로젝트 없이 비교할 수 있습니다. 재정리는 새 출력 이름, 정리는 확인한 결과만 선택합니다. 실제 연락처·대용량·스프레드시트 가져오기는 권한·스트리밍·수식 문자열 규칙을 별도로 설계하세요. 이 편은 텍스트로 저장하며 외부 내용을 명령으로 실행하지 않습니다. 같은 기준·검증법으로 [기존 프로젝트 유지보수](article:codex-maintain-existing-project)로 진행합니다."
       ]
     }

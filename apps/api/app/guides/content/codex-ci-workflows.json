@@ -117,7 +117,7 @@
         },
         {
           "type": "paragraph",
-          "text": "版本標籤會移動。本文保留已逐項核對的完整提交 SHA；查證時 Codex Action 的 v1 已指向較新的提交，因此範例不宣稱使用當下最新 v1。更新時先讀新提交的輸入與權限規格，再改 SHA 並重做驗證。固定 Action 不會固定所有 runner 軟體或 CLI 版本，實際執行紀錄仍要保存。"
+          "text": "版本標籤可能移動。本範例固定已核對的完整 commit SHA。查證當下的 Codex Action v1 是帶註解標籤；解析它指向的 commit 後，與範例 SHA 相同。標籤物件的 SHA 不同，不代表程式提交較新。更新時先讀目標 commit 的輸入與權限規格，再改 SHA 並重做驗證。固定 Action 不會固定所有 runner 軟體或 CLI 版本，實際執行紀錄仍要保存。"
         },
         {
           "type": "code",
@@ -356,7 +356,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Version tags move. This example retains fully reviewed commit SHAs; the Codex Action v1 tag now points to a newer commit, so the example does not claim to use the latest v1. Review a new commit's inputs and permission behavior before updating and revalidating. Pinning an Action does not pin every runner dependency or the CLI; record actual runtime versions."
+          "text": "Version tags can move. This example pins a fully reviewed commit SHA. At verification, Codex Action v1 is an annotated tag; resolving its target commit gives the same SHA as this example. A different tag-object SHA does not mean a newer code commit. Before updating, review the target commit inputs and permission behavior, then change the SHA and revalidate. Pinning an Action does not pin every runner dependency or the CLI; record actual runtime versions."
         },
         {
           "type": "code",
@@ -595,7 +595,7 @@
         },
         {
           "type": "paragraph",
-          "text": "版タグは移動します。本例は確認済みの完全コミット SHA を保持します。確認時の Codex Action v1 は新しいコミットを指すため、本例を最新 v1 とはしません。更新前に新コミットの入力と権限仕様を読み、SHA 変更後に再検証します。Action 固定は全 runner 依存物や CLI の固定ではなく、実行版を記録します。"
+          "text": "版タグは移動する場合があります。本例は確認済みの完全な commit SHA に固定します。確認時の Codex Action v1 は注釈付きタグで、参照先の commit を解決すると本例の SHA と一致します。タグオブジェクトの SHA が違っても、コードのコミットが新しいとは限りません。更新前に対象 commit の入力と権限仕様を読み、SHA 変更後に再検証します。Action 固定は全 runner 依存物や CLI の固定ではなく、実行版を記録します。"
         },
         {
           "type": "code",
@@ -669,7 +669,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "Run workflow がなければ既定ブランチの YAML、Actions の有効化、権限を確認します。Secret 欠如・エージェント失敗では名前と API 権限を調べ、鍵をログへ出しません。取消・タイムアウト記録を残し"
+              "text": "Run workflow がなければ既定ブランチの YAML、Actions の有効化、権限を確認します。Secret 欠如・プロキシ起動失敗では名前と API 権限を調べ、鍵をログへ出しません。取消・タイムアウト記録を残し"
             },
             {
               "type": "article",
@@ -834,7 +834,7 @@
         },
         {
           "type": "paragraph",
-          "text": "버전 태그는 이동합니다. 예제는 검토한 전체 커밋 SHA를 유지합니다. 확인 당시 Codex Action v1은 더 새 커밋을 가리키므로 최신 v1을 사용한다고 주장하지 않습니다. 업데이트 전에 새 커밋의 입력·권한 동작을 읽고 SHA 변경 후 다시 검증하세요. Action 고정은 모든 runner 의존성과 CLI 고정이 아니므로 실제 실행 버전도 기록합니다."
+          "text": "버전 태그는 이동할 수 있습니다. 예제는 검토한 전체 commit SHA에 고정합니다. 확인 당시 Codex Action v1은 주석 있는 태그이며 대상 commit을 확인하면 예제 SHA와 같습니다. 태그 객체 SHA가 다르다고 코드 커밋이 더 새로운 것은 아닙니다. 업데이트 전에 대상 commit의 입력·권한 동작을 읽고 SHA 변경 후 다시 검증하세요. Action 고정은 모든 runner 의존성과 CLI 고정이 아니므로 실제 실행 버전도 기록합니다."
         },
         {
           "type": "code",
@@ -1073,7 +1073,7 @@
         },
         {
           "type": "paragraph",
-          "text": "版本标签会移动。本文保留已逐项核对的完整提交 SHA；查证时 Codex Action 的 v1 已指向较新的提交，因此范例不宣称使用当下最新 v1。更新时先读新提交的输入与权限规格，再改 SHA 并重做验证。固定 Action 不会固定所有 runner 软体或 CLI 版本，实际执行纪录仍要保存。"
+          "text": "版本标签可能移动。本范例固定已核对的完整 commit SHA。查证当下的 Codex Action v1 是带注解标签；解析它指向的 commit 后，与范例 SHA 相同。标签物件的 SHA 不同，不代表程式提交较新。更新时先读目标 commit 的输入与权限规格，再改 SHA 并重做验证。固定 Action 不会固定所有 runner 软体或 CLI 版本，实际执行纪录仍要保存。"
         },
         {
           "type": "code",

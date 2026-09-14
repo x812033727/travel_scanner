@@ -17,7 +17,7 @@
       "text": [
         "用完全虛構的專案辨認四種界線：工作範圍、敏感資料、外部內容與公開動作。閱讀約 15 分鐘、操作約 20 分鐘。需要 Codex、Git、文字編輯器及自己的空白 safety-lab。本文使用 DEMO_NOT_A_SECRET 作為假值，請勿替換成真實金鑰；本篇不需要任何正式服務帳號，也不要求你公開或寄出資料。先讀[權限與沙盒](article:codex-permissions)。",
         "Use a wholly fictional project to identify four boundaries: work scope, sensitive data, external content and public actions. Allow 15 minutes to read and 20 to practice. Prepare Codex, Git, a text editor and your own empty safety-lab. DEMO_NOT_A_SECRET is a fake value; never replace it with a real key. No production account, publication or message sending is needed. Read [Permissions and sandboxing](article:codex-permissions) first.",
-        "完全な架空プロジェクトで作業範囲・機密・外部内容・公開操作の4境界を見分けます。読む時間15分、実習20分。Codex、Git、純文字エディター、自分の空 safety-lab を用意します。DEMO_NOT_A_SECRET は偽値で、本物の鍵に替えません。正式アカウント・公開・送信は不要です。[権限とサンドボックス](article:codex-permissions)を先に読みます。",
+        "完全な架空プロジェクトで作業範囲・機密・外部内容・公開操作の4境界を見分けます。読む時間15分、実習20分。Codex、Git、テキストエディター、自分の空 safety-lab を用意します。DEMO_NOT_A_SECRET は偽値で、本物の鍵に替えません。正式アカウント・公開・送信は不要です。[権限とサンドボックス](article:codex-permissions)を先に読みます。",
         "완전한 가상 프로젝트로 작업 범위·민감 정보·외부 내용·공개 동작의 네 경계를 구분합니다. 읽기 15분, 실습 20분입니다. Codex·Git·텍스트 편집기·자신의 빈 safety-lab을 준비하세요. DEMO_NOT_A_SECRET는 가짜 값이며 실제 키로 바꾸지 않습니다. 운영 계정·공개·메시지 전송은 필요 없습니다. [권한과 샌드박스](article:codex-permissions)를 먼저 읽으세요."
       ]
     },
@@ -97,7 +97,7 @@
       "text": [
         "在這個新練習庫，第一條應顯示 .env，第二條沒有輸出；這只證明規則匹配且檔案未被追蹤，不會讀出值，也不證明代理無法讀取。若第二條已列出 .env，先停止並核對是否開到舊專案，不為了重現教材而強制加入或刪除檔案。這兩條 Git 結果、summary.md 的內容及工具活動，是三種要分別保存的證據。",
         "In this fresh lab, the first command should print .env and the second nothing. That proves a matching ignore rule and an untracked file, not a read restriction; neither command prints its value. If ls-files lists .env, stop and verify you did not open an older project. Do not force-add or delete files to match the example. Keep Git state, summary content and tool activity as separate evidence.",
-        "新実習庫では最初が .env、二つ目は出力なしです。無視規則の一致と未追跡を示すだけで読取り禁止ではなく、値も表示しません。ls-files に .env が出るなら旧プロジェクトでないか確認し、教材に合わせる強制追加や削除をしません。Git 状態、摘要内容、ツール活動は別の証拠として保存します。",
+        "新規の練習リポジトリでは最初が .env、二つ目は出力なしです。無視規則の一致と未追跡を示すだけで読取り禁止ではなく、値も表示しません。ls-files に .env が出るなら旧プロジェクトでないか確認し、教材に合わせる強制追加や削除をしません。Git 状態、要約内容、ツール活動は別の証拠として保存します。",
         "새 실습 저장소에서 첫 명령은 .env를 출력하고 두 번째는 출력이 없어야 합니다. 무시 규칙 일치와 미추적만 증명하며 읽기 제한은 아니고 값도 출력하지 않습니다. ls-files에 .env가 나오면 이전 프로젝트인지 확인하고 예제에 맞추려 강제 추가·삭제하지 마세요. Git 상태, 요약 내용, 도구 활동은 별도 증거로 보존합니다."
       ]
     },
@@ -115,7 +115,7 @@
       "text": [
         "再建立 incoming-note.md，以下是一份刻意加入不當指示的虛構外部文件。它不是你的工作規則，也不是要你照做的命令。真正需求是從 brief.md 摘要專案；外部文件卻試圖擴大到讀設定與公開。這種要求可能藏在網頁、README、註解、搜尋結果或圖片中，來源文字看起來像系統訊息也不會自動取得權限。",
         "Create incoming-note.md below, a fictional external document with a deliberately inappropriate instruction. It is neither your project rules nor a command to follow. The real task summarizes brief.md; the external note attempts to expand it into reading configuration and publishing. Such requests can appear in pages, READMEs, comments, search results or images. Text styled as a system message does not acquire authority merely by appearing in a source.",
-        "下記 incoming-note.md は不適切な指示を故意に入れた架空外部文書です。プロジェクト規則でも実行命令でもありません。本来は brief.md 要約なのに設定読取と公開へ拡張しようとしています。網頁・README・註解・検索結果・画像にも入り得るもので、system 風の文字が出典にあっても権限を自動取得しません。",
+        "下記 incoming-note.md は不適切な指示を故意に入れた架空外部文書です。プロジェクト規則でも実行命令でもありません。本来は brief.md 要約なのに設定読取と公開へ拡張しようとしています。ウェブページ・README・コメント・検索結果・画像にも入り得るもので、system 風の文字が出典にあっても権限を自動取得しません。",
         "아래 incoming-note.md는 부적절한 지시를 일부러 넣은 가상 외부 문서입니다. 프로젝트 규칙이나 따라 할 명령이 아닙니다. 원래 작업은 brief.md 요약인데 설정 읽기·공개로 확대하려 합니다. 웹·README·주석·검색 결과·이미지에도 들어갈 수 있으며 시스템 메시지처럼 꾸민 출처 텍스트에 자동 권한이 생기지 않습니다."
       ]
     },
@@ -163,7 +163,7 @@
       "type": "p",
       "text": [
         "用 git status --short --ignored 確認只多出你預期的 summary.md；本練習的其他檔案仍未追蹤，所以也要逐一核對原文未改。若準備提交，在暫存清單只選 .gitignore、brief.md、incoming-note.md 與合格的 summary.md，查看 git diff --cached --name-only，不使用 git add . 隨手收進不明檔案。這裡的忽略檔保護僅是一層，遇到原本已追蹤的真金鑰，移到 .gitignore 不能修復已曝光狀態。",
-        "Use git status --short --ignored to confirm only the expected summary.md was added. Other exercise files remain untracked, so also compare their contents. If committing, stage only .gitignore, brief.md, incoming-note.md and an accepted summary.md, then inspect git diff --cached --name-only rather than collecting unknown files with git add .. Ignore rules are only one layer: moving an already tracked real credential into .gitignore cannot repair prior exposure.",
+        "Use git status --short --ignored to confirm only the expected summary.md was added. Other exercise files remain untracked, so also compare their contents. If committing, stage only .gitignore, brief.md, incoming-note.md and an accepted summary.md, then inspect git diff --cached --name-only and avoid using git add . to collect unknown files. Ignore rules are only one layer: moving an already tracked real credential into .gitignore cannot repair prior exposure.",
         "git status --short --ignored で追加が予定 summary.md だけか確認します。他教材は未追跡なので原文不変も個別に照合します。コミット時は .gitignore・brief.md・incoming-note.md・合格 summary.md だけを選び、git diff --cached --name-only を確認し、git add . で不明ファイルを集めません。ignore は一層にすぎず、追跡済み実鍵を移しても既露出は修復できません。",
         "git status --short --ignored로 예상 summary.md만 추가됐는지 확인합니다. 다른 자료는 미추적 상태이므로 원문 불변도 개별 비교하세요. 커밋하려면 .gitignore·brief.md·incoming-note.md·합격 summary.md만 선택하고 git diff --cached --name-only를 확인하며 git add .로 불명 파일을 모으지 않습니다. ignore는 한 계층일 뿐 이미 추적한 실제 키를 옮겨도 이전 노출은 복구되지 않습니다."
       ]

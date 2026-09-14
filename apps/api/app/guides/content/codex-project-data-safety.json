@@ -370,7 +370,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Use git status --short --ignored to confirm only the expected summary.md was added. Other exercise files remain untracked, so also compare their contents. If committing, stage only .gitignore, brief.md, incoming-note.md and an accepted summary.md, then inspect git diff --cached --name-only rather than collecting unknown files with git add .. Ignore rules are only one layer: moving an already tracked real credential into .gitignore cannot repair prior exposure."
+          "text": "Use git status --short --ignored to confirm only the expected summary.md was added. Other exercise files remain untracked, so also compare their contents. If committing, stage only .gitignore, brief.md, incoming-note.md and an accepted summary.md, then inspect git diff --cached --name-only and avoid using git add . to collect unknown files. Ignore rules are only one layer: moving an already tracked real credential into .gitignore cannot repair prior exposure."
         },
         {
           "type": "heading",
@@ -519,7 +519,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "完全な架空プロジェクトで作業範囲・機密・外部内容・公開操作の4境界を見分けます。読む時間15分、実習20分。Codex、Git、純文字エディター、自分の空 safety-lab を用意します。DEMO_NOT_A_SECRET は偽値で、本物の鍵に替えません。正式アカウント・公開・送信は不要です。権限とサンドボックスを先に読みます。"
+          "text": "完全な架空プロジェクトで作業範囲・機密・外部内容・公開操作の4境界を見分けます。読む時間15分、実習20分。Codex、Git、テキストエディター、自分の空 safety-lab を用意します。DEMO_NOT_A_SECRET は偽値で、本物の鍵に替えません。正式アカウント・公開・送信は不要です。権限とサンドボックスを先に読みます。"
         },
         {
           "type": "rich_paragraph",
@@ -575,7 +575,7 @@
         },
         {
           "type": "paragraph",
-          "text": "新実習庫では最初が .env、二つ目は出力なしです。無視規則の一致と未追跡を示すだけで読取り禁止ではなく、値も表示しません。ls-files に .env が出るなら旧プロジェクトでないか確認し、教材に合わせる強制追加や削除をしません。Git 状態、摘要内容、ツール活動は別の証拠として保存します。"
+          "text": "新規の練習リポジトリでは最初が .env、二つ目は出力なしです。無視規則の一致と未追跡を示すだけで読取り禁止ではなく、値も表示しません。ls-files に .env が出るなら旧プロジェクトでないか確認し、教材に合わせる強制追加や削除をしません。Git 状態、要約内容、ツール活動は別の証拠として保存します。"
         },
         {
           "type": "heading",
@@ -584,7 +584,7 @@
         },
         {
           "type": "paragraph",
-          "text": "下記 incoming-note.md は不適切な指示を故意に入れた架空外部文書です。プロジェクト規則でも実行命令でもありません。本来は brief.md 要約なのに設定読取と公開へ拡張しようとしています。網頁・README・註解・検索結果・画像にも入り得るもので、system 風の文字が出典にあっても権限を自動取得しません。"
+          "text": "下記 incoming-note.md は不適切な指示を故意に入れた架空外部文書です。プロジェクト規則でも実行命令でもありません。本来は brief.md 要約なのに設定読取と公開へ拡張しようとしています。ウェブページ・README・コメント・検索結果・画像にも入り得るもので、system 風の文字が出典にあっても権限を自動取得しません。"
         },
         {
           "type": "code",

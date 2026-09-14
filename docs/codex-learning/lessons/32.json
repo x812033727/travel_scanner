@@ -8,7 +8,7 @@
   "codeLanguage": "python",
   "text": {
     "zh-TW": [
-      "這個實戰製作 CSV 名單整理工具，保留原檔並產生新結果。規則固定為修剪空白、將 email 轉小寫、同 email 保留第一筆、略過缺姓名或格式不合的 email，最後回報保留、重複與無效筆數。這是練習用格式檢查，不保證信箱真實存在。",
+      "這個實戰製作 CSV 名單整理工具，保留原檔並產生新結果。規則固定為修剪空白、將 email 轉小寫、同 email 保留第一筆有效資料、略過缺姓名或格式不合的 email，最後回報保留、重複與無效筆數。這是練習用格式檢查，不保證信箱真實存在。",
       "預留約 45 分鐘，準備 Python 3、練習目錄與下方四筆虛構資料。Windows 先用 py --version，macOS／Linux 用 python3 --version 確認。若沒有 Python，先完成環境安裝；不把真實客戶名單交給練習。",
       [
         "建立 contacts.csv，第一行 name,email，接著放入 Alice 的帶空白 email、一筆同地址重複、一筆 Bob 與一筆空 email。用英文逗號分欄，含逗號的姓名要用 CSV 引號。",
@@ -21,7 +21,7 @@
       "用 Python 標準函式庫製作 CSV 整理工具。保留原檔，修剪空白、email 小寫、保留第一筆重複地址並跳過無效列。輸出若已存在則失敗，不覆寫；回報三種筆數並測試正常與錯誤資料。"
     ],
     "en": [
-      "Build a CSV cleaner that preserves its input and writes a new output. The exercise trims whitespace, lowercases email, keeps the first occurrence of an address and skips blank names or malformed addresses. It reports kept, duplicate and invalid counts. Its format check does not prove a mailbox exists.",
+      "Build a CSV cleaner that preserves its input and writes a new output. The exercise trims whitespace, lowercases email, keeps the first valid occurrence of an address and skips blank names or malformed addresses. It reports kept, duplicate and invalid counts. Its format check does not prove a mailbox exists.",
       "Allow about 45 minutes and prepare Python 3 plus a practice directory. Check py --version on Windows or python3 --version on macOS/Linux. Use the four fictional records described below, never a real customer list.",
       [
         "Create contacts.csv with the exact header name,email: a whitespace-padded Alice address, a duplicate of that address, Bob and one missing email. Use CSV quoting for names containing commas.",
@@ -34,7 +34,7 @@
       "Build a standard-library Python CSV cleaner. Preserve input, trim whitespace, lowercase emails, keep the first duplicate address and skip invalid records. Refuse an existing output, report all three counts and test normal and malformed data."
     ],
     "ja": [
-      "入力を保って別ファイルに出す CSV 整理ツールを作ります。空白除去、email の小文字化、重複は最初を保持、空の名前や不正な形式を除外し、三種類の件数を報告します。実在するメールかは保証しません。",
+      "入力を保って別ファイルに出す CSV 整理ツールを作ります。空白除去、email の小文字化、重複は最初の有効行を保持、空の名前や不正な形式を除外し、三種類の件数を報告します。実在するメールかは保証しません。",
       "約 45 分と Python 3 を用意します。Windows は py --version、macOS・Linux は python3 --version で確認し、架空の四行だけを使います。",
       [
         "contacts.csv の見出しを name,email とし、余白付き Alice、同じアドレスの重複、Bob、空 email を入れます。カンマ入りの名前は CSV の引用符で囲みます。",
@@ -47,7 +47,7 @@
       "標準ライブラリーで元 CSV を保つ整理ツールを作ってください。空白除去、email 小文字化、最初の重複保持、無効行除外、既存出力の拒否と件数報告を実装してテストしてください。"
     ],
     "ko": [
-      "입력을 보존하고 새 파일로 내보내는 CSV 정리 도구를 만듭니다. 공백 제거, email 소문자화, 중복 첫 행 유지, 빈 이름이나 잘못된 형식 제외 후 세 종류의 건수를 보고합니다. 실제 이메일 존재를 보장하지는 않습니다.",
+      "입력을 보존하고 새 파일로 내보내는 CSV 정리 도구를 만듭니다. 공백 제거, email 소문자화, 중복 중 첫 유효 행 유지, 빈 이름이나 잘못된 형식 제외 후 세 종류의 건수를 보고합니다. 실제 이메일 존재를 보장하지는 않습니다.",
       "약 45분과 Python 3를 준비합니다. Windows는 py --version, macOS/Linux는 python3 --version으로 확인하고 가상 네 행만 사용합니다.",
       [
         "contacts.csv의 헤더를 name,email로 하고 공백 있는 Alice, 같은 주소 중복, Bob과 빈 email을 넣습니다. 쉼표가 있는 이름은 CSV 따옴표로 감쌉니다.",

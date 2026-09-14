@@ -46,6 +46,8 @@ Reference files use fictional data only. Keep contacts.csv unchanged and use a n
 架空資料だけの参考実装です。contacts.csv を保持し、毎回新しい出力名を使います。全手順と制限は下記の教材にあります。
 가상 자료만 쓰는 참고 코드입니다. contacts.csv를 보존하고 매번 새 출력 이름을 사용하세요. 전체 절차와 제한은 아래 학습 자료에 있습니다.
 
+Requires Python 3.9 or later / 需要 Python 3.9 以上版本 / 需要 Python 3.9 及以上版本 / Python 3.9 以降が必要 / Python 3.9 이상 필요.
+
 ## Windows PowerShell
 ```powershell
 py -3 clean_contacts.py contacts.csv cleaned-01.csv

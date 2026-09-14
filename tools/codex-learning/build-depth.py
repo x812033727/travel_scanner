@@ -290,6 +290,10 @@ def main():
             for locale, blocks in compiled.items():
                 # Keep original artwork and attribution; authored prose replaces every old paragraph.
                 pictures = [block for block in pack["locales"][locale]["blocks"] if block["type"] == "image"]
+                if row["id"] == 31:
+                    # The former static landing-page exercise is unrelated to the todo workshop.
+                    legacy = {f'/guides/{row["slug"]}/workshop-{width}.png' for width in [390, 1280]}
+                    pictures = [picture for picture in pictures if picture["src"] not in legacy]
                 # Idempotently append real example screenshots with honest platform captions.
                 if row["id"] in {3, 6, 26, 31}:
                     pictures = [picture for picture in pictures if "todo-" not in picture["src"]]

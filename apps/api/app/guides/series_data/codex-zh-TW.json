@@ -2065,7 +2065,7 @@
     {
       "slug": "codex-website-workshop",
       "title": "實戰：製作小網站",
-      "outcome": "這個實戰把前面的需求、Plan、MD 規則、瀏覽器與驗收串起來，完成一個三張卡片的虛構工作室網站。以單一 HTML 做出清楚的內容與自適應版面，練習完整交付，而不是追求一次加入很多功能。",
+      "outcome": "從 brief.md 規劃並製作 Small Steps 待辦網站，完成新增、完成、刪除、篩選與本機資料保存。將 HTML、CSS、資料函式、畫面事件與測試分開，以 Node 測試和瀏覽器操作驗收，並留下可重新啟動與還原的交接紀錄。",
       "sources": [
         "https://learn.chatgpt.com/docs/prompting",
         "https://learn.chatgpt.com/docs/browser"
@@ -2098,7 +2098,7 @@
     {
       "slug": "codex-csv-workshop",
       "title": "實戰：製作資料整理工具",
-      "outcome": "這個實戰製作 CSV 名單整理工具，保留原檔並產生新結果。規則固定為修剪空白、將 email 轉小寫、同 email 保留第一筆、略過缺姓名或格式不合的 email，最後回報保留、重複與無效筆數。這是練習用格式檢查，不保證信箱真實存在。",
+      "outcome": "這個實戰製作 CSV 名單整理工具，保留原檔並產生新結果。規則固定為修剪空白、將 email 轉小寫、同 email 保留第一筆有效資料、略過缺姓名或格式不合的 email，最後回報保留、重複與無效筆數。這是練習用格式檢查，不保證信箱真實存在。",
       "sources": [
         "https://learn.chatgpt.com/docs/prompting",
         "https://docs.python.org/3/library/csv.html"
