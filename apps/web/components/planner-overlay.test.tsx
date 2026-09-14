@@ -1,6 +1,6 @@
 import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import * as intl from "next-intl";
-import { StrictMode, useState, type CSSProperties } from "react";
+import { Profiler, StrictMode, useState, type CSSProperties } from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { plannerOverlayCopy } from "./planner/overlay-copy";
 import { PlannerOverlay } from "./planner-overlay";
@@ -52,6 +52,46 @@ const userEvent = {
 
 describe("PlannerOverlay", () => {
   afterEach(() => vi.restoreAllMocks());
+  it.each(["click", "Escape"])("handles %s as soon as a reopened dialog is committed", (input) => {
+    const close = vi.fn();
+    const overflow = document.body.style.overflow;
+    const ready: boolean[] = [];
+    // RTL's completed act() flushes passive effects and hides the interval in
+    // which an async opening has committed its controls but not its modal guard.
+    // Deliver input at the commit boundary instead of waiting for those effects.
+    const tree = (open: boolean) => <Profiler id="early-input" onRender={() => {
+      const panel = document.querySelector<HTMLElement>('[role="dialog"]');
+      if (!panel) return;
+      ready.push(document.body.style.overflow === "hidden");
+      if (input === "click") panel.querySelector<HTMLButtonElement>("[data-planner-close]")!.click();
+      else panel.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true, cancelable: true }));
+    }}><PlannerOverlay open={open} title="Early input" onClose={close}>Content</PlannerOverlay></Profiler>;
+    const view = render(tree(true));
+    expect(close).toHaveBeenCalledOnce();
+    expect(ready).toEqual([true]);
+    view.rerender(tree(false));
+    expect(document.body.style.overflow).toBe(overflow);
+    close.mockClear();
+    ready.length = 0;
+    view.rerender(tree(true));
+    expect(close).toHaveBeenCalledOnce();
+    expect(ready).toEqual([true]);
+  });
+
+  it("uses the committed close guard before passive effects run", () => {
+    const previous = vi.fn();
+    const current = vi.fn();
+    let deliverInput = false;
+    const tree = (onClose: () => void) => <Profiler id="updated-guard" onRender={() => {
+      if (deliverInput) document.querySelector<HTMLButtonElement>("[data-planner-close]")!.click();
+    }}><PlannerOverlay open title="Updated guard" onClose={onClose}>Content</PlannerOverlay></Profiler>;
+    const view = render(tree(previous));
+    deliverInput = true;
+    view.rerender(tree(current));
+    expect(previous).not.toHaveBeenCalled();
+    expect(current).toHaveBeenCalledOnce();
+  });
+
   it("does not handle Escape owned by a native child and restores all locks on route unmount", async () => {
     const previous = Object.getOwnPropertyDescriptor(HTMLDialogElement.prototype, "showModal");
     Object.defineProperty(HTMLDialogElement.prototype, "showModal", { configurable: true, value: function (this: HTMLDialogElement) { this.open = true; } });

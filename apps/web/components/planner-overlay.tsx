@@ -2,7 +2,7 @@
 
 import { ArrowLeft, X } from "lucide-react";
 import { useLocale } from "next-intl";
-import { useCallback, useEffect, useId, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
+import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { plannerOverlayCopy } from "@/components/planner/overlay-copy";
 import { isTopModalLayer, registerModalLayer } from "@/lib/modal-sheet";
@@ -114,7 +114,8 @@ function OpenPlannerOverlay({
   const onCloseRef = useRef(onClose);
   const [expanded, setExpanded] = useState(defaultExpanded);
   const mounted = useSyncExternalStore(subscribeToClient, () => true, () => false);
-  useEffect(() => { onCloseRef.current = onClose; }, [onClose]);
+  // The visible controls and their close guard must belong to the same commit.
+  useLayoutEffect(() => { onCloseRef.current = onClose; }, [onClose]);
   const closeOverlay = useCallback(() => {
     if (panelRef.current && isTopModalLayer(panelRef.current)) onCloseRef.current();
   }, []);
@@ -140,12 +141,14 @@ function OpenPlannerOverlay({
     return () => observer.disconnect();
   }, [mounted]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const panel = panelRef.current;
     const container = containerRef.current;
     if (!mounted || !panel || !container) return;
     const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     const layer = { container, panel };
+    // Register before paint so the first click/Escape cannot arrive at an
+    // unregistered panel. Async openings need not flush passive effects first.
     // Own the shared overflow lock before taking the planner's fixed-position snapshot.
     // Native/custom children may unmount after this parent during a route change.
     const unregister = registerModalLayer(panel);

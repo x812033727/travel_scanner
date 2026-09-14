@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-09-11T21:23:54Z
 completed_at:
-branch: claude/mokaair-website-access-k7xiku
+branch: codex/codex-learning-complete
 depends_on: []
 scope:
   - apps/web/lib/modal-sheet.ts
@@ -399,3 +399,13 @@ CI 對 **同一個 commit `cc6c0c59`** 跑了兩個 run（push 與 pull_request 
 輸出。既然現在知道 body 的鎖狀態是個有訊息量的訊號，值得把它加進 `waitFor` 失敗時的輸出裡
 （哪些層還在 `layers`、body 的 position/overflow、還有幾個 `role="dialog"`），比事後翻 DOM
 dump 有效率。
+
+## Commit boundary registration defect — codex-modal-fc2e, 2026-09-14
+
+- Claimed this existing task after the Codex release checks reproduced the same second-Close failure at trip-editor.test.tsx:197. No trip-editor files or shared useModalSheet implementation were edited.
+- Added three deterministic PlannerOverlay tests that deliver click/Escape or an updated close callback during the Profiler commit callback, before passive effects. The click/Escape cases cover initial mount and reopening and verify the scroll lock. All three fail on the prior implementation and pass after moving the close-ref update and modal registration/listener effect to useLayoutEffect.
+- This exercises a different interval from the earlier after-flushSync probe, which had already flushed passive effects. It proves an unregistered/current-callback window; it does not prove that every historical Escape failure has the same cause. The separate useModalSheet case remains open.
+- Focused checks: 33 tests in PlannerOverlay/modal-sheet pass; TypeScript and ESLint pass. No weakened assertions, added skips, timeout increases or test configuration changes. Three complete frontend runs were planned; the first was interrupted as recorded below, and runs 2/3 did not start.
+- Evidence and source hashes: docs/codex-learning/evidence/planner-modal-registration-review.json. React timing references: https://react.dev/reference/react/useEffect and https://react.dev/reference/react/useLayoutEffect.
+- When whole-suite output was delayed beyond the previous run duration, ran the unchanged trip-editor file with verbose reporting: all 75 tests passed in 133.60 seconds, including the second-Close case. Existing asynchronous act warnings remain in the offline-day/route-reorder cases. One concurrent Windows sample had about 124 MiB physical memory free; no other tasks' processes were stopped. This diagnostic is separate from the complete-suite repetitions.
+- The complete run emitted only its startup banner for 19 minutes 34 seconds. Physical-memory samples were 127108 and 495048 KiB free out of 16364204 KiB. Stopped only the verified workspace Vitest process 7436; exit -1 is an operator interruption, not a failed assertion. The loop stopped before runs 2/3. Full-suite acceptance remains incomplete, and low memory is an observation rather than a proven cause. Raw run/log: docs/codex-learning/evidence/modal-validation-20260914/. Next: repeat with live verbose reporting and sufficient available resources to locate the last executed case; do not declare this task done from the focused passes.

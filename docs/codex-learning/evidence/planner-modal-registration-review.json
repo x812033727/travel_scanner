@@ -1,0 +1,85 @@
+{
+  "checked_on": "2026-09-14",
+  "reviewer": "codex-modal-fc2e",
+  "base_commit": "cfc5a6e8f1595ede78ee93fa004e1e4aad223b13",
+  "scope": "PlannerOverlay commit-time registration and current close callback. Shared useModalSheet and trip-editor source files were not changed.",
+  "source_hashes": {
+    "apps/web/components/planner-overlay.tsx": "54a0fbe396d6f0448f27fe293f6f0bb7b784982f604d113385140470d86f0d54",
+    "apps/web/components/planner-overlay.test.tsx": "1061eb0eb9e67b21d55b1a69bff25f7adebacb798de2a005b834a36903cdf4cb"
+  },
+  "hash_convention": "LF-normalized UTF-8 source.",
+  "trigger": "A dialog can commit before its passive effects register the modal layer and update the close callback. Close and Escape require registration; an updated guard must match the committed controls.",
+  "evidence": [
+    "Three deterministic Profiler commit-boundary cases fail before the change: first click and Escape do not call onClose; changing onClose can invoke the previous callback.",
+    "The first click and Escape cases each cover initial mount, close, and reopening, and check the scroll lock before input.",
+    "Moved only the callback-ref update and layer/listener registration effects to useLayoutEffect. The theme observer remains passive.",
+    "The earlier task's after-flushSync probe is not contradicted: that probe reads after passive effects have been flushed; these tests deliver input during commit.",
+    "No waitFor relaxation, skip, timeout increase, test configuration change, shared modal-sheet change or trip-editor edit was introduced."
+  ],
+  "sources": [
+    {
+      "url": "https://react.dev/reference/react/useEffect",
+      "supports": "Passive effects can run after paint."
+    },
+    {
+      "url": "https://react.dev/reference/react/useLayoutEffect",
+      "supports": "Layout effects run before browser repaint."
+    }
+  ],
+  "checks": [
+    {
+      "command": "npm run test --workspace @travel-scanner/web -- components/planner-overlay.test.tsx -t committed --pool=threads --maxWorkers=1",
+      "phase": "before fix",
+      "result": "failed as expected",
+      "failed": 3,
+      "not_selected": 17
+    },
+    {
+      "command": "npm run test --workspace @travel-scanner/web -- components/planner-overlay.test.tsx lib/modal-sheet.test.tsx --pool=threads --maxWorkers=1",
+      "phase": "after fix",
+      "result": "passed",
+      "tests": 33,
+      "files": 2
+    },
+    {
+      "command": "npm run typecheck:web",
+      "result": "passed"
+    },
+    {
+      "command": "npm run lint:web",
+      "result": "passed"
+    }
+  ],
+  "additional_diagnostic": {
+    "reason": "Whole-suite progress had not appeared after its previous 796-second duration; ran the previously failing consumer file to distinguish a consumer regression from a slow complete run.",
+    "command": "npm run test --workspace @travel-scanner/web -- components/trip-editor.test.tsx --pool=threads --maxWorkers=1 --reporter=verbose",
+    "result": "passed",
+    "files": 1,
+    "tests": 75,
+    "duration_seconds": 133.60,
+    "warnings": "React act warnings from asynchronous updates in the existing offline-day and route-reorder cases; no assertion failures.",
+    "load_observation": "One Windows OS sample during the concurrent diagnostic reported 127108 KiB free of 16364204 KiB physical memory. This can affect timing but does not prove the reason for delayed whole-suite output."
+  },
+  "whole_frontend": {
+    "result": "interrupted-incomplete",
+    "planned_runs": 3,
+    "completed_runs": 0,
+    "attempted_runs": 1,
+    "not_started_runs": [2, 3],
+    "duration_seconds_before_interruption": 1173.85,
+    "exit_code": -1,
+    "termination": "Stopped only verified workspace Vitest PID 7436 after 19 minutes 34 seconds without any per-file result. The outer loop exited and did not start repetitions 2 or 3. The nonzero exit is operator interruption, not evidence of a failed test assertion.",
+    "memory_samples_kib": [{"total": 16364204, "free": 127108}, {"total": 16364204, "free": 495048}],
+    "diagnosis": "Cause of non-completion unconfirmed. Low memory was observed, but no per-file progress or assertion result was emitted. Preserve the incomplete result; do not treat it as a passed complete suite.",
+    "next_step": "When adequate local resources are available, run the complete suite with live verbose reporting to identify its last collected/executed case. Complete three consecutive full passes before closing the original flake task.",
+    "command": "npm run test --workspace @travel-scanner/web -- --pool=threads --maxWorkers=1",
+    "stop_on_first_failure": true,
+    "run_record": "modal-validation-20260914/runs.json",
+    "source_stability": "PlannerOverlay source and tests have remained unchanged since the run started. Original Codex diagram assets and their generator were updated during the first run; no identical whole-repository snapshot is claimed."
+  },
+  "limitations": [
+    "This proves a commit-before-passive-effects defect, not a captured trace tying every historical Escape or Close failure to this cause.",
+    "The separate useModalSheet Escape case remains unresolved.",
+    "No product UI, final Codex page acceptance, CI, PR, merge, publication or deployment result is established by these local tests."
+  ]
+}
