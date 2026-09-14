@@ -131,7 +131,7 @@
         },
         {
           "type": "paragraph",
-          "text": "看不到 /debug-config 時先輸入 / 查看該版選單，並用系統終端機的 codex --version 記版本；依官方安裝來源更新後再查。不要臆造另一個同名 shell 指令。若版本或組織環境沒有足夠診斷資訊，就把有效值標成尚未確認，不能只靠模型說「已設定」就算完成。保存起始紀錄後用 /exit 退出。"
+          "text": "看不到 /debug-config 時先輸入 / 查看該版選單，再用 /exit 回系統終端機，以 codex --version 記版本；依官方安裝來源更新後，重新啟動 CLI 再查。不要臆造另一個同名 shell 指令。若版本或組織環境沒有足夠診斷資訊，就把有效值標成尚未確認，不能只靠模型說「已設定」就算完成。保存起始紀錄後用 /exit 退出。"
         },
         {
           "type": "heading",
@@ -418,7 +418,7 @@
         },
         {
           "type": "paragraph",
-          "text": "看不到 /debug-config 时先输入 / 查看该版选单，并用系统终端机的 codex --version 记版本；依官方安装来源更新后再查。不要臆造另一个同名 shell 指令。若版本或组织环境没有足够诊断资讯，就把有效值标成尚未确认，不能只靠模型说「已设定」就算完成。保存起始纪录后用 /exit 退出。"
+          "text": "看不到 /debug-config 时先输入 / 查看该版选单，再用 /exit 回系统终端机，以 codex --version 记版本；依官方安装来源更新后，重新启动 CLI 再查。不要臆造另一个同名 shell 指令。若版本或组织环境没有足够诊断资讯，就把有效值标成尚未确认，不能只靠模型说「已设定」就算完成。保存起始纪录后用 /exit 退出。"
         },
         {
           "type": "heading",
@@ -705,7 +705,7 @@
         },
         {
           "type": "paragraph",
-          "text": "If /debug-config is absent, inspect that version's / menu and record codex --version in the shell; update through its official installation source and check again. Do not invent a same-named shell command. If diagnostics remain insufficient, mark the effective setting unverified rather than relying on a model assurance. Save your baseline and use /exit."
+          "text": "If /debug-config is absent, inspect that version's / menu, use /exit to return to the shell and record codex --version. Update through its official installation source, restart CLI and check again. Do not invent a same-named shell command. If diagnostics remain insufficient, mark the effective setting unverified rather than relying on a model assurance. Save your baseline and use /exit."
         },
         {
           "type": "heading",
@@ -992,7 +992,7 @@
         },
         {
           "type": "paragraph",
-          "text": "/debug-config がなければ / の一覧とシェルの codex --version を確認し、導入元の方法で更新します。同名シェル命令を作りません。版や組織環境で診断が足りなければ有効値は未確認とし、モデルの成功宣言だけで完了扱いしません。記録後 /exit で終了します。"
+          "text": "/debug-config がなければ / の一覧を見て、/exit でシェルへ戻り codex --version を確認します。導入元の方法で更新し、CLI を再起動して調べます。同名シェル命令を作りません。版や組織環境で診断が足りなければ有効値は未確認とし、モデルの成功宣言だけで完了扱いしません。記録後 /exit で終了します。"
         },
         {
           "type": "heading",
@@ -1279,7 +1279,7 @@
         },
         {
           "type": "paragraph",
-          "text": "/debug-config가 없으면 / 목록과 셸의 codex --version을 확인하고 설치한 공식 방식으로 업데이트합니다. 같은 이름의 셸 명령을 지어내지 않습니다. 버전/조직 환경의 진단이 부족하면 유효값을 미확인으로 남기고 모델 성공 선언만 믿지 않습니다. 기준 기록 후 /exit로 종료합니다."
+          "text": "/debug-config가 없으면 / 목록을 확인한 뒤 /exit로 셸에 돌아가 codex --version을 기록합니다. 설치한 공식 방식으로 업데이트하고 CLI를 다시 시작해 확인합니다. 같은 이름의 셸 명령을 지어내지 않습니다. 버전/조직 환경의 진단이 부족하면 유효값을 미확인으로 남기고 모델 성공 선언만 믿지 않습니다. 기준 기록 후 /exit로 종료합니다."
         },
         {
           "type": "heading",

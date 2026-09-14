@@ -62,10 +62,10 @@
     {
       "type": "p",
       "text": [
-        "先執行測試並保存摘要：教材起點預期 2 項通過、1 項失敗。這是準備好的故障，不要先改測試讓它變綠。開 index.html，加入 Read 與 Build 並勾選 Read，切 Active／Completed，觀察兩種選項仍回傳全部任務。若結果不同，先確認你拿的是 start，而不是 broken 或 expected；三份用途不同。",
-        "Run the baseline and retain its summary: start should pass two tests and fail one. This is an intentional defect; do not weaken tests. Open index.html, add Read and Build, complete Read and switch Active/Completed. Both incorrectly show all tasks. If results differ, verify start rather than broken or expected; they are distinct fixtures.",
-        "開始状態は2件成功、1件失敗です。教材の故障なのでテストを弱めません。index.html で Read と Build を追加し Read を完了、Active / Completed を切り替えると両方とも全件表示します。違う場合は broken や expected ではなく start かを確認します。",
-        "시작 상태는 2개 통과, 1개 실패입니다. 의도된 결함이므로 테스트를 약화하지 않습니다. index.html에서 Read와 Build를 추가하고 Read를 완료한 뒤 Active/Completed로 바꾸면 둘 다 전체를 표시합니다. 다르면 broken/expected가 아닌 start인지 확인합니다."
+        "先執行測試並保存摘要：教材起點預期 2 項通過、1 項失敗。這是準備好的故障，不要先改測試讓它變綠；若結果不同，先確認拿的是 start，而不是 broken 或 expected，三份用途不同。",
+        "Run the baseline and retain its summary: start should pass two tests and fail one. This is an intentional defect; do not weaken tests. If results differ, verify start rather than broken or expected; they are distinct fixtures.",
+        "開始状態の結果を保存します。2件成功、1件失敗が期待値です。教材の故障なのでテストを弱めません。違う場合は broken や expected ではなく start かを確認します。それぞれ別の教材です。",
+        "시작 상태 결과를 저장합니다. 예상은 2개 통과, 1개 실패입니다. 의도된 결함이므로 테스트를 약화하지 않습니다. 다르면 broken/expected가 아닌 start인지 확인하세요. 각 자료의 용도는 다릅니다."
       ]
     },
     {
@@ -75,6 +75,15 @@
         "For UI checks, reuse the first project's Python preview. Stop your earlier practice server and launch from codex-plan-lab. Windows: py -m http.server 4173 --bind 127.0.0.1; macOS/Linux: replace py with python3. Open http://127.0.0.1:4173 rather than double-clicking HTML. Keep this terminal for the server, use another for tests, and stop the server with Ctrl+C when finished.",
         "画面確認は最初の教材の Python プレビューを使います。自分の前の教材サーバーを止め、codex-plan-lab から Windows は py -m http.server 4173 --bind 127.0.0.1、macOS/Linux は py を python3 にして起動します。HTML を直接開かず http://127.0.0.1:4173 へ進み、テストは別端末、終了はサーバー端末で Ctrl+C です。",
         "화면은 첫 실습의 Python 미리 보기를 씁니다. 자신의 이전 실습 서버를 중단하고 codex-plan-lab에서 Windows는 py -m http.server 4173 --bind 127.0.0.1, macOS/Linux는 py 대신 python3로 시작합니다. HTML 직접 열기 대신 http://127.0.0.1:4173으로 들어가며 테스트는 다른 터미널, 종료는 서버 터미널 Ctrl+C입니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "預覽開啟後，先保留仍需要的舊練習紀錄。在 About this exercise 按 Reset practice data，選 All tasks 並確認清單為空，再新增 Read、Build，只勾選 Read。切 Active／Completed，預期兩種選項仍顯示這兩筆任務。重設只處理教材的儲存資料，不要清除整個瀏覽器的資料。",
+        "Once the preview opens, preserve any old practice records you still need. Under About this exercise, use Reset practice data, choose All tasks and verify an empty list. Add Read and Build, complete only Read, then select Active/Completed: both incorrectly show these two tasks. Reset only the fixture data, not all browser storage.",
+        "プレビューを開いたら、必要な以前の教材記録を先に残します。About this exercise の Reset practice data を使い、All tasks で空一覧を確認して Read と Build を追加し、Read だけ完了します。Active／Completed は誤って両方を表示するはずです。教材データだけをリセットし、ブラウザー全体を消しません。",
+        "미리 보기를 연 뒤 필요한 이전 실습 기록을 먼저 보존하세요. About this exercise의 Reset practice data를 누르고 All tasks에서 빈 목록을 확인한 뒤 Read와 Build를 추가하고 Read만 완료합니다. Active/Completed는 잘못된 동작으로 두 항목 모두 표시해야 합니다. 실습 데이터만 초기화하고 브라우저 전체 저장소는 지우지 않습니다."
       ]
     },
     {

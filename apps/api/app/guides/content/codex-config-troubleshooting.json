@@ -41,7 +41,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "用四份獨立故障樣本分辨 TOML 語法錯、鍵放錯層、值不支援與設定被覆寫，最後只修正真正有問題的來源。閱讀約 12 分鐘，操作約 25 分鐘。先完成 config.toml 篇；額外使用 Python 3.11 或更新版本做離線檔案檢查。Windows 用 py -3，macOS／Linux 用 python3；不把故障樣本直接貼進自己的使用者設定。"
+          "text": "用四份獨立樣本練習缺引號、重複鍵、鍵放錯層與不支援的值，再用設定診斷分辨未載入與被覆寫，只修正真正有問題的來源。閱讀約 12 分鐘，操作約 25 分鐘。先完成 config.toml 篇；額外使用 Python 3.11 或更新版本做離線檔案檢查。Windows 用 py -3，macOS／Linux 用 python3；不把故障樣本直接貼進自己的使用者設定。"
         },
         {
           "type": "paragraph",
@@ -322,7 +322,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "Use four isolated failure samples to distinguish TOML syntax, wrong key scope, unsupported values and overridden configuration, then repair only the actual source. Allow 12 minutes to read and 25 to practice. Complete configuration basics and have Python 3.11 or newer for offline checks. Windows uses py -3; macOS/Linux use python3. Keep intentionally broken samples out of user configuration."
+          "text": "Diagnose missing quotes, duplicate keys, wrong scope and unsupported values with four isolated samples. Then distinguish unloaded from overridden settings through client diagnostics and repair the actual source. Allow 12 minutes to read and 25 to practice. Complete configuration basics and have Python 3.11 or newer for offline checks. Windows uses py -3; macOS/Linux use python3. Keep intentionally broken samples out of user configuration."
         },
         {
           "type": "paragraph",
@@ -603,7 +603,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "四つの独立した故障例で構文、キーの階層、非対応の値、上書きを分け、問題の出所だけを直します。読む時間12分、操作25分です。設定基礎と Python 3.11 以降が前提で、Windows は py -3、macOS / Linux は python3 を使います。故障例をユーザー設定へ直接貼りません。"
+          "text": "四つの独立例で引用符の欠落、重複キー、誤った階層、非対応の値を確認します。その後、設定診断で未読込みと上書きを分け、原因だけを直します。読む時間12分、操作25分です。設定基礎と Python 3.11 以降が前提で、Windows は py -3、macOS / Linux は python3 を使います。故障例をユーザー設定へ直接貼りません。"
         },
         {
           "type": "paragraph",
@@ -880,7 +880,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "독립 오류 예시 네 개로 문법/키 위치/미지원 값/덮어쓰기를 구분하고 실제 원인만 고칩니다. 읽기 12분, 실습 25분입니다. 설정 기초와 Python 3.11 이상이 필요하며 Windows는 py -3, macOS/Linux는 python3를 씁니다. 오류 예시를 사용자 설정에 직접 붙이지 않습니다."
+          "text": "독립 예시 네 개로 따옴표 누락, 중복 키, 잘못된 위치, 미지원 값을 확인합니다. 그다음 설정 진단으로 미로드와 덮어쓰기를 구분해 실제 원인만 고칩니다. 읽기 12분, 실습 25분입니다. 설정 기초와 Python 3.11 이상이 필요하며 Windows는 py -3, macOS/Linux는 python3를 씁니다. 오류 예시를 사용자 설정에 직접 붙이지 않습니다."
         },
         {
           "type": "paragraph",
@@ -1157,7 +1157,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "用四份独立故障样本分辨 TOML 语法错、键放错层、值不支援与设定被覆写，最后只修正真正有问题的来源。阅读约 12 分钟，操作约 25 分钟。先完成 config.toml 篇；额外使用 Python 3.11 或更新版本做离线档案检查。Windows 用 py -3，macOS／Linux 用 python3；不把故障样本直接贴进自己的使用者设定。"
+          "text": "用四份独立样本练习缺引号、重复键、键放错层与不支援的值，再用设定诊断分辨未载入与被覆写，只修正真正有问题的来源。阅读约 12 分钟，操作约 25 分钟。先完成 config.toml 篇；额外使用 Python 3.11 或更新版本做离线档案检查。Windows 用 py -3，macOS／Linux 用 python3；不把故障样本直接贴进自己的使用者设定。"
         },
         {
           "type": "paragraph",

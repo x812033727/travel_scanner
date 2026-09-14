@@ -140,6 +140,15 @@
     {
       "type": "p",
       "text": [
+        "桌面版先把 codex-model-lab 加入為專案，兩次都在這個專案建立新任務。CLI 用編輯器開此資料夾與整合終端機；Windows PowerShell 以 Get-Location、macOS／Linux 以 pwd 核對路徑，再執行 codex。第一輪完成後用 /exit 回到系統終端機，從同一路徑重新執行 codex 開第二輪，不使用 resume。",
+        "In desktop, add codex-model-lab as a project and create both new tasks there. For CLI, open that folder and its integrated terminal. Confirm the path with Get-Location in Windows PowerShell or pwd on macOS/Linux, then run codex. After run A, use /exit and launch codex again from that directory for run B; do not resume A.",
+        "デスクトップでは codex-model-lab をプロジェクトに追加し、両方の新規課題をそこで作ります。CLI は同フォルダーの統合端末を開き、Windows PowerShell は Get-Location、macOS／Linux は pwd で場所を確認して codex を起動します。A の後は /exit でシェルへ戻り、同じ場所から codex を起動して B を始めます。A の resume は使いません。",
+        "데스크톱에서는 codex-model-lab을 프로젝트로 추가하고 두 새 작업을 모두 그 안에서 만드세요. CLI는 해당 폴더의 통합 터미널을 열고 Windows PowerShell은 Get-Location, macOS/Linux는 pwd로 경로를 확인한 뒤 codex를 실행합니다. A가 끝나면 /exit로 셸에 돌아와 같은 경로에서 codex를 다시 실행해 B를 시작하며 A를 resume하지 않습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
         "第一次使用目前預設設定，在新任務送出上面完整提示詞，記錄開始到完成的時間、是否讀了正確檔案及回答。第二次建立另一個新任務，使用相同檔案與完整提示詞，只調整同一模型的推理等級；其餘模型、速度、權限與工具保持相同。如果沒有另一個推理選項，就記錄本次只能建立基準，不硬寫出比較結果。",
         "Run the full prompt in a fresh task at current defaults. Record elapsed time, correct file reading and answer. Start another fresh task with identical files and prompt, changing only reasoning effort for the same model. Keep model, speed, permissions and tools constant. If no alternate effort exists, record a baseline only instead of inventing a comparison.",
         "既定設定の新課題で全文を送り、時間、正しい読取り、回答を記録します。別の新課題で同じファイルと全文を使い、同一モデルの強度だけ変えます。モデル、速度、権限、道具は固定です。他の強度がなければ基準測定のみと記録し、比較を捏造しません。",
@@ -181,7 +190,7 @@
         "若兩次都答錯，先確認它們是否讀到 sample.mjs、需求是否真的指定 completed，而不是立刻挑較貴或較慢的選項。缺少檔案、工作目錄錯誤及限制互相矛盾，都會讓比較失去意義；修正這些條件後，再以新任務重新建立相同起點。",
         "If both are wrong, first verify that they read sample.mjs and received the completed requirement instead of immediately selecting a costlier or slower option. Missing files, wrong directories and conflicting constraints invalidate the comparison. Correct them and start fresh tasks from the same baseline.",
         "両方誤答なら、先に sample.mjs の読取りと completed の指定を確認し、高価・低速な設定へ即座に移りません。ファイル不足、場所違い、制約矛盾を直し、同じ起点の新課題で再比較します。",
-        "둘 다 틀리면 비싸거나 느린 설정부터 고르지 말고 sample.mjs 읽기와 completed 요구를 확인합니다. 누락 파일/경로 오류/제약 충돌을 고치고 같은 시작점의 새 작업으로 다시 비교합니다。"
+        "둘 다 틀리면 비싸거나 느린 설정부터 고르지 말고 sample.mjs 읽기와 completed 요구를 확인합니다. 누락 파일/경로 오류/제약 충돌을 고치고 같은 시작점의 새 작업으로 다시 비교합니다."
       ]
     },
     {

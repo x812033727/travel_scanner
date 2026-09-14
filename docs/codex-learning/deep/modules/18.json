@@ -44,8 +44,8 @@
       "text": [
         "在編輯器建立 codex-permissions-lab，新增 note.txt 與 request.txt，分別放以下兩段。它們只是虛構標記，不需要 API 金鑰、登入檔或正式專案。開整合終端機，用 PowerShell 的 Get-Location 或 macOS／Linux 的 pwd 確認末端是此資料夾，避免用錯目前目錄來判斷沙盒。",
         "Create codex-permissions-lab with note.txt and request.txt containing the separate samples below. These are fictional markers; no API keys, authentication files or production project are needed. In the integrated terminal, use PowerShell Get-Location or macOS/Linux pwd to confirm this folder before assessing the sandbox.",
-        "codex-permissions-lab に note.txt と request.txt を作り、次の別々の例を入れます。架空の印だけで鍵、認証、本番は不要です。統合端末の Get-Location または pwd で場所を確認し、現在地違いを権限判定と混同しません。",
-        "codex-permissions-lab에 note.txt와 request.txt를 만들고 다음 별도 예시를 넣습니다. 가상 표식뿐이며 키/인증/실제 프로젝트는 필요 없습니다. 통합 터미널 Get-Location 또는 pwd로 경로를 확인해 잘못된 현재 위치를 권한 문제와 혼동하지 않습니다."
+        "codex-permissions-lab に note.txt と request.txt を作り、次の別々の例を入れます。架空の印だけで鍵、認証、本番は不要です。統合端末で Windows PowerShell は Get-Location、macOS／Linux は pwd を使って場所を確認し、現在地違いを権限判定と混同しません。",
+        "codex-permissions-lab에 note.txt와 request.txt를 만들고 다음 별도 예시를 넣습니다. 가상 표식뿐이며 키/인증/실제 프로젝트는 필요 없습니다. 통합 터미널에서 Windows PowerShell은 Get-Location, macOS/Linux는 pwd로 경로를 확인해 잘못된 현재 위치를 권한 문제와 혼동하지 않습니다."
       ]
     },
     {
@@ -292,7 +292,7 @@
     {
       "type": "p",
       "text": [
-        "完成時應能解釋兩次啟動差異，提供 note.txt 從 1 到 2 的實際結果，以及 request.txt 未變的核對。退出寫入工作階段，手動把 note.txt 還原為 1，之後新任務再看目前權限；退出不會回復檔案。圖中 1 是確認範圍，2 是執行觀察，3 是核對還原。本篇平台沙盒行為依官方文件查證，未宣稱三種作業系統皆已實測，也未執行讀者的核准流程。",
+        "完成時應能解釋兩次啟動差異，提供 note.txt 從 1 到 2 的實際結果，以及 request.txt 未變的核對。退出寫入工作階段，手動把 note.txt 還原為 1，之後新任務再看目前權限；退出不會還原檔案。圖中 1 是確認範圍，2 是執行觀察，3 是核對還原。本篇平台沙盒行為依官方文件查證，未宣稱三種作業系統皆已實測，也未執行讀者的核准流程。",
         "Finish by explaining the two launches, recording the real revision 1-to-2 result and confirming request.txt is unchanged. Exit the write session, manually restore note.txt to 1 and inspect permissions in future tasks; exit does not undo files. Diagram 1 establishes scope, 2 observes execution, 3 verifies restoration. Platform sandbox behavior is documentation-checked, not claimed tested on all three OSes or executed for the reader.",
         "二つの起動の違い、実際の1→2、request.txt 不変で完了です。終了後 note.txt を手動で1へ戻し、次回権限も確認します。終了はファイル復元ではありません。図1は範囲、2は実行観察、3は復元確認です。各 OS 挙動は公式資料確認で、全 OS 実測や読者の承認実行は主張しません。",
         "두 시작의 차이, 실제 1→2, request.txt 불변이 완료 조건입니다. 종료 후 note.txt를 수동으로 1로 복원하고 다음 권한도 확인합니다. 종료는 파일 복원이 아닙니다. 그림 1은 범위, 2는 실행 관찰, 3은 복원 확인입니다. 각 OS 동작은 공식 문서 확인이며 전체 OS 실측/독자 승인 실행을 주장하지 않습니다."

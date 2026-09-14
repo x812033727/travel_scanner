@@ -75,8 +75,8 @@
       "text": [
         "用編輯器開 A 資料夾，再開整合終端機。PowerShell 用 Get-Location，macOS／Linux 用 pwd，確認末端是 codex-session-a；從該處執行下列命令。進入 CLI 後送出再下一段要求。預期回覆 A 的實際路徑、SESSION-A、Revision: 1，且檔案沒有修改。記錄這次任務在清單中顯示的標題與時間。",
         "Open A in the editor and integrated terminal. Use Get-Location in PowerShell or pwd on macOS/Linux to confirm codex-session-a, then run the command and send the following prompt inside CLI. Expect A's actual directory, SESSION-A and Revision: 1 without edits. Record the visible session title and time.",
-        "A を開いた統合端末で Get-Location または pwd を使い、codex-session-a を確認して起動します。次の依頼で A の実パス、SESSION-A、Revision: 1 と無変更を期待します。一覧に表示される題名と時刻を記録します。",
-        "A의 통합 터미널에서 Get-Location 또는 pwd로 codex-session-a를 확인하고 실행합니다. 다음 요청으로 A의 실제 경로, SESSION-A, Revision: 1과 무변경을 확인합니다. 목록의 제목/시간을 기록합니다."
+        "A を開いた統合端末で、Windows の PowerShell は Get-Location、macOS／Linux は pwd を使い、codex-session-a を確認して起動します。次の依頼で A の実パス、SESSION-A、Revision: 1 と無変更を期待します。一覧に表示される題名と時刻を記録します。",
+        "A의 통합 터미널에서 Windows PowerShell은 Get-Location, macOS/Linux는 pwd로 codex-session-a를 확인하고 실행합니다. 다음 요청으로 A의 실제 경로, SESSION-A, Revision: 1과 무변경을 확인합니다. 목록의 제목/시간을 기록합니다."
       ]
     },
     {
@@ -298,7 +298,7 @@
       "text": [
         "完成時應保存 A／B 的辨識紀錄、A 接續後的新讀取，以及為何 --last 和 --all 不能隨便互換的說明。還原練習時只把 A 的 Revision 改回 1，再確認 B 仍是 100；不需要刪除工作階段或登入資料。本篇命令依官方文件與本機 help 查證，沒有替讀者執行互動工作階段或保證舊任務跨平台自動同步。下一次正式接續也先確認「哪個任務、哪個目錄、哪個版本」，再開始修改。",
         "Retain A/B identification, the fresh resumed read and an explanation of --last versus --all. Reset only A to revision 1 and verify B remains 100; no session or authentication deletion is needed. Commands are documentation/help-checked, not claims of a reader's interactive execution or automatic cross-platform synchronization. Before real edits, identify task, directory and current version.",
-        "A / B の識別、新しい再読、--last と --all の違いを残します。A だけ1に戻し B は100のまま確認し、セッションや認証は削除しません。命令は公式資料と help の確認で、読者の実行や自動同期を保証しません。実装業でも課題、場所、版を先に確認します。",
+        "A / B の識別、新しい再読、--last と --all の違いを残します。A だけ1に戻し B は100のまま確認し、セッションや認証は削除しません。命令は公式資料と help の確認で、読者の実行や自動同期を保証しません。実作業でも課題、場所、版を先に確認します。",
         "A/B 식별, 재개의 새 읽기, --last/--all 차이를 남깁니다. A만 1로 복원하고 B는 100인지 확인하며 세션/인증은 삭제하지 않습니다. 명령은 공식 문서/help 확인이며 독자의 실행/자동 동기화를 보장하지 않습니다. 실제 작업도 작업/경로/버전부터 확인합니다."
       ]
     },
