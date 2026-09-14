@@ -25,6 +25,10 @@ if CONTENT_BASE != PREVIOUS:
         ('a9d5b40e7067b321ee886a817b1712aec44afc1b', '05d0b671efddedb75da1c20093cce42f8b2f09ca'),
         # PR #477: Vitest development dependency only; all 14 PR checks passed.
         ('a9d5b40e7067b321ee886a817b1712aec44afc1b', '769a892bc4e862f9cca73c341adbf13f27a5e563'),
+        # PR #479: jsdom development dependency only; all 14 PR checks passed.
+        ('a9d5b40e7067b321ee886a817b1712aec44afc1b', '0b120251a0dcd71af50b3db49eca1dc370569ff0'),
+        # PR #482: mypy development update and redundant cast removal; 14 checks passed.
+        ('a9d5b40e7067b321ee886a817b1712aec44afc1b', 'afff8db5eea8104f9055f15c04b0825e3df3c6bf'),
     }
     assert (PREVIOUS, CONTENT_BASE) in reviewed_pairs, 'unreviewed integration baseline'
 '''+s[end:]
