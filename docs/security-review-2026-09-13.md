@@ -6,6 +6,7 @@
   `ops/`、Docker／Compose、GitHub Actions、相依套件、追蹤中的檔案內容
 - 方法：唯讀原始碼審閱＋`npm audit`／`pip-audit`＋密鑰掃描。**沒有**滲透測試，也沒有存取任何線上主機。
 - 前次基準：[`security-audit-2026-09.md`](security-audit-2026-09.md)（2026-09-03，commit `4c61b14`）
+- **2026-09-14 更新**：§3 的六張任務裡五張已完成並在 review，一張被既有任務的 scope 正當擋下。逐項狀態見 [§7](#7-2026-09-14-處理結果)。
 
 ## 1. 結論
 
@@ -133,3 +134,79 @@
 | 任務檔驗證 | `npm run check:tasks` | Validated 380 task file(s) |
 
 這次沒有修改任何應用程式或設定檔，所以沒有跑 lint／型別／測試；六張任務卡各自寫了該跑的指令。
+
+---
+
+## 7. 2026-09-14 處理結果
+
+站主要求「依序做完」，以下是六張任務的實際結果。全部在 `claude/security-check-o5zaj1`。
+
+| 任務 | 結果 |
+| --- | --- |
+| CSP 轉強制（P1 web） | **完成（部分促級，見下）** |
+| Actions 釘 SHA＋Dependabot（P2 ops） | **完成** |
+| 正式 compose 網路分段（P2 ops） | **擋住**，見下 |
+| 分析 hash 金鑰分離（P2 api） | **完成** |
+| 密碼政策（P3 api） | **完成** |
+| ruff 開 `S`（P3 api） | **完成**，並新發現一項，另立任務 |
+
+### CSP：拆兩半，不是整包翻
+
+先補證據：正式建置、五語系 20 條路由，改前改後各跑一次，應用程式本身零違規；控制組
+證明偵測有效（改前注入 `<img src=x onerror=...>` 會執行、只留一筆 report，改後
+`disposition: "enforce"` 且不執行）。另用獨立探針確認 Google Maps、NAVER Maps、GTM 在
+沒有 `'unsafe-eval'` 的強制 `script-src` 下都不違規。
+
+但整包翻掉會弄壞地圖：**`connect-src` 沒有任何 Google Maps 主機**，而 `route-map.tsx`
+載入 `maps.googleapis.com`，之後由該 API 自己發 XHR。本機重現不了——e2e runtime API
+不發地圖金鑰——所以十天的 Report-Only 視窗從來沒讓這件事浮出來，因為沒有人讀報告。
+
+因此只強制 `script-src` 半邊（＋四條 baseline），資源指令維持 Report-Only。
+`e2e/csp.spec.ts` 把證據流程留下來，而且 Report-Only 違規也會讓它失敗。
+順帶補上 `script-src` 少掉的 `maps.googleapis.com` 與 `scripts.stay22.com`。
+
+`HSTS includeSubDomains` **沒有加**：repo 裡無法列舉 `mokaair.com` 的子網域，瀏覽器會
+記一年，加錯會讓某個子網域對所有造訪過的人斷線。需要知道 DNS 的人決定。
+
+### 正式 compose：被 scope 正當擋下
+
+`npm run tasks -- claim` 拒絕了，因為 `2026-09-13-web-upstream-keepalive-502` 正持有
+`docker-compose.prod.yml`。查證後那張任務的程式碼確實已併入 `main`（#456），但它的完成
+定義還沒滿足——最後兩個框要求在正式機上看到兩半都生效、且 `error.log` 不再出現
+`upstream prematurely closed connection`，而 nginx 那半還要另外上機。所以它的持有是真的，
+不是過期的帳面狀態。
+
+這張任務的內容全部是改 `docker-compose.prod.yml`，沒有可以繞過去先做的一半。在一個正在
+正式機上驗證的修正底下重寫服務拓撲，正是那條規則存在的理由，所以沒有 `--force`。
+已標為 `blocked` 並寫明解除條件。
+
+### 新發現：Airalo feed 的 XXE 防護漏掉 UTF-16
+
+開 `S` 規則時 `S314` 指到 `parse_airalo`。它用 `b"<!DOCTYPE" in body.upper()` 擋，而
+`bytes.upper()` 只折 ASCII，所以 UTF-16 編碼的 feed 帶 DOCTYPE 會整個走過去。
+
+影響有限：`AIRALO_FEED` 是寫死的官方網址，沒有可設定的抓取 URL，所以只有 Airalo 自己
+打得到；而 `ElementTree` 不解析外部實體，所以是 worker 內的實體展開 DoS，不是檔案外洩。
+列為 P3，另立 [`2026-09-14-airalo-feed-utf16-doctype`](../tasks/open/2026-09-14-airalo-feed-utf16-doctype.md)——
+「一行 strip NUL」與「引入 `defusedxml`」之間是個真的取捨，不該夾在一張 lint 任務裡決定。
+
+### §3 表格中未立案的四項
+
+`/providers/status`、OAuth flow cookie 簽章、航班 clickout host allowlist、API image
+多階段建置——這輪沒有動，理由與 §3 所寫相同。
+
+### 本輪驗證
+
+| 項目 | 結果 |
+| --- | --- |
+| `npm run lint:web`、`typecheck:web`、`check:i18n` | 通過 |
+| `npm run test:web` | 254 檔 2,772 tests 通過 |
+| `npm run test:tools` | 31 通過（含新增的 workflow 釘選檢查 3 例） |
+| `npm run build:web` | 通過 |
+| Playwright `csp` / `guides-adsense` / `stay22-script` / `navigation` | 66 通過 |
+| `uv run ruff check .`、`uv run mypy app` | 通過（325 檔） |
+| `uv run pytest` | 3,682 passed、266 skipped |
+| `npm run check:tasks` | Validated 381 task file(s) |
+
+Playwright 在這個沙箱需要指定 `executablePath` 才能跑（沙箱只有 chromium-1194，
+Playwright 要 1234 的 headless shell），用的是臨時設定檔，沒有提交。CI 的瀏覽器是齊的。
