@@ -1,0 +1,333 @@
+{
+  "slug": "claude-model-lineup-2026",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude 模型家族：Fable、Opus、Sonnet、Haiku 怎麼選",
+      "description": "2026 年 9 月 13 日 Anthropic 官網列出的 Claude 現役模型有四個：Fable 5.1、Opus 5、Sonnet 5、Haiku 4.5，由上而下能力遞減、速度遞增、價格遞減。這篇整理各模型的定位、上下文視窗、思考模式、API 每百萬 token 價格與退役承諾，說明免費、Pro、Max 各能用哪些模型、預設是哪個，並依六種任務給選法：日常先用預設，卡住再往上換一階。",
+      "hero": {
+        "src": "/guides/claude-model-lineup-2026/hero.jpg",
+        "alt": "四個由小到大的彩色圓沿著階梯往上排，每個圓上方各有一個對話泡泡，底下一行字寫著 Claude 模型怎麼選",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "打開 Claude 的模型選單，看到 Fable 5.1、Opus 5、Sonnet 5、Haiku 4.5 幾個名字並排，多數人的問題是「差在哪、選哪個」。答案可以先講：這四個是 2026 年 9 月 13 日 Anthropic 官網列出的現役模型，由上往下能力遞減、速度遞增、價格遞減；免費版與 Pro 的預設是 Sonnet 5，Max 的預設是 Opus 5，日常的事用預設就夠，答得不理想再往上換一階，只有寫程式與需要長時間推理的任務才值得一開始就用最高階。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇依當天查證的 Anthropic 官方文件、claude.com 定價頁與 Claude 說明中心，說明四個模型的定位、上下文視窗、思考模式與上市時間，比較四階的能力、速度與 API 價格，整理各方案能用的模型，用六種常見任務示範怎麼選，最後講版本號怎麼讀、退役的節奏與三個常見誤解。模型名單與價格換得很快，讀的時候請以官網當下的頁面為準。"
+        },
+        {
+          "type": "heading",
+          "text": "2026 年 9 月的現役名單：四個模型各是什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 的模型總覽頁（2026 年 9 月 13 日查證）把現役模型列成四個，並建議「不確定該用哪個，多數工作先從 Claude Opus 5 開始」。最上面是 Claude Fable 5.1，2026 年 9 月 1 日上市，官網定位是「高要求的推理與長時程的代理工作」，是 Anthropic 目前公開提供的模型裡能力最強的一個；它的思考是常開的，關不掉，每次回答都會先想再答。第二個是 Claude Opus 5，2026 年 7 月 24 日上市，定位是「複雜的代理式程式開發與企業工作」，官網說它對上一代 Opus 4.8 是階段性的跳躍，思考預設開啟，也就是能力夠用、又不像 Fable 那麼慢與貴。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三個是 Claude Sonnet 5，2026 年 6 月 30 日上市，定位是「速度與智慧的最佳組合」，上市公告說它的表現接近 Opus 4.8 但價格更低；思考同樣預設開啟，但可以關掉，而且公告寫明它是免費版與 Pro 方案的預設模型。最後是 Claude Haiku 4.5，2025 年 10 月 15 日上市，定位是「最快、接近前緣智慧的模型」；它是四個裡唯一沒有自適應思考的，用的是舊式的延伸思考，要手動開、還要指定思考的 token 額度，官網也標明它不支援 Effort 等級。上下文視窗方面，Fable 5.1、Opus 5、Sonnet 5 都是 1M token，Haiku 4.5 是 200K token；官網換算 1M token 大約是 55.5 萬個英文單字，200K 大約是 15 萬個。"
+        },
+        {
+          "type": "paragraph",
+          "text": "過去的世代並沒有消失。官網把 Fable 5（2026 年 6 月 9 日上市，Fable 5.1 是它同價、更強的接班版）、Opus 4.8、4.7、4.6、4.5 與 Sonnet 4.6、4.5 列為 legacy，API 還叫得到，claude.ai 的選單點「More models」也看得到其中幾個，但官網建議新工作直接用現役四個；更早的 Opus 4、Sonnet 4、Opus 4.1 與整個 3 系列在 2026 年已陸續退役，節奏放在後面一節講。模型選單在介面的哪裡、免費版能做什麼，入門篇有說明。"
+        },
+        {
+          "type": "link",
+          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "四階差在哪：能力、速度、費用",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "四個模型的差別可以壓成一句話：越上面越聰明，也越慢、越貴。官網的比較表用四個相對速度描述它們：Fable 5.1「較慢」、Opus 5「中等」、Sonnet 5「快」、Haiku 4.5「最快」，並註明實際等待時間還取決於提示詞長度、輸出長度與思考的力氣。能力上，官網對 Fable 5.1 的建議是留給「用 Opus 5 開到更高 Effort 仍不夠」的任務，Opus 5 是多數工作的起點，Sonnet 5 是日常工作的主力，Haiku 4.5 則是接近前緣的輕量模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "費用最直接的比法是 API 每百萬 token 的標價（美元，2026 年 9 月 13 日官網）：Fable 5.1 輸入 10、輸出 50；Opus 5 輸入 5、輸出 25；Sonnet 5 輸入 2、輸出 10；Haiku 4.5 輸入 1、輸出 5。每往下一階大約便宜一半到六成，最上與最下差 10 倍；輸出一律是輸入的 5 倍，而思考用掉的 token 也按輸出計價，所以開思考、把 Effort 調高都會反映在帳單上。官網另有兩個常見折扣：批次 API 打五折，提示快取的讀取只收輸入價的 10%，Fable 5.1 更只收 2.5%。Sonnet 5 的 2 美元與 10 美元原本標為上市優惠價，官網已註明改為正式價，原定 2026 年 9 月 1 日調成 3 與 15 美元的計畫取消。另外，Opus 4.7 之後的模型換了新的分詞器，同一段文字會多出約 30% 的 token，跟舊模型比價時要算進去。這四階只是 Anthropic 自家的排法，OpenAI 與 Google 的分級怎麼對照，另有一篇整理。"
+        },
+        {
+          "type": "link",
+          "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained"
+        },
+        {
+          "type": "heading",
+          "text": "哪些方案能用哪些模型，預設是哪一個",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "claude.com 定價頁（2026 年 9 月 13 日）把模型與方案對得很清楚。免費方案可以用 Sonnet 與 Haiku，沒有 Opus 與 Fable；Pro 方案月繳每月 20 美元、年繳折合每月 17 美元（一次付 200 美元），加上 Opus，Fable 模型則以「用量點數」另計；Max 方案從每月 100 美元起，分 5 倍與 20 倍兩種用量，說明中心寫 5 倍每月 100 美元、20 倍每月 200 美元，Opus、Sonnet、Haiku 都有，Fable 最多可用到每週額度的一半。Team 方案的標準席次年繳每人每月 20 美元、月繳 25 美元，進階席次 100 與 125 美元，都能用 Opus、Sonnet、Haiku；Enterprise 另外談，也提供 Fable。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Fable 的規則值得單獨講。說明中心寫明 Fable 5 與 Fable 5.1 只在付費方案提供：Max 與 Team、Enterprise 的進階席次把它當成方案的一部分，每週額度最多一半可以花在 Fable 上；Pro 與標準席次則是用隨用隨付的「用量點數」跑 Fable，點數按標準 API 價格計費，不算在方案內含的用量裡。至於預設模型，Anthropic 的上市公告寫明 Sonnet 5 是免費版與 Pro 的預設，Opus 5 是 Max 的預設；換模型的入口在輸入框送出鍵旁邊的模型名稱，點開可以換模型、調 Effort（低、中、高、特高、最高，預設是高）與開關思考，改了之後從下一則回覆生效。Enterprise 帳號如果少了某個模型或等級，可能是管理員替你的角色關掉了。方案細節與額度怎麼算，另有一篇比較。"
+        },
+        {
+          "type": "link",
+          "text": "Claude 免費、Pro、Max 方案比較：額度怎麼算、值不值得",
+          "url": "https://mokaair.com/zh-TW/life/claude-plans-free-pro-max-2026"
+        },
+        {
+          "type": "table",
+          "header": [
+            "模型",
+            "官網定位",
+            "上下文視窗",
+            "思考模式",
+            "適合",
+            "哪些方案能用"
+          ],
+          "rows": [
+            [
+              "Fable 5.1（2026 年 9 月 1 日上市）",
+              "高要求的推理與長時程的代理工作；相對速度較慢",
+              "1M token",
+              "自適應思考，常開、關不掉",
+              "跑很久的自主任務、深度研究、一路做到成品的文件與試算表",
+              "Pro 與標準席次以用量點數計費；Max 與進階席次最多每週額度一半；免費版無"
+            ],
+            [
+              "Opus 5（2026 年 7 月 24 日上市）",
+              "複雜的代理式程式開發與企業工作；相對速度中等；官網建議多數工作從這裡開始",
+              "1M token",
+              "自適應思考，預設開啟",
+              "寫程式、除錯、大型重構、需要深度推理的題目",
+              "Pro、Max、Team、Enterprise；Max 的預設；免費版無"
+            ],
+            [
+              "Sonnet 5（2026 年 6 月 30 日上市）",
+              "速度與智慧的最佳組合；相對速度快",
+              "1M token",
+              "自適應思考，預設開啟，可以關掉",
+              "日常問答、長文寫作、摘要、翻譯、資料分析",
+              "所有方案；免費版與 Pro 的預設"
+            ],
+            [
+              "Haiku 4.5（2025 年 10 月 15 日上市）",
+              "最快、接近前緣智慧的模型；相對速度最快",
+              "200K token",
+              "延伸思考，手動開啟並指定額度",
+              "大量批次、分類貼標籤、要即時回應的應用",
+              "所有方案；API 每百萬 token 輸入 1、輸出 5 美元，四個裡最便宜"
+            ]
+          ],
+          "caption": "2026 年 9 月 13 日依 Anthropic 模型總覽頁、claude.com 定價頁與 Claude 說明中心整理；方案對應以官網當下頁面為準。"
+        },
+        {
+          "type": "heading",
+          "text": "依任務選：六種情境各給建議",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 的選模指南給了兩條路：一條從 Haiku 4.5 這種快又便宜的模型開始、不夠再升級，一條從 Opus 5 開始、之後再降階或調低 Effort 省錢，並提醒「調整 Effort 常常比換模型更好用」。對一般使用者，把這兩條路折衷成一句：日常先用方案的預設，卡住再往上換一階。下面六種情境是模型選單裡最常遇到的。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "日常問答、改信、潤稿、翻譯：用預設的 Sonnet 5 就好，思考可以關掉，回得快也省額度。這類任務的原料都在你貼進去的文字裡，換更大的模型不會更好。",
+            "長文寫作、把長文件摘成重點：Sonnet 5 先寫一版，現役模型裡除了 Haiku 4.5 都有 1M token 的上下文視窗，整本手冊貼進去也放得下；結構鬆散或要跨文件比對時再換 Opus 5。",
+            "寫程式、除錯、看一份試算表：Opus 5，這是官網給它的主要定位，也是 Max 的預設；小修改用 Sonnet 5 就夠，卡住再換回 Opus 5。",
+            "大量、重複、每次都很簡單的事，例如幾百封信分類、上千筆資料貼標籤、抓固定格式：Haiku 4.5，它是四個裡最快也最便宜的，官網給它的例子就是即時應用與大量處理。這類工作通常走 API，批次 API 還打五折。",
+            "需要推理的題目，例如數學、規劃、多步驟分析：先在 Sonnet 5 把思考打開、Effort 調高問一次，不行再換 Opus 5。思考在便宜的模型上開，花的 token 比直接換旗艦少。",
+            "要它自己跑很久的任務、多步驟的深度研究、一路做到成品的文件或試算表：Fable 5.1，官網的選模矩陣就拿「跑好幾個小時的代理工作階段、多步驟深度研究」當例子。前提是付費方案，而且 Pro 用它要另外扣用量點數。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "推理模型是什麼：o 系列、延伸思考、Deep Think 的差別",
+          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-model-lineup-2026/diagram-1.svg",
+          "alt": "圖解：上半部四欄並列 Fable 5.1、Opus 5、Sonnet 5、Haiku 4.5 的定位、相對速度、上下文視窗、API 每百萬 token 價格、思考模式與上市月份，下半部六格把六種常見任務對到建議先選的模型",
+          "width": 1600,
+          "height": 900,
+          "caption": "上半部由左到右能力與價格遞減、速度遞增；下半部每格是一種任務與先選的模型，價格是 2026 年 9 月 13 日官網的 API 標價，與上方表格相同。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "日常先用預設，卡住再往上換一階",
+          "text": "免費版與 Pro 的預設是 Sonnet 5，Max 的預設是 Opus 5，大多數問題用預設就答得好。同一個問題答得不理想，先把思考打開或把 Effort 往上調再問一次，還不行再換上一階的模型；只有寫程式與需要長時間推理的任務，才值得一開始就用 Opus 5 或 Fable 5.1。換模型的位置在送出鍵旁邊的模型名稱，改了之後從下一則回覆生效，前面的內容不會變。"
+        },
+        {
+          "type": "link",
+          "text": "Claude 延伸思考模式：什麼題目該開、怎麼看它的推理",
+          "url": "https://mokaair.com/zh-TW/life/claude-extended-thinking-guide"
+        },
+        {
+          "type": "heading",
+          "text": "版本號怎麼讀：小數版本、同名不同版、退役節奏",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude 的名字有三層：Claude 是品牌，Fable、Opus、Sonnet、Haiku 是等級，後面的數字是版本。版本用「主版本.次版本」表示：Sonnet 5、Opus 5 是主版本，省略小數；Haiku 4.5、Opus 4.8 是 4 代裡的次版本。同一等級的數字越大越新，但不同等級的數字不能互比：Haiku 4.5 的版本號比 Sonnet 5 小，不代表它是「更舊的 Sonnet」，而是 Haiku 這條線目前最新的一版。"
+        },
+        {
+          "type": "paragraph",
+          "text": "開發者在 API 看到的識別碼也照這套規則走。官方文件說明，從 4.6 世代起識別碼不帶日期，例如 claude-sonnet-5、claude-opus-4-8，每一個識別碼固定指向一個不會再更動的版本，有新版就換新名字；4.6 之前的模型帶日期，例如 claude-haiku-4-5-20251001，另有不帶日期的別名 claude-haiku-4-5 指向同一個次版本最新的日期版，這就是「同名不同版」的來源：介面上都叫 Haiku 4.5，底下是某一天定案的快照。文件也提醒，權重不變不代表行為完全不變，周邊的路由、安全分類器與取樣邏輯更新時，同一個識別碼偶爾會出現細微差異。"
+        },
+        {
+          "type": "paragraph",
+          "text": "模型退役有固定的節奏。官方文件把生命週期分成四種狀態：現役（Active）、legacy（不再更新、未來可能被標為棄用）、棄用（Deprecated，還能用但已指定替代模型與退役日）、退役（Retired，請求會失敗）。Anthropic 承諾對公開發布的模型在退役前至少 60 天通知，近幾次都是兩個月：Opus 4 與 Sonnet 4 在 2026 年 4 月 14 日宣布棄用、6 月 15 日退役，Opus 4.1 在 6 月 5 日宣布、8 月 5 日退役。現役模型則各有一個「不早於」的退役承諾日，都是上市滿一年：Fable 5.1 不早於 2027 年 9 月 1 日，Opus 5 不早於 2027 年 7 月 24 日，Sonnet 5 不早於 2027 年 6 月 30 日，Haiku 4.5 不早於 2026 年 10 月 15 日。一般使用者不用記這些日期，選單裡消失的模型就是退役了；寫程式串 API 的人要在退役前把識別碼換成官方指定的替代模型。"
+        },
+        {
+          "type": "heading",
+          "text": "三個常見誤解",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一，貴的不一定適合。Fable 5.1 每百萬 token 的輸出價是 Sonnet 5 的 5 倍，速度標為「較慢」，拿它改一封信只是等更久、花更多，不會改得更好；官網自己就建議多數工作從 Opus 5 開始，而不是從最貴的開始。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二，換模型不會改變已經寫好的內容。說明中心寫明，模型、Effort 與思考都可以在對話中途改，改了之後從 Claude 的下一則回覆生效，前面的回覆原封不動，新模型會把整段對話當成上下文讀進去，不用重開對話、也不用重貼。要注意反過來的情況：用 Opus 5 時，如果訊息被安全分類器標記，Claude 會自動改用 Opus 4.8 回答並標示出來，之後整段對話的選單都停在那個模型；不想自動切換，可以到 設定 → Capabilities 關掉「Switch models when a message is flagged」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三，長對話會多耗額度。說明中心寫明用量受「對話的長度與複雜度、使用的功能、聊天的模型與選的 Effort」影響，而且觸發自動上下文管理的長對話會消耗更多用量；每送一則訊息，模型都要把前面整段對話重讀一次，對話越長每一則越貴。換了主題就開新對話，需要舊內容再請它搜尋之前的對話；上下文視窗的原理另有一篇解釋。"
+        },
+        {
+          "type": "link",
+          "text": "上下文視窗是什麼：為什麼聊久了 AI 會忘記前面說的話，六個做法讓它記住",
+          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic 官方文件：Models overview（四個現役模型的定位、相對速度、價格、思考模式、上下文視窗、退役承諾與 legacy 名單）",
+          "url": "https://platform.claude.com/docs/en/models/overview",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Claude Fable 5.1（2026 年 9 月 1 日上市、思考常開、1M token、每百萬 token 10 與 50 美元）",
+          "url": "https://platform.claude.com/docs/en/models/fable-5-1/overview",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Claude Opus 5（2026 年 7 月 24 日上市、思考預設開啟、每百萬 token 5 與 25 美元）",
+          "url": "https://platform.claude.com/docs/en/models/opus-5/overview",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Claude Sonnet 5（2026 年 6 月 30 日上市、思考預設開啟可關、每百萬 token 2 與 10 美元）",
+          "url": "https://platform.claude.com/docs/en/models/sonnet-5/overview",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Claude Haiku 4.5（2025 年 10 月 15 日上市、延伸思考、200K token、每百萬 token 1 與 5 美元、識別碼與別名）",
+          "url": "https://platform.claude.com/docs/en/models/haiku-4-5/overview",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Claude Fable 5（2026 年 6 月 9 日上市、legacy 狀態、與 Fable 5.1 同價）",
+          "url": "https://platform.claude.com/docs/en/models/fable-5/overview",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Pricing（各模型每百萬 token 價格、批次五折、快取讀取 10% 與 2.5%、Sonnet 5 優惠價改正式價、新分詞器多約 30% token）",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Choosing the right model（效率優先與能力優先兩條路、調整 Effort 常比換模型好、選模矩陣）",
+          "url": "https://platform.claude.com/docs/en/about-claude/models/choosing-a-model",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Model IDs and versioning（不帶日期的識別碼、固定快照、別名、基礎設施更新造成的差異）",
+          "url": "https://platform.claude.com/docs/en/about-claude/models/model-ids-and-versions",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Model deprecations（四種生命週期狀態、至少 60 天通知、各模型退役日與替代模型）",
+          "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Thinking（思考 token 按輸出計價、哪些模型預設開啟、Fable 系列關不掉）",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/thinking",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 官方定價頁（免費版 Sonnet 與 Haiku、Pro 每月 17 或 20 美元、Max 每月 100 美元起、Team 席次價格、Fable 用量點數與每週額度一半）",
+          "url": "https://claude.com/pricing",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Claude Fable models on your plan（付費方案才有 Fable、Max 與進階席次最多每週額度一半、Pro 與標準席次用量點數）",
+          "url": "https://support.claude.com/en/articles/15424964-claude-fable-models-on-your-plan",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Change the model, effort, and thinking settings（送出鍵旁的模型名稱、More models、Effort 五級預設高、Fable 5.1 與 Opus 5 關不掉思考、下一則回覆生效）",
+          "url": "https://support.claude.com/en/articles/8664678-change-the-model-effort-and-thinking-settings",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Choose a Claude plan（Pro 每月 20 美元或每年 200 美元、Max 5 倍每月 100 美元與 20 倍每月 200 美元）",
+          "url": "https://support.claude.com/en/articles/11049762-choose-a-claude-plan",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：How do usage and length limits work?（用量受對話長度、功能、模型、Effort 影響；長對話消耗更多）",
+          "url": "https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Why Claude switched models in your conversation with Opus 5（被標記時自動改用 Opus 4.8、選單停在該模型、設定裡可關閉）",
+          "url": "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Manage usage credits for paid Claude plans（用量點數按標準 API 價格計費、Pro 與 Max 可用）",
+          "url": "https://support.claude.com/en/articles/12429409-manage-usage-credits-for-paid-claude-plans",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方公告：Introducing Claude Sonnet 5（免費版與 Pro 的預設模型、表現接近 Opus 4.8、2 與 10 美元）",
+          "url": "https://www.anthropic.com/news/claude-sonnet-5",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方公告：Introducing Claude Opus 5（Max 的預設模型、Pro 最強模型、5 與 25 美元）",
+          "url": "https://www.anthropic.com/news/claude-opus-5",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}
