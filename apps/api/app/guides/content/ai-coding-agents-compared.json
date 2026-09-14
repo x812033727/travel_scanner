@@ -1,0 +1,386 @@
+{
+  "slug": "ai-coding-agents-compared",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "AI 寫程式代理操作步驟比較：同一個需求在三個工具怎麼做",
+      "description": "沒有三家的付費帳號就跑不出可信的跑分，所以這篇比的是操作步驟：同一個匯率換算小工具的需求，在 Claude Code、Codex CLI 與 Gemini CLI 上各自怎麼安裝登入、動手前怎麼確認權限、產出從哪裡看、規則寫在 CLAUDE.md、AGENTS.md 還是 GEMINI.md、非互動模式與費用怎麼算。全部依三家官方文件於 2026 年 9 月 14 日查證，附一套自己在家測的方法。",
+      "hero": {
+        "src": "/guides/ai-coding-agents-compared/hero.jpg",
+        "alt": "插圖：左邊一個提示詞對話框，分出三條路徑通往三個終端機視窗，每條路徑上各有一個核准關卡。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "同一個需求交給三個 AI 寫程式代理（Agent），誰寫得比較好？這篇不回答這個問題。我們手上沒有三家的付費帳號與額度，跑不出可信的分數，所以改比另一件更有用的事：同一個需求在 Claude Code、Codex CLI 與 Gemini CLI 上各自要按哪些步驟、在哪裡停下來確認、產出去哪裡看、錢從哪裡扣。"
+        },
+        {
+          "type": "paragraph",
+          "text": "內容全部依 Anthropic、OpenAI 與 Google 三家的官方文件，查證日是 2026 年 9 月 14 日。讀完你會拿到一份可直接貼進終端機的共用提示詞、三個工具的安裝與登入指令、三套權限模式的正式名稱，以及一套自己在家測的方法。"
+        },
+        {
+          "type": "heading",
+          "text": "這篇比的是操作步驟，不是跑分",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "坊間的比較文常給一張分數表，但那些分數多半來自少數幾題，換個專案就翻盤，模型一換更是全部作廢。真正決定你用得順不順的，是流程上不會天天變的差異：怎麼登入、代理動手前會不會先問你、它改了什麼去哪裡看、規則寫在哪個檔案、用量從哪裡扣。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這些都是官方文件寫死的事實，你自己也查得到。誰寫的程式比較好則要用你自己的專案去測，最後一節會給方法。想先弄清楚「跑分」與「評測」分別指什麼，站上另有兩篇名詞解釋。"
+        },
+        {
+          "type": "link",
+          "text": "基準測試（Benchmark）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-benchmark"
+        },
+        {
+          "type": "link",
+          "text": "模型與代理評測（Evals）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-evals"
+        },
+        {
+          "type": "heading",
+          "text": "同一個需求：一個匯率換算的單頁小工具",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "要讓三邊條件一致，需求必須先固定。我們挑一個小到能一次做完、又要動到好幾個檔案的題目：一個匯率換算的單頁小工具。匯率寫在本機設定檔裡，不連外部服務，測試才不會受網路品質影響。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "三個工具共用的同一份提示詞（貼上前不要改動）",
+          "code": "需求：做一個匯率換算的單頁小工具。\n1. 只用一個 HTML 檔、一個 CSS 檔、一個 JavaScript 檔，不要使用任何外部套件或 CDN。\n2. 匯率放在 rates.json，至少包含 TWD、USD、JPY、EUR 四種幣別。\n3. 使用者輸入金額、選來源幣別與目標幣別，畫面即時顯示換算結果，四捨五入到小數點後兩位。\n4. 金額空白或不是數字時，在欄位下方顯示提示文字，不要跳出警告視窗。\n5. 寫一份 README.md，說明怎麼在本機打開這個頁面。\n完成後列出你新增或修改的每一個檔案，並說明你用什麼方法確認第三點與第四點真的成立。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把這段提示詞原封不動貼給三個代理，是比較能成立的前提。它把要做什麼、不做什麼、怎樣算完成都寫清楚，最後一句還要求代理自己說明怎麼驗證。怎麼寫代理接得住的提示詞，站上另有一篇專門談。"
+        },
+        {
+          "type": "link",
+          "text": "給程式代理的提示模式：先規劃、再實作、最後驗證",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-prompt-patterns"
+        },
+        {
+          "type": "heading",
+          "text": "安裝與登入：三個工具的第一步不一樣",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "三家都提供終端機一行指令的安裝方式。Claude Code 在 macOS、Linux 與 WSL 用官方安裝指令，Windows 用 PowerShell 版本，另支援 Homebrew 與 WinGet；Codex CLI 另有 npm 與 Homebrew；Gemini CLI 標準做法是 npm 全域安裝。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "三個工具的安裝指令（各取官方文件列出的其中一種）",
+          "code": "# Claude Code：macOS、Linux 與 WSL 的官方安裝指令\ncurl -fsSL https://claude.ai/install.sh | bash\nclaude --version\n\n# Codex CLI：macOS 與 Linux 的官方安裝指令\ncurl -fsSL https://chatgpt.com/codex/install.sh | sh\n\n# Gemini CLI：用 npm 全域安裝\nnpm install -g @google/gemini-cli"
+        },
+        {
+          "type": "paragraph",
+          "text": "登入這一步的差別比安裝大，因為它直接決定你用不用得起。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Claude Code：執行 claude 就會提示登入。可用 Claude Pro、Max、Team 或 Enterprise 訂閱，也可用 Claude Console 的預付額度帳號或企業雲端供應商。",
+            "Codex CLI：執行 codex 後選「Sign in with ChatGPT」，或直接執行 codex login。也可用 API 金鑰，但官方文件寫明那會改走標準 API 計價，不動用 ChatGPT 方案的額度。",
+            "Gemini CLI：執行 gemini 後在認證選單選「Login with Google」，用現有的 Google 帳號登入；另兩種方式是 Gemini API 金鑰與 Vertex AI。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "三個工具的入門步驟，站上各有一篇從頭帶一次。"
+        },
+        {
+          "type": "link",
+          "text": "Claude Code 入門：認識工具與第一條學習路線",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-getting-started"
+        },
+        {
+          "type": "link",
+          "text": "Codex CLI 入門：在終端機裡讓 OpenAI 幫你改程式",
+          "url": "https://mokaair.com/zh-TW/life/codex-cli-getting-started"
+        },
+        {
+          "type": "link",
+          "text": "Gemini CLI 安裝：第一次在終端機對話",
+          "url": "https://mokaair.com/zh-TW/life/gemini-cli-getting-started"
+        },
+        {
+          "type": "heading",
+          "text": "動手前怎麼確認權限，動完怎麼看產出",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "代理要改你的檔案、在你的電腦上跑指令，所以三家都有一組「它可以自己做到哪裡」的設定，名字各不相同，交需求前先看一眼在哪個模式。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Claude Code 叫權限模式，六個值：default（介面上叫 Manual，多數動作都問你）、acceptEdits、plan、auto、dontAsk、bypassPermissions。官方文件寫明終端機上的 Pro、Max 與 Team 方案起始模式是 auto，由另一個模型代你審查；按 Shift+Tab 切換。",
+            "Codex CLI 分核准政策與沙箱兩層：政策有 on-request、never、granular，沙箱有 workspace-write、read-only 與 danger-full-access。官方把組合包成預設，Auto 等於 workspace-write 加 on-request；輸入 /permissions 直接挑 Auto 或 Read Only。",
+            "Gemini CLI 用旗標 approval-mode，三個值：default 每次工具呼叫都問、auto_edit 自動核准 replace 與 write_file 這類編輯工具、yolo 全部自動核准。沙箱預設關閉，官方寫明用 yolo 時會預設開啟。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "三個工具各自把權限收緊一點的寫法",
+          "code": "# Claude Code：Manual 模式，多數動作都先問你\nclaude --permission-mode default\n\n# Codex CLI：唯讀沙箱，需要時才要求核准\ncodex --sandbox read-only --ask-for-approval on-request\n\n# Gemini CLI：自動核准編輯工具，其他工具仍然詢問\ngemini --approval-mode auto_edit"
+        },
+        {
+          "type": "paragraph",
+          "text": "代理停下來之後，要看的是它到底改了什麼。Claude Code 與 Codex CLI 都有 /diff 列出工作目錄的變更，Codex 還會連 Git 沒追蹤的新檔案一起顯示。要退回去，Claude Code 用 /rewind，Codex 用 /review 複查，Gemini CLI 得先開啟 checkpointing 再用 /restore 還原。真正的驗收仍在你自己：照那五點在瀏覽器裡點過去。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-coding-agents-compared/diagram-1.svg",
+          "alt": "三欄對照圖，並排列出 Claude Code、Codex CLI 與 Gemini CLI 從安裝、登入、權限確認、脈絡檔案到驗收的五個步驟，最下方是三邊共用的驗收條件。",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左往右看是同一個工具的完整流程，由上往下看是同一個步驟在三個工具的做法；最下面一條是三邊必須一致的驗收條件。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "脈絡檔案、非互動模式與費用怎麼算",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "三家都讓你把專案規則寫成一個檔案，每次開始自動讀進去：Claude Code 讀 CLAUDE.md，Codex 讀 AGENTS.md，Gemini CLI 預設讀 GEMINI.md，三者都用 /init 產生初稿。要注意官方文件明講 Claude Code 不讀 AGENTS.md，專案已經有 AGENTS.md 的話，在 CLAUDE.md 用一行匯入語法引進來即可。"
+        },
+        {
+          "type": "link",
+          "text": "Claude Code｜CLAUDE.md 完整教學",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-claude-md-guide"
+        },
+        {
+          "type": "link",
+          "text": "GEMINI.md 入門：建立規則與 /init",
+          "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+        },
+        {
+          "type": "paragraph",
+          "text": "要把代理接進腳本或持續整合流程，三家也都有不進入互動介面、跑完就結束的模式。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "三個工具的非互動執行方式",
+          "code": "# Claude Code：非互動執行，並先指定可用的工具\nclaude -p \"把 rates.json 補上 KRW 幣別\" --allowedTools \"Read,Edit\"\n\n# Codex CLI：非互動執行，輸出 JSON Lines 事件\ncodex exec \"把 rates.json 補上 KRW 幣別\" --json\n\n# Gemini CLI：非互動執行，輸出機器可讀的 JSON\ngemini -p \"把 rates.json 補上 KRW 幣別\" --output-format json"
+        },
+        {
+          "type": "paragraph",
+          "text": "費用差在「額度從哪裡扣」。Claude Code 走 Claude 訂閱，官網列出 Free 每月 0 美元不含 Claude Code，Pro 每月 20 美元與 Max 每月 100 美元起都寫明包含；也可改用 Claude Console 預付額度，照 API 計價。Codex 走 ChatGPT 訂閱，官網列出 Free 每月 0 美元、Go 每月 8 美元、Plus 每月 20 美元、Pro 每月 100 美元起，超過內含額度後用 credits 續用。Gemini CLI 用 Google 帳號登入有免費層，官方額度頁寫每人每天 1,000 次、每分鐘 60 次請求；Gemini API 金鑰的免費層是每天 250 次、每分鐘 10 次，只到 Flash 模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "三家都沒把「一天能跑幾個任務」寫成絕對數字：Claude 的 Pro 與 Max 只寫包含 Claude Code，Codex 的 Pro 只寫「比 Plus 多 5 倍或 20 倍的用量」，Google AI Pro 與 AI Ultra 只寫「依固定價訂閱計算」。這三項與台灣實際付款金額都以官網為準。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "工具",
+            "安裝與登入",
+            "權限確認",
+            "脈絡檔案",
+            "非互動模式",
+            "費用方式"
+          ],
+          "rows": [
+            [
+              "Claude Code",
+              "官方安裝指令、Homebrew 或 WinGet；執行 claude 後用訂閱或 Console 帳號登入",
+              "權限模式 default、acceptEdits、plan、auto、dontAsk、bypassPermissions；Shift+Tab 切換",
+              "CLAUDE.md（/init 產生；不讀 AGENTS.md，需自行匯入）",
+              "claude -p，可加 --output-format json",
+              "Claude 訂閱 Pro 或 Max，或 Claude Console 預付額度照 API 計價"
+            ],
+            [
+              "Codex CLI",
+              "官方安裝指令、npm 或 Homebrew；執行 codex 或 codex login，用 ChatGPT 帳號登入",
+              "核准政策 on-request、never、granular 搭配沙箱 workspace-write、read-only；/permissions 挑預設",
+              "AGENTS.md（/init 產生；全域放在使用者目錄，專案從 Git 根往下逐層疊加）",
+              "codex exec，可加 --json",
+              "ChatGPT 訂閱 Go、Plus 或 Pro，超過額度用 credits；改用 API 金鑰則照 API 計價"
+            ],
+            [
+              "Gemini CLI",
+              "npm 全域安裝、npx 或 Homebrew；執行 gemini 後選 Login with Google",
+              "approval-mode 三個值：default、auto_edit、yolo；另有工具白名單與沙箱",
+              "GEMINI.md（/init 產生；檔名可設定，/memory 檢視）",
+              "gemini -p，可加 --output-format json",
+              "Google 帳號免費層每天 1,000 次請求；或用 Gemini API 金鑰、Vertex AI 依用量計費"
+            ]
+          ],
+          "caption": "六個面向的對照，內容只取三家官方文件寫出來的部分，查證日 2026 年 9 月 14 日。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "先把工作存進版本控制，再交給代理",
+          "text": "三個工具都能直接改你的檔案，權限模式一旦放寬就不再逐次詢問。動手前先建立一個 Git 提交，代理做完再看 diff，才有東西比對與還原。Codex 官方文件就寫明要在任務前後建立 Git 檢查點；Gemini CLI 的 /restore 也只在先開啟 checkpointing 時才有檢查點可用。"
+        },
+        {
+          "type": "heading",
+          "text": "自己在家測：相同提示、相同驗收條件、記三件事",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "步驟比較只能告訴你流程長什麼樣，不能告訴你哪個工具在你的專案上好不好用。這件事只能自己測，測得有沒有意義取決於條件有沒有固定。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "同一份提示詞：用上面那段，一字不改。中途想補充的話三邊都要補一樣的內容，不然這一輪作廢。",
+            "同一個起點：三次都從同一個空資料夾或 Git 提交開始，測完就還原，不要讓下一個工具接手前一個留下的程式碼。",
+            "同一組驗收條件：把提示詞那五點抄成核對清單，在瀏覽器裡一條條點過去。能跑不等於做對，換算算錯或空白欄位沒提示都算沒過。",
+            "記時間：從貼上提示詞到驗收通過的分鐘數，包含你自己補提示、重跑與手動修正。",
+            "記額度：跑完看用量，Claude Code 用 /usage，Codex 用 /status，Gemini CLI 用 /stats。",
+            "記你改了幾處：代理交件後你動手改了幾個檔案、幾行，這數字比任何跑分都誠實。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "同一題至少跑兩輪再下結論，同一個模型跑兩次結果本來就會有差。幾輪之後你多半會發現，差別不在誰比較聰明，而在哪個工具的權限模式跟你比較合拍。想看還有哪些同類工具，站上有一篇總覽。"
+        },
+        {
+          "type": "link",
+          "text": "AI 寫程式工具總覽：Claude Code、Codex、Gemini CLI、Cursor、Copilot",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-tools-overview-2026"
+        },
+        {
+          "type": "link",
+          "text": "CLI 寫程式：理解、規劃、修改與測試",
+          "url": "https://mokaair.com/zh-TW/life/gemini-cli-coding-workflow"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Claude Code 快速上手（Anthropic 官方文件）",
+          "url": "https://code.claude.com/docs/en/quickstart",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude Code 權限模式（Anthropic 官方文件）",
+          "url": "https://code.claude.com/docs/en/permission-modes",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude Code CLAUDE.md 與記憶（Anthropic 官方文件）",
+          "url": "https://code.claude.com/docs/en/memory",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude Code 非互動執行（Anthropic 官方文件）",
+          "url": "https://code.claude.com/docs/en/headless",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude Code 指令總表（Anthropic 官方文件）",
+          "url": "https://code.claude.com/docs/en/commands",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 方案與價格（Anthropic 官網）",
+          "url": "https://claude.com/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex CLI 安裝與開始（OpenAI 官方文件）",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex 認證方式（OpenAI 官方文件）",
+          "url": "https://learn.chatgpt.com/docs/auth",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex 核准與沙箱設定（OpenAI 官方文件）",
+          "url": "https://learn.chatgpt.com/docs/agent-approvals-security",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex AGENTS.md 自訂指令（OpenAI 官方文件）",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex 非互動模式 codex exec（OpenAI 官方文件）",
+          "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex 指令總表（OpenAI 官方文件）",
+          "url": "https://learn.chatgpt.com/docs/developer-commands",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex 方案與價格（OpenAI 官方文件）",
+          "url": "https://learn.chatgpt.com/docs/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini CLI 快速上手（Google 官方文件）",
+          "url": "https://google-gemini.github.io/gemini-cli/docs/get-started/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini CLI 認證設定（Google 官方文件）",
+          "url": "https://google-gemini.github.io/gemini-cli/docs/get-started/authentication.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini CLI 設定與命令列參數（Google 官方文件）",
+          "url": "https://google-gemini.github.io/gemini-cli/docs/get-started/configuration.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini CLI 指令總表（Google 官方文件）",
+          "url": "https://google-gemini.github.io/gemini-cli/docs/cli/commands.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini CLI 檢查點與 /restore（Google 官方文件）",
+          "url": "https://google-gemini.github.io/gemini-cli/docs/cli/checkpointing.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini CLI 額度與費用（Google 官方文件）",
+          "url": "https://google-gemini.github.io/gemini-cli/docs/quota-and-pricing.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
