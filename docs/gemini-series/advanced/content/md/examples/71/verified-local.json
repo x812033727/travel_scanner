@@ -1,0 +1,80 @@
+{
+  "checkedOn": "2026-09-14T11:55:47.892Z",
+  "cli": "0.59.0",
+  "node": "v24.19.0",
+  "platform": "win32",
+  "method": "installed CLI modules including ExtensionManager; authored Node/Git fixtures",
+  "cloudCalls": 0,
+  "notTested": [
+    "native extension terminal wrapper exits reliably (Windows libuv failure recorded separately)",
+    "model response quality and actual adherence",
+    "authenticated interactive session resume",
+    "macOS/Linux execution",
+    "upgrade to a different Gemini CLI version"
+  ],
+  "results": [
+    {
+      "case": "01-user",
+      "trusted": true,
+      "theme": "DefaultLight",
+      "unknownRetained": false,
+      "hideWindowTitle": false,
+      "diagnostics": []
+    },
+    {
+      "case": "02-workspace",
+      "trusted": true,
+      "theme": "DefaultDark",
+      "unknownRetained": false,
+      "hideWindowTitle": false,
+      "diagnostics": []
+    },
+    {
+      "case": "03-system",
+      "trusted": true,
+      "theme": "GitHub",
+      "unknownRetained": false,
+      "hideWindowTitle": false,
+      "diagnostics": []
+    },
+    {
+      "case": "04-variable",
+      "trusted": true,
+      "model": "offline-sentinel-not-a-real-model",
+      "unknownRetained": false,
+      "hideWindowTitle": false,
+      "diagnostics": []
+    },
+    {
+      "case": "05-unknown",
+      "trusted": true,
+      "unknownRetained": true,
+      "hideWindowTitle": false,
+      "diagnostics": []
+    },
+    {
+      "case": "06-wrong-type",
+      "trusted": true,
+      "unknownRetained": false,
+      "hideWindowTitle": "not-a-boolean",
+      "diagnostics": [
+        {
+          "severity": "warning",
+          "message": "Invalid configuration in <temporary>\\06-wrong-type\\.gemini\\settings.json:\n\nError in: ui.hideWindowTitle\n    Expected boolean, received string\nExpected: boolean, but received: string\n\nPlease fix the configuration.\nSee: https://geminicli.com/docs/reference/configuration/"
+        }
+      ]
+    },
+    {
+      "case": "07-invalid-json",
+      "actual": "fatal configuration error"
+    },
+    {
+      "case": "08-untrusted",
+      "trusted": false,
+      "theme": "DefaultLight",
+      "unknownRetained": false,
+      "hideWindowTitle": false,
+      "diagnostics": []
+    }
+  ]
+}
