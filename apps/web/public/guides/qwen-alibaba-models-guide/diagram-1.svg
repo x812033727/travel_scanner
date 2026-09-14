@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">Qwen 家族地圖：哪些下載得到，哪些只有 API / The Qwen family: open weights versus API-only</title>
+  <desc id="desc">左半邊是開放權重、下載得到的部分，Hugging Face 的 Qwen 組織列出 465 個模型，分成四類：文字與多模態有 Qwen3.8-2.4T-A95B，總參數 2.4T、啟用 95B，以及 Qwen3.8-27B 與 Qwen3.8-Flash-Next，後者 125B 總參數、6B 啟用；程式是 Qwen3-Coder-Next，80B 總參數、3B 啟用，原生 262,144 token，Apache 2.0；圖片是 Qwen-Image-2512 生成與 Qwen-Image-Edit-2511 編輯，Apache 2.0；語音是 Qwen3-ASR 辨識與 Qwen3-TTS 合成，Apache 2.0。右上是只有 API 的三個，列在 Qwen Cloud 模型市集：Qwen3.8-Max 每百萬 token 輸入 2 美元、輸出 6 美元，Qwen-Image-3.0-Pro 做圖片生成，Wan3.0-Video 做影片生成。右下提醒授權有三種：Apache 2.0 用在 Qwen3.8-27B 與 Coder-Next，Qwen3.8-Max License 用在 2.4T-A95B，Qwen Community License 1.0 用在 Qwen3.8-Flash-Next，後兩種對大規模商用另有條件。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">Qwen 家族地圖：哪些下載得到，哪些只有 API</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">The Qwen family: open weights on the left, API-only on the right</text>
+
+  <!-- left panel: open weights -->
+  <rect x="70" y="130" width="880" height="700" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="510" y="182" font-size="24" font-weight="bold" fill="#102A2B" text-anchor="middle">開放權重：下載得到</text>
+  <text x="510" y="214" font-size="17" fill="#5C6B6B" text-anchor="middle">Hugging Face 的 Qwen 組織列出 465 個模型</text>
+
+  <rect x="100" y="240" width="820" height="126" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="130" y="282" font-size="18" font-weight="bold" fill="#102A2B">文字與多模態</text>
+  <text x="130" y="316" font-size="16" fill="#102A2B">Qwen3.8-2.4T-A95B：總參數 2.4T、啟用 95B</text>
+  <text x="130" y="346" font-size="15" fill="#5C6B6B">Qwen3.8-27B、Qwen3.8-Flash-Next：125B、6B 啟用</text>
+
+  <rect x="100" y="380" width="820" height="126" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="130" y="422" font-size="18" font-weight="bold" fill="#102A2B">程式</text>
+  <text x="130" y="456" font-size="16" fill="#102A2B">Qwen3-Coder-Next：80B 總參數、3B 啟用</text>
+  <text x="130" y="486" font-size="15" fill="#5C6B6B">原生 262,144 token，Apache 2.0</text>
+
+  <rect x="100" y="520" width="820" height="126" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="130" y="562" font-size="18" font-weight="bold" fill="#102A2B">圖片</text>
+  <text x="130" y="596" font-size="16" fill="#102A2B">Qwen-Image-2512 生成、Qwen-Image-Edit-2511 編輯</text>
+  <text x="130" y="626" font-size="15" fill="#5C6B6B">Apache 2.0</text>
+
+  <rect x="100" y="660" width="820" height="126" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="130" y="702" font-size="18" font-weight="bold" fill="#102A2B">語音</text>
+  <text x="130" y="736" font-size="16" fill="#102A2B">Qwen3-ASR 辨識、Qwen3-TTS 合成</text>
+  <text x="130" y="766" font-size="15" fill="#5C6B6B">Apache 2.0</text>
+
+  <!-- right top panel: API only -->
+  <rect x="990" y="130" width="540" height="400" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1260" y="182" font-size="24" font-weight="bold" fill="#102A2B" text-anchor="middle">只有 API</text>
+  <text x="1260" y="214" font-size="17" fill="#5C6B6B" text-anchor="middle">Qwen Cloud 模型市集</text>
+
+  <rect x="1020" y="240" width="480" height="88" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1260" y="280" font-size="18" font-weight="bold" fill="#102A2B" text-anchor="middle">Qwen3.8-Max</text>
+  <text x="1260" y="308" font-size="15" fill="#5C6B6B" text-anchor="middle">每百萬 token 輸入 2 美元、輸出 6 美元</text>
+
+  <rect x="1020" y="338" width="480" height="88" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1260" y="378" font-size="18" font-weight="bold" fill="#102A2B" text-anchor="middle">Qwen-Image-3.0-Pro</text>
+  <text x="1260" y="406" font-size="15" fill="#5C6B6B" text-anchor="middle">圖片生成</text>
+
+  <rect x="1020" y="436" width="480" height="88" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1260" y="476" font-size="18" font-weight="bold" fill="#102A2B" text-anchor="middle">Wan3.0-Video</text>
+  <text x="1260" y="504" font-size="15" fill="#5C6B6B" text-anchor="middle">影片生成</text>
+
+  <!-- right bottom panel: licences -->
+  <rect x="990" y="560" width="540" height="270" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1260" y="608" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">授權有三種，以模型卡為準</text>
+  <text x="1020" y="654" font-size="16" fill="#102A2B">Apache 2.0：Qwen3.8-27B、Coder-Next</text>
+  <text x="1020" y="692" font-size="16" fill="#102A2B">Qwen3.8-Max License：2.4T-A95B</text>
+  <text x="1020" y="730" font-size="16" fill="#102A2B">Qwen Community License 1.0：</text>
+  <text x="1020" y="762" font-size="16" fill="#102A2B">Qwen3.8-Flash-Next</text>
+  <text x="1020" y="798" font-size="15" fill="#B8442D">後兩種對大規模商用另有條件</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

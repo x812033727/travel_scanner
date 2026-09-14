@@ -203,23 +203,23 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 
 | # | slug | 標題 | topics | 圖 | 合作 | 易變 |
 |---|---|---|---|---|---|---|
-| 101 | `minimax-hailuo-video-guide` | MiniMax 海螺影片生成教學 | ai, tutorial | 插 |  | ✓ |
-| 102 | `minimax-speech-tts-guide` | MiniMax 語音合成：中文配音與有聲書 | ai, tutorial | 插 |  | ✓ |
-| 103 | `minimax-music-generation` | MiniMax 音樂生成怎麼用 | ai, tutorial | 插 |  | ✓ |
-| 104 | `minimax-m-series-models-explained` | MiniMax M 系列模型：開源權重與 API | ai | 插 |  | ✓ |
-| 105 | `minimax-agent-guide` | MiniMax Agent：一句話做出網頁與報告 | ai, tutorial | 插 |  | ✓ |
-| 106 | `deepseek-chat-and-reasoner` | DeepSeek 對話與推理模式怎麼用 | ai, tutorial | 插 |  | ✓ |
+| 101 | `minimax-hailuo-video-guide` | MiniMax 海螺影片生成教學：從註冊到下載第一支 AI 影片 | ai, tutorial | 插 |  | ✓ |
+| 102 | `minimax-speech-tts-guide` | MiniMax 語音合成：中文配音、有聲書與影片旁白 | ai, tutorial | 插 |  | ✓ |
+| 103 | `minimax-music-generation` | MiniMax 音樂生成怎麼用：從一段描述與歌詞做出一首歌 | ai, tutorial | 插 |  | ✓ |
+| 104 | `minimax-m-series-models-explained` | MiniMax M 系列模型：開放權重、授權條款與 API 價格 | ai | 插 |  | ✓ |
+| 105 | `minimax-agent-guide` | MiniMax Agent 怎麼用：一句話做出網頁、報告與簡報 | ai, tutorial | 插 |  | ✓ |
+| 106 | `deepseek-chat-and-reasoner` | DeepSeek 對話與深度思考：哪些題目該開推理模式 | ai, tutorial | 插 |  | ✓ |
 | 107 | `deepseek-privacy-and-data-flow` | DeepSeek 資料去哪裡：隱私、審查與台灣使用者的取捨 | ai, misc | 插 |  |  |
 | 108 | `deepseek-local-with-ollama` | 在自己電腦跑 DeepSeek：Ollama 蒸餾版教學 | ai, tutorial | 插 |  | ✓ |
-| 109 | `qwen-alibaba-models-guide` | 通義千問 Qwen：開源模型家族與 Qwen Chat | ai | 插 |  | ✓ |
+| 109 | `qwen-alibaba-models-guide` | 通義千問 Qwen：開放權重模型家族與 Qwen Studio | ai | 插 |  | ✓ |
 | 110 | `kimi-moonshot-guide` | Kimi（月之暗面）：長文件與 K 系列模型 | ai | 插 |  | ✓ |
 | 111 | `doubao-bytedance-guide` | 豆包（字節跳動）：功能與台灣可用性 | ai | 插 |  | ✓ |
 | 112 | `chinese-ai-models-comparison` | 中國系 AI 模型比較：DeepSeek、Qwen、Kimi、豆包、MiniMax | ai | 插 |  | ✓ |
 | 113 | `chinese-ai-apps-security-checklist` | 使用中國系 AI App 前的資安檢查清單 | ai, misc | 插 |  |  |
-| 114 | `mistral-le-chat-guide` | Mistral Le Chat：歐洲的 AI 助手 | ai | 插 |  | ✓ |
-| 115 | `grok-xai-guide` | Grok（xAI）：X 上的 AI 助手與注意事項 | ai | 插 |  | ✓ |
-| 116 | `perplexity-ai-search-guide` | Perplexity：AI 搜尋引擎入門 | ai, productivity | 插 |  | ✓ |
-| 117 | `microsoft-copilot-windows-office` | Microsoft Copilot：Windows 與 Office 裡的 AI | ai, software | 插 |  | ✓ |
+| 114 | `mistral-le-chat-guide` | Mistral Vibe（原 Le Chat）：歐洲 AI 助手的方案、功能與資料存放 | ai | 插 |  | ✓ |
+| 115 | `grok-xai-guide` | Grok（xAI）怎麼用：三個入口、方案價格與資料訓練開關 | ai | 插 |  | ✓ |
+| 116 | `perplexity-ai-search-guide` | Perplexity 入門：附引用的 AI 搜尋、方案與隱私設定 | ai, productivity | 插 |  | ✓ |
+| 117 | `microsoft-copilot-windows-office` | Microsoft Copilot：Windows 與 Office 裡的 AI 怎麼分、怎麼買、怎麼關 | ai, software | 插 |  | ✓ |
 | 118 | `meta-ai-whatsapp-instagram` | Meta AI：WhatsApp、Instagram 裡的 AI 與隱私 | ai, daily | 插 |  | ✓ |
 | 119 | `apple-intelligence-guide` | Apple Intelligence：iPhone、Mac 上的 AI 功能與中文支援 | ai, gadgets | 照 |  | ✓ |
 | 120 | `line-ai-features-taiwan` | LINE 裡的 AI：聊天、翻譯與台灣可用功能 | ai, daily | 照 |  | ✓ |
@@ -365,6 +365,7 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
   撰稿代理會繼承 session 的 plan mode，開著時代理只寫計畫檔；`ExitPlanMode` 後用 SendMessage 讓同一個代理接著執行即可，查證不用重做。
   總表標題以實際篇名為準（本批同步 5 列，其中「兩家寫作比一比」因為我們無法真的實測，改寫成讀者自測法）。
 - 批次 04（2026-09-14，`tasks/open/2026-09-13-life-ai-batch-04.md`）：教學文很需要 `code` 區塊（指令、設定檔、範例提示詞），撰稿補充要明寫可用；連結文字直接取目標文章標題（同批會寫的篇用指派給的標題，收完後再統一一次）；無法實測的「比較」題改寫成操作步驟比較與讀者自測法。官方文件會搬家（Codex 文件轉到 learn.chatgpt.com），sources 記實際生效的網址。合作連結沒有聯盟網址就不放，總表的 H 標記只是允許。
+- 批次 06（2026-09-14，`tasks/open/2026-09-13-life-ai-batch-06.md`）：中國系與其他家的產品名、模型版本、授權與方案半年內幾乎全換過（Le Chat→Vibe、Qwen Chat→Qwen Studio、MiniMax Agent→Mavis、Copilot Pro 停售），指派裡的「例如」只能當起點，寫手照當天官網寫、審稿再用 curl／Hugging Face API／iTunes lookup 逐篇複核；台灣可用性用 App Store／Google Play 官方查詢，查不到就寫查不到；政府禁令只引公告原文並限定公務機關；x.ai、help.x.com、perplexity.ai、volcengine 對機房 IP 回 403，寫手改讀 .md 版文件、說明中心的 Intercom 網址或 Wayback 快照並在 notes 記讀法。一波七個 Opus 代理會撞帳號的五小時額度，撞到就等重置再重跑。
 - Commons 照片：工具的 User-Agent 要有聯絡信箱，而且請求要走 urllib（httpx 的連線被 Wikimedia 擋 403）；十個代理同時搜 Commons 會被 429，工具會退避重試。
 
 ## Gemini 完整系列補充（2026-09-14）

@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">在自己電腦跑 DeepSeek 蒸餾版的流程 / Running a distilled DeepSeek locally with Ollama</title>
+  <desc id="desc">上排四個步驟：裝 Ollama（macOS 14 以上、Windows 10 22H2 以上）、選一個標籤（例如 deepseek-r1:8b，下載 5.2GB）、用 ollama pull 拉下模型、用 ollama run 開始對話並以 /bye 離開。中間一排列出六個標籤的下載大小：1.5b 是 1.1GB、7b 是 4.7GB、8b 是 5.2GB、32b 是 20GB、70b 是 43GB、671b 是 404GB 的完整版。下排左邊是本機 API，位址在 localhost 的 11434 埠，curl 或 Python 都可以呼叫；右邊是用 ollama ps 檢查模型跑在哪裡，100% GPU 代表整個模型進了顯示記憶體，100% CPU 代表全靠系統記憶體。最底下提醒公務機關全面禁用，包含地端下載。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">在自己電腦跑 DeepSeek 蒸餾版</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">From install to your first local chat with Ollama</text>
+
+  <!-- step row -->
+  <rect x="80" y="130" width="330" height="140" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="245" y="172" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">裝 Ollama</text>
+  <text x="245" y="206" font-size="17" fill="#5C6B6B" text-anchor="middle">macOS 14 以上</text>
+  <text x="245" y="236" font-size="17" fill="#5C6B6B" text-anchor="middle">Windows 10 22H2 以上</text>
+
+  <rect x="450" y="130" width="330" height="140" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="615" y="172" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">選一個標籤</text>
+  <text x="615" y="206" font-size="17" fill="#5C6B6B" text-anchor="middle">deepseek-r1:8b</text>
+  <text x="615" y="236" font-size="17" fill="#5C6B6B" text-anchor="middle">下載 5.2GB</text>
+
+  <rect x="820" y="130" width="330" height="140" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="985" y="172" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">拉下模型</text>
+  <text x="985" y="206" font-size="17" fill="#5C6B6B" text-anchor="middle">ollama pull</text>
+  <text x="985" y="236" font-size="17" fill="#5C6B6B" text-anchor="middle">只下載一次</text>
+
+  <rect x="1190" y="130" width="330" height="140" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1355" y="172" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">開始對話</text>
+  <text x="1355" y="206" font-size="17" fill="#5C6B6B" text-anchor="middle">ollama run</text>
+  <text x="1355" y="236" font-size="17" fill="#5C6B6B" text-anchor="middle">離開輸入 /bye</text>
+
+  <line x1="414" y1="200" x2="442" y2="200" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="784" y1="200" x2="812" y2="200" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1154" y1="200" x2="1182" y2="200" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- size ladder -->
+  <rect x="80" y="310" width="1440" height="200" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="110" y="352" font-size="20" font-weight="bold" fill="#102A2B">選標籤時先看下載大小（官網列出的數字）</text>
+
+  <rect x="110" y="376" width="220" height="104" rx="14" fill="#F7F1E8" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="220" y="416" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">1.5b</text>
+  <text x="220" y="450" font-size="17" fill="#5C6B6B" text-anchor="middle">1.1GB</text>
+
+  <rect x="354" y="376" width="220" height="104" rx="14" fill="#F7F1E8" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="464" y="416" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">7b</text>
+  <text x="464" y="450" font-size="17" fill="#5C6B6B" text-anchor="middle">4.7GB</text>
+
+  <rect x="598" y="376" width="220" height="104" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="708" y="416" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">8b</text>
+  <text x="708" y="450" font-size="17" fill="#5C6B6B" text-anchor="middle">5.2GB</text>
+
+  <rect x="842" y="376" width="220" height="104" rx="14" fill="#F7F1E8" stroke="#D97A2B" stroke-width="4"/>
+  <text x="952" y="416" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">32b</text>
+  <text x="952" y="450" font-size="17" fill="#5C6B6B" text-anchor="middle">20GB</text>
+
+  <rect x="1086" y="376" width="220" height="104" rx="14" fill="#F7F1E8" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1196" y="416" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">70b</text>
+  <text x="1196" y="450" font-size="17" fill="#5C6B6B" text-anchor="middle">43GB</text>
+
+  <rect x="1330" y="376" width="160" height="104" rx="14" fill="#F7F1E8" stroke="#B8442D" stroke-width="4"/>
+  <text x="1410" y="416" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">671b</text>
+  <text x="1410" y="450" font-size="17" fill="#B8442D" text-anchor="middle">404GB</text>
+
+  <!-- two panels -->
+  <rect x="80" y="550" width="700" height="200" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="110" y="592" font-size="20" font-weight="bold" fill="#102A2B">對話之外：本機 API</text>
+  <text x="110" y="628" font-size="17" fill="#5C6B6B">位址是 localhost 的 11434 埠</text>
+  <text x="110" y="660" font-size="17" fill="#5C6B6B">curl 或 Python 都可以呼叫</text>
+  <text x="110" y="692" font-size="17" fill="#5C6B6B">資料不出這台電腦</text>
+  <text x="110" y="724" font-size="17" fill="#5C6B6B">要給區網用才改 OLLAMA_HOST</text>
+
+  <rect x="820" y="550" width="700" height="200" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="850" y="592" font-size="20" font-weight="bold" fill="#102A2B">跑得動嗎：用 ollama ps 看</text>
+  <text x="850" y="628" font-size="17" fill="#5C6B6B">100% GPU：整個進顯示記憶體</text>
+  <text x="850" y="660" font-size="17" fill="#5C6B6B">100% CPU：全靠系統記憶體</text>
+  <text x="850" y="692" font-size="17" fill="#5C6B6B">被拆成兩邊時速度會掉</text>
+  <text x="850" y="724" font-size="17" fill="#5C6B6B">建議記憶體官網未列</text>
+
+  <rect x="80" y="790" width="1180" height="56" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="110" y="826" font-size="17" fill="#B8442D">公務機關全面禁用 DeepSeek 服務，包含地端下載；一般民眾未受限制</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

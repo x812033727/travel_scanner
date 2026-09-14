@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">DeepSeek 對話與深度思考決策樹 / Choosing between DeepSeek chat and DeepThink</title>
+  <desc id="desc">一張左到右的決策樹。左邊是「手上這一題」，先問第一個問題「答案會不會過期」。答「會」往上走到第二個問題「還需要推導或比對嗎」：答「要」就兩顆按鈕一起開，先搜到現在的數字再讓它推算；答「不要」就只開智慧搜尋，官網中文頁寫成智能搜索。第一個問題答「不會」往下走到另一個問題「答案需要中間步驟嗎」，中間步驟指算式、除錯、長文對照：答「要」就開深度思考，答案上方會先跑出思考過程；答「不要」就用一般對話，適合翻譯、改寫、摘要與格式轉換。最下面一條橫幅提醒三種模式共通的收尾動作：關鍵數字要自己核對，思考過程寫得順不等於結論正確。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="40" y="52" font-size="30" font-weight="700" fill="#102A2B">對話還是深度思考：這一題該開哪一個</text>
+  <text x="40" y="84" font-size="18" fill="#5C6B6B">DeepSeek chat vs DeepThink: which switch for which question</text>
+
+  <!-- connectors -->
+  <g fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)">
+    <path d="M 240 440 L 282 440"/>
+    <path d="M 590 425 L 640 425 L 640 220 L 692 220"/>
+    <path d="M 590 455 L 640 455 L 640 660 L 692 660"/>
+    <path d="M 1000 205 L 1050 205 L 1050 165 L 1102 165"/>
+    <path d="M 1000 235 L 1050 235 L 1050 325 L 1102 325"/>
+    <path d="M 1000 645 L 1050 645 L 1050 555 L 1102 555"/>
+    <path d="M 1000 675 L 1050 675 L 1050 715 L 1102 715"/>
+  </g>
+
+  <!-- start -->
+  <rect x="40" y="390" width="200" height="100" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+  <text x="140" y="447" text-anchor="middle" font-size="21" font-weight="700" fill="#102A2B">手上這一題</text>
+
+  <!-- question 1 -->
+  <rect x="290" y="370" width="300" height="140" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="440" y="428" text-anchor="middle" font-size="21" font-weight="700" fill="#102A2B">答案會不會過期？</text>
+  <text x="440" y="460" text-anchor="middle" font-size="16" fill="#5C6B6B">票價、規定、今天的新聞</text>
+
+  <!-- question 2 (upper) -->
+  <rect x="700" y="150" width="300" height="140" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="850" y="208" text-anchor="middle" font-size="21" font-weight="700" fill="#102A2B">還需要推導或比對嗎？</text>
+  <text x="850" y="240" text-anchor="middle" font-size="16" fill="#5C6B6B">既要新資料又要算</text>
+
+  <!-- question 2 (lower) -->
+  <rect x="700" y="590" width="300" height="140" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="850" y="648" text-anchor="middle" font-size="21" font-weight="700" fill="#102A2B">答案需要中間步驟嗎？</text>
+  <text x="850" y="680" text-anchor="middle" font-size="16" fill="#5C6B6B">算式、除錯、長文對照</text>
+
+  <!-- branch labels -->
+  <g font-size="16" fill="#5C6B6B">
+    <text x="652" y="318">會</text>
+    <text x="652" y="562">不會</text>
+    <text x="1058" y="192">要</text>
+    <text x="1058" y="292">不要</text>
+    <text x="1058" y="602">要</text>
+    <text x="1058" y="702">不要</text>
+  </g>
+
+  <!-- outcomes -->
+  <rect x="1110" y="110" width="450" height="110" rx="14" fill="#E3F0EF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1335" y="155" text-anchor="middle" font-size="21" font-weight="700" fill="#102A2B">兩顆按鈕一起開</text>
+  <text x="1335" y="187" text-anchor="middle" font-size="16" fill="#5C6B6B">先搜到現在的數字，再讓它推算</text>
+
+  <rect x="1110" y="270" width="450" height="110" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1335" y="315" text-anchor="middle" font-size="21" font-weight="700" fill="#102A2B">只開智慧搜尋</text>
+  <text x="1335" y="347" text-anchor="middle" font-size="16" fill="#5C6B6B">官網中文頁寫成「智能搜索」</text>
+
+  <rect x="1110" y="500" width="450" height="110" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1335" y="545" text-anchor="middle" font-size="21" font-weight="700" fill="#102A2B">開深度思考</text>
+  <text x="1335" y="577" text-anchor="middle" font-size="16" fill="#5C6B6B">答案上方會先跑出思考過程</text>
+
+  <rect x="1110" y="660" width="450" height="110" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1335" y="705" text-anchor="middle" font-size="21" font-weight="700" fill="#102A2B">一般對話就好</text>
+  <text x="1335" y="737" text-anchor="middle" font-size="16" fill="#5C6B6B">翻譯、改寫、摘要、格式轉換</text>
+
+  <!-- footer note -->
+  <rect x="40" y="790" width="1520" height="64" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="829" text-anchor="middle" font-size="18" fill="#102A2B">三種都一樣：關鍵數字自己核對，思考過程寫得順不等於結論正確</text>
+
+  <text x="1540" y="880" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

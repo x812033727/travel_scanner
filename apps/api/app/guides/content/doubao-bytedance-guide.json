@@ -1,0 +1,334 @@
+{
+  "slug": "doubao-bytedance-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "豆包（字節跳動）：功能與台灣可用性",
+      "description": "豆包是字節跳動旗下的 AI 助理。本文照官網與官方協議整理入口、功能清單、註冊方式、背後的 Seed 模型與火山方舟 API 價格，並在 2026 年 9 月 14 日實查台灣可用性：官方版在 App Store 台灣區查不到，搜尋到的多是同名的其他 App。隱私政策寫的資料存放地、是否用於模型訓練與刪帳號路徑也一併列出，附可自行重跑的查證指令。",
+      "hero": {
+        "src": "/guides/doubao-bytedance-guide/hero.jpg",
+        "alt": "抽象插圖：一個對話框連到手機、筆電與瀏覽器視窗，右側有一條虛線邊界與放大鏡，代表先查可用性再使用。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "豆包是字節跳動（ByteDance）推出的 AI 助理，官方入口在 doubao.com，另有手機 App、桌面客戶端與瀏覽器外掛。這篇的結論先講：功能清單與訂閱方案官網寫得很完整，但台灣使用者會卡在兩件事——本站在 2026 年 9 月 14 日實查，Apple App Store 台灣區查不到官方版豆包；而官方隱私政策明寫，境內營運收集的個人資料存放在中華人民共和國境內，個人版預設會把你輸入的內容用於模型訓練。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接下來會照官網與官方協議原文，把入口、功能清單、註冊方式、背後的 Seed 模型與火山方舟的 API 定價，以及隱私條款真正寫了什麼一項一項列出來，並附上你可以自己重跑一次的查證指令。官方頁沒有寫、或當天讀不到的項目，本文一律標成「以官網為準」，不補上猜測的數字。"
+        },
+        {
+          "type": "heading",
+          "text": "豆包是什麼：營運主體與入口",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "依官網的使用者協議（官網頁面標題寫「用戶協議」），豆包軟體及相關服務由北京春田知韻科技有限公司及／或關聯方提供，形式包含網頁、應用程式（含豆包、豆包工作客戶端）、瀏覽器外掛、小程式、軟體開發套件（SDK）與應用程式介面（API），並分成個人版與企業版；企業版要用飛書帳號登入。帳號服務須知另外列出使用同一組豆包帳號的「體系內產品」：各版本豆包產品及服務、飛書、PICO、火山引擎、豆包輸入法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官網目前可以打開的入口頁如下，括號裡是官方頁面自己的標題或說明："
+        },
+        {
+          "type": "list",
+          "items": [
+            "網頁版：doubao.com 的對話頁（頁面標題寫「豆包 - 字節跳動旗下 AI 智能助手」）",
+            "桌面客戶端：官網有「下載豆包客戶端」頁；頁面沒有逐一列出支援的作業系統版本，以官網為準",
+            "瀏覽器外掛：官方頁寫它「常駐在你瀏覽器的側邊欄」，可總結與翻譯網頁、讀論文、總結影片網站、撰寫郵件",
+            "手機 App：iOS 與 Android 都有，商店頁的開發者名稱是 Beijing Chuntian Zhiyun Technology Co., Ltd.",
+            "豆包工作：官網另有獨立的「豆包工作」頁，對應協議裡的豆包工作客戶端與企業版"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "heading",
+          "text": "官網列出了哪些功能",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "豆包對話頁在載入時會附一份官方功能清單（官網把每一項叫做「技能」）。下面照官方名稱翻成台灣用語列出，順序不代表重要性，功能會隨版本調整，實際看得到哪幾項以官網為準。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "問答與搜尋：AI 搜尋、學術搜尋、深入研究",
+            "讀資料：閱讀和總結、網頁摘要、多網頁總結、AI 閱讀（針對 PDF）",
+            "寫東西：幫我寫作、翻譯、PPT 生成、AI 表格",
+            "生成內容：圖像生成、影片生成、音樂生成、AI 播客",
+            "語音：語音通話、錄音轉寫、記錄會議",
+            "其他：編程（寫程式）、資料分析、解題答疑、共享應用或螢幕、本地電腦（操作自己的電腦）、API 服務"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "App Store 中國區的列表還寫了「工作任務模式」，說它內建 Office 和專業技能、支援定時任務；香港區同一個 App 的繁體中文描述沒有這一段。兩區列表都寫豆包的影片生成是以 Seedance 模型製作，也都提醒 AI 仍可能誤解或誤導，建議結合其他來源參考。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/doubao-bytedance-guide/diagram-1.svg",
+          "alt": "豆包 App、豆包帳號體系、Seed 模型與火山方舟 API 的關係圖，右側標出資料存放地與台灣可用性檢查結果。",
+          "width": 1600,
+          "height": 900,
+          "caption": "由上往下看：使用者從哪些入口進入豆包，帳號連到哪些產品，底層用哪些 Seed 模型，以及同一批模型在火山方舟怎麼計價。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "註冊方式：手機門號、Apple ID 與抖音帳號",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "隱私政策第 1.1 節寫得很直接：可以用「手機號登入、營運商一鍵登入、蘋果帳號（Apple ID）登入、抖音帳號登入」四種方式註冊與登入豆包帳號。帳號服務須知進一步說明，手機號碼是「履行國家法律法規關於網路實名制要求的必要資訊」，會用簡訊驗證碼確認身分；即使用 Apple ID 註冊，官方也建議再綁定手機號以便驗證身分。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件沒有列出可以接受的國碼清單，所以台灣門號能不能收到驗證碼、能不能完成註冊，本站撰稿時無法從台灣以外的環境確認，以官網為準。另外要注意：一鍵登入是和中國移動、中國聯通、中國電信三家業者的介接，第三方資訊共享清單把這三個 SDK 都列了出來，這條路徑對台灣門號自然不適用。"
+        },
+        {
+          "type": "heading",
+          "text": "台灣可用性：App Store、Google Play 與網頁版",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "App Store 的部分可以用蘋果官方的查詢介面自己驗一次，不必猜。官方版豆包的 App ID 是 6459478672，用這個 ID 查中國區與香港區都回傳一筆，查台灣區回傳零筆。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "用蘋果官方查詢介面確認台灣區有沒有上架",
+          "code": "# 以 App ID 直接查台灣區（回傳 resultCount 為 0 就是台灣區查不到）\ncurl -s 'https://itunes.apple.com/lookup?id=6459478672&country=tw'\n\n# 用關鍵字查台灣區，看看實際跑出來的是哪些 App\ncurl -s 'https://itunes.apple.com/search?term=%E8%B1%86%E5%8C%85&country=tw&entity=software'"
+        },
+        {
+          "type": "paragraph",
+          "text": "用關鍵字在台灣區搜尋「豆包」，前排出現的是其他開發者的近名 App，開發者名稱不是 Beijing Chuntian Zhiyun Technology Co., Ltd.。換句話說，台灣區 App Store 目前找得到的同名結果，並不是官網那一個豆包。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google Play 的情況不一樣。以 hl=zh_TW、gl=TW 參數讀取套件名 com.larus.nova 的商店頁，頁面開得起來，開發者寫 Beijing Chuntian Zhiyun Technology Co., Ltd.、開發者網站指向 www.doubao.com，頁面標示免費、更新日期 2025 年 3 月 31 日；但同樣參數的關鍵字搜尋，前排沒有出現這個套件。實際能不能安裝，仍以你 Google 帳號所在地區的商店顯示為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "網頁版與付款方式：本站撰稿當天從台灣以外的環境可以讀到 doubao.com 的對話頁與全部法律條款頁；在台灣的實際連線結果請自行確認。付費部分，官方的付費服務協議把訂閱分成標準套餐、加強套餐、高級套餐，App Store 中國區與香港區的列表則寫基礎版免費、標準版每月 68 元、每年 688 元，加強版每月 200 元、每年 2048 元，專業版每月 500 元、每年 5088 元；列表沒有標幣別，台灣有沒有本地付款方式官方頁也沒有寫，以官網為準。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "官網怎麼寫",
+            "台灣可用性（2026 年 9 月查證）"
+          ],
+          "rows": [
+            [
+              "網頁版",
+              "官方入口 doubao.com 對話頁，建議登入後使用",
+              "撰稿當天從台灣以外的環境讀得到；台灣實際連線以官網為準"
+            ],
+            [
+              "iOS App",
+              "App Store 上架，開發者 Beijing Chuntian Zhiyun Technology Co., Ltd.",
+              "以 App ID 6459478672 查台灣區回傳零筆；中國區、香港區各一筆"
+            ],
+            [
+              "Android App",
+              "Google Play 上架，套件名 com.larus.nova",
+              "台灣區參數讀得到商店頁，但同參數關鍵字搜尋前排沒有它"
+            ],
+            [
+              "註冊",
+              "手機號、營運商一鍵登入、Apple ID、抖音帳號四種",
+              "官方未列可用國碼；台灣門號能否註冊本站無法確認，以官網為準"
+            ],
+            [
+              "付費",
+              "標準／加強／高級套餐，另有創作額度包與雲端空間擴充",
+              "商店列表寫每月 68、200、500 元，未標幣別；台灣付款方式官方未寫"
+            ],
+            [
+              "API",
+              "火山方舟提供 doubao-seed 系列模型 API，價格以元計",
+              "火山引擎屬同一組豆包帳號體系；帳號與發票條件以官網為準"
+            ]
+          ],
+          "caption": "豆包功能與台灣可用性對照，全部依 2026 年 9 月 14 日的官方頁面與蘋果、Google 官方商店查詢結果整理。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "台灣區搜尋到的「豆包」多半不是官方版",
+          "text": "用關鍵字在台灣區 App Store 搜尋，跑出來的近名 App 開發者不是 Beijing Chuntian Zhiyun Technology Co., Ltd.。要確認是不是官方版，看開發者名稱與 App ID 6459478672，不要只看圖示和名字；同名不同家的 App 會自己寫一份隱私政策，資料流向和官方版完全是兩回事。"
+        },
+        {
+          "type": "link",
+          "text": "使用中國系 AI App 前的資安檢查清單",
+          "url": "https://mokaair.com/zh-TW/life/chinese-ai-apps-security-checklist"
+        },
+        {
+          "type": "heading",
+          "text": "Seed 模型與火山方舟的 API 定價",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "豆包背後的模型來自字節跳動的 Seed 團隊。Seed 官網寫這個團隊成立於 2023 年，研究方向涵蓋大型語言模型、語音、視覺、世界模型、基礎架構與下一代 AI 互動，在中國、新加坡、美國等地設有實驗室。對外開放的 API 走火山引擎旗下的火山方舟，模型代號以 doubao-seed-（語言）、doubao-seedance-（影片）、doubao-seedream-（圖片）命名。"
+        },
+        {
+          "type": "paragraph",
+          "text": "火山方舟的模型價格頁（本站查證當天顯示的更新時間就是 2026 年 9 月 14 日）把價格寫成「元／百萬 token」，並且分段計價——同一個模型，輸入長度落在不同區間就換一組單價。以線上推理（常規）的第一段為例：doubao-seed-2.1-pro 輸入 6.00 元、輸出 30.00 元；doubao-seed-2.1-turbo 輸入 3.00 元、輸出 15.00 元；輕量的 doubao-seed-1.6-flash 輸入 0.15 元、輸出 1.50 元。圖片模型另外按張計價，例如 doubao-seedream-4-5 輸出每張 0.25 元。幣別照官網寫的「元」，本文不換算成台幣。"
+        },
+        {
+          "type": "link",
+          "text": "依任務選 AI 工具：寫作、翻譯、程式、圖片、研究各用哪一個",
+          "url": "https://mokaair.com/zh-TW/life/ai-tools-choose-by-task"
+        },
+        {
+          "type": "heading",
+          "text": "隱私政策寫的：資料放哪裡、會不會拿去訓練、怎麼刪帳號",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這一節全部照隱私政策原文（更新日期 2026 年 9 月 10 日、生效日期 2026 年 9 月 17 日）整理。存放地點寫在第 4.1 節：「將在境內營運過程中收集和產生的你的個人資訊存儲於中華人民共和國境內。目前，我們不會將上述資訊傳輸至境外」，若要跨境傳輸會依中國相關法律與監管政策辦理。留存期間寫在第 4.2 節，沒有給固定天數，只寫在提供服務所必需的期間內保留；用手機號註冊登入時會持續保留手機號，帳號註銷或主動刪除後會刪除或匿名化，法規要求留存者除外。"
+        },
+        {
+          "type": "paragraph",
+          "text": "模型訓練寫在第 1.10 節：對豆包個人版，在經過加密與去識別化處理的前提下，如果你沒有主動回饋，官方「可能會將你向豆包輸入的資料、發出的指令以及豆包相應生成的回覆」與使用情況拿去分析並用於模型訓練。要關掉的路徑官方也寫了：設定 → 隱私與權限 → 幫助模型改進效果。使用者協議第 9.2 條另外寫，個人版使用者授予公司一項免費、全球範圍、可轉讓的使用權，用於模型服務優化與品牌推廣。"
+        },
+        {
+          "type": "paragraph",
+          "text": "刪帳號的路徑寫在第 6.3 節與帳號服務須知：設定 → 豆包帳號管理 → 刪除帳號，官方註明註銷不可逆，完成後會停止提供服務並刪除或匿名化帳號相關資訊。隱私政策也留了退訂與聯絡用的信箱 Dataprivacy@bytedance.com。"
+        },
+        {
+          "type": "paragraph",
+          "text": "和抖音、TikTok 的關係只寫官方頁寫的：隱私政策說你可以用抖音帳號登入並綁定，綁定後能在豆包裡直接使用抖音及抖音關聯版本產品的服務；第三方資訊共享清單的「關聯方目錄」列了抖音 SDK（合作方主體北京抖音科技有限公司）與飛書 Office SDK，付款功能則由抖音支付科技有限公司提供。官方這幾份文件裡沒有出現 TikTok，也沒有提到任何國際版產品，所以本文不做延伸推測。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "自己做的三個檢查，比看評測有用",
+          "text": "第一，用 App ID 或開發者名稱確認你裝的是官方版。第二，登入後先走一趟設定 → 隱私與權限，把「幫助模型改進效果」照自己的需求決定開或關。第三，把要問的內容分級：涉及身分證號、公司未公開資料、客戶名單的，不管哪一家 AI 都不要貼進對話框。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        },
+        {
+          "type": "link",
+          "text": "中國系 AI 模型比較：DeepSeek、Qwen、Kimi、豆包、MiniMax",
+          "url": "https://mokaair.com/zh-TW/life/chinese-ai-models-comparison"
+        },
+        {
+          "type": "link",
+          "text": "DeepSeek 資料去哪裡：隱私、審查與台灣使用者的取捨",
+          "url": "https://mokaair.com/zh-TW/life/deepseek-privacy-and-data-flow"
+        },
+        {
+          "type": "link",
+          "text": "文字生影片（Text-to-Video）是什麼：讓畫面在時間裡保持連貫",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-video"
+        }
+      ],
+      "sources": [
+        {
+          "title": "豆包 官方對話頁（字節跳動 AI 助理，頁面附官方功能清單）",
+          "url": "https://www.doubao.com/chat/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "豆包 隱私政策（更新日期 2026 年 9 月 10 日）",
+          "url": "https://www.doubao.com/legal/privacy",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "豆包 用戶協議（更新日期 2026 年 9 月 10 日）",
+          "url": "https://www.doubao.com/legal/terms",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "豆包帳號服務須知（註冊登入方式與體系內產品）",
+          "url": "https://www.doubao.com/legal/doubao_account_service_terms",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "豆包付費服務協議（含自動續費服務規則）",
+          "url": "https://www.doubao.com/legal/ey01",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "豆包 第三方資訊共享清單（SDK 與關聯方目錄）",
+          "url": "https://www.doubao.com/legal/third_parties",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "豆包 下載客戶端頁（官方桌面版入口）",
+          "url": "https://www.doubao.com/download/desktop",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "豆包瀏覽器外掛官方頁",
+          "url": "https://www.doubao.com/browser-extension/landing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "豆包工作 官方頁",
+          "url": "https://www.doubao.com/work",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "ByteDance Seed 官方網站（團隊成立年份與研究方向）",
+          "url": "https://seed.bytedance.com/zh/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "火山方舟 模型價格（火山引擎官方文件，doubao-seed 系列單價）",
+          "url": "https://www.volcengine.com/docs/82379/1099320",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Apple App Store 中國區 豆包 App 頁面（App ID 6459478672）",
+          "url": "https://apps.apple.com/cn/app/id6459478672",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Apple App Store 香港區 豆包 App 頁面（繁體中文列表與訂閱價格）",
+          "url": "https://apps.apple.com/hk/app/id6459478672",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Apple App Store 台灣區「豆包」搜尋結果頁",
+          "url": "https://apps.apple.com/tw/search?term=%E8%B1%86%E5%8C%85",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Play 豆包 應用程式頁（套件名 com.larus.nova，台灣語系參數）",
+          "url": "https://play.google.com/store/apps/details?id=com.larus.nova&hl=zh_TW",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

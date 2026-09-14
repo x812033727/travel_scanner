@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">Kimi 讀長文件的五個步驟 / How Kimi reads a long document</title>
+  <desc id="desc">由左到右五個步驟。第一步上傳：官網寫支援 PDF、Word、Excel、PPT、圖片、TXT 與影片，單檔上限 100 MB，一次最多 50 個。第二步讀取：檔案被讀進上下文視窗，K2.6 單輪約 128K token，K3 是 100 萬 token。第三步提問：不必貼原文直接問，推理強度分標準、進階、極致三級。第四步引用：在提示詞裡指名檔名與章節，要它標出出處段落，比整份摘要精準。第五步匯出：K3 可直接產出 pptx、docx、xlsx，K2.6 只輸出文字。下方是對話超過 20 萬個中文字怎麼辦：單一檔案第一輪就頂到上限就把檔案拆成幾份分批送；多輪累積到上限就先請它整理成一份交接文件再貼進新對話；刪掉同一則對話裡的舊訊息不會把上下文視窗空出來；K3 的 100 萬 token 長對話官網寫要最高階會員，撰寫時把對話長度選成超長。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#D97A2B"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">Kimi 讀長文件的五個步驟</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">How Kimi reads a long document</text>
+  <text x="60" y="128" font-size="17" fill="#5C6B6B">每一步標的是官網說明中心寫的規格</text>
+
+  <!-- step 1 -->
+  <rect x="60" y="150" width="260" height="292" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="102" cy="196" r="23" fill="#0D6B68"/>
+  <text x="102" y="204" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+  <text x="140" y="205" font-size="24" font-weight="700" fill="#102A2B">上傳</text>
+  <line x1="80" y1="234" x2="300" y2="234" stroke="#D9CFC0" stroke-width="2"/>
+  <text x="80" y="274" font-size="16" fill="#102A2B">PDF、Word、Excel</text>
+  <text x="80" y="308" font-size="16" fill="#102A2B">PPT、圖片、TXT、影片</text>
+  <text x="80" y="348" font-size="17" font-weight="700" fill="#0D6B68">單檔上限 100 MB</text>
+  <text x="80" y="382" font-size="17" font-weight="700" fill="#0D6B68">一次最多 50 個</text>
+
+  <!-- step 2 -->
+  <rect x="365" y="150" width="260" height="292" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="407" cy="196" r="23" fill="#0D6B68"/>
+  <text x="407" y="204" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+  <text x="445" y="205" font-size="24" font-weight="700" fill="#102A2B">讀取</text>
+  <line x1="385" y1="234" x2="605" y2="234" stroke="#D9CFC0" stroke-width="2"/>
+  <text x="385" y="274" font-size="16" fill="#102A2B">檔案讀進上下文視窗</text>
+  <text x="385" y="314" font-size="17" font-weight="700" fill="#0D6B68">K2.6 單輪約 128K</text>
+  <text x="385" y="348" font-size="17" font-weight="700" fill="#0D6B68">K3 是 100 萬 token</text>
+  <text x="385" y="386" font-size="16" fill="#5C6B6B">單位是 token</text>
+
+  <!-- step 3 -->
+  <rect x="670" y="150" width="260" height="292" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="712" cy="196" r="23" fill="#0D6B68"/>
+  <text x="712" y="204" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+  <text x="750" y="205" font-size="24" font-weight="700" fill="#102A2B">提問</text>
+  <line x1="690" y1="234" x2="910" y2="234" stroke="#D9CFC0" stroke-width="2"/>
+  <text x="690" y="274" font-size="16" fill="#102A2B">不必貼原文，直接問</text>
+  <text x="690" y="308" font-size="16" fill="#102A2B">聯網與否由它判斷</text>
+  <text x="690" y="348" font-size="17" font-weight="700" fill="#0D6B68">推理強度三級</text>
+  <text x="690" y="382" font-size="17" font-weight="700" fill="#0D6B68">標準／進階／極致</text>
+
+  <!-- step 4 -->
+  <rect x="975" y="150" width="260" height="292" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="1017" cy="196" r="23" fill="#0D6B68"/>
+  <text x="1017" y="204" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+  <text x="1055" y="205" font-size="24" font-weight="700" fill="#102A2B">引用</text>
+  <line x1="995" y1="234" x2="1215" y2="234" stroke="#D9CFC0" stroke-width="2"/>
+  <text x="995" y="274" font-size="16" fill="#102A2B">指名檔名與章節</text>
+  <text x="995" y="308" font-size="16" fill="#102A2B">要它標出出處段落</text>
+  <text x="995" y="348" font-size="17" font-weight="700" fill="#0D6B68">比整份摘要精準</text>
+  <text x="995" y="386" font-size="16" fill="#5C6B6B">答案要能回查</text>
+
+  <!-- step 5 -->
+  <rect x="1280" y="150" width="260" height="292" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="1322" cy="196" r="23" fill="#0D6B68"/>
+  <text x="1322" y="204" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+  <text x="1360" y="205" font-size="24" font-weight="700" fill="#102A2B">匯出</text>
+  <line x1="1300" y1="234" x2="1520" y2="234" stroke="#D9CFC0" stroke-width="2"/>
+  <text x="1300" y="274" font-size="16" fill="#102A2B">K3 可直接產出</text>
+  <text x="1300" y="308" font-size="16" fill="#102A2B">pptx、docx、xlsx</text>
+  <text x="1300" y="348" font-size="17" font-weight="700" fill="#0D6B68">K2.6 只輸出文字</text>
+  <text x="1300" y="386" font-size="16" fill="#5C6B6B">大綱、內文、程式碼</text>
+
+  <line x1="328" y1="300" x2="357" y2="300" stroke="#D97A2B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="633" y1="300" x2="662" y2="300" stroke="#D97A2B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="938" y1="300" x2="967" y2="300" stroke="#D97A2B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1243" y1="300" x2="1272" y2="300" stroke="#D97A2B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <text x="60" y="500" font-size="18" fill="#5C6B6B">頂到上限時，官網寫的做法</text>
+  <rect x="60" y="520" width="1020" height="250" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="90" y="572" font-size="20" font-weight="700" fill="#102A2B">對話超過 20 萬個中文字怎麼辦</text>
+  <text x="90" y="622" font-size="17" fill="#102A2B">單一檔案第一輪就頂到上限：把檔案拆成幾份，分批送進同一個對話</text>
+  <text x="90" y="666" font-size="17" fill="#102A2B">多輪累積到上限：先請它整理成一份交接文件，再貼進新對話接著做</text>
+  <text x="90" y="710" font-size="17" fill="#102A2B">刪掉舊訊息不會把上下文視窗空出來，直接開新對話比較快</text>
+
+  <rect x="1120" y="520" width="420" height="250" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1150" y="572" font-size="20" font-weight="700" fill="#102A2B">要用 100 萬 token</text>
+  <text x="1150" y="622" font-size="17" fill="#102A2B">官網寫 K3 的長對話要</text>
+  <text x="1150" y="666" font-size="17" fill="#102A2B">最高階會員權益，撰寫時</text>
+  <text x="1150" y="710" font-size="17" fill="#102A2B">把對話長度選成超長</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
