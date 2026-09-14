@@ -1,0 +1,37 @@
+{
+  "slug": "ai-context-window-explained",
+  "status": "verified",
+  "checked_on": "2026-09-14",
+  "sources": [
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/tokens",
+      "title": "Google：Understand and count tokens",
+      "access": "web open",
+      "claims": [
+        "上下文視窗與輸入輸出限制",
+        "計量以 token 為單位"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2307.03172",
+      "title": "Liu 等：Lost in the Middle",
+      "access": "web open",
+      "claims": [
+        "特定長上下文任務受資訊位置影響"
+      ]
+    },
+    {
+      "url": "https://docs.langchain.com/oss/python/concepts/memory",
+      "title": "LangChain：Memory overview",
+      "access": "web open",
+      "claims": [
+        "對話狀態與跨對話記憶不同",
+        "長歷史需選擇與管理"
+      ]
+    }
+  ],
+  "aliases": [],
+  "existing_overlap": "已讀既有 ai-context-window-explained.json，保留網址；撤除易過期模型容量與方案比較，修正把所有遺忘歸因單一上限、以及固定背景不佔視窗的誤導。",
+  "running_text_characters": 1873,
+  "notes": "例子皆為原創教學情境，未宣稱實測。自繪 SVG；不使用產品標誌或外部影像。 已完成 OpenCC s2twp 與模型參數用語保留，重新計算正文長度。 已依原始稿還原詞義，保留純繁體字形及臺灣字形標準，人工校正只、文件、局部、項目、通過、權限、支持及模型參數。"
+}

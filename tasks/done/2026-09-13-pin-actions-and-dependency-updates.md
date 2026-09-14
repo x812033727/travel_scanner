@@ -1,13 +1,13 @@
 ---
 id: 2026-09-13-pin-actions-and-dependency-updates
 title: Pin GitHub Actions to commit SHAs and add automated dependency updates
-status: review
+status: done
 priority: P2
 area: ops
 owner: claude-opus-5
 claimed_at: 2026-09-14T00:38:04Z
 created_at: 2026-09-13T23:37:46Z
-completed_at:
+completed_at: 2026-09-14T06:20:48Z
 branch: claude/security-check-o5zaj1
 depends_on: []
 scope:
@@ -50,9 +50,8 @@ which is the good time to automate it rather than the bad one.
       human-readable version in a trailing comment.
 - [x] Dependabot opens pull requests for npm, uv and GitHub Actions, and the actions
       ecosystem is included so the pins stay current rather than frozen.
-- [ ] CI is green on the pinned workflows. Cannot be checked from here — the pins only
-      resolve on GitHub's runners. `tools/workflow-pins.test.mjs` and a YAML parse are what
-      can be checked locally, and both pass.
+- [x] CI is green on the pinned workflows: merged PR #472 at 24af149062dd99aad3f4c2bb16cea70f8edf164c;
+      GitHub CI run 34808942136 completed successfully (verified 2026-09-14).
 
 ## Steps
 
@@ -100,3 +99,6 @@ immediately and loudly, before any step runs.
 - Only `apps/api` gets a `uv` entry. The npm workspace has one lock file at the root that
   covers `apps/web`, so a second npm entry pointing there would find nothing to update.
 - Filed by the 2026-09-13 security review (`docs/security-review-2026-09-13.md`).
+- Closed the stale review state after verifying merged PR and exact-main green CI.
+  A Windows-only file-URL parsing defect discovered during AI-series integration is
+  tracked separately in 2026-09-14-workflow-pin-tests-use-file-url.
