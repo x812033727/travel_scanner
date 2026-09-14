@@ -28,8 +28,14 @@
 
 `publish_batch.py` 明列本批 22 個 slug 與五個 locale。dry-run 預期全部新增，正式匯入後檢查 110 份發布、110 份 unchanged 重跑及既有文章／主題／修訂／網站頁面／供應商設定的保護指紋。
 
-`verify_public.mjs` 以未登入桌面及 iPhone 13 尺寸的 Chromium 檢查 220 個全文頁面，逐項核對圖片、表格、來源、內鏈、metadata、列表與 sitemap。手機是瀏覽器裝置模擬，非實體手機測試。`verify_assets_links.mjs` 對照正式 Git 版本核對 220 張公開圖片的 HTTP、大小及雜湊；public contact sheet 保存正常頁面的視覺檢查。
+`verify_public.mjs` 以未登入桌面及 iPhone 13 尺寸的 Chromium 檢查 220 個全文頁面，逐項核對圖片、表格、來源、內鏈、metadata、列表與 sitemap。手機是瀏覽器裝置模擬，非實體手機測試。`verify_assets_links.mjs` 對照正式 Git 版本核對 220 張公開圖片的 HTTP、大小及雜湊；public contact sheet 保存正常頁面的視覺檢查。13 篇英文表格在手機上使用既有的局部橫向捲動；`verify_scroll_table.mjs` 實際捲動至左右兩端，保留未改動內容或樣式的完整頁面，再依量測位置拼合表格供檢閱。這些檢閱圖以 horizontal scroll 標示，不代表全部欄位能同時塞入手機寬度。
 
 本地製作與驗證已完成：110 份語言文件通過 lint（英文完整譯文僅有長度建議警告）、隔離資料庫匯入／發布／重跑檢查；內容包測試 9 passed、5 skipped（本機未配置 PostgreSQL 測試連線），工具測試 48 passed，部署暫停檔測試 2 passed。五語共 220 張公開圖片已全部渲染及逐張檢視，證據見 `visual-verification.json` 和 60 張 contact sheet。翻譯對照審查已完成 22 組，19 項編輯修正與欄位修復有獨立紀錄。
 
-內容 PR、正式部署及刊登尚未完成。實際版本、發布時間與公開驗證結果完成後才記錄於本目錄；本地檢查不代表已發布。
+內容 [PR #497](https://github.com/x812033727/travel_scanner/pull/497) 已於 2026-09-14T15:08:31Z 合併為 `96ee71d6e17d09d44c32c0939cacf378c9217055`，PR 的 14 項檢查全數通過。合併版本的 CI 與三組瀏覽器流程也全數成功。`content-pr.json`、`release-ci.json`、`release-workflows.json` 保存對應證據；先前某輪 CI 的測試全部成功但上傳紀錄遭 GitHub 中介回傳 HTTP 403，該輪未被用作此次正式版本的成功證據。
+
+正式部署於 2026-09-14T15:26:36Z 完成；`deployment.json` 記錄新備份、還原目錄驗證、映像、資料指紋、保留的 PostgreSQL／Redis 及兩組連續健康檢查。`import-dry-run.json` 確認只新增 22 個 slug 的五語版本。`publication.json` 記錄 2026-09-14T15:27:49Z 已完成 110 份新增及發布，重跑全部 110 份 unchanged，既有編輯資料指紋相同。
+
+公開驗收已完成：`public-verification.json` 記錄 220 個五語桌面／手機全文頁面、10 個列表及全部新增 110 個 sitemap 網址；`asset-link-verification.json` 核對 220 張圖片的正式 Git 檔案與 160 個文章內鏈。`public-visual-verification.json` 保存已逐張檢閱的 75 張文章版面／表格檢閱圖及 2 張五語列表檢閱圖。固定導覽列會遮住定位截圖的一部分，裁切工具以正常完整頁面中的多條完全相符文字像素定位；較寬表格另以穩定版面下的原生左右捲動畫面驗證，均未更改網站內容或樣式。
+
+`closeout.json` 記錄 2026-09-14T16:04:03Z 已確認 API／web 正式映像、解除本次部署鎖，且 API health／ready 與 web 回應皆正常。文章與索引共 32 篇、五語共 160 份公開文件；[完整正式連結](articles.md) 包含 31 篇新聞與五語月份索引。查核範圍固定截至 2026-09-14，臺灣時間翌日完成驗收。容量警告另記於 `tasks/open/2026-09-14-guide-sitemap-capacity.md`，後續大型多語刊登應處理既有 1,000 筆上限。
