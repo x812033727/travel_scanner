@@ -1,0 +1,1606 @@
+{
+  "id": "gemini",
+  "locale": "zh-TW",
+  "hubSlug": "gemini-guide",
+  "title": "Gemini 完整教學：電腦、手機、CLI 與 Google AI 應用",
+  "groups": [
+    {
+      "id": "A",
+      "title": "入門、方案與裝置"
+    },
+    {
+      "id": "B",
+      "title": "提示詞與核心功能"
+    },
+    {
+      "id": "C",
+      "title": "Google AI 生態與創作"
+    },
+    {
+      "id": "D",
+      "title": "完整應用案例"
+    },
+    {
+      "id": "E",
+      "title": "CLI 入門與指令"
+    },
+    {
+      "id": "F",
+      "title": "MD 與設定檔"
+    },
+    {
+      "id": "G",
+      "title": "CLI 擴充與自動化"
+    },
+    {
+      "id": "H",
+      "title": "AI Studio 與 API"
+    }
+  ],
+  "paths": [
+    {
+      "id": "start",
+      "title": "第一次使用",
+      "description": "從第一個對話開始，練習提示詞與檔案分析。",
+      "articles": [
+        1,
+        4,
+        9,
+        10,
+        15,
+        11
+      ]
+    },
+    {
+      "id": "mobile",
+      "title": "手機使用",
+      "description": "選擇自己的裝置，再學語音與日常應用。",
+      "articles": [
+        1,
+        6,
+        7,
+        14,
+        19,
+        26
+      ]
+    },
+    {
+      "id": "work",
+      "title": "工作與研究",
+      "description": "從資料整理到研究報告與 Workspace 協作。",
+      "articles": [
+        9,
+        10,
+        13,
+        20,
+        21,
+        17,
+        18,
+        25
+      ]
+    },
+    {
+      "id": "cli",
+      "title": "CLI／MD 設定",
+      "description": "安裝終端機工具，建立規則與可重複使用的指令。",
+      "articles": [
+        35,
+        29,
+        30,
+        31,
+        36,
+        37,
+        38,
+        39,
+        40,
+        34
+      ]
+    },
+    {
+      "id": "api",
+      "title": "API 開發",
+      "description": "完成第一次 API 呼叫，最後建立文件工具。",
+      "articles": [
+        9,
+        47,
+        48,
+        49,
+        50
+      ]
+    }
+  ],
+  "articles": [
+    {
+      "number": 1,
+      "slug": "gemini-beginner-guide",
+      "title": "Gemini 新手入門：帳號、介面與第一個對話",
+      "purpose": "帳號、介面與第一個對話",
+      "group": "A",
+      "level": "入門",
+      "platforms": [
+        "網頁",
+        "Android",
+        "iOS"
+      ],
+      "keywords": [
+        "入門",
+        "註冊",
+        "帳號"
+      ],
+      "prerequisites": [],
+      "related": [
+        9,
+        15
+      ],
+      "minutes": 5
+    },
+    {
+      "number": 2,
+      "slug": "gemini-plans-ai-pro-ultra-2026",
+      "title": "免費與付費方案：功能、額度與訂閱選擇",
+      "purpose": "功能、額度與訂閱選擇",
+      "group": "A",
+      "level": "入門",
+      "platforms": [
+        "全平台"
+      ],
+      "keywords": [
+        "價格",
+        "費用",
+        "Plus",
+        "Pro",
+        "Ultra"
+      ],
+      "prerequisites": [
+        1
+      ],
+      "related": [
+        3,
+        49
+      ],
+      "minutes": 6
+    },
+    {
+      "number": 3,
+      "slug": "gemini-model-lineup-flash-pro",
+      "title": "Gemini 模型怎麼選：速度、能力與情境",
+      "purpose": "速度、能力與情境",
+      "group": "A",
+      "level": "入門",
+      "platforms": [
+        "全平台"
+      ],
+      "keywords": [
+        "模型",
+        "Flash",
+        "Pro",
+        "Nano"
+      ],
+      "prerequisites": [
+        1
+      ],
+      "related": [
+        2,
+        9
+      ],
+      "minutes": 6
+    },
+    {
+      "number": 4,
+      "slug": "gemini-web-desktop-guide",
+      "title": "電腦網頁版：Windows、檔案與瀏覽器捷徑",
+      "purpose": "Windows、檔案與瀏覽器捷徑",
+      "group": "A",
+      "level": "入門",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "keywords": [
+        "桌面",
+        "Windows",
+        "網頁",
+        "Windows 桌面版",
+        "GeminiSetup.exe"
+      ],
+      "prerequisites": [
+        1
+      ],
+      "related": [
+        5,
+        10
+      ],
+      "minutes": 6
+    },
+    {
+      "number": 5,
+      "slug": "gemini-mac-app-guide",
+      "title": "Mac 桌面版：安裝、快捷鍵與視窗分享",
+      "purpose": "安裝、快捷鍵與視窗分享",
+      "group": "A",
+      "level": "入門",
+      "platforms": [
+        "macOS"
+      ],
+      "keywords": [
+        "桌面",
+        "Mac",
+        "安裝"
+      ],
+      "prerequisites": [
+        1
+      ],
+      "related": [
+        4,
+        15
+      ],
+      "minutes": 6
+    },
+    {
+      "number": 6,
+      "slug": "gemini-on-android-assistant",
+      "title": "Android 版：安裝、助理設定與手機操作",
+      "purpose": "安裝、助理設定與手機操作",
+      "group": "A",
+      "level": "入門",
+      "platforms": [
+        "Android"
+      ],
+      "keywords": [
+        "手機",
+        "Android",
+        "助理"
+      ],
+      "prerequisites": [
+        1
+      ],
+      "related": [
+        14,
+        19
+      ],
+      "minutes": 6
+    },
+    {
+      "number": 7,
+      "slug": "gemini-ios-app-guide",
+      "title": "iPhone 與 iPad：安裝、語音與照片",
+      "purpose": "安裝、語音與照片",
+      "group": "A",
+      "level": "入門",
+      "platforms": [
+        "iOS",
+        "iPadOS"
+      ],
+      "keywords": [
+        "手機",
+        "iPhone",
+        "iPad",
+        "iOS"
+      ],
+      "prerequisites": [
+        1
+      ],
+      "related": [
+        14,
+        10
+      ],
+      "minutes": 6
+    },
+    {
+      "number": 8,
+      "slug": "gemini-in-chrome-guide",
+      "title": "Chrome 裡的 Gemini：網頁摘要與分頁",
+      "purpose": "網頁摘要與分頁",
+      "group": "A",
+      "level": "入門",
+      "platforms": [
+        "Windows",
+        "macOS"
+      ],
+      "keywords": [
+        "瀏覽器",
+        "Chrome",
+        "分頁"
+      ],
+      "prerequisites": [
+        1
+      ],
+      "related": [
+        4,
+        22
+      ],
+      "minutes": 6
+    },
+    {
+      "number": 9,
+      "slug": "gemini-prompt-writing-guide",
+      "title": "提示詞怎麼寫：目標、背景與輸出格式",
+      "purpose": "目標、背景與輸出格式",
+      "group": "B",
+      "level": "入門",
+      "platforms": [
+        "全平台"
+      ],
+      "keywords": [
+        "提示詞",
+        "prompt",
+        "指令",
+        "範例"
+      ],
+      "prerequisites": [
+        1
+      ],
+      "related": [
+        11,
+        26
+      ],
+      "minutes": 5
+    },
+    {
+      "number": 10,
+      "slug": "gemini-file-analysis-guide",
+      "title": "讀 PDF、圖片與表格：摘要、比對與驗證",
+      "purpose": "摘要、比對與驗證",
+      "group": "B",
+      "level": "入門",
+      "platforms": [
+        "網頁",
+        "Android",
+        "iOS"
+      ],
+      "keywords": [
+        "PDF",
+        "圖片",
+        "檔案",
+        "表格"
+      ],
+      "prerequisites": [
+        1
+      ],
+      "related": [
+        13,
+        20
+      ],
+      "minutes": 5
+    },
+    {
+      "number": 11,
+      "slug": "gemini-gems-custom-assistants",
+      "title": "Gems 自訂助手：指令、資料與測試",
+      "purpose": "指令、資料與測試",
+      "group": "B",
+      "level": "入門",
+      "platforms": [
+        "網頁",
+        "Android",
+        "iOS"
+      ],
+      "keywords": [
+        "Gems",
+        "自訂助手",
+        "記憶"
+      ],
+      "prerequisites": [
+        1
+      ],
+      "related": [
+        9,
+        36
+      ],
+      "minutes": 6
+    },
+    {
+      "number": 12,
+      "slug": "gemini-canvas-guide",
+      "title": "Canvas：編輯文章、簡報與製作小工具",
+      "purpose": "編輯文章、簡報與製作小工具",
+      "group": "B",
+      "level": "入門",
+      "platforms": [
+        "網頁"
+      ],
+      "keywords": [
+        "Canvas",
+        "畫布",
+        "簡報",
+        "程式"
+      ],
+      "prerequisites": [
+        1
+      ],
+      "related": [
+        9,
+        17
+      ],
+      "minutes": 6
+    },
+    {
+      "number": 13,
+      "slug": "gemini-deep-research-guide",
+      "title": "Deep Research：研究計畫、來源與報告",
+      "purpose": "研究計畫、來源與報告",
+      "group": "B",
+      "level": "入門",
+      "platforms": [
+        "網頁",
+        "Android",
+        "iOS"
+      ],
+      "keywords": [
+        "研究",
+        "Deep Research",
+        "報告"
+      ],
+      "prerequisites": [
+        1
+      ],
+      "related": [
+        10,
+        20
+      ],
+      "minutes": 6
+    },
+    {
+      "number": 14,
+      "slug": "gemini-live-voice-camera",
+      "title": "Gemini Live：語音、鏡頭與螢幕分享",
+      "purpose": "語音、鏡頭與螢幕分享",
+      "group": "B",
+      "level": "入門",
+      "platforms": [
+        "Android",
+        "iOS"
+      ],
+      "keywords": [
+        "Live",
+        "語音",
+        "手機",
+        "鏡頭"
+      ],
+      "prerequisites": [
+        1
+      ],
+      "related": [
+        6,
+        7
+      ],
+      "minutes": 5
+    },
+    {
+      "number": 15,
+      "slug": "gemini-privacy-activity-settings",
+      "title": "活動記錄與隱私：查看、刪除與設定",
+      "purpose": "查看、刪除與設定",
+      "group": "B",
+      "level": "入門",
+      "platforms": [
+        "全平台"
+      ],
+      "keywords": [
+        "隱私",
+        "記憶",
+        "刪除",
+        "活動"
+      ],
+      "prerequisites": [
+        1
+      ],
+      "related": [
+        11,
+        19
+      ],
+      "minutes": 6
+    },
+    {
+      "number": 16,
+      "slug": "gemini-spark-workflows-guide",
+      "title": "Gemini Spark：任務、排程與 Skills",
+      "purpose": "任務、排程與 Skills",
+      "group": "B",
+      "level": "中階",
+      "platforms": [
+        "網頁",
+        "macOS"
+      ],
+      "keywords": [
+        "Spark",
+        "排程",
+        "自動化",
+        "Skills"
+      ],
+      "prerequisites": [
+        1
+      ],
+      "related": [
+        19,
+        42
+      ],
+      "minutes": 6
+    },
+    {
+      "number": 17,
+      "slug": "gemini-in-gmail-docs-sheets",
+      "title": "Gmail、Docs 與 Slides：信件、文件與簡報",
+      "purpose": "信件、文件與簡報",
+      "group": "C",
+      "level": "入門",
+      "platforms": [
+        "網頁"
+      ],
+      "keywords": [
+        "Gmail",
+        "Docs",
+        "Slides",
+        "Workspace"
+      ],
+      "prerequisites": [
+        1
+      ],
+      "related": [
+        18,
+        25
+      ],
+      "minutes": 6
+    },
+    {
+      "number": 18,
+      "slug": "gemini-for-google-sheets-formulas",
+      "title": "Google Sheets：公式、整理與資料核對",
+      "purpose": "公式、整理與資料核對",
+      "group": "C",
+      "level": "入門",
+      "platforms": [
+        "網頁"
+      ],
+      "keywords": [
+        "Sheets",
+        "試算表",
+        "公式"
+      ],
+      "prerequisites": [
+        1
+      ],
+      "related": [
+        17,
+        48
+      ],
+      "minutes": 5
+    },
+    {
+      "number": 19,
+      "slug": "gemini-connected-apps-guide",
+      "title": "Connected Apps：Drive、日曆與地圖整合",
+      "purpose": "Drive、日曆與地圖整合",
+      "group": "C",
+      "level": "入門",
+      "platforms": [
+        "網頁",
+        "Android",
+        "iOS"
+      ],
+      "keywords": [
+        "連接",
+        "Drive",
+        "Calendar",
+        "Maps",
+        "YouTube"
+      ],
+      "prerequisites": [
+        1
+      ],
+      "related": [
+        15,
+        16
+      ],
+      "minutes": 6
+    },
+    {
+      "number": 20,
+      "slug": "notebooklm-guide",
+      "title": "NotebookLM 入門：資料、筆記本與引用",
+      "purpose": "資料、筆記本與引用",
+      "group": "C",
+      "level": "入門",
+      "platforms": [
+        "網頁",
+        "Android",
+        "iOS"
+      ],
+      "keywords": [
+        "NotebookLM",
+        "筆記",
+        "來源",
+        "Gemini Notebook",
+        "筆記本"
+      ],
+      "prerequisites": [
+        1
+      ],
+      "related": [
+        10,
+        21
+      ],
+      "minutes": 6
+    },
+    {
+      "number": 21,
+      "slug": "notebooklm-for-study-notes",
+      "title": "NotebookLM 進階：測驗、語音與影片摘要",
+      "purpose": "測驗、語音與影片摘要",
+      "group": "C",
+      "level": "入門",
+      "platforms": [
+        "網頁",
+        "Android",
+        "iOS"
+      ],
+      "keywords": [
+        "NotebookLM",
+        "讀書",
+        "Audio Overview",
+        "測驗"
+      ],
+      "prerequisites": [
+        1
+      ],
+      "related": [
+        20,
+        13
+      ],
+      "minutes": 6
+    },
+    {
+      "number": 22,
+      "slug": "google-ai-mode-search",
+      "title": "Google 搜尋 AI 模式：追問與來源判讀",
+      "purpose": "追問與來源判讀",
+      "group": "C",
+      "level": "入門",
+      "platforms": [
+        "網頁",
+        "Android",
+        "iOS"
+      ],
+      "keywords": [
+        "AI Mode",
+        "AI Overviews",
+        "搜尋"
+      ],
+      "prerequisites": [
+        1
+      ],
+      "related": [
+        13,
+        28
+      ],
+      "minutes": 6
+    },
+    {
+      "number": 23,
+      "slug": "nano-banana-image-editing",
+      "title": "Gemini 圖片生成與修圖：提示詞與參考圖",
+      "purpose": "提示詞與參考圖",
+      "group": "C",
+      "level": "入門",
+      "platforms": [
+        "網頁",
+        "Android",
+        "iOS"
+      ],
+      "keywords": [
+        "Nano Banana",
+        "圖片",
+        "修圖"
+      ],
+      "prerequisites": [
+        1
+      ],
+      "related": [
+        9,
+        24
+      ],
+      "minutes": 6
+    },
+    {
+      "number": 24,
+      "slug": "veo-video-generation-guide",
+      "title": "Veo 與 Google Flow：影片、分鏡與匯出",
+      "purpose": "影片、分鏡與匯出",
+      "group": "C",
+      "level": "入門",
+      "platforms": [
+        "網頁"
+      ],
+      "keywords": [
+        "Veo",
+        "Flow",
+        "影片",
+        "分鏡"
+      ],
+      "prerequisites": [
+        1
+      ],
+      "related": [
+        23,
+        2
+      ],
+      "minutes": 6
+    },
+    {
+      "number": 25,
+      "slug": "google-workspace-ai-for-small-business",
+      "title": "小團隊使用 Workspace AI：帳號與管理",
+      "purpose": "帳號與管理",
+      "group": "C",
+      "level": "中階",
+      "platforms": [
+        "網頁"
+      ],
+      "keywords": [
+        "Workspace",
+        "公司",
+        "管理",
+        "團隊"
+      ],
+      "prerequisites": [
+        1
+      ],
+      "related": [
+        17,
+        15
+      ],
+      "minutes": 6
+    },
+    {
+      "number": 26,
+      "slug": "gemini-for-travel-planning",
+      "title": "用 Gemini 規劃旅行：需求、資料與行程",
+      "purpose": "需求、資料與行程",
+      "group": "D",
+      "level": "入門",
+      "platforms": [
+        "網頁",
+        "Android",
+        "iOS"
+      ],
+      "keywords": [
+        "旅行",
+        "旅遊",
+        "行程",
+        "地圖"
+      ],
+      "prerequisites": [
+        1
+      ],
+      "related": [
+        9,
+        13
+      ],
+      "minutes": 5
+    },
+    {
+      "number": 27,
+      "slug": "gemini-vs-chatgpt-vs-claude-daily",
+      "title": "三大助手日常比較：同題操作與評分方法",
+      "purpose": "同題操作與評分方法",
+      "group": "D",
+      "level": "入門",
+      "platforms": [
+        "網頁"
+      ],
+      "keywords": [
+        "ChatGPT",
+        "Claude",
+        "比較",
+        "實測"
+      ],
+      "prerequisites": [
+        1
+      ],
+      "related": [
+        9,
+        10
+      ],
+      "minutes": 6
+    },
+    {
+      "number": 28,
+      "slug": "google-ai-overviews-for-site-owners",
+      "title": "網站經營者看 AI 摘要：引用與成效",
+      "purpose": "引用與成效",
+      "group": "D",
+      "level": "中階",
+      "platforms": [
+        "網頁"
+      ],
+      "keywords": [
+        "SEO",
+        "網站",
+        "AI Overviews",
+        "Search Console"
+      ],
+      "prerequisites": [
+        1
+      ],
+      "related": [
+        22,
+        13
+      ],
+      "minutes": 7
+    },
+    {
+      "number": 29,
+      "slug": "gemini-cli-getting-started",
+      "title": "Gemini CLI 安裝：第一次在終端機對話",
+      "purpose": "第一次在終端機對話",
+      "group": "E",
+      "level": "中階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "keywords": [
+        "CLI",
+        "安裝",
+        "Node.js",
+        "terminal"
+      ],
+      "prerequisites": [
+        35
+      ],
+      "related": [
+        30,
+        31
+      ],
+      "minutes": 6
+    },
+    {
+      "number": 30,
+      "slug": "gemini-cli-authentication",
+      "title": "CLI 認證：Google 帳號、API Key 與計費",
+      "purpose": "Google 帳號、API Key 與計費",
+      "group": "E",
+      "level": "中階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "keywords": [
+        "CLI",
+        "登入",
+        "/auth",
+        "金鑰"
+      ],
+      "prerequisites": [
+        29
+      ],
+      "related": [
+        29,
+        49
+      ],
+      "minutes": 6
+    },
+    {
+      "number": 31,
+      "slug": "gemini-cli-command-reference",
+      "title": "CLI 指令總表：語法、範例與深入教學",
+      "purpose": "語法、範例與深入教學",
+      "group": "E",
+      "level": "中階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "keywords": [
+        "CLI",
+        "指令",
+        "/help",
+        "/model",
+        "/stats"
+      ],
+      "prerequisites": [
+        29
+      ],
+      "related": [
+        32,
+        33
+      ],
+      "minutes": 10
+    },
+    {
+      "number": 32,
+      "slug": "gemini-cli-files-and-shell",
+      "title": "CLI 檔案與命令：@、! 與路徑",
+      "purpose": "@、! 與路徑",
+      "group": "E",
+      "level": "中階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "keywords": [
+        "CLI",
+        "@",
+        "!",
+        "檔案",
+        "shell"
+      ],
+      "prerequisites": [
+        29
+      ],
+      "related": [
+        39,
+        34
+      ],
+      "minutes": 6
+    },
+    {
+      "number": 33,
+      "slug": "gemini-cli-sessions-context",
+      "title": "CLI 對話管理：恢復、壓縮與匯出",
+      "purpose": "恢復、壓縮與匯出",
+      "group": "E",
+      "level": "中階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "keywords": [
+        "CLI",
+        "/resume",
+        "/chat",
+        "/compress",
+        "/clear",
+        "記憶"
+      ],
+      "prerequisites": [
+        29
+      ],
+      "related": [
+        37,
+        46
+      ],
+      "minutes": 6
+    },
+    {
+      "number": 34,
+      "slug": "gemini-cli-coding-workflow",
+      "title": "CLI 寫程式：理解、規劃、修改與測試",
+      "purpose": "理解、規劃、修改與測試",
+      "group": "E",
+      "level": "中階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "keywords": [
+        "CLI",
+        "/plan",
+        "程式",
+        "測試",
+        "IDE"
+      ],
+      "prerequisites": [
+        29
+      ],
+      "related": [
+        36,
+        39
+      ],
+      "minutes": 5
+    },
+    {
+      "number": 35,
+      "slug": "gemini-markdown-basics",
+      "title": "Markdown 基礎：建立 MD、標題與程式碼",
+      "purpose": "建立 MD、標題與程式碼",
+      "group": "F",
+      "level": "中階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "keywords": [
+        "MD",
+        "Markdown",
+        "筆記",
+        ".md"
+      ],
+      "prerequisites": [],
+      "related": [
+        36,
+        42
+      ],
+      "minutes": 5
+    },
+    {
+      "number": 36,
+      "slug": "gemini-cli-gemini-md",
+      "title": "GEMINI.md 入門：建立規則與 /init",
+      "purpose": "建立規則與 /init",
+      "group": "F",
+      "level": "中階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "keywords": [
+        "MD",
+        "GEMINI.md",
+        "/init",
+        "規則"
+      ],
+      "prerequisites": [
+        29
+      ],
+      "related": [
+        35,
+        37
+      ],
+      "minutes": 5
+    },
+    {
+      "number": 37,
+      "slug": "gemini-cli-memory-hierarchy",
+      "title": "GEMINI.md 進階：範圍、匯入與 /memory",
+      "purpose": "範圍、匯入與 /memory",
+      "group": "F",
+      "level": "中階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "keywords": [
+        "MD",
+        "GEMINI.md",
+        "/memory",
+        "記憶",
+        "匯入"
+      ],
+      "prerequisites": [
+        29
+      ],
+      "related": [
+        36,
+        38
+      ],
+      "minutes": 6
+    },
+    {
+      "number": 38,
+      "slug": "gemini-cli-settings",
+      "title": "settings.json：全域、專案與環境變數",
+      "purpose": "全域、專案與環境變數",
+      "group": "F",
+      "level": "中階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "keywords": [
+        "settings.json",
+        "/settings",
+        "設定"
+      ],
+      "prerequisites": [
+        29
+      ],
+      "related": [
+        37,
+        39
+      ],
+      "minutes": 5
+    },
+    {
+      "number": 39,
+      "slug": "gemini-cli-permissions-sandbox",
+      "title": "CLI 權限：忽略檔案、可信任資料夾與沙箱",
+      "purpose": "忽略檔案、可信任資料夾與沙箱",
+      "group": "F",
+      "level": "中階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "keywords": [
+        ".geminiignore",
+        "沙箱",
+        "權限",
+        "/permissions"
+      ],
+      "prerequisites": [
+        29
+      ],
+      "related": [
+        32,
+        38
+      ],
+      "minutes": 5
+    },
+    {
+      "number": 40,
+      "slug": "gemini-cli-custom-commands",
+      "title": "自訂斜線指令：TOML、參數與重新載入",
+      "purpose": "TOML、參數與重新載入",
+      "group": "F",
+      "level": "中階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "keywords": [
+        "TOML",
+        ".toml",
+        "/commands",
+        "自訂指令"
+      ],
+      "prerequisites": [
+        29
+      ],
+      "related": [
+        36,
+        42
+      ],
+      "minutes": 5
+    },
+    {
+      "number": 41,
+      "slug": "gemini-cli-mcp-extensions",
+      "title": "MCP 與 Extensions：安裝、驗證與停用",
+      "purpose": "安裝、驗證與停用",
+      "group": "G",
+      "level": "進階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "keywords": [
+        "MCP",
+        "Extensions",
+        "/mcp",
+        "/extensions"
+      ],
+      "prerequisites": [
+        29
+      ],
+      "related": [
+        39,
+        42
+      ],
+      "minutes": 5
+    },
+    {
+      "number": 42,
+      "slug": "gemini-cli-agent-skills",
+      "title": "Agent Skills：建立可重用的 SKILL.md",
+      "purpose": "建立可重用的 SKILL.md",
+      "group": "G",
+      "level": "進階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "keywords": [
+        "SKILL.md",
+        "MD",
+        "Skills",
+        "/skills"
+      ],
+      "prerequisites": [
+        29
+      ],
+      "related": [
+        35,
+        40
+      ],
+      "minutes": 5
+    },
+    {
+      "number": 43,
+      "slug": "gemini-cli-hooks",
+      "title": "Hooks：在指定事件執行檢查",
+      "purpose": "在指定事件執行檢查",
+      "group": "G",
+      "level": "進階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "keywords": [
+        "Hooks",
+        "/hooks",
+        "事件",
+        "自動化"
+      ],
+      "prerequisites": [
+        29
+      ],
+      "related": [
+        39,
+        45
+      ],
+      "minutes": 5
+    },
+    {
+      "number": 44,
+      "slug": "gemini-cli-subagents",
+      "title": "Subagents：拆分任務與整合結果",
+      "purpose": "拆分任務與整合結果",
+      "group": "G",
+      "level": "進階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "keywords": [
+        "Subagents",
+        "/agents",
+        "代理",
+        "子代理"
+      ],
+      "prerequisites": [
+        29
+      ],
+      "related": [
+        34,
+        42
+      ],
+      "minutes": 5
+    },
+    {
+      "number": 45,
+      "slug": "gemini-cli-headless-automation",
+      "title": "Headless 模式：批次、JSON 與腳本",
+      "purpose": "批次、JSON 與腳本",
+      "group": "G",
+      "level": "進階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "keywords": [
+        "headless",
+        "CLI",
+        "-p",
+        "批次",
+        "JSON"
+      ],
+      "prerequisites": [
+        29
+      ],
+      "related": [
+        43,
+        49
+      ],
+      "minutes": 5
+    },
+    {
+      "number": 46,
+      "slug": "gemini-cli-troubleshooting",
+      "title": "CLI 疑難排解：登入、PATH 與設定失效",
+      "purpose": "登入、PATH 與設定失效",
+      "group": "G",
+      "level": "進階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "keywords": [
+        "PATH",
+        "錯誤",
+        "CLI",
+        "/bug",
+        "/about"
+      ],
+      "prerequisites": [
+        29
+      ],
+      "related": [
+        29,
+        38
+      ],
+      "minutes": 6
+    },
+    {
+      "number": 47,
+      "slug": "gemini-api-ai-studio-first-call",
+      "title": "AI Studio 與第一個 Gemini API 呼叫",
+      "group": "H",
+      "level": "進階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "keywords": [
+        "AI Studio",
+        "API",
+        "Python",
+        "JavaScript",
+        "金鑰",
+        "第一次呼叫"
+      ],
+      "prerequisites": [
+        9
+      ],
+      "related": [
+        30,
+        48
+      ],
+      "minutes": 6,
+      "purpose": "建立金鑰、選擇模型並完成 Python 與 JavaScript 呼叫"
+    },
+    {
+      "number": 48,
+      "slug": "gemini-api-files-structured-output",
+      "title": "API 檔案與 JSON：結構化輸出及驗證",
+      "purpose": "結構化輸出及驗證",
+      "group": "H",
+      "level": "進階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "keywords": [
+        "API",
+        "JSON",
+        "PDF",
+        "結構化輸出"
+      ],
+      "prerequisites": [
+        47
+      ],
+      "related": [
+        47,
+        50
+      ],
+      "minutes": 6
+    },
+    {
+      "number": 49,
+      "slug": "gemini-api-cost-errors-guide",
+      "title": "API 額度與錯誤：費用、重試與成本控制",
+      "purpose": "費用、重試與成本控制",
+      "group": "H",
+      "level": "進階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "keywords": [
+        "API",
+        "429",
+        "quota",
+        "費用",
+        "重試"
+      ],
+      "prerequisites": [
+        47
+      ],
+      "related": [
+        2,
+        47
+      ],
+      "minutes": 6
+    },
+    {
+      "number": 50,
+      "slug": "gemini-api-document-assistant",
+      "title": "完整實作：文件摘要與資料擷取工具",
+      "purpose": "文件摘要與資料擷取工具",
+      "group": "H",
+      "level": "進階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "keywords": [
+        "API",
+        "Python",
+        "專案",
+        "文件",
+        "摘要"
+      ],
+      "prerequisites": [
+        47
+      ],
+      "related": [
+        48,
+        49
+      ],
+      "minutes": 6
+    }
+  ],
+  "commands": [
+    {
+      "command": "提示詞",
+      "kind": "提示詞",
+      "description": "以自然語言指定目標與輸出格式",
+      "article": 9,
+      "anchor": "section-3"
+    },
+    {
+      "command": "gemini",
+      "kind": "終端機命令",
+      "description": "啟動 Gemini CLI",
+      "article": 29,
+      "anchor": "section-3"
+    },
+    {
+      "command": "gemini -p",
+      "kind": "終端機命令",
+      "description": "非互動方式執行提示詞",
+      "article": 45,
+      "anchor": "section-2"
+    },
+    {
+      "command": "/help",
+      "kind": "CLI 指令",
+      "description": "查看目前版本的指令",
+      "article": 31,
+      "anchor": "section-2"
+    },
+    {
+      "command": "/init",
+      "kind": "CLI 指令",
+      "description": "協助建立專案 GEMINI.md",
+      "article": 36,
+      "anchor": "section-3"
+    },
+    {
+      "command": "/memory",
+      "kind": "CLI 指令",
+      "description": "檢查與重新載入專案指示",
+      "article": 37,
+      "anchor": "section-3"
+    },
+    {
+      "command": "/settings",
+      "kind": "CLI 指令",
+      "description": "管理設定",
+      "article": 38,
+      "anchor": "section-3"
+    },
+    {
+      "command": "/auth",
+      "kind": "CLI 指令",
+      "description": "切換認證方式",
+      "article": 30,
+      "anchor": "section-5"
+    },
+    {
+      "command": "/model",
+      "kind": "CLI 指令",
+      "description": "選擇模型",
+      "article": 31,
+      "anchor": "section-4"
+    },
+    {
+      "command": "/stats",
+      "kind": "CLI 指令",
+      "description": "查看工作階段統計",
+      "article": 31,
+      "anchor": "section-2"
+    },
+    {
+      "command": "@",
+      "kind": "CLI 指令",
+      "description": "引用檔案與目錄",
+      "article": 32,
+      "anchor": "section-3"
+    },
+    {
+      "command": "!",
+      "kind": "CLI 指令",
+      "description": "執行 shell 命令",
+      "article": 32,
+      "anchor": "section-4"
+    },
+    {
+      "command": "/resume /chat",
+      "kind": "CLI 指令",
+      "description": "恢復對話與管理檢查點",
+      "article": 33,
+      "anchor": "section-3"
+    },
+    {
+      "command": "/compress /clear",
+      "kind": "CLI 指令",
+      "description": "壓縮或清除上下文",
+      "article": 33,
+      "anchor": "section-4"
+    },
+    {
+      "command": "/permissions",
+      "kind": "CLI 指令",
+      "description": "管理信任與權限",
+      "article": 39,
+      "anchor": "section-3"
+    },
+    {
+      "command": "/commands",
+      "kind": "CLI 指令",
+      "description": "管理自訂指令",
+      "article": 40,
+      "anchor": "section-4"
+    },
+    {
+      "command": "/mcp",
+      "kind": "CLI 指令",
+      "description": "查看工具連線狀態",
+      "article": 41,
+      "anchor": "section-4"
+    },
+    {
+      "command": "/extensions",
+      "kind": "CLI 指令",
+      "description": "管理擴充套件",
+      "article": 41,
+      "anchor": "section-3"
+    },
+    {
+      "command": "/skills",
+      "kind": "CLI 指令",
+      "description": "管理技能",
+      "article": 42,
+      "anchor": "section-3"
+    },
+    {
+      "command": "/hooks",
+      "kind": "CLI 指令",
+      "description": "管理事件掛鉤",
+      "article": 43,
+      "anchor": "section-3"
+    },
+    {
+      "command": "/agents",
+      "kind": "CLI 指令",
+      "description": "管理子代理",
+      "article": 44,
+      "anchor": "section-3"
+    },
+    {
+      "command": "/plan /ide",
+      "kind": "CLI 指令",
+      "description": "規劃與編輯器整合",
+      "article": 34,
+      "anchor": "section-3"
+    },
+    {
+      "command": "/about",
+      "kind": "CLI 指令",
+      "description": "查看版本資訊",
+      "article": 46,
+      "anchor": "section-2"
+    },
+    {
+      "command": "/bug",
+      "kind": "CLI 指令",
+      "description": "準備問題回報",
+      "article": 46,
+      "anchor": "section-6"
+    }
+  ]
+}

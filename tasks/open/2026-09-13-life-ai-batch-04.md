@@ -17,7 +17,6 @@ scope:
   - apps/api/app/guides/content/ai-coding-tools-overview-2026.json
   - apps/api/app/guides/content/codex-cli-getting-started.json
   - apps/api/app/guides/content/codex-cloud-tasks-github.json
-  - apps/api/app/guides/content/gemini-cli-getting-started.json
   - apps/api/app/guides/content/cursor-editor-guide.json
   - apps/api/app/guides/content/github-copilot-guide.json
   - apps/api/app/guides/content/vibe-coding-first-website.json
@@ -32,7 +31,6 @@ scope:
   - apps/web/public/guides/ai-coding-tools-overview-2026
   - apps/web/public/guides/codex-cli-getting-started
   - apps/web/public/guides/codex-cloud-tasks-github
-  - apps/web/public/guides/gemini-cli-getting-started
   - apps/web/public/guides/cursor-editor-guide
   - apps/web/public/guides/github-copilot-guide
   - apps/web/public/guides/vibe-coding-first-website
@@ -110,3 +108,5 @@ npm run check:tasks
 ## Claude Code 系列交接（2026-09-14）
 
 原列第 2–6 篇的五個 Claude Code slug 與素材範圍已轉交 2026-09-14-claude-code-tutorial-center；其內容改由完整 60 篇系列提供。這張票保留其餘十五篇，驗收篇數相應為十五篇，勿重建或覆蓋已轉交的五篇。
+
+2026-09-14: Gemini CLI introductory pack and artwork transferred to the complete Gemini series content task, preserving the original slug. Existing Claude Code transfers remain intact.

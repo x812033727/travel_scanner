@@ -1,6 +1,9 @@
 import { Fragment, type ReactNode } from "react";
 import { GuideImage } from "./guide-image";
 import { SeriesStart, SeriesEnd } from "./series-navigation";
+import { SeriesNavigation as GeminiNavigation } from "./gemini-series-navigation";
+import { GeminiSeriesIndex } from "./series-index";
+import { geminiCopy, geminiSeries, seriesMember } from "@/lib/gemini-series";
 import { ArticleAdSlot } from "@/components/ads/article-ad-slot";
 import { ContentBlocks, ImageCreditLine, type ContentBlockLabels } from "@/components/content-blocks";
 import { adsensePlacements, type AdsenseConfig } from "@/lib/adsense";
@@ -54,18 +57,21 @@ export const CONTENTS_MIN_HEADINGS = 3;
  * synchronous and renders directly under React Testing Library.
  */
 export function GuideArticle({
-  state, labels, related, readingTime, adsense, seriesHub,
+  state, labels, related, readingTime, adsense, seriesHub, geminiEnabled = false,
 }: {
   state: GuideArticleState & { document: NonNullable<GuideArticleState["document"]> };
   labels: GuideArticleLabels;
   related?: ReactNode;
   seriesHub?: ReactNode;
+  geminiEnabled?: boolean;
   /** Already worded by the page ("about 5 min"); omitted when the page does not want it. */
   readingTime?: string | null;
   /** Disabled, or absent, means no slot AND no reserved space anywhere in the body. */
   adsense?: AdsenseConfig;
 }) {
   const { document } = state;
+  const geminiMember = geminiEnabled ? seriesMember(state.slug, state.locale, state.kind) : undefined;
+  const isGeminiHub = geminiEnabled && state.kind === "life" && state.locale === geminiSeries.locale && state.slug === geminiSeries.hubSlug;
   // First publication is never drawn; it is only the date "updated" has to beat before it
   // means anything, since `modified_at` equals it until the article is republished.
   const published = document.published_at.slice(0, 10);
@@ -122,6 +128,7 @@ export function GuideArticle({
 
   return (
     <article className="space-y-6 break-words [overflow-wrap:anywhere]">
+      {geminiMember ? <GeminiNavigation article={geminiMember} position="top" /> : null}
       <header>
         <p className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">
           <span className="rounded-full bg-[var(--line)] px-2 py-1 text-[var(--fg)]">
@@ -135,6 +142,7 @@ export function GuideArticle({
         </p>
         <h1 className="mt-3 text-3xl font-bold">{document.title}</h1>
         <p className="mt-3 leading-7 text-[var(--muted)]">{document.description}</p>
+        {isGeminiHub ? <a href="#series-directory" className="mt-3 inline-flex min-h-11 items-center text-[var(--teal)] underline">{geminiCopy.start}</a> : null}
         {(modified && modified > published) || readingTime ? (
           <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-[var(--muted)]">
             {modified && modified > published ? (
@@ -173,6 +181,7 @@ export function GuideArticle({
 
       {state.series?.current ? <SeriesStart series={state.series} locale={state.locale} /> : null}
       {seriesHub}
+      {isGeminiHub ? <GeminiSeriesIndex /> : null}
       {headings.length >= CONTENTS_MIN_HEADINGS && !state.series ? (
         <nav aria-label={labels.contents} className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] px-4 py-3">
           <p className="text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">{labels.contents}</p>
@@ -249,6 +258,7 @@ export function GuideArticle({
       ) : null}
 
       {state.series?.current ? <SeriesEnd series={state.series} locale={state.locale} /> : null}
+      {geminiMember ? <GeminiNavigation article={geminiMember} position="bottom" /> : null}
       {related}
 
       {state.topics.length ? (

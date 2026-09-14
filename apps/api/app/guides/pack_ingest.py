@@ -130,7 +130,7 @@ def _document_text(document: GuideDocument) -> str:
         if isinstance(block, ParagraphBlock | HeadingBlock):
             parts.append(block.text)
         elif isinstance(block, RichParagraphBlock):
-            parts.extend(node.text for node in block.inlines)
+            parts.append("".join(node.text for node in block.inlines))
         elif isinstance(block, CodeBlock):
             parts.extend((block.label, block.code))
         elif isinstance(block, ListBlock):
@@ -157,7 +157,7 @@ def _body_length(document: GuideDocument) -> int:
         if isinstance(block, ParagraphBlock):
             parts.append(block.text)
         elif isinstance(block, RichParagraphBlock):
-            parts.extend(node.text for node in block.inlines)
+            parts.append("".join(node.text for node in block.inlines))
         elif isinstance(block, ListBlock):
             parts.extend(block.items)
         elif isinstance(block, TableBlock):

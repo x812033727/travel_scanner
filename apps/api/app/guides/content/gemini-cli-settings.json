@@ -1,0 +1,255 @@
+{
+  "slug": "gemini-cli-settings",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 138,
+  "locales": {
+    "zh-TW": {
+      "title": "settings.json：全域、專案與環境變數",
+      "description": "settings.json 管理 Gemini CLI 的程式設定；GEMINI.md 則提供專案指示。這篇帶你辨識全域與專案設定，編輯一個最小 JSON 範例，並用實際載入結果檢查是否生效。你也會學到如何處理環境變數，避免把金鑰直接寫進可分享的設定檔。",
+      "hero": {
+        "src": "/guides/gemini-cli-settings/hero.jpg",
+        "alt": "設定與指示檔的分工的原創插畫，以文件、裝置與流程等物件呼應全域、專案與環境變數；非產品介面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "settings.json 管理 Gemini CLI 的程式設定；GEMINI.md 則提供專案指示。這篇帶你辨識全域與專案設定，編輯一個最小 JSON 範例，並用實際載入結果檢查是否生效。你也會學到如何處理環境變數，避免把金鑰直接寫進可分享的設定檔。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-cli-settings/diagram-1.svg",
+          "alt": "settings.json：程式設定與選項；GEMINI.md：提供工作指示；環境變數：另外管理執行環境",
+          "width": 1600,
+          "height": 900,
+          "caption": "設定與指示檔的分工。此為原創教學圖解，並非產品畫面或實測輸出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "開始前：找出真正使用的設定",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "使用者設定通常位於家目錄的 .gemini/settings.json；專案設定位於專案根目錄的 .gemini/settings.json。兩個檔案名稱相同，但適用範圍不同。在 Windows 開啟檔案前先確認完整路徑，避免在下載資料夾或另一個專案中改了同名檔案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果檔案已存在，先備份並閱讀內容。公司管理的環境可能另有系統預設或強制設定，無法由個人設定自由改動。這種情況應詢問管理員目前的政策，不要以為刪除專案設定就會移除系統限制。練習時從自己擁有的測試專案開始，降低判讀範圍。"
+        },
+        {
+          "type": "heading",
+          "text": "先理解：JSON 結構與設定優先順序",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "JSON 的鍵與文字值使用雙引號，物件用大括號包住，陣列用中括號。最後一個專案後不要多放逗號，也不要把教學中的註解直接貼成 JSON。很多「設定沒生效」其實是語法錯誤；先讓檔案可被解析，才有辦法討論設定值是否受支援。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件列出預設值、系統預設、使用者、專案與系統強制設定等來源，環境變數與啟動引數也可能影響結果。記住「我在這份檔案寫了什麼」不等於「目前實際值就是什麼」。要同時檢視啟動命令、環境與互動設定，才能追查覆寫來源。"
+        },
+        {
+          "type": "heading",
+          "text": "實作：用最小設定確認作用",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "在測試專案建立 .gemini 資料夾；如果已有設定檔，先另存備份，不要整份覆蓋。",
+            "用下面範例指定上下檔名。此範例仍使用標準 GEMINI.md，目的在確認結構與放置位置。",
+            "儲存為 UTF-8，使用支援 JSON 的編輯器檢查括號、引號與逗號。",
+            "從專案根目錄重新啟動 CLI，開啟 /settings 檢查可見設定，再用 /memory list 核對規則載入。",
+            "如果要加入另一個指示檔名，先建立那份檔案，再將名稱加入陣列，重新啟動並核對 show 結果。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": ".gemini/settings.json",
+          "code": "{\n  \"context\": {\n    \"fileName\": [\"GEMINI.md\"]\n  }\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "上面只示範一個設定區塊。既有檔案如果還有 mcpServers、hooks 或其他內容，應把 context 合併進原本物件，而不是刪掉其他鍵。編輯前後使用差異比較，確認只有你預期的欄位改變。各功能的設定值要回到對應教學查詢，不要把別的版本截圖照抄進來。"
+        },
+        {
+          "type": "heading",
+          "text": "環境變數：分開設定與秘密",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "某些連線設定可以引用環境變數，讓公開設定只記錄變數名稱。這與直接把金鑰貼進 JSON 不同；但也不代表任何環境變數都會自動被 CLI 視為認證。認證所需名稱與登入方式，請依"
+            },
+            {
+              "type": "link",
+              "text": "CLI 認證教學",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-authentication"
+            },
+            {
+              "type": "text",
+              "text": "確認。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "PowerShell：僅示範一般變數",
+          "code": "$env:EDITORIAL_PROJECT = \"announcement-demo\"\nWrite-Output $env:EDITORIAL_PROJECT\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "這個示範變數不是 Gemini API 金鑰，也不會替你登入。它只展示目前 PowerShell 工作階段如何設定值；關閉視窗後的行為與系統永久環境設定不同。真實金鑰請依使用的認證流程設定，分享錯誤記錄時只顯示「是否存在」，不要印出值。"
+        },
+        {
+          "type": "heading",
+          "text": "常見問題與回復方式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "如果電腦有 Python，可以先用內建 JSON 工具檢查語法。從專案根目錄執行下面命令；成功時會印出格式化內容，失敗時會指出行列位置。這只證明 JSON 格式正確，不會替你檢查 Gemini 是否支援每個鍵。真實設定含秘密時不要把整段輸出分享出去，教學練習請只使用上面的最小內容。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "檢查練習設定的 JSON 語法",
+          "code": "python -m json.tool .gemini/settings.json\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "測試前也記錄你用來啟動 CLI 的命令。如果命令列指定了不同模型或其他引數，檔案中的設定可能不是最後生效的值。先用最單純的 gemini 啟動，再逐個加入引數比對，通常比同時修改全域與專案兩份檔案更容易找出原因。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「CLI 回報無法解析設定」先用 JSON 編輯器定位行號。全形引號、尾端逗號與貼入程式碼圍欄都是常見原因。修好語法後重新啟動；若仍有問題，還原備份，再一次只加入一個設定，逐步縮小出錯範圍。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「/settings 找不到某個專案」可能是版本差異、該專案只能從檔案設定，或教學對應的功能尚未提供。先記下 /about 的版本，再查同版本的官方參考。不要因為介面沒有欄位，就改寫未知鍵並假設它會生效。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「換資料夾後行為改變」要檢查新的專案設定與信任狀態。全域偏好不需要複製到每個專案；專案限定設定也不應留在家目錄影響所有工作。完成後可以接著設定"
+            },
+            {
+              "type": "link",
+              "text": "自訂指令",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-custom-commands"
+            },
+            {
+              "type": "text",
+              "text": "，但先保留這份能正常啟動的最小基準，讓後續問題容易回復與比較。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查證與範例",
+          "text": "本文於 2026-09-14 對照官方文件整理。畫面操作依官方說明，非所有裝置均經實機測試；範例輸出是驗收目標，實際內容依資料而異。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後的檢核",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "通過條件"
+          ],
+          "rows": [
+            [
+              "操作",
+              "能依正文重做一次，說明每一步使用的輸入。"
+            ],
+            [
+              "結果",
+              "能用原始資料或可重現測試核對輸出，而非只看語氣。"
+            ],
+            [
+              "延伸",
+              "知道下一篇教學解決的問題，以及什麼時候需要它。"
+            ]
+          ],
+          "caption": "完成實作後逐項確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著可以閱讀 "
+            },
+            {
+              "type": "link",
+              "text": "GEMINI.md 進階",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-memory-hierarchy"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "CLI 權限",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "，把本篇的操作接到下一個工作流程。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gemini CLI：設定參考",
+          "url": "https://geminicli.com/docs/reference/configuration/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini CLI：GEMINI.md 上下文",
+          "url": "https://geminicli.com/docs/cli/gemini-md/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

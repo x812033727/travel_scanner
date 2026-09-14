@@ -180,7 +180,7 @@ def code_text(value: str) -> str:
     """Code is displayed as escaped text, never interpreted as HTML or Markdown."""
     if re.search(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f]", value):
         raise ValueError("unsupported control character in code")
-    return value
+    return value.replace("\r\n", "\n").replace("\r", "\n")
 
 
 class TextInline(StrictModel):
@@ -242,9 +242,17 @@ class CodeBlock(StrictModel):
         "typescript",
         "python",
         "yaml",
+        "toml",
     ] = "text"
     label: NonemptyText = Field(max_length=160)
-    code: Annotated[str, AfterValidator(code_text)] = Field(min_length=1, max_length=20000)
+    code: Annotated[str, AfterValidator(code_text)] = Field(min_length=1, max_length=24000)
+
+    @field_validator("code")
+    @classmethod
+    def require_code(cls, value: str) -> str:
+        if not value.strip():
+            raise ValueError("code must contain visible text")
+        return value
 
 
 class OfferBlock(StrictModel):

@@ -1,0 +1,247 @@
+{
+  "slug": "gemini-markdown-basics",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 135,
+  "locales": {
+    "zh-TW": {
+      "title": "Markdown 基礎：建立 MD、標題與程式碼",
+      "description": "Markdown 是用純文字標記檔案結構的寫法，副檔名通常是 .md。本篇會帶你建立一份能直接閱讀的專案說明，再用標題、清單、連結與程式碼表達規則。完成後，你就能讀懂 GEMINI.md 與 SKILL.md，也能分辨檔案內容和需要在終端機執行的命令。",
+      "hero": {
+        "src": "/guides/gemini-markdown-basics/hero.jpg",
+        "alt": "Markdown 的文字結構的原創插畫，以文件、裝置與流程等物件呼應建立 MD、標題與程式碼；非產品介面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Markdown 是用純文字標記檔案結構的寫法，副檔名通常是 .md。本篇會帶你建立一份能直接閱讀的專案說明，再用標題、清單、連結與程式碼表達規則。完成後，你就能讀懂 GEMINI.md 與 SKILL.md，也能分辨檔案內容和需要在終端機執行的命令。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-markdown-basics/diagram-1.svg",
+          "alt": "標題與段落：用層級整理內容；清單與連結：讓步驟可追查；程式碼區塊：保留縮排與符號",
+          "width": 1600,
+          "height": 900,
+          "caption": "Markdown 的文字結構。此為原創教學圖解，並非產品畫面或實測輸出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "開始前：準備文字編輯器",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "使用記事本、VS Code 或其他純文字編輯器即可。Windows 儲存時要留意「存檔型別」及副檔名；檔名看起來是 notes.md，實際卻可能是 notes.md.txt。先在檔案總管開啟副檔名顯示，再檢查完整名稱。macOS 的文字編輯如果使用富文字模式，須先轉為純文字，避免把格式資料寫進檔案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立一個練習資料夾，不必先安裝 Gemini CLI。Markdown 本身沒有登入、模型或付費方案，也不會自動執行裡面的程式。你可以離線編輯它；只有把檔案交給雲端工具時，才涉及工具的資料處理方式。請先用虛構資料練習，不要把帳號密碼當作專案背景。"
+        },
+        {
+          "type": "heading",
+          "text": "先理解：標記與呈現是兩件事",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "井字號後加空格表示標題，一個井字號是檔案主標題，兩個或三個用來分層。不要只是為了放大文字而跳級；把「準備」「步驟」「驗證」當成同一層，讀者和工具都比較容易找到位置。段落之間留一個空白行，通常比只換行更能明確分開意思。"
+        },
+        {
+          "type": "paragraph",
+          "text": "連字號後加空格是專案清單；數字、句點、空格則適合操作順序。連結寫成方括號中的文字接圓括號中的網址。檔案路徑要區分相對位置與完整網址：同資料夾的說明可以用相對路徑，但搬動檔案後也要檢查連結是否仍指向正確位置。"
+        },
+        {
+          "type": "heading",
+          "text": "實作：建立第一份 MD 檔案",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "在練習資料夾新增 notes.md，確認編碼是 UTF-8，讓繁體中文能跨裝置閱讀。",
+            "貼上下面的內容，把任務名稱與完成條件改成自己的練習題。先維持標題階層，不急著加入複雜排版。",
+            "儲存後關閉檔案，再重新開啟，確認中文、空格、符號與換行都保留。",
+            "若編輯器提供 Markdown 預覽，開啟預覽比對原文。沒有預覽也沒關係，純文字應該已經容易閱讀。",
+            "修改其中一個完成條件，重新儲存；檢查預覽是否同步變更，建立「編輯、儲存、確認」的習慣。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": "notes.md",
+          "code": "# 檔案摘要練習\n\n## 任務\n把一份公開活動公告整理成三個重點。\n\n## 輸出規則\n- 使用繁體中文。\n- 保留活動日期與地點。\n- 找不到的資訊寫「原文未提供」。\n\n## 完成條件\n1. 每個重點都能對回原文。\n2. 不補上公告沒有寫的票價。\n\n## 參考\n[Gemini CLI 官方文件](https://geminicli.com/docs/)\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "範例中的標題與清單都是檔案內容，請貼到編輯器，不是 PowerShell。若要在檔案裡展示程式碼，可以用三個反引號包住程式區塊，開頭另外註明 python、json 等語言。一般行文中的短檔名則使用一對反引號；這些標記只是呈現方式，不代表裡面的命令已經執行。"
+        },
+        {
+          "type": "heading",
+          "text": "檢查結果：讓另一個人照著做",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "好的 Markdown 檔案不只看起來整齊，也要讓人知道哪些內容是背景、哪些是要求、哪些是驗收。請把範例交給自己隔天再讀：如果只看「任務」就不知道要處理哪份資料，應補上輸入位置；如果「完成條件」只有「寫得好」，應改成能逐項檢查的標準。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "可以再加入「不要做的事」，例如不要改動原始公告。這是工作範圍的文字說明，不是作業系統權限控制。真正控制 Gemini CLI 能存取哪些檔案，需要另外理解"
+            },
+            {
+              "type": "link",
+              "text": "可信任資料夾與沙箱",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "。將說明檔案當成權限隔離工具，會讓你誤判工具能做的事。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "常見問題與下一次練習",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "整理多份教學時，可以在同資料夾建立 index.md，列出每一份檔案的名稱與用途，再在每篇文末加上回到 index.md 的連結。檢查連結時不要只看藍色文字是否出現，而要真正點開，確認檔名大小寫、空格及相對位置。這個小練習也能幫助你理解本系列的總目錄與文章互相連結如何運作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "當檔案要交給別人修改，可以把範例、規則與進度分成不同章節。範例中的假資料要明確標示，避免下一個人把它當成真實設定；已過時的段落則直接修正並留下版本記錄，不要在檔案底部不斷補上互相推翻的新要求。純文字容易比較差異，這正是它適合維護專案說明的原因。"
+        },
+        {
+          "type": "paragraph",
+          "text": "標題沒有變成大字，常見原因是井字號後沒有空格，或你正在看純文字模式。先確認原始語法，再檢查編輯器是否支援預覽；不要因為沒有視覺效果就改成 Word 格式，否則檔案可能不再是純文字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "中文變亂碼時，先確認檔案編碼，另存 UTF-8 後重新開啟。若內容來自網頁，智慧引號、全形空格或複製附帶的特殊字元也可能影響程式範例。一般文字可以保留中文標點，JSON、TOML 與程式碼則要維持該語言要求的符號。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "建立 .md 後 Gemini 沒有套用，是因為副檔名不等於工具設定。普通 notes.md 不會自動變成專案指示。完成本篇後，依"
+            },
+            {
+              "type": "link",
+              "text": "GEMINI.md 入門",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+            },
+            {
+              "type": "text",
+              "text": "放到指定位置，再透過"
+            },
+            {
+              "type": "link",
+              "text": "記憶載入檢查",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-memory-hierarchy"
+            },
+            {
+              "type": "text",
+              "text": "確認工具真的讀到它。你也可以把同一份清單改寫成讀書計畫，練習保持結構而替換內容。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查證與範例",
+          "text": "本文於 2026-09-14 對照官方文件整理。畫面操作依官方說明，非所有裝置均經實機測試；範例輸出是驗收目標，實際內容依資料而異。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後的檢核",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "通過條件"
+          ],
+          "rows": [
+            [
+              "操作",
+              "能依正文重做一次，說明每一步使用的輸入。"
+            ],
+            [
+              "結果",
+              "能用原始資料或可重現測試核對輸出，而非只看語氣。"
+            ],
+            [
+              "延伸",
+              "知道下一篇教學解決的問題，以及什麼時候需要它。"
+            ]
+          ],
+          "caption": "完成實作後逐項確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著可以閱讀 "
+            },
+            {
+              "type": "link",
+              "text": "GEMINI.md 入門",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Agent Skills",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": "，把本篇的操作接到下一個工作流程。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "CommonMark Markdown 語法參考",
+          "url": "https://commonmark.org/help/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
