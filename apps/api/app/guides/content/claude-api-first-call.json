@@ -77,11 +77,6 @@
           "text": "有效期是官網明講的防呆，用途是限制一把外流的金鑰還能被用多久。可選的預設值有 3 小時、1 天、7 天、30 天，也可以自訂，或選 Never 永不過期——官方文件說 Never 是留給「存進密碼管理器、自己定期輪換」的金鑰，練習用的選 7 天或 30 天就夠。金鑰過期後再拿去發請求會得到 401，而且過期的金鑰救不回來，只能重新建一把。"
         },
         {
-          "type": "link",
-          "text": "AI 帳號安全：兩步驟驗證與 API 金鑰怎麼管",
-          "url": "https://mokaair.com/zh-TW/life/ai-account-security-2fa-api-keys"
-        },
-        {
           "type": "image",
           "src": "/guides/claude-api-first-call/diagram-1.svg",
           "alt": "圖解：左邊由上而下是開帳號、儲值、設每月上限、建立金鑰、放進環境變數、跑起來六個步驟，右邊是一次請求裡 model、max_tokens、messages 三個必要參數",
@@ -175,11 +170,6 @@
           "text": "估一次呼叫很簡單：輸入與輸出的 token 數各自乘上單價再除以一百萬。官網的粗估是 1 個 token 大約 4 個英文字元、或 0.75 個英文單字。用 Claude Opus 5 送一次輸入 1,000 token、輸出 1,000 token 的請求：輸入是 1,000 乘 5 除以 1,000,000 等於 0.005 美元，輸出是 1,000 乘 25 除以 1,000,000 等於 0.025 美元，合計 0.03 美元；換成 Claude Haiku 4.5 同樣的量只要 0.006 美元。真正把帳單撐大的不是單次呼叫，而是多輪對話——API 無狀態，每多一輪都要把前面整段重送，輸入的 token 會一路疊上去。"
         },
         {
-          "type": "link",
-          "text": "AI 寫程式到底要花多少錢：token 怎麼算",
-          "url": "https://mokaair.com/zh-TW/life/ai-coding-cost-tokens-explained"
-        },
-        {
           "type": "paragraph",
           "text": "看用量的地方在 Console 左邊選單：Usage 頁看 token 數與請求數，可以按工作區、模型、月份與金鑰篩選；Cost 頁看每日與每月的花費，兩頁都能匯出 CSV。上限設在 Settings → Billing 的 Spend limits，數字不能超過級距上限。要在撞牆前先收到信，可以到自己建立的工作區的 Limits 分頁按 Add notification，設花費達到某個金額就寄通知；官方文件註明預設工作區不能設限制，所以這招要先開一個自己的工作區。撞到你自己設的上限會拿到 400，訊息開頭是 You have reached your specified API usage limits；撞到級距本身的上限則是 429，要等到下個月 1 日 00:00 UTC 才恢復。"
         },
@@ -189,7 +179,7 @@
         },
         {
           "type": "link",
-          "text": "Claude 提示快取怎麼省錢：什麼時候該開、怎麼算",
+          "text": "Claude API 省錢：提示快取與批次處理怎麼用",
           "url": "https://mokaair.com/zh-TW/life/claude-api-prompt-caching-cost"
         },
         {

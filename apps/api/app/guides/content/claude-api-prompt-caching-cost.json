@@ -51,11 +51,6 @@
           "text": "要更細的數字，每一次呼叫的回應裡都有一個 usage 物件：input_tokens 是沒被快取的輸入，cache_creation_input_tokens 是這次寫進快取的量，cache_read_input_tokens 是從快取讀回來的量，三個相加才是總輸入。組織層級另有 Usage and Cost Admin API，可以用 1 分鐘、1 小時或 1 天的區間，依模型與 API 金鑰分組拉出同一份數字。"
         },
         {
-          "type": "link",
-          "text": "AI 寫程式的費用怎麼算：token 是什麼、錢到底花在哪",
-          "url": "https://mokaair.com/zh-TW/life/ai-coding-cost-tokens-explained"
-        },
-        {
           "type": "heading",
           "text": "手段一：提示快取，重複的前綴只算一次",
           "level": 2
@@ -83,11 +78,6 @@
             "不用試：前綴太短。不到模型的最小可快取長度就是不會快取，標了也沒用，而且系統不會提醒你。"
           ],
           "ordered": false
-        },
-        {
-          "type": "link",
-          "text": "動手前先估一次：AI 專案的 token 用量與費用怎麼算",
-          "url": "https://mokaair.com/zh-TW/life/ai-token-cost-estimation"
         },
         {
           "type": "heading",
@@ -228,17 +218,12 @@
         },
         {
           "type": "link",
-          "text": "Claude API 第一次呼叫：金鑰怎麼拿、第一支程式怎麼寫",
+          "text": "第一次呼叫 Claude API：金鑰、費用與十行 Python",
           "url": "https://mokaair.com/zh-TW/life/claude-api-first-call"
         },
         {
           "type": "paragraph",
           "text": "三個手段的順序也是建議的順序：先看用量、再做快取，把不急的搬去批次，最後才檢討模型選得對不對。要再往下壓可以回頭比各家的單價，但換供應商之前，先確認那段長前綴沒有被重送幾千次，通常這一步就夠了。"
-        },
-        {
-          "type": "link",
-          "text": "2026 年 AI API 價格比較：各家每百萬 token 收多少",
-          "url": "https://mokaair.com/zh-TW/life/ai-api-pricing-comparison-2026"
         }
       ],
       "sources": [
