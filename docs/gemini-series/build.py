@@ -160,7 +160,7 @@ def build(number: int, render: bool, output_root: Path = ROOT) -> dict:
     article["minutes"] = max(1, (_body_length(validated.locales["zh-TW"]) + 399) // 400)
     destination = output_root / "apps/api/app/guides/content" / f'{article["slug"]}.json'
     destination.parent.mkdir(parents=True, exist_ok=True)
-    destination.write_text(json.dumps(validated.model_dump(mode="json"), ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    destination.write_text(json.dumps(validated.model_dump(mode="json"), ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     return {"number": number, "slug": article["slug"], "characters": _body_length(validated.locales["zh-TW"]), "blocks": len(blocks)}
 
 
@@ -258,7 +258,7 @@ def build_advanced(track: str, numbers: list[int], content_root: Path, output_ro
             assets = staging / "apps/web/public/guides" / slug
             assets.mkdir(parents=True)
             for name, svg in svg_files.items():
-                (assets / (name + ".svg")).write_text(svg, encoding="utf-8")
+                (assets / (name + ".svg")).write_text(svg, encoding="utf-8", newline="\n")
             for name, data in downloads.items():
                 (assets / name).write_bytes(data)
             if render:
@@ -279,7 +279,7 @@ def build_advanced(track: str, numbers: list[int], content_root: Path, output_ro
                 shutil.copyfile(hero, assets / "hero.jpg")
             destination = staging / "apps/api/app/guides/content" / (slug + ".json")
             destination.parent.mkdir(parents=True, exist_ok=True)
-            destination.write_text(json.dumps(pack, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            destination.write_text(json.dumps(pack, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
             length = _body_length(ArticlePack.model_validate(pack).locales["zh-TW"])
             report.append({"number": entry["number"], "slug": slug, "stage": 2, "track": track,
                            "characters": length, "minutes": max(1, (length + 399) // 400),
@@ -292,7 +292,7 @@ def build_advanced(track: str, numbers: list[int], content_root: Path, output_ro
     # Reports are scoped to the author's track, so independent batches never overwrite each other.
     report_dir = output_root / "docs/gemini-series/advanced/content" / track / "verification"
     report_dir.mkdir(parents=True, exist_ok=True)
-    (report_dir / "build.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (report_dir / "build.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     return report
 
 
@@ -311,5 +311,5 @@ if __name__ == "__main__":
         numbers = args.numbers or sorted(int(p.stem) for p in (HERE / "lessons").glob("*.md"))
         report = [build(number, args.render, output_root) for number in numbers]
         destination = CATALOGUE_PATH if output_root == ROOT else output_root / "series.json"
-        destination.write_text(json.dumps(CATALOGUE, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        destination.write_text(json.dumps(CATALOGUE, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     print(json.dumps(report, ensure_ascii=False, indent=2))

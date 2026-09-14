@@ -81,6 +81,20 @@ class AuthoringTests(unittest.TestCase):
         self.assertEqual(compiler.CATALOGUE_PATH.read_bytes(), original)
         self.assertFalse((self.output / "apps/web/lib/guide-series.json").exists())
 
+    def test_generated_text_uses_lf_even_for_crlf_authoring_input(self):
+        for name in ("hero.svg", "diagram-1.svg"):
+            (self.track / "69" / name).write_bytes((SVG + "\r\n").encode("utf-8"))
+        result = self.build()
+        slug = result[0]["slug"]
+        paths = [self.output / "apps/api/app/guides/content" / (slug + ".json"),
+                 self.output / "docs/gemini-series/advanced/content/md/verification/build.json"]
+        paths += [self.output / "apps/web/public/guides" / slug / name for name in ("hero.svg", "diagram-1.svg")]
+        for file in paths:
+            with self.subTest(file=file.name):
+                content = file.read_bytes()
+                self.assertIn(b"\n", content)
+                self.assertNotIn(b"\r", content)
+
     def test_bad_second_lesson_does_not_write_first(self):
         self.create_lesson(70)
         (self.track / "70/lesson.md").write_text("不完整。", encoding="utf-8")
