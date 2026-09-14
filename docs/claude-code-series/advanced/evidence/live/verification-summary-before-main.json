@@ -1,0 +1,242 @@
+{
+  "checked_at": "2026-09-14T13:48:47.814940+00:00",
+  "git_base": "46298e2863e9c2c4d6776e9d58a821be683a4b32",
+  "scope": "Supplementary full frontend and isolated PostgreSQL checks for the current uncommitted phase 2 changes",
+  "web": {
+    "environment": "Windows",
+    "source": "web-full.json",
+    "files": 258,
+    "tests": 2809,
+    "total_tests": 2809,
+    "failed": 0,
+    "skipped": 0,
+    "passed": true
+  },
+  "web_runs": [
+    {
+      "environment": "Windows",
+      "source": "web-full.json",
+      "files": 258,
+      "tests": 2809,
+      "total_tests": 2809,
+      "failed": 0,
+      "skipped": 0,
+      "passed": true
+    }
+  ],
+  "other_web_attempts": [
+    {
+      "environment": "WSL Ubuntu / Linux ARM64",
+      "passed": false,
+      "source": "web-linux-validation.json"
+    }
+  ],
+  "api": {
+    "passed": true,
+    "tests": 164,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "postgresql_version": "17.11",
+    "source": "postgres-validation.json",
+    "test_report": "postgres-tests.xml",
+    "environment": "Windows; disposable PostgreSQL 17 and SQLite",
+    "server_stopped": true,
+    "remaining_test_schemas": 0
+  },
+  "temporary_postgresql_files_removed": false,
+  "cleanup_note": "Initial automatic cleanup encountered a Windows DLL lock after successful shutdown. Follow-up deletion of the verified disposable directory was rejected by automatic approval review (blocked by policy); remaining temporary files were preserved.",
+  "source_hash_verification": {
+    "files": 2761,
+    "changed": [],
+    "source": "web-linux-source-hashes.json"
+  },
+  "content": {
+    "pages": 97,
+    "passed": true,
+    "source": "content-recheck.json"
+  },
+  "tools": {
+    "command": "npm run test:tools",
+    "passed": true,
+    "tests": 52,
+    "failed": 0,
+    "exit": 0,
+    "source": "tools-final.log",
+    "initial_attempt": "51 passed, 1 failed because version comments were absent; fixed using verified tags before rerun"
+  },
+  "pending": [
+    "Other rule conflicts, Skill resource selection, Hook event failures and supported-OS Bash sandbox",
+    "Physical mobile reconnection, sleep and recovery",
+    "Real remote MCP HTTP/OAuth authorization and recovery",
+    "Merge the manual CI workflow and configure an Anthropic credential and claude-lab environment for the authorized travel_scanner Actions test",
+    "Product scheduling, physical SDK runner Ctrl+C and interrupted-session recovery",
+    "Actual Agent Teams and real workflow comparison",
+    "Phase 2 PR and merge",
+    "Deployment, content import and publication"
+  ],
+  "real_operations": {
+    "checked_at": "2026-09-14T13:48:45.945723+00:00",
+    "scope": "Supplementary actual Claude, browser cloud task and SDK smoke checks; not complete per-lesson failure coverage",
+    "cli": {
+      "passed": true,
+      "version": "2.1.233 (Claude Code)",
+      "lessons": [
+        61,
+        67,
+        73,
+        79,
+        91
+      ],
+      "source": "claude-live-all.json",
+      "hook_event_source": "hook-trigger.json"
+    },
+    "web": {
+      "passed": true,
+      "source": "browser-validation.json",
+      "result": {
+        "marker": "MOKAAIR-WEB-SMOKE-20260914",
+        "total": 3,
+        "completed": 1,
+        "pendingIds": [
+          "b",
+          "c"
+        ]
+      },
+      "repository_changes": false
+    },
+    "sdk": {
+      "passed": true,
+      "version": "0.3.270",
+      "cases": [
+        "authored-runner-query",
+        "authored-runner-same-session-resume",
+        "separate-streaming-input-abort-controller-probe"
+      ],
+      "sources": [
+        "sdk-query-resume.json",
+        "sdk-cancel.json",
+        "sdk-recovery.json"
+      ],
+      "limitations": [
+        "Physical Ctrl+C and recovery of an interrupted session remain untested; the startup recovery uses a fresh query"
+      ],
+      "sources_checked_on": "2026-09-14",
+      "official_source": "https://code.claude.com/docs/en/agent-sdk/streaming-vs-single-mode",
+      "recovery_passed": true,
+      "recovery_cases": [
+        "missing-session",
+        "incompatible-session",
+        "executable-startup-failure",
+        "fresh-query-after-startup-failure"
+      ]
+    },
+    "github_actions": {
+      "repository": "x812033727/travel_scanner",
+      "repository_secret_count": 0,
+      "environment_count": 0,
+      "required_example_environment": "claude-lab",
+      "required_example_secret": "ANTHROPIC_API_KEY",
+      "live_model_workflow_run": false,
+      "reason": "A monorepo workflow is prepared locally with manual opt-in model review. It is not merged or dispatched; the selected repository still needs the claude-lab environment and a dedicated Anthropic CI credential.",
+      "registered_claude_workflows": [],
+      "local_workflow_prepared": true,
+      "workflow_path": ".github/workflows/claude-tutorial-validation.yml",
+      "local_validation_source": "ci-workflow-validation.json"
+    },
+    "pending": [
+      "Other rule conflicts, Skill resource selection, Hook event failures and supported-OS Bash sandbox",
+      "Physical mobile reconnection, sleep and recovery",
+      "Real remote MCP HTTP/OAuth authorization and recovery",
+      "Merge the manual CI workflow and configure an Anthropic credential and claude-lab environment for the authorized travel_scanner Actions test",
+      "Product scheduling, physical SDK runner Ctrl+C and interrupted-session recovery",
+      "Actual Agent Teams and real workflow comparison"
+    ],
+    "cli_boundaries": {
+      "passed": true,
+      "source": "cli-boundaries.json",
+      "case_count": 7,
+      "cases": [
+        {
+          "name": "rules-child",
+          "lessons": [
+            62,
+            63
+          ],
+          "passed": true
+        },
+        {
+          "name": "skill-missing-argument",
+          "lessons": [
+            67,
+            68
+          ],
+          "passed": true
+        },
+        {
+          "name": "skill-automatic",
+          "lessons": [
+            70
+          ],
+          "passed": true
+        },
+        {
+          "name": "permission-denied",
+          "lessons": [
+            64
+          ],
+          "passed": true
+        },
+        {
+          "name": "hook-protected-write",
+          "lessons": [
+            73,
+            76
+          ],
+          "passed": true
+        },
+        {
+          "name": "mcp-startup-failure",
+          "lessons": [
+            79,
+            82
+          ],
+          "passed": true
+        },
+        {
+          "name": "readonly-subagent",
+          "lessons": [
+            87
+          ],
+          "passed": true
+        }
+      ],
+      "limits": [
+        "One readonly subagent with Haiku is not an Agent Teams or model comparison test",
+        "Read denial does not test Bash sandbox",
+        "MCP startup failure does not verify remote OAuth or all protocol errors"
+      ]
+    },
+    "capstone": {
+      "passed": true,
+      "lesson": 96,
+      "scope": "Actual model-authored local feature, independent assertions, browser workflow, specified failure and repair, fresh extracted replay; no physical phone or deployment",
+      "sources": [
+        "capstone-implementation.json",
+        "capstone-tests.json",
+        "capstone-browser.json",
+        "capstone-repair.json",
+        "capstone-clean-replay.json"
+      ],
+      "archive": "capstone-result.zip",
+      "archive_sha256": "87cdbe8031e2508274b917bb25f9c671e11924e347ea9f61b8fc6fcca16dba3f",
+      "project_tests": 9,
+      "independent_tests": 3,
+      "browser_cases": 10,
+      "verifier_corrections": [
+        "Handoff: mixed arrays retain valid items; malformed JSON/non-array returns empty. Added actual browser evidence and explicit server stop instructions."
+      ],
+      "test_server_stopped": true
+    }
+  }
+}

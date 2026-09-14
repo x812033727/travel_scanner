@@ -1,0 +1,799 @@
+{
+  "slug": "ai-news-gpt-54-20260305",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 127,
+  "locales": {
+    "zh-TW": {
+      "title": "GPT-5.4 把推理與電腦操作放在一起：一般工作者該怎麼看？",
+      "description": "回顧 GPT-5.4 於 2026 年初發布的技術整合，分析一般工作者在處理試算表與簡報時，如何區分推論判斷、工具操作與人工驗收邊界。",
+      "hero": {
+        "src": "/guides/ai-news-gpt-54-20260305/hero.jpg",
+        "alt": "回答之外的操作的原創概念插圖，呈現本篇事件的使用脈絡",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "事件日期：2026-03-05；本文查核日期：2026-09-14。3 月 5 日 GPT-5.4 在 ChatGPT、API 與 Codex 發布；ChatGPT 名稱為 GPT-5.4 Thinking，另有 Pro。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方強調試算表、簡報、文件、程式與工具使用；API/Codex 引入原生電腦操作能力。API 與 Codex 的長上下文能力不能推定是 ChatGPT 的同等上限。API 當時可用，ChatGPT 與 Codex 分批推出；首發列出的方案是歷史資格，並非 9 月的現行價目表。以下生活與工作情境為編輯設計的例子，供讀者自行驗證，並非本站產品實測。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "社團問卷前置準備與欄位標準化"
+        },
+        {
+          "type": "paragraph",
+          "text": "在構思將社團活動問卷轉化為成果簡報時，首要工作並非直接把原始檔交給模型，而是建立明確的資料架構。許多人在收集活動反饋時，常遇到填答不全、單選多選混雜或數字單位不一致的問題。若未事先定義有效樣本的分母計算方式，模型在統整平均滿意度或偏好比例時，極容易因缺值填補邏輯不同而產生偏差，導致後續生成的結論與實際狀況產生微妙但關鍵的偏離。"
+        },
+        {
+          "type": "paragraph",
+          "text": "提供資料前，可以先去掉這次分析用不到的姓名或聯絡方式，並檢視開放式留言是否仍能辨識個人。以代碼取代姓名只是降低直接辨識的方式，不能視為完整匿名化。再提供有效樣本定義、簡報範本與預期篇幅，讓工具有明確的整理方向；資料不足的地方保留註記，避免自行補出並未提供的背景。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "試算表底層公式與摘要文字之檢核"
+        },
+        {
+          "type": "paragraph",
+          "text": "面對試算表處理，官方雖強調了表格與文件分析能力，但一般工作者最容易犯的錯誤就是僅閱讀對話框產出的摘要文字。文字摘要往往看似流暢合理，甚至能以條列方式呈現滿意度排行，但背後的加總範圍可能遺漏了篩選條件後的隱藏列，或者把無效問卷當作有效樣本計算。因此，使用者不能只滿足於閱讀文字總結，必須養成要求產出並開啟檔案的習慣。"
+        },
+        {
+          "type": "paragraph",
+          "text": "具體檢查可以從一兩個關鍵數字開始：親自選出有效回覆，算一次平均值或比例，再比對工作簿中的公式與範圍。AVERAGE、COUNTIF 或樞紐分析都只是可能的做法，使用了某個函數不代表結果就正確。你要確認的是資料型別、空值處理及篩選條件符合原先定義，並檢查簡報引用同一組數字。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "作業階段",
+            "AI 推論與工具角色",
+            "人工驗收與權限邊界"
+          ],
+          "rows": [
+            [
+              "問卷資料前置處理",
+              "自動依規則識別格式、填補缺失值標籤與初步分類",
+              "核對有效樣本分母定義，確認去識別化後才提供資料"
+            ],
+            [
+              "試算表統計運算",
+              "建立樞紐分析結構、編寫統計公式並計算平均數",
+              "親自開啟檔案檢查儲存格公式引用與篩選範圍是否正確"
+            ],
+            [
+              "簡報架構與產出",
+              "依據問卷摘要提煉重點頁面標題、要點與圖表建議",
+              "審查視覺版面配置與文字層級，調整符合範本設計規範"
+            ],
+            [
+              "成果分送與發布",
+              "整理成果發布清單、草擬通知信件與回饋報告文字",
+              "核對收件人、附件與公開範圍後，再授權具體提交動作"
+            ]
+          ],
+          "caption": "社團活動問卷轉簡報之協同作業流程與權限劃分對照表"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "理解長上下文差異與簡報生成邏輯"
+        },
+        {
+          "type": "paragraph",
+          "text": "將分析數據轉化為簡報時，工作者需要明白推理模型如何把表格事實重組成簡報大綱。簡報製作並非單純轉錄文字，而是需要考量資訊層級、頁面節奏與讀者吸收能力。模型在推演社團回饋時，雖然能梳理出活動優缺點與未來建議，但在缺乏版面視覺設計規範的情況下，產出的投影片往往文字量過大，無法突顯關鍵數據，仍需仰賴人工設定投影片的架構框架。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同時必須釐清的是，API 與 Codex 具備的長上下文能力，不能直接推定為 ChatGPT 介面擁有同等處理上限。許多工作者誤以為能在一般網頁對話中無限丟入幾百份問卷或龐大附檔，實際上各介面的承載上限與設計取向各有不同。在處理包含大量文字意見的調查時，較穩健的策略是先在外部完成段落彙整，再分段提供核心素材，避免因上下文截斷導致部分反饋被模型忽略。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-54-20260305/diagram-1.svg",
+          "alt": "回答之外的操作：四項閱讀與使用重點",
+          "width": 1600,
+          "height": 900,
+          "caption": "準備材料：範本與資料、列出步驟：定義可做範圍、產生成果：保存原始檔案、驗證內容：確認再提交。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "工具權限隔離與登入狀態的安全控管"
+        },
+        {
+          "type": "paragraph",
+          "text": "當模型延伸出原生電腦操作與工具使用能力時，工作者必須清楚區分「模型判斷」與「工具權限」的本質差異。模型在推論階段提出的操作建議，純粹屬於語言機率與邏輯推導的結果，並不等同於外部軟體已被授權執行。若開放系統直接存取檔案系統或線上協作平台，任何推論瑕疵都可能直接轉化為檔案覆寫、誤刪資料或發送未經確認訊息等不可逆的實際災難。"
+        },
+        {
+          "type": "paragraph",
+          "text": "實作時可把資料限制在獨立草稿資料夾，並保留原檔。涉及寄送報告或公開更新時，先確認收件人、附件與內容，再授權具體動作。人工確認不一定意味著每一步都得手動登入或點擊，而是負責人必須知道將提交什麼，且工具的實際權限與操作方式符合這次委託的範圍。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "建立人機協同審查機制的落地節奏"
+        },
+        {
+          "type": "paragraph",
+          "text": "綜觀推理能力與電腦操作的結合，合理的辦公室應用定位應是「高效率草稿產生器」而非「全自動代理人」。以社團問卷轉化為簡報為例，模型能迅速完成資料清洗程式碼撰寫、提取質化反饋關鍵字並擬定初步分頁綱要，協助行政人員處理部分手工整理工作，省下多少時間則需自行比較。然而，工作流程中每一個轉換節點，包括欄位映射、公式核算與圖表結論，都需要安排固定的人工驗收關卡。"
+        },
+        {
+          "type": "paragraph",
+          "text": "回顧歷史發表方案與其後續演進，各項功能的開放範圍與訂閱條件會隨時間調整，工作者應將焦點放在建立通用的作業標準，而非依賴特定時期的介面捷徑。透過先定義資料規範、開啟原始檔案核驗算式、嚴格阻隔帳號登入與執行權限，才能在保有資料隱私與統計真實性的前提下，安全享有推論技術帶來的生產力效益，讓每次簡報呈現都經得起各方檢驗。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "操作邊界提醒",
+          "text": "推論模型產出的分析文字不等於正確數據，自動化操作亦不代表具備安全發布權限。面對試算表與簡報製作，務必下載原始檔案核對底層計算公式，並將帳號登入與最終提交動作保留給人工確認，以確保成果真實性並防範非預期覆寫。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
+          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Claude 對話開始畫互動圖：看懂概念之前，先看懂圖的假設",
+          "url": "https://mokaair.com/zh-TW/life/ai-news-claude-interactive-visuals-20260312"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI：GPT-5.4 發布",
+          "url": "https://openai.com/index/introducing-gpt-5-4/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "GPT-5.4 Combines Reasoning and Computer Use: What It Means for Everyday Workers",
+      "description": "Reviewing the technical integration of GPT-5.4 released in early 2026, analyzing how everyday workers handling spreadsheets and presentations can distinguish between reasoning judgment, tool operations, and human review boundaries.",
+      "hero": {
+        "src": "/guides/ai-news-gpt-54-20260305/hero-en.jpg",
+        "alt": "Original conceptual illustration of operations beyond answering, showing the context of use for this event",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Event date: 2026-03-05; Verification date for this article: 2026-09-14. On March 5, GPT-5.4 was released across ChatGPT, the API, and Codex; the ChatGPT version is named GPT-5.4 Thinking, with a Pro tier also available."
+        },
+        {
+          "type": "paragraph",
+          "text": "Official announcements highlighted spreadsheets, presentations, documents, coding, and tool use; native computer-use capabilities were introduced to the API/Codex. The long-context capabilities of the API and Codex cannot be assumed to be equivalent limits for ChatGPT. The API was available at launch, while ChatGPT and Codex were rolled out in phases; the plans listed at launch represent historical eligibility and are not the current pricing table as of September. The following daily and work scenarios are examples designed by the editors for readers to verify on their own, rather than hands-on product benchmarks conducted by this site."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Pre-Processing Club Questionnaires and Field Standardization"
+        },
+        {
+          "type": "paragraph",
+          "text": "When planning to turn club event questionnaires into an outcome presentation, the first task is not to feed the raw files directly to the model, but to establish a clear data structure. When collecting event feedback, many people often encounter issues such as incomplete answers, mixed single- and multiple-choice responses, or inconsistent numerical units. If the calculation method for the denominator of valid samples is not defined in advance, the model can easily introduce biases when aggregating average satisfaction scores or preference ratios due to different imputation logic for missing values, leading to subtle yet critical deviations between the generated conclusions and the actual situation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before providing data, you can remove names or contact details not needed for this analysis and check whether open-ended comments could still identify individuals. Replacing names with codes merely reduces direct identification and cannot be regarded as complete anonymization. Then, provide the definition of valid samples, a presentation template, and the expected length so the tool has a clear organizational direction; keep notes where data is insufficient to avoid the model inventing background information that was never provided."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Verifying Underlying Spreadsheet Formulas and Summary Text"
+        },
+        {
+          "type": "paragraph",
+          "text": "When handling spreadsheets, although official statements highlighted table and document analysis capabilities, the most common mistake everyday workers make is only reading the summary text generated in the chat window. Text summaries often appear fluent and reasonable, and can even present satisfaction rankings in bulleted lists, but the underlying summation range might miss hidden rows after filtering or count invalid questionnaires as valid samples. Therefore, users must not be satisfied simply with reading text summaries; they must develop the habit of requesting the output file and opening it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Specific checks can start with one or two key figures: manually select valid responses, calculate the average or ratio once, and then compare the formulas and ranges in the workbook. AVERAGE, COUNTIF, or pivot tables are merely possible approaches; using a specific function does not guarantee that the result is correct. What you need to confirm is that data types, null-value handling, and filter criteria conform to the original definitions, and verify that the presentation quotes the exact same set of numbers."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Workflow Stage",
+            "Role of AI Reasoning & Tools",
+            "Human Review & Permission Boundaries"
+          ],
+          "rows": [
+            [
+              "Questionnaire data pre-processing",
+              "Automatically identify formats by rule, fill missing value tags, and perform initial classification",
+              "Verify valid sample denominator definitions, and confirm de-identification before providing data"
+            ],
+            [
+              "Spreadsheet statistical calculations",
+              "Build pivot table structures, write statistical formulas, and calculate averages",
+              "Personally open the file to check cell formula references and verify that filter ranges are correct"
+            ],
+            [
+              "Presentation structure & generation",
+              "Extract key slide titles, bullet points, and chart recommendations based on questionnaire summaries",
+              "Review visual layouts and text hierarchy, adjusting them to match template design standards"
+            ],
+            [
+              "Deliverable distribution & publishing",
+              "Compile distribution lists, draft notification emails, and write feedback report text",
+              "Verify recipients, attachments, and disclosure scope before authorizing specific submission actions"
+            ]
+          ],
+          "caption": "Comparison table of collaborative workflows and permission divisions for turning club event surveys into presentations"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Understanding Context Length Discrepancies and Presentation Generation Logic"
+        },
+        {
+          "type": "paragraph",
+          "text": "When transforming analytical data into presentations, workers need to understand how reasoning models reorganize tabular facts into presentation outlines. Creating a presentation is not merely transcribing text; it requires considering information hierarchy, slide pacing, and audience comprehension. When reasoning through club feedback, although the model can sort out event strengths, weaknesses, and future recommendations, without visual layout guidelines, the resulting slides often contain excessive text and fail to highlight key metrics, still relying on humans to set the structural framework of the slides."
+        },
+        {
+          "type": "paragraph",
+          "text": "At the same time, it must be clarified that the long-context capabilities of the API and Codex cannot be assumed to mean the ChatGPT interface has the same processing ceiling. Many workers mistakenly believe they can dump hundreds of surveys or massive attachments into standard web chat sessions indefinitely, but in reality, each interface has different capacity limits and design orientations. When dealing with surveys containing extensive written feedback, a sounder strategy is to aggregate sections externally first, and then supply core materials in stages to prevent context truncation from causing the model to miss certain responses."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-54-20260305/diagram-1-en.svg",
+          "alt": "Operations beyond answering: four key reading and usage points",
+          "width": 1600,
+          "height": 900,
+          "caption": "Prepare materials: templates & data; Outline steps: define permissible scope; Generate outputs: keep raw files; Verify content: confirm before submitting.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Tool Permission Isolation and Security Control of Login Status"
+        },
+        {
+          "type": "paragraph",
+          "text": "As models expand with native computer-use and tool capabilities, workers must clearly distinguish the fundamental difference between 'model judgment' and 'tool permissions.' An operational suggestion made by a model during reasoning is purely the product of linguistic probability and logical deduction; it is not equivalent to an external application being authorized to execute it. If a system is granted direct access to file systems or online collaboration platforms, any flaw in reasoning can directly manifest as irreversible, real-world disasters, such as overwriting files, deleting data by mistake, or sending unconfirmed messages."
+        },
+        {
+          "type": "paragraph",
+          "text": "In practice, you can isolate data in a dedicated draft folder and preserve original files. When sending reports or public updates is involved, confirm the recipients, attachments, and content before authorizing specific actions. Human verification does not necessarily mean manually logging in or clicking through every single step; rather, the person in charge must know what will be submitted and ensure that the tool's actual permissions and operational procedures match the scope of that specific assignment."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Establishing a Practical Rhythm for Human-AI Collaborative Review"
+        },
+        {
+          "type": "paragraph",
+          "text": "Looking broadly at the combination of reasoning capabilities and computer operation, the reasonable office positioning should be a 'high-efficiency draft generator' rather than a 'fully autonomous agent.' Taking the conversion of club questionnaires into a presentation as an example, the model can quickly write data-cleaning code, extract qualitative feedback keywords, and draft preliminary slide outlines, helping administrative personnel with some manual organizing tasks—though how much time is saved must be evaluated individually. However, every transition checkpoint in the workflow, including field mappings, formula calculations, and chart conclusions, requires scheduled human review gates."
+        },
+        {
+          "type": "paragraph",
+          "text": "Looking back at launch plans and their subsequent evolution, the rollout scope and subscription terms of various features adjust over time. Workers should focus on establishing general operational standards rather than relying on interface shortcuts specific to a certain period. By defining data specifications first, opening raw files to verify formulas, and strictly isolating account logins and execution permissions, one can safely reap the productivity benefits of reasoning technologies while preserving data privacy and statistical veracity, ensuring that every presentation withstands scrutiny."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Operational Boundary Reminder",
+          "text": "Analytical text generated by reasoning models does not equate to accurate data, nor does automated operation imply safe publishing authorization. When dealing with spreadsheet and presentation creation, always download the original files to verify underlying calculation formulas, and reserve account logins and final submission actions for human confirmation to ensure authenticity of results and prevent unexpected overwrites."
+        },
+        {
+          "type": "link",
+          "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
+          "url": "https://mokaair.com/en/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Claude Starts Drawing Interactive Visuals: Understand the Assumptions Before the Concept",
+          "url": "https://mokaair.com/en/life/ai-news-claude-interactive-visuals-20260312"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI: GPT-5.4 Launch",
+          "url": "https://openai.com/index/introducing-gpt-5-4/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "GPT-5.4が推論とコンピュータ操作を統合：一般の実務者はどう向き合うべきか？",
+      "description": "2026年初頭に発表されたGPT-5.4の技術統合を振り返り、一般実務者がスプレッドシートやプレゼン資料を扱う際に、推論の判断、ツール操作、人間の検収境界をどのように区別すべきかを分析します。",
+      "hero": {
+        "src": "/guides/ai-news-gpt-54-20260305/hero-ja.jpg",
+        "alt": "「回答の枠を超えた操作」のオリジナル概念イラスト。本記事の利用コンテキストを表現",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "イベント発生日：2026-03-05、本記事確認日：2026-09-14。3月5日、GPT-5.4がChatGPT、API、Codexにてリリースされました。ChatGPTでの名称はGPT-5.4 Thinkingであり、Proも提供されています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公式にはスプレッドシート、プレゼンテーション、ドキュメント、プログラミング、およびツール利用が強調されており、API/Codexにはネイティブなコンピュータ操作機能が導入されました。APIやCodexの長いコンテキスト処理能力は、ChatGPTの同等の上限であると推定することはできません。APIは当時利用可能でしたが、ChatGPTとCodexは段階的に提供されました。初出時に掲載されたプランは当時の利用資格であり、9月時点の現行価格表ではありません。以下の生活や業務におけるシナリオは、読者自身で検証していただくために編集部が設計した事例であり、本サイトによる製品の実測テストではありません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "サークルアンケートの事前準備とフィールドの標準化"
+        },
+        {
+          "type": "paragraph",
+          "text": "サークル活動のアンケート結果を成果報告のプレゼン資料へと変換することを構想する際、最初に行うべき作業は、元データファイルを直接モデルに渡すことではなく、明確なデータ構造を構築することです。イベントのフィードバックを収集する際、回答の未記入、単一選択と複数選択の混在、数値単位の不一致といった問題に直面することがよくあります。事前に有効回答数の分母の計算方法を定義しておかないと、モデルが平均満足度や好みの割合を集計する際、欠損値の補完ロジックの違いによって偏りが生じやすく、その結果生成される結論と実際の状況との間に微妙ながら重大な乖離が発生してしまいます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "データを提供する前に、今回の分析で使用しない氏名や連絡先をあらかじめ削除し、自由記述のコメントから個人が特定できないかを確認しておきます。氏名を識別コードに置き換える手法は直接的な特定性を下げる手段に過ぎず、完全な匿名化とは見なせません。その上で有効サンプルの定義、プレゼン用のテンプレート、想定される分量を提示することで、ツールに明確な整理方針を与えます。データが不足している箇所は注記を残し、提供されていない背景をモデルが勝手に補完することを防ぎます。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "スプレッドシートの背後にある数式と要約テキストの検証"
+        },
+        {
+          "type": "paragraph",
+          "text": "スプレッドシートの処理において、公式発表では表やドキュメントの分析能力が強調されましたが、一般の実務者が最も陥りやすい誤りは、対話ウィンドウに出力された要約テキストを読むだけで済ませてしまうことです。テキストの要約は一見すると流暢で論理的であり、満足度のランキングなどを箇条書きで綺麗に提示することも可能ですが、その背後にある集計範囲がフィルター条件後の非表示行を見落としていたり、無効なアンケートを有効回答として計算していたりすることがあります。そのため、利用者はテキストの総括を読むだけで満足せず、ファイルを実際に出力させて開く習慣を身につけなければなりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "具体的な確認は、1〜2個の主要な数値から始めることができます。自ら有効回答を選定して平均値や比率を一度手作業で計算し、ワークブック内の数式や参照範囲と照合します。AVERAGE、COUNTIF、ピボットテーブルなどはあくまで選択可能な手法の一例に過ぎず、特定の関数が使われているからといって結果が正しいとは限りません。確認すべきは、データ型、空のセルの処理、フィルター条件が事前の定義に合致しているかであり、プレゼン資料が同じ数値を参照しているかも併せて点検します。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "作業段階",
+            "AI推論およびツールの役割",
+            "人間の検収と権限の境界"
+          ],
+          "rows": [
+            [
+              "アンケートデータの前処理",
+              "ルールに基づきフォーマットを自動識別し、欠損値ラベルの補完や初期分類を実行",
+              "有効サンプルの分母定義を照合し、非識別化を確認した上でデータを提供"
+            ],
+            [
+              "スプレッドシートの統計計算",
+              "ピボットテーブル構造を構築し、統計数式を作成して平均値を算出",
+              "自らファイルを開き、セルの数式参照やフィルター範囲が正しいか確認"
+            ],
+            [
+              "プレゼン構成と生成",
+              "アンケートの要約に基づき、重要スライドの見出し、要点、グラフ案を抽出",
+              "視覚的レイアウトと文字の階層を精査し、テンプレートの設計規範に沿って調整"
+            ],
+            [
+              "成果物の配布と公開",
+              "配布リストを整理し、案内メール文面やフィードバック報告文の草案を作成",
+              "送信先、添付ファイル、公開範囲を照合した上で、具体的な送信アクションを承認"
+            ]
+          ],
+          "caption": "サークルアンケートからプレゼン作成への協調作業フローおよび権限制御の対照表"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "長いコンテキストの違いとプレゼン生成ロジックの理解"
+        },
+        {
+          "type": "paragraph",
+          "text": "分析データをプレゼンテーションに落とし込む際、実務者は推論モデルが表の事実データをどのようにスライドのアウトラインへ再構成しているかを把握する必要があります。プレゼン資料の作成は単なる文章の転記ではなく、情報の階層構造、スライドのリズム、読者の理解のしやすさを考慮しなければなりません。モデルはサークルのフィードバックを推論する際、活動の長所・短所や今後の提案を整理することはできますが、視覚的なレイアウト基準が与えられていない場合、生成されるスライドは文字量が過大になりがちで重要な数値を際立たせることができません。そのため、人間によるスライド構造のフレームワーク設定が不可欠です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同時に明確にしておくべき点として、APIやCodexが備える長大なコンテキスト処理能力を、ChatGPTインターフェースも同等の処理上限を持っているとそのまま推定することはできません。多くの実務者が、通常のWeb対話画面に何百ものアンケートや大容量の添付ファイルを無制限に投入できると誤解しがちですが、実際にはインターフェースごとに許容上限や設計意図が異なります。大量のテキスト意見を含む調査を扱う際は、外部であらかじめ段落ごとに要約をまとめ、中核となる素材を段階的に提供する方が手堅い戦略であり、コンテキストの切り捨てによってフィードバックの一部がモデルに見落とされる事態を防ぐことができます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-54-20260305/diagram-1-ja.svg",
+          "alt": "回答の枠を超えた操作：4つの読み解きと利用の要点",
+          "width": 1600,
+          "height": 900,
+          "caption": "素材準備：テンプレートとデータ、手順列挙：実行可能範囲の定義、成果生成：元ファイルの保存、内容検証：確認後に提出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "ツール権限の分離とログイン状態のセキュリティ管理"
+        },
+        {
+          "type": "paragraph",
+          "text": "モデルがネイティブなコンピュータ操作やツール利用能力を獲得した今、実務者は「モデルの判断」と「ツールの権限」の本質的な違いを明確に区別しなければなりません。モデルが推論段階で提示する操作提案は、あくまで言語の確率と論理的な導出の結果に過ぎず、外部ソフトウェアへの実行許可が下りていることと同義ではありません。ファイルシステムやオンラインの共同編集プラットフォームへの直接アクセスをシステムに安易に開放してしまうと、推論の些細な欠陥が、ファイルの上書き、データの誤削除、未確認メッセージの送信といった不可逆の実害へと直結するおそれがあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "実践にあたっては、データを独立した下書き用フォルダ内に限定し、元ファイルを必ず保持しておくことが推奨されます。レポートの送付や公開更新に関わる場合は、送信先、添付ファイル、内容を事前に確認した上で、具体的なアクションを承認します。人間による確認とは、必ずしもすべてのステップで手動ログインやクリックを行わなければならないという意味ではなく、責任者が「何を提出しようとしているのか」を把握しており、ツールの実際の権限や操作方法が今回の依頼範囲に合致していることを確認することを指します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "人とAIの協調レビュー体制を現場に定着させるリズム"
+        },
+        {
+          "type": "paragraph",
+          "text": "推論能力とコンピュータ操作の結合を俯瞰したとき、オフィス業務における適切な位置づけは「完全自動のエージェント」ではなく「高効率な下書き作成ツール」であるべきです。サークルのアンケートからプレゼン資料を作成する例を挙げると、モデルはデータクレンジング用コードの記述、定性フィードバックからのキーワード抽出、初期のスライド構成案の策定を迅速に行い、事務担当者の手作業による整理業務を支援してくれます（どれほどの時間を節約できるかは各自で比較検証する必要があります）。しかしながら、フィールドのマッピング、数式の検算、グラフから導かれる結論など、業務フローにおける各変換ポイントには、人間による確認プロセスを必ず組み込んでおく必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "発表当時のプランとその後の推移を振り返ると、各機能の開放範囲やサブスクリプションの利用条件は時間の経過とともに見直されます。実務者は特定の時期にのみ通用するインターフェースの近道に依存するのではなく、汎用的な作業標準の確立に注力すべきです。事前にデータ規約を定義し、元のファイルを開いて計算式を検算し、アカウントのログインや実行権限を厳格に遮断することで初めて、データのプライバシーと統計的な正確性を維持しながら推論技術による生産性向上を安全に享受でき、あらゆる関係者の検証に耐えうるプレゼンテーションを実現できます。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "操作境界に関する注意事項",
+          "text": "推論モデルが出力する分析テキストは正確なデータであるとは限らず、自動化された操作も安全な公開権限を意味するものではありません。スプレッドシートやプレゼン資料を扱う際は、必ず元ファイルをダウンロードして根底にある計算式を照合し、アカウントのログインや最終的な送信アクションは人間による確認に留めることで、成果物の正確性を担保し、予期せぬ上書きを防ぎましょう。"
+        },
+        {
+          "type": "link",
+          "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
+          "url": "https://mokaair.com/ja/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Claudeの対話がインタラクティブ図を描き始める：概念を理解する前に、まず図の前提を理解する",
+          "url": "https://mokaair.com/ja/life/ai-news-claude-interactive-visuals-20260312"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI：GPT-5.4の発表",
+          "url": "https://openai.com/index/introducing-gpt-5-4/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "GPT-5.4, 추론과 컴퓨터 조작을 하나로: 일반 실무자는 어떻게 바라봐야 할까?",
+      "description": "2026년 초 발표된 GPT-5.4의 기술 통합을 돌아보며, 일반 실무자가 스프레드시트와 프레젠테이션 작업 시 추론 판단, 도구 조작, 수동 검수 경계를 구분하는 법을 살펴봅니다.",
+      "hero": {
+        "src": "/guides/ai-news-gpt-54-20260305/hero-ko.jpg",
+        "alt": "답변을 넘어선 조작의 오리지널 콘셉트 삽화, 본 사건의 활용 맥락 표현",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "사건 일자: 2026-03-05; 본문 확인 일자: 2026-09-14. 3월 5일 GPT-5.4가 ChatGPT, API 및 Codex에 출시되었으며, ChatGPT 내 명칭은 GPT-5.4 Thinking이고 별도로 Pro가 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "공식 발표에서는 스프레드시트, 프레젠테이션, 문서, 코딩 및 도구 활용을 강조했으며, API/Codex에는 네이티브 컴퓨터 조작 역량이 도입되었습니다. API와 Codex의 긴 컨텍스트 역량을 ChatGPT의 동일한 상한으로 추정할 수는 없습니다. API는 당시 즉시 사용 가능했고, ChatGPT와 Codex는 단계적으로 출시되었습니다. 초기 발표 시 나열된 플랜은 과거 자격 기준이며 9월의 현행 요금표가 아닙니다. 이하의 일상 및 업무 시나리오는 독자의 자체 검증을 위해 편집팀이 설계한 예시이며, 본 사이트의 제품 실측 테스트가 아닙니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "동아리 설문 사전 준비 및 필드 표준화"
+        },
+        {
+          "type": "paragraph",
+          "text": "동아리 활동 설문지를 성과 프레젠테이션으로 전환할 때, 최우선 과제는 원본 파일을 모델에 바로 넘기는 것이 아니라 명확한 데이터 구조를 수립하는 것입니다. 많은 사람이 활동 피드백을 수집할 때 미작성 항목, 단일 선택과 다중 선택의 혼재, 숫자 단위 불일치 등의 문제에 직면합니다. 유효 표본의 분모 산출 방식을 사전에 정의하지 않으면, 모델이 평균 만족도나 선호 비율을 집계할 때 결측치 대체 로직의 차이로 인해 편향이 발생하기 쉬우며, 이는 후속 생성 결론과 실제 상황 간의 미묘하지만 결정적인 괴리를 초래합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "데이터를 제공하기 전, 이번 분석에 불필요한 이름이나 연락처를 먼저 제거하고, 주관식 의견에서 여전히 개인을 식별할 수 있는지 살펴볼 수 있습니다. 이름을 식별 코드로 대체하는 것은 직접적인 식별 가능성을 낮추는 방식일 뿐 완전한 익명화로 볼 수 없습니다. 이어 유효 표본 정의, 프레젠테이션 템플릿, 예상 분량을 함께 제공하여 도구가 명확한 정리 방향을 갖도록 해야 합니다. 데이터가 부족한 부분은 메모로 남겨두어 제공되지 않은 배경 정보를 모델이 임의로 보완하지 않도록 방지해야 합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "스프레드시트 기저 수식과 요약 텍스트 검증"
+        },
+        {
+          "type": "paragraph",
+          "text": "스프레드시트 처리에 있어 공식 측이 표 및 문서 분석 역량을 강조했음에도 불구하고, 일반 실무자가 가장 흔히 범하는 실수는 대화창에 출력된 요약 텍스트만 읽는 것입니다. 텍스트 요약은 겉보기에 매끄럽고 합리적이며 항목별 만족도 순위까지 정연하게 보여줄 수 있지만, 그 이면의 합계 범위에서 필터링 조건이 적용된 숨겨진 행이 누락되었거나 무효 설문이 유효 표본으로 계산되었을 수 있습니다. 따라서 사용자는 단순한 텍스트 요약 열람에 만족해서는 안 되며, 결과 파일 생성을 요청하고 이를 직접 열어보는 습관을 길러야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "구체적인 확인은 한두 가지 핵심 숫자부터 시작할 수 있습니다. 유효 응답을 직접 선별하여 평균값이나 비율을 한 번 계산해 본 뒤, 워크북 내의 수식 및 범위와 대조하는 것입니다. AVERAGE, COUNTIF 또는 피벗 테이블은 모두 가능한 방식 중 하나일 뿐이며, 특정 함수를 사용했다고 해서 결과가 반드시 정확함을 뜻하지는 않습니다. 확인해야 할 점은 데이터 타입, 결측치 처리 및 필터링 조건이 기존 정의와 부합하는지 여부이며, 프레젠테이션이 동일한 수치를 인용하고 있는지 점검해야 합니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "작업 단계",
+            "AI 추론 및 도구 역할",
+            "수동 검수 및 권한 경계"
+          ],
+          "rows": [
+            [
+              "설문 데이터 전처리",
+              "규칙에 따라 서식 식별, 결측치 라벨링 및 1차 분류 자동화",
+              "유효 표본 분모 정의 대조, 비식별화 확인 후 데이터 제공"
+            ],
+            [
+              "스프레드시트 통계 연산",
+              "피벗 테이블 구조 생성, 통계 수식 작성 및 평균값 계산",
+              "직접 파일을 열어 셀 수식 참조 및 필터 범위 정확성 검사"
+            ],
+            [
+              "프레젠테이션 구조화 및 생성",
+              "설문 요약 바탕 핵심 슬라이드 제목, 요점 및 차트 제안 도출",
+              "시각적 레이아웃과 텍스트 계층 검토, 템플릿 규격에 맞게 조정"
+            ],
+            [
+              "성과물 배포 및 전달",
+              "성과 배포 명단 정리, 안내 메일 및 피드백 보고서 초안 작성",
+              "수신자, 첨부파일, 공개 범위 확인 후 구체적 제출 작업 승인"
+            ]
+          ],
+          "caption": "동아리 활동 설문 프레젠테이션화 협업 프로세스 및 권한 구분 대조표"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "긴 컨텍스트 차이와 프레젠테이션 생성 로직 이해"
+        },
+        {
+          "type": "paragraph",
+          "text": "분석 데이터를 프레젠테이션으로 전환할 때 실무자는 추론 모델이 표의 사실 관계를 슬라이드 개요로 재구성하는 방식을 이해해야 합니다. 프레젠테이션 제작은 단순한 텍스트 전사가 아니며 정보의 위계, 슬라이드 간의 호흡, 청중의 수용 능력을 고려해야 합니다. 모델은 동아리 피드백을 분석하며 활동의 장단점과 향후 제언을 도출할 수 있지만, 레이아웃 디자인 규격이 주어지지 않으면 지나치게 텍스트가 많은 슬라이드를 생성해 핵심 수치를 부각하지 못하므로, 슬라이드의 구조적 프레임은 여전히 사람이 설정해 주어야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "동시에 명확히 짚고 넘어가야 할 점은, API와 Codex가 지원하는 긴 컨텍스트 역량을 ChatGPT 인터페이스가 동일한 처리 한도를 지닌 것으로 직접 추정해서는 안 된다는 사실입니다. 많은 실무자가 일반 웹 대화창에 수백 건의 설문이나 대용량 첨부파일을 무제한으로 업로드할 수 있다고 오해하지만, 실제로는 인터페이스별 처리 상한과 설계 지향점이 다릅니다. 서술형 의견이 많은 조사를 다룰 때는 외부에서 문단 요약을 먼저 마친 후 핵심 소재를 나누어 제공하는 편이 안정적이며, 컨텍스트 잘림으로 인해 일부 피드백이 모델에 의해 누락되는 현상을 막을 수 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-54-20260305/diagram-1-ko.svg",
+          "alt": "답변을 넘어선 조작: 네 가지 확인 및 활용 핵심",
+          "width": 1600,
+          "height": 900,
+          "caption": "자료 준비: 템플릿과 데이터, 단계 나열: 가능 범위 정의, 결과 생성: 원본 파일 보존, 내용 검증: 확인 후 제출.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "도구 권한 격리와 로그인 상태의 보안 통제"
+        },
+        {
+          "type": "paragraph",
+          "text": "모델에 네이티브 컴퓨터 조작 및 도구 사용 역량이 추가됨에 따라 실무자는 '모델의 판단'과 '도구의 권한'이라는 본질적 차이를 명확히 구분해야 합니다. 모델이 추론 단계에서 제시하는 작업 제안은 언어적 확률과 논리적 도출의 결과일 뿐이며, 외부 소프트웨어가 해당 작업을 실행하도록 승인받았음을 의미하지 않습니다. 시스템에 파일 시스템이나 온라인 협업 플랫폼 접근 권한을 곧바로 부여하면, 사소한 추론 오류도 파일 덮어쓰기, 데이터 무단 삭제, 미확인 메시지 발송 등 돌이킬 수 없는 실제 사고로 이어질 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "실무에서는 데이터를 별도의 초안용 폴더로 격리하고 원본 파일을 반드시 보존할 수 있습니다. 보고서 발송이나 공개적 업데이트가 수반될 때는 수신자, 첨부파일, 내용을 사전에 점검한 뒤 구체적인 동작을 승인해야 합니다. 수동 확인이 모든 단계를 일일이 수작업으로 로그인하거나 클릭해야 함을 뜻하지는 않으며, 책임자가 무엇이 제출될지 정확히 알고 도구의 실제 권한과 조작 방식이 이번 위임 범위에 부합하는지 통제해야 함을 의미합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "인간-AI 협업 검토 메커니즘 구축을 위한 실행 속도"
+        },
+        {
+          "type": "paragraph",
+          "text": "추론 능력과 컴퓨터 조작의 결합을 종합해 볼 때, 합리적인 사무 업무 포지셔닝은 '완전 자동화 에이전트'가 아닌 '고효율 초안 생성기'가 되어야 합니다. 동아리 설문 프레젠테이션 제작을 예로 들면, 모델은 데이터 정제 코드 작성, 정성적 피드백 키워드 추출, 1차 슬라이드 개요 구상을 신속히 마쳐 행정 실무자의 수작업 정리 업무 일부를 덜어줄 수 있으며, 절감되는 시간의 크기는 사용자가 직접 비교해 보아야 합니다. 그러나 필드 매핑, 수식 검증, 차트 결론 도출 등 업무 흐름의 각 전환점마다 고정된 수동 검수 관문을 반드시 배치해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "초기 출시 플랜과 이후의 기능 변화를 돌이켜보면, 각 기능의 공개 범위와 구독 조건은 시간에 따라 조정되므로 실무자는 특정 시점의 인터페이스 단축 경로에 의존하기보다 범용적인 작업 기준을 수립하는 데 집중해야 합니다. 사전에 데이터 규격을 정의하고, 원본 파일을 열어 계산식을 검증하며, 계정 로그인과 실행 권한을 엄격히 차단함으로써 데이터 프라이버시와 통계적 진실성을 유지한 채 추론 기술이 주는 생산성 혜택을 안전하게 누리고, 모든 프레젠테이션 결과물이 신뢰받을 수 있도록 해야 합니다."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "작업 경계 주의사항",
+          "text": "추론 모델이 생성한 분석 텍스트가 정확한 데이터를 뜻하지 않으며, 자동화된 조작이 안전한 배포 권한을 의미하지도 않습니다. 스프레드시트와 프레젠테이션 작업 시에는 반드시 원본 파일을 다운로드하여 기저 계산 수식을 확인하고, 계정 로그인 및 최종 제출 작업은 수동 확인 절차로 남겨두어 성과물의 진실성을 확보하고 예기치 않은 덮어쓰기를 방지해야 합니다."
+        },
+        {
+          "type": "link",
+          "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
+          "url": "https://mokaair.com/ko/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "대화에서 인터랙티브 다이어그램 그리는 Claude: 개념 전 가정부터 파악하기",
+          "url": "https://mokaair.com/ko/life/ai-news-claude-interactive-visuals-20260312"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI: GPT-5.4 발표",
+          "url": "https://openai.com/index/introducing-gpt-5-4/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "GPT-5.4 把推理与电脑操作放在一起：一般工作者该怎么看？",
+      "description": "回顾 GPT-5.4 于 2026 年初发布的各项技术整合，分析一般工作者在处理电子表格与演示文稿时，如何区分推理判断、工具操作与人工验收边界。",
+      "hero": {
+        "src": "/guides/ai-news-gpt-54-20260305/hero-zh-cn.jpg",
+        "alt": "回答之外的操作的原创概念插图，呈现本篇事件的使用脉络",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "事件日期：2026-03-05；本文查核日期：2026-09-14。3 月 5 日 GPT-5.4 在 ChatGPT、API 与 Codex 发布；ChatGPT 名称为 GPT-5.4 Thinking，另有 Pro。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方强调电子表格、演示文稿、文档、程序与工具使用；API/Codex 引入原生电脑操作能力。API 与 Codex 的长上下文能力不能推定为 ChatGPT 的同等上限。API 当时可用，ChatGPT 与 Codex 分批推出；首发列出的方案属于历史资格，并非 9 月的现行价目表。以下生活与工作情境为编辑设计的例子，供读者自行验证，并非本站产品实测。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "社团问卷前置准备与字段标准化"
+        },
+        {
+          "type": "paragraph",
+          "text": "在构思将社团活动问卷转化为成果演示文稿时，首要工作并非直接把原始文件交给模型，而是建立明确的数据架构。许多人在收集活动反馈时，常遇到填答不全、单选多选混杂或数字单位不一致的问题。若未事先定义有效样本的分母计算方式，模型在统整平均满意度或偏好比例时，极容易因缺值填补逻辑不同而产生偏差，导致后续生成的结论与实际状况产生微妙但关键的偏离。"
+        },
+        {
+          "type": "paragraph",
+          "text": "提供数据前，可以先去掉本次分析用不到的姓名或联系方式，并检查开放式留言是否仍能识别个人。以代码取代姓名只是降低直接识别的方式，不能视为完全匿名化。随后提供有效样本定义、演示文稿模板与预期篇幅，让工具有明确的整理方向；数据不足的地方保留注释，避免自行补出并未提供的背景。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "电子表格底层公式与摘要文字之核查"
+        },
+        {
+          "type": "paragraph",
+          "text": "面对电子表格处理，官方虽强调了表格与文档分析能力，但一般工作者最容易犯的错误就是仅阅读对话框产出的摘要文字。文字摘要往往看似流畅合理，甚至能以条列方式呈现满意度排行，但背后的汇总范围可能遗漏了筛选条件后的隐藏行，或者把无效问卷当作有效样本计算。因此，使用者不能只满足于阅读文字总结，必须养成要求产出并打开文件的习惯。"
+        },
+        {
+          "type": "paragraph",
+          "text": "具体检查可以从一两个关键数字开始：亲自选出有效回复，算一次平均值或比例，再比对工作簿中的公式与范围。AVERAGE、COUNTIF 或数据透视表都只是可能的做法，使用了某个函数并不代表结果就正确。你要确认的是数据类型、空值处理及筛选条件符合原先定义，并检查演示文稿引用了同一组数字。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "作业阶段",
+            "AI 推理与工具角色",
+            "人工验收与权限边界"
+          ],
+          "rows": [
+            [
+              "问卷数据前置处理",
+              "自动依规则识别格式、填补缺失值标签与初步分类",
+              "核对有效样本分母定义，确认去标识化后才提供数据"
+            ],
+            [
+              "电子表格统计运算",
+              "建立数据透视表结构、编写统计公式并计算平均数",
+              "亲自打开文件检查单元格公式引用与筛选范围是否正确"
+            ],
+            [
+              "演示文稿架构与产出",
+              "依据问卷摘要提炼重点页面标题、要点与图表建议",
+              "审查视觉版面布局与文字层级，调整使其符合模板设计规范"
+            ],
+            [
+              "成果分发与发布",
+              "整理成果发布清单、草拟通知邮件与反馈报告文字",
+              "核对收件人、附件与公开范围后，再授权具体提交动作"
+            ]
+          ],
+          "caption": "社团活动问卷转演示文稿之协同作业流程与权限划分对照表"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "理解长上下文差异与演示文稿生成逻辑"
+        },
+        {
+          "type": "paragraph",
+          "text": "将分析数据转化为演示文稿时，工作者需要明白推理模型如何把表格事实重组为演示大纲。演示文稿制作并非单纯转录文字，而是需要考量信息层级、页面节奏与读者吸收能力。模型在推演社团反馈时，虽然能梳理出活动优缺点与未来建议，但在缺乏版面视觉设计规范的情况下，产出的幻灯片往往文字量过大，无法突显关键数据，仍需仰赖人工设定幻灯片的架构框架。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同时必须厘清的是，API 与 Codex 具备的长上下文能力，不能直接推定为 ChatGPT 界面拥有同等处理上限。许多工作者误以为能在一般网页对话中无限丢入数百份问卷或庞大附件，实际上各界面的承载上限与设计取向各有不同。在处理包含大量文字意见的调查时，较稳健的策略是先在外部完成段落汇总，再分段提供核心素材，避免因上下文截断导致部分反馈被模型忽略。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-54-20260305/diagram-1-zh-cn.svg",
+          "alt": "回答之外的操作：四项阅读与使用重点",
+          "width": 1600,
+          "height": 900,
+          "caption": "准备材料：模板与数据、列出步骤：定义可做范围、产生成果：保存原始文件、验证内容：确认再提交。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "工具权限隔离与登录状态的安全管控"
+        },
+        {
+          "type": "paragraph",
+          "text": "当模型延伸出原生电脑操作与工具使用能力时，工作者必须清楚区分“模型判断”与“工具权限”的本质差异。模型在推理阶段提出的操作建议，纯粹属于语言概率与逻辑推导的结果，并不等同于外部软件已被授权执行。若开放系统直接访问文件系统或在线协作平台，任何推理瑕疵都可能直接转化为文件覆盖、误删数据或发送未经确认信息等不可逆的实际灾难。"
+        },
+        {
+          "type": "paragraph",
+          "text": "实操时可把数据限制在独立草稿文件夹中，并保留原文件。涉及发送报告或公开更新时，先确认收件人、附件与内容，再授权具体动作。人工确认不一定意味着每一步都得手动登录或点击，而是负责人必须知道将提交什么，且工具的实际权限与操作方式符合这次委托的范围。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "建立人机协同审查机制的落地节奏"
+        },
+        {
+          "type": "paragraph",
+          "text": "综观推理能力与电脑操作的结合，合理的办公室应用定位应是“高效率草稿生成器”而非“全自动代理人”。以社团问卷转化为演示文稿为例，模型能迅速完成数据清洗代码编写、提取质化反馈关键词并拟定初步分页大纲，协助行政人员处理部分手工整理工作，省下多少时间则需自行比较。然而，工作流程中每一个转换节点，包括字段映射、公式核算与图表结论，都需要安排固定的人工验收关卡。"
+        },
+        {
+          "type": "paragraph",
+          "text": "回顾历史发布方案与其后续演进，各项功能的开放范围与订阅条件会随时间调整，工作者应将焦点放在建立通用的作业标准上，而非依赖特定时期的界面捷径。通过先定义数据规范、打开原始文件核验计算公式、严格阻隔账号登录与执行权限，才能在保有数据隐私与统计真实性的前提下，安全享有推理技术带来的生产力效益，让每次演示文稿呈现都经得起各方检验。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "操作边界提醒",
+          "text": "推理模型产出的分析文字不等于正确数据，自动化操作亦不代表具备安全发布权限。面对电子表格与演示文稿制作，务必下载原始文件核对底层计算公式，并将账号登录与最终提交动作保留给人工确认，以确保成果真实性并防范非预期覆盖。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
+          "url": "https://mokaair.com/zh-CN/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Claude 对话开始绘制交互图：读懂概念前，先读懂图表的假设",
+          "url": "https://mokaair.com/zh-CN/life/ai-news-claude-interactive-visuals-20260312"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI：GPT-5.4 发布",
+          "url": "https://openai.com/index/introducing-gpt-5-4/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

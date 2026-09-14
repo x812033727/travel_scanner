@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">編輯器接上本機模型的資料流 / How an editor reaches a local model</title>
+  <desc id="desc">上排四個方框從左到右是一條資料流。一，編輯器：VS Code 或 JetBrains，你在裡面打字、選一段程式碼或問問題。二，擴充：Continue，設定檔是家目錄底下的 .continue 資料夾裡的 config.yaml，provider 欄位填 ollama，由它決定哪個角色用哪個模型。三，本機 Ollama：預設位址是 localhost 冒號 11434，官方文件建議程式工作把上下文設到至少 64000 個 token。四，模型：依 roles 欄位分派，整條路徑都在這台電腦上。第四個方框往下接到一條橫線，分出三個角色方框。左邊是 chat 與 edit，用程式模型，例如 qwen3-coder 冒號 30b，下載大小 19GB、上下文視窗 256K。中間是 autocomplete，用小的補全模型 qwen2.5-coder 冒號 1.5b，下載大小 986MB、上下文視窗 32K。右邊是 embed，用嵌入模型 nomic-embed-text，下載大小 274MB，給程式碼庫檢索用。最下面一條紅框提醒 Cursor 是例外：官方說明頁只列 OpenAI、Anthropic、Google、Azure、Bedrock 五家金鑰，沒有自訂端點；自備金鑰只對聊天模型有效，Tab 補全仍走 Cursor 內建模型，而且請求會經過 Cursor 的伺服器。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="55" y="52" font-size="30" font-weight="bold" fill="#102A2B">編輯器接上本機模型：一條請求走過哪些關卡</text>
+  <text x="55" y="84" font-size="18" fill="#5C6B6B">Editor → extension → local Ollama API → model</text>
+
+  <!-- flow box 1 -->
+  <rect x="55" y="118" width="330" height="200" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="220" y="158" text-anchor="middle" font-size="20" font-weight="bold" fill="#0D6B68">一　編輯器</text>
+  <text x="220" y="198" text-anchor="middle" font-size="17" fill="#102A2B">VS Code 或 JetBrains</text>
+  <text x="220" y="232" text-anchor="middle" font-size="17" fill="#102A2B">打字、選一段程式碼</text>
+  <text x="220" y="266" text-anchor="middle" font-size="17" fill="#102A2B">或在側欄問問題</text>
+  <text x="220" y="300" text-anchor="middle" font-size="15" fill="#5C6B6B">沒有網路也能動</text>
+
+  <!-- flow box 2 -->
+  <rect x="445" y="118" width="330" height="200" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="610" y="158" text-anchor="middle" font-size="20" font-weight="bold" fill="#0D6B68">二　擴充</text>
+  <text x="610" y="198" text-anchor="middle" font-size="17" fill="#102A2B">Continue 的設定檔</text>
+  <text x="610" y="232" text-anchor="middle" font-size="16" fill="#102A2B">~/.continue/config.yaml</text>
+  <text x="610" y="266" text-anchor="middle" font-size="17" fill="#102A2B">provider 欄位填 ollama</text>
+  <text x="610" y="300" text-anchor="middle" font-size="15" fill="#5C6B6B">決定哪個角色用哪個模型</text>
+
+  <!-- flow box 3 -->
+  <rect x="835" y="118" width="330" height="200" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1000" y="158" text-anchor="middle" font-size="20" font-weight="bold" fill="#2F6F9F">三　本機 Ollama</text>
+  <text x="1000" y="198" text-anchor="middle" font-size="17" fill="#102A2B">預設位址</text>
+  <text x="1000" y="232" text-anchor="middle" font-size="17" fill="#102A2B">localhost:11434</text>
+  <text x="1000" y="266" text-anchor="middle" font-size="17" fill="#102A2B">程式工作把上下文</text>
+  <text x="1000" y="300" text-anchor="middle" font-size="17" fill="#102A2B">設到至少 64000</text>
+
+  <!-- flow box 4 -->
+  <rect x="1225" y="118" width="330" height="200" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1390" y="158" text-anchor="middle" font-size="20" font-weight="bold" fill="#0D6B68">四　模型</text>
+  <text x="1390" y="198" text-anchor="middle" font-size="17" fill="#102A2B">依 roles 欄位分派</text>
+  <text x="1390" y="232" text-anchor="middle" font-size="17" fill="#102A2B">三種角色三個模型</text>
+  <text x="1390" y="266" text-anchor="middle" font-size="17" fill="#102A2B">權重都在硬碟裡</text>
+  <text x="1390" y="300" text-anchor="middle" font-size="15" fill="#5C6B6B">全程不出這台電腦</text>
+
+  <!-- arrows between flow boxes -->
+  <line x1="390" y1="218" x2="440" y2="218" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="780" y1="218" x2="830" y2="218" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1170" y1="218" x2="1220" y2="218" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- bus from box 4 down to the three role boxes -->
+  <line x1="1390" y1="318" x2="1390" y2="368" stroke="#5C6B6B" stroke-width="4"/>
+  <line x1="290" y1="368" x2="1390" y2="368" stroke="#5C6B6B" stroke-width="4"/>
+  <line x1="290" y1="368" x2="290" y2="418" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="800" y1="368" x2="800" y2="418" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1310" y1="368" x2="1310" y2="418" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- role box 1 -->
+  <rect x="55" y="428" width="470" height="220" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="290" y="470" text-anchor="middle" font-size="20" font-weight="bold" fill="#2E7D5B">chat 與 edit</text>
+  <text x="290" y="510" text-anchor="middle" font-size="17" fill="#102A2B">聊天、解釋、改一段程式碼</text>
+  <text x="290" y="546" text-anchor="middle" font-size="17" fill="#102A2B">程式模型，例如</text>
+  <text x="290" y="582" text-anchor="middle" font-size="17" fill="#102A2B">qwen3-coder:30b</text>
+  <text x="290" y="618" text-anchor="middle" font-size="15" fill="#5C6B6B">下載 19GB、上下文 256K</text>
+
+  <!-- role box 2 -->
+  <rect x="565" y="428" width="470" height="220" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="800" y="470" text-anchor="middle" font-size="20" font-weight="bold" fill="#D97A2B">autocomplete</text>
+  <text x="800" y="510" text-anchor="middle" font-size="17" fill="#102A2B">打字時的行內灰字建議</text>
+  <text x="800" y="546" text-anchor="middle" font-size="17" fill="#102A2B">小的補全模型，例如</text>
+  <text x="800" y="582" text-anchor="middle" font-size="17" fill="#102A2B">qwen2.5-coder:1.5b</text>
+  <text x="800" y="618" text-anchor="middle" font-size="15" fill="#5C6B6B">下載 986MB、上下文 32K</text>
+
+  <!-- role box 3 -->
+  <rect x="1075" y="428" width="470" height="220" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1310" y="470" text-anchor="middle" font-size="20" font-weight="bold" fill="#2F6F9F">embed</text>
+  <text x="1310" y="510" text-anchor="middle" font-size="17" fill="#102A2B">給程式碼庫檢索用</text>
+  <text x="1310" y="546" text-anchor="middle" font-size="17" fill="#102A2B">嵌入模型，例如</text>
+  <text x="1310" y="582" text-anchor="middle" font-size="17" fill="#102A2B">nomic-embed-text</text>
+  <text x="1310" y="618" text-anchor="middle" font-size="15" fill="#5C6B6B">下載 274MB</text>
+
+  <!-- bottom caveat -->
+  <rect x="55" y="690" width="1490" height="130" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="800" y="736" text-anchor="middle" font-size="20" font-weight="bold" fill="#B8442D">Cursor 是例外：官方說明頁沒有自訂端點的寫法</text>
+  <text x="800" y="774" text-anchor="middle" font-size="17" fill="#102A2B">金鑰只能填 OpenAI、Anthropic、Google、Azure OpenAI、AWS Bedrock 五家</text>
+  <text x="800" y="806" text-anchor="middle" font-size="17" fill="#5C6B6B">自備金鑰只對聊天模型有效，Tab 補全仍走 Cursor 內建模型</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

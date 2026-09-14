@@ -1,0 +1,385 @@
+{
+  "slug": "minimax-speech-tts-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "MiniMax 語音合成：中文配音、有聲書與影片旁白",
+      "description": "用 MiniMax 的 Speech 系列把文字變成音檔：網頁版與 API 兩條路的最小步驟、332 個系統音色怎麼挑、情緒與語速停頓的參數範圍、輸出格式與取樣率、每百萬字元的費用與免費額度、聲音複製要通過的驗證與授權規則，以及有聲書的分段工作流。規格與價格以官網 2026 年 9 月 14 日的頁面為準。",
+      "hero": {
+        "src": "/guides/minimax-speech-tts-guide/hero.jpg",
+        "alt": "以幾何圖形畫成的插圖：一張寫著文字的卡片，經過一段聲音波形，指向一副簡化的耳機",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "MiniMax 的 Speech 系列把文字變成音檔。官方文件寫它支援 40 種語言與 300 多個系統音色，同步合成單次上限 10,000 字元，非同步長文單次上限 1,000,000 字元。要做中文配音、有聲書或影片旁白，你真正要決定的只有三件事：走網頁版還是 API、挑哪一個音色、參數怎麼調。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇把當天在官網查到的規格整理成可以照做的步驟：兩條路的最小操作、音色怎麼找、情緒與停頓怎麼寫、輸出格式與取樣率、費用與免費額度、聲音複製的驗證與授權規則，還有有聲書的分段做法。模型改版很快，動手前再開一次官方文件。"
+        },
+        {
+          "type": "heading",
+          "text": "兩條路：網頁版與 API",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "網頁版叫 MiniMax Audio，登入後貼文字、挑音色、試聽、下載，適合一次做一兩段、邊聽邊改。API 走開放平台，申請金鑰後用 HTTP 或 WebSocket 呼叫，適合整批文章或整本書。介面以官網當天為準。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "在開放平台申請金鑰，存進環境變數。",
+            "選 model：音質取向用 hd，速度與成本取向用 turbo。",
+            "準備 voice_id：系統音色、複製音色或設計出來的音色。",
+            "把文字與參數 POST 到同步端點 t2a_v2。",
+            "回傳的 audio 是十六進位字串；output_format 設 url 就直接拿連結。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "同步語音合成的最小呼叫（金鑰用環境變數）",
+          "code": "# 金鑰放環境變數，不要寫死在程式碼或前端\nexport MINIMAX_API_KEY=\"your-key\"\n\ncurl --location 'https://api.minimax.io/v1/t2a_v2' \\\n  --header \"Authorization: Bearer ${MINIMAX_API_KEY}\" \\\n  --header 'Content-Type: application/json' \\\n  --data '{\n    \"model\": \"speech-2.8-hd\",\n    \"text\": \"第一段唸完停一下<#0.6#>再接第二段。\",\n    \"language_boost\": \"Chinese\",\n    \"output_format\": \"url\",\n    \"subtitle_enable\": true,\n    \"voice_setting\": {\n      \"voice_id\": \"Chinese (Mandarin)_Radio_Host\",\n      \"speed\": 1,\n      \"vol\": 1,\n      \"pitch\": 0\n    },\n    \"audio_setting\": {\n      \"sample_rate\": 44100,\n      \"bitrate\": 128000,\n      \"format\": \"mp3\",\n      \"channel\": 1\n    }\n  }'"
+        },
+        {
+          "type": "link",
+          "text": "MiniMax 是什麼：海螺 AI、影片與語音生成，台灣使用者怎麼用",
+          "url": "https://mokaair.com/zh-TW/life/minimax-beginner-guide"
+        },
+        {
+          "type": "link",
+          "text": "語音合成（TTS）是什麼：讓文字成為聽得懂、聽得對的聲音",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-speech"
+        },
+        {
+          "type": "heading",
+          "text": "語言與中文：官方寫了什麼、沒寫什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "非同步長文說明頁寫模型「完整支援全球 40 種常用語言」，清單第 1 項是 Chinese、第 2 項是 Cantonese。同步 API 的 language_boost 也有 Chinese 與 Chinese,Yue（粵語），共 40 個語言選項再加一個 auto。"
+        },
+        {
+          "type": "paragraph",
+          "text": "繁體與台灣口音則要說清楚：音色清單與 API 文件當天都查不到「繁體中文」或「台灣口音」這幾個字，中文分類只有 Chinese (Mandarin) 與 Cantonese，官方沒有任何承諾，以官網為準。要用在台灣的作品上，先拿自己的稿子試唸一段。"
+        },
+        {
+          "type": "heading",
+          "text": "挑音色與調參數",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "系統音色清單頁把 voice_id 列成表格，當天數下來 332 個，標成 Chinese (Mandarin) 的 34 個、Cantonese 的 6 個。也可以用 Get Voice API 列出帳號能用的音色；複製的音色要先成功合成過一次才查得到。清單裡沒有合用的，就用音色設計（試聽上限 500 字元）或快速聲音複製（試聽上限 1,000 字元）自己生。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "列出帳號可用的音色",
+          "code": "# 列出這個帳號現在能用的音色\ncurl --location 'https://api.minimax.io/v1/get_voice' \\\n  --header \"Authorization: Bearer ${MINIMAX_API_KEY}\" \\\n  --header 'Content-Type: application/json' \\\n  --data '{ \"voice_type\": \"all\" }'"
+        },
+        {
+          "type": "list",
+          "items": [
+            "語速 speed：0.5 到 2，預設 1.0。",
+            "音量 vol：大於 0 到 10，預設 1.0。",
+            "音調 pitch：-12 到 12，預設 0 是原本音高。",
+            "情緒 emotion：happy、sad、angry、fearful、disgusted、surprised、calm、fluent、whisper 共 9 個值，預設由模型自動挑；whisper 在 speech-2.8 系列不支援。",
+            "停頓：文字裡插入 <#x#>，x 是秒數，範圍 0.01 到 99.99，最多兩位小數，不能連著用兩個。",
+            "讀音：半形括號包住漢語拼音、IPA 或粵拼，指定破音字與專有名詞怎麼唸。",
+            "語氣詞：只有 speech-2.8 系列支援，(laughs)、(sighs)、(breath) 這類標記直接寫進文字。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "speech-2.8 是官網說明裡最新的一代，發布日寫 2026 年 1 月 23 日。先用預設值整段唸一次，只在明顯不對的地方調一個參數，比一次調四個容易找出原因。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/minimax-speech-tts-guide/diagram-1.svg",
+          "alt": "從文字到音檔的五步驟流程圖，標出每一步要決定的參數與官網數字",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右走一次：選音色、調參數、產生、試聽、輸出；下方兩格是長文路線與聲音複製的規則。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "輸出格式與有聲書工作流",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "format 支援 mp3、pcm、flac、wav、opus 等七種，預設 mp3；sample_rate 可選 8000 到 44100 之間的六段；bitrate 只對 mp3 有效；channel 填 1 是單聲道。output_format 選 url 時連結有效 24 小時。打開 subtitle_enable 可以拿字幕時間戳，影片旁白對軸很好用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同步 API 單次上限 10,000 字元，超過 3,000 字元文件建議改用串流。整本書用非同步長文 API：單次上限 1,000,000 字元，建立任務拿 task_id，完成後用 file_id 下載，網址有效 9 小時。文件另註明無效字元比例超過 10% 會直接回錯誤，從排版軟體複製的稿子送出前先清一次。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "一章一個任務，檔名對上章節編號，重做不用重跑整本。",
+            "段落之間用換行分段，文件寫段落分隔就是換行字元。",
+            "標點決定呼吸，超長句先斷成短句再送。",
+            "章名之後、對白之前插 <#x#> 標記，不要靠多打空白。",
+            "專有名詞與破音字用 pronunciation_dict 做整本統一替換。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "建立非同步長文任務（一章一個任務）",
+          "code": "\"\"\"一章一個非同步任務；金鑰讀環境變數 MINIMAX_API_KEY。\"\"\"\nimport os\nimport requests\n\napi_key = os.environ[\"MINIMAX_API_KEY\"]\npayload = {\n    \"model\": \"speech-2.8-hd\",\n    \"text\": open(\"chapter-01.txt\", encoding=\"utf-8\").read(),\n    \"language_boost\": \"Chinese\",\n    \"voice_setting\": {\"voice_id\": \"Chinese (Mandarin)_Radio_Host\", \"speed\": 1, \"vol\": 1, \"pitch\": 0},\n    \"audio_setting\": {\"audio_sample_rate\": 44100, \"bitrate\": 128000, \"format\": \"mp3\", \"channel\": 1},\n}\nresp = requests.post(\n    \"https://api.minimax.io/v1/t2a_async_v2\",\n    headers={\"Authorization\": f\"Bearer {api_key}\", \"Content-Type\": \"application/json\"},\n    json=payload,\n    timeout=60,\n)\nprint(resp.json())  # 取回 task_id，輪詢狀態，完成後用 file_id 下載"
+        },
+        {
+          "type": "link",
+          "text": "自動語音辨識（ASR）是什麼：把錄音轉成可核對的文字",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-automatic-speech-recognition"
+        },
+        {
+          "type": "link",
+          "text": "MiniMax 海螺影片生成教學：從註冊到下載第一支 AI 影片",
+          "url": "https://mokaair.com/zh-TW/life/minimax-hailuo-video-guide"
+        },
+        {
+          "type": "link",
+          "text": "MiniMax 音樂生成怎麼用：從一段描述與歌詞做出一首歌",
+          "url": "https://mokaair.com/zh-TW/life/minimax-music-generation"
+        },
+        {
+          "type": "heading",
+          "text": "費用與免費額度",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "開放平台依用量計價，語音合成照字元算。音色設計 3 美元、快速聲音複製 1.5 美元，都是第一次拿去合成才收費，不是產生當下就收；試聽音檔另外照字元計費，兩份官方頁面的單價不同，以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "網頁版走訂閱：付費條款寫 Starter 每月 5 美元含 100,000 點、Standard 每月 30 美元含一百萬點，每月贈送的點數月底到期。開放平台另有一份語音訂閱表，數字不一樣（Standard 每月 30 美元 300,000 點），兩份對應不同產品，付款前先確認自己在哪一邊。免費額度只查到一句：免費使用者登入後可獲得每日限時的免費額度；官網沒有台幣定價，也沒有台灣可用性的專門說明，以官網為準。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "模型或功能",
+            "用途",
+            "官網數字"
+          ],
+          "rows": [
+            [
+              "speech-2.8-hd",
+              "最高音質，支援語氣詞標記",
+              "100 美元／百萬字元"
+            ],
+            [
+              "speech-2.8-turbo",
+              "同樣功能，速度與成本取向",
+              "60 美元／百萬字元"
+            ],
+            [
+              "speech-2.6 與 speech-02 系列",
+              "舊版，hd 與 turbo 兩種",
+              "100 或 60 美元／百萬字元"
+            ],
+            [
+              "同步語音合成 T2A",
+              "一次一段，可串流",
+              "單次上限 10,000 字元"
+            ],
+            [
+              "非同步長文 T2A",
+              "整本書一次送",
+              "單次上限 1,000,000 字元"
+            ],
+            [
+              "音色設計 Voice Design",
+              "用文字描述生成新音色",
+              "3 美元／個音色"
+            ],
+            [
+              "快速聲音複製",
+              "用錄音複製音色",
+              "1.5 美元／個音色"
+            ],
+            [
+              "語音辨識 Speech-to-Text",
+              "把錄音轉成文字",
+              "0.38 美元／小時"
+            ],
+            [
+              "系統音色清單",
+              "可直接使用的音色",
+              "332 個"
+            ]
+          ],
+          "caption": "來源為官方定價頁與 API 文件，查證日 2026 年 9 月 14 日。"
+        },
+        {
+          "type": "heading",
+          "text": "聲音複製、商用與標示",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "技術規定：上傳的錄音支援 mp3、m4a、wav，長度至少 10 秒、最長 5 分鐘，檔案不超過 20 MB，另可上傳 8 秒以內的示範音訊提高相似度。API 總覽頁寫得更直接：聲音複製需要個人或企業驗證。複製與設計出來的音色都是暫時的，168 小時（7 天）內沒被合成 API 用過就會刪除。"
+        },
+        {
+          "type": "paragraph",
+          "text": "授權規定寫在服務條款：輸入內容必須是你的原創或你已取得必要、有效且合法的權利；若包含任何個人的聲音，你必須擁有完整合法權利或取得權利人授權。禁止事項列了九項，包含誹謗他人、冒充任何人或虛稱關係、侵害未成年人權益、散布不實或誤導資訊。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "複製聲音之前，先把授權寫下來",
+          "text": "要複製誰的聲音，先拿到那個人的書面同意，寫清楚用途、期限與可以用在哪些作品，自己的聲音也留一份紀錄。政治人物、藝人與已故人士的聲音不要碰，那正是條款裡「冒充任何人」擋的事。"
+        },
+        {
+          "type": "paragraph",
+          "text": "輸出能不能商用？條款沒有一句直接寫「可以商用」。使用者生成內容那一節寫「我們不主張對使用者投稿與使用者生成內容的所有權」，同時要你授權 MiniMax 一份免權利金、永久、不可撤銷、全球、非專屬的授權；另一節寫個人非商業使用，但該節開頭已註明只涵蓋你造訪當下網站上既有的內容。條款也寫 MiniMax 可能在輸出裡嵌入識別碼或浮水印，未經授權不得移除，你也有責任清楚標示 AI 生成的內容。要接案或上架有聲書，先讀完當天的條款，以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "資料流向也看一眼：服務條款寫營運方是一家新加坡公司，隱私政策當天標示更新於 2025 年 12 月 9 日，寫一般不會把個人資料傳到新加坡以外的國家，服務對象限 16 歲以上。"
+        },
+        {
+          "type": "link",
+          "text": "使用中國系 AI App 前的資安檢查清單",
+          "url": "https://mokaair.com/zh-TW/life/chinese-ai-apps-security-checklist"
+        },
+        {
+          "type": "link",
+          "text": "MiniMax M 系列模型：開放權重、授權條款與 API 價格",
+          "url": "https://mokaair.com/zh-TW/life/minimax-m-series-models-explained"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後一句提醒：一段夠像的合成語音就足以冒充一個人打電話借錢，這是深偽最便宜的用法。把 AI 生成標示在作品上、保留可查的來源歷程，是保護自己，也保護被複製的人。"
+        },
+        {
+          "type": "link",
+          "text": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-deepfake"
+        },
+        {
+          "type": "link",
+          "text": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-content-credentials"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 語音模式：練英文、口說翻譯與免手打的完整做法",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-voice-mode-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "MiniMax API Docs：Text to Speech (T2A) HTTP（同步端點與全部參數）",
+          "url": "https://platform.minimax.io/docs/api-reference/speech-t2a-http",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax API Docs：API Overview（40 種語言、300 多個音色、複製需驗證、7 天未用即刪）",
+          "url": "https://platform.minimax.io/docs/api-reference/api-overview",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax API Docs：Async Long TTS Guide（1,000,000 字元、9 小時下載、無效字元 10%）",
+          "url": "https://platform.minimax.io/docs/guides/speech-t2a-async",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax API Docs：Voice Clone 使用指南（錄音長度、檔案大小與流程）",
+          "url": "https://platform.minimax.io/docs/guides/speech-voice-clone",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax API Docs：Voice Clone API（voice_id 規則、試聽文字上限）",
+          "url": "https://platform.minimax.io/docs/api-reference/voice-cloning-clone",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax API Docs：Voice Design API（試聽文字上限 500 字元）",
+          "url": "https://platform.minimax.io/docs/api-reference/voice-design-design",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax API Docs：Get Voice API（voice_type 查詢帳號音色）",
+          "url": "https://platform.minimax.io/docs/api-reference/voice-management-get",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax API Docs：System Voice ID List（系統音色清單）",
+          "url": "https://platform.minimax.io/docs/faq/system-voice-id",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax API Docs：Pay as You Go（語音與音色的用量定價）",
+          "url": "https://platform.minimax.io/docs/guides/pricing-paygo",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax API Docs：Audio Subscription（開放平台語音訂閱方案）",
+          "url": "https://platform.minimax.io/docs/guides/pricing-speech",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax API Docs：Model Release Notes（Speech-2.8 發布日期）",
+          "url": "https://platform.minimax.io/docs/release-notes/models",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax Audio Subscription Service Terms（免費額度、訂閱與加值點數）",
+          "url": "https://www.minimax.io/audio/doc/paid-service-terms.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax App and Web Terms of Service（生成內容所有權、非商業條款、年齡）",
+          "url": "https://www.minimax.io/audio/doc/terms-of-service.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax Audio Music Creation Terms of Use（聲音授權、禁止事項、浮水印與標示）",
+          "url": "https://www.minimax.io/audio/doc/terms-of-service-music.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax App and Web Privacy Policy（營運方、資料傳輸與年齡）",
+          "url": "https://www.minimax.io/audio/doc/privacy-policy.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax News：MiniMax Speech 2.8（語氣詞標記與音質說明）",
+          "url": "https://www.minimax.io/news/minimax-speech-28",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

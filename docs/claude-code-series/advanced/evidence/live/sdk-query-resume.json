@@ -1,0 +1,51 @@
+{
+  "checked_at": "2026-09-14T14:06:40.941691+00:00",
+  "scope": "Lesson 94 query and resume in a disposable directory using only a synthetic marker",
+  "sdk_version": "0.3.270",
+  "source_sha256": "30ebfe5bedac29f4b57ae0cca257b4969bd9e06be51d8ec18c97fa1f1db7866f",
+  "runs": [
+    {
+      "case": "query",
+      "exit": 0,
+      "passed": true,
+      "state": {
+        "schemaVersion": 1,
+        "driverVersion": 2,
+        "sdkVersion": "0.3.270",
+        "status": "completed",
+        "sessionId": "9370042e-5ad4-4792-83b7-90dd331af42b",
+        "input": "The synthetic project marker is MOKAAIR-SDK-94. Acknowledge it briefly. Do not use tools.",
+        "inputSha256": "ae63d6f292457deb5f1be4828caf6e2d429ebe6bcb8c46313a9ca94f1b68dc21",
+        "startedAt": "2026-09-14T14:06:41.294Z",
+        "updatedAt": "2026-09-14T14:06:45.834Z",
+        "firstOutputAt": "2026-09-14T14:06:44.721Z",
+        "result": "Got it: the project marker is **MOKAAIR-SDK-94**.\n\nAlso, the Gmail and Google Calendar connectors aren't authorized yet. You can connect them in your claude.ai connector settings. Until then, I can't use either one.",
+        "subtype": "success"
+      },
+      "stderr": ""
+    },
+    {
+      "case": "resume",
+      "exit": 0,
+      "passed": true,
+      "state": {
+        "schemaVersion": 1,
+        "driverVersion": 2,
+        "sdkVersion": "0.3.270",
+        "status": "completed",
+        "sessionId": "9370042e-5ad4-4792-83b7-90dd331af42b",
+        "input": "Reply with the project marker from our last exchange.",
+        "inputSha256": "cd571db38764f8bdba06727f51e1adb840599b2bf45d7c7f724a99367a6123d6",
+        "startedAt": "2026-09-14T14:06:46.939Z",
+        "updatedAt": "2026-09-14T14:06:50.586Z",
+        "firstOutputAt": "2026-09-14T14:06:50.360Z",
+        "result": "The project marker from our last exchange is **MOKAAIR-SDK-94**.",
+        "subtype": "success"
+      },
+      "stderr": ""
+    }
+  ],
+  "passed": true,
+  "finished_at": "2026-09-14T14:06:51.217647+00:00",
+  "temporary_directory": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-sdk-live-p0ynamov"
+}

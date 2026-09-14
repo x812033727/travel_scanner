@@ -1,0 +1,263 @@
+{
+  "slug": "elementor-forms-addons",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Elementor 表單與外掛：從收件需求決定擴充範圍",
+      "description": "Elementor 表單送出後，寄信、保存紀錄與加入名單是不同工作，不能只靠成功訊息判斷完成。本文以工作坊詢問表單說明 Actions After Submit、欄位對應與收件驗證，也區分原生 Form 元件、Atomic Form 和第三方表單樣式外掛的責任。搭配擴充選擇表與故障排查步驟，協助控制外掛數量及後續維護負擔。",
+      "hero": {
+        "src": "/guides/elementor-forms-addons/hero.jpg",
+        "alt": "原創封面以表單文件、伺服器與檢查盾牌呈現表單資料流與驗收。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "工作坊網站的詢問表單可能同時需要通知負責人、回信給填寫者，並保存後續聯絡紀錄。三件事雖然由同一次送出觸發，卻不代表會一起成功。選 Elementor 擴充前，先把資料往哪裡走、誰來處理寫清楚，才能知道真正缺少哪一段。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下聚焦表單送出後的動作與外掛分工，依 2026 年 9 月 14 日查閱的官方資料整理。案例是原創的規劃示例，沒有實際替讀者網站寄信，也不以廠商宣傳的轉換率或送達率當作驗證結果。"
+        },
+        {
+          "type": "heading",
+          "text": "先辨認正在使用的表單元件",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Elementor 目前有不同表單介面。本文的主要操作以傳統 Form widget 的 Content 與 Actions After Submit 為準；Atomic Form 使用不同的組合元素及設定方式，不能直接照舊版截圖逐格尋找。先點選頁面上的表單，確認名稱、版本與可用功能。"
+        },
+        {
+          "type": "paragraph",
+          "text": "原生表單與 Contact Form 7 樣式元件也不是同一套系統。前者由 Elementor 處理欄位及動作；後者把其他表單外掛建立的表單放進版面，再調整外觀。應先認出真正保存欄位、寄信及處理驗證的工具，避免在錯誤的設定頁反覆修改。"
+        },
+        {
+          "type": "paragraph",
+          "text": "表單紀錄、外部整合與部分防垃圾功能會有方案差異。官方方案頁列有 Form Builder，不代表包含所有提交紀錄和串接能力。採購時用目前帳號能否完成指定工作核對，不只比較方案名稱，也不假設所有標示 Pro 的教學都適用。"
+        },
+        {
+          "type": "heading",
+          "text": "將收件流程拆成可檢查的動作",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在傳統 Form 的 Actions After Submit 中加入所需動作，例如 Email、Email 2、Collect submissions 或 Redirect。Email 通知團隊，另一封信可回覆填寫者；保存提交紀錄則負責在支援的環境留下資料。沒有選用或不支援的動作，不會因表單看起來完整而自動出現。"
+        },
+        {
+          "type": "paragraph",
+          "text": "工作坊詢問可先只收姓名、電子郵件、想了解的課程與問題。團隊需要知道要回覆什麼，通常不必先取得身分證號或完整住址。若另有電子報邀請，把用途及選擇分開，不能將一般詢問視為對所有行銷活動都已同意。"
+        },
+        {
+          "type": "paragraph",
+          "text": "重新導向適合帶到感謝頁，但感謝頁只說明使用者接下來可以做什麼。不要把它寫成名額已保留或付款完成，除非後端確實完成相應業務。對外文字可說明預計回覆時間，並提供沒有收到回信時的聯絡方式。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "畫出填寫者、網站、團隊信箱及其他系統之間的資料路徑。",
+            "在表單中加入必要的送出後動作，逐一設定收件端。",
+            "用專用測試資料送出，再分別檢查信件、紀錄與外部名單。",
+            "將每個動作的失敗處理和負責人記入維護文件。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "寄信欄位與外部資料要各自對應",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Email 設定中的 To 是實際收件者，不能因為預設已有地址就略過。From 使用網站可驗證的寄件身分，Reply-To 才放填寫者的電子郵件欄位，方便團隊直接回覆。設定後實際按回覆，確認收件對象正確，避免所有回信都寄回網站自己的地址。"
+        },
+        {
+          "type": "paragraph",
+          "text": "需要在郵件中插入特定欄位時，從該欄位 Advanced 設定複製對應短碼。官方說明郵件設定只接受表單欄位短碼，不是任意 WordPress 短碼；全部欄位可使用表單提供的對應方式。欄位改名或重建後，也要重新驗證原有郵件內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若使用 Webhook 或名單服務，先核對姓名、信箱與課程值的對應，並以接收端真正建立的資料為準。不要只看設定畫面已填網址。測試時故意少填必填項、選不同課程及重送相同信箱，了解對方是拒絕、更新還是新增重複紀錄。"
+        },
+        {
+          "type": "heading",
+          "text": "第三方擴充只補明確缺口",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Ultimate Addons for Elementor 的 Contact Form 7 Styler 需要 Contact Form 7 已安裝且啟用，並啟用相應元件。它能協助調整欄位、核取方塊與訊息外觀；寄件設定仍應回到原表單系統確認。樣式元件不是讓原生 Elementor 表單多一個資料庫的開關。"
+        },
+        {
+          "type": "paragraph",
+          "text": "已有穩定表單，只是按鈕與網站風格不同，可先使用現有樣式設定；需要特定欄位邏輯或外部整合，才比較專門擴充。將缺口寫成一個可測試結果，例如「選企業包班才出現人數欄位」，比為了元件數量購買一整包更容易判斷價值。"
+        },
+        {
+          "type": "paragraph",
+          "text": "加入擴充會增加更新與交接依賴。記錄表單由哪個外掛建立、哪個負責外觀、哪個處理寄信，以及授權由誰持有。先在測試環境安裝一項擴充，完成驗收再評估下一項，出錯時才有清楚的回復點。"
+        },
+        {
+          "type": "heading",
+          "text": "防垃圾與個資保存一起規劃",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "傳統 Form 可加入 Honeypot 等防垃圾欄位；它利用隱藏誘餌攔截部分自動填寫，不代表能擋下所有垃圾訊息。若使用 Akismet 整合，官方要求帳號、外掛及支援表單整合的方案，還要把真正的欄位短碼填入，預設示例文字不會替你完成設定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "防垃圾驗收要同時檢查正常填寫與攔截結果。保護過強而讓真實訪客無法送出，也會造成問題。測試失敗時先記錄錯誤訊息和時間，再檢查驗證服務、外掛或快取；不要在正式表單長期關掉所有檢查來消除表面錯誤。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Email 的 Meta Data 可包含日期、頁面網址、瀏覽器資訊或 IP 等項目。只保留後續處理真正需要的內容，並安排紀錄清理與人員存取。若開啟附件上傳，還要另訂類型、容量和刪除規則，不要把詢問表單當作沒有期限的檔案倉庫。"
+        },
+        {
+          "type": "heading",
+          "text": "最後驗收的是整段聯絡流程",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "用未登入的瀏覽器操作正式前台，檢查手機欄位寬度、標籤、錯誤提示及送出後焦點。空白必填欄位與格式錯誤應能理解，不能只把邊框變紅。成功訊息也應讓使用者知道資料已送出，避免因畫面沒有反應而連按多次。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著到各收件端核對完整內容，包含垃圾郵件匣、提交紀錄及外部服務。保存紀錄成功但沒有信，應沿寄件服務排查；信件正常而外部名單沒有資料，應查整合與欄位對應。分段檢查能避免把每種失敗都歸咎於頁面編輯器。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每次更新 Elementor、表單外掛、擴充或寄件設定後，重跑同一組測試。保留測試日期與結果即可，不必保留大量真實個資做樣本。替負責人準備一張簡短流程圖，比交接一份沒有說明的外掛清單更容易持續維護。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/elementor-forms-addons/diagram-1.svg",
+          "alt": "原創流程圖將表單送出後的通知信件、保存紀錄與外部整合分開，提醒逐一核對接收結果。",
+          "width": 1600,
+          "height": 900,
+          "caption": "先完成一條可追蹤的資料路徑，再加入下一個動作。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "需求",
+            "優先檢查",
+            "驗收證據"
+          ],
+          "rows": [
+            [
+              "通知負責人",
+              "Email 收件與寄件設定",
+              "團隊信箱收到完整內容"
+            ],
+            [
+              "回覆填寫者",
+              "Email 2 與欄位短碼",
+              "測試信箱收到正確回信"
+            ],
+            [
+              "保存詢問",
+              "方案與 Collect submissions",
+              "後台可找到測試紀錄"
+            ],
+            [
+              "調整既有 CF7 外觀",
+              "表單外掛及 Styler",
+              "外觀與送出均正常"
+            ],
+            [
+              "加入外部名單",
+              "整合權限與欄位對應",
+              "接收端資料和同意狀態正確"
+            ]
+          ],
+          "caption": "依工作結果選擴充；畫面顯示成功不等於每個接收端都完成。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先確認資料到哪裡，再看表單長什麼樣",
+          "text": "用一筆測試資料逐一追蹤所有動作，並確認重複送出和失敗時的處理。這份紀錄能成為未來更新、交接與故障排查的共同依據。"
+        },
+        {
+          "type": "link",
+          "text": "WordPress 聯絡表單的欄位與收件設計",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-contact-forms"
+        },
+        {
+          "type": "link",
+          "text": "WordPress SMTP 寄件設定與測試",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-smtp-delivery"
+        },
+        {
+          "type": "link",
+          "text": "Elementor Pro 與 Theme Builder 方案核對",
+          "url": "https://mokaair.com/zh-TW/life/elementor-pro-theme-builder"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Elementor：送出後動作",
+          "url": "https://elementor.com/help/actions-after-submit/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elementor：Email 設定",
+          "url": "https://elementor.com/help/form-widget-email-settings/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elementor：Form 元件",
+          "url": "https://elementor.com/help/form-widget/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elementor：Atomic Form",
+          "url": "https://elementor.com/help/atomic-form-element/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elementor：方案功能比較",
+          "url": "https://elementor.com/pro/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elementor：Akismet 表單整合",
+          "url": "https://elementor.com/help/block-spam-messages-from-forms/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "UAE：Contact Form 7 Styler 依賴",
+          "url": "https://ultimateelementor.com/docs/unable-to-see-contact-form-7-styler-widget-in-uael/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "UAE：核取與同意欄位樣式",
+          "url": "https://ultimateelementor.com/docs/styling-controls-in-cf7/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,16 @@
+
+Running 9 tests using 1 worker
+
+(node:14788) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 apps\web\e2e\claude-code-series.spec.ts:16:1 › directory server-renders all catalogue links without JavaScript (4.4s)
+  ok 2 apps\web\e2e\claude-code-series.spec.ts:29:1 › search aliases, combined filters, URL reload and browser back (14.2s)
+  ok 3 apps\web\e2e\claude-code-series.spec.ts:75:1 › all catalogue pages render and every internal reference has a valid target (1.5m)
+  ok 4 apps\web\e2e\claude-code-series.spec.ts:97:1 › 360 and 390px articles retain TOC, readable tables and contained code (25.1s)
+  ok 5 apps\web\e2e\claude-code-series.spec.ts:115:1 › downloaded complete lab supports filtering, persistence, safe text and corrupted storage (2.4s)
+  ok 6 apps\web\e2e\claude-code-series.spec.ts:144:1 › downloaded TDD starter reproduces the wrong checkbox and reference fixes the same interaction (2.2s)
+  ok 7 apps\web\e2e\claude-code-series.spec.ts:165:1 › copy preserves raw input, indentation and text through the native clipboard (11.8s)
+  ok 8 apps\web\e2e\claude-code-series.spec.ts:191:1 › fixed life entry, unavailable directory retry and missing locale (4.6s)
+  ok 9 apps\web\e2e\claude-code-series.spec.ts:205:1 › preview download links stay local and serve the exact reviewed ZIP bytes (3.3s)
+
+  9 passed (2.7m)

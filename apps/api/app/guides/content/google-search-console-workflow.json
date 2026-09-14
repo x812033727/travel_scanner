@@ -1,0 +1,248 @@
+{
+  "slug": "google-search-console-workflow",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Search Console 怎麼看：驗證網站、提交頁面與找問題",
+      "description": "Search Console 能協助網站管理者查看搜尋成效與索引問題，但驗證成功不代表排名會提高。本文從網域與網址前置字元資源選擇開始，整理 DNS 或 HTML 驗證、個別網址檢查、要求索引、網站地圖提交及成效報表的閱讀順序。附上四種狀態比較與原創檢查紀錄方法，讓台灣小型網站先處理重要頁面，避免只追求報表全綠。",
+      "hero": {
+        "src": "/guides/google-search-console-workflow/hero.jpg",
+        "alt": "原創盾牌、螢幕和文件圖像，呈現網站驗證、網址檢查與搜尋成效紀錄。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "新網站上線後，最常見的疑問是 Google 有沒有找到它、文章為什麼沒出現，以及有人從哪些字詞點進來。Search Console 可以提供其中不少線索，但不同工具回答的是不同問題，必須先選對網站範圍。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一次設定時，不需要把每張報表都研究完。先取得正確權限、檢查首頁與幾個重要頁面，再觀察資料。把驗證、提交和實際結果分開記錄，會比反覆按要求索引更容易知道目前卡在哪一段。"
+        },
+        {
+          "type": "heading",
+          "text": "先選網站資源，確保資料範圍符合需求",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Search Console 的資源選取器新增網站時，主要會遇到網域資源與網址前置字元資源。網域資源可涵蓋該網域下的子網域及不同通訊協定；網址前置字元則限定指定的開頭，適合特定版本或路徑的範圍。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如網站有 example.com 和 blog.example.com，想看整體可考慮 example.com 的網域資源；若只負責 https://example.com/classes/，可使用該前置字元。http、https 和 www 的差異會影響前置字元範圍，輸入時不要只靠印象。"
+        },
+        {
+          "type": "paragraph",
+          "text": "擁有整個網域的管理權時，網域資源通常較方便整體觀察；若你沒有 DNS 權限，先確認是否能請現有擁有者授予適合的存取權。新增資源是建立管理與報表範圍，本身不會替網站提高搜尋排名，也不是網頁已被索引的證明。"
+        },
+        {
+          "type": "heading",
+          "text": "依權限完成驗證，保留正確的驗證記錄",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "網域資源需透過 DNS 驗證；常見做法是依畫面提供的名稱與值新增 TXT 記錄，必要時使用官方指引所列的 CNAME 方式。操作位置應是目前生效的 DNS 供應商，未必就是最初購買網域的地方。不要覆蓋原本的郵件或其他驗證記錄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "網址前置字元可依條件使用 HTML 檔案、首頁 meta 標籤等方法。若網站平台提供專用欄位，先閱讀該平台說明，確認要貼整段標籤還是只有內容值。HTML 標籤應出現在公開首頁的 head；把文字貼到文章正文，無法達到同樣目的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成設定後回 Search Console 按驗證。DNS 尚未可見時先確認名稱和值，再依供應商情況等待；不要每次失敗都刪掉重建。Google 會持續檢查驗證資訊，因此成功後仍需保留必要記錄，改版或換 DNS 時也要一併交接。"
+        },
+        {
+          "type": "heading",
+          "text": "用一個重要網址理解索引版本與即時測試",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在正確資源的頂端檢查列輸入完整網址，先讀現有 Google 索引資訊，記錄索引狀態、最近檢索與標準網址等可用欄位。這份資料描述 Google 已處理的版本，頁面若剛改過，畫面可能還沒有反映最新狀態。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再按測試線上網址，查看目前是否能擷取與處理頁面。即時測試有助確認剛修正的存取或標記問題，但不會涵蓋所有品質、處罰或移除因素，也不能預測最終選哪個標準網址。因此即時可建立索引，仍不等於已實際編入索引。"
+        },
+        {
+          "type": "paragraph",
+          "text": "假設公開課程頁原本誤設 noindex，修正後應先確認線上頁面與即時測試已反映修改，保留修正日期，再追蹤索引資料更新。不要為了讓工具顯示通過，直接開放原本應保護的會員資料；先確認頁面的公開目的。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "選定首頁、主要服務頁及一篇新文章，逐一確認完整網址。",
+            "保存現有索引資訊，標明這是 Google 已處理版本。",
+            "必要時執行即時測試，對照線上頁面與已修正問題。",
+            "分別記錄修正完成、提交要求與後續索引結果。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "少量網址要求索引，多量網址維護 Sitemap",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "少量新增或實質更新的頁面，可在網址檢查後依結果要求建立索引。這項操作需要資源擁有者或完整權限使用者，且有提交限制。Google 明確說明，多次提交同一網址不會加快檢索，也不保證內容最後會出現在搜尋結果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若有許多網址，應提供並維護 Sitemap。先在網站或外掛找到真正的網站地圖位置，確認其中是預期公開的重要網址，再於 Search Console 的 Sitemap 報表提交。不要猜測每個平台都使用相同檔名，也不要把後台網址當成 Sitemap。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保留提交日期與讀取狀態，讀取有問題時先檢查檔案能否公開存取、內容格式是否正確。提交成功表示工作進入下一階段，之後仍要看重要頁面的索引情況。網站地圖內容如何篩選與更新，是另一個需要持續維護的工作，不是一次提交就結束。"
+        },
+        {
+          "type": "heading",
+          "text": "從未索引原因挑出真正需要修正的頁面",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "網頁索引報表可以協助找出一組網址的共同狀態，但未建立索引不全是錯誤。重複版本、刻意不公開給搜尋的內容，或已移除且沒有替代內容的舊頁，可能有合理原因。目標是重要且適合搜尋的標準頁面，不是把每個數字都變成零。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先選一個有影響的原因，抽查相關頁面與樣本，再決定是否需要修正。例如課程主頁意外無法擷取，和排序參數的替代版本被排除，優先度不同。報表提供的是示例，不能把畫面列出的幾筆當成網站全部問題的完整清單。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若問題有驗證修正功能，應先處理該範圍內已知例項再提出驗證，並閱讀目前的處理狀態。某類問題消失不保證同頁其他問題也消失；單純移除頁面讓錯誤數下降，也未必達成讓讀者找到內容的原始目標。"
+        },
+        {
+          "type": "heading",
+          "text": "最後再讀成效，把數據變成小範圍改善",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "成效報表先固定日期、搜尋類型、國家地區與裝置，再查看曝光、點擊、點閱率和平均排名。點閱率是點擊除以曝光，平均排名則是所選資料的彙整，不能當成每個人此刻都會看到的固定名次。較新的資料也可能仍在更新。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先挑一篇重要頁面看相關查詢，判斷搜尋者想找的內容是否在頁面中被清楚回答。曝光多但點擊少時，可以檢查標題範圍與搜尋情境；點擊進來卻找不到聯絡入口，則是另一段網站操作問題，不能只靠 Search Console 的數字判定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每次檢查留下頁面、問題、證據、行動與複查日期。新資源需要時間累積資料，資料很少時也先核對範圍，不急著換工具。只要能持續追蹤重要頁面，區分真正故障與合理排除，Search Console 就能成為穩定的維護依據。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/google-search-console-workflow/diagram-1.svg",
+          "alt": "四個區塊依序呈現選資源驗證、檢查網址、提供檢索線索與觀察成效，說明各階段需要記錄的資訊。",
+          "width": 1600,
+          "height": 900,
+          "caption": "每個階段都留下自己的完成證據，再往下一步判斷。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "畫面或動作",
+            "代表什麼",
+            "還不能代表什麼"
+          ],
+          "rows": [
+            [
+              "擁有權驗證成功",
+              "取得該資源管理或檢視資格",
+              "所有頁面已索引、排名提升"
+            ],
+            [
+              "即時測試可建立索引",
+              "目前測試涵蓋項目可通過",
+              "Google 最終選擇或實際索引"
+            ],
+            [
+              "要求索引／提交 Sitemap",
+              "向 Google 提供檢索線索",
+              "立即出現或保證收錄"
+            ],
+            [
+              "索引資料與成效報表",
+              "已處理狀態及所選搜尋資料",
+              "每次搜尋相同排名或全部業務結果"
+            ]
+          ],
+          "caption": "四個階段應分別保存日期與證據，避免把提交當成結果。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先照顧重要頁面",
+          "text": "先處理讀者需要、且原本就應公開的頁面。不要為了消除未索引數量而開放私人內容，也不要把即時測試、驗證修正和要求索引混成同一種完成狀態。"
+        },
+        {
+          "type": "link",
+          "text": "先認識搜尋抓取與索引",
+          "url": "https://mokaair.com/zh-TW/life/search-crawlers-explained"
+        },
+        {
+          "type": "link",
+          "text": "整理 DNS 記錄的正確位置",
+          "url": "https://mokaair.com/zh-TW/life/dns-records-troubleshooting"
+        },
+        {
+          "type": "link",
+          "text": "流量改變時如何核對證據",
+          "url": "https://mokaair.com/zh-TW/life/google-ranking-history"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 新增網站資源",
+          "url": "https://support.google.com/webmasters/answer/34592?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 網站擁有權驗證",
+          "url": "https://support.google.com/webmasters/answer/9008080?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 網址檢查工具",
+          "url": "https://support.google.com/webmasters/answer/9012289?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 重新檢索要求",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 網頁索引報表",
+          "url": "https://support.google.com/webmasters/answer/7440203?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 成效報表概覽",
+          "url": "https://support.google.com/webmasters/answer/7576553?hl=zh-Hans",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

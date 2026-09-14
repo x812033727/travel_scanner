@@ -1,0 +1,395 @@
+{
+  "slug": "minimax-agent-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "MiniMax Agent 怎麼用：一句話做出網頁、報告與簡報",
+      "description": "MiniMax Agent 是 MiniMax 的代理產品，你寫一句話，它自己規劃、上網查、寫檔案，最後交出網頁、報告或簡報。這篇照 2026 年 9 月 14 日的官網頁面，說明網頁版與桌面版的入口、台灣帳號怎麼註冊、一次任務從描述到修改的流程、它會動用哪些工具、產出能匯出成哪些格式、免費額度與付費方案的月費，以及服務條款與隱私政策對上傳內容、內容審核和帳號刪除實際寫了什麼。",
+      "hero": {
+        "src": "/guides/minimax-agent-guide/hero.jpg",
+        "alt": "插圖：一個對話框沿著一條路徑經過規劃、工具與檢查三個節點，最後長出網頁、文件與簡報三個成品。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "MiniMax Agent 是 MiniMax 的代理（Agent）產品：你在輸入框寫一句話，它自己拆步驟、上網找資料、操作瀏覽器、寫出檔案，最後交出能直接用的網頁、報告或簡報，而不只是回你一段文字。這篇照官網 2026 年 9 月 14 日當天的頁面寫，官網沒寫的就寫「以官網為準」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "讀完你會知道入口在哪、台灣帳號怎麼註冊、提示詞要補上什麼條件、它會動用哪些工具、產出能匯出成哪些格式、免費能用多少，以及把工作檔案丟進去之前該先看條款的哪幾句。"
+        },
+        {
+          "type": "heading",
+          "text": "入口在哪裡：網頁版、桌面版與註冊方式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "網頁版入口是 agent.minimax.io，官網選單裡的 MiniMax Code 點下去會轉到同一個網址，那是同一套代理的桌面版與命令列版，官方支援 macOS 12 Monterey 以上與 Windows 10 以上，下載頁分成全球站與中國大陸站。官方 2026 年 5 月 27 日的公告把升級後的 Agent 取名 Mavis，同一篇也宣布把 TokenPlan 與 Agent Plan 併成一個訂閱，點數在代理與 API 之間共用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "登入頁提供六種方式：電子郵件驗證碼、電子郵件加密碼、Google、GitHub、微信掃碼與手機號碼。手機那一欄要注意，官方輸入框寫的是「請輸入中國大陸手機號」，台灣門號走不了這條路，用電子郵件或 Google、GitHub 註冊即可。條款寫明只提供給 16 歲以上的人使用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "服務由新加坡公司 Nanonoble Pte. Ltd. 營運，準據法與仲裁地都在新加坡。條款的地區限制一節只寫「不保證本服務在所有司法管轄區都可以存取或適合使用」，沒有國家清單，也沒有點名台灣。本站撰稿時無法從台灣的網路環境實測，網頁版連不連得上、兩大 App 商店有沒有上架，以官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "MiniMax 是什麼：海螺 AI、影片與語音生成，台灣使用者怎麼用",
+          "url": "https://mokaair.com/zh-TW/life/minimax-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "一次任務的流程：描述、規劃、執行、產出、修改",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方把「任務」當成協作的基本單位，建立流程四步：開新任務、描述你要的結果、補上脈絡（拖檔案進去、選工作目錄、叫出技能），送出後再追加要求或回應權限詢問。官方對提示詞的建議是：描述結果而不只是步驟，程式任務附上技術堆疊、限制與驗收標準，研究任務指定輸出格式與來源要求。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "範例提示詞：一頁式活動報名網頁",
+          "code": "幫我做一個一頁式的活動報名網頁，主題是「週末親子露營體驗」。\n內容要有：活動介紹、時間地點、費用、常見問題、報名表單（姓名、電子郵件、人數）。\n風格：淺色系、手機優先、字體要大。\n做完先給我預覽，我確認過再發布到我的子網域。"
+        },
+        {
+          "type": "paragraph",
+          "text": "複雜的任務不會直接動手。官方更新紀錄裡的「需求釐清」寫明複雜任務會先請你確認計畫，「測試確認」讓你選擇由代理自己測還是你自己驗收。方向跑掉時可以用版本控制回到先前的檢查點，或改掉指令從那個點重跑。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "範例提示詞：一份有出處的市場調查報告",
+          "code": "幫我寫一份台灣手搖飲市場的調查報告，給不懂產業的主管看。\n要求：只引用官方統計或公司公開資料，每個數字後面附來源網址與查證日期。\n結構：一頁摘要、三個發現、一張表、風險與建議。\n輸出：先給我純文字版讓我看結構，我確認後再匯出成 PDF 與 Docx。"
+        },
+        {
+          "type": "paragraph",
+          "text": "網頁版有幾個模式可挑，官方描述是：Air 快速回應簡單任務，Pro 適用於大型開發、深度研究與簡報，MAX 應對複雜專業任務，越深的模式跑越久、吃越多點數。桌面版分 Coding 與 Work，官方建議 Work 用在文件、研究、試算表與日常自動化。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/minimax-agent-guide/diagram-1.svg",
+          "alt": "流程圖：一句話的任務描述經過釐清計畫、執行、驗收、產出與修改五個階段，並標出每個階段你可以介入的地方。",
+          "width": 1600,
+          "height": 900,
+          "caption": "從左看到右：一句話進去，中間是它自己跑的迴圈，最後兩格是你拿到東西之後的動作。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這一圈「想一步、動一下、看結果、再想下一步」就是代理的基本運作方式；想知道它為什麼有時候會繞路或停在半路，可以先讀"
+            },
+            {
+              "type": "link",
+              "text": "代理迴圈（Agent Loop）是什麼：判斷、操作與回饋",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-agent-loop"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "它會用哪些工具，能不能連你自己的檔案",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "最值得注意的是瀏覽器。服務條款寫明它可以讀取你授權的網頁（包含你已登入的付費或需驗證服務）、代你點擊捲動填表，也會沿用你現有的登入狀態；但牽涉到登入、購買決定或付款之前會暫停、把控制權交回給你，要等你手動輸入指令才繼續，這個功能也可以整個關掉。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自己的檔案有兩條路：桌面版掛一個本機工作目錄，網頁版把檔案拖進對話。官方權限文件列出會先問過你的動作："
+        },
+        {
+          "type": "list",
+          "items": [
+            "讀取工作目錄以外的檔案",
+            "編輯或刪除檔案",
+            "執行命令",
+            "使用有外部副作用的工具",
+            "處理從遠端遙控或通訊軟體送進來的動作"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "外部工具靠兩套機制：MCP Servers 接本機命令、遠端服務與第三方資料能力，設定存在你自己的裝置上；外掛市集的初始外掛涵蓋金融資料、企業查詢、法律檢索、知識整理與 Office 檔案處理。也可以綁通訊軟體下指令，頻道依地區不同。條款另外寫明，授權第三方帳號後代理可以存取並儲存那些帳號裡的內容。"
+        },
+        {
+          "type": "link",
+          "text": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-tool-calling"
+        },
+        {
+          "type": "link",
+          "text": "人工介入（Human-in-the-loop）：讓人有資訊也有決定權",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-human-in-the-loop"
+        },
+        {
+          "type": "heading",
+          "text": "產出怎麼拿：下載、分享與網站發布",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "網頁版有一個 Assets 頁，把你上傳的檔案與代理的產出集中在同一處，官方列出的類型包含網站、文件、試算表、簡報、圖片與影片，每一項都能下載或附加到新任務。匯出格式方面，文件支援 PDF 與 Docx，簡報支援 PDF 與 PPTX，代理還在跑時也能先匯出；分享對話支援預覽、下載與打包檔案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "做出來的網頁可以直接發布：官方支援設定自己的子網域，也能接上自訂網域，之後可以解除綁定或刪掉。要注意免費做出來的網站會帶浮水印，移除浮水印與自訂網域都列在付費方案的權益裡。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "任務類型",
+            "適合什麼",
+            "要注意"
+          ],
+          "rows": [
+            [
+              "網頁與小工具",
+              "介紹頁、活動報名頁、可互動的小工具",
+              "可綁子網域或自訂網域；免費做的網站帶浮水印"
+            ],
+            [
+              "報告與研究",
+              "主題研究、事實查核、引用整理",
+              "提示詞要指定輸出格式與來源要求，出處仍要自己核對"
+            ],
+            [
+              "簡報",
+              "提案、課程、會議投影片",
+              "可匯出 PDF 與 PPTX；官方把簡報列在 Pro 模式的適用範圍"
+            ],
+            [
+              "文件與試算表",
+              "會議記錄、長文、表格整理",
+              "文件匯出支援 PDF 與 Docx；桌面版建議用 Work 模式"
+            ],
+            [
+              "圖片與影片",
+              "圖片生成與編輯、文字或圖片生影片",
+              "影片與語音類特殊模型不在訂閱方案的支援範圍"
+            ],
+            [
+              "日常自動化",
+              "排程的例行工作、從通訊軟體下指令",
+              "桌面版排程要電腦醒著且程式在跑；頻道依地區不同"
+            ]
+          ],
+          "caption": "MiniMax 官方頁面列出的任務類型與注意事項，2026 年 9 月查證。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "範例提示詞：把既有資料整理成簡報",
+          "code": "我上傳了三個檔案：上季銷售試算表、客訴紀錄、產品說明文件。\n幫我做一份給經銷商看的簡報，重點放在「哪些品項成長、哪些要停產」。\n每一頁只講一件事，圖表用我檔案裡的原始數字，不要自己推估。\n完成後匯出成 PPTX，另外把你用到的資料欄位列一份清單給我。"
+        },
+        {
+          "type": "heading",
+          "text": "免費能用多少、付費要多少錢",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "訂閱服務條款寫：免費使用者註冊後會拿到免費點數體驗，新註冊者還可能符合資格領每日免費點數。網頁版把 Air 模式列為免費權益，每日額度標示「每天 00:00 刷新」，實際數字隨活動變動，以官網為準。桌面版另外有每日簽到：一天 400 點，第 4 天與第 7 天各 1,000 點，連續一週共 4,000 點，從入帳日起 30 天內有效。"
+        },
+        {
+          "type": "paragraph",
+          "text": "付費的部分有兩份官方文件，用詞不一樣。定價頁今天列出的月費是 Plus 22 美元、Max 55 美元、Ultra 132 美元，額度用 5 小時滾動視窗與週視窗計算，同時可跑的代理數分別是 3 到 4 個、4 到 5 個、6 到 7 個。點數儲值包是 1,000 點等於 1 美元，5 美元換 5,000 點、25 美元換 25,000 點、100 美元換 100,000 點，效期 365 天。代理自己的訂閱條款（2026 年 2 月 11 日更新）寫的方案名稱則是 Basic、Pro、Ultra，以當下頁面為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "點數規則先看一遍：會員點數每月重置、不累積，會員資格結束時沒用完的立刻失效，加購點數一年有效。條款舉的例子是分析一張照片拍攝地點約 97 點，整理蘋果 2018 到 2023 年公開的 AR 與 VR 專利並列出請求項約 470 點。生成失敗、模式降級或審核沒過會自動退還該次點數，其他情況不退；方案只能升級不能降級，訂閱後七天內完全沒動用才能全額退款。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "把公司檔案丟進去之前，先看這兩句條款",
+          "text": "服務條款給平台的內容授權是免權利金、永久、不可撤銷、全球、非專屬，涵蓋使用、重製、修改、改作、發布與散布，合約終止後繼續存在；付費的訂閱條款則把範圍限縮成「為了營運、改善與推廣我們的服務」，並註明兩份文件衝突時以訂閱條款為準。兩份都沒有直接寫會不會拿去訓練模型，介面上也沒有對應的開關。涉及客戶名單、未公開財報或個資的檔案，先去識別化再上傳。"
+        },
+        {
+          "type": "heading",
+          "text": "資料與隱私：上傳的東西會被怎麼處理",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "隱私政策 2026 年 1 月 19 日更新，由 Nanonoble Pte. Ltd. 發布。它寫你可能會允許服務存取本機資料以使用某些功能，包含裝置上以及裝置上第三方軟體、瀏覽器或系統裡的資料，並說可以在設定裡改掉這個授權。留存寫「只要為法律允許或為達成蒐集目的所必需，我們可能保留並使用你的個人資料」；跨境則寫「一般不會把你的個人資料移轉到新加坡以外的國家」。政策沒有寫具體保留月數，也沒有列出資料中心國家，以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "會不會拿去訓練模型，兩份文件都沒有直接回答。付費條款聲明公司不主張你在付費期間生成並下載的內容的所有權，你保留智慧財產權與商業使用權，授權範圍限於營運、改善與推廣服務；改善是否包含訓練，官方沒有進一步說明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "審核與刪除也要知道。條款寫公司可以基於任何理由或沒有理由自行移除或拒絕處理使用者內容，也寫「我們會自動封鎖部分內容，但無法在提交或生成前審查所有內容」。網頁版設定有「資料控制」，可以匯出自己的資料、刪除所有對話、刪除帳號，但介面註明會員有效期內暫時無法註銷。"
+        },
+        {
+          "type": "link",
+          "text": "使用中國系 AI App 前的資安檢查清單",
+          "url": "https://mokaair.com/zh-TW/life/chinese-ai-apps-security-checklist"
+        },
+        {
+          "type": "heading",
+          "text": "和其他代理工具的關係",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "用過 ChatGPT 代理模式的人會覺得手感熟悉：都是你講目標、它自己拆步驟操作工具，也都會在關鍵動作前停下來等你點頭。差別在生態，MiniMax 把簡報、文件、圖片、語音與影片放在同一個帳號與同一套點數裡；Anthropic 的 Claude 走另一套組合。這裡只點名，不做沒查過的比較。"
+        },
+        {
+          "type": "link",
+          "text": "AI 代理（AI Agent）是什麼：從回答問題到完成任務",
+          "url": "https://mokaair.com/zh-TW/life/ai-agents-explained"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 代理模式：讓它替你上網比價、填表、訂位",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-agent-mode-guide"
+        },
+        {
+          "type": "link",
+          "text": "MiniMax M 系列模型：開放權重、授權條款與 API 價格",
+          "url": "https://mokaair.com/zh-TW/life/minimax-m-series-models-explained"
+        },
+        {
+          "type": "link",
+          "text": "MiniMax 海螺影片生成教學：從註冊到下載第一支 AI 影片",
+          "url": "https://mokaair.com/zh-TW/life/minimax-hailuo-video-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "MiniMax Agent 官方網頁版入口",
+          "url": "https://agent.minimax.io/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax Agent 登入頁（官方登入方式與欄位提示文字）",
+          "url": "https://agent.minimax.io/login",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax Agent 功能介紹頁（官方）",
+          "url": "https://agent.minimax.io/features/en.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax Agent 常見問題（官方）",
+          "url": "https://agent.minimax.io/faq/en.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax Agent 訂閱服務條款（方案、點數與退款規則）",
+          "url": "https://agent.minimax.io/doc/en/credit-rules.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax AI App 與網頁版服務條款",
+          "url": "https://agent.minimax.io/doc/en/terms-of-service.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax AI App 與網頁版隱私政策",
+          "url": "https://agent.minimax.io/doc/en/privacy-policy.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "官方說明文件：產品總覽與核心功能",
+          "url": "https://agent.minimax.io/docs/code/welcome",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "官方說明文件：下載與安裝（系統需求、全球站與中國站）",
+          "url": "https://agent.minimax.io/docs/code/get-started/download",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "官方說明文件：建立第一個任務與提示詞建議",
+          "url": "https://agent.minimax.io/docs/code/get-started/first-task",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "官方說明文件：Coding 與 Work 模式",
+          "url": "https://agent.minimax.io/docs/code/workflows/modes",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "官方說明文件：權限與安全",
+          "url": "https://agent.minimax.io/docs/code/workflows/permissions",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "官方說明文件：MCP Servers",
+          "url": "https://agent.minimax.io/docs/code/agents/mcp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "官方說明文件：外掛市集",
+          "url": "https://agent.minimax.io/docs/code/agents/plugins",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "官方說明文件：通訊軟體整合（各地區可用頻道）",
+          "url": "https://agent.minimax.io/docs/code/automation/im",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "官方說明文件：Token Plan 與點數、每日簽到",
+          "url": "https://agent.minimax.io/docs/code/account/usage",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "官方更新紀錄（網頁版功能、匯出格式與網站發布）",
+          "url": "https://agent.minimax.io/docs/changelog",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax 官方定價文件：Token Plan 月費與點數包",
+          "url": "https://platform.minimax.io/docs/guides/pricing-token-plan",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax 官方部落格：Agent Team 升級與訂閱合併公告",
+          "url": "https://www.minimax.io/blog/minimax-agent-team-long-running-1779893953",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax 官方網站產品頁",
+          "url": "https://www.minimax.io/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+<title id="title">讓代理改程式的安全循環 / A safe loop for letting an AI agent change your code</title>
+<desc id="desc">一張六步驟的流程圖。上排由左到右是三步：1 開一條分支，指令 git switch -c ai/login，main 先保持乾淨；2 先做一個檢查點，指令 git add -A 與 git commit，這是代理動手前的存檔點；3 讓代理改，把目標與完成條件講清楚，改幾個檔都在這條分支上，這一格是代理在做的事，用藍色標示。接著往下轉到中排，由右到左是三步：4 看它改了什麼，用 git diff 與 git log，一行一行看過再往下；5 跑測試，跑專案自己的測試，沒過就回到步驟 3，圖上用一條虛線箭頭畫出這個回頭的路徑；6 收尾，合併或丟掉二選一，不要留著半成品分支。最後從第六步分成兩條路：測試過了就合併回 main，指令是 git switch main 接 git merge ai/login，再用 git branch -d 刪掉分支；不要了就整條丟掉，指令是 git switch main 接 git branch -D ai/login，main 沒被動過，等於沒發生。</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+<marker id="arrowOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#D97A2B"/></marker>
+<marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2E7D5B"/></marker>
+</defs>
+
+<rect width="1600" height="900" fill="#F7F1E8"/>
+
+<text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">讓代理改程式的安全循環</text>
+<text x="60" y="84" font-size="18" fill="#5C6B6B">A safe loop for letting an AI agent change your code</text>
+
+<rect x="1058" y="38" width="26" height="26" rx="6" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<text x="1096" y="59" font-size="17" fill="#5C6B6B">你做的</text>
+<rect x="1250" y="38" width="26" height="26" rx="6" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+<text x="1288" y="59" font-size="17" fill="#5C6B6B">代理做的</text>
+
+<rect x="90" y="130" width="440" height="180" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<text x="310" y="182" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">1 開一條分支</text>
+<text x="310" y="230" font-size="17" fill="#0D6B68" text-anchor="middle">git switch -c ai/login</text>
+<text x="310" y="276" font-size="16" fill="#5C6B6B" text-anchor="middle">main 先保持乾淨</text>
+
+<rect x="580" y="130" width="440" height="180" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<text x="800" y="182" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">2 先做一個檢查點</text>
+<text x="800" y="230" font-size="17" fill="#0D6B68" text-anchor="middle">git add -A、git commit</text>
+<text x="800" y="276" font-size="16" fill="#5C6B6B" text-anchor="middle">代理動手前的存檔點</text>
+
+<rect x="1070" y="130" width="440" height="180" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+<text x="1290" y="182" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">3 讓代理改</text>
+<text x="1290" y="230" font-size="17" fill="#2F6F9F" text-anchor="middle">目標與完成條件講清楚</text>
+<text x="1290" y="276" font-size="16" fill="#5C6B6B" text-anchor="middle">改幾個檔都在這條分支上</text>
+
+<line x1="534" y1="220" x2="572" y2="220" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+<line x1="1024" y1="220" x2="1062" y2="220" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+<path d="M 1350 314 L 1350 412" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+<rect x="1070" y="420" width="440" height="180" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<text x="1290" y="472" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">4 看它改了什麼</text>
+<text x="1290" y="520" font-size="17" fill="#0D6B68" text-anchor="middle">git diff、git log</text>
+<text x="1290" y="566" font-size="16" fill="#5C6B6B" text-anchor="middle">一行一行看過再往下</text>
+
+<rect x="580" y="420" width="440" height="180" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<text x="800" y="472" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">5 跑測試</text>
+<text x="800" y="520" font-size="17" fill="#0D6B68" text-anchor="middle">跑專案自己的測試</text>
+<text x="800" y="566" font-size="16" fill="#5C6B6B" text-anchor="middle">沒過就回到步驟 3</text>
+
+<rect x="90" y="420" width="440" height="180" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<text x="310" y="472" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">6 收尾</text>
+<text x="310" y="520" font-size="17" fill="#0D6B68" text-anchor="middle">合併或丟掉，二選一</text>
+<text x="310" y="566" font-size="16" fill="#5C6B6B" text-anchor="middle">不要留著半成品分支</text>
+
+<line x1="1062" y1="510" x2="1028" y2="510" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+<line x1="572" y1="510" x2="538" y2="510" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+<path d="M 800 416 L 800 366 L 1230 366 L 1230 318" fill="none" stroke="#D97A2B" stroke-width="4" stroke-dasharray="12 8" marker-end="url(#arrowOrange)"/>
+<text x="1015" y="402" font-size="16" fill="#D97A2B" text-anchor="middle">測試沒過就回到步驟 3</text>
+
+<path d="M 280 604 L 280 672" fill="none" stroke="#2E7D5B" stroke-width="4" marker-end="url(#arrowGreen)"/>
+<text x="264" y="652" font-size="16" fill="#2E7D5B" text-anchor="end">測試過了</text>
+<path d="M 440 604 L 440 640 L 1170 640 L 1170 672" fill="none" stroke="#D97A2B" stroke-width="4" marker-end="url(#arrowOrange)"/>
+<text x="468" y="620" font-size="16" fill="#D97A2B">決定不要了</text>
+
+<rect x="90" y="680" width="640" height="160" rx="14" fill="#E3F0EF" stroke="#2E7D5B" stroke-width="4"/>
+<text x="410" y="730" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">合併回 main</text>
+<text x="410" y="776" font-size="17" fill="#2E7D5B" text-anchor="middle">git switch main &amp;&amp; git merge ai/login</text>
+<text x="410" y="816" font-size="16" fill="#5C6B6B" text-anchor="middle">再用 git branch -d 刪掉分支</text>
+
+<rect x="830" y="680" width="680" height="160" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+<text x="1170" y="730" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">整條丟掉</text>
+<text x="1170" y="776" font-size="17" fill="#D97A2B" text-anchor="middle">git switch main &amp;&amp; git branch -D ai/login</text>
+<text x="1170" y="816" font-size="16" fill="#5C6B6B" text-anchor="middle">main 沒被動過，等於沒發生</text>
+
+<text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

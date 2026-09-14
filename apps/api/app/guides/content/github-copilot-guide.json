@@ -1,0 +1,399 @@
+{
+  "slug": "github-copilot-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "GitHub Copilot 入門：VS Code 裡的補全、Chat 與代理",
+      "description": "在 VS Code 裡把 GitHub Copilot 裝起來用起來：安裝與登入、用 Tab 接受補全、在 Chat 用 /explain 與 /fix、分清編輯器裡的代理模式與在 GitHub 指派任務的 Copilot cloud agent。並以 2026 年 9 月官網為準整理方案：Free 每月 2,000 次補全與 50 次 chat，Pro 10 美元、Pro+ 39 美元、Max 100 美元，AI credits 怎麼算，學生、教師與熱門開源維護者怎麼免費用，以及訓練資料設定在哪裡關掉。",
+      "hero": {
+        "src": "/guides/github-copilot-guide/hero.jpg",
+        "alt": "插圖：白色螢幕上有幾行程式碼色塊與一條虛線的補全建議，右邊連著一個對話框與一個循環箭頭，代表補全、Chat 與代理三種用法。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "GitHub Copilot 在 VS Code 裡其實是三件不同的事：邊打字邊冒出來的灰色補全、可以問問題也可以動手改檔案的 Chat，以及你交代一句話就自己規劃、自己執行的代理。分不清楚這三件事，就容易出現「為什麼它只補一行」「為什麼額度扣得這麼快」這類困惑；分清楚之後會發現，免費方案已經足夠讓初學者把整套流程完整走過一遍。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇帶你在 VS Code 裡從零裝起：安裝擴充功能、登入 GitHub 帳號、把補全用順、把 Chat 的斜線指令用熟，再分清楚編輯器裡的代理模式與跑在 GitHub 上的 Copilot cloud agent。最後整理 2026 年 9 月官網公布的方案、價格與額度，說明哪些人可以免費使用，以及你的程式碼會不會被拿去訓練模型、要在哪裡關掉。"
+        },
+        {
+          "type": "heading",
+          "text": "補全、Chat、代理：VS Code 裡的三個入口",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件把 Copilot 的功能分成兩類：一類是輔助你打字的行內建議（inline suggestions）與下一步編輯建議（next edit suggestions），另一類是會自己規劃、自己動手的代理功能。落到 VS Code 的畫面上，你實際會碰到的是三個入口。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "補全：你在編輯器裡打字，Copilot 用灰色文字接著往下寫，按 Tab 就採用。適合補完你已經知道要寫什麼的那幾行。",
+            "Chat：側邊欄的對話視窗，可以問「這段在做什麼」、請它修錯、請它補測試，也可以讓它一次改好幾個檔案。",
+            "代理：Chat 裡的代理模式會自己決定要改哪些檔案、提出要執行的終端機指令，並依錯誤訊息反覆修正，直到任務完成。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件把 Chat 的模式分成三種：詢問模式（Ask mode）回答問題並提供程式碼建議、規劃模式（Plan mode）先產出一份詳細的實作計畫、代理模式（Agent mode）自主完成指定任務。初學者可以先把詢問模式當成預設，等到看得懂它的產出再往上換。"
+        },
+        {
+          "type": "link",
+          "text": "AI 寫程式工具總覽：Claude Code、Codex、Gemini CLI、Cursor、Copilot",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-tools-overview-2026"
+        },
+        {
+          "type": "heading",
+          "text": "安裝與登入：五個步驟",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件寫得很明白：第一次在 Visual Studio Code 設定 Copilot 時，需要的擴充功能會自動安裝，你不必自己到市集找 GitHub Copilot 與 GitHub Copilot Chat。你需要準備的只有最新版的 VS Code 與一個 GitHub 帳號。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "把 VS Code 更新到最新版本，開啟之後在右上角找到 Copilot 圖示。",
+            "還沒有方案的人，在側邊欄點「Sign up for Copilot Free」就能用免費方案開始；已經有付費方案的人直接登入即可。",
+            "依畫面提示到瀏覽器完成 GitHub 帳號授權，授權完成後回到 VS Code 就算登入。",
+            "新開一個檔案打幾行程式，出現灰色的接續文字，就表示補全已經在運作。",
+            "按 Ctrl+Alt+i（macOS 是 Control+Command+i），或點標題列的對話圖示，開啟 Copilot Chat。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "補全：Tab 全部接受，方向鍵只接受一個字",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "補全最常見的誤解是「只能整段接受」。官方文件列出的做法是：整段建議按 Tab 接受；如果只想要開頭那一小截，按 Control 加右方向鍵（macOS 是 Command 加右方向鍵）只接受下一個字，剩下的讓它依你新打的內容重算。這一招在它方向對、細節錯的時候特別省事。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一個位置通常不只一種寫法。把滑鼠移到建議上會出現前後箭頭，也可以用 Alt 加右中括號、Alt 加左中括號（macOS 用 Option 加右／左中括號）切換下一個與上一個建議。另外，補全不只發生在游標那一行：下一步編輯建議會預測你接下來可能要修改的位置，並在那裡給建議。"
+        },
+        {
+          "type": "paragraph",
+          "text": "想讓補全更準，最省力的做法是先用註解把要做的事寫清楚再讓它接手。官方文件直接建議，用自然語言在註解裡描述你想做的事，Copilot 就會建議對應的程式碼。註解寫得愈具體，補出來的東西愈接近你要的樣子。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "用註解引導補全：貼在函式上方再按 Enter",
+          "code": "// 讀取 CSV 檔，略過空白列，回傳陣列\n// 欄位順序：日期、品項、金額\n// 金額轉成數字，日期保留原字串"
+        },
+        {
+          "type": "heading",
+          "text": "Copilot Chat：常用斜線指令與怎麼給脈絡",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Chat 有兩個入口：側邊欄的對話視窗，以及按 Ctrl 加 i（macOS 是 Command 加 i）在編輯器或整合式終端機裡直接開的行內對話。針對選取的那幾行問問題時，行內對話比較順手；要它一次處理好幾個檔案時，用側邊欄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方的 Copilot Chat 速查表列出 VS Code 可用的斜線指令，最常用的是這幾個。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "/explain：說明目前編輯器裡這段程式碼怎麼運作。",
+            "/fix：針對選取範圍裡的問題提出修正。",
+            "/tests：為選取的程式碼產生單元測試。",
+            "/fixTestFailure：找出並修好失敗的測試。",
+            "/new：建立一個新專案。",
+            "/clear：開始一段新的對話。",
+            "/help：Copilot 基本用法的快速說明。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "另外兩個符號也值得記起來：打 @ 叫出對話參與者，VS Code 有 @github、@terminal、@vscode、@azure；打 # 帶入脈絡，例如 #file、#selection、#function、#project，也可以直接把檔案拖進對話視窗。官方的提示詞說明建議，先給一段概括的目標，再列出具體需求，並且把你要它參考的檔案打開或把程式碼選取起來。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/github-copilot-guide/diagram-1.svg",
+          "alt": "比較矩陣：補全、Chat、代理三種用法在執行位置、誰動手、額度與適用時機上的差別，下方說明代理模式與 Copilot cloud agent 跑在不同地方。",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右看三種用法，由上到下看四個面向；最下面一條說明代理的兩種形態，差別在它跑在你的電腦還是 GitHub 上。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "Cursor 編輯器入門：Tab 補全、Chat 與代理模式",
+          "url": "https://mokaair.com/zh-TW/life/cursor-editor-guide"
+        },
+        {
+          "type": "heading",
+          "text": "代理模式與 Copilot cloud agent 差在哪裡",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這兩個名字很像，位置卻完全不同。代理模式跑在你自己的電腦上：它在你的 VS Code 裡改檔案、提出要執行的終端機指令，每一步你都看得到，也擋得下來。Copilot cloud agent 跑在 GitHub 上：官方文件說它有一個由 GitHub Actions 提供的臨時開發環境，可以自己讀程式碼、做修改、執行自動化測試與 linter，最後開一個草稿拉取請求讓你審。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這個雲端代理原本叫 Copilot coding agent，GitHub 在 2026 年 4 月 1 日的更新公告裡改名為 Copilot cloud agent，同時讓它不再侷限於拉取請求流程。官方文件列出的起點有三個：把 issue 的受理人指派給 Copilot、在 github.com 的 Copilot Chat 裡開一個工作階段，或從 GitHub 上的代理面板出發。"
+        },
+        {
+          "type": "paragraph",
+          "text": "落到使用習慣上其實很好分：手上這個檔案要改，用代理模式；一件說得清楚、你暫時不想盯著的雜事，例如補測試、更新文件、修一個小 bug，就寫成 issue 指派給雲端代理，回頭再看它開的拉取請求。要注意雲端代理只對付費方案開放，免費方案的人先把代理模式用熟就好。"
+        },
+        {
+          "type": "link",
+          "text": "Claude Code｜VS Code 與 JetBrains 整合",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-ide-integration"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 寫程式前該懂的 Git：分支、提交與還原",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-git-basics"
+        },
+        {
+          "type": "heading",
+          "text": "方案、額度與誰可以免費用",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月的官網上，個人方案有四個：Copilot Free、Copilot Pro（每月 10 美元）、Copilot Pro+（每月 39 美元）、Copilot Max（每月 100 美元）；組織用的 Copilot Business 每人每月 19 美元、Copilot Enterprise 每人每月 39 美元。免費方案的限制是每月 2,000 次補全與 50 次 chat（含 Copilot Edits），而且只能用自動選擇的模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "額度的算法在 2026 年 6 月 1 日換過一次。現在官網用的單位是 AI credits，1 credit 等於 0.01 美元，而且分成兩塊：base credits 對應你付的訂閱價格、不會變動，flex 則是會隨模型價格與效率調整的浮動部分。Pro 是每月 1,000 加 500，共 1,500 credits；Pro+ 是 3,900 加 3,100，共 7,000；Max 是 10,000 加 10,000，共 20,000；Business 每人 1,900、Enterprise 每人 3,900。實際扣多少取決於你用哪個模型、來回幾次、送進去多少 token。"
+        },
+        {
+          "type": "link",
+          "text": "token（Token）是什麼：AI 如何計算文字長度",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-token"
+        },
+        {
+          "type": "paragraph",
+          "text": "在這之前的單位叫 premium requests（進階要求），一次互動算一次；舊制是 Pro 每月 300 次、Pro+ 每月 1,500 次，超出後每次 0.04 美元加購。官方文件現在把那頁標成舊制，只適用於 2026 年 6 月 1 日之後仍留在年繳舊方案的 Pro 與 Pro+ 訂戶。還有一件對初學者很重要的事：補全與下一步編輯建議不計入 AI credits，在所有付費方案都是無限的；會吃額度的是 Chat、Copilot CLI、雲端代理這些真的去問模型的功能。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方案",
+            "價格",
+            "額度或包含內容",
+            "適合誰"
+          ],
+          "rows": [
+            [
+              "Copilot Free",
+              "0 美元",
+              "每月 2,000 次補全、50 次 chat，模型自動選擇",
+              "想先試用、每天只補幾段程式碼的初學者"
+            ],
+            [
+              "Copilot Student",
+              "0 美元，需通過學生驗證",
+              "補全與 AI credits 都有額度，模型自動選擇",
+              "在學學生"
+            ],
+            [
+              "Copilot Pro",
+              "每月 10 美元",
+              "補全無限，每月 1,500 AI credits，可選模型、可用雲端代理",
+              "每天寫程式、會用到 Chat 與代理的人"
+            ],
+            [
+              "Copilot Pro+",
+              "每月 39 美元",
+              "每月 7,000 AI credits，可用包含 Opus 在內的進階模型",
+              "代理跑得兇、需要進階模型的人"
+            ],
+            [
+              "Copilot Max",
+              "每月 100 美元",
+              "每月 20,000 AI credits，優先取得新模型與新功能",
+              "整天讓代理工作的重度使用者"
+            ],
+            [
+              "Copilot Business 與 Enterprise",
+              "每人每月 19 或 39 美元",
+              "每人每月 1,900 或 3,900 AI credits，額度在帳務層級共用",
+              "需要集中管理、資料不得用於訓練的公司"
+            ]
+          ],
+          "caption": "GitHub 官網與官方文件，查證日 2026 年 9 月 14 日，價格為官網美元定價。"
+        },
+        {
+          "type": "paragraph",
+          "text": "免費資格有三種。通過驗證的學生可以使用 Copilot Student；通過驗證的教師，以及熱門開源專案的維護者，可能符合免費使用 Copilot Pro 的資格，GitHub 每個月重新評估一次。反過來說，已經從組織或企業拿到 Copilot 席次的人不能再申請 Copilot Free。"
+        },
+        {
+          "type": "link",
+          "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
+          "url": "https://mokaair.com/zh-TW/life/ai-free-vs-paid-plans-2026"
+        },
+        {
+          "type": "heading",
+          "text": "資料政策與三個常見問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先講資料。官方文件寫的是：2026 年 4 月 24 日起，使用 Copilot Free、Pro、Pro+ 或 Max 的人，GitHub 可能會用你與 GitHub 功能互動的輸入、輸出、程式碼片段與相關脈絡，來訓練與改善 AI 模型，而且這個設定預設是開啟的。要關掉，就到 GitHub 右上角頭像進入 Copilot 設定，把「Allow GitHub to use my data for AI model training」改成 Disabled。Copilot Business 與 Copilot Enterprise 沒有這個選項，因為那兩個方案的資料本來就不用於訓練模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二個問題：建議品質不好怎麼辦。多半不是模型笨，是脈絡不夠。官方提示詞說明給的做法是，先描述整體目標再列需求、把大任務拆成幾個小任務、避免「這個」這種指涉不明的說法，並且把要參考的檔案打開或把程式碼選取起來。如果是整個專案都適用的規矩，例如用哪個框架、測試怎麼跑、命名怎麼取，可以寫進版本庫裡的 .github/copilot-instructions.md，存檔之後 Copilot 就會讀到。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三個問題：某些檔案不想被打擾。想整個關掉行內建議，點標題列 Copilot 圖示旁的箭頭，選 Configure Inline Suggestions 再選 Disable Completions；想只關掉特定語言，改 settings.json 裡的 github.copilot.enable，用星號設定預設值，再針對個別語言覆寫。寫設定檔或 Markdown 時關掉，是很常見的用法。"
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": "settings.json：只關掉特定語言的補全",
+          "code": "{\n  \"github.copilot.enable\": {\n    \"*\": true,\n    \"yaml\": false,\n    \"markdown\": false\n  }\n}"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "它寫的程式碼，你一定要自己看過",
+          "text": "官方最佳實務的說法是，你應該永遠驗證它建議的程式碼。看得懂再收，跑得過測試再合併，並且搭配 linting 與程式碼掃描一起使用。設定裡另外有一個封鎖「與公開程式碼相符的建議」的選項，在意授權問題的人可以先開起來再開始寫。"
+        },
+        {
+          "type": "link",
+          "text": "AI 寫的程式能信嗎：審查、測試與安全檢查清單",
+          "url": "https://mokaair.com/zh-TW/life/ai-code-review-safety"
+        }
+      ],
+      "sources": [
+        {
+          "title": "GitHub Docs：Plans for GitHub Copilot（方案與額度）",
+          "url": "https://docs.github.com/en/copilot/get-started/plans",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub：GitHub Copilot 產品頁（價格與免費方案限制）",
+          "url": "https://github.com/features/copilot",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub：Copilot plans 方案比較頁",
+          "url": "https://github.com/features/copilot/plans",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：Quickstart for GitHub Copilot（VS Code 快速上手）",
+          "url": "https://docs.github.com/en/copilot/get-started/quickstart",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：Installing the GitHub Copilot extension in your environment",
+          "url": "https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-extension",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：Getting started with a GitHub Copilot plan（註冊與升級）",
+          "url": "https://docs.github.com/en/copilot/how-tos/manage-your-account/get-started-with-a-copilot-plan",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：Getting code suggestions in your IDE（接受建議的快捷鍵）",
+          "url": "https://docs.github.com/en/copilot/how-tos/completions/getting-code-suggestions-in-your-ide-with-github-copilot",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：GitHub Copilot code suggestions in your IDE（補全與下一步編輯建議）",
+          "url": "https://docs.github.com/en/copilot/concepts/completions/code-suggestions",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：Configuring GitHub Copilot in your environment（語言開關）",
+          "url": "https://docs.github.com/en/copilot/how-tos/configure-personal-settings/configure-in-ide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：GitHub Copilot Chat cheat sheet（斜線指令與脈絡符號）",
+          "url": "https://docs.github.com/en/copilot/reference/github-copilot-chat-cheat-sheet",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：Using Copilot Chat in your IDE（對話模式與行內對話）",
+          "url": "https://docs.github.com/en/copilot/how-tos/use-chat/use-chat-in-ide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：About GitHub Copilot cloud agent（雲端代理）",
+          "url": "https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Changelog：Research, plan, and code with Copilot cloud agent（改名公告）",
+          "url": "https://github.blog/changelog/2026-04-01-research-plan-and-code-with-copilot-cloud-agent/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：Usage-based billing for individuals（AI credits 與 base、flex）",
+          "url": "https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-individuals",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：Requests in GitHub Copilot（premium requests 舊制）",
+          "url": "https://docs.github.com/en/copilot/concepts/billing/copilot-requests",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：Access Copilot Pro for free as a teacher or open source maintainer",
+          "url": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-teachers-and-os-maintainers",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：Access GitHub Copilot for free as a student",
+          "url": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：Managing Copilot policies as an individual subscriber（訓練資料設定）",
+          "url": "https://docs.github.com/en/copilot/managing-copilot/managing-copilot-as-an-individual-subscriber/managing-copilot-policies-as-an-individual-subscriber",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：Prompt engineering for GitHub Copilot Chat（怎麼給脈絡）",
+          "url": "https://docs.github.com/en/copilot/concepts/prompting/prompt-engineering",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：Best practices for using GitHub Copilot（驗證產出）",
+          "url": "https://docs.github.com/en/copilot/get-started/best-practices",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

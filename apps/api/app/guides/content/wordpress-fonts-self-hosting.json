@@ -1,0 +1,232 @@
+{
+  "slug": "wordpress-fonts-self-hosting",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "WordPress 字型自己託管：檔案、授權與載入速度",
+      "description": "把 WordPress 字型放在自己的網站，可以集中管理來源與載入方式，但仍要確認網頁授權、字元範圍和檔案大小。本篇說明字型庫與 CSS 引用的操作方向、繁體中文子集的注意事項，以及載入前後的版面和速度檢查，協助站長在品牌外觀、閱讀品質與維護成本之間做出合適選擇。",
+      "hero": {
+        "src": "/guides/wordpress-fonts-self-hosting/hero.jpg",
+        "alt": "原創文件、資料夾與螢幕插畫，呈現字型檔管理與網站文字呈現。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "網站換了漂亮的中文字型，首頁卻先空白一瞬間，或文章中的人名突然變成不同字體。字型問題不只在美感，也涉及下載量、缺字與版面穩定。自託管的意思是由自己的網站提供字型檔案，並不保證檔案一搬過來就一定更快。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先以一種內文字型與必要的標題粗細做小範圍試驗，再評估是否擴大全站。以下從授權、檔案、WordPress 設定及讀者端驗收出發，說明如何建立可維護的字型使用方式。"
+        },
+        {
+          "type": "heading",
+          "text": "先確認能否把字型檔提供給訪客",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "字型可以安裝在自己的電腦，不代表可以把檔案上傳網站供瀏覽器下載。取得字型時保留官方來源、授權文字、作者與版本，核對是否允許網頁使用、自託管及需要的修改方式。商業字型可能另有網域、流量或方案條件，應按實際授權確認。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以 SIL Open Font License 為例，官方允許透過網頁字型使用及分發，但分發檔案仍需保留相應的授權與著作權資訊；修改有保留名稱的字型還涉及名稱條件。不要因為看見免費下載，就把任何字型檔都當成可以任意改名或轉售。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先決定是否真的需要整站客製字型。若品牌只需要標題有特色，內文可用系統字型，減少下載與維護。系統字型在不同裝置可能略有差異，因此仍要測試閱讀效果，但不用為每位訪客下載另一份完整中文字型。"
+        },
+        {
+          "type": "heading",
+          "text": "挑選需要的格式、粗細與字元",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "網頁使用可優先評估 WOFF2，並確認目標瀏覽器需求。不要把桌面用的大型檔案全數上傳，就同時載入每一種粗細。先列出內文、標題與按鈕各用什麼，能以少數檔案完成就先保持簡單。"
+        },
+        {
+          "type": "paragraph",
+          "text": "中文字型包含大量字元，子集可以縮小檔案，但需要與內容範圍配合。只保留首頁現在出現的中文字，可能讓下一篇文章、人名、地址或使用者留言缺字。動態內容多的網站，應採有維護方式的完整字元策略或合適分段，不要只追求當下最小檔案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可變字型可以用一個檔案涵蓋多種粗細等變化，但仍要比較實際大小與使用需求。沒有用到的範圍不會自動變成零成本；如果只需要正常與粗體，應實際比較方案，而不是因格式較新就認定一定較快。"
+        },
+        {
+          "type": "heading",
+          "text": "用 WordPress 字型庫管理檔案",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "現行 WordPress 字型庫文件把入口列在外觀的 Fonts，並說明新版可供區塊與傳統佈景使用；較舊版本可能要從網站編輯器的樣式與排版管理字型。先核對自己的 WordPress 版本與佈景支援，再尋找對應入口。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在字型庫的 Upload 分頁上傳已確認授權的檔案，或在 Install Fonts 選擇所需 Google Fonts 字型與變體。官方說明這個安裝流程會下載字型並由網站本機提供；但網站上其他外掛原有的外部字型請求，仍要另外檢查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "安裝完成後，將字型套用到需要的文字、標題或區塊，儲存並查看前台。字型出現在清單中不代表所有頁面都已改用它。若使用傳統佈景或版面編輯器，要確認其字型選單與全域設定是否接到同一份資料。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "記錄字型來源、授權與需要的變體，先備份目前樣式。",
+            "在適用的字型庫入口上傳或安裝，確認檔案出現在清單。",
+            "先套用代表頁，核對前台文字確實使用預期字型。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "需要 CSS 時，把引用與套用分開檢查",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "手動處理時，由維護者在可持續管理的樣式檔加入 @font-face，指定名稱、字型檔網址、粗細及樣式，再透過 font-family 套用到目標文字。只宣告字型，沒有任何元素使用它，不能證明畫面已改變；也不應直接修改會被更新覆蓋的佈景核心檔案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "檔案網址要能由訪客取得，並回傳正確內容；若移到不同網域的 CDN，還要核對跨來源設定。用瀏覽器網路面板檢查是否出現找不到檔案或下載失敗，再查計算後樣式，而不是反覆更換字型名稱猜測。"
+        },
+        {
+          "type": "paragraph",
+          "text": "font-display 會影響字型下載期間如何顯示文字。採 swap 可先用替代字型顯示，但替換後仍可能改變換行與版面。準備合適的 fallback 字型，並測試字型載不到時，標題、按鈕和內文是否仍能閱讀。"
+        },
+        {
+          "type": "heading",
+          "text": "速度要比較實際下載，不能只看託管位置",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "自託管可減少對字型供應商的連線，但是否更快還取決於自己的主機、快取、檔案大小與傳輸方式。Google 的 web.dev 文件也提醒，自託管的實際效能不一定優於外部服務；把已分段壓縮的外部字型換成一份龐大檔案，反而可能變慢。"
+        },
+        {
+          "type": "paragraph",
+          "text": "測試時用同一個頁面、同一裝置條件，分別觀察首次載入與已有快取的結果。記下字型請求數、總下載量、文字何時可讀，以及載入完成後有沒有明顯位移。先處理重複下載和不必要粗細，再考慮其他最佳化。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要把所有字型都預先載入。preload 會讓瀏覽器提早取得資源，也可能搶走重要圖片或樣式的下載時機；特別是分段中文字型，應由維護者確認真正需要的檔案。先量測，再決定預載哪些項目。"
+        },
+        {
+          "type": "heading",
+          "text": "用台灣常見內容驗收缺字與版面",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "準備含繁體中文標點、人名、地址、英文、數字及符號的代表頁，查看是否有方框、異常字形或不一致粗細。網站有日文或其他語言時，也要確認 fallback 的組合。不能只用一行品牌標語就判斷整份字型適用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在手機檢查長標題換行、按鈕是否超出、表格欄位是否變窄，並放大文字確認可讀。對需要持續更新的文章，保留缺字回報方式；新增字元時同步檢查子集生成流程，避免每次發文都臨時補檔。"
+        },
+        {
+          "type": "paragraph",
+          "text": "交接時列出字型位置、授權、套用範圍、產生子集的方法及最後測試日期。移除字型前先找出使用它的樣式與頁面，確認替代字型可用，再清除不再需要的檔案，讓網站外觀與內容維護能一起延續。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-fonts-self-hosting/diagram-1.svg",
+          "alt": "四格原創圖解依序呈現字型授權、檔案精簡、正確引用與跨裝置驗收。",
+          "width": 1600,
+          "height": 900,
+          "caption": "字型好看、文字可讀、更新可維護，三者一起確認。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "方式",
+            "主要優點",
+            "需要承擔"
+          ],
+          "rows": [
+            [
+              "系統字型",
+              "不用另外下載字型檔",
+              "各裝置外觀略有不同"
+            ],
+            [
+              "自行託管網頁字型",
+              "掌握檔案與提供方式",
+              "授權、大小、快取及更新"
+            ],
+            [
+              "外部字型服務",
+              "由服務處理部分分段與傳輸",
+              "服務連線、方案與資料流向"
+            ]
+          ],
+          "caption": "依閱讀需求與維護能力選擇，不以託管位置直接判定速度。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "缺字比少下載幾個檔案更需要先處理",
+          "text": "中文字型子集必須涵蓋持續新增的內容。先確認人名、地址及常用符號可讀，再縮小下載範圍，並保留載入失敗時仍能閱讀的替代字型。"
+        },
+        {
+          "type": "link",
+          "text": "選擇適合網站的佈景主題",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-theme-selection"
+        },
+        {
+          "type": "link",
+          "text": "建立持續維護網站的檢查流程",
+          "url": "https://mokaair.com/zh-TW/life/website-maintenance-routine"
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：字型庫",
+          "url": "https://wordpress.org/documentation/article/the-font-library/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：樣式與排版",
+          "url": "https://wordpress.org/documentation/article/styles-overview/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "SIL：OFL 字型使用說明",
+          "url": "https://openfontlicense.org/how-to-use-ofl-fonts/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：@font-face",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@font-face",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google web.dev：字型效能實務",
+          "url": "https://web.dev/articles/font-best-practices",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

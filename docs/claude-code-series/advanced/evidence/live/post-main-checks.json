@@ -1,0 +1,112 @@
+{
+  "checked_at": "2026-09-14T14:42:06.596418+00:00",
+  "scope": "After merging origin/main 8c83e90a; current local checks, not CI or release approval",
+  "local_head": "95ff5c352c6eecd473b79d041db0e95c0c380c5d",
+  "node": "24.15.0 win-arm64",
+  "commands": [
+    {
+      "command": "npm ci --ignore-scripts",
+      "observed_exit": 0,
+      "log": "npm-ci-main-retry.log",
+      "sha256": "f6f15d1aa883cd25f4809b04dce736c86c54d2a7f17d6ccebf2b6b0b85561983"
+    },
+    {
+      "command": "npm run build:web",
+      "observed_exit": 0,
+      "log": "build-main.log",
+      "sha256": "86d962be1ebd34b30f0b8c9d152edafb0d47c06f3a8cff881de4a8e3c8f9b606"
+    },
+    {
+      "command": "npm run lint:web",
+      "observed_exit": 0,
+      "log": "lint-main.log",
+      "sha256": "1691e63702811d24116473d5455aac1c2ab71c7b1b01e83775dfd26390eabadf"
+    },
+    {
+      "command": "npm run check:i18n",
+      "observed_exit": 0,
+      "log": "i18n-main.log",
+      "sha256": "98a7fafb0390c2107b0d9017a632edeec62cf5c3632bfc53854bb4713025bc9b"
+    },
+    {
+      "command": "npm run typecheck:web",
+      "observed_exit": 0,
+      "log": "typecheck-main.log",
+      "sha256": "b6fcae8d29b65429823fc40a0fc269cab5ab76092b2cf5f26a8e1a8e540abf7d"
+    },
+    {
+      "command": "npm run test:tools",
+      "observed_exit": 0,
+      "log": "tools-main.log",
+      "sha256": "0900db23be30be6b37f552fcdf3e8fb80a65fadd88d4510eec5b8999a1ff9011"
+    },
+    {
+      "command": "npm run check:tasks",
+      "observed_exit": 0,
+      "log": "tasks-main.log",
+      "sha256": "b1c85ee58f6c4884a15891dda9d901bc3fa05195bb00275c7b8313c9cc057b89"
+    },
+    {
+      "command": "cd apps/api; uv run ruff check .",
+      "observed_exit": 0,
+      "log": "ruff-main.log",
+      "sha256": "a4443afdcfb6d7363adb285762515ccf7cf50473b1a05c20c1a50f6bed4d26b0"
+    },
+    {
+      "command": "cd apps/api; uv run mypy app",
+      "observed_exit": 0,
+      "log": "mypy-main.log",
+      "sha256": "debe92002d7b740400f1e7c5597b2046bff22ef009bee03ad43704d14a448ab4"
+    },
+    {
+      "command": "cd apps/api; uv run pytest tests/test_guide_series.py",
+      "observed_exit": 0,
+      "log": "api-main-tests.log",
+      "sha256": "5330b9b54e133273478f976ae93c73bc01e52077438d93c08f9f65339f02be86"
+    }
+  ],
+  "affected_web_tests": {
+    "numTotalTests": 73,
+    "numPassedTests": 73,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "scope": "Union of four completed suites and the isolated missing server suite; not a successful single invocation",
+    "attempts": [
+      {
+        "source": "web-focused-main.json",
+        "exit": 1,
+        "reason": "worker startup timeout; JSON success alone is insufficient"
+      },
+      {
+        "source": "web-focused-main-retry.json",
+        "exit": 1,
+        "passed_tests": 50,
+        "reason": "guides.server worker startup timeout"
+      },
+      {
+        "source": "web-server-main.log",
+        "exit": 1,
+        "reason": "incorrect path to hoisted Vitest; no test executed"
+      },
+      {
+        "source": "web-server-main-retry.json",
+        "exit": 0,
+        "passed_tests": 23,
+        "pool": "forks"
+      }
+    ]
+  },
+  "api": {
+    "passed": 18,
+    "skipped": 12,
+    "source": "api-main-tests.xml",
+    "note": "PostgreSQL was not running in this local invocation. Historical 164-test run is separate; current CI supplies integration services."
+  },
+  "browser": {
+    "passed": 9,
+    "source": "../browser-main-retry.json",
+    "previous_attempt": "../browser-main.json",
+    "note": "First attempt lacked the matching Chromium revision after main updated Playwright; installed it before retry. Viewport emulation is not a physical phone."
+  },
+  "final_editorial_change": "Added a missing full stop between advanced outcome and lead text; regenerated only 61-96 packs and reran 97-page content validation with zero errors/warnings. No link, code, article body or ZIP change."
+}

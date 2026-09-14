@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">AI 成本結構對照：訂閱、API 與本機 / Cost structure: subscription, API, local</title>
+  <desc id="desc">三欄對照三種付法的成本結構。左欄雲端訂閱：整條帳單都是固定月費，Pro 或 Plus 每月 20 美元，額度內用多用少都一樣，額度用完會被限速或等重置，三個情境都是 20 美元，輕度使用時免費版是 0 美元。中欄雲端 API：帳單全部隨用量，以 Claude Sonnet 5 計，輸入每百萬 token 2 美元、輸出每百萬 token 10 美元，情境一 1.8 美元到情境三 440 美元，沒呼叫就是 0 美元。右欄本機：大部分是硬體攤提，29,900 元除以 36 個月等於每月 831 元，只有很小一段是電費，算法是 65 瓦乘時數乘每度 2.26 元，每月電費 2 元到 35 元，情境一 833 元到情境三 866 元，已經有機器時只剩電費。下方結論：本機那一欄從 833 元走到 866 元幾乎不動，雲端 API 那一欄從 1.8 美元走到 440 美元；用量小的時候免費版的 0 美元永遠贏過 831 元的攤提；兩欄幣別不同不要相加。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">成本結構對照：三種付法，錢花在哪一段</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Cost structure: cloud subscription, pay-as-you-go API, and a local machine</text>
+
+  <!-- column A: subscription -->
+  <rect x="60" y="125" width="470" height="455" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="295" y="172" font-size="22" font-weight="bold" fill="#102A2B" text-anchor="middle">雲端訂閱</text>
+  <text x="295" y="199" font-size="15" fill="#5C6B6B" text-anchor="middle">Subscription</text>
+  <rect x="90" y="220" width="410" height="48" rx="8" fill="#2F6F9F"/>
+  <text x="295" y="251" font-size="18" font-weight="bold" fill="#FFFFFF" text-anchor="middle">整條都是固定月費</text>
+  <text x="90" y="294" font-size="15" fill="#5C6B6B">帳單形狀：一條水平線</text>
+  <text x="90" y="340" font-size="17" fill="#102A2B">Pro／Plus 每月 20 美元</text>
+  <text x="90" y="380" font-size="17" fill="#102A2B">額度內：用多用少都一樣</text>
+  <text x="90" y="420" font-size="17" fill="#102A2B">額度用完：限速或等重置</text>
+  <line x1="90" y1="450" x2="500" y2="450" stroke="#2F6F9F" stroke-width="2"/>
+  <text x="90" y="490" font-size="18" font-weight="bold" fill="#2F6F9F">三個情境都是 20 美元</text>
+  <text x="90" y="522" font-size="17" fill="#5C6B6B">輕度使用時免費版是 0 美元</text>
+
+  <!-- column B: API -->
+  <rect x="565" y="125" width="470" height="455" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="800" y="172" font-size="22" font-weight="bold" fill="#102A2B" text-anchor="middle">雲端 API</text>
+  <text x="800" y="199" font-size="15" fill="#5C6B6B" text-anchor="middle">Pay as you go</text>
+  <rect x="595" y="220" width="410" height="48" rx="8" fill="#D97A2B"/>
+  <text x="800" y="251" font-size="18" font-weight="bold" fill="#FFFFFF" text-anchor="middle">整條都隨用量</text>
+  <text x="595" y="294" font-size="15" fill="#5C6B6B">帳單形狀：一條斜線</text>
+  <text x="595" y="340" font-size="17" fill="#102A2B">輸入 每百萬 token 2 美元</text>
+  <text x="595" y="380" font-size="17" fill="#102A2B">輸出 每百萬 token 10 美元</text>
+  <text x="595" y="420" font-size="17" fill="#5C6B6B">（以 Claude Sonnet 5 的價格計）</text>
+  <line x1="595" y1="450" x2="1005" y2="450" stroke="#D97A2B" stroke-width="2"/>
+  <text x="595" y="490" font-size="18" font-weight="bold" fill="#D97A2B">情境一 1.8 → 情境三 440 美元</text>
+  <text x="595" y="522" font-size="17" fill="#5C6B6B">沒呼叫就是 0 美元</text>
+
+  <!-- column C: local -->
+  <rect x="1070" y="125" width="470" height="455" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1305" y="172" font-size="22" font-weight="bold" fill="#102A2B" text-anchor="middle">本機</text>
+  <text x="1305" y="199" font-size="15" fill="#5C6B6B" text-anchor="middle">Local machine</text>
+  <rect x="1100" y="220" width="410" height="48" rx="8" fill="#D97A2B"/>
+  <rect x="1100" y="220" width="372" height="48" rx="8" fill="#0D6B68"/>
+  <text x="1286" y="251" font-size="18" font-weight="bold" fill="#FFFFFF" text-anchor="middle">硬體攤提 831 元</text>
+  <text x="1100" y="294" font-size="15" fill="#5C6B6B">最右邊那一小段橘色才是電費</text>
+  <text x="1100" y="340" font-size="17" fill="#102A2B">29,900 元 ÷ 36 個月 = 831 元</text>
+  <text x="1100" y="380" font-size="17" fill="#102A2B">電費 65 瓦 × 時數 × 2.26 元</text>
+  <text x="1100" y="420" font-size="17" fill="#102A2B">每月電費 2 元到 35 元</text>
+  <line x1="1100" y1="450" x2="1510" y2="450" stroke="#0D6B68" stroke-width="2"/>
+  <text x="1100" y="490" font-size="18" font-weight="bold" fill="#0D6B68">情境一 833 → 情境三 866 元</text>
+  <text x="1100" y="522" font-size="17" fill="#5C6B6B">已經有機器時只剩電費</text>
+
+  <!-- conclusion band -->
+  <rect x="60" y="610" width="1480" height="200" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="95" y="658" font-size="22" font-weight="bold" fill="#102A2B">所以交叉點在哪裡</text>
+  <text x="95" y="702" font-size="18" fill="#102A2B">本機那一欄從 833 元走到 866 元幾乎不動；雲端 API 那一欄從 1.8 美元走到 440 美元。</text>
+  <text x="95" y="738" font-size="18" fill="#102A2B">用量越大，API 那條斜線越高；用量小的時候，免費版的 0 美元永遠贏過 831 元的攤提。</text>
+  <text x="95" y="774" font-size="18" fill="#B8442D">兩欄幣別不同不要相加：新台幣算新台幣、美元算美元，要比較請自己用當天匯率換算。</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
