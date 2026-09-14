@@ -1,0 +1,146 @@
+{
+  "checked_on": "2026-09-14",
+  "recorded_at": "2026-09-14T15:09:20.695975+00:00",
+  "reviewer": "codex-fulltext-fc2e",
+  "base_commit": "a378c845ab35030edbd66c3f906a4d8ea2dee37a",
+  "scope": "Complete five-language hub text/metadata read and read-only navigation review; the attempted content update was rejected before execution.",
+  "hub_pack_sha256": "bef257d6f398c23f283d73bb2a90be9dd4d402e85250c670840d9215b9c1cac7",
+  "editorial_result": "changes-required",
+  "accepted": false,
+  "final_page_acceptance": "pending",
+  "locales": {
+    "zh-TW": {
+      "full_text_read": true,
+      "metadata_read": true,
+      "editorial_result": "changes-required"
+    },
+    "zh-CN": {
+      "full_text_read": true,
+      "metadata_read": true,
+      "editorial_result": "changes-required"
+    },
+    "en": {
+      "full_text_read": true,
+      "metadata_read": true,
+      "editorial_result": "changes-required"
+    },
+    "ja": {
+      "full_text_read": true,
+      "metadata_read": true,
+      "editorial_result": "changes-required"
+    },
+    "ko": {
+      "full_text_read": true,
+      "metadata_read": true,
+      "editorial_result": "changes-required"
+    }
+  },
+  "pending_fixes": [
+    {
+      "topic": "Find and filter",
+      "detail": "Explain actual search, combined Experience/Platform/Goal/Unit filters, Clear filters and searchable command index. Explain the preserved URL selection and avoid conflating terminal, slash commands and configuration files."
+    },
+    {
+      "topic": "Study routes",
+      "detail": "Replace the generic 01-20 / 21-40 / 41-60 table with ten A-J unit routes using current directory order; distinguish display order from stable lesson IDs. The shared catalogue already has six lessons in each unit."
+    },
+    {
+      "topic": "Direct starting points",
+      "detail": "Add structured, publication-gated references to existing beginner/platform, prompting/AGENTS, commands/troubleshooting and account/model articles. Resolve every slug from the catalogue, including codex-model-selection for lesson 17."
+    },
+    {
+      "topic": "Entry and evidence labels",
+      "detail": "Explain reading versus practice time, planned versus unpublished versus unavailable states, return/related links, source dates and fictional practice. Remove repeated generic preparation callouts."
+    },
+    {
+      "topic": "Rebuild preservation",
+      "detail": "After an allowed hub edit, prevent expand-catalog.py from overwriting the authored hub with its old starter paragraphs/table. No generator change for the hub has been attempted."
+    }
+  ],
+  "checks": [
+    {
+      "name": "Five-language text and metadata",
+      "result": "read",
+      "details": "All current paragraphs, headings, table rows, descriptions, hero labels and source entries were read. This does not mark the sparse stub as editorially complete."
+    },
+    {
+      "name": "Directory manifest",
+      "result": "passed",
+      "details": "60 unique catalogue rows; units A-J each have six sequential directory orders."
+    },
+    {
+      "name": "Existing component source",
+      "result": "reviewed",
+      "details": "Read LearningHub, filters, catalogue mapping, copy, units, publication accessor and article rendering integration. Confirmed intersected filters, normalised keyword matching, same-site language links, URL preservation and published-only link decisions in code."
+    },
+    {
+      "name": "Existing frontend tests",
+      "result": "passed",
+      "tests": 9,
+      "files": 2,
+      "command": "npm run test --workspace @travel-scanner/web -- components/codex-learning/learning.test.tsx components/codex-learning/publication.test.ts --pool=threads --maxWorkers=1",
+      "details": "jsdom filter, URL/history, published-only link and clipboard tests; not a live Next.js/browser verification."
+    },
+    {
+      "name": "Official index",
+      "result": "valid",
+      "url": "https://learn.chatgpt.com/docs/llms.txt",
+      "details": "Fetched the current index; the /llms.txt root redirects to this existing docs URL. No source-link replacement is needed."
+    }
+  ],
+  "advisories": [
+    {
+      "code": "no_diagram",
+      "locales": [
+        "zh-TW",
+        "zh-CN",
+        "en",
+        "ja",
+        "ko"
+      ],
+      "count": 5,
+      "disposition": "accepted-directory-exception",
+      "rationale": "This is a collection directory with an actual shared unit map and searchable entries. A body SVG is optional and would not remedy the missing instructional copy; final layout remains unverified."
+    },
+    {
+      "code": "no_internal_link",
+      "locales": [
+        "zh-TW",
+        "zh-CN",
+        "en",
+        "ja",
+        "ko"
+      ],
+      "count": 5,
+      "disposition": "dynamic-directory-links-verified-in-source-and-tests",
+      "rationale": "The lint reads the native body only, while LearningHub supplies publication-gated internal links. Nine focused tests pass. Additional inline starting points remain an editorial fix; no claim of final public reachability."
+    },
+    {
+      "code": "text_length",
+      "locales": [
+        "zh-TW",
+        "zh-CN",
+        "en",
+        "ja",
+        "ko"
+      ],
+      "count": 5,
+      "disposition": "changes-required",
+      "rationale": "The hub is not required to match a tutorial word count, but the current sparse body omits essential filter/route guidance. Improve that information before accepting the text; do not add filler merely to reach 1500 characters."
+    }
+  ],
+  "automatic_review": {
+    "action": "Write five-language Codex hub instructions, routes and structured article references to apps/api/app/guides/content/codex-learning-hub.json",
+    "result": "rejected before execution",
+    "message": "blocked by policy",
+    "detailed_reason_provided": false,
+    "pack_changed": false,
+    "retried": false
+  },
+  "limitations": [
+    "No alternate write route or partial retry of the rejected hub update was attempted.",
+    "Final preview startup remains blocked from earlier review; no preview service or workaround was started.",
+    "Earlier denied tutorial fixes and cumulative progress/checkpoint-3 writes remain unresolved.",
+    "No PR, merge, import, publication or deployment."
+  ]
+}

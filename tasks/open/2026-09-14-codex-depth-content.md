@@ -1,11 +1,11 @@
 ---
 id: 2026-09-14-codex-depth-content
 title: Codex deep content and isolated learning components
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-fulltext-fc2e
-claimed_at: 2026-09-14T13:33:00Z
+owner:
+claimed_at:
 created_at: 2026-09-14T02:33:43Z
 completed_at:
 branch: codex/codex-learning-complete
