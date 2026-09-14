@@ -1,0 +1,346 @@
+{
+  "slug": "local-ai-gpu-buying-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "gadgets",
+    "ai"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "為 AI 選顯示卡：顯示記憶體優先與預算配置",
+      "description": "為本機模型挑顯示卡的判斷順序：顯示記憶體容量第一、再看官方支援清單、最後才是頻寬與世代。用 Ollama 硬體支援頁與上下文分級、llama.cpp 的後端清單，加上 NVIDIA、AMD 與 Apple 官方規格頁的容量與頻寬，說明桌機、筆電與 Apple Silicon 的取捨，以及電源、機殼與二手卡要先確認什麼。不寫通路價格。",
+      "hero": {
+        "src": "/guides/local-ai-gpu-buying-guide/hero.jpg",
+        "alt": "抽象插圖：模型檔案方塊落進一個顯示記憶體容器，右邊較小的容器裝不下而溢出",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "為本機模型挑顯示卡，判斷順序跟打遊戲不一樣：先看顯示記憶體（VRAM）容量能不能把模型整個裝進去，再看官方支援清單有沒有這張卡，最後才輪到記憶體頻寬與世代。模型放不進顯示記憶體就會有一部分落到系統記憶體，換更快的世代也救不回來。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇用 2026 年 9 月 14 日的官方頁面，帶你做三件事：對照 Ollama 與 llama.cpp 的硬體支援清單、用模型檔案大小加上下文估出需要的顯示記憶體級距、再用 NVIDIA 與 AMD 規格頁比較桌機、筆電與 Apple Silicon。全文不寫通路價格。"
+        },
+        {
+          "type": "heading",
+          "text": "為什麼顯示記憶體排在第一順位",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Ollama 的常見問題頁說明，載入模型時它會先評估需要多少顯示記憶體：放得進某一張 GPU 就整個載上去，可以少掉資料在 PCI 匯流排上搬動；放不進單卡才拆開分散到多張 GPU。要看實際跑在哪裡就用 ollama ps，PROCESSOR 欄會寫 100% GPU、100% CPU，或像 48%/52% CPU/GPU 這種被拆成兩半的比例。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "確認模型載入到哪裡（docs.ollama.com 的指令）",
+          "code": "ollama ps"
+        },
+        {
+          "type": "heading",
+          "text": "支援清單：官方文件說哪些卡跑得動",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "顯示記憶體再大，軟體不支援也是白搭。Ollama 的硬體支援頁把條件寫成一張表：NVIDIA 要 compute capability 5.0 以上、驅動程式 550 版以上，其中 5.0 到 6.2 的卡另外要求 570 版以上；表上 GeForce RTX 50 系列是 12.0。同頁也附了 NVIDIA 官方的 CUDA GPU 查詢網址，可以自己對型號。"
+        },
+        {
+          "type": "paragraph",
+          "text": "AMD 有兩條路。ROCm 這條在 Linux 需要 ROCm v7 驅動，名單裡有 Radeon RX 9070 XT、9060 XT、7900 XTX，Windows 名單短一截。另外 Ollama 在 Windows 與 Linux 用 Vulkan 提供支援，文件說後端裝好就預設開啟，並附了 Intel 與 AMD 的 Linux 驅動說明。Apple 則是一句話：透過 Metal API 支援 GPU 加速。"
+        },
+        {
+          "type": "paragraph",
+          "text": "llama.cpp 的 README 列出後端與目標裝置：CUDA 對 NVIDIA GPU、HIP 對 AMD GPU、Metal 對 Apple Silicon、SYCL 對 Intel GPU、Vulkan 對 GPU 通用。建置文件補充，SYCL 支援的 Intel GPU 含 Arc 系列與 iGPU，執行時可以用 --list-devices 看有哪些裝置。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "NVIDIA：Ollama 要 compute capability 5.0 以上、驅動 550 版以上；llama.cpp 走 CUDA。",
+            "AMD：Linux 要 ROCm v7，另有 Vulkan；llama.cpp 走 HIP。",
+            "Apple：兩邊都走 Metal，macOS 上預設開啟。",
+            "Intel：Ollama 歸在 Vulkan，llama.cpp 用 SYCL。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "llama.cpp 官方建置文件：列出可用的後端裝置",
+          "code": "./build/bin/llama-cli --list-devices"
+        },
+        {
+          "type": "link",
+          "text": "買新 3C 前先寫需求：從真實問題、相容性到維修與退場成本",
+          "url": "https://mokaair.com/zh-TW/life/gadget-purchase-needs-checklist"
+        },
+        {
+          "type": "heading",
+          "text": "顯示記憶體要抓多少：檔案大小加上下文",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "起點是模型檔案大小，ollama.com/library 的標籤頁直接標出來。查證當天：gemma3:12b 是 8.1GB、gemma3:27b 是 17GB、qwen3:32b 是 20GB、gpt-oss:20b 是 14GB、gpt-oss:120b 是 65GB。換量化標籤差很多：gemma3:27b 的 q4_K_M 是 17GB，q8_0 是 30GB。"
+        },
+        {
+          "type": "paragraph",
+          "text": "檔案大小只是下限，還要留空間給上下文視窗。Ollama 的上下文長度文件寫明它依顯示記憶體給預設值：小於 24 GiB 給 4k、24 到 48 GiB 給 32k、48 GiB 以上給 256k。文件也提醒，網頁搜尋、代理（Agent）與寫程式這類任務至少要設到 64000 個 token，調大就會吃掉更多記憶體。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "把預設上下文長度調高（docs.ollama.com/context-length 的寫法）",
+          "code": "OLLAMA_CONTEXT_LENGTH=64000 ollama serve"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方沒有給「幾 GB 可以跑幾 B」的公式，能引的是兩個省記憶體的開關：Flash Attention 會隨上下文變大明顯降低記憶體用量，支援時自動啟用；K/V 快取的量化型別預設是 f16，改成 q8_0 大約只用一半、品質影響通常不明顯，改成 q4_0 大約用四分之一。文件沒寫的數字就以官網為準。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "量化標籤決定模型塞不塞得進你的卡，想弄懂 q4_K_M 與 q8_0 的差別可以先看 "
+            },
+            {
+              "type": "link",
+              "text": "量化（Quantization）：用較少位元執行模型的取捨",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-quantization"
+            },
+            {
+              "type": "text",
+              "text": " 與 "
+            },
+            {
+              "type": "link",
+              "text": "量化是什麼：GGUF、Q4、Q8 怎麼選",
+              "url": "https://mokaair.com/zh-TW/life/gguf-quantization-explained"
+            },
+            {
+              "type": "text",
+              "text": "；名稱後面的 4b、27b 是什麼，在 "
+            },
+            {
+              "type": "link",
+              "text": "模型參數（Model Parameters）是什麼",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/local-ai-gpu-buying-guide/diagram-1.svg",
+          "alt": "選顯示卡的決策順序圖：從模型檔案大小、顯示記憶體、官方支援清單、頻寬到電源機殼，共五個步驟",
+          "width": 1600,
+          "height": 900,
+          "caption": "由上往下走：先決定要跑的模型與檔案大小，再把顯示記憶體、官方支援清單、頻寬與電源逐一過一次，任何一關不過就往回換選擇。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
+          "url": "https://mokaair.com/zh-TW/life/deepseek-local-with-ollama"
+        },
+        {
+          "type": "heading",
+          "text": "桌機、筆電與 Apple Silicon 的取捨",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "桌機卡看官網比較頁就好。NVIDIA GeForce 規格比較頁上，RTX 5090 是 32 GB GDDR7、記憶體頻寬 1792 GB/sec；RTX 5080 是 16 GB、960 GB/sec；RTX 5070 是 12 GB、672 GB/sec；RTX 5060 Ti 官網寫成 16 GB / 8 GB，頻寬 448 GB/sec。"
+        },
+        {
+          "type": "paragraph",
+          "text": "AMD 官方規格頁上，Radeon RX 9070 XT 與 RX 9070 都是 16 GB GDDR6、記憶體頻寬最高 640 GB/s；RX 9070 GRE 是 12 GB、432 GB/s；RX 9060 XT 同時列出 16 GB 與 8 GB 兩個版本，頻寬都是 320 GB/s。"
+        },
+        {
+          "type": "paragraph",
+          "text": "筆電的同名卡是另一張卡。NVIDIA 筆電 50 系列規格頁寫著，RTX 5090 Laptop GPU 是 24 GB GDDR7、頻寬 896 GB/s，桌機版則是 32 GB、1792 GB/sec。挑筆電等於一開始就接受容量與頻寬同時打折。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Apple Silicon 換一種算法：GPU 與 CPU 共用統一記憶體。apple.com/tw 的規格頁上，Mac mini 的 M5 Pro 機型最高 64GB 統一記憶體、頻寬 307GB/s；Mac Studio 的 M5 Ultra 最高 512GB、1.2TB/s。容量遠超過任何一張消費級顯示卡。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "顯示記憶體",
+            "Ollama 預設上下文",
+            "檔案大小相符的模型標籤",
+            "提醒"
+          ],
+          "rows": [
+            [
+              "8 GB",
+              "小於 24 GiB：4k",
+              "gemma3:4b 3.3GB",
+              "要再留上下文空間"
+            ],
+            [
+              "12 GB",
+              "小於 24 GiB：4k",
+              "gemma3:12b 8.1GB",
+              "上下文設 64000 要重估"
+            ],
+            [
+              "16 GB",
+              "小於 24 GiB：4k",
+              "gpt-oss:20b 14GB",
+              "同名有 8 GB 版，別買錯"
+            ],
+            [
+              "24 到 32 GB",
+              "24 到 48 GiB：32k",
+              "gemma3:27b 17GB、qwen3:32b 20GB",
+              "消費級單卡到 32 GB"
+            ],
+            [
+              "48 GB 以上",
+              "48 GiB 以上：256k",
+              "gpt-oss:120b 65GB",
+              "靠多卡或統一記憶體"
+            ]
+          ],
+          "caption": "顯示記憶體級距對照 docs.ollama.com 的預設上下文分級與 ollama.com/library 標籤頁的檔案大小，查證於 2026 年 9 月；跑不跑得動還要看上下文設定與 K/V 快取型別，以官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
+          "url": "https://mokaair.com/zh-TW/life/local-llm-hardware-requirements"
+        },
+        {
+          "type": "link",
+          "text": "Mac mini 當家用 AI 伺服器：統一記憶體、售價與區網設定",
+          "url": "https://mokaair.com/zh-TW/life/local-ai-on-mac-mini"
+        },
+        {
+          "type": "heading",
+          "text": "電源、機殼與二手卡要先確認什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "電源與機殼是最容易漏算的兩筆。NVIDIA 規格比較頁直接列出「建議系統電源」：RTX 5090 是 1000 W、RTX 5080 是 850 W、RTX 5070 是 650 W，註解說明這是以搭配 Intel Core i9-10900K 的電腦為基準，配置不同時較低瓦數也可能足夠；AMD 規格頁的「最低電源供應器建議」則是 Radeon RX 9070 XT 750W、RX 9060 XT 450W。"
+        },
+        {
+          "type": "paragraph",
+          "text": "機殼看長度與槽位。NVIDIA 規格頁只有創始版（Founders Edition）列得出尺寸，RTX 5090 是長 304 mm、寬 137 mm、佔 2 個擴充槽；同頁明講規格代表創始版或參考設計，板卡廠出貨的實際規格可能不同。先量機殼，再去板卡廠頁面確認。"
+        },
+        {
+          "type": "paragraph",
+          "text": "二手卡只看官方文件驗得到的三件事：型號在不在官方支援清單上、那個型號的顯示記憶體容量以官網規格頁為準、電源接頭與建議瓦數對不對得上現有的電源供應器。賣家說法與網路上的對照表都不算數。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "同一個型號名稱可能有兩種顯示記憶體",
+          "text": "NVIDIA 官網把 RTX 5060 Ti 的標準記憶體配置寫成 16 GB / 8 GB GDDR7，AMD 官方規格頁也同時列出 16 GB 與 8 GB 兩種 Radeon RX 9060 XT；筆電版更是另一張卡。下單前把完整型號貼進官方規格頁對一次容量。"
+        },
+        {
+          "type": "paragraph",
+          "text": "顯示卡只是本機方案的一段成本，還有電費與你的時間。拿不定主意就把同樣的工作量放到雲端算一次再決定；要跑圖片生成，另外確認那套工具的官方需求。"
+        },
+        {
+          "type": "link",
+          "text": "本機跑 Stable Diffusion 與 Flux：ComfyUI 入門",
+          "url": "https://mokaair.com/zh-TW/life/stable-diffusion-comfyui-setup"
+        },
+        {
+          "type": "link",
+          "text": "本機 vs 雲端 AI 成本試算：訂閱、API 與電費怎麼算",
+          "url": "https://mokaair.com/zh-TW/life/local-vs-cloud-ai-cost"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Ollama 文件：硬體支援（NVIDIA compute capability 與驅動版本、AMD ROCm 與 Vulkan、Metal）",
+          "url": "https://docs.ollama.com/gpu",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 文件：上下文長度（依顯示記憶體的預設分級）",
+          "url": "https://docs.ollama.com/context-length",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 文件：常見問題（ollama ps、Flash Attention、K/V 快取量化、多 GPU 載入）",
+          "url": "https://docs.ollama.com/faq",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "llama.cpp README：支援的後端與目標裝置",
+          "url": "https://github.com/ggml-org/llama.cpp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "llama.cpp 建置文件：CUDA、HIP、Metal、Vulkan、SYCL 與 --list-devices",
+          "url": "https://github.com/ggml-org/llama.cpp/blob/master/docs/build.md",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NVIDIA GeForce 顯示卡規格比較頁（RTX 50 系列顯示記憶體、頻寬、建議系統電源、尺寸）",
+          "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/compare/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NVIDIA GeForce RTX 50 系列筆電頁（Laptop GPU 顯示記憶體與頻寬）",
+          "url": "https://www.nvidia.com/en-us/geforce/laptops/50-series/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AMD 繪圖產品規格頁（Radeon RX 9000 系列顯示記憶體、頻寬、最低電源供應器建議）",
+          "url": "https://www.amd.com/en/products/specifications/graphics.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 模型庫 gemma3 標籤頁（檔案大小）",
+          "url": "https://ollama.com/library/gemma3/tags",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 模型庫 qwen3 標籤頁（檔案大小）",
+          "url": "https://ollama.com/library/qwen3/tags",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 模型庫 gpt-oss 標籤頁（檔案大小）",
+          "url": "https://ollama.com/library/gpt-oss/tags",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Apple：Mac mini 技術規格（統一記憶體容量與記憶體頻寬）",
+          "url": "https://www.apple.com/tw/mac-mini/specs/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Apple：Mac Studio 技術規格（統一記憶體容量與記憶體頻寬）",
+          "url": "https://www.apple.com/tw/mac-studio/specs/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

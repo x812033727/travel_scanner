@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+<title id="title">從文字到音檔：MiniMax 語音合成流程 / From text to audio with MiniMax Speech</title>
+<desc id="desc">五個步驟的流程圖。第一步選音色：系統音色 332 個，其中中文普通話 34 個、粵語 6 個，也可以自建複製音色。第二步調參數：語速 0.5 到 2、音量 0 到 10、音調 -12 到 12、情緒 9 種可選，停頓可自訂秒數。第三步產生：同步單次上限 10,000 字元，超過 3,000 字改用串流，模型選 hd 或 turbo。第四步試聽：複製音色的試聽文字上限 1,000 字元，設計音色 500 字元，不對先換音色。第五步輸出：mp3、wav、flac 等格式，取樣率 8,000 到 44,100，下載連結有效 24 小時，可加字幕時間戳。左下方是長文與有聲書路線：非同步 API 單次上限 1,000,000 字元，建立任務後拿 task_id，完成再用 file_id 下載，下載網址有效 9 小時，可回句級字幕時間戳。右下方是聲音複製的規則：需通過個人或企業驗證，上傳錄音 10 秒到 5 分鐘、20 MB 以內，168 小時（7 天）未使用即刪除，第一次合成才收 1.5 美元。最下方提醒兩件事：要複製的聲音必須取得權利人授權，官網禁止冒充任何人；輸出請標示 AI 生成，價格與規格以官網當天頁面為準。</desc>
+<defs><marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L12 6 L0 12 z" fill="#5C6B6B"/></marker></defs>
+<rect width="1600" height="900" fill="#F7F1E8"/>
+<text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">從文字到音檔：MiniMax 語音合成流程</text>
+<text x="60" y="84" font-size="18" fill="#5C6B6B">From text to audio with MiniMax Speech</text>
+<rect x="60" y="118" width="264" height="296" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<circle cx="106" cy="166" r="21" fill="#0D6B68"/>
+<text x="106" y="173" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+<text x="140" y="174" font-size="20" font-weight="700" fill="#102A2B">選音色</text>
+<text x="84" y="232" font-size="15" fill="#102A2B">系統音色 332 個</text>
+<text x="84" y="270" font-size="15" fill="#102A2B">中文普通話 34 個</text>
+<text x="84" y="308" font-size="15" fill="#102A2B">粵語 6 個</text>
+<text x="84" y="346" font-size="15" fill="#102A2B">也可自建複製音色</text>
+<line x1="332" y1="266" x2="357" y2="266" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+<rect x="369" y="118" width="264" height="296" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<circle cx="415" cy="166" r="21" fill="#0D6B68"/>
+<text x="415" y="173" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<text x="449" y="174" font-size="20" font-weight="700" fill="#102A2B">調參數</text>
+<text x="393" y="232" font-size="15" fill="#102A2B">語速 0.5 到 2</text>
+<text x="393" y="270" font-size="15" fill="#102A2B">音量 0 到 10</text>
+<text x="393" y="308" font-size="15" fill="#102A2B">音調 -12 到 12</text>
+<text x="393" y="346" font-size="15" fill="#102A2B">情緒 9 種可選</text>
+<text x="393" y="384" font-size="15" fill="#102A2B">停頓可自訂秒數</text>
+<line x1="641" y1="266" x2="666" y2="266" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+<rect x="678" y="118" width="264" height="296" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<circle cx="724" cy="166" r="21" fill="#0D6B68"/>
+<text x="724" y="173" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<text x="758" y="174" font-size="20" font-weight="700" fill="#102A2B">產生</text>
+<text x="702" y="232" font-size="15" fill="#102A2B">同步單次 10,000 字元</text>
+<text x="702" y="270" font-size="15" fill="#102A2B">超過 3,000 字改串流</text>
+<text x="702" y="308" font-size="15" fill="#102A2B">hd 或 turbo 擇一</text>
+<line x1="950" y1="266" x2="975" y2="266" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+<rect x="987" y="118" width="264" height="296" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<circle cx="1033" cy="166" r="21" fill="#0D6B68"/>
+<text x="1033" y="173" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+<text x="1067" y="174" font-size="20" font-weight="700" fill="#102A2B">試聽</text>
+<text x="1011" y="232" font-size="15" fill="#102A2B">複製音色 1,000 字元</text>
+<text x="1011" y="270" font-size="15" fill="#102A2B">設計音色 500 字元</text>
+<text x="1011" y="308" font-size="15" fill="#102A2B">不對先換音色</text>
+<line x1="1259" y1="266" x2="1284" y2="266" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+<rect x="1296" y="118" width="264" height="296" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<circle cx="1342" cy="166" r="21" fill="#0D6B68"/>
+<text x="1342" y="173" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+<text x="1376" y="174" font-size="20" font-weight="700" fill="#102A2B">輸出</text>
+<text x="1320" y="232" font-size="15" fill="#102A2B">mp3／wav／flac</text>
+<text x="1320" y="270" font-size="15" fill="#102A2B">取樣率 8,000–44,100</text>
+<text x="1320" y="308" font-size="15" fill="#102A2B">連結有效 24 小時</text>
+<text x="1320" y="346" font-size="15" fill="#102A2B">可加字幕時間戳</text>
+<rect x="60" y="444" width="730" height="176" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+<text x="88" y="490" font-size="20" font-weight="700" fill="#2F6F9F">長文與有聲書路線</text>
+<text x="88" y="528" font-size="16" fill="#102A2B">非同步 API 單次上限 1,000,000 字元</text>
+<text x="88" y="560" font-size="16" fill="#102A2B">建立任務後拿 task_id，完成再用 file_id 下載</text>
+<text x="88" y="592" font-size="16" fill="#102A2B">下載網址有效 9 小時，可回句級字幕時間戳</text>
+<rect x="830" y="444" width="730" height="176" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+<text x="858" y="490" font-size="20" font-weight="700" fill="#B8442D">聲音複製的規則</text>
+<text x="858" y="528" font-size="16" fill="#102A2B">需通過個人或企業驗證，錄音要有權利人授權</text>
+<text x="858" y="560" font-size="16" fill="#102A2B">上傳錄音 10 秒到 5 分鐘，20 MB 以內</text>
+<text x="858" y="592" font-size="16" fill="#102A2B">168 小時（7 天）未使用即刪；首次合成收 1.5 美元</text>
+<rect x="60" y="648" width="1500" height="142" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+<text x="88" y="694" font-size="20" font-weight="700" fill="#0D6B68">動手前先確認的兩件事</text>
+<text x="88" y="734" font-size="16" fill="#102A2B">一、要複製的聲音必須取得權利人授權，官網條款禁止冒充任何人。</text>
+<text x="88" y="768" font-size="16" fill="#102A2B">二、輸出請標示 AI 生成；價格與規格以官網當天的頁面為準。</text>
+<text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

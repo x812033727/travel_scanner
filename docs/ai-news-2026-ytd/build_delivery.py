@@ -6,10 +6,12 @@ manifest=json.loads((HERE/'manifest.json').read_text(encoding='utf8'))
 publication=json.loads((HERE/'publication.json').read_text(encoding='utf8'))
 public=json.loads((HERE/'public-verification.json').read_text(encoding='utf8'))
 assets=json.loads((HERE/'asset-link-verification.json').read_text(encoding='utf8'))
+visual=json.loads((HERE/'public-visual-verification.json').read_text(encoding='utf8'))
 assert len(manifest)==22 and len(publication['result']['published'])==110
 assert len(publication['replay']['unchanged'])==110 and publication['existing_editorial_data_unchanged'] is True
 assert len(public['pages'])==220 and public['sitemap_locale_articles']==110
 assert len(assets['assets'])==220
+assert visual['all_passed'] is True and len(visual['reviewed_contact_sheets'])==75
 old=json.loads((HERE.parent/'ai-news-2026-09/manifest.json').read_text(encoding='utf8'))
 all_items=sorted(manifest+old,key=lambda i:(i['event_date'],i['slug']))
 assert len(all_items)==32

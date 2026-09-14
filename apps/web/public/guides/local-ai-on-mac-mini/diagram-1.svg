@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">家用 AI 伺服器：Mac mini 到區網到裝置 / Home AI server on a Mac mini</title>
+  <desc id="desc">左邊是一台常開的 Mac mini，統一記憶體 16GB 至 64GB、記憶體頻寬 153 至 307GB/s，上面跑兩個服務：Ollama 預設只綁 127.0.0.1 的 11434 埠，Open WebUI 的介面在 3000 埠。中間是家中區網，要讓區網連得到，必須把 OLLAMA_HOST 設成 0.0.0.0:11434 並重新啟動 Ollama 應用程式。右邊是手機、平板與筆電，用瀏覽器連 Mac mini 的區網位址加上 3000 埠，例如 192.168.1.100 加 3000，第一個註冊的帳號是管理員。底部的紅框提醒：Ollama 官方文件說本機 API 端點不需要驗證，所以 11434 埠只能留在區網，不要讓路由器對外轉發；要從外面連，官方文件列的做法是前面加代理伺服器、ngrok 或 Cloudflare Tunnel。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 11 6 L 0 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">家用 AI 伺服器：Mac mini → 區網 → 手機／筆電</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Home AI server: one Mac mini, the home network, and the devices that use it</text>
+
+  <!-- Panel A: Mac mini -->
+  <rect x="56" y="130" width="452" height="430" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="282" y="174" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">Mac mini（開機就在跑）</text>
+  <text x="282" y="210" font-size="17" fill="#102A2B" text-anchor="middle">統一記憶體 16GB 至 64GB</text>
+  <text x="282" y="240" font-size="17" fill="#102A2B" text-anchor="middle">記憶體頻寬 153／170／307GB/s</text>
+  <text x="282" y="270" font-size="17" fill="#5C6B6B" text-anchor="middle">CPU 與 GPU 共用同一塊記憶體</text>
+
+  <rect x="82" y="292" width="400" height="96" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="282" y="328" font-size="18" font-weight="bold" fill="#102A2B" text-anchor="middle">Ollama 服務</text>
+  <text x="282" y="360" font-size="16" fill="#5C6B6B" text-anchor="middle">預設只綁 127.0.0.1:11434</text>
+
+  <rect x="82" y="404" width="400" height="96" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="282" y="440" font-size="18" font-weight="bold" fill="#102A2B" text-anchor="middle">Open WebUI（Docker）</text>
+  <text x="282" y="472" font-size="16" fill="#5C6B6B" text-anchor="middle">介面在 3000 埠</text>
+
+  <text x="282" y="530" font-size="16" fill="#5C6B6B" text-anchor="middle">模型與設定存在使用者目錄下</text>
+
+  <!-- Panel B: home network -->
+  <line x1="512" y1="335" x2="556" y2="335" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="564" y="190" width="316" height="290" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="722" y="236" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">家中區網</text>
+  <rect x="586" y="262" width="272" height="118" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="722" y="298" font-size="16" fill="#102A2B" text-anchor="middle">OLLAMA_HOST</text>
+  <text x="722" y="326" font-size="16" fill="#102A2B" text-anchor="middle">= 0.0.0.0:11434</text>
+  <text x="722" y="356" font-size="15" fill="#5C6B6B" text-anchor="middle">設完重啟 Ollama</text>
+  <text x="722" y="416" font-size="16" fill="#102A2B" text-anchor="middle">同一個區網的裝置</text>
+  <text x="722" y="444" font-size="16" fill="#102A2B" text-anchor="middle">才連得到</text>
+
+  <!-- Panel C: devices -->
+  <line x1="884" y1="335" x2="928" y2="335" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="936" y="130" width="608" height="430" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1240" y="174" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">手機／平板／筆電</text>
+
+  <rect x="966" y="200" width="176" height="140" rx="14" fill="#E3F0EF" stroke="#2E7D5B" stroke-width="4"/>
+  <rect x="1032" y="220" width="44" height="66" rx="8" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1054" y="320" font-size="17" fill="#102A2B" text-anchor="middle">手機</text>
+
+  <rect x="1152" y="200" width="176" height="140" rx="14" fill="#E3F0EF" stroke="#2E7D5B" stroke-width="4"/>
+  <rect x="1200" y="220" width="80" height="66" rx="8" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1240" y="320" font-size="17" fill="#102A2B" text-anchor="middle">平板</text>
+
+  <rect x="1338" y="200" width="176" height="140" rx="14" fill="#E3F0EF" stroke="#2E7D5B" stroke-width="4"/>
+  <rect x="1384" y="220" width="84" height="56" rx="6" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <line x1="1370" y1="288" x2="1482" y2="288" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1426" y="320" font-size="17" fill="#102A2B" text-anchor="middle">筆電</text>
+
+  <text x="1240" y="386" font-size="17" fill="#102A2B" text-anchor="middle">瀏覽器連 Mac mini 的區網位址</text>
+  <text x="1240" y="416" font-size="17" fill="#102A2B" text-anchor="middle">加上 3000 埠</text>
+  <rect x="966" y="440" width="548" height="94" rx="14" fill="#F7F1E8" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1240" y="478" font-size="16" fill="#102A2B" text-anchor="middle">例如 192.168.1.100 加 3000</text>
+  <text x="1240" y="508" font-size="15" fill="#5C6B6B" text-anchor="middle">第一個註冊的帳號是管理員</text>
+
+  <!-- Warning -->
+  <rect x="56" y="600" width="1488" height="164" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="92" y="650" font-size="19" font-weight="bold" fill="#B8442D">Ollama 官方文件：本機 API 端點不需要驗證</text>
+  <text x="92" y="688" font-size="17" fill="#102A2B">所以 11434 埠只能留在區網，不要讓路由器把它對外轉發。</text>
+  <text x="92" y="724" font-size="17" fill="#102A2B">真的要從外面連，官方文件列的做法是前面加代理伺服器、ngrok 或 Cloudflare Tunnel，驗證自己補。</text>
+
+  <text x="60" y="822" font-size="16" fill="#5C6B6B">模型檔案大小照 Ollama 模型庫：gemma4 9.6GB、gpt-oss:120b 65GB</text>
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

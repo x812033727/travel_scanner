@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">在自己的電腦上生圖 / Generating images on your own computer</title>
+  <desc id="desc">扁平幾何插圖。米色底上鋪一塊淺綠色的大圓角面板。面板左半邊是一台筆記型電腦的簡化外形：白底深綠邊框的螢幕與梯形底座，螢幕裡有四個圓角方塊用線接成一條由左到右、再往下分支的流程。一支箭頭從筆電指向右邊一個白底深色邊框的方形畫框，畫框裡是四個大小不一的幾何色塊，代表生成出來的影像。畫框下方有一枚圓角標籤，象徵輸出附上的標示。底部一行中文字寫著「在自己的電腦上生圖」。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <rect x="150" y="130" width="1300" height="550" rx="64" fill="#E3F0EF"/>
+
+  <!-- laptop -->
+  <rect x="290" y="218" width="450" height="310" rx="22" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+  <path d="M 256 572 L 294 532 L 736 532 L 774 572 Z" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8" stroke-linejoin="round"/>
+
+  <!-- abstract node chain on the screen -->
+  <line x1="397" y1="320" x2="469" y2="320" stroke="#0D6B68" stroke-width="7"/>
+  <line x1="555" y1="320" x2="627" y2="320" stroke="#0D6B68" stroke-width="7"/>
+  <line x1="512" y1="354" x2="512" y2="418" stroke="#2F6F9F" stroke-width="7"/>
+  <rect x="333" y="288" width="64" height="64" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="7"/>
+  <rect x="471" y="288" width="84" height="64" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="7"/>
+  <rect x="627" y="288" width="64" height="64" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="7"/>
+  <rect x="470" y="418" width="86" height="60" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="7"/>
+
+  <!-- arrow to the framed output -->
+  <line x1="820" y1="392" x2="928" y2="392" stroke="#0D6B68" stroke-width="10"/>
+  <path d="M 920 366 L 966 392 L 920 418 Z" fill="#0D6B68"/>
+
+  <!-- framed output -->
+  <rect x="1010" y="238" width="380" height="308" rx="20" fill="#FFFFFF" stroke="#102A2B" stroke-width="8"/>
+  <rect x="1052" y="282" width="72" height="72" rx="16" fill="#0D6B68"/>
+  <circle cx="1096" cy="444" r="62" fill="#D97A2B"/>
+  <rect x="1160" y="300" width="112" height="196" rx="16" fill="#2E7D5B"/>
+  <circle cx="1306" cy="382" r="52" fill="#2F6F9F"/>
+
+  <!-- label badge under the frame -->
+  <rect x="1120" y="590" width="160" height="56" rx="28" fill="#FFFFFF" stroke="#D97A2B" stroke-width="7"/>
+  <circle cx="1160" cy="618" r="12" fill="#D97A2B"/>
+  <line x1="1188" y1="618" x2="1252" y2="618" stroke="#D97A2B" stroke-width="7"/>
+
+  <text x="800" y="800" text-anchor="middle" font-size="58" font-weight="bold" fill="#102A2B">在自己的電腦上生圖</text>
+</svg>

@@ -1,0 +1,403 @@
+{
+  "slug": "local-vs-cloud-ai-cost",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "本機 vs 雲端 AI 成本試算：訂閱、API 與電費怎麼算",
+      "description": "把雲端訂閱、API 按量與本機三種付法放進同一條算式：訂閱月費照官網，API 取 Sonnet 5、gpt-5.6-terra、Gemini 3.1 Pro 的每百萬 token 價格，本機用 apple.com/tw 的 Mac mini 售價攤提，加 Apple 官方耗電量與台電住宅電價級距。輕度聊天、每天處理文件、開發者大量呼叫三個情境各算一次，結論是什麼情況本機才划算。",
+      "hero": {
+        "src": "/guides/local-vs-cloud-ai-cost/hero.jpg",
+        "alt": "插圖：左半邊一朵雲下面疊著四條長度一樣的橫條，代表每個月重複付一樣的錢；右半邊一個圓角方塊代表自己的機器，方塊下面一整塊長方形被虛線切成四份，代表一次付清後攤到每個月。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "這篇回答一個問題：同樣一件事，付錢給雲端跟自己買機器來跑，一個月各要多少錢。答案不是排名，而是一條你可以自己填數字的算式——雲端是訂閱月費或 API 按量，本機是硬體攤提加電費。填完會看到一個固定的形狀：本機那欄幾乎不動，雲端那欄才隨用量長大，兩條線的交叉點就是分界。"
+        },
+        {
+          "type": "paragraph",
+          "text": "下面依序拆開三筆成本：訂閱月費、每百萬 token 的 API 價格、以及本機的「硬體價除以使用年數，加上功耗乘時數乘電價」，再用輕度聊天、每天處理文件、開發者大量呼叫三個情境各算一次。價格一律寫官網的幣別，美元是美元、新台幣是新台幣，這篇不換算也不把兩種幣別相加。"
+        },
+        {
+          "type": "heading",
+          "text": "三種付法，帳單長得不一樣",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "雲端有兩種付法。訂閱是固定月費，額度內用多用少都一樣，超過就被限速或等重置；API 按量計費，依送進去與吐出來的 token 分別計價，沒呼叫就是零。本機是第三種：一次付清硬體，之後每月只剩電費，那筆硬體錢要攤到你打算用幾年。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "訂閱：固定月費，額度內帳單跟用量無關。",
+            "API：每百萬 token 計價，輸入與輸出分開算，用多少付多少。",
+            "本機：硬體一次付清後攤提，加上電費，還要自己維護。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "混在一起比較會失真，所以下面每一種先單獨列，再放進同一個情境裡對照。本機那一欄是新台幣、雲端那一欄是美元，兩欄分開列，要比較請自己用當天匯率換算。"
+        },
+        {
+          "type": "link",
+          "text": "token（Token）是什麼：AI 如何計算文字長度",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-token"
+        },
+        {
+          "type": "link",
+          "text": "AI 寫程式的費用怎麼算：token、訂閱與 API 額度",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-cost-tokens-explained"
+        },
+        {
+          "type": "heading",
+          "text": "第一筆：訂閱月費",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "三家的入門付費方案都落在每月 20 美元上下，這是雲端那一欄的基準線。claude.com 定價頁今天寫 Pro 月繳 20 美元、年繳每月 17 美元（一次付 200 美元），Max 是「每月 100 美元起」，在同一方案裡選 5 倍或 20 倍用量。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPT 的方案頁對這個環境回 403，改讀 OpenAI 說明中心：Plus 每月 20 美元，Pro 分 100 美元與 200 美元兩階，說明中心註明 2026 年 9 月 10 日起暫停 200 美元那階的新訂與升級；Go 的價格說明中心要你回方案頁看，以官網為準。gemini.google 訂閱頁則列 Google AI Plus 每月 4.99 美元、AI Pro 19.99 美元、AI Ultra 99.99 美元起；新台幣價格登入後看所在地區的方案頁，以官網為準。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "服務",
+            "方案",
+            "月費（美元）",
+            "備註"
+          ],
+          "rows": [
+            [
+              "Claude",
+              "Free / Pro / Max",
+              "0 / 20 / 100 起",
+              "Pro 年繳每月 17（一次付 200）"
+            ],
+            [
+              "ChatGPT",
+              "Free / Plus / Pro",
+              "0 / 20 / 100 或 200",
+              "200 美元那階 9 月 10 日起暫停新訂"
+            ],
+            [
+              "Google AI",
+              "AI Plus / Pro / Ultra",
+              "4.99 / 19.99 / 99.99 起",
+              "Ultra 另有 199.99 美元一階"
+            ]
+          ],
+          "caption": "2026 年 9 月 14 日查 claude.com 定價頁、OpenAI 說明中心與 gemini.google 訂閱頁；未稅，新台幣定價以官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
+          "url": "https://mokaair.com/zh-TW/life/ai-free-vs-paid-plans-2026"
+        },
+        {
+          "type": "link",
+          "text": "Claude 免費、Pro、Max 方案比較：額度怎麼算、值不值得",
+          "url": "https://mokaair.com/zh-TW/life/claude-plans-free-pro-max-2026"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT Plus、Pro 與其他方案差在哪：2026 年怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-plans-plus-pro-2026"
+        },
+        {
+          "type": "link",
+          "text": "免費與付費方案：功能、額度與訂閱選擇",
+          "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+        },
+        {
+          "type": "heading",
+          "text": "第二筆：API 每百萬 token 價格",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "API 帳單由兩個數字決定：輸入 token 與輸出 token，輸出通常比輸入貴好幾倍，估費用一定要分開算。三家各挑一個中階代表模型放進下表，巧的是今天三家的輸入單價都是每百萬 2 美元，差別在輸出。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一家換一階，價差比換一家大得多。輕量模型是 Claude Haiku 4.5 每百萬輸入 1 美元、輸出 5 美元，gpt-5.6-luna 輸入 0.20 美元、輸出 1.20 美元，Gemini 3.8 Flash 輸入 0.75 美元、輸出 3.75 美元；旗艦則是 Claude Opus 5 輸入 5 美元、輸出 25 美元，gpt-5.6-sol 輸入 4 美元、輸出 20 美元；其中兩個價格官網標了促銷期限，見表下註記。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "代表模型",
+            "輸入（每百萬 token，美元）",
+            "輸出（每百萬 token，美元）",
+            "來源頁"
+          ],
+          "rows": [
+            [
+              "Claude Sonnet 5",
+              "2",
+              "10",
+              "claude.com 定價頁與 Claude 平台定價文件"
+            ],
+            [
+              "OpenAI gpt-5.6-terra",
+              "2",
+              "12",
+              "OpenAI API 定價頁的標準價（短上下文）"
+            ],
+            [
+              "Google Gemini 3.1 Pro Preview",
+              "2",
+              "12",
+              "Gemini API 定價頁，提示 20 萬 token 以內"
+            ]
+          ],
+          "caption": "2026 年 9 月 14 日查三家官方定價頁。官網另註明：Gemini 3.8 Flash 的 0.75 與 3.75 美元適用到 2026 年 12 月 31 日，gpt-5.6-sol 的促銷價至少到 2026 年 11 月 21 日；實際價格以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "還有兩個機制會改變帳單：提示快取讓重複送的內容用折扣價計費，批次處理把不趕時間的工作換折扣，兩者都不改單價。"
+        },
+        {
+          "type": "link",
+          "text": "Claude API 省錢：提示快取與批次處理怎麼用",
+          "url": "https://mokaair.com/zh-TW/life/claude-api-prompt-caching-cost"
+        },
+        {
+          "type": "link",
+          "text": "OpenRouter：一把金鑰用遍各家模型",
+          "url": "https://mokaair.com/zh-TW/life/openrouter-multi-model-api"
+        },
+        {
+          "type": "heading",
+          "text": "第三筆：本機的硬體攤提加電費",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "本機成本只有兩項：硬體攤提與電費。硬體價這篇只抄 apple.com/tw 官網當天的售價——Mac mini 搭 M6 晶片、12 核心 CPU 與 12 核心 GPU、16GB 統一記憶體、256GB 儲存裝置是新台幣 29,900 元起，M5 Pro 搭 24GB 記憶體、512GB 是 59,900 元起，M5 Pro 搭 64GB 記憶體、1TB 是 66,900 元起。"
+        },
+        {
+          "type": "paragraph",
+          "text": "功耗也要用官方數字。Apple 支援網站的 Mac mini 耗電量頁最新一筆是 Mac mini（2024 年）搭 M4 晶片、16GB 統一記憶體、256GB SSD，閒置 4 瓦、最大 65 瓦；M4 Pro 那一筆是閒置 5 瓦、最大 140 瓦。在售的 M6 與 M5 Pro 機型還沒進那一頁，以官網當天的耗電量頁為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用顯示卡的人查同一個欄位。NVIDIA 官方比較頁的總繪圖功耗是 GeForce RTX 5090 575 瓦、RTX 5080 360 瓦、RTX 5070 250 瓦、RTX 5060 145 瓦，同頁的建議系統電源是 1000、850、650、550 瓦。這篇不寫顯示卡價格只用功耗；整機還有處理器與風扇要吃電，拿建議系統電源當上限會保守一點。"
+        },
+        {
+          "type": "paragraph",
+          "text": "電價用台電官網的住宅用非時間電價，級距見下表。重點是級距累進，家裡多跑一台機器，多出來的幾度是加在你目前的最後一段上，要用那一段的單價算，不是用平均電價。下面的試算取 121 到 330 度這段的非夏月單價 2.26 元。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "台電住宅用非時間電價級距（簡要電價表，中華民國 114 年 10 月 1 日起實施）",
+          "code": "每月用電度數分段        夏月(6/1-9/30)   非夏月\n120 度以下                 1.78 元/度     1.78 元/度\n121~330 度                 2.55 元/度     2.26 元/度\n331~500 度                 3.80 元/度     3.13 元/度\n501~700 度                 5.14 元/度     4.24 元/度\n701~1000 度                6.44 元/度     5.27 元/度\n1001 度以上                8.86 元/度     7.03 元/度"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "本機月成本的算式：把你自己的數字填進去",
+          "code": "本機月成本 = 硬體攤提 + 電費\n\n硬體攤提（元/月）= 硬體價 ÷ (使用年數 × 12)\n  3 年 = 36 個月：29900 ÷ 36 = 830.6  → 約 831 元\n  5 年 = 60 個月：29900 ÷ 60 = 498.3  → 約 498 元\n\n電費（元/月）= 功耗(W) ÷ 1000 × 每月使用時數 × 每度電價\n  每天 2 小時：65 ÷ 1000 × 60 × 2.26 = 8.8  → 約 9 元\n\n注意：硬體價是新台幣、電價是新台幣；雲端那一欄是美元，兩邊不要相加。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/local-vs-cloud-ai-cost/diagram-1.svg",
+          "alt": "成本結構對照圖：雲端訂閱、雲端 API 與本機三種付法，各自哪一部分固定、哪一部分隨用量長大。",
+          "width": 1600,
+          "height": 900,
+          "caption": "左到右三欄是三種付法。看每一欄裡「固定」與「隨用量」各佔多少，就知道你的用量往上加時，哪一欄的帳單會跟著跑。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
+          "url": "https://mokaair.com/zh-TW/life/local-llm-hardware-requirements"
+        },
+        {
+          "type": "link",
+          "text": "為 AI 選顯示卡：顯示記憶體優先與預算配置",
+          "url": "https://mokaair.com/zh-TW/life/local-ai-gpu-buying-guide"
+        },
+        {
+          "type": "heading",
+          "text": "三個情境各算一次",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "token 用量沒有官方數字可抄，下面的用量是假設，換成你自己的數字再看結論。三個情境共用同一台機器：Mac mini 29,900 元、攤 3 年、每月 831 元，功耗取官方最大值 65 瓦，電價 2.26 元。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "情境一：輕度聊天（每天 10 則，每則進出各 500 token，機器每天約跑 30 分鐘）",
+          "code": "用量假設：10 則/天 × 30 天 = 300 則；機器每月 15 小時\n  輸入 300 × 500 = 150,000 token = 0.15 百萬\n  輸出 300 × 500 = 150,000 token = 0.15 百萬\n\n雲端訂閱：免費版 0 美元；Pro 或 Plus 20 美元\n雲端 API（Sonnet 5）：0.15 × 2 + 0.15 × 10 = 1.8 美元\n\n本機：攤提 831 元\n  電費 65 ÷ 1000 × 15 × 2.26 = 2.2  → 約 2 元\n  合計 約 833 元（新台幣）"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "情境二：每天處理文件（每天 20 份，每份輸入 5,000、輸出 1,000 token，機器每天跑 2 小時）",
+          "code": "用量假設：20 份/天 × 30 天 = 600 份；機器每月 60 小時\n  輸入 600 × 5,000 = 3,000,000 token = 3 百萬\n  輸出 600 × 1,000 = 600,000 token = 0.6 百萬\n\n雲端訂閱：Pro 或 Plus 20 美元\n雲端 API（Sonnet 5）：3 × 2 + 0.6 × 10 = 12 美元\n雲端 API（gpt-5.6-terra）：3 × 2 + 0.6 × 12 = 13.2 美元\n\n本機：攤提 831 元\n  電費 65 ÷ 1000 × 60 × 2.26 = 8.8  → 約 9 元\n  合計 約 840 元（新台幣）"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "情境三：開發者大量呼叫（每天 500 次，每次輸入 10,000、輸出 2,000 token，機器每天跑 8 小時）",
+          "code": "用量假設：500 次/天 × 22 個工作天 = 11,000 次；機器每月 240 小時\n  輸入 11,000 × 10,000 = 110,000,000 token = 110 百萬\n  輸出 11,000 × 2,000 = 22,000,000 token = 22 百萬\n\n雲端 API（Sonnet 5）：110 × 2 + 22 × 10 = 440 美元\n雲端 API（gpt-5.6-terra）：110 × 2 + 22 × 12 = 484 美元\n\n本機：攤提 831 元\n  電費 65 ÷ 1000 × 240 × 2.26 = 35.3  → 約 35 元\n  合計 約 866 元（新台幣）"
+        },
+        {
+          "type": "table",
+          "header": [
+            "情境",
+            "雲端月成本（美元）",
+            "本機月成本（新台幣，3 年攤提）",
+            "備註"
+          ],
+          "rows": [
+            [
+              "輕度聊天：每天 10 則，每則進出各 500 token",
+              "免費版 0；訂閱 20；API 用 Sonnet 5 是 1.8",
+              "攤提 831 ＋ 電費 2 ＝ 833",
+              "免費版就夠時，本機等於多買一台電腦"
+            ],
+            [
+              "每天處理文件：每天 20 份，輸入 5,000、輸出 1,000 token",
+              "訂閱 20；API 用 Sonnet 5 是 12",
+              "攤提 831 ＋ 電費 9 ＝ 840",
+              "訂閱吃到飽的情況下本機沒有價格優勢"
+            ],
+            [
+              "開發者大量呼叫：每天 500 次，輸入 10,000、輸出 2,000 token，每月 22 天",
+              "API 用 Sonnet 5 是 440",
+              "攤提 831 ＋ 電費 35 ＝ 866",
+              "這格才有機會便宜，但要先確認模型做得到"
+            ]
+          ],
+          "caption": "2026 年 9 月 14 日試算。兩欄幣別不同，不要相加；token 用量是假設值，換成你自己的數字再看結論。"
+        },
+        {
+          "type": "heading",
+          "text": "什麼情況本機划算",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "三個情境擺在一起，形狀很清楚：本機那一欄從 833 元走到 866 元幾乎沒動，雲端那一欄從 1.8 美元走到 440 美元。本機的錢幾乎全是硬體攤提，用量只影響電費，而電費在這三個情境裡都不到 40 元。"
+        },
+        {
+          "type": "paragraph",
+          "text": "所以「本機划算」不是籠統的用得多，而是下面三件具體的事至少中一件。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "機器你已經有了：硬體錢先前就花掉，本機月成本只剩電費，也就是這三個情境的 2 元到 35 元。",
+            "用量大到 API 帳單長期高於攤提：情境三的 440 美元屬於這類，但先確認本機跑得動的模型做得到同一件事。",
+            "資料不能離開自己的電腦：這時不是比價，是只有本機做得到。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "反過來，免費版就夠用（情境一的雲端那欄是 0）、需要旗艦模型的品質、不想維護軟體，本機就不划算。還有一個常被忽略的變數是攤提年數：同一台 29,900 元的機器寫 3 年是每月 831 元、寫 5 年是 498 元，換個年數結論可能就翻過來，這個假設一定要寫在算式旁邊。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先分開「已經有的機器」和「為了跑 AI 買的機器」",
+          "text": "如果你本來就有一台夠力的電腦，硬體那筆錢已經花掉了，本機月成本就只剩電費，在這三個情境裡是 2 元到 35 元，怎麼算都比訂閱便宜。但如果你是為了跑 AI 才要買一台 29,900 元的機器，那筆錢就要完整攤提，每月 831 元必須進算式，不能只算電費——這是本機成本最常被少算的一項。"
+        },
+        {
+          "type": "link",
+          "text": "為什麼要在自己電腦跑 AI：隱私、離線與成本",
+          "url": "https://mokaair.com/zh-TW/life/local-llm-why-and-when"
+        },
+        {
+          "type": "link",
+          "text": "Mac mini 當家用 AI 伺服器：統一記憶體、售價與區網設定",
+          "url": "https://mokaair.com/zh-TW/life/local-ai-on-mac-mini"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Claude 定價頁（Anthropic 官方，訂閱方案與 API 每百萬 token 價格）",
+          "url": "https://claude.com/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 平台定價文件（Anthropic 官方，各模型每百萬 token 價格）",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "What is ChatGPT Plus?（OpenAI 說明中心，Plus 與 Pro 月費）",
+          "url": "https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "What is ChatGPT Go?（OpenAI 說明中心，Go 方案與計價說明）",
+          "url": "https://help.openai.com/en/articles/11989085-what-is-chatgpt-go",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI API 定價頁（官方開發者文件，每百萬 token 標準價）",
+          "url": "https://developers.openai.com/api/docs/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini 訂閱方案頁（Google 官方，Google AI Plus、Pro、Ultra 月費）",
+          "url": "https://gemini.google/subscriptions/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini API 定價頁（Google 官方，每百萬 token 付費級距價格）",
+          "url": "https://ai.google.dev/gemini-api/docs/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Apple 台灣 Mac mini 購買頁（官方售價與機型組態）",
+          "url": "https://www.apple.com/tw/shop/buy-mac/mac-mini",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mac mini 耗電量與熱輸出（BTU）的相關資訊（Apple 支援，閒置與最大耗電量）",
+          "url": "https://support.apple.com/zh-tw/103253",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NVIDIA GeForce 顯示卡比較頁（官方，總繪圖功耗與建議系統電源）",
+          "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/compare/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "台灣電力公司電價表（官方，簡要電價表：住宅用非時間電價級距）",
+          "url": "https://www.taipower.com.tw/2289/2290/46940/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,13 +1,13 @@
 ---
 id: 2026-09-13-life-ai-batch-06
 title: 生活分享 AI 系列批次 06：MiniMax、DeepSeek、Qwen、Kimi、豆包與其他家（20 篇）
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-fable-5-1
 claimed_at: 2026-09-14T14:55:21Z
 created_at: 2026-09-13T11:55:59Z
-completed_at:
+completed_at: 2026-09-14T18:06:28Z
 branch: claude/travel-guides-tutorials-59j1dv
 depends_on:
   - 2026-09-13-life-ai-series-tooling
@@ -67,12 +67,12 @@ scope:
 
 ## Definition of done
 
-- [ ] 二十個 `apps/api/app/guides/content/<slug>.json`（zh-TW），每篇：hero（自繪插圖渲染的 `hero.jpg` 或 Commons 照片）、
+- [x] 二十個 `apps/api/app/guides/content/<slug>.json`（zh-TW），每篇：hero（自繪插圖渲染的 `hero.jpg` 或 Commons 照片）、
       至少一張自繪 `diagram-1.svg`、≥3 個 h2、一表、一 callout、sources 每筆有 `checked_on`、至少一個站內 `link`；
       合作連結只在總表標了的篇、只放文章真的用到的段落。
-- [ ] 沒有任何產品 logo、字標、圖示或介面截圖；照片只來自 Commons 的 CC0／PD／CC BY／CC BY-SA，授權由 Commons API 讀回。
-- [ ] 方案、價格、模型名、額度都在寫作當天查官網；查不到的寫「以官網為準」。
-- [ ] `guides-pack lint --kind life` 沒有 error；每張 hero 與圖解渲染成 PNG 後人工看過；`test_guides_content_pack.py` 全綠。
+- [x] 沒有任何產品 logo、字標、圖示或介面截圖；照片只來自 Commons 的 CC0／PD／CC BY／CC BY-SA，授權由 Commons API 讀回。
+- [x] 方案、價格、模型名、額度都在寫作當天查官網；查不到的寫「以官網為準」。
+- [x] `guides-pack lint --kind life` 沒有 error；每張 hero 與圖解渲染成 PNG 後人工看過；`test_guides_content_pack.py` 全綠。
 
 ## Steps
 
@@ -99,9 +99,9 @@ scope:
 19. `apple-intelligence-guide` · Apple Intelligence：iPhone、Mac 上的 AI 功能與中文支援 · ai, gadgets · 圖：照 · 易變
 20. `line-ai-features-taiwan` · LINE 裡的 AI：聊天、翻譯與台灣可用功能 · ai, daily · 圖：照 · 易變
 
-- [ ] 認領後從總表抄出指派，一篇一個撰稿代理、每波最多七個，代理照 `docs/life-ai-series-brief.md` 產出工作區。
-- [ ] 每篇落地就 `guides-pack ingest`；被拒的退回修。
-- [ ] `guides-pack lint --render-dir` 逐張看圖；跑測試；更新這張票；commit。
+- [x] 認領後從總表抄出指派，一篇一個撰稿代理、每波最多七個，代理照 `docs/life-ai-series-brief.md` 產出工作區。
+- [x] 每篇落地就 `guides-pack ingest`；被拒的退回修。
+- [x] `guides-pack lint --render-dir` 逐張看圖；跑測試；更新這張票；commit。
 
 ## How to verify
 
@@ -116,3 +116,15 @@ npm run check:tasks
 ## Notes
 
 - 前三批旅遊文章的經驗：兩篇一個代理會在半小時左右撞到額度，一篇一個代理、先寫檔再寫報告最穩。
+
+## Outcome (2026-09-14)
+
+- 二十篇全部完成並匯入：`apps/api/app/guides/content/<slug>.json` 與 `apps/web/public/guides/<slug>/{hero.jpg,hero.svg,diagram-1.svg}`；hero 全部自繪（總表標「照」的 Apple 與 LINE 兩篇也自繪，避免 logo 與介面），每張 hero 與圖解都渲染成 PNG 逐張看過。
+- 檢查：`pack_cli lint --kind life --catalogue ../../docs/life-ai-series.md` 零 error（僅既有的 `pack_not_in_catalogue` 與 sitemap 預算警告）；`pytest tests/test_guides_content_pack.py tests/test_guide_partner_links.py`：63 passed、28 skipped；`npm run check:tasks` 通過。
+- 來源：每篇 11–20 筆，全部官方或一手（官網、定價頁、模型卡、LICENSE、隱私政策、政府新聞稿、App Store／Google Play 官方頁），`checked_on` 2026-09-14；審稿時逐篇用 curl／Hugging Face API／iTunes lookup 複核關鍵數字（審稿記錄在工作區 review-log.md）。
+- 沒有合作連結（repo 內無聯盟網址）。
+- 撰稿當天查到、與總表指派不同的事實（正文照官網寫）：MiniMax 影片主力已是 MiniMax H3（2026-08-03 開源）；M 系列最新 M3、授權愈新愈嚴（M1 Apache 2.0 → M2/M2.1 改 MIT → M2.7 非商業 → M3 社群授權）；音樂付費 API 自 2026-08-20 不開放新使用者，改指向 MiniMax Audio 與開源 Music 3；MiniMax Agent 升級後稱 Mavis、手機註冊限中國大陸門號；DeepSeek 現役為 V4.1-Flash／V4-Pro，deepseek-chat／reasoner 舊名 2026-07-24 停用；Qwen Chat 改名 Qwen Studio、最新 Qwen3.8、三種授權；Kimi 旗艦 K3、platform.moonshot.* 轉到 platform.kimi.*；豆包台灣區 App Store 查不到官方版；Le Chat 改名 Mistral Vibe、Magistral／Devstral／Pixtral 已列 Deprecated；Grok 官網公司名寫 SpaceXAI LLC；Meta AI 主力模型改為 Muse Spark；Copilot Pro 停售、企業版台灣以新台幣報價；Apple iOS 27 於 9 月 15 日推出、伺服器端功能有每日使用限制；LINE 台灣無內建 AI 助理入口（Agent i／AI Friends 只有日文說明）。
+- 台灣可用性一律當天實查（iTunes lookup、Google Play 台灣參數），無法從台灣網路實測的寫「以官網為準」；政府規範只引 moda.gov.tw／ey.gov.tw／資安署公告原文並註明只適用公務機關。
+- 標題與總表：十一篇在撰稿後調整了標題，`docs/life-ai-series.md` 批次 06 列已同步。
+- 代理統計：二十個 Opus 撰稿代理，每篇 17–53 分鐘、18–34 萬 token；第一波七個因帳號額度撞牆重跑一次（額度 16:10Z 重置）。
+- 合併後：部署，然後在主機跑 `python -m app.cli guides-import --actor-email <admin> --dry-run`（應為二十篇 `create`），再 `--publish`。

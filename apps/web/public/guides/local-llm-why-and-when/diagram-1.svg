@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">本機 vs 雲端：資料流向與費用結構對照 / Local vs cloud AI: data flow and cost structure</title>
+  <desc id="desc">左右對照圖，分成上下兩段。上段是資料流向：左邊雲端 AI，提示詞與檔案從你的電腦送到服務商機房運算後再把答案送回，因此提示詞離開這台電腦，隱私要看對方的隱私政策，沒有網路就完全不能用；右邊本機模型，提示詞、檔案與模型都在同一台電腦上，官方文件寫明本機執行時不會送出提示詞，只有下載模型與更新軟體時需要連網。下段是費用結構：雲端是訂閱按月或按年扣款，加上 API 按用量計費，屬於持續支出，停用才停止付費；本機是硬體一次性支出加上跑的時候才花的電費，模型多半免費下載，屬於一次投入、之後主要是電費。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrowBlue" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#2F6F9F"/>
+    </marker>
+    <marker id="arrowTeal" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#0D6B68"/>
+    </marker>
+    <marker id="arrowOrange" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#D97A2B"/>
+    </marker>
+  </defs>
+
+  <text x="70" y="52" font-size="30" font-weight="700" fill="#102A2B">本機 vs 雲端：提示詞走到哪裡，錢從哪裡出去</text>
+  <text x="70" y="84" font-size="18" fill="#5C6B6B">Local vs cloud AI: where your prompt goes, and how you pay</text>
+
+  <rect x="70" y="110" width="700" height="56" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="420" y="147" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">雲端 AI：資料出門，費用持續</text>
+  <rect x="830" y="110" width="700" height="56" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1180" y="147" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">本機模型：資料留下，費用一次</text>
+
+  <text x="800" y="208" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">資料流向</text>
+
+  <rect x="95" y="250" width="245" height="90" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="217" y="290" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">你的電腦</text>
+  <text x="217" y="318" font-size="17" fill="#5C6B6B" text-anchor="middle">提示詞、檔案</text>
+  <rect x="500" y="250" width="245" height="90" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="622" y="290" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">服務商機房</text>
+  <text x="622" y="318" font-size="17" fill="#5C6B6B" text-anchor="middle">在對方硬體運算</text>
+  <line x1="346" y1="283" x2="492" y2="283" stroke="#2F6F9F" stroke-width="4" marker-end="url(#arrowBlue)"/>
+  <line x1="494" y1="313" x2="348" y2="313" stroke="#2F6F9F" stroke-width="4" marker-end="url(#arrowBlue)"/>
+  <text x="420" y="268" font-size="16" fill="#5C6B6B" text-anchor="middle">提示詞送出</text>
+  <text x="420" y="336" font-size="16" fill="#5C6B6B" text-anchor="middle">答案送回</text>
+
+  <rect x="95" y="370" width="650" height="94" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="420" y="410" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">提示詞與檔案離開這台電腦</text>
+  <text x="420" y="442" font-size="17" fill="#5C6B6B" text-anchor="middle">隱私要看對方的隱私政策</text>
+
+  <rect x="95" y="486" width="650" height="64" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="420" y="524" font-size="18" fill="#102A2B" text-anchor="middle">沒有網路就完全不能用</text>
+
+  <rect x="855" y="240" width="650" height="220" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="885" y="274" font-size="19" font-weight="700" fill="#0D6B68">你的電腦</text>
+  <rect x="890" y="290" width="250" height="100" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="1015" y="332" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">提示詞、檔案</text>
+  <text x="1015" y="362" font-size="17" fill="#5C6B6B" text-anchor="middle">不離開這裡</text>
+  <rect x="1215" y="290" width="250" height="100" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="1340" y="332" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">模型在同一台</text>
+  <text x="1340" y="362" font-size="17" fill="#5C6B6B" text-anchor="middle">機器上運算</text>
+  <line x1="1146" y1="340" x2="1209" y2="340" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrowTeal)"/>
+  <text x="1180" y="428" font-size="18" fill="#2E7D5B" text-anchor="middle">官方文件：本機執行時不會送出提示詞</text>
+
+  <rect x="855" y="486" width="650" height="64" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1180" y="524" font-size="18" fill="#102A2B" text-anchor="middle">只有下載模型與更新軟體時需要連網</text>
+  <line x1="1180" y1="484" x2="1180" y2="466" stroke="#D97A2B" stroke-width="4" marker-end="url(#arrowOrange)"/>
+
+  <line x1="70" y1="578" x2="1530" y2="578" stroke="#5C6B6B" stroke-width="2" stroke-dasharray="10 8"/>
+
+  <text x="800" y="616" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">費用結構</text>
+
+  <rect x="95" y="640" width="650" height="62" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="420" y="678" font-size="18" fill="#102A2B" text-anchor="middle">訂閱：按月或按年扣款</text>
+  <rect x="95" y="714" width="650" height="62" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="420" y="752" font-size="18" fill="#102A2B" text-anchor="middle">API：按用量計費，用多少算多少</text>
+  <rect x="95" y="788" width="650" height="64" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="420" y="828" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">持續支出：停用才停止付費</text>
+
+  <rect x="855" y="640" width="650" height="62" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1180" y="678" font-size="18" fill="#102A2B" text-anchor="middle">硬體：一次性支出</text>
+  <rect x="855" y="714" width="650" height="62" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1180" y="752" font-size="18" fill="#102A2B" text-anchor="middle">電費：跑的時候才花，模型多半免費下載</text>
+  <rect x="855" y="788" width="650" height="64" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1180" y="828" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">一次投入：之後主要是電費</text>
+
+  <text x="1540" y="880" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

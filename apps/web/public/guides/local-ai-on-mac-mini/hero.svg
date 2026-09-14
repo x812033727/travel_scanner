@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">一台小主機服務全家的裝置 / One small home server, many devices</title>
+  <desc id="desc">抽象插圖：左邊一個大圓角方塊代表放在家中、整天開著的小主機，裡面疊著四條長短不一的色條，代表載入記憶體的模型檔案；三條弧線從方塊向右散開，連到三個大小不同的圓角方框，代表家中的手機、平板與筆電，每個方框中央有一個圓點。底部一行字寫著「一台主機，全家共用」。畫面沒有任何品牌標誌、產品外形或介面。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- arcs from the box out to the devices -->
+  <path d="M 552 360 C 760 300, 960 240, 1168 258" fill="none" stroke="#5C6B6B" stroke-width="8" stroke-linecap="round"/>
+  <path d="M 552 392 C 790 412, 1010 478, 1218 500" fill="none" stroke="#5C6B6B" stroke-width="8" stroke-linecap="round"/>
+  <path d="M 552 424 C 760 512, 950 630, 1148 686" fill="none" stroke="#5C6B6B" stroke-width="8" stroke-linecap="round"/>
+
+  <!-- the always-on box, with model files stacked inside -->
+  <rect x="160" y="200" width="380" height="380" rx="52" fill="#E3F0EF" stroke="#0D6B68" stroke-width="10"/>
+  <rect x="220" y="267" width="260" height="42" rx="21" fill="#0D6B68"/>
+  <rect x="242" y="335" width="216" height="42" rx="21" fill="#2E7D5B"/>
+  <rect x="264" y="403" width="172" height="42" rx="21" fill="#D97A2B"/>
+  <rect x="286" y="471" width="128" height="42" rx="21" fill="#2F6F9F"/>
+
+  <!-- devices -->
+  <rect x="1180" y="170" width="140" height="200" rx="28" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="10"/>
+  <circle cx="1250" cy="270" r="26" fill="#2F6F9F"/>
+
+  <rect x="1230" y="420" width="280" height="170" rx="28" fill="#FFFFFF" stroke="#0D6B68" stroke-width="10"/>
+  <circle cx="1370" cy="505" r="30" fill="#0D6B68"/>
+
+  <rect x="1160" y="620" width="210" height="150" rx="28" fill="#FFFFFF" stroke="#D97A2B" stroke-width="10"/>
+  <circle cx="1265" cy="695" r="26" fill="#D97A2B"/>
+
+  <!-- quiet accents -->
+  <circle cx="300" cy="676" r="22" fill="#0D6B68"/>
+  <circle cx="404" cy="748" r="14" fill="#D97A2B"/>
+  <circle cx="486" cy="796" r="9" fill="#2E7D5B"/>
+  <circle cx="860" cy="150" r="13" fill="#D97A2B"/>
+
+  <text x="820" y="848" font-size="50" font-weight="bold" fill="#102A2B" text-anchor="middle">一台主機，全家共用</text>
+</svg>

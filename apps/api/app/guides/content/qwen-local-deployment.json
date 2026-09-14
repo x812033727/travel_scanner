@@ -1,0 +1,404 @@
+{
+  "slug": "qwen-local-deployment",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "本機跑 Qwen：中文表現與設定",
+      "description": "Qwen 開放權重版本可以用 Ollama 或 LM Studio 下載到自己的電腦跑。這篇用 2026 年 9 月 14 日查證的 Ollama 模型庫、Hugging Face 模型卡與官方文件，說清楚當代有哪些標籤與檔案大小、拉取與執行的指令、thinking 模式怎麼開關、繁體中文要怎麼用系統提示詞固定下來、上下文視窗預設多少要調，以及哪些版本是 Apache 2.0、哪一個用自訂授權。",
+      "hero": {
+        "src": "/guides/qwen-local-deployment/hero.jpg",
+        "alt": "插圖：一台電腦連著一排大小不同的模型方塊，右邊是一個標示繁體中文的對話框",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Qwen（通義千問）大部分版本的權重是公開下載的，所以它不只是一個網頁服務：把檔案抓回來，用 Ollama 或 LM Studio 就能在自己的電腦上跑，對話不會送到別人的伺服器。但有一件事要先講清楚，官方模型卡沒有任何一句保證輸出會是繁體中文，台灣用語得靠你在系統提示詞裡自己指定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇是實作篇：當天官方模型庫有哪些標籤與檔案大小、拉取與執行要打什麼指令、thinking 模式怎麼開關、繁體中文怎麼固定下來、上下文視窗預設多少要怎麼調、哪些版本可以商用。指令照官方文件原文抄，數字全部取自 2026 年 9 月 14 日的官方頁面；本文沒有實機測試，圖形介面的步驟以官網當天版本為準。"
+        },
+        {
+          "type": "link",
+          "text": "通義千問 Qwen：開放權重模型家族與 Qwen Studio",
+          "url": "https://mokaair.com/zh-TW/life/qwen-alibaba-models-guide"
+        },
+        {
+          "type": "heading",
+          "text": "先查當天的標籤，別照舊文章打指令",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Qwen 的版本號換得很快，一年前的教學裡那些指令現在多半指到舊模型。查證當天在 Ollama 模型庫搜尋 qwen，屬於當代的四個檔案庫是 qwen3.5、qwen3.6、qwen3.8 與 qwen3.8-flash-next；舊的 qwen3 與 qwen2.5 還在，但頁面顯示的更新時間分別是十一個月前與一年前。四個裡面尺寸最齊全的是 qwen3.5，家用電腦通常從這一排挑。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "qwen3.5：0.8b 是 1.0GB、2b 是 2.7GB、4b 是 3.4GB、9b 是 6.6GB、27b 是 17GB、35b 是 24GB、122b 是 81GB，每個標籤都標 256K 上下文視窗、可輸入文字與圖片；qwen3.5:latest 指向 9b。",
+            "qwen3.6：27b 是 18GB、35b 是 23GB，latest 指向 35b，另外有一組 27b-coding 標籤。",
+            "qwen3.8：只有 27b 一個尺寸、18GB，latest 就是它，庫頁標了 vision、tools、thinking 三種能力。",
+            "qwen3.8-flash-next：只有 125b-a6b，q4_K_M 是 120GB、q8_0 是 189GB，庫頁寫它是 Qwen4 架構的實驗性預覽。",
+            "標籤名稱帶 cloud 的（例如 qwen3.5:cloud）跑在 Ollama 的雲端，不是你的電腦，別誤以為選了就是離線可用。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "檔案大小是要下載的量，也是記憶體的下限；但官方沒有給「幾 GB 記憶體配哪個模型」的對照表，跑不跑得動要自己算，以官網為準。標籤尾巴的 q4_K_M、q8_0 是量化格式，同一個模型換一種量化，檔案大小差好幾倍。"
+        },
+        {
+          "type": "link",
+          "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
+          "url": "https://mokaair.com/zh-TW/life/local-llm-hardware-requirements"
+        },
+        {
+          "type": "link",
+          "text": "量化是什麼：GGUF、Q4、Q8 怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/gguf-quantization-explained"
+        },
+        {
+          "type": "link",
+          "text": "量化（Quantization）：用較少位元執行模型的取捨",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-quantization"
+        },
+        {
+          "type": "heading",
+          "text": "拉取與執行：兩個指令就開始對話",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Ollama 裝好之後，下載與執行是兩個指令，官方 CLI 文件寫得很短：先用 pull 把檔案抓下來，再用 run 開對話，離開打 /bye。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "下載、執行與確認模型載在哪裡（照 Ollama CLI 文件）",
+          "code": "# 下載模型\nollama pull qwen3.5:9b\n\n# 開始對話，離開時輸入 /bye\nollama run qwen3.5:9b\n\n# 看模型目前載到哪裡\nollama ps"
+        },
+        {
+          "type": "paragraph",
+          "text": "ollama ps 要看一眼。官方常見問題寫，PROCESSOR 欄位顯示 100% GPU 表示整個模型載進顯示記憶體，100% CPU 表示全部在系統記憶體，48%/52% CPU/GPU 這種寫法表示兩邊各放一部分。回答慢到不能用，多半就是掉到 CPU 了。"
+        },
+        {
+          "type": "link",
+          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+        },
+        {
+          "type": "paragraph",
+          "text": "不想打指令就用 LM Studio。官方模型目錄當天列得到 Qwen3.8（27B）、Qwen3.6 與 Qwen3.5（2B、4B、9B、27B、35B），在 Discover 分頁搜尋名稱就能下載。載入設定（GPU 卸載、上下文大小、Flash Attention）在 My Models 分頁按齒輪圖示改，官方文件說改完會變成這個模型的預設值，之後從任何地方載入都套用。"
+        },
+        {
+          "type": "link",
+          "text": "LM Studio 入門：圖形介面跑本機模型",
+          "url": "https://mokaair.com/zh-TW/life/lm-studio-getting-started"
+        },
+        {
+          "type": "heading",
+          "text": "thinking 模式怎麼開、怎麼關",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Qwen 這幾代預設會先思考再回答。Ollama 文件寫得明白：對支援的模型，thinking 在 CLI 與 API 都預設開啟，思考過程放在 thinking 欄位、最後答案放在 content 欄位。要開、要關、要藏起來，指令都在文件裡。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "在 Ollama 切換 thinking（照 docs.ollama.com 的 thinking 頁）",
+          "code": "# 這一次要思考\nollama run qwen3.5:9b --think \"幫我比較兩種行程安排\"\n\n# 這一次不要思考\nollama run qwen3.5:9b --think=false \"把這段話縮成一句\"\n\n# 照樣思考，但不要把思考過程印出來\nollama run qwen3.5:9b --hidethinking \"9.9 和 9.11 哪個大\"\n\n# 在互動模式裡隨時切換\n/set think\n/set nothink"
+        },
+        {
+          "type": "paragraph",
+          "text": "API 那邊是 think 欄位，接受 true 與 false，也接受 low、medium、high、max 幾個等級，max 表示最高的思考等級。模型卡自己用的是另一套名字：Qwen3.8-27B 的模型卡寫 thinking 預設開啟、可以逐次關掉，思考深度用 reasoning_effort 調，等級是 xhigh（預設）、medium、low，另外 preserve_thinking 預設開啟，會把歷史訊息裡的思考脈絡留下來。兩套名稱不同，用 Ollama 就照 Ollama 文件的欄位，用 vLLM、SGLang 這類服務框架才輪到模型卡的參數。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "別把 /nothink 打進提示詞",
+          "text": "Qwen3.5 的模型卡有一句很容易被忽略：這一代不再支援 Qwen3 的 /think 與 /nothink 軟開關，也就是把這兩個字串打在提示詞裡沒有作用，舊教學抄來的寫法會安靜失效。要關思考就用 Ollama 的 --think=false，或在互動模式輸入 /set nothink，那是 Ollama 的介面指令，不是送進提示詞的內容。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/qwen-local-deployment/diagram-1.svg",
+          "alt": "流程圖：選版本、拉取、設定繁體中文系統提示詞、開始對話四個步驟",
+          "width": 1600,
+          "height": 900,
+          "caption": "從左到右看：先在 Ollama 標籤頁挑尺寸，拉取，用 Modelfile 把繁體中文規則寫死，最後才開始對話與調整思考、上下文。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "繁體中文輸出：用系統提示詞固定下來",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先看模型卡怎麼寫語言支援。Qwen3.5 的模型卡列了「擴充到 201 種語言與方言」，同一張卡的評測表裡，中文評測 C-Eval 一欄 Qwen3.5-9B 是 88.2、Qwen3.5-4B 是 85.1。但整張卡沒有一句把繁體和簡體分開講，也沒有提到台灣用語；Qwen3.8-27B 的模型卡更直接沒有列語言數量。換句話說，繁體不是一個可以勾的選項，是你要在系統提示詞裡明確要求的事。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "要求繁體中文台灣用語的系統提示詞範例",
+          "code": "你是一位以台灣繁體中文寫作的助理。\n\n規則：\n一、一律使用繁體中文，用台灣的詞彙：軟體、網路、資料、影片、品質、使用者。\n二、不要輸出簡體字，也不要中英夾雜，除非是產品名稱或指令的原文。\n三、專有名詞第一次出現時，中文後面用括號附上原文。\n四、不確定的事情直接說不確定，不要編造來源或數字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每次開新對話都貼一次很煩，Ollama 的做法是寫成 Modelfile。官方 Modelfile 文件裡，SYSTEM 指令設的就是系統訊息，PARAMETER 設取樣參數。下面這份把繁體規則和 Qwen3.5 模型卡建議的「非思考模式、一般任務」參數寫在一起，num_ctx 用的是 Ollama 文件建議的 64000。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Modelfile：把繁體中文規則與取樣參數寫死",
+          "code": "FROM qwen3.5:9b\n\nSYSTEM \"\"\"你是一位以台灣繁體中文寫作的助理。一律使用繁體中文與台灣詞彙，\n不要輸出簡體字；專有名詞第一次出現時中文後面用括號附上原文。\"\"\"\n\nPARAMETER temperature 0.7\nPARAMETER top_p 0.8\nPARAMETER top_k 20\nPARAMETER min_p 0\nPARAMETER num_ctx 64000"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "建立自訂模型再執行（照 Modelfile 文件的步驟）",
+          "code": "ollama create qwen-zhtw -f ./Modelfile\nollama run qwen-zhtw"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩個細節值得記住。第一，模型卡在非思考模式一般任務建議的 presence_penalty 是 1.5，但 Ollama 的 Modelfile 參數表裡沒有這個參數，只有 repeat_penalty，硬寫進去不會生效。第二，同一張模型卡自己警告過：presence_penalty 調高雖然能減少沒完沒了的重複，卻可能造成語言混用——中英夾雜、繁簡混雜多半是從這裡來的。遇到混用先把懲罰值調回去，而不是一直往提示詞裡加字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "LM Studio 的對應做法叫 Presets。官方文件說 Presets 把系統提示詞和進階設定欄位打包成一個具名設定，可以在不同對話之間切換，檔案存在 macOS 與 Linux 的 ~/.lmstudio/config-presets、Windows 的 %USERPROFILE% 底下的 .lmstudio/config-presets。把上面那段繁體規則存成一個 Preset，之後開新對話選它就好。"
+        },
+        {
+          "type": "heading",
+          "text": "上下文視窗：預設比你以為的小很多",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "模型卡的數字很漂亮：Qwen3.5-9B 與 Qwen3.8-27B 都寫原生 262,144 個 token，還可以再延伸，Qwen3.8-27B 寫可延伸到 1,000,000、Qwen3.5-9B 寫 1,010,000。Ollama 庫頁上的 qwen3.5、qwen3.6、qwen3.8 標籤則一律標 256K。"
+        },
+        {
+          "type": "paragraph",
+          "text": "但那是模型的上限，不是你實際拿到的。Ollama 常見問題寫預設上下文視窗是 4096 個 token；另一頁文件說會依顯示記憶體自動給預設值：不到 24 GiB 給 4k、24 到 48 GiB 給 32k、48 GiB 以上給 256k，而且建議需要大量上下文的工作，像網路搜尋、代理（Agent）與程式工具，至少設到 64000 個 token。丟一份長文件進去卻覺得模型「忘記前面」，多半不是模型笨，是視窗只開了 4096。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "把上下文視窗調大（照 Ollama 的常見問題與上下文長度文件）",
+          "code": "# 啟動服務時改掉預設值\nOLLAMA_CONTEXT_LENGTH=64000 ollama serve\n\n# 或在 ollama run 的互動模式裡臨時改\n/set parameter num_ctx 64000"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件同時提醒，上下文開得越大、要的記憶體越多，調完最好再用 ollama ps 看一次，確認模型沒有因為記憶體不夠被擠去 CPU。"
+        },
+        {
+          "type": "heading",
+          "text": "授權：不是每個 Qwen 都是 Apache 2.0",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Ollama 的標籤頁不寫授權，要回 Hugging Face 的模型卡看。查證當天用 Hugging Face 的模型 API 逐一核對 license 標籤：Qwen3.5 的 0.8B、2B、4B、9B、27B、35B-A3B、122B-A10B，以及 Qwen3.6-27B、Qwen3.6-35B-A3B、Qwen3.8-27B，全部標 apache-2.0，商用沒有額外門檻。Qwen3.8-Flash-Next 不一樣，license 欄標 other、license_name 標 qwen-community-1.0。"
+        },
+        {
+          "type": "paragraph",
+          "text": "那份 Qwen Community License 1.0 的原文有兩條額外條件。一是拿去做的商業產品或服務，如果每月活躍使用者超過 100,000,000 人、或每月營收超過 20,000,000 美元，就要把模型名稱明顯標在產品介面上。二是你或關係企業如果在做「模型即服務」或「AI 工作助理」生意，商業使用前要另外向 Qwen 取得授權；純內部使用、而且不把模型、輸出或底層模型能力提供給第三方，不受這一條限制。個人在自己電腦上跑不會碰到這兩條，但公司要上線前該讀原文。"
+        },
+        {
+          "type": "link",
+          "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+        },
+        {
+          "type": "table",
+          "header": [
+            "Ollama 標籤",
+            "檔案大小",
+            "授權",
+            "官方描述的定位"
+          ],
+          "rows": [
+            [
+              "qwen3.5:4b",
+              "3.4GB",
+              "Apache 2.0",
+              "同代常用的小尺寸，文字加圖片輸入"
+            ],
+            [
+              "qwen3.5:9b",
+              "6.6GB",
+              "Apache 2.0",
+              "qwen3.5:latest 指向這一個"
+            ],
+            [
+              "qwen3.5:27b",
+              "17GB",
+              "Apache 2.0",
+              "同代中間尺寸"
+            ],
+            [
+              "qwen3.5:35b",
+              "24GB",
+              "Apache 2.0",
+              "混合專家，模型卡名稱是 35B-A3B"
+            ],
+            [
+              "qwen3.6:27b",
+              "18GB",
+              "Apache 2.0",
+              "官方主打代理程式設計與思考保留"
+            ],
+            [
+              "qwen3.8:27b",
+              "18GB",
+              "Apache 2.0",
+              "當代最新，27B 密集視覺語言模型"
+            ],
+            [
+              "qwen3.8-flash-next:125b-a6b-q4_K_M",
+              "120GB",
+              "Qwen Community License 1.0",
+              "Qwen4 架構的實驗性預覽"
+            ]
+          ],
+          "caption": "檔案大小取自 Ollama 標籤頁、授權取自 Hugging Face 模型卡，查證於 2026 年 9 月。檔案大小不等於執行時的記憶體需求。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後提醒一句：本機跑的開放權重版本和官方代管版本不是同一回事。Qwen3.8-27B 的模型卡自己就寫，之後會有代管版本，預設給更長的上下文與官方內建工具；別把網頁上看到的表現直接套到自己電腦上那一份。要比較家族成員或別家的中文模型，站上另有兩篇可以接著看。"
+        },
+        {
+          "type": "link",
+          "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
+          "url": "https://mokaair.com/zh-TW/life/deepseek-local-with-ollama"
+        },
+        {
+          "type": "link",
+          "text": "中國系 AI 模型比較：DeepSeek、Qwen、Kimi、豆包、MiniMax",
+          "url": "https://mokaair.com/zh-TW/life/chinese-ai-models-comparison"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Ollama 模型庫 qwen 搜尋結果（當代 Qwen 檔案庫與尺寸標籤）",
+          "url": "https://ollama.com/search?q=qwen",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama qwen3.5 標籤頁（各尺寸檔案大小、256K 上下文與輸入型態）",
+          "url": "https://ollama.com/library/qwen3.5/tags",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama qwen3.6 標籤頁（27b 與 35b 的檔案大小與 coding 標籤）",
+          "url": "https://ollama.com/library/qwen3.6/tags",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama qwen3.8 標籤頁（27b 的檔案大小與上下文）",
+          "url": "https://ollama.com/library/qwen3.8/tags",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama qwen3.8 模型頁（thinking 預設開啟與 reasoning_effort 說明）",
+          "url": "https://ollama.com/library/qwen3.8",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama qwen3.8-flash-next 標籤頁（125b-a6b 各量化的檔案大小）",
+          "url": "https://ollama.com/library/qwen3.8-flash-next/tags",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 文件：Thinking（think 欄位、CLI 旗標與 /set nothink）",
+          "url": "https://docs.ollama.com/capabilities/thinking",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 文件：CLI Reference（pull、run、ps、create 指令）",
+          "url": "https://docs.ollama.com/cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 文件：Modelfile Reference（SYSTEM 與 PARAMETER 參數表）",
+          "url": "https://docs.ollama.com/modelfile",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 文件：Context length（預設值、64000 建議與 ollama ps）",
+          "url": "https://docs.ollama.com/context-length",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 文件：FAQ（預設 4096、/set parameter 與 PROCESSOR 欄位）",
+          "url": "https://docs.ollama.com/faq",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face Qwen3.5-9B 模型卡（201 種語言、上下文、取樣參數與軟開關）",
+          "url": "https://huggingface.co/Qwen/Qwen3.5-9B",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face Qwen3.8-27B 模型卡（thinking 控制、上下文與最佳實務）",
+          "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face 模型 API：Qwen3.8-Flash-Next（license 與 license_name 標籤）",
+          "url": "https://huggingface.co/api/models/Qwen/Qwen3.8-Flash-Next",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face 模型 API：Qwen 官方組織模型清單（各版本 license 標籤）",
+          "url": "https://huggingface.co/api/models?author=Qwen",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Qwen Community License 1.0 授權原文（兩條額外商用條件）",
+          "url": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next/raw/main/LICENSE",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub QwenLM/Qwen3.8 README（版本沿革與本機執行方式）",
+          "url": "https://github.com/QwenLM/Qwen3.8",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LM Studio 模型目錄（Qwen3.8、Qwen3.6、Qwen3.5 可下載的尺寸）",
+          "url": "https://lmstudio.ai/models",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LM Studio 文件：Config Presets（把系統提示詞存成具名設定與存放路徑）",
+          "url": "https://lmstudio.ai/docs/app/presets",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LM Studio 文件：Per-model Defaults（在 My Models 分頁改載入設定）",
+          "url": "https://lmstudio.ai/docs/app/advanced/per-model",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
