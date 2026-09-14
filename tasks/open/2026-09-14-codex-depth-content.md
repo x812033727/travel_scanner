@@ -311,3 +311,12 @@ Run from the repository root:
 - npm run check:tasks
 
 Preview commands and full implementation history are in docs/codex-learning/README.md and progress.md. Do not substitute static checks or historical browser results for the blocked final preview.
+
+
+## Full-text checkpoint 1 continuation — 2026-09-14
+
+- Read remaining 07, 05, 35, 36, 37 in all five locales, plus metadata, captions and actual official documentation. First checkpoint now 10 read / 9 editorial passes / 06 changes required. Unique series totals: 15 read / 13 editorial passes / 2 changes required / 45 unread; final accepted remains 0/60.
+- Corrected CLI shell/session transitions, macOS TextEdit menu and restart steps, WSL install OS prerequisites, Japanese callback wording and Korean metadata punctuation. Viewed both existing prompting reference images; removed inaccurate left-alignment wording from five-locale alt text without changing images or captions.
+- Original 32 code blocks across five lessons and all source arrays remain exact. Five-language metadata/projections match. Latest integrity 60/300, compiler 9, API 9, Ruff, catalogue and 412-task checks passed; audit 0 errors / 21 original advisories. A transient 22nd length warning was resolved by removing one redundant English sentence.
+- Existing preview and 03/06 edit denials remain in force; no retries or alternative route. No product model session, installation, new browser acceptance, PR, import or deployment.
+- Next: checkpoint 2 new lessons 14, 38, 39, 40, 15, 41, 09; reuse 03/04/10 representative results without double counting. Evidence: docs/codex-learning/evidence/full-text-checkpoint-1.json.

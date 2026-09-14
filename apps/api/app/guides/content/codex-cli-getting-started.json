@@ -262,7 +262,7 @@
         },
         {
           "type": "paragraph",
-          "text": "再次 /exit，使用文字編輯器獨立開啟兩個檔案比對。另做一次缺檔測試：回到 Codex 後要求讀取 greeting-missing.txt，並明說檔案不存在就回報、不要建立。預期是清楚指出缺檔，原檔和備份不受影響。這能分辨有查檔案與憑名稱猜測內容的回覆。"
+          "text": "修改完成後，先在目前的 Codex 工作階段做一次缺檔測試：要求讀取 greeting-missing.txt，並明說檔案不存在就回報、不要建立。預期是清楚指出缺檔，原檔和備份不受影響。這能分辨有查檔案與憑名稱猜測內容的回覆。接著輸入 /exit 回到系統終端機，再使用文字編輯器獨立開啟兩個檔案比對。"
         },
         {
           "type": "paragraph",
@@ -632,7 +632,7 @@
         },
         {
           "type": "paragraph",
-          "text": "再次 /exit，使用文字编辑器独立开启两个档案比对。另做一次缺档测试：回到 Codex 后要求读取 greeting-missing.txt，并明说档案不存在就回报、不要建立。预期是清楚指出缺档，原档和备份不受影响。这能分辨有查档案与凭名称猜测内容的回复。"
+          "text": "修改完成后，先在目前的 Codex 工作阶段做一次缺档测试：要求读取 greeting-missing.txt，并明说档案不存在就回报、不要建立。预期是清楚指出缺档，原档和备份不受影响。这能分辨有查档案与凭名称猜测内容的回复。接著输入 /exit 回到系统终端机，再使用文字编辑器独立开启两个档案比对。"
         },
         {
           "type": "paragraph",
@@ -789,7 +789,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "The CLI is a terminal interface to Codex. Your shell starts programs; the Codex composer accepts tasks. Both use text, but interpret it differently. Complete "
+              "text": "The CLI is a terminal interface to Codex. Your shell starts programs; the Codex composer accepts tasks. Complete "
             },
             {
               "type": "article",
@@ -1002,7 +1002,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Exit again and independently compare both files in your editor. Add a missing-file test: ask Codex to read greeting-missing.txt and explicitly report absence without creating it. Expect a clear missing-file result while both existing files remain unchanged. This distinguishes inspection from guessing content based on a filename."
+          "text": "After editing, test a missing file in the current Codex session: ask it to read greeting-missing.txt and explicitly report absence without creating it. Expect a clear missing-file result while both existing files remain unchanged. This distinguishes inspection from guessing content based on a filename. Then enter /exit to return to the shell and independently compare both files in your editor."
         },
         {
           "type": "paragraph",
@@ -1372,7 +1372,7 @@
         },
         {
           "type": "paragraph",
-          "text": "もう一度 /exit し、エディターで二つのファイルを独立して比較します。欠落時も試します。Codex に greeting-missing.txt を読み、存在しなければ作成せず報告するよう依頼します。欠落が明示され、既存の二つが変わらないことを確認します。名前から内容を推測しただけの返答と区別できます。"
+          "text": "変更後は現在の Codex セッションで欠落時も試します。greeting-missing.txt を読み、存在しなければ作成せず報告するよう依頼します。欠落が明示され、既存の二つが変わらないことを確認します。名前から内容を推測しただけの返答と区別できます。その後 /exit でシェルに戻り、エディターで二つのファイルを独立して比較します。"
         },
         {
           "type": "paragraph",
@@ -1490,7 +1490,7 @@
     },
     "ko": {
       "title": "Codex CLI 설치와 시작",
-      "description": "환경에 맞는 설치 경로를 선택하고 로그인, 읽기, 한 줄 수정, 독립 검증, 세션 재개를 진행합니다. 반복 가능한 두 파일 실습과 없는 파일 확인을 포함합니다。",
+      "description": "환경에 맞는 설치 경로를 선택하고 로그인, 읽기, 한 줄 수정, 독립 검증, 세션 재개를 진행합니다. 반복 가능한 두 파일 실습과 없는 파일 확인을 포함합니다.",
       "hero": {
         "src": "/guides/codex-cli-getting-started/hero.jpg",
         "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
@@ -1742,7 +1742,7 @@
         },
         {
           "type": "paragraph",
-          "text": "다시 종료하고 편집기로 두 파일을 독립적으로 비교합니다. 없는 파일도 시험하세요. Codex에 greeting-missing.txt를 읽되 없으면 생성하지 말고 보고하라고 요청합니다. 파일이 없다는 명확한 결과와 기존 두 파일이 그대로인 것을 확인합니다. 파일명으로 내용을 추측하는 응답과 실제 확인을 구분할 수 있습니다."
+          "text": "수정 후 현재 Codex 세션에서 없는 파일도 시험하세요. greeting-missing.txt를 읽되 없으면 생성하지 말고 보고하라고 요청합니다. 파일이 없다는 명확한 결과와 기존 두 파일이 그대로인 것을 확인합니다. 파일명으로 내용을 추측하는 응답과 실제 확인을 구분할 수 있습니다. 이어서 /exit로 셸에 돌아온 뒤 편집기로 두 파일을 독립적으로 비교합니다."
         },
         {
           "type": "paragraph",

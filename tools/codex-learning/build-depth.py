@@ -5,10 +5,11 @@ The legacy JSON remains a fallback until all translations of a lesson are author
 """
 import argparse
 import json
-from pathlib import Path
 import re
-from hashlib import sha256
 import subprocess
+from hashlib import sha256
+from pathlib import Path
+
 import mistune
 from opencc import OpenCC
 
@@ -32,11 +33,11 @@ REFERENCE_ALT = {
         "ko": "수정한 실습 사이트. 제목은 Small steps, clear progress.이며 Add task 버튼에 주황색 키보드 포커스 테두리가 있습니다.",
     },
     7: {
-        "zh-TW": "提示詞練習成果：輸入框提示為 Plan one small step；Save task 按鈕內的文字靠左對齊，按鈕有橘色焦點框。",
-        "zh-CN": "提示词练习成果：输入框提示为 Plan one small step；Save task 按钮内的文字靠左对齐，按钮有橙色焦点框。",
-        "en": "Prompt exercise result: the input hint reads Plan one small step. The Save task button has left-aligned text and an orange focus outline.",
-        "ja": "依頼文の練習結果。入力欄のヒントは Plan one small step。Save task ボタン内の文字が左寄せになり、橙色のフォーカス枠が表示されています。",
-        "ko": "프롬프트 실습 결과. 입력 힌트는 Plan one small step입니다. Save task 버튼 안의 글자는 왼쪽 정렬이며 버튼에 주황색 포커스 테두리가 있습니다.",
+        "zh-TW": "提示詞練習成果：輸入框提示為 Plan one small step；Save task 按鈕有橘色焦點框。",
+        "zh-CN": "提示词练习成果：输入框提示为 Plan one small step；Save task 按钮有橙色焦点框。",
+        "en": "Prompt exercise result: the input hint reads Plan one small step. The Save task button has an orange focus outline.",
+        "ja": "依頼文の練習結果。入力欄のヒントは Plan one small step。Save task ボタンに橙色のフォーカス枠が表示されています。",
+        "ko": "프롬프트 실습 결과. 입력 힌트는 Plan one small step입니다. Save task 버튼에 주황색 포커스 테두리가 있습니다.",
     },
 }
 SCREENSHOT_CAPTIONS = {

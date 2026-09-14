@@ -83,7 +83,7 @@
         },
         {
           "type": "paragraph",
-          "text": "沒有安裝 WSL 的讀者，先確認電腦政策允許啟用虛擬化與 WSL，再按 Microsoft 文件在系統管理員 PowerShell 執行 wsl --install，依提示重開機與建立 Linux 使用者。這是安裝作業系統環境，不是只下載一個 npm 套件；需要安排中斷其他工作的時間。公司電腦依管理政策處理，不另教繞過限制。"
+          "text": "先用 winver 核對 Windows 版本；Microsoft 的 wsl --install 簡化流程要求 Windows 11，或 Windows 10 2004（組建 19041）以上。舊版請用官方手動安裝文件，不要直接套用下面命令。 沒有安裝 WSL 的讀者，先確認電腦政策允許啟用虛擬化與 WSL，再按 Microsoft 文件在系統管理員 PowerShell 執行 wsl --install，依提示重開機與建立 Linux 使用者。這是安裝作業系統環境，不是只下載一個 npm 套件；需要安排中斷其他工作的時間。公司電腦依管理政策處理，不另教繞過限制。"
         },
         {
           "type": "code",
@@ -182,7 +182,7 @@
         },
         {
           "type": "paragraph",
-          "text": "上段是 Codex 對話，不是 bash 命令。要求的目錄應是 Linux 練習資料夾，標記 LINUX-CLI-01；同時看實際讀取記錄。/exit 回 shell 後重跑 sha256sum、cat 和 ls，核對沒有改動。再要求讀取不存在的 note-missing.txt，預期清楚回報缺檔而不新增。能完成這兩種結果，才驗證安裝、登入、定位與讀取串在一起。"
+          "text": "上段是 Codex 對話，不是 bash 命令。要求的目錄應是 Linux 練習資料夾，標記 LINUX-CLI-01；同時看實際讀取記錄。接著在同一個 Codex 工作階段要求讀取不存在的 note-missing.txt，預期清楚回報缺檔而不新增。完成後才用 /exit 回 shell，重跑 sha256sum、cat 和 ls，核對沒有改動。能完成這兩種結果，才驗證安裝、登入、定位與讀取串在一起。"
         },
         {
           "type": "heading",
@@ -416,7 +416,7 @@
         },
         {
           "type": "paragraph",
-          "text": "If WSL is absent, confirm virtualization/WSL is permitted and follow Microsoft's instructions to run wsl --install in administrator PowerShell. Complete any requested reboot and Linux-user creation. This installs an operating-system environment, not just an npm package, so allow time to interrupt other work. Follow managed-device policy rather than bypassing it."
+          "text": "Check winver first: Microsoft’s simplified wsl --install procedure requires Windows 11 or Windows 10 version 2004 (build 19041) or later. Older versions require the official manual installation procedure rather than the command below. If WSL is absent, confirm virtualization/WSL is permitted and follow Microsoft's instructions to run wsl --install in administrator PowerShell. Complete any requested reboot and Linux-user creation. This installs an operating-system environment, not just an npm package, so allow time to interrupt other work. Follow managed-device policy rather than bypassing it."
         },
         {
           "type": "code",
@@ -515,7 +515,7 @@
         },
         {
           "type": "paragraph",
-          "text": "That is a Codex prompt, not a bash command. Expect the Linux practice directory, LINUX-CLI-01 and an actual read record. After /exit, rerun sha256sum, cat and ls to confirm no changes. Then request nonexistent note-missing.txt and expect an explicit absence report without creation. Both outcomes connect installation, authentication, location and reading into a verified workflow."
+          "text": "That is a Codex prompt, not a bash command. Expect the Linux practice directory, LINUX-CLI-01 and an actual read record. Next, request nonexistent note-missing.txt in the same Codex session and expect an explicit absence report without creation. Then use /exit to return to the shell and rerun sha256sum, cat and ls to confirm no changes. Both outcomes connect installation, authentication, location and reading into a verified workflow."
         },
         {
           "type": "heading",
@@ -749,7 +749,7 @@
         },
         {
           "type": "paragraph",
-          "text": "未導入なら仮想化と WSL が許可されているか確認し、Microsoft の案内で管理者 PowerShell から wsl --install を実行します。必要な再起動と Linux ユーザー作成を終えます。npm パッケージだけでなく OS 環境を追加するので、他の作業を中断する時間も確保します。管理端末では規則に従います。"
+          "text": "まず winver で確認します。Microsoft の wsl --install による簡易導入は Windows 11、または Windows 10 2004（ビルド19041）以降が必要です。古い版は次のコマンドを流用せず、公式の手動導入手順を確認してください。 未導入なら仮想化と WSL が許可されているか確認し、Microsoft の案内で管理者 PowerShell から wsl --install を実行します。必要な再起動と Linux ユーザー作成を終えます。npm パッケージだけでなく OS 環境を追加するので、他の作業を中断する時間も確保します。管理端末では規則に従います。"
         },
         {
           "type": "code",
@@ -838,7 +838,7 @@
         },
         {
           "type": "paragraph",
-          "text": "各コマンドの完了を待ち、実際の認証案内に従います。WSL でホストのブラウザーを使っても、Linux 端末へ戻って完了を確認します。ブラウザーやローカル回帰が使えなければ login --help と公式認証ページを確認します。アカウントと組織が許可する場合だけ --device-auth を使い、Windows の認証ファイルをプロジェクトへコピーして解決しません。"
+          "text": "各コマンドの完了を待ち、実際の認証案内に従います。WSL でホストのブラウザーを使っても、Linux 端末へ戻って完了を確認します。ブラウザーやローカルのコールバックが使えなければ login --help と公式認証ページを確認します。アカウントと組織が許可する場合だけ --device-auth を使い、Windows の認証ファイルをプロジェクトへコピーして解決しません。"
         },
         {
           "type": "code",
@@ -848,7 +848,7 @@
         },
         {
           "type": "paragraph",
-          "text": "これは bash ではなく Codex の依頼です。Linux 練習フォルダー、LINUX-CLI-01、実際の読み取り記録を確認します。/exit 後に sha256sum、cat、ls で不変を確かめます。次にない note-missing.txt を要求し、作成せず欠落を示すことを確認します。二種類の結果で導入、認証、場所、読み取りの流れを検証します。"
+          "text": "これは bash ではなく Codex の依頼です。Linux 練習フォルダー、LINUX-CLI-01、実際の読み取り記録を確認します。次に同じ Codex セッションで存在しない note-missing.txt を要求し、作成せず欠落を示すことを確認します。その後 /exit でシェルに戻り、sha256sum、cat、ls で不変を確かめます。二種類の結果で導入、認証、場所、読み取りの流れを検証します。"
         },
         {
           "type": "heading",
@@ -1082,7 +1082,7 @@
         },
         {
           "type": "paragraph",
-          "text": "WSL이 없다면 가상화와 WSL 허용 여부를 확인하고 Microsoft 안내에 따라 관리자 PowerShell에서 wsl --install을 실행합니다. 필요한 재부팅과 Linux 사용자 생성을 마칩니다. npm 패키지 하나가 아닌 운영체제 환경을 설치하므로 다른 작업을 중단할 시간도 확보하세요. 관리 장치는 정책을 따릅니다."
+          "text": "먼저 winver를 확인하세요. Microsoft의 wsl --install 간편 설치에는 Windows 11 또는 Windows 10 2004(빌드 19041) 이상이 필요합니다. 이전 버전은 아래 명령을 그대로 쓰지 말고 공식 수동 설치 절차를 확인합니다. WSL이 없다면 가상화와 WSL 허용 여부를 확인하고 Microsoft 안내에 따라 관리자 PowerShell에서 wsl --install을 실행합니다. 필요한 재부팅과 Linux 사용자 생성을 마칩니다. npm 패키지 하나가 아닌 운영체제 환경을 설치하므로 다른 작업을 중단할 시간도 확보하세요. 관리 장치는 정책을 따릅니다."
         },
         {
           "type": "code",
@@ -1181,7 +1181,7 @@
         },
         {
           "type": "paragraph",
-          "text": "bash 명령이 아닌 Codex 요청입니다. Linux 실습 폴더, LINUX-CLI-01, 실제 읽기 기록을 확인합니다. /exit 후 sha256sum, cat, ls로 변경이 없음을 봅니다. 다음은 없는 note-missing.txt를 요청해 생성 없이 없다고 명시하는지 확인합니다. 두 결과로 설치, 인증, 위치, 읽기를 하나의 흐름으로 검증합니다."
+          "text": "bash 명령이 아닌 Codex 요청입니다. Linux 실습 폴더, LINUX-CLI-01, 실제 읽기 기록을 확인합니다. 이어서 같은 Codex 세션에서 없는 note-missing.txt를 요청해 생성 없이 없다고 명시하는지 확인합니다. 마친 뒤 /exit로 셸에 돌아와 sha256sum, cat, ls로 변경이 없음을 봅니다. 두 결과로 설치, 인증, 위치, 읽기를 하나의 흐름으로 검증합니다."
         },
         {
           "type": "heading",
@@ -1415,7 +1415,7 @@
         },
         {
           "type": "paragraph",
-          "text": "没有安装 WSL 的读者，先确认电脑政策允许启用虚拟化与 WSL，再按 Microsoft 文件在系统管理员 PowerShell 执行 wsl --install，依提示重开机与建立 Linux 使用者。这是安装作业系统环境，不是只下载一个 npm 套件；需要安排中断其他工作的时间。公司电脑依管理政策处理，不另教绕过限制。"
+          "text": "先用 winver 核对 Windows 版本；Microsoft 的 wsl --install 简化流程要求 Windows 11，或 Windows 10 2004（组建 19041）以上。旧版请用官方手动安装文件，不要直接套用下面命令。 没有安装 WSL 的读者，先确认电脑政策允许启用虚拟化与 WSL，再按 Microsoft 文件在系统管理员 PowerShell 执行 wsl --install，依提示重开机与建立 Linux 使用者。这是安装作业系统环境，不是只下载一个 npm 套件；需要安排中断其他工作的时间。公司电脑依管理政策处理，不另教绕过限制。"
         },
         {
           "type": "code",
@@ -1514,7 +1514,7 @@
         },
         {
           "type": "paragraph",
-          "text": "上段是 Codex 对话，不是 bash 命令。要求的目录应是 Linux 练习资料夹，标记 LINUX-CLI-01；同时看实际读取记录。/exit 回 shell 后重跑 sha256sum、cat 和 ls，核对没有改动。再要求读取不存在的 note-missing.txt，预期清楚回报缺档而不新增。能完成这两种结果，才验证安装、登入、定位与读取串在一起。"
+          "text": "上段是 Codex 对话，不是 bash 命令。要求的目录应是 Linux 练习资料夹，标记 LINUX-CLI-01；同时看实际读取记录。接著在同一个 Codex 工作阶段要求读取不存在的 note-missing.txt，预期清楚回报缺档而不新增。完成后才用 /exit 回 shell，重跑 sha256sum、cat 和 ls，核对没有改动。能完成这两种结果，才验证安装、登入、定位与读取串在一起。"
         },
         {
           "type": "heading",

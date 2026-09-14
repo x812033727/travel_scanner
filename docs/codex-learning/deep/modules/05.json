@@ -25,7 +25,7 @@
       "type": "p",
       "text": [
         "CLI 是在終端機操作 Codex 的入口。終端機負責啟動程式，Codex 輸入框負責接收任務；兩者外觀都像文字介面，但輸入的意思不同。先看[終端機與路徑](article:codex-terminal-paths)，能找到目前資料夾後再開始。圖中 01 是啟動前檢查，02 是工作階段，03 是檔案驗收。",
-        "The CLI is a terminal interface to Codex. Your shell starts programs; the Codex composer accepts tasks. Both use text, but interpret it differently. Complete [terminal and path basics](article:codex-terminal-paths) until you can identify the current folder. Diagram 01 represents preflight checks, 02 the session and 03 file verification.",
+        "The CLI is a terminal interface to Codex. Your shell starts programs; the Codex composer accepts tasks. Complete [terminal and path basics](article:codex-terminal-paths) until you can identify the current folder. Diagram 01 represents preflight checks, 02 the session and 03 file verification.",
         "CLI は端末から Codex を操作する入口です。シェルはプログラムを起動し、Codex の入力欄は依頼を受け取ります。どちらも文字中心ですが、入力の意味が異なります。[端末とパスの基礎](article:codex-terminal-paths)で現在のフォルダーを確認できるようにしてから進めます。図の 01 は起動前の確認、02 はセッション、03 はファイルの検証です。",
         "CLI는 터미널에서 Codex를 사용하는 인터페이스입니다. 셸은 프로그램을 실행하고 Codex 입력창은 작업 요청을 받습니다. 둘 다 문자 중심이지만 입력을 해석하는 방식이 다릅니다. [터미널과 경로 기초](article:codex-terminal-paths)에서 현재 폴더를 확인할 수 있게 된 다음 진행하세요. 그림의 01은 실행 전 확인, 02는 세션, 03은 파일 검증입니다."
       ]
@@ -254,10 +254,10 @@
     {
       "type": "p",
       "text": [
-        "再次 /exit，使用文字編輯器獨立開啟兩個檔案比對。另做一次缺檔測試：回到 Codex 後要求讀取 greeting-missing.txt，並明說檔案不存在就回報、不要建立。預期是清楚指出缺檔，原檔和備份不受影響。這能分辨有查檔案與憑名稱猜測內容的回覆。",
-        "Exit again and independently compare both files in your editor. Add a missing-file test: ask Codex to read greeting-missing.txt and explicitly report absence without creating it. Expect a clear missing-file result while both existing files remain unchanged. This distinguishes inspection from guessing content based on a filename.",
-        "もう一度 /exit し、エディターで二つのファイルを独立して比較します。欠落時も試します。Codex に greeting-missing.txt を読み、存在しなければ作成せず報告するよう依頼します。欠落が明示され、既存の二つが変わらないことを確認します。名前から内容を推測しただけの返答と区別できます。",
-        "다시 종료하고 편집기로 두 파일을 독립적으로 비교합니다. 없는 파일도 시험하세요. Codex에 greeting-missing.txt를 읽되 없으면 생성하지 말고 보고하라고 요청합니다. 파일이 없다는 명확한 결과와 기존 두 파일이 그대로인 것을 확인합니다. 파일명으로 내용을 추측하는 응답과 실제 확인을 구분할 수 있습니다."
+        "修改完成後，先在目前的 Codex 工作階段做一次缺檔測試：要求讀取 greeting-missing.txt，並明說檔案不存在就回報、不要建立。預期是清楚指出缺檔，原檔和備份不受影響。這能分辨有查檔案與憑名稱猜測內容的回覆。接著輸入 /exit 回到系統終端機，再使用文字編輯器獨立開啟兩個檔案比對。",
+        "After editing, test a missing file in the current Codex session: ask it to read greeting-missing.txt and explicitly report absence without creating it. Expect a clear missing-file result while both existing files remain unchanged. This distinguishes inspection from guessing content based on a filename. Then enter /exit to return to the shell and independently compare both files in your editor.",
+        "変更後は現在の Codex セッションで欠落時も試します。greeting-missing.txt を読み、存在しなければ作成せず報告するよう依頼します。欠落が明示され、既存の二つが変わらないことを確認します。名前から内容を推測しただけの返答と区別できます。その後 /exit でシェルに戻り、エディターで二つのファイルを独立して比較します。",
+        "수정 후 현재 Codex 세션에서 없는 파일도 시험하세요. greeting-missing.txt를 읽되 없으면 생성하지 말고 보고하라고 요청합니다. 파일이 없다는 명확한 결과와 기존 두 파일이 그대로인 것을 확인합니다. 파일명으로 내용을 추측하는 응답과 실제 확인을 구분할 수 있습니다. 이어서 /exit로 셸에 돌아온 뒤 편집기로 두 파일을 독립적으로 비교합니다."
       ]
     },
     {

@@ -227,10 +227,10 @@
     {
       "type": "p",
       "text": [
-        "上段貼進 Codex 對話，不是 PowerShell。回覆和讀取記錄應包含 WINDOWS-CLI-01 及正確目錄。用 /exit 回到 PowerShell，再執行讀檔、列檔和雜湊，確認內容未變、沒有新增練習檔。先記錄這個成功基準，再刻意要求讀取 missing-note.txt，預期回報不存在而不建立。若讀到其他內容，先處理工作目錄錯誤。",
-        "Paste that prompt into Codex, not PowerShell. The response and read record should identify WINDOWS-CLI-01 and the correct directory. Use /exit, then read, list and hash again in PowerShell to confirm unchanged content and no extra practice files. After establishing success, request missing-note.txt and expect absence without creation. Unexpected content points first to a working-directory problem.",
-        "この依頼は PowerShell ではなく Codex に入力します。返答と記録で WINDOWS-CLI-01 と正しい場所を確認します。/exit 後に PowerShell で再度読み取り、一覧、ハッシュを確認し、変更や余計な練習ファイルがないことを確かめます。成功後に missing-note.txt を要求し、作成せず欠落を報告するか試します。異なる内容ならまず作業場所を直します。",
-        "이 요청은 PowerShell이 아닌 Codex에 입력합니다. 응답과 읽기 기록에서 WINDOWS-CLI-01과 올바른 폴더를 확인합니다. /exit 후 PowerShell에서 다시 읽고 목록과 해시를 확인해 내용 변경이나 추가 연습 파일이 없는지 봅니다. 성공 기준을 확보한 후 missing-note.txt를 요청해 생성 없이 없다고 보고하는지 시험합니다. 다른 내용이 나오면 먼저 작업 위치를 바로잡으세요."
+        "上段貼進 Codex 對話，不是 PowerShell。回覆和讀取記錄應包含 WINDOWS-CLI-01 及正確目錄。先記錄這個成功基準，再在同一個 Codex 工作階段要求讀取 missing-note.txt，預期回報不存在而不建立。接著用 /exit 回到 PowerShell，再執行讀檔、列檔和雜湊，確認內容未變、沒有新增練習檔。若讀到其他內容，先處理工作目錄錯誤。",
+        "Paste that prompt into Codex, not PowerShell. The response and read record should identify WINDOWS-CLI-01 and the correct directory. After recording that success, request missing-note.txt in the same Codex session and expect absence without creation. Then use /exit and read, list and hash again in PowerShell to confirm unchanged content and no extra practice files. Unexpected content points first to a working-directory problem.",
+        "この依頼は PowerShell ではなく Codex に入力します。返答と記録で WINDOWS-CLI-01 と正しい場所を確認します。その成功を記録したら、同じ Codex セッションで missing-note.txt を要求し、作成せず欠落を報告するか試します。その後 /exit で PowerShell に戻り、再度読み取り、一覧、ハッシュを確認して、変更や余計な練習ファイルがないことを確かめます。異なる内容ならまず作業場所を直します。",
+        "이 요청은 PowerShell이 아닌 Codex에 입력합니다. 응답과 읽기 기록에서 WINDOWS-CLI-01과 올바른 폴더를 확인합니다. 성공 기준을 기록한 뒤 같은 Codex 세션에서 missing-note.txt를 요청해 생성 없이 없다고 보고하는지 시험합니다. 이어서 /exit로 PowerShell에 돌아온 뒤 다시 읽고 목록과 해시를 확인해 내용 변경이나 추가 연습 파일이 없는지 봅니다. 다른 내용이 나오면 먼저 작업 위치를 바로잡으세요."
       ]
     },
     {

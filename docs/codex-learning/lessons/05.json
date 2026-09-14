@@ -11,7 +11,7 @@
   },
   "text": {
     "zh-TW": [
-      "CLI 是在終端機使用 Codex 的方式。本篇統一用 npm 安裝，讓三平台有相同的檢查點；前提是已安裝可執行 node 與 npm 的環境。命令要貼在作業系統終端機，不是直接當作 Codex 對話輸入。",
+      "選擇自己的安裝平台，完成 CLI 登入、唯讀檢查、單行修改、獨立驗證與工作階段接續。包含可重做的兩檔練習與缺檔測試。",
       "Windows 開啟 PowerShell；macOS 開啟 Terminal；Linux 開啟終端機。先執行 node --version 與 npm --version。若找不到命令，先完成 Node.js 環境安裝與 PATH 設定，再繼續。練習資料夾使用尚不存在的名稱。",
       [
         "三平台都逐行執行下方安裝與版本命令。npm install -g @openai/codex 成功後，重新開一個終端機，確認 codex --version 能顯示版本；--help 是目前安裝版本的指令入口。",
@@ -24,7 +24,7 @@
       "請只列出目前工作目錄與檔案，說明你可讀取的練習資料夾，不要做任何修改。"
     ],
     "en": [
-      "The CLI runs Codex inside a terminal. This tutorial uses npm consistently across three operating systems, assuming a working Node.js and npm installation. Enter installation commands in your operating-system shell, not as messages inside a Codex conversation.",
+      "Choose an installation platform, sign in, inspect a file, make a one-line change, verify it independently and resume the session. Includes a repeatable two-file exercise and a missing-file test.",
       "Open PowerShell on Windows, Terminal on macOS or a terminal on Linux. Check node --version and npm --version first. If either is missing, set up Node.js and PATH before continuing. Use a new name for the practice folder.",
       [
         "On all three systems, run the installation and version checks below one line at a time. After npm install -g @openai/codex, open a fresh terminal and confirm codex --version. Use --help for the options supported by that installed release.",
@@ -37,7 +37,7 @@
       "List only the current working directory and files. Explain which practice folder you can read, without making changes."
     ],
     "ja": [
-      "CLI は端末で Codex を使う方法です。この手順では Node.js と npm が動く環境を前提に、三つの OS で npm を使います。インストール用コマンドは Codex の会話ではなく OS のシェルに入力します。",
+      "環境に合う導入経路を選び、ログイン、読み取り、一行変更、独立した検証、セッション再開を行います。二つのファイルで繰り返せる課題と欠落時の確認を含みます。",
       "Windows は PowerShell、macOS は Terminal、Linux は端末を開き、node --version と npm --version を確認します。見つからなければ Node.js と PATH を設定します。練習には新しいフォルダー名を使います。",
       [
         "下のコマンドを一行ずつ実行します。npm install -g @openai/codex の後、新しい端末で codex --version を確認します。--help は導入済みバージョンの参照先です。",
@@ -50,7 +50,7 @@
       "現在の作業ディレクトリとファイルだけを一覧にしてください。読める練習フォルダーを説明し、変更は行わないでください。"
     ],
     "ko": [
-      "CLI는 터미널에서 Codex를 사용하는 방법입니다. 이 문서는 Node.js와 npm이 작동한다는 전제에서 세 OS 모두 npm 설치를 사용합니다. 설치 명령은 Codex 대화가 아니라 운영체제 셸에 입력합니다.",
+      "환경에 맞는 설치 경로를 선택하고 로그인, 읽기, 한 줄 수정, 독립 검증, 세션 재개를 진행합니다. 반복 가능한 두 파일 실습과 없는 파일 확인을 포함합니다.",
       "Windows는 PowerShell, macOS는 Terminal, Linux는 터미널을 엽니다. node --version과 npm --version을 확인하고 없으면 Node.js와 PATH를 먼저 설정하세요. 연습 폴더는 새 이름을 사용합니다.",
       [
         "아래 명령을 한 줄씩 실행합니다. npm install -g @openai/codex 이후 새 터미널을 열어 codex --version을 확인합니다. --help는 설치된 버전이 지원하는 옵션을 보여 줍니다.",
