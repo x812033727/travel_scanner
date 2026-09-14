@@ -62,6 +62,7 @@ permanent, and the next hundred commits are written by several different agents.
 | S603 subprocess | 2 | The deployment agent's fixed command set, and one test running a repo script |
 | S310 `urlopen` | 2 | GitHub CI status on a built Request; health probe on a config URL |
 | S314 `xml` | 1 | **A real gap.** Suppressed here, filed as `2026-09-14-airalo-feed-utf16-doctype` |
+| S314/S310/S603 in `app/guides/pack_ingest.py` | 4 | Arrived from `main` after this task started — see below |
 | S110 try/except/pass | 1 | Deployment failure cleanup, which must not mask the original error |
 
 ### The one real finding
@@ -82,6 +83,18 @@ could violate, and in `tests/` an assert is the point. Turning it on would mean 
 comments across 20 files for no change in behaviour, and would bury the eight rules that
 actually found something. The `pyproject.toml` comment says to turn it back on first if the
 service ever runs with `-O`.
+
+### What arrived from main mid-task
+
+`main` gained `app/guides/pack_ingest.py` (#468) after this branch was cut, and the merge
+commit was the first place the new rules met it — CI went red on the PR while the branch
+alone was green. The content-pack CLI is not reachable from any request, so `S314` (an SVG
+from the repo workspace) and `S603` (headless Chromium, fixed argument list, `shell=False`)
+are suppressed with reasons. `S310` is the one with something behind it: the transport hands
+`urlopen` whatever URL Commons returned, and `urlopen` opens `file:` too. Filed as
+`2026-09-14-pack-ingest-urlopen-scheme` rather than fixed inline, for the same reason as the
+Airalo one — this task is about turning the lint on, not about changing another module's
+behaviour.
 
 ## How to verify
 

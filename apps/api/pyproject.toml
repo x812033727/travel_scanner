@@ -83,6 +83,22 @@ ignore = ["S101"]
 # for containing `<!DOCTYPE` or `<!ENTITY` and for exceeding 15 MB. See the note in
 # tasks/open/2026-09-13-ruff-flake8-bandit.md about the UTF-16 gap in that guard.
 "app/travel_services/jobs.py" = ["S314"]
+# The content-pack CLI (`python -m app.guides.pack_cli`). Nothing here is reachable from an
+# HTTP request: a person or a writing agent runs it over a workspace directory in this
+# repository. Each rule, in the order they fire:
+"app/guides/pack_ingest.py" = [
+    # `_parse_svg` reads a diagram from that workspace, and `check_svg` exists to refuse the
+    # dangerous shapes (external `url()`, `<script>`) rather than to trust them.
+    "S314",
+    # `UrllibTransport` exists because Wikimedia's edge refuses httpx's own connections. The
+    # URL is the Commons API endpoint or an `imageinfo` URL Commons itself returned — never
+    # anything a request supplied. See tasks/open/2026-09-14-pack-ingest-urlopen-scheme.md
+    # for the remaining scheme question, which is filed rather than assumed away.
+    "S310",
+    # `render_svg` runs headless Chromium with a fixed argument list and `shell=False`; the
+    # only variable parts are the resolved binary path and a temporary file this module wrote.
+    "S603",
+]
 # Test fixtures. The hardcoded passwords are the fixtures; the deployment agent cases need
 # real paths under /tmp because they bind a unix socket a second process has to find; one
 # case runs a repository script through `sys.executable` with literal arguments; and one
