@@ -41,6 +41,8 @@ if CONTENT_BASE != PREVIOUS:
         ('a9d5b40e7067b321ee886a817b1712aec44afc1b', 'afff8db5eea8104f9055f15c04b0825e3df3c6bf'),
         # PR #498: disjoint life content and evidence, no runtime/schema change; 14 checks passed.
         ('a9d5b40e7067b321ee886a817b1712aec44afc1b', '8c83e90ab401f05044f614e5843c00d26aaed3dd'),
+        # PR #494: three deferred dependency task records only; 14 checks passed.
+        ('a9d5b40e7067b321ee886a817b1712aec44afc1b', 'b3f8a241af46259ca5070131452c7dc39a63a7a7'),
     }
     assert (PREVIOUS, CONTENT_BASE) in reviewed_pairs, 'unreviewed integration baseline'
 ROOT = Path('/root/travel_scanner')
