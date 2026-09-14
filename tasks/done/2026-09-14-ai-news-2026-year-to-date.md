@@ -1,14 +1,14 @@
 ---
 id: 2026-09-14-ai-news-2026-year-to-date
 title: Publish five-language AI news from January 2026 to present
-status: review
+status: done
 priority: P2
 area: docs
 owner: codex-ai-news-ytd
 claimed_at: 2026-09-14T11:08:54Z
 created_at: 2026-09-14T10:58:34Z
-completed_at:
-branch: codex/ai-news-2026-year-to-date
+completed_at: 2026-09-14T16:04:43Z
+branch: codex/ai-news-ytd-publication-receipt
 depends_on: []
 scope:
   - docs/ai-news-2026-ytd
@@ -69,15 +69,15 @@ The user expanded the published ten-article AI news project to cover 2026-01-01 
 - [x] Official-source inventory covers every month January through September; existing news and active tutorial scopes are checked for overlap.
 - [x] Every new news article has a complete 1800-3000-character zh-TW original and faithful en/ja/ko/zh-CN versions, table, callout, original localized hero and diagram, dated sources and relevant links.
 - [x] Exact article and asset paths are added to scope and the claim revalidated before those files are created.
-- [ ] Content checks, isolated import/publication/replay and required CI pass; content PR is merged.
-- [ ] Fresh verified backup and approved-scope deployment/import succeed; all new locale documents, images, listing, metadata and sitemap pass signed-out desktop/mobile verification.
-- [ ] Deliver the dated index and formal article links; mark done only when publication and QA are complete.
+- [x] Content checks, isolated import/publication/replay and required CI pass; content PR is merged.
+- [x] Fresh verified backup and approved-scope deployment/import succeed; all new locale documents, images, listing, metadata and sitemap pass signed-out desktop/mobile verification.
+- [x] Deliver the dated index and formal article links; mark done only when publication and QA are complete.
 
 ## Steps
 
 - [x] Research and reserve exact topics.
 - [x] Author, translate, review and illustrate the batch.
-- [ ] Validate, merge, publish and verify the full batch.
+- [x] Validate, merge, publish and verify the full batch.
 
 ## How to verify
 
@@ -110,3 +110,9 @@ PR #494 then merged three dependency follow-up task records as b3f8a241, with 14
 The 15ffdfb9 head passed every actual test, but PR CI 34852732333 failed final artifact upload with intermediary HTTP 403; reran that failed web job without changing code. During the retry, PR #496 merged as 88c23881 after 14 green checks. Inspected its XML DTD guard, HTTP/HTTPS redirect validation, tests and task closeout; no migrations, environment or compose changes. Integrated these reviewed defenses and recorded their exact production baseline pair. Publication remains pending under the owned host hold.
 
 PR #499 merged as f2567e51 with all 14 checks green while this PR's last API check ran. Reviewed its 24 paths: five unrelated AI tutorials, a Kanazawa article update, their images and task records. No runtime code, schema or deployment changes, and no overlap with the news whitelist. Reconciled the new base; news article and artwork fingerprints remain the reviewed versions.
+
+Content PR #497 merged at 2026-09-14T15:08:31Z as 96ee71d6e17d09d44c32c0939cacf378c9217055 after all 14 checks passed on head 3eb6370d. The owned reservation hold was transferred to /root/mokaair-release-ai-news-ytd-96ee71d6 under all four deployment locks. Production preflight passed at clean a9d5b40e; exact-SHA images are being built while the current service stays live. Publication and public QA are still pending. Receipt work continues on codex/ai-news-ytd-publication-receipt.
+
+Exact merged-SHA CI 34860213380 and all three browser workflow runs passed. Activated release 96ee71d6 at 2026-09-14T15:26:36Z after a fresh 31,697,713-byte verified backup, unchanged protected data fingerprints, preserved PostgreSQL/Redis containers and two sets of three successful health checks. Scoped production dry-run confirmed 22 articles and 110 new locale documents. Publication completed at 2026-09-14T15:27:49Z with 110 created/published, 110 unchanged on replay and existing editorial data preserved. Signed-out public desktop/mobile QA is running; keep the owned release hold until it passes.
+
+Public QA completed: 220 signed-out desktop/mobile article pages, 10 locale/device listings, all 110 new sitemap URLs, 220 exact-release image hashes and 160 internal article targets passed. The editor inspected all 75 article/table sheets and two listing sheets. Thirteen English tables also passed native horizontal-scroll checks; screenshots were stabilized before measuring positions. Existing content remains preserved. The owned release hold was cleared at 2026-09-14T16:04:03Z, with exact release images and health/readiness confirmed. Formal links are delivered in docs/ai-news-2026-ytd/articles.md. The editorial cutoff remains 2026-09-14; Taiwan closeout occurred shortly after midnight on September 15. Receipt-only integration incorporates later main commits without redeploying them.
