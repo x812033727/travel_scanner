@@ -1,0 +1,353 @@
+{
+  "slug": "claude-plans-free-pro-max-2026",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude 免費、Pro、Max 方案比較：額度怎麼算、值不值得",
+      "description": "要不要付費給 Claude、付 Pro 還是 Max？這篇依 2026 年 9 月官網與說明中心，整理 Free、Pro（每月 20 美元）、Max 5x（100 美元）與 Max 20x（200 美元）的價格，講清楚 5 小時滾動視窗加每週上限怎麼算、剩餘額度在哪看、用完怎麼加購、台灣付款與稅、升降級與退款，並給五種使用者建議。結論：每天用選 Pro，常撞額度先換模型，再考慮 Max。",
+      "hero": {
+        "src": "/guides/claude-plans-free-pro-max-2026/hero.jpg",
+        "alt": "三級往上的階梯，每一級站著一個由小到大的對話泡泡，插圖以簡單幾何形狀表現 Claude 免費、Pro、Max 三階方案的額度遞增",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Claude 的個人方案只有三階：免費版、每月 20 美元的 Pro，以及 100 美元與 200 美元兩級的 Max，三階的差別幾乎都在「額度」而不是功能；對台灣的一般使用者來說，每天都會打開 Claude 就值得付 Pro，Max 留給每週都撞到上限、或整天讓 Claude Code 跑程式的人。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇依 2026 年 9 月在 claude.com 定價頁與 Claude 說明中心查到的內容，把每一階的美元價、額度怎麼算（5 小時滾動視窗加每週上限）、剩餘額度在哪裡看、用完能不能加購、每階多出來的模型與功能、台灣付款時的幣別與稅、升降級與退款規則整理成一張表，最後給五種使用者各一個建議。Claude 的額度是用量制，跟 ChatGPT 數訊息則數的方式不一樣，第二節會把規則講清楚。"
+        },
+        {
+          "type": "heading",
+          "text": "全部方案一覽：Free、Pro、Max 各級多少錢",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "定價頁列出的個人方案有四個價位。免費版 0 美元，能在網頁、iOS、Android 與桌面版聊天、寫程式、上網搜尋、上傳檔案、用記憶、延伸思考、連接器與語音模式，說明中心把它定位為「偶爾使用」。Pro 月繳每月 20 美元，年繳一次付 200 美元、換算每月 17 美元，定位是「經常使用」。Max 分兩級：Max 5x 每月 100 美元、Max 20x 每月 200 美元，名稱裡的數字就是每個工作階段的額度分別是 Pro 的 5 倍與 20 倍；說明中心寫 Max 目前只有月繳，沒有年繳。以上都是美國的網頁版定價，官網註明不含稅，手機 App 內購的價格可能不同，「台灣怎麼付」一節再講。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公司或團隊用的是另外兩種：Team 方案每人每月 20 美元起（年繳；月繳 25 美元），額度更高的 Premium 座位每人每月 100 美元起，至少 2 人；Enterprise 要聯絡業務。這兩種的細節不在這篇的範圍，以官網為準。另外要記得，所有個人方案都不含 API 用量，用程式串接 Claude 是另一個帳戶、另外計費。"
+        },
+        {
+          "type": "link",
+          "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
+          "url": "https://mokaair.com/zh-TW/life/ai-free-vs-paid-plans-2026"
+        },
+        {
+          "type": "heading",
+          "text": "額度怎麼算：5 小時滾動視窗，付費再加每週上限",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude 沒有「每天幾則訊息」這種數字，它用的是用量制。第一層是工作階段（session）：定價頁稱為「滾動的 5 小時視窗」，說明中心寫「工作階段的用量上限每 5 小時重置」，免費版與付費版都有這一層。在這 5 小時裡能送多少訊息沒有固定數字，官方說法是會依訊息長度、附加檔案的長度、目前對話的長度，以及使用的模型與功能而變，免費版還會隨當時的流量變動。換句話說，同一個問題在一個已經聊了幾十輪、又上傳過長 PDF 的對話裡送出，耗掉的額度比在新對話裡多得多，因為每一次回覆都要重讀整段上下文視窗。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二層只有付費方案有：Pro 與 Max 都有一個「跨所有模型」的每週上限，在你帳號被指定的固定時間重置；說明中心另外保留了流量吃緊時加上其他限制的空間。額度的倍數關係是：Pro 每個工作階段的用量至少是免費版的 5 倍，Max 5x 是 Pro 的 5 倍、Max 20x 是 Pro 的 20 倍。哪些東西特別耗額度，說明中心的用量最佳實務有列出來。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "模型：越高階的模型每一輪耗掉的額度越多，Claude Code 的說明頁直接寫 Opus 每一輪的成本是 Sonnet 的好幾倍、Sonnet 又高於 Haiku。",
+            "Effort（努力程度）與思考：等級越高、思考越長，用得越多。",
+            "對話長度與附件：長對話、大檔案每一輪都要重讀；放在 Projects 裡的內容有快取，重複使用時不再計算。",
+            "工具：Research、網頁搜尋與連接器都很吃 token，Research 的說明頁直接寫它會比一般對話更快用完額度。",
+            "Claude Code 與 Cowork：跟網頁版共用同一份工作階段與每週額度，不是另外一桶。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-plans-free-pro-max-2026/diagram-1.svg",
+          "alt": "Claude 方案階梯：Free 0 美元、Pro 每月 20 美元、Max 5x 每月 100 美元、Max 20x 每月 200 美元四格由左到右排開，各列價格、額度要點與模型；下方一條時間軸示意 5 小時滾動視窗與付費方案的每週上限",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右四階價格與額度遞增；下方的時間軸是同一套規則：從第一則訊息起算的 5 小時視窗，付費方案再套一層每週上限。數字為 2026 年 9 月官網查證。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "上下文視窗是什麼：為什麼聊久了 AI 會忘記前面說的話，六個做法讓它記住",
+          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+        },
+        {
+          "type": "heading",
+          "text": "剩餘額度在哪看、用完怎麼辦",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "付費方案（Pro、Max、Team 與按座位計的 Enterprise）在 設定 → Usage（用量）有兩條進度條：一條是目前的 5 小時工作階段用了多少、還剩多久重置，一條是每週上限用了多少、哪一天重置；開了加購額度的人也在同一頁看餘額。說明中心只列出付費方案看得到這兩條進度條，免費版以介面為準。不管哪個方案，接近上限時畫面會出現「Approaching 5-hour limit」，撞到時是「5-hour limit reached - resets（時間）」，等時間到就能繼續；如果看到的是「訊息會超過這個對話的長度上限」，那是單一對話塞太滿，換新對話或減少附件就好。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用完有三條路。第一是等重置：5 小時視窗到了就回來，每週上限則要等到帳號指定的那一天。第二是升一階。第三是加購：Pro、Max 5x 與 Max 20x 都可以在 設定 → Usage 開啟「usage credits」（加購額度），方案內的額度用完後自動改以 API 標準費率計費，可以設每月花費上限與自動儲值，也適用於 Claude Code 與 Research。想省一點可以先買折扣的額度包，說明中心列的是 50 美元包付 45 美元（省 10%）、250 美元包付 200 美元（省 20%）、1,000 美元包付 700 美元（省 30%），個人方案每月最多買 2,000 美元的額度包，餘額可以跨網頁、桌面、手機 App、Claude Code 與 Cowork 使用。加購額度一般不會過期，但部分地區有期限，以官網為準。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "常撞額度，先換輕一階的模型或開新對話，再考慮升 Max",
+          "text": "撞到 5 小時上限的人，多半是在同一個很長的對話裡一直用最高階的模型。先做三件事：把模型切到 Sonnet 或 Haiku 這種輕一階的模型、把 Effort 調低或關掉思考、把已經聊很長的對話收尾後開一個新對話，常用的資料放進 Projects，快取後不重複計算。三招都做了還是每週撞上限，才是 Max 5x 的客群；撞到 Max 5x 的上限，再看 Max 20x 或加購額度。升級前先到 設定 → Usage 看是 5 小時那條先滿還是每週那條先滿，前者換模型就能解，後者才需要更高的方案。"
+        },
+        {
+          "type": "link",
+          "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained"
+        },
+        {
+          "type": "heading",
+          "text": "每一階多出來的模型與功能",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "模型方面，官方文件 2026 年 9 月的現役模型有四個：Fable 5.1（最艱難的推理與長時間的代理任務）、Opus 5（複雜的程式與企業工作）、Sonnet 5（速度與能力的平衡）、Haiku 4.5（最快）；舊一代的 Fable 5、Opus 4.8、4.7、4.6 與 Sonnet 4.6 還在選單裡。免費版能選哪些，說明中心沒有分開列出，以模型選單為準，但有一條寫得很清楚：Fable 系列（Fable 5 與 Fable 5.1）免費版沒有。付費方案的差別在 Fable 怎麼算：Max 方案可以把每週額度的 50% 用在 Fable 模型上、不另外收費，超過就走加購額度；Pro 方案的 Fable 從第一則就用加購額度計費，不算在方案額度裡。上下文視窗方面，付費方案用 Fable 5.1、Opus 5、Sonnet 5 時一個對話可以到 1M token，Opus 4.8、4.7、4.6 與 Sonnet 4.6 是 500K，其他 200K；免費版的數字官網沒寫。"
+        },
+        {
+          "type": "paragraph",
+          "text": "功能方面，免費版已經有大部分：Projects（最多 5 個）、Artifacts、檔案上傳、延伸思考、網頁搜尋、記憶、連接器、語音模式、無痕對話。Pro 加的是 Claude Code（終端機裡的程式代理）、Cowork（在桌面版委派多步驟任務）、Claude Design 與 Claude Science、無上限的 Projects、Research（多輪搜尋的深入研究）、更多模型、Microsoft 365 整合，以及搜尋過去的對話。Max 在功能上跟 Pro 一樣，多的是額度倍數、更高的輸出上限、新功能的早期存取，以及流量高峰時的優先權。"
+        },
+        {
+          "type": "link",
+          "text": "Claude 模型陣容 2026：Fable、Opus、Sonnet、Haiku 差在哪、怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/claude-model-lineup-2026"
+        },
+        {
+          "type": "link",
+          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "台灣怎麼付：幣別、稅、App 內購",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "台灣在 Anthropic 的支援地區清單裡，claude.ai 與 API 都能用，註冊時要用台灣的手機號碼。網頁版付款只收信用卡與簽帳金融卡。說明中心對 Pro 的寫法是「美國 20 美元，支援的地區以當地幣別計價，各地區的月費不同，有些地區顯示的價格已含稅、有些在結帳時另加」，台灣會看到哪種幣別與價格，官方的答案是登入後到升級頁看，這篇不猜數字。稅是依帳單地址計算，帳單地址預設跟你信用卡的地址一樣，發票上會單獨列一行；發票在 設定 → Billing（帳單）可以下載，也會寄到信箱，主旨是「Your receipt from Anthropic」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 iPhone 或 Android 的 App 裡訂閱，走的是 App Store 或 Google Play 的內購：由蘋果或 Google 收款、以商店的幣別計價，收據在商店帳號裡，Anthropic 不開發票；說明中心明寫 Max 的價格是網頁版的，手機 App 上「可能不同」。想拿到 Anthropic 的發票、之後要換方案或幣別，用網頁版訂閱最單純；已經用某個幣別訂閱的人，要換幣別得先取消、等到期再重訂。"
+        },
+        {
+          "type": "heading",
+          "text": "升級、降級、取消與退款",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "升級：設定 → Billing → Upgrade plan（或 Upgrade to Max），選 5x 或 20x 後立即生效，本期剩下的天數按比例折抵；年繳 Pro 升 Max 時，剩餘價值高於 Max 價格的部分會變成帳戶的抵用金。從 Google Play 升級的規則不同：Max 收全額，Pro 剩下的價值換成多出來的天數。",
+            "月繳改年繳：Pro 在 設定 → Billing → Adjust plan 選年繳，立即切換，月繳沒用完的時間折抵在第一張年繳帳單裡。",
+            "降級：說明中心沒有一篇專門講從 Max 降回 Pro，所有方案變更都從 設定 → Billing 進去；Max 只有月繳，最保守的做法是到期前取消、到期後再訂 Pro，實際按鈕以官網為準。",
+            "取消：網頁與桌面版在 設定 → Billing 按 Cancel；iOS 與 Android 是右上角的姓名縮寫 → Billing → Manage subscription，或直接到 App Store、Google Play 的訂閱管理。要在下一次扣款日至少 24 小時前取消，取消後可以用到本期結束；帳單日改不了，只能取消後在想要的日期重訂。",
+            "退款：官方立場是除了消費者條款或法律要求的情況，付款不退；符合條件的人可以在帳號裡的支援訊息選「Claude Refund Request」申請。歐洲經濟區與英國有 14 天內按用量比例退款的規定，台灣沒有對應的條文。App Store 的訂閱只能向蘋果申請，Google Play 要由 Anthropic 的支援團隊確認資格。付款失敗帳號會被降回免費版，到 設定 → Billing 更新卡片即可。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "heading",
+          "text": "五種使用者怎麼選",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "偶爾用（一週問幾次）：免費版就夠，5 小時視窗撞到就等一下；常用的資料放進最多 5 個的 Projects。",
+            "每天寫作、改文件：Pro。20 美元換到的是至少 5 倍的額度、Research、搜尋過去的對話與無上限的 Projects；確定會用一年就年繳 200 美元。",
+            "寫程式：Pro 起跳，因為 Claude Code 只有付費方案有；但 Claude Code 跟網頁版共用額度，Opus 每一輪又是 Sonnet 的好幾倍，整天讓代理跑的人很快會撞每週上限，這才是 Max 5x 甚至 Max 20x 的客群。",
+            "做研究、讀長文件：Pro 有 Research 與 1M token 的上下文視窗；Research 很耗額度，一天要跑很多次再看 Max 5x。",
+            "公司團隊：2 人以上看 Team，每人每月 20 美元起，多的是集中付款、SSO 與管理權限；細節以官網為準。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "table",
+          "header": [
+            "方案",
+            "月費（美元）",
+            "額度要點",
+            "模型",
+            "多的功能"
+          ],
+          "rows": [
+            [
+              "Free",
+              "0",
+              "5 小時工作階段重置；訊息數隨流量變動；沒有每週上限",
+              "以模型選單為準；沒有 Fable 系列",
+              "聊天、檔案、Projects 最多 5 個、Artifacts、延伸思考、記憶、連接器、語音、無痕對話"
+            ],
+            [
+              "Pro",
+              "20；年繳 200（換算 17）",
+              "每工作階段至少免費版的 5 倍；加每週上限；可加購額度",
+              "更多模型；Fable 用加購額度計費；1M token 上下文視窗",
+              "Claude Code、Cowork、Research、無上限 Projects、Design、Science、Microsoft 365、搜尋過去的對話"
+            ],
+            [
+              "Max 5x",
+              "100（只有月繳）",
+              "Pro 的 5 倍；加每週上限；可加購額度",
+              "同 Pro；Fable 在每週額度的 50% 內不另收費",
+              "Pro 全部，加更高輸出上限、新功能早期存取、高峰時優先"
+            ],
+            [
+              "Max 20x",
+              "200（只有月繳）",
+              "Pro 的 20 倍；加每週上限；可加購額度",
+              "同 Max 5x",
+              "同 Max 5x"
+            ],
+            [
+              "Team",
+              "每人 20 起（年繳）、25（月繳）；Premium 座位 100 起",
+              "比 Pro 多，按人計；至少 2 人",
+              "以官網為準",
+              "集中付款、SSO、管理權限"
+            ],
+            [
+              "Enterprise",
+              "聯絡業務",
+              "以官網為準",
+              "以官網為準",
+              "進階安全與合規；以官網為準"
+            ]
+          ],
+          "caption": "2026 年 9 月依 claude.com 定價頁與 Claude 說明中心整理；美國網頁版定價、不含稅，App 內購與各地幣別以官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT Plus、Pro 與其他方案差在哪：2026 年怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-plans-plus-pro-2026"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Claude 定價頁：Free、Pro、Max、Team 價格、功能與用量說明（claude.com/pricing）",
+          "url": "https://claude.com/pricing",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：What is the Pro plan?（每月 20 美元、至少 5 倍用量、每週上限、當地幣別與稅）",
+          "url": "https://support.claude.com/en/articles/8325606-what-is-the-pro-plan",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：What is the Max plan?（Max 5x 100 美元、Max 20x 200 美元、只有月繳、網頁版定價）",
+          "url": "https://support.claude.com/en/articles/11049741-what-is-the-max-plan",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Get started with Claude（免費版每 5 小時重置、訊息數隨流量變動）",
+          "url": "https://support.claude.com/en/articles/8114491-get-started-with-claude",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Usage limit best practices（設定 → Usage 進度條、耗額度的因素、Projects 快取）",
+          "url": "https://support.claude.com/en/articles/9797557-usage-limit-best-practices",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Manage usage credits for paid Claude plans（加購額度、API 標準費率、花費上限）",
+          "url": "https://support.claude.com/en/articles/12429409-manage-usage-credits-for-paid-claude-plans",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Buy usage bundles（額度包折扣 10%、20%、30%，每月上限 2,000 美元）",
+          "url": "https://support.claude.com/en/articles/14246112-buy-usage-bundles",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Use Claude Code with your Pro or Max plan（Claude Code 與網頁版共用額度）",
+          "url": "https://support.claude.com/en/articles/11145838-use-claude-code-with-your-pro-or-max-plan",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Models, usage, and limits in Claude Code（Opus 每輪成本是 Sonnet 的好幾倍）",
+          "url": "https://support.claude.com/en/articles/14552983-models-usage-and-limits-in-claude-code",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Claude Fable models on your plan（免費版沒有 Fable、Max 每週額度 50%、Pro 用加購額度）",
+          "url": "https://support.claude.com/en/articles/15424964-claude-fable-models-on-your-plan",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Troubleshoot Claude error messages（Approaching 5-hour limit、limit reached 訊息）",
+          "url": "https://support.claude.com/en/articles/12466728-troubleshoot-claude-error-messages",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：How large is the context window on paid Claude plans?（1M、500K、200K）",
+          "url": "https://support.claude.com/en/articles/8606394-how-large-is-the-context-window-on-paid-claude-plans",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Use research on Claude（付費方案限定、比一般對話更快用完額度）",
+          "url": "https://support.claude.com/en/articles/11088861-use-research-on-claude",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：What are projects?（免費版最多 5 個 Projects）",
+          "url": "https://support.claude.com/en/articles/9517075-what-are-projects",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Cancel your Pro or Max subscription（取消路徑、24 小時前、用到本期結束）",
+          "url": "https://support.claude.com/en/articles/8325617-cancel-your-pro-or-max-subscription",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Request a refund for a paid Claude plan（不退款原則、EEA 與英國 14 天、App Store 與 Google Play）",
+          "url": "https://support.claude.com/en/articles/12386328-request-a-refund-for-a-paid-claude-plan",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Understanding your Pro or Max plan invoices（發票位置、稅單獨列、幣別、App 內購不開發票）",
+          "url": "https://support.claude.com/en/articles/16607638-understanding-your-pro-or-max-plan-invoices",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Paid plan billing FAQs（只收信用卡與簽帳金融卡、帳單日、付款失敗降級）",
+          "url": "https://support.claude.com/en/articles/8325618-paid-plan-billing-faqs",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：How do I sign up for the Max plan?（升級立即生效、按比例折抵、年繳 Pro 抵用金、Google Play 規則）",
+          "url": "https://support.claude.com/en/articles/11049752-how-do-i-sign-up-for-the-max-plan",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic：Supported countries and regions（台灣在 claude.ai 與 API 支援清單內）",
+          "url": "https://www.anthropic.com/supported-countries",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}
