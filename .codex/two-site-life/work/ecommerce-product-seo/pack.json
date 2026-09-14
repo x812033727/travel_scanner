@@ -1,0 +1,232 @@
+{
+  "slug": "ecommerce-product-seo",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "商品頁 SEO：規格、變體與購買問題怎麼整理",
+      "description": "商品頁 SEO 不只是把熱門字詞放進標題，還要讓搜尋結果、變體網址與購買畫面指向同一款商品。本文以原創桌面收納盒案例，整理規格、選購問題、單頁與多頁變體、Product 結構化資料及上線檢查流程，附比較表、操作步驟與原創 SVG，協助商店避免價格、庫存和圖片不同步。",
+      "hero": {
+        "src": "/guides/ecommerce-product-seo/hero.jpg",
+        "alt": "Mokaair 原創文件、螢幕與查核盾牌，呈現商品規格、變體頁面及資料一致性檢查。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "讀者搜尋深型收納盒，點進商品頁卻看到淺型款式，價格也與搜尋呈現不同。即使頁面有許多關鍵字，這次造訪仍可能無法完成購買。商品 SEO 應從讀者找到哪一款、進站看到什麼，以及能否確認條件開始檢查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文依 2026 年 9 月 14 日查閱的 Google 官方電商與結構化資料文件撰寫。桌面收納盒是原創教學案例，沒有實際商品測試、價格推薦或商店部署；標記與網址調整也不保證一定取得特殊搜尋版位。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "一張商品頁先回答一組購買問題"
+        },
+        {
+          "type": "paragraph",
+          "text": "商品標題應讓人辨認類別、主要用途及必要的型號差異。收納盒可以說明款式、尺寸或材質，而不是把所有可能的搜尋字詞堆在一起。讀者若無法從名稱知道自己正在看哪款，後續的圖片與規格也容易被誤讀。"
+        },
+        {
+          "type": "paragraph",
+          "text": "正文可以從實際選購問題安排：外部尺寸是否放得進櫃子、內部空間是否足夠、是否附蓋，以及清潔方式有何限制。資料應來自自己的確認紀錄或製造商文件；沒有量測的承重與耐熱能力，不要為了增加搜尋內容而自行填入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "商品頁與分類頁各有用途。分類頁協助讀者找適合的類型，商品頁則提供某一款的完整條件。若所有商品只複製同一段品牌故事，讀者仍無法比較差異；可以保留共通資訊，同時補上每款確實不同、會影響選擇的內容。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "規格、照片與交易資訊應互相對得上"
+        },
+        {
+          "type": "paragraph",
+          "text": "先建立商品資料表，分開保存內外尺寸、單位、材質、包裝內容及款式。不要把盒身高度當成含蓋高度，也不要只在圖片上標尺寸而沒有文字說明。若供應商改版，保留版本與確認日期，避免新照片配到舊規格。"
+        },
+        {
+          "type": "paragraph",
+          "text": "圖片應顯示實際商品與選定款式；示意圖則清楚標示其用途。以收納盒為例，可以用原創圖解說明量尺寸的位置，但不能把示意圖當成真實容量實測。替代文字描述看得到的重要內容，不必將同一批關鍵字重複塞進每張圖片。"
+        },
+        {
+          "type": "paragraph",
+          "text": "價格、幣別、庫存、配送與退換貨說明都要讓讀者容易找到。本文不替店家設定交易規則，而是建議由實際負責人確認內容，並將適用條件連到完整說明。需要先選規格才有價格時，畫面也應清楚表達，避免用某款最低價代表全部組合。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "變體網址必須能還原正確選項"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一商品可能有顏色、尺寸或材質變體。先盤點網站採用單頁切換，還是不同款式分散於多個頁面。對每個要被辨認的變體，測試直接開啟其網址後是否已選好正確規格，並顯示相符圖片、價格、庫存及加入購物車的項目。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 的電商網址文件提醒，不應只靠 # 後的片段識別不同索引內容。若網站用網址參數選擇款式，也要確認參數真的影響頁面狀態，而不是只有網址看起來不同。把連結傳到另一個瀏覽器測試，是商店可以先做的基本檢查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "canonical 要依實際設計處理。Google 的單頁變體範例以一個代表整組商品的主要網址為基礎；多頁設計則沒有一個單一網址代表所有 ProductGroup 內容。不要套用「所有規格都指回第一款」的規則，應讓開發者依頁面內容與官方變體文件核對。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "選一款有代表性的商品，核對標題、規格、圖片與交易資訊。",
+            "列出所有變體網址，直接開啟並檢查是否還原正確購買選項。",
+            "確認既有平台輸出的 Product 與變體標記，修正不一致資料。",
+            "完成技術與人工檢查，再以固定商品及查詢範圍觀察搜尋表現。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "依銷售頁用途選擇 Product 標記"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 將商品結構化資料分為不同用途：可向你購買商品的頁面，應查看 merchant listings；無法直接向你購買的商品介紹或評論頁，則可能適合 product snippets。兩者有部分重疊，但不能把單純導向別站購買的頁面，當成自己的商家銷售頁。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ProductGroup 可說明同一商品的變體關係，搭配 Product 保存個別商品資訊；variesBy、hasVariant 與群組識別碼分別協助描述差異、成員和群組。這些欄位應根據真實商品建立，不要把完全不同用途的商品為了方便而硬湊成一組。"
+        },
+        {
+          "type": "paragraph",
+          "text": "標記通常由商店平台或外掛產生，先查看既有輸出，再決定是否需要調整。Google 也支援透過 Merchant Center 提供商品資料，但資料來源增加後，更需要同步價格與供貨狀態。網站標記與商品資料來源互相矛盾時，先找出由誰更新及何時更新。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "驗收要看頁面與標記的同一個版本"
+        },
+        {
+          "type": "paragraph",
+          "text": "先用 Rich Results Test 檢查適用資料與必要欄位，再以網址檢查工具查看 Google 能讀到的頁面。Google 建議商品標記盡可能放在初始 HTML；若完全依賴動態產生，價格與庫存快速變動時更要留意讀取的可靠性。實際調整交由熟悉平台的人處理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "人工驗收應從搜尋可能使用的變體網址開始，比對頁面標題、所選規格、圖片、價格、供貨狀態和標記值。加入購物車前再次確認品項，不必為了測試而完成付款。若切換規格後標記仍停留在預設款式，應記錄具體重現步驟交給維護者。"
+        },
+        {
+          "type": "paragraph",
+          "text": "搜尋測試通過不等於事實正確，也不保證顯示評分、價格或其他特殊資訊。沒有真實評價就不要建立評分；沒有適用識別碼也不要隨機填號碼。保留測試日期與商品版本，讓後續庫存或版型變動時能找回原本的比較基準。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "持續檢查讀者是否找到合適商品"
+        },
+        {
+          "type": "paragraph",
+          "text": "商品更新後，可先用固定頁面與相關查詢觀察曝光和點擊，再看讀者進站後是否能完成選規格、查看配送及加入購物車。不要把所有商品平均在一起，就忽略某個款式持續帶錯頁。若資料量很小，先處理明確錯誤，不急著宣稱 SEO 成長幅度。"
+        },
+        {
+          "type": "paragraph",
+          "text": "暫時缺貨與永久停售應分開決策。暫時缺貨可以保留準確供貨說明與合理替代選項；永久停售則依是否還有說明書、售後資訊或真正替代品評估頁面安排。不要只為維持流量，把每個舊商品都導向不相關的首頁或熱門款式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立價格、庫存、款式與規格異動的檢查清單，讓商品管理者與網站維護者共用。讀者回報不符時，記下原始網址及當時選項，先修復資訊問題，再評估內容改善。搜尋能見度與購買信任應一起維護，才能讓找到商品的人做出合適選擇。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ecommerce-product-seo/diagram-1.svg",
+          "alt": "四欄呈現商品內容、變體網址、資料標記與持續驗收，提醒不同版型需採合適網址策略且特殊呈現不保證。",
+          "width": 1600,
+          "height": 900,
+          "caption": "搜尋連結、頁面選項與資料標記應描述同一款商品。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查位置",
+            "應一致的資訊",
+            "常見需要修正的情況"
+          ],
+          "rows": [
+            [
+              "商品名稱與正文",
+              "款式、用途、型號與規格",
+              "標題寫深型，內容卻是淺型"
+            ],
+            [
+              "變體網址與畫面",
+              "選項、圖片、價格及庫存",
+              "直接開啟後回到預設款"
+            ],
+            [
+              "結構化資料",
+              "當前商品與真實銷售條件",
+              "標記仍保留舊價或錯誤評分"
+            ],
+            [
+              "商品資料來源",
+              "幣別、供貨及適用版本",
+              "商店已更新，外部資料仍過期"
+            ]
+          ],
+          "caption": "原創收納盒案例的驗收表；每個位置都應回到同一個商品與款式。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先修正買錯款式的風險",
+          "text": "直接開啟變體網址，確認圖片、價格、庫存與購物車項目一致。關鍵字與標記無法補救錯誤的商品資訊。"
+        },
+        {
+          "type": "link",
+          "text": "整理 WooCommerce 商品資訊",
+          "url": "https://mokaair.com/zh-TW/life/woocommerce-product-information"
+        },
+        {
+          "type": "link",
+          "text": "理解 canonical 的適用情境",
+          "url": "https://mokaair.com/zh-TW/life/canonical-url-guide"
+        },
+        {
+          "type": "link",
+          "text": "釐清品牌與商品的實體關係",
+          "url": "https://mokaair.com/zh-TW/life/knowledge-graph-entities"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 商品結構化資料與提供方式",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/product",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google ProductGroup 與商品變體",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/product-variants",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 電商網址與片段識別限制",
+          "url": "https://developers.google.com/search/docs/specialty/ecommerce/designing-a-url-structure-for-ecommerce-sites",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 商家商品標記技術準則",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/merchant-listing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 結構化資料內容一致性準則",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/sd-policies",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

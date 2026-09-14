@@ -1,0 +1,247 @@
+{
+  "slug": "divi-mobile-type-layout",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Divi 手機版排版：欄位順序、字型與閱讀動線",
+      "description": "Divi 手機版不能只把桌面字級縮小，還要處理欄位堆疊、閱讀順序與字型載入。本文以活動介紹頁為例，說明 Divi 5 的 Responsive Editor、Display Order、間距和共用樣式，並整理中文自訂字型上傳與缺字檢查。最後提供窄螢幕、文字放大、鍵盤和表單驗收表，幫助做出能閱讀、能操作且方便維護的手機版頁面。",
+      "hero": {
+        "src": "/guides/divi-mobile-type-layout/hero.jpg",
+        "alt": "原創封面以文件、螢幕與盾牌呈現手機內容排列、字型和操作驗收。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "桌面上左圖右文的活動介紹頁，放到手機可能先顯示一大張照片，費用和報名方式卻被推到很下面。手機排版要處理的是資訊到達讀者的順序，並保留清楚文字與可點選的控制項，不能只讓整頁看起來縮得進螢幕。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下使用 Divi 5 的響應式編輯工具，依 2026 年 9 月 14 日查閱的官方資料整理。活動頁案例與檢查順序為原創示例。Divi 4、第三方模組及舊版匯入版型的介面可能不同，應先辨認所用版本再套用設定。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先寫出手機閱讀順序"
+        },
+        {
+          "type": "paragraph",
+          "text": "以週末攝影散步活動為例，讀者會先確認活動內容、日期地點、適合對象與費用，再決定是否報名。先把這些內容依自然閱讀順序放進頁面結構，照片作為補充。不要把必要資訊只藏在圖片文字或滑鼠移入才出現的區塊。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Layers 檢查 Section、Row、Column 和 Module 的排列，替區段命名。若文字邏輯本來就放錯位置，優先修正結構。這樣在手機單欄、桌面多欄，甚至樣式未完整載入時，內容仍有合理的理解順序。"
+        },
+        {
+          "type": "paragraph",
+          "text": "版面高度也要配合閱讀需求。手機首屏不必塞進整份活動簡章，但應讓訪客知道這是什麼活動及下一步在哪裡。保留自然捲動的提示，不必為了固定一屏高度而裁切說明，或把正文縮到難以閱讀。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用 Responsive Editor 找出真正的覆寫"
+        },
+        {
+          "type": "paragraph",
+          "text": "開啟元素設定，在字級、間距等支援欄位旁點選 Responsive Editor，可同時查看各個啟用的斷點。沒有自訂值的狀態會沿用繼承值；設過的值則可能讓手機不再跟著共用設定改變。先看清楚目前編輯哪一列，再調整數字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "設定旁的藍色響應式圖示可提示存在其他狀態值；搭配 Modified Settings 篩選，較容易找到過去留下的覆寫。若平板留白異常，先檢查相應 padding、margin 和高度，再使用該列 Reset 回到繼承，不必把所有裝置都填上新值。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Divi 5 支援額外啟用及調整網站斷點，但不需要為每個手機型號新增一套規則。先使用網站已定義的範圍，拖動預覽寬度觀察哪裡開始擠壓，再決定是否需要變更。斷點是網站共用設定，調整後必須回頭查看其他頁面。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "在桌面確認主要內容與基本樣式，保存一個可比較版本。",
+            "切換平板及手機，記錄真正出現擠壓、溢出或過大留白的位置。",
+            "逐一查看對應設定的響應式值，修正或清除不必要的覆寫。",
+            "連續拖動預覽寬度，確認斷點前後都能正常閱讀，再儲存。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "欄位順序與鍵盤順序分開確認"
+        },
+        {
+          "type": "paragraph",
+          "text": "Row 可以用結構範本或 Flexbox、Grid 設定調整各寬度的欄位安排。例如桌面三欄的活動亮點，可在手機改成單欄，並以垂直 gap 保持規律間距。先改容器的排列規則，再處理模組寬度，通常比逐項設定負邊距清楚。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Flex 容器內的元素可在 Content、Order 設定 Display Order，數字較小者優先顯示。但這改的是視覺位置，原始文件結構沒有跟著重排。若把報名按鈕在畫面上移到最前面，鍵盤焦點仍可能在原本的位置才走到它。"
+        },
+        {
+          "type": "paragraph",
+          "text": "因此不要用 Display Order 修補重要操作的邏輯順序。先讓日期、注意事項與報名入口在結構上成立，再用視覺調整處理裝飾圖片等需求。最後用 Tab 逐一走過連結與表單，確認焦點沒有在畫面上下突然跳動。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "中文字級與間距要一起調整"
+        },
+        {
+          "type": "paragraph",
+          "text": "先選一組正文與標題字型，再用預設或 Design Variables 管理共用設定。若全部頁面的手機標題都太大，就修改共同規則；只有活動首頁的特殊標題需要縮小，才保留局部覆寫。這能避免每次新增頁面都重新摸索字級。"
+        },
+        {
+          "type": "paragraph",
+          "text": "字級、行高、欄寬和段落長度需要一起看。中文標題多一個字可能多出整行，因此測試應包含長活動名稱、括號、日期及英文地名。不要靠強制換行把標題鎖死成桌面兩行，否則手機可能變成不自然的短字串。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若使用隨視窗變動的數值或 clamp 等規則，仍要確認瀏覽器放大時文字可以變大。流動字級不是自動通過無障礙驗收的保證。正文不要放在固定高度且隱藏溢出的框內，讀者調大文字後才不會失去後半段內容。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "自訂字型先查格式、字元與載入"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方字型上傳文件提供在文字模組的 Design、Text Font 清單按 Upload，為字型命名後選擇檔案的方式，列出的支援格式為 TTF 和 OTF。若使用其他格式，應依當前版本支援處理，不能只把副檔名改掉就當作轉檔完成。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先確認字型具有網站使用授權，再測試繁體中文、數字、英文字母與標點。某些字型只包含拉丁字元，畫面上中文其實是備援字型。選取成功也不代表每個字重都有對應檔案，應以實際粗體、一般字重和不同裝置顯示確認。"
+        },
+        {
+          "type": "paragraph",
+          "text": "上傳到網站的字型和外部字型載入是不同來源。若目的是自行託管，還要檢查預設、第三方模組與前台網路請求，不能只上傳一份檔案就宣稱沒有外部請求。保留必要字重，觀察慢速連線下的文字顯示及版面位移，避免大型中文字型拖累首次閱讀。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "在前台完成手機與放大驗收"
+        },
+        {
+          "type": "paragraph",
+          "text": "編輯器預覽適合快速發現問題，最後仍要用未登入前台在實際手機查看。測試直向與橫向，打開選單，滑到頁尾，再操作報名欄位。虛擬鍵盤出現時，固定在底部的按鈕不能蓋住正在輸入的內容或錯誤提示。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另外用桌面瀏覽器放大文字與頁面，確認一般正文能重新換行，沒有因放大而消失。W3C 的文字放大與 Reflow 說明可作為檢查依據；表格或地圖等需要二維呈現的內容，應用合適容器處理，不要讓整頁跟著左右溢出。"
+        },
+        {
+          "type": "paragraph",
+          "text": "更新後依同一張清單查看首頁、活動頁、聯絡表單及共用頁首。保存出錯的網址、預覽寬度和設定位置，方便下次追查。驗收通過後再清理重複的手機專用區段，保留單一內容來源，降低日後只改到其中一版的風險。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/divi-mobile-type-layout/diagram-1.svg",
+          "alt": "原創圖解將 Divi 手機驗收分為結構、響應式值、字型與實際操作，包含閱讀和焦點順序的不同檢查。",
+          "width": 1600,
+          "height": 900,
+          "caption": "先讓內容順序成立，再調整視覺，最後測試實際操作。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "看到的問題",
+            "優先檢查",
+            "驗收方式"
+          ],
+          "rows": [
+            [
+              "手機留白太大",
+              "響應式 margin、padding、高度",
+              "連續改變寬度查看"
+            ],
+            [
+              "圖文先後不合理",
+              "結構順序與 Display Order",
+              "閱讀順序加 Tab 操作"
+            ],
+            [
+              "標題換行難讀",
+              "字級、行高與固定換行",
+              "長標題與中文標點"
+            ],
+            [
+              "中文字型不一致",
+              "字元範圍、字重及備援",
+              "實際前台與載入請求"
+            ],
+            [
+              "放大後內容被切掉",
+              "固定高度、溢出及容器",
+              "文字放大與重新換行"
+            ]
+          ],
+          "caption": "預覽與實機互相補充；視覺順序正確仍需檢查操作順序。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "不要用隱藏內容完成手機版",
+          "text": "如果資訊對報名或理解活動有必要，應在小螢幕重新安排呈現，避免直接隱藏。讓同一份內容在不同寬度都能讀完，比維護兩份容易漏改的文案更可靠。"
+        },
+        {
+          "type": "link",
+          "text": "Divi 建站的全域樣式與範本分工",
+          "url": "https://mokaair.com/zh-TW/life/divi-site-building"
+        },
+        {
+          "type": "link",
+          "text": "網站字型自行託管與授權整理",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-fonts-self-hosting"
+        },
+        {
+          "type": "link",
+          "text": "WordPress 形象網站的訪客動線",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-business-site"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Divi 5 Responsive Editor",
+          "url": "https://help.elegantthemes.com/en/articles/13002269-responsive-editor-in-divi-5-visual-builder",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Divi 5 Flex Order",
+          "url": "https://help.elegantthemes.com/en/articles/11893079-understanding-flex-order-option-in-divi-5",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Divi 5 響應式網站驗收",
+          "url": "https://help.elegantthemes.com/en/articles/15703949-part-12-making-your-divi-5-website-fully-responsive",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Divi 自訂字型上傳",
+          "url": "https://help.elegantthemes.com/en/articles/2315966-how-to-upload-custom-fonts-using-the-divi-font-upload-feature",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：Flex 視覺與文件順序",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Flexible_box_layout/Ordering_items",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C：文字放大",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C：Reflow",
+          "url": "https://www.w3.org/WAI/WCAG21/Understanding/reflow.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

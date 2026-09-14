@@ -1,0 +1,242 @@
+{
+  "slug": "wordpress-multilingual-site",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "WordPress 多語系網站：內容對照、網址與翻譯流程",
+      "description": "WordPress 多語系網站需要內容、網址與更新流程一起規劃。本篇比較 Polylang 和 TranslatePress 的編輯方式，說明語言頁面對應、選單、SEO 資訊及機器翻譯校對的重點，提供雙語網站的建立步驟與維護檢查表，協助台灣站長先完成一條讀者能走完的外語路徑，再逐步擴充內容。",
+      "hero": {
+        "src": "/guides/wordpress-multilingual-site/hero.jpg",
+        "alt": "兩份文件透過網站螢幕串連的原創插圖，象徵不同語言內容保持對應與更新。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "工作室想提供英文網站，先翻譯首頁往往不難；真正的問題是讀者按下服務介紹後又回到中文，表單提示看不懂，收到的回信也沒有說明下一步。多語系的交付單位應是一段完整使用流程，而不只是幾篇已翻譯的文字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以繁體中文為主要內容、英文為第二語言的網站為例，可以先完成首頁、服務頁、聯絡頁及必要說明，再增加文章。以下從內容對照與維護責任出發，介紹兩種常見 WordPress 工具的操作方式；沒有預設任何外掛能自動處理你網站裡的全部內容。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先做內容對照表，再增加語言"
+        },
+        {
+          "type": "paragraph",
+          "text": "把中文頁面網址、目標英文網址、翻譯狀態、審稿人與最後更新日期放在同一張表。對沒有外語需求的內容，記錄不翻譯的原因；不要用一個英文首頁連結去假裝所有頁面都有對應版本。先決定切換語言時，缺少翻譯的頁面要怎麼引導。"
+        },
+        {
+          "type": "paragraph",
+          "text": "翻譯前先整理中文原稿。服務範圍、交付時間與聯絡方式若本來就不清楚，換成英文也不會變清楚。用語表可先固定品牌名稱、服務名稱、地址及常用按鈕，避免同一項服務在不同頁面出現三種英文名稱。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "盤點讀者從進站到完成聯絡所經過的所有頁面與訊息。",
+            "為每個頁面設定翻譯狀態與審稿責任，先完成主要路徑。",
+            "建立專有名詞表，記下需要保留原文或加註說明的項目。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "選擇符合編輯習慣的方式"
+        },
+        {
+          "type": "paragraph",
+          "text": "Polylang 的常見工作方式，是為文章或頁面指定語言，建立另一語言的內容並連結彼此。官方入門教學以文章清單的加號建立翻譯頁。這適合希望各語言有獨立編輯內容與發布安排的團隊，但仍要維護頁面對應及選單。"
+        },
+        {
+          "type": "paragraph",
+          "text": "TranslatePress 則以網站前台的翻譯編輯介面處理畫面上的字串，可在 Translate Site 中選取文字並輸入譯文。它的免費版本以預設語言加一種翻譯語言為主；更多語言及部分進階功能需核對付費方案。選擇之前用一個真實頁面確認動態內容是否可被處理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要在正式站同時啟用多套工具試驗。先複製受控的測試站，挑包含選單、圖片、表單和動態狀態的代表頁，分別評估編輯、更新與匯出需求。最後保留一套主流程，並記錄翻譯資料保存及更換工具時的移轉方式。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用小範圍操作確認頁面關係"
+        },
+        {
+          "type": "paragraph",
+          "text": "採用 Polylang 時，先新增所需語言並確認現有內容歸屬，再從原頁建立目標語言版本，填入已校對的內容。檢查兩頁之間的翻譯關係、分類及首頁設定，接著建立相應語言選單。使用區塊佈景的網站編輯器時，還要核對所需的 Polylang Pro 支援。"
+        },
+        {
+          "type": "paragraph",
+          "text": "採用 TranslatePress 時，先確認預設語言，再選新增語言，從前台開啟翻譯編輯器。選取可見文字或搜尋字串，輸入譯文、儲存後切到目標語言瀏覽。登入與未登入會出現不同文字的頁面，需分別檢查，不能只翻譯管理員當下看得到的部分。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩種方法都要從導覽列走一遍服務頁與聯絡頁，觀察網址和語言是否保持一致。若圖片內有中文說明，提供相應語言圖片或把重要資訊放回可翻譯的正文；只改替代文字，無法讓圖片上的中文字自動變成英文。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "網址與搜尋資訊要一起規劃"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 建議不同語言版本使用不同網址，並可透過 hreflang 協助標示對應關係。Polylang 提供目錄、子網域等網址設定方向，應在大量發布前選定。對小型團隊而言，先看維護與導覽是否清楚，不必因為增加英文就立刻購買另一個網域。"
+        },
+        {
+          "type": "paragraph",
+          "text": "標題、描述、圖片替代文字及網址路徑也可能需要翻譯。TranslatePress 官方把這些 SEO 項目的翻譯能力列在付費 SEO Pack，應在選型時納入需求。外掛可以協助輸出標記，仍要檢查實際頁面是否指向正確語言版本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要把每一頁的語言切換都送回首頁，也不要用瀏覽器語言強制阻止讀者切換。請保留可見的語言選擇，並以語言名稱標示，例如繁體中文與 English。完成後檢查站內連結、公開頁面的索引設定及網站地圖，不能保證加了標記就一定取得搜尋排名。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "機器翻譯先當初稿，重要資訊逐句校對"
+        },
+        {
+          "type": "paragraph",
+          "text": "自動翻譯的可用引擎、額度與計費方式依工具和方案而異。若使用自己的 Google 或 DeepL API，請核對該服務的帳號與費用條件，不能假設買外掛就包含所有翻譯用量。先用少量頁面估算字數與修改成本，再決定是否批次處理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "校對時先處理容易造成誤解的資訊：服務包含什麼、時間與時區、數量單位、取消方式及聯絡限制。台灣地址可保留足夠的中文線索，電話加上適當國碼說明。不要把機器生成的流暢句子直接當作承諾，應由理解實際服務的人確認意思。"
+        },
+        {
+          "type": "paragraph",
+          "text": "表單錯誤、成功提示、會員信件與彈出視窗也需要列入檢查。有些內容由外部服務提供，可能不在目前翻譯外掛的控制範圍；請到該服務設定對應語言或提供清楚補充，而不是在中文介面外面只加一個英文標題。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "原文一修改，翻譯就要進入待確認"
+        },
+        {
+          "type": "paragraph",
+          "text": "把多語系更新寫進日常編輯流程。中文服務內容調整後，對應英文頁面應標記待校對，確認哪些段落和按鈕受到影響，再同步發布。TranslatePress 的字串修改可能被視為新字串，既有譯文不一定直接沿用，因此原文的小改動也需要查看結果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可以設計一張驗收卡：桌面與手機各走一次外語導覽，送出測試表單，核對回應文字及通知，再檢查中英文切換是否回到對應頁面。用實際流程找漏譯，比只看後台翻譯完成百分比更容易發現阻礙讀者的地方。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若某種語言暫時無人維護，先決定如何揭露資訊日期或限制提供範圍。保留已發布網址的處理計畫，不要直接移除語言導致所有舊連結失效。多語系網站能否長期可用，取決於每次內容更新都有人接手，而不是安裝當天能顯示幾面旗幟。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-multilingual-site/diagram-1.svg",
+          "alt": "四欄呈現原文盤點、語言對應、校對發布與更新追蹤，提醒檢查整段使用流程。",
+          "width": 1600,
+          "height": 900,
+          "caption": "翻譯完成的標準，是讀者能用該語言走完整個流程。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "比較項目",
+            "Polylang 常見方式",
+            "TranslatePress 常見方式"
+          ],
+          "rows": [
+            [
+              "編輯單位",
+              "建立並連結各語言內容",
+              "在前台選取字串翻譯"
+            ],
+            [
+              "先試的頁面",
+              "文章、分類與不同語言選單",
+              "表單、動態文字與整頁呈現"
+            ],
+            [
+              "進階需求",
+              "網站編輯器及其他 Pro 功能",
+              "多語言與 SEO Pack 等附加功能"
+            ],
+            [
+              "更新驗收",
+              "原文與譯文是否同步",
+              "新字串是否重新翻譯"
+            ],
+            [
+              "共同工作",
+              "校對用語、連結及完整流程",
+              "校對用語、連結及完整流程"
+            ]
+          ],
+          "caption": "比較編輯方式與驗收需求，未提供效能排名。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先交付一條完整外語路徑",
+          "text": "從首頁到服務說明、聯絡表單及回覆提示都使用可理解的語言，通常比一次翻譯大量文章但缺少操作入口更方便讀者。先在少量頁面確認流程，再擴充。"
+        },
+        {
+          "type": "link",
+          "text": "規劃工作室網站內容與聯絡路徑",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-business-site"
+        },
+        {
+          "type": "link",
+          "text": "整理 WordPress 分類與導覽選單",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-taxonomy-navigation"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Polylang 多語系入門",
+          "url": "https://polylang.pro/how-to-create-a-multilingual-wordpress-site-in-5-steps/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Polylang 網址設定",
+          "url": "https://polylang.pro/documentation/support/guides/url-modifications/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Polylang 網站編輯器",
+          "url": "https://polylang.pro/documentation/support/guides/site-editor/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "TranslatePress 翻譯編輯器",
+          "url": "https://translatepress.com/docs/translation-editor/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "TranslatePress 官方外掛頁",
+          "url": "https://wordpress.org/plugins/translatepress-multilingual/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "TranslatePress SEO Pack",
+          "url": "https://translatepress.com/docs/addons/seo-pack/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "TranslatePress 自動翻譯",
+          "url": "https://translatepress.com/docs/automatic-translation/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 多語系網站指引",
+          "url": "https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

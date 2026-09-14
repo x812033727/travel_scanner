@@ -1,0 +1,252 @@
+{
+  "slug": "divi-subscription-sharing",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Divi 訂閱與分享元件：Bloom、Monarch 的使用時機",
+      "description": "Bloom 與 Monarch 都能放在 Divi 網站，但一個處理電子報訂閱入口，另一個提供社群分享及追蹤連結。本文以生活專欄為例，說明訂閱名單串接、表單顯示位置、確認流程與分享按鈕設定，也整理手機干擾、資料用途、統計解讀和效能驗收。協助依讀者需求選擇元件，避免重複彈窗、失效社群連結與看似成長卻無法驗證的數字。",
+      "hero": {
+        "src": "/guides/divi-subscription-sharing/hero.jpg",
+        "alt": "原創封面以文件、伺服器與螢幕呈現訂閱資料、名單服務和社群入口。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "生活專欄希望讀者下次再回來，可以提供電子報；讀者覺得文章適合朋友，則需要方便的分享入口。這兩個目的相關，但資料流程不同。Bloom 和 Monarch 應分別對應明確需求，不能因為都屬於同一家產品就全部啟用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文依 2026 年 9 月 14 日查閱的官方文件，整理兩款外掛的基本分工與驗收方式。範例是假設的每月生活整理專欄，沒有實際新增訂閱者、發送電子報或宣稱特定版型能提高轉換率。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先分清訂閱、分享與追蹤"
+        },
+        {
+          "type": "paragraph",
+          "text": "Bloom 在網站呈現電子郵件訂閱表單，並連到支援的電子報或名單服務。Monarch 的 Social Sharing 讓訪客分享目前內容，Social Follow 則連到你的社群個人檔案或專頁。點追蹤入口通常只是前往平台，不能直接理解為對方已完成追蹤。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Divi 5 本身也有 Email Optin 模組，可用於頁面內的訂閱區。如果只需要一個固定入口，先確認現有模組能否滿足需求；需要集中管理不同頁面的表單類型與顯示時機時，再評估 Bloom。避免同一頁同時存在功能相同的兩個訂閱表單。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先決定讀者會收到什麼，例如每月一封整理文章與工具更新，再選接收名單。沒有固定內容計畫時，可以先使用文章相關連結與清楚的社群入口。增加外掛不會自動建立持續寄送內容的能力，也不保證讀者願意留下資料。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Bloom 先接名單，再建立表單"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Bloom、Email Accounts 新增帳號，依選定服務填入必要授權並取得名單。先為測試準備一份合適的名單或測試流程，確認使用的是本站負責管理的帳號。API key 應留在安全設定位置，不放在前台文字或公開交接文件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著到 Optin Forms 選 New Optin，選擇表單類型，在 Setup 指定帳號與名單。不能只完成漂亮外觀就期待開始收件。服務名稱、授權要求及欄位支援可能更新，舊文件中的名稱和畫面應與目前帳號核對。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如生活專欄先只收信箱，姓名如無個人化需求可不必強制。說明文字應寫清楚寄送內容與頻率，並提供資料使用說明入口。若另有課程詢問或客服表單，不要把其收件者直接混入電子報名單。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "連結自己管理的名單服務，確認授權成功並選到正確名單。",
+            "建立具用途名稱的訂閱表單，填入清楚的內容、頻率與按鈕文字。",
+            "依表單類型設定位置或嵌入短碼，再儲存並啟用。",
+            "使用測試信箱走完送出、確認與接收流程，檢查名單端的實際狀態。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "依閱讀情境選位置與顯示時機"
+        },
+        {
+          "type": "paragraph",
+          "text": "Bloom 提供 Popup、Flyin、Below Post、Inline 等類型。對剛完成閱讀的訪客，文章下方的邀請通常已有足夠上下文；需要放在特定段落時，可用 Inline 並複製該表單產生的短碼。不要直接照教學複製別人的 optin_id。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Popup、Flyin 與 Below Post 有對應的 Display Settings，可指定文章、頁面或分類範圍；Inline 則由插入位置決定，沒有同樣的顯示設定。找不到某個分頁時，先檢查表單類型，不要因此重裝外掛或建立多份重複表單。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若使用彈出或滑入表單，選一個與閱讀有關的觸發條件，並實際測試關閉後的行為。手機的關閉按鈕需能看見且點得到，鍵盤也應能離開。重要說明、登入與結帳流程不宜被訂閱邀請反覆遮住。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "成功訊息必須符合實際訂閱狀態"
+        },
+        {
+          "type": "paragraph",
+          "text": "在支援的 Success Action 設定中，可顯示訊息或重新導向。若流程需要信箱確認，訊息應說明還要前往收件匣完成操作，而不是直接宣稱已可收到所有信件。送出成功、待確認及可寄送名單是不同狀態。"
+        },
+        {
+          "type": "paragraph",
+          "text": "雙重確認的設定與支援方式取決於串接服務。例如 Bloom 的 ActiveCampaign 官方說明提到可透過 Form ID 帶入對應表單流程；不能據此推論每個服務都使用相同欄位或自動開啟確認。以接收端紀錄及實際確認信核對。"
+        },
+        {
+          "type": "paragraph",
+          "text": "測試至少包含首次加入、重複信箱、錯誤格式與取消訂閱後的行為。若表單顯示成功但名單沒有資料，先查帳號授權、所選名單與服務回應。不要藉由手動把測試或未確認資料標成可寄送，讓畫面看起來通過。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Monarch 只放真正需要的平台入口"
+        },
+        {
+          "type": "paragraph",
+          "text": "到 Monarch 設定中分別處理 Sharing 和 Following。分享區選擇可用網路、安排順序並設定清楚標籤；追蹤區則填自己的正確 Profile URL。不要把網站首頁放成社群個人檔案，也不要讓按鈕文字和目的地不一致。"
+        },
+        {
+          "type": "paragraph",
+          "text": "分享按鈕可放在文章附近，追蹤入口可放頁尾或相關介紹。只保留讀者可能使用的平台，避免長條按鈕擠壓正文。每個入口都要在實際前台開啟，確認分享的是當前文章及正確網址，而非測試站或另一篇內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Monarch 部分官方社群 API 教學較舊，不能保證當年的平台授權與計數方式現在仍適用。若追蹤數無法可靠更新，可以不顯示數字；不要人工填入誇大的數量。跨平台粉絲數相加也不是不重複的總讀者人數。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把隱私、效能與成效一起驗收"
+        },
+        {
+          "type": "paragraph",
+          "text": "訂閱資料會進入選定服務，分享與追蹤按鈕也可能開啟外部平台。先核對實際資料流、相關網路請求與網站的告知文字，不要因圖示是本機顯示就宣稱沒有外部處理。只要求必要資料，並設定帳號管理與移交責任。"
+        },
+        {
+          "type": "paragraph",
+          "text": "加入元件前後，用相同頁面及測試條件比較載入和操作，特別留意額外腳本、圖片、計數請求與彈窗。不能只看一次速度分數就下結論；也要確認快取、內容量及登入狀態相同。若只需要簡單追蹤連結，沒有必要為數字效果增加多餘整合。"
+        },
+        {
+          "type": "paragraph",
+          "text": "成效紀錄應分開看表單顯示、送出、確認完成及實際退訂，不把所有送出都當成有效訂閱。分享按鈕的點擊也不能當成已發布貼文。每次更新後重跑少量測試，保留失效連結與名單錯誤的處理方式，才能持續維護這些入口。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/divi-subscription-sharing/diagram-1.svg",
+          "alt": "原創三欄圖解比較電子報訂閱、文章分享與社群追蹤的目的地和完成條件，避免混用成效數字。",
+          "width": 1600,
+          "height": 900,
+          "caption": "先定義完成條件，再決定畫面訊息與統計要怎麼記。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "讀者動作",
+            "工具與設定",
+            "實際驗收"
+          ],
+          "rows": [
+            [
+              "想收到新文章",
+              "Bloom 或 Divi Email Optin",
+              "正確名單與確認狀態"
+            ],
+            [
+              "在段落中訂閱",
+              "Bloom Inline 短碼",
+              "對應表單及手機顯示"
+            ],
+            [
+              "讀完文章再邀請",
+              "Below Post 或適當觸發",
+              "範圍、關閉與不遮擋"
+            ],
+            [
+              "分享目前文章",
+              "Monarch Social Sharing",
+              "網址與平台分享畫面"
+            ],
+            [
+              "查看作者社群",
+              "Monarch Social Follow",
+              "正確 Profile URL"
+            ]
+          ],
+          "caption": "依目的選擇入口；點擊、送出與完成訂閱應分別記錄。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "資料和統計都要能追溯",
+          "text": "只記錄實際確認的結果，讓成功訊息、名單狀態和成效報表使用相同定義。無法驗證的追蹤數可以隱藏，失效整合應修正或移除，不必維持一個看似熱鬧的介面。"
+        },
+        {
+          "type": "link",
+          "text": "Divi 網站的設定與維護分工",
+          "url": "https://mokaair.com/zh-TW/life/divi-site-building"
+        },
+        {
+          "type": "link",
+          "text": "Divi 手機版表單與閱讀動線",
+          "url": "https://mokaair.com/zh-TW/life/divi-mobile-type-layout"
+        },
+        {
+          "type": "link",
+          "text": "WordPress 社群內容嵌入與備援連結",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-social-embeds"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Bloom：帳號與名單連結",
+          "url": "https://help.elegantthemes.com/en/articles/8600819-adding-email-accounts-in-bloom",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Bloom：表單類型",
+          "url": "https://help.elegantthemes.com/en/articles/8601205-using-the-bloom-opt-in-types",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Bloom：顯示範圍與觸發",
+          "url": "https://help.elegantthemes.com/en/articles/8600834-using-the-bloom-display-settings",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Bloom：短碼使用",
+          "url": "https://help.elegantthemes.com/en/articles/8600681-creating-and-using-shortcodes-in-bloom",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Divi 5：Email Optin",
+          "url": "https://help.elegantthemes.com/en/articles/10273324-the-email-optin-module-in-divi-5",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Monarch：分享與追蹤網路",
+          "url": "https://help.elegantthemes.com/en/articles/8655848-adding-and-managing-social-networks-in-monarch",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Monarch：功能與顯示位置",
+          "url": "https://help.elegantthemes.com/en/articles/8655833-a-complete-overview-of-the-monarch-plugin",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Monarch：API 計數文件",
+          "url": "https://help.elegantthemes.com/en/articles/8655852-using-network-apis-in-monarch",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

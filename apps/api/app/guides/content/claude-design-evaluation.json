@@ -1,0 +1,243 @@
+{
+  "slug": "claude-design-evaluation",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Design 怎麼評估：原型、簡報與設計交接",
+      "description": "Claude Design 可以透過對話製作原型與簡報，但選用前要確認帳戶供應、設計輸入及交付格式。本文以社區修繕工作坊為原創案例，示範如何準備品牌素材、提出具體修改、檢查互動狀態和匯出檔案，並規劃交接給設計與開發人員的內容。附比較表、操作步驟及自繪圖解，協助團隊用可核對的成果評估工具。",
+      "hero": {
+        "src": "/guides/claude-design-evaluation/hero.jpg",
+        "alt": "Mokaair 原創螢幕、文件與資料夾插圖，代表原型、簡報及完整交接資料。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "社區修繕工作坊想準備活動說明頁與志工簡報，負責人希望先看到一個可以討論的版本，再交由設計與網站人員完成。Claude Design 可作為這類視覺試作工具，但畫面看起來完整，還不能證明報名流程、資料內容和匯出格式都已經符合需求。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文依 2026 年 9 月 14 日查閱的一手資料，介紹功能邊界與原創驗收方法。工作坊、活動資料和測試安排均是假設案例；沒有登入 Claude Design、產生實際產品原型，或宣稱使用後節省多少工時。"
+        },
+        {
+          "type": "heading",
+          "text": "先選定要交付的成果",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方目前將 Claude Design 列為 Pro、Max、Team 與 Enterprise 的測試功能，Enterprise 預設關閉。可從網頁 claude.ai/design 或 Claude Desktop 側欄進入，仍需確認自己的方案與組織設定。不要只看別人的展示影片，就推定帳戶已取得相同入口。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本例先拆成兩種成果：活動頁原型用來討論資訊順序與報名動線；志工簡報用來說明分工和現場流程。原型需要測試點擊後的狀態，簡報需要檢查放映與匯出效果。兩者可以共用品牌素材，但不宜用同一張完成清單驗收。"
+        },
+        {
+          "type": "paragraph",
+          "text": "也先寫下哪些部分尚未決定，例如活動日期、材料費和志工人數。這些欄位在試作中保留明顯的待確認標示，避免工具為了畫面好看補出具體數字。若只想討論排版，就使用虛構姓名和空白表單，不必上傳真實報名名單。"
+        },
+        {
+          "type": "heading",
+          "text": "整理可重用的設計輸入",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude Design 的設計系統可從提供的品牌素材、簡報或程式元件等資料整理顏色、字型與版面模式。它需要先有合適輸入，再核對整理結果；不應把「自動套用品牌」理解成工具原本就知道工作坊的視覺規則。資料不足時，先補規範比較有用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本例準備工作坊自己擁有的標誌、已確認可用的字型名稱、主色與輔色，以及一張過去活動的自製版面。註明哪些元素必須一致，哪些允許調整。若拿其他網站截圖討論資訊密度，可描述觀察到的問題，仍應自行決定版型與圖像，不要求照搬整個設計。"
+        },
+        {
+          "type": "paragraph",
+          "text": "設計系統產生後，先試一張包含長標題、提醒文字和按鈕的小頁面。核對繁體中文是否缺字、字重是否明顯，以及標誌旁的留白。團隊帳戶還要確認誰負責維護與發布設計系統；官方的 Enterprise 管理權限可限制發布、預設與刪除等動作，並非只有建立者能使用。"
+        },
+        {
+          "type": "heading",
+          "text": "讓修改指令指向具體問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "介面以對話與畫布協作，可透過聊天、局部留言或直接調整畫布修改。工作坊可以先請工具安排活動目的、適合對象、攜帶物品和報名入口，再集中核對這些資訊。第一輪先解決看不懂的內容，後續才細修裝飾與間距。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如發現手機畫面中報名說明太晚出現，指令可寫：「在手機版把適合對象放到活動目的之後，報名按鈕保留清楚文字；材料費仍標示待確認，不新增金額。」它指明裝置、位置與內容限制，比「再專業一點」更容易判斷修改是否成功。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每次調整後回看相鄰區塊。縮短標題可能讓活動條件不完整，放大按鈕也可能把提醒推到很遠的地方。把修改原因和仍未解決的問題簡短記下，讓其他幹部知道這版選擇了什麼。不要只存一張看起來最好看的截圖，卻遺失決策與待辦。"
+        },
+        {
+          "type": "heading",
+          "text": "原型要走過正常與例外狀態",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方原型教學說明可加入既有程式元件與樣式作為脈絡。若已有網站，請開發人員提供與本次介面有關的範圍，再核對是否使用到合適元件。連接程式庫可以協助銜接，但仍需檢查輸出；不能因為引用既有元件，就認定資料庫和通知流程也已完成。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本例至少走過未填資料、填寫錯誤、送出中、成功與額滿幾種狀態。原型如果只有一個成功畫面，應標示為尚未涵蓋例外。也要問清楚按鈕是切換示範畫面、呼叫測試服務，還是連到真實報名系統，避免評審在討論時真的送出資料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "請一位沒有看過設計過程的志工試著找出材料需求，再用鍵盤操作主要入口，並縮窄視窗查看長文字。記錄他在哪裡停下，而不是引導他點到預期位置。這是原創可用性檢查安排，本文沒有執行受試測試，也不把 AI 自己的檢查當成已通過人工驗收。"
+        },
+        {
+          "type": "heading",
+          "text": "簡報與匯出檔另外檢查",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude Design 的簡報以畫布中的 HTML 形式呈現，官方列出 HTML、PPTX、PDF 及專案 ZIP 等匯出方式。先問收件者要用什麼軟體，才選格式。瀏覽器中可互動的內容，在另一種格式裡如何顯示，需要實際開檔確認，不能只用匯出成功作判斷。"
+        },
+        {
+          "type": "paragraph",
+          "text": "工作坊可先做一份短簡報，包含集合地點、工具分配和結束清點。每張只放當下需要的資訊，圖表使用已確認的數據；尚未確定的人數不畫成精準比例。若加入照片、圖示與字型，整理素材來源及使用條件，匯出並不會自然替素材補上授權。"
+        },
+        {
+          "type": "paragraph",
+          "text": "下載後逐頁檢查繁體字、換行、圖像裁切和頁碼，再用實際放映軟體檢查連結與動畫。PDF 適合核對固定頁面，PPTX 則要確認接手者能否修改需要的元素。若只打算以靜態頁面交付，就讓接手者知道哪些互動沒有保留，避免會議當天才發現差異。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "選定原型或簡報的用途，列出必須交付與尚待確認的內容。",
+            "準備有權使用的品牌素材，檢查設計系統與繁中文字型。",
+            "用具體指令逐項修改，測試手機、鍵盤及例外狀態。",
+            "以收件者的軟體開啟匯出檔，整理素材、限制和後續工作。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "交接與費用也要列入評估",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "目前 Claude Design 與聊天、Claude Code 和 Cowork 共用方案用量，不再是獨立的 Design 週額度。大型脈絡與反覆修改會增加用量，因此評估時可記錄每輪目標、改動和人工修正時間。不要用一次順利生成的結果，推算整個活動專案都只需相同成本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "交給開發人員時，除原型或程式檔，也附上資料欄位、狀態、素材來源與未完成項目。本例應列出真實報名、額滿判斷、通知和資料保存仍由誰處理。能交接到 Claude Code 是工具提供的接續方式，正式環境的功能、權限與維護仍需要完整確認。"
+        },
+        {
+          "type": "paragraph",
+          "text": "分享前檢查檢視、留言或編輯權限，確認是否符合討論對象。組織管理文件目前說明 Design 尚不支援稽核日誌，因此需要這類紀錄的團隊不能自行推定已有。最後比較交付可用程度、修改成本與團隊接手難度，再決定把工具放在哪個設計階段。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-design-evaluation/diagram-1.svg",
+          "alt": "四張卡片呈現設計輸入、逐項修改、輸出驗收與正式交接，保留未完成清單。",
+          "width": 1600,
+          "height": 900,
+          "caption": "好看的畫面是討論起點，可使用的成果還需要內容、檔案與功能驗收。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "成果",
+            "核心驗收",
+            "交接時補上"
+          ],
+          "rows": [
+            [
+              "活動頁原型",
+              "資訊順序與互動狀態",
+              "真實服務尚未完成的項目"
+            ],
+            [
+              "志工簡報",
+              "放映可讀與內容正確",
+              "可修改格式及素材來源"
+            ],
+            [
+              "設計系統",
+              "顏色、字型與元件一致",
+              "維護負責人與更新規則"
+            ],
+            [
+              "匯出檔案",
+              "用目標軟體實際開啟",
+              "互動、字型和版面限制"
+            ],
+            [
+              "開發接續",
+              "資料流程與程式整合",
+              "測試、權限及維運工作"
+            ]
+          ],
+          "caption": "原創工作坊評估表，區分視覺試作、可用檔案與正式功能。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先標示待確認，再追求畫面完整",
+          "text": "活動金額、人數與報名狀態應有依據。試作需要佔位內容時，清楚標示，讓接手者知道哪些資訊尚不能對外使用。"
+        },
+        {
+          "type": "link",
+          "text": "用線框圖與原型驗證操作需求",
+          "url": "https://mokaair.com/zh-TW/life/wireframe-prototype-testing"
+        },
+        {
+          "type": "link",
+          "text": "設計使用字型前先核對授權",
+          "url": "https://mokaair.com/zh-TW/life/font-license-web-typography"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Claude：Design 功能、入口與共用用量",
+          "url": "https://support.claude.com/en/articles/14604416-get-started-with-claude-design",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude：Design 的 Team 與 Enterprise 管理",
+          "url": "https://support.claude.com/en/articles/14604406-claude-design-admin-guide-for-team-and-enterprise-plans",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude：設定 Design 設計系統",
+          "url": "https://support.claude.com/en/articles/14604397-set-up-your-design-system-in-claude-design",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude Academy：原型與 UX 的程式脈絡",
+          "url": "https://academy.claude.com/tutorials/using-claude-design-for-prototypes-and-ux",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude Academy：簡報、匯出與分享",
+          "url": "https://academy.claude.com/tutorials/using-claude-design-for-presentations-and-slide-decks",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
