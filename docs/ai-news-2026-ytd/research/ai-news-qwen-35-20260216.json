@@ -1,0 +1,170 @@
+{
+  "slug": "ai-news-qwen-35-20260216",
+  "event_date": "2026-02-16",
+  "title": "Qwen3.5 開放權重：可下載模型，與能在自己電腦運作差在哪？",
+  "sources": [
+    {
+      "title": "Qwen：官方儲存庫發布紀錄",
+      "url": "https://github.com/QwenLM/Qwen3.8",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "Qwen：Qwen3.5-397B-A17B 官方模型卡",
+      "url": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B",
+      "checked_on": "2026-09-14"
+    }
+  ],
+  "checked_on": "2026-09-14",
+  "verified_facts": [
+    "官方儲存庫 News 記載 2026 年 2 月 16 日發布首個 Qwen3.5 開放權重模型 Qwen3.5-397B-A17B。雲端 Plus 的版本日期 2 月 15 日不能當成這個開放模型的發布日。",
+    "官方模型卡列總參數 397B、啟用 17B，為含視覺編碼器的混合架構，授權標示 Apache-2.0。",
+    "官方同時區別自行部署權重與 Alibaba Cloud 的託管 Qwen3.5-Plus；後者有不同服務功能與上下文設定。",
+    "啟用參數不等於整個模型檔案或記憶體需求，自行部署仍需硬體、軟體、維運及授權條件核對。"
+  ],
+  "editorial_brief": "不給未驗證硬體最低需求，不引導一般讀者下載數百GB權重。原創例子：小店想用內部產品圖和規格問答，比較託管試用與找技術夥伴做離線小樣本。解釋開放權重不是完整訓練資料公開，也不保證所有衍生用途無條件自由。表格比較可下載、可啟動、可用與可維運。",
+  "hero_label": "開放權重的四道門",
+  "diagram_nodes": [
+    [
+      "確認授權",
+      "查看官方版本"
+    ],
+    [
+      "估算資源",
+      "完整模型需求"
+    ],
+    [
+      "測試任務",
+      "用自己的樣本"
+    ],
+    [
+      "維護服務",
+      "成本與資料治理"
+    ]
+  ],
+  "source_policy": "Facts only from listed official sources checked on 2026-09-14. Benchmarks belong to vendors. Editorial examples are hypothetical, not hands-on product tests. Announcement access and future promises must be dated.",
+  "status": "researched-not-written",
+  "diagram": {
+    "title": "開放權重的四道門",
+    "caption": "確認授權：查看官方版本、估算資源：完整模型需求、測試任務：用自己的樣本、維護服務：成本與資料治理。",
+    "nodes": [
+      [
+        "確認授權",
+        "查看官方版本"
+      ],
+      [
+        "估算資源",
+        "完整模型需求"
+      ],
+      [
+        "測試任務",
+        "用自己的樣本"
+      ],
+      [
+        "維護服務",
+        "成本與資料治理"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "diagram": {
+        "title": "The Four Gates of Open Weights",
+        "caption": "Check Licensing: inspect official version; Estimate Resources: full model requirements; Test Tasks: use your own samples; Maintain Service: costs and data governance.",
+        "nodes": [
+          [
+            "Check Licensing",
+            "Inspect official version"
+          ],
+          [
+            "Estimate Resources",
+            "Full model requirements"
+          ],
+          [
+            "Test Tasks",
+            "Use your own samples"
+          ],
+          [
+            "Maintain Service",
+            "Costs and data governance"
+          ]
+        ]
+      },
+      "hero_label": "The Four Gates of Open Weights"
+    },
+    "ja": {
+      "diagram": {
+        "title": "オープンウェイトの4つの関門",
+        "caption": "ライセンス確認：公式版を把握、リソース試算：全モデル要件、タスク検証：独自サンプル使用、サービス保守：コストと統治。",
+        "nodes": [
+          [
+            "ライセンス確認",
+            "公式バージョンを把握"
+          ],
+          [
+            "リソース試算",
+            "全モデルの要件"
+          ],
+          [
+            "タスク検証",
+            "自社サンプルを使用"
+          ],
+          [
+            "サービス保守",
+            "コストと統治"
+          ]
+        ]
+      },
+      "hero_label": "オープンウェイトの4つの関門"
+    },
+    "ko": {
+      "diagram": {
+        "title": "오픈 가중치의 네 가지 관문",
+        "caption": "라이선스 확인: 공식 버전 확인, 자원 산정: 전체 모델 요구량, 작업 테스트: 자체 샘플 활용, 서비스 유지관리: 비용 및 데이터 거버넌스.",
+        "nodes": [
+          [
+            "라이선스 확인",
+            "공식 버전 확인"
+          ],
+          [
+            "자원 산정",
+            "전체 모델 요구량"
+          ],
+          [
+            "작업 테스트",
+            "자체 샘플 활용"
+          ],
+          [
+            "서비스 유지관리",
+            "비용 및 데이터 거버넌스"
+          ]
+        ]
+      },
+      "hero_label": "오픈 가중치의 네 가지 관문"
+    },
+    "zh-CN": {
+      "diagram": {
+        "title": "开放权重的四道门",
+        "caption": "确认许可：查看官方版本、估算资源：完整模型需求、测试任务：用自己的样本、维护服务：成本与数据治理。",
+        "nodes": [
+          [
+            "确认许可",
+            "查看官方版本"
+          ],
+          [
+            "估算资源",
+            "完整模型需求"
+          ],
+          [
+            "测试任务",
+            "用自己的样本"
+          ],
+          [
+            "维护服务",
+            "成本与数据治理"
+          ]
+        ]
+      },
+      "hero_label": "开放权重的四道门"
+    }
+  }
+}

@@ -1,0 +1,884 @@
+{
+  "slug": "ai-news-chatgpt-work-20260709",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 139,
+  "locales": {
+    "zh-TW": {
+      "title": "ChatGPT Work 正式亮相：如何把跨檔案工作交代清楚？",
+      "description": "分析 ChatGPT Work 於 2026 年中發布後的跨檔案交接方法，以讀書社群活動與預算整理為例，探討多工具一致性、追蹤介入點與驗收原則。",
+      "hero": {
+        "src": "/guides/ai-news-chatgpt-work-20260709/hero.jpg",
+        "alt": "把交付說到具體的原創概念插圖，呈現本篇事件的使用脈絡",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "事件日期：2026-07-09；本文查核日期：2026-09-14。7 月 9 日 ChatGPT Work 發布，可跨連結應用與檔案處理長任務，製作文件、試算表、簡報等成果；官方以 GPT-5.6 提供能力。"
+        },
+        {
+          "type": "paragraph",
+          "text": "首發 web／mobile 先 Pro、Enterprise、Edu，接著 Plus／Business；桌面 Mac／Windows 當時列所有方案包括 Free。官方說工作耗用量隨任務規模而異，沿用 Codex 使用結構；不是一次聊天固定成本。可在工作中追蹤進度、回答問題、改方向及確認重要動作，模型能力不等於所有應用權限自動具備。以下生活與工作情境為編輯設計的例子，供讀者自行驗證，並非本站產品實測。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "整合社群活動材料時的範本與資料界定"
+        },
+        {
+          "type": "paragraph",
+          "text": "以經營多年的讀書社群為例，每年籌劃年度回顧與下一年度計畫時，總會面臨散落各處的歷史紀錄。組織者手上通常握有去年活動的出席紀錄表、場地租借收據、講師酬勞報銷單，以及最新修訂的活動規劃簡報範本。當我們希望交由系統處理跨檔案任務時，最忌諱將所有零散資料未加說明便一次倒出，這容易導致系統混淆新舊格式的對應標準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在啟動交接的第一步，應當明確區分背景參考檔案與產出結構範本。例如，必須清楚指引系統將歷次讀書會的真實花費抽離出來，並指定哪些過往專案已結案、哪些活動尚有待付款項。若未預先標明參考資料的起訖月份與各檔案間的參照關係，模型在統合數字時可能把預算草案誤認為實際支出，造成基底資料失真。"
+        },
+        {
+          "type": "paragraph",
+          "text": "此外，針對預算項目的歸類方式，不同年度的定義往往略有出入。工作指令中應具體要求比照新版預算範本的會計科目進行整理，並對不明確的舊項目發出提問。透過在一開始就立下資料引用的先後順序，能防止模型自行推斷非事實的數據，為接下來的跨文件產出奠定可追溯的堅實基礎。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "維持工作簿與簡報成果的跨工具數據一致性"
+        },
+        {
+          "type": "paragraph",
+          "text": "讀書社群的核心成果通常包含兩份主要文件：一份供核心幹部查核明細的年度活動收支工作簿，以及一份向全體社員展示成果的年度總結簡報。這兩份文件在過去往往由不同夥伴分頭製作，經常出現簡報圓餅圖的數字與試算表總額對不上的窘境。當交代複合型任務時，必須將這兩份成果的連動關係設為首要約束條件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "操作策略上，應明確指示以試算表作為共同的數據基準。所有簡報投影片中出現的活動場次、參與人次、門票收入與講師費統計，都必須嚴格引用試算表特定分頁的加總結果。這意味著在任務描述中，需要規定先完成工作簿的公式計算與欄位校驗，待收支平衡確認無誤後，再將指定儲存格的數值導入簡報圖表與說明文字之中。"
+        },
+        {
+          "type": "paragraph",
+          "text": "除了數值吻合，名詞定義與欄位分類也必須維持跨工具一致。若試算表將讀書會分為線上導讀與線下沙龍兩類，簡報中就不能擅自出現未定義的分組名稱。要求成果在文字與數字兩端相互呼應，不僅能省下後續人工逐頁比對的精力，也能避免社群社員在閱讀總結報告時對活動成效產生誤解。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "協作階段",
+            "核心交接重點",
+            "常見落差與防範措施"
+          ],
+          "rows": [
+            [
+              "素材整理階段",
+              "區分歷史數據與版面範本，明確會計科目與統計基準。",
+              "歷史草案被誤算為實際支出；需在輸入時明訂檔案有效區間。"
+            ],
+            [
+              "跨工具產出",
+              "指定試算表為唯一數據來源，簡報完全參照工作簿數字。",
+              "簡報圖表與試算表明細不一致；限制簡報只能引用驗證後的數值。"
+            ],
+            [
+              "過程追蹤介入",
+              "監看各執行步驟節點，遇提問即時釐清分類邏輯。",
+              "任由錯誤假設持續擴大；應在計算分支偏離時主動叫停並校正。"
+            ],
+            [
+              "成果驗收停點",
+              "確認指定存放路徑，產出未決問題清單並阻斷自動外發。",
+              "未經人工檢查即對外寄發；設定強制性人工授權為外發前置條件。"
+            ]
+          ],
+          "caption": "讀書社群年度活動與預算整理之多檔案交接查核指引"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "長任務運作時的進度掌握與適時介入導正"
+        },
+        {
+          "type": "paragraph",
+          "text": "處理涉及多檔案運算與格式排版的長任務時，執行過程往往需要耗費相當長的時間。不同於瞬間給出答案的對話介面，這類任務在推進過程中會依循特定步驟解析結構、提取數據與填入內容。使用者在此期間不該只是被動等待最終成果，而應透過系統提供的進度追蹤介面，細心觀察目前工作停留在哪一個邏輯節點。"
+        },
+        {
+          "type": "paragraph",
+          "text": "你可以在工作要求中明訂：遇到模糊事項時先列出問題，例如某筆贊助收入是否應列入年度預算。這是希望系統遵循的工作規則，仍要觀察它是否真的停下來，而不能假定每次都會主動發現疑點。若在進度中看見場地費的計算方式不符預期，應及早調整，避免錯誤一路帶進簡報。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-chatgpt-work-20260709/diagram-1.svg",
+          "alt": "把交付說到具體：四項閱讀與使用重點",
+          "width": 1600,
+          "height": 900,
+          "caption": "提供背景：範本與材料、指定成果：格式與用途、跟進進度：調整未決問題、開檔驗收：內容與來源一致。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "建立對外發布停點與操作權限的安全防線"
+        },
+        {
+          "type": "paragraph",
+          "text": "在自動化流程中，最關鍵的風險控制在於確認重要動作的人工審核機制。模型雖然能夠存取連結應用並生成具體成果，但絕不意味著它應該擁有未經批准直接對外溝通的自由。以社群運作來說，年度報告完成後常需要寄送給贊助夥伴或全體社員，這個動作必須被嚴格設定為交接的確認點。"
+        },
+        {
+          "type": "paragraph",
+          "text": "具體要求可以寫成：所有檔案先存放在內部草稿資料夾，未經負責人確認，不寄出信件或建立公開分享連結。若所用工具提供操作前確認，也應檢查實際設定；只在提示中寫一句要求，不等於系統已建立強制的權限限制。需要確保不會外發時，可先不提供相關連結或寄送權限。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這項安排能減少誤讀或未確認內容流向外部的機會，但仍需要有人閱讀最終成果。把「可以操作某個應用」與「這次工作允許做哪些動作」分開交代，接手的人比較容易查核。對小型社群來說，用一份明確的交接清單記錄誰確認了什麼，通常比加入很多抽象的安全口號更有幫助。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "驗收交付檔案的存放路徑與來源標註規範"
+        },
+        {
+          "type": "paragraph",
+          "text": "當長任務宣告完成時，真正的驗收工作才正要展開。為了方便社群志工團隊後續接手維護，交付成果不能隨意散置在暫存區。交接指令中必須預先指定清楚的儲存位置，例如要求產出的試算表歸檔於財務年度資料夾，而展示簡報則存放在活動對外發布目錄，並統一檔案命名規則以便日後檢索。"
+        },
+        {
+          "type": "paragraph",
+          "text": "更重要的是，任何整合性產出都必須附帶清晰的來源標記與未決問題清單。驗收時應檢查試算表是否為每筆歷史數據標註原始憑證編號，簡報每張圖表下方是否均註明取自工作簿的何處。如果遇到帳目短缺幾百元但缺乏單據的情況，系統應在獨立備忘錄中列出該項未決疑點，而不是私自平衡帳目，這樣才能讓接手的人員迅速展開人工覆核。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "多檔案協作提醒",
+          "text": "在交付多工具整合任務時，務必以單一檔案作為核心數據基準，並在對外溝通前設置人工確認中斷點，以確保數據嚴謹與發布安全。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
+          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Gemini 3.6 Flash 與 Flash-Lite：快速模型該如何分工？",
+          "url": "https://mokaair.com/zh-TW/life/ai-news-gemini-36-flash-20260721"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI：ChatGPT Work 發布",
+          "url": "https://openai.com/index/chatgpt-for-your-most-ambitious-work/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI Academy：Get started with ChatGPT Work",
+          "url": "https://academy.openai.com/public/clubs/work-users-ynjqu/events/get-started-with-chatgpt-work-00rtqho2qa",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "ChatGPT Work Officially Debuts: How to Clearly Delegate Cross-File Tasks",
+      "description": "An analysis of cross-file delegation methods following the mid-2026 launch of ChatGPT Work. Using a reading community's events and budget organization as an example, this piece explores multi-tool consistency, tracking intervention points, and acceptance principles.",
+      "hero": {
+        "src": "/guides/ai-news-chatgpt-work-20260709/hero-en.jpg",
+        "alt": "Original conceptual illustration showing specific delegation, presenting the context of use for this event",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Event date: 2026-07-09; Article verification date: 2026-09-14. On July 9, ChatGPT Work was released, capable of handling long tasks across connected apps and files to produce deliverables such as documents, spreadsheets, and presentations; official capability is powered by GPT-5.6."
+        },
+        {
+          "type": "paragraph",
+          "text": "For web and mobile, the initial rollout prioritized Pro, Enterprise, and Edu, followed by Plus and Business; desktop Mac and Windows listed all plans, including Free, at the time. Officially, work usage varies with task scale, adopting the Codex usage structure rather than a fixed cost per chat. Users can track progress, answer questions, adjust directions, and confirm critical actions during work; model capability does not equate to having all app permissions automatically. The life and work scenarios below are editorial examples designed for readers to verify on their own, not actual product tests by this site."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Defining Templates and Data When Consolidating Community Event Materials"
+        },
+        {
+          "type": "paragraph",
+          "text": "Taking a reading community operated for many years as an example, organizers face historical records scattered across various locations whenever planning the annual review and the upcoming year's schedule. Organizers typically hold last year's event attendance sheets, venue rental receipts, speaker fee reimbursement forms, and the newly revised event planning presentation template. When delegating cross-file tasks to the system, the biggest pitfall is dumping all fragmented materials at once without explanation, which can easily cause the system to confuse mapping standards between new and old formats."
+        },
+        {
+          "type": "paragraph",
+          "text": "As the first step in initiating the delegation, background reference files must be clearly distinguished from output structural templates. For instance, the system must be explicitly guided to extract actual expenses from past reading sessions and be designated which past projects are closed and which events still have pending payments. If start and end months of reference materials along with cross-file reference relationships are not marked in advance, the model might mistake draft budgets for actual expenditures when aggregating figures, distorting baseline data."
+        },
+        {
+          "type": "paragraph",
+          "text": "Furthermore, regarding the categorization of budget items, definitions often vary slightly across different years. Work prompts should specifically require organizing items in accordance with the accounting categories of the new budget template and raising questions regarding ambiguous legacy items. By establishing the precedence of data references right at the start, one prevents the model from speculating ungrounded figures, laying a solid, traceable foundation for subsequent cross-document outputs."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Maintaining Cross-Tool Data Consistency Across Workbooks and Presentations"
+        },
+        {
+          "type": "paragraph",
+          "text": "The core deliverables of a reading community usually comprise two main documents: an annual event income and expenditure workbook for core organizers to verify details, and an annual summary presentation showcasing results to all members. In the past, these two documents were often produced separately by different teammates, frequently leading to the awkward discrepancy where pie chart numbers in the presentation did not match spreadsheet totals. When delegating complex composite tasks, the linkage between these two deliverables must be set as the primary constraint."
+        },
+        {
+          "type": "paragraph",
+          "text": "Operationally, explicit instructions should designate the spreadsheet as the common data baseline. All event session counts, participant numbers, ticket revenues, and speaker fee tallies appearing on presentation slides must strictly cite the sum totals from specific spreadsheet tabs. This means the task description needs to dictate completing formula calculations and column verifications in the workbook first, and only after income and expenditure balance is confirmed should specified cell values be imported into presentation charts and explanatory text."
+        },
+        {
+          "type": "paragraph",
+          "text": "Beyond numerical alignment, terminology definitions and column categories must also maintain cross-tool consistency. If the spreadsheet divides book clubs into online guided readings and offline salons, undefined subgroup names must not appear arbitrarily in the presentation. Requiring deliverables to correspond across both text and numbers saves effort on manual page-by-page checks later, and avoids misleading community members regarding event outcomes when reading the summary report."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Collaboration Phase",
+            "Core Handover Priorities",
+            "Common Gaps and Preventive Measures"
+          ],
+          "rows": [
+            [
+              "Material Organizing Phase",
+              "Differentiate historical data from layout templates; clarify accounting categories and statistical baselines.",
+              "Historical drafts mistaken for actual expenses; specify file validity periods during input."
+            ],
+            [
+              "Cross-Tool Deliverable Generation",
+              "Designate spreadsheet as single data source; ensure presentation strictly references workbook figures.",
+              "Presentation charts inconsistent with spreadsheet details; restrict presentation to referencing verified values only."
+            ],
+            [
+              "Process Tracking and Intervention",
+              "Monitor execution step nodes; clarify categorization logic promptly when questions arise.",
+              "Allowing flawed assumptions to compound; actively pause and calibrate when calculation branches deviate."
+            ],
+            [
+              "Deliverable Acceptance Checkpoint",
+              "Confirm designated storage paths; generate pending questions list and block automated external sending.",
+              "External dispatch without human review; set mandatory human authorization as a prerequisite for external sending."
+            ]
+          ],
+          "caption": "Multi-File Delegation Verification Guide for Reading Community Annual Events and Budget Organization"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Tracking Progress and Intervening at the Right Time During Long Tasks"
+        },
+        {
+          "type": "paragraph",
+          "text": "When handling long tasks involving multi-file calculations and layout formatting, the execution process often takes considerable time. Unlike a conversational interface that delivers answers instantly, these tasks follow specific steps to parse structures, extract data, and populate content as they progress. Users should not merely wait passively for final outputs during this period; instead, they should carefully observe which logical node the work is currently paused on via the system-provided progress tracking interface."
+        },
+        {
+          "type": "paragraph",
+          "text": "You can explicitly stipulate in work requirements: list questions first when encountering ambiguities, such as whether a specific sponsorship income should be included in the annual budget. This is a working rule you want the system to follow, yet one must still observe whether it actually stops, rather than assuming it will proactively spot questionable points every time. If venue fee calculations shown in progress deviate from expectations, adjustments should be made early to keep errors from carrying through into the presentation."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-chatgpt-work-20260709/diagram-1-en.svg",
+          "alt": "Specifics in Delegation: Four Reading and Usage Focus Points",
+          "width": 1600,
+          "height": 900,
+          "caption": "Provide Context: Templates and Materials; Specify Deliverables: Format and Purpose; Track Progress: Resolve Open Questions; Inspect Files: Match Content with Sources.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Establishing External Publishing Checkpoints and Permission Safeguards"
+        },
+        {
+          "type": "paragraph",
+          "text": "In automated workflows, the most critical risk control lies in human review mechanisms for confirming important actions. Although the model can access connected apps and generate tangible deliverables, this by no means implies it should have the liberty to communicate externally without approval. In community operations, annual reports often need to be sent to sponsors or all members upon completion; this action must be strictly configured as a delegation confirmation checkpoint."
+        },
+        {
+          "type": "paragraph",
+          "text": "Concrete requirements can be framed as: save all files in an internal draft folder first; do not send emails or create public share links without approval from the person in charge. If the tool used provides pre-action confirmation, actual settings should also be inspected; writing a single requirement in the prompt does not mean the system has established mandatory permission restrictions. When external sharing must be prevented, one can simply withhold relevant links or sending permissions initially."
+        },
+        {
+          "type": "paragraph",
+          "text": "This arrangement reduces the chance of misread or unconfirmed content leaking outside, yet someone still needs to read the final deliverable. Separating 'permission to operate an app' from 'what actions are permitted for this specific task' makes it easier for successors to audit. For small communities, using a clear handover checklist to record who verified what is generally more helpful than adding numerous abstract security slogans."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Acceptance Standards for Delivered File Storage Paths and Source Annotations"
+        },
+        {
+          "type": "paragraph",
+          "text": "When a long task is marked complete, the actual acceptance work is just beginning. To facilitate subsequent maintenance by community volunteer teams, deliverables cannot be left scattered across temporary directories. Delegation prompts must designate clear storage paths in advance—for example, requiring generated spreadsheets to be archived in the fiscal year folder and presentation slides stored in the public event directory, while applying unified naming conventions for future retrieval."
+        },
+        {
+          "type": "paragraph",
+          "text": "More importantly, any consolidated deliverable must come with clear source annotations and an open questions list. During acceptance, check whether the spreadsheet marks original voucher numbers for every historical data entry and whether every chart in the presentation notes where in the workbook it was drawn from. If accounts fall short by several hundred dollars without receipts, the system should list that unresolved issue in an independent memo rather than arbitrarily balancing the books, allowing successors to quickly launch manual reviews."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Multi-File Collaboration Reminder",
+          "text": "When delegating multi-tool integration tasks, always use a single file as the core data baseline and establish human confirmation checkpoints before external communications to ensure data rigor and publishing safety."
+        },
+        {
+          "type": "link",
+          "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
+          "url": "https://mokaair.com/en/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Gemini 3.6 Flash and Flash-Lite: How to Divide Fast Model Tasks",
+          "url": "https://mokaair.com/en/life/ai-news-gemini-36-flash-20260721"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI: ChatGPT Work Release",
+          "url": "https://openai.com/index/chatgpt-for-your-most-ambitious-work/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI Academy: Get started with ChatGPT Work",
+          "url": "https://academy.openai.com/public/clubs/work-users-ynjqu/events/get-started-with-chatgpt-work-00rtqho2qa",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "ChatGPT Work 正式登場：複数ファイルをまたぐタスクを明確に指示する方法",
+      "description": "2026年半ばに発表されたChatGPT Workを活用した複数ファイルの引き継ぎ手法を解説。読書コミュニティの活動と予算整理を例に、ツール間の一貫性、進捗確認と介入、検収の原則を考察します。",
+      "hero": {
+        "src": "/guides/ai-news-chatgpt-work-20260709/hero-ja.jpg",
+        "alt": "指示を具体化するプロセスを描いたオリジナル概念図。本記事の使用コンテキストを表現",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "出来事の日付：2026-07-09；本記事の確認日：2026-09-14。7月9日にChatGPT Workが発表されました。リンクされたアプリやファイルをまたいで長時間のタスクを処理し、ドキュメント、スプレッドシート、プレゼンテーションなどの成果物を作成できます。公式にはGPT-5.6によって機能が提供されています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "初期展開のweb／モバイル版はまずPro、Enterprise、Eduから始まり、続いてPlus／Businessへ拡大。当時のデスクトップ版（Mac／Windows）ではFreeを含むすべてのプランが対象として挙げられていました。公式発表によると、消費量はタスクの規模によって異なり、Codexの使用構造を踏襲しており、1回のチャットごとの固定コストではありません。作業中には進捗の追跡、質問への回答、方針の変更、重要アクションの確認が可能ですが、モデルの能力があるからといってすべてのアプリの権限が自動的に付与されるわけではありません。以下の生活・業務シナリオは編集部が設計した検証用の例であり、読者自身で検証していただくためのもので、本サイトによる実機検証レビューではありません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "コミュニティ活動資料をまとめる際のテンプレートとデータの定義"
+        },
+        {
+          "type": "paragraph",
+          "text": "長年運営されている読書コミュニティを例にとると、毎年の振り返りや翌年度の計画を立てる際、あちこちに散らばった過去の記録に対処することになります。主催者の手元には通常、昨年のイベント出席記録表、会場レンタルの領収書、講師謝金の精算書、そして最新版に改訂されたイベント企画プレゼンのテンプレートなどがあります。システムに複数ファイルをまたぐタスクを依頼する際、もっとも避けるべきなのは、説明なしに雑多なデータを一度にすべて投入することです。これを行うと、システムが新旧フォーマットの対応基準を混同しやすくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "引き継ぎを開始する第一歩として、背景の参考ファイルと成果物の構造テンプレートを明確に区別する必要があります。たとえば、過去の読書会での実際の支出を抽出するようシステムに明確に指示し、どの過去プロジェクトが清算済みで、どのイベントに未払いの項目が残っているかを指定しなければなりません。もし参考資料の対象期間（開始・終了月）やファイル間の参照関係を事前に明記しておかないと、モデルが数値を統合する際に予算案を実際の支出と誤認し、基礎データが狂ってしまう恐れがあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "また、予算項目の分類方法についても、年度によって定義が微妙に異なることがよくあります。作業指示の中では、新版の予算テンプレートの勘定科目に合わせて整理するよう具体的に求め、不明瞭な過去の項目については質問を出すよう指定しておくべきです。作業の初期段階でデータの参照優先順位を定めておくことで、モデルが事実に基づかない数値を勝手に推測するのを防ぎ、その後のファイル横断的な成果物作成に向けた追跡可能な強固な基盤を築くことができます。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "ワークブックとプレゼン成果物の間でツールを越えたデータ整合性を保つ"
+        },
+        {
+          "type": "paragraph",
+          "text": "読書コミュニティの主要な成果物には、通常2つのドキュメントが含まれます。コアメンバーが明細を確認するための年間イベント収支ワークブックと、全会員に向けて成果を共有するための年次総括プレゼンテーションです。過去にはこれら2つのファイルが別々の担当者によって並行して作成されることが多く、プレゼンの円グラフの数値とスプレッドシートの総額が合わないという事態が頻発していました。複合タスクを依頼する際は、これら2つの成果物の連動関係を最優先の制約条件として設定しなければなりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "運用戦略としては、スプレッドシートを唯一の共通データ基準として指定するのが確実です。プレゼンスライドに登場するイベント開催回数、参加人数のべ数、チケット収入、講師謝金の統計は、すべてスプレッドシートの特定シートの合計結果を厳密に参照させます。つまり、タスクの指示において、まずワークブックの数式計算と入力欄の検証を完了させ、収支の整合性が確認できてから指定セルの数値をプレゼンの図表や説明文へ反映させるという順序を義務付ける必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "数値の一致だけでなく、用語の定義や項目の分類もツール間で一貫性を維持しなければなりません。もしスプレッドシート側で読書会を「オンライン読書会」と「オフラインサロン」の2種類に分類しているなら、プレゼン側で未定義のグループ名を勝手に登場させてはいけません。テキストと数値の両面で整合性を保つよう成果物に要求することは、後から人間が1ページずつ突き合わせる手間を省くだけでなく、コミュニティの会員が総括レポートを読んだ際に活動実績を誤解するのを防ぐことにもつながります。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "協働フェーズ",
+            "引き継ぎの核心ポイント",
+            "よくある齟齬と防止策"
+          ],
+          "rows": [
+            [
+              "素材整理フェーズ",
+              "過去データとレイアウト用テンプレートを明確に分け、勘定科目と統計基準を定義する。",
+              "過去の試算案を実績支出と誤認する。入力時にファイルの有効期間を明記する。"
+            ],
+            [
+              "ツール横断出力",
+              "スプレッドシートを単一の情報源とし、プレゼンはワークブックの数値を完全に参照。",
+              "図表とスプレッドシート明細の不一致。検証済み数値のみを参照するよう制限。"
+            ],
+            [
+              "進捗の追跡と介入",
+              "実行ステップの節目を観察し、質問があれば分類ロジックを即座に明確化する。",
+              "誤った前提の放置による被害拡大。計算が逸脱した時点で停止し補正する。"
+            ],
+            [
+              "成果物検収の停止点",
+              "指定の保存先を確認し、未解決課題リストを出力させ、自動送信を遮断する。",
+              "人為的チェックなしの外部送信。送信の前提条件として人の承認を必須化する。"
+            ]
+          ],
+          "caption": "読書コミュニティの年次活動・予算整理における複数ファイル引き継ぎチェックガイド"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "長時間タスク実行時の進捗把握と適時な介入・軌道修正"
+        },
+        {
+          "type": "paragraph",
+          "text": "複数ファイルの計算やレイアウト調整を伴う長時間のタスクを処理する場合、実行プロセスにはかなりの時間を要するのが一般的です。瞬時に回答を出力する通常の対話型インターフェースとは異なり、この種のタスクは構造の解析、データの抽出、コンテンツの流し込みという決まった手順に沿って進行します。ユーザーはその間、単に最終成果物を待つだけでなく、システムが提供する進捗追跡画面を通じて、現在の作業がどの論理ステップにあるかを注意深く観察すべきです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "作業要件の中で「曖昧な点があれば質問をリストアップすること（例：特定の協賛金収入を年間予算に組み込むべきかどうかなど）」とあらかじめ定めておくことができます。これはシステムに従わせたい作業ルールですが、指示したからといって毎回自発的に疑問点を見つけてくれると思い込まず、実際に立ち止まって確認してくるかを注視する必要があります。もし進捗の途中で会場費の計算方法が意図と異なっていると気づいたら、早い段階で修正を入れ、誤りがプレゼン全体に波及するのを防ぐべきです。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-chatgpt-work-20260709/diagram-1-ja.svg",
+          "alt": "指示の具体化：4つの読み解き・活用ポイント",
+          "width": 1600,
+          "height": 900,
+          "caption": "背景提示：テンプレートと素材、成果物指定：形式と用途、進捗追跡：未決事項の調整、ファイル検収：内容と情報源の一致。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "外部発信の停止ポイント設定と操作権限のセーフティネット構築"
+        },
+        {
+          "type": "paragraph",
+          "text": "自動化されたワークフローにおいて、もっとも重要なリスク管理は「重要アクションに対する人為的承認プロセス」の構築です。モデルが連携アプリにアクセスし具体的な成果物を生成できるとしても、承認なしに外部へ直接発信する自由を与えてよいわけではありません。コミュニティ運営の例で言えば、年次報告が完成した後に協賛パートナーや会員全体へメール送信する行為などは、引き継ぎ作業の中で明確な承認必須ポイントとして設定しておく必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "具体的な指示としては、「すべてのファイルはまず内部の下書きフォルダに保存し、責任者の確認を得るまではメール送信や公開共有リンクの作成を行わないこと」と記述できます。利用しているツールが実行前確認機能を提供しているなら、実際の設定も確認しておくべきです。プロンプトに1文要件を書いただけでは、システム上に強制力のある権限制限が施されたことにはなりません。外部流出を確実に防ぐ必要がある場合は、あらかじめ関連する連携や送信権限を付与しないでおくことも選択肢です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "このような手配によって、誤読や未確認のコンテンツが外部に流出するリスクを低減できますが、最終的な成果物はやはり人間が目を通す必要があります。「特定のアプリを操作できること」と「今回のタスクでどのアクションが許可されているか」を分けて指示しておくと、後から引き継ぐ人も検証しやすくなります。小規模なコミュニティにおいては、抽象的なセキュリティスローガンを並べるよりも、「誰が何を確認したか」を記録できる明確な引き継ぎチェックリストを用意するほうが実用的です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "納品ファイルの保存先パスと参照元記載ルールの検収"
+        },
+        {
+          "type": "paragraph",
+          "text": "長時間のタスクが完了したと表示されたとき、真の検収作業が始まります。コミュニティのボランティアチームがスムーズに引き継いでメンテナンスできるよう、成果物を一時領域に適当に散らかしておくわけにはいきません。引き継ぎの指示において明確な保存先をあらかじめ指定しておく必要があります。たとえば、生成されたスプレッドシートは会計年度フォルダに格納し、プレゼン資料はイベント外部発信ディレクトリに保存させ、後日の検索性を考慮してファイル命名規則を統一します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "さらに重要な点として、あらゆる統合成果物には明確な出典表記と未解決事項のリストが添えられていなければなりません。検収時には、スプレッドシート内の過去データに元となる領収書・伝票番号が記載されているか、プレゼンの各図表の下にワークブックのどのセルから引用されたかが明記されているかを確認します。もし伝票が見当たらない数百元の使途不明金があった場合、システムが勝手に帳尻を合わせるのではなく、独立したメモ欄に未決事項として提示させることで、担当者が迅速に人手での再確認に着手できるようになります。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "複数ファイル協働の注意点",
+          "text": "複数のツールを横断するタスクを依頼する際は、必ず単一のファイルを中核のデータ基準とし、外部への発信前に人間の確認ポイントを設けることで、データの厳密性と発信の安全性を確保してください。"
+        },
+        {
+          "type": "link",
+          "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
+          "url": "https://mokaair.com/ja/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Gemini 3.6 FlashとFlash-Lite：高速モデルはどう分担すべきか？",
+          "url": "https://mokaair.com/ja/life/ai-news-gemini-36-flash-20260721"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI：ChatGPT Workの発表",
+          "url": "https://openai.com/index/chatgpt-for-your-most-ambitious-work/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI Academy：ChatGPT Workをはじめる",
+          "url": "https://academy.openai.com/public/clubs/work-users-ynjqu/events/get-started-with-chatgpt-work-00rtqho2qa",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "ChatGPT Work 공식 공개: 파일 간 작업을 명확하게 인계하는 법",
+      "description": "2026년 중반 발표된 ChatGPT Work의 파일 간 인계 방식을 독서 모임 활동 및 예산 정리를 예로 들어 분석하고, 도구 간 일관성, 진행 과정 개입 지점, 검수 원칙을 살펴봅니다.",
+      "hero": {
+        "src": "/guides/ai-news-chatgpt-work-20260709/hero-ko.jpg",
+        "alt": "작업 지시를 구체화하는 오리지널 개념 일러스트로 사건 맥락을 표현",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "사건 일자: 2026-07-09; 본문 확인 일자: 2026-09-14. 7월 9일 ChatGPT Work가 발표되었습니다. 연동된 앱과 파일 간 긴 작업을 처리하여 문서, 스프레드시트, 프레젠테이션 등의 결과물을 제작할 수 있으며, 공식적으로 GPT-5.6을 통해 역량을 제공합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "최초 출시는 웹/모바일에서 Pro, Enterprise, Edu에 먼저 적용된 후 Plus/Business 순으로 확대되었습니다. 데스크톱 Mac/Windows는 당시 Free를 포함한 모든 요금제를 대상으로 발표되었습니다. 공식 발표에 따르면 작업 사용량은 과업 규모에 따라 달라지며 Codex 사용 구조를 계승하므로, 1회 채팅 고정 비용 방식이 아닙니다. 작업 도중 진행 상황을 추적하고 질문에 답하며 방향을 수정하거나 중요 작업을 확인할 수 있으나, 모델의 역량이 모든 앱의 권한을 자동으로 갖추었음을 의미하지는 않습니다. 아래의 일상 및 업무 시나리오는 독자의 자체 검증을 위해 편집자가 설계한 예시이며, 본 사이트의 제품 실측 결과가 아닙니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "커뮤니티 활동 자료 통합 시 템플릿과 데이터의 명확한 구분"
+        },
+        {
+          "type": "paragraph",
+          "text": "오랜 기간 운영된 독서 모임을 예로 들면, 매년 연간 결산과 다음 해 계획을 수립할 때마다 곳곳에 흩어진 과거 기록과 마주하게 됩니다. 운영진은 대개 지난 활동의 출석부, 대관 영수증, 강사료 정산서, 그리고 새로 개정된 활동 계획 발표 자료 템플릿을 보유하고 있습니다. 시스템에 파일 간 처리를 맡길 때 가장 피해야 할 행동은 모든 파편화된 자료를 아무런 설명 없이 한꺼번에 쏟아붓는 것이며, 이는 시스템이 신구 서식의 대응 기준을 혼동하게 만드는 원인이 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "인계를 시작하는 첫 단계에서는 배경 참고 파일과 결과물 구조 템플릿을 명확히 구분해야 합니다. 예를 들어 시스템에 과거 독서 모임의 실제 지출 내역만 추출하도록 명확히 지시하고, 어떤 과거 프로젝트가 정산 완료되었는지, 어떤 활동에 미지급금이 남아 있는지를 지정해야 합니다. 참고 자료의 시작 및 종료 월과 파일 간 참조 관계를 미리 명시하지 않으면 모델이 수치를 취합할 때 예산 초안을 실제 지출로 오인하여 기초 데이터가 왜곡될 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "또한 예산 항목의 분류 방식은 연도별 정의가 조금씩 다를 수 있습니다. 작업 지침에서는 신규 예산 템플릿의 회계 계정과목에 맞춰 정리하도록 구체적으로 요구하고, 불분명한 기존 항목에 대해서는 질문을 던지도록 해야 합니다. 시작 단계부터 데이터 참조 순서를 확립해 두면 모델이 사실이 아닌 데이터를 임의로 추론하는 것을 방지하고, 향후 파일 간 결과물 생성을 위한 추적 가능한 기반을 다질 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "워크북과 발표 자료 간 툴을 넘나드는 데이터 일관성 유지"
+        },
+        {
+          "type": "paragraph",
+          "text": "독서 모임의 핵심 산출물은 통상 두 가지 주요 문서로 구성됩니다. 핵심 운영진이 세부 내역을 확인하는 연간 활동 수지 워크북과 전체 회원에게 성과를 공유하는 연간 결산 프레젠테이션입니다. 과거에는 이 두 문서를 서로 다른 담당자가 나누어 작업하다 보니 발표 자료 원형 차트의 수치와 스프레드시트 총액이 일치하지 않는 난처한 상황이 잦았습니다. 복합 작업을 맡길 때는 이 두 결과물의 연동 관계를 최우선 제약 조건으로 설정해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "운영 전략상 스프레드시트를 공통 데이터 기준으로 삼도록 명확히 지시해야 합니다. 발표 슬라이드에 등장하는 모든 활동 횟수, 참여 인원, 티켓 수익, 강사료 집계는 스프레드시트 특정 시트의 합계 결과를 엄격하게 인용해야 합니다. 즉, 작업 설명에서 먼저 워크북의 수식 계산과 열 검증을 완료하고 수지 균형이 확인된 후 지정된 셀의 값을 프레젠테이션 차트와 설명 문구로 불러오도록 규정해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "수치 일치 외에도 용어 정의와 항목 분류 역시 도구 전반에 걸쳐 일관성을 유지해야 합니다. 스프레드시트에서 독서 모임을 온라인 세미나와 오프라인 살롱의 두 가지로 분류했다면 발표 자료에 정의되지 않은 그룹명이 제멋대로 등장해서는 안 됩니다. 결과물이 문구와 수치 양쪽에서 상호 부합하도록 요구하면 이후 수작업으로 일일이 대조하는 수고를 덜 수 있을 뿐만 아니라, 커뮤니티 회원이 결과 보고서를 읽을 때 활동 성과를 오해하는 일도 막을 수 있습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "협업 단계",
+            "핵심 인계 포인트",
+            "흔한 격차 및 방지 대책"
+          ],
+          "rows": [
+            [
+              "자료 정리 단계",
+              "과거 데이터와 서식 템플릿 구분, 계정과목 및 통계 기준 명시.",
+              "과거 초안을 실지출로 오인 계산; 입력 시 파일 유효 기간 명시."
+            ],
+            [
+              "도구 간 산출",
+              "스프레드시트를 유일한 출처로 지정, 발표 자료는 워크북 수치 참조.",
+              "슬라이드 차트와 시트 내역 불일치; 검증된 수치만 인용하도록 제한."
+            ],
+            [
+              "진행 추적 개입",
+              "단계별 실행 노드 모니터링, 질문 발생 시 분류 논리 즉시 정리.",
+              "잘못된 가정이 계속 확대됨; 계산 갈래 이탈 시 즉시 중단 및 교정."
+            ],
+            [
+              "결과 검수 정지점",
+              "지정 저장 경로 확인, 미결 목록 산출 및 자동 외부 발송 차단.",
+              "인간 검토 없이 외부 발송; 사전 조건으로 강제 인간 승인 설정."
+            ]
+          ],
+          "caption": "독서 모임 연간 활동 및 예산 정리를 위한 다중 파일 인계 검토 가이드"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "장기 작업 실행 시 진행도 파악과 적시 개입을 통한 수정"
+        },
+        {
+          "type": "paragraph",
+          "text": "여러 파일 간 연산과 서식 편집이 수반되는 장기 작업을 처리할 때는 실행 과정에 상당한 시간이 소요되곤 합니다. 즉각 답변을 내놓는 대화형 인터페이스와 달리, 이러한 작업은 추진 과정에서 특정 단계에 따라 구조를 분석하고 데이터를 추출하며 내용을 채워 넣습니다. 사용자는 이 과정에서 최종 결과물만 수동적으로 기다릴 것이 아니라 시스템이 제공하는 진행 상황 추적 인터페이스를 통해 현재 작업이 어느 논리 노드에 머물러 있는지 주의 깊게 관찰해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "작업 요구사항에 다음과 같이 명시할 수 있습니다: 특정 후원금이 연간 예산에 포함되어야 하는지 등 모호한 사항이 발생하면 먼저 질문 목록을 작성하도록 합니다. 이는 시스템이 따르기를 기대하는 작업 규칙이지만, 실제로 멈추어 서는지 관찰해야 하며 매번 의문점을 알아서 발견할 것이라고 가정해서는 안 됩니다. 만약 진행 과정에서 대관료 계산 방식이 예상과 다르게 흘러간다면 조기에 조정하여 오류가 프레젠테이션까지 이어지지 않도록 해야 합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-chatgpt-work-20260709/diagram-1-ko.svg",
+          "alt": "작업 지시 구체화: 4가지 열람 및 활용 핵심",
+          "width": 1600,
+          "height": 900,
+          "caption": "배경 제공: 템플릿과 자료, 성과 지정: 서식과 용도, 진행 추적: 미결 사항 조정, 파일 검수: 내용과 출처 일치.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "외부 배포 정지점 및 작업 권한을 위한 안전 방어선 구축"
+        },
+        {
+          "type": "paragraph",
+          "text": "자동화 프로세스에서 가장 중요한 위험 제어는 중요한 동작에 대한 인간 승인 절차입니다. 모델이 연동된 앱에 접근하여 구체적인 결과물을 생성할 수 있다고 해서, 승인 없이 외부에 직접 커뮤니케이션할 수 있는 자유까지 가져야 하는 것은 결코 아닙니다. 커뮤니티 운영을 예로 들면 연간 보고서가 완성된 후 후원 파트너나 회원 전체에게 발송해야 하는 경우가 많은데, 이 작업은 인계 시 반드시 엄격한 확인 정지점으로 설정되어야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "구체적인 지침은 다음과 같이 작성할 수 있습니다: 모든 파일은 내부 초안 폴더에 먼저 보관하며, 책임자의 확인 없이는 이메일을 발송하거나 공개 공유 링크를 생성하지 않습니다. 사용하는 도구에서 작업 전 확인 기능을 지원한다면 실제 설정도 점검해야 합니다. 프롬프트에 요구사항 한 줄을 적었다고 해서 시스템에 강제적인 권한 제약이 걸린 것은 아닙니다. 외부 유출 방지가 필요하다면 관련 링크나 발송 권한을 사전에 제공하지 않는 방법도 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이러한 조치는 잘못 해석되었거나 확인되지 않은 내용이 외부로 유출될 위험을 줄여주지만, 여전히 사람이 최종 결과물을 직접 읽어보아야 합니다. '특정 앱을 다룰 수 있다'는 점과 '이번 작업에서 어떤 동작이 허용되는지'를 분리하여 지시해야 인수인계받는 사람도 검토하기 수월합니다. 소규모 커뮤니티의 경우 추상적인 안전 구호를 나열하는 것보다 누가 무엇을 확인했는지 기록하는 명확한 인계 체크리스트를 사용하는 것이 훨씬 도움이 됩니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "산출 파일 저장 경로와 출처 표기 검수 규격"
+        },
+        {
+          "type": "paragraph",
+          "text": "장기 작업이 완료되었다고 보고될 때 진짜 검수 작업이 비로소 시작됩니다. 커뮤니티 운영진 자원봉사 팀이 향후 수월하게 유지보수할 수 있도록 산출물을 임시 폴더에 제멋대로 흩어두어서는 안 됩니다. 인계 지침에 명확한 저장 위치를 미리 지정해야 합니다. 예를 들어 생성된 스프레드시트는 회계 연도 폴더에 보관하고 발표 자료는 대외 배포 디렉터리에 저장하며, 향후 검색이 용이하도록 파일 명명 규칙을 통일해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "더 중요한 점은 모든 통합 결과물에 명확한 출처 표기와 미결 질문 목록이 동반되어야 한다는 것입니다. 검수 시 스프레드시트의 각 과거 데이터에 원본 증빙 번호가 적혀 있는지, 발표 슬라이드의 각 차트 하단에 워크북의 어느 위치에서 가져왔는지가 명기되어 있는지 확인해야 합니다. 만약 장부상 금액이 몇백 정도 부족하지만 증빙이 없는 상황이라면, 시스템이 임의로 장부 수치를 맞추지 않고 독립된 메모에 해당 미결 의문점을 명시해야 인수인계받는 사람이 신속하게 수동 대조를 진행할 수 있습니다."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "다중 파일 협업 주의사항",
+          "text": "다중 도구 통합 작업을 맡길 때는 단일 파일을 핵심 데이터 기준으로 삼고, 대외 발송 전 인간 확인 중단점을 설정하여 데이터의 정확성과 배포 안전을 확보해야 합니다."
+        },
+        {
+          "type": "link",
+          "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
+          "url": "https://mokaair.com/ko/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Gemini 3.6 Flash와 Flash-Lite: 고속 모델의 역할 분담 전략",
+          "url": "https://mokaair.com/ko/life/ai-news-gemini-36-flash-20260721"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI: ChatGPT Work 출시",
+          "url": "https://openai.com/index/chatgpt-for-your-most-ambitious-work/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI Academy: Get started with ChatGPT Work",
+          "url": "https://academy.openai.com/public/clubs/work-users-ynjqu/events/get-started-with-chatgpt-work-00rtqho2qa",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "ChatGPT Work 正式亮相：如何把跨文件工作交代清楚？",
+      "description": "分析 ChatGPT Work 于 2026 年中发布后的跨文件交接方法，以读书社群活动与预算整理为例，探讨多工具一致性、追踪介入点与验收原则。",
+      "hero": {
+        "src": "/guides/ai-news-chatgpt-work-20260709/hero-zh-cn.jpg",
+        "alt": "将交付说明具体的原创概念插图，呈现本篇事件的使用脉络",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "事件日期：2026-07-09；本文核查日期：2026-09-14。7 月 9 日 ChatGPT Work 发布，可跨连接应用与文件处理长任务，制作文档、电子表格、演示文稿等成果；官方以 GPT-5.6 提供能力。"
+        },
+        {
+          "type": "paragraph",
+          "text": "首发 web／mobile 先 Pro、Enterprise、Edu，接着 Plus／Business；桌面 Mac／Windows 当时列出所有方案包括 Free。官方称工作消耗量随任务规模而异，沿用 Codex 使用结构；不是单次聊天固定成本。可在工作中追踪进度、回答问题、修改方向及确认重要操作，模型能力不等于所有应用权限自动具备。以下生活与工作场景为编辑设计的例子，供读者自行验证，并非本站产品实测。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "整合社群活动材料时的模板与资料界定"
+        },
+        {
+          "type": "paragraph",
+          "text": "以运营多年的读书社群为例，每年筹划年度回顾与下一年度计划时，总会面临散落各处的历史记录。组织者手上通常握有去年活动的出席记录表、场地租赁收据、讲师酬劳报销单，以及最新修订的活动策划演示文稿模板。当我们希望交由系统处理跨文件任务时，最忌讳将所有零散资料不加说明便一次倒出，这容易导致系统混淆新旧格式的对应标准。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在启动交接的第一步，应当明确区分背景参考文件与产出结构模板。例如，必须清楚指引系统将历次读书会的真实花费抽离出来，并指定哪些过往项目已结案、哪些活动尚有待付款项。若未预先标明参考资料的起止月份与各文件间的参照关系，模型在整合数据时可能把预算草案误认为实际支出，造成底层数据失真。"
+        },
+        {
+          "type": "paragraph",
+          "text": "此外，针对预算项目的归类方式，不同年度的定义往往略有出入。工作指令中应具体要求对照新版预算模板的会计科目进行整理，并对不明确的旧项目提出疑问。通过在刚开始就立下数据引用的先后顺序，能防止模型自行推断非事实的数据，为接下来的跨文档产出奠定可追溯的坚实基础。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "维持工作簿与演示文稿成果的跨工具数据一致性"
+        },
+        {
+          "type": "paragraph",
+          "text": "读书社群的核心成果通常包含两份主要文件：一份供核心骨干查核明细的年度活动收支工作簿，以及一份向全体成员展示成果的年度总结演示文稿。这两份文件在过去往往由不同伙伴分头制作，经常出现演示文稿饼图的数据与电子表格总额对不上的窘境。当交代复合型任务时，必须将这两份成果的联动关系设为首要约束条件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "操作策略上，应明确指示以电子表格作为共同的数据基准。所有演示文稿幻灯片中出现的活动场次、参与人次、门票收入与讲师费统计，都必须严格引用电子表格特定工作表的汇总结果。这意味着在任务描述中，需要规定先完成工作簿的公式计算与字段校验，待收支平衡确认无误后，再将指定单元格的数值导入演示文稿图表与说明文字之中。"
+        },
+        {
+          "type": "paragraph",
+          "text": "除了数值吻合，名词定义与字段分类也必须维持跨工具一致。若电子表格将读书会分为线上导读与线下沙龙两类，演示文稿中就不能擅自出现未定义的分组名称。要求成果在文字与数字两端相互呼应，不仅能省下后续人工逐页比对的精力，也能避免社群成员在阅读总结报告时对活动成效产生误解。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "协作阶段",
+            "核心交接重点",
+            "常见偏差与防范措施"
+          ],
+          "rows": [
+            [
+              "素材整理阶段",
+              "区分历史数据与版面模板，明确会计科目与统计基准。",
+              "历史草案被误算为实际支出；需在输入时明订文件有效区间。"
+            ],
+            [
+              "跨工具产出",
+              "指定电子表格为唯一数据来源，演示文稿完全参照工作簿数据。",
+              "演示文稿图表与电子表格明细不一致；限制演示文稿只能引用验证后的数值。"
+            ],
+            [
+              "过程追踪介入",
+              "监控各执行步骤节点，遇提问即时厘清分类逻辑。",
+              "任由错误假设持续扩大；应在计算分支偏离时主动叫停并校正。"
+            ],
+            [
+              "成果验收停点",
+              "确认指定存放路径，产出未决问题清单并阻断自动外发。",
+              "未经人工检查即对外寄发；设定强制性人工授权为外发前置条件。"
+            ]
+          ],
+          "caption": "读书社群年度活动与预算整理之多文件交接查核指引"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "长任务运转时的进度掌握与适时介入导正"
+        },
+        {
+          "type": "paragraph",
+          "text": "处理涉及多文件运算与格式排版的长任务时，执行过程往往需要耗费相当长的时间。不同于瞬间给出答案的对话界面，这类任务在推进过程中会遵循特定步骤解析结构、提取数据与填入内容。用户在此期间不该只是被动等待最终成果，而应通过系统提供的进度追踪界面，细心观察当前工作停留在哪一个逻辑节点。"
+        },
+        {
+          "type": "paragraph",
+          "text": "你可以在工作要求中明订：遇到模糊事项时先列出问题，例如某笔赞助收入是否应列入年度预算。这是希望系统遵循的工作规则，仍要观察它是否真的停下来，而不能假定每次都会主动发现疑点。若在进度中看见场地费的计算方式不符预期，应及早调整，避免错误一路带进演示文稿。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-chatgpt-work-20260709/diagram-1-zh-cn.svg",
+          "alt": "把交付说具体：四项阅读与使用重点",
+          "width": 1600,
+          "height": 900,
+          "caption": "提供背景：模板与材料、指定成果：格式与用途、跟进进度：调整未决问题、开档验收：内容与来源一致。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "建立对外发布停点与操作权限的安全防线"
+        },
+        {
+          "type": "paragraph",
+          "text": "在自动化流程中，最关键的风险控制在于确认重要动作的人工审核机制。模型虽然能够访问连接应用并生成具体成果，但绝不意味着它应该拥有未经批准直接对外沟通的自由。以社群运作来说，年度报告完成后常需要寄送给赞助伙伴或全体成员，这个动作必须被严格设定为交接的确认点。"
+        },
+        {
+          "type": "paragraph",
+          "text": "具体要求可以写成：所有文件先存放在内部草稿文件夹，未经负责人确认，不寄出邮件或建立公开分享链接。若所用工具提供操作前确认，也应检查实际设置；只在提示词中写一句要求，不等于系统已建立强制的权限限制。需要确保不会外发时，可先不提供相关连接或寄送权限。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这项安排能减少误读或未确认内容流向外部的机会，但仍需要有人阅读最终成果。把“可以操作某个应用”与“这次工作允许做哪些动作”分开交代，接手的人比较容易核查。对小型社群来说，用一份明确的交接清单记录谁确认了什么，通常比加入很多抽象的安全口号更有帮助。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "验收交付文件的存放路径与来源标注规范"
+        },
+        {
+          "type": "paragraph",
+          "text": "当长任务宣告完成时，真正的验收工作才正要展开。为了方便社群志愿者团队后续接手维护，交付成果不能随意散落在暂存区。交接指令中必须预先指定清楚的保存位置，例如要求产出的电子表格归档于财务年度文件夹，而展示演示文稿则存放在活动对外发布目录，并统一文件命名规则以便日后检索。"
+        },
+        {
+          "type": "paragraph",
+          "text": "更重要的是，任何整合性产出都必须附带清晰的来源标记与未决问题清单。验收时应检查电子表格是否为每笔历史数据标注原始凭证编号，演示文稿每张图表下方是否均注明取自工作簿的何处。如果遇到账目短缺几百元但缺乏单据的情况，系统应在独立备忘录中列出该项未决疑点，而不是私自平衡账目，这样才能让接手的人员迅速展开人工复核。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "多文件协作提醒",
+          "text": "在交付多工具整合任务时，务必以单一文件作为核心数据基准，并在对外沟通前设置人工确认中断点，以确保数据严谨与发布安全。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
+          "url": "https://mokaair.com/zh-CN/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Gemini 3.6 Flash 与 Flash-Lite：快速模型该如何分工？",
+          "url": "https://mokaair.com/zh-CN/life/ai-news-gemini-36-flash-20260721"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI：ChatGPT Work 发布",
+          "url": "https://openai.com/index/chatgpt-for-your-most-ambitious-work/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI Academy：Get started with ChatGPT Work",
+          "url": "https://academy.openai.com/public/clubs/work-users-ynjqu/events/get-started-with-chatgpt-work-00rtqho2qa",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

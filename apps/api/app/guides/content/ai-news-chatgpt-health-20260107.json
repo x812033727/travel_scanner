@@ -1,0 +1,884 @@
+{
+  "slug": "ai-news-chatgpt-health-20260107",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 121,
+  "locales": {
+    "zh-TW": {
+      "title": "ChatGPT Health 年初登場：整理健康資料之前先看懂用途與界線",
+      "description": "ChatGPT Health 於 1 月推出健康資料整理空間。本文說明首發與 7 月更新的地區限制，並以就診前整理文件為例，討論來源、日期、家人同意及專業判讀的界線。",
+      "hero": {
+        "src": "/guides/ai-news-chatgpt-health-20260107/hero.jpg",
+        "alt": "資料帶進診間的原創概念插圖，呈現本篇事件的使用脈絡",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "事件日期：2026-01-07；本文查核日期：2026-09-14。1 月 7 日發布個人健康體驗 Health，可連結支援的健康資料與應用；它是獨立空間。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方明確說明 Health 不用於診斷或治療，不取代臨床照護；Health 對話不用於訓練基礎模型。年初採小規模先行使用及候補；原文 7 月 23 日更新為美國 18 歲以上使用者在 web 與 iOS 推出。病歷串接及部分應用有美國限制，Apple Health 連結需 iOS。不能據此推定台灣帳號可用；1 月 8 日醫療機構產品是另一項公告。以下生活與工作情境為編輯設計的例子，供讀者自行驗證，並非本站產品實測。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先整理文件，再決定要問什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "準備看診時，手上可能同時有紙本報告、院所寄來的電子檔，以及自己記錄的問題。這些材料的格式不同，最先要處理的是讓它們找得到。可以先做一份清單，列出文件名稱、日期、院所與原始檔位置。清單的目的只是協助檢索，並不需要先把每項數字解釋成健康結論，也不應為了表格看起來完整而補上不存在的資料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若把部分文件交給工具協助整理，可以要求每一筆摘要都保留對應的文件名稱與頁碼。看到模型寫出一個數值時，回到原報告核對名稱、單位、日期及備註，再決定是否放入自己的清單。掃描不清楚或看不懂的地方，直接標成待確認，通常比請模型猜出一個看似合理的答案更容易在診間說明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "也可以先用一份不含個人資料的範例測試輸出格式。例如只確認它能否按照日期排序、是否保留空白欄位，以及有沒有把兩份報告合成同一筆。等你看懂整理方式，再依實際需要選擇要提供的內容。工具減少的是找資料與排版的負擔，整理結果仍需要你逐項核對，不能成為取代原始報告的新依據。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "日期、單位與缺值要一起保留"
+        },
+        {
+          "type": "paragraph",
+          "text": "歷史報告與最近一次檢查有不同的時間背景。整理時應保留每份文件原有日期，讓醫療人員判斷它在這次討論中的意義；不要自行訂出所有報告通用的有效期限。若某個欄位沒有數字，也應保留空白原因或原文註記，不把沒有資料寫成結果正常，更不以其他年份的資料自動填入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一個名稱在不同文件裡，可能採用不同單位或附帶不同備註。對一般讀者而言，最容易執行的檢查是逐字比對，不擅自換算，也不只抄下數字。若你希望整理成一張表，可以增加「原文」與「待問問題」兩欄，把看不懂的地方留給診間討論，避免整齊的版面掩蓋資料仍有不確定之處。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "使用範疇",
+            "主要任務與操作",
+            "責任歸屬與限制"
+          ],
+          "rows": [
+            [
+              "文件整理",
+              "列日期、名稱、單位與來源",
+              "核對原件，不補猜缺值"
+            ],
+            [
+              "術語理解",
+              "協助列出想問的名詞",
+              "解釋不等於個人診斷"
+            ],
+            [
+              "就診問題",
+              "保留自己的困惑與時間記錄",
+              "讓醫療人員依完整情況回應"
+            ],
+            [
+              "診療決策",
+              "帶原始文件供專業評估",
+              "不依模型內容自行調藥或安排治療"
+            ]
+          ],
+          "caption": "本表對比個人資料整理、醫學詞彙理解、診間提問準備與臨床診療決策四項範疇之操作邊界與責任分工。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把疑問寫清楚，讓診間討論有依據"
+        },
+        {
+          "type": "paragraph",
+          "text": "問題清單可以從自己的困惑出發，例如「這份報告有哪些地方需要進一步說明？」或「我應該帶哪一段歷史資料供您參考？」。這類問題幫助你表達需求，也留下醫療人員依完整情況判斷的空間。模型可以協助把句子寫短、刪掉重複內容，但不應替你決定需要哪一種檢查或治療。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若你已經記下近期想說明的情況，可以要求工具依時間順序排成筆記，並保留你原本的用詞。不要讓它將「我不確定何時開始」改寫為明確日期，或把你的疑問變成已確認的症狀結論。看診時可以同時帶著原始文件和這份筆記，讓醫療人員知道哪些是原有記錄、哪些只是你希望釐清的問題。"
+        },
+        {
+          "type": "paragraph",
+          "text": "內容多時，不妨先挑出這次最想討論的幾項，其他問題另列在後面。這是整理溝通順序的建議，不代表未列入的資料在醫療上不重要。尤其不要因模型認為某份紀錄與本次科別無關，就自行刪掉用藥或檢查資料；哪些資訊與診療相關，應由了解完整情況的醫療人員評估。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-chatgpt-health-20260107/diagram-1.svg",
+          "alt": "資料帶進診間：四項閱讀與使用重點",
+          "width": 1600,
+          "height": 900,
+          "caption": "整理來源：日期與檢驗單位、檢查缺漏：保持原始記錄、列出問題：供就診討論、專業判斷：由醫療人員評估。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "資料範圍由自己確認，家人的資料另行同意"
+        },
+        {
+          "type": "paragraph",
+          "text": "在任何雲端工具輸入健康資訊前，先確認自己正在使用的產品、帳號與空間。Health 的資料政策不能自動套用到所有一般聊天工具，也不能只憑產品名稱相近就認為隱私處理相同。若目前只是練習整理表格，可以使用虛構範例；要放入真實資料時，再閱讀該入口的說明與可調整設定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "協助成年家人整理文件時，應先說明準備提供哪些內容、交給哪個服務處理，以及整理後要如何保存，取得對方同意。移除不必要的姓名或識別資訊可以減少暴露，但不表示剩餘的健康內容就不再敏感。若對方不願將資料交給雲端服務，也可以用本機文件或紙本清單達到相同的整理目的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "整理完後，可以檢視連結了哪些應用、哪些副本仍需保留，依目前提供的設定管理資料。刪除對話、解除應用連結與刪除原始資料可能是不同操作，不要假設其中一項會自動完成其餘項目。無論採用哪種工具，都應保留自己能掌握的原始文件，方便日後查對與交給醫療人員閱讀。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "台灣讀者如何看待這次發布"
+        },
+        {
+          "type": "paragraph",
+          "text": "這則新聞描述的是 OpenAI 的個人健康產品，並不代表它已與台灣院所或健保資料完成串接。官方公告提到的美國病歷整合、年齡條件與裝置需求，都需要分開確認。如果自己的帳號沒有相關入口，不應把一般聊天視窗當成同樣的專屬健康空間，也不要將不同產品的資料政策混在一起理解。"
+        },
+        {
+          "type": "paragraph",
+          "text": "對目前只想把就診材料準備清楚的人而言，清單本身就能發揮作用，不一定要先等某項功能開放。你可以用熟悉的文件工具列出來源、日期、待確認處與問題，再依需要評估新服務是否真的少了整理步驟。無論工具怎麼更新，Health 不用於診斷或治療的定位，以及讓專業人員判讀醫療資訊的分工，都應保留。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "資料攜入診間的實務提醒",
+          "text": "Health 不用於診斷或治療。整理時保留原始報告與待確認問題；醫療判讀及用藥決定交由醫療人員，勿因模型摘要自行停藥或調整治療。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
+          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Gemini Personal Intelligence：AI 連結郵件與相簿後，便利從哪裡來？",
+          "url": "https://mokaair.com/zh-TW/life/ai-news-gemini-personal-intelligence-20260114"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI：Introducing ChatGPT Health",
+          "url": "https://openai.com/index/introducing-chatgpt-health/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI：OpenAI for Healthcare",
+          "url": "https://openai.com/index/openai-for-healthcare/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "ChatGPT Health Launches Early This Year: Understanding Its Purpose and Boundaries Before Organizing Health Data",
+      "description": "ChatGPT Health launched a dedicated space for organizing health data in January. This article explains regional restrictions from the initial launch and July update, using pre-consultation record preparation as an example to discuss sources, dates, family consent, and the boundaries of professional interpretation.",
+      "hero": {
+        "src": "/guides/ai-news-chatgpt-health-20260107/hero-en.jpg",
+        "alt": "Original conceptual illustration of bringing data into the clinic, showing the usage context of this event",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Event date: 2026-01-07; Verification date: 2026-09-14. On January 7, the personal health experience Health was announced, capable of connecting to supported health data and applications; it is a separate space."
+        },
+        {
+          "type": "paragraph",
+          "text": "Official sources explicitly state that Health is not intended for diagnosis or treatment, and does not replace clinical care; Health conversations are not used to train foundation models. At the beginning of the year, it adopted a small-scale pilot rollout and a waitlist; the original source was updated on July 23 to announce availability for US users aged 18 and older across web and iOS. Medical record integrations and certain applications carry US-only restrictions, and connecting Apple Health requires iOS. It cannot be presumed that Taiwan accounts have access; the January 8 healthcare organization offering was a separate announcement. The daily life and work scenarios below are editorial examples designed for reader self-verification, not product tests conducted by this site."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Organize Documents First, Then Decide What to Ask"
+        },
+        {
+          "type": "paragraph",
+          "text": "When preparing for a medical visit, you may have paper reports, electronic files sent by clinics, and self-recorded questions all at the same time. These materials come in different formats, and the first priority is making sure they can be located. You can start by drafting a list detailing document names, dates, healthcare facilities, and original file locations. The purpose of this list is purely to aid retrieval; there is no need to interpret every number into a health conclusion beforehand, nor should you fill in nonexistent data just to make the table look complete."
+        },
+        {
+          "type": "paragraph",
+          "text": "If you hand over some documents to a tool for organizational assistance, you can request that every summary retain the corresponding document name and page number. When you see the model output a value, check the original report for the test name, units, date, and notes before deciding whether to include it in your list. Where scans are unclear or difficult to decipher, marking them directly as pending verification is generally far easier to explain in the clinic than asking the model to guess a plausible-sounding answer."
+        },
+        {
+          "type": "paragraph",
+          "text": "You can also test the output format first with a sample that contains no personal information. For instance, verify whether it can sort by date, whether it preserves blank fields, and whether it merges two reports into a single record. Once you understand its organizational method, choose what content to provide based on actual needs. The tool reduces the burden of finding materials and formatting layouts, but the organized results still require item-by-item verification from you and cannot become a substitute for the original reports."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Preserve Dates, Units, and Missing Values Together"
+        },
+        {
+          "type": "paragraph",
+          "text": "Historical reports and recent examinations have different chronological contexts. When organizing, retain the original date on each document so healthcare providers can evaluate its relevance to the current discussion; do not arbitrarily set a universal validity expiration date across all reports. If a field lacks a figure, preserve the reason for the blank or the original text notes; do not label missing data as normal results, and never automatically populate fields with data from other years."
+        },
+        {
+          "type": "paragraph",
+          "text": "The same test name across different documents might use different units or come with different notes. For general readers, the most straightforward check to perform is a word-for-word comparison without unauthorized unit conversions or merely copying down numbers. If you wish to compile a table, you can add two columns: 'Original Text' and 'Questions to Ask,' saving unclear points for clinic discussion so a tidy layout does not obscure underlying uncertainties in the data."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Scope of Use",
+            "Primary Tasks and Operations",
+            "Attribution of Responsibility and Limits"
+          ],
+          "rows": [
+            [
+              "Document Organization",
+              "List dates, names, units, and sources",
+              "Verify against originals; do not guess missing values"
+            ],
+            [
+              "Terminology Comprehension",
+              "Help list terms you want to ask about",
+              "Explanations do not equal personal diagnosis"
+            ],
+            [
+              "Consultation Questions",
+              "Preserve own concerns and chronological records",
+              "Allow healthcare providers to respond based on the full picture"
+            ],
+            [
+              "Clinical Decisions",
+              "Bring original records for professional evaluation",
+              "Do not adjust medication or arrange treatment based on model content"
+            ]
+          ],
+          "caption": "Comparison of boundaries and responsibilities in personal record organization, medical terminology, consultation preparation and clinical decisions."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "State Questions Clearly to Anchor Clinic Discussions"
+        },
+        {
+          "type": "paragraph",
+          "text": "Your list of questions can start from your own uncertainties, such as 'Which parts of this report need further explanation?' or 'Which portion of my historical records should I bring for your reference?' These types of questions help express your needs while leaving room for healthcare professionals to assess the complete picture. The model can help shorten sentences and remove duplicate phrasing, but it should not decide which tests or treatments you need."
+        },
+        {
+          "type": "paragraph",
+          "text": "If you have already noted recent conditions you wish to explain, you can ask the tool to arrange your notes chronologically while preserving your original wording. Do not let it rewrite 'I am not sure when it started' into a specific date, or turn your questions into confirmed symptomatic conclusions. You can bring both the original documents and these notes to your consultation, letting medical staff know which are existing records and which are simply questions you wish to clarify."
+        },
+        {
+          "type": "paragraph",
+          "text": "When there is a lot of material, you might prioritize a few topics you most want to discuss this time, listing other questions afterward. This is a suggestion for structuring communication priority, not an indication that omitted items lack medical importance. Above all, do not delete medication or test records simply because the model deems a record irrelevant to the current specialty; which information is relevant to clinical care must be evaluated by healthcare personnel who understand the full clinical context."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-chatgpt-health-20260107/diagram-1-en.svg",
+          "alt": "Bringing Data into the Clinic: Four Key Reading and Usage Priorities",
+          "width": 1600,
+          "height": 900,
+          "caption": "Organize sources: dates and testing units; check gaps: keep original records; list questions: for consultation; professional judgment: evaluated by healthcare providers.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Confirm Your Own Data Scope; Obtain Separate Consent for Family Members"
+        },
+        {
+          "type": "paragraph",
+          "text": "Before inputting health information into any cloud tool, verify the product, account, and workspace you are currently using. Health data policies cannot be automatically applied to all general chat tools, nor should privacy handling be assumed identical simply because product names sound similar. If you are merely practicing table organization, use fictional examples; when entering real data, read the portal's documentation and adjustable settings first."
+        },
+        {
+          "type": "paragraph",
+          "text": "When helping adult family members organize documents, explain beforehand what content you plan to provide, which service will process it, and how it will be stored afterward, obtaining their consent first. Removing unnecessary names or identifying details reduces exposure, but does not mean the remaining health content is no longer sensitive. If they prefer not to share records with cloud services, local files or paper lists can achieve the exact same organizational objective."
+        },
+        {
+          "type": "paragraph",
+          "text": "After organizing, review which applications are connected and which copies still need to be retained, managing data according to currently available settings. Deleting chats, disconnecting apps, and deleting original data can be separate operations; do not assume performing one automatically handles the others. Whichever tool you use, retain original documents you control for future verification and medical review."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "How Readers in Taiwan Should View This Launch"
+        },
+        {
+          "type": "paragraph",
+          "text": "This news describes OpenAI's personal health product and does not mean it has integrated with Taiwanese medical institutions or National Health Insurance data. Official announcements regarding US medical record integration, age criteria, and device requirements all require separate verification. If your account does not have the corresponding access point, do not treat general chat windows as an identical dedicated health space, nor conflate data policies between different products."
+        },
+        {
+          "type": "paragraph",
+          "text": "For those who currently only want to prepare medical visit materials clearly, a structured list is effective on its own without needing to wait for a specific feature to roll out. You can use familiar document tools to list sources, dates, items needing verification, and questions, then evaluate as needed whether new services actually eliminate organizational steps. Regardless of how tools update, the premise that Health is not intended for diagnosis or treatment, and the division of labor leaving medical data interpretation to professionals, must both be maintained."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Practical Reminders for Bringing Data into the Clinic",
+          "text": "Health is not intended for diagnosis or treatment. When organizing, retain original reports and pending questions; leave medical interpretation and medication decisions to healthcare professionals, and never discontinue or adjust treatment based on model summaries."
+        },
+        {
+          "type": "link",
+          "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
+          "url": "https://mokaair.com/en/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Gemini Personal Intelligence: Where Does Convenience Come from After AI Connects Emails and Photos?",
+          "url": "https://mokaair.com/en/life/ai-news-gemini-personal-intelligence-20260114"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI: Introducing ChatGPT Health",
+          "url": "https://openai.com/index/introducing-chatgpt-health/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI: OpenAI for Healthcare",
+          "url": "https://openai.com/index/openai-for-healthcare/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "ChatGPT Health年初登場：健康データの整理前に知る用途と境界線",
+      "description": "ChatGPT Healthが1月に健康データ整理用スペースを提供開始。本記事では初期展開と7月更新の地域制限を解説し、受診前の資料整理を例に、出典や日付、家族の同意、専門的判断との境界線を整理します。",
+      "hero": {
+        "src": "/guides/ai-news-chatgpt-health-20260107/hero-ja.jpg",
+        "alt": "診察室へのデータ持ち込みを描き、本件の利用シーンを示すオリジナル概念イラスト",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "事象発生日：2026-01-07；本記事のファクトチェック日：2026-09-14。1月7日、対応する健康データやアプリと連携できるパーソナルヘルス体験「Health」が発表されました。これは独立したスペースです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公式発表では、Healthは診断や治療を目的とせず、臨床ケアを代替しないこと、Healthでの対話内容は基盤モデルの学習に使用されないことが明記されています。年初は小規模な先行利用とウェイティングリスト方式が採られ、元記事の7月23日更新時点では、米国の18歳以上のユーザー向けにwebおよびiOSで提供開始とされました。電子カルテの連携や一部アプリには米国限定の制約があり、Apple Healthとの連携にはiOSが必要です。これをもって台湾のアカウントで利用可能と推定することはできません。1月8日の医療機関向け製品は別個のアナウンスです。以下の生活および仕事における場面は、読者が各自で検証できるよう編集部が設計した例であり、当サイトによる製品の実機テストではありません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "まず書類を整理し、その後に尋ねる内容を決める"
+        },
+        {
+          "type": "paragraph",
+          "text": "受診の準備をする際、手元には紙の検査結果票、医療機関から届いた電子ファイル、そして自身が記録した質問事項が混在していることがあります。これらの資料は形式が異なるため、最初に取り組むべきは見つけやすい状態にすることです。まず書類名、日付、医療機関、元のファイルの保存場所を一覧にしたリストを作成するとよいでしょう。リストの目的はあくまで検索を助けることであり、各数値を事前に健康上の結論へと解釈する必要はありませんし、表を完全に埋めるために存在しないデータを補うべきでもありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一部の書類をツールに渡して整理を補助させる場合は、要約の各項目に対応する書類名とページ番号を残すよう指示できます。モデルが出力した数値を見たら、元の報告書に戻って名称、単位、日付、備考を照合し、それから自身のリストに含めるかを判断します。スキャンが不鮮明な箇所や意味が分からない箇所は、直接「要確認」とマークしておく方が、モデルにそれらしい答えを推測させるよりも、診察室で医師に説明しやすくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "また、個人情報を含まないサンプルを用いて、事前に出力フォーマットをテストすることも可能です。例えば、日付順に並べ替えられるか、空欄の項目が維持されるか、2つの異なる報告書を1件に合算してしまっていないかだけを確認します。整理のされ方を把握した上で、実際の必要性に応じて提供する内容を選択します。ツールが減らしてくれるのはデータ検索やレイアウトの手間であり、整理された結果は依然として自身で1項目ずつ照合する必要があり、元の報告書に代わる新たな根拠にはなり得ません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "日付、単位、欠損値はセットで維持する"
+        },
+        {
+          "type": "paragraph",
+          "text": "過去の検査結果と直近の検査とでは、時間的背景が異なります。整理の際は各書類の本来の日付を保持し、今回の診察におけるその意味合いを医療従事者が判断できるようにすべきであり、すべての報告書に共通する独自の有効期限を勝手に設けてはなりません。ある項目に数値がない場合も、空欄の理由や元の注記をそのまま残し、データがないことを「異常なし」と書き換えたり、他年度のデータで自動的に埋め合わせたりしないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じ検査項目名であっても、書類によって異なる単位が使われていたり、異なる注釈が添えられていたりすることがあります。一般の読者にとって最も実行しやすい確認方法は、勝手に換算したり数字だけを書き写したりせず、文字どおり照合することです。1つの表にまとめたい場合は、「原文」と「質問事項」の2列を追加し、理解できない箇所は診察室での相談用として残すことで、整ったレイアウトによってデータの不確実性が隠れてしまうのを防げます。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "利用範疇",
+            "主な作業と操作",
+            "責任の所在と制限事項"
+          ],
+          "rows": [
+            [
+              "書類の整理",
+              "日付、名称、単位、出典を一覧化",
+              "原本と照合し欠損値を推測補完しない"
+            ],
+            [
+              "用語の理解",
+              "質問したい用語のリストアップを補助",
+              "用語解説は個人の診断とは異なる"
+            ],
+            [
+              "受診時の質問",
+              "自身の疑問や時系列の記録を保持",
+              "全体状況を踏まえ医療従事者が回答"
+            ],
+            [
+              "診療の意思決定",
+              "専門的評価のため原本を持参",
+              "モデル出力で自己調剤や治療変更しない"
+            ]
+          ],
+          "caption": "個人データの整理、医学用語の理解、診察時の質問準備、臨床診療の意思決定という4つの範疇における操作の境界と責任分担の比較。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "疑問点を明確に書き出し、診察での対話に根拠を持たせる"
+        },
+        {
+          "type": "paragraph",
+          "text": "質問リストは、「この検査結果のどの部分について詳しい説明が必要か」「参考に提示すべき過去のデータはどの期間のものか」など、自身の疑問から出発して作成できます。こうした質問は自身の要望を伝える助けとなり、医療従事者が状況全体を踏まえて判断できる余地を残します。モデルは文を短くまとめたり重複表現を削ったりする作業を支援できますが、どのような検査や治療が必要かをあなたに代わって決定すべきではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "直近で伝えたい状況をすでにメモしている場合は、本来の言葉遣いを保ったまま時系列のメモに並べ替えるようツールに指示できます。「いつ始まったかはっきりしない」という記述を勝手に明確な日付に改変させたり、自身の疑問を確定した症状の結論に変えてしまったりしてはなりません。受診時には原本とこのメモの両方を持参し、どれが元の記録で、どれが明確にしたい質問事項なのかを医療従事者に示せるようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "内容が多い場合は、今回最も相談したい項目をいくつか先に選び、その他の質問は後回しとして別にリスト化するとよいでしょう。これはコミュニケーションの優先順位を整えるための助言であり、リストから外れたデータが医学的に重要でないことを意味するわけではありません。特に、モデルが今回の診療科とは無関係だと判断したからといって、服薬データや検査データを自己判断で削除してはなりません。どの情報が診療に関連するかは、全体の状況を把握している医療従事者が評価すべき事項です。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-chatgpt-health-20260107/diagram-1-ja.svg",
+          "alt": "診察室へのデータ持ち込み：4つの確認と利用ポイント",
+          "width": 1600,
+          "height": 900,
+          "caption": "出典の整理：日付と検査単位、欠損の確認：元の記録を維持、質問の列挙：受診時の対話用、専門的判断：医療従事者が評価。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "データ範囲は自身で確認し、家族のデータには個別の同意を得る"
+        },
+        {
+          "type": "paragraph",
+          "text": "クラウドツールに健康情報を入力する前に、自身が利用している製品、アカウント、スペースをまず確認してください。Healthのデータポリシーは、一般的なチャットツールすべてに自動適用されるわけではなく、製品名が似ているからといってプライバシーの扱いが同一であるとみなすこともできません。表の整理を練習する段階であれば架空のサンプルを使用し、実際のデータを投入する段階になってから、その窓口の規約や設定可能な項目を確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "成人の家族の書類整理を手伝う際は、どのような内容を提供しようとしているのか、どのサービスで処理するのか、整理後にどのように保存するのかを事前に説明し、本人の同意を得る必要があります。不要な氏名や識別情報を削除することで露出は減らせますが、残された健康情報が機微なデータでなくなるわけではありません。相手がクラウドサービスへのデータ預託を望まない場合は、ローカルのファイルや紙のリストを用いても同様の整理目的を達成できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "整理を終えた後は、どのアプリと連携しているか、どの複製を保持し続ける必要があるかを確認し、現在提供されている設定に沿ってデータを管理します。会話履歴の削除、アプリ連携の解除、元データの削除はそれぞれ別の操作である可能性があり、1つを実行すれば他も自動的に完了すると思い込まないようにしてください。どのようなツールを採用する場合でも、将来の確認や医療従事者への提示のために、自身の手元で管理できる原本を必ず手元に残しておくべきです。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "台湾の読者は今回の発表をどう捉えるべきか"
+        },
+        {
+          "type": "paragraph",
+          "text": "このニュースが伝えているのはOpenAIの個人向け健康製品についてであり、台湾の医療機関や全民健康保険（健保）のデータと連携が完了したことを意味するものではありません。公式発表にある米国のカルテ統合、年齢制限、デバイス要件は、それぞれ個別に確認する必要があります。自身のアカウントに関連する入り口が存在しない場合、通常のチャット画面を同等の専用健康スペースとみなすべきではありませんし、異なる製品のデータポリシーを混同して理解してもなりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "現時点で受診用資料を分かりやすく準備したいだけの人にとっては、特定機能の開放を待たずとも、リストを作成すること自体が十分に役立ちます。使い慣れたドキュメント作成ツールで出典、日付、要確認事項、質問を書き出し、その上で新サービスが本当に整理の手間を減らしてくれるかを必要に応じて見極めれば十分です。ツールがどのように更新されようとも、Healthが診断や治療を目的としないという位置づけと、医療情報の判断は専門職に委ねるという役割分担は維持されるべきです。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "診察室へのデータ持ち込みに関する実務的留意点",
+          "text": "Healthは診断や治療を目的としません。整理時は元報告書と質問事項を残し、医療判断や服薬決定は医療従事者に委ね、モデルの要約で薬を中止・調整しないでください。"
+        },
+        {
+          "type": "link",
+          "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
+          "url": "https://mokaair.com/ja/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Gemini Personal Intelligence：AIがメールや写真と連携した時、利便性はどこから生まれるか？",
+          "url": "https://mokaair.com/ja/life/ai-news-gemini-personal-intelligence-20260114"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI：Introducing ChatGPT Health",
+          "url": "https://openai.com/index/introducing-chatgpt-health/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI：OpenAI for Healthcare",
+          "url": "https://openai.com/index/openai-for-healthcare/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "ChatGPT Health 연초 출시: 건강 자료 정리 전 용도와 한계 확인하기",
+      "description": "ChatGPT Health가 1월 건강 자료 정리 공간을 선보였습니다. 본 글은 첫 발표 및 7월 업데이트의 지역 제한을 설명하고, 진료 전 문서 정리를 예로 들어 출처, 날짜, 가족 동의 및 전문적 판독의 경계를 살펴봅니다.",
+      "hero": {
+        "src": "/guides/ai-news-chatgpt-health-20260107/hero-ko.jpg",
+        "alt": "진료실로 가져가는 자료의 원래 개념 일러스트, 사건의 맥락 표현",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "사건 날짜: 2026-01-07; 본문 검증 날짜: 2026-09-14. 1월 7일 개인 건강 경험 Health가 발표되었으며, 지원되는 건강 데이터와 앱을 연결할 수 있는 독립된 공간입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "공식 설명에 따르면 Health는 진단이나 치료에 사용되지 않으며, 임상 치료를 대체하지 않습니다. 또한 Health 대화는 기반 모델 훈련에 쓰이지 않습니다. 연초에는 소규모 사전 사용 및 대기자 명단 방식으로 운영되었으며, 원문은 7월 23일 미국 내 18세 이상 사용자를 대상으로 web 및 iOS에 출시된 것으로 업데이트되었습니다. 전자의무기록 연동 및 일부 애플리케이션은 미국 내 제한이 있으며, Apple Health 연동에는 iOS가 필요합니다. 이를 근거로 대만 계정에서 사용할 수 있다고 단정할 수 없으며, 1월 8일 의료기관용 제품은 별개의 발표입니다. 이하의 일상 및 업무 시나리오는 편집자가 설계한 예시로 독자가 직접 검증하도록 제공하는 것이며, 본 사이트의 제품 실측 결과가 아닙니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "문서부터 정리하고 물어볼 내용 결정하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "진료를 준비할 때 손에 종이 검사 결과지, 병의원에서 보낸 전자 파일, 그리고 직접 기록한 질문이 동시에 있을 수 있습니다. 이러한 자료들은 형식이 제각각이므로, 가장 먼저 해야 할 일은 자료를 쉽게 찾을 수 있도록 만드는 것입니다. 파일명, 날짜, 병의원, 원본 파일 위치를 정리한 목록을 먼저 작성해 볼 수 있습니다. 이 목록의 목적은 검색을 돕는 것일 뿐이며, 모든 수치를 미리 건강에 관한 결론으로 해석할 필요는 없고, 표를 채워 넣기 위해 존재하지 않는 데이터를 임의로 지어내서도 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "문서의 일부를 도구에 맡겨 정리를 돕도록 할 경우, 각 요약마다 해당하는 문서 이름과 페이지 번호를 남기도록 요청할 수 있습니다. 모델이 작성한 수치를 보았을 때는 원본 보고서로 돌아가 명칭, 단위, 날짜 및 비고를 대조한 뒤 개인 목록에 넣을지 결정해야 합니다. 스캔이 흐릿하거나 이해하기 어려운 부분은 직접 확인 필요로 표시해 두는 것이, 모델에게 그럴듯한 답변을 추측하도록 하는 것보다 진료실에서 설명하기에 훨씬 용이합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "개인 정보가 포함되지 않은 예시를 사용하여 출력 형식을 먼저 테스트해 볼 수도 있습니다. 예를 들어 날짜순으로 정렬할 수 있는지, 빈 필드를 그대로 유지하는지, 두 보고서를 하나로 합쳐버리지는 않는지 등만 확인해 보는 것입니다. 정리 방식을 이해한 뒤에 실제 필요에 따라 제공할 내용을 선택하면 됩니다. 도구가 줄여주는 것은 자료를 찾고 형식을 다듬는 부담일 뿐이며, 정리된 결과는 여전히 본인이 항목별로 확인해야 하므로 원본 보고서를 대체하는 새로운 근거가 될 수 없습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "날짜, 단위, 결측치는 함께 보존하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "과거 검사 결과와 가장 최근 검사는 서로 다른 시간적 배경을 가집니다. 정리할 때는 각 문서의 원래 날짜를 유지하여, 이번 진료 논의에서 가지는 의미를 의료진이 판단할 수 있도록 해야 합니다. 모든 보고서에 통용되는 유효 기간을 임의로 정해서는 안 됩니다. 특정 항목에 숫자가 없다면 빈칸으로 둔 이유나 원문 메모를 그대로 보존해야 하며, 데이터가 없는 것을 정상 결과로 적거나 다른 연도의 데이터로 자동 입력해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "동일한 명칭이라도 문서마다 다른 단위를 사용하거나 서로 다른 비고가 붙어 있을 수 있습니다. 일반 독자 입장에서 가장 실행하기 쉬운 점검 방법은 임의로 환산하거나 숫자만 옮겨 적지 않고 원문을 한 글자씩 대조하는 것입니다. 하나의 표로 정리하고자 한다면 '원문'과 '질문할 내용' 두 열을 추가하여, 이해되지 않는 부분은 진료실에서 논의하도록 남겨두고 깔끔한 레이아웃에 데이터의 불확실성이 가려지지 않도록 해야 합니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "사용 범주",
+            "주요 작업 및 작업 방식",
+            "책임 소재 및 한계"
+          ],
+          "rows": [
+            [
+              "문서 정리",
+              "날짜, 명칭, 단위, 출처 나열",
+              "원본 대조, 결측치 추측 작성 금지"
+            ],
+            [
+              "용어 이해",
+              "질문할 전문 용어 목록 작성 보조",
+              "설명이 개인 진단을 의미하지 않음"
+            ],
+            [
+              "진료 질문",
+              "자신의 의문점과 시간 경과 기록 보존",
+              "의료진이 전체 상황을 바탕으로 응답하도록 함"
+            ],
+            [
+              "진료 결정",
+              "전문적 평가를 위해 원본 문서 지참",
+              "모델 내용에 기반한 임의 약 조절이나 치료 계획 금지"
+            ]
+          ],
+          "caption": "본 표는 개인 자료 정리, 의학 용어 이해, 진료 질문 준비, 임상 진료 결정의 네 가지 범주에 따른 작업 경계와 책임 구분을 비교합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "의문점을 명확히 작성하여 진료실 논의의 근거 마련하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "질문 목록은 본인의 의문점에서 출발할 수 있습니다. 예를 들어 '이 결과지에서 추가 설명이 필요한 부분은 무엇인가요?'라거나 '참고용으로 과거 자료 중 어떤 구간을 가져와야 할까요?' 같은 질문입니다. 이러한 질문은 본인의 요구 사항을 표현하는 데 도움을 주며, 의료진이 전체 상황을 보고 판단할 여지를 남깁니다. 모델은 문장을 간결하게 다듬거나 중복을 제거하는 데 도움을 줄 수 있지만, 필요한 검사나 치료가 무엇인지 대신 결정해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "최근 겪은 상황을 이미 메모해 두었다면, 도구에 시간순으로 정리해 달라고 요청하면서 본래의 표현을 그대로 유지하도록 할 수 있습니다. '언제 시작되었는지 확실하지 않다'는 표현을 명확한 날짜로 바꾸거나, 단순한 의문을 확정된 증상 결론으로 바꾸지 않도록 해야 합니다. 진료 시 원본 문서와 이 노트를 함께 지참하면, 의료진에게 어떤 내용이 원래 기록이고 어떤 부분이 본인이 확인하고자 하는 의문인지 구분해 줄 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "내용이 많을 때는 이번 진료에서 가장 논의하고 싶은 몇 가지를 먼저 추리고, 다른 질문은 뒤쪽에 별도로 기재하는 것이 좋습니다. 이는 대화 순서를 정리하기 위한 조언일 뿐, 목록에서 빠진 자료가 의학적으로 중요하지 않다는 의미는 아닙니다. 특히 모델이 특정 기록을 이번 진료과와 무관하다고 판단했다고 해서 복약 기록이나 검사 자료를 임의로 삭제해서는 안 됩니다. 진료와 관련된 정보가 무엇인지는 전체 상황을 이해하는 의료진이 평가해야 합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-chatgpt-health-20260107/diagram-1-ko.svg",
+          "alt": "진료실로 가져가는 자료: 4대 열람 및 활용 핵심",
+          "width": 1600,
+          "height": 900,
+          "caption": "출처 정리: 날짜와 검사 단위, 누락 확인: 원본 기록 유지, 질문 나열: 진료 논의용, 전문 판단: 의료진 평가.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "자료 범위는 직접 확인하고 가족 자료는 별도 동의 필요"
+        },
+        {
+          "type": "paragraph",
+          "text": "어떠한 클라우드 도구든 건강 정보를 입력하기 전에 자신이 사용 중인 제품, 계정, 공간을 먼저 확인해야 합니다. Health의 데이터 정책은 모든 일반 채팅 도구에 자동으로 적용되지 않으며, 제품 이름이 비슷하다는 이유만으로 개인정보 보호 처리가 같다고 볼 수도 없습니다. 표 정리 연습만 하는 단계라면 가상의 예시를 사용할 수 있으며, 실제 데이터를 입력할 때는 해당 서비스 입구의 설명과 변경 가능한 설정을 먼저 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "성인 가족의 문서 정리를 도울 때는 어떤 내용을 제공할 예정인지, 어떤 서비스에서 처리하는지, 정리 후 어떻게 보관할 것인지를 먼저 설명하고 상대방의 동의를 구해야 합니다. 불필요한 성명이나 식별 정보를 제거하면 노출 위험을 줄일 수 있지만, 그렇다고 남은 건강 정보가 민감하지 않게 되는 것은 아닙니다. 상대방이 클라우드 서비스에 자료를 올리기를 원하지 않는다면, 로컬 파일이나 종이 목록을 활용해 같은 목적의 정리를 진행할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "정리를 마친 후에는 어떤 앱이 연결되었는지, 보관해야 할 사본이 무엇인지 검토하고 현재 제공되는 설정에 따라 데이터를 관리할 수 있습니다. 대화 삭제, 앱 연결 해제, 원본 데이터 삭제는 서로 다른 작업일 수 있으므로, 하나를 수행하면 나머지도 자동으로 완료될 것이라 여겨서는 안 됩니다. 어떤 도구를 사용하든 본인이 관리할 수 있는 원본 문서를 보관하여, 향후 확인하거나 의료진에게 보여줄 수 있도록 해야 합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "대만 독자는 이번 발표를 어떻게 보아야 하는가"
+        },
+        {
+          "type": "paragraph",
+          "text": "이 소식은 OpenAI의 개인 건강 제품에 관한 것이며, 대만의 병의원이나 건강보험(건보) 데이터와 연동이 완료되었음을 의미하지 않습니다. 공식 발표에서 언급된 미국 전자의무기록 연동, 연령 요건 및 기기 요구 사항은 각각 개별적으로 확인해야 합니다. 본인의 계정에 해당 입구가 없다면 일반 채팅창을 전용 건강 공간과 같은 것으로 간주해서는 안 되며, 제품마다 다른 데이터 정책을 혼동해서 이해하지 않아야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "현재 진료 자료를 명확하게 정리하는 것만이 목적인 사람에게는 특정 기능이 열리기를 기다릴 필요 없이 목록 작성 자체만으로도 도움이 됩니다. 익숙한 문서 도구를 이용해 출처, 날짜, 확인 필요 사항, 질문을 정리한 후, 새로운 서비스가 실제로 정리 과정을 줄여주는지 필요에 따라 평가하면 됩니다. 도구가 어떻게 업데이트되든, Health가 진단이나 치료용이 아니라는 위치 설정과 전문 인력이 의료 정보를 판독하도록 하는 분업 체계는 유지되어야 합니다."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "자료를 진료실로 가져갈 때의 실무적 유의점",
+          "text": "Health는 진단이나 치료에 사용되지 않습니다. 정리할 때는 원본 보고서와 질문을 남겨두고, 의학적 판독과 약물 결정은 의료진에게 맡겨야 하며 모델 요약만 보고 임의로 복약을 중단하거나 치료를 조절해서는 안 됩니다."
+        },
+        {
+          "type": "link",
+          "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
+          "url": "https://mokaair.com/ko/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Gemini Personal Intelligence: AI가 메일과 사진을 연결할 때 생기는 편의성은 어디서 오는가?",
+          "url": "https://mokaair.com/ko/life/ai-news-gemini-personal-intelligence-20260114"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI: Introducing ChatGPT Health",
+          "url": "https://openai.com/index/introducing-chatgpt-health/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI: OpenAI for Healthcare",
+          "url": "https://openai.com/index/openai-for-healthcare/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "ChatGPT Health 年初登场：整理健康资料之前先看懂用途与界限",
+      "description": "ChatGPT Health 于 1 月推出健康资料整理空间。本文说明首发与 7 月更新的地区限制，并以就诊前整理文件为例，讨论来源、日期、家人同意及专业判读的界限。",
+      "hero": {
+        "src": "/guides/ai-news-chatgpt-health-20260107/hero-zh-cn.jpg",
+        "alt": "资料带进诊室的原创概念插图，呈现本篇事件的使用脉络",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "事件日期：2026-01-07；本文核查日期：2026-09-14。1 月 7 日发布个人健康体验 Health，可关联支持的健康数据与应用；它是独立空间。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方明确说明 Health 不用于诊断或治疗，不取代临床照护；Health 对话不用于训练基础模型。年初采用小规模先行使用及候补；原文 7 月 23 日更新为面向美国 18 岁以上用户在 web 与 iOS 推出。病历打通及部分应用有美国限制，Apple Health 关联需 iOS。不能据此推定台湾账号可用；1 月 8 日医疗机构产品是另一项公告。以下生活与工作场景为编辑设计的示例，供读者自行验证，并非本站产品实测。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先整理文件，再决定要问什么"
+        },
+        {
+          "type": "paragraph",
+          "text": "准备就诊时，手上可能同时有纸质报告、医疗机构寄来的电子档，以及自己记录的问题。这些材料的格式不同，最先要处理的是让它们容易查找。可以先做一份清单，列出文件名称、日期、医疗机构与原始文件位置。清单的目的只是协助检索，并不需要先把每项数值解释成健康结论，也不应为了表格看起来完整而补上不存在的数据。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若把部分文件交给工具协助整理，可以要求每一条摘要都保留对应的文件名称与页码。看到模型写出一个数值时，回到原报告核对名称、单位、日期及备注，再决定是否放入自己的清单。扫描不清楚或看不懂的地方，直接标为待确认，通常比让模型猜出一个看似合理的答案更容易在诊室中说明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "也可以先用一份不含个人信息的示例测试输出格式。例如只确认它能否按照日期排序、是否保留空白字段，以及有没有把两份报告合并为同一条。等你看懂整理方式，再依实际需要选择要提供的内容。工具减少的是查找资料与排版的负担，整理结果仍需要你逐项核对，不能成为取代原始报告的新依据。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "日期、单位与缺失值要一起保留"
+        },
+        {
+          "type": "paragraph",
+          "text": "历史报告与最近一次检查有不同的时间背景。整理时应保留每份文件原有日期，让医务人员判断它在这次讨论中的意义；不要自行订出所有报告通用的有效期。若某个字段没有数值，也应保留空白原因或原文附注，不把没有数据写成结果正常，更不以其他年份的数据自动填入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一个名称在不同文件里，可能采用不同单位或附带不同备注。对普通读者而言，最容易执行的检查是逐字比对，不擅自换算，也不只抄下数字。若你希望整理成一张表格，可以增加“原文”与“待问问题”两列，把看不懂的地方留给诊室讨论，避免整齐的版面掩盖数据仍有不确定之处。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "使用范畴",
+            "主要任务与操作",
+            "责任归属与限制"
+          ],
+          "rows": [
+            [
+              "文件整理",
+              "列出日期、名称、单位与来源",
+              "核对原件，不猜补缺失值"
+            ],
+            [
+              "术语理解",
+              "协助列出想问的名词",
+              "解释不等于个人诊断"
+            ],
+            [
+              "就诊问题",
+              "保留自己的疑问与时间记录",
+              "让医务人员根据完整情况回应"
+            ],
+            [
+              "诊疗决策",
+              "携带原始文件供专业评估",
+              "不依据模型内容自行调药或安排治疗"
+            ]
+          ],
+          "caption": "本表对比个人资料整理、医学词汇理解、就诊提问准备与临床诊疗决策四项范畴的操作边界与责任分工。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把疑问写清楚，让就诊讨论有依据"
+        },
+        {
+          "type": "paragraph",
+          "text": "问题清单可以从自己的困惑出发，例如“这份报告有哪些地方需要进一步说明？”或“我应该带哪一段历史资料供您参考？”。这类问题帮助你表达需求，也留给医务人员根据完整情况进行判断的空间。模型可以协助把句子缩短、删掉重复内容，但不应替你决定需要哪一种检查或治疗。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若你已经记下近期想说明的情况，可以要求工具依时间顺序排成笔记，并保留你原本的用词。不要让它将“我不确定何时开始”改写为明确日期，或把你的疑问变成已确认的症状结论。就诊时可以同时携带原始文件和这份笔记，让医务人员知道哪些是原有记录、哪些只是你希望厘清的问题。"
+        },
+        {
+          "type": "paragraph",
+          "text": "内容较多时，不妨先挑出这次最想讨论的几项，其他问题另列在后面。这是整理沟通顺序的建议，不代表未列入的资料在医疗上不重要。尤其不要因为模型认为某份记录与本次科室无关，就自行删掉用药或检查数据；哪些信息与诊疗相关，应由了解完整情况的医务人员评估。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-chatgpt-health-20260107/diagram-1-zh-cn.svg",
+          "alt": "资料带入诊室：四项阅读与使用要点",
+          "width": 1600,
+          "height": 900,
+          "caption": "整理来源：日期与检验单位、检查缺漏：保持原始记录、列出问题：供就诊讨论、专业判断：由医务人员评估。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "数据范围由自己确认，家人的数据须另行同意"
+        },
+        {
+          "type": "paragraph",
+          "text": "在任何云端工具输入健康信息前，先确认自己正在使用的产品、账号与空间。Health 的数据政策不能自动套用到所有常规聊天工具，也不能仅凭产品名称相近就认为隐私处理相同。若目前只是练习整理表格，可以使用虚构示例；要放入真实数据时，再阅读该入口的说明与可调整设置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "协助成年家人整理文件时，应先说明准备提供哪些内容、交给哪个服务处理，以及整理后要如何保存，并取得对方同意。移除不必要的姓名或身份标识信息可以减少泄露风险，但这并不意味着剩余的健康内容就不再敏感。若对方不愿将数据交给云端服务，也可以使用本地文件或纸质清单达到相同的整理目的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "整理完毕后，可以检查关联了哪些应用、哪些副本仍需保留，依目前提供的设置管理数据。删除对话、解除应用关联与删除原始数据可能是不同操作，不要预设其中一项会自动完成其余操作。无论采用哪种工具，都应保留自己能掌握的原始文件，方便日后查对与提供给医务人员阅读。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "台湾读者如何看待这次发布"
+        },
+        {
+          "type": "paragraph",
+          "text": "这则新闻描述的是 OpenAI 的个人健康产品，并不代表它已与台湾医疗机构或健保数据完成对接。官方公告提到的美国病历整合、年龄条件与设备需求，都需要分别确认。如果自己的账号没有相关入口，不应把常规聊天窗口当成同样的专属健康空间，也不要把不同产品的数据政策混在一起理解。"
+        },
+        {
+          "type": "paragraph",
+          "text": "对目前只想把就诊材料准备清楚的人而言，清单本身就能发挥作用，不一定要先等某项功能开放。你可以用熟悉的文件工具列出来源、日期、待确认处与问题，再依需要评估新服务是否真的减少了整理步骤。无论工具如何更新，Health 不用于诊断或治疗的定位，以及让专业人员判读医疗信息的分工，都应保留。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "资料带入诊室的实用提醒",
+          "text": "Health 不用于诊断或治疗。整理时保留原始报告与待确认问题；医疗判读及用药决定交由医务人员，切勿依据模型摘要自行停药或调整治疗。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
+          "url": "https://mokaair.com/zh-CN/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Gemini Personal Intelligence：AI 连接邮件与相册后，便利从何而来？",
+          "url": "https://mokaair.com/zh-CN/life/ai-news-gemini-personal-intelligence-20260114"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI：Introducing ChatGPT Health",
+          "url": "https://openai.com/index/introducing-chatgpt-health/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI：OpenAI for Healthcare",
+          "url": "https://openai.com/index/openai-for-healthcare/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
