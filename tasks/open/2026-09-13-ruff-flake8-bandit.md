@@ -1,17 +1,22 @@
 ---
 id: 2026-09-13-ruff-flake8-bandit
 title: ruff does not run flake8-bandit, so the checks miss whole classes of finding
-status: open
+status: review
 priority: P3
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-14T01:00:35Z
 created_at: 2026-09-13T23:37:54Z
 completed_at:
-branch:
+branch: claude/security-check-o5zaj1
 depends_on: []
 scope:
   - apps/api/pyproject.toml
+  - apps/api/app/auth/oauth.py
+  - apps/api/app/auth/schemas.py
+  - apps/api/app/auth/service.py
+  - apps/api/app/config.py
+  - apps/api/app/infra.py
 ---
 
 # ruff does not run flake8-bandit, so the checks miss whole classes of finding
@@ -38,22 +43,45 @@ permanent, and the next hundred commits are written by several different agents.
 
 ## Definition of done
 
-- [ ] `S` is in `[tool.ruff.lint] select`, `uv run ruff check .` is clean, and CI enforces
-      it on every push.
-- [ ] Every rule that had to be ignored is listed individually with the reason, not
-      silenced as a whole category.
+- [x] `S` is in `[tool.ruff.lint] select`, `uv run ruff check .` is clean, and CI enforces it
+      on every push (`.github/workflows/ci.yml` already runs `ruff check`).
+- [x] Every rule that had to be turned off is listed individually with the reason. No blanket
+      `# noqa: S` anywhere, and no category-wide ignore.
 
-## Steps
+## What fired, and what happened to it
 
-- [ ] Add `"S"` to `select` and run `uv run ruff check .` to see the real list. Expect most
-      of it in `tests/` — `S101` (assert) fires on every test file.
-- [ ] Add `"tests/*.py" = ["S101"]` to `[tool.ruff.lint.per-file-ignores]`, which already
-      has an entry for `deployment_agent/*.py`.
-- [ ] Triage the rest one at a time. `S603`/`S607` on `deployment_agent/executor.py` are
-      the deliberate design — a fixed command set run with `shell=False` — so ignore those
-      two rules on that path with a comment saying so, not the whole `S` category.
-- [ ] Fix anything that is a real finding rather than ignoring it. If a fix is larger than
-      this task's scope, file it separately and link it here.
+10,395 findings, which sounds like a lot until they are sorted.
+
+| Rule | Count | Disposition |
+| --- | --- | --- |
+| S101 `assert` | 10,209 | Off globally, one rule, with the reason in `pyproject.toml` |
+| S106/S105 hardcoded password | 149 + 18 | Test fixtures ignored per-directory; 9 in `app/` given an inline `# noqa` each |
+| S108 `/tmp` | 6 | Tests only — the deploy-agent cases bind a real unix socket |
+| S608 SQL from a string | 4 | Migrations and one migration test: table names and status tuples from module constants |
+| S311 non-crypto `random` | 3 | Fake prices and poll jitter |
+| S603 subprocess | 2 | The deployment agent's fixed command set, and one test running a repo script |
+| S310 `urlopen` | 2 | GitHub CI status on a built Request; health probe on a config URL |
+| S314 `xml` | 1 | **A real gap.** Suppressed here, filed as `2026-09-14-airalo-feed-utf16-doctype` |
+| S110 try/except/pass | 1 | Deployment failure cleanup, which must not mask the original error |
+
+### The one real finding
+
+`parse_airalo` guards its XML with `b"<!DOCTYPE" in body.upper()`, which only folds ASCII, so
+a UTF-16 feed carrying a DOCTYPE walks straight past it. Not reachable by anyone but Airalo
+— the URL is hardcoded — and `ElementTree` resolves no external entities, so the exposure is
+entity-expansion DoS in the worker rather than file disclosure. Filed separately rather than
+fixed here, because the choice between a one-line NUL strip and taking on `defusedxml` is a
+real decision and this task is about turning the lint on.
+
+### Why S101 is off rather than triaged
+
+The rule exists because `python -O` compiles asserts out. Nothing here runs with `-O`; the
+image starts `uvicorn app.main:app`. All 29 uses in `app/` narrow a type for strict mypy
+(`assert x is not None`, `assert isinstance(...)`) rather than enforcing something a caller
+could violate, and in `tests/` an assert is the point. Turning it on would mean 29 `# noqa`
+comments across 20 files for no change in behaviour, and would bury the eight rules that
+actually found something. The `pyproject.toml` comment says to turn it back on first if the
+service ever runs with `-O`.
 
 ## How to verify
 
@@ -61,10 +89,21 @@ permanent, and the next hundred commits are written by several different agents.
 cd apps/api && uv run ruff check . && uv run mypy app && uv run pytest -q
 ```
 
+The rules that matter are still live — checked by running ruff over a scratch file containing
+one violation each: `S608` (SQL built by concatenation), `S602` (`shell=True`), `S324` (MD5),
+`S501` (`verify=False`), `S113` (request with no timeout). All five fire.
+
 ## Notes
 
-- Resist a blanket `# noqa: S` or a category-wide ignore. A rule that is off for a stated
-  reason is documentation; a rule that is off for no reason is the same as not having
-  added it.
-- `S` overlaps `B` in places; ruff resolves that itself, no action needed.
+- Every suppression is either an inline `# noqa: S###` with the reason on the same line, or a
+  per-file entry with a comment above it. A rule that is off for a stated reason is
+  documentation; a rule that is off for no reason is the same as never having added it.
+- The nine `app/` S105 hits are all names, not values: three OAuth endpoint URLs, a Redis key
+  prefix, a request header name, the `bearer` token type, a bot User-Agent, the placeholder
+  `APP_SECRET_KEY` that production refuses by name, and the comparison that refuses the
+  default database password.
+- **Scope overlap:** `app/auth/schemas.py` and `app/config.py` are also held by
+  `2026-09-13-password-policy-length-only` and `2026-09-13-analytics-hash-key-separation`.
+  Both are this agent's own tasks on this same branch, so there is no second writer; the
+  overlap is recorded rather than left for a merge to find.
 - Filed by the 2026-09-13 security review (`docs/security-review-2026-09-13.md`).

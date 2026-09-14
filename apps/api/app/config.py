@@ -91,7 +91,9 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file="../../.env", extra="ignore")
 
     app_env: str = "development"
-    app_secret_key: str = "development-secret-change-me-please-32"
+    # A placeholder, and the one value production refuses by name:
+    # `validate_deployment_security` rejects it and anything under 32 characters.
+    app_secret_key: str = "development-secret-change-me-please-32"  # noqa: S105
     settings_encryption_key: str | None = None
     admin_emails: str = ""
     community_enabled: bool = False
@@ -366,7 +368,7 @@ class Settings(BaseSettings):
     airline_crawler_user_agent: str = (
         "TravelScannerBot/0.1 (+https://github.com/x812033727/travel_scanner)"
     )
-    airline_crawler_agent_token: str = "TravelScannerBot"
+    airline_crawler_agent_token: str = "TravelScannerBot"  # noqa: S105 -- a User-Agent string
     airline_crawler_timeout_seconds: float = Field(default=10.0, gt=0, le=30)
     airline_crawler_cache_ttl_seconds: int = Field(default=1800, ge=60, le=86_400)
     airline_crawler_min_interval_seconds: int = Field(default=5, ge=1, le=60)
@@ -651,7 +653,7 @@ class Settings(BaseSettings):
                 errors.append("API_CORS_ORIGINS must contain only explicit HTTPS origins")
                 break
         database = urlparse(self.database_url)
-        if not database.password or database.password == "travel":
+        if not database.password or database.password == "travel":  # noqa: S105 -- refuses it
             errors.append("DATABASE_URL must use a non-default password")
         redis = urlparse(self.redis_url)
         if not redis.password:
