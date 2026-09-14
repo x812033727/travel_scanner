@@ -1,0 +1,356 @@
+{
+  "slug": "claude-memory-and-privacy",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "misc"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude 的記憶與隱私：什麼會被記住、怎麼清除、對話會不會拿去訓練",
+      "description": "Claude 的記憶在 Free、Pro、Max 預設開啟，Settings → Memory 可逐條看、改、刪；對話要不要拿去訓練是註冊時選的，允許時去識別化資料最長保留 5 年，不允許維持 30 天；刪掉的對話 30 天內從後端消失，無痕對話不進記憶也不訓練。這篇依 2026 年 9 月 Anthropic 官網整理記憶、訓練、保留三條路的開關與期限，加上匯出、刪帳號、分享與一張設定清單。",
+      "hero": {
+        "src": "/guides/claude-memory-and-privacy/hero.jpg",
+        "alt": "一個深綠色的對話泡泡裡放著一張記憶卡片與一把橘色鑰匙，以簡單幾何形狀表現 Claude 的記憶與隱私設定",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Claude 會記住你，但「記什麼、留多久、拿不拿去訓練」是三件事、三個開關：記憶在 Free、Pro、Max 預設開啟，記的是你的角色、專案與偏好，可以逐條刪或整個重設；對話要不要用來改善模型是註冊時選的，允許時去識別化資料最長保留 5 年，不允許就維持 30 天；刪掉的對話 30 天內從後端消失，無痕對話不進歷史、不進記憶、也不訓練。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇依 2026 年 9 月 Anthropic 說明中心與隱私中心的說法，把三條資料路徑拆開講：記憶記了什麼、在哪裡看與刪；訓練設定在哪裡關、開與關差在哪；對話刪掉後多久消失、無痕對話怎麼開；再帶你做一次匯出與刪帳號，最後整理成一張「開始用之前先決定」的清單。設定名稱以英文介面為主、括號附官網譯名，位置會隨版本調整，以官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "你的對話會走三條路：記憶、訓練、保留",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一句話送進 Claude 之後會往三個方向去。第一條是記憶：Claude 邊聊邊把值得記的事存成一則一則的主題（Topics），下一個對話就帶著；第二條是訓練：如果你允許「協助改善模型」，這段對話會以去識別化的形式進入訓練資料；第三條是保留：不管前兩條開不開，對話本身都會存在 Anthropic 的伺服器，直到你刪除、再等最多 30 天。三條路各有開關與期限，關掉一條不等於關掉另外兩條：關掉訓練，記憶照常在記；重設記憶，對話還在歷史裡；刪掉對話，從它生成的記憶條目也不會跟著消失。"
+        },
+        {
+          "type": "link",
+          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "記憶：哪些方案有、記什麼、在哪裡看與刪",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "依說明中心 2026 年 9 月的說法，記憶在 Free、Pro、Max 的網頁、桌面與手機 App 預設開啟；Team 與 Enterprise 預設關閉，要由組織擁有者打開。Anthropic 在 2025 年 9 月 11 日先讓 Team 與 Enterprise 用，2025 年 10 月 23 日擴大到 Pro 與 Max，2026 年 8 月 25 日換成新版：不再等對話結束才整理摘要，而是邊聊邊存成獨立的主題；每個 Project 有自己的記憶空間與專案摘要，不會跟其他 Project 或一般對話混在一起。還看到 Settings → Capabilities 裡有 Memory 的是舊版介面，以你看到的畫面為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "它記的是工作用得到的背景：你的角色、專案與工作情境，工作與生活裡的人與地點，溝通偏好與工作方式，技術偏好與寫程式的習慣。健康、種族、宗教、政治立場、性別認同這類敏感主題預設不存，要自己在 Settings → Memory 打開 Include sensitive topics in memory（在記憶中包含敏感主題）才會記，之後每次存到這類主題，訊息框上方都會出現通知；身分證件號碼、犯罪紀錄、金融帳號、移民身分則是怎麼要求都不存。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "看與改：左下角帳號名稱 → Settings（設定）→ Memory（記憶），Topics 底下列出 Claude 記得的每個主題，點進去可以讀，用編輯圖示改，或按 Delete 刪掉那一條，下一個對話就生效；也可以直接在對話裡說「記住這件事」「把這件事忘掉」。",
+            "暫停或重設：關掉 Generate memory from chats（從聊天產生記憶）時會問你二選一。Pause memory（暫停）保留現有記憶但不再使用也不再新增；Reset memory（重設）永久刪除全部記憶，包含每個 Project 的記憶，不能復原。",
+            "搜尋過去對話：付費方案（Pro、Max、Team、Enterprise）預設開啟，Claude 會翻你以前的對話並附上引用；不想讓它翻，在 Settings → Memory 關掉 Search and reference chats（搜尋和參考聊天）。",
+            "備份與搬家：在對話裡請 Claude「一字不差寫出你對我的記憶」就能存成備份；Settings → Memory 的 Start import 可以把別家 AI 匯出的記憶貼進來，官網標示為實驗性功能。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "兩個容易誤會的地方：刪掉一段對話，從它生成的記憶條目不會跟著消失，要另外到 Topics 裡刪；匯出帳號資料時，記憶會一起包在裡面。"
+        },
+        {
+          "type": "link",
+          "text": "Claude Projects 知識庫：把檔案與指令收進專案，讓每個對話都帶著背景",
+          "url": "https://mokaair.com/zh-TW/life/claude-projects-knowledge-base"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 自訂指令與記憶功能：讓它記住你的偏好，每次都用台灣繁體中文回答",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-custom-instructions-memory"
+        },
+        {
+          "type": "heading",
+          "text": "訓練設定：在哪裡關、開與關的保留期差多少",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 在 2025 年 8 月 28 日更新消費者條款：Free、Pro、Max 帳號（包含用這些帳號使用 Claude Code）的對話可以用來訓練模型，前提是你允許。新帳號在註冊流程裡選一次，舊帳號當時有到 2025 年 10 月 8 日的期限要做決定；官網沒有寫這個選項的預設值，註冊時那一步自己看清楚。Team、Enterprise、API、Claude for Education 與 Claude for Government 走商業條款，不在這個範圍。"
+        },
+        {
+          "type": "paragraph",
+          "text": "開關的位置：左下角帳號名稱 → Settings → Privacy（隱私）→ Help improve our AI models（幫助改進我們的 AI 模型），手機 App 走同一條路。開與關的差別主要在保留期：允許時，你的對話會以去識別化形式在訓練管線裡保留最長 5 年，而且只算打開之後新開或接續的對話；不允許時維持 30 天。會用到的內容包含整段對話、上傳的內容、自訂風格與對話偏好；透過連接器（例如 Google Drive、MCP）讀到的原始資料不算，除非你把它貼進對話。Anthropic 說會先把資料與帳號去連結、只讓少數人員接觸、並過濾敏感資料，但同一頁也建議不要貼財務資料、病歷、密碼與機密文件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "改設定之後會發生什麼，官網寫得很清楚：關掉之後，新的對話不再用於未來的訓練，之前存下的對話也不再進入未來的訓練批次；但已經開始的訓練與已經訓練完成的模型不會倒回去。刪掉單一對話，那段對話也不會再用於未來訓練。另外有兩個不受開關影響的例外：被安全系統標記違反使用政策的對話，輸入與輸出最長保留 2 年、分類分數最長 7 年，可能用來改善內部的安全模型；按讚或倒讚送出的回饋，整段對話會保留 5 年，去除帳號連結後可用於研究與訓練。"
+        },
+        {
+          "type": "heading",
+          "text": "對話保留與刪除：刪掉後 30 天內消失，無痕對話怎麼開",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "刪除對話：網頁版在左側欄找到那段對話，滑過去按右邊的「⋮」→ Delete，再確認一次；要一次刪很多段，點左側欄的 Chats and tasks → 「⋮」→ Select，勾選或 Select all 之後 Delete。iOS 長按對話選 Delete，Android 用右上角的「⋮」選單或清單圖示多選。刪掉的對話會立刻從歷史消失，30 天內從後端系統刪除；Projects 與帳號資料則會留到你刪掉它們或刪帳號為止。"
+        },
+        {
+          "type": "paragraph",
+          "text": "無痕對話（官網譯「隱私聊天」）所有方案都有：在 Projects 之外開新對話，點右上角的幽靈圖示，畫面出現黑色邊框與 Incognito chat 標籤就是了，結束時按右上角的 x。它不進歷史、不讀也不寫記憶、不會被搜尋過去對話翻到，而且即使「協助改善模型」開著也不用於訓練；但它不是不存在伺服器，預設仍保留 30 天。關掉就不能再打開、不能轉成一般對話，Projects 裡也沒有這個圖示，要留的內容先複製出來。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-memory-and-privacy/diagram-1.svg",
+          "alt": "資料流圖：你的對話分成記憶、訓練、保留三條路，各自標出開關位置與期限，下方是開始用之前的設定檢查清單",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左往右看：一段對話往記憶、訓練、保留三條路走，每條路標出開關在哪、留多久；底下一排是開始用之前照順序決定的設定。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "匯出資料與刪除帳號：先匯出，再刪",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "匯出：只有網頁版與桌面版能做，iOS、Android 不行。左下角帳號縮寫 → Settings → Privacy → Export data（匯出資料），處理完成後下載連結寄到帳號信箱，要登入同一個帳號才能下載，連結送達後 24 小時失效，過期再按一次就好。內容是對話資料與帳號資料，記憶也在裡面；匯出的檔案不能匯入另一個個人帳號。",
+            "付費方案先退訂：Pro 或 Max 要先到 Billing（帳單）取消訂閱，等這一期結束、方案失效後才能刪帳號。",
+            "刪帳號：網頁版左下角帳號名稱 → Settings → Account（帳戶）→ Delete account，照提示確認；iOS 在 Settings 的 Account 區點 Profile → Delete account；Android 從左上角選單 → 左下角縮寫 → Profile → Account Actions → Delete Account。刪除是永久的，對話、Projects 與帳號資料都會失去；透過 Poe、Slack 這類第三方服務使用 Claude 的，要向那個服務申請。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "刪帳號後多久從系統清完，說明中心沒有寫明確天數，只指向隱私中心的保留規則：刪掉的對話 30 天內從後端刪除，法律要求、爭議處理與使用政策違規的資料則可能保留更久。想讓對話不再進入未來的訓練，官網寫明確的做法是關掉訓練設定或刪掉那段對話，不是等刪帳號，以官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "分享對話與公開 Artifacts：連結就是公開",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "對話預設私密，但按右上角 Share 產生公開連結後，任何拿到網址的人不用帳號就能看分享當下的快照，之後的訊息不會自動更新；快照包含所有訊息與 Artifacts，不包含你上傳的檔案。Anthropic 在分享頁加了 noindex、不發布目錄、網址是猜不到的長字串，但官網自己也說：連結被貼到公開網站、被截圖或被存檔服務複製，這些都管不到，把公開連結當成公開發表。要收回，到 Share 選單改成 Private，或到 Settings → Privacy → Shared chats 逐一 Unshare，連結立刻失效，但別人已經複製的內容收不回。比較保險的做法是用信箱邀請特定人：對方只能看、不能接著聊，邀請 30 天沒開啟會過期。Artifacts 的 Publish 同樣是公開給所有人，Unpublish 之後同一個 Artifact 不能再發布。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 分享連結與隱私：哪些對話可能被搜尋到",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-shared-links-privacy"
+        },
+        {
+          "type": "heading",
+          "text": "和 ChatGPT 的差別：只講官網寫的",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "只講兩家官網都查得到的三點。訓練開關：ChatGPT 個人帳號的 Improve the model for everyone 要自己去 Settings → Data Controls 關掉（官網用的字是 opt out），Claude 是註冊時要你選一次、之後在 Settings → Privacy 改。保留期：兩家刪掉的對話都是 30 天內從系統移除，Claude 多了「允許訓練就保留 5 年」這條，ChatGPT 的說明中心沒有對應的年限。無痕對話：ChatGPT 叫 Temporary chat，Claude 叫 Incognito chat，都保留 30 天。Gemini 的做法與三家的並排清單在隱私設定總覽篇。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        },
+        {
+          "type": "heading",
+          "text": "開始用之前先決定的設定清單",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把前面的開關收成一張表，第一段對話之前照順序走一遍，之後每季回來看記憶與分享清單就好。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "設定",
+            "位置",
+            "預設值",
+            "建議"
+          ],
+          "rows": [
+            [
+              "訓練：Help improve our AI models",
+              "Settings → Privacy",
+              "註冊時選一次，官網未寫預設值",
+              "先決定再開始用；關掉則保留期維持 30 天，允許則去識別化資料最長 5 年"
+            ],
+            [
+              "記憶：Generate memory from chats",
+              "Settings → Memory",
+              "Free、Pro、Max 開；Team、Enterprise 關",
+              "留著也行，每季到 Topics 看一次、刪掉過時的；要清空用 Reset"
+            ],
+            [
+              "敏感主題：Include sensitive topics in memory",
+              "Settings → Memory",
+              "關",
+              "除非有明確需要（例如過敏），否則維持關閉"
+            ],
+            [
+              "搜尋過去對話：Search and reference chats",
+              "Settings → Memory",
+              "付費方案開",
+              "用得到就留著；不想被翻到的內容改用無痕對話"
+            ],
+            [
+              "無痕對話：Incognito chat",
+              "Projects 之外的新對話右上角幽靈圖示",
+              "每次手動開",
+              "貼個資、他人資料或一次性內容時用；仍保留 30 天"
+            ],
+            [
+              "分享：Shared chats",
+              "對話右上角 Share；清單在 Settings → Privacy → Shared chats",
+              "私密",
+              "公開連結當公開發表；用信箱邀請取代公開連結，用不到的 Unshare"
+            ],
+            [
+              "匯出：Export data",
+              "Settings → Privacy → Export data，限網頁與桌面版",
+              "手動",
+              "刪帳號前先匯出；連結 24 小時內下載"
+            ],
+            [
+              "刪帳號：Delete account",
+              "Settings → Account → Delete account",
+              "手動",
+              "Pro、Max 先退訂等到期；刪了不能復原"
+            ]
+          ],
+          "caption": "2026 年 9 月依 Anthropic 說明中心與隱私中心整理；選單名稱與位置會隨版本調整，以官網為準。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先決定要不要讓對話拿去訓練，再開始用",
+          "text": "官網寫明：關掉「協助改善模型」之後，新對話與之前存下的對話都不再進入未來的訓練，但已經開始的訓練與已經訓練完成的模型不會倒回去。所以這個選項要在第一段對話之前決定，不是用了一陣子再回頭關。判斷方式很簡單：會貼工作文件、客戶資料、自己的病歷或財務，就關掉；純粹問問題、學東西、不介意去識別化後被用來改善模型，開著也可以，個案再用無痕對話處理。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Claude 說明中心：Use Claude's chat search and memory to build on previous context（Free、Pro、Max 預設開啟、Settings → Memory、Topics 逐條看改刪、Pause 與 Reset、敏感主題、搜尋過去對話、刪對話不刪記憶、匯出含記憶）",
+          "url": "https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 官方 blog：Claude's memory works everywhere, and you decide what's in it（2026 年 8 月 25 日新版記憶：邊聊邊存成主題、Free、Pro、Max 預設開啟、敏感主題設定）",
+          "url": "https://claude.com/blog/claudes-memory-works-everywhere-and-you-decide-whats-in-it",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 官方 blog：Bringing memory to Claude（2025 年 9 月 11 日 Team 與 Enterprise 先用、頁上 2025 年 10 月 23 日更新擴大到 Pro 與 Max、每個 Project 獨立記憶）",
+          "url": "https://claude.com/blog/memory",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Import and export your memory from Claude（Settings → Memory → Start import、請 Claude 逐字寫出記憶當備份、Free、Pro、Max、Team 網頁與桌面版、實驗性）",
+          "url": "https://support.claude.com/en/articles/12123587-import-and-export-your-memory-from-claude",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方公告：Updates to Consumer Terms and Privacy Policy（2025 年 8 月 28 日、Free、Pro、Max 與 Claude Code 適用、2025 年 10 月 8 日期限、保留 5 年或 30 天、關閉後已開始的訓練不倒回、商業條款不適用）",
+          "url": "https://www.anthropic.com/news/updates-to-our-consumer-terms",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 隱私中心：How do I change my model improvement privacy settings?（Settings → Privacy → Help improve our AI models、手機路徑相同、關閉後不再用新舊對話訓練但已訓練的模型不倒回）",
+          "url": "https://privacy.claude.com/en/articles/12109829-how-do-i-change-my-model-improvement-privacy-settings",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 隱私中心：Is my data used for model training?（允許、安全標記、自願加入三種情況；用到整段對話與自訂風格；連接器原始資料不算；無痕對話不訓練；回饋保留 5 年）",
+          "url": "https://privacy.claude.com/en/articles/10023580-is-my-data-used-for-model-training",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 隱私中心：How long do you store my data?（刪除對話立即移除、30 天內後端刪除；允許訓練去識別化保留最長 5 年；違規對話 2 年與分類分數 7 年；回饋 5 年）",
+          "url": "https://privacy.claude.com/en/articles/10023548-how-long-do-you-store-my-data",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：I would like to input sensitive data into my chats with Claude. Who can view my conversations?（去連結帳號、少數人員、過濾敏感資料、建議不貼財務、病歷、密碼、機密文件）",
+          "url": "https://support.claude.com/en/articles/8325621-i-would-like-to-input-sensitive-data-into-my-chats-with-claude-who-can-view-my-conversations",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Delete or rename a conversation（網頁 ⋮ → Delete、Chats and tasks 多選、iOS 長按、Android ⋮ 與清單圖示、立即移除並於 30 天內後端刪除、Projects 與帳號資料另計）",
+          "url": "https://support.claude.com/en/articles/8230524-delete-or-rename-a-conversation",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Use incognito chats（所有方案、Projects 之外右上角幽靈圖示、黑色邊框與 Incognito chat 標籤、不進歷史與記憶、不訓練、預設保留 30 天、不能重開或轉換）",
+          "url": "https://support.claude.com/en/articles/12260368-use-incognito-chats",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 隱私中心：Export your Claude data（Free、Pro、Max 個人帳號、Settings → Privacy → Export data、限網頁與桌面版、連結送達後 24 小時失效、不能匯入另一個個人帳號）",
+          "url": "https://privacy.claude.com/en/articles/9450526-how-can-i-export-my-claude-data",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Delete your Claude account（Pro、Max 先退訂等到期、網頁 Settings → Account → Delete account、iOS 與 Android 步驟、永久刪除、第三方服務另行申請）",
+          "url": "https://support.claude.com/en/articles/9028421-delete-your-claude-account",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Share and unshare chats（右上角 Share 產生快照、之後訊息不更新、附件與 MCP 原始資料不包含、Settings → Privacy → Shared chats 管理與 Unshare）",
+          "url": "https://support.claude.com/en/articles/10593882-share-and-unshare-chats",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Public links for shared chats（Free、Pro、Max 可公開、不用帳號、noindex 與無目錄、無法控制轉貼與複製、關閉後連結立即失效）",
+          "url": "https://support.claude.com/en/articles/16762437-public-links-for-shared-chats",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Share a chat with specific people（信箱邀請為預設分享方式、只能看不能續聊、邀請 30 天未開啟過期、Settings → Privacy 可關閉）",
+          "url": "https://support.claude.com/en/articles/16762496-share-a-chat-with-specific-people",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Publish and share artifacts（Free、Pro、Max 的 Publish 公開給任何人、Unpublish 後同一 Artifact 不能再發布）",
+          "url": "https://support.claude.com/en/articles/9547008-publish-and-share-artifacts",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 隱私政策（2026 年 9 月 10 日生效版：刪除對話立即移除並於 30 天內從後端刪除、回饋與安全標記資料去識別化後用於訓練）",
+          "url": "https://www.anthropic.com/legal/privacy",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：How your data is used to improve model performance（ChatGPT 個人帳號用 Settings → Data Controls 的 Improve the model for everyone 選擇退出；Business、Enterprise 與 API 預設不訓練）",
+          "url": "https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI 說明中心：Chat and File Retention Policies in ChatGPT（刪除的對話 30 天內從系統永久刪除、Temporary chat 30 天內刪除）",
+          "url": "https://help.openai.com/en/articles/8983778-chat-and-file-retention-policies-in-chatgpt",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}
