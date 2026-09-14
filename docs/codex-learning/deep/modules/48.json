@@ -1,0 +1,331 @@
+{
+  "id": 48,
+  "readingMinutes": 15,
+  "operationMinutes": 30,
+  "blocks": [
+    {
+      "type": "h2",
+      "text": [
+        "目標與準備",
+        "Goal and preparation",
+        "目標と準備",
+        "목표와 준비"
+      ]
+    },
+    {
+      "type": "note",
+      "text": [
+        "把一份簡單技能拆成清楚的指令、規格、範本與可重複執行的檢查程式，完成一份能核對的待辦統計。閱讀約 15 分鐘、操作約 30 分鐘。需要編輯器、Node.js 22 以上相容版本與已登入的 Codex；先讀 [Skills 入門](article:codex-skills)。本篇所有檔案都放進新的 codex-skill-lab，不改你已安裝的技能。",
+        "Split a simple skill into instructions, a specification, a template and a repeatable checker, then produce a verifiable task summary. Allow 15 minutes to read and 30 to practice. Use an editor, compatible Node.js 22 or later and authenticated Codex; read [Skills basics](article:codex-skills) first. Put every file in a new codex-skill-lab folder, preserving your installed skills.",
+        "簡単なスキルを指示、仕様、テンプレート、繰り返し実行できる検査に分け、確認可能なタスク集計を作ります。読む時間15分、実習30分。エディター、対応 Node.js 22 以降、認証済み Codex を用意し、[Skills 入門](article:codex-skills)を読みます。すべて新しい codex-skill-lab 内に作成し、導入済みのスキルを変更しません。",
+        "간단한 스킬을 지침, 규격, 템플릿, 반복 실행 가능한 검사로 나누고 확인 가능한 작업 통계를 만듭니다. 읽기 15분, 실습 30분입니다. 편집기, 호환 Node.js 22 이상, 로그인한 Codex를 준비하고 [Skills 기초](article:codex-skills)를 먼저 읽으세요. 모든 파일은 새 codex-skill-lab에 만들며 설치된 스킬은 보존합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "可先[下載完整練習檔](https://mokaair.com/guides/codex-skill-resources/todo-summary-practice.zip)，解壓後得到 codex-skill-lab，再逐檔閱讀下列說明。檔案包也包含下一篇的 skill.test.mjs；不會替你安裝全域技能。",
+        "You can [download the complete practice files](https://mokaair.com/guides/codex-skill-resources/todo-summary-practice.zip), extract codex-skill-lab and follow the file-by-file explanations. It also includes the next lesson's skill.test.mjs; it does not install a global skill.",
+        "[教材一式をダウンロード](https://mokaair.com/guides/codex-skill-resources/todo-summary-practice.zip)して codex-skill-lab を展開し、各ファイルの説明を読みます。次の記事の skill.test.mjs も含みますが、全体スキルを自動導入しません。",
+        "[전체 실습 파일을 다운로드](https://mokaair.com/guides/codex-skill-resources/todo-summary-practice.zip)해 codex-skill-lab을 풀고 파일별 설명을 읽으세요. 다음 글의 skill.test.mjs도 포함하지만 전역 스킬을 설치하지 않습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "資料夾存在不代表其中每個檔案都自動執行。SKILL.md 負責說明何時使用及操作順序；references 保存需要時再讀的規格；assets 提供輸出樣板；scripts 才是實際程式。這次刻意只做「讀取 JSON 並統計」，不加入網站修改、網路連線或自動發布，方便確認每個資源確實有用途。",
+        "A folder does not execute every file automatically. SKILL.md describes when and how to use the workflow; references holds specifications to read when needed; assets supplies an output template; scripts contains executable code. This exercise only reads and counts JSON tasks, with no website edits, network calls or publication, so each resource has an observable purpose.",
+        "フォルダー内の全ファイルが自動実行されるわけではありません。SKILL.md は対象と順序、references は必要時に読む仕様、assets は出力書式、scripts は実行コードです。今回は JSON の読取りと集計だけを行い、サイト変更、通信、公開を含めず、各資源の役割を確認します。",
+        "폴더 안의 모든 파일이 자동 실행되지는 않습니다. SKILL.md는 사용 범위와 순서, references는 필요할 때 읽는 규격, assets는 출력 양식, scripts는 실행 코드를 담습니다. 이번에는 JSON 읽기와 집계만 하며 사이트 수정, 네트워크 호출, 게시를 포함하지 않아 각 자원의 역할을 확인할 수 있습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "| 資源 | 放什麼 | 這次如何驗證 |\n| --- | --- | --- |\n| SKILL.md | 適用範圍與順序 | 確認連結及停止條件 |\n| references | 輸入資料契約 | 重複標題允許、重複 ID 拒絕 |\n| assets | 空白報告範本 | 以真實輸出填寫，不留舊數字 |\n| scripts | 可執行檢查器 | 手動執行得到 3／1／2 |",
+        "| Resource | Contents | Verification here |\n| --- | --- | --- |\n| SKILL.md | Scope and sequence | Inspect links and stop conditions |\n| references | Input contract | Repeated titles allowed; duplicate IDs rejected |\n| assets | Blank report template | Fill actual results, not previous counts |\n| scripts | Executable checker | Manual run returns 3/1/2 |",
+        "| 資源 | 内容 | 今回の確認 |\n| --- | --- | --- |\n| SKILL.md | 範囲と順序 | リンクと停止条件 |\n| references | 入力契約 | 同名許可、ID 重複拒否 |\n| assets | 空の報告型 | 実結果を記入し旧数値を残さない |\n| scripts | 検査コード | 手動実行3／1／2 |",
+        "| 자원 | 내용 | 이번 확인 |\n| --- | --- | --- |\n| SKILL.md | 범위와 순서 | 링크와 중단 조건 |\n| references | 입력 계약 | 동명 허용, 중복 ID 거부 |\n| assets | 빈 보고서 틀 | 이전 수치 대신 실제 결과 입력 |\n| scripts | 실행 검사기 | 직접 실행 3/1/2 |"
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 1：建立獨立技能與輸入",
+        "Step 1: Create the skill and input",
+        "手順1：スキルと入力を作る",
+        "1단계: 스킬과 입력 만들기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "用檔案總管或編輯器建立下列結構，Windows、macOS、Linux 都使用相同檔名。data 放在練習根目錄，不放在技能內；技能可以重複使用，輸入資料則依工作更換。檢查編輯器沒有把 SKILL.md 存成 SKILL.md.txt，也沒有額外套一層同名資料夾。先不要把它複製到使用者全域的 .agents。",
+        "Create this structure in your file manager or editor, using identical filenames on Windows, macOS and Linux. Keep data at the practice root, outside the skill: reusable workflow and per-task input have different lifetimes. Check that SKILL.md was not saved as SKILL.md.txt or nested inside an extra duplicate folder. Do not copy it into your global user .agents directory.",
+        "Windows、macOS、Linux ともファイラーかエディターで同じ名前の構成を作ります。data はスキル外の実習ルートに置き、再利用する手順と毎回変わる入力を分けます。SKILL.md.txt や余分な同名階層になっていないか確認し、ユーザー全体の .agents にはコピーしません。",
+        "Windows, macOS, Linux 모두 파일 관리자나 편집기에서 같은 이름의 구조를 만드세요. data는 스킬 밖 실습 루트에 두어 재사용할 절차와 작업마다 달라지는 입력을 분리합니다. SKILL.md.txt로 저장하거나 같은 이름의 폴더를 한 겹 더 만들지 않았는지 확인하고 사용자 전역 .agents로 복사하지 마세요."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "codex-skill-lab/\n  data/tasks.json\n  .agents/skills/todo-summary/\n    SKILL.md\n    references/input-format.md\n    assets/report.md\n    scripts/count-tasks.mjs\n",
+      "label": [
+        "資料夾結構",
+        "Folder structure",
+        "フォルダー構成",
+        "폴더 구조"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在 data/tasks.json 貼上完整輸入。a 和 c 的標題都叫 Read，但它們是兩筆不同任務；用識別碼區分資料，不能用標題去重。這個設計會讓錯誤合併資料的技能立即暴露問題。completed 的 true／false 是 JSON 布林值，不能加引號變成字串，也不能在最後一筆後面多放逗號。",
+        "Paste the complete input into data/tasks.json. Records a and c share the title Read but represent distinct tasks; identify records by ID rather than deduplicating titles. This makes accidental merging visible. completed uses JSON booleans true/false, without quotation marks, and the final record has no trailing comma.",
+        "data/tasks.json に全入力を貼ります。a と c は同じ Read でも別タスクなので、タイトルで重複排除せず ID で区別します。誤った統合を検出するための設計です。completed は引用符なしの JSON 真偽値で、最後のレコード後に余分なカンマを付けません。",
+        "data/tasks.json에 전체 입력을 붙이세요. a와 c는 제목이 Read로 같아도 서로 다른 작업이므로 제목을 중복 제거하지 않고 ID로 구분합니다. 잘못 합치는 동작을 드러내기 위한 사례입니다. completed는 따옴표 없는 JSON 불리언이며 마지막 레코드 뒤에 쉼표를 추가하지 마세요."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "json",
+      "code": "[\n  {\"id\":\"a\",\"title\":\"Read\",\"completed\":true},\n  {\"id\":\"b\",\"title\":\"Build\",\"completed\":false},\n  {\"id\":\"c\",\"title\":\"Read\",\"completed\":true}\n]\n",
+      "label": [
+        "data/tasks.json",
+        "data/tasks.json",
+        "data/tasks.json",
+        "data/tasks.json"
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 2：寫出規格與報告範本",
+        "Step 2: Write the specification and report template",
+        "手順2：仕様と報告テンプレート",
+        "2단계: 규격과 보고서 템플릿"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在 references/input-format.md 放入以下規格。這是本練習訂定的資料契約，不是 Codex 自動要求所有 JSON 遵循的格式。它描述每一列需要哪些欄位、無效資料怎麼處理，以及禁止修改輸入的界線。若未來增加優先順序欄位，應同步更新規格、程式與測試，不讓三者各說各話。",
+        "Write this specification in references/input-format.md. It is the exercise's data contract, not a universal JSON requirement imposed by Codex. It defines required fields, invalid-input behavior and input preservation. If you later add priorities, update the specification, checker and tests together so they continue describing the same behavior.",
+        "references/input-format.md に次の仕様を書きます。教材独自の契約であり、Codex が全 JSON に強制する形式ではありません。必須項目、不正入力の扱い、入力を変更しない境界を定めます。将来優先度を加える場合、仕様、検査、テストを同時に更新します。",
+        "references/input-format.md에 다음 규격을 씁니다. 이 실습의 데이터 계약이며 Codex가 모든 JSON에 요구하는 형식은 아닙니다. 필수 필드, 잘못된 입력 처리, 원본 보존 범위를 정의합니다. 우선순위를 추가할 때는 규격, 검사기, 테스트를 함께 수정해 동작이 일치하도록 하세요."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "markdown",
+      "code": "# Task input contract\n\n- Input is a JSON array. An empty array is valid.\n- Each record has a nonempty string id, a nonempty string title,\n  and a boolean completed value.\n- IDs are unique. Repeated titles are allowed and remain separate.\n- Extra fields may be present; the summary ignores them.\n- Invalid input must fail; do not silently drop or repair records.\n- Read input only. Do not change, sort or overwrite the source file.\n- Report total, active and completed. total = active + completed.\n",
+      "label": [
+        "references/input-format.md",
+        "references/input-format.md",
+        "references/input-format.md",
+        "references/input-format.md"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "接著建立 assets/report.md。它保留固定欄位，讓不同次執行容易比較；尖括號是需要填寫的位置，不是已量測的結果。檔案還沒執行前，Exit code 與各數量都必須保持待填，不能因為範本看起來完整就把它當成報告。把範本和已完成報告分開，避免下一次把上次數字帶入新工作。",
+        "Create assets/report.md next. Stable fields make runs comparable; angle-bracketed text marks values to fill, not measured results. Leave the exit code and counts unresolved until execution. A complete-looking template is not a completed report. Keep the template separate from finished reports to prevent carrying yesterday's numbers into a new task.",
+        "次に assets/report.md を作ります。固定項目で実行間を比較し、山括弧は測定値ではなく記入箇所です。実行前は終了コードや件数を未記入とし、見た目が整ったテンプレートを完成報告と見なしません。前回の数値を持ち越さないよう完成報告と分けます。",
+        "다음으로 assets/report.md를 만듭니다. 고정 필드로 실행을 비교하며 꺾쇠괄호는 측정값이 아닌 입력할 자리입니다. 실행 전 종료 코드와 개수는 미확정 상태로 두세요. 양식이 완성되어 보여도 실행 보고서는 아닙니다. 이전 수치를 새 작업에 가져오지 않도록 완성 보고서와 템플릿을 분리하세요."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "markdown",
+      "code": "# Task summary\n\nInput: <relative input path>\nCommand: <exact command>\nExit code: <observed exit code>\nTotal: <observed total>\nActive: <observed active>\nCompleted: <observed completed>\nInput preserved: <verification and result>\nNot checked: <remaining checks>\n",
+      "label": [
+        "assets/report.md",
+        "assets/report.md",
+        "assets/report.md",
+        "assets/report.md"
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 3：建立可獨立驗證的程式",
+        "Step 3: Build an independently verifiable checker",
+        "手順3：単独で検証できるプログラム",
+        "3단계: 독립적으로 검증할 검사기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "把下面整段存進 scripts/count-tasks.mjs。程式只讀命令列指定的檔案，先驗證完整輸入才輸出統計。遇到格式錯誤、重複 ID 或型別錯誤，標準錯誤輸出會說明問題，退出碼為 1；成功時只有 JSON 結果，退出碼為 0。請先閱讀再執行，不把下載到 scripts 的任何檔案都視為已可信任。",
+        "Save the entire program as scripts/count-tasks.mjs. It reads only the argument file and validates all input before emitting counts. Malformed JSON, duplicate IDs or invalid field types produce an explanation on stderr and exit code 1. Success writes only JSON to stdout and exits 0. Read scripts before running them; placement inside a scripts folder does not establish trust.",
+        "全文を scripts/count-tasks.mjs に保存します。引数のファイルだけを読み、全入力を検証してから集計します。JSON 不正、ID 重複、型不正は stderr に理由を出し終了1、成功は stdout に JSON のみを出し終了0です。scripts 内にあるだけで信頼せず、実行前に内容を読みます。",
+        "전체 코드를 scripts/count-tasks.mjs에 저장합니다. 인수로 받은 파일만 읽고 전체 입력을 검증한 뒤 집계합니다. JSON 오류, 중복 ID, 필드 타입 오류는 stderr에 이유를 출력하고 종료 코드 1, 성공은 stdout에 JSON만 출력하고 종료 코드 0입니다. scripts 폴더에 있다는 이유로 신뢰하지 말고 먼저 읽으세요."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "import { readFileSync } from 'node:fs';\n\ntry {\n  if (process.argv.length !== 3) {\n    throw new Error('Usage: node count-tasks.mjs <input.json>');\n  }\n  const tasks = JSON.parse(readFileSync(process.argv[2], 'utf8'));\n  if (!Array.isArray(tasks)) throw new Error('Input must be an array');\n  const ids = new Set();\n  for (const [index, task] of tasks.entries()) {\n    if (!task || typeof task !== 'object'\n      || typeof task.id !== 'string' || !task.id.trim()\n      || typeof task.title !== 'string' || !task.title.trim()\n      || typeof task.completed !== 'boolean') {\n      throw new Error(`Invalid task at index ${index}`);\n    }\n    if (ids.has(task.id)) throw new Error(`Duplicate id: ${task.id}`);\n    ids.add(task.id);\n  }\n  const completed = tasks.filter(task => task.completed).length;\n  const result = { total: tasks.length, active: tasks.length - completed, completed };\n  process.stdout.write(JSON.stringify(result, null, 2) + '\\n');\n} catch (error) {\n  process.stderr.write((error instanceof Error ? error.message : String(error)) + '\\n');\n  process.exitCode = 1;\n}\n",
+      "label": [
+        "scripts/count-tasks.mjs",
+        "scripts/count-tasks.mjs",
+        "scripts/count-tasks.mjs",
+        "scripts/count-tasks.mjs"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在 Windows PowerShell、macOS Terminal 或 Linux 終端機切換至 codex-skill-lab 根目錄，先用 node --version 確認環境，再執行以下同一命令。相對路徑 data/tasks.json 以目前工作目錄為起點，並不是以 script 所在位置為起點；因此不要 cd 進 scripts 後照抄這個命令。這個差別也是技能要明確要求工作根目錄的原因。",
+        "In Windows PowerShell, macOS Terminal or a Linux terminal, enter the codex-skill-lab root, check node --version, then run this identical command. data/tasks.json resolves from the working directory, not the script's directory. Do not enter scripts and paste the command unchanged. The skill must make that working-directory requirement explicit.",
+        "Windows PowerShell、macOS Terminal、Linux 端末で codex-skill-lab ルートに移動し、node --version を確認して同じ命令を実行します。data/tasks.json はスクリプトの場所ではなく現在の作業場所が基準です。scripts に移動してそのまま貼らないでください。スキルにもこの基準を明記します。",
+        "Windows PowerShell, macOS Terminal, Linux 터미널에서 codex-skill-lab 루트로 이동하고 node --version을 확인한 뒤 같은 명령을 실행하세요. data/tasks.json은 스크립트 위치가 아니라 현재 작업 디렉터리를 기준으로 합니다. scripts 안으로 이동해서 그대로 실행하지 마세요. 스킬에도 이 기준을 명시해야 합니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "node .agents/skills/todo-summary/scripts/count-tasks.mjs data/tasks.json\n",
+      "label": [
+        "練習根目錄的終端機",
+        "Terminal at the practice root",
+        "実習ルートの端末",
+        "실습 루트의 터미널"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "json",
+      "code": "{\n  \"total\": 3,\n  \"active\": 1,\n  \"completed\": 2\n}\n",
+      "label": [
+        "固定資料的預期輸出",
+        "Expected output for the fixture",
+        "固定入力の期待出力",
+        "고정 입력의 예상 출력"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "這三個數字是固定範例的預期結果，你仍需查看自己終端機的實際輸出。PowerShell 用 $LASTEXITCODE 讀取剛結束程式的退出碼；macOS／Linux 用 echo $?。請在其他命令之前讀取，否則可能拿到另一個程式的狀態。重新開啟 data/tasks.json，確認三筆資料、順序、completed 值都保持原樣。",
+        "These are expected values for the fixed fixture; inspect your terminal's actual output. In PowerShell read $LASTEXITCODE; on macOS/Linux use echo $?. Read it before another command changes the last exit status. Reopen data/tasks.json and verify all three records, their order and completed values are unchanged.",
+        "数値は固定教材の期待値なので、自分の端末の出力を確認します。PowerShell は $LASTEXITCODE、macOS／Linux は echo $? を使い、別命令で状態が変わる前に読みます。data/tasks.json を開き直し、3件、順番、completed が変わっていないことを確認します。",
+        "숫자는 고정 입력의 예상값이므로 자신의 터미널 출력을 확인하세요. PowerShell은 $LASTEXITCODE, macOS/Linux는 echo $?를 쓰며 다른 명령이 상태를 바꾸기 전에 읽습니다. data/tasks.json을 다시 열어 세 레코드와 순서, completed 값이 그대로인지 확인하세요."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 4：把資源接回 SKILL.md",
+        "Step 4: Connect the resources in SKILL.md",
+        "手順4：SKILL.md から資源を参照",
+        "4단계: SKILL.md에서 자원 연결"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在 todo-summary/SKILL.md 寫入完整內容。資源連結都相對於這份 SKILL.md；執行命令則明確要求在練習根目錄操作。請注意兩種相對位置不同。先前的 todo-acceptance 技能仍可保留，這次使用獨立名稱 todo-summary，讓你能在選單辨識自己選到哪一個工作流程。",
+        "Write the complete SKILL.md under todo-summary. Resource links are relative to SKILL.md, while the execution command explicitly starts at the practice root. Distinguish these two bases. Keep the earlier todo-acceptance skill; the new name todo-summary lets you identify the intended workflow in the picker.",
+        "todo-summary/SKILL.md に全文を書きます。資源リンクは SKILL.md 基準、実行命令は実習ルート基準です。この2つを区別します。以前の todo-acceptance は残し、別名 todo-summary で選択した手順を識別します。",
+        "todo-summary/SKILL.md에 전체 내용을 씁니다. 자원 링크는 SKILL.md 기준이고 실행 명령은 실습 루트 기준입니다. 두 기준을 구분하세요. 이전 todo-acceptance는 유지하고 새 이름 todo-summary로 선택한 절차를 구분합니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "markdown",
+      "code": "---\nname: todo-summary\ndescription: Summarize a local task JSON array with verified counts. Use for task-count reports, not for editing tasks, website styling, or deployment.\n---\n\n# Todo summary\n\n1. Confirm the practice root and the exact input path with the user request.\n2. Read [the input contract](references/input-format.md).\n   If any required resource is missing or unreadable, stop and report it.\n3. Read [the checker](scripts/count-tasks.mjs) before running it.\n4. From the practice root, run:\n\n   ```sh\n   node .agents/skills/todo-summary/scripts/count-tasks.mjs data/tasks.json\n   ```\n\n   Replace the input argument only if the request names another input file.\n5. If the command fails, report the actual error. Do not guess counts or repair input.\n6. If it succeeds, use [the report template](assets/report.md) in the reply.\n7. Include the actual command, exit code and input-preservation check.\n   Say which checks were not performed. Do not claim browser testing.\n8. Do not edit source data, skill resources, or project code, and do not publish.\n",
+      "label": [
+        "SKILL.md",
+        "SKILL.md",
+        "SKILL.md",
+        "SKILL.md"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Codex 會先用技能名稱與描述判斷適用情境，需要使用時才讀完整指令。把穩定的短流程留在主檔，長規格與程式移到可直接找到的連結，比將所有文件整包塞入每次提示更容易維護。但分檔不是節省用量的保證；若工作每次都需要全部資源，仍會讀取它們，不應把「存在連結」宣稱成「程式已執行」。",
+        "Codex uses the name and description to identify relevant skills, then reads full instructions when selecting one. Keep a stable short workflow in the main file and directly link longer specifications and code. This improves maintainability; splitting files does not guarantee lower usage when a task needs every resource. A linked script is not evidence of execution.",
+        "Codex は名称と説明で適用を判断し、選択時に全文を読みます。主ファイルに安定した短い手順を置き、長い仕様とコードへ直接リンクすると保守しやすくなります。毎回全資源が必要なら分割による使用量削減は保証されません。リンクの存在は実行の証拠ではありません。",
+        "Codex는 이름과 설명으로 적합성을 판단하고 선택할 때 전체 지침을 읽습니다. 주 파일에는 안정적인 짧은 절차를 두고 긴 규격과 코드는 직접 연결하면 관리하기 쉽습니다. 매번 모든 자원이 필요하면 분리만으로 사용량이 줄어든다는 보장은 없습니다. 링크가 있다는 사실은 실행 증거가 아닙니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 5：使用技能並檢查交付",
+        "Step 5: Use the skill and verify delivery",
+        "手順5：使用と成果確認",
+        "5단계: 사용과 결과 검증"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "從練習根目錄開始新任務。桌面版在技能入口或輸入 @ 後選擇 todo-summary；CLI／IDE 用 /skills 或輸入 $ 選擇。先確認選單中的名稱與檔案位置，若沒有出現，檢查專案根目錄和副檔名，重新開啟 Codex 後再試。以下是給代理的自然語言需求，不是要在 PowerShell 執行的命令。",
+        "Start a new task from the practice root. On desktop select todo-summary through the skills entry or @ picker; in CLI/IDE use /skills or $. Check its name and file location. If absent, check the project root and filename extension, then restart Codex. The following is a natural-language request to the agent, not a PowerShell command.",
+        "実習ルートから新しいタスクを開始します。デスクトップは Skills 入口か @、CLI／IDE は /skills または $ で todo-summary を選び、名称と場所を確認します。見つからなければルート、拡張子を点検して Codex を再起動します。次は代理への依頼で、PowerShell 命令ではありません。",
+        "실습 루트에서 새 작업을 시작하세요. 데스크톱은 Skills 진입점이나 @, CLI/IDE는 /skills 또는 $로 todo-summary를 선택하고 이름과 파일 위치를 확인합니다. 없다면 루트와 확장자를 점검하고 Codex를 재시작합니다. 다음은 에이전트에게 보내는 요청이며 PowerShell 명령이 아닙니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "Use the selected todo-summary skill for data/tasks.json.\nRead the skill and its linked resources. Run the checker from this practice root.\nReturn the report in your reply only. Do not write a report file or modify any input.\nInclude actual output, exit code, and what you verified about input preservation.\n",
+      "label": [
+        "傳送給 Codex 的需求",
+        "Request to send to Codex",
+        "Codex に送る依頼",
+        "Codex에 보낼 요청"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "驗收時逐項看它是否讀取規格與腳本、是否真的執行指定命令、是否得到 3／1／2，以及是否說清楚輸入未變的確認方式。只回覆「已使用技能」還不夠；若沒有工具執行紀錄，就把執行狀態記為未確認。這份報告不需要寫入檔案，你可以直接將對話中的結果與剛才手動執行的輸出比較。",
+        "Verify that it read the contract and script, actually ran the command, obtained 3/1/2 and explained its input-preservation check. Saying it used the skill is insufficient; without execution evidence, mark execution unconfirmed. The report need not become a file: compare the reply directly with your manual terminal result.",
+        "仕様とスクリプトの読取り、実行記録、3／1／2、入力保持の確認方法を点検します。「スキルを使用した」だけでは不足し、実行記録がなければ未確認とします。報告はファイル化せず、返信を手動実行結果と比較できます。",
+        "규격과 스크립트를 읽었는지, 실제 실행 기록이 있는지, 3/1/2인지, 원본 보존 확인 방법을 설명했는지 검사합니다. 스킬을 사용했다는 말만으로는 부족하며 실행 기록이 없으면 미확인으로 기록하세요. 보고서를 파일로 만들 필요 없이 응답과 직접 실행 결과를 비교하면 됩니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "失敗案例、還原與下一步",
+        "Failures, restoration and next steps",
+        "失敗例、復元、次の学習",
+        "실패 사례, 복원과 다음 단계"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "把 input-format.md 暫時改名為 input-format.saved.md，再請它使用技能。預期應指出必要規格缺少並停止依此流程產生已驗證報告，而不是自行補寫一份規格。還原檔名後開新任務重試，避免前次對話裡已讀過的內容掩蓋缺檔。若仍產出數字，檢查是否明確標示尚未驗證，並把這次列為技能失敗案例。",
+        "Temporarily rename input-format.md to input-format.saved.md and request the skill. It should identify the missing required contract and stop short of a verified workflow report, rather than inventing a replacement. Restore the name and retry in a fresh task so previously read context cannot hide the missing file. If it produces counts anyway, inspect whether it labels them unverified and record a skill failure.",
+        "input-format.md を一時的に input-format.saved.md に改名し、スキルを依頼します。必須仕様の欠落を報告して検証済み報告の作成を止め、代替仕様を創作しないことが期待です。名称を戻して新規タスクで再試行し、過去の読取り文脈が欠落を隠さないようにします。数値を出した場合は未検証表示を確認し、失敗例として記録します。",
+        "input-format.md를 잠시 input-format.saved.md로 바꾸고 스킬을 요청하세요. 필요한 규격의 누락을 알리고 검증 완료 보고서를 중단해야 하며 대체 규격을 지어내면 안 됩니다. 이름을 복구하고 새 작업에서 재시도해 이전에 읽은 문맥이 누락을 가리지 않게 합니다. 수치를 출력했다면 미검증 표시를 확인하고 스킬 실패 사례로 기록하세요."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "若找不到 count-tasks.mjs，先分辨技能根目錄和工作根目錄是否混淆；若 total 變成 2，檢查是否錯誤合併同名標題；若 completed 字串仍通過，核對實際執行的腳本是否為這一版。不要直接重裝所有技能。保留原始輸入，針對缺檔、資料錯誤、路徑錯誤各做一次單獨修正，才能知道是哪個條件造成差異。",
+        "If the script is missing, distinguish skill root from working root. A total of 2 suggests same-title merging; accepted string completed values suggest a different checker version. Do not reinstall every skill. Preserve the original input and correct missing files, bad data and wrong paths separately so each change has an attributable effect.",
+        "スクリプト未発見はスキルルートと作業ルート、合計2件は同名統合、completed 文字列の受理は実行版の違いを確認します。全スキルを再導入せず、原入力を保持して欠落、データ不正、パス違いを一つずつ直し、原因を識別します。",
+        "스크립트를 못 찾으면 스킬 루트와 작업 루트를 구분하고, 합계 2이면 같은 제목을 합쳤는지, 문자열 completed가 통과하면 실행한 검사기 버전을 확인하세요. 모든 스킬을 재설치하지 말고 원본을 보존한 채 누락 파일, 잘못된 데이터, 경로 오류를 하나씩 수정해 원인을 구분합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "本篇以 Node.js 檢查器的可重現輸入輸出作為材料驗證；技能選單、自動觸發與代理是否遵從則要由你在自己的入口觀察，不能用腳本成功代替。下一篇[技能驗收與修正](article:codex-skill-testing)會補入空資料、重複 ID、型別錯誤及不應觸發的工作，並教你區分程式正確與技能使用正確。示意圖 1 是輸入與契約，2 是執行，3 是檢查報告。",
+        "This lesson verifies reproducible Node.js checker inputs and outputs. Observe skill selection, implicit activation and agent compliance in your own surface; script success does not establish those. [Skill testing and repair](article:codex-skill-testing) adds empty input, duplicate IDs, type errors and out-of-scope requests, separating checker correctness from correct skill use. Diagram 1 is input/contract, 2 execution and 3 report verification.",
+        "教材検証は Node.js 検査の再現可能な入出力です。選択、自動適用、代理の遵守は自分の入口で観察し、スクリプト成功で代替しません。次の[スキル検証と修正](article:codex-skill-testing)は空入力、ID 重複、型不正、対象外依頼を加え、プログラムの正しさと適切な使用を分けます。図1は入力と契約、2は実行、3は報告確認です。",
+        "이 글의 자료 검증은 Node.js 검사기의 재현 가능한 입출력입니다. 선택, 자동 활성화, 에이전트 준수는 자신의 환경에서 관찰해야 하며 스크립트 성공으로 대체하지 않습니다. 다음 [스킬 검증과 수정](article:codex-skill-testing)은 빈 입력, 중복 ID, 타입 오류, 범위 밖 요청을 추가해 코드 정확성과 올바른 사용을 구분합니다. 그림 1은 입력/계약, 2는 실행, 3은 보고서 확인입니다."
+      ]
+    }
+  ]
+}

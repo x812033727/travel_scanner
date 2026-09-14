@@ -24,9 +24,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -40,15 +46,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "IDE 是能編輯程式、瀏覽檔案與執行工具的工作介面；擴充套件把 Codex 放在旁邊，讓選取內容能直接成為上下文。它不會因為你只選取十行，就保證代理只能修改十行。任務範圍仍要在"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "需求提示詞",
-              "url": "https://mokaair.com/zh-TW/life/codex-prompting"
+              "kind": "life",
+              "slug": "codex-prompting"
             },
             {
               "type": "text",
@@ -71,15 +78,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Cursor、Windsurf 等相容編輯器也有官方列出的入口，但本篇以 VS Code 的可重現操作為主；Xcode 和 JetBrains 使用各自整合，不要將 VS Code 的安裝識別碼當成它們的設定步驟。Windows 的 VS Code 若開的是 WSL 視窗，先核對視窗環境與終端機路徑，所需工具須在"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "WSL 環境",
-              "url": "https://mokaair.com/zh-TW/life/codex-cli-linux-wsl"
+              "kind": "life",
+              "slug": "codex-cli-linux-wsl"
             },
             {
               "type": "text",
@@ -94,7 +102,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "下載"
@@ -116,6 +124,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "node --test core.test.mjs\n"
         },
@@ -130,6 +139,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Explain the selected visibleTasks function in core.mjs and the failing filter assertion in core.test.mjs. Do not edit yet. Identify which tasks should appear for All, Active and Completed, and quote the predicate that causes the mismatch. Confirm the working folder before answering.\n"
         },
@@ -144,6 +154,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Fix only the Completed filter in core.mjs so completed tasks appear. Keep the public function signatures and existing tests unchanged. Preserve All and Active behavior, task order, and input arrays. Run node --test core.test.mjs and report the actual result. Show the final diff and any remaining limitation.\n"
         },
@@ -153,6 +164,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },
@@ -171,15 +183,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "開本機預覽後新增 Read、Build，將 Read 勾為完成；All 應顯示兩項，Active 只有 Build，Completed 只有 Read。重新整理後再選 Completed，Read 仍應存在；清單為空時切換篩選也不應出現錯誤。預覽方式與三平臺命令見"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "第一個小專案",
-              "url": "https://mokaair.com/zh-TW/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -228,33 +241,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "想重做時只在練習副本把保留的 broken/core.mjs 複製回去，測試應再次出現原篩選失敗；這是成功復原故障起點。不要用整個專案的強制重置掩蓋其他未保存工作。本機已驗證 broken 的預期失敗、expected 的通過和參考畫面；沒有把參考版直接稱作擴充套件實際產生的結果。下一步看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "修 Bug 流程",
-              "url": "https://mokaair.com/zh-TW/life/codex-debugging"
+              "kind": "life",
+              "slug": "codex-debugging"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "測試與 Review",
-              "url": "https://mokaair.com/zh-TW/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
               "text": "與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Git 差異",
-              "url": "https://mokaair.com/zh-TW/life/codex-git-basics"
+              "kind": "life",
+              "slug": "codex-git-basics"
             },
             {
               "type": "text",
@@ -263,9 +279,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -315,9 +337,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -331,15 +359,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "IDE 是能编辑程式、浏览档案与执行工具的工作介面；扩充套件把 Codex 放在旁边，让选取内容能直接成为上下文。它不会因为你只选取十行，就保证代理只能修改十行。任务范围仍要在"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "需求提示词",
-              "url": "https://mokaair.com/zh-CN/life/codex-prompting"
+              "kind": "life",
+              "slug": "codex-prompting"
             },
             {
               "type": "text",
@@ -362,15 +391,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Cursor、Windsurf 等相容编辑器也有官方列出的入口，但本篇以 VS Code 的可重现操作为主；Xcode 和 JetBrains 使用各自整合，不要将 VS Code 的安装识别码当成它们的设定步骤。Windows 的 VS Code 若开的是 WSL 视窗，先核对视窗环境与终端机路径，所需工具须在"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "WSL 环境",
-              "url": "https://mokaair.com/zh-CN/life/codex-cli-linux-wsl"
+              "kind": "life",
+              "slug": "codex-cli-linux-wsl"
             },
             {
               "type": "text",
@@ -385,7 +415,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "下载"
@@ -407,6 +437,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "node --test core.test.mjs\n"
         },
@@ -421,6 +452,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Explain the selected visibleTasks function in core.mjs and the failing filter assertion in core.test.mjs. Do not edit yet. Identify which tasks should appear for All, Active and Completed, and quote the predicate that causes the mismatch. Confirm the working folder before answering.\n"
         },
@@ -435,6 +467,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Fix only the Completed filter in core.mjs so completed tasks appear. Keep the public function signatures and existing tests unchanged. Preserve All and Active behavior, task order, and input arrays. Run node --test core.test.mjs and report the actual result. Show the final diff and any remaining limitation.\n"
         },
@@ -444,6 +477,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },
@@ -462,15 +496,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "开本机预览后新增 Read、Build，将 Read 勾为完成；All 应显示两项，Active 只有 Build，Completed 只有 Read。重新整理后再选 Completed，Read 仍应存在；清单为空时切换筛选也不应出现错误。预览方式与三平台命令见"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "第一个小专案",
-              "url": "https://mokaair.com/zh-CN/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -519,33 +554,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "想重做时只在练习副本把保留的 broken/core.mjs 复制回去，测试应再次出现原筛选失败；这是成功复原故障起点。不要用整个专案的强制重置掩盖其他未保存工作。本机已验证 broken 的预期失败、expected 的通过和参考画面；没有把参考版直接称作扩充套件实际产生的结果。下一步看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "修 Bug 流程",
-              "url": "https://mokaair.com/zh-CN/life/codex-debugging"
+              "kind": "life",
+              "slug": "codex-debugging"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "测试与 Review",
-              "url": "https://mokaair.com/zh-CN/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
               "text": "与"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Git 差异",
-              "url": "https://mokaair.com/zh-CN/life/codex-git-basics"
+              "kind": "life",
+              "slug": "codex-git-basics"
             },
             {
               "type": "text",
@@ -554,9 +592,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -606,9 +650,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -622,15 +672,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "An IDE combines editing, files and tools. The extension places Codex beside them so selections can become context. Selecting ten lines does not restrict the agent to editing only those lines. State the task scope in your "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "prompt",
-              "url": "https://mokaair.com/en/life/codex-prompting"
+              "kind": "life",
+              "slug": "codex-prompting"
             },
             {
               "type": "text",
@@ -653,15 +704,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Official documentation also lists compatible editors such as Cursor and Windsurf; this walkthrough uses VS Code. Xcode and JetBrains use their own integrations, so the VS Code extension identifier is not their setup procedure. In a Windows VS Code WSL window, verify the remote environment and terminal path; required tools must be available in "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "WSL",
-              "url": "https://mokaair.com/en/life/codex-cli-linux-wsl"
+              "kind": "life",
+              "slug": "codex-cli-linux-wsl"
             },
             {
               "type": "text",
@@ -676,7 +728,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Download the "
@@ -698,6 +750,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "node --test core.test.mjs\n"
         },
@@ -712,6 +765,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Explain the selected visibleTasks function in core.mjs and the failing filter assertion in core.test.mjs. Do not edit yet. Identify which tasks should appear for All, Active and Completed, and quote the predicate that causes the mismatch. Confirm the working folder before answering.\n"
         },
@@ -726,6 +780,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Fix only the Completed filter in core.mjs so completed tasks appear. Keep the public function signatures and existing tests unchanged. Preserve All and Active behavior, task order, and input arrays. Run node --test core.test.mjs and report the actual result. Show the final diff and any remaining limitation.\n"
         },
@@ -735,6 +790,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },
@@ -753,15 +809,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "In local preview, add Read and Build and complete Read. All shows both, Active only Build, Completed only Read. After reload, selecting Completed still shows Read; filters on an empty list should not error. See "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "your first project",
-              "url": "https://mokaair.com/en/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -810,33 +867,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "To repeat, restore only retained broken/core.mjs into the practice copy; the original filter failure should return. That confirms restoration of the starting defect. Avoid a project-wide forced reset that discards other work. Local checks establish the intended broken failure, passing expected code and reference UI, not extension-generated output. Continue with "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "debugging",
-              "url": "https://mokaair.com/en/life/codex-debugging"
+              "kind": "life",
+              "slug": "codex-debugging"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "testing and review",
-              "url": "https://mokaair.com/en/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
               "text": " and "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Git diffs",
-              "url": "https://mokaair.com/en/life/codex-git-basics"
+              "kind": "life",
+              "slug": "codex-git-basics"
             },
             {
               "type": "text",
@@ -845,9 +905,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -897,9 +963,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -913,15 +985,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "IDE は編集、ファイル閲覧、ツール実行の作業画面です。拡張により選択箇所を Codex の文脈として渡せますが、十行を選んでも変更可能範囲が十行に制限されるわけではありません。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "依頼文",
-              "url": "https://mokaair.com/ja/life/codex-prompting"
+              "kind": "life",
+              "slug": "codex-prompting"
             },
             {
               "type": "text",
@@ -944,15 +1017,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "公式には Cursor、Windsurf などもありますが、ここでは VS Code で再現します。Xcode と JetBrains は独自の統合で、VS Code の識別子をその設定手順として使いません。Windows の WSL ウィンドウでは環境表示と端末パスを照合し、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "WSL",
-              "url": "https://mokaair.com/ja/life/codex-cli-linux-wsl"
+              "kind": "life",
+              "slug": "codex-cli-linux-wsl"
             },
             {
               "type": "text",
@@ -967,7 +1041,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "link",
               "text": "Small Steps の材料",
@@ -985,6 +1059,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "node --test core.test.mjs\n"
         },
@@ -999,6 +1074,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Explain the selected visibleTasks function in core.mjs and the failing filter assertion in core.test.mjs. Do not edit yet. Identify which tasks should appear for All, Active and Completed, and quote the predicate that causes the mismatch. Confirm the working folder before answering.\n"
         },
@@ -1013,6 +1089,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Fix only the Completed filter in core.mjs so completed tasks appear. Keep the public function signatures and existing tests unchanged. Preserve All and Active behavior, task order, and input arrays. Run node --test core.test.mjs and report the actual result. Show the final diff and any remaining limitation.\n"
         },
@@ -1022,6 +1099,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },
@@ -1040,15 +1118,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "ローカルで Read と Build を追加し Read を完了にします。All は二つ、Active は Build、Completed は Read です。再読み込み後も Completed に Read があり、空一覧の切り替えもエラーなしを確認します。各 OS の起動は"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "最初のプロジェクト",
-              "url": "https://mokaair.com/ja/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -1097,33 +1176,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "再練習では練習コピーの core.mjs だけを broken から戻し、元の失敗が再現することを確認します。ほかの作業を失う全体リセットは使いません。本機では broken の意図した失敗、expected の成功、参考画面を確認しましたが、拡張が生成した結果とはしていません。次は"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "デバッグ",
-              "url": "https://mokaair.com/ja/life/codex-debugging"
+              "kind": "life",
+              "slug": "codex-debugging"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "テストとレビュー",
-              "url": "https://mokaair.com/ja/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Git 差分",
-              "url": "https://mokaair.com/ja/life/codex-git-basics"
+              "kind": "life",
+              "slug": "codex-git-basics"
             },
             {
               "type": "text",
@@ -1132,9 +1214,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1184,9 +1272,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1200,15 +1294,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "IDE는 편집, 파일 탐색, 도구 실행을 모은 작업 화면입니다. 확장은 선택 영역을 Codex 맥락으로 전달하지만 열 줄 선택이 수정 권한을 열 줄로 제한하지는 않습니다. "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "요청문",
-              "url": "https://mokaair.com/ko/life/codex-prompting"
+              "kind": "life",
+              "slug": "codex-prompting"
             },
             {
               "type": "text",
@@ -1231,15 +1326,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "공식 문서는 Cursor와 Windsurf도 안내하지만 이 실습은 VS Code를 사용합니다. Xcode와 JetBrains는 자체 통합이므로 VS Code 식별자를 설정 절차로 쓰지 않습니다. Windows의 WSL 창에서는 환경 표시와 터미널 경로를 확인하고 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "WSL",
-              "url": "https://mokaair.com/ko/life/codex-cli-linux-wsl"
+              "kind": "life",
+              "slug": "codex-cli-linux-wsl"
             },
             {
               "type": "text",
@@ -1254,7 +1350,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "link",
               "text": "Small Steps 자료",
@@ -1272,6 +1368,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "node --test core.test.mjs\n"
         },
@@ -1286,6 +1383,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Explain the selected visibleTasks function in core.mjs and the failing filter assertion in core.test.mjs. Do not edit yet. Identify which tasks should appear for All, Active and Completed, and quote the predicate that causes the mismatch. Confirm the working folder before answering.\n"
         },
@@ -1300,6 +1398,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Fix only the Completed filter in core.mjs so completed tasks appear. Keep the public function signatures and existing tests unchanged. Preserve All and Active behavior, task order, and input arrays. Run node --test core.test.mjs and report the actual result. Show the final diff and any remaining limitation.\n"
         },
@@ -1309,6 +1408,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },
@@ -1327,15 +1427,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "로컬 미리 보기에서 Read와 Build를 추가하고 Read를 완료합니다. All은 둘 다, Active는 Build, Completed는 Read입니다. 새로고침 후에도 Completed에 Read가 있고 빈 목록 필터도 오류가 없어야 합니다. OS별 실행은 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "첫 프로젝트",
-              "url": "https://mokaair.com/ko/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -1384,33 +1485,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "다시 연습하려면 보관한 broken/core.mjs만 실습 사본에 복원해 원래 필터 실패가 돌아오는지 확인합니다. 다른 작업을 지우는 전체 강제 초기화는 하지 않습니다. 로컬 검증은 broken의 의도된 실패, expected의 통과, 참조 화면이며 확장이 생성한 결과라고 주장하지 않습니다. 다음은 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "디버깅",
-              "url": "https://mokaair.com/ko/life/codex-debugging"
+              "kind": "life",
+              "slug": "codex-debugging"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "테스트와 리뷰",
-              "url": "https://mokaair.com/ko/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Git 차이",
-              "url": "https://mokaair.com/ko/life/codex-git-basics"
+              "kind": "life",
+              "slug": "codex-git-basics"
             },
             {
               "type": "text",
@@ -1419,9 +1523,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

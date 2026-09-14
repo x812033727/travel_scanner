@@ -23,9 +23,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -88,15 +94,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "主要用圖形介面、希望直接管理多個任務，可先走"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "桌面版入門",
-              "url": "https://mokaair.com/zh-TW/life/codex-desktop-getting-started"
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
             },
             {
               "type": "text",
@@ -106,24 +113,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "平常會在終端機行動資料夾、執行測試，或準備把工作接到指令碼，就選 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI",
-              "url": "https://mokaair.com/zh-TW/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
               "text": "。Windows 原生與 WSL 是不同環境，工具安裝、家目錄與路徑要分別確認；macOS 與 Linux 也不能把使用者路徑直接互貼。還不熟終端機，可先讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "路徑與終端機",
-              "url": "https://mokaair.com/zh-TW/life/codex-terminal-paths"
+              "kind": "life",
+              "slug": "codex-terminal-paths"
             },
             {
               "type": "text",
@@ -133,15 +142,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "已經在官方支援的編輯器內寫程式，希望把目前檔案或選取區段帶入，就讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "IDE 擴充",
-              "url": "https://mokaair.com/zh-TW/life/codex-ide-getting-started"
+              "kind": "life",
+              "slug": "codex-ide-getting-started"
             },
             {
               "type": "text",
@@ -156,15 +166,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "需要把 GitHub 儲存庫的工作交給配置好的遠端環境，再回來看差異或 PR，可走"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "雲端任務",
-              "url": "https://mokaair.com/zh-TW/life/codex-cloud-tasks-github"
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
             },
             {
               "type": "text",
@@ -174,15 +185,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "外出時追蹤或接續電腦工作，可以考慮"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "手機 Remote",
-              "url": "https://mokaair.com/zh-TW/life/codex-mobile-guide"
+              "kind": "life",
+              "slug": "codex-mobile-guide"
             },
             {
               "type": "text",
@@ -201,6 +213,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Read location.txt without changing files.\nReport the exact marker, working directory, and where commands for this task run.\nDistinguish verified facts from anything you cannot determine.\nDo not install tools, create files, or change settings.\n"
         },
@@ -227,7 +240,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "平臺支援依 2026-09-14 的"
@@ -278,27 +291,30 @@
               "text": "查證；這是檔案核對與原創練習設計，不宣稱逐一實測所有裝置。下一步選擇"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "終端機基礎",
-              "url": "https://mokaair.com/zh-TW/life/codex-terminal-paths"
+              "kind": "life",
+              "slug": "codex-terminal-paths"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "第一個小專案",
-              "url": "https://mokaair.com/zh-TW/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
               "text": "或"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "跨裝置工作",
-              "url": "https://mokaair.com/zh-TW/life/codex-cross-device-workflow"
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
             },
             {
               "type": "text",
@@ -307,9 +323,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -367,9 +389,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -432,15 +460,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "If you prefer a graphical workspace and managing several tasks, start with "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "desktop setup",
-              "url": "https://mokaair.com/en/life/codex-desktop-getting-started"
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
             },
             {
               "type": "text",
@@ -450,24 +479,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Choose "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI",
-              "url": "https://mokaair.com/en/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
               "text": " if you already navigate folders and run tests in a terminal, or intend to connect work to scripts. Native Windows and WSL are different environments with separate installations, home directories and paths. User paths are not interchangeable between macOS and Linux either. If terminals are unfamiliar, begin with "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "terminal paths",
-              "url": "https://mokaair.com/en/life/codex-terminal-paths"
+              "kind": "life",
+              "slug": "codex-terminal-paths"
             },
             {
               "type": "text",
@@ -477,15 +508,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "If you already code in an officially supported editor and want to include an open file or selection, use the "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "IDE extension",
-              "url": "https://mokaair.com/en/life/codex-ide-getting-started"
+              "kind": "life",
+              "slug": "codex-ide-getting-started"
             },
             {
               "type": "text",
@@ -500,15 +532,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Use "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "cloud tasks",
-              "url": "https://mokaair.com/en/life/codex-cloud-tasks-github"
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
             },
             {
               "type": "text",
@@ -518,15 +551,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Consider "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "mobile Remote",
-              "url": "https://mokaair.com/en/life/codex-mobile-guide"
+              "kind": "life",
+              "slug": "codex-mobile-guide"
             },
             {
               "type": "text",
@@ -545,6 +579,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Read location.txt without changing files.\nReport the exact marker, working directory, and where commands for this task run.\nDistinguish verified facts from anything you cannot determine.\nDo not install tools, create files, or change settings.\n"
         },
@@ -571,7 +606,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Platform support was checked on 2026-09-14 against "
@@ -622,27 +657,30 @@
               "text": " documentation. This is documentation verification and an original exercise, not a claim of testing every device. Continue with "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "terminal basics",
-              "url": "https://mokaair.com/en/life/codex-terminal-paths"
+              "kind": "life",
+              "slug": "codex-terminal-paths"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "your first project",
-              "url": "https://mokaair.com/en/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
               "text": " or "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "cross-device work",
-              "url": "https://mokaair.com/en/life/codex-cross-device-workflow"
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
             },
             {
               "type": "text",
@@ -651,9 +689,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -711,9 +755,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -776,15 +826,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "GUI と複数タスクの管理を使いたいなら"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "デスクトップ入門",
-              "url": "https://mokaair.com/ja/life/codex-desktop-getting-started"
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
             },
             {
               "type": "text",
@@ -794,24 +845,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "端末でフォルダー移動やテストを行う、またはスクリプトに接続したいなら "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI",
-              "url": "https://mokaair.com/ja/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
               "text": "を選びます。Windows ネイティブと WSL は別環境なのでインストール、ホーム、パスを分けて確認します。macOS と Linux のユーザーパスもそのまま流用しません。端末に不慣れなら"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "パスと端末",
-              "url": "https://mokaair.com/ja/life/codex-terminal-paths"
+              "kind": "life",
+              "slug": "codex-terminal-paths"
             },
             {
               "type": "text",
@@ -821,15 +874,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "対応エディターで作業中のファイルや選択範囲を渡したいなら "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "IDE 拡張",
-              "url": "https://mokaair.com/ja/life/codex-ide-getting-started"
+              "kind": "life",
+              "slug": "codex-ide-getting-started"
             },
             {
               "type": "text",
@@ -844,15 +898,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "GitHub リポジトリを設定済みの遠隔環境で作業させ、差分や PR を確認したいなら"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "クラウドタスク",
-              "url": "https://mokaair.com/ja/life/codex-cloud-tasks-github"
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
             },
             {
               "type": "text",
@@ -862,15 +917,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "外出先でコンピューターの作業を追跡・継続するなら"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "モバイル Remote",
-              "url": "https://mokaair.com/ja/life/codex-mobile-guide"
+              "kind": "life",
+              "slug": "codex-mobile-guide"
             },
             {
               "type": "text",
@@ -889,6 +945,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Read location.txt without changing files.\nReport the exact marker, working directory, and where commands for this task run.\nDistinguish verified facts from anything you cannot determine.\nDo not install tools, create files, or change settings.\n"
         },
@@ -915,7 +972,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "2026-09-14 に"
@@ -966,27 +1023,30 @@
               "text": "の公式文書で対応を確認しました。文書確認と独自教材の設計であり全端末の実機試験ではありません。次は"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "端末の基本",
-              "url": "https://mokaair.com/ja/life/codex-terminal-paths"
+              "kind": "life",
+              "slug": "codex-terminal-paths"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "最初のプロジェクト",
-              "url": "https://mokaair.com/ja/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "端末間の作業",
-              "url": "https://mokaair.com/ja/life/codex-cross-device-workflow"
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
             },
             {
               "type": "text",
@@ -995,9 +1055,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1055,9 +1121,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1120,15 +1192,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "그래픽 화면과 여러 작업 관리가 편하다면 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "데스크톱 입문",
-              "url": "https://mokaair.com/ko/life/codex-desktop-getting-started"
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
             },
             {
               "type": "text",
@@ -1138,24 +1211,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "터미널에서 폴더를 이동하거나 테스트를 실행하고 스크립트와 연결하려면 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI",
-              "url": "https://mokaair.com/ko/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
               "text": "를 선택하세요. Windows 네이티브와 WSL은 설치, 홈 디렉터리, 경로가 다른 환경입니다. macOS와 Linux의 사용자 경로도 그대로 바꿔 쓸 수는 없습니다. 터미널이 낯설면 두 셸을 한꺼번에 배우기보다 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "터미널과 경로",
-              "url": "https://mokaair.com/ko/life/codex-terminal-paths"
+              "kind": "life",
+              "slug": "codex-terminal-paths"
             },
             {
               "type": "text",
@@ -1165,15 +1240,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "공식 지원 편집기에서 현재 파일이나 선택 영역을 전달하려면 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "IDE 확장",
-              "url": "https://mokaair.com/ko/life/codex-ide-getting-started"
+              "kind": "life",
+              "slug": "codex-ide-getting-started"
             },
             {
               "type": "text",
@@ -1188,15 +1264,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "GitHub 저장소를 구성된 원격 환경에서 작업하게 한 뒤 차이 또는 PR을 검토하려면 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "클라우드 작업",
-              "url": "https://mokaair.com/ko/life/codex-cloud-tasks-github"
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
             },
             {
               "type": "text",
@@ -1206,15 +1283,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "외출 중 컴퓨터 작업을 확인하거나 이어 가려면 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "모바일 Remote",
-              "url": "https://mokaair.com/ko/life/codex-mobile-guide"
+              "kind": "life",
+              "slug": "codex-mobile-guide"
             },
             {
               "type": "text",
@@ -1233,6 +1311,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Read location.txt without changing files.\nReport the exact marker, working directory, and where commands for this task run.\nDistinguish verified facts from anything you cannot determine.\nDo not install tools, create files, or change settings.\n"
         },
@@ -1259,7 +1338,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "2026-09-14에 "
@@ -1310,27 +1389,30 @@
               "text": " 공식 문서로 지원을 확인했습니다. 문서 검증과 직접 만든 실습이며 모든 기기를 테스트했다는 뜻은 아닙니다. 다음으로 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "터미널 기초",
-              "url": "https://mokaair.com/ko/life/codex-terminal-paths"
+              "kind": "life",
+              "slug": "codex-terminal-paths"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "첫 프로젝트",
-              "url": "https://mokaair.com/ko/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "기기 간 작업",
-              "url": "https://mokaair.com/ko/life/codex-cross-device-workflow"
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
             },
             {
               "type": "text",
@@ -1339,9 +1421,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1399,9 +1487,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1464,15 +1558,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "主要用图形介面、希望直接管理多个任务，可先走"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "桌面版入门",
-              "url": "https://mokaair.com/zh-CN/life/codex-desktop-getting-started"
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
             },
             {
               "type": "text",
@@ -1482,24 +1577,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "平常会在终端机行动资料夹、执行测试，或准备把工作接到指令码，就选 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI",
-              "url": "https://mokaair.com/zh-CN/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
               "text": "。Windows 原生与 WSL 是不同环境，工具安装、家目录与路径要分别确认；macOS 与 Linux 也不能把使用者路径直接互贴。还不熟终端机，可先读"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "路径与终端机",
-              "url": "https://mokaair.com/zh-CN/life/codex-terminal-paths"
+              "kind": "life",
+              "slug": "codex-terminal-paths"
             },
             {
               "type": "text",
@@ -1509,15 +1606,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "已经在官方支援的编辑器内写程式，希望把目前档案或选取区段带入，就读 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "IDE 扩充",
-              "url": "https://mokaair.com/zh-CN/life/codex-ide-getting-started"
+              "kind": "life",
+              "slug": "codex-ide-getting-started"
             },
             {
               "type": "text",
@@ -1532,15 +1630,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "需要把 GitHub 储存库的工作交给配置好的远端环境，再回来看差异或 PR，可走"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "云端任务",
-              "url": "https://mokaair.com/zh-CN/life/codex-cloud-tasks-github"
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
             },
             {
               "type": "text",
@@ -1550,15 +1649,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "外出时追踪或接续电脑工作，可以考虑"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "手机 Remote",
-              "url": "https://mokaair.com/zh-CN/life/codex-mobile-guide"
+              "kind": "life",
+              "slug": "codex-mobile-guide"
             },
             {
               "type": "text",
@@ -1577,6 +1677,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Read location.txt without changing files.\nReport the exact marker, working directory, and where commands for this task run.\nDistinguish verified facts from anything you cannot determine.\nDo not install tools, create files, or change settings.\n"
         },
@@ -1603,7 +1704,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "平台支援依 2026-09-14 的"
@@ -1654,27 +1755,30 @@
               "text": "查证；这是档案核对与原创练习设计，不宣称逐一实测所有装置。下一步选择"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "终端机基础",
-              "url": "https://mokaair.com/zh-CN/life/codex-terminal-paths"
+              "kind": "life",
+              "slug": "codex-terminal-paths"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "第一个小专案",
-              "url": "https://mokaair.com/zh-CN/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
               "text": "或"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "跨装置工作",
-              "url": "https://mokaair.com/zh-CN/life/codex-cross-device-workflow"
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
             },
             {
               "type": "text",
@@ -1683,9 +1787,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

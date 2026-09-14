@@ -1,32 +1,26 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { publishedSeriesLinks, lessons } from "@/lib/codex-learning";
+import { learningEntries } from "@/lib/codex-learning";
 import { getLearningPublication } from "@/lib/codex-learning/server";
-import type { GuideSummary } from "@/lib/guides";
 
-const mocks = vi.hoisted(() => ({ list: vi.fn() }));
-vi.mock("@/lib/guides.server", () => ({ getGuideList: mocks.list }));
+const mocks = vi.hoisted(() => ({ series: vi.fn() }));
+vi.mock("@/lib/guides.server", () => ({ getGuideSeries: mocks.series }));
 beforeEach(() => vi.clearAllMocks());
-const row = { slug: lessons[0].slug, kind: "life" } as GuideSummary;
-describe("publication-aware series links", () => {
-  it("finds a tutorial beyond the first page", async () => {
-    mocks.list.mockResolvedValueOnce({ articles: [], next_cursor: "second", available: true })
-      .mockResolvedValueOnce({ articles: [row], next_cursor: null, available: true });
-    expect(await getLearningPublication("en")).toEqual({ articles: [row], available: true });
-    expect(mocks.list).toHaveBeenLastCalledWith("en", { kind: "life", cursor: "second" }, 50);
+
+describe("shared publication boundary", () => {
+  it("uses the requested locale and only published API titles", async () => {
+    const row = { slug: "codex-beginner-guide", kind: "life", title: "Live title", description: "Live description" };
+    mocks.series.mockResolvedValue({ entries: [row] });
+    const publication = await getLearningPublication("ja");
+    expect(mocks.series).toHaveBeenCalledWith("codex", "ja");
+    const entries = learningEntries("ja", publication.articles);
+    expect(entries.filter(entry => entry.published)).toHaveLength(1);
+    expect(entries[0].title).toBe("Live title");
+    expect(entries[0].description).toBe("Live description");
   });
-  it("fails closed if a later page fails or a cursor loops", async () => {
-    mocks.list.mockResolvedValueOnce({ articles: [row], next_cursor: "a", available: true })
-      .mockResolvedValueOnce({ available: false });
-    expect(await getLearningPublication("ja")).toEqual({ articles: [], available: false });
-    mocks.list.mockResolvedValue({ articles: [], next_cursor: "a", available: true });
-    expect(await getLearningPublication("ko")).toEqual({ articles: [], available: false });
-  });
-  it("keeps withdrawn inline text and external links, preserving published locale", () => {
-    const blocks = publishedSeriesLinks([{ type: "rich_paragraph", spans: [
-      { type: "link", text: "Read", url: `https://mokaair.com/en/life/${row.slug}` },
-      { type: "link", text: "unpublished", url: "https://mokaair.com/en/life/codex-agents-md" },
-      { type: "link", text: "source", url: "https://learn.chatgpt.com/docs/app" },
-    ] }], "en", [row]);
-    expect(blocks[0]).toMatchObject({ spans: [{ type: "link" }, { type: "text", text: "unpublished" }, { type: "link" }] });
+  it("renders no published links when the shared API is unavailable", async () => {
+    mocks.series.mockResolvedValue(null);
+    const publication = await getLearningPublication("ko");
+    expect(publication).toEqual({ articles: [], available: false });
+    expect(learningEntries("ko", publication.articles).every(entry => !entry.published)).toBe(true);
   });
 });

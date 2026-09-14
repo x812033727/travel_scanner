@@ -24,9 +24,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -53,6 +59,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "sh",
           "code": "git switch -c codex/review-lab\nnode --test core.test.mjs\n"
         },
@@ -62,6 +69,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "sh",
           "code": "git diff -- core.mjs\nnode --test core.test.mjs\n"
         },
@@ -80,6 +88,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Review the uncommitted change only. All must preserve task order and must not mutate the input array. Existing tests pass, so inspect their coverage rather than treating that as proof.\nFor each finding, state the file/line, trigger, concrete impact and a verification case. Do not edit, stage, commit or push during this review. If you find no issue, report what you examined and any uncertainty.\n"
         },
@@ -98,11 +107,13 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "javascript",
           "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst makeTasks = () => [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\n\ntest(\"All preserves original order\", () => {\n  assert.deepEqual(visibleTasks(makeTasks(), \"all\").map((task) => task.id), [\"a\", \"b\"]);\n});\n\ntest(\"All does not attempt to mutate the input array\", () => {\n  const tasks = Object.freeze(makeTasks());\n  assert.doesNotThrow(() => visibleTasks(tasks, \"all\"));\n});\n"
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "sh",
           "code": "node --test core.test.mjs review.test.mjs\n"
         },
@@ -121,11 +132,13 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "sh",
           "code": "git add review.test.mjs\ngit diff --cached --name-only\ngit diff --cached -- review.test.mjs\ngit commit -m \"Test All filter order and input preservation\"\ngit diff --stat main...HEAD\ngit status --short\n"
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "markdown",
           "code": "Title: Add regression coverage for All filter ordering and input preservation\n\nThe existing filter tests cover Active and Completed but miss All ordering and input mutation. Add two focused cases so a reversing implementation is rejected. Production code is unchanged.\n\nValidation: node --test core.test.mjs review.test.mjs — 5 passed, if actually run.\nThe deliberate reverse variant fails both new tests.\nBrowser checks: NOT RUN in this test-only change unless separately verified.\nDeployment: not performed.\n"
         },
@@ -135,6 +148,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "git remote add origin YOUR_REPOSITORY_URL\ngit remote -v\ngit push -u origin main\ngit push -u origin codex/review-lab\n"
         },
@@ -185,9 +199,15 @@
           "text": "驗收要保留原三測試漏失問題、新兩測試抓到問題、最終五測試通過的對照，以及只有測試檔的提交。想重做就在同一獨立練習重新引入 reverse，確認失敗後再恢復，不刪除整個 Git 庫或改寫公開歷史。若已開練習 PR 而決定不合併，可在 GitHub 關閉它並保留討論。圖中 1 是測試證據，2 是審查判斷，3 是可核對交付；本篇未替你執行模型 Review、GitHub 推送或公開操作。"
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -237,9 +257,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -266,6 +292,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "sh",
           "code": "git switch -c codex/review-lab\nnode --test core.test.mjs\n"
         },
@@ -275,6 +302,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "sh",
           "code": "git diff -- core.mjs\nnode --test core.test.mjs\n"
         },
@@ -293,6 +321,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Review the uncommitted change only. All must preserve task order and must not mutate the input array. Existing tests pass, so inspect their coverage rather than treating that as proof.\nFor each finding, state the file/line, trigger, concrete impact and a verification case. Do not edit, stage, commit or push during this review. If you find no issue, report what you examined and any uncertainty.\n"
         },
@@ -311,11 +340,13 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "javascript",
           "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst makeTasks = () => [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\n\ntest(\"All preserves original order\", () => {\n  assert.deepEqual(visibleTasks(makeTasks(), \"all\").map((task) => task.id), [\"a\", \"b\"]);\n});\n\ntest(\"All does not attempt to mutate the input array\", () => {\n  const tasks = Object.freeze(makeTasks());\n  assert.doesNotThrow(() => visibleTasks(tasks, \"all\"));\n});\n"
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "sh",
           "code": "node --test core.test.mjs review.test.mjs\n"
         },
@@ -334,11 +365,13 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "sh",
           "code": "git add review.test.mjs\ngit diff --cached --name-only\ngit diff --cached -- review.test.mjs\ngit commit -m \"Test All filter order and input preservation\"\ngit diff --stat main...HEAD\ngit status --short\n"
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "markdown",
           "code": "Title: Add regression coverage for All filter ordering and input preservation\n\nThe existing filter tests cover Active and Completed but miss All ordering and input mutation. Add two focused cases so a reversing implementation is rejected. Production code is unchanged.\n\nValidation: node --test core.test.mjs review.test.mjs — 5 passed, if actually run.\nThe deliberate reverse variant fails both new tests.\nBrowser checks: NOT RUN in this test-only change unless separately verified.\nDeployment: not performed.\n"
         },
@@ -348,6 +381,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "git remote add origin YOUR_REPOSITORY_URL\ngit remote -v\ngit push -u origin main\ngit push -u origin codex/review-lab\n"
         },
@@ -398,9 +432,15 @@
           "text": "验收要保留原三测试漏失问题、新两测试抓到问题、最终五测试通过的对照，以及只有测试档的提交。想重做就在同一独立练习重新引入 reverse，确认失败后再恢复，不删除整个 Git 库或改写公开历史。若已开练习 PR 而决定不合并，可在 GitHub 关闭它并保留讨论。图中 1 是测试证据，2 是审查判断，3 是可核对交付；本篇未替你执行模型 Review、GitHub 推送或公开操作。"
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -450,9 +490,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -479,6 +525,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "sh",
           "code": "git switch -c codex/review-lab\nnode --test core.test.mjs\n"
         },
@@ -488,6 +535,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "sh",
           "code": "git diff -- core.mjs\nnode --test core.test.mjs\n"
         },
@@ -506,6 +554,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Review the uncommitted change only. All must preserve task order and must not mutate the input array. Existing tests pass, so inspect their coverage rather than treating that as proof.\nFor each finding, state the file/line, trigger, concrete impact and a verification case. Do not edit, stage, commit or push during this review. If you find no issue, report what you examined and any uncertainty.\n"
         },
@@ -524,11 +573,13 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "javascript",
           "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst makeTasks = () => [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\n\ntest(\"All preserves original order\", () => {\n  assert.deepEqual(visibleTasks(makeTasks(), \"all\").map((task) => task.id), [\"a\", \"b\"]);\n});\n\ntest(\"All does not attempt to mutate the input array\", () => {\n  const tasks = Object.freeze(makeTasks());\n  assert.doesNotThrow(() => visibleTasks(tasks, \"all\"));\n});\n"
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "sh",
           "code": "node --test core.test.mjs review.test.mjs\n"
         },
@@ -547,11 +598,13 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "sh",
           "code": "git add review.test.mjs\ngit diff --cached --name-only\ngit diff --cached -- review.test.mjs\ngit commit -m \"Test All filter order and input preservation\"\ngit diff --stat main...HEAD\ngit status --short\n"
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "markdown",
           "code": "Title: Add regression coverage for All filter ordering and input preservation\n\nThe existing filter tests cover Active and Completed but miss All ordering and input mutation. Add two focused cases so a reversing implementation is rejected. Production code is unchanged.\n\nValidation: node --test core.test.mjs review.test.mjs — 5 passed, if actually run.\nThe deliberate reverse variant fails both new tests.\nBrowser checks: NOT RUN in this test-only change unless separately verified.\nDeployment: not performed.\n"
         },
@@ -561,6 +614,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "git remote add origin YOUR_REPOSITORY_URL\ngit remote -v\ngit push -u origin main\ngit push -u origin codex/review-lab\n"
         },
@@ -611,9 +665,15 @@
           "text": "Retain the old three tests missing the bug, new two detecting it, final five passes and test-only commit. To repeat, reintroduce reverse in the isolated lab and restore after observing failure; do not delete the Git repository or rewrite public history. Close an unwanted practice PR while keeping its discussion. Diagram 1 is tests, 2 review judgment, 3 verifiable delivery. No model review, GitHub push or publication was performed for you."
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -663,9 +723,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -692,6 +758,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "sh",
           "code": "git switch -c codex/review-lab\nnode --test core.test.mjs\n"
         },
@@ -701,6 +768,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "sh",
           "code": "git diff -- core.mjs\nnode --test core.test.mjs\n"
         },
@@ -719,6 +787,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Review the uncommitted change only. All must preserve task order and must not mutate the input array. Existing tests pass, so inspect their coverage rather than treating that as proof.\nFor each finding, state the file/line, trigger, concrete impact and a verification case. Do not edit, stage, commit or push during this review. If you find no issue, report what you examined and any uncertainty.\n"
         },
@@ -737,11 +806,13 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "javascript",
           "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst makeTasks = () => [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\n\ntest(\"All preserves original order\", () => {\n  assert.deepEqual(visibleTasks(makeTasks(), \"all\").map((task) => task.id), [\"a\", \"b\"]);\n});\n\ntest(\"All does not attempt to mutate the input array\", () => {\n  const tasks = Object.freeze(makeTasks());\n  assert.doesNotThrow(() => visibleTasks(tasks, \"all\"));\n});\n"
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "sh",
           "code": "node --test core.test.mjs review.test.mjs\n"
         },
@@ -760,11 +831,13 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "sh",
           "code": "git add review.test.mjs\ngit diff --cached --name-only\ngit diff --cached -- review.test.mjs\ngit commit -m \"Test All filter order and input preservation\"\ngit diff --stat main...HEAD\ngit status --short\n"
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "markdown",
           "code": "Title: Add regression coverage for All filter ordering and input preservation\n\nThe existing filter tests cover Active and Completed but miss All ordering and input mutation. Add two focused cases so a reversing implementation is rejected. Production code is unchanged.\n\nValidation: node --test core.test.mjs review.test.mjs — 5 passed, if actually run.\nThe deliberate reverse variant fails both new tests.\nBrowser checks: NOT RUN in this test-only change unless separately verified.\nDeployment: not performed.\n"
         },
@@ -774,6 +847,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "git remote add origin YOUR_REPOSITORY_URL\ngit remote -v\ngit push -u origin main\ngit push -u origin codex/review-lab\n"
         },
@@ -824,9 +898,15 @@
           "text": "元3件の見落とし、新2件の検出、最終5成功とテストだけの commit を残します。再実行は独立教材で reverse を再導入して戻し、Git 削除や公開履歴改変はしません。不要な教材 PR は議論を残して閉じます。図1証拠、2判断、3引渡しです。読者のモデル Review/push/公開は未実行です。"
         },
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -876,9 +956,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -905,6 +991,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "sh",
           "code": "git switch -c codex/review-lab\nnode --test core.test.mjs\n"
         },
@@ -914,6 +1001,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "sh",
           "code": "git diff -- core.mjs\nnode --test core.test.mjs\n"
         },
@@ -932,6 +1020,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Review the uncommitted change only. All must preserve task order and must not mutate the input array. Existing tests pass, so inspect their coverage rather than treating that as proof.\nFor each finding, state the file/line, trigger, concrete impact and a verification case. Do not edit, stage, commit or push during this review. If you find no issue, report what you examined and any uncertainty.\n"
         },
@@ -950,11 +1039,13 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "javascript",
           "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst makeTasks = () => [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\n\ntest(\"All preserves original order\", () => {\n  assert.deepEqual(visibleTasks(makeTasks(), \"all\").map((task) => task.id), [\"a\", \"b\"]);\n});\n\ntest(\"All does not attempt to mutate the input array\", () => {\n  const tasks = Object.freeze(makeTasks());\n  assert.doesNotThrow(() => visibleTasks(tasks, \"all\"));\n});\n"
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "sh",
           "code": "node --test core.test.mjs review.test.mjs\n"
         },
@@ -973,11 +1064,13 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "sh",
           "code": "git add review.test.mjs\ngit diff --cached --name-only\ngit diff --cached -- review.test.mjs\ngit commit -m \"Test All filter order and input preservation\"\ngit diff --stat main...HEAD\ngit status --short\n"
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "markdown",
           "code": "Title: Add regression coverage for All filter ordering and input preservation\n\nThe existing filter tests cover Active and Completed but miss All ordering and input mutation. Add two focused cases so a reversing implementation is rejected. Production code is unchanged.\n\nValidation: node --test core.test.mjs review.test.mjs — 5 passed, if actually run.\nThe deliberate reverse variant fails both new tests.\nBrowser checks: NOT RUN in this test-only change unless separately verified.\nDeployment: not performed.\n"
         },
@@ -987,6 +1080,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "git remote add origin YOUR_REPOSITORY_URL\ngit remote -v\ngit push -u origin main\ngit push -u origin codex/review-lab\n"
         },
@@ -1037,9 +1131,15 @@
           "text": "기존3개 누락/새2개 탐지/최종5통과/테스트만 commit을 남깁니다. 반복은 독립 실습에서 reverse를 다시 넣고 복원하며 Git 삭제/공개 기록 변경은 하지 않습니다. 불필요한 실습 PR은 논의를 남겨 닫습니다. 그림1증거,2판단,3전달입니다. 독자의 모델 Review/push/공개는 미실행입니다."
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

@@ -24,9 +24,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -40,15 +46,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Codex 雲端在它的環境執行工作；"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "手機 Remote",
-              "url": "https://mokaair.com/zh-TW/life/codex-mobile-guide"
+              "kind": "life",
+              "slug": "codex-mobile-guide"
             },
             {
               "type": "text",
@@ -63,7 +70,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "下載並解壓"
@@ -94,7 +101,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "開啟"
@@ -112,7 +119,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "到"
@@ -130,6 +137,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "sh",
           "code": "node --version\n"
         },
@@ -148,6 +156,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Inspect this Small Steps practice repository without changing files. Report the working directory, git commit, branch if available, and the five source filenames. Run node --test core.test.mjs. Explain the failing behavior from the test and core.mjs. Keep files unchanged and do not open a pull request yet.\n"
         },
@@ -157,6 +166,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Fix only the reversed completed filter in core.mjs. Completed must return only finished tasks, Active only unfinished tasks, and All every task. Preserve order, input immutability and all existing tests. Remove any now-obsolete exercise comment. Run node --test core.test.mjs and show the final diff. Do not merge, deploy or open a PR until I review the result.\n"
         },
@@ -201,15 +211,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "準備好時使用任務的建立 PR 入口，確認目的儲存庫、base 分支與包含修正的 head，再填下面的標題和說明。PR 是提交審查，不代表已合併或網站已上線；若 GitHub 顯示衝突、檢查尚未完成或新增了其他修改，先處理再決定合併。本篇練習可以停在未合併 PR，保留成果供下一篇"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "測試與審查",
-              "url": "https://mokaair.com/zh-TW/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -219,20 +230,22 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "markdown",
           "code": "Title: Fix Completed filtering in Small Steps\n\nCompleted previously displayed unfinished tasks. It now displays only finished tasks while preserving Active, All, order and input data.\n\nValidation: node --test core.test.mjs — 3 passed.\nBrowser verification: not run in this cloud exercise.\nDeployment: not performed.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "說明中的三項通過只能在你的實際結果一致時保留；若還沒測，改為未執行並說原因。需要畫面驗收時，把 PR 的確切分支或 commit 取得到另一個獨立資料夾，再按"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "第一個專案",
-              "url": "https://mokaair.com/zh-TW/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -254,9 +267,15 @@
           "text": "要停止時，在目前任務使用可用的停止控制並確認狀態已停止，再檢查已留下的差異；停止不會撤銷先前提交的 PR 或 GitHub 變更。未合併 PR 可在核對後關閉，已合併修改要走指定提交的還原流程，不能用刪除聊天取代。本文環境與 UI 步驟依官方文件查證；故障及參考測試在本機驗證，沒有聲稱已替讀者建立雲端任務、GitHub PR 或部署。"
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -316,9 +335,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -332,15 +357,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Codex 云端在它的环境执行工作；"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "手机 Remote",
-              "url": "https://mokaair.com/zh-CN/life/codex-mobile-guide"
+              "kind": "life",
+              "slug": "codex-mobile-guide"
             },
             {
               "type": "text",
@@ -355,7 +381,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "下载并解压"
@@ -386,7 +412,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "开启"
@@ -404,7 +430,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "到"
@@ -422,6 +448,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "sh",
           "code": "node --version\n"
         },
@@ -440,6 +467,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Inspect this Small Steps practice repository without changing files. Report the working directory, git commit, branch if available, and the five source filenames. Run node --test core.test.mjs. Explain the failing behavior from the test and core.mjs. Keep files unchanged and do not open a pull request yet.\n"
         },
@@ -449,6 +477,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Fix only the reversed completed filter in core.mjs. Completed must return only finished tasks, Active only unfinished tasks, and All every task. Preserve order, input immutability and all existing tests. Remove any now-obsolete exercise comment. Run node --test core.test.mjs and show the final diff. Do not merge, deploy or open a PR until I review the result.\n"
         },
@@ -493,15 +522,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "准备好时使用任务的建立 PR 入口，确认目的储存库、base 分支与包含修正的 head，再填下面的标题和说明。PR 是提交审查，不代表已合并或网站已上线；若 GitHub 显示冲突、检查尚未完成或新增了其他修改，先处理再决定合并。本篇练习可以停在未合并 PR，保留成果供下一篇"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "测试与审查",
-              "url": "https://mokaair.com/zh-CN/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -511,20 +541,22 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "markdown",
           "code": "Title: Fix Completed filtering in Small Steps\n\nCompleted previously displayed unfinished tasks. It now displays only finished tasks while preserving Active, All, order and input data.\n\nValidation: node --test core.test.mjs — 3 passed.\nBrowser verification: not run in this cloud exercise.\nDeployment: not performed.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "说明中的三项通过只能在你的实际结果一致时保留；若还没测，改为未执行并说原因。需要画面验收时，把 PR 的确切分支或 commit 取得到另一个独立资料夹，再按"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "第一个专案",
-              "url": "https://mokaair.com/zh-CN/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -546,9 +578,15 @@
           "text": "要停止时，在目前任务使用可用的停止控制并确认状态已停止，再检查已留下的差异；停止不会撤销先前提交的 PR 或 GitHub 变更。未合并 PR 可在核对后关闭，已合并修改要走指定提交的还原流程，不能用删除聊天取代。本文环境与 UI 步骤依官方文件查证；故障及参考测试在本机验证，没有声称已替读者建立云端任务、GitHub PR 或部署。"
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -608,9 +646,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -624,15 +668,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Cloud work runs in its configured environment; "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "mobile Remote",
-              "url": "https://mokaair.com/en/life/codex-mobile-guide"
+              "kind": "life",
+              "slug": "codex-mobile-guide"
             },
             {
               "type": "text",
@@ -647,7 +692,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Extract the "
@@ -678,7 +723,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Open "
@@ -696,7 +741,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Create its environment in "
@@ -714,6 +759,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "sh",
           "code": "node --version\n"
         },
@@ -732,6 +778,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Inspect this Small Steps practice repository without changing files. Report the working directory, git commit, branch if available, and the five source filenames. Run node --test core.test.mjs. Explain the failing behavior from the test and core.mjs. Keep files unchanged and do not open a pull request yet.\n"
         },
@@ -741,6 +788,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Fix only the reversed completed filter in core.mjs. Completed must return only finished tasks, Active only unfinished tasks, and All every task. Preserve order, input immutability and all existing tests. Remove any now-obsolete exercise comment. Run node --test core.test.mjs and show the final diff. Do not merge, deploy or open a PR until I review the result.\n"
         },
@@ -785,15 +833,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "When ready, use the task's PR action, confirm the repository, base branch and repaired head, and use the draft below. A PR requests review; it is not a merge or deployment. Resolve conflicts, pending checks or unrelated changes before deciding to merge. This exercise may stop at an unmerged PR for the "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "testing and review lesson",
-              "url": "https://mokaair.com/en/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -803,20 +852,22 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "markdown",
           "code": "Title: Fix Completed filtering in Small Steps\n\nCompleted previously displayed unfinished tasks. It now displays only finished tasks while preserving Active, All, order and input data.\n\nValidation: node --test core.test.mjs — 3 passed.\nBrowser verification: not run in this cloud exercise.\nDeployment: not performed.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Keep “3 passed” only if your actual run agrees; otherwise record the real status and reason. For visual verification, obtain the exact PR branch or commit in a separate folder and use the "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "first project preview",
-              "url": "https://mokaair.com/en/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -838,9 +889,15 @@
           "text": "Use the current task's available stop control and verify its stopped state, then inspect retained changes. Stopping does not undo an existing PR or GitHub mutation. An unmerged PR can be closed after review; merged work needs a targeted Git reversal, not chat deletion. Environment/UI steps are documentation-checked, while broken/reference tests were checked locally. This article does not claim to have created a reader's cloud task, PR or deployment."
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -900,9 +957,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -916,15 +979,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "クラウドは設定した環境で実行し、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Remote",
-              "url": "https://mokaair.com/ja/life/codex-mobile-guide"
+              "kind": "life",
+              "slug": "codex-mobile-guide"
             },
             {
               "type": "text",
@@ -939,7 +1003,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "link",
               "text": "教材",
@@ -966,7 +1030,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "link",
               "text": "Codex cloud",
@@ -980,7 +1044,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "link",
               "text": "環境設定",
@@ -994,6 +1058,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "sh",
           "code": "node --version\n"
         },
@@ -1012,6 +1077,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Inspect this Small Steps practice repository without changing files. Report the working directory, git commit, branch if available, and the five source filenames. Run node --test core.test.mjs. Explain the failing behavior from the test and core.mjs. Keep files unchanged and do not open a pull request yet.\n"
         },
@@ -1021,6 +1087,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Fix only the reversed completed filter in core.mjs. Completed must return only finished tasks, Active only unfinished tasks, and All every task. Preserve order, input immutability and all existing tests. Remove any now-obsolete exercise comment. Run node --test core.test.mjs and show the final diff. Do not merge, deploy or open a PR until I review the result.\n"
         },
@@ -1065,15 +1132,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "準備できたら課題の PR 作成から、リポジトリ、base、修正版 head を確認し、次の案を使います。PR はレビュー依頼で、マージや公開ではありません。競合、未完了チェック、無関係な差分を解決してから判断します。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "レビュー記事",
-              "url": "https://mokaair.com/ja/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -1083,20 +1151,22 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "markdown",
           "code": "Title: Fix Completed filtering in Small Steps\n\nCompleted previously displayed unfinished tasks. It now displays only finished tasks while preserving Active, All, order and input data.\n\nValidation: node --test core.test.mjs — 3 passed.\nBrowser verification: not run in this cloud exercise.\nDeployment: not performed.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "三件成功は実測と一致する場合だけ残します。未実行なら理由を記録します。画面確認は PR の正確な版を独立フォルダーに取得し、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "初回プレビュー",
-              "url": "https://mokaair.com/ja/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -1118,9 +1188,15 @@
           "text": "停止操作後は状態と残った差分を確認します。停止は既存 PR や GitHub 変更を取り消しません。未マージ PR は確認して閉じ、マージ済みは対象コミットの復元を行います。チャット削除で代用しません。UI と環境は公式資料確認、教材テストはローカル確認であり、読者のクラウド課題や PR を実行済みとはしていません。"
         },
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1180,9 +1256,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1196,15 +1278,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "클라우드는 설정된 환경에서 실행되고 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Remote",
-              "url": "https://mokaair.com/ko/life/codex-mobile-guide"
+              "kind": "life",
+              "slug": "codex-mobile-guide"
             },
             {
               "type": "text",
@@ -1219,7 +1302,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "link",
               "text": "실습 자료",
@@ -1246,7 +1329,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "link",
               "text": "Codex cloud",
@@ -1260,7 +1343,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "link",
               "text": "환경 설정",
@@ -1274,6 +1357,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "sh",
           "code": "node --version\n"
         },
@@ -1292,6 +1376,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Inspect this Small Steps practice repository without changing files. Report the working directory, git commit, branch if available, and the five source filenames. Run node --test core.test.mjs. Explain the failing behavior from the test and core.mjs. Keep files unchanged and do not open a pull request yet.\n"
         },
@@ -1301,6 +1386,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Fix only the reversed completed filter in core.mjs. Completed must return only finished tasks, Active only unfinished tasks, and All every task. Preserve order, input immutability and all existing tests. Remove any now-obsolete exercise comment. Run node --test core.test.mjs and show the final diff. Do not merge, deploy or open a PR until I review the result.\n"
         },
@@ -1345,15 +1431,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "준비되면 작업의 PR 생성에서 저장소, base, 수정된 head를 확인하고 다음 초안을 사용합니다. PR은 검토 요청이며 병합/배포가 아닙니다. 충돌, 미완료 검사, 관련 없는 변경을 해결한 후 판단합니다. "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "리뷰 강의",
-              "url": "https://mokaair.com/ko/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -1363,20 +1450,22 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "markdown",
           "code": "Title: Fix Completed filtering in Small Steps\n\nCompleted previously displayed unfinished tasks. It now displays only finished tasks while preserving Active, All, order and input data.\n\nValidation: node --test core.test.mjs — 3 passed.\nBrowser verification: not run in this cloud exercise.\nDeployment: not performed.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "세 개 성공은 실제 결과와 일치할 때만 남깁니다. 미실행이면 이유를 적습니다. 화면 검증은 PR의 정확한 버전을 독립 폴더로 받아 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "첫 프로젝트 미리 보기",
-              "url": "https://mokaair.com/ko/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -1398,9 +1487,15 @@
           "text": "중단 후 상태와 남은 변경을 확인합니다. 중단은 기존 PR/GitHub 변경을 취소하지 않습니다. 미병합 PR은 확인 후 닫고 병합된 변경은 대상 커밋 복구를 사용하며 채팅 삭제로 대신하지 않습니다. UI/환경은 공식 문서, 교재 테스트는 로컬에서 확인했으며 독자의 클라우드 작업이나 PR을 실행했다고 주장하지 않습니다."
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

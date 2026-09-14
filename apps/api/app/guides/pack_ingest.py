@@ -50,12 +50,15 @@ from pydantic import ValidationError
 from app.guides import admin_service
 from app.guides.content_pack import ArticlePack, ContentPackError, load_packs
 from app.guides.schemas import (
+    ArticleInline,
     CalloutBlock,
+    CodeBlock,
     GuideDocument,
     ImageBlock,
     ImageCredit,
     Kind,
     PartnerLinkBlock,
+    RichParagraphBlock,
     TableBlock,
     section_of,
 )
@@ -124,12 +127,12 @@ def _document_text(document: GuideDocument) -> str:
     """Every string a reader sees, joined, for the length rule and the diagram-number rule."""
     parts = [document.title, document.description]
     for block in document.blocks:
-        if block.type == "rich_paragraph":
-            parts.extend(span.text for span in block.spans)
-        elif block.type == "code":
-            parts.append(block.code)
         if isinstance(block, ParagraphBlock | HeadingBlock):
             parts.append(block.text)
+        elif isinstance(block, RichParagraphBlock):
+            parts.extend(node.text for node in block.inlines)
+        elif isinstance(block, CodeBlock):
+            parts.extend((block.label, block.code))
         elif isinstance(block, ListBlock):
             parts.extend(block.items)
         elif isinstance(block, TableBlock):
@@ -151,10 +154,10 @@ def _body_length(document: GuideDocument) -> int:
     paragraphs, lists, tables and callouts, not the title, captions or link labels."""
     parts: list[str] = []
     for block in document.blocks:
-        if block.type == "rich_paragraph":
-            parts.extend(span.text for span in block.spans)
         if isinstance(block, ParagraphBlock):
             parts.append(block.text)
+        elif isinstance(block, RichParagraphBlock):
+            parts.extend(node.text for node in block.inlines)
         elif isinstance(block, ListBlock):
             parts.extend(block.items)
         elif isinstance(block, TableBlock):
@@ -204,7 +207,14 @@ def lint_document(document: GuideDocument, kind: Kind) -> list[Problem]:
         )
     if not any(isinstance(b, ImageBlock) and b.src.endswith(".svg") for b in document.blocks):
         problems.append(Problem("warning", "no_diagram", "no self-drawn SVG diagram in the body"))
-    if not any(isinstance(b, LinkBlock) and b.url.startswith(SITE_ORIGIN) for b in document.blocks):
+    if not any(
+        (isinstance(b, LinkBlock) and b.url.startswith(SITE_ORIGIN))
+        or (
+            isinstance(b, RichParagraphBlock)
+            and any(isinstance(node, ArticleInline) for node in b.inlines)
+        )
+        for b in document.blocks
+    ):
         problems.append(
             Problem(
                 "warning",

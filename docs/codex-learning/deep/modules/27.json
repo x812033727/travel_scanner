@@ -1,0 +1,284 @@
+{
+  "id": 27,
+  "readingMinutes": 15,
+  "operationMinutes": 20,
+  "blocks": [
+    {
+      "type": "h2",
+      "text": [
+        "目標與準備",
+        "Goal and preparation",
+        "目標と準備",
+        "목표와 준비"
+      ]
+    },
+    {
+      "type": "note",
+      "text": [
+        "建立第二個工作目錄，確認兩邊修改互不覆蓋，保存成果後清理練習目錄。閱讀約 15 分鐘、操作約 20 分鐘。需要 Git 與文字編輯器；先讀[分支與差異](article:codex-git-basics)。本篇用一個全新的小型 Git 練習庫演示，沒有遠端儲存庫，不會推送或部署網站。",
+        "Create a second checkout, verify that file edits remain separate, save the result and clean up the practice checkout. Allow 15 minutes to read and 20 to practice. Install Git and a text editor and read [Branches and diffs](article:codex-git-basics). This lesson uses a new small repository without a remote; it does not push or deploy a website.",
+        "第二の作業目録を作り、編集の分離を確認、成果を保存して実習目録を片付けます。読む時間15分、実習20分。Git とエディターを用意し[分岐と差分](article:codex-git-basics)を読みます。遠隔なしの新規小リポジトリを使い、push や公開はしません。",
+        "두 번째 작업 폴더를 만들고 편집이 분리되는지 확인한 뒤 결과를 저장하고 정리합니다. 읽기 15분, 실습 20분입니다. Git과 편집기를 준비하고 [브랜치와 차이](article:codex-git-basics)를 읽으세요. 원격 없는 새 작은 저장소를 사용하며 push나 배포는 하지 않습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Worktree 是同一 Git 儲存庫的另一份 checkout：檔案與暫存區分開，提交與分支資料仍共用。它適合一邊修 Bug、一邊研究其他功能，但不是安全沙盒。兩個目錄若連到同一資料庫、同一雲端文件或相同 port，仍可能互相影響。多人任務要同時分清檔案範圍、外部資料與執行服務，不能只看資料夾名稱不同就認定完全隔離。",
+        "A worktree is another checkout of the same Git repository. Files and indexes are separate while commits and branch metadata are shared. It helps with a bug fix alongside another feature, but is not a security sandbox. Checkouts using the same database, cloud document or port can still interfere. Separate file ownership, external data and running services instead of assuming different folder names imply complete isolation.",
+        "Worktree は同一 Git の別 checkout で、ファイルと索引は別、提交と分岐情報は共通です。修正と調査の併行に適しても安全沙盒ではありません。同じ DB、雲文書、port は競合し得ます。フォルダー名だけでなく編集担当、外部データ、稼働サービスも分けます。",
+        "Worktree는 같은 Git의 다른 checkout으로 파일과 인덱스는 분리되고 커밋·브랜치 정보는 공유합니다. 버그 수정과 기능 조사를 함께 하기에 좋지만 보안 샌드박스는 아닙니다. 같은 DB·클라우드 문서·포트는 충돌할 수 있으므로 폴더 이름 외에 담당 파일·외부 데이터·실행 서비스도 구분하세요."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 1：建立不含私人資料的練習庫",
+        "Step 1: Create a repository without private data",
+        "手順1：私的データのない実習庫を作る",
+        "1단계: 개인 자료 없는 연습 저장소 생성"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在自己的練習資料夾裡，用檔案管理員新增空白的 worktree-lab 資料夾。Windows 用檔案總管，macOS 用 Finder，Linux 用檔案管理員；再於該資料夾開啟終端機。先確認現在的路徑確實是新資料夾，沒有正式專案檔案。下列命令只在這個新練習庫執行，設定作者身分也是此庫的 local 設定，不要加 --global。",
+        "Create an empty worktree-lab folder under your practice area using File Explorer on Windows, Finder on macOS or a Linux file manager, then open a terminal there. Verify the current path and absence of production files first. Run the following commands only in this new practice repository; the author identity is repository-local, so do not add --global.",
+        "自分の実習領域に空の worktree-lab を Windows Explorer、Finder、Linux のファイル管理で作り、そこで端末を開きます。現在地と正式ファイルがないことを確認します。下の命令は新規実習庫のみで実行し、作者設定は local のまま --global を加えません。",
+        "Windows 탐색기·macOS Finder·Linux 파일 관리자로 실습 영역에 빈 worktree-lab을 만들고 그곳에서 터미널을 엽니다. 현재 경로와 운영 파일이 없는지 확인하세요. 아래 명령은 새 연습 저장소에만 실행하며 작성자 설정에 --global을 추가하지 않습니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "git init -b main\ngit config user.name \"Codex Learner\"\ngit config user.email \"learner@example.test\"\ngit status --short\n",
+      "label": [
+        "三種系統的終端機：位於全新 worktree-lab",
+        "Terminal on all three systems: inside the new worktree-lab",
+        "3 OS の端末：新しい worktree-lab 内",
+        "세 OS 터미널: 새 worktree-lab 안"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "用編輯器在 worktree-lab 新增 notes.md，完整內容如下。這裡的 marker 是刻意可辨識的練習值，讓你不用依賴 Codex 的敘述就能比對檔案。保存 UTF-8 純文字並確認檔名沒有多出 .txt，再執行下一段提交命令。這次只加入 notes.md，不用 git add .，以免不小心把旁邊其他檔案也收進練習提交。",
+        "Create notes.md in worktree-lab with the complete content below. Its deliberate marker makes file comparison independent of Codex's narrative. Save UTF-8 plain text and check for an accidental .txt extension before committing. Add only notes.md rather than git add . so nearby files do not enter the practice commit.",
+        "下記全内容で notes.md を作ります。固有 marker で Codex の説明によらず比較できます。UTF-8 の標準テキストと拡張子を確認後に提交します。周辺ファイルを巻き込まないよう git add . ではなく notes.md だけを追加します。",
+        "아래 전체 내용으로 notes.md를 만듭니다. 구별되는 marker로 Codex의 설명과 별개로 비교할 수 있습니다. UTF-8 일반 텍스트와 확장자를 확인한 뒤 커밋하며 주변 파일이 들어가지 않도록 notes.md만 추가하세요."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "markdown",
+      "code": "# Worktree practice\n\nMarker: LOCAL-A\n",
+      "label": [
+        "worktree-lab/notes.md",
+        "worktree-lab/notes.md",
+        "worktree-lab/notes.md",
+        "worktree-lab/notes.md"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "git add -- notes.md\ngit commit -m \"Add worktree practice baseline\"\ngit status --short\ngit branch --show-current\n",
+      "label": [
+        "練習庫終端機：建立可複製的基準提交",
+        "Practice terminal: create a committed baseline",
+        "実習端末：基準を提交",
+        "실습 터미널: 기준 커밋 생성"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "預期目前分支是 main，status 沒有未提交列。若提交失敗，讀取錯誤並修正此練習庫的作者設定；不要為了完成教材改公司儲存庫的簽章政策。還沒有第一個提交時，沒有可用的 HEAD 基準，先完成此步再新增 worktree。已有同名資料夾或分支時換一組未使用的練習名稱，將後續命令一致替換，不強制覆蓋既有內容。",
+        "Expect branch main and no uncommitted entries from status. If commit fails, inspect the error and fix this repository's author settings without changing organizational signing policy. A repository without its first commit has no HEAD baseline, so finish this step before adding a worktree. For existing folder or branch names, choose unused practice names and replace them consistently rather than force-overwriting content.",
+        "main と未提交なしを確認します。失敗はこの庫の作者設定を直し、組織の署名方針を教材のため変更しません。初回提交がなければ HEAD 基準もないため先に完了します。同名があれば未使用名に揃えて置換し、既存を強制上書きしません。",
+        "main과 미커밋 없음 상태를 확인합니다. 실패하면 이 저장소 작성자 설정을 확인하고 조직 서명 정책은 바꾸지 마세요. 첫 커밋 전에는 HEAD 기준이 없으므로 먼저 완료합니다. 이름이 이미 있으면 사용하지 않는 연습 이름으로 일관되게 바꾸고 강제 덮어쓰지 않습니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 2：建立第二個 checkout",
+        "Step 2: Create the second checkout",
+        "手順2：第二の checkout を作る",
+        "2단계: 두 번째 checkout 생성"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "git worktree add -b codex/worktree-practice ../worktree-copy\ngit worktree list\n",
+      "label": [
+        "worktree-lab 終端機：建立同層練習副本",
+        "worktree-lab terminal: create a sibling checkout",
+        "worktree-lab 端末：同階層の副本を作成",
+        "worktree-lab 터미널: 같은 상위 폴더에 사본 생성"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "命令在目前資料夾外的同一層建立 worktree-copy，並用新分支 codex/worktree-practice。執行前先確認該路徑不存在；list 應列出兩個實際路徑，分別對應 main 與新分支。兩份 notes.md 一開始都應是 LOCAL-A。Windows 路徑也可以用這段相對路徑，前提是終端機確實在 worktree-lab；不確定時用[終端機與路徑](article:codex-terminal-paths)的方法先核對。",
+        "The command creates sibling worktree-copy on the new codex/worktree-practice branch. Verify that the target path does not exist beforehand. list should show two actual paths on main and the new branch; both notes.md files initially contain LOCAL-A. The relative path works on Windows too when the terminal is truly inside worktree-lab. Check [Terminal paths](article:codex-terminal-paths) if unsure.",
+        "新分岐 codex/worktree-practice で同階層に worktree-copy を作ります。対象不存在を先に確認し、list の二経路が main と新分岐であること、両文書が LOCAL-A であることを見ます。Windows でも実際に worktree-lab 内なら相対パスを使えます。[端末パス](article:codex-terminal-paths)で確認できます。",
+        "새 codex/worktree-practice 브랜치로 같은 상위 폴더의 worktree-copy를 만듭니다. 대상이 없는지 확인하고 list의 두 경로가 main과 새 브랜치인지, 두 문서가 LOCAL-A인지 확인하세요. Windows도 실제 worktree-lab 안이면 상대 경로를 쓸 수 있습니다. [터미널 경로](article:codex-terminal-paths)를 참고하세요."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "用另一個編輯器視窗開啟 worktree-copy/notes.md，只將 LOCAL-A 改成 COPY-B。回到原本 worktree-lab 的視窗，確認自己的 notes.md 仍是 LOCAL-A，再查看兩邊 status 與差異。不要在兩個視窗都只看檔案標籤 notes.md；顯示完整路徑或根目錄名稱，才能知道目前正在修改哪一份。",
+        "Open worktree-copy/notes.md in another editor window and replace only LOCAL-A with COPY-B. In the original worktree-lab window, verify its file remains LOCAL-A, then inspect both statuses and the diff. File tabs named notes.md are insufficient; display the full path or project root to identify the edited copy.",
+        "別窓で worktree-copy/notes.md の LOCAL-A だけを COPY-B に変え、元窓が LOCAL-A のままか確認して両状態と差分を見ます。同じ notes.md タブだけに頼らず全パスかルート名を表示して対象を区別します。",
+        "다른 창에서 worktree-copy/notes.md의 LOCAL-A만 COPY-B로 바꾸고 원래 창은 LOCAL-A인지 확인한 뒤 양쪽 상태와 차이를 봅니다. 같은 notes.md 탭 이름만 믿지 말고 전체 경로나 루트 이름을 표시하세요."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "git status --short\ngit -C ../worktree-copy status --short\ngit -C ../worktree-copy diff -- notes.md\n",
+      "label": [
+        "仍在 worktree-lab：比較兩個目錄",
+        "Still in worktree-lab: compare both checkouts",
+        "worktree-lab のまま両目録を比較",
+        "worktree-lab에서 두 폴더 비교"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "預期第一行 status 沒有改動，第二個 status 顯示 notes.md 已修改，diff 只有 marker 一行變動。這證明工作檔案隔離，不表示修改已合併回 main。若兩邊都變了，先核對實際路徑，看看是不是兩個編輯器指向同一個資料夾，或你也手動改了另一份；不要繼續提交直到原因清楚。",
+        "Expect a clean first status, modified notes.md in the second, and a one-line marker diff. That demonstrates working-file separation, not a merge into main. If both changed, verify whether both editors point at the same folder or whether you also edited the other file. Resolve that discrepancy before committing.",
+        "元の status は未変更、副本は notes.md 変更、差分は marker 一行のはずです。これはファイル分離であり main への統合ではありません。両方変われば窓の対象が同じか、手作業で両方変えたか確認し、原因が分かるまで提交しません。",
+        "원본 status는 깨끗하고 사본의 notes.md만 수정되며 marker 한 줄 차이가 나야 합니다. 이는 파일 분리이며 main 병합은 아닙니다. 둘 다 바뀌면 창이 같은 폴더를 가리키는지, 둘 다 직접 수정했는지 확인한 뒤 커밋하세요."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 3：認識分支占用與保存成果",
+        "Step 3: Understand branch ownership and save work",
+        "手順3：分岐の使用制限と成果保存",
+        "3단계: 브랜치 사용 제한과 결과 저장"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "git -C ../worktree-copy switch main\n",
+      "label": [
+        "預期失敗的檢查：main 正由原目錄使用",
+        "Expected failure: main is in use by the original checkout",
+        "失敗確認：main は元目録で使用中",
+        "예상 실패: 원본이 main 사용 중"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Git 正常會拒絕把同一分支同時 checkout 到兩個 worktree，錯誤會指出 main 已被另一個 worktree 使用。這個失敗是保護機制，兩邊仍應留在原分支；不要加忽略占用或強制選項。回到自己的副本分支，把已核對的 marker 修改提交，再從原目錄比較兩個分支。提交仍保存在同一個本機儲存庫，不會自動出現在 GitHub。",
+        "Git normally refuses the same branch in two worktrees and reports that main is already in use. This expected guard should leave both checkouts on their original branches; do not bypass it with force or ignore-in-use options. Commit the verified marker on the practice branch, then compare branches from the original checkout. The commit stays in the local repository and does not automatically appear on GitHub.",
+        "Git は同じ分岐を二箇所で使うことを拒み、main 使用中を報告します。両方とも元分岐のままなのが保護動作で、強制や制限無視を加えません。確認済み marker を副本分岐へ提交し、元から比較します。提出は本機内にあり GitHub へ自動送信されません。",
+        "Git은 같은 브랜치를 두 worktree에 checkout하는 것을 거부하고 main 사용 중이라고 알립니다. 두 폴더가 원래 브랜치에 남는 보호 동작이므로 강제나 제한 무시 옵션을 쓰지 마세요. 확인한 marker를 연습 브랜치에 커밋하고 원본에서 비교합니다. 커밋은 로컬에 있으며 GitHub에 자동 전송되지 않습니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "git -C ../worktree-copy add -- notes.md\ngit -C ../worktree-copy commit -m \"Change isolated practice marker\"\ngit -C ../worktree-copy status --short\ngit diff main...codex/worktree-practice -- notes.md\n",
+      "label": [
+        "原目錄終端機：保存副本成果並比較分支",
+        "Original terminal: commit the checkout result and compare branches",
+        "元端末：副本成果を保存して分岐比較",
+        "원본 터미널: 사본 커밋 후 브랜치 비교"
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "Codex 桌面版怎麼對應這個流程",
+        "How the Codex desktop workflow corresponds",
+        "Codex デスクトップでの対応",
+        "Codex 데스크톱에서 같은 흐름"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在 Git 專案的新任務輸入框下選 Worktree，再選起始分支，送出需求後由 Codex 建立工作目錄。選目前分支連同未提交修改時，先核對那些修改確實應帶入，不要把無關私有資料也當作任務背景。桌面建立的管理型 worktree 預設可能是 detached HEAD；要長期保留成果，可在任務標頭用 Create branch here 建立分支，再按正常 Git 流程驗收提交。",
+        "For a Git project, choose Worktree under a new task's composer, select the starting branch and submit the request. When including current uncommitted changes, verify that they belong to this task and do not indiscriminately include unrelated private data. Desktop-managed worktrees can initially use detached HEAD. To preserve work long term, use Create branch here in the header and follow normal validation and commits.",
+        "Git の新規タスク下で Worktree と開始分岐を選び要求を送ります。未提交変更を含める場合は対象作業に属するか確認し、無関係の私的資料を混ぜません。管理型は当初 detached HEAD の場合があり、長期保存には標頭の Create branch here で分岐を作って検証・提交します。",
+        "Git 프로젝트의 새 입력창 아래 Worktree와 시작 브랜치를 고르고 요청합니다. 미커밋 변경을 포함할 때는 해당 작업에 속하는지 확인하고 관련 없는 개인 자료를 넣지 마세요. 관리형은 처음 detached HEAD일 수 있으므로 오래 보존하려면 헤더 Create branch here로 브랜치를 만들고 검증·커밋합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "需要把同一任務與程式帶到 Local 時用 Hand off，完成後重新核對目錄、分支及檔案；Handoff 是移動工作，不等於已合併 main 或已部署。Windows、macOS、Linux 依可用的桌面版本操作相同欄位；若 Linux 預覽沒有所需控制，使用本篇 Git 命令方式並標記差異。手機透過 Remote 控制連線電腦上的任務，worktree 留在主機，不是在 iPhone 或 Android 本機執行 Git。",
+        "Use Hand off to move the task and code into Local, then verify directory, branch and files again. Handoff moves work; it does not establish a main merge or deployment. Use corresponding controls in available Windows, macOS and Linux desktop versions; if a Linux preview lacks them, use the Git route and record the difference. Mobile Remote controls the connected computer's task; the worktree remains on the host rather than running Git on the phone.",
+        "同じタスクとコードを Local へ移すには Hand off を使い、移動後に場所、分岐、ファイルを確認します。移動は main 統合や公開ではありません。各 OS の利用可能な版で操作し、Linux に欄がなければ Git 手順との差を記録します。携帯 Remote でも worktree と Git は主機に残ります。",
+        "작업과 코드를 Local로 옮기려면 Hand off 후 폴더·브랜치·파일을 다시 확인하세요. 이동이 main 병합이나 배포를 뜻하지 않습니다. 각 OS의 사용 가능한 버전에서 조작하고 Linux에 기능이 없으면 Git 절차를 쓰며 차이를 기록합니다. 모바일 Remote에서도 worktree와 Git은 호스트에 남습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "| 資源 | worktree 是否自動分開 | 必須自行核對 |\n| --- | --- | --- |\n| 已追蹤檔案與暫存區 | 是 | 編輯器目前開啟路徑 |\n| 提交、分支紀錄 | 共用 | 哪份 checkout 使用哪個分支 |\n| node_modules、建置快取 | 通常需各自準備 | 專案安裝與啟動步驟 |\n| 本機 port | 不保證 | 每個預覽使用的 port |\n| 資料庫、雲端服務 | 不保證 | 練習資料與帳號範圍 |",
+        "| Resource | Automatically separated? | Check yourself |\n| --- | --- | --- |\n| Tracked files and index | Yes | Editor's actual path |\n| Commits and branches | Shared | Branch ownership per checkout |\n| Dependencies and build caches | Usually need separate setup | Project setup instructions |\n| Local ports | Not guaranteed | Port used by each preview |\n| Database and cloud service | Not guaranteed | Practice data and account scope |",
+        "| 資源 | 自動分離 | 確認事項 |\n| --- | --- | --- |\n| 追跡ファイル・索引 | あり | 編集中の実経路 |\n| 提交・分岐 | 共通 | 各 checkout の分岐 |\n| 依存・建置快取 | 通常個別準備 | プロジェクト準備手順 |\n| 本機 port | 保証なし | 各プレビューの port |\n| DB・外部サービス | 保証なし | 教材とアカウント範囲 |",
+        "| 자원 | 자동 분리 | 직접 확인 |\n| --- | --- | --- |\n| 추적 파일·인덱스 | 예 | 편집기 실제 경로 |\n| 커밋·브랜치 | 공유 | checkout별 브랜치 |\n| 의존성·빌드 캐시 | 보통 개별 준비 | 프로젝트 준비 절차 |\n| 로컬 포트 | 보장 안 됨 | 미리 보기별 포트 |\n| DB·클라우드 | 보장 안 됨 | 연습 데이터·계정 범위 |"
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "常見問題、清理與驗收",
+        "Failures, cleanup and acceptance",
+        "問題・片付け・検証",
+        "문제·정리·검증"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "副本缺少環境設定時，先看 .gitignore 與 README，依專案自己的準備步驟建立練習設定。不要把正式 .env 整份複製過去當捷徑。Codex 管理型本機 worktree 的 .worktreeinclude 有特定複製規則，不能套用到本篇手動 Git worktree；需要它時查官方文件及[資料安全](article:codex-project-data-safety)。預覽 port 被占用就選另一個本機 port 並記錄網址，不停止別人的服務。",
+        "For missing local setup, inspect .gitignore and README and create practice configuration through the project's setup steps. Do not copy a production .env as a shortcut. Codex's .worktreeinclude copying rules for locally managed worktrees do not apply to this manually created Git worktree; consult official guidance and [Data safety](article:codex-project-data-safety). For an occupied preview port, select another local port and record the URL instead of stopping someone else's service.",
+        "設定不足は .gitignore と README から実習用を準備し、正式 .env の丸ごとコピーで済ませません。管理型本機の .worktreeinclude は今回の手動 Git には適用されないため公式資料と[データ保護](article:codex-project-data-safety)を確認します。port 競合は別番号と URL を記録し、他人のサービスを止めません。",
+        "설정이 없으면 .gitignore와 README를 보고 실습 설정을 만들며 운영 .env 전체 복사는 하지 않습니다. 관리형 로컬 .worktreeinclude 규칙은 이번 수동 Git worktree에 적용되지 않으므로 공식 자료와 [데이터 안전](article:codex-project-data-safety)을 확인하세요. 포트가 사용 중이면 다른 번호와 URL을 기록하며 다른 서비스는 중지하지 않습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "清理前關閉正在使用副本的編輯器、終端機或預覽程序，回到原 worktree-lab，執行 list 比對完整目標路徑，再確認副本 status 為空。這次成果已提交在 codex/worktree-practice 分支才可移除副本；若還有未提交檔案，先保存與核對，遇到拒絕時不加 --force。下列操作只移除本篇建立的 worktree-copy，保留原庫與已提交分支。",
+        "Before cleanup, close editors, terminals and previews using the copy, return to worktree-lab, compare its full target path in list and confirm the copy has a clean status. Remove it only after saving the result on codex/worktree-practice. Preserve uncommitted files first and do not add --force to a refusal. The command removes only this lesson's worktree-copy, retaining the original repository and committed branch.",
+        "副本を使う窓・端末・プレビューを閉じ、元に戻って list の全経路と副本の未変更を確認します。成果が codex/worktree-practice に提交済みになってから除去し、未提交があれば保存、拒否には --force を加えません。元庫と提交分岐を残し、今回の副本だけを除きます。",
+        "사본을 쓰는 창·터미널·미리 보기를 닫고 원본에서 list의 전체 대상 경로와 사본의 깨끗한 상태를 확인하세요. 결과를 codex/worktree-practice에 커밋한 뒤 제거하며 미커밋 파일은 먼저 보존하고 거부에 --force를 추가하지 않습니다. 원본과 커밋 브랜치를 남기고 이번 사본만 없앱니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "git worktree list\ngit -C ../worktree-copy status --short\ngit worktree remove ../worktree-copy\ngit worktree list\ngit show codex/worktree-practice:notes.md\n",
+      "label": [
+        "原目錄：核對路徑後清理，確認分支成果仍在",
+        "Original checkout: verify path, remove copy, confirm committed work remains",
+        "元目録：経路照合・副本除去・成果確認",
+        "원본: 경로 확인·사본 제거·커밋 결과 확인"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "驗收時 list 應只剩原目錄，main 的 notes.md 仍是 LOCAL-A，git show 仍能看到分支中的 COPY-B。再加上先前一邊乾淨、一邊修改與分支占用失敗的紀錄，才足以證明建立、隔離、保存、移除四個階段。Git 命令的本機參考驗證與 Codex 桌面 Handoff 要分開標示；未操作平台依官方文件查證。下一步讀[子代理分工](article:codex-subagents)，比較目錄隔離與工作分工各自解決什麼問題。",
+        "At acceptance, list should retain only the original checkout, main's notes.md should still contain LOCAL-A, and git show should retrieve COPY-B from the branch. Together with separate dirty/clean statuses and the branch-in-use refusal, this verifies creation, isolation, preservation and removal. Record local Git testing separately from desktop Handoff and label unoperated platforms as officially documented. Continue to [Subagent division](article:codex-subagents) to distinguish workspace isolation from task delegation.",
+        "list は元のみ、main は LOCAL-A、分岐の git show は COPY-B のままを確認します。分離状態と分岐使用拒否の記録を合わせ、作成・分離・保存・除去を検証します。Git 試験とデスクトップ Handoff は別記し、未操作 OS は公式確認とします。次は[子代理の分担](article:codex-subagents)です。",
+        "list에는 원본만, main 문서는 LOCAL-A, 브랜치 git show는 COPY-B여야 합니다. 분리 상태와 브랜치 사용 거부 기록을 더해 생성·분리·보존·제거를 검증합니다. Git 시험과 데스크톱 Handoff를 구분하고 미실행 플랫폼은 공식 문서 확인으로 표시하세요. 다음은 [하위 에이전트 분담](article:codex-subagents)입니다."
+      ]
+    }
+  ]
+}

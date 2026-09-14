@@ -43,10 +43,68 @@ line-length = 100
 target-version = "py313"
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "UP", "B", "ASYNC"]
+# `S` is flake8-bandit. It is here because the 2026-09 audit found two things by hand that
+# this finds mechanically — unescaped LIKE wildcards and a missing request body limit — and
+# reading code is the expensive way to find the cheap class of problem, especially in a
+# repository several different agents write to.
+select = ["E", "F", "I", "UP", "B", "ASYNC", "S"]
+# One rule off, not a category. S101 flags `assert`, on the grounds that `python -O`
+# compiles it out. Nothing here runs with `-O` — the image starts `uvicorn app.main:app` —
+# and all 29 uses in `app/` narrow a type for strict mypy (`assert x is not None`,
+# `assert isinstance(...)`) rather than enforcing anything a caller could violate. In
+# `tests/` an assert is the point, and there are ten thousand of them. Leaving it on would
+# bury the other S rules, which are the ones worth reading. If this service ever starts
+# running with `-O`, turn S101 back on before anything else.
+ignore = ["S101"]
 
 [tool.ruff.lint.per-file-ignores]
-"deployment_agent/*.py" = ["E501"]
+"deployment_agent/*.py" = [
+    "E501",
+    # A fixed command set run with `shell=False` and no interpolation of anything a request
+    # can reach — see `CommandRunner.run`. This is the one process on the host allowed to
+    # run docker, so the design is deliberate and documented in docs/security-audit-2026-09.md.
+    "S603",
+    # Two `urlopen` calls: the GitHub CI status API on a built Request, and the health probe
+    # on a URL from the agent's own config file. Neither takes a URL from a request.
+    "S310",
+    # The cleanup in the deployment failure path. A failure there must not replace the
+    # original deployment error with its own.
+    "S110",
+]
+# Migrations build DDL and repair statements by interpolating module-level constants: table
+# names, a UUID regex, a tuple of valid statuses. Nothing a request can reach runs through
+# alembic, so the injection class this rule names does not exist here.
+"migrations/versions/*.py" = ["S608"]
+# Fake prices and jittered poll intervals. Neither is a secret, a token or a decision an
+# attacker benefits from predicting.
+"app/providers/mock.py" = ["S311"]
+"app/hotspots/wikimedia.py" = ["S311"]
+# One documented feed on a hardcoded official URL, parsed only after the body is rejected
+# for containing `<!DOCTYPE` or `<!ENTITY` and for exceeding 15 MB. See the note in
+# tasks/open/2026-09-13-ruff-flake8-bandit.md about the UTF-16 gap in that guard.
+"app/travel_services/jobs.py" = ["S314"]
+# The content-pack CLI (`python -m app.guides.pack_cli`). Nothing here is reachable from an
+# HTTP request: a person or a writing agent runs it over a workspace directory in this
+# repository. Each rule, in the order they fire:
+"app/guides/pack_ingest.py" = [
+    # `_parse_svg` reads a diagram from that workspace, and `check_svg` exists to refuse the
+    # dangerous shapes (external `url()`, `<script>`) rather than to trust them.
+    "S314",
+    # `UrllibTransport` exists because Wikimedia's edge refuses httpx's own connections. The
+    # URL is the Commons API endpoint or an `imageinfo` URL Commons itself returned — never
+    # anything a request supplied. See tasks/open/2026-09-14-pack-ingest-urlopen-scheme.md
+    # for the remaining scheme question, which is filed rather than assumed away.
+    "S310",
+    # `render_svg` runs headless Chromium with a fixed argument list and `shell=False`; the
+    # only variable parts are the resolved binary path and a temporary file this module wrote.
+    "S603",
+]
+# Test fixtures. The hardcoded passwords are the fixtures; the deployment agent cases need
+# real paths under /tmp because they bind a unix socket a second process has to find; one
+# case runs a repository script through `sys.executable` with literal arguments; and one
+# builds a DELETE from the migration's own table constant.
+"tests/*.py" = ["S105", "S106", "S108", "S603", "S608"]
+"tests/support/*.py" = ["S105", "S106", "S108", "S603", "S608"]
 
 [tool.mypy]
 python_version = "3.13"

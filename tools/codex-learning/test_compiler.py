@@ -12,6 +12,21 @@ spec.loader.exec_module(depth)
 
 
 class CompilerTests(unittest.TestCase):
+    def test_localized_code_labels_preserve_copyable_bytes(self):
+        author_spec = importlib.util.spec_from_file_location("authors", Path(__file__).with_name("render-authors.py"))
+        authors = importlib.util.module_from_spec(author_spec)
+        author_spec.loader.exec_module(authors)
+        labels = ["範例檔案", "Example file", "サンプルファイル", "예제 파일"]
+        block = {"type": "code", "language": "toml", "label": labels, "code": 'name = "繁體"\n'}
+        bodies = authors.render({"id": 51, "blocks": [block]})
+        for index, (locale, body) in enumerate(bodies.items()):
+            compiled = next(b for b in depth.compile_body(body, locale) if b["type"] == "code")
+            self.assertEqual(compiled["label"], labels[index])
+            self.assertEqual(compiled["code"], block["code"])
+        for bad_labels in [["only one"], ["a", "b", "c", ""], ["a", "b", "c", "line\nbreak"]]:
+            with self.subTest(labels=bad_labels), self.assertRaises(ValueError):
+                authors.render({"id": 51, "blocks": [{**block, "label": bad_labels}]})
+
     def test_nested_markdown_fences_preserve_literal_code_in_all_locales(self):
         author_spec = importlib.util.spec_from_file_location("authors", Path(__file__).with_name("render-authors.py"))
         authors = importlib.util.module_from_spec(author_spec)
@@ -20,7 +35,7 @@ class CompilerTests(unittest.TestCase):
         bodies = authors.render({"id": 9, "blocks": [{"type": "code", "language": "markdown", "code": sample}]})
         for locale, body in bodies.items():
             code = [block for block in depth.compile_body(body, locale) if block["type"] == "code"]
-            self.assertEqual(code, [{"type": "code", "language": "markdown", "code": sample}])
+            self.assertEqual([(b["language"], b["code"]) for b in code], [("markdown", sample)])
         simplified = depth.compile_body(depth.simplified(bodies["zh-TW"]), "zh-CN")
         self.assertEqual(next(block["code"] for block in simplified if block["type"] == "code"), sample)
         self.assertIn("繁體", depth.simplified("~~~text\n繁體\n~~~\n"))
@@ -75,18 +90,19 @@ class CompilerTests(unittest.TestCase):
 
     def test_locale_links_and_spaces(self):
         blocks = depth.compile_body("Read [plan](article:codex-plan-mode) now.\n\n[Back](article:codex-learning-hub)\n", "ja")
-        self.assertEqual(blocks[0]["spans"], [
+        self.assertEqual(blocks[0]["inlines"], [
             {"type": "text", "text": "Read "},
-            {"type": "link", "text": "plan", "url": "https://mokaair.com/ja/life/codex-plan-mode"},
+            {"type": "article", "text": "plan", "kind": "life", "slug": "codex-plan-mode"},
             {"type": "text", "text": " now."},
         ])
-        self.assertEqual(blocks[1]["type"], "link")
+        self.assertEqual(blocks[1]["inlines"][0]["slug"], "codex-learning-hub")
 
     def test_translation_preserves_exact_code(self):
         body = "## 設定\n\n```markdown 寫入規則\n\t繁體檔案 `x`\n\n$HOME\n```\n"
         translated = depth.simplified(body)
         self.assertIn("写入规则", translated)
-        self.assertEqual(depth.compile_body(body, "zh-TW")[-1], depth.compile_body(translated, "zh-CN")[-1])
+        self.assertEqual(depth.compile_body(body, "zh-TW")[-1]["code"], depth.compile_body(translated, "zh-CN")[-1]["code"])
+        self.assertEqual(depth.compile_body(translated, "zh-CN")[-1]["label"], "写入规则")
         self.assertEqual(depth.compile_body(body, "en")[-1]["code"], "\t繁體檔案 `x`\n\n$HOME\n")
 
     def test_rejects_unsupported_content_instead_of_silently_dropping_it(self):

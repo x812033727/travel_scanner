@@ -1,0 +1,258 @@
+{
+  "id": 24,
+  "readingMinutes": 15,
+  "operationMinutes": 25,
+  "blocks": [
+    {
+      "type": "h2",
+      "text": [
+        "目標與準備",
+        "Goal and preparation",
+        "目標と準備",
+        "목표와 준비"
+      ]
+    },
+    {
+      "type": "note",
+      "text": [
+        "安裝一個你確實需要的插件，完成外部帳號連線，讀取一份虛構教材，再驗證移除與斷線的差別。閱讀約 15 分鐘、操作約 25 分鐘；需要支援插件的入口及服務帳號。先讀[權限與資料範圍](article:codex-permissions)。本篇以 Google Drive 中你自己建立的練習文件為例，實際可用插件與選項以帳號清單為準。",
+        "Install a plugin you need, connect its external account, read a fictional practice document and distinguish uninstalling from disconnecting. Allow 15 minutes to read and 25 to practice. Use a supported surface and a service account; read [Permissions and data scope](article:codex-permissions). The example uses a practice document you create in Google Drive; available plugins and options depend on your account.",
+        "必要なプラグインを導入し、外部アカウント接続、架空教材の読取り、削除と切断の違いを確認します。読む時間15分、実習25分。対応入口とサービスアカウントを用意し、[権限とデータ範囲](article:codex-permissions)を読みます。自分の Google Drive に作る教材を使い、提供状況はアカウントの一覧で確認します。",
+        "필요한 플러그인을 설치하고 외부 계정을 연결해 가상 문서를 읽은 뒤 제거와 연결 해제의 차이를 확인합니다. 읽기 15분, 실습 25분입니다. 지원 진입점과 서비스 계정을 준비하고 [권한과 데이터 범위](article:codex-permissions)를 읽으세요. 자신의 Google Drive에 만든 연습 문서를 예로 들며 제공 플러그인과 옵션은 계정 목록을 기준으로 합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Plugins 是分發功能的套件，可以包含 [Skills](article:codex-skills)、[MCP](article:codex-mcp) 或其他配套。Skills 說明怎麼完成工作，MCP 工具實際讀取或操作服務。安裝插件不等於已登入那個服務，也不表示每個工具都可立即使用。先把這三種狀態分開，遇到「已安裝但不能讀文件」時才知道該查哪一層。",
+        "Plugins distribute capabilities and can bundle [Skills](article:codex-skills), [MCP](article:codex-mcp) and supporting components. Skills describe a workflow; MCP tools read or operate services. Installation does not establish service authentication or immediate availability of every tool. Separating these states helps diagnose an installed plugin that cannot read a document.",
+        "Plugins は [Skills](article:codex-skills)、[MCP](article:codex-mcp) などをまとめて配布します。Skills は手順、MCP ツールはサービスの読取りや操作を担当します。導入済みでも認証済み、全ツール利用可能とは限りません。状態を分けると「導入済みだが読めない」原因を探せます。",
+        "Plugins는 [Skills](article:codex-skills), [MCP](article:codex-mcp) 등을 묶어 배포합니다. Skills는 절차를 설명하고 MCP 도구는 서비스를 읽거나 조작합니다. 설치가 서비스 인증이나 모든 도구의 즉시 사용을 뜻하지는 않습니다. 상태를 나누면 설치했는데 문서를 읽지 못하는 원인을 찾기 쉽습니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 1：確認使用入口",
+        "Step 1: Confirm your surface",
+        "手順1：入口を確認",
+        "1단계: 진입점 확인"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "桌面版從 Plugins 開啟目錄，查看 OpenAI、工作區、Personal 或 Installed 等當下顯示的分類。Windows、macOS、Linux 都先核對桌面版本與插件詳情的環境要求；Linux 預覽中的實際提供情形應在本機清單確認。不要把看到公開介紹頁當成已能在目前系統執行。尚未安裝桌面版可回到[平台選擇](article:codex-platforms-guide)。",
+        "Open Plugins on desktop and inspect the available OpenAI, workspace, Personal or Installed categories. On Windows, macOS and Linux, check the desktop version and plugin-specific requirements; verify actual availability in a Linux preview's local directory. A public description page does not establish executable support in the current environment. See [Platform selection](article:codex-platforms-guide) if you need a desktop entry point.",
+        "デスクトップの Plugins を開き、OpenAI、作業領域、Personal、Installed など実際の分類を確認します。Windows、macOS、Linux とも版と個別要件を確認し、Linux プレビューは本機の一覧で提供を確かめます。公開紹介ページだけで動作可能とは判断しません。導入前なら[環境選択](article:codex-platforms-guide)へ戻ります。",
+        "데스크톱 Plugins에서 OpenAI, 작업 공간, Personal, Installed 등 실제 분류를 확인하세요. Windows, macOS, Linux 모두 버전과 개별 플러그인 요건을 확인하고 Linux 미리 보기는 로컬 목록에서 제공 여부를 봅니다. 공개 소개 페이지가 보인다고 현재 환경에서 실행 가능하다는 뜻은 아닙니다. 설치 전이라면 [플랫폼 선택](article:codex-platforms-guide)을 읽으세요."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "CLI 在三種作業系統中都先開啟終端機，進入你的練習資料夾後啟動 codex，再於互動畫面輸入 /plugins。codex 是終端機命令，/plugins 是 Codex 內的斜線指令，必須分開操作。IDE 擴充套件目前不支援 Plugins，不能把 CLI 的選單流程照搬到編輯器裡；需要插件時改用支援的桌面或 CLI 入口。",
+        "In a terminal on any of the three operating systems, enter your practice folder, start codex, then type /plugins inside its interactive session. codex is a shell command; /plugins is an interactive slash command, so perform them separately. The IDE extension currently does not support Plugins. Use a supported desktop or CLI surface instead of expecting the CLI menu inside the editor.",
+        "3つの OS の端末で実習フォルダーへ移動し codex を起動、その対話内で /plugins を入力します。前者はシェル命令、後者は対話指令なので別操作です。IDE 拡張は現時点で Plugins 非対応のため、エディターに同じ選択画面を期待せず対応デスクトップか CLI を使います。",
+        "세 OS의 터미널에서 실습 폴더로 이동해 codex를 시작한 다음 대화형 화면에 /plugins를 입력합니다. 전자는 셸 명령이고 후자는 대화형 슬래시 명령이므로 따로 실행하세요. IDE 확장은 현재 Plugins를 지원하지 않으므로 편집기에 같은 메뉴를 기대하지 말고 지원 데스크톱이나 CLI를 사용합니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "codex\n",
+      "label": [
+        "終端機：啟動 Codex",
+        "Terminal: start Codex",
+        "端末：Codex 起動",
+        "터미널: Codex 시작"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "/plugins\n",
+      "label": [
+        "Codex CLI 互動輸入",
+        "Inside interactive Codex CLI",
+        "Codex CLI の対話入力",
+        "Codex CLI 대화형 입력"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "| 入口 | 先做的確認 | 本篇操作方式 |\n| --- | --- | --- |\n| Windows／macOS／Linux 桌面 | 版本、目錄、插件平台條件 | Plugins 詳情中安裝與連線 |\n| 三平台 CLI | 已登入、/plugins 可用、市集來源 | 開啟詳情，安裝後開新工作階段 |\n| iOS／Android | 帳號在 Chat／Work 可用的插件 | 確認非 Desktop only，再於支援入口使用 |\n| IDE | Plugins 不支援 | 改用桌面或 CLI；不混同獨立 Skills |",
+        "| Surface | Confirm first | Practice route |\n| --- | --- | --- |\n| Windows/macOS/Linux desktop | Version, directory, plugin platform requirements | Install and connect through Plugins details |\n| CLI on all three | Login, /plugins, marketplace source | Inspect, install, then start a fresh session |\n| iOS/Android | Plugins available in account Chat/Work | Check it is not Desktop only; use a supported surface |\n| IDE | Plugins unsupported | Use desktop/CLI; standalone Skills are separate |",
+        "| 入口 | 最初の確認 | 手順 |\n| --- | --- | --- |\n| 3 OS デスクトップ | 版、一覧、個別環境要件 | Plugins 詳細で導入・接続 |\n| 3 OS CLI | 認証、/plugins、市場の出所 | 詳細、導入、新規セッション |\n| iOS／Android | アカウントの Chat／Work での提供 | Desktop only でないことを確認 |\n| IDE | Plugins 非対応 | デスクトップか CLI、単独 Skills と区別 |",
+        "| 진입점 | 먼저 확인 | 실습 경로 |\n| --- | --- | --- |\n| 세 OS 데스크톱 | 버전, 목록, 개별 플랫폼 조건 | Plugins 상세에서 설치/연결 |\n| 세 OS CLI | 로그인, /plugins, 마켓 출처 | 상세 확인, 설치, 새 세션 |\n| iOS/Android | 계정 Chat/Work 제공 여부 | Desktop only가 아닌지 확인 |\n| IDE | Plugins 미지원 | 데스크톱/CLI 사용, 독립 Skills와 구분 |"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "手機上的插件不是自動取得電腦磁碟的通行證。若工作需要某台電腦的本機檔案，仍依[手機與跨裝置](article:codex-mobile-guide)的連線條件操作；本篇則只讀你選定服務中的文件。標記 Desktop only 的插件不能改在手機直接執行，網頁上可搜尋到也不表示可以安裝在手機上。",
+        "A mobile plugin does not automatically expose a computer's disk. Tasks needing local computer files still follow [Mobile and cross-device](article:codex-mobile-guide) connection requirements; this exercise reads only the chosen service document. A Desktop only plugin cannot run directly on a phone merely because its listing is discoverable on the web.",
+        "モバイルのプラグインで PC のディスクが自動公開されるわけではありません。本機ファイルは[端末連携](article:codex-mobile-guide)の条件に従い、本記事では選んだサービスの文書だけを読みます。Desktop only は Web で見つけても電話で直接実行できません。",
+        "모바일 플러그인이 컴퓨터 디스크를 자동으로 열어주지는 않습니다. 로컬 파일 작업은 [모바일과 기기 연결](article:codex-mobile-guide) 조건을 따라야 하며 여기서는 선택한 서비스 문서만 읽습니다. Desktop only는 웹에서 검색되어도 휴대전화에서 직접 실행할 수 없습니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 2：準備可核對的文件",
+        "Step 2: Prepare a verifiable document",
+        "手順2：確認できる文書を準備",
+        "2단계: 확인 가능한 문서 준비"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在你自己的練習用 Google Drive 建立一份文件，標題設為 Codex Plugin Practice，內容完整貼入以下文字。使用私人文件即可，不要為了讓插件讀取而開啟所有人可存取。保留文件網址供下一步指定範圍；若不是這個服務，先完成安裝與狀態紀錄，等你確認替代插件有同等讀取工具後再換例子。",
+        "In your practice Google Drive, create a document titled Codex Plugin Practice and paste the full text below. Keep it private; do not enable public access merely to make a plugin read it. Retain its URL to specify scope. If using another service, first complete installation and state recording, then adapt the example only after confirming equivalent read tools.",
+        "自分の練習用 Google Drive で Codex Plugin Practice という文書を作り、以下を全文貼ります。非公開のままにし、読めるようにする目的で一般公開しません。URL を控えて範囲指定に使います。他サービスの場合は導入と状態記録を先に行い、同等の読取りが確認できてから例を置き換えます。",
+        "자신의 연습 Google Drive에 Codex Plugin Practice 문서를 만들고 아래 전체 내용을 붙이세요. 비공개로 유지하며 플러그인이 읽게 하려고 공개 접근을 켜지 마세요. 범위를 지정할 URL을 보관합니다. 다른 서비스라면 먼저 설치와 상태 기록을 마치고 동등한 읽기 도구를 확인한 뒤 예제를 바꾸세요."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "Codex Plugin Practice\nRevision: 1\nDocument marker: PLUGIN-LAB-A\nTask count: 3\nCompleted count: 2\nPending count: 1\nScope: fictional practice data; read only.\n",
+      "label": [
+        "練習文件內容",
+        "Practice document content",
+        "練習文書の内容",
+        "실습 문서 내용"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "這個練習使用固定標記與版本，目的是辨識工具讀到了哪一份文件，並非讓模型猜測三個數字。標題可以重複，網址與標記要對上；若搜尋結果有兩份同名文件，不先選一份碰運氣。先在服務原頁確認內容，再請代理讀取同一網址，才有獨立的比對依據。",
+        "The marker and revision identify what the tool actually read, rather than testing whether a model can guess three counts. Titles can repeat; the URL and marker must match. If search finds two documents with the same name, do not choose arbitrarily. Inspect the original service page first, then request that exact URL for an independent comparison.",
+        "標記と版は実際に読んだ文書を識別するもので、数値を当てる試験ではありません。同名文書でも URL と標記を一致させます。検索で2件なら任意に選ばず、元サービスのページを確認して同じ URL を指定し、独立した比較基準を作ります。",
+        "표식과 버전은 도구가 실제 읽은 문서를 구분하기 위한 것이지 숫자를 맞히는 시험이 아닙니다. 제목이 같아도 URL과 표식이 일치해야 합니다. 동명 검색 결과가 둘이면 임의로 선택하지 말고 원래 서비스 페이지를 확인한 뒤 정확한 URL을 요청해 독립적으로 비교하세요."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 3：安裝、連線，再開新任務",
+        "Step 3: Install, connect and start a fresh task",
+        "手順3：導入、接続、新規タスク",
+        "3단계: 설치, 연결, 새 작업"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "打開插件詳情，核對名稱、提供者、市集來源與功能，確認是你打算使用的 Google Drive 插件，再按顯示的安裝按鈕。桌面文件描述為加號；CLI 則在 /plugins 的來源分類中進入詳情安裝。記下插件名稱或識別碼與日期，避免日後把同名的另一份套件當成同一個。",
+        "Open plugin details and verify the name, provider, marketplace source and capabilities before installing the intended Google Drive plugin. Desktop documentation describes a plus button; CLI installation is available from details under /plugins marketplace categories. Record the name or ID and date so a similarly named package is not mistaken for the same installation.",
+        "詳細で名前、提供者、市場、機能を確認して目的の Google Drive プラグインを導入します。デスクトップ文書は加号、CLI は /plugins の市場分類から詳細で導入します。名称または ID と日付を記録し、同名の別配布物と混同しません。",
+        "상세에서 이름, 제공자, 마켓 출처, 기능을 확인한 뒤 원하는 Google Drive 플러그인을 설치하세요. 데스크톱 문서는 더하기 버튼을, CLI는 /plugins의 마켓 분류 상세를 안내합니다. 이름이나 ID와 날짜를 기록해 이름이 비슷한 다른 패키지와 혼동하지 마세요."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "需要登入時，確認授權畫面顯示的服務與帳號是擁有練習文件的帳號，閱讀要求的資料範圍再繼續。不要把密碼、驗證碼、Token 或連線回傳網址貼進對話。若要求的範圍超出你可接受的用途，取消這次連線並記錄未連接；不是靠在提示詞寫「唯讀」就能縮小 OAuth 授權範圍。",
+        "When sign-in is required, verify the service and account own the practice document, then read the requested permissions. Do not paste passwords, verification codes, tokens or connection callback URLs into chat. If the requested access exceeds your acceptable purpose, cancel and record not connected. A read-only prompt does not narrow OAuth permissions.",
+        "認証画面のサービスとアカウントが教材の所有者か確認し、要求権限を読みます。パスワード、確認コード、Token、接続戻り URL を会話へ貼りません。許容範囲を超えるなら中止して未接続と記録します。依頼に「読取りのみ」と書いても OAuth 権限は狭まりません。",
+        "인증 화면의 서비스와 계정이 연습 문서를 소유하는지 확인하고 요청 권한을 읽으세요. 비밀번호, 인증 코드, 토큰, 연결 반환 URL을 대화에 붙이지 마세요. 허용할 수 있는 목적보다 넓으면 취소하고 미연결로 기록합니다. 읽기 전용 프롬프트가 OAuth 권한 범위를 줄이지는 않습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "登入完成後返回原入口，查看 Installed 與連線狀態，再建立新對話或 CLI 工作階段。某些插件在首次使用時才要求連線，看到已安裝不應省略此步。若使用 API key 登入 Codex，有些需要 OAuth 的插件不提供；先核對帳號認證方式和插件要求，不反覆更換金鑰或在終端機列印它。",
+        "Return to the original surface, inspect Installed and connection state, then start a new chat or CLI session. Some plugins connect only on first use, so installation alone cannot skip this check. API-key Codex authentication does not support every OAuth-dependent plugin. Check authentication mode and plugin requirements rather than repeatedly replacing or printing keys.",
+        "元の入口へ戻り Installed と接続状態を確認して新規会話か CLI セッションを始めます。初回使用時に接続するものもあるため導入だけで省略できません。API key 認証では一部 OAuth 依存プラグインが使えません。キーを交換・表示せず、認証方式と要件を確認します。",
+        "원래 진입점으로 돌아와 Installed와 연결 상태를 확인하고 새 대화나 CLI 세션을 시작하세요. 처음 사용할 때 연결하는 플러그인도 있어 설치만으로 이 확인을 생략할 수 없습니다. API 키 인증에서는 일부 OAuth 의존 플러그인이 제공되지 않습니다. 키를 반복 교체하거나 출력하지 말고 인증 방식과 요구 조건을 확인하세요."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 4：用實際讀取結果驗收",
+        "Step 4: Verify an actual read",
+        "手順4：実際の読取りを検収",
+        "4단계: 실제 읽기 검수"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "桌面輸入 @ 選取剛裝好的插件或其技能，再貼上下面需求，把指定位置換成自己的練習文件網址。CLI 在新工作階段直接要求使用已安裝插件處理同一文件，依實際出現的技能選取入口使用。只要求讀指定文件，不搜尋整個帳號或整理所有檔案，這樣結果與資料範圍才容易核對。",
+        "On desktop, use @ to select the installed plugin or bundled skill and paste the request, replacing the marked position with your practice document URL. In a new CLI session, request the installed plugin for the same document and use the skill-selection entry if shown. Read only the specified document, making both results and scope easy to verify.",
+        "デスクトップは @ で導入したプラグインかスキルを選び、下の依頼の指定箇所を自分の教材 URL に置き換えます。CLI は新規セッションで同じ文書への使用を依頼し、表示される選択入口を使います。全アカウント検索でなく指定文書だけを読ませ、結果と範囲を確認します。",
+        "데스크톱에서 @로 설치한 플러그인이나 스킬을 선택하고 아래 요청의 표시 부분을 자신의 문서 URL로 바꾸세요. 새 CLI 세션에서는 같은 문서에 설치된 플러그인을 사용하라고 요청하고 표시되는 스킬 선택 경로를 따릅니다. 전체 계정을 검색하지 말고 지정 문서만 읽어 결과와 범위를 확인하세요."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "Use the installed Google Drive plugin to read this practice document:\n<PASTE YOUR PRACTICE DOCUMENT URL HERE>\nReturn the document title, source link, revision, marker, and the three counts.\nUse an actual read result. If access is unavailable, say which step failed.\nDo not edit, share, move, delete, or search unrelated files.\n",
+      "label": [
+        "給 Codex 的需求；先替換文件網址",
+        "Request to Codex; replace the document URL first",
+        "Codex への依頼：先に文書 URL を置換",
+        "Codex 요청: 먼저 문서 URL 교체"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "回覆應指向相同文件，提供 Revision 1、PLUGIN-LAB-A、3／2／1，並有實際讀取工具紀錄。順序依文件中的 total、completed、pending 核對，不因為數字相同就忽略欄位。再親自把文件 Revision 改成 2、Completed 改成 1、Pending 改成 2，請它重新讀取，不在需求中透露新數字；看它是否依新內容更新結果。",
+        "The reply should link the same document and report Revision 1, PLUGIN-LAB-A and 3/2/1 with actual read evidence. Match values to total, completed and pending fields rather than merely checking the numbers. Then manually change Revision to 2, Completed to 1 and Pending to 2. Request a fresh read without supplying the new values and verify it reports the updated document.",
+        "同じ文書へのリンク、Revision 1、PLUGIN-LAB-A、3／2／1 と実読取り記録を確認します。全体、完了、未完了の項目に対応させます。自分で Revision 2、Completed 1、Pending 2 に変更し、新しい数値を依頼に書かず再読取りを求め、更新内容に基づくか確認します。",
+        "같은 문서 링크, Revision 1, PLUGIN-LAB-A, 3/2/1과 실제 읽기 기록을 확인하세요. 숫자만 보지 말고 전체, 완료, 대기 필드에 맞춰 비교합니다. 직접 Revision 2, Completed 1, Pending 2로 바꾼 뒤 새 수치를 요청문에 알려주지 않고 다시 읽게 해 갱신된 내용을 보고하는지 확인하세요."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "如果仍回覆舊數字，先要求重新取得來源並指出實際讀取版本，不直接說「答案錯了重試」；若連線失效、檔案不在該帳號或服務尚未更新，記錄那個錯誤而不是捏造新結果。必要時另開新任務排除舊對話內容的影響。最後回原服務確認文件沒有被代理修改、分享或移動，將你手動改版與代理讀取分開記錄。",
+        "If it returns old counts, request a fresh source read and observed revision. Record connection, account-access or update-delay errors instead of fabricating new results. A fresh task can help separate old conversation context. Finally inspect the service to confirm the agent did not edit, share or move the document, distinguishing your manual revision from the agent's read.",
+        "旧数値なら再取得と実際の版を求めます。接続切れ、別アカウント、更新遅延はエラーとして残し、新結果を作りません。新規タスクで旧文脈も分離できます。最後に元サービスで代理による変更、共有、移動がないか確認し、自分の改版と代理の読取りを区別します。",
+        "이전 개수를 반환하면 출처를 새로 읽고 실제 버전을 제시하도록 요청하세요. 연결 만료, 다른 계정, 갱신 지연은 오류로 기록하고 새 결과를 꾸미지 않습니다. 새 작업으로 이전 문맥을 분리할 수도 있습니다. 마지막으로 원래 서비스에서 에이전트가 수정, 공유, 이동하지 않았는지 확인하고 수동 개정과 도구 읽기를 구분하세요."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 5：停用、移除與斷開連線",
+        "Step 5: Disable, uninstall and disconnect",
+        "手順5：無効化、削除、切断",
+        "5단계: 비활성화, 제거, 연결 해제"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在 CLI 的 /plugins 中，安裝項目可依畫面用 Space 切換啟用；若要移除，進詳情選 Uninstall plugin。桌面或網頁從已安裝插件詳情尋找相同移除動作。工作區或預設插件可能由管理員控制而不提供此按鈕，此時記錄管理限制，不去刪程式內部快取或手動破壞安裝目錄。",
+        "In CLI /plugins, use Space on an installed entry to toggle it when supported; use Uninstall plugin in details to remove it. On desktop/web, open installed plugin details for the uninstall action. Workspace or default plugins may be administrator-controlled. Record that restriction rather than deleting application caches or installation folders.",
+        "CLI の /plugins は表示に従い Space で切替、詳細の Uninstall plugin で削除します。デスクトップ／Web も導入済み詳細で探します。作業領域や既定プラグインは管理者が制御する場合があり、その制約を記録して内部キャッシュや導入フォルダーを壊しません。",
+        "CLI /plugins에서 표시되는 Space로 설치 항목을 전환하고 상세의 Uninstall plugin으로 제거합니다. 데스크톱/웹도 설치된 플러그인 상세에서 찾으세요. 작업 공간이나 기본 플러그인은 관리자가 제어할 수 있으므로 제한을 기록하고 앱 캐시나 설치 폴더를 임의 삭제하지 마세요."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "移除套件和解除外部帳號連線是兩件事。個別 MCP 連線可能仍保留，需要到 ChatGPT 的連線管理中選取該服務並斷開；必要時也到服務自己的第三方授權頁確認。先核對是否有其他正常工作共用這個連線，只處理這次練習建立的項目。解除後開新任務確認無法再透過該連線讀取，不能只看 Installed 少一列就宣稱所有存取已撤銷。",
+        "Uninstalling a bundle and disconnecting an external account are separate. Independently connected MCP integrations may remain; disconnect the service in ChatGPT connection management and inspect the provider's third-party authorization page if needed. Check shared use before removing only the practice connection. In a fresh task verify that connection can no longer read, rather than treating a removed Installed entry as proof all access was revoked.",
+        "套件削除と外部接続解除は別です。個別 MCP 接続が残る場合は ChatGPT の接続管理で切断し、必要ならサービス側の第三者認可も確認します。共有利用を確認して今回の接続だけを扱います。新規タスクでその接続から読めないことを確認し、一覧1件の削除だけで全権限撤回と主張しません。",
+        "패키지 제거와 외부 계정 연결 해제는 별개입니다. 별도 MCP 연결은 남을 수 있어 ChatGPT 연결 관리에서 서비스를 끊고 필요하면 제공자 측 외부 앱 권한도 확인하세요. 다른 작업이 공유하는지 확인하고 이번 연습 연결만 처리합니다. 새 작업에서 해당 연결로 읽을 수 없는지 확인해야 하며 Installed 항목 하나가 사라졌다고 모든 접근이 취소되었다고 하면 안 됩니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "將安裝、授權、首次讀取、改版重讀與移除結果各寫一列；沒有實際操作的平台或服務就標記依官方文件查證。這份教材不聲稱已替你登入 Google Drive 或讀取私人文件。圖中 1 是選定插件與範圍、2 是連線與讀取、3 是驗證與收尾；更細的錯誤分層見[插件故障排除](article:codex-plugin-troubleshooting)。",
+        "Record installation, authorization, first read, revised read and removal separately. Mark unoperated platforms/services as documentation-checked. This lesson does not claim to have authenticated your Drive or read private documents. Diagram 1 selects capability/scope, 2 connects and reads, and 3 verifies and closes. Continue to [Plugin troubleshooting](article:codex-plugin-troubleshooting) for layered diagnosis.",
+        "導入、認可、初回読取り、改版再読取り、削除を別々に記録し、未操作環境は公式文書確認と記します。読者の Drive 認証や非公開文書読取りを実施したとは主張しません。図1は選択と範囲、2は接続と読取り、3は検収と終了です。[プラグイン問題対処](article:codex-plugin-troubleshooting)へ続きます。",
+        "설치, 승인, 첫 읽기, 개정 후 읽기, 제거를 각각 기록하고 조작하지 않은 플랫폼은 공식 문서 확인으로 표시하세요. 이 교재는 독자의 Drive에 인증하거나 비공개 문서를 읽었다고 주장하지 않습니다. 그림 1은 선택/범위, 2는 연결/읽기, 3은 검수/정리입니다. 자세한 원인 구분은 [플러그인 문제 해결](article:codex-plugin-troubleshooting)로 이어집니다."
+      ]
+    }
+  ]
+}

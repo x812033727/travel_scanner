@@ -23,9 +23,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -39,15 +45,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "開始前先完成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "第一個小專案",
-              "url": "https://mokaair.com/zh-TW/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -66,6 +73,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "sh",
           "code": "node --version\nnode --test core.test.mjs\n"
         },
@@ -75,6 +83,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Read this codex-read-lab without editing any files. Identify the actual entry point, file responsibilities and commands available from the files, not from framework assumptions.\nTrace adding a task, marking it complete, changing the filter and reloading the page. Name the relevant functions and DOM elements.\nSeparate observed code from inferred intent. List what the existing tests cover and what still needs browser verification. If evidence is missing, say so instead of inventing a backend or build step.\n"
         },
@@ -141,15 +150,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "再讀測試中的第三個案例，確認壞 JSON、錯誤版本、重複識別碼及錯誤欄位會被拒絕。這能證明核心解碼規則，但不能單靠此測試證明瀏覽器真的顯示錯誤訊息、鍵盤焦點合理或重新整理後仍保存。把「測過資料函式」與「測過使用者操作」分開記錄，會讓後續"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "測試與審查",
-              "url": "https://mokaair.com/zh-TW/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -168,11 +178,13 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "powershell",
           "code": "py -m http.server 4173 --bind 127.0.0.1\n"
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "sh",
           "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -186,6 +198,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "markdown",
           "code": "# Small Steps project map\n\n## Entry and runtime\nindex.html loads style.css and app.js as a browser module.\napp.js imports core.mjs. Local HTTP preview; no dependency installation.\n\n## Flow\nsubmit -> addTask -> tasks -> persist -> input clear -> render -> input focus\ncheckbox change -> toggleTask by ID -> persist -> render with focus restoration\nfilter change -> render -> visibleTasks; hidden tasks stay in tasks\nreload -> localStorage -> decodeTasks -> tasks -> render\n\n## Storage\nKey: mokaair-codex-todo-v1. Versioned JSON; invalid data is rejected.\nBrowser storage failures leave a temporary session and a visible message.\n\n## Verification\nnode --test core.test.mjs: fill actual result and date.\nBrowser filters, reload, keyboard and storage errors: record separately.\nDo not claim checks you did not perform.\n\n## Change boundaries\nFilter logic: core.mjs visibleTasks.\nDOM and storage orchestration: app.js.\nLayout and controls: style.css and index.html.\nUnknowns and next task: fill from evidence.\n"
         },
@@ -200,15 +213,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "能依地圖指出新增、勾選、篩選及重新整理各經過哪個函式，並說明至少一項仍未驗證的行為，才算讀懂這次範圍。最後在伺服器終端機 Ctrl+C 停止，保留地圖並核對五檔與原始 expected 一致。若意外修改，只從保留原版還原那個檔案，別重設整個專案。圖中 1 是基準，2 是追查，3 是用證據核對；接下來才能"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "實作功能",
-              "url": "https://mokaair.com/zh-TW/life/codex-implement-feature"
+              "kind": "life",
+              "slug": "codex-implement-feature"
             },
             {
               "type": "text",
@@ -217,9 +231,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -257,9 +277,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -273,15 +299,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Complete "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "your first project",
-              "url": "https://mokaair.com/en/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -300,6 +327,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "sh",
           "code": "node --version\nnode --test core.test.mjs\n"
         },
@@ -309,6 +337,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Read this codex-read-lab without editing any files. Identify the actual entry point, file responsibilities and commands available from the files, not from framework assumptions.\nTrace adding a task, marking it complete, changing the filter and reloading the page. Name the relevant functions and DOM elements.\nSeparate observed code from inferred intent. List what the existing tests cover and what still needs browser verification. If evidence is missing, say so instead of inventing a backend or build step.\n"
         },
@@ -375,15 +404,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Read the third test for invalid JSON, version, duplicate IDs and field types. It validates core decoding, not actual browser error messages, keyboard focus or reload persistence. Record data-function tests separately from user-interaction checks so later "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "testing and review",
-              "url": "https://mokaair.com/en/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -402,11 +432,13 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "powershell",
           "code": "py -m http.server 4173 --bind 127.0.0.1\n"
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "sh",
           "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -420,6 +452,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "markdown",
           "code": "# Small Steps project map\n\n## Entry and runtime\nindex.html loads style.css and app.js as a browser module.\napp.js imports core.mjs. Local HTTP preview; no dependency installation.\n\n## Flow\nsubmit -> addTask -> tasks -> persist -> input clear -> render -> input focus\ncheckbox change -> toggleTask by ID -> persist -> render with focus restoration\nfilter change -> render -> visibleTasks; hidden tasks stay in tasks\nreload -> localStorage -> decodeTasks -> tasks -> render\n\n## Storage\nKey: mokaair-codex-todo-v1. Versioned JSON; invalid data is rejected.\nBrowser storage failures leave a temporary session and a visible message.\n\n## Verification\nnode --test core.test.mjs: fill actual result and date.\nBrowser filters, reload, keyboard and storage errors: record separately.\nDo not claim checks you did not perform.\n\n## Change boundaries\nFilter logic: core.mjs visibleTasks.\nDOM and storage orchestration: app.js.\nLayout and controls: style.css and index.html.\nUnknowns and next task: fill from evidence.\n"
         },
@@ -434,15 +467,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Finish by tracing add, toggle, filter and reload through the map and naming at least one unverified behavior. Stop the server with Ctrl+C, retain the map and compare all five files to original expected. Restore only an accidentally edited file, not the entire project. Diagram 1 is baseline, 2 tracing, 3 evidence checks; then proceed to "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "feature implementation",
-              "url": "https://mokaair.com/en/life/codex-implement-feature"
+              "kind": "life",
+              "slug": "codex-implement-feature"
             },
             {
               "type": "text",
@@ -451,9 +485,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -491,9 +531,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -507,11 +553,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "最初のプロジェクト",
-              "url": "https://mokaair.com/ja/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -530,6 +577,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "sh",
           "code": "node --version\nnode --test core.test.mjs\n"
         },
@@ -539,6 +587,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Read this codex-read-lab without editing any files. Identify the actual entry point, file responsibilities and commands available from the files, not from framework assumptions.\nTrace adding a task, marking it complete, changing the filter and reloading the page. Name the relevant functions and DOM elements.\nSeparate observed code from inferred intent. List what the existing tests cover and what still needs browser verification. If evidence is missing, say so instead of inventing a backend or build step.\n"
         },
@@ -605,15 +654,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "第3テストの壊れた JSON、版、重複 ID、項目型を確認します。デコード規則の証拠であり、実画面エラー、フォーカス、再読込保存の保証ではありません。データ関数と利用者操作を分けて"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "テストと確認",
-              "url": "https://mokaair.com/ja/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -632,11 +682,13 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "powershell",
           "code": "py -m http.server 4173 --bind 127.0.0.1\n"
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "sh",
           "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -650,6 +702,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "markdown",
           "code": "# Small Steps project map\n\n## Entry and runtime\nindex.html loads style.css and app.js as a browser module.\napp.js imports core.mjs. Local HTTP preview; no dependency installation.\n\n## Flow\nsubmit -> addTask -> tasks -> persist -> input clear -> render -> input focus\ncheckbox change -> toggleTask by ID -> persist -> render with focus restoration\nfilter change -> render -> visibleTasks; hidden tasks stay in tasks\nreload -> localStorage -> decodeTasks -> tasks -> render\n\n## Storage\nKey: mokaair-codex-todo-v1. Versioned JSON; invalid data is rejected.\nBrowser storage failures leave a temporary session and a visible message.\n\n## Verification\nnode --test core.test.mjs: fill actual result and date.\nBrowser filters, reload, keyboard and storage errors: record separately.\nDo not claim checks you did not perform.\n\n## Change boundaries\nFilter logic: core.mjs visibleTasks.\nDOM and storage orchestration: app.js.\nLayout and controls: style.css and index.html.\nUnknowns and next task: fill from evidence.\n"
         },
@@ -664,15 +717,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "追加、切替、絞込み、再読込を関数で説明し、未確認を最低一つ挙げられたら完了です。Ctrl+C でサーバーを止め、地図と元5ファイル一致を確認します。誤変更は対象だけ戻します。図1は基準、2は追跡、3は証拠確認で、次は"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "機能実装",
-              "url": "https://mokaair.com/ja/life/codex-implement-feature"
+              "kind": "life",
+              "slug": "codex-implement-feature"
             },
             {
               "type": "text",
@@ -681,9 +735,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -721,9 +781,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -737,11 +803,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "첫 프로젝트",
-              "url": "https://mokaair.com/ko/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -760,6 +827,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "sh",
           "code": "node --version\nnode --test core.test.mjs\n"
         },
@@ -769,6 +837,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Read this codex-read-lab without editing any files. Identify the actual entry point, file responsibilities and commands available from the files, not from framework assumptions.\nTrace adding a task, marking it complete, changing the filter and reloading the page. Name the relevant functions and DOM elements.\nSeparate observed code from inferred intent. List what the existing tests cover and what still needs browser verification. If evidence is missing, say so instead of inventing a backend or build step.\n"
         },
@@ -835,15 +904,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "세 번째 테스트의 잘못된 JSON/버전/중복 ID/필드 타입을 확인합니다. 디코딩 규칙 증거이지 실제 화면 오류/포커스/새로 고침 저장 보장은 아닙니다. 데이터 함수와 사용자 조작을 나눠 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "테스트와 검토",
-              "url": "https://mokaair.com/ko/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -862,11 +932,13 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "powershell",
           "code": "py -m http.server 4173 --bind 127.0.0.1\n"
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "sh",
           "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -880,6 +952,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "markdown",
           "code": "# Small Steps project map\n\n## Entry and runtime\nindex.html loads style.css and app.js as a browser module.\napp.js imports core.mjs. Local HTTP preview; no dependency installation.\n\n## Flow\nsubmit -> addTask -> tasks -> persist -> input clear -> render -> input focus\ncheckbox change -> toggleTask by ID -> persist -> render with focus restoration\nfilter change -> render -> visibleTasks; hidden tasks stay in tasks\nreload -> localStorage -> decodeTasks -> tasks -> render\n\n## Storage\nKey: mokaair-codex-todo-v1. Versioned JSON; invalid data is rejected.\nBrowser storage failures leave a temporary session and a visible message.\n\n## Verification\nnode --test core.test.mjs: fill actual result and date.\nBrowser filters, reload, keyboard and storage errors: record separately.\nDo not claim checks you did not perform.\n\n## Change boundaries\nFilter logic: core.mjs visibleTasks.\nDOM and storage orchestration: app.js.\nLayout and controls: style.css and index.html.\nUnknowns and next task: fill from evidence.\n"
         },
@@ -894,15 +967,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "추가/완료/필터/새로 고침을 함수로 설명하고 미확인 하나 이상을 말하면 완료입니다. Ctrl+C로 서버를 끄고 지도/원본 다섯 파일 일치를 확인합니다. 잘못 바꾼 파일만 복원합니다. 그림 1은 기준, 2는 추적, 3은 증거 확인이며 다음은 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "기능 구현",
-              "url": "https://mokaair.com/ko/life/codex-implement-feature"
+              "kind": "life",
+              "slug": "codex-implement-feature"
             },
             {
               "type": "text",
@@ -911,9 +985,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -951,9 +1031,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -967,15 +1053,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "开始前先完成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "第一个小专案",
-              "url": "https://mokaair.com/zh-CN/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -994,6 +1081,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "sh",
           "code": "node --version\nnode --test core.test.mjs\n"
         },
@@ -1003,6 +1091,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Read this codex-read-lab without editing any files. Identify the actual entry point, file responsibilities and commands available from the files, not from framework assumptions.\nTrace adding a task, marking it complete, changing the filter and reloading the page. Name the relevant functions and DOM elements.\nSeparate observed code from inferred intent. List what the existing tests cover and what still needs browser verification. If evidence is missing, say so instead of inventing a backend or build step.\n"
         },
@@ -1069,15 +1158,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "再读测试中的第三个案例，确认坏 JSON、错误版本、重复识别码及错误栏位会被拒绝。这能证明核心解码规则，但不能单靠此测试证明浏览器真的显示错误讯息、键盘焦点合理或重新整理后仍保存。把「测过资料函式」与「测过使用者操作」分开记录，会让后续"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "测试与审查",
-              "url": "https://mokaair.com/zh-CN/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -1096,11 +1186,13 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "powershell",
           "code": "py -m http.server 4173 --bind 127.0.0.1\n"
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "sh",
           "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -1114,6 +1206,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "markdown",
           "code": "# Small Steps project map\n\n## Entry and runtime\nindex.html loads style.css and app.js as a browser module.\napp.js imports core.mjs. Local HTTP preview; no dependency installation.\n\n## Flow\nsubmit -> addTask -> tasks -> persist -> input clear -> render -> input focus\ncheckbox change -> toggleTask by ID -> persist -> render with focus restoration\nfilter change -> render -> visibleTasks; hidden tasks stay in tasks\nreload -> localStorage -> decodeTasks -> tasks -> render\n\n## Storage\nKey: mokaair-codex-todo-v1. Versioned JSON; invalid data is rejected.\nBrowser storage failures leave a temporary session and a visible message.\n\n## Verification\nnode --test core.test.mjs: fill actual result and date.\nBrowser filters, reload, keyboard and storage errors: record separately.\nDo not claim checks you did not perform.\n\n## Change boundaries\nFilter logic: core.mjs visibleTasks.\nDOM and storage orchestration: app.js.\nLayout and controls: style.css and index.html.\nUnknowns and next task: fill from evidence.\n"
         },
@@ -1128,15 +1221,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "能依地图指出新增、勾选、筛选及重新整理各经过哪个函式，并说明至少一项仍未验证的行为，才算读懂这次范围。最后在伺服器终端机 Ctrl+C 停止，保留地图并核对五档与原始 expected 一致。若意外修改，只从保留原版还原那个档案，别重设整个专案。图中 1 是基准，2 是追查，3 是用证据核对；接下来才能"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "实作功能",
-              "url": "https://mokaair.com/zh-CN/life/codex-implement-feature"
+              "kind": "life",
+              "slug": "codex-implement-feature"
             },
             {
               "type": "text",
@@ -1145,9 +1239,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

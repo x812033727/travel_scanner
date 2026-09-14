@@ -24,9 +24,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -40,15 +46,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "先完成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "桌面版入門",
-              "url": "https://mokaair.com/zh-TW/life/codex-desktop-getting-started"
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
             },
             {
               "type": "text",
@@ -67,25 +74,28 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "PROJECT-LAB\nRevision: 1\nCurrent title: Small Steps\n"
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Propose the title Daily Steps.\nDo not edit note.txt until the proposal is reviewed.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "主要資料夾決定新任務起點及一些專案設定的自動探索；其他附加資料夾也可能可讀寫，但不是隔離副本。此練習沒有 Git，也不建立 worktree，方便你清楚看到兩個任務共用同一份檔案。實際程式專案要並行修改時，另依"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "worktree 教學",
-              "url": "https://mokaair.com/zh-TW/life/codex-worktrees"
+              "kind": "life",
+              "slug": "codex-worktrees"
             },
             {
               "type": "text",
@@ -104,6 +114,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Inventory this practice folder. Read note.txt and request.txt. Report their filenames, the lab marker, revision and current title. Do not edit files or search other directories. This task's outcome is a verified inventory only.\n"
         },
@@ -113,6 +124,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Read note.txt and request.txt. Propose the smallest title change that satisfies the request. Identify exactly which line would change and how to verify it. Do not implement yet; this task's outcome is a reviewable proposal.\n"
         },
@@ -127,20 +139,22 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Read note.txt from disk again now. Compare its current revision with this task's earlier record. Report the actual directory, current revision and unchanged title. Do not repair the mismatch by restoring old contents.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "這個差異是刻意設計的驗收，不是叫模型把數字改回去。同一專案的兩個任務可以共用檔案，卻各有歷史對話；釘選、改名與切換都不會建立第二份磁碟。若其中一個仍是 1，先核對路徑、主機與是否真的重新讀取，再看它是否在另一個工作樹。接續長任務時用"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "交接文件",
-              "url": "https://mokaair.com/zh-TW/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
@@ -224,15 +238,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "驗收時保存兩個命名任務、兩次 Revision: 2 的重新讀取與封存恢復結果。最後把 note.txt 的 Revision 手動還原為 1、確認標題仍是 Small Steps，再取消本練習的釘選；不必刪專案或檔案。圖中 1 是建立專案範圍，2 是分成果管理任務，3 是重新核對與整理。下一篇開始"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "閱讀既有程式",
-              "url": "https://mokaair.com/zh-TW/life/codex-understand-codebase"
+              "kind": "life",
+              "slug": "codex-understand-codebase"
             },
             {
               "type": "text",
@@ -241,9 +256,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -288,9 +309,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -304,15 +331,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "先完成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "桌面版入门",
-              "url": "https://mokaair.com/zh-CN/life/codex-desktop-getting-started"
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
             },
             {
               "type": "text",
@@ -331,25 +359,28 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "PROJECT-LAB\nRevision: 1\nCurrent title: Small Steps\n"
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Propose the title Daily Steps.\nDo not edit note.txt until the proposal is reviewed.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "主要资料夹决定新任务起点及一些专案设定的自动探索；其他附加资料夹也可能可读写，但不是隔离副本。此练习没有 Git，也不建立 worktree，方便你清楚看到两个任务共用同一份档案。实际程式专案要并行修改时，另依"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "worktree 教学",
-              "url": "https://mokaair.com/zh-CN/life/codex-worktrees"
+              "kind": "life",
+              "slug": "codex-worktrees"
             },
             {
               "type": "text",
@@ -368,6 +399,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Inventory this practice folder. Read note.txt and request.txt. Report their filenames, the lab marker, revision and current title. Do not edit files or search other directories. This task's outcome is a verified inventory only.\n"
         },
@@ -377,6 +409,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Read note.txt and request.txt. Propose the smallest title change that satisfies the request. Identify exactly which line would change and how to verify it. Do not implement yet; this task's outcome is a reviewable proposal.\n"
         },
@@ -391,20 +424,22 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Read note.txt from disk again now. Compare its current revision with this task's earlier record. Report the actual directory, current revision and unchanged title. Do not repair the mismatch by restoring old contents.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "这个差异是刻意设计的验收，不是叫模型把数字改回去。同一专案的两个任务可以共用档案，却各有历史对话；钉选、改名与切换都不会建立第二份磁碟。若其中一个仍是 1，先核对路径、主机与是否真的重新读取，再看它是否在另一个工作树。接续长任务时用"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "交接文件",
-              "url": "https://mokaair.com/zh-CN/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
@@ -488,15 +523,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "验收时保存两个命名任务、两次 Revision: 2 的重新读取与封存恢复结果。最后把 note.txt 的 Revision 手动还原为 1、确认标题仍是 Small Steps，再取消本练习的钉选；不必删专案或档案。图中 1 是建立专案范围，2 是分成果管理任务，3 是重新核对与整理。下一篇开始"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "阅读既有程式",
-              "url": "https://mokaair.com/zh-CN/life/codex-understand-codebase"
+              "kind": "life",
+              "slug": "codex-understand-codebase"
             },
             {
               "type": "text",
@@ -505,9 +541,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -552,9 +594,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -568,15 +616,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Complete "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "desktop basics",
-              "url": "https://mokaair.com/en/life/codex-desktop-getting-started"
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
             },
             {
               "type": "text",
@@ -595,25 +644,28 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "PROJECT-LAB\nRevision: 1\nCurrent title: Small Steps\n"
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Propose the title Daily Steps.\nDo not edit note.txt until the proposal is reviewed.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "The primary folder sets the starting location and default discovery for some project settings. Additional folders may also be readable/writable; they are not isolated copies. This lab has no Git or worktree, making shared files explicit. For concurrent code edits, use "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "worktrees",
-              "url": "https://mokaair.com/en/life/codex-worktrees"
+              "kind": "life",
+              "slug": "codex-worktrees"
             },
             {
               "type": "text",
@@ -632,6 +684,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Inventory this practice folder. Read note.txt and request.txt. Report their filenames, the lab marker, revision and current title. Do not edit files or search other directories. This task's outcome is a verified inventory only.\n"
         },
@@ -641,6 +694,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Read note.txt and request.txt. Propose the smallest title change that satisfies the request. Identify exactly which line would change and how to verify it. Do not implement yet; this task's outcome is a reviewable proposal.\n"
         },
@@ -655,20 +709,22 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Read note.txt from disk again now. Compare its current revision with this task's earlier record. Report the actual directory, current revision and unchanged title. Do not repair the mismatch by restoring old contents.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "The mismatch is intentional, not a request to revert it. Tasks can share files while retaining separate conversations; pinning, renaming and switching do not create another disk copy. If one still says 1, verify path, host and fresh reading, then possible worktree differences. Preserve such revision changes in a "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "handoff",
-              "url": "https://mokaair.com/en/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
@@ -752,15 +808,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Retain both named tasks, their fresh revision-2 reads and the archive/restore result. Finally restore note.txt revision 1, verify Small Steps and unpin this exercise; deleting the project or files is unnecessary. Diagram 1 establishes scope, 2 separates outcomes, 3 rechecks and organizes. Continue with "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "understanding existing code",
-              "url": "https://mokaair.com/en/life/codex-understand-codebase"
+              "kind": "life",
+              "slug": "codex-understand-codebase"
             },
             {
               "type": "text",
@@ -769,9 +826,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -816,9 +879,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -832,11 +901,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "デスクトップ基礎",
-              "url": "https://mokaair.com/ja/life/codex-desktop-getting-started"
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
             },
             {
               "type": "text",
@@ -855,25 +925,28 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "PROJECT-LAB\nRevision: 1\nCurrent title: Small Steps\n"
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Propose the title Daily Steps.\nDo not edit note.txt until the proposal is reviewed.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "主要フォルダーが起点と設定探索に使われ、追加場所も読書き可能な場合があります。分離コピーではありません。本教材は Git/worktree なしで共有を確認します。同時編集には"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "worktree",
-              "url": "https://mokaair.com/ja/life/codex-worktrees"
+              "kind": "life",
+              "slug": "codex-worktrees"
             },
             {
               "type": "text",
@@ -892,6 +965,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Inventory this practice folder. Read note.txt and request.txt. Report their filenames, the lab marker, revision and current title. Do not edit files or search other directories. This task's outcome is a verified inventory only.\n"
         },
@@ -901,6 +975,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Read note.txt and request.txt. Propose the smallest title change that satisfies the request. Identify exactly which line would change and how to verify it. Do not implement yet; this task's outcome is a reviewable proposal.\n"
         },
@@ -915,20 +990,22 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Read note.txt from disk again now. Compare its current revision with this task's earlier record. Report the actual directory, current revision and unchanged title. Do not repair the mismatch by restoring old contents.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "不一致は意図的で、元へ戻す依頼ではありません。ファイル共有と会話分離は両立し、固定や改名でコピーは作られません。一方が1なら場所、ホスト、再読、別 worktree を確認します。長作業は"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "引継ぎ",
-              "url": "https://mokaair.com/ja/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
@@ -1012,15 +1089,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "二つの命名課題、版2の再読、復元結果を残します。最後に版1と Small Steps を確認して固定を解除し、削除は不要です。図1は範囲、2は成果別課題、3は再確認と整理です。次は"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "既存コードを読む",
-              "url": "https://mokaair.com/ja/life/codex-understand-codebase"
+              "kind": "life",
+              "slug": "codex-understand-codebase"
             },
             {
               "type": "text",
@@ -1029,9 +1107,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1076,9 +1160,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1092,11 +1182,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "데스크톱 기초",
-              "url": "https://mokaair.com/ko/life/codex-desktop-getting-started"
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
             },
             {
               "type": "text",
@@ -1115,25 +1206,28 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "PROJECT-LAB\nRevision: 1\nCurrent title: Small Steps\n"
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Propose the title Daily Steps.\nDo not edit note.txt until the proposal is reviewed.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "기본 폴더는 시작점/설정 탐색에 쓰이고 추가 폴더도 읽고 쓸 수 있습니다. 격리 사본은 아닙니다. 실습은 Git/worktree 없이 공유를 확인합니다. 동시 편집에는 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "worktree",
-              "url": "https://mokaair.com/ko/life/codex-worktrees"
+              "kind": "life",
+              "slug": "codex-worktrees"
             },
             {
               "type": "text",
@@ -1152,6 +1246,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Inventory this practice folder. Read note.txt and request.txt. Report their filenames, the lab marker, revision and current title. Do not edit files or search other directories. This task's outcome is a verified inventory only.\n"
         },
@@ -1161,6 +1256,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Read note.txt and request.txt. Propose the smallest title change that satisfies the request. Identify exactly which line would change and how to verify it. Do not implement yet; this task's outcome is a reviewable proposal.\n"
         },
@@ -1175,20 +1271,22 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Read note.txt from disk again now. Compare its current revision with this task's earlier record. Report the actual directory, current revision and unchanged title. Do not repair the mismatch by restoring old contents.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "불일치는 의도적이며 복원 요청이 아닙니다. 파일 공유와 대화 분리는 함께 가능하고 고정/이름 변경이 사본을 만들지 않습니다. 한쪽이 1이면 경로/호스트/새 읽기/다른 worktree를 확인합니다. 긴 작업은 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "인계",
-              "url": "https://mokaair.com/ko/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
@@ -1272,15 +1370,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "두 이름 있는 작업, 버전 2 재읽기, 보관/복원 결과를 남깁니다. 마지막으로 버전 1과 Small Steps를 확인하고 고정을 해제하며 삭제는 필요 없습니다. 그림 1은 범위, 2는 결과별 작업, 3은 재확인/정리입니다. 다음은 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "기존 코드 읽기",
-              "url": "https://mokaair.com/ko/life/codex-understand-codebase"
+              "kind": "life",
+              "slug": "codex-understand-codebase"
             },
             {
               "type": "text",
@@ -1289,9 +1388,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

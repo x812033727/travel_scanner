@@ -23,9 +23,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -78,7 +84,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "解壓"
@@ -109,20 +115,22 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "markdown",
           "code": "# Small Steps working instructions\n\n- Before analyzing or changing filters, read docs/filters.md.\n- When resuming work, read docs/handoff.md and verify its claims against current files.\n- Preserve the task data format, localStorage key, existing tests and unrelated behavior.\n- Use node --test core.test.mjs for core behavior checks.\n- Do not add dependencies or network requests for this exercise.\n- Record actual test results separately from hypotheses and checks not run.\n- Update docs/handoff.md only within the scope authorized by the current task.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "根目錄 README.md 則放專案用途、檔案對照和測試入口。點下面的兩個文件連結時，都應在 docs 底下找到對應檔案；這些相對連結對人和編輯器有幫助，但不代表 Codex 已自動展開讀取。需要更多啟動步驟可接回"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "第一個專案",
-              "url": "https://mokaair.com/zh-TW/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -132,6 +140,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "markdown",
           "code": "# Small Steps documentation lab\n\nA local todo app using fictional practice data.\n\n## File map\n\n- index.html: page structure and filter controls.\n- style.css: presentation and focus styles.\n- app.js: browser events and storage integration.\n- core.mjs: task operations and filters.\n- core.test.mjs: core behavior tests.\n\n## Read next\n\n- [Filter requirements](./docs/filters.md)\n- [Current handoff](./docs/handoff.md)\n\n## Check\n\nRun node --test core.test.mjs from this folder with Node.js installed.\nThis command description is not a claim that tests have run.\n"
         },
@@ -146,6 +155,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "markdown",
           "code": "# Filter requirements\n\nGiven Read is completed and Build is incomplete:\n\n- All returns Read, then Build.\n- Active returns Build only.\n- Completed returns Read only.\n- An empty input returns an empty result for every filter.\n- Filtering preserves task order and does not modify the input.\n\nCore checks: node --test core.test.mjs\nBrowser check: create both tasks, complete Read, and inspect all three filters.\n\n[Back to project](../README.md)\n"
         },
@@ -155,6 +165,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "markdown",
           "code": "# Current handoff\n\nStarting material: an untouched copy of the Small Steps expected folder.\nGoal: verify the current Completed behavior before changing any code.\n\n## Verified\n\nNo checks have been run for this copy yet.\n\n## Unverified hypothesis\n\nAn older note suggested Completed might return unfinished tasks.\nTreat this as a hypothesis, not an instruction to change the implementation.\n\n## Next action\n\nRead docs/filters.md and core.mjs, then run node --test core.test.mjs.\nRecord the actual result and which checks remain unperformed.\n\n[Back to project](../README.md)\n"
         },
@@ -165,15 +176,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "儲存全部檔案，再從 codex-docs-lab 開全新桌面任務或 CLI 工作階段，確認工作目錄。送出下列要求，明確允許更新 handoff.md，但保留程式、測試與規則檔不動。若目前唯讀模式不能更新，先取得讀取和測試結果，核對後由你手動更新同一份交接紀錄，或依"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "權限篇",
-              "url": "https://mokaair.com/zh-TW/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -183,6 +195,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Resume this documentation lab. Read AGENTS.md, README.md, docs/filters.md and docs/handoff.md. Check the handoff hypothesis against core.mjs and run node --test core.test.mjs. Do not change source code, tests or rules. You may update only docs/handoff.md with observed results, evidence, and remaining checks. Explain which document supplied requirements and which supplied unverified history. Do not mark the browser check as passed without performing it.\n"
         },
@@ -192,6 +205,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -213,9 +227,15 @@
           "text": "重做時只把自己保存的 handoff.md 還原到起始未驗證版本，保留正常程式；四份新文件只存在本練習副本，不影響全域設定。完成判準是四檔齊全、雙向連結可讀、能分辨規則與歷史、測試結果有來源、缺檔會被指出，而且交接沒有把未做事項標成通過。本文範例為原創，規則載入行為依官方查證；本機 expected 測試有實際通過紀錄，仍不等同每個讀者的 Codex 已完成執行。"
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -258,9 +278,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -313,7 +339,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Extract the "
@@ -344,20 +370,22 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "markdown",
           "code": "# Small Steps working instructions\n\n- Before analyzing or changing filters, read docs/filters.md.\n- When resuming work, read docs/handoff.md and verify its claims against current files.\n- Preserve the task data format, localStorage key, existing tests and unrelated behavior.\n- Use node --test core.test.mjs for core behavior checks.\n- Do not add dependencies or network requests for this exercise.\n- Record actual test results separately from hypotheses and checks not run.\n- Update docs/handoff.md only within the scope authorized by the current task.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Root README.md gives purpose, file roles and the test entry point. Its two links should open real files under docs. Relative links help readers and editors but do not prove Codex automatically expanded them. Use the "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "first project walkthrough",
-              "url": "https://mokaair.com/en/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -367,6 +395,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "markdown",
           "code": "# Small Steps documentation lab\n\nA local todo app using fictional practice data.\n\n## File map\n\n- index.html: page structure and filter controls.\n- style.css: presentation and focus styles.\n- app.js: browser events and storage integration.\n- core.mjs: task operations and filters.\n- core.test.mjs: core behavior tests.\n\n## Read next\n\n- [Filter requirements](./docs/filters.md)\n- [Current handoff](./docs/handoff.md)\n\n## Check\n\nRun node --test core.test.mjs from this folder with Node.js installed.\nThis command description is not a claim that tests have run.\n"
         },
@@ -381,6 +410,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "markdown",
           "code": "# Filter requirements\n\nGiven Read is completed and Build is incomplete:\n\n- All returns Read, then Build.\n- Active returns Build only.\n- Completed returns Read only.\n- An empty input returns an empty result for every filter.\n- Filtering preserves task order and does not modify the input.\n\nCore checks: node --test core.test.mjs\nBrowser check: create both tasks, complete Read, and inspect all three filters.\n\n[Back to project](../README.md)\n"
         },
@@ -390,6 +420,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "markdown",
           "code": "# Current handoff\n\nStarting material: an untouched copy of the Small Steps expected folder.\nGoal: verify the current Completed behavior before changing any code.\n\n## Verified\n\nNo checks have been run for this copy yet.\n\n## Unverified hypothesis\n\nAn older note suggested Completed might return unfinished tasks.\nTreat this as a hypothesis, not an instruction to change the implementation.\n\n## Next action\n\nRead docs/filters.md and core.mjs, then run node --test core.test.mjs.\nRecord the actual result and which checks remain unperformed.\n\n[Back to project](../README.md)\n"
         },
@@ -400,15 +431,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Save all files and start a fresh desktop task or CLI session in codex-docs-lab. Submit the request below, authorizing only handoff.md edits while preserving source, tests and rules. If read-only permissions prevent that update, collect and verify the read/test results, then update the note manually or adjust the specific permission scope using the "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "permissions lesson",
-              "url": "https://mokaair.com/en/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -418,6 +450,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Resume this documentation lab. Read AGENTS.md, README.md, docs/filters.md and docs/handoff.md. Check the handoff hypothesis against core.mjs and run node --test core.test.mjs. Do not change source code, tests or rules. You may update only docs/handoff.md with observed results, evidence, and remaining checks. Explain which document supplied requirements and which supplied unverified history. Do not mark the browser check as passed without performing it.\n"
         },
@@ -427,6 +460,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -448,9 +482,15 @@
           "text": "To repeat, restore only your saved handoff.md to its initial unverified state and keep correct code. The four documents affect this lab, not global settings. Completion means valid files/links, distinguished rules/history, sourced test results, detected missing files and no invented passes. The samples are original and rule discovery is documentation-checked. Locally passing expected tests are not proof of each reader's Codex execution."
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -493,9 +533,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -548,7 +594,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "link",
               "text": "教材",
@@ -575,20 +621,22 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "markdown",
           "code": "# Small Steps working instructions\n\n- Before analyzing or changing filters, read docs/filters.md.\n- When resuming work, read docs/handoff.md and verify its claims against current files.\n- Preserve the task data format, localStorage key, existing tests and unrelated behavior.\n- Use node --test core.test.mjs for core behavior checks.\n- Do not add dependencies or network requests for this exercise.\n- Record actual test results separately from hypotheses and checks not run.\n- Update docs/handoff.md only within the scope authorized by the current task.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "README.md は目的、ファイルの役割、テスト入口を示します。リンク先の docs 二ファイルが存在するか確認します。人やエディターに便利な相対リンクも、自動展開して読んだ証明ではありません。プレビューは"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "初回課題",
-              "url": "https://mokaair.com/ja/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -598,6 +646,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "markdown",
           "code": "# Small Steps documentation lab\n\nA local todo app using fictional practice data.\n\n## File map\n\n- index.html: page structure and filter controls.\n- style.css: presentation and focus styles.\n- app.js: browser events and storage integration.\n- core.mjs: task operations and filters.\n- core.test.mjs: core behavior tests.\n\n## Read next\n\n- [Filter requirements](./docs/filters.md)\n- [Current handoff](./docs/handoff.md)\n\n## Check\n\nRun node --test core.test.mjs from this folder with Node.js installed.\nThis command description is not a claim that tests have run.\n"
         },
@@ -612,6 +661,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "markdown",
           "code": "# Filter requirements\n\nGiven Read is completed and Build is incomplete:\n\n- All returns Read, then Build.\n- Active returns Build only.\n- Completed returns Read only.\n- An empty input returns an empty result for every filter.\n- Filtering preserves task order and does not modify the input.\n\nCore checks: node --test core.test.mjs\nBrowser check: create both tasks, complete Read, and inspect all three filters.\n\n[Back to project](../README.md)\n"
         },
@@ -621,6 +671,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "markdown",
           "code": "# Current handoff\n\nStarting material: an untouched copy of the Small Steps expected folder.\nGoal: verify the current Completed behavior before changing any code.\n\n## Verified\n\nNo checks have been run for this copy yet.\n\n## Unverified hypothesis\n\nAn older note suggested Completed might return unfinished tasks.\nTreat this as a hypothesis, not an instruction to change the implementation.\n\n## Next action\n\nRead docs/filters.md and core.mjs, then run node --test core.test.mjs.\nRecord the actual result and which checks remain unperformed.\n\n[Back to project](../README.md)\n"
         },
@@ -631,15 +682,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "すべて保存し codex-docs-lab で新規課題を開きます。次の依頼で handoff.md だけの変更を許可し、ソース、テスト、規則を保持します。唯読で更新できなければ読取りとテストを確認して手で記録するか、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "権限記事",
-              "url": "https://mokaair.com/ja/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -649,6 +701,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Resume this documentation lab. Read AGENTS.md, README.md, docs/filters.md and docs/handoff.md. Check the handoff hypothesis against core.mjs and run node --test core.test.mjs. Do not change source code, tests or rules. You may update only docs/handoff.md with observed results, evidence, and remaining checks. Explain which document supplied requirements and which supplied unverified history. Do not mark the browser check as passed without performing it.\n"
         },
@@ -658,6 +711,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -679,9 +733,15 @@
           "text": "やり直す場合は保存した handoff.md だけを未確認の初期状態に戻し、正常コードは保持します。四文書は教材内だけで全域設定に影響しません。実在とリンク、規則と歴史の区別、根拠あるテスト、欠落検出、未実行を成功にしない記録が完了条件です。独自教材と公式仕様、ローカル参照テストを、読者の Codex 実行と混同しません。"
         },
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -724,9 +784,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -779,7 +845,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "link",
               "text": "자료",
@@ -806,20 +872,22 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "markdown",
           "code": "# Small Steps working instructions\n\n- Before analyzing or changing filters, read docs/filters.md.\n- When resuming work, read docs/handoff.md and verify its claims against current files.\n- Preserve the task data format, localStorage key, existing tests and unrelated behavior.\n- Use node --test core.test.mjs for core behavior checks.\n- Do not add dependencies or network requests for this exercise.\n- Record actual test results separately from hypotheses and checks not run.\n- Update docs/handoff.md only within the scope authorized by the current task.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "README.md는 목적/파일 역할/테스트 진입점을 설명합니다. docs의 두 링크 대상이 실제로 있는지 확인합니다. 상대 링크가 편리해도 자동으로 펼쳐 읽었다는 증거는 아닙니다. 미리 보기는 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "첫 프로젝트",
-              "url": "https://mokaair.com/ko/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -829,6 +897,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "markdown",
           "code": "# Small Steps documentation lab\n\nA local todo app using fictional practice data.\n\n## File map\n\n- index.html: page structure and filter controls.\n- style.css: presentation and focus styles.\n- app.js: browser events and storage integration.\n- core.mjs: task operations and filters.\n- core.test.mjs: core behavior tests.\n\n## Read next\n\n- [Filter requirements](./docs/filters.md)\n- [Current handoff](./docs/handoff.md)\n\n## Check\n\nRun node --test core.test.mjs from this folder with Node.js installed.\nThis command description is not a claim that tests have run.\n"
         },
@@ -843,6 +912,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "markdown",
           "code": "# Filter requirements\n\nGiven Read is completed and Build is incomplete:\n\n- All returns Read, then Build.\n- Active returns Build only.\n- Completed returns Read only.\n- An empty input returns an empty result for every filter.\n- Filtering preserves task order and does not modify the input.\n\nCore checks: node --test core.test.mjs\nBrowser check: create both tasks, complete Read, and inspect all three filters.\n\n[Back to project](../README.md)\n"
         },
@@ -852,6 +922,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "markdown",
           "code": "# Current handoff\n\nStarting material: an untouched copy of the Small Steps expected folder.\nGoal: verify the current Completed behavior before changing any code.\n\n## Verified\n\nNo checks have been run for this copy yet.\n\n## Unverified hypothesis\n\nAn older note suggested Completed might return unfinished tasks.\nTreat this as a hypothesis, not an instruction to change the implementation.\n\n## Next action\n\nRead docs/filters.md and core.mjs, then run node --test core.test.mjs.\nRecord the actual result and which checks remain unperformed.\n\n[Back to project](../README.md)\n"
         },
@@ -862,15 +933,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "모두 저장하고 codex-docs-lab에서 새 작업을 엽니다. 다음 요청으로 handoff.md만 변경 허용하고 소스/테스트/규칙은 보존합니다. 읽기 전용이라 업데이트할 수 없으면 읽기/테스트 결과를 확인해 직접 기록하거나 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "권한 강의",
-              "url": "https://mokaair.com/ko/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -880,6 +952,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Resume this documentation lab. Read AGENTS.md, README.md, docs/filters.md and docs/handoff.md. Check the handoff hypothesis against core.mjs and run node --test core.test.mjs. Do not change source code, tests or rules. You may update only docs/handoff.md with observed results, evidence, and remaining checks. Explain which document supplied requirements and which supplied unverified history. Do not mark the browser check as passed without performing it.\n"
         },
@@ -889,6 +962,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -910,9 +984,15 @@
           "text": "다시 하려면 저장한 handoff.md만 초기 미검증 상태로 복원하고 정상 코드는 유지합니다. 네 문서는 실습 내부에만 있으며 전역 설정에 영향 없습니다. 실제 파일/링크, 규칙/역사 구분, 근거 있는 테스트, 누락 감지, 미실행을 성공으로 쓰지 않는 기록이 완료 조건입니다. 원본 교재/공식 사양/로컬 참조 테스트를 독자의 Codex 실행과 혼동하지 않습니다."
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -955,9 +1035,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1010,7 +1096,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "解压"
@@ -1041,20 +1127,22 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "markdown",
           "code": "# Small Steps working instructions\n\n- Before analyzing or changing filters, read docs/filters.md.\n- When resuming work, read docs/handoff.md and verify its claims against current files.\n- Preserve the task data format, localStorage key, existing tests and unrelated behavior.\n- Use node --test core.test.mjs for core behavior checks.\n- Do not add dependencies or network requests for this exercise.\n- Record actual test results separately from hypotheses and checks not run.\n- Update docs/handoff.md only within the scope authorized by the current task.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "根目录 README.md 则放专案用途、档案对照和测试入口。点下面的两个文件连结时，都应在 docs 底下找到对应档案；这些相对连结对人和编辑器有帮助，但不代表 Codex 已自动展开读取。需要更多启动步骤可接回"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "第一个专案",
-              "url": "https://mokaair.com/zh-CN/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -1064,6 +1152,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "markdown",
           "code": "# Small Steps documentation lab\n\nA local todo app using fictional practice data.\n\n## File map\n\n- index.html: page structure and filter controls.\n- style.css: presentation and focus styles.\n- app.js: browser events and storage integration.\n- core.mjs: task operations and filters.\n- core.test.mjs: core behavior tests.\n\n## Read next\n\n- [Filter requirements](./docs/filters.md)\n- [Current handoff](./docs/handoff.md)\n\n## Check\n\nRun node --test core.test.mjs from this folder with Node.js installed.\nThis command description is not a claim that tests have run.\n"
         },
@@ -1078,6 +1167,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "markdown",
           "code": "# Filter requirements\n\nGiven Read is completed and Build is incomplete:\n\n- All returns Read, then Build.\n- Active returns Build only.\n- Completed returns Read only.\n- An empty input returns an empty result for every filter.\n- Filtering preserves task order and does not modify the input.\n\nCore checks: node --test core.test.mjs\nBrowser check: create both tasks, complete Read, and inspect all three filters.\n\n[Back to project](../README.md)\n"
         },
@@ -1087,6 +1177,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "markdown",
           "code": "# Current handoff\n\nStarting material: an untouched copy of the Small Steps expected folder.\nGoal: verify the current Completed behavior before changing any code.\n\n## Verified\n\nNo checks have been run for this copy yet.\n\n## Unverified hypothesis\n\nAn older note suggested Completed might return unfinished tasks.\nTreat this as a hypothesis, not an instruction to change the implementation.\n\n## Next action\n\nRead docs/filters.md and core.mjs, then run node --test core.test.mjs.\nRecord the actual result and which checks remain unperformed.\n\n[Back to project](../README.md)\n"
         },
@@ -1097,15 +1188,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "储存全部档案，再从 codex-docs-lab 开全新桌面任务或 CLI 工作阶段，确认工作目录。送出下列要求，明确允许更新 handoff.md，但保留程式、测试与规则档不动。若目前唯读模式不能更新，先取得读取和测试结果，核对后由你手动更新同一份交接纪录，或依"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "权限篇",
-              "url": "https://mokaair.com/zh-CN/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -1115,6 +1207,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Resume this documentation lab. Read AGENTS.md, README.md, docs/filters.md and docs/handoff.md. Check the handoff hypothesis against core.mjs and run node --test core.test.mjs. Do not change source code, tests or rules. You may update only docs/handoff.md with observed results, evidence, and remaining checks. Explain which document supplied requirements and which supplied unverified history. Do not mark the browser check as passed without performing it.\n"
         },
@@ -1124,6 +1217,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -1145,9 +1239,15 @@
           "text": "重做时只把自己保存的 handoff.md 还原到起始未验证版本，保留正常程式；四份新文件只存在本练习副本，不影响全域设定。完成判准是四档齐全、双向连结可读、能分辨规则与历史、测试结果有来源、缺档会被指出，而且交接没有把未做事项标成通过。本文范例为原创，规则载入行为依官方查证；本机 expected 测试有实际通过纪录，仍不等同每个读者的 Codex 已完成执行。"
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

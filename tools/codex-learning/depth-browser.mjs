@@ -15,8 +15,11 @@ const browser = await chromium.launch({ channel: "msedge", headless: true });
 const context = await browser.newContext({ permissions: ["clipboard-read", "clipboard-write"] });
 const page = await context.newPage();
 page.setDefaultNavigationTimeout(60000);
-const report = { checkedAt: new Date().toISOString(), environment: `Windows / Edge ${browser.version()} / synthetic local publication`, checks: [], errors: [] };
+const report = { status: "running", checkedAt: new Date().toISOString(), environment: `Windows / Edge ${browser.version()} / synthetic local publication`, checks: [], errors: [] };
 page.on("pageerror", error => report.errors.push(error.message));
+page.on("console", message => {
+  if (message.type() === "error" && /hydrat/i.test(message.text())) report.errors.push(message.text());
+});
 const catalog = JSON.parse(await readFile("apps/web/lib/codex-learning/catalog.json", "utf8"));
 const availableSlugs = catalog.filter(row => row.deepDraft).map(row => row.slug);
 const slugs = values.slugs ? values.slugs.split(",") : availableSlugs;
@@ -41,12 +44,13 @@ try {
       await expect(page.getByRole("searchbox")).toHaveValue("AGENTS.md");
       await expect(page.locator("main select").nth(3)).toHaveValue("D");
       assert(await page.locator("main ol li h2").count() > 0);
-      if (locale === "zh-TW") await page.screenshot({ path: resolve(out, `deep-hub-${width}.png`) });
+      if (locale === "zh-TW") await page.screenshot({ caret: "initial", path: resolve(out, `deep-hub-${width}.png`) });
       // A history entry for a changed unit must be reversible without a reload.
       await page.locator("main select").nth(3).selectOption("E");
       await page.goBack();
       await expect(page.locator("main select").nth(3)).toHaveValue("D");
       for (const slug of slugs) {
+        report.currentPage = { locale, slug, width };
         await page.goto(`${base}/${locale}/life/${slug}`, { waitUntil: "domcontentloaded" });
         await page.locator("main pre code").first().waitFor();
         const codeBlocks = packs[slug].locales[locale].blocks.filter(block => block.type === "code");
@@ -55,7 +59,7 @@ try {
         const normalize = text => text.replace(/\s+/g, "");
         const rendered = normalize(await page.locator("main").innerText());
         for (const block of packs[slug].locales[locale].blocks) {
-          const prose = block.type === "paragraph" ? block.text : block.type === "rich_paragraph" ? block.spans.map(span => span.text).join("") : null;
+          const prose = block.type === "paragraph" ? block.text : block.type === "rich_paragraph" ? block.inlines.map(span => span.text).join("") : null;
           if (prose) assert(rendered.includes(normalize(prose)), `${locale}/${slug}: current authored paragraph is missing`);
         }
         assert(await page.locator(`main a[href$="/life/codex-learning-hub"]`).count() >= 2);
@@ -69,7 +73,7 @@ try {
         await expect.poll(() => page.evaluate(async () => (await navigator.clipboard.readText()).replace(/\r\n/g, "\n"))).toBe(codeBlocks[0].code);
         if (locale === "zh-TW" && ["codex-agents-md", "codex-skills", "codex-markdown-basics", "codex-mobile-ios", "codex-ide-getting-started"].includes(slug)) {
           await firstSample.scrollIntoViewIfNeeded();
-          await page.screenshot({ path: resolve(out, `deep-${slug}-${width}.png`) });
+          await page.screenshot({ caret: "initial", path: resolve(out, `deep-${slug}-${width}.png`) });
         }
         report.checks.push(`${locale}/${slug} ${width}px: exact rendered code, clipboard after Windows CRLF normalization, locale links, hub returns, no horizontal overflow`);
       }
@@ -80,6 +84,14 @@ try {
   assert.equal(download.status(), 200);
   assert.equal((await download.body()).subarray(0, 2).toString(), "PK");
   assert.deepEqual(report.errors, []);
+  report.status = "passed";
+} catch (error) {
+  report.status = "failed";
+  report.failure = error.message;
+  report.failureUrl = page.url();
+  report.failureMainText = await page.locator("main").innerText({ timeout: 3000 }).catch(() => "main unavailable");
+  await page.screenshot({ caret: "initial", path: resolve(out, values.report.replace(/\.json$/, "-failure.png")), timeout: 10000 }).catch(() => {});
+  throw error;
 } finally {
   await writeFile(resolve(out, values.report), JSON.stringify(report, null, 2) + "\n");
   await browser.close();

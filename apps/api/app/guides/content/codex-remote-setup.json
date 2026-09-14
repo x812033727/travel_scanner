@@ -23,9 +23,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -39,15 +45,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Remote 讓手機傳送需求、核准與追問；實際檔案、工具與登入服務來自主機。它不會把手機變成可執行桌面工具的電腦，也不代表專案已上傳到 Codex 雲端。先看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "手機總覽",
-              "url": "https://mokaair.com/zh-TW/life/codex-mobile-guide"
+              "kind": "life",
+              "slug": "codex-mobile-guide"
             },
             {
               "type": "text",
@@ -83,11 +90,13 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "REMOTE-LAB-A\nRevision: 1\n"
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Read the host marker and report it. Keep both files unchanged.\n"
         },
@@ -123,6 +132,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "In this host project, read host-marker.txt and request.txt without changing files. Report the host/environment name if available, the actual working directory, and both files' exact contents. Do not infer unavailable information or use other services. If either file is missing, stop and report that.\n"
         },
@@ -184,42 +194,46 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "成功不是看到一次通知，而是能指出正確主機、重讀正確路徑的檔案、辨識更新後標記，並知道如何停止遠端存取。只收到摘要或通知時仍回任務查看工具與結果。後續看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "iPhone",
-              "url": "https://mokaair.com/zh-TW/life/codex-mobile-ios"
+              "kind": "life",
+              "slug": "codex-mobile-ios"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Android",
-              "url": "https://mokaair.com/zh-TW/life/codex-mobile-android"
+              "kind": "life",
+              "slug": "codex-mobile-android"
             },
             {
               "type": "text",
               "text": "操作分篇，以及"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "跨裝置交接",
-              "url": "https://mokaair.com/zh-TW/life/codex-cross-device-workflow"
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
             },
             {
               "type": "text",
               "text": "。若需要電腦關閉後仍由獨立環境工作，再理解"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "雲端任務",
-              "url": "https://mokaair.com/zh-TW/life/codex-cloud-tasks-github"
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
             },
             {
               "type": "text",
@@ -228,9 +242,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -278,9 +298,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -294,15 +320,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Remote lets a phone send prompts, approvals and follow-ups while the host supplies files, tools and signed-in services. It does not turn the phone into a desktop-tool runtime or establish a Codex cloud upload. Review the "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "mobile overview",
-              "url": "https://mokaair.com/en/life/codex-mobile-guide"
+              "kind": "life",
+              "slug": "codex-mobile-guide"
             },
             {
               "type": "text",
@@ -338,11 +365,13 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "REMOTE-LAB-A\nRevision: 1\n"
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Read the host marker and report it. Keep both files unchanged.\n"
         },
@@ -378,6 +407,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "In this host project, read host-marker.txt and request.txt without changing files. Report the host/environment name if available, the actual working directory, and both files' exact contents. Do not infer unavailable information or use other services. If either file is missing, stop and report that.\n"
         },
@@ -439,42 +469,46 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Success means identifying the host, freshly reading the correct path, recognizing the updated marker and knowing how to stop remote access, not merely receiving a notification. Review tool activity and results in the task. Continue with "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "iPhone",
-              "url": "https://mokaair.com/en/life/codex-mobile-ios"
+              "kind": "life",
+              "slug": "codex-mobile-ios"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Android",
-              "url": "https://mokaair.com/en/life/codex-mobile-android"
+              "kind": "life",
+              "slug": "codex-mobile-android"
             },
             {
               "type": "text",
               "text": " and "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "cross-device handoff",
-              "url": "https://mokaair.com/en/life/codex-cross-device-workflow"
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
             },
             {
               "type": "text",
               "text": ". For independent execution while your computer is off, learn the separate "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "cloud-task",
-              "url": "https://mokaair.com/en/life/codex-cloud-tasks-github"
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
             },
             {
               "type": "text",
@@ -483,9 +517,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -533,9 +573,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -549,15 +595,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Remote では電話から依頼、承認、追問を送り、ファイル、ツール、ログイン済みサービスはホストが提供します。電話でデスクトップツールが動くわけでも、Codex クラウドへアップロード済みになるわけでもありません。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "モバイル概要",
-              "url": "https://mokaair.com/ja/life/codex-mobile-guide"
+              "kind": "life",
+              "slug": "codex-mobile-guide"
             },
             {
               "type": "text",
@@ -593,11 +640,13 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "REMOTE-LAB-A\nRevision: 1\n"
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Read the host marker and report it. Keep both files unchanged.\n"
         },
@@ -633,6 +682,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "In this host project, read host-marker.txt and request.txt without changing files. Report the host/environment name if available, the actual working directory, and both files' exact contents. Do not infer unavailable information or use other services. If either file is missing, stop and report that.\n"
         },
@@ -694,42 +744,46 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "通知一回ではなく、ホスト特定、正しいパスの再読み取り、更新した印、接続停止を確認できれば完了です。タスクでツールと結果を見ます。次は "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "iPhone",
-              "url": "https://mokaair.com/ja/life/codex-mobile-ios"
+              "kind": "life",
+              "slug": "codex-mobile-ios"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Android",
-              "url": "https://mokaair.com/ja/life/codex-mobile-android"
+              "kind": "life",
+              "slug": "codex-mobile-android"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "装置間の引き継ぎ",
-              "url": "https://mokaair.com/ja/life/codex-cross-device-workflow"
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
             },
             {
               "type": "text",
               "text": "です。PC 終了後も別環境で動かすなら"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "クラウド課題",
-              "url": "https://mokaair.com/ja/life/codex-cloud-tasks-github"
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
             },
             {
               "type": "text",
@@ -738,9 +792,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -788,9 +848,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -804,15 +870,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Remote는 휴대전화에서 요청, 승인, 후속 질문을 보내고 호스트가 파일, 도구, 로그인 서비스를 제공합니다. 전화가 데스크톱 도구 실행 환경이 되거나 Codex 클라우드 업로드가 완료된다는 뜻은 아닙니다. "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "모바일 개요",
-              "url": "https://mokaair.com/ko/life/codex-mobile-guide"
+              "kind": "life",
+              "slug": "codex-mobile-guide"
             },
             {
               "type": "text",
@@ -848,11 +915,13 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "REMOTE-LAB-A\nRevision: 1\n"
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Read the host marker and report it. Keep both files unchanged.\n"
         },
@@ -888,6 +957,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "In this host project, read host-marker.txt and request.txt without changing files. Report the host/environment name if available, the actual working directory, and both files' exact contents. Do not infer unavailable information or use other services. If either file is missing, stop and report that.\n"
         },
@@ -949,42 +1019,46 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "알림 한 번이 아닌 호스트 식별, 올바른 경로 새로 읽기, 갱신된 표식, 원격 접근 중지 방법까지 확인해야 완료입니다. 작업에서 도구와 결과를 확인하세요. 다음은 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "iPhone",
-              "url": "https://mokaair.com/ko/life/codex-mobile-ios"
+              "kind": "life",
+              "slug": "codex-mobile-ios"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Android",
-              "url": "https://mokaair.com/ko/life/codex-mobile-android"
+              "kind": "life",
+              "slug": "codex-mobile-android"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "기기 간 인계",
-              "url": "https://mokaair.com/ko/life/codex-cross-device-workflow"
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
             },
             {
               "type": "text",
               "text": "입니다. 컴퓨터가 꺼져도 별도 환경에서 실행하려면 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "클라우드 작업",
-              "url": "https://mokaair.com/ko/life/codex-cloud-tasks-github"
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
             },
             {
               "type": "text",
@@ -993,9 +1067,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1043,9 +1123,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1059,15 +1145,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Remote 让手机传送需求、核准与追问；实际档案、工具与登入服务来自主机。它不会把手机变成可执行桌面工具的电脑，也不代表专案已上传到 Codex 云端。先看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "手机总览",
-              "url": "https://mokaair.com/zh-CN/life/codex-mobile-guide"
+              "kind": "life",
+              "slug": "codex-mobile-guide"
             },
             {
               "type": "text",
@@ -1103,11 +1190,13 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "REMOTE-LAB-A\nRevision: 1\n"
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Read the host marker and report it. Keep both files unchanged.\n"
         },
@@ -1143,6 +1232,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "In this host project, read host-marker.txt and request.txt without changing files. Report the host/environment name if available, the actual working directory, and both files' exact contents. Do not infer unavailable information or use other services. If either file is missing, stop and report that.\n"
         },
@@ -1204,42 +1294,46 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "成功不是看到一次通知，而是能指出正确主机、重读正确路径的档案、辨识更新后标记，并知道如何停止远端存取。只收到摘要或通知时仍回任务查看工具与结果。后续看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "iPhone",
-              "url": "https://mokaair.com/zh-CN/life/codex-mobile-ios"
+              "kind": "life",
+              "slug": "codex-mobile-ios"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Android",
-              "url": "https://mokaair.com/zh-CN/life/codex-mobile-android"
+              "kind": "life",
+              "slug": "codex-mobile-android"
             },
             {
               "type": "text",
               "text": "操作分篇，以及"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "跨装置交接",
-              "url": "https://mokaair.com/zh-CN/life/codex-cross-device-workflow"
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
             },
             {
               "type": "text",
               "text": "。若需要电脑关闭后仍由独立环境工作，再理解"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "云端任务",
-              "url": "https://mokaair.com/zh-CN/life/codex-cloud-tasks-github"
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
             },
             {
               "type": "text",
@@ -1248,9 +1342,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

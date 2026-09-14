@@ -24,9 +24,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -45,7 +51,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "下載"
@@ -67,15 +73,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Windows 在這個資料夾開啟 PowerShell，macOS／Linux 開啟終端機；不熟位置確認時先讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "終端機與路徑",
-              "url": "https://mokaair.com/zh-TW/life/codex-terminal-paths"
+              "kind": "life",
+              "slug": "codex-terminal-paths"
             },
             {
               "type": "text",
@@ -94,6 +101,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "shell",
           "code": "node --test core.test.mjs\n"
         },
@@ -103,6 +111,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "powershell",
           "code": "py -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -112,6 +121,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "bash",
           "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -130,6 +140,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Work only in this codex-first-site practice folder.\n1. In index.html, set the h1 text to \"Small steps, clear progress.\"\n2. In style.css, set the :root background to #fff8ed.\nKeep all todo behavior, labels, storage keys and data formats unchanged.\nDo not add packages or external requests. Do not deploy the site.\nRun node --test core.test.mjs.\nCheck the page at 390px and 1280px if browser access is available.\nReport changed files, checks performed and any checks not run.\n"
         },
@@ -152,6 +163,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "<img src=x>\n"
         },
@@ -175,33 +187,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "自主練習只改主標題成自己的另一句英文，仍保留所有功能並重做正常與空值案例。你能交付修改前後差異、實際測試結果、兩種寬度的觀察及未執行專案，就完成這一篇。接著讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "需求描述",
-              "url": "https://mokaair.com/zh-TW/life/codex-prompting"
+              "kind": "life",
+              "slug": "codex-prompting"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "專案規則",
-              "url": "https://mokaair.com/zh-TW/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
               "text": "與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "測試及審查",
-              "url": "https://mokaair.com/zh-TW/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -211,7 +226,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "材料是本系列原創、可公開分享的虛構練習網站。參考版核心與瀏覽器行為已在 Windows／Edge 驗證；其他 OS 的啟動說明未冒充實機測試。Codex 入口依 2026-09-14 的"
@@ -267,9 +282,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -362,9 +383,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -383,7 +410,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "下载"
@@ -405,15 +432,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Windows 在这个资料夹开启 PowerShell，macOS／Linux 开启终端机；不熟位置确认时先读"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "终端机与路径",
-              "url": "https://mokaair.com/zh-CN/life/codex-terminal-paths"
+              "kind": "life",
+              "slug": "codex-terminal-paths"
             },
             {
               "type": "text",
@@ -432,6 +460,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "shell",
           "code": "node --test core.test.mjs\n"
         },
@@ -441,6 +470,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "powershell",
           "code": "py -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -450,6 +480,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "bash",
           "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -468,6 +499,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Work only in this codex-first-site practice folder.\n1. In index.html, set the h1 text to \"Small steps, clear progress.\"\n2. In style.css, set the :root background to #fff8ed.\nKeep all todo behavior, labels, storage keys and data formats unchanged.\nDo not add packages or external requests. Do not deploy the site.\nRun node --test core.test.mjs.\nCheck the page at 390px and 1280px if browser access is available.\nReport changed files, checks performed and any checks not run.\n"
         },
@@ -490,6 +522,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "<img src=x>\n"
         },
@@ -513,33 +546,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "自主练习只改主标题成自己的另一句英文，仍保留所有功能并重做正常与空值案例。你能交付修改前后差异、实际测试结果、两种宽度的观察及未执行专案，就完成这一篇。接著读"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "需求描述",
-              "url": "https://mokaair.com/zh-CN/life/codex-prompting"
+              "kind": "life",
+              "slug": "codex-prompting"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "专案规则",
-              "url": "https://mokaair.com/zh-CN/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
               "text": "与"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "测试及审查",
-              "url": "https://mokaair.com/zh-CN/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -549,7 +585,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "材料是本系列原创、可公开分享的虚构练习网站。参考版核心与浏览器行为已在 Windows／Edge 验证；其他 OS 的启动说明未冒充实机测试。Codex 入口依 2026-09-14 的"
@@ -605,9 +641,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -700,9 +742,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -721,7 +769,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Download the "
@@ -743,15 +791,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Open PowerShell in this folder on Windows or a terminal on macOS/Linux. See "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "terminal paths",
-              "url": "https://mokaair.com/en/life/codex-terminal-paths"
+              "kind": "life",
+              "slug": "codex-terminal-paths"
             },
             {
               "type": "text",
@@ -770,6 +819,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "shell",
           "code": "node --test core.test.mjs\n"
         },
@@ -779,6 +829,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "powershell",
           "code": "py -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -788,6 +839,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "bash",
           "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -806,6 +858,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Work only in this codex-first-site practice folder.\n1. In index.html, set the h1 text to \"Small steps, clear progress.\"\n2. In style.css, set the :root background to #fff8ed.\nKeep all todo behavior, labels, storage keys and data formats unchanged.\nDo not add packages or external requests. Do not deploy the site.\nRun node --test core.test.mjs.\nCheck the page at 390px and 1280px if browser access is available.\nReport changed files, checks performed and any checks not run.\n"
         },
@@ -828,6 +881,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "<img src=x>\n"
         },
@@ -851,33 +905,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "For independent practice, change only the heading to another English sentence, preserve all behavior and repeat normal and empty-input cases. Finish by delivering the actual diff, test results, observations at both widths and checks not run. Continue with "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "writing requests",
-              "url": "https://mokaair.com/en/life/codex-prompting"
+              "kind": "life",
+              "slug": "codex-prompting"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "project instructions",
-              "url": "https://mokaair.com/en/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
               "text": " and "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "testing and review",
-              "url": "https://mokaair.com/en/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -887,7 +944,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "The materials are an original, shareable fictional website. Reference core and browser behavior were verified on Windows/Edge; other OS startup instructions are not claimed as hands-on tests. Codex entry points were checked on 2026-09-14 against the "
@@ -943,9 +1000,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1038,9 +1101,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1059,7 +1128,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "link",
               "text": "Small Steps 教材",
@@ -1077,15 +1146,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Windows はこのフォルダーで PowerShell、macOS/Linux は端末を開きます。不慣れなら"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "端末とパス",
-              "url": "https://mokaair.com/ja/life/codex-terminal-paths"
+              "kind": "life",
+              "slug": "codex-terminal-paths"
             },
             {
               "type": "text",
@@ -1104,6 +1174,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "shell",
           "code": "node --test core.test.mjs\n"
         },
@@ -1113,6 +1184,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "powershell",
           "code": "py -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -1122,6 +1194,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "bash",
           "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -1140,6 +1213,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Work only in this codex-first-site practice folder.\n1. In index.html, set the h1 text to \"Small steps, clear progress.\"\n2. In style.css, set the :root background to #fff8ed.\nKeep all todo behavior, labels, storage keys and data formats unchanged.\nDo not add packages or external requests. Do not deploy the site.\nRun node --test core.test.mjs.\nCheck the page at 390px and 1280px if browser access is available.\nReport changed files, checks performed and any checks not run.\n"
         },
@@ -1162,6 +1236,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "<img src=x>\n"
         },
@@ -1185,33 +1260,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "追加練習は主見出しを別の英文に変えるだけにして、正常系と空入力を再確認します。実際の差分、テスト結果、二つの幅の観察、未実施項目を提出できれば完了です。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "依頼の書き方",
-              "url": "https://mokaair.com/ja/life/codex-prompting"
+              "kind": "life",
+              "slug": "codex-prompting"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "プロジェクト規則",
-              "url": "https://mokaair.com/ja/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "テストとレビュー",
-              "url": "https://mokaair.com/ja/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -1221,7 +1299,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "教材はこのシリーズ独自の公開共有可能な架空サイトです。参考版の基本動作とブラウザー動作は Windows/Edge で検証し、他 OS の起動説明を実機試験と称していません。入口は 2026-09-14 の"
@@ -1277,9 +1355,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1372,9 +1456,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1393,7 +1483,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "link",
               "text": "Small Steps 실습 자료",
@@ -1411,15 +1501,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Windows에서는 이 폴더에서 PowerShell을, macOS/Linux에서는 터미널을 엽니다. 위치 확인이 낯설면 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "터미널과 경로",
-              "url": "https://mokaair.com/ko/life/codex-terminal-paths"
+              "kind": "life",
+              "slug": "codex-terminal-paths"
             },
             {
               "type": "text",
@@ -1438,6 +1529,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "shell",
           "code": "node --test core.test.mjs\n"
         },
@@ -1447,6 +1539,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "powershell",
           "code": "py -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -1456,6 +1549,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "bash",
           "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -1474,6 +1568,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Work only in this codex-first-site practice folder.\n1. In index.html, set the h1 text to \"Small steps, clear progress.\"\n2. In style.css, set the :root background to #fff8ed.\nKeep all todo behavior, labels, storage keys and data formats unchanged.\nDo not add packages or external requests. Do not deploy the site.\nRun node --test core.test.mjs.\nCheck the page at 390px and 1280px if browser access is available.\nReport changed files, checks performed and any checks not run.\n"
         },
@@ -1496,6 +1591,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "<img src=x>\n"
         },
@@ -1519,33 +1615,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "추가 연습으로 주 제목만 다른 영어 문장으로 바꾸고 모든 기능을 보존한 채 정상 입력과 빈 입력을 다시 확인합니다. 실제 차이, 테스트 결과, 두 화면 폭의 관찰, 미실행 항목을 제출하면 완료입니다. "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "요청 작성",
-              "url": "https://mokaair.com/ko/life/codex-prompting"
+              "kind": "life",
+              "slug": "codex-prompting"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "프로젝트 규칙",
-              "url": "https://mokaair.com/ko/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "테스트와 검토",
-              "url": "https://mokaair.com/ko/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -1555,7 +1654,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "자료는 이 시리즈가 직접 만든 공개 공유 가능한 가상 사이트입니다. 참고 버전의 핵심 및 브라우저 동작은 Windows/Edge에서 확인했으며 다른 OS의 시작 안내를 직접 테스트했다고 주장하지 않습니다. Codex 진입점은 2026-09-14의 "
@@ -1611,9 +1710,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

@@ -23,9 +23,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -39,11 +45,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "Plan 模式篇",
-              "url": "https://mokaair.com/zh-TW/life/codex-plan-mode"
+              "kind": "life",
+              "slug": "codex-plan-mode"
             },
             {
               "type": "text",
@@ -62,6 +69,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -80,11 +88,13 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "javascript",
           "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = Object.freeze([\n  Object.freeze({ id: \"a\", title: \"Read\", completed: true }),\n  Object.freeze({ id: \"b\", title: \"Build\", completed: false }),\n  Object.freeze({ id: \"c\", title: \"Read\", completed: true }),\n]);\nconst ids = (items) => items.map((item) => item.id);\n\ntest(\"filters preserve identity and order with duplicate titles\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"active\")), [\"b\"]);\n  assert.deepEqual(ids(visibleTasks(tasks, \"completed\")), [\"a\", \"c\"]);\n  assert.deepEqual(ids(tasks), [\"a\", \"b\", \"c\"]);\n});\n\ntest(\"All retains every task without changing its completion state\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"all\")), [\"a\", \"b\", \"c\"]);\n  assert.deepEqual(tasks.map((task) => task.completed), [true, false, true]);\n});\n\ntest(\"every filter accepts an empty list\", () => {\n  for (const filter of [\"all\", \"active\", \"completed\"]) {\n    assert.deepEqual(visibleTasks(Object.freeze([]), filter), []);\n  }\n});\n"
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "sh",
           "code": "node --test core.test.mjs filter.test.mjs\n"
         },
@@ -103,6 +113,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Implement the missing filters in this codex-feature-lab.\nRead index.html, app.js, core.mjs, core.test.mjs and filter.test.mjs first.\nModify only visibleTasks in core.mjs: all keeps every task, active returns unfinished tasks, completed returns finished tasks. Preserve original order, IDs and input data. Do not edit tests, add dependencies or change UI/storage.\nRun node --test core.test.mjs filter.test.mjs. Inspect the final diff and report actual results and any unperformed browser checks. Stop and explain if the requested scope cannot satisfy the tests. Do not publish or deploy.\n"
         },
@@ -112,6 +123,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },
@@ -175,9 +187,15 @@
           "text": "交付應包含六項測試摘要、畫面案例、最終差異，以及沒有操作的檢查清單。重做時停止預覽，只從 start 還原 core.mjs；若保留新測試，應回到 4 過 2 敗，若只執行舊測試，則是 2 過 1 敗。保留兩個命令的差別，避免把測試數量不同誤當另一個故障。圖中 1 是固定案例，2 是限定修改，3 是回歸與還原。這些是可執行參考材料，不是聲稱已替你執行 Codex 任務。"
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -244,9 +262,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -260,11 +284,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "Plan mode",
-              "url": "https://mokaair.com/en/life/codex-plan-mode"
+              "kind": "life",
+              "slug": "codex-plan-mode"
             },
             {
               "type": "text",
@@ -283,6 +308,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -301,11 +327,13 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "javascript",
           "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = Object.freeze([\n  Object.freeze({ id: \"a\", title: \"Read\", completed: true }),\n  Object.freeze({ id: \"b\", title: \"Build\", completed: false }),\n  Object.freeze({ id: \"c\", title: \"Read\", completed: true }),\n]);\nconst ids = (items) => items.map((item) => item.id);\n\ntest(\"filters preserve identity and order with duplicate titles\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"active\")), [\"b\"]);\n  assert.deepEqual(ids(visibleTasks(tasks, \"completed\")), [\"a\", \"c\"]);\n  assert.deepEqual(ids(tasks), [\"a\", \"b\", \"c\"]);\n});\n\ntest(\"All retains every task without changing its completion state\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"all\")), [\"a\", \"b\", \"c\"]);\n  assert.deepEqual(tasks.map((task) => task.completed), [true, false, true]);\n});\n\ntest(\"every filter accepts an empty list\", () => {\n  for (const filter of [\"all\", \"active\", \"completed\"]) {\n    assert.deepEqual(visibleTasks(Object.freeze([]), filter), []);\n  }\n});\n"
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "sh",
           "code": "node --test core.test.mjs filter.test.mjs\n"
         },
@@ -324,6 +352,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Implement the missing filters in this codex-feature-lab.\nRead index.html, app.js, core.mjs, core.test.mjs and filter.test.mjs first.\nModify only visibleTasks in core.mjs: all keeps every task, active returns unfinished tasks, completed returns finished tasks. Preserve original order, IDs and input data. Do not edit tests, add dependencies or change UI/storage.\nRun node --test core.test.mjs filter.test.mjs. Inspect the final diff and report actual results and any unperformed browser checks. Stop and explain if the requested scope cannot satisfy the tests. Do not publish or deploy.\n"
         },
@@ -333,6 +362,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },
@@ -396,9 +426,15 @@
           "text": "Deliver six-test results, UI cases, final diff and omitted checks. To repeat, stop preview and restore only core.mjs from start. With new tests retained, expect four passes/two failures; original tests alone yield two passes/one failure. Distinguish those commands rather than treating count changes as another defect. Diagram 1 fixes cases, 2 limits edits, 3 verifies regression/restoration. These are executable reference materials, not claims of running your Codex task."
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -465,9 +501,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -481,11 +523,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "Plan",
-              "url": "https://mokaair.com/ja/life/codex-plan-mode"
+              "kind": "life",
+              "slug": "codex-plan-mode"
             },
             {
               "type": "text",
@@ -504,6 +547,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -522,11 +566,13 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "javascript",
           "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = Object.freeze([\n  Object.freeze({ id: \"a\", title: \"Read\", completed: true }),\n  Object.freeze({ id: \"b\", title: \"Build\", completed: false }),\n  Object.freeze({ id: \"c\", title: \"Read\", completed: true }),\n]);\nconst ids = (items) => items.map((item) => item.id);\n\ntest(\"filters preserve identity and order with duplicate titles\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"active\")), [\"b\"]);\n  assert.deepEqual(ids(visibleTasks(tasks, \"completed\")), [\"a\", \"c\"]);\n  assert.deepEqual(ids(tasks), [\"a\", \"b\", \"c\"]);\n});\n\ntest(\"All retains every task without changing its completion state\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"all\")), [\"a\", \"b\", \"c\"]);\n  assert.deepEqual(tasks.map((task) => task.completed), [true, false, true]);\n});\n\ntest(\"every filter accepts an empty list\", () => {\n  for (const filter of [\"all\", \"active\", \"completed\"]) {\n    assert.deepEqual(visibleTasks(Object.freeze([]), filter), []);\n  }\n});\n"
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "sh",
           "code": "node --test core.test.mjs filter.test.mjs\n"
         },
@@ -545,6 +591,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Implement the missing filters in this codex-feature-lab.\nRead index.html, app.js, core.mjs, core.test.mjs and filter.test.mjs first.\nModify only visibleTasks in core.mjs: all keeps every task, active returns unfinished tasks, completed returns finished tasks. Preserve original order, IDs and input data. Do not edit tests, add dependencies or change UI/storage.\nRun node --test core.test.mjs filter.test.mjs. Inspect the final diff and report actual results and any unperformed browser checks. Stop and explain if the requested scope cannot satisfy the tests. Do not publish or deploy.\n"
         },
@@ -554,6 +601,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },
@@ -617,9 +665,15 @@
           "text": "6テスト、画面例、最終差分、未実施を渡します。再実行は停止後 core.mjs だけ start へ戻し、新テスト込みは4成功2失敗、旧テストのみは2成功1失敗です。命令差を区別します。図1は事例固定、2は限定変更、3は回帰・復元で、読者の Codex 実行を主張しません。"
         },
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -686,9 +740,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -702,11 +762,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "Plan",
-              "url": "https://mokaair.com/ko/life/codex-plan-mode"
+              "kind": "life",
+              "slug": "codex-plan-mode"
             },
             {
               "type": "text",
@@ -725,6 +786,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -743,11 +805,13 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "javascript",
           "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = Object.freeze([\n  Object.freeze({ id: \"a\", title: \"Read\", completed: true }),\n  Object.freeze({ id: \"b\", title: \"Build\", completed: false }),\n  Object.freeze({ id: \"c\", title: \"Read\", completed: true }),\n]);\nconst ids = (items) => items.map((item) => item.id);\n\ntest(\"filters preserve identity and order with duplicate titles\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"active\")), [\"b\"]);\n  assert.deepEqual(ids(visibleTasks(tasks, \"completed\")), [\"a\", \"c\"]);\n  assert.deepEqual(ids(tasks), [\"a\", \"b\", \"c\"]);\n});\n\ntest(\"All retains every task without changing its completion state\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"all\")), [\"a\", \"b\", \"c\"]);\n  assert.deepEqual(tasks.map((task) => task.completed), [true, false, true]);\n});\n\ntest(\"every filter accepts an empty list\", () => {\n  for (const filter of [\"all\", \"active\", \"completed\"]) {\n    assert.deepEqual(visibleTasks(Object.freeze([]), filter), []);\n  }\n});\n"
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "sh",
           "code": "node --test core.test.mjs filter.test.mjs\n"
         },
@@ -766,6 +830,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Implement the missing filters in this codex-feature-lab.\nRead index.html, app.js, core.mjs, core.test.mjs and filter.test.mjs first.\nModify only visibleTasks in core.mjs: all keeps every task, active returns unfinished tasks, completed returns finished tasks. Preserve original order, IDs and input data. Do not edit tests, add dependencies or change UI/storage.\nRun node --test core.test.mjs filter.test.mjs. Inspect the final diff and report actual results and any unperformed browser checks. Stop and explain if the requested scope cannot satisfy the tests. Do not publish or deploy.\n"
         },
@@ -775,6 +840,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },
@@ -838,9 +904,15 @@
           "text": "6개 테스트/화면 사례/최종 차이/미실행을 전달합니다. 반복은 미리 보기 종료 후 core.mjs만 start로 복원하며 새 테스트 포함은 4통과2실패, 기존만은 2통과1실패입니다. 명령 차이를 구분합니다. 그림 1은 사례 고정, 2는 제한 변경, 3은 회귀/복원이며 독자의 Codex 실행을 주장하지 않습니다."
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -907,9 +979,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -923,11 +1001,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "Plan 模式篇",
-              "url": "https://mokaair.com/zh-CN/life/codex-plan-mode"
+              "kind": "life",
+              "slug": "codex-plan-mode"
             },
             {
               "type": "text",
@@ -946,6 +1025,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -964,11 +1044,13 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "javascript",
           "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = Object.freeze([\n  Object.freeze({ id: \"a\", title: \"Read\", completed: true }),\n  Object.freeze({ id: \"b\", title: \"Build\", completed: false }),\n  Object.freeze({ id: \"c\", title: \"Read\", completed: true }),\n]);\nconst ids = (items) => items.map((item) => item.id);\n\ntest(\"filters preserve identity and order with duplicate titles\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"active\")), [\"b\"]);\n  assert.deepEqual(ids(visibleTasks(tasks, \"completed\")), [\"a\", \"c\"]);\n  assert.deepEqual(ids(tasks), [\"a\", \"b\", \"c\"]);\n});\n\ntest(\"All retains every task without changing its completion state\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"all\")), [\"a\", \"b\", \"c\"]);\n  assert.deepEqual(tasks.map((task) => task.completed), [true, false, true]);\n});\n\ntest(\"every filter accepts an empty list\", () => {\n  for (const filter of [\"all\", \"active\", \"completed\"]) {\n    assert.deepEqual(visibleTasks(Object.freeze([]), filter), []);\n  }\n});\n"
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "sh",
           "code": "node --test core.test.mjs filter.test.mjs\n"
         },
@@ -987,6 +1069,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Implement the missing filters in this codex-feature-lab.\nRead index.html, app.js, core.mjs, core.test.mjs and filter.test.mjs first.\nModify only visibleTasks in core.mjs: all keeps every task, active returns unfinished tasks, completed returns finished tasks. Preserve original order, IDs and input data. Do not edit tests, add dependencies or change UI/storage.\nRun node --test core.test.mjs filter.test.mjs. Inspect the final diff and report actual results and any unperformed browser checks. Stop and explain if the requested scope cannot satisfy the tests. Do not publish or deploy.\n"
         },
@@ -996,6 +1079,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },
@@ -1059,9 +1143,15 @@
           "text": "交付应包含六项测试摘要、画面案例、最终差异，以及没有操作的检查清单。重做时停止预览，只从 start 还原 core.mjs；若保留新测试，应回到 4 过 2 败，若只执行旧测试，则是 2 过 1 败。保留两个命令的差别，避免把测试数量不同误当另一个故障。图中 1 是固定案例，2 是限定修改，3 是回归与还原。这些是可执行参考材料，不是声称已替你执行 Codex 任务。"
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

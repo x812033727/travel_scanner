@@ -23,9 +23,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -39,24 +45,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Windows 原生 CLI 不要求先裝 WSL。若開啟的是 Ubuntu、路徑以 /home 開頭，請改看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Linux／WSL",
-              "url": "https://mokaair.com/zh-TW/life/codex-cli-linux-wsl"
+              "kind": "life",
+              "slug": "codex-cli-linux-wsl"
             },
             {
               "type": "text",
               "text": "；本篇在 PowerShell 進行。先完成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 共用入門",
-              "url": "https://mokaair.com/zh-TW/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
@@ -75,6 +83,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "powershell",
           "code": "Get-Command codex -All | Select-Object CommandType, Name, Source\ncodex --version\n"
         },
@@ -84,6 +93,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "powershell",
           "code": "powershell -ExecutionPolicy ByPass -c \"irm https://chatgpt.com/codex/install.ps1 | iex\"\n"
         },
@@ -102,6 +112,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "powershell",
           "code": "node --version\nnpm.cmd --version\nnpm.cmd install -g @openai/codex\n"
         },
@@ -116,6 +127,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "powershell",
           "code": "$cliLab = Join-Path (Get-Location) 'codex windows lab'\nif (Test-Path -LiteralPath $cliLab) { throw 'Choose a new practice folder name.' }\nNew-Item -ItemType Directory -Path $cliLab -ErrorAction Stop\nSet-Location -LiteralPath $cliLab\nSet-Content -LiteralPath 'note.txt' -Value 'WINDOWS-CLI-01' -Encoding utf8\nGet-Location\nGet-ChildItem\nGet-Content -LiteralPath 'note.txt'\n"
         },
@@ -125,6 +137,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "powershell",
           "code": "Get-FileHash -LiteralPath 'note.txt' -Algorithm SHA256\n"
         },
@@ -139,20 +152,22 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "powershell",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Windows 沙盒設定可能需要一次管理員核准；這和把日常 PowerShell 視窗長期以管理員執行不同。官方以 elevated 為較強的原生選項，unelevated 是受限制的替代方式，組織可禁止替代。若初始化失敗，先記錄 Windows 版本、沙盒模式及錯誤階段；不要直接把教學改成全存取模式。需要調整時先看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "許可權與沙盒",
-              "url": "https://mokaair.com/zh-TW/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -162,6 +177,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Read note.txt in the current practice folder. Report the exact content and current working directory. Do not edit, create files, or use external services. If it is missing or inaccessible, report the actual error.\n"
         },
@@ -214,24 +230,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "你應能指出正在執行哪一份 CLI、從哪個資料夾啟動、登入狀態如何、讀到的標記為何，以及唯讀前後雜湊是否相同。把安裝管道、版本、錯誤和解法記在自己的練習筆記即可，不需儲存憑證內容。接著回"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 共用入門",
-              "url": "https://mokaair.com/zh-TW/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
               "text": "完成小幅修改與接續；若要在編輯器工作，再看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "IDE 擴充套件",
-              "url": "https://mokaair.com/zh-TW/life/codex-ide-getting-started"
+              "kind": "life",
+              "slug": "codex-ide-getting-started"
             },
             {
               "type": "text",
@@ -240,9 +258,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -295,9 +319,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -311,24 +341,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Native Windows CLI does not require WSL. If your terminal is Ubuntu with /home paths, use "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Linux / WSL",
-              "url": "https://mokaair.com/en/life/codex-cli-linux-wsl"
+              "kind": "life",
+              "slug": "codex-cli-linux-wsl"
             },
             {
               "type": "text",
               "text": ". This lesson uses PowerShell. Review environment selection in "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI basics",
-              "url": "https://mokaair.com/en/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
@@ -347,6 +379,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "powershell",
           "code": "Get-Command codex -All | Select-Object CommandType, Name, Source\ncodex --version\n"
         },
@@ -356,6 +389,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "powershell",
           "code": "powershell -ExecutionPolicy ByPass -c \"irm https://chatgpt.com/codex/install.ps1 | iex\"\n"
         },
@@ -374,6 +408,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "powershell",
           "code": "node --version\nnpm.cmd --version\nnpm.cmd install -g @openai/codex\n"
         },
@@ -388,6 +423,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "powershell",
           "code": "$cliLab = Join-Path (Get-Location) 'codex windows lab'\nif (Test-Path -LiteralPath $cliLab) { throw 'Choose a new practice folder name.' }\nNew-Item -ItemType Directory -Path $cliLab -ErrorAction Stop\nSet-Location -LiteralPath $cliLab\nSet-Content -LiteralPath 'note.txt' -Value 'WINDOWS-CLI-01' -Encoding utf8\nGet-Location\nGet-ChildItem\nGet-Content -LiteralPath 'note.txt'\n"
         },
@@ -397,6 +433,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "powershell",
           "code": "Get-FileHash -LiteralPath 'note.txt' -Algorithm SHA256\n"
         },
@@ -411,20 +448,22 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "powershell",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Windows sandbox setup may request one-time administrator approval; this is distinct from running everyday PowerShell as administrator. Official guidance prefers the stronger elevated native sandbox and provides unelevated as a restricted fallback that organizations may prohibit. On setup failure, record Windows version, sandbox mode and failure stage rather than switching the exercise to full access. See "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "permissions and sandboxing",
-              "url": "https://mokaair.com/en/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -434,6 +473,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Read note.txt in the current practice folder. Report the exact content and current working directory. Do not edit, create files, or use external services. If it is missing or inaccessible, report the actual error.\n"
         },
@@ -486,24 +526,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "You should identify which CLI runs, its working folder, authentication state, file marker and whether the hash stayed unchanged. Record channel, version, errors and solutions in practice notes without credential contents. Return to "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI basics",
-              "url": "https://mokaair.com/en/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
               "text": " for a focused edit and resume, or continue to the "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "IDE extension",
-              "url": "https://mokaair.com/en/life/codex-ide-getting-started"
+              "kind": "life",
+              "slug": "codex-ide-getting-started"
             },
             {
               "type": "text",
@@ -512,9 +554,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -567,9 +615,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -583,24 +637,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Windows ネイティブの CLI に WSL は必須ではありません。Ubuntu を開き、/home のパスが出ている場合は "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Linux / WSL",
-              "url": "https://mokaair.com/ja/life/codex-cli-linux-wsl"
+              "kind": "life",
+              "slug": "codex-cli-linux-wsl"
             },
             {
               "type": "text",
               "text": " を使います。本記事は PowerShell 用です。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 基礎",
-              "url": "https://mokaair.com/ja/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
@@ -619,6 +675,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "powershell",
           "code": "Get-Command codex -All | Select-Object CommandType, Name, Source\ncodex --version\n"
         },
@@ -628,6 +685,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "powershell",
           "code": "powershell -ExecutionPolicy ByPass -c \"irm https://chatgpt.com/codex/install.ps1 | iex\"\n"
         },
@@ -646,6 +704,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "powershell",
           "code": "node --version\nnpm.cmd --version\nnpm.cmd install -g @openai/codex\n"
         },
@@ -660,6 +719,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "powershell",
           "code": "$cliLab = Join-Path (Get-Location) 'codex windows lab'\nif (Test-Path -LiteralPath $cliLab) { throw 'Choose a new practice folder name.' }\nNew-Item -ItemType Directory -Path $cliLab -ErrorAction Stop\nSet-Location -LiteralPath $cliLab\nSet-Content -LiteralPath 'note.txt' -Value 'WINDOWS-CLI-01' -Encoding utf8\nGet-Location\nGet-ChildItem\nGet-Content -LiteralPath 'note.txt'\n"
         },
@@ -669,6 +729,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "powershell",
           "code": "Get-FileHash -LiteralPath 'note.txt' -Algorithm SHA256\n"
         },
@@ -683,20 +744,22 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "powershell",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Windows のサンドボックス設定では一度管理者の承認を求められる場合があり、普段の PowerShell を管理者として使うこととは別です。公式では強い elevated を優先し、制限付きの代替に unelevated を示していますが、組織が禁止する場合もあります。失敗時は OS の版、モード、段階を記録し、全アクセスへ切り替えず"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "権限とサンドボックス",
-              "url": "https://mokaair.com/ja/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -706,6 +769,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Read note.txt in the current practice folder. Report the exact content and current working directory. Do not edit, create files, or use external services. If it is missing or inaccessible, report the actual error.\n"
         },
@@ -758,24 +822,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "実行中の CLI、作業場所、認証状態、ファイルの印、ハッシュが変わらないことを説明できれば完了です。経路、版、エラー、解決方法を練習ノートに記録し、認証情報そのものは保存しません。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 基礎",
-              "url": "https://mokaair.com/ja/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
               "text": "に戻って変更と再開を練習し、エディターなら "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "IDE 拡張",
-              "url": "https://mokaair.com/ja/life/codex-ide-getting-started"
+              "kind": "life",
+              "slug": "codex-ide-getting-started"
             },
             {
               "type": "text",
@@ -784,9 +850,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -839,9 +911,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -855,24 +933,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Windows 네이티브 CLI에는 WSL이 필수가 아닙니다. Ubuntu 터미널이고 경로가 /home으로 시작하면 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Linux / WSL",
-              "url": "https://mokaair.com/ko/life/codex-cli-linux-wsl"
+              "kind": "life",
+              "slug": "codex-cli-linux-wsl"
             },
             {
               "type": "text",
               "text": "을 보세요. 이 글은 PowerShell용입니다. "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 기초",
-              "url": "https://mokaair.com/ko/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
@@ -891,6 +971,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "powershell",
           "code": "Get-Command codex -All | Select-Object CommandType, Name, Source\ncodex --version\n"
         },
@@ -900,6 +981,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "powershell",
           "code": "powershell -ExecutionPolicy ByPass -c \"irm https://chatgpt.com/codex/install.ps1 | iex\"\n"
         },
@@ -918,6 +1000,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "powershell",
           "code": "node --version\nnpm.cmd --version\nnpm.cmd install -g @openai/codex\n"
         },
@@ -932,6 +1015,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "powershell",
           "code": "$cliLab = Join-Path (Get-Location) 'codex windows lab'\nif (Test-Path -LiteralPath $cliLab) { throw 'Choose a new practice folder name.' }\nNew-Item -ItemType Directory -Path $cliLab -ErrorAction Stop\nSet-Location -LiteralPath $cliLab\nSet-Content -LiteralPath 'note.txt' -Value 'WINDOWS-CLI-01' -Encoding utf8\nGet-Location\nGet-ChildItem\nGet-Content -LiteralPath 'note.txt'\n"
         },
@@ -941,6 +1025,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "powershell",
           "code": "Get-FileHash -LiteralPath 'note.txt' -Algorithm SHA256\n"
         },
@@ -955,20 +1040,22 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "powershell",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Windows 샌드박스 설정에는 일회성 관리자 승인이 필요할 수 있으며 일상 PowerShell을 관리자로 실행하는 것과는 다릅니다. 공식 안내는 더 강한 elevated를 우선하고 unelevated를 제한된 대안으로 제공하지만 조직이 금지할 수 있습니다. 실패하면 Windows 버전, 모드, 실패 단계를 기록하고 전체 접근으로 바꾸기 전에 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "권한과 샌드박스",
-              "url": "https://mokaair.com/ko/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -978,6 +1065,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Read note.txt in the current practice folder. Report the exact content and current working directory. Do not edit, create files, or use external services. If it is missing or inaccessible, report the actual error.\n"
         },
@@ -1030,24 +1118,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "어느 CLI가 실행되는지, 작업 폴더, 인증 상태, 파일 표식, 전후 해시 일치 여부를 설명할 수 있어야 합니다. 설치 경로, 버전, 오류와 해결법을 실습 노트에 적되 인증 내용은 저장하지 않습니다. "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 기초",
-              "url": "https://mokaair.com/ko/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
               "text": "로 돌아가 수정과 재개를 연습하거나 편집기 작업은 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "IDE 확장",
-              "url": "https://mokaair.com/ko/life/codex-ide-getting-started"
+              "kind": "life",
+              "slug": "codex-ide-getting-started"
             },
             {
               "type": "text",
@@ -1056,9 +1146,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1111,9 +1207,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1127,24 +1229,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Windows 原生 CLI 不要求先装 WSL。若开启的是 Ubuntu、路径以 /home 开头，请改看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Linux／WSL",
-              "url": "https://mokaair.com/zh-CN/life/codex-cli-linux-wsl"
+              "kind": "life",
+              "slug": "codex-cli-linux-wsl"
             },
             {
               "type": "text",
               "text": "；本篇在 PowerShell 进行。先完成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 共用入门",
-              "url": "https://mokaair.com/zh-CN/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
@@ -1163,6 +1267,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "powershell",
           "code": "Get-Command codex -All | Select-Object CommandType, Name, Source\ncodex --version\n"
         },
@@ -1172,6 +1277,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "powershell",
           "code": "powershell -ExecutionPolicy ByPass -c \"irm https://chatgpt.com/codex/install.ps1 | iex\"\n"
         },
@@ -1190,6 +1296,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "powershell",
           "code": "node --version\nnpm.cmd --version\nnpm.cmd install -g @openai/codex\n"
         },
@@ -1204,6 +1311,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "powershell",
           "code": "$cliLab = Join-Path (Get-Location) 'codex windows lab'\nif (Test-Path -LiteralPath $cliLab) { throw 'Choose a new practice folder name.' }\nNew-Item -ItemType Directory -Path $cliLab -ErrorAction Stop\nSet-Location -LiteralPath $cliLab\nSet-Content -LiteralPath 'note.txt' -Value 'WINDOWS-CLI-01' -Encoding utf8\nGet-Location\nGet-ChildItem\nGet-Content -LiteralPath 'note.txt'\n"
         },
@@ -1213,6 +1321,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "powershell",
           "code": "Get-FileHash -LiteralPath 'note.txt' -Algorithm SHA256\n"
         },
@@ -1227,20 +1336,22 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "powershell",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Windows 沙盒设定可能需要一次管理员核准；这和把日常 PowerShell 视窗长期以管理员执行不同。官方以 elevated 为较强的原生选项，unelevated 是受限制的替代方式，组织可禁止替代。若初始化失败，先记录 Windows 版本、沙盒模式及错误阶段；不要直接把教学改成全存取模式。需要调整时先看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "许可权与沙盒",
-              "url": "https://mokaair.com/zh-CN/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -1250,6 +1361,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Read note.txt in the current practice folder. Report the exact content and current working directory. Do not edit, create files, or use external services. If it is missing or inaccessible, report the actual error.\n"
         },
@@ -1302,24 +1414,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "你应能指出正在执行哪一份 CLI、从哪个资料夹启动、登入状态如何、读到的标记为何，以及唯读前后杂凑是否相同。把安装管道、版本、错误和解法记在自己的练习笔记即可，不需储存凭证内容。接著回"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 共用入门",
-              "url": "https://mokaair.com/zh-CN/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
               "text": "完成小幅修改与接续；若要在编辑器工作，再看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "IDE 扩充套件",
-              "url": "https://mokaair.com/zh-CN/life/codex-ide-getting-started"
+              "kind": "life",
+              "slug": "codex-ide-getting-started"
             },
             {
               "type": "text",
@@ -1328,9 +1442,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

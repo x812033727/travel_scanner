@@ -92,7 +92,7 @@ def inline(nodes, locale):
     for node in nodes:
         kind = node["type"]
         if kind in {"text", "codespan"}:
-            result.append({"type": "text", "text": node["raw"]})
+            result.append({"type": "code" if kind == "codespan" else "text", "text": node["raw"]})
         elif kind in {"softbreak", "linebreak"}:
             result.append({"type": "text", "text": "\n" if kind == "linebreak" else " "})
         elif kind in {"strong", "emphasis"}:
@@ -103,8 +103,9 @@ def inline(nodes, locale):
             if url.startswith("article:"):
                 if not re.fullmatch(r"codex-[a-z0-9]+(?:-[a-z0-9]+)*", url[8:]):
                     raise ValueError("An article reference must be a canonical Codex slug")
-                url = f'https://mokaair.com/{locale}/life/{url[8:]}'
-            result.append({"type": "link", "text": label, "url": url})
+                result.append({"type": "article", "text": label, "kind": "life", "slug": url[8:]})
+            else:
+                result.append({"type": "link", "text": label, "url": url})
         else:
             raise ValueError(f"Unsupported inline {kind}")
     # Preserve spaces while reducing unneeded adjacent text nodes.
@@ -138,13 +139,15 @@ def compile_body(body, locale):
             if len(spans) == 1 and spans[0]["type"] == "link":
                 blocks.append(spans[0])
             else:
-                blocks.append({"type": "rich_paragraph", "spans": spans} if any(s["type"] == "link" for s in spans)
+                blocks.append({"type": "rich_paragraph", "inlines": spans} if any(s["type"] != "text" for s in spans)
                               else {"type": "paragraph", "text": "".join(s["text"] for s in spans)})
         elif kind == "block_code":
             info = node.get("attrs", {}).get("info", "text").split(maxsplit=1)
-            if len(info) > 1:
-                blocks.append({"type": "paragraph", "text": info[1]})
-            blocks.append({"type": "code", "language": info[0] if info else "text", "code": node["raw"]})
+            label = info[1] if len(info) > 1 else {
+                "zh-TW": "本步驟範例", "zh-CN": "本步骤示例", "en": "Example for this step",
+                "ja": "この手順の例", "ko": "이 단계의 예제",
+            }[locale]
+            blocks.append({"type": "code", "label": label, "language": info[0] if info else "text", "code": node["raw"]})
         elif kind == "list":
             items = []
             for item in node["children"]:
@@ -214,12 +217,12 @@ def main():
         compiled = {locale: compile_body(body, locale) for locale, body in texts.items()}
         # A translated command can be valid syntax while changing the example's behavior.
         reference_locale = "zh-TW" if "zh-TW" in compiled else next(iter(compiled))
-        reference = [b for b in compiled[reference_locale] if b["type"] == "code"]
+        reference = [(b["language"], b["code"]) for b in compiled[reference_locale] if b["type"] == "code"]
         for locale, blocks in compiled.items():
-            if [b for b in blocks if b["type"] == "code"] != reference:
+            if [(b["language"], b["code"]) for b in blocks if b["type"] == "code"] != reference:
                 raise ValueError(f"{id_text}/{locale}: code differs from the shared example")
         entry["blocksByLocale"] = {locale: len(blocks) for locale, blocks in compiled.items()}
-        entry["zhTWProseCharacters"] = sum(len(b.get("text", "")) + sum(len(s["text"]) for s in b.get("spans", [])) for b in compiled.get("zh-TW", []) if b["type"] not in {"code", "heading"})
+        entry["zhTWProseCharacters"] = sum(len(b.get("text", "")) + sum(len(s["text"]) for s in b.get("inlines", [])) for b in compiled.get("zh-TW", []) if b["type"] not in {"code", "heading"})
         if len(texts) == 5:
             pack_path = PACKS / f'{row["slug"]}.json'
             pack = json.loads(pack_path.read_text(encoding="utf-8")) if pack_path.exists() else new_pack(row)

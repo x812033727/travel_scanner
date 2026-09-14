@@ -1,0 +1,253 @@
+{
+  "id": 52,
+  "readingMinutes": 15,
+  "operationMinutes": 20,
+  "blocks": [
+    {
+      "type": "h2",
+      "text": [
+        "目標與準備",
+        "Goal and preparation",
+        "目標と準備",
+        "목표와 준비"
+      ]
+    },
+    {
+      "type": "note",
+      "text": [
+        "把「MCP 不能用」拆成設定、啟動、認證、工具可見與執行五個可觀察狀態。閱讀約 15 分鐘、操作約 20 分鐘。先完成 [MCP 入門](article:codex-mcp)，沿用 codexLearningDocs 練習項目；若之前已移除，依前篇重新新增。所有故障演練只針對這個項目，不更改正在供其他工作使用的服務。",
+        "Separate 'MCP does not work' into configuration, startup, authentication, tool visibility and execution. Allow 15 minutes to read and 20 to practice. Complete [MCP setup](article:codex-mcp) and reuse codexLearningDocs, recreating it through that lesson if removed. Run failure exercises only on this practice entry, preserving services used by other work.",
+        "「MCP が使えない」を設定、起動、認証、ツール可視性、実行の五状態に分けます。読む時間15分、実習20分。[入門](article:codex-mcp)の codexLearningDocs を使い、削除済みなら前記事で再追加します。障害演習はこの項目だけに限り、他作業用のサービスを変更しません。",
+        "MCP가 작동하지 않는다는 문제를 설정·시작·인증·도구 표시·실행으로 나눕니다. 읽기 15분, 실습 20분입니다. [입문](article:codex-mcp)의 codexLearningDocs를 사용하고 삭제했다면 이전 절차로 다시 추가하세요. 오류 실습은 이 항목만 대상으로 하며 다른 작업의 서비스를 보존합니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 1：先查設定，別急著改逾時",
+        "Step 1: Inspect configuration before changing timeouts",
+        "手順1：制限時間より先に設定を確認",
+        "1단계: 시간 제한보다 설정 먼저 확인"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "codex --version\ncodex mcp get codexLearningDocs\ncodex mcp list\n",
+      "label": [
+        "Windows、macOS、Linux 終端機：唯讀檢查",
+        "Windows, macOS or Linux terminal: read-only inspection",
+        "各 OS の端末：読取り確認",
+        "각 OS 터미널: 읽기 전용 확인"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "確認輸出中的名稱、enabled、傳輸方式與 URL，並記下本機還是遠端主機、CLI 或桌面入口，以及最後一次重新啟動的時間。若 get 找不到名稱，回到實際 config.toml；拼字、使用者層與專案層，以及自訂 CODEX_HOME 都要逐項核對。桌面、CLI、IDE 只有在同一 Codex 主機下才共用設定，Windows 原生與 WSL 的家目錄也不能當成同一個位置。",
+        "Check the name, enabled state, transport and URL. Record whether this is a local or remote host, CLI or desktop, and the last restart. If get cannot find the name, inspect the actual config.toml, spelling, user/project scope and custom CODEX_HOME. Desktop, CLI and IDE share settings only on the same Codex host; native Windows and WSL home directories are not interchangeable.",
+        "名前、有効状態、方式、URL と、本機・遠隔、CLI・デスクトップ、最終再起動時刻を記録します。get が見つけなければ実ファイル、綴り、利用者・プロジェクト層、独自 CODEX_HOME を確認します。同一主機だけが設定共有の対象で、Windows と WSL のホームも同じ場所とは扱いません。",
+        "이름·활성 상태·방식·URL과 로컬/원격, CLI/데스크톱, 마지막 재시작을 기록합니다. get에서 이름을 찾지 못하면 실제 파일, 철자, 사용자/프로젝트 계층, 사용자 지정 CODEX_HOME을 확인하세요. 같은 호스트에서만 설정을 공유하며 Windows와 WSL 홈도 같은 위치가 아닙니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "設定檔解析失敗時，先處理行號附近的引號、重複表格或錯誤類型，再談網路。用[設定篇](article:codex-config-toml)的方法保存自己的修改前副本，只修改練習區段；不要把整份設定貼上公開求助。若檔案能解析但名稱仍不見，檢查可信任專案的載入與當前工作目錄，並確認編輯器保存的是實際檔案，不是另一份備份。",
+        "For a parse error, fix quotes, duplicate tables or incorrect value types near the reported line before investigating networking. Preserve a before-copy as described in [Configuration](article:codex-config-toml) and edit only the practice section, keeping the full settings private. If parsing succeeds but the entry is missing, check trusted-project loading, working directory and whether the editor saved the actual file rather than a backup.",
+        "解析エラーは表示行付近の引用符、重複表、値の型から直し、その後でネットを調べます。[設定](article:codex-config-toml)に従い副本を保存して実習区画だけ編集し、全設定を公開しません。名前がまだなければ信頼済みプロジェクトの読込み、現在地、保存先が副本でないかを確認します。",
+        "구문 오류는 표시된 줄의 따옴표·중복 표·값 형식을 먼저 수정한 뒤 네트워크를 봅니다. [설정](article:codex-config-toml)에 따라 사본을 보존하고 연습 구간만 편집하며 전체 설정은 공개하지 않습니다. 이름이 없으면 신뢰 프로젝트 로드, 현재 폴더, 백업이 아닌 실제 파일 저장을 확인하세요."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "| 可觀察狀態 | 證據 | 下一步 |\n| --- | --- | --- |\n| 已保存設定 | get 顯示正確項目 | 檢查啟動與連線 |\n| 已初始化 | 客戶端顯示伺服器已連接 | 查看工具 |\n| 已認證 | 需要登入的服務完成登入 | 核對資料權限 |\n| 工具可見 | 新任務能看到目標工具 | 呼叫小型唯讀範例 |\n| 執行成功 | 工具回傳可核對資料 | 比對來源及未改動範圍 |\n\n公開文件服務沒有認證要求時，該欄填「不需要」，不是漏做登入。",
+        "| Observed state | Evidence | Next step |\n| --- | --- | --- |\n| Saved | get shows the correct entry | Check startup and connection |\n| Initialized | Client reports connected server | Inspect tools |\n| Authenticated | Required service login completed | Check data access |\n| Visible tools | New task sees the target tool | Run a small read-only example |\n| Executed | Tool returns verifiable data | Compare source and preserved scope |\n\nMark authentication not required for a public server that needs none; it is not a skipped login.",
+        "| 状態 | 証拠 | 次の行動 |\n| --- | --- | --- |\n| 保存済み | get の正しい項目 | 起動と接続 |\n| 初期化済み | 接続済み表示 | ツール確認 |\n| 認証済み | 必要なログイン完了 | データ権限 |\n| ツール可視 | 新タスクに対象あり | 小さな読取り |\n| 実行成功 | 検証可能な応答 | 原本と保全照合 |\n\n認証不要の公開サービスは不要と記録し、ログイン忘れとは扱いません。",
+        "| 상태 | 증거 | 다음 단계 |\n| --- | --- | --- |\n| 저장됨 | get에 올바른 항목 | 시작과 연결 확인 |\n| 초기화됨 | 연결됨 표시 | 도구 확인 |\n| 인증됨 | 필요한 로그인 완료 | 데이터 권한 확인 |\n| 도구 표시 | 새 작업에 대상 있음 | 작은 읽기 예제 |\n| 실행 성공 | 검증 가능한 응답 | 원본과 보존 범위 확인 |\n\n인증 없는 공개 서비스는 불필요로 적으며 로그인을 빠뜨린 것이 아닙니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 2：重現工具被停用的情況",
+        "Step 2: Reproduce a disabled tool catalog",
+        "手順2：無効化状態を再現",
+        "2단계: 비활성 상태 재현"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "先用前篇的唯讀問題取得一次正常結果，保存原設定後，在既有練習區段加上 enabled = false。桌面按 MCP 設定中的 Restart，IDE 重新啟動擴充套件，CLI 結束後開新工作階段。不要只在舊對話重新問一句，因為它仍可能引用已讀過的內容。這個練習刻意讓伺服器不可用，不代表遠端官方服務真的壞了。",
+        "Obtain a normal read with the previous lesson's question, save the configuration, then add enabled = false to the existing practice section. Use Restart in desktop MCP settings, restart the IDE extension, or open a fresh CLI session. Merely asking again in the old conversation can reuse earlier content. This exercise deliberately disables your entry; it does not indicate a remote service outage.",
+        "前記事の読取りで正常結果を得て設定を保存後、既存実習区画に enabled = false を加えます。デスクトップの Restart、IDE 拡張再起動、CLI 新規セッションを使います。旧会話への再質問は過去情報を再利用し得ます。意図した本機無効化であり公式側の障害ではありません。",
+        "이전 글의 읽기 요청으로 정상 결과를 얻고 설정을 보존한 뒤 기존 연습 구간에 enabled = false를 추가합니다. 데스크톱 Restart, IDE 확장 재시작, CLI 새 세션을 사용하세요. 이전 대화에서 재질문하면 과거 내용을 쓸 수 있습니다. 의도적 로컬 비활성화이며 공식 서비스 장애가 아닙니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "toml",
+      "code": "[mcp_servers.codexLearningDocs]\nurl = \"https://developers.openai.com/mcp\"\nenabled = false\n",
+      "label": [
+        "以此替換自己的練習區段，不再附加同名表格",
+        "Replace your practice section; do not append a duplicate table",
+        "実習区画を置換：同名表を追記しない",
+        "연습 구간 교체: 같은 표를 추가하지 않기"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "/mcp\n",
+      "label": [
+        "新 Codex 工作階段內：檢查可用工具",
+        "Inside a fresh Codex session: inspect available tools",
+        "新 Codex セッション内：ツール確認",
+        "새 Codex 세션 안: 도구 확인"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "預期新工作階段不再提供這個已停用伺服器的工具。此時即使 get 仍列出它，也符合預期：設定存在與工具可用是不同狀態。把 enabled 改回 true 或移除這次加入的 false，重新啟動後重做查詢並核對官方原文。保存「正常 → 停用 → 恢復」三個結果，不能只保存最後成功畫面，否則看不出故障演練是否真的生效。",
+        "The new session should not expose tools from the disabled server, even though get still lists its configuration. Set enabled to true or remove the added false value, restart, then query and verify the official source again. Preserve all three states—normal, disabled and restored—because a final success screenshot alone does not demonstrate that the failure exercise took effect.",
+        "新セッションでは無効サーバーのツールが提供されないはずです。get に設定が残るのは正常です。true または追加した false の除去で戻し、再起動・再取得・原文照合します。正常、無効、復元を全て残し、最後の成功画面だけで演習成立としません。",
+        "새 세션에는 비활성 서버 도구가 없어야 하며 get에 설정이 남는 것은 정상입니다. true로 바꾸거나 추가한 false를 제거하고 재시작·재조회·원문 확인을 하세요. 정상·비활성·복원 세 상태를 모두 남겨야 하며 마지막 성공 화면만으로 오류 실습이 됐다고 할 수 없습니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 3：區分 STDIO 啟動與 HTTP 連線",
+        "Step 3: Separate STDIO startup and HTTP connection",
+        "手順3：STDIO 起動と HTTP 接続を分ける",
+        "3단계: STDIO 시작과 HTTP 연결 구분"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "如果你使用其他 STDIO 伺服器，先看 command、args 與 cwd。Windows 用 Get-Command 查啟動程式，macOS、Linux 用 command -v；這只證明目前終端機找得到程式，不保證從桌面啟動的程序 PATH 完全一樣。相對路徑會受工作目錄影響，檔案不存在先修正路徑；需要 Node.js 的伺服器則核對 Node 版本。不要為檔名打錯直接拉長啟動逾時。",
+        "For another STDIO server, inspect command, args and cwd first. Use Get-Command on Windows or command -v on macOS/Linux. This proves the current terminal resolves the program, not that a desktop-launched process inherits the same PATH. Relative paths depend on the working directory; fix missing paths first and check Node versions for servers that require Node.js. A misspelled filename is not repaired by a longer startup timeout.",
+        "別の STDIO サーバーでは command、args、cwd を先に見ます。Windows の Get-Command、他 OS の command -v は現在の端末の解決だけを証明し、デスクトップ起動の PATH 一致は保証しません。相対パス、不存在、必要な Node 版を先に確認し、誤記のため起動時間を延ばしません。",
+        "다른 STDIO 서버는 command·args·cwd부터 봅니다. Windows Get-Command와 macOS/Linux command -v는 현재 터미널의 경로 확인이며 데스크톱 프로세스 PATH 일치를 보장하지 않습니다. 상대 경로·파일 없음·필요한 Node 버전을 먼저 확인하고 파일명 오타 때문에 시작 제한을 늘리지 마세요."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "powershell",
+      "code": "Get-Command node\nnode --version\n",
+      "label": [
+        "Windows PowerShell：僅適用需要 Node 的 STDIO 伺服器",
+        "Windows PowerShell: for Node-based STDIO servers only",
+        "Windows PowerShell：Node 型 STDIO のみ",
+        "Windows PowerShell: Node 기반 STDIO에만 해당"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "command -v node\nnode --version\n",
+      "label": [
+        "macOS／Linux 終端機：僅適用需要 Node 的 STDIO 伺服器",
+        "macOS/Linux terminal: for Node-based STDIO servers only",
+        "macOS／Linux 端末：Node 型 STDIO のみ",
+        "macOS/Linux 터미널: Node 기반 STDIO에만 해당"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "STDIO 伺服器把標準輸入輸出當協定通道，額外印出歡迎文字或除錯資料可能干擾連線。若你維護該伺服器，依其官方實作把一般紀錄寫到 stderr；若只是使用者，記錄啟動錯誤交給提供者，不要隨意改第三方套件內容。手動啟動後等待輸入而沒有文字，不必然是當機；看到程序活著也不等於 MCP 已成功初始化。",
+        "STDIO uses standard input/output for protocol messages, so extra greeting or debug output can interfere. If you maintain the server, follow its official implementation and direct ordinary logs to stderr. Otherwise, report startup evidence to the provider rather than editing third-party package internals. A manually started process waiting silently for input is not necessarily hung, and a live process does not prove MCP initialization.",
+        "STDIO は標準入出力を協定に使うため挨拶やデバッグ出力が干渉し得ます。保守者なら公式実装に従い一般ログを stderr に出し、利用者なら第三者内部を書き換えず証拠を報告します。入力待ちの無表示は停止とは限らず、生存プロセスだけで初期化成功ともいえません。",
+        "STDIO는 표준 입출력을 프로토콜 통로로 쓰므로 환영 문구나 디버그 출력이 방해할 수 있습니다. 관리자는 공식 구현에 따라 일반 로그를 stderr로 보내고 사용자는 외부 패키지 내부를 임의 수정하지 말고 증거를 보고하세요. 조용한 입력 대기는 멈춤이 아닐 수 있고 프로세스 생존도 초기화 성공을 증명하지 않습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "HTTP 則先核對完整協定、主機、路徑，例如本篇必須是官方 /mcp 端點。瀏覽器能開網站首頁，只能證明部分網路可達，不能證明 MCP 請求、代理設定與驗證都成功。TLS 錯誤應檢查系統時間、公司代理與憑證信任設定；先向環境維護者確認，不把關閉憑證驗證當成教學預設。暫時連不上時保留時間與遮蔽後錯誤再重試。",
+        "For HTTP, check scheme, host and full path, including the official /mcp endpoint here. A browser opening the homepage proves only partial reachability, not a successful MCP request, proxy setup or authentication. For TLS errors, inspect system time, organizational proxy and certificate trust with the environment maintainer; disabling certificate checks is not the default repair. Record time and a redacted error before retrying a temporary failure.",
+        "HTTP は協定、主機、全パスを確認し、今回は公式 /mcp を使います。ホームページを開けても MCP、代理、認証の成功証明ではありません。TLS は時刻、組織プロキシ、証明書信頼を管理者と確認し、検証無効化を既定修正にしません。一時失敗は時刻と伏せたエラーを残して再試行します。",
+        "HTTP는 스킴·호스트·전체 경로를 확인하며 이번에는 공식 /mcp입니다. 첫 페이지가 열려도 MCP 요청·프록시·인증 성공을 증명하지 않습니다. TLS는 시간·조직 프록시·인증서 신뢰를 관리자와 확인하고 검증 해제를 기본 해결로 쓰지 않습니다. 일시 실패는 시각과 가린 오류를 남긴 후 재시도하세요."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 4：認證、工具篩選與逾時",
+        "Step 4: Authentication, tool filters and timeouts",
+        "手順4：認証・ツール選別・時間制限",
+        "4단계: 인증·도구 필터·시간 제한"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "需要 OAuth 的服務可以在客戶端按 Authenticate，或先查 codex mcp login --help 再以自己的伺服器名稱登入。要用哪個帳號、哪些權限，以及回呼網址都依提供者規格；若需要預先註冊 client ID，就註冊 Codex 顯示的完整回呼網址，不能猜固定埠或把 localhost 和 127.0.0.1 任意互換。公開 Docs MCP 不用這項登入練習。",
+        "For an OAuth service, choose Authenticate or inspect codex mcp login --help before logging in with your server name. Account, scopes and callback requirements depend on the provider. If a preregistered client ID is required, register the complete callback displayed by Codex rather than guessing a port or swapping localhost and 127.0.0.1. This login exercise does not apply to the public Docs MCP.",
+        "OAuth サービスは Authenticate または login の help を確認して対象名で認証します。アカウント、範囲、回呼は提供元の要件に従います。事前登録 ID が必要なら Codex が表示する完全 URL を登録し、ポート推測や localhost と 127.0.0.1 の置換をしません。公開 Docs MCP では不要です。",
+        "OAuth 서비스는 Authenticate 또는 login help를 확인한 뒤 대상 이름으로 인증합니다. 계정·범위·콜백은 제공자 요건을 따르세요. 사전 client ID 등록이 필요하면 Codex가 표시한 전체 URL을 쓰고 포트를 추측하거나 localhost와 127.0.0.1을 바꾸지 않습니다. 공개 Docs MCP에는 필요 없는 절차입니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "認證已完成但看不到某個工具時，查看 enabled_tools、disabled_tools 與插件本身的工具政策。允許清單不會創造伺服器沒有提供的能力；同名工具同時列在兩份清單時，停用清單在允許清單之後套用。先用目前工具目錄取得真正名稱，不要猜成 search 或 read。插件提供的伺服器另有插件層設定，使用者設定不負責改寫它的啟動命令，詳見 [Plugins 排除問題](article:codex-plugin-troubleshooting)。",
+        "When authentication succeeds but a tool is missing, inspect enabled_tools, disabled_tools and plugin policy. An allow list cannot create a capability the server does not offer, and the deny list applies after the allow list. Get real tool names from the current catalog rather than guessing search or read. Plugin-provided servers have plugin-scoped settings; user configuration does not replace their launch commands. See [Plugin troubleshooting](article:codex-plugin-troubleshooting).",
+        "認証済みでも欠けるツールは enabled_tools、disabled_tools、插件方針を見ます。許可一覧は存在しない能力を作らず、拒否一覧は許可後に適用されます。search や read と推測せず現在の実名を確認します。插件由来の起動命令は利用者設定で置換しません。[Plugins 障害対応](article:codex-plugin-troubleshooting)を参照します。",
+        "인증 후 도구가 없으면 enabled_tools·disabled_tools·플러그인 정책을 확인합니다. 허용 목록은 서버에 없는 기능을 만들지 않으며 거부 목록이 나중에 적용됩니다. search나 read를 추측하지 말고 실제 도구 이름을 확인하세요. 플러그인 서버의 실행 명령은 사용자 설정으로 대체하지 않습니다. [Plugins 문제 해결](article:codex-plugin-troubleshooting)을 참고하세요."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "啟動逾時與工具執行逾時是不同階段：startup_timeout_sec 只處理初始化等待，tool_timeout_sec 處理單次工具。先確認程式、網址、認證都對，再用較小的唯讀請求判斷是否只是工作太大；只有確定是合理等待不足才調整那個伺服器的值並重測。optional startup grace 與 required 也會影響啟動時的行為，新手不必把所有伺服器改成 required；無法啟動的重要服務應保留錯誤並停止依賴它的工作。",
+        "Startup and tool timeouts apply to different stages: startup_timeout_sec covers initialization and tool_timeout_sec covers an invocation. Verify program, URL and authentication, then try a smaller read to distinguish oversized work. Adjust one server's timeout only when normal work demonstrably needs more time and retest. Optional startup grace and required also affect startup behavior; making every server required is unnecessary. Preserve failures and stop dependent work when an essential service is unavailable.",
+        "startup_timeout_sec は初期化、tool_timeout_sec は一回の実行です。程序、URL、認証を確認後、小さな読取りで過大要求かを調べ、正常処理に時間が必要な場合だけ対象値を変えて再試験します。grace と required も起動に影響しますが全て必須にする必要はありません。不可欠なサービス不在なら依存作業を止めます。",
+        "startup_timeout_sec는 초기화, tool_timeout_sec는 한 호출입니다. 프로그램·URL·인증을 확인하고 작은 읽기로 요청이 큰지 구분한 뒤 정상 작업에 더 필요할 때 해당 서버 값만 바꿔 재시험하세요. grace와 required도 시작에 영향을 주지만 모두 필수로 만들 필요는 없습니다. 필수 서비스가 없으면 오류를 보존하고 의존 작업을 멈춥니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "收尾：可交接的故障紀錄",
+        "Finish with a reproducible incident record",
+        "最後に引継ぎ可能な記録を残す",
+        "마무리: 인계 가능한 오류 기록"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "markdown",
+      "code": "# MCP recovery record\nSurface / OS / client version:\nHost and effective config location (redacted):\nServer name / transport:\nFailure layer:\nOriginal error (without secrets):\nSingle change:\nNew-session tool visibility:\nRead-only request and verified source:\nNormal / disabled / restored results:\nUnrelated settings preserved:\nRemaining limitation and next action:\n",
+      "label": [
+        "mcp-recovery.md",
+        "mcp-recovery.md",
+        "mcp-recovery.md",
+        "mcp-recovery.md"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "如果練習改壞設定，先恢復本次練習區段，重新讀取確認；不要在其他任務同時寫設定時整檔還原。結束後按前篇移除自己新增的 codexLearningDocs 即可。OAuth 服務的 logout 用於清除該服務的已存認證，remove 用於移除設定；是否還有外部授權，要到提供者的帳號頁確認。兩者都不能撤銷已經寫進外部系統的資料，涉及寫入要依原服務自己的復原流程處理。",
+        "If the exercise breaks configuration, restore its section and recheck instead of replacing the whole file while another task may be editing it. Remove your added codexLearningDocs as in the previous lesson. For OAuth services, logout clears saved authentication and remove deletes configuration; inspect the provider account for remaining grants. Neither reverses data already written to an external system, which needs that provider's recovery process.",
+        "設定を壊したら実習区画を戻して確認し、他作業中に全体を復元しません。終了は自分の追加項目を前記事通り除去します。OAuth の logout は保存認証、remove は設定を除き、外部の認可は提供者アカウントで確認します。外部へ既に書いたデータはどちらでも戻らず、そのサービスの復旧手順を使います。",
+        "설정을 망가뜨리면 연습 구간을 복구해 확인하고 다른 작업 중 전체 파일을 되돌리지 않습니다. 끝나면 이전 글처럼 추가 항목만 제거하세요. OAuth logout은 저장 인증, remove는 설정을 지우며 남은 외부 승인은 제공자 계정에서 확인합니다. 이미 외부에 쓴 데이터는 둘 다 되돌리지 못하므로 서비스 복구 절차를 사용합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "完成標準是能解釋哪一層失敗、提供一次可重現的停用與恢復，以及新的唯讀工具證據；只看到程序、設定檔或正確答案都不夠。尚未取得連線時保留「未完成工具驗證」，不用把未測環境填成正常。本篇產品流程依官方文件查證，本機設定與直接 MCP 協定驗證另存紀錄；macOS、Linux、IDE、OAuth 與實體手機未因這些測試而自動取得實測標記。下一步進入 [Worktree 隔離](article:codex-worktrees)。",
+        "Completion means identifying the failing layer, reproducing disable/restore and obtaining fresh read-only tool evidence. A process, file or correct answer alone is insufficient. If connection remains unavailable, mark tool verification incomplete. Product steps follow official documentation, with local configuration and direct MCP checks recorded separately; those do not establish macOS, Linux, IDE, OAuth or physical-phone testing. Continue to [Worktree isolation](article:codex-worktrees).",
+        "失敗層を説明し、無効化・復元を再現し、新しい読取り証拠を得ることが完了条件です。プロセス、ファイル、正答だけでは不十分で、未接続ならツール未検証と残します。公式確認、本機設定、直接協定試験を分け、他 OS、IDE、OAuth、電話の実測とはしません。次は [Worktree 分離](article:codex-worktrees)です。",
+        "실패 계층 설명·비활성화와 복원 재현·새 읽기 도구 증거가 완료 기준입니다. 프로세스·파일·정답만으로는 부족하며 미연결이면 도구 미검증으로 남깁니다. 공식 문서와 로컬 설정·직접 프로토콜 시험을 구분하고 다른 OS·IDE·OAuth·휴대폰 실측으로 보지 않습니다. 다음은 [Worktree 분리](article:codex-worktrees)입니다."
+      ]
+    }
+  ]
+}

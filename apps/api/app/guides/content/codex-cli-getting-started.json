@@ -24,9 +24,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -40,15 +46,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "CLI 是在終端機操作 Codex 的入口。終端機負責啟動程式，Codex 輸入框負責接收任務；兩者外觀都像文字介面，但輸入的意思不同。先看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "終端機與路徑",
-              "url": "https://mokaair.com/zh-TW/life/codex-terminal-paths"
+              "kind": "life",
+              "slug": "codex-terminal-paths"
             },
             {
               "type": "text",
@@ -63,15 +70,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "先在自己的電腦建立一般使用者可寫入的練習資料夾，不要直接用正式專案。帳號是否能使用 Codex、使用哪一種登入，以及額度資訊，先查"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "帳號與用量",
-              "url": "https://mokaair.com/zh-TW/life/codex-account-usage"
+              "kind": "life",
+              "slug": "codex-account-usage"
             },
             {
               "type": "text",
@@ -106,33 +114,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "逐步安裝分別見"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Windows",
-              "url": "https://mokaair.com/zh-TW/life/codex-cli-windows"
+              "kind": "life",
+              "slug": "codex-cli-windows"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "macOS",
-              "url": "https://mokaair.com/zh-TW/life/codex-cli-macos"
+              "kind": "life",
+              "slug": "codex-cli-macos"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Linux／WSL",
-              "url": "https://mokaair.com/zh-TW/life/codex-cli-linux-wsl"
+              "kind": "life",
+              "slug": "codex-cli-linux-wsl"
             },
             {
               "type": "text",
@@ -142,6 +153,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "codex --version\ncodex --help\n"
         },
@@ -160,6 +172,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Hello, traveler.\nLesson marker: CLI-START-01\n"
         },
@@ -174,6 +187,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -187,25 +201,28 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "/status\n"
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Read greeting.txt in the current folder. Report the working directory and both lines exactly. Do not edit files, use external services, or infer missing content. If the file is missing, stop and report that.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "這一段是自然語言任務，貼在 Codex 對話。合格回覆必須對得上兩行原文與目前目錄；同時檢視讀檔工具記錄，確認有實際讀取，不只照抄提示詞。如果它說找不到檔案，先停止後續修改；若檔案存在但沙盒讀不到，記錄錯誤與範圍，接著查"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "許可權教學",
-              "url": "https://mokaair.com/zh-TW/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -224,11 +241,13 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "codex --sandbox workspace-write --ask-for-approval on-request\n"
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "In greeting.txt, replace only the first line with: Hello, Codex learner.\nPreserve the lesson marker and greeting.original.txt. Do not create other project files.\nRead the file after editing and report the exact before/after change.\n"
         },
@@ -251,6 +270,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "codex resume\n"
         },
@@ -269,24 +289,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "完成時應保有：安裝版本、正確目錄與兩行讀取證據、只改第一行的檔案、未變的備份、缺檔回報、可接續的工作階段。接著閱讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "常用指令",
-              "url": "https://mokaair.com/zh-TW/life/codex-commands"
+              "kind": "life",
+              "slug": "codex-commands"
             },
             {
               "type": "text",
               "text": "及"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/zh-TW/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
@@ -295,9 +317,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -347,9 +375,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -363,15 +397,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "CLI 是在终端机操作 Codex 的入口。终端机负责启动程式，Codex 输入框负责接收任务；两者外观都像文字介面，但输入的意思不同。先看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "终端机与路径",
-              "url": "https://mokaair.com/zh-CN/life/codex-terminal-paths"
+              "kind": "life",
+              "slug": "codex-terminal-paths"
             },
             {
               "type": "text",
@@ -386,15 +421,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "先在自己的电脑建立一般使用者可写入的练习资料夹，不要直接用正式专案。帐号是否能使用 Codex、使用哪一种登入，以及额度资讯，先查"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "帐号与用量",
-              "url": "https://mokaair.com/zh-CN/life/codex-account-usage"
+              "kind": "life",
+              "slug": "codex-account-usage"
             },
             {
               "type": "text",
@@ -429,33 +465,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "逐步安装分别见"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Windows",
-              "url": "https://mokaair.com/zh-CN/life/codex-cli-windows"
+              "kind": "life",
+              "slug": "codex-cli-windows"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "macOS",
-              "url": "https://mokaair.com/zh-CN/life/codex-cli-macos"
+              "kind": "life",
+              "slug": "codex-cli-macos"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Linux／WSL",
-              "url": "https://mokaair.com/zh-CN/life/codex-cli-linux-wsl"
+              "kind": "life",
+              "slug": "codex-cli-linux-wsl"
             },
             {
               "type": "text",
@@ -465,6 +504,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "codex --version\ncodex --help\n"
         },
@@ -483,6 +523,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Hello, traveler.\nLesson marker: CLI-START-01\n"
         },
@@ -497,6 +538,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -510,25 +552,28 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "/status\n"
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Read greeting.txt in the current folder. Report the working directory and both lines exactly. Do not edit files, use external services, or infer missing content. If the file is missing, stop and report that.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "这一段是自然语言任务，贴在 Codex 对话。合格回复必须对得上两行原文与目前目录；同时检视读档工具记录，确认有实际读取，不只照抄提示词。如果它说找不到档案，先停止后续修改；若档案存在但沙盒读不到，记录错误与范围，接著查"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "许可权教学",
-              "url": "https://mokaair.com/zh-CN/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -547,11 +592,13 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "codex --sandbox workspace-write --ask-for-approval on-request\n"
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "In greeting.txt, replace only the first line with: Hello, Codex learner.\nPreserve the lesson marker and greeting.original.txt. Do not create other project files.\nRead the file after editing and report the exact before/after change.\n"
         },
@@ -574,6 +621,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "codex resume\n"
         },
@@ -592,24 +640,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "完成时应保有：安装版本、正确目录与两行读取证据、只改第一行的档案、未变的备份、缺档回报、可接续的工作阶段。接著阅读"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "常用指令",
-              "url": "https://mokaair.com/zh-CN/life/codex-commands"
+              "kind": "life",
+              "slug": "codex-commands"
             },
             {
               "type": "text",
               "text": "及"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/zh-CN/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
@@ -618,9 +668,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -670,9 +726,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -686,15 +748,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "The CLI is a terminal interface to Codex. Your shell starts programs; the Codex composer accepts tasks. Both use text, but interpret it differently. Complete "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "terminal and path basics",
-              "url": "https://mokaair.com/en/life/codex-terminal-paths"
+              "kind": "life",
+              "slug": "codex-terminal-paths"
             },
             {
               "type": "text",
@@ -709,15 +772,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Use a practice folder writable by your ordinary user account, separate from production work. Check "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "account and usage basics",
-              "url": "https://mokaair.com/en/life/codex-account-usage"
+              "kind": "life",
+              "slug": "codex-account-usage"
             },
             {
               "type": "text",
@@ -752,33 +816,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Follow the separate "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Windows",
-              "url": "https://mokaair.com/en/life/codex-cli-windows"
+              "kind": "life",
+              "slug": "codex-cli-windows"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "macOS",
-              "url": "https://mokaair.com/en/life/codex-cli-macos"
+              "kind": "life",
+              "slug": "codex-cli-macos"
             },
             {
               "type": "text",
               "text": " or "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Linux / WSL",
-              "url": "https://mokaair.com/en/life/codex-cli-linux-wsl"
+              "kind": "life",
+              "slug": "codex-cli-linux-wsl"
             },
             {
               "type": "text",
@@ -788,6 +855,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "codex --version\ncodex --help\n"
         },
@@ -806,6 +874,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Hello, traveler.\nLesson marker: CLI-START-01\n"
         },
@@ -820,6 +889,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -833,25 +903,28 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "/status\n"
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Read greeting.txt in the current folder. Report the working directory and both lines exactly. Do not edit files, use external services, or infer missing content. If the file is missing, stop and report that.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "This is a natural-language task for the Codex conversation. A passing response matches both original lines and the current directory. Inspect the file-reading tool record as evidence that it actually read the file. If the file is missing, stop before requesting edits. If the file exists but sandbox access fails, record the error and scope, then consult "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "permissions",
-              "url": "https://mokaair.com/en/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -870,11 +943,13 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "codex --sandbox workspace-write --ask-for-approval on-request\n"
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "In greeting.txt, replace only the first line with: Hello, Codex learner.\nPreserve the lesson marker and greeting.original.txt. Do not create other project files.\nRead the file after editing and report the exact before/after change.\n"
         },
@@ -897,6 +972,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "codex resume\n"
         },
@@ -915,24 +991,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Keep the version record, correct directory and read evidence, the one-line change, intact backup, missing-file report and resumable session. Continue with "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "commands",
-              "url": "https://mokaair.com/en/life/codex-commands"
+              "kind": "life",
+              "slug": "codex-commands"
             },
             {
               "type": "text",
               "text": " and "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/en/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
@@ -941,9 +1019,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -993,9 +1077,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1009,15 +1099,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "CLI は端末から Codex を操作する入口です。シェルはプログラムを起動し、Codex の入力欄は依頼を受け取ります。どちらも文字中心ですが、入力の意味が異なります。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "端末とパスの基礎",
-              "url": "https://mokaair.com/ja/life/codex-terminal-paths"
+              "kind": "life",
+              "slug": "codex-terminal-paths"
             },
             {
               "type": "text",
@@ -1032,15 +1123,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "通常のユーザー権限で書き込める練習用フォルダーを、本番作業とは別に用意します。利用資格、認証方法、利用枠は"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "アカウントと使用量",
-              "url": "https://mokaair.com/ja/life/codex-account-usage"
+              "kind": "life",
+              "slug": "codex-account-usage"
             },
             {
               "type": "text",
@@ -1075,33 +1167,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "詳しい手順は "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Windows",
-              "url": "https://mokaair.com/ja/life/codex-cli-windows"
+              "kind": "life",
+              "slug": "codex-cli-windows"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "macOS",
-              "url": "https://mokaair.com/ja/life/codex-cli-macos"
+              "kind": "life",
+              "slug": "codex-cli-macos"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Linux / WSL",
-              "url": "https://mokaair.com/ja/life/codex-cli-linux-wsl"
+              "kind": "life",
+              "slug": "codex-cli-linux-wsl"
             },
             {
               "type": "text",
@@ -1111,6 +1206,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "codex --version\ncodex --help\n"
         },
@@ -1129,6 +1225,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Hello, traveler.\nLesson marker: CLI-START-01\n"
         },
@@ -1143,6 +1240,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -1156,25 +1254,28 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "/status\n"
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Read greeting.txt in the current folder. Report the working directory and both lines exactly. Do not edit files, use external services, or infer missing content. If the file is missing, stop and report that.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "これは Codex の会話に入れる自然言語の依頼です。二行の原文と現在の場所が一致すれば内容を確認でき、実際に読んだ証拠として読み取りツールの記録も見ます。見つからない場合は変更依頼を止めます。ファイルが存在してもアクセスできなければ、エラーと対象範囲を記録して"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "権限の説明",
-              "url": "https://mokaair.com/ja/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -1193,11 +1294,13 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "codex --sandbox workspace-write --ask-for-approval on-request\n"
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "In greeting.txt, replace only the first line with: Hello, Codex learner.\nPreserve the lesson marker and greeting.original.txt. Do not create other project files.\nRead the file after editing and report the exact before/after change.\n"
         },
@@ -1220,6 +1323,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "codex resume\n"
         },
@@ -1238,24 +1342,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "版の記録、正しい場所と読み取り証拠、一行だけの変更、未変更のコピー、欠落の報告、再開可能なセッションを残します。次は"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "コマンド",
-              "url": "https://mokaair.com/ja/life/codex-commands"
+              "kind": "life",
+              "slug": "codex-commands"
             },
             {
               "type": "text",
               "text": "と "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/ja/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
@@ -1264,9 +1370,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1316,9 +1428,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1332,15 +1450,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "CLI는 터미널에서 Codex를 사용하는 인터페이스입니다. 셸은 프로그램을 실행하고 Codex 입력창은 작업 요청을 받습니다. 둘 다 문자 중심이지만 입력을 해석하는 방식이 다릅니다. "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "터미널과 경로 기초",
-              "url": "https://mokaair.com/ko/life/codex-terminal-paths"
+              "kind": "life",
+              "slug": "codex-terminal-paths"
             },
             {
               "type": "text",
@@ -1355,15 +1474,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "일반 사용자 계정으로 쓸 수 있는 연습 폴더를 실제 프로젝트와 별도로 준비합니다. 이용 자격, 로그인 방식, 사용량은 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "계정과 사용량",
-              "url": "https://mokaair.com/ko/life/codex-account-usage"
+              "kind": "life",
+              "slug": "codex-account-usage"
             },
             {
               "type": "text",
@@ -1398,33 +1518,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "자세한 절차는 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Windows",
-              "url": "https://mokaair.com/ko/life/codex-cli-windows"
+              "kind": "life",
+              "slug": "codex-cli-windows"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "macOS",
-              "url": "https://mokaair.com/ko/life/codex-cli-macos"
+              "kind": "life",
+              "slug": "codex-cli-macos"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Linux / WSL",
-              "url": "https://mokaair.com/ko/life/codex-cli-linux-wsl"
+              "kind": "life",
+              "slug": "codex-cli-linux-wsl"
             },
             {
               "type": "text",
@@ -1434,6 +1557,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "codex --version\ncodex --help\n"
         },
@@ -1452,6 +1576,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Hello, traveler.\nLesson marker: CLI-START-01\n"
         },
@@ -1466,6 +1591,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -1479,25 +1605,28 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "/status\n"
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Read greeting.txt in the current folder. Report the working directory and both lines exactly. Do not edit files, use external services, or infer missing content. If the file is missing, stop and report that.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "이 문장은 Codex 대화에 넣는 자연어 작업입니다. 응답이 원문 두 줄과 현재 폴더에 일치해야 하며 실제로 읽었는지 파일 읽기 도구 기록도 확인합니다. 파일이 없으면 수정 요청을 중단합니다. 파일은 있지만 접근에 실패했다면 오류와 범위를 기록하고 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "권한 설명",
-              "url": "https://mokaair.com/ko/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -1516,11 +1645,13 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "codex --sandbox workspace-write --ask-for-approval on-request\n"
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "In greeting.txt, replace only the first line with: Hello, Codex learner.\nPreserve the lesson marker and greeting.original.txt. Do not create other project files.\nRead the file after editing and report the exact before/after change.\n"
         },
@@ -1543,6 +1674,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "codex resume\n"
         },
@@ -1561,24 +1693,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "버전 기록, 올바른 폴더와 읽기 증거, 한 줄 변경 파일, 온전한 사본, 없는 파일 보고, 재개 가능한 세션을 남깁니다. 다음은 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "명령",
-              "url": "https://mokaair.com/ko/life/codex-commands"
+              "kind": "life",
+              "slug": "codex-commands"
             },
             {
               "type": "text",
               "text": "과 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/ko/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
@@ -1587,9 +1721,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

@@ -23,9 +23,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -39,24 +45,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Android 負責傳送需求與查看結果，程式檔、終端機、依賴與網站登入都由連接主機提供。手機裝了 ChatGPT，不等於手機已安裝 Codex CLI，也不會把電腦資料夾自動同步到手機檔案管理 App。先了解"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "手機總覽",
-              "url": "https://mokaair.com/zh-TW/life/codex-mobile-guide"
+              "kind": "life",
+              "slug": "codex-mobile-guide"
             },
             {
               "type": "text",
               "text": "與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Remote 主機設定",
-              "url": "https://mokaair.com/zh-TW/life/codex-remote-setup"
+              "kind": "life",
+              "slug": "codex-remote-setup"
             },
             {
               "type": "text",
@@ -71,7 +79,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "在自己的 Mac 或 Windows 電腦安裝或更新 ChatGPT 桌面版，登入與 Android 相同的帳號及工作區，確認能使用 Codex。將"
@@ -119,6 +127,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Read this Small Steps project without changing files. Confirm the working directory and inspect app.js and core.mjs. Identify the localStorage key, the field that records completion, and the function that rejects blank task titles. Cite the file for each answer. If a file is unavailable, report that instead of guessing.\n"
         },
@@ -133,6 +142,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "In the same project, explain what happens when I add Read and Build, complete Read, and choose Completed. Then explain an empty task title. Separate code you inspected, tests actually run, and checks still pending. Do not edit or clear stored data.\n"
         },
@@ -194,15 +204,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "主機的 localhost 網址在 Android 瀏覽器 會指向手機自己，不是那臺電腦。查看練習成果時，先從 Remote 任務看主機提供的截圖或結果，再回電腦開本機預覽；公開預覽與部署是另一個步驟。要停止手機存取，依"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "主機設定篇",
-              "url": "https://mokaair.com/zh-TW/life/codex-remote-setup"
+              "kind": "life",
+              "slug": "codex-remote-setup"
             },
             {
               "type": "text",
@@ -212,33 +223,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "最後在同一任務整理主機與目錄、已讀取內容、尚未跑的測試及下一步，再回電腦核對。你不需要在 Android 安裝 Node.js 來執行主機工具；需要的依賴應在實際主機準備。下一步看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "跨裝置工作",
-              "url": "https://mokaair.com/zh-TW/life/codex-cross-device-workflow"
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
             },
             {
               "type": "text",
               "text": "與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "上下文交接",
-              "url": "https://mokaair.com/zh-TW/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
               "text": "。若改用 iPhone，可依"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "iPhone 專篇",
-              "url": "https://mokaair.com/zh-TW/life/codex-mobile-ios"
+              "kind": "life",
+              "slug": "codex-mobile-ios"
             },
             {
               "type": "text",
@@ -247,9 +261,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -292,9 +312,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -308,24 +334,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "The Android sends requests and displays results; the connected host provides source files, terminal, dependencies and signed-in websites. Installing ChatGPT on the phone does not install Codex CLI or synchronize computer folders into a phone file manager. Read the "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "mobile overview",
-              "url": "https://mokaair.com/en/life/codex-mobile-guide"
+              "kind": "life",
+              "slug": "codex-mobile-guide"
             },
             {
               "type": "text",
               "text": " and "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Remote host setup",
-              "url": "https://mokaair.com/en/life/codex-remote-setup"
+              "kind": "life",
+              "slug": "codex-remote-setup"
             },
             {
               "type": "text",
@@ -340,7 +368,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Update ChatGPT desktop on your Mac or Windows computer, use the same account/workspace as the Android and confirm Codex access. Extract the "
@@ -388,6 +416,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Read this Small Steps project without changing files. Confirm the working directory and inspect app.js and core.mjs. Identify the localStorage key, the field that records completion, and the function that rejects blank task titles. Cite the file for each answer. If a file is unavailable, report that instead of guessing.\n"
         },
@@ -402,6 +431,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "In the same project, explain what happens when I add Read and Build, complete Read, and choose Completed. Then explain an empty task title. Separate code you inspected, tests actually run, and checks still pending. Do not edit or clear stored data.\n"
         },
@@ -463,15 +493,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "A host's localhost URL entered in Android browser points to the phone, not the computer. Review host-provided results or screenshots in Remote and use the computer for local preview; public preview/deployment is a separate step. Manage access through "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "host setup",
-              "url": "https://mokaair.com/en/life/codex-remote-setup"
+              "kind": "life",
+              "slug": "codex-remote-setup"
             },
             {
               "type": "text",
@@ -481,33 +512,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Finish in the same task with a handoff of host/directory, inspected content, unrun tests and next steps, then verify on the computer. Android does not need Node.js to invoke host tools; dependencies belong on the execution host. Continue with "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "cross-device work",
-              "url": "https://mokaair.com/en/life/codex-cross-device-workflow"
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
             },
             {
               "type": "text",
               "text": " and "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "context handoff",
-              "url": "https://mokaair.com/en/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
               "text": ". Switching to "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "iPhone",
-              "url": "https://mokaair.com/en/life/codex-mobile-ios"
+              "kind": "life",
+              "slug": "codex-mobile-ios"
             },
             {
               "type": "text",
@@ -516,9 +550,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -561,9 +601,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -577,24 +623,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Android は依頼と結果表示を担い、ソース、端末、依存関係、ログイン済みサイトはホストが提供します。電話に ChatGPT を入れても CLI 導入やファイル管理アプリ への同期にはなりません。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "モバイル概要",
-              "url": "https://mokaair.com/ja/life/codex-mobile-guide"
+              "kind": "life",
+              "slug": "codex-mobile-guide"
             },
             {
               "type": "text",
               "text": "と"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "ホスト設定",
-              "url": "https://mokaair.com/ja/life/codex-remote-setup"
+              "kind": "life",
+              "slug": "codex-remote-setup"
             },
             {
               "type": "text",
@@ -609,7 +657,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Mac / Windows のデスクトップ版を更新し、電話と同じアカウントとワークスペースで Codex を確認します。"
@@ -657,6 +705,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Read this Small Steps project without changing files. Confirm the working directory and inspect app.js and core.mjs. Identify the localStorage key, the field that records completion, and the function that rejects blank task titles. Cite the file for each answer. If a file is unavailable, report that instead of guessing.\n"
         },
@@ -671,6 +720,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "In the same project, explain what happens when I add Read and Build, complete Read, and choose Completed. Then explain an empty task title. Separate code you inspected, tests actually run, and checks still pending. Do not edit or clear stored data.\n"
         },
@@ -732,15 +782,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "ホストの localhost を Android のブラウザー に入れても電話自身を指します。Remote のホスト側結果や画像を見て、ローカルプレビューは PC で確認します。公開プレビューや配備は別です。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "ホスト設定",
-              "url": "https://mokaair.com/ja/life/codex-remote-setup"
+              "kind": "life",
+              "slug": "codex-remote-setup"
             },
             {
               "type": "text",
@@ -750,33 +801,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "同じ課題でホストと場所、確認済み、未実行、次の操作をまとめて PC で照合します。ホストのツールを使うために Android に Node.js を入れる必要はなく、依存は実行ホストに用意します。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "装置間作業",
-              "url": "https://mokaair.com/ja/life/codex-cross-device-workflow"
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
             },
             {
               "type": "text",
               "text": "と"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "引き継ぎ",
-              "url": "https://mokaair.com/ja/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
               "text": "、または "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "iPhone 編",
-              "url": "https://mokaair.com/ja/life/codex-mobile-ios"
+              "kind": "life",
+              "slug": "codex-mobile-ios"
             },
             {
               "type": "text",
@@ -785,9 +839,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -830,9 +890,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -846,24 +912,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Android은 요청과 결과 표시를 맡고 소스 파일, 터미널, 의존성, 로그인된 사이트는 호스트가 제공합니다. 휴대전화 ChatGPT 설치가 CLI 설치나 파일 앱 동기화를 뜻하지 않습니다. "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "모바일 개요",
-              "url": "https://mokaair.com/ko/life/codex-mobile-guide"
+              "kind": "life",
+              "slug": "codex-mobile-guide"
             },
             {
               "type": "text",
               "text": "와 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "호스트 설정",
-              "url": "https://mokaair.com/ko/life/codex-remote-setup"
+              "kind": "life",
+              "slug": "codex-remote-setup"
             },
             {
               "type": "text",
@@ -878,7 +946,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Mac/Windows 데스크톱 앱을 업데이트하고 Android과 같은 계정/워크스페이스의 Codex 접근을 확인합니다. "
@@ -926,6 +994,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Read this Small Steps project without changing files. Confirm the working directory and inspect app.js and core.mjs. Identify the localStorage key, the field that records completion, and the function that rejects blank task titles. Cite the file for each answer. If a file is unavailable, report that instead of guessing.\n"
         },
@@ -940,6 +1009,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "In the same project, explain what happens when I add Read and Build, complete Read, and choose Completed. Then explain an empty task title. Separate code you inspected, tests actually run, and checks still pending. Do not edit or clear stored data.\n"
         },
@@ -1001,15 +1071,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "호스트 localhost URL을 Android 브라우저에 넣으면 전화 자신을 가리킵니다. Remote의 호스트 결과나 캡처를 보고 로컬 미리 보기는 컴퓨터에서 확인합니다. 공개 미리 보기/배포는 별도입니다. "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "호스트 설정",
-              "url": "https://mokaair.com/ko/life/codex-remote-setup"
+              "kind": "life",
+              "slug": "codex-remote-setup"
             },
             {
               "type": "text",
@@ -1019,33 +1090,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "같은 작업에서 호스트/폴더, 확인 내용, 미실행 테스트, 다음 단계를 정리하고 컴퓨터에서 대조합니다. 호스트 도구를 쓰려고 Android에 Node.js를 설치할 필요가 없으며 의존성은 실행 호스트에 둡니다. "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "기기 간 작업",
-              "url": "https://mokaair.com/ko/life/codex-cross-device-workflow"
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "맥락 인계",
-              "url": "https://mokaair.com/ko/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
               "text": ", 또는 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "iPhone 강의",
-              "url": "https://mokaair.com/ko/life/codex-mobile-ios"
+              "kind": "life",
+              "slug": "codex-mobile-ios"
             },
             {
               "type": "text",
@@ -1054,9 +1128,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1099,9 +1179,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1115,24 +1201,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Android 负责传送需求与查看结果，程式档、终端机、依赖与网站登入都由连接主机提供。手机装了 ChatGPT，不等于手机已安装 Codex CLI，也不会把电脑资料夹自动同步到手机档案管理 App。先了解"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "手机总览",
-              "url": "https://mokaair.com/zh-CN/life/codex-mobile-guide"
+              "kind": "life",
+              "slug": "codex-mobile-guide"
             },
             {
               "type": "text",
               "text": "与"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Remote 主机设定",
-              "url": "https://mokaair.com/zh-CN/life/codex-remote-setup"
+              "kind": "life",
+              "slug": "codex-remote-setup"
             },
             {
               "type": "text",
@@ -1147,7 +1235,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "在自己的 Mac 或 Windows 电脑安装或更新 ChatGPT 桌面版，登入与 Android 相同的帐号及工作区，确认能使用 Codex。将"
@@ -1195,6 +1283,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Read this Small Steps project without changing files. Confirm the working directory and inspect app.js and core.mjs. Identify the localStorage key, the field that records completion, and the function that rejects blank task titles. Cite the file for each answer. If a file is unavailable, report that instead of guessing.\n"
         },
@@ -1209,6 +1298,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "In the same project, explain what happens when I add Read and Build, complete Read, and choose Completed. Then explain an empty task title. Separate code you inspected, tests actually run, and checks still pending. Do not edit or clear stored data.\n"
         },
@@ -1270,15 +1360,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "主机的 localhost 网址在 Android 浏览器 会指向手机自己，不是那台电脑。查看练习成果时，先从 Remote 任务看主机提供的截图或结果，再回电脑开本机预览；公开预览与部署是另一个步骤。要停止手机存取，依"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "主机设定篇",
-              "url": "https://mokaair.com/zh-CN/life/codex-remote-setup"
+              "kind": "life",
+              "slug": "codex-remote-setup"
             },
             {
               "type": "text",
@@ -1288,33 +1379,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "最后在同一任务整理主机与目录、已读取内容、尚未跑的测试及下一步，再回电脑核对。你不需要在 Android 安装 Node.js 来执行主机工具；需要的依赖应在实际主机准备。下一步看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "跨装置工作",
-              "url": "https://mokaair.com/zh-CN/life/codex-cross-device-workflow"
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
             },
             {
               "type": "text",
               "text": "与"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "上下文交接",
-              "url": "https://mokaair.com/zh-CN/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
               "text": "。若改用 iPhone，可依"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "iPhone 专篇",
-              "url": "https://mokaair.com/zh-CN/life/codex-mobile-ios"
+              "kind": "life",
+              "slug": "codex-mobile-ios"
             },
             {
               "type": "text",
@@ -1323,9 +1417,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

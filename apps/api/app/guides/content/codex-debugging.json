@@ -24,9 +24,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -49,6 +55,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -62,6 +69,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "markdown",
           "code": "# Bug: Completed shows unfinished tasks\nEnvironment/date: fill from this run\nFixture: broken copied to codex-bug-lab\nSteps: reset practice data; add Read and Build; complete Read; select Completed.\nExpected: Read only.\nObserved: Build only, if reproduced.\nBaseline: node --test core.test.mjs; fill actual result.\nScope: keep UI, storage format, ordering and tests unchanged.\nRoot cause: not confirmed yet.\nUnperformed checks: list explicitly.\n"
         },
@@ -76,11 +84,13 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "javascript",
           "code": "import assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\nconst actual = visibleTasks(tasks, \"completed\").map((task) => task.id);\nconsole.log(\"Completed IDs:\", JSON.stringify(actual));\nassert.deepEqual(actual, [\"a\"]);\nconsole.log(\"Reproduction passed.\");\n"
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "sh",
           "code": "node repro.mjs\n"
         },
@@ -99,6 +109,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Fix the reproduced Completed-filter bug in this codex-bug-lab.\nFirst read core.mjs, core.test.mjs and repro.mjs. Run node repro.mjs and node --test core.test.mjs to confirm the current failure.\nExplain the predicate error using the actual a/b IDs. Modify only the completed predicate in core.mjs and remove its obsolete deliberate-bug comment. Do not change tests, repro.mjs, active behavior, storage or UI.\nRerun both commands, inspect the final diff and report actual results. Browser checks must be marked NOT RUN unless actually performed. Do not publish or deploy.\n"
         },
@@ -108,6 +119,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "javascript",
           "code": "if (filter === \"completed\") return tasks.filter((task) => task.completed);\n"
         },
@@ -170,15 +182,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "交付包含 Bug 報告、最小重現、原因、限定差異及回歸表。要重做時，停止自己的預覽，只把原 broken/core.mjs 複製回來，保留 repro.mjs；它應再次失敗，原測試回到 2 過 1 敗。需要完整功能案例時接"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "功能驗收篇",
-              "url": "https://mokaair.com/zh-TW/life/codex-implement-feature"
+              "kind": "life",
+              "slug": "codex-implement-feature"
             },
             {
               "type": "text",
@@ -187,9 +200,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -234,9 +253,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -259,6 +284,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -272,6 +298,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "markdown",
           "code": "# Bug: Completed shows unfinished tasks\nEnvironment/date: fill from this run\nFixture: broken copied to codex-bug-lab\nSteps: reset practice data; add Read and Build; complete Read; select Completed.\nExpected: Read only.\nObserved: Build only, if reproduced.\nBaseline: node --test core.test.mjs; fill actual result.\nScope: keep UI, storage format, ordering and tests unchanged.\nRoot cause: not confirmed yet.\nUnperformed checks: list explicitly.\n"
         },
@@ -286,11 +313,13 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "javascript",
           "code": "import assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\nconst actual = visibleTasks(tasks, \"completed\").map((task) => task.id);\nconsole.log(\"Completed IDs:\", JSON.stringify(actual));\nassert.deepEqual(actual, [\"a\"]);\nconsole.log(\"Reproduction passed.\");\n"
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "sh",
           "code": "node repro.mjs\n"
         },
@@ -309,6 +338,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Fix the reproduced Completed-filter bug in this codex-bug-lab.\nFirst read core.mjs, core.test.mjs and repro.mjs. Run node repro.mjs and node --test core.test.mjs to confirm the current failure.\nExplain the predicate error using the actual a/b IDs. Modify only the completed predicate in core.mjs and remove its obsolete deliberate-bug comment. Do not change tests, repro.mjs, active behavior, storage or UI.\nRerun both commands, inspect the final diff and report actual results. Browser checks must be marked NOT RUN unless actually performed. Do not publish or deploy.\n"
         },
@@ -318,6 +348,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "javascript",
           "code": "if (filter === \"completed\") return tasks.filter((task) => task.completed);\n"
         },
@@ -380,15 +411,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "交付包含 Bug 报告、最小重现、原因、限定差异及回归表。要重做时，停止自己的预览，只把原 broken/core.mjs 复制回来，保留 repro.mjs；它应再次失败，原测试回到 2 过 1 败。需要完整功能案例时接"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "功能验收篇",
-              "url": "https://mokaair.com/zh-CN/life/codex-implement-feature"
+              "kind": "life",
+              "slug": "codex-implement-feature"
             },
             {
               "type": "text",
@@ -397,9 +429,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -444,9 +482,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -469,6 +513,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -482,6 +527,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "markdown",
           "code": "# Bug: Completed shows unfinished tasks\nEnvironment/date: fill from this run\nFixture: broken copied to codex-bug-lab\nSteps: reset practice data; add Read and Build; complete Read; select Completed.\nExpected: Read only.\nObserved: Build only, if reproduced.\nBaseline: node --test core.test.mjs; fill actual result.\nScope: keep UI, storage format, ordering and tests unchanged.\nRoot cause: not confirmed yet.\nUnperformed checks: list explicitly.\n"
         },
@@ -496,11 +542,13 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "javascript",
           "code": "import assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\nconst actual = visibleTasks(tasks, \"completed\").map((task) => task.id);\nconsole.log(\"Completed IDs:\", JSON.stringify(actual));\nassert.deepEqual(actual, [\"a\"]);\nconsole.log(\"Reproduction passed.\");\n"
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "sh",
           "code": "node repro.mjs\n"
         },
@@ -519,6 +567,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Fix the reproduced Completed-filter bug in this codex-bug-lab.\nFirst read core.mjs, core.test.mjs and repro.mjs. Run node repro.mjs and node --test core.test.mjs to confirm the current failure.\nExplain the predicate error using the actual a/b IDs. Modify only the completed predicate in core.mjs and remove its obsolete deliberate-bug comment. Do not change tests, repro.mjs, active behavior, storage or UI.\nRerun both commands, inspect the final diff and report actual results. Browser checks must be marked NOT RUN unless actually performed. Do not publish or deploy.\n"
         },
@@ -528,6 +577,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "javascript",
           "code": "if (filter === \"completed\") return tasks.filter((task) => task.completed);\n"
         },
@@ -590,15 +640,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Deliver the report, minimal repro, cause, scoped diff and regression table. To repeat, stop your preview and restore only broken/core.mjs, keeping repro.mjs; it should fail again and original tests return to two passes/one failure. For fuller cases see "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "feature acceptance",
-              "url": "https://mokaair.com/en/life/codex-implement-feature"
+              "kind": "life",
+              "slug": "codex-implement-feature"
             },
             {
               "type": "text",
@@ -607,9 +658,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -654,9 +711,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -679,6 +742,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -692,6 +756,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "markdown",
           "code": "# Bug: Completed shows unfinished tasks\nEnvironment/date: fill from this run\nFixture: broken copied to codex-bug-lab\nSteps: reset practice data; add Read and Build; complete Read; select Completed.\nExpected: Read only.\nObserved: Build only, if reproduced.\nBaseline: node --test core.test.mjs; fill actual result.\nScope: keep UI, storage format, ordering and tests unchanged.\nRoot cause: not confirmed yet.\nUnperformed checks: list explicitly.\n"
         },
@@ -706,11 +771,13 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "javascript",
           "code": "import assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\nconst actual = visibleTasks(tasks, \"completed\").map((task) => task.id);\nconsole.log(\"Completed IDs:\", JSON.stringify(actual));\nassert.deepEqual(actual, [\"a\"]);\nconsole.log(\"Reproduction passed.\");\n"
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "sh",
           "code": "node repro.mjs\n"
         },
@@ -729,6 +796,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Fix the reproduced Completed-filter bug in this codex-bug-lab.\nFirst read core.mjs, core.test.mjs and repro.mjs. Run node repro.mjs and node --test core.test.mjs to confirm the current failure.\nExplain the predicate error using the actual a/b IDs. Modify only the completed predicate in core.mjs and remove its obsolete deliberate-bug comment. Do not change tests, repro.mjs, active behavior, storage or UI.\nRerun both commands, inspect the final diff and report actual results. Browser checks must be marked NOT RUN unless actually performed. Do not publish or deploy.\n"
         },
@@ -738,6 +806,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "javascript",
           "code": "if (filter === \"completed\") return tasks.filter((task) => task.completed);\n"
         },
@@ -800,15 +869,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "報告、最小再現、原因、差分、回帰表を渡します。再実行は自分のプレビュー停止後 broken/core.mjs だけ戻し、repro と元2成功1失敗を確認します。詳しい例は"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "機能受入",
-              "url": "https://mokaair.com/ja/life/codex-implement-feature"
+              "kind": "life",
+              "slug": "codex-implement-feature"
             },
             {
               "type": "text",
@@ -817,9 +887,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -864,9 +940,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -889,6 +971,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -902,6 +985,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "markdown",
           "code": "# Bug: Completed shows unfinished tasks\nEnvironment/date: fill from this run\nFixture: broken copied to codex-bug-lab\nSteps: reset practice data; add Read and Build; complete Read; select Completed.\nExpected: Read only.\nObserved: Build only, if reproduced.\nBaseline: node --test core.test.mjs; fill actual result.\nScope: keep UI, storage format, ordering and tests unchanged.\nRoot cause: not confirmed yet.\nUnperformed checks: list explicitly.\n"
         },
@@ -916,11 +1000,13 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "javascript",
           "code": "import assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\nconst actual = visibleTasks(tasks, \"completed\").map((task) => task.id);\nconsole.log(\"Completed IDs:\", JSON.stringify(actual));\nassert.deepEqual(actual, [\"a\"]);\nconsole.log(\"Reproduction passed.\");\n"
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "sh",
           "code": "node repro.mjs\n"
         },
@@ -939,6 +1025,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Fix the reproduced Completed-filter bug in this codex-bug-lab.\nFirst read core.mjs, core.test.mjs and repro.mjs. Run node repro.mjs and node --test core.test.mjs to confirm the current failure.\nExplain the predicate error using the actual a/b IDs. Modify only the completed predicate in core.mjs and remove its obsolete deliberate-bug comment. Do not change tests, repro.mjs, active behavior, storage or UI.\nRerun both commands, inspect the final diff and report actual results. Browser checks must be marked NOT RUN unless actually performed. Do not publish or deploy.\n"
         },
@@ -948,6 +1035,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "javascript",
           "code": "if (filter === \"completed\") return tasks.filter((task) => task.completed);\n"
         },
@@ -1010,15 +1098,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "보고/최소 재현/원인/차이/회귀 표를 전달합니다. 반복은 자신의 미리 보기 종료 후 broken/core.mjs만 복원하고 repro와 기존2통과1실패를 봅니다. 자세한 예는 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "기능 검수",
-              "url": "https://mokaair.com/ko/life/codex-implement-feature"
+              "kind": "life",
+              "slug": "codex-implement-feature"
             },
             {
               "type": "text",
@@ -1027,9 +1116,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

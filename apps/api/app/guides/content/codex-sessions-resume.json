@@ -23,9 +23,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -39,24 +45,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "resume 接續的是先前工作階段的對話與狀態，不是把整個磁碟還原到當時。你在編輯器改了檔案，或其他任務做了修改，重新接續時都要確認。也不要把接續與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "fork",
-              "url": "https://mokaair.com/zh-TW/life/codex-project-management"
+              "kind": "life",
+              "slug": "codex-project-management"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "跨主機 Handoff",
-              "url": "https://mokaair.com/zh-TW/life/codex-cross-device-workflow"
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
             },
             {
               "type": "text",
@@ -75,11 +83,13 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "SESSION-A\nRevision: 1\n"
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "SESSION-B\nRevision: 100\n"
         },
@@ -89,11 +99,13 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "sh",
           "code": "codex --cd . --sandbox read-only\n"
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Read note.txt from the current directory without changing files. Report the exact directory and both lines. This is a session-resume exercise. Do not search other folders or infer content from the filename.\n"
         },
@@ -112,25 +124,28 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "sh",
           "code": "codex resume\n"
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "sh",
           "code": "codex resume --all\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "若啟動目錄和任務儲存的目錄不同，CLI 可能詢問要用哪個位置；不要為了快點進去隨便選。這次要繼續 A 就選 A 所在位置，接著用 /status 與新的讀檔要求確認。已設定 tui.resume_cwd 或明確 --cd 時，行為可能不同；需要理解它們時看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "設定排錯",
-              "url": "https://mokaair.com/zh-TW/life/codex-config-troubleshooting"
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
             },
             {
               "type": "text",
@@ -184,6 +199,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "sh",
           "code": "codex resume --last --sandbox read-only\n"
         },
@@ -193,6 +209,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Resume by reading note.txt from disk again now. Compare the current revision with the earlier conversation. Report the current directory, the file marker, and any difference. Do not restore an older value or edit any file.\n"
         },
@@ -207,24 +224,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "如果規則檔剛更新，也應先完成目前小步驟並開新的工作階段驗證，不把 resume 當成清空所有舊指示的方法；"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "規則層級篇",
-              "url": "https://mokaair.com/zh-TW/life/codex-agents-md-scopes"
+              "kind": "life",
+              "slug": "codex-agents-md-scopes"
             },
             {
               "type": "text",
               "text": "有專門對照。長對話需要整理時看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "上下文交接",
-              "url": "https://mokaair.com/zh-TW/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
@@ -241,9 +260,15 @@
           "text": "圖中 1 是先辨認 A 與 B，2 是選擇正確的工作階段，3 是重新讀取磁碟並核對版本。每次續接都保留這三個檢查點。"
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -281,9 +306,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -297,24 +328,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Resume continues prior conversation/session state; it does not rewind the disk. Recheck files edited by you or another task. Distinguish it from "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "forking",
-              "url": "https://mokaair.com/en/life/codex-project-management"
+              "kind": "life",
+              "slug": "codex-project-management"
             },
             {
               "type": "text",
               "text": " and "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "host handoff",
-              "url": "https://mokaair.com/en/life/codex-cross-device-workflow"
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
             },
             {
               "type": "text",
@@ -333,11 +366,13 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "SESSION-A\nRevision: 1\n"
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "SESSION-B\nRevision: 100\n"
         },
@@ -347,11 +382,13 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "sh",
           "code": "codex --cd . --sandbox read-only\n"
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Read note.txt from the current directory without changing files. Report the exact directory and both lines. This is a session-resume exercise. Do not search other folders or infer content from the filename.\n"
         },
@@ -370,25 +407,28 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "sh",
           "code": "codex resume\n"
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "sh",
           "code": "codex resume --all\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "When current and saved directories differ, CLI may ask which to use. Choose A's location deliberately, then verify with /status and a fresh read. Existing tui.resume_cwd or explicit --cd can change that behavior; see "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "configuration troubleshooting",
-              "url": "https://mokaair.com/en/life/codex-config-troubleshooting"
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
             },
             {
               "type": "text",
@@ -442,6 +482,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "sh",
           "code": "codex resume --last --sandbox read-only\n"
         },
@@ -451,6 +492,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Resume by reading note.txt from disk again now. Compare the current revision with the earlier conversation. Report the current directory, the file marker, and any difference. Do not restore an older value or edit any file.\n"
         },
@@ -465,24 +507,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "If instruction files changed, finish the current small step and verify a fresh session; resume is not a universal reset of prior instructions. See "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "instruction scopes",
-              "url": "https://mokaair.com/en/life/codex-agents-md-scopes"
+              "kind": "life",
+              "slug": "codex-agents-md-scopes"
             },
             {
               "type": "text",
               "text": ". For long conversations, use "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "context handoff",
-              "url": "https://mokaair.com/en/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
@@ -499,9 +543,15 @@
           "text": "Diagram 1 distinguishes A and B, 2 selects the correct session, and 3 rereads disk and verifies the revision. Retain these three checkpoints whenever resuming."
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -539,9 +589,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -555,24 +611,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "resume は以前の会話とセッションを続け、ディスクを巻き戻しません。自分や別課題が編集したファイルを再確認します。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "fork",
-              "url": "https://mokaair.com/ja/life/codex-project-management"
+              "kind": "life",
+              "slug": "codex-project-management"
             },
             {
               "type": "text",
               "text": "の別作業作成や"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "ホスト移動",
-              "url": "https://mokaair.com/ja/life/codex-cross-device-workflow"
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
             },
             {
               "type": "text",
@@ -591,11 +649,13 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "SESSION-A\nRevision: 1\n"
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "SESSION-B\nRevision: 100\n"
         },
@@ -605,11 +665,13 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "sh",
           "code": "codex --cd . --sandbox read-only\n"
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Read note.txt from the current directory without changing files. Report the exact directory and both lines. This is a session-resume exercise. Do not search other folders or infer content from the filename.\n"
         },
@@ -628,25 +690,28 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "sh",
           "code": "codex resume\n"
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "sh",
           "code": "codex resume --all\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "現在地と保存場所が違うと CLI が場所を尋ねる場合があります。A を選び、/status と新しい読取りで確認します。tui.resume_cwd や --cd があれば動作が変わるので"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "設定切り分け",
-              "url": "https://mokaair.com/ja/life/codex-config-troubleshooting"
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
             },
             {
               "type": "text",
@@ -700,6 +765,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "sh",
           "code": "codex resume --last --sandbox read-only\n"
         },
@@ -709,6 +775,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Resume by reading note.txt from disk again now. Compare the current revision with the earlier conversation. Report the current directory, the file marker, and any difference. Do not restore an older value or edit any file.\n"
         },
@@ -723,24 +790,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "指示ファイル変更後は現在の小段階を区切り、新規セッションで検証します。resume を旧指示の万能リセットにしません。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "規則範囲",
-              "url": "https://mokaair.com/ja/life/codex-agents-md-scopes"
+              "kind": "life",
+              "slug": "codex-agents-md-scopes"
             },
             {
               "type": "text",
               "text": "と"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "文脈の引継ぎ",
-              "url": "https://mokaair.com/ja/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
@@ -757,9 +826,15 @@
           "text": "図1は A/B の識別、2は正しいセッション選択、3はディスク再読と版確認です。再開時にこの三点を確認します。"
         },
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -797,9 +872,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -813,24 +894,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "resume는 이전 대화/세션을 잇고 디스크를 되돌리지 않습니다. 자신이나 다른 작업이 편집한 파일을 다시 확인합니다. "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "fork",
-              "url": "https://mokaair.com/ko/life/codex-project-management"
+              "kind": "life",
+              "slug": "codex-project-management"
             },
             {
               "type": "text",
               "text": "의 새 작업 생성, "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "호스트 이전",
-              "url": "https://mokaair.com/ko/life/codex-cross-device-workflow"
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
             },
             {
               "type": "text",
@@ -849,11 +932,13 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "SESSION-A\nRevision: 1\n"
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "SESSION-B\nRevision: 100\n"
         },
@@ -863,11 +948,13 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "sh",
           "code": "codex --cd . --sandbox read-only\n"
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Read note.txt from the current directory without changing files. Report the exact directory and both lines. This is a session-resume exercise. Do not search other folders or infer content from the filename.\n"
         },
@@ -886,25 +973,28 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "sh",
           "code": "codex resume\n"
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "sh",
           "code": "codex resume --all\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "현재/저장 경로가 다르면 CLI가 위치를 물을 수 있습니다. A를 선택하고 /status와 새 읽기로 확인합니다. tui.resume_cwd나 --cd가 있으면 동작이 달라지므로 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "설정 문제 해결",
-              "url": "https://mokaair.com/ko/life/codex-config-troubleshooting"
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
             },
             {
               "type": "text",
@@ -958,6 +1048,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "sh",
           "code": "codex resume --last --sandbox read-only\n"
         },
@@ -967,6 +1058,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Resume by reading note.txt from disk again now. Compare the current revision with the earlier conversation. Report the current directory, the file marker, and any difference. Do not restore an older value or edit any file.\n"
         },
@@ -981,24 +1073,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "지침 파일 변경 후에는 현재 작은 단계를 마치고 새 세션으로 검증합니다. resume를 이전 지침의 만능 초기화로 보지 않습니다. "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "규칙 범위",
-              "url": "https://mokaair.com/ko/life/codex-agents-md-scopes"
+              "kind": "life",
+              "slug": "codex-agents-md-scopes"
             },
             {
               "type": "text",
               "text": "와 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "문맥 인계",
-              "url": "https://mokaair.com/ko/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
@@ -1015,9 +1109,15 @@
           "text": "그림 1은 A/B 구별, 2는 올바른 세션 선택, 3은 디스크 재읽기와 버전 확인입니다. 재개할 때 세 가지를 확인합니다."
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1055,9 +1155,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1071,24 +1177,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "resume 接续的是先前工作阶段的对话与状态，不是把整个磁碟还原到当时。你在编辑器改了档案，或其他任务做了修改，重新接续时都要确认。也不要把接续与 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "fork",
-              "url": "https://mokaair.com/zh-CN/life/codex-project-management"
+              "kind": "life",
+              "slug": "codex-project-management"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "跨主机 Handoff",
-              "url": "https://mokaair.com/zh-CN/life/codex-cross-device-workflow"
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
             },
             {
               "type": "text",
@@ -1107,11 +1215,13 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "SESSION-A\nRevision: 1\n"
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "SESSION-B\nRevision: 100\n"
         },
@@ -1121,11 +1231,13 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "sh",
           "code": "codex --cd . --sandbox read-only\n"
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Read note.txt from the current directory without changing files. Report the exact directory and both lines. This is a session-resume exercise. Do not search other folders or infer content from the filename.\n"
         },
@@ -1144,25 +1256,28 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "sh",
           "code": "codex resume\n"
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "sh",
           "code": "codex resume --all\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "若启动目录和任务储存的目录不同，CLI 可能询问要用哪个位置；不要为了快点进去随便选。这次要继续 A 就选 A 所在位置，接著用 /status 与新的读档要求确认。已设定 tui.resume_cwd 或明确 --cd 时，行为可能不同；需要理解它们时看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "设定排错",
-              "url": "https://mokaair.com/zh-CN/life/codex-config-troubleshooting"
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
             },
             {
               "type": "text",
@@ -1216,6 +1331,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "sh",
           "code": "codex resume --last --sandbox read-only\n"
         },
@@ -1225,6 +1341,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Resume by reading note.txt from disk again now. Compare the current revision with the earlier conversation. Report the current directory, the file marker, and any difference. Do not restore an older value or edit any file.\n"
         },
@@ -1239,24 +1356,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "如果规则档刚更新，也应先完成目前小步骤并开新的工作阶段验证，不把 resume 当成清空所有旧指示的方法；"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "规则层级篇",
-              "url": "https://mokaair.com/zh-CN/life/codex-agents-md-scopes"
+              "kind": "life",
+              "slug": "codex-agents-md-scopes"
             },
             {
               "type": "text",
               "text": "有专门对照。长对话需要整理时看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "上下文交接",
-              "url": "https://mokaair.com/zh-CN/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
@@ -1273,9 +1392,15 @@
           "text": "图中 1 是先辨认 A 与 B，2 是选择正确的工作阶段，3 是重新读取磁碟并核对版本。每次续接都保留这三个检查点。"
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

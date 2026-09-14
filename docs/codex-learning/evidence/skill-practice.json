@@ -1,0 +1,17 @@
+{
+  "environment": "Windows / Node.js v24.13.0",
+  "scope": "Exact reference files, no installed skill, no Codex model or automatic invocation",
+  "moduleHashes": {
+    "48": "cac49f6dabef96a9afd3bd67b630a6402ab7a49d7260329efabba53fe57850fe",
+    "49": "8017302fcd4d5e9eed78fa030aff2bcae5a2b1a5773b4cf790666bea95b51351"
+  },
+  "checks": [
+    "Literal lesson 48 command: total 3, active 1, completed 2; exit 0",
+    "Exact lesson 49 test file: eight passes, including six correctly rejected inputs",
+    "Exact title-deduplication fault: seven passes, one meaningful regression failure",
+    "Restored checker: eight passes; all six source files byte-for-byte preserved",
+    "All three SKILL.md resource references resolve to the exact authored files",
+    "Download ZIP contains the six exact files at documented practice paths"
+  ],
+  "archiveHash": "709eb834c2c66d3190a495f48bc73b329e46545cb2a34dad3d145852ca1ab2b6"
+}

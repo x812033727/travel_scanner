@@ -24,9 +24,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -49,15 +55,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "本系列把價格與可用模型的查詢入口集中在這篇及"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "模型選擇",
-              "url": "https://mokaair.com/zh-TW/life/codex-model-selection"
+              "kind": "life",
+              "slug": "codex-model-selection"
             },
             {
               "type": "text",
@@ -76,15 +83,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "CLI 使用者在作業系統的終端機輸入下方命令，Windows PowerShell、macOS Terminal、Linux 終端機用法相同。這是終端機命令，不是貼在 Codex 對話裡。它用來看驗證狀態；尚未安裝或找不到 codex 時，先回 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 安裝",
-              "url": "https://mokaair.com/zh-TW/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
@@ -94,6 +102,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "shell",
           "code": "codex login status\n"
         },
@@ -108,7 +117,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "ChatGPT 登入者使用官方"
@@ -126,6 +135,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "/status\n"
         },
@@ -144,6 +154,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Checked at: YYYY-MM-DD HH:mm timezone\nInterface and version: desktop / CLI / browser\nAuthentication: ChatGPT / API / unknown\nWorkspace category: personal / managed / unknown\nUsage source: Codex dashboard / Platform Usage\nWindow label: copied without private identifiers\nMetric meaning: used / remaining / unknown\nDisplayed value: value / unknown\nReset time and timezone: value / unknown\nFeature or error being checked: short description\nNext step: verify account / wait / ask workspace admin\n"
         },
@@ -175,33 +186,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "小練習是將兩張不同時間的紀錄比對：確認同一帳號型別、同一用量來源、相同區間及時區後，才比較剩餘值。如果任何一項未知，先補證據而不是猜差額。你能指出該看哪個計費來源，並將登入、資格與額度三種問題分開，就完成本篇。接著閱讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 常用指令",
-              "url": "https://mokaair.com/zh-TW/life/codex-commands"
+              "kind": "life",
+              "slug": "codex-commands"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "上下文交接",
-              "url": "https://mokaair.com/zh-TW/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
               "text": "或"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "有效使用額度",
-              "url": "https://mokaair.com/zh-TW/life/codex-usage-efficiency"
+              "kind": "life",
+              "slug": "codex-usage-efficiency"
             },
             {
               "type": "text",
@@ -211,7 +225,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "查證日 2026-09-14，來源為"
@@ -262,9 +276,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -309,9 +329,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -334,15 +360,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "本系列把价格与可用模型的查询入口集中在这篇及"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "模型选择",
-              "url": "https://mokaair.com/zh-CN/life/codex-model-selection"
+              "kind": "life",
+              "slug": "codex-model-selection"
             },
             {
               "type": "text",
@@ -361,15 +388,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "CLI 使用者在作业系统的终端机输入下方命令，Windows PowerShell、macOS Terminal、Linux 终端机用法相同。这是终端机命令，不是贴在 Codex 对话里。它用来看验证状态；尚未安装或找不到 codex 时，先回 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 安装",
-              "url": "https://mokaair.com/zh-CN/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
@@ -379,6 +407,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "shell",
           "code": "codex login status\n"
         },
@@ -393,7 +422,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "ChatGPT 登入者使用官方"
@@ -411,6 +440,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "/status\n"
         },
@@ -429,6 +459,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Checked at: YYYY-MM-DD HH:mm timezone\nInterface and version: desktop / CLI / browser\nAuthentication: ChatGPT / API / unknown\nWorkspace category: personal / managed / unknown\nUsage source: Codex dashboard / Platform Usage\nWindow label: copied without private identifiers\nMetric meaning: used / remaining / unknown\nDisplayed value: value / unknown\nReset time and timezone: value / unknown\nFeature or error being checked: short description\nNext step: verify account / wait / ask workspace admin\n"
         },
@@ -460,33 +491,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "小练习是将两张不同时间的纪录比对：确认同一帐号型别、同一用量来源、相同区间及时区后，才比较剩余值。如果任何一项未知，先补证据而不是猜差额。你能指出该看哪个计费来源，并将登入、资格与额度三种问题分开，就完成本篇。接著阅读"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 常用指令",
-              "url": "https://mokaair.com/zh-CN/life/codex-commands"
+              "kind": "life",
+              "slug": "codex-commands"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "上下文交接",
-              "url": "https://mokaair.com/zh-CN/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
               "text": "或"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "有效使用额度",
-              "url": "https://mokaair.com/zh-CN/life/codex-usage-efficiency"
+              "kind": "life",
+              "slug": "codex-usage-efficiency"
             },
             {
               "type": "text",
@@ -496,7 +530,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "查证日 2026-09-14，来源为"
@@ -547,9 +581,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -594,9 +634,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -619,15 +665,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "This series centralizes pointers to prices here and model availability in "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "model selection",
-              "url": "https://mokaair.com/en/life/codex-model-selection"
+              "kind": "life",
+              "slug": "codex-model-selection"
             },
             {
               "type": "text",
@@ -646,15 +693,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "CLI users run the following in the operating-system terminal; the command is the same in PowerShell, macOS Terminal and a Linux terminal. It is a shell command, not a message to Codex. It checks authentication state. If codex is missing, return to "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI installation",
-              "url": "https://mokaair.com/en/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
@@ -664,6 +712,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "shell",
           "code": "codex login status\n"
         },
@@ -678,7 +727,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "For ChatGPT sign-in, open the official "
@@ -696,6 +745,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "/status\n"
         },
@@ -714,6 +764,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Checked at: YYYY-MM-DD HH:mm timezone\nInterface and version: desktop / CLI / browser\nAuthentication: ChatGPT / API / unknown\nWorkspace category: personal / managed / unknown\nUsage source: Codex dashboard / Platform Usage\nWindow label: copied without private identifiers\nMetric meaning: used / remaining / unknown\nDisplayed value: value / unknown\nReset time and timezone: value / unknown\nFeature or error being checked: short description\nNext step: verify account / wait / ask workspace admin\n"
         },
@@ -745,33 +796,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "For a small exercise, compare notes made at two times. Confirm the account category, usage source, window and time zone match before comparing remaining values. If any field is unknown, obtain evidence rather than guessing the difference. You are finished when you know which billing source applies and can separate sign-in, eligibility and allowance issues. Continue with "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI commands",
-              "url": "https://mokaair.com/en/life/codex-commands"
+              "kind": "life",
+              "slug": "codex-commands"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "context handoff",
-              "url": "https://mokaair.com/en/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
               "text": " or "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "using allowance effectively",
-              "url": "https://mokaair.com/en/life/codex-usage-efficiency"
+              "kind": "life",
+              "slug": "codex-usage-efficiency"
             },
             {
               "type": "text",
@@ -781,7 +835,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Checked on 2026-09-14 against "
@@ -832,9 +886,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -879,9 +939,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -904,15 +970,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "価格の確認先は本記事、モデルの確認先は"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "モデル選択",
-              "url": "https://mokaair.com/ja/life/codex-model-selection"
+              "kind": "life",
+              "slug": "codex-model-selection"
             },
             {
               "type": "text",
@@ -931,15 +998,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "CLI 利用者は OS の端末で次を入力します。PowerShell、macOS Terminal、Linux で同じコマンドです。Codex へのメッセージではなくシェルコマンドで、認証状態を確認します。codex が見つからなければ "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 導入",
-              "url": "https://mokaair.com/ja/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
@@ -949,6 +1017,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "shell",
           "code": "codex login status\n"
         },
@@ -963,7 +1032,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "ChatGPT サインインでは公式の "
@@ -981,6 +1050,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "/status\n"
         },
@@ -999,6 +1069,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Checked at: YYYY-MM-DD HH:mm timezone\nInterface and version: desktop / CLI / browser\nAuthentication: ChatGPT / API / unknown\nWorkspace category: personal / managed / unknown\nUsage source: Codex dashboard / Platform Usage\nWindow label: copied without private identifiers\nMetric meaning: used / remaining / unknown\nDisplayed value: value / unknown\nReset time and timezone: value / unknown\nFeature or error being checked: short description\nNext step: verify account / wait / ask workspace admin\n"
         },
@@ -1030,33 +1101,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "追加練習では異なる時刻の記録を比較します。アカウント区分、使用量の出典、期間、タイムゾーンが同じと確認してから残量を比べます。不明な項目があれば差を推測せず証拠を補います。対応する課金元を示し、認証・利用資格・利用枠を区別できれば完了です。次は "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI コマンド",
-              "url": "https://mokaair.com/ja/life/codex-commands"
+              "kind": "life",
+              "slug": "codex-commands"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "コンテキストの引き継ぎ",
-              "url": "https://mokaair.com/ja/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "利用枠の活用",
-              "url": "https://mokaair.com/ja/life/codex-usage-efficiency"
+              "kind": "life",
+              "slug": "codex-usage-efficiency"
             },
             {
               "type": "text",
@@ -1066,7 +1140,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "確認日は 2026-09-14。出典は"
@@ -1117,9 +1191,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1164,9 +1244,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1189,15 +1275,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "가격 확인 경로는 이 글에, 모델 가용성은 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "모델 선택",
-              "url": "https://mokaair.com/ko/life/codex-model-selection"
+              "kind": "life",
+              "slug": "codex-model-selection"
             },
             {
               "type": "text",
@@ -1216,15 +1303,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "CLI 사용자는 운영체제 터미널에서 아래 명령을 입력합니다. PowerShell, macOS Terminal, Linux에서 명령은 같습니다. Codex 대화에 붙이는 요청이 아니라 인증 상태를 확인하는 셸 명령입니다. codex를 찾지 못하면 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 설치",
-              "url": "https://mokaair.com/ko/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
@@ -1234,6 +1322,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "shell",
           "code": "codex login status\n"
         },
@@ -1248,7 +1337,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "ChatGPT 로그인이라면 공식 "
@@ -1266,6 +1355,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "/status\n"
         },
@@ -1284,6 +1374,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Checked at: YYYY-MM-DD HH:mm timezone\nInterface and version: desktop / CLI / browser\nAuthentication: ChatGPT / API / unknown\nWorkspace category: personal / managed / unknown\nUsage source: Codex dashboard / Platform Usage\nWindow label: copied without private identifiers\nMetric meaning: used / remaining / unknown\nDisplayed value: value / unknown\nReset time and timezone: value / unknown\nFeature or error being checked: short description\nNext step: verify account / wait / ask workspace admin\n"
         },
@@ -1315,33 +1406,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "추가 연습으로 서로 다른 시각에 만든 기록 두 개를 비교하세요. 계정 분류, 사용량 출처, 기간, 시간대가 같은지 확인한 뒤 잔여량을 비교합니다. 모르는 항목이 있으면 차이를 추측하지 말고 근거부터 확보하세요. 어떤 과금 출처를 봐야 하는지 알고 인증, 자격, 한도 문제를 구분하면 완료입니다. 다음으로 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 명령",
-              "url": "https://mokaair.com/ko/life/codex-commands"
+              "kind": "life",
+              "slug": "codex-commands"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "문맥 인수인계",
-              "url": "https://mokaair.com/ko/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "효율적인 한도 사용",
-              "url": "https://mokaair.com/ko/life/codex-usage-efficiency"
+              "kind": "life",
+              "slug": "codex-usage-efficiency"
             },
             {
               "type": "text",
@@ -1351,7 +1445,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "2026-09-14에 "
@@ -1402,9 +1496,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

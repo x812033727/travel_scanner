@@ -24,9 +24,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -40,11 +46,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/zh-TW/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
@@ -102,6 +109,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "CONFIG-LAB-01\n"
         },
@@ -111,11 +119,13 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "/debug-config\n"
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "/status\n"
         },
@@ -134,6 +144,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "toml",
           "code": "# Practice setting: disable the built-in web search tool.\nweb_search = \"disabled\"\n"
         },
@@ -156,20 +167,22 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Read note.txt from this practice project and report its exact line. Do not edit files, browse websites or call external services. If you cannot verify an effective setting from available diagnostics, say so rather than inferring it from the file alone.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "這個開關只關閉內建網頁搜尋工具，不能用來證明所有網路都被封鎖。Shell、瀏覽器、MCP 與外部服務還有自己的權限和設定；需要控制這些範圍時讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "權限與沙盒",
-              "url": "https://mokaair.com/zh-TW/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -188,6 +201,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "File changed: codex-config-lab/.codex/config.toml\nOriginal state: record whether the file/key existed.\nRequested change: web_search = disabled\nLoaded layer: record observed path and enabled/skipped state.\nEffective value: record verified value, or unverified.\nLocal read: record actual note.txt result.\nRestoration: record the restored file/key state and fresh-session check.\n"
         },
@@ -202,24 +216,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "組織強制要求與一般預設不同，不能靠專案鍵覆寫被禁止的值。模型、推理深度與額度另看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "模型選擇",
-              "url": "https://mokaair.com/zh-TW/life/codex-model-selection"
+              "kind": "life",
+              "slug": "codex-model-selection"
             },
             {
               "type": "text",
               "text": "，不要從網路抄一份整包設定把現有供應者與登入流程換掉。完成本篇應有起始、啟用、還原三份紀錄，並能指出哪些項目仍未確認；接著到"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "設定故障排除",
-              "url": "https://mokaair.com/zh-TW/life/codex-config-troubleshooting"
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
             },
             {
               "type": "text",
@@ -228,9 +244,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -280,9 +302,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -296,11 +324,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/zh-CN/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
@@ -358,6 +387,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "CONFIG-LAB-01\n"
         },
@@ -367,11 +397,13 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "/debug-config\n"
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "/status\n"
         },
@@ -390,6 +422,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "toml",
           "code": "# Practice setting: disable the built-in web search tool.\nweb_search = \"disabled\"\n"
         },
@@ -412,20 +445,22 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Read note.txt from this practice project and report its exact line. Do not edit files, browse websites or call external services. If you cannot verify an effective setting from available diagnostics, say so rather than inferring it from the file alone.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "这个开关只关闭内建网页搜寻工具，不能用来证明所有网路都被封锁。Shell、浏览器、MCP 与外部服务还有自己的权限和设定；需要控制这些范围时读"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "权限与沙盒",
-              "url": "https://mokaair.com/zh-CN/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -444,6 +479,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "File changed: codex-config-lab/.codex/config.toml\nOriginal state: record whether the file/key existed.\nRequested change: web_search = disabled\nLoaded layer: record observed path and enabled/skipped state.\nEffective value: record verified value, or unverified.\nLocal read: record actual note.txt result.\nRestoration: record the restored file/key state and fresh-session check.\n"
         },
@@ -458,24 +494,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "组织强制要求与一般预设不同，不能靠专案键覆写被禁止的值。模型、推理深度与额度另看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "模型选择",
-              "url": "https://mokaair.com/zh-CN/life/codex-model-selection"
+              "kind": "life",
+              "slug": "codex-model-selection"
             },
             {
               "type": "text",
               "text": "，不要从网路抄一份整包设定把现有供应者与登入流程换掉。完成本篇应有起始、启用、还原三份纪录，并能指出哪些项目仍未确认；接著到"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "设定故障排除",
-              "url": "https://mokaair.com/zh-CN/life/codex-config-troubleshooting"
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
             },
             {
               "type": "text",
@@ -484,9 +522,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -536,9 +580,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -552,11 +602,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/en/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
@@ -614,6 +665,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "CONFIG-LAB-01\n"
         },
@@ -623,11 +675,13 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "/debug-config\n"
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "/status\n"
         },
@@ -646,6 +700,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "toml",
           "code": "# Practice setting: disable the built-in web search tool.\nweb_search = \"disabled\"\n"
         },
@@ -668,20 +723,22 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Read note.txt from this practice project and report its exact line. Do not edit files, browse websites or call external services. If you cannot verify an effective setting from available diagnostics, say so rather than inferring it from the file alone.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "This switch disables the built-in search tool, not every network path. Shell, browser, MCP and external services have their own permissions and settings; see "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "permissions and sandboxing",
-              "url": "https://mokaair.com/en/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -700,6 +757,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "File changed: codex-config-lab/.codex/config.toml\nOriginal state: record whether the file/key existed.\nRequested change: web_search = disabled\nLoaded layer: record observed path and enabled/skipped state.\nEffective value: record verified value, or unverified.\nLocal read: record actual note.txt result.\nRestoration: record the restored file/key state and fresh-session check.\n"
         },
@@ -714,24 +772,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Enforced organization requirements differ from defaults; project keys cannot override forbidden values. Use "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "model selection",
-              "url": "https://mokaair.com/en/life/codex-model-selection"
+              "kind": "life",
+              "slug": "codex-model-selection"
             },
             {
               "type": "text",
               "text": " for models and reasoning rather than replacing provider/auth settings with a copied configuration bundle. Finish with baseline, enabled and restored records plus explicit unknowns. Continue to "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "configuration troubleshooting",
-              "url": "https://mokaair.com/en/life/codex-config-troubleshooting"
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
             },
             {
               "type": "text",
@@ -740,9 +800,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -792,9 +858,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -808,11 +880,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/ja/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
@@ -870,6 +943,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "CONFIG-LAB-01\n"
         },
@@ -879,11 +953,13 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "/debug-config\n"
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "/status\n"
         },
@@ -902,6 +978,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "toml",
           "code": "# Practice setting: disable the built-in web search tool.\nweb_search = \"disabled\"\n"
         },
@@ -924,20 +1001,22 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Read note.txt from this practice project and report its exact line. Do not edit files, browse websites or call external services. If you cannot verify an effective setting from available diagnostics, say so rather than inferring it from the file alone.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "この設定は内蔵検索ツールを無効にするもので全通信遮断ではありません。シェル、ブラウザ、MCP、外部サービスは別の権限と設定を持ちます。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "権限とサンドボックス",
-              "url": "https://mokaair.com/ja/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -956,6 +1035,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "File changed: codex-config-lab/.codex/config.toml\nOriginal state: record whether the file/key existed.\nRequested change: web_search = disabled\nLoaded layer: record observed path and enabled/skipped state.\nEffective value: record verified value, or unverified.\nLocal read: record actual note.txt result.\nRestoration: record the restored file/key state and fresh-session check.\n"
         },
@@ -970,24 +1050,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "強制要件は一般の既定値と異なり、プロジェクトキーで禁止値を通せません。モデルや推論は"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "選択記事",
-              "url": "https://mokaair.com/ja/life/codex-model-selection"
+              "kind": "life",
+              "slug": "codex-model-selection"
             },
             {
               "type": "text",
               "text": "を使い、設定一式のコピーで認証や提供元を替えません。開始、有効、復元と未確認を記録し、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "設定の切り分け",
-              "url": "https://mokaair.com/ja/life/codex-config-troubleshooting"
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
             },
             {
               "type": "text",
@@ -996,9 +1078,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1048,9 +1136,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1064,11 +1158,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/ko/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
@@ -1126,6 +1221,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "CONFIG-LAB-01\n"
         },
@@ -1135,11 +1231,13 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "/debug-config\n"
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "/status\n"
         },
@@ -1158,6 +1256,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "toml",
           "code": "# Practice setting: disable the built-in web search tool.\nweb_search = \"disabled\"\n"
         },
@@ -1180,20 +1279,22 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Read note.txt from this practice project and report its exact line. Do not edit files, browse websites or call external services. If you cannot verify an effective setting from available diagnostics, say so rather than inferring it from the file alone.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "이 설정은 내장 검색 도구를 끄며 모든 통신 차단은 아닙니다. 셸/브라우저/MCP/외부 서비스에는 별도 권한과 설정이 있습니다. "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "권한과 샌드박스",
-              "url": "https://mokaair.com/ko/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -1212,6 +1313,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "File changed: codex-config-lab/.codex/config.toml\nOriginal state: record whether the file/key existed.\nRequested change: web_search = disabled\nLoaded layer: record observed path and enabled/skipped state.\nEffective value: record verified value, or unverified.\nLocal read: record actual note.txt result.\nRestoration: record the restored file/key state and fresh-session check.\n"
         },
@@ -1226,24 +1328,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "강제 요구는 일반 기본값과 달라 프로젝트 키로 금지값을 허용할 수 없습니다. 모델/추론은 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "선택 강의",
-              "url": "https://mokaair.com/ko/life/codex-model-selection"
+              "kind": "life",
+              "slug": "codex-model-selection"
             },
             {
               "type": "text",
               "text": "를 참고하고 설정 묶음 복사로 인증/공급자를 바꾸지 않습니다. 시작/활성/복원과 미확인을 기록하고 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "설정 문제 해결",
-              "url": "https://mokaair.com/ko/life/codex-config-troubleshooting"
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
             },
             {
               "type": "text",
@@ -1252,9 +1356,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

@@ -1,0 +1,249 @@
+{
+  "id": 49,
+  "readingMinutes": 15,
+  "operationMinutes": 30,
+  "blocks": [
+    {
+      "type": "h2",
+      "text": [
+        "目標與準備",
+        "Goal and preparation",
+        "目標と準備",
+        "목표와 준비"
+      ]
+    },
+    {
+      "type": "note",
+      "text": [
+        "驗證 todo-summary 的程式是否正確，以及 Codex 是否在合適的需求中照技能流程操作。閱讀約 15 分鐘、練習約 30 分鐘；沿用[技能資源分拆](article:codex-skill-resources)的 codex-skill-lab 和完整四份資源，需要 Node.js 22 以上相容版本、編輯器及已登入的 Codex。先手動跑一次統計器，確認原始三筆資料得到 3／1／2。",
+        "Verify both the todo-summary checker and Codex's use of the skill on appropriate requests. Allow 15 minutes to read and 30 to practice. Reuse codex-skill-lab and all four resources from [Skill resources](article:codex-skill-resources), with compatible Node.js 22 or later, an editor and authenticated Codex. First run the checker manually and confirm the original three records yield 3/1/2.",
+        "todo-summary の検査プログラムと、適切な依頼に対する Codex のスキル使用を確認します。読む時間15分、実習30分。[スキル資源](article:codex-skill-resources)の codex-skill-lab と4資源、対応 Node.js 22 以降、エディター、認証済み Codex を使います。最初に手動で元の3件が3／1／2になることを確認します。",
+        "todo-summary 검사기와 적절한 요청에서 Codex의 스킬 사용을 모두 검증합니다. 읽기 15분, 실습 30분입니다. [스킬 자원](article:codex-skill-resources)의 codex-skill-lab과 네 자원, 호환 Node.js 22 이상, 편집기, 로그인 Codex를 사용합니다. 먼저 검사기를 직접 실행해 원래 세 레코드가 3/1/2인지 확인하세요."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "「測試全過」在這裡有兩種不同範圍：下面的八項自動測試只證明檢查程式對指定輸入的結果；技能行為驗收還需要觀察選擇、讀檔、工具紀錄及回覆。兩者分開記錄，才不會把 Node.js 成功當成 Codex 已成功觸發技能。測試也不要求特定模型名稱，請記錄你當時實際使用的入口與可用選項。",
+        "'All tests pass' has two scopes here. The eight automated tests check the program's behavior on specified inputs. Skill acceptance additionally observes selection, file reads, tool records and replies. Record them separately so Node.js success never becomes a claim that Codex activated the skill correctly. No specific model is required; record your actual surface and available settings.",
+        "成功には2つの範囲があります。8つの自動テストは指定入力へのプログラム動作だけを検証し、スキル検収では選択、読取り、ツール記録、返信も観察します。Node.js 成功を正しいスキル適用と混同せず、別々に記録します。特定モデルは不要で、実際の入口と設定を残します。",
+        "통과의 범위는 두 가지입니다. 자동 테스트 여덟 개는 지정 입력에 대한 프로그램 동작만 확인합니다. 스킬 검수는 선택, 파일 읽기, 도구 기록, 응답도 관찰해야 합니다. Node.js 성공을 올바른 스킬 활성화로 간주하지 않도록 따로 기록하세요. 특정 모델은 필요 없으며 실제 진입점과 설정을 남깁니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 1：列出正確結果與失敗條件",
+        "Step 1: Define results and failure conditions",
+        "手順1：期待結果と失敗条件",
+        "1단계: 결과와 실패 조건 정의"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "先看這張表，再寫測試。正常案例保留兩筆同名 Read；空陣列是有效輸入，不應因為沒有任務就報錯。反過來，重複 ID、錯誤型別或壞 JSON 必須明確失敗，不能先刪掉有問題的列，再回覆看似正常的總數。錯誤輸入不應在標準輸出混入半份成功 JSON，否則後續腳本很容易誤讀。",
+        "Read the matrix before adding tests. The normal case keeps both Read tasks; an empty array is valid. Duplicate IDs, invalid types and malformed JSON must fail explicitly instead of dropping troublesome rows and reporting plausible counts. Invalid input must not produce partial success JSON on stdout, which downstream scripts could mistake for a result.",
+        "テスト前に表を確認します。正常例は同名 Read 2件を保持し、空配列は有効です。ID 重複、型不正、壊れた JSON は明確に失敗し、問題行を除いてそれらしい件数を返してはいけません。不正入力時に stdout へ部分的な成功 JSON を出すと後続処理が誤認します。",
+        "테스트 전에 표를 확인하세요. 정상 사례는 Read 두 개를 보존하고 빈 배열은 유효합니다. 중복 ID, 잘못된 타입, 손상된 JSON은 명확히 실패해야 하며 문제 행을 지운 뒤 그럴듯한 개수를 반환하면 안 됩니다. 잘못된 입력에서 stdout에 부분 성공 JSON이 섞이면 후속 스크립트가 오인할 수 있습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "| 案例 | 程式退出碼 | 可接受結果 |\n| --- | --- | --- |\n| 三筆任務、兩筆同名 | 0 | total 3、active 1、completed 2 |\n| 空陣列 | 0 | 三個數量均為 0 |\n| 重複 ID | 1 | Duplicate id，不輸出成功 JSON |\n| completed 為字串 | 1 | Invalid task，不自動轉型 |\n| 非陣列、壞 JSON、缺檔或缺參數 | 1 | 明確錯誤、沒有成功統計 |",
+        "| Case | Checker exit | Accepted result |\n| --- | --- | --- |\n| Three tasks, repeated title | 0 | total 3, active 1, completed 2 |\n| Empty array | 0 | All three counts are 0 |\n| Duplicate ID | 1 | Duplicate id; no success JSON |\n| String completed value | 1 | Invalid task; no coercion |\n| Non-array, malformed JSON, absent file or argument | 1 | Explicit error; no success counts |",
+        "| 事例 | 検査終了 | 期待結果 |\n| --- | --- | --- |\n| 同名を含む3件 | 0 | total 3、active 1、completed 2 |\n| 空配列 | 0 | すべて0 |\n| ID 重複 | 1 | Duplicate id、成功 JSON なし |\n| completed が文字列 | 1 | Invalid task、自動変換なし |\n| 配列以外、壊れた JSON、欠落ファイル・引数 | 1 | 明確な失敗、成功集計なし |",
+        "| 사례 | 검사기 종료 | 허용 결과 |\n| --- | --- | --- |\n| 동명 포함 세 작업 | 0 | total 3, active 1, completed 2 |\n| 빈 배열 | 0 | 세 개수 모두 0 |\n| 중복 ID | 1 | Duplicate id, 성공 JSON 없음 |\n| completed가 문자열 | 1 | Invalid task, 자동 변환 없음 |\n| 배열 아님, 손상 JSON, 누락 파일/인수 | 1 | 명확한 오류, 성공 집계 없음 |"
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 2：加入八項可重跑測試",
+        "Step 2: Add eight repeatable tests",
+        "手順2：8つの反復テスト",
+        "2단계: 반복 가능한 테스트 여덟 개"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在 codex-skill-lab 根目錄新增 skill.test.mjs，貼入下列全部程式。它使用 Node.js 內建測試工具，不必安裝額外套件。每個案例在系統暫存目錄建立自己的輸入，呼叫真實統計器，再比對退出碼、輸出與原檔位元組。測試結束只清除自己剛建立的暫存資料夾，不碰 data/tasks.json。",
+        "Create skill.test.mjs at the codex-skill-lab root and paste the complete program below. It uses Node.js's built-in test runner, requiring no extra package. Each case creates its own temporary input, executes the real checker and compares exit status, output and original bytes. Cleanup removes only its own newly created temporary folder, preserving data/tasks.json.",
+        "codex-skill-lab ルートに skill.test.mjs を作り、全文を貼ります。Node.js 内蔵テストなので追加パッケージ不要です。事例ごとに専用一時入力を作り、実検査器を実行して終了コード、出力、元バイト列を比較します。終了時は自分で作った一時フォルダーのみ削除し、data/tasks.json は触りません。",
+        "codex-skill-lab 루트에 skill.test.mjs를 만들고 전체 코드를 붙이세요. Node.js 내장 테스트라 추가 패키지가 필요 없습니다. 각 사례는 임시 입력을 만들고 실제 검사기를 실행해 종료 코드, 출력, 원본 바이트를 비교합니다. 정리는 방금 만든 임시 폴더만 삭제하며 data/tasks.json은 건드리지 않습니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "import test from 'node:test';\nimport assert from 'node:assert/strict';\nimport { mkdtempSync, writeFileSync, readFileSync, rmSync } from 'node:fs';\nimport { tmpdir } from 'node:os';\nimport { resolve, join, dirname } from 'node:path';\nimport { spawnSync } from 'node:child_process';\n\nconst script = resolve('.agents/skills/todo-summary/scripts/count-tasks.mjs');\nconst tasks = [\n  { id: 'a', title: 'Read', completed: true },\n  { id: 'b', title: 'Build', completed: false },\n  { id: 'c', title: 'Read', completed: true },\n];\nfunction run(input, verify, missing = false) {\n  const folder = mkdtempSync(join(tmpdir(), 'todo-skill-test-'));\n  const file = join(folder, 'input.json');\n  try {\n    if (!missing) writeFileSync(file, input, 'utf8');\n    const before = missing ? null : readFileSync(file);\n    const result = spawnSync(process.execPath, [script, file], { encoding: 'utf8' });\n    assert.equal(result.error, undefined);\n    verify(result);\n    if (!missing) assert.deepEqual(readFileSync(file), before, 'Input changed');\n  } finally {\n    assert.equal(dirname(resolve(folder)), resolve(tmpdir()));\n    rmSync(folder, { recursive: true });\n  }\n}\nfunction fails(input, pattern) {\n  run(input, result => {\n    assert.equal(result.status, 1);\n    assert.equal(result.stdout, '');\n    assert.match(result.stderr, pattern);\n  });\n}\ntest('keeps repeated titles as three records', () => run(JSON.stringify(tasks), result => {\n  assert.equal(result.status, 0);\n  assert.equal(result.stderr, '');\n  assert.deepEqual(JSON.parse(result.stdout), { total: 3, active: 1, completed: 2 });\n}));\ntest('accepts an empty array', () => run('[]', result => {\n  assert.equal(result.status, 0);\n  assert.deepEqual(JSON.parse(result.stdout), { total: 0, active: 0, completed: 0 });\n}));\ntest('rejects duplicate IDs', () => fails(JSON.stringify([tasks[0], tasks[0]]), /Duplicate id/));\ntest('rejects string completed', () => fails(JSON.stringify([{ ...tasks[0], completed: 'true' }]), /Invalid task/));\ntest('rejects a non-array', () => fails('{}', /Input must be an array/));\ntest('rejects malformed JSON', () => fails('{', /\\S/));\ntest('reports a missing file', () => run('', result => {\n  assert.equal(result.status, 1);\n  assert.equal(result.stdout, '');\n  assert.match(result.stderr, /ENOENT/);\n}, true));\ntest('requires an input argument', () => {\n  const result = spawnSync(process.execPath, [script], { encoding: 'utf8' });\n  assert.equal(result.status, 1);\n  assert.equal(result.stdout, '');\n  assert.match(result.stderr, /Usage:/);\n});\n",
+      "label": [
+        "skill.test.mjs",
+        "skill.test.mjs",
+        "skill.test.mjs",
+        "skill.test.mjs"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "保持終端機位於練習根目錄，Windows PowerShell、macOS、Linux 都執行下面命令。正常的檢查器應得到 8 項通過、0 項失敗，測試程式本身退出 0。表格中預期失敗的輸入，會因為被正確拒絕而讓對應測試通過；不要把統計器退出 1 和測試套件失敗混在一起。",
+        "From the practice root, run the following command in PowerShell, macOS or Linux. The correct checker should produce eight passes, zero failures and test-runner exit 0. Inputs expected to fail make their tests pass when correctly rejected. Distinguish a checker exit of 1 from failure of the test suite itself.",
+        "実習ルートの PowerShell、macOS、Linux で次を実行します。正しい検査器は8成功0失敗、テスト全体の終了0です。拒否すべき入力は適切に拒否すればテスト成功になります。検査器の終了1とテスト全体の失敗を混同しません。",
+        "실습 루트의 PowerShell, macOS, Linux에서 다음 명령을 실행하세요. 올바른 검사기는 8통과 0실패, 테스트 실행기 종료 0이어야 합니다. 거부해야 할 입력은 올바르게 거부되면 테스트가 통과합니다. 검사기의 종료 1과 테스트 묶음 자체의 실패를 구분하세요."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "node --test skill.test.mjs\n",
+      "label": [
+        "在練習根目錄執行",
+        "Run at the practice root",
+        "実習ルートで実行",
+        "실습 루트에서 실행"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "如果第一項說找不到腳本，先檢查根目錄和 .agents/skills/todo-summary/scripts/count-tasks.mjs 的實際位置。若全部案例都變成 Usage，看看測試檔是否仍傳入 file 參數；若只有 JSON 錯誤文字不同，測試只要求有錯誤訊息，不依賴某一版 Node.js 的完整標點。先保留錯誤輸出，再比對版本，別為了綠燈而刪掉負面案例。",
+        "If the first case cannot find the script, verify the root and the exact script location. If every case prints Usage, inspect whether the test still passes file. Malformed-JSON wording can vary by Node version; that test requires a nonempty error rather than version-specific punctuation. Preserve the failing output and compare versions instead of deleting negative cases to get a green result.",
+        "スクリプト未発見はルートと実ファイル、全件 Usage なら file 引数を確認します。JSON エラー文言は Node 版で変わるため、そのテストは固定の句読点ではなく非空メッセージを求めます。失敗出力を残して版を比較し、成功表示のために負の事例を削除しません。",
+        "스크립트를 못 찾으면 루트와 실제 경로를, 모두 Usage이면 file 인수가 전달되는지 확인하세요. JSON 오류 문구는 Node 버전에 따라 달라 해당 테스트는 특정 문장부호 대신 비어 있지 않은 오류를 요구합니다. 실패 출력을 보존하고 버전을 비교하며 초록 결과를 만들려고 부정 사례를 삭제하지 마세요."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 3：確認測試真的能抓到錯誤",
+        "Step 3: Prove the tests can catch a defect",
+        "手順3：誤りを捕捉できることを確認",
+        "3단계: 테스트가 결함을 잡는지 확인"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "先把 count-tasks.mjs 複製成 count-tasks.saved.mjs，確認備份存在。只在原檔的 result 那一行，把 total: tasks.length 暫時改成下面片段，其餘保留。這模擬「依標題計數」的錯誤：兩筆 Read 被算成一筆，但 active 與 completed 仍沿用原數量。它是刻意製造的局部故障，不是本教學的最終版本。",
+        "Copy count-tasks.mjs to count-tasks.saved.mjs and confirm the backup exists. In the original result line, temporarily replace only total: tasks.length with the fragment below. This simulates counting titles: two Read records become one while active and completed retain the original counts. It is a deliberate local fault, not the final version.",
+        "count-tasks.mjs を count-tasks.saved.mjs にコピーして保存を確認します。元ファイルの result 行で total: tasks.length だけを次に変え、同名2件を1件と数える誤りを作ります。active と completed は元のままです。局所的な故障実験であり、最終版ではありません。",
+        "count-tasks.mjs를 count-tasks.saved.mjs로 복사하고 백업을 확인하세요. 원본 result 행의 total: tasks.length만 다음 조각으로 바꿔 동명 두 개를 하나로 세는 오류를 만듭니다. active와 completed는 원래 개수입니다. 의도적인 국소 결함이며 최종 버전이 아닙니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "total: new Set(tasks.map(task => task.title)).size\n",
+      "label": [
+        "只替換 result 內的 total 欄位",
+        "Replace only total inside result",
+        "result 内の total だけ置換",
+        "result 안의 total만 교체"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "重跑相同命令，應出現 7 項通過、1 項失敗，失敗名稱是 keeps repeated titles as three records。觀察 actual total 為 2、expected 為 3，這才是測試抓到原本契約不允許的行為。接著只把原檔從剛才備份還原，再跑一次應恢復 8 項通過。保留前、故障、還原三次摘要，不把最後一張綠燈當成全部過程。",
+        "Run the same command: expect seven passes and one failure named keeps repeated titles as three records. Its actual total is 2 and expected total is 3, demonstrating detection of a contract violation. Restore only the original checker from your backup and rerun for eight passes. Keep summaries of baseline, fault and restoration rather than only the last green result.",
+        "同じ命令は7成功1失敗となり、keeps repeated titles as three records が失敗するはずです。actual total 2、expected 3 で仕様違反を検出します。検査器だけ保存版から戻し、8成功へ復帰することを確認します。基準、故障、復元の3結果を残します。",
+        "같은 명령을 실행하면 7통과 1실패이며 keeps repeated titles as three records가 실패해야 합니다. actual total 2와 expected 3으로 계약 위반을 잡은 것을 확인합니다. 검사기만 백업에서 복원하고 다시 8통과인지 확인하세요. 마지막 초록 결과뿐 아니라 기준, 결함, 복원 결과를 모두 남깁니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 4：設計技能行為驗收",
+        "Step 4: Design skill behavior checks",
+        "手順4：スキル動作の検収",
+        "4단계: 스킬 행동 검수 설계"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "程式還原之後，開始檢查 Codex。每一列使用新的任務，先確認工作資料夾，再依表格送出需求；不得讓前一次已讀規格、已完成報告或手動補充的答案污染下一列。每次記錄輸入原文、是否手動選技能、實際讀取檔案、工具命令、退出碼與結果，才能判斷問題發生在選擇還是執行。",
+        "After restoring the program, test Codex. Use a fresh task for each row, verify the working folder and send the specified request. Prevent previously read contracts, finished reports or manually supplied answers from contaminating later cases. Record the exact request, manual selection, files read, command, exit status and result to distinguish selection failures from execution failures.",
+        "復元後に Codex を検収します。表の各行は新規タスクで作業場所を確認し、前回の仕様、完成報告、手動で与えた答えを持ち込まないようにします。依頼全文、手動選択、読んだファイル、命令、終了値、結果を記録し、選択と実行の失敗を分けます。",
+        "복원 후 Codex를 검수합니다. 표의 각 행마다 새 작업에서 폴더를 확인하고 이전 규격, 완성 보고서, 수동으로 준 정답이 섞이지 않게 합니다. 정확한 요청, 수동 선택 여부, 읽은 파일, 명령, 종료 값, 결과를 기록해 선택 문제와 실행 문제를 구분하세요."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "| 情境 | 送出的自然語言需求 | 檢查重點 |\n| --- | --- | --- |\n| 明確使用 | 選取 todo-summary，統計 data/tasks.json，只在回覆給報告 | 讀取資源、實際執行、3／1／2、輸入不變 |\n| 符合情境 | 統計這份本機待辦 JSON 的總數、未完成及完成數 | 記錄是否選到技能；沒選到不冒稱已使用 |\n| 不符合情境 | 將網站背景改成藍色，先提出計畫，不修改檔案 | 不應為這個需求執行待辦統計器 |\n| 必要資源缺少 | 規格檔改名後明確使用技能產生已驗證報告 | 說明缺檔並停止，不創造規格或結果 |",
+        "| Situation | Natural-language request | What to check |\n| --- | --- | --- |\n| Explicit | Select todo-summary; summarize data/tasks.json in the reply only | Read resources, execute, 3/1/2, preserve input |\n| Matching context | Count total, active and completed tasks in this local JSON | Record selection; no false claim of using a skill |\n| Outside scope | Plan a blue website background; do not edit files | Do not run the task counter for this request |\n| Required resource missing | Rename the contract, then explicitly request a verified skill report | Report missing resource and stop; invent nothing |",
+        "| 状況 | 自然言語での依頼 | 確認点 |\n| --- | --- | --- |\n| 明示 | todo-summary を選び data/tasks.json を返信内だけで集計 | 資源読取り、実行、3／1／2、入力保持 |\n| 適合 | 本機の待ちタスク JSON の全体・未完了・完了を数える | 選択の有無を記録し使用を偽らない |\n| 対象外 | サイト背景を青にする計画のみ、変更しない | タスク集計器を実行しない |\n| 必須資源なし | 仕様を改名して検証済み報告を明示依頼 | 欠落報告して停止し、仕様や結果を創作しない |",
+        "| 상황 | 자연어 요청 | 확인점 |\n| --- | --- | --- |\n| 명시 | todo-summary 선택 후 data/tasks.json을 응답으로만 집계 | 자원 읽기, 실행, 3/1/2, 원본 보존 |\n| 적합 | 로컬 작업 JSON의 전체/미완료/완료 개수 집계 | 선택 여부 기록, 사용했다고 거짓 주장하지 않음 |\n| 범위 밖 | 사이트 배경을 파랑으로 바꾸는 계획만, 수정 금지 | 이 요청 때문에 작업 검사기를 실행하지 않음 |\n| 필수 자원 없음 | 규격 이름을 바꾼 뒤 검증 완료 보고서 명시 요청 | 누락 보고 후 중단, 규격/결과를 지어내지 않음 |"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "桌面版透過 Skills 入口或 @ 選擇；CLI／IDE 透過 /skills 或 $。自動選擇依描述與上下文判斷，沒有選到不一定表示安裝失敗；先確認明確選取案例是否成功，再看 description 是否包含真正的用途與排除條件。不要把描述擴大成「所有任務都使用」，那會讓不相關工作也載入這個技能。",
+        "Use the desktop Skills entry or @ picker; in CLI/IDE use /skills or $. Implicit selection depends on description and context, so non-selection does not by itself establish an installation failure. First verify explicit selection, then inspect whether description names the use case and exclusions. Do not broaden it to all tasks, which would load this workflow for unrelated work.",
+        "デスクトップは Skills または @、CLI／IDE は /skills または $ を使います。自動選択は説明と文脈によるため、不選択だけでは導入失敗と断定しません。まず明示選択を確認し、description の用途と除外条件を見ます。「全タスクで使用」に広げると無関係な仕事にも適用されます。",
+        "데스크톱은 Skills나 @, CLI/IDE는 /skills나 $를 사용합니다. 자동 선택은 설명과 문맥에 따라 달라 미선택만으로 설치 실패라 단정할 수 없습니다. 먼저 명시 선택이 성공하는지 확인하고 description의 용도와 제외 조건을 점검하세요. 모든 작업에 사용한다고 넓히면 관련 없는 작업에도 적용됩니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 5：記錄、修正，再測一次",
+        "Step 5: Record, repair and repeat",
+        "手順5：記録、修正、再検証",
+        "5단계: 기록, 수정, 재검증"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "建立下面的驗收紀錄，欄位沒量到就寫未執行，不要填入預期數字。一次只修一個問題：找不到資源就修路徑；描述造成誤選就修 description；程式計數錯才改腳本。每次保存修正前的版本與失敗案例，修正後重跑受影響的自動測試和對應新任務。修改主檔不代表舊任務已重新讀入。",
+        "Use this acceptance record and mark unmeasured fields not run instead of filling expected values. Fix one issue at a time: resource paths, selection description or checker logic. Preserve the previous version and failing case, then rerun affected program tests and the corresponding fresh task. Editing SKILL.md does not establish that an old task has reloaded it.",
+        "次の検収記録で未測定は未実施とし、期待値を埋めません。資源ならパス、誤選択なら description、集計ならコードを一つずつ直します。旧版と失敗例を保持し、影響テストと新規タスクを再実行します。主ファイルの変更だけで旧タスクの再読取りを証明できません。",
+        "다음 검수 기록에서 측정하지 않은 값은 미실행으로 쓰고 예상값을 채우지 마세요. 자원 문제는 경로, 잘못된 선택은 description, 집계 문제는 코드처럼 하나씩 수정합니다. 이전 버전과 실패 사례를 보존하고 영향받은 테스트와 새 작업을 다시 실행하세요. SKILL.md 수정만으로 이전 작업의 재로딩을 입증할 수 없습니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "markdown",
+      "code": "# Skill acceptance record\n\nDate and surface: <observed>\nNode / Codex versions: <observed>\nModel and effort, if shown: <observed or unavailable>\nSkill path and revision: <exact local path and saved version>\nProgram tests: <command, exit, passes, failures>\nBehavior case: <explicit / matching / outside-scope / missing-resource>\nRequest: <exact text>\nSelected skill: <observed / not selected / unconfirmed>\nResources read and command executed: <evidence or not run>\nActual result and preserved input: <evidence>\nFailure and one change: <description>\nFresh-task retest: <result or not run>\nRemaining checks: <not run>\n",
+      "label": [
+        "驗收紀錄範本",
+        "Acceptance record template",
+        "検収記録テンプレート",
+        "검수 기록 템플릿"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "若代理宣稱已執行但只提供預期結果，要求指出實際命令與工具輸出；仍無法確認，就保留「未確認」，不要替它補證據。若多個同名技能同時出現，記錄選到的路徑，先停用或移出你這次新建的重複副本再重測，保留其他人的技能。不要任意改全域設定來掩蓋本機教材路徑錯誤。",
+        "If the agent claims execution but supplies only expectations, ask for the actual command and tool output. Keep the status unconfirmed if evidence remains unavailable. If duplicate skill names appear, record the selected path and disable or move only the duplicate you created before retesting, preserving others' skills. Avoid global-setting changes that merely hide a local fixture-path problem.",
+        "実行を主張しながら期待値しか示さない場合、実命令と出力を求め、確認不能なら未確認を維持します。同名スキルが複数なら選択パスを記録し、自分が作った重複だけを無効化か移動して再検証します。他者のスキルを保持し、教材パス誤りを全体設定変更で隠しません。",
+        "실행했다고 주장하지만 예상값만 제시하면 실제 명령과 도구 출력을 요구하고 확인할 수 없으면 미확인 상태를 유지하세요. 같은 이름의 스킬이 여러 개면 선택 경로를 기록하고 자신이 만든 중복만 비활성화하거나 옮긴 뒤 재검증합니다. 다른 사람의 스킬을 보존하고 로컬 경로 오류를 전역 설정 변경으로 숨기지 마세요."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "練習結束前確認 input-format.md 已恢復原名、count-tasks.mjs 已恢復正確版、data/tasks.json 未被修改，最後八項測試全過。報告必須分開寫程式測試與技能行為；未在 macOS 或 Linux 實際操作，就標記依文件與跨平台 Node.js 用法查證。本教材提供的參考測試不等於已替你在各入口執行模型。",
+        "Before finishing, restore input-format.md, restore the correct checker, confirm data/tasks.json is unchanged and obtain eight passing tests. Report program and skill checks separately. Mark macOS/Linux as documentation and cross-platform Node.js checks if you did not operate those systems. Reference tests are not claims of model execution in every surface.",
+        "終了前に仕様名、正しい検査器、未変更の入力を確認し、最後に8成功を得ます。プログラムとスキル動作を分け、macOS／Linux 未操作なら文書と共通 Node.js 用法での確認と記します。参考テストは各入口でモデルを実行した証拠ではありません。",
+        "마치기 전에 input-format.md 이름과 올바른 검사기를 복원하고 data/tasks.json이 그대로이며 마지막 여덟 테스트가 통과하는지 확인하세요. 코드와 스킬 행동 결과는 따로 보고하고 macOS/Linux를 조작하지 않았다면 문서와 공통 Node.js 사용법으로 확인했다고 기록합니다. 참고 테스트는 모든 진입점에서 모델을 실행했다는 증거가 아닙니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "這套方法也能用於你日後建立的其他技能：先固定輸入、寫清失敗條件，再保存可重複的檢查。若只是需要可複製的需求或文件骨架，接著看[範本與速查表](article:codex-templates-cheatsheet)；若要把多個技能交給別人安裝，再閱讀 [Plugins](article:codex-plugins)。示意圖 1 固定案例、2 執行與觀察、3 修正後重驗。",
+        "Apply the same method to future skills: fix the input, define failure conditions and retain repeatable checks. For reusable requests or document outlines, continue to [Templates and cheatsheets](article:codex-templates-cheatsheet); for distributing multiple skills, read [Plugins](article:codex-plugins). Diagram 1 fixes cases, 2 executes and observes, and 3 rechecks a repair.",
+        "将来のスキルでも入力固定、失敗条件、再実行可能な検査を残します。依頼や文書の型だけが必要なら[テンプレートと早見表](article:codex-templates-cheatsheet)、複数スキルの配布なら [Plugins](article:codex-plugins)へ進みます。図1は事例固定、2は実行と観察、3は修正後の再確認です。",
+        "새 스킬도 입력을 고정하고 실패 조건을 정한 뒤 반복 검사를 남기세요. 재사용 요청이나 문서 틀은 [템플릿과 빠른 참고](article:codex-templates-cheatsheet), 여러 스킬 배포는 [Plugins](article:codex-plugins)를 읽으세요. 그림 1은 사례 고정, 2는 실행과 관찰, 3은 수정 후 재검사입니다."
+      ]
+    }
+  ]
+}

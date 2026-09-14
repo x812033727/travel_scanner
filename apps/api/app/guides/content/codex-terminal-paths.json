@@ -23,9 +23,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -61,6 +67,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Terminal practice: this is lesson one.\n"
         },
@@ -70,6 +77,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "codex-terminal-lab/\n  lesson one/\n    note.txt\n"
         },
@@ -84,6 +92,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "powershell",
           "code": "Get-Location\nGet-ChildItem -Name\n"
         },
@@ -93,6 +102,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "powershell",
           "code": "Set-Location -LiteralPath 'C:\\Users\\YOUR_NAME\\Documents\\codex-terminal-lab'\nGet-Location\nGet-ChildItem -Name\n"
         },
@@ -102,6 +112,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "powershell",
           "code": "Set-Location -LiteralPath '.\\lesson one'\nGet-Content -LiteralPath '.\\note.txt'\nSet-Location -LiteralPath '..'\nGet-Location\n"
         },
@@ -116,6 +127,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "bash",
           "code": "pwd\nls -a\n"
         },
@@ -125,6 +137,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "bash",
           "code": "cd '/absolute/path/to/codex-terminal-lab'\npwd\nls -a\n"
         },
@@ -134,6 +147,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "bash",
           "code": "cd 'lesson one'\ncat note.txt\ncd ..\npwd\n"
         },
@@ -148,15 +162,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "已安裝 CLI 才在確認過的練習根目錄執行 codex，並送出下方唯讀要求。未安裝者到 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 入門",
-              "url": "https://mokaair.com/zh-TW/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
@@ -166,6 +181,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Read lesson one/note.txt and report the current working directory.\nDo not modify any files. If the file is missing, report the actual error.\n"
         },
@@ -184,7 +200,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "PowerShell 路徑語義依"
@@ -208,18 +224,20 @@
               "text": "，查證日 2026-09-14。Windows 命令另外以獨立練習資料夾檢查；macOS／Linux 段落為通用殼層操作說明，不冒充該平臺實機截圖。接著可讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Markdown",
-              "url": "https://mokaair.com/zh-TW/life/codex-markdown-basics"
+              "kind": "life",
+              "slug": "codex-markdown-basics"
             },
             {
               "type": "text",
               "text": "與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/zh-TW/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
@@ -263,9 +281,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -308,9 +332,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -346,6 +376,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Terminal practice: this is lesson one.\n"
         },
@@ -355,6 +386,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "codex-terminal-lab/\n  lesson one/\n    note.txt\n"
         },
@@ -369,6 +401,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "powershell",
           "code": "Get-Location\nGet-ChildItem -Name\n"
         },
@@ -378,6 +411,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "powershell",
           "code": "Set-Location -LiteralPath 'C:\\Users\\YOUR_NAME\\Documents\\codex-terminal-lab'\nGet-Location\nGet-ChildItem -Name\n"
         },
@@ -387,6 +421,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "powershell",
           "code": "Set-Location -LiteralPath '.\\lesson one'\nGet-Content -LiteralPath '.\\note.txt'\nSet-Location -LiteralPath '..'\nGet-Location\n"
         },
@@ -401,6 +436,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "bash",
           "code": "pwd\nls -a\n"
         },
@@ -410,6 +446,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "bash",
           "code": "cd '/absolute/path/to/codex-terminal-lab'\npwd\nls -a\n"
         },
@@ -419,6 +456,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "bash",
           "code": "cd 'lesson one'\ncat note.txt\ncd ..\npwd\n"
         },
@@ -433,15 +471,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "If CLI is installed, run codex at the verified practice root and send the read-only request below. Otherwise continue to "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI setup",
-              "url": "https://mokaair.com/en/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
@@ -451,6 +490,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Read lesson one/note.txt and report the current working directory.\nDo not modify any files. If the file is missing, report the actual error.\n"
         },
@@ -469,7 +509,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "PowerShell path semantics were checked against "
@@ -493,18 +533,20 @@
               "text": ", on 2026-09-14. Windows commands are also checked in an isolated exercise folder. The macOS/Linux sections describe common shell operations and are not presented as device screenshots. Continue with "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Markdown",
-              "url": "https://mokaair.com/en/life/codex-markdown-basics"
+              "kind": "life",
+              "slug": "codex-markdown-basics"
             },
             {
               "type": "text",
               "text": " and "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/en/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
@@ -548,9 +590,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -593,9 +641,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -631,6 +685,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Terminal practice: this is lesson one.\n"
         },
@@ -640,6 +695,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "codex-terminal-lab/\n  lesson one/\n    note.txt\n"
         },
@@ -654,6 +710,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "powershell",
           "code": "Get-Location\nGet-ChildItem -Name\n"
         },
@@ -663,6 +720,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "powershell",
           "code": "Set-Location -LiteralPath 'C:\\Users\\YOUR_NAME\\Documents\\codex-terminal-lab'\nGet-Location\nGet-ChildItem -Name\n"
         },
@@ -672,6 +730,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "powershell",
           "code": "Set-Location -LiteralPath '.\\lesson one'\nGet-Content -LiteralPath '.\\note.txt'\nSet-Location -LiteralPath '..'\nGet-Location\n"
         },
@@ -686,6 +745,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "bash",
           "code": "pwd\nls -a\n"
         },
@@ -695,6 +755,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "bash",
           "code": "cd '/absolute/path/to/codex-terminal-lab'\npwd\nls -a\n"
         },
@@ -704,6 +765,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "bash",
           "code": "cd 'lesson one'\ncat note.txt\ncd ..\npwd\n"
         },
@@ -718,15 +780,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "CLI 導入済みなら確認した親フォルダーで codex を実行し、次の読み取り依頼を送ります。未導入なら "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 入門",
-              "url": "https://mokaair.com/ja/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
@@ -736,6 +799,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Read lesson one/note.txt and report the current working directory.\nDo not modify any files. If the file is missing, report the actual error.\n"
         },
@@ -754,7 +818,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "PowerShell のパスは "
@@ -778,18 +842,20 @@
               "text": "で 2026-09-14 に確認しました。Windows 命令は独立した練習フォルダーでも確認します。macOS/Linux は一般的なシェル操作の説明で、実機画像と称していません。次は "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Markdown",
-              "url": "https://mokaair.com/ja/life/codex-markdown-basics"
+              "kind": "life",
+              "slug": "codex-markdown-basics"
             },
             {
               "type": "text",
               "text": "と "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/ja/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
@@ -833,9 +899,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -878,9 +950,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -916,6 +994,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Terminal practice: this is lesson one.\n"
         },
@@ -925,6 +1004,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "codex-terminal-lab/\n  lesson one/\n    note.txt\n"
         },
@@ -939,6 +1019,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "powershell",
           "code": "Get-Location\nGet-ChildItem -Name\n"
         },
@@ -948,6 +1029,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "powershell",
           "code": "Set-Location -LiteralPath 'C:\\Users\\YOUR_NAME\\Documents\\codex-terminal-lab'\nGet-Location\nGet-ChildItem -Name\n"
         },
@@ -957,6 +1039,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "powershell",
           "code": "Set-Location -LiteralPath '.\\lesson one'\nGet-Content -LiteralPath '.\\note.txt'\nSet-Location -LiteralPath '..'\nGet-Location\n"
         },
@@ -971,6 +1054,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "bash",
           "code": "pwd\nls -a\n"
         },
@@ -980,6 +1064,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "bash",
           "code": "cd '/absolute/path/to/codex-terminal-lab'\npwd\nls -a\n"
         },
@@ -989,6 +1074,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "bash",
           "code": "cd 'lesson one'\ncat note.txt\ncd ..\npwd\n"
         },
@@ -1003,15 +1089,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "CLI가 설치되어 있으면 확인한 실습 루트에서 codex를 실행하고 아래 읽기 요청을 보냅니다. 설치 전이라면 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 설정",
-              "url": "https://mokaair.com/ko/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
@@ -1021,6 +1108,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Read lesson one/note.txt and report the current working directory.\nDo not modify any files. If the file is missing, report the actual error.\n"
         },
@@ -1039,7 +1127,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "PowerShell 경로는 "
@@ -1063,18 +1151,20 @@
               "text": "로 2026-09-14에 확인했습니다. Windows 명령은 격리된 실습 폴더에서도 확인합니다. macOS/Linux 부분은 일반 셸 작업 설명이며 실제 기기 화면으로 제시하지 않습니다. 다음으로 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Markdown",
-              "url": "https://mokaair.com/ko/life/codex-markdown-basics"
+              "kind": "life",
+              "slug": "codex-markdown-basics"
             },
             {
               "type": "text",
               "text": "과 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/ko/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
@@ -1118,9 +1208,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1163,9 +1259,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1201,6 +1303,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Terminal practice: this is lesson one.\n"
         },
@@ -1210,6 +1313,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "codex-terminal-lab/\n  lesson one/\n    note.txt\n"
         },
@@ -1224,6 +1328,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "powershell",
           "code": "Get-Location\nGet-ChildItem -Name\n"
         },
@@ -1233,6 +1338,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "powershell",
           "code": "Set-Location -LiteralPath 'C:\\Users\\YOUR_NAME\\Documents\\codex-terminal-lab'\nGet-Location\nGet-ChildItem -Name\n"
         },
@@ -1242,6 +1348,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "powershell",
           "code": "Set-Location -LiteralPath '.\\lesson one'\nGet-Content -LiteralPath '.\\note.txt'\nSet-Location -LiteralPath '..'\nGet-Location\n"
         },
@@ -1256,6 +1363,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "bash",
           "code": "pwd\nls -a\n"
         },
@@ -1265,6 +1373,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "bash",
           "code": "cd '/absolute/path/to/codex-terminal-lab'\npwd\nls -a\n"
         },
@@ -1274,6 +1383,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "bash",
           "code": "cd 'lesson one'\ncat note.txt\ncd ..\npwd\n"
         },
@@ -1288,15 +1398,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "已安装 CLI 才在确认过的练习根目录执行 codex，并送出下方唯读要求。未安装者到 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 入门",
-              "url": "https://mokaair.com/zh-CN/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
@@ -1306,6 +1417,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Read lesson one/note.txt and report the current working directory.\nDo not modify any files. If the file is missing, report the actual error.\n"
         },
@@ -1324,7 +1436,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "PowerShell 路径语义依"
@@ -1348,18 +1460,20 @@
               "text": "，查证日 2026-09-14。Windows 命令另外以独立练习资料夹检查；macOS／Linux 段落为通用壳层操作说明，不冒充该平台实机截图。接著可读 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Markdown",
-              "url": "https://mokaair.com/zh-CN/life/codex-markdown-basics"
+              "kind": "life",
+              "slug": "codex-markdown-basics"
             },
             {
               "type": "text",
               "text": "与 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/zh-CN/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
@@ -1403,9 +1517,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

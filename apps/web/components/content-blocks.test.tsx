@@ -1,5 +1,5 @@
-import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { describe, expect, it, vi } from "vitest";
 import { ContentBlocks } from "@/components/content-blocks";
 import {
   contentBlockLink, contentImageSrc, isContentBlockList, isRichContentBlockList, licenseUrl,
@@ -7,6 +7,41 @@ import {
 } from "@/lib/content-blocks";
 import { siteUrl } from "@/lib/seo";
 import { sitePageLink } from "@/lib/site-pages";
+
+describe("tutorial content", () => {
+  it("renders only publication-resolved internal references in the current locale", () => {
+    render(<ContentBlocks locale="zh-TW" articleLinks={[{ kind: "life", slug: "visible", title: "Public title" }]} blocks={[
+      { type: "rich_paragraph", inlines: [
+        { type: "text", text: "See " },
+        { type: "article", kind: "life", slug: "visible", text: "visible tutorial" },
+        { type: "article", kind: "life", slug: "hidden", text: "hidden tutorial" },
+        { type: "code", text: " <script> " },
+      ] },
+    ]} />);
+    expect(screen.getByRole("link", { name: "visible tutorial" }).getAttribute("href")).toBe("/zh-TW/life/visible");
+    expect(screen.queryByRole("link", { name: "hidden tutorial" })).toBeNull();
+    expect(screen.getByText("hidden tutorial")).toBeTruthy();
+    expect(document.querySelector("script")).toBeNull();
+  });
+  it("copies exact code including HTML, tabs, quotes and the final newline", async () => {
+    const code = '<button>\n\tSave & "test"\n</button>\n';
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    Object.defineProperty(navigator, "clipboard", { configurable: true, value: { writeText } });
+    render(<ContentBlocks blocks={[{ type: "code", label: "index.html", language: "html", code }]} />);
+    expect(screen.getByLabelText("index.html").textContent).toBe(code);
+    expect(document.querySelector("pre button")).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "Copy" }));
+    await waitFor(() => expect(writeText).toHaveBeenCalledWith(code));
+    expect((await screen.findByRole("status")).textContent).toContain("Copied");
+  });
+  it("keeps a manual-copy path when clipboard access is unavailable", async () => {
+    Object.defineProperty(navigator, "clipboard", { configurable: true, value: undefined });
+    render(<ContentBlocks blocks={[{ type: "code", label: "CLI", language: "bash", code: "claude --help" }]} />);
+    fireEvent.click(screen.getByRole("button", { name: "Copy" }));
+    expect((await screen.findByRole("status")).textContent).toContain("Copy failed");
+    expect(screen.getByLabelText("CLI").getAttribute("tabindex")).toBe("0");
+  });
+});
 
 /**
  * This renderer and its sanitizer are shared by managed site documents and travel guides.
@@ -221,6 +256,19 @@ describe("rendering the rich blocks", () => {
     const note = screen.getByRole("note");
     expect(note.textContent).toContain("注意 · 末班車");
     expect(note.textContent).toContain("23:30 之後只剩計程車。");
+  });
+
+  it("keeps every column readable in a wide table without inheriting arbitrary character breaks", () => {
+    render(<ContentBlocks blocks={[{
+      type: "table", header: ["方案", "價格", "休館日", "注意事項", "來源"],
+      rows: [["交通方案", "3,000 韓元", "星期一", "請確認當日時間", "官方"]],
+    }]} />);
+    const table = screen.getByRole("table");
+    expect(table.className).toContain("[overflow-wrap:normal]");
+    expect(table.parentElement!.className).toContain("overflow-x-auto");
+    for (const cell of [...screen.getAllByRole("columnheader"), ...screen.getAllByRole("cell")]) {
+      expect(cell.className).toContain("min-w-28");
+    }
   });
 
   it("numbers level-2 headings from the start it is given, so sliced bodies keep one sequence", () => {

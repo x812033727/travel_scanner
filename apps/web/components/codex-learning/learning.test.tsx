@@ -3,8 +3,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { useEffect, useState, type ReactNode } from "react";
 import { SearchParamsContext } from "next/dist/shared/lib/hooks-client-context.shared-runtime";
 import { LearningHub } from "./hub";
-import { CodeSample } from "./code-sample";
-import { LearningNavigation } from "./navigation";
+import { GuideCodeBlock } from "@/components/guide-code-block";
 import { lessons, learningEntries, filterLessons } from "@/lib/codex-learning";
 import type { GuideSummary } from "@/lib/guides";
 import { ContentBlocks } from "@/components/content-blocks";
@@ -44,13 +43,6 @@ describe("Codex learning", () => {
     fireEvent.click(screen.getByRole("button", { name: "Clear filters" }));
     expect(screen.getByRole("link", { name: published(0).title })).toBeTruthy();
   });
-  it("omits an unpublished hub and keeps planned neighbors as text in the same unit", () => {
-    render(<LearningNavigation slug={lessons[11].slug} locale="en" entries={learningEntries("en", [published(10), published(11), published(12)])} hubPublished={false} />);
-    expect(screen.queryByText(/Back to the Codex/)).toBeNull();
-    expect(screen.queryByText(/^Next:/)).toBeNull();
-    expect(screen.getByText(/^Previous:/)).toBeTruthy();
-    expect(screen.queryByRole("link", { name: /^Previous:/ })).toBeNull();
-  });
   it("hydrates shared filters, keeps them in URLs, and responds to browser history", () => {
     window.history.replaceState(null, "", "/en/life/codex-learning-hub?unit=D&q=AGENTS.md&utm_source=shared#lessons");
     render(<LearningHub locale="en" entries={learningEntries("en", [])} available />, { wrapper: RouterHarness });
@@ -74,7 +66,7 @@ describe("Codex learning", () => {
     const writeText = vi.fn().mockResolvedValue(undefined);
     Object.defineProperty(navigator, "clipboard", { configurable: true, value: { writeText } });
     const code = "<script>alert(1)</script>\n\tvalue = 2\n";
-    const { container } = render(<CodeSample language="html" code={code} />);
+    const { container } = render(<GuideCodeBlock block={{ type: "code", label: "HTML", language: "html", code }} />);
     expect(container.querySelector("script")).toBeNull();
     fireEvent.click(screen.getByRole("button", { name: "Copy" }));
     await waitFor(() => expect(writeText).toHaveBeenCalledWith(code));
@@ -82,12 +74,12 @@ describe("Codex learning", () => {
   });
   it("shows a recoverable clipboard error", async () => {
     Object.defineProperty(navigator, "clipboard", { configurable: true, value: { writeText: vi.fn().mockRejectedValue(new Error("denied")) } });
-    render(<CodeSample language="text" code="test" />);
+    render(<GuideCodeBlock block={{ type: "code", label: "Input", language: "text", code: "test" }} />);
     fireEvent.click(screen.getByRole("button", { name: "Copy" }));
-    await screen.findByText("Select and copy the code");
+    await screen.findByText("Copy failed. Select the code and copy it manually.");
   });
   it("preserves inline spaces and does not interpret legacy Markdown", () => {
-    const { container } = render(<ContentBlocks blocks={[{ type: "rich_paragraph", spans: [{ type: "text", text: "Read " }, { type: "link", text: "guide", url: "https://example.com" }, { type: "text", text: " now." }] }, { type: "paragraph", text: "[literal](url)" }]} />);
+    const { container } = render(<ContentBlocks blocks={[{ type: "rich_paragraph", inlines: [{ type: "text", text: "Read " }, { type: "link", text: "guide", url: "https://example.com" }, { type: "text", text: " now." }] }, { type: "paragraph", text: "[literal](url)" }]} />);
     expect(container.querySelector("p")?.textContent).toBe("Read guide now.");
     expect(screen.getByText("[literal](url)")).toBeTruthy();
   });

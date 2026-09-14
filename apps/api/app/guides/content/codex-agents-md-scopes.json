@@ -23,9 +23,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -39,20 +45,22 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/zh-TW/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
               "text": " 保存對工作的指示，"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "config.toml",
-              "url": "https://mokaair.com/zh-TW/life/codex-config-toml"
+              "kind": "life",
+              "slug": "codex-config-toml"
             },
             {
               "type": "text",
@@ -110,6 +118,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "sh",
           "code": "git init\ngit rev-parse --show-toplevel\n"
         },
@@ -119,6 +128,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "markdown",
           "code": "# Root practice instructions\n\n- Start the final answer with ROOT-LAB.\n- Include KEEP-DATA in the final answer.\n- Do not change any files for the rule-discovery exercise.\n- Report checks that were actually performed separately from unverified claims.\n"
         },
@@ -128,11 +138,13 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "markdown",
           "code": "# UI practice instructions\n\n- Start the final answer with UI-LAB instead of ROOT-LAB.\n- Include UI-BASE in the final answer.\n"
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "markdown",
           "code": "# Data notes\n\nThis folder describes fictional practice data.\nDATA-NOTE is a document marker, not a required answer prefix.\n"
         },
@@ -147,16 +159,19 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "sh",
           "code": "codex --cd . --sandbox read-only\n"
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Without changing files, report the current working directory and the project instruction sources already available to this session. Follow the active response-format instructions. Do not search unrelated sibling folders just to collect more rules. Distinguish known loaded instructions from files you have not inspected.\n"
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "sh",
           "code": "codex --cd ui --sandbox read-only\n"
         },
@@ -175,6 +190,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "markdown",
           "code": "# UI override practice\n\n- Start the final answer with UI-OVERRIDE instead of ROOT-LAB.\n- Include OVERRIDE-ACTIVE in the final answer.\n"
         },
@@ -193,15 +209,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "文件很長時還要考慮合計大小上限，官方預設是 32 KiB，計算的是位元組，不是中文字數。先保留必要規則，把長設計和範例移到普通文件並在需要時明確讀取；不要以為切成大量兄弟目錄就會自動載入全部內容。備援檔名和上限屬設定項，留到"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "設定教學",
-              "url": "https://mokaair.com/zh-TW/life/codex-config-toml"
+              "kind": "life",
+              "slug": "codex-config-toml"
             },
             {
               "type": "text",
@@ -211,15 +228,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "完成時保存根目錄、ui、override、空 override、改名還原五種情況的啟動位置、檔案狀態與實際標記。共同的 KEEP-DATA 應持續保留，移除 override 後可回到原 ui 行為。上述本機證據使用 debug prompt-input 檢查真正組成的輸入，沒有送出模型請求，也未聲稱模型一定遵從。官方來源與實際版本差異都要記錄；回覆行為需由新工作階段另行驗證。接著看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "規則與文件分工",
-              "url": "https://mokaair.com/zh-TW/life/codex-rules-and-context-files"
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
             },
             {
               "type": "text",
@@ -228,9 +246,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -273,9 +297,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -289,20 +319,22 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/en/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
               "text": " holds work instructions; "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "config.toml",
-              "url": "https://mokaair.com/en/life/codex-config-toml"
+              "kind": "life",
+              "slug": "codex-config-toml"
             },
             {
               "type": "text",
@@ -360,6 +392,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "sh",
           "code": "git init\ngit rev-parse --show-toplevel\n"
         },
@@ -369,6 +402,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "markdown",
           "code": "# Root practice instructions\n\n- Start the final answer with ROOT-LAB.\n- Include KEEP-DATA in the final answer.\n- Do not change any files for the rule-discovery exercise.\n- Report checks that were actually performed separately from unverified claims.\n"
         },
@@ -378,11 +412,13 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "markdown",
           "code": "# UI practice instructions\n\n- Start the final answer with UI-LAB instead of ROOT-LAB.\n- Include UI-BASE in the final answer.\n"
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "markdown",
           "code": "# Data notes\n\nThis folder describes fictional practice data.\nDATA-NOTE is a document marker, not a required answer prefix.\n"
         },
@@ -397,16 +433,19 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "sh",
           "code": "codex --cd . --sandbox read-only\n"
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Without changing files, report the current working directory and the project instruction sources already available to this session. Follow the active response-format instructions. Do not search unrelated sibling folders just to collect more rules. Distinguish known loaded instructions from files you have not inspected.\n"
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "sh",
           "code": "codex --cd ui --sandbox read-only\n"
         },
@@ -425,6 +464,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "markdown",
           "code": "# UI override practice\n\n- Start the final answer with UI-OVERRIDE instead of ROOT-LAB.\n- Include OVERRIDE-ACTIVE in the final answer.\n"
         },
@@ -443,15 +483,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Long guidance may hit the documented 32 KiB default combined limit, measured in bytes rather than characters. Keep essential rules and move long designs/examples into ordinary documents read when needed. Splitting content among sibling directories does not automatically load it all. Fallback names and the limit are settings covered in "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "configuration",
-              "url": "https://mokaair.com/en/life/codex-config-toml"
+              "kind": "life",
+              "slug": "codex-config-toml"
             },
             {
               "type": "text",
@@ -461,15 +502,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Retain launch directory, file state and observed markers for root, ui, override, empty-override and renamed-override cases. KEEP-DATA should remain, and removing the override should restore ui behavior. Local evidence uses debug prompt-input to inspect actual constructed inputs without a model request or compliance claim. Record documented and version-specific behavior; verify response behavior separately in fresh sessions. Continue with "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "rules and context files",
-              "url": "https://mokaair.com/en/life/codex-rules-and-context-files"
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
             },
             {
               "type": "text",
@@ -478,9 +520,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -523,9 +571,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -539,20 +593,22 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/ja/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
               "text": " は作業指示、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "config.toml",
-              "url": "https://mokaair.com/ja/life/codex-config-toml"
+              "kind": "life",
+              "slug": "codex-config-toml"
             },
             {
               "type": "text",
@@ -610,6 +666,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "sh",
           "code": "git init\ngit rev-parse --show-toplevel\n"
         },
@@ -619,6 +676,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "markdown",
           "code": "# Root practice instructions\n\n- Start the final answer with ROOT-LAB.\n- Include KEEP-DATA in the final answer.\n- Do not change any files for the rule-discovery exercise.\n- Report checks that were actually performed separately from unverified claims.\n"
         },
@@ -628,11 +686,13 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "markdown",
           "code": "# UI practice instructions\n\n- Start the final answer with UI-LAB instead of ROOT-LAB.\n- Include UI-BASE in the final answer.\n"
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "markdown",
           "code": "# Data notes\n\nThis folder describes fictional practice data.\nDATA-NOTE is a document marker, not a required answer prefix.\n"
         },
@@ -647,16 +707,19 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "sh",
           "code": "codex --cd . --sandbox read-only\n"
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Without changing files, report the current working directory and the project instruction sources already available to this session. Follow the active response-format instructions. Do not search unrelated sibling folders just to collect more rules. Distinguish known loaded instructions from files you have not inspected.\n"
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "sh",
           "code": "codex --cd ui --sandbox read-only\n"
         },
@@ -675,6 +738,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "markdown",
           "code": "# UI override practice\n\n- Start the final answer with UI-OVERRIDE instead of ROOT-LAB.\n- Include OVERRIDE-ACTIVE in the final answer.\n"
         },
@@ -693,15 +757,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "長い指示は既定の合計32 KiBに達する場合があり、文字数ではなくバイト数です。必要規則を残し、長い設計や例は普通の文書として必要時に読みます。兄弟フォルダーに分割しても全部自動読込みにはなりません。代替名や上限は"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "設定",
-              "url": "https://mokaair.com/ja/life/codex-config-toml"
+              "kind": "life",
+              "slug": "codex-config-toml"
             },
             {
               "type": "text",
@@ -711,15 +776,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "ルート、ui、override、空 override、改名復元の起動場所、ファイル状態、実際の印を残します。KEEP-DATA を維持し、override を外すと ui に戻ることを確認します。本機は debug prompt-input の実入力を確認し、モデル要求や遵守の主張はしていません。仕様と版の違いを記録し、返答動作は新規セッションで別途確認します。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "規則と文書の分担",
-              "url": "https://mokaair.com/ja/life/codex-rules-and-context-files"
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
             },
             {
               "type": "text",
@@ -728,9 +794,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -773,9 +845,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -789,20 +867,22 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/ko/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
               "text": "는 작업 지침, "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "config.toml",
-              "url": "https://mokaair.com/ko/life/codex-config-toml"
+              "kind": "life",
+              "slug": "codex-config-toml"
             },
             {
               "type": "text",
@@ -860,6 +940,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "sh",
           "code": "git init\ngit rev-parse --show-toplevel\n"
         },
@@ -869,6 +950,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "markdown",
           "code": "# Root practice instructions\n\n- Start the final answer with ROOT-LAB.\n- Include KEEP-DATA in the final answer.\n- Do not change any files for the rule-discovery exercise.\n- Report checks that were actually performed separately from unverified claims.\n"
         },
@@ -878,11 +960,13 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "markdown",
           "code": "# UI practice instructions\n\n- Start the final answer with UI-LAB instead of ROOT-LAB.\n- Include UI-BASE in the final answer.\n"
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "markdown",
           "code": "# Data notes\n\nThis folder describes fictional practice data.\nDATA-NOTE is a document marker, not a required answer prefix.\n"
         },
@@ -897,16 +981,19 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "sh",
           "code": "codex --cd . --sandbox read-only\n"
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Without changing files, report the current working directory and the project instruction sources already available to this session. Follow the active response-format instructions. Do not search unrelated sibling folders just to collect more rules. Distinguish known loaded instructions from files you have not inspected.\n"
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "sh",
           "code": "codex --cd ui --sandbox read-only\n"
         },
@@ -925,6 +1012,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "markdown",
           "code": "# UI override practice\n\n- Start the final answer with UI-OVERRIDE instead of ROOT-LAB.\n- Include OVERRIDE-ACTIVE in the final answer.\n"
         },
@@ -943,15 +1031,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "긴 지침은 기본 합계 32 KiB 제한에 걸릴 수 있으며 문자 수가 아닌 바이트입니다. 핵심 규칙을 남기고 긴 설계/예시는 필요할 때 읽는 일반 문서로 옮깁니다. 형제 폴더로 나눠도 모두 자동 로드되지는 않습니다. 대체명/한도는 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "설정",
-              "url": "https://mokaair.com/ko/life/codex-config-toml"
+              "kind": "life",
+              "slug": "codex-config-toml"
             },
             {
               "type": "text",
@@ -961,15 +1050,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "루트/ui/override/빈 override/개명 복원의 시작 경로, 파일 상태, 실제 표식을 남깁니다. KEEP-DATA를 유지하고 override 제거 후 ui로 돌아가는지 확인합니다. 로컬은 debug prompt-input의 실제 입력을 확인했으며 모델 요청/준수 주장은 없습니다. 사양과 버전 차이를 기록하고 응답 동작은 새 세션에서 별도로 확인합니다. "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "규칙과 문서 분담",
-              "url": "https://mokaair.com/ko/life/codex-rules-and-context-files"
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
             },
             {
               "type": "text",
@@ -978,9 +1068,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1023,9 +1119,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1039,20 +1141,22 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/zh-CN/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
               "text": " 保存对工作的指示，"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "config.toml",
-              "url": "https://mokaair.com/zh-CN/life/codex-config-toml"
+              "kind": "life",
+              "slug": "codex-config-toml"
             },
             {
               "type": "text",
@@ -1110,6 +1214,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "sh",
           "code": "git init\ngit rev-parse --show-toplevel\n"
         },
@@ -1119,6 +1224,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "markdown",
           "code": "# Root practice instructions\n\n- Start the final answer with ROOT-LAB.\n- Include KEEP-DATA in the final answer.\n- Do not change any files for the rule-discovery exercise.\n- Report checks that were actually performed separately from unverified claims.\n"
         },
@@ -1128,11 +1234,13 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "markdown",
           "code": "# UI practice instructions\n\n- Start the final answer with UI-LAB instead of ROOT-LAB.\n- Include UI-BASE in the final answer.\n"
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "markdown",
           "code": "# Data notes\n\nThis folder describes fictional practice data.\nDATA-NOTE is a document marker, not a required answer prefix.\n"
         },
@@ -1147,16 +1255,19 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "sh",
           "code": "codex --cd . --sandbox read-only\n"
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Without changing files, report the current working directory and the project instruction sources already available to this session. Follow the active response-format instructions. Do not search unrelated sibling folders just to collect more rules. Distinguish known loaded instructions from files you have not inspected.\n"
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "sh",
           "code": "codex --cd ui --sandbox read-only\n"
         },
@@ -1175,6 +1286,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "markdown",
           "code": "# UI override practice\n\n- Start the final answer with UI-OVERRIDE instead of ROOT-LAB.\n- Include OVERRIDE-ACTIVE in the final answer.\n"
         },
@@ -1193,15 +1305,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "文件很长时还要考虑合计大小上限，官方预设是 32 KiB，计算的是位元组，不是中文字数。先保留必要规则，把长设计和范例移到普通文件并在需要时明确读取；不要以为切成大量兄弟目录就会自动载入全部内容。备援档名和上限属设定项，留到"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "设定教学",
-              "url": "https://mokaair.com/zh-CN/life/codex-config-toml"
+              "kind": "life",
+              "slug": "codex-config-toml"
             },
             {
               "type": "text",
@@ -1211,15 +1324,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "完成时保存根目录、ui、override、空 override、改名还原五种情况的启动位置、档案状态与实际标记。共同的 KEEP-DATA 应持续保留，移除 override 后可回到原 ui 行为。上述本机证据使用 debug prompt-input 检查真正组成的输入，没有送出模型请求，也未声称模型一定遵从。官方来源与实际版本差异都要记录；回复行为需由新工作阶段另行验证。接著看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "规则与文件分工",
-              "url": "https://mokaair.com/zh-CN/life/codex-rules-and-context-files"
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
             },
             {
               "type": "text",
@@ -1228,9 +1342,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

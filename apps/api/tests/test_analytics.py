@@ -10,6 +10,7 @@ from app.analytics.service import (
     _rollup_summary,
     normalize_path,
 )
+from app.config import Settings
 from app.models import AnalyticsDailyRollup
 
 
@@ -26,11 +27,66 @@ def test_normalize_path_removes_locale_queries_and_dynamic_ids() -> None:
 
 
 def test_daily_hashes_rotate_without_exposing_source_values() -> None:
-    first = _digest("a-secret-long-enough", "analytics-day", "2026-09-01|203.0.113.1|UA")
-    second = _digest("a-secret-long-enough", "analytics-day", "2026-09-02|203.0.113.1|UA")
+    key = b"a-secret-long-enough"
+    first = _digest(key, "analytics-day", "2026-09-01|203.0.113.1|UA")
+    second = _digest(key, "analytics-day", "2026-09-02|203.0.113.1|UA")
     assert first != second
     assert "203.0.113.1" not in first
     assert len(first) == 64
+
+
+def test_rotating_the_signing_key_leaves_analytics_identities_intact() -> None:
+    """The property this key derivation exists to create.
+
+    ``app_secret_key`` signs every access token, so it has to be rotatable at short notice.
+    While analytics hashed with it directly, rotating it also re-keyed every visitor and
+    session hash: returning visitors read as new, sessions split at the boundary, and the
+    dashboard said nothing about why. Paying for an emergency rotation in corrupted analytics
+    is how the rotation gets put off, which is the actual security cost.
+    """
+    shared = "settings-encryption-key-at-least-32-chars"
+    visitor = "2026-09-14|203.0.113.1|UA"
+    before = Settings(
+        app_secret_key="signing-key-one-that-is-long-enough-x",
+        settings_encryption_key=shared,
+    )
+    after = Settings(
+        app_secret_key="signing-key-two-entirely-different-yy",
+        settings_encryption_key=shared,
+    )
+    assert before.app_secret_key != after.app_secret_key
+    assert before.analytics_hash_key == after.analytics_hash_key
+    assert _digest(before.analytics_hash_key, "analytics-day", visitor) == _digest(
+        after.analytics_hash_key, "analytics-day", visitor
+    )
+
+
+def test_analytics_key_is_derived_rather_than_reused_and_moves_with_its_own_secret() -> None:
+    signing = "signing-key-one-that-is-long-enough-x"
+    settings = Settings(
+        app_secret_key=signing,
+        settings_encryption_key="settings-encryption-key-at-least-32-chars",
+    )
+    # Neither secret is usable as the analytics key, so reading the analytics table does not
+    # hand anyone something that signs tokens or decrypts stored provider credentials.
+    assert settings.analytics_hash_key not in (
+        settings.app_secret_key.encode(),
+        (settings.settings_encryption_key or "").encode(),
+    )
+    assert len(settings.analytics_hash_key) == 32
+    # Re-keying is still possible, it just takes re-keying the secret it is derived from.
+    rotated = Settings(
+        app_secret_key=settings.app_secret_key,
+        settings_encryption_key="a-different-settings-encryption-key-32ch",
+    )
+    assert rotated.analytics_hash_key != settings.analytics_hash_key
+    # Outside production `settings_encryption_key` is optional, and then there is one secret
+    # and no continuity worth protecting; production forbids that case in
+    # `validate_deployment_security`.
+    assert (
+        Settings(app_secret_key=signing, settings_encryption_key=None).analytics_hash_key
+        == Settings(app_secret_key=signing, settings_encryption_key=signing).analytics_hash_key
+    )
 
 
 def test_user_agent_and_referrer_are_reduced_to_categories() -> None:

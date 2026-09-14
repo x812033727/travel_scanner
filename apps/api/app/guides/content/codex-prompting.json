@@ -24,9 +24,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -45,7 +51,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "從"
@@ -63,15 +69,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "已完成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "第一個小專案",
-              "url": "https://mokaair.com/zh-TW/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -103,6 +110,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Goal: make the existing todo form wording clearer for a first-time visitor.\nContext: this folder is the unchanged Small Steps expected practice version.\nIn index.html only:\n- Change the submit button text from \"Add task\" to \"Save task\".\n- Change the input placeholder to \"Plan one small step\".\nKeep the visible \"New task\" label, input id/name, maxlength, required attribute,\nbutton type, JavaScript behavior, stored data and all other files unchanged.\nDo not install packages or deploy anything.\nValidate by adding Read, completing it, checking Completed, and refreshing.\nCheck that whitespace-only input does not create a task.\nRun node --test core.test.mjs. If browser checks are unavailable, list them as not run.\nReport the exact changed strings, files and evidence.\n"
         },
@@ -134,20 +142,22 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "The button text is correct; preserve that change.\nAfter saving and refreshing, the placeholder still reads \"Read the project README\".\nExpected placeholder: \"Plan one small step\".\nInspect index.html and correct only the remaining placeholder mismatch.\nReport the relevant diff and any verification you can actually perform.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "更複雜的情況可以先用"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Plan 模式",
-              "url": "https://mokaair.com/zh-TW/life/codex-plan-mode"
+              "kind": "life",
+              "slug": "codex-plan-mode"
             },
             {
               "type": "text",
@@ -166,24 +176,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "遇到反覆失敗，先保留最小重現資料、錯誤文字與最後已知正常狀態，再縮小到一個問題；不要每次都重貼整段無關歷史。若任務長到需要交接，可用"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "上下文交接",
-              "url": "https://mokaair.com/zh-TW/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
               "text": "儲存目前決策。反覆要求的專案慣例則放入 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/zh-TW/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
@@ -202,7 +214,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "提示詞原則依 2026-09-14 的"
@@ -217,18 +229,20 @@
               "text": "核對，表單需求、輸入範例與驗收方法是本系列原創。相同英文提示詞在五語內容保持一致；模型回應不保證逐字相同，驗收看實際成果。下一步可練"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "新增功能",
-              "url": "https://mokaair.com/zh-TW/life/codex-implement-feature"
+              "kind": "life",
+              "slug": "codex-implement-feature"
             },
             {
               "type": "text",
               "text": "或"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "修 Bug",
-              "url": "https://mokaair.com/zh-TW/life/codex-debugging"
+              "kind": "life",
+              "slug": "codex-debugging"
             },
             {
               "type": "text",
@@ -262,9 +276,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -328,9 +348,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -349,7 +375,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "从"
@@ -367,15 +393,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "已完成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "第一个小专案",
-              "url": "https://mokaair.com/zh-CN/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -407,6 +434,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Goal: make the existing todo form wording clearer for a first-time visitor.\nContext: this folder is the unchanged Small Steps expected practice version.\nIn index.html only:\n- Change the submit button text from \"Add task\" to \"Save task\".\n- Change the input placeholder to \"Plan one small step\".\nKeep the visible \"New task\" label, input id/name, maxlength, required attribute,\nbutton type, JavaScript behavior, stored data and all other files unchanged.\nDo not install packages or deploy anything.\nValidate by adding Read, completing it, checking Completed, and refreshing.\nCheck that whitespace-only input does not create a task.\nRun node --test core.test.mjs. If browser checks are unavailable, list them as not run.\nReport the exact changed strings, files and evidence.\n"
         },
@@ -438,20 +466,22 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "The button text is correct; preserve that change.\nAfter saving and refreshing, the placeholder still reads \"Read the project README\".\nExpected placeholder: \"Plan one small step\".\nInspect index.html and correct only the remaining placeholder mismatch.\nReport the relevant diff and any verification you can actually perform.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "更复杂的情况可以先用"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Plan 模式",
-              "url": "https://mokaair.com/zh-CN/life/codex-plan-mode"
+              "kind": "life",
+              "slug": "codex-plan-mode"
             },
             {
               "type": "text",
@@ -470,24 +500,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "遇到反复失败，先保留最小重现资料、错误文字与最后已知正常状态，再缩小到一个问题；不要每次都重贴整段无关历史。若任务长到需要交接，可用"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "上下文交接",
-              "url": "https://mokaair.com/zh-CN/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
               "text": "储存目前决策。反复要求的专案惯例则放入 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/zh-CN/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
@@ -506,7 +538,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "提示词原则依 2026-09-14 的"
@@ -521,18 +553,20 @@
               "text": "核对，表单需求、输入范例与验收方法是本系列原创。相同英文提示词在五语内容保持一致；模型回应不保证逐字相同，验收看实际成果。下一步可练"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "新增功能",
-              "url": "https://mokaair.com/zh-CN/life/codex-implement-feature"
+              "kind": "life",
+              "slug": "codex-implement-feature"
             },
             {
               "type": "text",
               "text": "或"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "修 Bug",
-              "url": "https://mokaair.com/zh-CN/life/codex-debugging"
+              "kind": "life",
+              "slug": "codex-debugging"
             },
             {
               "type": "text",
@@ -566,9 +600,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -632,9 +672,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -653,7 +699,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Copy expected from the "
@@ -671,15 +717,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Use the preview procedure from "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "your first project",
-              "url": "https://mokaair.com/en/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -711,6 +758,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Goal: make the existing todo form wording clearer for a first-time visitor.\nContext: this folder is the unchanged Small Steps expected practice version.\nIn index.html only:\n- Change the submit button text from \"Add task\" to \"Save task\".\n- Change the input placeholder to \"Plan one small step\".\nKeep the visible \"New task\" label, input id/name, maxlength, required attribute,\nbutton type, JavaScript behavior, stored data and all other files unchanged.\nDo not install packages or deploy anything.\nValidate by adding Read, completing it, checking Completed, and refreshing.\nCheck that whitespace-only input does not create a task.\nRun node --test core.test.mjs. If browser checks are unavailable, list them as not run.\nReport the exact changed strings, files and evidence.\n"
         },
@@ -742,20 +790,22 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "The button text is correct; preserve that change.\nAfter saving and refreshing, the placeholder still reads \"Read the project README\".\nExpected placeholder: \"Plan one small step\".\nInspect index.html and correct only the remaining placeholder mismatch.\nReport the relevant diff and any verification you can actually perform.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "For a larger task, use "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Plan mode",
-              "url": "https://mokaair.com/en/life/codex-plan-mode"
+              "kind": "life",
+              "slug": "codex-plan-mode"
             },
             {
               "type": "text",
@@ -774,24 +824,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "For repeated failures, retain the smallest reproduction, error text and last known working state, then isolate one problem instead of repasting unrelated history. Use "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "context handoff",
-              "url": "https://mokaair.com/en/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
               "text": " for longer tasks. Put recurring project conventions in "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/en/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
@@ -810,7 +862,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Prompting principles were checked against "
@@ -825,18 +877,20 @@
               "text": " on 2026-09-14. The form request, examples and acceptance procedure are original to this series. Shared English prompts stay identical across locales; model wording can vary, while acceptance concerns actual results. Continue with "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "implementing a feature",
-              "url": "https://mokaair.com/en/life/codex-implement-feature"
+              "kind": "life",
+              "slug": "codex-implement-feature"
             },
             {
               "type": "text",
               "text": " or "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "debugging",
-              "url": "https://mokaair.com/en/life/codex-debugging"
+              "kind": "life",
+              "slug": "codex-debugging"
             },
             {
               "type": "text",
@@ -870,9 +924,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -936,9 +996,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -957,7 +1023,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "link",
               "text": "教材",
@@ -971,11 +1037,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "最初のプロジェクト",
-              "url": "https://mokaair.com/ja/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -1007,6 +1074,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Goal: make the existing todo form wording clearer for a first-time visitor.\nContext: this folder is the unchanged Small Steps expected practice version.\nIn index.html only:\n- Change the submit button text from \"Add task\" to \"Save task\".\n- Change the input placeholder to \"Plan one small step\".\nKeep the visible \"New task\" label, input id/name, maxlength, required attribute,\nbutton type, JavaScript behavior, stored data and all other files unchanged.\nDo not install packages or deploy anything.\nValidate by adding Read, completing it, checking Completed, and refreshing.\nCheck that whitespace-only input does not create a task.\nRun node --test core.test.mjs. If browser checks are unavailable, list them as not run.\nReport the exact changed strings, files and evidence.\n"
         },
@@ -1038,20 +1106,22 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "The button text is correct; preserve that change.\nAfter saving and refreshing, the placeholder still reads \"Read the project README\".\nExpected placeholder: \"Plan one small step\".\nInspect index.html and correct only the remaining placeholder mismatch.\nReport the relevant diff and any verification you can actually perform.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "大きな作業は "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Plan モード",
-              "url": "https://mokaair.com/ja/life/codex-plan-mode"
+              "kind": "life",
+              "slug": "codex-plan-mode"
             },
             {
               "type": "text",
@@ -1070,24 +1140,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "失敗が続くなら最小再現、エラー、最後の正常状態を残して一問題に絞り、無関係な履歴を毎回貼り直しません。長い作業は"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "コンテキスト引き継ぎ",
-              "url": "https://mokaair.com/ja/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
               "text": "を使い、繰り返す規約は "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/ja/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
@@ -1106,7 +1178,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "依頼の原則は 2026-09-14 の"
@@ -1121,18 +1193,20 @@
               "text": "で確認し、フォーム要件、入力、検証手順は独自に作成しました。英語入力例は各言語共通ですが、応答が逐語一致する保証はなく成果を検証します。次は"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "機能追加",
-              "url": "https://mokaair.com/ja/life/codex-implement-feature"
+              "kind": "life",
+              "slug": "codex-implement-feature"
             },
             {
               "type": "text",
               "text": "や"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "不具合修正",
-              "url": "https://mokaair.com/ja/life/codex-debugging"
+              "kind": "life",
+              "slug": "codex-debugging"
             },
             {
               "type": "text",
@@ -1166,9 +1240,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1232,9 +1312,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1253,7 +1339,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "link",
               "text": "실습 자료",
@@ -1267,11 +1353,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "첫 프로젝트",
-              "url": "https://mokaair.com/ko/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -1303,6 +1390,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Goal: make the existing todo form wording clearer for a first-time visitor.\nContext: this folder is the unchanged Small Steps expected practice version.\nIn index.html only:\n- Change the submit button text from \"Add task\" to \"Save task\".\n- Change the input placeholder to \"Plan one small step\".\nKeep the visible \"New task\" label, input id/name, maxlength, required attribute,\nbutton type, JavaScript behavior, stored data and all other files unchanged.\nDo not install packages or deploy anything.\nValidate by adding Read, completing it, checking Completed, and refreshing.\nCheck that whitespace-only input does not create a task.\nRun node --test core.test.mjs. If browser checks are unavailable, list them as not run.\nReport the exact changed strings, files and evidence.\n"
         },
@@ -1334,20 +1422,22 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "The button text is correct; preserve that change.\nAfter saving and refreshing, the placeholder still reads \"Read the project README\".\nExpected placeholder: \"Plan one small step\".\nInspect index.html and correct only the remaining placeholder mismatch.\nReport the relevant diff and any verification you can actually perform.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "큰 작업은 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Plan 모드",
-              "url": "https://mokaair.com/ko/life/codex-plan-mode"
+              "kind": "life",
+              "slug": "codex-plan-mode"
             },
             {
               "type": "text",
@@ -1366,24 +1456,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "반복 실패 시 최소 재현 자료, 오류 문구, 마지막 정상 상태를 남기고 문제 하나로 좁히세요. 관련 없는 이력을 매번 다시 붙이지 않습니다. 긴 작업은 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "문맥 인수인계",
-              "url": "https://mokaair.com/ko/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
               "text": "를 사용하고 반복되는 규칙은 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/ko/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
@@ -1402,7 +1494,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "요청 원칙은 2026-09-14의 "
@@ -1417,18 +1509,20 @@
               "text": "로 확인했고 폼 요구, 입력 예제, 검증 절차는 직접 만들었습니다. 영어 요청은 모든 번역에서 동일하지만 모델 답변이 글자까지 같을 필요는 없으며 실제 결과로 검증합니다. 다음으로 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "기능 구현",
-              "url": "https://mokaair.com/ko/life/codex-implement-feature"
+              "kind": "life",
+              "slug": "codex-implement-feature"
             },
             {
               "type": "text",
               "text": "이나 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "버그 수정",
-              "url": "https://mokaair.com/ko/life/codex-debugging"
+              "kind": "life",
+              "slug": "codex-debugging"
             },
             {
               "type": "text",
@@ -1462,9 +1556,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

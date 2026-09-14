@@ -1,0 +1,2017 @@
+{
+  "slug": "claude-code",
+  "locale": "zh-TW",
+  "hub": "claude-code-tutorials",
+  "groups": [
+    {
+      "id": "A",
+      "title": "先認識工具與基本概念"
+    },
+    {
+      "id": "B",
+      "title": "安裝與電腦端操作"
+    },
+    {
+      "id": "C",
+      "title": "網頁、手機與跨裝置"
+    },
+    {
+      "id": "D",
+      "title": "Markdown、MD 規則與設定檔"
+    },
+    {
+      "id": "E",
+      "title": "CLI 與常用指令"
+    },
+    {
+      "id": "F",
+      "title": "日常開發與變更管理"
+    },
+    {
+      "id": "G",
+      "title": "Skills、自訂指令與 Hooks"
+    },
+    {
+      "id": "H",
+      "title": "MCP、外掛與多代理"
+    },
+    {
+      "id": "I",
+      "title": "瀏覽器與進階自動化"
+    },
+    {
+      "id": "J",
+      "title": "完整實作、維護與查表"
+    }
+  ],
+  "paths": [
+    {
+      "id": "desktop",
+      "title": "桌面新手",
+      "slugs": [
+        "claude-code-getting-started",
+        "claude-code-accounts-and-access",
+        "claude-code-platforms-guide",
+        "claude-code-desktop-setup",
+        "claude-code-practice-project-setup",
+        "claude-code-task-prompts",
+        "claude-code-desktop-workflow",
+        "claude-code-claude-md-guide",
+        "claude-code-permissions-plan-mode",
+        "claude-code-build-todo-app"
+      ]
+    },
+    {
+      "id": "cli",
+      "title": "CLI 新手",
+      "slugs": [
+        "claude-code-getting-started",
+        "claude-code-accounts-and-access",
+        "claude-code-terminal-git-basics",
+        "claude-code-install-windows",
+        "claude-code-install-macos",
+        "claude-code-install-linux-wsl",
+        "claude-code-practice-project-setup",
+        "claude-code-cli-command-guide",
+        "claude-code-help-status-doctor",
+        "claude-code-permissions-plan-mode",
+        "claude-code-implement-feature",
+        "claude-code-debug-and-test",
+        "claude-code-git-review-pr"
+      ]
+    },
+    {
+      "id": "mobile",
+      "title": "手機操作",
+      "slugs": [
+        "claude-code-platforms-guide",
+        "claude-code-on-the-web",
+        "claude-code-mobile-ios",
+        "claude-code-mobile-android",
+        "claude-code-remote-control",
+        "claude-code-desktop-dispatch",
+        "claude-code-cross-device-workflow"
+      ]
+    },
+    {
+      "id": "markdown",
+      "title": "MD 設定",
+      "slugs": [
+        "claude-code-markdown-basics",
+        "claude-code-claude-md-guide",
+        "claude-code-claude-md-scopes",
+        "claude-code-rules-and-imports",
+        "claude-code-auto-memory",
+        "claude-code-settings-json",
+        "claude-code-hooks-and-skills",
+        "claude-code-skills-skill-md"
+      ]
+    },
+    {
+      "id": "automation",
+      "title": "進階自動化",
+      "slugs": [
+        "claude-code-permissions-plan-mode",
+        "claude-code-hooks-and-skills",
+        "claude-code-skills-skill-md",
+        "claude-code-hooks-getting-started",
+        "claude-code-hooks-recipes",
+        "claude-code-mcp-servers",
+        "claude-code-mcp-setup-troubleshooting",
+        "claude-code-subagents-guide",
+        "claude-code-worktrees-parallel",
+        "claude-code-agent-teams",
+        "claude-code-headless-json",
+        "claude-code-scheduled-tasks",
+        "claude-code-github-actions",
+        "claude-code-agent-sdk"
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "slug": "claude-code-getting-started",
+      "title": "Claude Code 入門：認識工具與第一條學習路線",
+      "outcome": "認識讀檔、修改與執行工作的方式，選擇學習起點。",
+      "sources": [
+        "https://code.claude.com/docs/en/overview",
+        "https://code.claude.com/docs/en/how-claude-code-works"
+      ],
+      "number": 1,
+      "group": "A",
+      "level": "beginner",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "Claude",
+        "Code",
+        "入門",
+        "新手",
+        "AI",
+        "程式"
+      ],
+      "prerequisites": [],
+      "related": [
+        "claude-code-platforms-guide",
+        "claude-code-practice-project-setup",
+        "claude-code-task-prompts"
+      ]
+    },
+    {
+      "slug": "claude-code-accounts-and-access",
+      "title": "帳號、登入與使用資格",
+      "outcome": "分清訂閱登入、API 計費與組織帳號。",
+      "sources": [
+        "https://code.claude.com/docs/en/authentication",
+        "https://code.claude.com/docs/en/costs"
+      ],
+      "number": 2,
+      "group": "A",
+      "level": "beginner",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "登入",
+        "login",
+        "auth",
+        "訂閱",
+        "API",
+        "key",
+        "帳號"
+      ],
+      "prerequisites": [],
+      "related": [
+        "claude-code-models-usage-config",
+        "claude-code-usage-cost-optimization",
+        "claude-code-project-data-safety"
+      ]
+    },
+    {
+      "slug": "claude-code-platforms-guide",
+      "title": "桌面、CLI、網頁、手機怎麼選",
+      "outcome": "依裝置、檔案位置與工作方式選擇入口。",
+      "sources": [
+        "https://code.claude.com/docs/en/platforms",
+        "https://code.claude.com/docs/en/desktop"
+      ],
+      "number": 3,
+      "group": "A",
+      "level": "beginner",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "桌面",
+        "手機",
+        "CLI",
+        "網頁",
+        "比較"
+      ],
+      "prerequisites": [],
+      "related": [
+        "claude-code-desktop-setup",
+        "claude-code-on-the-web",
+        "claude-code-remote-control"
+      ]
+    },
+    {
+      "slug": "claude-code-terminal-git-basics",
+      "title": "終端機、路徑與 Git 基礎",
+      "outcome": "看懂資料夾位置、切換目錄與版本紀錄。",
+      "sources": [
+        "https://code.claude.com/docs/en/quickstart",
+        "https://code.claude.com/docs/en/common-workflows"
+      ],
+      "number": 4,
+      "group": "A",
+      "level": "beginner",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "PowerShell",
+        "Bash",
+        "cd",
+        "pwd",
+        "git",
+        "路徑"
+      ],
+      "prerequisites": [],
+      "related": [
+        "claude-code-install-windows",
+        "claude-code-install-macos",
+        "claude-code-git-review-pr"
+      ]
+    },
+    {
+      "slug": "claude-code-practice-project-setup",
+      "title": "準備第一個練習專案",
+      "outcome": "取得待辦清單材料，認識檔案及啟動方法。",
+      "sources": [
+        "https://code.claude.com/docs/en/quickstart",
+        "https://code.claude.com/docs/en/common-workflows"
+      ],
+      "number": 5,
+      "group": "A",
+      "level": "beginner",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "待辦清單",
+        "todo",
+        "範例",
+        "starter",
+        "下載"
+      ],
+      "prerequisites": [
+        "claude-code-terminal-git-basics"
+      ],
+      "related": [
+        "claude-code-desktop-setup",
+        "claude-code-cli-command-guide",
+        "claude-code-build-todo-app"
+      ]
+    },
+    {
+      "slug": "claude-code-task-prompts",
+      "title": "如何把需求交代清楚",
+      "outcome": "寫出目標、範圍、限制與驗收條件。",
+      "sources": [
+        "https://code.claude.com/docs/en/best-practices",
+        "https://code.claude.com/docs/en/prompt-library"
+      ],
+      "number": 6,
+      "group": "A",
+      "level": "beginner",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "提示詞",
+        "prompt",
+        "規劃",
+        "驗收"
+      ],
+      "prerequisites": [],
+      "related": [
+        "claude-code-permissions-plan-mode",
+        "claude-code-implement-feature",
+        "claude-code-debug-and-test"
+      ]
+    },
+    {
+      "slug": "claude-code-install-windows",
+      "title": "Windows CLI 安裝教學",
+      "outcome": "完成安裝、登入、路徑檢查與首次啟動。",
+      "sources": [
+        "https://code.claude.com/docs/en/setup",
+        "https://code.claude.com/docs/en/troubleshooting"
+      ],
+      "number": 7,
+      "group": "B",
+      "level": "beginner",
+      "platforms": [
+        "cli",
+        "windows"
+      ],
+      "aliases": [
+        "Windows",
+        "安裝",
+        "PATH",
+        "Git",
+        "Bash"
+      ],
+      "prerequisites": [
+        "claude-code-accounts-and-access",
+        "claude-code-terminal-git-basics"
+      ],
+      "related": [
+        "claude-code-terminal-git-basics",
+        "claude-code-cli-command-guide",
+        "claude-code-troubleshooting"
+      ]
+    },
+    {
+      "slug": "claude-code-install-macos",
+      "title": "macOS CLI 安裝教學",
+      "outcome": "完成安裝、登入、更新與基本檢查。",
+      "sources": [
+        "https://code.claude.com/docs/en/setup",
+        "https://code.claude.com/docs/en/quickstart"
+      ],
+      "number": 8,
+      "group": "B",
+      "level": "beginner",
+      "platforms": [
+        "cli",
+        "macos"
+      ],
+      "aliases": [
+        "macOS",
+        "Mac",
+        "安裝",
+        "Homebrew"
+      ],
+      "prerequisites": [
+        "claude-code-accounts-and-access",
+        "claude-code-terminal-git-basics"
+      ],
+      "related": [
+        "claude-code-terminal-git-basics",
+        "claude-code-cli-command-guide",
+        "claude-code-troubleshooting"
+      ]
+    },
+    {
+      "slug": "claude-code-install-linux-wsl",
+      "title": "Linux 與 WSL 安裝教學",
+      "outcome": "分清執行環境、檔案位置及 Windows 差異。",
+      "sources": [
+        "https://code.claude.com/docs/en/setup",
+        "https://code.claude.com/docs/en/vs-code"
+      ],
+      "number": 9,
+      "group": "B",
+      "level": "beginner",
+      "platforms": [
+        "cli",
+        "linux"
+      ],
+      "aliases": [
+        "Linux",
+        "WSL",
+        "Ubuntu",
+        "安裝"
+      ],
+      "prerequisites": [
+        "claude-code-accounts-and-access",
+        "claude-code-terminal-git-basics"
+      ],
+      "related": [
+        "claude-code-terminal-git-basics",
+        "claude-code-cli-command-guide",
+        "claude-code-troubleshooting"
+      ]
+    },
+    {
+      "slug": "claude-code-desktop-setup",
+      "title": "桌面版安裝與第一個任務",
+      "outcome": "開啟 Code、選擇專案並完成第一次變更。",
+      "sources": [
+        "https://code.claude.com/docs/en/desktop-quickstart",
+        "https://code.claude.com/docs/en/desktop"
+      ],
+      "number": 10,
+      "group": "B",
+      "level": "beginner",
+      "platforms": [
+        "desktop",
+        "windows",
+        "macos"
+      ],
+      "aliases": [
+        "桌面",
+        "desktop",
+        "Code",
+        "安裝"
+      ],
+      "prerequisites": [
+        "claude-code-accounts-and-access"
+      ],
+      "related": [
+        "claude-code-desktop-workflow",
+        "claude-code-claude-md-guide",
+        "claude-code-permissions-plan-mode"
+      ]
+    },
+    {
+      "slug": "claude-code-desktop-workflow",
+      "title": "桌面版日常工作流程",
+      "outcome": "管理工作階段、查看差異與驗證預覽。",
+      "sources": [
+        "https://code.claude.com/docs/en/desktop",
+        "https://code.claude.com/docs/en/checkpointing"
+      ],
+      "number": 11,
+      "group": "B",
+      "level": "beginner",
+      "platforms": [
+        "desktop",
+        "windows",
+        "macos"
+      ],
+      "aliases": [
+        "桌面",
+        "diff",
+        "preview",
+        "工作階段"
+      ],
+      "prerequisites": [
+        "claude-code-desktop-setup"
+      ],
+      "related": [
+        "claude-code-git-review-pr",
+        "claude-code-checkpoints-rewind",
+        "claude-code-worktrees-parallel"
+      ]
+    },
+    {
+      "slug": "claude-code-ide-integration",
+      "title": "VS Code 與 JetBrains 整合",
+      "outcome": "在編輯器帶入檔案、選取內容與查看變更。",
+      "sources": [
+        "https://code.claude.com/docs/en/vs-code",
+        "https://code.claude.com/docs/en/jetbrains"
+      ],
+      "number": 12,
+      "group": "B",
+      "level": "beginner",
+      "platforms": [
+        "ide"
+      ],
+      "aliases": [
+        "VSCode",
+        "VS",
+        "Code",
+        "JetBrains",
+        "IDE"
+      ],
+      "prerequisites": [
+        "claude-code-terminal-git-basics"
+      ],
+      "related": [
+        "claude-code-files-and-context",
+        "claude-code-git-review-pr",
+        "claude-code-remote-control"
+      ]
+    },
+    {
+      "slug": "claude-code-on-the-web",
+      "title": "Claude Code 網頁版教學",
+      "outcome": "連接儲存庫、建立雲端任務及取回成果。",
+      "sources": [
+        "https://code.claude.com/docs/en/claude-code-on-the-web",
+        "https://code.claude.com/docs/en/platforms"
+      ],
+      "number": 13,
+      "group": "C",
+      "level": "beginner",
+      "platforms": [
+        "web"
+      ],
+      "aliases": [
+        "網頁",
+        "web",
+        "雲端",
+        "GitHub"
+      ],
+      "prerequisites": [
+        "claude-code-accounts-and-access",
+        "claude-code-terminal-git-basics"
+      ],
+      "related": [
+        "claude-code-mobile-ios",
+        "claude-code-mobile-android",
+        "claude-code-cross-device-workflow"
+      ]
+    },
+    {
+      "slug": "claude-code-mobile-ios",
+      "title": "iPhone 與 iPad 使用教學",
+      "outcome": "從 iPhone 或 iPad 啟動、查看與接續工作。",
+      "sources": [
+        "https://code.claude.com/docs/en/mobile",
+        "https://code.claude.com/docs/en/remote-control"
+      ],
+      "number": 14,
+      "group": "C",
+      "level": "beginner",
+      "platforms": [
+        "ios"
+      ],
+      "aliases": [
+        "手機",
+        "iPhone",
+        "iPad",
+        "iOS"
+      ],
+      "prerequisites": [
+        "claude-code-accounts-and-access",
+        "claude-code-on-the-web"
+      ],
+      "related": [
+        "claude-code-remote-control",
+        "claude-code-desktop-dispatch",
+        "claude-code-cross-device-workflow"
+      ]
+    },
+    {
+      "slug": "claude-code-mobile-android",
+      "title": "Android 使用教學",
+      "outcome": "在 Android 建立任務、追蹤狀態及補充指示。",
+      "sources": [
+        "https://code.claude.com/docs/en/mobile",
+        "https://code.claude.com/docs/en/remote-control"
+      ],
+      "number": 15,
+      "group": "C",
+      "level": "beginner",
+      "platforms": [
+        "android"
+      ],
+      "aliases": [
+        "手機",
+        "Android",
+        "安卓"
+      ],
+      "prerequisites": [
+        "claude-code-accounts-and-access",
+        "claude-code-on-the-web"
+      ],
+      "related": [
+        "claude-code-remote-control",
+        "claude-code-desktop-dispatch",
+        "claude-code-cross-device-workflow"
+      ]
+    },
+    {
+      "slug": "claude-code-remote-control",
+      "title": "Remote Control：接續電腦上的工作",
+      "outcome": "從手機或瀏覽器控制本機正在進行的工作。",
+      "sources": [
+        "https://code.claude.com/docs/en/remote-control",
+        "https://code.claude.com/docs/en/mobile"
+      ],
+      "number": 16,
+      "group": "C",
+      "level": "beginner",
+      "platforms": [
+        "ios",
+        "android",
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "手機",
+        "Remote",
+        "Control",
+        "/remote-control",
+        "遠端"
+      ],
+      "prerequisites": [
+        "claude-code-cli-command-guide"
+      ],
+      "related": [
+        "claude-code-desktop-dispatch",
+        "claude-code-cross-device-workflow",
+        "claude-code-troubleshooting"
+      ]
+    },
+    {
+      "slug": "claude-code-desktop-dispatch",
+      "title": "Dispatch：從手機派送桌面任務",
+      "outcome": "完成手機與桌面配對並派送可驗證的任務。",
+      "sources": [
+        "https://code.claude.com/docs/en/desktop",
+        "https://code.claude.com/docs/en/mobile",
+        "https://support.claude.com/en/articles/13947068-assign-tasks-from-anywhere-in-claude-cowork"
+      ],
+      "number": 17,
+      "group": "C",
+      "level": "beginner",
+      "platforms": [
+        "ios",
+        "android",
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "手機",
+        "Dispatch",
+        "派送",
+        "桌面"
+      ],
+      "prerequisites": [
+        "claude-code-desktop-setup"
+      ],
+      "related": [
+        "claude-code-desktop-setup",
+        "claude-code-remote-control",
+        "claude-code-scheduled-tasks"
+      ]
+    },
+    {
+      "slug": "claude-code-cross-device-workflow",
+      "title": "跨裝置接續工作的完整流程",
+      "outcome": "理解對話、工作檔案與 Git 變更的接續方式。",
+      "sources": [
+        "https://code.claude.com/docs/en/platforms",
+        "https://code.claude.com/docs/en/sessions"
+      ],
+      "number": 18,
+      "group": "C",
+      "level": "beginner",
+      "platforms": [
+        "ios",
+        "android",
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "跨裝置",
+        "handoff",
+        "session",
+        "接續"
+      ],
+      "prerequisites": [
+        "claude-code-on-the-web",
+        "claude-code-remote-control"
+      ],
+      "related": [
+        "claude-code-sessions-resume",
+        "claude-code-git-review-pr",
+        "claude-code-worktrees-parallel"
+      ]
+    },
+    {
+      "slug": "claude-code-markdown-basics",
+      "title": "Markdown 零基礎",
+      "outcome": "建立 MD 並使用標題、清單、連結及程式碼。",
+      "sources": [
+        "https://code.claude.com/docs/en/memory",
+        "https://code.claude.com/docs/en/skills"
+      ],
+      "number": 19,
+      "group": "D",
+      "level": "beginner",
+      "platforms": [
+        "cli",
+        "desktop",
+        "ide"
+      ],
+      "aliases": [
+        "MD",
+        "Markdown",
+        ".md",
+        "檔案"
+      ],
+      "prerequisites": [],
+      "related": [
+        "claude-code-claude-md-guide",
+        "claude-code-settings-json",
+        "claude-code-skills-skill-md"
+      ]
+    },
+    {
+      "slug": "claude-code-claude-md-guide",
+      "title": "CLAUDE.md 完整教學",
+      "outcome": "建立專案規範並確認 Claude 有載入。",
+      "sources": [
+        "https://code.claude.com/docs/en/memory",
+        "https://code.claude.com/docs/en/best-practices"
+      ],
+      "number": 20,
+      "group": "D",
+      "level": "beginner",
+      "platforms": [
+        "cli",
+        "desktop",
+        "ide"
+      ],
+      "aliases": [
+        "MD",
+        "CLAUDE.md",
+        "/init",
+        "規範"
+      ],
+      "prerequisites": [
+        "claude-code-markdown-basics"
+      ],
+      "related": [
+        "claude-code-rules-and-imports",
+        "claude-code-skills-skill-md",
+        "claude-code-hooks-getting-started"
+      ]
+    },
+    {
+      "slug": "claude-code-claude-md-scopes",
+      "title": "個人、專案與子目錄規則",
+      "outcome": "把團隊規範與個人偏好放在正確位置。",
+      "sources": [
+        "https://code.claude.com/docs/en/memory",
+        "https://code.claude.com/docs/en/settings"
+      ],
+      "number": 21,
+      "group": "D",
+      "level": "beginner",
+      "platforms": [
+        "cli",
+        "desktop",
+        "ide"
+      ],
+      "aliases": [
+        "MD",
+        "CLAUDE.local.md",
+        "~/.claude",
+        "設定"
+      ],
+      "prerequisites": [
+        "claude-code-claude-md-guide"
+      ],
+      "related": [
+        "claude-code-claude-md-guide",
+        "claude-code-rules-and-imports",
+        "claude-code-settings-json"
+      ]
+    },
+    {
+      "slug": "claude-code-rules-and-imports",
+      "title": "拆分規則與引用其他 MD",
+      "outcome": "用 rules 與檔案引用維護共用規範。",
+      "sources": [
+        "https://code.claude.com/docs/en/memory",
+        "https://code.claude.com/docs/en/claude-directory"
+      ],
+      "number": 22,
+      "group": "D",
+      "level": "beginner",
+      "platforms": [
+        "cli",
+        "desktop",
+        "ide"
+      ],
+      "aliases": [
+        "MD",
+        "AGENTS.md",
+        ".claude/rules",
+        "paths",
+        "引用"
+      ],
+      "prerequisites": [
+        "claude-code-claude-md-guide"
+      ],
+      "related": [
+        "claude-code-claude-md-guide",
+        "claude-code-claude-md-scopes",
+        "claude-code-skills-skill-md"
+      ]
+    },
+    {
+      "slug": "claude-code-auto-memory",
+      "title": "自動記憶與 /memory",
+      "outcome": "查看與修正跨對話保留的專案記憶。",
+      "sources": [
+        "https://code.claude.com/docs/en/memory",
+        "https://code.claude.com/docs/en/context-window"
+      ],
+      "number": 23,
+      "group": "D",
+      "level": "beginner",
+      "platforms": [
+        "cli",
+        "desktop",
+        "ide"
+      ],
+      "aliases": [
+        "記憶",
+        "memory",
+        "/memory",
+        "MEMORY.md"
+      ],
+      "prerequisites": [
+        "claude-code-claude-md-guide"
+      ],
+      "related": [
+        "claude-code-claude-md-guide",
+        "claude-code-context-compact-clear",
+        "claude-code-usage-cost-optimization"
+      ]
+    },
+    {
+      "slug": "claude-code-settings-json",
+      "title": "settings.json 設定教學",
+      "outcome": "修改 JSON、理解設定範圍並驗證生效。",
+      "sources": [
+        "https://code.claude.com/docs/en/settings",
+        "https://code.claude.com/docs/en/permissions"
+      ],
+      "number": 24,
+      "group": "D",
+      "level": "beginner",
+      "platforms": [
+        "cli",
+        "desktop",
+        "ide"
+      ],
+      "aliases": [
+        "設定",
+        "settings.json",
+        "settings.local.json",
+        "優先順序"
+      ],
+      "prerequisites": [
+        "claude-code-markdown-basics"
+      ],
+      "related": [
+        "claude-code-claude-md-scopes",
+        "claude-code-permissions-plan-mode",
+        "claude-code-mcp-setup-troubleshooting"
+      ]
+    },
+    {
+      "slug": "claude-code-cli-command-guide",
+      "title": "CLI 指令入門與分類索引",
+      "outcome": "分辨終端機指令、啟動參數與斜線指令。",
+      "sources": [
+        "https://code.claude.com/docs/en/cli-reference",
+        "https://code.claude.com/docs/en/commands"
+      ],
+      "number": 25,
+      "group": "E",
+      "level": "intermediate",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "CLI",
+        "指令",
+        "claude",
+        "--help",
+        "/help"
+      ],
+      "prerequisites": [
+        "claude-code-terminal-git-basics"
+      ],
+      "related": [
+        "claude-code-help-status-doctor",
+        "claude-code-sessions-resume",
+        "claude-code-headless-json"
+      ]
+    },
+    {
+      "slug": "claude-code-help-status-doctor",
+      "title": "說明、狀態與診斷",
+      "outcome": "利用說明和診斷找到環境問題。",
+      "sources": [
+        "https://code.claude.com/docs/en/troubleshooting",
+        "https://code.claude.com/docs/en/commands"
+      ],
+      "number": 26,
+      "group": "E",
+      "level": "intermediate",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "說明",
+        "/help",
+        "/status",
+        "doctor",
+        "診斷"
+      ],
+      "prerequisites": [
+        "claude-code-cli-command-guide"
+      ],
+      "related": [
+        "claude-code-settings-json",
+        "claude-code-models-usage-config",
+        "claude-code-troubleshooting"
+      ]
+    },
+    {
+      "slug": "claude-code-sessions-resume",
+      "title": "繼續、找回與管理對話",
+      "outcome": "命名、恢復與匯出工作階段。",
+      "sources": [
+        "https://code.claude.com/docs/en/sessions",
+        "https://code.claude.com/docs/en/cli-reference"
+      ],
+      "number": 27,
+      "group": "E",
+      "level": "intermediate",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "對話",
+        "/resume",
+        "/rename",
+        "/export",
+        "--continue"
+      ],
+      "prerequisites": [
+        "claude-code-cli-command-guide"
+      ],
+      "related": [
+        "claude-code-context-compact-clear",
+        "claude-code-checkpoints-rewind",
+        "claude-code-cross-device-workflow"
+      ]
+    },
+    {
+      "slug": "claude-code-context-compact-clear",
+      "title": "上下文整理：context、compact 與 clear",
+      "outcome": "選擇保留、壓縮或清空上下文的時機。",
+      "sources": [
+        "https://code.claude.com/docs/en/context-window",
+        "https://code.claude.com/docs/en/commands"
+      ],
+      "number": 28,
+      "group": "E",
+      "level": "intermediate",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "上下文",
+        "/context",
+        "/compact",
+        "/clear",
+        "記憶"
+      ],
+      "prerequisites": [
+        "claude-code-cli-command-guide"
+      ],
+      "related": [
+        "claude-code-auto-memory",
+        "claude-code-sessions-resume",
+        "claude-code-usage-cost-optimization"
+      ]
+    },
+    {
+      "slug": "claude-code-models-usage-config",
+      "title": "模型、用量與偏好設定",
+      "outcome": "切換模型、查看用量與調整偏好。",
+      "sources": [
+        "https://code.claude.com/docs/en/model-config",
+        "https://code.claude.com/docs/en/costs"
+      ],
+      "number": 29,
+      "group": "E",
+      "level": "intermediate",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "模型",
+        "/model",
+        "/usage",
+        "/cost",
+        "/config"
+      ],
+      "prerequisites": [
+        "claude-code-cli-command-guide"
+      ],
+      "related": [
+        "claude-code-accounts-and-access",
+        "claude-code-settings-json",
+        "claude-code-usage-cost-optimization"
+      ]
+    },
+    {
+      "slug": "claude-code-permissions-plan-mode",
+      "title": "Plan Mode 與權限模式",
+      "outcome": "在規劃與實作之間控制操作權限。",
+      "sources": [
+        "https://code.claude.com/docs/en/permissions",
+        "https://code.claude.com/docs/en/common-workflows"
+      ],
+      "number": 30,
+      "group": "E",
+      "level": "intermediate",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "權限",
+        "/permissions",
+        "Plan",
+        "Mode",
+        "規劃"
+      ],
+      "prerequisites": [
+        "claude-code-task-prompts"
+      ],
+      "related": [
+        "claude-code-task-prompts",
+        "claude-code-checkpoints-rewind",
+        "claude-code-project-data-safety"
+      ]
+    },
+    {
+      "slug": "claude-code-files-and-context",
+      "title": "提供檔案與專案上下文",
+      "outcome": "用檔案引用和目錄設定提供精確上下文。",
+      "sources": [
+        "https://code.claude.com/docs/en/common-workflows",
+        "https://code.claude.com/docs/en/cli-reference"
+      ],
+      "number": 31,
+      "group": "F",
+      "level": "intermediate",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "檔案",
+        "@",
+        "/add-dir",
+        "--add-dir",
+        "上下文"
+      ],
+      "prerequisites": [
+        "claude-code-cli-command-guide"
+      ],
+      "related": [
+        "claude-code-rules-and-imports",
+        "claude-code-understand-codebase",
+        "claude-code-project-data-safety"
+      ]
+    },
+    {
+      "slug": "claude-code-understand-codebase",
+      "title": "快速讀懂陌生專案",
+      "outcome": "找出專案入口、資料流程與測試方法。",
+      "sources": [
+        "https://code.claude.com/docs/en/best-practices",
+        "https://code.claude.com/docs/en/how-claude-code-works"
+      ],
+      "number": 32,
+      "group": "F",
+      "level": "intermediate",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "專案",
+        "codebase",
+        "架構",
+        "入口"
+      ],
+      "prerequisites": [
+        "claude-code-practice-project-setup"
+      ],
+      "related": [
+        "claude-code-task-prompts",
+        "claude-code-debug-and-test",
+        "claude-code-maintain-existing-project"
+      ]
+    },
+    {
+      "slug": "claude-code-implement-feature",
+      "title": "新增一個小功能",
+      "outcome": "為待辦清單加入篩選並驗證功能。",
+      "sources": [
+        "https://code.claude.com/docs/en/common-workflows",
+        "https://code.claude.com/docs/en/best-practices"
+      ],
+      "number": 33,
+      "group": "F",
+      "level": "intermediate",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "功能",
+        "篩選",
+        "filter",
+        "待辦清單"
+      ],
+      "prerequisites": [
+        "claude-code-practice-project-setup",
+        "claude-code-task-prompts"
+      ],
+      "related": [
+        "claude-code-debug-and-test",
+        "claude-code-git-review-pr",
+        "claude-code-build-todo-app"
+      ]
+    },
+    {
+      "slug": "claude-code-debug-and-test",
+      "title": "除錯與補測試",
+      "outcome": "從重現問題走到修正與回歸測試。",
+      "sources": [
+        "https://code.claude.com/docs/en/common-workflows",
+        "https://code.claude.com/docs/en/best-practices"
+      ],
+      "number": 34,
+      "group": "F",
+      "level": "intermediate",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "除錯",
+        "debug",
+        "bug",
+        "test",
+        "測試"
+      ],
+      "prerequisites": [
+        "claude-code-practice-project-setup",
+        "claude-code-implement-feature"
+      ],
+      "related": [
+        "claude-code-checkpoints-rewind",
+        "claude-code-hooks-recipes",
+        "claude-code-maintain-existing-project"
+      ]
+    },
+    {
+      "slug": "claude-code-git-review-pr",
+      "title": "Git、差異審查與 PR",
+      "outcome": "檢查差異、整理提交與準備 PR。",
+      "sources": [
+        "https://code.claude.com/docs/en/common-workflows",
+        "https://code.claude.com/docs/en/checkpointing"
+      ],
+      "number": 35,
+      "group": "F",
+      "level": "intermediate",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "Git",
+        "diff",
+        "commit",
+        "PR",
+        "review",
+        "分支"
+      ],
+      "prerequisites": [
+        "claude-code-terminal-git-basics",
+        "claude-code-implement-feature"
+      ],
+      "related": [
+        "claude-code-checkpoints-rewind",
+        "claude-code-worktrees-parallel",
+        "claude-code-github-actions"
+      ]
+    },
+    {
+      "slug": "claude-code-checkpoints-rewind",
+      "title": "Checkpoint 與 /rewind",
+      "outcome": "區分回復對話、回復檔案與 Git 還原。",
+      "sources": [
+        "https://code.claude.com/docs/en/checkpointing",
+        "https://code.claude.com/docs/en/sessions"
+      ],
+      "number": 36,
+      "group": "F",
+      "level": "intermediate",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "還原",
+        "/rewind",
+        "checkpoint",
+        "Git"
+      ],
+      "prerequisites": [
+        "claude-code-git-review-pr"
+      ],
+      "related": [
+        "claude-code-sessions-resume",
+        "claude-code-git-review-pr",
+        "claude-code-project-data-safety"
+      ]
+    },
+    {
+      "slug": "claude-code-hooks-and-skills",
+      "title": "Hooks 與 Skills 怎麼選",
+      "outcome": "選對規則、可重用流程與事件自動化。",
+      "sources": [
+        "https://code.claude.com/docs/en/features-overview",
+        "https://code.claude.com/docs/en/hooks-guide"
+      ],
+      "number": 37,
+      "group": "G",
+      "level": "intermediate",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "MD",
+        "Skills",
+        "Hooks",
+        "CLAUDE.md",
+        "比較"
+      ],
+      "prerequisites": [
+        "claude-code-claude-md-guide"
+      ],
+      "related": [
+        "claude-code-claude-md-guide",
+        "claude-code-skills-skill-md",
+        "claude-code-hooks-getting-started"
+      ]
+    },
+    {
+      "slug": "claude-code-skills-skill-md",
+      "title": "建立第一個 SKILL.md",
+      "outcome": "用 SKILL.md 包裝可重用的專案檢查。",
+      "sources": [
+        "https://code.claude.com/docs/en/skills",
+        "https://code.claude.com/docs/en/features-overview"
+      ],
+      "number": 38,
+      "group": "G",
+      "level": "intermediate",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "MD",
+        "SKILL.md",
+        "Skill",
+        "frontmatter",
+        "技能"
+      ],
+      "prerequisites": [
+        "claude-code-markdown-basics",
+        "claude-code-hooks-and-skills"
+      ],
+      "related": [
+        "claude-code-skill-arguments-resources",
+        "claude-code-custom-commands",
+        "claude-code-subagents-guide"
+      ]
+    },
+    {
+      "slug": "claude-code-skill-arguments-resources",
+      "title": "Skill 參數與附屬材料",
+      "outcome": "為 Skill 加入參數、範本與輔助腳本。",
+      "sources": [
+        "https://code.claude.com/docs/en/skills",
+        "https://code.claude.com/docs/en/plugins"
+      ],
+      "number": 39,
+      "group": "G",
+      "level": "intermediate",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "Skill",
+        "$ARGUMENTS",
+        "scripts",
+        "references",
+        "範本"
+      ],
+      "prerequisites": [
+        "claude-code-skills-skill-md"
+      ],
+      "related": [
+        "claude-code-skills-skill-md",
+        "claude-code-hooks-recipes",
+        "claude-code-plugins-guide"
+      ]
+    },
+    {
+      "slug": "claude-code-custom-commands",
+      "title": "自訂斜線指令與舊格式移轉",
+      "outcome": "理解舊 commands 格式並遷移至 Skills。",
+      "sources": [
+        "https://code.claude.com/docs/en/skills",
+        "https://code.claude.com/docs/en/commands"
+      ],
+      "number": 40,
+      "group": "G",
+      "level": "intermediate",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "MD",
+        "commands",
+        "自訂指令",
+        "slash",
+        "遷移"
+      ],
+      "prerequisites": [
+        "claude-code-skills-skill-md"
+      ],
+      "related": [
+        "claude-code-skills-skill-md",
+        "claude-code-skill-arguments-resources",
+        "claude-code-plugins-guide"
+      ]
+    },
+    {
+      "slug": "claude-code-hooks-getting-started",
+      "title": "建立第一個 Hook",
+      "outcome": "設定事件與條件，確認 Hook 實際觸發。",
+      "sources": [
+        "https://code.claude.com/docs/en/hooks-guide",
+        "https://code.claude.com/docs/en/hooks"
+      ],
+      "number": 41,
+      "group": "G",
+      "level": "intermediate",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "Hooks",
+        "/hooks",
+        "PostToolUse",
+        "設定"
+      ],
+      "prerequisites": [
+        "claude-code-settings-json",
+        "claude-code-hooks-and-skills"
+      ],
+      "related": [
+        "claude-code-settings-json",
+        "claude-code-hooks-recipes",
+        "claude-code-project-data-safety"
+      ]
+    },
+    {
+      "slug": "claude-code-hooks-recipes",
+      "title": "Hooks 實用案例",
+      "outcome": "建立格式檢查、測試提示及通知流程。",
+      "sources": [
+        "https://code.claude.com/docs/en/hooks-guide",
+        "https://code.claude.com/docs/en/hooks"
+      ],
+      "number": 42,
+      "group": "G",
+      "level": "intermediate",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "Hooks",
+        "Notification",
+        "Stop",
+        "格式",
+        "通知"
+      ],
+      "prerequisites": [
+        "claude-code-hooks-getting-started"
+      ],
+      "related": [
+        "claude-code-debug-and-test",
+        "claude-code-hooks-getting-started",
+        "claude-code-scheduled-tasks"
+      ]
+    },
+    {
+      "slug": "claude-code-mcp-servers",
+      "title": "Claude Code 接 MCP 入門",
+      "outcome": "理解 MCP 如何擴充外部工具存取。",
+      "sources": [
+        "https://code.claude.com/docs/en/mcp",
+        "https://code.claude.com/docs/en/features-overview"
+      ],
+      "number": 43,
+      "group": "H",
+      "level": "intermediate",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "MCP",
+        "外部工具",
+        "連接"
+      ],
+      "prerequisites": [
+        "claude-code-permissions-plan-mode"
+      ],
+      "related": [
+        "claude-code-mcp-setup-troubleshooting",
+        "claude-code-plugins-guide",
+        "claude-code-chrome-browser"
+      ]
+    },
+    {
+      "slug": "claude-code-mcp-setup-troubleshooting",
+      "title": "MCP 安裝、設定與排錯",
+      "outcome": "設定伺服器、完成登入並驗證工具連線。",
+      "sources": [
+        "https://code.claude.com/docs/en/mcp",
+        "https://code.claude.com/docs/en/settings"
+      ],
+      "number": 44,
+      "group": "H",
+      "level": "intermediate",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "MCP",
+        ".mcp.json",
+        "auth",
+        "transport",
+        "排錯"
+      ],
+      "prerequisites": [
+        "claude-code-mcp-servers"
+      ],
+      "related": [
+        "claude-code-settings-json",
+        "claude-code-mcp-servers",
+        "claude-code-troubleshooting"
+      ]
+    },
+    {
+      "slug": "claude-code-plugins-guide",
+      "title": "Plugins 安裝與管理",
+      "outcome": "安裝、啟用、更新與移除外掛。",
+      "sources": [
+        "https://code.claude.com/docs/en/discover-plugins",
+        "https://code.claude.com/docs/en/plugins"
+      ],
+      "number": 45,
+      "group": "H",
+      "level": "advanced",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "Plugin",
+        "/plugin",
+        "marketplace",
+        "外掛"
+      ],
+      "prerequisites": [
+        "claude-code-hooks-and-skills"
+      ],
+      "related": [
+        "claude-code-skills-skill-md",
+        "claude-code-mcp-servers",
+        "claude-code-subagents-guide"
+      ]
+    },
+    {
+      "slug": "claude-code-subagents-guide",
+      "title": "Subagents 與代理 MD 設定",
+      "outcome": "建立有明確工作範圍與工具權限的代理。",
+      "sources": [
+        "https://code.claude.com/docs/en/sub-agents",
+        "https://code.claude.com/docs/en/settings"
+      ],
+      "number": 46,
+      "group": "H",
+      "level": "advanced",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "代理",
+        "subagents",
+        "/agents",
+        ".claude/agents",
+        "MD"
+      ],
+      "prerequisites": [
+        "claude-code-skills-skill-md"
+      ],
+      "related": [
+        "claude-code-skills-skill-md",
+        "claude-code-worktrees-parallel",
+        "claude-code-agent-teams"
+      ]
+    },
+    {
+      "slug": "claude-code-worktrees-parallel",
+      "title": "Git Worktree 平行工作",
+      "outcome": "隔離多個任務的檔案與分支。",
+      "sources": [
+        "https://code.claude.com/docs/en/worktrees",
+        "https://code.claude.com/docs/en/common-workflows"
+      ],
+      "number": 47,
+      "group": "H",
+      "level": "advanced",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "worktree",
+        "--worktree",
+        "平行",
+        "分支"
+      ],
+      "prerequisites": [
+        "claude-code-git-review-pr"
+      ],
+      "related": [
+        "claude-code-git-review-pr",
+        "claude-code-subagents-guide",
+        "claude-code-agent-teams"
+      ]
+    },
+    {
+      "slug": "claude-code-agent-teams",
+      "title": "Agent Teams 協作",
+      "outcome": "拆分責任、交接依賴並整合多代理成果。",
+      "sources": [
+        "https://code.claude.com/docs/en/agent-teams",
+        "https://code.claude.com/docs/en/sub-agents"
+      ],
+      "number": 48,
+      "group": "H",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "Agent",
+        "Teams",
+        "team",
+        "多代理",
+        "協作"
+      ],
+      "prerequisites": [
+        "claude-code-subagents-guide",
+        "claude-code-worktrees-parallel"
+      ],
+      "related": [
+        "claude-code-subagents-guide",
+        "claude-code-worktrees-parallel",
+        "claude-code-usage-cost-optimization"
+      ]
+    },
+    {
+      "slug": "claude-code-chrome-browser",
+      "title": "Chrome 瀏覽器整合",
+      "outcome": "使用瀏覽器測試表單與網頁結果。",
+      "sources": [
+        "https://code.claude.com/docs/en/chrome",
+        "https://code.claude.com/docs/en/common-workflows"
+      ],
+      "number": 49,
+      "group": "I",
+      "level": "advanced",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "Chrome",
+        "browser",
+        "瀏覽器",
+        "表單"
+      ],
+      "prerequisites": [
+        "claude-code-implement-feature"
+      ],
+      "related": [
+        "claude-code-debug-and-test",
+        "claude-code-computer-use",
+        "claude-code-build-todo-app"
+      ]
+    },
+    {
+      "slug": "claude-code-computer-use",
+      "title": "Computer Use 教學",
+      "outcome": "在支援環境中操作桌面應用並確認結果。",
+      "sources": [
+        "https://code.claude.com/docs/en/computer-use",
+        "https://code.claude.com/docs/en/desktop"
+      ],
+      "number": 50,
+      "group": "I",
+      "level": "advanced",
+      "platforms": [
+        "desktop",
+        "macos",
+        "windows"
+      ],
+      "aliases": [
+        "computer",
+        "use",
+        "桌面",
+        "電腦",
+        "操作"
+      ],
+      "prerequisites": [
+        "claude-code-permissions-plan-mode"
+      ],
+      "related": [
+        "claude-code-desktop-setup",
+        "claude-code-chrome-browser",
+        "claude-code-project-data-safety"
+      ]
+    },
+    {
+      "slug": "claude-code-headless-json",
+      "title": "非互動執行與 JSON 輸出",
+      "outcome": "用單次指令、管線與結構化輸出建立腳本。",
+      "sources": [
+        "https://code.claude.com/docs/en/headless",
+        "https://code.claude.com/docs/en/cli-reference"
+      ],
+      "number": 51,
+      "group": "I",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "claude",
+        "-p",
+        "--output-format",
+        "json",
+        "管線"
+      ],
+      "prerequisites": [
+        "claude-code-cli-command-guide"
+      ],
+      "related": [
+        "claude-code-cli-command-guide",
+        "claude-code-github-actions",
+        "claude-code-agent-sdk"
+      ]
+    },
+    {
+      "slug": "claude-code-scheduled-tasks",
+      "title": "排程與重複任務",
+      "outcome": "比較本機與雲端排程，設計可重複任務。",
+      "sources": [
+        "https://code.claude.com/docs/en/scheduled-tasks",
+        "https://code.claude.com/docs/en/desktop",
+        "https://code.claude.com/docs/en/routines",
+        "https://code.claude.com/docs/en/desktop-scheduled-tasks"
+      ],
+      "number": 52,
+      "group": "I",
+      "level": "advanced",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "排程",
+        "/loop",
+        "scheduled",
+        "Cron",
+        "雲端"
+      ],
+      "prerequisites": [
+        "claude-code-headless-json"
+      ],
+      "related": [
+        "claude-code-desktop-dispatch",
+        "claude-code-hooks-getting-started",
+        "claude-code-headless-json"
+      ]
+    },
+    {
+      "slug": "claude-code-github-actions",
+      "title": "GitHub Actions 整合",
+      "outcome": "在測試儲存庫建立工作流程並讀取執行紀錄。",
+      "sources": [
+        "https://code.claude.com/docs/en/github-actions",
+        "https://code.claude.com/docs/en/headless"
+      ],
+      "number": 53,
+      "group": "I",
+      "level": "advanced",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "GitHub",
+        "Actions",
+        "CI",
+        "workflow"
+      ],
+      "prerequisites": [
+        "claude-code-git-review-pr",
+        "claude-code-headless-json"
+      ],
+      "related": [
+        "claude-code-git-review-pr",
+        "claude-code-headless-json",
+        "claude-code-project-data-safety"
+      ]
+    },
+    {
+      "slug": "claude-code-agent-sdk",
+      "title": "Claude Agent SDK 入門",
+      "outcome": "用最小程式執行一次可驗證的代理工作。",
+      "sources": [
+        "https://code.claude.com/docs/en/headless",
+        "https://code.claude.com/docs/en/overview",
+        "https://code.claude.com/docs/en/agent-sdk/quickstart",
+        "https://code.claude.com/docs/en/agent-sdk/typescript"
+      ],
+      "number": 54,
+      "group": "I",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "Agent",
+        "SDK",
+        "Python",
+        "TypeScript",
+        "query"
+      ],
+      "prerequisites": [
+        "claude-code-headless-json"
+      ],
+      "related": [
+        "claude-code-subagents-guide",
+        "claude-code-headless-json",
+        "claude-code-usage-cost-optimization"
+      ]
+    },
+    {
+      "slug": "claude-code-build-todo-app",
+      "title": "完整實作：待辦清單網站",
+      "outcome": "從需求到功能、測試與瀏覽器成果檢查。",
+      "sources": [
+        "https://code.claude.com/docs/en/common-workflows",
+        "https://code.claude.com/docs/en/best-practices"
+      ],
+      "number": 55,
+      "group": "J",
+      "level": "intermediate",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "待辦清單",
+        "實作",
+        "todo",
+        "網站"
+      ],
+      "prerequisites": [
+        "claude-code-practice-project-setup",
+        "claude-code-permissions-plan-mode"
+      ],
+      "related": [
+        "claude-code-implement-feature",
+        "claude-code-debug-and-test",
+        "claude-code-chrome-browser"
+      ]
+    },
+    {
+      "slug": "claude-code-maintain-existing-project",
+      "title": "接手舊專案與逐步重構",
+      "outcome": "建立基準、小步重構並防止舊功能回歸。",
+      "sources": [
+        "https://code.claude.com/docs/en/best-practices",
+        "https://code.claude.com/docs/en/common-workflows"
+      ],
+      "number": 56,
+      "group": "J",
+      "level": "advanced",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "重構",
+        "refactor",
+        "舊專案",
+        "測試"
+      ],
+      "prerequisites": [
+        "claude-code-understand-codebase",
+        "claude-code-git-review-pr"
+      ],
+      "related": [
+        "claude-code-understand-codebase",
+        "claude-code-debug-and-test",
+        "claude-code-git-review-pr"
+      ]
+    },
+    {
+      "slug": "claude-code-project-data-safety",
+      "title": "專案資料與操作安全",
+      "outcome": "辨識金鑰、私人資料與高影響操作。",
+      "sources": [
+        "https://code.claude.com/docs/en/security",
+        "https://code.claude.com/docs/en/permissions"
+      ],
+      "number": 57,
+      "group": "J",
+      "level": "intermediate",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "安全",
+        "隱私",
+        "金鑰",
+        "權限",
+        "injection"
+      ],
+      "prerequisites": [
+        "claude-code-permissions-plan-mode"
+      ],
+      "related": [
+        "claude-code-settings-json",
+        "claude-code-permissions-plan-mode",
+        "claude-code-mcp-servers"
+      ]
+    },
+    {
+      "slug": "claude-code-usage-cost-optimization",
+      "title": "用量、成本與效率調整",
+      "outcome": "縮小任務、整理上下文與選擇模型。",
+      "sources": [
+        "https://code.claude.com/docs/en/costs",
+        "https://code.claude.com/docs/en/context-window"
+      ],
+      "number": 58,
+      "group": "J",
+      "level": "intermediate",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "費用",
+        "token",
+        "cost",
+        "用量",
+        "compact"
+      ],
+      "prerequisites": [
+        "claude-code-models-usage-config"
+      ],
+      "related": [
+        "claude-code-accounts-and-access",
+        "claude-code-context-compact-clear",
+        "claude-code-models-usage-config"
+      ]
+    },
+    {
+      "slug": "claude-code-troubleshooting",
+      "title": "常見問題排除大全",
+      "outcome": "按安裝、登入、設定、連線及執行症狀排錯。",
+      "sources": [
+        "https://code.claude.com/docs/en/troubleshooting",
+        "https://code.claude.com/docs/en/settings"
+      ],
+      "number": 59,
+      "group": "J",
+      "level": "intermediate",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "排錯",
+        "troubleshooting",
+        "error",
+        "doctor"
+      ],
+      "prerequisites": [
+        "claude-code-help-status-doctor"
+      ],
+      "related": [
+        "claude-code-install-windows",
+        "claude-code-settings-json",
+        "claude-code-mcp-setup-troubleshooting"
+      ]
+    },
+    {
+      "slug": "claude-code-templates-cheatsheet",
+      "title": "指令速查與設定範本庫",
+      "outcome": "快速找到指令、提示詞與可複製設定範本。",
+      "sources": [
+        "https://code.claude.com/docs/en/commands",
+        "https://code.claude.com/docs/en/memory",
+        "https://code.claude.com/docs/en/skills"
+      ],
+      "number": 60,
+      "group": "J",
+      "level": "intermediate",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "速查",
+        "範本",
+        "cheatsheet",
+        "MD",
+        "JSON",
+        "指令"
+      ],
+      "prerequisites": [],
+      "related": [
+        "claude-code-claude-md-guide",
+        "claude-code-cli-command-guide",
+        "claude-code-skills-skill-md"
+      ]
+    }
+  ]
+}

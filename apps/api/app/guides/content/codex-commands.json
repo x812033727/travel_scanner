@@ -24,9 +24,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -49,15 +55,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "先完成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 安裝",
-              "url": "https://mokaair.com/zh-TW/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
@@ -128,11 +135,8 @@
           "text": "第一步：查版本與說明"
         },
         {
-          "type": "paragraph",
-          "text": "Windows PowerShell、macOS Terminal 或 Linux shell；尚未進入 Codex 對話"
-        },
-        {
           "type": "code",
+          "label": "Windows PowerShell、macOS Terminal 或 Linux shell；尚未進入 Codex 對話",
           "language": "text",
           "code": "codex --version\ncodex --help\ncodex resume --help\n"
         },
@@ -150,11 +154,8 @@
           "text": "第二步：啟動並檢查狀態"
         },
         {
-          "type": "paragraph",
-          "text": "同一個系統終端機；目前目錄為 codex-practice"
-        },
-        {
           "type": "code",
+          "label": "同一個系統終端機；目前目錄為 codex-practice",
           "language": "text",
           "code": "codex\n"
         },
@@ -163,11 +164,8 @@
           "text": "進入互動介面後，在輸入框打 /，使用彈出的清單搜尋 status，再執行 /status。應看到目前工作階段的設定資訊，例如模型、權限與上下文狀態；顯示欄位依版本而異。它不是購買額度或兌換重置信用的指令。"
         },
         {
-          "type": "paragraph",
-          "text": "Codex CLI 互動輸入框；執行狀態檢查"
-        },
-        {
           "type": "code",
+          "label": "Codex CLI 互動輸入框；執行狀態檢查",
           "language": "text",
           "code": "/status\n"
         },
@@ -176,11 +174,8 @@
           "text": "請同時用唯讀自然語言核對工作位置。若路徑不符，離開這個工作階段，回終端機進入正確資料夾再啟動。不要試圖用切換模型來修正工作目錄。"
         },
         {
-          "type": "paragraph",
-          "text": "Codex CLI 對話；讀取練習位置"
-        },
-        {
           "type": "code",
+          "label": "Codex CLI 對話；讀取練習位置",
           "language": "text",
           "code": "Report the current working directory and list the five Small Steps source files.\nDo not edit anything. If this is not the practice folder, stop and explain.\n"
         },
@@ -191,11 +186,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "Plan 模式",
-              "url": "https://mokaair.com/zh-TW/life/codex-plan-mode"
+              "kind": "life",
+              "slug": "codex-plan-mode"
             },
             {
               "type": "text",
@@ -204,11 +200,8 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "Codex CLI 互動輸入框；斜線命令與本次需求"
-        },
-        {
           "type": "code",
+          "label": "Codex CLI 互動輸入框；斜線命令與本次需求",
           "language": "text",
           "code": "/plan Plan a Clear completed button for this todo website. Do not implement it yet. Preserve active tasks and explain how to verify an empty list, mixed completion states, and reload behavior.\n"
         },
@@ -226,20 +219,14 @@
           "text": "完成計畫後，先記下任務名稱或工作階段識別資訊，再在互動輸入框執行 /quit。回到系統終端機後，執行 codex resume，從選擇器核對時間、內容與路徑，選回剛才的任務。剛入門先用選擇器，比直接假定最後一個就是目標更容易核對。"
         },
         {
-          "type": "paragraph",
-          "text": "Codex CLI 互動輸入框；退出當前介面"
-        },
-        {
           "type": "code",
+          "label": "Codex CLI 互動輸入框；退出當前介面",
           "language": "text",
           "code": "/quit\n"
         },
         {
-          "type": "paragraph",
-          "text": "回到系統終端機後；開啟工作階段選擇器"
-        },
-        {
           "type": "code",
+          "label": "回到系統終端機後；開啟工作階段選擇器",
           "language": "text",
           "code": "codex resume\n"
         },
@@ -304,42 +291,46 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "需要挑模型看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "模型選擇",
-              "url": "https://mokaair.com/zh-TW/life/codex-model-selection"
+              "kind": "life",
+              "slug": "codex-model-selection"
             },
             {
               "type": "text",
               "text": "，調整授權看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "權限與沙盒",
-              "url": "https://mokaair.com/zh-TW/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
               "text": "，腳本流程看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "codex exec",
-              "url": "https://mokaair.com/zh-TW/life/codex-exec-scripting"
+              "kind": "life",
+              "slug": "codex-exec-scripting"
             },
             {
               "type": "text",
               "text": "。使用 /compact 前先保留需要逐字重現的錯誤與完成條件，可參考"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "上下文交接",
-              "url": "https://mokaair.com/zh-TW/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
@@ -383,7 +374,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "查證日為 2026-09-14，依"
@@ -398,18 +389,20 @@
               "text": "及本機 --help 核對。Windows 實測包含版本、主命令與 resume 說明；互動斜線、模型選單、macOS／Linux 依官方文件查證，未宣稱全部實測。需要完整操作範例可繼續"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Skills",
-              "url": "https://mokaair.com/zh-TW/life/codex-skills"
+              "kind": "life",
+              "slug": "codex-skills"
             },
             {
               "type": "text",
               "text": "與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "測試及審查",
-              "url": "https://mokaair.com/zh-TW/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -418,9 +411,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -465,9 +464,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -490,15 +495,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "先完成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 安装",
-              "url": "https://mokaair.com/zh-CN/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
@@ -569,11 +575,8 @@
           "text": "第一步：查版本与说明"
         },
         {
-          "type": "paragraph",
-          "text": "Windows PowerShell、macOS Terminal 或 Linux shell；尚未进入 Codex 对话"
-        },
-        {
           "type": "code",
+          "label": "Windows PowerShell、macOS Terminal 或 Linux shell；尚未进入 Codex 对话",
           "language": "text",
           "code": "codex --version\ncodex --help\ncodex resume --help\n"
         },
@@ -591,11 +594,8 @@
           "text": "第二步：启动并检查状态"
         },
         {
-          "type": "paragraph",
-          "text": "同一个系统终端机；目前目录为 codex-practice"
-        },
-        {
           "type": "code",
+          "label": "同一个系统终端机；目前目录为 codex-practice",
           "language": "text",
           "code": "codex\n"
         },
@@ -604,11 +604,8 @@
           "text": "进入互动介面后，在输入框打 /，使用弹出的清单搜寻 status，再执行 /status。应看到目前工作阶段的设定资讯，例如模型、权限与上下文状态；显示栏位依版本而异。它不是购买额度或兑换重置信用的指令。"
         },
         {
-          "type": "paragraph",
-          "text": "Codex CLI 互动输入框；执行状态检查"
-        },
-        {
           "type": "code",
+          "label": "Codex CLI 互动输入框；执行状态检查",
           "language": "text",
           "code": "/status\n"
         },
@@ -617,11 +614,8 @@
           "text": "请同时用唯读自然语言核对工作位置。若路径不符，离开这个工作阶段，回终端机进入正确资料夹再启动。不要试图用切换模型来修正工作目录。"
         },
         {
-          "type": "paragraph",
-          "text": "Codex CLI 对话；读取练习位置"
-        },
-        {
           "type": "code",
+          "label": "Codex CLI 对话；读取练习位置",
           "language": "text",
           "code": "Report the current working directory and list the five Small Steps source files.\nDo not edit anything. If this is not the practice folder, stop and explain.\n"
         },
@@ -632,11 +626,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "Plan 模式",
-              "url": "https://mokaair.com/zh-CN/life/codex-plan-mode"
+              "kind": "life",
+              "slug": "codex-plan-mode"
             },
             {
               "type": "text",
@@ -645,11 +640,8 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "Codex CLI 互动输入框；斜线命令与本次需求"
-        },
-        {
           "type": "code",
+          "label": "Codex CLI 互动输入框；斜线命令与本次需求",
           "language": "text",
           "code": "/plan Plan a Clear completed button for this todo website. Do not implement it yet. Preserve active tasks and explain how to verify an empty list, mixed completion states, and reload behavior.\n"
         },
@@ -667,20 +659,14 @@
           "text": "完成计划后，先记下任务名称或工作阶段识别资讯，再在互动输入框执行 /quit。回到系统终端机后，执行 codex resume，从选择器核对时间、内容与路径，选回刚才的任务。刚入门先用选择器，比直接假定最后一个就是目标更容易核对。"
         },
         {
-          "type": "paragraph",
-          "text": "Codex CLI 互动输入框；退出当前介面"
-        },
-        {
           "type": "code",
+          "label": "Codex CLI 互动输入框；退出当前介面",
           "language": "text",
           "code": "/quit\n"
         },
         {
-          "type": "paragraph",
-          "text": "回到系统终端机后；开启工作阶段选择器"
-        },
-        {
           "type": "code",
+          "label": "回到系统终端机后；开启工作阶段选择器",
           "language": "text",
           "code": "codex resume\n"
         },
@@ -745,42 +731,46 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "需要挑模型看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "模型选择",
-              "url": "https://mokaair.com/zh-CN/life/codex-model-selection"
+              "kind": "life",
+              "slug": "codex-model-selection"
             },
             {
               "type": "text",
               "text": "，调整授权看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "权限与沙盒",
-              "url": "https://mokaair.com/zh-CN/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
               "text": "，脚本流程看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "codex exec",
-              "url": "https://mokaair.com/zh-CN/life/codex-exec-scripting"
+              "kind": "life",
+              "slug": "codex-exec-scripting"
             },
             {
               "type": "text",
               "text": "。使用 /compact 前先保留需要逐字重现的错误与完成条件，可参考"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "上下文交接",
-              "url": "https://mokaair.com/zh-CN/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
@@ -824,7 +814,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "查证日为 2026-09-14，依"
@@ -839,18 +829,20 @@
               "text": "及本机 --help 核对。Windows 实测包含版本、主命令与 resume 说明；互动斜线、模型选单、macOS／Linux 依官方文件查证，未宣称全部实测。需要完整操作范例可继续"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Skills",
-              "url": "https://mokaair.com/zh-CN/life/codex-skills"
+              "kind": "life",
+              "slug": "codex-skills"
             },
             {
               "type": "text",
               "text": "与"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "测试及审查",
-              "url": "https://mokaair.com/zh-CN/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -859,9 +851,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -906,9 +904,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -931,15 +935,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Complete "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI installation",
-              "url": "https://mokaair.com/en/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
@@ -1010,11 +1015,8 @@
           "text": "Step 1: inspect version and help"
         },
         {
-          "type": "paragraph",
-          "text": "Windows PowerShell, macOS Terminal or Linux shell; outside a Codex conversation"
-        },
-        {
           "type": "code",
+          "label": "Windows PowerShell, macOS Terminal or Linux shell; outside a Codex conversation",
           "language": "text",
           "code": "codex --version\ncodex --help\ncodex resume --help\n"
         },
@@ -1032,11 +1034,8 @@
           "text": "Step 2: start a session and inspect status"
         },
         {
-          "type": "paragraph",
-          "text": "The same system terminal, in codex-practice"
-        },
-        {
           "type": "code",
+          "label": "The same system terminal, in codex-practice",
           "language": "text",
           "code": "codex\n"
         },
@@ -1045,11 +1044,8 @@
           "text": "Inside the interactive interface, type /, search for status in the popup and run /status. Expect session configuration such as the model, permissions and context state, with fields varying by version. This is not a purchase or reset-credit redemption command."
         },
         {
-          "type": "paragraph",
-          "text": "Codex CLI interactive composer; inspect status"
-        },
-        {
           "type": "code",
+          "label": "Codex CLI interactive composer; inspect status",
           "language": "text",
           "code": "/status\n"
         },
@@ -1058,11 +1054,8 @@
           "text": "Also ask for the working directory in a read-only prompt. If it is wrong, leave the session, enter the correct folder in the shell and restart. Switching models does not correct a directory mistake."
         },
         {
-          "type": "paragraph",
-          "text": "Codex CLI conversation; inspect the practice location"
-        },
-        {
           "type": "code",
+          "label": "Codex CLI conversation; inspect the practice location",
           "language": "text",
           "code": "Report the current working directory and list the five Small Steps source files.\nDo not edit anything. If this is not the practice folder, stop and explain.\n"
         },
@@ -1073,11 +1066,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "Plan mode",
-              "url": "https://mokaair.com/en/life/codex-plan-mode"
+              "kind": "life",
+              "slug": "codex-plan-mode"
             },
             {
               "type": "text",
@@ -1086,11 +1080,8 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "Codex CLI interactive composer; slash command with this request"
-        },
-        {
           "type": "code",
+          "label": "Codex CLI interactive composer; slash command with this request",
           "language": "text",
           "code": "/plan Plan a Clear completed button for this todo website. Do not implement it yet. Preserve active tasks and explain how to verify an empty list, mixed completion states, and reload behavior.\n"
         },
@@ -1108,20 +1099,14 @@
           "text": "Record the task name or session identifier after planning, then enter /quit in the interactive composer. Back in the system terminal, run codex resume. Check time, content and location in the picker before selecting the task. For beginners, choosing explicitly is easier to verify than assuming the latest session is the intended one."
         },
         {
-          "type": "paragraph",
-          "text": "Codex CLI interactive composer; leave the interface"
-        },
-        {
           "type": "code",
+          "label": "Codex CLI interactive composer; leave the interface",
           "language": "text",
           "code": "/quit\n"
         },
         {
-          "type": "paragraph",
-          "text": "Back in the system terminal; open the session picker"
-        },
-        {
           "type": "code",
+          "label": "Back in the system terminal; open the session picker",
           "language": "text",
           "code": "codex resume\n"
         },
@@ -1186,42 +1171,46 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "See "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "model selection",
-              "url": "https://mokaair.com/en/life/codex-model-selection"
+              "kind": "life",
+              "slug": "codex-model-selection"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "permissions",
-              "url": "https://mokaair.com/en/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
               "text": " and "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "codex exec",
-              "url": "https://mokaair.com/en/life/codex-exec-scripting"
+              "kind": "life",
+              "slug": "codex-exec-scripting"
             },
             {
               "type": "text",
               "text": " for those workflows. Before /compact, preserve errors that need exact reproduction and the acceptance criteria; see "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "context handoff",
-              "url": "https://mokaair.com/en/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
@@ -1265,7 +1254,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Checked on 2026-09-14 against the "
@@ -1280,18 +1269,20 @@
               "text": " and local --help. Windows checks covered version, main-command help and resume help. Interactive commands, model menus and macOS/Linux behavior were checked through documentation, not all exercised directly. Continue with "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Skills",
-              "url": "https://mokaair.com/en/life/codex-skills"
+              "kind": "life",
+              "slug": "codex-skills"
             },
             {
               "type": "text",
               "text": " and "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "testing and review",
-              "url": "https://mokaair.com/en/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -1300,9 +1291,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1347,9 +1344,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 学習目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1372,11 +1375,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI インストール",
-              "url": "https://mokaair.com/ja/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
@@ -1447,11 +1451,8 @@
           "text": "手順 1：バージョンとヘルプを見る"
         },
         {
-          "type": "paragraph",
-          "text": "Windows PowerShell、macOS Terminal、Linux shell。Codex の会話の外"
-        },
-        {
           "type": "code",
+          "label": "Windows PowerShell、macOS Terminal、Linux shell。Codex の会話の外",
           "language": "text",
           "code": "codex --version\ncodex --help\ncodex resume --help\n"
         },
@@ -1469,11 +1470,8 @@
           "text": "手順 2：起動して状態を見る"
         },
         {
-          "type": "paragraph",
-          "text": "同じシステム端末、codex-practice 内"
-        },
-        {
           "type": "code",
+          "label": "同じシステム端末、codex-practice 内",
           "language": "text",
           "code": "codex\n"
         },
@@ -1482,11 +1480,8 @@
           "text": "対話画面で / を入力し、候補から status を探して /status を実行します。モデル、権限、文脈などの設定が表示されますが項目は版によって異なります。購入やリセットクレジット消費のコマンドではありません。"
         },
         {
-          "type": "paragraph",
-          "text": "Codex CLI の対話入力欄。状態確認"
-        },
-        {
           "type": "code",
+          "label": "Codex CLI の対話入力欄。状態確認",
           "language": "text",
           "code": "/status\n"
         },
@@ -1495,11 +1490,8 @@
           "text": "自然言語でも作業場所を読み取り確認します。違っていたらセッションを離れ、シェルで正しいフォルダーに入って再起動します。モデル変更では作業場所は直りません。"
         },
         {
-          "type": "paragraph",
-          "text": "Codex CLI の会話。練習場所を確認"
-        },
-        {
           "type": "code",
+          "label": "Codex CLI の会話。練習場所を確認",
           "language": "text",
           "code": "Report the current working directory and list the five Small Steps source files.\nDo not edit anything. If this is not the practice folder, stop and explain.\n"
         },
@@ -1510,11 +1502,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "Plan モード",
-              "url": "https://mokaair.com/ja/life/codex-plan-mode"
+              "kind": "life",
+              "slug": "codex-plan-mode"
             },
             {
               "type": "text",
@@ -1523,11 +1516,8 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "Codex CLI の対話入力欄。スラッシュ命令と今回の依頼"
-        },
-        {
           "type": "code",
+          "label": "Codex CLI の対話入力欄。スラッシュ命令と今回の依頼",
           "language": "text",
           "code": "/plan Plan a Clear completed button for this todo website. Do not implement it yet. Preserve active tasks and explain how to verify an empty list, mixed completion states, and reload behavior.\n"
         },
@@ -1545,20 +1535,14 @@
           "text": "タスク名やセッション情報を控え、入力欄で /quit を実行します。システム端末に戻ったら codex resume を実行し、選択画面で時刻、内容、パスを照合して選びます。初心者は「最後が目的のもの」と決めつけるより選択画面で確認する方が確実です。"
         },
         {
-          "type": "paragraph",
-          "text": "Codex CLI の対話入力欄。画面を終了"
-        },
-        {
           "type": "code",
+          "label": "Codex CLI の対話入力欄。画面を終了",
           "language": "text",
           "code": "/quit\n"
         },
         {
-          "type": "paragraph",
-          "text": "システム端末に戻った後。セッション選択画面を開く"
-        },
-        {
           "type": "code",
+          "label": "システム端末に戻った後。セッション選択画面を開く",
           "language": "text",
           "code": "codex resume\n"
         },
@@ -1623,38 +1607,42 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "モデル選択",
-              "url": "https://mokaair.com/ja/life/codex-model-selection"
+              "kind": "life",
+              "slug": "codex-model-selection"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "権限",
-              "url": "https://mokaair.com/ja/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "codex exec",
-              "url": "https://mokaair.com/ja/life/codex-exec-scripting"
+              "kind": "life",
+              "slug": "codex-exec-scripting"
             },
             {
               "type": "text",
               "text": "に各手順があります。/compact の前に正確な再現が必要なエラーと完了条件を残し、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "引き継ぎ",
-              "url": "https://mokaair.com/ja/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
@@ -1698,7 +1686,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "2026-09-14 に"
@@ -1713,18 +1701,20 @@
               "text": "とローカル --help で確認しました。Windows で実行したのはバージョン、主命令ヘルプ、resume ヘルプです。対話命令、モデル選択、macOS／Linux は文書確認で、すべてを実測したわけではありません。次は "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Skills",
-              "url": "https://mokaair.com/ja/life/codex-skills"
+              "kind": "life",
+              "slug": "codex-skills"
             },
             {
               "type": "text",
               "text": "と"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "テスト・レビュー",
-              "url": "https://mokaair.com/ja/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -1733,9 +1723,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 学習目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1780,9 +1776,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1805,11 +1807,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 설치",
-              "url": "https://mokaair.com/ko/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
@@ -1880,11 +1883,8 @@
           "text": "1단계: 버전과 도움말 확인"
         },
         {
-          "type": "paragraph",
-          "text": "Windows PowerShell, macOS Terminal 또는 Linux shell, Codex 대화 밖"
-        },
-        {
           "type": "code",
+          "label": "Windows PowerShell, macOS Terminal 또는 Linux shell, Codex 대화 밖",
           "language": "text",
           "code": "codex --version\ncodex --help\ncodex resume --help\n"
         },
@@ -1902,11 +1902,8 @@
           "text": "2단계: 세션 시작과 상태 확인"
         },
         {
-          "type": "paragraph",
-          "text": "같은 시스템 터미널, codex-practice 안"
-        },
-        {
           "type": "code",
+          "label": "같은 시스템 터미널, codex-practice 안",
           "language": "text",
           "code": "codex\n"
         },
@@ -1915,11 +1912,8 @@
           "text": "대화형 화면에서 /를 입력하고 목록에서 status를 찾아 /status를 실행합니다. 모델, 권한, 문맥 등 세션 설정이 나타나며 항목은 버전마다 다릅니다. 구매나 리셋 크레딧 사용 명령이 아닙니다."
         },
         {
-          "type": "paragraph",
-          "text": "Codex CLI 대화형 입력창, 상태 확인"
-        },
-        {
           "type": "code",
+          "label": "Codex CLI 대화형 입력창, 상태 확인",
           "language": "text",
           "code": "/status\n"
         },
@@ -1928,11 +1922,8 @@
           "text": "자연어로 작업 위치도 읽기 확인합니다. 다르면 세션을 나와 셸에서 올바른 폴더로 이동하고 다시 시작합니다. 모델 변경으로 작업 경로가 고쳐지지는 않습니다."
         },
         {
-          "type": "paragraph",
-          "text": "Codex CLI 대화, 실습 위치 확인"
-        },
-        {
           "type": "code",
+          "label": "Codex CLI 대화, 실습 위치 확인",
           "language": "text",
           "code": "Report the current working directory and list the five Small Steps source files.\nDo not edit anything. If this is not the practice folder, stop and explain.\n"
         },
@@ -1943,11 +1934,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "Plan 모드",
-              "url": "https://mokaair.com/ko/life/codex-plan-mode"
+              "kind": "life",
+              "slug": "codex-plan-mode"
             },
             {
               "type": "text",
@@ -1956,11 +1948,8 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "Codex CLI 대화형 입력창, 슬래시 명령과 요청"
-        },
-        {
           "type": "code",
+          "label": "Codex CLI 대화형 입력창, 슬래시 명령과 요청",
           "language": "text",
           "code": "/plan Plan a Clear completed button for this todo website. Do not implement it yet. Preserve active tasks and explain how to verify an empty list, mixed completion states, and reload behavior.\n"
         },
@@ -1978,20 +1967,14 @@
           "text": "작업 이름이나 세션 정보를 기록하고 대화창에서 /quit를 실행합니다. 시스템 터미널로 돌아와 codex resume를 실행하고 선택기에서 시간, 내용, 경로를 확인합니다. 입문자는 마지막 세션이 목표라고 가정하는 것보다 직접 선택하는 편이 검증하기 쉽습니다."
         },
         {
-          "type": "paragraph",
-          "text": "Codex CLI 대화형 입력창, 현재 UI 종료"
-        },
-        {
           "type": "code",
+          "label": "Codex CLI 대화형 입력창, 현재 UI 종료",
           "language": "text",
           "code": "/quit\n"
         },
         {
-          "type": "paragraph",
-          "text": "시스템 터미널로 돌아온 뒤, 세션 선택기 열기"
-        },
-        {
           "type": "code",
+          "label": "시스템 터미널로 돌아온 뒤, 세션 선택기 열기",
           "language": "text",
           "code": "codex resume\n"
         },
@@ -2056,38 +2039,42 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "모델 선택",
-              "url": "https://mokaair.com/ko/life/codex-model-selection"
+              "kind": "life",
+              "slug": "codex-model-selection"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "권한",
-              "url": "https://mokaair.com/ko/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "codex exec",
-              "url": "https://mokaair.com/ko/life/codex-exec-scripting"
+              "kind": "life",
+              "slug": "codex-exec-scripting"
             },
             {
               "type": "text",
               "text": "에서 각 흐름을 다룹니다. /compact 전에는 정확한 재현이 필요한 오류와 완료 조건을 보존하고 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "문맥 인계",
-              "url": "https://mokaair.com/ko/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
@@ -2131,7 +2118,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "2026-09-14에 "
@@ -2146,18 +2133,20 @@
               "text": "와 로컬 --help로 확인했습니다. Windows에서는 버전, 주 명령 도움말, resume 도움말을 실행했습니다. 대화형 명령, 모델 메뉴, macOS/Linux는 공식 문서 확인이며 모두 실측한 것은 아닙니다. 다음은 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Skills",
-              "url": "https://mokaair.com/ko/life/codex-skills"
+              "kind": "life",
+              "slug": "codex-skills"
             },
             {
               "type": "text",
               "text": "와 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "테스트 및 리뷰",
-              "url": "https://mokaair.com/ko/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -2166,9 +2155,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

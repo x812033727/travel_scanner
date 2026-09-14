@@ -1,3 +1,5 @@
+import hashlib
+import hmac
 from functools import lru_cache
 from typing import Literal
 from urllib.parse import urlparse
@@ -89,7 +91,9 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file="../../.env", extra="ignore")
 
     app_env: str = "development"
-    app_secret_key: str = "development-secret-change-me-please-32"
+    # A placeholder, and the one value production refuses by name:
+    # `validate_deployment_security` rejects it and anything under 32 characters.
+    app_secret_key: str = "development-secret-change-me-please-32"  # noqa: S105
     settings_encryption_key: str | None = None
     admin_emails: str = ""
     community_enabled: bool = False
@@ -364,7 +368,7 @@ class Settings(BaseSettings):
     airline_crawler_user_agent: str = (
         "TravelScannerBot/0.1 (+https://github.com/x812033727/travel_scanner)"
     )
-    airline_crawler_agent_token: str = "TravelScannerBot"
+    airline_crawler_agent_token: str = "TravelScannerBot"  # noqa: S105 -- a User-Agent string
     airline_crawler_timeout_seconds: float = Field(default=10.0, gt=0, le=30)
     airline_crawler_cache_ttl_seconds: int = Field(default=1800, ge=60, le=86_400)
     airline_crawler_min_interval_seconds: int = Field(default=5, ge=1, le=60)
@@ -481,6 +485,33 @@ class Settings(BaseSettings):
     @property
     def cors_origins(self) -> list[str]:
         return [origin.strip() for origin in self.api_cors_origins.split(",") if origin.strip()]
+
+    @property
+    def analytics_hash_key(self) -> bytes:
+        """The key that pseudonymises analytics visitors, derived so it is not the signing key.
+
+        Analytics used ``app_secret_key`` directly, which quietly coupled two things that
+        need to move at different speeds. ``app_secret_key`` signs every access token and
+        every admin step-up token, so it is the secret you most want to be able to rotate on
+        an hour's notice — and doing that also re-keyed every ``visitor_day_hash`` and
+        ``session_hash``, so returning visitors read as new and sessions split at the
+        boundary, with nothing in the dashboard saying why. Paying for an emergency rotation
+        in silently corrupted analytics is how a rotation gets postponed.
+
+        Derived from ``settings_encryption_key``, which in production is required, at least
+        32 characters, and different from ``app_secret_key`` (``validate_deployment_security``).
+        Outside production that setting is optional, so the signing key is the fallback:
+        development has one secret and no continuity to protect.
+
+        One HMAC is the whole derivation, and that is enough here rather than a shortcut.
+        HKDF's extract step exists to condense a non-uniform input and its expand step to
+        produce more than one hash length of output; the input is already a high-entropy
+        random secret and the output is a single 256-bit MAC key, so neither step applies.
+        The label pins the purpose: the same secret used for anything else cannot land on
+        this key by accident, and ``:v1`` is where a deliberate re-key would announce itself.
+        """
+        secret = self.settings_encryption_key or self.app_secret_key
+        return hmac.new(secret.encode(), b"mokaair:analytics-hash-key:v1", hashlib.sha256).digest()
 
     @property
     def admin_email_set(self) -> set[str]:
@@ -622,7 +653,7 @@ class Settings(BaseSettings):
                 errors.append("API_CORS_ORIGINS must contain only explicit HTTPS origins")
                 break
         database = urlparse(self.database_url)
-        if not database.password or database.password == "travel":
+        if not database.password or database.password == "travel":  # noqa: S105 -- refuses it
             errors.append("DATABASE_URL must use a non-default password")
         redis = urlparse(self.redis_url)
         if not redis.password:

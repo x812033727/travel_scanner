@@ -1,0 +1,273 @@
+{
+  "slug": "claude-code-practice-project-setup",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 105,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜準備第一個練習專案",
+      "description": "取得待辦清單材料，認識檔案及啟動方法。本系列共用一個小型待辦清單網站，讓你在不同功能教學裡看到熟悉的檔案與行為。它使用 HTML、CSS、JavaScript，不需要資料庫、API 金鑰或另外安裝 npm 套件。起始版已能新增、勾選與刪除待辦；後面的練習會加入篩選、儲存和測試，讓你逐步理解 Claude Code 如何協助改動專案。",
+      "hero": {
+        "src": "/guides/claude-code-practice-project-setup/hero.jpg",
+        "alt": "準備第一個練習專案：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "本系列共用一個小型待辦清單網站，讓你在不同功能教學裡看到熟悉的檔案與行為。它使用 HTML、CSS、JavaScript，不需要資料庫、API 金鑰或另外安裝 npm 套件。起始版已能新增、勾選與刪除待辦；後面的練習會加入篩選、儲存和測試，讓你逐步理解 Claude Code 如何協助改動專案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇的成果是把網站跑起來、完成一次測試，並保留一份能重新開始的材料。需要 Node.js 22 或以上，以及能開啟本機網頁的瀏覽器。Node.js 是這個練習伺服器與測試所需的工具，不代表所有 Claude Code 安裝方式都要求它；兩者的需求要分開看。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "取得正確材料"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-practice-project-setup/diagram-1.svg",
+          "alt": "取得正確材料 → 啟動網站與測試 → 認識檔案分工",
+          "width": 1600,
+          "height": 900,
+          "caption": "取得正確材料 → 啟動網站與測試 → 認識檔案分工",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先下載"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/starter.zip",
+              "text": "起始版 ZIP"
+            },
+            {
+              "type": "text",
+              "text": "，完整解壓縮後進入 starter 資料夾。Windows 請使用「全部解壓縮」，不要直接在壓縮檔視窗內編輯。你應該看得到 index.html、app.js、model.js、style.css、package.json、server.mjs、README.md 和 tests 資料夾，確認後再繼續。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "另外提供"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/complete.zip",
+              "text": "參考完成版"
+            },
+            {
+              "type": "text",
+              "text": "，以及第 34 篇使用的"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/bug-toggle.zip",
+              "text": "勾選錯誤練習版"
+            },
+            {
+              "type": "text",
+              "text": "。錯誤版刻意讓勾選影響不正確的項目，第一次測試預期失敗；不要誤以為下載壞掉。一般入門請使用 starter，直到除錯篇才換成錯誤版。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "材料",
+            "用途",
+            "首次測試預期"
+          ],
+          "rows": [
+            [
+              "starter",
+              "從基礎功能開始修改",
+              "通過"
+            ],
+            [
+              "bug-toggle",
+              "練習重現與修正勾選錯誤",
+              "指定勾選測試失敗"
+            ],
+            [
+              "complete",
+              "對照篩選與儲存的參考成果",
+              "通過"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "建議保留原 ZIP，再複製一份資料夾命名為自己的練習版本。之後某篇操作做到一半不想繼續，可以回到起始材料重新開始，而不用猜自己改過哪些設定。這些材料不包含任何個人資料，實作時也不需要把你的工作專案搬進來。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "啟動網站與測試"
+        },
+        {
+          "type": "paragraph",
+          "text": "開啟終端機並切到包含 package.json 的資料夾，先檢查 Node.js 版本，再執行測試。這個專案的測試使用 Node 內建功能，所以沒有安裝相依套件的步驟。若系統說找不到 node，先完成 Node.js 安裝並重開終端機；反覆執行 npm install 不會解決系統還找不到 node 的問題。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "專案資料夾的終端機：檢查環境與測試",
+          "code": "node --version\nnpm test\n"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "同一資料夾的終端機：啟動練習網站",
+          "code": "npm start\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "伺服器會印出本機網址，預設是 "
+            },
+            {
+              "type": "code",
+              "text": "http://127.0.0.1:4173"
+            },
+            {
+              "type": "text",
+              "text": "。開啟它後，原終端機會繼續被伺服器占用，這是正常狀態。要同時使用 Claude Code，另外開一個終端機、切到相同資料夾再啟動，或在桌面版 Code 選擇這個資料夾。停止伺服器時回到原終端機按 Ctrl+C。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "認識檔案分工"
+        },
+        {
+          "type": "paragraph",
+          "text": "index.html 定義頁面元素，style.css 控制排版與顏色，app.js 處理瀏覽器事件和畫面更新，model.js 保存不依賴畫面的資料操作。這樣分開後，資料操作可以直接用 Node 測試，不必每次都開瀏覽器。測試檔會確認新增、去除空白、依識別碼勾選與刪除等行為。"
+        },
+        {
+          "type": "paragraph",
+          "text": "server.mjs 只提供練習用的本機檔案服務，監聽 127.0.0.1。它不是正式上線架構，也不負責帳號或雲端同步。起始版重新整理後會清空待辦，這是故意保持簡單的設計；完成版才加入本機儲存。知道起始版的預期行為，才不會把尚未實作的功能誤判成 Bug。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "做一次基準檢查"
+        },
+        {
+          "type": "paragraph",
+          "text": "在開始請 Claude 修改之前，先手動測一次原有功能。基準的用處是讓你之後能區分「原本就如此」與「這次改壞了」。不需要寫很長的報告，列出測試命令、結果和幾個畫面行為即可。若你對任何一項結果有疑問，先釐清再繼續增加新功能。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "新增「買早餐」與「閱讀教學」，確認各出現一次。",
+            "勾選第一筆，確認第二筆不受影響。",
+            "刪除第二筆，確認第一筆還在。",
+            "嘗試輸入只有空白的內容，確認不會新增空白待辦。",
+            "重新整理，確認起始版回到空清單。",
+            "再跑 npm test，把通過結果記在練習筆記。"
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "若瀏覽器顯示的功能與材料說明不同，先確認網址與終端機路徑。電腦可能還開著另一個同類網站，看到畫面不代表你正在檢查剛才修改的那一份。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保留一份未修改的下載材料作為比較基準。若練習中途卡住，可以解壓到另一個新目錄重新開始，並保留原本的錯誤現場供分析。不要直接覆蓋正在工作的資料夾，否則可能遺失最有用的重現證據。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把專案交給 Claude"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第一個請求先讓它讀取 README 和檔案結構，不要求大改。你可以請它指出新增功能的切入點，確認它理解 model.js 與 app.js 的分工。這樣接到"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-implement-feature",
+              "text": "新增功能教學"
+            },
+            {
+              "type": "text",
+              "text": "時，你已經知道為什麼要同時檢查資料操作和瀏覽器行為。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框",
+          "code": "請先讀 README.md、package.json、app.js、model.js 與 tests。\n整理這份起始版已經具備的功能，以及目前不保存資料的行為。\n執行現有測試，回報結果。這一步不要修改程式。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成判準是測試通過、網站能在本機開啟，而且你能指出哪個終端機正在跑伺服器。若連接埠已被占用，先找出自己之前啟動的練習伺服器並停止，或用 PORT 環境變數換一個未使用連接埠；不要為了清掉錯誤而結束不認識的程式。需要回到乾淨狀態時，重新解壓縮原材料即可。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Quickstart",
+          "url": "https://code.claude.com/docs/en/quickstart",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Common workflows",
+          "url": "https://code.claude.com/docs/en/common-workflows",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

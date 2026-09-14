@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">越用越懂你的專案 / A project that learns how you work</title>
+  <desc id="desc">插圖：米色底上有一個打開的藍色資料夾，資料夾的標籤在左上角。資料夾裡疊著三張白色文件，一張比一張略微傾斜，文件上畫著灰色的文字線條。資料夾前面貼著一張橘色的便條紙，便條上有兩條淺色線條與一個深紅色的圖釘。資料夾右上方浮著一個深青色的對話泡泡，泡泡裡有三個白點，泡泡的尾巴指向資料夾，代表在專案裡開對話。畫面下方只有一行字：越用越懂你的專案。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- soft background shapes -->
+  <circle cx="230" cy="230" r="150" fill="#E6F0F7"/>
+  <circle cx="1400" cy="700" r="120" fill="#E3F0EF"/>
+  <circle cx="1470" cy="260" r="60" fill="#E3F0EF"/>
+
+  <!-- ground shadow -->
+  <ellipse cx="800" cy="740" rx="520" ry="30" fill="#E3DDD2"/>
+
+  <!-- folder back with tab -->
+  <rect x="420" y="240" width="280" height="90" rx="26" fill="#2F6F9F"/>
+  <rect x="420" y="290" width="760" height="420" rx="36" fill="#2F6F9F"/>
+
+  <!-- stacked documents inside the folder -->
+  <g transform="rotate(-7 700 420)">
+    <rect x="560" y="210" width="300" height="400" rx="16" fill="#FFFFFF" stroke="#102A2B" stroke-width="7"/>
+    <rect x="596" y="256" width="200" height="14" rx="7" fill="#5C6B6B"/>
+    <rect x="596" y="300" width="230" height="14" rx="7" fill="#5C6B6B"/>
+    <rect x="596" y="344" width="160" height="14" rx="7" fill="#5C6B6B"/>
+  </g>
+  <g transform="rotate(-2 780 400)">
+    <rect x="640" y="190" width="300" height="400" rx="16" fill="#FFFFFF" stroke="#102A2B" stroke-width="7"/>
+    <rect x="676" y="236" width="220" height="14" rx="7" fill="#5C6B6B"/>
+    <rect x="676" y="280" width="170" height="14" rx="7" fill="#5C6B6B"/>
+    <rect x="676" y="324" width="230" height="14" rx="7" fill="#5C6B6B"/>
+    <rect x="676" y="368" width="140" height="14" rx="7" fill="#5C6B6B"/>
+  </g>
+  <g transform="rotate(4 860 400)">
+    <rect x="720" y="180" width="300" height="400" rx="16" fill="#FFFFFF" stroke="#102A2B" stroke-width="7"/>
+    <rect x="756" y="226" width="200" height="14" rx="7" fill="#2F6F9F"/>
+    <rect x="756" y="270" width="230" height="14" rx="7" fill="#5C6B6B"/>
+    <rect x="756" y="314" width="180" height="14" rx="7" fill="#5C6B6B"/>
+    <rect x="756" y="358" width="220" height="14" rx="7" fill="#5C6B6B"/>
+    <rect x="756" y="402" width="150" height="14" rx="7" fill="#5C6B6B"/>
+  </g>
+
+  <!-- folder front -->
+  <path d="M 400 470 H 1200 A 36 36 0 0 1 1236 506 L 1196 690 A 36 36 0 0 1 1160 720 H 440 A 36 36 0 0 1 404 690 L 364 506 A 36 36 0 0 1 400 470 Z" fill="#7FB0D9"/>
+  <path d="M 400 470 H 1200 A 36 36 0 0 1 1236 506 L 1196 690 A 36 36 0 0 1 1160 720 H 440 A 36 36 0 0 1 404 690 L 364 506 A 36 36 0 0 1 400 470 Z" fill="none" stroke="#2F6F9F" stroke-width="10" stroke-linejoin="round"/>
+
+  <!-- sticky note pinned on the front -->
+  <g transform="rotate(6 1040 590)">
+    <rect x="940" y="500" width="200" height="190" rx="12" fill="#D97A2B"/>
+    <rect x="966" y="560" width="150" height="14" rx="7" fill="#F7F1E8" opacity="0.9"/>
+    <rect x="966" y="600" width="100" height="14" rx="7" fill="#F7F1E8" opacity="0.9"/>
+    <circle cx="1040" cy="522" r="14" fill="#B8442D"/>
+  </g>
+
+  <!-- speech bubble above the folder -->
+  <path d="M 1120 80 Q 1120 60 1140 60 L 1500 60 Q 1520 60 1520 80 L 1520 200 Q 1520 220 1500 220 L 1260 220 L 1196 266 L 1216 220 L 1140 220 Q 1120 220 1120 200 Z" fill="#0D6B68" stroke="#102A2B" stroke-width="7" stroke-linejoin="round"/>
+  <circle cx="1250" cy="140" r="18" fill="#FFFFFF"/>
+  <circle cx="1320" cy="140" r="18" fill="#FFFFFF"/>
+  <circle cx="1390" cy="140" r="18" fill="#FFFFFF"/>
+
+  <!-- small accents -->
+  <circle cx="300" cy="600" r="18" fill="#D97A2B"/>
+  <circle cx="240" cy="690" r="12" fill="#0D6B68"/>
+  <circle cx="1330" cy="330" r="12" fill="#D97A2B"/>
+
+  <!-- single line of text -->
+  <text x="800" y="836" font-size="52" font-weight="700" fill="#102A2B" text-anchor="middle">越用越懂你的專案</text>
+</svg>

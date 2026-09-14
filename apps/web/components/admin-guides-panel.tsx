@@ -6,6 +6,9 @@ import { AdminReadOnlyNotice, useAdminActionGuard } from "@/components/admin-act
 import { AdminGuidesList, GuideVisibilityDialog, updateAdminQuery, visibilityError, type VisibilityAction } from "@/components/admin-guides-list";
 import { Button, Dialog } from "@/components/community/ui";
 import { ContentBlocks, type ContentBlockLabels } from "@/components/content-blocks";
+import { GuideRichEditor } from "@/components/guide-rich-editor";
+import { seriesCopy } from "@/lib/guide-series-copy";
+import { isArticleReference, type ArticleReference } from "@/lib/guide-series";
 import { useAdminQueryValue } from "@/lib/admin-workspace-navigation";
 import { api, ApiError } from "@/lib/api";
 import { calloutTones, type ImageBlock, type ImageCredit, type TableBlock } from "@/lib/content-blocks";
@@ -16,7 +19,6 @@ import {
 } from "@/lib/guides";
 import { isUuid, type ArticleDetail, type ArticleSummary } from "@/lib/guides-admin";
 import { sitePageLocales, type SitePageLocale } from "@/lib/site-pages";
-import { learningCopy, editorBlockCopy } from "@/lib/codex-learning/copy";
 
 const control = "min-h-11 w-full rounded-xl border border-[var(--control-border,var(--line))] bg-[var(--surface)] px-3 py-2 text-[var(--ink)]";
 const languages: Record<SitePageLocale, string> = { "zh-TW": "繁體中文", "zh-CN": "简体中文", en: "English", ja: "日本語", ko: "한국어" };
@@ -33,8 +35,8 @@ type BlockType = typeof blockTypes[number];
 /** `partner` is the program a new partner link starts on: the first one the API lists. */
 function newBlock(type: BlockType, partner = ""): GuideBlock {
   switch (type) {
-    case "code": return { type, language: "text", code: "" };
-    case "rich_paragraph": return { type, spans: [{ type: "text", text: "" }] };
+    case "rich_paragraph": return { type, inlines: [{ type: "text", text: "" }] };
+    case "code": return { type, label: "", language: "text", code: "" };
     case "heading": return { type, level: 2, text: "" };
     case "list": return { type, items: [""], ordered: false };
     case "link": return { type, text: "", url: "" };
@@ -140,11 +142,27 @@ export function AdminGuidesPanel() {
   const kindLocked = Boolean(detail?.locales.some((entry) => entry.published_version !== null));
   const row = detail?.locales.find((entry) => entry.locale === locale) ?? null;
   const blockLabels: ContentBlockLabels = {
-    copy: learningCopy(locale).copy, copied: learningCopy(locale).copied, copyFailed: learningCopy(locale).copyFailed,
     imageCredit: t("imageCredit"), tip: t("toneTip"), warning: t("toneWarning"), info: t("toneInfo"),
+    code: seriesCopy(interfaceLocale),
   };
-  const extraBlockLabels = editorBlockCopy(locale);
-  const blockName = (type: GuideBlock["type"]) => type === "code" || type === "rich_paragraph" ? extraBlockLabels[type] : t(`blocks.${type}`);
+  const extraCopy = seriesCopy(interfaceLocale);
+  const blockName = (type: GuideBlock["type"]) => type === "code" || type === "rich_paragraph" ? extraCopy[type] : t(`blocks.${type}`);
+  const [previewLinks, setPreviewLinks] = useState<ArticleReference[]>([]);
+  const targets = JSON.stringify(draft?.blocks.flatMap(block => block.type === "rich_paragraph"
+    ? block.inlines.flatMap(node => node.type === "article" ? [{ kind: node.kind, slug: node.slug }] : []) : []) ?? []);
+  useEffect(() => {
+    let active = true;
+    const refs = JSON.parse(targets) as { kind: string; slug: string }[];
+    const unique = [...new Map(refs.map(ref => [`${ref.kind}:${ref.slug}`, ref])).values()];
+    void Promise.all(unique.map(async ref => {
+      try {
+        const value = await api<{ status: string; document?: { title?: string } }>(`/guides/${ref.kind}/${encodeURIComponent(ref.slug)}?locale=${encodeURIComponent(locale)}`);
+        const target = { ...ref, title: value.document?.title };
+        return value.status === "published" && isArticleReference(target) ? target : null;
+      } catch { return null; }
+    })).then(links => { if (active) setPreviewLinks(links.filter(isArticleReference)); });
+    return () => { active = false; };
+  }, [targets, locale]);
 
   useEffect(() => {
     if (!selected) return;
@@ -330,21 +348,9 @@ export function AdminGuidesPanel() {
 
   function blockFields(block: GuideBlock, index: number) {
     switch (block.type) {
-      case "code": return <>
-        <label className="grid gap-2">{extraBlockLabels.language}<input className={control} value={block.language} onChange={(event) => updateBlock(index, { ...block, language: event.target.value })} /></label>
-        <label className="grid gap-2">{extraBlockLabels.code}<textarea className={`${control} font-mono`} rows={10} spellCheck={false} value={block.code} onChange={(event) => updateBlock(index, { ...block, code: event.target.value })} /></label>
-      </>;
-      case "rich_paragraph": return <>
-        {block.spans.map((span, spanIndex) => <div key={spanIndex} className="space-y-2 rounded-lg border border-[var(--line)] p-3">
-          <label className="grid gap-2">{t("text")}<textarea className={control} value={span.text} onChange={(event) => updateBlock(index, { ...block, spans: block.spans.map((value, i) => i === spanIndex ? { ...value, text: event.target.value } : value) })} /></label>
-          {span.type === "link" && <label className="grid gap-2">{t("url")}<input className={control} value={span.url} onChange={(event) => updateBlock(index, { ...block, spans: block.spans.map((value, i) => i === spanIndex ? { ...span, url: event.target.value } : value) })} /></label>}
-          <button type="button" className="min-h-11 underline" disabled={block.spans.length === 1} onClick={() => updateBlock(index, { ...block, spans: block.spans.filter((_, i) => i !== spanIndex) })}>−</button>
-        </div>)}
-        <div className="flex gap-3">
-          <button type="button" className="min-h-11 underline" disabled={block.spans.length >= 40} onClick={() => updateBlock(index, { ...block, spans: [...block.spans, { type: "text", text: "" }] })}>{extraBlockLabels.addText}</button>
-          <button type="button" className="min-h-11 underline" disabled={block.spans.length >= 40} onClick={() => updateBlock(index, { ...block, spans: [...block.spans, { type: "link", text: "", url: "https://" }] })}>{extraBlockLabels.addLink}</button>
-        </div>
-      </>;
+      case "rich_paragraph":
+      case "code":
+        return <GuideRichEditor block={block} locale={interfaceLocale} onChange={value => updateBlock(index, value)} />;
       case "heading":
         return <>
           <label className="grid gap-2">{t("level")}
@@ -654,7 +660,7 @@ export function AdminGuidesPanel() {
         {/* eslint-disable-next-line @next/next/no-img-element -- the reader's own plain <img> */}
         {preview.hero?.src ? <img src={preview.hero.src} alt={preview.hero.alt} width={preview.hero.width} height={preview.hero.height} className="h-auto w-full rounded-2xl" /> : null}
         {splitGuideBlocks(preview.blocks).map((segment, index) => <Fragment key={index}>
-          {segment.blocks.length ? <ContentBlocks blocks={segment.blocks} labels={blockLabels} headingStart={segment.headingStart} /> : null}
+          {segment.blocks.length ? <ContentBlocks blocks={segment.blocks} labels={blockLabels} headingStart={segment.headingStart} articleLinks={previewLinks} locale={locale} /> : null}
           {segment.offer ? <p role="note" className="rounded-xl border border-dashed border-[var(--line)] p-3 text-sm">
             {t("offerPreview")} · {ts(moduleLabelKeys[segment.offer.module])}{segment.offer.destination_id ? ` · ${segment.offer.destination_id}` : ""}
           </p> : null}

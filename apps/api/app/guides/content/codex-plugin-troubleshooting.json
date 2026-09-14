@@ -1,0 +1,1444 @@
+{
+  "slug": "codex-plugin-troubleshooting",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 141,
+  "locales": {
+    "zh-TW": {
+      "title": "Plugin 連線與工具不可用排錯",
+      "description": "區分已安裝、已連帳號、已授權與工具可用，依實際錯誤重連或移除需要處理的項目。",
+      "hero": {
+        "src": "/guides/codex-plugin-troubleshooting/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原創流程示意圖，非產品介面截圖。"
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標與準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "把插件問題縮小到可以驗證的一層，修正後用相同文件重新測試。閱讀約 15 分鐘、操作約 20 分鐘。先完成 Plugins 安裝與連線 的虛構文件；只檢查自己建立的練習連線，不改正式工作區。沒有可用插件也能照本篇完成環境與錯誤紀錄，但不能勾選讀取成功。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 1：先保留失敗現場"
+        },
+        {
+          "type": "paragraph",
+          "text": "先記下日期、作業系統、入口、版本、插件完整名稱、來源分類、登入方式，以及哪一步失敗。Windows、macOS、Linux 都用相同紀錄格式；CLI 版本在終端機查，桌面版在程式資訊或更新畫面查。不要用桌面版可用推定同台電腦的 CLI 也已安裝；遠端主機與本機也各自記錄。版本欄填實際結果，不能直接抄本篇查證日。"
+        },
+        {
+          "type": "code",
+          "label": "終端機：檢查 CLI 版本",
+          "language": "sh",
+          "code": "codex --version\n"
+        },
+        {
+          "type": "code",
+          "label": "plugin-incident.md",
+          "language": "markdown",
+          "code": "# Plugin incident\nDate and time zone:\nOS / surface / version:\nLocal or remote host:\nPlugin name and source:\nSign-in method (no secrets):\nFailing step:\nExact error (redacted):\nPractice document revision:\nChange attempted:\nRetest result:\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存可公開的錯誤文字，將 email、文件網址中的私人識別碼、token 與 cookie 遮蔽。完整驗證網址可能含一次性登入碼，不要貼進教材或求助紀錄。保留錯誤類型、發生時間和重現步驟通常已足夠；若需要服務端紀錄，依服務自己的支援流程提供。一次只改一個條件，否則成功後無法知道是換帳號、重開任務還是修改權限生效。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 2：用症狀選擇檢查層"
+        },
+        {
+          "type": "table",
+          "header": [
+            "現象",
+            "先查哪裡",
+            "可觀察的結果"
+          ],
+          "rows": [
+            [
+              "找不到 Plugins",
+              "入口是否支援",
+              "支援的目錄可開啟"
+            ],
+            [
+              "目錄有但不能安裝",
+              "來源與工作區政策",
+              "詳情或管理限制明確"
+            ],
+            [
+              "Installed 但工具未出現",
+              "啟用狀態與新任務",
+              "新任務能選到能力"
+            ],
+            [
+              "工具要求登入",
+              "外部帳號連線",
+              "正確帳號完成認證"
+            ],
+            [
+              "只有某份文件失敗",
+              "文件權限或網址",
+              "同帳號能開原始文件"
+            ],
+            [
+              "回答仍是舊內容",
+              "工具呼叫與文件版本",
+              "新讀取回傳新的標記"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "這是排查順序，不是錯誤碼的保證對照。401 常與認證相關、403 常與拒絕存取相關，但實際含義仍看服務回應；文件不存在、無權限或分享設定改變也可能被服務隱藏成相似訊息。遇到 429 或暫時不可用，記錄回應中的等待資訊，稍後以同一份小文件重試，避免持續重送大量請求。不要為了讓讀取通過而把整個雲端硬碟改成公開。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 3：確認入口、安裝與啟用"
+        },
+        {
+          "type": "paragraph",
+          "text": "桌面版開 Plugins，查看 Installed 與插件詳情；CLI 先啟動 codex，再輸入 /plugins，確認目前 marketplace 和安裝項目，已安裝插件可用 Space 切換啟用狀態。安裝或重新啟用後建立新任務再測，舊任務可能保留先前能力清單。請先保存舊任務結果，不必刪除它，也不要清空整個 Codex 設定資料夾。"
+        },
+        {
+          "type": "code",
+          "label": "Codex CLI 互動斜線指令",
+          "language": "text",
+          "code": "/plugins\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "IDE 擴充套件不支援 Plugins，不能把看不到選單當成安裝壞掉；請到桌面版或 CLI 測試。iOS、Android 的 Chat／Work 只能用該入口可提供的插件，Desktop only 不可在手機執行。Linux 桌面預覽與個別插件也可能有額外條件。將這種結果記成「目前入口不支援」，不要反覆重裝。平台差異可回到"
+            },
+            {
+              "type": "article",
+              "text": "跨裝置操作",
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 4：分開驗證帳號與文件存取"
+        },
+        {
+          "type": "paragraph",
+          "text": "用與插件相同的外部帳號，在服務自己的網站打開練習文件，核對文件標題與 Revision。能在另一個已登入的瀏覽器帳號看到文件，不代表插件使用的帳號也有權限。若帳號不符，從插件或連線管理提供的重新連線流程修正，再開新任務讀取同一網址。若只有這份文件無權限，先向文件擁有人確認分享對象，自己的練習文件只授權必要帳號即可。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "ChatGPT 訂閱登入與 OpenAI API key 登入不同；某些需要 OAuth 的插件在 API key 模式不可用。看到這項限制時查插件詳情與"
+            },
+            {
+              "type": "article",
+              "text": "帳號篇",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": "，不要把服務的密碼放進 config.toml，也不要切換全面放行來處理 OAuth 問題。主機沙盒控制本機工作範圍，外部服務的文件權限由該服務管理，放寬其中一層無法保證另一層通過。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 5：以實際工具結果重測"
+        },
+        {
+          "type": "code",
+          "label": "新任務提示詞：先替換練習網址",
+          "language": "text",
+          "code": "Use the selected plugin to read my practice document at <PRACTICE_DOCUMENT_URL>.\nReturn its title, source link, Revision, Document marker and task counts.\nUse a fresh tool result. If access fails, report the tool error and stop.\nDo not edit, share, move or delete anything. Do not infer missing contents.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "先把尖括號預留值換成你那份練習文件的網址，再在支援的選擇器指定插件或能力。檢查任務的工具活動，而不只看回覆說「我已讀取」。結果應包含文件標題、來源、當前 Revision、Document marker 和各項數量，與服務原始文件逐項比對。若沒有工具活動，先確認能力是否已帶入；若工具回傳拒絕，保留原錯誤，不能讓模型憑舊對話補答案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著在服務原站手動把教材 Revision 改成新的值，並同步修改一個可核對的數量；不要把新數量告訴 Codex。再以同一提示詞開新任務，確認結果是否更新。若仍回傳舊內容，檢查網址是否指向副本、服務保存是否完成、工具是否提供重新讀取方式，並記錄延遲。不能僅因第二次答案正確，就聲稱所有文件與所有入口都已修復。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見問題與恢復方式"
+        },
+        {
+          "type": "paragraph",
+          "text": "找不到移除按鈕時，先看是否為工作區安裝或預設插件；這類項目可能由管理員控制，記錄限制即可。卸載插件只移除該環境的套件，獨立連接的 MCP 可能仍存在。若要結束練習，分別確認 Installed 狀態與連線管理中的外部服務，再視需要撤銷自己練習帳號的授權。不要刪除別人依賴的共用連線，或把解除一次連線當成所有裝置都已停用。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "恢復時回到事故紀錄，還原自己變更的單一條件：重新啟用暫停的插件、接回原本應使用的練習帳號，或恢復教材權限。若重連後新任務仍不能讀同一文件，整理「入口、插件來源、遮蔽後錯誤、已試一步、預期與實際」交給維護者；不要無限重裝。需要分析伺服器設定時接續 "
+            },
+            {
+              "type": "article",
+              "text": "MCP 排除問題",
+              "kind": "life",
+              "slug": "codex-mcp-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "，不要混用插件目錄與自建伺服器設定檔。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "驗收與下一步"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成標準是一份可重現的紀錄：原始失敗、定位的層、一次修改、同文件的新工具結果、原文件未被工具寫入，以及練習連線保留或撤銷的狀態。未能取得工具結果時，結論應寫「已定位入口限制」或「等待服務認證」，不填成功。本篇操作流程依官方文件查證，沒有宣稱在你的帳號安裝、OAuth 或實體手機上實測；本機文章呈現測試也不是插件連線證據。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "將這份紀錄與 "
+            },
+            {
+              "type": "article",
+              "text": "Skills 驗收",
+              "kind": "life",
+              "slug": "codex-skill-testing"
+            },
+            {
+              "type": "text",
+              "text": " 分開保存：技能有被載入，不代表其背後服務已連線。常用報告欄位可收進"
+            },
+            {
+              "type": "article",
+              "text": "範本與速查表",
+              "kind": "life",
+              "slug": "codex-templates-cheatsheet"
+            },
+            {
+              "type": "text",
+              "text": "，下次只更新實際觀察值，保留不能重現的項目與日期。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-plugin-troubleshooting/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原創流程示意圖，非產品介面截圖。",
+          "caption": "原創流程示意圖，非產品介面截圖。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Plugins: installation, support and connections",
+          "url": "https://learn.chatgpt.com/docs/plugins",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Troubleshooting plugin connections",
+      "description": "Distinguish installation, account connection, authorization and callable tools before reconnecting or removing a plugin.",
+      "hero": {
+        "src": "/guides/codex-plugin-troubleshooting/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "Original workflow illustration, not a product screenshot."
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Goal and preparation"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Narrow a plugin failure to one testable layer and repeat the same document request after a repair. Allow 15 minutes to read and 20 to practice. Prepare the fictional document in Plugin setup. Inspect your practice connection without changing a production workspace. Without an available plugin, you can complete the environment and error record, but cannot mark retrieval as successful."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: Preserve the failure record"
+        },
+        {
+          "type": "paragraph",
+          "text": "Record the date, OS, surface, version, full plugin name, source, sign-in method and failing step. Use the same record on Windows, macOS and Linux. Check the CLI version in a terminal and the desktop version in app information or its update screen. Desktop availability does not establish installation in the CLI on the same computer; record local and remote hosts separately. Enter your actual version rather than copying this article's research date."
+        },
+        {
+          "type": "code",
+          "label": "Terminal: check CLI version",
+          "language": "sh",
+          "code": "codex --version\n"
+        },
+        {
+          "type": "code",
+          "label": "plugin-incident.md",
+          "language": "markdown",
+          "code": "# Plugin incident\nDate and time zone:\nOS / surface / version:\nLocal or remote host:\nPlugin name and source:\nSign-in method (no secrets):\nFailing step:\nExact error (redacted):\nPractice document revision:\nChange attempted:\nRetest result:\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep a shareable error message with email addresses, private document identifiers, tokens and cookies redacted. Authentication URLs may contain one-time codes and should not be copied into tutorials or support notes. Error type, time and reproduction steps are usually enough; use the provider's support process for server records. Change one condition at a time so a successful retest can be attributed to the account, new session or permission change."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: Choose a layer by symptom"
+        },
+        {
+          "type": "table",
+          "header": [
+            "Symptom",
+            "First check",
+            "Observable result"
+          ],
+          "rows": [
+            [
+              "No Plugins entry",
+              "Supported surface",
+              "Directory opens on a supported surface"
+            ],
+            [
+              "Listed but cannot install",
+              "Source and workspace policy",
+              "Details or management restriction identified"
+            ],
+            [
+              "Installed but no tools",
+              "Enabled state and new session",
+              "Capability selectable in a fresh task"
+            ],
+            [
+              "Tool requests sign-in",
+              "External account connection",
+              "Correct account authenticated"
+            ],
+            [
+              "Only one document fails",
+              "File access or URL",
+              "Same account opens original document"
+            ],
+            [
+              "Old content in answer",
+              "Tool call and document revision",
+              "Fresh retrieval returns new marker"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "This is a diagnostic order, not a guaranteed error-code mapping. A 401 often concerns authentication and a 403 often concerns denied access, but interpret the provider's response. Missing files, denied access and changed sharing may produce similar messages. For a 429 or temporary outage, record any retry guidance and later retry the same small document instead of repeatedly sending large requests. Do not make an entire drive public to make a read succeed."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: Check surface, installation and enablement"
+        },
+        {
+          "type": "paragraph",
+          "text": "On desktop, open Plugins and inspect Installed and the plugin details. In the CLI, start codex, enter /plugins and check the current marketplace and installed entry; Space toggles an installed plugin. Test a new task after installation or re-enabling because an existing task may retain its earlier capabilities. Preserve the old task's results without deleting it or clearing the entire Codex configuration folder."
+        },
+        {
+          "type": "code",
+          "label": "Interactive Codex CLI slash command",
+          "language": "text",
+          "code": "/plugins\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "The IDE extension does not support Plugins, so a missing menu is not proof of a broken installation; test desktop or CLI. Chat/Work on iOS and Android can use plugins available on that surface, and Desktop only plugins cannot run on mobile. Linux desktop preview and individual plugins may have additional requirements. Record an unsupported surface rather than repeatedly reinstalling. See "
+            },
+            {
+              "type": "article",
+              "text": "Cross-device workflow",
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 4: Separate account and document access"
+        },
+        {
+          "type": "paragraph",
+          "text": "Open the practice document on the provider's own site using the same external account as the plugin and check the title and Revision. Access in a browser logged into another account does not prove access for the plugin's account. Correct a mismatch through the provided reconnection flow, then request the same URL in a fresh task. If only that document is denied, check its sharing with the owner; grant only the necessary account access to your own practice file."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "ChatGPT subscription sign-in differs from OpenAI API key sign-in; some plugins requiring OAuth are unavailable with API key authentication. Check plugin details and "
+            },
+            {
+              "type": "article",
+              "text": "Accounts",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": ". Do not put a service password in config.toml or use unrestricted approvals to solve OAuth. Host sandboxing governs local work, while the external service governs document access; relaxing one layer does not guarantee access through the other."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 5: Retest with an actual tool result"
+        },
+        {
+          "type": "code",
+          "label": "New-task prompt: replace the practice URL",
+          "language": "text",
+          "code": "Use the selected plugin to read my practice document at <PRACTICE_DOCUMENT_URL>.\nReturn its title, source link, Revision, Document marker and task counts.\nUse a fresh tool result. If access fails, report the tool error and stop.\nDo not edit, share, move or delete anything. Do not infer missing contents.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Replace the angle-bracket placeholder with your practice document URL and select the plugin or capability using the supported picker. Inspect tool activity rather than only the sentence 'I read it.' Compare the returned title, source, current Revision, Document marker and counts with the provider's original. If no tool ran, check capability availability. If a tool returned a denial, preserve that error instead of allowing an answer reconstructed from earlier conversation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Next, manually change the document's Revision and one verifiable count on the provider site without telling Codex the new count. Run the same prompt in another fresh task. If the result is stale, check for a copied-document URL, unsaved edits and a supported refresh or reread option, then record the delay. A correct second answer establishes this case, not a repair for every document and surface."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Common failures and recovery"
+        },
+        {
+          "type": "paragraph",
+          "text": "If Uninstall is absent, check whether the plugin is workspace-installed or a default managed by an administrator and record the restriction. Uninstalling removes that environment's bundle; separately connected MCP integrations can remain. To close the exercise, check both Installed and external connection management, revoking your practice authorization if needed. Preserve shared connections and do not equate one disconnection with disabling every device."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Use the incident record to restore the single condition you changed: enable a paused plugin, reconnect the intended practice account or restore the document's access. If a fresh task still fails after reconnection, provide the maintainer with the surface, plugin source, redacted error, one attempted fix, expected and actual result. Avoid endless reinstalls. Continue with "
+            },
+            {
+              "type": "article",
+              "text": "MCP troubleshooting",
+              "kind": "life",
+              "slug": "codex-mcp-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": " for server configuration, keeping plugin-directory issues separate from custom-server files."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Acceptance and next step"
+        },
+        {
+          "type": "paragraph",
+          "text": "Completion means a reproducible record: original failure, identified layer, one change, a fresh tool result for the same document, no tool writes to the original, and the practice connection's retained or revoked state. Without a tool result, record a surface restriction or pending authentication rather than success. Product operations here are documented from official sources, not claimed as tested on your account, OAuth flow or physical phone; article-rendering tests do not prove a plugin connection."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Keep this record separate from "
+            },
+            {
+              "type": "article",
+              "text": "Skill acceptance",
+              "kind": "life",
+              "slug": "codex-skill-testing"
+            },
+            {
+              "type": "text",
+              "text": ": loading a skill does not establish connection to its backing service. Reuse the fields from "
+            },
+            {
+              "type": "article",
+              "text": "Templates and cheatsheets",
+              "kind": "life",
+              "slug": "codex-templates-cheatsheet"
+            },
+            {
+              "type": "text",
+              "text": ", updating observed values while retaining dates and unreproduced cases."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-plugin-troubleshooting/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "Original workflow illustration, not a product screenshot.",
+          "caption": "Original workflow illustration, not a product screenshot."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Plugins: installation, support and connections",
+          "url": "https://learn.chatgpt.com/docs/plugins",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Plugin の接続とツールの問題解決",
+      "description": "導入、アカウント接続、許可、ツール利用を区別し、原因に応じて再接続や削除を行います。",
+      "hero": {
+        "src": "/guides/codex-plugin-troubleshooting/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "独自の手順図です。製品画面の画像ではありません。"
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標と準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "プラグイン障害を検証可能な層に絞り、修正後に同じ文書要求を再実行します。読む時間15分、実習20分。導入と接続の架空文書を用意し、正式な作業領域ではなく自分の実習接続を確認します。利用できるプラグインがなければ環境とエラーの記録まで行い、読取り成功にはしません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順1：失敗時の状態を残す"
+        },
+        {
+          "type": "paragraph",
+          "text": "日付、OS、入口、版、正式プラグイン名、配布元、ログイン方式、失敗した手順を記録します。Windows、macOS、Linux で同じ形式を使い、CLI の版は端末、デスクトップの版はアプリ情報や更新画面で確認します。同じ PC でもデスクトップで使えることは CLI の導入証明になりません。遠隔ホストも別記し、調査日を版として転記しません。"
+        },
+        {
+          "type": "code",
+          "label": "端末：CLI の版を確認",
+          "language": "sh",
+          "code": "codex --version\n"
+        },
+        {
+          "type": "code",
+          "label": "plugin-incident.md",
+          "language": "markdown",
+          "code": "# Plugin incident\nDate and time zone:\nOS / surface / version:\nLocal or remote host:\nPlugin name and source:\nSign-in method (no secrets):\nFailing step:\nExact error (redacted):\nPractice document revision:\nChange attempted:\nRetest result:\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "公開可能なエラー文からメール、非公開文書 ID、token、cookie を伏せます。認証 URL には一時コードが含まれることがあり、教材や相談メモへ貼りません。種類、時刻、再現手順を残し、サーバー記録は提供元の窓口で扱います。一度に一条件だけ変えると、アカウント、新規会話、権限のどの変更が効いたか分かります。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順2：症状から確認する層を選ぶ"
+        },
+        {
+          "type": "table",
+          "header": [
+            "症状",
+            "最初の確認",
+            "観察できる結果"
+          ],
+          "rows": [
+            [
+              "Plugins がない",
+              "対応入口",
+              "対応入口で一覧が開く"
+            ],
+            [
+              "掲載済みだが導入不可",
+              "配布元と管理方針",
+              "詳細や制限を確認"
+            ],
+            [
+              "導入済みだがツールなし",
+              "有効状態と新規会話",
+              "新規タスクで能力を選べる"
+            ],
+            [
+              "ログイン要求",
+              "外部接続",
+              "正しいアカウントで認証"
+            ],
+            [
+              "一文書だけ失敗",
+              "文書権限や URL",
+              "同じアカウントで原本を開ける"
+            ],
+            [
+              "古い回答",
+              "ツール実行と版",
+              "新しい取得で新マーカーを確認"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "これは調査順序で、コードの意味を保証する表ではありません。401 は認証、403 は拒否に関係することが多くても、サービスの応答で判断します。不存在、権限不足、共有変更が似た表示になる場合もあります。429 や一時障害では再試行情報を記録し、後で同じ小文書を試します。大量再送やドライブ全体の公開は行いません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：入口・導入・有効化を確認"
+        },
+        {
+          "type": "paragraph",
+          "text": "デスクトップでは Plugins の Installed と詳細を確認します。CLI は codex 起動後 /plugins を入力し、marketplace と導入項目を確認、導入済み項目は Space で切り替えます。導入・再有効化後は以前の能力一覧が残る可能性を避け新規タスクで検証します。旧結果を保存し、会話削除や設定フォルダー全消去は不要です。"
+        },
+        {
+          "type": "code",
+          "label": "Codex CLI 内の対話指令",
+          "language": "text",
+          "code": "/plugins\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "IDE 拡張は Plugins 非対応なので、メニュー不在を破損と判断せずデスクトップか CLI で確認します。iOS、Android の Chat／Work はその入口で提供されるものに限られ、Desktop only は実行できません。Linux プレビューや個別要件も確認し、非対応と記録して再導入を繰り返しません。"
+            },
+            {
+              "type": "article",
+              "text": "端末間の作業",
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": "も参照できます。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順4：アカウントと文書アクセスを分ける"
+        },
+        {
+          "type": "paragraph",
+          "text": "プラグインと同じ外部アカウントでサービスの原本を開き、題名と Revision を確認します。別のブラウザーアカウントで読めても証明にはなりません。不一致は用意された再接続手順で修正し、新規タスクで同じ URL を要求します。一文書だけなら所有者に共有先を確認し、自分の教材は必要なアカウントだけ許可します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "ChatGPT のログインと OpenAI API key 方式は異なり、OAuth を要する一部は API key で利用できません。詳細と"
+            },
+            {
+              "type": "article",
+              "text": "アカウント",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": "を確認し、パスワードを config.toml に書いたり、OAuth のため全面許可へ変えたりしません。主機の沙盒と外部文書の権限は別なので、一方を緩めても他方の成功は保証されません。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順5：実際のツール結果で再検証"
+        },
+        {
+          "type": "code",
+          "label": "新規タスク用：実習 URL を置換",
+          "language": "text",
+          "code": "Use the selected plugin to read my practice document at <PRACTICE_DOCUMENT_URL>.\nReturn its title, source link, Revision, Document marker and task counts.\nUse a fresh tool result. If access fails, report the tool error and stop.\nDo not edit, share, move or delete anything. Do not infer missing contents.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "プレースホルダーを教材 URL に替え、対応選択欄で能力を指定します。「読んだ」という文だけでなくツール活動を確認し、題名、出典、現在の Revision、マーカー、件数を原本と照合します。実行がなければ能力の読み込みを調べ、拒否なら元エラーを残して過去会話から補完させません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "原サイトで Revision と確認可能な件数を手動変更し、新件数は Codex に教えません。同じ要求を別の新規タスクで実行します。古ければ複製 URL、未保存、再取得手段を確認し、遅延を記録します。二回目の正解はこのケースの証拠であり、全入口・全文書の修復とはしません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "よくある問題と復旧"
+        },
+        {
+          "type": "paragraph",
+          "text": "削除ボタンがなければ管理者配布や既定項目かを確認し、制限を記録します。アンインストールはその環境の束を除去しますが、別接続の MCP は残り得ます。終了時は導入状態と外部接続管理を別々に確認し、必要なら自分の実習認可だけ失効します。共有接続や全端末を一括処理したと判断しません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "記録を見て、自分が変えた一条件を戻します。一時停止の再有効化、正しい実習アカウントへの再接続、教材権限の復元です。それでも新規タスクが失敗するなら入口、配布元、伏せたエラー、試した修正、期待値と実際を担当者に渡します。再導入を繰り返さず、自作サーバー設定は "
+            },
+            {
+              "type": "article",
+              "text": "MCP の障害対応",
+              "kind": "life",
+              "slug": "codex-mcp-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "へ進みます。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "検証と次の一歩"
+        },
+        {
+          "type": "paragraph",
+          "text": "完了条件は元の失敗、特定層、一変更、同文書の新ツール結果、原本への書込みなし、実習接続の維持・失効を残すことです。結果がなければ入口制限や認証待ちと書き、成功にはしません。本手順は公式資料で確認したもので、利用者アカウント、OAuth、実機電話の実測を主張しません。記事表示テストも接続の証明ではありません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "スキル検証",
+              "kind": "life",
+              "slug": "codex-skill-testing"
+            },
+            {
+              "type": "text",
+              "text": "とは別に保存します。スキル読込みは外部接続の証明ではありません。"
+            },
+            {
+              "type": "article",
+              "text": "テンプレート",
+              "kind": "life",
+              "slug": "codex-templates-cheatsheet"
+            },
+            {
+              "type": "text",
+              "text": "に項目をまとめ、次回も観測値、日付、未再現項目を残します。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-plugin-troubleshooting/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "独自の手順図です。製品画面の画像ではありません。",
+          "caption": "独自の手順図です。製品画面の画像ではありません。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Plugins: installation, support and connections",
+          "url": "https://learn.chatgpt.com/docs/plugins",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Plugin 연결과 도구 문제 해결",
+      "description": "설치, 계정 연결, 승인, 도구 사용 가능 상태를 구분해 원인에 맞게 재연결하거나 제거합니다.",
+      "hero": {
+        "src": "/guides/codex-plugin-troubleshooting/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "목표와 준비"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "플러그인 오류를 검증 가능한 한 계층으로 좁힌 뒤 같은 문서를 다시 요청합니다. 읽기 15분, 실습 20분입니다. 설치와 연결의 가상 문서를 준비하고 운영 작업 공간 대신 자신의 연습 연결만 확인하세요. 사용 가능한 플러그인이 없어도 환경과 오류 기록은 만들 수 있지만 읽기 성공으로 표시할 수는 없습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 실패 상태 기록"
+        },
+        {
+          "type": "paragraph",
+          "text": "날짜, OS, 진입점, 버전, 플러그인 전체 이름, 출처, 로그인 방식과 실패한 단계를 기록합니다. Windows, macOS, Linux에 같은 형식을 사용하며 CLI 버전은 터미널, 데스크톱 버전은 앱 정보나 업데이트 화면에서 확인하세요. 같은 PC의 데스크톱에서 사용된다고 CLI에도 설치된 것은 아닙니다. 원격 호스트도 따로 적고 이 글의 확인 날짜를 버전으로 복사하지 마세요."
+        },
+        {
+          "type": "code",
+          "label": "터미널: CLI 버전 확인",
+          "language": "sh",
+          "code": "codex --version\n"
+        },
+        {
+          "type": "code",
+          "label": "plugin-incident.md",
+          "language": "markdown",
+          "code": "# Plugin incident\nDate and time zone:\nOS / surface / version:\nLocal or remote host:\nPlugin name and source:\nSign-in method (no secrets):\nFailing step:\nExact error (redacted):\nPractice document revision:\nChange attempted:\nRetest result:\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "공유할 오류에서 이메일, 비공개 문서 식별자, 토큰, 쿠키를 가립니다. 인증 URL에 일회용 코드가 있을 수 있으니 자료나 문의 기록에 붙여 넣지 마세요. 오류 종류, 시각, 재현 절차를 남기고 서버 기록은 제공자의 지원 절차로 다룹니다. 한 번에 한 조건만 바꿔야 계정, 새 대화, 권한 중 무엇이 해결했는지 알 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 증상으로 확인 계층 선택"
+        },
+        {
+          "type": "table",
+          "header": [
+            "증상",
+            "먼저 확인",
+            "관찰 결과"
+          ],
+          "rows": [
+            [
+              "Plugins 없음",
+              "지원 진입점",
+              "지원 환경에서 목록 열림"
+            ],
+            [
+              "목록에 있지만 설치 불가",
+              "출처와 작업 공간 정책",
+              "상세 정보 또는 관리 제한 확인"
+            ],
+            [
+              "설치됐지만 도구 없음",
+              "활성 상태와 새 대화",
+              "새 작업에서 기능 선택 가능"
+            ],
+            [
+              "로그인 요청",
+              "외부 계정 연결",
+              "올바른 계정 인증"
+            ],
+            [
+              "특정 문서만 실패",
+              "문서 권한 또는 URL",
+              "같은 계정에서 원본 열림"
+            ],
+            [
+              "오래된 답변",
+              "도구 실행과 문서 버전",
+              "새 읽기에서 새 표식 확인"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "이 표는 진단 순서이며 오류 코드의 의미를 보장하지 않습니다. 401은 흔히 인증, 403은 접근 거부와 관련되지만 제공자의 응답을 해석하세요. 파일 없음, 권한 부족, 공유 변경이 비슷하게 표시될 수 있습니다. 429나 일시 장애에서는 재시도 안내를 기록하고 나중에 같은 작은 문서를 요청하세요. 반복 대량 요청이나 전체 드라이브 공개로 해결하지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 진입점·설치·활성화 확인"
+        },
+        {
+          "type": "paragraph",
+          "text": "데스크톱 Plugins의 Installed와 상세 정보를 확인하세요. CLI는 codex 실행 후 /plugins에서 marketplace와 설치 항목을 확인하며 Space로 설치 항목을 켜거나 끕니다. 기존 작업에 이전 기능 목록이 남을 수 있으므로 설치나 재활성화 후 새 작업에서 시험하세요. 이전 결과는 보존하며 대화 삭제나 전체 설정 폴더 초기화는 필요하지 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "Codex CLI 대화형 슬래시 명령",
+          "language": "text",
+          "code": "/plugins\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "IDE 확장은 Plugins를 지원하지 않으므로 메뉴가 없는 것을 설치 손상으로 판단하지 말고 데스크톱이나 CLI에서 확인하세요. iOS와 Android Chat/Work는 해당 진입점에 제공되는 플러그인을 사용하며 Desktop only는 모바일에서 실행할 수 없습니다. Linux 미리 보기나 개별 요건도 확인하고 미지원으로 기록합니다. "
+            },
+            {
+              "type": "article",
+              "text": "기기 간 작업",
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": "을 참고하세요."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4단계: 계정과 문서 접근 분리"
+        },
+        {
+          "type": "paragraph",
+          "text": "플러그인과 같은 외부 계정으로 제공자 사이트에서 연습 문서를 열고 제목과 Revision을 확인합니다. 다른 계정으로 로그인한 브라우저에서 열리는 것은 플러그인 계정의 접근 증거가 아닙니다. 불일치는 제공되는 재연결 절차로 수정하고 새 작업에서 같은 URL을 요청하세요. 특정 문서만 거부되면 소유자와 공유 대상을 확인하고 자신의 연습 파일은 필요한 계정에만 허용합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "ChatGPT 로그인과 OpenAI API key 로그인은 다르며 OAuth가 필요한 일부 플러그인은 API key 방식에서 사용할 수 없습니다. 상세 정보와 "
+            },
+            {
+              "type": "article",
+              "text": "계정",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": "을 확인하세요. 서비스 암호를 config.toml에 넣거나 OAuth 해결을 위해 전면 허용으로 바꾸지 않습니다. 호스트 샌드박스와 외부 문서 권한은 별개라 하나를 완화해도 다른 계층의 성공이 보장되지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "5단계: 실제 도구 결과로 재검증"
+        },
+        {
+          "type": "code",
+          "label": "새 작업 요청: 연습 URL 교체",
+          "language": "text",
+          "code": "Use the selected plugin to read my practice document at <PRACTICE_DOCUMENT_URL>.\nReturn its title, source link, Revision, Document marker and task counts.\nUse a fresh tool result. If access fails, report the tool error and stop.\nDo not edit, share, move or delete anything. Do not infer missing contents.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "자리 표시자를 연습 URL로 바꾸고 지원 선택기에서 플러그인이나 기능을 지정하세요. 읽었다는 문장만 보지 말고 도구 활동을 확인하여 제목, 출처, 현재 Revision, 표식, 개수를 원본과 비교합니다. 실행이 없으면 기능이 로드됐는지 확인하고 거부 응답이면 원래 오류를 남겨 이전 대화에서 답을 만들어 내지 않게 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "원본 사이트에서 Revision과 확인 가능한 개수 하나를 직접 바꾸되 새 개수를 Codex에 알려주지 마세요. 다른 새 작업에서 같은 요청을 실행합니다. 오래된 값이면 복사본 URL, 저장 완료, 지원되는 새로 읽기 방법을 확인하고 지연을 기록하세요. 두 번째 정답은 이 사례의 증거이며 모든 문서와 진입점이 복구됐다는 뜻은 아닙니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "자주 발생하는 문제와 복구"
+        },
+        {
+          "type": "paragraph",
+          "text": "제거 버튼이 없으면 관리자 배포나 기본 항목인지 확인하고 제한을 기록합니다. 제거는 해당 환경의 묶음을 없애며 별도 MCP 연결은 남을 수 있습니다. 연습 종료 시 설치 상태와 외부 연결 관리를 각각 확인하고 필요하면 자신의 연습 인증만 취소하세요. 공유 연결을 보존하고 한 번의 연결 해제를 모든 기기 비활성화로 해석하지 않습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "기록을 보고 자신이 바꾼 한 조건을 복원합니다. 일시 중지 항목 활성화, 올바른 연습 계정 재연결, 문서 권한 복원 중 해당하는 작업입니다. 새 작업이 계속 실패하면 진입점, 출처, 가린 오류, 시도한 수정, 예상과 실제 결과를 유지 관리자에게 전달하세요. 무한 재설치 대신 서버 설정은 "
+            },
+            {
+              "type": "article",
+              "text": "MCP 문제 해결",
+              "kind": "life",
+              "slug": "codex-mcp-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "로 이어갑니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "검증과 다음 단계"
+        },
+        {
+          "type": "paragraph",
+          "text": "완료 기준은 원래 실패, 원인 계층, 한 변경, 같은 문서의 새 도구 결과, 원본에 도구 쓰기 없음, 연습 연결 유지 또는 취소 상태를 재현 가능하게 남기는 것입니다. 도구 결과가 없으면 진입점 제한이나 인증 대기로 기록합니다. 이 절차는 공식 문서 확인이며 사용자 계정·OAuth·실제 휴대폰에서 시험했다고 주장하지 않습니다. 기사 표시 테스트도 연결 증거가 아닙니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "스킬 검증",
+              "kind": "life",
+              "slug": "codex-skill-testing"
+            },
+            {
+              "type": "text",
+              "text": "과 기록을 구분합니다. 스킬 로드가 외부 연결을 증명하지는 않습니다. "
+            },
+            {
+              "type": "article",
+              "text": "템플릿과 요약표",
+              "kind": "life",
+              "slug": "codex-templates-cheatsheet"
+            },
+            {
+              "type": "text",
+              "text": "에 항목을 모아 관찰값을 갱신하고 날짜와 미재현 사례를 남기세요."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-plugin-troubleshooting/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다.",
+          "caption": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Plugins: installation, support and connections",
+          "url": "https://learn.chatgpt.com/docs/plugins",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Plugin 连线与工具不可用排错",
+      "description": "区分已安装、已连帐号、已授权与工具可用，依实际错误重连或移除需要处理的项目。",
+      "hero": {
+        "src": "/guides/codex-plugin-troubleshooting/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原创流程示意图，非产品界面截图。"
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目标与准备"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "把插件问题缩小到可以验证的一层，修正后用相同文件重新测试。阅读约 15 分钟、操作约 20 分钟。先完成 Plugins 安装与连线 的虚构文件；只检查自己建立的练习连线，不改正式工作区。没有可用插件也能照本篇完成环境与错误纪录，但不能勾选读取成功。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 1：先保留失败现场"
+        },
+        {
+          "type": "paragraph",
+          "text": "先记下日期、作业系统、入口、版本、插件完整名称、来源分类、登入方式，以及哪一步失败。Windows、macOS、Linux 都用相同纪录格式；CLI 版本在终端机查，桌面版在程式资讯或更新画面查。不要用桌面版可用推定同台电脑的 CLI 也已安装；远端主机与本机也各自记录。版本栏填实际结果，不能直接抄本篇查证日。"
+        },
+        {
+          "type": "code",
+          "label": "终端机：检查 CLI 版本",
+          "language": "sh",
+          "code": "codex --version\n"
+        },
+        {
+          "type": "code",
+          "label": "plugin-incident.md",
+          "language": "markdown",
+          "code": "# Plugin incident\nDate and time zone:\nOS / surface / version:\nLocal or remote host:\nPlugin name and source:\nSign-in method (no secrets):\nFailing step:\nExact error (redacted):\nPractice document revision:\nChange attempted:\nRetest result:\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存可公开的错误文字，将 email、文件网址中的私人识别码、token 与 cookie 遮蔽。完整验证网址可能含一次性登入码，不要贴进教材或求助纪录。保留错误类型、发生时间和重现步骤通常已足够；若需要服务端纪录，依服务自己的支援流程提供。一次只改一个条件，否则成功后无法知道是换帐号、重开任务还是修改权限生效。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 2：用症状选择检查层"
+        },
+        {
+          "type": "table",
+          "header": [
+            "现象",
+            "先查哪里",
+            "可观察的结果"
+          ],
+          "rows": [
+            [
+              "找不到 Plugins",
+              "入口是否支援",
+              "支援的目录可开启"
+            ],
+            [
+              "目录有但不能安装",
+              "来源与工作区政策",
+              "详情或管理限制明确"
+            ],
+            [
+              "Installed 但工具未出现",
+              "启用状态与新任务",
+              "新任务能选到能力"
+            ],
+            [
+              "工具要求登入",
+              "外部帐号连线",
+              "正确帐号完成认证"
+            ],
+            [
+              "只有某份文件失败",
+              "文件权限或网址",
+              "同帐号能开原始文件"
+            ],
+            [
+              "回答仍是旧内容",
+              "工具呼叫与文件版本",
+              "新读取回传新的标记"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "这是排查顺序，不是错误码的保证对照。401 常与认证相关、403 常与拒绝存取相关，但实际含义仍看服务回应；文件不存在、无权限或分享设定改变也可能被服务隐藏成相似讯息。遇到 429 或暂时不可用，记录回应中的等待资讯，稍后以同一份小文件重试，避免持续重送大量请求。不要为了让读取通过而把整个云端硬碟改成公开。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 3：确认入口、安装与启用"
+        },
+        {
+          "type": "paragraph",
+          "text": "桌面版开 Plugins，查看 Installed 与插件详情；CLI 先启动 codex，再输入 /plugins，确认目前 marketplace 和安装项目，已安装插件可用 Space 切换启用状态。安装或重新启用后建立新任务再测，旧任务可能保留先前能力清单。请先保存旧任务结果，不必删除它，也不要清空整个 Codex 设定资料夹。"
+        },
+        {
+          "type": "code",
+          "label": "Codex CLI 互动斜线指令",
+          "language": "text",
+          "code": "/plugins\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "IDE 扩充套件不支援 Plugins，不能把看不到选单当成安装坏掉；请到桌面版或 CLI 测试。iOS、Android 的 Chat／Work 只能用该入口可提供的插件，Desktop only 不可在手机执行。Linux 桌面预览与个别插件也可能有额外条件。将这种结果记成「目前入口不支援」，不要反复重装。平台差异可回到"
+            },
+            {
+              "type": "article",
+              "text": "跨装置操作",
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 4：分开验证帐号与文件存取"
+        },
+        {
+          "type": "paragraph",
+          "text": "用与插件相同的外部帐号，在服务自己的网站打开练习文件，核对文件标题与 Revision。能在另一个已登入的浏览器帐号看到文件，不代表插件使用的帐号也有权限。若帐号不符，从插件或连线管理提供的重新连线流程修正，再开新任务读取同一网址。若只有这份文件无权限，先向文件拥有人确认分享对象，自己的练习文件只授权必要帐号即可。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "ChatGPT 订阅登入与 OpenAI API key 登入不同；某些需要 OAuth 的插件在 API key 模式不可用。看到这项限制时查插件详情与"
+            },
+            {
+              "type": "article",
+              "text": "帐号篇",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": "，不要把服务的密码放进 config.toml，也不要切换全面放行来处理 OAuth 问题。主机沙盒控制本机工作范围，外部服务的文件权限由该服务管理，放宽其中一层无法保证另一层通过。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 5：以实际工具结果重测"
+        },
+        {
+          "type": "code",
+          "label": "新任务提示词：先替换练习网址",
+          "language": "text",
+          "code": "Use the selected plugin to read my practice document at <PRACTICE_DOCUMENT_URL>.\nReturn its title, source link, Revision, Document marker and task counts.\nUse a fresh tool result. If access fails, report the tool error and stop.\nDo not edit, share, move or delete anything. Do not infer missing contents.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "先把尖括号预留值换成你那份练习文件的网址，再在支援的选择器指定插件或能力。检查任务的工具活动，而不只看回复说「我已读取」。结果应包含文件标题、来源、当前 Revision、Document marker 和各项数量，与服务原始文件逐项比对。若没有工具活动，先确认能力是否已带入；若工具回传拒绝，保留原错误，不能让模型凭旧对话补答案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著在服务原站手动把教材 Revision 改成新的值，并同步修改一个可核对的数量；不要把新数量告诉 Codex。再以同一提示词开新任务，确认结果是否更新。若仍回传旧内容，检查网址是否指向副本、服务保存是否完成、工具是否提供重新读取方式，并记录延迟。不能仅因第二次答案正确，就声称所有文件与所有入口都已修复。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常见问题与恢复方式"
+        },
+        {
+          "type": "paragraph",
+          "text": "找不到移除按钮时，先看是否为工作区安装或预设插件；这类项目可能由管理员控制，记录限制即可。卸载插件只移除该环境的套件，独立连接的 MCP 可能仍存在。若要结束练习，分别确认 Installed 状态与连线管理中的外部服务，再视需要撤销自己练习帐号的授权。不要删除别人依赖的共用连线，或把解除一次连线当成所有装置都已停用。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "恢复时回到事故纪录，还原自己变更的单一条件：重新启用暂停的插件、接回原本应使用的练习帐号，或恢复教材权限。若重连后新任务仍不能读同一文件，整理「入口、插件来源、遮蔽后错误、已试一步、预期与实际」交给维护者；不要无限重装。需要分析伺服器设定时接续 "
+            },
+            {
+              "type": "article",
+              "text": "MCP 排除问题",
+              "kind": "life",
+              "slug": "codex-mcp-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "，不要混用插件目录与自建伺服器设定档。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "验收与下一步"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成标准是一份可重现的纪录：原始失败、定位的层、一次修改、同文件的新工具结果、原文件未被工具写入，以及练习连线保留或撤销的状态。未能取得工具结果时，结论应写「已定位入口限制」或「等待服务认证」，不填成功。本篇操作流程依官方文件查证，没有宣称在你的帐号安装、OAuth 或实体手机上实测；本机文章呈现测试也不是插件连线证据。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "将这份纪录与 "
+            },
+            {
+              "type": "article",
+              "text": "Skills 验收",
+              "kind": "life",
+              "slug": "codex-skill-testing"
+            },
+            {
+              "type": "text",
+              "text": " 分开保存：技能有被载入，不代表其背后服务已连线。常用报告栏位可收进"
+            },
+            {
+              "type": "article",
+              "text": "范本与速查表",
+              "kind": "life",
+              "slug": "codex-templates-cheatsheet"
+            },
+            {
+              "type": "text",
+              "text": "，下次只更新实际观察值，保留不能重现的项目与日期。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-plugin-troubleshooting/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原创流程示意图，非产品界面截图。",
+          "caption": "原创流程示意图，非产品界面截图。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Plugins: installation, support and connections",
+          "url": "https://learn.chatgpt.com/docs/plugins",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -24,9 +24,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -40,24 +46,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "先讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "需求描述",
-              "url": "https://mokaair.com/zh-TW/life/codex-prompting"
+              "kind": "life",
+              "slug": "codex-prompting"
             },
             {
               "type": "text",
               "text": "。Plan 模式適合需求還有選擇、需要先讀程式或跨越多個步驟的工作。它讓 Codex 調查背景、提問及提出計畫；不是寫了「計畫」兩字就完成，也不代表權限沙盒已切成唯讀。要保護工作範圍，仍需檢查"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "權限",
-              "url": "https://mokaair.com/zh-TW/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -72,15 +80,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "由"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "第一個小專案",
-              "url": "https://mokaair.com/zh-TW/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -90,6 +99,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -112,6 +122,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Plan before implementation. In this codex-plan-lab, inspect index.html, app.js, core.mjs and core.test.mjs. Do not edit files yet.\nGoal: make All, Active and Completed filters correct.\nKeep the current UI, storage format and task ordering. Add no dependencies.\nReport the existing selector and event wiring, the failing behavior and the smallest implementation scope. Ask about unresolved behavior before proposing a plan.\nThe plan must name files, acceptance cases, test commands and a scoped restoration method. Separate observations from assumptions.\n"
         },
@@ -130,6 +141,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "markdown",
           "code": "# Filter plan\n1. Read the existing selector, event handler and tests. Confirm the start fixture's failing filter assertion.\n2. Edit only visibleTasks in core.mjs: active selects unfinished tasks; completed selects finished tasks; all keeps every task in order.\n3. Run node --test core.test.mjs. Target: all 3 tests pass without changing their assertions.\n4. Preview Read (completed) and Build (active). Expect All=Read,Build; Active=Build; Completed=Read. Empty lists stay empty.\nScope: no dependencies, storage migrations, UI redesign or deployment.\nRestore: copy only core.mjs from the preserved start fixture back into this lab. The known failing baseline should return.\n"
         },
@@ -148,11 +160,13 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Implement the reviewed filter plan now. Modify only visibleTasks in core.mjs. Preserve task order and do not mutate inputs. Keep tests and other files unchanged. Run node --test core.test.mjs, inspect the final diff and report actual results. If browser verification is unavailable, list the manual cases as NOT RUN. Do not publish or deploy this practice project.\n"
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },
@@ -194,15 +208,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "保留最後計畫、只改 core.mjs 的差異、3 項測試與畫面表格，才能區分「計畫可交付」與「功能已驗收」。想重做時，只把保留的 start/core.mjs 複製回練習目錄，預期回到 2 過 1 敗；不要還原整個工作資料夾或刪除登入資料。圖中 1 是確認起點，2 是調查與審閱，3 是實作驗收。長任務下一步可把結果寫成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "上下文交接",
-              "url": "https://mokaair.com/zh-TW/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
@@ -211,9 +226,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -263,9 +284,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -279,24 +306,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "先读"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "需求描述",
-              "url": "https://mokaair.com/zh-CN/life/codex-prompting"
+              "kind": "life",
+              "slug": "codex-prompting"
             },
             {
               "type": "text",
               "text": "。Plan 模式适合需求还有选择、需要先读程式或跨越多个步骤的工作。它让 Codex 调查背景、提问及提出计划；不是写了「计划」两字就完成，也不代表权限沙盒已切成唯读。要保护工作范围，仍需检查"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "权限",
-              "url": "https://mokaair.com/zh-CN/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -311,15 +340,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "由"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "第一个小专案",
-              "url": "https://mokaair.com/zh-CN/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -329,6 +359,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -351,6 +382,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Plan before implementation. In this codex-plan-lab, inspect index.html, app.js, core.mjs and core.test.mjs. Do not edit files yet.\nGoal: make All, Active and Completed filters correct.\nKeep the current UI, storage format and task ordering. Add no dependencies.\nReport the existing selector and event wiring, the failing behavior and the smallest implementation scope. Ask about unresolved behavior before proposing a plan.\nThe plan must name files, acceptance cases, test commands and a scoped restoration method. Separate observations from assumptions.\n"
         },
@@ -369,6 +401,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "markdown",
           "code": "# Filter plan\n1. Read the existing selector, event handler and tests. Confirm the start fixture's failing filter assertion.\n2. Edit only visibleTasks in core.mjs: active selects unfinished tasks; completed selects finished tasks; all keeps every task in order.\n3. Run node --test core.test.mjs. Target: all 3 tests pass without changing their assertions.\n4. Preview Read (completed) and Build (active). Expect All=Read,Build; Active=Build; Completed=Read. Empty lists stay empty.\nScope: no dependencies, storage migrations, UI redesign or deployment.\nRestore: copy only core.mjs from the preserved start fixture back into this lab. The known failing baseline should return.\n"
         },
@@ -387,11 +420,13 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Implement the reviewed filter plan now. Modify only visibleTasks in core.mjs. Preserve task order and do not mutate inputs. Keep tests and other files unchanged. Run node --test core.test.mjs, inspect the final diff and report actual results. If browser verification is unavailable, list the manual cases as NOT RUN. Do not publish or deploy this practice project.\n"
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },
@@ -433,15 +468,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "保留最后计划、只改 core.mjs 的差异、3 项测试与画面表格，才能区分「计划可交付」与「功能已验收」。想重做时，只把保留的 start/core.mjs 复制回练习目录，预期回到 2 过 1 败；不要还原整个工作资料夹或删除登入资料。图中 1 是确认起点，2 是调查与审阅，3 是实作验收。长任务下一步可把结果写成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "上下文交接",
-              "url": "https://mokaair.com/zh-CN/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
@@ -450,9 +486,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -502,9 +544,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -518,24 +566,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Start with "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "clear requests",
-              "url": "https://mokaair.com/en/life/codex-prompting"
+              "kind": "life",
+              "slug": "codex-prompting"
             },
             {
               "type": "text",
               "text": ". Use Plan when choices remain, code needs investigation or work has several steps. Codex can gather context, ask questions and propose a plan. Merely writing “plan” is insufficient, and Plan is not the same as a read-only sandbox. Verify "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "permissions",
-              "url": "https://mokaair.com/en/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -550,15 +600,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Get the ZIP from "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "your first project",
-              "url": "https://mokaair.com/en/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -568,6 +619,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -590,6 +642,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Plan before implementation. In this codex-plan-lab, inspect index.html, app.js, core.mjs and core.test.mjs. Do not edit files yet.\nGoal: make All, Active and Completed filters correct.\nKeep the current UI, storage format and task ordering. Add no dependencies.\nReport the existing selector and event wiring, the failing behavior and the smallest implementation scope. Ask about unresolved behavior before proposing a plan.\nThe plan must name files, acceptance cases, test commands and a scoped restoration method. Separate observations from assumptions.\n"
         },
@@ -608,6 +661,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "markdown",
           "code": "# Filter plan\n1. Read the existing selector, event handler and tests. Confirm the start fixture's failing filter assertion.\n2. Edit only visibleTasks in core.mjs: active selects unfinished tasks; completed selects finished tasks; all keeps every task in order.\n3. Run node --test core.test.mjs. Target: all 3 tests pass without changing their assertions.\n4. Preview Read (completed) and Build (active). Expect All=Read,Build; Active=Build; Completed=Read. Empty lists stay empty.\nScope: no dependencies, storage migrations, UI redesign or deployment.\nRestore: copy only core.mjs from the preserved start fixture back into this lab. The known failing baseline should return.\n"
         },
@@ -626,11 +680,13 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Implement the reviewed filter plan now. Modify only visibleTasks in core.mjs. Preserve task order and do not mutate inputs. Keep tests and other files unchanged. Run node --test core.test.mjs, inspect the final diff and report actual results. If browser verification is unavailable, list the manual cases as NOT RUN. Do not publish or deploy this practice project.\n"
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },
@@ -672,15 +728,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Keep the final plan, core.mjs-only diff, three test outcomes and UI matrix to distinguish a ready plan from an accepted feature. To repeat, restore only start/core.mjs into the lab and expect the original two passes/one failure. Do not reset unrelated folders or authentication. Diagram 1 is baseline, 2 investigation/review, 3 implementation/acceptance. For longer tasks, write a "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "handoff",
-              "url": "https://mokaair.com/en/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
@@ -689,9 +746,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -741,9 +804,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -757,24 +826,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "先に"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "依頼の書き方",
-              "url": "https://mokaair.com/ja/life/codex-prompting"
+              "kind": "life",
+              "slug": "codex-prompting"
             },
             {
               "type": "text",
               "text": "を読みます。選択肢や調査、複数工程がある作業に向き、背景確認・質問・計画作成を行えます。「計画」と書くだけでは不十分で、読み取り専用サンドボックスとも同じではありません。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "権限",
-              "url": "https://mokaair.com/ja/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -789,11 +860,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "最初のプロジェクト",
-              "url": "https://mokaair.com/ja/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -803,6 +875,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -825,6 +898,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Plan before implementation. In this codex-plan-lab, inspect index.html, app.js, core.mjs and core.test.mjs. Do not edit files yet.\nGoal: make All, Active and Completed filters correct.\nKeep the current UI, storage format and task ordering. Add no dependencies.\nReport the existing selector and event wiring, the failing behavior and the smallest implementation scope. Ask about unresolved behavior before proposing a plan.\nThe plan must name files, acceptance cases, test commands and a scoped restoration method. Separate observations from assumptions.\n"
         },
@@ -843,6 +917,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "markdown",
           "code": "# Filter plan\n1. Read the existing selector, event handler and tests. Confirm the start fixture's failing filter assertion.\n2. Edit only visibleTasks in core.mjs: active selects unfinished tasks; completed selects finished tasks; all keeps every task in order.\n3. Run node --test core.test.mjs. Target: all 3 tests pass without changing their assertions.\n4. Preview Read (completed) and Build (active). Expect All=Read,Build; Active=Build; Completed=Read. Empty lists stay empty.\nScope: no dependencies, storage migrations, UI redesign or deployment.\nRestore: copy only core.mjs from the preserved start fixture back into this lab. The known failing baseline should return.\n"
         },
@@ -861,11 +936,13 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Implement the reviewed filter plan now. Modify only visibleTasks in core.mjs. Preserve task order and do not mutate inputs. Keep tests and other files unchanged. Run node --test core.test.mjs, inspect the final diff and report actual results. If browser verification is unavailable, list the manual cases as NOT RUN. Do not publish or deploy this practice project.\n"
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },
@@ -907,15 +984,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "最終計画、core.mjs だけの差分、3テストと画面表を残し、計画完成と機能受入を区別します。やり直すなら start/core.mjs だけ戻して2成功1失敗を確認し、別フォルダーや認証は消しません。図1は起点、2は調査と確認、3は実装検証です。長い作業は"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "引継ぎ",
-              "url": "https://mokaair.com/ja/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
@@ -924,9 +1002,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -976,9 +1060,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -992,24 +1082,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "먼저 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "요청 작성",
-              "url": "https://mokaair.com/ko/life/codex-prompting"
+              "kind": "life",
+              "slug": "codex-prompting"
             },
             {
               "type": "text",
               "text": "을 읽습니다. 선택지, 코드 조사, 여러 단계가 있는 작업에 적합하며 배경 확인·질문·계획 작성을 할 수 있습니다. ‘계획’이라는 말만으로 충분하지 않고 읽기 전용 샌드박스와도 다릅니다. "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "권한",
-              "url": "https://mokaair.com/ko/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -1024,11 +1116,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "첫 프로젝트",
-              "url": "https://mokaair.com/ko/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -1038,6 +1131,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -1060,6 +1154,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Plan before implementation. In this codex-plan-lab, inspect index.html, app.js, core.mjs and core.test.mjs. Do not edit files yet.\nGoal: make All, Active and Completed filters correct.\nKeep the current UI, storage format and task ordering. Add no dependencies.\nReport the existing selector and event wiring, the failing behavior and the smallest implementation scope. Ask about unresolved behavior before proposing a plan.\nThe plan must name files, acceptance cases, test commands and a scoped restoration method. Separate observations from assumptions.\n"
         },
@@ -1078,6 +1173,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "markdown",
           "code": "# Filter plan\n1. Read the existing selector, event handler and tests. Confirm the start fixture's failing filter assertion.\n2. Edit only visibleTasks in core.mjs: active selects unfinished tasks; completed selects finished tasks; all keeps every task in order.\n3. Run node --test core.test.mjs. Target: all 3 tests pass without changing their assertions.\n4. Preview Read (completed) and Build (active). Expect All=Read,Build; Active=Build; Completed=Read. Empty lists stay empty.\nScope: no dependencies, storage migrations, UI redesign or deployment.\nRestore: copy only core.mjs from the preserved start fixture back into this lab. The known failing baseline should return.\n"
         },
@@ -1096,11 +1192,13 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Implement the reviewed filter plan now. Modify only visibleTasks in core.mjs. Preserve task order and do not mutate inputs. Keep tests and other files unchanged. Run node --test core.test.mjs, inspect the final diff and report actual results. If browser verification is unavailable, list the manual cases as NOT RUN. Do not publish or deploy this practice project.\n"
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },
@@ -1142,15 +1240,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "최종 계획, core.mjs만의 차이, 3개 테스트와 화면 표를 남겨 계획 완료/기능 검수를 구분합니다. 반복하려면 start/core.mjs만 복원해 2통과1실패를 확인하고 다른 폴더나 인증은 지우지 않습니다. 그림 1은 시작, 2는 조사/검토, 3은 구현/검증입니다. 긴 작업은 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "인계",
-              "url": "https://mokaair.com/ko/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
@@ -1159,9 +1258,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

@@ -24,9 +24,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -40,24 +46,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Skill 適合把會反覆使用的工作流程整理成可重用指引，例如每次改完待辦網站後的驗收。不要把所有專案規則都移過來："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/zh-TW/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
               "text": "處理持續適用的專案要求，Skill 則針對特定任務被選用。Plugins 可用來分發技能與連接服務，詳見"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "插件教學",
-              "url": "https://mokaair.com/zh-TW/life/codex-plugins"
+              "kind": "life",
+              "slug": "codex-plugins"
             },
             {
               "type": "text",
@@ -72,7 +80,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "準備已登入的 Codex CLI 或支援 Skills 的桌面／IDE 入口，並下載"
@@ -90,7 +98,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "測試使用 Node.js，瀏覽器預覽使用 Python 3。沒有瀏覽器工具時，技能應回報畫面檢查未執行，提供給你手動操作的步驟；不能因為寫了「檢查畫面」就假設環境會自動多出工具。你也可以下載"
@@ -129,20 +137,14 @@
           "text": "從 codex-practice 根目錄建立 .agents/skills/todo-acceptance。前面的點是資料夾名稱的一部分；不是 .codex，也不是 agents 少一個點。Windows PowerShell 可執行以下命令；已存在時先看內容，不要覆蓋別人的技能。"
         },
         {
-          "type": "paragraph",
-          "text": "Windows PowerShell；codex-practice 根目錄"
-        },
-        {
           "type": "code",
+          "label": "Windows PowerShell；codex-practice 根目錄",
           "language": "powershell",
           "code": "New-Item -ItemType Directory -Force .agents/skills/todo-acceptance\n"
         },
         {
-          "type": "paragraph",
-          "text": "macOS / Linux 終端機；codex-practice 根目錄"
-        },
-        {
           "type": "code",
+          "label": "macOS / Linux 終端機；codex-practice 根目錄",
           "language": "bash",
           "code": "mkdir -p .agents/skills/todo-acceptance\n"
         },
@@ -151,11 +153,8 @@
           "text": "用純文字編輯器建立 SKILL.md，Windows 檢查不是 SKILL.md.txt，Linux 檢查大寫檔名。完成後的目錄如下。這個位置讓技能和練習專案一起管理，不會立刻變成所有專案共用的個人技能。"
         },
         {
-          "type": "paragraph",
-          "text": "codex-practice 內的完整必要結構"
-        },
-        {
           "type": "code",
+          "label": "codex-practice 內的完整必要結構",
           "language": "text",
           "code": "codex-practice/\n  index.html\n  style.css\n  app.js\n  core.mjs\n  core.test.mjs\n  .agents/\n    skills/\n      todo-acceptance/\n        SKILL.md\n"
         },
@@ -169,11 +168,8 @@
           "text": "以下內容與下載範例相同。流程會讀現有程式、執行既有測試、在可用時檢查瀏覽器，最後以 PASS、FAIL、NOT RUN 區分結果。它不會為了讓驗收通過而偷偷修程式，讓你能先看懂實際問題再決定是否修改。"
         },
         {
-          "type": "paragraph",
-          "text": "寫入 .agents/skills/todo-acceptance/SKILL.md；完整檔案"
-        },
-        {
           "type": "code",
+          "label": "寫入 .agents/skills/todo-acceptance/SKILL.md；完整檔案",
           "language": "markdown",
           "code": "---\nname: todo-acceptance\ndescription: Verify the Small Steps todo practice website after a change, using its existing tests and browser checks. Use for acceptance checks of this exercise, not unrelated websites or feature implementation.\n---\n\n# Small Steps acceptance\n\nConfirm the requested practice folder contains index.html, style.css, app.js,\ncore.mjs and core.test.mjs. If these are missing, stop and report the path checked.\n\nRead the existing code, then run `node --test core.test.mjs` from that folder.\nDo not rewrite tests or implementation to make an acceptance run pass.\n\nIf a browser is available, preview the site on a loopback address with a fresh\nbrowser context. Add Read and Build, complete Read, check Active and Completed\nfilters, reload, and delete Read. Reject whitespace-only input. Check 390px and\n1280px widths and visible Tab focus. Keep existing user browser data unchanged.\n\nReport PASS, FAIL or NOT RUN for each check, with the command, observation or\nlimitation. Include the working folder and remaining issues. Do not claim that\ntests, screenshots, deployment or publication happened without evidence.\n\nIf a check fails, report the reproduction and relevant file. If a required tool\nis unavailable, report NOT RUN and the manual steps. Finish with results only;\nimplement fixes only when the user requests them.\n"
         },
@@ -191,11 +187,8 @@
           "text": "Codex 會偵測技能變更；沒有出現時重新開啟工作階段，確認工作目錄位於此專案。CLI 或 IDE 可用 /skills 或輸入 $ 尋找技能；桌面應用程式可由側欄 Skills 檢查可用項目，依目前介面選擇。選單能找到名稱，才是「已發現」的證據，仍不是已執行。"
         },
         {
-          "type": "paragraph",
-          "text": "Codex CLI 或 IDE 對話輸入框；不是系統 shell"
-        },
-        {
           "type": "code",
+          "label": "Codex CLI 或 IDE 對話輸入框；不是系統 shell",
           "language": "text",
           "code": "$todo-acceptance Check this Small Steps practice folder. Report the results without editing files.\n"
         },
@@ -282,7 +275,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "技能機制依 "
@@ -297,27 +290,30 @@
               "text": "於 2026-09-14 查證。範例會做格式驗證，網站核心與故障結果已有實際測試；自動觸發與不同 Codex 介面的選擇器仍須分別實測，未列為全部通過。下一步可讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "插件",
-              "url": "https://mokaair.com/zh-TW/life/codex-plugins"
+              "kind": "life",
+              "slug": "codex-plugins"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "MCP",
-              "url": "https://mokaair.com/zh-TW/life/codex-mcp"
+              "kind": "life",
+              "slug": "codex-mcp"
             },
             {
               "type": "text",
               "text": "及"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "測試與審查",
-              "url": "https://mokaair.com/zh-TW/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -326,9 +322,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -373,9 +375,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -389,24 +397,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Skill 适合把会反复使用的工作流程整理成可重用指引，例如每次改完待办网站后的验收。不要把所有专案规则都移过来："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/zh-CN/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
               "text": "处理持续适用的专案要求，Skill 则针对特定任务被选用。Plugins 可用来分发技能与连接服务，详见"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "插件教学",
-              "url": "https://mokaair.com/zh-CN/life/codex-plugins"
+              "kind": "life",
+              "slug": "codex-plugins"
             },
             {
               "type": "text",
@@ -421,7 +431,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "准备已登入的 Codex CLI 或支援 Skills 的桌面／IDE 入口，并下载"
@@ -439,7 +449,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "测试使用 Node.js，浏览器预览使用 Python 3。没有浏览器工具时，技能应回报画面检查未执行，提供给你手动操作的步骤；不能因为写了「检查画面」就假设环境会自动多出工具。你也可以下载"
@@ -478,20 +488,14 @@
           "text": "从 codex-practice 根目录建立 .agents/skills/todo-acceptance。前面的点是资料夹名称的一部分；不是 .codex，也不是 agents 少一个点。Windows PowerShell 可执行以下命令；已存在时先看内容，不要覆盖别人的技能。"
         },
         {
-          "type": "paragraph",
-          "text": "Windows PowerShell；codex-practice 根目录"
-        },
-        {
           "type": "code",
+          "label": "Windows PowerShell；codex-practice 根目录",
           "language": "powershell",
           "code": "New-Item -ItemType Directory -Force .agents/skills/todo-acceptance\n"
         },
         {
-          "type": "paragraph",
-          "text": "macOS / Linux 终端机；codex-practice 根目录"
-        },
-        {
           "type": "code",
+          "label": "macOS / Linux 终端机；codex-practice 根目录",
           "language": "bash",
           "code": "mkdir -p .agents/skills/todo-acceptance\n"
         },
@@ -500,11 +504,8 @@
           "text": "用纯文字编辑器建立 SKILL.md，Windows 检查不是 SKILL.md.txt，Linux 检查大写档名。完成后的目录如下。这个位置让技能和练习专案一起管理，不会立刻变成所有专案共用的个人技能。"
         },
         {
-          "type": "paragraph",
-          "text": "codex-practice 内的完整必要结构"
-        },
-        {
           "type": "code",
+          "label": "codex-practice 内的完整必要结构",
           "language": "text",
           "code": "codex-practice/\n  index.html\n  style.css\n  app.js\n  core.mjs\n  core.test.mjs\n  .agents/\n    skills/\n      todo-acceptance/\n        SKILL.md\n"
         },
@@ -518,11 +519,8 @@
           "text": "以下内容与下载范例相同。流程会读现有程式、执行既有测试、在可用时检查浏览器，最后以 PASS、FAIL、NOT RUN 区分结果。它不会为了让验收通过而偷偷修程式，让你能先看懂实际问题再决定是否修改。"
         },
         {
-          "type": "paragraph",
-          "text": "写入 .agents/skills/todo-acceptance/SKILL.md；完整档案"
-        },
-        {
           "type": "code",
+          "label": "写入 .agents/skills/todo-acceptance/SKILL.md；完整档案",
           "language": "markdown",
           "code": "---\nname: todo-acceptance\ndescription: Verify the Small Steps todo practice website after a change, using its existing tests and browser checks. Use for acceptance checks of this exercise, not unrelated websites or feature implementation.\n---\n\n# Small Steps acceptance\n\nConfirm the requested practice folder contains index.html, style.css, app.js,\ncore.mjs and core.test.mjs. If these are missing, stop and report the path checked.\n\nRead the existing code, then run `node --test core.test.mjs` from that folder.\nDo not rewrite tests or implementation to make an acceptance run pass.\n\nIf a browser is available, preview the site on a loopback address with a fresh\nbrowser context. Add Read and Build, complete Read, check Active and Completed\nfilters, reload, and delete Read. Reject whitespace-only input. Check 390px and\n1280px widths and visible Tab focus. Keep existing user browser data unchanged.\n\nReport PASS, FAIL or NOT RUN for each check, with the command, observation or\nlimitation. Include the working folder and remaining issues. Do not claim that\ntests, screenshots, deployment or publication happened without evidence.\n\nIf a check fails, report the reproduction and relevant file. If a required tool\nis unavailable, report NOT RUN and the manual steps. Finish with results only;\nimplement fixes only when the user requests them.\n"
         },
@@ -540,11 +538,8 @@
           "text": "Codex 会侦测技能变更；没有出现时重新开启工作阶段，确认工作目录位于此专案。CLI 或 IDE 可用 /skills 或输入 $ 寻找技能；桌面应用程式可由侧栏 Skills 检查可用项目，依目前介面选择。选单能找到名称，才是「已发现」的证据，仍不是已执行。"
         },
         {
-          "type": "paragraph",
-          "text": "Codex CLI 或 IDE 对话输入框；不是系统 shell"
-        },
-        {
           "type": "code",
+          "label": "Codex CLI 或 IDE 对话输入框；不是系统 shell",
           "language": "text",
           "code": "$todo-acceptance Check this Small Steps practice folder. Report the results without editing files.\n"
         },
@@ -631,7 +626,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "技能机制依 "
@@ -646,27 +641,30 @@
               "text": "于 2026-09-14 查证。范例会做格式验证，网站核心与故障结果已有实际测试；自动触发与不同 Codex 介面的选择器仍须分别实测，未列为全部通过。下一步可读"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "插件",
-              "url": "https://mokaair.com/zh-CN/life/codex-plugins"
+              "kind": "life",
+              "slug": "codex-plugins"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "MCP",
-              "url": "https://mokaair.com/zh-CN/life/codex-mcp"
+              "kind": "life",
+              "slug": "codex-mcp"
             },
             {
               "type": "text",
               "text": "及"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "测试与审查",
-              "url": "https://mokaair.com/zh-CN/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -675,9 +673,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -722,9 +726,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -738,24 +748,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "A Skill packages a workflow you repeat, such as acceptance checks after a website change. Keep persistent project requirements in "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/en/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
               "text": "; a Skill is selected for a particular task. "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Plugins",
-              "url": "https://mokaair.com/en/life/codex-plugins"
+              "kind": "life",
+              "slug": "codex-plugins"
             },
             {
               "type": "text",
@@ -770,7 +782,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Prepare a signed-in Codex CLI or a desktop/IDE entry point supporting Skills. Download the "
@@ -788,7 +800,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Tests use Node.js and previewing uses Python 3. Without a browser tool, the skill must report visual checks as not run and provide manual steps; an instruction cannot create an unavailable tool. You can also download the "
@@ -827,20 +839,14 @@
           "text": "At the codex-practice root, create .agents/skills/todo-acceptance. The leading dot matters: this is not .codex or agents without a dot. On Windows, use the following PowerShell command. If the directory exists, inspect it before overwriting any skill."
         },
         {
-          "type": "paragraph",
-          "text": "Windows PowerShell, codex-practice root"
-        },
-        {
           "type": "code",
+          "label": "Windows PowerShell, codex-practice root",
           "language": "powershell",
           "code": "New-Item -ItemType Directory -Force .agents/skills/todo-acceptance\n"
         },
         {
-          "type": "paragraph",
-          "text": "macOS / Linux terminal, codex-practice root"
-        },
-        {
           "type": "code",
+          "label": "macOS / Linux terminal, codex-practice root",
           "language": "bash",
           "code": "mkdir -p .agents/skills/todo-acceptance\n"
         },
@@ -849,11 +855,8 @@
           "text": "Create SKILL.md in a plain-text editor. Check for an accidental .txt extension on Windows and preserve uppercase SKILL.md on Linux. The complete required structure follows. This keeps the skill with the exercise rather than making it a personal skill for all projects."
         },
         {
-          "type": "paragraph",
-          "text": "Complete required structure inside codex-practice"
-        },
-        {
           "type": "code",
+          "label": "Complete required structure inside codex-practice",
           "language": "text",
           "code": "codex-practice/\n  index.html\n  style.css\n  app.js\n  core.mjs\n  core.test.mjs\n  .agents/\n    skills/\n      todo-acceptance/\n        SKILL.md\n"
         },
@@ -867,11 +870,8 @@
           "text": "This is identical to the download. It reads the existing code, runs existing tests, checks a browser when available and reports PASS, FAIL or NOT RUN. It does not silently fix implementation to make acceptance pass; you can inspect the problem before choosing to change it."
         },
         {
-          "type": "paragraph",
-          "text": "Write .agents/skills/todo-acceptance/SKILL.md; complete file"
-        },
-        {
           "type": "code",
+          "label": "Write .agents/skills/todo-acceptance/SKILL.md; complete file",
           "language": "markdown",
           "code": "---\nname: todo-acceptance\ndescription: Verify the Small Steps todo practice website after a change, using its existing tests and browser checks. Use for acceptance checks of this exercise, not unrelated websites or feature implementation.\n---\n\n# Small Steps acceptance\n\nConfirm the requested practice folder contains index.html, style.css, app.js,\ncore.mjs and core.test.mjs. If these are missing, stop and report the path checked.\n\nRead the existing code, then run `node --test core.test.mjs` from that folder.\nDo not rewrite tests or implementation to make an acceptance run pass.\n\nIf a browser is available, preview the site on a loopback address with a fresh\nbrowser context. Add Read and Build, complete Read, check Active and Completed\nfilters, reload, and delete Read. Reject whitespace-only input. Check 390px and\n1280px widths and visible Tab focus. Keep existing user browser data unchanged.\n\nReport PASS, FAIL or NOT RUN for each check, with the command, observation or\nlimitation. Include the working folder and remaining issues. Do not claim that\ntests, screenshots, deployment or publication happened without evidence.\n\nIf a check fails, report the reproduction and relevant file. If a required tool\nis unavailable, report NOT RUN and the manual steps. Finish with results only;\nimplement fixes only when the user requests them.\n"
         },
@@ -889,11 +889,8 @@
           "text": "Codex detects skill changes. If the skill is missing, restart the session and check the working directory. In CLI or IDE, use /skills or type $ to find it. In the desktop app, inspect Skills in the sidebar and use the current interface's selector. A visible name proves discovery, not execution."
         },
         {
-          "type": "paragraph",
-          "text": "Codex CLI or IDE composer, not the system shell"
-        },
-        {
           "type": "code",
+          "label": "Codex CLI or IDE composer, not the system shell",
           "language": "text",
           "code": "$todo-acceptance Check this Small Steps practice folder. Report the results without editing files.\n"
         },
@@ -980,7 +977,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Mechanics were checked against "
@@ -995,27 +992,30 @@
               "text": " on 2026-09-14. The example receives format validation, and the website's core and deliberate failure have actual test results. Automatic triggers and selectors across Codex interfaces still need separate hands-on validation. Continue with "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Plugins",
-              "url": "https://mokaair.com/en/life/codex-plugins"
+              "kind": "life",
+              "slug": "codex-plugins"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "MCP",
-              "url": "https://mokaair.com/en/life/codex-mcp"
+              "kind": "life",
+              "slug": "codex-mcp"
             },
             {
               "type": "text",
               "text": " and "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "testing and review",
-              "url": "https://mokaair.com/en/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -1024,9 +1024,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1071,9 +1077,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 学習目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1087,24 +1099,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Skill はサイト変更後の検証など、繰り返す手順をまとめます。常に適用するプロジェクト要件は "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/ja/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
               "text": "に残し、Skill は特定のタスクで選びます。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Plugins",
-              "url": "https://mokaair.com/ja/life/codex-plugins"
+              "kind": "life",
+              "slug": "codex-plugins"
             },
             {
               "type": "text",
@@ -1119,7 +1133,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "ログイン済みの Codex CLI または Skills 対応のデスクトップ／IDE を用意します。"
@@ -1137,7 +1151,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "テストは Node.js、プレビューは Python 3 を使います。ブラウザがなければ技能は画面確認を未実施として手動手順を示します。指示を書くだけでツールが増えるわけではありません。"
@@ -1176,20 +1190,14 @@
           "text": "codex-practice のルートに .agents/skills/todo-acceptance を作ります。先頭の点も名前の一部で、.codex や点のない agents ではありません。Windows では次を実行します。既存のフォルダーがあれば技能を上書きする前に内容を確認します。"
         },
         {
-          "type": "paragraph",
-          "text": "Windows PowerShell、codex-practice のルート"
-        },
-        {
           "type": "code",
+          "label": "Windows PowerShell、codex-practice のルート",
           "language": "powershell",
           "code": "New-Item -ItemType Directory -Force .agents/skills/todo-acceptance\n"
         },
         {
-          "type": "paragraph",
-          "text": "macOS / Linux ターミナル、codex-practice のルート"
-        },
-        {
           "type": "code",
+          "label": "macOS / Linux ターミナル、codex-practice のルート",
           "language": "bash",
           "code": "mkdir -p .agents/skills/todo-acceptance\n"
         },
@@ -1198,11 +1206,8 @@
           "text": "テキストエディターで SKILL.md を作ります。Windows は .txt が付いていないか、Linux は大文字か確認します。必要な構成は以下です。練習プロジェクトと一緒に管理し、全プロジェクト共通の技能にはしません。"
         },
         {
-          "type": "paragraph",
-          "text": "codex-practice 内の必要な全構成"
-        },
-        {
           "type": "code",
+          "label": "codex-practice 内の必要な全構成",
           "language": "text",
           "code": "codex-practice/\n  index.html\n  style.css\n  app.js\n  core.mjs\n  core.test.mjs\n  .agents/\n    skills/\n      todo-acceptance/\n        SKILL.md\n"
         },
@@ -1216,11 +1221,8 @@
           "text": "以下はダウンロード版と同じです。既存コードを読み、既存テストを実行し、可能ならブラウザを確認して PASS、FAIL、NOT RUN を報告します。検証を通すための修正は黙って行わず、問題を理解してから修正を選べるようにします。"
         },
         {
-          "type": "paragraph",
-          "text": ".agents/skills/todo-acceptance/SKILL.md に保存する全文"
-        },
-        {
           "type": "code",
+          "label": ".agents/skills/todo-acceptance/SKILL.md に保存する全文",
           "language": "markdown",
           "code": "---\nname: todo-acceptance\ndescription: Verify the Small Steps todo practice website after a change, using its existing tests and browser checks. Use for acceptance checks of this exercise, not unrelated websites or feature implementation.\n---\n\n# Small Steps acceptance\n\nConfirm the requested practice folder contains index.html, style.css, app.js,\ncore.mjs and core.test.mjs. If these are missing, stop and report the path checked.\n\nRead the existing code, then run `node --test core.test.mjs` from that folder.\nDo not rewrite tests or implementation to make an acceptance run pass.\n\nIf a browser is available, preview the site on a loopback address with a fresh\nbrowser context. Add Read and Build, complete Read, check Active and Completed\nfilters, reload, and delete Read. Reject whitespace-only input. Check 390px and\n1280px widths and visible Tab focus. Keep existing user browser data unchanged.\n\nReport PASS, FAIL or NOT RUN for each check, with the command, observation or\nlimitation. Include the working folder and remaining issues. Do not claim that\ntests, screenshots, deployment or publication happened without evidence.\n\nIf a check fails, report the reproduction and relevant file. If a required tool\nis unavailable, report NOT RUN and the manual steps. Finish with results only;\nimplement fixes only when the user requests them.\n"
         },
@@ -1238,11 +1240,8 @@
           "text": "Codex は技能の変更を検出します。見えなければセッションを再開し、作業場所を確認します。CLI／IDE は /skills または $ で検索できます。デスクトップでは側欄の Skills と現在の選択 UI を使います。名前が見えることは発見の証拠で、実行の証拠ではありません。"
         },
         {
-          "type": "paragraph",
-          "text": "Codex CLI または IDE の会話欄。システムのシェルではない"
-        },
-        {
           "type": "code",
+          "label": "Codex CLI または IDE の会話欄。システムのシェルではない",
           "language": "text",
           "code": "$todo-acceptance Check this Small Steps practice folder. Report the results without editing files.\n"
         },
@@ -1329,7 +1328,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "機構は 2026-09-14 に "
@@ -1344,27 +1343,30 @@
               "text": "で確認しました。例には形式検証を行い、サイトのコアと故障には実際のテスト結果があります。自動選択や各 Codex UI は別に実測が必要です。次は "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Plugins",
-              "url": "https://mokaair.com/ja/life/codex-plugins"
+              "kind": "life",
+              "slug": "codex-plugins"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "MCP",
-              "url": "https://mokaair.com/ja/life/codex-mcp"
+              "kind": "life",
+              "slug": "codex-mcp"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "テストとレビュー",
-              "url": "https://mokaair.com/ja/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -1373,9 +1375,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 学習目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1420,9 +1428,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1436,24 +1450,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Skill은 웹사이트 수정 후 검증처럼 반복하는 절차를 묶습니다. 항상 적용할 프로젝트 조건은 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/ko/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
               "text": "에 두고 Skill은 특정 작업에 선택합니다. "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Plugins",
-              "url": "https://mokaair.com/ko/life/codex-plugins"
+              "kind": "life",
+              "slug": "codex-plugins"
             },
             {
               "type": "text",
@@ -1468,7 +1484,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "로그인한 Codex CLI 또는 Skills를 지원하는 데스크톱/IDE를 준비합니다. "
@@ -1486,7 +1502,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "테스트는 Node.js, 미리보기는 Python 3를 사용합니다. 브라우저 도구가 없으면 스킬은 화면 검사를 미실행으로 보고하고 수동 절차를 제공해야 합니다. 지침이 없는 도구를 만들어 주지는 않습니다. "
@@ -1525,20 +1541,14 @@
           "text": "codex-practice 루트에 .agents/skills/todo-acceptance를 만듭니다. 앞의 점도 이름이며 .codex나 점 없는 agents가 아닙니다. Windows는 아래 PowerShell 명령을 사용합니다. 이미 있다면 다른 스킬을 덮기 전에 내용을 확인합니다."
         },
         {
-          "type": "paragraph",
-          "text": "Windows PowerShell, codex-practice 루트"
-        },
-        {
           "type": "code",
+          "label": "Windows PowerShell, codex-practice 루트",
           "language": "powershell",
           "code": "New-Item -ItemType Directory -Force .agents/skills/todo-acceptance\n"
         },
         {
-          "type": "paragraph",
-          "text": "macOS / Linux 터미널, codex-practice 루트"
-        },
-        {
           "type": "code",
+          "label": "macOS / Linux 터미널, codex-practice 루트",
           "language": "bash",
           "code": "mkdir -p .agents/skills/todo-acceptance\n"
         },
@@ -1547,11 +1557,8 @@
           "text": "일반 텍스트 편집기로 SKILL.md를 만듭니다. Windows는 .txt가 붙지 않았는지, Linux는 대문자인지 확인합니다. 필요한 전체 구조는 아래와 같습니다. 실습과 함께 관리하며 모든 프로젝트의 개인 스킬로 만들지 않습니다."
         },
         {
-          "type": "paragraph",
-          "text": "codex-practice 안의 필요한 전체 구조"
-        },
-        {
           "type": "code",
+          "label": "codex-practice 안의 필요한 전체 구조",
           "language": "text",
           "code": "codex-practice/\n  index.html\n  style.css\n  app.js\n  core.mjs\n  core.test.mjs\n  .agents/\n    skills/\n      todo-acceptance/\n        SKILL.md\n"
         },
@@ -1565,11 +1572,8 @@
           "text": "아래는 다운로드와 같습니다. 기존 코드와 테스트를 읽고 실행하며 가능하면 브라우저를 확인해 PASS, FAIL, NOT RUN을 보고합니다. 검사를 통과시키려고 몰래 코드를 고치지 않으므로 문제를 이해한 뒤 수정 여부를 결정할 수 있습니다."
         },
         {
-          "type": "paragraph",
-          "text": ".agents/skills/todo-acceptance/SKILL.md에 저장할 전체 내용"
-        },
-        {
           "type": "code",
+          "label": ".agents/skills/todo-acceptance/SKILL.md에 저장할 전체 내용",
           "language": "markdown",
           "code": "---\nname: todo-acceptance\ndescription: Verify the Small Steps todo practice website after a change, using its existing tests and browser checks. Use for acceptance checks of this exercise, not unrelated websites or feature implementation.\n---\n\n# Small Steps acceptance\n\nConfirm the requested practice folder contains index.html, style.css, app.js,\ncore.mjs and core.test.mjs. If these are missing, stop and report the path checked.\n\nRead the existing code, then run `node --test core.test.mjs` from that folder.\nDo not rewrite tests or implementation to make an acceptance run pass.\n\nIf a browser is available, preview the site on a loopback address with a fresh\nbrowser context. Add Read and Build, complete Read, check Active and Completed\nfilters, reload, and delete Read. Reject whitespace-only input. Check 390px and\n1280px widths and visible Tab focus. Keep existing user browser data unchanged.\n\nReport PASS, FAIL or NOT RUN for each check, with the command, observation or\nlimitation. Include the working folder and remaining issues. Do not claim that\ntests, screenshots, deployment or publication happened without evidence.\n\nIf a check fails, report the reproduction and relevant file. If a required tool\nis unavailable, report NOT RUN and the manual steps. Finish with results only;\nimplement fixes only when the user requests them.\n"
         },
@@ -1587,11 +1591,8 @@
           "text": "Codex는 스킬 변경을 감지합니다. 보이지 않으면 세션을 다시 시작하고 작업 폴더를 확인합니다. CLI/IDE는 /skills 또는 $로 찾고 데스크톱은 사이드바 Skills와 현재 선택 UI를 사용합니다. 이름이 보이면 발견 증거일 뿐 실행 증거는 아닙니다."
         },
         {
-          "type": "paragraph",
-          "text": "Codex CLI 또는 IDE 대화 입력창, 시스템 셸이 아님"
-        },
-        {
           "type": "code",
+          "label": "Codex CLI 또는 IDE 대화 입력창, 시스템 셸이 아님",
           "language": "text",
           "code": "$todo-acceptance Check this Small Steps practice folder. Report the results without editing files.\n"
         },
@@ -1678,7 +1679,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "작동 방식은 2026-09-14에 "
@@ -1693,27 +1694,30 @@
               "text": "로 확인했습니다. 예제는 형식 검증을 하며 사이트 핵심과 고장 결과에는 실제 테스트 증거가 있습니다. 자동 선택과 각 Codex UI는 별도 실측이 필요합니다. 다음은 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Plugins",
-              "url": "https://mokaair.com/ko/life/codex-plugins"
+              "kind": "life",
+              "slug": "codex-plugins"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "MCP",
-              "url": "https://mokaair.com/ko/life/codex-mcp"
+              "kind": "life",
+              "slug": "codex-mcp"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "테스트와 리뷰",
-              "url": "https://mokaair.com/ko/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -1722,9 +1726,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

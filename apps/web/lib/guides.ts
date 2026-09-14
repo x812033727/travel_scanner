@@ -9,6 +9,7 @@ import {
   type RichContentBlock,
 } from "./content-blocks";
 import type { Locale } from "@/i18n/routing";
+import type { ArticleReference, SeriesNavigation } from "./guide-series";
 
 export const guideKinds = ["intel", "howto", "life"] as const;
 export type GuideKind = typeof guideKinds[number];
@@ -206,6 +207,8 @@ export type GuideArticleState = {
   /** The partner links the API resolved against its registry. Optional so an article from an
    *  older API, or a state built without one, simply draws no partner link. */
   partner_links?: GuidePartnerLink[];
+  article_links?: ArticleReference[];
+  series?: SeriesNavigation | null;
 };
 
 function isTopicList(value: unknown): value is GuideTopic[] {
@@ -317,13 +320,12 @@ const CJK = /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hang
 export function readingMinutes(document: GuideDocument): number {
   const parts: string[] = [];
   for (const block of document.blocks) {
-    if (block.type === "rich_paragraph") parts.push(...block.spans.map((span) => span.text));
-    if (block.type === "code") parts.push(block.code);
     if (block.type === "heading" || block.type === "paragraph" || block.type === "link") parts.push(block.text);
     if (block.type === "callout") parts.push(block.title ?? "", block.text);
     if (block.type === "list") parts.push(...block.items);
     if (block.type === "table") parts.push(...block.header, ...block.rows.flat());
     if (block.type === "image") parts.push(block.caption ?? "");
+    if (block.type === "rich_paragraph") parts.push(...block.inlines.map(node => node.text));
   }
   const text = parts.join(" ");
   const characters = (text.match(CJK) ?? []).length;

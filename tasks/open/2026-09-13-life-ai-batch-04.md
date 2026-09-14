@@ -8,18 +8,13 @@ owner:
 claimed_at:
 created_at: 2026-09-13T11:55:59Z
 completed_at:
-branch:
+branch: codex/claude-code-tutorial-center
 depends_on:
   - 2026-09-13-life-ai-series-tooling
   - 2026-09-13-life-ai-series-catalogue
   - 2026-09-13-life-ai-batch-01
 scope:
   - apps/api/app/guides/content/ai-coding-tools-overview-2026.json
-  - apps/api/app/guides/content/claude-code-getting-started.json
-  - apps/api/app/guides/content/claude-code-claude-md-guide.json
-  - apps/api/app/guides/content/claude-code-mcp-servers.json
-  - apps/api/app/guides/content/claude-code-hooks-and-skills.json
-  - apps/api/app/guides/content/claude-code-on-the-web.json
   - apps/api/app/guides/content/gemini-cli-getting-started.json
   - apps/api/app/guides/content/cursor-editor-guide.json
   - apps/api/app/guides/content/github-copilot-guide.json
@@ -33,11 +28,6 @@ scope:
   - apps/api/app/guides/content/ai-build-line-bot-tutorial.json
   - apps/api/app/guides/content/ai-build-personal-blog-tutorial.json
   - apps/web/public/guides/ai-coding-tools-overview-2026
-  - apps/web/public/guides/claude-code-getting-started
-  - apps/web/public/guides/claude-code-claude-md-guide
-  - apps/web/public/guides/claude-code-mcp-servers
-  - apps/web/public/guides/claude-code-hooks-and-skills
-  - apps/web/public/guides/claude-code-on-the-web
   - apps/web/public/guides/gemini-cli-getting-started
   - apps/web/public/guides/cursor-editor-guide
   - apps/web/public/guides/github-copilot-guide
@@ -113,4 +103,10 @@ npm run check:tasks
 
 - 前三批旅遊文章的經驗：兩篇一個代理會在半小時左右撞到額度，一篇一個代理、先寫檔再寫報告最穩。
 
-2026-09-14: The two Codex articles (codex-cli-getting-started and codex-cloud-tasks-github), including their public image directories, are transferred to 2026-09-14-codex-learning-series under the user's approved five-language Codex plan. This task was open and unowned at transfer; retain the other 18 articles here. Do not recreate the transferred files.
+## Claude Code 系列交接（2026-09-14）
+
+原列第 2–6 篇的五個 Claude Code slug 與素材範圍已轉交 2026-09-14-claude-code-tutorial-center；其內容改由完整 60 篇系列提供。這張票保留其餘十五篇，驗收篇數相應為十五篇，勿重建或覆蓋已轉交的五篇。
+
+## Codex 系列交接（2026-09-14）
+
+Codex CLI 與雲端兩篇及圖片範圍已移交 2026-09-14-codex-learning-series，使用核准的五語深入規格。連同 Claude Code 已移交的五篇，本票剩餘十三篇；不得重建移交檔案。

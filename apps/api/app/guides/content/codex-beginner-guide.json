@@ -24,9 +24,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -53,15 +59,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "本機工作使用你選定電腦的資料夾；雲端工作使用另外設定的環境。兩者即使叫同一個專案，也不代表未提交檔案會自動同步。手機遙控則需要可連線的主機。想先比較操作習慣，可讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "平臺選擇",
-              "url": "https://mokaair.com/zh-TW/life/codex-platforms-guide"
+              "kind": "life",
+              "slug": "codex-platforms-guide"
             },
             {
               "type": "text",
@@ -76,24 +83,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "先確認已有可用的 Codex 登入。還沒安裝時，先完成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "桌面版",
-              "url": "https://mokaair.com/zh-TW/life/codex-desktop-getting-started"
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
             },
             {
               "type": "text",
               "text": "或 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 入門",
-              "url": "https://mokaair.com/zh-TW/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
@@ -111,6 +120,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "markdown",
           "code": "# Orientation exercise\n\nThis folder contains a fictional packing list.\nThe list has exactly three items.\nNo website or package installation is required.\n"
         },
@@ -120,6 +130,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Notebook\nBottle\nUmbrella\n"
         },
@@ -134,6 +145,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Inspect this practice folder without changing files.\nReport the working directory, list the files, and read README.md and packing.txt.\nExplain what this project contains. Cite the filenames supporting your answer.\nIf a requested file is missing, say so instead of guessing.\n"
         },
@@ -148,20 +160,22 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "In packing.txt, replace the line Umbrella with Raincoat.\nPreserve the other two lines and leave README.md unchanged.\nDo not add files, install tools, or run a website.\nAfter editing, read packing.txt and report exactly what changed.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "接受相關檔案修改要求後，重新開啟 packing.txt。預期三行依序是 Notebook、Bottle、Raincoat；README.md 完全相同，沒有新套件或多餘檔案。若工具要求超出這個資料夾的授權，先看原因並縮小任務。本例不需要全面存取電腦。關於許可權的實際控制，另見"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "許可權與沙盒",
-              "url": "https://mokaair.com/zh-TW/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -180,15 +194,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "還原時在編輯器把 Raincoat 改回 Umbrella，儲存並再讀一次。不必執行全專案重設，也不要刪除整個檔案資料夾。中斷尚在執行的任務只能停止後續工作，已經寫入的文字仍要自行核對及還原。關閉對話也不等於把檔案恢復原狀，這是進入 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Git 教學",
-              "url": "https://mokaair.com/zh-TW/life/codex-git-basics"
+              "kind": "life",
+              "slug": "codex-git-basics"
             },
             {
               "type": "text",
@@ -207,24 +222,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "自己再做一次：把 Bottle 換成 Cup，要求保留順序與行數，再恢復原文。完成判準是能解釋資料在哪裡、指出真正修改的檔案、驗證三行內容，以及說明哪些動作沒有執行。接著讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "第一個小專案",
-              "url": "https://mokaair.com/zh-TW/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
               "text": "與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "需求描述",
-              "url": "https://mokaair.com/zh-TW/life/codex-prompting"
+              "kind": "life",
+              "slug": "codex-prompting"
             },
             {
               "type": "text",
@@ -234,7 +251,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "入口與產品名稱依 2026-09-14 的"
@@ -289,9 +306,15 @@
           "text": "圖中 01 是任務需求，02 是執行環境，03 是可驗證的檔案成果；三者對上，才能確認這次工作做在哪裡。"
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -336,9 +359,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -365,15 +394,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "本机工作使用你选定电脑的资料夹；云端工作使用另外设定的环境。两者即使叫同一个专案，也不代表未提交档案会自动同步。手机遥控则需要可连线的主机。想先比较操作习惯，可读"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "平台选择",
-              "url": "https://mokaair.com/zh-CN/life/codex-platforms-guide"
+              "kind": "life",
+              "slug": "codex-platforms-guide"
             },
             {
               "type": "text",
@@ -388,24 +418,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "先确认已有可用的 Codex 登入。还没安装时，先完成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "桌面版",
-              "url": "https://mokaair.com/zh-CN/life/codex-desktop-getting-started"
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
             },
             {
               "type": "text",
               "text": "或 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 入门",
-              "url": "https://mokaair.com/zh-CN/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
@@ -423,6 +455,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "markdown",
           "code": "# Orientation exercise\n\nThis folder contains a fictional packing list.\nThe list has exactly three items.\nNo website or package installation is required.\n"
         },
@@ -432,6 +465,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Notebook\nBottle\nUmbrella\n"
         },
@@ -446,6 +480,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Inspect this practice folder without changing files.\nReport the working directory, list the files, and read README.md and packing.txt.\nExplain what this project contains. Cite the filenames supporting your answer.\nIf a requested file is missing, say so instead of guessing.\n"
         },
@@ -460,20 +495,22 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "In packing.txt, replace the line Umbrella with Raincoat.\nPreserve the other two lines and leave README.md unchanged.\nDo not add files, install tools, or run a website.\nAfter editing, read packing.txt and report exactly what changed.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "接受相关档案修改要求后，重新开启 packing.txt。预期三行依序是 Notebook、Bottle、Raincoat；README.md 完全相同，没有新套件或多余档案。若工具要求超出这个资料夹的授权，先看原因并缩小任务。本例不需要全面存取电脑。关于许可权的实际控制，另见"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "许可权与沙盒",
-              "url": "https://mokaair.com/zh-CN/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -492,15 +529,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "还原时在编辑器把 Raincoat 改回 Umbrella，储存并再读一次。不必执行全专案重设，也不要删除整个档案资料夹。中断尚在执行的任务只能停止后续工作，已经写入的文字仍要自行核对及还原。关闭对话也不等于把档案恢复原状，这是进入 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Git 教学",
-              "url": "https://mokaair.com/zh-CN/life/codex-git-basics"
+              "kind": "life",
+              "slug": "codex-git-basics"
             },
             {
               "type": "text",
@@ -519,24 +557,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "自己再做一次：把 Bottle 换成 Cup，要求保留顺序与行数，再恢复原文。完成判准是能解释资料在哪里、指出真正修改的档案、验证三行内容，以及说明哪些动作没有执行。接著读"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "第一个小专案",
-              "url": "https://mokaair.com/zh-CN/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
               "text": "与"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "需求描述",
-              "url": "https://mokaair.com/zh-CN/life/codex-prompting"
+              "kind": "life",
+              "slug": "codex-prompting"
             },
             {
               "type": "text",
@@ -546,7 +586,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "入口与产品名称依 2026-09-14 的"
@@ -601,9 +641,15 @@
           "text": "图中 01 是任务需求，02 是执行环境，03 是可验证的档案成果；三者对上，才能确认这次工作做在哪里。"
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -648,9 +694,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -677,15 +729,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Local work uses a folder on the selected computer; cloud work uses a separately configured environment. Identical project names do not automatically synchronize uncommitted files. Mobile remote work also needs a reachable host. See "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "choosing a platform",
-              "url": "https://mokaair.com/en/life/codex-platforms-guide"
+              "kind": "life",
+              "slug": "codex-platforms-guide"
             },
             {
               "type": "text",
@@ -700,24 +753,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Make sure you can sign in to Codex. If it is not installed, complete "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "desktop setup",
-              "url": "https://mokaair.com/en/life/codex-desktop-getting-started"
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
             },
             {
               "type": "text",
               "text": " or "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI setup",
-              "url": "https://mokaair.com/en/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
@@ -735,6 +790,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "markdown",
           "code": "# Orientation exercise\n\nThis folder contains a fictional packing list.\nThe list has exactly three items.\nNo website or package installation is required.\n"
         },
@@ -744,6 +800,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Notebook\nBottle\nUmbrella\n"
         },
@@ -758,6 +815,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Inspect this practice folder without changing files.\nReport the working directory, list the files, and read README.md and packing.txt.\nExplain what this project contains. Cite the filenames supporting your answer.\nIf a requested file is missing, say so instead of guessing.\n"
         },
@@ -772,20 +830,22 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "In packing.txt, replace the line Umbrella with Raincoat.\nPreserve the other two lines and leave README.md unchanged.\nDo not add files, install tools, or run a website.\nAfter editing, read packing.txt and report exactly what changed.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "After allowing the relevant file edit, reopen packing.txt. The three lines should be Notebook, Bottle and Raincoat, with README.md unchanged and no packages or extra files. If a tool asks for access outside this folder, inspect the reason and narrow the task. This exercise does not need unrestricted access to the computer. See "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "permissions and sandboxing",
-              "url": "https://mokaair.com/en/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -804,15 +864,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "To restore the example, replace Raincoat with Umbrella in your editor, save and read it again. Do not reset an entire project or delete your documents directory. Interrupting a running task stops further work; text already written still needs checking and restoration. Closing a conversation does not undo file edits. Establish this habit before moving on to "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Git",
-              "url": "https://mokaair.com/en/life/codex-git-basics"
+              "kind": "life",
+              "slug": "codex-git-basics"
             },
             {
               "type": "text",
@@ -831,24 +892,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Repeat independently: replace Bottle with Cup while preserving order and line count, then restore it. You are finished when you can locate the data, identify the actual changed file, verify all three lines and say which actions were not performed. Continue to "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "your first project",
-              "url": "https://mokaair.com/en/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
               "text": " and "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "writing a request",
-              "url": "https://mokaair.com/en/life/codex-prompting"
+              "kind": "life",
+              "slug": "codex-prompting"
             },
             {
               "type": "text",
@@ -858,7 +921,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Interface and product terminology were checked against the "
@@ -913,9 +976,15 @@
           "text": "In the diagram, 01 is the task request, 02 the execution environment and 03 the verifiable file result. Match all three to locate the work."
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -960,9 +1029,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -989,15 +1064,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "ローカル作業は選択したコンピューターのフォルダー、クラウド作業は別に設定した環境を使います。同名のプロジェクトでも未コミットのファイルが自動同期するとは限りません。スマートフォンのリモート作業には接続可能なホストも必要です。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "入口の選び方",
-              "url": "https://mokaair.com/ja/life/codex-platforms-guide"
+              "kind": "life",
+              "slug": "codex-platforms-guide"
             },
             {
               "type": "text",
@@ -1012,24 +1088,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Codex にサインインできることを確認します。未導入なら"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "デスクトップ版",
-              "url": "https://mokaair.com/ja/life/codex-desktop-getting-started"
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
             },
             {
               "type": "text",
               "text": "か "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 入門",
-              "url": "https://mokaair.com/ja/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
@@ -1047,6 +1125,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "markdown",
           "code": "# Orientation exercise\n\nThis folder contains a fictional packing list.\nThe list has exactly three items.\nNo website or package installation is required.\n"
         },
@@ -1056,6 +1135,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Notebook\nBottle\nUmbrella\n"
         },
@@ -1070,6 +1150,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Inspect this practice folder without changing files.\nReport the working directory, list the files, and read README.md and packing.txt.\nExplain what this project contains. Cite the filenames supporting your answer.\nIf a requested file is missing, say so instead of guessing.\n"
         },
@@ -1084,20 +1165,22 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "In packing.txt, replace the line Umbrella with Raincoat.\nPreserve the other two lines and leave README.md unchanged.\nDo not add files, install tools, or run a website.\nAfter editing, read packing.txt and report exactly what changed.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "必要なファイル変更を許可した後、packing.txt を開き直します。Notebook、Bottle、Raincoat の三行になり、README.md は同じで、パッケージや余分なファイルが増えていないことを確認します。フォルダー外の権限を求められたら理由を読み、範囲を絞ってください。この実習にコンピューター全体へのアクセスは不要です。制御方法は"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "権限とサンドボックス",
-              "url": "https://mokaair.com/ja/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -1116,15 +1199,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "復元するにはエディターで Raincoat を Umbrella に戻し、保存して読み直します。プロジェクト全体のリセットや書類フォルダーの削除は不要です。実行中のタスクを中断しても、すでに書かれた内容は確認と復元が必要です。会話を閉じてもファイル変更は元に戻りません。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Git",
-              "url": "https://mokaair.com/ja/life/codex-git-basics"
+              "kind": "life",
+              "slug": "codex-git-basics"
             },
             {
               "type": "text",
@@ -1143,24 +1227,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "自分で Bottle を Cup に変え、順序と行数を保ってから復元してみましょう。データの場所、変更した実ファイル、三行の内容、実施していない操作を説明できれば完了です。次は"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "最初の小さなプロジェクト",
-              "url": "https://mokaair.com/ja/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
               "text": "と"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "依頼の書き方",
-              "url": "https://mokaair.com/ja/life/codex-prompting"
+              "kind": "life",
+              "slug": "codex-prompting"
             },
             {
               "type": "text",
@@ -1170,7 +1256,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "入口と製品名は 2026-09-14 の"
@@ -1225,9 +1311,15 @@
           "text": "図の 01 は依頼、02 は実行環境、03 は検証できるファイル成果です。三つを照合して作業場所を確認します。"
         },
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1272,9 +1364,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1301,15 +1399,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "로컬 작업은 선택한 컴퓨터의 폴더를, 클라우드 작업은 별도로 구성한 환경을 사용합니다. 프로젝트 이름이 같아도 커밋하지 않은 파일까지 자동 동기화되지는 않습니다. 휴대전화 원격 작업에는 연결 가능한 호스트도 필요합니다. 방식 비교는 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "플랫폼 선택",
-              "url": "https://mokaair.com/ko/life/codex-platforms-guide"
+              "kind": "life",
+              "slug": "codex-platforms-guide"
             },
             {
               "type": "text",
@@ -1324,24 +1423,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "먼저 Codex에 로그인할 수 있는지 확인하세요. 설치 전이라면 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "데스크톱 설정",
-              "url": "https://mokaair.com/ko/life/codex-desktop-getting-started"
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
             },
             {
               "type": "text",
               "text": " 또는 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 입문",
-              "url": "https://mokaair.com/ko/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
@@ -1359,6 +1460,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "markdown",
           "code": "# Orientation exercise\n\nThis folder contains a fictional packing list.\nThe list has exactly three items.\nNo website or package installation is required.\n"
         },
@@ -1368,6 +1470,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Notebook\nBottle\nUmbrella\n"
         },
@@ -1382,6 +1485,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Inspect this practice folder without changing files.\nReport the working directory, list the files, and read README.md and packing.txt.\nExplain what this project contains. Cite the filenames supporting your answer.\nIf a requested file is missing, say so instead of guessing.\n"
         },
@@ -1396,20 +1500,22 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "In packing.txt, replace the line Umbrella with Raincoat.\nPreserve the other two lines and leave README.md unchanged.\nDo not add files, install tools, or run a website.\nAfter editing, read packing.txt and report exactly what changed.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "해당 파일 수정을 허용한 뒤 packing.txt를 다시 엽니다. Notebook, Bottle, Raincoat의 세 줄이어야 하며 README.md는 그대로이고 추가 패키지나 파일이 없어야 합니다. 도구가 폴더 밖의 접근 권한을 요구하면 이유를 확인하고 범위를 좁히세요. 이 실습에는 컴퓨터 전체 접근이 필요 없습니다. 실제 제어 방법은 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "권한과 샌드박스",
-              "url": "https://mokaair.com/ko/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -1428,15 +1534,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "복원하려면 편집기에서 Raincoat를 Umbrella로 되돌리고 저장한 뒤 다시 읽습니다. 프로젝트 전체를 초기화하거나 문서 폴더를 삭제할 필요는 없습니다. 실행 중인 작업을 중단해도 이미 기록된 내용은 직접 확인하고 복원해야 합니다. 대화를 닫는다고 파일 변경이 취소되지는 않습니다. "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Git",
-              "url": "https://mokaair.com/ko/life/codex-git-basics"
+              "kind": "life",
+              "slug": "codex-git-basics"
             },
             {
               "type": "text",
@@ -1455,24 +1562,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "이번에는 직접 Bottle을 Cup으로 바꾸되 순서와 줄 수를 유지하고 다시 복원하세요. 데이터 위치, 실제 수정 파일, 세 줄의 내용, 실행하지 않은 작업을 설명할 수 있으면 완료입니다. 다음으로 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "첫 프로젝트",
-              "url": "https://mokaair.com/ko/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
               "text": "와 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "요청 작성",
-              "url": "https://mokaair.com/ko/life/codex-prompting"
+              "kind": "life",
+              "slug": "codex-prompting"
             },
             {
               "type": "text",
@@ -1482,7 +1591,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "화면 및 제품 명칭은 2026-09-14의 "
@@ -1537,9 +1646,15 @@
           "text": "그림의 01은 작업 요청, 02는 실행 환경, 03은 검증 가능한 파일 결과입니다. 세 가지를 맞춰 작업 위치를 확인합니다."
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

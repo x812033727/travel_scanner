@@ -103,20 +103,21 @@ describe("permissions", () => {
 describe("the workspace", () => {
   it("edits and saves structured links and literal code without converting legacy text", async () => {
     await open();
-    fireEvent.click(screen.getByRole("button", { name: /新增.*程式碼/ }));
-    fireEvent.change(screen.getByLabelText("程式語言"), { target: { value: "html" } });
+    fireEvent.click(screen.getByRole("button", { name: /新增.*程式碼範例/ }));
+    fireEvent.change(screen.getByLabelText("範例語言"), { target: { value: "html" } });
     const literal = "<script>example()</script>\n  literal";
-    fireEvent.change(screen.getByLabelText("程式碼"), { target: { value: literal } });
-    fireEvent.click(screen.getByRole("button", { name: /新增.*含連結段落/ }));
-    fireEvent.click(screen.getByRole("button", { name: "新增連結" }));
-    fireEvent.change(screen.getByDisplayValue("https://"), { target: { value: "https://learn.chatgpt.com/docs/app" } });
+    fireEvent.change(screen.getByLabelText("程式碼範例"), { target: { value: literal } });
+    fireEvent.click(screen.getByRole("button", { name: /新增.*段落與文字連結/ }));
+    fireEvent.click(screen.getByRole("button", { name: "加入片段" }));
+    fireEvent.change(screen.getByLabelText("文章類型 2"), { target: { value: "link" } });
+    fireEvent.change(screen.getByLabelText("網址"), { target: { value: "https://learn.chatgpt.com/docs/app" } });
     fireEvent.click(screen.getByRole("button", { name: "儲存草稿" }));
     await waitFor(() => expect(mocks.api.mock.calls.some(([, init]) => init?.method === "PUT")).toBe(true));
     const call = mocks.api.mock.calls.find(([, init]) => init?.method === "PUT")!;
     const blocks = JSON.parse(call[1].body).document.blocks;
     expect(blocks[0]).toEqual({ type: "paragraph", text: "Skyliner。" });
-    expect(blocks[1]).toEqual({ type: "code", language: "html", code: literal });
-    expect(blocks[2].spans[1]).toMatchObject({ type: "link", url: "https://learn.chatgpt.com/docs/app" });
+    expect(blocks[1]).toEqual({ type: "code", label: "", language: "html", code: literal });
+    expect(blocks[2].inlines[1]).toMatchObject({ type: "link", url: "https://learn.chatgpt.com/docs/app" });
   });
   it("starts on the list and opens an article through the URL", async () => {
     render(<AdminGuidesPanel />);

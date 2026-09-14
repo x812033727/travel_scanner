@@ -24,9 +24,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -57,6 +63,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "markdown",
           "code": "# Small Steps notebook\n\n## Purpose\n\nKeep a short record of this practice project.\n\n## Working steps\n\n1. Read the request.\n2. Make one focused change.\n3. Verify the result.\n\n- Keep original files.\n- Record checks that have not run.\n\n[Open task notes](./notes.md)\n\n## Example command\n\n```sh\nnode --version\n```\n\n> This command is an example, not a record of execution.\n"
         },
@@ -66,6 +73,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "markdown",
           "code": "# Task notes\n\n[Back to the notebook](./README.md)\n\n## Accepted result\n\n- **Completed** shows only finished tasks.\n- `Read` is the sample task title.\n- Empty titles must be rejected.\n\n## Pending checks\n\nThe browser check has not run yet.\n"
         },
@@ -75,8 +83,25 @@
           "text": "步驟二：看懂六種常用語法"
         },
         {
-          "type": "paragraph",
-          "text": "# 後面有空格，表示主要標題；## 是下一層。這份筆記只有一個主標題，讓閱讀者先知道文件用途，再看段落。把所有句子都寫成大標題會失去結構，不是越醒目越好。標題文字改了以後，若其他地方有連到該章節，也要一起檢查；章節網址的產生方式可能因預覽工具而異。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "code",
+              "text": "#"
+            },
+            {
+              "type": "text",
+              "text": " 後面有空格，表示主要標題；"
+            },
+            {
+              "type": "code",
+              "text": "##"
+            },
+            {
+              "type": "text",
+              "text": " 是下一層。這份筆記只有一個主標題，讓閱讀者先知道文件用途，再看段落。把所有句子都寫成大標題會失去結構，不是越醒目越好。標題文字改了以後，若其他地方有連到該章節，也要一起檢查；章節網址的產生方式可能因預覽工具而異。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -105,15 +130,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "如果想多練一次，先複製 README.md 作為備份，只刪除命令區塊的結尾反引號，觀察後面的引用如何被包含進去，再把分隔線補回並比對備份。不要在同一次練習同時改路徑、標題與結尾，否則不知道是哪個變動造成結果。這個小故障練習也適合用來學"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "除錯流程",
-              "url": "https://mokaair.com/zh-TW/life/codex-debugging"
+              "kind": "life",
+              "slug": "codex-debugging"
             },
             {
               "type": "text",
@@ -128,24 +154,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "用桌面版、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI",
-              "url": "https://mokaair.com/zh-TW/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
               "text": "或"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "IDE 擴充套件",
-              "url": "https://mokaair.com/zh-TW/life/codex-ide-getting-started"
+              "kind": "life",
+              "slug": "codex-ide-getting-started"
             },
             {
               "type": "text",
@@ -155,6 +183,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Read README.md and notes.md in this practice folder. Explain the purpose, the accepted result, and the checks explicitly still pending. Identify each source file. Verify both relative file links point to existing files. Do not edit anything or execute the example command.\n"
         },
@@ -199,24 +228,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "本次沒有建立 AGENTS.md，因此不能聲稱 Codex 已自動載入這份規則。接著依"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md 專篇",
-              "url": "https://mokaair.com/zh-TW/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
               "text": "設定作用範圍與驗證，技能則看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "SKILL.md",
-              "url": "https://mokaair.com/zh-TW/life/codex-skills"
+              "kind": "life",
+              "slug": "codex-skills"
             },
             {
               "type": "text",
@@ -229,9 +260,15 @@
           "text": "完成時應有兩個真實 .md 檔、雙向可用連結、正確的程式碼區塊、修復過的一次缺檔或缺結尾故障，以及 Codex 能分開辨認已寫條件與未跑檢查的結果。預覽可能因工具樣式不同而有字型與間距差異，重點是結構、內容和目的地一致。本文查證 VS Code 官方預覽與連結文件；範例內容是原創，網站編譯與複製會另外核對內外層程式碼分隔，避免多語轉換改動樣本。"
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -276,9 +313,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -309,6 +352,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "markdown",
           "code": "# Small Steps notebook\n\n## Purpose\n\nKeep a short record of this practice project.\n\n## Working steps\n\n1. Read the request.\n2. Make one focused change.\n3. Verify the result.\n\n- Keep original files.\n- Record checks that have not run.\n\n[Open task notes](./notes.md)\n\n## Example command\n\n```sh\nnode --version\n```\n\n> This command is an example, not a record of execution.\n"
         },
@@ -318,6 +362,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "markdown",
           "code": "# Task notes\n\n[Back to the notebook](./README.md)\n\n## Accepted result\n\n- **Completed** shows only finished tasks.\n- `Read` is the sample task title.\n- Empty titles must be rejected.\n\n## Pending checks\n\nThe browser check has not run yet.\n"
         },
@@ -327,8 +372,25 @@
           "text": "步骤二：看懂六种常用语法"
         },
         {
-          "type": "paragraph",
-          "text": "# 后面有空格，表示主要标题；## 是下一层。这份笔记只有一个主标题，让阅读者先知道文件用途，再看段落。把所有句子都写成大标题会失去结构，不是越醒目越好。标题文字改了以后，若其他地方有连到该章节，也要一起检查；章节网址的产生方式可能因预览工具而异。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "code",
+              "text": "#"
+            },
+            {
+              "type": "text",
+              "text": " 后面有空格，表示主要标题；"
+            },
+            {
+              "type": "code",
+              "text": "##"
+            },
+            {
+              "type": "text",
+              "text": " 是下一层。这份笔记只有一个主标题，让阅读者先知道文件用途，再看段落。把所有句子都写成大标题会失去结构，不是越醒目越好。标题文字改了以后，若其他地方有连到该章节，也要一起检查；章节网址的产生方式可能因预览工具而异。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -357,15 +419,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "如果想多练一次，先复制 README.md 作为备份，只删除命令区块的结尾反引号，观察后面的引用如何被包含进去，再把分隔线补回并比对备份。不要在同一次练习同时改路径、标题与结尾，否则不知道是哪个变动造成结果。这个小故障练习也适合用来学"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "除错流程",
-              "url": "https://mokaair.com/zh-CN/life/codex-debugging"
+              "kind": "life",
+              "slug": "codex-debugging"
             },
             {
               "type": "text",
@@ -380,24 +443,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "用桌面版、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI",
-              "url": "https://mokaair.com/zh-CN/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
               "text": "或"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "IDE 扩充套件",
-              "url": "https://mokaair.com/zh-CN/life/codex-ide-getting-started"
+              "kind": "life",
+              "slug": "codex-ide-getting-started"
             },
             {
               "type": "text",
@@ -407,6 +472,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Read README.md and notes.md in this practice folder. Explain the purpose, the accepted result, and the checks explicitly still pending. Identify each source file. Verify both relative file links point to existing files. Do not edit anything or execute the example command.\n"
         },
@@ -451,24 +517,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "本次没有建立 AGENTS.md，因此不能声称 Codex 已自动载入这份规则。接著依"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md 专篇",
-              "url": "https://mokaair.com/zh-CN/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
               "text": "设定作用范围与验证，技能则看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "SKILL.md",
-              "url": "https://mokaair.com/zh-CN/life/codex-skills"
+              "kind": "life",
+              "slug": "codex-skills"
             },
             {
               "type": "text",
@@ -481,9 +549,15 @@
           "text": "完成时应有两个真实 .md 档、双向可用连结、正确的程式码区块、修复过的一次缺档或缺结尾故障，以及 Codex 能分开辨认已写条件与未跑检查的结果。预览可能因工具样式不同而有字型与间距差异，重点是结构、内容和目的地一致。本文查证 VS Code 官方预览与连结文件；范例内容是原创，网站编译与复制会另外核对内外层程式码分隔，避免多语转换改动样本。"
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -528,9 +602,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -561,6 +641,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "markdown",
           "code": "# Small Steps notebook\n\n## Purpose\n\nKeep a short record of this practice project.\n\n## Working steps\n\n1. Read the request.\n2. Make one focused change.\n3. Verify the result.\n\n- Keep original files.\n- Record checks that have not run.\n\n[Open task notes](./notes.md)\n\n## Example command\n\n```sh\nnode --version\n```\n\n> This command is an example, not a record of execution.\n"
         },
@@ -570,6 +651,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "markdown",
           "code": "# Task notes\n\n[Back to the notebook](./README.md)\n\n## Accepted result\n\n- **Completed** shows only finished tasks.\n- `Read` is the sample task title.\n- Empty titles must be rejected.\n\n## Pending checks\n\nThe browser check has not run yet.\n"
         },
@@ -609,15 +691,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "For another test, back up README.md, remove only the closing code fence, observe the quote becoming code, then restore the fence and compare the backup. Change one thing at a time rather than paths, headings and fences together. This small failure exercise also introduces "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "debugging",
-              "url": "https://mokaair.com/en/life/codex-debugging"
+              "kind": "life",
+              "slug": "codex-debugging"
             },
             {
               "type": "text",
@@ -632,24 +715,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Open codex-md-lab in desktop, "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI",
-              "url": "https://mokaair.com/en/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
               "text": " or the "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "IDE extension",
-              "url": "https://mokaair.com/en/life/codex-ide-getting-started"
+              "kind": "life",
+              "slug": "codex-ide-getting-started"
             },
             {
               "type": "text",
@@ -659,6 +744,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Read README.md and notes.md in this practice folder. Explain the purpose, the accepted result, and the checks explicitly still pending. Identify each source file. Verify both relative file links point to existing files. Do not edit anything or execute the example command.\n"
         },
@@ -703,24 +789,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "This exercise creates no AGENTS.md, so it does not establish automatic rule loading. Continue to "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/en/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
               "text": " for scope and validation, or "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "SKILL.md",
-              "url": "https://mokaair.com/en/life/codex-skills"
+              "kind": "life",
+              "slug": "codex-skills"
             },
             {
               "type": "text",
@@ -733,9 +821,15 @@
           "text": "Finish with two real .md files, bidirectional links, correct code formatting, a repaired missing-link or fence failure, and an answer that distinguishes written criteria from unrun checks. Fonts and spacing may vary; structure, content and destinations should agree. VS Code preview/link behavior is documentation-checked. The original samples also receive compiler/copy checks for nested fences and unchanged code across languages."
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -780,9 +874,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -813,6 +913,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "markdown",
           "code": "# Small Steps notebook\n\n## Purpose\n\nKeep a short record of this practice project.\n\n## Working steps\n\n1. Read the request.\n2. Make one focused change.\n3. Verify the result.\n\n- Keep original files.\n- Record checks that have not run.\n\n[Open task notes](./notes.md)\n\n## Example command\n\n```sh\nnode --version\n```\n\n> This command is an example, not a record of execution.\n"
         },
@@ -822,6 +923,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "markdown",
           "code": "# Task notes\n\n[Back to the notebook](./README.md)\n\n## Accepted result\n\n- **Completed** shows only finished tasks.\n- `Read` is the sample task title.\n- Empty titles must be rejected.\n\n## Pending checks\n\nThe browser check has not run yet.\n"
         },
@@ -831,8 +933,17 @@
           "text": "手順2：六つの基本表現を理解する"
         },
         {
-          "type": "paragraph",
-          "text": "# と空白は主見出し、## は次の階層です。この筆記は主題一つの下に節を置きます。全てを大見出しにすると構造を失います。見出しを改名したら関連リンクも確認します。見出しアンカーは表示ツールで異なる場合があります。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "code",
+              "text": "#"
+            },
+            {
+              "type": "text",
+              "text": " と空白は主見出し、## は次の階層です。この筆記は主題一つの下に節を置きます。全てを大見出しにすると構造を失います。見出しを改名したら関連リンクも確認します。見出しアンカーは表示ツールで異なる場合があります。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -861,15 +972,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "追加練習では README.md を保存コピーして終了フェンスだけを消し、注記がコードに入る様子を見て戻します。場所、見出し、区切りを同時に変えず一つずつ確認します。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "デバッグ",
-              "url": "https://mokaair.com/ja/life/codex-debugging"
+              "kind": "life",
+              "slug": "codex-debugging"
             },
             {
               "type": "text",
@@ -884,24 +996,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "デスクトップ、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI",
-              "url": "https://mokaair.com/ja/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "IDE",
-              "url": "https://mokaair.com/ja/life/codex-ide-getting-started"
+              "kind": "life",
+              "slug": "codex-ide-getting-started"
             },
             {
               "type": "text",
@@ -911,6 +1025,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Read README.md and notes.md in this practice folder. Explain the purpose, the accepted result, and the checks explicitly still pending. Identify each source file. Verify both relative file links point to existing files. Do not edit anything or execute the example command.\n"
         },
@@ -955,24 +1070,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "今回は AGENTS.md を作っていないので自動読込の確認ではありません。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/ja/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
               "text": "で範囲と検証、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "SKILL.md",
-              "url": "https://mokaair.com/ja/life/codex-skills"
+              "kind": "life",
+              "slug": "codex-skills"
             },
             {
               "type": "text",
@@ -985,9 +1102,15 @@
           "text": "二つの実ファイル、双方向リンク、コード表示、欠落の修復、条件と未実行を区別する返答を残します。字形や余白が違っても構造、内容、行き先が一致すればよく、VS Code の表示とリンクは公式資料で確認しました。独自例は入れ子フェンスと多言語でのコード保持をコンパイル・コピーでも検証します。"
         },
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1032,9 +1155,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1065,6 +1194,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "markdown",
           "code": "# Small Steps notebook\n\n## Purpose\n\nKeep a short record of this practice project.\n\n## Working steps\n\n1. Read the request.\n2. Make one focused change.\n3. Verify the result.\n\n- Keep original files.\n- Record checks that have not run.\n\n[Open task notes](./notes.md)\n\n## Example command\n\n```sh\nnode --version\n```\n\n> This command is an example, not a record of execution.\n"
         },
@@ -1074,6 +1204,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "markdown",
           "code": "# Task notes\n\n[Back to the notebook](./README.md)\n\n## Accepted result\n\n- **Completed** shows only finished tasks.\n- `Read` is the sample task title.\n- Empty titles must be rejected.\n\n## Pending checks\n\nThe browser check has not run yet.\n"
         },
@@ -1083,8 +1214,17 @@
           "text": "2단계: 여섯 가지 기본 문법 이해하기"
         },
         {
-          "type": "paragraph",
-          "text": "# 뒤 공백은 주 제목, ##는 다음 계층입니다. 여기서는 주 제목 하나 아래 절을 구성합니다. 모든 문장을 큰 제목으로 만들면 구조가 사라집니다. 제목을 바꾼 뒤 해당 링크도 확인하며 앵커 생성은 렌더러마다 다를 수 있습니다."
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "code",
+              "text": "#"
+            },
+            {
+              "type": "text",
+              "text": " 뒤 공백은 주 제목, ##는 다음 계층입니다. 여기서는 주 제목 하나 아래 절을 구성합니다. 모든 문장을 큰 제목으로 만들면 구조가 사라집니다. 제목을 바꾼 뒤 해당 링크도 확인하며 앵커 생성은 렌더러마다 다를 수 있습니다."
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -1113,15 +1253,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "추가로 README.md를 백업하고 끝 코드 구분자만 지워 인용이 코드로 들어가는 것을 본 뒤 복원합니다. 경로, 제목, 구분자를 동시에 바꾸지 말고 하나씩 확인합니다. "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "디버깅",
-              "url": "https://mokaair.com/ko/life/codex-debugging"
+              "kind": "life",
+              "slug": "codex-debugging"
             },
             {
               "type": "text",
@@ -1136,24 +1277,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "데스크톱, "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI",
-              "url": "https://mokaair.com/ko/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "IDE",
-              "url": "https://mokaair.com/ko/life/codex-ide-getting-started"
+              "kind": "life",
+              "slug": "codex-ide-getting-started"
             },
             {
               "type": "text",
@@ -1163,6 +1306,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Read README.md and notes.md in this practice folder. Explain the purpose, the accepted result, and the checks explicitly still pending. Identify each source file. Verify both relative file links point to existing files. Do not edit anything or execute the example command.\n"
         },
@@ -1207,24 +1351,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "이번에는 AGENTS.md를 만들지 않아 자동 규칙 로드를 검증한 것이 아닙니다. "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/ko/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
               "text": "에서 범위/검증, "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "SKILL.md",
-              "url": "https://mokaair.com/ko/life/codex-skills"
+              "kind": "life",
+              "slug": "codex-skills"
             },
             {
               "type": "text",
@@ -1237,9 +1383,15 @@
           "text": "실제 파일 두 개, 양방향 링크, 코드 표시, 누락 오류 복구, 조건과 미실행을 구분한 응답을 남깁니다. 글꼴/간격이 달라도 구조, 내용, 목적지는 같아야 합니다. VS Code 표시/링크는 공식 문서로 확인했고 원본 예제의 중첩 구분자와 다국어 코드 보존도 컴파일/복사로 검증합니다."
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

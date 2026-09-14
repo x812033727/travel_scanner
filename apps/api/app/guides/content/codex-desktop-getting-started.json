@@ -24,9 +24,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -40,15 +46,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "桌面應用程式負責讓你管理任務、檔案與成果。模型負責理解需求；任務則保存這一次工作的對話與環境。開始之前先分清楚這三件事，才不會把「換模型」誤認成「換到另一個資料夾」。需要比較入口可先看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Codex 入門",
-              "url": "https://mokaair.com/zh-TW/life/codex-beginner-guide"
+              "kind": "life",
+              "slug": "codex-beginner-guide"
             },
             {
               "type": "text",
@@ -63,15 +70,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "準備能使用 Codex 的 ChatGPT 帳號及網路，依"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "帳號與用量",
-              "url": "https://mokaair.com/zh-TW/life/codex-account-usage"
+              "kind": "life",
+              "slug": "codex-account-usage"
             },
             {
               "type": "text",
@@ -81,7 +89,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "下載"
@@ -104,7 +112,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Windows：從 "
@@ -121,11 +129,8 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "Windows PowerShell；選用的官方安裝方式"
-        },
-        {
           "type": "code",
+          "label": "Windows PowerShell；選用的官方安裝方式",
           "language": "powershell",
           "code": "winget install --id 9PLM9XGG6VKS -s msstore\n"
         },
@@ -135,7 +140,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Linux：桌面版目前是預覽版，官方列出 Ubuntu 24.04／26.04 LTS、Debian 13、Fedora 43／44，提供 x64 與 ARM64。先在終端機確認系統與處理器，再從"
@@ -152,11 +157,8 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "Linux 終端機；確認發行版與架構"
-        },
-        {
           "type": "code",
+          "label": "Linux 終端機；確認發行版與架構",
           "language": "bash",
           "code": "cat /etc/os-release\nuname -m\n"
         },
@@ -212,25 +214,23 @@
           "text": "建立 New chat 後先做唯讀確認。把下列文字貼在 Codex 任務輸入框，不是 PowerShell 或 Terminal。這一步能提早發現選錯專案、檔案沒解壓縮，以及任務開在另一台主機等問題。"
         },
         {
-          "type": "paragraph",
-          "text": "Codex 桌面版，新任務輸入框；先確認工作位置"
-        },
-        {
           "type": "code",
+          "label": "Codex 桌面版，新任務輸入框；先確認工作位置",
           "language": "text",
           "code": "Before editing, report the current working folder and list the exercise files.\nRead index.html and explain how the page loads its JavaScript.\nDo not change files. Tell me if the expected five files are missing.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "預期指出實際資料夾，並找到 app.js 及 core.mjs 的關係。與你的檔案總管比對路徑，不要只看到「我已了解專案」就跳過。若應用程式開了工作樹副本，請先核對副本位置；詳見"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Worktree",
-              "url": "https://mokaair.com/zh-TW/life/codex-worktrees"
+              "kind": "life",
+              "slug": "codex-worktrees"
             },
             {
               "type": "text",
@@ -244,11 +244,8 @@
           "text": "第三步：交付一個可驗收的小修改"
         },
         {
-          "type": "paragraph",
-          "text": "同一個 Codex 桌面任務；完整需求"
-        },
-        {
           "type": "code",
+          "label": "同一個 Codex 桌面任務；完整需求",
           "language": "text",
           "code": "Update this Small Steps practice website.\nChange the main heading to \"Small steps, clear progress.\"\nUse a dark blue heading color with readable contrast on the existing background.\nKeep the form labels, task data format, storage key and behavior unchanged.\nDo not add dependencies or external services.\nShow the changed files, explain the diff and report checks actually performed.\n"
         },
@@ -266,20 +263,14 @@
           "text": "在練習資料夾開終端機，Windows 使用下列命令。服務會持續占用這個終端機，這是正常狀態；另開瀏覽器，不要因為沒有回到提示符號就再次啟動。"
         },
         {
-          "type": "paragraph",
-          "text": "Windows PowerShell；codex-practice 資料夾"
-        },
-        {
           "type": "code",
+          "label": "Windows PowerShell；codex-practice 資料夾",
           "language": "powershell",
           "code": "py -m http.server 4173 --bind 127.0.0.1\n"
         },
         {
-          "type": "paragraph",
-          "text": "macOS / Linux 終端機；codex-practice 資料夾"
-        },
-        {
           "type": "code",
+          "label": "macOS / Linux 終端機；codex-practice 資料夾",
           "language": "bash",
           "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -323,7 +314,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "安裝與功能依"
@@ -347,27 +338,30 @@
               "text": "及 Linux 文件於 2026-09-14 查證。教材網站已在 Windows／Edge 153 的 360、390、1280px 視窗驗證；這些是網頁成果截圖，不是桌面產品介面、實體手機或 macOS／Linux 安裝實測。接著可讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/zh-TW/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Plan 模式",
-              "url": "https://mokaair.com/zh-TW/life/codex-plan-mode"
+              "kind": "life",
+              "slug": "codex-plan-mode"
             },
             {
               "type": "text",
               "text": "與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Git 差異",
-              "url": "https://mokaair.com/zh-TW/life/codex-git-basics"
+              "kind": "life",
+              "slug": "codex-git-basics"
             },
             {
               "type": "text",
@@ -376,9 +370,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -457,9 +457,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -473,15 +479,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "桌面应用程式负责让你管理任务、档案与成果。模型负责理解需求；任务则保存这一次工作的对话与环境。开始之前先分清楚这三件事，才不会把「换模型」误认成「换到另一个资料夹」。需要比较入口可先看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Codex 入门",
-              "url": "https://mokaair.com/zh-CN/life/codex-beginner-guide"
+              "kind": "life",
+              "slug": "codex-beginner-guide"
             },
             {
               "type": "text",
@@ -496,15 +503,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "准备能使用 Codex 的 ChatGPT 帐号及网路，依"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "帐号与用量",
-              "url": "https://mokaair.com/zh-CN/life/codex-account-usage"
+              "kind": "life",
+              "slug": "codex-account-usage"
             },
             {
               "type": "text",
@@ -514,7 +522,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "下载"
@@ -537,7 +545,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Windows：从 "
@@ -554,11 +562,8 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "Windows PowerShell；选用的官方安装方式"
-        },
-        {
           "type": "code",
+          "label": "Windows PowerShell；选用的官方安装方式",
           "language": "powershell",
           "code": "winget install --id 9PLM9XGG6VKS -s msstore\n"
         },
@@ -568,7 +573,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Linux：桌面版目前是预览版，官方列出 Ubuntu 24.04／26.04 LTS、Debian 13、Fedora 43／44，提供 x64 与 ARM64。先在终端机确认系统与处理器，再从"
@@ -585,11 +590,8 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "Linux 终端机；确认发行版与架构"
-        },
-        {
           "type": "code",
+          "label": "Linux 终端机；确认发行版与架构",
           "language": "bash",
           "code": "cat /etc/os-release\nuname -m\n"
         },
@@ -645,25 +647,23 @@
           "text": "建立 New chat 后先做唯读确认。把下列文字贴在 Codex 任务输入框，不是 PowerShell 或 Terminal。这一步能提早发现选错专案、档案没解压缩，以及任务开在另一台主机等问题。"
         },
         {
-          "type": "paragraph",
-          "text": "Codex 桌面版，新任务输入框；先确认工作位置"
-        },
-        {
           "type": "code",
+          "label": "Codex 桌面版，新任务输入框；先确认工作位置",
           "language": "text",
           "code": "Before editing, report the current working folder and list the exercise files.\nRead index.html and explain how the page loads its JavaScript.\nDo not change files. Tell me if the expected five files are missing.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "预期指出实际资料夹，并找到 app.js 及 core.mjs 的关系。与你的档案总管比对路径，不要只看到「我已了解专案」就跳过。若应用程式开了工作树副本，请先核对副本位置；详见"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Worktree",
-              "url": "https://mokaair.com/zh-CN/life/codex-worktrees"
+              "kind": "life",
+              "slug": "codex-worktrees"
             },
             {
               "type": "text",
@@ -677,11 +677,8 @@
           "text": "第三步：交付一个可验收的小修改"
         },
         {
-          "type": "paragraph",
-          "text": "同一个 Codex 桌面任务；完整需求"
-        },
-        {
           "type": "code",
+          "label": "同一个 Codex 桌面任务；完整需求",
           "language": "text",
           "code": "Update this Small Steps practice website.\nChange the main heading to \"Small steps, clear progress.\"\nUse a dark blue heading color with readable contrast on the existing background.\nKeep the form labels, task data format, storage key and behavior unchanged.\nDo not add dependencies or external services.\nShow the changed files, explain the diff and report checks actually performed.\n"
         },
@@ -699,20 +696,14 @@
           "text": "在练习资料夹开终端机，Windows 使用下列命令。服务会持续占用这个终端机，这是正常状态；另开浏览器，不要因为没有回到提示符号就再次启动。"
         },
         {
-          "type": "paragraph",
-          "text": "Windows PowerShell；codex-practice 资料夹"
-        },
-        {
           "type": "code",
+          "label": "Windows PowerShell；codex-practice 资料夹",
           "language": "powershell",
           "code": "py -m http.server 4173 --bind 127.0.0.1\n"
         },
         {
-          "type": "paragraph",
-          "text": "macOS / Linux 终端机；codex-practice 资料夹"
-        },
-        {
           "type": "code",
+          "label": "macOS / Linux 终端机；codex-practice 资料夹",
           "language": "bash",
           "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -756,7 +747,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "安装与功能依"
@@ -780,27 +771,30 @@
               "text": "及 Linux 文件于 2026-09-14 查证。教材网站已在 Windows／Edge 153 的 360、390、1280px 视窗验证；这些是网页成果截图，不是桌面产品介面、实体手机或 macOS／Linux 安装实测。接著可读"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/zh-CN/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Plan 模式",
-              "url": "https://mokaair.com/zh-CN/life/codex-plan-mode"
+              "kind": "life",
+              "slug": "codex-plan-mode"
             },
             {
               "type": "text",
               "text": "与"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Git 差异",
-              "url": "https://mokaair.com/zh-CN/life/codex-git-basics"
+              "kind": "life",
+              "slug": "codex-git-basics"
             },
             {
               "type": "text",
@@ -809,9 +803,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -890,9 +890,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -906,15 +912,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "The desktop app organizes tasks, files and outputs. The model interprets requests; a task holds the conversation and its working environment. Distinguishing these prevents confusing a model change with a change of folder. See "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "the Codex introduction",
-              "url": "https://mokaair.com/en/life/codex-beginner-guide"
+              "kind": "life",
+              "slug": "codex-beginner-guide"
             },
             {
               "type": "text",
@@ -929,15 +936,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Prepare an internet connection and a ChatGPT account with Codex access. Use "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "account and usage guidance",
-              "url": "https://mokaair.com/en/life/codex-account-usage"
+              "kind": "life",
+              "slug": "codex-account-usage"
             },
             {
               "type": "text",
@@ -947,7 +955,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Download the "
@@ -970,7 +978,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Windows: choose Windows on the "
@@ -987,11 +995,8 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "Windows PowerShell; optional official installation method"
-        },
-        {
           "type": "code",
+          "label": "Windows PowerShell; optional official installation method",
           "language": "powershell",
           "code": "winget install --id 9PLM9XGG6VKS -s msstore\n"
         },
@@ -1001,7 +1006,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Linux: the desktop app is in preview. The documented distributions are Ubuntu 24.04/26.04 LTS, Debian 13 and Fedora 43/44, with x64 and ARM64 packages. Check your distribution and processor before downloading from the "
@@ -1018,11 +1023,8 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "Linux terminal; identify the distribution and architecture"
-        },
-        {
           "type": "code",
+          "label": "Linux terminal; identify the distribution and architecture",
           "language": "bash",
           "code": "cat /etc/os-release\nuname -m\n"
         },
@@ -1078,25 +1080,23 @@
           "text": "Start a New chat and perform a read-only check first. Paste the following into the Codex task composer, not PowerShell or Terminal. This catches the wrong project, unextracted files or a task running on another host before it edits anything."
         },
         {
-          "type": "paragraph",
-          "text": "Codex desktop app, new task composer; verify the working location"
-        },
-        {
           "type": "code",
+          "label": "Codex desktop app, new task composer; verify the working location",
           "language": "text",
           "code": "Before editing, report the current working folder and list the exercise files.\nRead index.html and explain how the page loads its JavaScript.\nDo not change files. Tell me if the expected five files are missing.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Expect an actual folder path and an explanation of how app.js relates to core.mjs. Compare the path with your file manager instead of accepting “I understand the project.” If the app created a worktree copy, inspect that copy's location; see "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Worktrees",
-              "url": "https://mokaair.com/en/life/codex-worktrees"
+              "kind": "life",
+              "slug": "codex-worktrees"
             },
             {
               "type": "text",
@@ -1110,11 +1110,8 @@
           "text": "Step 3: request one verifiable change"
         },
         {
-          "type": "paragraph",
-          "text": "The same Codex desktop task; complete request"
-        },
-        {
           "type": "code",
+          "label": "The same Codex desktop task; complete request",
           "language": "text",
           "code": "Update this Small Steps practice website.\nChange the main heading to \"Small steps, clear progress.\"\nUse a dark blue heading color with readable contrast on the existing background.\nKeep the form labels, task data format, storage key and behavior unchanged.\nDo not add dependencies or external services.\nShow the changed files, explain the diff and report checks actually performed.\n"
         },
@@ -1132,20 +1129,14 @@
           "text": "Open a terminal in the practice directory. On Windows, run the following. The server keeps that terminal busy; this is normal. Open a browser separately instead of launching the server again because the shell prompt did not return."
         },
         {
-          "type": "paragraph",
-          "text": "Windows PowerShell, codex-practice folder"
-        },
-        {
           "type": "code",
+          "label": "Windows PowerShell, codex-practice folder",
           "language": "powershell",
           "code": "py -m http.server 4173 --bind 127.0.0.1\n"
         },
         {
-          "type": "paragraph",
-          "text": "macOS / Linux terminal, codex-practice folder"
-        },
-        {
           "type": "code",
+          "label": "macOS / Linux terminal, codex-practice folder",
           "language": "bash",
           "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -1189,7 +1180,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Installation and features were checked on 2026-09-14 using the "
@@ -1213,27 +1204,30 @@
               "text": " and Linux documentation. The practice site was tested in Windows/Edge 153 at 360, 390 and 1280px. Those captures show the website result, not the desktop product interface, a physical phone or hands-on macOS/Linux installation. Continue with "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/en/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Plan mode",
-              "url": "https://mokaair.com/en/life/codex-plan-mode"
+              "kind": "life",
+              "slug": "codex-plan-mode"
             },
             {
               "type": "text",
               "text": " and "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Git diffs",
-              "url": "https://mokaair.com/en/life/codex-git-basics"
+              "kind": "life",
+              "slug": "codex-git-basics"
             },
             {
               "type": "text",
@@ -1242,9 +1236,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1323,9 +1323,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 学習目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1339,15 +1345,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "デスクトップアプリはタスク、ファイル、成果物を整理します。モデルは依頼を解釈し、タスクは今回の会話と作業環境を保持します。この違いを知ると、モデル変更と作業フォルダー変更を混同せずに済みます。入口の比較は "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Codex 入門",
-              "url": "https://mokaair.com/ja/life/codex-beginner-guide"
+              "kind": "life",
+              "slug": "codex-beginner-guide"
             },
             {
               "type": "text",
@@ -1362,15 +1369,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "ネット接続と Codex を利用できる ChatGPT アカウントを用意し、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "アカウントと使用量",
-              "url": "https://mokaair.com/ja/life/codex-account-usage"
+              "kind": "life",
+              "slug": "codex-account-usage"
             },
             {
               "type": "text",
@@ -1380,7 +1388,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "link",
               "text": "Small Steps 練習パッケージ",
@@ -1399,7 +1407,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Windows："
@@ -1416,11 +1424,8 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "Windows PowerShell。公式の任意のインストール方法"
-        },
-        {
           "type": "code",
+          "label": "Windows PowerShell。公式の任意のインストール方法",
           "language": "powershell",
           "code": "winget install --id 9PLM9XGG6VKS -s msstore\n"
         },
@@ -1430,7 +1435,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Linux：現在はプレビュー版です。公式の対象は Ubuntu 24.04／26.04 LTS、Debian 13、Fedora 43／44 で、x64 と ARM64 のパッケージがあります。次のコマンドで OS と CPU を確認し、"
@@ -1447,11 +1452,8 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "Linux のターミナル。ディストリビューションとアーキテクチャを確認"
-        },
-        {
           "type": "code",
+          "label": "Linux のターミナル。ディストリビューションとアーキテクチャを確認",
           "language": "bash",
           "code": "cat /etc/os-release\nuname -m\n"
         },
@@ -1507,25 +1509,23 @@
           "text": "New chat を作り、最初は読み取りだけを頼みます。次は PowerShell や Terminal ではなく Codex のタスク入力欄に貼ります。編集前に、別プロジェクト、未展開の教材、別ホストを選んだ間違いを発見できます。"
         },
         {
-          "type": "paragraph",
-          "text": "Codex デスクトップの新規タスク入力欄。作業場所を確認"
-        },
-        {
           "type": "code",
+          "label": "Codex デスクトップの新規タスク入力欄。作業場所を確認",
           "language": "text",
           "code": "Before editing, report the current working folder and list the exercise files.\nRead index.html and explain how the page loads its JavaScript.\nDo not change files. Tell me if the expected five files are missing.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "実際のパスと app.js、core.mjs の関係が示されることを期待します。「理解しました」だけで済ませず、ファイルマネージャーの場所と比べます。アプリが worktree のコピーを作った場合は、その場所も確認します。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Worktree",
-              "url": "https://mokaair.com/ja/life/codex-worktrees"
+              "kind": "life",
+              "slug": "codex-worktrees"
             },
             {
               "type": "text",
@@ -1539,11 +1539,8 @@
           "text": "手順 3：確認できる小さな変更を依頼する"
         },
         {
-          "type": "paragraph",
-          "text": "同じ Codex デスクトップタスク。依頼の全文"
-        },
-        {
           "type": "code",
+          "label": "同じ Codex デスクトップタスク。依頼の全文",
           "language": "text",
           "code": "Update this Small Steps practice website.\nChange the main heading to \"Small steps, clear progress.\"\nUse a dark blue heading color with readable contrast on the existing background.\nKeep the form labels, task data format, storage key and behavior unchanged.\nDo not add dependencies or external services.\nShow the changed files, explain the diff and report checks actually performed.\n"
         },
@@ -1561,20 +1558,14 @@
           "text": "練習フォルダーで端末を開き、Windows では次を実行します。サーバーが端末を使い続けるのは正常です。プロンプトが戻らないからと再起動せず、別にブラウザを開きます。"
         },
         {
-          "type": "paragraph",
-          "text": "Windows PowerShell、codex-practice フォルダー"
-        },
-        {
           "type": "code",
+          "label": "Windows PowerShell、codex-practice フォルダー",
           "language": "powershell",
           "code": "py -m http.server 4173 --bind 127.0.0.1\n"
         },
         {
-          "type": "paragraph",
-          "text": "macOS / Linux ターミナル、codex-practice フォルダー"
-        },
-        {
           "type": "code",
+          "label": "macOS / Linux ターミナル、codex-practice フォルダー",
           "language": "bash",
           "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -1618,7 +1609,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "インストールと機能は 2026-09-14 に"
@@ -1642,27 +1633,30 @@
               "text": "、Linux 文書で確認しました。教材サイトは Windows／Edge 153 の 360、390、1280px で検証済みです。画像はサイトの成果であり、製品 UI、実物のスマートフォン、macOS／Linux のインストール実測ではありません。次は "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/ja/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Plan モード",
-              "url": "https://mokaair.com/ja/life/codex-plan-mode"
+              "kind": "life",
+              "slug": "codex-plan-mode"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Git 差分",
-              "url": "https://mokaair.com/ja/life/codex-git-basics"
+              "kind": "life",
+              "slug": "codex-git-basics"
             },
             {
               "type": "text",
@@ -1671,9 +1665,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 学習目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1752,9 +1752,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1768,15 +1774,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "데스크톱 앱은 작업, 파일, 결과물을 관리합니다. 모델은 요청을 해석하고 작업은 대화와 실행 환경을 보존합니다. 이 차이를 알면 모델 변경을 작업 폴더 변경으로 오해하지 않습니다. 진입점 비교는 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Codex 소개",
-              "url": "https://mokaair.com/ko/life/codex-beginner-guide"
+              "kind": "life",
+              "slug": "codex-beginner-guide"
             },
             {
               "type": "text",
@@ -1791,15 +1798,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "인터넷과 Codex를 사용할 수 있는 ChatGPT 계정을 준비하고 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "계정과 사용량",
-              "url": "https://mokaair.com/ko/life/codex-account-usage"
+              "kind": "life",
+              "slug": "codex-account-usage"
             },
             {
               "type": "text",
@@ -1809,7 +1817,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "link",
               "text": "Small Steps 실습 묶음",
@@ -1828,7 +1836,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Windows: "
@@ -1845,11 +1853,8 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "Windows PowerShell, 선택 가능한 공식 설치 방법"
-        },
-        {
           "type": "code",
+          "label": "Windows PowerShell, 선택 가능한 공식 설치 방법",
           "language": "powershell",
           "code": "winget install --id 9PLM9XGG6VKS -s msstore\n"
         },
@@ -1859,7 +1864,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Linux: 데스크톱 앱은 미리보기 단계입니다. 공식 대상은 Ubuntu 24.04/26.04 LTS, Debian 13, Fedora 43/44이며 x64와 ARM64 패키지를 제공합니다. 먼저 배포판과 CPU를 확인한 뒤 "
@@ -1876,11 +1881,8 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "Linux 터미널, 배포판과 아키텍처 확인"
-        },
-        {
           "type": "code",
+          "label": "Linux 터미널, 배포판과 아키텍처 확인",
           "language": "bash",
           "code": "cat /etc/os-release\nuname -m\n"
         },
@@ -1936,25 +1938,23 @@
           "text": "New chat을 만들고 먼저 읽기만 요청합니다. 아래는 PowerShell이나 Terminal이 아니라 Codex 작업 입력창에 붙입니다. 수정 전에 다른 프로젝트, 압축되지 않은 파일, 다른 호스트를 선택한 문제를 찾을 수 있습니다."
         },
         {
-          "type": "paragraph",
-          "text": "Codex 데스크톱 새 작업 입력창, 작업 위치 확인"
-        },
-        {
           "type": "code",
+          "label": "Codex 데스크톱 새 작업 입력창, 작업 위치 확인",
           "language": "text",
           "code": "Before editing, report the current working folder and list the exercise files.\nRead index.html and explain how the page loads its JavaScript.\nDo not change files. Tell me if the expected five files are missing.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "실제 폴더 경로와 app.js, core.mjs의 관계가 나와야 합니다. 프로젝트를 이해했다는 말만 믿지 말고 파일 관리자와 경로를 비교하세요. 앱이 worktree 복사본을 만들었다면 그 위치도 확인합니다. "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Worktree",
-              "url": "https://mokaair.com/ko/life/codex-worktrees"
+              "kind": "life",
+              "slug": "codex-worktrees"
             },
             {
               "type": "text",
@@ -1968,11 +1968,8 @@
           "text": "3단계: 확인 가능한 작은 수정 요청"
         },
         {
-          "type": "paragraph",
-          "text": "같은 Codex 데스크톱 작업, 전체 요청문"
-        },
-        {
           "type": "code",
+          "label": "같은 Codex 데스크톱 작업, 전체 요청문",
           "language": "text",
           "code": "Update this Small Steps practice website.\nChange the main heading to \"Small steps, clear progress.\"\nUse a dark blue heading color with readable contrast on the existing background.\nKeep the form labels, task data format, storage key and behavior unchanged.\nDo not add dependencies or external services.\nShow the changed files, explain the diff and report checks actually performed.\n"
         },
@@ -1990,20 +1987,14 @@
           "text": "실습 폴더에서 터미널을 열고 Windows는 아래 명령을 실행합니다. 서버가 터미널을 계속 사용하는 것은 정상입니다. 프롬프트가 돌아오지 않는다고 다시 실행하지 말고 브라우저를 따로 엽니다."
         },
         {
-          "type": "paragraph",
-          "text": "Windows PowerShell, codex-practice 폴더"
-        },
-        {
           "type": "code",
+          "label": "Windows PowerShell, codex-practice 폴더",
           "language": "powershell",
           "code": "py -m http.server 4173 --bind 127.0.0.1\n"
         },
         {
-          "type": "paragraph",
-          "text": "macOS / Linux 터미널, codex-practice 폴더"
-        },
-        {
           "type": "code",
+          "label": "macOS / Linux 터미널, codex-practice 폴더",
           "language": "bash",
           "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -2047,7 +2038,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "설치와 기능은 2026-09-14에 "
@@ -2071,27 +2062,30 @@
               "text": ", Linux 문서로 확인했습니다. 실습 사이트는 Windows/Edge 153의 360, 390, 1280px에서 검증했습니다. 화면은 웹사이트 결과이며 제품 UI, 실제 휴대전화, macOS/Linux 설치 실측이 아닙니다. 다음은 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AGENTS.md",
-              "url": "https://mokaair.com/ko/life/codex-agents-md"
+              "kind": "life",
+              "slug": "codex-agents-md"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Plan 모드",
-              "url": "https://mokaair.com/ko/life/codex-plan-mode"
+              "kind": "life",
+              "slug": "codex-plan-mode"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Git 차이",
-              "url": "https://mokaair.com/ko/life/codex-git-basics"
+              "kind": "life",
+              "slug": "codex-git-basics"
             },
             {
               "type": "text",
@@ -2100,9 +2094,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

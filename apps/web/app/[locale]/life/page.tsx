@@ -7,9 +7,9 @@ import { StructuredData } from "@/components/structured-data";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { guideHref, guideListHref } from "@/lib/guides";
-import { getGuideList, getGuideTopics, hubIsEmpty } from "@/lib/guides.server";
+import { getGuideList, getGuideTopics, getGuideArticle, hubIsEmpty } from "@/lib/guides.server";
+import { seriesCopy } from "@/lib/guide-series-copy";
 import { breadcrumbs, itemList } from "@/lib/structured-data";
-import { getGuideArticle } from "@/lib/guides.server";
 import { HUB_SLUG } from "@/lib/codex-learning";
 import { learningCopy } from "@/lib/codex-learning/copy";
 
@@ -61,6 +61,8 @@ export default async function LifeHubPage(
     intel: t("guides.intel"), howto: t("guides.howto"), life: t("guides.life"),
   };
   const listing = guideListHref("life", search.topic);
+  const tutorialHub = await getGuideArticle("life", "claude-code-tutorials", locale);
+  const tutorialCopy = seriesCopy(locale);
   const next = `${listing}${listing.includes("?") ? "&" : "?"}cursor=`;
   const learningHub = await getGuideArticle("life", HUB_SLUG, locale);
   const learning = learningCopy(locale);
@@ -88,6 +90,10 @@ export default async function LifeHubPage(
           active={search.topic ?? null}
           labels={{ allTopics: t("guides.allTopics"), topicsLabel: t("guides.topicsLabel") }}
         />
+        {tutorialHub.status === "published" && tutorialHub.document ? <section className="mt-6 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-5">
+          <h2 className="text-xl font-bold"><Link className="text-[var(--teal)] underline" href="/life/claude-code-tutorials">{tutorialHub.document.title}</Link></h2>
+          <p className="mt-2 leading-7 text-[var(--muted)]">{tutorialCopy.entry}</p>
+        </section> : null}
 
         {list.articles.length ? (
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">

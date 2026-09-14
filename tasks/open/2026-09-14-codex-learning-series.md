@@ -162,6 +162,9 @@ scope:
   - apps/api/tests/test_guide_series.py
   - apps/web/components/guides/article-page.test.tsx
   - apps/web/lib/guide-series-copy.ts
+  - apps/web/lib/guide-series.ts
+  - apps/web/components/guide-code-block.tsx
+  - apps/web/components/guide-rich-editor.test.tsx
   - apps/web/lib/guides.server.ts
   - apps/web/lib/guides.server.test.ts
   - apps/web/components/guides/series-hub.tsx

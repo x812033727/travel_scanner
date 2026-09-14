@@ -2582,7 +2582,10 @@ async def test_flight_anchor_from_offer(monkeypatch: pytest.MonkeyPatch) -> None
     browser_session = str(uuid4())
     owner["X-Travel-Analytics-Session"] = browser_session
     other["X-Travel-Analytics-Session"] = browser_session
-    session_hash = _digest(get_settings().app_secret_key, "analytics-session", browser_session)
+    # The same key ingest uses. It is no longer `app_secret_key`: analytics hashes are keyed
+    # on a value derived from `SETTINGS_ENCRYPTION_KEY` so the token-signing key can be
+    # rotated without re-keying every visitor and session hash.
+    session_hash = _digest(get_settings().analytics_hash_key, "analytics-session", browser_session)
 
     async def attached_properties() -> list[dict[str, object]]:
         # A unique browser session also catches a foreign-offer request being counted,

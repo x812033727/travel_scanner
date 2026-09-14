@@ -60,15 +60,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "2. 建立 README 與簡短 "
             },
             {
-              "type": "link",
-              "text": "AGENTS.md",
-              "url": "https://mokaair.com/zh-TW/life/codex-agents-md"
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-agents-md",
+              "text": "AGENTS.md"
             },
             {
               "type": "text",
@@ -105,7 +106,8 @@
         {
           "type": "code",
           "language": "text",
-          "code": "製作單一 HTML 的虛構工作室網站，包含主標、介紹、三张卡片、頁內導覽與說明區。用原生 HTML/CSS，手機一欄、桌面三欄，不使用外部資源。先確認計畫，再實作，最後以鍵盤與兩種寬度驗證。"
+          "code": "製作單一 HTML 的虛構工作室網站，包含主標、介紹、三张卡片、頁內導覽與說明區。用原生 HTML/CSS，手機一欄、桌面三欄，不使用外部資源。先確認計畫，再實作，最後以鍵盤與兩種寬度驗證。",
+          "label": "本步驟範例"
         },
         {
           "type": "heading",
@@ -115,7 +117,8 @@
         {
           "type": "code",
           "language": "html",
-          "code": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Small steps studio — practice website</title>\n  <style>\n    * { box-sizing: border-box; }\n    body { margin: 0; background: #f2f5ef; color: #173b39; font: 18px/1.7 system-ui, sans-serif; }\n    main { max-width: 1080px; margin: auto; padding: 64px 24px; }\n    h1 { font-size: clamp(2rem, 7vw, 4.8rem); line-height: 1.08; max-width: 800px; letter-spacing: -.045em; }\n    .label { text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; }\n    .intro { max-width: 650px; }\n    nav { display: flex; gap: 20px; flex-wrap: wrap; margin: 32px 0; }\n    a { color: inherit; text-underline-offset: .2em; padding: 10px 0; }\n    a:focus-visible { outline: 3px solid #c4602c; outline-offset: 4px; }\n    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }\n    article { background: #fff; border: 1px solid #cee0d5; border-radius: 20px; padding: 28px; overflow-wrap: anywhere; }\n    article h2 { font-size: 1.3rem; }\n    .number { color: #a54b26; font-size: .85rem; }\n    footer { margin-top: 48px; border-top: 1px solid #cee0d5; padding-top: 24px; }\n    @media (max-width: 680px) { .cards { grid-template-columns: 1fr; } main { padding-top: 36px; } }\n  </style>\n</head>\n<body>\n  <main>\n    <p class=\"label\">Small steps studio / practice only</p>\n    <h1>Build something small.<br>Check that it works.</h1>\n    <p class=\"intro\">A fictional studio learning to turn clear requests into useful, verifiable results. No account, form, tracker or external resource is used.</p>\n    <nav aria-label=\"Page sections\"><a href=\"#projects\">Explore projects</a><a href=\"#about\">About this exercise</a></nav>\n    <section class=\"cards\" id=\"projects\" aria-label=\"Practice projects\">\n      <article><p class=\"number\">01 / PLAN</p><h2>One clear request</h2><p>Define the outcome, context, constraints and checks before changing files.</p></article>\n      <article><p class=\"number\">02 / BUILD</p><h2>One focused change</h2><p>Keep the first version small enough to inspect and explain.</p></article>\n      <article><p class=\"number\">03 / VERIFY</p><h2>One real result</h2><p>Open the page, use the keyboard and test the layout at a narrow width.</p></article>\n    </section>\n    <footer id=\"about\"><h2>About this exercise</h2><p>This is a local practice page with fictional content. Opening it successfully does not publish it to the internet.</p></footer>\n  </main>\n</body>\n</html>\n"
+          "code": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Small steps studio — practice website</title>\n  <style>\n    * { box-sizing: border-box; }\n    body { margin: 0; background: #f2f5ef; color: #173b39; font: 18px/1.7 system-ui, sans-serif; }\n    main { max-width: 1080px; margin: auto; padding: 64px 24px; }\n    h1 { font-size: clamp(2rem, 7vw, 4.8rem); line-height: 1.08; max-width: 800px; letter-spacing: -.045em; }\n    .label { text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; }\n    .intro { max-width: 650px; }\n    nav { display: flex; gap: 20px; flex-wrap: wrap; margin: 32px 0; }\n    a { color: inherit; text-underline-offset: .2em; padding: 10px 0; }\n    a:focus-visible { outline: 3px solid #c4602c; outline-offset: 4px; }\n    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }\n    article { background: #fff; border: 1px solid #cee0d5; border-radius: 20px; padding: 28px; overflow-wrap: anywhere; }\n    article h2 { font-size: 1.3rem; }\n    .number { color: #a54b26; font-size: .85rem; }\n    footer { margin-top: 48px; border-top: 1px solid #cee0d5; padding-top: 24px; }\n    @media (max-width: 680px) { .cards { grid-template-columns: 1fr; } main { padding-top: 36px; } }\n  </style>\n</head>\n<body>\n  <main>\n    <p class=\"label\">Small steps studio / practice only</p>\n    <h1>Build something small.<br>Check that it works.</h1>\n    <p class=\"intro\">A fictional studio learning to turn clear requests into useful, verifiable results. No account, form, tracker or external resource is used.</p>\n    <nav aria-label=\"Page sections\"><a href=\"#projects\">Explore projects</a><a href=\"#about\">About this exercise</a></nav>\n    <section class=\"cards\" id=\"projects\" aria-label=\"Practice projects\">\n      <article><p class=\"number\">01 / PLAN</p><h2>One clear request</h2><p>Define the outcome, context, constraints and checks before changing files.</p></article>\n      <article><p class=\"number\">02 / BUILD</p><h2>One focused change</h2><p>Keep the first version small enough to inspect and explain.</p></article>\n      <article><p class=\"number\">03 / VERIFY</p><h2>One real result</h2><p>Open the page, use the keyboard and test the layout at a narrow width.</p></article>\n    </section>\n    <footer id=\"about\"><h2>About this exercise</h2><p>This is a local practice page with fictional content. Opening it successfully does not publish it to the internet.</p></footer>\n  </main>\n</body>\n</html>\n",
+          "label": "本步驟範例"
         },
         {
           "type": "image",
@@ -192,9 +195,15 @@
           "text": "延伸閱讀"
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-learning-hub",
+              "text": "返回 Codex 教學總目錄"
+            }
+          ]
         }
       ],
       "sources": [
@@ -267,15 +276,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "2. 建立 README 与简短 "
             },
             {
-              "type": "link",
-              "text": "AGENTS.md",
-              "url": "https://mokaair.com/zh-CN/life/codex-agents-md"
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-agents-md",
+              "text": "AGENTS.md"
             },
             {
               "type": "text",
@@ -312,7 +322,8 @@
         {
           "type": "code",
           "language": "text",
-          "code": "制作单一 HTML 的虚构工作室网站，包含主标、介绍、三张卡片、页内导览与说明区。用原生 HTML/CSS，手机一栏、桌面三栏，不使用外部资源。先确认计划，再实作，最后以键盘与两种宽度验证。"
+          "code": "制作单一 HTML 的虚构工作室网站，包含主标、介绍、三张卡片、页内导览与说明区。用原生 HTML/CSS，手机一栏、桌面三栏，不使用外部资源。先确认计划，再实作，最后以键盘与两种宽度验证。",
+          "label": "本步骤示例"
         },
         {
           "type": "heading",
@@ -322,7 +333,8 @@
         {
           "type": "code",
           "language": "html",
-          "code": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Small steps studio — practice website</title>\n  <style>\n    * { box-sizing: border-box; }\n    body { margin: 0; background: #f2f5ef; color: #173b39; font: 18px/1.7 system-ui, sans-serif; }\n    main { max-width: 1080px; margin: auto; padding: 64px 24px; }\n    h1 { font-size: clamp(2rem, 7vw, 4.8rem); line-height: 1.08; max-width: 800px; letter-spacing: -.045em; }\n    .label { text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; }\n    .intro { max-width: 650px; }\n    nav { display: flex; gap: 20px; flex-wrap: wrap; margin: 32px 0; }\n    a { color: inherit; text-underline-offset: .2em; padding: 10px 0; }\n    a:focus-visible { outline: 3px solid #c4602c; outline-offset: 4px; }\n    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }\n    article { background: #fff; border: 1px solid #cee0d5; border-radius: 20px; padding: 28px; overflow-wrap: anywhere; }\n    article h2 { font-size: 1.3rem; }\n    .number { color: #a54b26; font-size: .85rem; }\n    footer { margin-top: 48px; border-top: 1px solid #cee0d5; padding-top: 24px; }\n    @media (max-width: 680px) { .cards { grid-template-columns: 1fr; } main { padding-top: 36px; } }\n  </style>\n</head>\n<body>\n  <main>\n    <p class=\"label\">Small steps studio / practice only</p>\n    <h1>Build something small.<br>Check that it works.</h1>\n    <p class=\"intro\">A fictional studio learning to turn clear requests into useful, verifiable results. No account, form, tracker or external resource is used.</p>\n    <nav aria-label=\"Page sections\"><a href=\"#projects\">Explore projects</a><a href=\"#about\">About this exercise</a></nav>\n    <section class=\"cards\" id=\"projects\" aria-label=\"Practice projects\">\n      <article><p class=\"number\">01 / PLAN</p><h2>One clear request</h2><p>Define the outcome, context, constraints and checks before changing files.</p></article>\n      <article><p class=\"number\">02 / BUILD</p><h2>One focused change</h2><p>Keep the first version small enough to inspect and explain.</p></article>\n      <article><p class=\"number\">03 / VERIFY</p><h2>One real result</h2><p>Open the page, use the keyboard and test the layout at a narrow width.</p></article>\n    </section>\n    <footer id=\"about\"><h2>About this exercise</h2><p>This is a local practice page with fictional content. Opening it successfully does not publish it to the internet.</p></footer>\n  </main>\n</body>\n</html>\n"
+          "code": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Small steps studio — practice website</title>\n  <style>\n    * { box-sizing: border-box; }\n    body { margin: 0; background: #f2f5ef; color: #173b39; font: 18px/1.7 system-ui, sans-serif; }\n    main { max-width: 1080px; margin: auto; padding: 64px 24px; }\n    h1 { font-size: clamp(2rem, 7vw, 4.8rem); line-height: 1.08; max-width: 800px; letter-spacing: -.045em; }\n    .label { text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; }\n    .intro { max-width: 650px; }\n    nav { display: flex; gap: 20px; flex-wrap: wrap; margin: 32px 0; }\n    a { color: inherit; text-underline-offset: .2em; padding: 10px 0; }\n    a:focus-visible { outline: 3px solid #c4602c; outline-offset: 4px; }\n    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }\n    article { background: #fff; border: 1px solid #cee0d5; border-radius: 20px; padding: 28px; overflow-wrap: anywhere; }\n    article h2 { font-size: 1.3rem; }\n    .number { color: #a54b26; font-size: .85rem; }\n    footer { margin-top: 48px; border-top: 1px solid #cee0d5; padding-top: 24px; }\n    @media (max-width: 680px) { .cards { grid-template-columns: 1fr; } main { padding-top: 36px; } }\n  </style>\n</head>\n<body>\n  <main>\n    <p class=\"label\">Small steps studio / practice only</p>\n    <h1>Build something small.<br>Check that it works.</h1>\n    <p class=\"intro\">A fictional studio learning to turn clear requests into useful, verifiable results. No account, form, tracker or external resource is used.</p>\n    <nav aria-label=\"Page sections\"><a href=\"#projects\">Explore projects</a><a href=\"#about\">About this exercise</a></nav>\n    <section class=\"cards\" id=\"projects\" aria-label=\"Practice projects\">\n      <article><p class=\"number\">01 / PLAN</p><h2>One clear request</h2><p>Define the outcome, context, constraints and checks before changing files.</p></article>\n      <article><p class=\"number\">02 / BUILD</p><h2>One focused change</h2><p>Keep the first version small enough to inspect and explain.</p></article>\n      <article><p class=\"number\">03 / VERIFY</p><h2>One real result</h2><p>Open the page, use the keyboard and test the layout at a narrow width.</p></article>\n    </section>\n    <footer id=\"about\"><h2>About this exercise</h2><p>This is a local practice page with fictional content. Opening it successfully does not publish it to the internet.</p></footer>\n  </main>\n</body>\n</html>\n",
+          "label": "本步骤示例"
         },
         {
           "type": "image",
@@ -399,9 +411,15 @@
           "text": "延伸阅读"
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-learning-hub",
+              "text": "返回 Codex 教学总目录"
+            }
+          ]
         }
       ],
       "sources": [
@@ -474,15 +492,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "2. Create README and concise "
             },
             {
-              "type": "link",
-              "text": "AGENTS.md",
-              "url": "https://mokaair.com/en/life/codex-agents-md"
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-agents-md",
+              "text": "AGENTS.md"
             },
             {
               "type": "text",
@@ -519,7 +538,8 @@
         {
           "type": "code",
           "language": "text",
-          "code": "Build one HTML file for a fictional studio with headline, introduction, three cards, anchor navigation and an about section. Use native HTML/CSS, one column on phones and three on desktop, with no external resources. Plan, implement, then verify by keyboard at both widths."
+          "code": "Build one HTML file for a fictional studio with headline, introduction, three cards, anchor navigation and an about section. Use native HTML/CSS, one column on phones and three on desktop, with no external resources. Plan, implement, then verify by keyboard at both widths.",
+          "label": "Example for this step"
         },
         {
           "type": "heading",
@@ -529,7 +549,8 @@
         {
           "type": "code",
           "language": "html",
-          "code": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Small steps studio — practice website</title>\n  <style>\n    * { box-sizing: border-box; }\n    body { margin: 0; background: #f2f5ef; color: #173b39; font: 18px/1.7 system-ui, sans-serif; }\n    main { max-width: 1080px; margin: auto; padding: 64px 24px; }\n    h1 { font-size: clamp(2rem, 7vw, 4.8rem); line-height: 1.08; max-width: 800px; letter-spacing: -.045em; }\n    .label { text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; }\n    .intro { max-width: 650px; }\n    nav { display: flex; gap: 20px; flex-wrap: wrap; margin: 32px 0; }\n    a { color: inherit; text-underline-offset: .2em; padding: 10px 0; }\n    a:focus-visible { outline: 3px solid #c4602c; outline-offset: 4px; }\n    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }\n    article { background: #fff; border: 1px solid #cee0d5; border-radius: 20px; padding: 28px; overflow-wrap: anywhere; }\n    article h2 { font-size: 1.3rem; }\n    .number { color: #a54b26; font-size: .85rem; }\n    footer { margin-top: 48px; border-top: 1px solid #cee0d5; padding-top: 24px; }\n    @media (max-width: 680px) { .cards { grid-template-columns: 1fr; } main { padding-top: 36px; } }\n  </style>\n</head>\n<body>\n  <main>\n    <p class=\"label\">Small steps studio / practice only</p>\n    <h1>Build something small.<br>Check that it works.</h1>\n    <p class=\"intro\">A fictional studio learning to turn clear requests into useful, verifiable results. No account, form, tracker or external resource is used.</p>\n    <nav aria-label=\"Page sections\"><a href=\"#projects\">Explore projects</a><a href=\"#about\">About this exercise</a></nav>\n    <section class=\"cards\" id=\"projects\" aria-label=\"Practice projects\">\n      <article><p class=\"number\">01 / PLAN</p><h2>One clear request</h2><p>Define the outcome, context, constraints and checks before changing files.</p></article>\n      <article><p class=\"number\">02 / BUILD</p><h2>One focused change</h2><p>Keep the first version small enough to inspect and explain.</p></article>\n      <article><p class=\"number\">03 / VERIFY</p><h2>One real result</h2><p>Open the page, use the keyboard and test the layout at a narrow width.</p></article>\n    </section>\n    <footer id=\"about\"><h2>About this exercise</h2><p>This is a local practice page with fictional content. Opening it successfully does not publish it to the internet.</p></footer>\n  </main>\n</body>\n</html>\n"
+          "code": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Small steps studio — practice website</title>\n  <style>\n    * { box-sizing: border-box; }\n    body { margin: 0; background: #f2f5ef; color: #173b39; font: 18px/1.7 system-ui, sans-serif; }\n    main { max-width: 1080px; margin: auto; padding: 64px 24px; }\n    h1 { font-size: clamp(2rem, 7vw, 4.8rem); line-height: 1.08; max-width: 800px; letter-spacing: -.045em; }\n    .label { text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; }\n    .intro { max-width: 650px; }\n    nav { display: flex; gap: 20px; flex-wrap: wrap; margin: 32px 0; }\n    a { color: inherit; text-underline-offset: .2em; padding: 10px 0; }\n    a:focus-visible { outline: 3px solid #c4602c; outline-offset: 4px; }\n    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }\n    article { background: #fff; border: 1px solid #cee0d5; border-radius: 20px; padding: 28px; overflow-wrap: anywhere; }\n    article h2 { font-size: 1.3rem; }\n    .number { color: #a54b26; font-size: .85rem; }\n    footer { margin-top: 48px; border-top: 1px solid #cee0d5; padding-top: 24px; }\n    @media (max-width: 680px) { .cards { grid-template-columns: 1fr; } main { padding-top: 36px; } }\n  </style>\n</head>\n<body>\n  <main>\n    <p class=\"label\">Small steps studio / practice only</p>\n    <h1>Build something small.<br>Check that it works.</h1>\n    <p class=\"intro\">A fictional studio learning to turn clear requests into useful, verifiable results. No account, form, tracker or external resource is used.</p>\n    <nav aria-label=\"Page sections\"><a href=\"#projects\">Explore projects</a><a href=\"#about\">About this exercise</a></nav>\n    <section class=\"cards\" id=\"projects\" aria-label=\"Practice projects\">\n      <article><p class=\"number\">01 / PLAN</p><h2>One clear request</h2><p>Define the outcome, context, constraints and checks before changing files.</p></article>\n      <article><p class=\"number\">02 / BUILD</p><h2>One focused change</h2><p>Keep the first version small enough to inspect and explain.</p></article>\n      <article><p class=\"number\">03 / VERIFY</p><h2>One real result</h2><p>Open the page, use the keyboard and test the layout at a narrow width.</p></article>\n    </section>\n    <footer id=\"about\"><h2>About this exercise</h2><p>This is a local practice page with fictional content. Opening it successfully does not publish it to the internet.</p></footer>\n  </main>\n</body>\n</html>\n",
+          "label": "Example for this step"
         },
         {
           "type": "image",
@@ -606,9 +627,15 @@
           "text": "Continue learning"
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-learning-hub",
+              "text": "Back to the Codex learning hub"
+            }
+          ]
         }
       ],
       "sources": [
@@ -681,15 +708,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "2. README と "
             },
             {
-              "type": "link",
-              "text": "AGENTS.md",
-              "url": "https://mokaair.com/ja/life/codex-agents-md"
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-agents-md",
+              "text": "AGENTS.md"
             },
             {
               "type": "text",
@@ -726,7 +754,8 @@
         {
           "type": "code",
           "language": "text",
-          "code": "架空スタジオの単一 HTML を作ってください。見出し、紹介、三枚のカード、ページ内リンク、説明欄を含めます。外部資源なしでモバイル一列、デスクトップ三列にし、計画後に実装してキー操作と二つの幅を検証してください。"
+          "code": "架空スタジオの単一 HTML を作ってください。見出し、紹介、三枚のカード、ページ内リンク、説明欄を含めます。外部資源なしでモバイル一列、デスクトップ三列にし、計画後に実装してキー操作と二つの幅を検証してください。",
+          "label": "この手順の例"
         },
         {
           "type": "heading",
@@ -736,7 +765,8 @@
         {
           "type": "code",
           "language": "html",
-          "code": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Small steps studio — practice website</title>\n  <style>\n    * { box-sizing: border-box; }\n    body { margin: 0; background: #f2f5ef; color: #173b39; font: 18px/1.7 system-ui, sans-serif; }\n    main { max-width: 1080px; margin: auto; padding: 64px 24px; }\n    h1 { font-size: clamp(2rem, 7vw, 4.8rem); line-height: 1.08; max-width: 800px; letter-spacing: -.045em; }\n    .label { text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; }\n    .intro { max-width: 650px; }\n    nav { display: flex; gap: 20px; flex-wrap: wrap; margin: 32px 0; }\n    a { color: inherit; text-underline-offset: .2em; padding: 10px 0; }\n    a:focus-visible { outline: 3px solid #c4602c; outline-offset: 4px; }\n    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }\n    article { background: #fff; border: 1px solid #cee0d5; border-radius: 20px; padding: 28px; overflow-wrap: anywhere; }\n    article h2 { font-size: 1.3rem; }\n    .number { color: #a54b26; font-size: .85rem; }\n    footer { margin-top: 48px; border-top: 1px solid #cee0d5; padding-top: 24px; }\n    @media (max-width: 680px) { .cards { grid-template-columns: 1fr; } main { padding-top: 36px; } }\n  </style>\n</head>\n<body>\n  <main>\n    <p class=\"label\">Small steps studio / practice only</p>\n    <h1>Build something small.<br>Check that it works.</h1>\n    <p class=\"intro\">A fictional studio learning to turn clear requests into useful, verifiable results. No account, form, tracker or external resource is used.</p>\n    <nav aria-label=\"Page sections\"><a href=\"#projects\">Explore projects</a><a href=\"#about\">About this exercise</a></nav>\n    <section class=\"cards\" id=\"projects\" aria-label=\"Practice projects\">\n      <article><p class=\"number\">01 / PLAN</p><h2>One clear request</h2><p>Define the outcome, context, constraints and checks before changing files.</p></article>\n      <article><p class=\"number\">02 / BUILD</p><h2>One focused change</h2><p>Keep the first version small enough to inspect and explain.</p></article>\n      <article><p class=\"number\">03 / VERIFY</p><h2>One real result</h2><p>Open the page, use the keyboard and test the layout at a narrow width.</p></article>\n    </section>\n    <footer id=\"about\"><h2>About this exercise</h2><p>This is a local practice page with fictional content. Opening it successfully does not publish it to the internet.</p></footer>\n  </main>\n</body>\n</html>\n"
+          "code": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Small steps studio — practice website</title>\n  <style>\n    * { box-sizing: border-box; }\n    body { margin: 0; background: #f2f5ef; color: #173b39; font: 18px/1.7 system-ui, sans-serif; }\n    main { max-width: 1080px; margin: auto; padding: 64px 24px; }\n    h1 { font-size: clamp(2rem, 7vw, 4.8rem); line-height: 1.08; max-width: 800px; letter-spacing: -.045em; }\n    .label { text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; }\n    .intro { max-width: 650px; }\n    nav { display: flex; gap: 20px; flex-wrap: wrap; margin: 32px 0; }\n    a { color: inherit; text-underline-offset: .2em; padding: 10px 0; }\n    a:focus-visible { outline: 3px solid #c4602c; outline-offset: 4px; }\n    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }\n    article { background: #fff; border: 1px solid #cee0d5; border-radius: 20px; padding: 28px; overflow-wrap: anywhere; }\n    article h2 { font-size: 1.3rem; }\n    .number { color: #a54b26; font-size: .85rem; }\n    footer { margin-top: 48px; border-top: 1px solid #cee0d5; padding-top: 24px; }\n    @media (max-width: 680px) { .cards { grid-template-columns: 1fr; } main { padding-top: 36px; } }\n  </style>\n</head>\n<body>\n  <main>\n    <p class=\"label\">Small steps studio / practice only</p>\n    <h1>Build something small.<br>Check that it works.</h1>\n    <p class=\"intro\">A fictional studio learning to turn clear requests into useful, verifiable results. No account, form, tracker or external resource is used.</p>\n    <nav aria-label=\"Page sections\"><a href=\"#projects\">Explore projects</a><a href=\"#about\">About this exercise</a></nav>\n    <section class=\"cards\" id=\"projects\" aria-label=\"Practice projects\">\n      <article><p class=\"number\">01 / PLAN</p><h2>One clear request</h2><p>Define the outcome, context, constraints and checks before changing files.</p></article>\n      <article><p class=\"number\">02 / BUILD</p><h2>One focused change</h2><p>Keep the first version small enough to inspect and explain.</p></article>\n      <article><p class=\"number\">03 / VERIFY</p><h2>One real result</h2><p>Open the page, use the keyboard and test the layout at a narrow width.</p></article>\n    </section>\n    <footer id=\"about\"><h2>About this exercise</h2><p>This is a local practice page with fictional content. Opening it successfully does not publish it to the internet.</p></footer>\n  </main>\n</body>\n</html>\n",
+          "label": "この手順の例"
         },
         {
           "type": "image",
@@ -813,9 +843,15 @@
           "text": "次に学ぶこと"
         },
         {
-          "type": "link",
-          "text": "Codex 学習ガイドに戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-learning-hub",
+              "text": "Codex 学習ガイドに戻る"
+            }
+          ]
         }
       ],
       "sources": [
@@ -888,15 +924,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "2. README와 "
             },
             {
-              "type": "link",
-              "text": "AGENTS.md",
-              "url": "https://mokaair.com/ko/life/codex-agents-md"
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-agents-md",
+              "text": "AGENTS.md"
             },
             {
               "type": "text",
@@ -933,7 +970,8 @@
         {
           "type": "code",
           "language": "text",
-          "code": "가상 스튜디오의 단일 HTML을 만드세요. 제목, 소개, 카드 세 개, 페이지 내 링크와 설명 영역을 포함합니다. 외부 자원 없이 모바일 한 열, 데스크톱 세 열로 만들고 계획 후 구현하여 키보드와 두 너비를 검증하세요."
+          "code": "가상 스튜디오의 단일 HTML을 만드세요. 제목, 소개, 카드 세 개, 페이지 내 링크와 설명 영역을 포함합니다. 외부 자원 없이 모바일 한 열, 데스크톱 세 열로 만들고 계획 후 구현하여 키보드와 두 너비를 검증하세요.",
+          "label": "이 단계의 예제"
         },
         {
           "type": "heading",
@@ -943,7 +981,8 @@
         {
           "type": "code",
           "language": "html",
-          "code": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Small steps studio — practice website</title>\n  <style>\n    * { box-sizing: border-box; }\n    body { margin: 0; background: #f2f5ef; color: #173b39; font: 18px/1.7 system-ui, sans-serif; }\n    main { max-width: 1080px; margin: auto; padding: 64px 24px; }\n    h1 { font-size: clamp(2rem, 7vw, 4.8rem); line-height: 1.08; max-width: 800px; letter-spacing: -.045em; }\n    .label { text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; }\n    .intro { max-width: 650px; }\n    nav { display: flex; gap: 20px; flex-wrap: wrap; margin: 32px 0; }\n    a { color: inherit; text-underline-offset: .2em; padding: 10px 0; }\n    a:focus-visible { outline: 3px solid #c4602c; outline-offset: 4px; }\n    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }\n    article { background: #fff; border: 1px solid #cee0d5; border-radius: 20px; padding: 28px; overflow-wrap: anywhere; }\n    article h2 { font-size: 1.3rem; }\n    .number { color: #a54b26; font-size: .85rem; }\n    footer { margin-top: 48px; border-top: 1px solid #cee0d5; padding-top: 24px; }\n    @media (max-width: 680px) { .cards { grid-template-columns: 1fr; } main { padding-top: 36px; } }\n  </style>\n</head>\n<body>\n  <main>\n    <p class=\"label\">Small steps studio / practice only</p>\n    <h1>Build something small.<br>Check that it works.</h1>\n    <p class=\"intro\">A fictional studio learning to turn clear requests into useful, verifiable results. No account, form, tracker or external resource is used.</p>\n    <nav aria-label=\"Page sections\"><a href=\"#projects\">Explore projects</a><a href=\"#about\">About this exercise</a></nav>\n    <section class=\"cards\" id=\"projects\" aria-label=\"Practice projects\">\n      <article><p class=\"number\">01 / PLAN</p><h2>One clear request</h2><p>Define the outcome, context, constraints and checks before changing files.</p></article>\n      <article><p class=\"number\">02 / BUILD</p><h2>One focused change</h2><p>Keep the first version small enough to inspect and explain.</p></article>\n      <article><p class=\"number\">03 / VERIFY</p><h2>One real result</h2><p>Open the page, use the keyboard and test the layout at a narrow width.</p></article>\n    </section>\n    <footer id=\"about\"><h2>About this exercise</h2><p>This is a local practice page with fictional content. Opening it successfully does not publish it to the internet.</p></footer>\n  </main>\n</body>\n</html>\n"
+          "code": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Small steps studio — practice website</title>\n  <style>\n    * { box-sizing: border-box; }\n    body { margin: 0; background: #f2f5ef; color: #173b39; font: 18px/1.7 system-ui, sans-serif; }\n    main { max-width: 1080px; margin: auto; padding: 64px 24px; }\n    h1 { font-size: clamp(2rem, 7vw, 4.8rem); line-height: 1.08; max-width: 800px; letter-spacing: -.045em; }\n    .label { text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; }\n    .intro { max-width: 650px; }\n    nav { display: flex; gap: 20px; flex-wrap: wrap; margin: 32px 0; }\n    a { color: inherit; text-underline-offset: .2em; padding: 10px 0; }\n    a:focus-visible { outline: 3px solid #c4602c; outline-offset: 4px; }\n    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }\n    article { background: #fff; border: 1px solid #cee0d5; border-radius: 20px; padding: 28px; overflow-wrap: anywhere; }\n    article h2 { font-size: 1.3rem; }\n    .number { color: #a54b26; font-size: .85rem; }\n    footer { margin-top: 48px; border-top: 1px solid #cee0d5; padding-top: 24px; }\n    @media (max-width: 680px) { .cards { grid-template-columns: 1fr; } main { padding-top: 36px; } }\n  </style>\n</head>\n<body>\n  <main>\n    <p class=\"label\">Small steps studio / practice only</p>\n    <h1>Build something small.<br>Check that it works.</h1>\n    <p class=\"intro\">A fictional studio learning to turn clear requests into useful, verifiable results. No account, form, tracker or external resource is used.</p>\n    <nav aria-label=\"Page sections\"><a href=\"#projects\">Explore projects</a><a href=\"#about\">About this exercise</a></nav>\n    <section class=\"cards\" id=\"projects\" aria-label=\"Practice projects\">\n      <article><p class=\"number\">01 / PLAN</p><h2>One clear request</h2><p>Define the outcome, context, constraints and checks before changing files.</p></article>\n      <article><p class=\"number\">02 / BUILD</p><h2>One focused change</h2><p>Keep the first version small enough to inspect and explain.</p></article>\n      <article><p class=\"number\">03 / VERIFY</p><h2>One real result</h2><p>Open the page, use the keyboard and test the layout at a narrow width.</p></article>\n    </section>\n    <footer id=\"about\"><h2>About this exercise</h2><p>This is a local practice page with fictional content. Opening it successfully does not publish it to the internet.</p></footer>\n  </main>\n</body>\n</html>\n",
+          "label": "이 단계의 예제"
         },
         {
           "type": "image",
@@ -1020,9 +1059,15 @@
           "text": "이어서 학습하기"
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-learning-hub",
+              "text": "Codex 학습 목차로 돌아가기"
+            }
+          ]
         }
       ],
       "sources": [

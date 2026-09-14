@@ -1,0 +1,2229 @@
+{
+  "slug": "codex",
+  "locale": "zh-CN",
+  "hub": "codex-learning-hub",
+  "navigation_by_group": true,
+  "groups": [
+    {
+      "id": "A",
+      "title": "基本概念"
+    },
+    {
+      "id": "B",
+      "title": "安装与电脑"
+    },
+    {
+      "id": "C",
+      "title": "手机与跨设备"
+    },
+    {
+      "id": "D",
+      "title": "MD 与设置"
+    },
+    {
+      "id": "E",
+      "title": "命令与会话"
+    },
+    {
+      "id": "F",
+      "title": "日常开发"
+    },
+    {
+      "id": "G",
+      "title": "Skills 与 Plugins"
+    },
+    {
+      "id": "H",
+      "title": "工具与并行工作"
+    },
+    {
+      "id": "I",
+      "title": "自动化与输出"
+    },
+    {
+      "id": "J",
+      "title": "实战与维护"
+    }
+  ],
+  "paths": [
+    {
+      "id": "desktop",
+      "title": "桌面版",
+      "slugs": [
+        "codex-beginner-guide",
+        "codex-account-usage",
+        "codex-platforms-guide",
+        "codex-terminal-paths",
+        "codex-first-project",
+        "codex-prompting",
+        "codex-desktop-getting-started",
+        "codex-remote-setup",
+        "codex-cross-device-workflow",
+        "codex-markdown-basics",
+        "codex-agents-md",
+        "codex-agents-md-scopes",
+        "codex-rules-and-context-files",
+        "codex-config-toml",
+        "codex-config-troubleshooting",
+        "codex-sessions-resume",
+        "codex-context-handoff",
+        "codex-model-selection",
+        "codex-plan-mode",
+        "codex-permissions",
+        "codex-project-management",
+        "codex-understand-codebase",
+        "codex-implement-feature",
+        "codex-debugging",
+        "codex-git-basics",
+        "codex-testing-review",
+        "codex-skills",
+        "codex-skill-resources",
+        "codex-skill-testing",
+        "codex-plugins",
+        "codex-plugin-troubleshooting",
+        "codex-templates-cheatsheet",
+        "codex-mcp",
+        "codex-mcp-troubleshooting",
+        "codex-worktrees",
+        "codex-subagents",
+        "codex-subagent-quality",
+        "codex-parallel-integration",
+        "codex-browser-images",
+        "codex-automations",
+        "codex-automation-recovery",
+        "codex-website-workshop",
+        "codex-csv-workshop",
+        "codex-maintain-existing-project",
+        "codex-project-data-safety",
+        "codex-usage-efficiency",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "id": "mobile",
+      "title": "手机",
+      "slugs": [
+        "codex-beginner-guide",
+        "codex-platforms-guide",
+        "codex-prompting",
+        "codex-mobile-guide",
+        "codex-mobile-ios",
+        "codex-mobile-android",
+        "codex-remote-setup",
+        "codex-cross-device-workflow",
+        "codex-project-data-safety",
+        "codex-usage-efficiency",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "id": "cli",
+      "title": "CLI",
+      "slugs": [
+        "codex-beginner-guide",
+        "codex-account-usage",
+        "codex-platforms-guide",
+        "codex-terminal-paths",
+        "codex-first-project",
+        "codex-prompting",
+        "codex-cli-getting-started",
+        "codex-cli-windows",
+        "codex-cli-macos",
+        "codex-cli-linux-wsl",
+        "codex-cross-device-workflow",
+        "codex-markdown-basics",
+        "codex-agents-md",
+        "codex-agents-md-scopes",
+        "codex-rules-and-context-files",
+        "codex-config-toml",
+        "codex-config-troubleshooting",
+        "codex-commands",
+        "codex-sessions-resume",
+        "codex-context-handoff",
+        "codex-model-selection",
+        "codex-plan-mode",
+        "codex-permissions",
+        "codex-understand-codebase",
+        "codex-implement-feature",
+        "codex-debugging",
+        "codex-git-basics",
+        "codex-testing-review",
+        "codex-skills",
+        "codex-skill-resources",
+        "codex-skill-testing",
+        "codex-plugins",
+        "codex-plugin-troubleshooting",
+        "codex-templates-cheatsheet",
+        "codex-mcp",
+        "codex-mcp-troubleshooting",
+        "codex-worktrees",
+        "codex-subagents",
+        "codex-subagent-quality",
+        "codex-parallel-integration",
+        "codex-browser-images",
+        "codex-exec-scripting",
+        "codex-json-output",
+        "codex-ci-workflows",
+        "codex-automation-recovery",
+        "codex-website-workshop",
+        "codex-csv-workshop",
+        "codex-maintain-existing-project",
+        "codex-project-data-safety",
+        "codex-usage-efficiency",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "id": "ide",
+      "title": "IDE",
+      "slugs": [
+        "codex-beginner-guide",
+        "codex-account-usage",
+        "codex-platforms-guide",
+        "codex-terminal-paths",
+        "codex-prompting",
+        "codex-ide-getting-started",
+        "codex-cross-device-workflow",
+        "codex-markdown-basics",
+        "codex-agents-md",
+        "codex-agents-md-scopes",
+        "codex-rules-and-context-files",
+        "codex-config-toml",
+        "codex-config-troubleshooting",
+        "codex-sessions-resume",
+        "codex-context-handoff",
+        "codex-model-selection",
+        "codex-permissions",
+        "codex-understand-codebase",
+        "codex-implement-feature",
+        "codex-debugging",
+        "codex-git-basics",
+        "codex-testing-review",
+        "codex-skills",
+        "codex-skill-resources",
+        "codex-skill-testing",
+        "codex-templates-cheatsheet",
+        "codex-mcp",
+        "codex-mcp-troubleshooting",
+        "codex-parallel-integration",
+        "codex-website-workshop",
+        "codex-csv-workshop",
+        "codex-maintain-existing-project",
+        "codex-project-data-safety",
+        "codex-usage-efficiency"
+      ]
+    },
+    {
+      "id": "cloud",
+      "title": "云端",
+      "slugs": [
+        "codex-beginner-guide",
+        "codex-account-usage",
+        "codex-platforms-guide",
+        "codex-prompting",
+        "codex-cloud-tasks-github",
+        "codex-cross-device-workflow",
+        "codex-agents-md-scopes",
+        "codex-rules-and-context-files",
+        "codex-context-handoff",
+        "codex-model-selection",
+        "codex-permissions",
+        "codex-understand-codebase",
+        "codex-implement-feature",
+        "codex-debugging",
+        "codex-testing-review",
+        "codex-templates-cheatsheet",
+        "codex-ci-workflows",
+        "codex-maintain-existing-project",
+        "codex-project-data-safety",
+        "codex-usage-efficiency"
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "slug": "codex-beginner-guide",
+      "title": "Codex 是什么？与 ChatGPT 的区别",
+      "outcome": "Codex 是能读取专案、修改档案并执行工具的程式开发代理。一般聊天给你的程式码，往往还要自己贴进编辑器；代理则可以在你选定的工作环境里完成修改。模型是它用来推理的引擎，任务是一次工作，专案是相关档案与工作的集合，三者不要混为一谈。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/app",
+        "https://learn.chatgpt.com/docs/codex/cli"
+      ],
+      "number": 1,
+      "group": "A",
+      "level": "beginner",
+      "platforms": [
+        "desktop",
+        "mobile",
+        "cli",
+        "ide",
+        "cloud"
+      ],
+      "aliases": [
+        "agent",
+        "model",
+        "ChatGPT",
+        "Codex"
+      ],
+      "reading_minutes": 10,
+      "operation_minutes": 15,
+      "prerequisites": [],
+      "related": [
+        "codex-account-usage",
+        "codex-desktop-getting-started",
+        "codex-cli-getting-started"
+      ]
+    },
+    {
+      "slug": "codex-account-usage",
+      "title": "账号、登录、方案与额度",
+      "outcome": "先确认登入方式，才能判断用量扣在哪里。ChatGPT 帐号登入使用方案提供的 Codex 额度；以 API key 使用支援的客户端则需要另行确认 API 帐务。这篇不固定写入容易过期的价格或讯息上限，而是教你找到自己帐号的有效资讯。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/auth",
+        "https://learn.chatgpt.com/docs/pricing"
+      ],
+      "number": 2,
+      "group": "A",
+      "level": "beginner",
+      "platforms": [
+        "desktop",
+        "cli",
+        "ide",
+        "cloud"
+      ],
+      "aliases": [
+        "login",
+        "logout",
+        "usage",
+        "credits",
+        "API"
+      ],
+      "reading_minutes": 10,
+      "operation_minutes": 15,
+      "prerequisites": [
+        "codex-beginner-guide"
+      ],
+      "related": [
+        "codex-beginner-guide",
+        "codex-model-selection",
+        "codex-permissions"
+      ]
+    },
+    {
+      "slug": "codex-platforms-guide",
+      "title": "平台选择：找到适合的 Codex 入口",
+      "outcome": "用具体工作情境比较桌面、手机、CLI、IDE 与云端，核对档案和工具在哪里执行。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/app",
+        "https://learn.chatgpt.com/docs/linux/linux-app",
+        "https://learn.chatgpt.com/docs/ide",
+        "https://learn.chatgpt.com/docs/cloud",
+        "https://learn.chatgpt.com/docs/remote-connections"
+      ],
+      "number": 3,
+      "group": "A",
+      "level": "beginner",
+      "platforms": [
+        "desktop",
+        "mobile",
+        "cli",
+        "ide",
+        "cloud"
+      ],
+      "aliases": [
+        "platform",
+        "desktop",
+        "mobile",
+        "CLI",
+        "IDE",
+        "cloud",
+        "entry"
+      ],
+      "reading_minutes": 10,
+      "operation_minutes": 15,
+      "prerequisites": [
+        "codex-account-usage"
+      ],
+      "related": [
+        "codex-account-usage",
+        "codex-terminal-paths",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "slug": "codex-terminal-paths",
+      "title": "终端机与路径：找到专案根目录",
+      "outcome": "在 Windows、macOS、Linux 建立练习资料夹，确认目前目录并辨识相对与绝对路径。",
+      "sources": [
+        "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/set-location",
+        "https://learn.chatgpt.com/docs/codex/cli"
+      ],
+      "number": 4,
+      "group": "A",
+      "level": "beginner",
+      "platforms": [
+        "desktop",
+        "cli",
+        "ide"
+      ],
+      "aliases": [
+        "terminal",
+        "shell",
+        "PowerShell",
+        "cd",
+        "pwd",
+        "path",
+        "directory"
+      ],
+      "reading_minutes": 12,
+      "operation_minutes": 20,
+      "prerequisites": [
+        "codex-platforms-guide"
+      ],
+      "related": [
+        "codex-platforms-guide",
+        "codex-first-project",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "slug": "codex-first-project",
+      "title": "完成第一个小项目",
+      "outcome": "第一个专案选择一张可以在浏览器打开的介绍卡。只有 index.html，一开始不加入登入、资料库或部署。这样能看清楚需求、实际修改与验收之间的关系，出错时也容易定位。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/quickstart",
+        "https://learn.chatgpt.com/docs/codex/cli"
+      ],
+      "number": 5,
+      "group": "A",
+      "level": "beginner",
+      "platforms": [
+        "desktop",
+        "cli"
+      ],
+      "aliases": [
+        "HTML",
+        "index.html"
+      ],
+      "reading_minutes": 12,
+      "operation_minutes": 30,
+      "prerequisites": [
+        "codex-terminal-paths"
+      ],
+      "related": [
+        "codex-prompting",
+        "codex-markdown-basics",
+        "codex-website-workshop"
+      ]
+    },
+    {
+      "slug": "codex-prompting",
+      "title": "如何把需求说清楚",
+      "outcome": "有效的需求不是把提示词写得很长，而是让代理知道你要什么、已有哪些材料、有哪些界线，以及怎样算完成。同一个『帮我改善网页』，可以指速度、外观或无障碍；先把目标变成能观察的行为。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/prompting"
+      ],
+      "number": 6,
+      "group": "A",
+      "level": "beginner",
+      "platforms": [
+        "desktop",
+        "mobile",
+        "cli",
+        "ide",
+        "cloud"
+      ],
+      "aliases": [
+        "prompt",
+        "goal",
+        "constraints"
+      ],
+      "reading_minutes": 12,
+      "operation_minutes": 20,
+      "prerequisites": [
+        "codex-first-project"
+      ],
+      "related": [
+        "codex-plan-mode",
+        "codex-debugging",
+        "codex-context-handoff"
+      ]
+    },
+    {
+      "slug": "codex-cli-getting-started",
+      "title": "Codex CLI 安装与入门",
+      "outcome": "选择自己的安装平台，完成 CLI 登录、只读检查、单行修改、独立验证与工作阶段接续。包含可重做的两文件练习与缺文件测试。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/codex/cli",
+        "https://learn.chatgpt.com/docs/auth",
+        "https://learn.chatgpt.com/docs/developer-commands?surface=cli"
+      ],
+      "number": 7,
+      "group": "B",
+      "level": "beginner",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "npm",
+        "codex",
+        "--version",
+        "--help"
+      ],
+      "reading_minutes": 12,
+      "operation_minutes": 25,
+      "prerequisites": [
+        "codex-terminal-paths"
+      ],
+      "related": [
+        "codex-desktop-getting-started",
+        "codex-commands",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "slug": "codex-cli-windows",
+      "title": "Windows CLI 安装与排错",
+      "outcome": "在 PowerShell 安装、登入、核对执行路径，完成第一次读取并处理更新与找不到命令。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/codex/cli",
+        "https://learn.chatgpt.com/docs/auth",
+        "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+        "https://learn.chatgpt.com/docs/windows/windows-sandbox"
+      ],
+      "number": 8,
+      "group": "B",
+      "level": "beginner",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "Windows",
+        "PowerShell",
+        "CLI",
+        "npm",
+        "PATH",
+        "Get-Command"
+      ],
+      "reading_minutes": 12,
+      "operation_minutes": 25,
+      "prerequisites": [
+        "codex-cli-getting-started"
+      ],
+      "related": [
+        "codex-cli-getting-started",
+        "codex-cli-macos",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "slug": "codex-cli-macos",
+      "title": "macOS CLI 安装与排错",
+      "outcome": "在 macOS 终端机完成安装、登入与专案定位，分开处理 shell 环境、更新和权限问题。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/codex/cli",
+        "https://learn.chatgpt.com/docs/auth",
+        "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+        "https://support.apple.com/guide/terminal/drag-items-into-a-terminal-window-trml106/mac",
+        "https://support.apple.com/guide/textedit/create-open-and-convert-documents-txtee6663a0e/mac"
+      ],
+      "number": 9,
+      "group": "B",
+      "level": "beginner",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "macOS",
+        "Mac",
+        "Terminal",
+        "zsh",
+        "CLI",
+        "npm",
+        "PATH"
+      ],
+      "reading_minutes": 12,
+      "operation_minutes": 25,
+      "prerequisites": [
+        "codex-cli-getting-started"
+      ],
+      "related": [
+        "codex-cli-windows",
+        "codex-cli-linux-wsl",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "slug": "codex-cli-linux-wsl",
+      "title": "Linux／WSL CLI 与档案位置",
+      "outcome": "辨识主机与 WSL 的工具、路径和帐号，从正确目录执行相同练习并更新 CLI。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/codex/cli",
+        "https://learn.chatgpt.com/docs/auth",
+        "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+        "https://learn.chatgpt.com/docs/windows/wsl",
+        "https://learn.chatgpt.com/docs/windows/windows-app",
+        "https://learn.microsoft.com/en-us/windows/wsl/install",
+        "https://learn.microsoft.com/en-us/windows/wsl/basic-commands"
+      ],
+      "number": 10,
+      "group": "B",
+      "level": "beginner",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "Linux",
+        "WSL",
+        "WSL2",
+        "Ubuntu",
+        "bash",
+        "home",
+        "mount",
+        "CLI"
+      ],
+      "reading_minutes": 12,
+      "operation_minutes": 30,
+      "prerequisites": [
+        "codex-cli-getting-started"
+      ],
+      "related": [
+        "codex-cli-macos",
+        "codex-desktop-getting-started",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "slug": "codex-desktop-getting-started",
+      "title": "桌面版：Windows、macOS、Linux",
+      "outcome": "桌面版把任务、档案、终端机与修改结果放在同一个工作空间。目前官方下载文件使用 ChatGPT desktop app 名称，进入后可选 Codex。这里提供三种系统的安装主线；Linux 属预览版，不能把其支援范围推广到所有发行版。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/app",
+        "https://learn.chatgpt.com/docs/windows/windows-app",
+        "https://learn.chatgpt.com/docs/linux/linux-app",
+        "https://chatgpt.com/download/"
+      ],
+      "number": 11,
+      "group": "B",
+      "level": "beginner",
+      "platforms": [
+        "desktop"
+      ],
+      "aliases": [
+        "desktop",
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "reading_minutes": 15,
+      "operation_minutes": 25,
+      "prerequisites": [
+        "codex-cli-linux-wsl"
+      ],
+      "related": [
+        "codex-mobile-guide",
+        "codex-cli-getting-started",
+        "codex-project-management"
+      ]
+    },
+    {
+      "slug": "codex-ide-getting-started",
+      "title": "IDE 扩展入门",
+      "outcome": "IDE 整合把 Codex 放在程式码旁边，适合针对选取内容解释与修改。VS Code、Cursor、Windsurf 使用 Codex 扩充；Xcode 与 JetBrains 有自己的整合入口，不能把安装步骤混用。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/ide",
+        "https://learn.chatgpt.com/docs/prompting",
+        "https://learn.chatgpt.com/docs/auth"
+      ],
+      "number": 12,
+      "group": "B",
+      "level": "intermediate",
+      "platforms": [
+        "ide"
+      ],
+      "aliases": [
+        "VS",
+        "Code",
+        "Cursor",
+        "Windsurf"
+      ],
+      "reading_minutes": 12,
+      "operation_minutes": 30,
+      "prerequisites": [
+        "codex-desktop-getting-started"
+      ],
+      "related": [
+        "codex-cli-getting-started",
+        "codex-git-basics",
+        "codex-testing-review"
+      ]
+    },
+    {
+      "slug": "codex-mobile-guide",
+      "title": "手机使用：iPhone 与 Android",
+      "outcome": "手机可以透过 ChatGPT 的 Remote 检视与引导连线电脑上的 Codex 任务。官方文件列出 iOS 与 Android 客户端，支援的 Remote 主机为 Mac 或 Windows；功能可能分批开放。不要将此解释为把完整开发环境安装到手机，或假定 Linux 可当 Remote 主机。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/remote-connections",
+        "https://learn.chatgpt.com/docs/cloud"
+      ],
+      "number": 13,
+      "group": "C",
+      "level": "beginner",
+      "platforms": [
+        "mobile"
+      ],
+      "aliases": [
+        "Remote",
+        "iOS",
+        "iPhone",
+        "Android",
+        "QR"
+      ],
+      "reading_minutes": 12,
+      "operation_minutes": 20,
+      "prerequisites": [
+        "codex-desktop-getting-started"
+      ],
+      "related": [
+        "codex-desktop-getting-started",
+        "codex-project-management",
+        "codex-cloud-tasks-github"
+      ]
+    },
+    {
+      "slug": "codex-mobile-ios",
+      "title": "iPhone／iPad：接续 Codex 工作",
+      "outcome": "核对 iOS 的可用入口、配对与验证条件，送出一次支援的任务并追踪主机结果。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/remote-connections",
+        "https://support.apple.com/guide/iphone/scan-a-qr-code-iphe8bda8762/ios"
+      ],
+      "number": 14,
+      "group": "C",
+      "level": "beginner",
+      "platforms": [
+        "mobile"
+      ],
+      "aliases": [
+        "iPhone",
+        "iPad",
+        "iOS",
+        "Remote",
+        "QR",
+        "mobile"
+      ],
+      "reading_minutes": 12,
+      "operation_minutes": 25,
+      "prerequisites": [
+        "codex-mobile-guide"
+      ],
+      "related": [
+        "codex-mobile-guide",
+        "codex-mobile-android",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "slug": "codex-mobile-android",
+      "title": "Android：接续 Codex 工作",
+      "outcome": "检查 Android 应用程式、配对与通知设定，找到正确主机并核对任务成果。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/remote-connections",
+        "https://support.google.com/camerafromgoogle/answer/12033278?hl=en"
+      ],
+      "number": 15,
+      "group": "C",
+      "level": "beginner",
+      "platforms": [
+        "mobile"
+      ],
+      "aliases": [
+        "Android",
+        "Remote",
+        "QR",
+        "mobile",
+        "Google",
+        "Play"
+      ],
+      "reading_minutes": 12,
+      "operation_minutes": 25,
+      "prerequisites": [
+        "codex-mobile-guide"
+      ],
+      "related": [
+        "codex-mobile-ios",
+        "codex-remote-setup",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "slug": "codex-remote-setup",
+      "title": "Remote 设定、排错与解除连接",
+      "outcome": "完成配对、检查主机状态，以唯读任务验证连线，再安全停止与移除配对。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/remote-connections",
+        "https://learn.chatgpt.com/docs/app",
+        "https://learn.chatgpt.com/docs/auth"
+      ],
+      "number": 16,
+      "group": "C",
+      "level": "beginner",
+      "platforms": [
+        "desktop",
+        "mobile"
+      ],
+      "aliases": [
+        "Remote",
+        "pairing",
+        "Connections",
+        "QR",
+        "host",
+        "disconnect"
+      ],
+      "reading_minutes": 12,
+      "operation_minutes": 25,
+      "prerequisites": [
+        "codex-desktop-getting-started",
+        "codex-mobile-guide"
+      ],
+      "related": [
+        "codex-mobile-android",
+        "codex-cloud-tasks-github",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "slug": "codex-cloud-tasks-github",
+      "title": "云端任务与 GitHub",
+      "outcome": "云端任务使用为程式库设定的远端环境，适合把较长工作交出去并回来检查。它不会自动读取你电脑尚未提交的档案；建立 PR 也不代表已合并或部署。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/cloud",
+        "https://learn.chatgpt.com/docs/environments/cloud-environment",
+        "https://learn.chatgpt.com/docs/cloud/internet-access",
+        "https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository",
+        "https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository"
+      ],
+      "number": 17,
+      "group": "C",
+      "level": "intermediate",
+      "platforms": [
+        "cloud"
+      ],
+      "aliases": [
+        "GitHub",
+        "cloud",
+        "PR"
+      ],
+      "reading_minutes": 15,
+      "operation_minutes": 35,
+      "prerequisites": [
+        "codex-account-usage",
+        "codex-first-project"
+      ],
+      "related": [
+        "codex-permissions",
+        "codex-testing-review",
+        "codex-worktrees"
+      ]
+    },
+    {
+      "slug": "codex-cross-device-workflow",
+      "title": "跨装置交接：核对档案与环境",
+      "outcome": "追踪对话、主机、工作目录与分支，用交接纪录确认接续的是同一份工作。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/remote-connections",
+        "https://learn.chatgpt.com/docs/cloud"
+      ],
+      "number": 18,
+      "group": "C",
+      "level": "beginner",
+      "platforms": [
+        "desktop",
+        "mobile",
+        "cli",
+        "ide",
+        "cloud"
+      ],
+      "aliases": [
+        "handoff",
+        "cross-device",
+        "host",
+        "workspace",
+        "branch",
+        "context"
+      ],
+      "reading_minutes": 12,
+      "operation_minutes": 25,
+      "prerequisites": [
+        "codex-remote-setup",
+        "codex-cloud-tasks-github"
+      ],
+      "related": [
+        "codex-cloud-tasks-github",
+        "codex-markdown-basics",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "slug": "codex-markdown-basics",
+      "title": "Markdown 与 MD 文件入门",
+      "outcome": "Markdown 是用纯文字标记标题、清单、连结与程式码的格式，常见副档名是 .md。README.md 通常用来说明专案，AGENTS.md 提供代理工作规则，SKILL.md 描述可重用技能；不是所有 MD 档都会被 Codex 自动当作指令。",
+      "sources": [
+        "https://code.visualstudio.com/docs/languages/markdown",
+        "https://learn.chatgpt.com/docs/agent-configuration/agents-md"
+      ],
+      "number": 19,
+      "group": "D",
+      "level": "beginner",
+      "platforms": [
+        "desktop",
+        "cli",
+        "ide"
+      ],
+      "aliases": [
+        "Markdown",
+        "README.md"
+      ],
+      "reading_minutes": 10,
+      "operation_minutes": 20,
+      "prerequisites": [
+        "codex-first-project"
+      ],
+      "related": [
+        "codex-agents-md",
+        "codex-context-handoff",
+        "codex-skills"
+      ]
+    },
+    {
+      "slug": "codex-agents-md",
+      "title": "AGENTS.md 项目规则",
+      "outcome": "AGENTS.md 是让 Codex 在开始工作前取得专案规则的档案。全域规则、专案根目录与工作目录路径中的子目录规则会形成一条指令链；同一层有 AGENTS.override.md 时优先读取它。规则愈具体愈容易遵循，仍需要验证实际载入。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+        "https://learn.chatgpt.com/docs/config-file/config-basic"
+      ],
+      "number": 20,
+      "group": "D",
+      "level": "beginner",
+      "platforms": [
+        "desktop",
+        "cli",
+        "ide"
+      ],
+      "aliases": [
+        "AGENTS.md",
+        "AGENTS.override.md",
+        "/init"
+      ],
+      "reading_minutes": 12,
+      "operation_minutes": 20,
+      "prerequisites": [
+        "codex-markdown-basics"
+      ],
+      "related": [
+        "codex-markdown-basics",
+        "codex-config-toml",
+        "codex-skills"
+      ]
+    },
+    {
+      "slug": "codex-agents-md-scopes",
+      "title": "AGENTS.md 层级与覆写验证",
+      "outcome": "用根目录与子目录案例追踪规则来源、冲突与 override，确认实际选入的文件。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+        "https://learn.chatgpt.com/docs/developer-commands?surface=cli"
+      ],
+      "number": 21,
+      "group": "D",
+      "level": "intermediate",
+      "platforms": [
+        "desktop",
+        "cli",
+        "ide",
+        "cloud"
+      ],
+      "aliases": [
+        "AGENTS.md",
+        "AGENTS.override.md",
+        "scope",
+        "hierarchy",
+        "root",
+        "cwd"
+      ],
+      "reading_minutes": 12,
+      "operation_minutes": 25,
+      "prerequisites": [
+        "codex-agents-md"
+      ],
+      "related": [
+        "codex-agents-md",
+        "codex-rules-and-context-files",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "slug": "codex-rules-and-context-files",
+      "title": "规则、说明与上下文文件怎么分",
+      "outcome": "把专案规则、使用说明、设计决策与可重用流程放进适合的文件，避免重复与矛盾。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+        "https://learn.chatgpt.com/docs/prompting"
+      ],
+      "number": 22,
+      "group": "D",
+      "level": "intermediate",
+      "platforms": [
+        "desktop",
+        "cli",
+        "ide",
+        "cloud"
+      ],
+      "aliases": [
+        "README.md",
+        "AGENTS.md",
+        "SKILL.md",
+        "config.toml",
+        "context",
+        "rules"
+      ],
+      "reading_minutes": 12,
+      "operation_minutes": 25,
+      "prerequisites": [
+        "codex-agents-md-scopes"
+      ],
+      "related": [
+        "codex-agents-md-scopes",
+        "codex-config-toml",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "slug": "codex-config-toml",
+      "title": "config.toml 配置教程",
+      "outcome": "config.toml 控制 Codex 的设定值，与 AGENTS.md 的自然语言工作规则不同。使用者设定在 Codex home，受信任专案也能有 .codex/config.toml。设定可能被 CLI 参数、专案层或组织政策影响，不能只看一个档案就断言生效。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/config-file/config-basic",
+        "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+        "https://learn.chatgpt.com/docs/web-search"
+      ],
+      "number": 23,
+      "group": "D",
+      "level": "intermediate",
+      "platforms": [
+        "desktop",
+        "cli",
+        "ide"
+      ],
+      "aliases": [
+        "config.toml",
+        "approval_policy"
+      ],
+      "reading_minutes": 12,
+      "operation_minutes": 25,
+      "prerequisites": [
+        "codex-rules-and-context-files"
+      ],
+      "related": [
+        "codex-agents-md",
+        "codex-model-selection",
+        "codex-mcp"
+      ]
+    },
+    {
+      "slug": "codex-config-troubleshooting",
+      "title": "设定优先顺序与故障排除",
+      "outcome": "从设定来源追查无效或冲突的选项，一次修改一项，验证结果后保留可还原的纪录。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/config-file/config-basic",
+        "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+        "https://learn.chatgpt.com/docs/web-search",
+        "https://toml.io/en/v1.0.0",
+        "https://docs.python.org/3/library/tomllib.html"
+      ],
+      "number": 24,
+      "group": "D",
+      "level": "intermediate",
+      "platforms": [
+        "desktop",
+        "cli",
+        "ide"
+      ],
+      "aliases": [
+        "config.toml",
+        "precedence",
+        "profile",
+        "override",
+        "debug-config"
+      ],
+      "reading_minutes": 12,
+      "operation_minutes": 25,
+      "prerequisites": [
+        "codex-config-toml"
+      ],
+      "related": [
+        "codex-config-toml",
+        "codex-commands",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "slug": "codex-commands",
+      "title": "CLI 命令与斜线命令",
+      "outcome": "Codex 有终端机命令、互动介面的斜线指令、键盘快捷键与自然语言需求四种操作。先知道要把内容输入在哪里，才不会在 shell 输入 /plan，或把 codex --help 当成要代理修改程式的要求。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+        "https://learn.chatgpt.com/docs/codex/cli"
+      ],
+      "number": 25,
+      "group": "E",
+      "level": "beginner",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "/status",
+        "/model",
+        "/permissions",
+        "/review",
+        "/resume",
+        "/compact"
+      ],
+      "reading_minutes": 12,
+      "operation_minutes": 20,
+      "prerequisites": [
+        "codex-cli-getting-started"
+      ],
+      "related": [
+        "codex-cli-getting-started",
+        "codex-plan-mode",
+        "codex-exec-scripting"
+      ]
+    },
+    {
+      "slug": "codex-sessions-resume",
+      "title": "工作阶段、接续与分岔",
+      "outcome": "辨识新任务、接续与分岔的差异，从历史中找到正确工作并核对路径和剩余事项。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/developer-commands?surface=cli"
+      ],
+      "number": 26,
+      "group": "E",
+      "level": "intermediate",
+      "platforms": [
+        "desktop",
+        "cli",
+        "ide"
+      ],
+      "aliases": [
+        "resume",
+        "fork",
+        "session",
+        "history",
+        "/resume",
+        "/new",
+        "/compact"
+      ],
+      "reading_minutes": 12,
+      "operation_minutes": 20,
+      "prerequisites": [
+        "codex-commands"
+      ],
+      "related": [
+        "codex-commands",
+        "codex-context-handoff",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "slug": "codex-context-handoff",
+      "title": "上下文与工作交接",
+      "outcome": "长工作需要把决策与证据留下，不能只依靠对话长度。README 说明怎么使用专案，设计文件记录为何这样做，交接文件整理目前做到哪里；AGENTS.md 则放持续有效的工作规则，避免把所有进度塞成规则。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+        "https://learn.chatgpt.com/docs/prompting",
+        "https://learn.chatgpt.com/docs/agent-configuration/agents-md"
+      ],
+      "number": 27,
+      "group": "E",
+      "level": "intermediate",
+      "platforms": [
+        "desktop",
+        "cli",
+        "ide",
+        "cloud"
+      ],
+      "aliases": [
+        "resume",
+        "context",
+        "README.md"
+      ],
+      "reading_minutes": 12,
+      "operation_minutes": 22,
+      "prerequisites": [
+        "codex-sessions-resume"
+      ],
+      "related": [
+        "codex-markdown-basics",
+        "codex-agents-md",
+        "codex-project-management"
+      ]
+    },
+    {
+      "slug": "codex-model-selection",
+      "title": "模型、推理深度与速度",
+      "outcome": "模型决定可用能力与成本条件，推理深度影响代理愿意花多少工作来处理问题。先用同一个小任务比较品质，再决定是否提高深度；模型名称与额度会变，因此只以帐号当下显示的选项为准。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/models",
+        "https://learn.chatgpt.com/docs/developer-commands?surface=cli"
+      ],
+      "number": 28,
+      "group": "E",
+      "level": "intermediate",
+      "platforms": [
+        "desktop",
+        "cli",
+        "ide",
+        "cloud"
+      ],
+      "aliases": [
+        "/model",
+        "reasoning",
+        "effort"
+      ],
+      "reading_minutes": 12,
+      "operation_minutes": 20,
+      "prerequisites": [
+        "codex-context-handoff"
+      ],
+      "related": [
+        "codex-account-usage",
+        "codex-prompting",
+        "codex-exec-scripting"
+      ]
+    },
+    {
+      "slug": "codex-plan-mode",
+      "title": "Plan 模式：先规划再实现",
+      "outcome": "Plan 模式适合还需要决定范围或做法的工作。它帮你把需求整理成可实作的计划，但计划本身不是已完成的程式。使用时先定义要讨论的问题，再检查计划是否包含输入、输出、限制与验证。",
+      "sources": [
+        "https://learn.chatgpt.com/guides/best-practices",
+        "https://learn.chatgpt.com/docs/features",
+        "https://learn.chatgpt.com/docs/developer-commands?surface=cli"
+      ],
+      "number": 29,
+      "group": "E",
+      "level": "beginner",
+      "platforms": [
+        "desktop",
+        "cli"
+      ],
+      "aliases": [
+        "/plan"
+      ],
+      "reading_minutes": 13,
+      "operation_minutes": 25,
+      "prerequisites": [
+        "codex-model-selection"
+      ],
+      "related": [
+        "codex-prompting",
+        "codex-git-basics",
+        "codex-testing-review"
+      ]
+    },
+    {
+      "slug": "codex-permissions",
+      "title": "权限、沙箱、网络与密钥",
+      "outcome": "沙盒决定工具技术上能碰哪些档案或网路，授权政策决定什么时候需要询问。两层设定不能混为一谈：不显示询问不代表动作一定被允许，能读档也不代表可以写入所有地方。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/agent-approvals-security",
+        "https://learn.chatgpt.com/docs/sandboxing",
+        "https://learn.chatgpt.com/docs/developer-commands?surface=cli"
+      ],
+      "number": 30,
+      "group": "E",
+      "level": "intermediate",
+      "platforms": [
+        "desktop",
+        "cli",
+        "ide",
+        "cloud"
+      ],
+      "aliases": [
+        "/permissions",
+        "sandbox",
+        "API",
+        "key"
+      ],
+      "reading_minutes": 14,
+      "operation_minutes": 20,
+      "prerequisites": [
+        "codex-plan-mode"
+      ],
+      "related": [
+        "codex-config-toml",
+        "codex-plugins",
+        "codex-mcp"
+      ]
+    },
+    {
+      "slug": "codex-project-management",
+      "title": "桌面版任务与项目管理",
+      "outcome": "把同一件事的追问留在同一任务，把独立成果分成不同任务，能减少上下文混乱。专案负责定位相关档案，任务负责一次具体工作；建立很多任务不会自动让档案彼此隔离，隔离需要 worktree 等机制。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/projects",
+        "https://learn.chatgpt.com/docs/agent-configuration/agents-md"
+      ],
+      "number": 31,
+      "group": "F",
+      "level": "intermediate",
+      "platforms": [
+        "desktop"
+      ],
+      "aliases": [
+        "archive",
+        "projects",
+        "tasks"
+      ],
+      "reading_minutes": 12,
+      "operation_minutes": 20,
+      "prerequisites": [
+        "codex-first-project"
+      ],
+      "related": [
+        "codex-context-handoff",
+        "codex-worktrees",
+        "codex-automations"
+      ]
+    },
+    {
+      "slug": "codex-understand-codebase",
+      "title": "先读懂一个既有专案",
+      "outcome": "用唯读流程找到启动点、资料流与测试，产生有档案依据的专案地图。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/prompting"
+      ],
+      "number": 32,
+      "group": "F",
+      "level": "intermediate",
+      "platforms": [
+        "desktop",
+        "cli",
+        "ide",
+        "cloud"
+      ],
+      "aliases": [
+        "codebase",
+        "architecture",
+        "read-only",
+        "understand",
+        "repository"
+      ],
+      "reading_minutes": 14,
+      "operation_minutes": 25,
+      "prerequisites": [
+        "codex-project-management"
+      ],
+      "related": [
+        "codex-project-management",
+        "codex-implement-feature",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "slug": "codex-implement-feature",
+      "title": "实作功能：完成待办筛选",
+      "outcome": "从 start 材料补上 Active／Completed 筛选，保留资料格式并用正常与边界案例验收。",
+      "sources": [
+        "https://learn.chatgpt.com/guides/best-practices",
+        "https://learn.chatgpt.com/docs/prompting"
+      ],
+      "number": 33,
+      "group": "F",
+      "level": "intermediate",
+      "platforms": [
+        "desktop",
+        "cli",
+        "ide",
+        "cloud"
+      ],
+      "aliases": [
+        "feature",
+        "acceptance",
+        "todo",
+        "filter",
+        "implement"
+      ],
+      "reading_minutes": 14,
+      "operation_minutes": 30,
+      "prerequisites": [
+        "codex-understand-codebase"
+      ],
+      "related": [
+        "codex-understand-codebase",
+        "codex-debugging",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "slug": "codex-debugging",
+      "title": "修复 Bug 的完整流程",
+      "outcome": "好的除错从可重现的症状开始，再用证据缩小原因，最后验证修正。『网站坏了』不够具体；提供哪个输入、在哪个步骤、期待什么、实际出现什么，能让 Codex 更快找到相关程式。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/prompting",
+        "https://learn.chatgpt.com/guides/best-practices"
+      ],
+      "number": 34,
+      "group": "F",
+      "level": "intermediate",
+      "platforms": [
+        "desktop",
+        "cli",
+        "ide",
+        "cloud"
+      ],
+      "aliases": [
+        "bug",
+        "reproduction",
+        "regression"
+      ],
+      "reading_minutes": 14,
+      "operation_minutes": 25,
+      "prerequisites": [
+        "codex-implement-feature"
+      ],
+      "related": [
+        "codex-prompting",
+        "codex-git-basics",
+        "codex-testing-review"
+      ]
+    },
+    {
+      "slug": "codex-git-basics",
+      "title": "Git、分支、diff 与还原",
+      "outcome": "Git 保存档案版本，分支承接一组修改，diff 显示差异。Codex 可以协助操作，但你仍要确认修改属于这次任务。聊天纪录与 Git 历史不同，恢复旧对话不会自动还原档案。",
+      "sources": [
+        "https://git-scm.com/install/",
+        "https://git-scm.com/docs/git-init",
+        "https://git-scm.com/docs/git-diff",
+        "https://git-scm.com/docs/git-restore",
+        "https://git-scm.com/docs/git-revert",
+        "https://learn.chatgpt.com/docs/code-review"
+      ],
+      "number": 35,
+      "group": "F",
+      "level": "intermediate",
+      "platforms": [
+        "desktop",
+        "cli",
+        "ide"
+      ],
+      "aliases": [
+        "git",
+        "diff",
+        "status",
+        "restore",
+        "branch"
+      ],
+      "reading_minutes": 15,
+      "operation_minutes": 30,
+      "prerequisites": [
+        "codex-debugging"
+      ],
+      "related": [
+        "codex-debugging",
+        "codex-testing-review",
+        "codex-worktrees"
+      ]
+    },
+    {
+      "slug": "codex-testing-review",
+      "title": "测试、Code Review 与 PR",
+      "outcome": "测试确认程式在指定条件的行为，Code Review 检查变更是否有遗漏或风险，PR 则让人查看并讨论要合并的差异。三者互补；通过测试不等于审查通过，开 PR 也不是已合并。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/code-review",
+        "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+        "https://docs.github.com/en/pull-requests/how-tos/create-pull-requests/creating-a-pull-request"
+      ],
+      "number": 36,
+      "group": "F",
+      "level": "intermediate",
+      "platforms": [
+        "desktop",
+        "cli",
+        "ide",
+        "cloud"
+      ],
+      "aliases": [
+        "/review",
+        "pytest",
+        "npm",
+        "test",
+        "PR"
+      ],
+      "reading_minutes": 15,
+      "operation_minutes": 30,
+      "prerequisites": [
+        "codex-git-basics"
+      ],
+      "related": [
+        "codex-git-basics",
+        "codex-debugging",
+        "codex-cloud-tasks-github"
+      ]
+    },
+    {
+      "slug": "codex-skills",
+      "title": "Skills 与 SKILL.md",
+      "outcome": "Skill 将固定工作流程整理成可重用的指示与资源。最小结构是一个资料夹与 SKILL.md，档案前段需要 name 和 description，正文描述操作与输出。安装技能不代表每个任务都必然使用，还要检查是否载入。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/build-skills",
+        "https://learn.chatgpt.com/docs/developer-commands?surface=cli"
+      ],
+      "number": 37,
+      "group": "G",
+      "level": "advanced",
+      "platforms": [
+        "desktop",
+        "cli",
+        "ide"
+      ],
+      "aliases": [
+        "SKILL.md",
+        "/skills"
+      ],
+      "reading_minutes": 12,
+      "operation_minutes": 25,
+      "prerequisites": [
+        "codex-markdown-basics",
+        "codex-agents-md"
+      ],
+      "related": [
+        "codex-agents-md",
+        "codex-plugins",
+        "codex-mcp"
+      ]
+    },
+    {
+      "slug": "codex-skill-resources",
+      "title": "Skill 的脚本、参考文件与材料",
+      "outcome": "把重复逻辑与大型资料拆到必要的支援档案，让技能按需要读取并验证相对路径。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/build-skills"
+      ],
+      "number": 38,
+      "group": "G",
+      "level": "advanced",
+      "platforms": [
+        "desktop",
+        "cli",
+        "ide"
+      ],
+      "aliases": [
+        "SKILL.md",
+        "scripts",
+        "references",
+        "assets",
+        "resources"
+      ],
+      "reading_minutes": 15,
+      "operation_minutes": 30,
+      "prerequisites": [
+        "codex-skills"
+      ],
+      "related": [
+        "codex-skills",
+        "codex-skill-testing",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "slug": "codex-skill-testing",
+      "title": "Skill 触发与结果测试",
+      "outcome": "分开验证格式、选用条件及实际结果，用应触发与不应触发的案例修正技能描述。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/build-skills"
+      ],
+      "number": 39,
+      "group": "G",
+      "level": "advanced",
+      "platforms": [
+        "desktop",
+        "cli",
+        "ide"
+      ],
+      "aliases": [
+        "skill",
+        "testing",
+        "triggers",
+        "validation",
+        "quick_validate"
+      ],
+      "reading_minutes": 15,
+      "operation_minutes": 30,
+      "prerequisites": [
+        "codex-skill-resources"
+      ],
+      "related": [
+        "codex-skill-resources",
+        "codex-plugins",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "slug": "codex-plugins",
+      "title": "Plugins 与外部服务",
+      "outcome": "Plugin 可以把 Skills 与 MCP 工具包在一起，提供可安装的工作能力。安装套件、连接外部帐号与实际执行工具是三个不同步骤；找到插件不代表已能读你的服务资料。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/plugins"
+      ],
+      "number": 40,
+      "group": "G",
+      "level": "advanced",
+      "platforms": [
+        "desktop",
+        "cli"
+      ],
+      "aliases": [
+        "/plugins"
+      ],
+      "reading_minutes": 15,
+      "operation_minutes": 25,
+      "prerequisites": [
+        "codex-skill-testing"
+      ],
+      "related": [
+        "codex-permissions",
+        "codex-skills",
+        "codex-mcp"
+      ]
+    },
+    {
+      "slug": "codex-plugin-troubleshooting",
+      "title": "Plugin 连线与工具不可用排错",
+      "outcome": "区分已安装、已连帐号、已授权与工具可用，依实际错误重连或移除需要处理的项目。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/plugins"
+      ],
+      "number": 41,
+      "group": "G",
+      "level": "advanced",
+      "platforms": [
+        "desktop",
+        "cli"
+      ],
+      "aliases": [
+        "plugin",
+        "connection",
+        "account",
+        "permission",
+        "disconnect",
+        "uninstall"
+      ],
+      "reading_minutes": 15,
+      "operation_minutes": 20,
+      "prerequisites": [
+        "codex-plugins"
+      ],
+      "related": [
+        "codex-plugins",
+        "codex-templates-cheatsheet",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "slug": "codex-templates-cheatsheet",
+      "title": "提示词、规则与交接范本索引",
+      "outcome": "依工作选择提示词、规则与交接范本，替换必要栏位并知道每段应贴到哪里。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/prompting",
+        "https://learn.chatgpt.com/docs/agent-configuration/agents-md"
+      ],
+      "number": 42,
+      "group": "G",
+      "level": "advanced",
+      "platforms": [
+        "desktop",
+        "cli",
+        "ide",
+        "cloud"
+      ],
+      "aliases": [
+        "template",
+        "cheatsheet",
+        "prompts",
+        "AGENTS.md",
+        "SKILL.md",
+        "checklist"
+      ],
+      "reading_minutes": 15,
+      "operation_minutes": 20,
+      "prerequisites": [
+        "codex-plugin-troubleshooting"
+      ],
+      "related": [
+        "codex-plugin-troubleshooting",
+        "codex-mcp",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "slug": "codex-mcp",
+      "title": "MCP 配置与连接排查",
+      "outcome": "MCP 让 Codex 使用外部工具与资料。STDIO 伺服器通常由本机命令启动；HTTP 伺服器透过 URL 连线。设定档写入成功只代表设定存在，还需要确认服务启动、验证通过与工具回应。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/extend/mcp",
+        "https://developers.openai.com/learn/docs-mcp"
+      ],
+      "number": 43,
+      "group": "H",
+      "level": "advanced",
+      "platforms": [
+        "desktop",
+        "cli",
+        "ide"
+      ],
+      "aliases": [
+        "/mcp",
+        "codex",
+        "mcp",
+        "list"
+      ],
+      "reading_minutes": 15,
+      "operation_minutes": 20,
+      "prerequisites": [
+        "codex-permissions"
+      ],
+      "related": [
+        "codex-config-toml",
+        "codex-permissions",
+        "codex-plugins"
+      ]
+    },
+    {
+      "slug": "codex-mcp-troubleshooting",
+      "title": "MCP 连线诊断与故障复原",
+      "outcome": "从程序、传输、认证与工具清单分层检查，保留错误证据并验证最小可用操作。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/extend/mcp",
+        "https://developers.openai.com/learn/docs-mcp"
+      ],
+      "number": 44,
+      "group": "H",
+      "level": "advanced",
+      "platforms": [
+        "desktop",
+        "cli",
+        "ide"
+      ],
+      "aliases": [
+        "MCP",
+        "OAuth",
+        "stdio",
+        "HTTP",
+        "timeout",
+        "tool",
+        "unavailable"
+      ],
+      "reading_minutes": 15,
+      "operation_minutes": 20,
+      "prerequisites": [
+        "codex-mcp"
+      ],
+      "related": [
+        "codex-mcp",
+        "codex-worktrees",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "slug": "codex-worktrees",
+      "title": "Worktree 与多任务隔离",
+      "outcome": "Worktree 让同一个 Git 程式库有不同的工作目录，各自承接不同分支。它适合让两项工作分开改档，但资料库、连接埠与外部服务仍可能共用，不能把档案隔离当成所有资源隔离。",
+      "sources": [
+        "https://git-scm.com/docs/git-worktree",
+        "https://learn.chatgpt.com/docs/environments/git-worktrees"
+      ],
+      "number": 45,
+      "group": "H",
+      "level": "advanced",
+      "platforms": [
+        "desktop",
+        "cli"
+      ],
+      "aliases": [
+        "worktree",
+        "branch"
+      ],
+      "reading_minutes": 15,
+      "operation_minutes": 20,
+      "prerequisites": [
+        "codex-mcp-troubleshooting"
+      ],
+      "related": [
+        "codex-project-management",
+        "codex-git-basics",
+        "codex-subagents"
+      ]
+    },
+    {
+      "slug": "codex-subagents",
+      "title": "子代理与任务分工",
+      "outcome": "子代理适合把能独立完成的工作分开处理，再由主要任务整合结果。分工会增加模型与工具用量；若工作互相依赖、都要改同一段程式，平行处理反而可能产生冲突。",
+      "sources": [],
+      "number": 46,
+      "group": "H",
+      "level": "advanced",
+      "platforms": [
+        "desktop",
+        "cli"
+      ],
+      "aliases": [
+        "subagents",
+        "delegate"
+      ],
+      "reading_minutes": 15,
+      "operation_minutes": null,
+      "prerequisites": [
+        "codex-worktrees"
+      ],
+      "related": [
+        "codex-prompting",
+        "codex-testing-review",
+        "codex-worktrees"
+      ]
+    },
+    {
+      "slug": "codex-subagent-quality",
+      "title": "子代理分工与品质检查",
+      "outcome": "定义独立输入、修改范围与交付证据，审查子代理结果并处理缺项。",
+      "sources": [],
+      "number": 47,
+      "group": "H",
+      "level": "advanced",
+      "platforms": [
+        "desktop",
+        "cli"
+      ],
+      "aliases": [
+        "subagent",
+        "review",
+        "delegation",
+        "quality",
+        "scope",
+        "evidence"
+      ],
+      "reading_minutes": 15,
+      "operation_minutes": null,
+      "prerequisites": [
+        "codex-subagents"
+      ],
+      "related": [
+        "codex-subagents",
+        "codex-parallel-integration",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "slug": "codex-parallel-integration",
+      "title": "平行工作后的整合与验收",
+      "outcome": "依档案与介面契约整合独立修改，处理冲突，再验证合并后的整体行为。",
+      "sources": [],
+      "number": 48,
+      "group": "H",
+      "level": "advanced",
+      "platforms": [
+        "desktop",
+        "cli",
+        "ide"
+      ],
+      "aliases": [
+        "parallel",
+        "worktree",
+        "merge",
+        "conflicts",
+        "integration"
+      ],
+      "reading_minutes": 15,
+      "operation_minutes": null,
+      "prerequisites": [
+        "codex-subagent-quality"
+      ],
+      "related": [
+        "codex-subagent-quality",
+        "codex-browser-images",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "slug": "codex-browser-images",
+      "title": "浏览器、截图与图片协作",
+      "outcome": "画面需求需要把参考、实际结果与修改条件放在一起。浏览器可以找资料与检视网站，截图能传达当下画面，生成图适合概念参考；三者提供的证据不同，不能用生成的介面当成操作成功。",
+      "sources": [],
+      "number": 49,
+      "group": "I",
+      "level": "advanced",
+      "platforms": [
+        "desktop",
+        "cli"
+      ],
+      "aliases": [
+        "browser",
+        "screenshot",
+        "image"
+      ],
+      "reading_minutes": 15,
+      "operation_minutes": null,
+      "prerequisites": [
+        "codex-permissions"
+      ],
+      "related": [
+        "codex-desktop-getting-started",
+        "codex-debugging",
+        "codex-website-workshop"
+      ]
+    },
+    {
+      "slug": "codex-automations",
+      "title": "计划任务、自动化与提醒",
+      "outcome": "排程让固定工作在指定时间执行，但要先确认使用哪个环境。需要本机档案的桌面排程，电脑与应用程式必须在执行时可用；云端任务不能直接读取未提供的本机资料。",
+      "sources": [],
+      "number": 50,
+      "group": "I",
+      "level": "advanced",
+      "platforms": [
+        "desktop"
+      ],
+      "aliases": [
+        "schedule",
+        "automation",
+        "reminder"
+      ],
+      "reading_minutes": 15,
+      "operation_minutes": null,
+      "prerequisites": [
+        "codex-browser-images"
+      ],
+      "related": [
+        "codex-project-management",
+        "codex-permissions",
+        "codex-exec-scripting"
+      ]
+    },
+    {
+      "slug": "codex-exec-scripting",
+      "title": "codex exec 与脚本集成",
+      "outcome": "codex exec 在非互动模式执行一次任务，适合脚本与 CI。预设一般输出把进度放 stderr、最后回答放 stdout；--json 改成逐行 JSON 事件，不能把整份输出当成单一 JSON 物件解析。",
+      "sources": [],
+      "number": 51,
+      "group": "I",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "codex",
+        "exec",
+        "--json",
+        "-o"
+      ],
+      "reading_minutes": 15,
+      "operation_minutes": null,
+      "prerequisites": [
+        "codex-automations"
+      ],
+      "related": [
+        "codex-commands",
+        "codex-permissions",
+        "codex-csv-workshop"
+      ]
+    },
+    {
+      "slug": "codex-json-output",
+      "title": "JSON 输出与结果验证",
+      "outcome": "区分事件串流与最终结果，解析结构化输出并拒绝缺栏位或错误格式。",
+      "sources": [],
+      "number": 52,
+      "group": "I",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "codex",
+        "exec",
+        "--json",
+        "JSONL",
+        "output",
+        "schema",
+        "events"
+      ],
+      "reading_minutes": 15,
+      "operation_minutes": null,
+      "prerequisites": [
+        "codex-exec-scripting"
+      ],
+      "related": [
+        "codex-exec-scripting",
+        "codex-ci-workflows",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "slug": "codex-ci-workflows",
+      "title": "把 Codex 接入 CI 工作流程",
+      "outcome": "设计有明确输入、权限与退出状态的 CI 工作，保存产物并区分建议与正式套用。",
+      "sources": [],
+      "number": 53,
+      "group": "I",
+      "level": "advanced",
+      "platforms": [
+        "cli",
+        "cloud"
+      ],
+      "aliases": [
+        "CI",
+        "GitHub",
+        "Actions",
+        "codex",
+        "exec",
+        "checks",
+        "secrets",
+        "exit"
+      ],
+      "reading_minutes": 15,
+      "operation_minutes": null,
+      "prerequisites": [
+        "codex-json-output"
+      ],
+      "related": [
+        "codex-json-output",
+        "codex-automation-recovery",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "slug": "codex-automation-recovery",
+      "title": "自动化失败、重试与停止",
+      "outcome": "从执行纪录判断是否已产生结果，避免重复操作，修正条件并确认排程停止。",
+      "sources": [],
+      "number": 54,
+      "group": "I",
+      "level": "advanced",
+      "platforms": [
+        "desktop",
+        "cli"
+      ],
+      "aliases": [
+        "automation",
+        "schedule",
+        "retry",
+        "idempotency",
+        "recovery",
+        "stop"
+      ],
+      "reading_minutes": 15,
+      "operation_minutes": null,
+      "prerequisites": [
+        "codex-ci-workflows"
+      ],
+      "related": [
+        "codex-ci-workflows",
+        "codex-website-workshop",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "slug": "codex-website-workshop",
+      "title": "实战：制作小网站",
+      "outcome": "这个实战把前面的需求、Plan、MD 规则、浏览器与验收串起来，完成一个三张卡片的虚构工作室网站。以单一 HTML 做出清楚的内容与自适应版面，练习完整交付，而不是追求一次加入很多功能。",
+      "sources": [],
+      "number": 55,
+      "group": "J",
+      "level": "advanced",
+      "platforms": [
+        "desktop",
+        "cli",
+        "ide"
+      ],
+      "aliases": [
+        "HTML",
+        "CSS",
+        "accessibility"
+      ],
+      "reading_minutes": 45,
+      "operation_minutes": null,
+      "prerequisites": [
+        "codex-git-basics",
+        "codex-testing-review"
+      ],
+      "related": [
+        "codex-first-project",
+        "codex-testing-review",
+        "codex-browser-images"
+      ]
+    },
+    {
+      "slug": "codex-csv-workshop",
+      "title": "实战：制作数据整理工具",
+      "outcome": "这个实战制作 CSV 名单整理工具，保留原档并产生新结果。规则固定为修剪空白、将 email 转小写、同 email 保留第一笔、略过缺姓名或格式不合的 email，最后回报保留、重复与无效笔数。这是练习用格式检查，不保证信箱真实存在。",
+      "sources": [],
+      "number": 56,
+      "group": "J",
+      "level": "advanced",
+      "platforms": [
+        "desktop",
+        "cli",
+        "ide"
+      ],
+      "aliases": [
+        "CSV",
+        "Python",
+        "unittest"
+      ],
+      "reading_minutes": 45,
+      "operation_minutes": null,
+      "prerequisites": [
+        "codex-website-workshop"
+      ],
+      "related": [
+        "codex-first-project",
+        "codex-debugging",
+        "codex-exec-scripting"
+      ]
+    },
+    {
+      "slug": "codex-maintain-existing-project",
+      "title": "实战：维护既有专案",
+      "outcome": "建立现况基准，处理一项真实变更，以回归检查和交接纪录交付可追溯成果。",
+      "sources": [],
+      "number": 57,
+      "group": "J",
+      "level": "advanced",
+      "platforms": [
+        "desktop",
+        "cli",
+        "ide",
+        "cloud"
+      ],
+      "aliases": [
+        "maintenance",
+        "existing",
+        "project",
+        "regression",
+        "baseline",
+        "handoff"
+      ],
+      "reading_minutes": 15,
+      "operation_minutes": null,
+      "prerequisites": [
+        "codex-csv-workshop"
+      ],
+      "related": [
+        "codex-csv-workshop",
+        "codex-project-data-safety",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "slug": "codex-project-data-safety",
+      "title": "专案资料、金钥与练习隔离",
+      "outcome": "建立虚构测试资料与可还原副本，辨识不该进入提示词、截图或版本库的资讯。",
+      "sources": [],
+      "number": 58,
+      "group": "J",
+      "level": "advanced",
+      "platforms": [
+        "desktop",
+        "mobile",
+        "cli",
+        "ide",
+        "cloud"
+      ],
+      "aliases": [
+        "data",
+        "safety",
+        "secrets",
+        "backup",
+        "fictional",
+        "permissions",
+        "privacy"
+      ],
+      "reading_minutes": 15,
+      "operation_minutes": null,
+      "prerequisites": [
+        "codex-maintain-existing-project"
+      ],
+      "related": [
+        "codex-maintain-existing-project",
+        "codex-usage-efficiency",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "slug": "codex-usage-efficiency",
+      "title": "用量与效率：减少重工",
+      "outcome": "记录任务条件、模型选项、时间与成果，找出能减少无效重试和过多上下文的调整。",
+      "sources": [],
+      "number": 59,
+      "group": "J",
+      "level": "advanced",
+      "platforms": [
+        "desktop",
+        "mobile",
+        "cli",
+        "ide",
+        "cloud"
+      ],
+      "aliases": [
+        "usage",
+        "efficiency",
+        "model",
+        "reasoning",
+        "context",
+        "budget",
+        "time"
+      ],
+      "reading_minutes": 15,
+      "operation_minutes": null,
+      "prerequisites": [
+        "codex-project-data-safety"
+      ],
+      "related": [
+        "codex-project-data-safety",
+        "codex-troubleshooting"
+      ]
+    },
+    {
+      "slug": "codex-troubleshooting",
+      "title": "新手问题排查",
+      "outcome": "排除问题先判断发生在哪一层：找不到程式是安装或 PATH；进不了帐号是登入；读不到档案是目录或权限；结果不对则可能是需求或专案程式。一次改一个条件，才能知道是哪个修正有效。",
+      "sources": [],
+      "number": 60,
+      "group": "J",
+      "level": "beginner",
+      "platforms": [
+        "desktop",
+        "mobile",
+        "cli"
+      ],
+      "aliases": [
+        "PATH",
+        "EACCES",
+        "login"
+      ],
+      "reading_minutes": 15,
+      "operation_minutes": null,
+      "prerequisites": [
+        "codex-usage-efficiency"
+      ],
+      "related": [
+        "codex-account-usage",
+        "codex-cli-getting-started",
+        "codex-permissions"
+      ]
+    }
+  ]
+}

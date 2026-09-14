@@ -10,6 +10,7 @@ from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import encrypt_secrets
+from app.auth.passwords import reject_weak_password
 from app.auth.service import (
     CurrentUser,
     effective_admin_roles,
@@ -199,6 +200,11 @@ async def reset_password(
     payload: ResetInput, response: Response, session: Session
 ) -> dict[str, bool]:
     _, user = await consume(session, payload.token, "reset")
+    # After `consume`, because the email-similarity rule needs to know whose account this is,
+    # and the token only names it. The refusal rolls the whole request back — `get_session`
+    # never commits on an exception — so the link still works and someone who picked a weak
+    # password can just choose another instead of asking for a new mail.
+    reject_weak_password(payload.password, email=user.email)
     user.password_hash = hash_password(payload.password)
     user.auth_version += 1
     await session.commit()

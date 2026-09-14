@@ -1,0 +1,159 @@
+{
+  "reviewer": "engineering_foundations",
+  "reviewed_at": "2026-09-14",
+  "verdict": "code_review_passed_with_postgresql_validation_gap",
+  "files": {
+    "docs/ai-terms-series/publish_batch.py": "649a97be9171537157ab3ea259828fdb50de478a18adb8e2825f68191eb3eb97",
+    "docs/ai-terms-series/test_publish_batch.py": "63a209756b91fa0495b5d1e4d9a0ee7d2a0ce8433168123185dbb84096906048",
+    "docs/ai-terms-series/release-manifest.json": "96ad2cb050c0b31a678e446c08e428746d1e3e873343a9a72ae0353f48ca7d59"
+  },
+  "scope": "獨立閱讀發布器、測試、既有 content_pack/admin_service 交易實作、ADMIN_EMAILS owner 選取，以及 PostgreSQL/SQLAlchemy 官方交易與鎖文件。初始只讀；root 後續明確授權我新增 PostgreSQL 競態測試。發布器的修正由 context_agents 執行。",
+  "execution_boundary": {
+    "ssh_used": false,
+    "production_database_connected": false,
+    "production_cli_invoked": false,
+    "docker_invoked": false,
+    "reviewer_writes": [
+      "docs/ai-terms-series/publish-code-review.json",
+      "docs/ai-terms-series/test_publish_batch.py"
+    ],
+    "reviewer_tests": "只跑本機 disposable fixture 的新競態測試選集，明確停用 PostgreSQL integration；執行 ruff check/format check。"
+  },
+  "summary": {
+    "initial_P1": 1,
+    "resolved_in_code": 1,
+    "open_code_blockers": 0,
+    "postgresql_race_executed": false,
+    "publication_or_deployment_proven": false
+  },
+  "findings": [
+    {
+      "id": "PB-01",
+      "priority": "P1",
+      "title": "索引 guard 與 commit 之間，相依文章仍可能被其他編輯撤下",
+      "initial_driver_sha256": "ccd5787c93f4653979cadbeafa0fc19608e4d8759af90a9026a3dd3a003248ed",
+      "initial_location": "publish_batch.py:678-723",
+      "scenario": [
+        "索引交易讀到82篇均公開並通過 require_public。",
+        "另一個普通編輯交易只撤下一篇相依文章 B，先行提交。",
+        "索引交易修改 INDEX 並提交；其後 snapshot 才發現 B 不同。"
+      ],
+      "impact": "SERIALIZABLE 本身不是資料列互斥鎖；上述重疊交易可被視為先發布索引、再撤下 B，未必產生 serialization failure。事後拒絕不能撤銷已提交的索引，會留下索引已公開但相依文章缺失的狀態。",
+      "status": "resolved_in_code_postgresql_execution_pending",
+      "resolution": "snapshot 新增 lock 參數，對 GuideArticle 與 GuideArticleLocale 依固定 id 順序執行 FOR UPDATE NOWAIT；僅 publish-index 的實際寫入 guard 啟用，鎖保持到既有 publish_locale 的唯一 commit。鎖競爭或 snapshot 之後資料已改會在索引 commit 前拒絕。沒有插入會改變既有提交語意的外層交易或 savepoint。",
+      "current_locations": [
+        "publish_batch.py:311-332",
+        "publish_batch.py:678-725",
+        "test_publish_batch.py:test_postgresql_index_commit_blocks_concurrent_dependency_withdrawal"
+      ],
+      "regression_test": "新增實際四階段 PostgreSQL case：INDEX apply_import 前，由第二個 READ COMMITTED session 呼叫既有 unpublish_locale 撤下一篇相依文章，要求 SQLSTATE 55P03；接著 INDEX 正常 commit，核對相依文章未改與83篇完整公開。測試沒有模擬 PostgreSQL 鎖；本機沒有啟用隔離 PostgreSQL，因此此次只確認該 case 正確跳過。",
+      "confidence": "high",
+      "sources": [
+        "https://www.postgresql.org/docs/current/transaction-iso.html#XACT-SERIALIZABLE",
+        "https://www.postgresql.org/docs/17/explicit-locking.html#LOCKING-ROWS"
+      ]
+    }
+  ],
+  "reviewed_invariants": [
+    {
+      "area": "逐篇實際 commit",
+      "verdict": "pass",
+      "evidence": "verify_bundle 限定 zh-TW 單一語系、featured=False、display_order=100；既有文章的 taxonomy 必須 unchanged。drafts 的新文章只走 create_article 一次 commit，舊文章只走 save_draft 一次 commit；publish 階段先要求 draft action=unchanged，再只走 publish_locale 一次 commit。apply_import 沒有被包進外層 begin/savepoint，保留既有逐篇提交語意。",
+      "references": [
+        "publish_batch.py:230-236、637-647、693-725",
+        "apps/api/app/guides/content_pack.py:_apply_article",
+        "apps/api/app/guides/admin_service.py:create_article、_write_revision"
+      ]
+    },
+    {
+      "area": "寫入前與 commit 後中斷續跑",
+      "verdict": "pass",
+      "evidence": "每次寫入前以原子 journal 保存 pending intent。actual 與 expected 完全相同時只清除未寫入 intent，再重新規劃；已有變化則必須僅目標 slug 改變、內容 hash 相同、版本恰加一、動作與 actor id 相同、其他語系及 taxonomy 不變，才能補記 committed_reconciled。未知變化會拒絕；不重置 journal、不重播未知 commit、不做自動資料庫回滾。",
+      "references": [
+        "publish_batch.py:292-308、447-586、716-743",
+        "test_publish_batch.py:test_resume_preserves_publications_and_publishes_index_last"
+      ]
+    },
+    {
+      "area": "SERIALIZABLE 與 snapshot 新鮮度",
+      "verdict": "pass_by_code_review_with_pg_runtime_gap",
+      "evidence": "先在 connection 設 SERIALIZABLE，再取得 session-level advisory lock 並結束取得鎖的交易。AsyncSession 綁定該 connection，既有 admin commit 會真正提交。preflight 後 rollback；每篇從 fresh snapshot 比對 journal 開始，同一交易內規劃及寫入；commit 回傳的 article_detail 可能啟動讀交易，所以作者在 post-snapshot 前明確 rollback，再讀一次。文章與 locale 查詢使用 populate_existing，避免沿用 identity map 的舊欄位。每篇完成後再次 rollback，使下一篇讀到新的快照。",
+      "limits": "本次沒有把 SQLite 測試稱為 PostgreSQL 序列化、advisory lock 或資料列鎖驗證。跨文章索引條件的互斥保護由 PB-01 新增的 row locks 提供，不能只歸功於 SERIALIZABLE。",
+      "references": [
+        "publish_batch.py:snapshot、execute_phase",
+        "apps/api/app/guides/admin_service.py:_write_revision"
+      ],
+      "source": "https://docs.sqlalchemy.org/en/20/orm/session_transaction.html"
+    },
+    {
+      "area": "83份文章 bytes 與166張圖檔",
+      "verdict": "pass_read_verified",
+      "evidence": "獨立從真實 release-manifest 逐檔讀取並計算 SHA256：83個不同 slug、77 new、6 updated、83 pack files、166 asset files，共249檔，沒有 mismatch。driver 先固定 manifest bytes 的 SHA256，將允許清單內83份已驗證原始 pack bytes 複製到暫存目錄後 load_packs，避免讀到其他文章；從文章引用推導資產，驗 safe_path、每個資產 hash 與 files 完整集合，拒絕遺漏或額外檔案。",
+      "references": [
+        "publish_batch.py:182-256",
+        "test_publish_batch.py:test_hash_and_exact_scope_guards"
+      ],
+      "observed_counts": {"slugs": 83, "pack_files": 83, "asset_files": 166, "total_files": 249, "mismatches": []},
+      "limit": "這是本機已固定 manifest 的檔案證據；不能替代正式 Web 容器實際提供圖檔與 URL 的驗證。"
+    },
+    {
+      "area": "六篇原公開內容與77篇新草稿",
+      "verdict": "pass",
+      "evidence": "首次 dry-run 要求77個 new slug 完全不存在；六篇 updated 必須有效、active、zh-TW 已公開，且沒有未審核的額外草稿。draft transition 逐篇要求舊 published_version/published_at/published_sha256 不變；新草稿 published_version/published_at 必須為空，版本為1。每次完整快照也包含所有其他語系，任何不相干變更都會停止。",
+      "references": [
+        "publish_batch.py:validate_initial、accept_transition",
+        "test_publish_batch.py:test_resume_preserves_publications_and_publishes_index_last",
+        "test_publish_batch.py:test_unexpected_old_draft_and_later_change_stop"
+      ]
+    },
+    {
+      "area": "索引最後發布",
+      "verdict": "pass_after_PB-01_fix",
+      "evidence": "phase 順序強制 dry-run、83篇 drafts、排除 INDEX 的82篇 publish-articles，最後只選 INDEX。publish-index 必須此前 done 完整，且鎖定 guard 及最終快照皆核對另外82篇/全部83篇的公開版本、草稿內容與精確 hash。沒有依賴 load_packs 的字母排序或 --slug 的參數順序。",
+      "references": ["publish_batch.py:selected_slugs、require_public、execute_phase"],
+      "limit": "索引 commit 後其他正式編輯仍可修改或撤下文章，這是後續操作；driver 不承諾永久凍結全部內容。"
+    },
+    {
+      "area": "管理員選取",
+      "verdict": "pass_by_code_review",
+      "evidence": "只選目前 ADMIN_EMAILS allowlist 內且 is_active=True 的 User，依 id 決定性排序；不是任取一般帳號。這符合 app.cli._env_owner 與 effective_admin_roles 將環境 allowlist 視為 owner 的既有語意，即使舊帳號 is_admin 欄位未回填仍是被授權 owner。每篇重新選取，pending 記錄 actor id 供未知提交核對，不輸出 email 或憑證。",
+      "references": [
+        "publish_batch.py:active_actor",
+        "apps/api/app/cli.py:_env_owner",
+        "apps/api/app/auth/service.py:effective_admin_roles"
+      ],
+      "test_limit": "現有端到端測試用 fixture actor 替代 active_actor；此判斷來自與既有授權實作的逐行對照，不聲稱 admin 查詢已實測。"
+    }
+  ],
+  "validation": {
+    "reviewer_executed": [
+      {"check": "真實 manifest 的249檔 SHA256", "result": "全部相符"},
+      {"check": "ruff check publish_batch.py test_publish_batch.py", "result": "passed"},
+      {"check": "ruff format --check publish_batch.py test_publish_batch.py", "result": "2 files already formatted"},
+      {"check": "pytest -k postgresql_index_commit -p no:cacheprovider，RUN_INTEGRATION_TESTS=0", "result": "2 skipped, 7 deselected in 13.42s"}
+    ],
+    "author_reported_and_test_code_independently_reviewed": {
+      "author": "context_agents",
+      "result": "4 passed, 3 skipped in 241.63s",
+      "scope": "新增 PG case 被收集前的既有完整套件；含最新 index lock 程式的 SQLite 83篇四階段、兩種中斷續跑、六篇舊公開保持、77篇草稿隱藏、索引最後、重跑冪等、外部版本變更拒絕、真實 pack/asset hash 與範圍。",
+      "interpretation": "作者提供的測試結果；我未重跑這241秒的全部案例，不把兩次命令的 pass/skip 數合併成一次執行。"
+    },
+    "postgresql_gap": {
+      "race_case_written": true,
+      "race_case_actually_run_against_postgresql": false,
+      "local_discovery": "本機5432、5433、15432未見監聽；docker/psql不在PATH，常見Docker安裝位置無CLI。workspace dependency查詢未返回後已終止。沒有使用未知Docker context或正式PostgreSQL。",
+      "next_validation": "僅在明確的本機/CI disposable PostgreSQL schema 啟用 RUN_INTEGRATION_TESTS=1，再跑新增競態 case。不得拿正式資料庫補測。"
+    }
+  },
+  "delivery_limits": [
+    "發布器與測試只完成本機檔案整合及上述驗證；沒有發布任何文章。",
+    "發布階段不是全83篇原子交易。失敗前已提交的合法文章會保留，必須依 journal 精確續跑，不能用整庫還原掩蓋部分發布。",
+    "正式執行仍需綁定實際部署 SHA、manifest SHA、有效 runtime 與 durable state-dir，並完成公開頁面及圖片驗證。",
+    "任何後續 driver/test/manifest 修改都須重新確認上方 hash 對應的審查範圍。"
+  ],
+  "primary_sources_read": [
+    "https://www.postgresql.org/docs/current/transaction-iso.html#XACT-SERIALIZABLE",
+    "https://www.postgresql.org/docs/17/explicit-locking.html#LOCKING-ROWS",
+    "https://docs.sqlalchemy.org/en/20/orm/session_transaction.html"
+  ]
+}

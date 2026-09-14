@@ -23,7 +23,7 @@ ALGORITHM = "HS256"
 ISSUER = "travel-scanner-api"
 AUDIENCE = "travel-scanner"
 DUMMY_PASSWORD_HASH = password_hash.hash("not-a-real-travel-scanner-password")
-REVOKED_TOKEN_PREFIX = "auth:revoked:"
+REVOKED_TOKEN_PREFIX = "auth:revoked:"  # noqa: S105 -- a Redis key prefix, not a token
 # Renew a cookie session once the presented token has used up this share of
 # its lifetime, so an active user never sees the hourly logout.
 SESSION_RENEWAL_FRACTION = 0.5

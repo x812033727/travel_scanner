@@ -24,9 +24,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -49,15 +55,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "電腦先完成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "桌面版入門",
-              "url": "https://mokaair.com/zh-TW/life/codex-desktop-getting-started"
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
             },
             {
               "type": "text",
@@ -126,11 +133,8 @@
           "text": "在手機 Remote 選擇剛配對的主機，再打開 codex-practice 專案中的 Codex 任務。若建立新任務，先確認工作位置依然是主機上的練習資料夾。下面內容貼進手機的任務輸入框，不是在手機搜尋列執行終端機命令。"
         },
         {
-          "type": "paragraph",
-          "text": "手機 ChatGPT → Remote → 主機上的 Codex 練習任務"
-        },
-        {
           "type": "code",
+          "label": "手機 ChatGPT → Remote → 主機上的 Codex 練習任務",
           "language": "text",
           "code": "Read this practice project without changing files.\nReport the host or environment name if available and the current working folder.\nList index.html, style.css, app.js, core.mjs and core.test.mjs.\nExplain how task completion is stored and name the localStorage key.\nIf you cannot inspect a file, report the limitation instead of guessing.\n"
         },
@@ -143,11 +147,8 @@
           "text": "接著在手機送出追問，讓它引用具體檔案說明空白任務為何不能加入。這能檢查你是否延續同一個任務與上下文。你不需要在手機安裝 Node.js，因為本機工具由主機提供；若下一篇要執行測試，仍要先確認主機真的有該工具。"
         },
         {
-          "type": "paragraph",
-          "text": "同一個手機 Remote 任務；追問與驗證"
-        },
-        {
           "type": "code",
+          "label": "同一個手機 Remote 任務；追問與驗證",
           "language": "text",
           "code": "In the same project, explain what happens when the new task contains only spaces.\nIdentify the relevant function and file. Do not edit or reset stored data.\n"
         },
@@ -175,15 +176,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Remote 使用連接主機的專案與工具；"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "雲端任務",
-              "url": "https://mokaair.com/zh-TW/life/codex-cloud-tasks-github"
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
             },
             {
               "type": "text",
@@ -252,7 +254,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "入口、配對與主機條件依 "
@@ -267,27 +269,30 @@
               "text": "於 2026-09-14 查證；本文未在實體 iPhone、Android 或遠端配對流程實測，圖解只用來說明關係。練習網站的行為有獨立瀏覽器驗證。接著可讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "上下文交接",
-              "url": "https://mokaair.com/zh-TW/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "權限",
-              "url": "https://mokaair.com/zh-TW/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
               "text": "及"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "雲端工作",
-              "url": "https://mokaair.com/zh-TW/life/codex-cloud-tasks-github"
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
             },
             {
               "type": "text",
@@ -296,9 +301,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -343,9 +354,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -368,15 +385,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "电脑先完成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "桌面版入门",
-              "url": "https://mokaair.com/zh-CN/life/codex-desktop-getting-started"
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
             },
             {
               "type": "text",
@@ -445,11 +463,8 @@
           "text": "在手机 Remote 选择刚配对的主机，再打开 codex-practice 专案中的 Codex 任务。若建立新任务，先确认工作位置依然是主机上的练习资料夹。下面内容贴进手机的任务输入框，不是在手机搜寻列执行终端机命令。"
         },
         {
-          "type": "paragraph",
-          "text": "手机 ChatGPT → Remote → 主机上的 Codex 练习任务"
-        },
-        {
           "type": "code",
+          "label": "手机 ChatGPT → Remote → 主机上的 Codex 练习任务",
           "language": "text",
           "code": "Read this practice project without changing files.\nReport the host or environment name if available and the current working folder.\nList index.html, style.css, app.js, core.mjs and core.test.mjs.\nExplain how task completion is stored and name the localStorage key.\nIf you cannot inspect a file, report the limitation instead of guessing.\n"
         },
@@ -462,11 +477,8 @@
           "text": "接著在手机送出追问，让它引用具体档案说明空白任务为何不能加入。这能检查你是否延续同一个任务与上下文。你不需要在手机安装 Node.js，因为本机工具由主机提供；若下一篇要执行测试，仍要先确认主机真的有该工具。"
         },
         {
-          "type": "paragraph",
-          "text": "同一个手机 Remote 任务；追问与验证"
-        },
-        {
           "type": "code",
+          "label": "同一个手机 Remote 任务；追问与验证",
           "language": "text",
           "code": "In the same project, explain what happens when the new task contains only spaces.\nIdentify the relevant function and file. Do not edit or reset stored data.\n"
         },
@@ -494,15 +506,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Remote 使用连接主机的专案与工具；"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "云端任务",
-              "url": "https://mokaair.com/zh-CN/life/codex-cloud-tasks-github"
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
             },
             {
               "type": "text",
@@ -571,7 +584,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "入口、配对与主机条件依 "
@@ -586,27 +599,30 @@
               "text": "于 2026-09-14 查证；本文未在实体 iPhone、Android 或远端配对流程实测，图解只用来说明关系。练习网站的行为有独立浏览器验证。接著可读"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "上下文交接",
-              "url": "https://mokaair.com/zh-CN/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "权限",
-              "url": "https://mokaair.com/zh-CN/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
               "text": "及"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "云端工作",
-              "url": "https://mokaair.com/zh-CN/life/codex-cloud-tasks-github"
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
             },
             {
               "type": "text",
@@ -615,9 +631,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -662,9 +684,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -687,15 +715,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Complete "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "desktop setup",
-              "url": "https://mokaair.com/en/life/codex-desktop-getting-started"
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
             },
             {
               "type": "text",
@@ -764,11 +793,8 @@
           "text": "In Remote, select the newly paired host and open a Codex task in codex-practice. If creating a new task, confirm its location is still the practice folder on the host. Paste the following into the mobile task composer, not a phone search box as a shell command."
         },
         {
-          "type": "paragraph",
-          "text": "Mobile ChatGPT → Remote → Codex practice task on the host"
-        },
-        {
           "type": "code",
+          "label": "Mobile ChatGPT → Remote → Codex practice task on the host",
           "language": "text",
           "code": "Read this practice project without changing files.\nReport the host or environment name if available and the current working folder.\nList index.html, style.css, app.js, core.mjs and core.test.mjs.\nExplain how task completion is stored and name the localStorage key.\nIf you cannot inspect a file, report the limitation instead of guessing.\n"
         },
@@ -781,11 +807,8 @@
           "text": "Send a follow-up asking why a whitespace-only task is rejected, with a specific file reference. This checks that you continued the same task and context. Node.js does not need to be installed on the phone: local tools come from the host. Before a later exercise runs tests, confirm that host actually has the required runtime."
         },
         {
-          "type": "paragraph",
-          "text": "The same mobile Remote task; follow-up verification"
-        },
-        {
           "type": "code",
+          "label": "The same mobile Remote task; follow-up verification",
           "language": "text",
           "code": "In the same project, explain what happens when the new task contains only spaces.\nIdentify the relevant function and file. Do not edit or reset stored data.\n"
         },
@@ -813,15 +836,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Remote uses the connected host's project and tools. "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Cloud tasks",
-              "url": "https://mokaair.com/en/life/codex-cloud-tasks-github"
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
             },
             {
               "type": "text",
@@ -890,7 +914,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Entry points, pairing and host requirements were checked against "
@@ -905,27 +929,30 @@
               "text": " on 2026-09-14. This lesson has not been tested on physical iPhone/Android devices or through an actual pairing; its diagram explains relationships. Practice-site behavior has separate browser verification. Continue with "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "context handoff",
-              "url": "https://mokaair.com/en/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "permissions",
-              "url": "https://mokaair.com/en/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
               "text": " and "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "cloud work",
-              "url": "https://mokaair.com/en/life/codex-cloud-tasks-github"
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
             },
             {
               "type": "text",
@@ -934,9 +961,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -981,9 +1014,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 学習目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1006,15 +1045,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "パソコンで"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "デスクトップ入門",
-              "url": "https://mokaair.com/ja/life/codex-desktop-getting-started"
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
             },
             {
               "type": "text",
@@ -1083,11 +1123,8 @@
           "text": "Remote で接続したホストを選び、codex-practice の Codex タスクを開きます。新しく作る場合も、作業場所がホストの練習フォルダーか確認します。次は検索欄やシェルではなく、スマートフォンのタスク入力欄へ貼ります。"
         },
         {
-          "type": "paragraph",
-          "text": "スマートフォンの ChatGPT → Remote → ホスト上の Codex 練習タスク"
-        },
-        {
           "type": "code",
+          "label": "スマートフォンの ChatGPT → Remote → ホスト上の Codex 練習タスク",
           "language": "text",
           "code": "Read this practice project without changing files.\nReport the host or environment name if available and the current working folder.\nList index.html, style.css, app.js, core.mjs and core.test.mjs.\nExplain how task completion is stored and name the localStorage key.\nIf you cannot inspect a file, report the limitation instead of guessing.\n"
         },
@@ -1100,11 +1137,8 @@
           "text": "続けて、空白だけのタスクが拒否される理由を具体的なファイル付きで質問します。同じタスクと文脈を継続しているか確認できます。Node.js をスマートフォンに入れる必要はありません。ツールはホスト側のものです。後のレッスンでテストを動かす前に、そのホストに環境があるか確認します。"
         },
         {
-          "type": "paragraph",
-          "text": "同じモバイル Remote タスク。追加質問"
-        },
-        {
           "type": "code",
+          "label": "同じモバイル Remote タスク。追加質問",
           "language": "text",
           "code": "In the same project, explain what happens when the new task contains only spaces.\nIdentify the relevant function and file. Do not edit or reset stored data.\n"
         },
@@ -1132,15 +1166,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Remote は接続先のプロジェクトとツールを使い、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "クラウドタスク",
-              "url": "https://mokaair.com/ja/life/codex-cloud-tasks-github"
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
             },
             {
               "type": "text",
@@ -1209,7 +1244,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "入口、接続、ホスト条件は 2026-09-14 に "
@@ -1224,27 +1259,30 @@
               "text": "で確認しました。実物の iPhone／Android やペアリングは実測していません。図は関係の説明で、教材サイトの動作には別のブラウザ検証があります。次は"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "引き継ぎ",
-              "url": "https://mokaair.com/ja/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "権限",
-              "url": "https://mokaair.com/ja/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "クラウド",
-              "url": "https://mokaair.com/ja/life/codex-cloud-tasks-github"
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
             },
             {
               "type": "text",
@@ -1253,9 +1291,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 学習目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1300,9 +1344,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1325,15 +1375,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "컴퓨터에서 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "데스크톱 입문",
-              "url": "https://mokaair.com/ko/life/codex-desktop-getting-started"
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
             },
             {
               "type": "text",
@@ -1402,11 +1453,8 @@
           "text": "Remote에서 연결한 호스트를 선택하고 codex-practice의 Codex 작업을 엽니다. 새로 만들 때도 작업 위치가 호스트의 실습 폴더인지 확인합니다. 아래는 휴대전화 검색창이나 셸 명령이 아니라 작업 입력창에 붙입니다."
         },
         {
-          "type": "paragraph",
-          "text": "휴대전화 ChatGPT → Remote → 호스트의 Codex 실습 작업"
-        },
-        {
           "type": "code",
+          "label": "휴대전화 ChatGPT → Remote → 호스트의 Codex 실습 작업",
           "language": "text",
           "code": "Read this practice project without changing files.\nReport the host or environment name if available and the current working folder.\nList index.html, style.css, app.js, core.mjs and core.test.mjs.\nExplain how task completion is stored and name the localStorage key.\nIf you cannot inspect a file, report the limitation instead of guessing.\n"
         },
@@ -1419,11 +1467,8 @@
           "text": "공백뿐인 항목을 거부하는 이유를 구체적인 파일과 함께 후속 질문합니다. 같은 작업과 문맥을 이어 가는지도 확인할 수 있습니다. 도구는 호스트가 제공하므로 휴대전화에 Node.js를 설치할 필요가 없습니다. 후속 글에서 테스트를 실행하기 전에 호스트에 런타임이 있는지 확인합니다."
         },
         {
-          "type": "paragraph",
-          "text": "같은 모바일 Remote 작업, 후속 확인 질문"
-        },
-        {
           "type": "code",
+          "label": "같은 모바일 Remote 작업, 후속 확인 질문",
           "language": "text",
           "code": "In the same project, explain what happens when the new task contains only spaces.\nIdentify the relevant function and file. Do not edit or reset stored data.\n"
         },
@@ -1451,15 +1496,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Remote는 연결 호스트의 프로젝트와 도구를 사용하고 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "클라우드 작업",
-              "url": "https://mokaair.com/ko/life/codex-cloud-tasks-github"
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
             },
             {
               "type": "text",
@@ -1528,7 +1574,7 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "진입점, 연결, 호스트 조건은 2026-09-14에 "
@@ -1543,27 +1589,30 @@
               "text": "로 확인했습니다. 실제 iPhone/Android나 페어링을 실측하지 않았으며 그림은 관계를 설명합니다. 실습 사이트 동작은 별도 브라우저 검증이 있습니다. 다음은 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "문맥 인계",
-              "url": "https://mokaair.com/ko/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "권한",
-              "url": "https://mokaair.com/ko/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
               "text": ", "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "클라우드 작업",
-              "url": "https://mokaair.com/ko/life/codex-cloud-tasks-github"
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
             },
             {
               "type": "text",
@@ -1572,9 +1621,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

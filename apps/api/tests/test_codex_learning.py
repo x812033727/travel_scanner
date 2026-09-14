@@ -16,10 +16,10 @@ def document(block):
     return GuideDocument.model_validate({"title": "Test", "description": "Test", "blocks": [block]})
 
 
-def test_code_preserves_markup_whitespace_and_normalizes_line_endings():
+def test_code_preserves_markup_whitespace_and_line_endings():
     code = "<script>alert(1)</script>\r\n\tvalue = 1\n"
-    parsed = document({"type": "code", "language": "html", "code": code})
-    assert parsed.blocks[0].code == code.replace("\r\n", "\n")
+    parsed = document({"type": "code", "language": "html", "label": "HTML", "code": code})
+    assert parsed.blocks[0].code == code
 
 
 @pytest.mark.parametrize(
@@ -35,20 +35,20 @@ def test_code_preserves_markup_whitespace_and_normalizes_line_endings():
 def test_inline_links_reject_unsafe_destinations(url):
     with pytest.raises(ValidationError):
         document(
-            {"type": "rich_paragraph", "spans": [{"type": "link", "text": "Read", "url": url}]}
+            {"type": "rich_paragraph", "inlines": [{"type": "link", "text": "Read", "url": url}]}
         )
 
 
 def test_inline_spacing_and_legacy_paragraphs():
     block = {
         "type": "rich_paragraph",
-        "spans": [
+        "inlines": [
             {"type": "text", "text": "Read "},
             {"type": "link", "text": "more", "url": "https://example.com"},
             {"type": "text", "text": " here."},
         ],
     }
-    assert "".join(span.text for span in document(block).blocks[0].spans) == "Read more here."
+    assert "".join(span.text for span in document(block).blocks[0].inlines) == "Read more here."
     assert (
         document({"type": "paragraph", "text": "[literal](url)"}).blocks[0].text == "[literal](url)"
     )
@@ -88,10 +88,14 @@ def test_ready_lessons_have_five_locales_valid_images_and_existing_links():
             for block in doc.blocks:
                 if block.type == "image":
                     assert (ROOT / "apps/web/public" / block.src.lstrip("/")).is_file()
+                if block.type == "rich_paragraph":
+                    assert all(
+                        node.slug in known for node in block.inlines if node.type == "article"
+                    )
                 links = (
                     [block.url]
                     if block.type == "link"
-                    else [span.url for span in block.spans if span.type == "link"]
+                    else [span.url for span in block.inlines if span.type == "link"]
                     if block.type == "rich_paragraph"
                     else []
                 )
@@ -102,6 +106,7 @@ def test_ready_lessons_have_five_locales_valid_images_and_existing_links():
                             assert asset in {
                                 "guides/codex-first-project/todo-practice.zip",
                                 "guides/codex-skills/todo-acceptance.zip",
+                                "guides/codex-skill-resources/todo-summary-practice.zip",
                             }
                             assert (ROOT / "apps/web/public" / asset).is_file()
                             continue
@@ -121,17 +126,22 @@ def test_deep_drafts_preserve_code_sources_and_structures_across_locales():
         )
         reference = pack.locales["zh-TW"]
         for document in pack.locales.values():
-            assert [block.type for block in document.blocks] == [
-                block.type for block in reference.blocks
+            assert [
+                "prose" if block.type in {"paragraph", "rich_paragraph"} else block.type
+                for block in document.blocks
+            ] == [
+                "prose" if block.type in {"paragraph", "rich_paragraph"} else block.type
+                for block in reference.blocks
             ]
-            assert [block.model_dump() for block in document.blocks if block.type == "code"] == [
-                block.model_dump() for block in reference.blocks if block.type == "code"
+            assert [
+                (block.language, block.code) for block in document.blocks if block.type == "code"
+            ] == [
+                (block.language, block.code) for block in reference.blocks if block.type == "code"
             ]
             assert document.sources == reference.sources
             body = [block for block in document.blocks if block.type != "image"]
-            assert body[0].type == body[-1].type == "link"
-            assert body[0].url == body[-1].url
-            assert body[0].url.endswith("/life/codex-learning-hub")
+            assert body[0].type == body[-1].type == "rich_paragraph"
+            assert body[0].inlines[0].slug == body[-1].inlines[0].slug == "codex-learning-hub"
         if slug == "codex-skills":
             sample = (
                 ROOT / "docs/codex-learning/practice/skills/todo-acceptance/SKILL.md"

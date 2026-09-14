@@ -24,9 +24,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -40,24 +46,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "先熟悉"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "終端機路徑",
-              "url": "https://mokaair.com/zh-TW/life/codex-terminal-paths"
+              "kind": "life",
+              "slug": "codex-terminal-paths"
             },
             {
               "type": "text",
               "text": "。工作目錄是目前磁碟內容，暫存區是下一次 commit 要包含的內容，commit 是已記錄的版本；三者可能不同。分支指向一條版本線，不會自動複製所有未提交檔案。要同時在多份目錄工作，另看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "worktree",
-              "url": "https://mokaair.com/zh-TW/life/codex-worktrees"
+              "kind": "life",
+              "slug": "codex-worktrees"
             },
             {
               "type": "text",
@@ -76,6 +84,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "sh",
           "code": "git init -b main\ngit config user.name \"Practice Learner\"\ngit config user.email \"learner@example.invalid\"\ngit add index.html style.css app.js core.mjs core.test.mjs\ngit diff --cached --name-only\ngit commit -m \"Add practice baseline\"\ngit status --short\n"
         },
@@ -90,6 +99,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "sh",
           "code": "git switch -c codex/title-lab\ngit branch --show-current\n"
         },
@@ -99,11 +109,13 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "css",
           "code": "/* KEEP-MY-NOTE */\n"
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "sh",
           "code": "git status --short\ngit diff -- index.html style.css\n"
         },
@@ -113,6 +125,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Inspect this lab's current branch, status and diff without editing, staging or committing. The intended change is only the h1 title in index.html. The KEEP-MY-NOTE comment in style.css represents separate work and must be preserved. Explain what belongs in the title commit and what must stay outside it.\n"
         },
@@ -123,6 +136,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "sh",
           "code": "git add index.html\ngit diff --cached --name-only\ngit diff --cached -- index.html\ngit diff -- style.css\n"
         },
@@ -132,6 +146,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "sh",
           "code": "git restore --staged -- index.html\ngit restore --worktree -- index.html\ngit status --short\ngit diff -- style.css\n"
         },
@@ -150,6 +165,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "sh",
           "code": "git add index.html\ngit diff --cached --name-only\ngit diff --cached -- index.html\ngit commit -m \"Update practice title\"\ngit show --format=short --name-only HEAD\ngit status --short\n"
         },
@@ -159,6 +175,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "sh",
           "code": "git restore --worktree -- style.css\ngit status --short\ngit log -1 --oneline\ngit revert --no-edit HEAD\ngit log -3 --oneline\ngit status --short\n"
         },
@@ -208,15 +225,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "找不到分支先看是否在對的 repository；status 多出意外檔案就先查看，不使用 git add . 把它們一起帶進去。若同一檔案混有自己的與原有修改，整檔暫存會一起提交，應先讀懂每段差異再分段處理。這次驗收要能證明 CSS 在標題提交中被排除、兩種 restore 效果不同、revert 保留歷史。圖中 1 是辨認狀態，2 是限定提交，3 是驗證還原；下一步看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "測試、Review 與 PR",
-              "url": "https://mokaair.com/zh-TW/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -225,9 +243,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -292,9 +316,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -308,24 +338,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "先熟悉"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "终端机路径",
-              "url": "https://mokaair.com/zh-CN/life/codex-terminal-paths"
+              "kind": "life",
+              "slug": "codex-terminal-paths"
             },
             {
               "type": "text",
               "text": "。工作目录是目前磁碟内容，暂存区是下一次 commit 要包含的内容，commit 是已记录的版本；三者可能不同。分支指向一条版本线，不会自动复制所有未提交档案。要同时在多份目录工作，另看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "worktree",
-              "url": "https://mokaair.com/zh-CN/life/codex-worktrees"
+              "kind": "life",
+              "slug": "codex-worktrees"
             },
             {
               "type": "text",
@@ -344,6 +376,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "sh",
           "code": "git init -b main\ngit config user.name \"Practice Learner\"\ngit config user.email \"learner@example.invalid\"\ngit add index.html style.css app.js core.mjs core.test.mjs\ngit diff --cached --name-only\ngit commit -m \"Add practice baseline\"\ngit status --short\n"
         },
@@ -358,6 +391,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "sh",
           "code": "git switch -c codex/title-lab\ngit branch --show-current\n"
         },
@@ -367,11 +401,13 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "css",
           "code": "/* KEEP-MY-NOTE */\n"
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "sh",
           "code": "git status --short\ngit diff -- index.html style.css\n"
         },
@@ -381,6 +417,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Inspect this lab's current branch, status and diff without editing, staging or committing. The intended change is only the h1 title in index.html. The KEEP-MY-NOTE comment in style.css represents separate work and must be preserved. Explain what belongs in the title commit and what must stay outside it.\n"
         },
@@ -391,6 +428,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "sh",
           "code": "git add index.html\ngit diff --cached --name-only\ngit diff --cached -- index.html\ngit diff -- style.css\n"
         },
@@ -400,6 +438,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "sh",
           "code": "git restore --staged -- index.html\ngit restore --worktree -- index.html\ngit status --short\ngit diff -- style.css\n"
         },
@@ -418,6 +457,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "sh",
           "code": "git add index.html\ngit diff --cached --name-only\ngit diff --cached -- index.html\ngit commit -m \"Update practice title\"\ngit show --format=short --name-only HEAD\ngit status --short\n"
         },
@@ -427,6 +467,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "sh",
           "code": "git restore --worktree -- style.css\ngit status --short\ngit log -1 --oneline\ngit revert --no-edit HEAD\ngit log -3 --oneline\ngit status --short\n"
         },
@@ -476,15 +517,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "找不到分支先看是否在对的 repository；status 多出意外档案就先查看，不使用 git add . 把它们一起带进去。若同一档案混有自己的与原有修改，整档暂存会一起提交，应先读懂每段差异再分段处理。这次验收要能证明 CSS 在标题提交中被排除、两种 restore 效果不同、revert 保留历史。图中 1 是辨认状态，2 是限定提交，3 是验证还原；下一步看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "测试、Review 与 PR",
-              "url": "https://mokaair.com/zh-CN/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -493,9 +535,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -560,9 +608,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -576,24 +630,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Know "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "terminal paths",
-              "url": "https://mokaair.com/en/life/codex-terminal-paths"
+              "kind": "life",
+              "slug": "codex-terminal-paths"
             },
             {
               "type": "text",
               "text": ". The working tree is current files, the index is the next commit's staged content, and commits record versions; these can differ. A branch identifies a history line, not an automatic copy of uncommitted files. For separate directories, use "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "worktrees",
-              "url": "https://mokaair.com/en/life/codex-worktrees"
+              "kind": "life",
+              "slug": "codex-worktrees"
             },
             {
               "type": "text",
@@ -612,6 +668,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "sh",
           "code": "git init -b main\ngit config user.name \"Practice Learner\"\ngit config user.email \"learner@example.invalid\"\ngit add index.html style.css app.js core.mjs core.test.mjs\ngit diff --cached --name-only\ngit commit -m \"Add practice baseline\"\ngit status --short\n"
         },
@@ -626,6 +683,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "sh",
           "code": "git switch -c codex/title-lab\ngit branch --show-current\n"
         },
@@ -635,11 +693,13 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "css",
           "code": "/* KEEP-MY-NOTE */\n"
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "sh",
           "code": "git status --short\ngit diff -- index.html style.css\n"
         },
@@ -649,6 +709,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Inspect this lab's current branch, status and diff without editing, staging or committing. The intended change is only the h1 title in index.html. The KEEP-MY-NOTE comment in style.css represents separate work and must be preserved. Explain what belongs in the title commit and what must stay outside it.\n"
         },
@@ -659,6 +720,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "sh",
           "code": "git add index.html\ngit diff --cached --name-only\ngit diff --cached -- index.html\ngit diff -- style.css\n"
         },
@@ -668,6 +730,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "sh",
           "code": "git restore --staged -- index.html\ngit restore --worktree -- index.html\ngit status --short\ngit diff -- style.css\n"
         },
@@ -686,6 +749,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "sh",
           "code": "git add index.html\ngit diff --cached --name-only\ngit diff --cached -- index.html\ngit commit -m \"Update practice title\"\ngit show --format=short --name-only HEAD\ngit status --short\n"
         },
@@ -695,6 +759,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "sh",
           "code": "git restore --worktree -- style.css\ngit status --short\ngit log -1 --oneline\ngit revert --no-edit HEAD\ngit log -3 --oneline\ngit status --short\n"
         },
@@ -744,15 +809,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "For a missing branch, verify the repository. Inspect unexpected files instead of staging every file at once. If one file mixes edits, whole-file staging includes all of them; review hunks before selective handling. Acceptance proves CSS exclusion, distinct restore effects and preserved revert history. Diagram 1 identifies state, 2 scopes commits, 3 verifies restoration. Continue to "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "testing, review and PR",
-              "url": "https://mokaair.com/en/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -761,9 +827,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -828,9 +900,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -844,20 +922,22 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "端末パス",
-              "url": "https://mokaair.com/ja/life/codex-terminal-paths"
+              "kind": "life",
+              "slug": "codex-terminal-paths"
             },
             {
               "type": "text",
               "text": "を確認します。作業ツリー、次の commit 用 index、記録版は別状態です。ブランチは履歴の線で、未コミットのコピーではありません。別場所は"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "worktree",
-              "url": "https://mokaair.com/ja/life/codex-worktrees"
+              "kind": "life",
+              "slug": "codex-worktrees"
             },
             {
               "type": "text",
@@ -876,6 +956,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "sh",
           "code": "git init -b main\ngit config user.name \"Practice Learner\"\ngit config user.email \"learner@example.invalid\"\ngit add index.html style.css app.js core.mjs core.test.mjs\ngit diff --cached --name-only\ngit commit -m \"Add practice baseline\"\ngit status --short\n"
         },
@@ -890,6 +971,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "sh",
           "code": "git switch -c codex/title-lab\ngit branch --show-current\n"
         },
@@ -899,11 +981,13 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "css",
           "code": "/* KEEP-MY-NOTE */\n"
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "sh",
           "code": "git status --short\ngit diff -- index.html style.css\n"
         },
@@ -913,6 +997,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Inspect this lab's current branch, status and diff without editing, staging or committing. The intended change is only the h1 title in index.html. The KEEP-MY-NOTE comment in style.css represents separate work and must be preserved. Explain what belongs in the title commit and what must stay outside it.\n"
         },
@@ -923,6 +1008,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "sh",
           "code": "git add index.html\ngit diff --cached --name-only\ngit diff --cached -- index.html\ngit diff -- style.css\n"
         },
@@ -932,6 +1018,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "sh",
           "code": "git restore --staged -- index.html\ngit restore --worktree -- index.html\ngit status --short\ngit diff -- style.css\n"
         },
@@ -950,6 +1037,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "sh",
           "code": "git add index.html\ngit diff --cached --name-only\ngit diff --cached -- index.html\ngit commit -m \"Update practice title\"\ngit show --format=short --name-only HEAD\ngit status --short\n"
         },
@@ -959,6 +1047,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "sh",
           "code": "git restore --worktree -- style.css\ngit status --short\ngit log -1 --oneline\ngit revert --no-edit HEAD\ngit log -3 --oneline\ngit status --short\n"
         },
@@ -1008,15 +1097,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "分岐不在は repository を確認し、不意なファイルを add . でまとめません。一ファイルに変更が混ざると全体ステージに全て入るため、各差分を理解して処理します。CSS 除外、二つの restore、revert 履歴が受入条件です。図1状態、2限定確定、3復元確認。次は"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "テストと PR",
-              "url": "https://mokaair.com/ja/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -1025,9 +1115,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1092,9 +1188,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1108,20 +1210,22 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "터미널 경로",
-              "url": "https://mokaair.com/ko/life/codex-terminal-paths"
+              "kind": "life",
+              "slug": "codex-terminal-paths"
             },
             {
               "type": "text",
               "text": "를 확인합니다. 작업 트리, 다음 commit용 index, 기록 버전은 별개입니다. 브랜치는 기록 줄이며 미커밋 사본이 아닙니다. 별도 경로는 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "worktree",
-              "url": "https://mokaair.com/ko/life/codex-worktrees"
+              "kind": "life",
+              "slug": "codex-worktrees"
             },
             {
               "type": "text",
@@ -1140,6 +1244,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "sh",
           "code": "git init -b main\ngit config user.name \"Practice Learner\"\ngit config user.email \"learner@example.invalid\"\ngit add index.html style.css app.js core.mjs core.test.mjs\ngit diff --cached --name-only\ngit commit -m \"Add practice baseline\"\ngit status --short\n"
         },
@@ -1154,6 +1259,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "sh",
           "code": "git switch -c codex/title-lab\ngit branch --show-current\n"
         },
@@ -1163,11 +1269,13 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "css",
           "code": "/* KEEP-MY-NOTE */\n"
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "sh",
           "code": "git status --short\ngit diff -- index.html style.css\n"
         },
@@ -1177,6 +1285,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Inspect this lab's current branch, status and diff without editing, staging or committing. The intended change is only the h1 title in index.html. The KEEP-MY-NOTE comment in style.css represents separate work and must be preserved. Explain what belongs in the title commit and what must stay outside it.\n"
         },
@@ -1187,6 +1296,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "sh",
           "code": "git add index.html\ngit diff --cached --name-only\ngit diff --cached -- index.html\ngit diff -- style.css\n"
         },
@@ -1196,6 +1306,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "sh",
           "code": "git restore --staged -- index.html\ngit restore --worktree -- index.html\ngit status --short\ngit diff -- style.css\n"
         },
@@ -1214,6 +1325,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "sh",
           "code": "git add index.html\ngit diff --cached --name-only\ngit diff --cached -- index.html\ngit commit -m \"Update practice title\"\ngit show --format=short --name-only HEAD\ngit status --short\n"
         },
@@ -1223,6 +1335,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "sh",
           "code": "git restore --worktree -- style.css\ngit status --short\ngit log -1 --oneline\ngit revert --no-edit HEAD\ngit log -3 --oneline\ngit status --short\n"
         },
@@ -1272,15 +1385,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "브랜치가 없으면 repository를 확인하고 예상 밖 파일을 add .로 묶지 않습니다. 한 파일에 변경이 섞이면 전체 스테이지에 모두 들어가므로 각 차이를 이해해 처리합니다. CSS 제외/두 restore/revert 기록이 검수 조건입니다. 그림1상태,2제한확정,3복원확인. 다음은 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "테스트와 PR",
-              "url": "https://mokaair.com/ko/life/codex-testing-review"
+              "kind": "life",
+              "slug": "codex-testing-review"
             },
             {
               "type": "text",
@@ -1289,9 +1403,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

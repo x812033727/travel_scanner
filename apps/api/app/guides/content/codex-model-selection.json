@@ -24,9 +24,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -40,15 +46,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "先了解"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "帳號與額度",
-              "url": "https://mokaair.com/zh-TW/life/codex-account-usage"
+              "kind": "life",
+              "slug": "codex-account-usage"
             },
             {
               "type": "text",
@@ -67,25 +74,28 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "/model\n"
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "/status\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "在文字編輯器新建 comparison.md，先記日期、平台版本、登入類型及選單可見項目。不要貼電子郵件、API 金鑰或付款資料。若 CLI 與桌面可見選項不一樣，分開記錄兩個環境；不要推論其中一個壞掉。Codex 雲端任務的模型限制也不同，本篇的本機切換步驟不能直接套到"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "雲端任務",
-              "url": "https://mokaair.com/zh-TW/life/codex-cloud-tasks-github"
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
             },
             {
               "type": "text",
@@ -104,6 +114,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "javascript",
           "code": "export function completedTitles(tasks) {\n  return tasks.filter((task) => !task.completed).map((task) => task.title);\n}\n\nexport const sample = [\n  { title: \"Read\", completed: true },\n  { title: \"Build\", completed: false },\n];\n"
         },
@@ -113,6 +124,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Read sample.mjs without modifying any file. The requirement is to return titles of completed tasks in original order.\n1. State the actual output for sample and the required output.\n2. Identify the precise defect and the smallest fix.\n3. Give two verification cases, including empty input, and say whether inputs are mutated.\nDo not install tools or run a web search. Distinguish reasoning from tests you actually ran. Keep the answer under 250 words.\n"
         },
@@ -131,6 +143,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "markdown",
           "code": "# Model comparison\nDate / client / sign-in type: fill from your environment\nTask: completedTitles review; identical sample.mjs and prompt\n\n| Check | Run A | Run B |\n| --- | --- | --- |\n| Model and reasoning effort | NOT RUN | NOT RUN |\n| Speed / permissions unchanged | NOT RUN | NOT RUN |\n| Elapsed time | NOT RUN | NOT RUN |\n| Actual Build, required Read | NOT RUN | NOT RUN |\n| Correct minimal fix | NOT RUN | NOT RUN |\n| Empty-input case and no mutation | NOT RUN | NOT RUN |\n| Files unchanged | NOT RUN | NOT RUN |\n| Per-run usage, if available | UNAVAILABLE | UNAVAILABLE |\n\nDecision and reason: pending observed results\nLimit: one small task is not a general model ranking.\n"
         },
@@ -179,15 +192,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "規格清楚的小修改可先從帳號預設開始；遇到多檔案相依、難以重現的錯誤或需要權衡時，再提高推理並重新驗證。更高深度可能花更久、用更多 token，仍可能錯。Max 與 Ultra 不是每個任務的必選項；Ultra 涉及"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "子代理分工",
-              "url": "https://mokaair.com/zh-TW/life/codex-subagents"
+              "kind": "life",
+              "slug": "codex-subagents"
             },
             {
               "type": "text",
@@ -202,15 +216,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "模型找不到時，先確認登入方式、版本與帳號可見清單，不把網路文章中的舊 ID 直接寫入 config.toml。設定無效時回到"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "設定排錯",
-              "url": "https://mokaair.com/zh-TW/life/codex-config-troubleshooting"
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
             },
             {
               "type": "text",
@@ -220,15 +235,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "「速度變慢」也可能是它在等待工具、網路或權限；查看正在做的步驟，不立刻增加深度或重送同一工作。額度不足就保存比較表與未完成狀態，依"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "帳號篇",
-              "url": "https://mokaair.com/zh-TW/life/codex-account-usage"
+              "kind": "life",
+              "slug": "codex-account-usage"
             },
             {
               "type": "text",
@@ -241,9 +257,15 @@
           "text": "完成條件是能指出實際選擇、用同一題目判斷兩次結果、說明比較的限制，並把模型與推理控制恢復到練習前的值。sample.mjs 應完全沒變；若任務改了它，保留差異後用上面的完整內容還原，再把該次標記為未遵守範圍。圖中 1 是記錄，2 是控制變因比較，3 是按證據選擇。本文不提供虛構的模型速度實測排名。"
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -288,9 +310,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -304,15 +332,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "先了解"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "帐号与额度",
-              "url": "https://mokaair.com/zh-CN/life/codex-account-usage"
+              "kind": "life",
+              "slug": "codex-account-usage"
             },
             {
               "type": "text",
@@ -331,25 +360,28 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "/model\n"
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "/status\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "在文字编辑器新建 comparison.md，先记日期、平台版本、登入类型及选单可见项目。不要贴电子邮件、API 金钥或付款资料。若 CLI 与桌面可见选项不一样，分开记录两个环境；不要推论其中一个坏掉。Codex 云端任务的模型限制也不同，本篇的本机切换步骤不能直接套到"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "云端任务",
-              "url": "https://mokaair.com/zh-CN/life/codex-cloud-tasks-github"
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
             },
             {
               "type": "text",
@@ -368,6 +400,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "javascript",
           "code": "export function completedTitles(tasks) {\n  return tasks.filter((task) => !task.completed).map((task) => task.title);\n}\n\nexport const sample = [\n  { title: \"Read\", completed: true },\n  { title: \"Build\", completed: false },\n];\n"
         },
@@ -377,6 +410,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Read sample.mjs without modifying any file. The requirement is to return titles of completed tasks in original order.\n1. State the actual output for sample and the required output.\n2. Identify the precise defect and the smallest fix.\n3. Give two verification cases, including empty input, and say whether inputs are mutated.\nDo not install tools or run a web search. Distinguish reasoning from tests you actually ran. Keep the answer under 250 words.\n"
         },
@@ -395,6 +429,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "markdown",
           "code": "# Model comparison\nDate / client / sign-in type: fill from your environment\nTask: completedTitles review; identical sample.mjs and prompt\n\n| Check | Run A | Run B |\n| --- | --- | --- |\n| Model and reasoning effort | NOT RUN | NOT RUN |\n| Speed / permissions unchanged | NOT RUN | NOT RUN |\n| Elapsed time | NOT RUN | NOT RUN |\n| Actual Build, required Read | NOT RUN | NOT RUN |\n| Correct minimal fix | NOT RUN | NOT RUN |\n| Empty-input case and no mutation | NOT RUN | NOT RUN |\n| Files unchanged | NOT RUN | NOT RUN |\n| Per-run usage, if available | UNAVAILABLE | UNAVAILABLE |\n\nDecision and reason: pending observed results\nLimit: one small task is not a general model ranking.\n"
         },
@@ -443,15 +478,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "规格清楚的小修改可先从帐号预设开始；遇到多档案相依、难以重现的错误或需要权衡时，再提高推理并重新验证。更高深度可能花更久、用更多 token，仍可能错。Max 与 Ultra 不是每个任务的必选项；Ultra 涉及"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "子代理分工",
-              "url": "https://mokaair.com/zh-CN/life/codex-subagents"
+              "kind": "life",
+              "slug": "codex-subagents"
             },
             {
               "type": "text",
@@ -466,15 +502,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "模型找不到时，先确认登入方式、版本与帐号可见清单，不把网路文章中的旧 ID 直接写入 config.toml。设定无效时回到"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "设定排错",
-              "url": "https://mokaair.com/zh-CN/life/codex-config-troubleshooting"
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
             },
             {
               "type": "text",
@@ -484,15 +521,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "「速度变慢」也可能是它在等待工具、网路或权限；查看正在做的步骤，不立刻增加深度或重送同一工作。额度不足就保存比较表与未完成状态，依"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "帐号篇",
-              "url": "https://mokaair.com/zh-CN/life/codex-account-usage"
+              "kind": "life",
+              "slug": "codex-account-usage"
             },
             {
               "type": "text",
@@ -505,9 +543,15 @@
           "text": "完成条件是能指出实际选择、用同一题目判断两次结果、说明比较的限制，并把模型与推理控制恢复到练习前的值。sample.mjs 应完全没变；若任务改了它，保留差异后用上面的完整内容还原，再把该次标记为未遵守范围。图中 1 是记录，2 是控制变因比较，3 是按证据选择。本文不提供虚构的模型速度实测排名。"
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -552,9 +596,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -568,15 +618,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "First understand "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "account usage",
-              "url": "https://mokaair.com/en/life/codex-account-usage"
+              "kind": "life",
+              "slug": "codex-account-usage"
             },
             {
               "type": "text",
@@ -595,25 +646,28 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "/model\n"
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "/status\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Create comparison.md in your editor with date, client version, sign-in type and visible choices. Omit email, API keys and billing data. Record CLI and desktop separately when their menus differ; that alone does not indicate a fault. Cloud model controls have different restrictions, so these local steps do not automatically apply to "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "cloud tasks",
-              "url": "https://mokaair.com/en/life/codex-cloud-tasks-github"
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
             },
             {
               "type": "text",
@@ -632,6 +686,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "javascript",
           "code": "export function completedTitles(tasks) {\n  return tasks.filter((task) => !task.completed).map((task) => task.title);\n}\n\nexport const sample = [\n  { title: \"Read\", completed: true },\n  { title: \"Build\", completed: false },\n];\n"
         },
@@ -641,6 +696,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Read sample.mjs without modifying any file. The requirement is to return titles of completed tasks in original order.\n1. State the actual output for sample and the required output.\n2. Identify the precise defect and the smallest fix.\n3. Give two verification cases, including empty input, and say whether inputs are mutated.\nDo not install tools or run a web search. Distinguish reasoning from tests you actually ran. Keep the answer under 250 words.\n"
         },
@@ -659,6 +715,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "markdown",
           "code": "# Model comparison\nDate / client / sign-in type: fill from your environment\nTask: completedTitles review; identical sample.mjs and prompt\n\n| Check | Run A | Run B |\n| --- | --- | --- |\n| Model and reasoning effort | NOT RUN | NOT RUN |\n| Speed / permissions unchanged | NOT RUN | NOT RUN |\n| Elapsed time | NOT RUN | NOT RUN |\n| Actual Build, required Read | NOT RUN | NOT RUN |\n| Correct minimal fix | NOT RUN | NOT RUN |\n| Empty-input case and no mutation | NOT RUN | NOT RUN |\n| Files unchanged | NOT RUN | NOT RUN |\n| Per-run usage, if available | UNAVAILABLE | UNAVAILABLE |\n\nDecision and reason: pending observed results\nLimit: one small task is not a general model ranking.\n"
         },
@@ -707,15 +764,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Start well-scoped edits at account defaults. For dependencies, elusive bugs or tradeoffs, try more reasoning and revalidate. Higher effort can take longer and use more tokens without guaranteeing correctness. Max and Ultra are optional; Ultra involves "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "subagents",
-              "url": "https://mokaair.com/en/life/codex-subagents"
+              "kind": "life",
+              "slug": "codex-subagents"
             },
             {
               "type": "text",
@@ -730,15 +788,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "If a model is missing, check sign-in, version and visible availability before copying old IDs into config.toml. For invalid settings, use "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "configuration troubleshooting",
-              "url": "https://mokaair.com/en/life/codex-config-troubleshooting"
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
             },
             {
               "type": "text",
@@ -748,15 +807,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Slowness may be a tool, network or permission wait. Inspect current activity before changing effort or duplicating work. If usage runs out, save the incomplete table and check your reset information in "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "account usage",
-              "url": "https://mokaair.com/en/life/codex-account-usage"
+              "kind": "life",
+              "slug": "codex-account-usage"
             },
             {
               "type": "text",
@@ -769,9 +829,15 @@
           "text": "Finish by identifying actual settings, scoring identical tasks, explaining limitations and restoring pre-exercise model/effort. sample.mjs should be unchanged. If edited, preserve the diff, restore the full sample above and mark that run as a scope failure. Diagram 1 records settings, 2 compares one variable, 3 chooses from evidence. No fabricated speed ranking is supplied."
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -816,9 +882,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -832,15 +904,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "先に"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "アカウントと使用量",
-              "url": "https://mokaair.com/ja/life/codex-account-usage"
+              "kind": "life",
+              "slug": "codex-account-usage"
             },
             {
               "type": "text",
@@ -859,25 +932,28 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "/model\n"
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "/status\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "エディターで comparison.md を作り、日付、版、認証の種類、表示選択肢を記録します。メール、API 鍵、支払情報は不要です。CLI とデスクトップで違えば別々に記録し、故障と決めつけません。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "クラウド課題",
-              "url": "https://mokaair.com/ja/life/codex-cloud-tasks-github"
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
             },
             {
               "type": "text",
@@ -896,6 +972,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "javascript",
           "code": "export function completedTitles(tasks) {\n  return tasks.filter((task) => !task.completed).map((task) => task.title);\n}\n\nexport const sample = [\n  { title: \"Read\", completed: true },\n  { title: \"Build\", completed: false },\n];\n"
         },
@@ -905,6 +982,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Read sample.mjs without modifying any file. The requirement is to return titles of completed tasks in original order.\n1. State the actual output for sample and the required output.\n2. Identify the precise defect and the smallest fix.\n3. Give two verification cases, including empty input, and say whether inputs are mutated.\nDo not install tools or run a web search. Distinguish reasoning from tests you actually ran. Keep the answer under 250 words.\n"
         },
@@ -923,6 +1001,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "markdown",
           "code": "# Model comparison\nDate / client / sign-in type: fill from your environment\nTask: completedTitles review; identical sample.mjs and prompt\n\n| Check | Run A | Run B |\n| --- | --- | --- |\n| Model and reasoning effort | NOT RUN | NOT RUN |\n| Speed / permissions unchanged | NOT RUN | NOT RUN |\n| Elapsed time | NOT RUN | NOT RUN |\n| Actual Build, required Read | NOT RUN | NOT RUN |\n| Correct minimal fix | NOT RUN | NOT RUN |\n| Empty-input case and no mutation | NOT RUN | NOT RUN |\n| Files unchanged | NOT RUN | NOT RUN |\n| Per-run usage, if available | UNAVAILABLE | UNAVAILABLE |\n\nDecision and reason: pending observed results\nLimit: one small task is not a general model ranking.\n"
         },
@@ -971,15 +1050,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "明確な小変更は既定から始め、依存関係や難しい故障、取捨選択なら強度を上げ再検証します。時間・トークンが増えても正解保証はありません。Max / Ultra は必須でなく、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "子エージェント",
-              "url": "https://mokaair.com/ja/life/codex-subagents"
+              "kind": "life",
+              "slug": "codex-subagents"
             },
             {
               "type": "text",
@@ -994,15 +1074,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "モデルがなければ認証、版、一覧を確認し、古い ID を config.toml へコピーしません。無効設定は"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "設定対処",
-              "url": "https://mokaair.com/ja/life/codex-config-troubleshooting"
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
             },
             {
               "type": "text",
@@ -1012,15 +1093,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "遅さが道具・通信・権限待ちの場合もあります。強度変更や重複依頼の前に現在の処理を見ます。残量不足なら未完成表を保存し、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "使用量",
-              "url": "https://mokaair.com/ja/life/codex-account-usage"
+              "kind": "life",
+              "slug": "codex-account-usage"
             },
             {
               "type": "text",
@@ -1033,9 +1115,15 @@
           "text": "実際の設定、同題採点、限界説明、元設定への復元で完了です。sample.mjs は不変のはずで、変更されたら差分を残して例から復元し、その回は範囲違反とします。図1は記録、2は一変数比較、3は証拠による選択です。架空の速度順位は掲載しません。"
         },
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1080,9 +1168,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1096,15 +1190,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "먼저 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "계정과 사용량",
-              "url": "https://mokaair.com/ko/life/codex-account-usage"
+              "kind": "life",
+              "slug": "codex-account-usage"
             },
             {
               "type": "text",
@@ -1123,25 +1218,28 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "/model\n"
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "/status\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "편집기에서 comparison.md에 날짜, 버전, 로그인 유형, 보이는 옵션을 기록합니다. 이메일/API 키/결제 정보는 제외합니다. CLI/데스크톱이 다르면 별도로 기록하고 고장으로 단정하지 않습니다. "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "클라우드 작업",
-              "url": "https://mokaair.com/ko/life/codex-cloud-tasks-github"
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
             },
             {
               "type": "text",
@@ -1160,6 +1258,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "javascript",
           "code": "export function completedTitles(tasks) {\n  return tasks.filter((task) => !task.completed).map((task) => task.title);\n}\n\nexport const sample = [\n  { title: \"Read\", completed: true },\n  { title: \"Build\", completed: false },\n];\n"
         },
@@ -1169,6 +1268,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Read sample.mjs without modifying any file. The requirement is to return titles of completed tasks in original order.\n1. State the actual output for sample and the required output.\n2. Identify the precise defect and the smallest fix.\n3. Give two verification cases, including empty input, and say whether inputs are mutated.\nDo not install tools or run a web search. Distinguish reasoning from tests you actually ran. Keep the answer under 250 words.\n"
         },
@@ -1187,6 +1287,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "markdown",
           "code": "# Model comparison\nDate / client / sign-in type: fill from your environment\nTask: completedTitles review; identical sample.mjs and prompt\n\n| Check | Run A | Run B |\n| --- | --- | --- |\n| Model and reasoning effort | NOT RUN | NOT RUN |\n| Speed / permissions unchanged | NOT RUN | NOT RUN |\n| Elapsed time | NOT RUN | NOT RUN |\n| Actual Build, required Read | NOT RUN | NOT RUN |\n| Correct minimal fix | NOT RUN | NOT RUN |\n| Empty-input case and no mutation | NOT RUN | NOT RUN |\n| Files unchanged | NOT RUN | NOT RUN |\n| Per-run usage, if available | UNAVAILABLE | UNAVAILABLE |\n\nDecision and reason: pending observed results\nLimit: one small task is not a general model ranking.\n"
         },
@@ -1235,15 +1336,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "명확한 작은 변경은 기본값으로 시작하고 의존 관계/어려운 오류/선택 문제가 있으면 강도를 올려 재검증합니다. 시간/토큰이 늘어도 정답 보장은 아닙니다. Max/Ultra는 필수가 아니며 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "하위 에이전트",
-              "url": "https://mokaair.com/ko/life/codex-subagents"
+              "kind": "life",
+              "slug": "codex-subagents"
             },
             {
               "type": "text",
@@ -1258,15 +1360,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "모델이 없으면 로그인/버전/목록을 확인하고 오래된 ID를 config.toml에 복사하지 않습니다. 잘못된 설정은 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "설정 해결",
-              "url": "https://mokaair.com/ko/life/codex-config-troubleshooting"
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
             },
             {
               "type": "text",
@@ -1276,15 +1379,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "느림은 도구/네트워크/권한 대기일 수도 있습니다. 강도 변경/중복 요청 전에 현재 처리를 봅니다. 사용량 부족이면 미완성 표를 저장하고 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "사용량",
-              "url": "https://mokaair.com/ko/life/codex-account-usage"
+              "kind": "life",
+              "slug": "codex-account-usage"
             },
             {
               "type": "text",
@@ -1297,9 +1401,15 @@
           "text": "실제 설정 확인, 같은 과제 채점, 한계 설명, 원래 설정 복원이 완료 조건입니다. sample.mjs는 불변이어야 하고 바뀌면 차이를 남겨 예시로 복원하고 그 실행은 범위 위반으로 표시합니다. 그림 1은 기록, 2는 한 변수 비교, 3은 증거에 따른 선택입니다. 가짜 속도 순위는 제공하지 않습니다."
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

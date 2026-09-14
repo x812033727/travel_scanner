@@ -24,9 +24,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -40,11 +46,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "工作階段續接",
-              "url": "https://mokaair.com/zh-TW/life/codex-sessions-resume"
+              "kind": "life",
+              "slug": "codex-sessions-resume"
             },
             {
               "type": "text",
@@ -59,15 +66,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "取得"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "第一個小專案",
-              "url": "https://mokaair.com/zh-TW/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -77,11 +85,13 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Lab: codex-handoff-lab\nRevision: BROKEN-1\n"
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -100,6 +110,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "markdown",
           "code": "# Small Steps handoff\n\n## Goal\nCompleted shows only completed tasks. Keep ordering, storage and existing UI.\n\n## Scope\nLab: codex-handoff-lab. Only core.mjs may need a program change.\nDo not change tests or add dependencies. Preserve other work.\n\n## Observed\nLAB_STATE.txt: Revision: BROKEN-1.\nCommand: node --test core.test.mjs\nResult: 2 passed, 1 failed in the filter case.\nThe completed branch of visibleTasks currently selects unfinished tasks.\n\n## Not checked\nBrowser interaction: NOT RUN.\nPublishing and deployment: NOT PERFORMED.\n\n## Next\n1. Re-read LAB_STATE.txt, core.mjs and the test file; do not trust this record over current files.\n2. Re-run the baseline before deciding whether a fix is still needed.\n3. If still faulty, change only the completed predicate, then test and review the diff.\n4. Manually check Read completed / Build active under all three filters.\n\n## Stop condition\nIf revision, test results or files differ, report the mismatch and revise this record before editing program code.\n"
         },
@@ -122,6 +133,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Continue this lab using handoff.md, but first verify it against current files. Read LAB_STATE.txt, core.mjs and core.test.mjs. Run node --test core.test.mjs. Do not edit anything yet.\nCompare the recorded revision, predicate and test result with current evidence. Report mismatches and propose the smallest next step. Browser checks must remain NOT RUN unless actually performed.\n"
         },
@@ -170,15 +182,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "這些角色可參考"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "規則與文件分工",
-              "url": "https://mokaair.com/zh-TW/life/codex-rules-and-context-files"
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
             },
             {
               "type": "text",
@@ -200,9 +213,15 @@
           "text": "完成時應有舊紀錄與新磁碟不一致的說明、更新的 handoff.md，以及 core.mjs 未被重複修改的證據。想重做只還原 broken/core.mjs、將 LAB_STATE.txt 改回 BROKEN-1，再用上面的原始交接；其他檔案不動。圖中 1 是記錄事實，2 是接手時重驗，3 是更新下一步。本文的模型對話與 /compact 依文件說明，實際執行要由你的結果補上；參考程式的故障與修正另有本機測試。"
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -252,9 +271,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -268,11 +293,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "工作阶段续接",
-              "url": "https://mokaair.com/zh-CN/life/codex-sessions-resume"
+              "kind": "life",
+              "slug": "codex-sessions-resume"
             },
             {
               "type": "text",
@@ -287,15 +313,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "取得"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "第一个小专案",
-              "url": "https://mokaair.com/zh-CN/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -305,11 +332,13 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Lab: codex-handoff-lab\nRevision: BROKEN-1\n"
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -328,6 +357,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "markdown",
           "code": "# Small Steps handoff\n\n## Goal\nCompleted shows only completed tasks. Keep ordering, storage and existing UI.\n\n## Scope\nLab: codex-handoff-lab. Only core.mjs may need a program change.\nDo not change tests or add dependencies. Preserve other work.\n\n## Observed\nLAB_STATE.txt: Revision: BROKEN-1.\nCommand: node --test core.test.mjs\nResult: 2 passed, 1 failed in the filter case.\nThe completed branch of visibleTasks currently selects unfinished tasks.\n\n## Not checked\nBrowser interaction: NOT RUN.\nPublishing and deployment: NOT PERFORMED.\n\n## Next\n1. Re-read LAB_STATE.txt, core.mjs and the test file; do not trust this record over current files.\n2. Re-run the baseline before deciding whether a fix is still needed.\n3. If still faulty, change only the completed predicate, then test and review the diff.\n4. Manually check Read completed / Build active under all three filters.\n\n## Stop condition\nIf revision, test results or files differ, report the mismatch and revise this record before editing program code.\n"
         },
@@ -350,6 +380,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Continue this lab using handoff.md, but first verify it against current files. Read LAB_STATE.txt, core.mjs and core.test.mjs. Run node --test core.test.mjs. Do not edit anything yet.\nCompare the recorded revision, predicate and test result with current evidence. Report mismatches and propose the smallest next step. Browser checks must remain NOT RUN unless actually performed.\n"
         },
@@ -398,15 +429,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "这些角色可参考"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "规则与文件分工",
-              "url": "https://mokaair.com/zh-CN/life/codex-rules-and-context-files"
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
             },
             {
               "type": "text",
@@ -428,9 +460,15 @@
           "text": "完成时应有旧纪录与新磁碟不一致的说明、更新的 handoff.md，以及 core.mjs 未被重复修改的证据。想重做只还原 broken/core.mjs、将 LAB_STATE.txt 改回 BROKEN-1，再用上面的原始交接；其他档案不动。图中 1 是记录事实，2 是接手时重验，3 是更新下一步。本文的模型对话与 /compact 依文件说明，实际执行要由你的结果补上；参考程式的故障与修正另有本机测试。"
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -480,9 +518,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -496,11 +540,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "Session resumption",
-              "url": "https://mokaair.com/en/life/codex-sessions-resume"
+              "kind": "life",
+              "slug": "codex-sessions-resume"
             },
             {
               "type": "text",
@@ -515,15 +560,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "From the "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "first-project ZIP",
-              "url": "https://mokaair.com/en/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -533,11 +579,13 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Lab: codex-handoff-lab\nRevision: BROKEN-1\n"
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -556,6 +604,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "markdown",
           "code": "# Small Steps handoff\n\n## Goal\nCompleted shows only completed tasks. Keep ordering, storage and existing UI.\n\n## Scope\nLab: codex-handoff-lab. Only core.mjs may need a program change.\nDo not change tests or add dependencies. Preserve other work.\n\n## Observed\nLAB_STATE.txt: Revision: BROKEN-1.\nCommand: node --test core.test.mjs\nResult: 2 passed, 1 failed in the filter case.\nThe completed branch of visibleTasks currently selects unfinished tasks.\n\n## Not checked\nBrowser interaction: NOT RUN.\nPublishing and deployment: NOT PERFORMED.\n\n## Next\n1. Re-read LAB_STATE.txt, core.mjs and the test file; do not trust this record over current files.\n2. Re-run the baseline before deciding whether a fix is still needed.\n3. If still faulty, change only the completed predicate, then test and review the diff.\n4. Manually check Read completed / Build active under all three filters.\n\n## Stop condition\nIf revision, test results or files differ, report the mismatch and revise this record before editing program code.\n"
         },
@@ -578,6 +627,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Continue this lab using handoff.md, but first verify it against current files. Read LAB_STATE.txt, core.mjs and core.test.mjs. Run node --test core.test.mjs. Do not edit anything yet.\nCompare the recorded revision, predicate and test result with current evidence. Report mismatches and propose the smallest next step. Browser checks must remain NOT RUN unless actually performed.\n"
         },
@@ -626,15 +676,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "See "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "rules and context files",
-              "url": "https://mokaair.com/en/life/codex-rules-and-context-files"
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
             },
             {
               "type": "text",
@@ -656,9 +707,15 @@
           "text": "Completion requires an explanation of stale versus current state, updated handoff.md and evidence that core.mjs was not redundantly edited. To repeat, restore only broken/core.mjs, set LAB_STATE.txt to BROKEN-1 and restore the reference handoff. Diagram 1 records facts, 2 revalidates on handoff, 3 updates next steps. Model dialogue and /compact are documented procedures; record your own execution. The reference defect and fix have separate local tests."
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -708,9 +765,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -724,11 +787,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "セッション再開",
-              "url": "https://mokaair.com/ja/life/codex-sessions-resume"
+              "kind": "life",
+              "slug": "codex-sessions-resume"
             },
             {
               "type": "text",
@@ -743,11 +807,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "最初の教材 ZIP",
-              "url": "https://mokaair.com/ja/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -757,11 +822,13 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Lab: codex-handoff-lab\nRevision: BROKEN-1\n"
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -780,6 +847,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "markdown",
           "code": "# Small Steps handoff\n\n## Goal\nCompleted shows only completed tasks. Keep ordering, storage and existing UI.\n\n## Scope\nLab: codex-handoff-lab. Only core.mjs may need a program change.\nDo not change tests or add dependencies. Preserve other work.\n\n## Observed\nLAB_STATE.txt: Revision: BROKEN-1.\nCommand: node --test core.test.mjs\nResult: 2 passed, 1 failed in the filter case.\nThe completed branch of visibleTasks currently selects unfinished tasks.\n\n## Not checked\nBrowser interaction: NOT RUN.\nPublishing and deployment: NOT PERFORMED.\n\n## Next\n1. Re-read LAB_STATE.txt, core.mjs and the test file; do not trust this record over current files.\n2. Re-run the baseline before deciding whether a fix is still needed.\n3. If still faulty, change only the completed predicate, then test and review the diff.\n4. Manually check Read completed / Build active under all three filters.\n\n## Stop condition\nIf revision, test results or files differ, report the mismatch and revise this record before editing program code.\n"
         },
@@ -802,6 +870,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Continue this lab using handoff.md, but first verify it against current files. Read LAB_STATE.txt, core.mjs and core.test.mjs. Run node --test core.test.mjs. Do not edit anything yet.\nCompare the recorded revision, predicate and test result with current evidence. Report mismatches and propose the smallest next step. Browser checks must remain NOT RUN unless actually performed.\n"
         },
@@ -850,11 +919,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "ルールと文書分担",
-              "url": "https://mokaair.com/ja/life/codex-rules-and-context-files"
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
             },
             {
               "type": "text",
@@ -876,9 +946,15 @@
           "text": "不一致の説明、更新済み handoff.md、core.mjs を重複変更していない証拠が完了条件です。再実行は broken/core.mjs だけ復元し、BROKEN-1 と元の引継ぎに戻します。図1は記録、2は再検証、3は次の操作更新です。モデル会話と /compact は資料手順で、実行結果は各自記録します。参考コードの故障と修正は別途ローカルテスト済みです。"
         },
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -928,9 +1004,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -944,11 +1026,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "세션 재개",
-              "url": "https://mokaair.com/ko/life/codex-sessions-resume"
+              "kind": "life",
+              "slug": "codex-sessions-resume"
             },
             {
               "type": "text",
@@ -963,11 +1046,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "첫 실습 ZIP",
-              "url": "https://mokaair.com/ko/life/codex-first-project"
+              "kind": "life",
+              "slug": "codex-first-project"
             },
             {
               "type": "text",
@@ -977,11 +1061,13 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Lab: codex-handoff-lab\nRevision: BROKEN-1\n"
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -1000,6 +1086,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "markdown",
           "code": "# Small Steps handoff\n\n## Goal\nCompleted shows only completed tasks. Keep ordering, storage and existing UI.\n\n## Scope\nLab: codex-handoff-lab. Only core.mjs may need a program change.\nDo not change tests or add dependencies. Preserve other work.\n\n## Observed\nLAB_STATE.txt: Revision: BROKEN-1.\nCommand: node --test core.test.mjs\nResult: 2 passed, 1 failed in the filter case.\nThe completed branch of visibleTasks currently selects unfinished tasks.\n\n## Not checked\nBrowser interaction: NOT RUN.\nPublishing and deployment: NOT PERFORMED.\n\n## Next\n1. Re-read LAB_STATE.txt, core.mjs and the test file; do not trust this record over current files.\n2. Re-run the baseline before deciding whether a fix is still needed.\n3. If still faulty, change only the completed predicate, then test and review the diff.\n4. Manually check Read completed / Build active under all three filters.\n\n## Stop condition\nIf revision, test results or files differ, report the mismatch and revise this record before editing program code.\n"
         },
@@ -1022,6 +1109,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Continue this lab using handoff.md, but first verify it against current files. Read LAB_STATE.txt, core.mjs and core.test.mjs. Run node --test core.test.mjs. Do not edit anything yet.\nCompare the recorded revision, predicate and test result with current evidence. Report mismatches and propose the smallest next step. Browser checks must remain NOT RUN unless actually performed.\n"
         },
@@ -1070,11 +1158,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "규칙과 문서 역할",
-              "url": "https://mokaair.com/ko/life/codex-rules-and-context-files"
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
             },
             {
               "type": "text",
@@ -1096,9 +1185,15 @@
           "text": "불일치 설명, 갱신한 handoff.md, core.mjs를 중복 수정하지 않았다는 증거가 완료 조건입니다. 반복 시 broken/core.mjs만 복원하고 BROKEN-1과 원래 인계로 되돌립니다. 그림 1은 기록, 2는 재검증, 3은 다음 행동 갱신입니다. 모델 대화와 /compact는 문서 절차이며 자신의 실행 결과를 기록합니다. 참고 코드 결함/수정은 별도 로컬 테스트되었습니다."
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

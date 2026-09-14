@@ -91,7 +91,8 @@
         {
           "type": "code",
           "language": "text",
-          "code": "只讀 README 並回報缺少的啟動步驟。每項包含證據與建議，不修改專案檔案，不發布或部署。"
+          "code": "只讀 README 並回報缺少的啟動步驟。每項包含證據與建議，不修改專案檔案，不發布或部署。",
+          "label": "本步驟範例"
         },
         {
           "type": "heading",
@@ -101,7 +102,8 @@
         {
           "type": "code",
           "language": "shell",
-          "code": "codex exec --sandbox read-only -o review.md \"Read README.md and report missing setup steps. Do not edit project files.\"\ncodex exec --sandbox read-only --json \"List the project files without changing them.\""
+          "code": "codex exec --sandbox read-only -o review.md \"Read README.md and report missing setup steps. Do not edit project files.\"\ncodex exec --sandbox read-only --json \"List the project files without changing them.\"",
+          "label": "本步驟範例"
         },
         {
           "type": "table",
@@ -154,9 +156,15 @@
           "text": "延伸閱讀"
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-learning-hub",
+              "text": "返回 Codex 教學總目錄"
+            }
+          ]
         }
       ],
       "sources": [
@@ -260,7 +268,8 @@
         {
           "type": "code",
           "language": "text",
-          "code": "只读 README 并回报缺少的启动步骤。每项包含证据与建议，不修改专案档案，不发布或部署。"
+          "code": "只读 README 并回报缺少的启动步骤。每项包含证据与建议，不修改专案档案，不发布或部署。",
+          "label": "本步骤示例"
         },
         {
           "type": "heading",
@@ -270,7 +279,8 @@
         {
           "type": "code",
           "language": "shell",
-          "code": "codex exec --sandbox read-only -o review.md \"Read README.md and report missing setup steps. Do not edit project files.\"\ncodex exec --sandbox read-only --json \"List the project files without changing them.\""
+          "code": "codex exec --sandbox read-only -o review.md \"Read README.md and report missing setup steps. Do not edit project files.\"\ncodex exec --sandbox read-only --json \"List the project files without changing them.\"",
+          "label": "本步骤示例"
         },
         {
           "type": "table",
@@ -323,9 +333,15 @@
           "text": "延伸阅读"
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-learning-hub",
+              "text": "返回 Codex 教学总目录"
+            }
+          ]
         }
       ],
       "sources": [
@@ -429,7 +445,8 @@
         {
           "type": "code",
           "language": "text",
-          "code": "Read README and report missing startup steps with evidence and suggestions. Do not edit project files, publish or deploy."
+          "code": "Read README and report missing startup steps with evidence and suggestions. Do not edit project files, publish or deploy.",
+          "label": "Example for this step"
         },
         {
           "type": "heading",
@@ -439,7 +456,8 @@
         {
           "type": "code",
           "language": "shell",
-          "code": "codex exec --sandbox read-only -o review.md \"Read README.md and report missing setup steps. Do not edit project files.\"\ncodex exec --sandbox read-only --json \"List the project files without changing them.\""
+          "code": "codex exec --sandbox read-only -o review.md \"Read README.md and report missing setup steps. Do not edit project files.\"\ncodex exec --sandbox read-only --json \"List the project files without changing them.\"",
+          "label": "Example for this step"
         },
         {
           "type": "table",
@@ -492,9 +510,15 @@
           "text": "Continue learning"
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-learning-hub",
+              "text": "Back to the Codex learning hub"
+            }
+          ]
         }
       ],
       "sources": [
@@ -598,7 +622,8 @@
         {
           "type": "code",
           "language": "text",
-          "code": "README の不足する起動手順を根拠付きで報告してください。編集、公開、デプロイはしないでください。"
+          "code": "README の不足する起動手順を根拠付きで報告してください。編集、公開、デプロイはしないでください。",
+          "label": "この手順の例"
         },
         {
           "type": "heading",
@@ -608,7 +633,8 @@
         {
           "type": "code",
           "language": "shell",
-          "code": "codex exec --sandbox read-only -o review.md \"Read README.md and report missing setup steps. Do not edit project files.\"\ncodex exec --sandbox read-only --json \"List the project files without changing them.\""
+          "code": "codex exec --sandbox read-only -o review.md \"Read README.md and report missing setup steps. Do not edit project files.\"\ncodex exec --sandbox read-only --json \"List the project files without changing them.\"",
+          "label": "この手順の例"
         },
         {
           "type": "table",
@@ -661,9 +687,15 @@
           "text": "次に学ぶこと"
         },
         {
-          "type": "link",
-          "text": "Codex 学習ガイドに戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-learning-hub",
+              "text": "Codex 学習ガイドに戻る"
+            }
+          ]
         }
       ],
       "sources": [
@@ -767,7 +799,8 @@
         {
           "type": "code",
           "language": "text",
-          "code": "README의 빠진 시작 단계를 근거와 함께 보고하세요. 편집, 게시와 배포는 하지 마세요."
+          "code": "README의 빠진 시작 단계를 근거와 함께 보고하세요. 편집, 게시와 배포는 하지 마세요.",
+          "label": "이 단계의 예제"
         },
         {
           "type": "heading",
@@ -777,7 +810,8 @@
         {
           "type": "code",
           "language": "shell",
-          "code": "codex exec --sandbox read-only -o review.md \"Read README.md and report missing setup steps. Do not edit project files.\"\ncodex exec --sandbox read-only --json \"List the project files without changing them.\""
+          "code": "codex exec --sandbox read-only -o review.md \"Read README.md and report missing setup steps. Do not edit project files.\"\ncodex exec --sandbox read-only --json \"List the project files without changing them.\"",
+          "label": "이 단계의 예제"
         },
         {
           "type": "table",
@@ -830,9 +864,15 @@
           "text": "이어서 학습하기"
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-learning-hub",
+              "text": "Codex 학습 목차로 돌아가기"
+            }
+          ]
         }
       ],
       "sources": [

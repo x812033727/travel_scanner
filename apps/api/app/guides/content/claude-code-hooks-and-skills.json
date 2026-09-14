@@ -1,0 +1,331 @@
+{
+  "slug": "claude-code-hooks-and-skills",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 137,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜Hooks 與 Skills 怎麼選",
+      "description": "選對規則、可重用流程與事件自動化。規則、Skills 與 Hooks 都能讓重複工作更有秩序，但它們介入工作的時機不同。本篇會用待辦清單專案，把「每次都遵守的要求」「需要時啟動的流程」「事件發生就執行的程式」分開，選出最小且容易維護的做法。",
+      "hero": {
+        "src": "/guides/claude-code-hooks-and-skills/hero.jpg",
+        "alt": "Hooks 與 Skills 怎麼選：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "規則、Skills 與 Hooks 都能讓重複工作更有秩序，但它們介入工作的時機不同。本篇會用待辦清單專案，把「每次都遵守的要求」「需要時啟動的流程」「事件發生就執行的程式」分開，選出最小且容易維護的做法。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先完成"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-practice-project-setup",
+              "text": "練習專案"
+            },
+            {
+              "type": "text",
+              "text": "，並知道 "
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-claude-md-guide",
+              "text": "CLAUDE.md"
+            },
+            {
+              "type": "text",
+              "text": " 放在哪裡。這篇先做設計與人工演練，不需要安裝外掛。後面兩篇才逐步建立可執行的檔案，避免同時改動多種設定而不知道效果來自哪裡。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先判斷需求的觸發時機"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-hooks-and-skills/diagram-1.svg",
+          "alt": "先判斷需求的觸發時機 → 把混在一起的要求拆開 → 用人工流程驗證設計",
+          "width": 1600,
+          "height": 900,
+          "caption": "先判斷需求的觸發時機 → 把混在一起的要求拆開 → 用人工流程驗證設計",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "「網頁使用繁體中文」是所有修改都適用的背景規範；「請審查這次差異」是使用者選擇時機的工作流程；「Claude 編輯完檔案就記錄一次事件」則有明確的觸發事件。這三件事分別適合放入規則、Skill 與 Hook。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "想解決的問題",
+            "優先選擇",
+            "判斷依據"
+          ],
+          "rows": [
+            [
+              "全專案的命名與測試慣例",
+              "CLAUDE.md 或 rules",
+              "多數工作都需要知道"
+            ],
+            [
+              "固定格式的變更審查",
+              "Skill",
+              "需要一組可重用步驟"
+            ],
+            [
+              "編輯事件後執行紀錄程式",
+              "Hook",
+              "有可辨認事件及程式化動作"
+            ],
+            [
+              "讀取外部服務資料",
+              "MCP",
+              "缺少連接外部工具的能力"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Skill 是一份按需要載入的工作說明，不是把 Markdown 自動編譯成程式。Hook 可以執行命令，但命令的正確性、執行時間與錯誤處理仍由作者負責。"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-mcp-servers",
+              "text": "MCP"
+            },
+            {
+              "type": "text",
+              "text": " 提供工具連線，通常不替你定義完整審查流程。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把混在一起的要求拆開"
+        },
+        {
+          "type": "paragraph",
+          "text": "假設原本的提示是「改完就檢查繁體中文、執行測試、寫報告並通知我」。先逐項問：這是長期規範、一次任務的驗收，還是必須每個工具事件都觸發？不要把整段原封不動放入 Hook，否則每編輯一個字都可能重跑整套測試。"
+        },
+        {
+          "type": "paragraph",
+          "text": "繁體中文可寫成專案規則；完成後執行 npm test 可以先保留在任務提示或審查 Skill；通知則在確認真正需要後，再選 Notification 或 Stop 等相符事件。Stop 代表 Claude 一次回應結束，不一定表示整個專案已驗收通過。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：先分析自動化需求",
+          "code": "請讀取練習專案，分析以下要求應放在哪裡：\n介面使用繁體中文；交付前檢查差異與測試；工具編輯後記錄事件。\n每項列出觸發時機、輸入、輸出，以及失敗時如何發現。\n先不要建立設定或執行外部通知，請給我最小可行設計。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期結果應有三個分開的用途，而不是一份涵蓋所有行為的巨大設定。如果 Claude 建議每次讀檔也跑測試，要求它解釋必要性。讀取動作通常不改變程式，綁定完整測試會增加延遲而沒有相應證據。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用人工流程驗證設計"
+        },
+        {
+          "type": "paragraph",
+          "text": "先不用自動化，人工走一次「看差異、執行測試、回報結果」。你需要確認步驟本身能完成，測試命令在目前資料夾有效，回報格式也適合讀者。人工仍會卡住的步驟，搬到 Hook 後通常只是更難觀察。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：人工演練審查流程",
+          "code": "請只讀取目前 Git 差異，列出涉及的功能與可能風險。\n讀取 package.json 後，確認 npm test 的實際內容，再執行必要測試。\n回報「觀察到的差異、測試命令與結果、尚未驗證項目」。\n不要自動修改檔案、提交、推送或發布。\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把演練中真正有用的步驟整理到 "
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-skills-skill-md",
+              "text": "SKILL.md"
+            },
+            {
+              "type": "text",
+              "text": "。先採手動呼叫，確定多次輸出仍符合需求，再考慮讓 Claude 依描述自動選用。手動啟動能幫你分辨是流程設計有問題，還是自動選擇時機不合適。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "自動化仍需要明確邊界"
+        },
+        {
+          "type": "paragraph",
+          "text": "規則是給模型的指引，不是檔案系統權限。Skill 的工具授權欄位與 Hook 執行的程式都需要另外審查；不能因為檔案副檔名是 MD 或 JSON，就認為它只會顯示文字。尤其引用附屬腳本時，腳本本身才決定實際操作。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "例如一份「格式檢查」Skill 若呼叫會寫檔的 formatter，就已經不是單純讀取。請在描述與輸出中寫清楚是否改檔，並先在練習副本測試。權限的設定方式請參考"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-permissions-plan-mode",
+              "text": "權限與 Plan Mode"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Hook 的事件資料可能包含路徑、提示與工具參數。第一個範例只寫入本機最小紀錄，別把完整事件直接送往公開服務。需要通知時再選必要欄位，並交代接收位置與停用方式，讓讀者知道資料會去哪裡。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "如何確認選擇正確"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成後用三個問題檢查：關閉自動觸發時，手動流程是否仍能完成？只改一個檔案時，是否只執行預期的工作？發生錯誤時，能否找到具體紀錄而不是只看到聊天中的成功宣告？每個答案都應有可重現的操作支持。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "症狀",
+            "常見原因",
+            "處理方式"
+          ],
+          "rows": [
+            [
+              "每次回應都花很久",
+              "Hook 綁定過於頻繁",
+              "縮小事件與檔案條件"
+            ],
+            [
+              "Skill 有時沒有出現",
+              "描述不明確或設定隱藏",
+              "先確認手動呼叫與載入位置"
+            ],
+            [
+              "規則寫了仍能執行某命令",
+              "把文字指引當權限控制",
+              "檢查正式權限設定"
+            ],
+            [
+              "通知完成但測試失敗",
+              "把回應結束當任務成功",
+              "通知中列出實際測試狀態"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "設計完成後，為每個自動化項目指定一位維護者與最後驗證日期。當測試命令、目錄或事件格式改變，維護者應重新確認流程；沒有維護責任的自動化，容易在失敗後只留下難以理解的背景錯誤。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "小練習：寫出一頁決策紀錄"
+        },
+        {
+          "type": "paragraph",
+          "text": "為待辦網站列出一條長期規則、一個手動 Skill 和一個候選 Hook。每項寫出使用者、觸發時機、輸入、輸出與停用方法。接著刪除沒有明確收益的自動化項目，保留最容易驗證的一個。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "完成判準是能解釋每個選擇的原因，人工演練有真實測試輸出，且未把外部發布、提交或通知藏在名稱模糊的流程裡。下一步可依需求前往 "
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-skills-skill-md",
+              "text": "Skills 入門"
+            },
+            {
+              "type": "text",
+              "text": " 或 "
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-hooks-getting-started",
+              "text": "Hooks 入門"
+            },
+            {
+              "type": "text",
+              "text": "，逐一加入能力。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Extend Claude Code",
+          "url": "https://code.claude.com/docs/en/features-overview",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Automate actions with hooks",
+          "url": "https://code.claude.com/docs/en/hooks-guide",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

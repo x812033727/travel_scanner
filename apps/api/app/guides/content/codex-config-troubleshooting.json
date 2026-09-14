@@ -23,9 +23,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -52,6 +58,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "python",
           "code": "from pathlib import Path\nimport sys\nimport tomllib\n\nif len(sys.argv) != 2:\n    raise SystemExit(\"Usage: check_config.py SAMPLE.toml\")\npath = Path(sys.argv[1])\ntry:\n    with path.open(\"rb\") as stream:\n        data = tomllib.load(stream)\nexcept (OSError, tomllib.TOMLDecodeError) as exc:\n    print(f\"FAIL: {exc}\")\n    raise SystemExit(1)\nif \"web_search\" not in data:\n    print(\"FAIL: missing top-level web_search; inspect table placement\")\n    raise SystemExit(1)\nvalue = data[\"web_search\"]\nif not isinstance(value, str) or value not in {\"disabled\", \"cached\", \"indexed\", \"live\"}:\n    print(\"FAIL: unsupported web_search value for this exercise\")\n    raise SystemExit(1)\nprint(f\"PASS: sample syntax and web_search={value}; Codex loading is not verified\")\n"
         },
@@ -61,6 +68,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "toml",
           "code": "web_search = \"disabled\"\n"
         },
@@ -70,11 +78,13 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "powershell",
           "code": "py -3 check_config.py good.toml\n"
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "sh",
           "code": "python3 check_config.py good.toml\n"
         },
@@ -89,6 +99,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "toml",
           "code": "web_search = \"disabled\n"
         },
@@ -98,6 +109,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "toml",
           "code": "web_search = \"disabled\"\nweb_search = \"live\"\n"
         },
@@ -107,6 +119,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "toml",
           "code": "[features]\nweb_search = \"disabled\"\n"
         },
@@ -116,6 +129,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "toml",
           "code": "web_search = \"off\"\n"
         },
@@ -126,15 +140,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "先回"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "設定入門",
-              "url": "https://mokaair.com/zh-TW/life/codex-config-toml"
+              "kind": "life",
+              "slug": "codex-config-toml"
             },
             {
               "type": "text",
@@ -190,6 +205,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Symptom: record the actual error or unchanged setting.\nFile and layer: record the relevant path and whether it loaded.\nDiagnosis: syntax / key scope / unsupported value / precedence / trust / policy.\nMinimal change: record exactly one repaired cause.\nValidation: distinguish sample parser checks from actual client diagnostics.\nRestoration: record the backup or original value and the result after restarting.\n"
         },
@@ -198,9 +214,15 @@
           "text": "完成後應有一份通過的起點、四份能說明原因的故障樣本，以及各自修正後通過的副本。另能用真實工作階段分清「檔案沒載入」和「載入但被覆寫」，並知道何時仍缺乏證據。本篇 Python 樣本以離線解析驗證，Codex 的有效層級則依官方診斷流程確認；模型、MCP 或權限的問題再連到相應專篇，不用這個單鍵檢查器替它們下結論。"
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -258,9 +280,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -287,6 +315,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "python",
           "code": "from pathlib import Path\nimport sys\nimport tomllib\n\nif len(sys.argv) != 2:\n    raise SystemExit(\"Usage: check_config.py SAMPLE.toml\")\npath = Path(sys.argv[1])\ntry:\n    with path.open(\"rb\") as stream:\n        data = tomllib.load(stream)\nexcept (OSError, tomllib.TOMLDecodeError) as exc:\n    print(f\"FAIL: {exc}\")\n    raise SystemExit(1)\nif \"web_search\" not in data:\n    print(\"FAIL: missing top-level web_search; inspect table placement\")\n    raise SystemExit(1)\nvalue = data[\"web_search\"]\nif not isinstance(value, str) or value not in {\"disabled\", \"cached\", \"indexed\", \"live\"}:\n    print(\"FAIL: unsupported web_search value for this exercise\")\n    raise SystemExit(1)\nprint(f\"PASS: sample syntax and web_search={value}; Codex loading is not verified\")\n"
         },
@@ -296,6 +325,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "toml",
           "code": "web_search = \"disabled\"\n"
         },
@@ -305,11 +335,13 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "powershell",
           "code": "py -3 check_config.py good.toml\n"
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "sh",
           "code": "python3 check_config.py good.toml\n"
         },
@@ -324,6 +356,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "toml",
           "code": "web_search = \"disabled\n"
         },
@@ -333,6 +366,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "toml",
           "code": "web_search = \"disabled\"\nweb_search = \"live\"\n"
         },
@@ -342,6 +376,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "toml",
           "code": "[features]\nweb_search = \"disabled\"\n"
         },
@@ -351,6 +386,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "toml",
           "code": "web_search = \"off\"\n"
         },
@@ -361,15 +397,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Return to the real project from "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "configuration basics",
-              "url": "https://mokaair.com/en/life/codex-config-toml"
+              "kind": "life",
+              "slug": "codex-config-toml"
             },
             {
               "type": "text",
@@ -425,6 +462,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Symptom: record the actual error or unchanged setting.\nFile and layer: record the relevant path and whether it loaded.\nDiagnosis: syntax / key scope / unsupported value / precedence / trust / policy.\nMinimal change: record exactly one repaired cause.\nValidation: distinguish sample parser checks from actual client diagnostics.\nRestoration: record the backup or original value and the result after restarting.\n"
         },
@@ -433,9 +471,15 @@
           "text": "Finish with a passing baseline, four diagnosed failures and passing repaired copies. In a real session, distinguish an unloaded file from an overridden loaded value and recognize insufficient evidence. The Python samples receive offline parsing checks; effective Codex layers use the documented diagnostics. Model, MCP and permission problems need their corresponding lessons, not conclusions from this one-key checker."
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -493,9 +537,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -522,6 +572,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "python",
           "code": "from pathlib import Path\nimport sys\nimport tomllib\n\nif len(sys.argv) != 2:\n    raise SystemExit(\"Usage: check_config.py SAMPLE.toml\")\npath = Path(sys.argv[1])\ntry:\n    with path.open(\"rb\") as stream:\n        data = tomllib.load(stream)\nexcept (OSError, tomllib.TOMLDecodeError) as exc:\n    print(f\"FAIL: {exc}\")\n    raise SystemExit(1)\nif \"web_search\" not in data:\n    print(\"FAIL: missing top-level web_search; inspect table placement\")\n    raise SystemExit(1)\nvalue = data[\"web_search\"]\nif not isinstance(value, str) or value not in {\"disabled\", \"cached\", \"indexed\", \"live\"}:\n    print(\"FAIL: unsupported web_search value for this exercise\")\n    raise SystemExit(1)\nprint(f\"PASS: sample syntax and web_search={value}; Codex loading is not verified\")\n"
         },
@@ -531,6 +582,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "toml",
           "code": "web_search = \"disabled\"\n"
         },
@@ -540,11 +592,13 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "powershell",
           "code": "py -3 check_config.py good.toml\n"
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "sh",
           "code": "python3 check_config.py good.toml\n"
         },
@@ -559,6 +613,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "toml",
           "code": "web_search = \"disabled\n"
         },
@@ -568,6 +623,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "toml",
           "code": "web_search = \"disabled\"\nweb_search = \"live\"\n"
         },
@@ -577,6 +633,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "toml",
           "code": "[features]\nweb_search = \"disabled\"\n"
         },
@@ -586,6 +643,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "toml",
           "code": "web_search = \"off\"\n"
         },
@@ -596,11 +654,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "設定基礎",
-              "url": "https://mokaair.com/ja/life/codex-config-toml"
+              "kind": "life",
+              "slug": "codex-config-toml"
             },
             {
               "type": "text",
@@ -656,6 +715,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Symptom: record the actual error or unchanged setting.\nFile and layer: record the relevant path and whether it loaded.\nDiagnosis: syntax / key scope / unsupported value / precedence / trust / policy.\nMinimal change: record exactly one repaired cause.\nValidation: distinguish sample parser checks from actual client diagnostics.\nRestoration: record the backup or original value and the result after restarting.\n"
         },
@@ -664,9 +724,15 @@
           "text": "正しい基準、説明できる四故障、修正版の成功を残します。実セッションでは未読込みと読込み後の上書きを区別し、証拠不足も認めます。Python 例はオフライン解析、Codex の層は公式診断で確認します。モデル、MCP、権限は各記事で扱い、この単一キー検査で結論を出しません。"
         },
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -724,9 +790,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -753,6 +825,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "python",
           "code": "from pathlib import Path\nimport sys\nimport tomllib\n\nif len(sys.argv) != 2:\n    raise SystemExit(\"Usage: check_config.py SAMPLE.toml\")\npath = Path(sys.argv[1])\ntry:\n    with path.open(\"rb\") as stream:\n        data = tomllib.load(stream)\nexcept (OSError, tomllib.TOMLDecodeError) as exc:\n    print(f\"FAIL: {exc}\")\n    raise SystemExit(1)\nif \"web_search\" not in data:\n    print(\"FAIL: missing top-level web_search; inspect table placement\")\n    raise SystemExit(1)\nvalue = data[\"web_search\"]\nif not isinstance(value, str) or value not in {\"disabled\", \"cached\", \"indexed\", \"live\"}:\n    print(\"FAIL: unsupported web_search value for this exercise\")\n    raise SystemExit(1)\nprint(f\"PASS: sample syntax and web_search={value}; Codex loading is not verified\")\n"
         },
@@ -762,6 +835,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "toml",
           "code": "web_search = \"disabled\"\n"
         },
@@ -771,11 +845,13 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "powershell",
           "code": "py -3 check_config.py good.toml\n"
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "sh",
           "code": "python3 check_config.py good.toml\n"
         },
@@ -790,6 +866,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "toml",
           "code": "web_search = \"disabled\n"
         },
@@ -799,6 +876,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "toml",
           "code": "web_search = \"disabled\"\nweb_search = \"live\"\n"
         },
@@ -808,6 +886,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "toml",
           "code": "[features]\nweb_search = \"disabled\"\n"
         },
@@ -817,6 +896,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "toml",
           "code": "web_search = \"off\"\n"
         },
@@ -827,11 +907,12 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "설정 기초",
-              "url": "https://mokaair.com/ko/life/codex-config-toml"
+              "kind": "life",
+              "slug": "codex-config-toml"
             },
             {
               "type": "text",
@@ -887,6 +968,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Symptom: record the actual error or unchanged setting.\nFile and layer: record the relevant path and whether it loaded.\nDiagnosis: syntax / key scope / unsupported value / precedence / trust / policy.\nMinimal change: record exactly one repaired cause.\nValidation: distinguish sample parser checks from actual client diagnostics.\nRestoration: record the backup or original value and the result after restarting.\n"
         },
@@ -895,9 +977,15 @@
           "text": "정상 기준, 원인을 설명할 네 실패, 수정본 성공을 남깁니다. 실제 세션에서는 미로드와 로드 후 덮어쓰기를 구분하고 증거 부족도 인정합니다. Python 예시는 오프라인 파싱, Codex 층은 공식 진단으로 확인합니다. 모델/MCP/권한은 해당 강의에서 다루며 단일 키 검사로 결론내리지 않습니다."
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -955,9 +1043,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -984,6 +1078,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "python",
           "code": "from pathlib import Path\nimport sys\nimport tomllib\n\nif len(sys.argv) != 2:\n    raise SystemExit(\"Usage: check_config.py SAMPLE.toml\")\npath = Path(sys.argv[1])\ntry:\n    with path.open(\"rb\") as stream:\n        data = tomllib.load(stream)\nexcept (OSError, tomllib.TOMLDecodeError) as exc:\n    print(f\"FAIL: {exc}\")\n    raise SystemExit(1)\nif \"web_search\" not in data:\n    print(\"FAIL: missing top-level web_search; inspect table placement\")\n    raise SystemExit(1)\nvalue = data[\"web_search\"]\nif not isinstance(value, str) or value not in {\"disabled\", \"cached\", \"indexed\", \"live\"}:\n    print(\"FAIL: unsupported web_search value for this exercise\")\n    raise SystemExit(1)\nprint(f\"PASS: sample syntax and web_search={value}; Codex loading is not verified\")\n"
         },
@@ -993,6 +1088,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "toml",
           "code": "web_search = \"disabled\"\n"
         },
@@ -1002,11 +1098,13 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "powershell",
           "code": "py -3 check_config.py good.toml\n"
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "sh",
           "code": "python3 check_config.py good.toml\n"
         },
@@ -1021,6 +1119,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "toml",
           "code": "web_search = \"disabled\n"
         },
@@ -1030,6 +1129,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "toml",
           "code": "web_search = \"disabled\"\nweb_search = \"live\"\n"
         },
@@ -1039,6 +1139,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "toml",
           "code": "[features]\nweb_search = \"disabled\"\n"
         },
@@ -1048,6 +1149,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "toml",
           "code": "web_search = \"off\"\n"
         },
@@ -1058,15 +1160,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "先回"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "设定入门",
-              "url": "https://mokaair.com/zh-CN/life/codex-config-toml"
+              "kind": "life",
+              "slug": "codex-config-toml"
             },
             {
               "type": "text",
@@ -1122,6 +1225,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Symptom: record the actual error or unchanged setting.\nFile and layer: record the relevant path and whether it loaded.\nDiagnosis: syntax / key scope / unsupported value / precedence / trust / policy.\nMinimal change: record exactly one repaired cause.\nValidation: distinguish sample parser checks from actual client diagnostics.\nRestoration: record the backup or original value and the result after restarting.\n"
         },
@@ -1130,9 +1234,15 @@
           "text": "完成后应有一份通过的起点、四份能说明原因的故障样本，以及各自修正后通过的副本。另能用真实工作阶段分清「档案没载入」和「载入但被覆写」，并知道何时仍缺乏证据。本篇 Python 样本以离线解析验证，Codex 的有效层级则依官方诊断流程确认；模型、MCP 或权限的问题再连到相应专篇，不用这个单键检查器替它们下结论。"
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

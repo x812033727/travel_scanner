@@ -23,9 +23,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -48,6 +54,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "bash",
           "code": "command -v codex\ntype -a codex\n"
         },
@@ -66,6 +73,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "bash",
           "code": "curl -fsSL https://chatgpt.com/codex/install.sh | sh\n"
         },
@@ -84,6 +92,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "bash",
           "code": "brew --version\nbrew install --cask codex\n"
         },
@@ -106,6 +115,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "bash",
           "code": "pwd\nls\ncat note.txt\nshasum -a 256 note.txt note.original.txt\n"
         },
@@ -120,20 +130,22 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "bash",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "逐行執行並等待完成。瀏覽器登入確認帳號和工作區，回到 Terminal 看 login 是否結束，再查 status。若系統有憑證儲存確認，先核對是此次 Codex 登入；不要把認證檔內容放進需求或截圖。帳號限制與 API 計費差異見"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "帳號教學",
-              "url": "https://mokaair.com/zh-TW/life/codex-account-usage"
+              "kind": "life",
+              "slug": "codex-account-usage"
             },
             {
               "type": "text",
@@ -143,20 +155,22 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Inspect note.txt and note.original.txt in the current folder. Report the current directory, exact content of each file, and whether they match. Do not edit files or use external services. If the folder or files are wrong, stop and report the mismatch.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "檢查回覆有無 MAC-CLI-01、兩個檔名和正確路徑，並看讀檔工具記錄。用 /exit 回到 Terminal，重跑 cat 和 shasum，確認前後內容、雜湊和檔案數量未變。若 Terminal 自己讀得到、Codex 讀不到，記錄沙盒訊息再查"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "許可權",
-              "url": "https://mokaair.com/zh-TW/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -213,24 +227,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "完成後回"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 共用入門",
-              "url": "https://mokaair.com/zh-TW/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
               "text": "練習指定一行的修改與還原，或進"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "常用指令",
-              "url": "https://mokaair.com/zh-TW/life/codex-commands"
+              "kind": "life",
+              "slug": "codex-commands"
             },
             {
               "type": "text",
@@ -239,9 +255,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -299,9 +321,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -324,6 +352,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "bash",
           "code": "command -v codex\ntype -a codex\n"
         },
@@ -342,6 +371,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "bash",
           "code": "curl -fsSL https://chatgpt.com/codex/install.sh | sh\n"
         },
@@ -360,6 +390,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "bash",
           "code": "brew --version\nbrew install --cask codex\n"
         },
@@ -382,6 +413,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "bash",
           "code": "pwd\nls\ncat note.txt\nshasum -a 256 note.txt note.original.txt\n"
         },
@@ -396,20 +428,22 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "bash",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Run each line to completion. Confirm the account/workspace in the browser, return to Terminal and check that login finishes before status. If the OS requests credential-store access, verify that it belongs to this login. Keep credential-file contents out of prompts and screenshots. See "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "account basics",
-              "url": "https://mokaair.com/en/life/codex-account-usage"
+              "kind": "life",
+              "slug": "codex-account-usage"
             },
             {
               "type": "text",
@@ -419,20 +453,22 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Inspect note.txt and note.original.txt in the current folder. Report the current directory, exact content of each file, and whether they match. Do not edit files or use external services. If the folder or files are wrong, stop and report the mismatch.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Check for MAC-CLI-01, both filenames and the correct path, and inspect the tool read record. Use /exit, then repeat cat and shasum in Terminal and confirm unchanged contents, hashes and file count. If Terminal can read but Codex cannot, record the sandbox error and check "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "permissions",
-              "url": "https://mokaair.com/en/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -489,24 +525,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Return to "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI basics",
-              "url": "https://mokaair.com/en/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
               "text": " for a one-line edit and restoration, or "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "commands",
-              "url": "https://mokaair.com/en/life/codex-commands"
+              "kind": "life",
+              "slug": "codex-commands"
             },
             {
               "type": "text",
@@ -515,9 +553,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -575,9 +619,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -600,6 +650,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "bash",
           "code": "command -v codex\ntype -a codex\n"
         },
@@ -618,6 +669,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "bash",
           "code": "curl -fsSL https://chatgpt.com/codex/install.sh | sh\n"
         },
@@ -636,6 +688,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "bash",
           "code": "brew --version\nbrew install --cask codex\n"
         },
@@ -658,6 +711,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "bash",
           "code": "pwd\nls\ncat note.txt\nshasum -a 256 note.txt note.original.txt\n"
         },
@@ -672,20 +726,22 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "bash",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "一行ずつ完了を待ちます。ブラウザーのアカウントとワークスペースを確認し、Terminal で login の終了後に status を調べます。認証情報ストアの確認が出たら今回のログインか照合し、認証ファイルを依頼や画像に含めません。利用制限と API 課金は"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "アカウント",
-              "url": "https://mokaair.com/ja/life/codex-account-usage"
+              "kind": "life",
+              "slug": "codex-account-usage"
             },
             {
               "type": "text",
@@ -695,20 +751,22 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Inspect note.txt and note.original.txt in the current folder. Report the current directory, exact content of each file, and whether they match. Do not edit files or use external services. If the folder or files are wrong, stop and report the mismatch.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "MAC-CLI-01、二つの名前、正しい場所と読み取り記録を確認します。/exit 後に Terminal で cat と shasum を再実行し、内容、ハッシュ、ファイル数が不変か確かめます。Terminal では読めて Codex では読めないなら、サンドボックスのエラーを残して"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "権限",
-              "url": "https://mokaair.com/ja/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -765,20 +823,22 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 基礎",
-              "url": "https://mokaair.com/ja/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
               "text": "で一行変更と復元、または"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "コマンド",
-              "url": "https://mokaair.com/ja/life/codex-commands"
+              "kind": "life",
+              "slug": "codex-commands"
             },
             {
               "type": "text",
@@ -787,9 +847,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -847,9 +913,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -872,6 +944,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "bash",
           "code": "command -v codex\ntype -a codex\n"
         },
@@ -890,6 +963,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "bash",
           "code": "curl -fsSL https://chatgpt.com/codex/install.sh | sh\n"
         },
@@ -908,6 +982,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "bash",
           "code": "brew --version\nbrew install --cask codex\n"
         },
@@ -930,6 +1005,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "bash",
           "code": "pwd\nls\ncat note.txt\nshasum -a 256 note.txt note.original.txt\n"
         },
@@ -944,20 +1020,22 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "bash",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "각 줄의 완료를 기다립니다. 브라우저 계정과 워크스페이스를 확인하고 Terminal에서 login이 끝난 뒤 status를 봅니다. 자격 증명 저장소 접근 요청이 뜨면 이번 로그인인지 확인하고 인증 파일 내용은 요청이나 화면에 넣지 않습니다. 이용 제한과 API 과금은 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "계정 기초",
-              "url": "https://mokaair.com/ko/life/codex-account-usage"
+              "kind": "life",
+              "slug": "codex-account-usage"
             },
             {
               "type": "text",
@@ -967,20 +1045,22 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Inspect note.txt and note.original.txt in the current folder. Report the current directory, exact content of each file, and whether they match. Do not edit files or use external services. If the folder or files are wrong, stop and report the mismatch.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "MAC-CLI-01, 두 파일명, 올바른 경로와 읽기 도구 기록을 확인합니다. /exit 후 Terminal에서 cat과 shasum을 다시 실행해 내용, 해시, 파일 수가 그대로인지 확인합니다. Terminal은 읽지만 Codex는 못 읽으면 샌드박스 오류를 기록하고 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "권한",
-              "url": "https://mokaair.com/ko/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -1037,20 +1117,22 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 기초",
-              "url": "https://mokaair.com/ko/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
               "text": "에서 한 줄 수정과 복구를 하거나 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "명령",
-              "url": "https://mokaair.com/ko/life/codex-commands"
+              "kind": "life",
+              "slug": "codex-commands"
             },
             {
               "type": "text",
@@ -1059,9 +1141,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1119,9 +1207,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1144,6 +1238,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "bash",
           "code": "command -v codex\ntype -a codex\n"
         },
@@ -1162,6 +1257,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "bash",
           "code": "curl -fsSL https://chatgpt.com/codex/install.sh | sh\n"
         },
@@ -1180,6 +1276,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "bash",
           "code": "brew --version\nbrew install --cask codex\n"
         },
@@ -1202,6 +1299,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "bash",
           "code": "pwd\nls\ncat note.txt\nshasum -a 256 note.txt note.original.txt\n"
         },
@@ -1216,20 +1314,22 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "bash",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "逐行执行并等待完成。浏览器登入确认帐号和工作区，回到 Terminal 看 login 是否结束，再查 status。若系统有凭证储存确认，先核对是此次 Codex 登入；不要把认证档内容放进需求或截图。帐号限制与 API 计费差异见"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "帐号教学",
-              "url": "https://mokaair.com/zh-CN/life/codex-account-usage"
+              "kind": "life",
+              "slug": "codex-account-usage"
             },
             {
               "type": "text",
@@ -1239,20 +1339,22 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Inspect note.txt and note.original.txt in the current folder. Report the current directory, exact content of each file, and whether they match. Do not edit files or use external services. If the folder or files are wrong, stop and report the mismatch.\n"
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "检查回复有无 MAC-CLI-01、两个档名和正确路径，并看读档工具记录。用 /exit 回到 Terminal，重跑 cat 和 shasum，确认前后内容、杂凑和档案数量未变。若 Terminal 自己读得到、Codex 读不到，记录沙盒讯息再查"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "许可权",
-              "url": "https://mokaair.com/zh-CN/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
@@ -1309,24 +1411,26 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "完成后回"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 共用入门",
-              "url": "https://mokaair.com/zh-CN/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
               "text": "练习指定一行的修改与还原，或进"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "常用指令",
-              "url": "https://mokaair.com/zh-CN/life/codex-commands"
+              "kind": "life",
+              "slug": "codex-commands"
             },
             {
               "type": "text",
@@ -1335,9 +1439,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

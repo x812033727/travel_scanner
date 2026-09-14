@@ -64,15 +64,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "3. 找不到檔案：請代理只回報工作目錄，對照檔案管理員。WSL、本機、"
             },
             {
-              "type": "link",
-              "text": "worktree",
-              "url": "https://mokaair.com/zh-TW/life/codex-worktrees"
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-worktrees",
+              "text": "worktree"
             },
             {
               "type": "text",
@@ -82,15 +83,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "4. 工作卡住或測試失敗：閱讀最後一條命令的錯誤。缺相依套件先確認專案安裝步驟；權限拒絕就檢視需要的動作與範圍。手機 "
             },
             {
-              "type": "link",
-              "text": "Remote",
-              "url": "https://mokaair.com/zh-TW/life/codex-mobile-guide"
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-mobile-guide",
+              "text": "Remote"
             },
             {
               "type": "text",
@@ -119,7 +121,8 @@
         {
           "type": "code",
           "language": "text",
-          "code": "請協助診斷以下錯誤。先只讀取版本、工作目錄與必要設定名稱，提出一個最小驗證步驟。不要顯示秘密，也不要自行重設或刪除資料。"
+          "code": "請協助診斷以下錯誤。先只讀取版本、工作目錄與必要設定名稱，提出一個最小驗證步驟。不要顯示秘密，也不要自行重設或刪除資料。",
+          "label": "本步驟範例"
         },
         {
           "type": "heading",
@@ -129,7 +132,8 @@
         {
           "type": "code",
           "language": "shell",
-          "code": "codex --version\ncodex login status\ncodex --help"
+          "code": "codex --version\ncodex login status\ncodex --help",
+          "label": "本步驟範例"
         },
         {
           "type": "table",
@@ -182,9 +186,15 @@
           "text": "延伸閱讀"
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-learning-hub",
+              "text": "返回 Codex 教學總目錄"
+            }
+          ]
         }
       ],
       "sources": [
@@ -266,15 +276,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "3. 找不到档案：请代理只回报工作目录，对照档案管理员。WSL、本机、"
             },
             {
-              "type": "link",
-              "text": "worktree",
-              "url": "https://mokaair.com/zh-CN/life/codex-worktrees"
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-worktrees",
+              "text": "worktree"
             },
             {
               "type": "text",
@@ -284,15 +295,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "4. 工作卡住或测试失败：阅读最后一条命令的错误。缺相依套件先确认专案安装步骤；权限拒绝就检视需要的动作与范围。手机 "
             },
             {
-              "type": "link",
-              "text": "Remote",
-              "url": "https://mokaair.com/zh-CN/life/codex-mobile-guide"
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-mobile-guide",
+              "text": "Remote"
             },
             {
               "type": "text",
@@ -321,7 +333,8 @@
         {
           "type": "code",
           "language": "text",
-          "code": "请协助诊断以下错误。先只读取版本、工作目录与必要设定名称，提出一个最小验证步骤。不要显示秘密，也不要自行重设或删除资料。"
+          "code": "请协助诊断以下错误。先只读取版本、工作目录与必要设定名称，提出一个最小验证步骤。不要显示秘密，也不要自行重设或删除资料。",
+          "label": "本步骤示例"
         },
         {
           "type": "heading",
@@ -331,7 +344,8 @@
         {
           "type": "code",
           "language": "shell",
-          "code": "codex --version\ncodex login status\ncodex --help"
+          "code": "codex --version\ncodex login status\ncodex --help",
+          "label": "本步骤示例"
         },
         {
           "type": "table",
@@ -384,9 +398,15 @@
           "text": "延伸阅读"
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-learning-hub",
+              "text": "返回 Codex 教学总目录"
+            }
+          ]
         }
       ],
       "sources": [
@@ -468,15 +488,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "3. For missing files, request the working directory and compare it with the file manager. WSL, local, "
             },
             {
-              "type": "link",
-              "text": "worktree",
-              "url": "https://mokaair.com/en/life/codex-worktrees"
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-worktrees",
+              "text": "worktree"
             },
             {
               "type": "text",
@@ -486,15 +507,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "4. For a stalled task or failing test, read the last command's error. Check project setup before installing dependencies. Inspect the exact requested access after permission denial. For "
             },
             {
-              "type": "link",
-              "text": "Remote",
-              "url": "https://mokaair.com/en/life/codex-mobile-guide"
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-mobile-guide",
+              "text": "Remote"
             },
             {
               "type": "text",
@@ -523,7 +545,8 @@
         {
           "type": "code",
           "language": "text",
-          "code": "Diagnose the error below. First inspect only version, working directory and necessary setting names. Propose one minimal check. Do not expose secrets, reset configuration or delete data."
+          "code": "Diagnose the error below. First inspect only version, working directory and necessary setting names. Propose one minimal check. Do not expose secrets, reset configuration or delete data.",
+          "label": "Example for this step"
         },
         {
           "type": "heading",
@@ -533,7 +556,8 @@
         {
           "type": "code",
           "language": "shell",
-          "code": "codex --version\ncodex login status\ncodex --help"
+          "code": "codex --version\ncodex login status\ncodex --help",
+          "label": "Example for this step"
         },
         {
           "type": "table",
@@ -586,9 +610,15 @@
           "text": "Continue learning"
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-learning-hub",
+              "text": "Back to the Codex learning hub"
+            }
+          ]
         }
       ],
       "sources": [
@@ -670,15 +700,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "3. ファイル不在なら作業場所を報告させ、ファイル管理と比較します。WSL、ローカル、"
             },
             {
-              "type": "link",
-              "text": "worktree",
-              "url": "https://mokaair.com/ja/life/codex-worktrees"
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-worktrees",
+              "text": "worktree"
             },
             {
               "type": "text",
@@ -688,15 +719,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "4. 停止やテスト失敗では最後のコマンドのエラーを読みます。依存関係はプロジェクトの導入手順を先に確認し、権限拒否は必要な範囲を調べます。"
             },
             {
-              "type": "link",
-              "text": "Remote",
-              "url": "https://mokaair.com/ja/life/codex-mobile-guide"
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-mobile-guide",
+              "text": "Remote"
             },
             {
               "type": "text",
@@ -725,7 +757,8 @@
         {
           "type": "code",
           "language": "text",
-          "code": "次のエラーを診断してください。まずバージョン、作業場所、必要な設定名だけを確認し、一つの最小確認手順を提案してください。秘密の表示や削除、リセットはしないでください。"
+          "code": "次のエラーを診断してください。まずバージョン、作業場所、必要な設定名だけを確認し、一つの最小確認手順を提案してください。秘密の表示や削除、リセットはしないでください。",
+          "label": "この手順の例"
         },
         {
           "type": "heading",
@@ -735,7 +768,8 @@
         {
           "type": "code",
           "language": "shell",
-          "code": "codex --version\ncodex login status\ncodex --help"
+          "code": "codex --version\ncodex login status\ncodex --help",
+          "label": "この手順の例"
         },
         {
           "type": "table",
@@ -788,9 +822,15 @@
           "text": "次に学ぶこと"
         },
         {
-          "type": "link",
-          "text": "Codex 学習ガイドに戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-learning-hub",
+              "text": "Codex 学習ガイドに戻る"
+            }
+          ]
         }
       ],
       "sources": [
@@ -872,15 +912,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "3. 파일이 없으면 작업 경로를 보고하게 하고 파일 관리자와 비교합니다. WSL, 로컬, "
             },
             {
-              "type": "link",
-              "text": "worktree",
-              "url": "https://mokaair.com/ko/life/codex-worktrees"
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-worktrees",
+              "text": "worktree"
             },
             {
               "type": "text",
@@ -890,15 +931,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "4. 멈춤이나 테스트 실패는 마지막 명령 오류를 읽습니다. 의존성은 프로젝트 설치 절차부터 확인하고 권한 거부는 필요한 범위를 점검합니다. "
             },
             {
-              "type": "link",
-              "text": "Remote",
-              "url": "https://mokaair.com/ko/life/codex-mobile-guide"
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-mobile-guide",
+              "text": "Remote"
             },
             {
               "type": "text",
@@ -927,7 +969,8 @@
         {
           "type": "code",
           "language": "text",
-          "code": "아래 오류를 진단하세요. 버전, 작업 경로와 필요한 설정 이름만 먼저 확인하고 최소 검증 단계 하나를 제안하세요. 비밀 표시, 초기화나 삭제는 하지 마세요."
+          "code": "아래 오류를 진단하세요. 버전, 작업 경로와 필요한 설정 이름만 먼저 확인하고 최소 검증 단계 하나를 제안하세요. 비밀 표시, 초기화나 삭제는 하지 마세요.",
+          "label": "이 단계의 예제"
         },
         {
           "type": "heading",
@@ -937,7 +980,8 @@
         {
           "type": "code",
           "language": "shell",
-          "code": "codex --version\ncodex login status\ncodex --help"
+          "code": "codex --version\ncodex login status\ncodex --help",
+          "label": "이 단계의 예제"
         },
         {
           "type": "table",
@@ -990,9 +1034,15 @@
           "text": "이어서 학습하기"
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-learning-hub",
+              "text": "Codex 학습 목차로 돌아가기"
+            }
+          ]
         }
       ],
       "sources": [

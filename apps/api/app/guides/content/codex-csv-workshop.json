@@ -91,7 +91,8 @@
         {
           "type": "code",
           "language": "text",
-          "code": "用 Python 標準函式庫製作 CSV 整理工具。保留原檔，修剪空白、email 小寫、保留第一筆重複地址並跳過無效列。輸出若已存在則失敗，不覆寫；回報三種筆數並測試正常與錯誤資料。"
+          "code": "用 Python 標準函式庫製作 CSV 整理工具。保留原檔，修剪空白、email 小寫、保留第一筆重複地址並跳過無效列。輸出若已存在則失敗，不覆寫；回報三種筆數並測試正常與錯誤資料。",
+          "label": "本步驟範例"
         },
         {
           "type": "heading",
@@ -101,17 +102,20 @@
         {
           "type": "code",
           "language": "python",
-          "code": "\"\"\"Clean a practice CSV without overwriting either the input or an existing output.\"\"\"\nimport argparse\nimport csv\nimport json\nimport re\nimport sys\nfrom pathlib import Path\n\n\ndef clean(source: Path, target: Path) -> dict[str, int]:\n    if source.resolve() == target.resolve():\n        raise ValueError(\"Input and output must differ\")\n    rows = []\n    seen = set()\n    counts = {\"kept\": 0, \"duplicate\": 0, \"invalid\": 0}\n    with source.open(encoding=\"utf-8-sig\", newline=\"\") as stream:\n        reader = csv.DictReader(stream, strict=True)\n        if reader.fieldnames != [\"name\", \"email\"]:\n            raise ValueError(\"Expected exactly: name,email\")\n        for row in reader:\n            if None in row or any(value is None for value in row.values()):\n                raise ValueError(\"Malformed CSV row\")\n            name = row[\"name\"].strip()\n            email = row[\"email\"].strip().lower()\n            # An exercise-level shape check, not proof an address can receive mail.\n            if not name or not re.fullmatch(r\"[^\\s@]+@[^\\s@]+\\.[^\\s@]+\", email):\n                counts[\"invalid\"] += 1\n            elif email in seen:\n                counts[\"duplicate\"] += 1\n            else:\n                seen.add(email)\n                rows.append({\"name\": name, \"email\": email})\n                counts[\"kept\"] += 1\n    # Exclusive creation: a rerun never silently replaces an existing result.\n    with target.open(\"x\", encoding=\"utf-8\", newline=\"\") as stream:\n        writer = csv.DictWriter(stream, fieldnames=[\"name\", \"email\"], lineterminator=\"\\n\")\n        writer.writeheader()\n        writer.writerows(rows)\n    return counts\n\n\ndef main() -> int:\n    parser = argparse.ArgumentParser(description=__doc__)\n    parser.add_argument(\"source\", type=Path)\n    parser.add_argument(\"target\", type=Path)\n    args = parser.parse_args()\n    try:\n        counts = clean(args.source, args.target)\n    except (OSError, ValueError, csv.Error) as error:\n        print(str(error), file=sys.stderr)\n        return 1\n    print(json.dumps(counts), file=sys.stderr)\n    return 0\n\n\nif __name__ == \"__main__\":\n    raise SystemExit(main())\n"
+          "code": "\"\"\"Clean a practice CSV without overwriting either the input or an existing output.\"\"\"\nimport argparse\nimport csv\nimport json\nimport re\nimport sys\nfrom pathlib import Path\n\n\ndef clean(source: Path, target: Path) -> dict[str, int]:\n    if source.resolve() == target.resolve():\n        raise ValueError(\"Input and output must differ\")\n    rows = []\n    seen = set()\n    counts = {\"kept\": 0, \"duplicate\": 0, \"invalid\": 0}\n    with source.open(encoding=\"utf-8-sig\", newline=\"\") as stream:\n        reader = csv.DictReader(stream, strict=True)\n        if reader.fieldnames != [\"name\", \"email\"]:\n            raise ValueError(\"Expected exactly: name,email\")\n        for row in reader:\n            if None in row or any(value is None for value in row.values()):\n                raise ValueError(\"Malformed CSV row\")\n            name = row[\"name\"].strip()\n            email = row[\"email\"].strip().lower()\n            # An exercise-level shape check, not proof an address can receive mail.\n            if not name or not re.fullmatch(r\"[^\\s@]+@[^\\s@]+\\.[^\\s@]+\", email):\n                counts[\"invalid\"] += 1\n            elif email in seen:\n                counts[\"duplicate\"] += 1\n            else:\n                seen.add(email)\n                rows.append({\"name\": name, \"email\": email})\n                counts[\"kept\"] += 1\n    # Exclusive creation: a rerun never silently replaces an existing result.\n    with target.open(\"x\", encoding=\"utf-8\", newline=\"\") as stream:\n        writer = csv.DictWriter(stream, fieldnames=[\"name\", \"email\"], lineterminator=\"\\n\")\n        writer.writeheader()\n        writer.writerows(rows)\n    return counts\n\n\ndef main() -> int:\n    parser = argparse.ArgumentParser(description=__doc__)\n    parser.add_argument(\"source\", type=Path)\n    parser.add_argument(\"target\", type=Path)\n    args = parser.parse_args()\n    try:\n        counts = clean(args.source, args.target)\n    except (OSError, ValueError, csv.Error) as error:\n        print(str(error), file=sys.stderr)\n        return 1\n    print(json.dumps(counts), file=sys.stderr)\n    return 0\n\n\nif __name__ == \"__main__\":\n    raise SystemExit(main())\n",
+          "label": "本步驟範例"
         },
         {
           "type": "code",
           "language": "csv",
-          "code": "name,email\n Alice , ALICE@EXAMPLE.TEST \nAlice duplicate,alice@example.test\nBob,bob@example.test\nMissing,\n"
+          "code": "name,email\n Alice , ALICE@EXAMPLE.TEST \nAlice duplicate,alice@example.test\nBob,bob@example.test\nMissing,\n",
+          "label": "本步驟範例"
         },
         {
           "type": "code",
           "language": "csv",
-          "code": "name,email\nAlice,alice@example.test\nBob,bob@example.test\n"
+          "code": "name,email\nAlice,alice@example.test\nBob,bob@example.test\n",
+          "label": "本步驟範例"
         },
         {
           "type": "table",
@@ -164,9 +168,15 @@
           "text": "延伸閱讀"
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-learning-hub",
+              "text": "返回 Codex 教學總目錄"
+            }
+          ]
         }
       ],
       "sources": [
@@ -265,7 +275,8 @@
         {
           "type": "code",
           "language": "text",
-          "code": "用 Python 标准函式库制作 CSV 整理工具。保留原档，修剪空白、email 小写、保留第一笔重复地址并跳过无效列。输出若已存在则失败，不覆写；回报三种笔数并测试正常与错误资料。"
+          "code": "用 Python 标准函式库制作 CSV 整理工具。保留原档，修剪空白、email 小写、保留第一笔重复地址并跳过无效列。输出若已存在则失败，不覆写；回报三种笔数并测试正常与错误资料。",
+          "label": "本步骤示例"
         },
         {
           "type": "heading",
@@ -275,17 +286,20 @@
         {
           "type": "code",
           "language": "python",
-          "code": "\"\"\"Clean a practice CSV without overwriting either the input or an existing output.\"\"\"\nimport argparse\nimport csv\nimport json\nimport re\nimport sys\nfrom pathlib import Path\n\n\ndef clean(source: Path, target: Path) -> dict[str, int]:\n    if source.resolve() == target.resolve():\n        raise ValueError(\"Input and output must differ\")\n    rows = []\n    seen = set()\n    counts = {\"kept\": 0, \"duplicate\": 0, \"invalid\": 0}\n    with source.open(encoding=\"utf-8-sig\", newline=\"\") as stream:\n        reader = csv.DictReader(stream, strict=True)\n        if reader.fieldnames != [\"name\", \"email\"]:\n            raise ValueError(\"Expected exactly: name,email\")\n        for row in reader:\n            if None in row or any(value is None for value in row.values()):\n                raise ValueError(\"Malformed CSV row\")\n            name = row[\"name\"].strip()\n            email = row[\"email\"].strip().lower()\n            # An exercise-level shape check, not proof an address can receive mail.\n            if not name or not re.fullmatch(r\"[^\\s@]+@[^\\s@]+\\.[^\\s@]+\", email):\n                counts[\"invalid\"] += 1\n            elif email in seen:\n                counts[\"duplicate\"] += 1\n            else:\n                seen.add(email)\n                rows.append({\"name\": name, \"email\": email})\n                counts[\"kept\"] += 1\n    # Exclusive creation: a rerun never silently replaces an existing result.\n    with target.open(\"x\", encoding=\"utf-8\", newline=\"\") as stream:\n        writer = csv.DictWriter(stream, fieldnames=[\"name\", \"email\"], lineterminator=\"\\n\")\n        writer.writeheader()\n        writer.writerows(rows)\n    return counts\n\n\ndef main() -> int:\n    parser = argparse.ArgumentParser(description=__doc__)\n    parser.add_argument(\"source\", type=Path)\n    parser.add_argument(\"target\", type=Path)\n    args = parser.parse_args()\n    try:\n        counts = clean(args.source, args.target)\n    except (OSError, ValueError, csv.Error) as error:\n        print(str(error), file=sys.stderr)\n        return 1\n    print(json.dumps(counts), file=sys.stderr)\n    return 0\n\n\nif __name__ == \"__main__\":\n    raise SystemExit(main())\n"
+          "code": "\"\"\"Clean a practice CSV without overwriting either the input or an existing output.\"\"\"\nimport argparse\nimport csv\nimport json\nimport re\nimport sys\nfrom pathlib import Path\n\n\ndef clean(source: Path, target: Path) -> dict[str, int]:\n    if source.resolve() == target.resolve():\n        raise ValueError(\"Input and output must differ\")\n    rows = []\n    seen = set()\n    counts = {\"kept\": 0, \"duplicate\": 0, \"invalid\": 0}\n    with source.open(encoding=\"utf-8-sig\", newline=\"\") as stream:\n        reader = csv.DictReader(stream, strict=True)\n        if reader.fieldnames != [\"name\", \"email\"]:\n            raise ValueError(\"Expected exactly: name,email\")\n        for row in reader:\n            if None in row or any(value is None for value in row.values()):\n                raise ValueError(\"Malformed CSV row\")\n            name = row[\"name\"].strip()\n            email = row[\"email\"].strip().lower()\n            # An exercise-level shape check, not proof an address can receive mail.\n            if not name or not re.fullmatch(r\"[^\\s@]+@[^\\s@]+\\.[^\\s@]+\", email):\n                counts[\"invalid\"] += 1\n            elif email in seen:\n                counts[\"duplicate\"] += 1\n            else:\n                seen.add(email)\n                rows.append({\"name\": name, \"email\": email})\n                counts[\"kept\"] += 1\n    # Exclusive creation: a rerun never silently replaces an existing result.\n    with target.open(\"x\", encoding=\"utf-8\", newline=\"\") as stream:\n        writer = csv.DictWriter(stream, fieldnames=[\"name\", \"email\"], lineterminator=\"\\n\")\n        writer.writeheader()\n        writer.writerows(rows)\n    return counts\n\n\ndef main() -> int:\n    parser = argparse.ArgumentParser(description=__doc__)\n    parser.add_argument(\"source\", type=Path)\n    parser.add_argument(\"target\", type=Path)\n    args = parser.parse_args()\n    try:\n        counts = clean(args.source, args.target)\n    except (OSError, ValueError, csv.Error) as error:\n        print(str(error), file=sys.stderr)\n        return 1\n    print(json.dumps(counts), file=sys.stderr)\n    return 0\n\n\nif __name__ == \"__main__\":\n    raise SystemExit(main())\n",
+          "label": "本步骤示例"
         },
         {
           "type": "code",
           "language": "csv",
-          "code": "name,email\n Alice , ALICE@EXAMPLE.TEST \nAlice duplicate,alice@example.test\nBob,bob@example.test\nMissing,\n"
+          "code": "name,email\n Alice , ALICE@EXAMPLE.TEST \nAlice duplicate,alice@example.test\nBob,bob@example.test\nMissing,\n",
+          "label": "本步骤示例"
         },
         {
           "type": "code",
           "language": "csv",
-          "code": "name,email\nAlice,alice@example.test\nBob,bob@example.test\n"
+          "code": "name,email\nAlice,alice@example.test\nBob,bob@example.test\n",
+          "label": "本步骤示例"
         },
         {
           "type": "table",
@@ -338,9 +352,15 @@
           "text": "延伸阅读"
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-learning-hub",
+              "text": "返回 Codex 教学总目录"
+            }
+          ]
         }
       ],
       "sources": [
@@ -439,7 +459,8 @@
         {
           "type": "code",
           "language": "text",
-          "code": "Build a standard-library Python CSV cleaner. Preserve input, trim whitespace, lowercase emails, keep the first duplicate address and skip invalid records. Refuse an existing output, report all three counts and test normal and malformed data."
+          "code": "Build a standard-library Python CSV cleaner. Preserve input, trim whitespace, lowercase emails, keep the first duplicate address and skip invalid records. Refuse an existing output, report all three counts and test normal and malformed data.",
+          "label": "Example for this step"
         },
         {
           "type": "heading",
@@ -449,17 +470,20 @@
         {
           "type": "code",
           "language": "python",
-          "code": "\"\"\"Clean a practice CSV without overwriting either the input or an existing output.\"\"\"\nimport argparse\nimport csv\nimport json\nimport re\nimport sys\nfrom pathlib import Path\n\n\ndef clean(source: Path, target: Path) -> dict[str, int]:\n    if source.resolve() == target.resolve():\n        raise ValueError(\"Input and output must differ\")\n    rows = []\n    seen = set()\n    counts = {\"kept\": 0, \"duplicate\": 0, \"invalid\": 0}\n    with source.open(encoding=\"utf-8-sig\", newline=\"\") as stream:\n        reader = csv.DictReader(stream, strict=True)\n        if reader.fieldnames != [\"name\", \"email\"]:\n            raise ValueError(\"Expected exactly: name,email\")\n        for row in reader:\n            if None in row or any(value is None for value in row.values()):\n                raise ValueError(\"Malformed CSV row\")\n            name = row[\"name\"].strip()\n            email = row[\"email\"].strip().lower()\n            # An exercise-level shape check, not proof an address can receive mail.\n            if not name or not re.fullmatch(r\"[^\\s@]+@[^\\s@]+\\.[^\\s@]+\", email):\n                counts[\"invalid\"] += 1\n            elif email in seen:\n                counts[\"duplicate\"] += 1\n            else:\n                seen.add(email)\n                rows.append({\"name\": name, \"email\": email})\n                counts[\"kept\"] += 1\n    # Exclusive creation: a rerun never silently replaces an existing result.\n    with target.open(\"x\", encoding=\"utf-8\", newline=\"\") as stream:\n        writer = csv.DictWriter(stream, fieldnames=[\"name\", \"email\"], lineterminator=\"\\n\")\n        writer.writeheader()\n        writer.writerows(rows)\n    return counts\n\n\ndef main() -> int:\n    parser = argparse.ArgumentParser(description=__doc__)\n    parser.add_argument(\"source\", type=Path)\n    parser.add_argument(\"target\", type=Path)\n    args = parser.parse_args()\n    try:\n        counts = clean(args.source, args.target)\n    except (OSError, ValueError, csv.Error) as error:\n        print(str(error), file=sys.stderr)\n        return 1\n    print(json.dumps(counts), file=sys.stderr)\n    return 0\n\n\nif __name__ == \"__main__\":\n    raise SystemExit(main())\n"
+          "code": "\"\"\"Clean a practice CSV without overwriting either the input or an existing output.\"\"\"\nimport argparse\nimport csv\nimport json\nimport re\nimport sys\nfrom pathlib import Path\n\n\ndef clean(source: Path, target: Path) -> dict[str, int]:\n    if source.resolve() == target.resolve():\n        raise ValueError(\"Input and output must differ\")\n    rows = []\n    seen = set()\n    counts = {\"kept\": 0, \"duplicate\": 0, \"invalid\": 0}\n    with source.open(encoding=\"utf-8-sig\", newline=\"\") as stream:\n        reader = csv.DictReader(stream, strict=True)\n        if reader.fieldnames != [\"name\", \"email\"]:\n            raise ValueError(\"Expected exactly: name,email\")\n        for row in reader:\n            if None in row or any(value is None for value in row.values()):\n                raise ValueError(\"Malformed CSV row\")\n            name = row[\"name\"].strip()\n            email = row[\"email\"].strip().lower()\n            # An exercise-level shape check, not proof an address can receive mail.\n            if not name or not re.fullmatch(r\"[^\\s@]+@[^\\s@]+\\.[^\\s@]+\", email):\n                counts[\"invalid\"] += 1\n            elif email in seen:\n                counts[\"duplicate\"] += 1\n            else:\n                seen.add(email)\n                rows.append({\"name\": name, \"email\": email})\n                counts[\"kept\"] += 1\n    # Exclusive creation: a rerun never silently replaces an existing result.\n    with target.open(\"x\", encoding=\"utf-8\", newline=\"\") as stream:\n        writer = csv.DictWriter(stream, fieldnames=[\"name\", \"email\"], lineterminator=\"\\n\")\n        writer.writeheader()\n        writer.writerows(rows)\n    return counts\n\n\ndef main() -> int:\n    parser = argparse.ArgumentParser(description=__doc__)\n    parser.add_argument(\"source\", type=Path)\n    parser.add_argument(\"target\", type=Path)\n    args = parser.parse_args()\n    try:\n        counts = clean(args.source, args.target)\n    except (OSError, ValueError, csv.Error) as error:\n        print(str(error), file=sys.stderr)\n        return 1\n    print(json.dumps(counts), file=sys.stderr)\n    return 0\n\n\nif __name__ == \"__main__\":\n    raise SystemExit(main())\n",
+          "label": "Example for this step"
         },
         {
           "type": "code",
           "language": "csv",
-          "code": "name,email\n Alice , ALICE@EXAMPLE.TEST \nAlice duplicate,alice@example.test\nBob,bob@example.test\nMissing,\n"
+          "code": "name,email\n Alice , ALICE@EXAMPLE.TEST \nAlice duplicate,alice@example.test\nBob,bob@example.test\nMissing,\n",
+          "label": "Example for this step"
         },
         {
           "type": "code",
           "language": "csv",
-          "code": "name,email\nAlice,alice@example.test\nBob,bob@example.test\n"
+          "code": "name,email\nAlice,alice@example.test\nBob,bob@example.test\n",
+          "label": "Example for this step"
         },
         {
           "type": "table",
@@ -512,9 +536,15 @@
           "text": "Continue learning"
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-learning-hub",
+              "text": "Back to the Codex learning hub"
+            }
+          ]
         }
       ],
       "sources": [
@@ -613,7 +643,8 @@
         {
           "type": "code",
           "language": "text",
-          "code": "標準ライブラリーで元 CSV を保つ整理ツールを作ってください。空白除去、email 小文字化、最初の重複保持、無効行除外、既存出力の拒否と件数報告を実装してテストしてください。"
+          "code": "標準ライブラリーで元 CSV を保つ整理ツールを作ってください。空白除去、email 小文字化、最初の重複保持、無効行除外、既存出力の拒否と件数報告を実装してテストしてください。",
+          "label": "この手順の例"
         },
         {
           "type": "heading",
@@ -623,17 +654,20 @@
         {
           "type": "code",
           "language": "python",
-          "code": "\"\"\"Clean a practice CSV without overwriting either the input or an existing output.\"\"\"\nimport argparse\nimport csv\nimport json\nimport re\nimport sys\nfrom pathlib import Path\n\n\ndef clean(source: Path, target: Path) -> dict[str, int]:\n    if source.resolve() == target.resolve():\n        raise ValueError(\"Input and output must differ\")\n    rows = []\n    seen = set()\n    counts = {\"kept\": 0, \"duplicate\": 0, \"invalid\": 0}\n    with source.open(encoding=\"utf-8-sig\", newline=\"\") as stream:\n        reader = csv.DictReader(stream, strict=True)\n        if reader.fieldnames != [\"name\", \"email\"]:\n            raise ValueError(\"Expected exactly: name,email\")\n        for row in reader:\n            if None in row or any(value is None for value in row.values()):\n                raise ValueError(\"Malformed CSV row\")\n            name = row[\"name\"].strip()\n            email = row[\"email\"].strip().lower()\n            # An exercise-level shape check, not proof an address can receive mail.\n            if not name or not re.fullmatch(r\"[^\\s@]+@[^\\s@]+\\.[^\\s@]+\", email):\n                counts[\"invalid\"] += 1\n            elif email in seen:\n                counts[\"duplicate\"] += 1\n            else:\n                seen.add(email)\n                rows.append({\"name\": name, \"email\": email})\n                counts[\"kept\"] += 1\n    # Exclusive creation: a rerun never silently replaces an existing result.\n    with target.open(\"x\", encoding=\"utf-8\", newline=\"\") as stream:\n        writer = csv.DictWriter(stream, fieldnames=[\"name\", \"email\"], lineterminator=\"\\n\")\n        writer.writeheader()\n        writer.writerows(rows)\n    return counts\n\n\ndef main() -> int:\n    parser = argparse.ArgumentParser(description=__doc__)\n    parser.add_argument(\"source\", type=Path)\n    parser.add_argument(\"target\", type=Path)\n    args = parser.parse_args()\n    try:\n        counts = clean(args.source, args.target)\n    except (OSError, ValueError, csv.Error) as error:\n        print(str(error), file=sys.stderr)\n        return 1\n    print(json.dumps(counts), file=sys.stderr)\n    return 0\n\n\nif __name__ == \"__main__\":\n    raise SystemExit(main())\n"
+          "code": "\"\"\"Clean a practice CSV without overwriting either the input or an existing output.\"\"\"\nimport argparse\nimport csv\nimport json\nimport re\nimport sys\nfrom pathlib import Path\n\n\ndef clean(source: Path, target: Path) -> dict[str, int]:\n    if source.resolve() == target.resolve():\n        raise ValueError(\"Input and output must differ\")\n    rows = []\n    seen = set()\n    counts = {\"kept\": 0, \"duplicate\": 0, \"invalid\": 0}\n    with source.open(encoding=\"utf-8-sig\", newline=\"\") as stream:\n        reader = csv.DictReader(stream, strict=True)\n        if reader.fieldnames != [\"name\", \"email\"]:\n            raise ValueError(\"Expected exactly: name,email\")\n        for row in reader:\n            if None in row or any(value is None for value in row.values()):\n                raise ValueError(\"Malformed CSV row\")\n            name = row[\"name\"].strip()\n            email = row[\"email\"].strip().lower()\n            # An exercise-level shape check, not proof an address can receive mail.\n            if not name or not re.fullmatch(r\"[^\\s@]+@[^\\s@]+\\.[^\\s@]+\", email):\n                counts[\"invalid\"] += 1\n            elif email in seen:\n                counts[\"duplicate\"] += 1\n            else:\n                seen.add(email)\n                rows.append({\"name\": name, \"email\": email})\n                counts[\"kept\"] += 1\n    # Exclusive creation: a rerun never silently replaces an existing result.\n    with target.open(\"x\", encoding=\"utf-8\", newline=\"\") as stream:\n        writer = csv.DictWriter(stream, fieldnames=[\"name\", \"email\"], lineterminator=\"\\n\")\n        writer.writeheader()\n        writer.writerows(rows)\n    return counts\n\n\ndef main() -> int:\n    parser = argparse.ArgumentParser(description=__doc__)\n    parser.add_argument(\"source\", type=Path)\n    parser.add_argument(\"target\", type=Path)\n    args = parser.parse_args()\n    try:\n        counts = clean(args.source, args.target)\n    except (OSError, ValueError, csv.Error) as error:\n        print(str(error), file=sys.stderr)\n        return 1\n    print(json.dumps(counts), file=sys.stderr)\n    return 0\n\n\nif __name__ == \"__main__\":\n    raise SystemExit(main())\n",
+          "label": "この手順の例"
         },
         {
           "type": "code",
           "language": "csv",
-          "code": "name,email\n Alice , ALICE@EXAMPLE.TEST \nAlice duplicate,alice@example.test\nBob,bob@example.test\nMissing,\n"
+          "code": "name,email\n Alice , ALICE@EXAMPLE.TEST \nAlice duplicate,alice@example.test\nBob,bob@example.test\nMissing,\n",
+          "label": "この手順の例"
         },
         {
           "type": "code",
           "language": "csv",
-          "code": "name,email\nAlice,alice@example.test\nBob,bob@example.test\n"
+          "code": "name,email\nAlice,alice@example.test\nBob,bob@example.test\n",
+          "label": "この手順の例"
         },
         {
           "type": "table",
@@ -686,9 +720,15 @@
           "text": "次に学ぶこと"
         },
         {
-          "type": "link",
-          "text": "Codex 学習ガイドに戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-learning-hub",
+              "text": "Codex 学習ガイドに戻る"
+            }
+          ]
         }
       ],
       "sources": [
@@ -787,7 +827,8 @@
         {
           "type": "code",
           "language": "text",
-          "code": "표준 라이브러리로 원본 CSV를 보존하는 정리 도구를 만드세요. 공백 제거, email 소문자화, 첫 중복 유지, 무효 행 제외, 기존 출력 거부와 건수 보고를 구현하고 테스트하세요."
+          "code": "표준 라이브러리로 원본 CSV를 보존하는 정리 도구를 만드세요. 공백 제거, email 소문자화, 첫 중복 유지, 무효 행 제외, 기존 출력 거부와 건수 보고를 구현하고 테스트하세요.",
+          "label": "이 단계의 예제"
         },
         {
           "type": "heading",
@@ -797,17 +838,20 @@
         {
           "type": "code",
           "language": "python",
-          "code": "\"\"\"Clean a practice CSV without overwriting either the input or an existing output.\"\"\"\nimport argparse\nimport csv\nimport json\nimport re\nimport sys\nfrom pathlib import Path\n\n\ndef clean(source: Path, target: Path) -> dict[str, int]:\n    if source.resolve() == target.resolve():\n        raise ValueError(\"Input and output must differ\")\n    rows = []\n    seen = set()\n    counts = {\"kept\": 0, \"duplicate\": 0, \"invalid\": 0}\n    with source.open(encoding=\"utf-8-sig\", newline=\"\") as stream:\n        reader = csv.DictReader(stream, strict=True)\n        if reader.fieldnames != [\"name\", \"email\"]:\n            raise ValueError(\"Expected exactly: name,email\")\n        for row in reader:\n            if None in row or any(value is None for value in row.values()):\n                raise ValueError(\"Malformed CSV row\")\n            name = row[\"name\"].strip()\n            email = row[\"email\"].strip().lower()\n            # An exercise-level shape check, not proof an address can receive mail.\n            if not name or not re.fullmatch(r\"[^\\s@]+@[^\\s@]+\\.[^\\s@]+\", email):\n                counts[\"invalid\"] += 1\n            elif email in seen:\n                counts[\"duplicate\"] += 1\n            else:\n                seen.add(email)\n                rows.append({\"name\": name, \"email\": email})\n                counts[\"kept\"] += 1\n    # Exclusive creation: a rerun never silently replaces an existing result.\n    with target.open(\"x\", encoding=\"utf-8\", newline=\"\") as stream:\n        writer = csv.DictWriter(stream, fieldnames=[\"name\", \"email\"], lineterminator=\"\\n\")\n        writer.writeheader()\n        writer.writerows(rows)\n    return counts\n\n\ndef main() -> int:\n    parser = argparse.ArgumentParser(description=__doc__)\n    parser.add_argument(\"source\", type=Path)\n    parser.add_argument(\"target\", type=Path)\n    args = parser.parse_args()\n    try:\n        counts = clean(args.source, args.target)\n    except (OSError, ValueError, csv.Error) as error:\n        print(str(error), file=sys.stderr)\n        return 1\n    print(json.dumps(counts), file=sys.stderr)\n    return 0\n\n\nif __name__ == \"__main__\":\n    raise SystemExit(main())\n"
+          "code": "\"\"\"Clean a practice CSV without overwriting either the input or an existing output.\"\"\"\nimport argparse\nimport csv\nimport json\nimport re\nimport sys\nfrom pathlib import Path\n\n\ndef clean(source: Path, target: Path) -> dict[str, int]:\n    if source.resolve() == target.resolve():\n        raise ValueError(\"Input and output must differ\")\n    rows = []\n    seen = set()\n    counts = {\"kept\": 0, \"duplicate\": 0, \"invalid\": 0}\n    with source.open(encoding=\"utf-8-sig\", newline=\"\") as stream:\n        reader = csv.DictReader(stream, strict=True)\n        if reader.fieldnames != [\"name\", \"email\"]:\n            raise ValueError(\"Expected exactly: name,email\")\n        for row in reader:\n            if None in row or any(value is None for value in row.values()):\n                raise ValueError(\"Malformed CSV row\")\n            name = row[\"name\"].strip()\n            email = row[\"email\"].strip().lower()\n            # An exercise-level shape check, not proof an address can receive mail.\n            if not name or not re.fullmatch(r\"[^\\s@]+@[^\\s@]+\\.[^\\s@]+\", email):\n                counts[\"invalid\"] += 1\n            elif email in seen:\n                counts[\"duplicate\"] += 1\n            else:\n                seen.add(email)\n                rows.append({\"name\": name, \"email\": email})\n                counts[\"kept\"] += 1\n    # Exclusive creation: a rerun never silently replaces an existing result.\n    with target.open(\"x\", encoding=\"utf-8\", newline=\"\") as stream:\n        writer = csv.DictWriter(stream, fieldnames=[\"name\", \"email\"], lineterminator=\"\\n\")\n        writer.writeheader()\n        writer.writerows(rows)\n    return counts\n\n\ndef main() -> int:\n    parser = argparse.ArgumentParser(description=__doc__)\n    parser.add_argument(\"source\", type=Path)\n    parser.add_argument(\"target\", type=Path)\n    args = parser.parse_args()\n    try:\n        counts = clean(args.source, args.target)\n    except (OSError, ValueError, csv.Error) as error:\n        print(str(error), file=sys.stderr)\n        return 1\n    print(json.dumps(counts), file=sys.stderr)\n    return 0\n\n\nif __name__ == \"__main__\":\n    raise SystemExit(main())\n",
+          "label": "이 단계의 예제"
         },
         {
           "type": "code",
           "language": "csv",
-          "code": "name,email\n Alice , ALICE@EXAMPLE.TEST \nAlice duplicate,alice@example.test\nBob,bob@example.test\nMissing,\n"
+          "code": "name,email\n Alice , ALICE@EXAMPLE.TEST \nAlice duplicate,alice@example.test\nBob,bob@example.test\nMissing,\n",
+          "label": "이 단계의 예제"
         },
         {
           "type": "code",
           "language": "csv",
-          "code": "name,email\nAlice,alice@example.test\nBob,bob@example.test\n"
+          "code": "name,email\nAlice,alice@example.test\nBob,bob@example.test\n",
+          "label": "이 단계의 예제"
         },
         {
           "type": "table",
@@ -860,9 +904,15 @@
           "text": "이어서 학습하기"
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "codex-learning-hub",
+              "text": "Codex 학습 목차로 돌아가기"
+            }
+          ]
         }
       ],
       "sources": [

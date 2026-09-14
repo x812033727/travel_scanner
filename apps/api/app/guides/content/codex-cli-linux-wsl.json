@@ -23,9 +23,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -39,15 +45,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "本來就在 Linux 電腦上，直接開該系統的 Terminal，從步驟二開始。Windows 使用者先決定是否真的需要 Linux 工具；原生 PowerShell 可以使用 Codex，不必為了 CLI 強制加裝 WSL。已有 Linux 開發環境或專案依賴 Linux 時才走 WSL2。兩者的選擇與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Windows CLI",
-              "url": "https://mokaair.com/zh-TW/life/codex-cli-windows"
+              "kind": "life",
+              "slug": "codex-cli-windows"
             },
             {
               "type": "text",
@@ -70,6 +77,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "powershell",
           "code": "wsl --list --verbose\n"
         },
@@ -79,6 +87,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "powershell",
           "code": "wsl --install\n"
         },
@@ -93,6 +102,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "bash",
           "code": "uname -s\npwd\nprintf '%s\n' \"$WSL_DISTRO_NAME\"\ncommand -v codex\ntype -a codex\n"
         },
@@ -106,11 +116,13 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "bash",
           "code": "curl -fsSL https://chatgpt.com/codex/install.sh | sh\n"
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "bash",
           "code": "command -v codex\ncodex --version\ncodex --help\n"
         },
@@ -129,6 +141,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "bash",
           "code": "(\n  set -e\n  cd ~\n  mkdir 'codex linux lab'\n  cd 'codex linux lab'\n  printf '%s\n' 'LINUX-CLI-01' > note.txt\n  cp note.txt note.original.txt\n  pwd\n  ls\n)\n"
         },
@@ -138,6 +151,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "bash",
           "code": "cd ~/\"codex linux lab\"\npwd\ncat note.txt\nsha256sum note.txt note.original.txt\n"
         },
@@ -148,6 +162,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "bash",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -157,6 +172,7 @@
         },
         {
           "type": "code",
+          "label": "本步驟範例",
           "language": "text",
           "code": "Read note.txt and note.original.txt in the current Linux practice directory. Report the current directory and the exact marker, and check whether both files match. Do not edit, create files, or use external services. Stop and report any missing file or access error.\n"
         },
@@ -200,8 +216,21 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "如果 Linux 工具專案放在 /mnt/c 而操作很慢，先用新的 Linux 家目錄練習副本比較，不要直接移動或刪除唯一原稿。需要從 Windows 檔案總管檢視 WSL，可用官方檔案說明的 \\\\wsl$ 入口選實際發行版；這是存取 Linux 檔案，不是把兩份內容同步。兩個目錄都存在時，用標記與 pwd 判斷，不憑同名資料夾猜測。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果 Linux 工具專案放在 /mnt/c 而操作很慢，先用新的 Linux 家目錄練習副本比較，不要直接移動或刪除唯一原稿。需要從 Windows 檔案總管檢視 WSL，可用官方檔案說明的 "
+            },
+            {
+              "type": "code",
+              "text": "\\\\wsl$"
+            },
+            {
+              "type": "text",
+              "text": " 入口選實際發行版；這是存取 Linux 檔案，不是把兩份內容同步。兩個目錄都存在時，用標記與 pwd 判斷，不憑同名資料夾猜測。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -209,33 +238,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "shell 能讀、Codex 不能讀時，記錄沙盒啟動或許可權錯誤，先確認 WSL2 與發行版環境，依"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "許可權教學",
-              "url": "https://mokaair.com/zh-TW/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
               "text": "排查，不要一律關閉沙盒。找不到舊工作階段時，核對是否換了發行版、Linux 使用者或 CODEX_HOME；本篇不設定共用認證目錄，以免把登入和工具來源混在一起。後續回"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 共用入門",
-              "url": "https://mokaair.com/zh-TW/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
               "text": "完成修改與還原，再接"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "上下文交接",
-              "url": "https://mokaair.com/zh-TW/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
@@ -244,9 +276,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -314,9 +352,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -330,15 +374,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "On a Linux computer, open its terminal and begin at step two. Windows users should decide whether Linux tooling is needed; native PowerShell can run Codex without WSL. Choose WSL2 for an existing Linux workflow or Linux-dependent project. It is an alternative to "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Windows CLI",
-              "url": "https://mokaair.com/en/life/codex-cli-windows"
+              "kind": "life",
+              "slug": "codex-cli-windows"
             },
             {
               "type": "text",
@@ -361,6 +406,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "powershell",
           "code": "wsl --list --verbose\n"
         },
@@ -370,6 +416,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "powershell",
           "code": "wsl --install\n"
         },
@@ -384,6 +431,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "bash",
           "code": "uname -s\npwd\nprintf '%s\n' \"$WSL_DISTRO_NAME\"\ncommand -v codex\ntype -a codex\n"
         },
@@ -397,11 +445,13 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "bash",
           "code": "curl -fsSL https://chatgpt.com/codex/install.sh | sh\n"
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "bash",
           "code": "command -v codex\ncodex --version\ncodex --help\n"
         },
@@ -420,6 +470,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "bash",
           "code": "(\n  set -e\n  cd ~\n  mkdir 'codex linux lab'\n  cd 'codex linux lab'\n  printf '%s\n' 'LINUX-CLI-01' > note.txt\n  cp note.txt note.original.txt\n  pwd\n  ls\n)\n"
         },
@@ -429,6 +480,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "bash",
           "code": "cd ~/\"codex linux lab\"\npwd\ncat note.txt\nsha256sum note.txt note.original.txt\n"
         },
@@ -439,6 +491,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "bash",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -448,6 +501,7 @@
         },
         {
           "type": "code",
+          "label": "Example for this step",
           "language": "text",
           "code": "Read note.txt and note.original.txt in the current Linux practice directory. Report the current directory and the exact marker, and check whether both files match. Do not edit, create files, or use external services. Stop and report any missing file or access error.\n"
         },
@@ -491,8 +545,21 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "For slow Linux-tool workloads under /mnt/c, compare a new practice copy in Linux home before moving or deleting the only original. To inspect WSL through File Explorer, use the documented \\\\wsl$ entry and choose the actual distribution. This accesses Linux files; it does not synchronize two copies. Identify directories through markers and pwd, not matching names alone."
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "For slow Linux-tool workloads under /mnt/c, compare a new practice copy in Linux home before moving or deleting the only original. To inspect WSL through File Explorer, use the documented "
+            },
+            {
+              "type": "code",
+              "text": "\\\\wsl$"
+            },
+            {
+              "type": "text",
+              "text": " entry and choose the actual distribution. This accesses Linux files; it does not synchronize two copies. Identify directories through markers and pwd, not matching names alone."
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -500,33 +567,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "If the shell can read but Codex cannot, record sandbox startup/access errors, confirm WSL2 and the distribution, and follow "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "permissions",
-              "url": "https://mokaair.com/en/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
               "text": " rather than disabling sandboxing by default. Missing old sessions may reflect a different distribution, Linux user or CODEX_HOME. This lesson does not share credential directories across environments. Return to "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI basics",
-              "url": "https://mokaair.com/en/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
               "text": " for editing/restoration, then "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "context handoff",
-              "url": "https://mokaair.com/en/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
@@ -535,9 +605,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Back to the Codex learning hub",
-          "url": "https://mokaair.com/en/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -605,9 +681,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -621,15 +703,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Linux PC ならその端末を開いて手順2へ進みます。Windows では Linux ツールが必要か判断します。ネイティブ PowerShell でも使えるため WSL は必須ではありません。Linux の開発環境や依存関係がある場合に WSL2 を選びます。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Windows CLI",
-              "url": "https://mokaair.com/ja/life/codex-cli-windows"
+              "kind": "life",
+              "slug": "codex-cli-windows"
             },
             {
               "type": "text",
@@ -652,6 +735,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "powershell",
           "code": "wsl --list --verbose\n"
         },
@@ -661,6 +745,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "powershell",
           "code": "wsl --install\n"
         },
@@ -675,6 +760,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "bash",
           "code": "uname -s\npwd\nprintf '%s\n' \"$WSL_DISTRO_NAME\"\ncommand -v codex\ntype -a codex\n"
         },
@@ -688,11 +774,13 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "bash",
           "code": "curl -fsSL https://chatgpt.com/codex/install.sh | sh\n"
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "bash",
           "code": "command -v codex\ncodex --version\ncodex --help\n"
         },
@@ -711,6 +799,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "bash",
           "code": "(\n  set -e\n  cd ~\n  mkdir 'codex linux lab'\n  cd 'codex linux lab'\n  printf '%s\n' 'LINUX-CLI-01' > note.txt\n  cp note.txt note.original.txt\n  pwd\n  ls\n)\n"
         },
@@ -720,6 +809,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "bash",
           "code": "cd ~/\"codex linux lab\"\npwd\ncat note.txt\nsha256sum note.txt note.original.txt\n"
         },
@@ -730,6 +820,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "bash",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -739,6 +830,7 @@
         },
         {
           "type": "code",
+          "label": "この手順の例",
           "language": "text",
           "code": "Read note.txt and note.original.txt in the current Linux practice directory. Report the current directory and the exact marker, and check whether both files match. Do not edit, create files, or use external services. Stop and report any missing file or access error.\n"
         },
@@ -782,8 +874,21 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "/mnt/c の Linux 作業が遅ければ、唯一の原稿を移動や削除する前に Linux ホームの新しい練習コピーで比較します。エクスプローラーからは公式資料の \\\\wsl$ 入口で実際の環境を選びます。Linux ファイルへのアクセスであって二つのコピーの同期ではありません。同名だけで判断せず、印と pwd を照合します。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/mnt/c の Linux 作業が遅ければ、唯一の原稿を移動や削除する前に Linux ホームの新しい練習コピーで比較します。エクスプローラーからは公式資料の "
+            },
+            {
+              "type": "code",
+              "text": "\\\\wsl$"
+            },
+            {
+              "type": "text",
+              "text": " 入口で実際の環境を選びます。Linux ファイルへのアクセスであって二つのコピーの同期ではありません。同名だけで判断せず、印と pwd を照合します。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -791,33 +896,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "シェルでは読めて Codex では読めなければ起動や権限のエラーを記録し、WSL2 と環境を確認して"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "権限",
-              "url": "https://mokaair.com/ja/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
               "text": "を調べます。一律にサンドボックスを無効にしません。古いセッションがなければ環境、Linux ユーザー、CODEX_HOME の違いを確認します。本記事では認証ディレクトリを共有しません。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 基礎",
-              "url": "https://mokaair.com/ja/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
               "text": "で変更と復元、その後"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "引き継ぎ",
-              "url": "https://mokaair.com/ja/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
@@ -826,9 +934,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 教学目次に戻る",
-          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 教学目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -896,9 +1010,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -912,15 +1032,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "Linux 컴퓨터에서는 터미널을 열고 2단계부터 시작합니다. Windows 사용자는 Linux 도구가 필요한지 먼저 결정하세요. 네이티브 PowerShell에서도 Codex를 실행하므로 WSL이 필수는 아닙니다. 기존 Linux 작업 흐름이나 의존성이 있을 때 WSL2를 선택합니다. "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Windows CLI",
-              "url": "https://mokaair.com/ko/life/codex-cli-windows"
+              "kind": "life",
+              "slug": "codex-cli-windows"
             },
             {
               "type": "text",
@@ -943,6 +1064,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "powershell",
           "code": "wsl --list --verbose\n"
         },
@@ -952,6 +1074,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "powershell",
           "code": "wsl --install\n"
         },
@@ -966,6 +1089,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "bash",
           "code": "uname -s\npwd\nprintf '%s\n' \"$WSL_DISTRO_NAME\"\ncommand -v codex\ntype -a codex\n"
         },
@@ -979,11 +1103,13 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "bash",
           "code": "curl -fsSL https://chatgpt.com/codex/install.sh | sh\n"
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "bash",
           "code": "command -v codex\ncodex --version\ncodex --help\n"
         },
@@ -1002,6 +1128,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "bash",
           "code": "(\n  set -e\n  cd ~\n  mkdir 'codex linux lab'\n  cd 'codex linux lab'\n  printf '%s\n' 'LINUX-CLI-01' > note.txt\n  cp note.txt note.original.txt\n  pwd\n  ls\n)\n"
         },
@@ -1011,6 +1138,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "bash",
           "code": "cd ~/\"codex linux lab\"\npwd\ncat note.txt\nsha256sum note.txt note.original.txt\n"
         },
@@ -1021,6 +1149,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "bash",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -1030,6 +1159,7 @@
         },
         {
           "type": "code",
+          "label": "이 단계의 예제",
           "language": "text",
           "code": "Read note.txt and note.original.txt in the current Linux practice directory. Report the current directory and the exact marker, and check whether both files match. Do not edit, create files, or use external services. Stop and report any missing file or access error.\n"
         },
@@ -1073,8 +1203,21 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "/mnt/c의 Linux 도구 작업이 느리면 유일한 원본을 옮기거나 지우기 전에 Linux 홈의 새 연습 사본으로 비교합니다. 탐색기에서는 공식 문서의 \\\\wsl$ 입구로 실제 배포판을 선택합니다. Linux 파일 접근이며 두 사본 동기화가 아닙니다. 같은 이름만 보지 말고 표식과 pwd로 구분하세요."
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/mnt/c의 Linux 도구 작업이 느리면 유일한 원본을 옮기거나 지우기 전에 Linux 홈의 새 연습 사본으로 비교합니다. 탐색기에서는 공식 문서의 "
+            },
+            {
+              "type": "code",
+              "text": "\\\\wsl$"
+            },
+            {
+              "type": "text",
+              "text": " 입구로 실제 배포판을 선택합니다. Linux 파일 접근이며 두 사본 동기화가 아닙니다. 같은 이름만 보지 말고 표식과 pwd로 구분하세요."
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -1082,33 +1225,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "셸은 읽지만 Codex가 못 읽으면 샌드박스 시작/접근 오류를 기록하고 WSL2와 배포판을 확인한 뒤 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "권한",
-              "url": "https://mokaair.com/ko/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
               "text": "을 점검하며 일괄 해제하지 않습니다. 이전 세션이 없으면 배포판, Linux 사용자, CODEX_HOME 변경을 확인합니다. 이 글은 환경 간 인증 폴더를 공유하지 않습니다. "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 기초",
-              "url": "https://mokaair.com/ko/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
               "text": "에서 수정과 복구를 마치고 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "맥락 인계",
-              "url": "https://mokaair.com/ko/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
@@ -1117,9 +1263,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "Codex 학습 목차로 돌아가기",
-          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1187,9 +1339,15 @@
       },
       "blocks": [
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1203,15 +1361,16 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "本来就在 Linux 电脑上，直接开该系统的 Terminal，从步骤二开始。Windows 使用者先决定是否真的需要 Linux 工具；原生 PowerShell 可以使用 Codex，不必为了 CLI 强制加装 WSL。已有 Linux 开发环境或专案依赖 Linux 时才走 WSL2。两者的选择与"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Windows CLI",
-              "url": "https://mokaair.com/zh-CN/life/codex-cli-windows"
+              "kind": "life",
+              "slug": "codex-cli-windows"
             },
             {
               "type": "text",
@@ -1234,6 +1393,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "powershell",
           "code": "wsl --list --verbose\n"
         },
@@ -1243,6 +1403,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "powershell",
           "code": "wsl --install\n"
         },
@@ -1257,6 +1418,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "bash",
           "code": "uname -s\npwd\nprintf '%s\n' \"$WSL_DISTRO_NAME\"\ncommand -v codex\ntype -a codex\n"
         },
@@ -1270,11 +1432,13 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "bash",
           "code": "curl -fsSL https://chatgpt.com/codex/install.sh | sh\n"
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "bash",
           "code": "command -v codex\ncodex --version\ncodex --help\n"
         },
@@ -1293,6 +1457,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "bash",
           "code": "(\n  set -e\n  cd ~\n  mkdir 'codex linux lab'\n  cd 'codex linux lab'\n  printf '%s\n' 'LINUX-CLI-01' > note.txt\n  cp note.txt note.original.txt\n  pwd\n  ls\n)\n"
         },
@@ -1302,6 +1467,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "bash",
           "code": "cd ~/\"codex linux lab\"\npwd\ncat note.txt\nsha256sum note.txt note.original.txt\n"
         },
@@ -1312,6 +1478,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "bash",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -1321,6 +1488,7 @@
         },
         {
           "type": "code",
+          "label": "本步骤示例",
           "language": "text",
           "code": "Read note.txt and note.original.txt in the current Linux practice directory. Report the current directory and the exact marker, and check whether both files match. Do not edit, create files, or use external services. Stop and report any missing file or access error.\n"
         },
@@ -1364,8 +1532,21 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "如果 Linux 工具专案放在 /mnt/c 而操作很慢，先用新的 Linux 家目录练习副本比较，不要直接移动或删除唯一原稿。需要从 Windows 档案总管检视 WSL，可用官方档案说明的 \\\\wsl$ 入口选实际发行版；这是存取 Linux 档案，不是把两份内容同步。两个目录都存在时，用标记与 pwd 判断，不凭同名资料夹猜测。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果 Linux 工具专案放在 /mnt/c 而操作很慢，先用新的 Linux 家目录练习副本比较，不要直接移动或删除唯一原稿。需要从 Windows 档案总管检视 WSL，可用官方档案说明的 "
+            },
+            {
+              "type": "code",
+              "text": "\\\\wsl$"
+            },
+            {
+              "type": "text",
+              "text": " 入口选实际发行版；这是存取 Linux 档案，不是把两份内容同步。两个目录都存在时，用标记与 pwd 判断，不凭同名资料夹猜测。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -1373,33 +1554,36 @@
         },
         {
           "type": "rich_paragraph",
-          "spans": [
+          "inlines": [
             {
               "type": "text",
               "text": "shell 能读、Codex 不能读时，记录沙盒启动或许可权错误，先确认 WSL2 与发行版环境，依"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "许可权教学",
-              "url": "https://mokaair.com/zh-CN/life/codex-permissions"
+              "kind": "life",
+              "slug": "codex-permissions"
             },
             {
               "type": "text",
               "text": "排查，不要一律关闭沙盒。找不到旧工作阶段时，核对是否换了发行版、Linux 使用者或 CODEX_HOME；本篇不设定共用认证目录，以免把登入和工具来源混在一起。后续回"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 共用入门",
-              "url": "https://mokaair.com/zh-CN/life/codex-cli-getting-started"
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
             },
             {
               "type": "text",
               "text": "完成修改与还原，再接"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "上下文交接",
-              "url": "https://mokaair.com/zh-CN/life/codex-context-handoff"
+              "kind": "life",
+              "slug": "codex-context-handoff"
             },
             {
               "type": "text",
@@ -1408,9 +1592,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Codex 教学总目录",
-          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",

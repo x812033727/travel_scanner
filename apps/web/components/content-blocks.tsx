@@ -7,7 +7,9 @@ import {
   type RichContentBlock,
 } from "@/lib/content-blocks";
 import { siteUrl } from "@/lib/seo";
-import { CodeSample } from "@/components/codex-learning/code-sample";
+import { GuideImage } from "@/components/guides/guide-image";
+import { GuideCodeBlock, type CodeLabels } from "@/components/guide-code-block";
+import type { ArticleReference } from "@/lib/guide-series";
 
 /** The words the renderer cannot invent: a credit prefix and one name per callout tone. A
  *  caller that renders only the four shared blocks (the legal pages) passes nothing. */
@@ -16,9 +18,7 @@ export type ContentBlockLabels = {
   tip: string;
   warning: string;
   info: string;
-  copy?: string;
-  copied?: string;
-  copyFailed?: string;
+  code?: CodeLabels;
 };
 
 const TONE_CLASSES: Record<CalloutTone, string> = {
@@ -67,21 +67,34 @@ export function ImageCreditLine({ credit, prefix }: { credit: ImageCredit; prefi
  * pages want.
  */
 export function ContentBlocks({
-  blocks, labels, headingStart,
+  blocks, labels, headingStart, articleLinks = [], locale = "en",
 }: {
   blocks: readonly RichContentBlock[];
   labels?: ContentBlockLabels;
   headingStart?: number;
+  articleLinks?: readonly ArticleReference[];
+  locale?: string;
 }) {
   let sections = headingStart ?? 0;
   return <>{blocks.map((block, index) => {
-    if (block.type === "code") return <CodeSample key={index} language={block.language} code={block.code} copyLabel={labels?.copy} copiedLabel={labels?.copied} failedLabel={labels?.copyFailed} />;
-    if (block.type === "rich_paragraph") return <p key={index} className="whitespace-pre-wrap leading-8">{block.spans.map((span, i) => {
-      if (span.type === "text") return <span key={i}>{span.text}</span>;
-      const href = contentBlockLink(span.url);
-      if (!href) return <span key={i}>{span.text}</span>;
-      const external = !sameSite(href);
-      return <a key={i} href={href} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined} className="text-[var(--teal)] underline underline-offset-4">{span.text}</a>;
+    if (block.type === "code") return <GuideCodeBlock key={index} block={block} labels={labels?.code} />;
+    if (block.type === "rich_paragraph") return <p key={index} className="whitespace-pre-wrap leading-8">{block.inlines.map((node, i) => {
+      if (node.type === "code") return <code key={i} className="rounded bg-[var(--paper)] px-1 font-mono text-[0.92em]">{node.text}</code>;
+      if (node.type === "article") {
+        const target = articleLinks.find(ref => ref.slug === node.slug && ref.kind === node.kind);
+        if (!target) return <span key={i}>{node.text}</span>;
+        const path = target.kind === "life" ? `/life/${target.slug}` : `/guides/${target.kind}/${target.slug}`;
+        return <a key={i} href={`/${locale}${path}`} className="text-[var(--teal)] underline underline-offset-4">{node.text}</a>;
+      }
+      if (node.type === "link") {
+        const href = contentBlockLink(node.url);
+        if (!href) return <span key={i}>{node.text}</span>;
+        const external = !sameSite(href);
+        const parsed = new URL(href);
+        const targetHref = external ? href : parsed.pathname + parsed.search + parsed.hash;
+        return <a key={i} href={targetHref} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined} className="text-[var(--teal)] underline underline-offset-4">{node.text}</a>;
+      }
+      return <span key={i}>{node.text}</span>;
     })}</p>;
     if (block.type === "heading") {
       if (block.level === 3) return <h3 key={index} className="pt-2 text-lg font-semibold">{block.text}</h3>;
@@ -99,9 +112,7 @@ export function ContentBlocks({
       const caption = block.caption?.trim() ?? "";
       return (
         <figure key={index} className="my-2">
-          {/* Plain <img>: no image optimizer in the standalone build; the stored size reserves the box. */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={src} alt={block.alt} width={block.width} height={block.height} loading="lazy" decoding="async" className="h-auto w-full rounded-2xl" />
+          <GuideImage src={src} alt={block.alt} width={block.width} height={block.height} loading="lazy" decoding="async" className="h-auto w-full rounded-2xl" />
           {caption || block.credit ? (
             <figcaption className="mt-2 text-sm leading-6 text-[var(--muted)]">
               {caption}
@@ -117,14 +128,14 @@ export function ContentBlocks({
       // A wide table scrolls inside its own box; the page must never scroll sideways for it.
       return (
         <div key={index} className="overflow-x-auto">
-          <table className="w-full border-collapse text-sm">
+          <table className="w-full border-collapse text-sm [overflow-wrap:normal]">
             {caption ? <caption className="caption-bottom pt-2 text-left text-[var(--muted)]">{caption}</caption> : null}
             <thead>
-              <tr>{block.header.map((cell, i) => <th key={i} scope="col" className="border-b-2 border-[var(--line)] px-3 py-2 text-left font-semibold">{cell}</th>)}</tr>
+              <tr>{block.header.map((cell, i) => <th key={i} scope="col" className="min-w-28 border-b-2 border-[var(--line)] px-3 py-2 text-left font-semibold">{cell}</th>)}</tr>
             </thead>
             <tbody>
               {block.rows.map((row, r) => (
-                <tr key={r}>{row.map((cell, c) => <td key={c} className="border-b border-[var(--line)] px-3 py-2 align-top leading-6">{cell}</td>)}</tr>
+                <tr key={r}>{row.map((cell, c) => <td key={c} className="min-w-28 border-b border-[var(--line)] px-3 py-2 align-top leading-6">{cell}</td>)}</tr>
               ))}
             </tbody>
           </table>

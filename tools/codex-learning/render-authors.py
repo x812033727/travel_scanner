@@ -22,7 +22,11 @@ def render(module):
                 # A longer outer fence keeps that entire example inert.
                 length = max([2, *(len(run) for run in re.findall(r"`+", code))]) + 1
                 fence = "`" * length
-                parts.append(f'{fence}{block["language"]}\n{code.rstrip(chr(10))}\n{fence}')
+                labels = block.get("label")
+                if labels is not None and (not isinstance(labels, list) or len(labels) != 4 or any(not isinstance(label, str) or not label.strip() or "\n" in label for label in labels)):
+                    raise ValueError("Code labels need four nonempty single-line translations")
+                label = f" {labels[index]}" if labels else ""
+                parts.append(f'{fence}{block["language"]}{label}\n{code.rstrip(chr(10))}\n{fence}')
             elif kind in {"h2", "h3", "p", "note"}:
                 values = block["text"]
                 if len(values) != 4 or any(not isinstance(value, str) or not value.strip() for value in values):
