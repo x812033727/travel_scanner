@@ -1,3 +1,5 @@
+import hashlib
+import hmac
 from functools import lru_cache
 from typing import Literal
 from urllib.parse import urlparse
@@ -481,6 +483,33 @@ class Settings(BaseSettings):
     @property
     def cors_origins(self) -> list[str]:
         return [origin.strip() for origin in self.api_cors_origins.split(",") if origin.strip()]
+
+    @property
+    def analytics_hash_key(self) -> bytes:
+        """The key that pseudonymises analytics visitors, derived so it is not the signing key.
+
+        Analytics used ``app_secret_key`` directly, which quietly coupled two things that
+        need to move at different speeds. ``app_secret_key`` signs every access token and
+        every admin step-up token, so it is the secret you most want to be able to rotate on
+        an hour's notice — and doing that also re-keyed every ``visitor_day_hash`` and
+        ``session_hash``, so returning visitors read as new and sessions split at the
+        boundary, with nothing in the dashboard saying why. Paying for an emergency rotation
+        in silently corrupted analytics is how a rotation gets postponed.
+
+        Derived from ``settings_encryption_key``, which in production is required, at least
+        32 characters, and different from ``app_secret_key`` (``validate_deployment_security``).
+        Outside production that setting is optional, so the signing key is the fallback:
+        development has one secret and no continuity to protect.
+
+        One HMAC is the whole derivation, and that is enough here rather than a shortcut.
+        HKDF's extract step exists to condense a non-uniform input and its expand step to
+        produce more than one hash length of output; the input is already a high-entropy
+        random secret and the output is a single 256-bit MAC key, so neither step applies.
+        The label pins the purpose: the same secret used for anything else cannot land on
+        this key by accident, and ``:v1`` is where a deliberate re-key would announce itself.
+        """
+        secret = self.settings_encryption_key or self.app_secret_key
+        return hmac.new(secret.encode(), b"mokaair:analytics-hash-key:v1", hashlib.sha256).digest()
 
     @property
     def admin_email_set(self) -> set[str]:

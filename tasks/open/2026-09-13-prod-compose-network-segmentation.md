@@ -1,7 +1,7 @@
 ---
 id: 2026-09-13-prod-compose-network-segmentation
 title: Production compose has no network segmentation or read-only root
-status: open
+status: blocked
 priority: P2
 area: ops
 owner:
@@ -12,7 +12,6 @@ branch:
 depends_on: []
 scope:
   - docker-compose.prod.yml
-  - ops/nginx/README.md
 ---
 
 # Production compose has no network segmentation or read-only root
@@ -89,3 +88,15 @@ server-rendered pages still reach the API.
 - This does not remove the need for `INTERNAL_PROXY_TOKEN`; it is defence in depth behind
   it, not a replacement.
 - Filed by the 2026-09-13 security review (`docs/security-review-2026-09-13.md`).
+- **Blocked on 2026-09-13-web-upstream-keepalive-502, which holds `docker-compose.prod.yml`.**
+  Checked on 2026-09-14: that task's code is merged into `main` (#456, `b5af26b`), but its
+  definition of done is not met — the last two boxes ask for evidence from the production
+  host that both halves are live and that `upstream prematurely closed connection` has
+  stopped appearing in `error.log`. The nginx half still has to be installed there. So it is
+  legitimately unfinished and its claim on the file is real, not stale bookkeeping.
+- `npm run tasks -- claim` refuses this task for that reason, and the refusal is correct.
+  Everything in this task is a change to `docker-compose.prod.yml`, so there is no half that
+  can proceed around it. Rewriting the service topology underneath a fix that is mid-
+  verification on a live host is exactly what that rule exists to prevent.
+- **To unblock:** finish the keepalive verification on the host, mark that task `done`, then
+  claim this one. Nothing here needs to change first.
