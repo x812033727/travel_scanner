@@ -1,0 +1,360 @@
+{
+  "slug": "claude-code-terminal-git-basics",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 104,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜終端機、路徑與 Git 基礎",
+      "description": "看懂資料夾位置、切換目錄與版本紀錄。終端機是用文字操作電腦的介面；Shell 則是解讀那些文字的程式。你在 PowerShell 輸入指令，和在 Bash 輸入指令，雖然都像在黑底視窗打字，語法卻不完全相同。使用 Claude Code 前，先學會確認目前路徑、列出檔案與辨認 Git 狀態，已經足夠開始大部分入門練習。",
+      "hero": {
+        "src": "/guides/claude-code-terminal-git-basics/hero.jpg",
+        "alt": "終端機、路徑與 Git 基礎：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "終端機是用文字操作電腦的介面；Shell 則是解讀那些文字的程式。你在 PowerShell 輸入指令，和在 Bash 輸入指令，雖然都像在黑底視窗打字，語法卻不完全相同。使用 Claude Code 前，先學會確認目前路徑、列出檔案與辨認 Git 狀態，已經足夠開始大部分入門練習。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇使用待辦清單資料夾作例子，目標是讓你能自行找到專案，不會在不相關的地方啟動工具。你需要一個可自由修改的練習資料夾；Git 部分需要另外安裝 Git。這裡的查詢指令不會刪除檔案，練習時仍請逐行看懂再執行，不必一次貼上所有範例。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "確認所在位置"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-terminal-git-basics/diagram-1.svg",
+          "alt": "確認所在位置 → 切換到練習資料夾 → 認識 Git 的三個層次",
+          "width": 1600,
+          "height": 900,
+          "caption": "確認所在位置 → 切換到練習資料夾 → 認識 Git 的三個層次",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "路徑是檔案或資料夾的位置。絕對路徑從磁碟或系統根目錄開始，相對路徑則從目前工作資料夾出發。例如 "
+            },
+            {
+              "type": "code",
+              "text": "model.js"
+            },
+            {
+              "type": "text",
+              "text": " 指目前資料夾裡的檔案，"
+            },
+            {
+              "type": "code",
+              "text": "tests/model.test.mjs"
+            },
+            {
+              "type": "text",
+              "text": " 指 tests 子資料夾中的測試。Claude 啟動時的工作目錄會影響它看到的專案，所以同樣一句指令，在不同位置可能得到不同結果。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Windows 路徑可能包含磁碟代號、空白與中文。把路徑放在引號中，能避免空白被當成參數分界。macOS 與 Linux 常見以斜線開頭的路徑；"
+            },
+            {
+              "type": "code",
+              "text": "~"
+            },
+            {
+              "type": "text",
+              "text": " 通常代表目前使用者的家目錄。先使用檔案管理員找到練習資料夾，再複製它的路徑，會比憑印象猜名字可靠。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "Windows PowerShell：查詢位置與檔案",
+          "code": "Get-Location\nGet-ChildItem\n"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "macOS／Linux 終端機：查詢位置與檔案",
+          "code": "pwd\nls\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果清單裡看不到 README、package.json 或你預期的檔案，先不要啟動 Claude。可能是還停在下載資料夾的上一層，也可能是解壓縮多包了一層同名資料夾。進到真正包含程式的那一層，再列一次檔案；這個小確認能避免把錯誤工作目錄帶到後面的所有步驟。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "切換到練習資料夾"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "code",
+              "text": "cd"
+            },
+            {
+              "type": "text",
+              "text": " 用來改變目前資料夾，後面接目的路徑。以下路徑只是範例，請換成你自己的實際位置；不要把「你的帳號」當成電腦上真的存在的資料夾名稱。"
+            },
+            {
+              "type": "code",
+              "text": ".."
+            },
+            {
+              "type": "text",
+              "text": " 表示上一層，適合從 tests 回到專案根目錄，但連續使用很多次之前，最好再查一次目前位置。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "Windows PowerShell：請替換成自己的實際路徑",
+          "code": "Set-Location -LiteralPath 'C:\\Users\\你的帳號\\Downloads\\starter'\nGet-ChildItem\n"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "macOS／Linux 終端機：依實際解壓縮位置調整",
+          "code": "cd \"$HOME/Downloads/starter\"\npwd\nls\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "操作",
+            "PowerShell",
+            "Bash／Zsh"
+          ],
+          "rows": [
+            [
+              "顯示位置",
+              "Get-Location",
+              "pwd"
+            ],
+            [
+              "列出檔案",
+              "Get-ChildItem",
+              "ls"
+            ],
+            [
+              "切換資料夾",
+              "Set-Location 或 cd",
+              "cd"
+            ],
+            [
+              "回上一層",
+              "cd ..",
+              "cd .."
+            ],
+            [
+              "停止前景程式",
+              "Ctrl+C",
+              "Ctrl+C"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "認識 Git 的三個層次"
+        },
+        {
+          "type": "paragraph",
+          "text": "Git 用來記錄檔案版本。工作目錄是你正在編輯的檔案；暫存區是準備放進下一筆提交的變更；提交則是一筆有訊息的版本紀錄。這三層分開的好處，是你可以檢查正在修改的內容，再決定哪一些屬於同一個完整工作。不要因為 Claude 說修改完成，就把資料夾中所有檔案一起提交。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果你取得的是 ZIP，裡面通常沒有 Git 紀錄。可以在確定的練習資料夾執行 "
+            },
+            {
+              "type": "code",
+              "text": "git init"
+            },
+            {
+              "type": "text",
+              "text": " 建立新的版本庫；若拿到的是既有專案，先執行 "
+            },
+            {
+              "type": "code",
+              "text": "git status"
+            },
+            {
+              "type": "text",
+              "text": "，不要重建或清除它的設定。本系列後面的"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-git-review-pr",
+              "text": "差異與 PR 教學"
+            },
+            {
+              "type": "text",
+              "text": "會進一步處理提交和遠端儲存庫。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "已安裝 Git 的終端機：只查看版本與狀態",
+          "code": "git --version\ngit status --short\ngit diff\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "code",
+              "text": "git status --short"
+            },
+            {
+              "type": "text",
+              "text": " 會用短標記列出有變更或未追蹤的檔案；"
+            },
+            {
+              "type": "code",
+              "text": "git diff"
+            },
+            {
+              "type": "text",
+              "text": " 顯示尚未暫存的文字差異。第一次看到紅色與綠色區塊，先把它理解成移除和加入的內容，而不是程式正確與錯誤的判定。刪掉一段舊文字也可能是正常修改，關鍵在於是否符合你交代的需求。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "分清指令與對話"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在一般終端機輸入 "
+            },
+            {
+              "type": "code",
+              "text": "claude"
+            },
+            {
+              "type": "text",
+              "text": "，才會啟動 Claude Code 的互動介面。進入後，你可以輸入自然語言任務與它支援的斜線指令；離開後又回到 PowerShell 或 Bash。把 "
+            },
+            {
+              "type": "code",
+              "text": "/compact"
+            },
+            {
+              "type": "text",
+              "text": " 貼到一般 Shell，Shell 不會知道你想整理對話；把 PowerShell 專用語法當作 Bash 指令，也可能出現不相干的錯誤。"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "在終端機確認目前資料夾。",
+            "找到練習專案的 README 與 package.json。",
+            "確認你使用的是 PowerShell、Bash 或其他 Shell。",
+            "工具安裝完成後，在該資料夾啟動 claude。",
+            "使用完畢回到終端機，再次查詢位置與 Git 狀態。"
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "執行指令前先看教學標示的輸入位置。冒號、引號、換行與空白可能是語法的一部分，複製後不要為了看起來整齊而任意刪除。"
+        },
+        {
+          "type": "paragraph",
+          "text": "練習時每次切換目錄後都再看一次提示符號或目前路徑。相同的 npm test 在不同資料夾可能執行完全不同的腳本；檔案名稱看似一樣，也不代表來自同一個 Git 分支。把路徑與分支寫進筆記，之後排錯會容易許多。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "小練習與排錯"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "請從專案根目錄切到 tests，列出測試檔，再回根目錄，確認 README 又出現在清單中。接著執行 Git 狀態查詢，觀察自己的修改是否被列出。完成判準是你能解釋每一步目前在哪裡，知道檔案沒有因為切換資料夾而消失，也能分清楚「找不到檔案」和「指令尚未安裝」。如果路徑仍常弄錯，把它寫在私人練習筆記，再讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-install-windows",
+              "text": "安裝教學"
+            },
+            {
+              "type": "text",
+              "text": "或你作業系統對應的篇章。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Quickstart",
+          "url": "https://code.claude.com/docs/en/quickstart",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Common workflows",
+          "url": "https://code.claude.com/docs/en/common-workflows",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

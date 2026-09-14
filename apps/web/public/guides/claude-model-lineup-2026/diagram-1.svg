@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">Claude 四個現役模型並列比較與六種任務的選法 / Claude model lineup: four tiers compared, six tasks mapped</title>
+  <desc id="desc">比較矩陣加對照表。上半部四欄由左到右是 Fable 5.1、Opus 5、Sonnet 5、Haiku 4.5，能力與價格由左到右遞減、速度遞增。Fable 5.1：高要求的推理與長時程的代理工作，相對速度較慢，上下文視窗 1M token，API 每百萬 token 輸入 10、輸出 50 美元，自適應思考常開關不掉，2026 年 9 月上市。Opus 5：複雜的代理式程式開發與企業工作、多數工作的起點，相對速度中等，1M token，輸入 5、輸出 25 美元，自適應思考預設開啟，2026 年 7 月上市。Sonnet 5：速度與智慧的最佳組合、免費版與 Pro 的預設，相對速度快，1M token，輸入 2、輸出 10 美元，自適應思考預設開啟可關，2026 年 6 月上市。Haiku 4.5：最快、接近前緣智慧，適合大量簡單要快的事，相對速度最快，200K token，輸入 1、輸出 5 美元，延伸思考手動開啟，2025 年 10 月上市。下半部六格：日常問答、改信潤稿、翻譯用 Sonnet 5（免費版與 Pro 的預設），思考可關；長文寫作、長文件摘要用 Sonnet 5，不滿意再換 Opus 5，1M token 放得下整本手冊；寫程式、除錯、看試算表用 Opus 5（Max 的預設），小修改用 Sonnet 5；大量批次的分類、貼標籤、抓格式用 Haiku 4.5，走 API 或批次 API，批次再打五折；需要推理的數學、規劃、多步分析先在 Sonnet 5 開思考、調高 Effort，還不行再換 Opus 5；跑很久的自主任務與深度研究用 Fable 5.1，限付費方案，Pro 另扣用量點數，Max 至多每週額度一半。底部註明價格為 2026 年 9 月 13 日官網的 API 標價，各方案能用的模型以官網為準。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">Claude 四個現役模型並列比較與六種任務的選法（2026 年 9 月依官網查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Claude model lineup, September 2026: four tiers side by side, six everyday tasks mapped to a model</text>
+
+  <!-- axis: capability and price fall from left to right, speed rises -->
+  <text x="60" y="122" font-size="16" fill="#5C6B6B">能力最強、最貴、最慢</text>
+  <path d="M 250 116 L 1400 116" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="1540" y="122" font-size="16" fill="#5C6B6B" text-anchor="end">最快、最便宜</text>
+
+  <!-- column 1: Fable 5.1 -->
+  <rect x="60" y="136" width="355" height="350" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <rect x="64" y="140" width="347" height="52" rx="10" fill="#0D6B68"/>
+  <text x="237" y="173" font-size="21" font-weight="700" fill="#FFFFFF" text-anchor="middle">Fable 5.1</text>
+  <text x="237" y="228" font-size="16" fill="#102A2B" text-anchor="middle">高要求的推理與</text>
+  <text x="237" y="254" font-size="16" fill="#102A2B" text-anchor="middle">長時程的代理工作</text>
+  <text x="237" y="294" font-size="16" fill="#102A2B" text-anchor="middle">相對速度：較慢</text>
+  <text x="237" y="328" font-size="16" fill="#102A2B" text-anchor="middle">上下文視窗：1M token</text>
+  <text x="237" y="362" font-size="16" fill="#102A2B" text-anchor="middle">API 價格：輸入 10、輸出 50 美元</text>
+  <text x="237" y="388" font-size="15" fill="#5C6B6B" text-anchor="middle">（每百萬 token）</text>
+  <text x="237" y="428" font-size="16" fill="#102A2B" text-anchor="middle">思考：自適應，常開、關不掉</text>
+  <text x="237" y="464" font-size="16" fill="#5C6B6B" text-anchor="middle">2026 年 9 月上市</text>
+
+  <!-- column 2: Opus 5 -->
+  <rect x="435" y="136" width="355" height="350" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <rect x="439" y="140" width="347" height="52" rx="10" fill="#2F6F9F"/>
+  <text x="612" y="173" font-size="21" font-weight="700" fill="#FFFFFF" text-anchor="middle">Opus 5</text>
+  <text x="612" y="228" font-size="16" fill="#102A2B" text-anchor="middle">複雜的代理式程式開發與企業工作</text>
+  <text x="612" y="254" font-size="16" fill="#102A2B" text-anchor="middle">官網建議多數工作的起點</text>
+  <text x="612" y="294" font-size="16" fill="#102A2B" text-anchor="middle">相對速度：中等</text>
+  <text x="612" y="328" font-size="16" fill="#102A2B" text-anchor="middle">上下文視窗：1M token</text>
+  <text x="612" y="362" font-size="16" fill="#102A2B" text-anchor="middle">API 價格：輸入 5、輸出 25 美元</text>
+  <text x="612" y="388" font-size="15" fill="#5C6B6B" text-anchor="middle">（每百萬 token）</text>
+  <text x="612" y="428" font-size="16" fill="#102A2B" text-anchor="middle">思考：自適應，預設開啟</text>
+  <text x="612" y="464" font-size="16" fill="#5C6B6B" text-anchor="middle">2026 年 7 月上市</text>
+
+  <!-- column 3: Sonnet 5 -->
+  <rect x="810" y="136" width="355" height="350" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <rect x="814" y="140" width="347" height="52" rx="10" fill="#2E7D5B"/>
+  <text x="987" y="173" font-size="21" font-weight="700" fill="#FFFFFF" text-anchor="middle">Sonnet 5</text>
+  <text x="987" y="228" font-size="16" fill="#102A2B" text-anchor="middle">速度與智慧的最佳組合</text>
+  <text x="987" y="254" font-size="16" fill="#102A2B" text-anchor="middle">免費版與 Pro 的預設</text>
+  <text x="987" y="294" font-size="16" fill="#102A2B" text-anchor="middle">相對速度：快</text>
+  <text x="987" y="328" font-size="16" fill="#102A2B" text-anchor="middle">上下文視窗：1M token</text>
+  <text x="987" y="362" font-size="16" fill="#102A2B" text-anchor="middle">API 價格：輸入 2、輸出 10 美元</text>
+  <text x="987" y="388" font-size="15" fill="#5C6B6B" text-anchor="middle">（每百萬 token）</text>
+  <text x="987" y="428" font-size="16" fill="#102A2B" text-anchor="middle">思考：自適應，預設開啟，可關</text>
+  <text x="987" y="464" font-size="16" fill="#5C6B6B" text-anchor="middle">2026 年 6 月上市</text>
+
+  <!-- column 4: Haiku 4.5 -->
+  <rect x="1185" y="136" width="355" height="350" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <rect x="1189" y="140" width="347" height="52" rx="10" fill="#D97A2B"/>
+  <text x="1362" y="173" font-size="21" font-weight="700" fill="#FFFFFF" text-anchor="middle">Haiku 4.5</text>
+  <text x="1362" y="228" font-size="16" fill="#102A2B" text-anchor="middle">最快、接近前緣智慧</text>
+  <text x="1362" y="254" font-size="16" fill="#102A2B" text-anchor="middle">適合大量、簡單、要快的事</text>
+  <text x="1362" y="294" font-size="16" fill="#102A2B" text-anchor="middle">相對速度：最快</text>
+  <text x="1362" y="328" font-size="16" fill="#102A2B" text-anchor="middle">上下文視窗：200K token</text>
+  <text x="1362" y="362" font-size="16" fill="#102A2B" text-anchor="middle">API 價格：輸入 1、輸出 5 美元</text>
+  <text x="1362" y="388" font-size="15" fill="#5C6B6B" text-anchor="middle">（每百萬 token）</text>
+  <text x="1362" y="428" font-size="16" fill="#102A2B" text-anchor="middle">思考：延伸思考，手動開啟</text>
+  <text x="1362" y="464" font-size="16" fill="#5C6B6B" text-anchor="middle">2025 年 10 月上市</text>
+
+  <!-- six tasks -->
+  <text x="60" y="532" font-size="20" font-weight="700" fill="#102A2B">六種常見任務，先選哪個模型</text>
+
+  <rect x="60" y="548" width="480" height="140" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="300" y="584" font-size="18" font-weight="700" fill="#245E45" text-anchor="middle">日常問答、改信潤稿、翻譯</text>
+  <text x="300" y="620" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">Sonnet 5（免費版與 Pro 的預設）</text>
+  <text x="300" y="652" font-size="16" fill="#102A2B" text-anchor="middle">思考可關；換更大的模型不會更好</text>
+
+  <rect x="560" y="548" width="480" height="140" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="800" y="584" font-size="18" font-weight="700" fill="#245E45" text-anchor="middle">長文寫作、長文件摘要</text>
+  <text x="800" y="620" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">Sonnet 5，不滿意再換 Opus 5</text>
+  <text x="800" y="652" font-size="16" fill="#102A2B" text-anchor="middle">1M token 的上下文視窗放得下整本手冊</text>
+
+  <rect x="1060" y="548" width="480" height="140" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1300" y="584" font-size="18" font-weight="700" fill="#1F4E73" text-anchor="middle">寫程式、除錯、看試算表</text>
+  <text x="1300" y="620" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">Opus 5（Max 的預設）</text>
+  <text x="1300" y="652" font-size="16" fill="#102A2B" text-anchor="middle">小修改用 Sonnet 5 就夠，卡住再換回</text>
+
+  <rect x="60" y="706" width="480" height="140" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="300" y="742" font-size="18" font-weight="700" fill="#8A4A15" text-anchor="middle">大量批次：分類、貼標籤、抓格式</text>
+  <text x="300" y="778" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">Haiku 4.5（走 API 或批次 API）</text>
+  <text x="300" y="810" font-size="16" fill="#102A2B" text-anchor="middle">最快、最便宜；批次再打五折</text>
+
+  <rect x="560" y="706" width="480" height="140" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="800" y="742" font-size="18" font-weight="700" fill="#245E45" text-anchor="middle">需要推理：數學、規劃、多步分析</text>
+  <text x="800" y="778" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">Sonnet 5 開思考、調高 Effort</text>
+  <text x="800" y="810" font-size="16" fill="#102A2B" text-anchor="middle">還不行再換 Opus 5</text>
+
+  <rect x="1060" y="706" width="480" height="140" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1300" y="742" font-size="18" font-weight="700" fill="#0B4F4D" text-anchor="middle">跑很久的自主任務、深度研究</text>
+  <text x="1300" y="778" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">Fable 5.1（限付費方案）</text>
+  <text x="1300" y="810" font-size="16" fill="#102A2B" text-anchor="middle">Pro 另扣用量點數；Max 至多每週額度一半</text>
+
+  <text x="60" y="874" font-size="15" fill="#5C6B6B">價格為 2026 年 9 月 13 日官網的 API 標價（美元／每百萬 token）；各方案能用的模型以官網當下頁面為準</text>
+  <text x="1540" y="874" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

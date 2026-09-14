@@ -1,0 +1,251 @@
+{
+  "slug": "claude-code-platforms-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 103,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜桌面、CLI、網頁、手機怎麼選",
+      "description": "依裝置、檔案位置與工作方式選擇入口。選擇 Claude Code 平台時，最有用的問題是「我的檔案在哪裡、工作在哪裡執行、我要怎麼檢查結果」。桌面與 CLI 都能處理專案工作，但介面、整合方式與部分功能不同；手機則主要讓你啟動、查看或接續支援的工作。先選一條適合自己的路線，通常比同時安裝所有入口更快開始。",
+      "hero": {
+        "src": "/guides/claude-code-platforms-guide/hero.jpg",
+        "alt": "桌面、CLI、網頁、手機怎麼選：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "選擇 Claude Code 平台時，最有用的問題是「我的檔案在哪裡、工作在哪裡執行、我要怎麼檢查結果」。桌面與 CLI 都能處理專案工作，但介面、整合方式與部分功能不同；手機則主要讓你啟動、查看或接續支援的工作。先選一條適合自己的路線，通常比同時安裝所有入口更快開始。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇用三種常見情境協助你做選擇：在電腦修改自己的網站、外出時接續任務，以及把例行工作寫成腳本。讀完後，你應該能畫出一條簡單資料流，指出輸入指示的裝置、真正執行工作的環境及存放成果的位置。這張小圖也能在跨裝置排錯時派上用場。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先找工作的位置"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-platforms-guide/diagram-1.svg",
+          "alt": "先找工作的位置 → 比較各種入口 → 依情境選一條路",
+          "width": 1600,
+          "height": 900,
+          "caption": "先找工作的位置 → 比較各種入口 → 依情境選一條路",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "假設你有一個放在 Windows 資料夾裡的待辦清單網站。用桌面 Code 開啟它，或在同一資料夾啟動 CLI，都是以本機專案為中心的工作方式。電腦裡的檔案、已安裝工具和本機伺服器會影響結果。換成網頁上的雲端任務時，要再確認雲端能取得哪個儲存庫、如何安裝依賴，以及是否有需要的執行設定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「同一個 GitHub 專案」也不等於「同一份即時檔案」。電腦尚未提交或推送的修改，不會因為你在手機登入相同帳號，就理所當然出現在另一個雲端環境。先分清楚工作副本與對話入口，才能避免兩边各改一份，最後卻只檢查了其中一份成果。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "比較各種入口"
+        },
+        {
+          "type": "table",
+          "header": [
+            "入口",
+            "適合的起手任務",
+            "需要理解的差異"
+          ],
+          "rows": [
+            [
+              "Desktop",
+              "選資料夾、看差異、預覽網站",
+              "本機或選定的其他執行環境"
+            ],
+            [
+              "CLI",
+              "終端機工作、腳本與管線",
+              "路徑、參數、Shell 與執行權限"
+            ],
+            [
+              "IDE",
+              "一邊編輯一邊交代任務",
+              "編輯器選取內容與工作區上下文"
+            ],
+            [
+              "Web",
+              "對儲存庫建立雲端任務",
+              "雲端依賴、分支與產出位置"
+            ],
+            [
+              "Mobile",
+              "外出啟動或接續工作",
+              "雲端、Remote Control、Dispatch 的分別"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "桌面版讓差異、工作階段與預覽比較容易同時查看；CLI 則容易接到文字管線或其他腳本。IDE 整合適合本來就常在編輯器工作的讀者。這些選擇沒有必要變成能力高低的排名：先用能看懂結果的入口，真正遇到該平台沒有的功能時，再讀對應教學切換。"
+        },
+        {
+          "type": "paragraph",
+          "text": "手機操作要特別分清楚三條路。雲端工作以遠端執行環境為主；Remote Control 接續本機工作階段；Dispatch 則把工作派送到配對的桌面端。它們對電腦是否需要保持運作、可用工具與存取範圍的要求不同，不能只因為都是從手機送出一句話，就當成同一種功能。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "依情境選一條路"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果你想快速修改電腦裡的小網站，而且對終端機還不熟悉，先選"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-desktop-setup",
+              "text": "桌面版"
+            },
+            {
+              "type": "text",
+              "text": "。你仍會逐漸接觸檔名、測試和版本控制，只是不用先把所有終端機細節學完。第一個任務以改一段文字或一個可驗證的小功能為宜，熟悉差異檢視後再增加範圍。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "如果你已經會開終端機，或打算把工作放進腳本，選 CLI。Windows、macOS 和 Linux 的安裝篇分開寫，照你的環境完成一篇即可。Windows 原生與 WSL 是兩種環境；若練習材料在其中一邊，先固定使用那一邊的路徑與工具，等能穩定操作後再學跨環境協作。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果你主要想在通勤時查看任務，先閱讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-on-the-web",
+              "text": "網頁版"
+            },
+            {
+              "type": "text",
+              "text": "，再依需求選"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-remote-control",
+              "text": "Remote Control"
+            },
+            {
+              "type": "text",
+              "text": "或"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-desktop-dispatch",
+              "text": "Dispatch"
+            },
+            {
+              "type": "text",
+              "text": "。先決定工作要繼續在本機跑，還是希望它在你離線後仍能在雲端進行，選擇才會明確。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用同一個小任務比較"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要用兩個完全不同的任務比較平台速度。選一個很小的只讀工作，例如讀出練習專案的入口與測試指令，在你已經具備資格的入口中各試一次即可。記錄工作位置、如何提供檔案、如何找到結果，而不是只看回答花了幾秒。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：平台體驗練習",
+          "code": "請只讀取這個練習專案，列出入口、資料操作檔案與測試指令。\n說明你現在使用的工作目錄，以及哪一項資訊需要我補充。\n這次先不修改、不提交，也不建立遠端資源。\n"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "記下目前入口與專案位置。",
+            "送出相同的小任務，檢查它是否讀到正確檔案。",
+            "找出操作紀錄或工具結果，確認能追溯資料來源。",
+            "關閉視窗後再回來，確認你知道如何找回工作。",
+            "用自己的習慣選一個主要入口，其他入口保留作補充。"
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "不同入口使用相近的核心能力，但功能開放條件與介面會隨版本變動。查某個功能時，先看文章的適用平台，不要直接把 CLI 的參數貼到桌面版設定欄。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成選擇與處理例外"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成這篇後，寫下「我從哪裡下指令、專案在哪裡、成果在哪裡檢查」三句話。比如：「我用桌面 Code 下指令，修改本機 starter 資料夾，用本機瀏覽器和 Git 差異檢查。」這比只記住自己選了 Desktop 更具體，也能讓下一篇安裝教學順利接上。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果官方文件提到你的版本還沒有的選項，先確認更新與帳號资格，不要在找不到按鈕時猜測替代路徑。若你換了入口卻看不到剛才的修改，回頭核對工作副本與分支；若只是找不到對話，則改讀工作階段管理。分清楚「檔案沒同步」與「對話沒接續」，能省下不少不必要的重裝和重做。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Platforms and integrations",
+          "url": "https://code.claude.com/docs/en/platforms",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Desktop application",
+          "url": "https://code.claude.com/docs/en/desktop",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

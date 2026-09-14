@@ -1,0 +1,280 @@
+{
+  "slug": "gemini-for-google-sheets-formulas",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 118,
+  "locales": {
+    "zh-TW": {
+      "title": "Google Sheets：公式、整理與資料核對",
+      "description": "Google Sheets 裡的 Gemini 能協助理解欄位、撰寫公式、整理資料與建立分析。本篇用三筆虛構活動報名資料練習，完成一張可核對的費用表。目標是知道公式為何得到某個數字，以及遇到空白、文字或重複資料時如何處理，不只把 AI 的答案貼進表格。",
+      "hero": {
+        "src": "/guides/gemini-for-google-sheets-formulas/hero.jpg",
+        "alt": "費用表先算再核對的原創插畫，以文件、裝置與流程等物件呼應公式、整理與資料核對；非產品介面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Google Sheets 裡的 Gemini 能協助理解欄位、撰寫公式、整理資料與建立分析。本篇用三筆虛構活動報名資料練習，完成一張可核對的費用表。目標是知道公式為何得到某個數字，以及遇到空白、文字或重複資料時如何處理，不只把 AI 的答案貼進表格。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-for-google-sheets-formulas/diagram-1.svg",
+          "alt": "保留原始列：在副本測試公式；人數乘單價：六百、二百、九百；合計檢查：登記金額一千七百",
+          "width": 1600,
+          "height": 900,
+          "caption": "費用表先算再核對。此為原創教學圖解，並非產品畫面或實測輸出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "開始前：保留原始資料",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "準備電腦瀏覽器、Google 試算表，以及具備相關 Gemini 功能的帳號。公司帳號另受管理設定影響，參閱"
+            },
+            {
+              "type": "link",
+              "text": "小團隊導入",
+              "url": "https://mokaair.com/zh-TW/life/google-workspace-ai-for-small-business"
+            },
+            {
+              "type": "text",
+              "text": "。本篇依 2026 年 9 月 14 日官方文件整理；下列四則運算的預期值由人工核算，沒有宣稱是 Gemini 帳號的實際產出。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "建立新的原生 Google 試算表。若開啟的是 Excel 檔案，先確認是否需要從檔案選單儲存為 Google 試算表，以使用對應功能。第一個分頁命名為「原始資料」，再複製為「練習」。請在練習分頁操作，讓改錯時能比對原始內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把以下文字貼到 A1；欄位間是定位字元，可分成欄。貼上後確認五個標題各佔一欄，金額及人數是數值。若全部擠在同一格，使用資料分欄或直接逐欄填入，不要在錯位狀態下接著計算。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "報名練習資料",
+          "code": "姓名\t類型\t人數\t單價\t備註\n甲\t一般\t2\t300\t已確認\n乙\t學生\t1\t200\t已確認\n丙\t一般\t3\t300\t待付款\n"
+        },
+        {
+          "type": "heading",
+          "text": "第一步：先說明欄位，再要公式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "選取資料範圍，在右上方 Ask Gemini 入口提問。若介面提供 Build「建構」面板，可用它處理較完整的表格任務，但第一個練習仍只要求解釋與單一公式。不要一次同時要求更名、排序、刪除與建立圖表，否則不容易判斷哪一步改動了資料。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "公式說明提示詞",
+          "code": "目前「練習」分頁 A1:E4 是報名資料。\nC 欄為人數，D 欄為每人費用，第一列是標題。\n請提供放在 F2 的單筆金額公式，並解釋每個儲存格參照。\n人數或單價空白時先留白，不當成零元。\n再提供 F5 的合計公式。先顯示公式，不更改原始資料。\n請用這三筆資料列出預期金額，讓我核對。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 F1 填入「金額」，F2 放入下方公式，再向下填滿到 F4。將 F5 設為合計。公式中的 C2、D2 會隨向下填滿變成 C3、D3 等相對位置；如果全部固定在第二列，後兩筆就會算錯。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Google Sheets 公式",
+          "code": "=IF(OR(C2=\"\",D2=\"\"),\"\",C2*D2)\n=SUM(F2:F4)\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期三筆金額依序是六百、二百、九百，合計一千七百。這裡加總的是登記金額，包含待付款，不等於已收款。若要計算已收款，必須先定義付款欄位與判定規則；不能看到合計漂亮就拿去當營收。"
+        },
+        {
+          "type": "heading",
+          "text": "第二步：測試公式的邊界",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "暫時清空 C4，F4 應留白，合計會只包含前兩筆。恢復人數後，再測試輸入文字是否出現錯誤。原始範例刻意沒有把所有錯誤都轉成零，因為那會讓錯誤資料藏在總額裡。確認試算表地區、數字和日期格式後，再決定輸入限制。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新增資料列時，也要檢查合計範圍是否涵蓋新列。常見問題不是乘法錯，而是新報名放在範圍外。可以要求 Gemini 說明延伸範圍的方式，但要自己用新增一筆、刪回測試列的操作驗證。將結果記在工作稿，比單看公式文字更容易交接。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果不同類型對應固定價格，可另外建立費率表，再要求它提供查找公式與找不到時的處理。先測「一般」「學生」「未知」三種情況，尤其不能把未知類型默認成最便宜的價格。費率變動時保留生效日期，避免舊報名被新價格重新計算。"
+        },
+        {
+          "type": "heading",
+          "text": "第三步：分類與清理文字",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "要把備註分成「已確認」「待付款」「需人工確認」，先在新欄建立分類結果。提供明確規則：只有文字直接寫明已確認才歸到該類，意思不清楚保留人工確認。不要讓模型依姓名、語氣或猜測的背景判斷付款狀態。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "分類提示詞",
+          "code": "請依 E2:E4 的原文，在新欄提出狀態分類建議。\n只允許「已確認」「待付款」「需人工確認」。\n原文未明確寫出前兩種狀態時，使用「需人工確認」。\n列出原文、建議分類與理由；先不要覆寫 E 欄。\n重複姓名先標記，不刪除，因為可能是同名或追加報名。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "檢查建議後才套用到新欄。需要統一拼寫或空白時，先列出受影響列數，再確認是否符合預期。對照原始分頁看總列數有沒有改變，避免清理資料時把不同人的報名合併。涉及客戶或學生資料，先使用去識別的練習副本。"
+        },
+        {
+          "type": "heading",
+          "text": "第四步：圖表和 Build 面板",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把每種類型的人數彙總後，再要求建立圖表。此範例一般共五人、學生一人；圖表的縱軸應是人數，不是報名筆數，也不是金額。先核對摘要表的單位，再檢查圖表標題及標籤，三種數據都合理不代表可以互換。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若使用 Build 面板，請先把「保留原始分頁、分析範圍、要產生的新分頁」寫清楚。有計畫或來源確認步驟時先閱讀，再讓它繼續；需要停止就使用面板中的停止控制，並檢查已完成的修改。完整任務產生後仍要用前面的一千七百與六人驗收。"
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「公式出現解析錯誤？」先看貼上內容是否含全形符號、彎引號或換行，再核對該試算表地區設定的參數分隔符號。保留原始錯誤訊息和儲存格位置，請 Gemini 針對同一公式修正，不要直接改成固定答案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「為什麼畫面上的總額和口頭摘要不同？」檢查篩選、隱藏列、公式範圍及摘要採用的資料版本。請它列出所用儲存格與計算過程；需要人確認的差異應保留，不能只選較好看的數字。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「AI 能把整張表清理好嗎？」先在副本測試並定義哪些欄不能改。分類、去重和合併各有不同判準，三者應分開驗收。若需定期批次處理，可以接著學"
+            },
+            {
+              "type": "link",
+              "text": "API 文件工具",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-document-assistant"
+            },
+            {
+              "type": "text",
+              "text": "，但仍需保存來源和驗證規則。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "「沒有 Gemini 按鈕還能做練習嗎？」本篇公式可直接在 Sheets 輸入，仍能完成核算；Gemini 入口則另查帳號資格。這有助於區分表格本身的計算問題與 AI 功能尚未開放。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查證與範例",
+          "text": "本文於 2026-09-14 對照官方文件整理。畫面操作依官方說明，非所有裝置均經實機測試；範例輸出是驗收目標，實際內容依資料而異。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後的檢核",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "通過條件"
+          ],
+          "rows": [
+            [
+              "操作",
+              "能依正文重做一次，說明每一步使用的輸入。"
+            ],
+            [
+              "結果",
+              "能用原始資料或可重現測試核對輸出，而非只看語氣。"
+            ],
+            [
+              "延伸",
+              "知道下一篇教學解決的問題，以及什麼時候需要它。"
+            ]
+          ],
+          "caption": "完成實作後逐項確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著可以閱讀 "
+            },
+            {
+              "type": "link",
+              "text": "Gmail、Docs 與 Slides",
+              "url": "https://mokaair.com/zh-TW/life/gemini-in-gmail-docs-sheets"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "API 檔案與 JSON",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-files-structured-output"
+            },
+            {
+              "type": "text",
+              "text": "，把本篇的操作接到下一個工作流程。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Sheets 的 Gemini",
+          "url": "https://support.google.com/docs/answer/14356410?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Sheets Build 面板",
+          "url": "https://support.google.com/docs/answer/16959434?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Workspace Gemini 語言條件",
+          "url": "https://support.google.com/docs/answer/14925782?hl=en",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

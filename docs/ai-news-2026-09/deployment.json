@@ -1,0 +1,155 @@
+{
+  "release_sha": "2123edbd2e1fc53adef0b89952ead60deef31feb",
+  "previous_sha": "a4ee0f50770334051c7e2618a2138617875a1b40",
+  "content_base": "35a2d258b51d2a1ac9aff91dc5f7ed5a8df823ec",
+  "activated_at": "2026-09-14T06:36:34.866278+00:00",
+  "built_at": "2026-09-14T06:22:58.118603+00:00",
+  "ci_run": "https://github.com/x812033727/travel_scanner/actions/runs/34812907836",
+  "backup": {
+    "path": "/root/mokaair-release-ai-news-2123edbd/predeploy.dump",
+    "bytes": 27301727,
+    "sha256": "dfc9b2eb69c47eb03fc095e5c2fad2302cc0a38d4025df2a01660a1b02defb73",
+    "mode": "0o600",
+    "index_verified": true
+  },
+  "services": {
+    "api": {
+      "image": "sha256:1de16ffa6c47f11611f77281678664313c6dd178f6c3c8e3de07005ebef9f8d6",
+      "status": "running",
+      "restarts": 0,
+      "environment_unchanged": true
+    },
+    "web": {
+      "image": "sha256:5faff3a1174e19db5e5428129a84fc15e79cbb8391c4d78d45c7fa3aa8a694bb",
+      "status": "running",
+      "restarts": 0,
+      "environment_unchanged": true
+    },
+    "worker": {
+      "image": "sha256:1de16ffa6c47f11611f77281678664313c6dd178f6c3c8e3de07005ebef9f8d6",
+      "status": "running",
+      "restarts": 0,
+      "environment_unchanged": true
+    },
+    "alert-worker": {
+      "image": "sha256:1de16ffa6c47f11611f77281678664313c6dd178f6c3c8e3de07005ebef9f8d6",
+      "status": "running",
+      "restarts": 0,
+      "environment_unchanged": true
+    },
+    "alert-scheduler": {
+      "image": "sha256:1de16ffa6c47f11611f77281678664313c6dd178f6c3c8e3de07005ebef9f8d6",
+      "status": "running",
+      "restarts": 0,
+      "environment_unchanged": true
+    },
+    "hotspot-collector": {
+      "image": "sha256:1de16ffa6c47f11611f77281678664313c6dd178f6c3c8e3de07005ebef9f8d6",
+      "status": "running",
+      "restarts": 0,
+      "environment_unchanged": true
+    },
+    "analytics-scheduler": {
+      "image": "sha256:1de16ffa6c47f11611f77281678664313c6dd178f6c3c8e3de07005ebef9f8d6",
+      "status": "running",
+      "restarts": 0,
+      "environment_unchanged": true
+    },
+    "community-sweeper": {
+      "image": "sha256:1de16ffa6c47f11611f77281678664313c6dd178f6c3c8e3de07005ebef9f8d6",
+      "status": "running",
+      "restarts": 0,
+      "environment_unchanged": true
+    },
+    "postgres": {
+      "image": "sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73",
+      "status": "running",
+      "restarts": 0,
+      "environment_unchanged": true
+    },
+    "redis": {
+      "image": "sha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf",
+      "status": "running",
+      "restarts": 0,
+      "environment_unchanged": true
+    }
+  },
+  "data_before": {
+    "guide_articles": {
+      "rows": 130,
+      "sha256": "f25d3378fbdeafb028f0224a1e629716ea8e9e26f9b6964bae6f963708336001"
+    },
+    "guide_article_locales": {
+      "rows": 190,
+      "sha256": "61461045bb162acddb5e5065c079050cf7b0a2ee7da996517473e2fdc6f29203"
+    },
+    "provider_configs": {
+      "rows": 19,
+      "sha256": "ab1213702d03eadbf0e5bc1f47d6a28bd60ae57441c7013c1164f8a43355dcb5"
+    },
+    "site_pages": {
+      "rows": 20,
+      "sha256": "72ffbf8120e770185910d35069fd9c438b74f7df0e8e0fbf95ce0dba50296e00"
+    },
+    "travel_hotspots": {
+      "rows": 3894,
+      "sha256": "0a08fe1fbc688b321baa952961d272234bd336f8a4baac4533070aa068ffa83b"
+    },
+    "food_merchants": {
+      "rows": 439,
+      "sha256": "380aa5fd2244a52cd5db4c2195ce1be76a7855c831b124e5fa0ac03d2a158649"
+    },
+    "trip_plans": {
+      "rows": 6,
+      "sha256": "7abf93c555e0e4e9ed64e5564a9b8e397459947b1d11f96365e90adbb6333d2a"
+    },
+    "trip_plan_items": {
+      "rows": 199,
+      "sha256": "879aaf0c9cc3a5b041634b0bf4ccb1514ee88e359926b77b7edf8f4d38021206"
+    },
+    "usage_accounts": {
+      "rows": 2,
+      "sha256": "e38e7e549bca6c1002c21a5bda9b038326bb6db4b4d8b0a961d96483b2ce8f25"
+    }
+  },
+  "data_after_migrate": {
+    "guide_articles": {
+      "rows": 130,
+      "sha256": "f25d3378fbdeafb028f0224a1e629716ea8e9e26f9b6964bae6f963708336001"
+    },
+    "guide_article_locales": {
+      "rows": 190,
+      "sha256": "61461045bb162acddb5e5065c079050cf7b0a2ee7da996517473e2fdc6f29203"
+    },
+    "provider_configs": {
+      "rows": 19,
+      "sha256": "ab1213702d03eadbf0e5bc1f47d6a28bd60ae57441c7013c1164f8a43355dcb5"
+    },
+    "site_pages": {
+      "rows": 20,
+      "sha256": "72ffbf8120e770185910d35069fd9c438b74f7df0e8e0fbf95ce0dba50296e00"
+    },
+    "travel_hotspots": {
+      "rows": 3894,
+      "sha256": "0a08fe1fbc688b321baa952961d272234bd336f8a4baac4533070aa068ffa83b"
+    },
+    "food_merchants": {
+      "rows": 439,
+      "sha256": "380aa5fd2244a52cd5db4c2195ce1be76a7855c831b124e5fa0ac03d2a158649"
+    },
+    "trip_plans": {
+      "rows": 6,
+      "sha256": "7abf93c555e0e4e9ed64e5564a9b8e397459947b1d11f96365e90adbb6333d2a"
+    },
+    "trip_plan_items": {
+      "rows": 199,
+      "sha256": "879aaf0c9cc3a5b041634b0bf4ccb1514ee88e359926b77b7edf8f4d38021206"
+    },
+    "usage_accounts": {
+      "rows": 2,
+      "sha256": "e38e7e549bca6c1002c21a5bda9b038326bb6db4b4d8b0a961d96483b2ce8f25"
+    }
+  },
+  "selected_migration_fingerprints_unchanged": true,
+  "postgres_redis_containers_unchanged": true
+}

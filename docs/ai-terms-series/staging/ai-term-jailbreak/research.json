@@ -1,0 +1,39 @@
+{
+  "slug": "ai-term-jailbreak",
+  "status": "verified",
+  "checked_on": "2026-09-14",
+  "sources": [
+    {
+      "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+      "title": "OWASP：LLM01 Prompt Injection",
+      "access": "web search + web open",
+      "claims": [
+        "直接與間接注入、權限限制及外部內容分隔等風險控制"
+      ]
+    },
+    {
+      "url": "https://www.anthropic.com/research/many-shot-jailbreaking",
+      "title": "Anthropic：Many-shot jailbreaking",
+      "access": "web search + web open",
+      "claims": [
+        "研究以大量上下文示例影響安全行為，說明越獄與防禦仍需評測"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2307.15043",
+      "title": "Zou 等：Universal and Transferable Adversarial Attacks on Aligned Language Models",
+      "access": "web search + web open",
+      "claims": [
+        "對齊模型仍可能受對抗輸入影響，跨模型轉移是研究觀察而非普遍保證"
+      ]
+    }
+  ],
+  "aliases": [
+    "Jailbreak",
+    "越獄提示"
+  ],
+  "existing_overlap": "新文；相鄰概念以站內連結分流。",
+  "running_text_characters": 1851,
+  "notes": "客服情境僅示範約束評測，正文明確不將其泛化為所有安全越獄；未提供攻擊字串、敏感內容或操作性繞過步驟。",
+  "language_review": "OpenCC s2twp 0.1.7 全文轉換後，人工校正參數、權限、項目、通過、來源支持及文件等情境用語。"
+}

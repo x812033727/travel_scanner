@@ -1,0 +1,285 @@
+{
+  "slug": "gemini-cli-subagents",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 144,
+  "locales": {
+    "zh-TW": {
+      "title": "Subagents：拆分任務與整合結果",
+      "description": "Subagents（子代理）讓 Gemini CLI 把範圍明確的工作交給獨立上下文處理，再將結果交回主對話。本篇建立一個只讀指定檔案、找出資料缺漏的子代理，練習任務拆分、工具限制與結果整合。重點是交付可核對的證據，而不是同時開越多代理越好。",
+      "hero": {
+        "src": "/guides/gemini-cli-subagents/hero.jpg",
+        "alt": "子代理任務如何整合的原創插畫，以文件、裝置與流程等物件呼應拆分任務與整合結果；非產品介面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Subagents（子代理）讓 Gemini CLI 把範圍明確的工作交給獨立上下文處理，再將結果交回主對話。本篇建立一個只讀指定檔案、找出資料缺漏的子代理，練習任務拆分、工具限制與結果整合。重點是交付可核對的證據，而不是同時開越多代理越好。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-cli-subagents/diagram-1.svg",
+          "alt": "界定子任務：指定輸入與完成條件；獨立執行：觀察能力與權限；整合查覈：核對各自證據",
+          "width": 1600,
+          "height": 900,
+          "caption": "子代理任務如何整合。此為原創教學圖解，並非產品畫面或實測輸出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "開始前：任務是否適合拆分",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先完成"
+            },
+            {
+              "type": "link",
+              "text": "CLI 寫程式工作流程",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-coding-workflow"
+            },
+            {
+              "type": "text",
+              "text": "，理解"
+            },
+            {
+              "type": "link",
+              "text": "GEMINI.md",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "link",
+              "text": "工具權限",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "。本文以 Gemini CLI 0.59.0 與查證日官方 Subagents 檔案為基準；設定仍包含 experimental 名稱空間，升級前要重新確認。檔案目前說明子代理預設啟用，但不同內建代理可有各自開關，不應推論所有代理都能直接使用。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "適合的子任務應有自己的輸入與完成條件。例如主工作是整理活動企畫，可以把「找出公告缺少哪些報名資訊」交給子代理，主對話負責最後整合。若每一步都得等待上一個步驟的結果，就先依序完成；硬拆只會增加傳遞資料與核對的成本。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "子代理與"
+            },
+            {
+              "type": "link",
+              "text": "Agent Skills",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": "可以搭配，但意義不同。技能儲存工作方法，子代理另有上下文與工具設定。把一份 SKILL.md 放到 agents 資料夾，不會自動成為正確的代理設定。你需要清楚定義名稱、用途、可用工具及交付格式。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "設計交接：用證據約束摘要",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先寫出主代理要接收的格式：問題、原文片段、檔案位置、尚不能確認的原因。這能降低子代理把推測包成結論的機會，也方便主代理抽查。若只要求「檢查一下」，回傳一句「看起來沒問題」便無法驗收，更無法知道哪些資料根本沒被讀到。"
+        },
+        {
+          "type": "paragraph",
+          "text": "工具清單採最小範圍。本例只有 read_file，因為檔案位置會直接交給它；不需要 shell、網路或修改工具。限制工具和在提示詞寫「請不要修改」是兩個層次，兩者都可以保留。日後增加搜尋能力時，先確認目前版本的工具名稱，再擴充清單。"
+        },
+        {
+          "type": "heading",
+          "text": "實作：建立檔案缺漏檢查代理",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "在練習專案建立 event.txt，寫一段只有地點與費用、缺少日期的虛構公告。",
+            "建立 .gemini/agents/event-reviewer.md，貼上以下設定與指示。",
+            "啟動 CLI，使用 /agents 檢視代理管理介面。修改檔案後依介面重新載入，或重新啟動工作階段。",
+            "明確指定 event-reviewer 與檔案路徑，要求只回傳缺漏檢查結果。",
+            "等結果回來後，主對話逐項回到 event.txt 核對，再整理成給主辦單位的問題清單。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": ".gemini/agents/event-reviewer.md",
+          "code": "---\nname: event-reviewer\ndescription: 只讀指定活動公告，檢查日期、地點、費用與報名資訊是否完整。\nkind: local\ntools:\n  - read_file\nmodel: inherit\nmax_turns: 6\ntimeout_mins: 3\n---\n\n# 活動資料檢查\n\n只讀取主代理提供的檔案，不尋找其他資料。\n逐項檢查日期、地點、費用、報名方式。\n每項回傳原文片段與缺漏原因；未讀到資料時明確說明。\n不得猜測日期、補網址、修改檔案或對外傳送訊息。\n最後列出本次未完成的檢查。\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Gemini CLI 內輸入",
+          "code": "請將 event.txt 的缺漏檢查交給 event-reviewer。\n交付格式是「欄位、原文片段、待確認問題」。\n收到結果後請你再核對原文，保留仍無法確認的專案。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期結果應指出公告缺少確切日期及報名方式；如果原文已寫費用，就要附出對應片段，而不是列為缺漏。這是驗收目標，並非本篇展示的實際模型執行紀錄。讀者實作時要儲存代理是否啟動、使用哪些工具與最後結果，才能區分普通回答和真正委派。"
+        },
+        {
+          "type": "heading",
+          "text": "整合結果：主代理仍要負責判斷",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "回傳結果後，先確認子代理完成了指定範圍，再檢查它是否加入額外假設。若檔案讀取失敗，不能把空白清單當作「沒有問題」；若原文同時有兩種日期，要標示衝突，不能挑一個較合理的日期直接使用。主代理可以要求補查，但應說清楚剩下的問題，避免整個任務無限重跑。"
+        },
+        {
+          "type": "paragraph",
+          "text": "多個獨立任務確實可以分別處理，例如公告內容與表單欄位核對，但不要讓兩個代理同時修改同一份檔案。本例先採唯讀結果彙整，最後由一處產出修訂稿。閱讀不同資料時，交接說明應附來源名稱與版本，避免把舊公告和新表單當成同一批資料。"
+        },
+        {
+          "type": "heading",
+          "text": "常見問題與控制方法",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「沒有自動呼叫子代理」先確認 /agents 裡可見且已啟用，再用明確名稱測試。description 要描述專長與使用時機。模型可能選擇自己回答，這不是檔案一定壞掉；觀察實際工具記錄，才知道有沒有發生委派。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「子代理找不到檔案」主代理應交付清楚路徑，並確認讀取權限與啟動目錄。只提供「昨天那份檔案」不足以定位資料。不要為了處理路徑錯誤就給全部工具，先用同一個 read_file 能讀到的練習檔縮小問題。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「能不能讓子代理再叫子代理」本篇查證版本的官方文件說明有遞迴保護，子代理不能再呼叫其他子代理。需要下一層工作時，交回主代理重新安排。這也讓責任與結果更容易追蹤，不必追查多層轉述。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「如何限制成本與停止」使用明確的回合及時間上限，並把未完成專案列入回傳格式。要全面停用，可依官方設定把 experimental.enableAgents 設為 false，再重新啟動檢查。若只是停用一個代理，優先使用代理管理介面，保留其他已驗證的工作流程。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "完成這個練習後，再考慮需要外部資料的"
+            },
+            {
+              "type": "link",
+              "text": "MCP 擴充",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-mcp-extensions"
+            },
+            {
+              "type": "text",
+              "text": "。每增加一種工具，都應補一個實際案例與失敗驗證；可靠的委派流程是能說清楚誰讀了什麼、做了什麼、還缺什麼。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查證與範例",
+          "text": "本文於 2026-09-14 對照官方文件整理。畫面操作依官方說明，非所有裝置均經實機測試；範例輸出是驗收目標，實際內容依資料而異。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後的檢核",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "通過條件"
+          ],
+          "rows": [
+            [
+              "操作",
+              "能依正文重做一次，說明每一步使用的輸入。"
+            ],
+            [
+              "結果",
+              "能用原始資料或可重現測試核對輸出，而非只看語氣。"
+            ],
+            [
+              "延伸",
+              "知道下一篇教學解決的問題，以及什麼時候需要它。"
+            ]
+          ],
+          "caption": "完成實作後逐項確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著可以閱讀 "
+            },
+            {
+              "type": "link",
+              "text": "CLI 寫程式",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-coding-workflow"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Agent Skills",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": "，把本篇的操作接到下一個工作流程。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gemini CLI：子代理",
+          "url": "https://geminicli.com/docs/core/subagents/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini CLI：指令參考",
+          "url": "https://geminicli.com/docs/reference/commands/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -199,6 +199,16 @@ describe("where the slots go", () => {
     expect(adPositions(blocks, { hasHero: false })).toEqual([6]);
   });
 
+  it("treats a rich paragraph as prose while keeping code examples intact", () => {
+    const rich = { type: "rich_paragraph" };
+    const code = { type: "code" };
+    const blocks = [heading, rich, code, ...Array.from({ length: 24 }, () => rich)];
+    const positions = adPositions(blocks);
+    expect(positions.length).toBeGreaterThan(0);
+    expect(positions[0]).toBe(2);
+    expect(positions.every(position => blocks[position - 1].type !== "code")).toBe(true);
+  });
+
   it("spaces units out and scales how many with the length of the article", () => {
     const count = (length: number) => adPositions([heading, ...body(length - 1)]).length;
     expect(count(BLOCKS_PER_AD * 2 - 1)).toBe(1);

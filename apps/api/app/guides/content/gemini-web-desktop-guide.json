@@ -1,0 +1,350 @@
+{
+  "slug": "gemini-web-desktop-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 104,
+  "locales": {
+    "zh-TW": {
+      "title": "電腦網頁版：Windows、檔案與瀏覽器捷徑",
+      "description": "在 Windows 電腦使用 Gemini，可以選官方網頁或 Windows 原生應用程式。本篇先示範網頁登入、瀏覽器捷徑與檔案上傳，再補充官方 Windows 安裝方式。兩種入口分開說明；Mac 的安裝檔、快捷鍵與視窗分享，請另看 Mac 篇。",
+      "hero": {
+        "src": "/guides/gemini-web-desktop-guide/hero.jpg",
+        "alt": "Windows 的兩種入口的原創插畫，以文件、裝置與流程等物件呼應Windows、檔案與瀏覽器捷徑；非產品介面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "在 Windows 電腦使用 Gemini，可以選官方網頁或 Windows 原生應用程式。本篇先示範網頁登入、瀏覽器捷徑與檔案上傳，再補充官方 Windows 安裝方式。兩種入口分開說明；Mac 的安裝檔、快捷鍵與視窗分享，請另看 Mac 篇。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-web-desktop-guide/diagram-1.svg",
+          "alt": "瀏覽器：開啟 Gemini 網頁；原生應用：另用 Windows 安裝檔；附件核對：上傳後檢查內容",
+          "width": 1600,
+          "height": 900,
+          "caption": "Windows 的兩種入口。此為原創教學圖解，並非產品畫面或實測輸出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "開始前：瀏覽器與資料準備",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "準備更新的 Chrome、Edge 或其他官方支援瀏覽器，登入你要使用的 Google 帳號。工作與私人帳號最好使用各自的瀏覽器設定檔，進入 Gemini 後仍要確認個人資料圖示。若公司管理瀏覽器或帳號權限，依管理員允許的方式使用，不要用私人帳號繞過工作資料規範。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一次練習只需一份自己編寫的文字檔。建立新的練習資料夾，以記事本儲存下方內容為 UTF-8 的 activity.txt，確認實際檔名。Windows 若隱藏副檔名，可在檔案總管開啟檔名副檔名顯示，避免誤存成 activity.txt.txt。這份檔案是教學資料，不含真實活動承諾。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "activity.txt",
+          "code": "活動名稱：週末植物觀察\n集合地點：社群活動中心入口\n準備物品：水壺、筆記本\n日期：尚未公告\n費用：尚未公告\n"
+        },
+        {
+          "type": "heading",
+          "text": "建立入口：書籤與桌面捷徑",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在網址列輸入 gemini.google.com 並登入，先完成一個文字對話。確認是正確網站後，可用瀏覽器的加入書籤功能儲存入口，Windows 常見快速鍵為 Ctrl+D。書籤名稱可以寫「Gemini－私人」或「Gemini－工作」，方便提醒自己檢查帳號，但名稱本身不會強制切換登入身分。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若瀏覽器選單提供安裝網頁應用程式或建立捷徑，可以使用該功能開出獨立視窗；選項名稱與位置會隨瀏覽器版本不同。這類入口仍由瀏覽器提供網頁服務，不代表取得 Mac 的原生程式，也不會因為多了一個圖示就能離線使用模型。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Mac 使用者需要原生安裝、Option 加空白鍵與視窗分享時，請看"
+            },
+            {
+              "type": "link",
+              "text": "Mac 桌面版",
+              "url": "https://mokaair.com/zh-TW/life/gemini-mac-app-guide"
+            },
+            {
+              "type": "text",
+              "text": "。想在正在看的網頁旁邊直接提問，則屬於"
+            },
+            {
+              "type": "link",
+              "text": "Chrome 內建 Gemini",
+              "url": "https://mokaair.com/zh-TW/life/gemini-in-chrome-guide"
+            },
+            {
+              "type": "text",
+              "text": "，它的分頁分享與資格條件和單純開啟 Gemini 網頁不同，應分別確認。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "實作：上傳檔案並產生核對表",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "在 Gemini 網頁開啟新對話，確認帳號與目前模型。",
+            "點選輸入區的新增檔案或上傳入口，從裝置選擇 activity.txt。",
+            "等附件名稱顯示在輸入區，確認選到的是練習檔，而非同資料夾內其他檔案。",
+            "貼上下方提示詞並送出。檢查回覆是否能指出活動名稱、集合地點和仍未知的欄位。",
+            "對照記事本中的原文，把確認後的結果複製到新檔案，保留原始檔案以便回查。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "檔案核對提示詞",
+          "code": "請讀取這次附上的 activity.txt，只使用檔案中的資訊。\n列出「活動名稱、集合地點、準備物品、日期、費用」五個欄位。\n每個欄位包含原文依據，以及目前是否已確定。\n最後寫一段 80 字以內的通知草稿，保留日期與費用尚未公告。\n如果沒有收到附件，請直接說明，不要假裝已讀取。\n"
+        },
+        {
+          "type": "heading",
+          "text": "預期結果：附件與文字各自確認",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "成功結果應保留「社群活動中心入口」，並把日期和費用列為尚未公告；這是練習的預期答案，不是某次模型實際輸出的逐字紀錄。若只回答泛用的植物觀察建議，可能沒有使用附件，應先核對檔名與上傳狀態，再要求列出原文依據。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "附件顯示完成與模型正確理解是兩件事。文字檔可以直接核對；換成 PDF、掃描圖片或試算表時，要再看頁面、數字與欄位是否辨識正確。進一步的 OCR、跨檔比較與圖表核對方式，請接著看"
+            },
+            {
+              "type": "link",
+              "text": "PDF、圖片與表格分析",
+              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "檔案大小、數量與當次可用額度會影響上傳。遇到限制先讀畫面訊息，改用一份較小且可辨識的公開練習檔，確認流程正常，再處理真正的檔案。不要只因上傳失敗就購買更高方案；檔案損壞、格式或組織權限也可能是原因，額度資訊集中在"
+            },
+            {
+              "type": "link",
+              "text": "方案篇",
+              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Windows 原生版：另一種官方入口",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "查證當日，Google 官方桌面頁已同時提供 Windows 與 macOS 下載。Windows 說明要求 Windows 10 以上、至少 8 GB 記憶體、200 MB 可用空間與網路。開啟 gemini.google/desktop，選 Windows 下載，儲存 GeminiSetup.exe；執行後依安裝畫面完成，再從開始功能表開啟 Gemini 並登入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方 Windows 快速鍵為 Alt 加空白鍵，可以在應用程式設定調整。開啟程式時若右下角出現更新通知，依「重新啟動以更新」提示處理，先儲存手上的草稿。這段依 Windows 官方說明整理，沒有在本次環境安裝實測；Windows 原生功能仍應看自己的介面，不能假設與 Mac 全部相同。"
+        },
+        {
+          "type": "heading",
+          "text": "多視窗工作與成果儲存",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "可以把 Gemini 與原始檔案並排顯示，一邊看回覆、一邊核對來源。瀏覽器縮放會影響字型和按鈕排列，字太小時先調整縮放，不要為了同時塞入太多視窗而看不清日期與單位。若使用螢幕閱讀工具，依標題、輸入區標籤與按鈕名稱操作即可。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "複製結果時，先貼到自己的草稿，檢查表格欄位、專案符號及換行是否保持。生成的信件文字不會因複製而自動寄出；若要交由 Google 檔案持續編輯，可以使用介面提供的匯出功能或手動貼上，再確認目的檔案及分享權限。"
+            },
+            {
+              "type": "link",
+              "text": "Gmail 與檔案工作流程",
+              "url": "https://mokaair.com/zh-TW/life/gemini-in-gmail-docs-sheets"
+            },
+            {
+              "type": "text",
+              "text": "會說明後續整理方式。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "常用任務可以儲存提示詞和一份測試資料，但不要把帳號密碼或 API 金鑰放進桌面便條。網頁版自訂助手使用"
+            },
+            {
+              "type": "link",
+              "text": "Gems",
+              "url": "https://mokaair.com/zh-TW/life/gemini-gems-custom-assistants"
+            },
+            {
+              "type": "text",
+              "text": "設定；放在資料夾中的 GEMINI.md 不會自動變成此網頁的預設規則，需要 CLI 的讀者應轉到相關系列。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「一定要下載 Windows 安裝程式嗎？」本篇流程不需要，直接使用官方網頁即可。看到第三方包裝程式時，先確認提供者及必要性；不能因為名稱含 Gemini 就把它當成 Google 官方桌面版。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「捷徑開啟後帳號不對怎麼辦？」先確認捷徑使用哪個瀏覽器設定檔，再看 Gemini 的登入帳號。建立書籤不會鎖定身分；有多個帳號時，切換前先確認要處理的資料屬於哪個工作空間。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「上傳後可以直接刪掉原始檔嗎？」不建議把對話當成唯一備份。保留原始檔案及已核對成果，尤其是需要追溯來源的工作。雲端對話與活動儲存的設定另依"
+            },
+            {
+              "type": "link",
+              "text": "隱私及記錄管理",
+              "url": "https://mokaair.com/zh-TW/life/gemini-privacy-activity-settings"
+            },
+            {
+              "type": "text",
+              "text": "處理，與本機檔案是否存在並不相同。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查證與範例",
+          "text": "本文於 2026-09-14 對照官方文件整理。畫面操作依官方說明，非所有裝置均經實機測試；範例輸出是驗收目標，實際內容依資料而異。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後的檢核",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "通過條件"
+          ],
+          "rows": [
+            [
+              "操作",
+              "能依正文重做一次，說明每一步使用的輸入。"
+            ],
+            [
+              "結果",
+              "能用原始資料或可重現測試核對輸出，而非只看語氣。"
+            ],
+            [
+              "延伸",
+              "知道下一篇教學解決的問題，以及什麼時候需要它。"
+            ]
+          ],
+          "caption": "完成實作後逐項確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著可以閱讀 "
+            },
+            {
+              "type": "link",
+              "text": "Mac 桌面版",
+              "url": "https://mokaair.com/zh-TW/life/gemini-mac-app-guide"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "讀 PDF、圖片與表格",
+              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+            },
+            {
+              "type": "text",
+              "text": "，把本篇的操作接到下一個工作流程。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "登入與支援瀏覽器",
+          "url": "https://support.google.com/gemini/answer/13278668?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini 檔案上傳",
+          "url": "https://support.google.com/gemini/answer/14903178?hl=en-CA",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Windows 原生版官方說明",
+          "url": "https://support.google.com/gemini/answer/18263854?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini 台灣桌面下載",
+          "url": "https://gemini.google/tw/desktop/?hl=zh-TW",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,241 @@
+{
+  "slug": "claude-code-rules-and-imports",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 122,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜拆分規則與引用其他 MD",
+      "description": "用 rules 與檔案引用維護共用規範。當 CLAUDE.md 越寫越長，可以把規則依主題拆開，讓每份文件有清楚用途。本篇會建立 .claude/rules 測試規則、加入只在特定路徑載入的條件，並示範如何透過 CLAUDE.md 共用 AGENTS.md。你會知道整理檔案與減少上下文是不同目標，不會誤以為拆成很多檔就自動節省讀取量。",
+      "hero": {
+        "src": "/guides/claude-code-rules-and-imports/hero.jpg",
+        "alt": "拆分規則與引用其他 MD：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "當 CLAUDE.md 越寫越長，可以把規則依主題拆開，讓每份文件有清楚用途。本篇會建立 .claude/rules 測試規則、加入只在特定路徑載入的條件，並示範如何透過 CLAUDE.md 共用 AGENTS.md。你會知道整理檔案與減少上下文是不同目標，不會誤以為拆成很多檔就自動節省讀取量。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "請先了解"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-claude-md-scopes",
+              "text": "規則作用範圍"
+            },
+            {
+              "type": "text",
+              "text": "，並在練習專案副本操作。範例中的路徑以專案根目錄為基準；如果資料夾結構不同，要先調整條件。這篇只建立指引，不會因為新增 MD 就自動執行測試或取得更多工具權限。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先把規則按用途分類"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-rules-and-imports/diagram-1.svg",
+          "alt": "先把規則按用途分類 → 建立第一份 rules 文件 → 用 paths 限定檔案範圍",
+          "width": 1600,
+          "height": 900,
+          "caption": "先把規則按用途分類 → 建立第一份 rules 文件 → 用 paths 限定檔案範圍",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "把現有規則分成專案概況、所有工作都適用的要求，以及特定檔案才需要的要求。專案概況留在 CLAUDE.md；測試命名與斷言慣例可移到 testing.md；只有介面檔需要的操作驗證，可以放在具有 paths 條件的規則。先分類再搬動，避免一條要求散落在多份文件。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "需求",
+            "適合方式",
+            "載入特性"
+          ],
+          "rows": [
+            [
+              "所有工作都需要的短規則",
+              "CLAUDE.md",
+              "啟動時載入"
+            ],
+            [
+              "依主題整理一般規則",
+              ".claude/rules/*.md",
+              "無條件規則啟動時載入"
+            ],
+            [
+              "特定路徑需要的規則",
+              "rules 加 paths 條件",
+              "讀到符合檔案時載入"
+            ],
+            [
+              "共用現有文件",
+              "CLAUDE.md 的 @ 引用",
+              "隨引用文件載入"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "建立第一份 rules 文件"
+        },
+        {
+          "type": "paragraph",
+          "text": "在專案建立 .claude/rules 目錄，新增 testing.md。檔名用主題命名，不必加流水號；子目錄也可以用來整理更多規則。沒有 paths 條件的規則會在啟動時載入，所以不要把一次性調查報告全部放進這裡。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": "寫入 .claude/rules/testing.md",
+          "code": "# 待辦專案測試規則\n\n- 使用既有 Node.js 測試工具，不新增測試框架。\n- 行為變更至少涵蓋正常輸入與一個邊界情境。\n- 切換或刪除項目時，確認其他識別碼的資料不變。\n- 回報實際執行的命令與結果，失敗時保留關鍵錯誤。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著從 CLAUDE.md 移除完全重複的段落，只留下必要概述或說明。刪除前先看差異，確保規則真的已完整搬到新文件。不是所有整理都需要增加引用：rules 目錄本身有載入機制，不必為每份規則再加一條 @ 引用，造成重複或混淆。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用 paths 限定檔案範圍"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下規則只針對待辦頁面的 HTML、CSS 與 DOM 程式。檔案頂端的兩組三條橫線稱為 frontmatter，其中 paths 使用 YAML 列表。這段是規則文件的中介資料，與 settings.json 的 JSON 語法不同。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": "寫入 .claude/rules/interface.md",
+          "code": "---\npaths:\n  - \"index.html\"\n  - \"style.css\"\n  - \"app.js\"\n---\n\n# 介面變更檢查\n\n- 輸入框必須有可辨認的標籤。\n- 用 textContent 呈現使用者輸入，避免當成 HTML 解讀。\n- 介面修改後，以 390px 寬度檢查按鈕、長文字與橫向溢出。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "條件需要符合實際檔名。本系列樣式檔是 style.css，若你的副本已重新命名，就要同步修改規則。較大的專案可使用 glob 模式，例如 tests/**/*.js；先用少量精確路徑做實驗，再擴大匹配，會更容易知道某條規則為何出現。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "引用其他 MD 與共用 AGENTS.md"
+        },
+        {
+          "type": "paragraph",
+          "text": "CLAUDE.md 支援 @path 引用；相對路徑以包含引用的文件為基準。一般 Markdown 超連結主要讓讀者點閱，並不等於這個匯入語法。若只是示範字串而不想匯入，可以用反引號或程式碼區塊包住，因為匯入解析會跳過這些程式碼位置。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": "寫入 CLAUDE.md：共用團隊規範",
+          "code": "@AGENTS.md\n\n# Claude Code 補充\n\n- 開始工作先確認目錄與既有變更。\n- 完成後列出測試結果及尚未驗證事項。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "目前官方明確說明 Claude Code 不會自動把 AGENTS.md 當成 CLAUDE.md 載入。使用上面的引用可以讓多種工具共用一份規範，並保留 Claude 特定補充。這裡採引用而非複製全文，能降低兩份規則日後各自修改而產生矛盾的機會。"
+        },
+        {
+          "type": "paragraph",
+          "text": "引用可以再引用其他檔案，但官方有遞迴深度限制。實務上也應避免繞成很長的鏈，因為維護者不容易追查來源。若引用解析到專案外部位置，會涉及額外信任確認；不要把接受外部引用當成所有專案都必須做的步驟，先看清楚將讀取哪些檔案。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "驗證拆分後的載入"
+        },
+        {
+          "type": "paragraph",
+          "text": "搬動引用文件時，記得引用路徑也可能需要更新。例如把 CLAUDE.md 移到 .claude 目錄後，原本的相對 AGENTS.md 位置就要重新核對。先畫出檔案所在層級，再從包含引用的那份文件出發解析，能避免「文件存在卻找不到」的常見錯誤。"
+        },
+        {
+          "type": "paragraph",
+          "text": "開新 session，先用 /context 查看已載入的記憶文件，再要求讀取 app.js，確認介面規則的條件能被觸發。之後讀 tests，核對一般測試規則仍然存在。若只問「你有遵守嗎」，很難分辨它是實際讀到文件還是依問題猜測。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：核對規則來源",
+          "code": "請先列出目前載入的規則來源。\n接著讀取 app.js，指出哪些額外指引適用於這個檔案。\n請引用實際規則路徑，先不要修改專案。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "成功判準是載入清單與回覆路徑能對上你建立的檔案，而且規則內容沒有被重複或遺漏。若 paths 沒作用，檢查 frontmatter、檔名、啟動目錄與設定來源。若 AGENTS.md 沒出現，檢查 @AGENTS.md 是否放在真正載入的 CLAUDE.md 中，且沒有被程式碼標記包住。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "拆檔可以改善維護，但一般 @ 引用仍會把內容載入上下文。想按工作需要才載入，請使用符合用途的路徑規則或 Skills。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "小練習是把一段測試規則從 CLAUDE.md 移到 rules，新增一個精確路徑條件，再透過 @AGENTS.md 共用一條簡短規範。完成後逐一核對來源與差異，確認沒有衝突。重複使用的完整工作流程則可以再整理成"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-skills-skill-md",
+              "text": "Skill"
+            },
+            {
+              "type": "text",
+              "text": "，不必把所有任務步驟常駐在規則中。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "How Claude remembers your project",
+          "url": "https://code.claude.com/docs/en/memory",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Explore the .claude directory",
+          "url": "https://code.claude.com/docs/en/claude-directory",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

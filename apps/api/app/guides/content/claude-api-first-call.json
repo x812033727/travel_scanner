@@ -1,0 +1,306 @@
+{
+  "slug": "claude-api-first-call",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "第一次呼叫 Claude API：金鑰、費用與十行 Python",
+      "description": "訂閱 Claude Pro 不等於能用 API：兩者是兩套帳號、兩套帳單。這篇依 2026 年 9 月查證的官方文件，帶你在 Claude Console 開帳號、儲值、設每月上限、建立金鑰，再用十行 Python 送出第一則訊息，逐行解釋 model、max_tokens、messages 三個參數，另附 curl；最後講金鑰外洩怎麼辦、一次呼叫多少錢，以及四種常見錯誤怎麼修。",
+      "hero": {
+        "src": "/guides/claude-api-first-call/hero.jpg",
+        "alt": "一把鑰匙插進一個終端機視窗的鎖孔，視窗裡有幾行程式碼，下方一行字寫著第一次呼叫 API",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "從 Claude 的網頁版跨到 API，第一件要弄清楚的事是：API 和 Pro、Max 訂閱是兩套帳。訂閱費不會折抵 API 的用量，API 的錢要另外在 Claude Console 儲值；一把金鑰等於一組可以直接刷你餘額的密碼；費用按 token 計價、輸入與輸出分開算，一次短問答通常只有零點幾美分。真正會出事的不是單次呼叫太貴，而是金鑰貼錯地方，或是程式寫了一個會一直重試的迴圈。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇依 2026 年 9 月 14 日查證的 Anthropic 官方文件與 Claude 說明中心，帶你把第一次呼叫做完：開 Console 帳號、儲值、設每月上限、建立金鑰、把金鑰放進環境變數，然後用十行 Python 送出一則訊息並印出回覆，逐行解釋 model、max_tokens、messages 三個必要參數，另附一段 curl。後半講金鑰外洩怎麼處理、一次呼叫怎麼估價，以及四種新手最常遇到的錯誤。介面名稱與價格官網隨時會改，讀的時候以官網當下的頁面為準。"
+        },
+        {
+          "type": "heading",
+          "text": "API 和 Pro、Max 訂閱是兩套帳",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "claude.ai 上的 Free、Pro、Max、Team 方案買的是聊天介面的使用權。Claude 說明中心寫得很直接：付費訂閱不包含 Claude API 與 Console 的使用權，兩邊都想要就得各自付費。API 的錢走另一條路，多數自助帳號是預付制——先在 Console 買「使用點數」，之後的 API 呼叫、Console 內建的 playground 與 Claude Code 都從這個餘額扣。說明中心寫明點數自購買日起一年到期，到期日不能延長，而且購買後不退費，所以第一次不必一口氣儲很多。"
+        },
+        {
+          "type": "paragraph",
+          "text": "帳號同樣是兩個系統。claude.ai 的登入帳號不會自動變成 Console 的組織：要用 API 就到 Claude Console（platform.claude.com）建立自己的組織，填組織與用途的資料、綁付款方式、買點數。官方定價文件的常見問題寫著新使用者會拿到少量免費點數試用，但沒有寫明金額，以官網為準；要穩定跑起來還是得先儲值。"
+        },
+        {
+          "type": "link",
+          "text": "Claude 免費、Pro、Max 方案比較：額度怎麼算、值不值得",
+          "url": "https://mokaair.com/zh-TW/life/claude-plans-free-pro-max-2026"
+        },
+        {
+          "type": "heading",
+          "text": "從開帳號到第一次成功呼叫的六個步驟",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "整套流程大約十五分鐘，順序很重要：先把上限設好，再建立金鑰，最後才寫程式。下面的介面名稱以英文版 Console 為準。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "開帳號：到 Claude Console（platform.claude.com）註冊並建立組織，依指示填組織資訊與使用情境。",
+            "儲值：左邊選單的 Settings → Billing，按 Buy credits 輸入金額，點數立刻入帳。同一頁的 Auto-reload 可以設「餘額低於多少就自動補多少」，第一次建議先關著，免得程式有問題還一直自動扣款。",
+            "設每月上限：一樣在 Billing 頁，Spend limits 區塊按 Adjust limit（沒設過的話是 Set limit）填一個金額。這個數字不能超過你所在級距的上限，Start 級距是每月 500 美元。",
+            "建立金鑰：Settings → API keys 按 Create key，取名字、選有效期，Linked account 選自己就是一把個人金鑰。建好後把那串字複製到安全的地方。",
+            "放進環境變數：在終端機執行 export ANTHROPIC_API_KEY=\"貼上你的金鑰\"，官方 SDK 會自己去讀這個變數。",
+            "跑起來：安裝套件、執行下一節的十行 Python，看到回覆就完成了。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "有效期是官網明講的防呆，用途是限制一把外流的金鑰還能被用多久。可選的預設值有 3 小時、1 天、7 天、30 天，也可以自訂，或選 Never 永不過期——官方文件說 Never 是留給「存進密碼管理器、自己定期輪換」的金鑰，練習用的選 7 天或 30 天就夠。金鑰過期後再拿去發請求會得到 401，而且過期的金鑰救不回來，只能重新建一把。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-api-first-call/diagram-1.svg",
+          "alt": "圖解：左邊由上而下是開帳號、儲值、設每月上限、建立金鑰、放進環境變數、跑起來六個步驟，右邊是一次請求裡 model、max_tokens、messages 三個必要參數",
+          "width": 1600,
+          "height": 900,
+          "caption": "左邊照順序走完六步就能發出第一次請求，右邊是每次請求都不能少的三個參數；圖上的數字與正文相同。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "十行 Python：送出第一則訊息",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Python 的官方套件叫 anthropic。照官方 quickstart 的做法，先開一個虛擬環境再安裝："
+        },
+        {
+          "type": "paragraph",
+          "text": "python3 -m venv .venv\nsource .venv/bin/activate\npip install anthropic"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著把下面這段存成 quickstart.py，用 python quickstart.py 執行："
+        },
+        {
+          "type": "paragraph",
+          "text": "import anthropic\n\nclient = anthropic.Anthropic()\n\nmessage = client.messages.create(\n    model=\"claude-opus-5\",\n    max_tokens=1000,\n    messages=[{\"role\": \"user\", \"content\": \"用三句話解釋什麼是 API 金鑰。\"}],\n)\n\nfor block in message.content:\n    if block.type == \"text\":\n        print(block.text)"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三行的 anthropic.Anthropic() 沒有帶任何參數，因為 SDK 會自己去環境變數 ANTHROPIC_API_KEY 找金鑰——這就是「不把金鑰寫進程式」的做法。三個必要參數分別是：model 是模型的 id，要照官網原封不動複製，例如 claude-opus-5、claude-sonnet-5、claude-haiku-4-5；max_tokens 是這一次回覆最多能產生幾個 token，官方文件說它只是絕對上限，模型可能提早停，但不會超過；messages 是對話內容，每一則有 role（user 或 assistant）與 content，而 Messages API 是無狀態的，要多輪對話就得每次把整段歷史重新送一次。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不想裝套件的話，curl 版本做的是同一件事："
+        },
+        {
+          "type": "paragraph",
+          "text": "curl https://api.anthropic.com/v1/messages \\\n  -H \"content-type: application/json\" \\\n  -H \"x-api-key: $ANTHROPIC_API_KEY\" \\\n  -H \"anthropic-version: 2023-06-01\" \\\n  -d '{\n    \"model\": \"claude-opus-5\",\n    \"max_tokens\": 1000,\n    \"messages\": [{\"role\": \"user\", \"content\": \"用三句話解釋什麼是 API 金鑰。\"}]\n  }'"
+        },
+        {
+          "type": "paragraph",
+          "text": "anthropic-version 是 API 的版本標頭，官方範例固定寫 2023-06-01。x-api-key 是舊寫法，官網現在建議改用 Authorization 標頭帶 Bearer 加金鑰，但兩種都還支援。"
+        },
+        {
+          "type": "heading",
+          "text": "金鑰等於信用卡：四條規矩",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "金鑰是一段以 sk-ant-api 開頭的長字串，誰拿到誰就能以你的名義發請求、花你的餘額。官方文件給的原則只有三句：存進密碼管理器、定期輪換、懷疑外洩就立刻停用或刪除。落到新手的日常，是下面四條。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "放環境變數，不要寫進程式。寫死在程式裡的金鑰會跟著檔案被複製、被截圖、被貼進聊天室。",
+            "不要提交進 git。把 .env 加進 .gitignore；已經推上去的話，改動或刪掉那一行沒有用，commit 歷史是永久的，唯一有效的做法是回 Console 把那把金鑰刪掉再建新的。",
+            "不要放進前端網頁或手機 App 的程式碼。瀏覽器看得到的東西使用者就拿得到，要從前端呼叫就得自己架一層後端。",
+            "不同用途給不同金鑰：個人練習一把、正式服務一把、自動化流程一把。出事時只要撤銷那一把，其他的照跑。API keys 頁上的 Disable 可以再打開，Delete 則是永久的。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "金鑰等於你的信用卡",
+          "text": "不要貼進對話、不要放進前端網頁、不要提交進 git。發現金鑰外流時，第一件事是到 Claude Console 的 Settings → API keys 把那把金鑰 Disable 或 Delete，再建一把新的換上去，改帳號密碼沒有用。建立金鑰時順手選一個有效期，官方文件說那正是為了限制一把外流的金鑰還能被用多久。"
+        },
+        {
+          "type": "heading",
+          "text": "一次呼叫大概多少錢，上限怎麼設",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "API 按 token 計價，輸入與輸出分開算，而且輸出貴很多。2026 年 9 月 14 日官網的標價（每百萬 token、美元）：Claude Opus 5 輸入 5、輸出 25；Claude Sonnet 5 輸入 2、輸出 10；Claude Haiku 4.5 輸入 1、輸出 5。整張價目表與各模型的定位、上下文視窗，模型篇有完整整理，這裡不重複。"
+        },
+        {
+          "type": "link",
+          "text": "Claude 模型家族：Fable、Opus、Sonnet、Haiku 怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/claude-model-lineup-2026"
+        },
+        {
+          "type": "paragraph",
+          "text": "估一次呼叫很簡單：輸入與輸出的 token 數各自乘上單價再除以一百萬。官網的粗估是 1 個 token 大約 4 個英文字元、或 0.75 個英文單字。用 Claude Opus 5 送一次輸入 1,000 token、輸出 1,000 token 的請求：輸入是 1,000 乘 5 除以 1,000,000 等於 0.005 美元，輸出是 1,000 乘 25 除以 1,000,000 等於 0.025 美元，合計 0.03 美元；換成 Claude Haiku 4.5 同樣的量只要 0.006 美元。真正把帳單撐大的不是單次呼叫，而是多輪對話——API 無狀態，每多一輪都要把前面整段重送，輸入的 token 會一路疊上去。"
+        },
+        {
+          "type": "paragraph",
+          "text": "看用量的地方在 Console 左邊選單：Usage 頁看 token 數與請求數，可以按工作區、模型、月份與金鑰篩選；Cost 頁看每日與每月的花費，兩頁都能匯出 CSV。上限設在 Settings → Billing 的 Spend limits，數字不能超過級距上限。要在撞牆前先收到信，可以到自己建立的工作區的 Limits 分頁按 Add notification，設花費達到某個金額就寄通知；官方文件註明預設工作區不能設限制，所以這招要先開一個自己的工作區。撞到你自己設的上限會拿到 400，訊息開頭是 You have reached your specified API usage limits；撞到級距本身的上限則是 429，要等到下個月 1 日 00:00 UTC 才恢復。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果你的程式每次都送同一段很長的說明或同一份文件，提示快取可以把重複的部分壓到輸入價的一成，值不值得、怎麼算，另有一篇專門講。"
+        },
+        {
+          "type": "link",
+          "text": "Claude API 省錢：提示快取與批次處理怎麼用",
+          "url": "https://mokaair.com/zh-TW/life/claude-api-prompt-caching-cost"
+        },
+        {
+          "type": "heading",
+          "text": "四個常見錯誤與怎麼修",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "401 authentication_error：金鑰有問題——打錯、前後多了空白、被停用或刪除，或是過期了。先在終端機確認環境變數真的有值（換一個終端機視窗要重新 export 一次），再到 Console 的 API keys 頁看那把金鑰還在不在。",
+            "429 rate_limit_error：撞到速率上限，或撞到級距的每月花費上限。前者的回應會帶 retry-after 標頭，照上面的秒數等一下再送就好，官方 SDK 預設也會自動重試兩次；後者沒有 retry-after，一直重試只會一直失敗，錯誤內容裡的 error_code 會是 enforced_spend_limit_reached，要去 Rate limits 頁申請提高級距，或等下個月。",
+            "404 not_found_error：多半是模型 id 打錯，例如憑印象拼一個帶日期的字串。模型 id 要從官網的模型總覽頁原封不動複製；2026 年 9 月 14 日的現役四個是 claude-fable-5-1、claude-opus-5、claude-sonnet-5、claude-haiku-4-5。",
+            "回覆被截斷：HTTP 是 200，話卻講到一半就停。看回應裡的 stop_reason，值是 max_tokens 就代表被你設的上限切掉了，把 max_tokens 調大重送即可。官方文件說 max_tokens 不計入速率限制的計算，所以留寬一點不會有額外代價。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "table",
+          "header": [
+            "新手的三個決定",
+            "建議",
+            "理由"
+          ],
+          "rows": [
+            [
+              "用哪個模型",
+              "第一次先用 claude-opus-5 跑通，之後要大量呼叫再換 claude-sonnet-5 或 claude-haiku-4-5",
+              "官網的模型總覽頁建議「不確定用哪個就從 Claude Opus 5 開始」，官方 quickstart 的範例也是它；一次練習只花幾分美元，等到量大了再往下換階省錢"
+            ],
+            [
+              "max_tokens 設多少",
+              "練習就照官方 quickstart 設 1000；正式用依你要的回覆長度往上加，被截斷再調大",
+              "太小會在句子中間被切掉（stop_reason 顯示 max_tokens），而官方文件說這個參數不計入速率限制，設寬一點沒有額外代價"
+            ],
+            [
+              "每月上限設多少",
+              "設一個你不介意全部花掉的數字，例如先儲 5 美元、上限也設 5 美元",
+              "上限是唯一擋得住迴圈寫錯的東西；不主動設，等於直接用級距的上限，Start 級距是每月 500 美元"
+            ]
+          ],
+          "caption": "2026 年 9 月 14 日依 Anthropic 官方文件與 Claude 說明中心整理；級距上限與介面名稱以官網當下頁面為準。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic 官方文件：Get started（quickstart 的 Python 與 curl 範例、pip install anthropic、export ANTHROPIC_API_KEY、範例用的 model 與 max_tokens）",
+          "url": "https://platform.claude.com/docs/en/get-started",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic 官方文件：API overview（Claude Console 與金鑰的位置、認證標頭、SDK 自動帶標頭、上限與速率限制的 Console 頁面）",
+          "url": "https://platform.claude.com/docs/en/api/overview",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic 官方文件：Authentication（Settings → API keys 的 Create key 與 Linked account、有效期 3 小時到 30 天與 Never、Disable 與 Delete、過期金鑰回 401、存進密碼管理器）",
+          "url": "https://platform.claude.com/docs/en/manage-claude/authentication",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic 官方文件：Claude API errors（400、401、404、429 等錯誤碼與意義、錯誤回應的形狀、SDK 預設自動重試兩次）",
+          "url": "https://platform.claude.com/docs/en/api/errors",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic 官方文件：Rate limits（Start 級距每月 500 美元、Billing 頁的 Adjust limit、自訂上限回 400 與級距上限回 429 的差別、enforced_spend_limit_reached、max_tokens 不計入 OTPM、預設工作區不能設限制）",
+          "url": "https://platform.claude.com/docs/en/api/rate-limits",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic 官方文件：Pricing（各模型每百萬 token 價格、1 token 約 4 個英文字元或 0.75 個英文單字、新使用者的少量免費點數、提示快取讀取為輸入價的一成）",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic 官方文件：Models overview（現役四個模型的 API id、上下文視窗、每百萬 token 價格、官網建議不確定就從 Claude Opus 5 開始）",
+          "url": "https://platform.claude.com/docs/en/models/overview",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic 官方文件：Using the Messages API（Messages API 無狀態、每次要送整段歷史、stop_reason 為 max_tokens 的回應範例）",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/working-with-messages",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic 官方文件：Messages API 參考（model、max_tokens、messages 三個參數的官方說明）",
+          "url": "https://platform.claude.com/docs/en/api/messages/create",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：How do I pay for my Claude API usage?（預付點數、Settings → Billing 的 Buy credits 與 Auto-reload、點數自購買日起一年到期、不退費）",
+          "url": "https://support.claude.com/en/articles/8977456-how-do-i-pay-for-my-claude-api-usage",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：建立 Console 組織之後怎麼開始用 API（填組織資訊、綁付款、買點數）",
+          "url": "https://support.claude.com/en/articles/8114531-i-have-created-an-account-in-console-and-i-want-to-start-using-the-api-what-should-i-do",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：有 Pro、Max、Team、Enterprise 訂閱為什麼還要另外付 API 與 Console 的費用",
+          "url": "https://support.claude.com/en/articles/9876003-i-have-a-paid-claude-subscription-pro-max-team-or-enterprise-plans-why-do-i-have-to-pay-separately-to-use-the-claude-api-and-console",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Cost and Usage Reporting in the Claude Console（Usage 與 Cost 頁的內容、依工作區與模型與金鑰篩選、CSV 匯出）",
+          "url": "https://support.claude.com/en/articles/9534590-cost-and-usage-reporting-in-the-claude-console",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Creating and managing Workspaces（工作區 Limits 分頁的 Change Limit 與 Add notification）",
+          "url": "https://support.claude.com/en/articles/9796807-creating-and-managing-workspaces-in-the-claude-console",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 官方定價頁（Free、Pro、Max 訂閱價格與 API 各模型每百萬 token 的價格）",
+          "url": "https://claude.com/pricing",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,337 @@
+{
+  "slug": "google-workspace-ai-for-small-business",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 125,
+  "locales": {
+    "zh-TW": {
+      "title": "小團隊使用 Workspace AI：帳號與管理",
+      "description": "小團隊導入 Workspace AI，最實用的第一步是選一個重複工作，讓幾位同事用相同資料和標準試做。本篇以三人團隊整理活動詢問信為例，完成帳號盤點、管理設定檢查、範本和一週試行紀錄。目標是知道誰可以用哪些資料、成果如何核對，以及是否真的減少返工。",
+      "hero": {
+        "src": "/guides/google-workspace-ai-for-small-business/hero.jpg",
+        "alt": "小團隊試行的分工的原創插畫，以文件、裝置與流程等物件呼應帳號與管理；非產品介面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "小團隊導入 Workspace AI，最實用的第一步是選一個重複工作，讓幾位同事用相同資料和標準試做。本篇以三人團隊整理活動詢問信為例，完成帳號盤點、管理設定檢查、範本和一週試行紀錄。目標是知道誰可以用哪些資料、成果如何核對，以及是否真的減少返工。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/google-workspace-ai-for-small-business/diagram-1.svg",
+          "alt": "資料負責人：維護來源與版本；操作人：依相同規則產生草稿；核對人：確認後記錄修改成本",
+          "width": 1600,
+          "height": 900,
+          "caption": "小團隊試行的分工。此為原創教學圖解，並非產品畫面或實測輸出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "開始前：先確認買的是哪一種服務",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google AI 個人訂閱、Google Workspace 版本與 Gemini Enterprise 的其他產品不是同一項服務。依 2026 年 9 月 14 日官方說明，Workspace Business 與 Enterprise 已將多項 AI 能力納入不同版本，舊 Gemini Business／Enterprise 附加方案的名稱不能直接當成現在應購買的項目。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先請負責人到管理控制檯查看組織目前的訂閱、使用者和可用功能。本文不代替團隊更改任何管理設定，也未登入企業帳號實測；功能條件依當日官方文件整理。個人方案價格可看"
+            },
+            {
+              "type": "link",
+              "text": "方案篇",
+              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+            },
+            {
+              "type": "text",
+              "text": "，團隊採購則應核對自己的 Workspace 合約與帳單。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "建立一份簡單盤點：每位成員的工作帳號、需要的產品、資料所在位置、誰負責核對。不要讓三個人共用一組登入資訊，也不要把私人 Gmail 的個人化設定當成公司政策。若目前只想整理文件，先從"
+            },
+            {
+              "type": "link",
+              "text": "Gmail、Docs、Slides 流程",
+              "url": "https://mokaair.com/zh-TW/life/gemini-in-gmail-docs-sheets"
+            },
+            {
+              "type": "text",
+              "text": "選一項開始。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "第一步：劃定一個可量測的試行任務",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這次任務設定為「把公開活動詢問整理成回覆草稿」，資料使用團隊自編的十封測試信，內容只包含活動主題、時間、名額和一般問題。避免第一輪就把客戶完整個資、合約或內部定價加入。每封信都保留人工參考答案，方便比較。"
+        },
+        {
+          "type": "paragraph",
+          "text": "安排三個角色：一人維護資料與版本，一人操作 AI，一人核對回覆。角色可輪換，但同一封信的生成與確認要能辨認。把完成定義寫清楚：回覆回答問題、沒有新增承諾、未提供資訊有列待確認，並且只產生草稿。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "團隊試行工作規則",
+          "code": "任務：將指定的活動詢問信整理成繁體中文回覆草稿。\n來源：只使用本次提供的測試信與活動資料表。\n輸出：問題摘要、可回答內容、待確認事項、建議回信。\n不自行增加名額、優惠、退款或合作承諾，不寄出信件。\n每個日期與金額都要對應來源；缺漏直接標示待確認。\n核對者確認後，才由實際負責人決定是否發送。\n"
+        },
+        {
+          "type": "heading",
+          "text": "第二步：分別檢查服務與資料權限",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "管理員可在管理控制檯的 Generative AI「生成式 AI」中找到 Gemini app，檢視服務狀態。依需要對指定組織單位或設定羣組配置，先記錄目前值與試行範圍，再儲存。設定可能需要時間生效，測試時重新整理並確認實際登入者。"
+        },
+        {
+          "type": "paragraph",
+          "text": "關閉 Gemini 應用程式，並不等於關閉 Gmail、Docs 等產品中的所有 AI 功能。逐服務的 Gemini 控制也有版本限制；查證時相關細部控制主要列 Enterprise 與特定教育版本。Business 小團隊不能照抄 Enterprise 畫面，應以自己管理臺實際提供的控制為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另檢查 Workspace 智慧功能設定，它們管理產品內與跨產品的資料使用，彼此並非同一開關。某些管理員設定只是預設值，使用者仍可能有自己的選擇。將設定名稱、範圍及生效狀態記在試行紀錄，別只寫「AI 已開啟」。"
+        },
+        {
+          "type": "heading",
+          "text": "第三步：用一份文件驗證存取範圍",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "建立只分享給試行成員的測試文件，讓每人先在 Drive 直接開啟，再請 Gemini 引用同一份內容。如果有人讀不到，核對原檔權限、下載或複製限制與管理設定；不要為了讓 AI 讀到而改成任何人都可查看。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "官方說明指出，Gemini 對 Workspace 資料的使用受使用者原有權限及內容擁有者控制影響；例如受限制的檔案或代管信箱可能另有存取限制。能在畫面看見某項資料，不一定等於 AI 可以跨產品讀取。相關入口參考"
+            },
+            {
+              "type": "link",
+              "text": "Connected Apps",
+              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "修改一個測試欄位，例如把名額二十人改為二十四人，再請操作人重新引用並核對。若答案仍是舊版，先看它用了哪個來源與時間。資料同步、舊對話上下文和複製的工作稿應分別排查，不能只用「AI 記錯了」概括。"
+        },
+        {
+          "type": "heading",
+          "text": "第四步：建立範本與三種測試題",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把工作規則放入團隊共用文件，註明版本、維護人和修改日期。若使用"
+            },
+            {
+              "type": "link",
+              "text": "Gems",
+              "url": "https://mokaair.com/zh-TW/life/gemini-gems-custom-assistants"
+            },
+            {
+              "type": "text",
+              "text": "儲存指示，先核對分享和資料權限；同事拿到助手不代表自動取得所有參考資料。重要格式也應保留可讀的文件版本，方便離開工具後仍能理解流程。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "測試題分成資料齊全、資料缺漏、資料衝突三類。資料齊全時應產生可用草稿；缺漏時應詢問，不能編造；衝突時應列出不同說法並找負責人確認。若只測最容易的完整資料，正式使用才會碰到大部分問題。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "測試信範例",
+          "code": "你好，我想報名下個月的社區講座。\n我看到舊公告寫 20 個名額，新公告寫 24 個名額，請問以哪一份為準？\n另外我想知道報名截止日期，謝謝。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期回覆要核對新舊公告，保留未提供的截止日期，不擅自宣告還剩幾個名額。測試資料若只寫總名額，不能推算即時剩餘名額。這是本文的人工作業標準，未宣稱各方案有固定的答對率。"
+        },
+        {
+          "type": "heading",
+          "text": "第五步：記錄一週試行結果",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "每次記錄處理時間、核對時間、修改次數、錯誤種類與是否採用。假設原本人工寫作十分鐘，AI 草稿兩分鐘但核對和修正九分鐘，總時間其實沒有減少；要看完整流程。這些數字是算術示例，不是本次團隊的實測成效。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一週後挑出最常出錯的兩類問題，修改來源或規則，再以同一測試集重做。若錯誤來自資料版本，先修資料；若是格式不一致，再修指示。達到團隊自己的接受標準後逐步擴大，並保留暫停與回復原流程的方法。"
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「每個同事都需要最貴方案嗎？」先盤點必需功能與現有版本，利用少量使用者試行，再決定席次。不要只因某個展示功能很吸引人就替全員升級。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「公司資料會如何使用？」查看實際帳號適用的 Workspace 服務條款與資料保護說明，區分核心服務、其他服務和個人帳號。管理紀錄、分享權限與使用者回饋也要一併理解，不能把某一句宣傳套用到所有入口。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「關閉後為何仍有其他 AI 按鈕？」產品服務、智慧功能、會議筆記與 Gemini app 有不同控制。回到盤點表確認要關的是哪項功能，再查看該版本支援的設定。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「想自動整理每週來信？」先確認一次性流程穩定，再評估"
+            },
+            {
+              "type": "link",
+              "text": "Spark",
+              "url": "https://mokaair.com/zh-TW/life/gemini-spark-workflows-guide"
+            },
+            {
+              "type": "text",
+              "text": "或其他適用的自動化工具。Spark 的個人帳號資格不能直接當成公司 Workspace 可用承諾，導入前應重新確認。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查證與範例",
+          "text": "本文於 2026-09-14 對照官方文件整理。畫面操作依官方說明，非所有裝置均經實機測試；範例輸出是驗收目標，實際內容依資料而異。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後的檢核",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "通過條件"
+          ],
+          "rows": [
+            [
+              "操作",
+              "能依正文重做一次，說明每一步使用的輸入。"
+            ],
+            [
+              "結果",
+              "能用原始資料或可重現測試核對輸出，而非只看語氣。"
+            ],
+            [
+              "延伸",
+              "知道下一篇教學解決的問題，以及什麼時候需要它。"
+            ]
+          ],
+          "caption": "完成實作後逐項確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著可以閱讀 "
+            },
+            {
+              "type": "link",
+              "text": "Gmail、Docs 與 Slides",
+              "url": "https://mokaair.com/zh-TW/life/gemini-in-gmail-docs-sheets"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "活動記錄與隱私",
+              "url": "https://mokaair.com/zh-TW/life/gemini-privacy-activity-settings"
+            },
+            {
+              "type": "text",
+              "text": "，把本篇的操作接到下一個工作流程。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Workspace 已納入的 Gemini 功能",
+          "url": "https://knowledge.workspace.google.com/admin/generative-ai/workspace-with-gemini/gemini-ai-features-now-included-in-google-workspace-subscriptions",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "各服務的 Gemini 存取控制",
+          "url": "https://knowledge.workspace.google.com/admin/generative-ai/workspace-with-gemini/manage-access-to-gemini-features-in-workspace-services",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "管理 Gemini 應用程式服務",
+          "url": "https://support.google.com/a/answer/14571493?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Workspace 智慧功能控制",
+          "url": "https://support.google.com/a/answer/10095404?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini 存取 Workspace 資料的條件",
+          "url": "https://support.google.com/a/users/answer/17010577?hl=en",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

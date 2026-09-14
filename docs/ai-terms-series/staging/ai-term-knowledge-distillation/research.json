@@ -1,0 +1,37 @@
+{
+  "slug": "ai-term-knowledge-distillation",
+  "status": "verified",
+  "checked_on": "2026-09-14",
+  "sources": [
+    {
+      "title": "Hinton 等：Distilling the Knowledge in a Neural Network",
+      "url": "https://arxiv.org/abs/1503.02531",
+      "access": "web open; term researched with web search",
+      "claims": [
+        "教師軟目標包含非最高類別資訊",
+        "使用溫度調整的蒸餾目標"
+      ]
+    },
+    {
+      "title": "PyTorch：Knowledge Distillation Tutorial",
+      "url": "https://docs.pytorch.org/tutorials/beginner/knowledge_distillation_tutorial.html",
+      "access": "web open; term researched with web search",
+      "claims": [
+        "教師與學生訓練及軟目標",
+        "輸出與中間表示的蒸餾方法"
+      ]
+    },
+    {
+      "title": "Kim、Rush：Sequence-Level Knowledge Distillation",
+      "url": "https://arxiv.org/abs/1606.07947",
+      "access": "Two independent reviewers read HTML section 3.2 on 2026-09-14",
+      "claims": [
+        "教師生成的序列可作為學生的監督訓練目標；不將論文的翻譯實驗速度推廣為一般效果"
+      ]
+    }
+  ],
+  "aliases": [],
+  "existing_overlap": "New term article; adjacent concepts linked and differentiated.",
+  "running_text_characters": 1852,
+  "notes": "Illustrative scenarios and schematic diagrams are original teaching examples, not reported experiments. No benchmark or price claims."
+}

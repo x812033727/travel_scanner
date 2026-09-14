@@ -1,0 +1,301 @@
+{
+  "slug": "claude-file-analysis-pdf-excel",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "給 Claude 讀 PDF 與試算表：摘要、比對與抓數字",
+      "description": "把保單、租約、政府公文、銀行對帳單或報表 Excel 丟給 Claude，它能摘要、找條款、比對新舊版、加總與分組。依 Anthropic 官網 2026 年 9 月的說明整理支援格式、對話單檔 500 MB 與每個對話 20 個檔案的上限、PDF 在 100 頁以內連頁面圖像一起讀的規則、程式執行與檔案建立怎麼開，並附四種台灣常見檔案的提示詞全文與驗證動作，以及單位、民國年、跨頁表格這些會出錯的地方和上傳前該遮的個資。",
+      "hero": {
+        "src": "/guides/claude-file-analysis-pdf-excel/hero.jpg",
+        "alt": "米色底上有一疊白色文件與一張綠色格線的試算表，一個深青色放大鏡照在文件上，右上方浮著一個對話泡泡，下方一行字寫著「先看出處再看數字」",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "一份保單條款 PDF、一張銀行對帳單、一份寫滿條件的政府公文，丟給 Claude 之後問一句「幫我看一下」，拿回來的多半是一段讀起來很順、但不能拿去做決定的摘要。這篇回答三件事：Claude 到底讀得了什麼檔案、怎麼問才會抓到你要的那一條、以及怎麼在三十秒內確認它沒有編。結論很短：文字型的 PDF 與乾淨的試算表它讀得穩，掃描成圖片的 PDF 在一定頁數內它也看得到，但只要答案裡有數字，就要它報出頁碼與欄位，然後自己回原檔對一次。"
+        },
+        {
+          "type": "paragraph",
+          "text": "支援的格式、大小與頁數上限、程式執行功能、隱私設定，都在 2026 年 9 月依 Anthropic 官網的 Claude 說明中心與官方文件查證。讀完你會有四組可以直接照抄的提示詞，對應台灣人最常遇到的四種檔案：保單或合約 PDF、政府公文或說明書、銀行對帳單或報表 Excel、掃描成圖片的 PDF；每一組後面都接一個驗證動作，抽頁對照、抽三筆手算、要它報頁碼與欄位，讓你當場判斷這次的答案可不可信。"
+        },
+        {
+          "type": "heading",
+          "text": "怎麼上傳、支援什麼、PDF 的文字與圖像怎麼處理",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "網頁版與桌面版的做法一樣：點輸入框旁邊的「+」，選「Add files or photos」，挑好檔案按開啟；也可以把檔案直接拖進對話視窗，圖片還能從剪貼簿貼上。要反覆用同一批檔案，就把它們放進專案（Projects）的檔案區，之後在那個專案裡開的新對話會自動帶著。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "支援的檔案類型：文件是 PDF、DOCX、CSV、TXT、HTML、ODT、RTF、EPUB、JSON、XLSX，圖片是 JPEG、PNG、GIF、WebP。XLSX 比較特別，官網寫要先在帳號裡開啟「程式執行與檔案建立」（Code execution and file creation）才能上傳。",
+            "對話裡的上限：單檔最大 500 MB，每個對話最多 20 個檔案，圖片最大 8000 × 8000 像素，PDF 最多 1000 頁。",
+            "專案裡的檔案是另一組數字：單檔最大 30 MB，數量不限，但全部內容要放得進上下文視窗；專案檔案只抽取文字，多模態的 PDF 除外。",
+            "上下文視窗看模型：官網寫付費方案的最新模型最多支援 1M token，其他是 500K 或 200K。開了程式執行之後，對話快接近上限時 Claude 會把前面的訊息摘要起來再接著講。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "PDF 怎麼被讀，是這篇最需要先講清楚的一件事。官網的說法是：100 頁以內的 PDF，Claude 會同時分析文字與視覺元素，也就是圖片、圖表與圖形；101 到 1000 頁只處理文字，不分析視覺元素；超過 1000 頁不能上傳。官方文件把機制寫得更白：系統會把文件的每一頁轉成圖片，再把那一頁抽出來的文字連同頁面圖片一起交給 Claude 分析。所以掃描成圖片的合約，在頁數不多的時候它其實「看得到」，這點跟只會抽文字的工具不一樣；但看得到不等於看得準，後面有一整節在講這件事。"
+        },
+        {
+          "type": "link",
+          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+        },
+        {
+          "type": "link",
+          "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
+          "url": "https://mokaair.com/zh-TW/life/claude-projects-knowledge-base"
+        },
+        {
+          "type": "heading",
+          "text": "保單與合約 PDF：抓條款與金額，再比對新舊版",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "保單條款、租約、服務合約的共同問題是太長、重點又散。順序是先確認它讀到全文，再問細節。第一句照抄這段：「這份 PDF 共幾頁？請列出所有條次與標題，先不要解讀內容。」它會回一份目錄；跟你自己翻到的對不上，就是檔案有問題或頁數超過上限，先解決這件事再往下問。"
+        },
+        {
+          "type": "paragraph",
+          "text": "確認之後再問細節，照抄這段：「請找出下列項目，每一項都附條次與頁碼，並原文照抄一句當作依據：保額或租金金額、給付或退費條件、除外不賠或不負責的情形、解約與提前終止的規定、生效日與到期日。找不到的項目就寫『文件中未提及』，不要推測。」它通常會回一份分項清單，每一條後面掛著條次、頁碼與一句原文。驗證動作很簡單：挑其中兩項，翻到它說的那一頁，看那句原文在不在。條次對不上，或原文根本查無此句，這份回答整份都不要用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "比對新舊版就是把兩份一起上傳，一個對話放得下 20 個檔案，兩份綽綽有餘。提示詞這樣寫：「以第一份為舊版、第二份為新版，列出新版新增、刪除、以及改了金額或天數的條文，做成表格，每一列都標出新舊版各自的條次與頁碼。」拿到表格之後抽查最關鍵的那一列，通常是金額或違約金，回兩份原檔各對一次。它有時候會漏掉它自己也不確定的條文，所以最後補一句：「有哪些條文你無法確定是否有變動？列出來。」"
+        },
+        {
+          "type": "heading",
+          "text": "政府公文與說明書：把規定變成你要做的事",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "公文、申請須知、產品說明書的麻煩不在長，而在條件散在各處：誰可以申請、要附哪些文件、期限到哪天、什麼情況不適用。提示詞這樣寫：「這份文件是給誰看的？請整理成四份清單：一、適用對象與資格條件；二、要準備的文件；三、期限與日期，並寫出原文的日期寫法；四、不適用或會被駁回的情形。每一項標出出自第幾頁第幾點。」"
+        },
+        {
+          "type": "paragraph",
+          "text": "最容易出錯的是日期。台灣的公文常寫民國年，例如「115 年 3 月 31 日」，它有時候直接當成西元年，有時候換算了卻沒說自己換算過。所以提示詞裡那句「寫出原文的日期寫法」不能省，拿到答案後自己把民國年加上 1911 算一次。金額同理：原文寫「新臺幣 30 萬元整」，就要它照抄原文，不要讓它自己改寫成阿拉伯數字，改寫的過程就是出錯的地方。驗證動作是抽頁對照：挑它標的其中一頁打開，確認那一點確實在那一頁。"
+        },
+        {
+          "type": "heading",
+          "text": "銀行對帳單與報表 Excel：讓它寫程式算，再抽三筆手算",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "試算表跟 PDF 走的是不同的路。官網寫 Claude 在 claude.ai 裡有一個私有的運算環境，可以寫並執行程式，舉的例子是 Python 或 JavaScript，也能做出 .xlsx、.docx、.pptx 與 PDF 檔讓你下載。這個功能叫「程式執行與檔案建立」，Free、Pro、Max、Team、Enterprise 都能用：Free、Pro、Max 自己到 Settings 的 Capabilities 把「Code execution and file creation」打開，Team 與 Enterprise 預設是開的，由擁有者在組織設定的 Capabilities 管理。這個模式下上傳與下載的單檔上限是 30 MB。早期那個只會跑 JavaScript 的分析工具，官網已註明由程式執行接手。"
+        },
+        {
+          "type": "paragraph",
+          "text": "對帳單或收支表的問法分三步。先問結構：「這份檔案有幾個工作表、每個工作表的欄位是什麼、共幾列、日期從哪天到哪天？有沒有空白列、合併儲存格，或金額欄裡混著文字？先列出來，不要分析。」再問計算：「依月份分組，算出收入合計、支出合計與結餘，做成表格；同時說明你用了哪一欄、排除了哪些列。」最後問異常：「列出金額最大的十筆，以及同一天同金額重複出現的列，每一筆都附列號。」"
+        },
+        {
+          "type": "paragraph",
+          "text": "驗證動作是抽三筆手算：從它的答案裡挑三個數字，一個月的合計、一筆最大的支出、一個分類的小計，打開原檔用計算機各加一次。這三筆都對得上，其餘通常也對；有一筆對不上，就把那一格指給它看，要它重算並說明差在哪裡。至於更複雜的統計、畫圖、交叉分析，思路跟 ChatGPT 那邊幾乎一樣，可以照下面兩篇的步驟走。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果你的工作本來就長在 Excel 裡，Anthropic 另外有一個 Excel 增益集叫 Claude for Excel。官網寫它已正式開放給 Pro、Max、Team 與 Enterprise，支援 Excel 網頁版，以及 Windows 與 Mac 上的 Microsoft 365 Excel，有最低版本要求，確切版本以官網為準。它的答案會附儲存格層級的引用，點一下就跳到那一格；官網也明講不支援模擬運算表與巨集（VBA），並且不建議直接用在未經人工檢查的對外文件或稽核關鍵的計算上。"
+        },
+        {
+          "type": "link",
+          "text": "上傳 PDF、Excel 給 ChatGPT：分析、摘要與抓重點",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-file-upload-analysis"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 資料分析：上傳 CSV 讓它跑程式畫圖表",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-data-analysis-csv"
+        },
+        {
+          "type": "heading",
+          "text": "掃描成圖片的 PDF：它看得到，但每個數字都要核",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "影印後掃描的保單、用手機拍下來存成 PDF 的帳單，裡面沒有可以用滑鼠選取的文字。前面說過，頁數在 100 頁以內時，每一頁會連同頁面圖片一起送給 Claude，所以它看得到；問題出在掃描品質。歪斜、太淡、有摺痕、印章蓋住數字的頁面，它可能把 3 看成 8、把 1,000 看成 100，而且不會主動說自己不確定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "提示詞要改成「先念、再算」：「這是掃描檔。請先把第 3 到第 5 頁上所有的金額與日期逐字抄出來，一筆一行，標明在哪一頁、哪一欄；抄完之後再回答我的問題。如果某個字看不清楚，寫『無法辨識』，不要猜。」它抄出來的那份清單就是你的對照表，一眼掃過去就知道有沒有讀錯。官方文件對 PDF 的建議也是同一個方向：用標準字體、文字要清楚可辨、把頁面轉正、指定頁碼時用 PDF 閱讀器上顯示的頁碼、太大的檔案先切開再傳。"
+        },
+        {
+          "type": "paragraph",
+          "text": "掃描檔還有一個常見的坑是表格跨頁。一張表在第 7 頁被切斷、第 8 頁接續，它很容易把第 8 頁開頭那幾列當成另一張新的表，或把重複出現的表頭當成資料算進去。遇到跨頁表格就直接限定範圍問：「只看第 7 到第 8 頁的那張表，第 8 頁開頭是第 7 頁的續表，表頭不要重複計算，算完把你納入計算的列號全部列出來。」"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-file-analysis-pdf-excel/diagram-1.svg",
+          "alt": "上傳、提問、驗證三步流程圖，左側列出支援格式與單檔 500 MB、每個對話 20 個檔案、PDF 100 頁與 1000 頁的規則，右側是四種檔案各自的提示重點與驗證動作。",
+          "width": 1600,
+          "height": 900,
+          "caption": "左邊三步由上往下做：上傳、提問、驗證；右邊四格是四種常見檔案各自的提示重點與驗證動作，數字都以正文為準，依 2026 年 9 月的 Anthropic 官網。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "它會錯的地方，以及上傳前先遮掉什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "下面這幾種情況，它不會報錯，只會給你一個看起來很合理的答案。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "數字的單位與千分位：報表角落寫著「單位：新臺幣千元」的那一行，它常常直接讀成元，整份結論就差一千倍。問之前先問一句「這份報表的金額單位是什麼？寫在哪裡？」再開始。",
+            "民國年：115 年被當成西元 115 年或 2015 年都發生過。要它照抄原文的日期寫法，換算的動作自己做。",
+            "跨頁與合併儲存格：跨頁表格的續表、用合併儲存格做成分組標題的欄位，程式讀進去大多是空白，分組加總就會把那些列歸到空白類別。",
+            "超過上限的檔案：PDF 超過 100 頁之後只剩文字，圖表與掃描頁的內容就讀不到；超過 1000 頁根本傳不上去。症狀是後半本的條款「找不到」或答得很籠統，做法是先切檔再傳。",
+            "夾帶指令的檔案：官網明白提醒，外部來源的檔案或網站有可能夾帶指令，誘導 Claude 在沙箱環境裡下載並執行不可信的程式碼。來路不明的檔案不要丟進去，也要留意它動手做了什麼。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "數字一律回原檔對，要它報頁碼與欄位，答不出來源就不要用",
+          "text": "提問的時候就把規則講在前面：「每一個數字後面都要標出它來自第幾頁、哪一欄或哪一列；找不到出處的就寫『無法確認』。」拿到答案先看出處，再抽查：PDF 抽一頁對原文，試算表抽三筆手算。它報不出頁碼與欄位，或報了卻對不上，那個數字就不要用，更不要拿它去簽約、報稅或做任何決定。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "檔案類型",
+            "提示重點",
+            "驗證動作",
+            "注意"
+          ],
+          "rows": [
+            [
+              "保單、租約、合約 PDF",
+              "先要它列條次與標題，再要條次、頁碼與一句原文",
+              "抽兩條翻到原頁，看那句原文在不在",
+              "條次對不上就整份不要用"
+            ],
+            [
+              "政府公文、申請須知、說明書",
+              "整理成對象、文件、期限、不適用四份清單，標頁與點次",
+              "抽一頁對照，民國年自己加 1911 換算一次",
+              "日期與金額要它照抄原文，不要讓它改寫"
+            ],
+            [
+              "銀行對帳單、收支表 Excel",
+              "先問結構與格式，再問分組加總，最後問異常與列號",
+              "抽三筆手算：月合計、最大一筆、一個分類小計",
+              "XLSX 要先開程式執行；單位與合併儲存格先確認"
+            ],
+            [
+              "掃描成圖片的 PDF",
+              "先要它逐字抄出金額與日期，再回答問題",
+              "拿它抄出的清單逐項對原檔，看不清楚要它寫無法辨識",
+              "頁面轉正、文字清楚；超過 100 頁就只剩文字"
+            ],
+            [
+              "兩份文件比對（新舊版）",
+              "指定哪份是舊版，要它列新增、刪除、改金額或天數",
+              "抽金額那一列，回兩份原檔各對一次",
+              "再問一次「哪些條文你無法確定」，補它漏的"
+            ]
+          ],
+          "caption": "2026 年 9 月依 Anthropic 官網的 Claude 說明中心與官方文件整理；掃描檔的辨識結果依原檔品質而異。"
+        },
+        {
+          "type": "link",
+          "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
+          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+        },
+        {
+          "type": "paragraph",
+          "text": "保單、對帳單、公文在上傳前先處理個資。合約遮掉雙方姓名、身分證字號、地址、電話與簽名，留條文就好；對帳單遮掉帳號與卡號，只留交易明細與金額欄，銀行的網路銀行通常可以只匯出交易明細；報表裡的人名換成代號，帳號欄整欄刪掉再傳。別人的資料，像是員工名冊、客戶名單、家人的保單，沒有取得同意就不要上傳。"
+        },
+        {
+          "type": "paragraph",
+          "text": "訓練設定在哪裡：Free、Pro、Max 的個人帳號從設定進到 Settings 的 Privacy，找到「Help Improve our AI models」把它關掉；官網寫關掉之後，之後新的對話與程式編寫工作階段不會被用來訓練未來的模型。開著這個設定的話，資料可能以去識別化的形式在訓練管線裡保留最多 5 年。刪掉的對話會從對話紀錄中立即消失，並在 30 天內從後端儲存系統刪除。另外還有無痕對話（Incognito chat），Free 到 Enterprise 都能用，它不會存進對話紀錄與記憶、不會被用來訓練，預設保留 30 天；限制是目前只能在專案之外使用，而且關掉之後就再也打不開。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Claude 說明中心：Upload files to Claude（支援格式、單檔 500 MB、每個對話 20 個檔案、圖片 8000×8000、PDF 1000 頁、專案檔案 30 MB、XLSX 要開程式執行）",
+          "url": "https://support.claude.com/en/articles/8241126-upload-files-to-claude",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Create and edit files with Claude（私有運算環境、可執行 Python 或 JavaScript、可建立 xlsx docx pptx 與 PDF、各方案都能用、Settings 的 Capabilities、單檔 30 MB、夾帶指令的風險）",
+          "url": "https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 官方文件：PDF support（每頁轉成圖片並連同抽出的文字一起分析、最佳做法：標準字體、文字清楚、頁面轉正、用閱讀器頁碼、大檔先切開）",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/pdf-support",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 官方文件：Use Claude for Excel（開放給 Pro、Max、Team、Enterprise、支援 Excel 網頁版與 Windows 及 Mac 的 Microsoft 365、儲存格層級引用、不支援模擬運算表與 VBA、不建議用於未經檢查的交付與稽核計算）",
+          "url": "https://claude.com/docs/office-agents/excel",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Understanding usage and length limits（付費方案最新模型最多 1M token，其他 500K 或 200K；接近上限時自動摘要前面的訊息）",
+          "url": "https://support.claude.com/en/articles/11647753-understanding-usage-and-length-limits",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Use incognito chats（不存進對話紀錄與記憶、不用於訓練、預設保留 30 天、只能在專案之外使用、關掉不能重開）",
+          "url": "https://support.claude.com/en/articles/12260368-use-incognito-chats",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic 隱私中心：How do I change my model improvement privacy settings（Settings 的 Privacy、Help Improve our AI models 開關、關掉後新對話不用於訓練）",
+          "url": "https://privacy.claude.com/en/articles/12109829-how-do-i-change-my-model-improvement-privacy-settings",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic 隱私中心：Is my data used for model training（消費者方案由使用者選擇是否提供、無痕對話不用於訓練）",
+          "url": "https://privacy.claude.com/en/articles/10023580-is-my-data-used-for-model-training",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic 隱私中心：How long do you store my data（訓練管線去識別化保留最多 5 年、刪除對話後 30 天內從後端刪除）",
+          "url": "https://privacy.claude.com/en/articles/10023548-how-long-do-you-store-my-data",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 官方部落格：Introducing the analysis tool in Claude.ai（分析工具執行 JavaScript，文中註明已由程式執行能力接手）",
+          "url": "https://claude.com/blog/analysis-tool",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
