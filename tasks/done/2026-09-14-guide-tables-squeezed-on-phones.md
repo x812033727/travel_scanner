@@ -1,13 +1,13 @@
 ---
 id: 2026-09-14-guide-tables-squeezed-on-phones
 title: 文章表格在手機上把每一欄擠到兩三個字寬
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: codex-ai-terms
 claimed_at: 2026-09-14T05:51:01Z
 created_at: 2026-09-14T00:49:21Z
-completed_at:
+completed_at: 2026-09-14T07:37:11Z
 branch: codex/ai-terms-series
 depends_on: []
 scope:
@@ -33,16 +33,16 @@ scope:
 
 ## Definition of done
 
-- [ ] 375 px 寬時，表格每一欄至少能放大約五個中文字，數字與單位不會在中間斷行；放不下的表格在自己的框裡
+- [x] 375 px 寬時，表格每一欄至少能放大約五個中文字，數字與單位不會在中間斷行；放不下的表格在自己的框裡
       左右捲動，整頁仍然不會橫向捲動。
-- [ ] 桌面版（`max-w-3xl` 欄寬）的表格長相不變。
-- [ ] 同一個渲染器服務的其他頁面（法律頁若共用）沒有被改壞。
+- [x] 桌面版（`max-w-3xl` 欄寬）的表格長相不變。
+- [x] 同一個渲染器服務的其他頁面（法律頁若共用）沒有被改壞。
 
 ## Steps
 
-- [ ] 依欄數給表格最小寬度（例如每欄 7 到 8rem，與 100% 取大者），讓 `overflow-x-auto` 真的能捲動。
-- [ ] 表頭與表格儲存格不要繼承 `[overflow-wrap:anywhere]`（改回 normal），長網址另外處理。
-- [ ] 在 `content-blocks.test.tsx` 補一條：多欄表格有最小寬度、外框仍是 `overflow-x-auto`。
+- [x] 依欄數給表格最小寬度（例如每欄 7 到 8rem，與 100% 取大者），讓 `overflow-x-auto` 真的能捲動。
+- [x] 表頭與表格儲存格不要繼承 `[overflow-wrap:anywhere]`（改回 normal），長網址另外處理。
+- [x] 在 `content-blocks.test.tsx` 補一條：多欄表格有最小寬度、外框仍是 `overflow-x-auto`。
 
 ## How to verify
 
@@ -52,6 +52,15 @@ scope:
 `document.documentElement.scrollWidth === innerWidth`，表格可以在框內左右滑。
 
 ## Notes
+
+- 2026-09-14: Release 3b8df68c693eb81ccde7793a2f89d71999dbb2c2 is deployed.
+  Actual unauthenticated Chrome checks passed all six page/viewport cases:
+  Bangkok transit, AI model tiers, and the shared privacy renderer at 375/1440px.
+  Columns remain at least 112px, wide mobile tables scroll internally, and desktop
+  tables fit without page overflow. Live table and privacy captures were visually
+  inspected. A screenshot timeout was retried only for the incomplete mobile
+  case; five passed cases were preserved with matching source hashes.
+  Evidence: docs/ai-terms-series/table-live-regression.json.
 
 - 2026-09-14 codex-ai-terms: Set minimum cell width to 7rem and table overflow-wrap
   to normal, preserving the existing scroll container and desktop full width.

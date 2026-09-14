@@ -113,9 +113,9 @@ async function main(mode) {
     results: [], fatalError: null, fullSeriesVerified: false,
   };
   async function save() {
-    const temp = reportPath + ".tmp";
-    await fs.writeFile(temp, JSON.stringify(report, null, 2) + "\n", "utf8");
-    await fs.rename(temp, reportPath);
+    // QA checkpoints are replaceable; the server-side publication journal keeps
+    // its separate atomic/fsync contract. Avoid Windows rename-overwrite locks.
+    await fs.writeFile(reportPath, JSON.stringify(report, null, 2) + "\n", "utf8");
   }
   await save();
   let browser;
@@ -187,13 +187,13 @@ async function main(mode) {
           if (representatives.has(article.slug)) {
             await page.evaluate(() => scrollTo(0, 0));
             const topFile = path.join(screenshotDir, article.slug + "-" + viewport.name + "-top.png");
-            await page.screenshot({ path: topFile, animations: "disabled" });
+            await page.screenshot({ path: topFile, animations: "disabled", timeout: 45_000 });
             result.screenshots.push(path.relative(here, topFile).replaceAll("\\", "/"));
             const table = page.locator("article table").first();
             if (await table.count()) {
               await table.scrollIntoViewIfNeeded();
               const tableFile = path.join(screenshotDir, article.slug + "-" + viewport.name + "-table.png");
-              await page.screenshot({ path: tableFile, animations: "disabled" });
+              await page.screenshot({ path: tableFile, animations: "disabled", timeout: 45_000 });
               result.screenshots.push(path.relative(here, tableFile).replaceAll("\\", "/"));
             }
           }
