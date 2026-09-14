@@ -17,7 +17,7 @@
       "text": [
         "把子代理回報轉成可核對的主張，抓出一個錯誤判斷與一個沒有證據的成功宣稱。閱讀約 15 分鐘、操作約 20 分鐘。沿用 [子代理分工](article:codex-subagents) 的 expected 參考副本、Node.js 與兩份報告；沒有真實代理回報時可用本篇明確標示的虛構練習資料，不能把它當作模型實測紀錄。",
         "Turn worker reports into verifiable claims and detect one incorrect conclusion and one unsupported success claim. Allow 15 minutes to read and 20 to practice. Use the expected copy, Node.js and two reports from [Subagent division](article:codex-subagents). Without real reports, use the explicitly fictional examples below without presenting them as model-run evidence.",
-        "代理報告を検証可能な主張に変え、誤判断一件と証拠なしの成功一件を見つけます。読む時間15分、実習20分。[分担](article:codex-subagents)の expected、Node.js、二報告を使います。実報告がなければ下の架空教材を使い、モデル実測と呼びません。",
+        "エージェント報告を検証可能な主張に変え、誤判断一件と証拠なしの成功一件を見つけます。読む時間15分、実習20分。[分担](article:codex-subagents)の expected、Node.js、二報告を使います。実報告がなければ下の架空教材を使い、モデル実測と呼びません。",
         "작업자 보고를 검증 가능한 주장으로 바꿔 잘못된 판단 하나와 근거 없는 성공 주장 하나를 찾습니다. 읽기 15분, 실습 20분입니다. [분담](article:codex-subagents)의 expected·Node.js·두 보고를 사용하세요. 실제 보고가 없으면 아래 가상 자료를 쓰되 모델 실행 증거로 표시하지 않습니다."
       ]
     },
@@ -26,7 +26,7 @@
       "text": [
         "主任務收到子代理結果後仍負責驗收。兩個代理一致不代表事實已獨立驗證，因為它們可能看了相同的舊摘要或作了相同假設。這篇把回報中的「程式有某個行為」「測試已通過」「修改已交付」分開處理，要求每一類都對上實際檔案、執行紀錄或 Git 狀態。閱讀與執行層級不同，不用要求所有句子都有相同形式的證據。",
         "The parent remains responsible for acceptance. Agreement between two workers is not independent verification if they used the same stale summary or assumption. Separate claims about code behavior, passed tests and delivered changes, then match each to files, execution records or Git state. Inspection and execution establish different things, so not every statement needs the same evidence format.",
-        "親は結果受領後も検証に責任を持ちます。同じ旧要約や仮定を見た二代理の一致は独立確認ではありません。動作、試験成功、変更交付の主張を分け、実体、実行記録、Git に対応させます。読解と実行の証拠を混同しません。",
+        "親は結果受領後も検証に責任を持ちます。同じ旧要約や仮定を見た2つのエージェントの一致は独立確認ではありません。動作、試験成功、変更交付の主張を分け、実体、実行記録、Git に対応させます。読解と実行の証拠を混同しません。",
         "부모는 결과를 받아도 검증 책임을 집니다. 두 작업자가 같은 오래된 요약이나 가정을 봤다면 일치가 독립 검증은 아닙니다. 동작·시험 통과·변경 전달 주장을 나눠 파일·실행 기록·Git 상태와 연결하세요. 읽기와 실행은 다른 증거입니다."
       ]
     },
@@ -64,7 +64,7 @@
       "text": [
         "| 主張 | 需要的證據 | 只靠什麼不夠 |\n| --- | --- | --- |\n| 函式會拒絕重複 ID | 目前函式與可重現輸入 | 過去聊天摘要 |\n| 測試通過 | 實際命令、目錄、結束狀態 | 「應該會過」 |\n| 修改在分支上 | 提交或目前 diff | 子代理說已存檔 |\n| 可上線 | 完整交付驗收與授權 | 單一單元測試 |\n\n此表是核對方法，不是要求本篇執行部署。",
         "| Claim | Evidence needed | Insufficient alone |\n| --- | --- | --- |\n| Function rejects duplicate IDs | Current function and reproducible input | Earlier chat summary |\n| Tests passed | Actual command, directory and exit status | Expected to pass |\n| Change is on a branch | Commit or current diff | A worker says it saved |\n| Ready for release | Complete acceptance and authorization | One unit test |\n\nThis is a verification method, not an instruction to deploy during the exercise.",
-        "| 主張 | 必要証拠 | 単独では不足 |\n| --- | --- | --- |\n| 重複 ID 拒否 | 現函数と再現入力 | 過去要約 |\n| 試験成功 | 実命令・場所・終了 | 通るはず |\n| 分岐に変更 | コミットや現差分 | 保存したという文 |\n| 公開可能 | 全検証と認可 | 一単体試験 |\n\n検証方法の表であり今回の公開指示ではありません。",
+        "| 主張 | 必要証拠 | 単独では不足 |\n| --- | --- | --- |\n| 重複 ID 拒否 | 現関数と再現入力 | 過去要約 |\n| 試験成功 | 実命令・場所・終了 | 通るはず |\n| 分岐に変更 | コミットや現差分 | 保存したという文 |\n| 公開可能 | 全検証と認可 | 一単体試験 |\n\n検証方法の表であり今回の公開指示ではありません。",
         "| 주장 | 필요한 증거 | 단독으로 부족 |\n| --- | --- | --- |\n| 중복 ID 거부 | 현재 함수와 재현 입력 | 이전 요약 |\n| 테스트 통과 | 실제 명령·폴더·종료 | 통과 예상 |\n| 브랜치에 변경 | 커밋 또는 현재 차이 | 저장했다는 말 |\n| 배포 준비 | 전체 검증과 권한 | 단위 시험 하나 |\n\n이 표는 검증 방법이며 이번에 배포하라는 지시가 아닙니다."
       ]
     },
@@ -82,7 +82,7 @@
       "text": [
         "開啟 core.mjs 的 addTask，找出 ID 為空或重複時的檢查。先確認你看的確是 expected 副本；如果是另一個分支或刻意故障版，結論可能不同。行號會隨修改移動，因此報告同時寫出檔案和函式名稱，必要時加上這次的 Git 提交。如果資料夾沒有 Git，就記來源副本、日期及檔案 hash，不要編造 commit ID。",
         "Inspect addTask in core.mjs for empty and duplicate-ID checks. Confirm the expected reference copy because another branch or deliberately broken variant may behave differently. Lines move, so cite both file and symbol, adding the current Git commit when applicable. Without Git, record the source copy, date and file hash instead of inventing a commit ID.",
-        "core.mjs の addTask で空・重複 ID 検査を見ます。別分岐や故障版は結論が異なり得るので expected を確認します。行は移動するためファイルと函数を併記し、必要なら現コミットを加えます。Git がなければ出所、日付、hash を記録しコミットを作りません。",
+        "core.mjs の addTask で空・重複 ID 検査を見ます。別分岐や故障版は結論が異なり得るので expected を確認します。行は移動するためファイルと関数を併記し、必要なら現コミットを加えます。Git がなければ出所、日付、hash を記録しコミットを作りません。",
         "core.mjs addTask에서 빈 ID와 중복 검사를 봅니다. 다른 브랜치나 오류판은 다를 수 있으므로 expected를 확인하세요. 줄은 변하니 파일과 함수 이름을 함께 쓰고 필요하면 현재 커밋을 붙입니다. Git이 없으면 출처·날짜·hash를 적으며 커밋 ID를 지어내지 않습니다."
       ]
     },
@@ -102,7 +102,7 @@
       "text": [
         "預期輸出 Duplicate ID rejected: task-id，exit code 為 0。若反而看到 Unexpected duplicate acceptance 且非零，先記錄觀察，再比對你拿到的副本與函式，不能直接改測試讓它變綠。這段檢查要求特定 task-id 錯誤，所以「其他原因也拋出錯誤」不會被誤判成功；它也沒有寫入儲存資料，原本畫面的待辦清單不受影響。",
         "Expect Duplicate ID rejected: task-id and exit zero. Unexpected duplicate acceptance with a nonzero exit should be recorded and traced to the copy/function before changing anything; do not edit the check merely to make it pass. The exact task-id condition prevents unrelated exceptions from counting as success. This check writes no stored data and leaves the UI's task list intact.",
-        "期待値は指定文と終了0です。予期しない受入れと非0なら観測を残しコピー・函数を調べ、通すため試験を変えません。task-id の一致で別原因の例外を成功とせず、保存データも書かないので画面の一覧を変えません。",
+        "期待値は指定文と終了0です。予期しない受入れと非0なら観測を残しコピー・関数を調べ、通すため試験を変えません。task-id の一致で別原因の例外を成功とせず、保存データも書かないので画面の一覧を変えません。",
         "예상은 지정 문구와 종료 0입니다. 예상 밖 허용과 비0이면 관찰을 기록하고 사본·함수를 조사하며 통과시키려고 검사를 바꾸지 마세요. task-id 일치로 다른 예외를 성공으로 세지 않으며 저장 데이터나 화면 목록을 변경하지 않습니다."
       ]
     },
@@ -111,7 +111,7 @@
       "text": [
         "PowerShell 在命令後立即查看 $LASTEXITCODE；macOS、Linux 在下一行使用 echo $?。先看上一個命令的狀態，再執行其他操作，避免讀到別的命令結果。若 Node 找不到 core.mjs，這是路徑問題，不能拿它來證明 addTask 有 Bug。真正與資料行為有關的失敗，必須已載入目標函式並使用預定輸入。",
         "Immediately inspect $LASTEXITCODE in PowerShell or echo $? on macOS/Linux before another command replaces the result. If Node cannot find core.mjs, that is a path failure, not proof of an addTask bug. A data-behavior failure must have loaded the intended function and used the planned input.",
-        "PowerShell は直後の $LASTEXITCODE、他 OS は echo $? を別行で確認し、他命令で上書きしません。core.mjs 不在は経路問題で addTask 不具合の証明ではありません。対象函数と予定入力が実際に使われたか確認します。",
+        "PowerShell は直後の $LASTEXITCODE、他 OS は echo $? を別行で確認し、他命令で上書きしません。core.mjs 不在は経路問題で addTask 不具合の証明ではありません。対象関数と予定入力が実際に使われたか確認します。",
         "PowerShell은 바로 $LASTEXITCODE, macOS/Linux는 다음 줄 echo $?를 확인하고 다른 명령으로 상태를 바꾸지 마세요. core.mjs 없음은 경로 오류이며 addTask 버그 증거가 아닙니다. 대상 함수와 예정 입력을 실제 사용했는지 확인해야 합니다."
       ]
     },
@@ -151,7 +151,7 @@
       "text": [
         "先確認同名測試檔不存在，再保存完整檔案。這次總計六個頂層測試，原三項不能因新增驗證而被刪掉。新增案例特別區分重複 ID 與重複標題：前者拒絕，後者只要 ID 不同仍合法；還檢查字串 false 不能冒充布林值。如果子代理把這兩個重複概念混為一談，讓它回到該案例重新說明，主程式暫時維持原樣。",
         "Check that the new filename is unused before saving. There are six top-level tests in total, retaining the original three. The new cases distinguish duplicate IDs, which are rejected, from identical titles with distinct IDs, which are valid, and reject string false as a boolean. If a worker confuses these concepts, ask it to revisit the case while leaving application code unchanged.",
-        "同名不在を確認して保存し、既存三つを残して合計六つにします。ID 重複拒否と異なる ID の同名許容を区別し、文字列 false も拒否します。代理が混同したらケースから説明をやり直させ、主程序はそのままにします。",
+        "同名不在を確認して保存し、既存三つを残して合計六つにします。ID 重複拒否と異なる ID の同名許容を区別し、文字列 false も拒否します。エージェントが混同したらケースから説明をやり直させ、本体のプログラムはそのままにします。",
         "동명 파일이 없는지 확인하고 기존 세 개를 보존해 총 여섯 개를 실행합니다. 거부할 중복 ID와 허용할 다른 ID의 같은 제목을 구분하고 문자열 false도 거부합니다. 작업자가 혼동하면 사례를 다시 설명하게 하고 앱 코드는 유지하세요."
       ]
     },
@@ -171,7 +171,7 @@
       "label": [
         "主任務要求原工作者修正回報",
         "Parent request to correct the worker report",
-        "親から元の代理へ訂正依頼",
+        "親から元のエージェントへ訂正依頼",
         "부모가 원래 작업자에게 보고 수정 요청"
       ]
     },
@@ -189,7 +189,7 @@
       "text": [
         "如果子代理讀的是舊提交，先把目前分支或檔案版本補給它，再只要求重查受影響的結論。若它被停止或等待授權，保留已取得的部分，把缺項交回主任務決定後續；不要把「Done」標籤推論成每個驗收條件都完成。兩份報告都指向同一段未檢驗文字時，應新增獨立的原始碼或測試證據，而不是再開更多代理投票。",
         "If a worker read an older commit, provide the current version and request only affected conclusions be rechecked. If stopped or waiting for approval, retain completed evidence and return gaps to the parent for a decision. Done does not imply every acceptance criterion passed. When both reports depend on the same unchecked text, add source/test evidence instead of opening more agents to vote.",
-        "旧コミットを読んだなら現在版を渡し、影響結論だけ再確認します。停止・許可待ちは取得済みを残し不足を親へ戻します。Done は全条件成功ではありません。両報告が同じ未検証文に依存するなら、代理の多数決ではなくソースコードや試験を加えます。",
+        "旧コミットを読んだなら現在版を渡し、影響結論だけ再確認します。停止・許可待ちは取得済みを残し不足を親へ戻します。Done は全条件成功ではありません。両報告が同じ未検証文に依存するなら、エージェントの多数決ではなくソースコードや試験を加えます。",
         "오래된 커밋이면 현재 버전을 주고 영향받는 결론만 재확인합니다. 중지·승인 대기는 얻은 증거를 보존하고 빈틈을 부모에게 돌립니다. Done이 모든 조건 통과는 아닙니다. 두 보고가 같은 미확인 문장에 의존하면 더 많은 투표 대신 코드·시험 증거를 추가하세요."
       ]
     },
@@ -234,7 +234,7 @@
       "text": [
         "交付一份修正後的證據表：A 的錯誤原因、B 哪些仍未證明、實際六項測試結果、原檔是否保持，以及仍未測的瀏覽器或平台。虛構回報需保留標示，實際子代理紀錄另存；本篇參考測試可在三種系統使用相同 Node 命令，未親自執行的平台不宣稱已實測。下一篇[多任務整合](article:codex-parallel-integration)會把這種驗收用在兩條分支的成果上。",
         "Deliver a corrected evidence table: why A was wrong, what B still has not established, the actual six-test result, preserved files and untested browser/platform scope. Keep fictional reports labeled and real agent records separate. The same Node commands apply across the three systems without claiming unperformed platform runs. [Parallel integration](article:codex-parallel-integration) applies this verification to two branches.",
-        "A の誤り、B の未証明、六試験の実結果、原本保全、未操作範囲の表を渡します。架空と実代理の記録は分け、同じ Node 命令でも未実行 OS を実測としません。次の[並行成果の統合](article:codex-parallel-integration)で二分岐に適用します。",
+        "A の誤り、B の未証明、六試験の実結果、原本保全、未操作範囲の表を渡します。架空と実際のエージェントの記録は分け、同じ Node 命令でも未実行 OS を実測としません。次の[並行成果の統合](article:codex-parallel-integration)で二分岐に適用します。",
         "A의 오류·B의 미입증·실제 여섯 테스트·원본 보존·미실행 범위를 표로 전달합니다. 가상과 실제 작업 기록을 나누고 같은 Node 명령을 쓰더라도 미실행 OS를 실측으로 표시하지 않습니다. 다음 [병렬 통합](article:codex-parallel-integration)에서 두 브랜치에 적용합니다."
       ]
     }

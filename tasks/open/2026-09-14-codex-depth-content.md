@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-09-14T02:33:43Z
 completed_at:
-branch:
+branch: codex/codex-learning-complete
 depends_on: []
 scope:
   - docs/codex-learning
@@ -145,59 +145,50 @@ scope:
 
 ## Why
 
-Execute the approved 60-lesson depth plan in `docs/codex-learning/depth-plan.md`. The existing 32 multilingual packs are short drafts; readers need complete exercises, failure cases, platform instructions and equivalent translations before these qualify as in-depth tutorials.
+Complete the approved 60-lesson, five-language learning series while keeping editorial acceptance, executable examples, browser evidence and publication distinct. The latest 60-lesson draft checkpoint is d3f28a25; earlier counts in this task's Git history are superseded by docs/codex-learning/progress.md.
 
 ## Definition of done
 
-- [x] Five pilot lessons (stable IDs 03, 10, 04, 11, 23) have complete authored instructions in all five locales, working materials, sources and explicit verification boundaries.
-- [x] All 60 lessons are represented in the learning catalog, with unfinished entries clearly marked and no empty article links.
-- [ ] Complete remaining pilot editorial and product-screen evidence checks; documentation-only platform verification stays explicitly labeled.
-- [ ] The remaining 55 lessons meet the depth plan in batches of ten, with no publication implied by content generation.
-- [ ] Shared-series integration follows the final compatible contract without overwriting the active Claude Code task.
+- [x] All 60 lessons plus the hub are authored and compiled into 305 locale documents.
+- [x] The catalog, stable IDs/slugs, ten units and published-only navigation are implemented.
+- [x] Shared article/API/editor integration is complete in this branch after the Claude Code PR #485 merge; the other task's worktree was not edited.
+- [x] Complete fictional practice materials and reference checks, with platform and model-execution limits recorded.
+- [x] Run a targeted Japanese terminology review across the series and correct 26 affected lessons without changing copyable code or link targets.
+- [x] Visually inspect six existing 390/1280px practice screenshots and provide accurate five-language alternative text and dimension captions.
+- [ ] Complete remaining full-text five-language editorial acceptance and representative product UI evidence.
+- [ ] Complete final integrated browser acceptance for all 60 lessons and the hub. The preview-start restriction remains unresolved.
+- [ ] After all acceptance gates pass, proceed with the already authorized PR, exact-head CI/merge, guarded import/publication/deployment and public verification. No partial PR.
 
-## Steps
+## Current review evidence
 
-- [x] Inspect the active Claude Code task and isolate content/component ownership.
-- [x] Build independent start, deliberately broken and expected todo exercises; package a download.
-- [x] Verify core behavior, expected exercise failures and browser behavior at 360/390/1280 px.
-- [x] Author and compile the five pilot lessons, preserving exact code across locales.
-- [x] Review lesson-specific sources, illustrations, cross-links and localized browser previews.
-- [ ] Expand the catalog and finish subsequent batches according to the depth plan.
+docs/codex-learning/evidence/editorial-review.json records this review's precise scope and image hashes. Relative to d3f28a25, all 300 lesson documents retain identical executable code, article/external link targets and sources. Non-Japanese prose remains identical; image text is localized.
+
+The Japanese pass separates AI agents from API/network proxies, corrects executable filenames and function/global/resource terminology, and repairs mixed Chinese wording. This is a targeted terminology review, not a claim that every translation has received full final editorial acceptance.
+
+Six existing image artifacts were inspected: baseline todo, first-project reference and prompting reference, each at 390 and 1280px. They show fictional practice data and Windows Edge responsive viewports. No new browser session or product UI capture was performed.
+
+After compilation: series integrity passed for 60 lessons/300 documents; 9 Codex API content tests and 9 compiler tests passed. Content audit remains 0 errors and 24 advisory warnings. Prior broader checks remain documented under their actual scope in progress.md.
+
+## Remaining work and blocker
+
+The latest user instruction repeats the existing completion gate: finish everything before opening a PR and deploying. It does not change the unfinished browser/product-evidence status.
+
+The local Next preview startup was rejected by automatic approval review with blocked by policy, including a loopback-only retry, with no specific reason supplied. No alternate server, launcher, port or rendering route was used to bypass that rejection. Final acceptance remains 0/60; the existing failed browser report is preserved.
+
+Full editorial review and product-screen evidence still need completion. macOS/Linux/iOS/Android instructions retain their documentation-only labels; responsive Windows screenshots do not establish physical-device testing.
+
+The parent task remains tasks/open/2026-09-14-codex-learning-series.md. This content task is released after saving the bounded review checkpoint so its remaining work stays visible to the next run. No push, PR, import, publication or deployment has occurred.
 
 ## How to verify
 
-`node --test docs/codex-learning/practice/expected/core.test.mjs`
+Run from the repository root:
 
-`node tools/codex-learning/practice-browser.mjs`
+- python tools/codex-learning/render-authors.py --check
+- uv run --with mistune==3.1.3 --with opencc-python-reimplemented==0.1.7 python tools/codex-learning/build-depth.py --check
+- uv run --with mistune==3.1.3 --with opencc-python-reimplemented==0.1.7 python tools/codex-learning/check-series.py
+- uv run --with mistune==3.1.3 --with opencc-python-reimplemented==0.1.7 python -m unittest discover -s tools/codex-learning -p test_compiler.py
+- apps/api/.venv/Scripts/python.exe -m pytest apps/api/tests/test_codex_learning.py -q
+- apps/api/.venv/Scripts/python.exe tools/codex-learning/audit.py
+- npm run check:tasks
 
-`uv run --with mistune==3.1.3 --with opencc-python-reimplemented==0.1.7 python tools/codex-learning/build-depth.py --check`
-
-Run the content audit, affected web/API tests and `npm run check:tasks` after compilation and integration.
-
-## Notes
-
-- Current checkpoint (2026-09-14): 26 deep drafts, 18 short drafts, 16 planned; 45 packs / 225 locale documents including the hub. Reading positions 01–25 plus the Skills pilot have full five-language drafts. Formal editorial acceptance remains 0/60. No PR or deployment before all 60 and shared integration pass.
-- Latest evidence: 240 browser checks for the 15-lesson CLI batch and 90 for five IDE/mobile/Markdown additions; 60 additional cloud/cross-device browser checks passed. Compiler 7 tests and API 9 tests passed; current content audit 0 errors / 91 retained warnings. See progress.md for exact report links.
-- Added Markdown nested-fence preservation, missing-file/fence practice checks, native Windows CLI path/backup checks, and alternative platform prerequisites. New cloud/cross-device lessons use documentation-checked UI flows and locally verified reference behavior, not claims of actual cloud/phone execution.
-
-- Added IDs 42, 43, 16 and 44, with 5 real CLI prompt-input discovery checks and 12 offline documentation/config checks. Empty override behavior differs from a naive fallback assumption in this installed build; the lesson records actual markers and the rename-based recovery. No raw global prompt data was saved.
-
-### Earlier checkpoints (historical, superseded by progress.md)
-
-- 2026-09-14 user direction: finish all 60 lessons, all five locales, shared integration and acceptance before opening the PR and deploying. PR and deployment are now authorized after that completion gate. Do not open a partial-content PR or deploy unfinished drafts. Merge, content import/publication and deployment must each have their actual outcome recorded.
-- 2026-09-14 follow-up: first-unit IDs 01, 02, 33, 34, 06 and 07 now have complete four-language parallel author modules plus exact-code simplified Chinese compilation. Total is 11 deep drafts, 23 short drafts, 26 unwritten; 35 packs / 175 locale documents including the hub. Forty-nine lessons still need deepening or authoring, plus editorial/product evidence and shared integration.
-- Added Windows path exercise checks (4 passed), actual browser reference-edit checks (6 passed at 360/390/1280px), localized reference screenshots, complete comparison tables and source records. Model execution is explicitly distinguished from deterministic reference edits.
-- Compiler now validates the full batch using the real API schema before replacing packs; a late parse failure leaves earlier packs unchanged. Catalog deep-draft flags verify source and pack hashes. Render-authors --check and 5 compiler tests passed; content audit reports 0 errors / 111 retained editorial warnings. Current full-page browser verification is in progress.
-
-- 2026-09-14: The Claude Code tutorial task is active in worktree `1cff` and owns shared article/schema/editor files. This task owns only Codex content and isolated components. No files in that worktree were modified.
-- Shared formats currently differ (`spans` versus `inlines`, code labels and language allow-list, series API). Migration needs compatibility review; do not blindly replace either schema.
-- Practice evidence: expected core 3/3 passed; start and broken variants each fail the intended filter test. These failures are exercise fixtures, not failing production tests. Browser report: `docs/codex-learning/evidence/practice-browser.json`; Windows / Edge 153.0.4234.32. Mobile screenshots are responsive browser viewports, not iOS/Android device tests.
-- Authored Markdown is an explicit build input. Legacy plain-text content is never automatically parsed as Markdown. Compiling drafts does not import, approve, publish or deploy them.
-- Pilot drafts are in `docs/codex-learning/deep/{zh-TW,en,ja,ko}`; simplified Chinese is compiled with exact code preservation. `build-depth.py` and `expand-catalog.py` replace the old 32-lesson bootstrap, which now refuses to overwrite them.
-- Browser acceptance: 90 checks across five locales, five pilots plus hub, 360/390/1280px. URL filters survive reload/history. Copy buttons now wait for hydration; Windows clipboard CRLF is normalized only when comparing the readback. Source/rendered code remains exact.
-- Current checks: 136 web tests; 38 API tests passed / 5 database tests skipped; 28 tools; 4 author compiler; 3 expected core tests; skill format validation. ESLint, TypeScript, i18n, Ruff and production build pass. Content audit: 0 errors / 127 retained editorial warnings. See `docs/codex-learning/progress.md`.
-- At the five-pilot checkpoint, shared integration remained with the Claude Code workstream; 27 old drafts and 28 new lessons remained. No PR, merge, import, publication or deployment performed.
-
-- 2026-09-14 接續至 31 篇五語深化草稿（閱讀 01–30 加 Skills），正式深入驗收仍 0/60；新增 45、22、17、08、18。精確範例及還原 10 項通過，API 9 項通過，內容稽核 0 錯誤／75 警告；新增五篇整頁檢查進行中。Claude 系列已結案合併 #485，共用功能可接入，此工作目錄尚未整合 main。未開 PR、推送、匯入、發布或部署。
-
-- 最新 checkpoint：34 篇五語深化草稿，閱讀 01–33 加 Skills；48 包／240 語言文件，剩 26 篇。新增 13、46、47；工作階段整頁 90、專案批次整頁 60、精確材料 14、功能畫面 6 項通過。47 參考圖片已目視核對且有五語圖說。API 9、編譯器 7、稽核 0 錯誤／71 警告；47 最終整頁待檢查。仍無 PR／推送／合併／匯入／發布／部署。
+Preview commands and full implementation history are in docs/codex-learning/README.md and progress.md. Do not substitute static checks or historical browser results for the blocked final preview.

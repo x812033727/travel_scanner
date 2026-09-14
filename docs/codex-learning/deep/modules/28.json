@@ -17,7 +17,7 @@
       "text": [
         "把一個唯讀審查拆成兩個獨立子任務，等待兩份報告，再由主任務核對證據。閱讀約 15 分鐘、操作約 20 分鐘。使用[第一個專案](article:codex-first-project)下載包中的 expected 完整參考副本，準備 Node.js 與可用的 Codex 入口。練習需要實際支援子代理的環境；只收到一篇分成兩段的回答，不能算成功建立兩個子代理。",
         "Split a read-only review into two independent tasks, wait for both reports and have the parent verify the evidence. Allow 15 minutes to read and 20 to practice. Use the expected reference copy from [First project](article:codex-first-project), Node.js and a Codex client with subagent support. A single answer divided into two sections does not prove that two agents ran.",
-        "読取り審査を独立した二作業に分け、両報告を待って親が証拠を照合します。読む時間15分、実習20分。[最初のプロジェクト](article:codex-first-project)の expected コピー、Node.js、対応 Codex を用意します。一つの回答が二節に分かれただけでは二代理実行の証明になりません。",
+        "読取り審査を独立した二作業に分け、両報告を待って親が証拠を照合します。読む時間15分、実習20分。[最初のプロジェクト](article:codex-first-project)の expected コピー、Node.js、対応 Codex を用意します。一つの回答が二節に分かれただけでは2つのエージェント実行の証明になりません。",
         "읽기 전용 검토를 두 독립 작업으로 나누고 모두 기다린 뒤 부모가 증거를 확인합니다. 읽기 15분, 실습 20분입니다. [첫 프로젝트](article:codex-first-project)의 expected 사본, Node.js, 하위 에이전트 지원 Codex를 준비하세요. 답변 하나를 두 부분으로 나눈 것은 두 에이전트 실행 증거가 아닙니다."
       ]
     },
@@ -26,7 +26,7 @@
       "text": [
         "子代理是主任務委派出去的工作者，負責明確的一部分，再把結果交回來。它不是另一個自動隔離的 Git 儲存庫，也不是多開兩個視窗就會自動互相協調。適合並行的工作必須各自有輸入、範圍與成果，而且不必等待另一個子任務先改好檔案。這次兩個人都只讀，因此不需要讓他們競爭同一份程式碼的寫入權。",
         "A subagent is delegated a defined part of the work and reports back to the parent. It is not automatically an isolated Git repository, and opening two windows does not create coordination. Parallel tasks need their own inputs, scopes and outputs without waiting for another worker's edits. Both workers in this exercise read only, avoiding competing writes to the same code.",
-        "子代理は親から特定部分を任され結果を返す働き手です。独立 Git が自動で付くわけでも、二窓だけで協調するわけでもありません。並行作業は入力、範囲、成果が別で、他方の編集完了に依存しないことが条件です。今回は両者読取りのみです。",
+        "サブエージェントは親から特定部分を任され結果を返す働き手です。独立 Git が自動で付くわけでも、二窓だけで協調するわけでもありません。並行作業は入力、範囲、成果が別で、他方の編集完了に依存しないことが条件です。今回は両者読取りのみです。",
         "하위 에이전트는 부모에게 특정 부분을 위임받고 결과를 돌려줍니다. 자동 Git 격리도 아니며 두 창을 열었다고 조율되는 것도 아닙니다. 병렬 작업은 입력·범위·결과가 나뉘고 다른 작업의 수정 완료를 기다리지 않아야 합니다. 이번에는 둘 다 읽기만 합니다."
       ]
     },
@@ -64,7 +64,7 @@
       "text": [
         "目前教材包含三個頂層測試，正常參考副本應通過。這個數字只屬於本篇提供的材料，不代表你自己的專案一定有三個測試。若找不到 Node 或 core.test.mjs，先回到[CLI 排除問題](article:codex-troubleshooting)與路徑說明，停止後續分工。不要請子代理在材料不全時自行重建一個看起來相似的專案，否則審查對象已經改變。",
         "The provided reference currently has three top-level tests and should pass. That count belongs to this material, not arbitrary repositories. If Node or core.test.mjs is missing, resolve [CLI troubleshooting](article:codex-troubleshooting) and path issues before delegation. Do not ask a worker to invent a similar project when files are missing, as that changes the review target.",
-        "教材は現在三つの上位テストが通る想定ですが、他庫の数を保証しません。Node やテストがなければ[障害対応](article:codex-troubleshooting)と経路を先に直します。不足時に似たプロジェクトを代理に作らせると審査対象が変わります。",
+        "教材は現在三つの上位テストが通る想定ですが、他庫の数を保証しません。Node やテストがなければ[障害対応](article:codex-troubleshooting)と経路を先に直します。不足時に似たプロジェクトをエージェントに作らせると審査対象が変わります。",
         "현재 제공 자료는 최상위 테스트 세 개가 통과해야 하지만 다른 저장소의 개수를 뜻하지 않습니다. Node나 테스트가 없으면 [문제 해결](article:codex-troubleshooting)과 경로를 먼저 확인하세요. 누락됐다고 비슷한 프로젝트를 만들게 하면 검토 대상이 달라집니다."
       ]
     },
@@ -73,7 +73,7 @@
       "text": [
         "步驟 2：用明確要求啟動兩個子代理",
         "Step 2: Explicitly request two subagents",
-        "手順2：二代理を明示的に依頼",
+        "手順2：2つのエージェントを明示的に依頼",
         "2단계: 두 하위 에이전트 명시 요청"
       ]
     },
@@ -82,7 +82,7 @@
       "text": [
         "在桌面、CLI 或 IDE 的主任務選好練習資料夾，送出下面提示詞。現在的本機 Codex 依直接要求或適用的 AGENTS.md／Skill 指示分派子代理；這裡直接寫清楚要兩個。模型與推理深度先沿用主任務，不另外硬寫帳號未必可用的模型名稱。子代理各自使用模型和工具，會增加用量；兩個小型唯讀範圍比不受限地持續新增工作者容易驗收。",
         "Select the practice folder in the parent desktop, CLI or IDE task and submit the prompt below. Current local Codex delegates when directly requested or instructed by applicable AGENTS.md/Skills; this prompt explicitly asks for two. Inherit the parent's model and effort instead of hardcoding a model unavailable to the account. Each worker consumes model/tool usage; two small bounded reviews are easier to verify than unlimited worker creation.",
-        "親のデスクトップ・CLI・IDE で実習ディレクトリを選び下の依頼を送ります。現行のローカル Codex は直接要求または適用規則で分担するため二つと明示します。モデル・推論は親を継承し未提供名を固定しません。各代理が用量を使うので、無制限追加より二つの狭い読取り範囲にします。",
+        "親のデスクトップ・CLI・IDE で実習ディレクトリを選び下の依頼を送ります。現行のローカル Codex は直接要求または適用規則で分担するため二つと明示します。モデル・推論は親を継承し未提供名を固定しません。各エージェントが用量を使うので、無制限追加より二つの狭い読取り範囲にします。",
         "부모 데스크톱·CLI·IDE에서 실습 폴더를 선택하고 아래 요청을 보냅니다. 현재 로컬 Codex는 직접 요청이나 적용 규칙에 따라 위임하므로 두 개를 명시합니다. 모델과 추론은 부모를 상속하고 계정에 없을 수 있는 이름을 고정하지 마세요. 각 에이전트가 사용량을 쓰므로 무제한 생성 대신 작은 읽기 범위 둘로 제한합니다."
       ]
     },
@@ -102,7 +102,7 @@
       "text": [
         "| 角色 | 主要讀取 | 交付 | 不做的事 |\n| --- | --- | --- | --- |\n| A 行為分析 | core.mjs | 函式與邊界對照 | 修改程式 |\n| B 測試分析 | core.test.mjs | 覆蓋與缺口證據 | 編造確定錯誤 |\n| 主任務 | 兩份報告與實檔 | 整合、測試、限制 | 只轉貼未核對摘要 |\n\n兩個子任務可以同時開始；測試統一由主任務最後執行，避免重複工作。",
         "| Role | Primary input | Deliverable | Excluded work |\n| --- | --- | --- | --- |\n| A: behavior | core.mjs | Functions and boundaries | Code edits |\n| B: tests | core.test.mjs | Coverage and gap evidence | Invented confirmed bugs |\n| Parent | Both reports and files | Reconciliation, tests, limitations | Forwarding unchecked summaries |\n\nBoth workers can start together; the parent runs tests once afterward to avoid duplication.",
-        "| 役割 | 主入力 | 成果 | 対象外 |\n| --- | --- | --- | --- |\n| A 動作 | core.mjs | 函数と境界 | 編集 |\n| B 試験 | core.test.mjs | 覆蓋と不足証拠 | 架空の確定不具合 |\n| 親 | 両報告と実体 | 統合・試験・制限 | 未検証の転送 |\n\n両者は同時開始でき、試験は最後に親が一度行います。",
+        "| 役割 | 主入力 | 成果 | 対象外 |\n| --- | --- | --- | --- |\n| A 動作 | core.mjs | 関数と境界 | 編集 |\n| B 試験 | core.test.mjs | テスト範囲と不足証拠 | 架空の確定不具合 |\n| 親 | 両報告と実体 | 統合・試験・制限 | 未検証の転送 |\n\n両者は同時開始でき、試験は最後に親が一度行います。",
         "| 역할 | 주요 입력 | 결과 | 제외 |\n| --- | --- | --- | --- |\n| A 동작 | core.mjs | 함수와 경계 | 코드 수정 |\n| B 테스트 | core.test.mjs | 범위와 빈틈 증거 | 버그 단정 조작 |\n| 부모 | 두 보고와 실제 파일 | 조정·시험·제한 | 미확인 요약 전달 |\n\n둘은 동시에 시작하고 테스트는 부모가 마지막에 한 번 실행합니다."
       ]
     },
@@ -131,7 +131,7 @@
       "label": [
         "Codex CLI 互動畫面：查看子代理",
         "Codex CLI interactive session: inspect agents",
-        "Codex CLI 対話内：代理確認",
+        "Codex CLI 対話内：エージェント確認",
         "Codex CLI 대화 안: 에이전트 확인"
       ]
     },
@@ -169,7 +169,7 @@
       "text": [
         "正常參考版中 addTask 會修剪文字、限制長度、檢查 ID，並回傳新陣列；visibleTasks 依 active／completed 篩選；decodeTasks 會拒絕錯誤格式與重複 ID。主任務應回到這些實際函式驗證 A 的說法，再對照 B 指出的測試片段。假如 B 說沒有測重複 ID，先區分新增時與儲存讀回時的兩種檢查，不要只因兩份報告不同就選較長的一份。",
         "In the reference, addTask trims text, validates length and IDs and returns a new array; visibleTasks handles active/completed filters; decodeTasks rejects malformed data and duplicate IDs. The parent should verify A against those functions and B against the actual tests. If B claims duplicate IDs are untested, distinguish adding from decoding stored data. Resolve disagreement through evidence rather than choosing the longer report.",
-        "参考版の addTask は空白、長さ、ID を確認して新配列を返し、visibleTasks は二条件で絞り、decodeTasks は不正形式と ID 重複を拒みます。親は実函数と試験を照合し、重複未試験という主張なら追加と保存読戻しを区別します。長い報告を優先しません。",
+        "参考版の addTask は空白、長さ、ID を確認して新配列を返し、visibleTasks は二条件で絞り、decodeTasks は不正形式と ID 重複を拒みます。親は実関数と試験を照合し、重複未試験という主張なら追加と保存読戻しを区別します。長い報告を優先しません。",
         "참고판 addTask는 공백·길이·ID를 검사해 새 배열을 반환하고 visibleTasks는 active/completed를 필터링하며 decodeTasks는 잘못된 형식과 중복 ID를 거부합니다. 부모는 실제 함수와 테스트를 확인하고 중복 미검증 주장에는 추가와 저장 복원의 차이를 구분하세요. 긴 보고를 우선하지 않습니다."
       ]
     },
@@ -178,7 +178,7 @@
       "text": [
         "再由主任務執行一次基準測試，保存實際 exit code 與結果。驗收表至少包括「主張、檔案／函式、測試證據、已確認或未確認」。有些行為可讀程式確定，但沒經過瀏覽器操作；有些測試缺口只是建議，不是現存 Bug。把這些狀態分開，讀者才知道下一步該補測試、實際重現還是直接修正。",
         "The parent then runs the baseline tests once and records the actual exit/result. Include claim, file/symbol, test evidence and verified/unverified status. Code inspection can establish some behavior without browser testing, while a coverage suggestion is not necessarily a current bug. Separate those states to decide whether the next step is another test, reproduction or a fix.",
-        "親が基準試験を一度実行し実終了値と結果を保存します。主張、実体、試験証拠、確認状態を並べます。読解で分かってもブラウザー未操作の場合や、覆蓋提案であって不具合でない場合を分け、次の試験・再現・修正を決めます。",
+        "親が基準試験を一度実行し実終了値と結果を保存します。主張、実体、試験証拠、確認状態を並べます。読解で分かってもブラウザー未操作の場合や、テスト範囲の追加提案であって不具合でない場合を分け、次の試験・再現・修正を決めます。",
         "부모가 기준 테스트를 한 번 실행해 실제 종료와 결과를 남깁니다. 주장·파일/함수·시험 증거·검증 상태를 기록하세요. 코드로 확인해도 브라우저 미실행일 수 있고 테스트 빈틈은 버그가 아닐 수 있습니다. 이를 구분해야 시험·재현·수정 중 다음 단계를 고를 수 있습니다."
       ]
     },
@@ -196,7 +196,7 @@
       "text": [
         "常重複做相同檢查時，可以在可信任練習專案建立 .codex/agents/data-reader.toml。這是代理設定 TOML，不是 AGENTS.md，也不會單憑檔案存在就啟動工作者。先確認沒有同名檔，再保存下列完整範例；新任務中明確要求使用 data_reader，檢查是否按角色讀取。這個延伸不必為了完成前面的兩人分工而先做。",
         "For repeated reviews, create .codex/agents/data-reader.toml in a trusted practice project after checking that it does not already exist. This is agent TOML configuration, not AGENTS.md, and existence does not spawn a worker. Save the complete example, explicitly request data_reader in a new task and inspect its behavior. This optional extension is not a prerequisite for the two-worker exercise.",
-        "反復する場合は信頼済み実習プロジェクトに、同名不在を確認して .codex/agents/data-reader.toml を作れます。代理 TOML であり AGENTS.md ではなく、存在だけで起動しません。新タスクで data_reader を明示して役割を確認します。前の二人実習の前提ではありません。",
+        "反復する場合は信頼済み実習プロジェクトに、同名不在を確認して .codex/agents/data-reader.toml を作れます。エージェント TOML であり AGENTS.md ではなく、存在だけで起動しません。新タスクで data_reader を明示して役割を確認します。前の二人実習の前提ではありません。",
         "반복 검토는 신뢰한 실습 프로젝트에 동명 파일이 없는지 확인하고 .codex/agents/data-reader.toml을 만들 수 있습니다. AGENTS.md가 아닌 에이전트 TOML이며 파일만으로 실행되지 않습니다. 새 작업에서 data_reader를 명시해 역할을 확인하세요. 앞의 두 작업 실습에 필수는 아닙니다."
       ]
     },
@@ -216,7 +216,7 @@
       "text": [
         "範例未指定模型，讓它沿用已可用的設定。子代理會繼承主任務當下的權限；特別在互動 CLI，執行時的父層覆寫會重新套用，不能把檔案中的 read-only 當作永遠高於當前授權的保證。請在委派前檢查主任務的[權限模式](article:codex-permissions)，並保留只讀要求。要撤回延伸設定，只移除這次自己新增的角色檔，重新開任務核對，不刪整個 .codex。",
         "The example omits a model to inherit available settings. Workers inherit the parent's current permissions; interactive CLI runtime overrides are reapplied, so the file's read-only default is not an unconditional override of live permissions. Check the parent's [Permission mode](article:codex-permissions) before delegation and retain read-only instructions. To undo the extension, remove only your added role file and verify a new task without deleting the entire .codex folder.",
-        "モデルを省略して利用可能設定を継承します。代理は親の現在権限を継承し、CLI の実行時上書きも再適用されるため、read-only ファイルが常に最優先とは保証しません。委派前に[権限](article:codex-permissions)を確認します。戻す際は追加した役割だけを除き新タスクで確認します。",
+        "モデルを省略して利用可能設定を継承します。エージェントは親の現在権限を継承し、CLI の実行時上書きも再適用されるため、read-only ファイルが常に最優先とは保証しません。委任前に[権限](article:codex-permissions)を確認します。戻す際は追加した役割だけを除き新タスクで確認します。",
         "모델을 생략해 사용 가능한 설정을 상속합니다. 하위 작업은 부모의 현재 권한을 받으며 CLI 런타임 덮어쓰기가 다시 적용되므로 파일 read-only가 항상 우선한다는 보장은 아닙니다. 위임 전 [권한](article:codex-permissions)을 확인하세요. 되돌릴 때 추가한 역할 파일만 제거하고 새 작업에서 확인합니다."
       ]
     },
@@ -243,7 +243,7 @@
       "text": [
         "完成時留下兩個真實工作者的活動、各自的證據、一次補充條件的回應、主任務的整合與測試結果，以及五個教材檔案未被改動的確認。刻意停止 B 的練習可以另開一次執行，標為停止案例，不算兩份完成報告。本文的角色設定與參考程式可靜態核對，沒有宣稱已替你的帳號啟動代理；桌面、IDE、其他系統與手機介面未實測者依官方文件查證。接續[子代理品質驗收](article:codex-subagent-quality)學習驗證看起來合理但缺少證據的回報。",
         "Retain activity from two real workers, their evidence, response to one steering message, parent reconciliation/test result and confirmation that all five files remain unchanged. A deliberately stopped B can be a separate run labeled stopped, not two completed reports. Role configuration and reference code can be checked statically; this text does not claim agents were spawned on your account. Unoperated clients/platforms are officially documented. Continue to [Subagent quality](article:codex-subagent-quality) to assess plausible but unsupported reports.",
-        "実在二代理の活動、証拠、一追加への応答、親の統合・試験、五ファイル未変更を残します。B 停止は別実行で停止例とし、二完了とは数えません。役割・参考コードの静的確認と利用者アカウントでの実行を混同せず、未操作環境は公式確認とします。次は[代理品質検証](article:codex-subagent-quality)です。",
+        "実在2つのエージェントの活動、証拠、一追加への応答、親の統合・試験、五ファイル未変更を残します。B 停止は別実行で停止例とし、二完了とは数えません。役割・参考コードの静的確認と利用者アカウントでの実行を混同せず、未操作環境は公式確認とします。次は[エージェント品質検証](article:codex-subagent-quality)です。",
         "실제 두 작업자의 활동·증거·추가 지시 응답·부모 통합과 시험·다섯 파일 불변을 남깁니다. B 중지는 별도 실행의 중지 사례이며 두 완료로 세지 않습니다. 역할·참고 코드의 정적 확인이 사용자 계정에서 실행했다는 뜻은 아닙니다. 미실행 환경은 공식 문서 확인으로 표시하고 [품질 검증](article:codex-subagent-quality)으로 이어갑니다."
       ]
     }

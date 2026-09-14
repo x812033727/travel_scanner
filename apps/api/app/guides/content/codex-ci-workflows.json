@@ -586,7 +586,7 @@
         },
         {
           "type": "paragraph",
-          "text": "summarize は指定 commit を読み、checkout 資格情報を残しません。公式 Action の API 代理で Secret を使い、drop-sudo はプロセス権限、:read-only はコマンド権限を制限するため両方を残します。この固定版は permission-profile に対応し、sandbox を同時追加しません。Codex は最初の job の最終ステップで、回答はデータとして新しい save_report job へ渡ります。後者に API Secret やリポジトリ書込権限はありません。"
+          "text": "summarize は指定 commit を読み、checkout 資格情報を残しません。公式 Action の API プロキシで Secret を使い、drop-sudo はプロセス権限、:read-only はコマンド権限を制限するため両方を残します。この固定版は permission-profile に対応し、sandbox を同時追加しません。Codex は最初の job の最終ステップで、回答はデータとして新しい save_report job へ渡ります。後者に API Secret やリポジトリ書込権限はありません。"
         },
         {
           "type": "paragraph",
@@ -615,7 +615,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "Run workflow がなければ既定ブランチの YAML、Actions の有効化、権限を確認します。Secret 欠如・代理失敗では名前と API 権限を調べ、鍵をログへ出しません。取消・タイムアウト記録を残し"
+              "text": "Run workflow がなければ既定ブランチの YAML、Actions の有効化、権限を確認します。Secret 欠如・エージェント失敗では名前と API 権限を調べ、鍵をログへ出しません。取消・タイムアウト記録を残し"
             },
             {
               "type": "article",

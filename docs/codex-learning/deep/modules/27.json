@@ -229,7 +229,7 @@
       "text": [
         "| 資源 | worktree 是否自動分開 | 必須自行核對 |\n| --- | --- | --- |\n| 已追蹤檔案與暫存區 | 是 | 編輯器目前開啟路徑 |\n| 提交、分支紀錄 | 共用 | 哪份 checkout 使用哪個分支 |\n| node_modules、建置快取 | 通常需各自準備 | 專案安裝與啟動步驟 |\n| 本機 port | 不保證 | 每個預覽使用的 port |\n| 資料庫、雲端服務 | 不保證 | 練習資料與帳號範圍 |",
         "| Resource | Automatically separated? | Check yourself |\n| --- | --- | --- |\n| Tracked files and index | Yes | Editor's actual path |\n| Commits and branches | Shared | Branch ownership per checkout |\n| Dependencies and build caches | Usually need separate setup | Project setup instructions |\n| Local ports | Not guaranteed | Port used by each preview |\n| Database and cloud service | Not guaranteed | Practice data and account scope |",
-        "| 資源 | 自動分離 | 確認事項 |\n| --- | --- | --- |\n| 追跡ファイル・索引 | あり | 編集中の実経路 |\n| コミット・分岐 | 共通 | 各 checkout の分岐 |\n| 依存・建置キャッシュ | 通常個別準備 | プロジェクト準備手順 |\n| ローカル port | 保証なし | 各プレビューの port |\n| DB・外部サービス | 保証なし | 教材とアカウント範囲 |",
+        "| リソース | 自動分離 | 確認事項 |\n| --- | --- | --- |\n| 追跡ファイル・索引 | あり | 編集中の実経路 |\n| コミット・分岐 | 共通 | 各 checkout の分岐 |\n| 依存・ビルドキャッシュ | 通常個別準備 | プロジェクト準備手順 |\n| ローカル port | 保証なし | 各プレビューの port |\n| DB・外部サービス | 保証なし | 教材とアカウント範囲 |",
         "| 자원 | 자동 분리 | 직접 확인 |\n| --- | --- | --- |\n| 추적 파일·인덱스 | 예 | 편집기 실제 경로 |\n| 커밋·브랜치 | 공유 | checkout별 브랜치 |\n| 의존성·빌드 캐시 | 보통 개별 준비 | 프로젝트 준비 절차 |\n| 로컬 포트 | 보장 안 됨 | 미리 보기별 포트 |\n| DB·클라우드 | 보장 안 됨 | 연습 데이터·계정 범위 |"
       ]
     },
@@ -276,7 +276,7 @@
       "text": [
         "驗收時 list 應只剩原目錄，main 的 notes.md 仍是 LOCAL-A，git show 仍能看到分支中的 COPY-B。再加上先前一邊乾淨、一邊修改與分支占用失敗的紀錄，才足以證明建立、隔離、保存、移除四個階段。Git 命令的本機參考驗證與 Codex 桌面 Handoff 要分開標示；未操作平台依官方文件查證。下一步讀[子代理分工](article:codex-subagents)，比較目錄隔離與工作分工各自解決什麼問題。",
         "At acceptance, list should retain only the original checkout, main's notes.md should still contain LOCAL-A, and git show should retrieve COPY-B from the branch. Together with separate dirty/clean statuses and the branch-in-use refusal, this verifies creation, isolation, preservation and removal. Record local Git testing separately from desktop Handoff and label unoperated platforms as officially documented. Continue to [Subagent division](article:codex-subagents) to distinguish workspace isolation from task delegation.",
-        "list は元のみ、main は LOCAL-A、分岐の git show は COPY-B のままを確認します。分離状態と分岐使用拒否の記録を合わせ、作成・分離・保存・除去を検証します。Git 試験とデスクトップ Handoff は別記し、未操作 OS は公式確認とします。次は[子代理の分担](article:codex-subagents)です。",
+        "list は元のみ、main は LOCAL-A、分岐の git show は COPY-B のままを確認します。分離状態と分岐使用拒否の記録を合わせ、作成・分離・保存・除去を検証します。Git 試験とデスクトップ Handoff は別記し、未操作 OS は公式確認とします。次は[サブエージェントの分担](article:codex-subagents)です。",
         "list에는 원본만, main 문서는 LOCAL-A, 브랜치 git show는 COPY-B여야 합니다. 분리 상태와 브랜치 사용 거부 기록을 더해 생성·분리·보존·제거를 검증합니다. Git 시험과 데스크톱 Handoff를 구분하고 미실행 플랫폼은 공식 문서 확인으로 표시하세요. 다음은 [하위 에이전트 분담](article:codex-subagents)입니다."
       ]
     }

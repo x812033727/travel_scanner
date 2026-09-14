@@ -35,7 +35,7 @@
       "text": [
         "資料夾存在不代表其中每個檔案都自動執行。SKILL.md 負責說明何時使用及操作順序；references 保存需要時再讀的規格；assets 提供輸出樣板；scripts 才是實際程式。這次刻意只做「讀取 JSON 並統計」，不加入網站修改、網路連線或自動發布，方便確認每個資源確實有用途。",
         "A folder does not execute every file automatically. SKILL.md describes when and how to use the workflow; references holds specifications to read when needed; assets supplies an output template; scripts contains executable code. This exercise only reads and counts JSON tasks, with no website edits, network calls or publication, so each resource has an observable purpose.",
-        "フォルダー内の全ファイルが自動実行されるわけではありません。SKILL.md は対象と順序、references は必要時に読む仕様、assets は出力書式、scripts は実行コードです。今回は JSON の読取りと集計だけを行い、サイト変更、通信、公開を含めず、各資源の役割を確認します。",
+        "フォルダー内の全ファイルが自動実行されるわけではありません。SKILL.md は対象と順序、references は必要時に読む仕様、assets は出力書式、scripts は実行コードです。今回は JSON の読取りと集計だけを行い、サイト変更、通信、公開を含めず、各リソースの役割を確認します。",
         "폴더 안의 모든 파일이 자동 실행되지는 않습니다. SKILL.md는 사용 범위와 순서, references는 필요할 때 읽는 규격, assets는 출력 양식, scripts는 실행 코드를 담습니다. 이번에는 JSON 읽기와 집계만 하며 사이트 수정, 네트워크 호출, 게시를 포함하지 않아 각 자원의 역할을 확인할 수 있습니다."
       ]
     },
@@ -44,7 +44,7 @@
       "text": [
         "| 資源 | 放什麼 | 這次如何驗證 |\n| --- | --- | --- |\n| SKILL.md | 適用範圍與順序 | 確認連結及停止條件 |\n| references | 輸入資料契約 | 重複標題允許、重複 ID 拒絕 |\n| assets | 空白報告範本 | 以真實輸出填寫，不留舊數字 |\n| scripts | 可執行檢查器 | 手動執行得到 3／1／2 |",
         "| Resource | Contents | Verification here |\n| --- | --- | --- |\n| SKILL.md | Scope and sequence | Inspect links and stop conditions |\n| references | Input contract | Repeated titles allowed; duplicate IDs rejected |\n| assets | Blank report template | Fill actual results, not previous counts |\n| scripts | Executable checker | Manual run returns 3/1/2 |",
-        "| 資源 | 内容 | 今回の確認 |\n| --- | --- | --- |\n| SKILL.md | 範囲と順序 | リンクと停止条件 |\n| references | 入力契約 | 同名許可、ID 重複拒否 |\n| assets | 空の報告型 | 実結果を記入し旧数値を残さない |\n| scripts | 検査コード | 手動実行3／1／2 |",
+        "| リソース | 内容 | 今回の確認 |\n| --- | --- | --- |\n| SKILL.md | 範囲と順序 | リンクと停止条件 |\n| references | 入力契約 | 同名許可、ID 重複拒否 |\n| assets | 空の報告型 | 実結果を記入し旧数値を残さない |\n| scripts | 検査コード | 手動実行3／1／2 |",
         "| 자원 | 내용 | 이번 확인 |\n| --- | --- | --- |\n| SKILL.md | 범위와 순서 | 링크와 중단 조건 |\n| references | 입력 계약 | 동명 허용, 중복 ID 거부 |\n| assets | 빈 보고서 틀 | 이전 수치 대신 실제 결과 입력 |\n| scripts | 실행 검사기 | 직접 실행 3/1/2 |"
       ]
     },
@@ -220,7 +220,7 @@
       "text": [
         "步驟 4：把資源接回 SKILL.md",
         "Step 4: Connect the resources in SKILL.md",
-        "手順4：SKILL.md から資源を参照",
+        "手順4：SKILL.md からリソースを参照",
         "4단계: SKILL.md에서 자원 연결"
       ]
     },
@@ -229,7 +229,7 @@
       "text": [
         "在 todo-summary/SKILL.md 寫入完整內容。資源連結都相對於這份 SKILL.md；執行命令則明確要求在練習根目錄操作。請注意兩種相對位置不同。先前的 todo-acceptance 技能仍可保留，這次使用獨立名稱 todo-summary，讓你能在選單辨識自己選到哪一個工作流程。",
         "Write the complete SKILL.md under todo-summary. Resource links are relative to SKILL.md, while the execution command explicitly starts at the practice root. Distinguish these two bases. Keep the earlier todo-acceptance skill; the new name todo-summary lets you identify the intended workflow in the picker.",
-        "todo-summary/SKILL.md に全文を書きます。資源リンクは SKILL.md 基準、実行命令は実習ルート基準です。この2つを区別します。以前の todo-acceptance は残し、別名 todo-summary で選択した手順を識別します。",
+        "todo-summary/SKILL.md に全文を書きます。リソースリンクは SKILL.md 基準、実行命令は実習ルート基準です。この2つを区別します。以前の todo-acceptance は残し、別名 todo-summary で選択した手順を識別します。",
         "todo-summary/SKILL.md에 전체 내용을 씁니다. 자원 링크는 SKILL.md 기준이고 실행 명령은 실습 루트 기준입니다. 두 기준을 구분하세요. 이전 todo-acceptance는 유지하고 새 이름 todo-summary로 선택한 절차를 구분합니다."
       ]
     },
@@ -249,7 +249,7 @@
       "text": [
         "Codex 會先用技能名稱與描述判斷適用情境，需要使用時才讀完整指令。把穩定的短流程留在主檔，長規格與程式移到可直接找到的連結，比將所有文件整包塞入每次提示更容易維護。但分檔不是節省用量的保證；若工作每次都需要全部資源，仍會讀取它們，不應把「存在連結」宣稱成「程式已執行」。",
         "Codex uses the name and description to identify relevant skills, then reads full instructions when selecting one. Keep a stable short workflow in the main file and directly link longer specifications and code. This improves maintainability; splitting files does not guarantee lower usage when a task needs every resource. A linked script is not evidence of execution.",
-        "Codex は名称と説明で適用を判断し、選択時に全文を読みます。主ファイルに安定した短い手順を置き、長い仕様とコードへ直接リンクすると保守しやすくなります。毎回全資源が必要なら分割による使用量削減は保証されません。リンクの存在は実行の証拠ではありません。",
+        "Codex は名称と説明で適用を判断し、選択時に全文を読みます。主ファイルに安定した短い手順を置き、長い仕様とコードへ直接リンクすると保守しやすくなります。毎回全リソースが必要なら分割による使用量削減は保証されません。リンクの存在は実行の証拠ではありません。",
         "Codex는 이름과 설명으로 적합성을 판단하고 선택할 때 전체 지침을 읽습니다. 주 파일에는 안정적인 짧은 절차를 두고 긴 규격과 코드는 직접 연결하면 관리하기 쉽습니다. 매번 모든 자원이 필요하면 분리만으로 사용량이 줄어든다는 보장은 없습니다. 링크가 있다는 사실은 실행 증거가 아닙니다."
       ]
     },
@@ -267,7 +267,7 @@
       "text": [
         "從練習根目錄開始新任務。桌面版在技能入口或輸入 @ 後選擇 todo-summary；CLI／IDE 用 /skills 或輸入 $ 選擇。先確認選單中的名稱與檔案位置，若沒有出現，檢查專案根目錄和副檔名，重新開啟 Codex 後再試。以下是給代理的自然語言需求，不是要在 PowerShell 執行的命令。",
         "Start a new task from the practice root. On desktop select todo-summary through the skills entry or @ picker; in CLI/IDE use /skills or $. Check its name and file location. If absent, check the project root and filename extension, then restart Codex. The following is a natural-language request to the agent, not a PowerShell command.",
-        "実習ルートから新しいタスクを開始します。デスクトップは Skills 入口か @、CLI／IDE は /skills または $ で todo-summary を選び、名称と場所を確認します。見つからなければルート、拡張子を点検して Codex を再起動します。次は代理への依頼で、PowerShell 命令ではありません。",
+        "実習ルートから新しいタスクを開始します。デスクトップは Skills 入口か @、CLI／IDE は /skills または $ で todo-summary を選び、名称と場所を確認します。見つからなければルート、拡張子を点検して Codex を再起動します。次はエージェントへの依頼で、PowerShell 命令ではありません。",
         "실습 루트에서 새 작업을 시작하세요. 데스크톱은 Skills 진입점이나 @, CLI/IDE는 /skills 또는 $로 todo-summary를 선택하고 이름과 파일 위치를 확인합니다. 없다면 루트와 확장자를 점검하고 Codex를 재시작합니다. 다음은 에이전트에게 보내는 요청이며 PowerShell 명령이 아닙니다."
       ]
     },
@@ -323,7 +323,7 @@
       "text": [
         "本篇以 Node.js 檢查器的可重現輸入輸出作為材料驗證；技能選單、自動觸發與代理是否遵從則要由你在自己的入口觀察，不能用腳本成功代替。下一篇[技能驗收與修正](article:codex-skill-testing)會補入空資料、重複 ID、型別錯誤及不應觸發的工作，並教你區分程式正確與技能使用正確。示意圖 1 是輸入與契約，2 是執行，3 是檢查報告。",
         "This lesson verifies reproducible Node.js checker inputs and outputs. Observe skill selection, implicit activation and agent compliance in your own surface; script success does not establish those. [Skill testing and repair](article:codex-skill-testing) adds empty input, duplicate IDs, type errors and out-of-scope requests, separating checker correctness from correct skill use. Diagram 1 is input/contract, 2 execution and 3 report verification.",
-        "教材検証は Node.js 検査の再現可能な入出力です。選択、自動適用、代理の遵守は自分の入口で観察し、スクリプト成功で代替しません。次の[スキル検証と修正](article:codex-skill-testing)は空入力、ID 重複、型不正、対象外依頼を加え、プログラムの正しさと適切な使用を分けます。図1は入力と契約、2は実行、3は報告確認です。",
+        "教材検証は Node.js 検査の再現可能な入出力です。選択、自動適用、エージェントの遵守は自分の入口で観察し、スクリプト成功で代替しません。次の[スキル検証と修正](article:codex-skill-testing)は空入力、ID 重複、型不正、対象外依頼を加え、プログラムの正しさと適切な使用を分けます。図1は入力と契約、2は実行、3は報告確認です。",
         "이 글의 자료 검증은 Node.js 검사기의 재현 가능한 입출력입니다. 선택, 자동 활성화, 에이전트 준수는 자신의 환경에서 관찰해야 하며 스크립트 성공으로 대체하지 않습니다. 다음 [스킬 검증과 수정](article:codex-skill-testing)은 빈 입력, 중복 ID, 타입 오류, 범위 밖 요청을 추가해 코드 정확성과 올바른 사용을 구분합니다. 그림 1은 입력/계약, 2는 실행, 3은 보고서 확인입니다."
       ]
     }

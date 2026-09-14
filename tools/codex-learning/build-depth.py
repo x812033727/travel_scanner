@@ -16,6 +16,29 @@ ROOT = Path(__file__).resolve().parents[2]
 AUTHORS = ROOT / "docs/codex-learning/deep"
 CATALOG = ROOT / "apps/web/lib/codex-learning/catalog.json"
 PACKS = ROOT / "apps/api/app/guides/content"
+SCREENSHOT_ALT = {
+    "zh-TW": "待辦練習網站：Build 已完成，Read the AGENTS.md rules 尚未完成，共兩項任務。",
+    "zh-CN": "待办练习网站：Build 已完成，Read the AGENTS.md rules 尚未完成，共两项任务。",
+    "en": "Practice task website: Build is complete and Read the AGENTS.md rules is pending, with two tasks in total.",
+    "ja": "練習用タスクサイト。Build は完了、Read the AGENTS.md rules は未完了で、合計2件。",
+    "ko": "실습 할 일 사이트. Build는 완료, Read the AGENTS.md rules는 미완료이며 총 두 항목입니다.",
+}
+REFERENCE_ALT = {
+    6: {
+        "zh-TW": "修改後的練習網站：標題為 Small steps, clear progress.，Add task 按鈕有橘色鍵盤焦點框。",
+        "zh-CN": "修改后的练习网站：标题为 Small steps, clear progress.，Add task 按钮有橙色键盘焦点框。",
+        "en": "Edited practice website with the heading Small steps, clear progress. and an orange keyboard focus outline around Add task.",
+        "ja": "変更後の練習サイト。見出しは Small steps, clear progress.、Add task ボタンに橙色のキーボードフォーカス枠。",
+        "ko": "수정한 실습 사이트. 제목은 Small steps, clear progress.이며 Add task 버튼에 주황색 키보드 포커스 테두리가 있습니다.",
+    },
+    7: {
+        "zh-TW": "提示詞練習成果：輸入框提示為 Plan one small step；Save task 按鈕內的文字靠左對齊，按鈕有橘色焦點框。",
+        "zh-CN": "提示词练习成果：输入框提示为 Plan one small step；Save task 按钮内的文字靠左对齐，按钮有橙色焦点框。",
+        "en": "Prompt exercise result: the input hint reads Plan one small step. The Save task button has left-aligned text and an orange focus outline.",
+        "ja": "依頼文の練習結果。入力欄のヒントは Plan one small step。Save task ボタン内の文字が左寄せになり、橙色のフォーカス枠が表示されています。",
+        "ko": "프롬프트 실습 결과. 입력 힌트는 Plan one small step입니다. Save task 버튼 안의 글자는 왼쪽 정렬이며 버튼에 주황색 포커스 테두리가 있습니다.",
+    },
+}
 SCREENSHOT_CAPTIONS = {
     "zh-TW": "完整參考版的實際瀏覽器畫面，供修改前比對。Windows / Edge 153.0.4234.32，2026-09-14；使用虛構資料。390px 為響應式視窗，非實體手機。這不是 Codex 桌面介面截圖。",
     "zh-CN": "完整参考版的实际浏览器画面，供修改前比对。Windows / Edge 153.0.4234.32，2026-09-14；使用虚构数据。390px 为响应式窗口，非实体手机。这不是 Codex 桌面界面截图。",
@@ -24,11 +47,11 @@ SCREENSHOT_CAPTIONS = {
     "ko": "수정 전 완성 참고 버전의 실제 브라우저 화면. Windows / Edge 153.0.4234.32, 2026-09-14, 가상 데이터. 390px은 반응형 화면이며 실제 휴대전화가 아닙니다. Codex 데스크톱 UI 화면도 아닙니다.",
 }
 REFERENCE_CAPTIONS = {
-    "zh-TW": "本篇指定修改的參考成果，使用原始練習檔套用指定變更後，在 Windows / Edge 153.0.4234.32 於 2026-09-14 實際截圖。橘框是鍵盤焦點；資料皆為虛構。窄版為響應式視窗，非實體手機，也不是 Codex 介面或模型執行紀錄。",
-    "zh-CN": "本篇指定修改的参考成果，使用原始练习文件应用指定更改后，在 Windows / Edge 153.0.4234.32 于 2026-09-14 实际截图。橙框是键盘焦点；数据均为虚构。窄版为响应式窗口，非实体手机，也不是 Codex 界面或模型执行记录。",
-    "en": "Reference edits applied to the practice files; actual Windows / Edge 153.0.4234.32 screenshot, 2026-09-14. Orange outline: keyboard focus. Fictional data; narrow viewport, not a physical phone. Not Codex UI or proof of model execution.",
-    "ja": "元の教材に本記事の指定変更を適用した参考成果。Windows / Edge 153.0.4234.32、2026-09-14 の実画像です。橙枠はキーボードフォーカスでデータは架空です。狭い表示はレスポンシブ画面で実物の電話ではなく、Codex UI やモデル実行記録でもありません。",
-    "ko": "원본 실습 파일에 이 강의의 지정 변경을 적용한 참고 결과. Windows / Edge 153.0.4234.32에서 2026-09-14에 촬영했습니다. 주황 테두리는 키보드 포커스이며 데이터는 가상입니다. 좁은 화면은 반응형 뷰포트로 실제 휴대전화가 아니며 Codex UI나 모델 실행 기록도 아닙니다.",
+    "zh-TW": "本篇指定修改的參考成果，使用原始練習檔套用指定變更後，在 Windows / Edge 153.0.4234.32 於 2026-09-14 實際截圖。橘框是鍵盤焦點；資料皆為虛構。這是寬 {width}px 的響應式視窗，非實體手機，也不是 Codex 介面或模型執行紀錄。",
+    "zh-CN": "本篇指定修改的参考成果，使用原始练习文件应用指定更改后，在 Windows / Edge 153.0.4234.32 于 2026-09-14 实际截图。橙框是键盘焦点；数据均为虚构。这是宽 {width}px 的响应式窗口，非实体手机，也不是 Codex 界面或模型执行记录。",
+    "en": "Reference edits applied to the practice files; actual Windows / Edge 153.0.4234.32 screenshot, 2026-09-14. Orange outline: keyboard focus. Fictional data in a {width}px responsive viewport, not a physical phone. Not Codex UI or proof of model execution.",
+    "ja": "元の教材に本記事の指定変更を適用した参考成果。Windows / Edge 153.0.4234.32、2026-09-14 の実画像です。橙枠はキーボードフォーカスでデータは架空です。幅 {width}px のレスポンシブ表示で、実物のスマートフォン、Codex UI、モデル実行記録ではありません。",
+    "ko": "원본 실습 파일에 이 강의의 지정 변경을 적용한 참고 결과. Windows / Edge 153.0.4234.32에서 2026-09-14에 촬영했습니다. 주황 테두리는 키보드 포커스이며 데이터는 가상입니다. 너비 {width}px의 반응형 뷰포트로 실제 휴대전화, Codex UI 또는 모델 실행 기록이 아닙니다.",
 }
 FEATURE_CAPTIONS = {
     "zh-TW": "本篇參考修正的實際成果：Completed 保留兩筆不同識別碼的 Read，計數仍為 1 active / 3 total。Windows / Edge 153.0.4234.32，2026-09-14；虛構資料，窄版為響應式視窗，非實體手機。這是練習網站，不是 Codex 介面或模型執行證據。",
@@ -271,13 +294,13 @@ def main():
                     pictures = [picture for picture in pictures if "todo-" not in picture["src"]]
                     for width in [390, 1280]:
                         pictures.append({"type": "image", "src": f"/guides/codex-first-project/todo-{width}.png",
-                                         "alt": f"Small Steps / {width}px / Windows Edge", "caption": SCREENSHOT_CAPTIONS[locale],
+                                         "alt": SCREENSHOT_ALT[locale], "caption": SCREENSHOT_CAPTIONS[locale].replace("390px", f"{width}px"),
                                          "width": width, "height": 900, "credit": {"author": "Mokaair", "license": "© Mokaair"}})
                 if row["id"] in {6, 7}:
                     pictures = [picture for picture in pictures if "/reference-" not in picture["src"]]
                     for width in [390, 1280]:
                         pictures.append({"type": "image", "src": f'/guides/{row["slug"]}/reference-{width}.png',
-                                         "alt": f"Small Steps / {width}px / Windows Edge", "caption": REFERENCE_CAPTIONS[locale],
+                                         "alt": REFERENCE_ALT[row["id"]][locale], "caption": REFERENCE_CAPTIONS[locale].format(width=width),
                                          "width": width, "height": 900, "credit": {"author": "Mokaair", "license": "© Mokaair"}})
                 if row["id"] == 47:
                     pictures = [picture for picture in pictures if "/reference-" not in picture["src"]]

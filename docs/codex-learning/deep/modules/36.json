@@ -113,7 +113,7 @@
       "text": [
         "已具備 Node.js 與 npm，且想沿用 npm 的讀者，先確認 node --version、npm --version，再用 npm install -g @openai/codex。若 npm 回報 EACCES，先檢查目前 Node.js 管理方式和 npm 全域目錄擁有者；不要直接在所有命令前加 sudo。若改選獨立版，先記錄原來源並檢查重複命令，避免之後更新到另一份。",
         "If you prefer an existing Node.js/npm setup, verify node --version and npm --version, then use npm install -g @openai/codex. For EACCES, inspect the Node.js installation method and ownership of npm's global directory rather than prefixing every command with sudo. If switching to standalone, record the original source and check duplicates so later updates affect the intended executable.",
-        "既存の Node.js / npm を使う場合は node --version と npm --version を確認してから npm install -g @openai/codex を使います。EACCES なら全コマンドに sudo を付けず、Node.js の導入方式と npm 全域ディレクトリの所有者を確認します。独立版に変えるなら元を記録して重複を調べ、意図した実行ファイルが更新されるようにします。",
+        "既存の Node.js / npm を使う場合は node --version と npm --version を確認してから npm install -g @openai/codex を使います。EACCES なら全コマンドに sudo を付けず、Node.js の導入方式と npm グローバルディレクトリの所有者を確認します。独立版に変えるなら元を記録して重複を調べ、意図した実行ファイルが更新されるようにします。",
         "기존 Node.js/npm을 쓰려면 node --version과 npm --version을 확인한 뒤 npm install -g @openai/codex를 사용합니다. EACCES가 나면 모든 명령에 sudo를 붙이기보다 Node.js 설치 방식과 npm 전역 폴더 소유자를 점검합니다. 독립 버전으로 바꿀 때는 기존 원본과 중복 명령을 확인해 나중에 의도한 실행 파일이 갱신되도록 합니다."
       ]
     },

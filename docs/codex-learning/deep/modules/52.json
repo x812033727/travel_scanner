@@ -171,7 +171,7 @@
       "text": [
         "HTTP 則先核對完整協定、主機、路徑，例如本篇必須是官方 /mcp 端點。瀏覽器能開網站首頁，只能證明部分網路可達，不能證明 MCP 請求、代理設定與驗證都成功。TLS 錯誤應檢查系統時間、公司代理與憑證信任設定；先向環境維護者確認，不把關閉憑證驗證當成教學預設。暫時連不上時保留時間與遮蔽後錯誤再重試。",
         "For HTTP, check scheme, host and full path, including the official /mcp endpoint here. A browser opening the homepage proves only partial reachability, not a successful MCP request, proxy setup or authentication. For TLS errors, inspect system time, organizational proxy and certificate trust with the environment maintainer; disabling certificate checks is not the default repair. Record time and a redacted error before retrying a temporary failure.",
-        "HTTP は協定、ホスト、全パスを確認し、今回は公式 /mcp を使います。ホームページを開けても MCP、代理、認証の成功証明ではありません。TLS は時刻、組織プロキシ、証明書信頼を管理者と確認し、検証無効化を既定修正にしません。一時失敗は時刻と伏せたエラーを残して再試行します。",
+        "HTTP は協定、ホスト、全パスを確認し、今回は公式 /mcp を使います。ホームページを開けても MCP、プロキシ、認証の成功証明ではありません。TLS は時刻、組織プロキシ、証明書信頼を管理者と確認し、検証無効化を既定修正にしません。一時失敗は時刻と伏せたエラーを残して再試行します。",
         "HTTP는 스킴·호스트·전체 경로를 확인하며 이번에는 공식 /mcp입니다. 첫 페이지가 열려도 MCP 요청·프록시·인증 성공을 증명하지 않습니다. TLS는 시간·조직 프록시·인증서 신뢰를 관리자와 확인하고 검증 해제를 기본 해결로 쓰지 않습니다. 일시 실패는 시각과 가린 오류를 남긴 후 재시도하세요."
       ]
     },

@@ -26,7 +26,7 @@
       "text": [
         "平行工作節省的是可以獨立完成的時間，最後的整合仍有順序。兩個工作者都說完成，可能只是各自的分支完成；同一頁同時用到兩個變更時，還要在相同版本與環境重跑驗收。這篇用標題與頁尾兩個文字檔代表兩份交付，不把簡單文字測試宣稱成整個網站測試。學會流程後，再套用到你專案真正的建置與瀏覽器檢查。",
         "Parallel work saves time on independent parts; integration still has an order. Two completed workers may mean only that each branch is done. A page using both changes needs acceptance on their combined version and environment. This exercise represents the deliverables with heading and footer text files, without calling those checks full website tests. Apply the workflow to your project's real build/browser checks afterward.",
-        "並行で短縮できても統合には順序があります。二人完了は各分岐の完了にすぎず、両変更を使う同一画面は組合せ版で確認が必要です。今回は標題と頁脚の文書で交付を表し、全サイト試験とは呼びません。後で実際の建置・画面確認に適用します。",
+        "並行で短縮できても統合には順序があります。二人完了は各分岐の完了にすぎず、両変更を使う同一画面は組合せ版で確認が必要です。今回は標題とフッターの文書で交付を表し、全サイト試験とは呼びません。後で実際のビルド・画面確認に適用します。",
         "독립 작업은 병렬로 시간을 줄여도 통합에는 순서가 있습니다. 두 완료는 각 브랜치만 끝난 것일 수 있어 같은 화면의 조합 버전에서 검증해야 합니다. 제목·푸터 텍스트로 결과물을 나타내며 전체 사이트 시험으로 부르지 않습니다. 이후 실제 빌드·브라우저 검증에 적용하세요."
       ]
     },
@@ -64,7 +64,7 @@
       "text": [
         "用編輯器建立下列三個完整檔案。heading.txt 初始為 Title: Small Steps，footer.txt 初始為 Footer: Local exercise，各自保留最後換行。測試描述的是兩項尚未完成的新要求，所以基準執行刻意是零通過、兩失敗；這是沒有遠端的獨立教材，不是在正式 main 上留下未說明的失敗。",
         "Create the three complete files below. Initially heading.txt contains Title: Small Steps and footer.txt contains Footer: Local exercise, each with a final newline. The tests describe two new requirements that are not yet implemented, so the baseline deliberately has zero passes and two failures. This isolated, remote-free lab is not an unexplained failure on a production main branch.",
-        "下記三ファイルを作り、標題と頁脚の初期値に末尾改行を残します。試験は未実装の新要件二つなので基準は意図した零通過・二失敗です。遠隔なしの独立教材であり、正式 main に説明なしの失敗を残すものではありません。",
+        "下記三ファイルを作り、標題とフッターの初期値に末尾改行を残します。試験は未実装の新要件二つなので基準は意図した零通過・二失敗です。遠隔なしの独立教材であり、正式 main に説明なしの失敗を残すものではありません。",
         "아래 세 파일을 만들고 제목·푸터 초기값에 마지막 줄바꿈을 남깁니다. 테스트는 미구현 요구 두 가지이므로 기준은 의도적인 0 통과·2 실패입니다. 원격 없는 독립 자료이며 운영 main에 설명 없는 실패를 남기는 것이 아닙니다."
       ]
     },
@@ -137,7 +137,7 @@
       "text": [
         "A 只能改 integration-heading/heading.txt 為 Title: Small Steps Lab；B 只能改 integration-footer/footer.txt 為 Footer: Practice only。你可以手動完成這兩個明確編輯，或在支援子代理的 Codex 主任務中明確委派兩位工作者，分別提供完整路徑、分支、唯一可寫檔案與回報格式。本篇參考驗證使用手動等價編輯，不冒充已啟動兩個模型。",
         "A may change only integration-heading/heading.txt to Title: Small Steps Lab. B may change only integration-footer/footer.txt to Footer: Practice only. Make these exact edits manually, or explicitly delegate two workers in a supported Codex task with full paths, branches, exclusive writable files and report format. Reference verification uses equivalent deterministic edits without claiming two model runs.",
-        "A は標題コピーの一文書だけ、B は頁脚コピーの一文書だけを指定値へ変えます。手動か、対応 Codex で全パス、分岐、唯一の編集対象、報告形式を明示して二代理へ依頼できます。参考検証は同等の明示編集でありモデル二実行とはしません。",
+        "A は標題コピーの一文書だけ、B はフッターコピーの一文書だけを指定値へ変えます。手動か、対応 Codex で全パス、分岐、唯一の編集対象、報告形式を明示して2つのエージェントへ依頼できます。参考検証は同等の明示編集でありモデル二実行とはしません。",
         "A는 제목 사본의 한 파일만, B는 푸터 사본의 한 파일만 지정값으로 바꿉니다. 직접 편집하거나 지원 Codex에서 전체 경로·브랜치·유일한 쓰기 파일·보고 형식을 주어 두 작업자에게 명시 위임할 수 있습니다. 참고 검증은 동등한 지정 편집이며 두 모델 실행으로 표시하지 않습니다."
       ]
     },
@@ -157,7 +157,7 @@
       "text": [
         "| 工作 | 可寫入檔案 | 此時測試預期 |\n| --- | --- | --- |\n| A 標題 | heading.txt | 標題通過、頁尾尚未通過 |\n| B 頁尾 | footer.txt | 頁尾通過、標題尚未通過 |\n| 整合者 | 確認後的組合分支 | 合併兩份後兩項通過 |\n\n任何人若改了 integration.test.mjs，先查看原因與差異，不讓工作者把驗收目標改低。",
         "| Work | Writable file | Expected tests at this stage |\n| --- | --- | --- |\n| A: heading | heading.txt | Heading passes; footer pending |\n| B: footer | footer.txt | Footer passes; heading pending |\n| Integrator | Reviewed combined branch | Both pass after both merges |\n\nInspect any change to integration.test.mjs before accepting it; workers must not weaken acceptance.",
-        "| 作業 | 編集対象 | その段階の試験 |\n| --- | --- | --- |\n| A 標題 | heading.txt | 標題成功・頁脚未完 |\n| B 頁脚 | footer.txt | 頁脚成功・標題未完 |\n| 統合者 | 確認済み組合せ | 両統合後に二成功 |\n\n試験変更があれば理由と差分を確認し、要件を弱めさせません。",
+        "| 作業 | 編集対象 | その段階の試験 |\n| --- | --- | --- |\n| A 標題 | heading.txt | 標題成功・フッター未完 |\n| B フッター | footer.txt | フッター成功・標題未完 |\n| 統合者 | 確認済み組合せ | 両統合後に二成功 |\n\n試験変更があれば理由と差分を確認し、要件を弱めさせません。",
         "| 작업 | 쓰기 파일 | 해당 단계 시험 |\n| --- | --- | --- |\n| A 제목 | heading.txt | 제목 통과·푸터 대기 |\n| B 푸터 | footer.txt | 푸터 통과·제목 대기 |\n| 통합자 | 검토된 조합 브랜치 | 둘을 합친 뒤 두 통과 |\n\n시험 파일이 바뀌면 이유와 차이를 확인하고 기준을 낮추게 하지 마세요."
       ]
     },
@@ -186,7 +186,7 @@
       "text": [
         "等兩份交付都停止修改後，查看完整 status，確認只改指定檔案，再用下列命令提交。若已有其他人或工作者提交，先核對提交與 diff，不再重複提交。記錄兩條分支的 SHA，讓整合對象具體；正式協作時若分支仍在變動，應使用已核對的提交或請持有人先停止寫入，不在不斷變更的目標上驗收。",
         "Wait until both writers stop, inspect full statuses and commit only the specified files. If a worker already committed, verify that commit/diff instead of duplicating it. Record both SHAs. For real collaboration, use verified commits or pause ongoing branch changes so acceptance does not target a moving result.",
-        "両者の書込み終了後、全状態と対象一ファイルだけを確認してコミットします。既コミットなら差分を確認し二重コミットしません。両 SHA を記録し、実協作では確認済みコミットを使うか更新を止め、動く対象で検証しません。",
+        "両者の書込み終了後、全状態と対象一ファイルだけを確認してコミットします。既コミットなら差分を確認し二重コミットしません。両 SHA を記録し、実際の共同作業では確認済みコミットを使うか更新を止め、動く対象で検証しません。",
         "두 작업자의 쓰기가 끝나면 전체 상태와 지정 파일만 바뀐 것을 확인해 커밋합니다. 이미 커밋됐다면 차이를 확인하고 중복 커밋하지 마세요. 두 SHA를 기록하며 실제 협업은 확인한 커밋을 쓰거나 변경을 멈춰 움직이는 대상을 검증하지 않습니다."
       ]
     },
@@ -266,7 +266,7 @@
       "text": [
         "查看衝突檔會看到兩種標題與 Git 標記。這次不選任一方，而是保存錯誤和 status，執行 merge --abort。中止後再跑測試，預期恢復先前兩項通過、status 乾淨。若工作目錄在合併前本來就有修改，abort 不保證能重建所有未提交狀態；因此不要省略前一步的檢查。真正要解衝突時逐段決定保留行為，再重跑測試，不能一律取 ours 或 theirs。",
         "The conflict file contains both headings and Git markers. For this exercise, record the error/status and abort instead of choosing a side. Tests should return to two passes with a clean status. With pre-existing uncommitted edits, abort may not reconstruct all earlier work, which is why the clean-state check matters. Real conflict resolution requires choosing behavior section by section and retesting rather than always taking ours or theirs.",
-        "競合文書の両値と Git 標記を見て、今回は選択せずエラー・状態を残して abort します。二成功と未変更へ戻るはずです。開始前に未コミットがあると完全復元を保証できないので確認を省略しません。実解消では部分ごとに動作を選び、全て ours/theirs にしません。",
+        "競合文書の両値と Git 識別マーカーを見て、今回は選択せずエラー・状態を残して abort します。二成功と未変更へ戻るはずです。開始前に未コミットがあると完全復元を保証できないので確認を省略しません。実解消では部分ごとに動作を選び、全て ours/theirs にしません。",
         "충돌 파일의 두 값과 Git 표식을 확인하고 이번에는 한쪽을 고르지 말고 오류·상태를 남겨 abort합니다. 두 통과와 깨끗한 상태로 돌아와야 합니다. 기존 미커밋이 있으면 완전 복구가 보장되지 않아 사전 확인이 필요합니다. 실제 해결은 구간별 동작을 선택하고 무조건 ours/theirs를 쓰지 않습니다."
       ]
     },

@@ -35,7 +35,7 @@
       "text": [
         "ChatGPT／Codex 的方案額度與 API 金額是不同指標。介面顯示的可用比例可能是整個帳號共享視窗，會受其他任務、重置時間及方案影響；不能把前後差一個百分點當成這個任務的精確價格。API 的 token 與費用也要依當時模型、計價及實際 usage 紀錄核對，不把 CLI 印出的所有 token 直接乘單一單價。本文把模型與價格連回集中維護的帳號／模型篇，不重複固定可能改變的數字。",
         "Plan quota in ChatGPT/Codex and API charges are different metrics. Available percentages can describe an account-wide shared window affected by other tasks, resets and plans; a one-point change is not this task's exact price. API tokens/cost require the actual model, pricing and usage record, not multiplying every CLI token by one rate. This lesson links to centrally maintained account/model guidance instead of repeating changing price figures.",
-        "ChatGPT／Codex の方案枠と API 金額は別指標です。利用可能百分率は他タスク・重置・方案に左右される共有視窓の場合があり、1ポイント差を単一タスクの正確な価格にしません。API も実モデル・料金・usage を照合し、CLI の全 token に単価1つを掛けません。変わる数字を重記せずアカウント・モデル編の集中情報へ繋ぎます。",
+        "ChatGPT／Codex のプラン枠と API 金額は別指標です。利用可能百分率は他タスク・リセット・プランに左右される共有視窓の場合があり、1ポイント差を単一タスクの正確な価格にしません。API も実モデル・料金・usage を照合し、CLI の全 token に単価1つを掛けません。変わる数字を重記せずアカウント・モデル編の集中情報へ繋ぎます。",
         "ChatGPT/Codex 요금제 한도와 API 비용은 다른 지표입니다. 잔여 비율은 다른 작업·초기화·요금제에 영향을 받는 계정 공유 구간일 수 있어 1% 차이를 해당 작업의 정확한 가격으로 보지 않습니다. API도 실제 모델·요금·usage 기록을 확인하며 CLI의 모든 token에 단일 단가를 곱하지 않습니다. 변하는 숫자를 반복하지 않고 계정·모델 편의 통합 정보로 연결합니다."
       ]
     },
@@ -167,7 +167,7 @@
       "text": [
         "下一輪若要比較模型或推理深度，先固定已驗收的 B 提示詞與同一輸入，再只改一項可用設定，依[模型選擇](article:codex-model-selection)的方法記錄。不要同時換模型、增加子代理、改提示詞再把差異全部歸因於速度。大量平行工作與長時間重試也會產生用量；對單一小問題先把目標縮小通常比增加工具更容易驗證。需要長任務時用[交接紀錄](article:codex-context-handoff)保存已驗證狀態，避免下一次重做全部探索。",
         "To compare models or reasoning next, hold the accepted B prompt and input fixed and change one available setting using [Model selection](article:codex-model-selection). Do not change model, delegation and prompt together and attribute everything to speed. Parallel tasks and prolonged retries also use quota. For a small problem, narrowing the objective is usually easier to verify than adding tools. For long work, retain verified state in a [Handoff record](article:codex-context-handoff) to avoid repeating all exploration.",
-        "次にモデル・推論を比べるなら合格 B と入力を固定し、[モデル選択](article:codex-model-selection)に沿って利用可能な設定1つだけを変えます。モデル・子代理・依頼を同時変更して全差異を速度へ帰属しません。平行作業・長い再試行も枠を使い、小問題はツール追加より目的を狭める方が検証しやすい場合があります。長期作業は[交接記録](article:codex-context-handoff)で検証済み状態を残して探索のやり直しを減らします。",
+        "次にモデル・推論を比べるなら合格 B と入力を固定し、[モデル選択](article:codex-model-selection)に沿って利用可能な設定1つだけを変えます。モデル・サブエージェント・依頼を同時変更して全差異を速度へ帰属しません。平行作業・長い再試行も枠を使い、小問題はツール追加より目的を狭める方が検証しやすい場合があります。長期作業は[引き継ぎ記録](article:codex-context-handoff)で検証済み状態を残して探索のやり直しを減らします。",
         "다음에 모델·추론을 비교하려면 합격한 B 요청과 입력을 고정하고 [모델 선택](article:codex-model-selection)에 따라 사용 가능한 설정 하나만 바꿉니다. 모델·하위 에이전트·요청을 함께 바꾸고 모든 차이를 속도 탓으로 돌리지 마세요. 병렬 작업·긴 재시도도 사용량을 쓰며 작은 문제는 도구 추가보다 목표 축소가 검증하기 쉬울 수 있습니다. 긴 작업은 [인계 기록](article:codex-context-handoff)에 검증 상태를 남겨 탐색 반복을 줄입니다."
       ]
     },
@@ -185,7 +185,7 @@
       "text": [
         "兩份副本應仍未改動，保存觀察表及兩次回答；若代理擅自修改，記錄為範圍失敗，先保存差異再還原自己的副本。一次比較只能支持本次條件下的選擇，不能推論某模型永久較省、某方案固定能做多少任務。額度畫面沒有更新、重置發生或其他任務同時使用時，該欄寫不可比較。完成標準是四項品質判斷有依據、時間有方法、未知用量沒有假數字，並選定下一個最小調整；不是讓統計看起來全部進步。",
         "Both copies should remain unchanged. Save observations and both answers; if an agent edited files, record a scope failure, preserve the diff and restore your own copy. One comparison supports a choice only under those conditions, not permanent model economy or a fixed number of tasks per plan. Mark usage incomparable if the display is stale, a reset occurred or other tasks used the account. Completion requires evidenced quality judgments, a timing method, no invented usage and one next adjustment, not a table where every metric improves.",
-        "両コピーは不変のまま、観測表と回答を保存します。代理が編集したなら範囲違反と記録し差分保存後に自分のコピーを復元します。1回比較はその条件の判断だけで、恒久的な節約モデルや方案の固定課題数を示しません。利用画面遅延・重置・他課題使用があれば比較不能とします。品質4点の根拠、時間方法、架空利用量なし、次の小変更が完了条件で、全指標を改善に見せることではありません。",
+        "両コピーは不変のまま、観測表と回答を保存します。エージェントが編集したなら範囲違反と記録し差分保存後に自分のコピーを復元します。1回比較はその条件の判断だけで、恒久的な節約モデルやプランの固定課題数を示しません。利用画面遅延・リセット・他のタスクによる使用があれば比較不能とします。品質4点の根拠、時間方法、架空利用量なし、次の小変更が完了条件で、全指標を改善に見せることではありません。",
         "두 복사본은 그대로여야 하며 관측표·답변을 저장합니다. 에이전트가 수정했으면 범위 위반으로 기록하고 차이를 보존한 뒤 자신의 복사본을 복원하세요. 한 번 비교는 해당 조건의 선택만 지지하며 영구적으로 저렴한 모델·요금제별 고정 작업 수를 뜻하지 않습니다. 사용량 표시 지연·초기화·다른 작업 사용은 비교 불가로 적습니다. 품질 네 항목의 근거·시간 측정법·가짜 사용량 없음·다음 작은 조정이 완료 조건이며 모든 지표를 개선처럼 보이게 하는 것이 아닙니다."
       ]
     }

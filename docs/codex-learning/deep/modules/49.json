@@ -17,7 +17,7 @@
       "text": [
         "驗證 todo-summary 的程式是否正確，以及 Codex 是否在合適的需求中照技能流程操作。閱讀約 15 分鐘、練習約 30 分鐘；沿用[技能資源分拆](article:codex-skill-resources)的 codex-skill-lab 和完整四份資源，需要 Node.js 22 以上相容版本、編輯器及已登入的 Codex。先手動跑一次統計器，確認原始三筆資料得到 3／1／2。",
         "Verify both the todo-summary checker and Codex's use of the skill on appropriate requests. Allow 15 minutes to read and 30 to practice. Reuse codex-skill-lab and all four resources from [Skill resources](article:codex-skill-resources), with compatible Node.js 22 or later, an editor and authenticated Codex. First run the checker manually and confirm the original three records yield 3/1/2.",
-        "todo-summary の検査プログラムと、適切な依頼に対する Codex のスキル使用を確認します。読む時間15分、実習30分。[スキル資源](article:codex-skill-resources)の codex-skill-lab と4資源、対応 Node.js 22 以降、エディター、認証済み Codex を使います。最初に手動で元の3件が3／1／2になることを確認します。",
+        "todo-summary の検査プログラムと、適切な依頼に対する Codex のスキル使用を確認します。読む時間15分、実習30分。[スキルリソース](article:codex-skill-resources)の codex-skill-lab と4リソース、対応 Node.js 22 以降、エディター、認証済み Codex を使います。最初に手動で元の3件が3／1／2になることを確認します。",
         "todo-summary 검사기와 적절한 요청에서 Codex의 스킬 사용을 모두 검증합니다. 읽기 15분, 실습 30분입니다. [스킬 자원](article:codex-skill-resources)의 codex-skill-lab과 네 자원, 호환 Node.js 22 이상, 편집기, 로그인 Codex를 사용합니다. 먼저 검사기를 직접 실행해 원래 세 레코드가 3/1/2인지 확인하세요."
       ]
     },
@@ -176,7 +176,7 @@
       "text": [
         "| 情境 | 送出的自然語言需求 | 檢查重點 |\n| --- | --- | --- |\n| 明確使用 | 選取 todo-summary，統計 data/tasks.json，只在回覆給報告 | 讀取資源、實際執行、3／1／2、輸入不變 |\n| 符合情境 | 統計這份本機待辦 JSON 的總數、未完成及完成數 | 記錄是否選到技能；沒選到不冒稱已使用 |\n| 不符合情境 | 將網站背景改成藍色，先提出計畫，不修改檔案 | 不應為這個需求執行待辦統計器 |\n| 必要資源缺少 | 規格檔改名後明確使用技能產生已驗證報告 | 說明缺檔並停止，不創造規格或結果 |",
         "| Situation | Natural-language request | What to check |\n| --- | --- | --- |\n| Explicit | Select todo-summary; summarize data/tasks.json in the reply only | Read resources, execute, 3/1/2, preserve input |\n| Matching context | Count total, active and completed tasks in this local JSON | Record selection; no false claim of using a skill |\n| Outside scope | Plan a blue website background; do not edit files | Do not run the task counter for this request |\n| Required resource missing | Rename the contract, then explicitly request a verified skill report | Report missing resource and stop; invent nothing |",
-        "| 状況 | 自然言語での依頼 | 確認点 |\n| --- | --- | --- |\n| 明示 | todo-summary を選び data/tasks.json を返信内だけで集計 | 資源読取り、実行、3／1／2、入力保持 |\n| 適合 | ローカルの待ちタスク JSON の全体・未完了・完了を数える | 選択の有無を記録し使用を偽らない |\n| 対象外 | サイト背景を青にする計画のみ、変更しない | タスク集計器を実行しない |\n| 必須資源なし | 仕様を改名して検証済み報告を明示依頼 | 欠落報告して停止し、仕様や結果を創作しない |",
+        "| 状況 | 自然言語での依頼 | 確認点 |\n| --- | --- | --- |\n| 明示 | todo-summary を選び data/tasks.json を返信内だけで集計 | リソース読取り、実行、3／1／2、入力保持 |\n| 適合 | ローカルの待ちタスク JSON の全体・未完了・完了を数える | 選択の有無を記録し使用を偽らない |\n| 対象外 | サイト背景を青にする計画のみ、変更しない | タスク集計器を実行しない |\n| 必須リソースなし | 仕様を改名して検証済み報告を明示依頼 | 欠落報告して停止し、仕様や結果を創作しない |",
         "| 상황 | 자연어 요청 | 확인점 |\n| --- | --- | --- |\n| 명시 | todo-summary 선택 후 data/tasks.json을 응답으로만 집계 | 자원 읽기, 실행, 3/1/2, 원본 보존 |\n| 적합 | 로컬 작업 JSON의 전체/미완료/완료 개수 집계 | 선택 여부 기록, 사용했다고 거짓 주장하지 않음 |\n| 범위 밖 | 사이트 배경을 파랑으로 바꾸는 계획만, 수정 금지 | 이 요청 때문에 작업 검사기를 실행하지 않음 |\n| 필수 자원 없음 | 규격 이름을 바꾼 뒤 검증 완료 보고서 명시 요청 | 누락 보고 후 중단, 규격/결과를 지어내지 않음 |"
       ]
     },
@@ -203,7 +203,7 @@
       "text": [
         "建立下面的驗收紀錄，欄位沒量到就寫未執行，不要填入預期數字。一次只修一個問題：找不到資源就修路徑；描述造成誤選就修 description；程式計數錯才改腳本。每次保存修正前的版本與失敗案例，修正後重跑受影響的自動測試和對應新任務。修改主檔不代表舊任務已重新讀入。",
         "Use this acceptance record and mark unmeasured fields not run instead of filling expected values. Fix one issue at a time: resource paths, selection description or checker logic. Preserve the previous version and failing case, then rerun affected program tests and the corresponding fresh task. Editing SKILL.md does not establish that an old task has reloaded it.",
-        "次の検収記録で未測定は未実施とし、期待値を埋めません。資源ならパス、誤選択なら description、集計ならコードを一つずつ直します。旧版と失敗例を保持し、影響テストと新規タスクを再実行します。主ファイルの変更だけで旧タスクの再読取りを証明できません。",
+        "次の検収記録で未測定は未実施とし、期待値を埋めません。リソースならパス、誤選択なら description、集計ならコードを一つずつ直します。旧版と失敗例を保持し、影響テストと新規タスクを再実行します。主ファイルの変更だけで旧タスクの再読取りを証明できません。",
         "다음 검수 기록에서 측정하지 않은 값은 미실행으로 쓰고 예상값을 채우지 마세요. 자원 문제는 경로, 잘못된 선택은 description, 집계 문제는 코드처럼 하나씩 수정합니다. 이전 버전과 실패 사례를 보존하고 영향받은 테스트와 새 작업을 다시 실행하세요. SKILL.md 수정만으로 이전 작업의 재로딩을 입증할 수 없습니다."
       ]
     },
