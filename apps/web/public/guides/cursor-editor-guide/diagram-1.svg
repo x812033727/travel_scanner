@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">Cursor 三種用法比較矩陣 / Cursor: Tab, Chat and Agent compared</title>
+  <desc id="desc">一張三欄比較矩陣。左欄列出三個面向：做什麼、什麼時候用、風險與注意。第一欄是 Tab 補全：順著你正在打的程式碼以灰字提出建議，可一次改多行、補上 import；適合你已經知道要寫什麼、只是懶得一個字一個字打的時候；風險是建議不一定對，按 Tab 前先看一眼，不要的按 Esc 拒絕。第二欄是 Chat 的 Ask 模式：在側邊欄回答問題、解釋程式與整體架構，唯讀不會動你的檔案；適合接手陌生專案或看不懂某一段程式時；風險是回答不一定正確，要回頭對照程式碼，好處是它不會動到檔案。第三欄是代理模式 Agent：自己搜尋、改多個檔案、執行終端機指令，也能先用 Plan 出計畫；適合做完整功能、重構或修 bug，而且你有能力審查結果；風險是它會在你的電腦上跑指令，要用差異檢視逐項審核、開乾淨的 Git 分支，官方也說 Auto-review 不是資安邊界。由左到右自動化程度遞增，需要人看的東西也越多。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="56" y="52" font-size="30" font-weight="700" fill="#102A2B">Cursor 三種用法比較：Tab 補全、Chat、代理模式</text>
+  <text x="56" y="84" font-size="18" fill="#5C6B6B">Tab, Chat and Agent: what each one does, when to use it, what to watch</text>
+
+  <!-- header row -->
+  <rect x="56" y="110" width="190" height="84" rx="14" fill="#EDE3D5"/>
+  <text x="151" y="160" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">比較面向</text>
+
+  <rect x="260" y="110" width="416" height="84" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="468" y="161" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">Tab 補全</text>
+
+  <rect x="690" y="110" width="416" height="84" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="898" y="161" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">Chat（Ask 模式）</text>
+
+  <rect x="1120" y="110" width="416" height="84" rx="14" fill="#FAEBDD" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1328" y="161" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">代理模式（Agent）</text>
+
+  <!-- row 1: what it does -->
+  <rect x="56" y="208" width="190" height="180" rx="14" fill="#EDE3D5"/>
+  <text x="151" y="306" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">做什麼</text>
+
+  <rect x="260" y="208" width="416" height="180" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="468" y="261" font-size="17" fill="#102A2B" text-anchor="middle">順著你正在打的程式碼，</text>
+  <text x="468" y="291" font-size="17" fill="#102A2B" text-anchor="middle">以灰字提出下一段建議</text>
+  <text x="468" y="321" font-size="17" fill="#102A2B" text-anchor="middle">可一次改多行、</text>
+  <text x="468" y="351" font-size="17" fill="#102A2B" text-anchor="middle">補上缺少的 import</text>
+
+  <rect x="690" y="208" width="416" height="180" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="898" y="261" font-size="17" fill="#102A2B" text-anchor="middle">在側邊欄回答問題、</text>
+  <text x="898" y="291" font-size="17" fill="#102A2B" text-anchor="middle">解釋程式與整體架構</text>
+  <text x="898" y="321" font-size="17" fill="#102A2B" text-anchor="middle">唯讀模式，</text>
+  <text x="898" y="351" font-size="17" fill="#102A2B" text-anchor="middle">不會動你的檔案</text>
+
+  <rect x="1120" y="208" width="416" height="180" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1328" y="261" font-size="17" fill="#102A2B" text-anchor="middle">自己搜尋、改多個檔案、</text>
+  <text x="1328" y="291" font-size="17" fill="#102A2B" text-anchor="middle">執行終端機指令</text>
+  <text x="1328" y="321" font-size="17" fill="#102A2B" text-anchor="middle">也能先用 Plan</text>
+  <text x="1328" y="351" font-size="17" fill="#102A2B" text-anchor="middle">產出可修改的計畫</text>
+
+  <!-- row 2: when to use -->
+  <rect x="56" y="402" width="190" height="180" rx="14" fill="#EDE3D5"/>
+  <text x="151" y="500" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">什麼時候用</text>
+
+  <rect x="260" y="402" width="416" height="180" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="468" y="470" font-size="17" fill="#102A2B" text-anchor="middle">你已經知道要寫什麼，</text>
+  <text x="468" y="500" font-size="17" fill="#102A2B" text-anchor="middle">只是懶得一個字一個字打</text>
+  <text x="468" y="530" font-size="17" fill="#102A2B" text-anchor="middle">寫熟悉的樣板時最順手</text>
+
+  <rect x="690" y="402" width="416" height="180" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="898" y="470" font-size="17" fill="#102A2B" text-anchor="middle">接手陌生的專案、</text>
+  <text x="898" y="500" font-size="17" fill="#102A2B" text-anchor="middle">看不懂某一段程式</text>
+  <text x="898" y="530" font-size="17" fill="#102A2B" text-anchor="middle">或先問清楚再決定怎麼改</text>
+
+  <rect x="1120" y="402" width="416" height="180" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1328" y="470" font-size="17" fill="#102A2B" text-anchor="middle">做一個完整的功能、</text>
+  <text x="1328" y="500" font-size="17" fill="#102A2B" text-anchor="middle">重構或修 bug</text>
+  <text x="1328" y="530" font-size="17" fill="#102A2B" text-anchor="middle">而且你有能力審查結果</text>
+
+  <!-- row 3: risk -->
+  <rect x="56" y="596" width="190" height="190" rx="14" fill="#EDE3D5"/>
+  <text x="151" y="699" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">風險與注意</text>
+
+  <rect x="260" y="596" width="416" height="190" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="468" y="654" font-size="17" fill="#B8442D" text-anchor="middle">建議不一定對</text>
+  <text x="468" y="684" font-size="17" fill="#102A2B" text-anchor="middle">按 Tab 之前先看一眼，</text>
+  <text x="468" y="714" font-size="17" fill="#102A2B" text-anchor="middle">不要的按 Esc 拒絕，</text>
+  <text x="468" y="744" font-size="17" fill="#102A2B" text-anchor="middle">或直接繼續打字</text>
+
+  <rect x="690" y="596" width="416" height="190" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="898" y="654" font-size="17" fill="#B8442D" text-anchor="middle">回答不一定正確</text>
+  <text x="898" y="684" font-size="17" fill="#102A2B" text-anchor="middle">說法要回頭對照程式碼</text>
+  <text x="898" y="714" font-size="17" fill="#102A2B" text-anchor="middle">好處是它唯讀，</text>
+  <text x="898" y="744" font-size="17" fill="#102A2B" text-anchor="middle">不會改壞任何檔案</text>
+
+  <rect x="1120" y="596" width="416" height="190" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1328" y="654" font-size="17" fill="#B8442D" text-anchor="middle">會在你的電腦上跑指令</text>
+  <text x="1328" y="684" font-size="17" fill="#102A2B" text-anchor="middle">用差異檢視逐項審核，</text>
+  <text x="1328" y="714" font-size="17" fill="#102A2B" text-anchor="middle">開乾淨的 Git 分支</text>
+  <text x="1328" y="744" font-size="17" fill="#102A2B" text-anchor="middle">Auto-review 不是資安邊界</text>
+
+  <!-- automation axis -->
+  <text x="898" y="812" font-size="17" fill="#5C6B6B" text-anchor="middle">由左到右自動化程度遞增：它做得越多，你要看的東西也越多</text>
+  <line x1="300" y1="838" x2="1500" y2="838" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">從你的資料夾到有鎖頭的網域 / From a local folder to a padlocked domain</title>
+  <desc id="desc">上排由左至右三格，說明檔案怎麼上去：你電腦上的網站資料夾，裡面是 index.html 或一個要先啟動的專案；用 rsync 或 git clone 走 SSH 連接埠 22 送上 VPS；檔案落在伺服器上的目錄，只有你的金鑰進得去。中排三格是上線必須同時成立的三件事。第一格 DNS，說明機器在哪裡：A 記錄填 IPv4 位址，AAAA 記錄填 IPv6 位址，TTL 決定舊答案還會被快取多久，沒生效前連到的還是舊位置。第二格反向代理，說明誰來回答：Caddy 或 Nginx 收下連接埠 80 與 443，靜態檔直接送出，應用程式轉給 systemd 管的服務，應用程式本身只監聽本機。第三格憑證，瀏覽器才信任：Let's Encrypt 預設效期 90 天，建議每 60 天自動續發一次，驗證要從連接埠 80 進得來。三格往下匯到最後一格：讀者打開你的網域，看到鎖頭；防火牆 ufw 只放行 22、80、443，其餘一律擋掉。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">從你的資料夾到有鎖頭的網域</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">From a local folder to a padlocked domain</text>
+
+  <!-- band 1: how the files get there -->
+  <rect x="60" y="120" width="420" height="120" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="84" y="168" font-size="24" font-weight="700" fill="#102A2B">你電腦上的網站資料夾</text>
+  <text x="84" y="206" font-size="18" fill="#5C6B6B">index.html，或要先啟動的專案</text>
+
+  <line x1="492" y1="180" x2="588" y2="180" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="600" y="120" width="420" height="120" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="624" y="168" font-size="24" font-weight="700" fill="#102A2B">送上 VPS</text>
+  <text x="624" y="206" font-size="18" fill="#5C6B6B">rsync 或 git clone，走 SSH 連接埠 22</text>
+
+  <line x1="1032" y1="180" x2="1128" y2="180" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="1140" y="120" width="400" height="120" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1164" y="168" font-size="24" font-weight="700" fill="#102A2B">伺服器上的目錄</text>
+  <text x="1164" y="206" font-size="18" fill="#5C6B6B">只有你的金鑰進得去</text>
+
+  <!-- band 1 to band 2 -->
+  <text x="60" y="282" font-size="17" fill="#5C6B6B">三件事要同時成立</text>
+  <line x1="1340" y1="240" x2="1340" y2="268" stroke="#5C6B6B" stroke-width="3"/>
+  <line x1="290" y1="268" x2="1340" y2="268" stroke="#5C6B6B" stroke-width="3"/>
+  <line x1="290" y1="268" x2="290" y2="308" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="800" y1="268" x2="800" y2="308" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1310" y1="268" x2="1310" y2="308" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- band 2: the three things that must hold -->
+  <rect x="60" y="316" width="460" height="220" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="84" y="368" font-size="22" font-weight="700" fill="#102A2B">DNS：機器在哪裡</text>
+  <text x="84" y="410" font-size="18" fill="#102A2B">A 記錄填 IPv4，AAAA 記錄填 IPv6</text>
+  <text x="84" y="448" font-size="18" fill="#102A2B">TTL 決定舊答案還會被快取多久</text>
+  <text x="84" y="486" font-size="17" fill="#5C6B6B">沒生效前，連到的還是舊位置</text>
+
+  <rect x="570" y="316" width="460" height="220" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="594" y="368" font-size="22" font-weight="700" fill="#102A2B">反向代理：誰來回答</text>
+  <text x="594" y="410" font-size="18" fill="#102A2B">Caddy 或 Nginx 收下連接埠 80 與 443</text>
+  <text x="594" y="448" font-size="18" fill="#102A2B">靜態檔直接送，應用程式轉給 systemd</text>
+  <text x="594" y="486" font-size="17" fill="#5C6B6B">應用程式只監聽本機</text>
+
+  <rect x="1080" y="316" width="460" height="220" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1104" y="368" font-size="22" font-weight="700" fill="#102A2B">憑證：瀏覽器才信任</text>
+  <text x="1104" y="410" font-size="18" fill="#102A2B">Let's Encrypt 預設效期 90 天</text>
+  <text x="1104" y="448" font-size="18" fill="#102A2B">建議每 60 天自動續發一次</text>
+  <text x="1104" y="486" font-size="17" fill="#5C6B6B">驗證要從連接埠 80 進得來</text>
+
+  <!-- band 2 to band 3 -->
+  <text x="60" y="592" font-size="17" fill="#5C6B6B">三件都成立，才有鎖頭</text>
+  <line x1="290" y1="536" x2="290" y2="576" stroke="#5C6B6B" stroke-width="3"/>
+  <line x1="800" y1="536" x2="800" y2="576" stroke="#5C6B6B" stroke-width="3"/>
+  <line x1="1310" y1="536" x2="1310" y2="576" stroke="#5C6B6B" stroke-width="3"/>
+  <line x1="290" y1="576" x2="1310" y2="576" stroke="#5C6B6B" stroke-width="3"/>
+  <line x1="800" y1="576" x2="800" y2="630" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- band 3: what the reader sees -->
+  <rect x="400" y="638" width="800" height="152" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="800" y="704" font-size="26" font-weight="700" fill="#0D6B68" text-anchor="middle">讀者打開你的網域，看到鎖頭</text>
+  <text x="800" y="748" font-size="18" fill="#5C6B6B" text-anchor="middle">ufw 只放行 22、80、443，其餘一律擋掉</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

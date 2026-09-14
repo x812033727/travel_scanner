@@ -1,0 +1,380 @@
+{
+  "slug": "cursor-editor-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Cursor 編輯器入門：Tab 補全、Chat 與代理模式",
+      "description": "Cursor 是以 VS Code 程式碼為基礎的編輯器，裝好後主要有三種用法：Tab 補全、Chat 問答與代理模式。這篇說明安裝與系統需求、一鍵匯入 VS Code 的設定與擴充功能、Tab 怎麼接受或拒絕、Agent 與 Ask、Plan、Debug 四種模式怎麼切換與審核、規則檔放在哪裡，也整理方案價格與隱私模式，依 2026 年 9 月官網查證。",
+      "hero": {
+        "src": "/guides/cursor-editor-guide/hero.jpg",
+        "alt": "插圖：一塊編輯器畫面分成三欄，分別代表灰字補全、對話框，以及會動手改多個檔案的代理",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Cursor 是以 VS Code 程式碼為基礎改寫的編輯器，介面與預設快捷鍵幾乎沒變，多出來的是三種 AI 用法：邊打字邊冒出灰字的 Tab 補全、側邊欄的 Chat，以及會自己改多個檔案、跑指令的代理（Agent）。三種用法解決的問題不同，分清楚再決定要不要付費。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇帶你裝好 Cursor、把 VS Code 的設定與擴充功能搬過去，看三種用法各自的場合與審核方式，最後是規則檔、模型、方案價格與隱私模式。方案名稱、價格與快捷鍵都以 2026 年 9 月 14 日的官方文件與定價頁為準。"
+        },
+        {
+          "type": "heading",
+          "text": "Cursor 是什麼：以 VS Code 為基礎的編輯器",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方在 VS Code 移轉文件裡寫明，Cursor 建立在 VS Code 的程式碼基礎上，為的是專心做好 AI 寫程式的體驗，同時保留熟悉的編輯環境。檔案總管、終端機與原始碼控制都在原位，官方也說預設快捷鍵與 VS Code 相同，自訂鍵位在匯入設定時會一起帶過來。"
+        },
+        {
+          "type": "paragraph",
+          "text": "差別主要有兩處。擴充功能改走 Open VSX 註冊表，不是微軟的 VS Code Marketplace，常見的多半找得到但不是全部；官方對某些只在微軟市集上架的擴充功能提供自家 Anysphere 版本，搜尋與下載也先經過 Cursor 的市集代理做惡意程式掃描。另一處是側邊欄多了代理面板，活動列改成橫向以挪出空間。"
+        },
+        {
+          "type": "heading",
+          "text": "安裝與從 VS Code 搬家",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "到官方下載頁抓對應作業系統的安裝檔，開啟後登入 Cursor 帳號就能用，免費方案不需要信用卡。官方列出的需求是 macOS 12（Monterey）以上、Windows 10 以上；Linux 有 apt 與 yum 套件庫，也有 AppImage，官方建議優先用套件庫版本，因為會附帶桌面圖示與自動更新。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "到官方下載頁選作業系統下載",
+            "macOS 拖進「應用程式」；Windows 執行安裝檔；Linux 用套件管理員安裝或執行 AppImage",
+            "開啟 Cursor 登入，再從 File 選單的 Open Folder 打開專案資料夾",
+            "按 Cmd + Shift + J（Windows 與 Linux 是 Ctrl + Shift + J）開啟設定，進 General 的 Account，在 VS Code Import 按 Import"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "在 Debian 或 Ubuntu 上用官方套件庫安裝",
+          "code": "curl -fsSL https://downloads.cursor.com/keys/anysphere.asc | gpg --dearmor | sudo tee /etc/apt/keyrings/cursor.gpg > /dev/null\n\necho \"deb [arch=amd64,arm64 signed-by=/etc/apt/keyrings/cursor.gpg] https://downloads.cursor.com/aptrepo stable main\" | sudo tee /etc/apt/sources.list.d/cursor.list > /dev/null\n\nsudo apt update\nsudo apt install cursor"
+        },
+        {
+          "type": "paragraph",
+          "text": "Import 會把擴充功能、佈景主題、設定與鍵盤配置一次帶過來，前提是同一台電腦真的裝著 VS Code。換新電腦就先在 VS Code 用命令選擇區找 Preferences: Open Profiles (UI) 匯出設定檔，再到 Cursor 用同一個命令匯入。搬完確認常用的擴充功能是否都在，Open VSX 上不一定有。"
+        },
+        {
+          "type": "link",
+          "text": "Claude Code｜VS Code 與 JetBrains 整合",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-ide-integration"
+        },
+        {
+          "type": "heading",
+          "text": "Tab 補全：灰字出現時該按什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Tab 是 Cursor 的補全，官方說它根據你最近的編輯、游標附近的程式碼與 linter 錯誤，把建議以灰字顯示在游標前方。它不只補一行，可以一次改多行、補上缺少的 import；需要跨檔案跳轉時，編輯器下方會出現一個小視窗。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "接受整段建議：按 Tab",
+            "拒絕：按 Esc，或直接繼續打字",
+            "逐字接受：macOS 按 Cmd 加右方向鍵，Windows 與 Linux 按 Ctrl 加右方向鍵",
+            "跳到下一個編輯點：接受之後再按一次 Tab"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "不想被打斷時，右下角的 Tab 狀態指示器可以暫停一段時間、整個關掉，或只對某些副檔名關掉，例如寫 Markdown 或 JSON 的時候。覺得 Tab 鍵和縮排習慣打架，到鍵盤快捷鍵設定搜尋 Accept Cursor Tab Suggestions 換一個鍵。"
+        },
+        {
+          "type": "link",
+          "text": "GitHub Copilot 入門：VS Code 裡的補全、Chat 與代理",
+          "url": "https://mokaair.com/zh-TW/life/github-copilot-guide"
+        },
+        {
+          "type": "heading",
+          "text": "Chat 與代理模式：Ask、Agent、Plan、Debug",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "對話面板用 Cmd + I 打開，Windows 與 Linux 是 Ctrl + I。同一個面板裡有四種模式，按 Shift + Tab 循環切換，也可以用模式下拉選單挑。差別在它能不能動你的檔案；官方說每種模式各自使用自己的上下文。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Agent：搜尋專案、改多個檔案、跑終端機指令、自己修錯誤，適合做功能與修 bug",
+            "Ask：唯讀模式，只回答不改檔案，適合弄懂一段程式或整個架構",
+            "Plan：先研究專案、反問需求，產出你可以修改的計畫，按下建置才動手",
+            "Debug：處理要有執行時線索才查得出來的問題"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "代理能做的事比補全多：搜尋檔案與關鍵字、讀目錄與圖片、上網查、改檔案、跑終端機指令並看輸出，官方明說一次任務裡的工具呼叫次數沒有上限。提示詞裡可以用 @ 帶進脈絡，例如 @ 加檔名或資料夾。"
+        },
+        {
+          "type": "paragraph",
+          "text": "審核的責任在你身上。改動即時出現在差異檢視裡，不要的直接拒絕；代理跑偏按 Stop 中斷；重大修改前它會自動存檢查點（Checkpoint），點一下可以預覽再還原所有檔案，但官方提醒檢查點只存在本機、和 Git 是兩回事。指令要不要先問過你，設定在 Settings 的 Agents 裡的 Approvals & Execution。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Auto-review：清單內的呼叫直接跑，其他指令盡量放進沙盒，沙盒跑不了的交給小型分類模型審查",
+            "Allowlist：只有清單裡的動作免審核，其餘等你同意",
+            "Run Everything：所有工具呼叫都自動執行，不會跳出提示"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "image",
+          "src": "/guides/cursor-editor-guide/diagram-1.svg",
+          "alt": "比較矩陣：Tab 補全、Chat 與代理模式在做什麼、什麼時候用、風險三個面向的對照",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右自動化程度遞增：做得越多，要看的東西也越多。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "代理跑指令前先把安全網架好",
+          "text": "代理可以直接在你的電腦上執行終端機指令。官方把 Auto-review 形容成多數人最實用的設定，卻也在同一頁明說它不是資安邊界：審查的分類模型會判斷錯，可能放行你本來會擋下的指令。剛開始就選 Allowlist，在乾淨的 Git 分支上做事，提交前自己看過差異。"
+        },
+        {
+          "type": "link",
+          "text": "給程式代理的提示模式：先規劃、再實作、最後驗證",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-prompt-patterns"
+        },
+        {
+          "type": "heading",
+          "text": "規則檔、模型與自動模式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "模型在每次對話之間沒有記憶，專案的規矩要寫成規則檔。Cursor 的規則分四種：放在 .cursor/rules、跟著專案進版本控制的專案規則；套用到這台電腦所有專案的使用者規則；Team 與 Enterprise 在後台管理的團隊規則；以及放在專案根目錄的 AGENTS.md，官方把它定位成純 Markdown 的簡單替代。"
+        },
+        {
+          "type": "paragraph",
+          "text": "專案規則的副檔名必須是 .mdc，靠檔頭的 frontmatter 決定何時載入，同目錄的 .md 會被忽略。三個欄位決定四種套用方式：alwaysApply 設 true 每次都帶上；只給 globs 就在符合的檔案進到脈絡時自動附加；只給 description 讓代理自己判斷；兩個都不給，只有用 @ 點名才生效。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": ".cursor/rules/components.mdc：只在改前端元件時套用",
+          "code": "---\nglobs: src/components/**/*.tsx\nalwaysApply: false\n---\n\n- 一律使用具名匯出，不要用預設匯出\n- 樣式放在同目錄的 module CSS 檔案\n- 新元件先照 src/components 既有檔案的寫法"
+        },
+        {
+          "type": "paragraph",
+          "text": "模型在對話框的模型選單切換。Cursor 把模型分成兩個用量池：Cursor Models 收自家與合作訓練的 Grok 4.6、Grok 4.5 與 Composer 2.5，Other Models 收 OpenAI、Anthropic、Google 等第三方模型，按各家 API 價格計費。不想自己挑就用自動（Auto），官方說它分成 Cost、Balance 與 Intelligence 三種取向。"
+        },
+        {
+          "type": "link",
+          "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained"
+        },
+        {
+          "type": "heading",
+          "text": "方案、價格與隱私模式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "個人方案有四層。Hobby 免費、不需要信用卡，官方說明它能用 Agent、Chat 與 Tab 補全、模型走 Auto，但代理請求數量有限；Pro、Pro+ 與 Ultra 都含無限次 Tab 補全與兩個用量池，差別在代理額度，定價頁寫 Pro+ 是 Pro 的三倍、Ultra 是二十倍，年繳可省兩成。另有只給印度開發者的 Start 方案。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方案",
+            "每月價格",
+            "包含什麼",
+            "適合誰"
+          ],
+          "rows": [
+            [
+              "Hobby",
+              "免費",
+              "有限的代理請求、可用 Composer",
+              "想先試用、偶爾叫代理"
+            ],
+            [
+              "Pro",
+              "20 美元",
+              "無限 Tab 補全、兩個用量池、前沿模型",
+              "每天寫程式、用量普通"
+            ],
+            [
+              "Pro+",
+              "60 美元",
+              "同 Pro，代理額度三倍",
+              "每天大量用代理"
+            ],
+            [
+              "Ultra",
+              "200 美元",
+              "同 Pro，代理額度二十倍，優先試新功能",
+              "同時跑多個代理"
+            ],
+            [
+              "Start（限印度）",
+              "649 印度盧比",
+              "只含 Cursor Models 用量池，含稅",
+              "印度的開發者"
+            ],
+            [
+              "Teams 標準席次",
+              "40 美元／人",
+              "集中帳務、團隊規則市集、全團隊隱私模式",
+              "一起交付的小團隊"
+            ],
+            [
+              "Enterprise",
+              "需洽詢",
+              "同 Teams，加上共用用量、發票付款、稽核紀錄",
+              "需要採購與稽核"
+            ]
+          ],
+          "caption": "依 Cursor 官方定價頁與文件整理，2026 年 9 月查證；價格為美元且未含稅。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這些價格買到的是包含的用量，不是無限次數。官方粗估：每天只用 Tab 通常用不完；每天用代理的人大約每月 60 到 100 美元的用量；同時跑多個代理的重度使用者常超過 200 美元。額度用完可以開啟隨用隨付。學生方案方面，舊優惠已在 2026 年 6 月 25 日停止新申請，改成在校園與線上活動發放。"
+        },
+        {
+          "type": "paragraph",
+          "text": "隱私模式（Privacy Mode）要自己確認。官方說法很直接：開啟後你的程式碼絕不會被 Cursor 或模型供應商拿去訓練。打開方式是按 Cmd + Shift + J（Windows 與 Linux 按 Ctrl + Shift + J）開啟設定，點左側 General，把 Privacy Mode 切開；Enterprise 團隊預設開啟。同一頁也說明：即使開著，提示詞與程式碼脈絡仍會送到 OpenAI、Anthropic、Google 等供應商。"
+        },
+        {
+          "type": "link",
+          "text": "AI 寫程式的費用怎麼算：token、訂閱與 API 額度",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-cost-tokens-explained"
+        },
+        {
+          "type": "link",
+          "text": "AI 寫程式工具總覽：Claude Code、Codex、Gemini CLI、Cursor、Copilot",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-tools-overview-2026"
+        },
+        {
+          "type": "link",
+          "text": "氛圍編碼（Vibe Coding）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-vibe-coding"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Cursor Docs — Quickstart（安裝、系統需求與第一個任務）",
+          "url": "https://cursor.com/docs/get-started/quickstart",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cursor Docs — Download and install Cursor（下載與安裝步驟）",
+          "url": "https://cursor.com/help/getting-started/install",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cursor Docs — VS Code Migration（以 VS Code 程式碼為基礎、一鍵匯入）",
+          "url": "https://cursor.com/docs/configuration/migrations/vscode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cursor Docs — Migrate from VS Code（Open VSX 與快捷鍵）",
+          "url": "https://cursor.com/help/getting-started/migrate-vscode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cursor Docs — Extensions（Open VSX 註冊表與市集代理掃描）",
+          "url": "https://cursor.com/help/customization/extensions",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cursor Docs — Tab completion（接受、拒絕與逐字接受的按鍵）",
+          "url": "https://cursor.com/help/ai-features/tab",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cursor Docs — Agent mode（四種模式比較與審核方式）",
+          "url": "https://cursor.com/help/ai-features/agent",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cursor Docs — Ask mode（唯讀模式）",
+          "url": "https://cursor.com/help/ai-features/ask-mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cursor Docs — Plan Mode（計畫模式與模式切換）",
+          "url": "https://cursor.com/docs/agent/plan-mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cursor Docs — Cursor Agent（工具、檢查點與快捷鍵）",
+          "url": "https://cursor.com/docs/agent/overview",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cursor Docs — Prompting agents（@ 提及與脈絡）",
+          "url": "https://cursor.com/docs/agent/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cursor Docs — Run Modes（Auto-review、Allowlist、Run Everything）",
+          "url": "https://cursor.com/docs/agent/security/run-modes",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cursor Docs — Rules（.cursor/rules、.mdc 與 AGENTS.md）",
+          "url": "https://cursor.com/docs/rules",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cursor Docs — Models & Pricing（用量池、方案價格與 Auto 模式）",
+          "url": "https://cursor.com/docs/models-and-pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cursor Docs — Pricing and plans（方案表與 Hobby 免費方案內容）",
+          "url": "https://cursor.com/help/account-and-billing/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cursor 官方定價頁（Hobby、Pro、Pro+、Ultra 與年繳折扣）",
+          "url": "https://cursor.com/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cursor Docs — Privacy and data（隱私模式與訓練資料）",
+          "url": "https://cursor.com/help/security-and-privacy/privacy",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cursor Docs — Student discount（學生優惠現況）",
+          "url": "https://cursor.com/help/account-and-billing/student-discount",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

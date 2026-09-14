@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">一問一答的迴圈 / A message goes out to a server and comes back</title>
+  <desc id="desc">簡單幾何插圖。左邊是一個深綠色邊框的圓角對話框，框內三個圓點代表使用者剛送出的一句話，對話框左下角有一個朝下的小尾巴。一條往右上方的弧線箭頭連到右邊的伺服器圖形：一個藍色邊框的直立圓角矩形，裡面有三層橫向的機架，每一層左邊有一個小圓燈。伺服器下方再有一條往左下方的弧線箭頭繞回左邊，末端接到一個較小的藍色對話框，代表機器人送回來的回覆。畫面下方置中有一行標題文字「讓機器人替你回話」。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- the question the user sends -->
+  <path d="M 240 118 H 590 A 34 34 0 0 1 624 152 V 308 A 34 34 0 0 1 590 342 H 360 L 292 412 V 342 H 240 A 34 34 0 0 1 206 308 V 152 A 34 34 0 0 1 240 118 Z" fill="#E3F0EF" stroke="#0D6B68" stroke-width="10" stroke-linejoin="round"/>
+  <circle cx="325" cy="230" r="22" fill="#0D6B68"/>
+  <circle cx="415" cy="230" r="22" fill="#0D6B68"/>
+  <circle cx="505" cy="230" r="22" fill="#0D6B68"/>
+
+  <!-- out to the server -->
+  <path d="M 664 192 C 800 110, 930 112, 1032 186" fill="none" stroke="#5C6B6B" stroke-width="10" marker-end="url(#arrow)"/>
+
+  <!-- the server -->
+  <rect x="1086" y="168" width="330" height="420" rx="28" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="10"/>
+  <rect x="1136" y="218" width="230" height="90" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="6"/>
+  <rect x="1136" y="333" width="230" height="90" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="6"/>
+  <rect x="1136" y="448" width="230" height="90" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="6"/>
+  <circle cx="1178" cy="263" r="14" fill="#2E7D5B"/>
+  <circle cx="1178" cy="378" r="14" fill="#D97A2B"/>
+  <circle cx="1178" cy="493" r="14" fill="#2F6F9F"/>
+  <line x1="1216" y1="263" x2="1330" y2="263" stroke="#2F6F9F" stroke-width="6"/>
+  <line x1="1216" y1="378" x2="1330" y2="378" stroke="#2F6F9F" stroke-width="6"/>
+  <line x1="1216" y1="493" x2="1330" y2="493" stroke="#2F6F9F" stroke-width="6"/>
+
+  <!-- back to the user -->
+  <path d="M 1070 556 C 980 648, 850 660, 756 602" fill="none" stroke="#5C6B6B" stroke-width="10" marker-end="url(#arrow)"/>
+
+  <!-- the reply that comes back -->
+  <path d="M 352 474 H 660 A 30 30 0 0 1 690 504 V 620 A 30 30 0 0 1 660 650 H 488 L 420 714 V 650 H 352 A 30 30 0 0 1 322 620 V 504 A 30 30 0 0 1 352 474 Z" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="10" stroke-linejoin="round"/>
+  <rect x="366" y="524" width="266" height="20" rx="10" fill="#2F6F9F"/>
+  <rect x="366" y="578" width="186" height="20" rx="10" fill="#9FC0D8"/>
+
+  <text x="800" y="828" text-anchor="middle" font-size="58" font-weight="700" fill="#102A2B">讓機器人替你回話</text>
+</svg>

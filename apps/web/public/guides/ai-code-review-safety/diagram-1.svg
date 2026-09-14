@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">從 diff 到合併：五道關卡 / From agent diff to merge</title>
+  <desc id="desc">流程圖。起點是代理產出 diff，接著依序通過五道關卡：關卡一讀改動範圍，確認沒有你沒交代的檔案；關卡二跑測試並看斷言，故意改壞一行看測試會不會變紅；關卡三查套件與金鑰，確認套件存在、授權可用、版本鎖定，且 .env 沒有進入 repo；關卡四看注入與權限，使用者輸入走參數化查詢，代理的可寫目錄與網路存取限制在最小必要；關卡五是 CI 與 PR 範本，lint 與測試通過、勾選清單勾完才合併。任何一關沒過，就把改動退回代理重做，或找懂這塊的人審，回到最左邊重新走一次，不要往右推。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5C6B6B"/>
+    </marker>
+    <marker id="arrowWarn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#B8442D"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">從 diff 到合併：AI 產出的改動要過的五道關卡</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">From agent diff to merge: the review checklist</text>
+
+  <!-- Row 1 -->
+  <rect x="95" y="140" width="330" height="150" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="260" y="178" font-size="17" fill="#0D6B68" text-anchor="middle">起點</text>
+  <text x="260" y="222" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">代理產出 diff</text>
+  <text x="260" y="258" font-size="17" fill="#5C6B6B" text-anchor="middle">先別急著合併</text>
+
+  <rect x="463" y="140" width="330" height="150" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="628" y="178" font-size="17" fill="#2F6F9F" text-anchor="middle">關卡一</text>
+  <text x="628" y="222" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">讀改動範圍</text>
+  <text x="628" y="258" font-size="17" fill="#5C6B6B" text-anchor="middle">有沒有你沒交代的檔案</text>
+
+  <rect x="831" y="140" width="330" height="150" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="996" y="178" font-size="17" fill="#2F6F9F" text-anchor="middle">關卡二</text>
+  <text x="996" y="222" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">跑測試看斷言</text>
+  <text x="996" y="258" font-size="17" fill="#5C6B6B" text-anchor="middle">改壞一行會不會變紅</text>
+
+  <rect x="1199" y="140" width="330" height="150" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1364" y="178" font-size="17" fill="#2F6F9F" text-anchor="middle">關卡三</text>
+  <text x="1364" y="222" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">查套件與金鑰</text>
+  <text x="1364" y="258" font-size="17" fill="#5C6B6B" text-anchor="middle">存在、授權、鎖版、.env</text>
+
+  <line x1="429" y1="215" x2="455" y2="215" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="797" y1="215" x2="823" y2="215" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1165" y1="215" x2="1191" y2="215" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- wrap from row 1 to row 2 -->
+  <polyline points="1364,294 1364,335 260,335 260,372" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- Row 2 -->
+  <rect x="95" y="380" width="330" height="150" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="260" y="418" font-size="17" fill="#2F6F9F" text-anchor="middle">關卡四</text>
+  <text x="260" y="462" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">看注入與權限</text>
+  <text x="260" y="498" font-size="17" fill="#5C6B6B" text-anchor="middle">參數化查詢、最小可寫目錄</text>
+
+  <rect x="463" y="380" width="330" height="150" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="628" y="418" font-size="17" fill="#2F6F9F" text-anchor="middle">關卡五</text>
+  <text x="628" y="462" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">CI 與 PR 範本</text>
+  <text x="628" y="498" font-size="17" fill="#5C6B6B" text-anchor="middle">lint、測試、勾選清單</text>
+
+  <rect x="831" y="380" width="330" height="150" rx="14" fill="#E3F0EF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="996" y="455" font-size="28" font-weight="700" fill="#102A2B" text-anchor="middle">合併</text>
+  <text x="996" y="495" font-size="17" fill="#5C6B6B" text-anchor="middle">審完再往右推</text>
+
+  <line x1="429" y1="455" x2="455" y2="455" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="797" y1="455" x2="823" y2="455" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- fail path -->
+  <line x1="628" y1="534" x2="628" y2="636" stroke="#B8442D" stroke-width="4" marker-end="url(#arrowWarn)"/>
+  <text x="650" y="590" font-size="17" fill="#B8442D">任一關沒過</text>
+
+  <rect x="560" y="640" width="540" height="140" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="830" y="702" font-size="24" font-weight="700" fill="#B8442D" text-anchor="middle">退回代理重做，或找人審</text>
+  <text x="830" y="744" font-size="18" fill="#5C6B6B" text-anchor="middle">看不懂的那一段，不要合併</text>
+
+  <polyline points="556,710 45,710 45,215 87,215" fill="none" stroke="#B8442D" stroke-width="4" marker-end="url(#arrowWarn)"/>
+  <text x="200" y="686" font-size="17" fill="#B8442D">回到最左邊重走一次</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

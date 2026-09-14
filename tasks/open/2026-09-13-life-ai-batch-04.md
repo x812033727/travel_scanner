@@ -1,7 +1,7 @@
 ---
 id: 2026-09-13-life-ai-batch-04
 title: 生活分享 AI 系列批次 04：AI 寫程式：Claude Code、Codex、Gemini CLI、Cursor、Copilot（20 篇）
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: claude-fable-5-1
@@ -55,12 +55,12 @@ scope:
 
 ## Definition of done
 
-- [ ] 二十個 `apps/api/app/guides/content/<slug>.json`（zh-TW），每篇：hero（自繪插圖渲染的 `hero.jpg` 或 Commons 照片）、
+- [x] 二十個 `apps/api/app/guides/content/<slug>.json`（zh-TW），每篇：hero（自繪插圖渲染的 `hero.jpg` 或 Commons 照片）、
       至少一張自繪 `diagram-1.svg`、≥3 個 h2、一表、一 callout、sources 每筆有 `checked_on`、至少一個站內 `link`；
       合作連結只在總表標了的篇、只放文章真的用到的段落。
-- [ ] 沒有任何產品 logo、字標、圖示或介面截圖；照片只來自 Commons 的 CC0／PD／CC BY／CC BY-SA，授權由 Commons API 讀回。
-- [ ] 方案、價格、模型名、額度都在寫作當天查官網；查不到的寫「以官網為準」。
-- [ ] `guides-pack lint --kind life` 沒有 error；每張 hero 與圖解渲染成 PNG 後人工看過；`test_guides_content_pack.py` 全綠。
+- [x] 沒有任何產品 logo、字標、圖示或介面截圖；照片只來自 Commons 的 CC0／PD／CC BY／CC BY-SA，授權由 Commons API 讀回。
+- [x] 方案、價格、模型名、額度都在寫作當天查官網；查不到的寫「以官網為準」。
+- [x] `guides-pack lint --kind life` 沒有 error；每張 hero 與圖解渲染成 PNG 後人工看過；`test_guides_content_pack.py` 全綠。
 
 ## Steps
 
@@ -87,9 +87,9 @@ scope:
 19. `ai-build-line-bot-tutorial` · 用 AI 幫你做 LINE 機器人：從零到上線 · tutorial, software · 圖：插 · 合作：H
 20. `ai-build-personal-blog-tutorial` · 用 AI 做個人部落格：靜態網站產生器與部署 · tutorial, software · 圖：插 · 合作：H
 
-- [ ] 認領後從總表抄出指派，一篇一個撰稿代理、每波最多七個，代理照 `docs/life-ai-series-brief.md` 產出工作區。
-- [ ] 每篇落地就 `guides-pack ingest`；被拒的退回修。
-- [ ] `guides-pack lint --render-dir` 逐張看圖；跑測試；更新這張票；commit。
+- [x] 認領後從總表抄出指派，一篇一個撰稿代理、每波最多七個，代理照 `docs/life-ai-series-brief.md` 產出工作區。
+- [x] 每篇落地就 `guides-pack ingest`；被拒的退回修。
+- [x] `guides-pack lint --render-dir` 逐張看圖；跑測試；更新這張票；commit。
 
 ## How to verify
 
@@ -110,3 +110,26 @@ npm run check:tasks
 原列第 2–6 篇的五個 Claude Code slug 與素材範圍已轉交 2026-09-14-claude-code-tutorial-center；其內容改由完整 60 篇系列提供。這張票保留其餘十五篇，驗收篇數相應為十五篇，勿重建或覆蓋已轉交的五篇。
 
 2026-09-14: Gemini CLI introductory pack and artwork transferred to the complete Gemini series content task, preserving the original slug. Existing Claude Code transfers remain intact.
+
+## Outcome (2026-09-14)
+
+- 十四篇（原二十篇扣掉已轉交的五篇 Claude Code 與一篇 Gemini CLI）全部進 `apps/api/app/guides/content/`：
+  `guides-pack lint --kind life --catalogue` 零 error，批次 04 的 slug 不再出現在 `catalogue_missing_pack`；
+  `test_guides_content_pack.py` 與 `test_guide_partner_links.py` 63 passed；每篇的 hero 與圖解都渲染成 PNG 人工看過。
+  十四篇 hero 全是自繪插圖，沒有 Commons 照片。
+- 產製：一篇一個撰稿代理（Opus）、同時最多七個，每篇約 17–28 分鐘、19 萬到 29 萬 token，沒有代理被額度切斷。
+  每篇 sources 10–20 筆，全部是供應商官方文件、定價頁、說明中心或一手論文，`checked_on` 皆為 2026-09-14。
+  撰稿補充（工作區的 WRITER_BRIEF_LIFE04.md）把 `code` 區塊、連結文字取自目標標題、不放 partner_link 三件事講清楚，
+  加上 brief 之後幾乎沒有退件。
+- 事實層面（都已寫進文章）：OpenAI 的 Codex 文件從 developers.openai.com 308 轉到 learn.chatgpt.com（每頁加 `.md` 可取原文）；
+  Cursor 個人方案是 Pro 20／Pro+ 60／Ultra 200 美元，「Individual」只是定價頁的分頁名（總覽篇初稿寫錯，本批修正）；
+  GitHub Copilot 2026-06-01 起改用 AI credits、雲端代理 2026-04-01 改名 Copilot cloud agent、另有 Max 與 Student 方案；
+  ChatGPT 的 canvas 2026-05-28 起從 GPT-5.5 移除、做網站改用 ChatGPT Sites（Free／Go 不開放）；
+  LINE 官方帳號台灣方案 2026-11-01 調價、Reply API 不計訊息則數；Hugo Quick Start 改用 `hugo new project`；
+  OWASP 網站 Top 10 現行是 2025 年版（注入是 A05:2025）。
+- 比較篇（`ai-coding-agents-compared`）因為沒有三家的帳號無法實測，改寫成「操作步驟比較與讀者自測法」並改標題；總表已同步。
+- 合作連結：總表標 H 的四篇都沒放 `partner_link`，repo 裡沒有 Hostinger 聯盟網址（前五批也沒放）；有網址後再補。
+- 流程：前五篇先隨 #499 合併（依站主指示 CI 綠了就合併），其餘九篇與總覽篇的修正在本 PR。
+  分支保護要求 head 與 main 同步才能合併，main 一天內動了好幾次，PR 綠了要立刻合併，否則又要重跑約 20 分鐘的 CI。
+- 部署後在主機：`python -m app.cli guides-import --actor-email <admin> --dry-run` 應列出九篇 `create`、`ai-coding-tools-overview-2026` 為 `update`，
+  再 `--publish`；`/zh-TW/life` 應列出十四篇。

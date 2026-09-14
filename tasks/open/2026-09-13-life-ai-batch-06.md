@@ -1,14 +1,14 @@
 ---
 id: 2026-09-13-life-ai-batch-06
 title: 生活分享 AI 系列批次 06：MiniMax、DeepSeek、Qwen、Kimi、豆包與其他家（20 篇）
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-14T14:55:21Z
 created_at: 2026-09-13T11:55:59Z
 completed_at:
-branch:
+branch: claude/travel-guides-tutorials-59j1dv
 depends_on:
   - 2026-09-13-life-ai-series-tooling
   - 2026-09-13-life-ai-series-catalogue
