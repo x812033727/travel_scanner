@@ -1,0 +1,81 @@
+{
+  "//": [
+    "Lighthouse CI budgets for the SEO audit workflow (.github/workflows/seo-audit.yml).",
+    "JSON has no comment syntax and LHCI parses this file with a plain JSON.parse, so this key",
+    "carries the notes instead. It sits beside `ci`, not inside it, and is ignored by the loader.",
+    "",
+    "THESE THRESHOLDS WERE SET WITH NO BACKEND RUNNING, and they are measurements rather than",
+    "guesses. The workflow starts the Next.js production build alone and points API_INTERNAL_URL",
+    "at a dead port, so every server-side read fails and the pages render their offline",
+    "fallbacks. Measured on 2026-09-14 against that exact setup, 3 runs per URL, Lighthouse",
+    "12.6.1: the four gated URLs each scored SEO 1.00 and Accessibility 1.00 on every run, with",
+    "no variance; best-practices 0.96; performance 0.86 to 0.97.",
+    "",
+    "SEO is therefore gated at 1.0, not at a round 0.9. Its audits are deterministic markup",
+    "checks, so the observed variance is zero, and a 0.9 line would have left enough headroom",
+    "for a lost canonical or a stray noindex to pass unnoticed -- the exact regression this",
+    "workflow exists to catch. Accessibility keeps a little room at 0.95 because a few of its",
+    "audits (contrast, tap targets) depend on rendering rather than markup. Performance is",
+    "observed, never enforced: its number describes the offline fallback on runner hardware.",
+    "",
+    "WHY /en/destinations/tokyo IS NOT LISTED, although the task asked for it: the guide page",
+    "throws on purpose when the destination catalog cannot be read (an outage has to be a 5xx,",
+    "since a 404 invites Google to drop a real page), and loadDestinations() also returns null",
+    "for an empty catalog. Without seeded destination rows the URL is a hard 500, and the",
+    "action's collect loop aborts the whole run on a failed document -- so including it would",
+    "destroy collection for the other four URLs rather than merely score badly.",
+    "/zh-TW/destinations stands in: it degrades identically and adds second-locale coverage.",
+    "To restore the city guide once this job runs against a seeded API, add it to collect.url",
+    "AND to a matching assertMatrix pattern. A URL that matches no pattern is collected and",
+    "then asserted against nothing, silently, which looks exactly like passing.",
+    "",
+    "/en/hotspots is collected but only warned on. Without the API it renders a short",
+    "'unavailable' card carrying noindex by design; that single is-crawlable audit is the whole",
+    "of its measured SEO 0.66, so a hard gate there would encode the outage as the expectation.",
+    "",
+    "ci.upload below is ignored by treosh/lighthouse-ci-action, which runs its own filesystem",
+    "upload without passing --config. It is kept so that a local `lhci autorun --config=` writes",
+    "reports somewhere useful instead of defaulting to target 'lhci' and failing."
+  ],
+  "ci": {
+    "collect": {
+      "url": [
+        "http://localhost:3000/en",
+        "http://localhost:3000/zh-TW",
+        "http://localhost:3000/en/destinations",
+        "http://localhost:3000/zh-TW/destinations",
+        "http://localhost:3000/en/hotspots"
+      ],
+      "numberOfRuns": 3,
+      "settings": {
+        "chromeFlags": "--no-sandbox --disable-gpu --disable-dev-shm-usage"
+      }
+    },
+    "assert": {
+      "assertMatrix": [
+        {
+          "matchingUrlPattern": "^http://localhost:3000/(en|zh-TW)(/destinations)?/?$",
+          "assertions": {
+            "categories:seo": ["error", { "minScore": 1, "aggregationMethod": "median" }],
+            "categories:accessibility": ["error", { "minScore": 0.95, "aggregationMethod": "median" }],
+            "categories:best-practices": ["warn", { "minScore": 0.9, "aggregationMethod": "median" }],
+            "categories:performance": ["warn", { "minScore": 0.75, "aggregationMethod": "median" }]
+          }
+        },
+        {
+          "matchingUrlPattern": "^http://localhost:3000/en/hotspots/?$",
+          "assertions": {
+            "categories:seo": ["warn", { "minScore": 0.9, "aggregationMethod": "median" }],
+            "categories:accessibility": ["warn", { "minScore": 0.95, "aggregationMethod": "median" }],
+            "categories:best-practices": ["warn", { "minScore": 0.9, "aggregationMethod": "median" }],
+            "categories:performance": ["warn", { "minScore": 0.75, "aggregationMethod": "median" }]
+          }
+        }
+      ]
+    },
+    "upload": {
+      "target": "filesystem",
+      "outputDir": ".lighthouseci/reports"
+    }
+  }
+}
